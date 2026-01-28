@@ -118,18 +118,19 @@ def call_huggingface(prompt: str, model: str = "TinyLlama/TinyLlama-1.1B-Chat-v1
 
 def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str = None,
                     base_url: str = None, api_key: str = None,
-                    nouns: int = 3, verbs: int = 2, adjectives: int = 1) -> str:
-    """Generate a prompt using an LLM."""
+                    nouns: int = 3, verbs: int = 2, adjectives: int = 1,
+                    verbose: bool = False) -> str | dict:
+    """Generate a prompt using an LLM. Returns dict with details if verbose=True."""
     sampled_words = sample_words(rng, nouns=nouns, verbs=verbs, adjectives=adjectives)
     structure = sample_structure(rng)
     meta_prompt = build_meta_prompt(sampled_words, structure)
 
     if backend == "huggingface":
-        return call_huggingface(meta_prompt, model or "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
+        output = call_huggingface(meta_prompt, model or "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
     elif backend == "ollama":
-        return call_ollama(meta_prompt, model or "llama3.2")
+        output = call_ollama(meta_prompt, model or "llama3.2")
     elif backend == "openai":
-        return call_openai_compatible(
+        output = call_openai_compatible(
             meta_prompt,
             base_url or "https://api.openai.com/v1",
             api_key or "",
@@ -137,6 +138,42 @@ def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str
         )
     else:
         raise ValueError(f"Unknown backend: {backend}")
+
+    if verbose:
+        return {
+            "sampled_words": sampled_words,
+            "structure": structure,
+            "meta_prompt": meta_prompt,
+            "output": output,
+        }
+    return output
+
+
+def print_verbose(result: dict):
+    """Print verbose output showing all intermediate steps."""
+    words = result["sampled_words"]
+    structure = result["structure"]
+
+    print("=" * 60)
+    print("SAMPLED WORDS:")
+    print(f"  nouns:      {', '.join(words['nouns'])}")
+    print(f"  verbs:      {', '.join(words['verbs'])}")
+    print(f"  adjectives: {', '.join(words['adjectives'])}")
+    print()
+    print("SAMPLED STRUCTURE:")
+    print(f"  domain:     {structure['domain']}")
+    print(f"  format:     {structure['format']}")
+    print(f"  constraint: {structure['constraint']}")
+    print(f"  twist:      {structure['twist']}")
+    print()
+    print("META-PROMPT TO LLM:")
+    print("-" * 40)
+    print(result["meta_prompt"])
+    print("-" * 40)
+    print()
+    print("LLM OUTPUT:")
+    print(result["output"])
+    print("=" * 60)
 
 
 def main():
@@ -151,6 +188,7 @@ def main():
     parser.add_argument("--nouns", type=int, default=3, help="Number of random nouns (default: 3)")
     parser.add_argument("--verbs", type=int, default=2, help="Number of random verbs (default: 2)")
     parser.add_argument("--adjectives", type=int, default=1, help="Number of random adjectives (default: 1)")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Show all intermediate steps")
     args = parser.parse_args()
 
     rng = random.Random(args.seed)
@@ -159,7 +197,7 @@ def main():
         if args.count > 1:
             print(f"\n[{i + 1}]")
         try:
-            print(generate_prompt(
+            result = generate_prompt(
                 rng,
                 backend=args.backend,
                 model=args.model,
@@ -168,7 +206,12 @@ def main():
                 nouns=args.nouns,
                 verbs=args.verbs,
                 adjectives=args.adjectives,
-            ))
+                verbose=args.verbose,
+            )
+            if args.verbose:
+                print_verbose(result)
+            else:
+                print(result)
         except Exception as e:
             print(f"Error: {e}", file=sys.stderr)
             sys.exit(1)
