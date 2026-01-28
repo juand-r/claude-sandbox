@@ -189,29 +189,66 @@ def beam_search_2d(
     return beams
 
 
-def display_results(beams: List[Beam], lm: NgramLM, n: int = 5):
+def is_symmetric(beam: Beam) -> bool:
+    """Check if grid is symmetric (rows == columns)."""
+    n_rows = len(beam.grid)
+    n_cols = len(beam.grid[0]) if beam.grid else 0
+    if n_rows != n_cols:
+        return False
+    for r in range(n_rows):
+        for c in range(n_cols):
+            if beam.grid[r][c] != beam.grid[c][r]:
+                return False
+    return True
+
+
+def display_results(beams: List[Beam], lm: NgramLM, n: int = 5, show_symmetric: bool = True):
     """Display top n results."""
     print(f"\n{'='*60}")
     print(f"TOP {min(n, len(beams))} RESULTS")
     print('='*60)
 
-    for i, beam in enumerate(beams[:n]):
-        print(f"\n--- Result {i+1} (score: {beam.score:.2f}) ---")
-        print(beam)
+    # Separate symmetric and non-symmetric
+    symmetric = [b for b in beams if is_symmetric(b)]
+    non_symmetric = [b for b in beams if not is_symmetric(b)]
 
-        # Show rows and columns as sentences
-        n_rows = len(beam.grid)
-        n_cols = len(beam.grid[0]) if beam.grid else 0
+    print(f"\n[{len(symmetric)} symmetric, {len(non_symmetric)} non-symmetric out of {len(beams)} total]")
 
-        print("\nRows:")
-        for r in range(n_rows):
-            row_words = [w for w in beam.grid[r] if w]
-            print(f"  R{r+1}: {' '.join(row_words)}")
+    # Show non-symmetric first (more interesting)
+    shown = 0
 
-        print("Columns:")
-        for c in range(n_cols):
-            col_words = [beam.grid[r][c] for r in range(n_rows) if beam.grid[r][c]]
-            print(f"  C{c+1}: {' '.join(col_words)}")
+    if non_symmetric:
+        print(f"\n*** NON-SYMMETRIC RESULTS ***")
+        for i, beam in enumerate(non_symmetric[:n]):
+            if shown >= n:
+                break
+            print(f"\n--- Non-sym {i+1} (score: {beam.score:.2f}) ---")
+            print(beam)
+            _print_rows_cols(beam)
+            shown += 1
+
+    if show_symmetric and shown < n and symmetric:
+        print(f"\n*** SYMMETRIC RESULTS ***")
+        for i, beam in enumerate(symmetric[:n - shown]):
+            print(f"\n--- Sym {i+1} (score: {beam.score:.2f}) ---")
+            print(beam)
+            _print_rows_cols(beam)
+
+
+def _print_rows_cols(beam: Beam):
+    """Helper to print rows and columns."""
+    n_rows = len(beam.grid)
+    n_cols = len(beam.grid[0]) if beam.grid else 0
+
+    print("\nRows:")
+    for r in range(n_rows):
+        row_words = [w for w in beam.grid[r] if w]
+        print(f"  R{r+1}: {' '.join(row_words)}")
+
+    print("Columns:")
+    for c in range(n_cols):
+        col_words = [beam.grid[r][c] for r in range(n_rows) if beam.grid[r][c]]
+        print(f"  C{c+1}: {' '.join(col_words)}")
 
 
 def main():
@@ -243,13 +280,13 @@ def main():
     ]
 
     # Try different grid sizes
-    for size in [3, 4, 5]:
+    for size in [4, 5, 6]:
         print(f"\n{'#'*60}")
         print(f"GRID SIZE: {size}x{size}")
         print('#'*60)
 
-        beams = beam_search_2d(lm, vocab, n_rows=size, n_cols=size, k=300, verbose=True)
-        display_results(beams, lm, n=3)
+        beams = beam_search_2d(lm, vocab, n_rows=size, n_cols=size, k=500, verbose=True)
+        display_results(beams, lm, n=10)
 
 
 if __name__ == "__main__":
