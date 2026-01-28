@@ -169,12 +169,20 @@ def run_tournament(n: int, model: str, use_judge: bool, verbose: bool, rng: rand
                 if is_creative:
                     merged.append(result)
                     print(f"  [{len(merged)}/{target_count}] Merged text accepted ({len(result)} chars)")
+                    if verbose:
+                        print(f"\n  --- MERGED TEXT ---")
+                        print(f"  {result[:500]}{'...' if len(result) > 500 else ''}")
+                        print(f"  --- END ---\n")
                 else:
                     if verbose:
                         print(f"  Rejected, trying different pair...")
             else:
                 merged.append(result)
                 print(f"  [{len(merged)}/{target_count}] Merged text ({len(result)} chars)")
+                if verbose:
+                    print(f"\n  --- MERGED TEXT ---")
+                    print(f"  {result[:500]}{'...' if len(result) > 500 else ''}")
+                    print(f"  --- END ---\n")
 
         if len(merged) < target_count:
             print(f"\n  WARNING: Only got {len(merged)}/{target_count} merges after {max_attempts} attempts")
