@@ -1,16 +1,37 @@
 # Prompt Generator
 
-Generates random, surprising project prompts for future explorations by combining elements from different categories, plus random "wild card" words to force creative connections.
+Generates random, surprising project prompts for future explorations. Two modes:
 
-## Run
+1. **Template mode** (`generator.py`) — combines random elements from predefined lists
+2. **LLM mode** (`llm_generator.py`) — uses a language model for truly wild prompts
+
+## Template Mode
 
 ```bash
 python generator.py           # Generate one prompt
 python generator.py -n 5      # Generate multiple prompts
 python generator.py --seed 42 # Reproducible output
 python generator.py --no-wild # Without wild card words
-python generator.py --nouns 5 --verbs 3 --adjectives 2  # Custom counts
 ```
+
+## LLM Mode (wilder)
+
+Uses an LLM to generate original prompts, seeded with random words.
+
+```bash
+# With ollama (install from https://ollama.ai)
+python llm_generator.py                    # Uses llama3.2 by default
+python llm_generator.py --model mistral    # Different model
+python llm_generator.py -n 3               # Multiple prompts
+
+# With OpenAI-compatible API
+python llm_generator.py --backend openai --api-key $OPENAI_API_KEY
+python llm_generator.py --backend openai --base-url http://localhost:8000/v1  # Local server
+```
+
+The LLM receives a meta-prompt like:
+> "You are writing a prompt for an LLM. Be original, unique, surprising.
+> MUST incorporate these words: {random nouns, verbs, adjectives}..."
 
 ## Example Output
 
