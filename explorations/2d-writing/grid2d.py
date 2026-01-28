@@ -408,6 +408,14 @@ def constrained_beam_search(
         SUBJECTS_PLURAL = ["people", "children", "men", "women", "friends"]
         col_vocab = [SUBJECTS_PLURAL, VERBS_TRANS, DETS, ADJS, NOUNS]
         struct_name = "PluralSubject - Verb - Det - Adj - Noun"
+    elif structure == "dual":
+        # Experimental: words that work as both nouns and verbs
+        # Aim: columns might also read as sentence fragments
+        DUAL_WORDS = ["time", "light", "love", "hand", "look", "walk", "run",
+                      "head", "face", "place", "hold", "stand", "mind", "name",
+                      "close", "open", "leave", "feel", "need", "want", "live"]
+        col_vocab = [DUAL_WORDS, DUAL_WORDS, DUAL_WORDS, DUAL_WORDS]
+        struct_name = "DualWord x 4 (noun/verb ambiguous)"
     elif structure == "simple":
         col_vocab = [NOUNS, VERBS, NOUNS, PREPS, NOUNS]
         struct_name = "Noun - Verb - Noun - Prep - Noun"
