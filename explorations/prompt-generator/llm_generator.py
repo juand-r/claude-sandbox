@@ -29,13 +29,15 @@ def sample_words(rng: random.Random, nouns: int = 3, verbs: int = 2, adjectives:
     }
 
 
-def sample_structure(rng: random.Random) -> dict:
-    """Sample domain, format, constraint, and twist."""
+def sample_structure(rng: random.Random, include_domain: bool = True,
+                     include_format: bool = True, include_constraint: bool = True,
+                     include_twist: bool = True) -> dict:
+    """Sample domain, format, constraint, and twist. Each can be disabled."""
     return {
-        "domain": rng.choice(DOMAINS),
-        "format": rng.choice(FORMATS),
-        "constraint": rng.choice(CONSTRAINTS),
-        "twist": rng.choice(TWISTS),
+        "domain": rng.choice(DOMAINS) if include_domain else None,
+        "format": rng.choice(FORMATS) if include_format else None,
+        "constraint": rng.choice(CONSTRAINTS) if include_constraint else None,
+        "twist": rng.choice(TWISTS) if include_twist else None,
     }
 
 
@@ -43,24 +45,49 @@ def build_meta_prompt(sampled_words: dict, structure: dict) -> str:
     """Build the prompt we send to the LLM."""
     word_list = ", ".join(sampled_words["nouns"] + sampled_words["verbs"] + sampled_words["adjectives"])
 
-    return f"""You are writing a prompt for an LLM to follow. The prompt must describe a software project to build.
+    # Build structure section only for enabled elements
+    structure_lines = []
+    if structure["domain"]:
+        structure_lines.append(f"Base idea: {structure['domain']}")
+    if structure["format"]:
+        structure_lines.append(f"Format: {structure['format']}")
+    if structure["constraint"]:
+        structure_lines.append(f"Constraint: {structure['constraint']}")
+    if structure["twist"]:
+        structure_lines.append(f"Twist: {structure['twist']}")
 
-Base idea: {structure['domain']}
-Format: {structure['format']}
-Constraint: {structure['constraint']}
-Twist: {structure['twist']}
+    structure_section = "\n".join(structure_lines) if structure_lines else ""
 
-Additional requirements:
-- Be original, unique, surprising
-- The project must be completable in a single coding session
-- Incorporate the base idea, format, constraint, and twist creatively
-- MUST incorporate these wild card words somehow: {word_list}
+    # Build requirements based on what's enabled
+    requirements = ["- Be original, unique, surprising",
+                    "- The project must be completable in a single coding session"]
+    if structure_lines:
+        requirements.append("- Incorporate the provided elements creatively")
+    if word_list:
+        requirements.append(f"- MUST incorporate these wild card words somehow: {word_list}")
+
+    requirements_section = "\n".join(requirements)
+
+    # Start instruction
+    if structure["domain"]:
+        start_with = f'Start your response with: "Build {structure["domain"]}"'
+    else:
+        start_with = 'Start your response with: "Build"'
+
+    prompt = f"""You are writing a prompt for an LLM to follow. The prompt must describe a software project to build.
+
+{structure_section}
+
+Requirements:
+{requirements_section}
 
 Be creative. Be weird. Surprise me.
 
-Start your response with: "Build {structure['domain']}"
+{start_with}
 
 Keep it to 2-3 sentences max."""
+
+    return prompt
 
 
 def call_ollama(prompt: str, model: str = "llama3.2") -> str:
@@ -119,10 +146,13 @@ def call_huggingface(prompt: str, model: str = "TinyLlama/TinyLlama-1.1B-Chat-v1
 def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str = None,
                     base_url: str = None, api_key: str = None,
                     nouns: int = 3, verbs: int = 2, adjectives: int = 1,
+                    include_domain: bool = True, include_format: bool = True,
+                    include_constraint: bool = True, include_twist: bool = True,
                     verbose: bool = False) -> str | dict:
     """Generate a prompt using an LLM. Returns dict with details if verbose=True."""
     sampled_words = sample_words(rng, nouns=nouns, verbs=verbs, adjectives=adjectives)
-    structure = sample_structure(rng)
+    structure = sample_structure(rng, include_domain=include_domain, include_format=include_format,
+                                  include_constraint=include_constraint, include_twist=include_twist)
     meta_prompt = build_meta_prompt(sampled_words, structure)
 
     if backend == "huggingface":
@@ -156,15 +186,15 @@ def print_verbose(result: dict):
 
     print("=" * 60)
     print("SAMPLED WORDS:")
-    print(f"  nouns:      {', '.join(words['nouns'])}")
-    print(f"  verbs:      {', '.join(words['verbs'])}")
-    print(f"  adjectives: {', '.join(words['adjectives'])}")
+    print(f"  nouns:      {', '.join(words['nouns']) if words['nouns'] else '(none)'}")
+    print(f"  verbs:      {', '.join(words['verbs']) if words['verbs'] else '(none)'}")
+    print(f"  adjectives: {', '.join(words['adjectives']) if words['adjectives'] else '(none)'}")
     print()
     print("SAMPLED STRUCTURE:")
-    print(f"  domain:     {structure['domain']}")
-    print(f"  format:     {structure['format']}")
-    print(f"  constraint: {structure['constraint']}")
-    print(f"  twist:      {structure['twist']}")
+    print(f"  domain:     {structure['domain'] or '(disabled)'}")
+    print(f"  format:     {structure['format'] or '(disabled)'}")
+    print(f"  constraint: {structure['constraint'] or '(disabled)'}")
+    print(f"  twist:      {structure['twist'] or '(disabled)'}")
     print()
     print("META-PROMPT TO LLM:")
     print("-" * 40)
@@ -188,6 +218,10 @@ def main():
     parser.add_argument("--nouns", type=int, default=3, help="Number of random nouns (default: 3)")
     parser.add_argument("--verbs", type=int, default=2, help="Number of random verbs (default: 2)")
     parser.add_argument("--adjectives", type=int, default=1, help="Number of random adjectives (default: 1)")
+    parser.add_argument("--no-domain", action="store_true", help="Exclude domain from meta-prompt")
+    parser.add_argument("--no-format", action="store_true", help="Exclude format from meta-prompt")
+    parser.add_argument("--no-constraint", action="store_true", help="Exclude constraint from meta-prompt")
+    parser.add_argument("--no-twist", action="store_true", help="Exclude twist from meta-prompt")
     parser.add_argument("-v", "--verbose", action="store_true", help="Show all intermediate steps")
     args = parser.parse_args()
 
@@ -206,6 +240,10 @@ def main():
                 nouns=args.nouns,
                 verbs=args.verbs,
                 adjectives=args.adjectives,
+                include_domain=not args.no_domain,
+                include_format=not args.no_format,
+                include_constraint=not args.no_constraint,
+                include_twist=not args.no_twist,
                 verbose=args.verbose,
             )
             if args.verbose:
