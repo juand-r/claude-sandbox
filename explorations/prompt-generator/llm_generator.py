@@ -117,9 +117,10 @@ def call_huggingface(prompt: str, model: str = "TinyLlama/TinyLlama-1.1B-Chat-v1
 
 
 def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str = None,
-                    base_url: str = None, api_key: str = None) -> str:
+                    base_url: str = None, api_key: str = None,
+                    nouns: int = 3, verbs: int = 2, adjectives: int = 1) -> str:
     """Generate a prompt using an LLM."""
-    sampled_words = sample_words(rng)
+    sampled_words = sample_words(rng, nouns=nouns, verbs=verbs, adjectives=adjectives)
     structure = sample_structure(rng)
     meta_prompt = build_meta_prompt(sampled_words, structure)
 
@@ -147,6 +148,9 @@ def main():
     parser.add_argument("--model", help="Model name (default: TinyLlama for hf, llama3.2 for ollama)")
     parser.add_argument("--base-url", help="API base URL for openai backend")
     parser.add_argument("--api-key", help="API key for openai backend")
+    parser.add_argument("--nouns", type=int, default=3, help="Number of random nouns (default: 3)")
+    parser.add_argument("--verbs", type=int, default=2, help="Number of random verbs (default: 2)")
+    parser.add_argument("--adjectives", type=int, default=1, help="Number of random adjectives (default: 1)")
     args = parser.parse_args()
 
     rng = random.Random(args.seed)
@@ -161,6 +165,9 @@ def main():
                 model=args.model,
                 base_url=args.base_url,
                 api_key=args.api_key,
+                nouns=args.nouns,
+                verbs=args.verbs,
+                adjectives=args.adjectives,
             ))
         except Exception as e:
             print(f"Error: {e}", file=sys.stderr)
