@@ -10,15 +10,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+from generator import DOMAINS, FORMATS, CONSTRAINTS, TWISTS, load_word_list
+
 SCRIPT_DIR = Path(__file__).parent
-
-
-def load_word_list(name: str) -> list[str]:
-    """Load a word list from the words/ directory."""
-    path = SCRIPT_DIR / "words" / f"{name}.txt"
-    if not path.exists():
-        return []
-    return [line.strip() for line in path.read_text().splitlines() if line.strip()]
 
 
 def sample_words(rng: random.Random, nouns: int = 3, verbs: int = 2, adjectives: int = 1) -> dict:
@@ -35,22 +29,36 @@ def sample_words(rng: random.Random, nouns: int = 3, verbs: int = 2, adjectives:
     }
 
 
-def build_meta_prompt(sampled: dict) -> str:
+def sample_structure(rng: random.Random) -> dict:
+    """Sample domain, format, constraint, and twist."""
+    return {
+        "domain": rng.choice(DOMAINS),
+        "format": rng.choice(FORMATS),
+        "constraint": rng.choice(CONSTRAINTS),
+        "twist": rng.choice(TWISTS),
+    }
+
+
+def build_meta_prompt(sampled_words: dict, structure: dict) -> str:
     """Build the prompt we send to the LLM."""
-    word_list = ", ".join(sampled["nouns"] + sampled["verbs"] + sampled["adjectives"])
+    word_list = ", ".join(sampled_words["nouns"] + sampled_words["verbs"] + sampled_words["adjectives"])
 
     return f"""You are writing a prompt for an LLM to follow. The prompt must describe a software project to build.
 
-Requirements:
+Base idea: {structure['domain']}
+Format: {structure['format']}
+Constraint: {structure['constraint']}
+Twist: {structure['twist']}
+
+Additional requirements:
 - Be original, unique, surprising
 - The project must be completable in a single coding session
-- Include a clear deliverable (CLI tool, web app, API, bot, etc.)
-- Add an unexpected twist or constraint
-- MUST incorporate these words somehow: {word_list}
+- Incorporate the base idea, format, constraint, and twist creatively
+- MUST incorporate these wild card words somehow: {word_list}
 
 Be creative. Be weird. Surprise me.
 
-Start your response with: "You are a fantastic programmer. I want you to create a"
+Start your response with: "Build {structure['domain']}"
 
 Keep it to 2-3 sentences max."""
 
@@ -111,8 +119,9 @@ def call_huggingface(prompt: str, model: str = "TinyLlama/TinyLlama-1.1B-Chat-v1
 def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str = None,
                     base_url: str = None, api_key: str = None) -> str:
     """Generate a prompt using an LLM."""
-    sampled = sample_words(rng)
-    meta_prompt = build_meta_prompt(sampled)
+    sampled_words = sample_words(rng)
+    structure = sample_structure(rng)
+    meta_prompt = build_meta_prompt(sampled_words, structure)
 
     if backend == "huggingface":
         return call_huggingface(meta_prompt, model or "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
