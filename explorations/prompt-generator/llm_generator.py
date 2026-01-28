@@ -64,7 +64,7 @@ def build_meta_prompt(sampled_words: dict, structure: dict) -> str:
     if structure_lines:
         requirements.append("- Incorporate the provided elements creatively")
     if word_list:
-        requirements.append(f"- MUST incorporate these wild card words somehow: {word_list}")
+        requirements.append(f"- MUST incorporate these words: {word_list}")
 
     requirements_section = "\n".join(requirements)
 
