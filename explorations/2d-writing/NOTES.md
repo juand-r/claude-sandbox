@@ -81,24 +81,45 @@ she want her  first  day   <- should be "wants"
 - **unique_per_column**: Essential to prevent column repetition
 - **n-gram order**: 3 (trigram) works well
 
-## Best Result: 4x4 Grid
+## Best Results
 
+### 3x3 Grid
+Structure: `Pronoun - Verb - Noun`
+```
+i   have time
+you take place
+we  want night
+```
+
+### 4x4 Grid (Best Quality)
 Structure: `Pronoun - Verb - Det - Noun` with plural pronouns only
-
+```
+i    know a    man
+we   have the  world
+they feel that way
+you  see  her  face
+```
 All 4 rows are grammatically perfect English sentences.
 All 4 columns are coherent word-category lists.
 
+### 5x5 Grid
+Structure: `PluralSubject - Verb - Det - Adj - Noun`
+```
+people   know the  last   time
+children feel a    cold   day
+men      need that big    man
+women    hold her  little house
+friends  see  his  old    friend
+```
+All 5 rows are grammatically correct (though some semantically odd).
+All 5 columns are coherent word-category lists.
+
 ## Future Directions
 
-1. **5x5 with agreement**: Could use mixed verb forms (base for I/you/we/they rows, 3rd person for he/she/it rows)
-
-2. **Semantic coherence**: Use word embeddings to encourage semantically related words
-
-3. **Better LM**: GPT-2 or similar would give better probability estimates than n-grams
-
-4. **Different structures**: Try more grammatical patterns (questions, imperatives, etc.)
-
-5. **Larger grids**: 6x6 or larger would be more impressive but harder
+1. **Semantic coherence**: Use word embeddings to encourage semantically related words
+2. **Better LM**: GPT-2 or similar would give better probability estimates than n-grams
+3. **Different structures**: Try more grammatical patterns (questions, imperatives, etc.)
+4. **Larger grids**: 6x6 or larger would be more impressive but harder
 
 ## Files
 

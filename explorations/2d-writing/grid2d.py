@@ -389,6 +389,25 @@ def constrained_beam_search(
         ADJ_DET = DETS + ADJS  # Mix determiners and adjectives
         col_vocab = [PRONOUNS_PLURAL, VERBS_TRANS, ADJ_DET, NOUNS]
         struct_name = "Pronoun - Verb - Det/Adj - Noun"
+    elif structure == "nvpn":
+        # Noun - Verb - Prep - Noun (e.g., "man walks to door")
+        col_vocab = [NOUNS, VERBS, PREPS, NOUNS]
+        struct_name = "Noun - Verb - Prep - Noun"
+    elif structure == "poetry":
+        # For more poetic/evocative output: Adj - Noun - Verb - Adv
+        col_vocab = [ADJS, NOUNS, VERBS, ADVS]
+        struct_name = "Adj - Noun - Verb - Adv"
+    elif structure == "pvn3":
+        # 3-column structure: Pronoun - Verb - Noun
+        PRONOUNS_PLURAL = ["i", "you", "we", "they"]
+        col_vocab = [PRONOUNS_PLURAL, VERBS_TRANS, NOUNS]
+        struct_name = "Pronoun - Verb - Noun"
+    elif structure == "pvn5":
+        # 5-column structure with 5 agreeing subjects
+        # Use "people", "children", "men", "women" + "friends" as plural nouns acting as subjects
+        SUBJECTS_PLURAL = ["people", "children", "men", "women", "friends"]
+        col_vocab = [SUBJECTS_PLURAL, VERBS_TRANS, DETS, ADJS, NOUNS]
+        struct_name = "PluralSubject - Verb - Det - Adj - Noun"
     elif structure == "simple":
         col_vocab = [NOUNS, VERBS, NOUNS, PREPS, NOUNS]
         struct_name = "Noun - Verb - Noun - Prep - Noun"
@@ -661,14 +680,20 @@ def main():
 
     results = {}
 
-    # Focus on the best approaches
-    # 5x5 with base verbs (best so far, but has agreement issues)
-    results["5x5_pvn_base"] = run_experiment("constrained", lm, beam_width=200,
-                                             unique_per_column=True, structure="pvn_base")
-    # 4x4 with agreeing pronouns (should have perfect grammar)
+    # Best 4x4 approach (proven to work)
     results["4x4_pvn4"] = run_experiment("constrained", lm, beam_width=200,
                                          n_rows=4, n_cols=4,
                                          unique_per_column=True, structure="pvn4")
+
+    # Try 3x3 for comparison
+    results["3x3_pvn3"] = run_experiment("constrained", lm, beam_width=200,
+                                         n_rows=3, n_cols=3,
+                                         unique_per_column=True, structure="pvn3")
+
+    # Try 5x5 with plural subjects
+    results["5x5_pvn5"] = run_experiment("constrained", lm, beam_width=200,
+                                         n_rows=5, n_cols=5,
+                                         unique_per_column=True, structure="pvn5")
 
     # Summary
     print(f"\n{'='*60}")
