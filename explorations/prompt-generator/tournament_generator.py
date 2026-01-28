@@ -204,7 +204,19 @@ def run_tournament(n: int, model: str, use_judge: bool, verbose: bool, rng: rand
 
     result = call_qwen(final_prompt, model=model)
 
-    return result
+    # Combine final output with merged text and instruction
+    final_output = f"""{result}
+
+---
+
+INSPIRATION TEXT:
+{final_inspiration}
+
+---
+
+Build this end to end."""
+
+    return final_output
 
 
 def main():
