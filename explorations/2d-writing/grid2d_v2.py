@@ -3,8 +3,13 @@
 
 Key insight: for interior cells, only accept tokens that are likely
 in BOTH row and column contexts (intersection, not sum).
+
+Usage:
+    python grid2d_v2.py              # Use n-gram (default)
+    python grid2d_v2.py --gpt2       # Use GPT-2
 """
 
+import argparse
 import numpy as np
 from collections import defaultdict
 from typing import List, Tuple, Dict, Set, Optional
@@ -61,6 +66,112 @@ class NgramLM:
 
         scores.sort(key=lambda x: x[1], reverse=True)
         return scores[:k]
+
+
+class GPT2LM:
+    """GPT-2 language model wrapper."""
+
+    def __init__(self, model_path: str = "gpt2"):
+        """
+        Load GPT-2 model.
+
+        Args:
+            model_path: HuggingFace model name or local path to model directory
+        """
+        import torch
+
+        try:
+            from transformers import GPT2LMHeadModel, GPT2Tokenizer
+        except ImportError:
+            raise ImportError("transformers not installed. Run: pip install transformers")
+
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Loading GPT-2 from '{model_path}' on {self.device}...")
+
+        try:
+            self.tokenizer = GPT2Tokenizer.from_pretrained(model_path)
+            self.model = GPT2LMHeadModel.from_pretrained(model_path).to(self.device)
+        except Exception as e:
+            if "403" in str(e) or "Proxy" in str(e):
+                raise RuntimeError(
+                    f"Cannot download model (proxy blocked).\n"
+                    f"To use GPT-2, download the model manually and specify path:\n"
+                    f"  1. Download from https://huggingface.co/gpt2\n"
+                    f"  2. Run: python grid2d_v2.py --gpt2 --model-path /path/to/gpt2\n"
+                    f"Original error: {e}"
+                )
+            raise
+
+        self.model.eval()
+
+        # Cache: word -> token_id (for single-token words)
+        self._word_to_token = {}
+        self._multi_token_words = set()
+
+        print("  GPT-2 loaded")
+
+    def _prepare_vocab(self, vocab: List[str]):
+        """Pre-compute token mappings for vocabulary."""
+        for word in vocab:
+            if word in self._word_to_token or word in self._multi_token_words:
+                continue
+            # GPT-2 expects space before word (except at start)
+            tokens = self.tokenizer.encode(" " + word, add_special_tokens=False)
+            if len(tokens) == 1:
+                self._word_to_token[word] = tokens[0]
+            else:
+                self._multi_token_words.add(word)
+
+    def get_top_k(self, context: List[str], k: int, vocab: List[str] = None) -> List[Tuple[str, float]]:
+        """Get top-k most likely words given context."""
+        import torch
+        import torch.nn.functional as F
+
+        if vocab is None:
+            raise ValueError("GPT2LM requires explicit vocab")
+
+        self._prepare_vocab(vocab)
+
+        # Build context string
+        if context:
+            context_str = " ".join(context)
+        else:
+            context_str = ""
+
+        # Encode context
+        if context_str:
+            input_ids = self.tokenizer.encode(context_str, return_tensors="pt").to(self.device)
+        else:
+            # Use BOS or just predict from nothing
+            input_ids = torch.tensor([[self.tokenizer.bos_token_id or 50256]]).to(self.device)
+
+        # Get logits for next token
+        with torch.no_grad():
+            outputs = self.model(input_ids)
+            next_token_logits = outputs.logits[0, -1, :]  # [vocab_size]
+            log_probs = F.log_softmax(next_token_logits, dim=-1)
+
+        # Score each vocab word
+        scores = []
+        for word in vocab:
+            if word in self._word_to_token:
+                token_id = self._word_to_token[word]
+                score = log_probs[token_id].item()
+            else:
+                # Multi-token word: compute joint probability
+                tokens = self.tokenizer.encode(" " + word, add_special_tokens=False)
+                # For simplicity, use first token's probability (approximation)
+                score = log_probs[tokens[0]].item()
+                # Penalize multi-token slightly
+                score -= 0.5 * (len(tokens) - 1)
+            scores.append((word, score))
+
+        scores.sort(key=lambda x: x[1], reverse=True)
+        return scores[:k]
+
+    def train(self, sentences):
+        """No-op for GPT-2 (pretrained)."""
+        pass
 
 
 @dataclass
@@ -251,42 +362,53 @@ def _print_rows_cols(beam: Beam):
         print(f"  C{c+1}: {' '.join(col_words)}")
 
 
+VOCAB = [
+    "the", "a", "an", "this", "that", "my", "your", "his", "her",
+    "i", "you", "he", "she", "it", "we", "they",
+    "man", "woman", "child", "time", "day", "night", "life", "world",
+    "way", "place", "house", "hand", "eye", "head", "heart", "mind",
+    "is", "are", "was", "were", "be", "have", "has", "had",
+    "do", "does", "did", "will", "would", "could", "can",
+    "see", "know", "think", "make", "take", "come", "go", "want",
+    "say", "said", "get", "give", "find", "tell", "feel", "become",
+    "good", "new", "old", "great", "little", "own", "other", "long",
+    "to", "of", "in", "for", "on", "with", "at", "by", "from",
+    "and", "but", "or", "if", "when", "so", "as", "than",
+    "not", "all", "some", "no", "more", "just", "now", "then",
+    "very", "also", "well", "only", "even", "still", "back", "there",
+]
+
+
 def main():
-    # Load corpus
-    print("Loading Brown corpus...")
-    nltk.download('brown', quiet=True)
-    sentences = brown.sents()
-    print(f"  {len(sentences)} sentences")
+    parser = argparse.ArgumentParser(description="2D Writing System")
+    parser.add_argument("--gpt2", action="store_true", help="Use GPT-2 instead of n-gram")
+    parser.add_argument("--model-path", type=str, default="gpt2",
+                        help="Path to GPT-2 model (local dir or HuggingFace name)")
+    parser.add_argument("--size", type=int, nargs="+", default=[4, 5, 6],
+                        help="Grid sizes to try (default: 4 5 6)")
+    parser.add_argument("--k", type=int, default=500, help="Beam width (default: 500)")
+    parser.add_argument("--top", type=int, default=10, help="Number of results to show (default: 10)")
+    args = parser.parse_args()
 
-    # Train LM
-    lm = NgramLM(n=3)
-    lm.train(sentences)
+    # Create language model
+    if args.gpt2:
+        lm = GPT2LM(model_path=args.model_path)
+    else:
+        print("Loading Brown corpus...")
+        nltk.download('brown', quiet=True)
+        sentences = brown.sents()
+        print(f"  {len(sentences)} sentences")
+        lm = NgramLM(n=3)
+        lm.train(sentences)
 
-    # Common words vocabulary
-    vocab = [
-        "the", "a", "an", "this", "that", "my", "your", "his", "her",
-        "i", "you", "he", "she", "it", "we", "they",
-        "man", "woman", "child", "time", "day", "night", "life", "world",
-        "way", "place", "house", "hand", "eye", "head", "heart", "mind",
-        "is", "are", "was", "were", "be", "have", "has", "had",
-        "do", "does", "did", "will", "would", "could", "can",
-        "see", "know", "think", "make", "take", "come", "go", "want",
-        "say", "said", "get", "give", "find", "tell", "feel", "become",
-        "good", "new", "old", "great", "little", "own", "other", "long",
-        "to", "of", "in", "for", "on", "with", "at", "by", "from",
-        "and", "but", "or", "if", "when", "so", "as", "than",
-        "not", "all", "some", "no", "more", "just", "now", "then",
-        "very", "also", "well", "only", "even", "still", "back", "there",
-    ]
-
-    # Try different grid sizes
-    for size in [4, 5, 6]:
+    # Run for each grid size
+    for size in args.size:
         print(f"\n{'#'*60}")
         print(f"GRID SIZE: {size}x{size}")
         print('#'*60)
 
-        beams = beam_search_2d(lm, vocab, n_rows=size, n_cols=size, k=500, verbose=True)
-        display_results(beams, lm, n=10)
+        beams = beam_search_2d(lm, VOCAB, n_rows=size, n_cols=size, k=args.k, verbose=True)
+        display_results(beams, lm, n=args.top)
 
 
 if __name__ == "__main__":
