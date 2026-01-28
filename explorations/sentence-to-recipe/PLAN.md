@@ -26,3 +26,4 @@ Use LLM to interpret sentence meaning and generate a thematic recipe. The LLM ha
 - [x] Implement core translator
 - [x] Test with various inputs
 - [x] Write README
+- [x] Commit and push
