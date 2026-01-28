@@ -19,14 +19,16 @@ python generator.py --no-wild # Without wild card words
 Uses an LLM to generate original prompts, seeded with random words.
 
 ```bash
-# With ollama (install from https://ollama.ai)
-python llm_generator.py                    # Uses llama3.2 by default
-python llm_generator.py --model mistral    # Different model
-python llm_generator.py -n 3               # Multiple prompts
+# With Hugging Face (default) — pip install transformers torch
+python llm_generator.py                              # Uses TinyLlama by default
+python llm_generator.py --model Qwen/Qwen2-0.5B-Instruct  # Different model
+python llm_generator.py -n 3                         # Multiple prompts
+
+# With ollama
+python llm_generator.py --backend ollama --model llama3.2
 
 # With OpenAI-compatible API
 python llm_generator.py --backend openai --api-key $OPENAI_API_KEY
-python llm_generator.py --backend openai --base-url http://localhost:8000/v1  # Local server
 ```
 
 The LLM receives a meta-prompt like:

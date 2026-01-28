@@ -92,13 +92,31 @@ def call_openai_compatible(prompt: str, base_url: str, api_key: str, model: str)
         return result["choices"][0]["message"]["content"].strip()
 
 
-def generate_prompt(rng: random.Random, backend: str = "ollama", model: str = None,
+def call_huggingface(prompt: str, model: str = "TinyLlama/TinyLlama-1.1B-Chat-v1.0") -> str:
+    """Run inference using Hugging Face transformers."""
+    try:
+        from transformers import pipeline
+    except ImportError:
+        raise RuntimeError("transformers not installed. Run: pip install transformers torch")
+
+    pipe = pipeline("text-generation", model=model, device_map="auto", trust_remote_code=True)
+
+    # Format as chat for instruction-tuned models
+    messages = [{"role": "user", "content": prompt}]
+
+    result = pipe(messages, max_new_tokens=200, temperature=1.0, do_sample=True)
+    return result[0]["generated_text"][-1]["content"].strip()
+
+
+def generate_prompt(rng: random.Random, backend: str = "huggingface", model: str = None,
                     base_url: str = None, api_key: str = None) -> str:
     """Generate a prompt using an LLM."""
     sampled = sample_words(rng)
     meta_prompt = build_meta_prompt(sampled)
 
-    if backend == "ollama":
+    if backend == "huggingface":
+        return call_huggingface(meta_prompt, model or "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
+    elif backend == "ollama":
         return call_ollama(meta_prompt, model or "llama3.2")
     elif backend == "openai":
         return call_openai_compatible(
@@ -115,9 +133,9 @@ def main():
     parser = argparse.ArgumentParser(description="Generate prompts using an LLM")
     parser.add_argument("-n", "--count", type=int, default=1, help="Number of prompts")
     parser.add_argument("--seed", type=int, help="Random seed for word selection")
-    parser.add_argument("--backend", choices=["ollama", "openai"], default="ollama",
-                        help="LLM backend (default: ollama)")
-    parser.add_argument("--model", help="Model name (default: llama3.2 for ollama, gpt-4o-mini for openai)")
+    parser.add_argument("--backend", choices=["huggingface", "ollama", "openai"], default="huggingface",
+                        help="LLM backend (default: huggingface)")
+    parser.add_argument("--model", help="Model name (default: TinyLlama for hf, llama3.2 for ollama)")
     parser.add_argument("--base-url", help="API base URL for openai backend")
     parser.add_argument("--api-key", help="API key for openai backend")
     args = parser.parse_args()
