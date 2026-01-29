@@ -28,14 +28,17 @@ class GPT2LM:
         self.model.eval()
         print("  Loaded.")
 
-    def get_top_p(self, context: List[str], p: float, max_words: int = 50, alpha_only: bool = False) -> List[Tuple[str, float]]:
+    def get_top_p(self, context: List[str], p: float, max_words: int = 50, alpha_only: bool = False, prefix: str = "") -> List[Tuple[str, float]]:
         """Get words in top-p nucleus given context. Returns (word, log_prob) pairs.
 
         Also caps at max_words to prevent flat distributions from including everything.
         If alpha_only=True, only include tokens starting with a letter.
+        If prefix is set, it is prepended to the context string (e.g. an instruction).
         """
         # Build context string
         context_str = " ".join(context) if context else ""
+        if prefix:
+            context_str = prefix + context_str
 
         # Encode
         if context_str:
@@ -125,6 +128,7 @@ def beam_search_v3(
     p: float = 0.9,
     beam_width: int = 100,
     alpha_only: bool = False,
+    prefix: str = "",
     verbose: bool = True
 ) -> List[Beam]:
     """
@@ -133,9 +137,13 @@ def beam_search_v3(
     Each word must be in the top-p nucleus for both:
     - Horizontal context (all previous words in reading order)
     - Column context (words above in same column)
+
+    If prefix is set, it is prepended to every context before querying GPT-2.
     """
     if verbose:
         print(f"v3 Beam Search: {n_rows}x{n_cols}, p={p}, beam_width={beam_width}")
+        if prefix:
+            print(f"  Prefix: {prefix!r}")
 
     initial_grid = [[None for _ in range(n_cols)] for _ in range(n_rows)]
     beams = [Beam(grid=initial_grid, score=0.0)]
@@ -151,8 +159,8 @@ def beam_search_v3(
                 h_context = beam.get_horizontal_context(row, col)
                 c_context = beam.get_column_context(row, col)
 
-                h_top_p = lm.get_top_p(h_context, p, alpha_only=alpha_only)
-                c_top_p = lm.get_top_p(c_context, p, alpha_only=alpha_only)
+                h_top_p = lm.get_top_p(h_context, p, alpha_only=alpha_only, prefix=prefix)
+                c_top_p = lm.get_top_p(c_context, p, alpha_only=alpha_only, prefix=prefix)
 
                 h_words = {w for w, _ in h_top_p}
                 c_words = {w for w, _ in c_top_p}
@@ -226,6 +234,7 @@ def main():
     parser.add_argument("--top", type=int, default=5, help="Results to show")
     parser.add_argument("--model", type=str, default="gpt2", help="GPT-2 model name")
     parser.add_argument("--alpha-only", action="store_true", help="Only allow alphabetic tokens (filter punctuation)")
+    parser.add_argument("--prefix", type=str, default="", help="Instruction prefix prepended to context (e.g. 'Finish the story: ')")
     args = parser.parse_args()
 
     lm = GPT2LM(args.model)
@@ -234,7 +243,7 @@ def main():
     print(f"GRID: {args.rows} rows x {args.cols} columns")
     print('#'*60)
 
-    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only)
+    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only, prefix=args.prefix)
     display_results(beams, n=args.top)
 
 
