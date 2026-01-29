@@ -18,6 +18,17 @@ from generator import load_word_list
 
 SCRIPT_DIR = Path(__file__).parent
 
+# Cache pipelines so we don't recreate them on every call
+_pipelines: dict[str, object] = {}
+
+
+def _get_pipeline(model: str, **kwargs) -> object:
+    """Get or create a cached pipeline for the given model."""
+    if model not in _pipelines:
+        from transformers import pipeline
+        _pipelines[model] = pipeline("text-generation", model=model, **kwargs)
+    return _pipelines[model]
+
 
 def is_power_of_two(n: int) -> bool:
     return n > 0 and (n & (n - 1)) == 0
@@ -33,8 +44,7 @@ def sample_keywords(rng: random.Random, count: int = 10) -> list[str]:
 
 def call_qwen(prompt: str, model: str = "Qwen/Qwen2-1.5B-Instruct", max_tokens: int = 200) -> str:
     """Call Qwen model via HuggingFace."""
-    from transformers import pipeline
-    pipe = pipeline("text-generation", model=model, device_map="auto", trust_remote_code=True)
+    pipe = _get_pipeline(model, device_map="auto", trust_remote_code=True)
     messages = [{"role": "user", "content": prompt}]
     result = pipe(messages, max_new_tokens=max_tokens, temperature=1.0, do_sample=True)
     return result[0]["generated_text"][-1]["content"].strip()
@@ -42,8 +52,7 @@ def call_qwen(prompt: str, model: str = "Qwen/Qwen2-1.5B-Instruct", max_tokens: 
 
 def call_gpt2(text: str, max_tokens: int = 200) -> str:
     """Continue text with GPT-2."""
-    from transformers import pipeline
-    pipe = pipeline("text-generation", model="gpt2", device_map="auto")
+    pipe = _get_pipeline("gpt2", device_map="auto")
     result = pipe(text, max_new_tokens=max_tokens, do_sample=True, temperature=1.0)
     return result[0]["generated_text"]
 
