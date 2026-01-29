@@ -70,11 +70,11 @@ def build_meta_prompt(sampled_words: dict, structure: dict) -> str:
 
     # Start instruction
     if structure["domain"]:
-        start_with = f'Start your response with: "Build {structure["domain"]}"'
+        start_with = f'Start your response with: "Build a game where {structure["domain"]}"'
     else:
-        start_with = 'Start your response with: "Build"'
+        start_with = 'Start your response with: "Build a game"'
 
-    prompt = f"""You are writing a prompt for an LLM to follow. The prompt must describe a software project to build.
+    prompt = f"""You are writing a prompt for an LLM to follow. The prompt must describe a game to build.
 
 {structure_section}
 

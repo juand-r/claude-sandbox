@@ -51,7 +51,7 @@ def call_gpt2(text: str, max_tokens: int = 200) -> str:
 def generate_initial_text(keywords: list[str], model: str) -> str:
     """Generate initial text using keywords."""
     word_list = ", ".join(keywords)
-    prompt = f"I want you to write something creative and surprising. Use these words: {word_list}"
+    prompt = f"I want you to write a short, creative description of a game concept. Use these words: {word_list}"
     return call_qwen(prompt, model=model)
 
 
@@ -86,18 +86,19 @@ Answer with exactly one word: Yes or No"""
 
 def build_final_prompt(inspiration: str) -> str:
     """Build final prompt template with inspiration."""
-    return f"""You are writing a prompt for an LLM to follow. The prompt must describe a software project to build.
+    return f"""You are writing a prompt for an LLM to follow. The prompt must describe a game to build.
 
-Your project description should be inspired by the following:
+Your game description should be inspired by the following:
 {inspiration}
 
 Requirements:
 - Be original, unique, surprising
-- The project must be completable in a single coding session
+- The game must be completable in a single coding session
+- It should be playable and fun
 
 Be creative. Be weird. Surprise me.
 
-Start your response with: "Build"
+Start your response with: "Build a game"
 
 Keep it to 2-3 sentences max."""
 
