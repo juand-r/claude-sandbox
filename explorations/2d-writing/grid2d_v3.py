@@ -127,21 +127,12 @@ def beam_search_v3(
     Each word must be in the top-p nucleus for both:
     - Horizontal context (all previous words in reading order)
     - Column context (words above in same column)
-
-    Row 0 words must also be valid sentence starters (in top-p from empty context).
     """
     if verbose:
         print(f"v3 Beam Search: {n_rows}x{n_cols}, p={p}, beam_width={beam_width}")
 
     initial_grid = [[None for _ in range(n_cols)] for _ in range(n_rows)]
     beams = [Beam(grid=initial_grid, score=0.0)]
-
-    # Cache valid sentence starters (top-p from empty context)
-    starter_top_p = lm.get_top_p([], p)
-    starter_words = {w for w, _ in starter_top_p}
-    starter_scores = {w: s for w, s in starter_top_p}
-    if verbose:
-        print(f"  Valid starters: {len(starter_words)} words")
 
     for row in range(n_rows):
         for col in range(n_cols):
@@ -163,13 +154,8 @@ def beam_search_v3(
                 c_scores = {w: s for w, s in c_top_p}
 
                 if row == 0:
-                    # First row: must be good for horizontal AND be valid column starter
-                    intersection = h_words & starter_words
-                    if not intersection:
-                        candidates = h_top_p  # fallback
-                    else:
-                        candidates = [(w, h_scores[w] + starter_scores[w]) for w in intersection]
-                        candidates.sort(key=lambda x: x[1], reverse=True)
+                    # First row: no column context yet, just use horizontal
+                    candidates = h_top_p
                 else:
                     # Intersection of horizontal and column nuclei
                     intersection = h_words & c_words
