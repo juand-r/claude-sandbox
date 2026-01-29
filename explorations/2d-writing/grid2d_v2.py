@@ -241,6 +241,9 @@ def beam_search_2d(
 
     cells = diagonal_order(n_rows, n_cols)
 
+    # Use curated set of valid phrase starters (not LM predictions, which are unreliable)
+    start_words = VALID_STARTERS & set(vocab)
+
     for cell_idx, (row, col) in enumerate(cells):
         if verbose:
             print(f"  Cell ({row},{col}), {len(beams)} beams...")
@@ -261,14 +264,30 @@ def beam_search_2d(
             col_scores = {w: s for w, s in col_top_k}
 
             if row == 0 and col == 0:
-                # First cell: just use top-k
-                candidates = row_top_k
+                # First cell: must be a valid starter (will start both row 0 and col 0)
+                candidates = [(w, s) for w, s in row_top_k if w in start_words]
+                if not candidates:
+                    candidates = row_top_k  # fallback
             elif row == 0:
-                # First row: only row context matters
-                candidates = row_top_k
+                # First row: must be good for row AND be valid column starter
+                # (these words will start columns)
+                intersection = row_words & start_words
+                if not intersection:
+                    # Fallback to row-only if no intersection
+                    candidates = row_top_k
+                else:
+                    # Filter row_top_k to only include valid starters
+                    candidates = [(w, s) for w, s in row_top_k if w in start_words]
             elif col == 0:
-                # First column: only column context matters
-                candidates = col_top_k
+                # First column: must be good for column AND be valid row starter
+                # (these words will start rows)
+                intersection = col_words & start_words
+                if not intersection:
+                    # Fallback to col-only if no intersection
+                    candidates = col_top_k
+                else:
+                    # Filter col_top_k to only include valid starters
+                    candidates = [(w, s) for w, s in col_top_k if w in start_words]
             else:
                 # Interior cell: INTERSECTION
                 intersection = row_words & col_words
@@ -377,6 +396,25 @@ VOCAB = [
     "not", "all", "some", "no", "more", "just", "now", "then",
     "very", "also", "well", "only", "even", "still", "back", "there",
 ]
+
+# Words that can validly start a sentence/phrase
+# (pronouns, articles, demonstratives, some verbs, some adverbs)
+VALID_STARTERS = {
+    # Pronouns
+    "i", "you", "he", "she", "it", "we", "they",
+    # Articles/determiners
+    "the", "a", "an", "this", "that", "my", "your", "his", "her",
+    # Some verbs that can start sentences
+    "do", "does", "did", "will", "would", "could", "can", "have", "has", "had",
+    # Nouns that can start (as subjects)
+    "man", "woman", "child", "time", "day", "night", "life", "world",
+    # Common sentence-starting adverbs
+    "now", "then", "there", "here", "just", "only", "even", "still", "also",
+    # Conjunctions that can start (in certain contexts)
+    "but", "so", "if", "when",
+    # Other
+    "all", "some", "no", "not",
+}
 
 
 def main():
