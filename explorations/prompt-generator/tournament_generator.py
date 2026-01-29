@@ -51,7 +51,7 @@ def call_gpt2(text: str, max_tokens: int = 200) -> str:
 def generate_initial_text(keywords: list[str], model: str) -> str:
     """Generate initial text using keywords."""
     word_list = ", ".join(keywords)
-    prompt = f"I want you to write a short, creative description of a game concept. Use these words: {word_list}"
+    prompt = f"I want you to write something creative and surprising. Use these words: {word_list}"
     return call_qwen(prompt, model=model)
 
 
