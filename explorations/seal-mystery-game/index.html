@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Seal of Eternity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameCanvas {
+            background: #0d0d15;
+            cursor: crosshair;
+        }
+
+        #dialogBox {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+            background: rgba(10, 10, 20, 0.95);
+            border: 2px solid #c9a227;
+            padding: 20px;
+            color: #e8dcc4;
+            font-size: 18px;
+            line-height: 1.6;
+            display: none;
+            border-radius: 4px;
+        }
+
+        #dialogBox .speaker {
+            color: #c9a227;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #dialogBox .text {
+            min-height: 60px;
+        }
+
+        #dialogBox .continue {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        #inventory {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .inventory-slot {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #333;
+            background: rgba(10, 10, 20, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #c9a227;
+            font-size: 24px;
+        }
+
+        .inventory-slot.active {
+            border-color: #c9a227;
+        }
+
+        #titleScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #titleScreen h1 {
+            color: #c9a227;
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+        }
+
+        #titleScreen .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        #titleScreen button {
+            background: transparent;
+            border: 2px solid #c9a227;
+            color: #c9a227;
+            padding: 15px 50px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+
+        #titleScreen button:hover {
+            background: #c9a227;
+            color: #0a0a0f;
+        }
+
+        #puzzleOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+
+        #puzzleContent {
+            text-align: center;
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            gap: 10px;
+            margin: 20px auto;
+        }
+
+        .puzzle-cell {
+            width: 80px;
+            height: 80px;
+            background: #1a1a25;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #c9a227;
+        }
+
+        .puzzle-cell:hover {
+            border-color: #c9a227;
+        }
+
+        .puzzle-cell.selected {
+            background: #2a2a35;
+            border-color: #c9a227;
+        }
+
+        .puzzle-cell.correct {
+            background: #1a3a1a;
+            border-color: #4a4;
+        }
+
+        #puzzleTitle {
+            color: #c9a227;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #puzzleHint {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        #closePuzzle {
+            margin-top: 20px;
+            background: transparent;
+            border: 1px solid #666;
+            color: #666;
+            padding: 10px 30px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+        }
+
+        #closePuzzle:hover {
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+
+        .fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 90;
+            transition: opacity 1s;
+        }
+
+        .fade-overlay.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="titleScreen">
+            <h1>The Seal of Eternity</h1>
+            <div class="subtitle">A Mystery in the Bolivian Desert</div>
+            <button id="startButton">BEGIN</button>
+        </div>
+
+        <div id="dialogBox">
+            <div class="speaker"></div>
+            <div class="text"></div>
+            <div class="continue">[Click to continue]</div>
+        </div>
+
+        <div id="inventory"></div>
+
+        <div id="puzzleOverlay">
+            <div id="puzzleContent"></div>
+        </div>
+
+        <div class="fade-overlay" id="fadeOverlay"></div>
+    </div>
+
+    <script>
+// ============================================
+// THE SEAL OF ETERNITY - Game Engine
+// ============================================
+
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Responsive canvas sizing
+function resizeCanvas() {
+    const ratio = 16 / 9;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    if (width / height > ratio) {
+        width = height * ratio;
+    } else {
+        height = width / ratio;
+    }
+
+    canvas.width = Math.min(1280, width);
+    canvas.height = Math.min(720, height);
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// ============================================
+// AUDIO SYSTEM
+// ============================================
+
+class AudioSystem {
+    constructor() {
+        this.ctx = null;
+        this.initialized = false;
+        this.masterGain = null;
+        this.ambientOsc = null;
+    }
+
+    init() {
+        if (this.initialized) return;
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.gain.value = 0.3;
+        this.masterGain.connect(this.ctx.destination);
+        this.initialized = true;
+    }
+
+    playTone(freq, duration, type = 'sine', volume = 0.1) {
+        if (!this.initialized) return;
+
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = type;
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(volume, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+
+        osc.start();
+        osc.stop(this.ctx.currentTime + duration);
+    }
+
+    startAmbient(scene) {
+        if (!this.initialized) return;
+        this.stopAmbient();
+
+        // Create eerie ambient drone
+        this.ambientOsc = this.ctx.createOscillator();
+        const ambientGain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
+
+        this.ambientOsc.type = 'sawtooth';
+        this.ambientOsc.frequency.value = scene === 'underground' ? 55 : 80;
+
+        filter.type = 'lowpass';
+        filter.frequency.value = 200;
+
+        ambientGain.gain.value = 0.05;
+
+        this.ambientOsc.connect(filter);
+        filter.connect(ambientGain);
+        ambientGain.connect(this.masterGain);
+
+        this.ambientOsc.start();
+
+        // Modulate for eeriness
+        const lfo = this.ctx.createOscillator();
+        lfo.frequency.value = 0.1;
+        const lfoGain = this.ctx.createGain();
+        lfoGain.gain.value = 10;
+        lfo.connect(lfoGain);
+        lfoGain.connect(this.ambientOsc.frequency);
+        lfo.start();
+    }
+
+    stopAmbient() {
+        if (this.ambientOsc) {
+            this.ambientOsc.stop();
+            this.ambientOsc = null;
+        }
+    }
+
+    playMystery() {
+        if (!this.initialized) return;
+        // Mysterious chord
+        this.playTone(220, 2, 'sine', 0.1);
+        setTimeout(() => this.playTone(277.18, 2, 'sine', 0.08), 100);
+        setTimeout(() => this.playTone(329.63, 2, 'sine', 0.06), 200);
+    }
+
+    playReveal() {
+        if (!this.initialized) return;
+        // Dramatic reveal sound
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                this.playTone(200 + i * 100, 1.5, 'sine', 0.1 - i * 0.015);
+            }, i * 150);
+        }
+    }
+
+    playClick() {
+        if (!this.initialized) return;
+        this.playTone(600, 0.05, 'square', 0.05);
+    }
+
+    playSuccess() {
+        if (!this.initialized) return;
+        this.playTone(523.25, 0.2, 'sine', 0.1);
+        setTimeout(() => this.playTone(659.25, 0.2, 'sine', 0.1), 150);
+        setTimeout(() => this.playTone(783.99, 0.4, 'sine', 0.1), 300);
+    }
+}
+
+const audio = new AudioSystem();
+
+// ============================================
+// GAME STATE
+// ============================================
+
+const gameState = {
+    currentScene: 'title',
+    inventory: [],
+    flags: {},
+    dialogQueue: [],
+    dialogActive: false,
+    puzzlesSolved: 0,
+    time: 0
+};
+
+// ============================================
+// PARTICLE SYSTEM
+// ============================================
+
+class Particle {
+    constructor(x, y, color, velocity, life) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.vx = velocity.x;
+        this.vy = velocity.y;
+        this.life = life;
+        this.maxLife = life;
+        this.size = Math.random() * 3 + 1;
+    }
+
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life--;
+        return this.life > 0;
+    }
+
+    draw(ctx) {
+        const alpha = this.life / this.maxLife;
+        ctx.fillStyle = this.color.replace(')', `, ${alpha})`).replace('rgb', 'rgba');
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * alpha, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+const particles = [];
+
+function addParticles(x, y, color, count, spread = 2) {
+    for (let i = 0; i < count; i++) {
+        particles.push(new Particle(
+            x, y, color,
+            { x: (Math.random() - 0.5) * spread, y: (Math.random() - 0.5) * spread },
+            60 + Math.random() * 60
+        ));
+    }
+}
+
+// ============================================
+// DRAWING UTILITIES
+// ============================================
+
+function drawDesertBackground() {
+    const w = canvas.width;
+    const h = canvas.height;
+
+    // Sky gradient (dusk)
+    const skyGrad = ctx.createLinearGradient(0, 0, 0, h * 0.6);
+    skyGrad.addColorStop(0, '#1a0a1f');
+    skyGrad.addColorStop(0.5, '#3d1a2d');
+    skyGrad.addColorStop(1, '#7d3a2d');
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0, 0, w, h * 0.6);
+
+    // Stars
+    ctx.fillStyle = '#fff';
+    for (let i = 0; i < 50; i++) {
+        const x = (i * 137.5) % w;
+        const y = (i * 73.3) % (h * 0.4);
+        const twinkle = Math.sin(gameState.time * 0.02 + i) * 0.5 + 0.5;
+        ctx.globalAlpha = twinkle * 0.8;
+        ctx.beginPath();
+        ctx.arc(x, y, 1, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // Desert dunes
+    const sandGrad = ctx.createLinearGradient(0, h * 0.5, 0, h);
+    sandGrad.addColorStop(0, '#8B7355');
+    sandGrad.addColorStop(1, '#5C4033');
+    ctx.fillStyle = sandGrad;
+
+    // Multiple dune layers
+    for (let layer = 0; layer < 3; layer++) {
+        ctx.beginPath();
+        ctx.moveTo(0, h);
+
+        const baseY = h * (0.55 + layer * 0.1);
+        for (let x = 0; x <= w; x += 20) {
+            const y = baseY + Math.sin(x * 0.01 + layer) * 30 + Math.sin(x * 0.02 - layer) * 15;
+            ctx.lineTo(x, y);
+        }
+
+        ctx.lineTo(w, h);
+        ctx.closePath();
+
+        const layerColor = `rgb(${139 - layer * 20}, ${115 - layer * 15}, ${85 - layer * 15})`;
+        ctx.fillStyle = layerColor;
+        ctx.fill();
+    }
+}
+
+function drawUndergroundBackground() {
+    const w = canvas.width;
+    const h = canvas.height;
+
+    // Dark cavern gradient
+    const grad = ctx.createRadialGradient(w/2, h/2, 50, w/2, h/2, w);
+    grad.addColorStop(0, '#1a1a2e');
+    grad.addColorStop(0.5, '#0f0f1a');
+    grad.addColorStop(1, '#050508');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Ancient glowing symbols on walls
+    ctx.fillStyle = 'rgba(201, 162, 39, 0.1)';
+    const symbols = ['', '', '', '', '', '', '', ''];
+    ctx.font = '40px serif';
+
+    for (let i = 0; i < 12; i++) {
+        const x = (i * 107) % w;
+        const y = 50 + (i * 61) % (h - 100);
+        const pulse = Math.sin(gameState.time * 0.03 + i) * 0.1 + 0.15;
+        ctx.globalAlpha = pulse;
+        ctx.fillText(symbols[i % symbols.length], x, y);
+    }
+    ctx.globalAlpha = 1;
+
+    // Ground
+    ctx.fillStyle = '#1a1a25';
+    ctx.fillRect(0, h * 0.75, w, h * 0.25);
+
+    // Stone floor texture
+    ctx.strokeStyle = '#2a2a35';
+    for (let x = 0; x < w; x += 60) {
+        ctx.beginPath();
+        ctx.moveTo(x, h * 0.75);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+    }
+}
+
+function drawSeal(x, y, size, alive = false) {
+    ctx.save();
+    ctx.translate(x, y);
+
+    // Air bubble
+    const bubbleGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, size * 1.5);
+    bubbleGrad.addColorStop(0, 'rgba(200, 220, 255, 0.1)');
+    bubbleGrad.addColorStop(0.8, 'rgba(150, 180, 220, 0.05)');
+    bubbleGrad.addColorStop(1, 'rgba(100, 150, 200, 0)');
+    ctx.fillStyle = bubbleGrad;
+    ctx.beginPath();
+    ctx.arc(0, 0, size * 1.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Golden shimmer
+    const shimmer = Math.sin(gameState.time * 0.05) * 0.3 + 0.7;
+    ctx.shadowColor = '#c9a227';
+    ctx.shadowBlur = 20 * shimmer;
+
+    // Seal body
+    ctx.fillStyle = alive ? '#4a4a5a' : '#3a3a4a';
+
+    // Body
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size, size * 0.6, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Head
+    ctx.beginPath();
+    ctx.ellipse(size * 0.7, -size * 0.1, size * 0.4, size * 0.35, 0.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Flippers
+    ctx.beginPath();
+    ctx.ellipse(-size * 0.3, size * 0.4, size * 0.3, size * 0.15, 0.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.ellipse(size * 0.3, size * 0.4, size * 0.3, size * 0.15, -0.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Tail
+    ctx.beginPath();
+    ctx.ellipse(-size * 0.9, 0, size * 0.25, size * 0.4, 0.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (alive) {
+        // Glowing eyes
+        ctx.shadowColor = '#c9a227';
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = '#c9a227';
+        ctx.beginPath();
+        ctx.arc(size * 0.85, -size * 0.15, size * 0.08, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    ctx.shadowBlur = 0;
+    ctx.restore();
+}
+
+function drawShadowFigure(x, y, height) {
+    ctx.save();
+    ctx.translate(x, y);
+
+    // Shadowy aura
+    const auraGrad = ctx.createRadialGradient(0, -height/2, 10, 0, -height/2, height);
+    auraGrad.addColorStop(0, 'rgba(20, 10, 30, 0.8)');
+    auraGrad.addColorStop(0.5, 'rgba(20, 10, 30, 0.3)');
+    auraGrad.addColorStop(1, 'rgba(20, 10, 30, 0)');
+    ctx.fillStyle = auraGrad;
+    ctx.beginPath();
+    ctx.arc(0, -height/2, height, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Figure silhouette
+    ctx.fillStyle = '#0a0510';
+
+    // Cloak/body
+    ctx.beginPath();
+    ctx.moveTo(-height * 0.3, 0);
+    ctx.quadraticCurveTo(-height * 0.35, -height * 0.5, -height * 0.15, -height * 0.85);
+    ctx.quadraticCurveTo(0, -height, height * 0.15, -height * 0.85);
+    ctx.quadraticCurveTo(height * 0.35, -height * 0.5, height * 0.3, 0);
+    ctx.closePath();
+    ctx.fill();
+
+    // Glowing eyes (occasionally)
+    if (Math.sin(gameState.time * 0.1) > 0.7) {
+        ctx.fillStyle = '#8844aa';
+        ctx.shadowColor = '#8844aa';
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(-height * 0.06, -height * 0.78, 3, 0, Math.PI * 2);
+        ctx.arc(height * 0.06, -height * 0.78, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+    }
+
+    ctx.restore();
+}
+
+function drawSarah(x, y, height) {
+    ctx.save();
+    ctx.translate(x, y);
+
+    const h = height;
+
+    // Body
+    ctx.fillStyle = '#5c4033';
+    ctx.beginPath();
+    ctx.moveTo(-h * 0.15, 0);
+    ctx.lineTo(-h * 0.2, -h * 0.45);
+    ctx.lineTo(h * 0.2, -h * 0.45);
+    ctx.lineTo(h * 0.15, 0);
+    ctx.closePath();
+    ctx.fill();
+
+    // Head
+    ctx.fillStyle = '#d4a574';
+    ctx.beginPath();
+    ctx.arc(0, -h * 0.6, h * 0.15, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Hair
+    ctx.fillStyle = '#3a2820';
+    ctx.beginPath();
+    ctx.arc(0, -h * 0.65, h * 0.12, Math.PI, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-h * 0.1, -h * 0.65);
+    ctx.quadraticCurveTo(-h * 0.15, -h * 0.5, -h * 0.08, -h * 0.4);
+    ctx.lineTo(-h * 0.12, -h * 0.4);
+    ctx.quadraticCurveTo(-h * 0.2, -h * 0.55, -h * 0.12, -h * 0.65);
+    ctx.fill();
+
+    // Legs
+    ctx.fillStyle = '#3d3d4d';
+    ctx.fillRect(-h * 0.1, 0, h * 0.08, h * 0.3);
+    ctx.fillRect(h * 0.02, 0, h * 0.08, h * 0.3);
+
+    ctx.restore();
+}
+
+// ============================================
+// INTERACTIVE OBJECTS
+// ============================================
+
+const interactiveObjects = [];
+
+function addInteractive(id, x, y, width, height, onClick, cursor = 'pointer') {
+    interactiveObjects.push({ id, x, y, width, height, onClick, cursor, active: true });
+}
+
+function clearInteractives() {
+    interactiveObjects.length = 0;
+}
+
+function checkInteraction(mx, my) {
+    for (const obj of interactiveObjects) {
+        if (!obj.active) continue;
+        if (mx >= obj.x && mx <= obj.x + obj.width &&
+            my >= obj.y && my <= obj.y + obj.height) {
+            return obj;
+        }
+    }
+    return null;
+}
+
+// ============================================
+// DIALOG SYSTEM
+// ============================================
+
+const dialogBox = document.getElementById('dialogBox');
+
+function showDialog(speaker, text) {
+    return new Promise(resolve => {
+        dialogBox.style.display = 'block';
+        dialogBox.querySelector('.speaker').textContent = speaker;
+        dialogBox.querySelector('.text').textContent = '';
+        gameState.dialogActive = true;
+
+        // Typewriter effect
+        let i = 0;
+        const typeInterval = setInterval(() => {
+            if (i < text.length) {
+                dialogBox.querySelector('.text').textContent += text[i];
+                i++;
+                if (i % 3 === 0) audio.playTone(200 + Math.random() * 100, 0.02, 'sine', 0.02);
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 30);
+
+        const clickHandler = () => {
+            clearInterval(typeInterval);
+            dialogBox.querySelector('.text').textContent = text;
+
+            setTimeout(() => {
+                dialogBox.removeEventListener('click', clickHandler);
+                document.removeEventListener('keydown', keyHandler);
+                dialogBox.style.display = 'none';
+                gameState.dialogActive = false;
+                resolve();
+            }, 100);
+        };
+
+        const keyHandler = (e) => {
+            if (e.code === 'Space' || e.code === 'Enter') {
+                clickHandler();
+            }
+        };
+
+        setTimeout(() => {
+            dialogBox.addEventListener('click', clickHandler);
+            document.addEventListener('keydown', keyHandler);
+        }, 100);
+    });
+}
+
+async function showDialogSequence(dialogs) {
+    for (const d of dialogs) {
+        await showDialog(d.speaker, d.text);
+    }
+}
+
+// ============================================
+// PUZZLE SYSTEM
+// ============================================
+
+const puzzleOverlay = document.getElementById('puzzleOverlay');
+const puzzleContent = document.getElementById('puzzleContent');
+
+// Symbol Matching Puzzle
+function showSymbolPuzzle() {
+    return new Promise(resolve => {
+        puzzleOverlay.style.display = 'flex';
+
+        const symbols = ['', '', '', '', '', '', '', ''];
+        const solution = [0, 2, 5, 7]; // Correct sequence
+        const selected = [];
+
+        puzzleContent.innerHTML = `
+            <div id="puzzleTitle">Ancient Seal Glyphs</div>
+            <div id="puzzleHint">Select the symbols that represent: Sun, Eye, Wave, Star</div>
+            <div class="puzzle-grid" id="symbolGrid"></div>
+            <div id="puzzleStatus" style="color: #888; margin-top: 10px;">Selected: 0/4</div>
+            <button id="closePuzzle">Step Back</button>
+        `;
+
+        const grid = document.getElementById('symbolGrid');
+        symbols.forEach((sym, i) => {
+            const cell = document.createElement('div');
+            cell.className = 'puzzle-cell';
+            cell.textContent = sym;
+            cell.onclick = () => {
+                audio.playClick();
+                if (selected.includes(i)) {
+                    selected.splice(selected.indexOf(i), 1);
+                    cell.classList.remove('selected');
+                } else if (selected.length < 4) {
+                    selected.push(i);
+                    cell.classList.add('selected');
+                }
+
+                document.getElementById('puzzleStatus').textContent = `Selected: ${selected.length}/4`;
+
+                if (selected.length === 4) {
+                    const correct = solution.every(s => selected.includes(s));
+                    if (correct) {
+                        audio.playSuccess();
+                        document.querySelectorAll('.puzzle-cell.selected').forEach(c => {
+                            c.classList.add('correct');
+                        });
+                        document.getElementById('puzzleStatus').textContent = 'The seals glow with ancient power...';
+                        document.getElementById('puzzleStatus').style.color = '#c9a227';
+                        setTimeout(() => {
+                            puzzleOverlay.style.display = 'none';
+                            resolve(true);
+                        }, 1500);
+                    } else {
+                        document.getElementById('puzzleStatus').textContent = 'The symbols fade... Try again.';
+                        document.getElementById('puzzleStatus').style.color = '#a44';
+                        selected.length = 0;
+                        document.querySelectorAll('.puzzle-cell').forEach(c => c.classList.remove('selected'));
+                    }
+                }
+            };
+            grid.appendChild(cell);
+        });
+
+        document.getElementById('closePuzzle').onclick = () => {
+            puzzleOverlay.style.display = 'none';
+            resolve(false);
+        };
+    });
+}
+
+// Light Beam Puzzle
+function showLightPuzzle() {
+    return new Promise(resolve => {
+        puzzleOverlay.style.display = 'flex';
+
+        // 4x4 grid, some cells are mirrors that can be rotated
+        const grid = [
+            ['', 'M0', '', ''],
+            ['', '', 'M1', ''],
+            ['M2', '', '', ''],
+            ['', '', 'M3', '']
+        ];
+        const mirrors = [0, 0, 0, 0]; // Rotation states (0-3)
+        const solution = [1, 3, 0, 2]; // Correct rotations
+
+        puzzleContent.innerHTML = `
+            <div id="puzzleTitle">Light Conduit Chamber</div>
+            <div id="puzzleHint">Rotate the mirrors () to guide light from top-left to bottom-right</div>
+            <div class="puzzle-grid" id="lightGrid"></div>
+            <button id="checkLight" style="margin-top: 15px; background: transparent; border: 2px solid #c9a227; color: #c9a227; padding: 10px 30px; font-family: monospace; cursor: pointer;">Activate Light</button>
+            <button id="closePuzzle">Step Back</button>
+        `;
+
+        function renderGrid() {
+            const gridEl = document.getElementById('lightGrid');
+            gridEl.innerHTML = '';
+
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 4; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'puzzle-cell';
+
+                    const content = grid[row][col];
+                    if (content.startsWith('M')) {
+                        const mirrorIdx = parseInt(content[1]);
+                        const rotation = mirrors[mirrorIdx] * 90;
+                        cell.innerHTML = `<span style="display: inline-block; transform: rotate(${rotation}deg)"></span>`;
+                        cell.style.cursor = 'pointer';
+                        cell.onclick = () => {
+                            audio.playClick();
+                            mirrors[mirrorIdx] = (mirrors[mirrorIdx] + 1) % 4;
+                            renderGrid();
+                        };
+                    } else if (row === 0 && col === 0) {
+                        cell.textContent = '';
+                        cell.style.color = '#ff0';
+                    } else if (row === 3 && col === 3) {
+                        cell.textContent = '';
+                        cell.id = 'targetCell';
+                    }
+
+                    gridEl.appendChild(cell);
+                }
+            }
+        }
+
+        renderGrid();
+
+        document.getElementById('checkLight').onclick = () => {
+            const correct = mirrors.every((m, i) => m === solution[i]);
+            if (correct) {
+                audio.playSuccess();
+                document.getElementById('targetCell').style.color = '#ff0';
+                document.getElementById('targetCell').style.textShadow = '0 0 20px #ff0';
+                puzzleContent.querySelector('#puzzleHint').textContent = 'The light reaches its destination!';
+                puzzleContent.querySelector('#puzzleHint').style.color = '#c9a227';
+                setTimeout(() => {
+                    puzzleOverlay.style.display = 'none';
+                    resolve(true);
+                }, 1500);
+            } else {
+                puzzleContent.querySelector('#puzzleHint').textContent = 'The light scatters into darkness...';
+                puzzleContent.querySelector('#puzzleHint').style.color = '#a44';
+            }
+        };
+
+        document.getElementById('closePuzzle').onclick = () => {
+            puzzleOverlay.style.display = 'none';
+            resolve(false);
+        };
+    });
+}
+
+// Memory Sequence Puzzle
+function showMemoryPuzzle() {
+    return new Promise(resolve => {
+        puzzleOverlay.style.display = 'flex';
+
+        const sequence = [2, 0, 3, 1, 2]; // Pattern to remember
+        let playerSequence = [];
+        let showingSequence = true;
+
+        puzzleContent.innerHTML = `
+            <div id="puzzleTitle">The Seal's Memory</div>
+            <div id="puzzleHint">Watch the seal's movements, then repeat the pattern</div>
+            <div style="display: flex; gap: 20px; margin: 30px auto; justify-content: center;">
+                <div class="memory-btn" data-idx="0" style="width: 80px; height: 80px; background: #2a2a35; border: 2px solid #444; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 24px;"></div>
+                <div class="memory-btn" data-idx="1" style="width: 80px; height: 80px; background: #2a2a35; border: 2px solid #444; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 24px;"></div>
+                <div class="memory-btn" data-idx="2" style="width: 80px; height: 80px; background: #2a2a35; border: 2px solid #444; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 24px;"></div>
+                <div class="memory-btn" data-idx="3" style="width: 80px; height: 80px; background: #2a2a35; border: 2px solid #444; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 24px;"></div>
+            </div>
+            <div id="puzzleStatus" style="color: #888;">Showing pattern...</div>
+            <button id="closePuzzle">Step Back</button>
+        `;
+
+        const buttons = document.querySelectorAll('.memory-btn');
+
+        function flashButton(idx, duration = 500) {
+            return new Promise(resolve => {
+                buttons[idx].style.background = '#c9a227';
+                buttons[idx].style.borderColor = '#c9a227';
+                audio.playTone(200 + idx * 100, 0.3, 'sine', 0.1);
+                setTimeout(() => {
+                    buttons[idx].style.background = '#2a2a35';
+                    buttons[idx].style.borderColor = '#444';
+                    setTimeout(resolve, 200);
+                }, duration);
+            });
+        }
+
+        async function showSequenceAnimation() {
+            await new Promise(r => setTimeout(r, 1000));
+            for (const idx of sequence) {
+                await flashButton(idx);
+            }
+            showingSequence = false;
+            document.getElementById('puzzleStatus').textContent = 'Your turn - repeat the pattern';
+        }
+
+        buttons.forEach((btn, i) => {
+            btn.onclick = async () => {
+                if (showingSequence) return;
+
+                await flashButton(i, 200);
+                playerSequence.push(i);
+
+                // Check if correct so far
+                const currentIdx = playerSequence.length - 1;
+                if (playerSequence[currentIdx] !== sequence[currentIdx]) {
+                    document.getElementById('puzzleStatus').textContent = 'Incorrect... Watch again.';
+                    document.getElementById('puzzleStatus').style.color = '#a44';
+                    playerSequence = [];
+                    showingSequence = true;
+                    setTimeout(showSequenceAnimation, 1000);
+                    return;
+                }
+
+                document.getElementById('puzzleStatus').textContent = `${playerSequence.length}/${sequence.length}`;
+
+                if (playerSequence.length === sequence.length) {
+                    audio.playSuccess();
+                    document.getElementById('puzzleStatus').textContent = 'The seal acknowledges your bond!';
+                    document.getElementById('puzzleStatus').style.color = '#c9a227';
+                    setTimeout(() => {
+                        puzzleOverlay.style.display = 'none';
+                        resolve(true);
+                    }, 1500);
+                }
+            };
+        });
+
+        showSequenceAnimation();
+
+        document.getElementById('closePuzzle').onclick = () => {
+            puzzleOverlay.style.display = 'none';
+            resolve(false);
+        };
+    });
+}
+
+// ============================================
+// SCENES
+// ============================================
+
+const scenes = {};
+
+// SCENE 1: Desert Arrival
+scenes.desert_arrival = {
+    async enter() {
+        audio.startAmbient('desert');
+
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'Three months of planning, and I\'m finally here. The Bolivian Altiplano.' },
+            { speaker: 'SARAH', text: 'Professor Chen\'s notes mentioned something impossible here. A seal - the animal - preserved in the desert for centuries.' },
+            { speaker: 'SARAH', text: 'In a bubble of air that shouldn\'t exist. I need to see this for myself.' }
+        ]);
+
+        gameState.flags.seenIntro = true;
+    },
+
+    render() {
+        drawDesertBackground();
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Sarah standing
+        drawSarah(w * 0.2, h * 0.72, 120);
+
+        // Distant mysterious glow
+        const glowIntensity = Math.sin(gameState.time * 0.03) * 0.3 + 0.5;
+        ctx.fillStyle = `rgba(201, 162, 39, ${glowIntensity * 0.2})`;
+        ctx.beginPath();
+        ctx.arc(w * 0.75, h * 0.6, 50, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Interaction hint
+        if (!gameState.dialogActive) {
+            ctx.fillStyle = 'rgba(201, 162, 39, 0.7)';
+            ctx.font = '16px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('Click the glow to investigate', w * 0.75, h * 0.5);
+        }
+    },
+
+    setup() {
+        addInteractive('glow', canvas.width * 0.7, canvas.height * 0.5, 100, 100, async () => {
+            audio.playMystery();
+            await showDialog('SARAH', 'That glow... it\'s exactly where the coordinates pointed. Let me get closer.');
+            transitionTo('discovery');
+        });
+    }
+};
+
+// SCENE 2: The Discovery
+scenes.discovery = {
+    async enter() {
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'By all that\'s holy...' },
+            { speaker: 'SARAH', text: 'It\'s real. A seal, suspended in what looks like a bubble of solidified air. Preserved perfectly.' },
+            { speaker: 'SARAH', text: 'The gold shimmer... it\'s not just light. It\'s emanating from the creature itself.' }
+        ]);
+    },
+
+    render() {
+        drawDesertBackground();
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // The seal in its bubble
+        drawSeal(w * 0.5, h * 0.55, 60, false);
+
+        // Sarah observing
+        drawSarah(w * 0.25, h * 0.72, 100);
+
+        // Particles around the seal
+        if (Math.random() < 0.1) {
+            addParticles(w * 0.5 + (Math.random() - 0.5) * 100, h * 0.55, 'rgb(201, 162, 39)', 1);
+        }
+
+        if (!gameState.dialogActive) {
+            ctx.fillStyle = 'rgba(201, 162, 39, 0.7)';
+            ctx.font = '16px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('Click the seal to examine it', w * 0.5, h * 0.4);
+        }
+    },
+
+    setup() {
+        addInteractive('seal', canvas.width * 0.4, canvas.height * 0.45, 120, 100, async () => {
+            audio.playMystery();
+            await showDialogSequence([
+                { speaker: 'SARAH', text: 'I\'m reaching out to touch it...' },
+                { speaker: '???', text: '*A spear of golden light erupts from the sand*' }
+            ]);
+            gameState.flags.touchedSeal = true;
+            transitionTo('awakening');
+        });
+    }
+};
+
+// SCENE 3: The Awakening
+scenes.awakening = {
+    sealY: 0,
+    shadowAppeared: false,
+
+    async enter() {
+        this.sealY = canvas.height * 0.55;
+
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'The bubble - it\'s reforming! The seal is... moving!' },
+            { speaker: 'THE SEAL', text: '*Its eyes open, glowing with ancient golden light*' },
+            { speaker: 'THE SEAL', text: '*It gazes at you with unmistakable intelligence*' }
+        ]);
+
+        this.shadowAppeared = true;
+        audio.playReveal();
+
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'What- there\'s someone else here!' },
+            { speaker: '???', text: '...' },
+            { speaker: 'SHADOWY FIGURE', text: 'You have found what was hidden. Now you must understand.' },
+            { speaker: 'SHADOWY FIGURE', text: 'Follow us. The truth lies below.' }
+        ]);
+    },
+
+    render() {
+        drawDesertBackground();
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // The living seal
+        const bobbing = Math.sin(gameState.time * 0.05) * 5;
+        drawSeal(w * 0.5, this.sealY + bobbing, 60, true);
+
+        // Sarah
+        drawSarah(w * 0.25, h * 0.72, 100);
+
+        // Shadowy figure
+        if (this.shadowAppeared) {
+            drawShadowFigure(w * 0.75, h * 0.72, 150);
+        }
+
+        // More intense particles
+        if (Math.random() < 0.2) {
+            addParticles(w * 0.5 + (Math.random() - 0.5) * 50, this.sealY + bobbing, 'rgb(201, 162, 39)', 2);
+        }
+
+        if (!gameState.dialogActive && this.shadowAppeared) {
+            ctx.fillStyle = 'rgba(201, 162, 39, 0.7)';
+            ctx.font = '16px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('Click the shadowy figure to follow', w * 0.75, h * 0.45);
+        }
+    },
+
+    setup() {
+        addInteractive('shadow', canvas.width * 0.65, canvas.height * 0.5, 120, 200, async () => {
+            if (!this.shadowAppeared) return;
+            audio.playMystery();
+            await showDialog('SARAH', 'I\'ve come this far. I have to know the truth.');
+            transitionTo('descent');
+        });
+    }
+};
+
+// SCENE 4: The Descent
+scenes.descent = {
+    async enter() {
+        audio.startAmbient('underground');
+
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'An entrance in the sand... stairs going down into darkness.' },
+            { speaker: 'SARAH', text: 'The seal floats beside me, its glow lighting the way.' },
+            { speaker: 'SARAH', text: 'These walls... they\'re covered in symbols I\'ve never seen. Older than any civilization I know.' },
+            { speaker: 'SHADOWY FIGURE', text: 'This is the Threshold. To proceed, you must prove you are worthy.' },
+            { speaker: 'SHADOWY FIGURE', text: 'Three trials await. Complete them, and all will be revealed.' }
+        ]);
+    },
+
+    render() {
+        drawUndergroundBackground();
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Three pedestals for puzzles
+        const pedestalY = h * 0.6;
+
+        for (let i = 0; i < 3; i++) {
+            const x = w * (0.25 + i * 0.25);
+            const solved = gameState.puzzlesSolved > i;
+
+            // Pedestal
+            ctx.fillStyle = solved ? '#2a3a2a' : '#1a1a25';
+            ctx.fillRect(x - 40, pedestalY, 80, 100);
+
+            // Glow on top
+            ctx.fillStyle = solved ? 'rgba(100, 200, 100, 0.5)' : 'rgba(201, 162, 39, 0.3)';
+            ctx.beginPath();
+            ctx.arc(x, pedestalY, 30, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Puzzle icon
+            ctx.fillStyle = solved ? '#4a4' : '#c9a227';
+            ctx.font = '24px serif';
+            ctx.textAlign = 'center';
+            const icons = ['', '', ''];
+            ctx.fillText(icons[i], x, pedestalY - 10);
+
+            if (!solved && !gameState.dialogActive) {
+                ctx.fillStyle = 'rgba(201, 162, 39, 0.5)';
+                ctx.font = '12px Courier New';
+                const labels = ['Symbols', 'Light', 'Memory'];
+                ctx.fillText(labels[i], x, pedestalY - 40);
+            }
+        }
+
+        // Seal floating
+        const bobbing = Math.sin(gameState.time * 0.05) * 5;
+        drawSeal(w * 0.1, h * 0.5 + bobbing, 40, true);
+
+        // Sarah
+        drawSarah(w * 0.15, h * 0.72, 80);
+
+        // Shadowy figure
+        drawShadowFigure(w * 0.9, h * 0.72, 120);
+
+        // Progress indicator
+        ctx.fillStyle = '#c9a227';
+        ctx.font = '14px Courier New';
+        ctx.textAlign = 'center';
+        ctx.fillText(`Trials Completed: ${gameState.puzzlesSolved}/3`, w * 0.5, h * 0.15);
+    },
+
+    setup() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Puzzle 1: Symbols
+        addInteractive('puzzle1', w * 0.25 - 40, h * 0.5, 80, 100, async () => {
+            if (gameState.puzzlesSolved >= 1) return;
+            const solved = await showSymbolPuzzle();
+            if (solved) {
+                gameState.puzzlesSolved = 1;
+                await showDialog('SHADOWY FIGURE', 'You understand the old language. Good.');
+            }
+        });
+
+        // Puzzle 2: Light
+        addInteractive('puzzle2', w * 0.5 - 40, h * 0.5, 80, 100, async () => {
+            if (gameState.puzzlesSolved < 1 || gameState.puzzlesSolved >= 2) return;
+            const solved = await showLightPuzzle();
+            if (solved) {
+                gameState.puzzlesSolved = 2;
+                await showDialog('SHADOWY FIGURE', 'Light bends to your will. Interesting.');
+            }
+        });
+
+        // Puzzle 3: Memory
+        addInteractive('puzzle3', w * 0.75 - 40, h * 0.5, 80, 100, async () => {
+            if (gameState.puzzlesSolved < 2 || gameState.puzzlesSolved >= 3) return;
+            const solved = await showMemoryPuzzle();
+            if (solved) {
+                gameState.puzzlesSolved = 3;
+                await showDialogSequence([
+                    { speaker: 'THE SEAL', text: '*The seal chirps with joy, swimming circles around you*' },
+                    { speaker: 'SHADOWY FIGURE', text: 'The bond is formed. You are ready for the truth.' },
+                    { speaker: 'SHADOWY FIGURE', text: 'Come. The Inner Sanctum awaits.' }
+                ]);
+                setTimeout(() => transitionTo('truth'), 1000);
+            }
+        });
+    }
+};
+
+// SCENE 5: The Truth (Final Reveal)
+scenes.truth = {
+    revealStage: 0,
+    hoodRemoved: false,
+
+    async enter() {
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'This chamber... it\'s enormous. The ceiling is covered in stars - no, those are... galaxies?' },
+            { speaker: 'SHADOWY FIGURE', text: 'What you call the "seal" is not what you think.' },
+            { speaker: 'SHADOWY FIGURE', text: 'In your language, "seal" has two meanings. An animal... and a lock.' },
+            { speaker: 'SARAH', text: 'A lock? On what?' }
+        ]);
+
+        this.revealStage = 1;
+        audio.playReveal();
+
+        await new Promise(r => setTimeout(r, 2000));
+
+        await showDialogSequence([
+            { speaker: 'SHADOWY FIGURE', text: 'On the doorway between dimensions. Between your world and ours.' },
+            { speaker: 'SHADOWY FIGURE', text: 'We seeded consciousness on your planet. Millions of years ago.' },
+            { speaker: 'SHADOWY FIGURE', text: 'Humanity was never alone. We have watched. We have waited.' },
+            { speaker: 'SARAH', text: 'Waited for what? For me?' }
+        ]);
+
+        this.revealStage = 2;
+
+        await showDialogSequence([
+            { speaker: 'SHADOWY FIGURE', text: 'Yes. Because you were always meant to be here.' },
+            { speaker: 'SHADOWY FIGURE', text: 'The timeline must remain intact. The seal must be found, or the door opens forever.' },
+            { speaker: 'SARAH', text: 'How do you know I\'m the one? How can you be so certain?' }
+        ]);
+
+        this.hoodRemoved = true;
+        audio.playReveal();
+
+        await new Promise(r => setTimeout(r, 2000));
+
+        await showDialogSequence([
+            { speaker: '???', text: '*The figure removes its hood*' },
+            { speaker: 'SARAH', text: 'That\'s... that\'s impossible...' },
+            { speaker: 'SARAH', text: 'That face... it\'s MY face. Older, but... it\'s ME.' },
+            { speaker: 'FUTURE SARAH', text: 'I know. Because I stood exactly where you stand, long ago.' },
+            { speaker: 'FUTURE SARAH', text: 'I am you, Sarah. Sixty years from now. I came back to ensure you found the seal.' },
+            { speaker: 'FUTURE SARAH', text: 'To ensure the loop closes. To keep the door sealed.' }
+        ]);
+
+        this.revealStage = 3;
+
+        await showDialogSequence([
+            { speaker: 'SARAH', text: 'But why? What happens if the door opens?' },
+            { speaker: 'FUTURE SARAH', text: 'In one timeline, I never found the seal. The door opened. Everything was... unmade.' },
+            { speaker: 'FUTURE SARAH', text: 'I was given a choice. Join them. Become a guardian. Travel back and fix the loop.' },
+            { speaker: 'FUTURE SARAH', text: 'And now, you will carry the seal. Protect it. Until it is your turn to return.' },
+            { speaker: 'THE SEAL', text: '*The seal floats to you, pressing its golden head against your hand*' },
+            { speaker: 'FUTURE SARAH', text: 'You are the key now, Sarah. The seal will guide you.' },
+            { speaker: 'FUTURE SARAH', text: 'Someday, you will understand everything. Someday, you will be me.' }
+        ]);
+
+        this.revealStage = 4;
+    },
+
+    render() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Cosmic background
+        const grad = ctx.createRadialGradient(w/2, h/2, 0, w/2, h/2, w);
+        grad.addColorStop(0, '#1a1030');
+        grad.addColorStop(0.5, '#0a0818');
+        grad.addColorStop(1, '#030308');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Galaxies/stars on ceiling
+        for (let i = 0; i < 100; i++) {
+            const x = (i * 13.7) % w;
+            const y = (i * 7.3) % (h * 0.6);
+            const twinkle = Math.sin(gameState.time * 0.02 + i * 0.5) * 0.5 + 0.5;
+
+            if (i < 10) {
+                // Galaxies
+                const galaxyGrad = ctx.createRadialGradient(x, y, 0, x, y, 15);
+                galaxyGrad.addColorStop(0, `rgba(201, 162, 39, ${twinkle * 0.3})`);
+                galaxyGrad.addColorStop(1, 'transparent');
+                ctx.fillStyle = galaxyGrad;
+                ctx.beginPath();
+                ctx.arc(x, y, 15, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // Stars
+                ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * 0.8})`;
+                ctx.beginPath();
+                ctx.arc(x, y, 1, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // The dimensional doorway (background)
+        if (this.revealStage >= 1) {
+            const doorGrad = ctx.createRadialGradient(w/2, h * 0.4, 10, w/2, h * 0.4, 150);
+            doorGrad.addColorStop(0, 'rgba(100, 50, 150, 0.8)');
+            doorGrad.addColorStop(0.5, 'rgba(50, 20, 100, 0.4)');
+            doorGrad.addColorStop(1, 'transparent');
+            ctx.fillStyle = doorGrad;
+            ctx.beginPath();
+            ctx.ellipse(w/2, h * 0.4, 150, 200, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Portal swirl
+            ctx.strokeStyle = 'rgba(201, 162, 39, 0.3)';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                const angle = gameState.time * 0.02 + i * 1.2;
+                ctx.arc(w/2, h * 0.4, 50 + i * 20, angle, angle + 1);
+                ctx.stroke();
+            }
+        }
+
+        // Ground
+        ctx.fillStyle = '#151520';
+        ctx.fillRect(0, h * 0.75, w, h * 0.25);
+
+        // The seal (larger, more prominent)
+        const bobbing = Math.sin(gameState.time * 0.03) * 8;
+        drawSeal(w * 0.5, h * 0.6 + bobbing, 70, true);
+
+        // More particles
+        if (Math.random() < 0.3) {
+            addParticles(w * 0.5 + (Math.random() - 0.5) * 100, h * 0.6, 'rgb(201, 162, 39)', 2);
+        }
+
+        // Sarah
+        drawSarah(w * 0.3, h * 0.75, 100);
+
+        // The figure / Future Sarah
+        if (!this.hoodRemoved) {
+            drawShadowFigure(w * 0.7, h * 0.75, 150);
+        } else {
+            // Future Sarah revealed - draw similar to Sarah but older
+            ctx.save();
+            ctx.translate(w * 0.7, h * 0.75);
+
+            const fh = 150;
+
+            // Robe
+            ctx.fillStyle = '#2a2035';
+            ctx.beginPath();
+            ctx.moveTo(-fh * 0.2, 0);
+            ctx.quadraticCurveTo(-fh * 0.25, -fh * 0.5, -fh * 0.1, -fh * 0.7);
+            ctx.quadraticCurveTo(0, -fh * 0.75, fh * 0.1, -fh * 0.7);
+            ctx.quadraticCurveTo(fh * 0.25, -fh * 0.5, fh * 0.2, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            // Face (older Sarah)
+            ctx.fillStyle = '#c4957a';
+            ctx.beginPath();
+            ctx.arc(0, -fh * 0.55, fh * 0.12, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Gray-streaked hair
+            ctx.fillStyle = '#5a4a4a';
+            ctx.beginPath();
+            ctx.arc(0, -fh * 0.6, fh * 0.1, Math.PI, Math.PI * 2);
+            ctx.fill();
+
+            // Eyes with wisdom
+            ctx.fillStyle = '#c9a227';
+            ctx.beginPath();
+            ctx.arc(-fh * 0.03, -fh * 0.55, 3, 0, Math.PI * 2);
+            ctx.arc(fh * 0.03, -fh * 0.55, 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        // Final message
+        if (this.revealStage >= 4 && !gameState.dialogActive) {
+            ctx.fillStyle = 'rgba(201, 162, 39, 0.8)';
+            ctx.font = '20px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('THE SEAL OF ETERNITY', w/2, h * 0.12);
+            ctx.font = '14px Courier New';
+            ctx.fillStyle = 'rgba(201, 162, 39, 0.5)';
+            ctx.fillText('The loop is closed. The story continues.', w/2, h * 0.16);
+            ctx.fillText('[Press R to restart]', w/2, h * 0.9);
+        }
+    },
+
+    setup() {
+        // Final scene - no interactions needed, story-driven
+    }
+};
+
+// ============================================
+// SCENE MANAGEMENT
+// ============================================
+
+const fadeOverlay = document.getElementById('fadeOverlay');
+
+async function transitionTo(sceneName) {
+    fadeOverlay.classList.add('active');
+    await new Promise(r => setTimeout(r, 1000));
+
+    clearInteractives();
+    gameState.currentScene = sceneName;
+
+    const scene = scenes[sceneName];
+    if (scene.setup) scene.setup();
+    if (scene.enter) await scene.enter();
+
+    fadeOverlay.classList.remove('active');
+}
+
+// ============================================
+// MAIN GAME LOOP
+// ============================================
+
+function gameLoop() {
+    gameState.time++;
+
+    // Clear
+    ctx.fillStyle = '#0a0a0f';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Render current scene
+    const scene = scenes[gameState.currentScene];
+    if (scene && scene.render) {
+        scene.render();
+    }
+
+    // Update and render particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+        if (!particles[i].update()) {
+            particles.splice(i, 1);
+        } else {
+            particles[i].draw(ctx);
+        }
+    }
+
+    requestAnimationFrame(gameLoop);
+}
+
+// ============================================
+// INPUT HANDLING
+// ============================================
+
+canvas.addEventListener('click', async (e) => {
+    if (gameState.dialogActive) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+
+    const obj = checkInteraction(x, y);
+    if (obj) {
+        audio.playClick();
+        obj.onClick();
+    }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+
+    const obj = checkInteraction(x, y);
+    canvas.style.cursor = obj ? 'pointer' : 'crosshair';
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'KeyR' && gameState.currentScene === 'truth') {
+        location.reload();
+    }
+});
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+const titleScreen = document.getElementById('titleScreen');
+const startButton = document.getElementById('startButton');
+
+startButton.addEventListener('click', () => {
+    audio.init();
+    titleScreen.style.display = 'none';
+    transitionTo('desert_arrival');
+});
+
+// Start the game loop immediately (title screen shows on top)
+gameLoop();
+
+    </script>
+</body>
+</html>
