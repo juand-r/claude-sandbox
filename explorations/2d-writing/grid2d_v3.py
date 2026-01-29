@@ -28,10 +28,11 @@ class GPT2LM:
         self.model.eval()
         print("  Loaded.")
 
-    def get_top_p(self, context: List[str], p: float, max_words: int = 50) -> List[Tuple[str, float]]:
+    def get_top_p(self, context: List[str], p: float, max_words: int = 50, alpha_only: bool = False) -> List[Tuple[str, float]]:
         """Get words in top-p nucleus given context. Returns (word, log_prob) pairs.
 
         Also caps at max_words to prevent flat distributions from including everything.
+        If alpha_only=True, only include tokens starting with a letter.
         """
         # Build context string
         context_str = " ".join(context) if context else ""
@@ -61,6 +62,10 @@ class GPT2LM:
 
             # Skip empty/whitespace-only tokens
             if not token.strip():
+                continue
+
+            # Optional: filter to alphabetic tokens only
+            if alpha_only and (not token.strip() or not token.strip()[0].isalpha()):
                 continue
 
             log_prob = log_probs[token_id].item()
@@ -119,6 +124,7 @@ def beam_search_v3(
     n_cols: int = 4,
     p: float = 0.9,
     beam_width: int = 100,
+    alpha_only: bool = False,
     verbose: bool = True
 ) -> List[Beam]:
     """
@@ -145,8 +151,8 @@ def beam_search_v3(
                 h_context = beam.get_horizontal_context(row, col)
                 c_context = beam.get_column_context(row, col)
 
-                h_top_p = lm.get_top_p(h_context, p)
-                c_top_p = lm.get_top_p(c_context, p)
+                h_top_p = lm.get_top_p(h_context, p, alpha_only=alpha_only)
+                c_top_p = lm.get_top_p(c_context, p, alpha_only=alpha_only)
 
                 h_words = {w for w, _ in h_top_p}
                 c_words = {w for w, _ in c_top_p}
@@ -219,6 +225,7 @@ def main():
     parser.add_argument("--beam", type=int, default=100, help="Beam width (default: 100)")
     parser.add_argument("--top", type=int, default=5, help="Results to show")
     parser.add_argument("--model", type=str, default="gpt2", help="GPT-2 model name")
+    parser.add_argument("--alpha-only", action="store_true", help="Only allow alphabetic tokens (filter punctuation)")
     args = parser.parse_args()
 
     lm = GPT2LM(args.model)
@@ -227,7 +234,7 @@ def main():
     print(f"GRID: {args.rows} rows x {args.cols} columns")
     print('#'*60)
 
-    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam)
+    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only)
     display_results(beams, n=args.top)
 
 
