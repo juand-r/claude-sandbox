@@ -90,9 +90,55 @@ Converges to degenerate "the of the of" patterns.
 
 If a token isn't in top-k for BOTH contexts, it doesn't belong there.
 
+## GPT-2 Integration Issues
+
+GPT-2 was added as an alternative to n-gram models, but produces worse results due to several issues:
+
+### Problem 1: Invalid Sentence Starters
+
+GPT-2's top predictions from empty context (BOS token) are:
+```
+and  -6.570
+of   -7.159
+to   -7.230
+in   -7.724
+```
+
+These are statistically common in web text (fragments, bullet points) but terrible sentence starters. This led to nonsense like "to and in the" where "to" started a row.
+
+**Fix:** Added `VALID_STARTERS` set - curated list of words that can validly start phrases (pronouns, articles, determiners, etc.). First row/column words must be in this set.
+
+### Problem 2: Local vs Global Coherence
+
+Even with valid starters, GPT-2 produces sequences like:
+- "had be a good" (should be "had been")
+- "a a long time" ("a a" is invalid)
+
+The intersection constraint is locally satisfied (each word is plausible given immediate context) but globally wrong. GPT-2 happily continues nonsense because it optimizes token-by-token likelihood, not phrase-level grammar.
+
+### Why N-gram Works Better
+
+The Brown corpus n-gram model produces much better results:
+```
+but it did not
+it is not only
+would not have to
+not only to the
+```
+
+Likely reasons:
+1. Trained on edited, grammatical text (not web scrape)
+2. Trigram context captures common English patterns
+3. Probability distribution better matches our restricted vocabulary
+
+### Recommendation
+
+Use n-gram model for this task. GPT-2's strengths (long-range context, world knowledge) don't help here, and its weaknesses (web text biases, subword tokenization mismatches) actively hurt.
+
 ## Files
 
 - `grid2d_v2.py` - Working implementation with true 2D beam search
 - `grid2d.py` - Original failed attempts (kept for reference)
+- `debug_gpt2.py` - Debug script for analyzing GPT-2 predictions
 - `PLAN.md` - Task tracking
 - `NOTES.md` - This file
