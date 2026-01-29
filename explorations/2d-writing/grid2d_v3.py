@@ -43,8 +43,8 @@ class NgramLM:
                 self.vocab.add(word)
         print(f"  Vocab size: {len(self.vocab)}, contexts: {len(self.context_counts)}")
 
-    def get_top_k(self, context: List[str], k: int, vocab: List[str] = None) -> List[Tuple[str, float]]:
-        """Get top-k most likely words given context."""
+    def get_top_p(self, context: List[str], p: float, vocab: List[str] = None) -> List[Tuple[str, float]]:
+        """Get words using nucleus (top-p) sampling - smallest set with cumulative prob >= p."""
         # Use last n-1 words of context
         context = tuple(w.lower() for w in context[-(self.n-1):])
         while len(context) < self.n - 1:
@@ -53,17 +53,29 @@ class NgramLM:
         if vocab is None:
             vocab = list(self.vocab)
 
-        scores = []
+        # Compute probabilities
         total = self.context_counts[context]
         vocab_size = len(self.vocab)
 
+        scores = []
         for word in vocab:
             count = self.ngram_counts[context][word]
             prob = (count + self.smoothing) / (total + self.smoothing * vocab_size)
-            scores.append((word, math.log(prob)))
+            scores.append((word, prob, math.log(prob)))
 
+        # Sort by probability descending
         scores.sort(key=lambda x: x[1], reverse=True)
-        return scores[:k]
+
+        # Take smallest set with cumulative prob >= p
+        result = []
+        cumulative = 0.0
+        for word, prob, log_prob in scores:
+            result.append((word, log_prob))
+            cumulative += prob
+            if cumulative >= p:
+                break
+
+        return result
 
 
 @dataclass
@@ -111,18 +123,19 @@ def beam_search_v3(
     vocab: List[str],
     n_rows: int = 4,
     n_cols: int = 4,
-    k: int = 100,
+    p: float = 0.9,
+    beam_width: int = 100,
     verbose: bool = True
 ) -> List[Beam]:
     """
-    Beam search for v3 grid.
+    Beam search for v3 grid using top-p (nucleus) sampling.
 
     Fill in row-major order. Each word must be:
-    - Likely given horizontal context (all previous words in reading order)
-    - Likely given column context (words above in same column)
+    - In top-p nucleus given horizontal context (all previous words in reading order)
+    - In top-p nucleus given column context (words above in same column)
     """
     if verbose:
-        print(f"v3 Beam Search: {n_rows}x{n_cols}, k={k}")
+        print(f"v3 Beam Search: {n_rows}x{n_cols}, p={p}, beam_width={beam_width}")
 
     initial_grid = [[None for _ in range(n_cols)] for _ in range(n_rows)]
     beams = [Beam(grid=initial_grid, score=0.0)]
@@ -140,29 +153,29 @@ def beam_search_v3(
                 h_context = beam.get_horizontal_context(row, col)
                 c_context = beam.get_column_context(row, col)
 
-                h_top_k = lm.get_top_k(h_context, k, vocab)
-                c_top_k = lm.get_top_k(c_context, k, vocab)
+                h_top_p = lm.get_top_p(h_context, p, vocab)
+                c_top_p = lm.get_top_p(c_context, p, vocab)
 
-                h_words = {w for w, _ in h_top_k}
-                c_words = {w for w, _ in c_top_k}
-                h_scores = {w: s for w, s in h_top_k}
-                c_scores = {w: s for w, s in c_top_k}
+                h_words = {w for w, _ in h_top_p}
+                c_words = {w for w, _ in c_top_p}
+                h_scores = {w: s for w, s in h_top_p}
+                c_scores = {w: s for w, s in c_top_p}
 
                 if row == 0:
                     # First row: column context is empty, word starts a column
-                    # Must be valid starter AND good for horizontal flow
-                    candidates = [(w, s) for w, s in h_top_k if w in start_words]
+                    # Must be valid starter AND in horizontal nucleus
+                    candidates = [(w, s) for w, s in h_top_p if w in start_words]
                     if not candidates:
-                        candidates = h_top_k[:k]
+                        candidates = h_top_p
                 else:
-                    # Interior cell: intersection of horizontal and column candidates
+                    # Interior cell: intersection of horizontal and column nuclei
                     intersection = h_words & c_words
                     if not intersection:
                         continue  # branch dies
                     candidates = [(w, h_scores[w] + c_scores[w]) for w in intersection]
                     candidates.sort(key=lambda x: x[1], reverse=True)
 
-                for word, word_score in candidates[:k]:
+                for word, word_score in candidates:
                     new_beam = beam.copy()
                     new_beam.set_cell(row, col, word, word_score)
                     new_beams.append(new_beam)
@@ -173,7 +186,7 @@ def beam_search_v3(
                 break
 
             new_beams.sort(key=lambda b: b.score, reverse=True)
-            beams = new_beams[:k]
+            beams = new_beams[:beam_width]
 
     if verbose:
         print(f"  Final: {len(beams)} beams")
@@ -239,7 +252,8 @@ def main():
     parser = argparse.ArgumentParser(description="2D Writing System v3")
     parser.add_argument("--rows", type=int, default=4, help="Number of rows")
     parser.add_argument("--cols", type=int, default=4, help="Number of columns")
-    parser.add_argument("--k", type=int, default=100, help="Beam width")
+    parser.add_argument("--p", type=float, default=0.9, help="Top-p nucleus threshold (default: 0.9)")
+    parser.add_argument("--beam", type=int, default=100, help="Beam width (default: 100)")
     parser.add_argument("--top", type=int, default=5, help="Results to show")
     args = parser.parse_args()
 
@@ -255,7 +269,7 @@ def main():
     print(f"GRID: {args.rows} rows x {args.cols} columns")
     print('#'*60)
 
-    beams = beam_search_v3(lm, VOCAB, n_rows=args.rows, n_cols=args.cols, k=args.k)
+    beams = beam_search_v3(lm, VOCAB, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam)
     display_results(beams, n=args.top)
 
 
