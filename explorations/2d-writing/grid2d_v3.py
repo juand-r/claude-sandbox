@@ -57,14 +57,14 @@ class GPT2LM:
         result = []
         for prob, idx in zip(sorted_probs, sorted_indices):
             token_id = idx.item()
-            token = self.tokenizer.decode([token_id]).strip()
+            token = self.tokenizer.decode([token_id])
 
-            # Skip empty, whitespace-only, or subword tokens (starting with special chars)
-            if not token or not token[0].isalpha():
+            # Skip empty/whitespace-only tokens
+            if not token.strip():
                 continue
 
             log_prob = log_probs[token_id].item()
-            result.append((token.lower(), log_prob))
+            result.append((token, log_prob))
             cumulative += prob.item()
 
             if cumulative >= p or len(result) >= max_words:
@@ -161,7 +161,8 @@ def beam_search_v3(
                     intersection = h_words & c_words
                     if not intersection:
                         continue  # branch dies
-                    candidates = [(w, h_scores[w] + c_scores[w]) for w in intersection]
+                    # Score by min of both log-probs (bottleneck principle)
+                    candidates = [(w, min(h_scores[w], c_scores[w])) for w in intersection]
                     candidates.sort(key=lambda x: x[1], reverse=True)
 
                 for word, word_score in candidates:
