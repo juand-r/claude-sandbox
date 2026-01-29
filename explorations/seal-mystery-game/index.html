@@ -46,6 +46,7 @@
             line-height: 1.6;
             display: none;
             border-radius: 4px;
+            z-index: 95;
         }
 
         #dialogBox .speaker {
@@ -1507,9 +1508,12 @@ async function transitionTo(sceneName) {
 
     const scene = scenes[sceneName];
     if (scene.setup) scene.setup();
-    if (scene.enter) await scene.enter();
 
+    // Remove fade BEFORE enter() so dialogs are visible and clickable
     fadeOverlay.classList.remove('active');
+    await new Promise(r => setTimeout(r, 500));
+
+    if (scene.enter) await scene.enter();
 }
 
 // ============================================
