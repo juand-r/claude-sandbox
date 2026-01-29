@@ -4,74 +4,66 @@
 Horizontal: Read left-to-right, wrapping at line ends = one continuous passage.
 Vertical: Each column is an independent sentence (no wrapping between columns).
 
-Usage:
-    python grid2d_v3.py              # Use n-gram (default)
-    python grid2d_v3.py --gpt2       # Use GPT-2
+Uses GPT-2 with top-p sampling, no artificial vocab restrictions.
 """
 
 import argparse
 import math
-from collections import defaultdict
 from typing import List, Tuple, Optional
 from dataclasses import dataclass
-import nltk
-from nltk.corpus import brown
+
+import torch
+import torch.nn.functional as F
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 
-class NgramLM:
-    """N-gram language model."""
+class GPT2LM:
+    """GPT-2 language model with top-p sampling."""
 
-    def __init__(self, n: int = 3):
-        self.n = n
-        self.ngram_counts = defaultdict(lambda: defaultdict(int))
-        self.context_counts = defaultdict(int)
-        self.vocab = set()
-        self.smoothing = 0.01
+    def __init__(self, model_name: str = "gpt2"):
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Loading GPT-2 '{model_name}' on {self.device}...")
+        self.tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+        self.model = GPT2LMHeadModel.from_pretrained(model_name).to(self.device)
+        self.model.eval()
+        print("  Loaded.")
 
-    def train(self, sentences: List[List[str]]):
-        print(f"Training {self.n}-gram model...")
-        for sent in sentences:
-            sent = [w.lower() for w in sent if w.isalpha()]
-            if len(sent) < 2:
-                continue
-            padded = ['<s>'] * (self.n - 1) + sent
-            for i in range(self.n - 1, len(padded)):
-                context = tuple(padded[i - self.n + 1:i])
-                word = padded[i]
-                self.ngram_counts[context][word] += 1
-                self.context_counts[context] += 1
-                self.vocab.add(word)
-        print(f"  Vocab size: {len(self.vocab)}, contexts: {len(self.context_counts)}")
+    def get_top_p(self, context: List[str], p: float) -> List[Tuple[str, float]]:
+        """Get words in top-p nucleus given context. Returns (word, log_prob) pairs."""
+        # Build context string
+        context_str = " ".join(context) if context else ""
 
-    def get_top_p(self, context: List[str], p: float, vocab: List[str] = None) -> List[Tuple[str, float]]:
-        """Get words using nucleus (top-p) sampling - smallest set with cumulative prob >= p."""
-        # Use last n-1 words of context
-        context = tuple(w.lower() for w in context[-(self.n-1):])
-        while len(context) < self.n - 1:
-            context = ('<s>',) + context
+        # Encode
+        if context_str:
+            input_ids = self.tokenizer.encode(context_str, return_tensors="pt").to(self.device)
+        else:
+            input_ids = torch.tensor([[self.tokenizer.bos_token_id or 50256]]).to(self.device)
 
-        if vocab is None:
-            vocab = list(self.vocab)
+        # Get next token probabilities
+        with torch.no_grad():
+            outputs = self.model(input_ids)
+            logits = outputs.logits[0, -1, :]  # [vocab_size]
+            probs = F.softmax(logits, dim=-1)
+            log_probs = F.log_softmax(logits, dim=-1)
 
-        # Compute probabilities
-        total = self.context_counts[context]
-        vocab_size = len(self.vocab)
-
-        scores = []
-        for word in vocab:
-            count = self.ngram_counts[context][word]
-            prob = (count + self.smoothing) / (total + self.smoothing * vocab_size)
-            scores.append((word, prob, math.log(prob)))
-
-        # Sort by probability descending
-        scores.sort(key=lambda x: x[1], reverse=True)
+        # Sort by probability
+        sorted_probs, sorted_indices = torch.sort(probs, descending=True)
 
         # Take smallest set with cumulative prob >= p
-        result = []
         cumulative = 0.0
-        for word, prob, log_prob in scores:
-            result.append((word, log_prob))
-            cumulative += prob
+        result = []
+        for prob, idx in zip(sorted_probs, sorted_indices):
+            token_id = idx.item()
+            token = self.tokenizer.decode([token_id]).strip()
+
+            # Skip empty, whitespace-only, or subword tokens (starting with special chars)
+            if not token or not token[0].isalpha():
+                continue
+
+            log_prob = log_probs[token_id].item()
+            result.append((token.lower(), log_prob))
+            cumulative += prob.item()
+
             if cumulative >= p:
                 break
 
@@ -91,7 +83,7 @@ class Beam:
         )
 
     def get_horizontal_context(self, row: int, col: int) -> List[str]:
-        """Get all words before this position in reading order (left-to-right, top-to-bottom)."""
+        """Get all words before this position in reading order."""
         words = []
         n_cols = len(self.grid[0]) if self.grid else 0
         for r in range(row + 1):
@@ -119,8 +111,7 @@ class Beam:
 
 
 def beam_search_v3(
-    lm: NgramLM,
-    vocab: List[str],
+    lm: GPT2LM,
     n_rows: int = 4,
     n_cols: int = 4,
     p: float = 0.9,
@@ -128,19 +119,17 @@ def beam_search_v3(
     verbose: bool = True
 ) -> List[Beam]:
     """
-    Beam search for v3 grid using top-p (nucleus) sampling.
+    Beam search using top-p sampling from GPT-2.
 
-    Fill in row-major order. Each word must be:
-    - In top-p nucleus given horizontal context (all previous words in reading order)
-    - In top-p nucleus given column context (words above in same column)
+    Each word must be in the top-p nucleus for both:
+    - Horizontal context (all previous words in reading order)
+    - Column context (words above in same column)
     """
     if verbose:
         print(f"v3 Beam Search: {n_rows}x{n_cols}, p={p}, beam_width={beam_width}")
 
     initial_grid = [[None for _ in range(n_cols)] for _ in range(n_rows)]
     beams = [Beam(grid=initial_grid, score=0.0)]
-
-    start_words = VALID_STARTERS & set(vocab)
 
     for row in range(n_rows):
         for col in range(n_cols):
@@ -153,8 +142,8 @@ def beam_search_v3(
                 h_context = beam.get_horizontal_context(row, col)
                 c_context = beam.get_column_context(row, col)
 
-                h_top_p = lm.get_top_p(h_context, p, vocab)
-                c_top_p = lm.get_top_p(c_context, p, vocab)
+                h_top_p = lm.get_top_p(h_context, p)
+                c_top_p = lm.get_top_p(c_context, p)
 
                 h_words = {w for w, _ in h_top_p}
                 c_words = {w for w, _ in c_top_p}
@@ -162,13 +151,10 @@ def beam_search_v3(
                 c_scores = {w: s for w, s in c_top_p}
 
                 if row == 0:
-                    # First row: column context is empty, word starts a column
-                    # Must be valid starter AND in horizontal nucleus
-                    candidates = [(w, s) for w, s in h_top_p if w in start_words]
-                    if not candidates:
-                        candidates = h_top_p
+                    # First row: no column context yet, just use horizontal
+                    candidates = h_top_p
                 else:
-                    # Interior cell: intersection of horizontal and column nuclei
+                    # Intersection of both nuclei
                     intersection = h_words & c_words
                     if not intersection:
                         continue  # branch dies
@@ -208,68 +194,36 @@ def display_results(beams: List[Beam], n: int = 5):
         n_rows = len(beam.grid)
         n_cols = len(beam.grid[0]) if beam.grid else 0
 
-        # Show horizontal reading
+        # Horizontal reading
         h_words = []
         for row in beam.grid:
             h_words.extend([w for w in row if w])
         print(f"\nHorizontal: {' '.join(h_words)}")
 
-        # Show each column
+        # Columns
         print("\nColumns:")
         for c in range(n_cols):
             col_words = [beam.grid[r][c] for r in range(n_rows) if beam.grid[r][c]]
             print(f"  C{c+1}: {' '.join(col_words)}")
 
 
-VOCAB = [
-    "the", "a", "an", "this", "that", "my", "your", "his", "her",
-    "i", "you", "he", "she", "it", "we", "they",
-    "man", "woman", "child", "time", "day", "night", "life", "world",
-    "way", "place", "house", "hand", "eye", "head", "heart", "mind",
-    "is", "are", "was", "were", "be", "have", "has", "had",
-    "do", "does", "did", "will", "would", "could", "can",
-    "see", "know", "think", "make", "take", "come", "go", "want",
-    "say", "said", "get", "give", "find", "tell", "feel", "become",
-    "good", "new", "old", "great", "little", "own", "other", "long",
-    "to", "of", "in", "for", "on", "with", "at", "by", "from",
-    "and", "but", "or", "if", "when", "so", "as", "than",
-    "not", "all", "some", "no", "more", "just", "now", "then",
-    "very", "also", "well", "only", "even", "still", "back", "there",
-]
-
-VALID_STARTERS = {
-    "i", "you", "he", "she", "it", "we", "they",
-    "the", "a", "an", "this", "that", "my", "your", "his", "her",
-    "do", "does", "did", "will", "would", "could", "can", "have", "has", "had",
-    "man", "woman", "child", "time", "day", "night", "life", "world",
-    "now", "then", "there", "just", "only", "even", "still", "also",
-    "but", "so", "if", "when",
-    "all", "some", "no", "not",
-}
-
-
 def main():
-    parser = argparse.ArgumentParser(description="2D Writing System v3")
+    parser = argparse.ArgumentParser(description="2D Writing System v3 (GPT-2)")
     parser.add_argument("--rows", type=int, default=4, help="Number of rows")
     parser.add_argument("--cols", type=int, default=4, help="Number of columns")
-    parser.add_argument("--p", type=float, default=0.9, help="Top-p nucleus threshold (default: 0.9)")
+    parser.add_argument("--p", type=float, default=0.9, help="Top-p threshold (default: 0.9)")
     parser.add_argument("--beam", type=int, default=100, help="Beam width (default: 100)")
     parser.add_argument("--top", type=int, default=5, help="Results to show")
+    parser.add_argument("--model", type=str, default="gpt2", help="GPT-2 model name")
     args = parser.parse_args()
 
-    print("Loading Brown corpus...")
-    nltk.download('brown', quiet=True)
-    sentences = brown.sents()
-    print(f"  {len(sentences)} sentences")
-
-    lm = NgramLM(n=3)
-    lm.train(sentences)
+    lm = GPT2LM(args.model)
 
     print(f"\n{'#'*60}")
     print(f"GRID: {args.rows} rows x {args.cols} columns")
     print('#'*60)
 
-    beams = beam_search_v3(lm, VOCAB, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam)
+    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam)
     display_results(beams, n=args.top)
 
 
