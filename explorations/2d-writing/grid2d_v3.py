@@ -4,7 +4,7 @@
 Horizontal: Read left-to-right, wrapping at line ends = one continuous passage.
 Vertical: Each column is an independent sentence (no wrapping between columns).
 
-Uses GPT-2 with top-p sampling, no artificial vocab restrictions.
+Uses a causal LM with top-p sampling, no artificial vocab restrictions.
 """
 
 import argparse
@@ -14,17 +14,17 @@ from dataclasses import dataclass
 
 import torch
 import torch.nn.functional as F
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-class GPT2LM:
-    """GPT-2 language model with top-p sampling."""
+class CausalLM:
+    """Causal language model with top-p sampling. Works with any HuggingFace causal LM."""
 
     def __init__(self, model_name: str = "gpt2"):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"Loading GPT-2 '{model_name}' on {self.device}...")
-        self.tokenizer = GPT2Tokenizer.from_pretrained(model_name)
-        self.model = GPT2LMHeadModel.from_pretrained(model_name).to(self.device)
+        print(f"Loading '{model_name}' on {self.device}...")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForCausalLM.from_pretrained(model_name).to(self.device)
         self.model.eval()
         print("  Loaded.")
 
@@ -44,7 +44,8 @@ class GPT2LM:
         if context_str:
             input_ids = self.tokenizer.encode(context_str, return_tensors="pt").to(self.device)
         else:
-            input_ids = torch.tensor([[self.tokenizer.bos_token_id or 50256]]).to(self.device)
+            bos = self.tokenizer.bos_token_id or self.tokenizer.eos_token_id or 0
+            input_ids = torch.tensor([[bos]]).to(self.device)
 
         # Get next token probabilities
         with torch.no_grad():
@@ -122,7 +123,7 @@ class Beam:
 
 
 def beam_search_v3(
-    lm: GPT2LM,
+    lm: CausalLM,
     n_rows: int = 4,
     n_cols: int = 4,
     p: float = 0.9,
@@ -237,7 +238,7 @@ def main():
     parser.add_argument("--prefix", type=str, default="", help="Instruction prefix prepended to context (e.g. 'Finish the story: ')")
     args = parser.parse_args()
 
-    lm = GPT2LM(args.model)
+    lm = CausalLM(args.model)
 
     print(f"\n{'#'*60}")
     print(f"GRID: {args.rows} rows x {args.cols} columns")
