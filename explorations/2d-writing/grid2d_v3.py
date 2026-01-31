@@ -130,21 +130,26 @@ def beam_search_v3(
     beam_width: int = 100,
     alpha_only: bool = False,
     prefix: str = "",
+    vertical_prefix: str = "",
     verbose: bool = True
 ) -> List[Beam]:
     """
-    Beam search using top-p sampling from GPT-2.
+    Beam search using top-p sampling from a causal LM.
 
     Each word must be in the top-p nucleus for both:
     - Horizontal context (all previous words in reading order)
     - Column context (words above in same column)
 
-    If prefix is set, it is prepended to every context before querying GPT-2.
+    prefix: prepended to horizontal context.
+    vertical_prefix: prepended to column context. If empty, falls back to prefix.
     """
+    v_prefix = vertical_prefix if vertical_prefix else prefix
     if verbose:
         print(f"v3 Beam Search: {n_rows}x{n_cols}, p={p}, beam_width={beam_width}")
         if prefix:
-            print(f"  Prefix: {prefix!r}")
+            print(f"  H-Prefix: {prefix!r}")
+        if v_prefix:
+            print(f"  V-Prefix: {v_prefix!r}")
 
     initial_grid = [[None for _ in range(n_cols)] for _ in range(n_rows)]
     beams = [Beam(grid=initial_grid, score=0.0)]
@@ -161,7 +166,7 @@ def beam_search_v3(
                 c_context = beam.get_column_context(row, col)
 
                 h_top_p = lm.get_top_p(h_context, p, alpha_only=alpha_only, prefix=prefix)
-                c_top_p = lm.get_top_p(c_context, p, alpha_only=alpha_only, prefix=prefix)
+                c_top_p = lm.get_top_p(c_context, p, alpha_only=alpha_only, prefix=v_prefix)
 
                 h_words = {w for w, _ in h_top_p}
                 c_words = {w for w, _ in c_top_p}
@@ -235,7 +240,8 @@ def main():
     parser.add_argument("--top", type=int, default=5, help="Results to show")
     parser.add_argument("--model", type=str, default="gpt2", help="GPT-2 model name")
     parser.add_argument("--alpha-only", action="store_true", help="Only allow alphabetic tokens (filter punctuation)")
-    parser.add_argument("--prefix", type=str, default="", help="Instruction prefix prepended to context (e.g. 'Finish the story: ')")
+    parser.add_argument("--prefix", type=str, default="", help="Instruction prefix for horizontal context (e.g. 'Finish the story: ')")
+    parser.add_argument("--vertical-prefix", type=str, default="", help="Instruction prefix for column context (falls back to --prefix if not set)")
     args = parser.parse_args()
 
     lm = CausalLM(args.model)
@@ -244,7 +250,7 @@ def main():
     print(f"GRID: {args.rows} rows x {args.cols} columns")
     print('#'*60)
 
-    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only, prefix=args.prefix)
+    beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only, prefix=args.prefix, vertical_prefix=args.vertical_prefix)
     display_results(beams, n=args.top)
 
 
