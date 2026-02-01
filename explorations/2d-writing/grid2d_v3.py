@@ -9,6 +9,9 @@ Uses a causal LM with top-p sampling, no artificial vocab restrictions.
 
 import argparse
 import math
+import os
+import sys
+from datetime import datetime
 from typing import List, Tuple, Optional
 from dataclasses import dataclass
 
@@ -242,7 +245,32 @@ def main():
     parser.add_argument("--alpha-only", action="store_true", help="Only allow alphabetic tokens (filter punctuation)")
     parser.add_argument("--prefix", type=str, default="", help="Instruction prefix for horizontal context (e.g. 'Finish the story: ')")
     parser.add_argument("--vertical-prefix", type=str, default="", help="Instruction prefix for column context (falls back to --prefix if not set)")
+    parser.add_argument("--output-dir", type=str, default="runs", help="Directory to write timestamped output file")
     args = parser.parse_args()
+
+    # Set up timestamped output file (tee to both stdout and file)
+    os.makedirs(args.output_dir, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    outpath = f"{args.output_dir}/run_{timestamp}.txt"
+    outfile = open(outpath, "w")
+    original_stdout = sys.stdout
+
+    class Tee:
+        """Write to both stdout and a file."""
+        def __init__(self, *streams):
+            self.streams = streams
+        def write(self, data):
+            for s in self.streams:
+                s.write(data)
+                s.flush()
+        def flush(self):
+            for s in self.streams:
+                s.flush()
+        def isatty(self):
+            return False
+
+    sys.stdout = Tee(original_stdout, outfile)
+    print(f"Output file: {outpath}")
 
     lm = CausalLM(args.model)
 
@@ -252,6 +280,10 @@ def main():
 
     beams = beam_search_v3(lm, n_rows=args.rows, n_cols=args.cols, p=args.p, beam_width=args.beam, alpha_only=args.alpha_only, prefix=args.prefix, vertical_prefix=args.vertical_prefix)
     display_results(beams, n=args.top)
+
+    outfile.close()
+    sys.stdout = original_stdout
+    print(f"\nResults saved to {outpath}")
 
 
 if __name__ == "__main__":
