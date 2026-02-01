@@ -85,6 +85,11 @@ This is an exploration/sandbox repository. The goal is rapid experimentation and
 - Do not use try/except for "fallbacks" without ASKIMG ME FIRST if it makes sense.
 - Do not let errors fail silently. It is hard to debug. Things should fail loudly so we know and can fix!
 
+## Running Commands
+
+- NEVER redirect stderr to /dev/null (2>/dev/null). The user needs to see error output.
+- Do not suppress output. Let the user see what is happening.
+
 ## What NOT To Do
 
 - Don't create elaborate project structures for simple explorations
