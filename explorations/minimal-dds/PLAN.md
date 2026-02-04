@@ -35,25 +35,25 @@ Transition: (f, x) → (φ(f, x), f(x))
 ## Stages
 
 ### Stage 1: Literature Review
-- [ ] Self-modifying Turing machines, reflective towers
-- [ ] AIXI and related frameworks
-- [ ] Post tag systems
-- [ ] Iterated function systems (IFS)
-- [ ] Symbolic dynamics: subshifts, sliding block codes
-- [ ] Kolmogorov complexity and algorithmic randomness
-- [ ] Computational mechanics (epsilon-machines, Crutchfield)
-- [ ] LLM self-play, iterative refinement, constitutional AI loops
-- [ ] Write report (LIT_REVIEW.md)
-- [ ] Download available papers to papers/
+- [x] Self-modifying Turing machines, reflective towers
+- [x] AIXI and related frameworks
+- [x] Post tag systems
+- [x] Iterated function systems (IFS)
+- [x] Symbolic dynamics: subshifts, sliding block codes
+- [x] Kolmogorov complexity and algorithmic randomness
+- [x] Computational mechanics (epsilon-machines, Crutchfield)
+- [x] LLM self-play, iterative refinement, constitutional AI loops
+- [x] Write report (LIT_REVIEW.md)
+- [x] Download available papers to papers/
 
 ### Stage 2: Implementation & Experiments
-- [ ] Core engine: (f, x) dynamical system with finite F, X
-- [ ] Enumerate all meta-rules φ for small F, X
-- [ ] Functional graph construction and visualization
-- [ ] Orbit classification: fixed points, cycles, transient lengths
-- [ ] Complexity measures on orbits
-- [ ] Stochastic extension (probabilistic φ)
-- [ ] Visualizations
+- [x] Core engine: (f, x) dynamical system with finite F, X (dds.py)
+- [x] Enumerate all meta-rules φ for small F, X (enumerate_meta.py: 65536 for n=2)
+- [x] Functional graph construction and visualization (visualize.py)
+- [x] Orbit classification: fixed points, cycles, transient lengths
+- [x] Complexity measures on orbits (LZ complexity, mutation rate, creativity score)
+- [x] Stochastic extension (stochastic.py: noisy meta-rules, temperature-based, escape rates)
+- [x] Visualizations (functional graphs, comparison charts, orbit complexity scatter)
 
 ### Stage 3 (future): Extensions
 - [ ] Multi-agent coupled maps
