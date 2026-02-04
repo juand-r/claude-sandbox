@@ -1,0 +1,52 @@
+[
+  {
+    "n": 2,
+    "phi": "identity",
+    "total_states": 8,
+    "fixed_points": 4,
+    "distinct_cycles": 1,
+    "max_transient": 1,
+    "max_cycle_length": 2,
+    "avg_distinct_functions": 1.0
+  },
+  {
+    "n": 2,
+    "phi": "shift_table",
+    "total_states": 8,
+    "fixed_points": 2,
+    "distinct_cycles": 1,
+    "max_transient": 1,
+    "max_cycle_length": 4,
+    "avg_distinct_functions": 1.5
+  },
+  {
+    "n": 2,
+    "phi": "xor_output",
+    "total_states": 8,
+    "fixed_points": 2,
+    "distinct_cycles": 1,
+    "max_transient": 2,
+    "max_cycle_length": 3,
+    "avg_distinct_functions": 1.75
+  },
+  {
+    "n": 2,
+    "phi": "permute_01",
+    "total_states": 8,
+    "fixed_points": 2,
+    "distinct_cycles": 1,
+    "max_transient": 1,
+    "max_cycle_length": 4,
+    "avg_distinct_functions": 1.5
+  },
+  {
+    "n": 2,
+    "phi": "rotate_3",
+    "total_states": 8,
+    "fixed_points": 0,
+    "distinct_cycles": 1,
+    "max_transient": 4,
+    "max_cycle_length": 3,
+    "avg_distinct_functions": 3.25
+  }
+]
