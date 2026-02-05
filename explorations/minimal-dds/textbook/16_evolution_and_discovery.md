@@ -443,6 +443,288 @@ However, LLMs also introduce risks:
 
 The combination of LLMs with explicit evaluation (fitness functions, proof checkers, experiments) addresses these risks by grounding creativity in verification.
 
+### 16.8.4 Implementation Examples
+
+The following code snippets illustrate key components of the systems discussed in this chapter.
+
+**Genetic Algorithm with Novelty Pressure:**
+
+```python
+import random
+from typing import List, Callable, TypeVar
+
+T = TypeVar('T')
+
+def genetic_algorithm_with_novelty(
+    population: List[T],
+    fitness: Callable[[T], float],
+    distance: Callable[[T, T], float],
+    mutate: Callable[[T], T],
+    crossover: Callable[[T, T], T],
+    generations: int = 100,
+    novelty_weight: float = 0.3,
+    k_nearest: int = 5,
+) -> List[T]:
+    """GA with novelty-weighted fitness (Section 16.3.4)."""
+    archive = list(population)  # Historical solutions
+
+    for gen in range(generations):
+        # Compute novelty for each individual
+        def novelty(x: T) -> float:
+            distances = sorted([distance(x, a) for a in archive])
+            return sum(distances[:k_nearest]) / k_nearest
+
+        # Combined fitness: quality + novelty
+        def combined_fitness(x: T) -> float:
+            return (1 - novelty_weight) * fitness(x) + novelty_weight * novelty(x)
+
+        # Selection (tournament)
+        def select() -> T:
+            contestants = random.sample(population, 3)
+            return max(contestants, key=combined_fitness)
+
+        # Generate offspring
+        offspring = []
+        for _ in range(len(population)):
+            p1, p2 = select(), select()
+            child = crossover(p1, p2)
+            child = mutate(child)
+            offspring.append(child)
+
+        # Update population and archive
+        population = offspring
+        archive.extend(offspring)
+
+    return population
+```
+
+**Novelty Search (Section 16.4.1):**
+
+```python
+def novelty_search(
+    initial_population: List[T],
+    behavior: Callable[[T], List[float]],  # Map solution to behavior descriptor
+    distance: Callable[[List[float], List[float]], float],
+    mutate: Callable[[T], T],
+    generations: int = 100,
+    archive_threshold: float = 0.5,
+) -> tuple[List[T], List[T]]:
+    """Pure novelty search: selection based only on behavioral novelty."""
+    population = list(initial_population)
+    archive = []  # Archive of novel behaviors
+
+    for gen in range(generations):
+        # Compute behavior descriptors
+        behaviors = [behavior(x) for x in population]
+
+        # Compute novelty scores (average distance to k-nearest in archive + population)
+        def novelty_score(b: List[float]) -> float:
+            all_behaviors = behaviors + [behavior(a) for a in archive]
+            if not all_behaviors:
+                return float('inf')
+            distances = sorted([distance(b, ob) for ob in all_behaviors])
+            return sum(distances[:15]) / min(15, len(distances))
+
+        novelties = [novelty_score(b) for b in behaviors]
+
+        # Add novel individuals to archive
+        for x, b, nov in zip(population, behaviors, novelties):
+            if nov > archive_threshold:
+                archive.append(x)
+
+        # Selection by novelty (tournament)
+        def select() -> T:
+            indices = random.sample(range(len(population)), 3)
+            best_idx = max(indices, key=lambda i: novelties[i])
+            return population[best_idx]
+
+        # Generate next generation
+        population = [mutate(select()) for _ in range(len(population))]
+
+    return population, archive
+```
+
+**MAP-Elites (Section 16.4.3):**
+
+```python
+from typing import Dict, Tuple, Optional
+import numpy as np
+
+def map_elites(
+    initial_solutions: List[T],
+    fitness: Callable[[T], float],
+    behavior_descriptor: Callable[[T], Tuple[int, ...]],  # Maps to grid cell
+    mutate: Callable[[T], T],
+    grid_dims: Tuple[int, ...],
+    iterations: int = 10000,
+) -> Dict[Tuple[int, ...], Tuple[T, float]]:
+    """MAP-Elites: maintain a grid of behavioral niches, each with its elite."""
+    # Grid: maps cell coordinates to (solution, fitness)
+    grid: Dict[Tuple[int, ...], Tuple[T, float]] = {}
+
+    # Initialize with random solutions
+    for x in initial_solutions:
+        cell = behavior_descriptor(x)
+        fit = fitness(x)
+        if cell not in grid or fit > grid[cell][1]:
+            grid[cell] = (x, fit)
+
+    for iteration in range(iterations):
+        if not grid:
+            break
+
+        # Select random occupied cell
+        cell = random.choice(list(grid.keys()))
+        elite, _ = grid[cell]
+
+        # Mutate to produce offspring
+        offspring = mutate(elite)
+        offspring_cell = behavior_descriptor(offspring)
+        offspring_fit = fitness(offspring)
+
+        # Update grid if offspring is better for its cell
+        if offspring_cell not in grid or offspring_fit > grid[offspring_cell][1]:
+            grid[offspring_cell] = (offspring, offspring_fit)
+
+    return grid
+
+def qd_metrics(grid: Dict, grid_dims: Tuple[int, ...]) -> dict:
+    """Compute Quality-Diversity metrics for a MAP-Elites grid."""
+    total_cells = np.prod(grid_dims)
+    occupied = len(grid)
+
+    fitnesses = [fit for _, fit in grid.values()]
+
+    return {
+        'coverage': occupied / total_cells,
+        'qd_score': sum(fitnesses),  # Sum of all elite fitnesses
+        'max_fitness': max(fitnesses) if fitnesses else 0,
+        'mean_fitness': np.mean(fitnesses) if fitnesses else 0,
+    }
+```
+
+**LLM Mutation Operator (Section 16.5.1):**
+
+```python
+def llm_mutation_operator(
+    solution: str,
+    llm_generate: Callable[[str], str],
+    mutation_type: str = 'improve',
+) -> str:
+    """Use an LLM as an intelligent mutation operator for programs/text."""
+
+    prompts = {
+        'improve': f"""Improve this solution while keeping its core approach:
+
+{solution}
+
+Return only the improved solution, no explanation.""",
+
+        'vary': f"""Create a variation of this solution with a different approach:
+
+{solution}
+
+Return only the new solution, no explanation.""",
+
+        'simplify': f"""Simplify this solution while maintaining functionality:
+
+{solution}
+
+Return only the simplified solution, no explanation.""",
+
+        'combine': f"""This is a template. Create a novel variation inspired by it:
+
+{solution}
+
+Return only the new solution, no explanation.""",
+    }
+
+    prompt = prompts.get(mutation_type, prompts['improve'])
+    return llm_generate(prompt)
+
+
+def funsearch_iteration(
+    archive: List[Tuple[str, float]],  # (program, score) pairs
+    llm_generate: Callable[[str], str],
+    evaluate: Callable[[str], float],
+    num_samples: int = 2,
+) -> List[Tuple[str, float]]:
+    """One iteration of FunSearch (Section 16.5.2)."""
+
+    # Sample high-scoring programs from archive
+    if len(archive) < num_samples:
+        samples = archive
+    else:
+        # Weighted sampling by score
+        weights = [score for _, score in archive]
+        min_w = min(weights)
+        weights = [w - min_w + 1 for w in weights]  # Ensure positive
+        samples = random.choices(archive, weights=weights, k=num_samples)
+
+    # Create prompt with sampled programs
+    programs_text = "\n\n".join([
+        f"# Score: {score:.3f}\n{prog}"
+        for prog, score in samples
+    ])
+
+    prompt = f"""Here are some high-scoring programs:
+
+{programs_text}
+
+Write a new, improved program that could score even higher.
+Return only the program code."""
+
+    # Generate new program
+    new_program = llm_generate(prompt)
+
+    try:
+        score = evaluate(new_program)
+        return archive + [(new_program, score)]
+    except Exception:
+        return archive  # Skip invalid programs
+```
+
+**Measuring Scientific Discovery Dynamics:**
+
+```python
+def discovery_system_metrics(
+    hypotheses: List[str],
+    embedder: Callable[[str], List[float]],
+    evidence_scores: List[float],
+) -> dict:
+    """Metrics for a scientific discovery trajectory (Section 16.2)."""
+    import numpy as np
+
+    if len(hypotheses) < 2:
+        return {'trajectory_length': len(hypotheses)}
+
+    # Embed all hypotheses
+    embeddings = [embedder(h) for h in hypotheses]
+    embeddings = np.array(embeddings)
+
+    # Cumulative novelty: distance from each hypothesis to all previous
+    cumulative_novelties = []
+    for i in range(1, len(embeddings)):
+        distances = np.linalg.norm(embeddings[:i] - embeddings[i], axis=1)
+        cumulative_novelties.append(np.min(distances))
+
+    # Evidence improvement over time
+    evidence_improvement = [
+        evidence_scores[i] - evidence_scores[i-1]
+        for i in range(1, len(evidence_scores))
+    ]
+
+    return {
+        'trajectory_length': len(hypotheses),
+        'total_novelty': sum(cumulative_novelties),
+        'mean_cumulative_novelty': np.mean(cumulative_novelties),
+        'novelty_trend': np.polyfit(range(len(cumulative_novelties)),
+                                     cumulative_novelties, 1)[0],  # Slope
+        'evidence_improvement': sum(evidence_improvement),
+        'final_evidence': evidence_scores[-1] if evidence_scores else 0,
+    }
+```
+
 ---
 
 ## 16.9 Open Questions
@@ -491,6 +773,45 @@ The framework developed in this textbook---discrete dynamical systems, symbolic 
 
 ---
 
+## Recommended Reading
+
+**Philosophy and History of Science:**
+- Kuhn, T. S. (1962). *The Structure of Scientific Revolutions* --- paradigm shifts and normal science.
+- Popper, K. (1959). *The Logic of Scientific Discovery* --- falsificationism and the scientific method.
+- Kauffman, S. A. (1996). *At Home in the Universe* --- the adjacent possible and self-organization.
+
+**Evolutionary Computation Foundations:**
+- Holland, J. H. (1975). *Adaptation in Natural and Artificial Systems* --- foundational text on genetic algorithms.
+- Goldberg, D. E. (1989). *Genetic Algorithms in Search, Optimization, and Machine Learning* --- comprehensive GA textbook.
+- Eiben, A. E. and Smith, J. E. (2015). *Introduction to Evolutionary Computing* --- modern introduction to the field.
+
+**Novelty Search and Quality-Diversity:**
+- Lehman, J. and Stanley, K. O. (2011). "Abandoning Objectives: Evolution Through the Search for Novelty Alone" --- the foundational novelty search paper.
+- Mouret, J.-B. and Clune, J. (2015). "Illuminating Search Spaces by Mapping Elites" --- introduces MAP-Elites.
+- Pugh, J. K., Soros, L. B., and Stanley, K. O. (2016). "Quality Diversity: A New Frontier for Evolutionary Computation" --- comprehensive survey.
+
+**LLM-Augmented Evolution:**
+- Lehman, J., et al. (2022). "Evolution Through Large Models" --- introduces ELM concept.
+- Romera-Paredes, B., et al. (2024). "Mathematical Discoveries from Program Search with Large Language Models" --- FunSearch (Nature).
+- Chen, A., Dohan, D., and So, D. R. (2024). "EvoPrompt: Language Models for Code-Level Neural Architecture Search" --- LLMs for NAS.
+
+**AI for Scientific Discovery:**
+- Lu, C., et al. (2024). "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery" --- full scientific pipeline automation.
+- Wang, H., et al. (2023). "Scientific Discovery in the Age of Artificial Intelligence" --- Nature survey of AI in science.
+- Jumper, J., et al. (2021). "Highly Accurate Protein Structure Prediction with AlphaFold" --- landmark AI discovery (Nature).
+
+**Open-Endedness:**
+- Stanley, K. O., Lehman, J., and Soros, L. (2017). "Open-Endedness: The Last Grand Challenge You've Never Heard Of" --- accessible introduction.
+- Soros, L. B. and Stanley, K. O. (2014). "Identifying Necessary Conditions for Open-Ended Evolution" --- formal conditions.
+- Bedau, M. A. (2003). "Artificial Life: Organization, Adaptation, and Complexity from the Bottom Up" --- ALife perspective.
+
+**Computational Creativity:**
+- Boden, M. A. (2004). *The Creative Mind: Myths and Mechanisms* --- cognitive science of creativity.
+- Colton, S. and Wiggins, G. A. (2012). "Computational Creativity: The Final Frontier?" --- survey of computational creativity.
+- Schmidhuber, J. (2010). "Formal Theory of Creativity, Fun, and Intrinsic Motivation" --- information-theoretic creativity.
+
+---
+
 ## References
 
 - Clune, J. (2019). AI-GAs: AI-generating algorithms, an alternate paradigm for producing general artificial intelligence. *arXiv preprint* arXiv:1905.10985.
@@ -509,7 +830,7 @@ The framework developed in this textbook---discrete dynamical systems, symbolic 
 
 - Mouret, J.-B. and Clune, J. (2015). Illuminating search spaces by mapping elites. *arXiv preprint* arXiv:1504.04909.
 
-- Romera-Paredes, B., Barekatain, M., Novikov, A., Balog, M., Kumar, M. P., Dupont, E., Ruiz, F. J. R., Ellenberg, J. S., Wang, P., Fawzi, O., Kohli, P., and Fawzi, A. (2023). Mathematical discoveries from program search with large language models. *Nature*, 625:468--475.
+- Romera-Paredes, B., Barekatain, M., Novikov, A., Balog, M., Kumar, M. P., Dupont, E., Ruiz, F. J. R., Ellenberg, J. S., Wang, P., Fawzi, O., Kohli, P., and Fawzi, A. (2024). Mathematical discoveries from program search with large language models. *Nature*, 625:468--475.
 
 - Sakana AI (2025). The AI Scientist-v2: Workshop-level automated scientific discovery via agentic tree search.
 

@@ -1041,7 +1041,7 @@ The cognitive findings converge on a unified picture:
 
 ---
 
-## 15.17 Open Questions
+## 15.16 Open Questions
 
 **Question 15.75 (Practical depth estimation).** Can we develop efficient estimators for logical depth or depth-like quantities that distinguish "structured complex" from "random" sequences in LLM outputs?
 
@@ -1063,7 +1063,7 @@ The cognitive findings converge on a unified picture:
 
 ---
 
-## 15.18 Summary
+## 15.17 Summary
 
 | Concept | Metric | Captures |
 |---------|--------|----------|
@@ -1090,6 +1090,39 @@ We identified two key extensions to the basic framework:
 1. **Novelty-increasing dynamics**: Most LLM systems exhibit novelty decay (model collapse, attractor convergence). But divergent prompts, adversarial multi-agent systems, and novelty search can sustain or increase diversity. The novelty Lyapunov exponent $\lambda_D$ characterizes whether a system is contractive ($\lambda_D < 0$), conservative ($\lambda_D = 0$), or expansive ($\lambda_D > 0$).
 
 2. **Relative novelty**: Absolute diversity measures miss the question "novel compared to what?" Relative novelty with respect to a reference set $\mathcal{R}$ captures originality. The choice of $\mathcal{R}$---training data, prior outputs, human baselines---determines what kind of novelty we measure. The ideal generative output occupies the (high absolute, high relative, high coherence) corner of the novelty-coherence-reference triangle.
+
+---
+
+## Recommended Reading
+
+**Foundational:**
+- Shannon, C. E. (1948). "A Mathematical Theory of Communication" --- the origin of information-theoretic measures of diversity.
+- Lempel, A. and Ziv, J. (1976). "On the Complexity of Finite Sequences" --- introduces the LZ complexity measure.
+- Bennett, C. H. (1988). "Logical Depth and Physical Complexity" --- distinguishes structured complexity from randomness.
+
+**Text Generation Diversity:**
+- Li et al. (2016). "A Diversity-Promoting Objective Function for Neural Conversation Models" --- introduces Distinct-n and MMI decoding.
+- Holtzman et al. (2020). "The Curious Case of Neural Text Degeneration" --- essential reading on the degeneration problem and nucleus sampling.
+- Welleck et al. (2020). "Neural Text Generation With Unlikelihood Training" --- unlikelihood objective to reduce repetition.
+
+**Computational Mechanics:**
+- Crutchfield, J. P. and Young, K. (1989). "Inferring Statistical Complexity" --- epsilon-machines and statistical complexity.
+- Shalizi, C. R. and Crutchfield, J. P. (2001). "Computational Mechanics: Pattern and Prediction, Structure and Simplicity" --- comprehensive introduction to computational mechanics.
+
+**Cognitive Science of Novelty:**
+- Berlyne, D. E. (1960). *Conflict, Arousal, and Curiosity* --- classic work on curiosity and the inverted-U relationship.
+- Friston, K. (2010). "The Free-Energy Principle: A Unified Brain Theory?" --- predictive processing framework.
+- Schmidhuber, J. (2010). "Formal Theory of Creativity, Fun, and Intrinsic Motivation" --- computational theory of curiosity.
+
+**Modern Diversity Metrics:**
+- Pillutla et al. (2021). "MAUVE: Measuring the Gap Between Neural Text and Human Text" --- distribution comparison for generation evaluation.
+- Tevet & Berant (2021). "Evaluating the Evaluation of Diversity in Natural Language Generation" --- critical analysis of diversity metrics.
+- Kirchherr et al. (2024). "Kernel-based Entropic Novelty" --- advanced kernel-based novelty measures.
+
+**Mathematical Foundations:**
+- Cover, T. M. and Thomas, J. A. (2006). *Elements of Information Theory* --- comprehensive reference for entropy and information measures.
+- Peyré, G. and Cuturi, M. (2019). "Computational Optimal Transport" --- Wasserstein distances and optimal transport.
+- Kulesza, A. and Taskar, B. (2012). "Determinantal Point Processes for Machine Learning" --- DPPs for diverse sampling.
 
 ---
 
