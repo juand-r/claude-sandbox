@@ -1,0 +1,182 @@
+Loading MultiRC dataset...
+
+################################################################################
+# TRAIN
+################################################################################
+Total rows (answer options): 27243
+
+================================================================================
+Example 1 (paragraph=0, question=0)
+================================================================================
+Passage (first 300 chars): While this process moved along, diplomacy continued its rounds. Direct pressure on the Taliban had proved unsuccessful. As one NSC staff note put it, "Under the Taliban, Afghanistan is not so much a state sponsor of terrorism as it is a state sponsored by terrorists." In early 2000, the United State...
+
+Question: What did the high-level effort to persuade Pakistan include?
+
+Answers (9 total):
+  [WRONG] Children, Gerd, or Dorian Popa
+  [WRONG] Monetary rewards
+  [CORRECT] Asking Pakistan to help the USA
+  [CORRECT] Meeting with General Musharraf
+  [CORRECT] President Clinton offered the moon in terms of better relations with the United States
+  [WRONG] A Presidential visit in March
+  [CORRECT] Paper checks
+  [WRONG] Increasing trade with Pakistan
+  [CORRECT] Persuading Pakistan to use its influence over the Taliban by dangling before him the possibility of a presidential visit in March as a reward for Pakistani cooperation
+
+================================================================================
+Example 2 (paragraph=0, question=1)
+================================================================================
+Passage (first 300 chars): While this process moved along, diplomacy continued its rounds. Direct pressure on the Taliban had proved unsuccessful. As one NSC staff note put it, "Under the Taliban, Afghanistan is not so much a state sponsor of terrorism as it is a state sponsored by terrorists." In early 2000, the United State...
+
+Question: Following his meeting with US Assistant Secretary of State and US State Department's counterterrorism coordinator, who did Musharraf intend to meet to discuss  Bin Laden?
+
+Answers (6 total):
+  [WRONG] Romanian police or secret service
+  [WRONG] President Cliton
+  [WRONG] Karl Inderfurth
+  [WRONG] Michael Sheehan
+  [CORRECT] The department of counterterrorism
+  [CORRECT] Mullah Omar
+
+================================================================================
+Example 3 (paragraph=0, question=2)
+================================================================================
+Passage (first 300 chars): While this process moved along, diplomacy continued its rounds. Direct pressure on the Taliban had proved unsuccessful. As one NSC staff note put it, "Under the Taliban, Afghanistan is not so much a state sponsor of terrorism as it is a state sponsored by terrorists." In early 2000, the United State...
+
+Question: Did the CIA and the State Department agree on their advice to President Clinton in terms of his intention to visit both India and Pakistan?
+
+Answers (4 total):
+  [CORRECT] No
+  [WRONG] Yes
+  [WRONG] Yes there was no disagreement between the two
+  [CORRECT] No, the CIA felt it would risk the president's life and they felt that Pakistan had not done enough to merit a presidential visit
+
+================================================================================
+Basic Stats: train
+================================================================================
+Number of questions: 5131
+Number of unique passages: 456
+
+Total answers per question:
+  min=1, max=21, mean=5.31, median=5.0
+  Distribution: {5: 1036, 4: 871, 3: 817, 6: 691, 7: 630, 2: 331, 8: 311, 9: 220, 10: 106, 11: 56}
+
+Correct answers per question:
+  min=0, max=10, mean=2.34, median=2.0
+  Distribution: {2: 1730, 1: 1382, 3: 1199, 4: 533, 5: 183, 6: 52, 0: 23, 7: 14, 8: 8, 9: 5}
+
+Incorrect answers per question:
+  min=0, max=12, mean=2.97, median=3.0
+  Distribution: {2: 1370, 3: 1269, 4: 883, 1: 831, 5: 440, 6: 180, 7: 81, 8: 33, 0: 23, 9: 15}
+
+
+Questions with >= N total_answers (train):
+ N  count fraction   pct
+ 4   3978   0.7753 77.5%
+ 5   3107   0.6055 60.6%
+10    219   0.0427  4.3%
+15     12   0.0023  0.2%
+20      1   0.0002  0.0%
+21      1   0.0002  0.0%
+
+Questions with >= N incorrect_answers (train):
+ N  count fraction   pct
+ 4   1638   0.3192 31.9%
+ 5    755   0.1471 14.7%
+10      6   0.0012  0.1%
+12      1   0.0002  0.0%
+
+Questions with >= N correct_answers (train):
+ N  count fraction   pct
+ 4    797   0.1553 15.5%
+ 5    264   0.0515  5.1%
+10      2   0.0004  0.0%
+
+################################################################################
+# VALIDATION
+################################################################################
+Total rows (answer options): 4848
+
+================================================================================
+Example 1 (paragraph=0, question=0)
+================================================================================
+Passage (first 300 chars): What causes a change in motion? The application of a force. Any time an object changes motion, a force has been applied. In what ways can this happen? Force can cause an object at rest to start moving. Forces can cause objects to speed up or slow down. Forces can cause a moving object to stop. Force...
+
+Question: Would the mass of a baseball affect how much force you have to use to pick it up?
+
+Answers (4 total):
+  [WRONG] No
+  [CORRECT] Yes
+  [CORRECT] Less the mass, less the force applied
+  [WRONG] It depends on the shape of the baseball
+
+================================================================================
+Example 2 (paragraph=0, question=1)
+================================================================================
+Passage (first 300 chars): What causes a change in motion? The application of a force. Any time an object changes motion, a force has been applied. In what ways can this happen? Force can cause an object at rest to start moving. Forces can cause objects to speed up or slow down. Forces can cause a moving object to stop. Force...
+
+Question: What do you apply to an object to make it move or stop?
+
+Answers (5 total):
+  [WRONG] Strength
+  [WRONG] Nothing, it will stop on its own
+  [CORRECT] Apply force on the ball
+  [CORRECT] A force
+  [WRONG] Pressure
+
+================================================================================
+Example 3 (paragraph=0, question=2)
+================================================================================
+Passage (first 300 chars): What causes a change in motion? The application of a force. Any time an object changes motion, a force has been applied. In what ways can this happen? Force can cause an object at rest to start moving. Forces can cause objects to speed up or slow down. Forces can cause a moving object to stop. Force...
+
+Question: Does an object's mass has very little to do affect how much its motion changes when a force is applied to it?
+
+Answers (4 total):
+  [WRONG] How much an objects motion changes when a force is applied, has very little to do with the objects mass
+  [WRONG] No
+  [WRONG] Motion changes only depend on the strength of the force applied
+  [CORRECT] Yes
+
+================================================================================
+Basic Stats: validation
+================================================================================
+Number of questions: 953
+Number of unique passages: 83
+
+Total answers per question:
+  min=2, max=14, mean=5.09, median=5.0
+  Distribution: {5: 214, 4: 169, 3: 159, 6: 143, 7: 109, 2: 58, 8: 55, 9: 24, 10: 13, 11: 8}
+
+Correct answers per question:
+  min=0, max=7, mean=2.18, median=2.0
+  Distribution: {2: 341, 1: 297, 3: 200, 4: 79, 5: 24, 7: 6, 6: 3, 0: 3}
+
+Incorrect answers per question:
+  min=0, max=9, mean=2.91, median=3.0
+  Distribution: {2: 233, 3: 227, 4: 199, 1: 166, 5: 80, 6: 27, 0: 8, 8: 5, 7: 5, 9: 3}
+
+
+Questions with >= N total_answers (validation):
+ N  count fraction   pct
+ 4    736   0.7723 77.2%
+ 5    567   0.5950 59.5%
+10     22   0.0231  2.3%
+14      1   0.0010  0.1%
+
+Questions with >= N incorrect_answers (validation):
+ N  count fraction   pct
+ 4    319   0.3347 33.5%
+ 5    120   0.1259 12.6%
+ 9      3   0.0031  0.3%
+
+Questions with >= N correct_answers (validation):
+ N  count fraction   pct
+ 4    112   0.1175 11.8%
+ 5     33   0.0346  3.5%
+ 7      6   0.0063  0.6%
+
+Test split has hidden labels (label=-1), skipping analysis.
+Test split rows: 9693
+
+
+Done.
