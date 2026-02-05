@@ -36,3 +36,4 @@ systems and their connection to LLM iteration.
 
 14. [LLMs as Dynamical Systems](14_llms_as_dynamical_systems.md) — Attractor cycles, model collapse, the (f,x) decomposition
 15. [Measuring Novelty Within a Sequence](15_intra_sequence_novelty.md) — TTR, Distinct-n, entropy, compression, the quality-diversity frontier
+16. [Evolution, Discovery, and Open-Ended Systems](16_evolution_and_discovery.md) — AI-scientist, LLM-augmented evolution, novelty search, the adjacent possible
