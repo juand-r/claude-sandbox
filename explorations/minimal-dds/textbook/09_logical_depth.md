@@ -30,7 +30,7 @@ Fix a universal prefix-free Turing machine $U$. For a program $p$, let $U(p)$ de
 
 **Definition 9.1 (Logical Depth).** Let $x$ be a finite binary string, and let $s \geq 0$ be a non-negative integer called the *significance parameter*. The *logical depth* of $x$ at significance level $s$ is
 
-$$\text{depth}_s(x) = \min \{ T(p) : U(p) = x \text{ and } |p| \leq K(x) + s \}$$
+$$\text{depth}_s(x) = \min \lbrace T(p) : U(p) = x \text{ and } |p| \leq K(x) + s \rbrace $$
 
 where the minimum is taken over all programs $p$ that produce $x$ and whose length exceeds the minimal description length $K(x)$ by at most $s$ bits.
 
@@ -78,7 +78,7 @@ But $O(n)$ steps is essentially the minimum time needed to *write down* an outpu
 
 ### Example 9.4: A Random String
 
-Let $r \in \{0,1\}^n$ be a Kolmogorov-random string, meaning $K(r) \geq n$. The shortest program for $r$ has length at least $n$ and essentially contains $r$ as a literal. This program runs in $O(n)$ time -- it just copies $r$ to the output tape.
+Let $r \in \lbrace 0,1\rbrace ^n$ be a Kolmogorov-random string, meaning $K(r) \geq n$. The shortest program for $r$ has length at least $n$ and essentially contains $r$ as a literal. This program runs in $O(n)$ time -- it just copies $r$ to the output tape.
 
 For any significance level $s$, $\text{depth}_s(r) = O(n)$. The string is **shallow and random**. It is incompressible, but producing it requires no real computation beyond printing.
 
@@ -120,7 +120,7 @@ The Kolmogorov complexity $K(x)$ lumps these together. Sophistication attempts t
 
 **Definition 9.8 (Sophistication, Koppel & Atlan 1991).** Let $x$ be a binary string and $c \geq 0$ a constant. The *sophistication* of $x$ at significance level $c$ is
 
-$$\text{soph}_c(x) = \min \{ |p| : p \text{ is a total program, } (\exists d)[U(p, d) = x], \text{ and } |p| + |d| \leq K(x) + c \}$$
+$$\text{soph}_c(x) = \min \lbrace |p| : p \text{ is a total program, } (\exists d)[U(p, d) = x], \text{ and } |p| + |d| \leq K(x) + c \rbrace $$
 
 where the minimum is taken over all total programs $p$ (programs that halt on every input) such that there exists a "data" string $d$ with $U(p, d) = x$ and the combined length $|p| + |d|$ is within $c$ bits of optimal.
 

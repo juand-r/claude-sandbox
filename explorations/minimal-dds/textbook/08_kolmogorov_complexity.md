@@ -18,9 +18,9 @@ This is exactly what Kolmogorov complexity provides. Independently developed by 
 
 ## 8.2 Definition
 
-Fix a universal Turing machine $U$. For a finite binary string $x \in \{0,1\}^*$, the **Kolmogorov complexity** of $x$ (with respect to $U$) is
+Fix a universal Turing machine $U$. For a finite binary string $x \in \lbrace 0,1\rbrace ^*$, the **Kolmogorov complexity** of $x$ (with respect to $U$) is
 
-$$K_U(x) = \min\{|p| : U(p) = x\}$$
+$$K_U(x) = \min\lbrace |p| : U(p) = x\rbrace $$
 
 where the minimum is over all binary programs $p$ such that $U$ on input $p$ halts and outputs $x$, and $|p|$ denotes the length of $p$ in bits.
 
@@ -48,7 +48,7 @@ The invariance theorem justifies writing $K(x)$ without specifying $U$, with the
 
 ## 8.4 Basic Properties
 
-**Proposition 8.2.** *For all $x \in \{0,1\}^n$:*
+**Proposition 8.2.** *For all $x \in \lbrace 0,1\rbrace ^n$:*
 
 $$K(x) \leq n + c$$
 
@@ -58,7 +58,7 @@ $$K(x) \leq n + c$$
 
 **Proposition 8.3.** *$K_{\text{prefix}}(x) \leq K(x) + O(\log |x|)$.* (More precisely, the prefix-free (self-delimiting) complexity exceeds the plain complexity by at most $O(\log n)$ bits, since the length $n$ can be encoded in $\lceil \log_2 n \rceil + O(\log \log n)$ bits.)
 
-**Theorem 8.4 (Non-computability).** *The function $K : \{0,1\}^* \to \mathbb{N}$ is not computable.*
+**Theorem 8.4 (Non-computability).** *The function $K : \lbrace 0,1\rbrace ^* \to \mathbb{N}$ is not computable.*
 
 *Proof sketch (Berry's paradox).* Suppose for contradiction that $K$ is computable. Then consider the following program $p$: "Enumerate all strings in shortlex order. Output the first string $x$ such that $K(x) > |p| + c_0$." This program has some fixed length $|p| = L$. It outputs a string $x$ with $K(x) > L + c_0$. But $p$ itself is a description of $x$, so $K(x) \leq L$, a contradiction for sufficiently large $c_0$.
 
@@ -70,7 +70,7 @@ This is the formalization of Berry's paradox: "the smallest positive integer not
 
 ## 8.5 Incompressible Strings
 
-**Definition.** A string $x \in \{0,1\}^n$ is **$c$-incompressible** if $K(x) \geq n - c$. A string is **incompressible** if it is $0$-incompressible, i.e., $K(x) \geq |x|$.
+**Definition.** A string $x \in \lbrace 0,1\rbrace ^n$ is **$c$-incompressible** if $K(x) \geq n - c$. A string is **incompressible** if it is $0$-incompressible, i.e., $K(x) \geq |x|$.
 
 **Theorem 8.6 (Counting argument).** *For every $n$ and every $c \geq 0$:*
 
@@ -93,7 +93,7 @@ In particular, for $c = 0$: at most $2^n - 1$ strings have descriptions shorter 
 
 **Definition.** The **conditional Kolmogorov complexity** of $x$ given $y$ is
 
-$$K(x \mid y) = \min\{|p| : U(p, y) = x\}$$
+$$K(x \mid y) = \min\lbrace |p| : U(p, y) = x\rbrace $$
 
 where $U(p, y)$ means running $U$ with program $p$ and auxiliary input $y$.
 
@@ -129,13 +129,13 @@ The "plain" Kolmogorov complexity $K(x)$ defined above has an inconvenient prope
 
 **Definition.** A **prefix-free Turing machine** is one whose domain (the set of inputs on which it halts) is a prefix-free set: no valid input is a proper prefix of another. The **prefix-free Kolmogorov complexity** is
 
-$$K_{\text{prefix}}(x) = \min\{|p| : U_{\text{prefix}}(p) = x\}$$
+$$K_{\text{prefix}}(x) = \min\lbrace |p| : U_{\text{prefix}}(p) = x\rbrace $$
 
 where $U_{\text{prefix}}$ is a universal prefix-free Turing machine.
 
 **Theorem 8.9 (Kraft inequality for prefix-free complexity).**
 
-$$\sum_{x \in \{0,1\}^*} 2^{-K_{\text{prefix}}(x)} \leq 1.$$
+$$\sum_{x \in \lbrace 0,1\rbrace ^*} 2^{-K_{\text{prefix}}(x)} \leq 1.$$
 
 *Proof.* Since the domain of $U_{\text{prefix}}$ is prefix-free, the Kraft inequality applies directly:
 
@@ -177,9 +177,9 @@ This prior is *universal* in the sense that it dominates every computable measur
 
 Algorithmic randomness formalizes the intuition that a random string should pass every conceivable statistical test.
 
-**Definition (Martin-Löf, 1966).** An **effective statistical test** is a uniformly computably enumerable sequence $\{V_m\}_{m=1}^{\infty}$ of open sets $V_m \subseteq \{0,1\}^\omega$ (in Cantor space) such that $\mu(V_m) \leq 2^{-m}$, where $\mu$ is the fair-coin measure.
+**Definition (Martin-Löf, 1966).** An **effective statistical test** is a uniformly computably enumerable sequence $\lbrace V_m\rbrace _{m=1}^{\infty}$ of open sets $V_m \subseteq \lbrace 0,1\rbrace ^\omega$ (in Cantor space) such that $\mu(V_m) \leq 2^{-m}$, where $\mu$ is the fair-coin measure.
 
-An infinite sequence $\omega \in \{0,1\}^\omega$ is **Martin-Löf random** if for every effective statistical test, $\omega \notin \bigcap_{m=1}^{\infty} V_m$.
+An infinite sequence $\omega \in \lbrace 0,1\rbrace ^\omega$ is **Martin-Löf random** if for every effective statistical test, $\omega \notin \bigcap_{m=1}^{\infty} V_m$.
 
 **Theorem 8.11 (Schnorr-Levin theorem).** *An infinite binary sequence $\omega = \omega_1 \omega_2 \omega_3 \ldots$ is Martin-Löf random if and only if*
 
@@ -298,7 +298,7 @@ Brudno's theorem makes the connection precise for ergodic systems. For non-ergod
 
 | Result | Statement |
 |--------|-----------|
-| Definition | $K(x) = \min\{|p| : U(p) = x\}$ |
+| Definition | $K(x) = \min\lbrace |p| : U(p) = x\rbrace $ |
 | Invariance | $|K_{U_1}(x) - K_{U_2}(x)| \leq c$ |
 | Upper bound | $K(x) \leq |x| + O(1)$ |
 | Non-computability | $K$ is not computable |

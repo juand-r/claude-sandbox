@@ -34,11 +34,11 @@ If $\Phi(X) \subseteq Y$, we say $\Phi$ is a sliding block code **from $X$ to $Y
 
 ### Example 3.3.1: XOR map (2-block code)
 
-Let $\Sigma = \Gamma = \{0, 1\}$. Define the local rule $f: \{0,1\}^2 \to \{0,1\}$ by
+Let $\Sigma = \Gamma = \lbrace 0, 1\rbrace $. Define the local rule $f: \lbrace 0,1\rbrace ^2 \to \lbrace 0,1\rbrace $ by
 
 $$f(a, b) = a \oplus b$$
 
-where $\oplus$ denotes addition mod 2 (XOR). This has memory $m = 0$ and anticipation $a = 1$ (equivalently, memory 1 and anticipation 0, depending on convention). The induced sliding block code $\Phi: \{0,1\}^\mathbb{Z} \to \{0,1\}^\mathbb{Z}$ is
+where $\oplus$ denotes addition mod 2 (XOR). This has memory $m = 0$ and anticipation $a = 1$ (equivalently, memory 1 and anticipation 0, depending on convention). The induced sliding block code $\Phi: \lbrace 0,1\rbrace ^\mathbb{Z} \to \lbrace 0,1\rbrace ^\mathbb{Z}$ is
 
 $$[\Phi(x)]_i = x_i \oplus x_{i+1}.$$
 
@@ -52,11 +52,11 @@ $$[\Phi(x)]_i = x_i \oplus x_{i+1}.$$
 
 So $\Phi(x) = \ldots 1\, 0\, 1\, 1\, 1\, 0 \ldots$ in positions $0, \ldots, 5$.
 
-Note that $\Phi$ is a 2-to-1 map on $\{0,1\}^\mathbb{Z}$: for any output $y$, choosing $x_0 \in \{0,1\}$ determines the rest of $x$ uniquely. This map is also known as **elementary cellular automaton Rule 102** (see Section 3.10).
+Note that $\Phi$ is a 2-to-1 map on $\lbrace 0,1\rbrace ^\mathbb{Z}$: for any output $y$, choosing $x_0 \in \lbrace 0,1\rbrace $ determines the rest of $x$ uniquely. This map is also known as **elementary cellular automaton Rule 102** (see Section 3.10).
 
 ### Example 3.3.2: Majority vote map (radius-1)
 
-Let $\Sigma = \Gamma = \{0, 1\}$. Define $f: \{0,1\}^3 \to \{0,1\}$ by
+Let $\Sigma = \Gamma = \lbrace 0, 1\rbrace $. Define $f: \lbrace 0,1\rbrace ^3 \to \lbrace 0,1\rbrace $ by
 
 $$f(a, b, c) = \text{majority}(a, b, c) = \begin{cases} 1 & \text{if } a + b + c \geq 2, \\ 0 & \text{otherwise.} \end{cases}$$
 
@@ -75,24 +75,24 @@ This map acts as a "smoothing" or "noise reduction" operator: isolated 0s surrou
 
 ### Example 3.3.3: Higher-order block code and the golden mean shift
 
-Let $X \subseteq \{0,1\}^\mathbb{Z}$ be the **golden mean shift**: the subshift defined by the forbidden word $\mathcal{F} = \{11\}$, so no two consecutive 1s appear. Let $\Gamma = \{a, b, c\}$ and define $f: \{0,1\}^2 \to \{a, b, c\}$ by
+Let $X \subseteq \lbrace 0,1\rbrace ^\mathbb{Z}$ be the **golden mean shift**: the subshift defined by the forbidden word $\mathcal{F} = \lbrace 11\rbrace $, so no two consecutive 1s appear. Let $\Gamma = \lbrace a, b, c\rbrace $ and define $f: \lbrace 0,1\rbrace ^2 \to \lbrace a, b, c\rbrace $ by
 
 $$f(0,0) = a, \quad f(0,1) = b, \quad f(1,0) = c, \quad f(1,1) = \text{(never occurs in } X\text{)}.$$
 
-The induced map $\Phi: X \to \Gamma^\mathbb{Z}$ sends the golden mean shift to the subshift $Y \subseteq \{a,b,c\}^\mathbb{Z}$ whose allowed transitions are $a \to a$, $a \to b$, $b \to c$, $c \to a$, $c \to b$ (one can verify: after a $b$, the underlying pair was $(0,1)$, so the next symbol in $X$ must be $0$, giving either $(1,0) \mapsto c$). This is the **higher block presentation** of the golden mean shift; it converts a subshift defined by forbidden words into an **edge shift** (a 1-step shift of finite type).
+The induced map $\Phi: X \to \Gamma^\mathbb{Z}$ sends the golden mean shift to the subshift $Y \subseteq \lbrace a,b,c\rbrace ^\mathbb{Z}$ whose allowed transitions are $a \to a$, $a \to b$, $b \to c$, $c \to a$, $c \to b$ (one can verify: after a $b$, the underlying pair was $(0,1)$, so the next symbol in $X$ must be $0$, giving either $(1,0) \mapsto c$). This is the **higher block presentation** of the golden mean shift; it converts a subshift defined by forbidden words into an **edge shift** (a 1-step shift of finite type).
 
 ---
 
 ## 3.4 Continuity and Shift-Commutation
 
-We equip $\Sigma^\mathbb{Z}$ with the **product topology** (equivalently, the topology induced by the metric $d(x,y) = 2^{-\min\{|i| : x_i \neq y_i\}}$). In this topology, two sequences are close if they agree on a large window around the origin.
+We equip $\Sigma^\mathbb{Z}$ with the **product topology** (equivalently, the topology induced by the metric $d(x,y) = 2^{-\min\lbrace |i| : x_i \neq y_i\rbrace }$). In this topology, two sequences are close if they agree on a large window around the origin.
 
 **Proposition 3.4.1.** Every sliding block code $\Phi: \Sigma^\mathbb{Z} \to \Gamma^\mathbb{Z}$ is:
 
 1. **Continuous** in the product topology.
 2. **Shift-commuting**: $\Phi \circ \sigma = \sigma \circ \Phi$, where $\sigma$ is the left shift $[\sigma(x)]_i = x_{i+1}$.
 
-*Proof sketch.* (1) Fix $\Phi$ with memory $m$ and anticipation $a$. If $x$ and $y$ agree on positions $\{-N, \ldots, N\}$, then $\Phi(x)$ and $\Phi(y)$ agree on positions $\{-N+m, \ldots, N-a\}$. So agreement on a large window in the input implies agreement on a large window in the output, which is exactly continuity in the product topology.
+*Proof sketch.* (1) Fix $\Phi$ with memory $m$ and anticipation $a$. If $x$ and $y$ agree on positions $\lbrace -N, \ldots, N\rbrace $, then $\Phi(x)$ and $\Phi(y)$ agree on positions $\lbrace -N+m, \ldots, N-a\rbrace $. So agreement on a large window in the input implies agreement on a large window in the output, which is exactly continuity in the product topology.
 
 (2) We compute directly:
 
@@ -127,9 +127,9 @@ where we used shift-commutation in the second equality.
 
 **Step 2: Compactness argument.** Consider the map $\pi_0 \circ \Phi: X \to \Gamma$, where $\pi_0$ projects onto the zeroth coordinate. This is a continuous function from $X$ to the discrete space $\Gamma$. For each $\gamma \in \Gamma$, the preimage $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is clopen (both open and closed) in $X$.
 
-The sets of the form $C(i_1, \ldots, i_k; a_1, \ldots, a_k) = \{x \in X : x_{i_j} = a_j \text{ for all } j\}$ (cylinder sets) form a basis for the topology on $X$. Since $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is open, it is a union of cylinder sets. Since $X \subseteq \Sigma^\mathbb{Z}$ is compact (as a closed subset of the compact space $\Sigma^\mathbb{Z}$, by Tychonoff's theorem), and $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is closed (hence compact), it can be covered by **finitely many** cylinder sets.
+The sets of the form $C(i_1, \ldots, i_k; a_1, \ldots, a_k) = \lbrace x \in X : x_{i_j} = a_j \text{ for all } j\rbrace $ (cylinder sets) form a basis for the topology on $X$. Since $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is open, it is a union of cylinder sets. Since $X \subseteq \Sigma^\mathbb{Z}$ is compact (as a closed subset of the compact space $\Sigma^\mathbb{Z}$, by Tychonoff's theorem), and $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is closed (hence compact), it can be covered by **finitely many** cylinder sets.
 
-Each cylinder set depends on finitely many coordinates. A finite union of such sets depends on finitely many coordinates. Since $\Gamma$ is finite, taking the union over all $\gamma$, we find a finite set of coordinates $\{-m, -m+1, \ldots, a\}$ (after relabeling) such that $[\Phi(x)]_0$ depends only on $x_{-m}, \ldots, x_a$.
+Each cylinder set depends on finitely many coordinates. A finite union of such sets depends on finitely many coordinates. Since $\Gamma$ is finite, taking the union over all $\gamma$, we find a finite set of coordinates $\lbrace -m, -m+1, \ldots, a\rbrace $ (after relabeling) such that $[\Phi(x)]_0$ depends only on $x_{-m}, \ldots, x_a$.
 
 **Step 3: Define the local rule.** For each word $w = w_{-m} \cdots w_a \in \mathcal{B}_{m+a+1}(X)$ (the set of $(m+a+1)$-blocks appearing in $X$), pick any $x \in X$ with $x_{-m} \cdots x_a = w$ and define $f(w) = [\Phi(x)]_0$. By Step 2, this is well-defined (independent of the choice of $x$). Then $\Phi$ is the sliding block code induced by $f$. $\square$
 
@@ -189,9 +189,9 @@ The set of all sliding block codes from a full shift $\Sigma^\mathbb{Z}$ to itse
 - Free groups and free products,
 - Every finite group as a subgroup (Ryan's theorem, 1972).
 
-The structure of $\text{Aut}(\Sigma^\mathbb{Z})$ remains deeply mysterious. For example, it is unknown whether $\text{Aut}(\{0,1\}^\mathbb{Z})$ is generated by $\sigma$ together with all involutions.
+The structure of $\text{Aut}(\Sigma^\mathbb{Z})$ remains deeply mysterious. For example, it is unknown whether $\text{Aut}(\lbrace 0,1\rbrace ^\mathbb{Z})$ is generated by $\sigma$ together with all involutions.
 
-**Example 3.8.3.** For $\Sigma = \{0, 1\}$, the map $\Phi$ defined by $[\Phi(x)]_i = x_i \oplus x_{i+1}$ from Example 3.3.1 is an endomorphism (it maps $\{0,1\}^\mathbb{Z}$ to itself) but **not** an automorphism, since it is 2-to-1.
+**Example 3.8.3.** For $\Sigma = \lbrace 0, 1\rbrace $, the map $\Phi$ defined by $[\Phi(x)]_i = x_i \oplus x_{i+1}$ from Example 3.3.1 is an endomorphism (it maps $\lbrace 0,1\rbrace ^\mathbb{Z}$ to itself) but **not** an automorphism, since it is 2-to-1.
 
 The map $\Psi$ defined by $[\Psi(x)]_i = 1 - x_i$ (symbol swap) is an automorphism of order 2.
 
@@ -205,7 +205,7 @@ In many applications, we are interested in maps that depend only on the past and
 
 Equivalently, the output at position $i$ depends only on the input at positions $\leq i$.
 
-On the one-sided shift space $\Sigma^\mathbb{N}$ (sequences indexed by $\mathbb{N} = \{0, 1, 2, \ldots\}$), the Curtis-Hedlund-Lyndon theorem holds in the same form, and all sliding block codes $\Phi: X \to Y$ between one-sided subshifts $X \subseteq \Sigma^\mathbb{N}$, $Y \subseteq \Gamma^\mathbb{N}$ are necessarily causal: $[\Phi(x)]_i$ can depend on $x_0, \ldots, x_{i+a}$ for some fixed $a$, and by re-indexing this is equivalent to a causal map on a higher block presentation.
+On the one-sided shift space $\Sigma^\mathbb{N}$ (sequences indexed by $\mathbb{N} = \lbrace 0, 1, 2, \ldots\rbrace $), the Curtis-Hedlund-Lyndon theorem holds in the same form, and all sliding block codes $\Phi: X \to Y$ between one-sided subshifts $X \subseteq \Sigma^\mathbb{N}$, $Y \subseteq \Gamma^\mathbb{N}$ are necessarily causal: $[\Phi(x)]_i$ can depend on $x_0, \ldots, x_{i+a}$ for some fixed $a$, and by re-indexing this is equivalent to a causal map on a higher block presentation.
 
 **Remark.** One-sided sliding block codes are strictly less expressive than two-sided ones. For example, the map $[\Phi(x)]_i = x_{i+1}$ (a "look-ahead" by one step) is a perfectly valid two-sided sliding block code but is not causal.
 
@@ -217,11 +217,11 @@ On the one-sided shift space $\Sigma^\mathbb{N}$ (sequences indexed by $\mathbb{
 
 By the Curtis-Hedlund-Lyndon theorem, this is equivalent to: a CA is a continuous, shift-commuting map from $\Sigma^\mathbb{Z}$ to itself. Thus:
 
-$$\{\text{cellular automata on } \Sigma\} = \text{End}(\Sigma^\mathbb{Z}).$$
+$$\lbrace \text{cellular automata on } \Sigma\rbrace  = \text{End}(\Sigma^\mathbb{Z}).$$
 
 This is the endomorphism monoid of the full shift, as defined in Section 3.8.
 
-**Wolfram's elementary cellular automata** are exactly the sliding block codes $\Phi: \{0,1\}^\mathbb{Z} \to \{0,1\}^\mathbb{Z}$ with symmetric radius $r = 1$. There are $2^{2^3} = 256$ such local rules $f: \{0,1\}^3 \to \{0,1\}$, conventionally numbered 0 through 255. For instance:
+**Wolfram's elementary cellular automata** are exactly the sliding block codes $\Phi: \lbrace 0,1\rbrace ^\mathbb{Z} \to \lbrace 0,1\rbrace ^\mathbb{Z}$ with symmetric radius $r = 1$. There are $2^{2^3} = 256$ such local rules $f: \lbrace 0,1\rbrace ^3 \to \lbrace 0,1\rbrace $, conventionally numbered 0 through 255. For instance:
 
 - **Rule 102**: $f(a,b,c) = b \oplus c$. This is the XOR map from Example 3.3.1 (after a shift in indexing).
 - **Rule 232**: $f(a,b,c) = \text{majority}(a,b,c)$. This is the majority vote from Example 3.3.2.

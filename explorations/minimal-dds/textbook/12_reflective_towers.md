@@ -247,9 +247,9 @@ where $F_k$ is the space of possible functions at level $k$. In the reflective t
 
 ### 12.9.4 Worked Example
 
-Consider a minimal tower over $X = \{0, 1\}$ with two levels.
+Consider a minimal tower over $X = \lbrace 0, 1\rbrace $ with two levels.
 
-- **Level 0.** $f_0: \{0, 1\} \to \{0, 1\}$, $x_0 \in \{0, 1\}$. There are $2^2 = 4$ possible functions $f_0$, so the state space at level 0 is $F_0 \times X = \{0,1\}^{\{0,1\}} \times \{0,1\}$, with 8 states.
+- **Level 0.** $f_0: \lbrace 0, 1\rbrace  \to \lbrace 0, 1\rbrace $, $x_0 \in \lbrace 0, 1\rbrace $. There are $2^2 = 4$ possible functions $f_0$, so the state space at level 0 is $F_0 \times X = \lbrace 0,1\rbrace ^{\lbrace 0,1\rbrace } \times \lbrace 0,1\rbrace $, with 8 states.
 
 - **Level 1.** $f_1: F_0 \times X \to F_0 \times X$ is the "interpreter" that maps one state of level 0 to the next. Under ordinary (non-reflective) computation, $f_1$ acts as $f_1(f_0, x_0) = (f_0, f_0(x_0))$ --- it applies $f_0$ to $x_0$ and leaves $f_0$ unchanged.
 

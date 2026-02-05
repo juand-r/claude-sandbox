@@ -28,7 +28,7 @@ We write $w \vdash_T w'$ for a single step and $w \vdash_T^* w'$ for the reflexi
 
 ## 4.3 Worked Example 1: Growth and Cycling
 
-Consider the tag system $T_1 = (\{0, 1\}, 2, P)$ with:
+Consider the tag system $T_1 = (\lbrace 0, 1\rbrace , 2, P)$ with:
 
 $$P(0) = \texttt{00}, \quad P(1) = \texttt{1101}$$
 
@@ -58,7 +58,7 @@ Continuing the trace, one can verify computationally that this system does not h
 
 ## 4.4 Worked Example 2: A Halting Tag System
 
-Consider $T_2 = (\{a, b, c\}, 3, P)$ with:
+Consider $T_2 = (\lbrace a, b, c\rbrace , 3, P)$ with:
 
 $$P(a) = \texttt{bc}, \quad P(b) = \texttt{a}, \quad P(c) = \texttt{aaa}$$
 
@@ -84,7 +84,7 @@ This halts in 3 steps. The string length decreases from 6 to 5 to 4 to 2.
 
 ## 4.5 Worked Example 3: A Looping Tag System
 
-Consider $T_3 = (\{0, 1\}, 2, P)$ with:
+Consider $T_3 = (\lbrace 0, 1\rbrace , 2, P)$ with:
 
 $$P(0) = \texttt{01}, \quad P(1) = \texttt{10}$$
 
@@ -153,7 +153,7 @@ The universality of 2-tag systems makes them one of the simplest known Turing-co
 
 ## 4.8 Cyclic Tag Systems
 
-**Definition 4.5 (Cyclic Tag System).** A *cyclic tag system* is a tag system variant defined by a finite sequence of productions $P_0, P_1, \ldots, P_{k-1}$ over the alphabet $\{0, 1\}$. The system operates on binary strings as follows:
+**Definition 4.5 (Cyclic Tag System).** A *cyclic tag system* is a tag system variant defined by a finite sequence of productions $P_0, P_1, \ldots, P_{k-1}$ over the alphabet $\lbrace 0, 1\rbrace $. The system operates on binary strings as follows:
 
 At step $t$:
 1. Read and delete the first symbol of the string.
@@ -190,7 +190,7 @@ The Collatz function $C: \mathbb{N} \to \mathbb{N}$ is defined by:
 
 $$C(n) = \begin{cases} n/2 & \text{if } n \text{ is even} \\ 3n + 1 & \text{if } n \text{ is odd} \end{cases}$$
 
-Consider a 2-tag system over $\{a, b\}$ with $P(a) = \texttt{b}$ (length 1, causing the string to shrink) and $P(b) = \texttt{aab}$ (length 3, causing the string to grow). If we track the length $\ell$ of the string:
+Consider a 2-tag system over $\lbrace a, b\rbrace $ with $P(a) = \texttt{b}$ (length 1, causing the string to shrink) and $P(b) = \texttt{aab}$ (length 3, causing the string to grow). If we track the length $\ell$ of the string:
 
 - When the first symbol is $a$: new length $= \ell - 2 + 1 = \ell - 1$.
 - When the first symbol is $b$: new length $= \ell - 2 + 3 = \ell + 1$.
@@ -209,7 +209,7 @@ This follows immediately from universality: if we could decide halting for 2-tag
 
 The interesting question is: *how small* can a tag system be while remaining undecidable?
 
-De Mol (2007) investigated this boundary systematically. For 2-tag systems over a binary alphabet $\{0, 1\}$, there are only finitely many possible production tables (up to production length bounds). De Mol showed:
+De Mol (2007) investigated this boundary systematically. For 2-tag systems over a binary alphabet $\lbrace 0, 1\rbrace $, there are only finitely many possible production tables (up to production length bounds). De Mol showed:
 
 - Many small 2-tag systems have decidable behavior (they always halt, always loop, or can be analyzed by tracking string length).
 - The smallest known undecidable 2-tag systems require relatively few production rules but with productions of moderate length.

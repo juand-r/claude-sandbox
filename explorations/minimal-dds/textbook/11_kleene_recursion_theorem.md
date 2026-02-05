@@ -14,14 +14,14 @@ This chapter develops the necessary background (Gödel numbering, the s-m-n theo
 
 Fix a standard model of computation (Turing machines, register machines, lambda calculus --- the choice does not matter). Every program in this model can be encoded as a natural number. Such an encoding is called a *Gödel numbering* or *acceptable numbering* of programs.
 
-**Definition 11.1 (Partial Computable Function).** For each $e \in \mathbb{N}$, we write $\varphi_e$ for the partial function $\mathbb{N} \rightharpoonup \mathbb{N}$ computed by the program with index (Gödel number) $e$. The family $\{\varphi_e\}_{e \in \mathbb{N}}$ is called an *acceptable numbering* of the partial computable functions.
+**Definition 11.1 (Partial Computable Function).** For each $e \in \mathbb{N}$, we write $\varphi_e$ for the partial function $\mathbb{N} \rightharpoonup \mathbb{N}$ computed by the program with index (Gödel number) $e$. The family $\lbrace \varphi_e\rbrace _{e \in \mathbb{N}}$ is called an *acceptable numbering* of the partial computable functions.
 
 Some conventions:
 
 - $\varphi_e(x)\!\downarrow$ means the computation of program $e$ on input $x$ halts (is defined).
 - $\varphi_e(x)\!\uparrow$ means it diverges (is undefined).
 - $\varphi_e = \varphi_{e'}$ means the two programs compute the same partial function: for all $x$, $\varphi_e(x)\!\downarrow = \varphi_{e'}(x)\!\downarrow$ or both diverge.
-- $W_e = \text{dom}(\varphi_e) = \{x : \varphi_e(x)\!\downarrow\}$ is the domain of program $e$.
+- $W_e = \text{dom}(\varphi_e) = \lbrace x : \varphi_e(x)\!\downarrow\rbrace $ is the domain of program $e$.
 
 **Remark.** Many different indices compute the same function. The map $e \mapsto \varphi_e$ is surjective onto the partial computable functions but far from injective: every partial computable function has infinitely many indices.
 
@@ -95,7 +95,7 @@ The following equivalent formulation, due to Rogers (1967), rephrases the result
 
 This is identical in content to Theorem 11.4. Rogers's contribution was to place the result in a broader framework of numbering theory and to show that the existence of fixed points *characterizes* acceptable numberings: an effective numbering of the partial computable functions is acceptable if and only if it satisfies the recursion theorem (Rogers 1958).
 
-**Theorem 11.6 (Myhill--Shepherdson; Rogers 1958).** A numbering $\{\psi_e\}_{e \in \mathbb{N}}$ of the partial computable functions has the fixed-point property (i.e., every total computable $f$ has an index $n$ with $\psi_n = \psi_{f(n)}$) if and only if it is an acceptable numbering.
+**Theorem 11.6 (Myhill--Shepherdson; Rogers 1958).** A numbering $\lbrace \psi_e\rbrace _{e \in \mathbb{N}}$ of the partial computable functions has the fixed-point property (i.e., every total computable $f$ has an index $n$ with $\psi_n = \psi_{f(n)}$) if and only if it is an acceptable numbering.
 
 ## 11.5 What the Theorem Does NOT Say
 
@@ -186,7 +186,7 @@ The existence of self-replicating programs is thus a mathematical inevitability 
 
 **Theorem 11.7 (Rice 1953).** Let $\mathcal{A}$ be a set of partial computable functions that is non-trivial (i.e., $\mathcal{A} \neq \emptyset$ and $\mathcal{A}$ does not contain all partial computable functions). Then the index set
 
-$$A = \{e \in \mathbb{N} : \varphi_e \in \mathcal{A}\}$$
+$$A = \lbrace e \in \mathbb{N} : \varphi_e \in \mathcal{A}\rbrace $$
 
 is not computable (not decidable).
 

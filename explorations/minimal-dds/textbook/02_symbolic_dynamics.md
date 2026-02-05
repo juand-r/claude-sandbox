@@ -18,11 +18,11 @@ Let $\Sigma$ be a finite set with $|\Sigma| \geq 2$, called the **alphabet**. It
 
 **Definition 2.1 (Full shift).** The **full shift** on $\Sigma$ is the set of all bi-infinite sequences of symbols:
 
-$$\Sigma^{\mathbb{Z}} = \{ x = (\ldots, x_{-1}, x_0, x_1, \ldots) : x_i \in \Sigma \text{ for all } i \in \mathbb{Z} \}.$$
+$$\Sigma^{\mathbb{Z}} = \lbrace x = (\ldots, x_{-1}, x_0, x_1, \ldots) : x_i \in \Sigma \text{ for all } i \in \mathbb{Z} \rbrace .$$
 
 When we restrict to one-sided (forward) sequences, we write:
 
-$$\Sigma^{\mathbb{N}} = \{ x = (x_0, x_1, x_2, \ldots) : x_i \in \Sigma \text{ for all } i \geq 0 \}.$$
+$$\Sigma^{\mathbb{N}} = \lbrace x = (x_0, x_1, x_2, \ldots) : x_i \in \Sigma \text{ for all } i \geq 0 \rbrace .$$
 
 We will work primarily with the two-sided case $\Sigma^{\mathbb{Z}}$, noting differences with $\Sigma^{\mathbb{N}}$ where they arise (see Section 2.9).
 
@@ -32,7 +32,7 @@ We equip $\Sigma$ with the discrete topology and $\Sigma^{\mathbb{Z}}$ with the 
 
 A basis of open sets is given by **cylinder sets**: for indices $i_1 < i_2 < \cdots < i_k$ and symbols $a_1, \ldots, a_k \in \Sigma$,
 
-$$C_{i_1, \ldots, i_k}(a_1, \ldots, a_k) = \{ x \in \Sigma^{\mathbb{Z}} : x_{i_j} = a_j \text{ for } j = 1, \ldots, k \}.$$
+$$C_{i_1, \ldots, i_k}(a_1, \ldots, a_k) = \lbrace x \in \Sigma^{\mathbb{Z}} : x_{i_j} = a_j \text{ for } j = 1, \ldots, k \rbrace .$$
 
 This topology is metrizable. A standard compatible metric is:
 
@@ -75,13 +75,13 @@ A **word** (or **block**) of length $n$ over $\Sigma$ is an element $w = w_1 w_2
 
 Given a collection $\mathcal{F} \subseteq \bigcup_{n \geq 1} \Sigma^n$ of **forbidden words**, define:
 
-$$X_{\mathcal{F}} = \{ x \in \Sigma^{\mathbb{Z}} : \text{no word from } \mathcal{F} \text{ appears in } x \}.$$
+$$X_{\mathcal{F}} = \lbrace x \in \Sigma^{\mathbb{Z}} : \text{no word from } \mathcal{F} \text{ appears in } x \rbrace .$$
 
 **Theorem 2.6 (Characterization of subshifts).** A subset $X \subseteq \Sigma^{\mathbb{Z}}$ is a subshift if and only if $X = X_{\mathcal{F}}$ for some set $\mathcal{F}$ of forbidden words.
 
 *Proof.* ($\Leftarrow$) For each forbidden word $w$, the set of sequences containing $w$ is open (it is a union of cylinder sets), so its complement is closed. Then $X_{\mathcal{F}}$ is an intersection of closed sets, hence closed. Shift-invariance is immediate since a shifted sequence contains the same set of words.
 
-($\Rightarrow$) Given a subshift $X$, take $\mathcal{F} = \{ w : w \text{ does not appear in any } x \in X \}$. Then $X_{\mathcal{F}} = X$, which can be verified by showing that any sequence all of whose finite subwords appear in $X$ must itself lie in $X$ (by compactness). $\square$
+($\Rightarrow$) Given a subshift $X$, take $\mathcal{F} = \lbrace w : w \text{ does not appear in any } x \in X \rbrace $. Then $X_{\mathcal{F}} = X$, which can be verified by showing that any sequence all of whose finite subwords appear in $X$ must itself lie in $X$ (by compactness). $\square$
 
 ---
 
@@ -103,13 +103,13 @@ A 1-step SFT is naturally described by a directed graph (digraph).
 
 **Definition 2.9 (Edge shift).** Let $G = (V, E)$ be a directed graph with vertex set $V$ and edge set $E$, where each edge $e \in E$ has an initial vertex $\mathbf{i}(e)$ and terminal vertex $\mathbf{t}(e)$. The **edge shift** $X_G$ is the subshift:
 
-$$X_G = \{ (\ldots, e_{-1}, e_0, e_1, \ldots) \in E^{\mathbb{Z}} : \mathbf{t}(e_i) = \mathbf{i}(e_{i+1}) \text{ for all } i \}.$$
+$$X_G = \lbrace (\ldots, e_{-1}, e_0, e_1, \ldots) \in E^{\mathbb{Z}} : \mathbf{t}(e_i) = \mathbf{i}(e_{i+1}) \text{ for all } i \rbrace .$$
 
 That is, the sequences of edges forming bi-infinite walks on $G$.
 
 **Theorem 2.10.** A subshift is an SFT if and only if it is conjugate to an edge shift.
 
-**Definition 2.11 (Adjacency matrix).** The **adjacency matrix** $A = A_G$ of a directed graph $G$ with vertices $\{v_1, \ldots, v_k\}$ is the $k \times k$ matrix where $A_{ij}$ is the number of edges from $v_i$ to $v_j$.
+**Definition 2.11 (Adjacency matrix).** The **adjacency matrix** $A = A_G$ of a directed graph $G$ with vertices $\lbrace v_1, \ldots, v_k\rbrace $ is the $k \times k$ matrix where $A_{ij}$ is the number of edges from $v_i$ to $v_j$.
 
 The adjacency matrix encodes the combinatorics of the SFT. In particular:
 
@@ -119,7 +119,7 @@ More precisely, $(A^n)_{ij}$ counts the number of walks of length $n$ from verte
 
 ### 2.4.3 Example: The Golden Mean Shift
 
-**Example 2.13 (Golden mean shift).** Let $\Sigma = \{0, 1\}$ and forbid the word $11$. The resulting SFT is called the **golden mean shift**, denoted $X_{\text{gm}}$. It consists of all binary sequences with no two consecutive 1s.
+**Example 2.13 (Golden mean shift).** Let $\Sigma = \lbrace 0, 1\rbrace $ and forbid the word $11$. The resulting SFT is called the **golden mean shift**, denoted $X_{\text{gm}}$. It consists of all binary sequences with no two consecutive 1s.
 
 The graph $G$ has two vertices (corresponding to states "last symbol was 0" and "last symbol was 1") and three edges:
 
@@ -153,7 +153,7 @@ This equivalence connects sofic shifts to the theory of finite automata: a sofic
 
 ### 2.5.3 Example: The Even Shift
 
-**Example 2.16 (Even shift).** The **even shift** $X_{\text{even}}$ over $\Sigma = \{0, 1\}$ is defined by the rule: between any two consecutive 0s, the number of 1s must be even (including zero). That is, the forbidden patterns are $0 \, 1^{2k+1} \, 0$ for all $k \geq 0$.
+**Example 2.16 (Even shift).** The **even shift** $X_{\text{even}}$ over $\Sigma = \lbrace 0, 1\rbrace $ is defined by the rule: between any two consecutive 0s, the number of 1s must be even (including zero). That is, the forbidden patterns are $0 \, 1^{2k+1} \, 0$ for all $k \geq 0$.
 
 **Claim:** The even shift is sofic but not an SFT.
 
@@ -177,7 +177,7 @@ $$\text{SFT} \subsetneq \text{Sofic} \subsetneq \text{All subshifts}.$$
 
 We have already shown the first strict inclusion (the even shift is sofic but not SFT). For the second:
 
-**Example 2.17 (A non-sofic subshift).** The **context-free shift** over $\Sigma = \{0, 1\}$ defined by forbidding $0^n 1^n$ for all $n \geq 1$ is not sofic. More directly, consider the subshift $X$ over $\{0, 1\}$ where the allowed sequences are those in which the word $10^n1$ appears only when $n$ is a prime number. This subshift is not sofic because the set of primes cannot be recognized by a finite automaton.
+**Example 2.17 (A non-sofic subshift).** The **context-free shift** over $\Sigma = \lbrace 0, 1\rbrace $ defined by forbidding $0^n 1^n$ for all $n \geq 1$ is not sofic. More directly, consider the subshift $X$ over $\lbrace 0, 1\rbrace $ where the allowed sequences are those in which the word $10^n1$ appears only when $n$ is a prime number. This subshift is not sofic because the set of primes cannot be recognized by a finite automaton.
 
 A cleaner and classical example: the **Dyck shift** (parenthesis matching sequences) is an example of a coded shift that is not sofic.
 
@@ -185,7 +185,7 @@ The following table summarizes the hierarchy with canonical examples:
 
 | Class | Example | Characterization |
 |-------|---------|-----------------|
-| Full shift | $\{0,1\}^{\mathbb{Z}}$ | No forbidden words |
+| Full shift | $\lbrace 0,1\rbrace ^{\mathbb{Z}}$ | No forbidden words |
 | SFT | Golden mean shift | Finitely many forbidden words |
 | Sofic | Even shift | Factor of an SFT; finite automaton |
 | General subshift | (various) | Possibly infinitely many forbidden words |
@@ -220,7 +220,7 @@ For reducible $A$, the entropy is $\log$ of the spectral radius $\rho(A)$, which
 
 ### 2.7.3 Worked Examples
 
-**Example 2.20 (Full shift).** The full shift $\{0, 1, \ldots, k-1\}^{\mathbb{Z}}$ has $|\mathcal{B}_n| = k^n$, so:
+**Example 2.20 (Full shift).** The full shift $\lbrace 0, 1, \ldots, k-1\rbrace ^{\mathbb{Z}}$ has $|\mathcal{B}_n| = k^n$, so:
 
 $$h = \lim_{n \to \infty} \frac{1}{n} \log k^n = \log k.$$
 
@@ -244,7 +244,7 @@ for the underlying graph (vertex $A$ has a self-loop labeled 0 and an edge to $B
 
 The issue is that the entropy of a sofic shift is the entropy of its minimal right-resolving presentation (the Fischer cover). For the even shift, the correct computation uses the follower set graph, which happens to have the same structure as above. However, we should count words directly.
 
-Let $g(n) = |\mathcal{B}_n(X_{\text{even}})|$. The allowed words of length $n$ over $\{0,1\}$ are those in which every maximal block of 1s flanked by 0s (or by the boundary) has even length. Consider the generating function approach, or note: the number of binary words of length $n$ that avoid the pattern $01^{2k+1}0$ for all $k$ is $|\mathcal{B}_n(X_{\text{even}})|$.
+Let $g(n) = |\mathcal{B}_n(X_{\text{even}})|$. The allowed words of length $n$ over $\lbrace 0,1\rbrace $ are those in which every maximal block of 1s flanked by 0s (or by the boundary) has even length. Consider the generating function approach, or note: the number of binary words of length $n$ that avoid the pattern $01^{2k+1}0$ for all $k$ is $|\mathcal{B}_n(X_{\text{even}})|$.
 
 A direct computation: partition words by the number and placement of 0s. Between consecutive 0s, we must have an even number (possibly zero) of 1s. At the left and right boundaries, any number of 1s is allowed (the parity constraint only applies between two 0s).
 
@@ -282,7 +282,7 @@ where $\mathcal{P}^{(n)}$ is the partition of $X$ into cylinder sets of length $
 
 $$H_\mu(\mathcal{P}^{(n)}) = -\sum_{w \in \mathcal{B}_n(X)} \mu([w]) \log \mu([w]),$$
 
-with $[w]$ denoting the cylinder set $\{x \in X : x_0 x_1 \cdots x_{n-1} = w\}$.
+with $[w]$ denoting the cylinder set $\lbrace x \in X : x_0 x_1 \cdots x_{n-1} = w\rbrace $.
 
 The measure-theoretic entropy quantifies the average rate of information production per step, as seen by the measure $\mu$.
 
@@ -332,7 +332,7 @@ The entropy of this Parry measure equals $\log \varphi$, confirming the variatio
 
 ## 2.9 One-Sided vs. Two-Sided Shifts
 
-The **one-sided full shift** $\Sigma^{\mathbb{N}}$ consists of sequences indexed by $\mathbb{N} = \{0, 1, 2, \ldots\}$. The shift map $\sigma : \Sigma^{\mathbb{N}} \to \Sigma^{\mathbb{N}}$ defined by $(\sigma(x))_i = x_{i+1}$ is surjective but **not injective** (information at position 0 is lost). Key differences from the two-sided case:
+The **one-sided full shift** $\Sigma^{\mathbb{N}}$ consists of sequences indexed by $\mathbb{N} = \lbrace 0, 1, 2, \ldots\rbrace $. The shift map $\sigma : \Sigma^{\mathbb{N}} \to \Sigma^{\mathbb{N}}$ defined by $(\sigma(x))_i = x_{i+1}$ is surjective but **not injective** (information at position 0 is lost). Key differences from the two-sided case:
 
 | Property | Two-sided $\Sigma^{\mathbb{Z}}$ | One-sided $\Sigma^{\mathbb{N}}$ |
 |----------|-------------------------------|-------------------------------|

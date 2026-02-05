@@ -33,7 +33,7 @@ Since $X$ is finite, this sequence must eventually revisit a state.
 
 ## 1.3 The Functional Graph
 
-**Definition 1.5 (Functional Graph).** The *functional graph* of a map $f: X \to X$ is the directed graph $G_f = (X, E)$ where the edge set is $E = \{(x, f(x)) : x \in X\}$. Every vertex has out-degree exactly 1.
+**Definition 1.5 (Functional Graph).** The *functional graph* of a map $f: X \to X$ is the directed graph $G_f = (X, E)$ where the edge set is $E = \lbrace (x, f(x)) : x \in X\rbrace $. Every vertex has out-degree exactly 1.
 
 This is the central combinatorial object of this chapter. A directed graph in which every vertex has out-degree exactly 1 is sometimes called a *functional digraph* or *1-regular digraph*. The structure of such graphs is completely determined by the following theorem.
 
@@ -51,7 +51,7 @@ This is the central combinatorial object of this chapter. A directed graph in wh
 
 ### Example 1.7: $f(x) = x^2 \bmod 10$
 
-Let $X = \{0, 1, 2, \ldots, 9\}$ and $f(x) = x^2 \bmod 10$. We compute the function table:
+Let $X = \lbrace 0, 1, 2, \ldots, 9\rbrace $ and $f(x) = x^2 \bmod 10$. We compute the function table:
 
 | $x$    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 |--------|---|---|---|---|---|---|---|---|---|---|
@@ -69,11 +69,11 @@ Now we trace orbits:
 - $8 \to 4 \to 6 \to 6$. Transient 2, cycle length 1.
 - $9 \to 1 \to 1$. Transient 1, cycle length 1.
 
-The functional graph has four fixed points: $\{0, 1, 5, 6\}$. No non-trivial cycles exist. The maximum transient length is 2 (attained by $\{2, 3, 7, 8\}$). The graph has four connected components: $\{0\}$, $\{3, 7, 9, 1\}$, $\{2, 8, 4, 6\}$, and $\{5\}$. Each conforms to the $\rho$-structure theorem (with trivial cycles of length 1).
+The functional graph has four fixed points: $\lbrace 0, 1, 5, 6\rbrace $. No non-trivial cycles exist. The maximum transient length is 2 (attained by $\lbrace 2, 3, 7, 8\rbrace $). The graph has four connected components: $\lbrace 0\rbrace $, $\lbrace 3, 7, 9, 1\rbrace $, $\lbrace 2, 8, 4, 6\rbrace $, and $\lbrace 5\rbrace $. Each conforms to the $\rho$-structure theorem (with trivial cycles of length 1).
 
 ### Example 1.8: $f(x) = 2x \bmod 11$
 
-Let $X = \{0, 1, \ldots, 10\}$ and $f(x) = 2x \bmod 11$. Since $\gcd(2, 11) = 1$, $f$ is a bijection (a permutation) on $X$. We compute:
+Let $X = \lbrace 0, 1, \ldots, 10\rbrace $ and $f(x) = 2x \bmod 11$. Since $\gcd(2, 11) = 1$, $f$ is a bijection (a permutation) on $X$. We compute:
 
 | $x$    | 0 | 1 | 2 | 3 | 4 | 5 | 6  | 7 | 8 | 9 | 10 |
 |--------|---|---|---|---|---|---|----|---|---|---|----|
@@ -83,13 +83,13 @@ Tracing orbits:
 - $0 \to 0$. Fixed point.
 - $1 \to 2 \to 4 \to 8 \to 5 \to 10 \to 9 \to 7 \to 3 \to 6 \to 1$. This is a cycle of length 10.
 
-Since $f$ is a permutation, every point is periodic (transient length 0 for all vertices). The cycle structure is: one fixed point at 0, one 10-cycle containing $\{1, 2, \ldots, 10\}$. The order of 2 in the multiplicative group $(\mathbb{Z}/11\mathbb{Z})^*$ is 10, confirming that 2 is a primitive root modulo 11.
+Since $f$ is a permutation, every point is periodic (transient length 0 for all vertices). The cycle structure is: one fixed point at 0, one 10-cycle containing $\lbrace 1, 2, \ldots, 10\rbrace $. The order of 2 in the multiplicative group $(\mathbb{Z}/11\mathbb{Z})^*$ is 10, confirming that 2 is a primitive root modulo 11.
 
 In general, when $f$ is a permutation, the functional graph consists entirely of disjoint cycles with no tails. This is the special case addressed by classical permutation theory.
 
 ### Example 1.9: $f(x) = 2x \bmod 12$
 
-Let $X = \{0, 1, \ldots, 11\}$ and $f(x) = 2x \bmod 12$. Now $\gcd(2, 12) = 2 \neq 1$, so $f$ is not a bijection.
+Let $X = \lbrace 0, 1, \ldots, 11\rbrace $ and $f(x) = 2x \bmod 12$. Now $\gcd(2, 12) = 2 \neq 1$, so $f$ is not a bijection.
 
 | $x$    | 0 | 1 | 2 | 3 | 4 | 5 | 6  | 7 | 8  | 9 | 10 | 11 |
 |--------|---|---|---|---|---|---|----|---|----|---|----|----|
@@ -97,18 +97,18 @@ Let $X = \{0, 1, \ldots, 11\}$ and $f(x) = 2x \bmod 12$. Now $\gcd(2, 12) = 2 \n
 
 Tracing:
 - $0 \to 0$. Fixed point.
-- $1 \to 2 \to 4 \to 8 \to 4$. Transient 2, cycle $\{4, 8\}$ of length 2.
+- $1 \to 2 \to 4 \to 8 \to 4$. Transient 2, cycle $\lbrace 4, 8\rbrace $ of length 2.
 - $3 \to 6 \to 0 \to 0$. Transient 2, cycle length 1.
-- $5 \to 10 \to 8 \to 4 \to 8$. Transient 2, cycle $\{4, 8\}$ of length 2.
-- $7 \to 2 \to 4 \to 8 \to 4$. Transient 2, cycle $\{4, 8\}$ of length 2.
+- $5 \to 10 \to 8 \to 4 \to 8$. Transient 2, cycle $\lbrace 4, 8\rbrace $ of length 2.
+- $7 \to 2 \to 4 \to 8 \to 4$. Transient 2, cycle $\lbrace 4, 8\rbrace $ of length 2.
 - $9 \to 6 \to 0 \to 0$. Transient 2, cycle length 1.
-- $11 \to 10 \to 8 \to 4 \to 8$. Transient 2, cycle $\{4, 8\}$ of length 2.
+- $11 \to 10 \to 8 \to 4 \to 8$. Transient 2, cycle $\lbrace 4, 8\rbrace $ of length 2.
 
-This map has two connected components. One is rooted at the fixed point $0$ (with $3, 6, 9$ as tail nodes). The other contains the 2-cycle $\{4, 8\}$ (with $1, 2, 5, 7, 10, 11$ as tail nodes). The $\rho$-shape is evident: every orbit has a tail of length 1 or 2 leading into a cycle of length 1 or 2.
+This map has two connected components. One is rooted at the fixed point $0$ (with $3, 6, 9$ as tail nodes). The other contains the 2-cycle $\lbrace 4, 8\rbrace $ (with $1, 2, 5, 7, 10, 11$ as tail nodes). The $\rho$-shape is evident: every orbit has a tail of length 1 or 2 leading into a cycle of length 1 or 2.
 
 ## 1.5 Counting Functions and Permutations
 
-We now turn to enumerative questions. Let $X = \{0, 1, \ldots, n-1\}$.
+We now turn to enumerative questions. Let $X = \lbrace 0, 1, \ldots, n-1\rbrace $.
 
 **Proposition 1.10 (Total count).** The number of functions $f: X \to X$ is $n^n$, since each of the $n$ elements of $X$ can be mapped to any of $n$ elements independently.
 
@@ -154,7 +154,7 @@ where $\varphi: F \times X \to F$ is a "meta-rule" that updates the function its
 
 ## 1.8 Random Maps
 
-Perhaps the most remarkable aspect of iterated maps on finite sets is what happens when $f$ is chosen uniformly at random from all $n^n$ functions $X \to X$. The connection to the *birthday problem* is immediate: iterating a random map is analogous to drawing values from $\{0, \ldots, n-1\}$ where collisions (revisiting a state) are governed by the same probabilistic mechanism.
+Perhaps the most remarkable aspect of iterated maps on finite sets is what happens when $f$ is chosen uniformly at random from all $n^n$ functions $X \to X$. The connection to the *birthday problem* is immediate: iterating a random map is analogous to drawing values from $\lbrace 0, \ldots, n-1\rbrace $ where collisions (revisiting a state) are governed by the same probabilistic mechanism.
 
 The foundational results are due to Harris (1960), Mutafchiev (1988), and especially the landmark paper of Flajolet and Odlyzko (1990), who used analytic combinatorics (singularity analysis of generating functions) to derive precise asymptotics for virtually all parameters of random functional graphs.
 
@@ -170,7 +170,7 @@ $$E[T_n] = \sqrt{\frac{\pi n}{8}}\left(1 + O\left(\frac{1}{\sqrt{n}}\right)\righ
 
 The cycle length has the same asymptotic expectation, $E[\Lambda_n] \sim \sqrt{\pi n / 8}$, but note that this is a different random variable. The rho length $\rho = \tau + \lambda$ has expectation $\sim \sqrt{\pi n/2}$.
 
-**Birthday paradox connection.** The expected rho length $\sqrt{\pi n / 2}$ is exactly the birthday paradox threshold: the expected number of independent uniform draws from $\{1, \ldots, n\}$ before a collision is $\sqrt{\pi n / 2}$. This is not a coincidence. The orbit of a random map behaves, until it first revisits a state, as a sequence of independent uniform draws (since $f$ was chosen randomly and the orbit has not yet "explored" any previously-seen value of $f$). The first collision ends the tail and initiates the cycle.
+**Birthday paradox connection.** The expected rho length $\sqrt{\pi n / 2}$ is exactly the birthday paradox threshold: the expected number of independent uniform draws from $\lbrace 1, \ldots, n\rbrace $ before a collision is $\sqrt{\pi n / 2}$. This is not a coincidence. The orbit of a random map behaves, until it first revisits a state, as a sequence of independent uniform draws (since $f$ was chosen randomly and the orbit has not yet "explored" any previously-seen value of $f$). The first collision ends the tail and initiates the cycle.
 
 **Further statistics.** Flajolet and Odlyzko also establish:
 - The expected number of connected components of a random functional graph is $\sim \frac{1}{2}\ln n$.
@@ -198,10 +198,10 @@ Orbits:
 - $0 \to 0$. Fixed point.
 - $1 \to 4 \to 2 \to 1$. Cycle of length 3.
 - $3 \to 3$. Fixed point.
-- $5 \to 2 \to 1 \to 4 \to 2$. Transient 1, cycle $\{1, 2, 4\}$ of length 3.
+- $5 \to 2 \to 1 \to 4 \to 2$. Transient 1, cycle $\lbrace 1, 2, 4\rbrace $ of length 3.
 - $6 \to 3$. Transient 1, cycle length 1.
 
-The functional graph has three components: $\{0\}$, $\{3, 6\}$ (with 6 a tail node), and $\{1, 2, 4, 5\}$ (cycle $\{1,2,4\}$ with 5 as a tail node).
+The functional graph has three components: $\lbrace 0\rbrace $, $\lbrace 3, 6\rbrace $ (with 6 a tail node), and $\lbrace 1, 2, 4, 5\rbrace $ (cycle $\lbrace 1,2,4\rbrace $ with 5 as a tail node).
 
 ## 1.10 Connection to the $(f, x) \to (\varphi(f,x), f(x))$ Framework
 

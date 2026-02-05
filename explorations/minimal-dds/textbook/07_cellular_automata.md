@@ -6,7 +6,7 @@ A **cellular automaton** (CA) consists of the following data:
 
 1. A **lattice** $\Lambda$, typically $\mathbb{Z}$ (one-dimensional) or $\mathbb{Z}^d$ (d-dimensional).
 2. A **finite state set** $S$ with $|S| = k \geq 2$. Each cell $i \in \Lambda$ holds a state $s_i \in S$.
-3. A **neighborhood** $\mathcal{N} = \{n_1, n_2, \ldots, n_m\} \subset \mathbb{Z}^d$, a fixed finite set of offset vectors.
+3. A **neighborhood** $\mathcal{N} = \lbrace n_1, n_2, \ldots, n_m\rbrace  \subset \mathbb{Z}^d$, a fixed finite set of offset vectors.
 4. A **local update rule** $f: S^{|\mathcal{N}|} \to S$ that maps the states of a cell's neighbors to the cell's new state.
 
 A **configuration** is a function $c: \Lambda \to S$, i.e., an element of $S^{\Lambda}$. The **global map** $F: S^{\Lambda} \to S^{\Lambda}$ is defined by applying $f$ synchronously to every cell:
@@ -25,10 +25,10 @@ This translation-invariance is a defining property of CA.
 The simplest nontrivial case is the **elementary cellular automaton** (ECA):
 
 - Lattice: $\mathbb{Z}$ (one-dimensional)
-- State set: $S = \{0, 1\}$ (two states)
-- Neighborhood: radius $r = 1$, so $\mathcal{N} = \{-1, 0, 1\}$ (three cells: left, center, right)
+- State set: $S = \lbrace 0, 1\rbrace $ (two states)
+- Neighborhood: radius $r = 1$, so $\mathcal{N} = \lbrace -1, 0, 1\rbrace $ (three cells: left, center, right)
 
-The local rule $f: \{0,1\}^3 \to \{0,1\}$ is determined by its values on the $2^3 = 8$ possible input triples. Since each output is in $\{0,1\}$, there are $2^8 = 256$ possible ECA rules.
+The local rule $f: \lbrace 0,1\rbrace ^3 \to \lbrace 0,1\rbrace $ is determined by its values on the $2^3 = 8$ possible input triples. Since each output is in $\lbrace 0,1\rbrace $, there are $2^8 = 256$ possible ECA rules.
 
 ### 7.2.1 Wolfram's Numbering Scheme
 
@@ -199,7 +199,7 @@ A **sliding block code** (or block map) is a map $F: \Sigma \to \Sigma$ defined 
 
 $$F(c)_i = f(c_{i+n_1}, \ldots, c_{i+n_m})$$
 
-for some finite neighborhood $\{n_1, \ldots, n_m\}$ and some function $f: S^m \to S$.
+for some finite neighborhood $\lbrace n_1, \ldots, n_m\rbrace $ and some function $f: S^m \to S$.
 
 Observe that this is exactly the definition of a CA global map. The following fundamental theorem shows that the converse also holds:
 
@@ -235,7 +235,7 @@ This result is remarkable: the simplest class of nontrivial CA (two states, radi
 
 A configuration $c \in S^{\Lambda}$ is a **Garden of Eden** (GoE) if it has no preimage under the global map $F$: there is no configuration $c'$ with $F(c') = c$. In other words, $c$ can only appear as an initial condition -- it can never be reached by the dynamics.
 
-Two configurations $c, c'$ are **asymptotic** if they differ on only finitely many cells: $\{i \in \Lambda : c_i \neq c'_i\}$ is finite. A CA is **pre-injective** if no two distinct asymptotic configurations have the same image.
+Two configurations $c, c'$ are **asymptotic** if they differ on only finitely many cells: $\lbrace i \in \Lambda : c_i \neq c'_i\rbrace $ is finite. A CA is **pre-injective** if no two distinct asymptotic configurations have the same image.
 
 **Theorem 7.4** (Moore 1962, Myhill 1963 -- Garden of Eden Theorem). *For a CA on $\mathbb{Z}^d$ with finite state set:*
 
@@ -247,7 +247,7 @@ Two configurations $c, c'$ are **asymptotic** if they differ on only finitely ma
 
 The proof uses a counting argument: both the number of patterns that can appear in a finite region in the image and the number of "orphan" patterns (that cannot appear in any image) are related to the injectivity properties of the local rule on finite blocks. The Myhill direction is typically proved using a compactness argument or a direct combinatorial argument involving the pigeonhole principle on finite approximations.
 
-**Example 7.4.** Consider the ECA "majority rule" on $\mathbb{Z}$ with $S = \{0,1\}$ and neighborhood $\{-1, 0, 1\}$:
+**Example 7.4.** Consider the ECA "majority rule" on $\mathbb{Z}$ with $S = \lbrace 0,1\rbrace $ and neighborhood $\lbrace -1, 0, 1\rbrace $:
 
 $$f(l, c, r) = \begin{cases} 1 & \text{if } l + c + r \geq 2 \\ 0 & \text{otherwise} \end{cases}$$
 
@@ -290,7 +290,7 @@ Computing the topological entropy of a CA is in general undecidable (Hurd, Kari,
 
 ## 7.12 Two-Dimensional CA: Conway's Game of Life
 
-The **Game of Life** (Conway, 1970) is a 2D CA on $\mathbb{Z}^2$ with $S = \{0, 1\}$ (dead/alive) and the Moore neighborhood (the 8 surrounding cells). The local rule is:
+The **Game of Life** (Conway, 1970) is a 2D CA on $\mathbb{Z}^2$ with $S = \lbrace 0, 1\rbrace $ (dead/alive) and the Moore neighborhood (the 8 surrounding cells). The local rule is:
 
 - A **live** cell with 2 or 3 live neighbors **survives**; otherwise it **dies**.
 - A **dead** cell with exactly 3 live neighbors becomes **alive**; otherwise it stays dead.
@@ -315,7 +315,7 @@ The Game of Life is not surjective (Gardens of Eden exist, as shown by early com
 
 Throughout this series, we have studied discrete dynamical systems of the form $(f, x_0)$ where $f: X \to X$ is an iterated map and $x_0 \in X$ is an initial state.
 
-A cellular automaton with a **finite lattice** $\Lambda = \{0, 1, \ldots, n-1\}$ (with periodic boundary conditions) is exactly such a system:
+A cellular automaton with a **finite lattice** $\Lambda = \lbrace 0, 1, \ldots, n-1\rbrace $ (with periodic boundary conditions) is exactly such a system:
 
 - The state space is $X = S^n$, a finite set of size $|S|^n$.
 - The global map $F: S^n \to S^n$ is our iterated map $f$.

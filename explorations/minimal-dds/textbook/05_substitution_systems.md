@@ -41,7 +41,7 @@ $$\mathbf{x} = \lim_{n \to \infty} \sigma^n(a).$$
 
 ### 5.3.1 Construction
 
-**Definition 5.7.** The *Thue-Morse morphism* is the 2-uniform morphism $\mu: \{0,1\} \to \{0,1\}^*$ defined by
+**Definition 5.7.** The *Thue-Morse morphism* is the 2-uniform morphism $\mu: \lbrace 0,1\rbrace  \to \lbrace 0,1\rbrace ^*$ defined by
 $$\mu(0) = 01, \qquad \mu(1) = 10.$$
 
 Since $\mu(0)$ starts with $0$, the morphism is prolongable on $0$.
@@ -83,7 +83,7 @@ for a universal constant $C$. That is, the Thue-Morse sequence is *$C$-balanced*
 ### 5.3.3 The Thue-Morse Dynamical System
 
 Define the *shift map* $T: \Sigma^\omega \to \Sigma^\omega$ by $T(x_0 x_1 x_2 \cdots) = x_1 x_2 x_3 \cdots$. The *orbit closure* of $\mathbf{t}$ under $T$ is
-$$X_\mu = \overline{\{T^n(\mathbf{t}) : n \geq 0\}},$$
+$$X_\mu = \overline{\lbrace T^n(\mathbf{t}) : n \geq 0\rbrace },$$
 where the closure is in the product topology. The pair $(X_\mu, T)$ is a topological dynamical system called the *Thue-Morse subshift*.
 
 Since $\mu$ is primitive (the matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ is already positive), the subshift $(X_\mu, T)$ is *minimal*: every orbit is dense, or equivalently, every factor of every element of $X_\mu$ is a factor of $\mathbf{t}$. It is also *uniquely ergodic*: there is a unique shift-invariant Borel probability measure on $X_\mu$.
@@ -92,7 +92,7 @@ Since $\mu$ is primitive (the matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\
 
 ## 5.4 The Fibonacci Word
 
-**Definition 5.12.** The *Fibonacci morphism* is $\varphi: \{0,1\} \to \{0,1\}^*$ defined by
+**Definition 5.12.** The *Fibonacci morphism* is $\varphi: \lbrace 0,1\rbrace  \to \lbrace 0,1\rbrace ^*$ defined by
 $$\varphi(0) = 01, \qquad \varphi(1) = 0.$$
 
 This morphism is non-uniform: $|\varphi(0)| = 2$ and $|\varphi(1)| = 1$. It is prolongable on $0$.
@@ -123,7 +123,7 @@ whose eigenvalues are $\phi = (1+\sqrt{5})/2$ (the golden ratio) and $\hat{\phi}
 
 The Fibonacci word is the prototypical example of a *Sturmian sequence*.
 
-**Definition 5.14.** A sequence $\mathbf{x} \in \{0,1\}^\omega$ is *Sturmian* if its *factor complexity* satisfies $p_{\mathbf{x}}(n) = n + 1$ for all $n \geq 0$, where $p_{\mathbf{x}}(n)$ is the number of distinct factors of length $n$ in $\mathbf{x}$.
+**Definition 5.14.** A sequence $\mathbf{x} \in \lbrace 0,1\rbrace ^\omega$ is *Sturmian* if its *factor complexity* satisfies $p_{\mathbf{x}}(n) = n + 1$ for all $n \geq 0$, where $p_{\mathbf{x}}(n)$ is the number of distinct factors of length $n$ in $\mathbf{x}$.
 
 The Morse-Hedlund theorem states that $p_{\mathbf{x}}(n) \geq n+1$ for all $n$ if and only if $\mathbf{x}$ is not eventually periodic. So Sturmian sequences have the minimal complexity among non-eventually-periodic sequences. They are, in a precise sense, the "simplest" aperiodic sequences.
 
@@ -133,9 +133,9 @@ Sturmian sequences can be constructed by *cutting sequences*: take a line of irr
 
 ## 5.5 The Rudin-Shapiro Sequence
 
-**Definition 5.15.** The *Rudin-Shapiro morphism* operates on the four-letter alphabet $\{0,1,2,3\}$:
+**Definition 5.15.** The *Rudin-Shapiro morphism* operates on the four-letter alphabet $\lbrace 0,1,2,3\rbrace $:
 $$\sigma(0) = 02, \quad \sigma(1) = 32, \quad \sigma(2) = 01, \quad \sigma(3) = 31.$$
-The *Rudin-Shapiro sequence* $\mathbf{r}$ is obtained by applying the coding $\tau: \{0,1,2,3\} \to \{+1,-1\}$ defined by $\tau(0) = \tau(2) = +1$, $\tau(1) = \tau(3) = -1$ to the fixed point of $\sigma$ starting from $0$.
+The *Rudin-Shapiro sequence* $\mathbf{r}$ is obtained by applying the coding $\tau: \lbrace 0,1,2,3\rbrace  \to \lbrace +1,-1\rbrace $ defined by $\tau(0) = \tau(2) = +1$, $\tau(1) = \tau(3) = -1$ to the fixed point of $\sigma$ starting from $0$.
 
 **Example 5.16 (First iterations of the Rudin-Shapiro morphism).**
 
@@ -184,14 +184,14 @@ for all $n \geq 0$, where $(n)_k$ is the base-$k$ representation of $n$ (with th
 
 In words: to compute $a_n$, write $n$ in base $k$, feed those digits into a finite automaton, and read off the output from the state you reach.
 
-**Example 5.20 (The Thue-Morse sequence is 2-automatic).** The DFAO has two states $\{q_0, q_1\}$, input alphabet $\{0,1\}$, transitions $\delta(q_0, 0) = q_0$, $\delta(q_0, 1) = q_1$, $\delta(q_1, 0) = q_1$, $\delta(q_1, 1) = q_0$, and output $\tau(q_0) = 0$, $\tau(q_1) = 1$. The automaton simply tracks the parity of the number of $1$'s in the binary representation, and indeed $t_n = s_2(n) \bmod 2$.
+**Example 5.20 (The Thue-Morse sequence is 2-automatic).** The DFAO has two states $\lbrace q_0, q_1\rbrace $, input alphabet $\lbrace 0,1\rbrace $, transitions $\delta(q_0, 0) = q_0$, $\delta(q_0, 1) = q_1$, $\delta(q_1, 0) = q_1$, $\delta(q_1, 1) = q_0$, and output $\tau(q_0) = 0$, $\tau(q_1) = 1$. The automaton simply tracks the parity of the number of $1$'s in the binary representation, and indeed $t_n = s_2(n) \bmod 2$.
 
 ### 5.7.2 The $k$-kernel
 
 An equivalent algebraic characterization avoids automata entirely.
 
 **Definition 5.21.** The *$k$-kernel* of a sequence $(a_n)_{n \geq 0}$ is the set
-$$\mathcal{K}_k(\mathbf{a}) = \{(a_{k^e n + r})_{n \geq 0} : e \geq 0,\; 0 \leq r < k^e\}.$$
+$$\mathcal{K}_k(\mathbf{a}) = \lbrace (a_{k^e n + r})_{n \geq 0} : e \geq 0,\; 0 \leq r < k^e\rbrace .$$
 
 **Theorem 5.22 (Eilenberg 1974).** A sequence is $k$-automatic if and only if its $k$-kernel is finite.
 
@@ -242,7 +242,7 @@ Key facts:
 ### 5.10.1 Construction
 
 Given a morphism $\sigma: \Sigma \to \Sigma^*$ with fixed point $\mathbf{x} = \sigma^\omega(a)$, define the *substitution subshift*
-$$X_\sigma = \overline{\{T^n(\mathbf{x}) : n \geq 0\}} \subseteq \Sigma^\omega,$$
+$$X_\sigma = \overline{\lbrace T^n(\mathbf{x}) : n \geq 0\rbrace } \subseteq \Sigma^\omega,$$
 where $T$ is the shift and the closure is in the product topology. This is a compact, shift-invariant subset of $\Sigma^\omega$.
 
 **Theorem 5.27.** If $\sigma$ is primitive, then $(X_\sigma, T)$ is:

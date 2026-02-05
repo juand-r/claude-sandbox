@@ -24,9 +24,9 @@ Classical statistics requires you to choose a model class (e.g., "the data are i
 
 Fix a prefix-free universal Turing machine $U$. (Prefix-free means that the set of programs on which $U$ halts forms a prefix-free set: no halting program is a proper prefix of another. This is needed to make the prior a proper probability measure.)
 
-**Definition 13.1 (Solomonoff's Universal Prior).** For a finite binary string $x \in \{0,1\}^*$, the *universal a priori probability* (or *Solomonoff prior*) is
+**Definition 13.1 (Solomonoff's Universal Prior).** For a finite binary string $x \in \lbrace 0,1\rbrace ^*$, the *universal a priori probability* (or *Solomonoff prior*) is
 
-$$M(x) = \sum_{\substack{p \in \{0,1\}^* \\ U(p) = x^*}} 2^{-|p|}$$
+$$M(x) = \sum_{\substack{p \in \lbrace 0,1\rbrace ^* \\ U(p) = x^*}} 2^{-|p|}$$
 
 where the sum is over all programs $p$ such that $U$ with input $p$ outputs a string starting with $x$ (written $x^*$ to denote that $x$ is a prefix of the output), and $|p|$ is the length of $p$ in bits.
 
@@ -43,7 +43,7 @@ Under the Solomonoff prior, $M(a) > M(b) > M(c)$ (up to constant factors). The s
 
 The crucial property of $M$ is that it is *universal* among computable probability measures, in the following precise sense.
 
-**Theorem 13.3 (Dominance, Solomonoff 1964, Zvonkin and Levin 1970).** *For any computable probability measure $\mu$ on $\{0,1\}^*$, there exists a constant $c_\mu > 0$ (depending on $\mu$ but not on $x$) such that for all $x \in \{0,1\}^*$:*
+**Theorem 13.3 (Dominance, Solomonoff 1964, Zvonkin and Levin 1970).** *For any computable probability measure $\mu$ on $\lbrace 0,1\rbrace ^*$, there exists a constant $c_\mu > 0$ (depending on $\mu$ but not on $x$) such that for all $x \in \lbrace 0,1\rbrace ^*$:*
 
 $$M(x) \geq c_\mu \cdot \mu(x).$$
 
@@ -250,11 +250,11 @@ This means OOPS is provably the fastest way (up to a constant) to solve a sequen
 
 OOPS naturally generates a trajectory of increasingly capable solvers:
 
-$$C_0, \quad C_1 = C_0 \cup \{s_1\}, \quad C_2 = C_1 \cup \{s_2\}, \quad \ldots$$
+$$C_0, \quad C_1 = C_0 \cup \lbrace s_1\rbrace , \quad C_2 = C_1 \cup \lbrace s_2\rbrace , \quad \ldots$$
 
 where $s_k$ is the solution to problem $P_k$. Each new solution potentially makes future searches faster (by providing callable subroutines). This is a dynamical system on the space of code stores, where the transition rule is "solve the next problem using all available code, then add the solution."
 
-In our notation: $f_k = C_k$ is the agent's "program" at stage $k$, and $x_k = P_k$ is the current problem. The update is $f_{k+1} = \phi(f_k, x_k) = f_k \cup \{\text{solve}(x_k, f_k)\}$. This is a concrete instance of the self-modifying dynamical system $(f, x) \mapsto (\phi(f,x), g(x))$ where the map itself grows monotonically.
+In our notation: $f_k = C_k$ is the agent's "program" at stage $k$, and $x_k = P_k$ is the current problem. The update is $f_{k+1} = \phi(f_k, x_k) = f_k \cup \lbrace \text{solve}(x_k, f_k)\rbrace $. This is a concrete instance of the self-modifying dynamical system $(f, x) \mapsto (\phi(f,x), g(x))$ where the map itself grows monotonically.
 
 ---
 
@@ -278,7 +278,7 @@ $$\phi(f, x) = \begin{cases} f' & \text{if } \mathcal{A} \vdash u(f', x) > u(f, 
 
 This is a self-modifying dynamical system with a *conservative* transition rule: changes to $f$ are infrequent and always beneficial (relative to the axiom system).
 
-**OOPS:** $\phi(f, x) = f \cup \{\text{new solution}\}$. The meta-rule is *monotone*: the code store only grows. This guarantees that capabilities never decrease, at the cost of ever-increasing memory usage.
+**OOPS:** $\phi(f, x) = f \cup \lbrace \text{new solution}\rbrace $. The meta-rule is *monotone*: the code store only grows. This guarantees that capabilities never decrease, at the cost of ever-increasing memory usage.
 
 ### 13.6.2 The Unconstrained Case
 
@@ -290,7 +290,7 @@ Our general framework imposes no constraints on $\phi$. The meta-rule could be:
 
 By not requiring provable improvement, we gain the ability to study the *dynamics* of self-modification itself---the trajectories, attractors, transients, and bifurcations that arise when programs rewrite programs.
 
-**Example 13.17 (Degenerate self-modification).** Let $\mathcal{F} = \{f_0, f_1, f_2\}$ be three programs and let $\phi$ be defined by: $\phi(f_0, x) = f_1$, $\phi(f_1, x) = f_2$, $\phi(f_2, x) = f_2$ for all $x$. Then regardless of the initial state, the meta-dynamics converge to the fixed point $f_2$ in at most two steps. If $f_2$ is a degenerate program (e.g., one that always outputs the same action), this represents model collapse: a self-modifying system that destroys its own capabilities. A Gödel Machine would never reach $f_2$ (it could not prove that switching to a degenerate program improves utility), but the unconstrained dynamics allow it.
+**Example 13.17 (Degenerate self-modification).** Let $\mathcal{F} = \lbrace f_0, f_1, f_2\rbrace $ be three programs and let $\phi$ be defined by: $\phi(f_0, x) = f_1$, $\phi(f_1, x) = f_2$, $\phi(f_2, x) = f_2$ for all $x$. Then regardless of the initial state, the meta-dynamics converge to the fixed point $f_2$ in at most two steps. If $f_2$ is a degenerate program (e.g., one that always outputs the same action), this represents model collapse: a self-modifying system that destroys its own capabilities. A Gödel Machine would never reach $f_2$ (it could not prove that switching to a degenerate program improves utility), but the unconstrained dynamics allow it.
 
 ### 13.6.3 What These Constructions Share
 
