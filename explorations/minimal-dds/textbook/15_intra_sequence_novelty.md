@@ -870,7 +870,178 @@ Different applications may weight different scales: poetry might prioritize toke
 
 ---
 
-## 15.15 Open Questions
+## 15.15 Cognitive Foundations of Novelty
+
+The metrics developed in this chapter are not arbitrary mathematical constructs. They correspond to cognitive mechanisms that evolved for novelty detection in biological agents. This section integrates cognitive science findings, showing that our formal framework captures genuine aspects of how minds process novelty.
+
+### 15.15.1 Predictive Processing and Surprisal
+
+The **predictive processing** framework (Rao & Ballard, 1999; Friston, 2010) posits that the brain is fundamentally a prediction machine. Perception, cognition, and action are all understood as minimizing **prediction error**---the discrepancy between expected and observed inputs.
+
+**Definition 15.84 (Prediction error).** Let $P$ be the brain's generative model and $x$ an observed stimulus. The prediction error is:
+
+$$\epsilon(x) = -\log P(x) = S_P(x),$$
+
+the surprisal of $x$ under $P$.
+
+This is precisely Definition 15.50. The cognitive science literature thus provides independent motivation for surprisal as a novelty measure: **novelty is prediction error**.
+
+**Proposition 15.85 (Novelty as free energy).** In the free energy principle (Friston, 2010), agents minimize variational free energy $F$, which upper-bounds surprisal:
+
+$$F \geq S_P(x) = -\log P(x).$$
+
+Novel stimuli have high $S_P(x)$, creating pressure to either:
+1. Update the model $P$ to accommodate $x$ (learning), or
+2. Act to avoid $x$ (avoidance of surprising states).
+
+This explains why novelty is both attractive (learning opportunity) and aversive (prediction failure)---the dual nature captured by curiosity research (Section 15.15.4).
+
+### 15.15.2 Hippocampal Novelty Detection
+
+The hippocampus implements a **comparator function** that detects mismatches between predicted and actual inputs (Lisman & Grace, 2005).
+
+**Empirical finding 15.86.** Novel stimuli elicit increased hippocampal activation and trigger dopaminergic responses in the VTA (ventral tegmental area). The signal strength correlates with the degree of novelty---i.e., with surprisal under the current memory model.
+
+**Formalization.** Let $\mathcal{M}$ be the set of stored memory traces. The hippocampal novelty signal for stimulus $x$ is:
+
+$$N_{\mathrm{hipp}}(x) \propto \min_{m \in \mathcal{M}} d(x, m),$$
+
+where $d$ is a similarity metric in representational space. This is nearest-neighbor novelty (Definition 15.48).
+
+**Implication.** The reference set $\mathcal{R}$ in our relative novelty framework corresponds to the contents of memory. The choice of $\mathcal{R}$ (training data, prior outputs, etc.) is the computational analogue of asking "what does the system remember?"
+
+### 15.15.3 Habituation and Cumulative Novelty
+
+**Habituation** is the decrease in response to repeated stimuli. It is one of the simplest forms of learning, observed across all species with nervous systems.
+
+**Definition 15.87 (Habituation curve).** Let $r_n$ be the response magnitude to the $n$-th presentation of stimulus $x$. The habituation curve is:
+
+$$r_n = r_0 \cdot e^{-\lambda n},$$
+
+where $\lambda > 0$ is the habituation rate.
+
+**Connection to cumulative novelty.** Habituation implies that the novelty of $x$ decreases with repeated exposure:
+
+$$\mathrm{Nov}_{\{x, x, \ldots, x\}}(x) \to 0.$$
+
+This is captured by cumulative novelty (Definition 15.57): as the reference set accumulates copies of $x$, the nearest-neighbor distance goes to zero.
+
+**Dishabituation.** A novel stimulus can restore responsiveness to habituated stimuli. In our framework, this corresponds to:
+
+$$\mathrm{CumNov}(x_n) > 0 \implies \text{system has not fully habituated}.$$
+
+### 15.15.4 Curiosity and the Goldilocks Zone
+
+Berlyne (1960) distinguished two types of curiosity:
+- **Diversive curiosity**: Seeking stimulation to escape boredom (too low novelty).
+- **Specific curiosity**: Seeking information to resolve uncertainty (moderate novelty).
+
+**Empirical finding 15.88 (Inverted-U relationship).** Preference for stimuli follows an inverted-U curve as a function of novelty/complexity: stimuli that are too simple are boring; stimuli that are too complex are aversive; stimuli of intermediate complexity are most engaging (Berlyne, 1970).
+
+**Formalization.** Let $D(x)$ be an absolute novelty measure and $Q(x)$ be perceived quality/engagement. The Berlyne curve is:
+
+$$Q(x) = f(D(x)) \quad \text{where } f \text{ is concave with interior maximum}.$$
+
+A simple parametric form:
+
+$$Q(x) = D(x)^\alpha \cdot (D_{\max} - D(x))^\beta,$$
+
+which peaks at $D^* = \frac{\alpha}{\alpha + \beta} D_{\max}$.
+
+**Connection to quality-diversity frontier.** The inverted-U explains why the Pareto frontier (Section 15.7) is the right framing: maximum diversity is not optimal; there is a sweet spot. The "edge of chaos" is cognitively validated.
+
+### 15.15.5 Schema Violation and Bisociation
+
+**Schema theory** (Bartlett, 1932; Rumelhart, 1980) posits that knowledge is organized into structured frames or schemas. Novelty arises from **schema violation**: inputs that don't fit existing frames.
+
+**Definition 15.89 (Schema-relative novelty).** Let $\mathcal{S} = \{S_1, \ldots, S_k\}$ be a set of schemas (structured templates). Define:
+
+$$\mathrm{Nov}_{\mathcal{S}}(x) = \min_{S \in \mathcal{S}} \mathrm{dist}(x, S),$$
+
+where $\mathrm{dist}(x, S)$ measures how poorly $x$ fits schema $S$.
+
+Koestler (1964) defined **bisociation** as the creative act of connecting two previously unconnected schemas. A bisociative sequence $w$ activates schemas $S_1$ and $S_2$ that have low prior association:
+
+$$\mathrm{Bisoc}(w) \propto \mathrm{P}(S_1 \in w) \cdot \mathrm{P}(S_2 \in w) \cdot (1 - \mathrm{Assoc}(S_1, S_2)).$$
+
+**Implication for LLMs.** Truly creative outputs combine concepts from distant domains. This suggests a novelty metric based on co-activation of dissimilar embedding clusters.
+
+### 15.15.6 Conceptual Spaces
+
+Gärdenfors (2000) proposed that concepts are represented as regions in **conceptual spaces**---geometric structures where similarity corresponds to distance.
+
+**Definition 15.90 (Conceptual space novelty).** Let $\mathcal{C}$ be a conceptual space with metric $d$. For a sequence $w$ mapped to a trajectory $\gamma_w$ in $\mathcal{C}$:
+
+$$\mathrm{Nov}_{\mathcal{C}}(w) = \int_{\gamma_w} \rho(c)^{-1} \, dc,$$
+
+where $\rho(c)$ is the density of prior experience at point $c$. This weights novelty by how unexplored each region is.
+
+**Connection to embedding-based metrics.** Modern sentence embeddings (BERT, etc.) define a conceptual space. The semantic diversity metrics of Section 15.6 are implementations of conceptual space novelty.
+
+### 15.15.7 Working Memory and Chunk Diversity
+
+Miller (1956) established that working memory capacity is approximately $7 \pm 2$ items---but "items" can be **chunks** of arbitrary complexity.
+
+**Definition 15.91 (Chunk entropy).** Parse sequence $w$ into chunks $c_1, \ldots, c_m$. The chunk entropy is:
+
+$$H_{\mathrm{chunk}}(w) = H(\text{empirical distribution over chunk types}).$$
+
+**Proposition 15.92.** For sequences within working memory span, perceived novelty scales with chunk entropy, not raw token entropy. A sequence of 7 novel chunks is more striking than 7 repetitions of a familiar chunk, even if both have similar token-level entropy.
+
+**Implication.** Multi-scale novelty (Section 15.14.8) is cognitively grounded: the brain computes novelty at the chunk level, not just the symbol level.
+
+### 15.15.8 Semantic Priming and Spreading Activation
+
+In semantic memory, concepts are linked in a network. **Spreading activation** (Collins & Loftus, 1975) propagates from activated nodes to related nodes.
+
+**Definition 15.93 (Activation novelty).** Let $A_t$ be the activation pattern at time $t$ and $A_{t-1}$ the pattern after the previous token. Define:
+
+$$\mathrm{Nov}_{\mathrm{act}}(w_t | w_{<t}) = \| A_t - A_{t-1} \|,$$
+
+the magnitude of activation change.
+
+Tokens that activate distant regions of semantic memory (low overlap with current activation) have high activation novelty. This corresponds to conditional entropy (Definition 15.16): how unpredictable is the next semantic region given the current one?
+
+### 15.15.9 The Orienting Response
+
+The **orienting response** (Sokolov, 1963) is an involuntary shift of attention toward novel stimuli. It includes physiological markers (pupil dilation, skin conductance, heart rate change).
+
+**Empirical finding 15.94.** Orienting response magnitude correlates with:
+1. Stimulus intensity
+2. Unexpectedness (surprisal)
+3. Significance (relevance to goals)
+4. Change from previous stimuli (local novelty)
+
+**Connection to metrics.** The orienting response validates that novelty is not purely abstract---it has measurable physiological correlates. An LLM-generated sequence that would elicit strong orienting responses (measurable via eye-tracking or GSR) is one with high operational novelty.
+
+### 15.15.10 Toward a Unified Cognitive-Computational Theory
+
+The cognitive findings converge on a unified picture:
+
+| Cognitive Mechanism | Computational Formalization |
+|---|---|
+| Prediction error | Surprisal $S_P(x) = -\log P(x)$ |
+| Hippocampal comparison | Nearest-neighbor novelty $\min_r d(w, r)$ |
+| Habituation | Cumulative novelty decay |
+| Curiosity (Goldilocks) | Inverted-U preference function |
+| Schema violation | Distance to nearest schema |
+| Bisociation | Co-activation of dissimilar clusters |
+| Conceptual space | Trajectory in embedding space |
+| Chunking | Multi-scale entropy |
+| Spreading activation | Activation change magnitude |
+
+**Theorem 15.95 (Informal).** The novelty metrics of Sections 15.3--15.6 correspond to cognitive mechanisms that evolved for adaptive behavior in uncertain environments. A sequence $w$ is "cognitively novel" if it:
+1. Has high surprisal under the predictive model (high $S_P$).
+2. Is distant from stored memories (high $\mathrm{Nov}_{\mathcal{R}}$).
+3. Falls in the Goldilocks zone of the Berlyne curve (moderate $D$).
+4. Violates or connects schemas in unexpected ways.
+5. Causes large activation changes in semantic memory.
+
+**Design principle.** To build generative systems that produce human-interesting outputs, optimize for these cognitively-grounded novelty metrics rather than purely information-theoretic ones. The brain is the ultimate novelty detector; our metrics should approximate its computations.
+
+---
+
+## 15.17 Open Questions
 
 **Question 15.75 (Practical depth estimation).** Can we develop efficient estimators for logical depth or depth-like quantities that distinguish "structured complex" from "random" sequences in LLM outputs?
 
@@ -892,7 +1063,7 @@ Different applications may weight different scales: poetry might prioritize toke
 
 ---
 
-## 15.16 Summary
+## 15.18 Summary
 
 | Concept | Metric | Captures |
 |---------|--------|----------|
@@ -930,17 +1101,31 @@ We identified two key extensions to the basic framework:
 
 - Bai, Y., et al. (2022). Constitutional AI: Harmlessness from AI feedback. *arXiv preprint* arXiv:2212.08073.
 
+- Bartlett, F. C. (1932). *Remembering: A Study in Experimental and Social Psychology*. Cambridge University Press.
+
 - Bennett, C. H. (1988). Logical depth and physical complexity. In *The Universal Turing Machine: A Half-Century Survey*, pp. 227--257. Oxford University Press.
+
+- Berlyne, D. E. (1960). *Conflict, Arousal, and Curiosity*. McGraw-Hill.
+
+- Berlyne, D. E. (1970). Novelty, complexity, and hedonic value. *Perception & Psychophysics*, 8(5):279--286.
+
+- Collins, A. M. and Loftus, E. F. (1975). A spreading-activation theory of semantic processing. *Psychological Review*, 82(6):407--428.
 
 - Crutchfield, J. P. and Young, K. (1989). Inferring statistical complexity. *Physical Review Letters*, 63(2):105--108.
 
 - Du, Y., et al. (2023). Improving factuality and reasoning in language models through multiagent debate. *arXiv preprint* arXiv:2305.14325.
 
+- Friston, K. (2010). The free-energy principle: A unified brain theory? *Nature Reviews Neuroscience*, 11(2):127--138.
+
 - Gács, P., Tromp, J. T., and Vitányi, P. M. B. (2001). Algorithmic statistics. *IEEE Transactions on Information Theory*, 47(6):2443--2463.
+
+- Gärdenfors, P. (2000). *Conceptual Spaces: The Geometry of Thought*. MIT Press.
 
 - Heaps, H. S. (1978). *Information Retrieval: Computational and Theoretical Aspects*. Academic Press.
 
 - Holtzman, A., Buys, J., Du, L., Forbes, M., and Choi, Y. (2020). The curious case of neural text degeneration. In *ICLR 2020*.
+
+- Koestler, A. (1964). *The Act of Creation*. Hutchinson.
 
 - Kulesza, A. and Taskar, B. (2012). Determinantal point processes for machine learning. *Foundations and Trends in Machine Learning*, 5(2--3):123--286.
 
@@ -950,13 +1135,23 @@ We identified two key extensions to the basic framework:
 
 - Lempel, A. and Ziv, J. (1976). On the complexity of finite sequences. *IEEE Transactions on Information Theory*, 22(1):75--81.
 
+- Lisman, J. E. and Grace, A. A. (2005). The hippocampal-VTA loop: Controlling the entry of information into long-term memory. *Neuron*, 46(5):703--713.
+
+- Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. *Psychological Review*, 63(2):81--97.
+
 - Pathak, D., Agrawal, P., Efros, A. A., and Darrell, T. (2017). Curiosity-driven exploration by self-supervised prediction. In *ICML 2017*.
 
 - Peyré, G. and Cuturi, M. (2019). Computational optimal transport. *Foundations and Trends in Machine Learning*, 11(5--6):355--607.
 
+- Rao, R. P. N. and Ballard, D. H. (1999). Predictive coding in the visual cortex: A functional interpretation of some extra-classical receptive-field effects. *Nature Neuroscience*, 2(1):79--87.
+
+- Rumelhart, D. E. (1980). Schemata: The building blocks of cognition. In *Theoretical Issues in Reading Comprehension*, pp. 33--58. Lawrence Erlbaum.
+
 - Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal*, 27(3):379--423.
 
 - Shumailov, I., et al. (2024). The curse of recursion: Training on generated data makes models forget. *arXiv preprint* arXiv:2305.17493.
+
+- Sokolov, E. N. (1963). *Perception and the Conditioned Reflex*. Pergamon Press.
 
 - Villani, C. (2009). *Optimal Transport: Old and New*. Springer.
 
