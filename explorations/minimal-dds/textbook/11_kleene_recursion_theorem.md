@@ -301,3 +301,31 @@ The recursion theorem tells us something deep about the nature of computation: s
 - Rogers, H., Jr. (1958). Gödel numberings of partial recursive functions. *Journal of Symbolic Logic*, 23(3), 331--341.
 - Rogers, H., Jr. (1967). *Theory of Recursive Functions and Effective Computability*. McGraw-Hill. Reprinted by MIT Press, 1987.
 - Soare, R. I. (1987). *Recursively Enumerable Sets and Degrees*. Springer-Verlag.
+
+---
+
+## Recommended Reading
+
+For learning computability theory:
+
+- **Rogers (1967)** remains the gold standard textbook for classical recursion theory. Chapter 11 covers the recursion theorem with full proofs and applications. Dense but rewarding.
+
+- **Cutland (1980)** is a gentler introduction suitable for undergraduates. Chapter 11 covers the recursion theorem clearly.
+
+- **Sipser, M.** (2012). *Introduction to the Theory of Computation*, 3rd ed. Cengage. Chapter 6 covers computability basics; less depth on the recursion theorem but more accessible.
+
+For the recursion theorem specifically:
+
+- **Kleene (1952)**, *Introduction to Metamathematics*, is the original source. Historical but still readable.
+
+- **Moschovakis, Y.** (2010). "Kleene's amazing second recursion theorem." *Bulletin of Symbolic Logic*, 16(2), 189--239. An excellent modern survey with historical context and advanced applications.
+
+For applications to computer science:
+
+- **Adleman (1988)** applies the recursion theorem to computer viruses. Short, elegant, and somewhat unsettling.
+
+- **Jones, N. D.** (1997). *Computability and Complexity: From a Programming Perspective*. MIT Press. Connects recursion-theoretic ideas to programming language theory.
+
+For quines specifically:
+
+- **Thompson, K.** (1984). "Reflections on Trusting Trust." *Communications of the ACM*, 27(8), 761--763. The famous Turing Award lecture on self-replicating programs and their security implications.

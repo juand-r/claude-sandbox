@@ -350,3 +350,35 @@ Cellular automata are a natural and far-reaching class of discrete dynamical sys
 - Shereshevsky, M. A. (1993). Expansiveness, entropy and polynomial growth for groups acting on subshifts by automorphisms. Indagationes Mathematicae, 4(2), 203--210.
 - Wolfram, S. (1984). Universality and complexity in cellular automata. Physica D, 10(1--2), 1--35.
 - Wolfram, S. (2002). *A New Kind of Science.* Wolfram Media.
+
+---
+
+## Recommended Reading
+
+For an accessible introduction:
+
+- **Wolfram (2002)**, *A New Kind of Science*, is polarizing but contains extensive empirical data and beautiful figures. Best used as a source of examples rather than proofs.
+
+- **Schiff, J.** (2008). *Cellular Automata: A Discrete View of the World*. Wiley. Undergraduate-level textbook with clear exposition and many exercises.
+
+For the mathematical foundations:
+
+- **Kurka (2003)** is the definitive mathematical treatment, covering the topological dynamics perspective thoroughly.
+
+- **Lind & Marcus (2021)**, Chapter 1, places CA in the broader context of symbolic dynamics and gives clean proofs of the Curtis-Hedlund-Lyndon theorem.
+
+For universality and computation:
+
+- **Cook (2004)** is the original proof of Rule 110's universality. Technical but important.
+
+- **Ollinger, N.** (2012). "Universalities in cellular automata." In *Handbook of Natural Computing*, Springer. Comprehensive survey of universality results across different CA.
+
+For the Game of Life specifically:
+
+- **Berlekamp, Conway, and Guy (1982)**, *Winning Ways*, Chapter 25, remains the classic exposition of Life's basic structures and logical universality.
+
+- **Adamatzky, A.** (ed.) (2010). *Game of Life Cellular Automata*. Springer. Collection of articles on Life's properties and applications.
+
+For connections to physics and reversible CA:
+
+- **Toffoli, T. and Margolus, N.** (1987). *Cellular Automata Machines*. MIT Press. Pioneering work on using CA for physics simulation, with emphasis on reversible rules.

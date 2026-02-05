@@ -466,3 +466,37 @@ The perspective developed in this chapter reveals that many apparently disparate
 - Wang, S., Dong, Y., and Cotterell, R. (2025). Successive paraphrasing converges to fixed cycles. *arXiv preprint* arXiv:2502.15208.
 
 - Yuan, W., Pang, R. Y., Cho, K., Sukhbaatar, S., Xu, J., and Weston, J. (2024). Self-rewarding language models. *arXiv preprint* arXiv:2401.10020.
+
+---
+
+## Recommended Reading
+
+For the dynamical systems perspective on LLMs:
+
+- **Wang et al. (2025)** is essential reading: the first rigorous demonstration of convergence to periodic orbits in LLM iteration. Short and well-written.
+
+- **Shumailov et al. (2024)** is the definitive treatment of model collapse. The theoretical analysis is clean and the experimental evidence compelling.
+
+For computational expressiveness of transformers:
+
+- **Merrill & Sabharwal (2024)** establishes the TC$^0$ bound for single forward passes and Turing completeness with chain-of-thought. Accessible and important.
+
+- **Qiu et al. (2024)** proves Turing completeness via prompting alone. Short paper with a beautiful result.
+
+For multi-agent LLM systems:
+
+- **Park et al. (2023)** on Generative Agents is a tour de force: 25 agents exhibiting emergent social behavior. The supplementary materials detail the architecture.
+
+- **Li et al. (2023)** on CAMEL provides a simpler two-agent framework useful for understanding coupled dynamics.
+
+For self-improvement and its limits:
+
+- **Madaan et al. (2023)** on Self-Refine shows what works. **Huang et al. (2023)** shows what doesn't. Reading both together gives a balanced picture.
+
+For background on symbolic dynamics and sliding block codes:
+
+- **Lind & Marcus (2021)** is the standard reference. Chapters 1--3 and 6 are directly relevant to understanding LLMs as block maps.
+
+For thinking about AI systems dynamically:
+
+- This textbook's earlier chapters, especially Chapters 1 (iterated maps), 7 (cellular automata), and 9 (logical depth), provide the conceptual foundations for analyzing LLM iteration.

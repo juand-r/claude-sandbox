@@ -484,3 +484,31 @@ The complexity-entropy plane $(h_\mu, C_\mu)$ reveals that "complexity" in the c
 7. **Upper, D. R.** (1997). *Theory and algorithms for hidden Markov models and generalized hidden Markov models.* Ph.D. thesis, University of California, Berkeley. [Early detailed treatment of epsilon-machines and their relationship to HMMs.]
 
 8. **Travers, N. F. and Crutchfield, J. P.** (2014). "Equivalence of history and generator epsilon-machines." *arXiv:1111.4500*. [Rigorous proof that the forward-time and history-based constructions yield the same object.]
+
+---
+
+## Recommended Reading
+
+For getting started:
+
+- **Crutchfield (2012)**, "Between order and chaos" in *Nature Physics*, is the best short introduction. It is accessible to a general scientific audience and conveys the key ideas in 8 pages.
+
+- **Shalizi & Crutchfield (2001)** is the comprehensive technical reference. Sections 1--3 are accessible; later sections require more mathematical maturity. Essential for anyone wanting to use the theory rigorously.
+
+For practical inference:
+
+- **Shalizi & Klinkner (2004)** describes the CSSR algorithm with implementation details. The companion software (written in Python) is available online.
+
+- **Strelioff, C. C. and Crutchfield, J. P.** (2014). "Bayesian structural inference for hidden processes." *Physical Review E*, 89:042119. A Bayesian alternative to CSSR that handles small data better.
+
+For connections to physics:
+
+- **Crutchfield, J. P.** (1994). "The calculi of emergence: Computation, dynamics and induction." *Physica D*, 75:11--54. Places computational mechanics in the broader context of complex systems science.
+
+For quantum extensions:
+
+- **Gu, M. et al.** (2012). "Quantum mechanics can reduce the complexity of classical models." *Nature Communications*, 3:762. Introduces quantum epsilon-machines and proves the quantum advantage.
+
+For software implementations:
+
+- The CMPy package (Computational Mechanics in Python) provides implementations of CSSR and related algorithms: https://github.com/csc-ubc-okanagan/cmpy

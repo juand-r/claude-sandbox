@@ -287,3 +287,31 @@ The IFS framework transforms the study of single-map iteration into the far rich
 - Hutchinson, J. E. (1981). Fractals and self-similarity. *Indiana University Mathematics Journal*, 30(5), 713–747.
 - Jacquin, A. E. (1992). Image coding based on a fractal theory of iterated contractive image transformations. *IEEE Transactions on Image Processing*, 1(1), 18–30.
 - Moran, P. A. P. (1946). Additive functions of intervals and Hausdorff measure. *Mathematical Proceedings of the Cambridge Philosophical Society*, 42(1), 15–23.
+
+---
+
+## Recommended Reading
+
+For an accessible introduction to IFS and fractals:
+
+- **Barnsley (1988/2012)**, *Fractals Everywhere*, remains the most accessible introduction. The exposition is visual and builds intuition through many examples and exercises.
+
+- **Peitgen, Jürgens, and Saupe** (2004). *Chaos and Fractals: New Frontiers of Science*, 2nd ed. Springer. A comprehensive and beautifully illustrated treatment for a general scientific audience.
+
+For rigorous mathematical foundations:
+
+- **Falconer (2003)** is the standard mathematical reference on fractal geometry. Chapters 2--3 cover IFS and dimension theory with full proofs.
+
+- **Hutchinson (1981)** is the original paper establishing the mathematical framework. Highly readable and still the cleanest source for the core theorems.
+
+For connections to probability and ergodic theory:
+
+- **Diaconis, P. and Freedman, D.** (1999). "Iterated random functions." *SIAM Review*, 41(1), 45--76. Beautiful paper connecting IFS to the theory of Markov chains and coupling.
+
+For applications in image compression:
+
+- **Fisher, Y.** (1995). *Fractal Image Compression: Theory and Application*. Springer. Comprehensive treatment of the algorithmic applications of the Collage Theorem.
+
+For dimension theory beyond IFS:
+
+- **Mattila, P.** (1995). *Geometry of Sets and Measures in Euclidean Spaces*. Cambridge University Press. Advanced treatment of Hausdorff measure and dimension, essential for understanding when the Moran equation gives the exact dimension.

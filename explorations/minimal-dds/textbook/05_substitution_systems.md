@@ -326,3 +326,29 @@ The theory of substitution systems and automatic sequences lies at a crossroads 
 - Rudin, W. (1959). Some theorems on Fourier coefficients. *Proceedings of the AMS*, 10(6):855--859.
 
 - Thue, A. (1906). Über unendliche Zeichenreihen. *Norske Vid. Selsk. Skr. I Mat.-Nat. Kl.*, 7:1--22. The original construction of the overlap-free sequence.
+
+---
+
+## Recommended Reading
+
+For an accessible introduction:
+
+- **Allouche & Shallit (2003)** is the definitive reference and surprisingly readable. Chapters 1--5 cover the basics of morphisms and automatic sequences; Chapters 6--7 cover Cobham's theorems.
+
+For the dynamical systems perspective:
+
+- **Queffélec (2010)** is essential for spectral theory. The first few chapters are accessible; later chapters require measure theory and functional analysis.
+
+- **Fogg (2002)** is a collaborative volume (written by multiple authors under a pseudonym) covering substitutions from combinatorial, dynamical, and arithmetic viewpoints.
+
+For combinatorics on words:
+
+- **Lothaire, M.** (2002). *Algebraic Combinatorics on Words*. Cambridge University Press. Chapters 1--2 cover morphisms and Sturmian words; more advanced than Allouche-Shallit in some directions.
+
+For number-theoretic connections:
+
+- **Adamczewski, B. and Bugeaud, Y.** (2010). "Transcendence and Diophantine approximation." In *Bentlnagar et al. eds., Combinatorics, Automata and Number Theory*. Cambridge University Press. Deep connections between automatic sequences and transcendental number theory.
+
+For the Pisot conjecture and related topics:
+
+- **Barge, M.** (2016). "The Pisot conjecture for β-substitutions." *Ergodic Theory and Dynamical Systems*, 36(5):1501--1534. Recent progress on one of the main open problems in the field.

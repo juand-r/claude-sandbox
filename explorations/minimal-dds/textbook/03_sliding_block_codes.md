@@ -289,3 +289,29 @@ Nevertheless, the sliding block code framework provides the correct mathematical
 - **Kurka, P.** (2003). *Topological and Symbolic Dynamics*. Cours Specialises, Societe Mathematique de France. (Chapter 4 treats cellular automata as endomorphisms.)
 - **Ryan, J. P.** (1972). The shift and commutativity. *Mathematical Systems Theory*, 6(1--2), 82--85.
 - **Cook, M.** (2004). Universality in elementary cellular automata. *Complex Systems*, 15(1), 1--40.
+
+---
+
+## Recommended Reading
+
+For the core theory:
+
+- **Lind & Marcus (2021)**, Chapter 6, gives the definitive modern treatment of sliding block codes, including full proofs and many exercises. This is the standard reference.
+
+- **Hedlund (1969)** is the original source and remains highly readable. It establishes the foundational results on endomorphisms and automorphisms of shift spaces.
+
+For cellular automata:
+
+- **Wolfram, S.** (2002). *A New Kind of Science*. Wolfram Media. Controversial but influential; contains extensive empirical study of elementary cellular automata.
+
+- **Ilachinski, A.** (2001). *Cellular Automata: A Discrete Universe*. World Scientific. Comprehensive treatment of cellular automata from multiple perspectives.
+
+For deeper algebraic structure:
+
+- **Ceccherini-Silberstein, T. and Coornaert, M.** (2010). *Cellular Automata and Groups*. Springer. Explores the connection between CAs and group theory, generalizing beyond $\mathbb{Z}$ actions.
+
+- **Boyle, M., Lind, D., and Rudolph, D.** (1988). "The automorphism group of a shift of finite type." *Transactions of the AMS*, 306(1), 71--114. Deep results on $\text{Aut}(X)$ for SFTs.
+
+For connections to computation and language:
+
+- **Kari, J.** (2005). "Theory of cellular automata: A survey." *Theoretical Computer Science*, 334(1-3), 3--33. Emphasizes decidability questions and the computational perspective.

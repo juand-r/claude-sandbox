@@ -324,3 +324,35 @@ Brudno's theorem makes the connection precise for ergodic systems. For non-ergod
 - Solomonoff, R. J. (1964). A formal theory of inductive inference. *Information and Control*, 7(1), 1--22 and 7(2), 224--254.
 - Levin, L. A. (1974). Laws of information conservation (nongrowth) and aspects of the foundation of probability theory. *Problems of Information Transmission*, 10(3), 206--210.
 - Schnorr, C. P. (1973). Process complexity and effective random tests. *Journal of Computer and System Sciences*, 7(4), 376--388.
+
+---
+
+## Recommended Reading
+
+For a comprehensive introduction:
+
+- **Li & Vitányi (2019)** is the definitive textbook, covering everything from basic definitions through applications. Chapters 1--3 suffice for the core theory; later chapters cover applications to learning, statistics, and physics.
+
+For a shorter introduction:
+
+- **Cover & Thomas (2006)**, Chapter 14, provides a concise introduction oriented toward information theorists.
+
+For algorithmic randomness:
+
+- **Downey, R. and Hirschfeldt, D.** (2010). *Algorithmic Randomness and Complexity*. Springer. The most comprehensive treatment of the theory of random sequences, covering Martin-Löf randomness and many refinements.
+
+- **Nies, A.** (2009). *Computability and Randomness*. Oxford University Press. Another excellent advanced treatment.
+
+For connections to dynamics:
+
+- **Brudno (1983)** is the original source for the connection between Kolmogorov complexity and dynamical entropy. The paper is short and readable.
+
+For applications:
+
+- **Li et al. (2004)** introduced the normalized compression distance and demonstrated its wide applicability. The IEEE Transactions paper is accessible and includes many examples.
+
+- **Cilibrasi, R. and Vitányi, P.** (2005). "Clustering by compression." *IEEE Transactions on Information Theory*, 51(4), 1523--1545. Extends NCD to clustering algorithms with impressive empirical results.
+
+For philosophical foundations:
+
+- **Chaitin, G.** (2005). *Meta Math! The Quest for Omega*. Vintage. A popular account of the philosophical implications of algorithmic information theory, including connections to Gödel's theorems.

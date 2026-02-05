@@ -233,3 +233,35 @@ The deep, sophisticated objects -- those with moderate Kolmogorov complexity, hi
 - Koppel, M. and Atlan, H. (1991). An almost machine-independent theory of program-length complexity, sophistication, and induction. *Information Sciences*, 56(1--3):258--263.
 - Li, M. and Vitányi, P.M.B. (2008). *An Introduction to Kolmogorov Complexity and Its Applications*. Third edition. Springer.
 - Vitányi, P.M.B. (2006). Meaningful information. *IEEE Transactions on Information Theory*, 52(10):4617--4626.
+
+---
+
+## Recommended Reading
+
+For the foundational paper:
+
+- **Bennett (1988)** is the original and remains the best exposition of logical depth. It is remarkably accessible and philosophically rich. Read this first.
+
+For the rigorous treatment:
+
+- **Antunes & Fortnow (2009)** clarifies the relationships between depth, sophistication, and effective complexity with full proofs. Essential for understanding the precise mathematical content.
+
+For sophistication and effective complexity:
+
+- **Gell-Mann & Lloyd (1996)** introduces effective complexity from a physics perspective. Short and conceptual rather than technical.
+
+- **Vitányi (2006)** gives a rigorous treatment of "meaningful information" and its relation to sophistication.
+
+For the broader context:
+
+- **Li & Vitányi (2008)**, Chapter 7, covers logical depth and sophistication as part of a comprehensive treatment of algorithmic information theory.
+
+For philosophical implications:
+
+- **Bennett, C.H.** (1995). "Thermodynamics of computation." In *Computational Complexity*, ed. R.A. Meyers, Springer. Connects logical depth to physical notions of irreversibility and the thermodynamics of computation.
+
+- **Dennett, D.** (1995). *Darwin's Dangerous Idea*. Simon & Schuster. Chapter 4 discusses Bennett's concept of depth in the context of evolutionary creativity, making the ideas accessible to a general audience.
+
+For practical applications:
+
+- **Zenil, H. et al.** (2018). "A decomposition method for global evaluation of Shannon entropy and local estimations of algorithmic complexity." *Entropy*, 20(8), 605. Computational approaches to estimating complexity measures including depth-like quantities.

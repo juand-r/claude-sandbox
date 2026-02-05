@@ -134,7 +134,7 @@ For a point $x$ in a DDS $(X, f)$, we define:
 
 Note that $\rho(x) = |\mathcal{O}(x)|$, the number of distinct elements visited by the orbit.
 
-**Algorithm (Floyd's cycle detection).** Given only the ability to evaluate $f$, one can determine $\tau(x)$ and $\lambda(x)$ using $O(1)$ memory and $O(\tau + \lambda)$ evaluations of $f$, via Floyd's "tortoise and hare" algorithm (Floyd, 1967). This is often used in Pollard's rho factoring algorithm, which derives its name from the $\rho$-shaped orbits of iterated maps.
+**Algorithm (Floyd's cycle detection).** Given only the ability to evaluate $f$, one can determine $\tau(x)$ and $\lambda(x)$ using $O(1)$ memory and $O(\tau + \lambda)$ evaluations of $f$, via Floyd's "tortoise and hare" algorithm. This algorithm, discovered independently by Floyd and others in the 1960s, uses two pointers moving at different speeds; it is described in detail in Knuth's *The Art of Computer Programming* (Vol. 2, §3.1). Floyd's cycle detection is central to Pollard's rho factoring algorithm, which derives its name from the $\rho$-shaped orbits of iterated maps.
 
 ## 1.7 Product Systems
 
@@ -242,4 +242,22 @@ The key takeaways of this chapter are:
 
 - Knuth, D. E. (1998). *The Art of Computer Programming*, Volume 2: *Seminumerical Algorithms*, 3rd edition. Addison-Wesley. Section 3.1 discusses random number generation via iterated maps; Exercise 3.1-12 treats the birthday paradox connection.
 
-- Floyd, R. W. (1967). "Nondeterministic Algorithms." *Journal of the ACM*, 14(4), pp. 636--644. (Note: Floyd's cycle-detection algorithm is often attributed to this paper, though the algorithm appears in unpublished form and in Knuth's TAOCP.)
+- Pollard, J. M. (1975). "A Monte Carlo Method for Factorization." *BIT Numerical Mathematics*, 15(3), pp. 331--334. Introduces the rho factorization algorithm, a celebrated application of cycle detection in iterated maps.
+
+---
+
+## Recommended Reading
+
+For readers new to discrete dynamical systems on finite sets:
+
+- **Start here**: Chapter II of Flajolet & Sedgewick's *Analytic Combinatorics* (2009) provides a modern, self-contained treatment of labeled structures including functional graphs. Freely available at https://algo.inria.fr/flajolet/Publications/book.pdf.
+
+- **Classical reference**: Knuth's *TAOCP* Volume 2, Section 3.1, offers a programmer's perspective on random number generators as iterated maps, with exercises on cycle detection and the birthday paradox.
+
+- **For probabilists**: The original Flajolet & Odlyzko (1990) paper is highly readable and derives the $\sqrt{n}$ scaling laws with full proofs via generating functions.
+
+- **Deeper exploration**: Readers interested in the combinatorics of permutations specifically should consult Stanley's *Enumerative Combinatorics* Volume 1, Chapter 1.
+
+For connections to cryptography and hash functions:
+
+- Menezes, van Oorschot, and Vanstone, *Handbook of Applied Cryptography* (1996), Chapter 9, discusses cycle detection in the context of discrete logarithm and factoring algorithms.

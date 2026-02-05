@@ -333,3 +333,37 @@ For the study of discrete dynamical systems on function spaces, these constructi
 - Solomonoff, R. J. (1964). A formal theory of inductive inference. *Information and Control*, 7(1):1--22 and 7(2):224--254.
 - Solomonoff, R. J. (1978). Complexity-based induction systems: Comparisons and convergence theorems. *IEEE Transactions on Information Theory*, 24(4):422--432.
 - Zvonkin, A. K. and Levin, L. A. (1970). The complexity of finite objects and the development of the concepts of information and randomness by means of the theory of algorithms. *Russian Mathematical Surveys*, 25(6):83--124.
+
+---
+
+## Recommended Reading
+
+For Solomonoff induction and AIXI:
+
+- **Hutter (2005)** is the definitive monograph. The first half covers Solomonoff induction; the second half covers AIXI. Technically demanding but comprehensive.
+
+- **Legg (2008)**, *Machine Super Intelligence*, provides a more accessible introduction to the main ideas, including a formal definition of intelligence based on AIXI.
+
+- **Rathmanner, S. and Hutter, M.** (2011). "A philosophical treatise of universal induction." *Entropy*, 13(6):1076--1136. Covers the philosophical foundations and addresses common objections.
+
+For Gödel Machines:
+
+- **Schmidhuber (2003)** is the original paper and remains the best introduction. Available on arXiv as cs/0309048.
+
+- **Schmidhuber (2009)**, "Ultimate cognition à la Gödel," provides a shorter and more accessible overview.
+
+For OOPS and incremental self-improvement:
+
+- **Schmidhuber (2004)**, "Optimal ordered problem solver," in *Machine Learning*. The original paper, with full technical details.
+
+For broader context on AGI theory:
+
+- **Goertzel, B. and Pennachin, C.** (eds.) (2007). *Artificial General Intelligence*. Springer. Collection of papers from the AGI community, including Hutter's overview of AIXI.
+
+For embedded agency and limitations of AIXI:
+
+- **Demski, A. and Garrabrant, S.** (2019). "Embedded Agency." MIRI Technical Report. Analyzes the assumptions underlying AIXI and identifies problems that arise when the agent is embedded within its environment.
+
+For practical approximations:
+
+- **Veness, J. et al.** (2011). "A Monte-Carlo AIXI Approximation." *Journal of Artificial Intelligence Research*, 40:95--142. The most successful practical approximation to AIXI, with experiments on Atari games.

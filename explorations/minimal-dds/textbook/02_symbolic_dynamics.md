@@ -236,33 +236,15 @@ $$f(n) = f(n-1) + f(n-2),$$
 
 with $f(1) = 2$ (words: $0, 1$) and $f(2) = 3$ (words: $00, 01, 10$). This is a shifted Fibonacci recurrence, and $f(n) \sim C \cdot \varphi^n$, confirming $h = \log \varphi$.
 
-**Example 2.22 (Even shift).** The even shift is sofic, presented by the labeled graph in Example 2.16 with adjacency matrix:
+**Example 2.22 (Even shift).** The even shift is sofic, presented by the labeled graph in Example 2.16 with vertices $A, B$ and edges: $A \to A$ (label 0), $A \to B$ (label 1), $B \to A$ (label 1). The adjacency matrix of this underlying graph is:
 
-$$A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$$
+$$A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}.$$
 
-for the underlying graph (vertex $A$ has a self-loop labeled 0 and an edge to $B$ labeled 1; vertex $B$ has an edge to $A$ labeled 1). The Perron eigenvalue is 1, but this does *not* mean the entropy is 0.
-
-The issue is that the entropy of a sofic shift is the entropy of its minimal right-resolving presentation (the Fischer cover). For the even shift, the correct computation uses the follower set graph, which happens to have the same structure as above. However, we should count words directly.
-
-Let $g(n) = |\mathcal{B}_n(X_{\text{even}})|$. The allowed words of length $n$ over $\lbrace 0,1\rbrace $ are those in which every maximal block of 1s flanked by 0s (or by the boundary) has even length. Consider the generating function approach, or note: the number of binary words of length $n$ that avoid the pattern $01^{2k+1}0$ for all $k$ is $|\mathcal{B}_n(X_{\text{even}})|$.
-
-A direct computation: partition words by the number and placement of 0s. Between consecutive 0s, we must have an even number (possibly zero) of 1s. At the left and right boundaries, any number of 1s is allowed (the parity constraint only applies between two 0s).
-
-The transfer matrix for the *labeled* graph is computed by tracking states. The adjacency matrix of the underlying (unlabeled) graph of the Fischer cover of the even shift is:
-
-$$M = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.$$
-
-This has spectral radius 1, giving $h(X_{\text{even}}) = \log 1 = 0$? No---this is incorrect. The issue is that the above graph only has 3 edges total, but let us recount.
-
-The correct underlying graph has two vertices $A, B$ with edges: $A \to A$ (label 0), $A \to B$ (label 1), $B \to A$ (label 1). The adjacency matrix (counting edges between vertices, ignoring labels) is:
-
-$$A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix},$$
-
-which is the same as the golden mean shift! The Perron eigenvalue is $\varphi$, so:
+This is the same matrix as the golden mean shift. The Perron eigenvalue is $\varphi = \frac{1+\sqrt{5}}{2}$, so:
 
 $$h(X_{\text{even}}) = \log \varphi.$$
 
-This makes sense: the even shift and the golden mean shift have the same entropy because the underlying graph of the Fischer cover of the even shift happens to be the same graph as the golden mean shift. Different label assignments yield different subshifts (different languages), but the underlying graph controls the entropy.
+The even shift and the golden mean shift have the same entropy despite being different subshifts. The key insight is that entropy depends only on the underlying graph structure of the Fischer cover (the minimal right-resolving presentation), not on the edge labels. Both shifts happen to have the same underlying graph, so they have the same entropy. This illustrates a general principle: different label assignments on the same graph yield sofic shifts with the same topological entropy but potentially different languages.
 
 ---
 
@@ -401,3 +383,29 @@ This perspective transforms questions about LLM behavior under iteration---stabi
 - **Fischer, R.** (1975). Sofic systems and graphs. *Monatshefte fur Mathematik*, 80, 179--186. Establishes the connection between sofic shifts and finite automata.
 
 - **Weiss, B.** (1973). Subshifts of finite type and sofic systems. *Monatshefte fur Mathematik*, 77, 462--474. Introduces the term "sofic" and establishes basic properties.
+
+---
+
+## Recommended Reading
+
+For newcomers to symbolic dynamics:
+
+- **Start here**: Lind & Marcus (2021), Chapters 1--4. The book is exceptionally clear and includes numerous exercises. An early draft is available online.
+
+- **Prerequisite-light introduction**: Kitchens (1998) emphasizes the probabilistic (Markov chain) viewpoint and may be easier for readers with a probability background.
+
+For deeper study of entropy:
+
+- **Walters (1982)**, Chapters 4 and 8, covers the general theory of topological and measure-theoretic entropy beyond the symbolic setting. Essential for understanding the variational principle in full generality.
+
+- **Downarowicz, T.** (2011). *Entropy in Dynamical Systems*. Cambridge University Press. A comprehensive treatment of all flavors of dynamical entropy.
+
+For connections to automata theory and formal languages:
+
+- **Hopcroft, Motwani, and Ullman** (2006). *Introduction to Automata Theory, Languages, and Computation*, 3rd ed. The connection between sofic shifts and regular languages is immediate once you know both theories.
+
+For applications to coding and information theory:
+
+- **Cover, T. and Thomas, J.** (2006). *Elements of Information Theory*, 2nd ed. Chapters 4--5 cover entropy rate of stochastic processes, closely related to measure-theoretic entropy of Markov measures.
+
+- **Marcus, B., Roth, R., and Siegel, P.** (1998). "Constrained systems and coding for recording channels." In *Handbook of Coding Theory*, Vol. II. Direct applications of symbolic dynamics to data storage.

@@ -277,3 +277,31 @@ For our purposes, tag systems serve as a bridge between the abstract $(f, x)$ dy
 - Minsky, M. (1961). "Recursive Unsolvability of Post's Problem of 'Tag' and Other Topics in Theory of Turing Machines." *Annals of Mathematics*, 74(3), 437--455.
 - Post, E. L. (1943). "Formal Reductions of the General Combinatorial Decision Problem." *American Journal of Mathematics*, 65(2), 197--215.
 - Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media. Chapter 3: "The World of Simple Programs."
+
+---
+
+## Recommended Reading
+
+For historical context and Post's contributions:
+
+- **Davis, M.** (1965). *The Undecidable*. Raven Press. Contains Post's original 1943 paper along with other foundational papers in computability. Essential primary source.
+
+- **De Mol, L.** (2008). "Closing the Circle: An Analysis of Emil Post's Early Work." Provides excellent historical analysis of how Post arrived at tag systems and their place in the development of computability theory.
+
+For universality proofs:
+
+- **Minsky, M.** (1967). *Computation: Finite and Infinite Machines*. Prentice-Hall. Chapter 14 gives a readable account of tag system universality with full details.
+
+- **Rogozhin, Y.** (1996). "Small Universal Turing Machines." *Theoretical Computer Science*, 168(2), 215--240. Context on the quest for minimal universal systems, of which tag systems are a key example.
+
+For connections to cellular automata:
+
+- **Cook, M.** (2004). The original proof that Rule 110 is universal, via cyclic tag systems. Technical but foundational.
+
+For the decidability boundary and open problems:
+
+- **De Mol, L.** (2007). Explores the connection between tag systems and Collatz-type problems, showing that seemingly simple systems encode deep number-theoretic questions.
+
+For broader context on string rewriting:
+
+- **Book, R. and Otto, F.** (1993). *String-Rewriting Systems*. Springer. Comprehensive treatment of rewriting systems, with tag systems as a special case.

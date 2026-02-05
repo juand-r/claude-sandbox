@@ -336,3 +336,33 @@ The main ideas of this chapter:
 - Wand, M. and Friedman, D. P. (1986). "The Mystery of the Tower Revealed: A Non-Reflective Description of the Reflective Tower." *Conference Record of the 1986 ACM Conference on Lisp and Functional Programming*, pp. 298--307. Gives denotational (fixed-point) semantics to the reflective tower, showing that the tower's meaning can be characterized without circularity.
 
 - Wand, M. and Friedman, D. P. (1988). "The Mystery of the Tower Revealed: A Non-Reflective Description of the Reflective Tower." In *Meta-Level Architectures and Reflection*, edited by P. Maes and D. Nardi, pp. 111--134. Elsevier. Extended version of the 1986 paper.
+
+---
+
+## Recommended Reading
+
+For the foundations:
+
+- **Smith (1984)** is the essential source for procedural reflection. Dense but rewarding; introduces the key concepts of reification, reflection, and the tower architecture.
+
+- **Wand & Friedman (1988)** provides the semantic foundation, showing that the tower has a well-defined fixed-point meaning. More accessible than Smith's original work.
+
+For von Neumann's ideas:
+
+- **von Neumann (1966)**, edited by Burks, is the primary source. Part I covers the logical theory of automata; Part II covers the self-reproducing universal constructor.
+
+- **Sipper, M.** (1998). *Fifty Years of Research on Self-Replication: An Overview*. Artificial Life, 4(3), 237--257. A good survey of developments since von Neumann.
+
+For partial evaluation and tower collapsing:
+
+- **Jones, N., Gomard, C., and Sestoft, P.** (1993). *Partial Evaluation and Automatic Program Generation*. Prentice Hall. The standard reference on partial evaluation, including the Futamura projections.
+
+- **Amin & Rompf (2018)** is accessible and demonstrates the practical power of collapsing towers. The paper includes working Scala code.
+
+For self-modifying systems:
+
+- **Kampis (1991)** is philosophically rich and scientifically rigorous. Challenging but essential for understanding the difference between superficial and genuine self-modification.
+
+For connections to programming language theory:
+
+- **Friedman, D. and Wand, M.** (2008). *Essentials of Programming Languages*, 3rd ed. MIT Press. A textbook approach to interpreters and their towers, accessible to advanced undergraduates.
