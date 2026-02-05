@@ -466,21 +466,433 @@ Monitoring intra-sequence novelty provides early warning of model collapse:
 
 ---
 
-## 15.12 Open Questions
+## 15.12 Novelty-Increasing Dynamics in the (f, x) Framework
 
-**Question 15.36 (Practical depth estimation).** Can we develop efficient estimators for logical depth or depth-like quantities that distinguish "structured complex" from "random" sequences in LLM outputs?
+The preceding sections characterized novelty as a static property of sequences. But in the (f, x) framework of Chapter 14, we can ask a dynamical question: **what kinds of systems increase novelty over time, rather than decrease it?**
 
-**Question 15.37 (Novelty vs. coherence).** Is there a formal relationship between intra-sequence novelty and inter-sequence coherence (e.g., in a conversation)? Can high intra-sequence diversity compensate for low inter-sequence diversity, or vice versa?
+### 15.12.1 The Default: Novelty Decay
 
-**Question 15.38 (Optimal decoding).** Given a quality function $Q$ and a diversity function $D$, what decoding strategy achieves the Pareto frontier? Can this be characterized analytically for simple models?
+Most iterated LLM systems exhibit **novelty decay**. Recall from Chapter 14 that model collapse, successive paraphrasing, and self-consuming loops all converge to low-entropy attractors. The meta-rule $\varphi$ is typically *contractive* in novelty space:
 
-**Question 15.39 (Multi-scale novelty).** Novelty can be measured at multiple scales: token, phrase, sentence, paragraph, document. How do these scales interact? Can a document have high paragraph-level diversity but low sentence-level diversity?
+$$D(x_{n+1}) \leq D(x_n),$$
 
-**Question 15.40 (Semantic vs. lexical).** Our metrics are largely lexical. How can we measure **semantic novelty**---diversity in meaning rather than surface form? Embedding-based metrics (e.g., variance of sentence embeddings) are one approach, but their relationship to information-theoretic quantities is unclear.
+where $D$ is any diversity measure. This is the second law of thermodynamics for generative systems: without external input, diversity decreases.
+
+**Proposition 15.41 (Novelty contraction under paraphrasing).** Let $f$ be a "paraphrase" function (meaning-preserving rewrite). Then for typical LLM implementations:
+1. The vocabulary of $f(x)$ is a subset of common words, regardless of $x$'s vocabulary.
+2. Rare words in $x$ are replaced by common synonyms in $f(x)$.
+3. $\mathrm{TTR}(f^n(x)) \to \mathrm{TTR}^*$ as $n \to \infty$, where $\mathrm{TTR}^*$ is the TTR of the attractor.
+
+The attractor vocabulary is determined by the LLM's frequency biases, not by the input.
+
+### 15.12.2 Novelty-Expanding Functions
+
+What functions $f$ satisfy $D(f(x)) > D(x)$? We identify several classes:
+
+**Definition 15.42 (Divergent prompt).** A prompt specification $f$ is **divergent** if, for typical inputs $x$:
+
+$$\mathbb{E}[D(f(x))] > D(x).$$
+
+**Example 15.43 (Divergent prompts).**
+
+1. **Elaboration**: "Expand on the following with additional details and examples." Each application adds new content, increasing vocabulary and n-gram diversity.
+
+2. **Multi-perspective**: "Rewrite this from three different perspectives: a scientist, an artist, and a child." The output contains three sub-sequences with different vocabularies.
+
+3. **Brainstorming**: "List 10 different ways to approach this problem." Enumeration naturally produces high Distinct-n.
+
+4. **Adversarial rewrite**: "Rewrite this using completely different words while preserving the meaning." Explicitly pressures vocabulary change.
+
+5. **Translation round-trip with divergence**: "Translate to French, then to Japanese, then back to English, keeping any interesting variations." Each translation introduces new phrasings.
+
+### 15.12.3 The Exploratory Regime Revisited
+
+Chapter 14 (Section 14.3.3) identified two regimes:
+- **Contractive**: Meaning-preserving operations (paraphrase, summarize). Novelty decreases.
+- **Exploratory**: Meaning-transforming operations (negate, extrapolate, fictionalize). Novelty can increase.
+
+We now formalize the exploratory regime in terms of novelty dynamics.
+
+**Definition 15.44 (Novelty Lyapunov exponent).** For a (f, x) system, define the **novelty Lyapunov exponent**:
+
+$$\lambda_D = \lim_{n \to \infty} \frac{1}{n} \log \frac{D(x_n)}{D(x_0)},$$
+
+when the limit exists.
+
+- $\lambda_D < 0$: Novelty contracts exponentially (typical for paraphrasing).
+- $\lambda_D = 0$: Novelty is conserved on average (edge of chaos).
+- $\lambda_D > 0$: Novelty expands exponentially (exploratory/divergent regime).
+
+**Conjecture 15.45.** For most LLM-based (f, x) systems, $\lambda_D < 0$. Systems with $\lambda_D > 0$ are unstable and eventually produce incoherent outputs (the quality constraint is violated before novelty grows unboundedly).
+
+### 15.12.4 Strategies for Sustained Novelty
+
+How can we design (f, x) systems that maintain high novelty without collapsing or diverging to incoherence?
+
+**Strategy 1: External Injection.**
+
+Periodically inject fresh content from outside the system:
+
+$$x_{n+1} = f(x_n) \oplus \xi_n,$$
+
+where $\xi_n$ is drawn from an external source (new data, user input, retrieved documents). This is analogous to the "fresh data" intervention in model collapse (Alemohammad et al., 2023).
+
+**Strategy 2: Diversity-Regularized Objectives.**
+
+Modify the generation process to penalize low novelty:
+
+$$\tilde{f}(x) = \arg\max_{y} \left[ \log P(y \mid x) + \alpha \cdot D(y) \right],$$
+
+where $\alpha > 0$ controls the diversity pressure. This is the **Maximum Mutual Information (MMI)** objective of Li et al. (2016).
+
+**Strategy 3: Rejection Sampling.**
+
+Generate multiple candidates and select for diversity:
+
+$$x_{n+1} = \arg\max_{y \in \{f_1(x_n), \ldots, f_k(x_n)\}} D(y).$$
+
+This can be combined with quality filtering: reject candidates below a coherence threshold, then select the most diverse among survivors.
+
+**Strategy 4: Adversarial Multi-Agent Dynamics.**
+
+Use multiple agents with opposing objectives:
+
+$$x_{n+1} = g(f_A(x_n), f_B(x_n)),$$
+
+where $f_A$ maximizes agreement with $x_n$ and $f_B$ maximizes disagreement. The aggregation function $g$ (e.g., debate, synthesis) produces outputs more diverse than either agent alone.
+
+**Example 15.46 (Debate dynamics).** Two agents debate a proposition:
+- Agent A argues for the proposition.
+- Agent B argues against.
+- The combined transcript has higher vocabulary diversity than either monologue.
+
+This is the diversity mechanism underlying Constitutional AI debates (Bai et al., 2022) and multi-agent reasoning (Du et al., 2023).
+
+**Strategy 5: Novelty Search.**
+
+Borrowed from evolutionary computation (Lehman & Stanley, 2011): rather than optimizing for a fixed objective, optimize for **novelty relative to the archive of past outputs**:
+
+$$x_{n+1} = \arg\max_y \min_{z \in \mathcal{A}_n} d(y, z),$$
+
+where $\mathcal{A}_n = \{x_0, x_1, \ldots, x_n\}$ is the archive and $d$ is a distance metric. This explicitly rewards exploration of new regions of output space.
+
+### 15.12.5 Patterns of Novelty-Increasing Systems
+
+What do novelty-increasing trajectories look like? We identify several characteristic patterns:
+
+**Pattern A: Branching/Enumeration.**
+The system produces lists, alternatives, or variations. Each item is distinct, yielding high Distinct-n.
+
+*Example*: "List 20 uses for a paperclip" → high diversity, but potentially low depth.
+
+**Pattern B: Compositional Expansion.**
+New elements are generated by combining existing elements in novel ways.
+
+*Example*: Metaphor generation combines concepts from different domains, increasing semantic diversity.
+
+**Pattern C: Hierarchical Elaboration.**
+The system recursively expands on sub-parts, adding detail at each level.
+
+*Example*: Outline → Draft → Expanded draft. Each level has higher token count and (typically) higher absolute vocabulary, though TTR may decrease.
+
+**Pattern D: Stochastic Exploration.**
+High-temperature sampling explores the tail of the distribution.
+
+*Example*: Temperature $\tau > 1$ generation produces more diverse but less coherent outputs.
+
+**Pattern E: Contradiction/Negation Chains.**
+Each step negates or contradicts the previous, forcing vocabulary change.
+
+*Example*: "The cat sat" → "The cat didn't sit" → "No cat was present" → "Dogs filled the room" → ...
 
 ---
 
-## 15.13 Summary
+## 15.13 Relative Novelty
+
+### 15.13.1 The Reference Problem
+
+All novelty metrics so far have been **absolute**: they measure properties of a sequence in isolation. But our intuitive notion of novelty is **relative**: something is novel *with respect to* what we've seen before.
+
+A sequence that is internally diverse but identical to a million existing sequences is not novel. A sequence that repeats one word but has never been generated before is, in some sense, novel.
+
+**Definition 15.47 (Relative novelty).** Let $w$ be a sequence and $\mathcal{R}$ a **reference set** (corpus, distribution, or collection of prior outputs). The **relative novelty** of $w$ with respect to $\mathcal{R}$ measures how different $w$ is from the elements of $\mathcal{R}$.
+
+### 15.13.2 Reference Sets
+
+The choice of reference set $\mathcal{R}$ determines what kind of novelty we measure:
+
+| Reference Set | Novelty Interpretation |
+|---------------|----------------------|
+| Training corpus | Novelty w.r.t. what the model has seen |
+| Prior outputs of this model | Novelty w.r.t. the model's own history |
+| Outputs of other models | Novelty w.r.t. the "consensus" |
+| Human-written text | Novelty w.r.t. human baseline |
+| The current conversation | Novelty w.r.t. local context |
+
+### 15.13.3 Distance-Based Relative Novelty
+
+**Definition 15.48 (Nearest-neighbor novelty).** Given $w$ and reference set $\mathcal{R}$, define:
+
+$$\mathrm{Nov}_{\mathcal{R}}(w) = \min_{r \in \mathcal{R}} d(w, r),$$
+
+where $d$ is a distance metric (edit distance, embedding distance, etc.).
+
+High $\mathrm{Nov}_{\mathcal{R}}(w)$ means $w$ is far from everything in $\mathcal{R}$---it is novel.
+
+**Definition 15.49 (Average-distance novelty).**
+
+$$\mathrm{Nov}_{\mathcal{R}}^{\mathrm{avg}}(w) = \frac{1}{|\mathcal{R}|} \sum_{r \in \mathcal{R}} d(w, r).$$
+
+This is less sensitive to outliers in $\mathcal{R}$.
+
+### 15.13.4 Information-Theoretic Relative Novelty
+
+**Definition 15.50 (Surprisal).** Given a probabilistic model $P$ of the reference distribution, the **surprisal** of $w$ is:
+
+$$S_P(w) = -\log P(w).$$
+
+High surprisal means $w$ is unlikely under $P$---it is novel relative to the distribution.
+
+**Remark.** This is the standard cross-entropy loss. A model trained on $\mathcal{R}$ assigns low probability to sequences unlike $\mathcal{R}$.
+
+**Definition 15.51 (KL-divergence novelty).** For a sequence $w$ with empirical distribution $\hat{p}_w$ and a reference distribution $q$ (e.g., the unigram distribution of $\mathcal{R}$):
+
+$$D_{KL}(\hat{p}_w \| q) = \sum_{s \in \Sigma} \hat{p}_w(s) \log \frac{\hat{p}_w(s)}{q(s)}.$$
+
+High KL-divergence means $w$'s token distribution differs from the reference.
+
+**Proposition 15.52.** If $w$ uses words that are rare in $\mathcal{R}$, then $D_{KL}(\hat{p}_w \| q)$ is large (assuming $q(s) > 0$ for all $s$). Conversely, if $w$ uses only common words in their typical proportions, $D_{KL} \approx 0$.
+
+### 15.13.5 Kernel-Based Novelty
+
+**Definition 15.53 (Maximum Mean Discrepancy).** Let $\phi: \Sigma^* \to \mathcal{H}$ be a feature map into a reproducing kernel Hilbert space. The **MMD** between sequence $w$ and reference set $\mathcal{R}$ is:
+
+$$\mathrm{MMD}(w, \mathcal{R}) = \left\| \phi(w) - \frac{1}{|\mathcal{R}|} \sum_{r \in \mathcal{R}} \phi(r) \right\|_{\mathcal{H}}.$$
+
+This measures how far $w$ is from the centroid of $\mathcal{R}$ in feature space.
+
+**Definition 15.54 (Kernel Entropy Novelty).** Kirchherr et al. (2024) propose **Kernel-based Entropic Novelty (KEN)**: identify modes in the feature space that are present in $w$ but underrepresented in $\mathcal{R}$. The number and weight of such "novel modes" quantifies novelty.
+
+### 15.13.6 N-gram Overlap Measures
+
+**Definition 15.55 (Novel n-gram ratio).** The fraction of n-grams in $w$ that do not appear in $\mathcal{R}$:
+
+$$\mathrm{NovelNgram}_n(w, \mathcal{R}) = \frac{|\mathcal{N}_n(w) \setminus \bigcup_{r \in \mathcal{R}} \mathcal{N}_n(r)|}{|\mathcal{N}_n(w)|}.$$
+
+**Example 15.56.** If $w$ contains the trigram "quantum frog dancing" and no document in $\mathcal{R}$ contains this trigram, it contributes to the novel n-gram count.
+
+This is related to the **BLEU score** (but inverted): BLEU measures overlap; NovelNgram measures non-overlap.
+
+### 15.13.7 Self-Relative Novelty: Novelty Over Time
+
+A particularly important reference set is the system's own history.
+
+**Definition 15.57 (Cumulative novelty).** In an iterated system $(f, x)$ with trajectory $x_0, x_1, x_2, \ldots$, define:
+
+$$\mathrm{CumNov}(x_n) = \mathrm{Nov}_{\{x_0, \ldots, x_{n-1}\}}(x_n).$$
+
+This measures how different the $n$-th output is from all previous outputs.
+
+**Proposition 15.58.** For a system converging to a periodic attractor of period $p$:
+
+$$\mathrm{CumNov}(x_n) \to 0 \text{ as } n \to \infty.$$
+
+Once the system enters the attractor, each output has been seen before (within the last $p$ steps), so cumulative novelty vanishes.
+
+**Corollary 15.59.** Sustained high cumulative novelty implies the system has not converged to a periodic attractor. This is a diagnostic for "creative" or "exploratory" dynamics.
+
+### 15.13.8 The Novelty-Coherence-Reference Triangle
+
+Combining absolute novelty, relative novelty, and coherence yields a three-dimensional characterization:
+
+| High Absolute | High Relative | High Coherence | Interpretation |
+|:---:|:---:|:---:|:---|
+| ✓ | ✓ | ✓ | **Ideal creative output**: diverse, original, sensible |
+| ✓ | ✓ | ✗ | Random/incoherent novelty |
+| ✓ | ✗ | ✓ | Diverse but clichéd (common patterns) |
+| ✗ | ✓ | ✓ | Repetitive but original (rare word repeated) |
+| ✓ | ✗ | ✗ | Chaotic regurgitation |
+| ✗ | ✓ | ✗ | Novel nonsense |
+| ✗ | ✗ | ✓ | Coherent cliché (safe, boring) |
+| ✗ | ✗ | ✗ | Degenerate collapse |
+
+The goal of generative systems is to occupy the (✓, ✓, ✓) corner: high diversity within the sequence, high differentiation from existing content, and high coherence.
+
+### 15.13.9 Formalizing "Interestingness"
+
+We can now attempt a formal definition of what makes a sequence "interesting":
+
+**Definition 15.60 (Interestingness score).** Define:
+
+$$I(w; \mathcal{R}) = D(w) \cdot \mathrm{Nov}_{\mathcal{R}}(w) \cdot Q(w),$$
+
+where:
+- $D(w)$ is an absolute diversity measure (e.g., Distinct-2),
+- $\mathrm{Nov}_{\mathcal{R}}(w)$ is relative novelty,
+- $Q(w)$ is a quality/coherence measure.
+
+The product structure ensures all three factors must be high for the sequence to be deemed interesting.
+
+**Remark.** This multiplicative form is one of many possibilities. Weighted sums, geometric means, or Pareto rankings are alternatives. The right formulation depends on the application.
+
+---
+
+## 15.14 Additional Mathematical Frameworks
+
+Several mathematical theories beyond information theory and dynamical systems offer relevant perspectives on novelty.
+
+### 15.14.1 Optimal Transport and Wasserstein Distance
+
+The **Wasserstein distance** (or earth mover's distance) between probability distributions $P$ and $Q$ is:
+
+$$W_p(P, Q) = \left( \inf_{\gamma \in \Gamma(P, Q)} \int d(x, y)^p \, d\gamma(x, y) \right)^{1/p},$$
+
+where $\Gamma(P, Q)$ is the set of couplings with marginals $P$ and $Q$.
+
+**Application to novelty.** Let $P$ be the empirical distribution of a generated sequence and $Q$ the reference distribution. Unlike KL-divergence, Wasserstein distance:
+- Is symmetric.
+- Respects the geometry of the underlying space (nearby tokens contribute less distance).
+- Is defined even when $P$ and $Q$ have non-overlapping support.
+
+**Definition 15.68 (Wasserstein novelty).** For sequence $w$ with empirical distribution $\hat{p}_w$ and reference distribution $q$:
+
+$$\mathrm{Nov}_W(w, q) = W_1(\hat{p}_w, q).$$
+
+This measures how much "work" is needed to transform the token distribution of $w$ into the reference.
+
+### 15.14.2 Rate-Distortion Theory
+
+Rate-distortion theory characterizes the fundamental trade-off between compression rate $R$ and distortion $D$. The **rate-distortion function** $R(D)$ gives the minimum bits needed to represent a source with average distortion at most $D$.
+
+**Application to novelty.** Consider the quality-diversity trade-off as a rate-distortion problem:
+- **Rate**: The "complexity" or "effort" required to generate the output.
+- **Distortion**: The deviation from a target quality level.
+
+The Pareto frontier of Section 15.7 is analogous to the rate-distortion curve.
+
+**Conjecture 15.69.** The quality-diversity Pareto frontier for LLM generation has a convex shape analogous to the rate-distortion function, with diversity playing the role of rate and quality loss playing the role of distortion.
+
+### 15.14.3 Determinantal Point Processes
+
+A **Determinantal Point Process (DPP)** is a probability distribution over subsets of a ground set, where the probability of selecting a subset $S$ is proportional to $\det(L_S)$ for a positive semidefinite kernel matrix $L$.
+
+DPPs naturally produce **diverse** subsets: items that are similar (high $L_{ij}$) are unlikely to be selected together.
+
+**Application to novelty.** For text generation:
+1. Represent candidate continuations as vectors (embeddings).
+2. Define the kernel $L_{ij} = q_i q_j \cdot \phi(x_i)^\top \phi(x_j)$, where $q_i$ is quality and $\phi(x_i)$ is the embedding.
+3. Sample from the DPP to obtain diverse, high-quality outputs.
+
+**Proposition 15.70 (DPP diversity guarantee).** Samples from a DPP with kernel $L$ satisfy:
+
+$$\mathbb{E}[|S|] = \mathrm{tr}((I + L)^{-1} L),$$
+
+and the expected pairwise distance between selected items is bounded below by a function of the eigenvalues of $L$.
+
+### 15.14.4 Information Geometry
+
+**Information geometry** treats the space of probability distributions as a Riemannian manifold with the **Fisher information metric**:
+
+$$g_{ij}(\theta) = \mathbb{E}\left[ \frac{\partial \log p(x; \theta)}{\partial \theta_i} \frac{\partial \log p(x; \theta)}{\partial \theta_j} \right].$$
+
+**Application to novelty.** The Fisher-Rao distance between distributions is:
+
+$$d_{FR}(P, Q) = \arccos\left( \int \sqrt{p(x) q(x)} \, dx \right).$$
+
+This provides a geometrically principled measure of how different two distributions are, accounting for the curvature of probability space.
+
+**Definition 15.71 (Fisher-Rao novelty).** For a sequence $w$ and reference distribution $q$:
+
+$$\mathrm{Nov}_{FR}(w, q) = d_{FR}(\hat{p}_w, q).$$
+
+This measures the geodesic distance on the probability simplex.
+
+### 15.14.5 Algorithmic Statistics and Typicality
+
+**Algorithmic statistics** (Gács, Tromp, Vitányi) studies the "stochastic complexity" of individual objects: the shortest description of an object as a sample from a computable distribution.
+
+**Definition 15.72 (Randomness deficiency).** The **randomness deficiency** of $x$ with respect to model $P$ is:
+
+$$d(x | P) = \log |P| - K(x | P),$$
+
+where $|P|$ is the "size" of the model's support and $K(x|P)$ is the complexity of $x$ given $P$.
+
+Low deficiency means $x$ is "typical" of $P$; high deficiency means $x$ is "atypical."
+
+**Application to novelty.** A sequence with high randomness deficiency relative to the training distribution is "surprising"---it doesn't fit the typical pattern. This formalizes novelty as atypicality.
+
+### 15.14.6 Intrinsic Motivation and Curiosity
+
+In reinforcement learning, **intrinsic motivation** provides rewards for novel states:
+
+$$r_{\mathrm{intrinsic}}(s) = f(\text{novelty of } s).$$
+
+Common formulations include:
+- **Prediction error**: $r = \|s' - \hat{s}'\|^2$ (novelty as unpredictability).
+- **Information gain**: $r = D_{KL}(\text{posterior} \| \text{prior})$ (novelty as learning signal).
+- **State visitation counts**: $r = 1/\sqrt{N(s)}$ (novelty as rarity).
+
+**Application to LLMs.** These ideas can inform novelty-seeking generation:
+
+$$x_{n+1} = \arg\max_y \left[ \log P(y | x_n) + \beta \cdot r_{\mathrm{intrinsic}}(y) \right].$$
+
+The parameter $\beta$ controls the exploration-exploitation trade-off.
+
+### 15.14.7 Topological Data Analysis
+
+**Persistent homology** tracks topological features (connected components, loops, voids) across scales. The **persistence diagram** records when features appear and disappear.
+
+**Application to novelty.** Embed sequences into a metric space (via sentence embeddings). Compute persistent homology of:
+1. A single sequence's token embeddings (intra-sequence topology).
+2. A collection of sequences (corpus-level topology).
+
+**Conjecture 15.73.** Novel sequences have persistence diagrams that differ significantly from the "typical" diagram of the reference corpus. Features that persist at unusual scales indicate structural novelty.
+
+### 15.14.8 Renormalization and Multi-Scale Analysis
+
+The **renormalization group** from statistical physics provides tools for analyzing systems at multiple scales. Coarse-graining a system reveals which features persist across scales.
+
+**Application to novelty.** Consider a hierarchy of representations:
+- Token level: $w_1, w_2, \ldots, w_N$
+- Phrase level: Chunks of 5--10 tokens
+- Sentence level: Semantic units
+- Paragraph level: Thematic units
+
+Novelty at each scale can be measured independently. A sequence might be token-diverse but phrase-repetitive, or vice versa.
+
+**Definition 15.74 (Multi-scale novelty profile).** Define:
+
+$$\mathrm{Nov}^{(k)}(w) = D(\text{level-}k \text{ representation of } w)$$
+
+for $k = 1, 2, \ldots, K$. The tuple $(\mathrm{Nov}^{(1)}, \ldots, \mathrm{Nov}^{(K)})$ is the **multi-scale novelty profile**.
+
+Different applications may weight different scales: poetry might prioritize token-level novelty; scientific writing might prioritize concept-level novelty.
+
+---
+
+## 15.15 Open Questions
+
+**Question 15.75 (Practical depth estimation).** Can we develop efficient estimators for logical depth or depth-like quantities that distinguish "structured complex" from "random" sequences in LLM outputs?
+
+**Question 15.76 (Novelty vs. coherence).** Is there a formal relationship between intra-sequence novelty and inter-sequence coherence (e.g., in a conversation)? Can high intra-sequence diversity compensate for low inter-sequence diversity, or vice versa?
+
+**Question 15.77 (Optimal decoding).** Given a quality function $Q$ and a diversity function $D$, what decoding strategy achieves the Pareto frontier? Can this be characterized analytically for simple models?
+
+**Question 15.78 (Multi-scale novelty).** Novelty can be measured at multiple scales: token, phrase, sentence, paragraph, document. How do these scales interact? Can a document have high paragraph-level diversity but low sentence-level diversity?
+
+**Question 15.79 (Semantic vs. lexical).** Our metrics are largely lexical. How can we measure **semantic novelty**---diversity in meaning rather than surface form? Embedding-based metrics (e.g., variance of sentence embeddings) are one approach, but their relationship to information-theoretic quantities is unclear.
+
+**Question 15.80 (Lyapunov exponents for novelty).** Can the novelty Lyapunov exponent $\lambda_D$ (Definition 15.44) be estimated empirically for real LLM systems? What is its typical value for different prompt types?
+
+**Question 15.81 (Optimal reference set).** For relative novelty measures, how should the reference set $\mathcal{R}$ be chosen? Is there an "optimal" reference that balances sensitivity to genuine novelty against robustness to noise?
+
+**Question 15.82 (DPP decoding).** Can Determinantal Point Processes be used for beam selection in LLM decoding to guarantee diverse outputs? What is the computational cost, and does it improve over simpler diversity heuristics?
+
+**Question 15.83 (Information-geometric novelty).** Does the Fisher-Rao distance provide better discrimination of novelty than KL-divergence in practice? When is the geometric structure of the probability simplex important?
+
+---
+
+## 15.16 Summary
 
 | Concept | Metric | Captures |
 |---------|--------|----------|
@@ -491,30 +903,62 @@ Monitoring intra-sequence novelty provides early warning of model collapse:
 | Structural complexity | Compression ratio, LZ complexity | Non-random patterns |
 | Long-range structure | Statistical complexity, Excess entropy | Memory in the process |
 | "Interestingness" | Logical depth (theoretical) | Computation required to generate |
+| Relative novelty | $\mathrm{Nov}_{\mathcal{R}}$, KL-divergence | Difference from reference |
+| Novelty dynamics | Lyapunov exponent $\lambda_D$ | Growth/decay rate of diversity |
+| Geometric novelty | Wasserstein, Fisher-Rao distance | Geometry-respecting divergence |
+| Diverse sampling | DPP kernel methods | Guaranteed diversity in selection |
+| Typicality | Randomness deficiency | Atypicality relative to model |
+| Multi-scale structure | Renormalization, TDA | Features across scales |
 
 Intra-sequence novelty complements the dynamical systems perspective of earlier chapters. Where Chapters 1--14 ask "how does the system evolve over time?", this chapter asks "how rich is each individual state?" Together, they provide a comprehensive framework for analyzing the outputs of generative systems.
 
 The key insight is that novelty alone is insufficient: random sequences have maximum novelty but zero value. The goal is **structured novelty**---high diversity within the constraints of coherence, grammar, and meaning. This is the "creative zone" between order and chaos, the edge where interesting computation happens.
 
+We identified two key extensions to the basic framework:
+
+1. **Novelty-increasing dynamics**: Most LLM systems exhibit novelty decay (model collapse, attractor convergence). But divergent prompts, adversarial multi-agent systems, and novelty search can sustain or increase diversity. The novelty Lyapunov exponent $\lambda_D$ characterizes whether a system is contractive ($\lambda_D < 0$), conservative ($\lambda_D = 0$), or expansive ($\lambda_D > 0$).
+
+2. **Relative novelty**: Absolute diversity measures miss the question "novel compared to what?" Relative novelty with respect to a reference set $\mathcal{R}$ captures originality. The choice of $\mathcal{R}$---training data, prior outputs, human baselines---determines what kind of novelty we measure. The ideal generative output occupies the (high absolute, high relative, high coherence) corner of the novelty-coherence-reference triangle.
+
 ---
 
 ## References
+
+- Alemohammad, S., et al. (2023). Self-consuming generative models go MAD. *arXiv preprint* arXiv:2307.01850.
+
+- Amari, S. and Nagaoka, H. (2000). *Methods of Information Geometry*. American Mathematical Society.
+
+- Bai, Y., et al. (2022). Constitutional AI: Harmlessness from AI feedback. *arXiv preprint* arXiv:2212.08073.
 
 - Bennett, C. H. (1988). Logical depth and physical complexity. In *The Universal Turing Machine: A Half-Century Survey*, pp. 227--257. Oxford University Press.
 
 - Crutchfield, J. P. and Young, K. (1989). Inferring statistical complexity. *Physical Review Letters*, 63(2):105--108.
 
+- Du, Y., et al. (2023). Improving factuality and reasoning in language models through multiagent debate. *arXiv preprint* arXiv:2305.14325.
+
+- Gács, P., Tromp, J. T., and Vitányi, P. M. B. (2001). Algorithmic statistics. *IEEE Transactions on Information Theory*, 47(6):2443--2463.
+
 - Heaps, H. S. (1978). *Information Retrieval: Computational and Theoretical Aspects*. Academic Press.
 
 - Holtzman, A., Buys, J., Du, L., Forbes, M., and Choi, Y. (2020). The curious case of neural text degeneration. In *ICLR 2020*.
+
+- Kulesza, A. and Taskar, B. (2012). Determinantal point processes for machine learning. *Foundations and Trends in Machine Learning*, 5(2--3):123--286.
+
+- Lehman, J. and Stanley, K. O. (2011). Abandoning objectives: Evolution through the search for novelty alone. *Evolutionary Computation*, 19(2):189--223.
 
 - Li, J., Galley, M., Brockett, C., Gao, J., and Dolan, B. (2016). A diversity-promoting objective function for neural conversation models. In *NAACL-HLT 2016*.
 
 - Lempel, A. and Ziv, J. (1976). On the complexity of finite sequences. *IEEE Transactions on Information Theory*, 22(1):75--81.
 
+- Pathak, D., Agrawal, P., Efros, A. A., and Darrell, T. (2017). Curiosity-driven exploration by self-supervised prediction. In *ICML 2017*.
+
+- Peyré, G. and Cuturi, M. (2019). Computational optimal transport. *Foundations and Trends in Machine Learning*, 11(5--6):355--607.
+
 - Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal*, 27(3):379--423.
 
 - Shumailov, I., et al. (2024). The curse of recursion: Training on generated data makes models forget. *arXiv preprint* arXiv:2305.17493.
+
+- Villani, C. (2009). *Optimal Transport: Old and New*. Springer.
 
 - Welleck, S., Kulikov, I., Roller, S., Dinan, E., Cho, K., and Weston, J. (2020). Neural text generation with unlikelihood training. In *ICLR 2020*.
 
