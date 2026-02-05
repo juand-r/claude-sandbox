@@ -77,7 +77,7 @@ This was Thue's original motivation: to construct an infinite binary word with n
 *Proof sketch.* If $\mathbf{t}$ were eventually periodic with period $p$, it would contain arbitrarily long squares $w w$. But $\mathbf{t}$ is overlap-free, and any word containing arbitrarily long squares must contain an overlap (by a pigeonhole argument on the positions). Contradiction. $\square$
 
 **Theorem 5.11 (Balanced).** Define $|w|_a$ as the number of occurrences of letter $a$ in the word $w$. For any two factors $u, v$ of $\mathbf{t}$ with $|u| = |v|$, we have
-$$\bigl||u|_0 - |v|_0\bigr| \leq C$$
+$$\big| |u|_0 - |v|_0 \big| \leq C$$
 for a universal constant $C$. That is, the Thue-Morse sequence is *$C$-balanced*. (In fact, one can take $C = 2$; note it is not 1-balanced, unlike Sturmian sequences.)
 
 ### 5.3.3 The Thue-Morse Dynamical System
@@ -86,7 +86,7 @@ Define the *shift map* $T: \Sigma^\omega \to \Sigma^\omega$ by $T(x_0 x_1 x_2 \c
 $$X_\mu = \overline{\{T^n(\mathbf{t}) : n \geq 0\}},$$
 where the closure is in the product topology. The pair $(X_\mu, T)$ is a topological dynamical system called the *Thue-Morse subshift*.
 
-Since $\mu$ is primitive (the matrix $M_\mu = \bigl(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\bigr)$ is already positive), the subshift $(X_\mu, T)$ is *minimal*: every orbit is dense, or equivalently, every factor of every element of $X_\mu$ is a factor of $\mathbf{t}$. It is also *uniquely ergodic*: there is a unique shift-invariant Borel probability measure on $X_\mu$.
+Since $\mu$ is primitive (the matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ is already positive), the subshift $(X_\mu, T)$ is *minimal*: every orbit is dense, or equivalently, every factor of every element of $X_\mu$ is a factor of $\mathbf{t}$. It is also *uniquely ergodic*: there is a unique shift-invariant Borel probability measure on $X_\mu$.
 
 ---
 
@@ -227,7 +227,7 @@ Cobham's original proof (1972) was notoriously difficult. Simpler proofs were gi
 
 The relationships among these classes are:
 
-$$\text{eventually periodic} \subsetneq \text{$k$-automatic} \subsetneq \text{morphic} \subsetneq \text{all sequences}.$$
+$$\text{eventually periodic} \subsetneq k\text{-automatic} \subsetneq \text{morphic} \subsetneq \text{all sequences}.$$
 
 Key facts:
 1. Every eventually periodic sequence is $k$-automatic for all $k \geq 2$.
@@ -273,7 +273,7 @@ The converse---that pure point spectrum implies the Pisot condition---has been e
 
 **Example 5.31.** The Fibonacci morphism has Perron-Frobenius eigenvalue $\phi = (1+\sqrt{5})/2$, which is a Pisot number (its conjugate is $(1-\sqrt{5})/2 \approx -0.618$, with absolute value $< 1$). The Fibonacci substitution dynamical system therefore has pure point spectrum and is measurably conjugate to a rotation on the torus.
 
-**Example 5.32.** The Thue-Morse morphism has Perron-Frobenius eigenvalue $2$, which is a Pisot number (it has no other conjugates). However, the substitution matrix $M_\mu = \bigl(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\bigr)$ has second eigenvalue $0$, which is a degenerate case. In fact, the Thue-Morse system does *not* have pure point spectrum; it has a partly continuous spectral component. This is consistent with the Pisot conjecture because the matrix $M_\mu$ is not irreducible in the required sense (the substitution is on a two-letter alphabet with both rows identical, so the second eigenvalue is $0$ and the algebraic condition degenerates).
+**Example 5.32.** The Thue-Morse morphism has Perron-Frobenius eigenvalue $2$, which is a Pisot number (it has no other conjugates). However, the substitution matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ has second eigenvalue $0$, which is a degenerate case. In fact, the Thue-Morse system does *not* have pure point spectrum; it has a partly continuous spectral component. This is consistent with the Pisot conjecture because the matrix $M_\mu$ is not irreducible in the required sense (the substitution is on a two-letter alphabet with both rows identical, so the second eigenvalue is $0$ and the algebraic condition degenerates).
 
 ---
 

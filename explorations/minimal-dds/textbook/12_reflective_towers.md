@@ -36,7 +36,7 @@ This is the foundation of self-modifying computation. Some concrete manifestatio
 
 - **Lisp.** Programs are S-expressions; data are S-expressions. The function `eval` takes a data structure and executes it as a program. The function `quote` takes a program fragment and treats it as data. This symmetry is not accidental --- McCarthy designed Lisp to explore exactly this duality (McCarthy, 1960).
 
-- **Gödel numbering.** Every formula $\varphi$ in a formal system can be encoded as a natural number $\ulcorner \varphi \urcorner$. The system can then reason about its own formulas by reasoning about their codes. This is the mechanism behind Gödel's incompleteness theorems: the sentence "this sentence is unprovable" is constructed by exploiting program-data duality at the level of formal arithmetic.
+- **Gödel numbering.** Every formula $\varphi$ in a formal system can be encoded as a natural number $\lceil \varphi \rceil$. The system can then reason about its own formulas by reasoning about their codes. This is the mechanism behind Gödel's incompleteness theorems: the sentence "this sentence is unprovable" is constructed by exploiting program-data duality at the level of formal arithmetic.
 
 - **Quines.** A *quine* is a program that outputs its own source code. Its existence in any sufficiently expressive language follows from Kleene's recursion theorem (a fixed-point theorem for computable functions). A quine is the computational analogue of von Neumann's self-reproducing automaton, stripped to its essence.
 

@@ -40,7 +40,7 @@ To study how an IFS acts on sets rather than points, we need a metric on sets.
 
 **Definition 6.4 (Hausdorff Metric).** Let $\mathcal{H}(X)$ denote the collection of all non-empty compact subsets of $(X, d)$. For $A, B \in \mathcal{H}(X)$, define
 
-$$d_H(A, B) = \max\!\Big\{\sup_{a \in A} \inf_{b \in B} d(a, b),\; \sup_{b \in B} \inf_{a \in A} d(a, b)\Big\}.$$
+$$d_H(A, B) = \max\left\{\sup_{a \in A} \inf_{b \in B} d(a, b),\; \sup_{b \in B} \inf_{a \in A} d(a, b)\right\}.$$
 
 This is the *Hausdorff metric*. Informally, $d_H(A, B) \le \epsilon$ means every point of $A$ is within $\epsilon$ of some point of $B$, and vice versa.
 
@@ -153,13 +153,13 @@ Assigning probabilities to the maps gives a richer structure than the attractor 
 
 **Definition 6.12 (IFS with Probabilities).** An IFS with probabilities is a system $\{(f_1, p_1), \ldots, (f_k, p_k)\}$ where $p_i > 0$ and $\sum_{i=1}^k p_i = 1$. The *transfer operator* (or Markov operator) $M$ acts on probability measures by
 
-$$M(\mu) = \sum_{i=1}^{k} p_i \cdot f_i{}_*(\mu),$$
+$$M(\mu) = \sum_{i=1}^{k} p_i \cdot (f_i)_*(\mu),$$
 
-where $f_i{}_*(\mu)$ is the pushforward measure: $f_i{}_*(\mu)(B) = \mu(f_i^{-1}(B))$.
+where $(f_i)_*(\mu)$ is the pushforward measure: $(f_i)_*(\mu)(B) = \mu(f_i^{-1}(B))$.
 
 **Theorem 6.13.** Under the hypotheses of Theorem 6.6, with $p_i > 0$, the operator $M$ has a unique fixed point $\mu^*$—a probability measure satisfying
 
-$$\mu^* = \sum_{i=1}^{k} p_i \cdot f_i{}_*(\mu^*).$$
+$$\mu^* = \sum_{i=1}^{k} p_i \cdot (f_i)_*(\mu^*).$$
 
 This is the **invariant measure** (or **self-similar measure**) of the IFS. The chaos game orbit converges in distribution to $\mu^*$.
 
