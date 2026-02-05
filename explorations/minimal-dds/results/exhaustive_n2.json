@@ -1,0 +1,728 @@
+{
+  "n": 2,
+  "total_meta_rules": 65536,
+  "distinct_signatures": 128,
+  "transient_distribution": {
+    "0": 21366,
+    "1": 19423,
+    "2": 13903,
+    "3": 7008,
+    "4": 2544,
+    "5": 1044,
+    "6": 224,
+    "7": 24
+  },
+  "cycle_distribution": {
+    "1": 17600,
+    "2": 18864,
+    "3": 15712,
+    "4": 8680,
+    "5": 3072,
+    "6": 1152,
+    "7": 384,
+    "8": 72
+  },
+  "func_diversity_distribution": {
+    "4": 65536
+  },
+  "top_signatures": [
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [],
+        "max_transient": 7,
+        "distinct_f": 4
+      },
+      "count": 24
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2
+        ],
+        "max_transient": 6,
+        "distinct_f": 4
+      },
+      "count": 16
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [],
+        "max_transient": 6,
+        "distinct_f": 4
+      },
+      "count": 32
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [],
+        "max_transient": 6,
+        "distinct_f": 4
+      },
+      "count": 176
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          3
+        ],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 32
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          2
+        ],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 56
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2
+        ],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 168
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 232
+    },
+    {
+      "signature": {
+        "fp": 3,
+        "cycles": [],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 20
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [],
+        "max_transient": 5,
+        "distinct_f": 4
+      },
+      "count": 536
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          4
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 32
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          3
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 64
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          3
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 216
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          2
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 316
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          2
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 44
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2
+        ],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 440
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 484
+    },
+    {
+      "signature": {
+        "fp": 3,
+        "cycles": [],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 80
+    },
+    {
+      "signature": {
+        "fp": 4,
+        "cycles": [],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 4
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [],
+        "max_transient": 4,
+        "distinct_f": 4
+      },
+      "count": 864
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          5
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 16
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          4
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 68
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          4
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 232
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          3
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 488
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          3
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 64
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          3
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 616
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2,
+          3
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 20
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          2
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 976
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          2
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 294
+    },
+    {
+      "signature": {
+        "fp": 3,
+        "cycles": [
+          2
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 24
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2
+        ],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 812
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 1406
+    },
+    {
+      "signature": {
+        "fp": 3,
+        "cycles": [],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 254
+    },
+    {
+      "signature": {
+        "fp": 4,
+        "cycles": [],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 10
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [],
+        "max_transient": 3,
+        "distinct_f": 4
+      },
+      "count": 1728
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          6
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 24
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          5
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 38
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          5
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 144
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          4
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 390
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          4
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 44
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          4
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 632
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2,
+          4
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 44
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 1150
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 358
+    },
+    {
+      "signature": {
+        "fp": 3,
+        "cycles": [
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 25
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          2,
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 43
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 1064
+    },
+    {
+      "signature": {
+        "fp": 0,
+        "cycles": [
+          2,
+          3
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 172
+    },
+    {
+      "signature": {
+        "fp": 1,
+        "cycles": [
+          2
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 2211
+    },
+    {
+      "signature": {
+        "fp": 2,
+        "cycles": [
+          2
+        ],
+        "max_transient": 2,
+        "distinct_f": 4
+      },
+      "count": 859
+    }
+  ],
+  "top_creative": [
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        0,
+        2,
+        3,
+        3,
+        1
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        0,
+        3,
+        3,
+        1,
+        2
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        2,
+        1,
+        3,
+        3,
+        0
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        2,
+        3,
+        3,
+        0,
+        1
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        3,
+        1,
+        3,
+        0,
+        2
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        1,
+        1,
+        3,
+        2,
+        3,
+        1,
+        0
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        3,
+        1,
+        0,
+        1,
+        1,
+        3,
+        2
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        3,
+        1,
+        0,
+        3,
+        1,
+        2,
+        1
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        3,
+        1,
+        2,
+        0,
+        1,
+        3,
+        1
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    },
+    {
+      "combo": [
+        2,
+        3,
+        1,
+        2,
+        3,
+        1,
+        1,
+        0
+      ],
+      "fixed_points": 1,
+      "cycle_lengths": [],
+      "max_transient": 7,
+      "distinct_functions": 4,
+      "creativity_score": 27
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "n": 3,
+    "phi": "identity",
+    "total_states": 81,
+    "fixed_points": 27,
+    "distinct_cycles": 11,
+    "max_transient": 2,
+    "max_cycle_length": 3,
+    "avg_distinct_functions": 1.0
+  },
+  {
+    "n": 3,
+    "phi": "shift_table",
+    "total_states": 81,
+    "fixed_points": 3,
+    "distinct_cycles": 11,
+    "max_transient": 4,
+    "max_cycle_length": 6,
+    "avg_distinct_functions": 2.78
+  },
+  {
+    "n": 3,
+    "phi": "xor_output",
+    "total_states": 81,
+    "fixed_points": 9,
+    "distinct_cycles": 10,
+    "max_transient": 4,
+    "max_cycle_length": 8,
+    "avg_distinct_functions": 2.43
+  },
+  {
+    "n": 3,
+    "phi": "rotate_3",
+    "total_states": 81,
+    "fixed_points": 0,
+    "distinct_cycles": 1,
+    "max_transient": 3,
+    "max_cycle_length": 3,
+    "avg_distinct_functions": 3.89
+  }
+]

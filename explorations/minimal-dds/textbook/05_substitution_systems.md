@@ -1,0 +1,354 @@
+# Chapter 5: Substitution Systems and Automatic Sequences
+
+## 5.1 Morphisms on Words
+
+Let $\Sigma$ be a finite alphabet. We write $\Sigma^*$ for the free monoid over $\Sigma$---the set of all finite words (including the empty word $\varepsilon$) with concatenation as the monoid operation.
+
+**Definition 5.1 (Morphism).** A *morphism* is a map $\sigma: \Sigma \to \Sigma^*$, extended to $\sigma: \Sigma^* \to \Sigma^*$ by the concatenation rule:
+$$\sigma(a_1 a_2 \cdots a_n) = \sigma(a_1)\sigma(a_2)\cdots\sigma(a_n).$$
+In other words, $\sigma$ is a monoid homomorphism from $(\Sigma^*, \cdot)$ to itself. A morphism is completely determined by specifying $\sigma(a)$ for each letter $a \in \Sigma$.
+
+This is the fundamental observation: to define a morphism, you only need to say what each letter maps to. The extension to arbitrary words is forced by the homomorphism property.
+
+**Definition 5.2 (Uniform and non-uniform morphisms).** A morphism $\sigma$ is *$k$-uniform* if $|\sigma(a)| = k$ for every $a \in \Sigma$, where $|\cdot|$ denotes word length. A morphism is *uniform* if it is $k$-uniform for some $k \geq 1$. Otherwise it is *non-uniform*.
+
+A 1-uniform morphism is simply a letter-to-letter map (a permutation or coding). A 2-uniform morphism doubles the length of every word it is applied to.
+
+**Definition 5.3 (Coding).** A *coding* (or *letter-to-letter morphism*) is a 1-uniform morphism $\tau: \Sigma \to \Delta$, possibly between different alphabets. A coding simply renames letters.
+
+**Definition 5.4 (Primitive morphism).** A morphism $\sigma: \Sigma \to \Sigma^*$ is *primitive* if there exists an integer $n \geq 1$ such that for every pair of letters $a, b \in \Sigma$, the letter $b$ appears in $\sigma^n(a)$. Equivalently, the incidence matrix $M_\sigma$ (where $(M_\sigma)_{ij}$ counts occurrences of letter $j$ in $\sigma(i)$) is a primitive matrix (some power has all positive entries).
+
+Primitivity is the substitution analogue of irreducibility plus aperiodicity in Markov chains. It ensures that every part of the system communicates with every other part.
+
+---
+
+## 5.2 Fixed Points of Morphisms
+
+The central construction in substitution theory is iteration.
+
+**Definition 5.5 (Prolongable morphism).** A morphism $\sigma$ is *prolongable on a letter $a$* if $\sigma(a) = aw$ for some non-empty word $w \in \Sigma^+$. In this case:
+$$\sigma^n(a) = a \cdot w \cdot \sigma(w) \cdot \sigma^2(w) \cdots \sigma^{n-1}(w),$$
+so $\sigma^n(a)$ is a proper prefix of $\sigma^{n+1}(a)$ for all $n \geq 0$, and the sequence of words $\sigma^n(a)$ converges (in the product topology on $\Sigma^\omega$) to a unique infinite word
+$$\mathbf{x} = \lim_{n \to \infty} \sigma^n(a).$$
+
+**Theorem 5.6.** If $\sigma$ is prolongable on $a$, then the infinite word $\mathbf{x} = \lim_{n \to \infty} \sigma^n(a)$ is a *fixed point* of $\sigma$, meaning $\sigma(\mathbf{x}) = \mathbf{x}$, where we extend $\sigma$ to infinite words in the obvious way.
+
+*Proof sketch.* Since $\sigma(\sigma^n(a)) = \sigma^{n+1}(a)$, and both $\sigma^n(a)$ and $\sigma^{n+1}(a)$ converge to $\mathbf{x}$, continuity of $\sigma$ (in the product topology) gives $\sigma(\mathbf{x}) = \mathbf{x}$. $\square$
+
+---
+
+## 5.3 The Thue-Morse Sequence
+
+### 5.3.1 Construction
+
+**Definition 5.7.** The *Thue-Morse morphism* is the 2-uniform morphism $\mu: \lbrace 0,1\rbrace  \to \lbrace 0,1\rbrace ^*$ defined by
+$$\mu(0) = 01, \qquad \mu(1) = 10.$$
+
+Since $\mu(0)$ starts with $0$, the morphism is prolongable on $0$.
+
+**Example 5.8 (Iterated construction of the Thue-Morse sequence).**
+
+| Iteration | Word |
+|-----------|------|
+| $\mu^0(0)$ | $0$ |
+| $\mu^1(0)$ | $01$ |
+| $\mu^2(0)$ | $0110$ |
+| $\mu^3(0)$ | $01101001$ |
+| $\mu^4(0)$ | $0110100110010110$ |
+
+At each step, we replace every $0$ by $01$ and every $1$ by $10$. Let us verify $\mu^3(0)$ in detail:
+$$\mu^3(0) = \mu^2(01) = \mu^2(0)\mu^2(1) = 0110 \cdot 1001 = 01101001. \quad\checkmark$$
+
+The fixed point is the infinite *Thue-Morse sequence*:
+$$\mathbf{t} = 0\, 1\, 1\, 0\, 1\, 0\, 0\, 1\, 1\, 0\, 0\, 1\, 0\, 1\, 1\, 0\, \ldots$$
+
+**Alternative characterization.** The $n$-th term is $t_n = s_2(n) \bmod 2$, where $s_2(n)$ is the sum of the binary digits of $n$. This is the simplest example of a 2-automatic sequence (Section 5.7).
+
+### 5.3.2 Properties
+
+The Thue-Morse sequence has a remarkable collection of properties, which is why it appears throughout combinatorics, number theory, and dynamical systems.
+
+**Theorem 5.9 (Overlap-freeness, Thue 1906, 1912).** The Thue-Morse sequence is *overlap-free*: it contains no factor of the form $axaxa$ where $a$ is a letter and $x$ is a (possibly empty) word. Equivalently, it avoids the pattern $\alpha^2 \alpha'$ where $\alpha'$ is a prefix of $\alpha$.
+
+This was Thue's original motivation: to construct an infinite binary word with no overlapping squares. Note that a binary word cannot avoid all squares (the factors $00$ and $11$ are unavoidable), but it can avoid overlaps.
+
+**Theorem 5.10 (Not eventually periodic).** The Thue-Morse sequence is not eventually periodic. That is, there are no integers $n_0$ and $p \geq 1$ such that $t_n = t_{n+p}$ for all $n \geq n_0$.
+
+*Proof sketch.* If $\mathbf{t}$ were eventually periodic with period $p$, it would contain arbitrarily long squares $w w$. But $\mathbf{t}$ is overlap-free, and any word containing arbitrarily long squares must contain an overlap (by a pigeonhole argument on the positions). Contradiction. $\square$
+
+**Theorem 5.11 (Balanced).** Define $|w|_a$ as the number of occurrences of letter $a$ in the word $w$. For any two factors $u, v$ of $\mathbf{t}$ with $|u| = |v|$, we have
+$$\big| |u|_0 - |v|_0 \big| \leq C$$
+for a universal constant $C$. That is, the Thue-Morse sequence is *$C$-balanced*. (In fact, one can take $C = 2$; note it is not 1-balanced, unlike Sturmian sequences.)
+
+### 5.3.3 The Thue-Morse Dynamical System
+
+Define the *shift map* $T: \Sigma^\omega \to \Sigma^\omega$ by $T(x_0 x_1 x_2 \cdots) = x_1 x_2 x_3 \cdots$. The *orbit closure* of $\mathbf{t}$ under $T$ is
+$$X_\mu = \overline{\lbrace T^n(\mathbf{t}) : n \geq 0\rbrace },$$
+where the closure is in the product topology. The pair $(X_\mu, T)$ is a topological dynamical system called the *Thue-Morse subshift*.
+
+Since $\mu$ is primitive (the matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ is already positive), the subshift $(X_\mu, T)$ is *minimal*: every orbit is dense, or equivalently, every factor of every element of $X_\mu$ is a factor of $\mathbf{t}$. It is also *uniquely ergodic*: there is a unique shift-invariant Borel probability measure on $X_\mu$.
+
+---
+
+## 5.4 The Fibonacci Word
+
+**Definition 5.12.** The *Fibonacci morphism* is $\varphi: \lbrace 0,1\rbrace  \to \lbrace 0,1\rbrace ^*$ defined by
+$$\varphi(0) = 01, \qquad \varphi(1) = 0.$$
+
+This morphism is non-uniform: $|\varphi(0)| = 2$ and $|\varphi(1)| = 1$. It is prolongable on $0$.
+
+**Example 5.13 (Iterated construction of the Fibonacci word).**
+
+| Iteration | Word | Length |
+|-----------|------|--------|
+| $\varphi^0(0)$ | $0$ | $1$ |
+| $\varphi^1(0)$ | $01$ | $2$ |
+| $\varphi^2(0)$ | $010$ | $3$ |
+| $\varphi^3(0)$ | $01001$ | $5$ |
+| $\varphi^4(0)$ | $01001010$ | $8$ |
+| $\varphi^5(0)$ | $0100101001001$ | $13$ |
+
+Let us verify $\varphi^4(0)$:
+$$\varphi^4(0) = \varphi^3(01) = \varphi^3(0)\varphi^3(1) = 01001 \cdot 010 = 01001010. \quad\checkmark$$
+
+The lengths are Fibonacci numbers $1, 2, 3, 5, 8, 13, 21, \ldots$ --- hence the name. This follows from the recurrence: $|\varphi^{n+1}(0)| = |\varphi^n(0)| + |\varphi^n(1)| = |\varphi^n(0)| + |\varphi^{n-1}(0)|$, which is exactly the Fibonacci recurrence.
+
+### 5.4.1 Connection to the Golden Ratio
+
+The incidence matrix of $\varphi$ is
+$$M_\varphi = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix},$$
+whose eigenvalues are $\phi = (1+\sqrt{5})/2$ (the golden ratio) and $\hat{\phi} = (1-\sqrt{5})/2$. The Perron-Frobenius eigenvalue $\phi$ controls the growth rate of the word lengths: $|\varphi^n(0)| \sim C \phi^n$ as $n \to \infty$.
+
+### 5.4.2 Sturmian Sequences
+
+The Fibonacci word is the prototypical example of a *Sturmian sequence*.
+
+**Definition 5.14.** A sequence $\mathbf{x} \in \lbrace 0,1\rbrace ^\omega$ is *Sturmian* if its *factor complexity* satisfies $p_{\mathbf{x}}(n) = n + 1$ for all $n \geq 0$, where $p_{\mathbf{x}}(n)$ is the number of distinct factors of length $n$ in $\mathbf{x}$.
+
+The Morse-Hedlund theorem states that $p_{\mathbf{x}}(n) \geq n+1$ for all $n$ if and only if $\mathbf{x}$ is not eventually periodic. So Sturmian sequences have the minimal complexity among non-eventually-periodic sequences. They are, in a precise sense, the "simplest" aperiodic sequences.
+
+Sturmian sequences can be constructed by *cutting sequences*: take a line of irrational slope $\alpha$ in the plane and record the order in which it crosses horizontal and vertical grid lines. The Fibonacci word corresponds to slope $\alpha = 1/\phi = \phi - 1 = (\sqrt{5}-1)/2$.
+
+---
+
+## 5.5 The Rudin-Shapiro Sequence
+
+**Definition 5.15.** The *Rudin-Shapiro morphism* operates on the four-letter alphabet $\lbrace 0,1,2,3\rbrace $:
+$$\sigma(0) = 02, \quad \sigma(1) = 32, \quad \sigma(2) = 01, \quad \sigma(3) = 31.$$
+The *Rudin-Shapiro sequence* $\mathbf{r}$ is obtained by applying the coding $\tau: \lbrace 0,1,2,3\rbrace  \to \lbrace +1,-1\rbrace $ defined by $\tau(0) = \tau(2) = +1$, $\tau(1) = \tau(3) = -1$ to the fixed point of $\sigma$ starting from $0$.
+
+**Example 5.16 (First iterations of the Rudin-Shapiro morphism).**
+
+| Iteration | Word |
+|-----------|------|
+| $\sigma^0(0)$ | $0$ |
+| $\sigma^1(0)$ | $02$ |
+| $\sigma^2(0)$ | $0201$ |
+| $\sigma^3(0)$ | $02010232$ |
+
+Let us verify $\sigma^3(0)$:
+$$\sigma^3(0) = \sigma^2(02) = \sigma^2(0)\sigma^2(2) = 0201 \cdot 0232.$$
+Check $\sigma^2(2)$: $\sigma(2) = 01$, so $\sigma^2(2) = \sigma(0)\sigma(1) = 02 \cdot 32 = 0232$. $\checkmark$
+
+Applying the coding: $\sigma^3(0) = 02010232 \mapsto (+1,+1,+1,-1,+1,+1,-1,+1)$.
+
+**Alternative characterization.** Let $r_n = (-1)^{f(n)}$ where $f(n)$ counts the number of (possibly overlapping) occurrences of the block $11$ in the binary expansion of $n$.
+
+The Rudin-Shapiro sequence was introduced independently by Rudin (1959) and Shapiro (1951) in the study of flat polynomials. Its key analytic property is that the partial sums of the associated trigonometric polynomial $\sum_{n=0}^{N-1} r_n z^n$ satisfy $|\sum r_n z^n| = O(\sqrt{N})$ on the unit circle, which is optimal up to a constant.
+
+---
+
+## 5.6 Morphic Sequences
+
+**Definition 5.17 (Morphic sequence).** A sequence $\mathbf{x} \in \Delta^\omega$ is *morphic* if there exist:
+1. a morphism $\sigma: \Sigma \to \Sigma^*$ prolongable on some letter $a \in \Sigma$, and
+2. a coding $\tau: \Sigma \to \Delta$,
+
+such that $\mathbf{x} = \tau(\sigma^\omega(a))$, where $\sigma^\omega(a) = \lim_{n\to\infty} \sigma^n(a)$ is the fixed point.
+
+If $\sigma$ is $k$-uniform, then $\mathbf{x}$ is called *$k$-automatic* (see Section 5.7). In general, morphic sequences are strictly more expressive than automatic sequences.
+
+A sequence that is a fixed point of a morphism (no coding needed) is called *purely morphic* or a *pure morphism fixed point*.
+
+**Example 5.18.** The Thue-Morse sequence is purely morphic (it is the fixed point of $\mu$ itself, no coding needed) and 2-automatic. The Fibonacci word is purely morphic but not $k$-automatic for any $k$, since $\varphi$ is non-uniform. The Rudin-Shapiro sequence is morphic (it requires a coding $\tau$) and 2-automatic (since $\sigma$ is 2-uniform).
+
+---
+
+## 5.7 Automatic Sequences
+
+### 5.7.1 Definition via Finite Automata
+
+**Definition 5.19 ($k$-automatic sequence).** Let $k \geq 2$. A sequence $(a_n)_{n \geq 0}$ over a finite alphabet $\Delta$ is *$k$-automatic* if there exists a deterministic finite automaton with output (DFAO) $\mathcal{A} = (Q, \Sigma_k, \delta, q_0, \tau)$ such that
+$$a_n = \tau(\delta(q_0, (n)_k))$$
+for all $n \geq 0$, where $(n)_k$ is the base-$k$ representation of $n$ (with the most significant digit first), $\delta$ is the extended transition function, and $\tau: Q \to \Delta$ is the output function.
+
+In words: to compute $a_n$, write $n$ in base $k$, feed those digits into a finite automaton, and read off the output from the state you reach.
+
+**Example 5.20 (The Thue-Morse sequence is 2-automatic).** The DFAO has two states $\lbrace q_0, q_1\rbrace $, input alphabet $\lbrace 0,1\rbrace $, transitions $\delta(q_0, 0) = q_0$, $\delta(q_0, 1) = q_1$, $\delta(q_1, 0) = q_1$, $\delta(q_1, 1) = q_0$, and output $\tau(q_0) = 0$, $\tau(q_1) = 1$. The automaton simply tracks the parity of the number of $1$'s in the binary representation, and indeed $t_n = s_2(n) \bmod 2$.
+
+### 5.7.2 The $k$-kernel
+
+An equivalent algebraic characterization avoids automata entirely.
+
+**Definition 5.21.** The *$k$-kernel* of a sequence $(a_n)_{n \geq 0}$ is the set
+$$\mathcal{K}_k(\mathbf{a}) = \lbrace (a_{k^e n + r})_{n \geq 0} : e \geq 0,\; 0 \leq r < k^e\rbrace .$$
+
+**Theorem 5.22 (Eilenberg 1974).** A sequence is $k$-automatic if and only if its $k$-kernel is finite.
+
+The $k$-kernel captures all subsequences obtained by "zooming in" at different scales and offsets in base $k$. Finiteness of this set is equivalent to the finite-state condition.
+
+### 5.7.3 Cobham's Characterization
+
+The following theorem connects the automata-theoretic and morphism-based viewpoints.
+
+**Theorem 5.23 (Cobham 1972).** A sequence $\mathbf{x} \in \Delta^\omega$ is $k$-automatic if and only if it is the image under a coding of a fixed point of a $k$-uniform morphism. That is, $\mathbf{x}$ is $k$-automatic iff $\mathbf{x} = \tau(\sigma^\omega(a))$ for some $k$-uniform morphism $\sigma$ prolongable on $a$ and some coding $\tau$.
+
+This is why the terms "$k$-automatic" and "image of a $k$-uniform morphism fixed point under a coding" are used interchangeably. The proof constructs the automaton from the morphism and vice versa; the states of the automaton correspond to the columns of the morphism iteration.
+
+---
+
+## 5.8 Cobham's Theorem
+
+The following is one of the deepest results in the theory of automatic sequences.
+
+**Definition 5.24.** Two integers $k, \ell \geq 2$ are *multiplicatively independent* if $\log k / \log \ell \notin \mathbb{Q}$, i.e., there are no positive integers $m, n$ with $k^m = \ell^n$. For example, $2$ and $3$ are multiplicatively independent; $2$ and $4$ are not (since $4 = 2^2$).
+
+**Theorem 5.25 (Cobham 1969).** Let $k$ and $\ell$ be multiplicatively independent integers $\geq 2$. If a sequence $\mathbf{x}$ is both $k$-automatic and $\ell$-automatic, then $\mathbf{x}$ is eventually periodic.
+
+This is a *rigidity* theorem: it says that the only sequences recognizable by finite automata in two multiplicatively independent bases are the trivial ones. The Thue-Morse sequence is 2-automatic but not 3-automatic (and it cannot be, since it is not eventually periodic).
+
+Cobham's original proof (1972) was notoriously difficult. Simpler proofs were given by Durand (2011) using dynamical methods and by Adamczewski and Bell (2011). The result has deep connections to the model theory of $\langle \mathbb{N}, +, V_k \rangle$ where $V_k(n)$ is the largest power of $k$ dividing $n$.
+
+**Remark 5.26.** For multiplicatively *dependent* $k, \ell$ (so $k = p^a$, $\ell = p^b$ for some $p, a, b$), the classes of $k$-automatic and $\ell$-automatic sequences coincide. This is because base $p^a$ and base $p^b$ representations are trivially inter-convertible by grouping digits.
+
+---
+
+## 5.9 Automatic vs. Morphic: The Hierarchy
+
+The relationships among these classes are:
+
+$$\text{eventually periodic} \subsetneq k\text{-automatic} \subsetneq \text{morphic} \subsetneq \text{all sequences}.$$
+
+Key facts:
+1. Every eventually periodic sequence is $k$-automatic for all $k \geq 2$.
+2. The Thue-Morse sequence is 2-automatic but not eventually periodic.
+3. The Fibonacci word is morphic but not $k$-automatic for any $k$ (its factor complexity is $n+1$, but automatic sequences have factor complexity $\Theta(n)$ only in special cases; more precisely, a non-eventually-periodic automatic sequence has factor complexity $\Theta(n)$, while the Fibonacci word is Sturmian, so it is on the boundary---but the Fibonacci word fails to be automatic because its letter frequencies are irrational; see below).
+4. A morphic sequence on a two-letter alphabet is $k$-automatic iff the letter frequencies are rational (Cobham). The Fibonacci word has frequency of $0$ equal to $1/\phi$, which is irrational.
+
+---
+
+## 5.10 The Substitution Dynamical System
+
+### 5.10.1 Construction
+
+Given a morphism $\sigma: \Sigma \to \Sigma^*$ with fixed point $\mathbf{x} = \sigma^\omega(a)$, define the *substitution subshift*
+$$X_\sigma = \overline{\lbrace T^n(\mathbf{x}) : n \geq 0\rbrace } \subseteq \Sigma^\omega,$$
+where $T$ is the shift and the closure is in the product topology. This is a compact, shift-invariant subset of $\Sigma^\omega$.
+
+**Theorem 5.27.** If $\sigma$ is primitive, then $(X_\sigma, T)$ is:
+1. *Minimal*: every orbit is dense (equivalently, every element of $X_\sigma$ has the same set of factors as $\mathbf{x}$).
+2. *Uniquely ergodic*: there exists a unique shift-invariant probability measure $\mu$ on $X_\sigma$.
+
+These are consequences of the Perron-Frobenius theory applied to the incidence matrix $M_\sigma$ and the resulting uniform frequency estimates for factors.
+
+### 5.10.2 Recognizability
+
+**Theorem 5.28 (Mossé 1992).** If $\sigma$ is primitive and aperiodic (the subshift is infinite), then $\sigma$ is *recognizable*: every bi-infinite sequence in the two-sided version of $X_\sigma$ has a unique decomposition into images of letters under $\sigma$. Formally, the "desubstitution map" is well-defined and continuous.
+
+Recognizability is the substitution analogue of the Markov partition property and is fundamental for computing invariants of the dynamical system.
+
+---
+
+## 5.11 Spectral Theory
+
+Given a primitive substitution $\sigma$ with substitution matrix $M_\sigma$, the associated dynamical system $(X_\sigma, T, \mu)$ is a measure-preserving system (with $\mu$ the unique invariant measure). A central question is: what is the spectral type of the unitary operator $U_T: L^2(X_\sigma, \mu) \to L^2(X_\sigma, \mu)$ defined by $U_T f = f \circ T$?
+
+**Definition 5.29.** A measure-preserving system has *pure point (discrete) spectrum* if $L^2$ has an orthonormal basis of eigenfunctions of $U_T$.
+
+The spectral type determines many dynamical properties: pure point spectrum implies the system is measurably conjugate to a rotation on a compact abelian group (the Halmos-von Neumann theorem).
+
+**Theorem 5.30 (Pisot conjecture, partially resolved).** Let $\sigma$ be a primitive aperiodic substitution with Perron-Frobenius eigenvalue $\theta$. If $\theta$ is a *Pisot number* (an algebraic integer $> 1$ all of whose Galois conjugates have absolute value $< 1$), then the substitution dynamical system $(X_\sigma, T, \mu)$ has pure point spectrum.
+
+The converse---that pure point spectrum implies the Pisot condition---has been established for two-letter alphabets (Barge and Diamond, 2002; Barge, 2016 for the full result on irreducible Pisot substitutions). The general Pisot conjecture remains open but is one of the most important problems in the field.
+
+**Example 5.31.** The Fibonacci morphism has Perron-Frobenius eigenvalue $\phi = (1+\sqrt{5})/2$, which is a Pisot number (its conjugate is $(1-\sqrt{5})/2 \approx -0.618$, with absolute value $< 1$). The Fibonacci substitution dynamical system therefore has pure point spectrum and is measurably conjugate to a rotation on the torus.
+
+**Example 5.32.** The Thue-Morse morphism has Perron-Frobenius eigenvalue $2$, which is a Pisot number (it has no other conjugates). However, the substitution matrix $M_\mu = \left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ has second eigenvalue $0$, which is a degenerate case. In fact, the Thue-Morse system does *not* have pure point spectrum; it has a partly continuous spectral component. This is consistent with the Pisot conjecture because the matrix $M_\mu$ is not irreducible in the required sense (the substitution is on a two-letter alphabet with both rows identical, so the second eigenvalue is $0$ and the algebraic condition degenerates).
+
+---
+
+## 5.12 Connection to Our Framework
+
+In the framework of discrete dynamical systems $(f, x)$ studied in earlier chapters, a substitution system fits as follows:
+
+- **State space $X$**: the set $\Sigma^*$ of all finite words (or, in the limit, $\Sigma^\omega$).
+- **The map $f$**: the morphism $\sigma$ itself. Each application of $\sigma$ takes a word and produces a longer word.
+- **Iteration**: starting from a single letter $a$, we compute $a, \sigma(a), \sigma^2(a), \ldots$
+- **The fixed point as attractor**: the infinite word $\sigma^\omega(a)$ is the "attractor" of this iteration---every finite prefix eventually stabilizes.
+
+There is an important difference from the finite DDS of earlier chapters: in a substitution system, the state space grows with each step (the words get longer). The dynamics is *non-contracting*. Nevertheless, when we pass to the orbit closure under the shift, we obtain a compact dynamical system $(X_\sigma, T)$ on which the usual tools of topological and ergodic dynamics apply.
+
+The meta-rule perspective also applies: a morphism $\sigma$ can be viewed as a rule that operates on the structure of the word at every position simultaneously. In the language of Section 2, if we think of the current word as encoding both the "state" and the "rule" (since the positions determine which substitution rules fire), then the substitution system is a DDS where the function and the data are intertwined.
+
+---
+
+## 5.13 Summary
+
+| Sequence | Morphism | Uniform? | Automatic? | Morphic? | Complexity $p(n)$ | Spectrum |
+|----------|----------|----------|------------|----------|-------------------|----------|
+| Thue-Morse | $0 \mapsto 01, 1 \mapsto 10$ | 2-uniform | 2-automatic | Yes | $\Theta(n)$ | Mixed |
+| Fibonacci | $0 \mapsto 01, 1 \mapsto 0$ | Non-uniform | No | Yes | $n+1$ (Sturmian) | Pure point |
+| Rudin-Shapiro | $0 \mapsto 02, \ldots$ + coding | 2-uniform | 2-automatic | Yes | $\Theta(n)$ | Mixed |
+| Period-doubling | $0 \mapsto 01, 1 \mapsto 00$ | 2-uniform | 2-automatic | Yes | $\Theta(n)$ | Pure point |
+
+The theory of substitution systems and automatic sequences lies at a crossroads of combinatorics on words, number theory, formal language theory, and dynamical systems. The interplay between the combinatorial properties of the morphism and the dynamical and spectral properties of the associated subshift is one of the richest areas in modern mathematics.
+
+---
+
+## References
+
+- Allouche, J.-P. and Shallit, J. (2003). *Automatic Sequences: Theory, Applications, Generalizations*. Cambridge University Press. The standard reference for automatic sequences and morphic words.
+
+- Cobham, A. (1969). On the base-dependence of sets of numbers recognizable by finite automata. *Mathematical Systems Theory*, 3:186--192. The original statement of Cobham's theorem.
+
+- Cobham, A. (1972). Uniform tag sequences. *Mathematical Systems Theory*, 6:164--192. Characterization of $k$-automatic sequences as images of $k$-uniform morphism fixed points.
+
+- Durand, F. (2011). Cobham's theorem for substitutions. *Journal of the European Mathematical Society*, 13(6):1797--1812. A dynamical proof of Cobham's theorem.
+
+- Eilenberg, S. (1974). *Automata, Languages, and Machines*, Vol. A. Academic Press. The kernel characterization of automatic sequences.
+
+- Fogg, N. P. (2002). *Substitutions in Dynamics, Arithmetics, and Combinatorics*. Lecture Notes in Mathematics, Vol. 1794, Springer. Comprehensive treatment of substitution dynamical systems.
+
+- Mossé, B. (1992). Puissances de mots et reconnaissabilité des points fixes d'une substitution. *Theoretical Computer Science*, 99(2):327--334. Recognizability of primitive aperiodic substitutions.
+
+- Queffélec, M. (2010). *Substitution Dynamical Systems---Spectral Analysis*. Lecture Notes in Mathematics, Vol. 1294, 2nd edition, Springer. Spectral theory of substitution systems, including the Pisot conjecture.
+
+- Rudin, W. (1959). Some theorems on Fourier coefficients. *Proceedings of the AMS*, 10(6):855--859.
+
+- Thue, A. (1906). Über unendliche Zeichenreihen. *Norske Vid. Selsk. Skr. I Mat.-Nat. Kl.*, 7:1--22. The original construction of the overlap-free sequence.
+
+---
+
+## Recommended Reading
+
+For an accessible introduction:
+
+- **Allouche & Shallit (2003)** is the definitive reference and surprisingly readable. Chapters 1--5 cover the basics of morphisms and automatic sequences; Chapters 6--7 cover Cobham's theorems.
+
+For the dynamical systems perspective:
+
+- **Queffélec (2010)** is essential for spectral theory. The first few chapters are accessible; later chapters require measure theory and functional analysis.
+
+- **Fogg (2002)** is a collaborative volume (written by multiple authors under a pseudonym) covering substitutions from combinatorial, dynamical, and arithmetic viewpoints.
+
+For combinatorics on words:
+
+- **Lothaire, M.** (2002). *Algebraic Combinatorics on Words*. Cambridge University Press. Chapters 1--2 cover morphisms and Sturmian words; more advanced than Allouche-Shallit in some directions.
+
+For number-theoretic connections:
+
+- **Adamczewski, B. and Bugeaud, Y.** (2010). "Transcendence and Diophantine approximation." In *Bentlnagar et al. eds., Combinatorics, Automata and Number Theory*. Cambridge University Press. Deep connections between automatic sequences and transcendental number theory.
+
+For the Pisot conjecture and related topics:
+
+- **Barge, M.** (2016). "The Pisot conjecture for β-substitutions." *Ergodic Theory and Dynamical Systems*, 36(5):1501--1534. Recent progress on one of the main open problems in the field.

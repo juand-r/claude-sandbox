@@ -1,0 +1,411 @@
+# Chapter 2: Symbolic Dynamics
+
+## 2.1 Introduction and Motivation
+
+Symbolic dynamics studies sequences of symbols drawn from a finite alphabet, together with the shift operation that slides the sequence one position to the left. Despite the apparent simplicity of this setup, the resulting theory is remarkably rich: it provides a combinatorial framework for studying general dynamical systems, connects to automata theory and coding, and supplies computable invariants---most notably topological entropy---that distinguish qualitatively different types of dynamical behavior.
+
+The subject originates with Hadamard (1898), who used symbolic sequences to study geodesics on surfaces of negative curvature, and was placed on firm foundations by Morse and Hedlund (1938). The modern treatment, emphasizing the interplay between combinatorics, topology, and linear algebra, is developed comprehensively in Lind and Marcus (2021).
+
+This chapter introduces the core objects of symbolic dynamics---shift spaces, subshifts of finite type, sofic shifts---and their principal invariants. We close with a discussion of why these ideas are relevant to modeling the iteration of language model outputs.
+
+---
+
+## 2.2 The Full Shift
+
+### 2.2.1 Definition
+
+Let $\Sigma$ be a finite set with $|\Sigma| \geq 2$, called the **alphabet**. Its elements are called **symbols** or **letters**.
+
+**Definition 2.1 (Full shift).** The **full shift** on $\Sigma$ is the set of all bi-infinite sequences of symbols:
+
+$$\Sigma^{\mathbb{Z}} = \lbrace x = (\ldots, x_{-1}, x_0, x_1, \ldots) : x_i \in \Sigma \text{ for all } i \in \mathbb{Z} \rbrace .$$
+
+When we restrict to one-sided (forward) sequences, we write:
+
+$$\Sigma^{\mathbb{N}} = \lbrace x = (x_0, x_1, x_2, \ldots) : x_i \in \Sigma \text{ for all } i \geq 0 \rbrace .$$
+
+We will work primarily with the two-sided case $\Sigma^{\mathbb{Z}}$, noting differences with $\Sigma^{\mathbb{N}}$ where they arise (see Section 2.9).
+
+### 2.2.2 The Product Topology
+
+We equip $\Sigma$ with the discrete topology and $\Sigma^{\mathbb{Z}}$ with the product topology. This is the coarsest topology making every coordinate projection $\pi_i : \Sigma^{\mathbb{Z}} \to \Sigma$ continuous.
+
+A basis of open sets is given by **cylinder sets**: for indices $i_1 < i_2 < \cdots < i_k$ and symbols $a_1, \ldots, a_k \in \Sigma$,
+
+$$C_{i_1, \ldots, i_k}(a_1, \ldots, a_k) = \lbrace x \in \Sigma^{\mathbb{Z}} : x_{i_j} = a_j \text{ for } j = 1, \ldots, k \rbrace .$$
+
+This topology is metrizable. A standard compatible metric is:
+
+$$d(x, y) = \sum_{i = -\infty}^{\infty} \frac{\delta(x_i, y_i)}{2^{|i|}},$$
+
+where $\delta(a, b) = 0$ if $a = b$ and $\delta(a, b) = 1$ if $a \neq b$. Intuitively, two sequences are close if they agree on a long central block.
+
+**Proposition 2.2.** $\Sigma^{\mathbb{Z}}$ with the product topology is compact, metrizable, and totally disconnected (i.e., it is a Cantor set when $|\Sigma| \geq 2$).
+
+*Proof sketch.* Compactness follows from Tychonoff's theorem, since $\Sigma$ is finite (hence compact). Total disconnectedness follows because cylinder sets are clopen. $\square$
+
+### 2.2.3 The Shift Map
+
+**Definition 2.3 (Shift map).** The **shift map** $\sigma : \Sigma^{\mathbb{Z}} \to \Sigma^{\mathbb{Z}}$ is defined by
+
+$$(\sigma(x))_i = x_{i+1}.$$
+
+That is, $\sigma$ shifts every entry one position to the left. The shift map is a homeomorphism of $\Sigma^{\mathbb{Z}}$ onto itself (its inverse shifts to the right).
+
+The pair $(\Sigma^{\mathbb{Z}}, \sigma)$ is a topological dynamical system: a continuous map acting on a compact metrizable space. This is the **full shift dynamical system**.
+
+---
+
+## 2.3 Subshifts
+
+### 2.3.1 Definition via Topology
+
+**Definition 2.4 (Subshift).** A **subshift** (or **shift space**) is a subset $X \subseteq \Sigma^{\mathbb{Z}}$ that is:
+
+1. **Closed** in the product topology, and
+2. **Shift-invariant**: $\sigma(X) = X$.
+
+A subshift inherits the structure of a topological dynamical system $(X, \sigma|_X)$.
+
+### 2.3.2 Forbidden Words Characterization
+
+A **word** (or **block**) of length $n$ over $\Sigma$ is an element $w = w_1 w_2 \cdots w_n \in \Sigma^n$. We say that a word $w$ **appears** in a sequence $x$ if there exists $i$ such that $x_i x_{i+1} \cdots x_{i+n-1} = w$.
+
+**Definition 2.5 (Language).** The **language** of a subshift $X$, denoted $\mathcal{B}(X)$, is the set of all finite words appearing in some sequence in $X$. The set of words of length $n$ in the language is denoted $\mathcal{B}_n(X)$.
+
+Given a collection $\mathcal{F} \subseteq \bigcup_{n \geq 1} \Sigma^n$ of **forbidden words**, define:
+
+$$X_{\mathcal{F}} = \lbrace x \in \Sigma^{\mathbb{Z}} : \text{no word from } \mathcal{F} \text{ appears in } x \rbrace .$$
+
+**Theorem 2.6 (Characterization of subshifts).** A subset $X \subseteq \Sigma^{\mathbb{Z}}$ is a subshift if and only if $X = X_{\mathcal{F}}$ for some set $\mathcal{F}$ of forbidden words.
+
+*Proof.* ($\Leftarrow$) For each forbidden word $w$, the set of sequences containing $w$ is open (it is a union of cylinder sets), so its complement is closed. Then $X_{\mathcal{F}}$ is an intersection of closed sets, hence closed. Shift-invariance is immediate since a shifted sequence contains the same set of words.
+
+($\Rightarrow$) Given a subshift $X$, take $\mathcal{F} = \lbrace w : w \text{ does not appear in any } x \in X \rbrace $. Then $X_{\mathcal{F}} = X$, which can be verified by showing that any sequence all of whose finite subwords appear in $X$ must itself lie in $X$ (by compactness). $\square$
+
+---
+
+## 2.4 Subshifts of Finite Type (SFTs)
+
+### 2.4.1 Definition
+
+**Definition 2.7 (SFT).** A subshift $X$ is a **subshift of finite type** (SFT) if $X = X_{\mathcal{F}}$ for some *finite* set $\mathcal{F}$ of forbidden words.
+
+If all forbidden words in $\mathcal{F}$ have length at most $N+1$, we say $X$ is an **$N$-step SFT**. A $1$-step SFT is determined by which pairs of consecutive symbols are allowed.
+
+**Proposition 2.8 (Reduction to 1-step).** Every $N$-step SFT is conjugate (topologically isomorphic as a dynamical system) to a $1$-step SFT, via a standard recoding that uses words of length $N$ as symbols in a new alphabet.
+
+This recoding is called the **higher block presentation** and is a key technical tool.
+
+### 2.4.2 Edge Shifts and Adjacency Matrices
+
+A 1-step SFT is naturally described by a directed graph (digraph).
+
+**Definition 2.9 (Edge shift).** Let $G = (V, E)$ be a directed graph with vertex set $V$ and edge set $E$, where each edge $e \in E$ has an initial vertex $\mathbf{i}(e)$ and terminal vertex $\mathbf{t}(e)$. The **edge shift** $X_G$ is the subshift:
+
+$$X_G = \lbrace (\ldots, e_{-1}, e_0, e_1, \ldots) \in E^{\mathbb{Z}} : \mathbf{t}(e_i) = \mathbf{i}(e_{i+1}) \text{ for all } i \rbrace .$$
+
+That is, the sequences of edges forming bi-infinite walks on $G$.
+
+**Theorem 2.10.** A subshift is an SFT if and only if it is conjugate to an edge shift.
+
+**Definition 2.11 (Adjacency matrix).** The **adjacency matrix** $A = A_G$ of a directed graph $G$ with vertices $\lbrace v_1, \ldots, v_k\rbrace $ is the $k \times k$ matrix where $A_{ij}$ is the number of edges from $v_i$ to $v_j$.
+
+The adjacency matrix encodes the combinatorics of the SFT. In particular:
+
+**Proposition 2.12.** The number of allowed words of length $n+1$ in the edge shift $X_G$ equals the sum of all entries of $A^n$, i.e., $|\mathcal{B}_{n+1}(X_G)| = \mathbf{1}^T A^n \mathbf{1}$, where $\mathbf{1}$ is the all-ones vector of appropriate dimension.
+
+More precisely, $(A^n)_{ij}$ counts the number of walks of length $n$ from vertex $v_i$ to vertex $v_j$.
+
+### 2.4.3 Example: The Golden Mean Shift
+
+**Example 2.13 (Golden mean shift).** Let $\Sigma = \lbrace 0, 1\rbrace $ and forbid the word $11$. The resulting SFT is called the **golden mean shift**, denoted $X_{\text{gm}}$. It consists of all binary sequences with no two consecutive 1s.
+
+The graph $G$ has two vertices (corresponding to states "last symbol was 0" and "last symbol was 1") and three edges:
+
+- $0 \to 0$ (emit 0, stay in state 0),
+- $0 \to 1$ (emit 1, go to state 1),
+- $1 \to 0$ (emit 0, go to state 0).
+
+The adjacency matrix is:
+
+$$A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}.$$
+
+The eigenvalues of $A$ are $\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618$ (the golden ratio) and $\frac{1 - \sqrt{5}}{2} \approx -0.618$. As we will see, the topological entropy is $h(X_{\text{gm}}) = \log \varphi$.
+
+---
+
+## 2.5 Sofic Shifts
+
+### 2.5.1 Sliding Block Codes and Factor Maps
+
+**Definition 2.14 (Sliding block code).** Let $X \subseteq \Sigma^{\mathbb{Z}}$ and $Y \subseteq \Delta^{\mathbb{Z}}$ be subshifts. A **sliding block code** (or simply a **code**) from $X$ to $Y$ is a continuous, shift-commuting map $\phi : X \to Y$. The Curtis--Hedlund--Lyndon theorem states that every such map is determined by a local rule: there exist integers $m \leq a$ (the **memory** and **anticipation**) and a block map $\Phi : \Sigma^{a - m + 1} \to \Delta$ such that
+
+$$(\phi(x))_i = \Phi(x_{i+m}, x_{i+m+1}, \ldots, x_{i+a}).$$
+
+If $\phi$ is surjective, we call $Y$ a **factor** of $X$, and $\phi$ a **factor map**. If $\phi$ is a bijection (hence a homeomorphism), we call it a **conjugacy**, and $X$ and $Y$ are **conjugate**.
+
+### 2.5.2 Definition of Sofic Shifts
+
+**Definition 2.15 (Sofic shift).** A subshift $Y$ is **sofic** if it is a factor of some SFT. Equivalently (Fischer, 1975), $Y$ is sofic if and only if it can be presented as the set of label sequences of a **labeled graph** $(G, \mathcal{L})$, where $G$ is a finite directed graph and $\mathcal{L} : E \to \Delta$ is a labeling of the edges.
+
+This equivalence connects sofic shifts to the theory of finite automata: a sofic shift is precisely the set of bi-infinite sequences accepted by a finite-state automaton.
+
+### 2.5.3 Example: The Even Shift
+
+**Example 2.16 (Even shift).** The **even shift** $X_{\text{even}}$ over $\Sigma = \lbrace 0, 1\rbrace $ is defined by the rule: between any two consecutive 0s, the number of 1s must be even (including zero). That is, the forbidden patterns are $0 \, 1^{2k+1} \, 0$ for all $k \geq 0$.
+
+**Claim:** The even shift is sofic but not an SFT.
+
+*Sofic:* Consider the labeled graph with two vertices $A, B$ and edges:
+
+- $A \xrightarrow{0} A$
+- $A \xrightarrow{1} B$
+- $B \xrightarrow{1} A$
+
+The label sequences of bi-infinite walks on this graph are exactly $X_{\text{even}}$. After seeing a 0, we are in state $A$. Each 1 toggles between $A$ and $B$, and a 0 is only allowed from state $A$ (i.e., after an even number of 1s). Hence $X_{\text{even}}$ is sofic.
+
+*Not SFT:* Suppose for contradiction that $X_{\text{even}} = X_{\mathcal{F}}$ for a finite set $\mathcal{F}$ of forbidden words, with all words in $\mathcal{F}$ having length at most $N$. Consider the word $w = 0\,1^{2N+1}\,0$. This word is forbidden in $X_{\text{even}}$ (an odd number of 1s between two 0s). However, every subword of $w$ of length $\leq N$ is either a block of 1s (which is allowed) or contains at most one 0, and any block of the form $0\,1^j$ or $1^j\,0$ with $j < N$ appears in allowed sequences (e.g., $\ldots 0\,1^{2j}\,0 \ldots$ contains $0\,1^j$ as a subword). Therefore no subword of length $\leq N$ of $w$ belongs to $\mathcal{F}$, contradicting the assumption that $\mathcal{F}$ forbids $w$. $\square$
+
+---
+
+## 2.6 The Hierarchy of Shift Spaces
+
+The classes of shift spaces form a strict hierarchy:
+
+$$\text{SFT} \subsetneq \text{Sofic} \subsetneq \text{All subshifts}.$$
+
+We have already shown the first strict inclusion (the even shift is sofic but not SFT). For the second:
+
+**Example 2.17 (A non-sofic subshift).** The **context-free shift** over $\Sigma = \lbrace 0, 1\rbrace $ defined by forbidding $0^n 1^n$ for all $n \geq 1$ is not sofic. More directly, consider the subshift $X$ over $\lbrace 0, 1\rbrace $ where the allowed sequences are those in which the word $10^n1$ appears only when $n$ is a prime number. This subshift is not sofic because the set of primes cannot be recognized by a finite automaton.
+
+A cleaner and classical example: the **Dyck shift** (parenthesis matching sequences) is an example of a coded shift that is not sofic.
+
+The following table summarizes the hierarchy with canonical examples:
+
+| Class | Example | Characterization |
+|-------|---------|-----------------|
+| Full shift | $\lbrace 0,1\rbrace ^{\mathbb{Z}}$ | No forbidden words |
+| SFT | Golden mean shift | Finitely many forbidden words |
+| Sofic | Even shift | Factor of an SFT; finite automaton |
+| General subshift | (various) | Possibly infinitely many forbidden words |
+
+---
+
+## 2.7 Topological Entropy
+
+### 2.7.1 Definition
+
+**Definition 2.18 (Topological entropy).** Let $X$ be a subshift and $\mathcal{B}_n(X)$ the set of allowed words of length $n$ in $X$. The **topological entropy** of $X$ is:
+
+$$h(X) = \lim_{n \to \infty} \frac{1}{n} \log |\mathcal{B}_n(X)|.$$
+
+The limit exists because $\log |\mathcal{B}_n(X)|$ is subadditive (since $|\mathcal{B}_{m+n}(X)| \leq |\mathcal{B}_m(X)| \cdot |\mathcal{B}_n(X)|$ by the concatenation bound), and one applies the Fekete subadditivity lemma.
+
+The entropy measures the exponential growth rate of the number of allowed words. It is a topological conjugacy invariant: conjugate subshifts have the same entropy.
+
+*Convention:* Unless otherwise stated, logarithms are natural (base $e$). Some authors use $\log_2$, which differs by a constant factor.
+
+### 2.7.2 Entropy of SFTs via the Perron Eigenvalue
+
+**Theorem 2.19 (Entropy of an SFT).** Let $X_G$ be the edge shift of a directed graph $G$ with adjacency matrix $A$. If $A$ is irreducible (equivalently, $G$ is strongly connected), then:
+
+$$h(X_G) = \log \lambda_A,$$
+
+where $\lambda_A$ is the **Perron eigenvalue** (the largest real eigenvalue) of $A$.
+
+This is a consequence of the Perron--Frobenius theorem, which guarantees that an irreducible non-negative matrix has a unique largest real eigenvalue $\lambda_A > 0$, and that the entries of $A^n$ grow asymptotically as $\lambda_A^n$.
+
+For reducible $A$, the entropy is $\log$ of the spectral radius $\rho(A)$, which equals the maximum of the Perron eigenvalues of the irreducible components.
+
+### 2.7.3 Worked Examples
+
+**Example 2.20 (Full shift).** The full shift $\lbrace 0, 1, \ldots, k-1\rbrace ^{\mathbb{Z}}$ has $|\mathcal{B}_n| = k^n$, so:
+
+$$h = \lim_{n \to \infty} \frac{1}{n} \log k^n = \log k.$$
+
+The adjacency matrix is the $k \times k$ all-ones matrix (or, for the vertex shift, the $k \times k$ matrix of all 1s), which has Perron eigenvalue $k$, confirming $h = \log k$.
+
+**Example 2.21 (Golden mean shift).** Recall from Example 2.13 that the adjacency matrix is $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$ with Perron eigenvalue $\varphi = \frac{1+\sqrt{5}}{2}$. Therefore:
+
+$$h(X_{\text{gm}}) = \log \varphi \approx 0.4812.$$
+
+We can verify combinatorially. Let $f(n) = |\mathcal{B}_n(X_{\text{gm}})|$. A word of length $n$ with no two consecutive 1s can end in 0 or 1. If it ends in 0, the first $n-1$ symbols form any allowed word of length $n-1$. If it ends in 1, the $(n-1)$-th symbol must be 0, and the first $n-2$ symbols form any allowed word of length $n-2$. Thus:
+
+$$f(n) = f(n-1) + f(n-2),$$
+
+with $f(1) = 2$ (words: $0, 1$) and $f(2) = 3$ (words: $00, 01, 10$). This is a shifted Fibonacci recurrence, and $f(n) \sim C \cdot \varphi^n$, confirming $h = \log \varphi$.
+
+**Example 2.22 (Even shift).** The even shift is sofic, presented by the labeled graph in Example 2.16 with vertices $A, B$ and edges: $A \to A$ (label 0), $A \to B$ (label 1), $B \to A$ (label 1). The adjacency matrix of this underlying graph is:
+
+$$A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}.$$
+
+This is the same matrix as the golden mean shift. The Perron eigenvalue is $\varphi = \frac{1+\sqrt{5}}{2}$, so:
+
+$$h(X_{\text{even}}) = \log \varphi.$$
+
+The even shift and the golden mean shift have the same entropy despite being different subshifts. The key insight is that entropy depends only on the underlying graph structure of the Fischer cover (the minimal right-resolving presentation), not on the edge labels. Both shifts happen to have the same underlying graph, so they have the same entropy. This illustrates a general principle: different label assignments on the same graph yield sofic shifts with the same topological entropy but potentially different languages.
+
+---
+
+## 2.8 Invariant Measures and the Variational Principle
+
+### 2.8.1 Shift-Invariant Measures
+
+A **Borel probability measure** $\mu$ on a subshift $X$ is **shift-invariant** if $\mu(\sigma^{-1}(B)) = \mu(B)$ for every Borel set $B$. The set of all shift-invariant probability measures on $X$ is denoted $\mathcal{M}_\sigma(X)$. By the Krylov--Bogolyubov theorem, $\mathcal{M}_\sigma(X) \neq \emptyset$ for any subshift $X$, and this set is convex and compact in the weak-$*$ topology.
+
+### 2.8.2 Measure-Theoretic Entropy
+
+**Definition 2.23 (Measure-theoretic entropy).** Given $\mu \in \mathcal{M}_\sigma(X)$, the **measure-theoretic (or Kolmogorov--Sinai) entropy** of $\mu$ is:
+
+$$h_\mu(\sigma) = \lim_{n \to \infty} \frac{1}{n} H_\mu(\mathcal{P}^{(n)}),$$
+
+where $\mathcal{P}^{(n)}$ is the partition of $X$ into cylinder sets of length $n$ (determined by coordinates $0, 1, \ldots, n-1$), and:
+
+$$H_\mu(\mathcal{P}^{(n)}) = -\sum_{w \in \mathcal{B}_n(X)} \mu([w]) \log \mu([w]),$$
+
+with $[w]$ denoting the cylinder set $\lbrace x \in X : x_0 x_1 \cdots x_{n-1} = w\rbrace $.
+
+The measure-theoretic entropy quantifies the average rate of information production per step, as seen by the measure $\mu$.
+
+### 2.8.3 The Variational Principle
+
+**Theorem 2.24 (Variational Principle; Goodwyn 1969, Goodman 1971, Walters 1975).** For any subshift $X$:
+
+$$h_{\mathrm{top}}(X) = \sup_{\mu \in \mathcal{M}_\sigma(X)} h_\mu(\sigma).$$
+
+Moreover, the supremum is attained: there exists a measure $\mu^* \in \mathcal{M}_\sigma(X)$ with $h_{\mu^*}(\sigma) = h_{\mathrm{top}}(X)$. Such a measure is called a **measure of maximal entropy** (MME).
+
+The variational principle is one of the deepest results connecting topological and measure-theoretic dynamics. It says that topological entropy---a purely combinatorial quantity defined by word counting---equals the supremum of a probabilistic quantity over all invariant measures.
+
+*Remark.* The variational principle holds for any continuous map on a compact metrizable space, not just subshifts (see Walters, 1982, Chapter 8).
+
+### 2.8.4 Markov Measures on SFTs
+
+For SFTs, the natural class of invariant measures consists of **Markov measures**.
+
+**Definition 2.25 (Markov measure).** Let $X_G$ be a 1-step SFT with adjacency matrix $A$, and let $P$ be a stochastic matrix compatible with $A$ (i.e., $P_{ij} > 0$ only if $A_{ij} > 0$). Let $\pi$ be a stationary distribution for $P$ (i.e., $\pi P = \pi$). The **Markov measure** $\mu_{\pi, P}$ is the shift-invariant measure defined on cylinder sets by:
+
+$$\mu_{\pi, P}([i_0 \, i_1 \cdots i_{n-1}]) = \pi_{i_0} P_{i_0 i_1} P_{i_1 i_2} \cdots P_{i_{n-2} i_{n-1}}.$$
+
+The measure-theoretic entropy of a Markov measure is:
+
+$$h_{\mu_{\pi,P}}(\sigma) = -\sum_{i,j} \pi_i P_{ij} \log P_{ij}.$$
+
+**Theorem 2.26 (Parry, 1964).** For an irreducible SFT with adjacency matrix $A$ and Perron eigenvalue $\lambda$, the unique measure of maximal entropy is the **Parry measure**, the Markov measure with transition probabilities:
+
+$$P_{ij} = \frac{A_{ij} \, r_j}{\lambda \, r_i},$$
+
+where $r = (r_1, \ldots, r_k)$ is the right Perron eigenvector of $A$ (i.e., $Ar = \lambda r$, $r_i > 0$). The stationary distribution is $\pi_i = l_i r_i$, where $l$ is the left Perron eigenvector normalized so that $\sum_i l_i r_i = 1$.
+
+**Example 2.27 (Parry measure for the golden mean shift).** The adjacency matrix is $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$ with Perron eigenvalue $\lambda = \varphi = \frac{1+\sqrt{5}}{2}$.
+
+The right eigenvector satisfies $Ar = \varphi r$:
+
+$$r_1 + r_2 = \varphi r_1, \quad r_1 = \varphi r_2.$$
+
+So $r_2 = r_1 / \varphi$. Choosing $r_1 = \varphi$, $r_2 = 1$, the transition matrix is:
+
+$$P = \begin{pmatrix} 1/\varphi & 1/\varphi^2 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} \varphi - 1 & 2 - \varphi \\ 1 & 0 \end{pmatrix} \approx \begin{pmatrix} 0.618 & 0.382 \\ 1 & 0 \end{pmatrix}.$$
+
+The entropy of this Parry measure equals $\log \varphi$, confirming the variational principle.
+
+---
+
+## 2.9 One-Sided vs. Two-Sided Shifts
+
+The **one-sided full shift** $\Sigma^{\mathbb{N}}$ consists of sequences indexed by $\mathbb{N} = \lbrace 0, 1, 2, \ldots\rbrace $. The shift map $\sigma : \Sigma^{\mathbb{N}} \to \Sigma^{\mathbb{N}}$ defined by $(\sigma(x))_i = x_{i+1}$ is surjective but **not injective** (information at position 0 is lost). Key differences from the two-sided case:
+
+| Property | Two-sided $\Sigma^{\mathbb{Z}}$ | One-sided $\Sigma^{\mathbb{N}}$ |
+|----------|-------------------------------|-------------------------------|
+| Shift map | Homeomorphism (bijective) | Surjective, not injective |
+| Invertibility | $\sigma^{-1}$ exists | $\sigma^{-1}$ does not exist |
+| Topological entropy | Same formula | Same formula |
+| Natural measures | Parry measure (same) | Parry measure (same) |
+| Conjugacy theory | Richer (Williams' theorem) | Factor maps are easier |
+
+For most entropy and language questions, the one-sided and two-sided versions give the same answers: $\mathcal{B}_n(X)$ is the same in both cases, so $h_{\text{top}}$ is identical.
+
+The one-sided shift is often more natural for modeling sequential processes (such as language generation), where the future is being produced one token at a time and the past is fixed.
+
+---
+
+## 2.10 Application: Modeling LLM Output Iteration
+
+We close with a remark on why symbolic dynamics provides a natural framework for analyzing the iterative behavior of large language models (LLMs).
+
+Consider an LLM with a finite token vocabulary $\Sigma$ (a typical vocabulary has $|\Sigma| \approx 32{,}000$ to $100{,}000$ tokens). When the LLM generates text autoregressively, it produces a sequence $x_0, x_1, x_2, \ldots$ of tokens, where each $x_{t+1}$ depends on the preceding context $(x_0, \ldots, x_t)$.
+
+Now consider the following iterative scheme: take the LLM's output, feed it back as input, and generate again. The set of sequences that can arise as outputs of this iterated process is, in principle, a subset of $\Sigma^{\mathbb{N}}$ that is:
+
+- **Closed** (limits of realizable sequences are realizable, under reasonable continuity assumptions on the model), and
+- **Shift-invariant** (if a sequence can be generated starting from some context, then its shift can be generated starting from a shifted context).
+
+This makes the set of output sequences a **one-sided subshift** (or an approximation thereof). The structure of this subshift---whether it is of finite type, sofic, or more complex---depends on the architecture and parameters of the model:
+
+- A model with a finite context window of length $N$ produces sequences where the constraint on the next token depends only on the preceding $N$ tokens. This is exactly a **subshift of finite type** (an $N$-step SFT).
+- A model with unbounded effective memory (e.g., via attention over the entire context) can, in principle, produce sofic or even non-sofic subshifts.
+
+The **topological entropy** $h(X)$ of this subshift measures the exponential growth rate of the number of distinct output sequences of length $n$, and thus quantifies the "richness" or "diversity" of the model's dynamical behavior under iteration. A higher entropy means a greater variety of possible output trajectories; entropy zero means the model's iterated outputs are highly constrained (e.g., converging to periodic orbits or a small number of fixed points).
+
+The **variational principle** then tells us that there exists an invariant measure that realizes this maximal complexity, providing a probabilistic characterization of the "most complex" mode of the model's behavior.
+
+This perspective transforms questions about LLM behavior under iteration---stability, periodicity, diversity of outputs---into the well-developed language of symbolic dynamics.
+
+---
+
+## 2.11 Summary
+
+| Concept | Definition | Key Property |
+|---------|-----------|--------------|
+| Full shift $\Sigma^{\mathbb{Z}}$ | All bi-infinite sequences over $\Sigma$ | Compact, metrizable, Cantor set |
+| Shift map $\sigma$ | $(\sigma(x))_i = x_{i+1}$ | Homeomorphism (two-sided) |
+| Subshift | Closed, shift-invariant $X \subseteq \Sigma^{\mathbb{Z}}$ | $= X_{\mathcal{F}}$ for forbidden words $\mathcal{F}$ |
+| SFT | $\mathcal{F}$ is finite | Edge shifts; adjacency matrix |
+| Sofic shift | Factor of an SFT | Labeled graphs; finite automata |
+| Entropy $h(X)$ | $\lim \frac{1}{n} \log |\mathcal{B}_n(X)|$ | Conjugacy invariant |
+| Variational principle | $h_{\mathrm{top}} = \sup_\mu h_\mu$ | Bridges topology and measure theory |
+
+---
+
+## References
+
+- **Lind, D. and Marcus, B.** (2021). *An Introduction to Symbolic Dynamics and Coding*, 2nd ed. Cambridge University Press. The standard modern reference; covers SFTs, sofic shifts, entropy, and coding theory comprehensively.
+
+- **Kitchens, B.** (1998). *Symbolic Dynamics: One-sided, Two-sided, and Countable State Markov Shifts*. Springer. Emphasizes the Markov chain perspective and connections to ergodic theory.
+
+- **Morse, M. and Hedlund, G. A.** (1938). Symbolic dynamics. *American Journal of Mathematics*, 60(4), 815--866. The foundational paper that established symbolic dynamics as a field.
+
+- **Walters, P.** (1982). *An Introduction to Ergodic Theory*. Springer. Excellent treatment of measure-theoretic entropy and the variational principle in the general (non-symbolic) setting.
+
+- **Parry, W.** (1964). Intrinsic Markov chains. *Transactions of the American Mathematical Society*, 112(1), 55--66. Introduces the measure of maximal entropy for topological Markov chains (SFTs).
+
+- **Fischer, R.** (1975). Sofic systems and graphs. *Monatshefte fur Mathematik*, 80, 179--186. Establishes the connection between sofic shifts and finite automata.
+
+- **Weiss, B.** (1973). Subshifts of finite type and sofic systems. *Monatshefte fur Mathematik*, 77, 462--474. Introduces the term "sofic" and establishes basic properties.
+
+---
+
+## Recommended Reading
+
+For newcomers to symbolic dynamics:
+
+- **Start here**: Lind & Marcus (2021), Chapters 1--4. The book is exceptionally clear and includes numerous exercises. An early draft is available online.
+
+- **Prerequisite-light introduction**: Kitchens (1998) emphasizes the probabilistic (Markov chain) viewpoint and may be easier for readers with a probability background.
+
+For deeper study of entropy:
+
+- **Walters (1982)**, Chapters 4 and 8, covers the general theory of topological and measure-theoretic entropy beyond the symbolic setting. Essential for understanding the variational principle in full generality.
+
+- **Downarowicz, T.** (2011). *Entropy in Dynamical Systems*. Cambridge University Press. A comprehensive treatment of all flavors of dynamical entropy.
+
+For connections to automata theory and formal languages:
+
+- **Hopcroft, Motwani, and Ullman** (2006). *Introduction to Automata Theory, Languages, and Computation*, 3rd ed. The connection between sofic shifts and regular languages is immediate once you know both theories.
+
+For applications to coding and information theory:
+
+- **Cover, T. and Thomas, J.** (2006). *Elements of Information Theory*, 2nd ed. Chapters 4--5 cover entropy rate of stochastic processes, closely related to measure-theoretic entropy of Markov measures.
+
+- **Marcus, B., Roth, R., and Siegel, P.** (1998). "Constrained systems and coding for recording channels." In *Handbook of Coding Theory*, Vol. II. Direct applications of symbolic dynamics to data storage.
