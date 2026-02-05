@@ -56,7 +56,7 @@ $$K(x) \leq n + c$$
 
 *Proof.* Consider the program "print the following $n$ bits: $x$." This program has length $n$ plus a fixed overhead $c$ for encoding the instruction and the length $n$ itself. $\square$
 
-**Proposition 8.3.** *$K(x) \leq K(x) + O(\log |x|)$.* (More precisely, versions that also encode the length cost at most $O(\log n)$ extra bits, since the length $n$ can be encoded in $\lceil \log_2 n \rceil + O(\log \log n)$ bits.)
+**Proposition 8.3.** *$K_{\text{prefix}}(x) \leq K(x) + O(\log |x|)$.* (More precisely, the prefix-free (self-delimiting) complexity exceeds the plain complexity by at most $O(\log n)$ bits, since the length $n$ can be encoded in $\lceil \log_2 n \rceil + O(\log \log n)$ bits.)
 
 **Theorem 8.4 (Non-computability).** *The function $K : \{0,1\}^* \to \mathbb{N}$ is not computable.*
 
