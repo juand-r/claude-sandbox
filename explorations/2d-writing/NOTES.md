@@ -135,10 +135,26 @@ Likely reasons:
 
 Use n-gram model for this task. GPT-2's strengths (long-range context, world knowledge) don't help here, and its weaknesses (web text biases, subword tokenization mismatches) actively hurt.
 
+## Measuring Output Novelty
+
+Beyond coherence, we care about **novelty within each generated output**—how diverse are the tokens? This is covered in depth in `CHAPTER_NOVELTY.md`.
+
+Key metrics:
+- **Distinct-n**: ratio of unique n-grams to total n-grams
+- **Type-Token Ratio (TTR)**: unique words / total words
+- **Unigram Entropy**: information content of token distribution
+- **Compression Ratio**: how well the output compresses (higher = more diverse)
+- **Symmetry Score**: fraction of cells where grid[r][c] == grid[c][r] (lower is better for 2D)
+
+The 5x5 degeneration example above ("a man a man of") is a case of low novelty—the intersection constraint is satisfied but the output is repetitive.
+
+
 ## Files
 
 - `grid2d_v2.py` - Working implementation with true 2D beam search
+- `grid2d_v3.py` - GPT-2 version with top-p sampling
 - `grid2d.py` - Original failed attempts (kept for reference)
 - `debug_gpt2.py` - Debug script for analyzing GPT-2 predictions
+- `CHAPTER_NOVELTY.md` - Deep dive on measuring intra-sequence novelty
 - `PLAN.md` - Task tracking
 - `NOTES.md` - This file
