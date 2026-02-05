@@ -153,13 +153,13 @@ Assigning probabilities to the maps gives a richer structure than the attractor 
 
 **Definition 6.12 (IFS with Probabilities).** An IFS with probabilities is a system $\lbrace (f_1, p_1), \ldots, (f_k, p_k)\rbrace $ where $p_i > 0$ and $\sum_{i=1}^k p_i = 1$. The *transfer operator* (or Markov operator) $M$ acts on probability measures by
 
-$$M(\mu) = \sum_{i=1}^{k} p_i \cdot (f_i)_*(\mu),$$
+$$M(\mu) = \sum_{i=1}^{k} p_i \cdot (f_i)_{*}(\mu),$$
 
-where $(f_i)_*(\mu)$ is the pushforward measure: $(f_i)_*(\mu)(B) = \mu(f_i^{-1}(B))$.
+where $(f_i)_{*}(\mu)$ is the pushforward measure: $(f_i)_{*}(\mu)(B) = \mu(f_i^{-1}(B))$.
 
 **Theorem 6.13.** Under the hypotheses of Theorem 6.6, with $p_i > 0$, the operator $M$ has a unique fixed point $\mu^*$—a probability measure satisfying
 
-$$\mu^* = \sum_{i=1}^{k} p_i \cdot (f_i)_*(\mu^*).$$
+$$\mu^* = \sum_{i=1}^{k} p_i \cdot (f_i)_{*}(\mu^*).$$
 
 This is the **invariant measure** (or **self-similar measure**) of the IFS. The chaos game orbit converges in distribution to $\mu^*$.
 
