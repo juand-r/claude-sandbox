@@ -1,54 +1,46 @@
 # AI Responsibility Index: Project Plan
 
-## Phase 1: Indicator Framework (Current)
-
-- [x] Literature review: CSIRO RAI-ESG Framework
-- [x] Literature review: Springer peer-reviewed version
-- [x] Literature review: ESGReveal implementation
-- [x] Synthesis of papers (PAPERS.md)
+## Phase 1: Indicator Framework
+- [x] Literature review and synthesis (PAPERS.md)
+- [x] Architecture design (ARCHITECTURE.md)
 - [ ] Define indicator schema adapted from CSIRO framework
 - [ ] Create metadata module (ESGReveal-style) for each indicator
 
-## Phase 2: Data Pipeline (MVP)
+## Phase 2: Implementation
 
-- [ ] PDF ingestion and chunking (start simple: PyMuPDF + text splitting)
-- [ ] Vector store setup (FAISS or similar)
-- [ ] RAG retrieval for indicator-relevant passages
-- [ ] LLM extraction prompts per indicator
-- [ ] Output: structured `<Disclosure, Value, Evidence, Score>` per indicator
+### Project structure
+```
+explorations/ai-responsibility-index/
+├── src/
+│   ├── __init__.py
+│   ├── indicators.py      # RAI indicator metadata (what to look for + how)
+│   ├── ingest.py           # PDF + XML ingestion → text chunks with metadata
+│   ├── store.py            # Embedding + FAISS vector store + retrieval
+│   ├── scorer.py           # LLM-based scoring per indicator
+│   └── pipeline.py         # Orchestrator: ingest → store → retrieve → score → aggregate
+├── requirements.txt
+├── run.py                  # CLI entry point
+├── README.md
+├── PAPERS.md
+├── ARCHITECTURE.md
+└── PLAN.md
+```
 
-## Phase 3: Scoring Engine
+### Implementation order
+- [x] 1. `indicators.py` -- 10 governance indicators + metadata (search terms, knowledge, rubric)
+- [x] 2. `ingest.py` -- PDF (PyMuPDF) and XML (lxml) parsers → list of text chunks with page/section metadata
+- [x] 3. `store.py` -- sentence-transformers embedding, FAISS index, top-k retrieval
+- [x] 4. `scorer.py` -- Anthropic Claude API, structured prompt per indicator, output parsing
+- [x] 5. `pipeline.py` -- tie it together: ingest docs, build store, score all indicators, aggregate
+- [x] 6. `run.py` -- CLI: point at a PDF/XML, get a scored report
 
-- [ ] Implement governance scoring (10 indicators, 0-10 scale)
-- [ ] Implement deep dive scoring (42 questions, 0-5 Likert)
-- [ ] Aggregation to principle-level and overall scores
-- [ ] Final decision level classification (Strong/Moderate/Weak/Unacceptable)
-
-## Phase 4: Validation & Evaluation
-
-- [ ] Manual annotation of a small sample
-- [ ] Compute AccDC and AccDE metrics (ESGReveal-style)
-- [ ] Compare automated scores vs. manual scores
+## Phase 3: Validation & Iteration
+- [ ] Test on real corporate AI/sustainability reports
+- [ ] Manual review of scores for accuracy
 - [ ] Iterate on prompts and retrieval
+- [ ] Add deep dive indicators (42 questions) if governance indicators work well
 
-## Phase 5: Index Construction
-
-- [ ] Run across a set of companies
-- [ ] Normalize and rank
-- [ ] Visualize results
-
-## Open Questions
-
-1. Start with governance indicators (10) or full deep dive (42 questions)?
-   - Recommendation: Start with governance indicators. They're simpler, more binary, and more reliably extractable.
-2. Which companies to target first?
-   - Options: Big tech (FAANG+), major AI companies, ASX-listed (CSIRO's original set)
-3. Where do we get reports?
-   - Corporate sustainability reports (usually PDFs on company websites)
-   - SEC 10-K filings (for US companies)
-   - AI-specific disclosures (e.g., Google's AI Principles report, Microsoft's RAI report)
-4. What LLM to use?
-   - Claude for extraction (strong at document analysis)
-   - Evaluate cost/accuracy tradeoff
-5. How to handle companies that don't publish AI-specific disclosures?
-   - Score as "not disclosed" (0 on Likert scale) -- this is valid and informative
+## Open Questions (resolved)
+1. Start with governance indicators (10) -- simpler, more binary, more reliably extractable
+2. RAG: yes, simplified (one embedding model, one FAISS index). Justified by lost-in-the-middle, citability, cost.
+3. LLM: Claude via Anthropic API (configurable)
