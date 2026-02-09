@@ -1,0 +1,537 @@
+\chapter{Mixing and Spectral Theory}\label{ch:10}
+
+In Chapter 9 we established ergodicity as the fundamental notion of indecomposability for a measure-preserving system: time averages equal space averages for every integrable observable. Ergodicity, however, is a relatively weak property. It tells us that orbits visit every set of positive measure, but says nothing about how quickly correlations between events at different times decay. In this chapter we introduce two stronger notions --- \textit{weak mixing} and \textit{strong mixing} --- that quantify the rate at which a system "forgets" its past. We then develop the spectral theory of the Koopman operator, which provides an elegant functional-analytic framework in which these dynamical properties correspond to properties of the spectrum. The interplay between dynamics, measure theory, and operator theory that emerges is one of the most beautiful aspects of ergodic theory, and it will also prove essential when we later analyze the fading-memory properties of reservoir computers.
+
+Throughout this chapter, $(X, \mathcal{B}, \mu, T)$ denotes a measure-preserving system: $(X, \mathcal{B}, \mu)$ is a probability space and $T: X \to X$ is a measure-preserving transformation ($\mu(T^{-1}A) = \mu(A)$ for all $A \in \mathcal{B}$). We assume the probability space is a standard Borel space (a complete separable metric space equipped with its Borel $\sigma$-algebra), which covers all examples of interest. We write $\langle f, g \rangle = \int_X f \bar{g} \, d\mu$ for the inner product on $L^2(X, \mu)$.
+
+
+\bigskip
+
+
+\section{Strong Mixing}\label{sec:10.1}
+
+We begin with the stronger notion, as it is the most intuitive.
+
+\textbf{Definition 10.1 (Strong mixing).} A measure-preserving transformation $T$ is \textit{strongly mixing} (or simply \textit{mixing}) if for all measurable sets $A, B \in \mathcal{B}$,
+\begin{equation}\label{eq:10.1}\tag{10.1}
+\lim_{n \to \infty} \mu(T^{-n}A \cap B) = \mu(A)\mu(B).
+\end{equation}
+
+The interpretation is immediate and compelling. Think of $B$ as the event "the system is currently in the region $B$" and $T^{-n}A$ as the event "after $n$ steps, the system will be in $A$." Strong mixing says that for large $n$, the probability of being in $B$ now and in $A$ after $n$ steps is approximately the product of the individual probabilities --- the events become asymptotically independent. The system progressively "forgets" its initial condition.
+
+\begin{remark}
+Equation (10.1) can be rewritten in functional-analytic terms. For characteristic functions $f = \mathbf{1}_A$ and $g = \mathbf{1}_B$, condition (10.1) reads $\langle f \circ T^n, g \rangle \to \langle f, 1\rangle \langle 1, g \rangle$. By linearity and density, this is equivalent to requiring that for all $f, g \in L^2(X, \mu)$,
+\begin{equation}\label{eq:10.2}\tag{10.2}
+\lim_{n \to \infty} \int_X (f \circ T^n) \cdot \bar{g} \, d\mu = \int_X f \, d\mu \cdot \int_X \bar{g} \, d\mu.
+\end{equation}
+We will revisit this formulation in Section 10.5 when we discuss the Koopman operator.
+\end{remark}
+
+
+\section{Weak Mixing}\label{sec:10.2}
+
+Strong mixing demands that $\mu(T^{-n}A \cap B) - \mu(A)\mu(B) \to 0$ for \textit{every} $n \to \infty$. Weak mixing relaxes this: we only require convergence to zero in the Cesàro sense (i.e., on average).
+
+\textbf{Definition 10.3 (Weak mixing).} A measure-preserving transformation $T$ is \textit{weakly mixing} if for all measurable sets $A, B \in \mathcal{B}$,
+\begin{equation}\label{eq:10.3}\tag{10.3}
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left| \mu(T^{-k}A \cap B) - \mu(A)\mu(B) \right| = 0.
+\end{equation}
+
+Since convergence of a sequence of non-negative reals implies Cesàro convergence to the same limit, strong mixing immediately implies weak mixing. The converse is false; we will exhibit a counterexample in Section 10.3.
+
+The following characterization of weak mixing is one of the foundational results in ergodic theory.
+
+\textbf{Theorem 10.4.} The following are equivalent for a measure-preserving system $(X, \mathcal{B}, \mu, T)$:
+
+\begin{enumerate}[nosep]
+  \item $T$ is weakly mixing.
+  \item For all $A, B \in \mathcal{B}$,
+\end{enumerate}
+\[
+\frac{1}{n} \sum_{k=0}^{n-1} \left| \mu(T^{-k}A \cap B) - \mu(A)\mu(B) \right|^2 \to 0.
+\]
+\begin{enumerate}[nosep]
+  \item The product transformation $T \times T$ is ergodic on $(X \times X, \mathcal{B} \otimes \mathcal{B}, \mu \times \mu)$.
+  \item For every ergodic measure-preserving system $(Y, \mathcal{C}, \nu, S)$, the product $T \times S$ is ergodic on $X \times Y$.
+\end{enumerate}
+
+\begin{proof}
+* We prove the equivalence of (1) and (3); the equivalences with (2) and (4) can be found in Walters [Wal82, Theorem 1.24] and Petersen [Pet89, §2.5].
+
+$(1) \Rightarrow (3)$: Suppose $T$ is weakly mixing. To show $T \times T$ is ergodic on $X \times X$, it suffices (by the $L^2$ characterization of ergodicity from Chapter 9) to show that measurable rectangles satisfy the ergodic condition. Let $A_1, A_2, B_1, B_2 \in \mathcal{B}$. We need to show
+\[
+\frac{1}{n} \sum_{k=0}^{n-1} (\mu \times \mu)\bigl((T \times T)^{-k}(A_1 \times A_2) \cap (B_1 \times B_2)\bigr) \to (\mu \times \mu)(A_1 \times A_2) \cdot (\mu \times \mu)(B_1 \times B_2).
+\]
+The left side equals
+\[
+\frac{1}{n} \sum_{k=0}^{n-1} \mu(T^{-k}A_1 \cap B_1) \cdot \mu(T^{-k}A_2 \cap B_2).
+\]
+Define $a_k = \mu(T^{-k}A_1 \cap B_1) - \mu(A_1)\mu(B_1)$ and $b_k = \mu(T^{-k}A_2 \cap B_2) - \mu(A_2)\mu(B_2)$. Then
+\[
+\mu(T^{-k}A_1 \cap B_1)\mu(T^{-k}A_2 \cap B_2) = \bigl(\mu(A_1)\mu(B_1) + a_k\bigr)\bigl(\mu(A_2)\mu(B_2) + b_k\bigr).
+\]
+Expanding, the Cesàro average becomes
+\[
+\mu(A_1)\mu(B_1)\mu(A_2)\mu(B_2) + \mu(A_2)\mu(B_2) \cdot \frac{1}{n}\sum a_k + \mu(A_1)\mu(B_1) \cdot \frac{1}{n}\sum b_k + \frac{1}{n}\sum a_k b_k.
+\]
+The first two correction terms tend to zero because weak mixing implies, a fortiori, that $\frac{1}{n}\sum a_k \to 0$ (since $\frac{1}{n}\sum |a_k| \to 0$). For the last term, use the Cauchy--Schwarz inequality:
+\[
+\left|\frac{1}{n}\sum_{k=0}^{n-1} a_k b_k\right| \le \left(\frac{1}{n}\sum |a_k|^2\right)^{1/2}\left(\frac{1}{n}\sum |b_k|^2\right)^{1/2}.
+\]
+Since $|a_k| \le 1$, we have $|a_k|^2 \le |a_k|$, so $\frac{1}{n}\sum |a_k|^2 \le \frac{1}{n}\sum |a_k| \to 0$ by weak mixing (and similarly for $b_k$). Therefore the last term also vanishes, and $T \times T$ is ergodic.
+
+$(3) \Rightarrow (1)$: Suppose $T \times T$ is ergodic. By von Neumann's mean ergodic theorem applied to $T \times T$, for any $F \in L^2(X \times X)$,
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} F \circ (T \times T)^k \to \int F \, d(\mu \times \mu)
+\]
+in $L^2(X \times X)$. Now take $F(x,y) = \mathbf{1}_A(x) \cdot \mathbf{1}_B(y)$ for measurable sets $A, B$ and evaluate $\langle \frac{1}{n}\sum F \circ (T \times T)^k, F \rangle$ on $X \times X$. The left side gives
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} \mu(T^{-k}A \cap A) \cdot \mu(T^{-k}B \cap B),
+\]
+which converges to $\mu(A)^2 \mu(B)^2$. Applying this machinery more carefully (see Petersen [Pet89, Theorem 2.11] for the complete argument via the van der Corput lemma), one deduces the full Cesàro convergence in (10.3).
+\end{proof}
+
+
+
+\section{The Mixing Hierarchy and Examples}\label{sec:10.3}
+
+\textbf{Proposition 10.5 (Mixing hierarchy).} For a measure-preserving system, we have the implications
+\[
+\text{strong mixing} \implies \text{weak mixing} \implies \text{ergodic},
+\]
+and neither implication can be reversed.
+
+\begin{proof}
+\textit{ }Strong mixing implies weak mixing:* If $|\mu(T^{-k}A \cap B) - \mu(A)\mu(B)| \to 0$, then the Cesàro averages of these non-negative terms also tend to zero.
+
+\textit{Weak mixing implies ergodic:} If $T$ is weakly mixing, then (10.3) holds in particular for $A = B$:
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} |\mu(T^{-k}A \cap A) - \mu(A)^2| \to 0.
+\]
+Hence $\frac{1}{n}\sum_{k=0}^{n-1}\mu(T^{-k}A \cap A) \to \mu(A)^2$. But by the mean ergodic theorem, this Cesàro limit always exists and equals $\mu(A)^2$ if and only if $T$ is ergodic (for all $A$). More directly: if $T^{-1}A = A$, then each term in the sum is $|\mu(A) - \mu(A)^2|$, so $\mu(A)(1 - \mu(A)) = 0$, giving $\mu(A) \in \{0, 1\}$.
+
+\textit{No converse holds:} Irrational rotations are ergodic but not weakly mixing (Example 10.8). Chacon's transformation is weakly mixing but not strongly mixing (Example 10.9).
+\end{proof}
+
+
+We now examine the key examples in detail.
+
+\subsection{Bernoulli Shifts Are Strongly Mixing}\label{sec:10.3.1}
+
+Let $\Sigma = \{0, 1, \ldots, r-1\}^{\mathbb{Z}}$ (or $\{0,\ldots,r-1\}^{\mathbb{N}}$) be the full shift space with the product measure $\mu = p^{\mathbb{Z}}$ where $p = (p_0, \ldots, p_{r-1})$ is a probability vector. The shift map $\sigma$ acts by $(\sigma x)_n = x_{n+1}$.
+
+\textbf{Theorem 10.6.} Every Bernoulli shift is strongly mixing.
+
+\begin{proof}
+\textit{ It suffices to verify (10.1) for }cylinder sets*, since these generate the $\sigma$-algebra and form a $\cap$-stable generating class (an application of the Dynkin $\pi$-$\lambda$ theorem extends the result to all measurable sets).
+
+A cylinder set has the form
+\[
+C = \{x \in \Sigma : x_{i_1} = a_1, \ldots, x_{i_m} = a_m\}
+\]
+for some finite collection of coordinates $i_1 < \cdots < i_m$ and symbols $a_1, \ldots, a_m$. Let $A$ and $B$ be two cylinder sets, say $A$ depends on coordinates in $\{i_1, \ldots, i_m\}$ and $B$ depends on coordinates in $\{j_1, \ldots, j_\ell\}$. Then $\sigma^{-n}A$ depends on coordinates $\{i_1 + n, \ldots, i_m + n\}$.
+
+For $n$ large enough (specifically, $n > \max\{j_1, \ldots, j_\ell\} - \min\{i_1, \ldots, i_m\}$, or more precisely, once the coordinate sets are disjoint), the sets $\sigma^{-n}A$ and $B$ depend on \textit{disjoint} collections of coordinates. By the independence built into the product measure,
+\[
+\mu(\sigma^{-n}A \cap B) = \mu(\sigma^{-n}A) \cdot \mu(B) = \mu(A) \cdot \mu(B).
+\]
+Thus for each pair of cylinder sets, $\mu(\sigma^{-n}A \cap B) = \mu(A)\mu(B)$ for all sufficiently large $n$. In particular, (10.1) holds.
+\end{proof}
+
+
+\subsection{Hyperbolic Toral Automorphisms Are Strongly Mixing}\label{sec:10.3.2}
+
+Let $A \in \text{GL}(d, \mathbb{Z})$ with $|\det A| = 1$. Then $A$ induces a measure-preserving automorphism $T_A: \mathbb{T}^d \to \mathbb{T}^d$ of the $d$-dimensional torus $\mathbb{T}^d = \mathbb{R}^d / \mathbb{Z}^d$ equipped with Lebesgue measure $\mu$. The classic example is Arnold's cat map:
+\[
+A = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix},
+\]
+which has eigenvalues $\frac{3 \pm \sqrt{5}}{2}$, both irrational and off the unit circle.
+
+\textbf{Theorem 10.7.} If $A \in \text{GL}(d, \mathbb{Z})$ is \textit{hyperbolic} --- that is, no eigenvalue of $A$ has modulus 1 --- then $T_A$ is strongly mixing.
+
+\begin{proof}
+* We use Fourier analysis on $\mathbb{T}^d$. The characters $e_{\mathbf{m}}(x) = e^{2\pi i \langle \mathbf{m}, x \rangle}$ for $\mathbf{m} \in \mathbb{Z}^d$ form an orthonormal basis of $L^2(\mathbb{T}^d)$. It suffices to verify (10.2) for $f = e_{\mathbf{m}}$ and $g = e_{\mathbf{n}}$.
+
+We compute:
+\[
+\langle e_{\mathbf{m}} \circ T_A^n, e_{\mathbf{n}} \rangle = \int_{\mathbb{T}^d} e^{2\pi i \langle \mathbf{m}, A^n x \rangle} e^{-2\pi i \langle \mathbf{n}, x \rangle} \, d\mu(x) = \int_{\mathbb{T}^d} e^{2\pi i \langle (A^T)^n \mathbf{m} - \mathbf{n}, x \rangle} \, d\mu(x),
+\]
+where $A^T$ is the transpose. By orthogonality of characters, this integral equals
+\[
+\begin{cases} 1 & \text{if } (A^T)^n \mathbf{m} = \mathbf{n}, \\ 0 & \text{if } (A^T)^n \mathbf{m} \ne \mathbf{n}. \end{cases}
+\]
+
+**Case 1: $\mathbf{m} = \mathbf{0}$ or $\mathbf{n} = \mathbf{0}$.** If $\mathbf{m} = \mathbf{0}$, then $\langle e_{\mathbf{0}} \circ T_A^n, e_{\mathbf{n}} \rangle = \langle 1, e_{\mathbf{n}} \rangle = \delta_{\mathbf{n}, \mathbf{0}}$, and $\int e_{\mathbf{0}} \, d\mu \cdot \int \bar{e}_{\mathbf{n}} \, d\mu = \delta_{\mathbf{n}, \mathbf{0}}$. So (10.2) holds trivially.
+
+**Case 2: $\mathbf{m} \ne \mathbf{0}$.** Since $A$ is hyperbolic, all eigenvalues of $A^T$ lie off the unit circle. For any $\mathbf{m} \ne \mathbf{0}$, we have $\|(A^T)^n \mathbf{m}\| \to \infty$ as $n \to \infty$. (Indeed, decompose $\mathbf{m}$ in the basis of generalized eigenvectors of $A^T$: at least one component lies along an eigenspace with eigenvalue of modulus $> 1$, and since $\mathbf{m} \ne \mathbf{0}$ and $A^T$ has no eigenvalue of modulus 1, the expanding directions dominate.) Therefore, for any fixed $\mathbf{n} \in \mathbb{Z}^d$, the equation $(A^T)^n \mathbf{m} = \mathbf{n}$ can hold for at most finitely many values of $n$. Hence for all sufficiently large $n$,
+\[
+\langle e_{\mathbf{m}} \circ T_A^n, e_{\mathbf{n}} \rangle = 0 = \int e_{\mathbf{m}} \, d\mu \cdot \int \bar{e}_{\mathbf{n}} \, d\mu,
+\]
+since $\int e_{\mathbf{m}} \, d\mu = 0$ when $\mathbf{m} \ne \mathbf{0}$.
+
+Since (10.2) holds for all pairs of characters and these span $L^2(\mathbb{T}^d)$, an approximation argument (using the fact that (10.2) for a dense set in $L^2$ implies (10.2) for all $f, g \in L^2$, which follows from the uniform boundedness of the operators $U_T^n$) shows that $T_A$ is strongly mixing.
+\end{proof}
+
+
+\begin{remark}
+The key input was that the hyperbolicity of $A$ ensures $\|(A^T)^n\mathbf{m}\| \to \infty$ for $\mathbf{m} \ne \mathbf{0}$. When $A$ has an eigenvalue on the unit circle, the argument breaks down, and indeed the system may fail to be mixing.
+\end{remark}
+
+
+\subsection{Irrational Rotations Are Ergodic but Not Weakly Mixing}\label{sec:10.3.3}
+
+Let $X = \mathbb{T}^1 = \mathbb{R}/\mathbb{Z}$ with Lebesgue measure, and let $T_\alpha(x) = x + \alpha \pmod{1}$ for irrational $\alpha$.
+
+\textbf{Theorem 10.8.} The irrational rotation $T_\alpha$ is ergodic but not weakly mixing.
+
+\begin{proof}
+* Ergodicity was proved in Chapter 9 using Fourier analysis: if $f \circ T_\alpha = f$ a.e. with $f \in L^2$, expanding $f = \sum \hat{f}(n) e^{2\pi i n x}$ gives $\hat{f}(n) e^{2\pi i n \alpha} = \hat{f}(n)$ for all $n$, so $\hat{f}(n) = 0$ for $n \ne 0$ (since $\alpha$ is irrational), hence $f$ is a.e. constant.
+
+To show $T_\alpha$ is \textit{not} weakly mixing, we exhibit a non-constant eigenfunction. The function $f(x) = e^{2\pi i x}$ satisfies
+\[
+f(T_\alpha x) = e^{2\pi i (x + \alpha)} = e^{2\pi i \alpha} \cdot e^{2\pi i x} = e^{2\pi i \alpha} f(x).
+\]
+So $f$ is an eigenfunction of the Koopman operator $U_{T_\alpha}$ with eigenvalue $\lambda = e^{2\pi i \alpha} \ne 1$.
+
+We will show in Theorem 10.16 that weak mixing is equivalent to having no eigenvalues other than 1. Since $T_\alpha$ has eigenvalue $e^{2\pi i \alpha} \ne 1$, it is not weakly mixing.
+\end{proof}
+
+
+\begin{remark}
+In fact, the full spectrum of $U_{T_\alpha}$ consists of all the eigenvalues $\{e^{2\pi i n \alpha} : n \in \mathbb{Z}\}$, each with multiplicity one, with eigenfunctions $e_n(x) = e^{2\pi i n x}$. The spectrum is pure point (i.e., $L^2$ has an orthonormal basis of eigenfunctions). This is the spectral opposite of weak mixing.
+\end{remark}
+
+
+\subsection{Chacon's Transformation: Weakly Mixing but Not Strongly Mixing}\label{sec:10.3.4}
+
+\textbf{Example 10.9 (Chacon's transformation).} This is a measure-preserving transformation of $[0,1]$ constructed by a \textit{cutting-and-stacking} procedure. At stage 0, we start with the interval $[0,1)$. At each subsequent stage, we cut the current column into three equal pieces, add a \textit{spacer} interval on top of the middle piece, and then stack them: the left piece on the bottom, the middle piece (with spacer) in the middle, the right piece on top. The transformation $T$ maps each point to the point directly above it in the column; spacers are new intervals drawn from a supply of measure.
+
+After infinitely many stages, the construction defines a measure-preserving transformation $T$ on a space of total measure $\frac{3}{2}$ (which can be normalized to a probability space).
+
+Chacon [Cha69] proved that this transformation is weakly mixing. The proof proceeds by verifying that $T$ has no non-constant eigenfunctions (which, by the spectral characterization in Theorem 10.16, is equivalent to weak mixing). The argument uses the detailed combinatorial structure of the cutting-and-stacking construction to show that any eigenfunction must be constant on longer and longer columns, hence constant a.e.
+
+On the other hand, Chacon also showed that $T$ is \textit{not} strongly mixing. The idea is to find sets $A$ for which $\mu(T^{-n}A \cap A)$ does not converge to $\mu(A)^2$ along a specific subsequence. Let $A$ be a level in one of the columns. Along the subsequence $n_k = 3^k$ (the height of the columns at stage $k$), a non-trivial fraction of $A$ maps back into $A$ in a structured way that prevents the correlations from decaying. More precisely, one can show that $\limsup_{n} \mu(T^{-n}A \cap A) > \mu(A)^2$ along the subsequence of column heights.
+
+A full proof can be found in Petersen [Pet89, §3.5] or in the original paper of Chacon [Cha69]. This example is of great importance: it demonstrates that the mixing hierarchy is strict.
+\end{proof}
+
+
+
+\section{The Koopman Operator}\label{sec:10.4}
+
+The passage from dynamics on the phase space to dynamics on the function space is one of the great organizing ideas of ergodic theory. It replaces a possibly nonlinear transformation $T$ with a \textit{linear} operator.
+
+\textbf{Definition 10.10 (Koopman operator).} Given a measure-preserving transformation $T: X \to X$, the \textit{Koopman operator} $U_T: L^2(X, \mu) \to L^2(X, \mu)$ is defined by
+\begin{equation}\label{eq:10.4}\tag{10.4}
+U_T f = f \circ T.
+\end{equation}
+
+\begin{proposition}\label{prop:10.11.}
+The Koopman operator has the following properties:
+
+1. $U_T$ is a \textit{linear isometry}: $\|U_T f\|_2 = \|f\|_2$ for all $f \in L^2$.
+2. $U_T$ is a \textit{positive} operator: $f \ge 0 \implies U_T f \ge 0$.
+3. $U_T \mathbf{1} = \mathbf{1}$ (where $\mathbf{1}$ denotes the constant function 1).
+4. If $T$ is invertible (a.e.), then $U_T$ is \textit{unitary}, with $U_T^* = U_T^{-1} = U_{T^{-1}}$.
+5. $U_{T^n} = U_T^n$ for all $n \ge 1$.
+\end{proposition}
+
+
+\begin{proof}
+* (1) Since $T$ is measure-preserving:
+\[
+\|U_T f\|_2^2 = \int_X |f(Tx)|^2 \, d\mu(x) = \int_X |f(x)|^2 \, d\mu(x) = \|f\|_2^2,
+\]
+where we used the change-of-variables formula $\int g \circ T \, d\mu = \int g \, d\mu$.
+
+(2)--(3) are immediate.
+
+(4) If $T$ is invertible, $U_{T^{-1}}$ is also a well-defined isometry. We check $U_T U_{T^{-1}} = U_{T^{-1}} U_T = I$: indeed, $U_T U_{T^{-1}} f = f \circ T^{-1} \circ T = f$ a.e. Moreover, for all $f, g \in L^2$:
+\[
+\langle U_T f, g \rangle = \int (f \circ T) \bar{g} \, d\mu = \int f \cdot (\bar{g} \circ T^{-1}) \, d\mu = \langle f, U_{T^{-1}} g \rangle,
+\]
+so $U_T^* = U_{T^{-1}} = U_T^{-1}$, confirming unitarity.
+
+(5) is immediate: $U_T^n f = f \circ T^n = U_{T^n} f$.
+\end{proof}
+
+
+When $T$ is not invertible, $U_T$ is still an isometry, hence $U_T^* U_T = I$, but in general $U_T U_T^* \ne I$ --- that is, $U_T$ is a \textit{non-surjective isometry}. In this case one works with the Koopman operator as an isometry rather than a unitary operator, and the spectral theory is slightly more delicate. We will primarily consider the invertible case.
+
+
+\section{Spectral Characterization of Mixing Properties}\label{sec:10.5}
+
+The central results of this chapter connect the dynamical notions of ergodicity, weak mixing, and strong mixing to spectral properties of the Koopman operator $U_T$. These connections allow us to bring the powerful machinery of functional analysis --- in particular, the spectral theorem for unitary operators --- to bear on dynamical questions.
+
+\subsection{The Spectral Theorem for Unitary Operators}\label{sec:10.5.1}
+
+We state the result we need; proofs can be found in Reed and Simon [RS80] or Halmos [Hal51].
+
+\textbf{Theorem 10.12 (Spectral theorem for unitary operators).} Let $U$ be a unitary operator on a separable Hilbert space $H$. For each $f \in H$, there exists a unique finite positive Borel measure $\sigma_f$ on the unit circle $S^1 = \{z \in \mathbb{C} : |z| = 1\}$, called the \textit{spectral measure} of $f$, such that
+\begin{equation}\label{eq:10.5}\tag{10.5}
+\langle U^n f, f \rangle = \int_{S^1} z^n \, d\sigma_f(z) \quad \text{for all } n \in \mathbb{Z}.
+\end{equation}
+Moreover, $\sigma_f(S^1) = \|f\|^2$.
+
+More generally, for each pair $f, g \in H$ there exists a complex Borel measure $\sigma_{f,g}$ on $S^1$ such that
+\begin{equation}\label{eq:10.6}\tag{10.6}
+\langle U^n f, g \rangle = \int_{S^1} z^n \, d\sigma_{f,g}(z) \quad \text{for all } n \in \mathbb{Z}.
+\end{equation}
+
+Every spectral measure can be decomposed (Lebesgue decomposition) into three mutually singular parts: $\sigma_f = \sigma_f^{(pp)} + \sigma_f^{(ac)} + \sigma_f^{(sc)}$, where $\sigma_f^{(pp)}$ is \textit{pure point} (a sum of atoms), $\sigma_f^{(ac)}$ is \textit{absolutely continuous} with respect to Lebesgue measure on $S^1$, and $\sigma_f^{(sc)}$ is \textit{singular continuous} (singular with respect to Lebesgue measure but has no atoms).
+
+\begin{definition}\label{def:10.13.}
+The \textit{maximal spectral type} of $U$ is a measure class (equivalence class of measures under mutual absolute continuity) $[\sigma]$ on $S^1$ such that $\sigma_f \ll \sigma$ for every $f \in H$, and $\sigma$ is minimal with this property.
+\end{definition}
+
+
+\subsection{Spectral Characterizations}\label{sec:10.5.2}
+
+We now state and prove the main spectral characterizations.
+
+\textbf{Theorem 10.14 (Spectral characterization of ergodicity).} $T$ is ergodic if and only if $\lambda = 1$ is a simple eigenvalue of $U_T$ (i.e., $\dim \ker(U_T - I) = 1$, spanned by the constant functions).
+
+\begin{proof}
+* ($\Rightarrow$) If $T$ is ergodic and $U_T f = f$, then $f \circ T = f$ a.e., so $f$ is $T$-invariant. By ergodicity, $f$ is constant a.e. Thus the eigenspace for eigenvalue 1 is $\mathbb{C} \cdot \mathbf{1}$.
+
+($\Leftarrow$) If $\lambda = 1$ is simple, then every $T$-invariant function $f$ (i.e., $f \circ T = f$ a.e.) belongs to $\mathbb{C} \cdot \mathbf{1}$, so $f$ is constant a.e. This is precisely ergodicity.
+\end{proof}
+
+
+\textbf{Lemma 10.15.} Suppose $U_T f = \lambda f$ for some $f \in L^2 \setminus \{0\}$ and $\lambda \in \mathbb{C}$. Then $|\lambda| = 1$ and $|f|$ is $T$-invariant a.e. If in addition $T$ is ergodic, then $|f|$ is constant a.e.
+
+\begin{proof}
+* Since $U_T$ is an isometry, $\|f\| = \|U_T f\| = |\lambda| \|f\|$, so $|\lambda| = 1$. Moreover, $|f| \circ T = |f \circ T| = |\lambda f| = |f|$ a.e. $\quad\square$
+
+\textbf{Theorem 10.16 (Spectral characterization of weak mixing).} $T$ is weakly mixing if and only if the only eigenvalue of $U_T$ is $\lambda = 1$ (with eigenspace $\mathbb{C} \cdot \mathbf{1}$). Equivalently, $U_T$ restricted to $L^2_0 = \{f \in L^2 : \int f \, d\mu = 0\}$ has \textit{continuous spectrum} (no eigenvalues).
+
+\begin{proof}
+* ($\Rightarrow$) Suppose $T$ is weakly mixing and $U_T f = \lambda f$ for some $f \ne 0$. Then for any measurable $B$,
+\[
+\mu(T^{-k}A \cap B) - \mu(A)\mu(B)
+\]
+with $A$ chosen to involve $f$ leads to a contradiction unless $\lambda = 1$. More precisely, let $g \in L^2$. Then
+\[
+\langle U_T^k f, g \rangle = \lambda^k \langle f, g \rangle.
+\]
+Now, weak mixing (in its $L^2$ formulation) gives
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} \left| \langle U_T^k f, g \rangle - \langle f, \mathbf{1}\rangle \langle \mathbf{1}, g \rangle \right| \to 0.
+\]
+Taking $g = f$ and noting $\langle U_T^k f, f\rangle = \lambda^k \|f\|^2$, we get
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} \left| \lambda^k \|f\|^2 - \langle f, \mathbf{1}\rangle \langle \mathbf{1}, f \rangle \right| \to 0.
+\]
+If $\lambda \ne 1$, set $c = \langle f, \mathbf{1}\rangle\langle \mathbf{1}, f\rangle / \|f\|^2$. The above says $\frac{1}{n}\sum |\lambda^k - c| \to 0$. Since $|\lambda| = 1$ and $\lambda \ne 1$, the sequence $\lambda^k$ is either periodic (if $\lambda$ is a root of unity) or equidistributed on $S^1$ (if not). In either case, it does not Cesàro-converge to any single complex number in modulus unless $\|f\|^2$ conspires to make everything vanish --- but let us be more careful.
+
+If $\lambda$ is a root of unity, say $\lambda^p = 1$, then $\frac{1}{n}\sum_{k=0}^{n-1}|\lambda^k - c| \to \frac{1}{p}\sum_{j=0}^{p-1}|\lambda^j - c|$. For this to be zero, we need $c = \lambda^j$ for every $j$, which is impossible for $p > 1$. Contradiction.
+
+If $\lambda$ is not a root of unity, then $\{\lambda^k\}$ is equidistributed on $S^1$ by Weyl's theorem, so $\frac{1}{n}\sum |\lambda^k - c| \to \int_{S^1} |z - c| \, dm(z) > 0$ for any $c \in \mathbb{C}$. Contradiction.
+
+Therefore $\lambda = 1$ and $f$ is constant.
+
+($\Leftarrow$) Suppose $U_T$ has no eigenvalues on $L^2_0$. Let $f \in L^2_0$. The spectral measure $\sigma_f$ has no atoms (since atoms of $\sigma_f$ correspond to eigenvalues of $U_T$). By (10.5),
+\[
+\langle U_T^k f, f\rangle = \int_{S^1} z^k \, d\sigma_f(z).
+\]
+We need to show $\frac{1}{n}\sum_{k=0}^{n-1}|\langle U_T^k f, f\rangle| \to 0$. By the Cauchy--Schwarz inequality and Parseval-type reasoning,
+\[
+\frac{1}{n}\sum_{k=0}^{n-1} |\langle U_T^k f, f\rangle|^2 = \frac{1}{n}\sum_{k=0}^{n-1}\left|\int_{S^1} z^k \, d\sigma_f(z)\right|^2 = \int_{S^1}\int_{S^1} \frac{1}{n}\sum_{k=0}^{n-1}(z\bar{w})^k \, d\sigma_f(z)\, d\sigma_f(w).
+\]
+The inner sum is $\frac{1}{n}\sum_{k=0}^{n-1}(z\bar{w})^k$, which converges to $\mathbf{1}_{\{z = w\}}$ pointwise (it equals 1 when $z = w$ and converges to 0 when $z \ne w$). By bounded convergence,
+\[
+\frac{1}{n}\sum_{k=0}^{n-1}|\langle U_T^k f, f\rangle|^2 \to \int_{S^1}\int_{S^1}\mathbf{1}_{\{z = w\}} \, d\sigma_f(z)\, d\sigma_f(w) = \sum_{\lambda \in S^1} \sigma_f(\{\lambda\})^2.
+\]
+Since $\sigma_f$ has no atoms, this is 0. Thus $\frac{1}{n}\sum |\langle U_T^k f, f\rangle|^2 \to 0$, which implies $\frac{1}{n}\sum |\langle U_T^k f, f \rangle| \to 0$ (since Cesàro convergence of $|a_k|^2$ to 0 implies Cesàro convergence of $|a_k|$ to 0 for bounded sequences). A polarization argument extends this to all pairs $f, g \in L^2_0$, giving weak mixing.
+\end{proof}
+
+
+\textbf{Theorem 10.17 (Spectral characterization of strong mixing).} $T$ is strongly mixing if and only if for all $f, g \in L^2(X, \mu)$,
+\begin{equation}\label{eq:10.7}\tag{10.7}
+\langle U_T^n f, g \rangle \to \langle f, \mathbf{1}\rangle \langle \mathbf{1}, g \rangle \quad \text{as } n \to \infty.
+\end{equation}
+Equivalently, $T$ is strongly mixing if and only if for every $f \in L^2_0$, the spectral measure $\sigma_f$ is a \textit{Rajchman measure} (i.e., its Fourier coefficients tend to zero: $\hat{\sigma}_f(n) \to 0$).
+
+\begin{proof}
+* Condition (10.7) is simply the restatement of (10.2) and is thus equivalent to strong mixing by definition (and the approximation argument in Remark 10.2).
+
+For the spectral reformulation: restricting to $L^2_0$, condition (10.7) becomes $\langle U_T^n f, g \rangle \to 0$ for all $f, g \in L^2_0$. In particular, taking $g = f$:
+\[
+\hat{\sigma}_f(n) = \int_{S^1} z^n \, d\sigma_f(z) = \langle U_T^n f, f \rangle \to 0.
+\]
+This is precisely the condition that $\sigma_f$ is a Rajchman measure. Conversely, if all spectral measures are Rajchman, then by polarization $\langle U_T^n f, g \rangle \to 0$ for all $f, g \in L^2_0$.
+\end{proof}
+
+
+\begin{remark}
+The spectral characterizations reveal a clean hierarchy:
+
+| Property | Spectral condition on $L^2_0$ |
+|---|---|
+| Ergodic | $1$ is not an eigenvalue of $U_T\|_{L^2_0}$ |
+| Weakly mixing | $U_T\|_{L^2_0}$ has no eigenvalues (continuous spectrum) |
+| Strongly mixing | $\hat{\sigma}_f(n) \to 0$ for all $f \in L^2_0$ (Rajchman spectral measures) |
+
+Note that having no eigenvalues (continuous spectrum) does not force the Fourier coefficients of the spectral measures to decay. For instance, singular continuous measures need not be Rajchman. This is the spectral reason why weak mixing does not imply strong mixing.
+\end{remark}
+
+
+\section{Decay of Correlations}\label{sec:10.6}
+
+The notion of mixing has a natural quantitative refinement: how \textit{fast} do correlations decay?
+
+\textbf{Definition 10.19 (Correlation function).} For observables $f, g \in L^2(X, \mu)$, the \textit{correlation function} (or \textit{correlation coefficient}) is
+\begin{equation}\label{eq:10.8}\tag{10.8}
+C_n(f, g) = \int_X (f \circ T^n) \cdot \bar{g} \, d\mu - \int_X f \, d\mu \cdot \int_X \bar{g} \, d\mu = \langle U_T^n f, g \rangle - \langle f, \mathbf{1}\rangle \langle \mathbf{1}, g\rangle.
+\end{equation}
+
+Mixing is the statement that $C_n(f,g) \to 0$ for all $f, g \in L^2$. The \textit{rate} of decay is of great importance in applications.
+
+\textbf{Definition 10.20 (Exponential mixing).} A system is \textit{exponentially mixing} for a class of observables $\mathcal{F}$ if there exist constants $C > 0$ and $0 < \rho < 1$ such that for all $f, g \in \mathcal{F}$,
+\begin{equation}\label{eq:10.9}\tag{10.9}
+|C_n(f, g)| \le C \|f\|_{\mathcal{F}} \|g\|_{\mathcal{F}} \, \rho^n,
+\end{equation}
+where $\|\cdot\|_{\mathcal{F}}$ is an appropriate norm (typically a Hölder or Sobolev norm, stronger than the $L^2$ norm).
+
+\begin{remark}
+The class $\mathcal{F}$ matters. No system can be exponentially mixing for \textit{all} $L^2$ functions, because $L^2$ functions can be arbitrarily rough. One typically works with Hölder continuous functions, functions of bounded variation, or smooth functions.
+\end{remark}
+
+
+\textbf{Example 10.22 (Exponential mixing for hyperbolic systems).} The Arnold cat map and, more generally, Anosov diffeomorphisms are exponentially mixing for Hölder continuous observables. This was proved by Sinai [Sin72] and later refined by Bowen and Ruelle using symbolic dynamics and transfer operators. For the cat map $T_A$ on $\mathbb{T}^2$ with matrix $A$ having eigenvalues $\lambda_1, \lambda_2$ with $|\lambda_1| > 1 > |\lambda_2|$, the rate of exponential decay is governed by $|\lambda_2|$ (or equivalently $|\lambda_1|^{-1}$).
+
+\textbf{Example 10.23 (Polynomial mixing).} Some systems mix, but only at a polynomial rate: $|C_n(f,g)| = O(n^{-\alpha})$ for some $\alpha > 0$. This is typical of systems with "intermittent" behavior, such as the Manneville--Pomeau map $T(x) = x + x^{1+\alpha} \pmod{1}$ for $\alpha \in (0, 1)$, where correlations of Hölder observables decay as $O(n^{1 - 1/\alpha})$.
+
+\subsection{Connection to Statistical Mechanics and Reservoir Computing}
+
+The decay of correlations is central to statistical mechanics, where it governs the approach to equilibrium and the validity of the central limit theorem for dynamical systems. If $C_n(f, f) = O(\rho^n)$ (exponential decay), then for a large class of observables, the time averages $\frac{1}{n}\sum_{k=0}^{n-1} f \circ T^k$ satisfy a central limit theorem: properly normalized, they converge in distribution to a Gaussian.
+
+For reservoir computing, the decay of correlations is directly connected to the \textit{fading memory property}. A reservoir with state dynamics driven by a mixing dynamical system will "forget" its initial state at a rate governed by the correlation decay. We will make this connection precise in Chapter 14, where we show that exponential mixing of the reservoir dynamics ensures that the echo state property holds and that the reservoir's output depends primarily on recent inputs.
+
+
+\section{Multiple Mixing and Rokhlin's Problem}\label{sec:10.7}
+
+**Definition 10.24 ($k$-mixing).** A measure-preserving transformation $T$ is *$k$-mixing\textit{ (or }mixing of order $k$*) if for all measurable sets $A_0, A_1, \ldots, A_k$,
+\[
+\mu\!\left(A_0 \cap T^{-n_1}A_1 \cap T^{-(n_1 + n_2)}A_2 \cap \cdots \cap T^{-(n_1 + \cdots + n_k)}A_k\right) \to \mu(A_0)\mu(A_1)\cdots\mu(A_k)
+\]
+as $\min(n_1, n_2, \ldots, n_k) \to \infty$.
+
+Note that 1-mixing is ordinary (strong) mixing, and $k$-mixing implies $(k-1)$-mixing.
+
+\textbf{Rokhlin's Problem (1949).} Does 2-mixing imply 3-mixing?
+
+This is one of the oldest and most famous open problems in ergodic theory. Despite more than seven decades of work, it remains unresolved in full generality.
+
+\textbf{Partial results:}
+
+\begin{enumerate}[nosep]
+  \item \textbf{Bernoulli shifts} are mixing of all orders, by the same independence argument used in Theorem 10.6.
+
+  \item \textbf{Hyperbolic toral automorphisms} are mixing of all orders. This follows from higher-order versions of the Fourier-analytic argument in Theorem 10.7.
+
+  \item \textbf{Theorem 10.25 (Host, 1991 [Hos91]).} If $T$ is mixing and has \textit{singular spectrum} (i.e., the maximal spectral type of $U_T|_{L^2_0}$ is singular with respect to Lebesgue measure on $S^1$), then $T$ is mixing of all orders.
+\end{enumerate}
+
+Host's theorem is a remarkable result: it covers a very large class of mixing transformations, since "most" mixing transformations (in various senses) have singular spectrum. In particular, all known examples of mixing rank-one transformations have singular spectrum, so they are mixing of all orders by Host's theorem.
+
+\begin{enumerate}[nosep]
+  \item \textbf{Kalikow (1984) [Kal84]} proved that mixing rank-one transformations are mixing of all orders, predating Host's more general result.
+
+  \item \textbf{Ryzhikov (1993)} extended Host's theorem in various directions.
+\end{enumerate}
+
+No counterexample to Rokhlin's question is known. Many experts believe that 2-mixing does in fact imply mixing of all orders, but a proof for the general case remains elusive.
+
+
+\section{Summary}\label{sec:10.8}
+
+We summarize the main results of this chapter.
+
+The dynamical properties of a measure-preserving system arrange in a strict hierarchy:
+\[
+\text{strong mixing} \implies \text{weak mixing} \implies \text{ergodic},
+\]
+with neither implication reversible. These properties correspond precisely to spectral properties of the Koopman operator $U_T$:
+
+\begin{itemize}[nosep]
+  \item \textbf{Ergodicity} $\Longleftrightarrow$ 1 is a simple eigenvalue of $U_T$.
+  \item \textbf{Weak mixing} $\Longleftrightarrow$ $U_T|_{L^2_0}$ has no eigenvalues (purely continuous spectrum).
+  \item \textbf{Strong mixing} $\Longleftrightarrow$ $\langle U_T^n f, g \rangle \to \langle f, \mathbf{1}\rangle\langle \mathbf{1}, g\rangle$ for all $f, g$ (Rajchman spectral measures).
+\end{itemize}
+
+The correlation function $C_n(f,g)$ quantifies how quickly a mixing system forgets its past, with exponential mixing being characteristic of hyperbolic dynamics and directly relevant to the fading memory properties of reservoir computers.
+
+
+\section*{Exercises}
+
+\begin{exercise}
+Let $T$ be a measure-preserving transformation on $(X, \mathcal{B}, \mu)$. Show that $T$ is strongly mixing if and only if for all $f, g \in L^2(X, \mu)$,
+\[
+\int_X (f \circ T^n) \cdot g \, d\mu \to \int_X f \, d\mu \cdot \int_X g \, d\mu.
+\]
+(\textit{Hint:} Start with characteristic functions and use an approximation argument.)
+\end{exercise}
+
+
+\begin{exercise}
+Let $\sigma: \{0,1\}^{\mathbb{N}} \to \{0,1\}^{\mathbb{N}}$ be the one-sided shift with the $(1/2, 1/2)$ Bernoulli measure. Find the eigenvalues and eigenfunctions of the Koopman operator $U_\sigma$ on $L^2$, or prove that the only eigenvalue is 1. Is the one-sided shift weakly mixing?
+\end{exercise}
+
+
+\begin{exercise}
+Let $T$ be a measure-preserving transformation. Show directly (without using the spectral characterization) that if $T \times T$ is ergodic, then $T$ is ergodic. Then show by example that the converse fails: exhibit a transformation that is ergodic but for which $T \times T$ is not ergodic.
+(\textit{Hint:} For the counterexample, consider an irrational rotation.)
+\end{exercise}
+
+
+\begin{exercise}
+Show that $T$ is strongly mixing if and only if $T^{-n}A \to \mu(A)$ in the \textit{weak topology} on measurable sets, in the following sense: for every $B \in \mathcal{B}$, $\mu(T^{-n}A \cap B) \to \mu(A)\mu(B)$. Interpret this as saying that $T^{-n}A$ becomes "uniformly spread out" over $X$.
+\end{exercise}
+
+
+\begin{exercise}
+Let $T_\alpha$ be an irrational rotation of $\mathbb{T}^1$. For $f(x) = e^{2\pi i m x}$ with $m \in \mathbb{Z}$, compute the spectral measure $\sigma_f$ explicitly. Verify that it is a pure point measure and identify its support.
+\end{exercise}
+
+
+\begin{exercise}
+Consider the doubling map $T(x) = 2x \pmod{1}$ on $[0,1)$ with Lebesgue measure.
+
+(a) Show that $T$ is strongly mixing. (\textit{Hint:} Show that $T$ is isomorphic to the one-sided $(1/2, 1/2)$ Bernoulli shift via the binary expansion map.)
+
+(b) For $f(x) = e^{2\pi i x}$ and $g(x) = e^{2\pi i x}$, compute $C_n(f, g)$ explicitly and determine its rate of decay.
+
+(c) Show that for Lipschitz observables $f, g$, the doubling map is exponentially mixing: there exists $0 < \rho < 1$ such that $|C_n(f,g)| \le C \cdot \text{Lip}(f) \cdot \|g\|_\infty \cdot \rho^n$. What is the optimal $\rho$?
+\end{exercise}
+
+
+\begin{exercise}
+Suppose $T$ is weakly mixing and $S$ is an arbitrary ergodic measure-preserving transformation. Prove that $T \times S$ is ergodic. (\textit{Hint:} Use the characterization from Theorem 10.4(4), or prove it from the spectral characterization.)
+\end{exercise}
+
+
+\begin{exercise}
+Let $T$ be a measure-preserving transformation of a compact metric space $X$ that is an \textit{isometry}: $d(Tx, Ty) = d(x, y)$ for all $x, y$. Show that $T$ is never strongly mixing (unless $X$ is a single point). (\textit{Hint:} Consider small balls.)
+\end{exercise}
+
+
+\section*{Recommended Reading}
+
+The following references provide thorough treatments of the material in this chapter:
+
+\begin{itemize}[nosep]
+  \item \textbf{Walters, P.} \textit{An Introduction to Ergodic Theory}, Springer, 1982 [Wal82]. Chapter 1, Sections 5--7 cover mixing and spectral theory with full proofs. An excellent first reference.
+
+  \item \textbf{Petersen, K.} \textit{Ergodic Theory}, Cambridge University Press, 1989 [Pet89]. Chapters 2--3 treat mixing and spectral theory in depth. Section 3.5 contains a complete treatment of Chacon's transformation.
+
+  \item \textbf{Cornfeld, I.P., Fomin, S.V., Sinai, Ya.G.} \textit{Ergodic Theory}, Springer, 1982 [CFS82]. A comprehensive reference with extensive coverage of spectral theory, multiple mixing, and entropy.
+
+  \item \textbf{Halmos, P.R.} \textit{Lectures on Ergodic Theory}, AMS Chelsea, 1956 (reprinted 2006) [Hal56]. A classic concise treatment. The spectral approach to ergodic theory is developed beautifully.
+
+  \item \textbf{Nadkarni, M.G.} \textit{Spectral Theory of Dynamical Systems}, Birkhäuser, 1998 [Nad98]. Focuses specifically on the spectral theory of measure-preserving transformations. Contains detailed treatments of spectral types, multiplicity theory, and their dynamical implications. Particularly recommended for the material in Sections 10.5--10.7.
+
+  \item \textbf{Host, B.} "Mixing of all orders and pairwise independent joinings of systems without singular part," \textit{Israel Journal of Mathematics}, 76 (1991), 289--298 [Hos91]. The original paper proving Theorem 10.25.
+
+  \item \textbf{Chacon, R.V.} "Weakly mixing transformations which are not strongly mixing," \textit{Proceedings of the AMS}, 22 (1969), 559--562 [Cha69]. The original construction of a weakly mixing, non-strongly mixing transformation.
+\end{itemize}

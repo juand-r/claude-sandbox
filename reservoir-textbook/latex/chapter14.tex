@@ -1,0 +1,735 @@
+\chapter{Echo State Networks}\label{ch:14}
+
+In the preceding chapters, we developed the mathematical foundations of dynamical systems, ergodic theory, and the general framework of reservoir computing. We now turn to the most widely studied concrete instantiation of the reservoir computing paradigm: the \textbf{Echo State Network} (ESN), introduced by Jaeger (2001). The ESN makes the abstract ideas of Chapter 13 concrete and computationally tractable. A large, randomly generated recurrent network serves as the reservoir, and only a simple linear readout is trained. The theoretical justification for this architecture rests on a property called the \textit{echo state property}, which we will analyze in detail using the contraction and Lyapunov theory developed in Part I.
+
+
+\bigskip
+
+
+\section{Architecture of an Echo State Network}\label{sec:14.1}
+
+An echo state network consists of three components: an \textbf{input layer}, a \textbf{reservoir} (also called the \textit{dynamical reservoir} or \textit{hidden layer}), and a \textbf{readout layer}. We describe each in turn.
+
+\subsection{The Three Components}\label{sec:14.1.1}
+
+\textbf{Input layer.} At each discrete time step $t$, the network receives an input vector $\mathbf{u}(t) \in \mathbb{R}^K$. The input is connected to the reservoir through a weight matrix $W_{\text{in}} \in \mathbb{R}^{N \times K}$, where $N$ is the number of reservoir neurons. The matrix $W_{\text{in}}$ is generated randomly and held fixed throughout training.
+
+\textbf{Reservoir.} The reservoir consists of $N$ neurons whose activations form the state vector $\mathbf{x}(t) \in \mathbb{R}^N$. The neurons are recurrently connected through a weight matrix $W \in \mathbb{R}^{N \times N}$. Like $W_{\text{in}}$, the matrix $W$ is generated randomly at initialization and is never modified. The reservoir is the computational core of the network: it transforms the input into a high-dimensional, nonlinear, dynamical representation.
+
+\textbf{Readout layer.} The output $\mathbf{y}(t) \in \mathbb{R}^L$ is a linear function of the reservoir state:
+
+\[
+\mathbf{y}(t) = W_{\text{out}} \mathbf{x}(t),
+\]
+
+where $W_{\text{out}} \in \mathbb{R}^{L \times N}$ is the readout weight matrix. This is the \textit{only} part of the network that is trained.
+
+The architecture can be visualized schematically as follows:
+
+\begin{lstlisting}
+    Input                  Reservoir                    Output
+  u(t) in R^K        x(t) in R^N                   y(t) in R^L
+
+  [u_1] ----\        /--[x_1]---[x_2]--\           /--- [y_1]
+  [u_2] -----W_in-->/   |   \  / |   \  \--W_out--/---- [y_2]
+   ...       |      /   [x_3]--[x_4]   |          \       ...
+  [u_K] ----/      /     |  \   / | \  [x_5]       \--- [y_L]
+                   /      [x_6]--[x_7]--/ |
+                   \       ...    ...     /
+                    \---- recurrent W ---/
+\end{lstlisting}
+
+The key structural feature is the separation of concerns: the reservoir provides a rich dynamical representation, and the readout extracts the desired computation from that representation. Since $W_{\text{out}}$ is a linear map, training reduces to solving a linear regression problem.
+
+\subsection{State Update Equation}\label{sec:14.1.2}
+
+The reservoir state evolves according to the update rule
+
+\begin{equation}\label{eq:14.1}\tag{14.1}
+\mathbf{x}(t+1) = f\!\left(W\mathbf{x}(t) + W_{\text{in}}\mathbf{u}(t+1) + \mathbf{b}\right),
+\end{equation}
+
+where $f: \mathbb{R}^N \to \mathbb{R}^N$ is a componentwise nonlinear activation function, typically $\tanh$, and $\mathbf{b} \in \mathbb{R}^N$ is a bias vector. The $\tanh$ function is applied elementwise:
+
+\[
+f(\mathbf{z})_i = \tanh(z_i), \quad i = 1, \ldots, N.
+\]
+
+The choice of $\tanh$ is natural: it is a bounded, monotone, smooth sigmoidal function with $\tanh(0) = 0$ and $|\tanh(z)| < 1$ for all $z \in \mathbb{R}$. Its derivative satisfies $\tanh'(z) = 1 - \tanh^2(z) \leq 1$, a fact we will use repeatedly.
+
+\begin{remark}
+Equation (14.1) defines a nonautonomous discrete dynamical system on $\mathbb{R}^N$. The input sequence $\{\mathbf{u}(t)\}$ acts as a time-dependent driving signal. With no input ($\mathbf{u} \equiv \mathbf{0}$ and $\mathbf{b} = \mathbf{0}$), the system reduces to the autonomous map $\mathbf{x} \mapsto \tanh(W\mathbf{x})$, whose dynamics we studied in Chapter 5.
+\end{remark}
+
+
+\subsection{Leaky Integrator Variant}\label{sec:14.1.3}
+
+A common and important generalization replaces the update rule (14.1) with a \textit{leaky integrator}:
+
+\begin{equation}\label{eq:14.2}\tag{14.2}
+\mathbf{x}(t+1) = (1 - \alpha)\,\mathbf{x}(t) + \alpha\, f\!\left(W\mathbf{x}(t) + W_{\text{in}}\mathbf{u}(t+1)\right),
+\end{equation}
+
+where $\alpha \in (0, 1]$ is the \textbf{leak rate}. When $\alpha = 1$, we recover the standard update (14.1) (with $\mathbf{b} = \mathbf{0}$). For $\alpha < 1$, the reservoir state changes more slowly: the current state is a weighted average of the previous state and the nonlinear update. This introduces a form of exponential smoothing that allows the reservoir to operate on slower timescales.
+
+The leak rate $\alpha$ can be interpreted as a discrete-time approximation of a continuous-time system. If we write $\alpha = \Delta t / \tau$ for a time step $\Delta t$ and time constant $\tau$, then (14.2) approximates the ODE
+
+\[
+\tau \,\dot{\mathbf{x}} = -\mathbf{x} + f(W\mathbf{x} + W_{\text{in}}\mathbf{u}).
+\]
+
+Smaller values of $\alpha$ correspond to longer time constants and slower dynamics, which can be beneficial when the input signal varies slowly relative to the discrete time step.
+
+
+\bigskip
+
+
+\section{The Echo State Property}\label{sec:14.2}
+
+The central theoretical concept underlying ESNs is the \textbf{echo state property} (ESP). Informally, the ESP asserts that the reservoir "forgets" its initial state: the current state $\mathbf{x}(t)$ is determined, in the long run, by the history of inputs alone. This is what allows the reservoir to function as a well-defined operator on input sequences.
+
+\subsection{Formal Definition}\label{sec:14.2.1}
+
+We work with the state update equation (14.1) and consider input sequences drawn from a compact set $\mathcal{U} \subset \mathbb{R}^K$. Let $\mathbf{u} = (\ldots, \mathbf{u}(-1), \mathbf{u}(0), \mathbf{u}(1), \ldots)$ denote a bi-infinite input sequence with $\mathbf{u}(t) \in \mathcal{U}$ for all $t$.
+
+\begin{definition}[Echo State Property]\label{def:14.1}
+The reservoir (14.1) has the \textbf{echo state property} with respect to the input set $\mathcal{U}$ if, for every input sequence $\mathbf{u}$ with values in $\mathcal{U}$ and for any two initial states $\mathbf{x}(0), \mathbf{x}'(0) \in \mathbb{R}^N$, the corresponding state trajectories satisfy
+
+\begin{equation}\label{eq:14.3}\tag{14.3}
+\lim_{t \to \infty} \|\mathbf{x}(t) - \mathbf{x}'(t)\| = 0.
+\end{equation}
+
+When the ESP holds, the reservoir state $\mathbf{x}(t)$ is asymptotically independent of the initial condition. This means there exists, for each input sequence, a unique trajectory that all initial conditions converge to. More precisely, we obtain the following.
+\end{definition}
+
+
+\begin{proposition}\label{prop:14.1.}
+*If the reservoir has the ESP, then for each bi-infinite input sequence $\mathbf{u}$ there exists a unique trajectory $\{\bar{\mathbf{x}}(t)\}_{t \in \mathbb{Z}}$ such that for every initial condition $\mathbf{x}(0)$, the driven trajectory satisfies $\|\mathbf{x}(t) - \bar{\mathbf{x}}(t)\| \to 0$ as $t \to \infty$. Moreover, $\bar{\mathbf{x}}(t)$ depends only on the input history $(\ldots, \mathbf{u}(t-1), \mathbf{u}(t))$.*
+\end{proposition}
+
+
+\begin{proof}
+* Fix an input sequence $\mathbf{u}$. For each $s \leq t$, let $\mathbf{x}^{(s)}(t)$ denote the state at time $t$ obtained by starting from $\mathbf{x}(s) = \mathbf{0}$ at time $s$ and driving with the input. By the ESP, for any $s_1 < s_2$, we have $\|\mathbf{x}^{(s_1)}(t) - \mathbf{x}^{(s_2)}(t)\| \to 0$ as $t \to \infty$. For fixed $t$, consider the sequence $\{\mathbf{x}^{(s)}(t)\}_{s \leq t}$ as $s \to -\infty$. Since all states lie in the compact set $[-1, 1]^N$ (the range of $\tanh$), we can extract a convergent subsequence. The ESP guarantees that the limit is unique (any two accumulation points are driven by the same input from time $-\infty$ and must coincide). Define $\bar{\mathbf{x}}(t) = \lim_{s \to -\infty} \mathbf{x}^{(s)}(t)$. This trajectory depends only on the input history up to time $t$, and the ESP ensures that every initial condition converges to it. $\square$
+
+\end{proof}
+
+\begin{remark}
+The ESP is precisely the property needed for the reservoir to implement a well-defined \textbf{filter}: a causal, time-invariant functional mapping from input histories to states. In the language of Chapter 13, the reservoir with the ESP defines an \textit{echo state map} $E: \mathcal{U}^{(-\infty, t]} \to \mathbb{R}^N$ that sends the input history to the current reservoir state.
+\end{remark}
+
+
+\subsection{Connection to Contraction Theory}\label{sec:14.2.2}
+
+The ESP is fundamentally a \textbf{contraction} property. Recall from Chapter 4 that a map $F: \mathbb{R}^N \to \mathbb{R}^N$ is a contraction with respect to a norm $\|\cdot\|$ if there exists $\gamma \in [0, 1)$ such that $\|F(\mathbf{x}) - F(\mathbf{x}')\| \leq \gamma \|\mathbf{x} - \mathbf{x}')\|$ for all $\mathbf{x}, \mathbf{x}'$.
+
+In our setting, for a fixed input $\mathbf{u}$, the one-step update defines a map
+
+\[
+F_{\mathbf{u}}(\mathbf{x}) = f(W\mathbf{x} + W_{\text{in}}\mathbf{u} + \mathbf{b}).
+\]
+
+If $F_{\mathbf{u}}$ is a contraction for every $\mathbf{u} \in \mathcal{U}$, then the Banach fixed-point theorem guarantees that repeated application forgets the initial state, and the ESP follows. This is the strategy behind the spectral radius condition of the next section.
+
+
+\bigskip
+
+
+\section{Sufficient Conditions for the Echo State Property}\label{sec:14.3}
+
+\subsection{The Spectral Radius Condition}\label{sec:14.3.1}
+
+The most widely used sufficient condition for the ESP involves the \textbf{spectral radius} of the reservoir weight matrix $W$.
+
+\begin{theorem}[Spectral Radius Condition for ESP]\label{thm:14.1}
+*Let $f = \tanh$ applied componentwise. If $\rho(W) < 1$, where $\rho(W)$ denotes the spectral radius of $W$, then the reservoir (14.1) has the echo state property for any compact input set $\mathcal{U} \subset \mathbb{R}^K$.*
+\end{theorem}
+
+
+\begin{proof}
+* Let $\mathbf{x}(t)$ and $\mathbf{x}'(t)$ be two state trajectories driven by the same input sequence $\{\mathbf{u}(t)\}$, starting from different initial conditions. Define $\mathbf{e}(t) = \mathbf{x}(t) - \mathbf{x}'(t)$. We have
+
+\[
+\mathbf{e}(t+1) = f\!\left(W\mathbf{x}(t) + W_{\text{in}}\mathbf{u}(t+1) + \mathbf{b}\right) - f\!\left(W\mathbf{x}'(t) + W_{\text{in}}\mathbf{u}(t+1) + \mathbf{b}\right).
+\]
+
+Since $\tanh$ is applied componentwise and $|\tanh'(z)| = 1 - \tanh^2(z) \leq 1$ for all $z$, the mean value theorem gives
+
+\[
+|f(\mathbf{a})_i - f(\mathbf{a}')_i| = |\tanh(a_i) - \tanh(a_i')| \leq |a_i - a_i'|
+\]
+
+for each component $i$. In vector notation, writing $D(t)$ for the diagonal matrix with entries $D_{ii}(t) = \tanh'(\xi_i(t)) \in [0, 1]$ (where $\xi_i(t)$ is the appropriate intermediate value), we have
+
+\[
+\mathbf{e}(t+1) = D(t)\, W\, \mathbf{e}(t).
+\]
+
+Therefore,
+
+\begin{equation}\label{eq:14.4}\tag{14.4}
+\|\mathbf{e}(t+1)\| \leq \|D(t)\, W\, \mathbf{e}(t)\| \leq \|D(t)\| \cdot \|W\| \cdot \|\mathbf{e}(t)\| \leq \|W\| \cdot \|\mathbf{e}(t)\|,
+\end{equation}
+
+since $\|D(t)\| \leq 1$ (as $D(t)$ is diagonal with entries in $[0,1]$) in any operator norm induced by a monotone vector norm.
+
+Now, inequality (14.4) gives $\|\mathbf{e}(t)\| \leq \|W\|^t \|\mathbf{e}(0)\|$. However, $\|W\|$ is the operator norm, which may exceed 1 even when $\rho(W) < 1$ (since $\rho(W) \leq \|W\|$ for any operator norm, with equality not guaranteed). We therefore need a more refined argument.
+
+Since $\rho(W) < 1$, Gelfand's formula gives $\rho(W) = \lim_{n \to \infty} \|W^n\|^{1/n}$. For any $\gamma$ with $\rho(W) < \gamma < 1$, there exists a matrix norm $\|\cdot\|_*$ (an operator norm induced by an appropriate vector norm on $\mathbb{R}^N$) such that $\|W\|_* \leq \gamma$ (see, e.g., Horn and Johnson, \textit{Matrix Analysis}, Lemma 5.6.10). This norm can be constructed explicitly: for any $\epsilon > 0$ with $\rho(W) + \epsilon < 1$, there exists an invertible matrix $P$ such that $\|P^{-1}WP\| \leq \rho(W) + \epsilon$, which defines the norm $\|\mathbf{z}\|_* = \|P^{-1}\mathbf{z}\|$.
+
+In this adapted norm, the diagonal matrix $D(t)$ still satisfies $\|D(t)\|_* \leq 1$ (since $D(t)$ has entries in $[0,1]$, and a change of basis does not affect this bound when we account for the equivalence of norms, though we must be slightly careful). Alternatively, and more cleanly: we iterate the bound. We have
+
+\[
+\mathbf{e}(t) = D(t-1)W \cdot D(t-2)W \cdots D(0)W \cdot \mathbf{e}(0).
+\]
+
+Since $\|D(s)\| \leq 1$ for each $s$,
+
+\[
+\|\mathbf{e}(t)\| \leq \|W^t\| \cdot \|\mathbf{e}(0)\|,
+\]
+
+where the inequality follows because the $D(s)$ factors, being contractive, can only reduce the norm. More precisely, for any vector $\mathbf{v}$,
+
+\[
+\|D(s) W \mathbf{v}\| \leq \|W\mathbf{v}\|
+\]
+
+so by induction $\|\mathbf{e}(t)\| \leq \|W^t\| \cdot \|\mathbf{e}(0)\|$. Now by Gelfand's formula, $\|W^t\|^{1/t} \to \rho(W) < 1$, so there exist $C > 0$ and $\gamma \in (\rho(W), 1)$ such that $\|W^t\| \leq C \gamma^t$ for all $t \geq 0$. Hence
+
+\[
+\|\mathbf{e}(t)\| \leq C \gamma^t \|\mathbf{e}(0)\| \to 0 \quad \text{as } t \to \infty.
+\]
+
+This establishes the ESP.
+\end{proof}
+
+
+\begin{remark}
+The proof reveals that the convergence is exponentially fast, with rate governed by $\rho(W)$. Smaller spectral radius means faster forgetting of initial conditions, but also faster forgetting of inputs -- a tradeoff we will discuss in Section 14.4.
+\end{remark}
+
+
+\begin{remark}
+The converse is not true: $\rho(W) < 1$ is sufficient but not necessary for the ESP. Yildiz, Jaeger, and Kiebel (2012) showed that the ESP can hold even when $\rho(W) > 1$, because the input-driven system may be contractive even if the autonomous system ($\mathbf{u} \equiv \mathbf{0}$) is not. The nonlinearity $\tanh$ saturates for large arguments, and strong input driving can keep the reservoir in the contractive regime. This is an important subtlety for practice.
+\end{remark}
+
+
+\subsection{The Role of Input Scaling}\label{sec:14.3.2}
+
+The spectral radius condition considers $W$ in isolation, but the effective dynamics depend on the interplay between $W$ and $W_{\text{in}}$. To see this, note that the Jacobian of the state update (14.1) with respect to $\mathbf{x}$ is
+
+\begin{equation}\label{eq:14.5}\tag{14.5}
+J(t) = D(t)\, W,
+\end{equation}
+
+where $D(t) = \operatorname{diag}\!\left(1 - \tanh^2(W\mathbf{x}(t) + W_{\text{in}}\mathbf{u}(t+1) + \mathbf{b})\right)$. The diagonal entries of $D(t)$ are the derivatives $\tanh'(\cdot)$ evaluated at the pre-activation values. When the pre-activations are large in magnitude (which happens when $\|W_{\text{in}}\|$ is large, pushing neurons into saturation), the entries of $D(t)$ become small. This means strong input scaling effectively makes the reservoir \textit{more contractive}, even if $\rho(W) \geq 1$.
+
+Conversely, weak input scaling keeps neurons in the approximately linear regime near $\tanh(z) \approx z$ for $|z| \ll 1$, where $D(t) \approx I$. In this regime, the effective dynamics are close to the linear map $\mathbf{x} \mapsto W\mathbf{x}$, and the spectral radius condition $\rho(W) < 1$ becomes essentially necessary.
+
+\subsection{Necessary Condition: Lyapunov Exponents}\label{sec:14.3.3}
+
+The ESP is connected to the Lyapunov exponents of the driven reservoir system, which we studied in Chapter 6.
+
+\begin{definition}\label{def:14.2.}
+The \textbf{largest (maximal) Lyapunov exponent} of the driven reservoir system is
+
+\begin{equation}\label{eq:14.6}\tag{14.6}
+\lambda_{\max} = \lim_{t \to \infty} \frac{1}{t} \ln \left\| \prod_{s=0}^{t-1} J(s) \right\|,
+\end{equation}
+
+where $J(s) = D(s)\, W$ is the Jacobian (14.5), and the limit is taken along a typical trajectory.
+
+By the multiplicative ergodic theorem (Theorem 6.3, Oseledets' theorem), under suitable ergodicity assumptions on the input process, this limit exists almost surely and is independent of the initial condition.
+\end{definition}
+
+
+\begin{theorem}[Necessary Condition for ESP]\label{thm:14.2}
+*If the echo state property holds, then the largest Lyapunov exponent of the driven system satisfies $\lambda_{\max} < 0$.*
+\end{theorem}
+
+
+\begin{proof}[Proof sketch]
+sketch.* If $\lambda_{\max} \geq 0$, then there exist perturbations that do not decay (or grow) exponentially under the linearized dynamics. This means that nearby trajectories do not converge, contradicting the ESP. The rigorous argument uses the Oseledets decomposition: if $\lambda_{\max} \geq 0$, the corresponding Oseledets subspace yields directions along which the distance between trajectories does not shrink to zero. $\square$
+
+The condition $\lambda_{\max} < 0$ is both necessary and (generically) sufficient for the ESP. It provides a more refined characterization than the spectral radius condition, but it is harder to verify in practice because it depends on the input statistics and the resulting reservoir dynamics.
+
+\end{proof}
+
+\begin{remark}
+The spectral radius condition $\rho(W) < 1$ can now be understood as implying $\lambda_{\max} < 0$ for all inputs. Indeed, from the proof of Theorem 14.1, we saw that $\|D(s)W\| \leq \|W\|$ for all $s$, so
+
+\[
+\lambda_{\max} = \lim_{t \to \infty} \frac{1}{t} \ln \left\| \prod_{s=0}^{t-1} D(s) W \right\| \leq \lim_{t \to \infty} \frac{1}{t} \ln \|W^t\| = \ln \rho(W) < 0.
+\]
+
+---
+\end{remark}
+
+
+\section{Reservoir Design and Hyperparameters}\label{sec:14.4}
+
+The performance of an ESN depends critically on several hyperparameters that govern the reservoir dynamics. We discuss the most important ones.
+
+\subsection{Spectral Radius}\label{sec:14.4.1}
+
+The spectral radius $\rho(W)$ is the single most important hyperparameter. It controls the \textit{timescale of memory} in the reservoir.
+
+\begin{itemize}[nosep]
+  \item **Small $\rho(W)$ (e.g., $\rho(W) \ll 1$).** The reservoir is strongly contractive. States are dominated by recent inputs; the memory of past inputs decays rapidly. The reservoir dynamics are essentially those of a feedforward nonlinear filter with short memory.
+
+  \item **$\rho(W)$ near 1.** The reservoir retains information about past inputs for longer. The dynamics are richer, with longer transients and more complex temporal patterns in the state. This is typically the regime of best performance for tasks requiring memory.
+
+  \item **$\rho(W) > 1$.** The autonomous system ($\mathbf{u} \equiv \mathbf{0}$) may be unstable, but the driven system can still possess the ESP if the input keeps the dynamics in the contractive regime (Remark 14.4). However, the risk of losing the ESP increases.
+\end{itemize}
+
+In practice, the reservoir weight matrix is often constructed as follows:
+
+\begin{enumerate}[nosep]
+  \item Generate a random matrix $\widetilde{W}$ (e.g., entries drawn from a uniform or normal distribution).
+  \item Compute its spectral radius $\rho(\widetilde{W})$.
+  \item Rescale: $W = \frac{\rho_{\text{desired}}}{\rho(\widetilde{W})} \widetilde{W}$.
+\end{enumerate}
+
+This ensures that $\rho(W) = \rho_{\text{desired}}$.
+
+\subsection{Reservoir Size}\label{sec:14.4.2}
+
+The reservoir size $N$ (number of neurons) determines the dimensionality of the state space and hence the \textit{computational capacity} of the reservoir. A larger reservoir can represent more complex functions of the input history. However, there are diminishing returns: doubling $N$ does not double performance. Moreover, larger reservoirs require more training data (to avoid overfitting the readout) and more computation.
+
+A rough guideline from practice: $N$ should be at least as large as the number of independent "features" needed to solve the task, but the exact relationship depends on the task complexity and the reservoir dynamics.
+
+\subsection{Input Scaling}\label{sec:14.4.3}
+
+The input weight matrix $W_{\text{in}}$ is typically generated randomly (e.g., uniform on $[-\sigma_{\text{in}}, \sigma_{\text{in}}]$), and the parameter $\sigma_{\text{in}}$ controls the \textbf{input scaling}.
+
+\begin{itemize}[nosep]
+  \item **Small $\sigma_{\text{in}}$**: neurons operate in the approximately linear regime $\tanh(z) \approx z$. The reservoir behaves approximately as a linear dynamical system.
+  \item **Large $\sigma_{\text{in}}$**: neurons are driven into saturation ($\tanh(z) \approx \pm 1$). The reservoir behaves more like a binary, highly nonlinear system.
+\end{itemize}
+
+The input scaling thus controls the \textit{degree of nonlinearity} in the reservoir's response. Tasks that require strong nonlinear processing of the input benefit from larger input scaling; tasks that are approximately linear benefit from smaller input scaling.
+
+\subsection{Sparsity and Topology}\label{sec:14.4.4}
+
+In many implementations, $W$ is a \textbf{sparse} matrix: most entries are zero. Sparse reservoirs often perform comparably to dense ones, and they are computationally cheaper (both for state updates and for eigenvalue computations). A typical choice is to have each neuron connected to roughly $10$--$20$ others, regardless of $N$.
+
+Beyond sparsity, the \textbf{topology} of the reservoir connections can be varied:
+
+\begin{itemize}[nosep]
+  \item \textbf{Random (Erdos-Renyi)}: each possible connection is present independently with some probability. This is the standard choice.
+  \item \textbf{Ring}: neurons are arranged in a cycle, with each neuron connected to its nearest neighbors. This creates a simple, structured delay line.
+  \item \textbf{Small-world}: a ring topology with a few random long-range connections. This combines local structure with global communication.
+  \item \textbf{Scale-free}: connection degrees follow a power law distribution.
+\end{itemize}
+
+Empirically, the choice of topology has a secondary effect compared to the spectral radius and input scaling. The ring topology, however, has been shown to produce surprisingly good results with minimal randomness (Rodan and Tino, 2011).
+
+\subsection{The Edge of Chaos Hypothesis}\label{sec:14.4.5}
+
+An influential conjecture in reservoir computing is that reservoirs operating near the \textbf{edge of chaos} --- the boundary between ordered (contractive) and chaotic dynamics --- have optimal computational properties. The idea, borrowed from the theory of cellular automata and random Boolean networks (Langton, 1990), is that:
+
+\begin{itemize}[nosep]
+  \item In the ordered regime, the reservoir rapidly forgets inputs and cannot maintain complex computations.
+  \item In the chaotic regime, the reservoir is too sensitive to perturbations, and the ESP is lost.
+  \item At the boundary, the reservoir achieves a balance between memory and sensitivity, enabling the richest possible computation.
+\end{itemize}
+
+In the ESN setting, this boundary corresponds roughly to $\lambda_{\max} = 0$, or in the autonomous case, to $\rho(W) = 1$. The hypothesis has received both theoretical and empirical support (Bertschinger and Natschlager, 2004; Boedecker et al., 2012), though the picture is not entirely clear-cut. For some tasks, the optimal spectral radius is well below 1; for others, values slightly above 1 perform best.
+
+\begin{remark}
+The edge of chaos hypothesis connects reservoir computing to the broader theory of computation at phase transitions, which has deep connections to statistical physics and the theory of critical phenomena. From the dynamical systems perspective, the transition at $\lambda_{\max} = 0$ is a bifurcation of the driven system, and the computational properties of the reservoir can be understood through the lens of bifurcation theory (Chapter 8).
+
+---
+\end{remark}
+
+
+\section{Training the Readout}\label{sec:14.5}
+
+The defining feature of the ESN approach is that training is restricted to the readout weights $W_{\text{out}}$. Since the readout is linear, this is a linear regression problem with a closed-form solution.
+
+\subsection{Collecting Reservoir States}\label{sec:14.5.1}
+
+Given a training input sequence $\mathbf{u}(1), \mathbf{u}(2), \ldots, \mathbf{u}(T_{\text{total}})$ and corresponding target outputs $\mathbf{d}(1), \mathbf{d}(2), \ldots, \mathbf{d}(T_{\text{total}})$, the training procedure is:
+
+\begin{enumerate}[nosep]
+  \item \textbf{Initialize} the reservoir state $\mathbf{x}(0)$ (e.g., to $\mathbf{0}$).
+  \item \textbf{Drive} the reservoir with the training input using the update equation (14.1), producing states $\mathbf{x}(1), \mathbf{x}(2), \ldots, \mathbf{x}(T_{\text{total}})$.
+  \item \textbf{Discard} the first $T_0$ states (the \textit{washout} or \textit{transient} period) to eliminate the effect of the arbitrary initial condition. The ESP guarantees that after sufficiently many steps, the state is effectively independent of $\mathbf{x}(0)$.
+  \item \textbf{Collect} the remaining states $\mathbf{x}(T_0+1), \ldots, \mathbf{x}(T_{\text{total}})$ and corresponding targets $\mathbf{d}(T_0+1), \ldots, \mathbf{d}(T_{\text{total}})$.
+\end{enumerate}
+
+For notational convenience, relabel the collected data so that the training set consists of $T$ pairs $\{(\mathbf{x}(t), \mathbf{d}(t))\}_{t=1}^T$, where $T = T_{\text{total}} - T_0$.
+
+\subsection{The Regression Problem}\label{sec:14.5.2}
+
+We seek $W_{\text{out}} \in \mathbb{R}^{L \times N}$ to minimize the squared error between the network output $\mathbf{y}(t) = W_{\text{out}}\mathbf{x}(t)$ and the target $\mathbf{d}(t)$:
+
+\[
+\min_{W_{\text{out}}} \sum_{t=1}^{T} \|\mathbf{d}(t) - W_{\text{out}}\mathbf{x}(t)\|^2.
+\]
+
+Form the \textbf{state matrix} $X \in \mathbb{R}^{N \times T}$ whose columns are the collected states:
+
+\[
+X = \begin{bmatrix} \mathbf{x}(1) & \mathbf{x}(2) & \cdots & \mathbf{x}(T) \end{bmatrix},
+\]
+
+and the \textbf{target matrix} $D \in \mathbb{R}^{L \times T}$:
+
+\[
+D = \begin{bmatrix} \mathbf{d}(1) & \mathbf{d}(2) & \cdots & \mathbf{d}(T) \end{bmatrix}.
+\]
+
+The regression problem becomes
+
+\begin{equation}\label{eq:14.7}\tag{14.7}
+\min_{W_{\text{out}}} \|D - W_{\text{out}} X\|_F^2,
+\end{equation}
+
+where $\|\cdot\|_F$ denotes the Frobenius norm.
+
+\subsection{Ridge Regression}\label{sec:14.5.3}
+
+In principle, the solution to (14.7) is given by the pseudoinverse: $W_{\text{out}} = D X^+$. In practice, this is ill-conditioned because the reservoir states are often highly correlated (the state matrix $X$ has nearly collinear columns). Instead, we use \textbf{ridge regression} (Tikhonov regularization), adding a penalty on $\|W_{\text{out}}\|_F^2$:
+
+\begin{equation}\label{eq:14.8}\tag{14.8}
+\min_{W_{\text{out}}} \left\{ \|D - W_{\text{out}} X\|_F^2 + \beta \|W_{\text{out}}\|_F^2 \right\},
+\end{equation}
+
+where $\beta > 0$ is the \textbf{regularization parameter}.
+
+\begin{proposition}\label{prop:14.2.}
+\textit{The unique solution to (14.8) is}
+
+\begin{equation}\label{eq:14.9}\tag{14.9}
+W_{\text{out}} = D X^\top (X X^\top + \beta I_N)^{-1}.
+\end{equation}
+
+*Equivalently, $W_{\text{out}} = (D X^\top) (X X^\top + \beta I_N)^{-1}$, where $X X^\top \in \mathbb{R}^{N \times N}$ is the state correlation matrix.*
+\end{proposition}
+
+
+\begin{proof}
+* The objective function (14.8) can be written, treating the rows of $W_{\text{out}}$ independently, as $L$ separate scalar ridge regression problems. For a single output dimension, we minimize
+
+\[
+\|\mathbf{d}^\top - \mathbf{w}^\top X\|^2 + \beta \|\mathbf{w}\|^2
+\]
+
+over $\mathbf{w} \in \mathbb{R}^N$, where $\mathbf{d}^\top \in \mathbb{R}^{1 \times T}$ is one row of $D$ and $\mathbf{w}^\top$ is the corresponding row of $W_{\text{out}}$. Setting the gradient to zero:
+
+\[
+-2 X(\mathbf{d} - X^\top \mathbf{w}) + 2\beta \mathbf{w} = \mathbf{0},
+\]
+
+which gives
+
+\[
+X X^\top \mathbf{w} + \beta \mathbf{w} = X \mathbf{d},
+\]
+
+\[
+\mathbf{w} = (X X^\top + \beta I)^{-1} X \mathbf{d}.
+\]
+
+The matrix $X X^\top + \beta I$ is symmetric positive definite (since $X X^\top$ is positive semidefinite and $\beta > 0$), so the inverse exists and the solution is unique. Assembling all $L$ rows gives (14.9).
+\end{proof}
+
+
+\begin{remark}
+An equivalent formulation uses the "dual" form. Define $\tilde{X} = X^\top \in \mathbb{R}^{T \times N}$ (the state matrix with time steps as rows). Then $W_{\text{out}}^\top = \tilde{X}^\top (\tilde{X}\tilde{X}^\top + \beta I_T)^{-1} \tilde{D}^\top$, which involves inverting a $T \times T$ matrix instead of $N \times N$. When $T \gg N$ (many time steps, moderate reservoir), the $N \times N$ form (14.9) is preferred; when $N \gg T$, the $T \times T$ form may be more efficient.
+\end{remark}
+
+
+\subsection{Why Ridge Regression?}\label{sec:14.5.4}
+
+There are several reasons to prefer ridge regression over ordinary least squares ($\beta = 0$):
+
+\begin{enumerate}[nosep]
+  \item \textbf{Numerical stability.} The matrix $XX^\top$ is often ill-conditioned because the reservoir states are correlated. Adding $\beta I$ improves the condition number from $\kappa(XX^\top)$ to at most $(\sigma_{\max}^2 + \beta)/\beta$, where $\sigma_{\max}$ is the largest singular value of $X$.
+
+  \item \textbf{Regularization (overfitting prevention).} The penalty $\beta\|W_{\text{out}}\|_F^2$ shrinks the readout weights toward zero, preventing the readout from fitting noise in the training data. This is especially important when $N$ is large relative to $T$.
+
+  \item \textbf{Bias-variance tradeoff.} Ridge regression introduces a small bias (the readout does not perfectly fit the training data) but substantially reduces variance (the readout generalizes better to new data). The parameter $\beta$ controls this tradeoff and is typically chosen by cross-validation.
+
+  \item \textbf{Convexity.} The objective (14.8) is strictly convex (for $\beta > 0$), ensuring a unique global minimum with a closed-form solution. No iterative optimization or gradient descent is needed.
+\end{enumerate}
+
+This last point is a major practical advantage of ESNs over fully trained recurrent networks: the training is a single matrix computation, not an iterative optimization over a non-convex loss landscape.
+
+
+\bigskip
+
+
+\section{Worked Example: Mackey-Glass Time Series Prediction}\label{sec:14.6}
+
+We now work through a complete example to illustrate the ESN methodology. The task is to predict a chaotic time series generated by the Mackey-Glass delay differential equation.
+
+\subsection{The Mackey-Glass System}\label{sec:14.6.1}
+
+The Mackey-Glass equation is the delay differential equation
+
+\begin{equation}\label{eq:14.10}\tag{14.10}
+\frac{dx}{dt} = \frac{a\, x(t - \tau_d)}{1 + x(t - \tau_d)^{10}} - b\, x(t),
+\end{equation}
+
+with standard parameters $a = 0.2$, $b = 0.1$, and delay $\tau_d = 17$. For $\tau_d > 16.8$, the system exhibits chaotic behavior. We discretize the solution with time step $\Delta t$ to obtain a scalar time series $s(1), s(2), \ldots$
+
+The prediction task is: given $s(t)$, predict $s(t + h)$ for some prediction horizon $h$ (say $h = 1$ for one-step-ahead prediction). We frame this as an ESN problem with scalar input $u(t) = s(t)$ ($K = 1$) and scalar target $d(t) = s(t + h)$ ($L = 1$).
+
+\subsection{Reservoir Setup}\label{sec:14.6.2}
+
+We choose the following hyperparameters:
+
+\begin{itemize}[nosep]
+  \item Reservoir size: $N = 500$.
+  \item Spectral radius: $\rho(W) = 0.9$.
+  \item Input scaling: $\sigma_{\text{in}} = 0.1$.
+  \item Bias: $\mathbf{b} = \mathbf{0}$ (no bias, for simplicity).
+  \item Regularization: $\beta = 10^{-6}$.
+  \item Washout: $T_0 = 500$ time steps.
+  \item Training length: $T = 5000$ time steps (after washout).
+\end{itemize}
+
+The reservoir weight matrix is constructed as:
+
+\begin{enumerate}[nosep]
+  \item Generate $\widetilde{W} \in \mathbb{R}^{500 \times 500}$ with entries drawn uniformly from $\{-1, 0, 0, 0, 0, 1\}$ (resulting in approximately $1/3$ nonzero entries).
+  \item Compute $\rho(\widetilde{W})$ and rescale: $W = 0.9 \cdot \widetilde{W} / \rho(\widetilde{W})$.
+\end{enumerate}
+
+The input weights are drawn uniformly: $(W_{\text{in}})_i \sim \text{Uniform}(-0.1, 0.1)$ for $i = 1, \ldots, 500$, giving a column vector $W_{\text{in}} \in \mathbb{R}^{500 \times 1}$.
+
+\subsection{Running the Reservoir}\label{sec:14.6.3}
+
+Starting from $\mathbf{x}(0) = \mathbf{0} \in \mathbb{R}^{500}$, we drive the reservoir with the Mackey-Glass time series:
+
+\begin{equation}\label{eq:14.11}\tag{14.11}
+\mathbf{x}(t+1) = \tanh\!\left(W\mathbf{x}(t) + W_{\text{in}}\, s(t+1)\right), \quad t = 0, 1, 2, \ldots
+\end{equation}
+
+After $T_0 = 500$ washout steps, we collect the states. The state at time $t > T_0$ encodes, through the reservoir dynamics, a nonlinear function of the input history $(s(1), s(2), \ldots, s(t))$. By the ESP (guaranteed since $\rho(W) = 0.9 < 1$), the dependence on the initial condition $\mathbf{x}(0)$ has decayed to negligible levels after the washout.
+
+\subsection{Forming the Regression Problem}\label{sec:14.6.4}
+
+We assemble the state matrix and target vector. Since $L = 1$ (scalar output), the target matrix $D$ is a row vector:
+
+\[
+X = \begin{bmatrix} \mathbf{x}(T_0+1) & \mathbf{x}(T_0+2) & \cdots & \mathbf{x}(T_0+T) \end{bmatrix} \in \mathbb{R}^{500 \times 5000},
+\]
+
+\[
+D = \begin{bmatrix} s(T_0+1+h) & s(T_0+2+h) & \cdots & s(T_0+T+h) \end{bmatrix} \in \mathbb{R}^{1 \times 5000}.
+\]
+
+The readout is a row vector $W_{\text{out}} \in \mathbb{R}^{1 \times 500}$.
+
+\subsection{Solving for the Readout}\label{sec:14.6.5}
+
+Applying formula (14.9):
+
+\begin{equation}\label{eq:14.12}\tag{14.12}
+W_{\text{out}} = D X^\top (X X^\top + \beta I_{500})^{-1}.
+\end{equation}
+
+Here $X X^\top \in \mathbb{R}^{500 \times 500}$ is the empirical correlation matrix of the reservoir states, $D X^\top \in \mathbb{R}^{1 \times 500}$ is the cross-correlation between states and targets, and $\beta = 10^{-6}$ provides regularization. The computation requires:
+
+\begin{enumerate}[nosep]
+  \item Computing $XX^\top$: this is a sum of $T = 5000$ outer products, $XX^\top = \sum_{t=1}^{T} \mathbf{x}(t) \mathbf{x}(t)^\top$.
+  \item Computing $DX^\top$: this is $\sum_{t=1}^{T} d(t) \mathbf{x}(t)^\top$.
+  \item Solving the $500 \times 500$ linear system $(XX^\top + \beta I) \mathbf{w} = (DX^\top)^\top$ for $\mathbf{w} = W_{\text{out}}^\top$.
+\end{enumerate}
+
+\subsection{Evaluation}\label{sec:14.6.6}
+
+On a test input sequence $s(T_{\text{total}}+1), s(T_{\text{total}}+2), \ldots$, we continue driving the reservoir (maintaining the state from the end of training) and compute the predicted output:
+
+\[
+\hat{s}(t+h) = W_{\text{out}} \, \mathbf{x}(t).
+\]
+
+The prediction quality is measured by the normalized root mean square error (NRMSE):
+
+\[
+\text{NRMSE} = \frac{\sqrt{\frac{1}{T_{\text{test}}} \sum_{t} (s(t+h) - \hat{s}(t+h))^2}}{\sigma_s},
+\]
+
+where $\sigma_s$ is the standard deviation of the target time series. With the parameters above, one typically obtains $\text{NRMSE} \approx 10^{-3}$ to $10^{-2}$ for one-step-ahead prediction, demonstrating that the ESN can learn the short-term dynamics of the chaotic Mackey-Glass system with high accuracy.
+
+\subsection{Why Does This Work?}\label{sec:14.6.7}
+
+The reservoir creates a \textbf{high-dimensional nonlinear embedding} of the input history. Each reservoir neuron $x_i(t)$ is, by virtue of the recurrent dynamics, a nonlinear function of the past inputs $s(t), s(t-1), s(t-2), \ldots$ The collection of $N = 500$ such functions spans a rich function space. The linear readout then selects the appropriate linear combination of these nonlinear features to approximate the target function $s(t) \mapsto s(t+h)$.
+
+This is analogous to kernel methods in machine learning: the reservoir plays the role of a (random, temporal) feature map that lifts the input into a high-dimensional space where the desired function becomes approximately linear. The key difference is that the reservoir's features are \textit{temporal}: they depend not on a single input, but on the entire input history, weighted by the reservoir's fading memory.
+
+From the dynamical systems perspective, the reservoir implements a nonlinear observer of the Mackey-Glass system. The Takens embedding theorem (Chapter 7) guarantees that, under generic conditions, a sufficiently long delay embedding of a scalar observable can reconstruct the attractor of the underlying dynamical system. The reservoir states provide a richer, nonlinear version of such a delay embedding, which is why the ESN can capture the dynamics even of chaotic systems.
+
+
+\bigskip
+
+
+\section{Worked Example: Nonlinear Function Approximation}\label{sec:14.7}
+
+We now consider a different type of task: computing a nonlinear function of past inputs. This illustrates the ESN's role as a \textit{nonlinear filter with memory}.
+
+\subsection{Task: Polynomial of Past Inputs}\label{sec:14.7.1}
+
+Let $u(t)$ be a scalar input drawn i.i.d. from a uniform distribution on $[-1, 1]$. The target output is
+
+\begin{equation}\label{eq:14.13}\tag{14.13}
+d(t) = 0.4\, u(t) + 0.4\, u(t)\, u(t-1) + 0.1\, u(t-2)^2 + 0.05\, u(t-3).
+\end{equation}
+
+This target depends on the current input and three past inputs, combined through nonlinear (quadratic) operations. The task tests both the reservoir's \textbf{memory} (it must retain information about $u(t-1), u(t-2), u(t-3)$) and its \textbf{nonlinear processing} (it must compute products of past inputs).
+
+\subsection{Setup}\label{sec:14.7.2}
+
+We use a smaller reservoir for this simpler task:
+
+\begin{itemize}[nosep]
+  \item $N = 100$, $\rho(W) = 0.95$, $\sigma_{\text{in}} = 0.5$, $\beta = 10^{-4}$.
+  \item Training: $T = 3000$ steps after $T_0 = 200$ washout steps.
+  \item Input: $u(t) \sim \text{Uniform}(-1, 1)$, i.i.d.
+\end{itemize}
+
+\subsection{Analysis}\label{sec:14.7.3}
+
+The state update is
+
+\[
+\mathbf{x}(t+1) = \tanh(W\mathbf{x}(t) + W_{\text{in}}\, u(t+1)).
+\]
+
+Each component $x_i(t)$ can be formally expanded as a Volterra-like series in the past inputs. For example, in the regime where $\|W\|$ and $\|W_{\text{in}}\|$ are moderate, a Taylor expansion of $\tanh$ gives, to leading order:
+
+\[
+x_i(t) \approx \sum_{j} (W_{\text{in}})_j\, u(t) + \sum_{j,k} W_{ij} (W_{\text{in}})_k\, u(t)\, u(t-1) + \cdots
+\]
+
+This expansion shows that the reservoir states naturally contain monomials of past inputs. With $N = 100$ neurons and random weights, the reservoir generates a large number of such monomials (and more complex nonlinear combinations), providing a rich basis from which the linear readout can approximate the target (14.13).
+
+\subsection{Training and Evaluation}\label{sec:14.7.4}
+
+The training proceeds exactly as in Section 14.6: collect states, form $X$ and $D$, solve the ridge regression (14.9). On a held-out test set of $T_{\text{test}} = 1000$ i.i.d. input steps, we compute the NRMSE. With the parameters above, one typically obtains $\text{NRMSE} \approx 10^{-2}$ or better.
+
+To understand the result, we can examine the readout weights $W_{\text{out}} \in \mathbb{R}^{1 \times 100}$. Typically, only a fraction of the 100 weights are large; the readout selects a relatively sparse linear combination of the reservoir states that best approximates the target polynomial (14.13).
+
+\subsection{Delayed XOR Task}\label{sec:14.7.5}
+
+As a second example within this section, consider the \textbf{delayed XOR} task: the input $u(t) \in \{0, 1\}$ is binary, and the target is
+
+\begin{equation}\label{eq:14.14}\tag{14.14}
+d(t) = u(t-\delta_1) \oplus u(t-\delta_2),
+\end{equation}
+
+where $\oplus$ denotes XOR (exclusive or) and $\delta_1, \delta_2$ are delays. Since XOR is a nonlinear Boolean function, this task requires both nonlinearity and memory (with depth $\max(\delta_1, \delta_2)$).
+
+To apply an ESN, we encode $\{0,1\}$ as real values (e.g., $0 \mapsto -0.5$, $1 \mapsto +0.5$) and use the reservoir as before. The XOR function can be expressed algebraically as
+
+\[
+u_1 \oplus u_2 = u_1 + u_2 - 2 u_1 u_2 \quad (\text{on } \{0, 1\}),
+\]
+
+so the target is a polynomial of past inputs, and the analysis of Section 14.7.3 applies. The reservoir must generate features that include (or approximate) the product $u(t-\delta_1) \cdot u(t-\delta_2)$; the linear readout then combines them to produce the XOR.
+
+For small delays ($\delta_1, \delta_2 \leq 5$, say), a reservoir of size $N = 100$ with $\rho(W) \approx 0.9$ can learn this task with high accuracy. As the delays increase, a larger spectral radius (longer memory) and more neurons are needed.
+
+
+\bigskip
+
+
+\section{Theoretical Perspective}\label{sec:14.8}
+
+We close the chapter with some broader theoretical observations connecting ESNs to the themes of the book.
+
+\subsection{ESNs as Nonautonomous Dynamical Systems}\label{sec:14.8.1}
+
+An ESN driven by an input sequence is a nonautonomous discrete dynamical system:
+
+\[
+\mathbf{x}(t+1) = F(\mathbf{x}(t), \mathbf{u}(t+1)), \quad F(\mathbf{x}, \mathbf{u}) = \tanh(W\mathbf{x} + W_{\text{in}}\mathbf{u} + \mathbf{b}).
+\]
+
+The ESP states that this system has a globally attracting trajectory for each input sequence. In the language of nonautonomous dynamics (Chapter 10), the system possesses a \textbf{pullback attractor} that is a single trajectory. This is the strongest possible form of stability for a nonautonomous system.
+
+\subsection{Fading Memory and the Stone-Weierstrass Theorem}\label{sec:14.8.2}
+
+Under the ESP, the reservoir implements a \textbf{fading memory filter}: a functional $H$ that maps the input history $(\ldots, \mathbf{u}(t-1), \mathbf{u}(t))$ to the output $\mathbf{y}(t)$, with the property that recent inputs have more influence than distant ones. Boyd and Chua (1985) showed that fading memory filters on compact input sets can be uniformly approximated by Volterra series (finite-degree polynomials of the input history). Since an ESN with sufficiently many neurons can approximate any finite collection of such polynomial terms (as argued informally in Section 14.7.3), this provides a universal approximation justification: ESNs with large enough reservoirs can approximate any fading memory filter to arbitrary accuracy.
+
+This result is the temporal analog of the universal approximation theorem for feedforward neural networks. It can be made rigorous using the Stone-Weierstrass theorem on the space of continuous fading memory functionals, as shown by Grigoryeva and Ortega (2018).
+
+\subsection{Ergodic Inputs and Stationary Reservoirs}\label{sec:14.8.3}
+
+When the input $\{\mathbf{u}(t)\}$ is a stationary ergodic process, and the reservoir has the ESP, the reservoir state $\{\mathbf{x}(t)\}$ is also a stationary ergodic process (since it is a deterministic function of the input history). This connects the ESP to the ergodic theory of Part II: time averages of reservoir states converge to ensemble averages, which is essential for the training procedure (Section 14.5) to work consistently. The empirical correlation matrix $\frac{1}{T}XX^\top$ converges, by the ergodic theorem, to the true correlation matrix $\mathbb{E}[\mathbf{x}(t)\mathbf{x}(t)^\top]$ as $T \to \infty$.
+
+
+\bigskip
+
+
+\section*{Exercises}
+
+\begin{exercise}
+(Contraction with leaky integration). Consider the leaky integrator ESN (14.2) with $f = \tanh$. Show that if $(1-\alpha) + \alpha\,\rho(W) < 1$, then the system has the echo state property. \textit{Hint}: bound the Jacobian of the right-hand side of (14.2) with respect to $\mathbf{x}$ and apply an argument analogous to the proof of Theorem 14.1.
+\end{exercise}
+
+
+\begin{exercise}
+(Linear reservoir). Suppose the activation function $f$ is the identity ($f(\mathbf{z}) = \mathbf{z}$), so the reservoir is the linear system $\mathbf{x}(t+1) = W\mathbf{x}(t) + W_{\text{in}}\mathbf{u}(t+1)$.
+   (a) Show that the echo state property holds if and only if $\rho(W) < 1$.
+   (b) Derive an explicit formula for the reservoir state as a function of the input history: $\mathbf{x}(t) = \sum_{k=0}^{\infty} W^k W_{\text{in}} \mathbf{u}(t-k)$.
+   (c) Show that this is a vector-valued infinite moving average (IMA) filter, and relate the memory length to $\rho(W)$.
+\end{exercise}
+
+
+\begin{exercise}
+(Spectral radius is not necessary). Construct a $2 \times 2$ matrix $W$ with $\rho(W) = 1.5$ and an input sequence $\{u(t)\}$ such that the ESN with $f = \tanh$ and $W_{\text{in}} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ still has the echo state property. \textit{Hint}: use a constant input with large magnitude, so that $\tanh$ saturates and the effective Jacobian is strongly contractive.
+\end{exercise}
+
+
+\begin{exercise}
+(Ridge regression as Bayesian inference). Consider the readout training problem with scalar output ($L = 1$). Suppose the prior on $\mathbf{w} = W_{\text{out}}^\top \in \mathbb{R}^N$ is $\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \beta^{-1} I)$ and the likelihood is $d(t) | \mathbf{w}, \mathbf{x}(t) \sim \mathcal{N}(\mathbf{w}^\top \mathbf{x}(t), \sigma^2)$. Show that the maximum a posteriori (MAP) estimate of $\mathbf{w}$ given the training data $\{(\mathbf{x}(t), d(t))\}_{t=1}^T$ is the ridge regression solution (14.9) with regularization parameter $\beta \sigma^2$.
+\end{exercise}
+
+
+\begin{exercise}
+(Memory capacity). Consider a linear ESN ($f = \text{id}$) with scalar input ($K = 1$) and the task of recovering the input from $k$ time steps ago: $d(t) = u(t-k)$.
+   (a) Show that the readout trained by ordinary least squares achieves zero error if $k < N$ (assuming $W$ is chosen appropriately), i.e., the reservoir can perfectly remember the last $N-1$ inputs.
+   (b) Using the orthogonality of delayed inputs (for i.i.d. input), show that the total memory capacity $\sum_{k=1}^{\infty} \text{Corr}^2(\hat{d}_k(t), u(t-k))$ is at most $N$ for any readout. This is the result of Jaeger (2001).
+\end{exercise}
+
+
+\begin{exercise}
+(Lyapunov exponent computation). Consider an ESN with $N = 2$, $W = \begin{pmatrix} 0 & w \\ -w & 0 \end{pmatrix}$, and a constant scalar input $u(t) = c$ with $W_{\text{in}} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$.
+   (a) Find the fixed point $\mathbf{x}^*$ of the driven system $\mathbf{x} \mapsto \tanh(W\mathbf{x} + W_{\text{in}} c)$.
+   (b) Compute the Jacobian $J = D^* W$ at the fixed point, where $D^* = \operatorname{diag}(1 - (x_1^*)^2,\, 1 - (x_2^*)^2)$.
+   (c) Express the Lyapunov exponents in terms of the eigenvalues of $J$. For what values of $w$ and $c$ is the largest Lyapunov exponent negative?
+\end{exercise}
+
+
+\begin{exercise}
+(Topology experiment, conceptual). Consider two ESNs of size $N = 100$: one with a random sparse reservoir matrix $W$ (Erdos-Renyi with connection probability $0.1$) and one with a ring topology (each neuron connected to its two nearest neighbors on a cycle). Both are scaled to spectral radius $\rho(W) = 0.9$.
+   (a) Describe qualitatively how the ring topology creates a delay-line structure. What is the maximum delay that the ring can represent?
+   (b) Argue that for a task requiring memory of exactly $k$ steps, the ring topology is more efficient (requires smaller $N$) than a random topology when $k$ is not too large.
+   (c) Conversely, argue that the random topology may be superior for tasks requiring nonlinear combinations of inputs at many different delays, because of the richer mixing of information.
+
+---
+\end{exercise}
+
+
+\section*{Recommended Reading}
+
+\begin{enumerate}[nosep]
+  \item \textbf{H. Jaeger} (2001). \textit{The "echo state" approach to analysing and training recurrent neural networks}. GMD Technical Report 148. The foundational paper introducing ESNs and the echo state property. Essential reading.
+
+  \item \textbf{H. Jaeger and H. Haas} (2004). \textit{Harnessing nonlinearity: predicting chaotic systems and saving energy in wireless communication}. Science, 304(5667), 78--80. Demonstrated ESNs on chaotic time series prediction (including Mackey-Glass) and a practical engineering application, bringing ESNs to broad scientific attention.
+
+  \item \textbf{M. Lukoševičius and H. Jaeger} (2009). \textit{Reservoir computing approaches to recurrent neural network training}. Computer Science Review, 3(3), 127--149. A comprehensive survey of reservoir computing, including ESNs and liquid state machines. Covers practical guidelines for hyperparameter selection.
+
+  \item \textbf{I. B. Yildiz, H. Jaeger, and S. J. Kiebel} (2012). \textit{Re-visiting the echo state property}. Neural Networks, 35, 1--9. A careful re-examination of the ESP, showing that the spectral radius condition is sufficient but not necessary, and providing refined conditions based on the driven dynamics.
+
+  \item \textbf{M. Buehner and P. Young} (2006). \textit{A tighter bound for the echo state property}. IEEE Transactions on Neural Networks, 17(3), 820--824. Provides tighter sufficient conditions for the ESP using the singular values of $W$.
+
+  \item \textbf{S. Grigoryeva and J.-P. Ortega} (2018). \textit{Echo state networks are universal}. Neural Networks, 108, 495--508. Proves the universal approximation property of ESNs for filters with fading memory, connecting to the Stone-Weierstrass theorem.
+
+  \item \textbf{N. Bertschinger and T. Natschlager} (2004). \textit{Real-time computation at the edge of chaos in recurrent neural networks}. Neural Computation, 16(7), 1413--1436. Theoretical and empirical investigation of the edge-of-chaos hypothesis in recurrent networks.
+\end{enumerate}

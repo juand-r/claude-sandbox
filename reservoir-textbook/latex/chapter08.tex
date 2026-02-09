@@ -1,0 +1,863 @@
+\chapter{Measure-Preserving Transformations}\label{ch:8}
+
+In the preceding chapters we studied the qualitative behavior of dynamical systems through the lens of topology: orbit structure, limit sets, and recurrence. We now shift to a quantitative perspective. The central idea is to equip the phase space with a measure and to ask which transformations respect it. This chapter introduces measure-preserving transformations, the principal objects of ergodic theory, and develops the foundational results that will carry us through the rest of the book.
+
+
+\bigskip
+
+
+\section{Definition and Basic Properties}\label{sec:8.1}
+
+\subsection{The Definition}\label{sec:8.1.1}
+
+Let $(X, \mathcal{B}, \mu)$ be a measure space, where $\mathcal{B}$ is a $\sigma$-algebra on $X$ and $\mu$ is a measure on $\mathcal{B}$. Unless stated otherwise, we take $\mu$ to be a probability measure, so that $\mu(X) = 1$.
+
+\begin{definition}\label{def:8.1.}
+A measurable map $T: X \to X$ is called \textbf{measure-preserving} (with respect to $\mu$) if
+
+\[
+\mu(T^{-1}(A)) = \mu(A) \quad \text{for all } A \in \mathcal{B}.
+\]
+
+We also say that $\mu$ is **$T$-invariant**, or that $T$ \textbf{preserves} $\mu$. The quadruple $(X, \mathcal{B}, \mu, T)$ is called a \textbf{measure-preserving dynamical system}.
+
+Here $T^{-1}(A) = \{x \in X : T(x) \in A\}$ denotes the preimage of $A$; it is not the image under some inverse function. This is a critical distinction that we must address carefully.
+\end{definition}
+
+
+\subsection{Why the Preimage?}\label{sec:8.1.2}
+
+A reader encountering this definition for the first time may wonder: why do we require $\mu(T^{-1}(A)) = \mu(A)$ rather than $\mu(T(A)) = \mu(A)$? There are several compelling reasons.
+
+\textbf{Measurability.} If $T$ is measurable, then $T^{-1}(A) \in \mathcal{B}$ for every $A \in \mathcal{B}$ by definition. However, the forward image $T(A)$ need not be measurable, even when $A$ is. So the condition $\mu(T(A)) = \mu(A)$ may not even make sense.
+
+\textbf{The preimage preserves set operations.} For any collection of sets, we have
+\[
+T^{-1}\!\left(\bigcup_i A_i\right) = \bigcup_i T^{-1}(A_i), \qquad T^{-1}\!\left(\bigcap_i A_i\right) = \bigcap_i T^{-1}(A_i), \qquad T^{-1}(A^c) = (T^{-1}(A))^c.
+\]
+These identities mean that the map $A \mapsto T^{-1}(A)$ is a homomorphism of $\sigma$-algebras. The forward image $T(A)$ satisfies none of these identities in general. This algebraic compatibility is what makes the preimage formulation natural and powerful.
+
+\textbf{Non-invertibility.} Many important transformations (the doubling map, Bernoulli shifts) are not invertible. The preimage formulation requires no assumption of invertibility. If $T$ happens to be a bijection with measurable inverse, then $\mu(T^{-1}(A)) = \mu(A)$ is equivalent to $\mu(T(A)) = \mu(A)$; but in general, only the preimage formulation is available.
+
+\textbf{The change-of-variables perspective.} The condition $\mu(T^{-1}(A)) = \mu(A)$ is precisely the statement that the pushforward measure $T_*\mu$, defined by $(T_*\mu)(A) = \mu(T^{-1}(A))$, coincides with $\mu$. In other words, $\mu$ is a fixed point of the pushforward operation. This is the natural notion of invariance in measure theory.
+
+\subsection{Equivalent Formulation via Integrals}\label{sec:8.1.3}
+
+The definition in terms of sets has a clean reformulation in terms of integrals, which is often more convenient for proofs.
+
+\begin{proposition}\label{prop:8.2.}
+*Let $T: (X, \mathcal{B}, \mu) \to (X, \mathcal{B}, \mu)$ be a measurable map. The following are equivalent:*
+
+1. *$T$ is measure-preserving: $\mu(T^{-1}(A)) = \mu(A)$ for all $A \in \mathcal{B}$.*
+2. *For every $f \in L^1(X, \mathcal{B}, \mu)$,*
+\[
+\int_X f \circ T \, d\mu = \int_X f \, d\mu.
+\]
+3. *For every bounded measurable $f: X \to \mathbb{R}$,*
+\[
+\int_X f \circ T \, d\mu = \int_X f \, d\mu.
+\]
+\end{proposition}
+
+
+\begin{proof}
+* $(1) \Rightarrow (3)$: We use the standard approximation argument. First, take $f = \mathbf{1}_A$ for some $A \in \mathcal{B}$. Then $f \circ T = \mathbf{1}_{T^{-1}(A)}$, so
+
+\[
+\int_X f \circ T \, d\mu = \mu(T^{-1}(A)) = \mu(A) = \int_X f \, d\mu.
+\]
+
+By linearity, the identity extends to simple functions $f = \sum_{i=1}^n c_i \mathbf{1}_{A_i}$. For a general nonnegative bounded measurable $f$, choose simple functions $0 \le s_n \uparrow f$ pointwise. Then $s_n \circ T \uparrow f \circ T$ pointwise, and by the monotone convergence theorem,
+
+\[
+\int_X f \circ T \, d\mu = \lim_{n \to \infty} \int_X s_n \circ T \, d\mu = \lim_{n \to \infty} \int_X s_n \, d\mu = \int_X f \, d\mu.
+\]
+
+For general bounded measurable $f$, write $f = f^+ - f^-$ and apply the above to each part.
+
+$(3) \Rightarrow (2)$: For nonnegative $f \in L^1$, approximate by bounded measurable functions $f_n = \min(f, n) \uparrow f$ and apply the monotone convergence theorem. For general $f \in L^1$, decompose as $f = f^+ - f^-$.
+
+$(2) \Rightarrow (1)$: Take $f = \mathbf{1}_A$.
+\end{proof}
+
+
+\begin{remark}
+Condition (2) can be read as: "the expectation of any observable is unchanged under the dynamics." This is the statistical mechanics perspective: a measure is invariant if no experiment can detect the passage of time, on average.
+
+---
+\end{remark}
+
+
+\section{Examples}\label{sec:8.2}
+
+We now work through the fundamental examples in detail. Each serves as a prototype for a class of measure-preserving systems.
+
+\subsection{Rotations on the Circle}\label{sec:8.2.1}
+
+Let $X = \mathbb{R}/\mathbb{Z} \cong [0,1)$ with Lebesgue measure $\lambda$ and the Borel $\sigma$-algebra. Fix $\alpha \in \mathbb{R}$ and define the \textbf{rotation} (or \textbf{translation}) by
+
+\[
+T_\alpha(x) = x + \alpha \pmod{1}.
+\]
+
+\begin{proposition}\label{prop:8.4.}
+*The rotation $T_\alpha$ preserves Lebesgue measure $\lambda$ for every $\alpha \in \mathbb{R}$.*
+\end{proposition}
+
+
+\begin{proof}
+* It suffices to verify the invariance condition on intervals $[a, b) \subset [0,1)$, since these generate the Borel $\sigma$-algebra and the resulting measures agree on a generating $\pi$-system (by the $\pi$-$\lambda$ theorem).
+
+The preimage $T_\alpha^{-1}([a,b))$ consists of all $x \in [0,1)$ such that $x + \alpha \pmod{1} \in [a,b)$, which is
+
+\[
+T_\alpha^{-1}([a,b)) = \{x \in [0,1) : x + \alpha \pmod{1} \in [a,b)\}.
+\]
+
+Write $\beta = \alpha \pmod{1} \in [0,1)$. Then
+
+\[
+T_\alpha^{-1}([a,b)) = [(a - \beta) \bmod 1, \, (b - \beta) \bmod 1),
+\]
+
+interpreted cyclically on $[0,1)$. This set is either a single interval or a union of two intervals (when the subtraction wraps around), but in either case it has total Lebesgue measure $b - a$, since translation modulo 1 is a rigid motion on the circle.
+
+More precisely, if $a - \beta \ge 0$, then $T_\alpha^{-1}([a,b)) = [a - \beta, b - \beta)$, and $\lambda(T_\alpha^{-1}([a,b))) = b - a = \lambda([a,b))$. If $a - \beta < 0$ but $b - \beta \ge 0$, then
+
+\[
+T_\alpha^{-1}([a,b)) = [0, b - \beta) \cup [1 + a - \beta, 1),
+\]
+
+which has measure $(b - \beta) + (\beta - a) = b - a$. Similarly for the case $b - \beta < 0$. In every case, $\lambda(T_\alpha^{-1}([a,b))) = b - a = \lambda([a,b))$.
+\end{proof}
+
+
+\begin{remark}
+The dynamics of $T_\alpha$ depend critically on whether $\alpha$ is rational or irrational. If $\alpha = p/q$ with $\gcd(p,q) = 1$, then every orbit is periodic with period $q$. If $\alpha$ is irrational, every orbit is dense in $[0,1)$ (by Weyl's theorem, which we will meet in Chapter 9). In either case, $T_\alpha$ preserves Lebesgue measure. However, the ergodic properties differ sharply: $T_\alpha$ is ergodic with respect to Lebesgue measure if and only if $\alpha$ is irrational.
+\end{remark}
+
+
+\subsection{The Doubling Map}\label{sec:8.2.2}
+
+Define $T: [0,1) \to [0,1)$ by
+
+\[
+T(x) = 2x \pmod{1} = \begin{cases} 2x & \text{if } 0 \le x < 1/2, \\ 2x - 1 & \text{if } 1/2 \le x < 1. \end{cases}
+\]
+
+\begin{proposition}\label{prop:8.6.}
+*The doubling map $T$ preserves Lebesgue measure $\lambda$.*
+\end{proposition}
+
+
+\begin{proof}
+* Again, it suffices to check on intervals. Let $[a,b) \subset [0,1)$. The preimage $T^{-1}([a,b))$ consists of all $x \in [0,1)$ with $2x \pmod 1 \in [a,b)$. There are two branches of the preimage:
+
+\begin{itemize}[nosep]
+  \item From the branch $2x$ (for $x \in [0, 1/2)$): we need $2x \in [a, b)$, so $x \in [a/2, b/2)$.
+  \item From the branch $2x - 1$ (for $x \in [1/2, 1)$): we need $2x - 1 \in [a, b)$, so $x \in [(a+1)/2, (b+1)/2)$.
+\end{itemize}
+
+These two intervals are disjoint (the first is contained in $[0, 1/2)$ and the second in $[1/2, 1)$), so
+
+\[
+T^{-1}([a,b)) = \left[\frac{a}{2}, \frac{b}{2}\right) \cup \left[\frac{a+1}{2}, \frac{b+1}{2}\right).
+\]
+
+Therefore,
+
+\[
+\lambda(T^{-1}([a,b))) = \frac{b-a}{2} + \frac{b-a}{2} = b - a = \lambda([a,b)).
+\]
+
+By the $\pi$-$\lambda$ theorem, the measures $\lambda \circ T^{-1}$ and $\lambda$ agree on all Borel sets.
+\end{proof}
+
+
+\begin{remark}
+The doubling map is a 2-to-1 map: every point in $[0,1)$ has exactly two preimages. Each branch of $T^{-1}$ contracts by a factor of $1/2$, and the two contracted copies together have the same total measure as the original set. This is the mechanism behind measure-preservation for expanding maps more generally.
+\end{remark}
+
+
+\begin{remark}
+It is instructive to see this in binary. Write $x = 0.x_1 x_2 x_3 \ldots$ in base 2. Then $T(x) = 0.x_2 x_3 x_4 \ldots$, the left shift on the binary expansion. This connects the doubling map to the symbolic dynamics of the Bernoulli shift (Section 8.2.5).
+\end{remark}
+
+
+\subsection{The Baker's Map}\label{sec:8.2.3}
+
+The \textbf{baker's map} is a transformation of the unit square $[0,1)^2$ that models the process of kneading dough: stretch horizontally, compress vertically, cut and stack. Define $B: [0,1)^2 \to [0,1)^2$ by
+
+\[
+B(x, y) = \begin{cases} (2x, \, y/2) & \text{if } 0 \le x < 1/2, \\ (2x - 1, \, (y+1)/2) & \text{if } 1/2 \le x < 1. \end{cases}
+\]
+
+Geometrically: the left half of the square is stretched horizontally by a factor of 2 and compressed vertically by a factor of $1/2$, producing a rectangle $[0,1) \times [0, 1/2)$. The right half undergoes the same stretch and compression, producing $[0,1) \times [0, 1/2)$, but is then placed on top of the first piece, occupying $[0,1) \times [1/2, 1)$.
+
+\begin{proposition}\label{prop:8.9.}
+*The baker's map $B$ preserves two-dimensional Lebesgue measure $\lambda^2$ on $[0,1)^2$.*
+\end{proposition}
+
+
+\begin{proof}
+* Let $R = [a_1, b_1) \times [a_2, b_2) \subset [0,1)^2$ be a rectangle. We compute $B^{-1}(R)$.
+
+A point $(x,y)$ maps into $R$ under $B$ if and only if one of the following holds:
+
+\textbf{Case 1:} $0 \le x < 1/2$ and $(2x, y/2) \in R$. This requires $a_1 \le 2x < b_1$ and $a_2 \le y/2 < b_2$, i.e., $x \in [a_1/2, b_1/2)$ and $y \in [2a_2, 2b_2)$. The intersection with $[0,1/2) \times [0,1)$ gives a set of measure
+
+\[
+\frac{b_1 - a_1}{2} \cdot \min(2b_2, 1) - \frac{b_1 - a_1}{2} \cdot \max(2a_2, 0).
+\]
+
+Since $a_2, b_2 \in [0,1]$ and $2b_2 \le 2$, we need to be careful about truncation. But if $R \subset [0,1)^2$, then $0 \le a_2 < b_2 \le 1$, so $2a_2 \ge 0$ and $2b_2 \le 2$. The preimage in Case 1 is $[a_1/2, b_1/2) \times ([2a_2, 2b_2) \cap [0,1))$.
+
+\textbf{Case 2:} $1/2 \le x < 1$ and $(2x - 1, (y+1)/2) \in R$. This requires $a_1 \le 2x - 1 < b_1$ and $a_2 \le (y+1)/2 < b_2$, i.e., $x \in [(a_1+1)/2, (b_1+1)/2)$ and $y \in [2a_2 - 1, 2b_2 - 1)$. The preimage in Case 2 is $[(a_1+1)/2, (b_1+1)/2) \times ([2a_2 - 1, 2b_2 - 1) \cap [0,1))$.
+
+We can avoid case analysis by noting that $B$ is a bijection on $[0,1)^2$ (one can verify this directly), and that on each piece $B$ is an affine map. On the left half, $B$ is given by the matrix $\begin{pmatrix} 2 & 0 \\ 0 & 1/2 \end{pmatrix}$ with determinant 1. On the right half, $B$ is an affine map with the same linear part $\begin{pmatrix} 2 & 0 \\ 0 & 1/2 \end{pmatrix}$ (again determinant 1) and a translation.
+
+Since $B$ is piecewise affine with each piece having Jacobian determinant equal to 1, the change-of-variables formula gives
+
+\[
+\lambda^2(B^{-1}(R)) = \int_{B^{-1}(R)} 1 \, d\lambda^2 = \int_R \frac{1}{|\det DB|} \, d\lambda^2 = \int_R 1 \, d\lambda^2 = \lambda^2(R)
+\]
+
+for any measurable $R$. Here we used that $B$ is a bijection and $|\det DB| = 1$ on each piece.
+\end{proof}
+
+
+\subsection{Arnold's Cat Map}\label{sec:8.2.4}
+
+Let $\mathbb{T}^2 = \mathbb{R}^2 / \mathbb{Z}^2$ be the two-dimensional torus with Lebesgue measure $\lambda^2$ and Borel $\sigma$-algebra. Define $T: \mathbb{T}^2 \to \mathbb{T}^2$ by
+
+\[
+T\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \pmod{1}.
+\]
+
+This is known as \textbf{Arnold's cat map}, named after V. I. Arnold, who illustrated its mixing properties using a picture of a cat on the torus.
+
+\begin{proposition}\label{prop:8.10.}
+*Arnold's cat map preserves Lebesgue measure on $\mathbb{T}^2$.*
+\end{proposition}
+
+
+\begin{proof}
+* Let $A = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$. We note that $\det A = 2 \cdot 1 - 1 \cdot 1 = 1$.
+
+The map $T$ is the composition of the linear map $x \mapsto Ax$ on $\mathbb{R}^2$ with the projection $\pi: \mathbb{R}^2 \to \mathbb{T}^2$. Since $A$ has integer entries, it maps $\mathbb{Z}^2$ to $\mathbb{Z}^2$, so it descends to a well-defined map on $\mathbb{T}^2$.
+
+Since $\det A = 1$, the matrix $A$ is in $\text{SL}(2, \mathbb{Z})$ and hence $A^{-1}$ also has integer entries (specifically, $A^{-1} = \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix}$). Therefore $T$ is a bijection on $\mathbb{T}^2$.
+
+For any measurable set $E \subset \mathbb{T}^2$, the preimage is $T^{-1}(E) = A^{-1}E \pmod{1}$. The key computation is the change of variables formula for linear maps. On $\mathbb{R}^2$, the linear map $x \mapsto Ax$ transforms Lebesgue measure by the factor $|\det A|$. That is, for any measurable $E \subset \mathbb{R}^2$,
+
+\[
+\lambda^2(A^{-1}(E)) = \frac{1}{|\det A|} \lambda^2(E) = \lambda^2(E).
+\]
+
+On the torus, the same formula holds: the fundamental domain $[0,1)^2$ is mapped by $A$ to a parallelogram of area $|\det A| = 1$. When this parallelogram is folded back onto $\mathbb{T}^2$ by reducing modulo 1, the pieces tile $[0,1)^2$ exactly, preserving total area. More precisely, for any Borel set $E \subset \mathbb{T}^2$,
+
+\[
+\lambda^2(T^{-1}(E)) = \lambda^2(A^{-1}E \bmod 1) = \lambda^2(E),
+\]
+
+where the second equality follows from the fact that $|\det A^{-1}| = 1$.
+\end{proof}
+
+
+\begin{remark}
+The same argument applies to any linear toral automorphism $T_A: \mathbb{T}^n \to \mathbb{T}^n$ defined by a matrix $A \in \text{SL}(n, \mathbb{Z})$ (or more generally $A \in \text{GL}(n, \mathbb{Z})$ with $|\det A| = 1$). The condition $\det A = \pm 1$ with integer entries ensures both that $T_A$ is well-defined on the torus and that it preserves Lebesgue measure.
+\end{remark}
+
+
+\begin{remark}
+Arnold's cat map is a hyperbolic toral automorphism. Its eigenvalues are $\phi = (3 + \sqrt{5})/2 > 1$ and $1/\phi = (3 - \sqrt{5})/2 < 1$ (both irrational), so it stretches in one eigendirection and contracts in the other, while preserving area. This is the source of its chaotic behavior: nearby points separate exponentially, yet the map is measure-preserving and invertible.
+\end{remark}
+
+
+\subsection{Bernoulli Shifts}\label{sec:8.2.5}
+
+Let $\Sigma = \{0, 1, \ldots, k-1\}$ be a finite alphabet and let $\Omega = \Sigma^{\mathbb{N}}$ be the space of one-sided infinite sequences $\omega = (\omega_0, \omega_1, \omega_2, \ldots)$ with $\omega_i \in \Sigma$. Fix a probability vector $\mathbf{p} = (p_0, p_1, \ldots, p_{k-1})$ with $p_i > 0$ and $\sum p_i = 1$. Define the product measure $\mu = \mathbf{p}^{\mathbb{N}}$ on $\Omega$, which assigns to a \textbf{cylinder set}
+
+\[
+[a_0, a_1, \ldots, a_{n-1}] = \{\omega \in \Omega : \omega_0 = a_0, \omega_1 = a_1, \ldots, \omega_{n-1} = a_{n-1}\}
+\]
+
+the measure
+
+\[
+\mu([a_0, a_1, \ldots, a_{n-1}]) = p_{a_0} p_{a_1} \cdots p_{a_{n-1}}.
+\]
+
+The \textbf{shift map} $\sigma: \Omega \to \Omega$ is defined by
+
+\[
+\sigma(\omega_0, \omega_1, \omega_2, \ldots) = (\omega_1, \omega_2, \omega_3, \ldots).
+\]
+
+The system $(\Omega, \mathcal{B}, \mu, \sigma)$ is called a \textbf{(one-sided) Bernoulli shift} and denoted $B(p_0, \ldots, p_{k-1})$.
+
+\begin{proposition}\label{prop:8.13.}
+*The shift map $\sigma$ preserves the product measure $\mu$.*
+\end{proposition}
+
+
+\begin{proof}
+* Cylinder sets generate the $\sigma$-algebra $\mathcal{B}$ and form a $\pi$-system (closed under finite intersections), so by the $\pi$-$\lambda$ theorem it suffices to check $\mu(\sigma^{-1}(C)) = \mu(C)$ for every cylinder set $C$.
+
+Let $C = [a_0, a_1, \ldots, a_{n-1}]$. The preimage is
+
+\[
+\sigma^{-1}(C) = \{\omega \in \Omega : \sigma(\omega) \in C\} = \{\omega \in \Omega : \omega_1 = a_0, \omega_2 = a_1, \ldots, \omega_n = a_{n-1}\}.
+\]
+
+This is the set of sequences whose entries at positions $1, 2, \ldots, n$ are $a_0, a_1, \ldots, a_{n-1}$, with no constraint on position 0. We can decompose this as a disjoint union over the possible values of $\omega_0$:
+
+\[
+\sigma^{-1}(C) = \bigsqcup_{j=0}^{k-1} [j, a_0, a_1, \ldots, a_{n-1}].
+\]
+
+Therefore,
+
+\[
+\mu(\sigma^{-1}(C)) = \sum_{j=0}^{k-1} p_j \cdot p_{a_0} p_{a_1} \cdots p_{a_{n-1}} = \left(\sum_{j=0}^{k-1} p_j\right) p_{a_0} \cdots p_{a_{n-1}} = 1 \cdot \mu(C) = \mu(C).
+\]
+
+This completes the proof.
+\end{proof}
+
+
+\begin{remark}
+The connection to the doubling map is immediate. The map $x \mapsto 2x \pmod{1}$ on $([0,1), \lambda)$ is measurably conjugate to the Bernoulli shift $B(1/2, 1/2)$ via the binary expansion $x = \sum_{n=1}^\infty x_n 2^{-n} \leftrightarrow (x_1, x_2, x_3, \ldots)$. Under this identification, the doubling map becomes the shift on binary sequences, and Lebesgue measure corresponds to the fair coin-tossing measure. This is one of the most illuminating correspondences in ergodic theory.
+\end{remark}
+
+
+\subsection{Hamiltonian Systems and Liouville's Theorem}\label{sec:8.2.6}
+
+We briefly indicate how measure-preservation arises naturally in classical mechanics.
+
+A \textbf{Hamiltonian system} on $\mathbb{R}^{2n}$ with coordinates $(q_1, \ldots, q_n, p_1, \ldots, p_n)$ is governed by Hamilton's equations:
+
+\[
+\dot{q}_i = \frac{\partial H}{\partial p_i}, \qquad \dot{p}_i = -\frac{\partial H}{\partial q_i}, \qquad i = 1, \ldots, n,
+\]
+
+where $H: \mathbb{R}^{2n} \to \mathbb{R}$ is the Hamiltonian (the energy function). Let $\varphi_t$ denote the time-$t$ flow of this system.
+
+\textbf{Theorem 8.15 (Liouville).} *The Hamiltonian flow $\varphi_t$ preserves the standard volume form $\omega = dq_1 \wedge dp_1 \wedge \cdots \wedge dq_n \wedge dp_n$ on phase space. Equivalently, $\varphi_t$ preserves Lebesgue measure on $\mathbb{R}^{2n}$.*
+
+\begin{proof}[Proof sketch]
+sketch.* The rate of change of volume under the flow is governed by the divergence of the vector field $F = (\dot{q}_1, \ldots, \dot{q}_n, \dot{p}_1, \ldots, \dot{p}_n)$. We compute
+
+\[
+\operatorname{div} F = \sum_{i=1}^n \left(\frac{\partial \dot{q}_i}{\partial q_i} + \frac{\partial \dot{p}_i}{\partial p_i}\right) = \sum_{i=1}^n \left(\frac{\partial^2 H}{\partial q_i \partial p_i} - \frac{\partial^2 H}{\partial p_i \partial q_i}\right) = 0.
+\]
+
+By the divergence theorem (or equivalently, by the Jacobi-Liouville formula $\frac{d}{dt} \det D\varphi_t = (\operatorname{div} F) \det D\varphi_t$), the Jacobian determinant $\det D\varphi_t = 1$ for all $t$, so $\varphi_t$ preserves volume.
+\end{proof}
+
+
+\begin{remark}
+Liouville's theorem is the reason why ergodic theory originated in statistical mechanics. Boltzmann and Gibbs needed to understand the long-time behavior of Hamiltonian systems. The invariance of phase-space volume is the starting point: it allows one to define meaningful statistical ensembles and to apply the recurrence and ergodic theorems we develop in this book.
+
+If the energy surface $\Sigma_E = \{(q,p) : H(q,p) = E\}$ is compact, then the restriction of the flow to $\Sigma_E$ preserves a natural finite measure (the \textbf{microcanonical measure} or \textbf{Liouville measure} on the energy surface), making $(\Sigma_E, \mu_E, \varphi_t)$ a measure-preserving dynamical system to which the full machinery of ergodic theory applies.
+
+---
+\end{remark}
+
+
+\section{Invariant Measures}\label{sec:8.3}
+
+\subsection{The Problem}\label{sec:8.3.1}
+
+Given a measurable map $T: X \to X$, we have so far verified that specific measures are preserved. But in practice one often encounters the inverse problem: given $T$, find all $T$-invariant measures, or at least show that one exists.
+
+This problem is fundamental because the ergodic-theoretic behavior of $T$ depends heavily on which invariant measure is chosen. The same map can appear orderly under one invariant measure and chaotic under another.
+
+\subsection{Non-uniqueness of Invariant Measures}\label{sec:8.3.2}
+
+A map typically has many invariant measures. This is already visible in simple examples.
+
+\begin{example}
+Consider the doubling map $T(x) = 2x \pmod{1}$.
+
+- \textbf{Lebesgue measure} $\lambda$ is $T$-invariant (Proposition 8.6).
+- \textbf{The Dirac measure} $\delta_0$ at the fixed point $x = 0$ is $T$-invariant, since $T(0) = 0$ and $\delta_0(T^{-1}(A)) = \delta_0(A)$ for all $A$ (the preimage of any set containing 0 contains 0, and vice versa).
+- More generally, if $x_0$ is a periodic point with period $n$ (so $T^n(x_0) = x_0$), then the measure $\mu = \frac{1}{n}\sum_{j=0}^{n-1} \delta_{T^j(x_0)}$ is $T$-invariant.
+- \textbf{Convex combinations}: if $\mu_1$ and $\mu_2$ are $T$-invariant probability measures, then $\alpha \mu_1 + (1-\alpha)\mu_2$ is also $T$-invariant for any $\alpha \in [0,1]$.
+
+The doubling map has countably many periodic orbits (the rationals with odd denominator), and correspondingly many invariant measures supported on them. In fact, it can be shown that the set of $T$-invariant probability measures is an infinite-dimensional convex set.
+\end{example}
+
+
+\begin{example}
+The identity map $T(x) = x$ on any space $(X, \mathcal{B})$ preserves \textit{every} probability measure on $(X, \mathcal{B})$.
+\end{example}
+
+
+\subsection{The Krylov-Bogolyubov Theorem}\label{sec:8.3.3}
+
+Despite the abundance of invariant measures in many situations, the fundamental existence question is not trivial: does a given map always have at least one invariant measure? In the measurable category the answer is no (consider $T(x) = x + 1$ on $\mathbb{R}$ with Lebesgue measure; no finite invariant measure exists). But in the topological setting, a clean and elegant result guarantees existence.
+
+\textbf{Theorem 8.19 (Krylov-Bogolyubov).} *Let $X$ be a compact metrizable space and $T: X \to X$ a continuous map. Then there exists at least one $T$-invariant Borel probability measure on $X$.*
+
+\begin{proof}
+* Let $\mathcal{M}(X)$ denote the set of all Borel probability measures on $X$, equipped with the weak-* topology. By the Banach-Alaoglu theorem (or the Riesz representation theorem combined with Alaoglu's theorem), $\mathcal{M}(X)$ is a compact metrizable space in the weak-* topology, since $X$ is compact and metrizable. Explicitly, the weak-* topology is the weakest topology such that $\mu \mapsto \int f \, d\mu$ is continuous for every $f \in C(X)$.
+
+Pick any point $x_0 \in X$ and define the \textbf{empirical measures} (Cesaro averages of Dirac masses along the orbit):
+
+\[
+\mu_n = \frac{1}{n} \sum_{j=0}^{n-1} \delta_{T^j(x_0)}.
+\]
+
+Each $\mu_n$ is a Borel probability measure on $X$, so $(\mu_n)_{n \ge 1}$ is a sequence in the compact space $\mathcal{M}(X)$. By compactness (sequential, since $\mathcal{M}(X)$ is metrizable), there exists a subsequence $\mu_{n_k} \to \mu$ in the weak-* topology for some $\mu \in \mathcal{M}(X)$.
+
+We claim that $\mu$ is $T$-invariant. To verify this, we must show $\int f \circ T \, d\mu = \int f \, d\mu$ for every $f \in C(X)$, which (by Proposition 8.2) is equivalent to $T$-invariance.
+
+Compute:
+
+\[
+\int f \circ T \, d\mu_n = \frac{1}{n} \sum_{j=0}^{n-1} f(T^{j+1}(x_0)) = \frac{1}{n} \sum_{j=1}^{n} f(T^j(x_0)).
+\]
+
+Therefore,
+
+\[
+\int f \circ T \, d\mu_n - \int f \, d\mu_n = \frac{1}{n}\left(\sum_{j=1}^{n} f(T^j(x_0)) - \sum_{j=0}^{n-1} f(T^j(x_0))\right) = \frac{f(T^n(x_0)) - f(x_0)}{n}.
+\]
+
+Since $f$ is continuous and $X$ is compact, $f$ is bounded: $|f(x)| \le \|f\|_\infty$ for all $x$. Hence
+
+\[
+\left|\int f \circ T \, d\mu_n - \int f \, d\mu_n\right| \le \frac{2\|f\|_\infty}{n} \to 0 \quad \text{as } n \to \infty.
+\]
+
+Now take $n = n_k \to \infty$. By weak-* convergence, $\int f \, d\mu_{n_k} \to \int f \, d\mu$. Since $f \circ T$ is also continuous (as the composition of continuous maps), $\int f \circ T \, d\mu_{n_k} \to \int f \circ T \, d\mu$. The estimate above gives
+
+\[
+\int f \circ T \, d\mu = \lim_{k \to \infty} \int f \circ T \, d\mu_{n_k} = \lim_{k \to \infty} \int f \, d\mu_{n_k} = \int f \, d\mu.
+\]
+
+This holds for all $f \in C(X)$, so $\mu$ is $T$-invariant.
+\end{proof}
+
+
+\begin{remark}
+The Krylov-Bogolyubov theorem is non-constructive in the sense that it does not specify \textit{which} invariant measure is obtained; different initial points $x_0$ and different subsequences may yield different limit measures. The theorem tells us the space $\mathcal{M}_T(X)$ of $T$-invariant probability measures is nonempty. In fact, one can show that $\mathcal{M}_T(X)$ is a nonempty, convex, compact subset of $\mathcal{M}(X)$ in the weak-* topology. Its extreme points are the ergodic measures (a topic for Chapter 9).
+\end{remark}
+
+
+\begin{remark}
+The proof reveals a useful constructive strategy: to find invariant measures, compute time averages along orbits and take limits. This is precisely the idea behind numerical estimation of invariant measures in applications, including the estimation of reservoir states in echo state networks.
+
+---
+\end{remark}
+
+
+\section{Natural and Physical Measures}\label{sec:8.4}
+
+\subsection{The Problem of Physical Relevance}\label{sec:8.4.1}
+
+The Krylov-Bogolyubov theorem guarantees the existence of invariant measures, and as we saw in Section 8.3.2, there are typically many of them. Not all are equally interesting.
+
+Consider a dissipative system such as the Henon map or the Lorenz attractor. Orbits starting from almost every initial condition (in the sense of Lebesgue measure on the ambient space) are attracted to a set of Lebesgue measure zero --- the attractor. On this attractor, there may be uncountably many invariant probability measures, most of them supported on periodic orbits or other dynamically uninteresting subsets. The physically relevant measure is the one that describes the statistics actually observed in experiments or computer simulations.
+
+\subsection{SRB Measures}\label{sec:8.4.2}
+
+The concept of an \textbf{SRB measure} (Sinai-Ruelle-Bowen measure) captures the notion of "the physically observable invariant measure."
+
+\textbf{Definition 8.22 (Informal).} Let $T: M \to M$ be a smooth map on a manifold $M$. A $T$-invariant probability measure $\mu$ is called an \textbf{SRB measure} (or a \textbf{physical measure}) if there exists a set $B(\mu) \subset M$ of positive Lebesgue measure such that for every continuous observable $\varphi: M \to \mathbb{R}$ and every $x \in B(\mu)$,
+
+\[
+\lim_{n \to \infty} \frac{1}{n} \sum_{j=0}^{n-1} \varphi(T^j(x)) = \int \varphi \, d\mu.
+\]
+
+The set $B(\mu)$ is called the \textbf{basin} of $\mu$.
+
+In other words, $\mu$ is the measure that governs the time averages for a set of initial conditions that is "visible" to Lebesgue measure. If $B(\mu)$ has full Lebesgue measure in some open set, then $\mu$ is the measure that a typical numerical simulation will reveal.
+
+\begin{remark}
+For conservative (measure-preserving) systems, the natural invariant measure is often Lebesgue measure itself (or the Liouville measure on an energy surface), and the Birkhoff ergodic theorem (Chapter 9) guarantees that time averages equal space averages for ergodic systems. For dissipative systems, the attractor may have Lebesgue measure zero, and the SRB measure is the correct replacement.
+\end{remark}
+
+
+\begin{remark}
+The existence of SRB measures is a deep result, proved for Axiom A attractors by Sinai, Ruelle, and Bowen in the 1970s. For more general systems (e.g., the Henon map), the existence of SRB measures remains a major open problem, resolved only in certain parameter ranges.
+\end{remark}
+
+
+\subsection{Connection to Reservoir Computing}\label{sec:8.4.3}
+
+In the theory of reservoir computing and echo state networks (which we will develop in Part III of this book), the \textbf{echo state property} asserts that the reservoir state $\mathbf{h}_t$ is asymptotically independent of the initial state $\mathbf{h}_0$. When the input is a stationary ergodic process, the reservoir state converges to a unique stationary distribution --- an invariant measure for the driven dynamics.
+
+This invariant measure is the analogue of an SRB measure: it describes the statistics observed in practice, regardless of initialization. The Krylov-Bogolyubov theorem guarantees its existence under mild compactness conditions, and the echo state property ensures its uniqueness. This connection between ergodic theory and machine learning is one of the main themes we will develop.
+
+
+\bigskip
+
+
+\section{Recurrence Revisited}\label{sec:8.5}
+
+\subsection{Poincare Recurrence}\label{sec:8.5.1}
+
+In Chapter 4 we encountered the Poincare recurrence theorem in the topological setting. We now state and prove its measure-theoretic version, which is sharper and more fundamental.
+
+\textbf{Theorem 8.25 (Poincare Recurrence Theorem).} *Let $(X, \mathcal{B}, \mu, T)$ be a measure-preserving dynamical system with $\mu(X) < \infty$. Let $A \in \mathcal{B}$ with $\mu(A) > 0$. Then $\mu$-almost every point of $A$ returns to $A$, i.e.,*
+
+\[
+\mu\left(\{x \in A : T^n(x) \in A \text{ for infinitely many } n \ge 1\}\right) = \mu(A).
+\]
+
+\begin{proof}
+* Let $W = \{x \in A : T^n(x) \notin A \text{ for all } n \ge 1\}$ be the set of "wandering" points in $A$ --- those that leave $A$ and never return. We will show $\mu(W) = 0$.
+
+Define $W_k = T^{-k}(W)$ for $k \ge 0$, so $W_0 = W$. Note that $W_k = \{x \in X : T^k(x) \in W\}$. We claim that the sets $W_0, W_1, W_2, \ldots$ are pairwise disjoint.
+
+Suppose $x \in W_j \cap W_k$ with $0 \le j < k$. Then $T^j(x) \in W \subset A$ and $T^k(x) \in W \subset A$. But $T^k(x) = T^{k-j}(T^j(x))$, and since $T^j(x) \in W$, we must have $T^m(T^j(x)) \notin A$ for all $m \ge 1$. Yet $k - j \ge 1$ and $T^{k-j}(T^j(x)) = T^k(x) \in A$. Contradiction. So the $W_k$ are pairwise disjoint.
+
+Since $T$ is measure-preserving, $\mu(W_k) = \mu(T^{-k}(W)) = \mu(W)$ for all $k$. The sets $W_k$ are pairwise disjoint subsets of $X$, and $\mu(X) < \infty$. Therefore
+
+\[
+\infty > \mu(X) \ge \mu\left(\bigsqcup_{k=0}^{\infty} W_k\right) = \sum_{k=0}^{\infty} \mu(W_k) = \sum_{k=0}^{\infty} \mu(W).
+\]
+
+This forces $\mu(W) = 0$. So $\mu$-almost every point of $A$ returns to $A$ at least once.
+
+To get infinitely many returns: let $A_1 = \{x \in A : T^n(x) \in A \text{ for some } n \ge 1\}$. We have shown $\mu(A_1) = \mu(A)$. Note that $A_1 \subset A$ and $A_1 \in \mathcal{B}$. Moreover, $T$ maps returning points to returning points: if $x \in A_1$ and $T^{n_1}(x) \in A$ for some $n_1 \ge 1$, then applying the above argument to $T^{n_1}(x) \in A$ shows that $T^{n_1}(x)$ returns to $A$ again (since $\mu(A) > 0$ and the argument gives almost sure return), and so on. A more precise argument: let $A_\infty = \{x \in A : T^n(x) \in A \text{ for infinitely many } n\}$. Then $A \setminus A_\infty = \{x \in A : T^n(x) \in A \text{ for only finitely many } n\}$. If $x \in A \setminus A_\infty$, let $N$ be the largest $n$ with $T^n(x) \in A$ (possibly $N = 0$). Then $T^N(x) \in W$, so $x \in T^{-N}(W) = W_N$. Hence $A \setminus A_\infty \subset \bigcup_{k=0}^\infty W_k$, and $\mu(A \setminus A_\infty) \le \sum_{k=0}^\infty \mu(W_k) = 0$.
+\end{proof}
+
+
+\subsection{Kac's Lemma}\label{sec:8.5.2}
+
+Poincare's theorem tells us that almost every point returns. A natural follow-up: \textit{how long} does it take to return? Kac's lemma gives a beautiful answer in the ergodic case.
+
+\textbf{Setup.} Let $(X, \mathcal{B}, \mu, T)$ be a measure-preserving system with $\mu(X) = 1$. For a set $A \in \mathcal{B}$ with $\mu(A) > 0$, the \textbf{first return time} to $A$ is the function $\tau_A: A \to \mathbb{N} \cup \{\infty\}$ defined by
+
+\[
+\tau_A(x) = \inf\{n \ge 1 : T^n(x) \in A\}.
+\]
+
+By Poincare recurrence, $\tau_A(x) < \infty$ for $\mu$-almost every $x \in A$.
+
+\textbf{Theorem 8.26 (Kac's Lemma, 1947).} *Let $(X, \mathcal{B}, \mu, T)$ be an ergodic measure-preserving system with $\mu(X) = 1$. Let $A \in \mathcal{B}$ with $\mu(A) > 0$. Then the expected return time to $A$ is*
+
+\[
+\int_A \tau_A \, d\mu = 1.
+\]
+
+*Equivalently, the conditional expected return time is $\mathbb{E}[\tau_A \mid x \in A] = 1/\mu(A)$.*
+
+The second formulation follows from the first by dividing by $\mu(A)$:
+
+\[
+\frac{1}{\mu(A)}\int_A \tau_A \, d\mu = \frac{1}{\mu(A)}.
+\]
+
+\begin{proof}
+* For $n \ge 1$, define
+
+\[
+A_n = \{x \in A : \tau_A(x) = n\} = \{x \in A : T(x) \notin A, T^2(x) \notin A, \ldots, T^{n-1}(x) \notin A, T^n(x) \in A\}.
+\]
+
+The sets $A_n$ are pairwise disjoint and by Poincare recurrence, $\mu(\bigsqcup_{n=1}^\infty A_n) = \mu(A)$ (up to a null set).
+
+Now define, for each $n \ge 1$, the "tower level"
+
+\[
+E_n = \{x \in X : T^{-1}(x) \in E_{n-1} \setminus A\}
+\]
+
+More precisely, let us build the Kakutani tower (or Rokhlin tower) over $A$. For $n \ge 1$ and $0 \le j \le n-1$, define
+
+\[
+A_n^{(j)} = T^j(A_n) \quad \text{for } 0 \le j \le n-1.
+\]
+
+That is, $A_n^{(j)}$ is the set of points that started in $A_n$ and have been iterated $j$ times. By the definition of $A_n$:
+
+\begin{itemize}[nosep]
+  \item $A_n^{(0)} = A_n \subset A$.
+  \item $A_n^{(j)} \subset A^c$ for $1 \le j \le n-1$ (these points have left $A$ but not yet returned).
+  \item $T(A_n^{(n-1)}) = T^n(A_n) \subset A$ (these points have just returned).
+\end{itemize}
+
+It is more convenient to work with preimage-defined sets to exploit measure-preservation directly. Define
+
+\[
+B_k = \{x \in A : \tau_A(x) > k\} \quad \text{for } k \ge 0.
+\]
+
+So $B_0 = A$, and $B_k = \{x \in A : T(x) \notin A, \ldots, T^k(x) \notin A\}$ for $k \ge 1$. Notice that $A_n = B_{n-1} \setminus B_n$ for $n \ge 1$ (with the convention that $\tau_A(x) > k$ means none of $T(x), \ldots, T^k(x)$ are in $A$).
+
+Now consider the sets $T^j(B_j)$ for $j \ge 0$. We have $T^0(B_0) = A$. For $j \ge 1$:
+
+\[
+T^j(B_j) = \{T^j(x) : x \in A, T(x) \notin A, \ldots, T^j(x) \notin A\} \subset A^c.
+\]
+
+We claim that the sets $C_j = T^j(B_j) \setminus A$ for $j \ge 1$, together with $A$, form a partition of $X$ (up to null sets) when $T$ is ergodic. More precisely, define
+
+\[
+D_j = \{y \in X \setminus A : \text{the most recent visit to } A \text{ before reaching } y \text{ was exactly } j \text{ steps ago}\}.
+\]
+
+Formally, for $j \ge 1$, let
+
+\[
+D_j = \{y \in X : y \notin A, \, T^{-1}(y) \notin A, \ldots, T^{-(j-1)}(y) \notin A, \, T^{-j}(y) \in A\}.
+\]
+
+But this requires $T$ to be invertible, which we have not assumed. Let us give a cleaner proof.
+
+We instead compute $\int_A \tau_A \, d\mu$ directly.
+
+\[
+\int_A \tau_A \, d\mu = \int_A \sum_{k=1}^{\infty} \mathbf{1}_{\{\tau_A \ge k\}}(x) \, d\mu(x) = \sum_{k=1}^{\infty} \mu(\{x \in A : \tau_A(x) \ge k\}) = \sum_{k=0}^{\infty} \mu(B_k),
+\]
+
+where $B_k = \{x \in A : \tau_A(x) > k\}$ for $k \ge 0$ (note the shift: $\tau_A \ge k+1$ iff $\tau_A > k$, and $B_0 = A$).
+
+For each $k \ge 0$, $B_k$ consists of points in $A$ whose first $k$ iterates avoid $A$:
+
+\[
+B_k = A \cap T^{-1}(A^c) \cap T^{-2}(A^c) \cap \cdots \cap T^{-k}(A^c).
+\]
+
+Now consider the sets $F_k = T^{-k}(A) \cap T^{-(k-1)}(A^c) \cap \cdots \cap T^{-1}(A^c) \cap A^c$ for $k \ge 1$, and $F_0 = A$. Here $F_k$ (for $k \ge 1$) consists of points not in $A$ that first enter $A$ after exactly $k$ steps, having avoided $A$ for steps $1, \ldots, k-1$ (counted from the point, not from $A$).
+
+Actually, let us use the cleanest approach. Define the sets:
+
+\[
+E_j = T^j(B_j) \quad \text{for } j \ge 0.
+\]
+
+Unpacking: $E_0 = B_0 = A$. For $j \ge 1$,
+
+\[
+E_j = \{T^j(x) : x \in A, \, T(x) \notin A, \, T^2(x) \notin A, \ldots, T^j(x) \notin A\}.
+\]
+
+A point $y \in E_j$ (with $j \ge 1$) has the property that $y \notin A$ (since $T^j(x) \notin A$ is part of the condition defining $B_j$). Moreover, $y$ has a preimage $x = T^{-j}(y)$ in $A$ such that the orbit from $x$ avoids $A$ for $j$ steps.
+
+\textbf{Claim:} *The sets $E_0, E_1, E_2, \ldots$ are pairwise disjoint (modulo null sets), and if $T$ is ergodic, $\bigsqcup_{j=0}^\infty E_j = X$ (modulo null sets).*
+
+\begin{proof}[Proof of disjointness]
+of disjointness.* The set $E_0 = A$ is disjoint from $E_j$ for $j \ge 1$ since $E_j \subset A^c$. For $j \ne k$ with $j, k \ge 1$, the disjointness is more subtle and actually the sets $E_j$ need not be disjoint in general (since $T$ may not be injective). Instead, we use a different decomposition.
+
+Let us restart the proof with the standard approach from Petersen.
+
+\begin{proof}[Proof of Kac's Lemma (standard argument)]
+of Kac's Lemma (standard argument).** Define $\widetilde{A}_j$ for $j \ge 0$ as follows. Let
+
+\[
+\widetilde{A}_0 = A, \qquad \widetilde{A}_j = T^{-1}(\widetilde{A}_{j-1}) \setminus A \quad \text{for } j \ge 1.
+\]
+
+Unpacking this inductive definition:
+
+\begin{itemize}[nosep]
+  \item $\widetilde{A}_0 = A$.
+  \item $\widetilde{A}_1 = T^{-1}(A) \setminus A = \{x \notin A : T(x) \in A\}$ --- points outside $A$ that enter $A$ in one step.
+  \item $\widetilde{A}_2 = T^{-1}(\widetilde{A}_1) \setminus A = \{x \notin A : T(x) \in \widetilde{A}_1\} = \{x \notin A : T(x) \notin A, \, T^2(x) \in A\}$ --- points outside $A$ that first enter $A$ in exactly two steps.
+  \item In general, $\widetilde{A}_j = \{x \notin A : T(x) \notin A, \ldots, T^{j-1}(x) \notin A, T^j(x) \in A\}$ for $j \ge 1$.
+\end{itemize}
+
+So $\widetilde{A}_j$ (for $j \ge 1$) is the set of points in $A^c$ whose first hitting time of $A$ is exactly $j$.
+
+\textbf{Claim 1:} *The sets $\widetilde{A}_0, \widetilde{A}_1, \widetilde{A}_2, \ldots$ are pairwise disjoint.*
+
+This is clear: $\widetilde{A}_0 = A$, while $\widetilde{A}_j \subset A^c$ for $j \ge 1$. For $j, k \ge 1$ with $j \ne k$, the first hitting times to $A$ differ, so the sets are disjoint.
+
+\textbf{Claim 2:} *$\mu\!\left(\bigsqcup_{j=0}^\infty \widetilde{A}_j\right) = 1$ when $T$ is ergodic.*
+
+Let $W = X \setminus \bigsqcup_{j=0}^\infty \widetilde{A}_j$. This is the set of points in $A^c$ that \textit{never} enter $A$:
+
+\[
+W = \{x \in A^c : T^n(x) \notin A \text{ for all } n \ge 1\} = \{x \in X : T^n(x) \notin A \text{ for all } n \ge 0\}.
+\]
+
+Note that $T^{-1}(W) \subset W$: if $T(x) \in W$ then $T^n(T(x)) \notin A$ for all $n \ge 0$, and $T(x) \notin A$ (since $T(x) \in W \subset A^c$), so $T^n(x) \notin A$ for all $n \ge 1$. If also $x \notin A$, then $x \in W$. If $x \in A$, then $x \notin W$. So $T^{-1}(W) \subset W \cup A$.
+
+Actually, more carefully: $W = \bigcap_{n=0}^\infty T^{-n}(A^c)$. Therefore $T^{-1}(W) = \bigcap_{n=0}^\infty T^{-(n+1)}(A^c) = \bigcap_{n=1}^\infty T^{-n}(A^c) \supset W$ (since $W = A^c \cap \bigcap_{n=1}^\infty T^{-n}(A^c) \subset \bigcap_{n=1}^\infty T^{-n}(A^c) = T^{-1}(W)$).
+
+So $W \subset T^{-1}(W)$. By measure-preservation, $\mu(T^{-1}(W)) = \mu(W)$, and since $W \subset T^{-1}(W)$, we get $\mu(T^{-1}(W) \setminus W) = 0$.
+
+Now $T^{-1}(W) \setminus W \subset A$ (the only points in $T^{-1}(W)$ that could fail to be in $W$ are those in $A$, since $T^{-1}(W) \subset \bigcap_{n=1}^\infty T^{-n}(A^c)$ and $W = A^c \cap \bigcap_{n=1}^\infty T^{-n}(A^c)$, so $T^{-1}(W) \setminus W \subset A$).
+
+Consider the $T$-invariant set $\widetilde{W} = \bigcap_{n=0}^\infty T^{-n}(A^c)$. This equals $W$ as defined above. We have $T^{-1}(\widetilde{W}) = \bigcap_{n=1}^\infty T^{-n}(A^c) \supset \widetilde{W}$, but $T^{-1}(\widetilde{W})$ is not generally equal to $\widetilde{W}$.
+
+Let us instead consider $\widehat{W} = \bigcap_{n \in \mathbb{Z}_{\ge 0}} T^{-n}(A^c)$, which is the same as $W$. This set satisfies $T^{-1}(W) \supset W$. Now define $W^* = \bigcup_{n=0}^\infty T^{-n}(W)$. Then $T^{-1}(W^*) = \bigcup_{n=1}^\infty T^{-n}(W) \subset W^*$, and $W^* \subset T^{-1}(W^*)$ (taking $n = 0$), so $T^{-1}(W^*) = W^*$: the set $W^*$ is strictly $T$-invariant.
+
+Since $W \subset A^c$ and $T^{-n}(W) \subset T^{-n}(A^c)$, the set $W^*$ is disjoint from $A$: if $x \in W^* \cap A$, then $x \in T^{-n}(W)$ for some $n$, so $T^n(x) \in W \subset A^c$. But $x \in A$, so $T^n(x) \notin A$ for all $n \ge 0$ would be needed for $T^n(x) \in W$, which contradicts $x \in A$ when $n = 0$. Wait, $T^n(x) \in W$ means $T^m(T^n(x)) \notin A$ for all $m \ge 0$, which is compatible with $x \in A$ (as long as $n \ge 1$). So the issue is that $W^*$ could contain points of $A$.
+
+Let us reconsider. The set $W^*$ is $T$-invariant and $W^* \cap A = \emptyset$ would imply $\mu(W^*) = 0$ by ergodicity (since $A$ has positive measure). But we need to verify $W^* \cap A = \emptyset$.
+
+If $x \in A \cap W^*$, then $T^n(x) \in W$ for some $n \ge 0$. If $n = 0$, then $x \in W \subset A^c$, contradicting $x \in A$. If $n \ge 1$, then $T^n(x) \in W$, meaning $T^m(T^n(x)) \notin A$ for all $m \ge 0$, i.e., $T^k(x) \notin A$ for all $k \ge n$. But $x \in A$, so the orbit visits $A$ at time 0 and never again after time $n-1$. Now, is $x \in A$ with only finitely many visits to $A$ possible under an ergodic measure? Actually, by Poincare recurrence, $\mu$-almost every $x \in A$ returns to $A$ infinitely often, so $\mu(A \cap W^*) = 0$. Since $T^{-1}(W^*) = W^*$ and $T$ is ergodic, $\mu(W^*) = 0$ or $\mu(W^*) = 1$. But $\mu(A \cap W^*) = 0$ and $\mu(A) > 0$, so $\mu(W^*) \ne 1$, hence $\mu(W^*) = 0$. In particular, $\mu(W) = 0$, proving Claim 2.
+
+\textbf{Claim 3:} *$\mu(\widetilde{A}_j) = \mu(B_j)$ for all $j \ge 0$, where $B_j = \{x \in A : \tau_A(x) > j\}$.*
+
+We prove this via the relation $T^{-1}(\widetilde{A}_j) = \widetilde{A}_{j+1} \sqcup A_{j+1}$ for $j \ge 0$, where $A_{j+1} = \{x \in A : \tau_A(x) = j+1\}$.
+
+Indeed, $x \in T^{-1}(\widetilde{A}_j)$ means $T(x) \in \widetilde{A}_j$. If $j = 0$: $T(x) \in A$. Then either $x \in A$ (so $\tau_A(x) = 1$ if $T(x) \in A$, meaning $x \in A_1$) or $x \notin A$ (so $x \in \widetilde{A}_1$). So $T^{-1}(\widetilde{A}_0) = T^{-1}(A) = \widetilde{A}_1 \sqcup A_1$ (where $A_1 = \{x \in A : T(x) \in A\}$).
+
+For general $j \ge 1$: $T(x) \in \widetilde{A}_j$ means $T(x) \notin A$ and $T^{j+1}(x) \in A$ and $T^k(x) \notin A$ for $1 \le k \le j$. If $x \in A$, then $\tau_A(x) = j+1$, so $x \in A_{j+1}$. If $x \notin A$, then $x \notin A$, $T(x) \notin A, \ldots, T^j(x) \notin A, T^{j+1}(x) \in A$, so $x \in \widetilde{A}_{j+1}$.
+
+Hence $T^{-1}(\widetilde{A}_j) = \widetilde{A}_{j+1} \sqcup A_{j+1}$, and by measure-preservation:
+
+\begin{equation}\label{eq:*}\tag{$*$}
+\mu(\widetilde{A}_j) = \mu(T^{-1}(\widetilde{A}_j)) = \mu(\widetilde{A}_{j+1}) + \mu(A_{j+1}).
+\end{equation}
+
+Also, $B_j = \bigsqcup_{n=j+1}^\infty A_n$ (points in $A$ with return time $> j$), so $B_j = B_{j+1} \sqcup A_{j+1}$, giving
+
+\begin{equation}\label{eq:**}\tag{$**$}
+\mu(B_j) = \mu(B_{j+1}) + \mu(A_{j+1}).
+\end{equation}
+
+From $(*)$ and $(**)$, $\mu(\widetilde{A}_j) - \mu(B_j) = \mu(\widetilde{A}_{j+1}) - \mu(B_{j+1})$ for all $j \ge 0$. Since $\widetilde{A}_0 = A = B_0$, we get $\mu(\widetilde{A}_j) = \mu(B_j)$ for all $j \ge 0$ by induction.
+
+\textbf{Conclusion.} Using Claims 2 and 3:
+
+\[
+\int_A \tau_A \, d\mu = \sum_{j=0}^{\infty} \mu(B_j) = \sum_{j=0}^{\infty} \mu(\widetilde{A}_j) = \mu\!\left(\bigsqcup_{j=0}^{\infty} \widetilde{A}_j\right) = \mu(X) = 1.
+\]
+
+Dividing by $\mu(A)$, the conditional expected return time is $1/\mu(A)$.
+\end{proof}
+
+
+\end{proof}
+
+\end{proof}
+
+\begin{remark}
+Kac's lemma has a beautiful intuitive content: the smaller the target set $A$, the longer it takes to return. A set occupying a fraction $p$ of the space requires, on average, $1/p$ iterates to revisit. This is consistent with a "random" exploration of the space, but the result holds for deterministic, measure-preserving maps --- provided they are ergodic.
+\end{remark}
+
+
+\begin{remark}
+The ergodicity hypothesis is essential. Without it, the result fails: consider $X = [0,1]$, $T = \operatorname{id}$, $A = [0, 1/2]$. Then $\tau_A(x) = 1$ for all $x \in A$ (since $T(x) = x \in A$), and $\int_A \tau_A \, d\mu = \mu(A) = 1/2 \ne 1$. The problem is that $T$ is not ergodic: the set $A$ is invariant with $0 < \mu(A) < 1$. Actually wait --- $\tau_A(x) = 1$ for $x \in A$, so $\int_A \tau_A \, d\mu = \int_A 1 \, d\mu = 1/2$. And indeed $1/\mu(A) = 2 \ne 1/\mu(A) \cdot \mu(A)$... Let me reconsider. For the identity, $\tau_A(x) = 1$ since $T^1(x) = x \in A$, so $\int_A \tau_A \, d\mu = 1 \cdot \mu(A) = 1/2$. Kac says this should be 1 if $T$ is ergodic; but the identity is not ergodic, and indeed $1/2 \ne 1$.
+\end{remark}
+
+
+\begin{remark}
+In the non-ergodic case, one still has the weaker statement $\int_A \tau_A \, d\mu \le 1$ (with equality holding if and only if $\bigsqcup_{j=0}^\infty \widetilde{A}_j$ has full measure, which is guaranteed by ergodicity but may fail otherwise).
+
+---
+\end{remark}
+
+
+\section{Summary}\label{sec:8.6}
+
+This chapter introduced the central objects of ergodic theory:
+
+\begin{enumerate}[nosep]
+  \item \textbf{Measure-preserving transformations}: maps that leave a measure invariant, formulated via preimages ($\mu(T^{-1}(A)) = \mu(A)$) or equivalently via integrals ($\int f \circ T = \int f$).
+
+  \item \textbf{Examples}: We verified measure-preservation for circle rotations (rigid translations), the doubling map (an expanding map with two branches), the baker's map (piecewise affine with unit Jacobian), Arnold's cat map (a hyperbolic toral automorphism with $\det = 1$), Bernoulli shifts (shifts on product spaces), and Hamiltonian flows (via Liouville's theorem and $\operatorname{div} = 0$).
+
+  \item \textbf{Invariant measures}: A given map typically has many invariant measures. The Krylov-Bogolyubov theorem guarantees existence for continuous maps on compact spaces, using weak-* compactness of the space of probability measures and Cesaro averaging along orbits.
+
+  \item \textbf{Physical measures}: Not all invariant measures are physically relevant. SRB measures govern the time averages observed for typical initial conditions and connect to the echo state property in reservoir computing.
+
+  \item \textbf{Recurrence}: The Poincare recurrence theorem (almost every point returns) and Kac's lemma (the expected return time to a set $A$ in an ergodic system is $1/\mu(A)$).
+\end{enumerate}
+
+In Chapter 9, we will develop the concept of ergodicity in depth and prove the Birkhoff ergodic theorem, which provides the bridge between time averages and space averages.
+
+
+\bigskip
+
+
+\section*{Exercises}
+
+\begin{exercise}
+tripling map** $T(x) = 3x \pmod{1}$.
+(a) Show that $T$ preserves Lebesgue measure.
+(b) Find all fixed points of $T$. For each fixed point $x_0$, verify that $\delta_{x_0}$ is a $T$-invariant measure.
+(c) Show that $T$ is measurably conjugate to the one-sided Bernoulli shift $B(1/3, 1/3, 1/3)$.
+\end{exercise}
+
+
+\begin{exercise}
+Let $T_\alpha: \mathbb{T} \to \mathbb{T}$ be the rotation $T_\alpha(x) = x + \alpha \pmod{1}$.
+(a) Show that when $\alpha = p/q$ with $\gcd(p,q) = 1$, the measure $\mu = \frac{1}{q}\sum_{j=0}^{q-1} \delta_{j/q}$ is $T_\alpha$-invariant.
+(b) Find all $T_\alpha$-invariant measures when $\alpha = 1/2$. (\textit{Hint:} every convex combination of the measure from (a) and Lebesgue measure works, but are there others?)
+(c) Show that when $\alpha$ is irrational, $T_\alpha$ is \textbf{uniquely ergodic}: the only $T_\alpha$-invariant Borel probability measure is Lebesgue measure. (\textit{Hint:} use the Fourier characterization. If $\mu$ is $T_\alpha$-invariant, then $\hat{\mu}(n) = e^{2\pi i n\alpha} \hat{\mu}(n)$ for all $n \in \mathbb{Z}$.)
+\end{exercise}
+
+
+\begin{exercise}
+tent map**:
+
+\[
+T(x) = \begin{cases} 2x & \text{if } 0 \le x < 1/2, \\ 2 - 2x & \text{if } 1/2 \le x < 1. \end{cases}
+\]
+
+(a) Show that $T$ preserves Lebesgue measure on $[0,1)$.
+(b) Show that $T^2$ (the second iterate) is conjugate to the doubling map via a suitable homeomorphism. (\textit{Hint:} consider the map $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$, or work out $T^2$ directly.)
+\end{exercise}
+
+
+\begin{exercise}
+The \textbf{Gauss map} $G: (0,1] \to [0,1)$ is defined by $G(x) = \{1/x\}$ (the fractional part of $1/x$).
+(a) Show that the \textbf{Gauss measure} $d\mu(x) = \frac{1}{\log 2} \cdot \frac{1}{1+x} \, dx$ is $G$-invariant. (\textit{Hint:} check the invariance on intervals $[a, b] \subset (0,1]$ by computing $G^{-1}([a,b])$ and summing the resulting series.)
+(b) Is Lebesgue measure $G$-invariant? Justify your answer.
+\end{exercise}
+
+
+\begin{exercise}
+Let $T_1: (X_1, \mu_1) \to (X_1, \mu_1)$ be measure-preserving, and let $\phi: X_1 \to \mathbb{R}/\mathbb{Z}$ be measurable. Define $T: X_1 \times \mathbb{R}/\mathbb{Z} \to X_1 \times \mathbb{R}/\mathbb{Z}$ by
+
+\[
+T(x, y) = (T_1(x), \, y + \phi(x) \pmod{1}).
+\]
+
+Show that $T$ preserves the product measure $\mu_1 \times \lambda$, where $\lambda$ is Lebesgue measure on $\mathbb{R}/\mathbb{Z}$.
+\end{exercise}
+
+
+\begin{exercise}
+Consider the doubling map on $[0,1)$ with Lebesgue measure (which is ergodic; you may assume this).
+(a) Let $A = [0, 1/4)$. Compute the expected return time $\mathbb{E}[\tau_A]$ using Kac's lemma.
+(b) Let $A = [0, 1/4)$. Compute $\mathbb{E}[\tau_A]$ directly by finding the return time function $\tau_A(x)$ for each $x \in A$ and integrating, as follows. Show that for $x \in [0, 1/8)$, $\tau_A(x) = 1$; for $x \in [1/8, 1/4)$, determine $\tau_A(x)$ by tracing the orbit and verify that the integral gives $1/\mu(A) = 4$ for the conditional expectation.
+(c) Let $A = [1/3, 2/3)$. What does Kac's lemma predict for $\mathbb{E}[\tau_A \mid x \in A]$? (\textit{Note:} the detailed verification is more involved here.)
+\end{exercise}
+
+
+\begin{exercise}
+Consider the doubling map $T(x) = 2x \pmod 1$.
+(a) Show that $x = 0$ and $x = 1/3$ are fixed points of $T$ and $T^2$ respectively, and that $x = 1/7, 2/7, 4/7$ is a periodic orbit of period 3. Construct explicit invariant probability measures supported on each of these orbits.
+(b) Show that the set $\mathcal{M}_T$ of all $T$-invariant Borel probability measures on $[0,1)$ is convex: if $\mu, \nu \in \mathcal{M}_T$ and $0 \le \alpha \le 1$, then $\alpha \mu + (1-\alpha)\nu \in \mathcal{M}_T$.
+(c) Show that $\mathcal{M}_T$ is closed in the weak-* topology.
+\end{exercise}
+
+
+\begin{exercise}
+State and prove the analogue of the Krylov-Bogolyubov theorem for continuous flows $\varphi_t: X \to X$ on a compact metrizable space $X$. (\textit{Hint:} replace $\frac{1}{n}\sum_{j=0}^{n-1} \delta_{T^j(x_0)}$ with $\frac{1}{T}\int_0^T \delta_{\varphi_t(x_0)} \, dt$ and adapt the proof.)
+
+---
+\end{exercise}
+
+
+\section*{Recommended Reading}
+
+\begin{itemize}[nosep]
+  \item \textbf{P. Walters}, \textit{An Introduction to Ergodic Theory}, Springer, 1982. Chapter 1 covers measure-preserving transformations and their basic properties. This is one of the most accessible introductions to the subject.
+
+  \item \textbf{K. Petersen}, \textit{Ergodic Theory}, Cambridge University Press, 1983. Chapters 2-3 provide a careful treatment of measure-preserving systems, the Poincare recurrence theorem, and the Krylov-Bogolyubov theorem, with many examples.
+
+  \item \textbf{R. Mane}, \textit{Ergodic Theory and Differentiable Dynamics}, Springer, 1987. A more advanced treatment with emphasis on smooth dynamics. The discussion of SRB measures and physical measures in Chapter III is particularly relevant to Section 8.4.
+
+  \item \textbf{A. Katok and B. Hasselblatt}, \textit{Introduction to the Modern Theory of Dynamical Systems}, Cambridge University Press, 1995. The definitive reference for the interaction between dynamics and ergodic theory. Part II develops the measure-theoretic foundations in great depth.
+
+  \item \textbf{M. Viana and K. Oliveira}, \textit{Foundations of Ergodic Theory}, Cambridge University Press, 2016. A modern textbook with an excellent treatment of invariant measures, SRB measures, and their role in dynamical systems.
+\end{itemize}
+
+For the original work on SRB measures, the foundational papers are:
+
+\begin{itemize}[nosep]
+  \item \textbf{Ya. G. Sinai}, \textit{Gibbs measures in ergodic theory}, Russian Mathematical Surveys 27 (1972), 21--69.
+  \item \textbf{D. Ruelle}, \textit{A measure associated with Axiom A attractors}, American Journal of Mathematics 98 (1976), 619--654.
+  \item \textbf{R. Bowen and D. Ruelle}, \textit{The ergodic theory of Axiom A flows}, Inventiones Mathematicae 29 (1975), 181--202.
+\end{itemize}
