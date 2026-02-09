@@ -7,15 +7,15 @@ In this chapter we study the simplest class of dynamical systems: iteration of a
 \begin{definition}\label{def:2.1.}
 Let $X$ be a set. A \textit{discrete dynamical system} on $X$ is a map $f: X \to X$. The \textit{orbit} of a point $x_0 \in X$ under $f$ is the sequence
 
-$$
+\[
 \mathcal{O}(x\_0) = \{x\_0, \, f(x\_0), \, f^2(x\_0), \, f^3(x\_0), \, \ldots\},
-$$
+\]
 
 where $f^n$ denotes the $n$-th iterate of $f$:
 
-$$
+\[
 f^0(x) = x, \qquad f^{n+1}(x) = f(f^n(x)).
-$$
+\]
 
 We write $x_n = f^n(x_0)$ and call $x_n$ the *state at time $n$*. The set $X$ is the \textit{state space} or \textit{phase space}.
 \end{definition}
@@ -60,21 +60,21 @@ A fixed point is a periodic point of period 1. If $f^n(x^*) = x^*$ but $n$ is no
 \begin{example}
 Consider $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x^2 - 1$. The fixed points satisfy $x^2 - 1 = x$, i.e., $x^2 - x - 1 = 0$, giving
 
-$$
+\[
 x^* = \frac{1 \pm \sqrt{5}}{2}.
-$$
+\]
 
 For period-2 orbits, we solve $f^2(x) = x$. We have $f^2(x) = f(x^2-1) = (x^2 - 1)^2 - 1 = x^4 - 2x^2$. Setting $f^2(x) = x$:
 
-$$
+\[
 x^4 - 2x^2 - x = 0 \implies x(x^3 - 2x - 1) = 0.
-$$
+\]
 
 Since fixed points of $f$ are also fixed points of $f^2$, the polynomial $x^2 - x - 1$ divides $x^3 - 2x - 1$. Performing the division:
 
-$$
+\[
 x^3 - 2x - 1 = (x^2 - x - 1)(x + 1).
-$$
+\]
 
 So the solutions of $f^2(x) = x$ that are \textit{not} fixed points of $f$ are $x = 0$ and $x = -1$. Check: $f(0) = -1$ and $f(-1) = 0$. Thus $\{0, -1\}$ is a period-2 orbit.
 \end{example}
@@ -193,7 +193,7 @@ The second fixed point $x_1^*$ lies in $(0,1)$ only when $r > 1$. At $r = 1$, th
 
 The derivative is $f_r'(x) = r(1 - 2x)$.
 
-**At $x_0^* = 0$:** The multiplier is $f_r'(0) = r$.
+\textbf{At $x_0^* = 0$:} The multiplier is $f_r'(0) = r$.
 
 \begin{itemize}[nosep]
   \item For $0 < r < 1$: $|f_r'(0)| = r < 1$, so $x_0^* = 0$ is attracting. (The population dies out.)
@@ -201,7 +201,7 @@ The derivative is $f_r'(x) = r(1 - 2x)$.
   \item At $r = 1$: neutral.
 \end{itemize}
 
-**At $x_1^* = (r-1)/r$:** The multiplier is
+\textbf{At $x_1^* = (r-1)/r$:} The multiplier is
 
 \[
 f_r'\!\left(\frac{r-1}{r}\right) = r\!\left(1 - \frac{2(r-1)}{r}\right) = r \cdot \frac{r - 2r + 2}{r} = 2 - r.
@@ -299,7 +299,7 @@ The 2-cycle loses stability when the multiplier reaches $-1$:
 
 So the 2-cycle is attracting for $3 < r < 1 + \sqrt{6}$.
 
-**Numerical check at $r = 3.2$:**
+\textbf{Numerical check at $r = 3.2$:}
 
 \[
 p = \frac{4.2 + \sqrt{4.2 \cdot 0.2}}{6.4} = \frac{4.2 + \sqrt{0.84}}{6.4} \approx \frac{4.2 + 0.9165}{6.4} \approx 0.7995.
@@ -348,9 +348,9 @@ The resulting zigzag pattern between the curve and the diagonal traces out the o
 The geometry of the cobweb diagram directly reveals the dynamics:
 
 \begin{itemize}[nosep]
-  \item **Attracting fixed point with $0 < f'(x^*) < 1$:** The cobweb spirals inward in a "staircase" pattern, stepping monotonically toward the fixed point (where the curve and diagonal intersect).
+  \item \textbf{Attracting fixed point with $0 < f'(x^*) < 1$:} The cobweb spirals inward in a "staircase" pattern, stepping monotonically toward the fixed point (where the curve and diagonal intersect).
 
-  \item **Attracting fixed point with $-1 < f'(x^*) < 0$:** The cobweb spirals inward, but now it oscillates --- the iterates alternate between sides of $x^*$, converging in a spiral.
+  \item \textbf{Attracting fixed point with $-1 < f'(x^*) < 0$:} The cobweb spirals inward, but now it oscillates --- the iterates alternate between sides of $x^*$, converging in a spiral.
 
   \item \textbf{Repelling fixed point:} The cobweb moves outward, away from the intersection.
 
@@ -407,21 +407,21 @@ When are two dynamical systems "the same"? The right notion of equivalence in dy
 \begin{definition}\label{def:2.10.}
 Let $f: X \to X$ and $g: Y \to Y$ be continuous maps on topological spaces $X$ and $Y$. We say $f$ and $g$ are \textit{topologically conjugate} if there exists a homeomorphism $h: X \to Y$ such that
 
-$$
+\[
 h \circ f = g \circ h,
-$$
+\]
 
 or equivalently, $g = h \circ f \circ h^{-1}$. The map $h$ is called a \textit{conjugacy}.
 
 The condition $h \circ f = g \circ h$ means that the following diagram commutes:
 
-$$
+\[
 \begin{array}{ccc}
 X \& \xrightarrow{f} \& X \\
 \downarrow h \& \& \downarrow h \\
 Y \& \xrightarrow{g} \& Y
 \end{array}
-$$
+\]
 \end{definition}
 
 
@@ -676,9 +676,9 @@ Let $f(x) = rx(1-x)$ with $r = 3.84$. At this parameter value, the logistic map 
 \begin{exercise}
 Define $f: [0,1] \to [0,1]$ by
 
-$$
+\[
 f(x) = \begin{cases} 2x + 1/2 \& \text{if } 0 \leq x < 1/4, \\ 3/2 - 2x \& \text{if } 1/4 \leq x \leq 1/2, \\ f(1-x) \& \text{if } 1/2 < x \leq 1. \end{cases}
-$$
+\]
 
 (a) Sketch the graph of $f$ and verify that it is a continuous map from $[0,1]$ to $[0,1]$.
 

@@ -67,7 +67,9 @@ In one dimension the situation is simpler: a system $\dot{x} = f(x)$ on a compac
 
 \textbf{The upshot.} Bifurcations occur precisely at the boundary of structural stability. They are associated with the failure of hyperbolicity: an eigenvalue of the linearization at a fixed point crosses the imaginary axis (for flows) or crosses the unit circle (for maps). This is the guiding principle that organizes the entire theory.
 
----
+
+\bigskip
+
 \end{theorem}
 
 
@@ -319,7 +321,9 @@ The center manifold is generally \textit{not} unique (it is $C^k$ for any finite
 
 We will see this recipe in action for the Hopf bifurcation in the next section.
 
----
+
+\bigskip
+
 \end{theorem}
 
 
@@ -507,7 +511,7 @@ In the saddle-node bifurcation for maps, the multiplier leaves the unit circle t
 
 \textbf{Normal form.} Near the bifurcation, the second iterate $g^2_\mu = g_\mu \circ g_\mu$ undergoes a pitchfork bifurcation (by the symmetry $g^2(x) - x^*$ inherits from the map structure). The period-2 points are precisely the non-trivial fixed points of $g^2_\mu$.
 
-**Why $\lambda = -1$?** When the multiplier is $-1$, successive iterates alternate on opposite sides of the fixed point with equal amplitude: $x_{n+1} - x^* \approx -(x_n - x^*)$. This alternation naturally produces a period-2 pattern when the amplitude is stabilized by nonlinear terms.
+\textbf{Why $\lambda = -1$?} When the multiplier is $-1$, successive iterates alternate on opposite sides of the fixed point with equal amplitude: $x_{n+1} - x^* \approx -(x_n - x^*)$. This alternation naturally produces a period-2 pattern when the amplitude is stabilized by nonlinear terms.
 \end{theorem}
 
 
@@ -531,7 +535,7 @@ Stability of $x_0^* = 0$: $f'_r(0) = r$. Stable for $r < 1$, unstable for $r > 1
 
 Stability of $x_1^* = 1 - 1/r$: $f'_r(x_1^*) = r - 2r x_1^* = r - 2(r-1) = 2 - r$. So $|f'_r(x_1^*)| < 1$ iff $-1 < 2 - r < 1$, i.e., $1 < r < 3$. At $r = 3$, the multiplier equals $-1$ and a period-doubling bifurcation occurs.
 
-**The first period-doubling ($r = 3$).** For $r$ slightly above 3, the fixed point $x_1^*$ is unstable, and a stable period-2 orbit $\{p, q\}$ appears. These are the solutions of $f_r^2(x) = x$ other than the fixed points. The period-2 orbit is stable for $r \in (3, 1 + \sqrt{6})$, where $1 + \sqrt{6} \approx 3.449$.
+\textbf{The first period-doubling ($r = 3$).} For $r$ slightly above 3, the fixed point $x_1^*$ is unstable, and a stable period-2 orbit $\{p, q\}$ appears. These are the solutions of $f_r^2(x) = x$ other than the fixed points. The period-2 orbit is stable for $r \in (3, 1 + \sqrt{6})$, where $1 + \sqrt{6} \approx 3.449$.
 
 Let us verify the birth of the period-2 orbit. We need to solve $f_r(f_r(x)) = x$. Define $F(x) = f_r^2(x) = r \cdot f_r(x) \cdot (1 - f_r(x)) = r^2 x(1-x)(1 - rx + rx^2)$. Since the fixed points of $f_r$ are also fixed points of $f_r^2$, we can factor:
 
@@ -553,7 +557,7 @@ x = \frac{r(r+1) \pm \sqrt{r^2(r+1)^2 - 4r^2(r+1)}}{2r^2} = \frac{(r+1) \pm \sqr
 
 These are real and distinct for $r > 3$, confirming the birth of the period-2 orbit at $r = 3$.
 
-**The second period-doubling ($r \approx 3.449$).** At $r = r_2 = 1 + \sqrt{6} \approx 3.449$, the multiplier of the period-2 orbit (computed as the product $(f_r^2)'(p) = f'_r(p) \cdot f'_r(q)$ by the chain rule) reaches $-1$. The period-2 orbit loses stability, and a stable period-4 orbit is born.
+\textbf{The second period-doubling ($r \approx 3.449$).} At $r = r_2 = 1 + \sqrt{6} \approx 3.449$, the multiplier of the period-2 orbit (computed as the product $(f_r^2)'(p) = f'_r(p) \cdot f'_r(q)$ by the chain rule) reaches $-1$. The period-2 orbit loses stability, and a stable period-4 orbit is born.
 
 \textbf{The cascade continues.} This process repeats: each period-$2^n$ orbit loses stability at a parameter value $r_n$, spawning a stable period-$2^{n+1}$ orbit. The parameter values accumulate:
 
@@ -622,7 +626,9 @@ This is analogous to the universality of critical exponents in statistical mecha
 
 The convergence to $\delta \approx 4.6692$ is evident.
 
----
+
+\bigskip
+
 \end{definition}
 
 
@@ -646,13 +652,13 @@ This produces a picture that simultaneously reveals fixed points, periodic orbit
 
 The bifurcation diagram of the logistic map $f_r(x) = rx(1-x)$ for $r \in [2.5, 4]$ is one of the iconic images of nonlinear science. Its features include:
 
-**Region $r \in [2.5, 3)$:** A single curve --- the stable fixed point $x_1^* = 1 - 1/r$. The attractor is a single point for each $r$.
+\textbf{Region $r \in [2.5, 3)$:} A single curve --- the stable fixed point $x_1^* = 1 - 1/r$. The attractor is a single point for each $r$.
 
-**Region $r \in [3, 3.449\ldots)$:** The fixed point has bifurcated; the attractor consists of 2 points (the period-2 orbit). Two curves are visible, branching from the fixed-point curve.
+\textbf{Region $r \in [3, 3.449\ldots)$:} The fixed point has bifurcated; the attractor consists of 2 points (the period-2 orbit). Two curves are visible, branching from the fixed-point curve.
 
-**Region $r \in [3.449\ldots, 3.570\ldots)$:** Successive period-doublings produce period-4, period-8, period-16, ... orbits. The diagram shows a cascade of finer and finer branching, accumulating at $r_\infty \approx 3.5699$.
+\textbf{Region $r \in [3.449\ldots, 3.570\ldots)$:} Successive period-doublings produce period-4, period-8, period-16, ... orbits. The diagram shows a cascade of finer and finer branching, accumulating at $r_\infty \approx 3.5699$.
 
-**Region $r \in [3.570\ldots, 4]$:\textbf{ Mostly chaotic behavior, with the attractor consisting of bands of points (indicating sensitive dependence). However, this region is punctuated by }windows of periodicity**.
+\textbf{Region $r \in [3.570\ldots, 4]$:\textbf{ Mostly chaotic behavior, with the attractor consisting of bands of points (indicating sensitive dependence). However, this region is punctuated by }windows of periodicity}.
 
 \subsection{Windows of Periodicity}\label{sec:5.6.3}
 
@@ -765,7 +771,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (d) Find the fixed points explicitly for small $\mu$ by expanding $\ln(1+x)$ to third order and solving.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -784,7 +792,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (d) Is the bifurcation at $\mu = 0$ affected by the cubic term? Discuss.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -805,7 +815,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (e) What happens to a trajectory starting near $x = 0$ if $\mu$ is slowly increased from a negative value past zero?
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -829,7 +841,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (e) Now consider the modified system where the cubic term is $+r^3$ instead of $-r^3$ (i.e., $\dot{r} = r(\mu + r^2)$). What changes? Sketch the phase portraits for $\mu < 0$, $\mu = 0$, and $\mu > 0$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -844,7 +858,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (d) Compute numerically (by iterating the map) the first six period-doubling bifurcation values $r_1, \ldots, r_6$. Estimate the Feigenbaum ratio $\delta_n$ for $n = 3, 4, 5$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -866,7 +882,9 @@ Bifurcation theory is not merely a catalogue of transitions. It reveals a deep s
 
 (d) Write the reduced equation on the center manifold: $\dot{x} = \mu x - x h(x)$. What type of bifurcation occurs at $\mu = 0$?
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -887,7 +905,9 @@ where $\mu$ is a parameter.
 
 (d) The bifurcation at $\mu = 1$ involves the collision and mutual destruction of two limit cycles. Why can this not be detected by linearization at a fixed point?
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -902,7 +922,9 @@ where $\mu$ is a parameter.
 
 (d) Discuss: why does a map with such a different functional form produce the same universal constant?
 
----
+
+\bigskip
+
 \end{exercise}
 
 

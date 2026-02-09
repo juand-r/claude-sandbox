@@ -161,9 +161,9 @@ where $A^T$ is the transpose. By orthogonality of characters, this integral equa
 \begin{cases} 1 & \text{if } (A^T)^n \mathbf{m} = \mathbf{n}, \\ 0 & \text{if } (A^T)^n \mathbf{m} \ne \mathbf{n}. \end{cases}
 \]
 
-**Case 1: $\mathbf{m} = \mathbf{0}$ or $\mathbf{n} = \mathbf{0}$.** If $\mathbf{m} = \mathbf{0}$, then $\langle e_{\mathbf{0}} \circ T_A^n, e_{\mathbf{n}} \rangle = \langle 1, e_{\mathbf{n}} \rangle = \delta_{\mathbf{n}, \mathbf{0}}$, and $\int e_{\mathbf{0}} \, d\mu \cdot \int \bar{e}_{\mathbf{n}} \, d\mu = \delta_{\mathbf{n}, \mathbf{0}}$. So (10.2) holds trivially.
+\textbf{Case 1: $\mathbf{m} = \mathbf{0}$ or $\mathbf{n} = \mathbf{0}$.} If $\mathbf{m} = \mathbf{0}$, then $\langle e_{\mathbf{0}} \circ T_A^n, e_{\mathbf{n}} \rangle = \langle 1, e_{\mathbf{n}} \rangle = \delta_{\mathbf{n}, \mathbf{0}}$, and $\int e_{\mathbf{0}} \, d\mu \cdot \int \bar{e}_{\mathbf{n}} \, d\mu = \delta_{\mathbf{n}, \mathbf{0}}$. So (10.2) holds trivially.
 
-**Case 2: $\mathbf{m} \ne \mathbf{0}$.** Since $A$ is hyperbolic, all eigenvalues of $A^T$ lie off the unit circle. For any $\mathbf{m} \ne \mathbf{0}$, we have $\|(A^T)^n \mathbf{m}\| \to \infty$ as $n \to \infty$. (Indeed, decompose $\mathbf{m}$ in the basis of generalized eigenvectors of $A^T$: at least one component lies along an eigenspace with eigenvalue of modulus $> 1$, and since $\mathbf{m} \ne \mathbf{0}$ and $A^T$ has no eigenvalue of modulus 1, the expanding directions dominate.) Therefore, for any fixed $\mathbf{n} \in \mathbb{Z}^d$, the equation $(A^T)^n \mathbf{m} = \mathbf{n}$ can hold for at most finitely many values of $n$. Hence for all sufficiently large $n$,
+\textbf{Case 2: $\mathbf{m} \ne \mathbf{0}$.} Since $A$ is hyperbolic, all eigenvalues of $A^T$ lie off the unit circle. For any $\mathbf{m} \ne \mathbf{0}$, we have $\|(A^T)^n \mathbf{m}\| \to \infty$ as $n \to \infty$. (Indeed, decompose $\mathbf{m}$ in the basis of generalized eigenvectors of $A^T$: at least one component lies along an eigenspace with eigenvalue of modulus $> 1$, and since $\mathbf{m} \ne \mathbf{0}$ and $A^T$ has no eigenvalue of modulus 1, the expanding directions dominate.) Therefore, for any fixed $\mathbf{n} \in \mathbb{Z}^d$, the equation $(A^T)^n \mathbf{m} = \mathbf{n}$ can hold for at most finitely many values of $n$. Hence for all sufficiently large $n$,
 \[
 \langle e_{\mathbf{m}} \circ T_A^n, e_{\mathbf{n}} \rangle = 0 = \int e_{\mathbf{m}} \, d\mu \cdot \int \bar{e}_{\mathbf{n}} \, d\mu,
 \]
@@ -213,7 +213,6 @@ Chacon [Cha69] proved that this transformation is weakly mixing. The proof proce
 On the other hand, Chacon also showed that $T$ is \textit{not} strongly mixing. The idea is to find sets $A$ for which $\mu(T^{-n}A \cap A)$ does not converge to $\mu(A)^2$ along a specific subsequence. Let $A$ be a level in one of the columns. Along the subsequence $n_k = 3^k$ (the height of the columns at stage $k$), a non-trivial fraction of $A$ maps back into $A$ in a structured way that prevents the correlations from decaying. More precisely, one can show that $\limsup_{n} \mu(T^{-n}A \cap A) > \mu(A)^2$ along the subsequence of column heights.
 
 A full proof can be found in Petersen [Pet89, §3.5] or in the original paper of Chacon [Cha69]. This example is of great importance: it demonstrates that the mixing hierarchy is strict.
-\end{proof}
 
 
 
@@ -301,7 +300,8 @@ We now state and prove the main spectral characterizations.
 \textbf{Lemma 10.15.} Suppose $U_T f = \lambda f$ for some $f \in L^2 \setminus \{0\}$ and $\lambda \in \mathbb{C}$. Then $|\lambda| = 1$ and $|f|$ is $T$-invariant a.e. If in addition $T$ is ergodic, then $|f|$ is constant a.e.
 
 \begin{proof}
-* Since $U_T$ is an isometry, $\|f\| = \|U_T f\| = |\lambda| \|f\|$, so $|\lambda| = 1$. Moreover, $|f| \circ T = |f \circ T| = |\lambda f| = |f|$ a.e. $\quad\square$
+Since $U_T$ is an isometry, $\|f\| = \|U_T f\| = |\lambda| \|f\|$, so $|\lambda| = 1$. Moreover, $|f| \circ T = |f \circ T| = |\lambda f| = |f|$ a.e.
+\end{proof}
 
 \textbf{Theorem 10.16 (Spectral characterization of weak mixing).} $T$ is weakly mixing if and only if the only eigenvalue of $U_T$ is $\lambda = 1$ (with eigenspace $\mathbb{C} \cdot \mathbf{1}$). Equivalently, $U_T$ restricted to $L^2_0 = \{f \in L^2 : \int f \, d\mu = 0\}$ has \textit{continuous spectrum} (no eigenvalues).
 
@@ -411,7 +411,7 @@ For reservoir computing, the decay of correlations is directly connected to the 
 
 \section{Multiple Mixing and Rokhlin's Problem}\label{sec:10.7}
 
-**Definition 10.24 ($k$-mixing).** A measure-preserving transformation $T$ is *$k$-mixing\textit{ (or }mixing of order $k$*) if for all measurable sets $A_0, A_1, \ldots, A_k$,
+\textbf{Definition 10.24 ($k$-mixing).} A measure-preserving transformation $T$ is *$k$-mixing\textit{ (or }mixing of order $k$*) if for all measurable sets $A_0, A_1, \ldots, A_k$,
 \[
 \mu\!\left(A_0 \cap T^{-n_1}A_1 \cap T^{-(n_1 + n_2)}A_2 \cap \cdots \cap T^{-(n_1 + \cdots + n_k)}A_k\right) \to \mu(A_0)\mu(A_1)\cdots\mu(A_k)
 \]

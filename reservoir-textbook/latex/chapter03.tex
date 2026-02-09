@@ -67,7 +67,7 @@ It is worth pausing to compare the two settings.
 | Group property | $T^{n+m} = T^n \circ T^m$ | $\phi_{t+s} = \phi_t \circ \phi_s$ |
 | Orbits | Sequences $\{x_n\}$ | Curves $\{x(t)\}$ |
 
-One can always pass from continuous to discrete by \textbf{sampling} the flow: set $T = \phi_\tau$ for some fixed time step $\tau > 0$. The map $T$ is then called the **time-$\tau$ map** of the flow. This construction will reappear when we discuss Poincar\'e sections and, later, in the context of reservoir computing.
+One can always pass from continuous to discrete by \textbf{sampling} the flow: set $T = \phi_\tau$ for some fixed time step $\tau > 0$. The map $T$ is then called the \textbf{time-$\tau$ map} of the flow. This construction will reappear when we discuss Poincar\'e sections and, later, in the context of reservoir computing.
 
 
 \bigskip
@@ -218,7 +218,7 @@ For a diagonalizable matrix (when all Jordan blocks are $1 \times 1$), this simp
 
 Consider $\dot{x} = Ax$ with $A \in \mathbb{R}^{2 \times 2}$. The qualitative behavior of the flow is determined entirely by the eigenvalues of $A$. Let $\tau = \operatorname{tr}(A)$ and $\delta = \det(A)$. The eigenvalues satisfy $\lambda^2 - \tau\lambda + \delta = 0$, so $\lambda = \frac{1}{2}(\tau \pm \sqrt{\tau^2 - 4\delta})$. We classify:
 
-**Case 1: Two distinct real eigenvalues $\lambda_1, \lambda_2$ ($\tau^2 - 4\delta > 0$).**
+\textbf{Case 1: Two distinct real eigenvalues $\lambda_1, \lambda_2$ ($\tau^2 - 4\delta > 0$).}
 
 After a change of basis, the system becomes $\dot{y}_1 = \lambda_1 y_1$, $\dot{y}_2 = \lambda_2 y_2$, with solutions $y_1(t) = c_1 e^{\lambda_1 t}$, $y_2(t) = c_2 e^{\lambda_2 t}$. Trajectories satisfy $y_2 = C |y_1|^{\lambda_2/\lambda_1}$ for some constant $C$.
 
@@ -230,7 +230,7 @@ After a change of basis, the system becomes $\dot{y}_1 = \lambda_1 y_1$, $\dot{y
   \item \textbf{Saddle point} ($\lambda_1 < 0 < \lambda_2$): The eigendirection for $\lambda_1$ is the \textbf{stable manifold} $W^s$---trajectories starting on it approach the origin. The eigendirection for $\lambda_2$ is the \textbf{unstable manifold} $W^u$---trajectories starting on it escape the origin. All other trajectories approach the unstable manifold as $t \to +\infty$ and the stable manifold as $t \to -\infty$. The phase portrait has a characteristic "X" shape.
 \end{itemize}
 
-**Case 2: Complex eigenvalues $\lambda = \alpha \pm i\beta$ with $\beta \neq 0$ ($\tau^2 - 4\delta < 0$).**
+\textbf{Case 2: Complex eigenvalues $\lambda = \alpha \pm i\beta$ with $\beta \neq 0$ ($\tau^2 - 4\delta < 0$).}
 
 Here $\alpha = \tau/2$ and $\beta = \sqrt{4\delta - \tau^2}/2$. After a real change of basis, the system becomes
 
@@ -252,14 +252,14 @@ So $r(t) = r_0 e^{\alpha t}$ and $\theta(t) = \theta_0 + \beta t$. Trajectories 
   \item \textbf{Center} ($\alpha = 0$, i.e., $\tau = 0$): Trajectories are closed ellipses (circles in the eigenbasis). The origin is Lyapunov stable but not asymptotically stable.
 \end{itemize}
 
-**Case 3: Repeated eigenvalue $\lambda = \tau/2$ ($\tau^2 - 4\delta = 0$).**
+\textbf{Case 3: Repeated eigenvalue $\lambda = \tau/2$ ($\tau^2 - 4\delta = 0$).}
 
 \begin{itemize}[nosep]
   \item If $A$ is diagonalizable (i.e., $A = \lambda I$), then $e^{At} = e^{\lambda t}I$ and trajectories are rays from the origin. This is called a \textbf{star node}.
   \item If $A$ is not diagonalizable, the Jordan form is $J = \begin{pmatrix} \lambda & 1 \\ 0 & \lambda \end{pmatrix}$, giving $e^{Jt} = e^{\lambda t}\begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}$. Trajectories approach the origin tangent to the eigendirection. This is called a \textbf{degenerate (improper) node}.
 \end{itemize}
 
-**Case 4: Degenerate cases ($\delta = 0$).**
+\textbf{Case 4: Degenerate cases ($\delta = 0$).}
 
 When $\det(A) = 0$, at least one eigenvalue is zero, and the origin is not an isolated fixed point. Instead, there is an entire line (or plane) of fixed points. We exclude this case from the classification since the origin is not an isolated equilibrium.
 
@@ -294,7 +294,7 @@ For a two-dimensional system
 \dot{x}_1 = f_1(x_1, x_2), \qquad \dot{x}_2 = f_2(x_1, x_2),
 \]
 
-the **$x_1$-nullcline** is the set $\{(x_1, x_2) : f_1(x_1, x_2) = 0\}$ and the **$x_2$-nullcline** is $\{(x_1, x_2) : f_2(x_1, x_2) = 0\}$.
+the \textbf{$x_1$-nullcline} is the set $\{(x_1, x_2) : f_1(x_1, x_2) = 0\}$ and the \textbf{$x_2$-nullcline} is $\{(x_1, x_2) : f_2(x_1, x_2) = 0\}$.
 
 On the $x_1$-nullcline, $\dot{x}_1 = 0$, so the flow is purely vertical. On the $x_2$-nullcline, $\dot{x}_2 = 0$, so the flow is purely horizontal. Fixed points lie at intersections of the two nullclines. Between the nullclines, the signs of $\dot{x}_1$ and $\dot{x}_2$ are constant, which determines the general direction of the flow in each region.
 
@@ -326,7 +326,7 @@ We convert this to a first-order system by setting $x_1 = \theta$ (angle) and $x
 
 \textbf{Nullclines.} The $x_1$-nullcline is $x_2 = 0$ (the horizontal axis). The $x_2$-nullcline is $\sin x_1 = 0$, i.e., $x_1 = k\pi$ (vertical lines).
 
-**Linearization at $(0, 0)$.** The Jacobian (see Section 3.5) is
+\textbf{Linearization at $(0, 0)$.} The Jacobian (see Section 3.5) is
 
 \[
 Df(0,0) = \begin{pmatrix} 0 & 1 \\ -\cos 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.
@@ -334,7 +334,7 @@ Df(0,0) = \begin{pmatrix} 0 & 1 \\ -\cos 0 & 0 \end{pmatrix} = \begin{pmatrix} 0
 
 Eigenvalues: $\lambda = \pm i$. The origin is a \textbf{center} of the linearized system.
 
-**Linearization at $(\pi, 0)$.** The Jacobian is
+\textbf{Linearization at $(\pi, 0)$.} The Jacobian is
 
 \[
 Df(\pi, 0) = \begin{pmatrix} 0 & 1 \\ -\cos\pi & 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
@@ -387,7 +387,7 @@ where $x \geq 0$ is the prey population, $y \geq 0$ is the predator population, 
 
 The flow circulates counterclockwise around $(1,1)$.
 
-**Linearization at $(1,1)$.** The Jacobian of the right-hand side of (3.8) is
+\textbf{Linearization at $(1,1)$.} The Jacobian of the right-hand side of (3.8) is
 
 \[
 J = \begin{pmatrix} 1 - y & -x \\ y & x - 1 \end{pmatrix}.
@@ -409,7 +409,7 @@ H(x, y) = \delta x - \gamma \ln x + \beta y - \alpha \ln y.
 
 For our parameters: $H(x,y) = x - \ln x + y - \ln y$. One can verify $\dot{H} = 0$ along trajectories (exercise). Since $H$ is a strictly convex function with a unique minimum at $(1,1)$ (check: $H_x = 1 - 1/x = 0$ at $x=1$, $H_{xx} = 1/x^2 > 0$, similarly for $y$), its level sets are closed curves surrounding $(1,1)$. Therefore the trajectories in the first quadrant are closed orbits: both populations oscillate periodically, with predator oscillations lagging behind prey oscillations.
 
-**Linearization at $(0,0)$.** The Jacobian at the origin is $J(0,0) = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ with eigenvalues $1$ and $-1$: a \textbf{saddle}. The $x$-axis (prey only, no predators) and $y$-axis (predators only, no prey) are invariant; along the $x$-axis prey grow exponentially, along the $y$-axis predators die off exponentially.
+\textbf{Linearization at $(0,0)$.} The Jacobian at the origin is $J(0,0) = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ with eigenvalues $1$ and $-1$: a \textbf{saddle}. The $x$-axis (prey only, no predators) and $y$-axis (predators only, no prey) are invariant; along the $x$-axis prey grow exponentially, along the $y$-axis predators die off exponentially.
 
 
 \bigskip
@@ -458,7 +458,7 @@ In precise terms, $h$ conjugates the flow: $h(\phi_t(x)) = e^{Df(x^*)t} h(x)$ fo
 \textbf{Limitations.} The theorem has two important limitations:
 
 \begin{enumerate}[nosep]
-  \item **The conjugacy $h$ is only a homeomorphism, not a diffeomorphism.** It preserves the topology of the phase portrait but may distort angles, smoothness of trajectories, etc. (In fact, a smooth version---the Sternberg linearization theorem---holds under additional non-resonance conditions on the eigenvalues, but the general statement requires only continuity.)
+  \item \textbf{The conjugacy $h$ is only a homeomorphism, not a diffeomorphism.} It preserves the topology of the phase portrait but may distort angles, smoothness of trajectories, etc. (In fact, a smooth version---the Sternberg linearization theorem---holds under additional non-resonance conditions on the eigenvalues, but the general statement requires only continuity.)
 
   \item \textbf{The theorem says nothing about non-hyperbolic fixed points.} When the Jacobian has eigenvalues on the imaginary axis, the nonlinear terms can qualitatively change the dynamics. The most important example is the \textbf{center}: the linearization of the simple pendulum at $(0,0)$ is a center, and it happens that the nonlinear system also has a center there (due to the conserved energy), but this is \textit{not} guaranteed in general. A small perturbation can turn a linear center into a spiral. The determination of stability for non-hyperbolic fixed points requires more refined tools, such as center manifold theory or Lyapunov functions.
 \end{enumerate}
@@ -758,7 +758,9 @@ J = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}.
 \begin{exercise}
 (Lotka--Volterra conserved quantity.) For the system (3.8), verify that $H(x,y) = x - \ln x + y - \ln y$ satisfies $\dot{H} = 0$ along trajectories. Conclude that all orbits in the open first quadrant are periodic.
 
----
+
+\bigskip
+
 \end{exercise}
 
 

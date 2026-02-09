@@ -67,7 +67,7 @@ finite-dimensional outputs.
 The fundamental question of reservoir computing theory is:
 
 \begin{quote}
-**What class of functionals $\mathcal{H}: \mathcal{U}^{-\mathbb{N}} \to \mathbb{R}^m$ can be approximated by reservoir computers?**
+\textbf{What class of functionals $\mathcal{H}: \mathcal{U}^{-\mathbb{N}} \to \mathbb{R}^m$ can be approximated by reservoir computers?}
 \end{quote}
 
 This parallels the classical universal approximation question for feedforward neural
@@ -335,6 +335,7 @@ under the uniform norm.
 
 \subsection{Proof Sketch}\label{sec:15.3.2}
 
+\begin{proof}
 The proof proceeds in several stages. We present a streamlined version following
 Grigoryeva and Ortega (2018).
 
@@ -1018,11 +1019,11 @@ In practice, the readout is trained by \textit{ridge regression} (Tikhonov regul
 The regularization parameter $\lambda > 0$ controls the bias-variance trade-off:
 
 \begin{itemize}[nosep]
-  \item **Large $\lambda$**: The readout weights are small, the model is smooth, bias is
+  \item \textbf{Large $\lambda$}: The readout weights are small, the model is smooth, bias is
 \end{itemize}
   high, variance is low. The model underfits.
 \begin{itemize}[nosep]
-  \item **Small $\lambda$**: The readout weights can be large, the model is flexible,
+  \item \textbf{Small $\lambda$}: The readout weights can be large, the model is flexible,
 \end{itemize}
   bias is low, variance is high. The model overfits.
 
@@ -1094,7 +1095,7 @@ mild conditions, matching the rate for i.i.d. settings up to logarithmic factors
 The theoretical analysis yields several practical guidelines:
 
 \begin{enumerate}[nosep]
-  \item **Reservoir size $N$ should be matched to data size $T$.** A very large reservoir
+  \item \textbf{Reservoir size $N$ should be matched to data size $T$.} A very large reservoir
 \end{enumerate}
    with limited data will overfit unless strongly regularized.
 
@@ -1105,7 +1106,7 @@ The theoretical analysis yields several practical guidelines:
    selected by cross-validation.
 
 \begin{enumerate}[nosep]
-  \item **Stronger contraction (smaller $L$) improves generalization** at the cost of
+  \item \textbf{Stronger contraction (smaller $L$) improves generalization} at the cost of
 \end{enumerate}
    reduced expressiveness. This is another manifestation of the bias-variance trade-off.
 
@@ -1274,7 +1275,9 @@ that it scales as $\mathcal{O}(\sqrt{N/T})$.
 (d) Discuss the implications: if you double the reservoir size $N$, how much more
 training data $T$ do you need to maintain the same generalization error?
 
----
+
+\bigskip
+
 \end{exercise}
 
 

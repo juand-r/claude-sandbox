@@ -159,7 +159,7 @@ provided the limit exists.
 
 The Lyapunov exponent is $\ln 2$ for every orbit. This is consistent with what we already know: the doubling map doubles distances at each step (before the mod operation), and $\ln 2 > 0$ confirms sensitive dependence.
 
-**Example 6.9 (The logistic map at $r = 4$).** Consider $f(x) = 4x(1-x)$ on $[0,1]$. We compute $f'(x) = 4(1-2x)$. Rather than trying to evaluate the sum directly along a generic orbit, we exploit a conjugacy.
+\textbf{Example 6.9 (The logistic map at $r = 4$).} Consider $f(x) = 4x(1-x)$ on $[0,1]$. We compute $f'(x) = 4(1-2x)$. Rather than trying to evaluate the sum directly along a generic orbit, we exploit a conjugacy.
 
 The change of variables $x = \sin^2(\pi\theta/2)$ (equivalently, $\theta = \frac{2}{\pi}\arcsin(\sqrt{x})$) conjugates $f$ to the \textit{tent map} $g(\theta) = \min(2\theta, 2-2\theta)$ on $[0,1]$, which is in turn semi-conjugate to the doubling map.
 
@@ -405,7 +405,9 @@ The proof is technically formidable. It extends the methods of Jakobson (1981), 
 \begin{remark}
 Benedicks and Carleson's result applies for $b$ small and positive. Whether it holds at the "classical" value $b = 0.3$ with $a = 1.4$ is a separate, harder question that remains open, though all numerical evidence supports it.
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -679,7 +681,7 @@ The bound $2d + 1$ is analogous to the Whitney embedding theorem, which states t
 
 This "fractal" version of Takens' theorem is essential in practice. For example, the Lorenz attractor has $\dim_B \approx 2.06$, so $m \geq 5$ should suffice for reconstruction, rather than $m \geq 7$ (which would be required if we only knew $M = \mathbb{R}^3$, giving $2 \cdot 3 + 1 = 7$).
 
-**Choice of delay $\tau$.** The theorem holds for generic $\tau$ (or $\tau = 1$), but in practice the choice of $\tau$ matters for the quality of the reconstruction. If $\tau$ is too small, consecutive delays are highly correlated and the reconstructed attractor is "squashed" along the diagonal. If $\tau$ is too large, consecutive delays become effectively independent and the structure is lost. Common heuristics include choosing $\tau$ as the first zero of the autocorrelation function, or the first minimum of the mutual information.
+\textbf{Choice of delay $\tau$.} The theorem holds for generic $\tau$ (or $\tau = 1$), but in practice the choice of $\tau$ matters for the quality of the reconstruction. If $\tau$ is too small, consecutive delays are highly correlated and the reconstructed attractor is "squashed" along the diagonal. If $\tau$ is too large, consecutive delays become effectively independent and the structure is lost. Common heuristics include choosing $\tau$ as the first zero of the autocorrelation function, or the first minimum of the mutual information.
 
 \subsection{Significance for Reservoir Computing}\label{sec:6.7.4}
 
@@ -833,7 +835,9 @@ A four-dimensional system has Lyapunov exponents $\lambda_1 = 0.5$, $\lambda_2 =
 \begin{exercise}
 Construct a continuous map $f: [0,1] \to [0,1]$ that has sensitive dependence on initial conditions but is \textit{not} topologically transitive. \textit{Hint:} Consider a map with an attracting fixed point and a repelling fixed point, where orbits between them separate before converging.
 
----
+
+\bigskip
+
 \end{exercise}
 
 

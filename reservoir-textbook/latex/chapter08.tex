@@ -19,7 +19,7 @@ A measurable map $T: X \to X$ is called \textbf{measure-preserving} (with respec
 \mu(T^{-1}(A)) = \mu(A) \quad \text{for all } A \in \mathcal{B}.
 \]
 
-We also say that $\mu$ is **$T$-invariant**, or that $T$ \textbf{preserves} $\mu$. The quadruple $(X, \mathcal{B}, \mu, T)$ is called a \textbf{measure-preserving dynamical system}.
+We also say that $\mu$ is \textbf{$T$-invariant}, or that $T$ \textbf{preserves} $\mu$. The quadruple $(X, \mathcal{B}, \mu, T)$ is called a \textbf{measure-preserving dynamical system}.
 
 Here $T^{-1}(A) = \{x \in X : T(x) \in A\}$ denotes the preimage of $A$; it is not the image under some inverse function. This is a critical distinction that we must address carefully.
 \end{definition}
@@ -84,7 +84,9 @@ $(2) \Rightarrow (1)$: Take $f = \mathbf{1}_A$.
 \begin{remark}
 Condition (2) can be read as: "the expectation of any observable is unchanged under the dynamics." This is the statistical mechanics perspective: a measure is invariant if no experiment can detect the passage of time, on average.
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -361,7 +363,9 @@ Liouville's theorem is the reason why ergodic theory originated in statistical m
 
 If the energy surface $\Sigma_E = \{(q,p) : H(q,p) = E\}$ is compact, then the restriction of the flow to $\Sigma_E$ preserves a natural finite measure (the \textbf{microcanonical measure} or \textbf{Liouville measure} on the energy surface), making $(\Sigma_E, \mu_E, \varphi_t)$ a measure-preserving dynamical system to which the full machinery of ergodic theory applies.
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -449,7 +453,9 @@ The Krylov-Bogolyubov theorem is non-constructive in the sense that it does not 
 \begin{remark}
 The proof reveals a useful constructive strategy: to find invariant measures, compute time averages along orbits and take limits. This is precisely the idea behind numerical estimation of invariant measures in applications, including the estimation of reservoir states in echo state networks.
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -743,7 +749,9 @@ The ergodicity hypothesis is essential. Without it, the result fails: consider $
 \begin{remark}
 In the non-ergodic case, one still has the weaker statement $\int_A \tau_A \, d\mu \le 1$ (with equality holding if and only if $\bigsqcup_{j=0}^\infty \widetilde{A}_j$ has full measure, which is guaranteed by ergodicity but may fail otherwise).
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -836,7 +844,9 @@ Consider the doubling map $T(x) = 2x \pmod 1$.
 \begin{exercise}
 State and prove the analogue of the Krylov-Bogolyubov theorem for continuous flows $\varphi_t: X \to X$ on a compact metrizable space $X$. (\textit{Hint:} replace $\frac{1}{n}\sum_{j=0}^{n-1} \delta_{T^j(x_0)}$ with $\frac{1}{T}\int_0^T \delta_{\varphi_t(x_0)} \, dt$ and adapt the proof.)
 
----
+
+\bigskip
+
 \end{exercise}
 
 

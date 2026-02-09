@@ -262,7 +262,9 @@ The spectral radius condition $\rho(W) < 1$ can now be understood as implying $\
 \lambda_{\max} = \lim_{t \to \infty} \frac{1}{t} \ln \left\| \prod_{s=0}^{t-1} D(s) W \right\| \leq \lim_{t \to \infty} \frac{1}{t} \ln \|W^t\| = \ln \rho(W) < 0.
 \]
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -275,11 +277,11 @@ The performance of an ESN depends critically on several hyperparameters that gov
 The spectral radius $\rho(W)$ is the single most important hyperparameter. It controls the \textit{timescale of memory} in the reservoir.
 
 \begin{itemize}[nosep]
-  \item **Small $\rho(W)$ (e.g., $\rho(W) \ll 1$).** The reservoir is strongly contractive. States are dominated by recent inputs; the memory of past inputs decays rapidly. The reservoir dynamics are essentially those of a feedforward nonlinear filter with short memory.
+  \item \textbf{Small $\rho(W)$ (e.g., $\rho(W) \ll 1$).} The reservoir is strongly contractive. States are dominated by recent inputs; the memory of past inputs decays rapidly. The reservoir dynamics are essentially those of a feedforward nonlinear filter with short memory.
 
-  \item **$\rho(W)$ near 1.** The reservoir retains information about past inputs for longer. The dynamics are richer, with longer transients and more complex temporal patterns in the state. This is typically the regime of best performance for tasks requiring memory.
+  \item \textbf{$\rho(W)$ near 1.} The reservoir retains information about past inputs for longer. The dynamics are richer, with longer transients and more complex temporal patterns in the state. This is typically the regime of best performance for tasks requiring memory.
 
-  \item **$\rho(W) > 1$.** The autonomous system ($\mathbf{u} \equiv \mathbf{0}$) may be unstable, but the driven system can still possess the ESP if the input keeps the dynamics in the contractive regime (Remark 14.4). However, the risk of losing the ESP increases.
+  \item \textbf{$\rho(W) > 1$.} The autonomous system ($\mathbf{u} \equiv \mathbf{0}$) may be unstable, but the driven system can still possess the ESP if the input keeps the dynamics in the contractive regime (Remark 14.4). However, the risk of losing the ESP increases.
 \end{itemize}
 
 In practice, the reservoir weight matrix is often constructed as follows:
@@ -303,8 +305,8 @@ A rough guideline from practice: $N$ should be at least as large as the number o
 The input weight matrix $W_{\text{in}}$ is typically generated randomly (e.g., uniform on $[-\sigma_{\text{in}}, \sigma_{\text{in}}]$), and the parameter $\sigma_{\text{in}}$ controls the \textbf{input scaling}.
 
 \begin{itemize}[nosep]
-  \item **Small $\sigma_{\text{in}}$**: neurons operate in the approximately linear regime $\tanh(z) \approx z$. The reservoir behaves approximately as a linear dynamical system.
-  \item **Large $\sigma_{\text{in}}$**: neurons are driven into saturation ($\tanh(z) \approx \pm 1$). The reservoir behaves more like a binary, highly nonlinear system.
+  \item \textbf{Small $\sigma_{\text{in}}$}: neurons operate in the approximately linear regime $\tanh(z) \approx z$. The reservoir behaves approximately as a linear dynamical system.
+  \item \textbf{Large $\sigma_{\text{in}}$}: neurons are driven into saturation ($\tanh(z) \approx \pm 1$). The reservoir behaves more like a binary, highly nonlinear system.
 \end{itemize}
 
 The input scaling thus controls the \textit{degree of nonlinearity} in the reservoir's response. Tasks that require strong nonlinear processing of the input benefit from larger input scaling; tasks that are approximately linear benefit from smaller input scaling.
@@ -339,7 +341,9 @@ In the ESN setting, this boundary corresponds roughly to $\lambda_{\max} = 0$, o
 \begin{remark}
 The edge of chaos hypothesis connects reservoir computing to the broader theory of computation at phase transitions, which has deep connections to statistical physics and the theory of critical phenomena. From the dynamical systems perspective, the transition at $\lambda_{\max} = 0$ is a bifurcation of the driven system, and the computational properties of the reservoir can be understood through the lens of bifurcation theory (Chapter 8).
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -712,7 +716,9 @@ When the input $\{\mathbf{u}(t)\}$ is a stationary ergodic process, and the rese
    (b) Argue that for a task requiring memory of exactly $k$ steps, the ring topology is more efficient (requires smaller $N$) than a random topology when $k$ is not too large.
    (c) Conversely, argue that the random topology may be superior for tasks requiring nonlinear combinations of inputs at many different delays, because of the richer mixing of information.
 
----
+
+\bigskip
+
 \end{exercise}
 
 

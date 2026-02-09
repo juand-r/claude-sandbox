@@ -55,8 +55,8 @@ Note that closure under complementation and countable unions implies closure und
 \begin{example}
 The following are $\sigma$-algebras on a set $X$:
 
-- **Trivial $\sigma$-algebra**: $\mathcal{F} = \{\emptyset, X\}$. This is the smallest $\sigma$-algebra on $X$.
-- **Discrete $\sigma$-algebra**: $\mathcal{F} = 2^X$ (the power set of $X$). This is the largest $\sigma$-algebra on $X$.
+- \textbf{Trivial $\sigma$-algebra}: $\mathcal{F} = \{\emptyset, X\}$. This is the smallest $\sigma$-algebra on $X$.
+- \textbf{Discrete $\sigma$-algebra}: $\mathcal{F} = 2^X$ (the power set of $X$). This is the largest $\sigma$-algebra on $X$.
 - If $A \subseteq X$, then $\mathcal{F} = \{\emptyset, A, A^c, X\}$ is a $\sigma$-algebra.
 
 For most of our applications, $X$ will be a topological space (often a metric space), and the relevant $\sigma$-algebra is the following.
@@ -130,7 +130,9 @@ Let $f, g: X \to \mathbb{R}$ be measurable functions. Then $f + g$, $fg$, $\max(
 
 The proof is a sequence of exercises in manipulating preimages and is left to the reader (Exercise 7.1). The crucial point is that measurability is preserved under \textit{countable} operations --- this is the advantage over continuity, which is only preserved under finite operations.
 
----
+
+\bigskip
+
 \end{proposition}
 
 
@@ -292,7 +294,9 @@ A Borel measure $\mu$ on a metric space $X$ is:
 
 A locally finite regular Borel measure is called a \textit{Radon measure}. On a compact metric space, every finite Borel measure is Radon. Since we will primarily work with probability measures on compact spaces, we will not need to worry about regularity issues.
 
----
+
+\bigskip
+
 \end{definition}
 
 
@@ -485,9 +489,9 @@ The space $L^\infty(X, \mathcal{F}, \mu)$ consists of all measurable functions t
 
 The three cases of primary importance for us are:
 
-- **$L^1(\mu)$**: the space of integrable functions. This is where the Birkhoff ergodic theorem (Chapter 9) lives.
-- **$L^2(\mu)$**: the space of square-integrable functions. This is where the von Neumann mean ergodic theorem lives.
-- **$L^\infty(\mu)$**: the space of essentially bounded functions. Observables in dynamical systems are often assumed to be in $L^\infty$ or at least $L^2$.
+- \textbf{$L^1(\mu)$}: the space of integrable functions. This is where the Birkhoff ergodic theorem (Chapter 9) lives.
+- \textbf{$L^2(\mu)$}: the space of square-integrable functions. This is where the von Neumann mean ergodic theorem lives.
+- \textbf{$L^\infty(\mu)$}: the space of essentially bounded functions. Observables in dynamical systems are often assumed to be in $L^\infty$ or at least $L^2$.
 \end{definition}
 
 
@@ -538,7 +542,7 @@ On $L^2(X, \mathcal{F}, \mu)$, define the \textit{inner product}
 
 By the Riesz-Fischer theorem, $L^2$ is complete, and hence $L^2$ is a \textit{Hilbert space}: a complete inner product space.
 
-**Why $L^2$ matters for ergodic theory.** Given a measure-preserving transformation $T: X \to X$ on a probability space $(X, \mathcal{F}, \mu)$, the \textit{composition operator} $U_T: L^2(\mu) \to L^2(\mu)$ defined by $U_T f = f \circ T$ is a linear isometry. The mean ergodic theorem (von Neumann, 1932) asserts that the time averages $\frac{1}{N} \sum_{n=0}^{N-1} U_T^n f$ converge in the $L^2$ norm. The proof uses the Hilbert space structure of $L^2$ --- specifically, the orthogonal decomposition into $T$-invariant functions and their complement. This is the subject of Chapter 9.
+\textbf{Why $L^2$ matters for ergodic theory.} Given a measure-preserving transformation $T: X \to X$ on a probability space $(X, \mathcal{F}, \mu)$, the \textit{composition operator} $U_T: L^2(\mu) \to L^2(\mu)$ defined by $U_T f = f \circ T$ is a linear isometry. The mean ergodic theorem (von Neumann, 1932) asserts that the time averages $\frac{1}{N} \sum_{n=0}^{N-1} U_T^n f$ converge in the $L^2$ norm. The proof uses the Hilbert space structure of $L^2$ --- specifically, the orthogonal decomposition into $T$-invariant functions and their complement. This is the subject of Chapter 9.
 \end{definition}
 
 
@@ -598,7 +602,9 @@ The difference: Tonelli requires $f \geq 0$ (no integrability hypothesis needed)
 
 We will use product measures and Fubini's theorem in Chapter 11 when working with shift spaces and symbolic dynamics.
 
----
+
+\bigskip
+
 \end{remark}
 
 
@@ -622,9 +628,9 @@ The existence proof uses the Radon-Nikod\'{y}m theorem (the measure $G \mapsto \
   \item \textbf{Linearity}: $\mathbb{E}[af + bg \mid \mathcal{G}] = a \, \mathbb{E}[f \mid \mathcal{G}] + b \, \mathbb{E}[g \mid \mathcal{G}]$ a.e.
   \item \textbf{Monotonicity}: If $f \leq g$ a.e., then $\mathbb{E}[f \mid \mathcal{G}] \leq \mathbb{E}[g \mid \mathcal{G}]$ a.e.
   \item \textbf{Tower property}: If $\mathcal{H} \subseteq \mathcal{G} \subseteq \mathcal{F}$, then $\mathbb{E}[\mathbb{E}[f \mid \mathcal{G}] \mid \mathcal{H}] = \mathbb{E}[f \mid \mathcal{H}]$ a.e.
-  \item **Trivial $\sigma$-algebra**: $\mathbb{E}[f \mid \{\emptyset, X\}] = \int_X f \, d\mu$ (a constant function).
-  \item **Full $\sigma$-algebra**: $\mathbb{E}[f \mid \mathcal{F}] = f$ a.e.
-  \item **$\mathcal{G}$-measurable factors**: If $g$ is $\mathcal{G}$-measurable and bounded, then $\mathbb{E}[gf \mid \mathcal{G}] = g \, \mathbb{E}[f \mid \mathcal{G}]$ a.e.
+  \item \textbf{Trivial $\sigma$-algebra}: $\mathbb{E}[f \mid \{\emptyset, X\}] = \int_X f \, d\mu$ (a constant function).
+  \item \textbf{Full $\sigma$-algebra}: $\mathbb{E}[f \mid \mathcal{F}] = f$ a.e.
+  \item \textbf{$\mathcal{G}$-measurable factors}: If $g$ is $\mathcal{G}$-measurable and bounded, then $\mathbb{E}[gf \mid \mathcal{G}] = g \, \mathbb{E}[f \mid \mathcal{G}]$ a.e.
 \end{enumerate}
 
 The conditional expectation $\mathbb{E}[f \mid \mathcal{G}]$ can be understood as the "best approximation" of $f$ by a $\mathcal{G}$-measurable function, in the $L^2$ sense: it is the orthogonal projection of $f$ onto the closed subspace $L^2(X, \mathcal{G}, \mu) \subseteq L^2(X, \mathcal{F}, \mu)$. This geometric viewpoint connects directly to the Hilbert space ideas of Section 7.5.
@@ -820,7 +826,9 @@ preserves Lebesgue measure. That is, show $\lambda(T^{-1}(A)) = \lambda(A)$ for 
 
 (c) The strong law of large numbers (which we will recover as a consequence of Birkhoff's ergodic theorem in Chapter 9) asserts that this time average converges to $\int f \, d\mu$ for $\mu$-almost every $\omega$. State precisely what this says about the frequency of 1's in a "typical" binary sequence.
 
----
+
+\bigskip
+
 \end{exercise}
 
 

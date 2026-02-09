@@ -148,7 +148,7 @@ DF(\mathbf{0}) = \text{diag}(\sigma'(W \cdot \mathbf{0} + \mathbf{b})) \cdot W =
 
 When $\mathbf{b} = \mathbf{0}$ and $\sigma = \tanh$, we have $\sigma'(0) = 1$, so $DF(\mathbf{0}) = W$. By our stability theorems from Chapter 3, the origin is asymptotically stable if and only if the \textbf{spectral radius} $\rho(W) < 1$. If $\rho(W) > 1$, the origin is unstable, and the dynamics may exhibit more complex behavior --- limit cycles, quasi-periodic orbits, or chaos.
 
-**Dependence on $W$.** The recurrent weight matrix $W$ is the single most important parameter of the system. It determines the topology and geometry of the dynamics. This will become a recurring theme in Part III.
+\textbf{Dependence on $W$.} The recurrent weight matrix $W$ is the single most important parameter of the system. It determines the topology and geometry of the dynamics. This will become a recurring theme in Part III.
 
 \subsection{A Remark on Continuous-Time Formulations}\label{sec:13.2.3}
 
@@ -477,7 +477,9 @@ for $a > 0$.
 
 (c) The eigenvalues of $W$ are $\pm ia$. These are complex with modulus $a$. Explain, in terms of the dynamics, what you expect to observe for $a$ slightly less than 1 versus $a$ slightly greater than 1. Verify your prediction numerically by iterating the map for both cases.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -496,7 +498,9 @@ for $a > 0$.
 
 (d) Explain why the condition $\rho(W) < 1$ is insufficient to guarantee rapid vanishing of gradients, while $\|W\|_2 < 1$ is sufficient. Give an example of $W$ with $\rho(W) < 1$ but $\|W\|_2 > 1$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -517,7 +521,9 @@ for $a > 0$.
 
 (c) Explain why a linear reservoir cannot approximate a nonlinear input-output map, no matter how large $N$ is. Why does this demonstrate the necessity of nonlinear activation functions?
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -538,7 +544,9 @@ The task is to learn the identity map $d(t) = u(t)$ from the reservoir state.
 
 (d) Repeat with $u(t) = \sin(0.3\, t) + 0.5\sin(0.7\, t)$. Does performance degrade? Why might a single-neuron reservoir struggle with more complex signals?
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -560,7 +568,9 @@ The task is to learn the identity map $d(t) = u(t)$ from the reservoir state.
 
 (c) Describe the "phase space" of this dynamical system. Is it finite-dimensional? Is it compact? Compare with the phase spaces of the continuous dynamical systems in Part I.
 
----
+
+\bigskip
+
 \end{exercise}
 
 

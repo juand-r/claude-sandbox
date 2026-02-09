@@ -58,7 +58,7 @@ Continuous-time systems arise naturally when modeling physical processes governe
 \textbf{The relationship between the two.} Discrete and continuous dynamics are not separate worlds. They interact in deep ways:
 
 \begin{itemize}[nosep]
-  \item Given a flow $\{\varphi_t\}$, fixing any $\tau > 0$ and setting $f = \varphi_\tau$ yields a discrete-time system. This is called **time-$\tau$ sampling** of the flow.
+  \item Given a flow $\{\varphi_t\}$, fixing any $\tau > 0$ and setting $f = \varphi_\tau$ yields a discrete-time system. This is called \textbf{time-$\tau$ sampling} of the flow.
   \item Conversely, one might ask whether a given map $f$ can be realized as the time-one map of some flow. This is the \textbf{embedding problem}, and the answer is not always yes.
   \item The Poincaré section technique (Chapter 4) systematically reduces the study of a continuous system to a discrete one, often making the analysis more tractable.
 \end{itemize}
@@ -101,7 +101,7 @@ A point $x^* \in X$ is a \textbf{fixed point} (or \textbf{equilibrium point}) if
 
 
 \begin{definition}[Periodic Orbit]\label{def:1.4}
-A point $x$ has a \textbf{periodic orbit} of period $p > 0$ if $\Phi(p, x) = x$ and $\Phi(t, x) \neq x$ for $0 < t < p$. For a map, $x$ is a \textbf{periodic point} of (minimal) period $n$ if $f^n(x) = x$ and $f^k(x) \neq x$ for $0 < k < n$. The orbit $\{x, f(x), \ldots, f^{n-1}(x)\}$ is called an **$n$-cycle**.
+A point $x$ has a \textbf{periodic orbit} of period $p > 0$ if $\Phi(p, x) = x$ and $\Phi(t, x) \neq x$ for $0 < t < p$. For a map, $x$ is a \textbf{periodic point} of (minimal) period $n$ if $f^n(x) = x$ and $f^k(x) \neq x$ for $0 < k < n$. The orbit $\{x, f(x), \ldots, f^{n-1}(x)\}$ is called an \textbf{$n$-cycle}.
 
 Fixed points and periodic orbits are the simplest types of long-term behavior. But as we shall see, dynamical systems can exhibit far more complicated behavior: quasiperiodic orbits, homoclinic tangles, strange attractors, and chaos.
 
@@ -137,7 +137,7 @@ At $x = 0$: $f_r'(0) = r$. So $x = 0$ is stable for $r < 1$ and unstable for $r 
 
 At $x^* = 1 - 1/r$: $f_r'(x^*) = r(1 - 2(1 - 1/r)) = r(2/r - 1) = 2 - r$. So $x^*$ is stable when $|2 - r| < 1$, i.e., when $1 < r < 3$.
 
-**What happens for $r > 3$?** As $r$ increases past $3$, the fixed point $x^*$ loses stability, and a stable 2-cycle is born. As $r$ increases further, this 2-cycle loses stability and a 4-cycle appears, then an 8-cycle, and so on in a cascade of \textbf{period-doubling bifurcations}. The parameter values at which these bifurcations occur converge geometrically to a limit $r_\infty \approx 3.56995\ldots$, with the ratio of successive intervals converging to the \textbf{Feigenbaum constant} $\delta \approx 4.6692\ldots$, a universal constant that appears in a wide class of one-dimensional maps [Feigenbaum, 1978].
+\textbf{What happens for $r > 3$?} As $r$ increases past $3$, the fixed point $x^*$ loses stability, and a stable 2-cycle is born. As $r$ increases further, this 2-cycle loses stability and a 4-cycle appears, then an 8-cycle, and so on in a cascade of \textbf{period-doubling bifurcations}. The parameter values at which these bifurcations occur converge geometrically to a limit $r_\infty \approx 3.56995\ldots$, with the ratio of successive intervals converging to the \textbf{Feigenbaum constant} $\delta \approx 4.6692\ldots$, a universal constant that appears in a wide class of one-dimensional maps [Feigenbaum, 1978].
 
 For $r > r_\infty$, the dynamics become \textbf{chaotic} for many parameter values: orbits are aperiodic, sensitive to initial conditions, and yet confined to a bounded region. At $r = 4$, the logistic map is conjugate to the \textbf{tent map} and to the \textbf{doubling map} on the circle, and its dynamics can be analyzed completely using symbolic dynamics.
 
@@ -299,7 +299,7 @@ Dynamical systems theory organizes itself around a few recurring questions. Thes
 
 \textbf{Question 1: What happens in the long run?}
 
-Given an initial state $x_0 \in X$, what can we say about $\Phi(t, x_0)$ as $t \to \infty$? Does the orbit converge to a fixed point? Does it settle onto a periodic orbit or a more complicated attractor? Does it escape to infinity? The **$\omega$-limit set** of $x_0$,
+Given an initial state $x_0 \in X$, what can we say about $\Phi(t, x_0)$ as $t \to \infty$? Does the orbit converge to a fixed point? Does it settle onto a periodic orbit or a more complicated attractor? Does it escape to infinity? The \textbf{$\omega$-limit set} of $x_0$,
 
 \[
 \omega(x_0) = \bigcap_{N \geq 0} \overline{\{\Phi(t, x_0) : t \geq N\}},
@@ -382,7 +382,9 @@ Consider the map $f: \mathbb{R} \to \mathbb{R}$ defined by $f(x) = x^2$.
 
 (c) For which initial conditions $x_0 \in \mathbb{R}$ does the orbit converge to $0$? To $\infty$? Describe the basins of attraction.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -395,7 +397,9 @@ Let $R_\alpha: S^1 \to S^1$ be the rotation of the circle by angle $\alpha$, def
 
 (c) Show that if $\alpha/(2\pi)$ is irrational, then the orbit of every point is dense in $S^1$. (Hint: show that the orbit is infinite, and use the pigeonhole principle to find orbit points arbitrarily close together, then use the group structure of the circle.)
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -408,7 +412,9 @@ For the logistic map $f_r(x) = rx(1-x)$:
 
 (c) Show that the 2-cycle found in (b) is stable for $3 < r < 1 + \sqrt{6}$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -421,7 +427,9 @@ For the pendulum system $\dot{\theta} = \omega$, $\dot{\omega} = -(g/\ell)\sin\t
 
 (c) Repeat for the equilibrium $(\pi, 0)$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -440,7 +448,9 @@ with $\alpha, \beta, \gamma, \delta > 0$.
 
 (c) Explain why the existence of a conserved quantity implies that orbits in the interior of the first quadrant cannot converge to the equilibrium $(\gamma/\delta, \alpha/\beta)$.
 
----
+
+\bigskip
+
 \end{exercise}
 
 
@@ -453,7 +463,9 @@ Consider the Lorenz system with parameters $\sigma = 10$, $\rho = 28$, $\beta = 
 
 (c) Show that the function $V(x, y, z) = x^2 + y^2 + (z - \rho - \sigma)^2$ satisfies $\dot{V} < 0$ outside a sufficiently large ellipsoid in $\mathbb{R}^3$. (This shows that all orbits eventually enter a bounded region. You do not need to find the optimal ellipsoid.)
 
----
+
+\bigskip
+
 \end{exercise}
 
 

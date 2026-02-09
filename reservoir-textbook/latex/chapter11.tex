@@ -272,7 +272,9 @@ The following properties will be needed in the construction of measure-theoretic
 
 Part (ii) says that conditioning on more information can only reduce (or maintain) uncertainty. Part (iii) is conditional subadditivity. We omit the proofs, which follow the same techniques as above.
 
----
+
+\bigskip
+
 \end{proposition}
 
 
@@ -485,7 +487,7 @@ We now compute entropy explicitly for several important dynamical systems.
 
 \subsection{Bernoulli Shifts}\label{sec:11.6.1}
 
-**The fair coin: $B(1/2, 1/2)$.** Consider the Bernoulli shift $\sigma$ on $\{0, 1\}^{\mathbb{Z}}$ (or $\{0,1\}^{\mathbb{N}}$) where each coordinate independently takes the value $0$ or $1$ with equal probability $1/2$. The partition $\alpha = \{[0], [1]\}$ into cylinder sets at position $0$ is a generator (Example 11.18).
+\textbf{The fair coin: $B(1/2, 1/2)$.} Consider the Bernoulli shift $\sigma$ on $\{0, 1\}^{\mathbb{Z}}$ (or $\{0,1\}^{\mathbb{N}}$) where each coordinate independently takes the value $0$ or $1$ with equal probability $1/2$. The partition $\alpha = \{[0], [1]\}$ into cylinder sets at position $0$ is a generator (Example 11.18).
 
 We compute $h_\mu(\sigma, \alpha)$ directly. The join $\bigvee_{k=0}^{n-1} \sigma^{-k}\alpha$ partitions the space according to the first $n$ coordinates $(x_0, x_1, \ldots, x_{n-1})$. There are $2^n$ atoms, each of measure $(1/2)^n = 2^{-n}$. Therefore:
 
@@ -499,7 +501,7 @@ Thus:
 h_\mu(\sigma) = h_\mu(\sigma, \alpha) = \lim_{n \to \infty} \frac{n \log 2}{n} = \log 2.
 \]
 
-**General Bernoulli shift $B(p_1, \ldots, p_k)$.** Now consider the Bernoulli shift on $\{1, 2, \ldots, k\}^{\mathbb{Z}}$ where the $i$-th symbol appears with probability $p_i$. Again, $\alpha = \{[1], [2], \ldots, [k]\}$ is a generating partition. Each atom of $\bigvee_{k=0}^{n-1}\sigma^{-k}\alpha$ corresponds to a word $w = (w_0, w_1, \ldots, w_{n-1}) \in \{1, \ldots, k\}^n$ with measure $p_{w_0} p_{w_1} \cdots p_{w_{n-1}}$.
+\textbf{General Bernoulli shift $B(p_1, \ldots, p_k)$.} Now consider the Bernoulli shift on $\{1, 2, \ldots, k\}^{\mathbb{Z}}$ where the $i$-th symbol appears with probability $p_i$. Again, $\alpha = \{[1], [2], \ldots, [k]\}$ is a generating partition. Each atom of $\bigvee_{k=0}^{n-1}\sigma^{-k}\alpha$ corresponds to a word $w = (w_0, w_1, \ldots, w_{n-1}) \in \{1, \ldots, k\}^n$ with measure $p_{w_0} p_{w_1} \cdots p_{w_{n-1}}$.
 
 \[
 H\!\left(\bigvee_{j=0}^{n-1}\sigma^{-j}\alpha\right) = -\sum_{w \in \{1,\ldots,k\}^n} \left(\prod_{j=0}^{n-1} p_{w_j}\right) \log\!\left(\prod_{j=0}^{n-1} p_{w_j}\right).
@@ -731,7 +733,9 @@ This is consistent with the measure-theoretic result (Proposition 11.21).
 \begin{example}
 (Doubling map). The doubling map $T(x) = 2x \pmod 1$ on $[0,1)$ has topological entropy $h_{\mathrm{top}}(T) = \log 2$. To see this, note that $T$ is semiconjugate to the one-sided shift on $\{0,1\}^{\mathbb{N}}$ via binary expansion, and the shift on two symbols has topological entropy $\log 2$.
 
----
+
+\bigskip
+
 \end{example}
 
 
@@ -775,7 +779,9 @@ An invariant measure $\mu$ is called a \textit{measure of maximal entropy} (or \
 \begin{example}
 For the full shift on $\{1, \ldots, k\}^{\mathbb{Z}}$, the measure of maximal entropy is the uniform Bernoulli measure $(1/k, \ldots, 1/k)$. Indeed, $h_{\mathrm{top}}(\sigma) = \log k$ and the entropy of $B(1/k, \ldots, 1/k)$ is $-k \cdot \frac{1}{k}\log\frac{1}{k} = \log k$.
 
----
+
+\bigskip
+
 \end{example}
 
 
@@ -977,7 +983,9 @@ Prove that if $T$ is an isometry of a compact metric space $(X, d)$, then $h_{\m
 \begin{exercise}
 (Entropy and factors). Let $\pi \colon (X, \mu, T) \to (Y, \nu, S)$ be a factor map (i.e., $\pi$ is measure-preserving and $\pi \circ T = S \circ \pi$ a.e.). Show that $h_\nu(S) \leq h_\mu(T)$. (Hint: if $\beta$ is a partition of $Y$, then $\pi^{-1}\beta$ is a partition of $X$ with $H_\mu(\pi^{-1}\beta) = H_\nu(\beta)$.)
 
----
+
+\bigskip
+
 \end{exercise}
 
 

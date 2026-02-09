@@ -92,7 +92,7 @@ This reformulation is the key to von Neumann's approach: the question of converg
 
 We now state and prove von Neumann's theorem. The proof is elegant and relies only on the Hilbert space structure of $L^2$.
 
-\textbf{Notation.} For a measure-preserving transformation $T$, define the subspace of **$T$-invariant functions**:
+\textbf{Notation.} For a measure-preserving transformation $T$, define the subspace of \textbf{$T$-invariant functions}:
 
 \[
 \mathcal{I} = \{ f \in L^2(X, \mu) : U_T f = f \} = \{ f \in L^2 : f \circ T = f \ \text{a.e.} \}.
@@ -152,7 +152,7 @@ This establishes $\mathcal{I} = \mathcal{C}^\perp$, and therefore $L^2 = \mathca
 
 since $U_T^k f_{\text{inv}} = f_{\text{inv}}$ for all $k$ (because $f_{\text{inv}}$ is $T$-invariant). So it suffices to show that $\frac{1}{n}\sum_{k=0}^{n-1} U_T^k h \to 0$ in $L^2$ for all $h \in \overline{\mathcal{C}}$.
 
-**Case (a): $h = g - U_T g$ is an exact coboundary.** Then
+\textbf{Case (a): $h = g - U_T g$ is an exact coboundary.} Then
 
 \[
 \sum_{k=0}^{n-1} U_T^k h = \sum_{k=0}^{n-1} (U_T^k g - U_T^{k+1} g) = g - U_T^n g,
@@ -164,7 +164,7 @@ a telescoping sum. Therefore
 \left\| \frac{1}{n} \sum_{k=0}^{n-1} U_T^k h \right\|_2 = \frac{1}{n}\|g - U_T^n g\|_2 \leq \frac{2\|g\|_2}{n} \to 0.
 \]
 
-**Case (b): $h \in \overline{\mathcal{C}}$ is a general element.** Given $\varepsilon > 0$, choose a coboundary $h_0 = g_0 - U_T g_0$ with $\|h - h_0\|_2 < \varepsilon$. Since $U_T$ is an isometry, $\|\frac{1}{n}\sum_{k=0}^{n-1} U_T^k\| \leq 1$ (as an operator on $L^2$). Therefore
+\textbf{Case (b): $h \in \overline{\mathcal{C}}$ is a general element.} Given $\varepsilon > 0$, choose a coboundary $h_0 = g_0 - U_T g_0$ with $\|h - h_0\|_2 < \varepsilon$. Since $U_T$ is an isometry, $\|\frac{1}{n}\sum_{k=0}^{n-1} U_T^k\| \leq 1$ (as an operator on $L^2$). Therefore
 
 \[
 \left\| \frac{1}{n} \sum_{k=0}^{n-1} U_T^k h \right\|_2 \leq \left\| \frac{1}{n} \sum_{k=0}^{n-1} U_T^k h_0 \right\|_2 + \left\| \frac{1}{n} \sum_{k=0}^{n-1} U_T^k (h - h_0) \right\|_2 \leq \frac{2\|g_0\|_2}{n} + \varepsilon.
@@ -402,7 +402,7 @@ Since $\beta > \alpha$, this implies $(\beta - \alpha) \mu(A_{\alpha,\beta}) \le
 
 Since this holds for all rational $\alpha < \beta$, $\mu(\{x : \underline{f}(x) < \overline{f}(x)\}) = 0$, so the limit $\bar{f}(x) = \lim_n \frac{1}{n} S_n f(x)$ exists $\mu$-a.e.
 
-**Part (iii): $\bar{f} \in L^1$ and $\int \bar{f} = \int f$.** By Fatou's lemma applied to the non-negative functions $\frac{1}{n}|S_n f|$:
+\textbf{Part (iii): $\bar{f} \in L^1$ and $\int \bar{f} = \int f$.} By Fatou's lemma applied to the non-negative functions $\frac{1}{n}|S_n f|$:
 
 \[
 \int_X |\bar{f}| \, d\mu \leq \liminf_{n \to \infty} \frac{1}{n} \int_X |S_n f| \, d\mu \leq \liminf_{n \to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \int_X |f \circ T^k| \, d\mu = \|f\|_1,
@@ -473,7 +473,7 @@ Let $T: (X, \mathcal{B}, \mu) \to (X, \mathcal{B}, \mu)$ be a measure-preserving
 \begin{proof}
 *
 
-**(a) $\Rightarrow$ (b).** Suppose $T$ is ergodic and $f \circ T = f$ a.e. with $f \in L^1$. We first handle the case $f$ real-valued. For any $c \in \mathbb{R}$, the set $A_c = \{x : f(x) \leq c\}$ satisfies
+\textbf{(a) $\Rightarrow$ (b).} Suppose $T$ is ergodic and $f \circ T = f$ a.e. with $f \in L^1$. We first handle the case $f$ real-valued. For any $c \in \mathbb{R}$, the set $A_c = \{x : f(x) \leq c\}$ satisfies
 
 \[
 T^{-1}(A_c) = \{x : f(Tx) \leq c\} = \{x : f(x) \leq c\} = A_c \quad \text{(a.e.)}.
@@ -489,13 +489,13 @@ For $c > c^*$, $\mu(A_c) = 1$, so $f \leq c$ a.e. For $c < c^*$, $\mu(A_c) = 0$,
 
 For complex-valued $f$, apply the above to the real and imaginary parts.
 
-**(b) $\Rightarrow$ (a).** Suppose every $T$-invariant $L^1$ function is constant a.e. Let $A$ be a $T$-invariant set. Then $f = \mathbf{1}_A$ is a $T$-invariant $L^1$ function (since $\mathbf{1}_A \circ T = \mathbf{1}_{T^{-1}A} = \mathbf{1}_A$). By (b), $\mathbf{1}_A$ is constant a.e., so $\mathbf{1}_A = 0$ a.e. or $\mathbf{1}_A = 1$ a.e., i.e., $\mu(A) = 0$ or $\mu(A) = 1$.
+\textbf{(b) $\Rightarrow$ (a).} Suppose every $T$-invariant $L^1$ function is constant a.e. Let $A$ be a $T$-invariant set. Then $f = \mathbf{1}_A$ is a $T$-invariant $L^1$ function (since $\mathbf{1}_A \circ T = \mathbf{1}_{T^{-1}A} = \mathbf{1}_A$). By (b), $\mathbf{1}_A$ is constant a.e., so $\mathbf{1}_A = 0$ a.e. or $\mathbf{1}_A = 1$ a.e., i.e., $\mu(A) = 0$ or $\mu(A) = 1$.
 
-**(b) $\Rightarrow$ (c).** By Birkhoff's theorem (Theorem 9.8), the time average $\bar{f}(x) = \lim_n \frac{1}{n}\sum_{k=0}^{n-1} f(T^k x)$ exists a.e., is $T$-invariant, and satisfies $\int \bar{f} = \int f$. By (b), $\bar{f}$ is constant a.e. Since $\int \bar{f} = \int f$, this constant must equal $\int f \, d\mu$.
+\textbf{(b) $\Rightarrow$ (c).} By Birkhoff's theorem (Theorem 9.8), the time average $\bar{f}(x) = \lim_n \frac{1}{n}\sum_{k=0}^{n-1} f(T^k x)$ exists a.e., is $T$-invariant, and satisfies $\int \bar{f} = \int f$. By (b), $\bar{f}$ is constant a.e. Since $\int \bar{f} = \int f$, this constant must equal $\int f \, d\mu$.
 
-**(c) $\Rightarrow$ (b).** Suppose $f \in L^1$ and $f \circ T = f$ a.e. Then $\frac{1}{n}\sum_{k=0}^{n-1} f(T^k x) = f(x)$ a.e. for all $n$. By (c), this equals $\int f \, d\mu$ a.e. So $f(x) = \int f \, d\mu$ for a.e. $x$.
+\textbf{(c) $\Rightarrow$ (b).} Suppose $f \in L^1$ and $f \circ T = f$ a.e. Then $\frac{1}{n}\sum_{k=0}^{n-1} f(T^k x) = f(x)$ a.e. for all $n$. By (c), this equals $\int f \, d\mu$ a.e. So $f(x) = \int f \, d\mu$ for a.e. $x$.
 
-**(c) $\Rightarrow$ (d).** Apply (c) to $f = \mathbf{1}_A$, where $A \in \mathcal{B}$:
+\textbf{(c) $\Rightarrow$ (d).} Apply (c) to $f = \mathbf{1}_A$, where $A \in \mathcal{B}$:
 
 \[
 \frac{1}{n} \sum_{k=0}^{n-1} \mathbf{1}_A(T^k x) \to \mu(A) \qquad \text{a.e.}
@@ -509,7 +509,7 @@ Multiply both sides by $\mathbf{1}_B(x)$ and integrate:
 
 The left side equals $\frac{1}{n}\sum_{k=0}^{n-1} \mu(T^{-k}A \cap B)$ (since $\mathbf{1}_A(T^k x)\mathbf{1}_B(x) = \mathbf{1}_{T^{-k}A \cap B}(x)$). The convergence of the integral is justified by dominated convergence (the integrands are bounded by $1$). This gives (d).
 
-**(d) $\Rightarrow$ (a).** Let $A$ be $T$-invariant, i.e., $T^{-1}A = A$. Apply (d) with $B = A$:
+\textbf{(d) $\Rightarrow$ (a).} Let $A$ be $T$-invariant, i.e., $T^{-1}A = A$. Apply (d) with $B = A$:
 
 \[
 \frac{1}{n} \sum_{k=0}^{n-1} \mu(T^{-k}A \cap A) = \frac{1}{n} \sum_{k=0}^{n-1} \mu(A \cap A) = \mu(A) \to \mu(A)\mu(A) = \mu(A)^2.
@@ -745,7 +745,7 @@ Note the strength of this result: convergence holds for \textit{every} point, no
 \begin{proof}
 *
 
-**(a) $\Rightarrow$ (b).** Suppose for contradiction that the convergence is not uniform for some $f \in C(X)$. Then there exist $\varepsilon > 0$, a sequence $n_j \to \infty$, and points $x_j \in X$ such that
+\textbf{(a) $\Rightarrow$ (b).} Suppose for contradiction that the convergence is not uniform for some $f \in C(X)$. Then there exist $\varepsilon > 0$, a sequence $n_j \to \infty$, and points $x_j \in X$ such that
 
 \begin{equation}\label{eq:dagger}\tag{$\dagger$}
 \left|\frac{1}{n_j} \sum_{k=0}^{n_j - 1} f(T^k x_j) - \int f \, d\mu \right| \geq \varepsilon.
@@ -763,9 +763,9 @@ The difference between this and $\int g \, d\nu_j$ is at most $\frac{2\|g\|_\inf
 
 By unique ergodicity, $\nu = \mu$. But then $\int f \, d\nu_j \to \int f \, d\nu = \int f \, d\mu$, i.e., $\frac{1}{n_{j_i}}\sum_{k=0}^{n_{j_i}-1} f(T^k x_{j_i}) \to \int f \, d\mu$, contradicting ($\dagger$).
 
-**(b) $\Rightarrow$ (c).** Trivial (uniform convergence implies pointwise convergence).
+\textbf{(b) $\Rightarrow$ (c).} Trivial (uniform convergence implies pointwise convergence).
 
-**(c) $\Rightarrow$ (a).** Suppose $\nu$ is any $T$-invariant probability measure. For any $f \in C(X)$, by (c), $\frac{1}{n}\sum_{k=0}^{n-1} f(T^k x) \to \int f \, d\mu$ for every $x$. Integrating against $\nu$ and using $T$-invariance of $\nu$:
+\textbf{(c) $\Rightarrow$ (a).} Suppose $\nu$ is any $T$-invariant probability measure. For any $f \in C(X)$, by (c), $\frac{1}{n}\sum_{k=0}^{n-1} f(T^k x) \to \int f \, d\mu$ for every $x$. Integrating against $\nu$ and using $T$-invariance of $\nu$:
 
 \[
 \int f \, d\nu = \int \frac{1}{n}\sum_{k=0}^{n-1} f(T^k x) \, d\nu(x) \to \int \left(\int f \, d\mu\right) d\nu = \int f \, d\mu.
