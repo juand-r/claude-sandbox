@@ -127,12 +127,29 @@ def ingest_pdf(filepath: str | Path, max_chars: int = 1500, overlap: int = 200) 
     chunk_idx = 0
     current_section = None
 
+    def _flush_section(lines: list[str], section_name: str | None, page_number: int):
+        """Chunk accumulated lines and append to all_chunks."""
+        nonlocal chunk_idx
+        section_text = "\n".join(lines)
+        if not section_text.strip():
+            return
+        text_chunks = chunk_text(section_text, max_chars=max_chars, overlap=overlap)
+        for text in text_chunks:
+            all_chunks.append(Chunk(
+                text=text,
+                source_file=str(filepath),
+                page=page_number,
+                section=section_name,
+                chunk_index=chunk_idx,
+            ))
+            chunk_idx += 1
+
     for page_num in range(len(doc)):
         page = doc[page_num]
 
-        # Try to detect section headings via text blocks with larger fonts
+        # Extract text with font info to detect section headings
         blocks = page.get_text("dict", flags=fitz.TEXT_PRESERVE_WHITESPACE)["blocks"]
-        page_text_parts = []
+        section_lines: list[str] = []
 
         for block in blocks:
             if block.get("type") != 0:  # skip non-text blocks (images, etc.)
@@ -149,25 +166,21 @@ def ingest_pdf(filepath: str | Path, max_chars: int = 1500, overlap: int = 200) 
                     continue
 
                 # Heuristic: lines with larger font size and short length are likely headings
-                if max_font_size > 13 and len(line_text) < 120 and not line_text.endswith('.'):
+                is_heading = (max_font_size > 13
+                              and len(line_text) < 120
+                              and not line_text.endswith('.'))
+
+                if is_heading:
+                    # Flush accumulated lines under the previous section
+                    _flush_section(section_lines, current_section, page_num + 1)
+                    section_lines = []
                     current_section = line_text
+                else:
+                    section_lines.append(line_text)
 
-                page_text_parts.append(line_text)
-
-        page_text = "\n".join(page_text_parts)
-        if not page_text.strip():
-            continue
-
-        text_chunks = chunk_text(page_text, max_chars=max_chars, overlap=overlap)
-        for text in text_chunks:
-            all_chunks.append(Chunk(
-                text=text,
-                source_file=str(filepath),
-                page=page_num + 1,  # 1-indexed
-                section=current_section,
-                chunk_index=chunk_idx,
-            ))
-            chunk_idx += 1
+        # Flush remaining lines on this page
+        _flush_section(section_lines, current_section, page_num + 1)
+        section_lines = []
 
     doc.close()
     return all_chunks
