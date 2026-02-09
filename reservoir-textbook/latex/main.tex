@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper]{book}
+
+% ---- Encoding & Fonts ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ---- Math ----
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+
+% ---- Layout ----
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ---- Hyperlinks ----
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=green!50!black,urlcolor=blue!70!black]{hyperref}
+\usepackage{cleveref}
+
+% ---- Graphics & Tables ----
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+
+% ---- Code listings ----
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible
+}
+
+% ---- Misc ----
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+
+% ---- Theorem environments ----
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[chapter]
+
+% ---- Page headers ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- Title ----
+\title{\Huge\bfseries Dynamical Systems, Ergodic Theory,\\and Reservoir Computing\\[0.5em]\Large An Introduction}
+\author{}
+\date{}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+% ---- Part I: Dynamical Systems ----
+\part{Dynamical Systems}
+\input{chapter01}
+\input{chapter02}
+\input{chapter03}
+\input{chapter04}
+\input{chapter05}
+\input{chapter06}
+
+% ---- Part II: Ergodic Theory ----
+\part{Ergodic Theory}
+\input{chapter07}
+\input{chapter08}
+\input{chapter09}
+\input{chapter10}
+\input{chapter11}
+\input{chapter12}
+
+% ---- Part III: Reservoir Computing ----
+\part{Reservoir Computing}
+\input{chapter13}
+\input{chapter14}
+\input{chapter15}
+\input{chapter16}
+\input{chapter17}
+
+\backmatter
+
+\end{document}
