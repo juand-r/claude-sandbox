@@ -199,9 +199,14 @@ def ingest_xml(filepath: str | Path, max_chars: int = 1500, overlap: int = 200) 
     tree = etree.parse(str(filepath))
     root = tree.getroot()
 
-    # Detect if this is XBRL by checking namespace
-    nsmap = root.nsmap
-    is_xbrl = any('xbrl' in str(ns).lower() for ns in nsmap.values())
+    # Detect if this is XBRL/iXBRL by checking namespaces
+    # Collect all namespaces including from child elements (iXBRL has ns on root)
+    all_ns = set(root.nsmap.values())
+    for elem in root.iter():
+        all_ns.update(elem.nsmap.values())
+    ns_str = " ".join(str(ns) for ns in all_ns if ns)
+    is_xbrl = ('xbrl' in ns_str.lower() or 'efrag.org' in ns_str.lower()
+               or 'fasb.org' in ns_str.lower() or 'ifrs.org' in ns_str.lower())
 
     sections = _extract_xml_sections(root, is_xbrl)
 
@@ -226,41 +231,128 @@ def ingest_xml(filepath: str | Path, max_chars: int = 1500, overlap: int = 200) 
     return all_chunks
 
 
+def _get_all_text(elem) -> str:
+    """
+    Recursively extract all text from an element and its children.
+    Handles cases where HTML markup is embedded as child elements in XBRL.
+    """
+    parts = []
+    if elem.text and elem.text.strip():
+        parts.append(elem.text.strip())
+    for child in elem:
+        parts.append(_get_all_text(child))
+        if child.tail and child.tail.strip():
+            parts.append(child.tail.strip())
+    return " ".join(p for p in parts if p)
+
+
+# Tag local names that typically contain narrative disclosures in XBRL/iXBRL
+_NARRATIVE_PATTERNS = {
+    'explanation', 'textblock', 'description', 'disclosure',
+    'policy', 'narrative', 'discussion', 'overview',
+}
+
+# Tag names that are structural containers, not content elements
+_CONTAINER_TAGS = {
+    'xbrl', 'html', 'head', 'body', 'div', 'span', 'section', 'article',
+    'header', 'footer', 'nav', 'main', 'table', 'tr', 'td', 'th', 'thead',
+    'tbody', 'ul', 'ol', 'li', 'p', 'a', 'b', 'i', 'em', 'strong',
+    'resources', 'context', 'entity', 'period', 'identifier', 'hidden',
+    'startdate', 'enddate', 'title', 'style', 'script', 'link', 'meta',
+}
+
+
+def _is_narrative_tag(tag: str) -> bool:
+    """Check if an element's local name suggests narrative content."""
+    tag_lower = tag.lower()
+    return any(p in tag_lower for p in _NARRATIVE_PATTERNS)
+
+
+def _is_container_tag(tag: str) -> bool:
+    """Check if a tag is a structural container rather than a content element."""
+    return tag.lower() in _CONTAINER_TAGS
+
+
 def _extract_xml_sections(root, is_xbrl: bool) -> list[tuple[str, str]]:
     """
     Walk an XML tree and extract (section_name, text) pairs.
 
-    For XBRL, focuses on textual/narrative elements (which contain the actual
-    disclosures). For generic XML, extracts all text content grouped by
-    top-level elements.
+    For XBRL/iXBRL, focuses on textual/narrative elements (which contain the
+    actual disclosures). Extracts all text recursively from each element to
+    handle embedded HTML markup.
+
+    For generic XML, extracts all text content grouped by top-level elements.
     """
     sections = []
 
     if is_xbrl:
-        # XBRL: look for elements with substantial text content
-        # These are typically narrative disclosures
+        # Pass 1: Collect ix:nonNumeric elements (iXBRL)
+        # Pass 2: Collect elements matching narrative tag patterns
+        # No fallback on container elements -- avoids duplicating content
+        seen_texts = set()
+
         for elem in root.iter():
-            text = elem.text
-            if text and len(text.strip()) > 100:
-                # Use the element's local name as section identifier
-                tag = etree.QName(elem.tag).localname if '}' in elem.tag else elem.tag
-                # Clean HTML that may be embedded in XBRL text blocks
-                clean = _strip_html(text.strip())
-                if clean:
+            tag = etree.QName(elem.tag).localname if '}' in elem.tag else elem.tag
+
+            # iXBRL: extract ix:nonNumeric elements with narrative content
+            if tag == 'nonNumeric':
+                full_text = _get_all_text(elem)
+                clean = _strip_html(full_text)
+                if clean and len(clean) > 100 and clean not in seen_texts:
+                    # Use the 'name' attribute (e.g., esrs:DisclosureOf...)
+                    name = elem.get('name', tag)
+                    if ':' in name:
+                        name = name.split(':', 1)[1]
+                    sections.append((name, clean))
+                    seen_texts.add(clean)
+                continue
+
+            # Skip known container/structural tags
+            if _is_container_tag(tag):
+                continue
+
+            # Traditional XBRL: extract narrative-tagged elements
+            if _is_narrative_tag(tag):
+                full_text = _get_all_text(elem)
+                clean = _strip_html(full_text)
+                if clean and len(clean) > 100 and clean not in seen_texts:
                     sections.append((tag, clean))
+                    seen_texts.add(clean)
+                continue
+
+            # Fallback: only for leaf-ish elements (few or no children)
+            # This catches elements with unexpected tag names but real content,
+            # while avoiding container elements that aggregate child text.
+            n_children = len(list(elem))
+            if n_children <= 3:
+                full_text = _get_all_text(elem)
+                clean = _strip_html(full_text) if full_text else ""
+                if clean and len(clean) > 100 and clean not in seen_texts:
+                    sections.append((tag, clean))
+                    seen_texts.add(clean)
+
+        # If XBRL extraction found nothing (e.g., unusual structure),
+        # fall back to collecting text from non-container elements with
+        # substantial direct text content
+        if not sections:
+            for elem in root.iter():
+                tag = etree.QName(elem.tag).localname if '}' in elem.tag else elem.tag
+                if _is_container_tag(tag):
+                    continue
+                text = elem.text
+                if text and len(text.strip()) > 100:
+                    clean = _strip_html(text.strip())
+                    if clean and clean not in seen_texts:
+                        sections.append((tag, clean))
+                        seen_texts.add(clean)
     else:
         # Generic XML: group by top-level children
         for child in root:
             tag = etree.QName(child.tag).localname if '}' in child.tag else child.tag
             # Collect all text recursively under this element
-            texts = []
-            for elem in child.iter():
-                if elem.text and elem.text.strip():
-                    texts.append(elem.text.strip())
-                if elem.tail and elem.tail.strip():
-                    texts.append(elem.tail.strip())
-            if texts:
-                sections.append((tag, "\n\n".join(texts)))
+            full_text = _get_all_text(child)
+            if full_text and len(full_text.strip()) > 50:
+                sections.append((tag, full_text))
 
     return sections
 
