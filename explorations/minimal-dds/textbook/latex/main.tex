@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper]{book}
+
+% Encoding and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Math packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  tabsize=2
+}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% Bibliography
+\usepackage{natbib}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[chapter]
+
+% Custom commands
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% Title information
+\title{\textbf{Discrete Dynamical Systems}\\[1em]
+\large A Mathematical Introduction with Applications to\\
+Self-Modifying Computation and Language Models}
+\author{Generated for the Minimal DDS Project}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+\include{ch01_iterated_maps}
+\include{ch02_symbolic_dynamics}
+\include{ch03_sliding_block_codes}
+\include{ch04_tag_systems}
+\include{ch05_substitution_systems}
+\include{ch06_iterated_function_systems}
+\include{ch07_cellular_automata}
+\include{ch08_kolmogorov_complexity}
+\include{ch09_logical_depth}
+\include{ch10_computational_mechanics}
+\include{ch11_kleene_recursion_theorem}
+\include{ch12_reflective_towers}
+\include{ch13_aixi_godel_machines}
+\include{ch14_llms_as_dynamical_systems}
+
+\backmatter
+
+% Bibliography would go here
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+\end{document}
