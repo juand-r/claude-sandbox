@@ -120,7 +120,7 @@ A scientific discovery system exhibits \textbf{creativity} if:
 2. Those hypotheses have high coherence (consistent with evidence).
 3. The novelty is sustained (cumulative novelty doesn't decay to zero).
 
-This is the (✓, ✓, ✓) corner of the novelty-coherence-reference triangle (Section 15.13.8) applied to hypothesis space.
+This is the ($\checkmark$, $\checkmark$, $\checkmark$) corner of the novelty-coherence-reference triangle (Section 15.13.8) applied to hypothesis space.
 \end{definition}
 
 \subsection{16.2.5 Boden's Taxonomy of Creativity}
@@ -327,14 +327,15 @@ LLM mutation has several advantages over random mutation:
 
 \textbf{FunSearch} (Romera-Paredes et al., 2023) applies ELM to mathematical discovery. The key insight: search for \textbf{programs that generate solutions} rather than solutions directly.
 
-\begin{algorithm_env}[FunSearch]
-1. \textbf{Skeleton}: User provides a program skeleton with a critical function to evolve.
-2. \textbf{Initialize}: Start with a simple implementation.
-3. \textbf{Prompt}: Sample high-performing programs from the archive; prompt the LLM to improve.
-4. \textbf{Evaluate}: Run the generated program; score based on the solutions it produces.
-5. \textbf{Update}: Add high-scoring programs to the archive.
-6. \textbf{Iterate} with island-based parallelism.
-\end{algorithm_env}
+\textbf{Algorithm (FunSearch).}
+\begin{enumerate}
+\item \textbf{Skeleton}: User provides a program skeleton with a critical function to evolve.
+\item \textbf{Initialize}: Start with a simple implementation.
+\item \textbf{Prompt}: Sample high-performing programs from the archive; prompt the LLM to improve.
+\item \textbf{Evaluate}: Run the generated program; score based on the solutions it produces.
+\item \textbf{Update}: Add high-scoring programs to the archive.
+\item \textbf{Iterate} with island-based parallelism.
+\end{enumerate}
 
 \begin{theorem}[FunSearch results, Nature 2024]
 FunSearch discovered:
@@ -594,7 +595,7 @@ The following code snippets illustrate key components of the systems discussed i
 
 \textbf{Genetic Algorithm with Novelty Pressure:}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 import random
 from typing import List, Callable, TypeVar
 
@@ -641,11 +642,11 @@ def genetic_algorithm_with_novelty(
         archive.extend(offspring)
 
     return population
-\end{lstlisting}
+\end{verbatim}
 
 \textbf{Novelty Search (Section 16.4.1):}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 def novelty_search(
     initial_population: List[T],
     behavior: Callable[[T], List[float]],  # Map solution to behavior descriptor
@@ -687,11 +688,11 @@ def novelty_search(
         population = [mutate(select()) for _ in range(len(population))]
 
     return population, archive
-\end{lstlisting}
+\end{verbatim}
 
 \textbf{MAP-Elites (Section 16.4.3):}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 from typing import Dict, Tuple, Optional
 import numpy as np
 
@@ -746,11 +747,11 @@ def qd_metrics(grid: Dict, grid_dims: Tuple[int, ...]) -> dict:
         'max_fitness': max(fitnesses) if fitnesses else 0,
         'mean_fitness': np.mean(fitnesses) if fitnesses else 0,
     }
-\end{lstlisting}
+\end{verbatim}
 
 \textbf{LLM Mutation Operator (Section 16.5.1):}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 def llm_mutation_operator(
     solution: str,
     llm_generate: Callable[[str], str],
@@ -827,11 +828,11 @@ Return only the program code."""
         return archive + [(new_program, score)]
     except Exception:
         return archive  # Skip invalid programs
-\end{lstlisting}
+\end{verbatim}
 
 \textbf{Measuring Scientific Discovery Dynamics:}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 def discovery_system_metrics(
     hypotheses: List[str],
     embedder: Callable[[str], List[float]],
@@ -868,7 +869,7 @@ def discovery_system_metrics(
         'evidence_improvement': sum(evidence_improvement),
         'final_evidence': evidence_scores[-1] if evidence_scores else 0,
     }
-\end{lstlisting}
+\end{verbatim}
 
 
 

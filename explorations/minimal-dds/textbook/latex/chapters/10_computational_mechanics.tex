@@ -68,29 +68,18 @@ The causal state $\epsilon(\overleftarrow{x})$ is a sufficient statistic of the 
 
 \[P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}) = P(\overrightarrow{X} \mid S = \epsilon(\overleftarrow{x})).\]
 
-
+\textit{Proof.} This follows immediately from the definition: the causal state is defined so that all pasts in the same equivalence class yield the same conditional future distribution.
 \end{proposition}
-
-
-\end{proposition}
-
-\begin{proof}
-This follows immediately from the definition: the causal state is defined so that all pasts in the same equivalence class yield the same conditional future distribution. 
 
 \begin{proposition}[Causal states are minimal sufficient statistics]
 If $\eta: \mathcal{A}^{-\mathbb{N}} \to \mathcal{Q}$ is any other function of the past that is a sufficient statistic for predicting the future, then $\eta$ is a refinement of $\epsilon$: for all $\overleftarrow{x}, \overleftarrow{x}'$, if $\eta(\overleftarrow{x}) = \eta(\overleftarrow{x}')$ then $\epsilon(\overleftarrow{x}) = \epsilon(\overleftarrow{x}')$.
 
 Equivalently, $|\mathcal{S}| \leq |\mathcal{Q}|$ (when both are finite), and there is a function $g: \mathcal{Q} \to \mathcal{S}$ such that $\epsilon = g \circ \eta$.
 
-\begin{proof}
-Suppose $\eta(\overleftarrow{x}) = \eta(\overleftarrow{x}')$. Since $\eta$ is a sufficient statistic, $P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}) = P(\overrightarrow{X} \mid \eta = \eta(\overleftarrow{x})) = P(\overrightarrow{X} \mid \eta = \eta(\overleftarrow{x}')) = P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}')$. Therefore $\overleftarrow{x} \sim_\varepsilon \overleftarrow{x}'$, so $\epsilon(\overleftarrow{x}) = \epsilon(\overleftarrow{x}')$. 
+\textit{Proof.} Suppose $\eta(\overleftarrow{x}) = \eta(\overleftarrow{x}')$. Since $\eta$ is a sufficient statistic, $P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}) = P(\overrightarrow{X} \mid \eta = \eta(\overleftarrow{x})) = P(\overrightarrow{X} \mid \eta = \eta(\overleftarrow{x}')) = P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}')$. Therefore $\overleftarrow{x} \sim_\varepsilon \overleftarrow{x}'$, so $\epsilon(\overleftarrow{x}) = \epsilon(\overleftarrow{x}')$.
 
 This is a crucial result: the causal states form the \textbf{coarsest} partition of pasts that retains all predictive information. Any other sufficient statistic either coincides with the causal states or is unnecessarily fine-grained.
-
-
-
-\end{proof}
-\end{proof}
+\end{proposition}
 
 \section{The Epsilon-Machine}
 
@@ -186,20 +175,15 @@ The excess entropy can be expressed as:
 
 \end{proposition}
 
-\begin{proof}
-Define $h_k = H[X_k \mid X_1, \ldots, X_{k-1}]$. This is the conditional entropy of the $k$-th symbol given all previous symbols. As $k \to \infty$, $h_k \to h_\mu$. The block entropy $H_L = H[X_1, \ldots, X_L] = \sum_{k=1}^{L} h_k$. The mutual information between past and future can be shown (Crutchfield \& Feldman 2003) to equal $E = \lim_{L \to \infty} (H_L - L \cdot h_\mu) = \sum_{k=1}^{\infty} (h_k - h_\mu)$. Each term $h_k - h_\mu \geq 0$ since conditioning on more past can only reduce (or maintain) entropy. 
+\textit{Proof.} Define $h_k = H[X_k \mid X_1, \ldots, X_{k-1}]$. This is the conditional entropy of the $k$-th symbol given all previous symbols. As $k \to \infty$, $h_k \to h_\mu$. The block entropy $H_L = H[X_1, \ldots, X_L] = \sum_{k=1}^{L} h_k$. The mutual information between past and future can be shown (Crutchfield \& Feldman 2003) to equal $E = \lim_{L \to \infty} (H_L - L \cdot h_\mu) = \sum_{k=1}^{\infty} (h_k - h_\mu)$. Each term $h_k - h_\mu \geq 0$ since conditioning on more past can only reduce (or maintain) entropy.
 
 \begin{proposition}[Bounds]
 The excess entropy satisfies:
 
 \[0 \leq E \leq C_\mu.\]
 
-The lower bound $E = 0$ holds for IID processes (no temporal structure). The upper bound $E = C_\mu$ holds when the causal states can be determined with certainty from a finite past (i.e., when the epsilon-machine's states are "synchronizing").
+The lower bound $E = 0$ holds for IID processes (no temporal structure). The upper bound $E = C_\mu$ holds when the causal states can be determined with certainty from a finite past (i.e., when the epsilon-machine's states are ``synchronizing'').
 \end{proposition}
-
-
-
-\end{proof}
 
 \section{The Complexity-Entropy Plane}
 
@@ -227,19 +211,19 @@ The complexity-entropy diagram provides a principled answer to the informal noti
 
 \textbf{Epsilon-machine.} The machine has a single state $s_0$. From $s_0$, symbol $0$ is emitted with probability $1/2$ and the machine returns to $s_0$; symbol $1$ is emitted with probability $1/2$ and the machine returns to $s_0$.
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 Epsilon-machine diagram:
 
          0 | 1/2
-    ┌──────────┐
-    │          │
-    ▼          │
-  (s_0) ──────┘
-    │          ▲
-    │          │
-    └──────────┘
+    +----------+
+    |          |
+    V          |
+  (s_0) ------+
+    |          ^
+    |          |
+    +----------+
          1 | 1/2
-\end{lstlisting}
+\end{verbatim}
 
 \textbf{Statistical complexity.} $C_\mu = H[\mathcal{S}] = -1 \cdot \log_2 1 = 0$ bits.
 
@@ -264,14 +248,14 @@ Epsilon-machine diagram:
 
 \textbf{Epsilon-machine.}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 Epsilon-machine diagram:
 
-  (s_0) ──── 1 | p=1 ────▶ (s_1)
-    ▲                         │
-    │                         │
-    └──── 0 | p=1 ────────────┘
-\end{lstlisting}
+  (s_0) ---- 1 | p=1 ----> (s_1)
+    ^                         |
+    |                         |
+    +---- 0 | p=1 ------------+
+\end{verbatim}
 
 From $s_0$, the machine deterministically emits $1$ and transitions to $s_1$. From $s_1$, it deterministically emits $0$ and transitions to $s_0$.
 
@@ -329,23 +313,23 @@ Two pasts ending in $0$ have the same conditional future distribution, and two p
 
 \textbf{Epsilon-machine.}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 Epsilon-machine diagram:
 
             0 | 1/2
-         ┌──────────┐
-         │          │
-         ▼          │
-       (s_A) ──────┘
-         │
-         │  1 | 1/2
-         ▼
+         +----------+
+         |          |
+         V          |
+       (s_A) ------+
+         |
+         |  1 | 1/2
+         V
        (s_B)
-         │
-         │  0 | 1
-         ▼
+         |
+         |  0 | 1
+         V
        (s_A)
-\end{lstlisting}
+\end{verbatim}
 
 More explicitly:
 \begin{itemize}
@@ -400,21 +384,21 @@ Therefore the epsilon-machine has \textbf{two causal states}: $\mathcal{S} = \{ 
 
 \textbf{Epsilon-machine diagram.}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
             1 | 1/2
-         ┌──────────┐
-         │          │
-         ▼          │
-       (s_A) ──────┘
-         │
-         │  0 | 1/2
-         ▼
+         +----------+
+         |          |
+         V          |
+       (s_A) ------+
+         |
+         |  0 | 1/2
+         V
        (s_B)
-         │
-         │  0 | 1
-         ▼
+         |
+         |  0 | 1
+         V
        (s_A)
-\end{lstlisting}
+\end{verbatim}
 
 \begin{itemize}
 \item From $s_A$: emit $1$ with probability $1/2$, go to $s_A$; emit $0$ with probability $1/2$, go to $s_B$.
@@ -442,9 +426,9 @@ This has exactly the same transition structure as the Golden Mean process in Exa
 \section{Summary of Examples}
 
 \begin{center}
-\begin{tabular}{cccccccc}
+\begin{tabular}{lccccc}
 \toprule
-Process & $ & \mathcal{S} & $ & $C_\mu$ (bits) & $h_\mu$ (bits/sym) & $E$ (bits) & Region \\
+Process & $|\mathcal{S}|$ & $C_\mu$ (bits) & $h_\mu$ (bits/sym) & $E$ (bits) & Region \\
 \midrule
 Fair coin (IID) & 1 & 0 & 1.000 & 0 & Bottom-right \\
 Period-2 & 2 & 1.000 & 0 & 1.000 & Left edge \\

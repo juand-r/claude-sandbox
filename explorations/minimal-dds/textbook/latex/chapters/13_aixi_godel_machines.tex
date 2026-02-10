@@ -25,9 +25,9 @@ Classical statistics requires you to choose a model class (e.g., "the data are i
 Fix a prefix-free universal Turing machine $U$. (Prefix-free means that the set of programs on which $U$ halts forms a prefix-free set: no halting program is a proper prefix of another. This is needed to make the prior a proper probability measure.)
 
 \begin{definition}[Solomonoff's Universal Prior]
-For a finite binary string $x \in \{ 0,1\} ^\textit{$, the }universal a priori probability\textit{ (or }Solomonoff prior*) is
+For a finite binary string $x \in \{ 0,1\}^*$, the \textit{universal a priori probability} (or \textit{Solomonoff prior}) is
 
-\[M(x) = \sum_{\substack{p \in \{ 0,1\} ^\textit{ \\ U(p) = x^}}} 2^{-|p|}\]
+\[M(x) = \sum_{\substack{p \in \{ 0,1\}^* \\ U(p) = x^*}} 2^{-|p|}\]
 
 where the sum is over all programs $p$ such that $U$ with input $p$ outputs a string starting with $x$ (written $x^*$ to denote that $x$ is a prefix of the output), and $|p|$ is the length of $p$ in bits.
 
@@ -48,7 +48,7 @@ Under the Solomonoff prior, $M(a) > M(b) > M(c)$ (up to constant factors). The s
 The crucial property of $M$ is that it is \textit{universal} among computable probability measures, in the following precise sense.
 
 \begin{theorem}[Dominance, Solomonoff 1964, Zvonkin and Levin 1970]
-\textit{For any computable probability measure $\mu$ on $\{ 0,1\} ^}$, there exists a constant $c_\mu > 0$ (depending on $\mu$ but not on $x$) such that for all $x \in \{ 0,1\} ^\textit{$:}
+\textit{For any computable probability measure $\mu$ on $\{ 0,1\}^*$, there exists a constant $c_\mu > 0$ (depending on $\mu$ but not on $x$) such that for all $x \in \{ 0,1\}^*$:}
 
 \[M(x) \geq c_\mu \cdot \mu(x).\]
 

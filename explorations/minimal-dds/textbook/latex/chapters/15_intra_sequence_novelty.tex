@@ -327,7 +327,7 @@ Neither extreme is desirable for language generation. The goal is to achieve hig
 \subsection{15.7.2 Pareto Optimality}
 
 \begin{definition}[Quality-diversity Pareto frontier]
-Let $Q(w)$ be a quality measure (e.g., fluency, coherence, task performance) and $D(w)$ a diversity measure (e.g., Distinct-2, entropy). A sequence $w^*$ is \textbf{Pareto optimal} if there is no $w$ with $Q(w) \geq Q(w^\textit{)$ and $D(w) \geq D(w^})$ with at least one strict inequality.
+Let $Q(w)$ be a quality measure (e.g., fluency, coherence, task performance) and $D(w)$ a diversity measure (e.g., Distinct-2, entropy). A sequence $w^*$ is \textbf{Pareto optimal} if there is no $w$ with $Q(w) \geq Q(w^*)$ and $D(w) \geq D(w^*)$ with at least one strict inequality.
 
 The set of Pareto optimal sequences forms a \textbf{frontier} in $(Q, D)$ space. Different decoding strategies (greedy, beam search, nucleus sampling) trace different points on or below this frontier.
 \end{definition}
@@ -465,7 +465,7 @@ $\rho_{\text{gzip}}$ & Compression ratio & Structural complexity & (0, 1+] \\
 
 \subsection{15.10.2 Implementation}
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 import math
 import gzip
 from collections import Counter
@@ -522,18 +522,18 @@ def novelty_report(tokens: List[str]) -> dict:
         'compression_ratio': compression_ratio(text),
         'lz_complexity': lz_complexity(tokens),
     }
-\end{lstlisting}
+\end{verbatim}
 
 \subsection{15.10.3 Interpreting the Metrics}
 
 \textbf{Guidelines for LLM-generated text:}
 
 \begin{enumerate}
-\item }Distinct-2 < 0.5\textbf{: Likely degenerate (excessive repetition).
-\item }Distinct-2 > 0.9\textbf{: Possibly incoherent or enumeration-like.
-\item }Rep-4 > 10%\textbf{: Significant phrase repetition; investigate.
-\item }Compression ratio < 0.3\textbf{: Highly repetitive structure.
-\item }Compression ratio > 0.8\textbf{: Little structure; possibly random or very diverse.
+\item \textbf{Distinct-2 $< 0.5$}: Likely degenerate (excessive repetition).
+\item \textbf{Distinct-2 $> 0.9$}: Possibly incoherent or enumeration-like.
+\item \textbf{Rep-4 $> 10\%$}: Significant phrase repetition; investigate.
+\item \textbf{Compression ratio $< 0.3$}: Highly repetitive structure.
+\item \textbf{Compression ratio $> 0.8$}: Little structure; possibly random or very diverse.
 \end{enumerate}
 
 Human text typically achieves Distinct-2 $\approx 0.8$--$0.95$ and compression ratio $\approx 0.3$--$0.5$.
@@ -583,7 +583,7 @@ where $D$ is any diversity measure. This is the second law of thermodynamics for
 Let $f$ be a "paraphrase" function (meaning-preserving rewrite). Then for typical LLM implementations:
 1. The vocabulary of $f(x)$ is a subset of common words, regardless of $x$'s vocabulary.
 2. Rare words in $x$ are replaced by common synonyms in $f(x)$.
-3. $\mathrm{TTR}(f^n(x)) \to \mathrm{TTR}^\textit{$ as $n \to \infty$, where $\mathrm{TTR}^}$ is the TTR of the attractor.
+3. $\mathrm{TTR}(f^n(x)) \to \mathrm{TTR}^*$ as $n \to \infty$, where $\mathrm{TTR}^*$ is the TTR of the attractor.
 
 The attractor vocabulary is determined by the LLM's frequency biases, not by the input.
 \end{proposition}
@@ -593,7 +593,7 @@ The attractor vocabulary is determined by the LLM's frequency biases, not by the
 What functions $f$ satisfy $D(f(x)) > D(x)$? We identify several classes:
 
 \begin{definition}[Divergent prompt]
-A prompt specification $f$ is }divergent\textbf{ if, for typical inputs $x$:
+A prompt specification $f$ is \textbf{divergent} if, for typical inputs $x$:
 
 \[\mathbb{E}[D(f(x))] > D(x).\]
 \end{definition}
@@ -615,14 +615,14 @@ A prompt specification $f$ is }divergent\textbf{ if, for typical inputs $x$:
 
 Chapter 14 (Section 14.3.3) identified two regimes:
 \begin{itemize}
-\item }Contractive\textbf{: Meaning-preserving operations (paraphrase, summarize). Novelty decreases.
-\item }Exploratory\textbf{: Meaning-transforming operations (negate, extrapolate, fictionalize). Novelty can increase.
+\item \textbf{Contractive}: Meaning-preserving operations (paraphrase, summarize). Novelty decreases.
+\item \textbf{Exploratory}: Meaning-transforming operations (negate, extrapolate, fictionalize). Novelty can increase.
 \end{itemize}
 
 We now formalize the exploratory regime in terms of novelty dynamics.
 
 \begin{definition}[Novelty Lyapunov exponent]
-For a (f, x) system, define the }novelty Lyapunov exponent\textbf{:
+For a $(f, x)$ system, define the \textbf{novelty Lyapunov exponent}:
 
 \[\lambda_D = \lim_{n \to \infty} \frac{1}{n} \log \frac{D(x_n)}{D(x_0)},\]
 
@@ -732,7 +732,7 @@ All novelty metrics so far have been \textbf{absolute}: they measure properties 
 A sequence that is internally diverse but identical to a million existing sequences is not novel. A sequence that repeats one word but has never been generated before is, in some sense, novel.
 
 \begin{definition}[Relative novelty]
-Let $w$ be a sequence and $\mathcal{R}$ a }reference set\textbf{ (corpus, distribution, or collection of prior outputs). The }relative novelty\textbf{ of $w$ with respect to $\mathcal{R}$ measures how different $w$ is from the elements of $\mathcal{R}$.
+Let $w$ be a sequence and $\mathcal{R}$ a \textbf{reference set} (corpus, distribution, or collection of prior outputs). The \textbf{relative novelty} of $w$ with respect to $\mathcal{R}$ measures how different $w$ is from the elements of $\mathcal{R}$.
 \end{definition}
 
 \subsection{15.13.2 Reference Sets}
@@ -860,19 +860,19 @@ Combining absolute novelty, relative novelty, and coherence yields a three-dimen
 \toprule
 High Absolute & High Relative & High Coherence & Interpretation \\
 \midrule
-✓ & ✓ & ✓ & \textbf{Ideal creative output}: diverse, original, sensible \\
-✓ & ✓ & ✗ & Random/incoherent novelty \\
-✓ & ✗ & ✓ & Diverse but clichéd (common patterns) \\
-✗ & ✓ & ✓ & Repetitive but original (rare word repeated) \\
-✓ & ✗ & ✗ & Chaotic regurgitation \\
-✗ & ✓ & ✗ & Novel nonsense \\
-✗ & ✗ & ✓ & Coherent cliché (safe, boring) \\
-✗ & ✗ & ✗ & Degenerate collapse \\
+$\checkmark$ & $\checkmark$ & $\checkmark$ & \textbf{Ideal creative output}: diverse, original, sensible \\
+$\checkmark$ & $\checkmark$ & $\times$ & Random/incoherent novelty \\
+$\checkmark$ & $\times$ & $\checkmark$ & Diverse but clichéd (common patterns) \\
+$\times$ & $\checkmark$ & $\checkmark$ & Repetitive but original (rare word repeated) \\
+$\checkmark$ & $\times$ & $\times$ & Chaotic regurgitation \\
+$\times$ & $\checkmark$ & $\times$ & Novel nonsense \\
+$\times$ & $\times$ & $\checkmark$ & Coherent cliché (safe, boring) \\
+$\times$ & $\times$ & $\times$ & Degenerate collapse \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The goal of generative systems is to occupy the (✓, ✓, ✓) corner: high diversity within the sequence, high differentiation from existing content, and high coherence.
+The goal of generative systems is to occupy the ($\checkmark$, $\checkmark$, $\checkmark$) corner: high diversity within the sequence, high differentiation from existing content, and high coherence.
 
 \subsection{15.13.9 Formalizing "Interestingness"}
 

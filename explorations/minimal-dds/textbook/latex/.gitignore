@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.out
+*.toc
+test_*.pdf
+test_*.aux
+test_*.log
+test_*.out

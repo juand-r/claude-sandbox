@@ -162,10 +162,10 @@ The program $e$ outputs its own index on every input. In particular, on input 0 
 
 This mirrors the structure of real quines in programming languages. In Python, for instance:
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 s = 's = %r\nprint(s %% s)'
 print(s % s)
-\end{lstlisting}
+\end{verbatim}
 
 The string `s` plays the role of $d_0$, and the substitution `s % s` plays the role of $s(d_0, d_0)$ --- applying the template to itself.
 
@@ -173,9 +173,9 @@ The string `s` plays the role of $d_0$, and the substitution `s % s` plays the r
 
 Consider a computable function $f$ that takes a program index $e$ and produces a new program $f(e)$ that runs $\varphi_e$ twice: $\varphi_{f(e)}(x) = \varphi_e(\varphi_e(x))$ (composition of $\varphi_e$ with itself, where the result is undefined if either application diverges).
 
-The recursion theorem gives us $e^\textit{$ with $\varphi_{e^}} = \varphi_{f(e^*)}$. This means:
+The recursion theorem gives us $e^*$ with $\varphi_{e^*} = \varphi_{f(e^*)}$. This means:
 
-\[\varphi_{e^\textit{}(x) = \varphi_{e^}}(\varphi_{e^*}(x)) \quad \text{for all } x.\]
+\[\varphi_{e^*}(x) = \varphi_{e^*}(\varphi_{e^*}(x)) \quad \text{for all } x.\]
 
 What functions satisfy $g(x) = g(g(x))$ for all $x$? Any function satisfying $g(g(x)) = g(x)$ works --- that is, any \textit{idempotent} function. Examples include:
 
@@ -223,10 +223,12 @@ Define the total computable function:
 
 This is computable because we assumed $A$ is decidable.
 
-By the recursion theorem, there exists $e^\textit{$ with $\varphi_{e^}} = \varphi_{f(e^*)}$.
+By the recursion theorem, there exists $e^*$ with $\varphi_{e^*} = \varphi_{f(e^*)}$.
 
-- If $e^\textit{ \in A$, then $f(e^}) = b$, so $\varphi_{e^\textit{} = \varphi_b \notin \mathcal{A}$, contradicting $e^} \in A$.
-- If $e^\textit{ \notin A$, then $f(e^}) = a$, so $\varphi_{e^\textit{} = \varphi_a \in \mathcal{A}$, contradicting $e^} \notin A$.
+\begin{itemize}
+\item If $e^* \in A$, then $f(e^*) = b$, so $\varphi_{e^*} = \varphi_b \notin \mathcal{A}$, contradicting $e^* \in A$.
+\item If $e^* \notin A$, then $f(e^*) = a$, so $\varphi_{e^*} = \varphi_a \in \mathcal{A}$, contradicting $e^* \notin A$.
+\end{itemize}
 
 Either case is a contradiction, so $A$ is not decidable. 
 
@@ -262,9 +264,9 @@ If we focus on the function component alone, the meta-rule defines a transformat
 \begin{theorem}[Fixed Points of Meta-Rules]
 Let $\varphi$ be any computable meta-rule, viewed as a total computable function on program indices: $\varphi: \mathbb{N} \to \mathbb{N}$ maps the index of $f$ to the index of the "updated" function. Then there exists an index $e^*$ such that
 
-\[\varphi_{e^\textit{} = \varphi_{\varphi(e^})}.\]
+\[\varphi_{e^*} = \varphi_{\varphi(e^*)}.\]
 
-That is, $f^\textit{ = \varphi_{e^}}$ is an extensional fixed point of the meta-rule: applying $\varphi$ to $f^\textit{$ yields a program that computes the same function as $f^}$.
+That is, $f^* = \varphi_{e^*}$ is an extensional fixed point of the meta-rule: applying $\varphi$ to $f^*$ yields a program that computes the same function as $f^*$.
 
 
 \end{theorem}
@@ -279,9 +281,9 @@ This is an immediate application of Kleene's recursion theorem (Theorem 11.4) wi
 In the full framework $(f, x) \mapsto (\varphi(f, x), f(x))$, the meta-rule depends on the current state. If we fix a state $x_0$ and define $T_{x_0}(f) = \varphi(f, x_0)$, then for each $x_0$ there is a fixed point $f^*_{x_0}$. But the more interesting observation is global:
 
 \begin{observation}
-For any computable meta-rule $\varphi$, there exist "self-consistent" functions $f^\textit{$ such that $\varphi(f^}, x) = f^\textit{$ (extensionally) for }every\textit{ state $x$, provided $\varphi$ does not depend on $x$ when restricted to such $f^}$.
+For any computable meta-rule $\varphi$, there exist ``self-consistent'' functions $f^*$ such that $\varphi(f^*, x) = f^*$ (extensionally) for \textit{every} state $x$, provided $\varphi$ does not depend on $x$ when restricted to such $f^*$.
 
-In the general state-dependent case, self-consistency becomes: the function $f^\textit{$ is such that the meta-rule, evaluated at any state the system actually visits along the orbit of $f^}$, returns (an index of) $f^\textit{$. Formally, if $(f^}, x_0) \mapsto (f^\textit{, f^}(x_0)) \mapsto (f^\textit{, f^}(f^\textit{(x_0))) \mapsto \cdots$, then $f^}$ is a true fixed point in the sense that the function component never changes.
+In the general state-dependent case, self-consistency becomes: the function $f^*$ is such that the meta-rule, evaluated at any state the system actually visits along the orbit of $f^*$, returns (an index of) $f^*$. Formally, if $(f^*, x_0) \mapsto (f^*, f^*(x_0)) \mapsto (f^*, f^*(f^*(x_0))) \mapsto \cdots$, then $f^*$ is a true fixed point in the sense that the function component never changes.
 
 These fixed points are \textit{unavoidable}: no matter how cleverly $\varphi$ is designed, it cannot escape having extensional fixed points. This is a fundamental structural constraint on any computable system of evolving rules.
 \end{observation}
@@ -289,7 +291,7 @@ These fixed points are \textit{unavoidable}: no matter how cleverly $\varphi$ is
 \begin{example}
 Consider the meta-rule "given program $e$, produce the program that runs $\varphi_e$ and then adds 1 to the result." Formally, $\varphi_{\text{meta}}(e)$ is the index of the program $x \mapsto \varphi_e(x) + 1$.
 
-One might think this meta-rule has no fixed point --- after all, it always increments the output. But the recursion theorem says otherwise. There exists $e^\textit{$ with $\varphi_{e^}} = \varphi_{\text{meta}(e^\textit{)}$, meaning $\varphi_{e^}}(x) = \varphi_{e^\textit{}(x) + 1$ for all $x$ in the domain. The only way this can hold is if $\varphi_{e^}}(x)$ is \textit{undefined} for all $x$ --- the fixed point is the everywhere-undefined (nowhere-halting) function. The meta-rule does have a fixed point; it is just the trivial one $\varphi_{e^*} = \bot$.
+One might think this meta-rule has no fixed point --- after all, it always increments the output. But the recursion theorem says otherwise. There exists $e^*$ with $\varphi_{e^*} = \varphi_{\text{meta}(e^*)}$, meaning $\varphi_{e^*}(x) = \varphi_{e^*}(x) + 1$ for all $x$ in the domain. The only way this can hold is if $\varphi_{e^*}(x)$ is \textit{undefined} for all $x$ --- the fixed point is the everywhere-undefined (nowhere-halting) function. The meta-rule does have a fixed point; it is just the trivial one $\varphi_{e^*} = \bot$.
 
 This example illustrates an important subtlety: the recursion theorem guarantees existence of fixed points but says nothing about their computability or non-triviality. The fixed point may be the everywhere-undefined function.
 \end{example}
@@ -299,9 +301,9 @@ This example illustrates an important subtlety: the recursion theorem guarantees
 In the computability-theoretic setting (countably infinite function space), only extensional fixed points are guaranteed. But in the finite discrete dynamical systems studied in earlier chapters, the function space $S^S$ is finite. Every function $T: S^S \to S^S$ on a finite set must have a periodic orbit, and in particular:
 
 \begin{proposition}
-If $|S|$ is finite, then any meta-rule $T: S^S \to S^S$ has an \textit{intensional} fixed point or a finite cycle. In particular, there exists $k \geq 1$ and $f^\textit{ \in S^S$ such that $T^k(f^}) = f^*$.
+If $|S|$ is finite, then any meta-rule $T: S^S \to S^S$ has an \textit{intensional} fixed point or a finite cycle. In particular, there exists $k \geq 1$ and $f^* \in S^S$ such that $T^k(f^*) = f^*$.
 
-When $T$ has an actual fixed point ($k = 1$), we get $T(f^\textit{) = f^}$: the function is unchanged even as a syntactic object (since in a finite setting, the function \textit{is} the object --- there is no distinction between a function and its index).
+When $T$ has an actual fixed point ($k = 1$), we get $T(f^*) = f^*$: the function is unchanged even as a syntactic object (since in a finite setting, the function \textit{is} the object --- there is no distinction between a function and its index).
 
 This is stronger than what Kleene's theorem provides. Finiteness buys us intensional fixed points for free.
 \end{proposition}

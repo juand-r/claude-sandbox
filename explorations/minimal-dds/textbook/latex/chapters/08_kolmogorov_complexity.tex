@@ -39,7 +39,7 @@ The definition depends on the choice of $U$. The next theorem shows this depende
 
 \[|K_{U_1}(x) - K_{U_2}(x)| \leq c.\]
 
-\textit{Proof sketch.} Since $U_1$ is universal, there exists a program $s_{21}$ (a "compiler" or "interpreter") such that for all $p$, $U_1(s_{21} \cdot p) = U_2(p)$, where $\cdot$ denotes concatenation. Then if $p^\textit{$ is a shortest program for $x$ on $U_2$, the program $s_{21} \cdot p^}$ produces $x$ on $U_1$. Therefore
+\textit{Proof sketch.} Since $U_1$ is universal, there exists a program $s_{21}$ (a "compiler" or "interpreter") such that for all $p$, $U_1(s_{21} \cdot p) = U_2(p)$, where $\cdot$ denotes concatenation. Then if $p^*$ is a shortest program for $x$ on $U_2$, the program $s_{21} \cdot p^*$ produces $x$ on $U_1$. Therefore
 
 \[K_{U_1}(x) \leq |s_{21}| + K_{U_2}(x).\]
 
@@ -64,21 +64,19 @@ The invariance theorem justifies writing $K(x)$ without specifying $U$, with the
 
 \end{proposition}
 
-\begin{proof}
-Consider the program "print the following $n$ bits: $x$." This program has length $n$ plus a fixed overhead $c$ for encoding the instruction and the length $n$ itself. 
+\textit{Proof.} Consider the program "print the following $n$ bits: $x$." This program has length $n$ plus a fixed overhead $c$ for encoding the instruction and the length $n$ itself.
 
 \begin{proposition}
 \textit{$K_{\text{prefix}}(x) \leq K(x) + O(\log |x|)$.} (More precisely, the prefix-free (self-delimiting) complexity exceeds the plain complexity by at most $O(\log n)$ bits, since the length $n$ can be encoded in $\lceil \log_2 n \rceil + O(\log \log n)$ bits.)
 \end{proposition}
 
 \begin{theorem}[Non-computability]
-\textit{The function $K : \{ 0,1\} ^} \to \mathbb{N}$ is not computable.*
+\textit{The function $K : \{ 0,1\}^* \to \mathbb{N}$ is not computable.}
 
 \textit{Proof sketch (Berry's paradox).} Suppose for contradiction that $K$ is computable. Then consider the following program $p$: "Enumerate all strings in shortlex order. Output the first string $x$ such that $K(x) > |p| + c_0$." This program has some fixed length $|p| = L$. It outputs a string $x$ with $K(x) > L + c_0$. But $p$ itself is a description of $x$, so $K(x) \leq L$, a contradiction for sufficiently large $c_0$.
 
-This is the formalization of Berry's paradox: "the smallest positive integer not definable in fewer than twelve words" is defined in eleven words. 
+This is the formalization of Berry's paradox: "the smallest positive integer not definable in fewer than twelve words" is defined in eleven words.
 \end{theorem}
-\end{proof}
 
 \begin{proposition}[Upper semi-computability]
 \textit{$K(x)$ is upper semi-computable: there exists a computable function $\phi(x, t)$ with $\phi(x, t) \geq \phi(x, t+1)$ and $\lim_{t \to \infty} \phi(x, t) = K(x)$.} We can approximate $K(x)$ from above by running all programs in parallel and tracking the shortest one found so far that outputs $x$. We can never know when we have found the true minimum, but any program we find gives a valid upper bound.
@@ -249,9 +247,9 @@ Kolmogorov complexity connects to dynamical systems through a beautiful theorem 
 
 Let $x = 0^n$ (the string of $n$ zeros). A program to produce this is:
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 print '0' repeated n times
-\end{lstlisting}
+\end{verbatim}
 
 The program needs to encode the instruction (constant overhead) and the number $n$ (requiring $\lceil \log_2 n \rceil$ bits). Therefore
 

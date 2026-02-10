@@ -5,7 +5,7 @@
 Let $\Sigma$ be a finite alphabet. We write $\Sigma^*$ for the free monoid over $\Sigma$---the set of all finite words (including the empty word $\varepsilon$) with concatenation as the monoid operation.
 
 \begin{definition}[Morphism]
-A \textit{morphism} is a map $\sigma: \Sigma \to \Sigma^\textit{$, extended to $\sigma: \Sigma^} \to \Sigma^*$ by the concatenation rule:
+A \textit{morphism} is a map $\sigma: \Sigma \to \Sigma^*$, extended to $\sigma: \Sigma^* \to \Sigma^*$ by the concatenation rule:
 \[\sigma(a_1 a_2 \cdots a_n) = \sigma(a_1)\sigma(a_2)\cdots\sigma(a_n).\]
 In other words, $\sigma$ is a monoid homomorphism from $(\Sigma^*, \cdot)$ to itself. A morphism is completely determined by specifying $\sigma(a)$ for each letter $a \in \Sigma$.
 
@@ -23,7 +23,7 @@ A \textit{coding} (or \textit{letter-to-letter morphism}) is a 1-uniform morphis
 \end{definition}
 
 \begin{definition}[Primitive morphism]
-A morphism $\sigma: \Sigma \to \Sigma^\textit{$ is }primitive* if there exists an integer $n \geq 1$ such that for every pair of letters $a, b \in \Sigma$, the letter $b$ appears in $\sigma^n(a)$. Equivalently, the incidence matrix $M_\sigma$ (where $(M_\sigma)_{ij}$ counts occurrences of letter $j$ in $\sigma(i)$) is a primitive matrix (some power has all positive entries).
+A morphism $\sigma: \Sigma \to \Sigma^*$ is \textit{primitive} if there exists an integer $n \geq 1$ such that for every pair of letters $a, b \in \Sigma$, the letter $b$ appears in $\sigma^n(a)$. Equivalently, the incidence matrix $M_\sigma$ (where $(M_\sigma)_{ij}$ counts occurrences of letter $j$ in $\sigma(i)$) is a primitive matrix (some power has all positive entries).
 
 Primitivity is the substitution analogue of irreducibility plus aperiodicity in Markov chains. It ensures that every part of the system communicates with every other part.
 \end{definition}
@@ -100,18 +100,13 @@ This was Thue's original motivation: to construct an infinite binary word with n
 \begin{theorem}[Not eventually periodic]
 The Thue-Morse sequence is not eventually periodic. That is, there are no integers $n_0$ and $p \geq 1$ such that $t_n = t_{n+p}$ for all $n \geq n_0$.
 
-\textit{Proof sketch.} If $\mathbf{t}$ were eventually periodic with period $p$, it would contain arbitrarily long squares $w w$. But $\mathbf{t}$ is overlap-free, and any word containing arbitrarily long squares must contain an overlap (by a pigeonhole argument on the positions). Contradiction. 
+\textit{Proof sketch.} If $\mathbf{t}$ were eventually periodic with period $p$, it would contain arbitrarily long squares $w w$. But $\mathbf{t}$ is overlap-free, and any word containing arbitrarily long squares must contain an overlap (by a pigeonhole argument on the positions). Contradiction.
+\end{theorem}
 
-\begin{center}
-\begin{tabular}{ccccc}
-\toprule
-w & _a$ as the number of occurrences of letter $a$ in the word $w$. For any two factors $u, v$ of $\mathbf{t}$ with $ & u & = & v \\
-\midrule
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{theorem}[Balanced]
+Define $|w|_a$ as the number of occurrences of letter $a$ in the word $w$. For any two factors $u, v$ of $\mathbf{t}$ with $|u| = |v|$, we have
+\[\big| |u|_0 - |v|_0 \big| \leq C\]
 for a universal constant $C$. That is, the Thue-Morse sequence is \textit{$C$-balanced}. (In fact, one can take $C = 2$; note it is not 1-balanced, unlike Sturmian sequences.)
-
 \end{theorem}
 
 
@@ -318,7 +313,7 @@ Key facts:
 
 \subsection{5.10.1 Construction}
 
-Given a morphism $\sigma: \Sigma \to \Sigma^\textit{$ with fixed point $\mathbf{x} = \sigma^\omega(a)$, define the }substitution subshift*
+Given a morphism $\sigma: \Sigma \to \Sigma^*$ with fixed point $\mathbf{x} = \sigma^\omega(a)$, define the \textit{substitution subshift}
 \[X_\sigma = \overline{\{ T^n(\mathbf{x}) : n \geq 0\} } \subseteq \Sigma^\omega,\]
 where $T$ is the shift and the closure is in the product topology. This is a compact, shift-invariant subset of $\Sigma^\omega$.
 
@@ -479,5 +474,5 @@ For number-theoretic connections:
 For the Pisot conjecture and related topics:
 
 \begin{itemize}
-\item \textbf{Barge, M.} (2016). "The Pisot conjecture for β-substitutions." \textit{Ergodic Theory and Dynamical Systems}, 36(5):1501--1534. Recent progress on one of the main open problems in the field.
+\item \textbf{Barge, M.} (2016). "The Pisot conjecture for $\beta$-substitutions." \textit{Ergodic Theory and Dynamical Systems}, 36(5):1501--1534. Recent progress on one of the main open problems in the field.
 \end{itemize}

@@ -106,13 +106,13 @@ Algebraically: $f(l, c, r) = l \oplus r$ (the center cell is ignored; only the X
 
 We trace Rule 90 ($f(l,c,r) = l \oplus r$) from a single live cell on a background of zeros. We use a finite window, padding with 0 outside the shown region.
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 t=0:  . . . . 1 . . . .
 t=1:  . . . 1 . 1 . . .
 t=2:  . . 1 . 0 . 1 . .
 t=3:  . 1 . 1 1 1 . 1 .
 t=4:  1 . 0 . 0 . 0 . 1
-\end{lstlisting}
+\end{verbatim}
 
 Here `.` denotes 0, and we trace a few cells explicitly for $t = 0 \to 1$:
 
@@ -129,13 +129,13 @@ Continuing this process generates the \textbf{Sierpinski triangle} modulo 2 -- a
 
 We trace Rule 30 ($f(l,c,r) = l \oplus (c \lor r)$) from a single live cell:
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 t=0:  . . . . 1 . . . .
 t=1:  . . . 1 1 1 . . .
 t=2:  . . 1 1 0 0 1 . .
 t=3:  . 1 1 0 1 1 1 1 .
 t=4:  1 1 0 0 1 0 0 0 1
-\end{lstlisting}
+\end{verbatim}
 
 Verification of $t = 1 \to 2$ for a few cells:
 
@@ -153,13 +153,13 @@ The resulting spacetime diagram appears \textbf{chaotic}: the pattern shows no d
 
 We trace Rule 110 from a single live cell, using the table from Section 7.2.3:
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 t=0:  . . . . 1 . . . .
 t=1:  . . . 1 1 . . . .
 t=2:  . . 1 1 1 . . . .
 t=3:  . 1 1 0 1 . . . .
 t=4:  1 1 0 0 1 . . . .
-\end{lstlisting}
+\end{verbatim}
 
 Verification of $t = 2 \to 3$ for a few cells:
 

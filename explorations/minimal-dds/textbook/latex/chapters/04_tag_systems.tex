@@ -14,7 +14,7 @@ A \textit{tag system} is a triple $T = (\Sigma, m, P)$ where:
 \begin{itemize}
 \item $\Sigma$ is a finite alphabet,
 \item $m \geq 1$ is the \textit{deletion number},
-\item $P: \Sigma \to \Sigma^\textit{$ is the }production function*, mapping each symbol to a (possibly empty) string over $\Sigma$.
+\item $P: \Sigma \to \Sigma^*$ is the \textit{production function}, mapping each symbol to a (possibly empty) string over $\Sigma$.
 
 \end{itemize}
 \textbf{Computation step.} Given a string $w = a_1 a_2 \cdots a_n$ with $n \geq m$:
@@ -25,7 +25,7 @@ A \textit{tag system} is a triple $T = (\Sigma, m, P)$ where:
 
 \textbf{Halting condition.} The system halts when the current string has length less than $m$. In particular, if a production maps some symbol to the empty string $\varepsilon$, the string may shrink and eventually halt.
 
-We write $w \vdash_T w'$ for a single step and $w \vdash_T^\textit{ w'$ for the reflexive-transitive closure. The }orbit* of a string $w_0$ is the sequence $w_0, w_1, w_2, \ldots$ where $w_{i+1}$ is obtained from $w_i$ by one step (or the sequence terminates if $w_i$ halts).
+We write $w \vdash_T w'$ for a single step and $w \vdash_T^* w'$ for the reflexive-transitive closure. The \textit{orbit} of a string $w_0$ is the sequence $w_0, w_1, w_2, \ldots$ where $w_{i+1}$ is obtained from $w_i$ by one step (or the sequence terminates if $w_i$ halts).
 \end{definition}
 
 \begin{remark}

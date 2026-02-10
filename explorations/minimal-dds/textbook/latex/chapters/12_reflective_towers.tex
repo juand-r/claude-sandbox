@@ -98,14 +98,14 @@ In 3-Lisp, the mechanism for ascending the tower is the \textbf{reflective lambd
 \begin{example}[Reflective operation in 3-Lisp]
 Suppose a user program at level 0 defines:
 
-\begin{lstlisting}[language=python]
+\begin{verbatim}
 (define current-continuation
   (lambda-reflect (env cont)
     ;; This body runs at level 1 (inside the interpreter).
     ;; 'env' is the reified environment of the call site.
     ;; 'cont' is the reified continuation of the call site.
     (cont cont)))  ;; Return the continuation as a value.
-\end{lstlisting}
+\end{verbatim}
 
 When `(current-continuation)` is called at level 0, control shifts to level 1. The interpreter's current environment and continuation are \textit{reified} as the arguments `env` and `cont`. The body `(cont cont)` then passes the continuation \textit{as data} back down to level 0. The continuation --- normally an implicit, invisible part of the interpreter --- has been made into a first-class value that the user program can inspect, store, or invoke.
 
@@ -155,9 +155,9 @@ Let $\mathcal{D}$ be a suitable semantic domain. Define the operator $\Phi: (\ma
 \end{definition}
 
 \begin{theorem}[Wand \& Friedman, 1986]
-Under appropriate conditions on the semantic domain, $\Phi$ has a unique fixed point $I^\textit{ = \Phi(I^})$. The semantics of the reflective tower is this fixed point.
+Under appropriate conditions on the semantic domain, $\Phi$ has a unique fixed point $I^* = \Phi(I^*)$. The semantics of the reflective tower is this fixed point.
 
-The intuition: the fixed-point condition $I^\textit{ = \Phi(I^})$ says that interpreting a program using $I^\textit{$ as the meta-level semantics gives back $I^}$ itself. The tower is self-consistent because every level has the same behavior, and the semantics of "one more level of interpretation" is the same as the semantics of the whole tower.
+The intuition: the fixed-point condition $I^* = \Phi(I^*)$ says that interpreting a program using $I^*$ as the meta-level semantics gives back $I^*$ itself. The tower is self-consistent because every level has the same behavior, and the semantics of ``one more level of interpretation'' is the same as the semantics of the whole tower.
 
 This is analogous to the denotational semantics of recursion: a recursive function $f(x) = \ldots f \ldots$ is defined as the least fixed point of an operator. Wand and Friedman apply the same technique to the tower.
 \end{theorem}
@@ -367,7 +367,7 @@ The main ideas of this chapter:
 \end{enumerate}
 
 \begin{enumerate}
-\item \textbf{Denotational semantics} (Wand \& Friedman, 1986): the tower's meaning is a fixed point $I^\textit{ = \Phi(I^})$ of an operator on interpretation functions, resolving the apparent circularity.
+\item \textbf{Denotational semantics} (Wand \& Friedman, 1986): the tower's meaning is a fixed point $I^* = \Phi(I^*)$ of an operator on interpretation functions, resolving the apparent circularity.
 \end{enumerate}
 
 \begin{enumerate}
