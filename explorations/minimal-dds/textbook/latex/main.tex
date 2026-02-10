@@ -1,0 +1,139 @@
+\documentclass[11pt,a4paper]{book}
+
+% Encoding and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Mathematics
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,arrows}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+
+% Code listings
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    xleftmargin=2em,
+    framexleftmargin=1.5em
+}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{algorithm_env}[definition]{Algorithm}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{observation}[definition]{Observation}
+\newtheorem{question}[definition]{Question}
+
+% Custom commands
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Orb}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+
+% Title information
+\title{\Huge\textbf{Minimal Discrete Dynamical Systems}\\[0.5em]
+\Large From Iterated Maps to Large Language Models}
+\author{}
+\date{}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+% Part I: Foundations
+\part{Foundations of Discrete Dynamical Systems}
+
+\include{chapters/01_iterated_maps}
+\include{chapters/02_symbolic_dynamics}
+\include{chapters/03_sliding_block_codes}
+\include{chapters/04_tag_systems}
+\include{chapters/05_substitution_systems}
+\include{chapters/06_iterated_function_systems}
+\include{chapters/07_cellular_automata}
+
+% Part II: Complexity and Computation
+\part{Complexity and Computation}
+
+\include{chapters/08_kolmogorov_complexity}
+\include{chapters/09_logical_depth}
+\include{chapters/10_computational_mechanics}
+
+% Part III: Self-Reference and Reflection
+\part{Self-Reference and Reflection}
+
+\include{chapters/11_kleene_recursion_theorem}
+\include{chapters/12_reflective_towers}
+\include{chapters/13_aixi_godel_machines}
+
+% Part IV: Language Models and Novelty
+\part{Language Models and Novelty}
+
+\include{chapters/14_llms_as_dynamical_systems}
+\include{chapters/15_intra_sequence_novelty}
+\include{chapters/16_evolution_and_discovery}
+
+\backmatter
+
+% Bibliography could go here
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+\end{document}

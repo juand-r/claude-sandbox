@@ -1,0 +1,1054 @@
+\chapter{Evolution, Discovery, and Open-Ended Systems}
+
+\section{Introduction}
+
+The preceding chapters developed a framework for understanding LLMs as dynamical systems, with the (f, x) decomposition revealing how prompts encode both functions and data, and how iteration can mutate both. Chapter 15 introduced metrics for measuring novelty within outputs---the diversity, complexity, and originality of what these systems produce.
+
+This chapter extends the framework in two directions that turn out to be deeply connected:
+
+\begin{enumerate}
+\item \textbf{AI-as-scientist}: Systems that autonomously generate hypotheses, design experiments, and make discoveries---treating the scientific method itself as a dynamical system.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Evolutionary computation}: Algorithms that evolve populations of solutions, where LLMs now serve as intelligent mutation operators---treating evolution as a search through function space.
+\end{enumerate}
+
+Both domains share a fundamental structure: an iterative process that generates novelty under selection pressure, with the goal of producing not just \textit{good} solutions but \textit{diverse} solutions that explore the space of possibilities. The (f, x) framework applies directly, and the novelty metrics of Chapter 15 become fitness functions.
+
+The synthesis reveals a common challenge: \textbf{open-endedness}. How can we design systems that produce unbounded novelty without collapsing into repetitive patterns or diverging into incoherence? This is the "edge of chaos" problem writ large---the search for dynamics that sustain creative exploration indefinitely.
+
+
+
+\section{Scientific Discovery as a Dynamical System}
+
+\subsection{16.2.1 The Scientific Method as Iteration}
+
+The scientific method is, at its core, an iterated process:
+
+\begin{enumerate}
+\item \textbf{Observe} phenomena
+\item \textbf{Hypothesize} explanations
+\item \textbf{Predict} consequences
+\item \textbf{Test} predictions experimentally
+\item \textbf{Revise} hypotheses based on results
+\item \textbf{Repeat}
+\end{enumerate}
+
+\begin{definition}[Scientific discovery system]
+A \textbf{scientific discovery system} is a tuple $(H, E, f, g)$ where:
+- $H$ is the space of hypotheses (theories, models, explanations).
+- $E$ is the space of evidence (experimental results, observations).
+- $f: H \times E \to H$ is the \textbf{revision function}: how hypotheses update given evidence.
+- $g: H \to E$ is the \textbf{prediction function}: what evidence a hypothesis predicts.
+
+The dynamics are:
+
+\[h_{n+1} = f(h_n, e_n), \qquad e_n = g(h_n) + \xi_n,\]
+
+where $\xi_n$ is experimental noise or the "surprise" of nature.
+\end{definition}
+
+\subsection{16.2.2 The (f, x) Decomposition of Science}
+
+Mapping to the framework of Chapter 14:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Scientific Concept & (f, x) Component \\
+\midrule
+Current hypothesis & State $x$ \\
+Scientific method / reasoning & Function $f$ \\
+Methodology evolution & Meta-rule $\varphi$ \\
+Experimental results & External input $\xi$ \\
+Paradigm shift & Change in $f$ itself \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{observation}
+Normal science (Kuhn, 1962) corresponds to fixed $f$: hypotheses evolve but the method stays constant. \textbf{Paradigm shifts} correspond to changes in $f$ itself---a new way of doing science.
+
+In the (f, x) framework, a paradigm shift is:
+
+\[(f_{\text{old}}, h) \to (f_{\text{new}}, h'),\]
+
+where $f_{\text{new}}$ may be incommensurable with $f_{\text{old}}$ (different standards of evidence, different ontologies).
+\end{observation}
+
+\subsection{16.2.3 Attractors in Hypothesis Space}
+
+\begin{definition}[Scientific attractor]
+A hypothesis $h^*$ is an \textbf{attractor} of the scientific discovery system if, for hypotheses $h$ in some neighborhood, repeated application of revision converges to $h^*$:
+
+\[f(f(\cdots f(h, e_1), e_2), \ldots, e_n) \to h^*.\]
+\end{definition}
+
+\begin{example}
+The heliocentric model is an attractor: sufficiently careful observation and hypothesis revision, starting from various geocentric models, eventually converges to heliocentrism. The Ptolemaic system was a \textbf{metastable state}---stable under small perturbations but not a global attractor.
+\end{example}
+
+\begin{proposition}
+Under the Bayesian interpretation, the attractor of rational belief revision is the hypothesis with maximum posterior probability. If the true model is in $H$ and evidence is unbiased, the attractor is the truth.
+\end{proposition}
+
+\subsection{16.2.4 Novelty in Scientific Discovery}
+
+Where does novelty enter science?
+
+\begin{enumerate}
+\item \textbf{Hypothesis generation}: Proposing new $h \in H$ not previously considered.
+\item \textbf{Experimental design}: Choosing which $e$ to seek (not just passively receiving).
+\item \textbf{Conceptual innovation}: Expanding $H$ itself to include previously inconceivable hypotheses.
+\item \textbf{Methodological innovation}: Changing $f$ to a more powerful revision procedure.
+\end{enumerate}
+
+The metrics of Chapter 15 apply:
+
+\begin{itemize}
+\item \textbf{Distinct-n on hypotheses}: How many qualitatively different hypotheses has the system explored?
+\item \textbf{Relative novelty}: Is the current hypothesis far from all previously considered ones?
+\item \textbf{Cumulative novelty}: Is the trajectory through hypothesis space exploring new regions?
+\end{itemize}
+
+\begin{definition}[Scientific creativity]
+A scientific discovery system exhibits \textbf{creativity} if:
+1. It generates hypotheses with high relative novelty (unlike prior hypotheses).
+2. Those hypotheses have high coherence (consistent with evidence).
+3. The novelty is sustained (cumulative novelty doesn't decay to zero).
+
+This is the (✓, ✓, ✓) corner of the novelty-coherence-reference triangle (Section 15.13.8) applied to hypothesis space.
+\end{definition}
+
+\subsection{16.2.5 Boden's Taxonomy of Creativity}
+
+Boden (2004) distinguishes three types of creativity, which map directly onto the (f, x) framework:
+
+\begin{definition}[Boden's creativity types]
+
+1. \textbf{Combinatorial creativity}: Novel combinations of familiar ideas. In (f, x) terms: new states $x$ generated by fixed $f$ operating on known elements. Example: a new metaphor combining two existing concepts.
+
+2. \textbf{Exploratory creativity}: Systematic exploration of a conceptual space defined by implicit rules. In (f, x) terms: traversing the state space $\mathcal{X}$ under fixed dynamics $f$, discovering regions not previously visited. Example: a jazz improvisation within the rules of chord progressions.
+
+3. \textbf{Transformational creativity}: Changing the rules that define the conceptual space itself. In (f, x) terms: changing $f$, expanding or restructuring $\mathcal{X}$. Example: the invention of non-Euclidean geometry.
+\end{definition}
+
+\begin{proposition}
+Transformational creativity corresponds to paradigm shifts (Section 16.2.2). It requires meta-level operations: the system must represent and modify its own rules. In the (f, x) framework, this is the action of the meta-rule $\varphi$ on $f$.
+\end{proposition}
+
+\begin{observation}
+Most computational creativity systems achieve only combinatorial or exploratory creativity. Transformational creativity---genuine expansion of the conceptual space---remains rare. This is the "paradigm shift problem" for AI.
+\end{observation}
+
+
+
+\section{Evolutionary Computation as a Dynamical System}
+
+\subsection{16.3.1 Genetic Algorithms}
+
+A \textbf{genetic algorithm} (GA) evolves a population of candidate solutions:
+
+\begin{enumerate}
+\item \textbf{Initialize} population $P_0 = \{x_1, \ldots, x_N\}$.
+\item \textbf{Evaluate} fitness $f(x_i)$ for each individual.
+\item \textbf{Select} parents based on fitness.
+\item \textbf{Recombine} (crossover) parents to produce offspring.
+\item \textbf{Mutate} offspring with some probability.
+\item \textbf{Replace} population: $P_{t+1} = \text{selection}(P_t \cup \text{offspring})$.
+\item \textbf{Repeat} from step 2.
+\end{enumerate}
+
+\begin{definition}[GA as DDS]
+A genetic algorithm defines a discrete dynamical system on the space of populations:
+
+\[\mathcal{P} = \{\text{finite subsets of } \mathcal{X}\},\]
+
+with transition function:
+
+\[F: \mathcal{P} \to \mathcal{P}, \qquad P_{t+1} = F(P_t).\]
+
+This is a higher-order DDS: the "state" is itself a set of solutions.
+\end{definition}
+
+\subsection{16.3.2 Fitness Landscapes}
+
+\begin{definition}[Fitness landscape]
+For search space $\mathcal{X}$ with fitness function $f: \mathcal{X} \to \mathbb{R}$ and neighborhood relation $N: \mathcal{X} \to 2^{\mathcal{X}}$, the \textbf{fitness landscape} is the graph $(X, E, f)$ where edge $(x, y) \in E$ iff $y \in N(x)$.
+\end{definition}
+
+\begin{proposition}[Landscape structure determines dynamics]
+- \textbf{Smooth, unimodal landscape}: GA converges to global optimum. Single attractor.
+- \textbf{Rugged, multimodal landscape}: GA may get stuck in local optima. Multiple attractors.
+- \textbf{Deceptive landscape}: Gradient points away from global optimum. Attractor is not optimal.
+- \textbf{Neutral landscape}: Large plateaus of equal fitness. Random drift dominates.
+\end{proposition}
+
+\subsection{16.3.3 Premature Convergence as Collapse}
+
+\begin{definition}[Premature convergence]
+A GA exhibits \textbf{premature convergence} when the population loses diversity and concentrates on a suboptimal solution before finding the global optimum.
+
+This is the evolutionary analogue of \textbf{model collapse} (Chapter 14, Section 14.5): self-reinforcing dynamics reduce diversity. In GA terms:
+
+\[\mathrm{Distinct\text{-}1}(P_t) \to 0 \text{ as } t \to \infty,\]
+
+even though the population hasn't found the global optimum.
+\end{definition}
+
+\begin{proposition}
+Premature convergence corresponds to the GA being captured by a \textbf{spurious attractor}---a local optimum that is stable under the selection-mutation dynamics but not globally optimal.
+\end{proposition}
+
+\subsection{16.3.4 Diversity Maintenance}
+
+To prevent premature convergence, GAs employ diversity maintenance:
+
+\begin{enumerate}
+\item \textbf{Fitness sharing}: Reduce fitness of individuals similar to others.
+\item \textbf{Crowding}: Offspring replace similar parents.
+\item \textbf{Island models}: Maintain separate subpopulations with occasional migration.
+\item \textbf{Novelty pressure}: Explicitly reward individuals different from the population.
+\end{enumerate}
+
+These correspond to \textbf{diversity-regularized objectives} (Section 15.12.4, Strategy 2):
+
+\[\tilde{f}(x) = f(x) + \alpha \cdot \mathrm{Nov}_P(x),\]
+
+where $\mathrm{Nov}_P(x)$ measures novelty of $x$ relative to population $P$.
+
+
+
+\section{Novelty Search and Quality-Diversity}
+
+\subsection{16.4.1 Novelty Search}
+
+Lehman and Stanley (2011) proposed a radical idea: \textbf{abandon fitness entirely} and search purely for novelty.
+
+\begin{definition}[Novelty search]
+Let $\mathcal{A}_t$ be the \textbf{archive} of previously discovered behaviors. The novelty of individual $x$ is:
+
+\[\mathrm{Nov}(x) = \frac{1}{k} \sum_{i=1}^{k} d(x, \text{$i$-th nearest neighbor in } \mathcal{A}_t),\]
+
+the average distance to the $k$ nearest archived behaviors.
+
+Selection is based on novelty, not fitness:
+
+\[P_{t+1} = \text{select}(P_t, \mathrm{Nov}).\]
+\end{definition}
+
+\begin{theorem}[Lehman & Stanley, 2011, informal]
+On deceptive fitness landscapes, novelty search often outperforms fitness-based search. By ignoring the misleading fitness gradient, novelty search explores broadly and stumbles upon the global optimum.
+\end{theorem}
+
+\subsection{16.4.2 The Paradox of Objectives}
+
+\begin{observation}[The objective paradox]
+For complex problems, explicitly optimizing for the objective can prevent finding solutions, while searching for novelty---ignoring the objective---can succeed.
+
+This connects to the exploration-exploitation trade-off. Pure exploitation (greedy fitness optimization) converges prematurely. Pure exploration (random search) is inefficient. Novelty search is a structured form of exploration that can outperform both.
+\end{observation}
+
+\subsection{16.4.3 Quality-Diversity Algorithms}
+
+\textbf{Quality-Diversity (QD)} algorithms seek the best of both worlds: collections of solutions that are both \textbf{high-quality} and \textbf{diverse}.
+
+\begin{definition}[MAP-Elites]
+\textbf{MAP-Elites} (Mouret & Clune, 2015) maintains a grid of cells, each representing a region of \textbf{behavior space}. For each cell, the algorithm stores the highest-fitness individual whose behavior falls in that region.
+
+Algorithm:
+1. \textbf{Initialize}: Randomly generate solutions; place each in the appropriate cell.
+2. \textbf{Select}: Randomly choose an occupied cell.
+3. \textbf{Mutate}: Produce offspring from the cell's elite.
+4. \textbf{Evaluate}: Compute fitness and behavior descriptor of offspring.
+5. \textbf{Update}: If offspring's cell is empty or offspring has higher fitness, replace.
+6. \textbf{Repeat}.
+\end{definition}
+
+\begin{proposition}
+MAP-Elites simultaneously optimizes for:
+- \textbf{Quality}: Each cell contains the best solution for that behavior.
+- \textbf{Diversity}: Different cells represent different behaviors.
+
+The output is a \textbf{repertoire}---a diverse collection of high-quality solutions.
+\end{proposition}
+
+\subsection{16.4.4 Connection to Chapter 15 Metrics}
+
+Quality-Diversity algorithms operationalize the novelty-coherence-reference triangle:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+QD Concept & Chapter 15 Concept \\
+\midrule
+Fitness & Quality $Q(w)$ \\
+Behavior distance & Relative novelty $\mathrm{Nov}_{\mathcal{R}}(w)$ \\
+Archive coverage & Absolute diversity $D(w)$ \\
+MAP-Elites grid & Multi-scale novelty profile \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The QD objective can be written:
+
+\[\max_{P} \sum_{c \in \text{cells}} Q(\text{elite}_c) \cdot \mathbb{1}[\text{cell } c \text{ occupied}],\]
+
+which rewards both quality (high $Q$) and coverage (many cells occupied).
+
+
+
+\section{LLM-Augmented Evolution}
+
+\subsection{16.5.1 Evolution Through Large Models (ELM)}
+
+Traditional GAs use random mutation. \textbf{Evolution through Large Models (ELM)} (Lehman et al., 2022) replaces random mutation with LLM-guided mutation.
+
+\begin{definition}[LLM mutation operator]
+Given a program $x$ (or any structured solution), the LLM mutation is:
+
+\[\mathrm{mutate}_{\mathrm{LLM}}(x) = \mathrm{LLM}(\text{"Improve or vary this solution: "} \| x).\]
+
+The LLM uses its training knowledge to propose \textit{intelligent} modifications rather than random changes.
+\end{definition}
+
+\begin{proposition}
+LLM mutation has several advantages over random mutation:
+1. \textbf{Syntax preservation}: The LLM generates syntactically valid programs.
+2. \textbf{Semantic awareness}: Modifications are more likely to be meaningful.
+3. \textbf{Knowledge transfer}: The LLM applies patterns from its training data.
+4. \textbf{Adaptive step size}: The LLM can make small tweaks or large restructurings.
+\end{proposition}
+
+\subsection{16.5.2 FunSearch: LLM + Evolution for Mathematical Discovery}
+
+\textbf{FunSearch} (Romera-Paredes et al., 2023) applies ELM to mathematical discovery. The key insight: search for \textbf{programs that generate solutions} rather than solutions directly.
+
+\begin{algorithm_env}[FunSearch]
+1. \textbf{Skeleton}: User provides a program skeleton with a critical function to evolve.
+2. \textbf{Initialize}: Start with a simple implementation.
+3. \textbf{Prompt}: Sample high-performing programs from the archive; prompt the LLM to improve.
+4. \textbf{Evaluate}: Run the generated program; score based on the solutions it produces.
+5. \textbf{Update}: Add high-scoring programs to the archive.
+6. \textbf{Iterate} with island-based parallelism.
+\end{algorithm_env}
+
+\begin{theorem}[FunSearch results, Nature 2024]
+FunSearch discovered:
+- New constructions for the \textbf{cap set problem} (extremal combinatorics), improving the asymptotic lower bound for the first time in 20 years.
+- New heuristics for \textbf{online bin packing} that outperform hand-designed baselines.
+\end{theorem}
+
+\begin{remark}
+FunSearch searches in \textbf{function space}, not solution space. The programs it discovers are interpretable and generalizable---a scientist can read them and understand the strategy.
+\end{remark}
+
+\subsection{16.5.3 AlphaEvolve: General-Purpose Algorithm Discovery}
+
+\textbf{AlphaEvolve} (DeepMind, 2025) extends FunSearch to general-purpose algorithm discovery.
+
+\textbf{Key features:}
+\begin{itemize}
+\item \textbf{Ensemble of LLMs}: Uses both Gemini 2.0 Flash (high throughput) and Gemini 2.0 Pro (high quality).
+\item \textbf{Multi-objective optimization}: Can optimize for multiple metrics (accuracy, efficiency, etc.).
+\item \textbf{Whole-codebase evolution}: Can modify entire programs, not just single functions.
+\end{itemize}
+
+\begin{theorem}[AlphaEvolve results, 2025]
+AlphaEvolve achieved:
+- First improvement in 56 years to Strassen's algorithm for 4×4 complex matrix multiplication.
+- 0.7% recovery of Google's worldwide computing resources via improved scheduling.
+- 23--32% speedups in TPU kernel operations.
+- Improvements on 20% of 50+ open mathematical problems.
+\end{theorem}
+
+\subsection{16.5.4 The (f, x) View of LLM-Evolution}
+
+In the (f, x) framework:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Evolution Concept & (f, x) Component \\
+\midrule
+Current population & State $x = P$ \\
+Selection + LLM mutation & Function $f = \mathrm{select} \circ \mathrm{mutate}_{\mathrm{LLM}}$ \\
+Prompt engineering & Specification of $f$ \\
+Archive/elites & Memory component of $x$ \\
+Fitness function & Quality metric $Q$ \\
+Behavior descriptor & Novelty metric $D$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}
+LLM-augmented evolution is a (f, x) system where the mutation operator $f$ is itself a large neural network with rich prior knowledge. The "instruction" component of $f$ (the prompt) can be evolved alongside the population, enabling \textbf{meta-learning} of the evolutionary process.
+\end{proposition}
+
+
+
+\section{Autonomous AI Scientists}
+
+\subsection{16.6.1 The AI Scientist}
+
+\textbf{The AI Scientist} (Lu et al., 2024) automates the full scientific workflow:
+
+\begin{enumerate}
+\item \textbf{Idea generation}: LLM proposes research questions and hypotheses.
+\item \textbf{Literature review}: Automated search and synthesis of related work.
+\item \textbf{Experiment design}: LLM writes code to test hypotheses.
+\item \textbf{Execution}: Automated running of experiments.
+\item \textbf{Analysis}: LLM interprets results and generates visualizations.
+\item \textbf{Writing}: LLM produces a complete scientific manuscript.
+\item \textbf{Review}: Automated peer review evaluates the paper.
+\end{enumerate}
+
+\textbf{Definition 16.26 (AI Scientist as (f, x) system).} The AI Scientist is a (f, x) system where:
+\begin{itemize}
+\item $x$ = (current manuscript, experimental results, literature context).
+\item $f$ = the LLM-driven research pipeline (idea → experiment → write → review).
+\item The output $f(x)$ is a revised manuscript incorporating new experiments.
+\end{itemize}
+
+\begin{observation}
+The AI Scientist exhibits both \textbf{novelty generation} (new ideas, experiments) and \textbf{quality control} (automated review). This implements the quality-diversity trade-off at the level of scientific papers.
+\end{observation}
+
+\subsection{16.6.2 AI Scientist v2 and Agentic Tree Search}
+
+\textbf{AI Scientist v2} (2025) replaces template-based generation with \textbf{agentic tree search}:
+
+\begin{definition}[Experiment tree]
+The \textbf{experiment tree} is a tree where:
+- Each node is an experimental state (code, results, manuscript draft).
+- Each edge is an action (modify code, run experiment, revise text).
+- The tree expands via LLM-proposed actions.
+- An \textbf{experiment manager agent} guides search.
+
+This is \textbf{Monte Carlo Tree Search for science}---balancing exploration of new experimental directions with exploitation of promising results.
+\end{definition}
+
+\begin{theorem}[AI Scientist v2 results, 2025]
+AI Scientist v2 produced the first entirely AI-generated peer-review-accepted workshop paper, demonstrating that LLM-driven systems can produce novel, validated scientific contributions.
+\end{theorem}
+
+\subsection{16.6.3 Open-Ended Scientific Discovery}
+
+\begin{definition}[Open-ended scientific discovery]
+A scientific discovery system is \textbf{open-ended} if:
+1. It generates novel hypotheses indefinitely (no convergence to a fixed set).
+2. The novelty is adaptive (hypotheses explain more phenomena over time).
+3. Complexity grows unboundedly (explanations become more sophisticated).
+\end{definition}
+
+\begin{conjecture}
+Current AI scientist systems are not truly open-ended. They can produce novel papers within the distribution of their training data, but cannot:
+- Invent fundamentally new mathematical frameworks.
+- Recognize when the entire paradigm needs revision.
+- Generate experimental setups requiring physical intuition beyond their training.
+
+True open-ended scientific discovery may require:
+- Embodiment (physical experimentation, not just simulation).
+- Social embedding (interaction with human scientists).
+- Meta-level reflection (questioning the scientific method itself).
+\end{conjecture}
+
+
+
+\section{The Adjacent Possible and Open-Endedness}
+
+\subsection{16.7.1 The Adjacent Possible}
+
+\begin{definition}[Adjacent possible, Kauffman 1996]
+The \textbf{adjacent possible} is the set of states reachable in one step from the current state. As the system explores and expands, new states become adjacent that were not previously accessible.
+\end{definition}
+
+\begin{example}
+In technology evolution:
+- Before the wheel, the cart is not in the adjacent possible.
+- Once the wheel exists, the cart becomes adjacent.
+- Once the cart exists, wheeled vehicles, gears, and pulleys become adjacent.
+
+Each innovation expands the adjacent possible, enabling further innovation.
+\end{example}
+
+\subsection{16.7.2 Formalizing Open-Endedness}
+
+\begin{definition}[Open-ended evolution]
+An evolutionary system is \textbf{open-ended} if it:
+1. \textbf{Never converges}: $\lim_{t \to \infty} \mathrm{CumNov}(P_t) \neq 0$.
+2. \textbf{Increases complexity}: Some measure of complexity grows without bound.
+3. \textbf{Generates major transitions}: Qualitatively new types of entities emerge.
+\end{definition}
+
+\begin{observation}
+Biological evolution on Earth appears open-ended: 3.5 billion years have produced increasing complexity (from prokaryotes to eukaryotes to multicellular life to intelligence) without convergence.
+\end{observation}
+
+\subsection{16.7.3 Obstacles to Open-Endedness}
+
+Why do computational systems fail to be open-ended?
+
+\textbf{Obstacle 1: Finite state space.} If $|\mathcal{X}| < \infty$, the system must eventually repeat. Novelty is bounded.
+
+\textbf{Obstacle 2: Fixed fitness landscape.} If the fitness function is static, the system converges to optima. No pressure for continued exploration.
+
+\textbf{Obstacle 3: Representational limits.} If solutions have fixed complexity (e.g., fixed-length genomes), major transitions are impossible.
+
+\textbf{Obstacle 4: Attractor collapse.} As in model collapse (Chapter 14), iterative systems tend toward low-diversity equilibria.
+
+\subsection{16.7.4 Conditions for Open-Endedness}
+
+Based on biological analogies and computational experiments:
+
+\textbf{Condition 1: Expanding state space.} The set of possible solutions must grow with the system. In biology: new genes, new cell types, new body plans.
+
+\textbf{Condition 2: Coevolution.} Entities evolve in response to each other, creating an ever-shifting fitness landscape. Red Queen dynamics: "running just to stay in place."
+
+\textbf{Condition 3: Niche construction.} Agents modify their environment, creating new selection pressures. The adjacent possible expands as entities create new niches.
+
+\textbf{Condition 4: Open-ended evaluation.} The fitness function itself evolves or is learned, preventing convergence to fixed optima.
+
+\textbf{Conjecture 16.36 (Open-endedness requires (f, x) co-evolution).} A system is open-ended only if both the function $f$ (the rules of the game) and the state $x$ (the solutions) co-evolve. Fixed $f$ leads to convergence; only $\varphi \neq \text{id}$ (changing rules) can sustain open-ended novelty.
+
+
+
+\section{Synthesis: The DDS Framework for Discovery and Evolution}
+
+\subsection{16.8.1 Unifying Table}
+
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+System & State $x$ & Function $f$ & Meta-rule $\varphi$ & Novelty Metric & Quality Metric \\
+\midrule
+Scientific discovery & Hypothesis & Revision & Paradigm shift & Distance to prior hypotheses & Posterior probability \\
+Genetic algorithm & Population & Selection + mutation & Hyperparameter adaptation & Population diversity & Fitness \\
+Novelty search & Population + archive & Selection by novelty & Archive update rule & Distance to archive & (ignored) \\
+MAP-Elites & Grid of elites & Mutation + cell update & Behavior space definition & Cell coverage & Per-cell fitness \\
+FunSearch & Program archive & LLM mutation + scoring & Prompt evolution & Program novelty & Program score \\
+AI Scientist & (paper, results, context) & Research pipeline & Methodology learning & Idea novelty & Review score \\
+Open-ended evolution & (population, environment) & Selection + niche construction & Major transitions & Cumulative novelty & (undefined) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{16.8.2 The Quality-Diversity Lyapunov Exponent}
+
+Extending Section 15.12.3:
+
+\begin{definition}[QD Lyapunov exponent]
+For a quality-diversity system with quality $Q_t$ and diversity $D_t$ at generation $t$, define:
+
+\[\lambda_{QD} = \lim_{t \to \infty} \frac{1}{t} \log \frac{Q_t \cdot D_t}{Q_0 \cdot D_0}.\]
+
+- $\lambda_{QD} < 0$: System collapses (quality or diversity decreasing).
+- $\lambda_{QD} = 0$: Equilibrium (quality-diversity maintained).
+- $\lambda_{QD} > 0$: Expansion (both improving)---the open-ended regime.
+\end{definition}
+
+\subsection{16.8.3 The Role of LLMs}
+
+LLMs transform the landscape of evolutionary and discovery systems by:
+
+\begin{enumerate}
+\item \textbf{Informed search}: LLMs encode vast prior knowledge, enabling intelligent exploration rather than blind mutation.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Linguistic interface}: Problems can be specified in natural language; solutions can be programs or text.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Transfer learning}: Strategies that work in one domain (from training data) transfer to new problems.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Scalable creativity}: LLMs can generate many diverse candidates cheaply.
+\end{enumerate}
+
+\begin{proposition}
+LLMs shift the exploration-exploitation balance toward informed exploration. The "adjacent possible" is larger because the LLM can propose solutions that are not merely one mutation away but are semantically related.
+
+However, LLMs also introduce risks:
+
+1. \textbf{Mode collapse}: LLMs have their own biases; LLM-driven evolution may converge to LLM-preferred solutions.
+
+2. \textbf{Training distribution limits}: LLMs cannot easily generate solutions outside their training distribution.
+
+3. \textbf{Hallucination}: LLMs may propose plausible-sounding but invalid solutions.
+
+The combination of LLMs with explicit evaluation (fitness functions, proof checkers, experiments) addresses these risks by grounding creativity in verification.
+\end{proposition}
+
+\subsection{16.8.4 Implementation Examples}
+
+The following code snippets illustrate key components of the systems discussed in this chapter.
+
+\textbf{Genetic Algorithm with Novelty Pressure:}
+
+\begin{lstlisting}[language=python]
+import random
+from typing import List, Callable, TypeVar
+
+T = TypeVar('T')
+
+def genetic_algorithm_with_novelty(
+    population: List[T],
+    fitness: Callable[[T], float],
+    distance: Callable[[T, T], float],
+    mutate: Callable[[T], T],
+    crossover: Callable[[T, T], T],
+    generations: int = 100,
+    novelty_weight: float = 0.3,
+    k_nearest: int = 5,
+) -> List[T]:
+    """GA with novelty-weighted fitness (Section 16.3.4)."""
+    archive = list(population)  # Historical solutions
+
+    for gen in range(generations):
+        # Compute novelty for each individual
+        def novelty(x: T) -> float:
+            distances = sorted([distance(x, a) for a in archive])
+            return sum(distances[:k_nearest]) / k_nearest
+
+        # Combined fitness: quality + novelty
+        def combined_fitness(x: T) -> float:
+            return (1 - novelty_weight) \textit{ fitness(x) + novelty_weight } novelty(x)
+
+        # Selection (tournament)
+        def select() -> T:
+            contestants = random.sample(population, 3)
+            return max(contestants, key=combined_fitness)
+
+        # Generate offspring
+        offspring = []
+        for _ in range(len(population)):
+            p1, p2 = select(), select()
+            child = crossover(p1, p2)
+            child = mutate(child)
+            offspring.append(child)
+
+        # Update population and archive
+        population = offspring
+        archive.extend(offspring)
+
+    return population
+\end{lstlisting}
+
+\textbf{Novelty Search (Section 16.4.1):}
+
+\begin{lstlisting}[language=python]
+def novelty_search(
+    initial_population: List[T],
+    behavior: Callable[[T], List[float]],  # Map solution to behavior descriptor
+    distance: Callable[[List[float], List[float]], float],
+    mutate: Callable[[T], T],
+    generations: int = 100,
+    archive_threshold: float = 0.5,
+) -> tuple[List[T], List[T]]:
+    """Pure novelty search: selection based only on behavioral novelty."""
+    population = list(initial_population)
+    archive = []  # Archive of novel behaviors
+
+    for gen in range(generations):
+        # Compute behavior descriptors
+        behaviors = [behavior(x) for x in population]
+
+        # Compute novelty scores (average distance to k-nearest in archive + population)
+        def novelty_score(b: List[float]) -> float:
+            all_behaviors = behaviors + [behavior(a) for a in archive]
+            if not all_behaviors:
+                return float('inf')
+            distances = sorted([distance(b, ob) for ob in all_behaviors])
+            return sum(distances[:15]) / min(15, len(distances))
+
+        novelties = [novelty_score(b) for b in behaviors]
+
+        # Add novel individuals to archive
+        for x, b, nov in zip(population, behaviors, novelties):
+            if nov > archive_threshold:
+                archive.append(x)
+
+        # Selection by novelty (tournament)
+        def select() -> T:
+            indices = random.sample(range(len(population)), 3)
+            best_idx = max(indices, key=lambda i: novelties[i])
+            return population[best_idx]
+
+        # Generate next generation
+        population = [mutate(select()) for _ in range(len(population))]
+
+    return population, archive
+\end{lstlisting}
+
+\textbf{MAP-Elites (Section 16.4.3):}
+
+\begin{lstlisting}[language=python]
+from typing import Dict, Tuple, Optional
+import numpy as np
+
+def map_elites(
+    initial_solutions: List[T],
+    fitness: Callable[[T], float],
+    behavior_descriptor: Callable[[T], Tuple[int, ...]],  # Maps to grid cell
+    mutate: Callable[[T], T],
+    grid_dims: Tuple[int, ...],
+    iterations: int = 10000,
+) -> Dict[Tuple[int, ...], Tuple[T, float]]:
+    """MAP-Elites: maintain a grid of behavioral niches, each with its elite."""
+    # Grid: maps cell coordinates to (solution, fitness)
+    grid: Dict[Tuple[int, ...], Tuple[T, float]] = {}
+
+    # Initialize with random solutions
+    for x in initial_solutions:
+        cell = behavior_descriptor(x)
+        fit = fitness(x)
+        if cell not in grid or fit > grid[cell][1]:
+            grid[cell] = (x, fit)
+
+    for iteration in range(iterations):
+        if not grid:
+            break
+
+        # Select random occupied cell
+        cell = random.choice(list(grid.keys()))
+        elite, _ = grid[cell]
+
+        # Mutate to produce offspring
+        offspring = mutate(elite)
+        offspring_cell = behavior_descriptor(offspring)
+        offspring_fit = fitness(offspring)
+
+        # Update grid if offspring is better for its cell
+        if offspring_cell not in grid or offspring_fit > grid[offspring_cell][1]:
+            grid[offspring_cell] = (offspring, offspring_fit)
+
+    return grid
+
+def qd_metrics(grid: Dict, grid_dims: Tuple[int, ...]) -> dict:
+    """Compute Quality-Diversity metrics for a MAP-Elites grid."""
+    total_cells = np.prod(grid_dims)
+    occupied = len(grid)
+
+    fitnesses = [fit for _, fit in grid.values()]
+
+    return {
+        'coverage': occupied / total_cells,
+        'qd_score': sum(fitnesses),  # Sum of all elite fitnesses
+        'max_fitness': max(fitnesses) if fitnesses else 0,
+        'mean_fitness': np.mean(fitnesses) if fitnesses else 0,
+    }
+\end{lstlisting}
+
+\textbf{LLM Mutation Operator (Section 16.5.1):}
+
+\begin{lstlisting}[language=python]
+def llm_mutation_operator(
+    solution: str,
+    llm_generate: Callable[[str], str],
+    mutation_type: str = 'improve',
+) -> str:
+    """Use an LLM as an intelligent mutation operator for programs/text."""
+
+    prompts = {
+        'improve': f"""Improve this solution while keeping its core approach:
+
+{solution}
+
+Return only the improved solution, no explanation.""",
+
+        'vary': f"""Create a variation of this solution with a different approach:
+
+{solution}
+
+Return only the new solution, no explanation.""",
+
+        'simplify': f"""Simplify this solution while maintaining functionality:
+
+{solution}
+
+Return only the simplified solution, no explanation.""",
+
+        'combine': f"""This is a template. Create a novel variation inspired by it:
+
+{solution}
+
+Return only the new solution, no explanation.""",
+    }
+
+    prompt = prompts.get(mutation_type, prompts['improve'])
+    return llm_generate(prompt)
+
+
+def funsearch_iteration(
+    archive: List[Tuple[str, float]],  # (program, score) pairs
+    llm_generate: Callable[[str], str],
+    evaluate: Callable[[str], float],
+    num_samples: int = 2,
+) -> List[Tuple[str, float]]:
+    """One iteration of FunSearch (Section 16.5.2)."""
+
+    # Sample high-scoring programs from archive
+    if len(archive) < num_samples:
+        samples = archive
+    else:
+        # Weighted sampling by score
+        weights = [score for _, score in archive]
+        min_w = min(weights)
+        weights = [w - min_w + 1 for w in weights]  # Ensure positive
+        samples = random.choices(archive, weights=weights, k=num_samples)
+
+    # Create prompt with sampled programs
+    programs_text = "\n\n".join([
+        f"# Score: {score:.3f}\n{prog}"
+        for prog, score in samples
+    ])
+
+    prompt = f"""Here are some high-scoring programs:
+
+{programs_text}
+
+Write a new, improved program that could score even higher.
+Return only the program code."""
+
+    # Generate new program
+    new_program = llm_generate(prompt)
+
+    try:
+        score = evaluate(new_program)
+        return archive + [(new_program, score)]
+    except Exception:
+        return archive  # Skip invalid programs
+\end{lstlisting}
+
+\textbf{Measuring Scientific Discovery Dynamics:}
+
+\begin{lstlisting}[language=python]
+def discovery_system_metrics(
+    hypotheses: List[str],
+    embedder: Callable[[str], List[float]],
+    evidence_scores: List[float],
+) -> dict:
+    """Metrics for a scientific discovery trajectory (Section 16.2)."""
+    import numpy as np
+
+    if len(hypotheses) < 2:
+        return {'trajectory_length': len(hypotheses)}
+
+    # Embed all hypotheses
+    embeddings = [embedder(h) for h in hypotheses]
+    embeddings = np.array(embeddings)
+
+    # Cumulative novelty: distance from each hypothesis to all previous
+    cumulative_novelties = []
+    for i in range(1, len(embeddings)):
+        distances = np.linalg.norm(embeddings[:i] - embeddings[i], axis=1)
+        cumulative_novelties.append(np.min(distances))
+
+    # Evidence improvement over time
+    evidence_improvement = [
+        evidence_scores[i] - evidence_scores[i-1]
+        for i in range(1, len(evidence_scores))
+    ]
+
+    return {
+        'trajectory_length': len(hypotheses),
+        'total_novelty': sum(cumulative_novelties),
+        'mean_cumulative_novelty': np.mean(cumulative_novelties),
+        'novelty_trend': np.polyfit(range(len(cumulative_novelties)),
+                                     cumulative_novelties, 1)[0],  # Slope
+        'evidence_improvement': sum(evidence_improvement),
+        'final_evidence': evidence_scores[-1] if evidence_scores else 0,
+    }
+\end{lstlisting}
+
+
+
+\section{Open Questions}
+
+\begin{question}[Open-ended AI]
+Can we build systems that exhibit biological-like open-ended evolution? What are the minimal conditions? Current systems (MAP-Elites, FunSearch, AI Scientist) seem to plateau rather than generate unbounded novelty.
+\end{question}
+
+\begin{question}[Paradigm shifts]
+Can AI systems generate genuine paradigm shifts---not just new solutions within existing frameworks but entirely new frameworks? This seems to require meta-level reasoning about the problem formulation itself.
+\end{question}
+
+\begin{question}[Coevolution with humans]
+What is the role of human scientists in AI-augmented discovery? The most successful systems (FunSearch, AlphaEvolve) involve human problem specification and result interpretation. Is human-AI coevolution the path to open-endedness?
+\end{question}
+
+\begin{question}[Evaluation bottleneck]
+Autonomous scientific discovery is limited by the ability to evaluate hypotheses. Physical experiments are slow and expensive. Can we develop better "world models" that enable rapid hypothesis testing?
+\end{question}
+
+\begin{question}[Diversity collapse in LLM-evolution]
+Do LLM-driven evolutionary systems suffer from diversity collapse analogous to model collapse? If LLM outputs are fed back as inputs (prompts containing LLM-generated code), does diversity decay?
+\end{question}
+
+\begin{question}[Measuring scientific novelty]
+How should we measure the novelty of scientific discoveries? Citation-based metrics capture impact but not originality. Information-theoretic measures (Section 15.13) could be applied to scientific papers, but the right formalization is unclear.
+\end{question}
+
+\begin{question}[The creativity spectrum]
+Is there a hierarchy of creative capabilities?
+1. Generating variations within a known space.
+2. Discovering new solutions to known problems.
+3. Discovering new problems worth solving.
+4. Inventing new frameworks that redefine what counts as a solution.
+
+Where do current AI systems fall? Can LLMs reach level 4?
+\end{question}
+
+
+
+\section{Summary}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Concept & Dynamical Systems View & Key Insight \\
+\midrule
+Scientific method & Iteration on hypothesis space & Paradigm shifts = changes in $f$ \\
+Genetic algorithms & DDS on population space & Premature convergence = spurious attractor \\
+Novelty search & Selection by archive distance & Ignoring objectives can help \\
+Quality-Diversity & Multi-objective: fitness + coverage & MAP-Elites as grid of local optima \\
+LLM mutation & Intelligent, knowledge-based variation & Prior knowledge expands adjacent possible \\
+FunSearch & Program space evolution with LLM & Search for programs, not solutions \\
+AlphaEvolve & General-purpose algorithm discovery & LLM ensemble + multi-objective \\
+AI Scientist & Full research pipeline automation & Science as (f, x) iteration \\
+Open-endedness & Unbounded novelty generation & Requires (f, x) co-evolution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The synthesis reveals that \textbf{discovery and evolution are two faces of the same coin}: both involve iterative search through vast spaces, balancing exploration (novelty) with exploitation (quality), and seeking dynamics that sustain creativity without collapse.
+
+LLMs have transformed both domains by providing intelligent mutation operators and automated evaluation. But the deepest challenge---achieving true open-endedness---remains unsolved. Biological evolution achieved it; can we engineer it?
+
+The framework developed in this textbook---discrete dynamical systems, symbolic dynamics, computational mechanics, the (f, x) decomposition, novelty metrics---provides the conceptual tools to analyze these systems. Whether those tools suffice to \textit{design} open-ended systems is the frontier.
+
+
+
+\section{Recommended Reading}
+
+\textbf{Philosophy and History of Science:}
+\begin{itemize}
+\item Kuhn, T. S. (1962). \textit{The Structure of Scientific Revolutions} --- paradigm shifts and normal science.
+\item Popper, K. (1959). \textit{The Logic of Scientific Discovery} --- falsificationism and the scientific method.
+\item Kauffman, S. A. (1996). \textit{At Home in the Universe} --- the adjacent possible and self-organization.
+\end{itemize}
+
+\textbf{Evolutionary Computation Foundations:}
+\begin{itemize}
+\item Holland, J. H. (1975). \textit{Adaptation in Natural and Artificial Systems} --- foundational text on genetic algorithms.
+\item Goldberg, D. E. (1989). \textit{Genetic Algorithms in Search, Optimization, and Machine Learning} --- comprehensive GA textbook.
+\item Eiben, A. E. and Smith, J. E. (2015). \textit{Introduction to Evolutionary Computing} --- modern introduction to the field.
+\end{itemize}
+
+\textbf{Novelty Search and Quality-Diversity:}
+\begin{itemize}
+\item Lehman, J. and Stanley, K. O. (2011). "Abandoning Objectives: Evolution Through the Search for Novelty Alone" --- the foundational novelty search paper.
+\item Mouret, J.-B. and Clune, J. (2015). "Illuminating Search Spaces by Mapping Elites" --- introduces MAP-Elites.
+\item Pugh, J. K., Soros, L. B., and Stanley, K. O. (2016). "Quality Diversity: A New Frontier for Evolutionary Computation" --- comprehensive survey.
+\end{itemize}
+
+\textbf{LLM-Augmented Evolution:}
+\begin{itemize}
+\item Lehman, J., et al. (2022). "Evolution Through Large Models" --- introduces ELM concept.
+\item Romera-Paredes, B., et al. (2024). "Mathematical Discoveries from Program Search with Large Language Models" --- FunSearch (Nature).
+\item Chen, A., Dohan, D., and So, D. R. (2024). "EvoPrompt: Language Models for Code-Level Neural Architecture Search" --- LLMs for NAS.
+\end{itemize}
+
+\textbf{AI for Scientific Discovery:}
+\begin{itemize}
+\item Lu, C., et al. (2024). "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery" --- full scientific pipeline automation.
+\item Wang, H., et al. (2023). "Scientific Discovery in the Age of Artificial Intelligence" --- Nature survey of AI in science.
+\item Jumper, J., et al. (2021). "Highly Accurate Protein Structure Prediction with AlphaFold" --- landmark AI discovery (Nature).
+\end{itemize}
+
+\textbf{Open-Endedness:}
+\begin{itemize}
+\item Stanley, K. O., Lehman, J., and Soros, L. (2017). "Open-Endedness: The Last Grand Challenge You've Never Heard Of" --- accessible introduction.
+\item Soros, L. B. and Stanley, K. O. (2014). "Identifying Necessary Conditions for Open-Ended Evolution" --- formal conditions.
+\item Bedau, M. A. (2003). "Artificial Life: Organization, Adaptation, and Complexity from the Bottom Up" --- ALife perspective.
+\end{itemize}
+
+\textbf{Computational Creativity:}
+\begin{itemize}
+\item Boden, M. A. (2004). \textit{The Creative Mind: Myths and Mechanisms} --- cognitive science of creativity.
+\item Colton, S. and Wiggins, G. A. (2012). "Computational Creativity: The Final Frontier?" --- survey of computational creativity.
+\item Schmidhuber, J. (2010). "Formal Theory of Creativity, Fun, and Intrinsic Motivation" --- information-theoretic creativity.
+\end{itemize}
+
+
+
+\section{References}
+
+\begin{itemize}
+\item Clune, J. (2019). AI-GAs: AI-generating algorithms, an alternate paradigm for producing general artificial intelligence. \textit{arXiv preprint} arXiv:1905.10985.
+\end{itemize}
+
+\begin{itemize}
+\item DeepMind (2025). AlphaEvolve: A coding agent for scientific and algorithmic discovery. \textit{arXiv preprint} arXiv:2506.13131.
+\end{itemize}
+
+\begin{itemize}
+\item Kauffman, S. A. (1996). \textit{At Home in the Universe: The Search for the Laws of Self-Organization and Complexity}. Oxford University Press.
+\end{itemize}
+
+\begin{itemize}
+\item Kuhn, T. S. (1962). \textit{The Structure of Scientific Revolutions}. University of Chicago Press.
+\end{itemize}
+
+\begin{itemize}
+\item Lehman, J. and Stanley, K. O. (2011). Abandoning objectives: Evolution through the search for novelty alone. \textit{Evolutionary Computation}, 19(2):189--223.
+\end{itemize}
+
+\begin{itemize}
+\item Lehman, J., Gordon, J., Jain, S., Ndousse, K., Yeh, C., and Stanley, K. O. (2022). Evolution through large models. \textit{arXiv preprint} arXiv:2206.08896.
+\end{itemize}
+
+\begin{itemize}
+\item Lu, C., Lu, C., Lange, R. T., Foerster, J., Clune, J., and Ha, D. (2024). The AI Scientist: Towards fully automated open-ended scientific discovery. \textit{arXiv preprint} arXiv:2408.06292.
+\end{itemize}
+
+\begin{itemize}
+\item Mouret, J.-B. and Clune, J. (2015). Illuminating search spaces by mapping elites. \textit{arXiv preprint} arXiv:1504.04909.
+\end{itemize}
+
+\begin{itemize}
+\item Romera-Paredes, B., Barekatain, M., Novikov, A., Balog, M., Kumar, M. P., Dupont, E., Ruiz, F. J. R., Ellenberg, J. S., Wang, P., Fawzi, O., Kohli, P., and Fawzi, A. (2024). Mathematical discoveries from program search with large language models. \textit{Nature}, 625:468--475.
+\end{itemize}
+
+\begin{itemize}
+\item Sakana AI (2025). The AI Scientist-v2: Workshop-level automated scientific discovery via agentic tree search.
+\end{itemize}
+
+\begin{itemize}
+\item Soros, L. B. and Stanley, K. O. (2014). Identifying necessary conditions for open-ended evolution through the artificial life world of Chromaria. \textit{Proceedings of the Artificial Life Conference}.
+\end{itemize}
+
+\begin{itemize}
+\item Stanley, K. O., Lehman, J., and Soros, L. (2017). Open-endedness: The last grand challenge you've never heard of. \textit{O'Reilly Radar}.
+\end{itemize}
+
+
+
+\section{Exercises}
+
+\textbf{Exercise 16.1.} Model the discovery of Newtonian mechanics as a (f, x) dynamical system. What was the state space $H$? What evidence $E$ drove the revision? When did $f$ change (paradigm shift)?
+
+\textbf{Exercise 16.2.} Implement a simple genetic algorithm for symbolic regression (finding a formula that fits data). Track Distinct-1 on the population over generations. Does premature convergence occur? At what generation?
+
+\textbf{Exercise 16.3.} Implement novelty search for a simple maze navigation task. Compare with fitness-based search. In which environments does novelty search outperform?
+
+\textbf{Exercise 16.4.} Design a prompt for an LLM that acts as a mutation operator for Python functions. Test it: does it produce syntactically valid variations? Are the variations meaningfully different?
+
+\textbf{Exercise 16.5.} Propose a metric for "paradigm-shift novelty" in scientific papers. How would you distinguish papers that work within an existing paradigm from papers that establish a new one?
+
+\textbf{Exercise 16.6.} (Research) Read the FunSearch paper. What is the role of the "islands" in the evolutionary algorithm? How does this relate to the diversity maintenance techniques of Section 16.3.4?
+
+\textbf{Exercise 16.7.} (Research) Can you design an (f, x) system where both $f$ and $x$ co-evolve? Sketch an algorithm where the mutation operator itself is subject to selection.

@@ -1,0 +1,471 @@
+\chapter{Self-Modifying Computation and Reflective Towers}
+
+\section{Introduction}
+
+Every discrete dynamical system $(X, f)$ studied so far has a fixed transition rule: the function $f$ does not change as the system evolves. Even in the $(f, x)$ framework where $f$ is updated by a meta-rule $\varphi$, the meta-rule itself is fixed. But what if the meta-rule could also change? And the meta-meta-rule? This line of questioning leads to \textit{reflective towers}: infinite stacks of interpreters, each governing the one below, each potentially subject to modification from below.
+
+The idea has independent roots in automata theory (von Neumann's self-reproducing automata), programming language semantics (Smith's procedural reflection), and theoretical biology (Kampis's self-modifying systems). This chapter traces the key ideas, gives precise definitions where possible, and connects the tower construction back to the $(f, x)$ dynamical systems framework.
+
+\section{Von Neumann's Self-Reproducing Automata}
+
+In unpublished lectures from the late 1940s (edited posthumously by Burks, 1966), John von Neumann posed the question: \textit{Can a machine build a copy of itself?} At first glance, self-reproduction seems paradoxical. A machine that constructs an arbitrary target from a blueprint must be at least as complex as any target it can build. But then the machine itself, being the most complex thing it can build, would require a blueprint at least as complex as itself --- an apparent infinite regress.
+
+Von Neumann resolved this by separating the roles of the description.
+
+\begin{definition}[Universal Constructor]
+A \textit{universal constructor} is a machine $U$ that, given a description tape $d(M)$ encoding any machine $M$, performs two operations:
+
+1. \textbf{Interpretation.} $U$ reads $d(M)$ as instructions and constructs a physical copy of $M$.
+2. \textbf{Copying.} $U$ duplicates the tape $d(M)$ and attaches the copy to the newly built $M$.
+
+The result is a new machine $M$ equipped with its own description $d(M)$. When $M = U$, the universal constructor reproduces itself: $U$ reads $d(U)$, builds a copy of $U$, copies $d(U)$, and attaches it. No infinite regress arises because the description $d(U)$ plays two distinct roles --- it is \textit{interpreted} (as construction instructions) and \textit{copied} (as passive data).
+\end{definition}
+
+\begin{remark}
+Von Neumann's construction anticipates the mechanism of biological reproduction discovered a decade later. DNA serves the dual role: it is \textit{interpreted} by ribosomes (transcription and translation) to produce proteins, and it is \textit{copied} by DNA polymerase during cell division. The description-interpretation-copying architecture is identical.
+
+Formally, von Neumann embedded the universal constructor in a two-dimensional cellular automaton with 29 states per cell. While the engineering details are elaborate, the logical structure is simple and general. It depends on two properties:
+
+- \textbf{Universality.} The constructor $U$ can build any machine describable by a tape.
+- \textbf{Program-data duality.} The tape $d(M)$ functions simultaneously as a program (to be interpreted) and as data (to be copied verbatim).
+\end{remark}
+
+\section{Program-Data Duality}
+
+Von Neumann's insight generalizes far beyond cellular automata. In any stored-program computer, programs and data occupy the same memory. A program is a bitstring; so is its input. Nothing prevents a program from reading, modifying, or generating other programs --- including its own code.
+
+\begin{definition}[Program-Data Duality]
+A computational system exhibits \textit{program-data duality} if its programs are represented in the same format as its data, and programs can manipulate other programs (or themselves) as data.
+
+This is the foundation of self-modifying computation. Some concrete manifestations:
+
+- \textbf{Lisp.} Programs are S-expressions; data are S-expressions. The function `eval` takes a data structure and executes it as a program. The function `quote` takes a program fragment and treats it as data. This symmetry is not accidental --- McCarthy designed Lisp to explore exactly this duality (McCarthy, 1960).
+
+- \textbf{Gödel numbering.} Every formula $\varphi$ in a formal system can be encoded as a natural number $\lceil \varphi \rceil$. The system can then reason about its own formulas by reasoning about their codes. This is the mechanism behind Gödel's incompleteness theorems: the sentence "this sentence is unprovable" is constructed by exploiting program-data duality at the level of formal arithmetic.
+
+- \textbf{Quines.} A \textit{quine} is a program that outputs its own source code. Its existence in any sufficiently expressive language follows from Kleene's recursion theorem (a fixed-point theorem for computable functions). A quine is the computational analogue of von Neumann's self-reproducing automaton, stripped to its essence.
+\end{definition}
+
+\begin{theorem}[Kleene's Recursion Theorem]
+For any total computable function $f: \mathbb{N} \to \mathbb{N}$, there exists an index $e$ such that $\varphi_e = \varphi_{f(e)}$, where $\varphi_e$ denotes the partial computable function with index $e$.
+
+In other words, for any computable transformation $f$ of programs, there is a program $e$ that behaves identically to its own transformation $f(e)$. This is the formal basis for self-reference in computation, and it directly implies the existence of quines (take $f$ to be the function that, given a program index, produces an index for a program that prints that index's source code).
+\end{theorem}
+
+\section{Procedural Reflection: Smith's 3-Lisp}
+
+Program-data duality gives a program access to \textit{other} programs as data. \textit{Procedural reflection} goes further: a program gains access to the data structures of \textit{its own interpreter} while that interpreter is running it.
+
+The foundational work is Brian Cantwell Smith's doctoral dissertation (Smith, 1982) and the associated paper (Smith, 1984). Smith designed \textbf{3-Lisp}, a dialect of Lisp with a precise reflective architecture.
+
+\subsection{12.4.1 The Reflective Tower}
+
+In 3-Lisp, every program is executed by an interpreter. That interpreter is itself a 3-Lisp program, which is executed by another interpreter, and so on. This produces a conceptually infinite \textit{reflective tower}:
+
+\[\text{Level } 0: \quad \text{the user's program } P_0\]
+\[\text{Level } 1: \quad \text{the interpreter } I_1 \text{ running } P_0\]
+\[\text{Level } 2: \quad \text{the interpreter } I_2 \text{ running } I_1\]
+\[\vdots\]
+\[\text{Level } k: \quad \text{the interpreter } I_k \text{ running } I_{k-1}\]
+\[\vdots\]
+
+Each interpreter $I_k$ is a \textit{meta-circular} interpreter: it is written in the same language (3-Lisp) that it interprets. The tower is homogeneous --- every level has the same structure.
+
+\begin{definition}[Reflective Tower]
+A \textit{reflective tower} is a countable sequence $(I_k)_{k \geq 1}$ of interpreters such that:
+
+1. Each $I_k$ is written in the same language $\mathcal{L}$.
+2. Each $I_k$ interprets the program at level $k - 1$.
+3. Programs at level $k - 1$ can, via designated reflective operations, access and modify the state of $I_k$.
+\end{definition}
+
+\subsection{12.4.2 Reification and Reflection}
+
+Two operations connect adjacent levels of the tower.
+
+\begin{definition}[Reification]
+\textit{Reification} takes an implicit part of the interpreter's state --- such as the current continuation, the environment, or the pending expression --- and makes it available as an explicit, first-class data structure at the level below.
+\end{definition}
+
+\begin{definition}[Reflection]
+\textit{Reflection} (also called \textit{absorption}) takes a data structure at level $k$ and installs it as part of the running state of the interpreter at level $k + 1$. It is the inverse of reification: data is "absorbed" back into the interpreter's implicit machinery.
+
+In 3-Lisp, the mechanism for ascending the tower is the \textbf{reflective lambda}, written $\lambda\!\uparrow$. When a reflective lambda is invoked at level $k$, its body executes at level $k + 1$, with access to the continuation and environment of level $k$'s interpreter. Concretely:
+\end{definition}
+
+\begin{example}[Reflective operation in 3-Lisp]
+Suppose a user program at level 0 defines:
+
+\begin{lstlisting}[language=python]
+(define current-continuation
+  (lambda-reflect (env cont)
+    ;; This body runs at level 1 (inside the interpreter).
+    ;; 'env' is the reified environment of the call site.
+    ;; 'cont' is the reified continuation of the call site.
+    (cont cont)))  ;; Return the continuation as a value.
+\end{lstlisting}
+
+When `(current-continuation)` is called at level 0, control shifts to level 1. The interpreter's current environment and continuation are \textit{reified} as the arguments `env` and `cont`. The body `(cont cont)` then passes the continuation \textit{as data} back down to level 0. The continuation --- normally an implicit, invisible part of the interpreter --- has been made into a first-class value that the user program can inspect, store, or invoke.
+
+This is analogous to `call/cc` (call-with-current-continuation) in Scheme, but more general: in a reflective tower, the program can access \textit{any} aspect of the interpreter's state, not just the continuation.
+\end{example}
+
+\subsection{12.4.3 Formal Sketch}
+
+Let $\mathcal{S}_k$ denote the state of the interpreter at level $k$. Typically, $\mathcal{S}_k$ consists of a triple $(\text{expr}_k, \text{env}_k, \text{cont}_k)$: the expression being evaluated, the environment binding variables to values, and the continuation representing "what to do next."
+
+The transition at level $k$ is governed by the interpreter at level $k + 1$:
+
+\[\mathcal{S}_k^{(t+1)} = I_{k+1}(\mathcal{S}_k^{(t)})\]
+
+A reflective operation at level $k$ modifies $\mathcal{S}_{k+1}$ --- the state of the interpreter one level up. Let $R$ be a reflective operation. Then:
+
+\[R: \mathcal{S}_{k+1} \to \mathcal{S}_{k+1}'\]
+
+After $R$ executes, the interpreter at level $k + 1$ runs with modified state $\mathcal{S}_{k+1}'$. Since $I_{k+1}$ governs how level $k$ executes, modifying $\mathcal{S}_{k+1}$ changes the rules by which level $k$ operates. This is genuine self-modification: the dynamics itself changes, not just the data.
+
+\section{The Implementation Problem: Lazy Tower Construction}
+
+An immediate objection arises: one cannot actually run an infinite tower of interpreters. Each level requires computational resources, and there are infinitely many levels.
+
+Des Rivières and Smith (1984) resolved this with \textbf{lazy instantiation}.
+
+\begin{definition}[Lazy Reflective Tower]
+A \textit{lazy reflective tower} materializes interpreter levels on demand. At any given moment, only finitely many levels are active. When a reflective operation at level $k$ requires access to level $k + 1$, and level $k + 1$ has not yet been instantiated, the system creates it at that point.
+
+The key observation: in practice, most computations never perform reflective operations. A program that does no reflection executes entirely at level 0, and the interpreters at levels 1, 2, 3, ... remain dormant. A program that reflects once activates level 1 but no higher. Only pathological programs (e.g., ones that recursively reflect upward) would require many levels.
+\end{definition}
+
+\begin{proposition}
+If a computation performs at most $k$ nested reflective operations, then at most $k + 1$ levels of the tower are instantiated during execution.
+
+This is sufficient for all practical purposes. The infinite tower is a \textit{conceptual} device --- it provides clean semantics --- but the implementation is always finite.
+\end{proposition}
+
+\section{Denotational Semantics: Wand and Friedman}
+
+The reflective tower, defined operationally as an infinite stack of running interpreters, raises a semantic question: can we give a \textit{non-circular} mathematical meaning to the tower? The interpreters are defined in terms of each other --- what anchors the semantics?
+
+Wand and Friedman (1986, 1988) answered this by showing that the tower's semantics is a \textbf{fixed point} of an operator on interpretation functions.
+
+\begin{definition}[Interpretation Operator]
+Let $\mathcal{D}$ be a suitable semantic domain. Define the operator $\Phi: (\mathcal{D} \to \mathcal{D}) \to (\mathcal{D} \to \mathcal{D})$ as follows: $\Phi(I)$ is the interpretation function that results from running one level of the meta-circular interpreter, using $I$ as the semantics of the level above.
+\end{definition}
+
+\begin{theorem}[Wand & Friedman, 1986]
+Under appropriate conditions on the semantic domain, $\Phi$ has a unique fixed point $I^\textit{ = \Phi(I^})$. The semantics of the reflective tower is this fixed point.
+
+The intuition: the fixed-point condition $I^\textit{ = \Phi(I^})$ says that interpreting a program using $I^\textit{$ as the meta-level semantics gives back $I^}$ itself. The tower is self-consistent because every level has the same behavior, and the semantics of "one more level of interpretation" is the same as the semantics of the whole tower.
+
+This is analogous to the denotational semantics of recursion: a recursive function $f(x) = \ldots f \ldots$ is defined as the least fixed point of an operator. Wand and Friedman apply the same technique to the tower.
+\end{theorem}
+
+\begin{remark}
+The fixed-point characterization demystifies the apparent circularity. The tower is \textit{not} circular in a vicious sense --- it is a well-defined mathematical object, namely the fixed point of $\Phi$. The "infinite tower" language is a convenient description of this fixed point, not a literal requirement to run infinitely many processes.
+\end{remark}
+
+\section{Collapsing Towers: Amin and Rompf}
+
+Running even a few levels of the reflective tower incurs interpretive overhead: each level of interpretation slows execution. Amin and Rompf (2018) showed how to eliminate this overhead entirely using \textbf{partial evaluation} (also known as \textit{staging}).
+
+\begin{definition}[Partial Evaluation / Staging]
+Given a program $P(s, d)$ with a \textit{static} input $s$ (known at compile time) and a \textit{dynamic} input $d$ (known only at run time), a \textit{partial evaluator} produces a specialized program $P_s(d) = P(s, d)$ that has "pre-computed" everything that depends only on $s$.
+
+The key idea of Amin and Rompf: the meta-circular interpreter at each level of the tower is a program whose \textit{static} input is the program it interprets. By partially evaluating the interpreter with respect to the program, one eliminates the interpretive overhead of that level. Applying this to every level of the tower \textit{collapses} the entire stack into a single compiled program.
+\end{definition}
+
+\begin{definition}[Stage Polymorphism]
+A \textit{stage-polymorphic} evaluator is a single piece of code that can operate in two modes:
+
+1. \textbf{Interpretation mode.} Given a program and an input, it directly executes the program on the input.
+2. \textbf{Code generation mode.} Given a program, it produces compiled code that, when run on an input, produces the same result.
+
+The two modes share the same source code; only a staging parameter differs.
+\end{definition}
+
+\begin{theorem}[Amin & Rompf, 2018, informal]
+An $N$-level reflective tower, where each level is a meta-circular interpreter, can be collapsed by iterated partial evaluation into a single pass that runs with no interpretive overhead. The resulting code is equivalent to a compiler that has been derived from the tower of interpreters.
+\end{theorem}
+
+\begin{example}[Two-level collapse]
+Consider a two-level tower: a user program $P$ interpreted by a meta-circular evaluator $\text{eval}$, which is itself interpreted by another copy of $\text{eval}$.
+
+- \textit{Without staging:} Run $\text{eval}(\text{eval}, \langle P, \text{input}\rangle)$. Two layers of dispatch, two layers of environment lookup, two layers of overhead.
+- \textit{With staging:} Partially evaluate $\text{eval}$ with respect to $P$, producing compiled code $P_c$. Then partially evaluate $\text{eval}$ with respect to $\text{eval}$ (using $P_c$ as the program), producing a single compiled pass. The two levels collapse into one.
+
+This connects to the \textbf{Futamura projections} (Futamura, 1971):
+
+- \textbf{First projection.} Partially evaluating an interpreter with respect to a program yields a compiled program: $\text{PE}(\text{eval}, P) = P_c$.
+- \textbf{Second projection.} Partially evaluating a partial evaluator with respect to an interpreter yields a compiler: $\text{PE}(\text{PE}, \text{eval}) = \text{compiler}$.
+- \textbf{Third projection.} Partially evaluating a partial evaluator with respect to itself yields a compiler generator: $\text{PE}(\text{PE}, \text{PE}) = \text{cogen}$.
+
+Amin and Rompf generalize this to arbitrary tower depth.
+\end{example}
+
+\section{State-Update versus Function-Update: Kampis}
+
+Most systems described as "self-modifying" do not actually modify their own dynamics. George Kampis (1991) introduced a precise distinction.
+
+\begin{definition}[State-Update System]
+A system $(X, f)$ is a \textit{state-update system} if the transition function $f$ is fixed and only the state $x \in X$ changes over time:
+
+\[x_{t+1} = f(x_t)\]
+\end{definition}
+
+\begin{definition}[Function-Update System]
+A system is a \textit{function-update system} if the transition function itself changes over time:
+
+\[x_{t+1} = f_t(x_t), \quad f_{t+1} = \varphi(f_t, x_t)\]
+
+where $\varphi$ is the meta-rule governing how $f$ evolves.
+\end{definition}
+
+\begin{definition}[Genuine Self-Modification, Kampis]
+A system exhibits \textit{genuine self-modification} if the meta-rule $\varphi$ itself is subject to change --- i.e., the "reading frame" or interpretive context shifts. This requires not just function-update but \textit{function-update of the function-update rule}.
+
+Kampis's central argument: most systems that appear to "self-modify" are actually state-update systems operating within a fixed, higher-level dynamics. A cellular automaton with a complex rule is state-update (the rule is fixed). A genetic algorithm that evolves programs is function-update if we view the programs as transition functions, but the genetic algorithm \textit{itself} (selection, crossover, mutation) is fixed --- so at the meta-level, it is again state-update.
+\end{definition}
+
+\begin{example}[Pseudo vs. genuine self-modification]
+
+\textit{(a) Pseudo self-modification.} Consider a computer virus that modifies its own code to evade detection. The virus code is the "function" and it changes (function-update). But the modification strategy (the polymorphic engine) is a fixed algorithm. At the meta-level, the system is state-update: the polymorphic engine is a fixed $\varphi$.
+
+\textit{(b) Genuine self-modification.} Consider a system where the modification strategy itself evolves based on experience. The meta-rule $\varphi$ at time $t$ is $\varphi_t$, and there is a meta-meta-rule $\psi$ such that $\varphi_{t+1} = \psi(\varphi_t, f_t, x_t)$. If $\psi$ is also subject to change, we have the beginning of a reflective tower.
+
+Kampis argues that genuine self-modification requires a change in the system's \textit{reading frame}: the way the system interprets its own description must itself be part of the dynamics. This connects directly to the reflective tower, where a reflective operation changes the interpreter (the reading frame) rather than just the program (the data being read).
+\end{example}
+
+\section{Connection to the $(f, x)$ Framework}
+
+We now make the connection to the discrete dynamical systems framework developed in earlier chapters precise.
+
+\subsection{12.9.1 The Tower as a Stack of $(f_i, x_i)$ Pairs}
+
+Recall the basic $(f, x)$ framework: the state is a pair $(f, x) \in F \times X$, and the transition is
+
+\[(f, x) \longmapsto (\varphi(f, x),\ f(x))\]
+
+where $\varphi: F \times X \to F$ is the meta-rule.
+
+The reflective tower generalizes this to a \textit{stack} of such pairs. Define:
+
+\begin{itemize}
+\item \textbf{Level 0.} State: $(f_0, x_0)$. Here $f_0$ is the "user program" and $x_0$ is the data. The transition at level 0 is $x_0 \mapsto f_0(x_0)$.
+\item \textbf{Level 1.} State: $(f_1, x_1)$ where $x_1 = (f_0, x_0)$ is the state of level 0, and $f_1$ is the interpreter that governs how level 0 evolves. The transition at level 1 is $x_1 \mapsto f_1(x_1)$, which computes one step of level 0.
+\item \textbf{Level $k$.} State: $(f_k, x_k)$ where $x_k = (f_{k-1}, x_{k-1})$ and $f_k$ is the interpreter at level $k$.
+\end{itemize}
+
+Schematically:
+
+$$\begin{aligned}
+\text{Level 0:} \quad & (f_0, x_0) \\
+\text{Level 1:} \quad & (f_1, (f_0, x_0)) \\
+\text{Level 2:} \quad & (f_2, (f_1, (f_0, x_0))) \\
+& \vdots
+\end{aligned}$$
+
+Each $f_k$ plays the role of both a transition function (it governs the dynamics at level $k - 1$) and data (it is part of the state seen by level $k + 1$).
+
+\subsection{12.9.2 Reflective Operations as Meta-Rule Applications}
+
+In the $(f, x)$ framework, a reflective operation at level $k$ is an application of the meta-rule $\varphi_k$ that modifies $f_k$. Specifically:
+
+\begin{itemize}
+\item \textbf{Ordinary computation} at level $k$: $x_k \mapsto f_k(x_k)$ while $f_k$ remains unchanged. This is state-update.
+\item \textbf{Reflective operation} at level $k$: $f_k \mapsto \varphi_k(f_k, x_k)$. This is function-update. The dynamics at level $k - 1$ changes because $f_k$ --- which governs level $k - 1$ --- has been modified.
+\end{itemize}
+
+Reification corresponds to the passage from $(f_k, x_k)$ to explicit data: the function $f_k$ and state $x_k$ become visible as components of $x_{k+1}$. Reflection corresponds to modifying $f_k$ by writing new data into the function component of level $k$'s state.
+
+\subsection{12.9.3 The Tower Arises from Self-Applicable Meta-Rules}
+
+The full tower structure arises when the meta-rule $\varphi$ is itself an element of the function space and is subject to modification. Define the hierarchy:
+
+$$\begin{aligned}
+\varphi_0 &: F_0 \times X \to F_0 & \quad & \text{(meta-rule: updates } f_0\text{)} \\
+\varphi_1 &: F_1 \times (F_0 \times X) \to F_1 & \quad & \text{(meta-meta-rule: updates } \varphi_0\text{)} \\
+\varphi_2 &: F_2 \times (F_1 \times F_0 \times X) \to F_2 & \quad & \text{(meta-meta-meta-rule)} \\
+& \vdots
+\end{aligned}$$
+
+where $F_k$ is the space of possible functions at level $k$. In the reflective tower, the homogeneity condition (all levels use the same meta-circular interpreter) means $\varphi_k = \varphi$ for all $k$, and the tower's semantics is the fixed point described in Section 12.6.
+
+\subsection{12.9.4 Worked Example}
+
+Consider a minimal tower over $X = \{ 0, 1\} $ with two levels.
+
+\begin{itemize}
+\item \textbf{Level 0.} $f_0: \{ 0, 1\}  \to \{ 0, 1\} $, $x_0 \in \{ 0, 1\} $. There are $2^2 = 4$ possible functions $f_0$, so the state space at level 0 is $F_0 \times X = \{ 0,1\} ^{\{ 0,1\} } \times \{ 0,1\} $, with 8 states.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Level 1.} $f_1: F_0 \times X \to F_0 \times X$ is the "interpreter" that maps one state of level 0 to the next. Under ordinary (non-reflective) computation, $f_1$ acts as $f_1(f_0, x_0) = (f_0, f_0(x_0))$ --- it applies $f_0$ to $x_0$ and leaves $f_0$ unchanged.
+\end{itemize}
+
+A reflective operation at level 0 would modify $f_1$, changing how level 0's dynamics is computed. For instance, a reflective operation might install a new interpreter $f_1'$ that applies $f_0$ twice per step:
+
+\[f_1'(f_0, x_0) = (f_0, f_0(f_0(x_0)))\]
+
+After this reflective operation, level 0 effectively runs at "double speed." The function $f_1$ has changed --- this is function-update at level 1, triggered by a reflective operation originating at level 0.
+
+In the $(f, x)$ notation, we have a meta-rule $\varphi_1$ at level 1 such that:
+
+\[\varphi_1(f_1, (f_0, x_0)) = \begin{cases} f_1 & \text{if no reflective operation occurs,} \\ f_1' & \text{if level 0 triggers a reflective operation.} \end{cases}\]
+
+This is precisely the structure described abstractly in Section 12.4.3.
+
+\section{Self-Modifying Code in Practice}
+
+The theoretical framework of reflective towers manifests in several practical settings where a system modifies its own computational behavior.
+
+\subsection{12.10.1 JIT Compilation}
+
+A just-in-time (JIT) compiler is a two-level reflective tower. At level 0, a program $P$ runs on data $x$. At level 1, the JIT compiler monitors $P$'s execution and, when it identifies "hot" code paths, replaces interpreted code with compiled machine code. This is a reflective operation: the interpreter $f_1$ modifies itself (replacing interpretation with direct execution for certain functions). In $(f, x)$ terms:
+
+\[(f_1, (f_0, x_0)) \longmapsto (f_1', (f_0', x_0'))\]
+
+where $f_1'$ is the modified interpreter and $f_0'$ is the compiled version of the hot path.
+
+\subsection{12.10.2 Genetic Programming}
+
+In genetic programming (GP), a population of programs $(f_0^{(1)}, f_0^{(2)}, \ldots, f_0^{(N)})$ evolves under selection and variation operators. The GP system is the meta-rule $\varphi$: it evaluates each $f_0^{(i)}$ on training data, selects the fittest, and produces modified programs via crossover and mutation. The programs $f_0^{(i)}$ change (function-update), but $\varphi$ is fixed (state-update at the meta-level).
+
+Meta-GP --- where the selection and variation operators themselves evolve --- would constitute genuine self-modification in Kampis's sense. This remains largely an open research direction.
+
+\subsection{12.10.3 Neural Architecture Search}
+
+Neural architecture search (NAS) searches over the space of neural network architectures (functions $f_\theta$ parameterized by both weights $\theta$ and architecture $\alpha$). The search algorithm acts as a meta-rule:
+
+\[(\alpha_{t+1}, \theta_{t+1}) = \varphi(\alpha_t, \theta_t, \text{data})\]
+
+Standard NAS keeps $\varphi$ fixed. More recent approaches learn the search strategy itself (learning to learn, or meta-learning), moving toward function-update of the meta-rule. In the $(f, x)$ framework, this is a two-level tower where the architecture-search algorithm is the interpreter at level 1, and modifications to the search strategy are reflective operations.
+
+\section{Summary}
+
+The main ideas of this chapter:
+
+\begin{enumerate}
+\item \textbf{Von Neumann's universal constructor} resolves the self-reproduction paradox via program-data duality: a description serves as both instructions (interpreted) and data (copied).
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Program-data duality} is fundamental to self-modifying computation. In stored-program computers, programs \textit{are} data. Kleene's recursion theorem guarantees the existence of self-referential programs (quines).
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Procedural reflection} (Smith, 1984) gives a program access to its own interpreter's state. The reflective tower is an infinite stack of interpreters, each governing the level below.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Reification} makes the interpreter's implicit state explicit; \textbf{reflection} installs data back as interpreter state. These operations connect adjacent levels of the tower.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Lazy instantiation} (des Rivières & Smith, 1984) resolves the implementation problem: tower levels are created only when needed.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Denotational semantics} (Wand & Friedman, 1986): the tower's meaning is a fixed point $I^\textit{ = \Phi(I^})$ of an operator on interpretation functions, resolving the apparent circularity.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Collapsing towers} (Amin & Rompf, 2018): partial evaluation eliminates interpretive overhead, collapsing $N$ levels into a single compiled pass via the Futamura projections.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Kampis's distinction}: state-update (fixed dynamics, changing state) versus function-update (changing dynamics). Genuine self-modification requires the latter, and in its fullest form, requires the meta-rule itself to change.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Connection to $(f, x)$}: the reflective tower is a stack of $(f_k, x_k)$ pairs where $f_k$ interprets level $k-1$. A reflective operation is a meta-rule application $f_k \mapsto \varphi_k(f_k, x_k)$. The tower arises when $\varphi_k$ is itself subject to modification. The tower's semantics as a fixed point mirrors the fixed-point semantics of recursive computation.
+\end{enumerate}
+
+
+
+\section{References}
+
+\begin{itemize}
+\item Amin, N. and Rompf, T. (2018). "Collapsing Towers of Interpreters." \textit{Proceedings of the ACM on Programming Languages}, 2(POPL), Article 52. Demonstrates how staged partial evaluation collapses a reflective tower into a single compiled pass, via stage polymorphism.
+\end{itemize}
+
+\begin{itemize}
+\item des Rivières, J. and Smith, B. C. (1984). "The Implementation of Procedurally Reflective Languages." \textit{Conference Record of the 1984 ACM Symposium on Lisp and Functional Programming}, pp. 331--347. Introduces lazy instantiation of the reflective tower: meta-levels are created on demand.
+\end{itemize}
+
+\begin{itemize}
+\item Futamura, Y. (1971). "Partial Evaluation of Computation Process --- An Approach to a Compiler-Compiler." \textit{Systems, Computers, Controls}, 2(5), pp. 45--50. The three Futamura projections relating partial evaluation, compilation, and compiler generation.
+\end{itemize}
+
+\begin{itemize}
+\item Kampis, G. (1991). \textit{Self-Modifying Systems in Biology and Cognitive Science: A New Framework for Dynamics, Information, and Complexity}. Pergamon Press. Distinguishes state-update from function-update systems and argues that genuine self-modification requires a change in the reading frame.
+\end{itemize}
+
+\begin{itemize}
+\item McCarthy, J. (1960). "Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I." \textit{Communications of the ACM}, 3(4), pp. 184--195. The original paper on Lisp, establishing program-data duality via S-expressions.
+\end{itemize}
+
+\begin{itemize}
+\item Smith, B. C. (1982). \textit{Procedural Reflection in Programming Languages}. Ph.D. dissertation, Massachusetts Institute of Technology. The foundational work on reflective towers and procedural reflection.
+\end{itemize}
+
+\begin{itemize}
+\item Smith, B. C. (1984). "Reflection and Semantics in Lisp." \textit{Conference Record of the Eleventh Annual ACM Symposium on Principles of Programming Languages}, pp. 23--35. Presents 3-Lisp and the theory of procedural reflection in a more concise form.
+\end{itemize}
+
+\begin{itemize}
+\item von Neumann, J. (1966). \textit{Theory of Self-Reproducing Automata}. Edited and completed by A. W. Burks. University of Illinois Press. Posthumous publication of von Neumann's lectures on self-reproducing cellular automata and the universal constructor.
+\end{itemize}
+
+\begin{itemize}
+\item Wand, M. and Friedman, D. P. (1986). "The Mystery of the Tower Revealed: A Non-Reflective Description of the Reflective Tower." \textit{Conference Record of the 1986 ACM Conference on Lisp and Functional Programming}, pp. 298--307. Gives denotational (fixed-point) semantics to the reflective tower, showing that the tower's meaning can be characterized without circularity.
+\end{itemize}
+
+\begin{itemize}
+\item Wand, M. and Friedman, D. P. (1988). "The Mystery of the Tower Revealed: A Non-Reflective Description of the Reflective Tower." In \textit{Meta-Level Architectures and Reflection}, edited by P. Maes and D. Nardi, pp. 111--134. Elsevier. Extended version of the 1986 paper.
+\end{itemize}
+
+
+
+\section{Recommended Reading}
+
+For the foundations:
+
+\begin{itemize}
+\item \textbf{Smith (1984)} is the essential source for procedural reflection. Dense but rewarding; introduces the key concepts of reification, reflection, and the tower architecture.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Wand & Friedman (1988)} provides the semantic foundation, showing that the tower has a well-defined fixed-point meaning. More accessible than Smith's original work.
+\end{itemize}
+
+For von Neumann's ideas:
+
+\begin{itemize}
+\item \textbf{von Neumann (1966)}, edited by Burks, is the primary source. Part I covers the logical theory of automata; Part II covers the self-reproducing universal constructor.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Sipper, M.} (1998). \textit{Fifty Years of Research on Self-Replication: An Overview}. Artificial Life, 4(3), 237--257. A good survey of developments since von Neumann.
+\end{itemize}
+
+For partial evaluation and tower collapsing:
+
+\begin{itemize}
+\item \textbf{Jones, N., Gomard, C., and Sestoft, P.} (1993). \textit{Partial Evaluation and Automatic Program Generation}. Prentice Hall. The standard reference on partial evaluation, including the Futamura projections.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Amin & Rompf (2018)} is accessible and demonstrates the practical power of collapsing towers. The paper includes working Scala code.
+\end{itemize}
+
+For self-modifying systems:
+
+\begin{itemize}
+\item \textbf{Kampis (1991)} is philosophically rich and scientifically rigorous. Challenging but essential for understanding the difference between superficial and genuine self-modification.
+\end{itemize}
+
+For connections to programming language theory:
+
+\begin{itemize}
+\item \textbf{Friedman, D. and Wand, M.} (2008). \textit{Essentials of Programming Languages}, 3rd ed. MIT Press. A textbook approach to interpreters and their towers, accessible to advanced undergraduates.
+\end{itemize}

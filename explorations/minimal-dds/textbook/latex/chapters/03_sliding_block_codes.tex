@@ -1,0 +1,393 @@
+\chapter{Sliding Block Codes and the Curtis-Hedlund-Lyndon Theorem}
+
+\section{Introduction}
+
+The central objects of symbolic dynamics are shift spaces (subshifts) and the maps between them. In the previous chapters we defined shift spaces as closed, shift-invariant subsets of $\Sigma^\mathbb{Z}$ (or $\Sigma^\mathbb{N}$). The natural question is: \textbf{what are the "right" morphisms between these objects?}
+
+The answer turns out to be remarkably clean. The Curtis-Hedlund-Lyndon theorem (1969) says that the structure-preserving maps between shift spaces are precisely the \textbf{sliding block codes}: maps defined by applying a fixed local rule uniformly across every position. This is one of the foundational results of symbolic dynamics, and it connects the topological viewpoint (continuity + shift-commutation) to the combinatorial viewpoint (local rules on finite windows).
+
+This chapter develops the theory of sliding block codes, states and sketches the proof of the Curtis-Hedlund-Lyndon theorem, and explores consequences including factor maps, conjugacies, automorphisms, and the connection to cellular automata and autoregressive language models.
+
+
+
+\section{Sliding Block Codes: Definition}
+
+Let $\Sigma$ and $\Gamma$ be finite alphabets. Let $X \subseteq \Sigma^\mathbb{Z}$ and $Y \subseteq \Gamma^\mathbb{Z}$ be subshifts.
+
+\textbf{Definition 3.2.1 (Block map).} A function $f: \Sigma^{m+a+1} \to \Gamma$, where $m, a \geq 0$, is called a \textbf{local rule} (or \textbf{block map}) with \textbf{memory} $m$ and \textbf{anticipation} $a$. The quantity $r = \max(m, a)$ is called the \textbf{radius} of the block map. When $m = a = r$, the domain is $\Sigma^{2r+1}$ and we say the block map has \textbf{symmetric radius} $r$.
+
+\textbf{Definition 3.2.2 (Sliding block code).} Given a local rule $f: \Sigma^{m+a+1} \to \Gamma$ with memory $m$ and anticipation $a$, the \textbf{sliding block code} (or \textbf{$\infty$-block map}) induced by $f$ is the map $\Phi: \Sigma^\mathbb{Z} \to \Gamma^\mathbb{Z}$ defined by
+
+\[[\Phi(x)]_i = f(x_{i-m}, x_{i-m+1}, \ldots, x_i, \ldots, x_{i+a})\]
+
+for all $i \in \mathbb{Z}$ and all $x \in \Sigma^\mathbb{Z}$.
+
+In words: to compute the $i$-th coordinate of the output, we look at a window of $m + a + 1$ symbols centered (with possible asymmetry) at position $i$ in the input, and apply the fixed local rule $f$.
+
+If $\Phi(X) \subseteq Y$, we say $\Phi$ is a sliding block code \textbf{from $X$ to $Y$} and write $\Phi: X \to Y$.
+
+\begin{remark}
+Every sliding block code with memory $m$ and anticipation $a$ can be \textbf{recoded} as one with symmetric radius $r = \max(m, a)$ by simply ignoring extra coordinates in the local rule. A more useful recoding trick (the \textbf{higher block presentation}, see Section 3.7) shows that every sliding block code can be recoded as a \textbf{1-block map} (memory 0, anticipation 0) after passing to a higher-block shift.
+\end{remark}
+
+
+
+\section{Examples}
+
+\subsection{Example 3.3.1: XOR map (2-block code)}
+
+Let $\Sigma = \Gamma = \{ 0, 1\} $. Define the local rule $f: \{ 0,1\} ^2 \to \{ 0,1\} $ by
+
+\[f(a, b) = a \oplus b\]
+
+where $\oplus$ denotes addition mod 2 (XOR). This has memory $m = 0$ and anticipation $a = 1$ (equivalently, memory 1 and anticipation 0, depending on convention). The induced sliding block code $\Phi: \{ 0,1\} ^\mathbb{Z} \to \{ 0,1\} ^\mathbb{Z}$ is
+
+\[[\Phi(x)]_i = x_i \oplus x_{i+1}.\]
+
+\textbf{Worked computation.} Let $x = \ldots 0\, 0\, 1\, 1\, 0\, 1\, 0\, 0 \ldots$ (with positions labeled $\ldots, -1, 0, 1, 2, 3, 4, 5, 6, \ldots$). Then:
+
+\begin{center}
+\begin{tabular}{ccccccc}
+\toprule
+$i$ & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule
+$x_i$ & 0 & 1 & 1 & 0 & 1 & 0 \\
+$x_{i+1}$ & 1 & 1 & 0 & 1 & 0 & 0 \\
+$[\Phi(x)]_i$ & 1 & 0 & 1 & 1 & 1 & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+So $\Phi(x) = \ldots 1\, 0\, 1\, 1\, 1\, 0 \ldots$ in positions $0, \ldots, 5$.
+
+Note that $\Phi$ is a 2-to-1 map on $\{ 0,1\} ^\mathbb{Z}$: for any output $y$, choosing $x_0 \in \{ 0,1\} $ determines the rest of $x$ uniquely. This map is also known as \textbf{elementary cellular automaton Rule 102} (see Section 3.10).
+
+\subsection{Example 3.3.2: Majority vote map (radius-1)}
+
+Let $\Sigma = \Gamma = \{ 0, 1\} $. Define $f: \{ 0,1\} ^3 \to \{ 0,1\} $ by
+
+\[f(a, b, c) = \text{majority}(a, b, c) = \begin{cases} 1 & \text{if } a + b + c \geq 2, \\ 0 & \text{otherwise.} \end{cases}\]
+
+This has symmetric radius $r = 1$. The induced map is
+
+\[[\Phi(x)]_i = \text{majority}(x_{i-1}, x_i, x_{i+1}).\]
+
+\textbf{Worked computation.} Let $x = \ldots 0\, 1\, 1\, 0\, 0\, 1\, 1\, 1 \ldots$ at positions $0, \ldots, 7$.
+
+\begin{center}
+\begin{tabular}{ccccccc}
+\toprule
+$i$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\midrule
+$(x_{i-1}, x_i, x_{i+1})$ & $(0,1,1)$ & $(1,1,0)$ & $(1,0,0)$ & $(0,0,1)$ & $(0,1,1)$ & $(1,1,1)$ \\
+$[\Phi(x)]_i$ & 1 & 1 & 0 & 0 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This map acts as a "smoothing" or "noise reduction" operator: isolated 0s surrounded by 1s become 1, and vice versa. It is \textbf{not} invertible. As a cellular automaton, this is \textbf{Rule 232}.
+
+\subsection{Example 3.3.3: Higher-order block code and the golden mean shift}
+
+Let $X \subseteq \{ 0,1\} ^\mathbb{Z}$ be the \textbf{golden mean shift}: the subshift defined by the forbidden word $\mathcal{F} = \{ 11\} $, so no two consecutive 1s appear. Let $\Gamma = \{ a, b, c\} $ and define $f: \{ 0,1\} ^2 \to \{ a, b, c\} $ by
+
+\[f(0,0) = a, \quad f(0,1) = b, \quad f(1,0) = c, \quad f(1,1) = \text{(never occurs in } X\text{)}.\]
+
+The induced map $\Phi: X \to \Gamma^\mathbb{Z}$ sends the golden mean shift to the subshift $Y \subseteq \{ a,b,c\} ^\mathbb{Z}$ whose allowed transitions are $a \to a$, $a \to b$, $b \to c$, $c \to a$, $c \to b$ (one can verify: after a $b$, the underlying pair was $(0,1)$, so the next symbol in $X$ must be $0$, giving either $(1,0) \mapsto c$). This is the \textbf{higher block presentation} of the golden mean shift; it converts a subshift defined by forbidden words into an \textbf{edge shift} (a 1-step shift of finite type).
+
+
+
+\section{Continuity and Shift-Commutation}
+
+We equip $\Sigma^\mathbb{Z}$ with the \textbf{product topology} (equivalently, the topology induced by the metric $d(x,y) = 2^{-\min\{ |i| : x_i \neq y_i\} }$). In this topology, two sequences are close if they agree on a large window around the origin.
+
+\textbf{Proposition 3.4.1.} Every sliding block code $\Phi: \Sigma^\mathbb{Z} \to \Gamma^\mathbb{Z}$ is:
+
+\begin{enumerate}
+\item \textbf{Continuous} in the product topology.
+\item \textbf{Shift-commuting}: $\Phi \circ \sigma = \sigma \circ \Phi$, where $\sigma$ is the left shift $[\sigma(x)]_i = x_{i+1}$.
+\end{enumerate}
+
+\textit{Proof sketch.} (1) Fix $\Phi$ with memory $m$ and anticipation $a$. If $x$ and $y$ agree on positions $\{ -N, \ldots, N\} $, then $\Phi(x)$ and $\Phi(y)$ agree on positions $\{ -N+m, \ldots, N-a\} $. So agreement on a large window in the input implies agreement on a large window in the output, which is exactly continuity in the product topology.
+
+(2) We compute directly:
+
+\[[\Phi(\sigma(x))]_i = f((\sigma x)_{i-m}, \ldots, (\sigma x)_{i+a}) = f(x_{i-m+1}, \ldots, x_{i+a+1})\]
+
+\[[\sigma(\Phi(x))]_i = [\Phi(x)]_{i+1} = f(x_{(i+1)-m}, \ldots, x_{(i+1)+a}) = f(x_{i-m+1}, \ldots, x_{i+a+1}).\]
+
+These are equal for all $i$, so $\Phi \circ \sigma = \sigma \circ \Phi$. 
+\end{proof}
+
+The remarkable content of the Curtis-Hedlund-Lyndon theorem is that the converse holds.
+
+
+
+\section{The Curtis-Hedlund-Lyndon Theorem}
+
+\textbf{Theorem 3.5.1 (Curtis-Hedlund-Lyndon, 1969).} Let $X \subseteq \Sigma^\mathbb{Z}$ and $Y \subseteq \Gamma^\mathbb{Z}$ be subshifts, and let $\Phi: X \to Y$ be a map. Then $\Phi$ is a sliding block code if and only if:
+
+\begin{enumerate}
+\item $\Phi$ is \textbf{continuous} (with respect to the product topology), and
+\item $\Phi$ \textbf{commutes with the shift}: $\Phi \circ \sigma = \sigma \circ \Phi$.
+\end{enumerate}
+
+The forward direction is Proposition 3.4.1. The content is the reverse: every continuous, shift-commuting map is induced by a local rule.
+
+\textbf{Proof sketch of the reverse direction.}
+
+Assume $\Phi: X \to Y$ is continuous and shift-commuting. We must show that there exist $m, a \geq 0$ and a local rule $f: \Sigma^{m+a+1} \to \Gamma$ such that $[\Phi(x)]_i = f(x_{i-m}, \ldots, x_{i+a})$ for all $x \in X$ and all $i$.
+
+\textbf{Step 1: Reduce to the zeroth coordinate.} By shift-commutation, it suffices to show that $[\Phi(x)]_0$ depends only on finitely many coordinates of $x$. Indeed, once we know that $[\Phi(x)]_0 = f(x_{-m}, \ldots, x_a)$ for some function $f$, then
+
+\[[\Phi(x)]_i = [\sigma^{-i}(\Phi(x))]_0 = [\Phi(\sigma^{-i}(x))]_0 = f((\sigma^{-i} x)_{-m}, \ldots, (\sigma^{-i} x)_a) = f(x_{i-m}, \ldots, x_{i+a})\]
+
+where we used shift-commutation in the second equality.
+
+\textbf{Step 2: Compactness argument.} Consider the map $\pi_0 \circ \Phi: X \to \Gamma$, where $\pi_0$ projects onto the zeroth coordinate. This is a continuous function from $X$ to the discrete space $\Gamma$. For each $\gamma \in \Gamma$, the preimage $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is clopen (both open and closed) in $X$.
+
+The sets of the form $C(i_1, \ldots, i_k; a_1, \ldots, a_k) = \{ x \in X : x_{i_j} = a_j \text{ for all } j\} $ (cylinder sets) form a basis for the topology on $X$. Since $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is open, it is a union of cylinder sets. Since $X \subseteq \Sigma^\mathbb{Z}$ is compact (as a closed subset of the compact space $\Sigma^\mathbb{Z}$, by Tychonoff's theorem), and $(\pi_0 \circ \Phi)^{-1}(\gamma)$ is closed (hence compact), it can be covered by \textbf{finitely many} cylinder sets.
+
+Each cylinder set depends on finitely many coordinates. A finite union of such sets depends on finitely many coordinates. Since $\Gamma$ is finite, taking the union over all $\gamma$, we find a finite set of coordinates $\{ -m, -m+1, \ldots, a\} $ (after relabeling) such that $[\Phi(x)]_0$ depends only on $x_{-m}, \ldots, x_a$.
+
+\textbf{Step 3: Define the local rule.} For each word $w = w_{-m} \cdots w_a \in \mathcal{B}_{m+a+1}(X)$ (the set of $(m+a+1)$-blocks appearing in $X$), pick any $x \in X$ with $x_{-m} \cdots x_a = w$ and define $f(w) = [\Phi(x)]_0$. By Step 2, this is well-defined (independent of the choice of $x$). Then $\Phi$ is the sliding block code induced by $f$. 
+\end{proof}
+
+\textbf{Remark on the domain.} The theorem requires the domain $X$ to be a subshift (in particular, compact). This is essential: on non-compact subsets of $\Sigma^\mathbb{Z}$, there exist continuous shift-commuting maps that are not sliding block codes.
+
+
+
+\section{Why the Theorem Matters}
+
+The Curtis-Hedlund-Lyndon theorem says that the category of subshifts with continuous shift-commuting maps is the same as the category of subshifts with sliding block codes. This has several important consequences:
+
+\begin{enumerate}
+\item \textbf{Complete characterization of morphisms.} We do not need to search for exotic continuous shift-commuting maps; they are all given by local rules on finite windows. The theory is entirely combinatorial.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Computability.} To specify a map between subshifts, it suffices to give a finite lookup table (the local rule). This makes the theory computationally tractable.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Composition.} The composition of two sliding block codes is again a sliding block code (with radius at most the sum of the radii). This follows immediately from the topological characterization: a composition of continuous maps is continuous, and a composition of shift-commuting maps is shift-commuting.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Foundation for classification.} It provides the correct notion of isomorphism (conjugacy) between subshifts, which underlies the entire classification theory of symbolic dynamics.
+\end{enumerate}
+
+
+
+\section{Factor Maps and Conjugacies}
+
+\textbf{Definition 3.7.1.} Let $X$ and $Y$ be subshifts.
+
+\begin{itemize}
+\item A \textbf{factor map} is a surjective sliding block code $\Phi: X \to Y$. We say $Y$ is a \textbf{factor} of $X$, and $X$ is an \textbf{extension} of $Y$.
+\end{itemize}
+
+\begin{itemize}
+\item A \textbf{conjugacy} is a bijective sliding block code $\Phi: X \to Y$ whose inverse $\Phi^{-1}: Y \to X$ is also a sliding block code. Two subshifts are \textbf{conjugate} if there exists a conjugacy between them.
+\end{itemize}
+
+\begin{remark}
+If $\Phi$ is a bijective sliding block code, then $\Phi^{-1}$ is automatically a sliding block code. This follows because $\Phi$ is a continuous bijection from the compact space $X$ to the Hausdorff space $Y$, hence a homeomorphism, and $\Phi^{-1}$ commutes with the shift (since $\Phi$ does). By the Curtis-Hedlund-Lyndon theorem, $\Phi^{-1}$ is a sliding block code. So in the definition of conjugacy, it suffices to require bijectivity.
+
+Conjugacy is the correct notion of \textbf{isomorphism} for subshifts. Two conjugate subshifts are "the same" dynamical system up to a re-encoding of symbols. Any dynamical invariant (topological entropy, zeta function, etc.) is preserved by conjugacy.
+\end{remark}
+
+\textbf{Example 3.7.2.} Every subshift of finite type is conjugate to an edge shift (a 1-step SFT) via a higher block code. This is the standard recoding trick: if $X$ is an $M$-step SFT over $\Sigma$, define the new alphabet $\tilde{\Sigma} = \mathcal{B}_M(X)$ (the set of allowed $M$-blocks), and the 1-block conjugacy sends each $M$-block to its corresponding symbol in $\tilde{\Sigma}$.
+
+
+
+\section{Endomorphisms and Automorphisms of the Full Shift}
+
+The set of all sliding block codes from a full shift $\Sigma^\mathbb{Z}$ to itself has rich algebraic structure.
+
+\textbf{Definition 3.8.1.} Let $\Sigma$ be a finite alphabet with $|\Sigma| \geq 2$.
+
+\begin{itemize}
+\item $\text{End}(\Sigma^\mathbb{Z})$ denotes the set of all sliding block codes $\Phi: \Sigma^\mathbb{Z} \to \Sigma^\mathbb{Z}$. Under composition, this is a \textbf{monoid} (associative with identity, where the identity is the 0-block code $[\Phi(x)]_i = x_i$).
+\end{itemize}
+
+\begin{itemize}
+\item $\text{Aut}(\Sigma^\mathbb{Z})$ denotes the set of all \textbf{invertible} sliding block codes (conjugacies from $\Sigma^\mathbb{Z}$ to itself). Under composition, this is a \textbf{group}, called the \textbf{automorphism group} of the full shift.
+\end{itemize}
+
+\textbf{Basic elements of $\text{Aut}(\Sigma^\mathbb{Z})$:}
+
+\begin{itemize}
+\item The \textbf{shift} $\sigma$ itself (a 0-block code after re-indexing; it is the conjugacy induced by the identity local rule but with a coordinate offset).
+\item \textbf{Symbol permutations}: for any permutation $\pi: \Sigma \to \Sigma$, the 0-block code $[\Phi(x)]_i = \pi(x_i)$ is an automorphism.
+\item \textbf{Marker automorphisms} and more exotic constructions.
+\end{itemize}
+
+\textbf{Theorem 3.8.2 (Hedlund, 1969).} For $|\Sigma| \geq 2$, the group $\text{Aut}(\Sigma^\mathbb{Z})$ is countably infinite. It contains:
+\begin{itemize}
+\item The shift $\sigma$ (of infinite order),
+\item All finite symmetric groups $S_n$ for $n \leq |\Sigma|$ (via symbol permutations),
+\item Free groups and free products,
+\item Every finite group as a subgroup (Ryan's theorem, 1972).
+\end{itemize}
+
+The structure of $\text{Aut}(\Sigma^\mathbb{Z})$ remains deeply mysterious. For example, it is unknown whether $\text{Aut}(\{ 0,1\} ^\mathbb{Z})$ is generated by $\sigma$ together with all involutions.
+
+\textbf{Example 3.8.3.} For $\Sigma = \{ 0, 1\} $, the map $\Phi$ defined by $[\Phi(x)]_i = x_i \oplus x_{i+1}$ from Example 3.3.1 is an endomorphism (it maps $\{ 0,1\} ^\mathbb{Z}$ to itself) but \textbf{not} an automorphism, since it is 2-to-1.
+
+The map $\Psi$ defined by $[\Psi(x)]_i = 1 - x_i$ (symbol swap) is an automorphism of order 2.
+
+
+
+\section{One-Sided Sliding Block Codes (Causal Maps)}
+
+In many applications, we are interested in maps that depend only on the past and present, not the future.
+
+\textbf{Definition 3.9.1.} A \textbf{one-sided sliding block code} (or \textbf{causal sliding block code}) is a sliding block code with anticipation $a = 0$. That is, $[\Phi(x)]_i = f(x_{i-m}, \ldots, x_i)$ for some local rule $f: \Sigma^{m+1} \to \Gamma$.
+
+Equivalently, the output at position $i$ depends only on the input at positions $\leq i$.
+
+On the one-sided shift space $\Sigma^\mathbb{N}$ (sequences indexed by $\mathbb{N} = \{ 0, 1, 2, \ldots\} $), the Curtis-Hedlund-Lyndon theorem holds in the same form, and all sliding block codes $\Phi: X \to Y$ between one-sided subshifts $X \subseteq \Sigma^\mathbb{N}$, $Y \subseteq \Gamma^\mathbb{N}$ are necessarily causal: $[\Phi(x)]_i$ can depend on $x_0, \ldots, x_{i+a}$ for some fixed $a$, and by re-indexing this is equivalent to a causal map on a higher block presentation.
+
+\begin{remark}
+One-sided sliding block codes are strictly less expressive than two-sided ones. For example, the map $[\Phi(x)]_i = x_{i+1}$ (a "look-ahead" by one step) is a perfectly valid two-sided sliding block code but is not causal.
+\end{remark}
+
+
+
+\section{Connection to Cellular Automata}
+
+\textbf{Definition 3.10.1.} A \textbf{(one-dimensional) cellular automaton} (CA) is a sliding block code $\Phi: \Sigma^\mathbb{Z} \to \Sigma^\mathbb{Z}$ from the full shift to itself.
+
+By the Curtis-Hedlund-Lyndon theorem, this is equivalent to: a CA is a continuous, shift-commuting map from $\Sigma^\mathbb{Z}$ to itself. Thus:
+
+\[\{ \text{cellular automata on } \Sigma\}  = \text{End}(\Sigma^\mathbb{Z}).\]
+
+This is the endomorphism monoid of the full shift, as defined in Section 3.8.
+
+\textbf{Wolfram's elementary cellular automata} are exactly the sliding block codes $\Phi: \{ 0,1\} ^\mathbb{Z} \to \{ 0,1\} ^\mathbb{Z}$ with symmetric radius $r = 1$. There are $2^{2^3} = 256$ such local rules $f: \{ 0,1\} ^3 \to \{ 0,1\} $, conventionally numbered 0 through 255. For instance:
+
+\begin{itemize}
+\item \textbf{Rule 102}: $f(a,b,c) = b \oplus c$. This is the XOR map from Example 3.3.1 (after a shift in indexing).
+\item \textbf{Rule 232}: $f(a,b,c) = \text{majority}(a,b,c)$. This is the majority vote from Example 3.3.2.
+\item \textbf{Rule 110}: Known to be Turing-complete (Cook, 2004).
+\end{itemize}
+
+The perspective of cellular automata as endomorphisms of the full shift provides a rich algebraic and topological framework for their study, going beyond the purely computational viewpoint.
+
+
+
+\section{Connection to Autoregressive Language Models}
+
+An \textbf{autoregressive language model} (such as a transformer-based LLM) generates a sequence of tokens $x_0, x_1, x_2, \ldots$ from a finite vocabulary $\Sigma$ (the "token alphabet") by the rule
+
+\[x_{t+1} \sim P(\cdot \mid x_{\max(0, t-k+1)}, \ldots, x_t)\]
+
+where $k$ is the \textbf{context window} length. If we ignore the stochastic sampling and consider the deterministic \textbf{greedy decoding} map (always pick the most likely next token), this becomes a deterministic function
+
+\[x_{t+1} = f(x_{\max(0, t-k+1)}, \ldots, x_t)\]
+
+for some fixed $f: \Sigma^{\leq k} \to \Sigma$. Once the sequence is long enough that $t \geq k - 1$, this is exactly a \textbf{one-sided sliding block code} with memory $m = k - 1$ and anticipation $a = 0$:
+
+\[[\Phi(x)]_i = f(x_{i-k+1}, \ldots, x_i).\]
+
+More precisely:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Symbolic dynamics concept & LLM concept \\
+\midrule
+Alphabet $\Sigma$ & Token vocabulary \\
+One-sided shift space $\Sigma^\mathbb{N}$ & Space of all token sequences \\
+Memory $m = k - 1$ & Context window minus 1 \\
+Anticipation $a = 0$ & Causal (autoregressive) generation \\
+Local rule $f$ & Deterministic decoding of the model \\
+Sliding block code $\Phi$ & One step of autoregressive generation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This correspondence is exact in the deterministic case and approximate in the stochastic case (where the model samples rather than taking the argmax). The subshift generated by iterating $\Phi$ from a prompt is the \textbf{orbit} of the prompt under the dynamical system defined by $\Phi$.
+
+Key differences from the classical theory:
+\begin{enumerate}
+\item LLMs operate on \textbf{one-sided} sequences (causal generation), not two-sided.
+\item The local rule $f$ is astronomically complex (billions of parameters), whereas classical symbolic dynamics studies simple local rules.
+\item The stochastic case (nonzero temperature) leads to random dynamical systems and stationary measures on shift spaces, not deterministic orbits.
+\end{enumerate}
+
+Nevertheless, the sliding block code framework provides the correct mathematical scaffolding for understanding the structure of autoregressive generation.
+
+
+
+\section{Summary of Key Results}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Concept & Definition \\
+\midrule
+Sliding block code & $[\Phi(x)]_i = f(x_{i-m}, \ldots, x_{i+a})$ for a fixed local rule $f$ \\
+Curtis-Hedlund-Lyndon & Continuous + shift-commuting $\iff$ sliding block code \\
+Factor map & Surjective sliding block code \\
+Conjugacy & Bijective sliding block code (inverse is automatic) \\
+$\text{End}(\Sigma^\mathbb{Z})$ & Monoid of CAs = endomorphisms of the full shift \\
+$\text{Aut}(\Sigma^\mathbb{Z})$ & Group of invertible CAs = automorphisms of the full shift \\
+Causal SBC & Anticipation $a = 0$; relevant to autoregressive models \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+\section{References}
+
+\begin{itemize}
+\item \textbf{Curtis, A., Hedlund, G. A., and Lyndon, R. C.} The result is attributed to all three; the published proof appears in Hedlund (1969).
+\item \textbf{Hedlund, G. A.} (1969). Endomorphisms and automorphisms of the shift dynamical system. \textit{Mathematical Systems Theory}, 3(4), 320--375.
+\item \textbf{Lind, D. and Marcus, B.} (2021). \textit{An Introduction to Symbolic Dynamics and Coding}, 2nd edition. Cambridge University Press. (Chapter 6 covers sliding block codes; Chapter 1 covers shift spaces.)
+\item \textbf{Kurka, P.} (2003). \textit{Topological and Symbolic Dynamics}. Cours Specialises, Societe Mathematique de France. (Chapter 4 treats cellular automata as endomorphisms.)
+\item \textbf{Ryan, J. P.} (1972). The shift and commutativity. \textit{Mathematical Systems Theory}, 6(1--2), 82--85.
+\item \textbf{Cook, M.} (2004). Universality in elementary cellular automata. \textit{Complex Systems}, 15(1), 1--40.
+\end{itemize}
+
+
+
+\section{Recommended Reading}
+
+For the core theory:
+
+\begin{itemize}
+\item \textbf{Lind & Marcus (2021)}, Chapter 6, gives the definitive modern treatment of sliding block codes, including full proofs and many exercises. This is the standard reference.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Hedlund (1969)} is the original source and remains highly readable. It establishes the foundational results on endomorphisms and automorphisms of shift spaces.
+\end{itemize}
+
+For cellular automata:
+
+\begin{itemize}
+\item \textbf{Wolfram, S.} (2002). \textit{A New Kind of Science}. Wolfram Media. Controversial but influential; contains extensive empirical study of elementary cellular automata.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Ilachinski, A.} (2001). \textit{Cellular Automata: A Discrete Universe}. World Scientific. Comprehensive treatment of cellular automata from multiple perspectives.
+\end{itemize}
+
+For deeper algebraic structure:
+
+\begin{itemize}
+\item \textbf{Ceccherini-Silberstein, T. and Coornaert, M.} (2010). \textit{Cellular Automata and Groups}. Springer. Explores the connection between CAs and group theory, generalizing beyond $\mathbb{Z}$ actions.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Boyle, M., Lind, D., and Rudolph, D.} (1988). "The automorphism group of a shift of finite type." \textit{Transactions of the AMS}, 306(1), 71--114. Deep results on $\text{Aut}(X)$ for SFTs.
+\end{itemize}
+
+For connections to computation and language:
+
+\begin{itemize}
+\item \textbf{Kari, J.} (2005). "Theory of cellular automata: A survey." \textit{Theoretical Computer Science}, 334(1-3), 3--33. Emphasizes decidability questions and the computational perspective.
+\end{itemize}

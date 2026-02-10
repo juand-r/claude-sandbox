@@ -1,0 +1,1539 @@
+\chapter{Measuring Novelty Within a Sequence}
+
+\section{Introduction}
+
+The preceding chapters have focused on dynamics \textit{across time}: how states evolve under iteration, how orbits converge to attractors, how entropy rates characterize the information produced per step. But there is another dimension of novelty that has received less formal attention: \textbf{novelty within a single output}.
+
+When an LLM generates a response, that response is itself a sequence of $N$ tokens. Before we ask "how does the $n$-th output differ from the $(n-1)$-th output?" we can ask: "how diverse is the $n$-th output internally?" A sequence that repeats "the the the the" $N/2$ times is grammatically valid but informationally impoverished. A sequence with high internal diversity explores more of the vocabulary and exhibits richer structure.
+
+This chapter develops the theory of \textbf{intra-sequence novelty}: metrics that quantify diversity, complexity, and information content within a single finite sequence. We connect these measures to the complexity theory of Chapters 8--10 and to the LLM dynamics of Chapter 14, showing how intra-sequence novelty provides a complementary perspective on the quality-diversity trade-off in generative systems.
+
+
+
+\section{The Setting}
+
+\subsection{15.2.1 Finite Sequences}
+
+Let $\Sigma$ be a finite alphabet with $|\Sigma| = V$. A \textbf{finite sequence} (or \textbf{string}) of length $N$ is an element $w = (w_1, w_2, \ldots, w_N) \in \Sigma^N$. We write $|w| = N$ for the length.
+
+In the LLM context, $\Sigma$ is the token vocabulary (typically $V \approx 32{,}000$ to $128{,}000$), and $w$ is a single generated response.
+
+\begin{definition}[Empirical distribution]
+Given $w \in \Sigma^N$, the \textbf{empirical distribution} (or \textbf{type}) of $w$ is the probability distribution $\hat{p}_w$ on $\Sigma$ defined by
+
+\[\hat{p}_w(s) = \frac{|\{i : w_i = s\}|}{N}\]
+
+for each $s \in \Sigma$. This is the relative frequency of symbol $s$ in $w$.
+\end{definition}
+
+\subsection{15.2.2 Two Notions of Novelty}
+
+We distinguish two related but distinct concepts:
+
+\begin{enumerate}
+\item \textbf{Lexical diversity}: How many distinct symbols appear, and how evenly are they distributed? This is captured by type-token ratios and entropy measures.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Structural complexity}: How much internal structure does the sequence have? A sequence of $N$ distinct symbols has high lexical diversity but may have trivial structure (e.g., the alphabet in order). Compression-based measures capture structural complexity.
+\end{enumerate}
+
+Both contribute to what we intuitively call "novelty" or "interestingness" of a sequence.
+
+
+
+\section{Type-Token Measures}
+
+\subsection{15.3.1 Type-Token Ratio}
+
+The simplest diversity measure counts distinct symbols.
+
+\begin{definition}[Type-Token Ratio]
+The \textbf{type-token ratio} (TTR) of $w \in \Sigma^N$ is
+
+\[\mathrm{TTR}(w) = \frac{|\{w_i : 1 \leq i \leq N\}|}{N} = \frac{\text{number of distinct symbols}}{\text{total symbols}}.\]
+\end{definition}
+
+\begin{example}
+Let $\Sigma = \{a, b, c, d\}$ and consider:
+- $w_1 = abcdabcd$ (length 8, 4 distinct): $\mathrm{TTR}(w_1) = 4/8 = 0.5$
+- $w_2 = aaaaaaaa$ (length 8, 1 distinct): $\mathrm{TTR}(w_2) = 1/8 = 0.125$
+- $w_3 = abcdefgh$ over $\Sigma' = \{a,\ldots,h\}$ (length 8, 8 distinct): $\mathrm{TTR}(w_3) = 1.0$
+\end{example}
+
+\subsection{15.3.2 The Length Dependence Problem}
+
+\begin{proposition}[Heaps' Law]
+For natural language text, the number of distinct words $V(N)$ in a corpus of $N$ words follows approximately
+
+\[V(N) \approx K \cdot N^\beta,\]
+
+where $K > 0$ and $0 < \beta < 1$ (typically $\beta \approx 0.4$--$0.6$).
+
+\textit{Consequence.} The TTR decreases with sequence length:
+
+\[\mathrm{TTR}(N) = \frac{V(N)}{N} \approx K \cdot N^{\beta - 1} \to 0 \text{ as } N \to \infty.\]
+
+This means TTR is not comparable across sequences of different lengths: a 1000-token sequence will almost always have lower TTR than a 100-token sequence, regardless of their relative diversity.
+\end{proposition}
+
+\subsection{15.3.3 Length-Normalized Variants}
+
+To address the length dependence, several normalizations have been proposed:
+
+\begin{definition}[Normalized TTR variants]
+
+1. \textbf{Root TTR}: $\mathrm{RTTR}(w) = \dfrac{|\text{types}|}{\sqrt{N}}$
+
+2. \textbf{Log TTR}: $\mathrm{LogTTR}(w) = \dfrac{\log|\text{types}|}{\log N}$
+
+3. \textbf{Moving-Average TTR (MATTR)}: Fix a window size $k$. Compute TTR for each window of $k$ consecutive tokens. MATTR is the average:
+\[\mathrm{MATTR}_k(w) = \frac{1}{N-k+1} \sum_{i=1}^{N-k+1} \mathrm{TTR}(w_i, \ldots, w_{i+k-1}).\]
+\end{definition}
+
+\begin{proposition}
+Under Heaps' Law with exponent $\beta$:
+- $\mathrm{RTTR}(N) \approx K \cdot N^{\beta - 0.5}$, which still decreases if $\beta < 0.5$.
+- $\mathrm{LogTTR}(N) \approx \beta + \frac{\log K}{\log N} \to \beta$ as $N \to \infty$.
+
+Thus LogTTR converges to a constant (the Heaps exponent), making it more suitable for cross-length comparison.
+\end{proposition}
+
+\subsection{15.3.4 Hapax Legomena}
+
+\begin{definition}[Hapax ratio]
+The \textbf{hapax legomena} of $w$ are the symbols that appear exactly once. The \textbf{hapax ratio} is
+
+\[\mathrm{Hapax}(w) = \frac{|\{s \in \Sigma : |\{i : w_i = s\}| = 1\}|}{N}.\]
+
+A high hapax ratio indicates the sequence is exploring vocabulary rather than reusing a small set of symbols.
+\end{definition}
+
+
+
+\section{N-gram Diversity Measures}
+
+\subsection{15.4.1 Distinct-n}
+
+Token-level measures ignore sequential structure. N-gram measures capture local patterns.
+
+\begin{definition}[N-grams and Distinct-n]
+For $w \in \Sigma^N$ and $n \geq 1$, the \textbf{$n$-grams} of $w$ are the tuples
+
+\[\mathcal{N}_n(w) = \{(w_i, w_{i+1}, \ldots, w_{i+n-1}) : 1 \leq i \leq N - n + 1\}.\]
+
+The \textbf{Distinct-n} score is
+
+\[\mathrm{Distinct\text{-}n}(w) = \frac{|\{\text{unique } n\text{-grams}\}|}{|\mathcal{N}_n(w)|} = \frac{|\mathrm{set}(\mathcal{N}_n(w))|}{N - n + 1}.\]
+\end{definition}
+
+\begin{example}
+Let $w = abcabcabc$ (length 9).
+- $n = 1$: 9 unigrams, 3 unique $\{a, b, c\}$. Distinct-1 $= 3/9 = 0.333$.
+- $n = 2$: 8 bigrams $(ab, bc, ca, ab, bc, ca, ab, bc)$, 3 unique. Distinct-2 $= 3/8 = 0.375$.
+- $n = 3$: 7 trigrams, 3 unique $(abc, bca, cab)$. Distinct-3 $= 3/7 = 0.429$.
+\end{example}
+
+\begin{remark}
+Distinct-n increases with $n$ when the sequence has short repeated patterns but no long repeated patterns. For a sequence with no repeated $n$-grams (maximal diversity), Distinct-n $= 1$.
+\end{remark}
+
+\subsection{15.4.2 Repetition Rate}
+
+\begin{definition}[Rep-n]
+The \textbf{repetition rate at order $n$} is the complement of Distinct-n:
+
+\[\mathrm{Rep\text{-}n}(w) = 1 - \mathrm{Distinct\text{-}n}(w) = \frac{\text{number of repeated } n\text{-grams}}{N - n + 1}.\]
+\end{definition}
+
+\begin{theorem}[Welleck et al., 2020]
+In human-written text (e.g., Wikitext-103), sentence-level repetition is rare: Rep-4 $\approx 0.5\%$. In LLM-generated text with greedy or beam-search decoding, Rep-4 can exceed $50\%$, indicating severe degeneration.
+
+This dramatic gap motivates Distinct-n as a diagnostic for text quality.
+\end{theorem}
+
+\subsection{15.4.3 Self-BLEU}
+
+\begin{definition}[Self-BLEU]
+Given a corpus of $M$ generated sequences $\{w^{(1)}, \ldots, w^{(M)}\}$, the \textbf{Self-BLEU} score is the average BLEU score of each sequence against the others:
+
+\[\mathrm{Self\text{-}BLEU} = \frac{1}{M} \sum_{i=1}^{M} \mathrm{BLEU}(w^{(i)}, \{w^{(j)} : j \neq i\}).\]
+
+High Self-BLEU indicates the generated sequences are similar to each other (low corpus-level diversity).
+
+\textbf{Adaptation to single sequences.} For a single long sequence $w$, partition it into $M$ segments of length $L$: $w = w^{(1)} \| w^{(2)} \| \cdots \| w^{(M)}$. Compute Self-BLEU across segments. High intra-sequence Self-BLEU indicates the sequence repeats itself.
+\end{definition}
+
+
+
+\section{Entropy-Based Measures}
+
+\subsection{15.5.1 Empirical Entropy}
+
+\begin{definition}[Unigram entropy]
+The \textbf{(empirical) unigram entropy} of $w \in \Sigma^N$ is the Shannon entropy of its empirical distribution:
+
+\[H_1(w) = -\sum_{s \in \Sigma} \hat{p}_w(s) \log_2 \hat{p}_w(s),\]
+
+where $0 \log 0 := 0$.
+\end{definition}
+
+\begin{proposition}[Entropy bounds]
+1. $H_1(w) = 0$ if and only if $w$ consists of a single repeated symbol.
+2. $H_1(w) \leq \log_2 |\mathrm{supp}(\hat{p}_w)| \leq \log_2 \min(N, V)$.
+3. Equality in (2) holds if and only if $\hat{p}_w$ is uniform over its support.
+
+\begin{proof}
+Standard properties of Shannon entropy. 
+
+\begin{example}
+For $w = abcabcabc$ (9 tokens, each of $a, b, c$ appears 3 times):
+
+\[H_1(w) = -3 \cdot \frac{3}{9} \log_2 \frac{3}{9} = -3 \cdot \frac{1}{3} \log_2 \frac{1}{3} = \log_2 3 \approx 1.585 \text{ bits}.\]
+
+This is the maximum possible for 3 symbols (uniform distribution).
+\end{example}
+
+\end{proof}
+
+\end{proposition}
+
+\subsection{15.5.2 Higher-Order Empirical Entropy}
+
+\begin{definition}[Empirical $n$-gram entropy]
+Define the empirical distribution over $n$-grams:
+
+\[\hat{p}_w^{(n)}(g) = \frac{|\{i : (w_i, \ldots, w_{i+n-1}) = g\}|}{N - n + 1}\]
+
+for $g \in \Sigma^n$. The \textbf{empirical $n$-gram entropy} is
+
+\[H_n(w) = -\sum_{g \in \Sigma^n} \hat{p}_w^{(n)}(g) \log_2 \hat{p}_w^{(n)}(g).\]
+\end{definition}
+
+\begin{proposition}[Entropy rate estimate]
+For large $N$, the \textbf{empirical entropy rate} is approximated by
+
+\[h(w) \approx H_n(w) - H_{n-1}(w),\]
+
+the conditional entropy of the $n$-th symbol given the previous $n-1$. This estimates the per-symbol information content.
+\end{proposition}
+
+\subsection{15.5.3 Perplexity}
+
+\begin{definition}[Empirical perplexity]
+The \textbf{perplexity} of the empirical unigram distribution is
+
+\[\mathrm{PPL}_1(w) = 2^{H_1(w)}.\]
+
+More generally, $\mathrm{PPL}_n(w) = 2^{H_n(w)/(n)}$ is the per-symbol perplexity at order $n$.
+
+\textbf{Interpretation.} Perplexity is the effective vocabulary size: a sequence with perplexity $k$ is "as diverse as" a sequence drawn uniformly from $k$ symbols.
+\end{definition}
+
+\begin{example}
+For the uniform distribution over 3 symbols: $H_1 = \log_2 3$, so $\mathrm{PPL}_1 = 3$. For a degenerate sequence of one repeated symbol: $H_1 = 0$, so $\mathrm{PPL}_1 = 1$.
+\end{example}
+
+
+
+\section{Compression-Based Measures}
+
+\subsection{15.6.1 Connection to Kolmogorov Complexity}
+
+Chapter 8 introduced Kolmogorov complexity $K(w)$: the length of the shortest program that outputs $w$. While $K(w)$ is uncomputable, practical compression algorithms provide upper bounds.
+
+\begin{proposition}
+For any compressor $C$ (gzip, LZ77, etc.):
+
+\[K(w) \leq |C(w)| + O(1),\]
+
+where $|C(w)|$ is the length of the compressed representation and the $O(1)$ term accounts for the decompressor.
+\end{proposition}
+
+\subsection{15.6.2 Compression Ratio}
+
+\begin{definition}[Compression ratio]
+The \textbf{compression ratio} of $w$ under compressor $C$ is
+
+\[\rho_C(w) = \frac{|C(w)|}{|w|}.\]
+
+- $\rho_C(w) \approx 1$: The sequence is incompressible (high complexity, possibly random).
+- $\rho_C(w) \ll 1$: The sequence is highly compressible (low complexity, repetitive).
+\end{definition}
+
+\begin{proposition}
+For a sequence of $N$ i.i.d. symbols from distribution $p$:
+
+\[\mathbb{E}[\rho_C(w)] \to H(p) / \log_2 |\Sigma| \text{ as } N \to \infty,\]
+
+where $H(p)$ is the entropy of $p$. Optimal compression achieves the entropy rate.
+\end{proposition}
+
+\subsection{15.6.3 Lempel-Ziv Complexity}
+
+\begin{definition}[LZ complexity]
+The \textbf{Lempel-Ziv complexity} $c_{LZ}(w)$ is the number of distinct substrings in the LZ76 parsing of $w$: the sequence is parsed left-to-right, and at each step, the longest prefix that has appeared before is identified; the new phrase is that prefix plus one new symbol.
+\end{definition}
+
+\begin{example}
+Let $w = abcabcabc$.
+- Parse: $a \cdot b \cdot c \cdot ab \cdot ca \cdot bc$ (6 phrases).
+- $c_{LZ}(w) = 6$.
+
+For comparison, $w' = aaaaaaaaa$ parses as $a \cdot aa \cdot aaa \cdot aaa$ (or similar), with $c_{LZ}(w') \approx O(\sqrt{N})$.
+\end{example}
+
+\begin{theorem}[Lempel-Ziv theorem]
+For a stationary ergodic source with entropy rate $h$:
+
+\[\frac{c_{LZ}(w) \log N}{N} \to h \text{ almost surely as } N \to \infty.\]
+
+Thus normalized LZ complexity converges to the entropy rate.
+\end{theorem}
+
+\subsection{15.6.4 Normalized Compression Distance}
+
+\begin{definition}[NCD]
+For two sequences $w_1, w_2$ and compressor $C$, the \textbf{normalized compression distance} is
+
+\[\mathrm{NCD}(w_1, w_2) = \frac{|C(w_1 \| w_2)| - \min(|C(w_1)|, |C(w_2)|)}{\max(|C(w_1)|, |C(w_2)|)}.\]
+
+This measures similarity: $\mathrm{NCD} \approx 0$ if $w_1, w_2$ share much structure; $\mathrm{NCD} \approx 1$ if they are unrelated.
+
+\textbf{Application.} To measure self-similarity within a sequence $w$, split it into halves $w = w_1 \| w_2$ and compute $\mathrm{NCD}(w_1, w_2)$. Low NCD indicates the two halves are similar (internal repetition).
+\end{definition}
+
+
+
+\section{The Quality-Diversity Frontier}
+
+\subsection{15.7.1 The Trade-off}
+
+High intra-sequence novelty is not intrinsically desirable. Consider two extremes:
+
+\begin{enumerate}
+\item \textbf{Random sequence}: Draw each $w_i$ uniformly from $\Sigma$. This achieves $\mathrm{TTR} \approx 1$ (for $N \ll V$), $H_1 \approx \log_2 V$, and $\rho_C \approx 1$. But the sequence is meaningless noise.
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Deterministic repetition}: $w = ssss\ldots$ for some $s \in \Sigma$. This achieves $\mathrm{TTR} = 1/N \to 0$, $H_1 = 0$, $\rho_C \to 0$. The sequence is predictable and boring.
+\end{enumerate}
+
+Neither extreme is desirable for language generation. The goal is to achieve high diversity \textbf{subject to coherence constraints}.
+
+\subsection{15.7.2 Pareto Optimality}
+
+\begin{definition}[Quality-diversity Pareto frontier]
+Let $Q(w)$ be a quality measure (e.g., fluency, coherence, task performance) and $D(w)$ a diversity measure (e.g., Distinct-2, entropy). A sequence $w^*$ is \textbf{Pareto optimal} if there is no $w$ with $Q(w) \geq Q(w^\textit{)$ and $D(w) \geq D(w^})$ with at least one strict inequality.
+
+The set of Pareto optimal sequences forms a \textbf{frontier} in $(Q, D)$ space. Different decoding strategies (greedy, beam search, nucleus sampling) trace different points on or below this frontier.
+\end{definition}
+
+\begin{theorem}[Holtzman et al., 2020, informal]
+Nucleus (top-$p$) sampling achieves a better quality-diversity trade-off than beam search or pure sampling. Specifically:
+- Beam search maximizes $Q$ but achieves low $D$ (degeneration).
+- Pure sampling achieves high $D$ but low $Q$ (incoherence).
+- Nucleus sampling with appropriate $p$ approximates the Pareto frontier.
+\end{theorem}
+
+\subsection{15.7.3 Entropy Bounds in Human Text}
+
+\begin{observation}[Holtzman et al., 2020]
+Human-written text maintains entropy within a "Goldilocks zone": neither too high (incoherent) nor too low (repetitive). Empirically, the per-token entropy of human text lies in a narrow band across domains and styles.
+
+LLM-generated text that violates these bounds---either by entropy collapse (repetition) or entropy explosion (incoherence)---is perceived as low quality.
+\end{observation}
+
+
+
+\section{Connection to Logical Depth}
+
+\subsection{15.8.1 Review of Logical Depth}
+
+Chapter 9 introduced Bennett's \textbf{logical depth}: the computational time required to produce a string from its shortest description. Intuitively:
+
+\begin{itemize}
+\item \textbf{Shallow strings}: Either simple (short description, fast to compute) or random (long description, fast to "compute" by just listing).
+\item \textbf{Deep strings}: Require significant computation to produce, even from the shortest description. They are "neither simple nor random."
+\end{itemize}
+
+\subsection{15.8.2 Depth as Structured Novelty}
+
+\begin{proposition}[Informal]
+A sequence with high intra-sequence novelty (high entropy, low compression) can be either:
+1. \textbf{Random}: High Kolmogorov complexity, low logical depth.
+2. \textbf{Structured-complex}: Moderate Kolmogorov complexity, high logical depth.
+
+True "creativity" or "interestingness" corresponds to case (2): the sequence is neither trivially compressible nor trivially generated.
+\end{proposition}
+
+\begin{example}
+Consider:
+- $w_1 = $ a random bit string of length 1000. High entropy, high $K$, but depth $\approx 0$ (just output the bits).
+- $w_2 = $ the first 1000 digits of $\pi$. Moderate entropy, low $K$ (short program: "compute $\pi$"), but high depth (computing $\pi$ takes time).
+- $w_3 = $ "0000...0" (1000 zeros). Low entropy, low $K$, low depth.
+
+Logical depth distinguishes $w_1$ (random, shallow) from $w_2$ (structured, deep).
+\end{example}
+
+\subsection{15.8.3 Implications for LLM Outputs}
+
+A high-quality LLM output should have:
+\begin{itemize}
+\item Moderate-to-high entropy (not degenerate).
+\item Moderate Kolmogorov complexity (not incompressible noise).
+\item High logical depth (structured, meaningful).
+\end{itemize}
+
+Current intra-sequence novelty metrics (TTR, Distinct-n, compression ratio) capture the first two but not the third. Developing practical proxies for logical depth in generated text remains an open problem.
+
+
+
+\section{Connection to Computational Mechanics}
+
+\subsection{15.9.1 Epsilon-Machines and Statistical Complexity}
+
+Chapter 10 introduced the \textbf{epsilon-machine}: the minimal deterministic automaton that generates a stationary process with the same statistical structure as the observed data. The \textbf{statistical complexity} $C_\mu$ is the entropy of the epsilon-machine's state distribution.
+
+\subsection{15.9.2 Statistical Complexity of a Finite Sequence}
+
+For a finite sequence $w$, we can estimate statistical complexity by:
+
+\begin{enumerate}
+\item Inferring an epsilon-machine from $w$ (e.g., via the CSSR algorithm).
+\item Computing the entropy of the inferred causal states.
+\end{enumerate}
+
+\begin{definition}[Empirical statistical complexity]
+Let $\hat{\epsilon}(w)$ be an epsilon-machine inferred from $w$, with causal state distribution $\hat{\pi}$. The \textbf{empirical statistical complexity} is
+
+\[\hat{C}_\mu(w) = H(\hat{\pi}).\]
+\end{definition}
+
+\subsection{15.9.3 Excess Entropy}
+
+\begin{definition}[Excess entropy]
+The \textbf{excess entropy} (or \textbf{predictive information}) of a process is
+
+\[E = I(W_{\text{past}}; W_{\text{future}}) = \lim_{L \to \infty} [H(W_1^L) - L \cdot h],\]
+
+where $h$ is the entropy rate. For a finite sequence, this is estimated by:
+
+\[\hat{E}(w) = H_L(w) - L \cdot \hat{h}(w),\]
+
+where $H_L$ is the block entropy and $\hat{h}$ is the estimated entropy rate.
+
+\textbf{Interpretation.} Excess entropy measures the total amount of structure in the process---how much knowing the past helps predict the future, beyond the per-symbol entropy rate. High excess entropy indicates long-range correlations and complex structure.
+\end{definition}
+
+\subsection{15.9.4 Complexity vs. Entropy}
+
+\begin{proposition}
+For finite sequences:
+- \textbf{Random sequences}: High entropy rate $h$, low statistical complexity $C_\mu$, low excess entropy $E$.
+- \textbf{Periodic sequences}: Low $h$, low $C_\mu$, low $E$.
+- \textbf{Complex structured sequences}: Moderate $h$, high $C_\mu$, high $E$.
+
+This echoes the logical depth distinction: complex sequences are neither too ordered nor too random.
+\end{proposition}
+
+
+
+\section{Practical Metrics for LLM Evaluation}
+
+\subsection{15.10.1 Standard Metrics}
+
+Based on the theoretical framework, we recommend the following metrics for evaluating intra-sequence novelty in LLM outputs:
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+Metric & Formula & Measures & Range \\
+\midrule
+Distinct-1 & unique unigrams / total & Vocabulary diversity & [0, 1] \\
+Distinct-2 & unique bigrams / total & Local pattern diversity & [0, 1] \\
+Distinct-4 & unique 4-grams / total & Phrase-level diversity & [0, 1] \\
+Rep-4 & 1 - Distinct-4 & Repetition rate & [0, 1] \\
+$H_1$ & Unigram entropy & Information content & [0, log V] \\
+$\rho_{\text{gzip}}$ & Compression ratio & Structural complexity & (0, 1+] \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{15.10.2 Implementation}
+
+\begin{lstlisting}[language=python]
+import math
+import gzip
+from collections import Counter
+from typing import List
+
+def distinct_n(tokens: List[str], n: int) -> float:
+    """Compute Distinct-n score."""
+    if len(tokens) < n:
+        return 0.0
+    ngrams = [tuple(tokens[i:i+n]) for i in range(len(tokens) - n + 1)]
+    return len(set(ngrams)) / len(ngrams)
+
+def unigram_entropy(tokens: List[str]) -> float:
+    """Compute empirical unigram entropy in bits."""
+    counts = Counter(tokens)
+    total = len(tokens)
+    return -sum((c/total) * math.log2(c/total) for c in counts.values())
+
+def compression_ratio(text: str) -> float:
+    """Compute gzip compression ratio."""
+    original = text.encode('utf-8')
+    compressed = gzip.compress(original)
+    return len(compressed) / len(original)
+
+def lz_complexity(tokens: List[str]) -> int:
+    """Compute Lempel-Ziv complexity (number of phrases)."""
+    seen = set()
+    complexity = 0
+    current = []
+    for token in tokens:
+        current.append(token)
+        current_tuple = tuple(current)
+        if current_tuple not in seen:
+            seen.add(current_tuple)
+            complexity += 1
+            current = []
+    if current:  # Handle remaining tokens
+        complexity += 1
+    return complexity
+
+def novelty_report(tokens: List[str]) -> dict:
+    """Compute comprehensive novelty metrics."""
+    text = ' '.join(tokens)
+    return {
+        'length': len(tokens),
+        'vocab_size': len(set(tokens)),
+        'ttr': len(set(tokens)) / len(tokens),
+        'distinct_1': distinct_n(tokens, 1),
+        'distinct_2': distinct_n(tokens, 2),
+        'distinct_4': distinct_n(tokens, 4),
+        'rep_4': 1 - distinct_n(tokens, 4),
+        'entropy_h1': unigram_entropy(tokens),
+        'perplexity': 2 \textbf{ unigram_entropy(tokens),
+        'compression_ratio': compression_ratio(text),
+        'lz_complexity': lz_complexity(tokens),
+    }
+\end{lstlisting}
+
+\subsection{15.10.3 Interpreting the Metrics}
+
+\textbf{Guidelines for LLM-generated text:}
+
+\begin{enumerate}
+\item }Distinct-2 < 0.5\textbf{: Likely degenerate (excessive repetition).
+\item }Distinct-2 > 0.9\textbf{: Possibly incoherent or enumeration-like.
+\item }Rep-4 > 10%\textbf{: Significant phrase repetition; investigate.
+\item }Compression ratio < 0.3\textbf{: Highly repetitive structure.
+\item }Compression ratio > 0.8\textbf{: Little structure; possibly random or very diverse.
+\end{enumerate}
+
+Human text typically achieves Distinct-2 $\approx 0.8$--$0.95$ and compression ratio $\approx 0.3$--$0.5$.
+
+
+
+\section{Connection to Model Collapse}
+
+\subsection{15.11.1 Intra-Sequence Novelty During Collapse}
+
+Chapter 14 (Section 14.5) described \textbf{model collapse}: when models are trained on their own outputs, diversity progressively decreases. This manifests in intra-sequence metrics:
+
+\begin{proposition}[Novelty decay under collapse]
+Let $M_n$ be the model at generation $n$ in a self-consuming loop. As $n$ increases:
+1. $\mathrm{Distinct\text{-}k}(M_n) \to 0$ for $k \geq 2$.
+2. $H_1(M_n) \to 0$.
+3. $\rho_C(M_n) \to 0$.
+
+The outputs converge to repetitive, low-entropy sequences.
+\end{proposition}
+
+\subsection{15.11.2 Diversity as Collapse Diagnostic}
+
+Monitoring intra-sequence novelty provides early warning of model collapse:
+
+\begin{itemize}
+\item Track Distinct-2 and $H_1$ across training generations.
+\item Significant drops indicate onset of collapse.
+\item Intervention (fresh data injection) can be triggered when metrics fall below thresholds.
+\end{itemize}
+
+
+
+\section{Novelty-Increasing Dynamics in the (f, x) Framework}
+
+The preceding sections characterized novelty as a static property of sequences. But in the (f, x) framework of Chapter 14, we can ask a dynamical question: \textbf{what kinds of systems increase novelty over time, rather than decrease it?}
+
+\subsection{15.12.1 The Default: Novelty Decay}
+
+Most iterated LLM systems exhibit \textbf{novelty decay}. Recall from Chapter 14 that model collapse, successive paraphrasing, and self-consuming loops all converge to low-entropy attractors. The meta-rule $\varphi$ is typically \textit{contractive} in novelty space:
+
+\[D(x_{n+1}) \leq D(x_n),\]
+
+where $D$ is any diversity measure. This is the second law of thermodynamics for generative systems: without external input, diversity decreases.
+
+\begin{proposition}[Novelty contraction under paraphrasing]
+Let $f$ be a "paraphrase" function (meaning-preserving rewrite). Then for typical LLM implementations:
+1. The vocabulary of $f(x)$ is a subset of common words, regardless of $x$'s vocabulary.
+2. Rare words in $x$ are replaced by common synonyms in $f(x)$.
+3. $\mathrm{TTR}(f^n(x)) \to \mathrm{TTR}^\textit{$ as $n \to \infty$, where $\mathrm{TTR}^}$ is the TTR of the attractor.
+
+The attractor vocabulary is determined by the LLM's frequency biases, not by the input.
+\end{proposition}
+
+\subsection{15.12.2 Novelty-Expanding Functions}
+
+What functions $f$ satisfy $D(f(x)) > D(x)$? We identify several classes:
+
+\begin{definition}[Divergent prompt]
+A prompt specification $f$ is }divergent\textbf{ if, for typical inputs $x$:
+
+\[\mathbb{E}[D(f(x))] > D(x).\]
+\end{definition}
+
+\begin{example}[Divergent prompts]
+
+1. \textbf{Elaboration}: "Expand on the following with additional details and examples." Each application adds new content, increasing vocabulary and n-gram diversity.
+
+2. \textbf{Multi-perspective}: "Rewrite this from three different perspectives: a scientist, an artist, and a child." The output contains three sub-sequences with different vocabularies.
+
+3. \textbf{Brainstorming}: "List 10 different ways to approach this problem." Enumeration naturally produces high Distinct-n.
+
+4. \textbf{Adversarial rewrite}: "Rewrite this using completely different words while preserving the meaning." Explicitly pressures vocabulary change.
+
+5. \textbf{Translation round-trip with divergence}: "Translate to French, then to Japanese, then back to English, keeping any interesting variations." Each translation introduces new phrasings.
+\end{example}
+
+\subsection{15.12.3 The Exploratory Regime Revisited}
+
+Chapter 14 (Section 14.3.3) identified two regimes:
+\begin{itemize}
+\item }Contractive\textbf{: Meaning-preserving operations (paraphrase, summarize). Novelty decreases.
+\item }Exploratory\textbf{: Meaning-transforming operations (negate, extrapolate, fictionalize). Novelty can increase.
+\end{itemize}
+
+We now formalize the exploratory regime in terms of novelty dynamics.
+
+\begin{definition}[Novelty Lyapunov exponent]
+For a (f, x) system, define the }novelty Lyapunov exponent\textbf{:
+
+\[\lambda_D = \lim_{n \to \infty} \frac{1}{n} \log \frac{D(x_n)}{D(x_0)},\]
+
+when the limit exists.
+
+- $\lambda_D < 0$: Novelty contracts exponentially (typical for paraphrasing).
+- $\lambda_D = 0$: Novelty is conserved on average (edge of chaos).
+- $\lambda_D > 0$: Novelty expands exponentially (exploratory/divergent regime).
+\end{definition}
+
+\begin{conjecture}
+For most LLM-based (f, x) systems, $\lambda_D < 0$. Systems with $\lambda_D > 0$ are unstable and eventually produce incoherent outputs (the quality constraint is violated before novelty grows unboundedly).
+\end{conjecture}
+
+\subsection{15.12.4 Strategies for Sustained Novelty}
+
+How can we design (f, x) systems that maintain high novelty without collapsing or diverging to incoherence?
+
+\textbf{Strategy 1: External Injection.}
+
+Periodically inject fresh content from outside the system:
+
+\[x_{n+1} = f(x_n) \oplus \xi_n,\]
+
+where $\xi_n$ is drawn from an external source (new data, user input, retrieved documents). This is analogous to the "fresh data" intervention in model collapse (Alemohammad et al., 2023).
+
+\textbf{Strategy 2: Diversity-Regularized Objectives.}
+
+Modify the generation process to penalize low novelty:
+
+\[\tilde{f}(x) = \arg\max_{y} \left[ \log P(y \mid x) + \alpha \cdot D(y) \right],\]
+
+where $\alpha > 0$ controls the diversity pressure. This is the \textbf{Maximum Mutual Information (MMI)} objective of Li et al. (2016).
+
+\textbf{Strategy 3: Rejection Sampling.}
+
+Generate multiple candidates and select for diversity:
+
+\[x_{n+1} = \arg\max_{y \in \{f_1(x_n), \ldots, f_k(x_n)\}} D(y).\]
+
+This can be combined with quality filtering: reject candidates below a coherence threshold, then select the most diverse among survivors.
+
+\textbf{Strategy 4: Adversarial Multi-Agent Dynamics.}
+
+Use multiple agents with opposing objectives:
+
+\[x_{n+1} = g(f_A(x_n), f_B(x_n)),\]
+
+where $f_A$ maximizes agreement with $x_n$ and $f_B$ maximizes disagreement. The aggregation function $g$ (e.g., debate, synthesis) produces outputs more diverse than either agent alone.
+
+\begin{example}[Debate dynamics]
+Two agents debate a proposition:
+- Agent A argues for the proposition.
+- Agent B argues against.
+- The combined transcript has higher vocabulary diversity than either monologue.
+
+This is the diversity mechanism underlying Constitutional AI debates (Bai et al., 2022) and multi-agent reasoning (Du et al., 2023).
+
+\textbf{Strategy 5: Novelty Search.}
+
+Borrowed from evolutionary computation (Lehman & Stanley, 2011): rather than optimizing for a fixed objective, optimize for \textbf{novelty relative to the archive of past outputs}:
+
+\[x_{n+1} = \arg\max_y \min_{z \in \mathcal{A}_n} d(y, z),\]
+
+where $\mathcal{A}_n = \{x_0, x_1, \ldots, x_n\}$ is the archive and $d$ is a distance metric. This explicitly rewards exploration of new regions of output space.
+\end{example}
+
+\subsection{15.12.5 Patterns of Novelty-Increasing Systems}
+
+What do novelty-increasing trajectories look like? We identify several characteristic patterns:
+
+\textbf{Pattern A: Branching/Enumeration.}
+The system produces lists, alternatives, or variations. Each item is distinct, yielding high Distinct-n.
+
+\textit{Example}: "List 20 uses for a paperclip" → high diversity, but potentially low depth.
+
+\textbf{Pattern B: Compositional Expansion.}
+New elements are generated by combining existing elements in novel ways.
+
+\textit{Example}: Metaphor generation combines concepts from different domains, increasing semantic diversity.
+
+\textbf{Pattern C: Hierarchical Elaboration.}
+The system recursively expands on sub-parts, adding detail at each level.
+
+\textit{Example}: Outline → Draft → Expanded draft. Each level has higher token count and (typically) higher absolute vocabulary, though TTR may decrease.
+
+\textbf{Pattern D: Stochastic Exploration.}
+High-temperature sampling explores the tail of the distribution.
+
+\textit{Example}: Temperature $\tau > 1$ generation produces more diverse but less coherent outputs.
+
+\textbf{Pattern E: Contradiction/Negation Chains.}
+Each step negates or contradicts the previous, forcing vocabulary change.
+
+\textit{Example}: "The cat sat" → "The cat didn't sit" → "No cat was present" → "Dogs filled the room" → ...
+
+
+
+\section{Relative Novelty}
+
+\subsection{15.13.1 The Reference Problem}
+
+All novelty metrics so far have been \textbf{absolute}: they measure properties of a sequence in isolation. But our intuitive notion of novelty is \textbf{relative}: something is novel \textit{with respect to} what we've seen before.
+
+A sequence that is internally diverse but identical to a million existing sequences is not novel. A sequence that repeats one word but has never been generated before is, in some sense, novel.
+
+\begin{definition}[Relative novelty]
+Let $w$ be a sequence and $\mathcal{R}$ a }reference set\textbf{ (corpus, distribution, or collection of prior outputs). The }relative novelty\textbf{ of $w$ with respect to $\mathcal{R}$ measures how different $w$ is from the elements of $\mathcal{R}$.
+\end{definition}
+
+\subsection{15.13.2 Reference Sets}
+
+The choice of reference set $\mathcal{R}$ determines what kind of novelty we measure:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Reference Set & Novelty Interpretation \\
+\midrule
+Training corpus & Novelty w.r.t. what the model has seen \\
+Prior outputs of this model & Novelty w.r.t. the model's own history \\
+Outputs of other models & Novelty w.r.t. the "consensus" \\
+Human-written text & Novelty w.r.t. human baseline \\
+The current conversation & Novelty w.r.t. local context \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{15.13.3 Distance-Based Relative Novelty}
+
+\begin{definition}[Nearest-neighbor novelty]
+Given $w$ and reference set $\mathcal{R}$, define:
+
+\[\mathrm{Nov}_{\mathcal{R}}(w) = \min_{r \in \mathcal{R}} d(w, r),\]
+
+where $d$ is a distance metric (edit distance, embedding distance, etc.).
+
+High $\mathrm{Nov}_{\mathcal{R}}(w)$ means $w$ is far from everything in $\mathcal{R}$---it is novel.
+\end{definition}
+
+\begin{definition}[Average-distance novelty]
+
+\[\mathrm{Nov}_{\mathcal{R}}^{\mathrm{avg}}(w) = \frac{1}{|\mathcal{R}|} \sum_{r \in \mathcal{R}} d(w, r).\]
+
+This is less sensitive to outliers in $\mathcal{R}$.
+\end{definition}
+
+\subsection{15.13.4 Information-Theoretic Relative Novelty}
+
+\begin{definition}[Surprisal]
+Given a probabilistic model $P$ of the reference distribution, the }surprisal** of $w$ is:
+
+\[S_P(w) = -\log P(w).\]
+
+High surprisal means $w$ is unlikely under $P$---it is novel relative to the distribution.
+\end{definition}
+
+\begin{remark}
+This is the standard cross-entropy loss. A model trained on $\mathcal{R}$ assigns low probability to sequences unlike $\mathcal{R}$.
+\end{remark}
+
+\begin{definition}[KL-divergence novelty]
+For a sequence $w$ with empirical distribution $\hat{p}_w$ and a reference distribution $q$ (e.g., the unigram distribution of $\mathcal{R}$):
+
+\[D_{KL}(\hat{p}_w \| q) = \sum_{s \in \Sigma} \hat{p}_w(s) \log \frac{\hat{p}_w(s)}{q(s)}.\]
+
+High KL-divergence means $w$'s token distribution differs from the reference.
+\end{definition}
+
+\begin{proposition}
+If $w$ uses words that are rare in $\mathcal{R}$, then $D_{KL}(\hat{p}_w \| q)$ is large (assuming $q(s) > 0$ for all $s$). Conversely, if $w$ uses only common words in their typical proportions, $D_{KL} \approx 0$.
+\end{proposition}
+
+\subsection{15.13.5 Kernel-Based Novelty}
+
+\begin{definition}[Maximum Mean Discrepancy]
+Let $\phi: \Sigma^* \to \mathcal{H}$ be a feature map into a reproducing kernel Hilbert space. The \textbf{MMD} between sequence $w$ and reference set $\mathcal{R}$ is:
+
+\[\mathrm{MMD}(w, \mathcal{R}) = \left\| \phi(w) - \frac{1}{|\mathcal{R}|} \sum_{r \in \mathcal{R}} \phi(r) \right\|_{\mathcal{H}}.\]
+
+This measures how far $w$ is from the centroid of $\mathcal{R}$ in feature space.
+\end{definition}
+
+\begin{definition}[Kernel Entropy Novelty]
+Kirchherr et al. (2024) propose \textbf{Kernel-based Entropic Novelty (KEN)}: identify modes in the feature space that are present in $w$ but underrepresented in $\mathcal{R}$. The number and weight of such "novel modes" quantifies novelty.
+\end{definition}
+
+\subsection{15.13.6 N-gram Overlap Measures}
+
+\begin{definition}[Novel n-gram ratio]
+The fraction of n-grams in $w$ that do not appear in $\mathcal{R}$:
+
+\[\mathrm{NovelNgram}_n(w, \mathcal{R}) = \frac{|\mathcal{N}_n(w) \setminus \bigcup_{r \in \mathcal{R}} \mathcal{N}_n(r)|}{|\mathcal{N}_n(w)|}.\]
+\end{definition}
+
+\begin{example}
+If $w$ contains the trigram "quantum frog dancing" and no document in $\mathcal{R}$ contains this trigram, it contributes to the novel n-gram count.
+
+This is related to the \textbf{BLEU score} (but inverted): BLEU measures overlap; NovelNgram measures non-overlap.
+\end{example}
+
+\subsection{15.13.7 Self-Relative Novelty: Novelty Over Time}
+
+A particularly important reference set is the system's own history.
+
+\begin{definition}[Cumulative novelty]
+In an iterated system $(f, x)$ with trajectory $x_0, x_1, x_2, \ldots$, define:
+
+\[\mathrm{CumNov}(x_n) = \mathrm{Nov}_{\{x_0, \ldots, x_{n-1}\}}(x_n).\]
+
+This measures how different the $n$-th output is from all previous outputs.
+\end{definition}
+
+\begin{proposition}
+For a system converging to a periodic attractor of period $p$:
+
+\[\mathrm{CumNov}(x_n) \to 0 \text{ as } n \to \infty.\]
+
+Once the system enters the attractor, each output has been seen before (within the last $p$ steps), so cumulative novelty vanishes.
+
+\end{proposition}
+
+\begin{corollary}
+Sustained high cumulative novelty implies the system has not converged to a periodic attractor. This is a diagnostic for "creative" or "exploratory" dynamics.
+\end{corollary}
+
+\subsection{15.13.8 The Novelty-Coherence-Reference Triangle}
+
+Combining absolute novelty, relative novelty, and coherence yields a three-dimensional characterization:
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+High Absolute & High Relative & High Coherence & Interpretation \\
+\midrule
+✓ & ✓ & ✓ & \textbf{Ideal creative output}: diverse, original, sensible \\
+✓ & ✓ & ✗ & Random/incoherent novelty \\
+✓ & ✗ & ✓ & Diverse but clichéd (common patterns) \\
+✗ & ✓ & ✓ & Repetitive but original (rare word repeated) \\
+✓ & ✗ & ✗ & Chaotic regurgitation \\
+✗ & ✓ & ✗ & Novel nonsense \\
+✗ & ✗ & ✓ & Coherent cliché (safe, boring) \\
+✗ & ✗ & ✗ & Degenerate collapse \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The goal of generative systems is to occupy the (✓, ✓, ✓) corner: high diversity within the sequence, high differentiation from existing content, and high coherence.
+
+\subsection{15.13.9 Formalizing "Interestingness"}
+
+We can now attempt a formal definition of what makes a sequence "interesting":
+
+\begin{definition}[Interestingness score]
+Define:
+
+\[I(w; \mathcal{R}) = D(w) \cdot \mathrm{Nov}_{\mathcal{R}}(w) \cdot Q(w),\]
+
+where:
+- $D(w)$ is an absolute diversity measure (e.g., Distinct-2),
+- $\mathrm{Nov}_{\mathcal{R}}(w)$ is relative novelty,
+- $Q(w)$ is a quality/coherence measure.
+
+The product structure ensures all three factors must be high for the sequence to be deemed interesting.
+\end{definition}
+
+\begin{remark}
+This multiplicative form is one of many possibilities. Weighted sums, geometric means, or Pareto rankings are alternatives. The right formulation depends on the application.
+\end{remark}
+
+
+
+\section{Additional Mathematical Frameworks}
+
+Several mathematical theories beyond information theory and dynamical systems offer relevant perspectives on novelty.
+
+\subsection{15.14.1 Optimal Transport and Wasserstein Distance}
+
+The \textbf{Wasserstein distance} (or earth mover's distance) between probability distributions $P$ and $Q$ is:
+
+\[W_p(P, Q) = \left( \inf_{\gamma \in \Gamma(P, Q)} \int d(x, y)^p \, d\gamma(x, y) \right)^{1/p},\]
+
+where $\Gamma(P, Q)$ is the set of couplings with marginals $P$ and $Q$.
+
+\textbf{Application to novelty.} Let $P$ be the empirical distribution of a generated sequence and $Q$ the reference distribution. Unlike KL-divergence, Wasserstein distance:
+\begin{itemize}
+\item Is symmetric.
+\item Respects the geometry of the underlying space (nearby tokens contribute less distance).
+\item Is defined even when $P$ and $Q$ have non-overlapping support.
+\end{itemize}
+
+\begin{definition}[Wasserstein novelty]
+For sequence $w$ with empirical distribution $\hat{p}_w$ and reference distribution $q$:
+
+\[\mathrm{Nov}_W(w, q) = W_1(\hat{p}_w, q).\]
+
+This measures how much "work" is needed to transform the token distribution of $w$ into the reference.
+\end{definition}
+
+\subsection{15.14.2 Rate-Distortion Theory}
+
+Rate-distortion theory characterizes the fundamental trade-off between compression rate $R$ and distortion $D$. The \textbf{rate-distortion function} $R(D)$ gives the minimum bits needed to represent a source with average distortion at most $D$.
+
+\textbf{Application to novelty.} Consider the quality-diversity trade-off as a rate-distortion problem:
+\begin{itemize}
+\item \textbf{Rate}: The "complexity" or "effort" required to generate the output.
+\item \textbf{Distortion}: The deviation from a target quality level.
+\end{itemize}
+
+The Pareto frontier of Section 15.7 is analogous to the rate-distortion curve.
+
+\begin{conjecture}
+The quality-diversity Pareto frontier for LLM generation has a convex shape analogous to the rate-distortion function, with diversity playing the role of rate and quality loss playing the role of distortion.
+\end{conjecture}
+
+\subsection{15.14.3 Determinantal Point Processes}
+
+A \textbf{Determinantal Point Process (DPP)} is a probability distribution over subsets of a ground set, where the probability of selecting a subset $S$ is proportional to $\det(L_S)$ for a positive semidefinite kernel matrix $L$.
+
+DPPs naturally produce \textbf{diverse} subsets: items that are similar (high $L_{ij}$) are unlikely to be selected together.
+
+\textbf{Application to novelty.} For text generation:
+\begin{enumerate}
+\item Represent candidate continuations as vectors (embeddings).
+\item Define the kernel $L_{ij} = q_i q_j \cdot \phi(x_i)^\top \phi(x_j)$, where $q_i$ is quality and $\phi(x_i)$ is the embedding.
+\item Sample from the DPP to obtain diverse, high-quality outputs.
+\end{enumerate}
+
+\begin{proposition}[DPP diversity guarantee]
+Samples from a DPP with kernel $L$ satisfy:
+
+\[\mathbb{E}[|S|] = \mathrm{tr}((I + L)^{-1} L),\]
+
+and the expected pairwise distance between selected items is bounded below by a function of the eigenvalues of $L$.
+\end{proposition}
+
+\subsection{15.14.4 Information Geometry}
+
+\textbf{Information geometry} treats the space of probability distributions as a Riemannian manifold with the \textbf{Fisher information metric}:
+
+\[g_{ij}(\theta) = \mathbb{E}\left[ \frac{\partial \log p(x; \theta)}{\partial \theta_i} \frac{\partial \log p(x; \theta)}{\partial \theta_j} \right].\]
+
+\textbf{Application to novelty.} The Fisher-Rao distance between distributions is:
+
+\[d_{FR}(P, Q) = \arccos\left( \int \sqrt{p(x) q(x)} \, dx \right).\]
+
+This provides a geometrically principled measure of how different two distributions are, accounting for the curvature of probability space.
+
+\begin{definition}[Fisher-Rao novelty]
+For a sequence $w$ and reference distribution $q$:
+
+\[\mathrm{Nov}_{FR}(w, q) = d_{FR}(\hat{p}_w, q).\]
+
+This measures the geodesic distance on the probability simplex.
+\end{definition}
+
+\subsection{15.14.5 Algorithmic Statistics and Typicality}
+
+\textbf{Algorithmic statistics} (Gács, Tromp, Vitányi) studies the "stochastic complexity" of individual objects: the shortest description of an object as a sample from a computable distribution.
+
+\begin{definition}[Randomness deficiency]
+The \textbf{randomness deficiency} of $x$ with respect to model $P$ is:
+
+\[d(x | P) = \log |P| - K(x | P),\]
+
+where $|P|$ is the "size" of the model's support and $K(x|P)$ is the complexity of $x$ given $P$.
+
+Low deficiency means $x$ is "typical" of $P$; high deficiency means $x$ is "atypical."
+
+\textbf{Application to novelty.} A sequence with high randomness deficiency relative to the training distribution is "surprising"---it doesn't fit the typical pattern. This formalizes novelty as atypicality.
+\end{definition}
+
+\subsection{15.14.6 Intrinsic Motivation and Curiosity}
+
+In reinforcement learning, \textbf{intrinsic motivation} provides rewards for novel states:
+
+\[r_{\mathrm{intrinsic}}(s) = f(\text{novelty of } s).\]
+
+Common formulations include:
+\begin{center}
+\begin{tabular}{c}
+\toprule
+s' - \hat{s}'\ \\
+\midrule
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item \textbf{State visitation counts}: $r = 1/\sqrt{N(s)}$ (novelty as rarity).
+\end{itemize}
+
+\textbf{Application to LLMs.} These ideas can inform novelty-seeking generation:
+
+\[x_{n+1} = \arg\max_y \left[ \log P(y | x_n) + \beta \cdot r_{\mathrm{intrinsic}}(y) \right].\]
+
+The parameter $\beta$ controls the exploration-exploitation trade-off.
+
+\subsection{15.14.7 Topological Data Analysis}
+
+\textbf{Persistent homology} tracks topological features (connected components, loops, voids) across scales. The \textbf{persistence diagram} records when features appear and disappear.
+
+\textbf{Application to novelty.} Embed sequences into a metric space (via sentence embeddings). Compute persistent homology of:
+\begin{enumerate}
+\item A single sequence's token embeddings (intra-sequence topology).
+\item A collection of sequences (corpus-level topology).
+\end{enumerate}
+
+\begin{conjecture}
+Novel sequences have persistence diagrams that differ significantly from the "typical" diagram of the reference corpus. Features that persist at unusual scales indicate structural novelty.
+\end{conjecture}
+
+\subsection{15.14.8 Renormalization and Multi-Scale Analysis}
+
+The \textbf{renormalization group} from statistical physics provides tools for analyzing systems at multiple scales. Coarse-graining a system reveals which features persist across scales.
+
+\textbf{Application to novelty.} Consider a hierarchy of representations:
+\begin{itemize}
+\item Token level: $w_1, w_2, \ldots, w_N$
+\item Phrase level: Chunks of 5--10 tokens
+\item Sentence level: Semantic units
+\item Paragraph level: Thematic units
+\end{itemize}
+
+Novelty at each scale can be measured independently. A sequence might be token-diverse but phrase-repetitive, or vice versa.
+
+\begin{definition}[Multi-scale novelty profile]
+Define:
+
+\[\mathrm{Nov}^{(k)}(w) = D(\text{level-}k \text{ representation of } w)\]
+
+for $k = 1, 2, \ldots, K$. The tuple $(\mathrm{Nov}^{(1)}, \ldots, \mathrm{Nov}^{(K)})$ is the \textbf{multi-scale novelty profile}.
+
+Different applications may weight different scales: poetry might prioritize token-level novelty; scientific writing might prioritize concept-level novelty.
+\end{definition}
+
+
+
+\section{Cognitive Foundations of Novelty}
+
+The metrics developed in this chapter are not arbitrary mathematical constructs. They correspond to cognitive mechanisms that evolved for novelty detection in biological agents. This section integrates cognitive science findings, showing that our formal framework captures genuine aspects of how minds process novelty.
+
+\subsection{15.15.1 Predictive Processing and Surprisal}
+
+The \textbf{predictive processing} framework (Rao & Ballard, 1999; Friston, 2010) posits that the brain is fundamentally a prediction machine. Perception, cognition, and action are all understood as minimizing \textbf{prediction error}---the discrepancy between expected and observed inputs.
+
+\begin{definition}[Prediction error]
+Let $P$ be the brain's generative model and $x$ an observed stimulus. The prediction error is:
+
+\[\epsilon(x) = -\log P(x) = S_P(x),\]
+
+the surprisal of $x$ under $P$.
+
+This is precisely Definition 15.50. The cognitive science literature thus provides independent motivation for surprisal as a novelty measure: \textbf{novelty is prediction error}.
+\end{definition}
+
+\begin{proposition}[Novelty as free energy]
+In the free energy principle (Friston, 2010), agents minimize variational free energy $F$, which upper-bounds surprisal:
+
+\[F \geq S_P(x) = -\log P(x).\]
+
+Novel stimuli have high $S_P(x)$, creating pressure to either:
+1. Update the model $P$ to accommodate $x$ (learning), or
+2. Act to avoid $x$ (avoidance of surprising states).
+
+This explains why novelty is both attractive (learning opportunity) and aversive (prediction failure)---the dual nature captured by curiosity research (Section 15.15.4).
+\end{proposition}
+
+\subsection{15.15.2 Hippocampal Novelty Detection}
+
+The hippocampus implements a \textbf{comparator function} that detects mismatches between predicted and actual inputs (Lisman & Grace, 2005).
+
+\textbf{Empirical finding 15.86.} Novel stimuli elicit increased hippocampal activation and trigger dopaminergic responses in the VTA (ventral tegmental area). The signal strength correlates with the degree of novelty---i.e., with surprisal under the current memory model.
+
+\textbf{Formalization.} Let $\mathcal{M}$ be the set of stored memory traces. The hippocampal novelty signal for stimulus $x$ is:
+
+\[N_{\mathrm{hipp}}(x) \propto \min_{m \in \mathcal{M}} d(x, m),\]
+
+where $d$ is a similarity metric in representational space. This is nearest-neighbor novelty (Definition 15.48).
+
+\textbf{Implication.} The reference set $\mathcal{R}$ in our relative novelty framework corresponds to the contents of memory. The choice of $\mathcal{R}$ (training data, prior outputs, etc.) is the computational analogue of asking "what does the system remember?"
+
+\subsection{15.15.3 Habituation and Cumulative Novelty}
+
+\textbf{Habituation} is the decrease in response to repeated stimuli. It is one of the simplest forms of learning, observed across all species with nervous systems.
+
+\begin{definition}[Habituation curve]
+Let $r_n$ be the response magnitude to the $n$-th presentation of stimulus $x$. The habituation curve is:
+
+\[r_n = r_0 \cdot e^{-\lambda n},\]
+
+where $\lambda > 0$ is the habituation rate.
+
+\textbf{Connection to cumulative novelty.} Habituation implies that the novelty of $x$ decreases with repeated exposure:
+
+\[\mathrm{Nov}_{\{x, x, \ldots, x\}}(x) \to 0.\]
+
+This is captured by cumulative novelty (Definition 15.57): as the reference set accumulates copies of $x$, the nearest-neighbor distance goes to zero.
+
+\textbf{Dishabituation.} A novel stimulus can restore responsiveness to habituated stimuli. In our framework, this corresponds to:
+
+\[\mathrm{CumNov}(x_n) > 0 \implies \text{system has not fully habituated}.\]
+\end{definition}
+
+\subsection{15.15.4 Curiosity and the Goldilocks Zone}
+
+Berlyne (1960) distinguished two types of curiosity:
+\begin{itemize}
+\item \textbf{Diversive curiosity}: Seeking stimulation to escape boredom (too low novelty).
+\item \textbf{Specific curiosity}: Seeking information to resolve uncertainty (moderate novelty).
+\end{itemize}
+
+\textbf{Empirical finding 15.88 (Inverted-U relationship).} Preference for stimuli follows an inverted-U curve as a function of novelty/complexity: stimuli that are too simple are boring; stimuli that are too complex are aversive; stimuli of intermediate complexity are most engaging (Berlyne, 1970).
+
+\textbf{Formalization.} Let $D(x)$ be an absolute novelty measure and $Q(x)$ be perceived quality/engagement. The Berlyne curve is:
+
+\[Q(x) = f(D(x)) \quad \text{where } f \text{ is concave with interior maximum}.\]
+
+A simple parametric form:
+
+\[Q(x) = D(x)^\alpha \cdot (D_{\max} - D(x))^\beta,\]
+
+which peaks at $D^* = \frac{\alpha}{\alpha + \beta} D_{\max}$.
+
+\textbf{Connection to quality-diversity frontier.} The inverted-U explains why the Pareto frontier (Section 15.7) is the right framing: maximum diversity is not optimal; there is a sweet spot. The "edge of chaos" is cognitively validated.
+
+\subsection{15.15.5 Schema Violation and Bisociation}
+
+\textbf{Schema theory} (Bartlett, 1932; Rumelhart, 1980) posits that knowledge is organized into structured frames or schemas. Novelty arises from \textbf{schema violation}: inputs that don't fit existing frames.
+
+\begin{definition}[Schema-relative novelty]
+Let $\mathcal{S} = \{S_1, \ldots, S_k\}$ be a set of schemas (structured templates). Define:
+
+\[\mathrm{Nov}_{\mathcal{S}}(x) = \min_{S \in \mathcal{S}} \mathrm{dist}(x, S),\]
+
+where $\mathrm{dist}(x, S)$ measures how poorly $x$ fits schema $S$.
+
+Koestler (1964) defined \textbf{bisociation} as the creative act of connecting two previously unconnected schemas. A bisociative sequence $w$ activates schemas $S_1$ and $S_2$ that have low prior association:
+
+\[\mathrm{Bisoc}(w) \propto \mathrm{P}(S_1 \in w) \cdot \mathrm{P}(S_2 \in w) \cdot (1 - \mathrm{Assoc}(S_1, S_2)).\]
+
+\textbf{Implication for LLMs.} Truly creative outputs combine concepts from distant domains. This suggests a novelty metric based on co-activation of dissimilar embedding clusters.
+\end{definition}
+
+\subsection{15.15.6 Conceptual Spaces}
+
+Gärdenfors (2000) proposed that concepts are represented as regions in \textbf{conceptual spaces}---geometric structures where similarity corresponds to distance.
+
+\begin{definition}[Conceptual space novelty]
+Let $\mathcal{C}$ be a conceptual space with metric $d$. For a sequence $w$ mapped to a trajectory $\gamma_w$ in $\mathcal{C}$:
+
+\[\mathrm{Nov}_{\mathcal{C}}(w) = \int_{\gamma_w} \rho(c)^{-1} \, dc,\]
+
+where $\rho(c)$ is the density of prior experience at point $c$. This weights novelty by how unexplored each region is.
+
+\textbf{Connection to embedding-based metrics.} Modern sentence embeddings (BERT, etc.) define a conceptual space. The semantic diversity metrics of Section 15.6 are implementations of conceptual space novelty.
+\end{definition}
+
+\subsection{15.15.7 Working Memory and Chunk Diversity}
+
+Miller (1956) established that working memory capacity is approximately $7 \pm 2$ items---but "items" can be \textbf{chunks} of arbitrary complexity.
+
+\begin{definition}[Chunk entropy]
+Parse sequence $w$ into chunks $c_1, \ldots, c_m$. The chunk entropy is:
+
+\[H_{\mathrm{chunk}}(w) = H(\text{empirical distribution over chunk types}).\]
+\end{definition}
+
+\begin{proposition}
+For sequences within working memory span, perceived novelty scales with chunk entropy, not raw token entropy. A sequence of 7 novel chunks is more striking than 7 repetitions of a familiar chunk, even if both have similar token-level entropy.
+
+\textbf{Implication.} Multi-scale novelty (Section 15.14.8) is cognitively grounded: the brain computes novelty at the chunk level, not just the symbol level.
+\end{proposition}
+
+\subsection{15.15.8 Semantic Priming and Spreading Activation}
+
+In semantic memory, concepts are linked in a network. \textbf{Spreading activation} (Collins & Loftus, 1975) propagates from activated nodes to related nodes.
+
+\begin{definition}[Activation novelty]
+Let $A_t$ be the activation pattern at time $t$ and $A_{t-1}$ the pattern after the previous token. Define:
+
+\[\mathrm{Nov}_{\mathrm{act}}(w_t | w_{<t}) = \| A_t - A_{t-1} \|,\]
+
+the magnitude of activation change.
+
+Tokens that activate distant regions of semantic memory (low overlap with current activation) have high activation novelty. This corresponds to conditional entropy (Definition 15.16): how unpredictable is the next semantic region given the current one?
+\end{definition}
+
+\subsection{15.15.9 The Orienting Response}
+
+The \textbf{orienting response} (Sokolov, 1963) is an involuntary shift of attention toward novel stimuli. It includes physiological markers (pupil dilation, skin conductance, heart rate change).
+
+\textbf{Empirical finding 15.94.} Orienting response magnitude correlates with:
+\begin{enumerate}
+\item Stimulus intensity
+\item Unexpectedness (surprisal)
+\item Significance (relevance to goals)
+\item Change from previous stimuli (local novelty)
+\end{enumerate}
+
+\textbf{Connection to metrics.} The orienting response validates that novelty is not purely abstract---it has measurable physiological correlates. An LLM-generated sequence that would elicit strong orienting responses (measurable via eye-tracking or GSR) is one with high operational novelty.
+
+\subsection{15.15.10 Toward a Unified Cognitive-Computational Theory}
+
+The cognitive findings converge on a unified picture:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Cognitive Mechanism & Computational Formalization \\
+\midrule
+Prediction error & Surprisal $S_P(x) = -\log P(x)$ \\
+Hippocampal comparison & Nearest-neighbor novelty $\min_r d(w, r)$ \\
+Habituation & Cumulative novelty decay \\
+Curiosity (Goldilocks) & Inverted-U preference function \\
+Schema violation & Distance to nearest schema \\
+Bisociation & Co-activation of dissimilar clusters \\
+Conceptual space & Trajectory in embedding space \\
+Chunking & Multi-scale entropy \\
+Spreading activation & Activation change magnitude \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[Informal]
+The novelty metrics of Sections 15.3--15.6 correspond to cognitive mechanisms that evolved for adaptive behavior in uncertain environments. A sequence $w$ is "cognitively novel" if it:
+1. Has high surprisal under the predictive model (high $S_P$).
+2. Is distant from stored memories (high $\mathrm{Nov}_{\mathcal{R}}$).
+3. Falls in the Goldilocks zone of the Berlyne curve (moderate $D$).
+4. Violates or connects schemas in unexpected ways.
+5. Causes large activation changes in semantic memory.
+
+\textbf{Design principle.} To build generative systems that produce human-interesting outputs, optimize for these cognitively-grounded novelty metrics rather than purely information-theoretic ones. The brain is the ultimate novelty detector; our metrics should approximate its computations.
+\end{theorem}
+
+
+
+\section{Open Questions}
+
+\begin{question}[Practical depth estimation]
+Can we develop efficient estimators for logical depth or depth-like quantities that distinguish "structured complex" from "random" sequences in LLM outputs?
+\end{question}
+
+\begin{question}[Novelty vs. coherence]
+Is there a formal relationship between intra-sequence novelty and inter-sequence coherence (e.g., in a conversation)? Can high intra-sequence diversity compensate for low inter-sequence diversity, or vice versa?
+\end{question}
+
+\begin{question}[Optimal decoding]
+Given a quality function $Q$ and a diversity function $D$, what decoding strategy achieves the Pareto frontier? Can this be characterized analytically for simple models?
+\end{question}
+
+\begin{question}[Multi-scale novelty]
+Novelty can be measured at multiple scales: token, phrase, sentence, paragraph, document. How do these scales interact? Can a document have high paragraph-level diversity but low sentence-level diversity?
+\end{question}
+
+\begin{question}[Semantic vs. lexical]
+Our metrics are largely lexical. How can we measure \textbf{semantic novelty}---diversity in meaning rather than surface form? Embedding-based metrics (e.g., variance of sentence embeddings) are one approach, but their relationship to information-theoretic quantities is unclear.
+\end{question}
+
+\begin{question}[Lyapunov exponents for novelty]
+Can the novelty Lyapunov exponent $\lambda_D$ (Definition 15.44) be estimated empirically for real LLM systems? What is its typical value for different prompt types?
+\end{question}
+
+\begin{question}[Optimal reference set]
+For relative novelty measures, how should the reference set $\mathcal{R}$ be chosen? Is there an "optimal" reference that balances sensitivity to genuine novelty against robustness to noise?
+\end{question}
+
+\begin{question}[DPP decoding]
+Can Determinantal Point Processes be used for beam selection in LLM decoding to guarantee diverse outputs? What is the computational cost, and does it improve over simpler diversity heuristics?
+\end{question}
+
+\begin{question}[Information-geometric novelty]
+Does the Fisher-Rao distance provide better discrimination of novelty than KL-divergence in practice? When is the geometric structure of the probability simplex important?
+\end{question}
+
+
+
+\section{Summary}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Concept & Metric & Captures \\
+\midrule
+Vocabulary exploration & TTR, Hapax ratio & Number of distinct symbols \\
+Local pattern diversity & Distinct-n & Uniqueness of n-grams \\
+Repetition & Rep-n, Self-BLEU & Degree of self-copying \\
+Information content & Entropy $H_1$, $H_n$ & Bits per symbol \\
+Structural complexity & Compression ratio, LZ complexity & Non-random patterns \\
+Long-range structure & Statistical complexity, Excess entropy & Memory in the process \\
+"Interestingness" & Logical depth (theoretical) & Computation required to generate \\
+Relative novelty & $\mathrm{Nov}_{\mathcal{R}}$, KL-divergence & Difference from reference \\
+Novelty dynamics & Lyapunov exponent $\lambda_D$ & Growth/decay rate of diversity \\
+Geometric novelty & Wasserstein, Fisher-Rao distance & Geometry-respecting divergence \\
+Diverse sampling & DPP kernel methods & Guaranteed diversity in selection \\
+Typicality & Randomness deficiency & Atypicality relative to model \\
+Multi-scale structure & Renormalization, TDA & Features across scales \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Intra-sequence novelty complements the dynamical systems perspective of earlier chapters. Where Chapters 1--14 ask "how does the system evolve over time?", this chapter asks "how rich is each individual state?" Together, they provide a comprehensive framework for analyzing the outputs of generative systems.
+
+The key insight is that novelty alone is insufficient: random sequences have maximum novelty but zero value. The goal is \textbf{structured novelty}---high diversity within the constraints of coherence, grammar, and meaning. This is the "creative zone" between order and chaos, the edge where interesting computation happens.
+
+We identified two key extensions to the basic framework:
+
+\begin{enumerate}
+\item \textbf{Novelty-increasing dynamics}: Most LLM systems exhibit novelty decay (model collapse, attractor convergence). But divergent prompts, adversarial multi-agent systems, and novelty search can sustain or increase diversity. The novelty Lyapunov exponent $\lambda_D$ characterizes whether a system is contractive ($\lambda_D < 0$), conservative ($\lambda_D = 0$), or expansive ($\lambda_D > 0$).
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Relative novelty}: Absolute diversity measures miss the question "novel compared to what?" Relative novelty with respect to a reference set $\mathcal{R}$ captures originality. The choice of $\mathcal{R}$---training data, prior outputs, human baselines---determines what kind of novelty we measure. The ideal generative output occupies the (high absolute, high relative, high coherence) corner of the novelty-coherence-reference triangle.
+\end{enumerate}
+
+
+
+\section{Recommended Reading}
+
+\textbf{Foundational:}
+\begin{itemize}
+\item Shannon, C. E. (1948). "A Mathematical Theory of Communication" --- the origin of information-theoretic measures of diversity.
+\item Lempel, A. and Ziv, J. (1976). "On the Complexity of Finite Sequences" --- introduces the LZ complexity measure.
+\item Bennett, C. H. (1988). "Logical Depth and Physical Complexity" --- distinguishes structured complexity from randomness.
+\end{itemize}
+
+\textbf{Text Generation Diversity:}
+\begin{itemize}
+\item Li et al. (2016). "A Diversity-Promoting Objective Function for Neural Conversation Models" --- introduces Distinct-n and MMI decoding.
+\item Holtzman et al. (2020). "The Curious Case of Neural Text Degeneration" --- essential reading on the degeneration problem and nucleus sampling.
+\item Welleck et al. (2020). "Neural Text Generation With Unlikelihood Training" --- unlikelihood objective to reduce repetition.
+\end{itemize}
+
+\textbf{Computational Mechanics:}
+\begin{itemize}
+\item Crutchfield, J. P. and Young, K. (1989). "Inferring Statistical Complexity" --- epsilon-machines and statistical complexity.
+\item Shalizi, C. R. and Crutchfield, J. P. (2001). "Computational Mechanics: Pattern and Prediction, Structure and Simplicity" --- comprehensive introduction to computational mechanics.
+\end{itemize}
+
+\textbf{Cognitive Science of Novelty:}
+\begin{itemize}
+\item Berlyne, D. E. (1960). \textit{Conflict, Arousal, and Curiosity} --- classic work on curiosity and the inverted-U relationship.
+\item Friston, K. (2010). "The Free-Energy Principle: A Unified Brain Theory?" --- predictive processing framework.
+\item Schmidhuber, J. (2010). "Formal Theory of Creativity, Fun, and Intrinsic Motivation" --- computational theory of curiosity.
+\end{itemize}
+
+\textbf{Modern Diversity Metrics:}
+\begin{itemize}
+\item Pillutla et al. (2021). "MAUVE: Measuring the Gap Between Neural Text and Human Text" --- distribution comparison for generation evaluation.
+\item Tevet & Berant (2021). "Evaluating the Evaluation of Diversity in Natural Language Generation" --- critical analysis of diversity metrics.
+\item Kirchherr et al. (2024). "Kernel-based Entropic Novelty" --- advanced kernel-based novelty measures.
+\end{itemize}
+
+\textbf{Mathematical Foundations:}
+\begin{itemize}
+\item Cover, T. M. and Thomas, J. A. (2006). \textit{Elements of Information Theory} --- comprehensive reference for entropy and information measures.
+\item Peyré, G. and Cuturi, M. (2019). "Computational Optimal Transport" --- Wasserstein distances and optimal transport.
+\item Kulesza, A. and Taskar, B. (2012). "Determinantal Point Processes for Machine Learning" --- DPPs for diverse sampling.
+\end{itemize}
+
+
+
+\section{References}
+
+\begin{itemize}
+\item Alemohammad, S., et al. (2023). Self-consuming generative models go MAD. \textit{arXiv preprint} arXiv:2307.01850.
+\end{itemize}
+
+\begin{itemize}
+\item Amari, S. and Nagaoka, H. (2000). \textit{Methods of Information Geometry}. American Mathematical Society.
+\end{itemize}
+
+\begin{itemize}
+\item Bai, Y., et al. (2022). Constitutional AI: Harmlessness from AI feedback. \textit{arXiv preprint} arXiv:2212.08073.
+\end{itemize}
+
+\begin{itemize}
+\item Bartlett, F. C. (1932). \textit{Remembering: A Study in Experimental and Social Psychology}. Cambridge University Press.
+\end{itemize}
+
+\begin{itemize}
+\item Bennett, C. H. (1988). Logical depth and physical complexity. In \textit{The Universal Turing Machine: A Half-Century Survey}, pp. 227--257. Oxford University Press.
+\end{itemize}
+
+\begin{itemize}
+\item Berlyne, D. E. (1960). \textit{Conflict, Arousal, and Curiosity}. McGraw-Hill.
+\end{itemize}
+
+\begin{itemize}
+\item Berlyne, D. E. (1970). Novelty, complexity, and hedonic value. \textit{Perception & Psychophysics}, 8(5):279--286.
+\end{itemize}
+
+\begin{itemize}
+\item Collins, A. M. and Loftus, E. F. (1975). A spreading-activation theory of semantic processing. \textit{Psychological Review}, 82(6):407--428.
+\end{itemize}
+
+\begin{itemize}
+\item Crutchfield, J. P. and Young, K. (1989). Inferring statistical complexity. \textit{Physical Review Letters}, 63(2):105--108.
+\end{itemize}
+
+\begin{itemize}
+\item Du, Y., et al. (2023). Improving factuality and reasoning in language models through multiagent debate. \textit{arXiv preprint} arXiv:2305.14325.
+\end{itemize}
+
+\begin{itemize}
+\item Friston, K. (2010). The free-energy principle: A unified brain theory? \textit{Nature Reviews Neuroscience}, 11(2):127--138.
+\end{itemize}
+
+\begin{itemize}
+\item Gács, P., Tromp, J. T., and Vitányi, P. M. B. (2001). Algorithmic statistics. \textit{IEEE Transactions on Information Theory}, 47(6):2443--2463.
+\end{itemize}
+
+\begin{itemize}
+\item Gärdenfors, P. (2000). \textit{Conceptual Spaces: The Geometry of Thought}. MIT Press.
+\end{itemize}
+
+\begin{itemize}
+\item Heaps, H. S. (1978). \textit{Information Retrieval: Computational and Theoretical Aspects}. Academic Press.
+\end{itemize}
+
+\begin{itemize}
+\item Holtzman, A., Buys, J., Du, L., Forbes, M., and Choi, Y. (2020). The curious case of neural text degeneration. In \textit{ICLR 2020}.
+\end{itemize}
+
+\begin{itemize}
+\item Koestler, A. (1964). \textit{The Act of Creation}. Hutchinson.
+\end{itemize}
+
+\begin{itemize}
+\item Kulesza, A. and Taskar, B. (2012). Determinantal point processes for machine learning. \textit{Foundations and Trends in Machine Learning}, 5(2--3):123--286.
+\end{itemize}
+
+\begin{itemize}
+\item Lehman, J. and Stanley, K. O. (2011). Abandoning objectives: Evolution through the search for novelty alone. \textit{Evolutionary Computation}, 19(2):189--223.
+\end{itemize}
+
+\begin{itemize}
+\item Li, J., Galley, M., Brockett, C., Gao, J., and Dolan, B. (2016). A diversity-promoting objective function for neural conversation models. In \textit{NAACL-HLT 2016}.
+\end{itemize}
+
+\begin{itemize}
+\item Lempel, A. and Ziv, J. (1976). On the complexity of finite sequences. \textit{IEEE Transactions on Information Theory}, 22(1):75--81.
+\end{itemize}
+
+\begin{itemize}
+\item Lisman, J. E. and Grace, A. A. (2005). The hippocampal-VTA loop: Controlling the entry of information into long-term memory. \textit{Neuron}, 46(5):703--713.
+\end{itemize}
+
+\begin{itemize}
+\item Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. \textit{Psychological Review}, 63(2):81--97.
+\end{itemize}
+
+\begin{itemize}
+\item Pathak, D., Agrawal, P., Efros, A. A., and Darrell, T. (2017). Curiosity-driven exploration by self-supervised prediction. In \textit{ICML 2017}.
+\end{itemize}
+
+\begin{itemize}
+\item Peyré, G. and Cuturi, M. (2019). Computational optimal transport. \textit{Foundations and Trends in Machine Learning}, 11(5--6):355--607.
+\end{itemize}
+
+\begin{itemize}
+\item Rao, R. P. N. and Ballard, D. H. (1999). Predictive coding in the visual cortex: A functional interpretation of some extra-classical receptive-field effects. \textit{Nature Neuroscience}, 2(1):79--87.
+\end{itemize}
+
+\begin{itemize}
+\item Rumelhart, D. E. (1980). Schemata: The building blocks of cognition. In \textit{Theoretical Issues in Reading Comprehension}, pp. 33--58. Lawrence Erlbaum.
+\end{itemize}
+
+\begin{itemize}
+\item Shannon, C. E. (1948). A mathematical theory of communication. \textit{Bell System Technical Journal}, 27(3):379--423.
+\end{itemize}
+
+\begin{itemize}
+\item Shumailov, I., et al. (2024). The curse of recursion: Training on generated data makes models forget. \textit{arXiv preprint} arXiv:2305.17493.
+\end{itemize}
+
+\begin{itemize}
+\item Sokolov, E. N. (1963). \textit{Perception and the Conditioned Reflex}. Pergamon Press.
+\end{itemize}
+
+\begin{itemize}
+\item Villani, C. (2009). \textit{Optimal Transport: Old and New}. Springer.
+\end{itemize}
+
+\begin{itemize}
+\item Welleck, S., Kulikov, I., Roller, S., Dinan, E., Cho, K., and Weston, J. (2020). Neural text generation with unlikelihood training. In \textit{ICLR 2020}.
+\end{itemize}
+
+\begin{itemize}
+\item Ziv, J. and Lempel, A. (1977). A universal algorithm for sequential data compression. \textit{IEEE Transactions on Information Theory}, 23(3):337--343.
+\end{itemize}
+
+
+
+\section{Exercises}
+
+\textbf{Exercise 15.1.} Compute Distinct-1, Distinct-2, and $H_1$ for the following sequences over $\Sigma = \{a, b, c\}$:
+(a) $w_1 = abcabcabcabc$
+(b) $w_2 = aaaaaaaaaaaa$
+(c) $w_3 = abcbcacabacb$
+
+\textbf{Exercise 15.2.} Prove that for any sequence $w$ of length $N$ over alphabet $\Sigma$:
+\[\mathrm{Distinct\text{-}1}(w) = \mathrm{TTR}(w).\]
+
+\textbf{Exercise 15.3.} Show that if $w$ is a periodic sequence with period $p$ (i.e., $w_i = w_{i+p}$ for all $i$), then for $n \leq p$:
+\[\mathrm{Distinct\text{-}n}(w) \leq \frac{p}{N - n + 1}.\]
+
+\textbf{Exercise 15.4.} The \textbf{Rényi entropy} of order $\alpha$ is defined as:
+\[H_\alpha(w) = \frac{1}{1-\alpha} \log_2 \sum_{s \in \Sigma} \hat{p}_w(s)^\alpha.\]
+Show that $\lim_{\alpha \to 1} H_\alpha(w) = H_1(w)$ (Shannon entropy).
+
+\textbf{Exercise 15.5.} Implement the `novelty_report` function and compute metrics for:
+(a) A paragraph from a news article.
+(b) The same paragraph repeated 5 times.
+(c) 100 tokens sampled uniformly from English words.
+Compare and interpret the results.
+
+\textbf{Exercise 15.6.} (Research) Find an LLM-generated text that has high Distinct-2 but low human-judged quality. What other metrics might detect this failure mode?
