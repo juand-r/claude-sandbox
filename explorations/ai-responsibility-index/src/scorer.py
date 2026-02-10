@@ -4,7 +4,8 @@ LLM Scoring Module
 Scores each indicator by sending retrieved passages + indicator metadata
 to an LLM, which returns a structured score with evidence and justification.
 
-Supports Anthropic Claude API. Could be extended to OpenAI.
+Supports both Anthropic (Claude) and OpenAI (GPT) APIs.
+Provider is selected by the model name prefix or explicit provider argument.
 """
 
 import json
@@ -12,19 +13,55 @@ import logging
 import os
 import re
 from dataclasses import dataclass
+from pathlib import Path
+
+try:
+    from dotenv import load_dotenv
+    # Load .env from project root or working directory
+    for env_path in [
+        Path(__file__).parent.parent / ".env",
+        Path.cwd() / ".env",
+    ]:
+        if env_path.exists():
+            load_dotenv(env_path)
+            break
+except ImportError:
+    pass
 
 try:
     import anthropic
 except ImportError:
     anthropic = None
 
+try:
+    import openai
+except ImportError:
+    openai = None
+
 from .indicators import Indicator, RUBRIC_PREAMBLE
 from .store import RetrievalResult
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
 MAX_PASSAGE_CHARS = 8000  # limit total passage text sent to LLM
+
+# Model defaults per provider
+ANTHROPIC_DEFAULT = "claude-sonnet-4-5-20250929"
+OPENAI_DEFAULT = "gpt-4o"
+
+
+def _detect_provider(model: str) -> str:
+    """Detect provider from model name."""
+    model_lower = model.lower()
+    if any(p in model_lower for p in ("claude", "sonnet", "haiku", "opus")):
+        return "anthropic"
+    if any(p in model_lower for p in ("gpt", "o1", "o3")):
+        return "openai"
+    raise ValueError(
+        f"Cannot detect provider for model '{model}'. "
+        f"Use a model name containing 'claude'/'sonnet'/'haiku'/'opus' for Anthropic, "
+        f"or 'gpt'/'o1'/'o3' for OpenAI."
+    )
 
 
 @dataclass
@@ -43,19 +80,49 @@ class IndicatorScore:
 
 class Scorer:
     """
-    Scores indicators using an LLM.
+    Scores indicators using an LLM (Anthropic or OpenAI).
+
+    Provider is auto-detected from model name, or can be set explicitly.
 
     Usage:
-        scorer = Scorer()
-        result = scorer.score_indicator(indicator, retrieval_results)
+        scorer = Scorer(model="claude-sonnet-4-5-20250929")   # uses Anthropic
+        scorer = Scorer(model="gpt-4o")                       # uses OpenAI
+        scorer = Scorer(model="gpt-4o", provider="openai")    # explicit
     """
 
-    def __init__(self, model: str = DEFAULT_MODEL, api_key: str | None = None):
-        if anthropic is None:
-            raise ImportError("anthropic is required. Install with: pip install anthropic")
-
+    def __init__(
+        self,
+        model: str = ANTHROPIC_DEFAULT,
+        provider: str | None = None,
+        api_key: str | None = None,
+    ):
         self.model = model
-        self.client = anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
+        self.provider = provider or _detect_provider(model)
+
+        if self.provider == "anthropic":
+            if anthropic is None:
+                raise ImportError("anthropic is required. Install: pip install anthropic")
+            key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+            if not key:
+                raise ValueError(
+                    "No Anthropic API key found. Set ANTHROPIC_API_KEY env var or pass api_key."
+                )
+            self.client = anthropic.Anthropic(api_key=key)
+
+        elif self.provider == "openai":
+            if openai is None:
+                raise ImportError("openai is required. Install: pip install openai")
+            key = api_key or os.environ.get("OPENAI_API_KEY")
+            if not key:
+                raise ValueError(
+                    "No OpenAI API key found. Set OPENAI_API_KEY env var or pass api_key."
+                )
+            self.client = openai.OpenAI(api_key=key)
+
+        else:
+            raise ValueError(f"Unknown provider: {self.provider}. Use 'anthropic' or 'openai'.")
+
+        logger.info(f"Scorer initialized: provider={self.provider}, model={self.model}")
 
     def score_indicator(self, indicator: Indicator, results: list[RetrievalResult]) -> IndicatorScore:
         """
@@ -83,7 +150,7 @@ class Scorer:
             passages=passages_text,
         )
 
-        # Add expert knowledge as system context
+        # System message with expert knowledge
         system_msg = (
             "You are an expert ESG analyst specializing in Responsible AI assessment. "
             "You are evaluating corporate disclosures for evidence of responsible AI practices.\n\n"
@@ -94,15 +161,12 @@ class Scorer:
 
         logger.info(f"Scoring indicator: {indicator.id} ({indicator.name})")
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=1024,
-            system=system_msg,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        # Call the appropriate API
+        if self.provider == "anthropic":
+            raw = self._call_anthropic(system_msg, prompt)
+        else:
+            raw = self._call_openai(system_msg, prompt)
 
-        # Parse the JSON response
-        raw = response.content[0].text
         parsed = self._parse_response(raw, indicator)
 
         return IndicatorScore(
@@ -116,6 +180,28 @@ class Scorer:
             passages_used=len(results),
             source_pages=source_pages,
         )
+
+    def _call_anthropic(self, system_msg: str, prompt: str) -> str:
+        """Call Anthropic Claude API."""
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=1024,
+            system=system_msg,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return response.content[0].text
+
+    def _call_openai(self, system_msg: str, prompt: str) -> str:
+        """Call OpenAI API."""
+        response = self.client.chat.completions.create(
+            model=self.model,
+            max_tokens=1024,
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": prompt},
+            ],
+        )
+        return response.choices[0].message.content
 
     def _format_passages(self, results: list[RetrievalResult]) -> str:
         """Format retrieved passages with source citations, respecting char limit."""

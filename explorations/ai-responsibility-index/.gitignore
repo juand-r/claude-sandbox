@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+.env
+test_docs/
+*.faiss
+store_metadata.json

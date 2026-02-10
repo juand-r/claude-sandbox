@@ -82,6 +82,7 @@ class Pipeline:
         self,
         api_key: str | None = None,
         model: str = "claude-sonnet-4-5-20250929",
+        provider: str | None = None,
         embedding_model: str = "all-MiniLM-L6-v2",
         top_k: int = 5,
         chunk_size: int = 1500,
@@ -89,6 +90,7 @@ class Pipeline:
     ):
         self.api_key = api_key
         self.model = model
+        self.provider = provider
         self.embedding_model = embedding_model
         self.top_k = top_k
         self.chunk_size = chunk_size
@@ -123,7 +125,7 @@ class Pipeline:
         store.build(chunks)
 
         # Step 3: Score each indicator
-        scorer = Scorer(model=self.model, api_key=self.api_key)
+        scorer = Scorer(model=self.model, provider=self.provider, api_key=self.api_key)
         all_scores: list[IndicatorScore] = []
 
         for indicator in indicators:

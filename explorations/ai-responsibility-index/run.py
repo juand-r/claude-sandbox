@@ -9,8 +9,9 @@ Usage:
 
 Examples:
     python run.py report.pdf
-    python run.py report.pdf --output results.json
-    python run.py report.xml --model claude-sonnet-4-5-20250929 --top-k 8
+    python run.py report.pdf --model gpt-4o
+    python run.py report.pdf --output results.json --top-k 8
+    python run.py report.xml --model claude-sonnet-4-5-20250929 -v
 """
 
 import argparse
@@ -39,7 +40,13 @@ def main():
     parser.add_argument(
         "--model", "-m",
         default="claude-sonnet-4-5-20250929",
-        help="Anthropic model to use for scoring (default: claude-sonnet-4-5-20250929)",
+        help="LLM model for scoring. Claude models use Anthropic, GPT models use OpenAI. "
+             "(default: claude-sonnet-4-5-20250929)",
+    )
+    parser.add_argument(
+        "--provider",
+        choices=["anthropic", "openai"],
+        help="Force a specific API provider (default: auto-detect from model name)",
     )
     parser.add_argument(
         "--embedding-model",
@@ -60,7 +67,7 @@ def main():
     )
     parser.add_argument(
         "--api-key",
-        help="Anthropic API key (default: uses ANTHROPIC_API_KEY env var)",
+        help="API key (default: uses ANTHROPIC_API_KEY or OPENAI_API_KEY env var, or .env file)",
     )
     parser.add_argument(
         "--verbose", "-v",
@@ -93,6 +100,7 @@ def main():
     pipeline = Pipeline(
         api_key=args.api_key,
         model=args.model,
+        provider=args.provider,
         embedding_model=args.embedding_model,
         top_k=args.top_k,
         chunk_size=args.chunk_size,
