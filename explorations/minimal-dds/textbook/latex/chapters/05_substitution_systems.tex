@@ -45,11 +45,11 @@ so $\sigma^n(a)$ is a proper prefix of $\sigma^{n+1}(a)$ for all $n \geq 0$, and
 If $\sigma$ is prolongable on $a$, then the infinite word $\mathbf{x} = \lim_{n \to \infty} \sigma^n(a)$ is a \textit{fixed point} of $\sigma$, meaning $\sigma(\mathbf{x}) = \mathbf{x}$, where we extend $\sigma$ to infinite words in the obvious way.
 
 \textit{Proof sketch.} Since $\sigma(\sigma^n(a)) = \sigma^{n+1}(a)$, and both $\sigma^n(a)$ and $\sigma^{n+1}(a)$ converge to $\mathbf{x}$, continuity of $\sigma$ (in the product topology) gives $\sigma(\mathbf{x}) = \mathbf{x}$. 
-\end{proof}
 
 
 
 \end{theorem}
+
 
 \section{The Thue-Morse Sequence}
 
@@ -101,7 +101,6 @@ This was Thue's original motivation: to construct an infinite binary word with n
 The Thue-Morse sequence is not eventually periodic. That is, there are no integers $n_0$ and $p \geq 1$ such that $t_n = t_{n+p}$ for all $n \geq n_0$.
 
 \textit{Proof sketch.} If $\mathbf{t}$ were eventually periodic with period $p$, it would contain arbitrarily long squares $w w$. But $\mathbf{t}$ is overlap-free, and any word containing arbitrarily long squares must contain an overlap (by a pigeonhole argument on the positions). Contradiction. 
-\end{proof}
 
 \begin{center}
 \begin{tabular}{ccccc}
@@ -114,6 +113,7 @@ w & _a$ as the number of occurrences of letter $a$ in the word $w$. For any two 
 for a universal constant $C$. That is, the Thue-Morse sequence is \textit{$C$-balanced}. (In fact, one can take $C = 2$; note it is not 1-balanced, unlike Sturmian sequences.)
 
 \end{theorem}
+
 
 \subsection{5.3.3 The Thue-Morse Dynamical System}
 
@@ -160,7 +160,7 @@ The lengths are Fibonacci numbers $1, 2, 3, 5, 8, 13, 21, \ldots$ --- hence the 
 \subsection{5.4.1 Connection to the Golden Ratio}
 
 The incidence matrix of $\varphi$ is
-\[M_\varphi = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix},\]
+\[M_\varphi = \begin{pmatrix} 1 \& 1 \\ 1 \& 0 \end{pmatrix},\]
 whose eigenvalues are $\phi = (1+\sqrt{5})/2$ (the golden ratio) and $\hat{\phi} = (1-\sqrt{5})/2$. The Perron-Frobenius eigenvalue $\phi$ controls the growth rate of the word lengths: $|\varphi^n(0)| \sim C \phi^n$ as $n \to \infty$.
 
 \subsection{5.4.2 Sturmian Sequences}
@@ -451,7 +451,7 @@ The theory of substitution systems and automatic sequences lies at a crossroads 
 For an accessible introduction:
 
 \begin{itemize}
-\item \textbf{Allouche & Shallit (2003)} is the definitive reference and surprisingly readable. Chapters 1--5 cover the basics of morphisms and automatic sequences; Chapters 6--7 cover Cobham's theorems.
+\item \textbf{Allouche \& Shallit (2003)} is the definitive reference and surprisingly readable. Chapters 1--5 cover the basics of morphisms and automatic sequences; Chapters 6--7 cover Cobham's theorems.
 \end{itemize}
 
 For the dynamical systems perspective:

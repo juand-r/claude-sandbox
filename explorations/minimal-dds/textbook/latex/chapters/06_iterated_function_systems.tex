@@ -36,11 +36,11 @@ Let $(X, d)$ be a complete metric space and $f : X \to X$ a contraction with rat
 3. The convergence rate is geometric: $d(f^n(x_0), x^*) \le \frac{c^n}{1 - c} \, d(x_0, f(x_0))$.
 
 \textit{Proof sketch.} The sequence $x_n = f^n(x_0)$ is Cauchy because $d(x_{n+1}, x_n) \le c^n \, d(x_1, x_0)$. Completeness gives a limit $x^\textit{$. Continuity of $f$ gives $f(x^}) = x^\textit{$. Uniqueness: if $f(y) = y$ too, then $d(x^}, y) = d(f(x^\textit{), f(y)) \le c \, d(x^}, y)$, which forces $d(x^*, y) = 0$. 
-\end{proof}
 
 The genius of the IFS construction is to apply the Banach theorem not to individual points, but to \textit{sets}.
 
 \end{theorem}
+
 
 \section{The Hutchinson Operator}
 
@@ -86,9 +86,9 @@ Taking the supremum over $a$ and all $i$, and applying the symmetric argument, y
 \[d_H(H(A), H(B)) \le c \cdot d_H(A, B).\]
 
 Since $c < 1$, $H$ is a contraction. Parts (2) and (3) then follow from the Banach fixed-point theorem applied to $H$ on the complete metric space $(\mathcal{H}(X), d_H)$. 
-\end{proof}
 
 \end{theorem}
+
 
 \section{Classical Examples}
 
@@ -152,7 +152,7 @@ Given an IFS $\{ f_1, \ldots, f_k\} $:
 4. After discarding a transient (say the first 100 points), the orbit $\{ x_n\} $ fills in the attractor $A$.
 \end{algorithm_env}
 
-\begin{theorem}[Barnsley & Demko, 1985]
+\begin{theorem}[Barnsley \& Demko, 1985]
 Let $\{ f_1, \ldots, f_k\} $ be a contractive IFS on a complete metric space, with probabilities $p_1, \ldots, p_k > 0$ (summing to 1) assigned to the maps. Then for any starting point $x_0$, the empirical distribution of the orbit $\{ x_0, x_1, x_2, \ldots\} $ converges almost surely (in the weak topology) to a unique invariant probability measure $\mu$ supported on the attractor $A$.
 
 \textbf{Why does this work?} The orbit is a Markov chain on $X$. Because the maps are contractions, the chain "forgets" its initial condition exponentially fast. More precisely, two orbits starting from different points $x_0$ and $y_0$ but driven by the same random sequence of maps satisfy
@@ -264,9 +264,11 @@ Barnsley, Elton, Hardin, and Massopust (1989) introduced a generalization where 
 \begin{definition}[Recurrent IFS]
 A \textit{recurrent IFS} consists of:
 
-- Maps $\{ f_1, \ldots, f_k\} $ on $(X, d)$.
-- A $k \times k$ transition matrix $T = (t_{ij})$ where $t_{ij} \ge 0$ and $\sum_j t_{ij} = 1$.
+\begin{itemize}
+\item Maps $\{ f_1, \ldots, f_k\} $ on $(X, d)$.
+\item A $k \times k$ transition matrix $T = (t_{ij})$ where $t_{ij} \ge 0$ and $\sum_j t_{ij} = 1$.
 
+\end{itemize}
 The joint state at time $n$ is $(i_n, x_n)$ where $i_n$ is the index of the map just applied. The dynamics are:
 
 1. Given $(i_n, x_n)$, choose $i_{n+1}$ according to the distribution $(t_{i_n, 1}, \ldots, t_{i_n, k})$.
@@ -335,8 +337,8 @@ The IFS framework transforms the study of single-map iteration into the far rich
 \begin{itemize}
 \item Banach, S. (1922). Sur les opérations dans les ensembles abstraits et leur application aux équations intégrales. \textit{Fundamenta Mathematicae}, 3, 133–181.
 \item Barnsley, M. F. (1988). \textit{Fractals Everywhere}. Academic Press. (2nd edition 1993, 3rd edition 2012.)
-\item Barnsley, M. F. & Demko, S. (1985). Iterated function systems and the global construction of fractals. \textit{Proceedings of the Royal Society of London A}, 399, 243–275.
-\item Barnsley, M. F., Elton, J. H., Hardin, D. P., & Massopust, P. R. (1989). Hidden variable fractal interpolation functions. \textit{SIAM Journal on Mathematical Analysis}, 20(5), 1218–1242.
+\item Barnsley, M. F. \& Demko, S. (1985). Iterated function systems and the global construction of fractals. \textit{Proceedings of the Royal Society of London A}, 399, 243–275.
+\item Barnsley, M. F., Elton, J. H., Hardin, D. P., \& Massopust, P. R. (1989). Hidden variable fractal interpolation functions. \textit{SIAM Journal on Mathematical Analysis}, 20(5), 1218–1242.
 \item Falconer, K. (2003). \textit{Fractal Geometry: Mathematical Foundations and Applications} (2nd ed.). Wiley.
 \item Hutchinson, J. E. (1981). Fractals and self-similarity. \textit{Indiana University Mathematics Journal}, 30(5), 713–747.
 \item Jacquin, A. E. (1992). Image coding based on a fractal theory of iterated contractive image transformations. \textit{IEEE Transactions on Image Processing}, 1(1), 18–30.

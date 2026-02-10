@@ -27,20 +27,23 @@ Since $X$ is finite, this sequence must eventually revisit a state.
 \end{definition}
 
 \begin{definition}[Fixed Points and Periodic Points]
-- A point $x \in X$ is a \textit{fixed point} of $f$ if $f(x) = x$.
-- A point $x$ is a \textit{periodic point} of period $k$ if $f^k(x) = x$ and $k \geq 1$ is the smallest such integer. We also say $x$ belongs to a \textit{$k$-cycle}. A fixed point is periodic with period 1.
-- A point $x$ is \textit{eventually periodic} if there exist integers $t \geq 0$ and $k \geq 1$ such that $f^{t+k}(x) = f^t(x)$. The smallest such $t$ is the \textit{transient length} (or \textit{tail length}) and the smallest such $k$ is the \textit{cycle length}.
+\begin{itemize}
+\item A point $x \in X$ is a \textit{fixed point} of $f$ if $f(x) = x$.
+\item A point $x$ is a \textit{periodic point} of period $k$ if $f^k(x) = x$ and $k \geq 1$ is the smallest such integer. We also say $x$ belongs to a \textit{$k$-cycle}. A fixed point is periodic with period 1.
+\item A point $x$ is \textit{eventually periodic} if there exist integers $t \geq 0$ and $k \geq 1$ such that $f^{t+k}(x) = f^t(x)$. The smallest such $t$ is the \textit{transient length} (or \textit{tail length}) and the smallest such $k$ is the \textit{cycle length}.
+\end{itemize}
 \end{definition}
 
 \begin{proposition}
 Every point in a finite DDS is eventually periodic.
 
+
+\end{proposition}
+
 \begin{proof}
 Let $|X| = n$. The sequence $x_0, f(x_0), \ldots, f^n(x_0)$ contains $n+1$ elements drawn from a set of size $n$. By the pigeonhole principle, there exist indices $0 \leq i < j \leq n$ with $f^i(x_0) = f^j(x_0)$. Setting $t = i$ and $k = j - i$, we have $f^{t+k}(x_0) = f^t(x_0)$. 
 
 \end{proof}
-
-\end{proposition}
 
 \section{The Functional Graph}
 
@@ -53,6 +56,9 @@ This is the central combinatorial object of this chapter. A directed graph in wh
 \begin{theorem}[Structure Theorem for Functional Graphs]
 Let $G_f$ be the functional graph of $f: X \to X$ where $X$ is finite. Then every weakly connected component of $G_f$ consists of a single directed cycle with directed trees (arborescences) rooted at the cycle nodes, with edges directed toward the roots. Equivalently, every connected component has the shape of the Greek letter $\rho$: a "tail" path leading into a cycle.
 
+
+\end{theorem}
+
 \begin{proof}
 Let $C$ be a weakly connected component of $G_f$. We prove the structure in two steps.
 
@@ -60,8 +66,6 @@ Let $C$ be a weakly connected component of $G_f$. We prove the structure in two 
 
 \textbf{Step 2: The non-cycle vertices form a forest of trees rooted at cycle nodes.} Let $\gamma$ be the unique cycle in $C$. Remove the edges of $\gamma$. The remaining graph restricted to non-cycle vertices has out-degree 1 everywhere except at cycle nodes (which are now roots), and no cycles. A directed graph with out-degree $\leq 1$ and no cycles is a forest of rooted directed trees. The edge directions point toward the roots (cycle vertices), since iterating $f$ from any non-cycle vertex eventually reaches the cycle. 
 \end{proof}
-
-\end{theorem}
 
 \begin{remark}
 The "$\rho$ shape" terminology comes from the visual resemblance: starting from a tail vertex, the orbit traces a path (the stroke of $\rho$) that enters a loop (the bowl of $\rho$). The transient length of a vertex $x$ is the distance from $x$ to the cycle, and the cycle length is the length of that cycle. The \textit{rho length} of a vertex is the sum $\lambda(x) = t(x) + c(x)$, where $t(x)$ is the transient length and $c(x)$ the cycle length.
@@ -167,6 +171,9 @@ The number of functions $f: X \to X$ with exactly $k$ fixed points is
 
 \[\binom{n}{k}(n-1)^{n-k}.\]
 
+
+\end{proposition}
+
 \begin{proof}
 Choose the $k$ fixed points in $\binom{n}{k}$ ways. Each of the remaining $n - k$ elements must map to some element other than itself, giving $n - 1$ choices per non-fixed element (it may map to any element of $X$ except itself, including other non-fixed elements). Hence the total is $\binom{n}{k}(n-1)^{n-k}$. 
 
@@ -179,8 +186,6 @@ For $n = 3$: there are $3^3 = 27$ total functions. Functions with exactly 0 fixe
 \end{example}
 
 \end{proof}
-
-\end{proposition}
 
 \section{Transient Length, Cycle Length, and Rho Length}
 
@@ -218,7 +223,7 @@ Perhaps the most remarkable aspect of iterated maps on finite sets is what happe
 
 The foundational results are due to Harris (1960), Mutafchiev (1988), and especially the landmark paper of Flajolet and Odlyzko (1990), who used analytic combinatorics (singularity analysis of generating functions) to derive precise asymptotics for virtually all parameters of random functional graphs.
 
-\begin{theorem}[Flajolet & Odlyzko, 1990]
+\begin{theorem}[Flajolet \& Odlyzko, 1990]
 Let $f: X \to X$ be a function chosen uniformly at random from all $n^n$ functions, and let $x \in X$ be a uniformly random starting point. Then:
 
 - The expected tail length is $E[\tau] \sim \sqrt{\pi n / 8} \approx 0.6267\sqrt{n}$.
@@ -245,7 +250,7 @@ These results are obtained by encoding functional graphs as labeled combinatoria
 
 The Collatz map on $\mathbb{N}$ (send $x$ to $x/2$ if even, $3x+1$ if odd) can be studied modulo $n$ to yield a finite DDS. Define $f: \mathbb{Z}/n\mathbb{Z} \to \mathbb{Z}/n\mathbb{Z}$ by:
 
-\[f(x) = \begin{cases} x/2 \pmod{n} & \text{if } x \text{ is even,} \\ 3x + 1 \pmod{n} & \text{if } x \text{ is odd.} \end{cases}\]
+\[f(x) = \begin{cases} x/2 \pmod{n} \& \text{if } x \text{ is even,} \\ 3x + 1 \pmod{n} \& \text{if } x \text{ is odd.} \end{cases}\]
 
 Here "even" and "odd" refer to the residue class of $x$, and $x/2 \bmod n$ requires that $n$ be odd (so that 2 is invertible mod $n$), or a suitable convention when $n$ is even. These finite Collatz-like maps provide test beds for studying the interaction of arithmetic structure with dynamical structure.
 
@@ -341,7 +346,7 @@ The key takeaways of this chapter are:
 For readers new to discrete dynamical systems on finite sets:
 
 \begin{itemize}
-\item \textbf{Start here}: Chapter II of Flajolet & Sedgewick's \textit{Analytic Combinatorics} (2009) provides a modern, self-contained treatment of labeled structures including functional graphs. Freely available at https://algo.inria.fr/flajolet/Publications/book.pdf.
+\item \textbf{Start here}: Chapter II of Flajolet \& Sedgewick's \textit{Analytic Combinatorics} (2009) provides a modern, self-contained treatment of labeled structures including functional graphs. Freely available at https://algo.inria.fr/flajolet/Publications/book.pdf.
 \end{itemize}
 
 \begin{itemize}
@@ -349,7 +354,7 @@ For readers new to discrete dynamical systems on finite sets:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{For probabilists}: The original Flajolet & Odlyzko (1990) paper is highly readable and derives the $\sqrt{n}$ scaling laws with full proofs via generating functions.
+\item \textbf{For probabilists}: The original Flajolet \& Odlyzko (1990) paper is highly readable and derives the $\sqrt{n}$ scaling laws with full proofs via generating functions.
 \end{itemize}
 
 \begin{itemize}

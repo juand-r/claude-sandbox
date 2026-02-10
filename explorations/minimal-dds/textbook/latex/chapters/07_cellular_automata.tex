@@ -251,7 +251,7 @@ In the language of symbolic dynamics, the endomorphisms of the full shift $(\Sig
 
 \textbf{Corollary.} The set of all CA on alphabet $S$ forms a monoid under composition: the composition of two sliding block codes is again a sliding block code (with a larger neighborhood).
 
-The Curtis-Hedlund-Lyndon theorem generalizes to subshifts: a continuous shift-commuting map between subshifts of finite type is always a sliding block code. See Lind & Marcus (2021), Chapter 1, for a thorough treatment.
+The Curtis-Hedlund-Lyndon theorem generalizes to subshifts: a continuous shift-commuting map between subshifts of finite type is always a sliding block code. See Lind \& Marcus (2021), Chapter 1, for a thorough treatment.
 
 
 \section{Universality: Rule 110 is Turing-Complete}
@@ -300,7 +300,7 @@ The proof uses a counting argument: both the number of patterns that can appear 
 \begin{example}
 Consider the ECA "majority rule" on $\mathbb{Z}$ with $S = \{ 0,1\} $ and neighborhood $\{ -1, 0, 1\} $:
 
-\[f(l, c, r) = \begin{cases} 1 & \text{if } l + c + r \geq 2 \\ 0 & \text{otherwise} \end{cases}\]
+\[f(l, c, r) = \begin{cases} 1 \& \text{if } l + c + r \geq 2 \\ 0 \& \text{otherwise} \end{cases}\]
 
 This is Rule 232. Consider the two asymptotic configurations $c = \ldots 000 \ldots$ and $c' = \ldots 0010 \ldots$ (differing only at one cell). We have $F(c) = \ldots 000 \ldots$. For $c'$, the cell with state 1 has neighborhood $(0,1,0)$, giving $f(0,1,0) = 0$, and its neighbors have neighborhoods $(0,0,1)$ and $(1,0,0)$, both giving 0. So $F(c') = \ldots 000 \ldots = F(c)$.
 
@@ -436,7 +436,7 @@ For the mathematical foundations:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{Lind & Marcus (2021)}, Chapter 1, places CA in the broader context of symbolic dynamics and gives clean proofs of the Curtis-Hedlund-Lyndon theorem.
+\item \textbf{Lind \& Marcus (2021)}, Chapter 1, places CA in the broader context of symbolic dynamics and gives clean proofs of the Curtis-Hedlund-Lyndon theorem.
 \end{itemize}
 
 For universality and computation:

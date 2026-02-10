@@ -53,11 +53,11 @@ The crucial property of $M$ is that it is \textit{universal} among computable pr
 \[M(x) \geq c_\mu \cdot \mu(x).\]
 
 \textit{Proof sketch.} Since $\mu$ is computable, there exists a program $p_\mu$ that, given random bits as input, samples from $\mu$. This program has some fixed length $|p_\mu|$. The contribution of programs that begin with $p_\mu$ to the sum defining $M(x)$ is at least $2^{-|p_\mu|} \cdot \mu(x)$. Setting $c_\mu = 2^{-|p_\mu|}$ gives the result. 
-\end{proof}
 
 This theorem says that $M$ assigns probability at least as large (up to a multiplicative constant) as \textit{any} computable measure. It "dominates" the entire class of computable distributions. The constant $c_\mu = 2^{-|p_\mu|}$ is small for complex hypotheses and large for simple ones, which is precisely Occam's razor implemented in a mathematically rigorous way.
 
 \end{theorem}
+
 
 \subsection{13.2.4 Convergence of Solomonoff Prediction}
 
@@ -84,6 +84,9 @@ Suppose the true environment produces the sequence $0, 1, 0, 1, 0, 1, \ldots$ de
 \begin{proposition}
 \textit{$M(x)$ is not computable.}
 
+
+\end{proposition}
+
 \begin{proof}
 Computing $M(x)$ requires summing $2^{-|p|}$ over all programs $p$ that produce output beginning with $x$. Determining whether $U(p)$ halts and produces output starting with $x$ is at least as hard as the halting problem. 
 
@@ -94,8 +97,6 @@ This incomputability is not a minor technical inconvenience---it is the price of
 
 
 \end{proof}
-
-\end{proposition}
 
 \section{AIXI}
 
@@ -124,12 +125,14 @@ where "consistent with history" means $q(a_1 o_1 r_1 \ldots a_{k-1} o_{k-1} r_{k
 
 Let us unpack this formula. Reading from left to right:
 
-- $\arg\max_{a_t}$: choose the best current action.
-- $\sum_{o_t, r_t}$: sum over all possible immediate responses.
-- $\ldots \max_{a_m} \sum_{o_m, r_m}$: for all future time steps, maximize over actions and sum over environment responses. The alternation of $\max$ and $\sum$ reflects that future actions are chosen optimally while future observations are uncertain.
-- $\sum_{k=t}^{m} r_k$: the total future reward.
-- $\sum_{q} 2^{-|q|}$: the posterior weight on environment $q$, which is proportional to $2^{-|q|}$ restricted to programs consistent with what has been observed.
+\begin{itemize}
+\item $\arg\max_{a_t}$: choose the best current action.
+\item $\sum_{o_t, r_t}$: sum over all possible immediate responses.
+\item $\ldots \max_{a_m} \sum_{o_m, r_m}$: for all future time steps, maximize over actions and sum over environment responses. The alternation of $\max$ and $\sum$ reflects that future actions are chosen optimally while future observations are uncertain.
+\item $\sum_{k=t}^{m} r_k$: the total future reward.
+\item $\sum_{q} 2^{-|q|}$: the posterior weight on environment $q$, which is proportional to $2^{-|q|}$ restricted to programs consistent with what has been observed.
 
+\end{itemize}
 AIXI is simultaneously performing \textbf{Bayesian learning} (maintaining the posterior over environments via the Solomonoff prior) and \textbf{optimal planning} (choosing the reward-maximizing action given this posterior).
 \end{definition}
 
@@ -217,9 +220,11 @@ A Gödel Machine is a computational system consisting of:
 
 The machine operates as follows at each step:
 
-- Execute the current instruction of $f$ (which may involve interacting with the environment, performing computations, or searching for proofs).
-- The proof searcher $s$ systematically enumerates all possible proofs in $\mathcal{A}$.
-- If $s$ finds a proof that replacing the current program $f$ with some $f'$ would yield strictly higher expected utility than continuing with $f$ (including continuing to search for better modifications), then \textbf{perform the rewrite}: replace $f$ with $f'$.
+\begin{itemize}
+\item Execute the current instruction of $f$ (which may involve interacting with the environment, performing computations, or searching for proofs).
+\item The proof searcher $s$ systematically enumerates all possible proofs in $\mathcal{A}$.
+\item If $s$ finds a proof that replacing the current program $f$ with some $f'$ would yield strictly higher expected utility than continuing with $f$ (including continuing to search for better modifications), then \textbf{perform the rewrite}: replace $f$ with $f'$.
+\end{itemize}
 \end{definition}
 
 \subsection{13.4.3 The Self-Referential Proof Search}
@@ -328,7 +333,7 @@ The three constructions studied in this chapter correspond to three different ch
 
 \textbf{Gödel Machine:} $\phi(f, x) = f'$ where $f'$ is the result of a provably-beneficial rewrite if one is found, or $f$ otherwise. The meta-rule $\phi$ is constrained:
 
-\[\phi(f, x) = \begin{cases} f' & \text{if } \mathcal{A} \vdash u(f', x) > u(f, x) \text{ is found at this step} \\ f & \text{otherwise.} \end{cases}\]
+\[\phi(f, x) = \begin{cases} f' \& \text{if } \mathcal{A} \vdash u(f', x) > u(f, x) \text{ is found at this step} \\ f \& \text{otherwise.} \end{cases}\]
 
 This is a self-modifying dynamical system with a \textit{conservative} transition rule: changes to $f$ are infrequent and always beneficial (relative to the axiom system).
 

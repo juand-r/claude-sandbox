@@ -13,7 +13,7 @@ Both have Kolmogorov complexity close to $n$ -- the Shakespeare text because nat
 
 Kolmogorov complexity conflates two very different kinds of objects: those that are complex because they encode organized structure, and those that are complex because they are patternless noise. We need a measure that distinguishes the \textit{interesting} from the \textit{merely random}.
 
-This chapter develops two such measures: \textbf{logical depth} (Bennett, 1988), which captures the computational work needed to unfold structure, and \textbf{sophistication} (Koppel & Atlan, 1991), which captures the amount of meaningful information in an object. Both refine Kolmogorov complexity by decomposing it into components that separate structure from noise.
+This chapter develops two such measures: \textbf{logical depth} (Bennett, 1988), which captures the computational work needed to unfold structure, and \textbf{sophistication} (Koppel \& Atlan, 1991), which captures the amount of meaningful information in an object. Both refine Kolmogorov complexity by decomposing it into components that separate structure from noise.
 
 \section{Bennett's Logical Depth}
 
@@ -138,7 +138,7 @@ The Kolmogorov complexity $K(x)$ lumps these together. Sophistication attempts t
 
 \subsection{9.4.2 Formal Definition}
 
-\begin{definition}[Sophistication, Koppel & Atlan 1991]
+\begin{definition}[Sophistication, Koppel \& Atlan 1991]
 Let $x$ be a binary string and $c \geq 0$ a constant. The \textit{sophistication} of $x$ at significance level $c$ is
 
 \[\text{soph}_c(x) = \min \{ |p| : p \text{ is a total program, } (\exists d)[U(p, d) = x], \text{ and } |p| + |d| \leq K(x) + c \} \]
@@ -176,14 +176,14 @@ where $K(S)$ is the length of the shortest program that enumerates the members o
 
 This is closely related to sophistication. The effective complexity of $x$ is, informally, the complexity of the best "theory" or "model" for $x$. Random strings have low effective complexity (the best model is "all strings of length $n$," which has complexity $O(\log n)$). Simple strings also have low effective complexity. Structured strings have high effective complexity.
 
-The main difference from sophistication is philosophical: effective complexity emphasizes the description of an \textit{ensemble} rather than a \textit{program-data decomposition}. In practice, the two notions are closely related and, under suitable formalizations, essentially equivalent (see Antunes & Fortnow, 2009).
+The main difference from sophistication is philosophical: effective complexity emphasizes the description of an \textit{ensemble} rather than a \textit{program-data decomposition}. In practice, the two notions are closely related and, under suitable formalizations, essentially equivalent (see Antunes \& Fortnow, 2009).
 \end{definition}
 
 \section{Relationships Between the Notions}
 
 Antunes and Fortnow (2009) provided a rigorous treatment of the connections between depth, sophistication, and effective complexity. We summarize the key relationships.
 
-\begin{theorem}[Antunes & Fortnow 2009]
+\begin{theorem}[Antunes \& Fortnow 2009]
 For appropriate choices of significance parameters:
 
 1. \textit{Sophistication lower-bounds depth}: If $\text{soph}_c(x)$ is large, then $\text{depth}_s(x)$ must be at least moderately large. Intuitively, a string with a complex model cannot be produced quickly, because the model itself requires time to "execute."
@@ -297,13 +297,13 @@ For the foundational paper:
 For the rigorous treatment:
 
 \begin{itemize}
-\item \textbf{Antunes & Fortnow (2009)} clarifies the relationships between depth, sophistication, and effective complexity with full proofs. Essential for understanding the precise mathematical content.
+\item \textbf{Antunes \& Fortnow (2009)} clarifies the relationships between depth, sophistication, and effective complexity with full proofs. Essential for understanding the precise mathematical content.
 \end{itemize}
 
 For sophistication and effective complexity:
 
 \begin{itemize}
-\item \textbf{Gell-Mann & Lloyd (1996)} introduces effective complexity from a physics perspective. Short and conceptual rather than technical.
+\item \textbf{Gell-Mann \& Lloyd (1996)} introduces effective complexity from a physics perspective. Short and conceptual rather than technical.
 \end{itemize}
 
 \begin{itemize}
@@ -313,7 +313,7 @@ For sophistication and effective complexity:
 For the broader context:
 
 \begin{itemize}
-\item \textbf{Li & Vitányi (2008)}, Chapter 7, covers logical depth and sophistication as part of a comprehensive treatment of algorithmic information theory.
+\item \textbf{Li \& Vitányi (2008)}, Chapter 7, covers logical depth and sophistication as part of a comprehensive treatment of algorithmic information theory.
 \end{itemize}
 
 For philosophical implications:
@@ -323,7 +323,7 @@ For philosophical implications:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{Dennett, D.} (1995). \textit{Darwin's Dangerous Idea}. Simon & Schuster. Chapter 4 discusses Bennett's concept of depth in the context of evolutionary creativity, making the ideas accessible to a general audience.
+\item \textbf{Dennett, D.} (1995). \textit{Darwin's Dangerous Idea}. Simon \& Schuster. Chapter 4 discusses Bennett's concept of depth in the context of evolutionary creativity, making the ideas accessible to a general audience.
 \end{itemize}
 
 For practical applications:

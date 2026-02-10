@@ -183,6 +183,9 @@ where $0 \log 0 := 0$.
 2. $H_1(w) \leq \log_2 |\mathrm{supp}(\hat{p}_w)| \leq \log_2 \min(N, V)$.
 3. Equality in (2) holds if and only if $\hat{p}_w$ is uniform over its support.
 
+
+\end{proposition}
+
 \begin{proof}
 Standard properties of Shannon entropy. 
 
@@ -195,8 +198,6 @@ This is the maximum possible for 3 symbols (uniform distribution).
 \end{example}
 
 \end{proof}
-
-\end{proposition}
 
 \subsection{15.5.2 Higher-Order Empirical Entropy}
 
@@ -257,8 +258,10 @@ The \textbf{compression ratio} of $w$ under compressor $C$ is
 
 \[\rho_C(w) = \frac{|C(w)|}{|w|}.\]
 
-- $\rho_C(w) \approx 1$: The sequence is incompressible (high complexity, possibly random).
-- $\rho_C(w) \ll 1$: The sequence is highly compressible (low complexity, repetitive).
+\begin{itemize}
+\item $\rho_C(w) \approx 1$: The sequence is incompressible (high complexity, possibly random).
+\item $\rho_C(w) \ll 1$: The sequence is highly compressible (low complexity, repetitive).
+\end{itemize}
 \end{definition}
 
 \begin{proposition}
@@ -625,9 +628,11 @@ For a (f, x) system, define the }novelty Lyapunov exponent\textbf{:
 
 when the limit exists.
 
-- $\lambda_D < 0$: Novelty contracts exponentially (typical for paraphrasing).
-- $\lambda_D = 0$: Novelty is conserved on average (edge of chaos).
-- $\lambda_D > 0$: Novelty expands exponentially (exploratory/divergent regime).
+\begin{itemize}
+\item $\lambda_D < 0$: Novelty contracts exponentially (typical for paraphrasing).
+\item $\lambda_D = 0$: Novelty is conserved on average (edge of chaos).
+\item $\lambda_D > 0$: Novelty expands exponentially (exploratory/divergent regime).
+\end{itemize}
 \end{definition}
 
 \begin{conjecture}
@@ -680,7 +685,7 @@ This is the diversity mechanism underlying Constitutional AI debates (Bai et al.
 
 \textbf{Strategy 5: Novelty Search.}
 
-Borrowed from evolutionary computation (Lehman & Stanley, 2011): rather than optimizing for a fixed objective, optimize for \textbf{novelty relative to the archive of past outputs}:
+Borrowed from evolutionary computation (Lehman \& Stanley, 2011): rather than optimizing for a fixed objective, optimize for \textbf{novelty relative to the archive of past outputs}:
 
 \[x_{n+1} = \arg\max_y \min_{z \in \mathcal{A}_n} d(y, z),\]
 
@@ -879,10 +884,12 @@ Define:
 \[I(w; \mathcal{R}) = D(w) \cdot \mathrm{Nov}_{\mathcal{R}}(w) \cdot Q(w),\]
 
 where:
-- $D(w)$ is an absolute diversity measure (e.g., Distinct-2),
-- $\mathrm{Nov}_{\mathcal{R}}(w)$ is relative novelty,
-- $Q(w)$ is a quality/coherence measure.
+\begin{itemize}
+\item $D(w)$ is an absolute diversity measure (e.g., Distinct-2),
+\item $\mathrm{Nov}_{\mathcal{R}}(w)$ is relative novelty,
+\item $Q(w)$ is a quality/coherence measure.
 
+\end{itemize}
 The product structure ensures all three factors must be high for the sequence to be deemed interesting.
 \end{definition}
 
@@ -1063,7 +1070,7 @@ The metrics developed in this chapter are not arbitrary mathematical constructs.
 
 \subsection{15.15.1 Predictive Processing and Surprisal}
 
-The \textbf{predictive processing} framework (Rao & Ballard, 1999; Friston, 2010) posits that the brain is fundamentally a prediction machine. Perception, cognition, and action are all understood as minimizing \textbf{prediction error}---the discrepancy between expected and observed inputs.
+The \textbf{predictive processing} framework (Rao \& Ballard, 1999; Friston, 2010) posits that the brain is fundamentally a prediction machine. Perception, cognition, and action are all understood as minimizing \textbf{prediction error}---the discrepancy between expected and observed inputs.
 
 \begin{definition}[Prediction error]
 Let $P$ be the brain's generative model and $x$ an observed stimulus. The prediction error is:
@@ -1089,7 +1096,7 @@ This explains why novelty is both attractive (learning opportunity) and aversive
 
 \subsection{15.15.2 Hippocampal Novelty Detection}
 
-The hippocampus implements a \textbf{comparator function} that detects mismatches between predicted and actual inputs (Lisman & Grace, 2005).
+The hippocampus implements a \textbf{comparator function} that detects mismatches between predicted and actual inputs (Lisman \& Grace, 2005).
 
 \textbf{Empirical finding 15.86.} Novel stimuli elicit increased hippocampal activation and trigger dopaminergic responses in the VTA (ventral tegmental area). The signal strength correlates with the degree of novelty---i.e., with surprisal under the current memory model.
 
@@ -1195,7 +1202,7 @@ For sequences within working memory span, perceived novelty scales with chunk en
 
 \subsection{15.15.8 Semantic Priming and Spreading Activation}
 
-In semantic memory, concepts are linked in a network. \textbf{Spreading activation} (Collins & Loftus, 1975) propagates from activated nodes to related nodes.
+In semantic memory, concepts are linked in a network. \textbf{Spreading activation} (Collins \& Loftus, 1975) propagates from activated nodes to related nodes.
 
 \begin{definition}[Activation novelty]
 Let $A_t$ be the activation pattern at time $t$ and $A_{t-1}$ the pattern after the previous token. Define:
@@ -1368,7 +1375,7 @@ We identified two key extensions to the basic framework:
 \textbf{Modern Diversity Metrics:}
 \begin{itemize}
 \item Pillutla et al. (2021). "MAUVE: Measuring the Gap Between Neural Text and Human Text" --- distribution comparison for generation evaluation.
-\item Tevet & Berant (2021). "Evaluating the Evaluation of Diversity in Natural Language Generation" --- critical analysis of diversity metrics.
+\item Tevet \& Berant (2021). "Evaluating the Evaluation of Diversity in Natural Language Generation" --- critical analysis of diversity metrics.
 \item Kirchherr et al. (2024). "Kernel-based Entropic Novelty" --- advanced kernel-based novelty measures.
 \end{itemize}
 
@@ -1408,7 +1415,7 @@ We identified two key extensions to the basic framework:
 \end{itemize}
 
 \begin{itemize}
-\item Berlyne, D. E. (1970). Novelty, complexity, and hedonic value. \textit{Perception & Psychophysics}, 8(5):279--286.
+\item Berlyne, D. E. (1970). Novelty, complexity, and hedonic value. \textit{Perception \& Psychophysics}, 8(5):279--286.
 \end{itemize}
 
 \begin{itemize}

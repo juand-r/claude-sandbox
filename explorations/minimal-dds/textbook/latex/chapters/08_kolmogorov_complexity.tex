@@ -44,13 +44,13 @@ The definition depends on the choice of $U$. The next theorem shows this depende
 \[K_{U_1}(x) \leq |s_{21}| + K_{U_2}(x).\]
 
 By symmetry, $K_{U_2}(x) \leq |s_{12}| + K_{U_1}(x)$, so taking $c = \max(|s_{12}|, |s_{21}|)$ gives the result. 
-\end{proof}
 
 The invariance theorem justifies writing $K(x)$ without specifying $U$, with the understanding that all statements hold "up to an additive constant $O(1)$." We adopt this convention henceforth.
 
 
 
 \end{theorem}
+
 
 \section{Basic Properties}
 
@@ -60,6 +60,9 @@ The invariance theorem justifies writing $K(x)$ without specifying $U$, with the
 \[K(x) \leq n + c\]
 
 \textit{for a constant $c$ independent of $x$.}
+
+
+\end{proposition}
 
 \begin{proof}
 Consider the program "print the following $n$ bits: $x$." This program has length $n$ plus a fixed overhead $c$ for encoding the instruction and the length $n$ itself. 
@@ -77,8 +80,6 @@ This is the formalization of Berry's paradox: "the smallest positive integer not
 \end{theorem}
 \end{proof}
 
-\end{proposition}
-
 \begin{proposition}[Upper semi-computability]
 \textit{$K(x)$ is upper semi-computable: there exists a computable function $\phi(x, t)$ with $\phi(x, t) \geq \phi(x, t+1)$ and $\lim_{t \to \infty} \phi(x, t) = K(x)$.} We can approximate $K(x)$ from above by running all programs in parallel and tracking the shortest one found so far that outputs $x$. We can never know when we have found the true minimum, but any program we find gives a valid upper bound.
 \end{proposition}
@@ -95,6 +96,13 @@ This is the formalization of Berry's paradox: "the smallest positive integer not
 1. \textit{There exists at least one incompressible string of length $n$.}
 2. \textit{The fraction of strings of length $n$ that are $c$-compressible (i.e., $K(x) < n - c$) is at most $2^{-c}$.}
 
+
+\textbf{Interpretation.} Incompressible strings are "random"—they have no exploitable pattern. Most strings are nearly incompressible. This gives an algorithmic definition of randomness for finite objects.
+
+
+
+\end{theorem}
+
 \begin{proof}
 There are $2^n$ binary strings of length $n$. The total number of programs of length less than $n - c$ is at most
 
@@ -104,12 +112,6 @@ Each such program produces at most one output. Therefore, at most $2^{n-c}$ stri
 
 In particular, for $c = 0$: at most $2^n - 1$ strings have descriptions shorter than $n$ bits, so at least one string of length $n$ is incompressible. For $c = 10$: at least 99.9\% of strings of length $n$ satisfy $K(x) \geq n - 10$. 
 \end{proof}
-
-\textbf{Interpretation.} Incompressible strings are "random"—they have no exploitable pattern. Most strings are nearly incompressible. This gives an algorithmic definition of randomness for finite objects.
-
-
-
-\end{theorem}
 
 \section{Conditional and Joint Complexity}
 
@@ -145,11 +147,11 @@ The logarithmic term arises from the need to encode the boundary between the des
 Rearranging: $K(y \mid x) - K(x \mid y) = K(y) - K(x) + O(\log n)$.
 
 A more refined version (Kolmogorov, Levin) shows $K(x \mid y, K(y)) + K(y) = K(x, y) + O(\log n)$ and similarly with roles swapped, yielding symmetry up to $O(\log n)$. 
-\end{proof}
 
 
 
 \end{theorem}
+
 
 \section{Prefix-Free Complexity}
 
@@ -165,6 +167,13 @@ where $U_{\text{prefix}}$ is a universal prefix-free Turing machine.
 
 \[\sum_{x \in \{ 0,1\} ^*} 2^{-K_{\text{prefix}}(x)} \leq 1.\]
 
+
+The prefix-free version satisfies $K_{\text{prefix}}(x) \geq K(x)$ and $K_{\text{prefix}}(x) \leq K(x) + O(\log K(x))$, so the two notions agree up to logarithmic terms. For the remainder of this chapter, we use $K(x)$ to denote prefix-free complexity unless otherwise stated.
+
+
+
+\end{theorem}
+
 \begin{proof}
 Since the domain of $U_{\text{prefix}}$ is prefix-free, the Kraft inequality applies directly:
 
@@ -176,12 +185,6 @@ Grouping by output: each $x$ may be produced by multiple programs, but
 
 (The first inequality is actually an equality in the lower bound direction since we only take the minimum-length program, but the upper bound suffices.) 
 \end{proof}
-
-The prefix-free version satisfies $K_{\text{prefix}}(x) \geq K(x)$ and $K_{\text{prefix}}(x) \leq K(x) + O(\log K(x))$, so the two notions agree up to logarithmic terms. For the remainder of this chapter, we use $K(x)$ to denote prefix-free complexity unless otherwise stated.
-
-
-
-\end{theorem}
 
 \section{Algorithmic Probability and Solomonoff's Prior}
 
@@ -369,10 +372,10 @@ Brudno & $K(x_{1:n})/n \to h_\mu$ a.s. for ergodic systems \\
 
 \begin{itemize}
 \item Chaitin, G. J. (1966). On the length of programs for computing finite binary sequences. \textit{Journal of the ACM}, 13(4), 547--569.
-\item Cover, T. M. & Thomas, J. A. (2006). \textit{Elements of Information Theory}, 2nd edition. Wiley. Chapter 14.
+\item Cover, T. M. \& Thomas, J. A. (2006). \textit{Elements of Information Theory}, 2nd edition. Wiley. Chapter 14.
 \item Kolmogorov, A. N. (1965). Three approaches to the quantitative definition of information. \textit{Problems of Information Transmission}, 1(1), 1--7.
-\item Li, M. & Vitányi, P. (2019). \textit{An Introduction to Kolmogorov Complexity and Its Applications}, 4th edition. Springer.
-\item Li, M., Chen, X., Li, X., Ma, B., & Vitányi, P. (2004). The similarity metric. \textit{IEEE Transactions on Information Theory}, 50(12), 3250--3264.
+\item Li, M. \& Vitányi, P. (2019). \textit{An Introduction to Kolmogorov Complexity and Its Applications}, 4th edition. Springer.
+\item Li, M., Chen, X., Li, X., Ma, B., \& Vitányi, P. (2004). The similarity metric. \textit{IEEE Transactions on Information Theory}, 50(12), 3250--3264.
 \item Martin-Löf, P. (1966). The definition of random sequences. \textit{Information and Control}, 9(6), 602--619.
 \item Brudno, A. A. (1983). Entropy and the complexity of the trajectories of a dynamical system. \textit{Transactions of the Moscow Mathematical Society}, 44, 127--151.
 \item Solomonoff, R. J. (1964). A formal theory of inductive inference. \textit{Information and Control}, 7(1), 1--22 and 7(2), 224--254.
@@ -387,13 +390,13 @@ Brudno & $K(x_{1:n})/n \to h_\mu$ a.s. for ergodic systems \\
 For a comprehensive introduction:
 
 \begin{itemize}
-\item \textbf{Li & Vitányi (2019)} is the definitive textbook, covering everything from basic definitions through applications. Chapters 1--3 suffice for the core theory; later chapters cover applications to learning, statistics, and physics.
+\item \textbf{Li \& Vitányi (2019)} is the definitive textbook, covering everything from basic definitions through applications. Chapters 1--3 suffice for the core theory; later chapters cover applications to learning, statistics, and physics.
 \end{itemize}
 
 For a shorter introduction:
 
 \begin{itemize}
-\item \textbf{Cover & Thomas (2006)}, Chapter 14, provides a concise introduction oriented toward information theorists.
+\item \textbf{Cover \& Thomas (2006)}, Chapter 14, provides a concise introduction oriented toward information theorists.
 \end{itemize}
 
 For algorithmic randomness:

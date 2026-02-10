@@ -66,7 +66,7 @@ Note that $\Phi$ is a 2-to-1 map on $\{ 0,1\} ^\mathbb{Z}$: for any output $y$, 
 
 Let $\Sigma = \Gamma = \{ 0, 1\} $. Define $f: \{ 0,1\} ^3 \to \{ 0,1\} $ by
 
-\[f(a, b, c) = \text{majority}(a, b, c) = \begin{cases} 1 & \text{if } a + b + c \geq 2, \\ 0 & \text{otherwise.} \end{cases}\]
+\[f(a, b, c) = \text{majority}(a, b, c) = \begin{cases} 1 \& \text{if } a + b + c \geq 2, \\ 0 \& \text{otherwise.} \end{cases}\]
 
 This has symmetric radius $r = 1$. The induced map is
 
@@ -117,7 +117,6 @@ We equip $\Sigma^\mathbb{Z}$ with the \textbf{product topology} (equivalently, t
 \[[\sigma(\Phi(x))]_i = [\Phi(x)]_{i+1} = f(x_{(i+1)-m}, \ldots, x_{(i+1)+a}) = f(x_{i-m+1}, \ldots, x_{i+a+1}).\]
 
 These are equal for all $i$, so $\Phi \circ \sigma = \sigma \circ \Phi$. 
-\end{proof}
 
 The remarkable content of the Curtis-Hedlund-Lyndon theorem is that the converse holds.
 
@@ -151,7 +150,6 @@ The sets of the form $C(i_1, \ldots, i_k; a_1, \ldots, a_k) = \{ x \in X : x_{i_
 Each cylinder set depends on finitely many coordinates. A finite union of such sets depends on finitely many coordinates. Since $\Gamma$ is finite, taking the union over all $\gamma$, we find a finite set of coordinates $\{ -m, -m+1, \ldots, a\} $ (after relabeling) such that $[\Phi(x)]_0$ depends only on $x_{-m}, \ldots, x_a$.
 
 \textbf{Step 3: Define the local rule.} For each word $w = w_{-m} \cdots w_a \in \mathcal{B}_{m+a+1}(X)$ (the set of $(m+a+1)$-blocks appearing in $X$), pick any $x \in X$ with $x_{-m} \cdots x_a = w$ and define $f(w) = [\Phi(x)]_0$. By Step 2, this is well-defined (independent of the choice of $x$). Then $\Phi$ is the sliding block code induced by $f$. 
-\end{proof}
 
 \textbf{Remark on the domain.} The theorem requires the domain $X$ to be a subshift (in particular, compact). This is essential: on non-compact subsets of $\Sigma^\mathbb{Z}$, there exist continuous shift-commuting maps that are not sliding block codes.
 
@@ -359,7 +357,7 @@ Causal SBC & Anticipation $a = 0$; relevant to autoregressive models \\
 For the core theory:
 
 \begin{itemize}
-\item \textbf{Lind & Marcus (2021)}, Chapter 6, gives the definitive modern treatment of sliding block codes, including full proofs and many exercises. This is the standard reference.
+\item \textbf{Lind \& Marcus (2021)}, Chapter 6, gives the definitive modern treatment of sliding block codes, including full proofs and many exercises. This is the standard reference.
 \end{itemize}
 
 \begin{itemize}

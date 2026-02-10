@@ -46,7 +46,6 @@ where $\delta(a, b) = 0$ if $a = b$ and $\delta(a, b) = 1$ if $a \neq b$. Intuit
 $\Sigma^{\mathbb{Z}}$ with the product topology is compact, metrizable, and totally disconnected (i.e., it is a Cantor set when $|\Sigma| \geq 2$).
 
 \textit{Proof sketch.} Compactness follows from Tychonoff's theorem, since $\Sigma$ is finite (hence compact). Total disconnectedness follows because cylinder sets are clopen. 
-\end{proof}
 
 \end{proposition}
 
@@ -92,15 +91,16 @@ Given a collection $\mathcal{F} \subseteq \bigcup_{n \geq 1} \Sigma^n$ of \textb
 \begin{theorem}[Characterization of subshifts]
 A subset $X \subseteq \Sigma^{\mathbb{Z}}$ is a subshift if and only if $X = X_{\mathcal{F}}$ for some set $\mathcal{F}$ of forbidden words.
 
+
+
+
+\end{theorem}
+
 \begin{proof}
 ($\Leftarrow$) For each forbidden word $w$, the set of sequences containing $w$ is open (it is a union of cylinder sets), so its complement is closed. Then $X_{\mathcal{F}}$ is an intersection of closed sets, hence closed. Shift-invariance is immediate since a shifted sequence contains the same set of words.
 
 ($\Rightarrow$) Given a subshift $X$, take $\mathcal{F} = \{ w : w \text{ does not appear in any } x \in X \} $. Then $X_{\mathcal{F}} = X$, which can be verified by showing that any sequence all of whose finite subwords appear in $X$ must itself lie in $X$ (by compactness). 
 \end{proof}
-
-
-
-\end{theorem}
 
 \section{Subshifts of Finite Type (SFTs)}
 
@@ -159,7 +159,7 @@ The graph $G$ has two vertices (corresponding to states "last symbol was 0" and 
 
 The adjacency matrix is:
 
-\[A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}.\]
+\[A = \begin{pmatrix} 1 \& 1 \\ 1 \& 0 \end{pmatrix}.\]
 
 The eigenvalues of $A$ are $\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618$ (the golden ratio) and $\frac{1 - \sqrt{5}}{2} \approx -0.618$. As we will see, the topological entropy is $h(X_{\text{gm}}) = \log \varphi$.
 \end{example}
@@ -201,11 +201,7 @@ The \textbf{even shift} $X_{\text{even}}$ over $\Sigma = \{ 0, 1\} $ is defined 
 
 The label sequences of bi-infinite walks on this graph are exactly $X_{\text{even}}$. After seeing a 0, we are in state $A$. Each 1 toggles between $A$ and $B$, and a 0 is only allowed from state $A$ (i.e., after an even number of 1s). Hence $X_{\text{even}}$ is sofic.
 
-\textit{Not SFT:} Suppose for contradiction that $X_{\text{even}} = X_{\mathcal{F}}$ for a finite set $\mathcal{F}$ of forbidden words, with all words in $\mathcal{F}$ having length at most $N$. Consider the word $w = 0\,1^{2N+1}\,0$. This word is forbidden in $X_{\text{even}}$ (an odd number of 1s between two 0s). However, every subword of $w$ of length $\leq N$ is either a block of 1s (which is allowed) or contains at most one 0, and any block of the form $0\,1^j$ or $1^j\,0$ with $j < N$ appears in allowed sequences (e.g., $\ldots 0\,1^{2j}\,0 \ldots$ contains $0\,1^j$ as a subword). Therefore no subword of length $\leq N$ of $w$ belongs to $\mathcal{F}$, contradicting the assumption that $\mathcal{F}$ forbids $w$. 
-\end{proof}
-
-
-
+\textit{Not SFT:} Suppose for contradiction that $X_{\text{even}} = X_{\mathcal{F}}$ for a finite set $\mathcal{F}$ of forbidden words, with all words in $\mathcal{F}$ having length at most $N$. Consider the word $w = 0\,1^{2N+1}\,0$. This word is forbidden in $X_{\text{even}}$ (an odd number of 1s between two 0s). However, every subword of $w$ of length $\leq N$ is either a block of 1s (which is allowed) or contains at most one 0, and any block of the form $0\,1^j$ or $1^j\,0$ with $j < N$ appears in allowed sequences (e.g., $\ldots 0\,1^{2j}\,0 \ldots$ contains $0\,1^j$ as a subword). Therefore no subword of length $\leq N$ of $w$ belongs to $\mathcal{F}$, contradicting the assumption that $\mathcal{F}$ forbids $w$. $\square$
 \end{example}
 
 \section{The Hierarchy of Shift Spaces}
@@ -280,7 +276,7 @@ The adjacency matrix is the $k \times k$ all-ones matrix (or, for the vertex shi
 \end{example}
 
 \begin{example}[Golden mean shift]
-Recall from Example 2.13 that the adjacency matrix is $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$ with Perron eigenvalue $\varphi = \frac{1+\sqrt{5}}{2}$. Therefore:
+Recall from Example 2.13 that the adjacency matrix is $A = \begin{pmatrix} 1 \& 1 \\ 1 \& 0 \end{pmatrix}$ with Perron eigenvalue $\varphi = \frac{1+\sqrt{5}}{2}$. Therefore:
 
 \[h(X_{\text{gm}}) = \log \varphi \approx 0.4812.\]
 
@@ -294,7 +290,7 @@ with $f(1) = 2$ (words: $0, 1$) and $f(2) = 3$ (words: $00, 01, 10$). This is a 
 \begin{example}[Even shift]
 The even shift is sofic, presented by the labeled graph in Example 2.16 with vertices $A, B$ and edges: $A \to A$ (label 0), $A \to B$ (label 1), $B \to A$ (label 1). The adjacency matrix of this underlying graph is:
 
-\[A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}.\]
+\[A = \begin{pmatrix} 1 \& 1 \\ 1 \& 0 \end{pmatrix}.\]
 
 This is the same matrix as the golden mean shift. The Perron eigenvalue is $\varphi = \frac{1+\sqrt{5}}{2}$, so:
 
@@ -334,7 +330,7 @@ For any subshift $X$:
 
 \[h_{\mathrm{top}}(X) = \sup_{\mu \in \mathcal{M}_\sigma(X)} h_\mu(\sigma).\]
 
-Moreover, the supremum is attained: there exists a measure $\mu^\textit{ \in \mathcal{M}_\sigma(X)$ with $h_{\mu^}}(\sigma) = h_{\mathrm{top}}(X)$. Such a measure is called a \textbf{measure of maximal entropy} (MME).
+Moreover, the supremum is attained: there exists a measure $\mu^* \in \mathcal{M}_\sigma(X)$ with $h_{\mu^*}(\sigma) = h_{\mathrm{top}}(X)$. Such a measure is called a \textbf{measure of maximal entropy} (MME).
 
 The variational principle is one of the deepest results connecting topological and measure-theoretic dynamics. It says that topological entropy---a purely combinatorial quantity defined by word counting---equals the supremum of a probabilistic quantity over all invariant measures.
 
@@ -364,7 +360,7 @@ where $r = (r_1, \ldots, r_k)$ is the right Perron eigenvector of $A$ (i.e., $Ar
 \end{theorem}
 
 \begin{example}[Parry measure for the golden mean shift]
-The adjacency matrix is $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$ with Perron eigenvalue $\lambda = \varphi = \frac{1+\sqrt{5}}{2}$.
+The adjacency matrix is $A = \begin{pmatrix} 1 \& 1 \\ 1 \& 0 \end{pmatrix}$ with Perron eigenvalue $\lambda = \varphi = \frac{1+\sqrt{5}}{2}$.
 
 The right eigenvector satisfies $Ar = \varphi r$:
 
@@ -372,7 +368,7 @@ The right eigenvector satisfies $Ar = \varphi r$:
 
 So $r_2 = r_1 / \varphi$. Choosing $r_1 = \varphi$, $r_2 = 1$, the transition matrix is:
 
-\[P = \begin{pmatrix} 1/\varphi & 1/\varphi^2 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} \varphi - 1 & 2 - \varphi \\ 1 & 0 \end{pmatrix} \approx \begin{pmatrix} 0.618 & 0.382 \\ 1 & 0 \end{pmatrix}.\]
+\[P = \begin{pmatrix} 1/\varphi \& 1/\varphi^2 \\ 1 \& 0 \end{pmatrix} = \begin{pmatrix} \varphi - 1 \& 2 - \varphi \\ 1 \& 0 \end{pmatrix} \approx \begin{pmatrix} 0.618 \& 0.382 \\ 1 \& 0 \end{pmatrix}.\]
 
 The entropy of this Parry measure equals $\log \varphi$, confirming the variational principle.
 \end{example}
@@ -443,7 +439,7 @@ Shift map $\sigma$ & $(\sigma(x))_i = x_{i+1}$ & Homeomorphism (two-sided) \\
 Subshift & Closed, shift-invariant $X \subseteq \Sigma^{\mathbb{Z}}$ & $= X_{\mathcal{F}}$ for forbidden words $\mathcal{F}$ \\
 SFT & $\mathcal{F}$ is finite & Edge shifts; adjacency matrix \\
 Sofic shift & Factor of an SFT & Labeled graphs; finite automata \\
-Entropy $h(X)$ & $\lim \frac{1}{n} \log & \mathcal{B}_n(X) & $ & Conjugacy invariant \\
+Entropy $h(X)$ & $\lim \frac{1}{n} \log |\mathcal{B}_n(X)|$ & Conjugacy invariant \\
 Variational principle & $h_{\mathrm{top}} = \sup_\mu h_\mu$ & Bridges topology and measure theory \\
 \bottomrule
 \end{tabular}
@@ -488,7 +484,7 @@ Variational principle & $h_{\mathrm{top}} = \sup_\mu h_\mu$ & Bridges topology a
 For newcomers to symbolic dynamics:
 
 \begin{itemize}
-\item \textbf{Start here}: Lind & Marcus (2021), Chapters 1--4. The book is exceptionally clear and includes numerous exercises. An early draft is available online.
+\item \textbf{Start here}: Lind \& Marcus (2021), Chapters 1--4. The book is exceptionally clear and includes numerous exercises. An early draft is available online.
 \end{itemize}
 
 \begin{itemize}

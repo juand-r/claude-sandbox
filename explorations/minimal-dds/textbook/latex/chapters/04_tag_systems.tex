@@ -11,10 +11,12 @@ This chapter defines tag systems precisely, traces several worked examples, surv
 \begin{definition}[Post Tag System]
 A \textit{tag system} is a triple $T = (\Sigma, m, P)$ where:
 
-- $\Sigma$ is a finite alphabet,
-- $m \geq 1$ is the \textit{deletion number},
-- $P: \Sigma \to \Sigma^\textit{$ is the }production function*, mapping each symbol to a (possibly empty) string over $\Sigma$.
+\begin{itemize}
+\item $\Sigma$ is a finite alphabet,
+\item $m \geq 1$ is the \textit{deletion number},
+\item $P: \Sigma \to \Sigma^\textit{$ is the }production function*, mapping each symbol to a (possibly empty) string over $\Sigma$.
 
+\end{itemize}
 \textbf{Computation step.} Given a string $w = a_1 a_2 \cdots a_n$ with $n \geq m$:
 
 1. Read the first symbol $a_1$.
@@ -193,9 +195,9 @@ A single Turing machine step is simulated by multiple tag steps that:
 - The deletion of $m$ symbols from the front "advances" through the encoded tape, effectively moving the head.
 
 The encoding requires an alphabet whose size depends on the number of Turing machine states and tape symbols, but $m$ can remain fixed. The overhead is polynomial in the description of the Turing machine. 
-\end{proof}
 
 \end{theorem}
+
 
 \subsection{The Cocke--Minsky Theorem (1964)}
 
@@ -254,7 +256,7 @@ De Mol (2008) observed a striking connection between certain tag systems and Col
 
 The Collatz function $C: \mathbb{N} \to \mathbb{N}$ is defined by:
 
-\[C(n) = \begin{cases} n/2 & \text{if } n \text{ is even} \\ 3n + 1 & \text{if } n \text{ is odd} \end{cases}\]
+\[C(n) = \begin{cases} n/2 \& \text{if } n \text{ is even} \\ 3n + 1 \& \text{if } n \text{ is odd} \end{cases}\]
 
 Consider a 2-tag system over $\{ a, b\} $ with $P(a) = \texttt{b}$ (length 1, causing the string to shrink) and $P(b) = \texttt{aab}$ (length 3, causing the string to grow). If we track the length $\ell$ of the string:
 

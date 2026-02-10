@@ -39,11 +39,13 @@ A computational system exhibits \textit{program-data duality} if its programs ar
 
 This is the foundation of self-modifying computation. Some concrete manifestations:
 
-- \textbf{Lisp.} Programs are S-expressions; data are S-expressions. The function `eval` takes a data structure and executes it as a program. The function `quote` takes a program fragment and treats it as data. This symmetry is not accidental --- McCarthy designed Lisp to explore exactly this duality (McCarthy, 1960).
+\begin{itemize}
+\item \textbf{Lisp.} Programs are S-expressions; data are S-expressions. The function `eval` takes a data structure and executes it as a program. The function `quote` takes a program fragment and treats it as data. This symmetry is not accidental --- McCarthy designed Lisp to explore exactly this duality (McCarthy, 1960).
 
-- \textbf{Gödel numbering.} Every formula $\varphi$ in a formal system can be encoded as a natural number $\lceil \varphi \rceil$. The system can then reason about its own formulas by reasoning about their codes. This is the mechanism behind Gödel's incompleteness theorems: the sentence "this sentence is unprovable" is constructed by exploiting program-data duality at the level of formal arithmetic.
+\item \textbf{Gödel numbering.} Every formula $\varphi$ in a formal system can be encoded as a natural number $\lceil \varphi \rceil$. The system can then reason about its own formulas by reasoning about their codes. This is the mechanism behind Gödel's incompleteness theorems: the sentence "this sentence is unprovable" is constructed by exploiting program-data duality at the level of formal arithmetic.
 
-- \textbf{Quines.} A \textit{quine} is a program that outputs its own source code. Its existence in any sufficiently expressive language follows from Kleene's recursion theorem (a fixed-point theorem for computable functions). A quine is the computational analogue of von Neumann's self-reproducing automaton, stripped to its essence.
+\item \textbf{Quines.} A \textit{quine} is a program that outputs its own source code. Its existence in any sufficiently expressive language follows from Kleene's recursion theorem (a fixed-point theorem for computable functions). A quine is the computational analogue of von Neumann's self-reproducing automaton, stripped to its essence.
+\end{itemize}
 \end{definition}
 
 \begin{theorem}[Kleene's Recursion Theorem]
@@ -152,7 +154,7 @@ Wand and Friedman (1986, 1988) answered this by showing that the tower's semanti
 Let $\mathcal{D}$ be a suitable semantic domain. Define the operator $\Phi: (\mathcal{D} \to \mathcal{D}) \to (\mathcal{D} \to \mathcal{D})$ as follows: $\Phi(I)$ is the interpretation function that results from running one level of the meta-circular interpreter, using $I$ as the semantics of the level above.
 \end{definition}
 
-\begin{theorem}[Wand & Friedman, 1986]
+\begin{theorem}[Wand \& Friedman, 1986]
 Under appropriate conditions on the semantic domain, $\Phi$ has a unique fixed point $I^\textit{ = \Phi(I^})$. The semantics of the reflective tower is this fixed point.
 
 The intuition: the fixed-point condition $I^\textit{ = \Phi(I^})$ says that interpreting a program using $I^\textit{$ as the meta-level semantics gives back $I^}$ itself. The tower is self-consistent because every level has the same behavior, and the semantics of "one more level of interpretation" is the same as the semantics of the whole tower.
@@ -183,7 +185,7 @@ A \textit{stage-polymorphic} evaluator is a single piece of code that can operat
 The two modes share the same source code; only a staging parameter differs.
 \end{definition}
 
-\begin{theorem}[Amin & Rompf, 2018, informal]
+\begin{theorem}[Amin \& Rompf, 2018, informal]
 An $N$-level reflective tower, where each level is a meta-circular interpreter, can be collapsed by iterated partial evaluation into a single pass that runs with no interpretive overhead. The resulting code is equivalent to a compiler that has been derived from the tower of interpreters.
 \end{theorem}
 
@@ -258,9 +260,9 @@ The reflective tower generalizes this to a \textit{stack} of such pairs. Define:
 Schematically:
 
 $$\begin{aligned}
-\text{Level 0:} \quad & (f_0, x_0) \\
-\text{Level 1:} \quad & (f_1, (f_0, x_0)) \\
-\text{Level 2:} \quad & (f_2, (f_1, (f_0, x_0))) \\
+\text{Level 0:} \quad \& (f_0, x_0) \\
+\text{Level 1:} \quad \& (f_1, (f_0, x_0)) \\
+\text{Level 2:} \quad \& (f_2, (f_1, (f_0, x_0))) \\
 & \vdots
 \end{aligned}$$
 
@@ -282,9 +284,9 @@ Reification corresponds to the passage from $(f_k, x_k)$ to explicit data: the f
 The full tower structure arises when the meta-rule $\varphi$ is itself an element of the function space and is subject to modification. Define the hierarchy:
 
 $$\begin{aligned}
-\varphi_0 &: F_0 \times X \to F_0 & \quad & \text{(meta-rule: updates } f_0\text{)} \\
-\varphi_1 &: F_1 \times (F_0 \times X) \to F_1 & \quad & \text{(meta-meta-rule: updates } \varphi_0\text{)} \\
-\varphi_2 &: F_2 \times (F_1 \times F_0 \times X) \to F_2 & \quad & \text{(meta-meta-meta-rule)} \\
+\varphi_0 &: F_0 \times X \to F_0 \& \quad \& \text{(meta-rule: updates } f_0\text{)} \\
+\varphi_1 &: F_1 \times (F_0 \times X) \to F_1 \& \quad \& \text{(meta-meta-rule: updates } \varphi_0\text{)} \\
+\varphi_2 &: F_2 \times (F_1 \times F_0 \times X) \to F_2 \& \quad \& \text{(meta-meta-meta-rule)} \\
 & \vdots
 \end{aligned}$$
 
@@ -310,7 +312,7 @@ After this reflective operation, level 0 effectively runs at "double speed." The
 
 In the $(f, x)$ notation, we have a meta-rule $\varphi_1$ at level 1 such that:
 
-\[\varphi_1(f_1, (f_0, x_0)) = \begin{cases} f_1 & \text{if no reflective operation occurs,} \\ f_1' & \text{if level 0 triggers a reflective operation.} \end{cases}\]
+\[\varphi_1(f_1, (f_0, x_0)) = \begin{cases} f_1 \& \text{if no reflective operation occurs,} \\ f_1' \& \text{if level 0 triggers a reflective operation.} \end{cases}\]
 
 This is precisely the structure described abstractly in Section 12.4.3.
 
@@ -361,15 +363,15 @@ The main ideas of this chapter:
 \end{enumerate}
 
 \begin{enumerate}
-\item \textbf{Lazy instantiation} (des Rivières & Smith, 1984) resolves the implementation problem: tower levels are created only when needed.
+\item \textbf{Lazy instantiation} (des Rivières \& Smith, 1984) resolves the implementation problem: tower levels are created only when needed.
 \end{enumerate}
 
 \begin{enumerate}
-\item \textbf{Denotational semantics} (Wand & Friedman, 1986): the tower's meaning is a fixed point $I^\textit{ = \Phi(I^})$ of an operator on interpretation functions, resolving the apparent circularity.
+\item \textbf{Denotational semantics} (Wand \& Friedman, 1986): the tower's meaning is a fixed point $I^\textit{ = \Phi(I^})$ of an operator on interpretation functions, resolving the apparent circularity.
 \end{enumerate}
 
 \begin{enumerate}
-\item \textbf{Collapsing towers} (Amin & Rompf, 2018): partial evaluation eliminates interpretive overhead, collapsing $N$ levels into a single compiled pass via the Futamura projections.
+\item \textbf{Collapsing towers} (Amin \& Rompf, 2018): partial evaluation eliminates interpretive overhead, collapsing $N$ levels into a single compiled pass via the Futamura projections.
 \end{enumerate}
 
 \begin{enumerate}
@@ -435,7 +437,7 @@ For the foundations:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{Wand & Friedman (1988)} provides the semantic foundation, showing that the tower has a well-defined fixed-point meaning. More accessible than Smith's original work.
+\item \textbf{Wand \& Friedman (1988)} provides the semantic foundation, showing that the tower has a well-defined fixed-point meaning. More accessible than Smith's original work.
 \end{itemize}
 
 For von Neumann's ideas:
@@ -455,7 +457,7 @@ For partial evaluation and tower collapsing:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{Amin & Rompf (2018)} is accessible and demonstrates the practical power of collapsing towers. The paper includes working Scala code.
+\item \textbf{Amin \& Rompf (2018)} is accessible and demonstrates the practical power of collapsing towers. The paper includes working Scala code.
 \end{itemize}
 
 For self-modifying systems:

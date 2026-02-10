@@ -19,10 +19,12 @@ For each $e \in \mathbb{N}$, we write $\varphi_e$ for the partial function $\mat
 
 Some conventions:
 
-- $\varphi_e(x)\!\downarrow$ means the computation of program $e$ on input $x$ halts (is defined).
-- $\varphi_e(x)\!\uparrow$ means it diverges (is undefined).
-- $\varphi_e = \varphi_{e'}$ means the two programs compute the same partial function: for all $x$, $\varphi_e(x)\!\downarrow = \varphi_{e'}(x)\!\downarrow$ or both diverge.
-- $W_e = \text{dom}(\varphi_e) = \{ x : \varphi_e(x)\!\downarrow\} $ is the domain of program $e$.
+\begin{itemize}
+\item $\varphi_e(x)\!\downarrow$ means the computation of program $e$ on input $x$ halts (is defined).
+\item $\varphi_e(x)\!\uparrow$ means it diverges (is undefined).
+\item $\varphi_e = \varphi_{e'}$ means the two programs compute the same partial function: for all $x$, $\varphi_e(x)\!\downarrow = \varphi_{e'}(x)\!\downarrow$ or both diverge.
+\item $W_e = \text{dom}(\varphi_e) = \{ x : \varphi_e(x)\!\downarrow\} $ is the domain of program $e$.
+\end{itemize}
 \end{definition}
 
 \begin{remark}
@@ -92,7 +94,6 @@ We verify this is a fixed point. For any $y$:
 The first equality is the definition of $e$. The second is the s-m-n theorem. The third is the definition of $d_0$. The fourth substitutes $e = s(d_0, d_0)$ back.
 
 Since this holds for all $y$, we have $\varphi_e = \varphi_{f(e)}$. 
-\end{proof}
 
 \subsection{11.3.3 Dissecting the Proof}
 
@@ -150,7 +151,6 @@ The function $f$ is total computable: we can effectively construct, from any num
 By the recursion theorem, there exists $e$ with $\varphi_e = \varphi_{f(e)}$. But $\varphi_{f(e)}$ is the constant function that always outputs $e$. Therefore $\varphi_e(x) = e$ for all $x$.
 
 The program $e$ outputs its own index on every input. In particular, on input 0 (or with no input), it prints $e$ --- its own source code. This is a quine. 
-\end{proof}
 
 \textbf{Explicit construction (without invoking the full theorem).} Following the proof of Theorem 11.4 directly:
 
@@ -219,7 +219,7 @@ is not computable (not decidable).
 
 Define the total computable function:
 
-\[f(e) = \begin{cases} b & \text{if } e \in A, \\ a & \text{if } e \notin A. \end{cases}\]
+\[f(e) = \begin{cases} b \& \text{if } e \in A, \\ a \& \text{if } e \notin A. \end{cases}\]
 
 This is computable because we assumed $A$ is decidable.
 
@@ -229,11 +229,11 @@ By the recursion theorem, there exists $e^\textit{$ with $\varphi_{e^}} = \varph
 - If $e^\textit{ \notin A$, then $f(e^}) = a$, so $\varphi_{e^\textit{} = \varphi_a \in \mathcal{A}$, contradicting $e^} \notin A$.
 
 Either case is a contradiction, so $A$ is not decidable. 
-\end{proof}
 
 This is one of the cleanest proofs of Rice's theorem. The recursion theorem provides the fixed point that the diagonalization needs.
 
 \end{theorem}
+
 
 \subsection{11.7.3 Application 3: Fixed Points in Learning Theory}
 
@@ -266,12 +266,13 @@ Let $\varphi$ be any computable meta-rule, viewed as a total computable function
 
 That is, $f^\textit{ = \varphi_{e^}}$ is an extensional fixed point of the meta-rule: applying $\varphi$ to $f^\textit{$ yields a program that computes the same function as $f^}$.
 
+
+\end{theorem}
+
 \begin{proof}
 This is an immediate application of Kleene's recursion theorem (Theorem 11.4) with $f = \varphi$. 
 
 \end{proof}
-
-\end{theorem}
 
 \subsection{11.8.2 Consequences for the $(f, x)$ Framework}
 

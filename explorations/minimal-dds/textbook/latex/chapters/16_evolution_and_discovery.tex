@@ -37,11 +37,13 @@ The scientific method is, at its core, an iterated process:
 
 \begin{definition}[Scientific discovery system]
 A \textbf{scientific discovery system} is a tuple $(H, E, f, g)$ where:
-- $H$ is the space of hypotheses (theories, models, explanations).
-- $E$ is the space of evidence (experimental results, observations).
-- $f: H \times E \to H$ is the \textbf{revision function}: how hypotheses update given evidence.
-- $g: H \to E$ is the \textbf{prediction function}: what evidence a hypothesis predicts.
+\begin{itemize}
+\item $H$ is the space of hypotheses (theories, models, explanations).
+\item $E$ is the space of evidence (experimental results, observations).
+\item $f: H \times E \to H$ is the \textbf{revision function}: how hypotheses update given evidence.
+\item $g: H \to E$ is the \textbf{prediction function}: what evidence a hypothesis predicts.
 
+\end{itemize}
 The dynamics are:
 
 \[h_{n+1} = f(h_n, e_n), \qquad e_n = g(h_n) + \xi_n,\]
@@ -238,7 +240,7 @@ Selection is based on novelty, not fitness:
 \[P_{t+1} = \text{select}(P_t, \mathrm{Nov}).\]
 \end{definition}
 
-\begin{theorem}[Lehman & Stanley, 2011, informal]
+\begin{theorem}[Lehman \& Stanley, 2011, informal]
 On deceptive fitness landscapes, novelty search often outperforms fitness-based search. By ignoring the misleading fitness gradient, novelty search explores broadly and stumbles upon the global optimum.
 \end{theorem}
 
@@ -255,7 +257,7 @@ This connects to the exploration-exploitation trade-off. Pure exploitation (gree
 \textbf{Quality-Diversity (QD)} algorithms seek the best of both worlds: collections of solutions that are both \textbf{high-quality} and \textbf{diverse}.
 
 \begin{definition}[MAP-Elites]
-\textbf{MAP-Elites} (Mouret & Clune, 2015) maintains a grid of cells, each representing a region of \textbf{behavior space}. For each cell, the algorithm stores the highest-fitness individual whose behavior falls in that region.
+\textbf{MAP-Elites} (Mouret \& Clune, 2015) maintains a grid of cells, each representing a region of \textbf{behavior space}. For each cell, the algorithm stores the highest-fitness individual whose behavior falls in that region.
 
 Algorithm:
 1. \textbf{Initialize}: Randomly generate solutions; place each in the appropriate cell.
@@ -421,11 +423,13 @@ The AI Scientist exhibits both \textbf{novelty generation} (new ideas, experimen
 
 \begin{definition}[Experiment tree]
 The \textbf{experiment tree} is a tree where:
-- Each node is an experimental state (code, results, manuscript draft).
-- Each edge is an action (modify code, run experiment, revise text).
-- The tree expands via LLM-proposed actions.
-- An \textbf{experiment manager agent} guides search.
+\begin{itemize}
+\item Each node is an experimental state (code, results, manuscript draft).
+\item Each edge is an action (modify code, run experiment, revise text).
+\item The tree expands via LLM-proposed actions.
+\item An \textbf{experiment manager agent} guides search.
 
+\end{itemize}
 This is \textbf{Monte Carlo Tree Search for science}---balancing exploration of new experimental directions with exploitation of promising results.
 \end{definition}
 
@@ -543,9 +547,11 @@ For a quality-diversity system with quality $Q_t$ and diversity $D_t$ at generat
 
 \[\lambda_{QD} = \lim_{t \to \infty} \frac{1}{t} \log \frac{Q_t \cdot D_t}{Q_0 \cdot D_0}.\]
 
-- $\lambda_{QD} < 0$: System collapses (quality or diversity decreasing).
-- $\lambda_{QD} = 0$: Equilibrium (quality-diversity maintained).
-- $\lambda_{QD} > 0$: Expansion (both improving)---the open-ended regime.
+\begin{itemize}
+\item $\lambda_{QD} < 0$: System collapses (quality or diversity decreasing).
+\item $\lambda_{QD} = 0$: Equilibrium (quality-diversity maintained).
+\item $\lambda_{QD} > 0$: Expansion (both improving)---the open-ended regime.
+\end{itemize}
 \end{definition}
 
 \subsection{16.8.3 The Role of LLMs}

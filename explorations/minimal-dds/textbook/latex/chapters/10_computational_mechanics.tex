@@ -68,6 +68,12 @@ The causal state $\epsilon(\overleftarrow{x})$ is a sufficient statistic of the 
 
 \[P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}) = P(\overrightarrow{X} \mid S = \epsilon(\overleftarrow{x})).\]
 
+
+\end{proposition}
+
+
+\end{proposition}
+
 \begin{proof}
 This follows immediately from the definition: the causal state is defined so that all pasts in the same equivalence class yield the same conditional future distribution. 
 
@@ -84,22 +90,19 @@ This is a crucial result: the causal states form the \textbf{coarsest} partition
 
 
 \end{proof}
-
-\end{proposition}
-
 \end{proof}
-
-\end{proposition}
 
 \section{The Epsilon-Machine}
 
 \begin{definition}[Epsilon-machine]
 The \textbf{epsilon-machine} ($\varepsilon$-machine) of a stationary process is the tuple $(\mathcal{S}, \mathcal{A}, \{ T^{(a)}\} _{a \in \mathcal{A}})$ where:
 
-- $\mathcal{S}$ is the set of causal states.
-- $\mathcal{A}$ is the process alphabet.
-- $T^{(a)}_{s,s'}$ is the \textbf{labeled transition probability}: the probability that, when the process is in causal state $s$, the next emitted symbol is $a$ and the next causal state is $s'$:
+\begin{itemize}
+\item $\mathcal{S}$ is the set of causal states.
+\item $\mathcal{A}$ is the process alphabet.
+\item $T^{(a)}_{s,s'}$ is the \textbf{labeled transition probability}: the probability that, when the process is in causal state $s$, the next emitted symbol is $a$ and the next causal state is $s'$:
 
+\end{itemize}
 \[T^{(a)}_{s,s'} = P(X_t = a, \, S_{t+1} = s' \mid S_t = s).\]
 
 The transition probabilities satisfy $\sum_{a \in \mathcal{A}} \sum_{s' \in \mathcal{S}} T^{(a)}_{s,s'} = 1$ for each $s$.
@@ -111,7 +114,6 @@ The epsilon-machine is \textbf{unifilar}: for each causal state $s \in \mathcal{
 In other words, if we know the current causal state and observe the next symbol, the next causal state is determined with certainty. This is a strong structural property that most HMMs do not possess.
 
 \textit{Proof sketch.} If the process is in causal state $s = \epsilon(\overleftarrow{x})$ and emits symbol $a$, then the new past is $\overleftarrow{x}a$. The new causal state is $\epsilon(\overleftarrow{x}a)$, which depends only on $s$ and $a$, not on the particular representative $\overleftarrow{x}$ of $s$. (This can be verified: if $\epsilon(\overleftarrow{x}) = \epsilon(\overleftarrow{x}')$, then $P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}) = P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}')$, and conditioning both sides on the first future symbol being $a$ yields $P(\overrightarrow{X}' \mid \overleftarrow{X}' = \overleftarrow{x}a) = P(\overrightarrow{X}' \mid \overleftarrow{X}' = \overleftarrow{x}'a)$, so $\epsilon(\overleftarrow{x}a) = \epsilon(\overleftarrow{x}'a)$.) Thus the successor state is a function of $(s, a)$, which is exactly unifilarity. 
-\end{proof}
 
 We can therefore write the successor state as a deterministic function:
 
@@ -121,10 +123,11 @@ We can therefore write the successor state as a deterministic function:
 
 \end{theorem}
 
+
 \begin{theorem}[Minimality and uniqueness]
 The epsilon-machine is the \textbf{unique} minimal unifilar HMM generating the process. Any other unifilar HMM that generates the same process has at least as many states, and any unifilar HMM with the same number of states is isomorphic to the epsilon-machine.
 
-This is the fundamental representation theorem of computational mechanics. The proof can be found in Shalizi & Crutchfield (2001), Theorem 1.
+This is the fundamental representation theorem of computational mechanics. The proof can be found in Shalizi \& Crutchfield (2001), Theorem 1.
 \end{theorem}
 
 \begin{remark}
@@ -180,8 +183,11 @@ The excess entropy can be expressed as:
 
 \[E = \sum_{k=1}^{\infty} \left[ H[X_k \mid X_1, \ldots, X_{k-1}] - h_\mu \right].\]
 
+
+\end{proposition}
+
 \begin{proof}
-Define $h_k = H[X_k \mid X_1, \ldots, X_{k-1}]$. This is the conditional entropy of the $k$-th symbol given all previous symbols. As $k \to \infty$, $h_k \to h_\mu$. The block entropy $H_L = H[X_1, \ldots, X_L] = \sum_{k=1}^{L} h_k$. The mutual information between past and future can be shown (Crutchfield & Feldman 2003) to equal $E = \lim_{L \to \infty} (H_L - L \cdot h_\mu) = \sum_{k=1}^{\infty} (h_k - h_\mu)$. Each term $h_k - h_\mu \geq 0$ since conditioning on more past can only reduce (or maintain) entropy. 
+Define $h_k = H[X_k \mid X_1, \ldots, X_{k-1}]$. This is the conditional entropy of the $k$-th symbol given all previous symbols. As $k \to \infty$, $h_k \to h_\mu$. The block entropy $H_L = H[X_1, \ldots, X_L] = \sum_{k=1}^{L} h_k$. The mutual information between past and future can be shown (Crutchfield \& Feldman 2003) to equal $E = \lim_{L \to \infty} (H_L - L \cdot h_\mu) = \sum_{k=1}^{\infty} (h_k - h_\mu)$. Each term $h_k - h_\mu \geq 0$ since conditioning on more past can only reduce (or maintain) entropy. 
 
 \begin{proposition}[Bounds]
 The excess entropy satisfies:
@@ -195,8 +201,6 @@ The lower bound $E = 0$ holds for IID processes (no temporal structure). The upp
 
 \end{proof}
 
-\end{proposition}
-
 \section{The Complexity-Entropy Plane}
 
 A powerful way to visualize and classify processes is to plot them in the \textbf{$(h_\mu, C_\mu)$ plane}: the horizontal axis is the entropy rate (irreducible randomness) and the vertical axis is the statistical complexity (memory cost of optimal prediction).
@@ -209,7 +213,7 @@ The key regions are:
 \item \textbf{Upper middle region} (intermediate $h_\mu$, high $C_\mu$): \textbf{Complex processes}. These are neither trivially ordered nor trivially random. They have significant internal structure requiring substantial memory to track, yet remain partially unpredictable. This is the "edge of chaos" region.
 \end{itemize}
 
-The bottom edge of the plane ($C_\mu = 0$) is occupied only by IID processes (the only processes requiring zero memory). Not all points in the plane are achievable: there are upper bounds on $C_\mu$ as a function of $h_\mu$ (see Feldman & Crutchfield 2003 for detailed analysis of the allowed region).
+The bottom edge of the plane ($C_\mu = 0$) is occupied only by IID processes (the only processes requiring zero memory). Not all points in the plane are achievable: there are upper bounds on $C_\mu$ as a function of $h_\mu$ (see Feldman \& Crutchfield 2003 for detailed analysis of the allowed region).
 
 The complexity-entropy diagram provides a principled answer to the informal notion that "complexity lies between order and chaos." Processes with the richest computational structure are neither the most predictable nor the most random.
 
@@ -610,13 +614,13 @@ For getting started:
 \end{itemize}
 
 \begin{itemize}
-\item \textbf{Shalizi & Crutchfield (2001)} is the comprehensive technical reference. Sections 1--3 are accessible; later sections require more mathematical maturity. Essential for anyone wanting to use the theory rigorously.
+\item \textbf{Shalizi \& Crutchfield (2001)} is the comprehensive technical reference. Sections 1--3 are accessible; later sections require more mathematical maturity. Essential for anyone wanting to use the theory rigorously.
 \end{itemize}
 
 For practical inference:
 
 \begin{itemize}
-\item \textbf{Shalizi & Klinkner (2004)} describes the CSSR algorithm with implementation details. The companion software (written in Python) is available online.
+\item \textbf{Shalizi \& Klinkner (2004)} describes the CSSR algorithm with implementation details. The companion software (written in Python) is available online.
 \end{itemize}
 
 \begin{itemize}
