@@ -23,9 +23,10 @@
 #define HIDDEN_DIM   2048
 #define MAX_SEQ_LEN  128
 #define SEQ_LEN      64    /* Training sequence length */
-#define N_STEPS      15000
-#define EVAL_EVERY   2500
-#define GEN_EVERY    5000
+#define BATCH_SIZE   8     /* Mini-batch size (sequences per step) */
+#define N_STEPS      5000
+#define EVAL_EVERY   1000
+#define GEN_EVERY    2500
 #define GEN_LEN      200
 #define LR           3e-4f   /* Lower LR for larger model */
 #define WEIGHT_DECAY 0.01f
@@ -59,9 +60,10 @@ typedef struct {
     const KernelDispatch *kernels;
 
     /* Saved for backward */
-    int   *saved_tokens;
+    int   *saved_tokens;        /* [batch_size * seq_len] */
+    int    saved_batch_size;
     int    saved_seq_len;
-    Tensor *saved_embed;        /* [seq_len x dim] after embedding */
+    Tensor *saved_embed;        /* [batch_size * seq_len x dim] */
 } GPTModel;
 
 /* Forward declaration */
@@ -134,50 +136,60 @@ static void gpt_set_qat(GPTModel *model, bool use_qat) {
 }
 
 /*
- * Forward pass:
- *   1. Token + position embedding
- *   2. Through N transformer blocks (causal attention)
- *   3. Final RMSNorm
- *   4. Output projection -> logits [seq_len x vocab_size]
+ * Forward pass with mini-batch support.
+ *
+ * tokens: [batch_size * seq_len] flattened token array.
+ *   Sequences are contiguous: tokens[b*seq_len .. (b+1)*seq_len-1] is sequence b.
+ * Returns logits: [batch_size * seq_len, vocab_size]
  */
-static Tensor *gpt_forward(GPTModel *m, const int *tokens, int seq_len) {
+static Tensor *gpt_forward(GPTModel *m, const int *tokens,
+                            int batch_size, int seq_len) {
     assert(seq_len <= m->max_seq_len);
+    int total_tokens = batch_size * seq_len;
 
     /* Save tokens for backward */
     if (m->saved_tokens) free(m->saved_tokens);
-    m->saved_tokens = (int *)malloc(seq_len * sizeof(int));
-    memcpy(m->saved_tokens, tokens, seq_len * sizeof(int));
+    m->saved_tokens = (int *)malloc(total_tokens * sizeof(int));
+    memcpy(m->saved_tokens, tokens, total_tokens * sizeof(int));
+    m->saved_batch_size = batch_size;
     m->saved_seq_len = seq_len;
 
-    /* 1. Embedding: x[s] = token_emb[tokens[s]] + pos_emb[s] */
-    Tensor *x = tensor_create(seq_len, m->dim);
-    for (int s = 0; s < seq_len; s++) {
-        int tok = tokens[s];
-        if (tok < 0 || tok >= m->vocab_size) tok = 0;
-        for (int d = 0; d < m->dim; d++) {
-            x->data[s * m->dim + d] =
-                m->token_emb->data[tok * m->dim + d] +
-                m->pos_emb->data[s * m->dim + d];
+    /*
+     * 1. Embedding: x[b*S+s] = token_emb[tokens[b*S+s]] + pos_emb[s]
+     *    Position embedding uses RELATIVE position s within each sequence.
+     */
+    Tensor *x = tensor_create(total_tokens, m->dim);
+    for (int b = 0; b < batch_size; b++) {
+        for (int s = 0; s < seq_len; s++) {
+            int idx = b * seq_len + s;
+            int tok = tokens[idx];
+            if (tok < 0 || tok >= m->vocab_size) tok = 0;
+            for (int d = 0; d < m->dim; d++) {
+                x->data[idx * m->dim + d] =
+                    m->token_emb->data[tok * m->dim + d] +
+                    m->pos_emb->data[s * m->dim + d];  /* s, not idx */
+            }
         }
     }
 
     /* Save embedding output for backward */
     if (m->saved_embed) tensor_free(m->saved_embed);
-    m->saved_embed = tensor_create(seq_len, m->dim);
+    m->saved_embed = tensor_create(total_tokens, m->dim);
     tensor_copy(m->saved_embed, x);
 
-    /* 2. Transformer blocks */
+    /* 2. Transformer blocks — pass batch_size so attention is per-sequence */
     for (int i = 0; i < m->n_layers; i++) {
-        Tensor *next = transformer_block_forward(m->blocks[i], x, seq_len);
+        Tensor *next = transformer_block_forward(m->blocks[i], x,
+                                                  batch_size, seq_len);
         tensor_free(x);
         x = next;
     }
 
-    /* 3. Final norm */
+    /* 3. Final norm — batch-agnostic */
     Tensor *normed = rmsnorm_forward(m->final_norm, x);
     tensor_free(x);
 
-    /* 4. Output head: [seq_len x dim] -> [seq_len x vocab_size] */
+    /* 4. Output head: [B*S x dim] -> [B*S x vocab_size] */
     Tensor *logits = qat_linear_forward(m->output_head, normed);
     tensor_free(normed);
 
@@ -185,35 +197,43 @@ static Tensor *gpt_forward(GPTModel *m, const int *tokens, int seq_len) {
 }
 
 /*
- * Backward pass.
- * grad_logits: [seq_len x vocab_size]
+ * Backward pass with mini-batch support.
+ * grad_logits: [batch_size * seq_len, vocab_size]
  */
 static void gpt_backward(GPTModel *m, const Tensor *grad_logits) {
+    int batch_size = m->saved_batch_size;
     int seq_len = m->saved_seq_len;
 
-    /* Output head backward */
+    /* Output head backward — batch-agnostic */
     Tensor *grad = qat_linear_backward(m->output_head, grad_logits);
 
-    /* Final norm backward */
+    /* Final norm backward — batch-agnostic */
     Tensor *grad2 = rmsnorm_backward(m->final_norm, grad);
     tensor_free(grad);
 
     /* Transformer blocks backward (reverse order) */
     for (int i = m->n_layers - 1; i >= 0; i--) {
-        Tensor *prev = transformer_block_backward(m->blocks[i], grad2, seq_len);
+        Tensor *prev = transformer_block_backward(m->blocks[i], grad2,
+                                                   batch_size, seq_len);
         tensor_free(grad2);
         grad2 = prev;
     }
 
-    /* Scatter gradients to embeddings */
-    for (int s = 0; s < seq_len; s++) {
-        int tok = m->saved_tokens[s];
-        if (tok < 0 || tok >= m->vocab_size) tok = 0;
-        for (int d = 0; d < m->dim; d++) {
-            m->grad_token_emb->data[tok * m->dim + d] +=
-                grad2->data[s * m->dim + d];
-            m->grad_pos_emb->data[s * m->dim + d] +=
-                grad2->data[s * m->dim + d];
+    /*
+     * Scatter gradients to embeddings.
+     * Position embedding uses relative position s within each sequence.
+     */
+    for (int b = 0; b < batch_size; b++) {
+        for (int s = 0; s < seq_len; s++) {
+            int idx = b * seq_len + s;
+            int tok = m->saved_tokens[idx];
+            if (tok < 0 || tok >= m->vocab_size) tok = 0;
+            for (int d = 0; d < m->dim; d++) {
+                m->grad_token_emb->data[tok * m->dim + d] +=
+                    grad2->data[idx * m->dim + d];
+                m->grad_pos_emb->data[s * m->dim + d] +=  /* s, not idx */
+                    grad2->data[idx * m->dim + d];
+            }
         }
     }
 
@@ -334,43 +354,49 @@ static void text_to_tokens(const char *text, int len, int *tokens) {
  * ======================================================================== */
 
 /*
- * One training step:
- *   1. Sample a random sequence from data
- *   2. Forward: logits = model(tokens[0:seq_len-1])
- *   3. Loss: cross-entropy against tokens[1:seq_len]
+ * One training step with mini-batching:
+ *   1. Sample BATCH_SIZE random sequences from data
+ *   2. Forward: logits = model(input_tokens)  [B*S, vocab]
+ *   3. Loss: cross-entropy against next-token targets
  *   4. Backward
  *   5. Optimizer step
- *   Returns loss value.
+ *   Returns mean loss across all tokens in the batch.
  */
 static float train_step(GPTModel *model, Adam *opt,
                         const int *data, int data_len,
                         uint64_t *rng) {
     int seq_len = SEQ_LEN;
+    int batch_size = BATCH_SIZE;
+    int total_tokens = batch_size * seq_len;
 
-    /* Sample random starting position */
-    int start = (int)(rng_next(rng) % (data_len - seq_len - 1));
+    /* Build batched input and target arrays */
+    int *input_tokens = (int *)malloc(total_tokens * sizeof(int));
+    int *target_tokens = (int *)malloc(total_tokens * sizeof(int));
 
-    /* Input: tokens[start : start+seq_len] */
-    /* Target: tokens[start+1 : start+seq_len+1] */
-    const int *input_tokens = &data[start];
-    const int *target_tokens = &data[start + 1];
+    for (int b = 0; b < batch_size; b++) {
+        int start = (int)(rng_next(rng) % (data_len - seq_len - 1));
+        memcpy(&input_tokens[b * seq_len], &data[start],
+               seq_len * sizeof(int));
+        memcpy(&target_tokens[b * seq_len], &data[start + 1],
+               seq_len * sizeof(int));
+    }
 
     /* Zero gradients */
     gpt_zero_grad(model);
     adam_zero_grad(opt);
 
-    /* Forward */
-    Tensor *logits = gpt_forward(model, input_tokens, seq_len);
+    /* Forward — [B*S, vocab] */
+    Tensor *logits = gpt_forward(model, input_tokens, batch_size, seq_len);
 
-    /* Cross-entropy loss against next-token targets */
-    float *grad_logits = (float *)qat_calloc(seq_len * VOCAB_SIZE * sizeof(float));
+    /* Cross-entropy loss: treats all B*S tokens as independent samples */
+    float *grad_logits = (float *)qat_calloc(total_tokens * VOCAB_SIZE * sizeof(float));
     float loss = cross_entropy_loss(logits->data, target_tokens,
-                                     seq_len, VOCAB_SIZE, grad_logits);
+                                     total_tokens, VOCAB_SIZE, grad_logits);
 
     /* Backward */
-    Tensor *grad_tensor = tensor_wrap(grad_logits, seq_len, VOCAB_SIZE);
+    Tensor *grad_tensor = tensor_wrap(grad_logits, total_tokens, VOCAB_SIZE);
     gpt_backward(model, grad_tensor);
-    free(grad_tensor);  /* Only free struct, not data */
+    free(grad_tensor);
 
     /* Optimizer step */
     adam_step(opt);
@@ -378,6 +404,8 @@ static float train_step(GPTModel *model, Adam *opt,
 
     tensor_free(logits);
     qat_free(grad_logits);
+    free(input_tokens);
+    free(target_tokens);
 
     return loss;
 }
@@ -429,7 +457,7 @@ static EvalResult evaluate(GPTModel *model, const int *data, int data_len) {
         const int *input_tokens = &data[start];
         const int *target_tokens = &data[start + 1];
 
-        Tensor *logits = gpt_forward(model, input_tokens, seq_len);
+        Tensor *logits = gpt_forward(model, input_tokens, 1, seq_len);
         float loss = cross_entropy_loss(logits->data, target_tokens,
                                          seq_len, VOCAB_SIZE, grad_dummy);
         total_loss += loss;
@@ -517,7 +545,7 @@ static char *generate_text(GPTModel *model, const char *prompt,
 
     for (int i = 0; i < max_tokens; i++) {
         /* Forward through current sequence */
-        Tensor *logits = gpt_forward(model, tokens, cur_len);
+        Tensor *logits = gpt_forward(model, tokens, 1, cur_len);
 
         /* Sample from last position */
         int next = sample_token(&logits->data[(cur_len - 1) * VOCAB_SIZE],
@@ -575,7 +603,7 @@ static double estimate_flops_per_step(void) {
     double per_layer = 2.0 * DIM * (4.0 * DIM + 2.0 * HIDDEN_DIM);
     double fwd_per_token = N_LAYERS * per_layer + 2.0 * DIM * VOCAB_SIZE;
     double fwd_bwd_per_token = 3.0 * fwd_per_token;
-    return fwd_bwd_per_token * SEQ_LEN;
+    return fwd_bwd_per_token * SEQ_LEN * BATCH_SIZE;
 }
 
 static TrainResult train_model(const char *name, GPTModel *model,
@@ -604,7 +632,7 @@ static TrainResult train_model(const char *name, GPTModel *model,
 
         if (step % EVAL_EVERY == 0 || step == N_STEPS - 1) {
             EvalResult eval = evaluate(model, val_data, val_len);
-            double tok_per_sec = SEQ_LEN / step_time;
+            double tok_per_sec = (double)(SEQ_LEN * BATCH_SIZE) / step_time;
             printf("  Step %4d/%d: loss=%.4f (smooth=%.4f), "
                    "val_ppl=%.2f, bpb=%.3f, "
                    "%.1f ms/step, %.0f tok/s\n",
@@ -625,7 +653,7 @@ static TrainResult train_model(const char *name, GPTModel *model,
     double total_time = timer_sec() - t_start;
     result.total_time_sec = total_time;
     result.ms_per_step = (total_time / N_STEPS) * 1000.0;
-    result.tokens_per_sec = (double)SEQ_LEN / (result.ms_per_step / 1000.0);
+    result.tokens_per_sec = (double)(SEQ_LEN * BATCH_SIZE) / (result.ms_per_step / 1000.0);
     result.tflops = estimate_flops_per_step() / (result.ms_per_step / 1000.0) / 1e12;
 
     EvalResult final_eval = evaluate(model, val_data, val_len);
@@ -707,12 +735,14 @@ int main(int argc, char **argv) {
     GPTModel *tmp = gpt_create(&kd, rng_tmp);
     int n_params = gpt_count_params(tmp);
     double flops_per_step = estimate_flops_per_step();
-    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d, seq_len=%d\n",
-           N_LAYERS, DIM, N_HEADS, HIDDEN_DIM, SEQ_LEN);
+    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d\n",
+           N_LAYERS, DIM, N_HEADS, HIDDEN_DIM);
+    printf("Batch: %d seqs x %d tokens = %d tokens/step\n",
+           BATCH_SIZE, SEQ_LEN, BATCH_SIZE * SEQ_LEN);
     printf("Parameters: %d (%.1fK, %.2fM)\n",
            n_params, n_params / 1e3, n_params / 1e6);
     printf("Est. FLOPs/step: %.2fM (fwd+bwd, %d tokens)\n",
-           flops_per_step / 1e6, SEQ_LEN);
+           flops_per_step / 1e6, BATCH_SIZE * SEQ_LEN);
     printf("Random baseline: ppl=%.0f, bpb=%.2f\n",
            (float)VOCAB_SIZE, logf((float)VOCAB_SIZE) / logf(2.0f));
     gpt_free(tmp);

@@ -265,7 +265,7 @@ static Tensor *timed_block_backward(TransformerBlock *block, const Tensor *grad_
     /* Attention backward (use the built-in, time the whole thing
      * minus the QATLinear calls which we time separately) */
     double t_before_attn_bwd = timer_sec();
-    Tensor *grad_normed1 = attention_backward(block->attn, grad_after_attn, seq_len);
+    Tensor *grad_normed1 = attention_backward(block->attn, grad_after_attn, 1, seq_len);
     double attn_bwd_total = timer_sec() - t_before_attn_bwd;
     /* Attention backward contains 4 qat_linear_backward calls internally.
      * We can't easily separate them without re-implementing attention_backward.
@@ -294,6 +294,7 @@ typedef struct {
     QATLinear *output_head;
     const KernelDispatch *kernels;
     int *saved_tokens;
+    int saved_batch_size;
     int saved_seq_len;
     Tensor *saved_embed;
 } GPTModel;
@@ -431,9 +432,10 @@ int main(void) {
             if (model->saved_tokens) free(model->saved_tokens);
             model->saved_tokens = (int *)malloc(SEQ_LEN * sizeof(int));
             memcpy(model->saved_tokens, &tokens[start], SEQ_LEN * sizeof(int));
+            model->saved_batch_size = 1;
             model->saved_seq_len = SEQ_LEN;
             for (int i = 0; i < N_LAYERS; i++) {
-                Tensor *next = transformer_block_forward(model->blocks[i], x, SEQ_LEN);
+                Tensor *next = transformer_block_forward(model->blocks[i], x, 1, SEQ_LEN);
                 tensor_free(x); x = next;
             }
             Tensor *normed = rmsnorm_forward(model->final_norm, x); tensor_free(x);
@@ -445,7 +447,7 @@ int main(void) {
             Tensor *grad = qat_linear_backward(model->output_head, gt);
             Tensor *grad2 = rmsnorm_backward(model->final_norm, grad); tensor_free(grad);
             for (int i = N_LAYERS - 1; i >= 0; i--) {
-                Tensor *prev = transformer_block_backward(model->blocks[i], grad2, SEQ_LEN);
+                Tensor *prev = transformer_block_backward(model->blocks[i], grad2, 1, SEQ_LEN);
                 tensor_free(grad2); grad2 = prev;
             }
             tensor_free(grad2); free(gt);
@@ -478,6 +480,7 @@ int main(void) {
             if (model->saved_tokens) free(model->saved_tokens);
             model->saved_tokens = (int *)malloc(SEQ_LEN * sizeof(int));
             memcpy(model->saved_tokens, &tokens[start], SEQ_LEN * sizeof(int));
+            model->saved_batch_size = 1;
             model->saved_seq_len = SEQ_LEN;
             t_embedding += timer_sec() - t0;
 

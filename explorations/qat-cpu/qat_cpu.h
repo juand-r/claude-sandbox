@@ -435,9 +435,10 @@ typedef struct {
 Attention *attention_create(int dim, int n_heads,
                             const KernelDispatch *kd, uint64_t *rng_state);
 void       attention_free(Attention *attn);
-Tensor    *attention_forward(Attention *attn, const Tensor *input, int seq_len);
+Tensor    *attention_forward(Attention *attn, const Tensor *input,
+                             int batch_size, int seq_len);
 Tensor    *attention_backward(Attention *attn, const Tensor *grad_output,
-                              int seq_len);
+                              int batch_size, int seq_len);
 void       attention_zero_grad(Attention *attn);
 
 /* ========================================================================
@@ -471,10 +472,11 @@ TransformerBlock *transformer_block_create(int dim, int hidden_dim, int n_heads,
                                            uint64_t *rng_state);
 void              transformer_block_free(TransformerBlock *block);
 Tensor           *transformer_block_forward(TransformerBlock *block,
-                                            const Tensor *input, int seq_len);
+                                            const Tensor *input,
+                                            int batch_size, int seq_len);
 Tensor           *transformer_block_backward(TransformerBlock *block,
                                              const Tensor *grad_output,
-                                             int seq_len);
+                                             int batch_size, int seq_len);
 void              transformer_block_zero_grad(TransformerBlock *block);
 
 /* ========================================================================
