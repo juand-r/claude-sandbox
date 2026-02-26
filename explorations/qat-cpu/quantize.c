@@ -18,6 +18,7 @@
  */
 void quantize_per_channel(const float *src, int rows, int cols,
                           int8_t *dst, float *scales) {
+    #pragma omp parallel for schedule(static) if(rows >= 8)
     for (int i = 0; i < rows; i++) {
         /* Find absmax of this row */
         float amax = 0.0f;
@@ -62,6 +63,7 @@ void quantize_per_token(const float *src, int rows, int cols,
 void dequantize_int32(const int32_t *acc, int rows, int cols,
                       const float *scale_act, const float *scale_wt,
                       float *out) {
+    #pragma omp parallel for schedule(static) if(rows >= 8)
     for (int i = 0; i < rows; i++) {
         float sa = scale_act[i];
         for (int j = 0; j < cols; j++) {
@@ -74,6 +76,7 @@ void dequantize_int32(const int32_t *acc, int rows, int cols,
  * Add bias: out[i][j] += bias[j]
  */
 void add_bias(float *out, int rows, int cols, const float *bias) {
+    #pragma omp parallel for schedule(static) if(rows >= 8)
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             out[i * cols + j] += bias[j];

@@ -5,8 +5,8 @@
 # the right instructions without affecting other translation units.
 
 CC = gcc
-CFLAGS_BASE = -std=c11 -Wall -Wextra -O2 -g -D_GNU_SOURCE
-LDFLAGS = -lm
+CFLAGS_BASE = -std=c11 -Wall -Wextra -O2 -g -D_GNU_SOURCE -fopenmp
+LDFLAGS = -lm -fopenmp
 
 # ISA-specific flags
 CFLAGS_SCALAR = $(CFLAGS_BASE)

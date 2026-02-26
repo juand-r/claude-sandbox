@@ -26,6 +26,7 @@ void gemm_int8_avx2(int M, int N, int K,
                     int32_t *C, int ldc) {
     int j_end_8 = N - (N % 8);
 
+    #pragma omp parallel for schedule(static) if(M >= 8)
     for (int i = 0; i < M; i++) {
         /* Process 8 output columns at a time */
         for (int j = 0; j < j_end_8; j += 8) {
@@ -75,6 +76,7 @@ void gemm_fp32_avx2(int M, int N, int K,
 
     int j_end_8 = N - (N % 8);
 
+    #pragma omp parallel for schedule(static) if(M >= 8)
     for (int i = 0; i < M; i++) {
         /* Scale C row by beta */
         for (int j = 0; j < j_end_8; j += 8) {
