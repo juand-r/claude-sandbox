@@ -26,9 +26,9 @@ OBJ_VNNI   = $(SRC_VNNI:.c=.o)
 OBJ_ALL    = $(OBJ_SCALAR) $(OBJ_AVX2) $(OBJ_VNNI)
 
 # Targets
-.PHONY: all test bench clean
+.PHONY: all test bench train clean
 
-all: test_qat bench_qat
+all: test_qat train_qat
 
 # Compilation rules by ISA
 $(OBJ_SCALAR): %.o: %.c qat_cpu.h
@@ -47,17 +47,20 @@ test_main.o: test_main.c qat_cpu.h
 test_qat: test_main.o $(OBJ_ALL)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
-# Benchmark binary (same as test for now, separate target for future)
-bench_qat: test_main.o $(OBJ_ALL)
+# Training binary
+train.o: train.c qat_cpu.h
+	$(CC) $(CFLAGS_SCALAR) -c $< -o $@
+
+train_qat: train.o $(OBJ_ALL)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 # Run tests
 test: test_qat
 	./test_qat
 
-# Run benchmarks
-bench: bench_qat
-	./bench_qat
+# Run training
+train: train_qat
+	./train_qat
 
 clean:
-	rm -f *.o test_qat bench_qat
+	rm -f *.o test_qat train_qat

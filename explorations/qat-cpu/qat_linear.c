@@ -45,6 +45,9 @@ QATLinear *qat_linear_create(int in_features, int out_features,
     /* saved_input is allocated during forward */
     layer->saved_input = NULL;
 
+    /* Default: use INT8 quantized forward */
+    layer->use_qat = true;
+
     return layer;
 }
 
@@ -110,6 +113,27 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
     if (layer->saved_input) tensor_free(layer->saved_input);
     layer->saved_input = tensor_create(batch, in_f);
     tensor_copy(layer->saved_input, input);
+
+    /* FP32-only forward path (no quantization) */
+    if (!layer->use_qat) {
+        /* Transpose weight: [out_f x in_f] -> [in_f x out_f] */
+        float *weight_t = (float *)qat_alloc((size_t)in_f * out_f * sizeof(float));
+        transpose_fp32(layer->weight->data, out_f, in_f, weight_t);
+
+        Tensor *output = tensor_zeros(batch, out_f);
+        layer->kernels->fp32_gemm(batch, out_f, in_f,
+                                   1.0f,
+                                   input->data, in_f,
+                                   weight_t, out_f,
+                                   0.0f,
+                                   output->data, out_f);
+        qat_free(weight_t);
+
+        if (layer->bias) {
+            add_bias(output->data, batch, out_f, layer->bias->data);
+        }
+        return output;
+    }
 
     /* 1. Quantize weights: [out_f x in_f] -> INT8 with per-channel scales */
     quantize_per_channel(layer->weight->data, out_f, in_f,

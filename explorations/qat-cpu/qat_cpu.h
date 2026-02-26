@@ -306,6 +306,9 @@ typedef struct {
 
     /* Kernel dispatch (pointer to global dispatch table) */
     const KernelDispatch *kernels;
+
+    /* If true, use INT8 quantized forward. If false, pure FP32 forward. */
+    bool use_qat;
 } QATLinear;
 
 /* Create a QAT linear layer. Weights initialized with Kaiming uniform. */
@@ -414,6 +417,8 @@ typedef struct {
     Tensor *saved_k;     /* [batch x dim] */
     Tensor *saved_v;     /* [batch x dim] */
     Tensor *saved_attn;  /* [batch*n_heads x seq_len] attention weights */
+
+    bool causal;         /* If true, apply causal mask (lower-triangular) */
 } Attention;
 
 Attention *attention_create(int dim, int n_heads,

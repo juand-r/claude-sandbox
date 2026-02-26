@@ -269,6 +269,8 @@ Attention *attention_create(int dim, int n_heads,
     attn->n_heads = n_heads;
     attn->head_dim = dim / n_heads;
 
+    attn->causal = false;  /* Default: full attention (no mask) */
+
     attn->wq = qat_linear_create(dim, dim, false, kd, rng_state);
     attn->wk = qat_linear_create(dim, dim, false, kd, rng_state);
     attn->wv = qat_linear_create(dim, dim, false, kd, rng_state);
@@ -354,6 +356,15 @@ Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
                            k->data[s2 * dim + h * head_dim + d];
                 }
                 scores[s1 * seq_len + s2] = dot * scale;
+            }
+        }
+
+        /* Apply causal mask: position s1 can only attend to s2 <= s1 */
+        if (attn->causal) {
+            for (int s1 = 0; s1 < seq_len; s1++) {
+                for (int s2 = s1 + 1; s2 < seq_len; s2++) {
+                    scores[s1 * seq_len + s2] = -1e9f;
+                }
             }
         }
 
