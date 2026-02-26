@@ -270,6 +270,7 @@ Attention *attention_create(int dim, int n_heads,
     attn->head_dim = dim / n_heads;
 
     attn->causal = false;  /* Default: full attention (no mask) */
+    attn->kernels = kd;
 
     attn->wq = qat_linear_create(dim, dim, false, kd, rng_state);
     attn->wk = qat_linear_create(dim, dim, false, kd, rng_state);
@@ -292,11 +293,49 @@ void attention_free(Attention *attn) {
     free(attn);
 }
 
+/*
+ * Helper: extract head slice from interleaved [seq x dim] to contiguous [seq x head_dim].
+ * src[s][h*head_dim + d] -> dst[s * head_dim + d]
+ */
+static void extract_head(const float *src, int seq_len, int dim,
+                          int head_dim, int h, float *dst) {
+    for (int s = 0; s < seq_len; s++) {
+        memcpy(&dst[s * head_dim],
+               &src[s * dim + h * head_dim],
+               head_dim * sizeof(float));
+    }
+}
+
+/*
+ * Helper: scatter head slice from contiguous [seq x head_dim] back to interleaved [seq x dim].
+ * src[s * head_dim + d] -> dst[s][h*head_dim + d]
+ */
+static void scatter_head(const float *src, int seq_len, int dim,
+                          int head_dim, int h, float *dst) {
+    for (int s = 0; s < seq_len; s++) {
+        memcpy(&dst[s * dim + h * head_dim],
+               &src[s * head_dim],
+               head_dim * sizeof(float));
+    }
+}
+
+/*
+ * Helper: transpose [rows x cols] -> [cols x rows].
+ */
+static void transpose_fp32(const float *src, int rows, int cols, float *dst) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            dst[j * rows + i] = src[i * cols + j];
+        }
+    }
+}
+
 Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
     int dim = attn->dim;
     int n_heads = attn->n_heads;
     int head_dim = attn->head_dim;
     float scale = 1.0f / sqrtf((float)head_dim);
+    gemm_fp32_fn gemm = attn->kernels->fp32_gemm;
 
     /* Q, K, V projections via QATLinear */
     Tensor *q = qat_linear_forward(attn->wq, input);  /* [seq x dim] */
@@ -314,52 +353,41 @@ Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
     tensor_copy(attn->saved_k, k);
     tensor_copy(attn->saved_v, v);
 
-    /*
-     * Compute attention per head.
-     * For each head h:
-     *   Q_h = q[:, h*hd:(h+1)*hd]  [seq x hd]
-     *   K_h = k[:, h*hd:(h+1)*hd]  [seq x hd]
-     *   V_h = v[:, h*hd:(h+1)*hd]  [seq x hd]
-     *   scores = Q_h * K_h^T * scale  [seq x seq]
-     *   attn_weights = softmax(scores)  [seq x seq]
-     *   out_h = attn_weights * V_h  [seq x hd]
-     *
-     * We store attention weights for backward: [n_heads * seq x seq]
-     */
     if (attn->saved_attn) tensor_free(attn->saved_attn);
     attn->saved_attn = tensor_create(n_heads * seq_len, seq_len);
 
-    /* Output: concat all heads -> [seq x dim] */
     Tensor *attn_out = tensor_zeros(seq_len, dim);
 
-    /* Temp buffers for one head */
+    /* Per-head contiguous buffers */
+    float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *k_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
+    float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
     float *scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
     float *attn_w = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+    float *out_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
 
     for (int h = 0; h < n_heads; h++) {
-        /*
-         * scores[s1][s2] = sum_d Q_h[s1][d] * K_h[s2][d] * scale
-         *
-         * This is Q_h * K_h^T:
-         *   Q_h is [seq x hd] (rows are Q vectors)
-         *   K_h^T is [hd x seq]
-         *   result is [seq x seq]
-         *
-         * But Q_h and K_h are not contiguous (they're slices of q, k).
-         * We need stride-aware access.
-         */
-        for (int s1 = 0; s1 < seq_len; s1++) {
-            for (int s2 = 0; s2 < seq_len; s2++) {
-                float dot = 0.0f;
-                for (int d = 0; d < head_dim; d++) {
-                    dot += q->data[s1 * dim + h * head_dim + d] *
-                           k->data[s2 * dim + h * head_dim + d];
-                }
-                scores[s1 * seq_len + s2] = dot * scale;
-            }
-        }
+        /* Extract contiguous per-head slices */
+        extract_head(q->data, seq_len, dim, head_dim, h, q_h);
+        extract_head(k->data, seq_len, dim, head_dim, h, k_h);
+        extract_head(v->data, seq_len, dim, head_dim, h, v_h);
 
-        /* Apply causal mask: position s1 can only attend to s2 <= s1 */
+        /* K_h^T: [seq x hd] -> [hd x seq] */
+        transpose_fp32(k_h, seq_len, head_dim, k_h_t);
+
+        /*
+         * scores[seq x seq] = Q_h[seq x hd] * K_h^T[hd x seq]
+         * alpha = scale (1/sqrt(head_dim)), beta = 0
+         */
+        gemm(seq_len, seq_len, head_dim,
+             scale,
+             q_h, head_dim,
+             k_h_t, seq_len,
+             0.0f,
+             scores, seq_len);
+
+        /* Causal mask */
         if (attn->causal) {
             for (int s1 = 0; s1 < seq_len; s1++) {
                 for (int s2 = s1 + 1; s2 < seq_len; s2++) {
@@ -368,28 +396,35 @@ Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
             }
         }
 
-        /* Softmax over last dim (s2) for each s1 */
+        /* Softmax */
         softmax_forward(scores, attn_w, seq_len, seq_len);
 
-        /* Save attention weights for this head */
+        /* Save attention weights */
         memcpy(&attn->saved_attn->data[h * seq_len * seq_len],
                attn_w, seq_len * seq_len * sizeof(float));
 
-        /* out_h = attn_w * V_h: [seq x seq] * [seq x hd] -> [seq x hd] */
-        for (int s = 0; s < seq_len; s++) {
-            for (int d = 0; d < head_dim; d++) {
-                float sum = 0.0f;
-                for (int s2 = 0; s2 < seq_len; s2++) {
-                    sum += attn_w[s * seq_len + s2] *
-                           v->data[s2 * dim + h * head_dim + d];
-                }
-                attn_out->data[s * dim + h * head_dim + d] = sum;
-            }
-        }
+        /*
+         * out_h[seq x hd] = attn_w[seq x seq] * V_h[seq x hd]
+         * alpha = 1.0, beta = 0
+         */
+        gemm(seq_len, head_dim, seq_len,
+             1.0f,
+             attn_w, seq_len,
+             v_h, head_dim,
+             0.0f,
+             out_h, head_dim);
+
+        /* Scatter back to interleaved output */
+        scatter_head(out_h, seq_len, dim, head_dim, h, attn_out->data);
     }
 
+    qat_free(q_h);
+    qat_free(k_h);
+    qat_free(k_h_t);
+    qat_free(v_h);
     qat_free(scores);
     qat_free(attn_w);
+    qat_free(out_h);
     tensor_free(q);
     tensor_free(k);
     tensor_free(v);
@@ -403,7 +438,19 @@ Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
 
 /*
  * Attention backward pass.
- * This is complex but straightforward — just reverse the forward operations.
+ * Reverse the forward operations, using GEMM for per-head computations.
+ *
+ * Forward was:
+ *   scores_h = Q_h * K_h^T * scale    [seq x seq]
+ *   attn_w   = softmax(scores_h)      [seq x seq]
+ *   out_h    = attn_w * V_h           [seq x hd]
+ *
+ * Backward:
+ *   grad_attn_w = grad_out_h * V_h^T          [seq x seq] = [seq x hd] * [hd x seq]
+ *   grad_V_h    = attn_w^T * grad_out_h       [seq x hd]  = [seq x seq] * [seq x hd]
+ *   grad_scores = softmax_backward(attn_w, grad_attn_w)
+ *   grad_Q_h    = grad_scores * K_h * scale   [seq x hd]  = [seq x seq] * [seq x hd]
+ *   grad_K_h    = grad_scores^T * Q_h * scale [seq x hd]  = [seq x seq] * [seq x hd]
  */
 Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
                            int seq_len) {
@@ -411,6 +458,7 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
     int n_heads = attn->n_heads;
     int head_dim = attn->head_dim;
     float scale = 1.0f / sqrtf((float)head_dim);
+    gemm_fp32_fn gemm = attn->kernels->fp32_gemm;
 
     /* Backward through output projection */
     Tensor *grad_attn_out = qat_linear_backward(attn->wo, grad_output);
@@ -420,52 +468,101 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
     Tensor *grad_k = tensor_zeros(seq_len, dim);
     Tensor *grad_v = tensor_zeros(seq_len, dim);
 
-    float *grad_scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+    /* Per-head workspace */
+    float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
+    float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
     float *grad_attn_w = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+    float *grad_scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+    float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+    float *gq_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *gk_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    float *gv_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
 
     for (int h = 0; h < n_heads; h++) {
         const float *attn_w = &attn->saved_attn->data[h * seq_len * seq_len];
 
-        /* Backward through: out_h = attn_w * V_h */
-        /* grad_attn_w[s1][s2] += grad_out_h[s1][d] * V_h[s2][d] */
-        /* grad_V_h[s2][d] += attn_w[s1][s2] * grad_out_h[s1][d] */
-        memset(grad_attn_w, 0, seq_len * seq_len * sizeof(float));
+        /* Extract contiguous per-head slices */
+        extract_head(grad_attn_out->data, seq_len, dim, head_dim, h, go_h);
+        extract_head(attn->saved_v->data, seq_len, dim, head_dim, h, v_h);
+        extract_head(attn->saved_q->data, seq_len, dim, head_dim, h, q_h);
+        extract_head(attn->saved_k->data, seq_len, dim, head_dim, h, k_h);
 
-        for (int s = 0; s < seq_len; s++) {
-            for (int s2 = 0; s2 < seq_len; s2++) {
-                float dot = 0.0f;
-                for (int d = 0; d < head_dim; d++) {
-                    float go = grad_attn_out->data[s * dim + h * head_dim + d];
-                    float vd = attn->saved_v->data[s2 * dim + h * head_dim + d];
-                    dot += go * vd;
-                    grad_v->data[s2 * dim + h * head_dim + d] +=
-                        attn_w[s * seq_len + s2] * go;
-                }
-                grad_attn_w[s * seq_len + s2] = dot;
-            }
-        }
+        /*
+         * grad_attn_w[seq x seq] = grad_out_h[seq x hd] * V_h^T[hd x seq]
+         */
+        transpose_fp32(v_h, seq_len, head_dim, v_h_t);
+        gemm(seq_len, seq_len, head_dim,
+             1.0f,
+             go_h, head_dim,
+             v_h_t, seq_len,
+             0.0f,
+             grad_attn_w, seq_len);
+
+        /*
+         * grad_V_h[seq x hd] = attn_w^T[seq x seq] * grad_out_h[seq x hd]
+         * attn_w is symmetric-ish but not exactly, so we need the transpose.
+         * Actually: attn_w^T * go_h. We can use gemm with A=attn_w transposed.
+         * But our GEMM doesn't support transposed inputs directly.
+         * Transpose attn_w, then multiply? That's wasteful for [seq x seq].
+         *
+         * Alternative: grad_V_h = attn_w^T * go_h is the same as
+         *   gv_h[s2][d] = sum_s attn_w[s][s2] * go_h[s][d]
+         * which is: C[seq x hd] = A^T[seq x seq] * B[seq x hd]
+         * We can compute this as C = (A^T) * B by transposing A first.
+         */
+        float *attn_w_t = grad_scores_t;  /* Reuse buffer (same size seq x seq) */
+        transpose_fp32(attn_w, seq_len, seq_len, attn_w_t);
+        gemm(seq_len, head_dim, seq_len,
+             1.0f,
+             attn_w_t, seq_len,
+             go_h, head_dim,
+             0.0f,
+             gv_h, head_dim);
+
+        /* Scatter grad_V_h back */
+        scatter_head(gv_h, seq_len, dim, head_dim, h, grad_v->data);
 
         /* Backward through softmax */
         softmax_backward(attn_w, grad_attn_w, grad_scores, seq_len, seq_len);
 
-        /* Backward through: scores = Q_h * K_h^T * scale */
-        /* grad_Q_h[s1][d] += scale * sum_s2 grad_scores[s1][s2] * K_h[s2][d] */
-        /* grad_K_h[s2][d] += scale * sum_s1 grad_scores[s1][s2] * Q_h[s1][d] */
-        for (int s1 = 0; s1 < seq_len; s1++) {
-            for (int s2 = 0; s2 < seq_len; s2++) {
-                float gs = grad_scores[s1 * seq_len + s2] * scale;
-                for (int d = 0; d < head_dim; d++) {
-                    grad_q->data[s1 * dim + h * head_dim + d] +=
-                        gs * attn->saved_k->data[s2 * dim + h * head_dim + d];
-                    grad_k->data[s2 * dim + h * head_dim + d] +=
-                        gs * attn->saved_q->data[s1 * dim + h * head_dim + d];
-                }
-            }
-        }
+        /*
+         * grad_Q_h[seq x hd] = grad_scores[seq x seq] * K_h[seq x hd] * scale
+         */
+        gemm(seq_len, head_dim, seq_len,
+             scale,
+             grad_scores, seq_len,
+             k_h, head_dim,
+             0.0f,
+             gq_h, head_dim);
+        scatter_head(gq_h, seq_len, dim, head_dim, h, grad_q->data);
+
+        /*
+         * grad_K_h[seq x hd] = grad_scores^T[seq x seq] * Q_h[seq x hd] * scale
+         */
+        transpose_fp32(grad_scores, seq_len, seq_len, grad_scores_t);
+        gemm(seq_len, head_dim, seq_len,
+             scale,
+             grad_scores_t, seq_len,
+             q_h, head_dim,
+             0.0f,
+             gk_h, head_dim);
+        scatter_head(gk_h, seq_len, dim, head_dim, h, grad_k->data);
     }
 
-    qat_free(grad_scores);
+    qat_free(go_h);
+    qat_free(v_h);
+    qat_free(v_h_t);
+    qat_free(q_h);
+    qat_free(k_h);
     qat_free(grad_attn_w);
+    qat_free(grad_scores);
+    qat_free(grad_scores_t);
+    qat_free(gq_h);
+    qat_free(gk_h);
+    qat_free(gv_h);
 
     /* Backward through Q, K, V projections */
     Tensor *grad_from_q = qat_linear_backward(attn->wq, grad_q);

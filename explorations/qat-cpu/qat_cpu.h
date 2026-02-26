@@ -418,6 +418,9 @@ typedef struct {
     Tensor *saved_v;     /* [batch x dim] */
     Tensor *saved_attn;  /* [batch*n_heads x seq_len] attention weights */
 
+    /* Kernel dispatch for GEMM calls in attention score/value computation */
+    const KernelDispatch *kernels;
+
     bool causal;         /* If true, apply causal mask (lower-triangular) */
 } Attention;
 
