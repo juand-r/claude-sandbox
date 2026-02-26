@@ -582,6 +582,9 @@ static TrainResult train_model(const char *name, GPTModel *model,
 int main(int argc, char **argv) {
     (void)argc; (void)argv;
 
+    /* Line-buffer stdout so progress prints appear when piped */
+    setvbuf(stdout, NULL, _IOLBF, 0);
+
     printf("========================================\n");
     printf("QAT-CPU End-to-End Training\n");
     printf("========================================\n");

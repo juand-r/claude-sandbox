@@ -42,6 +42,11 @@ QATLinear *qat_linear_create(int in_features, int out_features,
     layer->weight_q = tensor_i8_create(out_features, in_features);
     layer->weight_scales = (float *)qat_calloc(out_features * sizeof(float));
 
+    /* Pre-allocate transposed weight buffers (batch-independent, reused every call) */
+    layer->weight_q_t = tensor_i8_create(in_features, out_features);
+    layer->weight_fp32_t = (float *)qat_alloc(
+        (size_t)in_features * out_features * sizeof(float));
+
     /* saved_input is allocated during forward */
     layer->saved_input = NULL;
 
@@ -59,6 +64,8 @@ void qat_linear_free(QATLinear *layer) {
     tensor_free(layer->grad_bias);
     tensor_i8_free(layer->weight_q);
     qat_free(layer->weight_scales);
+    tensor_i8_free(layer->weight_q_t);
+    qat_free(layer->weight_fp32_t);
     tensor_free(layer->saved_input);
     free(layer);
 }
@@ -116,18 +123,16 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
 
     /* FP32-only forward path (no quantization) */
     if (!layer->use_qat) {
-        /* Transpose weight: [out_f x in_f] -> [in_f x out_f] */
-        float *weight_t = (float *)qat_alloc((size_t)in_f * out_f * sizeof(float));
-        transpose_fp32(layer->weight->data, out_f, in_f, weight_t);
+        /* Transpose weight into pre-allocated buffer: [out_f x in_f] -> [in_f x out_f] */
+        transpose_fp32(layer->weight->data, out_f, in_f, layer->weight_fp32_t);
 
         Tensor *output = tensor_zeros(batch, out_f);
         layer->kernels->fp32_gemm(batch, out_f, in_f,
                                    1.0f,
                                    input->data, in_f,
-                                   weight_t, out_f,
+                                   layer->weight_fp32_t, out_f,
                                    0.0f,
                                    output->data, out_f);
-        qat_free(weight_t);
 
         if (layer->bias) {
             add_bias(output->data, batch, out_f, layer->bias->data);
@@ -144,15 +149,14 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
     float *input_scales = (float *)qat_alloc(batch * sizeof(float));
     quantize_per_token(input->data, batch, in_f, input_q->data, input_scales);
 
-    /* 3. Transpose quantized weights: [out_f x in_f] -> [in_f x out_f] */
-    TensorI8 *weight_t = tensor_i8_create(in_f, out_f);
-    transpose_i8(layer->weight_q->data, out_f, in_f, weight_t->data);
+    /* 3. Transpose quantized weights into pre-allocated buffer: [out_f x in_f] -> [in_f x out_f] */
+    transpose_i8(layer->weight_q->data, out_f, in_f, layer->weight_q_t->data);
 
     /* 4. INT8 GEMM: C_i32[batch x out_f] = input_i8[batch x in_f] * weight_t_i8[in_f x out_f] */
     TensorI32 *acc = tensor_i32_create(batch, out_f);
     layer->kernels->int8_gemm(batch, out_f, in_f,
                                input_q->data, in_f,
-                               weight_t->data, out_f,
+                               layer->weight_q_t->data, out_f,
                                acc->data, out_f);
 
     /* 5. Dequantize: out[i][j] = acc[i][j] * scale_act[i] * scale_wt[j] */
@@ -166,9 +170,8 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
         add_bias(output->data, batch, out_f, layer->bias->data);
     }
 
-    /* Cleanup temporaries */
+    /* Cleanup temporaries (weight_q_t is pre-allocated, not freed here) */
     tensor_i8_free(input_q);
-    tensor_i8_free(weight_t);
     tensor_i32_free(acc);
     qat_free(input_scales);
 

@@ -301,6 +301,10 @@ typedef struct {
     TensorI8 *weight_q;     /* [out_features x in_features] INT8 */
     float    *weight_scales; /* [out_features] per-channel scales */
 
+    /* Pre-allocated workspace to avoid per-call malloc/free */
+    TensorI8  *weight_q_t;  /* [in_features x out_features] transposed INT8 */
+    float     *weight_fp32_t; /* [in_features x out_features] transposed FP32 */
+
     /* Saved for backward pass */
     Tensor *saved_input;     /* [batch x in_features] from last forward */
 
