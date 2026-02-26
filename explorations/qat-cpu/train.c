@@ -17,17 +17,17 @@
  * ======================================================================== */
 
 #define VOCAB_SIZE   128   /* ASCII */
-#define DIM          128
+#define DIM          512
 #define N_LAYERS     2
-#define N_HEADS      4
-#define HIDDEN_DIM   512
+#define N_HEADS      8
+#define HIDDEN_DIM   2048
 #define MAX_SEQ_LEN  128
 #define SEQ_LEN      64    /* Training sequence length */
-#define N_STEPS      30000
-#define EVAL_EVERY   5000
-#define GEN_EVERY    10000
+#define N_STEPS      5000
+#define EVAL_EVERY   1000
+#define GEN_EVERY    2500
 #define GEN_LEN      200
-#define LR           1e-3f
+#define LR           3e-4f   /* Lower LR for larger model */
 #define WEIGHT_DECAY 0.01f
 #define GEN_TEMP     0.8f
 
