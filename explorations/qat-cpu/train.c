@@ -23,9 +23,9 @@
 #define HIDDEN_DIM   2048
 #define MAX_SEQ_LEN  128
 #define SEQ_LEN      64    /* Training sequence length */
-#define N_STEPS      5000
-#define EVAL_EVERY   1000
-#define GEN_EVERY    2500
+#define N_STEPS      15000
+#define EVAL_EVERY   2500
+#define GEN_EVERY    5000
 #define GEN_LEN      200
 #define LR           3e-4f   /* Lower LR for larger model */
 #define WEIGHT_DECAY 0.01f
