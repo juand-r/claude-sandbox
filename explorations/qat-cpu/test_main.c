@@ -471,6 +471,7 @@ static void test_training_convergence(const KernelDispatch *kd) {
 
         /* Optimizer step */
         adam_step(opt);
+        layer->weights_dirty = true;  /* Weights changed, invalidate cache */
 
         tensor_free(logits);
     }

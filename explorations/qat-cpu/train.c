@@ -220,6 +220,20 @@ static void gpt_backward(GPTModel *m, const Tensor *grad_logits) {
     tensor_free(grad2);
 }
 
+/* Mark all QATLinear weight caches as stale (call after optimizer step) */
+static void gpt_mark_weights_dirty(GPTModel *m) {
+    for (int i = 0; i < m->n_layers; i++) {
+        TransformerBlock *b = m->blocks[i];
+        b->attn->wq->weights_dirty = true;
+        b->attn->wk->weights_dirty = true;
+        b->attn->wv->weights_dirty = true;
+        b->attn->wo->weights_dirty = true;
+        b->ffn_up->weights_dirty = true;
+        b->ffn_down->weights_dirty = true;
+    }
+    m->output_head->weights_dirty = true;
+}
+
 static void gpt_zero_grad(GPTModel *m) {
     memset(m->grad_token_emb->data, 0, tensor_bytes(m->grad_token_emb));
     memset(m->grad_pos_emb->data, 0, tensor_bytes(m->grad_pos_emb));
@@ -360,6 +374,7 @@ static float train_step(GPTModel *model, Adam *opt,
 
     /* Optimizer step */
     adam_step(opt);
+    gpt_mark_weights_dirty(model);
 
     tensor_free(logits);
     qat_free(grad_logits);

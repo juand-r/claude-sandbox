@@ -313,6 +313,10 @@ typedef struct {
 
     /* If true, use INT8 quantized forward. If false, pure FP32 forward. */
     bool use_qat;
+
+    /* Weight cache: skip re-quantization when weights haven't changed.
+     * Set to true by optimizer step, cleared after first quantize. */
+    bool weights_dirty;
 } QATLinear;
 
 /* Create a QAT linear layer. Weights initialized with Kaiming uniform. */

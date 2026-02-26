@@ -329,6 +329,16 @@ static void gpt_free(GPTModel *m) {
     free(m->saved_tokens); tensor_free(m->saved_embed); free(m);
 }
 
+static void gpt_mark_weights_dirty(GPTModel *m) {
+    for (int i = 0; i < m->n_layers; i++) {
+        TransformerBlock *b = m->blocks[i];
+        b->attn->wq->weights_dirty = true; b->attn->wk->weights_dirty = true;
+        b->attn->wv->weights_dirty = true; b->attn->wo->weights_dirty = true;
+        b->ffn_up->weights_dirty = true; b->ffn_down->weights_dirty = true;
+    }
+    m->output_head->weights_dirty = true;
+}
+
 static void gpt_set_qat(GPTModel *m, bool use_qat) {
     for (int i = 0; i < m->n_layers; i++) {
         TransformerBlock *b = m->blocks[i];
@@ -439,7 +449,7 @@ int main(void) {
                 tensor_free(grad2); grad2 = prev;
             }
             tensor_free(grad2); free(gt);
-            adam_step(opt);
+            adam_step(opt); gpt_mark_weights_dirty(model);
             tensor_free(logits); qat_free(gl);
         }
 
@@ -525,6 +535,7 @@ int main(void) {
             /* Optimizer */
             t0 = timer_sec();
             adam_step(opt);
+            gpt_mark_weights_dirty(model);
             t_optimizer += timer_sec() - t0;
 
             tensor_free(logits);

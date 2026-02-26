@@ -52,6 +52,7 @@ QATLinear *qat_linear_create(int in_features, int out_features,
 
     /* Default: use INT8 quantized forward */
     layer->use_qat = true;
+    layer->weights_dirty = true;  /* Need initial quantization */
 
     return layer;
 }
@@ -123,8 +124,11 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
 
     /* FP32-only forward path (no quantization) */
     if (!layer->use_qat) {
-        /* Transpose weight into pre-allocated buffer: [out_f x in_f] -> [in_f x out_f] */
-        transpose_fp32(layer->weight->data, out_f, in_f, layer->weight_fp32_t);
+        /* Transpose weight (skip if cached from same step) */
+        if (layer->weights_dirty) {
+            transpose_fp32(layer->weight->data, out_f, in_f, layer->weight_fp32_t);
+            layer->weights_dirty = false;
+        }
 
         Tensor *output = tensor_zeros(batch, out_f);
         layer->kernels->fp32_gemm(batch, out_f, in_f,
@@ -140,17 +144,18 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
         return output;
     }
 
-    /* 1. Quantize weights: [out_f x in_f] -> INT8 with per-channel scales */
-    quantize_per_channel(layer->weight->data, out_f, in_f,
-                         layer->weight_q->data, layer->weight_scales);
+    /* 1. Quantize weights (skip if cached from same step) */
+    if (layer->weights_dirty) {
+        quantize_per_channel(layer->weight->data, out_f, in_f,
+                             layer->weight_q->data, layer->weight_scales);
+        transpose_i8(layer->weight_q->data, out_f, in_f, layer->weight_q_t->data);
+        layer->weights_dirty = false;
+    }
 
     /* 2. Quantize input: [batch x in_f] -> INT8 with per-token scales */
     TensorI8 *input_q = tensor_i8_create(batch, in_f);
     float *input_scales = (float *)qat_alloc(batch * sizeof(float));
     quantize_per_token(input->data, batch, in_f, input_q->data, input_scales);
-
-    /* 3. Transpose quantized weights into pre-allocated buffer: [out_f x in_f] -> [in_f x out_f] */
-    transpose_i8(layer->weight_q->data, out_f, in_f, layer->weight_q_t->data);
 
     /* 4. INT8 GEMM: C_i32[batch x out_f] = input_i8[batch x in_f] * weight_t_i8[in_f x out_f] */
     TensorI32 *acc = tensor_i32_create(batch, out_f);
