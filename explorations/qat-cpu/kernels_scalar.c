@@ -48,10 +48,16 @@ void gemm_fp32_scalar(int M, int N, int K,
                       const float *B, int ldb,
                       float beta,
                       float *C, int ldc) {
-    /* Scale C by beta (or zero if beta == 0) */
+    /* Scale C by beta (or zero if beta == 0 to avoid 0*NaN=NaN) */
     for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
-            C[i * ldc + j] *= beta;
+        if (beta == 0.0f) {
+            for (int j = 0; j < N; j++) {
+                C[i * ldc + j] = 0.0f;
+            }
+        } else {
+            for (int j = 0; j < N; j++) {
+                C[i * ldc + j] *= beta;
+            }
         }
     }
 

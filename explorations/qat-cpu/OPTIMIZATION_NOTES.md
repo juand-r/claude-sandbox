@@ -22,18 +22,18 @@ Per training step, the hot path is:
 - INT8 VNNI advantage materializes: 64 MACs/VPDPBUSD vs 16 FMAs/VFMADD231PS
 - Theoretical 4x INT8 throughput advantage becomes real at these sizes
 
-### 2. GEMM-based attention scores/values
-Current: scalar triple loops with strided access (head slices non-contiguous)
-Fix:
-- Split Q/K/V from [seq x dim] → [n_heads x seq x head_dim] (contiguous per head)
-- Use FP32 GEMM: scores_h = Q_h * K_h^T, out_h = attn_w * V_h
-- Parallelize across heads with OpenMP
-- Same for backward pass
+### 2. GEMM-based attention scores/values [DONE]
+Replaced scalar triple loops with:
+- extract_head/scatter_head for contiguous per-head slices
+- FP32 GEMM: scores_h = Q_h * K_h^T, out_h = attn_w * V_h
+- Same approach for backward pass
 
-### 3. Vectorize quantization with AVX-512
-- absmax: _mm512_max_ps + _mm512_abs_ps → horizontal reduce
-- quantize: _mm512_mul_ps + _mm512_cvtps_epi32 + saturate pack to int8
-- Compile quantize.c with AVX-512 flags
+### 3. Vectorize quantization with AVX-512 [DONE]
+- absmax: integer AND to clear sign bit + _mm512_max_ps + horizontal reduce
+- quantize: _mm512_mul_ps + _mm512_cvtps_epi32 + _mm512_cvtsepi32_epi8 (saturating pack)
+- dequantize: _mm512_cvtepi32_ps + dual scale multiply
+- Runtime dispatch via __builtin_cpu_supports("avx512f")
+- Note: _mm512_and_ps requires AVX-512DQ; used _mm512_and_si512 with cast instead
 
 ### 4. KV cache for generation
 Current: recomputes full sequence at each autoregressive step
@@ -47,6 +47,22 @@ Flash attention's memory savings aren't needed at this scale.
 However, the *fused kernel* idea applies: compute score + softmax + value multiply
 in one pass, keeping data in L1. Worth considering for larger seq_len.
 
-### 6. Reduce allocation overhead
-Pre-allocate workspace buffers in QATLinear/Attention structs.
-Reuse across forward/backward calls instead of malloc/free per call.
+### 6. Reduce allocation overhead [DONE]
+Pre-allocated weight transpose buffers (weight_q_t, weight_fp32_t) in QATLinear.
+Reused across forward calls instead of malloc/free per call.
+
+## Bug fix: GEMM beta=0 and NaN
+
+All FP32 GEMM kernels (scalar, AVX2, AVX-512) had a subtle bug: when beta=0,
+they computed `C[i][j] *= 0.0f` before accumulation. If C contained uninitialized
+memory with NaN bit patterns, `0.0f * NaN = NaN` per IEEE 754. The fix: when
+beta==0, zero C directly instead of multiplying. This caused QAT training at
+dim=512 to produce NaN in attention scores and completely fail to converge.
+
+## dim=512 results
+
+After all optimizations:
+- FP32: ppl=8.65, 626.3 sec, 125.3 ms/step
+- QAT:  ppl=8.75, 408.2 sec, 81.6 ms/step
+- **QAT speedup: 1.53x**
+- **QAT perplexity ratio: 1.011** (matches FP32 quality)

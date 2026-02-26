@@ -431,6 +431,7 @@ Tensor *attention_forward(Attention *attn, const Tensor *input, int seq_len) {
 
     /* Output projection */
     Tensor *output = qat_linear_forward(attn->wo, attn_out);
+
     tensor_free(attn_out);
 
     return output;

@@ -78,14 +78,24 @@ void gemm_fp32_avx2(int M, int N, int K,
 
     #pragma omp parallel for schedule(static) if(M >= 8)
     for (int i = 0; i < M; i++) {
-        /* Scale C row by beta */
-        for (int j = 0; j < j_end_8; j += 8) {
-            __m256 c_v = _mm256_loadu_ps(&C[i * ldc + j]);
-            c_v = _mm256_mul_ps(c_v, beta_v);
-            _mm256_storeu_ps(&C[i * ldc + j], c_v);
-        }
-        for (int j = j_end_8; j < N; j++) {
-            C[i * ldc + j] *= beta;
+        /* Scale C row by beta (or zero if beta==0 to avoid 0*NaN=NaN) */
+        if (beta == 0.0f) {
+            __m256 zero_v = _mm256_setzero_ps();
+            for (int j = 0; j < j_end_8; j += 8) {
+                _mm256_storeu_ps(&C[i * ldc + j], zero_v);
+            }
+            for (int j = j_end_8; j < N; j++) {
+                C[i * ldc + j] = 0.0f;
+            }
+        } else {
+            for (int j = 0; j < j_end_8; j += 8) {
+                __m256 c_v = _mm256_loadu_ps(&C[i * ldc + j]);
+                c_v = _mm256_mul_ps(c_v, beta_v);
+                _mm256_storeu_ps(&C[i * ldc + j], c_v);
+            }
+            for (int j = j_end_8; j < N; j++) {
+                C[i * ldc + j] *= beta;
+            }
         }
 
         /* Accumulate: C[i][j] += alpha * A[i][k] * B[k][j] */

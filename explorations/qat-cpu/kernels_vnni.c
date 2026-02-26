@@ -242,14 +242,24 @@ void gemm_fp32_avx512(int M, int N, int K,
 
     #pragma omp parallel for schedule(static) if(M >= 8)
     for (int i = 0; i < M; i++) {
-        /* Scale C row by beta */
-        for (int j = 0; j < j_end_16; j += 16) {
-            __m512 c_v = _mm512_loadu_ps(&C[i * ldc + j]);
-            c_v = _mm512_mul_ps(c_v, beta_v);
-            _mm512_storeu_ps(&C[i * ldc + j], c_v);
-        }
-        for (int j = j_end_16; j < N; j++) {
-            C[i * ldc + j] *= beta;
+        /* Scale C row by beta (or zero it if beta==0 to avoid 0*NaN=NaN) */
+        if (beta == 0.0f) {
+            __m512 zero_v = _mm512_setzero_ps();
+            for (int j = 0; j < j_end_16; j += 16) {
+                _mm512_storeu_ps(&C[i * ldc + j], zero_v);
+            }
+            for (int j = j_end_16; j < N; j++) {
+                C[i * ldc + j] = 0.0f;
+            }
+        } else {
+            for (int j = 0; j < j_end_16; j += 16) {
+                __m512 c_v = _mm512_loadu_ps(&C[i * ldc + j]);
+                c_v = _mm512_mul_ps(c_v, beta_v);
+                _mm512_storeu_ps(&C[i * ldc + j], c_v);
+            }
+            for (int j = j_end_16; j < N; j++) {
+                C[i * ldc + j] *= beta;
+            }
         }
 
         /* Accumulate */
