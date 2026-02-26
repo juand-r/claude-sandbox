@@ -185,3 +185,65 @@ Speed improved from 1.53x to 1.56x because the round 2 optimizations (Adam,
 GeLU) saved more absolute time from the QAT path than the FP32 path. This is
 because QAT's forward pass is faster (INT8 VNNI), so the fixed-cost operations
 (Adam, GeLU, backward) were a larger fraction of QAT's total time.
+
+## Metrics & Comparability
+
+Added standard metrics to compare with the literature. Here's what we report
+and how it's calculated:
+
+### Quality metrics
+
+| Metric | Formula | Notes |
+|--------|---------|-------|
+| CE Loss (nats) | -mean(log(p(target))) | Raw cross-entropy, natural log |
+| Perplexity | exp(CE_loss) | "Effective vocabulary size" per token |
+| Bits per byte (BPB) | CE_loss / ln(2) | Tokenizer-agnostic; 1 token = 1 byte for us |
+
+**BPB** is the key comparability metric. It's used by DeepSeek, Gemma, and
+increasingly preferred over perplexity because it doesn't depend on tokenizer
+choice. For character-level models like ours (1 token = 1 ASCII byte), BPB is
+just the loss divided by ln(2) to convert nats to bits. For subword tokenizers:
+BPB = total_CE_nats / (ln(2) * total_bytes_in_text).
+
+Reference BPB values on Shakespeare-like text:
+- Random (128 ASCII): 7.00 BPB
+- Our FP32 at 15K: ~2.63 BPB
+- Our QAT at 15K: ~2.72 BPB
+- Good char-level model (deep, 100K+ steps): ~1.2-1.5 BPB
+
+### Speed metrics
+
+| Metric | Formula | Notes |
+|--------|---------|-------|
+| ms/step | wall_time / n_steps * 1000 | End-to-end step time |
+| Tokens/sec | seq_len / (ms_per_step / 1000) | Training throughput |
+| Effective TFLOPS | est_flops_per_step / step_time / 1e12 | Hardware utilization |
+
+**Tokens/sec** is the most universal metric. nanoGPT, LLM.c, and most training
+frameworks report this.
+
+**Effective TFLOPS** shows how well we utilize the hardware. Our estimated FLOPs
+per step (fwd+bwd) uses the standard approximation:
+- Forward per token per layer: 2*dim*(4*dim + 2*hidden_dim)
+- Output head: 2*dim*vocab_size
+- Backward ≈ 2x forward, total ≈ 3x forward
+- Per step = above * seq_len
+
+For our model: ~2441M FLOPs/step → ~0.03-0.04 TFLOPS effective.
+This is low because dim=512 GEMMs are too small to saturate the hardware.
+A Xeon 8581C has ~2.4 TFLOPS peak FP32 (2.1 GHz * 16 cores * 2 FMA * 32 lanes),
+so we're at ~1.5% MFU. Larger models would get much better utilization.
+
+### How others compare
+
+**GPTQ** (post-training quant): reports perplexity on WikiText2, PTB, C4. Not
+directly comparable (PTQ vs QAT, subword vs char-level).
+
+**BitNet b1.58** (1-bit QAT): reports perplexity and BPB, plus downstream task
+accuracy (ARC, PIQA, WinoGrande, GSM8K). Training speed in tokens/sec and
+energy per inference.
+
+**nanoGPT/LLM.c**: reports val loss, tokens/sec, MFU. LLM.c targets ~50% MFU
+on GPU; our CPU MFU is expectedly much lower.
+
+**QLoRA**: reports chatbot benchmarks (Vicuna), human/GPT-4 eval, not raw ppl.

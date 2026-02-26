@@ -383,19 +383,43 @@ static float train_step(GPTModel *model, Adam *opt,
 }
 
 /* ========================================================================
- * Evaluation (Perplexity)
+ * Evaluation
  * ======================================================================== */
 
 /*
- * Compute perplexity on a data slice.
- * Perplexity = exp(average cross-entropy loss).
+ * Bits per byte (BPB): tokenizer-agnostic quality metric.
+ *
+ * BPB = CE_loss_nats / ln(2)
+ *
+ * This works directly because we use character-level tokens (1 token = 1 byte).
+ * For subword tokenizers you'd compute:
+ *   BPB = total_CE_nats / (ln(2) * total_bytes)
+ *
+ * Reference values (character-level on Shakespeare-like text):
+ *   Random baseline (128 ASCII): log(128)/ln(2) = 7.0 BPB
+ *   Good char-level model: ~1.2-1.5 BPB
+ */
+static float loss_to_bpb(float ce_loss_nats) {
+    return ce_loss_nats / logf(2.0f);
+}
+
+typedef struct {
+    float loss;   /* average CE loss in nats */
+    float ppl;    /* perplexity = exp(loss) */
+    float bpb;    /* bits per byte = loss / ln(2) */
+} EvalResult;
+
+/*
+ * Evaluate model on a data slice.
+ * Returns loss (nats), perplexity, and bits-per-byte.
  * Evaluates on non-overlapping sequences.
  */
-static float eval_perplexity(GPTModel *model, const int *data, int data_len) {
+static EvalResult evaluate(GPTModel *model, const int *data, int data_len) {
+    EvalResult r = {0};
     int seq_len = SEQ_LEN;
     int n_seqs = data_len / (seq_len + 1);
     if (n_seqs > 50) n_seqs = 50;  /* Cap to keep eval fast */
-    if (n_seqs == 0) return 999.0f;
+    if (n_seqs == 0) { r.ppl = 999.0f; r.bpb = 99.0f; return r; }
 
     float total_loss = 0.0f;
     float *grad_dummy = (float *)qat_calloc(seq_len * VOCAB_SIZE * sizeof(float));
@@ -413,8 +437,10 @@ static float eval_perplexity(GPTModel *model, const int *data, int data_len) {
     }
 
     qat_free(grad_dummy);
-    float avg_loss = total_loss / (float)n_seqs;
-    return expf(avg_loss);
+    r.loss = total_loss / (float)n_seqs;
+    r.ppl = expf(r.loss);
+    r.bpb = loss_to_bpb(r.loss);
+    return r;
 }
 
 /* ========================================================================
@@ -522,9 +548,35 @@ static char *generate_text(GPTModel *model, const char *prompt,
 
 typedef struct {
     float final_val_ppl;
+    float final_val_bpb;     /* bits per byte */
+    float final_val_loss;    /* raw CE loss (nats) */
     double total_time_sec;
     double ms_per_step;
+    double tokens_per_sec;   /* training throughput */
+    double tflops;           /* effective TFLOPS */
 } TrainResult;
+
+/*
+ * Estimate FLOPs per training step (forward + backward).
+ *
+ * For a transformer with:
+ *   - Attention: Q,K,V projections + output = 4 * 2 * dim^2 per layer
+ *   - FFN: 2 * 2 * dim * hidden_dim per layer
+ *   - Output head: 2 * dim * vocab_size
+ *
+ * Forward FLOPs per token:
+ *   per_layer = 2*dim*(4*dim + 2*hidden_dim)
+ *   total = n_layers * per_layer + 2*dim*vocab_size
+ *
+ * Backward ≈ 2x forward, so total ≈ 3x forward.
+ * We count per step = seq_len tokens.
+ */
+static double estimate_flops_per_step(void) {
+    double per_layer = 2.0 * DIM * (4.0 * DIM + 2.0 * HIDDEN_DIM);
+    double fwd_per_token = N_LAYERS * per_layer + 2.0 * DIM * VOCAB_SIZE;
+    double fwd_bwd_per_token = 3.0 * fwd_per_token;
+    return fwd_bwd_per_token * SEQ_LEN;
+}
 
 static TrainResult train_model(const char *name, GPTModel *model,
                                const int *train_data, int train_len,
@@ -551,9 +603,14 @@ static TrainResult train_model(const char *name, GPTModel *model,
         else smooth_loss = 0.95f * smooth_loss + 0.05f * loss;
 
         if (step % EVAL_EVERY == 0 || step == N_STEPS - 1) {
-            float val_ppl = eval_perplexity(model, val_data, val_len);
-            printf("  Step %4d/%d: loss=%.4f (smooth=%.4f), val_ppl=%.2f, %.1f ms/step\n",
-                   step, N_STEPS, loss, smooth_loss, val_ppl, step_time * 1000.0);
+            EvalResult eval = evaluate(model, val_data, val_len);
+            double tok_per_sec = SEQ_LEN / step_time;
+            printf("  Step %4d/%d: loss=%.4f (smooth=%.4f), "
+                   "val_ppl=%.2f, bpb=%.3f, "
+                   "%.1f ms/step, %.0f tok/s\n",
+                   step, N_STEPS, loss, smooth_loss,
+                   eval.ppl, eval.bpb,
+                   step_time * 1000.0, tok_per_sec);
         }
 
         if (step > 0 && step % GEN_EVERY == 0) {
@@ -568,11 +625,21 @@ static TrainResult train_model(const char *name, GPTModel *model,
     double total_time = timer_sec() - t_start;
     result.total_time_sec = total_time;
     result.ms_per_step = (total_time / N_STEPS) * 1000.0;
-    result.final_val_ppl = eval_perplexity(model, val_data, val_len);
+    result.tokens_per_sec = (double)SEQ_LEN / (result.ms_per_step / 1000.0);
+    result.tflops = estimate_flops_per_step() / (result.ms_per_step / 1000.0) / 1e12;
+
+    EvalResult final_eval = evaluate(model, val_data, val_len);
+    result.final_val_ppl = final_eval.ppl;
+    result.final_val_bpb = final_eval.bpb;
+    result.final_val_loss = final_eval.loss;
 
     printf("\n  Training complete: %.1f sec (%.1f ms/step)\n",
            total_time, result.ms_per_step);
+    printf("  Final val loss: %.4f nats\n", result.final_val_loss);
     printf("  Final val perplexity: %.2f\n", result.final_val_ppl);
+    printf("  Final val BPB: %.3f\n", result.final_val_bpb);
+    printf("  Throughput: %.0f tok/s\n", result.tokens_per_sec);
+    printf("  Effective TFLOPS: %.4f\n", result.tflops);
 
     /* Generate final samples */
     const char *prompts[] = {"The ", "KING:\n", "To be or not"};
@@ -638,10 +705,16 @@ int main(int argc, char **argv) {
     uint64_t rng_tmp[4];
     rng_seed(rng_tmp, 42);
     GPTModel *tmp = gpt_create(&kd, rng_tmp);
-    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d\n",
-           N_LAYERS, DIM, N_HEADS, HIDDEN_DIM);
-    printf("Parameters: %d (%.1fK)\n", gpt_count_params(tmp),
-           gpt_count_params(tmp) / 1000.0f);
+    int n_params = gpt_count_params(tmp);
+    double flops_per_step = estimate_flops_per_step();
+    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d, seq_len=%d\n",
+           N_LAYERS, DIM, N_HEADS, HIDDEN_DIM, SEQ_LEN);
+    printf("Parameters: %d (%.1fK, %.2fM)\n",
+           n_params, n_params / 1e3, n_params / 1e6);
+    printf("Est. FLOPs/step: %.2fM (fwd+bwd, %d tokens)\n",
+           flops_per_step / 1e6, SEQ_LEN);
+    printf("Random baseline: ppl=%.0f, bpb=%.2f\n",
+           (float)VOCAB_SIZE, logf((float)VOCAB_SIZE) / logf(2.0f));
     gpt_free(tmp);
 
     /* ---- Train FP32 baseline ---- */
@@ -675,16 +748,29 @@ int main(int argc, char **argv) {
     printf("COMPARISON\n");
     printf("========================================\n");
     printf("%-25s %10s %10s\n", "", "FP32", "QAT");
+    printf("--- Quality ---\n");
+    printf("%-25s %10.4f %10.4f\n", "Val Loss (nats):",
+           res_fp32.final_val_loss, res_qat.final_val_loss);
     printf("%-25s %10.2f %10.2f\n", "Val Perplexity:",
            res_fp32.final_val_ppl, res_qat.final_val_ppl);
+    printf("%-25s %10.3f %10.3f\n", "Val BPB:",
+           res_fp32.final_val_bpb, res_qat.final_val_bpb);
+    printf("--- Speed ---\n");
     printf("%-25s %10.1f %10.1f\n", "Total Time (sec):",
            res_fp32.total_time_sec, res_qat.total_time_sec);
     printf("%-25s %10.1f %10.1f\n", "ms/step:",
            res_fp32.ms_per_step, res_qat.ms_per_step);
+    printf("%-25s %10.0f %10.0f\n", "Tokens/sec:",
+           res_fp32.tokens_per_sec, res_qat.tokens_per_sec);
+    printf("%-25s %10.4f %10.4f\n", "Effective TFLOPS:",
+           res_fp32.tflops, res_qat.tflops);
 
     float ppl_ratio = res_qat.final_val_ppl / res_fp32.final_val_ppl;
+    float bpb_delta = res_qat.final_val_bpb - res_fp32.final_val_bpb;
     float speedup = res_fp32.total_time_sec / res_qat.total_time_sec;
-    printf("\nQAT perplexity ratio:  %.3f (1.0 = matches FP32)\n", ppl_ratio);
+    printf("\n--- Summary ---\n");
+    printf("QAT perplexity ratio:  %.3f (1.0 = matches FP32)\n", ppl_ratio);
+    printf("QAT BPB delta:         %+.3f bits/byte\n", bpb_delta);
     printf("QAT speedup:           %.2fx\n", speedup);
 
     if (ppl_ratio < 1.05f) {
