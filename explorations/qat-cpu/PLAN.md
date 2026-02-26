@@ -94,6 +94,13 @@ quantization as top non-GEMM bottlenecks. Three optimizations applied:
 - **QAT profiler total: 138.1 -> 92.2 ms/step (-33%)**
 - **FP32 profiler total: 156.7 -> 116.6 ms/step (-26%)**
 
+### 15K step training run (final)
+Full comparison with all optimizations, 15K steps:
+- FP32: ppl=6.14, 91.9 ms/step, 1378 sec
+- QAT:  ppl=6.56, 58.7 ms/step, 881 sec
+- **QAT speedup: 1.56x** (up from 1.53x before round 2 opts)
+- **QAT perplexity ratio: 1.070** (7% quality gap)
+
 ## Benchmark Results (Xeon Platinum 8581C, 256x256 GEMM, 16 cores)
 
 | Kernel       | INT8 GOPS (1T) | INT8 GOPS (16T) | FP32 GFLOPS (1T) | FP32 GFLOPS (16T) |

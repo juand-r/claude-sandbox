@@ -31,6 +31,13 @@ All 7 phases from PLAN.md are complete:
 - Optimizations: AVX-512 Adam (-20.5 ms), AVX-512 GeLU with Padé tanh (-15.3 ms),
   weight quantization cache (-1.3 ms)
 
+### dim=512, 15K steps (final run with all optimizations)
+- FP32: ppl=6.14, 91.9 ms/step, 1378 sec (23 min)
+- QAT:  ppl=6.56, 58.7 ms/step, 881 sec (15 min)
+- **QAT speedup: 1.56x**
+- **QAT perplexity ratio: 1.070** (7% quality gap)
+- Generated text: word fragments and recognizable English words, not yet fluent
+
 The core thesis is proven: INT8 QAT via VNNI gives real speedups at sufficient
 GEMM sizes while preserving training quality.
 

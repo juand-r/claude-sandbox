@@ -162,3 +162,26 @@ Detailed comparison (QAT mode):
 3. Adam optimizer: 11.1 ms (12.0%) — memory-bandwidth bound
 4. QATLinear backward: 9.9 ms (10.7%) — FP32 GEMM (grad_input + grad_weight)
 5. Everything else: <2 ms combined
+
+## 15K Step Training Run (final)
+
+Full end-to-end comparison with all optimizations applied:
+
+```
+                    FP32          QAT
+Val perplexity:     6.14          6.56
+ms/step:            91.9          58.7
+Total time:         1378 sec      881 sec
+Speedup:            --            1.56x
+PPL ratio:          --            1.070
+```
+
+The QAT quality gap widened from 1.1% (at 5K steps) to 7% (at 15K steps).
+This is expected: quantization noise accumulates more as the model trains
+longer and the weight updates become smaller relative to quantization error.
+7% perplexity increase is still acceptable for a 1.56x speedup.
+
+Speed improved from 1.53x to 1.56x because the round 2 optimizations (Adam,
+GeLU) saved more absolute time from the QAT path than the FP32 path. This is
+because QAT's forward pass is faster (INT8 VNNI), so the fixed-cost operations
+(Adam, GeLU, backward) were a larger fraction of QAT's total time.
