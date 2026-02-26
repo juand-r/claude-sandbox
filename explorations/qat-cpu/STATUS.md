@@ -19,11 +19,17 @@ All 7 phases from PLAN.md are complete:
 - QAT:  ppl=6.59, 16.1 ms/step (0.88x, QAT still slower due to small GEMM)
 - Generated text: recognizable English words
 
-### dim=512, 5K steps
+### dim=512, 5K steps (before round 2 optimizations)
 - FP32: ppl=8.65, 125.3 ms/step
 - QAT:  ppl=8.75, 81.6 ms/step (**1.53x speedup**)
 - QAT perplexity ratio: 1.011 (matches FP32)
 - Generated text: sub-word fragments (underfitted, only 5K steps)
+
+### After profiling + round 2 optimizations (profiler timings)
+- FP32: 116.6 ms/step (-25.6%)
+- QAT:  92.2 ms/step (-33.2%)
+- Optimizations: AVX-512 Adam (-20.5 ms), AVX-512 GeLU with Padé tanh (-15.3 ms),
+  weight quantization cache (-1.3 ms)
 
 The core thesis is proven: INT8 QAT via VNNI gives real speedups at sufficient
 GEMM sizes while preserving training quality.
@@ -37,33 +43,22 @@ GEMM sizes while preserving training quality.
   the most obvious next step — but it takes ~30-60 min wall clock.
 
 ### Performance improvements
-- **KV cache for generation** (opt #4 in notes): Currently generation recomputes
-  the full sequence at each step. A KV cache would make generation O(seq*dim)
-  instead of O(seq^2*dim). Doesn't affect training speed but matters if we care
-  about generation throughput.
-- **NUMA-aware allocation**: On multi-socket systems, memory placement matters.
-  Not critical on our single-socket Xeon but would be needed for production.
-- **Gradient accumulation**: Simulate larger batch sizes. Would improve training
-  stability/quality but doesn't change the QAT vs FP32 comparison.
-- **AMX kernels**: The Xeon 8581C has AMX-INT8 and AMX-BF16 (tile matrix
-  multiply). AMX-INT8 does 16x16 INT8 GEMMs per instruction — potentially
-  much faster than VNNI for large matrices. This would be a significant effort
-  but the hardware is available.
+- **KV cache for generation**: Currently generation recomputes the full sequence
+  at each step. Doesn't affect training speed but matters for generation throughput.
+- **AMX kernels**: The Xeon 8581C has AMX-INT8 and AMX-BF16 (tile matrix multiply).
+  AMX-INT8 does 16x16 INT8 GEMMs per instruction — potentially much faster than
+  VNNI for large matrices. Significant effort but hardware is available.
+- **Parallelize attention head loop**: The per-head backward loop is sequential.
+  With 8 heads and 16 cores, OpenMP could reduce the 22 ms attention backward.
 
-### Architecture / code quality
-- **Profiling**: We haven't done proper profiling to know the actual bottleneck
-  breakdown (quantize vs GEMM vs attention vs optimizer). `perf` or VTune would
-  tell us where the remaining time goes.
-- **Memory pool**: Currently using posix_memalign per allocation. A pool allocator
-  would reduce fragmentation and syscall overhead, especially in the attention
-  forward/backward which mallocs ~7 temp buffers per call.
-- **Batch dimension**: Currently batch=1 (one sequence per step). Batched training
-  would improve GPU-style throughput but on CPU the benefit is less clear (we're
-  already compute-bound at dim=512).
+### What's been done (profiling + optimization)
+- **Profiling**: Done. See PROFILE_RESULTS.md for detailed breakdown.
+- **AVX-512 Adam**: Done. -20.5 ms (-65%).
+- **AVX-512 GeLU + fast Padé tanh**: Done. -15.3 ms (-98%).
+- **Weight quantization cache**: Done. -1.3 ms (-3%).
 
 ### What NOT to do (diminishing returns)
 - Flash attention: at seq=64, the attention matrix is 16KB per head, fits in L1.
-  No memory pressure to optimize.
-- FP16/BF16 training: CPU doesn't benefit much from reduced precision in the
-  backward pass (no native BF16 GEMM throughput advantage on this chip for
-  training workloads).
+- FP16/BF16 training: no native BF16 GEMM throughput advantage on this CPU.
+- Softmax/RMSNorm vectorization: <1 ms each, not worth the complexity.
+- Memory pool: allocation overhead is <0.5 ms total.

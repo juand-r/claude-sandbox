@@ -66,3 +66,99 @@ After all optimizations:
 - QAT:  ppl=8.75, 408.2 sec, 81.6 ms/step
 - **QAT speedup: 1.53x**
 - **QAT perplexity ratio: 1.011** (matches FP32 quality)
+
+## Profiling & Optimization Round 2
+
+### Profiling (profile_qat.c)
+
+Wrote a per-component timer-based profiler. Manually unrolls transformer_block
+forward/backward and wraps each sub-operation with timer_sec() calls.
+100 profiled steps + 5 warmup, dim=512.
+
+Initial profile (before round 2 optimizations):
+- QAT total: 138.1 ms/step
+- Top bottlenecks: QATLinear fwd 31.5%, Adam 22.9%, Attn bwd 21.1%, GeLU 11.4%
+
+Note: profiler overhead (~200 timer calls/step) inflates times vs the training
+loop (which measured 81.6 ms/step). The relative breakdown is what matters.
+
+### Optimization 7: AVX-512 Adam (optimizer.c)
+
+Vectorized the AdamW inner loop with AVX-512 FMA intrinsics:
+- Process 16 floats per iteration (was scalar)
+- `_mm512_fmadd_ps` for `m = beta1*m + (1-beta1)*g` and `v = beta2*v + (1-beta2)*g^2`
+- `_mm512_fnmadd_ps` for `param -= lr * update`
+- Pre-compute `inv_bc1 = 1/(1-beta1^t)`, `inv_bc2 = 1/(1-beta2^t)` outside loop
+  (avoids per-element division for bias correction)
+- Scalar tail for remainder elements (n % 16)
+- Runtime dispatch: `__builtin_cpu_supports("avx512f")`
+- Uses `__attribute__((target("avx512f")))` so file compiles without -mavx512f
+
+Result: Adam 31.6 ms -> 11.1 ms (**-65%**)
+
+The optimizer is memory-bandwidth bound (4 arrays: param, grad, m, v = 104 MB
+for 6.5M params). AVX-512 helps by reducing instruction count, allowing the
+CPU to keep the memory pipeline fed. Further gains would need streaming stores
+or non-temporal hints, but the arrays are reused soon so cache pollution isn't
+the main issue.
+
+### Optimization 8: AVX-512 GeLU with fast Padé tanh (layers.c)
+
+Replaced scalar tanhf() with a fast rational polynomial approximation:
+- Padé [7/7] approximant: tanh(x) ≈ x * P(x²) / Q(x²)
+  - P(z) = 135135 + 17325z + 378z² + z³
+  - Q(z) = 135135 + 62370z + 3150z² + 28z³
+- Clamped to ±1 for |x| > 9 (where tanh saturates)
+- AVX-512 version: `fast_tanh_avx512` evaluates both polynomials with FMA,
+  single `_mm512_div_ps` for the ratio
+- GeLU forward: 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x³)))
+- GeLU backward: derivative computed with same fast tanh
+- Both forward and backward vectorized, with scalar fallback using fast_tanh
+
+Result: GeLU 15.7 ms -> 0.38 ms (**-97.6%**)
+
+The gain is from two effects:
+1. fast_tanh is ~10x faster than libm tanhf (no function call overhead, no
+   special-case handling for denormals/overflow)
+2. AVX-512 processes 16 elements per iteration vs scalar 1
+
+### Optimization 9: Weight quantization cache (qat_linear.c, qat_cpu.h, train.c)
+
+Added `weights_dirty` flag to QATLinear:
+- Set to `true` on creation and after each optimizer step
+- Forward pass checks flag; skips quantize + transpose if weights unchanged
+- In a training step, each of the 13 layers calls forward once, but weights
+  only change once (after adam_step). So 12 of 13 quantizations were redundant
+  within a step. With caching, each layer quantizes once on the first forward
+  call after the optimizer step, then reuses until next step.
+- `gpt_mark_weights_dirty()` in train.c sets flag on all 13 layers after adam_step
+
+Result: QATLinear fwd 43.5 ms -> 42.2 ms (**-3%**)
+
+Modest gain. At dim=512, per-layer quantize+transpose is ~0.1 ms, so saving
+12 redundant calls saves ~1.2 ms. The GEMM itself (INT8 VNNI) dominates the
+forward cost. The cache would matter more with larger weight matrices (e.g.
+dim=2048 where quantization takes ~1.6 ms per layer).
+
+### Combined results
+
+```
+                Before         After          Change
+QAT total:      138.1 ms       92.2 ms        -33.2%
+FP32 total:     156.7 ms      116.6 ms        -25.6%
+```
+
+Detailed comparison (QAT mode):
+| Component       | Before   | After   | Savings              |
+|-----------------|----------|---------|----------------------|
+| Adam            | 31.6 ms  | 11.1 ms | -20.5 ms (-64.9%)    |
+| GeLU            | 15.7 ms  | 0.38 ms | -15.3 ms (-97.6%)    |
+| QATLinear fwd   | 43.5 ms  | 42.2 ms | -1.3 ms (-3.0%)      |
+
+### Remaining bottleneck profile (QAT, 92.2 ms/step)
+
+1. QATLinear forward: 42.2 ms (45.8%) — INT8 VNNI GEMM + quantize/dequant
+2. Attention backward: 22.1 ms (24.0%) — FP32 GEMM (per-head score/value grads)
+3. Adam optimizer: 11.1 ms (12.0%) — memory-bandwidth bound
+4. QATLinear backward: 9.9 ms (10.7%) — FP32 GEMM (grad_input + grad_weight)
+5. Everything else: <2 ms combined

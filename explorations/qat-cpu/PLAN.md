@@ -85,6 +85,15 @@ After GEMM-based attention, AVX-512 quantize, pre-allocated buffers, and GEMM be
 - **QAT perplexity ratio: 1.011 (matches FP32 quality)**
 - INT8 VNNI advantage finally dominates at this GEMM size (64x512x512)
 
+### Profiling + Round 2 optimizations
+Per-component profiling revealed Adam (23%), GeLU (11%), and redundant weight
+quantization as top non-GEMM bottlenecks. Three optimizations applied:
+- AVX-512 Adam: 31.6 -> 11.1 ms (-65%)
+- AVX-512 GeLU with Padé tanh: 15.7 -> 0.38 ms (-98%)
+- Weight quantization cache: 43.5 -> 42.2 ms (-3%)
+- **QAT profiler total: 138.1 -> 92.2 ms/step (-33%)**
+- **FP32 profiler total: 156.7 -> 116.6 ms/step (-26%)**
+
 ## Benchmark Results (Xeon Platinum 8581C, 256x256 GEMM, 16 cores)
 
 | Kernel       | INT8 GOPS (1T) | INT8 GOPS (16T) | FP32 GFLOPS (1T) | FP32 GFLOPS (16T) |
