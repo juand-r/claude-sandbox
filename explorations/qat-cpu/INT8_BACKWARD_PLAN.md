@@ -165,3 +165,69 @@ the VNNI throughput advantage to overcome this overhead.
 Possibly. The quantization overhead is O(M*K) while the GEMM is O(M*N*K).
 As dimensions grow, the GEMM dominates more. At dim=2048 or dim=4096, the
 ratio would shift in favor of INT8. But at our dim=512, the answer is no.
+
+## Results at dim=1024 (profiler, 20 steps, batch=8, seq=64)
+
+Re-ran the comparison at dim=1024 (16 heads, hidden=4096) to test whether
+INT8 backward becomes viable at larger GEMM sizes. All results include the
+current OMP attention optimization.
+
+```
+                            FP32        QAT      QAT+INT8bwd
+                          ms    %     ms    %     ms    %
+QATLinear forward        698.8 32.6  601.0 33.0  655.5 33.8
+QATLinear backward       551.9 25.7  552.2 30.3  546.7 28.2
+Attention forward        428.5 20.0  211.7 11.6  235.0 12.1
+Attention backward       279.5 13.0  277.6 15.2  323.3 16.6
+RMSNorm                   27.1  1.3   27.3  1.5   27.2  1.4
+GeLU                      19.4  0.9   18.0  1.0   15.7  0.8
+Residual + copies         22.3  1.0   19.4  1.1   19.5  1.0
+Optimizer (Adam)          69.5  3.2   68.4  3.8   68.7  3.5
+Loss                       0.3  0.0    0.4  0.0    0.4  0.0
+Embedding                  1.2  0.1    1.2  0.1    1.2  0.1
+---------------------------------------------------------------
+TOTAL                   2144.3      1821.6      1941.7
+
+QAT speedup vs FP32:              1.18x
+INT8bwd speedup vs FP32:                       1.10x
+INT8bwd vs QAT:                                0.94x (SLOWER)
+```
+
+### Still negative, but penalty is shrinking
+
+| Metric                   | dim=512 | dim=1024 |
+|--------------------------|---------|----------|
+| FP32 ms/step             | 535     | 2144     |
+| QAT ms/step              | 484     | 1822     |
+| QAT+INT8bwd ms/step      | 520     | 1942     |
+| QAT speedup vs FP32      | 1.11x   | 1.18x    |
+| INT8bwd penalty vs QAT   | 7.4%    | 6.6%     |
+
+The INT8 backward penalty dropped from 7.4% to 6.6%, but at this rate the
+crossover is still far away (possibly dim>=4096).
+
+### Where the overhead hides (QAT vs QAT+INT8bwd at dim=1024)
+
+| Component          | QAT    | QAT+INT8bwd | Delta    | Cause                                |
+|--------------------|--------|-------------|----------|--------------------------------------|
+| QATLinear forward  | 601 ms | 656 ms      | **+55 ms** | per-column quant of weight+input in fwd |
+| QATLinear backward | 552 ms | 547 ms      | **-5 ms**  | INT8 GEMM marginally faster         |
+| Attention backward | 278 ms | 323 ms      | **+46 ms** | 4 Wq/Wk/Wv/Wo bwd calls hit same overhead |
+| Net                | 1822   | 1942        | **+120 ms**|                                      |
+
+The per-column quantization (+101 ms across fwd and attn_bwd) still dwarfs
+the INT8 GEMM savings (-5 ms). The unvectorized `quantize_per_column` iterating
+column-major over row-major data remains the bottleneck.
+
+### Path forward
+
+To make INT8 backward viable, the per-column quantization must be vectorized.
+Options:
+1. **AVX-512 per-column quantize**: Transpose the matrix first (block-wise
+   with AVX-512), then quantize per-row on the transposed data. This converts
+   the problem to two fast operations instead of one slow one.
+2. **Fused transpose+quantize**: Do both in a single tiled pass to improve
+   cache utilization.
+3. **Skip per-column entirely**: Use per-row quantization for B matrix too,
+   accepting that dequantization becomes a matrix multiply instead of
+   element-wise scale. This changes the math but might still converge.

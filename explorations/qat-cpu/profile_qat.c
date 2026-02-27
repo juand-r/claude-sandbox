@@ -1,5 +1,5 @@
 /*
- * profile_qat.c - Per-component timing of QAT vs FP32 training
+ * profile_qat.c - Per-component timing of FP32 vs QAT vs QAT+INT8bwd
  *
  * Manually unrolls transformer_block_forward/backward so we can time
  * each component (QATLinear fwd/bwd, attention, RMSNorm, GeLU, etc.).
@@ -7,7 +7,12 @@
  * Uses the built-in attention_forward/backward (with OMP outer loop)
  * rather than re-implementing per-head loops.
  *
- * Config matches train.c: 4 layers, batch=8, seq=64, dim=512.
+ * Three modes compared:
+ *   1. FP32: pure FP32 forward + backward
+ *   2. QAT:  INT8 forward, FP32 backward (STE)
+ *   3. QAT+INT8bwd: INT8 forward + INT8 backward
+ *
+ * Config: 4 layers, batch=8, seq=64, dim=1024, 16 heads, hidden=4096.
  * Runs N_WARMUP warmup + N_PROFILE profiled steps, reports ms/step for each.
  */
 
@@ -15,18 +20,18 @@
 #include <assert.h>
 
 #define VOCAB_SIZE   128
-#define DIM          512
+#define DIM          1024
 #define N_LAYERS     4
-#define N_HEADS      8
-#define HIDDEN_DIM   2048
+#define N_HEADS      16
+#define HIDDEN_DIM   4096
 #define MAX_SEQ_LEN  256
 #define SEQ_LEN      64
 #define BATCH_SIZE   8
 #define LR           3e-4f
 #define WEIGHT_DECAY 0.01f
 
-#define N_WARMUP     5
-#define N_PROFILE    50
+#define N_WARMUP     3
+#define N_PROFILE    20
 
 /* Timing accumulators (seconds) */
 static double t_qatlin_fwd;      /* QATLinear forward (quantize + INT8 GEMM + dequant) */
@@ -289,6 +294,19 @@ static void pgpt_set_qat(ProfileGPT *m, bool use_qat) {
     m->output_head->use_qat = use_qat;
 }
 
+static void pgpt_set_int8_backward(ProfileGPT *m, bool use_int8_bwd) {
+    for (int i = 0; i < m->n_layers; i++) {
+        TransformerBlock *b = m->blocks[i];
+        b->attn->wq->use_int8_backward = use_int8_bwd;
+        b->attn->wk->use_int8_backward = use_int8_bwd;
+        b->attn->wv->use_int8_backward = use_int8_bwd;
+        b->attn->wo->use_int8_backward = use_int8_bwd;
+        b->ffn_up->use_int8_backward = use_int8_bwd;
+        b->ffn_down->use_int8_backward = use_int8_bwd;
+    }
+    m->output_head->use_int8_backward = use_int8_bwd;
+}
+
 static void pgpt_zero_grad(ProfileGPT *m) {
     memset(m->grad_token_emb->data, 0, tensor_bytes(m->grad_token_emb));
     memset(m->grad_pos_emb->data, 0, tensor_bytes(m->grad_pos_emb));
@@ -343,16 +361,18 @@ int main(void) {
     free(text);
     int train_len = text_len * 9 / 10;
 
-    const char *modes[] = {"FP32", "QAT"};
-    bool use_qat[] = {false, true};
+    const char *modes[] = {"FP32", "QAT", "QAT+INT8bwd"};
+    bool mode_qat[]     = {false, true, true};
+    bool mode_int8bwd[] = {false, false, true};
     int total_tokens = BATCH_SIZE * SEQ_LEN;
 
-    for (int mode = 0; mode < 2; mode++) {
+    for (int mode = 0; mode < 3; mode++) {
         reset_timers();
 
         uint64_t rng[4]; rng_seed(rng, 42);
         ProfileGPT *model = pgpt_create(&kd, rng);
-        pgpt_set_qat(model, use_qat[mode]);
+        pgpt_set_qat(model, mode_qat[mode]);
+        pgpt_set_int8_backward(model, mode_int8bwd[mode]);
         Adam *opt = adam_create(LR, 0.9f, 0.999f, 1e-8f, WEIGHT_DECAY);
         pgpt_register_params(model, opt);
 
