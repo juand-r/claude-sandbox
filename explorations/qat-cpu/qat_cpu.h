@@ -470,6 +470,19 @@ Tensor    *attention_forward(Attention *attn, const Tensor *input,
                              int batch_size, int seq_len);
 Tensor    *attention_backward(Attention *attn, const Tensor *grad_output,
                               int batch_size, int seq_len);
+
+/* Variant: head-first layout (no extract/scatter in inner loop) */
+Tensor    *attention_backward_headfirst(Attention *attn, const Tensor *grad_output,
+                                        int batch_size, int seq_len);
+
+/* Variant: OpenMP on outer (b,h) loop, current interleaved layout */
+Tensor    *attention_backward_omp(Attention *attn, const Tensor *grad_output,
+                                   int batch_size, int seq_len);
+
+/* Variant: head-first layout + OpenMP on outer loop */
+Tensor    *attention_backward_headfirst_omp(Attention *attn, const Tensor *grad_output,
+                                             int batch_size, int seq_len);
+
 void       attention_zero_grad(Attention *attn);
 
 /* ========================================================================

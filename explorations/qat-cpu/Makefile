@@ -76,9 +76,20 @@ profile_qat: profile_qat.o $(OBJ_ALL)
 train: train_qat
 	./train_qat
 
+# Attention backward A/B benchmark
+bench_attn.o: bench_attn.c qat_cpu.h
+	$(CC) $(CFLAGS_SCALAR) -c $< -o $@
+
+bench_attn: bench_attn.o $(OBJ_ALL)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
 # Run roofline benchmark
 roofline: bench_roofline
 	./bench_roofline
 
+# Run attention benchmark
+attn_bench: bench_attn
+	./bench_attn
+
 clean:
-	rm -f *.o test_qat train_qat bench_roofline profile_qat
+	rm -f *.o test_qat train_qat bench_roofline profile_qat bench_attn
