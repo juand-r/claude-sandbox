@@ -609,7 +609,7 @@ static double estimate_flops_per_step(void) {
 static TrainResult train_model(const char *name, GPTModel *model,
                                const int *train_data, int train_len,
                                const int *val_data, int val_len,
-                               uint64_t *rng) {
+                               uint64_t *rng, FILE *csv) {
     TrainResult result = {0};
 
     Adam *opt = adam_create(LR, 0.9f, 0.999f, 1e-8f, WEIGHT_DECAY);
@@ -639,6 +639,18 @@ static TrainResult train_model(const char *name, GPTModel *model,
                    step, N_STEPS, loss, smooth_loss,
                    eval.ppl, eval.bpb,
                    step_time * 1000.0, tok_per_sec);
+
+            /* Log to CSV */
+            if (csv) {
+                double elapsed = timer_sec() - t_start;
+                long tokens_seen = (long)(step + 1) * SEQ_LEN * BATCH_SIZE;
+                fprintf(csv, "%s,%d,%ld,%.4f,%.4f,%.4f,%.3f,%.1f,%.0f,%.1f\n",
+                        name, step, tokens_seen,
+                        loss, smooth_loss,
+                        eval.ppl, eval.bpb,
+                        step_time * 1000.0, tok_per_sec, elapsed);
+                fflush(csv);
+            }
         }
 
         if (step > 0 && step % GEN_EVERY == 0) {
@@ -747,6 +759,13 @@ int main(int argc, char **argv) {
            (float)VOCAB_SIZE, logf((float)VOCAB_SIZE) / logf(2.0f));
     gpt_free(tmp);
 
+    /* ---- Open CSV log ---- */
+    FILE *csv = fopen("eval_log.csv", "w");
+    if (csv) {
+        fprintf(csv, "mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec\n");
+        fflush(csv);
+    }
+
     /* ---- Train FP32 baseline ---- */
     uint64_t rng_fp32[4];
     rng_seed(rng_fp32, 42);
@@ -758,7 +777,7 @@ int main(int argc, char **argv) {
     TrainResult res_fp32 = train_model("FP32", model_fp32,
                                         train_data, train_len,
                                         val_data, val_len,
-                                        train_rng_fp32);
+                                        train_rng_fp32, csv);
 
     /* ---- Train QAT ---- */
     uint64_t rng_qat[4];
@@ -771,7 +790,9 @@ int main(int argc, char **argv) {
     TrainResult res_qat = train_model("QAT (INT8 fwd, FP32 bwd)", model_qat,
                                        train_data, train_len,
                                        val_data, val_len,
-                                       train_rng_qat);
+                                       train_rng_qat, csv);
+
+    if (csv) fclose(csv);
 
     /* ---- Comparison ---- */
     printf("\n========================================\n");
