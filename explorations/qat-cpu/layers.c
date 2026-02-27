@@ -598,6 +598,9 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
 /*
  * Attention backward with mini-batch support.
  * Mirrors the forward: Q/K/V backward on full [B*S, dim], attention per-sequence.
+ *
+ * The (b,h) loop is parallelized with OpenMP — each thread gets private workspace.
+ * Inner GEMMs run single-threaded (nested parallelism disabled by default).
  */
 Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
                            int batch_size, int seq_len) {
@@ -616,38 +619,36 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
     Tensor *grad_k = tensor_zeros(total_tokens, dim);
     Tensor *grad_v = tensor_zeros(total_tokens, dim);
 
-    /* Per-head, per-sequence workspace */
-    float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-    float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *grad_attn_w = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *grad_scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *gq_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *gk_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *gv_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    int total_iters = batch_size * n_heads;
 
-    for (int b = 0; b < batch_size; b++) {
-        int off = b * seq_len * dim;
-        float *go_b = &grad_attn_out->data[off];
-        float *sv_b = &attn->saved_v->data[off];
-        float *sq_b = &attn->saved_q->data[off];
-        float *sk_b = &attn->saved_k->data[off];
-        float *gq_b = &grad_q->data[off];
-        float *gk_b = &grad_k->data[off];
-        float *gv_b = &grad_v->data[off];
+    #pragma omp parallel
+    {
+        /* Per-thread workspace */
+        float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *v_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
+        float *q_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *k_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *grad_attn_w  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+        float *grad_scores  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+        float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+        float *gq_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *gk_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *gv_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
 
-        for (int h = 0; h < n_heads; h++) {
+        #pragma omp for schedule(static)
+        for (int bh = 0; bh < total_iters; bh++) {
+            int b = bh / n_heads;
+            int h = bh % n_heads;
+            int off = b * seq_len * dim;
             int attn_idx = (b * n_heads + h) * seq_len * seq_len;
             const float *attn_w = &attn->saved_attn->data[attn_idx];
 
             /* Extract contiguous per-head slices for this sequence */
-            extract_head(go_b, seq_len, dim, head_dim, h, go_h);
-            extract_head(sv_b, seq_len, dim, head_dim, h, v_h);
-            extract_head(sq_b, seq_len, dim, head_dim, h, q_h);
-            extract_head(sk_b, seq_len, dim, head_dim, h, k_h);
+            extract_head(&grad_attn_out->data[off], seq_len, dim, head_dim, h, go_h);
+            extract_head(&attn->saved_v->data[off], seq_len, dim, head_dim, h, v_h);
+            extract_head(&attn->saved_q->data[off], seq_len, dim, head_dim, h, q_h);
+            extract_head(&attn->saved_k->data[off], seq_len, dim, head_dim, h, k_h);
 
             /* grad_attn_w = grad_out_h * V_h^T */
             transpose_fp32(v_h, seq_len, head_dim, v_h_t);
@@ -656,12 +657,12 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
                  0.0f, grad_attn_w, seq_len);
 
             /* grad_V_h = attn_w^T * grad_out_h */
-            float *attn_w_t = grad_scores_t;
+            float *attn_w_t = grad_scores_t;  /* reuse buffer */
             transpose_fp32(attn_w, seq_len, seq_len, attn_w_t);
             gemm(seq_len, head_dim, seq_len,
                  1.0f, attn_w_t, seq_len, go_h, head_dim,
                  0.0f, gv_h, head_dim);
-            scatter_head(gv_h, seq_len, dim, head_dim, h, gv_b);
+            scatter_head(gv_h, seq_len, dim, head_dim, h, &grad_v->data[off]);
 
             /* Backward through softmax */
             softmax_backward(attn_w, grad_attn_w, grad_scores, seq_len, seq_len);
@@ -670,416 +671,35 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
             gemm(seq_len, head_dim, seq_len,
                  scale, grad_scores, seq_len, k_h, head_dim,
                  0.0f, gq_h, head_dim);
-            scatter_head(gq_h, seq_len, dim, head_dim, h, gq_b);
+            scatter_head(gq_h, seq_len, dim, head_dim, h, &grad_q->data[off]);
 
             /* grad_K_h = grad_scores^T * Q_h * scale */
             transpose_fp32(grad_scores, seq_len, seq_len, grad_scores_t);
             gemm(seq_len, head_dim, seq_len,
                  scale, grad_scores_t, seq_len, q_h, head_dim,
                  0.0f, gk_h, head_dim);
-            scatter_head(gk_h, seq_len, dim, head_dim, h, gk_b);
-        }
-    }
-
-    qat_free(go_h);
-    qat_free(v_h);
-    qat_free(v_h_t);
-    qat_free(q_h);
-    qat_free(k_h);
-    qat_free(grad_attn_w);
-    qat_free(grad_scores);
-    qat_free(grad_scores_t);
-    qat_free(gq_h);
-    qat_free(gk_h);
-    qat_free(gv_h);
-
-    /* Backward through Q, K, V projections — [B*S, dim] */
-    Tensor *grad_from_q = qat_linear_backward(attn->wq, grad_q);
-    Tensor *grad_from_k = qat_linear_backward(attn->wk, grad_k);
-    Tensor *grad_from_v = qat_linear_backward(attn->wv, grad_v);
-
-    /* Sum gradients from Q, K, V */
-    Tensor *grad_input = tensor_create(total_tokens, dim);
-    for (int i = 0; i < total_tokens * dim; i++) {
-        grad_input->data[i] = grad_from_q->data[i] +
-                               grad_from_k->data[i] +
-                               grad_from_v->data[i];
-    }
-
-    tensor_free(grad_q);
-    tensor_free(grad_k);
-    tensor_free(grad_v);
-    tensor_free(grad_from_q);
-    tensor_free(grad_from_k);
-    tensor_free(grad_from_v);
-    tensor_free(grad_attn_out);
-
-    return grad_input;
-}
-
-/* ========================================================================
- * Layout conversion helpers for head-first attention variants.
- *
- * Interleaved layout:  [total_tokens, dim] where dim = n_heads * head_dim
- *   Token t, head h, dim d:  data[t * dim + h * head_dim + d]
- *
- * Head-first layout:   [n_heads, total_tokens, head_dim]
- *   Head h, token t, dim d:  data[(h * total_tokens + t) * head_dim + d]
- * ======================================================================== */
-
-static void interleaved_to_headfirst(const float *src, int total_tokens, int dim,
-                                      int n_heads, int head_dim, float *dst) {
-    for (int h = 0; h < n_heads; h++) {
-        for (int t = 0; t < total_tokens; t++) {
-            memcpy(&dst[(h * total_tokens + t) * head_dim],
-                   &src[t * dim + h * head_dim],
-                   head_dim * sizeof(float));
-        }
-    }
-}
-
-static void headfirst_to_interleaved(const float *src, int total_tokens, int dim,
-                                      int n_heads, int head_dim, float *dst) {
-    for (int h = 0; h < n_heads; h++) {
-        for (int t = 0; t < total_tokens; t++) {
-            memcpy(&dst[t * dim + h * head_dim],
-                   &src[(h * total_tokens + t) * head_dim],
-                   head_dim * sizeof(float));
-        }
-    }
-}
-
-/*
- * Shared inner-loop body for head-first backward variants.
- * Computes gradients for one (b, h) pair given head-first pointers.
- *
- * go_h, v_h, q_h, k_h: input [seq_len, head_dim] (read-only, contiguous in head-first)
- * gv_h, gq_h, gk_h:    output [seq_len, head_dim] (write directly into head-first buffer)
- * attn_w:               saved attention weights [seq_len, seq_len] (already indexed)
- * v_h_t, grad_attn_w, grad_scores, grad_scores_t: workspace [seq_len * max(seq_len, head_dim)]
- */
-static void attn_backward_one_head(
-    const float *go_h, const float *v_h, const float *q_h, const float *k_h,
-    const float *attn_w,
-    float *gv_h, float *gq_h, float *gk_h,
-    float *v_h_t, float *grad_attn_w, float *grad_scores, float *grad_scores_t,
-    int seq_len, int head_dim, float scale, gemm_fp32_fn gemm)
-{
-    /* grad_attn_w = grad_out_h * V_h^T */
-    transpose_fp32(v_h, seq_len, head_dim, v_h_t);
-    gemm(seq_len, seq_len, head_dim,
-         1.0f, go_h, head_dim, v_h_t, seq_len,
-         0.0f, grad_attn_w, seq_len);
-
-    /* grad_V_h = attn_w^T * grad_out_h */
-    float *attn_w_t = grad_scores_t;  /* reuse buffer */
-    transpose_fp32(attn_w, seq_len, seq_len, attn_w_t);
-    gemm(seq_len, head_dim, seq_len,
-         1.0f, attn_w_t, seq_len, go_h, head_dim,
-         0.0f, gv_h, head_dim);
-
-    /* Backward through softmax */
-    softmax_backward(attn_w, grad_attn_w, grad_scores, seq_len, seq_len);
-
-    /* grad_Q_h = grad_scores * K_h * scale */
-    gemm(seq_len, head_dim, seq_len,
-         scale, grad_scores, seq_len, k_h, head_dim,
-         0.0f, gq_h, head_dim);
-
-    /* grad_K_h = grad_scores^T * Q_h * scale */
-    transpose_fp32(grad_scores, seq_len, seq_len, grad_scores_t);
-    gemm(seq_len, head_dim, seq_len,
-         scale, grad_scores_t, seq_len, q_h, head_dim,
-         0.0f, gk_h, head_dim);
-}
-
-/*
- * Attention backward with head-first layout.
- *
- * Same algorithm as attention_backward(), but converts Q/K/V to head-first
- * layout [n_heads, B*S, head_dim] upfront. Inner loop uses direct pointers
- * instead of extract_head/scatter_head.
- */
-Tensor *attention_backward_headfirst(Attention *attn, const Tensor *grad_output,
-                                      int batch_size, int seq_len) {
-    int dim = attn->dim;
-    int n_heads = attn->n_heads;
-    int head_dim = attn->head_dim;
-    int total_tokens = batch_size * seq_len;
-    float scale = 1.0f / sqrtf((float)head_dim);
-    gemm_fp32_fn gemm = attn->kernels->fp32_gemm;
-
-    /* Backward through output projection */
-    Tensor *grad_attn_out = qat_linear_backward(attn->wo, grad_output);
-
-    /* Convert to head-first layout: [B*S, dim] -> [n_heads, B*S, head_dim] */
-    float *go_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sq_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sk_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sv_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-
-    interleaved_to_headfirst(grad_attn_out->data, total_tokens, dim, n_heads, head_dim, go_hf);
-    interleaved_to_headfirst(attn->saved_q->data, total_tokens, dim, n_heads, head_dim, sq_hf);
-    interleaved_to_headfirst(attn->saved_k->data, total_tokens, dim, n_heads, head_dim, sk_hf);
-    interleaved_to_headfirst(attn->saved_v->data, total_tokens, dim, n_heads, head_dim, sv_hf);
-
-    /* Head-first gradient accumulators */
-    float *gq_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-    float *gk_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-    float *gv_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-
-    /* Workspace (sequential — shared across iterations) */
-    float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-    float *grad_attn_w = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *grad_scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-
-    for (int b = 0; b < batch_size; b++) {
-        for (int h = 0; h < n_heads; h++) {
-            int hf_off = (h * batch_size + b) * seq_len * head_dim;
-            int attn_idx = (b * n_heads + h) * seq_len * seq_len;
-
-            attn_backward_one_head(
-                &go_hf[hf_off], &sv_hf[hf_off], &sq_hf[hf_off], &sk_hf[hf_off],
-                &attn->saved_attn->data[attn_idx],
-                &gv_hf[hf_off], &gq_hf[hf_off], &gk_hf[hf_off],
-                v_h_t, grad_attn_w, grad_scores, grad_scores_t,
-                seq_len, head_dim, scale, gemm);
-        }
-    }
-
-    qat_free(v_h_t);
-    qat_free(grad_attn_w);
-    qat_free(grad_scores);
-    qat_free(grad_scores_t);
-
-    /* Convert head-first grads back to interleaved */
-    Tensor *grad_q = tensor_create(total_tokens, dim);
-    Tensor *grad_k = tensor_create(total_tokens, dim);
-    Tensor *grad_v = tensor_create(total_tokens, dim);
-
-    headfirst_to_interleaved(gq_hf, total_tokens, dim, n_heads, head_dim, grad_q->data);
-    headfirst_to_interleaved(gk_hf, total_tokens, dim, n_heads, head_dim, grad_k->data);
-    headfirst_to_interleaved(gv_hf, total_tokens, dim, n_heads, head_dim, grad_v->data);
-
-    qat_free(go_hf);
-    qat_free(sq_hf);
-    qat_free(sk_hf);
-    qat_free(sv_hf);
-    qat_free(gq_hf);
-    qat_free(gk_hf);
-    qat_free(gv_hf);
-
-    /* Backward through Q, K, V projections — [B*S, dim] */
-    Tensor *grad_from_q = qat_linear_backward(attn->wq, grad_q);
-    Tensor *grad_from_k = qat_linear_backward(attn->wk, grad_k);
-    Tensor *grad_from_v = qat_linear_backward(attn->wv, grad_v);
-
-    /* Sum gradients from Q, K, V */
-    Tensor *grad_input = tensor_create(total_tokens, dim);
-    for (int i = 0; i < total_tokens * dim; i++) {
-        grad_input->data[i] = grad_from_q->data[i] +
-                               grad_from_k->data[i] +
-                               grad_from_v->data[i];
-    }
-
-    tensor_free(grad_q);
-    tensor_free(grad_k);
-    tensor_free(grad_v);
-    tensor_free(grad_from_q);
-    tensor_free(grad_from_k);
-    tensor_free(grad_from_v);
-    tensor_free(grad_attn_out);
-
-    return grad_input;
-}
-
-/*
- * Attention backward with OpenMP on outer (b,h) loop.
- * Current interleaved layout. Each thread has private workspace.
- * Inner GEMMs run single-threaded (nested parallelism disabled by default).
- */
-Tensor *attention_backward_omp(Attention *attn, const Tensor *grad_output,
-                                int batch_size, int seq_len) {
-    int dim = attn->dim;
-    int n_heads = attn->n_heads;
-    int head_dim = attn->head_dim;
-    int total_tokens = batch_size * seq_len;
-    float scale = 1.0f / sqrtf((float)head_dim);
-    gemm_fp32_fn gemm = attn->kernels->fp32_gemm;
-
-    /* Backward through output projection */
-    Tensor *grad_attn_out = qat_linear_backward(attn->wo, grad_output);
-
-    /* Allocate gradient tensors */
-    Tensor *grad_q = tensor_zeros(total_tokens, dim);
-    Tensor *grad_k = tensor_zeros(total_tokens, dim);
-    Tensor *grad_v = tensor_zeros(total_tokens, dim);
-
-    int total_iters = batch_size * n_heads;
-
-    #pragma omp parallel
-    {
-        /* Per-thread workspace */
-        float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *v_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *q_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *k_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-        float *gq_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *gk_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *gv_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *grad_attn_w  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-
-        #pragma omp for schedule(static)
-        for (int bh = 0; bh < total_iters; bh++) {
-            int b = bh / n_heads;
-            int h = bh % n_heads;
-            int off = b * seq_len * dim;
-            int attn_idx = (b * n_heads + h) * seq_len * seq_len;
-
-            /* Extract per-head slices */
-            extract_head(&grad_attn_out->data[off], seq_len, dim, head_dim, h, go_h);
-            extract_head(&attn->saved_v->data[off], seq_len, dim, head_dim, h, v_h);
-            extract_head(&attn->saved_q->data[off], seq_len, dim, head_dim, h, q_h);
-            extract_head(&attn->saved_k->data[off], seq_len, dim, head_dim, h, k_h);
-
-            attn_backward_one_head(
-                go_h, v_h, q_h, k_h,
-                &attn->saved_attn->data[attn_idx],
-                gv_h, gq_h, gk_h,
-                v_h_t, grad_attn_w, grad_scores, grad_scores_t,
-                seq_len, head_dim, scale, gemm);
-
-            /* Scatter back — each (b,h) writes to non-overlapping head slice */
-            scatter_head(gv_h, seq_len, dim, head_dim, h, &grad_v->data[off]);
-            scatter_head(gq_h, seq_len, dim, head_dim, h, &grad_q->data[off]);
             scatter_head(gk_h, seq_len, dim, head_dim, h, &grad_k->data[off]);
         }
 
         qat_free(go_h);
         qat_free(v_h);
+        qat_free(v_h_t);
         qat_free(q_h);
         qat_free(k_h);
-        qat_free(v_h_t);
+        qat_free(grad_attn_w);
+        qat_free(grad_scores);
+        qat_free(grad_scores_t);
         qat_free(gq_h);
         qat_free(gk_h);
         qat_free(gv_h);
-        qat_free(grad_attn_w);
-        qat_free(grad_scores);
-        qat_free(grad_scores_t);
     }
 
-    /* Backward through Q, K, V projections */
+    /* Backward through Q, K, V projections — [B*S, dim] */
     Tensor *grad_from_q = qat_linear_backward(attn->wq, grad_q);
     Tensor *grad_from_k = qat_linear_backward(attn->wk, grad_k);
     Tensor *grad_from_v = qat_linear_backward(attn->wv, grad_v);
 
-    Tensor *grad_input = tensor_create(total_tokens, dim);
-    for (int i = 0; i < total_tokens * dim; i++) {
-        grad_input->data[i] = grad_from_q->data[i] +
-                               grad_from_k->data[i] +
-                               grad_from_v->data[i];
-    }
-
-    tensor_free(grad_q);
-    tensor_free(grad_k);
-    tensor_free(grad_v);
-    tensor_free(grad_from_q);
-    tensor_free(grad_from_k);
-    tensor_free(grad_from_v);
-    tensor_free(grad_attn_out);
-
-    return grad_input;
-}
-
-/*
- * Attention backward: head-first layout + OpenMP on outer loop.
- * Best of both: no extract/scatter, parallel across (b,h) pairs.
- */
-Tensor *attention_backward_headfirst_omp(Attention *attn, const Tensor *grad_output,
-                                          int batch_size, int seq_len) {
-    int dim = attn->dim;
-    int n_heads = attn->n_heads;
-    int head_dim = attn->head_dim;
-    int total_tokens = batch_size * seq_len;
-    float scale = 1.0f / sqrtf((float)head_dim);
-    gemm_fp32_fn gemm = attn->kernels->fp32_gemm;
-
-    /* Backward through output projection */
-    Tensor *grad_attn_out = qat_linear_backward(attn->wo, grad_output);
-
-    /* Convert to head-first layout */
-    float *go_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sq_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sk_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-    float *sv_hf = (float *)qat_alloc(total_tokens * dim * sizeof(float));
-
-    interleaved_to_headfirst(grad_attn_out->data, total_tokens, dim, n_heads, head_dim, go_hf);
-    interleaved_to_headfirst(attn->saved_q->data, total_tokens, dim, n_heads, head_dim, sq_hf);
-    interleaved_to_headfirst(attn->saved_k->data, total_tokens, dim, n_heads, head_dim, sk_hf);
-    interleaved_to_headfirst(attn->saved_v->data, total_tokens, dim, n_heads, head_dim, sv_hf);
-
-    /* Head-first gradient accumulators */
-    float *gq_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-    float *gk_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-    float *gv_hf = (float *)qat_calloc(total_tokens * dim * sizeof(float));
-
-    int total_iters = batch_size * n_heads;
-
-    #pragma omp parallel
-    {
-        /* Per-thread workspace */
-        float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-        float *grad_attn_w  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-
-        #pragma omp for schedule(static)
-        for (int bh = 0; bh < total_iters; bh++) {
-            int b = bh / n_heads;
-            int h = bh % n_heads;
-            int hf_off = (h * batch_size + b) * seq_len * head_dim;
-            int attn_idx = (b * n_heads + h) * seq_len * seq_len;
-
-            attn_backward_one_head(
-                &go_hf[hf_off], &sv_hf[hf_off], &sq_hf[hf_off], &sk_hf[hf_off],
-                &attn->saved_attn->data[attn_idx],
-                &gv_hf[hf_off], &gq_hf[hf_off], &gk_hf[hf_off],
-                v_h_t, grad_attn_w, grad_scores, grad_scores_t,
-                seq_len, head_dim, scale, gemm);
-        }
-
-        qat_free(v_h_t);
-        qat_free(grad_attn_w);
-        qat_free(grad_scores);
-        qat_free(grad_scores_t);
-    }
-
-    /* Convert head-first grads back to interleaved */
-    Tensor *grad_q = tensor_create(total_tokens, dim);
-    Tensor *grad_k = tensor_create(total_tokens, dim);
-    Tensor *grad_v = tensor_create(total_tokens, dim);
-
-    headfirst_to_interleaved(gq_hf, total_tokens, dim, n_heads, head_dim, grad_q->data);
-    headfirst_to_interleaved(gk_hf, total_tokens, dim, n_heads, head_dim, grad_k->data);
-    headfirst_to_interleaved(gv_hf, total_tokens, dim, n_heads, head_dim, grad_v->data);
-
-    qat_free(go_hf);
-    qat_free(sq_hf);
-    qat_free(sk_hf);
-    qat_free(sv_hf);
-    qat_free(gq_hf);
-    qat_free(gk_hf);
-    qat_free(gv_hf);
-
-    /* Backward through Q, K, V projections */
-    Tensor *grad_from_q = qat_linear_backward(attn->wq, grad_q);
-    Tensor *grad_from_k = qat_linear_backward(attn->wk, grad_k);
-    Tensor *grad_from_v = qat_linear_backward(attn->wv, grad_v);
-
+    /* Sum gradients from Q, K, V */
     Tensor *grad_input = tensor_create(total_tokens, dim);
     for (int i = 0; i < total_tokens * dim; i++) {
         grad_input->data[i] = grad_from_q->data[i] +
