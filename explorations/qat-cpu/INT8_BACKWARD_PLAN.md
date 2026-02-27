@@ -124,3 +124,44 @@ With batch=8 baseline (~184 ms/step FP32):
 - Don't INT8 the attention per-head backward GEMMs (64x64, too small)
 - Don't quantize the gradient accumulation (keep FP32)
 - Don't try to fuse quantize+GEMM (complexity not worth it)
+
+## Results (1000 steps, batch=8, dim=512)
+
+```
+                          FP32        QAT     QAT+INT8bwd
+ms/step:                 535.0      483.5        520.1
+Val Perplexity:           7.73       7.68         7.76
+Val BPB:                 2.951      2.941        2.957
+Speedup vs FP32:            --      1.11x        1.03x
+```
+
+**Negative result.** INT8 backward is slower than QAT fwd-only (520 vs 484 ms/step).
+Quality is fine (ppl 7.76 vs 7.73), but the quantization overhead defeats the purpose.
+
+### Why it's slower
+
+The per-column quantization needed for the B matrix in each backward GEMM is the
+bottleneck. Unlike per-row quantization (which iterates contiguously in memory),
+per-column quantization iterates column-major over row-major data -- cache-unfriendly
+and not vectorized. Each backward call does:
+1. quantize grad_output per-row (fast, contiguous)
+2. INT8 GEMM 1 using per-column quantized weight (fast)
+3. dequantize INT32 result (fast)
+4. transpose grad_output (scalar, cache-unfriendly)
+5. quantize transposed grad_output per-row (fast)
+6. INT8 GEMM 2 using per-column quantized input (fast)
+7. dequantize and accumulate (fast)
+
+Steps 4 is overhead that doesn't exist in the FP32 path (FP32 GEMM handles
+transpose via the alpha parameter). The per-column quantization in forward
+(for both weight and saved_input) adds more overhead.
+
+Net: the INT8 GEMM is faster, but we added ~5 extra memory-bound operations
+per layer per step. At dim=512 with batch=8, the GEMMs aren't big enough for
+the VNNI throughput advantage to overcome this overhead.
+
+### Would it work at larger scale?
+
+Possibly. The quantization overhead is O(M*K) while the GEMM is O(M*N*K).
+As dimensions grow, the GEMM dominates more. At dim=2048 or dim=4096, the
+ratio would shift in favor of INT8. But at our dim=512, the answer is no.
