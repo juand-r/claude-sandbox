@@ -102,6 +102,10 @@ void tensor_print(const Tensor *t, const char *name);
 /* Copy tensor data: dst = src. Must have same shape. */
 void tensor_copy(Tensor *dst, const Tensor *src);
 
+/* Transpose FP32 matrix: dst[j*rows+i] = src[i*cols+j].
+ * src: [rows x cols], dst: [cols x rows]. Must not alias. */
+void transpose_fp32(const float *src, int rows, int cols, float *dst);
+
 /* Number of elements. */
 static inline int tensor_numel(const Tensor *t) {
     return t->rows * t->cols;

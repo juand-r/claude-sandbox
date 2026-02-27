@@ -47,6 +47,16 @@
 - [ ] NUMA-aware allocation
 - [ ] Gradient accumulation
 
+## Phase 8: INT8 Backward + Attention OMP [DONE]
+- [x] Parallelize attention backward with OpenMP on outer (b,h) loop
+- [x] Implement INT8 backward pass for QAT linear layers
+- [x] Per-column quantization for B matrix in backward GEMMs
+- [x] Pre-allocated INT8 backward workspace in QATLinear struct
+- [x] Profile at dim=512: INT8 backward 7.4% slower than QAT fwd-only (overhead > savings)
+- [x] Profile at dim=1024: INT8 backward 6.6% slower (penalty shrinking but not crossing over)
+- [x] Root cause: unvectorized `quantize_per_column` is cache-unfriendly (column-stride over row-major)
+- [ ] Vectorize `quantize_per_column` via AVX-512 block transpose + per-row quantize
+
 ## Performance Optimization Log
 
 ### VNNI B-matrix prepack (commit TBD)

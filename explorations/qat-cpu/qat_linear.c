@@ -122,14 +122,6 @@ static void transpose_i8(const int8_t *src, int rows, int cols, int8_t *dst) {
     }
 }
 
-static void transpose_fp32(const float *src, int rows, int cols, float *dst) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            dst[j * rows + i] = src[i * cols + j];
-        }
-    }
-}
-
 Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
     int batch = input->rows;
     int in_f = layer->in_features;

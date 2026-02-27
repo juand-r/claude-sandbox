@@ -109,6 +109,20 @@ void tensor_copy(Tensor *dst, const Tensor *src) {
 }
 
 /* ========================================================================
+ * Transpose (row-major -> row-major)
+ * dst[j * rows + i] = src[i * cols + j]
+ * src: [rows x cols], dst: [cols x rows]
+ * ======================================================================== */
+
+void transpose_fp32(const float *src, int rows, int cols, float *dst) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            dst[j * rows + i] = src[i * cols + j];
+        }
+    }
+}
+
+/* ========================================================================
  * INT8 Tensor
  * ======================================================================== */
 

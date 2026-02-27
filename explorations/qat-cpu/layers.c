@@ -448,17 +448,6 @@ static void scatter_head(const float *src, int seq_len, int dim,
 }
 
 /*
- * Helper: transpose [rows x cols] -> [cols x rows].
- */
-static void transpose_fp32(const float *src, int rows, int cols, float *dst) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            dst[j * rows + i] = src[i * cols + j];
-        }
-    }
-}
-
-/*
  * Attention forward with mini-batch support.
  *
  * input: [batch_size * seq_len, dim]
