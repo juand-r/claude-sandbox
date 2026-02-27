@@ -41,6 +41,22 @@ All 7 phases from PLAN.md are complete:
 The core thesis is proven: INT8 QAT via VNNI gives real speedups at sufficient
 GEMM sizes while preserving training quality.
 
+### dim=512, batch=8, 5K steps (mini-batch implementation)
+- FP32: ppl=4.48, BPB=2.163, 183.8 ms/step, 2785 tok/s, 0.1062 TFLOPS
+- QAT:  ppl=4.48, BPB=2.164, 187.6 ms/step, 2729 tok/s, 0.1041 TFLOPS
+- **QAT speedup: 0.98x** (no advantage — see below)
+- **QAT perplexity ratio: 1.001** (essentially identical quality)
+- Training time: FP32 919s, QAT 938s
+
+**Key finding:** Mini-batching eliminated QAT's speed advantage. With batch=1,
+the INT8 forward pass was a large fraction of total step time, so VNNI's 1.5x
+speedup there translated to 1.56x overall. With batch=8, the FP32 backward pass
+(identical in both modes) also benefits from larger GEMMs, and it dominates the
+step time. The INT8 forward speedup is diluted.
+
+**Upside:** Quality improved dramatically (ppl 6.14 -> 4.48 in fewer steps),
+throughput tripled (~900 -> ~2700 tok/s), and MFU went from 1.5% to ~5%.
+
 ## What's Missing / Possible Next Steps
 
 ### Quality improvements (generation quality)

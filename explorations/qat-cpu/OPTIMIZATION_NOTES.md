@@ -207,8 +207,10 @@ BPB = total_CE_nats / (ln(2) * total_bytes_in_text).
 
 Reference BPB values on Shakespeare-like text:
 - Random (128 ASCII): 7.00 BPB
-- Our FP32 at 15K: ~2.63 BPB
-- Our QAT at 15K: ~2.72 BPB
+- Our FP32 at 15K (batch=1): ~2.63 BPB
+- Our QAT at 15K (batch=1): ~2.72 BPB
+- Our FP32 at 5K (batch=8): 2.163 BPB
+- Our QAT at 5K (batch=8): 2.164 BPB
 - Good char-level model (deep, 100K+ steps): ~1.2-1.5 BPB
 
 ### Speed metrics
@@ -247,3 +249,46 @@ energy per inference.
 on GPU; our CPU MFU is expectedly much lower.
 
 **QLoRA**: reports chatbot benchmarks (Vicuna), human/GPT-4 eval, not raw ppl.
+
+## Mini-batching (batch=8)
+
+### Implementation
+Added `BATCH_SIZE=8` constant. Linear layers (QATLinear, output head) process
+`[batch*seq_len, dim]` matrices — they're already batch-agnostic. Attention
+loops over batch items, computing per-sequence `[seq_len x seq_len]` attention.
+See MINIBATCH_PLAN.md for detailed design.
+
+### Results (dim=512, 5K steps)
+```
+                    FP32          QAT
+Val perplexity:     4.48          4.48
+Val BPB:            2.163         2.164
+ms/step:            183.8         187.6
+Tokens/sec:         2785          2729
+Effective TFLOPS:   0.1062        0.1041
+Speedup:            --            0.98x
+```
+
+### Analysis: Why QAT speedup disappeared
+
+With batch=1 (M=64), the training step breakdown was roughly:
+- INT8 forward: ~42 ms (QAT) vs ~65 ms (FP32) — VNNI wins big
+- FP32 backward: ~22 ms (same for both)
+- Other: ~11 ms (same for both)
+- QAT total: 75 ms, FP32 total: 98 ms → 1.3x in forward, 1.56x overall
+
+With batch=8 (M=512), all GEMMs scale up:
+- INT8 forward: ~70 ms (QAT) vs ~90 ms (FP32) — VNNI still wins, but less dominant
+- FP32 backward: ~80 ms (same for both) — now dominates both modes
+- Other: ~35 ms (same for both)
+- QAT total: 185 ms, FP32 total: 205 ms → ~1.1x theoretical, 0.98x measured
+
+The backward pass (always FP32) benefits equally from larger M, so it takes a
+bigger share of total time. The INT8 forward advantage gets diluted.
+
+### Possible ways to recover QAT speedup
+1. **Increase dim**: Larger weight matrices → bigger VNNI advantage in forward
+2. **INT8 backward**: Use VNNI for gradient computation (sacrifices gradient precision)
+3. **Gradient accumulation**: Multiple forward-only mini-batches, one backward.
+   This would maximize the fraction of time spent in INT8 forward.
+4. **Mixed precision backward (BF16)**: Not helpful on this CPU (no BF16 GEMM advantage)

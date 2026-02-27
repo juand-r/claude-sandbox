@@ -75,3 +75,21 @@ big win from batching is in the linear layers.
 - MFU should increase significantly (maybe 5-10% from 1.5%)
 - tokens/sec should increase (processing 8x more tokens per step, step time < 8x longer)
 - QAT speedup ratio should be preserved or improve
+
+## Actual results (5K steps, dim=512, batch=8)
+
+```
+                    FP32          QAT
+Val perplexity:     4.48          4.48
+Val BPB:            2.163         2.164
+ms/step:            183.8         187.6
+Tokens/sec:         2785          2729
+Effective TFLOPS:   0.1062        0.1041
+QAT speedup:        --            0.98x
+```
+
+- MFU: ~5% (up from 1.5%) -- correct prediction
+- tokens/sec: ~2700 (up from ~900) -- correct prediction, 3x improvement
+- QAT speedup: 0.98x (WRONG prediction) -- batching eliminated QAT's advantage
+  because the FP32 backward pass (same in both modes) also benefits from larger
+  GEMMs and now dominates step time. See OPTIMIZATION_NOTES.md for analysis.
