@@ -18,17 +18,17 @@
 
 #define VOCAB_SIZE   128   /* ASCII */
 #define DIM          512
-#define N_LAYERS     6
+#define N_LAYERS     4
 #define N_HEADS      8
 #define HIDDEN_DIM   2048
 #define MAX_SEQ_LEN  256
-#define SEQ_LEN      128   /* Training sequence length */
-#define BATCH_SIZE   4     /* Mini-batch size (sequences per step) */
-#define N_STEPS      1000
-#define EVAL_EVERY   200
-#define GEN_EVERY    500
+#define SEQ_LEN      64    /* Training sequence length */
+#define BATCH_SIZE   8     /* Mini-batch size (sequences per step) */
+#define N_STEPS      10000
+#define EVAL_EVERY   1000
+#define GEN_EVERY    2500
 #define GEN_LEN      200
-#define LR           3e-4f   /* Lower LR for larger model */
+#define LR           3e-4f
 #define WEIGHT_DECAY 0.01f
 #define GEN_TEMP     0.8f
 
