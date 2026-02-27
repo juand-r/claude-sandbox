@@ -179,6 +179,60 @@ void add_bias(float *out, int rows, int cols, const float *bias) {
 }
 
 /*
+ * Per-column symmetric quantization.
+ * Each column is quantized independently:
+ *   scale[j] = absmax(src[:, j]) / 127.0
+ *   dst[i][j] = clamp(round(src[i][j] / scale[j]), -128, 127)
+ *
+ * Used in INT8 backward: the B matrix in C = A * B needs per-column scales
+ * so that dequantize factors as out[i][j] = acc[i][j] * scaleA[i] * scaleB[j].
+ */
+void quantize_per_column(const float *src, int rows, int cols,
+                          int8_t *dst, float *scales) {
+    /* Find absmax per column */
+    #pragma omp parallel for schedule(static) if(cols >= 8)
+    for (int j = 0; j < cols; j++) {
+        float amax = 0.0f;
+        for (int i = 0; i < rows; i++) {
+            float a = fabsf(src[i * cols + j]);
+            if (a > amax) amax = a;
+        }
+        scales[j] = (amax > 0.0f) ? (amax / 127.0f) : 1.0f;
+    }
+
+    /* Quantize each element */
+    #pragma omp parallel for schedule(static) if(rows >= 8)
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            float inv_scale = 1.0f / scales[j];
+            float val = src[i * cols + j] * inv_scale;
+            int32_t q = (int32_t)roundf(val);
+            if (q > 127) q = 127;
+            if (q < -128) q = -128;
+            dst[i * cols + j] = (int8_t)q;
+        }
+    }
+}
+
+/*
+ * Dequantize INT32 accumulator to FP32, accumulating into existing output.
+ * out[i][j] += acc[i][j] * scale_act[i] * scale_wt[j]
+ *
+ * Same as dequantize_int32 but adds to out instead of overwriting.
+ */
+void dequantize_int32_acc(const int32_t *acc, int rows, int cols,
+                           const float *scale_act, const float *scale_wt,
+                           float *out) {
+    #pragma omp parallel for schedule(static) if(rows >= 8)
+    for (int i = 0; i < rows; i++) {
+        float sa = scale_act[i];
+        for (int j = 0; j < cols; j++) {
+            out[i * cols + j] += (float)acc[i * cols + j] * sa * scale_wt[j];
+        }
+    }
+}
+
+/*
  * Fake quantization: quantize then immediately dequantize.
  * Simulates quantization noise in FP32 domain.
  *

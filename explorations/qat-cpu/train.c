@@ -66,8 +66,9 @@ typedef struct {
     Tensor *saved_embed;        /* [batch_size * seq_len x dim] */
 } GPTModel;
 
-/* Forward declaration */
+/* Forward declarations */
 static void gpt_set_qat(GPTModel *model, bool use_qat);
+static void gpt_set_int8_backward(GPTModel *model, bool use_int8_bwd);
 
 static GPTModel *gpt_create(const KernelDispatch *kd, uint64_t *rng) {
     GPTModel *m = (GPTModel *)calloc(1, sizeof(GPTModel));
@@ -133,6 +134,19 @@ static void gpt_set_qat(GPTModel *model, bool use_qat) {
         b->ffn_down->use_qat = use_qat;
     }
     model->output_head->use_qat = use_qat;
+}
+
+static void gpt_set_int8_backward(GPTModel *model, bool use_int8_bwd) {
+    for (int i = 0; i < model->n_layers; i++) {
+        TransformerBlock *b = model->blocks[i];
+        b->attn->wq->use_int8_backward = use_int8_bwd;
+        b->attn->wk->use_int8_backward = use_int8_bwd;
+        b->attn->wv->use_int8_backward = use_int8_bwd;
+        b->attn->wo->use_int8_backward = use_int8_bwd;
+        b->ffn_up->use_int8_backward = use_int8_bwd;
+        b->ffn_down->use_int8_backward = use_int8_bwd;
+    }
+    model->output_head->use_int8_backward = use_int8_bwd;
 }
 
 /*
@@ -779,7 +793,7 @@ int main(int argc, char **argv) {
                                         val_data, val_len,
                                         train_rng_fp32, csv);
 
-    /* ---- Train QAT ---- */
+    /* ---- Train QAT (INT8 forward, FP32 backward) ---- */
     uint64_t rng_qat[4];
     rng_seed(rng_qat, 42);  /* Same seed for same init */
     GPTModel *model_qat = gpt_create(&kd, rng_qat);
@@ -792,50 +806,66 @@ int main(int argc, char **argv) {
                                        val_data, val_len,
                                        train_rng_qat, csv);
 
+    /* ---- Train QAT with INT8 backward ---- */
+    uint64_t rng_qat2[4];
+    rng_seed(rng_qat2, 42);
+    GPTModel *model_qat2 = gpt_create(&kd, rng_qat2);
+    gpt_set_qat(model_qat2, true);
+    gpt_set_int8_backward(model_qat2, true);
+
+    uint64_t train_rng_qat2[4];
+    rng_seed(train_rng_qat2, 123);
+    TrainResult res_qat2 = train_model("QAT (INT8 fwd+bwd)", model_qat2,
+                                        train_data, train_len,
+                                        val_data, val_len,
+                                        train_rng_qat2, csv);
+
     if (csv) fclose(csv);
 
     /* ---- Comparison ---- */
     printf("\n========================================\n");
     printf("COMPARISON\n");
     printf("========================================\n");
-    printf("%-25s %10s %10s\n", "", "FP32", "QAT");
+    printf("%-25s %10s %10s %12s\n", "", "FP32", "QAT", "QAT+INT8bwd");
     printf("--- Quality ---\n");
-    printf("%-25s %10.4f %10.4f\n", "Val Loss (nats):",
-           res_fp32.final_val_loss, res_qat.final_val_loss);
-    printf("%-25s %10.2f %10.2f\n", "Val Perplexity:",
-           res_fp32.final_val_ppl, res_qat.final_val_ppl);
-    printf("%-25s %10.3f %10.3f\n", "Val BPB:",
-           res_fp32.final_val_bpb, res_qat.final_val_bpb);
+    printf("%-25s %10.4f %10.4f %12.4f\n", "Val Loss (nats):",
+           res_fp32.final_val_loss, res_qat.final_val_loss, res_qat2.final_val_loss);
+    printf("%-25s %10.2f %10.2f %12.2f\n", "Val Perplexity:",
+           res_fp32.final_val_ppl, res_qat.final_val_ppl, res_qat2.final_val_ppl);
+    printf("%-25s %10.3f %10.3f %12.3f\n", "Val BPB:",
+           res_fp32.final_val_bpb, res_qat.final_val_bpb, res_qat2.final_val_bpb);
     printf("--- Speed ---\n");
-    printf("%-25s %10.1f %10.1f\n", "Total Time (sec):",
-           res_fp32.total_time_sec, res_qat.total_time_sec);
-    printf("%-25s %10.1f %10.1f\n", "ms/step:",
-           res_fp32.ms_per_step, res_qat.ms_per_step);
-    printf("%-25s %10.0f %10.0f\n", "Tokens/sec:",
-           res_fp32.tokens_per_sec, res_qat.tokens_per_sec);
-    printf("%-25s %10.4f %10.4f\n", "Effective TFLOPS:",
-           res_fp32.tflops, res_qat.tflops);
+    printf("%-25s %10.1f %10.1f %12.1f\n", "Total Time (sec):",
+           res_fp32.total_time_sec, res_qat.total_time_sec, res_qat2.total_time_sec);
+    printf("%-25s %10.1f %10.1f %12.1f\n", "ms/step:",
+           res_fp32.ms_per_step, res_qat.ms_per_step, res_qat2.ms_per_step);
+    printf("%-25s %10.0f %10.0f %12.0f\n", "Tokens/sec:",
+           res_fp32.tokens_per_sec, res_qat.tokens_per_sec, res_qat2.tokens_per_sec);
+    printf("%-25s %10.4f %10.4f %12.4f\n", "Effective TFLOPS:",
+           res_fp32.tflops, res_qat.tflops, res_qat2.tflops);
 
     float ppl_ratio = res_qat.final_val_ppl / res_fp32.final_val_ppl;
     float bpb_delta = res_qat.final_val_bpb - res_fp32.final_val_bpb;
     float speedup = res_fp32.total_time_sec / res_qat.total_time_sec;
-    printf("\n--- Summary ---\n");
-    printf("QAT perplexity ratio:  %.3f (1.0 = matches FP32)\n", ppl_ratio);
-    printf("QAT BPB delta:         %+.3f bits/byte\n", bpb_delta);
-    printf("QAT speedup:           %.2fx\n", speedup);
 
-    if (ppl_ratio < 1.05f) {
-        printf("\nResult: QAT matches FP32 quality (<5%% perplexity increase).\n");
-    } else if (ppl_ratio < 1.10f) {
-        printf("\nResult: QAT is close to FP32 (<10%% perplexity increase).\n");
-    } else {
-        printf("\nResult: QAT has %.0f%% higher perplexity than FP32.\n",
-               (ppl_ratio - 1.0f) * 100.0f);
-    }
+    float ppl_ratio2 = res_qat2.final_val_ppl / res_fp32.final_val_ppl;
+    float bpb_delta2 = res_qat2.final_val_bpb - res_fp32.final_val_bpb;
+    float speedup2 = res_fp32.total_time_sec / res_qat2.total_time_sec;
+
+    printf("\n--- Summary ---\n");
+    printf("QAT (fwd only):\n");
+    printf("  Perplexity ratio:  %.3f\n", ppl_ratio);
+    printf("  BPB delta:         %+.3f bits/byte\n", bpb_delta);
+    printf("  Speedup:           %.2fx\n", speedup);
+    printf("QAT (fwd+bwd INT8):\n");
+    printf("  Perplexity ratio:  %.3f\n", ppl_ratio2);
+    printf("  BPB delta:         %+.3f bits/byte\n", bpb_delta2);
+    printf("  Speedup:           %.2fx\n", speedup2);
 
     /* Cleanup */
     gpt_free(model_fp32);
     gpt_free(model_qat);
+    gpt_free(model_qat2);
     free(tokens);
 
     return 0;

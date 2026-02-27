@@ -262,6 +262,23 @@ void dequantize_int32(const int32_t *acc, int rows, int cols,
                       float *out);
 
 /*
+ * Per-column symmetric quantization.
+ * scale[j] = absmax(src[:, j]) / 127.0
+ * dst[i][j] = clamp(round(src[i][j] / scale[j]), -128, 127)
+ * scales: [cols]
+ */
+void quantize_per_column(const float *src, int rows, int cols,
+                          int8_t *dst, float *scales);
+
+/*
+ * Dequantize INT32 accumulator to FP32, accumulating (+=) into existing output.
+ * out[i][j] += acc[i][j] * scale_act[i] * scale_wt[j]
+ */
+void dequantize_int32_acc(const int32_t *acc, int rows, int cols,
+                           const float *scale_act, const float *scale_wt,
+                           float *out);
+
+/*
  * Add bias after dequantization: out[i][j] += bias[j]
  */
 void add_bias(float *out, int rows, int cols, const float *bias);
@@ -308,11 +325,25 @@ typedef struct {
     /* Saved for backward pass */
     Tensor *saved_input;     /* [batch x in_features] from last forward */
 
+    /* INT8 backward workspace.
+     * GEMM 1 (grad_input): needs weight quantized per-column (per in_features).
+     * GEMM 2 (grad_weight): needs saved_input quantized per-column (per in_features).
+     */
+    TensorI8 *weight_q_col;        /* [out_f x in_f] INT8, per-column quantized */
+    float    *weight_col_scales;   /* [in_f] per-column scales */
+
+    TensorI8 *saved_input_q;       /* [batch x in_f] INT8, per-column quantized */
+    float    *saved_input_col_scales; /* [in_f] per-column scales */
+    int       saved_input_batch;   /* batch size from last forward */
+
     /* Kernel dispatch (pointer to global dispatch table) */
     const KernelDispatch *kernels;
 
     /* If true, use INT8 quantized forward. If false, pure FP32 forward. */
     bool use_qat;
+
+    /* If true, use INT8 GEMMs in backward pass too. */
+    bool use_int8_backward;
 
     /* Weight cache: skip re-quantization when weights haven't changed.
      * Set to true by optimizer step, cleared after first quantize. */

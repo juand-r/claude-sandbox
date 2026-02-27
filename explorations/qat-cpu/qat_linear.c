@@ -2,10 +2,14 @@
  * qat_linear.c - QAT Linear Layer
  *
  * Forward: quantize weights+input -> INT8 GEMM -> dequantize -> add bias
- * Backward: FP32 GEMM with STE (uses FP32 master weights directly)
+ * Backward: FP32 GEMM with STE, or optionally INT8 GEMM for speed.
  *
  * The STE is implicit: backward pass computes gradients using the FP32
  * master weights, not the quantized weights. This means d(quantize)/d(w) = 1.
+ *
+ * INT8 backward mode: both backward GEMMs use INT8 VNNI. This trades gradient
+ * precision for speed. The weight matrix is re-quantized per-column (vs per-row
+ * in forward) so that dequantize factors as out[i][j] = acc[i][j] * sA[i] * sB[j].
  */
 
 #include "qat_cpu.h"
@@ -50,8 +54,18 @@ QATLinear *qat_linear_create(int in_features, int out_features,
     /* saved_input is allocated during forward */
     layer->saved_input = NULL;
 
+    /* INT8 backward workspace (weight per-column quantization, pre-allocated) */
+    layer->weight_q_col = tensor_i8_create(out_features, in_features);
+    layer->weight_col_scales = (float *)qat_calloc(in_features * sizeof(float));
+
+    /* saved_input_q and scales are allocated in forward when int8 backward is on */
+    layer->saved_input_q = NULL;
+    layer->saved_input_col_scales = NULL;
+    layer->saved_input_batch = 0;
+
     /* Default: use INT8 quantized forward */
     layer->use_qat = true;
+    layer->use_int8_backward = false;
     layer->weights_dirty = true;  /* Need initial quantization */
 
     return layer;
@@ -68,6 +82,10 @@ void qat_linear_free(QATLinear *layer) {
     tensor_i8_free(layer->weight_q_t);
     qat_free(layer->weight_fp32_t);
     tensor_free(layer->saved_input);
+    tensor_i8_free(layer->weight_q_col);
+    qat_free(layer->weight_col_scales);
+    tensor_i8_free(layer->saved_input_q);
+    qat_free(layer->saved_input_col_scales);
     free(layer);
 }
 
@@ -122,11 +140,32 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
     layer->saved_input = tensor_create(batch, in_f);
     tensor_copy(layer->saved_input, input);
 
+    /* Quantize saved_input per-column for INT8 backward (GEMM 2: grad_weight) */
+    if (layer->use_int8_backward) {
+        /* Reallocate if batch changed */
+        if (layer->saved_input_batch != batch) {
+            tensor_i8_free(layer->saved_input_q);
+            qat_free(layer->saved_input_col_scales);
+            layer->saved_input_q = tensor_i8_create(batch, in_f);
+            layer->saved_input_col_scales = (float *)qat_calloc(in_f * sizeof(float));
+            layer->saved_input_batch = batch;
+        }
+        quantize_per_column(input->data, batch, in_f,
+                            layer->saved_input_q->data,
+                            layer->saved_input_col_scales);
+    }
+
     /* FP32-only forward path (no quantization) */
     if (!layer->use_qat) {
         /* Transpose weight (skip if cached from same step) */
         if (layer->weights_dirty) {
             transpose_fp32(layer->weight->data, out_f, in_f, layer->weight_fp32_t);
+            /* Per-column weight quantization for INT8 backward */
+            if (layer->use_int8_backward) {
+                quantize_per_column(layer->weight->data, out_f, in_f,
+                                    layer->weight_q_col->data,
+                                    layer->weight_col_scales);
+            }
             layer->weights_dirty = false;
         }
 
@@ -149,6 +188,12 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
         quantize_per_channel(layer->weight->data, out_f, in_f,
                              layer->weight_q->data, layer->weight_scales);
         transpose_i8(layer->weight_q->data, out_f, in_f, layer->weight_q_t->data);
+        /* Per-column weight quantization for INT8 backward */
+        if (layer->use_int8_backward) {
+            quantize_per_column(layer->weight->data, out_f, in_f,
+                                layer->weight_q_col->data,
+                                layer->weight_col_scales);
+        }
         layer->weights_dirty = false;
     }
 
@@ -191,11 +236,89 @@ Tensor *qat_linear_forward(QATLinear *layer, const Tensor *input) {
  *
  * Key STE property: we use W_fp32 (master weights) directly, not the quantized version.
  * This is the entire STE — gradients flow through as if quantization wasn't there.
+ *
+ * INT8 backward mode: both GEMMs use INT8 VNNI for speed. Operands are:
+ *   GEMM 1: A=grad_output (per-row quantized), B=weight (per-column quantized)
+ *   GEMM 2: A=grad_output^T (per-row quantized), B=saved_input (per-column quantized)
+ * Per-column B quantization ensures dequant = acc[i][j] * scaleA[i] * scaleB[j].
  */
 Tensor *qat_linear_backward(QATLinear *layer, const Tensor *grad_output) {
     int batch = grad_output->rows;
     int out_f = layer->out_features;
     int in_f = layer->in_features;
+
+    /*
+     * 3. grad_bias += sum(grad_output, dim=0)  (done first, same in both modes)
+     */
+    if (layer->grad_bias) {
+        for (int i = 0; i < batch; i++) {
+            for (int j = 0; j < out_f; j++) {
+                layer->grad_bias->data[j] += grad_output->data[i * out_f + j];
+            }
+        }
+    }
+
+    if (layer->use_int8_backward) {
+        /*
+         * INT8 GEMM 1: grad_input = grad_output * weight
+         *   A = grad_output [batch x out_f], quantize per-row
+         *   B = weight_q_col [out_f x in_f], already quantized per-column
+         *   C_i32 [batch x in_f] = A_q * B_q
+         *   grad_input[i][j] = C_i32[i][j] * go_scales[i] * weight_col_scales[j]
+         */
+        TensorI8 *go_q = tensor_i8_create(batch, out_f);
+        float *go_scales = (float *)qat_alloc(batch * sizeof(float));
+        quantize_per_token(grad_output->data, batch, out_f, go_q->data, go_scales);
+
+        TensorI32 *acc1 = tensor_i32_create(batch, in_f);
+        layer->kernels->int8_gemm(batch, in_f, out_f,
+                                   go_q->data, out_f,
+                                   layer->weight_q_col->data, in_f,
+                                   acc1->data, in_f);
+
+        Tensor *grad_input = tensor_create(batch, in_f);
+        dequantize_int32(acc1->data, batch, in_f,
+                         go_scales, layer->weight_col_scales,
+                         grad_input->data);
+
+        tensor_i32_free(acc1);
+
+        /*
+         * INT8 GEMM 2: grad_weight += grad_output^T * saved_input
+         *   A = grad_output^T [out_f x batch], quantize per-row
+         *   B = saved_input_q [batch x in_f], already quantized per-column
+         *   C_i32 [out_f x in_f] = A_q * B_q
+         *   dequant and accumulate into grad_weight
+         */
+        float *go_t = (float *)qat_alloc(out_f * batch * sizeof(float));
+        transpose_fp32(grad_output->data, batch, out_f, go_t);
+
+        TensorI8 *go_t_q = tensor_i8_create(out_f, batch);
+        float *go_t_scales = (float *)qat_alloc(out_f * sizeof(float));
+        quantize_per_token(go_t, out_f, batch, go_t_q->data, go_t_scales);
+        qat_free(go_t);
+
+        TensorI32 *acc2 = tensor_i32_create(out_f, in_f);
+        layer->kernels->int8_gemm(out_f, in_f, batch,
+                                   go_t_q->data, batch,
+                                   layer->saved_input_q->data, in_f,
+                                   acc2->data, in_f);
+
+        /* Accumulate into grad_weight (+=) */
+        dequantize_int32_acc(acc2->data, out_f, in_f,
+                             go_t_scales, layer->saved_input_col_scales,
+                             layer->grad_weight->data);
+
+        tensor_i8_free(go_q);
+        qat_free(go_scales);
+        tensor_i8_free(go_t_q);
+        qat_free(go_t_scales);
+        tensor_i32_free(acc2);
+
+        return grad_input;
+    }
+
+    /* FP32 backward (original path) */
 
     /*
      * 1. grad_input = grad_output * weight
@@ -225,17 +348,6 @@ Tensor *qat_linear_backward(QATLinear *layer, const Tensor *grad_output) {
                                1.0f,  /* accumulate into existing grad_weight */
                                layer->grad_weight->data, in_f);
     qat_free(grad_output_t);
-
-    /*
-     * 3. grad_bias += sum(grad_output, dim=0)
-     */
-    if (layer->grad_bias) {
-        for (int i = 0; i < batch; i++) {
-            for (int j = 0; j < out_f; j++) {
-                layer->grad_bias->data[j] += grad_output->data[i * out_f + j];
-            }
-        }
-    }
 
     return grad_input;
 }
