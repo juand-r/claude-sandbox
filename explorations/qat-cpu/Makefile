@@ -58,9 +58,27 @@ train_qat: train.o $(OBJ_ALL)
 test: test_qat
 	./test_qat
 
+# Roofline benchmark
+bench_roofline.o: bench_roofline.c qat_cpu.h
+	$(CC) $(CFLAGS_SCALAR) -c $< -o $@
+
+bench_roofline: bench_roofline.o $(OBJ_ALL)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+# Profiler
+profile_qat.o: profile_qat.c qat_cpu.h
+	$(CC) $(CFLAGS_SCALAR) -c $< -o $@
+
+profile_qat: profile_qat.o $(OBJ_ALL)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
 # Run training
 train: train_qat
 	./train_qat
 
+# Run roofline benchmark
+roofline: bench_roofline
+	./bench_roofline
+
 clean:
-	rm -f *.o test_qat train_qat
+	rm -f *.o test_qat train_qat bench_roofline profile_qat
