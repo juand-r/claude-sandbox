@@ -325,14 +325,40 @@ void quantize_per_column(const float *src, int rows, int cols,
  *
  * Same as dequantize_int32 but adds to out instead of overwriting.
  */
+__attribute__((target("avx512f")))
+static void dequantize_row_acc_avx512(const int32_t *acc, int cols,
+                                       float sa, const float *scale_wt,
+                                       float *out) {
+    __m512 sa_vec = _mm512_set1_ps(sa);
+    int j = 0;
+    for (; j + 16 <= cols; j += 16) {
+        __m512i a = _mm512_loadu_si512(acc + j);
+        __m512 fa = _mm512_cvtepi32_ps(a);
+        __m512 sw = _mm512_loadu_ps(scale_wt + j);
+        __m512 existing = _mm512_loadu_ps(out + j);
+        __m512 result = _mm512_fmadd_ps(_mm512_mul_ps(fa, sa_vec), sw, existing);
+        _mm512_storeu_ps(out + j, result);
+    }
+    for (; j < cols; j++) {
+        out[j] += (float)acc[j] * sa * scale_wt[j];
+    }
+}
+
 void dequantize_int32_acc(const int32_t *acc, int rows, int cols,
                            const float *scale_act, const float *scale_wt,
                            float *out) {
+    int use_avx512 = __builtin_cpu_supports("avx512f");
     #pragma omp parallel for schedule(static) if(rows >= 8)
     for (int i = 0; i < rows; i++) {
-        float sa = scale_act[i];
-        for (int j = 0; j < cols; j++) {
-            out[i * cols + j] += (float)acc[i * cols + j] * sa * scale_wt[j];
+        if (use_avx512) {
+            dequantize_row_acc_avx512(acc + i * cols, cols,
+                                       scale_act[i], scale_wt,
+                                       out + i * cols);
+        } else {
+            float sa = scale_act[i];
+            for (int j = 0; j < cols; j++) {
+                out[i * cols + j] += (float)acc[i * cols + j] * sa * scale_wt[j];
+            }
         }
     }
 }
