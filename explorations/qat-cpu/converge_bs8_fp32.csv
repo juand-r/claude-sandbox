@@ -1,0 +1,2 @@
+mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec
+FP32,0,1024,5.1397,5.1397,93.0798,6.540,6340.4,162,15.2
