@@ -46,6 +46,79 @@
       #7f1d1d, #dc2626, #f87171, #fca5a5, #e5e7eb, #86efac, #4ade80, #16a34a, #166534);
   }
 
+  /* ── Mobile detail panel (shown on tap) ── */
+  #mobile-detail {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+    background: #1c2128;
+    border-top: 2px solid #444c56;
+    padding: 16px 18px 24px;
+    max-height: 45vh;
+    overflow-y: auto;
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  #mobile-detail .md-close {
+    position: absolute; top: 8px; right: 12px;
+    background: none; border: none; color: #8b949e;
+    font-size: 22px; cursor: pointer; padding: 4px 8px;
+  }
+  #mobile-detail .md-title {
+    font-weight: 600; color: #f0f6fc; font-size: 16px; margin-bottom: 4px;
+    padding-right: 30px;
+  }
+  #mobile-detail .md-date { color: #8b949e; font-size: 13px; margin-bottom: 8px; }
+  #mobile-detail .md-score { font-weight: 700; font-size: 22px; margin-bottom: 8px; }
+  #mobile-detail .md-desc { color: #c9d1d9; margin-bottom: 8px; }
+  #mobile-detail .md-impact { font-style: italic; color: #8b949e; font-size: 13px; margin-bottom: 8px; }
+  #mobile-detail .md-meta { display: flex; gap: 10px; font-size: 13px; color: #8b949e; flex-wrap: wrap; }
+
+  /* ── Mobile overrides ── */
+  @media (max-width: 768px) {
+    #header {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 8px 12px;
+      gap: 8px;
+    }
+    #header h1 {
+      font-size: 14px;
+      width: 100%;
+    }
+    #header .controls {
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      font-size: 12px;
+    }
+    #header .controls select, #header .controls input {
+      font-size: 12px;
+      padding: 4px 6px;
+    }
+    #header .controls input[type="range"] {
+      width: 80px;
+    }
+    .legend {
+      margin-left: 0;
+      width: 100%;
+    }
+    .legend-bar {
+      width: 120px; height: 12px;
+    }
+    #viewport {
+      top: var(--header-h, 52px);
+    }
+    #footer {
+      display: none;
+    }
+    #tooltip {
+      display: none !important;
+    }
+    body {
+      overflow: hidden;
+    }
+  }
+
   /* ── Main viewport ── */
   #viewport {
     position: fixed; top: 52px; left: 0; right: 0; bottom: 32px;
@@ -149,9 +222,19 @@
     <div class="tt-meta"></div>
   </div>
 
+  <div id="mobile-detail">
+    <button class="md-close" onclick="closeMobileDetail()">&times;</button>
+    <div class="md-title"></div>
+    <div class="md-date"></div>
+    <div class="md-score"></div>
+    <div class="md-desc"></div>
+    <div class="md-impact"></div>
+    <div class="md-meta"></div>
+  </div>
+
   <div id="footer">
     <span id="status">Loading...</span>
-    <span>Scroll horizontally to browse presidents · Hover for details · Mouse wheel to zoom</span>
+    <span id="footer-hint">Scroll horizontally to browse presidents · Hover for details · Mouse wheel to zoom</span>
   </div>
 
 <script>
@@ -553,8 +636,89 @@ viewport.addEventListener('wheel', (e) => {
 document.getElementById('cat-filter').addEventListener('change', applyFilters);
 document.getElementById('imp-filter').addEventListener('change', applyFilters);
 
+// ─── Mobile support ───
+const isMobile = ('ontouchstart' in window) || window.innerWidth <= 768;
+const mobileDetail = document.getElementById('mobile-detail');
+
+function closeMobileDetail() {
+  mobileDetail.style.display = 'none';
+}
+
+function showMobileDetail(ev, pres) {
+  mobileDetail.querySelector('.md-title').textContent = ev.title;
+  mobileDetail.querySelector('.md-date').textContent =
+    `${ev.date} · ${pres.name} (#${pres.number})`;
+
+  const scoreEl = mobileDetail.querySelector('.md-score');
+  const scoreVal = ev.score > 0 ? `+${ev.score}` : `${ev.score}`;
+  scoreEl.textContent = scoreVal;
+  scoreEl.style.color = ev.score > 0 ? '#4ade80' : ev.score < 0 ? '#f87171' : '#8b949e';
+
+  const desc = ev.description;
+  mobileDetail.querySelector('.md-desc').textContent =
+    desc.length > 300 ? desc.slice(0, 300) + '…' : desc;
+
+  mobileDetail.querySelector('.md-impact').textContent = ev.impact;
+
+  const catColor = categoryColor(ev.category);
+  mobileDetail.querySelector('.md-meta').innerHTML =
+    `<span class="tt-badge" style="background:${catColor}22;color:${catColor};border:1px solid ${catColor}44">${ev.category.replace(/_/g, ' ')}</span>` +
+    `<span>Importance: ${'★'.repeat(ev.importance)}${'☆'.repeat(5 - ev.importance)}</span>`;
+
+  mobileDetail.style.display = 'block';
+}
+
+// Tap to view event on mobile
+viewport.addEventListener('touchend', (e) => {
+  if (e.changedTouches.length !== 1) return;
+  const touch = e.changedTouches[0];
+  const rect = viewport.getBoundingClientRect();
+  const mx = touch.clientX - rect.left + viewport.scrollLeft;
+  const my = touch.clientY - rect.top + viewport.scrollTop;
+
+  let hit = null;
+  for (const bp of boxPositions) {
+    if (mx >= bp.x && mx <= bp.x + bp.w && my >= bp.y && my <= bp.y + bp.h) {
+      hit = bp;
+      break;
+    }
+  }
+
+  if (hit) {
+    e.preventDefault();
+    showMobileDetail(hit.event, hit.president);
+  } else {
+    closeMobileDetail();
+  }
+});
+
+// ─── Responsive header height ───
+function updateHeaderHeight() {
+  const header = document.getElementById('header');
+  const vp = document.getElementById('viewport');
+  const h = header.getBoundingClientRect().height;
+  vp.style.top = h + 'px';
+  document.documentElement.style.setProperty('--header-h', h + 'px');
+}
+
+window.addEventListener('resize', () => {
+  updateHeaderHeight();
+  render();
+});
+
+// Auto-set zoom for mobile
+function autoZoomForMobile() {
+  if (window.innerWidth <= 768) {
+    zoom = 0.6;
+    zoomSlider.value = zoom;
+    zoomLabel.textContent = Math.round(zoom * 100) + '%';
+  }
+}
+
 // ─── Init ───
+autoZoomForMobile();
 loadData();
+setTimeout(updateHeaderHeight, 50);
 </script>
 </body>
 </html>
