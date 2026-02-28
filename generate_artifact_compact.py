@@ -24,7 +24,8 @@ def main():
              events]
         compact.append(p)
 
-    data_json = json.dumps({"c": categories, "p": compact}, separators=(",", ":"))
+    # Use indent=0 to avoid one giant 140K-char line (breaks some phone viewers)
+    data_json = json.dumps({"c": categories, "p": compact}, separators=(",", ":"), indent=0)
 
     with open("dashboard/index.html") as f:
         html = f.read()
