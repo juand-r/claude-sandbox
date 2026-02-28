@@ -1,0 +1,312 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 5: The Walsh--Hadamard Transform
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{The Walsh--Hadamard Transform}\label{ch:wht}
+
+This chapter develops the Walsh--Hadamard Transform (WHT) as the
+computational realization of the Boolean Fourier expansion. We define
+Hadamard matrices, establish their properties, describe the fast
+algorithm (FWHT), and show how the WHT computes Fourier coefficients.
+
+Historical references: \citet{walsh1923closed} for Walsh functions,
+\citet{hadamard1893resolution} for Hadamard's original construction,
+\citet{shanks1969computation} for the fast algorithm,
+\citet{beauchamp1984walsh} and \citet{horadam2007hadamard} for
+comprehensive treatments.
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Hadamard Matrices}\label{sec:hadamard-def}
+
+\begin{definition}[Hadamard matrix, Sylvester construction]\label{def:hadamard}
+Define recursively:
+\begin{equation}\label{eq:hadamard-recursion}
+  H_0 = (1), \qquad
+  H_1 = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad
+  H_n = H_1 \otimes H_{n-1},
+\end{equation}
+where $\otimes$ is the Kronecker product (\Cref{sec:kronecker}).
+The matrix $H_n$ is $2^n \times 2^n$.
+\end{definition}
+
+Equivalently, $H_n = H_1^{\otimes n}$ (the $n$-fold Kronecker product of
+$H_1$ with itself).
+
+\begin{example}\label{ex:hadamard-small}
+\[
+H_2 = H_1 \otimes H_1 =
+\begin{pmatrix}
+  1 &  1 &  1 &  1 \\
+  1 & -1 &  1 & -1 \\
+  1 &  1 & -1 & -1 \\
+  1 & -1 & -1 &  1
+\end{pmatrix}.
+\]
+Every entry is $\pm 1$.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Properties of Hadamard Matrices}\label{sec:hadamard-props}
+
+\begin{theorem}[Properties of $H_n$]\label{thm:hadamard-props}
+Let $N = 2^n$. Then:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{All entries are $\pm 1$.}
+  \item \emph{Symmetry:} $H_n = H_n^\top$.
+  \item \emph{Orthogonality:} $H_n H_n^\top = N \cdot I_N$.
+    Equivalently, $H_n^{-1} = \frac{1}{N} H_n$.
+  \item \emph{Self-inverse up to scaling:} $H_n^2 = N \cdot I_N$.
+  \item \emph{Rows are parity functions.} Row $r$ of $H_n$ (with $r$
+    expressed as a subset $S \subseteq [n]$ via its binary
+    representation) is the vector
+    $(\chi_S(x))_{x \in \pmone^n}$ (in a specific ordering of
+    the hypercube vertices).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(i)} follows from the recursive definition: $H_1$ has $\pm 1$
+entries, and the Kronecker product of $\pm 1$ matrices has $\pm 1$ entries.
+
+\emph{(ii)} Since $H_1$ is symmetric and $(A \otimes B)^\top = A^\top \otimes B^\top$,
+$H_n^\top = H_1^\top \otimes H_{n-1}^\top = H_1 \otimes H_{n-1} = H_n$
+(by induction).
+
+\emph{(iii)} By the mixed-product rule for Kronecker products:
+$H_n H_n^\top = (H_1 \otimes H_{n-1})(H_1^\top \otimes H_{n-1}^\top)
+= (H_1 H_1^\top) \otimes (H_{n-1} H_{n-1}^\top)$.
+Since $H_1 H_1^\top = 2I_2$, by induction:
+$H_n H_n^\top = 2I_2 \otimes 2^{n-1} I_{2^{n-1}} = 2^n I_{2^n} = N \cdot I_N$.
+
+\emph{(iv)} follows from (ii) and (iii): $H_n^2 = H_n H_n^\top = N \cdot I_N$.
+
+\emph{(v)} We establish this by identifying each row with a parity
+function. Number the rows and columns from $0$ to $N-1$. For row $r$
+and column $c$, write $r$ and $c$ in binary: $r = (r_{n-1}, \ldots, r_0)$
+and $c = (c_{n-1}, \ldots, c_0)$. Then the $(r,c)$ entry of $H_n$ is:
+\begin{equation}\label{eq:hadamard-entry}
+  (H_n)_{r,c} = (-1)^{\sum_{i=0}^{n-1} r_i c_i}
+  = (-1)^{r \cdot c},
+\end{equation}
+where $r \cdot c$ is the bitwise inner product mod~2.
+
+Now identify the column index $c$ with the hypercube point
+$x = ((-1)^{c_0}, (-1)^{c_1}, \ldots, (-1)^{c_{n-1}}) \in \pmone^n$,
+and the row index $r$ with the subset $S = \{i+1 : r_i = 1\}$. Then:
+\[
+  (H_n)_{r,c} = (-1)^{\sum_{i \in S} c_{i-1}} = \prod_{i \in S} (-1)^{c_{i-1}} = \prod_{i \in S} x_i = \chi_S(x).
+\]
+So row $r$ (corresponding to subset $S$) contains the values of $\chi_S$
+evaluated at all $N$ hypercube points, in the binary-counting order.
+\end{proof}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Walsh--Hadamard Transform}\label{sec:wht-def}
+
+\begin{definition}[Walsh--Hadamard Transform]\label{def:wht}
+For a vector $v \in \R^N$ (with $N = 2^n$), the \emph{Walsh--Hadamard
+Transform} is
+\begin{equation}\label{eq:wht}
+  \hat{v} = H_n \cdot v.
+\end{equation}
+The \emph{normalized} WHT is $\hat{v} = \frac{1}{N} H_n \cdot v$.
+The inverse transform is $v = \frac{1}{N} H_n \cdot \hat{v}$
+(since $H_n^{-1} = \frac{1}{N} H_n$).
+\end{definition}
+
+\begin{theorem}[WHT computes Fourier coefficients]\label{thm:wht-fourier}
+Let $f \colon \pmone^n \to \R$ and let $v \in \R^N$ be the vector of
+function values in binary-counting order:
+$v_c = f((-1)^{c_0}, \ldots, (-1)^{c_{n-1}})$ for
+$c = 0, 1, \ldots, N-1$.
+
+Then the normalized WHT $\hat{v} = \frac{1}{N} H_n v$ gives the Fourier
+coefficients:
+\[
+  \hat{v}_r = \fhat(S_r),
+\]
+where $S_r$ is the subset corresponding to the binary representation of $r$.
+\end{theorem}
+
+\begin{proof}
+\[
+  \hat{v}_r = \frac{1}{N} \sum_{c=0}^{N-1} (H_n)_{r,c} \cdot v_c
+  = \frac{1}{N} \sum_{x \in \pmone^n} \chi_{S_r}(x) \cdot f(x)
+  = \E_x[f(x)\, \chi_{S_r}(x)] = \fhat(S_r).
+\]
+The second equality uses property (v) of \Cref{thm:hadamard-props}.
+\end{proof}
+
+\begin{remark}[Self-inverse property and the thesis]\label{rem:self-inverse}
+Since $H_n^2 = N \cdot I$, the WHT is (up to scaling) its own inverse.
+In the thesis, this means:
+\begin{itemize}
+  \item \emph{Forward:} Given binary weights $w \in \pmone^N$, compute
+    Fourier coefficients via $\hat{w} = \frac{1}{N} H_n w$.
+  \item \emph{Inverse:} Given spectral coefficients $\hat{w}$, reconstruct
+    spatial weights via $w = H_n \hat{w}$ (then apply sign).
+\end{itemize}
+Both directions use the same matrix, just with different scaling.
+\end{remark}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Fast Walsh--Hadamard Transform}\label{sec:fwht}
+
+The naive matrix-vector multiplication $H_n v$ costs $O(N^2)$ operations.
+The \emph{Fast Walsh--Hadamard Transform} (FWHT) exploits the recursive
+Kronecker structure to compute $H_n v$ in $O(N \log N) = O(N \cdot n)$
+operations, using only additions and subtractions (no multiplications).
+
+\subsection{The Butterfly Algorithm}\label{sec:butterfly}
+
+The recursion $H_n = H_1 \otimes H_{n-1}$ means:
+\[
+  H_n v =
+  \begin{pmatrix} I \otimes H_{n-1} \\ I \otimes H_{n-1} \end{pmatrix}
+  \begin{pmatrix} v_{\text{top}} + v_{\text{bot}} \\ v_{\text{top}} - v_{\text{bot}} \end{pmatrix}
+  \quad \text{(not quite right---let us be precise.)}
+\]
+
+More carefully, write $v = \binom{v_0}{v_1}$ where $v_0, v_1 \in \R^{N/2}$
+are the first and second halves. Then:
+\[
+  H_n v = (H_1 \otimes H_{n-1}) \binom{v_0}{v_1}
+  = \binom{H_{n-1}(v_0 + v_1)}{H_{n-1}(v_0 - v_1)}.
+\]
+Each of the two recursive calls operates on a vector of half the size.
+This gives the recurrence $T(N) = 2T(N/2) + O(N)$, solving to
+$T(N) = O(N \log N)$.
+
+\begin{algorithm}[H]
+\caption{Fast Walsh--Hadamard Transform (in-place)}\label{alg:fwht}
+\begin{algorithmic}[1]
+\Require $v \in \R^N$ with $N = 2^n$
+\For{$\ell = 0, 1, \ldots, n-1$}
+  \State $h \gets 2^\ell$ \Comment{half-block size}
+  \For{$j = 0, 2h, 4h, \ldots, N - 2h$}
+    \For{$i = j, j+1, \ldots, j + h - 1$}
+      \State $a \gets v[i]$
+      \State $b \gets v[i + h]$
+      \State $v[i] \gets a + b$
+      \State $v[i + h] \gets a - b$
+    \EndFor
+  \EndFor
+\EndFor
+\State \Return $v$ \Comment{$v$ now contains $H_n$ times the original $v$}
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Operation count.}
+The triple loop performs exactly $n \cdot N/2$ additions and
+$n \cdot N/2$ subtractions, for a total of $nN = N \log_2 N$ addition/subtraction
+operations. \emph{No multiplications are needed.}
+
+This is the crucial property for the thesis: when the input vector $v$
+has integer entries (e.g., $v \in \pmone^N$), the entire FWHT can be
+performed in integer arithmetic. The output entries are integers in
+the range $[-N, N]$.
+
+\begin{example}[FWHT of a small vector]\label{ex:fwht}
+Let $n = 2$, $N = 4$, and $v = (1, -1, -1, 1)^\top$
+(corresponding to the function $f(x_1, x_2) = x_1 x_2$).
+
+\textbf{Step $\ell = 0$} ($h = 1$):
+\begin{align*}
+  (v[0], v[1]) &\gets (1 + (-1),\; 1 - (-1)) = (0, 2), \\
+  (v[2], v[3]) &\gets (-1 + 1,\; -1 - 1) = (0, -2).
+\end{align*}
+After step 0: $v = (0, 2, 0, -2)$.
+
+\textbf{Step $\ell = 1$} ($h = 2$):
+\begin{align*}
+  (v[0], v[2]) &\gets (0 + 0,\; 0 - 0) = (0, 0), \\
+  (v[1], v[3]) &\gets (2 + (-2),\; 2 - (-2)) = (0, 4).
+\end{align*}
+After step 1: $v = (0, 0, 0, 4)$.
+
+So $H_2 v = (0, 0, 0, 4)$. The normalized WHT is
+$\frac{1}{4}(0, 0, 0, 4) = (0, 0, 0, 1)$.
+
+Reading off Fourier coefficients: $\fhat(\emptyset) = 0$,
+$\fhat(\{1\}) = 0$, $\fhat(\{2\}) = 0$, $\fhat(\{1,2\}) = 1$.
+Indeed, $f = x_1 x_2 = \chi_{\{1,2\}}$. \checkmark
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Comparison with the FFT}\label{sec:fwht-vs-fft}
+
+The FWHT is the Boolean analogue of the Fast Fourier Transform (FFT).
+The following table highlights the parallels:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Property} & \textbf{FFT (classical)} & \textbf{FWHT (Boolean)} \\
+\midrule
+Domain & $\Z/N\Z$ or $[0, 2\pi)$ & $\pmone^n$ \\
+Basis & $e^{2\pi i k/N}$ & $\chi_S(x) = \prod_{i \in S} x_i$ \\
+Basis values & Complex roots of unity & $\pm 1$ \\
+Matrix & DFT matrix $F_N$ & Hadamard matrix $H_n$ \\
+Self-inverse? & $F_N^{-1} = \frac{1}{N}\overline{F_N}$ & $H_n^{-1} = \frac{1}{N} H_n$ \\
+Fast algorithm & $O(N \log N)$ complex & $O(N \log N)$ real \\
+Arithmetic & Complex multiply-add & Integer add-subtract \\
+Convolution & Circular convolution & Dyadic convolution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The FWHT is simpler than the FFT: it uses only additions and
+subtractions (no twiddle factors, no complex arithmetic). This makes it
+particularly attractive for hardware implementation and for the
+binary neural network setting of the thesis.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Convolution Theorem via the WHT}\label{sec:wht-convolution}
+
+The convolution theorem (\Cref{thm:convolution}) becomes a matrix
+identity in the WHT:
+
+\begin{proposition}\label{prop:wht-convolution}
+Let $v, w \in \R^N$ represent functions on $\pmone^n$. Define the
+\emph{dyadic convolution} vector $(v \circledast w)_c = \frac{1}{N}\sum_{d} v_d \cdot w_{c \oplus d}$,
+where $\oplus$ is bitwise XOR. Then:
+\[
+  H_n(v \circledast w) = \frac{1}{N} (H_n v) \odot (H_n w),
+\]
+where $\odot$ is componentwise multiplication.
+\end{proposition}
+
+This means dyadic convolution can be performed in $O(N \log N)$ time:
+transform both vectors, multiply componentwise, inverse-transform.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The WHT as a Neural Network Layer}\label{sec:wht-layer}
+
+A key observation in the thesis is that the WHT (or its inverse) can
+serve as a building block for neural network layers.
+
+\paragraph{Hadamard layer.}
+A \emph{Hadamard layer} computes $y = \frac{1}{\sqrt{N}} H_n \cdot \text{diag}(s) \cdot x$,
+where $s \in \pmone^N$ is a learnable sign vector. The sign-flip
+$\text{diag}(s) \cdot x$ multiplies each component of $x$ by $\pm 1$
+(a componentwise sign change). The Hadamard multiplication $H_n$ then
+mixes all components.
+
+The normalization $1/\sqrt{N}$ ensures that $\norm{y}_2 = \norm{x}_2$
+(since both $\text{diag}(s)$ and $\frac{1}{\sqrt{N}} H_n$ preserve the
+$\ell_2$ norm---$\text{diag}(s)$ by $|s_i| = 1$, and
+$\frac{1}{\sqrt{N}} H_n$ by orthogonality).
+
+\paragraph{Spectral reconstruction.}
+The thesis's \texttt{SpectralLinear} layer works differently: it stores
+spectral coefficients $\hat{w}$ and reconstructs the spatial weight
+vector via $w = H_n \hat{w}$ (using the FWHT), then applies $\sgn(w)$
+to get binary weights. The reconstruction costs $O(N \log N)$ per row
+per training step, but is not needed at inference (the binary weights are
+stored directly).

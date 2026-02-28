@@ -1,0 +1,340 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 7: Application to Binary Neural Networks
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{Application to Binary Neural Networks}\label{ch:applications}
+
+This chapter connects the mathematical theory developed in
+Chapters~\ref{ch:prereqs}--\ref{ch:ltf-codes-groups} to the specific
+setting of the thesis: training neural networks with binary ($\pm 1$)
+weights. We summarize the relevant neural network background, explain
+how the Boolean Fourier framework applies, and trace the expository
+chain for each key result in the thesis.
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Background: Binary Neural Networks}\label{sec:bnn-background}
+
+\subsection{Standard Neural Networks}\label{sec:standard-nn}
+
+A standard feedforward neural network computes a composition of linear
+transformations and nonlinear activations. For a single layer:
+\[
+  y = \sigma(Wx + b),
+\]
+where $W \in \R^{m \times n}$ is a weight matrix, $b \in \R^m$ is a
+bias vector, and $\sigma$ is a nonlinear activation function (ReLU,
+sigmoid, etc.). The parameters $W$ and $b$ are typically stored in
+16-bit or 32-bit floating-point format and optimized via gradient descent.
+
+\subsection{The Transformer Architecture}\label{sec:transformer}
+
+The Transformer \citep{vaswani2017attention} is the dominant architecture
+for language modeling. Its key component is the \emph{self-attention}
+mechanism:
+\begin{equation}\label{eq:attention}
+  \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right) V,
+\end{equation}
+where $Q = W_Q X$, $K = W_K X$, $V = W_V X$ are linear projections of
+the input. A Transformer layer consists of multi-head attention followed
+by a feedforward network, both with residual connections and layer
+normalization.
+
+\subsection{Binary Weight Networks}\label{sec:binary-weights}
+
+A \emph{binary neural network} constrains each weight to $\pm 1$:
+$W \in \pmone^{m \times n}$. This has dramatic implications:
+\begin{itemize}
+  \item \textbf{Storage:} Each weight requires 1 bit instead of 16 or 32
+    bits ($16\times$ to $32\times$ compression).
+  \item \textbf{Computation:} The matrix-vector product $Wx$ for
+    $W \in \pmone^{m \times n}$ and $x \in \pmone^n$ reduces to
+    additions and subtractions (or XNOR + popcount on binary hardware).
+  \item \textbf{Training:} The weight space $\pmone^{m \times n}$ is
+    discrete, so standard gradient descent does not apply directly.
+\end{itemize}
+
+\subsection{The Straight-Through Estimator}\label{sec:ste}
+
+The standard approach to training binary networks, introduced by
+\citet{bengio2013estimating} and applied to binary networks by
+\citet{courbariaux2015binaryconnect}, uses the
+\emph{straight-through estimator} (STE):
+
+\begin{enumerate}
+  \item Maintain \emph{latent weights} $W_{\text{real}} \in \R^{m \times n}$
+    (full-precision).
+  \item \emph{Forward pass:} Use binary weights
+    $W_{\text{bin}} = \sgn(W_{\text{real}})$.
+  \item \emph{Backward pass:} Compute gradients with respect to
+    $W_{\text{bin}}$, but \emph{pass them through} to $W_{\text{real}}$
+    as if $\sgn$ were the identity:
+    $\frac{\partial \mathcal{L}}{\partial W_{\text{real}}} \approx \frac{\partial \mathcal{L}}{\partial W_{\text{bin}}}$.
+  \item Update $W_{\text{real}}$ with gradient descent.
+\end{enumerate}
+
+The STE is a heuristic: the sign function has zero derivative almost
+everywhere, so the ``true'' gradient is zero. The STE approximates it by
+pretending the derivative is~1. Despite this, the STE works remarkably
+well in practice \citep{yin2019understanding,hubara2016binarized}.
+
+\subsection{BitNet}\label{sec:bitnet}
+
+BitNet \citep{wang2023bitnet} and its successor BitNet b1.58
+\citep{ma2024era} scale binary (and ternary) weight training to the
+Transformer architecture. Key features:
+\begin{itemize}
+  \item Full-precision latent weights during training (STE).
+  \item Per-layer learned scaling factor $\alpha$ (floating-point).
+  \item 8-bit activations (or full-precision during training).
+\end{itemize}
+
+These components constitute ``precision leakage'': the model is not
+purely binary even though the deployed weights are.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Spectral Perspective on Binary Weights}\label{sec:spectral-perspective}
+
+The thesis proposes viewing each row of a binary weight matrix as a
+Boolean function and analyzing it via the Walsh--Fourier transform.
+
+\subsection{The Row-Wise Encoding}\label{sec:row-encoding}
+
+Consider a weight matrix $W \in \pmone^{d \times d}$ (square, for
+simplicity; the thesis also handles rectangular matrices). Each row
+$w_i \in \pmone^d$ is a vector of $d$ binary values.
+
+If $d = 2^n$ (a power of 2), we can view each row as a Boolean function
+$w_i \colon \pmone^n \to \pmone$ by identifying the column index
+$j \in \{0, \ldots, d-1\}$ with the hypercube point $\text{bin}(j) \in \pmone^n$
+via its binary representation.
+
+Under this identification, the Walsh--Fourier expansion
+(\Cref{thm:fourier-expansion}) gives:
+\[
+  w_i(j) = \sum_{S \subseteq [n]} \widehat{w}_i(S)\, \chi_S(\text{bin}(j)),
+\]
+and the spectral coefficients can be computed via the FWHT
+(\Cref{alg:fwht}) in $O(d \log d)$ time.
+
+\subsection{Spectral Parameterization}\label{sec:spectral-param}
+
+Instead of storing and optimizing the $d$ binary weights directly, the
+thesis proposes storing the spectral coefficients
+$\{\widehat{w}_i(S) : |S| \leq k\}$ for a truncation degree $k$. This
+has $\binom{n}{\leq k}$ continuous parameters per row.
+
+At degree $k = 3$ with $d = 1024$ ($n = 10$):
+$\binom{10}{\leq 3} = 1 + 10 + 45 + 120 = 176$ parameters per row,
+versus $d = 1024$ in the weight domain. This is a $6\times$ compression
+of the optimization landscape.
+
+During training, the spectral coefficients are optimized by gradient
+descent. To produce binary weights:
+\begin{enumerate}
+  \item Reconstruct the continuous weights via inverse FWHT:
+    $z_i(j) = \sum_{|S| \leq k} \widehat{w}_i(S)\, \chi_S(\text{bin}(j))$.
+  \item Apply the sign function: $w_i(j) = \sgn(z_i(j))$.
+\end{enumerate}
+
+The error of this procedure is bounded by
+\Cref{prop:sign-rounding}: $\Prob[w_i(j) \neq f(j)] \leq \sum_{|S|>k} \fhat(S)^2$,
+where $f$ is the ``target'' Boolean function.
+
+\subsection{Normalization Without Learned Parameters}\label{sec:normalization}
+
+A key contribution of the thesis is replacing BitNet's learned scaling
+factor $\alpha$ with fixed constants, using two complementary
+principles:
+
+\paragraph{Parseval normalization (parameter level).}
+By Parseval's identity (\Cref{thm:parseval}), any Boolean function
+$f \colon \pmone^n \to \pmone$ satisfies $\sum_S \fhat(S)^2 = 1$.
+Projecting the spectral coefficients onto the unit sphere
+($\hat{w} \leftarrow \hat{w} / \norm{\hat{w}}_2$) maintains this
+constraint throughout training, ensuring the parameterization is
+inherently calibrated.
+
+\paragraph{CLT normalization (activation level).}
+For any binary weight matrix $W \in \pmone^{d \times d}$ and uniform
+binary input $x \in \pmone^d$, each output component
+$y_j = \sum_{i=1}^d w_{ji} x_i$ is a sum of $d$ independent $\pm 1$
+random variables. By Berry--Ess\'een (\Cref{thm:berry-esseen}),
+$y_j / \sqrt{d} \approx \mathcal{N}(0, 1)$ for large $d$.
+
+The required normalization factor $1/\sqrt{d}$ is a fixed constant
+determined at model design time, not a learned parameter. For
+power-of-two $d$, it can even be implemented as a bit-shift.
+
+For Hadamard-structured layers ($W = \frac{1}{\sqrt{d}} H_n \cdot \text{diag}(s)$),
+the $1/\sqrt{d}$ factor is additionally an \emph{exact isometry}
+($\norm{y}_2 = \norm{x}_2$), not just a variance-preserving scaling in
+expectation.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Tracing the Expository Chain}\label{sec:chain}
+
+We now verify that every mathematical concept and result in the thesis
+has been covered in this guide, with explicit pointers.
+
+\subsection{Chapter-by-Chapter Map}\label{sec:chapter-map}
+
+\paragraph{Thesis \S2.1 (Boolean hypercube).}
+$\to$ \Cref{sec:hypercube} (definition), \Cref{def:boolean-fn}
+(Boolean/pseudo-Boolean functions), \Cref{def:fn-inner-product}
+(inner product).
+
+\paragraph{Thesis \S2.2 (Fourier expansion).}
+$\to$ \Cref{sec:parity} (parity functions), \Cref{thm:orthonormality}
+(orthonormality), \Cref{thm:fourier-expansion} (expansion theorem),
+\Cref{def:degree} (degree).
+
+\paragraph{Thesis \S2.3 (Parseval).}
+$\to$ \Cref{thm:parseval} (Parseval), \Cref{rem:parseval-thesis}
+(thesis application).
+
+\paragraph{Thesis \S2.4 (LMN theorem).}
+$\to$ \Cref{sec:lmn} (LMN theorem), \Cref{sec:circuits}
+(circuit complexity background).
+
+\paragraph{Thesis \S2.5 (Influence, noise sensitivity, hypercontractivity).}
+$\to$ \Cref{ch:influence-noise} (all of Chapter~3 of this guide):
+influence (\Cref{def:influence}),
+total influence (\Cref{def:total-influence}),
+noise operator (\Cref{def:noise-operator}),
+noise stability (\Cref{def:noise-stability}),
+Bonami--Beckner (\Cref{thm:bonami-beckner}),
+level-$k$ inequality (\Cref{thm:level-k}).
+
+\paragraph{Thesis \S2.6 (Walsh--Hadamard transform).}
+$\to$ \Cref{ch:wht} (all of Chapter~5 of this guide):
+Hadamard matrices (\Cref{sec:hadamard-def}),
+FWHT (\Cref{sec:fwht}),
+convolution theorem (\Cref{sec:wht-convolution}).
+
+\paragraph{Thesis \S2.7 (Sign activation / LTFs).}
+$\to$ \Cref{sec:ltf} (LTFs), \Cref{thm:chow} (Chow's theorem),
+\Cref{thm:ltf-noise} (bounded noise sensitivity).
+
+\paragraph{Thesis \S2.8 (Multi-layer composition).}
+$\to$ \Cref{sec:noise-stability} (noise stability),
+the composition identity follows from the spectral formula
+(\Cref{thm:stab-spectral}) applied to composed functions.
+
+\paragraph{Thesis \S2.9 (Group-theoretic perspective).}
+$\to$ \Cref{sec:group-theory} (groups, characters, comparison table).
+
+\paragraph{Thesis \S2.9 (Reed--Muller codes).}
+$\to$ \Cref{sec:reed-muller} (definition, parameters, connection).
+
+\paragraph{Thesis \S3.1 (Approximation bound).}
+$\to$ \Cref{prop:sign-rounding} (sign-rounding error bound),
+proved using Markov (\Cref{thm:markov}) and Parseval (\Cref{thm:parseval}).
+The geometric enhancement uses the level-$k$ inequality (\Cref{thm:level-k}).
+
+\paragraph{Thesis \S3.2 (Normalization propagation).}
+$\to$ Berry--Ess\'een (\Cref{thm:berry-esseen}),
+orthogonality of Hadamard matrices (\Cref{thm:hadamard-props}),
+Kronecker product properties (\Cref{sec:kronecker}).
+
+\paragraph{Thesis \S4 (Architecture).}
+$\to$ \Cref{sec:bnn-background} (BNN background),
+\Cref{sec:ste} (STE), \Cref{sec:bitnet} (BitNet),
+\Cref{sec:spectral-param} (spectral parameterization),
+\Cref{sec:normalization} (normalization).
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Concept Dependency Graph}\label{sec:dependency}
+
+The following shows the logical dependencies among the key concepts.
+An arrow $A \to B$ means ``$A$ is used in the proof/definition of $B$.''
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=1.5cm and 2.5cm,
+  every node/.style={rectangle, draw, rounded corners, minimum width=2.2cm,
+                     minimum height=0.7cm, font=\small, align=center},
+  arrow/.style={->, thick}
+]
+  \node (ip) {Inner product\\spaces};
+  \node (onb) [right=of ip] {ONB /\\Parseval};
+  \node (hyp) [below=of ip] {Boolean\\hypercube};
+  \node (par) [right=of hyp] {Parity\\functions};
+  \node (fe) [right=of par] {Fourier\\expansion};
+  \node (pars) [below=of fe] {Parseval\\(Boolean)};
+  \node (inf) [below=of par] {Influence};
+  \node (noise) [right=of inf] {Noise\\operator};
+  \node (stab) [right=of noise] {Noise\\stability};
+  \node (hc) [below=of inf] {Hyper-\\contractivity};
+  \node (lk) [right=of hc] {Level-$k$\\inequality};
+  \node (lmn) [right=of lk] {LMN\\theorem};
+  \node (had) [below=2.5cm of hyp] {Hadamard\\matrices};
+  \node (fwht) [right=of had] {FWHT};
+  \node (ltf) [below=of stab] {LTFs /\\Chow};
+  \node (rm) [below=of lmn] {Reed--Muller\\codes};
+
+  \draw[arrow] (ip) -- (onb);
+  \draw[arrow] (hyp) -- (par);
+  \draw[arrow] (onb) -- (fe);
+  \draw[arrow] (par) -- (fe);
+  \draw[arrow] (fe) -- (pars);
+  \draw[arrow] (fe) -- (inf);
+  \draw[arrow] (fe) -- (noise);
+  \draw[arrow] (noise) -- (stab);
+  \draw[arrow] (pars) -- (inf);
+  \draw[arrow] (hc) -- (lk);
+  \draw[arrow] (noise) -- (hc);
+  \draw[arrow] (lk) -- (lmn);
+  \draw[arrow] (had) -- (fwht);
+  \draw[arrow] (fe) -- (ltf);
+  \draw[arrow] (fe) -- (rm);
+  \draw[arrow] (inf) -- (lk);
+\end{tikzpicture}
+\end{center}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Suggestions for Further Reading}\label{sec:further-reading}
+
+\begin{enumerate}
+  \item \textbf{Boolean Fourier analysis (comprehensive):}
+    \citet{odonnell2014analysis}. Available free at arXiv:2105.10386.
+    Chapters~1--5 cover the core material; Chapters~8--10 cover
+    hypercontractivity and the LMN theorem.
+
+  \item \textbf{Boolean Fourier analysis (short introduction):}
+    \citet{dewolf2008brief}. A 20-page survey covering the essentials.
+    Freely available at the Theory of Computing library.
+
+  \item \textbf{Noise sensitivity and social choice:}
+    \citet{benjamini1999noise}. The foundational paper connecting noise
+    sensitivity to percolation theory. Beautiful mathematics.
+
+  \item \textbf{Hadamard matrices:}
+    \citet{horadam2007hadamard}. Comprehensive treatment of Hadamard
+    matrices and their applications.
+
+  \item \textbf{Walsh functions and signal processing:}
+    \citet{beauchamp1984walsh}. The classical reference for Walsh
+    functions in engineering.
+
+  \item \textbf{Reed--Muller codes:}
+    \citet{macwilliams1977theory}, Chapters~13--14. The standard
+    reference for algebraic coding theory.
+
+  \item \textbf{Fourier analysis on finite groups:}
+    \citet{terras1999fourier}. Develops Fourier analysis on general
+    finite groups with many applications.
+
+  \item \textbf{Probability (CLT, Berry--Ess\'een):}
+    \citet{durrett2019probability}, Chapter~3. Or
+    \citet{feller1971introduction}, Volume~2, Chapter~XVI.
+
+  \item \textbf{Binary neural networks:}
+    Start with \citet{courbariaux2015binaryconnect}, then
+    \citet{rastegari2016xnor} and \citet{hubara2016binarized} for the
+    foundational work. \citet{wang2023bitnet} and \citet{ma2024era} for
+    the state of the art.
+\end{enumerate}

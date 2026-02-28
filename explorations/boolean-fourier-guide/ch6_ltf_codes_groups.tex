@@ -1,0 +1,300 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 6: Linear Threshold Functions, Reed--Muller Codes, and
+%             the Group-Theoretic Perspective
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{Linear Threshold Functions, Codes, and Groups}\label{ch:ltf-codes-groups}
+
+This chapter covers three topics that connect the Boolean Fourier theory
+to the thesis: linear threshold functions (the basic computational unit
+of binary networks), Reed--Muller codes (the coding-theoretic
+interpretation of spectral truncation), and the group-theoretic
+viewpoint (which places the Walsh--Fourier basis in a broader context).
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Linear Threshold Functions}\label{sec:ltf}
+
+\begin{definition}[Linear threshold function (LTF)]\label{def:ltf}
+A \emph{linear threshold function} is a Boolean function of the form
+\begin{equation}\label{eq:ltf}
+  f(x) = \sgn\!\left(\sum_{i=1}^n w_i x_i\right)
+  = \sgn(w^\top x),
+\end{equation}
+where $w = (w_1, \ldots, w_n) \in \R^n$ is a weight vector and
+$\sgn(z) = +1$ if $z \geq 0$ and $-1$ if $z < 0$.
+\end{definition}
+
+LTFs are also called \emph{halfspaces} or \emph{threshold gates}.
+In the neural network context, a single neuron with binary inputs and a
+sign activation computes exactly an LTF. A binary neural network layer
+computes $d$ LTFs in parallel (one per row of the weight matrix).
+
+\begin{example}\label{ex:ltf-examples}
+\begin{itemize}
+  \item \textbf{Dictator:} $f(x) = \sgn(x_1) = x_1$. Weight vector
+    $w = (1, 0, \ldots, 0)$.
+  \item \textbf{Majority:} $f(x) = \sgn(x_1 + \cdots + x_n)$. Weight
+    vector $w = (1, 1, \ldots, 1)$.
+  \item \textbf{Weighted threshold:} $f(x) = \sgn(3x_1 + x_2 - 2x_3)$.
+    This function outputs $+1$ when $3x_1 + x_2 - 2x_3 > 0$.
+\end{itemize}
+The parity function $x_1 x_2 \cdots x_n$ is \emph{not} an LTF for
+$n \geq 2$ (it cannot be computed by a single threshold gate).
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\subsection{Chow's Theorem}\label{sec:chow}
+
+\begin{theorem}[Chow, 1961; {\citealp{chow1961recognition}}; see also {\citet[Chapter~5]{odonnell2014analysis}}]
+\label{thm:chow}
+A linear threshold function $f$ is uniquely determined among all LTFs
+by its degree-0 and degree-1 Fourier coefficients:
+$\fhat(\emptyset) = \E[f]$ and $\fhat(\{i\}) = \E[f \cdot x_i]$ for
+$i = 1, \ldots, n$.
+\end{theorem}
+
+The $n+1$ values $(\fhat(\emptyset), \fhat(\{1\}), \ldots, \fhat(\{n\}))$
+are called the \emph{Chow parameters}. Chow's theorem says: if two LTFs
+have the same Chow parameters, they are the same function.
+
+\begin{remark}\label{rem:chow-significance}
+Chow's theorem implies that the ``essential information'' of an LTF lives
+in degree $\leq 1$ of the Fourier spectrum. This does not mean the
+higher-degree coefficients are zero---they are generally nonzero---but
+that they are \emph{determined} by the low-degree ones (within the class
+of LTFs). This is a strong structural result supporting the idea that
+LTFs are ``low-complexity'' functions.
+\end{remark}
+
+\begin{proof}[Proof sketch]
+Two distinct LTFs $f = \sgn(w^\top x)$ and $g = \sgn(v^\top x)$ define
+different halfspaces in $\R^n$. If they had the same Chow parameters,
+then $\E[f \cdot x_i] = \E[g \cdot x_i]$ for all $i$, meaning $f$ and
+$g$ agree on average with every coordinate projection. A geometric
+argument shows this forces $w$ and $v$ to define the same halfspace
+(up to positive scaling), hence $f = g$.
+
+The full proof uses the fact that an LTF is determined by the half-space
+$\{z : w^\top z \geq 0\}$, and the Chow parameters encode sufficient
+information about this half-space. See \citet[Chapter~5]{odonnell2014analysis}.
+\end{proof}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\subsection{Spectral Properties of LTFs}\label{sec:ltf-spectrum}
+
+LTFs have several spectral properties that are relevant to the thesis:
+
+\paragraph{Spectral concentration.}
+LTFs are spectrally concentrated at low degrees. While the exact spectrum
+depends on the weight vector $w$, the majority function (equal weights)
+has 75\% of its energy at degree~1 for $n = 3$, and the concentration
+improves with $n$. For general LTFs, most of the spectral energy is
+within the first $O(\sqrt{n})$ degrees.
+
+\paragraph{Noise sensitivity.}
+LTFs have bounded noise sensitivity. The following result quantifies this:
+
+\begin{theorem}[{\citet{harsha2014bounding}}]\label{thm:ltf-noise}
+For any LTF $f \colon \pmone^n \to \pmone$, the total influence satisfies
+$\mathbf{I}[f] = O(\sqrt{n})$.
+\end{theorem}
+
+More precisely, for $f = \sgn(w^\top x)$ with
+$\norm{w}_2 = 1$: $\mathbf{I}[f] = \Theta(\norm{w}_1 / \norm{w}_2)$
+(by Berry--Ess\'een arguments). For binary weights
+$w \in \pmone^n$, $\norm{w}_1 = n$ and $\norm{w}_2 = \sqrt{n}$, giving
+$\mathbf{I}[f] \approx \sqrt{2n/\pi}$.
+
+\paragraph{Relevance to the thesis.}
+Each row of a binary weight matrix followed by a sign activation computes
+an LTF. The bounded noise sensitivity of LTFs means that:
+\begin{itemize}
+  \item Each neuron in a binary layer is moderately sensitive to its inputs
+    (influence $O(\sqrt{d})$ out of $d$ inputs, at $d = 1024$ this is $\approx 25$).
+  \item The spectral tail (high-degree coefficients) is bounded, supporting
+    the spectral concentration hypothesis.
+  \item The sign activation acts as a ``spectral filter,'' preserving
+    low-degree structure and discarding high-frequency noise.
+\end{itemize}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{Reed--Muller Codes}\label{sec:reed-muller}
+
+There is a deep connection between the Boolean Fourier basis and
+Reed--Muller codes from coding theory. The thesis uses this connection
+to analyze the spectral-to-binary projection.
+
+References: \citet{reed1954class,muller1954application} for the
+original constructions; \citet{macwilliams1977theory} for a comprehensive
+treatment.
+
+\subsection{Definition}\label{sec:rm-def}
+
+\begin{definition}[Reed--Muller code]\label{def:reed-muller}
+The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ is the set
+of all evaluation vectors of multilinear polynomials of degree $\leq r$
+over $n$ Boolean variables.
+
+Formally: identify each Boolean function $f \colon \pmone^n \to \pmone$
+with its evaluation vector $v_f \in \pmone^{2^n}$. Then
+\[
+  \text{RM}(r, n) = \{v_f : f \text{ has Fourier degree} \leq r\}
+  = \left\{\sum_{|S| \leq r} c_S\, \chi_S : c_S \in \R \text{ such that the evaluations are in } \pmone\right\}.
+\]
+\end{definition}
+
+Wait---this is not quite right. The standard definition uses $\{0,1\}$
+and $\text{GF}(2)$, while we are working with $\pmone$ and $\R$.
+Let us give both perspectives.
+
+\paragraph{$\text{GF}(2)$ perspective.}
+Over $\text{GF}(2) = \{0, 1\}$, $\text{RM}(r, n)$ is a linear code of
+length $2^n$ consisting of all evaluation vectors of polynomials
+$p(b_1, \ldots, b_n)$ over $\text{GF}(2)$ of total degree $\leq r$.
+Its dimension is $\sum_{i=0}^r \binom{n}{i}$ and its minimum distance
+is $2^{n-r}$.
+
+\paragraph{$\pmone$ perspective.}
+Converting to $\pmone$: the evaluation vector of a degree-$\leq r$
+$\text{GF}(2)$-polynomial $p$, mapped via $b \mapsto (-1)^b$, gives
+a $\pmone$-vector whose Walsh--Fourier support lies in
+$\{S \subseteq [n] : |S| \leq r\}$.
+
+Conversely, any $\pmone$-vector whose Walsh--Fourier expansion has
+degree $\leq r$ corresponds to a codeword in $\text{RM}(r, n)$.
+
+\begin{theorem}[RM parameters]\label{thm:rm-params}
+$\text{RM}(r, n)$ is a linear code with:
+\begin{itemize}
+  \item \emph{Length:} $N = 2^n$.
+  \item \emph{Dimension:} $\sum_{i=0}^r \binom{n}{i}$.
+  \item \emph{Minimum distance:} $2^{n-r}$.
+\end{itemize}
+\end{theorem}
+
+\begin{example}\label{ex:rm-small}
+\begin{itemize}
+  \item $\text{RM}(0, n)$: repetition code. Only two codewords: all-$1$
+    and all-$(-1)$. Minimum distance $2^n$. (Degree~0 functions are
+    constants $\pm 1$.)
+  \item $\text{RM}(1, n)$: the first-order RM code. Dimension $n + 1$.
+    Codewords are affine functions $\pm \chi_S$ for $|S| \leq 1$ (plus
+    their negations). Minimum distance $2^{n-1}$.
+  \item $\text{RM}(n, n)$: the full code, containing all $2^{2^n}$
+    Boolean functions. Minimum distance~1.
+\end{itemize}
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\subsection{Connection to the Thesis}\label{sec:rm-thesis}
+
+The thesis's degree-$k$ spectral parameterization optimizes within the
+span of $\{\chi_S : |S| \leq k\}$---which is exactly the ``continuous
+relaxation'' of $\text{RM}(k, n)$. The coefficients are real during
+training and are projected to $\pmone$ via the sign function.
+
+Three properties of RM codes are relevant:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Minimum distance.}
+    $\text{RM}(k, n)$ has minimum distance $2^{n-k}$. For the thesis
+    with $k = 3$ and $n = 10$: minimum distance $= 2^7 = 128$. This
+    means any two distinct degree-$\leq 3$ Boolean functions differ on
+    at least 128 of the 1024 inputs.
+
+  \item \textbf{Dimension = parameter count.}
+    The dimension $\sum_{i=0}^k \binom{n}{i}$ is exactly the number of
+    spectral coefficients in the thesis's parameterization:
+    $\binom{10}{\leq 3} = 1 + 10 + 45 + 120 = 176$.
+
+  \item \textbf{Sign projection is not RM decoding.}
+    The sign function applied to a continuous approximation
+    $f^{\leq k}(x)$ is \emph{not} guaranteed to produce a codeword of
+    $\text{RM}(k, n)$. The sign of a degree-$k$ polynomial can have
+    Fourier support up to degree~$n$. The RM connection provides
+    structural insight but does not directly constrain the output.
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════════════
+\section{The Group-Theoretic Perspective}\label{sec:group-theory}
+
+The Boolean Fourier expansion is a special case of Fourier analysis on
+finite abelian groups. This section briefly develops that perspective.
+The main reference is \citet{terras1999fourier}; see also
+\citet{diaconis1988group}.
+
+\subsection{The Group $\Z_2^n$}\label{sec:z2n}
+
+The Boolean hypercube $\pmone^n$ under coordinatewise multiplication is
+isomorphic to the group $\Z_2^n = (\Z/2\Z)^n$ under coordinatewise
+addition mod~2.
+
+The isomorphism: $\phi \colon \Z_2^n \to \pmone^n$ by
+$\phi(b_1, \ldots, b_n) = ((-1)^{b_1}, \ldots, (-1)^{b_n})$.
+Then $\phi(a + b) = \phi(a) \cdot \phi(b)$ (coordinatewise).
+
+\subsection{Characters of Finite Abelian Groups}\label{sec:characters}
+
+\begin{definition}[Character]\label{def:character}
+A \emph{character} of a finite abelian group $G$ is a group homomorphism
+$\chi \colon G \to \mathbb{C}^*$ (the nonzero complex numbers under
+multiplication). For $\Z_2^n$, all characters are real-valued (taking
+values in $\pmone$).
+\end{definition}
+
+\begin{theorem}\label{thm:characters-z2n}
+The characters of $\Z_2^n$ are exactly the functions
+$\chi_S(b) = (-1)^{\sum_{i \in S} b_i}$ for $S \subseteq [n]$.
+Under the $\pmone$ convention, these become $\chi_S(x) = \prod_{i \in S} x_i$:
+exactly the parity functions.
+\end{theorem}
+
+\begin{proof}
+A character $\chi$ of $\Z_2^n$ is determined by its values on the
+standard generators $e_i = (0, \ldots, 1, \ldots, 0)$. Since
+$2 e_i = 0$ in $\Z_2^n$, $\chi(e_i)^2 = \chi(0) = 1$, so
+$\chi(e_i) \in \{+1, -1\}$. The $2^n$ choices for
+$(\chi(e_1), \ldots, \chi(e_n)) \in \pmone^n$ give all $2^n$ characters.
+\end{proof}
+
+\begin{theorem}[Fourier analysis on finite abelian groups]\label{thm:fourier-group}
+For any finite abelian group $G$ with character group $\hat{G}$, the
+characters form an orthonormal basis for $L^2(G)$ (functions $G \to \mathbb{C}$
+with the inner product $\ip{f}{g} = \frac{1}{|G|}\sum_{x \in G} f(x)\overline{g(x)}$).
+Every function $f \colon G \to \mathbb{C}$ has a unique expansion
+$f = \sum_{\chi \in \hat{G}} \fhat(\chi)\, \chi$, and Parseval holds:
+$\norm{f}_2^2 = \sum_\chi |\fhat(\chi)|^2$.
+\end{theorem}
+
+For $G = \Z_2^n$, this recovers exactly the Boolean Fourier expansion of
+\Cref{ch:boolean-fourier}.
+
+\subsection{Comparison Table}\label{sec:comparison-table}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Classical ($\R/\Z$ or $\Z/N\Z$)} & \textbf{Boolean ($\Z_2^n$)} & \textbf{Role} \\
+\midrule
+$e^{2\pi i k x}$ & $\chi_S(x) = \prod_{i \in S} x_i$ & Basis function \\
+Complex-valued & $\pm 1$-valued & Basis alphabet \\
+DFT / FFT & WHT / FWHT & Fast algorithm \\
+$O(N \log N)$ complex ops & $O(N \log N)$ integer add/sub & Complexity \\
+$\sum_k |\hat{f}(k)|^2 = \norm{f}_2^2$ & $\sum_S \fhat(S)^2 = \norm{f}_2^2$ & Parseval \\
+$\widehat{f \ast g}(k) = \hat{f}(k)\hat{g}(k)$ & $\widehat{f \ast g}(S) = \fhat(S)\ghat(S)$ & Convolution \\
+Frequency $k$ & Degree $|S|$ & ``Frequency'' \\
+Low-pass filter & Degree truncation & Smoothing \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Boolean case is simpler in every respect: the basis is real (actually
+$\pm 1$-valued), the transform uses only additions and subtractions, and
+the group structure is particularly transparent ($\Z_2^n$ is a product of
+copies of the simplest nontrivial group). This simplicity is precisely
+what makes it attractive for binary neural networks.

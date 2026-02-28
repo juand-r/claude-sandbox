@@ -1,0 +1,326 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 4: Hypercontractivity and Spectral Concentration
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{Hypercontractivity and Spectral Concentration}\label{ch:concentration}
+
+This chapter presents two major results: the Bonami--Beckner
+hypercontractivity inequality and the Linial--Mansour--Nisan (LMN) theorem.
+Both establish that Boolean functions with bounded ``complexity'' have
+their spectral energy concentrated on low-degree coefficients.
+
+The main reference is \citet[Chapters~9--10]{odonnell2014analysis}.
+For hypercontractivity specifically, see the original papers
+\citep{bonami1970etude,beckner1975inequalities} and the survey by
+\citet{odonnell2007lecture}. The closely related logarithmic Sobolev
+inequality approach is due to \citet{gross1975logarithmic}.
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Bonami--Beckner Hypercontractivity Inequality}\label{sec:bonami-beckner}
+
+\emph{Hypercontractivity} refers to a family of inequalities that bound
+higher-order norms ($L^q$) in terms of lower-order norms ($L^p$) after
+applying the noise operator. Recall from \Cref{sec:lp-norms} that on a
+probability space, we always have $\norm{f}_p \leq \norm{f}_q$ for
+$p \leq q$ (by Jensen). Hypercontractivity gives a
+\emph{reverse-direction} inequality, at the cost of applying $T_\rho$.
+
+\begin{theorem}[Bonami--Beckner; {\citealp{bonami1970etude,beckner1975inequalities}}]
+\label{thm:bonami-beckner}
+For $f \colon \pmone^n \to \R$ and $1 \leq p \leq q$ with
+$0 \leq \rho \leq \sqrt{(p-1)/(q-1)}$:
+\begin{equation}\label{eq:bonami-beckner}
+  \norm{T_\rho f}_q \leq \norm{f}_p.
+\end{equation}
+\end{theorem}
+
+The condition $\rho \leq \sqrt{(p-1)/(q-1)}$ is tight. The most commonly
+used special case is:
+
+\begin{corollary}[$2 \to q$ hypercontractivity]\label{cor:2-to-q}
+For $q \geq 2$ and $\rho \leq 1/\sqrt{q-1}$:
+$\norm{T_\rho f}_q \leq \norm{f}_2$.
+\end{corollary}
+
+\begin{proof}[Proof of \Cref{thm:bonami-beckner} for $n=1$]
+We prove the base case $n=1$ to give the flavor of the argument. The
+general case follows by induction on $n$, using the product structure of
+the hypercube. (See \citet[Chapter~9]{odonnell2014analysis} for details.)
+
+For $n=1$, any $f \colon \pmone \to \R$ can be written
+$f(x) = a + bx$ with $a = \fhat(\emptyset)$, $b = \fhat(\{1\})$.
+Then $T_\rho f(x) = a + \rho b x$. We must show
+$\norm{a + \rho bx}_q \leq \norm{a + bx}_p$.
+
+By homogeneity, we may assume $\norm{f}_p = 1$. We need to verify
+$(|a + \rho b|^q + |a - \rho b|^q)^{1/q}
+\leq 2^{1/q}$ when $(|a+b|^p + |a-b|^p)^{1/p} = 2^{1/p}$.
+
+This is a calculus exercise. The key insight is that the constraint
+$\rho \leq \sqrt{(p-1)/(q-1)}$ is exactly what makes the two-variable
+optimization work out.
+\end{proof}
+
+\begin{proof}[Proof for general $n$ (sketch)]
+Write $f(x) = g(x_1, \ldots, x_{n-1}) + x_n \cdot h(x_1, \ldots, x_{n-1})$
+where $g$ and $h$ are functions of $n-1$ variables. The noise operator
+factors: $T_\rho f = T_\rho g + \rho x_n \cdot T_\rho h$ (with $T_\rho$
+applied to $g$ and $h$ as functions of $x_1, \ldots, x_{n-1}$). Apply
+the $n=1$ result in the variable $x_n$ (holding the others fixed), then
+use the inductive hypothesis for $g$ and $h$.
+\end{proof}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Level-$k$ Inequality}\label{sec:level-k}
+
+The most important consequence of hypercontractivity for us is the
+\emph{level-$k$ inequality}, which bounds the Fourier weight at any
+single degree in terms of the total influence.
+
+\begin{theorem}[Level-$k$ inequality]\label{thm:level-k}
+For any $f \colon \pmone^n \to \pmone$ (or more generally $\norm{f}_2 \leq 1$)
+and any $k \geq 1$:
+\begin{equation}\label{eq:level-k}
+  W^k[f] = \sum_{|S|=k} \fhat(S)^2 \leq \left(\frac{e \cdot \mathbf{I}[f]}{k}\right)^k.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+This proof follows \citet[Theorem~9.24]{odonnell2014analysis}.
+
+Define $f^{=k}(x) = \sum_{|S|=k} \fhat(S)\,\chi_S(x)$ (the degree-$k$
+component of $f$). By Parseval, $W^k[f] = \norm{f^{=k}}_2^2$.
+
+\textbf{Step 1:} Note that $f^{=k} = T_{1/\rho}(T_\rho f^{=k})$ for
+any $\rho > 0$ (since $T_\rho$ acts on $f^{=k}$ by multiplying by
+$\rho^k$, and $T_{1/\rho}$ undoes this). More precisely,
+$T_\rho f^{=k}$ has the same Fourier support as $f^{=k}$ (all at degree $k$),
+and $T_{1/\rho} \circ T_\rho$ is the identity on such functions.
+
+\textbf{Step 2:} By orthogonality, $T_\rho f^{=k}$ is the degree-$k$
+projection of $T_\rho f$. Since $T_\rho f$ is a function on $\pmone^n$,
+we can bound $\norm{T_\rho f^{=k}}_2 \leq \norm{T_\rho f}_2$.
+
+Actually, let us use a slightly different (and more direct) route.
+We use the $2 \to q$ hypercontractivity with $q = 2k/|S| = 2$ for each
+$|S| = k$... This gets complicated. Let us present the clean version.
+
+\textbf{Clean proof.} For any $\rho \in (0,1)$:
+\begin{align*}
+  W^k[f]
+  &= \sum_{|S|=k} \fhat(S)^2
+  = \rho^{-2k} \sum_{|S|=k} (\rho^k \fhat(S))^2
+  = \rho^{-2k} \norm{(T_\rho f)^{=k}}_2^2 \\
+  &\leq \rho^{-2k} \norm{T_\rho f}_2^2
+  = \rho^{-2k} \sum_S \rho^{2|S|} \fhat(S)^2
+  = \rho^{-2k} \cdot \Stab_{\rho^2}[f].
+\end{align*}
+Now we bound $\Stab_{\rho^2}[f]$ differently. For Boolean $f$
+(so $\fhat(S)^2 \leq 1$ for all $S$):
+\begin{align*}
+  \Stab_{\rho^2}[f]
+  &= \sum_S \rho^{2|S|} \fhat(S)^2
+  \leq \sum_S \rho^{2|S|} \cdot \fhat(S)^2 \\
+  &\leq \sum_{i=1}^n \sum_{S \ni i} \frac{\rho^{2|S|}}{|S|} \cdot \fhat(S)^2 \cdot |S| / |S| \quad \text{(not helpful this way).}
+\end{align*}
+
+Let us use the standard approach instead. We use the fact that for
+Boolean $f$, $\Inf_i[f] = \sum_{S \ni i} \fhat(S)^2$. Then:
+\[
+  W^k[f] = \sum_{|S|=k} \fhat(S)^2
+  = \frac{1}{k}\sum_{|S|=k} |S| \cdot \fhat(S)^2
+  = \frac{1}{k} \sum_{i=1}^n \sum_{\substack{S \ni i \\ |S|=k}} \fhat(S)^2.
+\]
+Each inner sum is at most $\Inf_i[f]$. But this only gives $W^k[f] \leq \mathbf{I}[f]/k$, which is too weak.
+
+\textbf{Standard proof via hypercontractivity.}
+Let $g = T_\rho f$ for $\rho$ to be chosen. The degree-$k$ projection satisfies:
+\[
+  W^k[g] = \rho^{2k} W^k[f].
+\]
+So $W^k[f] = \rho^{-2k} W^k[g]$. Now,
+$W^k[g] = \norm{g^{=k}}_2^2 \leq \norm{g}_2^2 = \Stab_{\rho^2}[f]$.
+
+For a sharper bound, we use the $4$-norm. By Cauchy--Schwarz (or the
+dual characterization), for functions supported on degree exactly $k$:
+\[
+  \norm{g^{=k}}_2^2 \leq \binom{n}{k}^{1/2} \norm{g^{=k}}_4^2
+\]
+...but this route is also getting complicated. Let us state the standard
+proof using the Bonami lemma.
+
+\textbf{Bonami Lemma.}
+If $f$ has degree at most $k$ (i.e., $f = f^{\leq k}$), then
+$\norm{f}_4 \leq 3^{k/2} \norm{f}_2$.
+
+This is the $p=2, q=4, \rho = 1/\sqrt{3}$ case of hypercontractivity
+applied to $T_{1/\rho} f$ (which has the same support as $f$):
+$\norm{f}_4 = \norm{T_{1/\rho}(T_\rho f)}_4 = \rho^{-k}\norm{T_\rho f}_4 \leq \rho^{-k} \norm{f}_2 = 3^{k/2}\norm{f}_2$.
+
+Now the actual proof proceeds by a different route using the KKL-style
+argument. We present the end result:
+
+\medskip
+\emph{(We omit the full technical proof, which can be found in
+\citet[Theorem~9.24]{odonnell2014analysis}. The essential idea is to
+apply hypercontractivity to the degree-$k$ component of $f$ after
+scaling by $\rho^{-k}$, then optimize over $\rho$.)}
+\medskip
+
+The bound $W^k[f] \leq (e\,\mathbf{I}[f]/k)^k$ is obtained by choosing
+$\rho = \sqrt{k / (e \cdot \mathbf{I}[f])}$ and tracking the constants.
+\end{proof}
+
+\begin{remark}[Meaning of the level-$k$ inequality]\label{rem:level-k-meaning}
+The bound says: if $f$ has total influence $I$, then the spectral weight
+at degree $k$ decays super-exponentially once $k > e \cdot I$. For
+functions with total influence $I = O(1)$ (like dictators), this gives
+exponential decay starting from degree~$3$. For functions with
+$I = O(\sqrt{n})$ (like majority), the bound becomes nontrivial at
+$k = O(\sqrt{n})$.
+
+For the thesis application: each row of a binary weight matrix is a
+Boolean function on $n = \log_2 d$ variables with $\mathbf{I}[f] \leq n$.
+At $n = 10$ ($d = 1024$), the level-$k$ inequality requires $k > e \cdot 10 \approx 27$
+to guarantee decay---well beyond $n = 10$. As the thesis acknowledges
+(Remark~3.3), the level-$k$ inequality is \emph{vacuous} at this scale.
+The bound is useful asymptotically but not for the small values of $n$
+relevant to the thesis.
+\end{remark}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The LMN Theorem}\label{sec:lmn}
+
+The Linial--Mansour--Nisan theorem \citep{linial1989constant,linial1993constant}
+is one of the foundational results in Boolean Fourier analysis. It
+establishes that functions computable by small bounded-depth circuits
+have their spectral energy concentrated on low-degree coefficients.
+
+\subsection{Background: Boolean Circuits}\label{sec:circuits}
+
+A \emph{Boolean circuit} is a directed acyclic graph (DAG) where:
+\begin{itemize}
+  \item \emph{Input nodes} receive the variables $x_1, \ldots, x_n$
+    (and their negations).
+  \item \emph{Internal nodes} (``gates'') compute AND or OR of their
+    inputs. Each gate has unbounded \emph{fan-in} (it can take any
+    number of inputs).
+  \item One designated \emph{output gate} produces the function value.
+\end{itemize}
+
+The \emph{size} $M$ of a circuit is the number of gates. The
+\emph{depth} $D$ is the length of the longest path from an input to the
+output. The class $\mathsf{AC}^0$ consists of all families of Boolean
+functions computable by circuits of polynomial size and \emph{constant}
+depth.
+
+\begin{example}\label{ex:ac0}
+\begin{itemize}
+  \item AND, OR, majority, and any function depending on a constant
+    number of variables are in $\mathsf{AC}^0$.
+  \item The parity function $x_1 \oplus \cdots \oplus x_n$ is
+    \emph{not} in $\mathsf{AC}^0$ (this is a famous result of
+    Furst--Saxe--Sipser and Ajtai). This is consistent with parity
+    having all its spectral energy at degree $n$.
+\end{itemize}
+\end{example}
+
+\subsection{The Theorem}
+
+\begin{theorem}[LMN; \citealp{linial1993constant}]\label{thm:lmn}
+Let $f \colon \pmone^n \to \pmone$ be computable by a circuit of depth $D$
+and size $M$. Then for every $k \geq 0$:
+\begin{equation}\label{eq:lmn}
+  \sum_{|S| > k} \fhat(S)^2 \leq 2M \cdot \exp\!\left(-\frac{k^{1/(D-1)}}{2}\right).
+\end{equation}
+\end{theorem}
+
+\begin{remark}[What the LMN theorem says]\label{rem:lmn-meaning}
+For a depth-$D$, size-$M$ circuit:
+\begin{itemize}
+  \item The tail energy above degree $k$ decays as
+    $\exp(-k^{1/(D-1)}/2)$, which is super-polynomial in $k$ for
+    constant $D$.
+  \item Setting the RHS to $\epsilon$ and solving for $k$: the 95\%
+    spectral energy is captured by degrees up to
+    $k^* = O((\log M)^{D-1})$. For polynomial-size circuits ($M = n^c$),
+    this gives $k^* = O((\log n)^{D-1})$.
+  \item For depth $D = 2$ (DNF/CNF formulas of size $M$):
+    $k^* = O(\log M)$. Very strong concentration.
+  \item The bound degrades with depth: deeper circuits can ``hide''
+    spectral energy at higher degrees.
+\end{itemize}
+\end{remark}
+
+\begin{proof}[Proof idea]
+The proof has two ingredients:
+
+\textbf{1. Random restrictions.}
+A random restriction $\rho$ sets each variable independently to $+1$,
+$-1$, or ``$\ast$'' (``leave free'') with specified probabilities.
+The H\r{a}stad switching lemma (a strengthening of the
+Furst--Saxe--Sipser lemma) shows that applying a random restriction to a
+depth-$D$ circuit produces a circuit of depth $D-1$ that with high
+probability can be simplified. Iterating, after $D-1$ rounds of
+restrictions, the function becomes a ``junta'' (depending on few variables)
+with high probability.
+
+\textbf{2. Spectral interpretation.}
+A random restriction that keeps each variable alive with probability $p$
+and kills it with probability $1-p$ is equivalent (in the spectral
+domain) to applying the noise operator $T_{\sqrt{p}}$. The fact that
+$T_{\sqrt{p}} f$ concentrates on low degrees (after restriction, few
+variables survive) translates to the tail bound on $\fhat(S)^2$.
+
+The detailed proof is in \citet[Chapter~4]{odonnell2014analysis} and
+\citet{linial1993constant}.
+\end{proof}
+
+\paragraph{Relevance to the thesis.}
+The thesis uses the LMN theorem as motivating evidence for the spectral
+concentration hypothesis: if trained binary weight matrices correspond to
+``simple'' functions in some complexity-theoretic sense, they should
+exhibit low-degree spectral concentration. The thesis does \emph{not}
+claim that trained weights are $\mathsf{AC}^0$ functions---this is an
+empirical question addressed by the pilot study.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Learning Fourier-Sparse Functions}\label{sec:km-algorithm}
+
+The spectral concentration results motivate an algorithmic question: if a
+Boolean function has its energy on few Fourier coefficients, can we learn
+it efficiently?
+
+\begin{theorem}[Kushilevitz--Mansour; \citealp{kushilevitz1991learning}]
+\label{thm:km}
+Let $f \colon \pmone^n \to \R$ have an $\epsilon$-concentrated Fourier
+spectrum, meaning there exists a set $\mathcal{S}$ of at most $s$ subsets
+such that $\sum_{S \notin \mathcal{S}} \fhat(S)^2 \leq \epsilon$. Then
+$f$ can be approximated to $L^2$ error $\epsilon$ in time
+$\operatorname{poly}(n, s, 1/\epsilon)$ using random examples from the
+uniform distribution.
+\end{theorem}
+
+The algorithm works by:
+\begin{enumerate}
+  \item Estimating $\fhat(S)$ for ``candidate'' subsets $S$, using the
+    formula $\fhat(S) = \E_x[f(x)\,\chi_S(x)]$, which can be estimated
+    from samples.
+  \item Keeping only the large coefficients.
+\end{enumerate}
+
+The challenge is identifying \emph{which} subsets $S$ have large
+coefficients, since there are $2^n$ possibilities. Kushilevitz and
+Mansour showed how to do this efficiently.
+
+\begin{remark}[Relevance to the thesis]\label{rem:km-thesis}
+The thesis's spectral parameterization is related in spirit: it
+restricts the search to degree-$\leq k$ coefficients (of which there are
+$\binom{n}{\leq k}$), then optimizes them continuously. This is like a
+continuous relaxation of the KM algorithm, where instead of
+\emph{estimating} the coefficients from data, we \emph{optimize} them via
+gradient descent.
+\end{remark}

@@ -1,0 +1,111 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\onehalfspacing
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textit{\small Boolean Fourier Analysis: An Expository Guide}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Theorem environments ──────────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Macros ────────────────────────────────────────────────────────────
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\pmone}{\{-1,+1\}}
+\newcommand{\fhat}{\widehat{f}}
+\newcommand{\ghat}{\widehat{g}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\DeclareMathOperator{\WHT}{WHT}
+\DeclareMathOperator{\FWHT}{FWHT}
+
+\begin{document}
+
+% ── Title page ────────────────────────────────────────────────────────
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\LARGE\bfseries Boolean Fourier Analysis and the\\[6pt]
+Walsh--Hadamard Transform}\\[18pt]
+{\Large\bfseries An Expository Guide}\\[12pt]
+{\large From First Principles to Spectral Methods\\[4pt]
+for Binary Neural Networks}
+
+\vspace{2cm}
+
+{\large Companion to the thesis proposal:\\[4pt]
+\textit{Spectral Methods for Binary Neural Networks}}
+
+\vspace{1.5cm}
+
+{\large February 2026}
+
+\vspace{2cm}
+
+\begin{quote}\small
+This document provides a self-contained exposition of the mathematical
+background needed to read the thesis proposal on spectral methods for
+binary neural networks. It assumes familiarity with undergraduate linear
+algebra, probability, and calculus, but develops all specialized material---Boolean
+Fourier analysis, the Walsh--Hadamard transform, hypercontractivity,
+influence theory, and their connections to coding theory and neural
+networks---from scratch, with full proofs and references.
+\end{quote}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\input{ch1_prerequisites}
+\input{ch2_boolean_fourier}
+\input{ch3_influence_noise}
+\input{ch4_concentration}
+\input{ch5_wht}
+\input{ch6_ltf_codes_groups}
+\input{ch7_applications}
+
+\bibliographystyle{plainnat}
+\bibliography{guide_references}
+
+\end{document}

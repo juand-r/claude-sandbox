@@ -1,0 +1,490 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 2: The Boolean Hypercube and Fourier Analysis
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{Fourier Analysis on the Boolean Hypercube}\label{ch:boolean-fourier}
+
+This chapter develops the Fourier analysis of functions on $\pmone^n$
+from scratch. The treatment follows \citet{odonnell2014analysis},
+Chapters~1--2, which is the standard reference. A shorter introduction
+is \citet{dewolf2008brief}.
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Boolean Hypercube}\label{sec:hypercube}
+
+\begin{definition}[Boolean hypercube]\label{def:hypercube}
+The \emph{Boolean hypercube} of dimension $n$ is the set
+\[
+  \Omega_n = \pmone^n = \{(x_1, \ldots, x_n) : x_i \in \{-1, +1\}\}.
+\]
+It has $|\Omega_n| = 2^n$ elements. We equip it with the \emph{uniform
+probability measure}: each $x \in \Omega_n$ has probability $2^{-n}$.
+\end{definition}
+
+\begin{remark}[Why $\pmone$ and not $\{0,1\}$?]\label{rem:pm1-vs-01}
+Both conventions appear in the literature. The $\pmone$ convention is
+standard in Boolean Fourier analysis because it makes the algebra cleaner:
+\begin{itemize}
+  \item Multiplication is the natural group operation ($x_i \cdot x_j \in \pmone$),
+        whereas $\{0,1\}$ would require XOR (addition mod~2).
+  \item The Fourier basis functions (parity functions, below) take values
+        in $\pmone$, matching the ``alphabet'' of Boolean functions.
+  \item The connection to the Walsh--Hadamard transform (\Cref{ch:wht})
+        is immediate.
+\end{itemize}
+To convert: if $b \in \{0,1\}$, set $x = 1 - 2b = (-1)^b$.
+\end{remark}
+
+\begin{definition}[Boolean and pseudo-Boolean functions]\label{def:boolean-fn}
+A \emph{Boolean function} is a map $f \colon \pmone^n \to \pmone$.
+A \emph{pseudo-Boolean function} is a map $f \colon \pmone^n \to \R$.
+\end{definition}
+
+The set of all pseudo-Boolean functions $f \colon \pmone^n \to \R$ forms
+a real vector space of dimension $2^n$ (one degree of freedom per point
+in $\Omega_n$). We equip it with the \emph{expectation inner product}:
+
+\begin{definition}[Inner product on functions]\label{def:fn-inner-product}
+For $f, g \colon \pmone^n \to \R$:
+\begin{equation}\label{eq:fn-ip}
+  \ip{f}{g} = \E_x[f(x)\, g(x)]
+  = \frac{1}{2^n} \sum_{x \in \pmone^n} f(x)\, g(x).
+\end{equation}
+The associated norm is $\norm{f}_2 = \sqrt{\ip{f}{f}}
+= \sqrt{\E_x[f(x)^2]}$.
+\end{definition}
+
+\begin{example}\label{ex:boolean-norm}
+If $f \colon \pmone^n \to \pmone$ is Boolean, then $f(x)^2 = 1$ for all
+$x$, so $\norm{f}_2^2 = 1$. Every Boolean function is a unit vector in
+this inner product space.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Parity Functions}\label{sec:parity}
+
+We now construct an orthonormal basis for the space of pseudo-Boolean
+functions. The key objects are the \emph{parity functions} (also called
+\emph{Walsh functions} or \emph{characters}).
+
+\begin{definition}[Parity function]\label{def:parity}
+For each subset $S \subseteq [n] = \{1, 2, \ldots, n\}$, define
+\begin{equation}\label{eq:chi-def}
+  \chi_S(x) = \prod_{i \in S} x_i.
+\end{equation}
+By convention, $\chi_\emptyset(x) = 1$ for all $x$ (the empty product).
+\end{definition}
+
+Since each $x_i \in \pmone$, each $\chi_S(x)$ is a product of $\pm 1$
+values, hence $\chi_S(x) \in \pmone$. The parity functions are themselves
+Boolean functions. This is a distinctive feature of the Boolean Fourier
+basis: the basis elements live in the same alphabet as the functions
+being analyzed. (Compare with classical Fourier analysis, where the basis
+$\{e^{2\pi i k x}\}$ is complex-valued even when analyzing real functions.)
+
+\begin{example}\label{ex:parity-functions}
+For $n = 3$:
+\begin{align*}
+  \chi_\emptyset(x) &= 1, \\
+  \chi_{\{1\}}(x) &= x_1, \quad
+  \chi_{\{2\}}(x) = x_2, \quad
+  \chi_{\{3\}}(x) = x_3, \\
+  \chi_{\{1,2\}}(x) &= x_1 x_2, \quad
+  \chi_{\{1,3\}}(x) = x_1 x_3, \quad
+  \chi_{\{2,3\}}(x) = x_2 x_3, \\
+  \chi_{\{1,2,3\}}(x) &= x_1 x_2 x_3.
+\end{align*}
+There are $2^3 = 8$ such functions, one for each subset of $[3]$.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Orthonormality}\label{sec:orthonormality}
+
+\begin{theorem}[Orthonormality of parity functions]\label{thm:orthonormality}
+For any $S, T \subseteq [n]$:
+\begin{equation}\label{eq:orthonormality}
+  \ip{\chi_S}{\chi_T} = \delta_{ST} =
+  \begin{cases}
+    1 & \text{if } S = T, \\
+    0 & \text{if } S \neq T.
+  \end{cases}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We compute:
+\[
+  \ip{\chi_S}{\chi_T}
+  = \E_x\!\left[\prod_{i \in S} x_i \cdot \prod_{j \in T} x_j\right]
+  = \E_x\!\left[\prod_{i \in S \triangle T} x_i\right],
+\]
+where $S \triangle T = (S \setminus T) \cup (T \setminus S)$ is the
+symmetric difference (we used $x_i^2 = 1$ to cancel shared indices).
+
+If $S = T$, then $S \triangle T = \emptyset$, the product is~1, and the
+expectation is~1.
+
+If $S \neq T$, then $S \triangle T \neq \emptyset$; pick any
+$k \in S \triangle T$. Since $x_k$ is independent of $\{x_i : i \neq k\}$
+and takes $\pm 1$ with equal probability:
+\[
+  \E_x\!\left[\prod_{i \in S \triangle T} x_i\right]
+  = \E_{x_k}[x_k] \cdot \E_{x_{-k}}\!\left[\prod_{\substack{i \in S \triangle T \\ i \neq k}} x_i\right]
+  = 0 \cdot (\text{something}) = 0.
+\]
+(Here $x_{-k}$ denotes the coordinates other than $k$.)
+\end{proof}
+
+Since there are $2^n$ parity functions and the space of pseudo-Boolean
+functions has dimension $2^n$, orthonormality implies:
+
+\begin{corollary}\label{cor:parity-onb}
+$\{\chi_S\}_{S \subseteq [n]}$ is an orthonormal basis for the space
+of all functions $f \colon \pmone^n \to \R$ under the inner product
+$\ip{f}{g} = \E_x[f(x)g(x)]$.
+\end{corollary}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Fourier Expansion}\label{sec:fourier-expansion}
+
+By \Cref{prop:fourier-finite} (general Fourier expansion) and
+\Cref{cor:parity-onb} (the parity functions form an ONB), we immediately
+obtain:
+
+\begin{theorem}[Fourier expansion on $\pmone^n$]\label{thm:fourier-expansion}
+Every function $f \colon \pmone^n \to \R$ has a unique expansion
+\begin{equation}\label{eq:fourier-expansion}
+  f(x) = \sum_{S \subseteq [n]} \fhat(S)\, \chi_S(x),
+\end{equation}
+where the \emph{Fourier coefficients} (or \emph{Walsh--Fourier
+coefficients}) are
+\begin{equation}\label{eq:fourier-coeff}
+  \fhat(S) = \ip{f}{\chi_S}
+  = \E_x\!\left[f(x) \prod_{i \in S} x_i\right]
+  = \frac{1}{2^n} \sum_{x \in \pmone^n} f(x) \prod_{i \in S} x_i.
+\end{equation}
+\end{theorem}
+
+The expansion \eqref{eq:fourier-expansion} is a \emph{multilinear
+polynomial}: each variable $x_i$ appears with degree at most~1 (because
+$x_i^2 = 1$ for $x_i \in \pmone$, so any higher power reduces). This is
+the unique multilinear representation of $f$.
+
+\begin{definition}[Degree]\label{def:degree}
+The \emph{degree} of the monomial $\chi_S$ is $|S|$. We say $f$ has
+\emph{Fourier degree at most $d$} if $\fhat(S) = 0$ for all $S$ with
+$|S| > d$.
+\end{definition}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Parseval's Identity}\label{sec:parseval}
+
+Applying \Cref{prop:fourier-finite} (Parseval in the abstract setting)
+with the parity ONB:
+
+\begin{theorem}[Parseval's identity]\label{thm:parseval}
+For any $f \colon \pmone^n \to \R$:
+\begin{equation}\label{eq:parseval}
+  \norm{f}_2^2 = \E_x[f(x)^2] = \sum_{S \subseteq [n]} \fhat(S)^2.
+\end{equation}
+\end{theorem}
+
+For Boolean functions ($f \colon \pmone^n \to \pmone$):
+\begin{equation}\label{eq:parseval-boolean}
+  \sum_{S \subseteq [n]} \fhat(S)^2 = 1.
+\end{equation}
+
+This is the \emph{energy constraint}: the Fourier coefficients of a
+Boolean function lie on the unit sphere in $\R^{2^n}$. The ``spectral
+energy'' $\fhat(S)^2$ at each subset $S$ can be thought of as the
+fraction of the function's total variance explained by that frequency
+component.
+
+\begin{remark}[Relevance to the thesis]\label{rem:parseval-thesis}
+The thesis uses Parseval's identity in a crucial way: it implies that the
+Fourier coefficients of any Boolean function are automatically normalized
+($\sum_S \fhat(S)^2 = 1$). This means the spectral parameterization of
+binary weight matrices comes with a built-in energy budget, replacing the
+learned per-layer scaling factors $\alpha$ used in BitNet.
+\end{remark}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Worked Examples}\label{sec:fourier-examples}
+
+We compute the Fourier expansion for several important Boolean functions.
+These examples build intuition for ``spectral concentration''---the
+phenomenon that many natural Boolean functions have most of their Fourier
+mass on low-degree coefficients.
+
+\subsection{Dictator Functions}\label{sec:dictator}
+
+\begin{example}[Dictator]\label{ex:dictator}
+The $i$-th \emph{dictator function} is $f(x) = x_i$. Its Fourier
+expansion is trivially $f = \chi_{\{i\}}$, so
+\[
+  \fhat(S) = \begin{cases} 1 & \text{if } S = \{i\}, \\ 0 & \text{otherwise.} \end{cases}
+\]
+All spectral energy is at degree~1. Parseval: $1^2 = 1$. \checkmark
+\end{example}
+
+Dictator functions are the extreme case of spectral concentration: all
+energy is on a single degree-1 coefficient.
+
+
+\subsection{The AND Function}\label{sec:and}
+
+\begin{example}[AND on 2 bits]\label{ex:and}
+Define $\text{AND}(x_1, x_2) = +1$ iff $x_1 = x_2 = +1$, and $-1$
+otherwise. The truth table:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$x_1$ & $x_2$ & $\text{AND}$ \\
+\midrule
+$-1$ & $-1$ & $-1$ \\
+$-1$ & $+1$ & $-1$ \\
+$+1$ & $-1$ & $-1$ \\
+$+1$ & $+1$ & $+1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Computing coefficients:
+\begin{align*}
+  \fhat(\emptyset) &= \E[f] = \tfrac{1}{4}(-1-1-1+1) = -\tfrac{1}{2}, \\
+  \fhat(\{1\}) &= \E[f \cdot x_1] = \tfrac{1}{4}(1+1-1-1) = 0,
+\end{align*}
+Wait---let us redo this more carefully. We have
+$\E[f \cdot x_1] = \frac{1}{4}[(-1)(-1) + (-1)(-1) + (-1)(1) + (1)(1)]
+= \frac{1}{4}[1 + 1 - 1 + 1] = \frac{1}{2}$.
+
+Similarly $\fhat(\{2\}) = \frac{1}{2}$ and
+$\fhat(\{1,2\}) = \E[f \cdot x_1 x_2]
+= \frac{1}{4}[(-1)(1) + (-1)(-1) + (-1)(-1) + (1)(1)]
+= \frac{1}{4}[-1+1+1+1] = \frac{1}{2}$.
+
+So: $\text{AND}(x_1, x_2) = -\frac{1}{2} + \frac{1}{2}x_1 + \frac{1}{2}x_2 + \frac{1}{2}x_1 x_2$.
+
+Parseval: $\frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = 1$. \checkmark
+
+The spectral energy is spread evenly across degrees 0, 1, 1, 2.
+\end{example}
+
+
+\subsection{The Majority Function}\label{sec:majority}
+
+\begin{example}[Majority on 3 bits]\label{ex:majority}
+$\text{Maj}_3(x) = \sgn(x_1 + x_2 + x_3)$: output $+1$ if at least 2
+of 3 inputs are $+1$.
+
+Truth table and Fourier computation:
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$x_1$ & $x_2$ & $x_3$ & $\text{Maj}_3$ \\
+\midrule
+$-1$ & $-1$ & $-1$ & $-1$ \\
+$-1$ & $-1$ & $+1$ & $-1$ \\
+$-1$ & $+1$ & $-1$ & $-1$ \\
+$-1$ & $+1$ & $+1$ & $+1$ \\
+$+1$ & $-1$ & $-1$ & $-1$ \\
+$+1$ & $-1$ & $+1$ & $+1$ \\
+$+1$ & $+1$ & $-1$ & $+1$ \\
+$+1$ & $+1$ & $+1$ & $+1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Fourier coefficients are:
+\begin{align*}
+  \fhat(\emptyset) &= 0 \quad \text{(balanced: 4 outputs $+1$, 4 outputs $-1$)}, \\
+  \fhat(\{1\}) = \fhat(\{2\}) = \fhat(\{3\}) &= \tfrac{1}{2}, \\
+  \fhat(\{1,2\}) = \fhat(\{1,3\}) = \fhat(\{2,3\}) &= 0, \\
+  \fhat(\{1,2,3\}) &= -\tfrac{1}{2}.
+\end{align*}
+
+Hence: $\text{Maj}_3(x) = \frac{1}{2}(x_1 + x_2 + x_3) - \frac{1}{2}x_1 x_2 x_3$.
+
+Parseval: $3 \cdot \frac{1}{4} + \frac{1}{4} = 1$. \checkmark
+
+The spectral energy breakdown by degree:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Degree & Energy & Fraction \\
+\midrule
+0 & 0 & 0\% \\
+1 & $3/4$ & 75\% \\
+2 & 0 & 0\% \\
+3 & $1/4$ & 25\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$\text{Maj}_3$ is \emph{spectrally concentrated}: 75\% of its energy is
+at degree~1. This is a general phenomenon: the majority function on $n$
+bits has most of its spectral energy on degree-1 coefficients, with the
+concentration improving as $n$ grows
+\citep[Chapter~5]{odonnell2014analysis}.
+\end{example}
+
+
+\subsection{The Parity Function (Anti-Concentration)}\label{sec:parity-ex}
+
+\begin{example}[Parity]\label{ex:parity}
+$f(x) = x_1 x_2 \cdots x_n = \chi_{[n]}(x)$.
+
+This function has $\fhat([n]) = 1$ and all other coefficients zero. All
+energy is at the maximum degree $n$. The parity function is the
+\emph{opposite} of spectrally concentrated: it is maximally complex in the
+Fourier sense. It is also the hardest Boolean function to learn from
+random examples \citep{linial1993constant}.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Degree-Level Energy Decomposition}\label{sec:energy-levels}
+
+Parseval allows us to decompose the ``energy'' of a Boolean function by
+degree:
+
+\begin{definition}[Spectral energy at degree $k$]\label{def:energy-level}
+For $f \colon \pmone^n \to \R$ and $0 \leq k \leq n$:
+\[
+  W^k[f] = \sum_{\substack{S \subseteq [n] \\ |S| = k}} \fhat(S)^2.
+\]
+The \emph{spectral energy profile} is the vector $(W^0[f], W^1[f], \ldots, W^n[f])$.
+\end{definition}
+
+By Parseval: $\sum_{k=0}^n W^k[f] = \norm{f}_2^2$. For Boolean $f$,
+this sum is~1, so the energy profile is a probability distribution on
+degrees $\{0, 1, \ldots, n\}$.
+
+For a \emph{random} Boolean function (chosen uniformly at random from all
+$2^{2^n}$ Boolean functions on $n$ bits), the expected energy at degree
+$k$ is $\binom{n}{k} / 2^n$. This follows a $\text{Binomial}(n, 1/2)$
+distribution, peaked at $k = n/2$. So a random Boolean function has its
+energy concentrated around degree $n/2$.
+
+The thesis's central hypothesis is that \emph{trained} binary weight
+matrices, viewed as Boolean functions, have their energy concentrated at
+much lower degrees---far below the $n/2$ baseline of random functions.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Low-Degree Truncation}\label{sec:truncation}
+
+\begin{definition}[Degree-$k$ truncation]\label{def:truncation}
+For $f \colon \pmone^n \to \R$:
+\[
+  f^{\leq k}(x) = \sum_{\substack{S \subseteq [n] \\ |S| \leq k}} \fhat(S)\, \chi_S(x).
+\]
+Similarly, $f^{>k} = f - f^{\leq k}$.
+\end{definition}
+
+The truncation $f^{\leq k}$ is the best degree-$k$ approximation to $f$
+in the $L^2$ norm (this follows from orthogonality: the ``tail''
+$f^{>k}$ is orthogonal to all degree-$\leq k$ functions). The
+approximation error is:
+\begin{equation}\label{eq:truncation-error}
+  \norm{f - f^{\leq k}}_2^2 = \norm{f^{>k}}_2^2
+  = \sum_{|S| > k} \fhat(S)^2.
+\end{equation}
+
+For Boolean functions, if we want to \emph{round} $f^{\leq k}$ back to
+$\pmone$ via the sign function, the fraction of inputs where the rounded
+version disagrees with $f$ is bounded by:
+
+\begin{proposition}[Sign-rounding error; thesis Proposition~3.1]\label{prop:sign-rounding}
+Let $f \colon \pmone^n \to \pmone$ be Boolean and
+$\tilde{f} = \sgn(f^{\leq k})$. Then
+\[
+  \Prob_x[\tilde{f}(x) \neq f(x)] \leq \sum_{|S| > k} \fhat(S)^2.
+\]
+\end{proposition}
+
+\begin{proof}
+If $\tilde{f}(x) \neq f(x)$, then $f(x) \cdot f^{\leq k}(x) \leq 0$.
+Write $f^{\leq k}(x) = f(x) - f^{>k}(x)$, so
+$f(x) \cdot f^{\leq k}(x) = 1 - f(x) \cdot f^{>k}(x)$.
+Thus the disagreement requires $f(x) \cdot f^{>k}(x) \geq 1$, which
+implies $|f^{>k}(x)| \geq 1$. By Markov's inequality
+(\Cref{thm:markov}) applied to $(f^{>k})^2$:
+\[
+  \Prob[|f^{>k}(x)| \geq 1] \leq \E[(f^{>k}(x))^2] = \sum_{|S|>k} \fhat(S)^2.
+  \qedhere
+\]
+\end{proof}
+
+This bound is tight when $f^{>k}$ is small everywhere it is nonzero
+(as happens for spectrally concentrated functions), and loose when
+$f^{>k}$ takes large values on a small set.
+
+\begin{example}[Truncation of $\text{Maj}_3$]\label{ex:maj3-truncation}
+For $\text{Maj}_3$, the tail energy above degree 1 is
+$\fhat(\{1,2,3\})^2 = 1/4$, so the bound gives
+$\Prob[\sgn(f^{\leq 1}) \neq f] \leq 1/4$. In fact, $f^{\leq 1}(x) =
+\frac{1}{2}(x_1 + x_2 + x_3)$, which has the same sign as $\text{Maj}_3$
+on all 8 inputs (since $|x_1 + x_2 + x_3| \geq 1$ always), so the
+actual error is $0/8 = 0$. The bound is not tight here because
+$f^{>1}(x) = -\frac{1}{2}x_1 x_2 x_3$ never has magnitude exceeding
+$\frac{1}{2} < 1$.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Plancherel and the Convolution Theorem}\label{sec:convolution}
+
+Two additional Fourier identities that are used in the thesis:
+
+\begin{theorem}[Plancherel's identity]\label{thm:plancherel}
+For $f, g \colon \pmone^n \to \R$:
+\[
+  \ip{f}{g} = \sum_{S \subseteq [n]} \fhat(S)\, \ghat(S).
+\]
+\end{theorem}
+
+\begin{proof}
+Expand $f$ and $g$ in the Fourier basis and use orthonormality.
+\end{proof}
+
+\begin{definition}[Dyadic convolution]\label{def:convolution}
+For $f, g \colon \pmone^n \to \R$, the \emph{dyadic convolution} is
+\[
+  (f \ast g)(x) = \E_y[f(y)\, g(x \cdot y)],
+\]
+where $x \cdot y = (x_1 y_1, \ldots, x_n y_n)$ is coordinatewise
+multiplication.
+\end{definition}
+
+\begin{theorem}[Convolution theorem]\label{thm:convolution}
+$\widehat{f \ast g}(S) = \fhat(S) \cdot \ghat(S)$.
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+  \widehat{f \ast g}(S)
+  &= \E_x[(f \ast g)(x)\, \chi_S(x)]
+  = \E_x\!\left[\E_y[f(y)\, g(x \cdot y)]\, \chi_S(x)\right] \\
+  &= \E_y\!\left[f(y)\, \E_x[g(x \cdot y)\, \chi_S(x)]\right].
+\end{align*}
+Substituting $z = x \cdot y$ (which is uniform when $x$ is uniform,
+since $y$ is fixed and coordinatewise multiplication by $y \in \pmone^n$
+is a bijection on $\pmone^n$):
+\[
+  \E_x[g(x \cdot y)\, \chi_S(x)]
+  = \E_z[g(z)\, \chi_S(z \cdot y)]
+  = \E_z[g(z)\, \chi_S(z)\, \chi_S(y)]
+  = \ghat(S)\, \chi_S(y),
+\]
+using $\chi_S(z \cdot y) = \chi_S(z)\,\chi_S(y)$ (since $\chi_S$ is
+multiplicative: $\prod_{i \in S}(z_i y_i) = \prod_{i \in S} z_i \cdot \prod_{i \in S} y_i$).
+
+Therefore:
+$\widehat{f \ast g}(S) = \ghat(S)\, \E_y[f(y)\, \chi_S(y)] = \ghat(S)\, \fhat(S)$.
+\end{proof}

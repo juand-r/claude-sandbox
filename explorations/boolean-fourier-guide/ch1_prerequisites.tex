@@ -1,0 +1,223 @@
+% ══════════════════════════════════════════════════════════════════════════
+%  Chapter 1: Prerequisites
+% ══════════════════════════════════════════════════════════════════════════
+
+\chapter{Prerequisites}\label{ch:prereqs}
+
+We collect the facts from linear algebra and probability that are used
+throughout this guide. The reader who is comfortable with inner product
+spaces, the Kronecker product, Markov's inequality, and the central limit
+theorem may safely skip to \Cref{ch:boolean-fourier}.
+
+Standard references: \citet{axler2024linear} or \citet{horn2012matrix} for
+linear algebra; \citet{durrett2019probability} or \citet{feller1971introduction}
+for probability.
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Inner Product Spaces}\label{sec:inner-product-spaces}
+
+\begin{definition}[Inner product]\label{def:inner-product}
+Let $V$ be a real vector space. An \emph{inner product} on $V$ is a
+function $\ip{\cdot}{\cdot} \colon V \times V \to \R$ satisfying, for all
+$u, v, w \in V$ and $\alpha \in \R$:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Symmetry:} $\ip{u}{v} = \ip{v}{u}$.
+  \item \emph{Linearity in the first argument:}
+        $\ip{\alpha u + v}{w} = \alpha\ip{u}{w} + \ip{v}{w}$.
+  \item \emph{Positive definiteness:} $\ip{v}{v} \geq 0$, with equality
+        if and only if $v = 0$.
+\end{enumerate}
+The pair $(V, \ip{\cdot}{\cdot})$ is called an \emph{inner product space}.
+\end{definition}
+
+The inner product induces a norm $\norm{v} = \sqrt{\ip{v}{v}}$.
+The key structural fact is:
+
+\begin{theorem}[Cauchy--Schwarz inequality]\label{thm:cauchy-schwarz}
+For all $u, v$ in an inner product space,
+$|\ip{u}{v}| \leq \norm{u}\,\norm{v}$,
+with equality if and only if $u$ and $v$ are linearly dependent.
+\end{theorem}
+
+\begin{definition}[Orthonormal basis]\label{def:onb}
+A set $\{e_1, \ldots, e_n\}$ in an inner product space $V$ is
+\emph{orthonormal} if $\ip{e_i}{e_j} = \delta_{ij}$ (the Kronecker delta).
+If additionally $\operatorname{span}\{e_1,\ldots,e_n\} = V$, it is an
+\emph{orthonormal basis} (ONB).
+\end{definition}
+
+The central fact about orthonormal bases is:
+
+\begin{proposition}[Fourier expansion in a finite-dimensional inner product space]\label{prop:fourier-finite}
+If $\{e_1, \ldots, e_N\}$ is an ONB for $(V, \ip{\cdot}{\cdot})$, then
+every $v \in V$ has a unique expansion
+\[
+  v = \sum_{i=1}^{N} \ip{v}{e_i}\, e_i,
+\]
+and \emph{Parseval's identity} holds:
+$\norm{v}^2 = \sum_{i=1}^{N} \ip{v}{e_i}^2$.
+\end{proposition}
+
+\begin{proof}
+Write $v = \sum_i c_i e_i$. Taking the inner product with $e_j$ gives
+$\ip{v}{e_j} = c_j$ by orthonormality. Then
+$\norm{v}^2 = \ip{v}{v} = \sum_i c_i^2$.
+\end{proof}
+
+This is exactly the abstract template for the Boolean Fourier expansion
+in \Cref{ch:boolean-fourier}: the vector space will be the space of all
+real-valued functions on $\pmone^n$, the inner product will be the
+expectation inner product, and the ONB will be the parity functions.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Kronecker Product}\label{sec:kronecker}
+
+\begin{definition}[Kronecker product]\label{def:kronecker}
+Let $A$ be an $m \times n$ matrix and $B$ a $p \times q$ matrix. Their
+\emph{Kronecker product} $A \otimes B$ is the $mp \times nq$ block matrix
+\[
+  A \otimes B =
+  \begin{pmatrix}
+    a_{11} B & a_{12} B & \cdots & a_{1n} B \\
+    a_{21} B & a_{22} B & \cdots & a_{2n} B \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} B & a_{m2} B & \cdots & a_{mn} B
+  \end{pmatrix}.
+\]
+\end{definition}
+
+Key properties (all straightforward to verify):
+\begin{enumerate}[label=(\roman*)]
+  \item $(A \otimes B)(C \otimes D) = (AC) \otimes (BD)$, when the
+        products $AC$ and $BD$ are defined.
+  \item $(A \otimes B)^\top = A^\top \otimes B^\top$.
+  \item If $A$ and $B$ are orthogonal, so is $A \otimes B$.
+  \item $\operatorname{tr}(A \otimes B) = \operatorname{tr}(A)\operatorname{tr}(B)$.
+\end{enumerate}
+
+Property (i) is the \emph{mixed-product rule}; it is the algebraic engine
+behind the recursive structure of the Hadamard matrix (\Cref{ch:wht}).
+
+\begin{example}\label{ex:kronecker-2x2}
+The Hadamard matrix $H_1 = \bigl(\begin{smallmatrix} 1 & 1 \\ 1 & -1
+\end{smallmatrix}\bigr)$ satisfies
+\[
+  H_1 \otimes H_1 =
+  \begin{pmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & -1 & 1 & -1 \\
+    1 & 1 & -1 & -1 \\
+    1 & -1 & -1 & 1
+  \end{pmatrix} = H_2.
+\]
+See \Cref{sec:hadamard-def} for the general construction.
+\end{example}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{Probability Essentials}\label{sec:prob-essentials}
+
+Throughout this guide, probability spaces are finite (typically uniform
+on $\pmone^n$), so measure-theoretic subtleties do not arise.
+
+\begin{definition}[Expectation and variance]\label{def:expectation}
+For a random variable $X$ on a finite probability space $(\Omega, p)$:
+\[
+  \E[X] = \sum_{\omega \in \Omega} p(\omega)\, X(\omega),
+  \qquad
+  \Var[X] = \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2.
+\]
+\end{definition}
+
+\begin{theorem}[Markov's inequality]\label{thm:markov}
+If $X \geq 0$ and $a > 0$, then $\Prob[X \geq a] \leq \E[X] / a$.
+\end{theorem}
+
+\begin{proof}
+$\E[X] = \sum_\omega p(\omega) X(\omega) \geq \sum_{\omega : X(\omega) \geq a} p(\omega) \cdot a = a \cdot \Prob[X \geq a]$.
+\end{proof}
+
+\begin{corollary}[Chebyshev's inequality]\label{cor:chebyshev}
+$\Prob[|X - \E[X]| \geq t] \leq \Var[X] / t^2$.
+\end{corollary}
+
+\begin{proof}
+Apply Markov to $(X - \E[X])^2$ with $a = t^2$.
+\end{proof}
+
+Markov's inequality is used directly in the thesis to prove the
+degree-truncation approximation bound (Proposition~3.1 of the thesis).
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{The Central Limit Theorem and Berry--Ess\'een}\label{sec:clt}
+
+\begin{theorem}[Central Limit Theorem]\label{thm:clt}
+Let $X_1, X_2, \ldots$ be independent, identically distributed random
+variables with $\E[X_i] = 0$ and $\Var[X_i] = \sigma^2 > 0$. Then
+\[
+  \frac{X_1 + \cdots + X_n}{\sigma\sqrt{n}}
+  \xrightarrow{d} \mathcal{N}(0, 1)
+  \quad \text{as } n \to \infty.
+\]
+\end{theorem}
+
+The CLT tells us that $S_n / (\sigma \sqrt{n})$ is approximately
+$\mathcal{N}(0,1)$ for large $n$, but says nothing about the rate of
+convergence. The Berry--Ess\'een theorem quantifies this.
+
+\begin{theorem}[Berry--Ess\'een; \citealp{berry1941accuracy,esseen1942rate}]\label{thm:berry-esseen}
+Under the hypotheses of \Cref{thm:clt}, with additionally
+$\E[|X_i|^3] = \rho < \infty$, we have
+\[
+  \sup_{t \in \R}
+  \left|
+    \Prob\!\left[\frac{S_n}{\sigma\sqrt{n}} \leq t\right]
+    - \Phi(t)
+  \right|
+  \leq \frac{C \rho}{\sigma^3 \sqrt{n}},
+\]
+where $\Phi$ is the standard normal CDF and $C$ is a universal constant
+(the best known value is $C < 0.4748$).
+\end{theorem}
+
+\paragraph{Why this matters for the thesis.}
+In the thesis, binary neural network layers compute sums of the form
+$y_j = \sum_{i=1}^d w_{ji} x_i$ where $w_{ji}, x_i \in \pmone$.
+When $x$ is uniform on $\pmone^d$, the summands $w_{ji} x_i$ are
+independent $\pm 1$ random variables (regardless of the fixed signs
+$w_{ji}$), so $\E[w_{ji} x_i] = 0$, $\Var[w_{ji} x_i] = 1$, and
+$\E[|w_{ji} x_i|^3] = 1$. By Berry--Ess\'een,
+$y_j / \sqrt{d}$ is within $O(1/\sqrt{d})$ of $\mathcal{N}(0,1)$ in CDF.
+At $d = 1024$, this is about $0.015$---excellent approximation.
+This justifies the $1/\sqrt{d}$ normalization used throughout the thesis
+as a replacement for BitNet's learned scaling factors.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section{$L^p$ Norms}\label{sec:lp-norms}
+
+For a function $f$ on a probability space $(\Omega, p)$ and $p \geq 1$:
+
+\begin{definition}[$L^p$ norm]\label{def:lp}
+\[
+  \norm{f}_p = \left(\E\!\left[|f|^p\right]\right)^{1/p}
+  = \left(\sum_{\omega \in \Omega} p(\omega)\, |f(\omega)|^p\right)^{1/p}.
+\]
+For $p = \infty$: $\norm{f}_\infty = \max_\omega |f(\omega)|$.
+\end{definition}
+
+We always have $\norm{f}_p \leq \norm{f}_q$ when $p \leq q$ (by Jensen's
+inequality; the direction may seem backwards, but recall we are on a
+probability space). The \emph{hypercontractivity} results in
+\Cref{ch:concentration} are striking precisely because they give a reverse
+inequality $\norm{T_\rho f}_q \leq \norm{f}_p$ for $q > p$, at the cost
+of applying the noise operator $T_\rho$.
+
+\begin{remark}[Notation]
+Throughout this guide, when we write $\E_x[\cdot]$ for functions on
+$\pmone^n$, we mean the expectation under the uniform measure: each
+$x \in \pmone^n$ has probability $2^{-n}$. So
+$\norm{f}_2^2 = \E_x[f(x)^2] = 2^{-n} \sum_{x \in \pmone^n} f(x)^2$.
+\end{remark}
