@@ -15,11 +15,11 @@ import sys
 
 def main():
     parser = argparse.ArgumentParser(description="Presidential Actions Data Pipeline")
-    parser.add_argument("--phase", type=int, choices=[1, 2, 3],
+    parser.add_argument("--phase", type=int, choices=[1, 2, 3, 4],
                         help="Run a specific phase (default: all)")
     args = parser.parse_args()
 
-    phases = [args.phase] if args.phase else [1, 2, 3]
+    phases = [args.phase] if args.phase else [1, 2, 3, 4]
 
     for phase in phases:
         print(f"\n{'='*60}")
@@ -35,13 +35,15 @@ def main():
         elif phase == 3:
             from verify import run_verification
             run_verification()
+        elif phase == 4:
+            from score import run_phase4
+            run_phase4()
 
     if not args.phase:
         print(f"\n{'='*60}")
         print(f"  PIPELINE COMPLETE")
         print(f"{'='*60}")
-        print(f"\nFinal dataset: data/enriched/events_enriched.csv")
-        print(f"\nNext: Score events (impact_score + impact_description)")
+        print(f"\nFinal dataset: data/scored/events_scored.csv")
 
 
 if __name__ == "__main__":

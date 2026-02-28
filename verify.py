@@ -67,11 +67,16 @@ def run_verification():
         else:
             ok(f"{field}: all populated")
 
-    # impact fields should be blank
+    # impact fields: blank in enriched data, filled in scored data
+    scored_path = "data/scored/events_scored.csv"
+    scored_exists = os.path.exists(scored_path)
     for field in ["impact_score", "impact_description"]:
         filled = sum(1 for e in events if str(e.get(field, "")).strip())
         if filled:
-            warn(f"{field}: {filled} unexpectedly filled (should be blank for later)")
+            if scored_exists:
+                ok(f"{field}: {filled} populated (scoring complete)")
+            else:
+                warn(f"{field}: {filled} unexpectedly filled (should be blank for later)")
         else:
             ok(f"{field}: all blank (correct — for later scoring)")
 
