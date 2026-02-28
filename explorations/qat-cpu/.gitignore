@@ -7,3 +7,5 @@ profile_qat
 bench_roofline
 bench_attn
 test_bs8.csv
+train_qat_bs8_converge
+*.pid
