@@ -47,9 +47,9 @@ test_main.o: test_main.c qat_cpu.h
 test_qat: test_main.o $(OBJ_ALL)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
-# Training binary
+# Training binary (use TRAIN_CFLAGS to override config, e.g. TRAIN_CFLAGS="-DBATCH_SIZE=32 -DDIM=1024")
 train.o: train.c qat_cpu.h
-	$(CC) $(CFLAGS_SCALAR) -c $< -o $@
+	$(CC) $(CFLAGS_SCALAR) $(TRAIN_CFLAGS) -c $< -o $@
 
 train_qat: train.o $(OBJ_ALL)
 	$(CC) $^ -o $@ $(LDFLAGS)

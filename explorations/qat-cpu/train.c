@@ -13,20 +13,42 @@
 #include <assert.h>
 
 /* ========================================================================
- * Configuration
+ * Configuration (overridable via -D flags at compile time)
  * ======================================================================== */
 
+#ifndef VOCAB_SIZE
 #define VOCAB_SIZE   128   /* ASCII */
+#endif
+#ifndef DIM
 #define DIM          512
+#endif
+#ifndef N_LAYERS
 #define N_LAYERS     4
+#endif
+#ifndef N_HEADS
 #define N_HEADS      8
+#endif
+#ifndef HIDDEN_DIM
 #define HIDDEN_DIM   2048
+#endif
+#ifndef MAX_SEQ_LEN
 #define MAX_SEQ_LEN  256
+#endif
+#ifndef SEQ_LEN
 #define SEQ_LEN      64    /* Training sequence length */
+#endif
+#ifndef BATCH_SIZE
 #define BATCH_SIZE   8     /* Mini-batch size (sequences per step) */
+#endif
+#ifndef N_STEPS
 #define N_STEPS      10000
+#endif
+#ifndef EVAL_EVERY
 #define EVAL_EVERY   1000
+#endif
+#ifndef GEN_EVERY
 #define GEN_EVERY    2500
+#endif
 #define GEN_LEN      200
 #define LR           3e-4f
 #define WEIGHT_DECAY 0.01f

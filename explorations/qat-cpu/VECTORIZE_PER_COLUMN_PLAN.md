@@ -170,3 +170,23 @@ Speedup vs FP32:            --    1.15x        1.09x
 
 QAT+INT8bwd flipped from 8% slower to 9% faster than FP32.
 Quality unchanged: ppl 13.65/13.78/13.76.
+
+### Batch size sweep at dim=1024 (steady-state step 9)
+
+```
+Batch   FP32     QAT    INT8bwd   QAT/FP32  INT8bwd/FP32   Winner
+  8     2158    1851      1969     1.17x       1.10x        QAT
+ 16     3648    3616      3346     1.01x       1.09x        INT8bwd  <-- crossover
+ 32     7648    7131      6531     1.07x       1.17x        INT8bwd
+ 64    14180   14234     12524     1.00x       1.13x        INT8bwd
+```
+
+Key findings:
+- INT8 backward becomes the fastest mode at batch >= 16
+- QAT (fwd-only) speedup diminishes with batch size: 1.17x → 1.00x
+  (FP32 GEMMs are better utilized at larger M dimensions)
+- INT8 backward speedup is stable around 1.09-1.17x for batch >= 16
+  (GEMM compute dominates over quantization overhead)
+- At batch=8, quantization overhead relative to GEMM savings is too high
+- Quality: INT8 backward BPB delta grows slightly with batch size
+  (+0.010 at bs=8 → +0.031 at bs=64) but remains small
