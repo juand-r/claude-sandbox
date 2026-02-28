@@ -139,3 +139,34 @@ Rejected because:
 - If INT8 backward still isn't faster after this, the remaining overhead is in
   the transpose+quantize of grad_output in the backward pass itself, which
   uses the same pattern and would benefit from the same optimization.
+
+## Results (DONE)
+
+### Microbenchmark: quantize_per_column [512 x 1024]
+
+```
+Scalar:  3.991 ms
+AVX-512: 0.675 ms
+Speedup: 5.9x
+```
+
+### Training comparison at dim=1024, 200 steps
+
+Before (scalar per-column):
+```
+                          FP32      QAT     QAT+INT8bwd
+ms/step:                1604.7   1472.7       1740.0
+Speedup vs FP32:            --    1.09x        0.92x
+```
+
+After (AVX-512 per-column):
+```
+                          FP32      QAT     QAT+INT8bwd
+ms/step:                2398.4   2093.9       2209.0
+Speedup vs FP32:            --    1.15x        1.09x
+```
+
+(Absolute times differ due to VM load; ratios are what matter.)
+
+QAT+INT8bwd flipped from 8% slower to 9% faster than FP32.
+Quality unchanged: ppl 13.65/13.78/13.76.

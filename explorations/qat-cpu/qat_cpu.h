@@ -273,6 +273,11 @@ void dequantize_int32(const int32_t *acc, int rows, int cols,
  */
 void quantize_per_column(const float *src, int rows, int cols,
                           int8_t *dst, float *scales);
+/* Explicit scalar/AVX-512 variants for testing */
+void quantize_per_column_scalar(const float *src, int rows, int cols,
+                                 int8_t *dst, float *scales);
+void quantize_per_column_avx512(const float *src, int rows, int cols,
+                                  int8_t *dst, float *scales);
 
 /*
  * Dequantize INT32 accumulator to FP32, accumulating (+=) into existing output.

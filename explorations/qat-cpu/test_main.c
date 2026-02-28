@@ -237,6 +237,83 @@ static void test_quantization(void) {
 }
 
 /* ========================================================================
+ * Test: Per-column quantization AVX-512 vs scalar
+ * ======================================================================== */
+static void test_quantize_per_column(void) {
+    TEST_START("Per-column quantize AVX-512 vs scalar");
+
+    /* Test multiple sizes: aligned, non-aligned, tall, wide */
+    struct { int rows; int cols; } sizes[] = {
+        {512, 1024},   /* typical: batch x dim */
+        {1024, 1024},  /* square: weight matrix */
+        {4096, 1024},  /* ffn_up weight */
+        {1024, 4096},  /* ffn_down weight */
+        {128, 1024},   /* output head weight */
+        {7, 33},       /* non-aligned (scalar tails) */
+    };
+    int n_sizes = sizeof(sizes) / sizeof(sizes[0]);
+
+    uint64_t rng[4];
+    rng_seed(rng, 42);
+
+    for (int s = 0; s < n_sizes; s++) {
+        int rows = sizes[s].rows;
+        int cols = sizes[s].cols;
+
+        float *src = (float *)qat_alloc(rows * cols * sizeof(float));
+        int8_t *dst_scalar = (int8_t *)qat_alloc(rows * cols);
+        int8_t *dst_avx512 = (int8_t *)qat_alloc(rows * cols);
+        float *scales_scalar = (float *)qat_alloc(cols * sizeof(float));
+        float *scales_avx512 = (float *)qat_alloc(cols * sizeof(float));
+
+        /* Random data in [-2, 2] */
+        for (int i = 0; i < rows * cols; i++) {
+            src[i] = rng_uniform(rng) * 4.0f - 2.0f;
+        }
+        /* Sprinkle some zeros to test the scale=1.0 fallback */
+        for (int j = 0; j < cols && j < 3; j++) {
+            for (int i = 0; i < rows; i++) src[i * cols + j] = 0.0f;
+        }
+
+        quantize_per_column_scalar(src, rows, cols, dst_scalar, scales_scalar);
+        quantize_per_column_avx512(src, rows, cols, dst_avx512, scales_avx512);
+
+        /* Check scales match */
+        int scale_mismatches = 0;
+        for (int j = 0; j < cols; j++) {
+            if (scales_scalar[j] != scales_avx512[j]) {
+                scale_mismatches++;
+            }
+        }
+
+        /* Check quantized values match.
+         * Note: AVX-512 uses _mm512_cvtps_epi32 (round to nearest even) while
+         * scalar uses roundf (round ties away from zero). These differ only at
+         * exact .5 values, so allow +-1 difference. */
+        int value_mismatches = 0;
+        int max_diff = 0;
+        for (int i = 0; i < rows * cols; i++) {
+            int diff = abs((int)dst_scalar[i] - (int)dst_avx512[i]);
+            if (diff > max_diff) max_diff = diff;
+            if (diff > 1) value_mismatches++;
+        }
+
+        CHECK(scale_mismatches == 0,
+              "Per-column scales",
+              "[%dx%d] %d/%d scales differ", rows, cols, scale_mismatches, cols);
+        CHECK(value_mismatches == 0,
+              "Per-column values",
+              "[%dx%d] %d values differ by >1 (max diff: %d)",
+              rows, cols, value_mismatches, max_diff);
+
+        qat_free(src); qat_free(dst_scalar); qat_free(dst_avx512);
+        qat_free(scales_scalar); qat_free(scales_avx512);
+    }
+
+    TEST_PASS("Per-column quantize AVX-512 vs scalar");
+}
+
+/* ========================================================================
  * Test: QAT linear forward (compare INT8 path to FP32 reference)
  * ======================================================================== */
 static void test_qat_linear_forward(const KernelDispatch *kd) {
@@ -591,6 +668,9 @@ int main(void) {
     }
 
     test_quantization();
+    if (cpu.has_avx512f) {
+        test_quantize_per_column();
+    }
     test_qat_linear_forward(&kd);
     test_gradient_check(&kd);
     test_training_convergence(&kd);
@@ -614,6 +694,32 @@ int main(void) {
     }
     if (cpu.has_avx512f) {
         bench_gemm_fp32("FP32 AVX-512", gemm_fp32_avx512, bM, bN, bK);
+    }
+
+    if (cpu.has_avx512f) {
+        printf("\n--- BENCH: quantize_per_column [512 x 1024] ---\n");
+        int qrows = 512, qcols = 1024;
+        float *qsrc = (float *)qat_alloc(qrows * qcols * sizeof(float));
+        int8_t *qdst = (int8_t *)qat_alloc(qrows * qcols);
+        float *qscales = (float *)qat_alloc(qcols * sizeof(float));
+        for (int i = 0; i < qrows * qcols; i++) qsrc[i] = (float)(i % 255) - 127.0f;
+
+        int q_iters = 100;
+        double qt0 = timer_sec();
+        for (int i = 0; i < q_iters; i++)
+            quantize_per_column_scalar(qsrc, qrows, qcols, qdst, qscales);
+        double q_scalar = (timer_sec() - qt0) / q_iters;
+
+        qt0 = timer_sec();
+        for (int i = 0; i < q_iters; i++)
+            quantize_per_column_avx512(qsrc, qrows, qcols, qdst, qscales);
+        double q_avx512 = (timer_sec() - qt0) / q_iters;
+
+        printf("  Scalar:  %.3f ms\n", q_scalar * 1000.0);
+        printf("  AVX-512: %.3f ms\n", q_avx512 * 1000.0);
+        printf("  Speedup: %.1fx\n", q_scalar / q_avx512);
+
+        qat_free(qsrc); qat_free(qdst); qat_free(qscales);
     }
 
     /* ---- Summary ---- */
