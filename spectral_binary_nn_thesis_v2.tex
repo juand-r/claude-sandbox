@@ -1,0 +1,1076 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{thmtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ── Page style ────────────────────────────────────────────────────────────
+\onehalfspacing
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textit{\small Spectral Methods for Binary Neural Networks}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Theorem environments ──────────────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Macros ────────────────────────────────────────────────────────────────
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\pmone}{\{-1,+1\}}
+\newcommand{\fhat}{\widehat{f}}
+\newcommand{\what}{\widehat{w}}
+\newcommand{\ghat}{\widehat{g}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\DeclareMathOperator{\WHT}{WHT}
+\DeclareMathOperator{\FWHT}{FWHT}
+\DeclareMathOperator{\RMSNorm}{RMSNorm}
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\bin}{bin}
+
+% ── Placeholder command for future results ────────────────────────────────
+\newcommand{\placeholder}[1]{{\color{gray}\textit{[#1]}}}
+\newcommand{\revision}[1]{#1}  % marks revised/new material; can toggle visibility
+
+% ══════════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Title page ────────────────────────────────────────────────────────────
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+
+{\LARGE\bfseries Spectral Methods for Binary\\[6pt] Neural Networks}\\[18pt]
+{\Large\bfseries Training 1-Bit Language Models\\[4pt] via Boolean Fourier Analysis}
+
+\vspace{2cm}
+
+{\large A Thesis Proposal}
+
+\vspace{1.5cm}
+
+{\large \placeholder{Author Name}}\\[6pt]
+{\large \placeholder{Department and Institution}}
+
+\vspace{1.5cm}
+
+{\large February 2026}
+
+\vspace{1.5cm}
+
+{\color{gray}\textit{Revised Draft --- Incorporating Committee Feedback}}
+
+\end{titlepage}
+
+% ── Abstract ──────────────────────────────────────────────────────────────
+\newpage
+\begin{abstract}
+Recent work on 1-bit large language models (BitNet and its variants) has demonstrated that neural networks with binary or ternary weights can achieve performance competitive with full-precision models. However, all existing approaches rely on full-precision shadow weights during training, floating-point scaling factors, and higher-precision activations---undermining the claim of true 1-bit computation. We propose a spectral lens for binary neural networks, grounded in Boolean Fourier analysis and the Walsh--Hadamard transform. Our key insight is that the combinatorial explosion inherent in searching over $2^n$ binary weight configurations can be tamed by viewing the optimization through the spectral domain, where practical Boolean functions often have sparse, low-degree representations. We develop a framework in which network layers are parameterized by their Walsh--Fourier coefficients, providing a better inductive bias and a principled set of diagnostics. Our primary architecture---the \emph{Spectral Binary Transformer} (SBT)---is built entirely on the row-wise spectral parameterization. The Hadamard-structured approach (\Cref{sec:hadamard-layers}) is included as an alternative/ablation if the row-wise spectral concentration hypothesis fails. We present preliminary theoretical results, including an approximation bound for degree-truncated spectral parameterizations and a formal analysis of normalization propagation in Hadamard-structured networks. We also propose a pilot empirical study of spectral concentration in existing binary weight matrices. This work bridges two communities that have developed largely in isolation: the Boolean function analysis community in theoretical computer science and the quantized neural network community in machine learning.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 1 — INTRODUCTION
+% ══════════════════════════════════════════════════════════════════════════
+\section{Introduction}\label{sec:intro}
+
+\subsection{Motivation}\label{sec:motivation}
+
+The computational and energy costs of large language models have become a central concern in modern artificial intelligence. A single training run for a frontier model can consume megawatt-hours of electricity and require thousands of specialized accelerators \citep{patterson2021carbon}. At inference time, the memory bandwidth required to shuttle 16-bit floating-point weights between memory and compute units is often the primary bottleneck, not arithmetic itself \citep{kim2023squeezellm}. These constraints have motivated intense interest in weight quantization---reducing the precision of model parameters from 16 or 32 bits down to 8, 4, or even fewer bits per weight.
+
+The extreme endpoint of this trajectory is the \emph{1-bit neural network}: a model in which every weight is drawn from the set $\pmone$. Such a network replaces all multiply-accumulate operations with additions and subtractions, eliminates the need for floating-point arithmetic at inference, and compresses the model by a factor of $16\times$ relative to FP16. The potential impact is enormous: 1-bit models could run on commodity CPUs, embedded devices, and edge hardware with minimal power consumption, democratizing access to capable language models.
+
+Yet despite the appeal, no one has achieved a \emph{truly} 1-bit language model. The state of the art---Microsoft Research's BitNet family \citep{wang2023bitnet, ma2024era}---comes close but relies on several full-precision crutches that compromise the purity of the binary paradigm. Understanding why these crutches are needed, and how they might be removed, requires a mathematical framework that the quantization community has largely overlooked: the Fourier analysis of Boolean functions.
+
+
+\subsection{The Precision Leakage Problem}\label{sec:precision-leakage}
+
+We identify three specific ways in which current ``1-bit'' approaches leak precision beyond the binary constraint.
+
+\paragraph{Shadow weights.}
+During training, BitNet maintains full-precision (FP16 or FP32) copies of all weights. The binary weights used in the forward pass are obtained by applying the sign function to these latent continuous weights. Gradients are computed with respect to the latent weights using the straight-through estimator (STE), which approximates the derivative of the sign function as~1. The latent weights are the true learned parameters; the binary weights are merely a projection applied at each forward pass. This means training is fundamentally a continuous optimization problem masquerading as a discrete one.
+We return to this point in the next paragraph: our approach also uses continuous ``shadow'' state during training (in the spectral domain) and does not claim to remove it; our contributions are a different parameterization, the elimination of learned scaling factors, and a principled diagnostic framework.
+
+\paragraph{Scaling factors.}
+Each layer (or sub-layer) in BitNet is equipped with a learned floating-point scaling factor $\alpha$ that multiplies the output of the binary linear transformation. Without these factors, the activations would have magnitudes determined entirely by the dimension of the layer, with no mechanism for the network to modulate signal strength across layers. The scaling factors constitute a significant hidden parameter budget that operates at full precision.
+
+\paragraph{Activation precision.}
+While the weights are binary, the activations flowing between layers are typically quantized to 8~bits (or kept at full precision during training). Since the output of a binary linear layer is an integer in the range $[-n, +n]$ where $n$ is the input dimension, the activations carry $\log_2(2n+1)$ bits of information per element---far more than 1~bit.
+
+We do not claim these design choices are flawed---they are pragmatic and effective. But they leave open the fundamental question: \emph{Is it possible to train a neural network that is purely binary, end to end, without recourse to full-precision arithmetic?} And if so, what mathematical framework would guide such an effort?
+
+
+\subsection{Our Thesis: Boolean Fourier Analysis as a Training Framework}\label{sec:thesis}
+
+We propose that the Fourier analysis of Boolean functions---a mature branch of theoretical computer science with deep connections to combinatorics, learning theory, and harmonic analysis---provides the missing mathematical foundation for truly 1-bit neural networks.
+
+The central observation is this: in the \emph{weight space} of a binary network, we face an unstructured combinatorial search over $2^n$ configurations. But in the \emph{spectral space} (the Walsh--Fourier domain), the same functions admit structured, often sparse representations that can be manipulated with continuous optimization. The Walsh--Hadamard transform---the natural Fourier transform on the Boolean hypercube---provides the bridge between these two views. Its basis functions are themselves $\pm 1$-valued, its computation requires only additions and subtractions, and it satisfies all the algebraic properties (Parseval's identity, convolution theorem) that make classical Fourier methods powerful.
+
+We develop this observation into a concrete research program. We define a neural network architecture---the \emph{Spectral Binary Transformer} (SBT)---whose layers are parameterized in the Walsh--Fourier domain. We describe training algorithms that optimize spectral coefficients continuously and project to valid Boolean functions. We lay out a detailed experimental plan for evaluating this approach, including specific benchmarks, metrics, baselines, and diagnostic tools.
+
+\paragraph{A note on scope and claims.}
+We wish to be precise about what we are and are not claiming. Our training procedure, like BitNet's, maintains continuous parameters (spectral coefficients) that serve as ``shadow'' state during training and are discarded at inference. We do not claim to eliminate the need for continuous optimization during training---this remains an open and likely very hard problem. Rather, our contributions are:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{A better inductive bias:} The spectral parameterization encodes structural knowledge about Boolean functions (degree concentration, Parseval normalization) that raw weight-domain STE does not.
+    \item \textbf{Replacement of learned scaling factors with fixed constants:} The per-layer scaling factor $\alpha$ in BitNet is a learned floating-point parameter that modulates activation variance. In our framework, the corresponding factor is the analytically determined constant $1/\sqrt{d}$ (\Cref{prop:normalization}), which serves the same variance-control role but requires no learning and no floating-point parameter storage at inference.
+    \item \textbf{A principled theoretical framework:} Boolean Fourier analysis provides tools (influence, noise sensitivity, hypercontractivity) for \emph{understanding} binary networks, not just training them.
+\end{enumerate}
+The ultimate goal of \emph{purely binary training} (no continuous parameters even during training) is a long-term aspiration that we identify as a direction for future work but do not promise to solve here.
+
+
+\subsection{Related Work}\label{sec:related}
+
+\subsubsection{Binary and Ternary Neural Networks}
+
+The idea of training neural networks with binary weights dates to the early connectionism literature, but modern interest was reignited by BinaryConnect \citep{courbariaux2015binaryconnect}, which introduced the straight-through estimator (STE) for binary weight training \citep{bengio2013estimating}. Binarized Neural Networks \citep{hubara2016binarized} extended this to both weights and activations, and XNOR-Net \citep{rastegari2016xnor} demonstrated practical ImageNet-scale binary networks. DoReFa-Net \citep{zhou2016dorefa} generalized to low-bit weights, activations, and gradients. Bi-Real Net \citep{liu2018bireal} improved performance with additional residual connections. \citet{helwegen2019latent} challenged the conventional latent-weight view, arguing that binarized optimization dynamics differ fundamentally from their continuous counterparts; \citet{yin2019understanding} provided a theoretical analysis of the STE's convergence properties. The BitNet line of work \citep{wang2023bitnet} scaled binary (and later ternary \citep{ma2024era}) weight training to the Transformer architecture and language modeling, achieving the best results to date. FBI-LLM \citep{ma2024fbi} trains fully binarized LLMs from scratch via autoregressive distillation. All of these methods rely on the STE and full-precision shadow weights.
+
+\subsubsection{Boolean Fourier Analysis}
+
+The Fourier analysis of Boolean functions has been a central tool in theoretical computer science since the foundational work of \citet{kahn1988influence} on the influence of variables. The textbook treatment by \citet{odonnell2014analysis} provides a comprehensive reference. Key results that inform our work include the Linial--Mansour--Nisan theorem \citep{linial1989constant} on the low-degree spectral concentration of $\mathsf{AC}^0$ circuits, the Kushilevitz--Mansour algorithm \citep{kushilevitz1991learning} for learning Fourier-sparse Boolean functions, the Bonami--Beckner hypercontractivity inequality \citep{bonami1970etude, beckner1975inequalities} and its applications to noise sensitivity, and the body of work on the learnability of Boolean function classes via spectral methods \citep{mansour1994learning}.
+
+\subsubsection{Walsh--Hadamard Transform in Neural Networks}
+
+\citet{pan2021fast, pan2022block} introduced Walsh--Hadamard transform layers as replacements for convolutional layers in vision networks, achieving significant parameter savings. Their work demonstrates the computational viability of WHT-based layers but does not address the binary weight constraint or language modeling. On the algorithmic side, \citet{alman2022faster} gives faster algorithms for the Walsh--Hadamard transform over finite fields using lookup tables, which may inform future hardware-aware implementations. The Walsh--Hadamard Neural Operator \citep{cavallazzi2025whno} uses WHT-based spectral processing for solving PDEs with discontinuous coefficients, demonstrating the advantage of Walsh bases for piecewise-constant structure. \citet{raviv2021enhancing} applied Boolean Fourier analysis to neural network robustness, developing ``Fourier stabilization'' of individual neurons.
+
+\subsubsection{Structured Matrices in Deep Learning}
+
+Hadamard matrices and other structured transforms have been used to reduce parameter counts and accelerate computation in neural networks. Notable examples include the Fastfood transform \citep{le2013fastfood} for kernel approximation, the structured spinners of \citet{choromanski2017unreasonable} for random feature methods, butterfly factorizations for learning fast linear transforms \citep{dao2019butterfly}, and the Monarch matrices of \citet{dao2022monarch} which generalize them. Neural networks also exhibit a spectral bias toward low-frequency functions during training in the classical (sinusoidal) Fourier sense \citep{rahaman2019spectral}; while the domain differs, this provides an analogy supporting our hypothesis that trained binary weights concentrate on low-degree Boolean Fourier coefficients. Our work differs from these lines in that we use structured transforms not merely for efficiency but as the \emph{native representation} of binary-valued weight matrices.
+
+
+\subsection{Open Problems and Contributions}\label{sec:contributions}
+
+This thesis addresses the following open problems.
+
+\begin{problem}[Spectral Parameterization]\label{prob:spectral}
+Does parameterizing binary network layers in the Walsh--Fourier domain yield a training landscape that is more amenable to optimization than the discrete weight space, and does it produce a cleaner binary inference artifact (no learned scaling factors)?
+\end{problem}
+
+\begin{problem}[Spectral Sparsity in Practice]\label{prob:sparsity}
+Do the weight matrices learned by practical binary language models exhibit low-degree spectral concentration in the Boolean Fourier sense?
+\end{problem}
+
+\begin{problem}[Multi-Layer Spectral Composition]\label{prob:composition}
+How does the spectral structure of binary weight functions interact with sign activations across multiple layers, and what are the implications for trainability and expressivity?
+\end{problem}
+
+Our contributions toward these problems are:
+\begin{enumerate}[label=(\alph*)]
+    \item A formal framework connecting Boolean Fourier analysis to binary neural network training, with precise claims about what is and is not gained relative to existing approaches (\Cref{sec:thesis}).
+    \item Preliminary theoretical results, including an approximation bound for degree-truncated spectral parameterization and a normalization propagation analysis for Hadamard-structured networks (\Cref{sec:theory}).
+    \item A concrete architecture (SBT) that instantiates this framework, with a detailed design of each module (\Cref{sec:methods}).
+    \item A pilot empirical study protocol for testing the core spectral concentration assumption on existing binary weights (\Cref{sec:pilot}).
+    \item A comprehensive experimental plan including baselines, metrics, and diagnostic procedures (\Cref{sec:experiments}).
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 2 — BACKGROUND
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Mathematical Background}\label{sec:background}
+
+This chapter provides a self-contained treatment of the mathematical tools underlying our approach. We assume familiarity with linear algebra, basic probability, and the Transformer architecture, but develop the Boolean Fourier analysis and Walsh--Hadamard theory from first principles.
+
+
+\subsection{The Boolean Hypercube and Functions Thereon}\label{sec:hypercube}
+
+\begin{definition}
+Let $\Omega_n = \pmone^n$ denote the \emph{Boolean hypercube} of dimension~$n$. We equip $\Omega_n$ with the uniform probability measure, so each vertex $x \in \Omega_n$ has probability $2^{-n}$.
+\end{definition}
+
+A \emph{Boolean function} is a mapping $f \colon \Omega_n \to \pmone$. More generally, we consider \emph{pseudo-Boolean functions} $f \colon \Omega_n \to \R$.
+
+The space of all functions $f \colon \Omega_n \to \R$ forms a $2^n$-dimensional real vector space equipped with the inner product
+\begin{equation}\label{eq:inner-product}
+    \ip{f}{g} = \E_x[f(x)\, g(x)] = 2^{-n} \sum_{x \in \Omega_n} f(x)\, g(x)
+\end{equation}
+and the associated $L^2$ norm $\norm{f}_2 = \sqrt{\ip{f}{f}}$. For Boolean functions, we always have $\norm{f}_2 = 1$.
+
+
+\subsection{Fourier Expansion on the Boolean Hypercube}\label{sec:fourier-expansion}
+
+\begin{definition}
+For each subset $S \subseteq [n] = \{1, 2, \ldots, n\}$, define the \emph{parity function} (or \emph{character})
+\begin{equation}\label{eq:parity}
+    \chi_S(x) = \prod_{i \in S} x_i,
+\end{equation}
+with the convention that $\chi_\emptyset(x) = 1$ for all~$x$.
+\end{definition}
+
+These $2^n$ functions form an orthonormal basis for the space of all functions on $\Omega_n$:
+\begin{equation}\label{eq:orthonormality}
+    \ip{\chi_S}{\chi_T} = \delta_{ST}.
+\end{equation}
+
+Critically, each $\chi_S$ is itself a Boolean function---it takes values in $\pmone$. This is a distinctive feature of the Boolean Fourier basis compared to the classical sinusoidal basis: \emph{the basis elements live in the same $\{\pm 1\}$ alphabet as the functions being analyzed}.
+
+\begin{theorem}[Fourier Expansion]\label{thm:fourier-expansion}
+Every function $f \colon \Omega_n \to \R$ has a unique expansion
+\begin{equation}\label{eq:fourier-expansion}
+    f(x) = \sum_{S \subseteq [n]} \fhat(S)\, \chi_S(x),
+\end{equation}
+where the \emph{Fourier coefficients} are
+\begin{equation}\label{eq:fourier-coeff}
+    \fhat(S) = \ip{f}{\chi_S} = \E_x\!\left[f(x) \prod_{i \in S} x_i\right] = 2^{-n} \sum_{x \in \Omega_n} f(x) \prod_{i \in S} x_i.
+\end{equation}
+\end{theorem}
+
+\begin{definition}
+The cardinality $|S|$ is called the \emph{degree} of the monomial $\chi_S$. We say $f$ has \emph{Fourier degree at most~$d$} if $\fhat(S) = 0$ for all $|S| > d$.
+\end{definition}
+
+
+\subsection{Parseval's Theorem and the Energy Constraint}\label{sec:parseval}
+
+\begin{theorem}[Parseval's Identity]\label{thm:parseval}
+For any $f \colon \Omega_n \to \R$,
+\begin{equation}\label{eq:parseval}
+    \norm{f}_2^2 = \sum_{S \subseteq [n]} \fhat(S)^2.
+\end{equation}
+\end{theorem}
+
+For a Boolean function $f \colon \Omega_n \to \pmone$, we have $\norm{f}_2^2 = 1$, hence:
+\begin{equation}\label{eq:boolean-parseval}
+    \sum_{S \subseteq [n]} \fhat(S)^2 = 1.
+\end{equation}
+
+\begin{remark}\label{rem:scaling}
+This is a fundamental structural constraint: the Fourier coefficients of any Boolean function necessarily lie on the unit sphere in $\R^{2^n}$ (in the $2^n$-dimensional coefficient space, not the $n$-dimensional input space or $d$-dimensional weight space). Two complementary normalization principles allow us to replace BitNet's learned scaling factors with fixed constants:
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Parseval (parameter-level):} $\sum_S \fhat(S)^2 = 1$ constrains the spectral coefficients to unit $L_2$ norm, ensuring the parameterization is inherently calibrated regardless of the specific Boolean function represented.
+    \item \emph{CLT (activation-level):} For \emph{any} binary weight matrix $W \in \pmone^{d \times d}$ with uniform binary input, the pre-activation entries converge to $\mathcal{N}(0,1)$ after dividing by $\sqrt{d}$. For Hadamard-structured layers this scaling is additionally an exact isometry (\Cref{prop:normalization}); for general binary matrices (the spectral approach) it preserves variance in expectation (\Cref{rem:general-binary-norm}). In both cases, the required scaling is a fixed constant known at initialization, not a learned parameter.
+\end{enumerate}
+Together, these yield a normalization scheme where the coefficient energy is structurally bounded and the forward-pass variance is analytically predictable, eliminating the need for the per-layer learned $\alpha$ that BitNet requires.
+\end{remark}
+
+
+\subsection{Spectral Concentration and the LMN Theorem}\label{sec:lmn}
+
+A central theme in Boolean Fourier analysis is that ``simple'' functions have their spectral mass concentrated on low-degree coefficients.
+
+\begin{theorem}[Linial--Mansour--Nisan, 1989]\label{thm:lmn}
+Let $f \colon \pmone^n \to \pmone$ be computable by a Boolean circuit of depth~$D$ and size~$M$. Then for every $k \geq 0$:
+\begin{equation}\label{eq:lmn}
+    \sum_{\substack{S \subseteq [n] \\ |S| > k}} \fhat(S)^2 \;\leq\; 2M \cdot \exp\!\left(-\frac{k^{1/(D-1)}}{2}\right).
+\end{equation}
+\end{theorem}
+
+For bounded-depth circuits ($\mathsf{AC}^0$), the spectral weight is essentially concentrated on degrees up to $(\log M)^c$ for a constant $c$ depending on the depth.
+
+\begin{remark}[Significance and limitations for binary networks]\label{rem:lmn-significance}
+The LMN theorem guarantees spectral concentration for functions with low circuit complexity. We do \emph{not} claim that trained weight matrices necessarily correspond to $\mathsf{AC}^0$ functions---this is an empirical question we address in \Cref{sec:pilot}. However, several lines of evidence suggest spectral concentration may hold more broadly: (i)~trained neural networks exhibit strong implicit regularization toward ``simple'' functions in the sense of low norm or low rank \citep{neyshabur2015norm}---a distinct notion from low Boolean Fourier degree, but one that, for LTFs, implies bounded total influence and hence bounded spectral tails (see the Evidence paragraph in \Cref{sec:conjectures}); (ii)~the functions that are \emph{useful} for language modeling (capturing statistical patterns in text) are unlikely to resemble random Boolean functions, which have flat spectra; (iii)~linear threshold functions, which are the building blocks of binary networks, are known to be spectrally concentrated (\Cref{sec:sign-fourier}). The pilot study in \Cref{sec:pilot} is designed to test this assumption directly.
+\end{remark}
+
+
+\subsection{Influence, Noise Sensitivity, and Hypercontractivity}\label{sec:influence}
+
+\subsubsection{Influence of Variables}
+
+\begin{definition}\label{def:influence}
+The \emph{influence} of variable~$i$ on a Boolean function~$f$ is
+\begin{equation}\label{eq:influence}
+    \Inf_i[f] = \Prob[f(x) \neq f(x^{\oplus i})] = \sum_{S \ni i} \fhat(S)^2,
+\end{equation}
+where $x^{\oplus i}$ denotes $x$ with the $i$-th coordinate flipped. The \emph{total influence} is
+\begin{equation}\label{eq:total-influence}
+    \mathbf{I}[f] = \sum_{i=1}^{n} \Inf_i[f] = \sum_{S \subseteq [n]} |S| \cdot \fhat(S)^2.
+\end{equation}
+\end{definition}
+
+In the context of binary neural networks, the total influence governs gradient information flow: a layer whose Boolean function has low total influence is relatively insensitive to input perturbations, aiding stability but potentially impeding learning.
+
+\subsubsection{Noise Sensitivity and Stability}
+
+\begin{definition}\label{def:noise-stability}
+For $\rho \in [0,1]$, the \emph{noise stability} of $f$ at correlation~$\rho$ is
+\begin{equation}\label{eq:noise-stability}
+    \Stab_\rho[f] = \sum_{S \subseteq [n]} \rho^{|S|} \fhat(S)^2.
+\end{equation}
+\end{definition}
+
+For our setting, noise sensitivity characterizes how errors in the binary weights propagate through the network. A layer with noise-stable Boolean functions will be robust to occasional bit flips in its weight matrix.
+
+\subsubsection{The Bonami--Beckner Inequality}
+
+\begin{theorem}[Bonami--Beckner Hypercontractivity]\label{thm:bonami-beckner}
+For $f \colon \Omega_n \to \R$ and $1 \leq p \leq q$ with $\rho \leq \sqrt{(p-1)/(q-1)}$:
+\begin{equation}\label{eq:bonami-beckner}
+    \norm{T_\rho f}_q \leq \norm{f}_p,
+\end{equation}
+where $T_\rho$ is the Bonami--Beckner noise operator $T_\rho f(x) = \sum_{S} \rho^{|S|} \fhat(S)\, \chi_S(x)$.
+\end{theorem}
+
+A direct corollary is the \emph{level-$k$ inequality}: for Boolean $f$,
+\begin{equation}\label{eq:level-k}
+    \sum_{|S|=k} \fhat(S)^2 \leq \left(\frac{e \cdot \mathbf{I}[f]}{k}\right)^k.
+\end{equation}
+This bounds the spectral weight at any fixed degree in terms of the total influence, providing a quantitative link between sensitivity and spectral structure. We use this inequality directly in our theoretical results (\Cref{sec:theory}).
+
+
+\subsection{The Walsh--Hadamard Transform}\label{sec:wht}
+
+\begin{definition}\label{def:hadamard}
+The Hadamard matrix of order $2^n$ is defined recursively:
+\begin{equation}\label{eq:hadamard}
+    H_1 = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad H_n = H_1 \otimes H_{n-1},
+\end{equation}
+where $\otimes$ denotes the Kronecker product.
+\end{definition}
+
+The matrix $H_n$ is $2^n \times 2^n$, real, symmetric, orthogonal up to scaling ($H_n H_n^\top = 2^n I$), and every entry is $\pm 1$.
+
+\paragraph{Key properties.}
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Self-inverse (up to scaling).} $H_n^2 = 2^n I$.
+    \item \textbf{No multiplications.} For binary or integer inputs, the FWHT computes $H_n v$ using only additions and subtractions. (During training, spectral coefficients are continuous, so the inverse transform uses real-valued scalar multiplication, but the forward transform at inference is multiplication-free.)
+    \item \textbf{Convolution theorem.} Dyadic convolution in the spatial domain corresponds to pointwise multiplication in the WHT domain.
+    \item \textbf{Inherent normalization.} For a Boolean function $f$ represented as a vector in $\pmone^{2^n}$, the WHT coefficients satisfy $\sum \fhat(S)^2 = 1$ (normalized convention).
+\end{enumerate}
+
+
+\subsection{The Sign Activation in the Fourier Domain}\label{sec:sign-fourier}
+
+The sign function $\sgn \colon \R \to \pmone$ is the natural activation for a binary network. When applied to a weighted sum of binary inputs, $\sgn(\sum_i w_i x_i)$ computes a \emph{linear threshold function} (LTF).
+
+\begin{theorem}[Chow's Theorem; see {\citet[Chapter~5]{odonnell2014analysis}}]\label{thm:chow}
+A linear threshold function is uniquely determined among all linear threshold functions by its degree-0 and degree-1 Fourier coefficients (the ``Chow parameters'').
+\end{theorem}
+
+Beyond the Chow characterization, LTFs have bounded noise sensitivity \citep{harsha2014bounding}, which is important for the multi-layer analysis in \Cref{sec:multi-layer-background}.
+
+
+\subsection{Multi-Layer Spectral Composition}\label{sec:multi-layer-background}
+
+A deep binary network computes a composition of the form $f_L \circ \sigma \circ f_{L-1} \circ \sigma \circ \cdots \circ \sigma \circ f_1$, where each $f_\ell$ is a binary linear map and $\sigma = \sgn$ is the sign activation. Understanding the spectral properties of this composition is essential for our framework.
+
+\paragraph{Composition identity.}
+When $f$ and $g$ are composed as $h(x_1,\ldots,x_{nm}) = g(f(x^{(1)}),\ldots,f(x^{(m)}))$ with disjoint blocks, a standard identity (cf.\ {\citet[Chapter~9]{odonnell2014analysis}}) gives
+\[
+    \Stab_\rho[h] = \sum_{T \subseteq [m]} \ghat(T)^2 \bigl(\Stab_\rho[f]\bigr)^{|T|} = \Stab_{\Stab_\rho[f]}[g].
+\]
+Whether this implies contraction (i.e., decreasing stability with depth) depends on additional assumptions about balance and non-degeneracy of the inner functions. We treat the depth-wise evolution of noise stability as an empirical question studied in \Cref{sec:experiments}, rather than asserting a blanket contraction inequality.
+
+\paragraph{Implications for trainability.}
+If composing layers causes noise stability to decay, this is the spectral manifestation of the gradient vanishing problem. Functions that maintain high noise stability across compositions---those with strong low-degree spectral concentration---are the functions most likely to remain trainable in deep binary networks.
+
+
+\subsection{Group-Theoretic Perspective}\label{sec:group-theory}
+
+The Boolean hypercube $\Omega_n = \pmone^n$ is isomorphic to the group $\Z_2^n$ under coordinatewise multiplication. The characters of this group are exactly the parity functions $\chi_S$, and the Fourier expansion on $\Omega_n$ is a special case of Fourier analysis on finite abelian groups.
+
+\begin{center}
+\begin{tabular}{@{} l l l @{}}
+\toprule
+\textbf{Classical ($\R/\Z$)} & \textbf{Boolean ($\Z_2^n$)} & \textbf{Role} \\
+\midrule
+$e^{2\pi i k x}$ & $\chi_S(x) = \prod_{i \in S} x_i$ & Basis functions \\
+DFT / FFT & WHT / FWHT & Fast transform \\
+$\sum |\hat{f}(k)|^2 = \|f\|_2^2$ & $\sum \fhat(S)^2 = \|f\|_2^2$ & Parseval \\
+$\hat{f \ast g} = \hat{f} \cdot \hat{g}$ & $\widehat{f \ast g} = \hat{f} \cdot \hat{g}$ & Convolution thm. \\
+Complex-valued & $\pm 1$-valued & Basis alphabet \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Connection to Reed--Muller codes.}
+There is a deep link between the Walsh--Hadamard basis and Reed--Muller codes. The $r$-th order Reed--Muller code $\text{RM}(r, n)$ consists of the evaluation vectors of all multilinear polynomials of degree $\leq r$ over $\text{GF}(2)$, which correspond exactly to the $\pm 1$-valued functions whose Fourier support lies in $\{S : |S| \leq r\}$. Our degree-$k$ spectral parameterization optimizes within this subspace before the sign projection. However, the sign of a degree-$k$ polynomial is \emph{not} generally a degree-$k$ polynomial---$\sgn(f^{\leq k})$ can have Fourier support up to degree $n$---so the output of the sign projection does not lie in $\text{RM}(k, n)$.
+
+The connection is nonetheless valuable in three ways:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Minimum distance.} $\text{RM}(r, n)$ has minimum distance $2^{n-r}$. For our setting with $r = k$ and $n = \log_2 d$, this means any two distinct degree-$\leq k$ codewords differ in at least $d / 2^k$ positions. This provides a separation guarantee: if the spectral training converges to two different coefficient vectors, the corresponding binarized weights will differ substantially. At $k = 3$ and $d = 1024$, the minimum distance is 128 positions.
+    \item \textbf{Decoding perspective.} The sign projection $\sgn(f^{\leq k})$ can be viewed as a form of ``threshold decoding'' from the continuous relaxation space to $\pmone^d$. Classical Reed--Muller decoding algorithms (e.g., Reed's majority-logic decoder) provide alternative projection strategies that are guaranteed to recover the correct codeword when the noise level is below $2^{n-r-1}$. Exploring whether such decoders outperform the simple sign projection is a direction for future work.
+    \item \textbf{List decoding.} When the truncated approximation $f^{\leq k}$ is far from any single codeword, list-decoding results for Reed--Muller codes guarantee the existence of a small list of nearby codewords. This could inform a beam-search variant of the sign projection that explores multiple binarizations.
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 3 — THEORETICAL CONTRIBUTIONS
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Theoretical Contributions}\label{sec:theory}
+
+This section presents our new theoretical results. These range from formal theorems with complete proofs to precisely stated conjectures with supporting evidence. We distinguish clearly between the two.
+
+\subsection{Approximation by Degree-Truncated Spectral Parameterization}\label{sec:approx-bound}
+
+Our spectral parameterization represents each row of a weight matrix using only Fourier coefficients up to degree~$k$. The following result, which applies standard Boolean Fourier techniques to the truncation setting, quantifies the error introduced.
+
+\begin{proposition}[Degree-$k$ Truncation Misclassification Bound]\label{thm:approx-bound}
+Let $f \colon \pmone^n \to \pmone$ be a Boolean function with total influence $\mathbf{I}[f]$. Define the degree-$k$ truncation $f^{\leq k}(x) = \sum_{|S| \leq k} \fhat(S)\, \chi_S(x)$, and let $\tilde{f} = \sgn(f^{\leq k})$.\footnote{We adopt the convention $\sgn(0) = +1$; for Lebesgue-typical continuous coefficient vectors, no input maps to exactly zero.} Then:
+\begin{equation}\label{eq:approx-bound}
+    \Prob_x[\tilde{f}(x) \neq f(x)] \leq \sum_{|S| > k} \fhat(S)^2.
+\end{equation}
+If additionally $\frac{e\,\mathbf{I}[f]}{k+1} < 1$, then by the level-$k$ inequality (\Cref{eq:level-k}) summed over degrees $> k$:
+\begin{equation}\label{eq:approx-bound-geometric}
+    \sum_{|S| > k} \fhat(S)^2 \leq \frac{\left(\frac{e\,\mathbf{I}[f]}{k+1}\right)^{k+1}}{1 - \frac{e\,\mathbf{I}[f]}{k+1}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For \eqref{eq:approx-bound}: $\tilde{f}(x) \neq f(x)$ implies $f(x) \cdot f^{\leq k}(x) \leq 0$. Since $f(x)^2 = 1$, we have $f(x) \cdot f^{\leq k}(x) = 1 - f(x) \cdot f^{>k}(x)$, where $f^{>k} = f - f^{\leq k}$. By Markov's inequality and Parseval:
+\[
+\Prob[\tilde{f} \neq f] \leq \Prob[|f^{>k}(x)| \geq 1] \leq \E[(f^{>k})^2] = \sum_{|S|>k} \fhat(S)^2.
+\]
+For \eqref{eq:approx-bound-geometric}, apply the level-$j$ inequality for each $j > k$ and sum:
+\[
+\sum_{|S|>k} \fhat(S)^2 = \sum_{j=k+1}^{n} \sum_{|S|=j} \fhat(S)^2 \leq \sum_{j=k+1}^{n} \left(\frac{e \cdot \mathbf{I}[f]}{j}\right)^j \leq \sum_{j=k+1}^{\infty} \left(\frac{e \cdot \mathbf{I}[f]}{k+1}\right)^j.
+\]
+When $r \coloneqq \frac{e\,\mathbf{I}[f]}{k+1} < 1$, this geometric series sums to $\frac{r^{k+1}}{1-r}$.
+\end{proof}
+
+\begin{remark}[Vacuity in the target regime]\label{rem:vacuity}
+We stress that the \emph{first} bound \eqref{eq:approx-bound}---the Markov/Parseval tail $\Prob[\tilde f \neq f] \leq \sum_{|S|>k}\fhat(S)^2$---is always valid and directly useful: it says the misclassification rate is exactly the spectral energy above degree~$k$, which is the quantity we measure empirically. What is vacuous in our regime is the \emph{geometric enhancement} \eqref{eq:approx-bound-geometric}, which attempts to bound that tail energy using the total influence.
+
+In our setting, each row $w_i$ is a Boolean function on $n = \log_2 d$ variables (the column-index bits), so its total influence satisfies $\mathbf{I}[f] = \sum_{i=1}^{n} \Inf_i[f] \leq n$ (since each variable's influence is at most~1). For a ``typical'' Boolean function on $n$ bits---one whose spectral mass follows the binomial distribution $\operatorname{Bin}(n, 1/2)$---the expected total influence is $\E[\mathbf{I}[f]] = n/2$. At $n = 10$, this gives $\mathbf{I}[f] \approx 5$ and $e \cdot 5 \approx 13.6$; the geometric bound would require $k + 1 > 13.6$, i.e., $k \geq 14$, which already exceeds the maximum degree $n = 10$. Even in the most favorable case of a dictatorship (a function depending on a single variable, $\mathbf{I}[f] = 1$), the bound requires $k \geq 2$ just to activate, providing no useful guarantee at our target truncation degree of $k = 3$.
+
+We explicitly acknowledge that the level-$k$ inequality machinery provides essentially no theoretical guarantee in the small-$n$ regime of interest. This is not a deficiency of our framework but a known limitation of these combinatorial tools at small scale. The limitation fundamentally motivates our empirical pilot study (\Cref{sec:pilot}): if spectral concentration holds at $n = 10$, it must be driven by learned structure beyond what worst-case influence bounds capture.
+
+\emph{Note on two different influence quantities.} The total influence discussed here ($\mathbf{I}[f] \leq n = 10$) is for the row $w_i$ viewed as a Boolean function on $n = \log_2 d$ column-index bits. This is distinct from the LTF influence $\mathbf{I}[\sgn(w^\top x)] \approx \sqrt{2d/\pi} \approx 25.5$ computed in \Cref{sec:target}, which treats $\sgn(w^\top x)$ as a function of $d = 1024$ activation variables. These are different functions on different domains; the former governs the spectral truncation bound here, while the latter governs the information bottleneck analysis.
+\end{remark}
+
+
+\subsection{Normalization Propagation in Hadamard Networks}\label{sec:norm-propagation}
+
+A central concern (\Cref{sec:precision-leakage}) is managing activation variance without learned scaling factors. In BitNet, the learned $\alpha$ per layer serves exactly this role: it rescales the output of a binary linear layer (whose raw magnitude is $O(\sqrt{d})$) to match the expected input scale of the next layer. We show that for Hadamard-structured layers, the required scaling is a fixed, analytically known constant.
+
+\begin{proposition}[Normalization through Hadamard layers]\label{prop:normalization}
+Consider a single Hadamard-structured layer: $y = \frac{1}{\sqrt{d}} H_n \cdot \operatorname{diag}(s) \cdot x$ where $s \in \pmone^d$ and $x \in \R^d$. Then:
+\begin{enumerate}[label=(\roman*)]
+    \item $\norm{y}_2 = \norm{x}_2$ (isometry).
+    \item If $x \in \pmone^d$, each entry $y_j$ is an integer in $\{-d, -d+2, \ldots, d-2, d\}$ divided by $\sqrt{d}$, hence $|y_j| \leq \sqrt{d}$.
+    \item For $x$ uniformly random in $\pmone^d$, by the central limit theorem as $d \to \infty$, each $y_j$ converges in distribution to $\mathcal{N}(0, 1)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) follows from the orthogonality of $H_n$ and the fact that $\operatorname{diag}(s)$ preserves norms. (ii) follows because $H_n \cdot (s \odot x)$ has integer entries (being a sum of $d$ terms each $\pm 1$). (iii) follows from the Berry--Ess\'een theorem applied to the sum $y_j = d^{-1/2} \sum_i H_{n,ji} s_i x_i$, where the summands are independent $\pm 1$ random variables.
+\end{proof}
+
+\begin{remark}[Multi-layer normalization]\label{rem:multi-layer}
+For a sequence of $L$ Hadamard-structured layers with sign activations between them, each layer divides by the fixed constant $\sqrt{d}$ (as in \Cref{prop:normalization}). These divisors are known at initialization; in implementation they can be handled via precomputed fixed-point scaling without learned parameters or runtime floating-point arithmetic.
+
+However, after the sign activation, the output is back in $\pmone^d$ with $\norm{y}_2^2 = d$, preventing accumulation. The signal flow through one complete layer (Hadamard multiply $\to$ sign activate) maps $\pmone^d \to \pmone^d$, and the magnitude of the pre-activation values is $O(\sqrt{d})$ with high probability.
+\end{remark}
+
+\begin{remark}[On the accumulation concern]
+The reviewer raised the concern that normalization factors might accumulate exponentially across layers. \Cref{rem:multi-layer} notes this does not happen: the discrete nature of the sign activation prevents unbounded accumulation. This is a genuine structural advantage of the binary activation regime over networks with unbounded activations. In the regime where activations are real-valued (our easier experimental setting, \Cref{sec:target} option~(a)), accumulation is a real concern, and we propose handling it by inserting an explicit $1/\sqrt{d}$ normalization (a fixed constant, not learned) after each layer.
+\end{remark}
+
+\begin{remark}[Normalization for general binary matrices]\label{rem:general-binary-norm}
+The CLT result (\Cref{prop:normalization}(iii)) extends to \emph{any} fixed binary weight matrix $W \in \pmone^{d \times d}$, not only Hadamard-structured ones. For uniform $x \in \pmone^d$, each entry of $d^{-1/2} Wx$ is
+\[
+    (d^{-1/2} Wx)_j = d^{-1/2} \sum_{i=1}^{d} w_{ji}\, x_i,
+\]
+a normalized sum of $d$ independent $\pm 1$ random variables (since $w_{ji} x_i \in \pmone$ when $w_{ji} \in \pmone$ and $x_i$ are iid uniform $\pmone$). By Berry--Ess\'een, this converges to $\mathcal{N}(0,1)$ as $d \to \infty$, regardless of the specific row $w_j \in \pmone^d$. Moreover, the variance-preservation identity
+\[
+    \E\bigl[\|d^{-1/2}\, Wx\|_2^2\bigr] = d^{-1} \sum_{j=1}^{d} \sum_{i=1}^{d} w_{ji}^2\, \E[x_i^2] = d^{-1} \cdot d \cdot d = d = \E\bigl[\|x\|_2^2\bigr]
+\]
+holds for every $W \in \pmone^{d \times d}$, since $w_{ji}^2 = 1$.
+
+The distinction from the Hadamard case is that property~(i) of \Cref{prop:normalization}---the \emph{isometry} $\|y\|_2 = \|x\|_2$---is specific to orthogonal matrices. For a generic $W \in \pmone^{d \times d}$, $W^\top W \neq d\,I$, so $\|Wx\|_2$ depends on the alignment of $x$ with the singular vectors of $W$ and may deviate from $\sqrt{d}\,\|x\|_2$ for individual inputs, even though it equals $\sqrt{d}\,\|x\|_2$ in expectation over uniform binary~$x$.
+
+In summary, the $1/\sqrt{d}$ normalization is a variance-preserving scaling for \emph{all} binary weight matrices, but an exact isometry only for (scaled) orthogonal ones such as Hadamard.
+\end{remark}
+
+
+\subsection{Formal Conjectures}\label{sec:conjectures}
+
+We state two conjectures that guide the experimental program and which we aim to resolve (or refine) during the thesis.
+
+\begin{conjecture}[Spectral concentration of trained binary weights]\label{conj:concentration}
+Let $W \in \pmone^{d \times d}$ be a weight matrix from a binary neural network trained to non-trivial performance on a natural language modeling task. For each row $w_i$ of $W$, viewed as a Boolean function on $n = \log_2 d$ variables via the binary column-index encoding, the effective spectral degree $k^*_i$ (the minimum degree $k$ such that $\sum_{|S| \leq k} \what_i(S)^2 \geq 0.95$) satisfies $k^*_i \ll n/2$ with high probability over rows. Specifically, at least $90\%$ of rows satisfy
+\begin{equation}
+    k^*_i \leq 3 \quad (\text{for } n=10).
+\end{equation}
+By comparison, a random Boolean function has its $95\%$-energy threshold at $k^* \approx n/2 + O(\sqrt{n})$.
+\end{conjecture}
+
+\paragraph{Evidence.} (i)~LTFs, which are the building blocks of binary networks, have strong low-degree spectral characterizations (e.g., unique determination by Chow parameters) and bounded noise sensitivity \citep{harsha2014bounding}. (ii)~The implicit bias literature suggests gradient-trained networks converge toward ``simple'' functions in the sense of low norm or low rank \citep{neyshabur2015norm}. We note explicitly that this notion of simplicity---defined in continuous parameter space---does not directly imply low Fourier degree in the Boolean sense. However, there is an indirect connection: for an LTF $\sgn(w^\top x)$ with $w \in \R^d$, Berry--Ess\'een arguments give $\mathbf{I}[\sgn(w^\top x)] \approx \sqrt{2/\pi}\cdot \|w\|_1 / \|w\|_2$, so low-norm weight vectors yield bounded-influence LTFs, which in turn have bounded spectral tails by the level-$k$ inequality (\Cref{eq:level-k}). Whether this chain of implications holds for trained networks is precisely the empirical question our pilot study addresses. (iii)~Random Boolean functions have flat spectra, so any concentration observed in trained weights is evidence of learned structure. We test this conjecture directly in \Cref{sec:pilot}.
+
+\begin{conjecture}[Spectral parameterization improves optimization]\label{conj:optimization}
+For training binary neural networks on language modeling tasks, spectral parameterization at degree $k = O(\log d)$ achieves lower final loss than weight-domain STE with the same training budget, provided the degree penalty (\Cref{sec:regularization}) is used.
+\end{conjecture}
+
+\paragraph{Gradient conditioning analysis.}
+We state explicitly a fact that constrains the conjecture: the Walsh--Hadamard basis matrix $\Phi$ is orthogonal (up to the known scaling $2^{-n/2}$).
+Consequently, the Hessian of the loss with respect to spectral coefficients $\what$ is related to the Hessian with respect to spatial weights $w$ by
+\[
+    \nabla^2_{\what}\mathcal{L} = \Phi \,\nabla^2_w \mathcal{L}\, \Phi^\top,
+\]
+which is a similarity transform that \emph{preserves the condition number}: $\kappa(\nabla^2_{\what}\mathcal{L}) = \kappa(\nabla^2_w \mathcal{L})$.
+Without further structure, the spectral and weight-domain landscapes are isometric and no optimization advantage should be expected from the change of basis alone.
+
+The advantage, if any, must therefore arise entirely from two non-trivial additions:
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Degree truncation} restricts the parameterization to $\binom{n}{\leq k}$ coefficients, projecting the optimization onto a $\binom{n}{\leq k}$-dimensional subspace. The effective Hessian becomes the $\binom{n}{\leq k} \times \binom{n}{\leq k}$ principal submatrix of the full spectral Hessian, which generically has a \emph{better} condition number than the full $2^n \times 2^n$ Hessian. The intuition is that high-degree spectral directions, which correspond to fine-grained combinatorial structure, tend to have small curvature in the loss landscape---they are the flat, noisy directions that slow convergence. We do not assert this universally; whether it holds for the landscapes encountered in binary language model training is an empirical question tested directly in ablation A1 (varying~$k$). At $k = 3$ and $d = 1024$, this reduces the optimization from 1024 to 176 dimensions per row, a ${\approx}\,6\times$ compression that concentrates gradient signal on the structurally important subspace.
+    \item The \emph{degree penalty} (\Cref{sec:regularization}) adds curvature $\lambda |S|^p$ to each spectral direction, lifting the small eigenvalues of the Hessian along high-degree coordinates. This explicitly improves the condition number without changing the search space dimension.
+\end{enumerate}
+The conjecture is that the combination of a smooth continuous landscape (Fourier coefficients) with these sparsity-inducing structures yields better optimization than the discontinuous weight-domain STE, where no analogous low-complexity subspace is available. We test this in ablation A1 (varying $k$) and A4 (varying regularization strength).
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 4 — SETTING AND PROPOSED METHODS
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Architecture and Methods}\label{sec:methods}
+
+The experimental plan assumes the pilot study (\Cref{sec:pilot}) is completed first; its outcomes determine whether the spectral parameterization or Hadamard-structured layers are prioritized.
+
+\subsection{Target Architecture: Proof-of-Concept Scope}\label{sec:target}
+
+We consider a decoder-only Transformer with embedding dimension $d \in \{256, 512, 1024\}$ (powers of~2 for efficient WHT), $h \in \{4, 8\}$ attention heads, $L \in \{4, 8, 12\}$ layers, and context length $T \in \{512, 1024\}$ tokens. We call this the \emph{Spectral Binary Transformer} (SBT).
+
+\paragraph{Binary constraint.}
+We distinguish two senses of ``binary'' in this proposal, corresponding to the two weight construction approaches developed below:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Elementwise binary weights} (spectral approach, Modules~1--2): each entry of the deployed weight matrix is in $\pmone$, obtained by sign-projecting the spectrally synthesized continuous values. The matrix-vector product $Wx$ for $W \in \pmone^{d \times d}$ reduces to additions and subtractions.
+    \item \textbf{Binary-factored structured weights} (Hadamard approach, \Cref{sec:hadamard-layers}): the weight matrix is expressed as a product of Hadamard--sign--permutation stages (\Cref{eq:butterfly}), whose learnable components---sign vectors $s_\ell \in \pmone^d$ and permutation matrices $P_\ell$---are discrete. The effective dense matrix is \emph{not} elementwise $\pm 1$ (see \Cref{sec:hadamard-layers}); however, the factored form is never materialized at inference. Each stage is applied sequentially using $O(d \log d)$ additions, sign flips, and index permutations, with fixed $d^{-1/2}$ normalization per stage.
+\end{enumerate}
+Both approaches eliminate BitNet's learned per-layer floating-point scaling factor~$\alpha$. For Hadamard-structured layers, the replacement $1/\sqrt{d}$ is derived as an exact isometry (\Cref{prop:normalization}); for general binary weight matrices (the spectral approach), the same $1/\sqrt{d}$ scaling preserves activation variance in expectation, though without the isometry guarantee (\Cref{rem:general-binary-norm}). During training, both approaches use continuous auxiliary parameters (spectral coefficients or Sinkhorn relaxations) that are discretized or discarded for inference. Unless otherwise stated, claims in this proposal apply to regime~(a); where the Hadamard approach differs, we note this explicitly.
+
+\paragraph{Residual connections.}
+In a standard Transformer, residual connections ($x_{\ell+1} = x_\ell + \text{SubLayer}(x_\ell)$) are essential for training beyond a few layers. However, if both the sub-layer output and the residual are binary, their sum takes values in $\{-2, 0, +2\}^d$, breaking the $\pmone$ invariant. Applying $\sgn$ to re-binarize discards the ternary structure (in particular, $\sgn(0)$ is undefined or arbitrary), losing information rather than preserving it.
+
+We resolve this by maintaining the main residual stream in higher precision (INT8 or FP16). Concretely, the signal flow through one Transformer sub-layer is:
+\[
+    x_{\ell+1} = x_\ell + W_\ell \cdot \sgn(x_\ell),
+\]
+where $x_\ell \in \R^d$ is the (higher-precision) residual, $\sgn(x_\ell) \in \pmone^d$ is the binarized input to the weight matrix, $W_\ell \in \pmone^{d \times d}$ is the binary weight matrix, and the matrix-vector product $W_\ell \cdot \sgn(x_\ell)$ is computed via additions and subtractions only ($O(d^2)$ integer operations). The result is an integer vector in $[-d, +d]^d$ which is added back to the higher-precision residual. This follows the standard practice in 1-bit LLMs: BitNet \citep{wang2023bitnet} similarly maintains 8-bit activations and applies quantization only at the inputs to each linear layer.
+
+This design means that in Regime~(b) (binary activations), ``binary'' refers specifically to the inputs of the weight matrices, not to the residual stream itself. The computational savings come from the $O(d^2)$ binary matmul, which dominates the cost; the $O(d)$ higher-precision residual addition is negligible by comparison.
+
+\paragraph{Activation regimes.}
+We explore two regimes:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Real activations} (easier): activations are real-valued, with $1/\sqrt{d}$ fixed normalization after each binary linear layer. This isolates the effect of binary weights.
+    \item \textbf{Binary activations} (harder): activations are binarized via $\sgn$ at each layer. This yields the cleanest binary inference pipeline but introduces the multi-layer composition challenges of \Cref{sec:multi-layer-background}. It also creates a severe \emph{information bottleneck}: the sign function discards all magnitude information, compressing each pre-activation from $O(\log d)$ bits down to 1~bit per element. Whether complex syntactic dependencies can survive repeated passage through this bottleneck without continuous scaling is an open question that we monitor via the layer-wise spectral diagnostics and test directly in ablation A5. We treat Regime~(b) as a secondary target; if binary activations everywhere lead to training instability or severe perplexity degradation (e.g., gradient collapse or perplexity explosion), we retain Regime~(a) as the primary configuration.
+\end{enumerate}
+
+\paragraph{Mutual information analysis of the sign bottleneck.}
+We quantify the information constraint imposed by binary activations.
+For a single layer with input $x \in \pmone^d$ (uniform) and fixed binary weight matrix $W \in \pmone^{d \times d}$, the output $y = \sgn(Wx) \in \pmone^d$ is deterministic given~$x$, so the mutual information is
+\begin{equation}\label{eq:sign-mi}
+  I(x;\, \sgn(Wx)) = H(\sgn(Wx)) \leq d \text{ bits}.
+\end{equation}
+By contrast, an FP16 layer's output occupies a representation space of $(2^{16})^d$ distinguishable states---a gap of $16d$ versus $d$ in the log-cardinality of the output space. We stress that this is a \emph{representation capacity} comparison, not a mutual information bound: for a deterministic layer with discrete input, the actual MI satisfies $I(x;\, f(x)) = H(f(x)) \leq H(x)$, which is at most $d$ bits for binary input regardless of output precision. The representation gap becomes operationally significant across multiple layers, where the per-layer output entropy constrains the data processing inequality chain (see below).
+
+This bound is not necessarily tight for a specific~$W$: if rows of $W$ induce correlated output bits, $H(\sgn(Wx))$ may be significantly less than~$d$.
+For generic~$W$, however, each output bit $\sgn(w_i^\top x)$ is balanced (by symmetry of the uniform distribution on $\pmone^d$) and distinct rows produce approximately independent outputs (since random binary rows are nearly orthogonal for large~$d$), yielding $H(\sgn(Wx)) \approx d$.
+
+The comparison to task requirements is instructive.
+Next-token prediction over a vocabulary of size $V$ requires at most $\log_2 V \approx 16$ bits per position.
+At $d = 1024$, the binary layer provides ${\approx}\,64\times$ this minimum, suggesting adequate per-layer capacity for a single prediction.
+The binding constraint is \emph{multi-layer information decay}: by the data processing inequality,
+\begin{equation}\label{eq:dpi-layers}
+  I(x_0;\, y_L) \leq I(x_0;\, y_\ell) \leq d \quad \text{for all } 0 \leq \ell \leq L,
+\end{equation}
+where $x_0$ is the input embedding and $y_\ell = \sgn(W_\ell y_{\ell-1})$ is the activation at layer~$\ell$.
+Information about the input can only decrease with depth, and each sign activation is an irreversible compression step.
+In a real-valued (FP16) network, each intermediate representation admits up to $16d$ bits of entropy (the log-cardinality of the FP16 output space per layer), providing substantially more headroom for preserving input information across layer compositions. While this upper bound is rarely saturated in practice, the qualitative gap---a $d$-bit entropy ceiling for binary activations versus a $16d$-bit ceiling for FP16---underscores the severity of the sign bottleneck in deep binary networks.
+
+The Boolean Fourier perspective provides additional insight.
+Each output bit $y_i = \sgn(w_i^\top x)$ is a balanced LTF whose total influence is, by Berry--Ess\'een,
+\begin{equation}\label{eq:ltf-influence}
+  \mathbf{I}[\sgn(w^\top x)] \;\approx\; \sqrt{2/\pi}\;\cdot\; \frac{\|w\|_1}{\|w\|_2}.
+\end{equation}
+For binary $w \in \pmone^d$, $\|w\|_1 = d$ and $\|w\|_2 = \sqrt{d}$, giving $\mathbf{I}[f] \approx \sqrt{2d/\pi}$.
+At $d = 1024$ this yields $\mathbf{I}[f] \approx 25.5$: despite nominally depending on all $d$ inputs, each output bit has an effective sensitivity scaling as $O(\sqrt{d})$.
+Low-influence functions transmit information selectively, preserving low-degree structure and discarding high-frequency detail---exactly the filtering behavior predicted by the spectral concentration hypothesis (\Cref{conj:concentration}).
+
+We monitor two diagnostics during training: (i)~the empirical output entropy $H(\sgn(W_\ell y_{\ell-1}))$, estimated over minibatches, and (ii)~the per-row total influence $\mathbf{I}[f_i]$, computed from spectral coefficients.
+If $H(\sgn(Wx))$ at any layer drops below $\log_2 V$, the bottleneck is binding and regime~(b) is information-limited for the given model dimension~$d$.
+
+\paragraph{Input encoding.}
+We consider learned embeddings (initially full precision) and fixed \emph{Hadamard embeddings} in which each token is assigned a row of a Hadamard matrix.
+
+\paragraph{Embedding and output projection.}
+The token embedding table is a $V \times d$ matrix, where $V$ is the vocabulary size (typically $V \approx 50{,}000$).
+For a standard Transformer at $d = 1024$, this amounts to ${\approx}\,50$M parameters---a significant fraction of a small model's total parameter budget.
+Similarly, the output projection from hidden dimension to vocabulary logits is a $d \times V$ matrix (often tied with the embedding).
+These are substantial parameter stores that must be explicitly addressed in a ``purely binary'' model.
+We explore three strategies in ablation A6 (\Cref{sec:ablations}):
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Learned binary embeddings.} Each token's embedding is a vector in $\pmone^d$, trained via STE or spectral parameterization. This forces tokens to be represented as vertices of the hypercube, severely limiting the capacity for fine-grained semantic similarity.
+  \item \textbf{Fixed Hadamard embeddings.} Assign each token a row of a Hadamard matrix (or a block-diagonal Hadamard matrix when $V > d$). This provides orthogonal, analytically normalized embeddings with no learned parameters, but sacrifices the ability to learn task-specific token representations.
+  \item \textbf{Full-precision embeddings (pragmatic baseline).} Keep the embedding in FP16 and apply binarization only to the internal layers. This is the approach taken by BitNet and allows fair comparison. The embedding is a one-time lookup per token (no arithmetic), so its precision has minimal impact on inference throughput.
+\end{enumerate}
+For the output projection, we test both weight tying (sharing the embedding matrix) and an independent binary projection.
+Note that the output layer produces logits for softmax, which require continuous values---the output projection is therefore the layer where binary weights are most constraining, since the logits must resolve fine-grained probability differences across $V$ tokens.
+
+\paragraph{Inference-time precision audit.}
+Because \Cref{sec:precision-leakage} specifically critiques existing methods for ``precision leakage,'' intellectual honesty demands a complete accounting of where non-binary arithmetic enters our own inference pipeline. We enumerate every component:
+\begin{itemize}
+    \item \textbf{Core weights:} Strictly 1-bit ($\pm 1$). The matrix-vector product $Wx$ for $W \in \pmone^{d \times d}$, $x \in \pmone^d$ requires only additions and subtractions (implementable via XNOR + popcount on hardware that supports it), producing integer outputs in $[-d, +d]$.
+    \item \textbf{Scaling factors:} The fixed constant $1/\sqrt{d}$ replaces BitNet's learned per-layer $\alpha$. For power-of-two $d$, this is a right bit-shift (e.g., $1/\sqrt{1024} = 1/32 = 2^{-5}$); for general $d$, it is a precomputed fixed-point multiplier. No learned floating-point parameters.
+    \item \textbf{Bias terms:} We use no additive bias in any linear layer, following the convention of recent binary and low-bit models. This eliminates one potential source of full-precision parameters.
+    \item \textbf{Residual stream:} Maintained in INT8 or FP16 to preserve signal fidelity across layers, as described in the ``Residual connections'' paragraph above. This is the most significant non-binary component by volume (one $d$-dimensional vector per position per layer).
+    \item \textbf{Embeddings:} In the pragmatic baseline (option~(iii) above), the token embedding lookup is FP16. This is a table lookup, not an arithmetic operation, so it does not affect inference throughput. In the binary embedding variants (options (i)--(ii)), the embeddings are in $\pmone^d$.
+    \item \textbf{Positional encodings:} Full-precision arithmetic. Absolute (sinusoidal or learned) encodings are added to the embedding vectors before the first layer. Rotary positional encodings (RoPE) are applied to the projected query and key vectors \emph{after} the binary linear projection, requiring element-wise full-precision rotation.
+    \item \textbf{Normalization:} RMSNorm computes a full-precision root-mean-square statistic and applies a learned gain parameter (one scalar per feature dimension). LayerNorm additionally computes the mean and applies a learned bias. Both require full-precision arithmetic, but the parameter count is small: $O(d)$ per layer, compared to $O(d^2)$ for the weight matrices.
+    \item \textbf{Attention softmax:} In Option~A (our recommended starting point), the standard softmax operates at full precision over the $T \times T$ attention score matrix. This is a per-head, per-layer operation involving $O(T^2)$ floating-point exponentials and a normalization division---non-trivial but confined to the attention scores, not to the $O(d^2)$ weight matrices. Options~B and~C (\Cref{sec:spectral-attention}) progressively reduce this footprint.
+\end{itemize}
+In summary, the SBT eliminates BitNet's \emph{learned} scaling factors entirely and confines non-binary arithmetic to components that are either structurally unavoidable (normalization, softmax), low-volume ($O(d)$ residual additions vs.\ $O(d^2)$ matmuls), or shared with BitNet (embeddings, positional encodings). The core $O(d^2)$ matrix-vector multiplications---which dominate both computation and memory bandwidth---are strictly binary.
+
+\paragraph{Non-power-of-two dimensions.}
+The power-of-two constraint ($d = 2^n$) is natural for the Walsh--Hadamard framework but limits practical applicability: many standard model dimensions ($d = 768, 2048, 3072$) are not powers of two, though they factor as products of a power of two and a small odd factor (e.g., $768 = 3 \times 256$, $3072 = 3 \times 1024$).
+We accommodate such dimensions via \emph{block-diagonal decomposition}: partition each weight matrix into blocks of size $2^k \times 2^k$ and apply the spectral parameterization independently within each block.
+For $d = 768 = 3 \times 256$, this gives 3 blocks of $256 \times 256$, each with its own Walsh--Fourier representation.
+The block structure introduces a prior that inter-block interactions are axis-aligned; a learnable pre-block permutation can mitigate this constraint.
+Alternatively, rows can be zero-padded to the next power of two, at the cost of wasted dimensions.
+For proof-of-concept experiments, we restrict to power-of-two $d$; for scaling experiments, we implement the block-diagonal approach.
+
+
+\subsection{Module 1: Spectral Layer Parameterization}\label{sec:spectral-param}
+
+\subsubsection{Row-Wise Spectral Decomposition}
+
+Each row $w_i$ of a weight matrix is treated as a Boolean function $w_i \colon \pmone^n \to \pmone$, where $n = \log_2(d_{\text{row}})$ is determined by the row length. For square attention projection matrices ($W_Q, W_K, W_V, W_O \in \pmone^{d \times d}$), $n = \log_2 d$. For the rectangular feed-forward matrices, the up-projection $W_{\text{up}} \in \pmone^{d \times 4d}$ has rows of length $4d$, giving $n = \log_2(4d) = \log_2(d) + 2$; the down-projection $W_{\text{down}} \in \pmone^{4d \times d}$ has rows of length $d$, so $n = \log_2(d)$, same as the attention matrices. The column index $j \in \{0, \ldots, d_{\text{row}}-1\}$ is mapped to a hypercube vertex $\bin(j) \in \pmone^n$ via its binary representation. Each row has a Walsh--Fourier expansion:
+\begin{equation}\label{eq:row-spectral}
+    w_i(j) = \sum_{S \subseteq [n]} \what_i(S)\, \chi_S(\bin(j)).
+\end{equation}
+
+We parameterize only coefficients up to degree~$k$, giving $\binom{n}{\leq k}$ parameters per row. The following table shows how this parameter count compares to the full row dimension~$d$:
+
+\begin{center}
+\begin{tabular}{@{} r r r r r r @{}}
+\toprule
+$d$ & $n = \log_2 d$ & $\binom{n}{\leq 2}$ & $\binom{n}{\leq 3}$ & $\binom{n}{\leq 4}$ & $d$ (full) \\
+\midrule
+256 & 8 & 37 & 93 & 163 & 256 \\
+512 & 9 & 46 & 130 & 256 & 512 \\
+1024 & 10 & 56 & 176 & 386 & 1024 \\
+\bottomrule
+\end{tabular}
+\end{center}
+At degree $k = 3$ and $d = 1024$, the spectral parameterization uses $176$ free parameters per row---an $\approx 6\times$ compression of the optimization landscape relative to the full $d = 1024$ weight-domain parameterization. For the FFN up-projection rows (length $4d = 4096$, $n = 12$), $\binom{12}{\leq 3} = 299$ parameters per row, still a ${\approx}\,14\times$ compression versus the full 4096. This compression is an advantage if spectral concentration holds (fewer parameters, better-conditioned optimization) but a bottleneck if the target functions genuinely require high-degree terms.
+
+\subsubsection{The Column-Indexing Problem}\label{sec:column-indexing}
+
+The row-wise decomposition requires choosing how column indices map to hypercube vertices. This choice is not canonical: different binary encodings of the index set $\{0, \ldots, d-1\}$ yield different Walsh--Fourier spectra for the same weight vector.
+
+This is a fundamental issue for the framework. We correctly note below that bit permutations preserve the degree profile, but the more critical question is whether the ``natural'' binary encoding has any principled relationship to the semantic structure of the learned weights. A weight matrix $W$ transforms activations, where each column index corresponds to an input neuron. The standard binary encoding imposes a hierarchical grouping (e.g., columns 0--127 share the most significant bit) that has no \textit{a priori} connection to the order of neurons.
+
+If we observe spectral concentration under the natural binary encoding, it could be an artifact of that encoding accidentally aligning with the weight structure, or it could reflect a deep inductive bias of the training process. Conversely, an absence of concentration under the natural encoding does not necessarily disprove the utility of spectral methods---it might simply mean the natural encoding is the wrong one for that matrix.
+
+To address this, we propose three strategies:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Standard binary encoding.} Use the natural binary encoding as a default. Our pilot study (\Cref{sec:pilot}) explicitly tests against random column permutations to control for encoding artifacts.
+    \item \textbf{Gray code encoding.} Gray codes ensure adjacent indices differ in exactly one bit, which may improve spectral locality if adjacent neurons are correlated. We test this as an ablation.
+    \item \textbf{Learned encoding.} Include a learnable permutation (via Sinkhorn parameterization) that maps column indices to hypercube vertices. During training, each Sinkhorn iteration is $O(d^2)$ per layer; for large $d$ this cost is non-trivial and we report wall-clock overheads in our ablations. At inference, the permutation is frozen and amounts to a fixed column reordering with no runtime cost.
+\end{enumerate}
+We take (i) or (ii) as the default for the spectral path; (iii) is an optional ablation (A8). We do not rely on learned permutations for the main results. Hadamard-structured layers (\Cref{sec:hadamard-layers}) provide a column-indexing-free alternative without $O(d^2)$ training overhead and are the recommended fallback if encoding sensitivity is prohibitive.
+
+For the Hadamard-structured layers (\Cref{sec:hadamard-layers}), the column-indexing issue does not arise, since the Hadamard structure is defined intrinsically rather than via an arbitrary encoding.
+
+\paragraph{Alternating optimization and the encoding circularity.}
+There is a circularity in the column-encoding problem: the optimal encoding depends on the weight function being compressed (since it determines which encoding yields a low-degree spectral profile), but the spectral decomposition requires fixing an encoding first.
+When using strategy~(iii) above, our framework handles this via alternating optimization: fix the encoding, optimize the spectral coefficients; then fix the coefficients, update the encoding via the Sinkhorn permutation gradient.
+This alternation is implicit in Algorithm~1 (\Cref{alg:sbt-training}), where the spectral coefficients and Sinkhorn parameters receive joint gradient updates.
+
+Standard results on block coordinate descent guarantee convergence to a stationary point when each subproblem is convex or has a unique minimizer, but neither condition holds here---the spectral coefficient optimization is non-convex (due to the sign projection) and the permutation optimization is combinatorial.
+In practice, we expect convergence to a local optimum that depends on initialization.
+Ablation A8 (\Cref{sec:ablations}) tests sensitivity to the initial encoding by comparing convergence from multiple random initializations.
+A natural question for future work is whether there exist function classes for which \emph{every} column encoding yields low-degree concentration, rendering the choice benign.
+Symmetric Boolean functions (which are invariant to input permutations) are one such class, but they are too restrictive to model realistic weight matrices.
+
+
+\subsection{Module 2: Spectral-to-Binary Projection}\label{sec:projection}
+
+After each gradient update to the spectral coefficients, we must project back to a valid Boolean function. We propose and compare three strategies.
+
+\subsubsection{Hard Sign Projection}\label{sec:hard-sign}
+
+Compute the spatial-domain representation via inverse WHT and apply the sign function:
+\begin{equation}\label{eq:hard-sign}
+    w_i(j) \leftarrow \sgn\!\left( \sum_{\substack{S \subseteq [n] \\ |S| \leq k}} \what_i(S)\, \chi_S(\bin(j)) \right).
+\end{equation}
+
+\subsubsection{Randomized Rounding}\label{sec:random-rounding}
+
+Interpret the continuous spatial value as a probability:
+\begin{equation}\label{eq:random-round}
+    w_i(j) =
+    \begin{cases}
+        +1 & \text{with probability } p(z_i(j)), \\
+        -1 & \text{otherwise},
+    \end{cases}
+\end{equation}
+where $z_i(j) = \sum_{|S| \leq k} \what_i(S)\, \chi_S(\bin(j))$ and $p(z) = (1+\text{clip}(z,-1,1))/2$ maps the continuous value to a probability. Gradients flow via Gumbel-softmax or REINFORCE.
+
+\subsubsection{Spectral Norm Projection}\label{sec:spectral-norm-proj}
+
+Enforce Parseval: $\what_i \leftarrow \what_i / \norm{\what_i}_2$. Combined with hard sign, this gives a two-stage procedure that replaces learned scaling.
+
+\subsubsection{Sparse Spectral Layers (Variant)}\label{sec:sparse-spectral}
+
+If the pilot study (\Cref{sec:pilot}) reveals that trained binary weights concentrate on a small number of Fourier coefficients, a natural variant is to parameterize each row using only the top-$K$ Walsh coefficients (by magnitude) rather than all $\binom{n}{\leq k}$ coefficients at degree $\leq k$. This reduces the number of free parameters per row from $\binom{n}{\leq k}$ to $K$, which may improve optimization and generalization. Note that storing $K$ coefficient--index pairs requires $K \times (b_{\text{coeff}} + \lceil\log_2 \binom{n}{\leq k}\rceil)$ bits per row, where $b_{\text{coeff}}$ is the coefficient precision; at $n = 10$ with 32-bit coefficients, this exceeds the 1024 raw binary bits for $K \gtrsim 24$. The benefit is therefore not raw bit-count compression but rather a reduction in the effective dimensionality of the optimization landscape. The top-$K$ set can be selected per-layer (uniform sparsity) or per-row (adaptive sparsity), and can be updated periodically during training. We include this as an experimental variant in ablation A1 (\Cref{sec:ablations}).
+
+
+\subsection{Alternative Approach: Hadamard-Structured Layers}\label{sec:hadamard-layers}
+
+We build weight matrices from Hadamard sub-blocks:
+\begin{equation}\label{eq:butterfly}
+    W = \frac{1}{d^{L_H/2}} \prod_{\ell=1}^{L_H} \left[ H_n \cdot \operatorname{diag}(s_\ell) \cdot P_\ell \right],
+\end{equation}
+where $H_n$ is the Hadamard matrix, each $s_\ell \in \pmone^d$, each $P_\ell$ is a permutation, and $L_H$ is the number of stages. Each stage divides by $\sqrt{d}$ (the same fixed normalization as in \Cref{prop:normalization}), giving the $d^{-L_H/2}$ prefactor.
+
+\paragraph{Learnable components and binary scope.}
+The sign vectors $s_\ell$ are natively binary. The permutations $P_\ell$ are parameterized via Sinkhorn operators during training \citep{mena2018learning}. We acknowledge that Sinkhorn matrices are continuous---this is another form of shadow state during training. At inference, they are rounded to hard permutations. The sensitivity to this rounding is an empirical question we address in ablation A7 (\Cref{sec:ablations}).
+
+Note that the \emph{effective dense matrix} $W$ produced by the product in \eqref{eq:butterfly} is \emph{not} elementwise $\pm 1$ in general---the Hadamard multiplication and normalization yield real-valued entries. The binary constraint in the Hadamard approach applies to the \emph{factor parameters} ($s_\ell$ and the hard permutations $P_\ell$), not to the dense matrix they produce. The advantage is that these factors are natively discrete and the normalization is analytic, eliminating learned scaling factors at inference.
+
+\paragraph{Expressive power.}
+Products of Hadamard-sign-permutation stages define a rich structured family with favorable computational properties. The number of distinct matrices realizable grows rapidly with the stage count $L_H$, and butterfly-style factorizations suggest that $O(\log d)$ stages suffice to approximate a wide class of structured linear maps \citep{dao2022monarch}. We treat the precise approximation quality as an empirical question; see \Cref{conj:log-stages} below.
+
+\begin{conjecture}\label{conj:log-stages}
+For weight matrices arising in practical language models, $O(\log d)$ Hadamard-sign stages suffice to approximate the optimal binary weight matrix to within rounding error comparable to the spectral projection.
+\end{conjecture}
+
+
+\subsection{Module 3: Spectral Attention Mechanism}\label{sec:spectral-attention}
+
+We propose three attention variants, ranked by our assessment of feasibility. We will implement all three and compare; our \textbf{recommended starting point} is Option~A.
+
+\paragraph{Option A: Integer attention with fixed scaling (recommended first).}
+The standard attention computation
+\begin{equation}\label{eq:attention}
+    \text{Attention}(Q, K, V) = \softmax\!\left(\frac{Q K^\top}{\sqrt{d_k}}\right) V
+\end{equation}
+is used with $Q = W_Q x$, $K = W_K x$, $V = W_V x$ where all $W$ matrices are binary. The product $QK^\top$ is integer-valued in $[-d_k, +d_k]$. The scaling $1/\sqrt{d_k}$ is a fixed constant (not learned). The softmax requires non-binary arithmetic, but it operates on a small $T \times T$ matrix (not on the weight matrices), so the floating-point computation is confined to a low-dimensional bottleneck.
+
+\emph{Why we recommend this first:} It changes the least from the standard Transformer and isolates the effect of binary weights from changes to the attention mechanism. The softmax is the only non-binary component and it operates on attention logits, not on model parameters.
+
+\paragraph{Option B: Hadamard attention.}
+Replace dot-product similarity with Walsh--Hadamard spectral correlation. The key observation is that the standard dot-product attention score $q_i^\top k_j$ can be rewritten via Parseval as a spectral inner product:
+\[
+    q_i^\top k_j = d_k \sum_{S \subseteq [\log_2 d_k]} \widehat{q_i}(S)\, \widehat{k_j}(S),
+\]
+where $\widehat{q_i}$ and $\widehat{k_j}$ are the normalized Walsh--Fourier coefficients of $q_i$ and $k_j$ respectively. This motivates replacing the full spectral inner product with a \emph{masked} version that attends only to selected spectral components:
+\begin{equation}\label{eq:had-attention}
+    A_{ij} = \frac{1}{d_k} \sum_{r=0}^{d_k - 1} \left( \WHT(q_i) \odot m \odot \WHT(k_j) \right)_r,
+\end{equation}
+where $\WHT(\cdot)$ denotes the fast Walsh--Hadamard transform along the feature dimension and $m \in \pmone^{d_k}$ is a learnable binary spectral mask. The mask selects or negates each spectral component, acting as a learned frequency filter.
+
+\paragraph{Gradient flow in Hadamard attention.}
+The gradient with respect to the mask is:
+\[
+    \frac{\partial A_{ij}}{\partial m_r} = \frac{1}{d_k} \WHT(q_i)_r \cdot \WHT(k_j)_r,
+\]
+which is itself a product of spectral coefficients --- fully compatible with the Walsh--Fourier framework. Since $m \in \pmone^{d_k}$, the mask gradient is trained via STE (or Gumbel-softmax) analogously to the weight matrices. The full attention computation is $O(T^2 d_k + T d_k \log d_k)$: the FWHT costs $O(d_k \log d_k)$ per token, and the pairwise scoring costs $O(T^2 d_k)$, both comparable to standard attention.
+
+\paragraph{Normalization.}
+The softmax can be replaced with a simpler normalization (e.g., division by the sum of absolute values), implemented via fixed-point integer arithmetic with precomputed lookup or approximate reciprocal. When the queries and keys are binary (from sign-activated layers), $\WHT(q_i)$ and $\WHT(k_j)$ are integer-valued, so the elementwise products and sums in \eqref{eq:had-attention} are also integer-valued. The only non-integer operation is the final normalization.
+
+\paragraph{Roadmap.}
+We implement Option~B after validating Option~A. The key experiment is ablation A5 (\Cref{sec:ablations}): compare the three attention variants at the best-performing scale, measuring perplexity, training stability, and the fraction of operations that are strictly binary. If Option~B matches Option~A's perplexity while reducing the floating-point footprint (by eliminating softmax), it becomes the preferred attention mechanism for the fully binary inference pipeline.
+
+\emph{Trade-off:} More compatible with binary arithmetic, but departs from the standard attention mechanism in ways that may hurt performance.
+
+\paragraph{Option C: Linear attention with binary feature maps.}
+Use the linearized attention of \citet{katharopoulos2020transformers}: $\text{Attention}(Q,K,V) \approx \phi(Q) (\phi(K)^\top V)$ where $\phi$ is a feature map. We set $\phi(x) = \sgn(R x)$ for a fixed random binary matrix $R \in \pmone^{m \times d_k}$, which implements a binary locality-sensitive hash (cf.\ the hashing-based attention of \citet{kitaev2020reformer} and the random-feature approach of \citet{choromanski2021rethinking}). The core attention computation then involves only additions and sign comparisons, though normalization still requires fixed-point integer division.
+
+\emph{Trade-off:} Fully binary-compatible, but linear attention is known to underperform softmax attention, and the binary hash adds additional approximation error. We view this as the long-term target for fully binary inference, not the starting point.
+
+
+\subsection{Module 4: Training Algorithm}\label{sec:training}
+
+\begin{algorithm}[H]
+\caption{SBT Training}\label{alg:sbt-training}
+\begin{algorithmic}[1]
+\Require Training corpus $\mathcal{D}$; degree truncation $k$; temperature schedule $\{\beta_t\}$
+\State \textbf{Initialize:} $\what_i(S) \sim \mathcal{N}(0, 1/\binom{n}{\leq k})$ for all rows $i$, all $|S| \leq k$
+\State Normalize: $\what_i \leftarrow \what_i / \norm{\what_i}_2$
+\For{each training step $t$ with batch $\mathcal{B}_t$}
+    \State $W_{\text{cont}} \leftarrow \what \cdot \Phi^\top$ \Comment{spectral coeffs $\times$ Walsh basis $\to$ continuous weights}
+    \State $W_{\text{bin}} \leftarrow \tanh(\beta_t \cdot W_{\text{cont}})$ \Comment{soft binarization}
+    \State $\mathcal{L} \leftarrow \text{cross-entropy}(\text{SBT}(W_{\text{bin}}, \mathcal{B}_t))$
+    \State $\mathcal{L}_{\text{reg}} \leftarrow \mathcal{L} + \lambda \sum_{i,S} |S|^p \what_i(S)^2 - \mu \sum_{i,S} \rho^{|S|} \what_i(S)^2$
+    \State $\what \leftarrow \what - \eta_t \nabla_{\what} \mathcal{L}_{\text{reg}}$
+    \State $\what_i \leftarrow \what_i / \norm{\what_i}_2$ \Comment{spectral norm projection}
+\EndFor
+\State \textbf{Final:} Recompute $W_{\text{cont}} \leftarrow \what \cdot \Phi^\top$; set $W_{\text{final}} = \sgn(W_{\text{cont}})$ \Comment{hard binarization; discard $\what$}
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Training cost overhead.}
+While the inference pipeline is optimized for binary execution, training the SBT carries a per-step computational overhead compared to standard weight-domain STE, which has essentially zero reconstruction cost (the sign function is $O(d^2)$ per layer, negligible next to the matmul).
+
+In \texttt{SpectralLinear}, the overhead arises from reconstructing the dense weight matrix from spectral coefficients: for each of the $d$ rows, the inverse FWHT costs $O(d \log d)$, giving $O(d^2 \log d)$ per weight matrix per training step. The standard matrix multiplication over a batch of $B$ tokens costs $O(d^2 B)$. Crucially, the FWHT reconstruction is performed \emph{once per step} (to produce the current weight snapshot), not once per token. The amortized overhead ratio is therefore $O(\log d / B)$. At $d = 1024$ ($\log_2 d = 10$) and $B = 256$, this is $10/256 \approx 4\%$---a modest tax. In practice, the FWHT is embarrassingly parallel across rows and maps well to GPU SIMD hardware, so the wall-clock overhead is even smaller than the FLOP ratio suggests.
+
+In \texttt{HadamardLinear}, learning the Sinkhorn permutations adds $O(d^2)$ operations per iteration per layer (for each row of the doubly-stochastic matrix). This is comparable to a single matmul and does not change the asymptotic training cost.
+
+The key insight is that spectral training trades a small per-step reconstruction cost for a potentially large reduction in the \emph{number of steps to convergence}---this is exactly the ``better inductive bias'' claim (\Cref{conj:optimization}), which we test directly in the experiments. We report wall-clock training times alongside FLOPs in \Cref{sec:experiments}.
+
+The algorithm above uses the $\tanh(\beta_t \cdot)$ soft binarization as the default projection. The two alternative projections from \Cref{sec:projection}---randomized rounding (\Cref{sec:random-rounding}) and spectral norm projection (\Cref{sec:spectral-norm-proj})---are substituted at line~5 in ablation A2 (\Cref{sec:ablations}). In all cases, the temperature $\beta_t$ starts small (soft, gradient-friendly) and increases to approximate hard sign by the end of training. The final binarization step produces strictly binary weights.
+
+
+\subsection{Module 5: Spectral Regularization}\label{sec:regularization}
+
+\paragraph{Degree penalty.}
+\begin{equation}\label{eq:degree-penalty}
+    \mathcal{R}_{\text{degree}} = \lambda \sum_i \sum_{S} |S|^p \cdot \what_i(S)^2.
+\end{equation}
+
+\paragraph{Noise stability reward.}
+\begin{equation}\label{eq:stability-reward}
+    \mathcal{R}_{\text{stability}} = -\mu \sum_i \sum_{S} \rho^{|S|} \cdot \what_i(S)^2.
+\end{equation}
+
+\paragraph{Relationship between the two regularizers.}
+Both regularizers encourage low-degree spectral concentration, but with different weighting profiles.
+The degree penalty weights $\what_i(S)^2$ by $|S|^p$ (polynomial in degree), while the stability reward weights by $\rho^{|S|}$ (exponential decay for $\rho < 1$).
+For $\rho$ close to~1, the stability reward imposes a gentle exponential taper that primarily distinguishes between very low and moderately low degrees.
+For $\rho$ close to~0, it aggressively suppresses all non-constant terms.
+The degree penalty with $p = 1$ imposes a linear tax on degree, directly penalizing total influence ($\mathbf{I}[f] = \sum_S |S| \cdot \what(S)^2$); with $p = 2$, it penalizes the second moment of the spectral distribution over degrees.
+
+\paragraph{Redundancy and Hyperparameter Search.}
+Using both regularizers simultaneously is mathematically coherent but practically redundant. The combined regularizer $\lambda |S|^p - \mu \rho^{|S|}$ is monotonically increasing in $|S|$ for typical hyperparameter values, so both terms pull in the same direction.
+The key distinction is interpretive: the degree penalty directly controls total influence (a quantity with clear implications for gradient flow and noise sensitivity), while the stability reward directly targets the noise stability functional $\Stab_\rho[f]$, which governs robustness to bit flips in the input.
+
+Introducing these regularizers adds four new hyperparameters ($\lambda, \mu, p, \rho$) to the existing standard set (learning rate, batch size, etc.) and the spectral-specific ones (degree truncation $k$, temperature schedule $\beta_t$). To make the search space tractable, we set $\mu=0$ (using only the degree penalty with $p=1$) for the primary experiments. This directly targets the total influence term that bounds approximation error in \Cref{thm:approx-bound}. We explore the full grid only in ablation A4 (\Cref{sec:ablations}) to verify whether the stability reward offers any unique benefits not captured by the simple degree penalty.
+
+
+\subsection{A Worked Toy Example: Learning the Majority Function}\label{sec:toy-model}
+
+To make the spectral training procedure concrete and to verify the implementation before scaling, we work through a complete example.
+
+\paragraph{Setup.}
+Consider a single binary linear layer $w \in \pmone^8$ (so $n = 3$, $d = 8$) followed by a sign activation. The target function is $\text{Maj}_3(x_1, x_2, x_3) = \sgn(x_1 + x_2 + x_3)$.
+
+\paragraph{Exact Fourier spectrum.}
+The majority function on $\pmone^3$ outputs $+1$ when at least 2 of 3 inputs are $+1$. Its truth table is:
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$x_1$ & $x_2$ & $x_3$ & $\text{Maj}_3$ \\
+\midrule
+$-1$ & $-1$ & $-1$ & $-1$ \\
+$-1$ & $-1$ & $+1$ & $-1$ \\
+$-1$ & $+1$ & $-1$ & $-1$ \\
+$-1$ & $+1$ & $+1$ & $+1$ \\
+$+1$ & $-1$ & $-1$ & $-1$ \\
+$+1$ & $-1$ & $+1$ & $+1$ \\
+$+1$ & $+1$ & $-1$ & $+1$ \\
+$+1$ & $+1$ & $+1$ & $+1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Fourier coefficients are $\fhat(\emptyset) = 0$ (balanced), $\fhat(\{i\}) = 1/2$ for each $i$, all degree-2 coefficients are zero, and $\fhat(\{1,2,3\}) = -1/2$. Hence:
+\begin{equation}
+    \text{Maj}_3(x) = \tfrac{1}{2}(x_1 + x_2 + x_3) - \tfrac{1}{2}x_1 x_2 x_3.
+\end{equation}
+Parseval check: $3 \cdot (1/2)^2 + (1/2)^2 = 3/4 + 1/4 = 1$. \checkmark
+
+\paragraph{Spectral training procedure.}
+\begin{enumerate}
+    \item Initialize spectral coefficients $\what(S) \sim \mathcal{N}(0, 1/4)$ for $|S| \leq 2$ (degree truncation $k=2$, so 7 coefficients: 1 + 3 + 3).
+    \item Forward: compute $z(j) = \sum_{|S| \leq 2} \what(S) \chi_S(\bin(j))$ for $j = 0, \ldots, 7$ (this is a partial inverse WHT).
+    \item $w_{\text{bin}}(j) = \sgn(z(j))$.
+    \item Compute loss: e.g., $\sum_j (\text{Maj}_3(\bin(j)) - z(j))^2$ (or cross-entropy on a downstream task).
+    \item Backprop through the continuous $z$, update $\what(S)$, project to unit sphere.
+\end{enumerate}
+
+At degree $k = 2$, the degree-3 coefficient $\fhat(\{1,2,3\})$ is not representable, so the spectral training will find the best degree-$\leq 2$ approximation and then snap to binary via sign. For Maj$_3$, the degree-1 coefficients carry $3/4$ of the spectral energy, so the degree-2 truncation captures the vast majority of the function's structure. The sign projection then recovers the correct Boolean function on all 8 inputs. This exact recovery is somewhat fortunate: it relies on the degree-$\leq 1$ approximation already having the correct sign on every input. For other Boolean functions (e.g., those with more balanced spectral mass across degrees), the sign projection after low-degree truncation will introduce errors, and the number of bit flips is governed by the tail bound in \Cref{thm:approx-bound}.
+
+This toy example serves as a sanity check for the implementation: the spectral training should converge to coefficients close to the true values, and the spectral diagnostics should show the expected degree profile.
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 5 — PILOT EMPIRICAL STUDY
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Pilot Study: Spectral Concentration in Existing Binary Weights}\label{sec:pilot}
+
+Before committing to the full experimental program, we propose a targeted pilot study to test the core assumption: \emph{do trained binary weight matrices exhibit spectral concentration?}
+
+\subsection{Protocol}\label{sec:pilot-protocol}
+
+\paragraph{Step 1: Obtain binary weight matrices.}
+We use three sources:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{BitNet b1.58 2B4T} (the open-weights 2B model from Microsoft). Extract the ternary $\{-1, 0, +1\}$ weight matrices. For our analysis, we treat these as pseudo-Boolean functions with three values and compute the standard Walsh--Fourier transform.
+    \item \textbf{Binarized standard Transformer.} Take a trained FP16 Transformer (e.g., GPT-2 small) and binarize each weight matrix via $\sgn(W)$. This gives a (poor) binary model but lets us analyze whether the structure of a trained weight matrix exhibits spectral concentration even after naive binarization.
+    \item \textbf{STE-trained binary Transformer.} Train a small binary Transformer (our Baseline~2) using standard STE and extract the resulting $\pm 1$ weight matrices.
+\end{enumerate}
+
+\paragraph{Non-power-of-two dimensions.}
+The row-wise Walsh--Fourier analysis requires row length $d = 2^n$. When the model dimension is not a power of two (e.g., $d = 768$ for GPT-2 small, $d = 2560$ for BitNet b1.58 2B4T), we run two complementary analyses: (i)~blockwise analysis on maximal power-of-two subblocks of each row, and (ii)~zero-padding each row to the next power of two. We report both and quantify sensitivity to the choice.
+
+\paragraph{Step 2: Compute Walsh--Fourier spectra.}
+For each weight matrix $W \in \pmone^{d \times d}$ (or its padded/blocked version):
+\begin{enumerate}
+    \item For each row $w_i$ (length $d = 2^n$), compute the full Walsh--Fourier transform $\what_i(S)$ for all $S \subseteq [n]$. This costs $O(d \log d)$ per row via the FWHT, and $O(d^2 \log d)$ for the full matrix.
+    \item Compute the spectral energy at each degree: $E_i(k) = \sum_{|S|=k} \what_i(S)^2$.
+    \item Compute the effective spectral degree $k^*_i$ (95\% energy threshold) for each row.
+    \item Aggregate: report the distribution of $k^*$ across rows and layers.
+\end{enumerate}
+
+\paragraph{Step 3: Controls.}
+Compute the same metrics for:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Random binary matrices:} $W_{ij} \sim \text{Uniform}(\pmone)$. The expected spectral energy at degree $k$ is $\binom{n}{k}/2^n$, following a $\text{Bin}(n, 1/2)$ distribution, so the 95\%-energy threshold is $k^* \approx n/2 + O(\sqrt{n})$ with no low-degree concentration. Any concentration observed in trained weights significantly below this baseline is evidence of structure.
+    \item \textbf{Random binary matrices with matched row-sum distribution:} To control for the possibility that concentration is merely an artifact of biased rows.
+    \item \textbf{Random linear threshold functions (LTFs):} For each row, generate a random weight vector $a \sim \mathcal{N}(0, I_n)$ (where $n = \log_2 d$) and set $w(j) = \sgn(\ip{a}{\bin(j)})$. This produces binary vectors with the spectral profile characteristic of LTFs (strong degree-1, decaying higher degrees). If trained weights look like random LTFs, then any observed concentration reflects the sign-activation structure rather than learned task-specific structure.
+    \item \textbf{Random ternary matrices with matched sparsity:} For the BitNet b1.58 analysis (which uses ternary $\{-1, 0, +1\}$ weights), generate random ternary matrices with the same fraction of zeros per row as the real weights. This controls for the possibility that spectral concentration is an artifact of zero-inflation rather than learned structure.
+\end{enumerate}
+
+\paragraph{Step 4: Test column-indexing sensitivity.}
+For each matrix, repeat the spectral analysis under 10 random bit permutations. Report whether the degree profile $\sum_{|S|=k} \what(S)^2$ is stable (as theory predicts for bit permutations) and under 10 random column permutations (where the profile may change).
+
+\subsection{Expected Outcomes and Implications}\label{sec:pilot-outcomes}
+
+\begin{description}
+    \item[Strong concentration] (median $k^* \leq 3$ for $n = 10$, and significantly below the random-LTF control with $p < 0.01$ via a two-sample Kolmogorov--Smirnov test): This validates \Cref{conj:concentration} and strongly motivates the full spectral training program with degree truncation $k \leq 3$. \textbf{Action:} proceed to spectral training (Phase~3 of the work plan).
+
+    \item[Moderate concentration] (median $k^* \leq n/2$, with the $k^*$ distribution shifted significantly below both the random-binary and random-LTF controls): The spectral parameterization may still offer benefits, but higher degree truncation or the Hadamard-structured approach may be needed. \textbf{Action:} proceed with both spectral and Hadamard approaches in parallel.
+
+    \item[No concentration] (median $k^*$ statistically indistinguishable from random-LTF control, or $k^* > n/2$): This falsifies \Cref{conj:concentration} in its strong form. \textbf{Action:} pivot to the Hadamard-structured approach (\Cref{sec:hadamard-layers}), which does not depend on spectral sparsity; investigate whether concentration emerges during spectral \emph{training} even if absent in conventionally trained weights; reframe the thesis contribution around the framework and diagnostics.
+\end{description}
+
+\subsection{Computational Cost}
+
+The pilot study is computationally modest. For a model with $d = 1024$ and 12 layers, each layer has 6 weight matrices: $W_Q, W_K, W_V, W_O$ (attention) plus $W_{\text{up}}, W_{\text{down}}$ (FFN), giving 72 matrices total. Note that the FFN matrices are not square ($d \times 4d$ and $4d \times d$ in a standard Transformer), so each row is analyzed at its actual length. The FWHT computation for all rows is $O(d \cdot d_{\text{row}} \log d_{\text{row}})$ per matrix. Including permutation-sensitivity tests and controls, we estimate 1--6 CPU-hours total depending on threading and the number of permutation repeats. The entire pilot study can be completed in a day.
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  CHAPTER 6 — EXPERIMENTAL PLAN
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Experimental Plan}\label{sec:experiments}
+
+\subsection{Datasets and Tasks}\label{sec:datasets}
+
+\paragraph{Primary task.}
+Autoregressive language modeling on WikiText-103 \citep{merity2017wikitext} and/or a subset of The Pile \citep{gao2021pile}. Larger-scale runs (10--100B tokens from RedPajama \citep{redpajama2023}) if compute permits.
+
+\paragraph{Auxiliary tasks.}
+Synthetic Boolean function learning (majority, tribes, address function) and character-level language modeling (Penn Treebank, enwik8).
+
+\subsection{Baselines}\label{sec:baselines}
+
+\begin{enumerate}
+    \item \textbf{BitNet b1.58} \citep{ma2024era}: ternary weights, learned scaling factors, 8-bit activations.
+    \item \textbf{Standard binary STE}: binary $\pmone$ weights, weight-domain STE, learned scaling factors.
+    \item \textbf{Full-precision Transformer}: FP16, same architecture. Upper bound.
+    \item \textbf{Random binary (frozen)}: random $\pm 1$ weights, never updated. Lower bound.
+\end{enumerate}
+
+\subsection{Metrics}\label{sec:metrics}
+
+\paragraph{Primary.} Perplexity: $\text{PPL} = \exp(\mathcal{L}_{\text{CE}})$.
+
+\paragraph{Secondary.} Zero-shot accuracy on LAMBADA, HellaSwag, ARC, PIQA, WinoGrande via lm-evaluation-harness \citep{gao2021framework}.
+
+\paragraph{Efficiency.} Training FLOPs, inference latency on CPU, model size in bits.
+
+\paragraph{Spectral diagnostics.}
+\begin{enumerate}[label=(\roman*)]
+    \item Effective spectral degree $k^*$ (95\% energy threshold), per layer, over training.
+    \item Spectral entropy: $H_{\text{spec}} = -\sum_S p(S) \log p(S)$ where $p(S) = \what(S)^2 / \sum_{S'} \what(S')^2$.
+    \item Rounding error: $\varepsilon_{\text{round}} = d^{-2} \sum_{i,j} (\sgn(z_i(j)) - z_i(j))^2$.
+\end{enumerate}
+
+\subsection{Ablation Studies}\label{sec:ablations}
+
+\begin{description}
+    \item[A1: Spectral degree $k$.] Vary $k$ from 1 to $n = \log_2 d$.
+    \item[A2: Projection method.] Hard sign vs.\ randomized rounding vs.\ spectral norm projection.
+    \item[A3: Hadamard structure vs.\ unstructured.]
+    \item[A4: Spectral regularization.] Degree penalty and noise stability reward.
+    \item[A5: Activation precision.] Binary ($\sgn$) vs.\ 8-bit vs.\ full-precision activations.
+    \item[A6: Embedding strategy.] Learned FP, learned binary, fixed Hadamard.
+    \item[A7: Sinkhorn rounding sensitivity.] For Hadamard-structured layers, measure performance degradation when soft Sinkhorn permutations are rounded to hard permutations at various stages of training.
+    \item[A8: Column encoding.] Standard binary vs.\ Gray code vs.\ learned permutation (\Cref{sec:column-indexing}).
+\end{description}
+
+\subsection{Implementation Roadmap}\label{sec:implementation}
+
+\paragraph{\texttt{SpectralLinear}.}
+Drop-in for \texttt{nn.Linear}. State: spectral coefficients $[\texttt{d\_out}, \binom{n}{\leq k}]$, precomputed Walsh basis $[\binom{n}{\leq k}, \texttt{d\_in}]$. Forward: $W = \sgn(\what \cdot \Phi^\top) \cdot x$.
+
+\paragraph{\texttt{HadamardLinear}.}
+Structured factorization. State: $L_H$ sign vectors, $L_H$ permutation parameters. Forward: cascade of FWHT + sign-flip + permute.
+
+\paragraph{\texttt{SpectralTransformerBlock}.}
+Wraps the above into a Transformer block with attention and normalization.
+
+\paragraph{\texttt{SpectralDiagnostics}.}
+Computes all spectral metrics; logs histograms; detects anomalies.
+
+\paragraph{\texttt{PilotAnalysis}.}
+Scripts for the pilot study (\Cref{sec:pilot}): load pretrained weights, compute WHT, aggregate statistics, generate plots.
+
+\subsection{Success Criteria}\label{sec:success}
+
+\begin{description}
+    \item[Strong success.] SBT achieves perplexity within 10\% of BitNet b1.58, with strictly 1-bit weights and no learned scaling.
+    \item[Moderate success.] SBT outperforms Baseline~2 (weight-domain STE) and shows clear spectral concentration.
+    \item[Diagnostic success.] Spectral diagnostics reveal structure ($k^* \ll n$, decreasing spectral entropy).
+    \item[Negative result.] No spectral concentration and no performance gain. Informative and publishable.
+\end{description}
+
+
+\subsection{Known Risks and Mitigation}\label{sec:risks}
+
+\begin{description}
+    \item[Risk 1: Rounding destroys information.] \emph{Mitigation:} Temperature-annealed $\tanh(\beta z)$.
+    \item[Risk 2: Spectral degree too high.] \emph{Mitigation:} Pilot study diagnoses this; Hadamard layers as fallback.
+    \item[Risk 3: Training instability.] \emph{Mitigation:} Spectral norm projection; degree regularization; careful warmup.
+    \item[Risk 4: Computational overhead.] \emph{Mitigation:} FWHT is $O(d \log d)$, negligible vs.\ $O(d^2)$ matmuls.
+    \item[Risk 5: Column-indexing sensitivity.] \emph{Mitigation:} Pilot study tests this; Gray code and learned encodings as alternatives.
+\end{description}
+
+
+% ══════════════════════════════════════════════════════════════════════════
+%  REFERENCES
+% ══════════════════════════════════════════════════════════════════════════
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
