@@ -61,6 +61,11 @@
 #define TRAIN_MODE   0
 #endif
 
+/* Early stop if val_ppl drops below this threshold (0 = disabled) */
+#ifndef EARLY_STOP_PPL
+#define EARLY_STOP_PPL 0.0f
+#endif
+
 /* CSV output file prefix (default: "eval_log") -> writes "<prefix>.csv" */
 #ifndef CSV_PREFIX
 #define CSV_PREFIX   "eval_log"
@@ -701,6 +706,13 @@ static TrainResult train_model(const char *name, GPTModel *model,
                         eval.ppl, eval.bpb,
                         step_time * 1000.0, tok_per_sec, elapsed);
                 fflush(csv);
+            }
+
+            /* Early stopping on perplexity threshold */
+            if (EARLY_STOP_PPL > 0.0f && eval.ppl < EARLY_STOP_PPL) {
+                printf("  Early stop: val_ppl=%.2f < %.1f at step %d\n",
+                       eval.ppl, EARLY_STOP_PPL, step);
+                break;
             }
         }
 
