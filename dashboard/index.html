@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presidential Actions — Moral Impact Heatmap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ── Header ── */
+  #header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 10px 20px;
+    display: flex; align-items: center; gap: 20px;
+    height: 52px;
+  }
+  #header h1 {
+    font-size: 16px; font-weight: 600; white-space: nowrap;
+    color: #f0f6fc;
+  }
+  #header .controls {
+    display: flex; gap: 12px; align-items: center; font-size: 13px;
+  }
+  #header .controls label { color: #8b949e; }
+  #header .controls select, #header .controls input {
+    background: #0d1117; color: #c9d1d9;
+    border: 1px solid #30363d; border-radius: 4px;
+    padding: 3px 6px; font-size: 13px;
+  }
+  .legend {
+    display: flex; align-items: center; gap: 4px;
+    margin-left: auto; font-size: 12px; color: #8b949e;
+  }
+  .legend-bar {
+    width: 160px; height: 14px; border-radius: 3px;
+    background: linear-gradient(to right,
+      #7f1d1d, #dc2626, #f87171, #fca5a5, #e5e7eb, #86efac, #4ade80, #16a34a, #166534);
+  }
+
+  /* ── Main viewport ── */
+  #viewport {
+    position: fixed; top: 52px; left: 0; right: 0; bottom: 32px;
+    overflow: auto;
+    cursor: grab;
+  }
+  #viewport:active { cursor: grabbing; }
+  #viewport::-webkit-scrollbar { width: 10px; height: 10px; }
+  #viewport::-webkit-scrollbar-track { background: #0d1117; }
+  #viewport::-webkit-scrollbar-thumb { background: #30363d; border-radius: 5px; }
+
+  #canvas-container {
+    position: relative;
+    /* sized dynamically by JS */
+  }
+
+  /* ── Tooltip ── */
+  #tooltip {
+    display: none;
+    position: fixed; z-index: 200;
+    background: #1c2128;
+    border: 1px solid #444c56;
+    border-radius: 8px;
+    padding: 12px 14px;
+    max-width: 380px;
+    font-size: 13px;
+    line-height: 1.45;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    pointer-events: none;
+  }
+  #tooltip .tt-title {
+    font-weight: 600; color: #f0f6fc; margin-bottom: 4px;
+    font-size: 14px;
+  }
+  #tooltip .tt-date { color: #8b949e; font-size: 12px; margin-bottom: 6px; }
+  #tooltip .tt-desc { color: #c9d1d9; margin-bottom: 6px; }
+  #tooltip .tt-meta {
+    display: flex; gap: 10px; font-size: 12px; color: #8b949e;
+    flex-wrap: wrap;
+  }
+  #tooltip .tt-score {
+    font-weight: 700; font-size: 18px; margin-bottom: 6px;
+  }
+  #tooltip .tt-impact { font-style: italic; color: #8b949e; font-size: 12px; }
+  .tt-badge {
+    display: inline-block; padding: 1px 6px; border-radius: 3px;
+    font-size: 11px; font-weight: 600;
+  }
+
+  /* ── Footer ── */
+  #footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #161b22; border-top: 1px solid #30363d;
+    padding: 6px 20px; font-size: 12px; color: #8b949e;
+    display: flex; justify-content: space-between;
+    height: 32px; align-items: center;
+  }
+
+  /* ── President name labels (rendered in JS on canvas) ── */
+</style>
+</head>
+<body>
+  <div id="header">
+    <h1>Presidential Actions — Moral Impact Heatmap</h1>
+    <div class="controls">
+      <label>Zoom:</label>
+      <input type="range" id="zoom-slider" min="0.3" max="2.5" step="0.1" value="1">
+      <span id="zoom-label">100%</span>
+      <label style="margin-left:8px">Filter:</label>
+      <select id="cat-filter">
+        <option value="">All categories</option>
+      </select>
+      <label style="margin-left:8px">Min importance:</label>
+      <select id="imp-filter">
+        <option value="1">1+</option>
+        <option value="2">2+</option>
+        <option value="3">3+</option>
+        <option value="4">4+</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="legend">
+      <span>-100</span>
+      <div class="legend-bar"></div>
+      <span>+100</span>
+    </div>
+  </div>
+
+  <div id="viewport">
+    <div id="canvas-container">
+      <canvas id="heatmap"></canvas>
+    </div>
+  </div>
+
+  <div id="tooltip">
+    <div class="tt-title"></div>
+    <div class="tt-date"></div>
+    <div class="tt-score"></div>
+    <div class="tt-desc"></div>
+    <div class="tt-impact"></div>
+    <div class="tt-meta"></div>
+  </div>
+
+  <div id="footer">
+    <span id="status">Loading...</span>
+    <span>Scroll horizontally to browse presidents · Hover for details · Mouse wheel to zoom</span>
+  </div>
+
+<script>
+// ─── Config ───
+const COL_WIDTH = 130;
+const BOX_HEIGHT = 28;
+const BOX_GAP = 3;
+const HEADER_HEIGHT = 80;
+const COL_GAP = 8;
+const PADDING = 20;
+
+let DATA = [];
+let zoom = 1;
+let filteredData = [];
+let boxPositions = []; // {x, y, w, h, event, president} for hit-testing
+
+// ─── Color scale ───
+function scoreToColor(score) {
+  // -100 to +100 → color
+  const t = (score + 100) / 200; // 0 to 1
+  if (t < 0.25) {
+    // dark red to red
+    const u = t / 0.25;
+    return lerpColor([127, 29, 29], [220, 38, 38], u);
+  } else if (t < 0.45) {
+    // red to light red
+    const u = (t - 0.25) / 0.2;
+    return lerpColor([220, 38, 38], [252, 165, 165], u);
+  } else if (t < 0.55) {
+    // light red to light green (through gray)
+    const u = (t - 0.45) / 0.1;
+    return lerpColor([252, 165, 165], [134, 239, 172], u);
+  } else if (t < 0.75) {
+    // light green to green
+    const u = (t - 0.55) / 0.2;
+    return lerpColor([134, 239, 172], [22, 163, 74], u);
+  } else {
+    // green to dark green
+    const u = (t - 0.75) / 0.25;
+    return lerpColor([22, 163, 74], [22, 101, 52], u);
+  }
+}
+
+function lerpColor(a, b, t) {
+  return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`;
+}
+
+function scoreTextColor(score) {
+  const abs = Math.abs(score);
+  if (abs > 50) return '#fff';
+  if (abs > 25) return '#f0f0f0';
+  return '#1a1a2e';
+}
+
+// ─── Fetch data ───
+async function loadData() {
+  const resp = await fetch('data.json');
+  DATA = await resp.json();
+
+  // Populate category filter
+  const cats = new Set();
+  DATA.forEach(p => p.events.forEach(e => cats.add(e.category)));
+  const catFilter = document.getElementById('cat-filter');
+  [...cats].sort().forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c.replace(/_/g, ' ');
+    catFilter.appendChild(opt);
+  });
+
+  applyFilters();
+}
+
+function applyFilters() {
+  const catVal = document.getElementById('cat-filter').value;
+  const impVal = parseInt(document.getElementById('imp-filter').value);
+
+  filteredData = DATA.map(p => ({
+    ...p,
+    filteredEvents: p.events.filter(e => {
+      if (catVal && e.category !== catVal) return false;
+      if (e.importance < impVal) return false;
+      return true;
+    })
+  }));
+
+  render();
+}
+
+// ─── Render ───
+function render() {
+  const canvas = document.getElementById('heatmap');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+
+  const colW = COL_WIDTH * zoom;
+  const boxH = BOX_HEIGHT * zoom;
+  const boxG = BOX_GAP * zoom;
+  const headerH = HEADER_HEIGHT * zoom;
+  const colG = COL_GAP * zoom;
+  const pad = PADDING * zoom;
+
+  // Compute max column height
+  let maxEvents = 0;
+  filteredData.forEach(p => {
+    if (p.filteredEvents.length > maxEvents) maxEvents = p.filteredEvents.length;
+  });
+
+  const totalW = pad + filteredData.length * (colW + colG) + pad;
+  const totalH = headerH + pad + maxEvents * (boxH + boxG) + pad + 40;
+
+  const container = document.getElementById('canvas-container');
+  container.style.width = totalW + 'px';
+  container.style.height = totalH + 'px';
+
+  canvas.width = totalW * dpr;
+  canvas.height = totalH * dpr;
+  canvas.style.width = totalW + 'px';
+  canvas.style.height = totalH + 'px';
+  ctx.scale(dpr, dpr);
+
+  // Clear
+  ctx.fillStyle = '#0d1117';
+  ctx.fillRect(0, 0, totalW, totalH);
+
+  boxPositions = [];
+
+  filteredData.forEach((pres, i) => {
+    const x = pad + i * (colW + colG);
+
+    // Column header background
+    ctx.fillStyle = '#161b22';
+    ctx.fillRect(x, 0, colW, headerH);
+
+    // President number
+    ctx.fillStyle = '#484f58';
+    ctx.font = `${11 * zoom}px -apple-system, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText(`#${pres.number}`, x + colW / 2, 16 * zoom);
+
+    // President name (possibly multi-line)
+    ctx.fillStyle = '#f0f6fc';
+    ctx.font = `bold ${12 * zoom}px -apple-system, sans-serif`;
+    const nameLines = wrapText(ctx, pres.name, colW - 10 * zoom);
+    nameLines.forEach((line, li) => {
+      ctx.fillText(line, x + colW / 2, (28 + li * 14) * zoom);
+    });
+
+    // Term info
+    ctx.fillStyle = '#8b949e';
+    ctx.font = `${10 * zoom}px -apple-system, sans-serif`;
+    const termY = (28 + nameLines.length * 14 + 4) * zoom;
+    const startYear = pres.term_start.slice(0, 4);
+    const endYear = pres.term_end.slice(0, 4);
+
+    if (pres.is_split) {
+      const endYear1 = pres.term_end_1.slice(0, 4);
+      const startYear2 = pres.term_start_2.slice(0, 4);
+      const endYear2 = pres.term_end_2.slice(0, 4);
+      ctx.fillText(`${startYear}–${endYear1}, ${startYear2}–${endYear2}`, x + colW / 2, termY);
+    } else {
+      ctx.fillText(`${startYear}–${endYear}`, x + colW / 2, termY);
+    }
+
+    // Event count
+    ctx.fillStyle = '#484f58';
+    ctx.font = `${10 * zoom}px -apple-system, sans-serif`;
+    ctx.fillText(`${pres.filteredEvents.length} events`, x + colW / 2, termY + 13 * zoom);
+
+    // Separator for split terms (Cleveland)
+    let gapAfterIndex = -1;
+    if (pres.is_split && pres.gap_start && pres.gap_end) {
+      const gapStart = pres.gap_start;
+      const gapEnd = pres.gap_end;
+      for (let ei = 0; ei < pres.filteredEvents.length - 1; ei++) {
+        if (pres.filteredEvents[ei].date <= gapStart && pres.filteredEvents[ei + 1].date >= gapEnd) {
+          gapAfterIndex = ei;
+          break;
+        }
+      }
+    }
+
+    // Draw event boxes
+    let yOffset = 0;
+    pres.filteredEvents.forEach((ev, ei) => {
+      // Insert gap marker for Cleveland's split terms
+      if (ei === gapAfterIndex + 1 && gapAfterIndex >= 0) {
+        const gapY = headerH + pad + (ei + yOffset) * (boxH + boxG);
+        // Draw dashed line with label
+        ctx.save();
+        ctx.strokeStyle = '#f0883e';
+        ctx.lineWidth = 2 * zoom;
+        ctx.setLineDash([4 * zoom, 4 * zoom]);
+        ctx.beginPath();
+        ctx.moveTo(x + 4 * zoom, gapY + boxH / 2);
+        ctx.lineTo(x + colW - 4 * zoom, gapY + boxH / 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        ctx.fillStyle = '#f0883e';
+        ctx.font = `${9 * zoom}px -apple-system, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.fillText('— gap between terms —', x + colW / 2, gapY + boxH / 2 + 3 * zoom);
+        yOffset += 1;
+      }
+
+      const by = headerH + pad + (ei + yOffset) * (boxH + boxG);
+      const color = scoreToColor(ev.score);
+
+      // Box
+      ctx.fillStyle = color;
+      roundRect(ctx, x + 2 * zoom, by, colW - 4 * zoom, boxH, 3 * zoom);
+      ctx.fill();
+
+      // Score text
+      ctx.fillStyle = scoreTextColor(ev.score);
+      ctx.font = `bold ${11 * zoom}px -apple-system, monospace`;
+      ctx.textAlign = 'left';
+      const scoreStr = ev.score > 0 ? `+${ev.score}` : `${ev.score}`;
+      ctx.fillText(scoreStr, x + 5 * zoom, by + boxH / 2 + 4 * zoom);
+
+      // Title (truncated)
+      ctx.font = `${10 * zoom}px -apple-system, sans-serif`;
+      ctx.textAlign = 'left';
+      const titleMaxW = colW - 42 * zoom;
+      let title = ev.title;
+      while (ctx.measureText(title).width > titleMaxW && title.length > 3) {
+        title = title.slice(0, -2) + '…';
+      }
+      ctx.fillText(title, x + 34 * zoom, by + boxH / 2 + 4 * zoom);
+
+      // Store position for hit-testing
+      boxPositions.push({
+        x: x + 2 * zoom,
+        y: by,
+        w: colW - 4 * zoom,
+        h: boxH,
+        event: ev,
+        president: pres,
+      });
+    });
+  });
+
+  document.getElementById('status').textContent =
+    `${filteredData.reduce((s,p) => s + p.filteredEvents.length, 0)} events across ${filteredData.length} presidents`;
+}
+
+function wrapText(ctx, text, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// ─── Tooltip ───
+const tooltip = document.getElementById('tooltip');
+const viewport = document.getElementById('viewport');
+
+function categoryColor(cat) {
+  const map = {
+    CIVIL_RIGHTS: '#a78bfa', MILITARY: '#f87171', FOREIGN_POLICY: '#60a5fa',
+    ECONOMIC: '#fbbf24', ENVIRONMENTAL: '#34d399', JUDICIAL: '#f472b6',
+    SCANDAL: '#fb923c', ELECTION: '#818cf8', LEGISLATION: '#2dd4bf',
+    DOMESTIC_POLICY: '#c084fc', EXECUTIVE_ORDER: '#e879f9',
+    HUMANITARIAN: '#fb7185', INFRASTRUCTURE: '#a3e635',
+    GOVERNANCE: '#94a3b8', OTHER: '#6b7280',
+  };
+  return map[cat] || '#6b7280';
+}
+
+viewport.addEventListener('mousemove', (e) => {
+  const rect = viewport.getBoundingClientRect();
+  const mx = e.clientX - rect.left + viewport.scrollLeft;
+  const my = e.clientY - rect.top + viewport.scrollTop;
+
+  let hit = null;
+  for (const bp of boxPositions) {
+    if (mx >= bp.x && mx <= bp.x + bp.w && my >= bp.y && my <= bp.y + bp.h) {
+      hit = bp;
+      break;
+    }
+  }
+
+  if (hit) {
+    const ev = hit.event;
+    const pres = hit.president;
+
+    tooltip.querySelector('.tt-title').textContent = ev.title;
+    tooltip.querySelector('.tt-date').textContent =
+      `${ev.date} · ${pres.name} (#${pres.number})`;
+
+    const scoreEl = tooltip.querySelector('.tt-score');
+    const scoreVal = ev.score > 0 ? `+${ev.score}` : `${ev.score}`;
+    scoreEl.textContent = scoreVal;
+    scoreEl.style.color = ev.score > 0 ? '#4ade80' : ev.score < 0 ? '#f87171' : '#8b949e';
+
+    const desc = ev.description;
+    tooltip.querySelector('.tt-desc').textContent =
+      desc.length > 250 ? desc.slice(0, 250) + '…' : desc;
+
+    tooltip.querySelector('.tt-impact').textContent = ev.impact;
+
+    const catColor = categoryColor(ev.category);
+    tooltip.querySelector('.tt-meta').innerHTML =
+      `<span class="tt-badge" style="background:${catColor}22;color:${catColor};border:1px solid ${catColor}44">${ev.category.replace(/_/g, ' ')}</span>` +
+      `<span>Importance: ${'★'.repeat(ev.importance)}${'☆'.repeat(5 - ev.importance)}</span>`;
+
+    // Position tooltip
+    let tx = e.clientX + 14;
+    let ty = e.clientY + 14;
+    tooltip.style.display = 'block';
+    const tRect = tooltip.getBoundingClientRect();
+    if (tx + tRect.width > window.innerWidth - 10) tx = e.clientX - tRect.width - 14;
+    if (ty + tRect.height > window.innerHeight - 10) ty = e.clientY - tRect.height - 14;
+    tooltip.style.left = tx + 'px';
+    tooltip.style.top = ty + 'px';
+  } else {
+    tooltip.style.display = 'none';
+  }
+});
+
+viewport.addEventListener('mouseleave', () => {
+  tooltip.style.display = 'none';
+});
+
+// ─── Click to open source ───
+viewport.addEventListener('click', (e) => {
+  const rect = viewport.getBoundingClientRect();
+  const mx = e.clientX - rect.left + viewport.scrollLeft;
+  const my = e.clientY - rect.top + viewport.scrollTop;
+
+  for (const bp of boxPositions) {
+    if (mx >= bp.x && mx <= bp.x + bp.w && my >= bp.y && my <= bp.y + bp.h) {
+      if (bp.event.source) window.open(bp.event.source, '_blank');
+      break;
+    }
+  }
+});
+
+// ─── Zoom ───
+const zoomSlider = document.getElementById('zoom-slider');
+const zoomLabel = document.getElementById('zoom-label');
+
+zoomSlider.addEventListener('input', () => {
+  zoom = parseFloat(zoomSlider.value);
+  zoomLabel.textContent = Math.round(zoom * 100) + '%';
+  render();
+});
+
+// Mouse wheel zoom
+viewport.addEventListener('wheel', (e) => {
+  if (e.ctrlKey || e.metaKey) {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.1 : 0.1;
+    zoom = Math.max(0.3, Math.min(2.5, zoom + delta));
+    zoomSlider.value = zoom;
+    zoomLabel.textContent = Math.round(zoom * 100) + '%';
+    render();
+  }
+}, { passive: false });
+
+// ─── Filters ───
+document.getElementById('cat-filter').addEventListener('change', applyFilters);
+document.getElementById('imp-filter').addEventListener('change', applyFilters);
+
+// ─── Init ───
+loadData();
+</script>
+</body>
+</html>
