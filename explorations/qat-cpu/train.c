@@ -50,9 +50,24 @@
 #define GEN_EVERY    2500
 #endif
 #define GEN_LEN      200
+#ifndef LR
 #define LR           3e-4f
+#endif
 #define WEIGHT_DECAY 0.01f
 #define GEN_TEMP     0.8f
+
+/* TRAIN_MODE: 0=all (default), 1=FP32 only, 2=QAT only, 3=QAT+INT8bwd only */
+#ifndef TRAIN_MODE
+#define TRAIN_MODE   0
+#endif
+
+/* CSV output file prefix (default: "eval_log") -> writes "<prefix>.csv" */
+#ifndef CSV_PREFIX
+#define CSV_PREFIX   "eval_log"
+#endif
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
 
 /* ========================================================================
  * GPT Model
@@ -796,55 +811,76 @@ int main(int argc, char **argv) {
     gpt_free(tmp);
 
     /* ---- Open CSV log ---- */
-    FILE *csv = fopen("eval_log.csv", "w");
+    char csv_filename[256];
+    snprintf(csv_filename, sizeof(csv_filename), "%s.csv", STR(CSV_PREFIX));
+    FILE *csv = fopen(csv_filename, "w");
     if (csv) {
         fprintf(csv, "mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec\n");
         fflush(csv);
     }
+    printf("CSV log: %s\n", csv_filename);
 
+    TrainResult res_fp32 = {0}, res_qat = {0}, res_qat2 = {0};
+
+#if TRAIN_MODE == 0 || TRAIN_MODE == 1
     /* ---- Train FP32 baseline ---- */
-    uint64_t rng_fp32[4];
-    rng_seed(rng_fp32, 42);
-    GPTModel *model_fp32 = gpt_create(&kd, rng_fp32);
-    gpt_set_qat(model_fp32, false);
+    {
+        uint64_t rng_fp32[4];
+        rng_seed(rng_fp32, 42);
+        GPTModel *model_fp32 = gpt_create(&kd, rng_fp32);
+        gpt_set_qat(model_fp32, false);
 
-    uint64_t train_rng_fp32[4];
-    rng_seed(train_rng_fp32, 123);
-    TrainResult res_fp32 = train_model("FP32", model_fp32,
-                                        train_data, train_len,
-                                        val_data, val_len,
-                                        train_rng_fp32, csv);
+        uint64_t train_rng_fp32[4];
+        rng_seed(train_rng_fp32, 123);
+        res_fp32 = train_model("FP32", model_fp32,
+                               train_data, train_len,
+                               val_data, val_len,
+                               train_rng_fp32, csv);
+        gpt_free(model_fp32);
+    }
+#endif
 
+#if TRAIN_MODE == 0 || TRAIN_MODE == 2
     /* ---- Train QAT (INT8 forward, FP32 backward) ---- */
-    uint64_t rng_qat[4];
-    rng_seed(rng_qat, 42);  /* Same seed for same init */
-    GPTModel *model_qat = gpt_create(&kd, rng_qat);
-    gpt_set_qat(model_qat, true);
+    {
+        uint64_t rng_qat[4];
+        rng_seed(rng_qat, 42);
+        GPTModel *model_qat = gpt_create(&kd, rng_qat);
+        gpt_set_qat(model_qat, true);
 
-    uint64_t train_rng_qat[4];
-    rng_seed(train_rng_qat, 123);  /* Same data order */
-    TrainResult res_qat = train_model("QAT (INT8 fwd, FP32 bwd)", model_qat,
-                                       train_data, train_len,
-                                       val_data, val_len,
-                                       train_rng_qat, csv);
+        uint64_t train_rng_qat[4];
+        rng_seed(train_rng_qat, 123);
+        res_qat = train_model("QAT_fwd", model_qat,
+                               train_data, train_len,
+                               val_data, val_len,
+                               train_rng_qat, csv);
+        gpt_free(model_qat);
+    }
+#endif
 
+#if TRAIN_MODE == 0 || TRAIN_MODE == 3
     /* ---- Train QAT with INT8 backward ---- */
-    uint64_t rng_qat2[4];
-    rng_seed(rng_qat2, 42);
-    GPTModel *model_qat2 = gpt_create(&kd, rng_qat2);
-    gpt_set_qat(model_qat2, true);
-    gpt_set_int8_backward(model_qat2, true);
+    {
+        uint64_t rng_qat2[4];
+        rng_seed(rng_qat2, 42);
+        GPTModel *model_qat2 = gpt_create(&kd, rng_qat2);
+        gpt_set_qat(model_qat2, true);
+        gpt_set_int8_backward(model_qat2, true);
 
-    uint64_t train_rng_qat2[4];
-    rng_seed(train_rng_qat2, 123);
-    TrainResult res_qat2 = train_model("QAT (INT8 fwd+bwd)", model_qat2,
-                                        train_data, train_len,
-                                        val_data, val_len,
-                                        train_rng_qat2, csv);
+        uint64_t train_rng_qat2[4];
+        rng_seed(train_rng_qat2, 123);
+        res_qat2 = train_model("QAT_fwd_bwd", model_qat2,
+                                train_data, train_len,
+                                val_data, val_len,
+                                train_rng_qat2, csv);
+        gpt_free(model_qat2);
+    }
+#endif
 
     if (csv) fclose(csv);
 
-    /* ---- Comparison ---- */
+#if TRAIN_MODE == 0
+    /* ---- Comparison (only when all modes run) ---- */
     printf("\n========================================\n");
     printf("COMPARISON\n");
     printf("========================================\n");
@@ -883,11 +919,9 @@ int main(int argc, char **argv) {
     printf("  Perplexity ratio:  %.3f\n", ppl_ratio2);
     printf("  BPB delta:         %+.3f bits/byte\n", bpb_delta2);
     printf("  Speedup:           %.2fx\n", speedup2);
+#endif
 
     /* Cleanup */
-    gpt_free(model_fp32);
-    gpt_free(model_qat);
-    gpt_free(model_qat2);
     free(tokens);
 
     return 0;
