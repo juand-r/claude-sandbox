@@ -109,15 +109,27 @@ $\mathbf{I}[f] \approx \sqrt{2n/\pi}$.
 
 \paragraph{Relevance to the thesis.}
 Each row of a binary weight matrix followed by a sign activation computes
-an LTF. The bounded noise sensitivity of LTFs means that:
+an LTF. Note that here $n$ denotes the number of inputs to the LTF
+(i.e., the layer width $d$ in the thesis, not $\log_2 d$). The bounded
+noise sensitivity of LTFs means that:
 \begin{itemize}
-  \item Each neuron in a binary layer is moderately sensitive to its inputs
-    (influence $O(\sqrt{d})$ out of $d$ inputs, at $d = 1024$ this is $\approx 25$).
+  \item Each neuron in a binary layer with $d$ inputs has total influence
+    $O(\sqrt{d})$; at $d = 1024$ this is $\approx 25$.
   \item The spectral tail (high-degree coefficients) is bounded, supporting
     the spectral concentration hypothesis.
   \item The sign activation acts as a ``spectral filter,'' preserving
     low-degree structure and discarding high-frequency noise.
 \end{itemize}
+
+\begin{remark}[Variable naming]\label{rem:ltf-variable-naming}
+Caution: in the LTF literature, $n$ denotes the number of input bits to
+the function. In the thesis's spectral parameterization, each row of
+a $d \times d$ weight matrix is viewed as a Boolean function on
+$n = \log_2 d$ variables (the ``Fourier domain'' variables). These are
+different uses of $n$. When we say an LTF on $d$ inputs has total
+influence $O(\sqrt{d})$, we mean the LTF viewed as a function on $d$
+literal input coordinates, \emph{not} on the $\log_2 d$ Fourier variables.
+\end{remark}
 
 
 % ══════════════════════════════════════════════════════════════════════
@@ -134,37 +146,35 @@ treatment.
 \subsection{Definition}\label{sec:rm-def}
 
 \begin{definition}[Reed--Muller code]\label{def:reed-muller}
-The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ is the set
-of all evaluation vectors of multilinear polynomials of degree $\leq r$
-over $n$ Boolean variables.
-
-Formally: identify each Boolean function $f \colon \pmone^n \to \pmone$
-with its evaluation vector $v_f \in \pmone^{2^n}$. Then
-\[
-  \text{RM}(r, n) = \{v_f : f \text{ has Fourier degree} \leq r\}
-  = \left\{\sum_{|S| \leq r} c_S\, \chi_S : c_S \in \R \text{ such that the evaluations are in } \pmone\right\}.
-\]
+The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ is defined
+over $\text{GF}(2) = \{0, 1\}$ as follows: it consists of all evaluation
+vectors of polynomials $p(b_1, \ldots, b_n)$ over $\text{GF}(2)$ of
+total degree $\leq r$, evaluated at all $2^n$ points of $\{0,1\}^n$.
 \end{definition}
 
-Wait---this is not quite right. The standard definition uses $\{0,1\}$
-and $\text{GF}(2)$, while we are working with $\pmone$ and $\R$.
-Let us give both perspectives.
-
 \paragraph{$\text{GF}(2)$ perspective.}
-Over $\text{GF}(2) = \{0, 1\}$, $\text{RM}(r, n)$ is a linear code of
-length $2^n$ consisting of all evaluation vectors of polynomials
-$p(b_1, \ldots, b_n)$ over $\text{GF}(2)$ of total degree $\leq r$.
+$\text{RM}(r, n)$ is a linear code of length $2^n$ over $\text{GF}(2)$.
 Its dimension is $\sum_{i=0}^r \binom{n}{i}$ and its minimum distance
 is $2^{n-r}$.
 
 \paragraph{$\pmone$ perspective.}
-Converting to $\pmone$: the evaluation vector of a degree-$\leq r$
-$\text{GF}(2)$-polynomial $p$, mapped via $b \mapsto (-1)^b$, gives
-a $\pmone$-vector whose Walsh--Fourier support lies in
-$\{S \subseteq [n] : |S| \leq r\}$.
+We can convert to the $\pmone$ convention via $b \mapsto (-1)^b$. Under
+this map, a $\text{GF}(2)$-monomial $b_{i_1} \cdots b_{i_k}$ (which
+computes AND over $\{0,1\}$) does \emph{not} become the Walsh monomial
+$\chi_{\{i_1, \ldots, i_k\}}(x) = x_{i_1} \cdots x_{i_k}$. Instead,
+$b_i = \frac{1 - x_i}{2}$, so $\text{GF}(2)$-monomials of degree $k$
+become $\pmone$-polynomials involving Walsh monomials of degree
+$\leq k$ (but not only degree $k$).
 
-Conversely, any $\pmone$-vector whose Walsh--Fourier expansion has
-degree $\leq r$ corresponds to a codeword in $\text{RM}(r, n)$.
+Nevertheless, the \emph{span} is preserved: the vector space of
+$\text{GF}(2)$-polynomials of degree $\leq r$, after the $b \mapsto (-1)^b$
+map, coincides with the vector space spanned by $\{\chi_S : |S| \leq r\}$.
+This is because both are $(r+1)$-level filtrations of the same
+$2^n$-dimensional space, and the change-of-basis between the two is
+unitriangular.
+
+Thus, $\text{RM}(r,n)$ in the $\pmone$ convention consists exactly of
+those $\pmone$-vectors whose Walsh--Fourier expansion has degree $\leq r$.
 
 \begin{theorem}[RM parameters]\label{thm:rm-params}
 $\text{RM}(r, n)$ is a linear code with:
@@ -181,8 +191,10 @@ $\text{RM}(r, n)$ is a linear code with:
     and all-$(-1)$. Minimum distance $2^n$. (Degree~0 functions are
     constants $\pm 1$.)
   \item $\text{RM}(1, n)$: the first-order RM code. Dimension $n + 1$.
-    Codewords are affine functions $\pm \chi_S$ for $|S| \leq 1$ (plus
-    their negations). Minimum distance $2^{n-1}$.
+    Codewords are the $\pmone$-evaluation vectors of affine functions
+    $c_\emptyset \oplus c_1 b_1 \oplus \cdots \oplus c_n b_n$ over
+    $\text{GF}(2)$, i.e., functions of Walsh--Fourier degree $\leq 1$.
+    There are $2^{n+1}$ codewords. Minimum distance $2^{n-1}$.
   \item $\text{RM}(n, n)$: the full code, containing all $2^{2^n}$
     Boolean functions. Minimum distance~1.
 \end{itemize}

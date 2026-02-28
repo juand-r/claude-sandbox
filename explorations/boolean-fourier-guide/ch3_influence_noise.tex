@@ -89,11 +89,14 @@ all $n$ variables has $\max_i \Inf_i[f] \geq \Omega(\log n / n)$.
 For $\rho \in [-1, 1]$, the \emph{Bonami--Beckner noise operator}
 $T_\rho$ acts on $f \colon \pmone^n \to \R$ by
 \begin{equation}\label{eq:noise-operator}
-  T_\rho f(x) = \E_y[f(y)],
+  T_\rho f(x) = \E_{y \sim N_\rho(x)}[f(y)],
 \end{equation}
-where $y$ is the ``$\rho$-correlated copy'' of $x$: each coordinate
-$y_i$ independently equals $x_i$ with probability $\frac{1+\rho}{2}$
-and $-x_i$ with probability $\frac{1-\rho}{2}$.
+where $y$ is the ``$\rho$-correlated copy'' of $x$: given a fixed
+$x \in \pmone^n$, each coordinate $y_i$ is chosen independently to equal
+$x_i$ with probability $\frac{1+\rho}{2}$ and $-x_i$ with probability
+$\frac{1-\rho}{2}$. The expectation is over the random choice of $y$
+(not over $x$). Thus $T_\rho f$ is a function: it takes a specific
+$x$ and returns the expected value of $f$ on a random neighbor of $x$.
 \end{definition}
 
 Equivalently, $y_i = x_i \cdot z_i$ where $z_i$ is an independent

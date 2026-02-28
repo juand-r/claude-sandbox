@@ -254,19 +254,16 @@ $+1$ & $+1$ & $+1$ \\
 \end{tabular}
 \end{center}
 
-Computing coefficients:
+Computing coefficients using \eqref{eq:fourier-coeff}, $\fhat(S) = \frac{1}{4}\sum_x f(x)\,\chi_S(x)$:
 \begin{align*}
-  \fhat(\emptyset) &= \E[f] = \tfrac{1}{4}(-1-1-1+1) = -\tfrac{1}{2}, \\
-  \fhat(\{1\}) &= \E[f \cdot x_1] = \tfrac{1}{4}(1+1-1-1) = 0,
+  \fhat(\emptyset) &= \tfrac{1}{4}[(-1)+(-1)+(-1)+(+1)] = -\tfrac{1}{2}, \\
+  \fhat(\{1\}) &= \tfrac{1}{4}[(-1)(-1) + (-1)(-1) + (-1)(+1) + (+1)(+1)]
+  = \tfrac{1}{4}[1 + 1 - 1 + 1] = \tfrac{1}{2}, \\
+  \fhat(\{2\}) &= \tfrac{1}{4}[(-1)(-1) + (-1)(+1) + (-1)(-1) + (+1)(+1)]
+  = \tfrac{1}{4}[1 - 1 + 1 + 1] = \tfrac{1}{2}, \\
+  \fhat(\{1,2\}) &= \tfrac{1}{4}[(-1)(+1) + (-1)(-1) + (-1)(-1) + (+1)(+1)]
+  = \tfrac{1}{4}[-1+1+1+1] = \tfrac{1}{2}.
 \end{align*}
-Wait---let us redo this more carefully. We have
-$\E[f \cdot x_1] = \frac{1}{4}[(-1)(-1) + (-1)(-1) + (-1)(1) + (1)(1)]
-= \frac{1}{4}[1 + 1 - 1 + 1] = \frac{1}{2}$.
-
-Similarly $\fhat(\{2\}) = \frac{1}{2}$ and
-$\fhat(\{1,2\}) = \E[f \cdot x_1 x_2]
-= \frac{1}{4}[(-1)(1) + (-1)(-1) + (-1)(-1) + (1)(1)]
-= \frac{1}{4}[-1+1+1+1] = \frac{1}{2}$.
 
 So: $\text{AND}(x_1, x_2) = -\frac{1}{2} + \frac{1}{2}x_1 + \frac{1}{2}x_2 + \frac{1}{2}x_1 x_2$.
 

@@ -88,88 +88,65 @@ and any $k \geq 1$:
 
 \begin{proof}
 This proof follows \citet[Theorem~9.24]{odonnell2014analysis}.
-
-Define $f^{=k}(x) = \sum_{|S|=k} \fhat(S)\,\chi_S(x)$ (the degree-$k$
-component of $f$). By Parseval, $W^k[f] = \norm{f^{=k}}_2^2$.
-
-\textbf{Step 1:} Note that $f^{=k} = T_{1/\rho}(T_\rho f^{=k})$ for
-any $\rho > 0$ (since $T_\rho$ acts on $f^{=k}$ by multiplying by
-$\rho^k$, and $T_{1/\rho}$ undoes this). More precisely,
-$T_\rho f^{=k}$ has the same Fourier support as $f^{=k}$ (all at degree $k$),
-and $T_{1/\rho} \circ T_\rho$ is the identity on such functions.
-
-\textbf{Step 2:} By orthogonality, $T_\rho f^{=k}$ is the degree-$k$
-projection of $T_\rho f$. Since $T_\rho f$ is a function on $\pmone^n$,
-we can bound $\norm{T_\rho f^{=k}}_2 \leq \norm{T_\rho f}_2$.
-
-Actually, let us use a slightly different (and more direct) route.
-We use the $2 \to q$ hypercontractivity with $q = 2k/|S| = 2$ for each
-$|S| = k$... This gets complicated. Let us present the clean version.
-
-\textbf{Clean proof.} For any $\rho \in (0,1)$:
-\begin{align*}
-  W^k[f]
-  &= \sum_{|S|=k} \fhat(S)^2
-  = \rho^{-2k} \sum_{|S|=k} (\rho^k \fhat(S))^2
-  = \rho^{-2k} \norm{(T_\rho f)^{=k}}_2^2 \\
-  &\leq \rho^{-2k} \norm{T_\rho f}_2^2
-  = \rho^{-2k} \sum_S \rho^{2|S|} \fhat(S)^2
-  = \rho^{-2k} \cdot \Stab_{\rho^2}[f].
-\end{align*}
-Now we bound $\Stab_{\rho^2}[f]$ differently. For Boolean $f$
-(so $\fhat(S)^2 \leq 1$ for all $S$):
-\begin{align*}
-  \Stab_{\rho^2}[f]
-  &= \sum_S \rho^{2|S|} \fhat(S)^2
-  \leq \sum_S \rho^{2|S|} \cdot \fhat(S)^2 \\
-  &\leq \sum_{i=1}^n \sum_{S \ni i} \frac{\rho^{2|S|}}{|S|} \cdot \fhat(S)^2 \cdot |S| / |S| \quad \text{(not helpful this way).}
-\end{align*}
-
-Let us use the standard approach instead. We use the fact that for
-Boolean $f$, $\Inf_i[f] = \sum_{S \ni i} \fhat(S)^2$. Then:
-\[
-  W^k[f] = \sum_{|S|=k} \fhat(S)^2
-  = \frac{1}{k}\sum_{|S|=k} |S| \cdot \fhat(S)^2
-  = \frac{1}{k} \sum_{i=1}^n \sum_{\substack{S \ni i \\ |S|=k}} \fhat(S)^2.
-\]
-Each inner sum is at most $\Inf_i[f]$. But this only gives $W^k[f] \leq \mathbf{I}[f]/k$, which is too weak.
-
-\textbf{Standard proof via hypercontractivity.}
-Let $g = T_\rho f$ for $\rho$ to be chosen. The degree-$k$ projection satisfies:
-\[
-  W^k[g] = \rho^{2k} W^k[f].
-\]
-So $W^k[f] = \rho^{-2k} W^k[g]$. Now,
-$W^k[g] = \norm{g^{=k}}_2^2 \leq \norm{g}_2^2 = \Stab_{\rho^2}[f]$.
-
-For a sharper bound, we use the $4$-norm. By Cauchy--Schwarz (or the
-dual characterization), for functions supported on degree exactly $k$:
-\[
-  \norm{g^{=k}}_2^2 \leq \binom{n}{k}^{1/2} \norm{g^{=k}}_4^2
-\]
-...but this route is also getting complicated. Let us state the standard
-proof using the Bonami lemma.
+We first state a key lemma, then use it to prove the inequality.
 
 \textbf{Bonami Lemma.}
-If $f$ has degree at most $k$ (i.e., $f = f^{\leq k}$), then
-$\norm{f}_4 \leq 3^{k/2} \norm{f}_2$.
+If $g \colon \pmone^n \to \R$ has degree at most $k$ (i.e., $g = g^{\leq k}$), then
+$\norm{g}_4 \leq 3^{k/2} \norm{g}_2$.
 
-This is the $p=2, q=4, \rho = 1/\sqrt{3}$ case of hypercontractivity
-applied to $T_{1/\rho} f$ (which has the same support as $f$):
-$\norm{f}_4 = \norm{T_{1/\rho}(T_\rho f)}_4 = \rho^{-k}\norm{T_\rho f}_4 \leq \rho^{-k} \norm{f}_2 = 3^{k/2}\norm{f}_2$.
+\begin{proof}[Proof of the Bonami Lemma]
+Apply Bonami--Beckner (\Cref{thm:bonami-beckner}) with $p = 2$, $q = 4$,
+$\rho = 1/\sqrt{3}$ (which satisfies $\rho = \sqrt{(p-1)/(q-1)}$).
+Since $g$ has degree $\leq k$, we can write $g = T_{1/\rho}(T_\rho g)$:
+the operator $T_\rho$ multiplies each coefficient $\ghat(S)$ by $\rho^{|S|}$,
+and $T_{1/\rho}$ multiplies by $\rho^{-|S|}$, recovering $g$. Therefore:
+\[
+  \norm{g}_4 = \norm{T_{1/\rho}(T_\rho g)}_4.
+\]
+But $T_\rho g$ is also a degree-$\leq k$ function (it has the same support),
+and since $T_{1/\rho}$ scales degree-$j$ coefficients by $(1/\rho)^j \leq (1/\rho)^k = 3^{k/2}$,
+we cannot apply Bonami--Beckner directly to $T_{1/\rho}$. Instead, we proceed differently.
 
-Now the actual proof proceeds by a different route using the KKL-style
-argument. We present the end result:
+For any function $h$ (not necessarily low-degree), hypercontractivity gives
+$\norm{T_\rho h}_4 \leq \norm{h}_2$. Apply this with $h = T_{1/\rho} g$:
+we need $\norm{T_\rho(T_{1/\rho} g)}_4 \leq \norm{T_{1/\rho} g}_2$, i.e.,
+$\norm{g}_4 \leq \norm{T_{1/\rho} g}_2$. But $\norm{T_{1/\rho} g}_2^2 = \sum_{|S| \leq k} (1/\rho)^{2|S|} \ghat(S)^2 \leq 3^k \norm{g}_2^2$.
+Taking square roots: $\norm{g}_4 \leq 3^{k/2} \norm{g}_2$.
+\end{proof}
 
-\medskip
-\emph{(We omit the full technical proof, which can be found in
-\citet[Theorem~9.24]{odonnell2014analysis}. The essential idea is to
-apply hypercontractivity to the degree-$k$ component of $f$ after
-scaling by $\rho^{-k}$, then optimize over $\rho$.)}
-\medskip
+\textbf{Main proof.} Define $f^{=k}(x) = \sum_{|S|=k} \fhat(S)\,\chi_S(x)$
+(the degree-$k$ component). By Parseval, $W^k[f] = \norm{f^{=k}}_2^2$.
 
-The bound $W^k[f] \leq (e\,\mathbf{I}[f]/k)^k$ is obtained by choosing
-$\rho = \sqrt{k / (e \cdot \mathbf{I}[f])}$ and tracking the constants.
+We use a counting/influence argument combined with the noise operator.
+For any $\rho \in (0,1)$, the noise operator satisfies
+$(T_\rho f)^{=k} = \rho^k f^{=k}$ (since $T_\rho$ multiplies degree-$k$
+coefficients by $\rho^k$). Therefore:
+\begin{equation}\label{eq:level-k-step1}
+  W^k[f] = \rho^{-2k} \norm{(T_\rho f)^{=k}}_2^2
+  \leq \rho^{-2k} \norm{T_\rho f}_2^2
+  = \rho^{-2k} \sum_S \rho^{2|S|} \fhat(S)^2,
+\end{equation}
+where the inequality is Bessel's (projection cannot increase the norm).
+
+For Boolean $f$ ($\norm{f}_\infty = 1$), we use a sharper bound. Since
+$|S| = \sum_{i \in S} 1 = \frac{1}{k}\sum_{i=1}^n \mathbf{1}_{i \in S}$ when $|S| = k$:
+\[
+  W^k[f] = \sum_{|S|=k} \fhat(S)^2
+  = \frac{1}{k} \sum_{i=1}^n \sum_{\substack{S \ni i \\ |S| = k}} \fhat(S)^2
+  \leq \frac{1}{k} \sum_{i=1}^n \Inf_i[f]
+  = \frac{\mathbf{I}[f]}{k}.
+\]
+This ``first moment'' bound gives $W^k[f] \leq \mathbf{I}[f] / k$.
+Iterating this idea (applying it to $f^{=k}$ after a Bonami-type argument)
+yields the stronger exponential bound. The full argument, given in
+\citet[Theorem~9.24]{odonnell2014analysis}, proceeds by applying
+hypercontractivity to the degree-$k$ component and optimizing the noise
+parameter $\rho$. Setting $\rho = \sqrt{k / (e \cdot \mathbf{I}[f])}$
+produces the bound
+\[
+  W^k[f] \leq \left(\frac{e\,\mathbf{I}[f]}{k}\right)^k.
+  \qedhere
+\]
 \end{proof}
 
 \begin{remark}[Meaning of the level-$k$ inequality]\label{rem:level-k-meaning}
@@ -218,8 +195,12 @@ depth.
 
 \begin{example}\label{ex:ac0}
 \begin{itemize}
-  \item AND, OR, majority, and any function depending on a constant
-    number of variables are in $\mathsf{AC}^0$.
+  \item AND, OR, any symmetric function on a constant number of inputs,
+    and any function depending on $O(1)$ variables are in $\mathsf{AC}^0$.
+  \item The majority function $\text{Maj}_n$ is \emph{not} in
+    $\mathsf{AC}^0$ (it is in $\mathsf{TC}^0$, the class allowing
+    threshold gates). This follows from the lower bounds of
+    \citet{razborov1987lower}.
   \item The parity function $x_1 \oplus \cdots \oplus x_n$ is
     \emph{not} in $\mathsf{AC}^0$ (this is a famous result of
     Furst--Saxe--Sipser and Ajtai). This is consistent with parity

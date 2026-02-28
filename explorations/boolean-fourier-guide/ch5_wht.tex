@@ -162,15 +162,8 @@ operations, using only additions and subtractions (no multiplications).
 
 \subsection{The Butterfly Algorithm}\label{sec:butterfly}
 
-The recursion $H_n = H_1 \otimes H_{n-1}$ means:
-\[
-  H_n v =
-  \begin{pmatrix} I \otimes H_{n-1} \\ I \otimes H_{n-1} \end{pmatrix}
-  \begin{pmatrix} v_{\text{top}} + v_{\text{bot}} \\ v_{\text{top}} - v_{\text{bot}} \end{pmatrix}
-  \quad \text{(not quite right---let us be precise.)}
-\]
-
-More carefully, write $v = \binom{v_0}{v_1}$ where $v_0, v_1 \in \R^{N/2}$
+The recursion $H_n = H_1 \otimes H_{n-1}$ yields a divide-and-conquer
+decomposition. Write $v = \binom{v_0}{v_1}$ where $v_0, v_1 \in \R^{N/2}$
 are the first and second halves. Then:
 \[
   H_n v = (H_1 \otimes H_{n-1}) \binom{v_0}{v_1}
@@ -203,6 +196,15 @@ $T(N) = O(N \log N)$.
 The triple loop performs exactly $n \cdot N/2$ additions and
 $n \cdot N/2$ subtractions, for a total of $nN = N \log_2 N$ addition/subtraction
 operations. \emph{No multiplications are needed.}
+
+\paragraph{Normalization convention.}
+\Cref{alg:fwht} computes the \emph{unnormalized} WHT: the output is
+$H_n v$. To obtain the Fourier coefficients $\fhat(S)$, divide by $N$
+(i.e., compute $\frac{1}{N} H_n v$). Some implementations incorporate
+the $1/N$ factor into the algorithm or split it as $1/\sqrt{N}$ on both
+the forward and inverse transforms. In this guide, we follow the
+convention that the forward transform is unnormalized and the inverse
+includes the $1/N$ factor, matching \Cref{def:wht}.
 
 This is the crucial property for the thesis: when the input vector $v$
 has integer entries (e.g., $v \in \pmone^N$), the entire FWHT can be

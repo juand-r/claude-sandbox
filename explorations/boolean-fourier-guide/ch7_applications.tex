@@ -246,6 +246,71 @@ $\to$ \Cref{sec:bnn-background} (BNN background),
 
 
 % ──────────────────────────────────────────────────────────────────────
+\section{Worked Example: Spectral Parameterization of One Row}\label{sec:worked-example}
+
+We trace the full pipeline of the thesis's spectral parameterization for
+a single row of a binary weight matrix, using concrete numbers.
+
+\paragraph{Setup.}
+Let $d = 8$ ($n = 3$). Consider a row $w = (+1, -1, -1, +1, -1, +1, +1, -1) \in \pmone^8$.
+We view $w$ as a Boolean function $f \colon \pmone^3 \to \pmone$ by
+identifying column index $j \in \{0, \ldots, 7\}$ with
+$\text{bin}(j) \in \pmone^3$.
+
+\paragraph{Step 1: Compute the Walsh--Fourier coefficients.}
+Apply the FWHT (\Cref{alg:fwht}) to $w$, then divide by $N = 8$.
+The result is:
+\[
+  \fhat(\emptyset) = 0,\;
+  \fhat(\{1\}) = 0,\;
+  \fhat(\{2\}) = 0,\;
+  \fhat(\{3\}) = 0,\;
+  \fhat(\{1,2\}) = 0,\;
+  \fhat(\{1,3\}) = 0,\;
+  \fhat(\{2,3\}) = 0,\;
+  \fhat(\{1,2,3\}) = 1.
+\]
+So $f = \chi_{\{1,2,3\}}$, the parity function on 3 bits. All energy
+is at degree 3.
+
+\paragraph{Step 2: Degree-$k$ truncation.}
+At truncation degree $k = 1$: $f^{\leq 1}(x) = 0$ (all coefficients at
+degrees 0 and 1 are zero). The sign-rounding error bound
+(\Cref{prop:sign-rounding}) gives
+$\Prob[\sgn(f^{\leq 1}) \neq f] \leq \sum_{|S|>1} \fhat(S)^2 = 1$.
+The bound is vacuous---as expected, since parity is the worst case for
+low-degree approximation.
+
+\paragraph{Step 3: Contrast with majority.}
+The $\text{Maj}_3$ function from \Cref{ex:majority} has 75\% of its
+energy at degree 1 and 25\% at degree 3. The degree-$\leq 1$ truncation
+captures most of the spectral energy, and $\sgn(f^{\leq 1})$ agrees with
+$f$ on all 8 inputs (as shown in \Cref{ex:maj3-truncation}).
+
+\paragraph{Step 4: Spectral reconstruction.}
+In the thesis pipeline, we store only the low-degree coefficients
+$\{\widehat{w}(S) : |S| \leq k\}$, reconstruct the continuous weights
+via the inverse FWHT (which uses the \emph{same} matrix $H_n$), then
+apply the sign function. For the degree-1 truncation of the $\text{Maj}_3$
+example from \Cref{ex:maj3-truncation}:
+\begin{enumerate}
+  \item Store: $\fhat(\emptyset) = 0$, $\fhat(\{1\}) = \fhat(\{2\}) = \fhat(\{3\}) = 1/2$.
+  \item Reconstruct: $f^{\leq 1}(x) = \frac{1}{2}(x_1 + x_2 + x_3)$.
+  \item Sign: $\sgn(f^{\leq 1}(x)) = \sgn(x_1 + x_2 + x_3) = \text{Maj}_3(x)$.
+\end{enumerate}
+The reconstruction is \emph{exact} in this case (0\% error), even though
+we discarded the degree-3 coefficient $\fhat(\{1,2,3\}) = -1/2$.
+The spectral parameterization uses 4 parameters (degree $\leq 1$)
+instead of 8 weights, a $2\times$ compression.
+
+\paragraph{Takeaway.}
+Spectrally concentrated functions (like majority) can be faithfully
+recovered from their low-degree coefficients, while spectrally dispersed
+functions (like parity) cannot. The thesis hypothesizes that trained
+binary weights resemble the former, not the latter.
+
+
+% ──────────────────────────────────────────────────────────────────────
 \section{Concept Dependency Graph}\label{sec:dependency}
 
 The following shows the logical dependencies among the key concepts.

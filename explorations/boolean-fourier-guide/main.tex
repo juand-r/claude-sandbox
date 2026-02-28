@@ -97,6 +97,62 @@ networks---from scratch, with full proofs and references.
 \tableofcontents
 \newpage
 
+% ── Roadmap ──────────────────────────────────────────────────────────
+\chapter*{Roadmap}\label{ch:roadmap}
+\addcontentsline{toc}{chapter}{Roadmap}
+
+This guide develops the mathematical background for the thesis
+\emph{Spectral Methods for Binary Neural Networks} in seven chapters,
+each building on the previous ones.
+
+\begin{description}[style=nextline]
+\item[Chapter~\ref{ch:prereqs}: Prerequisites.]
+  Inner product spaces, the Kronecker product, and the probability tools
+  (Markov/Chebyshev inequalities, CLT, Berry--Ess\'een) used later.
+  Skip this if you are comfortable with undergraduate linear algebra and
+  probability.
+
+\item[Chapter~\ref{ch:boolean-fourier}: Fourier Analysis on the Boolean Hypercube.]
+  The core of the guide. We define the parity basis, prove orthonormality,
+  derive the Fourier expansion and Parseval's identity, and work through
+  detailed examples (dictator, AND, majority, parity). We also prove the
+  sign-rounding error bound used in the thesis.
+
+\item[Chapter~\ref{ch:influence-noise}: Influence and Noise Sensitivity.]
+  Influence of variables, total influence, the noise operator $T_\rho$,
+  noise stability, and their spectral formulas. These quantify the
+  sensitivity of Boolean functions to perturbations.
+
+\item[Chapter~\ref{ch:concentration}: Hypercontractivity and Spectral Concentration.]
+  The Bonami--Beckner inequality, the level-$k$ inequality, and the
+  LMN theorem. These are the main tools for proving that ``simple''
+  Boolean functions concentrate their spectral energy on low degrees.
+
+\item[Chapter~\ref{ch:wht}: The Walsh--Hadamard Transform.]
+  Hadamard matrices, the WHT as the computational realization of the
+  Fourier expansion, the fast algorithm (FWHT), and its comparison with
+  the FFT.
+
+\item[Chapter~\ref{ch:ltf-codes-groups}: Linear Threshold Functions, Codes, and Groups.]
+  Three topics connecting the theory to the thesis: LTFs and Chow's theorem,
+  Reed--Muller codes and spectral truncation, and the group-theoretic
+  perspective on the Walsh--Fourier basis.
+
+\item[Chapter~\ref{ch:applications}: Application to Binary Neural Networks.]
+  How all the preceding material applies to the thesis: the spectral
+  parameterization, normalization, and a chapter-by-chapter map from
+  this guide to the thesis.
+\end{description}
+
+\noindent
+\textbf{Dependencies.} Chapters~1--2 are foundational and should be
+read first. Chapter~3 depends on~2. Chapter~4 depends on~3.
+Chapter~5 depends on~1--2 but is largely independent of~3--4.
+Chapter~6 depends on~2 and~5. Chapter~7 draws on all preceding chapters.
+See also the dependency graph in \Cref{sec:dependency}.
+
+\newpage
+
 \input{ch1_prerequisites}
 \input{ch2_boolean_fourier}
 \input{ch3_influence_noise}
