@@ -222,12 +222,40 @@ column-major over row-major data remains the bottleneck.
 ### Path forward
 
 To make INT8 backward viable, the per-column quantization must be vectorized.
-Options:
-1. **AVX-512 per-column quantize**: Transpose the matrix first (block-wise
-   with AVX-512), then quantize per-row on the transposed data. This converts
-   the problem to two fast operations instead of one slow one.
-2. **Fused transpose+quantize**: Do both in a single tiled pass to improve
-   cache utilization.
-3. **Skip per-column entirely**: Use per-row quantization for B matrix too,
-   accepting that dequantization becomes a matrix multiply instead of
-   element-wise scale. This changes the math but might still converge.
+See `VECTORIZE_PER_COLUMN_PLAN.md` for the full plan. Summary: row-major tiled
+AVX-512 absmax + row-major vectorized quantize. No transposes needed.
+
+## Training verification (dim=512 and dim=1024)
+
+After the transpose_fp32 refactoring (moved to shared function in memory.c),
+verified that training quality is unchanged and ran dim=1024 as baseline.
+
+### dim=512, 1000 steps (post-attention-OMP)
+
+```
+                          FP32      QAT     QAT+INT8bwd
+Val Perplexity:           7.73     7.68         7.76
+Val BPB:                 2.951    2.941        2.957
+ms/step:                 382.0    378.9        452.4
+Speedup:                    --    1.01x        0.84x
+```
+
+Quality identical to pre-refactoring results (ppl 7.73/7.68/7.76). Absolute
+timing is faster because attention OMP was added after the original numbers
+were recorded (535/484/520 ms). The OMP speedup benefits both modes equally
+(backward is all FP32), compressing the QAT forward-pass advantage.
+
+### dim=1024, 200 steps (50.9M params)
+
+```
+                          FP32      QAT     QAT+INT8bwd
+Val Perplexity:          13.76    13.78        13.58
+Val BPB:                 3.782    3.784        3.764
+ms/step:                1604.7   1472.7       1740.0
+Speedup:                    --    1.09x        0.92x
+```
+
+At dim=1024, QAT provides 1.09x speedup over FP32 (vs 1.01x at dim=512).
+The larger GEMM sizes favor INT8 VNNI more. INT8 backward quality is fine
+(ppl 13.58 vs 13.76 — actually slightly better, likely noise) but still
+8% slower than QAT fwd-only due to quantize_per_column overhead.
