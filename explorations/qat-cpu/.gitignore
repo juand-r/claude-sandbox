@@ -1,7 +1,9 @@
 *.o
+*.log
 test_qat
 train_qat
 debug_qat
 profile_qat
 bench_roofline
 bench_attn
+test_bs8.csv

@@ -1,0 +1,2 @@
+mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec
+QAT_fwd,0,1024,5.1410,5.1410,93.2719,6.543,8086.0,127,27.4
