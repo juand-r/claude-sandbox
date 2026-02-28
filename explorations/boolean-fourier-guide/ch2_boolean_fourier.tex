@@ -80,8 +80,20 @@ Since each $x_i \in \pmone$, each $\chi_S(x)$ is a product of $\pm 1$
 values, hence $\chi_S(x) \in \pmone$. The parity functions are themselves
 Boolean functions. This is a distinctive feature of the Boolean Fourier
 basis: the basis elements live in the same alphabet as the functions
-being analyzed. (Compare with classical Fourier analysis, where the basis
-$\{e^{2\pi i k x}\}$ is complex-valued even when analyzing real functions.)
+being analyzed.
+
+\begin{remark}[Analogy with classical Fourier analysis]\label{rem:fourier-analogy}
+In classical Fourier analysis, the functions $\{e^{2\pi i k x}\}_{k \in \Z}$
+form an orthonormal basis for $L^2([0,1])$, and every square-integrable
+function decomposes into ``frequencies'' indexed by integers $k$. Here,
+the parity functions $\{\chi_S\}_{S \subseteq [n]}$ play the same role:
+every function on $\pmone^n$ decomposes into components indexed by subsets
+$S$. The \emph{degree} $|S|$ is the analogue of frequency: degree-0 is
+the DC component (the mean), degree-1 terms vary linearly, and high-degree
+terms oscillate rapidly across the hypercube. The key simplification is
+that the Boolean basis is real-valued ($\pm 1$), so there are no complex
+numbers.
+\end{remark}
 
 \begin{example}\label{ex:parity-functions}
 For $n = 3$:
@@ -276,12 +288,14 @@ The spectral energy is spread evenly across degrees 0, 1, 1, 2.
 \subsection{The Majority Function}\label{sec:majority}
 
 \begin{example}[Majority on 3 bits]\label{ex:majority}
-$\text{Maj}_3(x) = \sgn(x_1 + x_2 + x_3)$: output $+1$ if at least 2
-of 3 inputs are $+1$.
+$\text{Maj}_3(x) = \sgn(x_1 + x_2 + x_3)$, where $\sgn(z) = +1$ if
+$z > 0$ and $\sgn(z) = -1$ if $z < 0$ (for odd $n$, the sum
+$x_1 + \cdots + x_n$ is never zero, so $\sgn(0)$ does not arise).
+This outputs $+1$ if at least 2 of 3 inputs are $+1$.
 
 Truth table and Fourier computation:
 \begin{center}
-\begin{tabular}{ccccc}
+\begin{tabular}{cccc}
 \toprule
 $x_1$ & $x_2$ & $x_3$ & $\text{Maj}_3$ \\
 \midrule
@@ -297,7 +311,8 @@ $+1$ & $+1$ & $+1$ & $+1$ \\
 \end{tabular}
 \end{center}
 
-The Fourier coefficients are:
+The Fourier coefficients are computed by the same procedure as the AND
+example (applying \eqref{eq:fourier-coeff} to each of the 8 rows):
 \begin{align*}
   \fhat(\emptyset) &= 0 \quad \text{(balanced: 4 outputs $+1$, 4 outputs $-1$)}, \\
   \fhat(\{1\}) = \fhat(\{2\}) = \fhat(\{3\}) &= \tfrac{1}{2}, \\
@@ -364,9 +379,14 @@ degrees $\{0, 1, \ldots, n\}$.
 
 For a \emph{random} Boolean function (chosen uniformly at random from all
 $2^{2^n}$ Boolean functions on $n$ bits), the expected energy at degree
-$k$ is $\binom{n}{k} / 2^n$. This follows a $\text{Binomial}(n, 1/2)$
-distribution, peaked at $k = n/2$. So a random Boolean function has its
-energy concentrated around degree $n/2$.
+$k$ is $\binom{n}{k} / 2^n$.  To see this: for a random Boolean $f$,
+$\E[\fhat(S)^2] = \E[\E_x[f(x)\chi_S(x)]^2]$. By expanding the square
+and using independence of $f(x)$ and $f(x')$ for $x \neq x'$, one
+obtains $\E[\fhat(S)^2] = 1/2^n$ for every $S \neq \emptyset$. Since
+there are $\binom{n}{k}$ subsets of size $k$, the expected energy at
+degree $k$ is $\binom{n}{k}/2^n$, which follows a
+$\text{Binomial}(n, 1/2)$ distribution peaked at $k = n/2$.
+So a random Boolean function has its energy concentrated around degree $n/2$.
 
 The thesis's central hypothesis is that \emph{trained} binary weight
 matrices, viewed as Boolean functions, have their energy concentrated at
@@ -447,7 +467,11 @@ For $f, g \colon \pmone^n \to \R$:
 \end{theorem}
 
 \begin{proof}
-Expand $f$ and $g$ in the Fourier basis and use orthonormality.
+Expand both functions:
+$\ip{f}{g} = \E_x\!\left[\sum_S \fhat(S)\chi_S(x) \cdot \sum_T \ghat(T)\chi_T(x)\right]
+= \sum_S \sum_T \fhat(S)\,\ghat(T)\,\E_x[\chi_S(x)\chi_T(x)]
+= \sum_S \fhat(S)\,\ghat(S)$,
+where the last step uses orthonormality: $\E[\chi_S \chi_T] = \delta_{ST}$.
 \end{proof}
 
 \begin{definition}[Dyadic convolution]\label{def:convolution}
@@ -456,7 +480,8 @@ For $f, g \colon \pmone^n \to \R$, the \emph{dyadic convolution} is
   (f \ast g)(x) = \E_y[f(y)\, g(x \cdot y)],
 \]
 where $x \cdot y = (x_1 y_1, \ldots, x_n y_n)$ is coordinatewise
-multiplication.
+multiplication. (The name ``dyadic'' refers to the group $\Z_2^n$;
+see \Cref{sec:group-theory}.)
 \end{definition}
 
 \begin{theorem}[Convolution theorem]\label{thm:convolution}

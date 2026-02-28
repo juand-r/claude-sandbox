@@ -56,18 +56,24 @@ By homogeneity, we may assume $\norm{f}_p = 1$. We need to verify
 $(|a + \rho b|^q + |a - \rho b|^q)^{1/q}
 \leq 2^{1/q}$ when $(|a+b|^p + |a-b|^p)^{1/p} = 2^{1/p}$.
 
-This is a calculus exercise. The key insight is that the constraint
-$\rho \leq \sqrt{(p-1)/(q-1)}$ is exactly what makes the two-variable
-optimization work out.
+One approach is to define $F(\rho) = \norm{a + \rho b x}_q^q
+= \tfrac{1}{2}(|a+\rho b|^q + |a - \rho b|^q)$ and show that
+$F(\rho) \leq F(1)^{q/p}$ whenever $\rho \leq \sqrt{(p-1)/(q-1)}$,
+using convexity of $t \mapsto |t|^q$ and the constraint to bound $F''$.
+The condition $\rho \leq \sqrt{(p-1)/(q-1)}$ is exactly what controls
+the curvature.
 \end{proof}
 
 \begin{proof}[Proof for general $n$ (sketch)]
 Write $f(x) = g(x_1, \ldots, x_{n-1}) + x_n \cdot h(x_1, \ldots, x_{n-1})$
 where $g$ and $h$ are functions of $n-1$ variables. The noise operator
-factors: $T_\rho f = T_\rho g + \rho x_n \cdot T_\rho h$ (with $T_\rho$
-applied to $g$ and $h$ as functions of $x_1, \ldots, x_{n-1}$). Apply
-the $n=1$ result in the variable $x_n$ (holding the others fixed), then
-use the inductive hypothesis for $g$ and $h$.
+factors: $T_\rho f = T_\rho g + \rho x_n \cdot T_\rho h$. This is
+because $T_\rho$ acts independently on each coordinate: the $\rho$-noise
+on $x_n$ replaces the $x_n$ factor by $\rho x_n$ (the $n=1$ result),
+while simultaneously applying $T_\rho$ to $g$ and $h$ in the remaining
+$n-1$ variables. One then applies the $n=1$ inequality in the variable
+$x_n$ (holding the others fixed) and the inductive hypothesis for $g$
+and $h$.
 \end{proof}
 
 
@@ -95,22 +101,21 @@ If $g \colon \pmone^n \to \R$ has degree at most $k$ (i.e., $g = g^{\leq k}$), t
 $\norm{g}_4 \leq 3^{k/2} \norm{g}_2$.
 
 \begin{proof}[Proof of the Bonami Lemma]
-Apply Bonami--Beckner (\Cref{thm:bonami-beckner}) with $p = 2$, $q = 4$,
-$\rho = 1/\sqrt{3}$ (which satisfies $\rho = \sqrt{(p-1)/(q-1)}$).
-Since $g$ has degree $\leq k$, we can write $g = T_{1/\rho}(T_\rho g)$:
-the operator $T_\rho$ multiplies each coefficient $\ghat(S)$ by $\rho^{|S|}$,
-and $T_{1/\rho}$ multiplies by $\rho^{-|S|}$, recovering $g$. Therefore:
+Set $\rho = 1/\sqrt{3}$, so that the $(p,q) = (2,4)$ case of
+Bonami--Beckner gives $\norm{T_\rho h}_4 \leq \norm{h}_2$ for any
+$h$. Apply this to $h = T_{1/\rho} g$ (here $T_{1/\rho}$ is the
+operator that multiplies each degree-$j$ coefficient by
+$(1/\rho)^j = 3^{j/2}$; it is defined spectrally even though
+$1/\rho > 1$ places it outside the probabilistic regime of
+\Cref{def:noise-operator}). Since $T_\rho(T_{1/\rho} g) = g$ by the
+semigroup property (\Cref{rem:semigroup}), this gives
+$\norm{g}_4 \leq \norm{T_{1/\rho} g}_2$. Now bound the right side:
 \[
-  \norm{g}_4 = \norm{T_{1/\rho}(T_\rho g)}_4.
+  \norm{T_{1/\rho} g}_2^2
+  = \sum_{|S| \leq k} (1/\rho)^{2|S|}\, \ghat(S)^2
+  \leq 3^k \norm{g}_2^2,
 \]
-But $T_\rho g$ is also a degree-$\leq k$ function (it has the same support),
-and since $T_{1/\rho}$ scales degree-$j$ coefficients by $(1/\rho)^j \leq (1/\rho)^k = 3^{k/2}$,
-we cannot apply Bonami--Beckner directly to $T_{1/\rho}$. Instead, we proceed differently.
-
-For any function $h$ (not necessarily low-degree), hypercontractivity gives
-$\norm{T_\rho h}_4 \leq \norm{h}_2$. Apply this with $h = T_{1/\rho} g$:
-we need $\norm{T_\rho(T_{1/\rho} g)}_4 \leq \norm{T_{1/\rho} g}_2$, i.e.,
-$\norm{g}_4 \leq \norm{T_{1/\rho} g}_2$. But $\norm{T_{1/\rho} g}_2^2 = \sum_{|S| \leq k} (1/\rho)^{2|S|} \ghat(S)^2 \leq 3^k \norm{g}_2^2$.
+since $(1/\rho)^{2|S|} = 3^{|S|} \leq 3^k$ for $|S| \leq k$.
 Taking square roots: $\norm{g}_4 \leq 3^{k/2} \norm{g}_2$.
 \end{proof}
 
@@ -137,11 +142,16 @@ $|S| = \sum_{i \in S} 1 = \frac{1}{k}\sum_{i=1}^n \mathbf{1}_{i \in S}$ when $|S
   = \frac{\mathbf{I}[f]}{k}.
 \]
 This ``first moment'' bound gives $W^k[f] \leq \mathbf{I}[f] / k$.
-Iterating this idea (applying it to $f^{=k}$ after a Bonami-type argument)
-yields the stronger exponential bound. The full argument, given in
-\citet[Theorem~9.24]{odonnell2014analysis}, proceeds by applying
-hypercontractivity to the degree-$k$ component and optimizing the noise
-parameter $\rho$. Setting $\rho = \sqrt{k / (e \cdot \mathbf{I}[f])}$
+The exponential improvement comes from combining this counting idea
+with the Bonami Lemma. The key observation: the first-moment bound
+is loose because the sum $\sum_{S \ni i} \fhat(S)^2 = \Inf_i[f]$
+includes \emph{all} degrees, not just degree~$k$. Hypercontractivity
+(via the Bonami Lemma) lets us control how much of $\Inf_i$ comes from
+degree exactly~$k$, by bounding the $L^4$ norm of $f^{=k}$ in terms of
+its $L^2$ norm. The full argument, given in
+\citet[Theorem~9.24]{odonnell2014analysis}, applies this to
+\eqref{eq:level-k-step1} and optimizes the noise
+parameter. Setting $\rho = \sqrt{k / (e \cdot \mathbf{I}[f])}$
 produces the bound
 \[
   W^k[f] \leq \left(\frac{e\,\mathbf{I}[f]}{k}\right)^k.
@@ -182,8 +192,9 @@ A \emph{Boolean circuit} is a directed acyclic graph (DAG) where:
   \item \emph{Input nodes} receive the variables $x_1, \ldots, x_n$
     (and their negations).
   \item \emph{Internal nodes} (``gates'') compute AND or OR of their
-    inputs. Each gate has unbounded \emph{fan-in} (it can take any
-    number of inputs).
+    inputs. Each gate has unbounded \emph{fan-in}: it can take any
+    number of inputs. (By contrast, the class $\mathsf{NC}$ restricts
+    each gate to fan-in~2.)
   \item One designated \emph{output gate} produces the function value.
 \end{itemize}
 
@@ -198,9 +209,11 @@ depth.
   \item AND, OR, any symmetric function on a constant number of inputs,
     and any function depending on $O(1)$ variables are in $\mathsf{AC}^0$.
   \item The majority function $\text{Maj}_n$ is \emph{not} in
-    $\mathsf{AC}^0$ (it is in $\mathsf{TC}^0$, the class allowing
-    threshold gates). This follows from the lower bounds of
-    \citet{razborov1987lower}.
+    $\mathsf{AC}^0$. It is in $\mathsf{TC}^0$, the class that
+    extends $\mathsf{AC}^0$ by allowing \emph{threshold gates}:
+    a threshold gate outputs $1$ if the (weighted) sum of its
+    inputs exceeds a given threshold. This follows from the lower
+    bounds of \citet{razborov1987lower}.
   \item The parity function $x_1 \oplus \cdots \oplus x_n$ is
     \emph{not} in $\mathsf{AC}^0$ (this is a famous result of
     Furst--Saxe--Sipser and Ajtai). This is consistent with parity
@@ -239,14 +252,16 @@ For a depth-$D$, size-$M$ circuit:
 The proof has two ingredients:
 
 \textbf{1. Random restrictions.}
-A random restriction $\rho$ sets each variable independently to $+1$,
-$-1$, or ``$\ast$'' (``leave free'') with specified probabilities.
-The H\r{a}stad switching lemma (a strengthening of the
-Furst--Saxe--Sipser lemma) shows that applying a random restriction to a
-depth-$D$ circuit produces a circuit of depth $D-1$ that with high
-probability can be simplified. Iterating, after $D-1$ rounds of
-restrictions, the function becomes a ``junta'' (depending on few variables)
-with high probability.
+A \emph{random restriction} $R$ sets each variable independently to
+$+1$, $-1$, or ``$\ast$'' (``leave free'') with specified
+probabilities. The H\r{a}stad switching lemma
+\citep{hastad1987computational} provides a quantitative version: if
+$f$ is computable by a depth-$D$ circuit of size~$M$ and each variable
+is kept alive with probability~$p$, then with probability at least
+$1 - M \cdot (5p)^{k/(D-1)}$ the restricted function depends on at most
+$k$ of the surviving variables. Iterating $D-1$ rounds of restrictions
+reduces the function to a ``junta'' (depending on few variables) with
+high probability.
 
 \textbf{2. Spectral interpretation.}
 A random restriction that keeps each variable alive with probability $p$
@@ -295,7 +310,12 @@ The algorithm works by:
 
 The challenge is identifying \emph{which} subsets $S$ have large
 coefficients, since there are $2^n$ possibilities. Kushilevitz and
-Mansour showed how to do this efficiently.
+Mansour showed how to do this efficiently using a ``tree pruning''
+technique: organise the $2^n$ subsets in a binary tree (one level per
+variable, branching on whether $i \in S$), and at each node estimate the
+total squared energy of the subtree. Branches with negligible energy are
+pruned, so only $O(s)$ branches survive to the leaves, keeping the
+search polynomial in $s$ rather than exponential in $n$.
 
 \begin{remark}[Relevance to the thesis]\label{rem:km-thesis}
 The thesis's spectral parameterization is related in spirit: it

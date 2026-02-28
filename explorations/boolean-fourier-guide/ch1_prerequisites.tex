@@ -92,12 +92,22 @@ Key properties (all straightforward to verify):
   \item $(A \otimes B)(C \otimes D) = (AC) \otimes (BD)$, when the
         products $AC$ and $BD$ are defined.
   \item $(A \otimes B)^\top = A^\top \otimes B^\top$.
-  \item If $A$ and $B$ are orthogonal, so is $A \otimes B$.
+  \item If $A$ and $B$ are orthogonal ($A^\top A = I$ and $B^\top B = I$),
+        so is $A \otimes B$. (More generally, if $A^\top A = \alpha I$
+        and $B^\top B = \beta I$, then
+        $(A \otimes B)^\top(A \otimes B) = \alpha\beta \cdot I$.)
   \item $\operatorname{tr}(A \otimes B) = \operatorname{tr}(A)\operatorname{tr}(B)$.
 \end{enumerate}
 
 Property (i) is the \emph{mixed-product rule}; it is the algebraic engine
 behind the recursive structure of the Hadamard matrix (\Cref{ch:wht}).
+
+\begin{example}[Mixed-product rule]\label{ex:mixed-product}
+Let $A = \bigl(\begin{smallmatrix} 1 & 1 \\ 1 & -1 \end{smallmatrix}\bigr) = H_1$.
+Then $(H_1 \otimes H_1)(H_1 \otimes H_1) = (H_1 H_1) \otimes (H_1 H_1)
+= (2I_2) \otimes (2I_2) = 4I_4$. This verifies that $H_2^2 = 4I_4$
+(which we will prove in general in \Cref{ch:wht}).
+\end{example}
 
 \begin{example}\label{ex:kronecker-2x2}
 The Hadamard matrix $H_1 = \bigl(\begin{smallmatrix} 1 & 1 \\ 1 & -1
@@ -122,9 +132,10 @@ Throughout this guide, probability spaces are finite (typically uniform
 on $\pmone^n$), so measure-theoretic subtleties do not arise.
 
 \begin{definition}[Expectation and variance]\label{def:expectation}
-For a random variable $X$ on a finite probability space $(\Omega, p)$:
+For a random variable $X$ on a finite probability space
+$(\Omega, \mu)$ (where $\mu(\omega)$ is the probability of outcome $\omega$):
 \[
-  \E[X] = \sum_{\omega \in \Omega} p(\omega)\, X(\omega),
+  \E[X] = \sum_{\omega \in \Omega} \mu(\omega)\, X(\omega),
   \qquad
   \Var[X] = \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2.
 \]
@@ -155,12 +166,17 @@ degree-truncation approximation bound (Proposition~3.1 of the thesis).
 
 \begin{theorem}[Central Limit Theorem]\label{thm:clt}
 Let $X_1, X_2, \ldots$ be independent, identically distributed random
-variables with $\E[X_i] = 0$ and $\Var[X_i] = \sigma^2 > 0$. Then
+variables with $\E[X_i] = 0$ and $\Var[X_i] = \sigma^2 > 0$. Write
+$S_n = X_1 + \cdots + X_n$ for the partial sum. Then
 \[
-  \frac{X_1 + \cdots + X_n}{\sigma\sqrt{n}}
+  \frac{S_n}{\sigma\sqrt{n}}
   \xrightarrow{d} \mathcal{N}(0, 1)
   \quad \text{as } n \to \infty.
 \]
+Here $\xrightarrow{d}$ denotes \emph{convergence in distribution}:
+$\Prob[S_n / (\sigma\sqrt{n}) \leq t] \to \Phi(t)$ for every $t$,
+where $\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^t e^{-s^2/2}\,ds$
+is the standard normal CDF.
 \end{theorem}
 
 The CLT tells us that $S_n / (\sigma \sqrt{n})$ is approximately
@@ -169,17 +185,16 @@ convergence. The Berry--Ess\'een theorem quantifies this.
 
 \begin{theorem}[Berry--Ess\'een; \citealp{berry1941accuracy,esseen1942rate}]\label{thm:berry-esseen}
 Under the hypotheses of \Cref{thm:clt}, with additionally
-$\E[|X_i|^3] = \rho < \infty$, we have
+$\E[|X_i|^3] = \gamma < \infty$, we have
 \[
   \sup_{t \in \R}
   \left|
     \Prob\!\left[\frac{S_n}{\sigma\sqrt{n}} \leq t\right]
     - \Phi(t)
   \right|
-  \leq \frac{C \rho}{\sigma^3 \sqrt{n}},
+  \leq \frac{C \gamma}{\sigma^3 \sqrt{n}},
 \]
-where $\Phi$ is the standard normal CDF and $C$ is a universal constant
-(the best known value is $C < 0.4748$).
+where $C$ is a universal constant (the best known value is $C < 0.4748$).
 \end{theorem}
 
 \paragraph{Why this matters for the thesis.}
@@ -198,19 +213,26 @@ as a replacement for BitNet's learned scaling factors.
 % ──────────────────────────────────────────────────────────────────────
 \section{$L^p$ Norms}\label{sec:lp-norms}
 
-For a function $f$ on a probability space $(\Omega, p)$ and $p \geq 1$:
+For a function $f$ on a probability space $(\Omega, \mu)$:
 
 \begin{definition}[$L^p$ norm]\label{def:lp}
+For $p \geq 1$:
 \[
   \norm{f}_p = \left(\E\!\left[|f|^p\right]\right)^{1/p}
-  = \left(\sum_{\omega \in \Omega} p(\omega)\, |f(\omega)|^p\right)^{1/p}.
+  = \left(\sum_{\omega \in \Omega} \mu(\omega)\, |f(\omega)|^p\right)^{1/p}.
 \]
 For $p = \infty$: $\norm{f}_\infty = \max_\omega |f(\omega)|$.
 \end{definition}
 
-We always have $\norm{f}_p \leq \norm{f}_q$ when $p \leq q$ (by Jensen's
-inequality; the direction may seem backwards, but recall we are on a
-probability space). The \emph{hypercontractivity} results in
+On a probability space, we always have $\norm{f}_p \leq \norm{f}_q$ for
+$1 \leq p \leq q$. To see this: the function $t \mapsto t^{q/p}$ is
+convex (since $q/p \geq 1$), so by Jensen's inequality,
+$(\E[|f|^p])^{q/p} \leq \E[|f|^q]$; taking $q$-th roots gives
+$\norm{f}_p \leq \norm{f}_q$. (The direction seems backwards compared
+to ``bigger exponent = bigger norm'' for sums, but the normalization by
+the probability measure reverses things.)
+
+The \emph{hypercontractivity} results in
 \Cref{ch:concentration} are striking precisely because they give a reverse
 inequality $\norm{T_\rho f}_q \leq \norm{f}_p$ for $q > p$, at the cost
 of applying the noise operator $T_\rho$.

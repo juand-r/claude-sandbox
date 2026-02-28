@@ -71,13 +71,15 @@ LTFs are ``low-complexity'' functions.
 Two distinct LTFs $f = \sgn(w^\top x)$ and $g = \sgn(v^\top x)$ define
 different halfspaces in $\R^n$. If they had the same Chow parameters,
 then $\E[f \cdot x_i] = \E[g \cdot x_i]$ for all $i$, meaning $f$ and
-$g$ agree on average with every coordinate projection. A geometric
-argument shows this forces $w$ and $v$ to define the same halfspace
-(up to positive scaling), hence $f = g$.
+$g$ agree on average with every coordinate projection.
 
-The full proof uses the fact that an LTF is determined by the half-space
-$\{z : w^\top z \geq 0\}$, and the Chow parameters encode sufficient
-information about this half-space. See \citet[Chapter~5]{odonnell2014analysis}.
+The key geometric insight: the Chow parameters determine the orthogonal
+projection of $f$ onto the degree-$1$ subspace of $L^2(\pmone^n)$. For
+LTFs, this projection is essentially the (normalised) weight vector---one
+can show $\fhat(\{i\}) = c \cdot w_i / \norm{w}_2$ for a constant $c$
+depending only on $\norm{w}$---so two LTFs with the same Chow parameters
+must have proportional weight vectors, hence define the same halfspace.
+See \citet[Chapter~5]{odonnell2014analysis} for the full argument.
 \end{proof}
 
 
@@ -90,8 +92,12 @@ LTFs have several spectral properties that are relevant to the thesis:
 LTFs are spectrally concentrated at low degrees. While the exact spectrum
 depends on the weight vector $w$, the majority function (equal weights)
 has 75\% of its energy at degree~1 for $n = 3$, and the concentration
-improves with $n$. For general LTFs, most of the spectral energy is
-within the first $O(\sqrt{n})$ degrees.
+improves with $n$. The total influence bound $\mathbf{I}[f] = O(\sqrt{n})$
+(\Cref{thm:ltf-noise} below), combined with the level-$k$ inequality
+(\Cref{thm:level-k}), gives the tail bound
+$W^k[f] \leq (e\sqrt{n}/k)^k$, which becomes small when
+$k \gg e\sqrt{n}$. So most of the spectral energy is within the first
+$O(\sqrt{n})$ degrees.
 
 \paragraph{Noise sensitivity.}
 LTFs have bounded noise sensitivity. The following result quantifies this:
@@ -102,8 +108,13 @@ $\mathbf{I}[f] = O(\sqrt{n})$.
 \end{theorem}
 
 More precisely, for $f = \sgn(w^\top x)$ with
-$\norm{w}_2 = 1$: $\mathbf{I}[f] = \Theta(\norm{w}_1 / \norm{w}_2)$
-(by Berry--Ess\'een arguments). For binary weights
+$\norm{w}_2 = 1$: $\mathbf{I}[f] = \Theta(\norm{w}_1)$ as
+$n \to \infty$ (the asymptotic is in $n$, with the implicit constants
+being absolute). The idea: each coordinate's influence equals the
+probability that $x_i$ is ``pivotal'' (flipping $x_i$ changes the sign
+of $w^\top x$), which can be estimated by the CLT applied to the sum
+$w^\top x$ minus the $i$-th term. Berry--Ess\'een
+(\Cref{thm:berry-esseen}) makes this rigorous. For binary weights
 $w \in \pmone^n$, $\norm{w}_1 = n$ and $\norm{w}_2 = \sqrt{n}$, giving
 $\mathbf{I}[f] \approx \sqrt{2n/\pi}$.
 
@@ -146,10 +157,18 @@ treatment.
 \subsection{Definition}\label{sec:rm-def}
 
 \begin{definition}[Reed--Muller code]\label{def:reed-muller}
-The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ is defined
-over $\text{GF}(2) = \{0, 1\}$ as follows: it consists of all evaluation
-vectors of polynomials $p(b_1, \ldots, b_n)$ over $\text{GF}(2)$ of
-total degree $\leq r$, evaluated at all $2^n$ points of $\{0,1\}^n$.
+Here $\text{GF}(2) = \{0, 1\}$ is the \emph{field with two elements},
+where addition is XOR ($0 \oplus 1 = 1$, $1 \oplus 1 = 0$) and
+multiplication is AND ($1 \cdot 1 = 1$, all others $0$). A
+\emph{linear code} of length $N$ over $\text{GF}(2)$ is a linear
+subspace of $\text{GF}(2)^N$; its \emph{dimension} is the dimension of
+this subspace, and its \emph{minimum distance} is the minimum Hamming
+distance between distinct codewords.
+
+The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ consists of
+all evaluation vectors of polynomials $p(b_1, \ldots, b_n)$ over
+$\text{GF}(2)$ of total degree $\leq r$, evaluated at all $2^n$ points
+of $\{0,1\}^n$.
 \end{definition}
 
 \paragraph{$\text{GF}(2)$ perspective.}
@@ -171,7 +190,12 @@ $\text{GF}(2)$-polynomials of degree $\leq r$, after the $b \mapsto (-1)^b$
 map, coincides with the vector space spanned by $\{\chi_S : |S| \leq r\}$.
 This is because both are $(r+1)$-level filtrations of the same
 $2^n$-dimensional space, and the change-of-basis between the two is
-unitriangular.
+\emph{unitriangular}: when expressing $\text{GF}(2)$-monomials in terms of
+Walsh monomials (ordered by degree), the matrix is lower-triangular with
+$1$s on the diagonal. Concretely, $b_i = (1 - x_i)/2$, so a
+$\text{GF}(2)$-monomial of degree $k$ equals $\prod_{i \in S}(1-x_i)/2^k$,
+which is $(\pm 1/2^k)\,\chi_S$ plus lower-degree Walsh terms. The
+leading coefficient is nonzero, ensuring invertibility at each level.
 
 Thus, $\text{RM}(r,n)$ in the $\pmone$ convention consists exactly of
 those $\pmone$-vectors whose Walsh--Fourier expansion has degree $\leq r$.
@@ -195,6 +219,29 @@ $\text{RM}(r, n)$ is a linear code with:
     $c_\emptyset \oplus c_1 b_1 \oplus \cdots \oplus c_n b_n$ over
     $\text{GF}(2)$, i.e., functions of Walsh--Fourier degree $\leq 1$.
     There are $2^{n+1}$ codewords. Minimum distance $2^{n-1}$.
+
+    \textbf{Worked example: $\text{RM}(1, 2)$.}
+    The affine functions over $\text{GF}(2)$ in two variables are:
+    $0$, $1$, $b_1$, $1 \oplus b_1$, $b_2$, $1 \oplus b_2$,
+    $b_1 \oplus b_2$, $1 \oplus b_1 \oplus b_2$---eight functions in
+    all ($2^{n+1} = 2^3 = 8$). Their evaluation vectors over
+    $\{0,1\}^2$, mapped to $\pmone$ via $0 \mapsto +1$, $1 \mapsto -1$:
+    \begin{center}
+    \begin{tabular}{lcc}
+    \toprule
+    Function & $\{0,1\}^2$ eval & $\pmone$ codeword \\
+    \midrule
+    $0$               & $(0,0,0,0)$ & $(+1,+1,+1,+1)$ \\
+    $b_1$             & $(0,1,0,1)$ & $(+1,-1,+1,-1)$ \\
+    $b_2$             & $(0,0,1,1)$ & $(+1,+1,-1,-1)$ \\
+    $b_1 \oplus b_2$  & $(0,1,1,0)$ & $(+1,-1,-1,+1)$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    (plus their bitwise complements for the remaining four).
+    These are exactly the evaluation vectors of the degree-$\leq 1$
+    Walsh functions: $1$, $x_1$, $x_2$, $x_1 x_2$ would be degree~2,
+    so it is excluded. Minimum distance = $2^{2-1} = 2$.
   \item $\text{RM}(n, n)$: the full code, containing all $2^{2^n}$
     Boolean functions. Minimum distance~1.
 \end{itemize}
@@ -227,8 +274,13 @@ Three properties of RM codes are relevant:
     The sign function applied to a continuous approximation
     $f^{\leq k}(x)$ is \emph{not} guaranteed to produce a codeword of
     $\text{RM}(k, n)$. The sign of a degree-$k$ polynomial can have
-    Fourier support up to degree~$n$. The RM connection provides
-    structural insight but does not directly constrain the output.
+    Fourier support up to degree~$n$. For example, the degree-1
+    polynomial $p(x) = \frac{1}{2}(x_1 + x_2 + x_3)$ has
+    $\sgn(p) = \text{Maj}_3$, which has a nonzero degree-3 Fourier
+    coefficient $\widehat{\text{Maj}}_3(\{1,2,3\}) = -\frac{1}{2}$.
+    The sign operation ``creates'' high-degree spectral content. The RM
+    connection provides structural insight but does not directly
+    constrain the output.
 \end{enumerate}
 
 
@@ -255,8 +307,9 @@ Then $\phi(a + b) = \phi(a) \cdot \phi(b)$ (coordinatewise).
 \begin{definition}[Character]\label{def:character}
 A \emph{character} of a finite abelian group $G$ is a group homomorphism
 $\chi \colon G \to \mathbb{C}^*$ (the nonzero complex numbers under
-multiplication). For $\Z_2^n$, all characters are real-valued (taking
-values in $\pmone$).
+multiplication). In general, characters are complex-valued, but for
+$\Z_2^n$ they turn out to be real---in fact $\pmone$-valued---as the
+proof below shows.
 \end{definition}
 
 \begin{theorem}\label{thm:characters-z2n}
@@ -310,3 +363,15 @@ $\pm 1$-valued), the transform uses only additions and subtractions, and
 the group structure is particularly transparent ($\Z_2^n$ is a product of
 copies of the simplest nontrivial group). This simplicity is precisely
 what makes it attractive for binary neural networks.
+
+\medskip
+\paragraph{Connecting the three perspectives.}
+All three topics in this chapter illuminate the same central phenomenon:
+the Walsh--Fourier basis is the \emph{natural} tool for analyzing
+binary-valued functions. LTFs show that the most basic computational
+unit (a threshold gate) has low-degree spectral concentration. Reed--Muller
+codes show that degree-bounded Walsh expansions form a classical
+error-correcting code. And the group-theoretic viewpoint explains
+\emph{why} the Walsh basis is canonical: it consists of exactly the
+characters of the underlying group $\Z_2^n$, the unique orthonormal
+basis that simultaneously diagonalizes all translation operators.

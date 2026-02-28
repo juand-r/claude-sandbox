@@ -29,15 +29,10 @@ sigmoid, etc.). The parameters $W$ and $b$ are typically stored in
 \subsection{The Transformer Architecture}\label{sec:transformer}
 
 The Transformer \citep{vaswani2017attention} is the dominant architecture
-for language modeling. Its key component is the \emph{self-attention}
-mechanism:
-\begin{equation}\label{eq:attention}
-  \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right) V,
-\end{equation}
-where $Q = W_Q X$, $K = W_K X$, $V = W_V X$ are linear projections of
-the input. A Transformer layer consists of multi-head attention followed
-by a feedforward network, both with residual connections and layer
-normalization.
+for language modeling. Its layers involve multiple linear projections
+(query, key, value, output, feedforward), each of the form $Y = WX + b$.
+For our purposes, the important point is that a Transformer has many
+weight matrices, and each can be binarized independently.
 
 \subsection{Binary Weight Networks}\label{sec:binary-weights}
 
@@ -107,7 +102,9 @@ $w_i \in \pmone^d$ is a vector of $d$ binary values.
 If $d = 2^n$ (a power of 2), we can view each row as a Boolean function
 $w_i \colon \pmone^n \to \pmone$ by identifying the column index
 $j \in \{0, \ldots, d-1\}$ with the hypercube point $\text{bin}(j) \in \pmone^n$
-via its binary representation.
+via its binary representation. (When $d$ is not a power of 2, the thesis
+pads rows to the next power of 2; the spectral parameterization then
+operates on the padded dimension.)
 
 Under this identification, the Walsh--Fourier expansion
 (\Cref{thm:fourier-expansion}) gives:
@@ -137,9 +134,12 @@ descent. To produce binary weights:
   \item Apply the sign function: $w_i(j) = \sgn(z_i(j))$.
 \end{enumerate}
 
-The error of this procedure is bounded by
-\Cref{prop:sign-rounding}: $\Prob[w_i(j) \neq f(j)] \leq \sum_{|S|>k} \fhat(S)^2$,
-where $f$ is the ``target'' Boolean function.
+At any point during training, the current spectral coefficients define a
+truncated approximation $z_i = f^{\leq k}$ to some underlying Boolean
+function $f = \sgn(z_i)$. The sign-rounding error bound
+(\Cref{prop:sign-rounding}) gives
+$\Prob[w_i(j) \neq f(j)] \leq \sum_{|S|>k} \fhat(S)^2$, where the
+tail energy depends on $f$ (which is itself evolving during training).
 
 \subsection{Normalization Without Learned Parameters}\label{sec:normalization}
 
@@ -150,10 +150,13 @@ principles:
 \paragraph{Parseval normalization (parameter level).}
 By Parseval's identity (\Cref{thm:parseval}), any Boolean function
 $f \colon \pmone^n \to \pmone$ satisfies $\sum_S \fhat(S)^2 = 1$.
-Projecting the spectral coefficients onto the unit sphere
-($\hat{w} \leftarrow \hat{w} / \norm{\hat{w}}_2$) maintains this
-constraint throughout training, ensuring the parameterization is
-inherently calibrated.
+After the sign projection, the result is always a Boolean function
+with unit energy, but the \emph{pre-sign} magnitudes of $f^{\leq k}$
+matter: they determine the ``confidence'' of the sign and hence the
+accuracy of the rounding. Projecting the spectral coefficients onto the
+unit sphere ($\hat{w} \leftarrow \hat{w} / \norm{\hat{w}}_2$) controls
+these magnitudes by ensuring $\sum_{|S| \leq k} \hat{w}(S)^2 = 1$
+throughout training.
 
 \paragraph{CLT normalization (activation level).}
 For any binary weight matrix $W \in \pmone^{d \times d}$ and uniform
@@ -163,8 +166,9 @@ random variables. By Berry--Ess\'een (\Cref{thm:berry-esseen}),
 $y_j / \sqrt{d} \approx \mathcal{N}(0, 1)$ for large $d$.
 
 The required normalization factor $1/\sqrt{d}$ is a fixed constant
-determined at model design time, not a learned parameter. For
-power-of-two $d$, it can even be implemented as a bit-shift.
+determined at model design time, not a learned parameter. When $n = \log_2 d$ is even, $1/\sqrt{d} = 2^{-n/2}$ is an exact
+power of two and can be implemented as a bit-shift (e.g., $d = 1024$
+gives $1/\sqrt{d} = 1/32 = 2^{-5}$).
 
 For Hadamard-structured layers ($W = \frac{1}{\sqrt{d}} H_n \cdot \text{diag}(s)$),
 the $1/\sqrt{d}$ factor is additionally an \emph{exact isometry}
@@ -218,9 +222,14 @@ $\to$ \Cref{sec:ltf} (LTFs), \Cref{thm:chow} (Chow's theorem),
 \Cref{thm:ltf-noise} (bounded noise sensitivity).
 
 \paragraph{Thesis \S2.8 (Multi-layer composition).}
-$\to$ \Cref{sec:noise-stability} (noise stability),
-the composition identity follows from the spectral formula
-(\Cref{thm:stab-spectral}) applied to composed functions.
+$\to$ \Cref{sec:noise-stability} (noise stability).
+When layer~1 computes $f$ and layer~2 computes $g$, the composed
+function is $g \circ f$. The key identity is that if the inputs to $f$
+are $\rho$-correlated, the outputs $f(x), f(y)$ are
+$\Stab_\rho[f]$-correlated (in expectation). Thus noise stability
+chains across layers: the effective correlation after $L$ layers depends
+on repeatedly applying the stability function $\rho \mapsto \Stab_\rho[f_\ell]$
+for each layer $\ell$.
 
 \paragraph{Thesis \S2.9 (Group-theoretic perspective).}
 $\to$ \Cref{sec:group-theory} (groups, characters, comparison table).
@@ -259,24 +268,23 @@ $\text{bin}(j) \in \pmone^3$.
 
 \paragraph{Step 1: Compute the Walsh--Fourier coefficients.}
 Apply the FWHT (\Cref{alg:fwht}) to $w$, then divide by $N = 8$.
-The result is:
-\[
-  \fhat(\emptyset) = 0,\;
-  \fhat(\{1\}) = 0,\;
-  \fhat(\{2\}) = 0,\;
-  \fhat(\{3\}) = 0,\;
-  \fhat(\{1,2\}) = 0,\;
-  \fhat(\{1,3\}) = 0,\;
-  \fhat(\{2,3\}) = 0,\;
-  \fhat(\{1,2,3\}) = 1.
-\]
+The three rounds of butterfly operations produce:
+\begin{align*}
+  \text{Round 0 ($h{=}1$):}\quad & (0,\, 2,\, 0,\, {-}2,\, 0,\, {-}2,\, 0,\, 2), \\
+  \text{Round 1 ($h{=}2$):}\quad & (0,\, 0,\, 0,\, 4,\, 0,\, 0,\, 0,\, {-}4), \\
+  \text{Round 2 ($h{=}4$):}\quad & (0,\, 0,\, 0,\, 0,\, 0,\, 0,\, 0,\, 8).
+\end{align*}
+Dividing by $N = 8$: all coefficients are $0$ except
+$\fhat(\{1,2,3\}) = 1$ (index $7 = 111_2$, corresponding to
+$S = \{1,2,3\}$).
 So $f = \chi_{\{1,2,3\}}$, the parity function on 3 bits. All energy
 is at degree 3.
 
 \paragraph{Step 2: Degree-$k$ truncation.}
 At truncation degree $k = 1$: $f^{\leq 1}(x) = 0$ (all coefficients at
-degrees 0 and 1 are zero). The sign-rounding error bound
-(\Cref{prop:sign-rounding}) gives
+degrees 0 and 1 are zero). Since $\sgn(0)$ is undefined (or assigned
+arbitrarily), the truncation gives no useful information. The
+sign-rounding error bound (\Cref{prop:sign-rounding}) gives
 $\Prob[\sgn(f^{\leq 1}) \neq f] \leq \sum_{|S|>1} \fhat(S)^2 = 1$.
 The bound is vacuous---as expected, since parity is the worst case for
 low-degree approximation.
@@ -356,12 +364,21 @@ An arrow $A \to B$ means ``$A$ is used in the proof/definition of $B$.''
   \draw[arrow] (fe) -- (ltf);
   \draw[arrow] (fe) -- (rm);
   \draw[arrow] (inf) -- (lk);
+  \draw[arrow] (ip) -- (had);
+  \draw[arrow] (fwht) -- (ltf);
 \end{tikzpicture}
 \end{center}
 
 
 % ──────────────────────────────────────────────────────────────────────
 \section{Suggestions for Further Reading}\label{sec:further-reading}
+
+\textbf{Suggested reading path.}
+Start with \citet{dewolf2008brief} for a quick overview (item~2 below),
+then \citet{odonnell2014analysis} Chapters~1--5 for the core theory
+(item~1). For the BNN context, read \citet{courbariaux2015binaryconnect}
+and \citet{wang2023bitnet} (item~9). The remaining items can be consulted
+as needed.
 
 \begin{enumerate}
   \item \textbf{Boolean Fourier analysis (comprehensive):}

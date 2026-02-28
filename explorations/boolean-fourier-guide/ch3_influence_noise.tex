@@ -35,13 +35,17 @@ $(x_1, \ldots, -x_i, \ldots, x_n)$.
 
 \begin{proof}
 Define $D_i f(x) = \frac{1}{2}(f(x) - f(x^{\oplus i}))$, the
-\emph{discrete derivative} in direction $i$. Then
-$f(x) \neq f(x^{\oplus i})$ iff $|D_i f(x)| = 1$ (since $f$ takes
-values $\pm 1$, the difference is $0$ or $\pm 2$). Thus:
+\emph{discrete derivative} in direction $i$. Since $f$ takes values in
+$\{+1,-1\}$, the difference $f(x) - f(x^{\oplus i})$ is either~$0$
+(when they agree) or $\pm 2$ (when they disagree). Thus $D_i f(x) \in
+\{0, \pm 1\}$, and $(D_i f(x))^2$ is the indicator of the event
+$f(x) \neq f(x^{\oplus i})$. Therefore:
 \[
   \Inf_i[f] = \E_x[(D_i f(x))^2].
 \]
-Now compute the Fourier expansion of $D_i f$. Since
+Now compute the Fourier expansion of $D_i f$. We use the
+\emph{Iverson bracket} notation: $[P]$ equals $1$ if predicate~$P$ is
+true and $0$ otherwise. Since
 $\chi_S(x^{\oplus i}) = (-1)^{[i \in S]} \chi_S(x)$ (flipping $x_i$
 negates $\chi_S$ iff $i \in S$):
 \[
@@ -80,6 +84,9 @@ $f$ (since each $\Inf_i[f] \leq 1$). The maximum is achieved by the
 parity function. A celebrated theorem of
 \citet{kahn1988influence} shows that every Boolean function depending on
 all $n$ variables has $\max_i \Inf_i[f] \geq \Omega(\log n / n)$.
+Informally, this means no Boolean function can spread its dependence so
+evenly that \emph{every} variable has negligibly small influence: there
+is always at least one variable with influence $\Omega(\log n / n)$.
 
 
 % ──────────────────────────────────────────────────────────────────────
@@ -89,7 +96,7 @@ all $n$ variables has $\max_i \Inf_i[f] \geq \Omega(\log n / n)$.
 For $\rho \in [-1, 1]$, the \emph{Bonami--Beckner noise operator}
 $T_\rho$ acts on $f \colon \pmone^n \to \R$ by
 \begin{equation}\label{eq:noise-operator}
-  T_\rho f(x) = \E_{y \sim N_\rho(x)}[f(y)],
+  T_\rho f(x) = \E_{y}[f(y)],
 \end{equation}
 where $y$ is the ``$\rho$-correlated copy'' of $x$: given a fixed
 $x \in \pmone^n$, each coordinate $y_i$ is chosen independently to equal
@@ -130,7 +137,17 @@ For $\rho$ close to~1, $T_\rho$ barely changes $f$: it slightly damps
 high-degree coefficients. For $\rho = 0$, $T_\rho f(x) = \fhat(\emptyset)$
 is just the mean. For $\rho$ close to~0, only the low-degree part of $f$
 survives. The noise operator is a ``low-pass filter'' on the Boolean
-hypercube.
+hypercube. The definition allows negative $\rho$: at the extreme
+$\rho = -1$, each $y_i = -x_i$ always, so $T_{-1} f(x) = f(-x)$.
+\end{remark}
+
+\begin{remark}[Semigroup property]\label{rem:semigroup}
+$T_\rho \, T_\sigma = T_{\rho\sigma}$. This is immediate from
+\Cref{thm:noise-spectral}: applying $T_\rho$ then $T_\sigma$ multiplies
+each degree-$k$ coefficient by $\rho^k \cdot \sigma^k = (\rho\sigma)^k$.
+In other words, adding noise twice (with parameters $\rho$ and $\sigma$)
+is the same as adding noise once with parameter $\rho\sigma$. This
+property is used implicitly in \Cref{ch:concentration}.
 \end{remark}
 
 
@@ -167,6 +184,9 @@ probability $\delta$, i.e., $\rho = 1 - 2\delta$. For Boolean $f$:
 \[
   \mathbf{NS}_\delta[f] = \frac{1 - \Stab_{1-2\delta}[f]}{2}.
 \]
+To see why: since $f(x), f(y) \in \{+1,-1\}$, the product $f(x)f(y)$
+is $+1$ when they agree and $-1$ when they disagree, so
+$\Prob[f(x) \neq f(y)] = (1 - \E[f(x)f(y)])/2 = (1 - \Stab_\rho[f])/2$.
 \end{definition}
 
 \paragraph{Relevance to the thesis.}
@@ -187,9 +207,15 @@ $\mathbf{I}[f] = \lim_{\delta \to 0} \frac{\mathbf{NS}_\delta[f]}{\delta}$.
 \end{proposition}
 
 \begin{proof}
-$\mathbf{NS}_\delta[f] = \frac{1}{2}(1 - \sum_S (1-2\delta)^{|S|} \fhat(S)^2)$.
-Differentiating at $\delta = 0$:
-$\frac{d}{d\delta}\mathbf{NS}_\delta[f]\big|_{\delta=0} = \sum_S |S| \cdot \fhat(S)^2 = \mathbf{I}[f]$.
+$\mathbf{NS}_\delta[f] = \frac{1}{2}\bigl(1 - \sum_S (1-2\delta)^{|S|} \fhat(S)^2\bigr)$.
+Differentiating via the chain rule:
+\[
+  \frac{d}{d\delta}\mathbf{NS}_\delta[f]
+  = \frac{1}{2}\sum_S (-1)(-2)|S|\,(1-2\delta)^{|S|-1}\,\fhat(S)^2
+  = \sum_S |S|\,(1-2\delta)^{|S|-1}\,\fhat(S)^2.
+\]
+Evaluating at $\delta = 0$ (i.e.\ $1-2\delta = 1$) gives
+$\sum_S |S|\,\fhat(S)^2 = \mathbf{I}[f]$.
 \end{proof}
 
 Total influence is the infinitesimal rate of change of noise sensitivity.
@@ -201,6 +227,26 @@ perturbations; functions with low total influence are noise-robust.
   \item \textbf{Dictator:} $\Stab_\rho[x_1] = \rho$.
   \item \textbf{Parity:} $\Stab_\rho[x_1 \cdots x_n] = \rho^n \to 0$
     exponentially. Parity is extremely noise-sensitive.
-  \item \textbf{$\text{Maj}_3$:} $\Stab_\rho = 3 \cdot \frac{1}{4}\rho + \frac{1}{4}\rho^3 = \frac{3\rho + \rho^3}{4}$.
+  \item \textbf{$\text{Maj}_3$:} Using $\fhat(\emptyset) = 0$,
+    three degree-1 coefficients each of size $\frac{1}{2}$, and one
+    degree-3 coefficient $-\frac{1}{2}$:
+    $\Stab_\rho = 0 \cdot \rho^0 + 3 \cdot \tfrac{1}{4}\rho + 0 \cdot \rho^2 + \tfrac{1}{4}\rho^3 = \tfrac{3\rho + \rho^3}{4}$.
 \end{itemize}
 \end{example}
+
+\medskip
+The following table summarises the key quantities for these three
+functions, illustrating how spectral concentration, influence, and noise
+sensitivity are tied together.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+& Total influence $\mathbf{I}[f]$ & $\mathbf{NS}_\delta$ (small $\delta$) & Spectral support \\
+\midrule
+Dictator $x_1$ & 1 & $\delta$ & all at degree~1 \\
+$\text{Maj}_3$ & $3/2$ & $\tfrac{3}{2}\delta$ & $75\%$ at degree~1 \\
+Parity $\chi_{[n]}$ & $n$ & $n\delta$ & all at degree~$n$ \\
+\bottomrule
+\end{tabular}
+\end{center}

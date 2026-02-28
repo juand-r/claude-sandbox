@@ -101,6 +101,26 @@ So row $r$ (corresponding to subset $S$) contains the values of $\chi_S$
 evaluated at all $N$ hypercube points, in the binary-counting order.
 \end{proof}
 
+\begin{remark}[Binary-counting order]\label{rem:binary-order}
+The convention above maps the column index $c$ to the hypercube point
+$x = ((-1)^{c_0}, (-1)^{c_1}, \ldots, (-1)^{c_{n-1}})$, where
+$c_0$ is the \emph{least} significant bit. Thus the LSB of $c$
+controls the \emph{first} coordinate $x_1$. For $n = 2$:
+
+\begin{center}
+\begin{tabular}{ccl}
+\toprule
+$c$ & $(c_1 c_0)_2$ & $(x_1, x_2) = ((-1)^{c_0}, (-1)^{c_1})$ \\
+\midrule
+$0$ & $00$ & $(+1, +1)$ \\
+$1$ & $01$ & $(-1, +1)$ \\
+$2$ & $10$ & $(+1, -1)$ \\
+$3$ & $11$ & $(-1, -1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{remark}
+
 
 % ──────────────────────────────────────────────────────────────────────
 \section{The Walsh--Hadamard Transform}\label{sec:wht-def}
@@ -163,10 +183,19 @@ operations, using only additions and subtractions (no multiplications).
 \subsection{The Butterfly Algorithm}\label{sec:butterfly}
 
 The recursion $H_n = H_1 \otimes H_{n-1}$ yields a divide-and-conquer
-decomposition. Write $v = \binom{v_0}{v_1}$ where $v_0, v_1 \in \R^{N/2}$
+decomposition. The Kronecker product gives the block form
+\[
+  H_1 \otimes H_{n-1}
+  = \begin{pmatrix} 1 \cdot H_{n-1} & 1 \cdot H_{n-1} \\
+                     1 \cdot H_{n-1} & (-1) \cdot H_{n-1} \end{pmatrix}
+  = \begin{pmatrix} H_{n-1} & H_{n-1} \\ H_{n-1} & -H_{n-1} \end{pmatrix}.
+\]
+Write $v = \binom{v_0}{v_1}$ where $v_0, v_1 \in \R^{N/2}$
 are the first and second halves. Then:
 \[
-  H_n v = (H_1 \otimes H_{n-1}) \binom{v_0}{v_1}
+  H_n v
+  = \begin{pmatrix} H_{n-1} & H_{n-1} \\ H_{n-1} & -H_{n-1} \end{pmatrix}
+    \binom{v_0}{v_1}
   = \binom{H_{n-1}(v_0 + v_1)}{H_{n-1}(v_0 - v_1)}.
 \]
 Each of the two recursive calls operates on a vector of half the size.
@@ -191,6 +220,13 @@ $T(N) = O(N \log N)$.
 \State \Return $v$ \Comment{$v$ now contains $H_n$ times the original $v$}
 \end{algorithmic}
 \end{algorithm}
+
+\paragraph{Iterative vs.\ recursive.}
+The recursive decomposition processes coordinates top-down (splitting on
+$x_n$ first, then $x_{n-1}$, etc.), while the iterative
+\Cref{alg:fwht} processes them bottom-up ($\ell = 0, 1, \ldots, n-1$).
+Both perform the same set of butterfly operations and produce the same
+result; only the order differs.
 
 \paragraph{Operation count.}
 The triple loop performs exactly $n \cdot N/2$ additions and
@@ -276,14 +312,17 @@ identity in the WHT:
 \begin{proposition}\label{prop:wht-convolution}
 Let $v, w \in \R^N$ represent functions on $\pmone^n$. Define the
 \emph{dyadic convolution} vector $(v \circledast w)_c = \frac{1}{N}\sum_{d} v_d \cdot w_{c \oplus d}$,
-where $\oplus$ is bitwise XOR. Then:
+where $\oplus$ denotes bitwise XOR (addition mod~2 on each coordinate).
+Then:
 \[
   H_n(v \circledast w) = \frac{1}{N} (H_n v) \odot (H_n w),
 \]
 where $\odot$ is componentwise multiplication.
 \end{proposition}
 
-This means dyadic convolution can be performed in $O(N \log N)$ time:
+This is \Cref{thm:convolution} (the abstract convolution theorem from
+\Cref{ch:boolean-fourier}) written in matrix notation.
+It means dyadic convolution can be performed in $O(N \log N)$ time:
 transform both vectors, multiply componentwise, inverse-transform.
 
 
@@ -300,15 +339,25 @@ $\text{diag}(s) \cdot x$ multiplies each component of $x$ by $\pm 1$
 (a componentwise sign change). The Hadamard multiplication $H_n$ then
 mixes all components.
 
-The normalization $1/\sqrt{N}$ ensures that $\norm{y}_2 = \norm{x}_2$
-(since both $\text{diag}(s)$ and $\frac{1}{\sqrt{N}} H_n$ preserve the
-$\ell_2$ norm---$\text{diag}(s)$ by $|s_i| = 1$, and
-$\frac{1}{\sqrt{N}} H_n$ by orthogonality).
+The normalization $1/\sqrt{N}$ ensures that $\norm{y}_2 = \norm{x}_2$:
+$\text{diag}(s)$ preserves the norm since $|s_i| = 1$, and
+$\frac{1}{\sqrt{N}} H_n$ preserves it because
+$\norm{\frac{1}{\sqrt{N}} H_n x}_2^2
+= \frac{1}{N} x^\top H_n^\top H_n x
+= \frac{1}{N} x^\top (N I) x = \norm{x}_2^2$,
+using property~(iii) of \Cref{thm:hadamard-props}.
 
 \paragraph{Spectral reconstruction.}
 The thesis's \texttt{SpectralLinear} layer works differently: it stores
-spectral coefficients $\hat{w}$ and reconstructs the spatial weight
-vector via $w = H_n \hat{w}$ (using the FWHT), then applies $\sgn(w)$
-to get binary weights. The reconstruction costs $O(N \log N)$ per row
-per training step, but is not needed at inference (the binary weights are
-stored directly).
+only the low-degree spectral coefficients $\hat{w}_{\leq k}$
+(degree~$\leq k$) and pads the remaining high-degree entries with zeros
+to form a full $N$-length vector $\hat{w}$. It then reconstructs the
+spatial weight vector via $w = H_n \hat{w}$ (using the FWHT) and
+applies $\sgn(w)$ to get binary weights. The FWHT always operates on
+a full $N$-length vector; the truncation is implemented by zero-padding.
+The reconstruction costs $O(N \log N)$ per row per training step, but is
+not needed at inference (the binary weights are stored directly).
+
+Since the FWHT involves only additions and subtractions, it is
+numerically very stable even for floating-point inputs (such as the
+continuous spectral coefficients produced by gradient descent).
