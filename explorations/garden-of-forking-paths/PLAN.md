@@ -1,48 +1,53 @@
 # Plan
 
-## Phase 1: Core Data Model
+## Phase 1: Core Data Model [DONE]
 
-- [ ] Define the knowledge space data structures:
+- [x] Define the knowledge space data structures:
   - `Concept`: atomic unit of knowledge
   - `TextNode`: chunk of text with `teaches: Set[Concept]`, `requires: Set[Concept]`, and content
   - `ReaderState`: accumulated `Set[Concept]`, reading history
-- [ ] Implement the dynamic graph traversal logic:
+- [x] Implement the dynamic graph traversal logic:
   - Given a `ReaderState`, compute available next nodes
   - Update state after reading a node
   - Detect when convergence points need bridging summaries
+- [x] Bayesian reasoning toy example (two paths, convergence)
 
-## Phase 2: A Concrete Example
+## Phase 2: A Concrete Example [DONE]
 
-- [ ] Take a real text (short essay, textbook chapter, or write one ourselves) and
-      manually annotate it with the knowledge space structure
-- [ ] Verify the formalism works: walk through several paths, check that the
-      prerequisite logic produces sensible results
-- [ ] Identify edge cases and refine the model
+- [x] Eigenvalues/eigenvectors text with 10 nodes, 16 concepts
+  - Multiple entry points, convergence at PCA (requires spectral theorem path)
+  - Applications branch: quantum mechanics, PCA, stability (reader chooses)
+- [x] Manual annotation in `texts/eigenvalues_ks.json`
+- [x] Verified: both formal-first and geometric-first paths work correctly
+- [ ] Try more texts (math/physics chapters) -- pick from real textbooks
 
 ## Phase 3: Extraction Pipeline (LLM-assisted)
 
-- [ ] Given a linear text, use an LLM to:
-  - Segment into text chunks
-  - Identify concepts taught and required by each chunk
-  - Produce a knowledge space annotation
+- [x] Built `extractor.py`: segmentation + concept annotation via Claude API
+- [x] Save/load knowledge spaces to/from JSON
+- [ ] Test with API key (need ANTHROPIC_API_KEY in environment)
 - [ ] Compare LLM-extracted structure to manual annotation
 - [ ] Iterate on prompts/approach
 
-## Phase 4: Interface / UI
+## Phase 4: Interface / UI [MVP DONE]
 
-- [ ] Spatial view: render the induced graph, show current position, available paths,
-      explored/unexplored regions
-- [ ] Reader view: present text adaptively, show branching choices, handle convergence
-      with bridging summaries
-- [ ] Technology choice TBD (web-based likely makes sense)
+- [x] Flask web app with split-panel layout (graph + reader)
+- [x] SVG graph visualization with layered layout
+- [x] Node states: locked, available, visited, current
+- [x] Interactive navigation: click nodes or use choice buttons
+- [x] Concept tracking display
+- [ ] Polish: better graph layout, zoom/pan, animations
+- [ ] Bridging summaries at convergence points
+- [ ] Mobile support
 
-## Phase 5: Educational Curriculum Application
+## Phase 5: Educational Curriculum Application [DEFERRED]
 
-- [ ] Apply to a real curriculum or course material
-- [ ] Explore how different learning paths through the same material lead to different
-      understanding
-- [ ] Think about assessment: does the system know what the reader knows well enough
-      to suggest review or flag gaps?
+Tabled until Phases 2-4 prove the formalism works on real material.
+Ideas for later:
+- Apply to a full course (e.g., linear algebra, probability)
+- Track student knowledge across sessions
+- Assessment: detect gaps, suggest review
+- Spaced repetition integration
 
 ## Open Questions
 

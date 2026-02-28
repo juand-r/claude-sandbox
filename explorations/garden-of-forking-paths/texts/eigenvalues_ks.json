@@ -1,0 +1,124 @@
+{
+  "nodes": [
+    {
+      "id": "linear_transform",
+      "title": "Linear Transformations",
+      "content": "A linear transformation is a function T that maps vectors to vectors while preserving addition and scalar multiplication: T(u + v) = T(u) + T(v) and T(cv) = cT(v) for any scalar c. In finite dimensions, every linear transformation can be represented as a matrix A, so that T(v) = Av.",
+      "teaches": [
+        {"id": "linear_transform", "label": "Linear transformation", "description": "A vector-to-vector function preserving addition and scalar multiplication"},
+        {"id": "matrix_rep", "label": "Matrix representation", "description": "Every finite-dimensional linear transformation can be written as Av"}
+      ],
+      "requires": []
+    },
+    {
+      "id": "geometric_intuition",
+      "title": "Geometric View of Transformations",
+      "content": "Geometrically, a linear transformation can stretch, rotate, reflect, or project vectors. Consider a 2x2 matrix acting on vectors in the plane. Most vectors change both their direction and magnitude. But some special vectors only get scaled -- their direction stays the same (or reverses). These are the eigenvectors.",
+      "teaches": [
+        {"id": "eigen_intuition", "label": "Eigenvector intuition", "description": "Special vectors whose direction is unchanged by a transformation"}
+      ],
+      "requires": [
+        {"id": "linear_transform", "label": "Linear transformation", "description": "A vector-to-vector function preserving addition and scalar multiplication"}
+      ]
+    },
+    {
+      "id": "formal_definition",
+      "title": "Formal Definition of Eigenvectors and Eigenvalues",
+      "content": "Formally, a nonzero vector v is an eigenvector of A if Av = λv for some scalar λ. The scalar λ is called the eigenvalue associated with v. The equation says: applying A to v has the same effect as simply multiplying v by λ. If λ > 1, the vector gets stretched. If 0 < λ < 1, it gets compressed. If λ < 0, it gets reversed and scaled. If λ = 0, the vector is sent to the zero vector -- it lies in the null space of A.",
+      "teaches": [
+        {"id": "eigenvector_def", "label": "Eigenvector definition", "description": "Nonzero v such that Av = λv"},
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"},
+        {"id": "eigenvalue_meaning", "label": "Eigenvalue interpretation", "description": "λ > 1 stretches, 0 < λ < 1 compresses, λ < 0 reverses, λ = 0 nullifies"}
+      ],
+      "requires": [
+        {"id": "matrix_rep", "label": "Matrix representation", "description": "Every finite-dimensional linear transformation can be written as Av"}
+      ]
+    },
+    {
+      "id": "char_equation",
+      "title": "Finding Eigenvalues: The Characteristic Equation",
+      "content": "To find eigenvalues, we rearrange Av = λv to (A - λI)v = 0. For this to have a nonzero solution v, the matrix (A - λI) must be singular, which means its determinant is zero. The equation det(A - λI) = 0 is called the characteristic equation. For an n×n matrix, this is a polynomial of degree n in λ, called the characteristic polynomial. Its roots are the eigenvalues.",
+      "teaches": [
+        {"id": "char_equation", "label": "Characteristic equation", "description": "det(A - λI) = 0, whose roots give eigenvalues"},
+        {"id": "char_polynomial", "label": "Characteristic polynomial", "description": "Degree-n polynomial in λ for an n×n matrix"}
+      ],
+      "requires": [
+        {"id": "eigenvector_def", "label": "Eigenvector definition", "description": "Nonzero v such that Av = λv"},
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"}
+      ]
+    },
+    {
+      "id": "worked_example",
+      "title": "Worked Example: 2×2 Matrix",
+      "content": "For example, consider A = [[2, 1], [1, 2]]. The characteristic equation is det([[2-λ, 1], [1, 2-λ]]) = (2-λ)² - 1 = λ² - 4λ + 3 = (λ-1)(λ-3) = 0. So the eigenvalues are λ₁ = 1 and λ₂ = 3. To find the eigenvector for λ₁ = 1, we solve (A - I)v = 0, giving [[1, 1], [1, 1]]v = 0, so v₁ = [-1, 1] (or any scalar multiple). For λ₂ = 3, we get v₂ = [1, 1].",
+      "teaches": [
+        {"id": "eigen_computation", "label": "Eigenvalue computation", "description": "Concrete procedure for finding eigenvalues and eigenvectors"}
+      ],
+      "requires": [
+        {"id": "char_equation", "label": "Characteristic equation", "description": "det(A - λI) = 0, whose roots give eigenvalues"}
+      ]
+    },
+    {
+      "id": "spectral_theorem",
+      "title": "Symmetric Matrices and the Spectral Theorem",
+      "content": "The eigenvectors of a symmetric matrix are always orthogonal. This is not a coincidence -- it follows from the Spectral Theorem, which states that every real symmetric matrix can be diagonalized by an orthogonal matrix. In other words, there exists an orthogonal basis consisting entirely of eigenvectors. This is one of the most important results in linear algebra.",
+      "teaches": [
+        {"id": "spectral_theorem", "label": "Spectral theorem", "description": "Real symmetric matrices have orthogonal eigenvector bases"},
+        {"id": "orthogonal_eigenvectors", "label": "Orthogonal eigenvectors", "description": "Symmetric matrices always have orthogonal eigenvectors"}
+      ],
+      "requires": [
+        {"id": "eigenvector_def", "label": "Eigenvector definition", "description": "Nonzero v such that Av = λv"},
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"}
+      ]
+    },
+    {
+      "id": "diagonalization",
+      "title": "Diagonalization",
+      "content": "Diagonalization simplifies computation enormously. If A = PDP⁻¹ where D is diagonal (containing the eigenvalues) and P's columns are the eigenvectors, then A^n = PD^nP⁻¹. Computing D^n is trivial -- just raise each diagonal entry to the nth power. This makes eigendecomposition essential for computing matrix powers, exponentials, and solving systems of differential equations.",
+      "teaches": [
+        {"id": "diagonalization", "label": "Diagonalization", "description": "A = PDP⁻¹ decomposition using eigenvectors and eigenvalues"},
+        {"id": "matrix_powers", "label": "Matrix powers via diagonalization", "description": "A^n = PD^nP⁻¹ makes powers trivial to compute"}
+      ],
+      "requires": [
+        {"id": "eigenvector_def", "label": "Eigenvector definition", "description": "Nonzero v such that Av = λv"},
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"}
+      ]
+    },
+    {
+      "id": "quantum_mechanics",
+      "title": "Eigenvalues in Quantum Mechanics",
+      "content": "In physics, eigenvalues appear everywhere. In quantum mechanics, observable quantities (energy, momentum, angular momentum) correspond to eigenvalues of Hermitian operators. The state of a system is a vector in Hilbert space, and measuring an observable collapses the state to an eigenvector of that operator, with the measurement yielding the corresponding eigenvalue. The discrete spectrum of eigenvalues explains why atomic energy levels are quantized.",
+      "teaches": [
+        {"id": "quantum_eigenvalues", "label": "Quantum mechanical eigenvalues", "description": "Observables are eigenvalues of Hermitian operators; measurement collapses to eigenstates"}
+      ],
+      "requires": [
+        {"id": "eigenvector_def", "label": "Eigenvector definition", "description": "Nonzero v such that Av = λv"},
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"}
+      ]
+    },
+    {
+      "id": "pca",
+      "title": "Principal Component Analysis",
+      "content": "In data science, principal component analysis (PCA) finds the eigenvectors of a covariance matrix. The eigenvector with the largest eigenvalue points in the direction of greatest variance in the data. The second eigenvector (orthogonal to the first) points in the direction of second greatest variance, and so on. By projecting data onto the top k eigenvectors, PCA achieves dimensionality reduction while preserving the most important structure in the data.",
+      "teaches": [
+        {"id": "pca", "label": "Principal Component Analysis", "description": "Dimensionality reduction via eigenvectors of covariance matrix"}
+      ],
+      "requires": [
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"},
+        {"id": "orthogonal_eigenvectors", "label": "Orthogonal eigenvectors", "description": "Symmetric matrices always have orthogonal eigenvectors"}
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "Eigenvalues and Stability",
+      "content": "The connection between eigenvalues and stability is fundamental. For a system of linear differential equations dx/dt = Ax, the eigenvalues of A determine the behavior of solutions. If all eigenvalues have negative real parts, the system is stable -- perturbations decay exponentially. If any eigenvalue has a positive real part, the system is unstable. This criterion extends to nonlinear systems near equilibrium points via linearization, making eigenvalue analysis the workhorse of stability theory.",
+      "teaches": [
+        {"id": "stability_criterion", "label": "Eigenvalue stability criterion", "description": "Sign of eigenvalue real parts determines system stability"}
+      ],
+      "requires": [
+        {"id": "eigenvalue_def", "label": "Eigenvalue definition", "description": "The scalar λ in Av = λv"},
+        {"id": "eigenvalue_meaning", "label": "Eigenvalue interpretation", "description": "λ > 1 stretches, 0 < λ < 1 compresses, λ < 0 reverses, λ = 0 nullifies"}
+      ]
+    }
+  ]
+}

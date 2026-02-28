@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden of Forking Paths</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #2a2a2a;
+    display: flex;
+    height: 100vh;
+  }
+
+  /* Left panel: graph */
+  #graph-panel {
+    width: 45%;
+    border-right: 1px solid #c8b89a;
+    position: relative;
+    overflow: hidden;
+  }
+  #graph-panel svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Right panel: reader */
+  #reader-panel {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #reader-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #c8b89a;
+    background: #ece5d8;
+  }
+  #reader-header h1 {
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b5b4a;
+  }
+  #reader-header .stats {
+    font-size: 13px;
+    color: #8a7b6a;
+    margin-top: 4px;
+  }
+
+  #reader-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+  }
+  #reader-content .node-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #3a3020;
+  }
+  #reader-content .node-text {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+  #reader-content .concepts {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #d8d0c0;
+  }
+  #reader-content .concepts h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8a7b6a;
+    margin-bottom: 8px;
+  }
+  .concept-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    margin: 2px 4px 2px 0;
+    border-radius: 12px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+  }
+  .concept-teaches {
+    background: #d4e8d0;
+    color: #2a5a2a;
+  }
+  .concept-requires {
+    background: #e8d8c4;
+    color: #6b4a2a;
+  }
+
+  #choices-panel {
+    padding: 20px 24px;
+    border-top: 1px solid #c8b89a;
+    background: #ece5d8;
+  }
+  #choices-panel h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8a7b6a;
+    margin-bottom: 10px;
+  }
+  .choice-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 16px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #c8b89a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #3a3020;
+    transition: background 0.15s;
+  }
+  .choice-btn:hover {
+    background: #f0e8d8;
+  }
+  .choice-btn.disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* SVG graph styles */
+  .node-circle {
+    cursor: pointer;
+    transition: fill 0.2s, r 0.2s;
+  }
+  .node-circle.entry { fill: #7a9e7a; }
+  .node-circle.unvisited { fill: #b8a890; }
+  .node-circle.visited { fill: #5a7a5a; }
+  .node-circle.available { fill: #c8a050; stroke: #a08030; stroke-width: 2; }
+  .node-circle.current { fill: #d4763a; stroke: #b05a20; stroke-width: 3; }
+  .node-circle.locked { fill: #d0c8b8; opacity: 0.5; }
+
+  .node-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    fill: #4a3a2a;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+
+  .edge-line {
+    stroke: #c0b0a0;
+    stroke-width: 1.5;
+    fill: none;
+    marker-end: url(#arrowhead);
+  }
+  .edge-line.active {
+    stroke: #8a7a5a;
+    stroke-width: 2;
+  }
+
+  /* Welcome message */
+  .welcome {
+    text-align: center;
+    padding-top: 80px;
+    color: #8a7b6a;
+  }
+  .welcome h2 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    color: #5a4a3a;
+  }
+  .welcome p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Reset button */
+  #reset-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 14px;
+    background: #ece5d8;
+    border: 1px solid #c8b89a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #6b5b4a;
+    z-index: 10;
+  }
+  #reset-btn:hover { background: #ddd5c5; }
+</style>
+</head>
+<body>
+
+<div id="graph-panel">
+  <button id="reset-btn" onclick="resetReader()">reset</button>
+  <svg id="graph-svg">
+    <defs>
+      <marker id="arrowhead" viewBox="0 0 10 7" refX="10" refY="3.5"
+              markerWidth="8" markerHeight="6" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#b0a090"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<div id="reader-panel">
+  <div id="reader-header">
+    <h1>Garden of Forking Paths</h1>
+    <div class="stats" id="stats">Loading...</div>
+  </div>
+  <div id="reader-content">
+    <div class="welcome">
+      <h2>Choose where to begin</h2>
+      <p>Each node teaches concepts that unlock further nodes.
+         Your path through the material is your own.</p>
+    </div>
+  </div>
+  <div id="choices-panel">
+    <h3>Available paths</h3>
+    <div id="choices"></div>
+  </div>
+</div>
+
+<script>
+// State
+let graphData = null;
+let history = [];
+let knowledge = [];
+let availableIds = [];
+let currentNodeId = null;
+let nodePositions = {};
+
+// Layout constants
+const NODE_RADIUS = 18;
+const LABEL_OFFSET = 28;
+
+async function init() {
+  const resp = await fetch('/api/graph');
+  graphData = await resp.json();
+  layoutGraph();
+  renderGraph();
+  await updateAvailable();
+}
+
+function layoutGraph() {
+  // Simple layered layout based on dependency depth
+  const nodes = graphData.nodes;
+  const edges = graphData.edges;
+
+  // Compute depth (longest path from any entry)
+  const depths = {};
+  const visited = new Set();
+
+  function computeDepth(nodeId) {
+    if (visited.has(nodeId)) return depths[nodeId] || 0;
+    visited.add(nodeId);
+
+    const incoming = edges.filter(e => e.target === nodeId);
+    if (incoming.length === 0) {
+      depths[nodeId] = 0;
+      return 0;
+    }
+    let maxDepth = 0;
+    for (const e of incoming) {
+      maxDepth = Math.max(maxDepth, computeDepth(e.source) + 1);
+    }
+    depths[nodeId] = maxDepth;
+    return maxDepth;
+  }
+
+  nodes.forEach(n => computeDepth(n.id));
+
+  // Group by depth
+  const layers = {};
+  let maxDepth = 0;
+  for (const [id, d] of Object.entries(depths)) {
+    if (!layers[d]) layers[d] = [];
+    layers[d].push(id);
+    maxDepth = Math.max(maxDepth, d);
+  }
+
+  // Position nodes
+  const svg = document.getElementById('graph-svg');
+  const W = svg.clientWidth || 500;
+  const H = svg.clientHeight || 600;
+  const marginY = 60;
+  const marginX = 40;
+  const layerH = (H - 2 * marginY) / Math.max(maxDepth, 1);
+
+  for (let d = 0; d <= maxDepth; d++) {
+    const layer = layers[d] || [];
+    const layerW = (W - 2 * marginX) / Math.max(layer.length, 1);
+    layer.forEach((id, i) => {
+      nodePositions[id] = {
+        x: marginX + layerW * (i + 0.5),
+        y: marginY + layerH * d,
+      };
+    });
+  }
+}
+
+function renderGraph() {
+  const svg = document.getElementById('graph-svg');
+  // Clear existing content except defs
+  const defs = svg.querySelector('defs');
+  svg.innerHTML = '';
+  svg.appendChild(defs);
+
+  // Draw edges
+  for (const edge of graphData.edges) {
+    const s = nodePositions[edge.source];
+    const t = nodePositions[edge.target];
+    if (!s || !t) continue;
+
+    // Offset endpoint to stop at circle edge
+    const dx = t.x - s.x;
+    const dy = t.y - s.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist === 0) continue;
+    const tx = t.x - (dx / dist) * NODE_RADIUS;
+    const ty = t.y - (dy / dist) * NODE_RADIUS;
+    const sx = s.x + (dx / dist) * NODE_RADIUS;
+    const sy = s.y + (dy / dist) * NODE_RADIUS;
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', sx);
+    line.setAttribute('y1', sy);
+    line.setAttribute('x2', tx);
+    line.setAttribute('y2', ty);
+    line.setAttribute('class', 'edge-line');
+    line.setAttribute('data-source', edge.source);
+    line.setAttribute('data-target', edge.target);
+    svg.appendChild(line);
+  }
+
+  // Draw nodes
+  for (const node of graphData.nodes) {
+    const pos = nodePositions[node.id];
+    if (!pos) continue;
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', pos.x);
+    circle.setAttribute('cy', pos.y);
+    circle.setAttribute('r', NODE_RADIUS);
+    circle.setAttribute('class', 'node-circle');
+    circle.setAttribute('data-id', node.id);
+    circle.addEventListener('click', () => onNodeClick(node.id));
+    svg.appendChild(circle);
+
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', pos.x);
+    label.setAttribute('y', pos.y + LABEL_OFFSET);
+    label.setAttribute('class', 'node-label');
+    // Truncate long titles
+    const titleText = node.title.length > 20 ? node.title.slice(0, 18) + '...' : node.title;
+    label.textContent = titleText;
+    svg.appendChild(label);
+  }
+
+  updateNodeStyles();
+}
+
+function updateNodeStyles() {
+  const circles = document.querySelectorAll('.node-circle');
+  circles.forEach(c => {
+    const id = c.getAttribute('data-id');
+    c.classList.remove('entry', 'unvisited', 'visited', 'available', 'current', 'locked');
+
+    if (id === currentNodeId) {
+      c.classList.add('current');
+    } else if (history.includes(id)) {
+      c.classList.add('visited');
+    } else if (availableIds.includes(id)) {
+      c.classList.add('available');
+    } else {
+      c.classList.add('locked');
+    }
+  });
+}
+
+async function updateAvailable() {
+  const resp = await fetch('/api/available', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({history}),
+  });
+  const data = await resp.json();
+  availableIds = data.available;
+  knowledge = data.knowledge;
+
+  // Update stats
+  const totalConcepts = new Set();
+  graphData.nodes.forEach(n => n.teaches.forEach(c => totalConcepts.add(c.id)));
+  document.getElementById('stats').textContent =
+    `${history.length}/${graphData.nodes.length} read | ` +
+    `${knowledge.length}/${totalConcepts.size} concepts`;
+
+  // Update choices
+  renderChoices();
+  updateNodeStyles();
+}
+
+function renderChoices() {
+  const container = document.getElementById('choices');
+  container.innerHTML = '';
+
+  if (availableIds.length === 0) {
+    container.innerHTML = '<p style="color: #8a7b6a; font-size: 14px;">All paths explored.</p>';
+    return;
+  }
+
+  for (const id of availableIds) {
+    const node = graphData.nodes.find(n => n.id === id);
+    if (!node) continue;
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = node.title;
+    btn.addEventListener('click', () => readNode(id));
+    container.appendChild(btn);
+  }
+}
+
+async function readNode(nodeId) {
+  const resp = await fetch(`/api/node/${nodeId}`);
+  const node = await resp.json();
+
+  history.push(nodeId);
+  currentNodeId = nodeId;
+
+  // Render content
+  const content = document.getElementById('reader-content');
+  content.innerHTML = `
+    <h2 class="node-title">${node.title}</h2>
+    <div class="node-text">${node.content.replace(/\n/g, '<br>')}</div>
+    <div class="concepts">
+      <h3>Concepts learned</h3>
+      ${node.teaches.map(c =>
+        `<span class="concept-tag concept-teaches" title="${c.description}">${c.label}</span>`
+      ).join('')}
+    </div>
+  `;
+
+  await updateAvailable();
+}
+
+function onNodeClick(nodeId) {
+  if (availableIds.includes(nodeId)) {
+    readNode(nodeId);
+  } else if (history.includes(nodeId)) {
+    // Show already-read node (re-read)
+    fetch(`/api/node/${nodeId}`).then(r => r.json()).then(node => {
+      const content = document.getElementById('reader-content');
+      content.innerHTML = `
+        <h2 class="node-title">${node.title} <span style="color:#8a7b6a;font-size:14px;">(already read)</span></h2>
+        <div class="node-text">${node.content.replace(/\n/g, '<br>')}</div>
+      `;
+    });
+  }
+}
+
+function resetReader() {
+  history = [];
+  knowledge = [];
+  currentNodeId = null;
+  document.getElementById('reader-content').innerHTML = `
+    <div class="welcome">
+      <h2>Choose where to begin</h2>
+      <p>Each node teaches concepts that unlock further nodes.
+         Your path through the material is your own.</p>
+    </div>
+  `;
+  updateAvailable();
+}
+
+init();
+</script>
+</body>
+</html>

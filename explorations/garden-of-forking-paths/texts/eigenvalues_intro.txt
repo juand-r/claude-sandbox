@@ -1,0 +1,62 @@
+Linear Transformations and Eigenvalues
+
+A linear transformation is a function T that maps vectors to vectors while preserving
+addition and scalar multiplication: T(u + v) = T(u) + T(v) and T(cv) = cT(v) for any
+scalar c. In finite dimensions, every linear transformation can be represented as a
+matrix A, so that T(v) = Av.
+
+Geometrically, a linear transformation can stretch, rotate, reflect, or project vectors.
+Consider a 2x2 matrix acting on vectors in the plane. Most vectors change both their
+direction and magnitude. But some special vectors only get scaled -- their direction
+stays the same (or reverses). These are the eigenvectors.
+
+Formally, a nonzero vector v is an eigenvector of A if Av = λv for some scalar λ.
+The scalar λ is called the eigenvalue associated with v. The equation says: applying
+A to v has the same effect as simply multiplying v by λ. If λ > 1, the vector gets
+stretched. If 0 < λ < 1, it gets compressed. If λ < 0, it gets reversed and scaled.
+If λ = 0, the vector is sent to the zero vector -- it lies in the null space of A.
+
+To find eigenvalues, we rearrange Av = λv to (A - λI)v = 0. For this to have a
+nonzero solution v, the matrix (A - λI) must be singular, which means its determinant
+is zero. The equation det(A - λI) = 0 is called the characteristic equation. For an
+n×n matrix, this is a polynomial of degree n in λ, called the characteristic polynomial.
+Its roots are the eigenvalues.
+
+For example, consider A = [[2, 1], [1, 2]]. The characteristic equation is
+det([[2-λ, 1], [1, 2-λ]]) = (2-λ)² - 1 = λ² - 4λ + 3 = (λ-1)(λ-3) = 0.
+So the eigenvalues are λ₁ = 1 and λ₂ = 3. To find the eigenvector for λ₁ = 1,
+we solve (A - I)v = 0, giving [[1, 1], [1, 1]]v = 0, so v₁ = [-1, 1] (or any
+scalar multiple). For λ₂ = 3, we get v₂ = [1, 1].
+
+The eigenvectors of a symmetric matrix are always orthogonal. This is not a coincidence
+-- it follows from the Spectral Theorem, which states that every real symmetric matrix
+can be diagonalized by an orthogonal matrix. In other words, there exists an orthogonal
+basis consisting entirely of eigenvectors. This is one of the most important results in
+linear algebra.
+
+Diagonalization simplifies computation enormously. If A = PDP⁻¹ where D is diagonal
+(containing the eigenvalues) and P's columns are the eigenvectors, then A^n = PD^nP⁻¹.
+Computing D^n is trivial -- just raise each diagonal entry to the nth power. This makes
+eigendecomposition essential for computing matrix powers, exponentials, and solving
+systems of differential equations.
+
+In physics, eigenvalues appear everywhere. In quantum mechanics, observable quantities
+(energy, momentum, angular momentum) correspond to eigenvalues of Hermitian operators.
+The state of a system is a vector in Hilbert space, and measuring an observable
+collapses the state to an eigenvector of that operator, with the measurement yielding
+the corresponding eigenvalue. The discrete spectrum of eigenvalues explains why atomic
+energy levels are quantized.
+
+In data science, principal component analysis (PCA) finds the eigenvectors of a
+covariance matrix. The eigenvector with the largest eigenvalue points in the direction
+of greatest variance in the data. The second eigenvector (orthogonal to the first)
+points in the direction of second greatest variance, and so on. By projecting data onto
+the top k eigenvectors, PCA achieves dimensionality reduction while preserving the most
+important structure in the data.
+
+The connection between eigenvalues and stability is fundamental. For a system of
+linear differential equations dx/dt = Ax, the eigenvalues of A determine the behavior
+of solutions. If all eigenvalues have negative real parts, the system is stable --
+perturbations decay exponentially. If any eigenvalue has a positive real part, the
+system is unstable. This criterion extends to nonlinear systems near equilibrium
+points via linearization, making eigenvalue analysis the workhorse of stability theory.
