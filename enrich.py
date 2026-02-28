@@ -323,6 +323,10 @@ def run_phase2():
         for row in csv.DictReader(f):
             events.append(row)
 
+    if not events:
+        print("No events found in input. Nothing to enrich.")
+        return
+
     print(f"Enriching {len(events)} events...")
 
     for e in events:
