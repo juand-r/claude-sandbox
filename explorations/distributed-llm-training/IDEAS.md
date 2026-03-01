@@ -102,14 +102,53 @@ In a 12-layer model split across 2 workers (layers 1-6 and 7-12):
 This is **speculative pipeline parallelism**, analogous to speculative
 execution in CPUs (predict branch, execute speculatively, rollback if wrong).
 
-**Related concepts in the literature**:
-- Pipeline parallelism (GPipe, PipeDream) -- doesn't predict, just schedules
-  micro-batches to fill the bubble
-- Delayed/stale gradients (Hogwild!, asynchronous SGD) -- uses old gradients,
-  which is somewhat related
-- Local learning / decoupled training (Belilovsky et al. 2019, Huo et al. 2018)
-  -- train layer groups with local auxiliary losses, reducing inter-group dependency
-- Features Replay (Wen et al. 2020) -- replay stale activations from previous micro-batches
+**Existing literature** (from survey -- see REFERENCES.md for full list):
+
+Weight prediction approaches (predict weights, not activations):
+- **SpecTrain** (Chen et al. 2018): momentum-based weight prediction for
+  pipelined model parallelism. Up to 8.91x speedup. Only works with SGDM.
+- **PipeMare** (Yang et al. 2019/MLSys 2021): async pipeline with LR
+  rescheduling and discrepancy correction. 2.7x less memory or 14.3x higher
+  pipeline utilization.
+- **PipeOptim** (Guan et al. 2023/TKDE 2025): optimizer-aware weight
+  prediction (SGD, Adam, AdamW). Bubble-free 1F1B without accuracy loss.
+- **Leap+Verify** (McEntire 2025): regime-adaptive speculative weight
+  prediction K steps ahead. Detects training phases (chaotic/transition/stable).
+- **Pipelined Backprop at Scale** (Kosson et al. 2020): linear weight
+  prediction + spike compensation for batch-size-1 pipelining.
+
+Decoupled / local learning approaches:
+- **Synthetic Gradients** (Jaderberg et al. 2017): learned models predict error
+  gradients from local activations only. Fully decoupled, async layer updates.
+- **Decoupled Parallel Backprop** (Huo et al. 2018): delayed gradients to
+  remove backward locking. Convergence proof for non-convex.
+- **Features Replay** (Huo et al. 2018 NeurIPS): parallel-objective with
+  features replay to avoid memory explosion of decoupled methods.
+- **Belilovsky et al. 2019/2020/2021**: greedy layerwise learning that scales
+  to ImageNet. 2021 paper specifically addresses distributed async setting
+  with replay buffers and large communication delays.
+- **Local Error Signals** (Nokland & Eidnes 2019): layer-wise training with
+  local supervised signals, weights updated during forward pass.
+- **Parallel Training with Local Updates** (Laskin et al. 2020): compares five
+  variants of local parallelism, shows scaling beyond data-parallel regime.
+
+Pipeline bubble reduction (non-speculative):
+- **Zero Bubble PP** (Qi et al. 2024/ICLR): splits backward into input-grad
+  and weight-grad for zero-bubble scheduling. 31% throughput improvement.
+- **PipeFisher** (MLSys 2023): fills bubbles with K-FAC (second-order
+  optimization). 50-75% training time reduction for BERT.
+
+Staleness analysis:
+- **PipeDream** (Harlap et al. 2019): weight stashing for consistent versions.
+- **DSP** (Xu et al. 2020): formalized layer-wise staleness, convergence proof.
+- **LayerPipe/LayerPipe2** (Unnikrishnan & Parhi 2021/2025): retiming theory
+  for pipelined schedules, EMA weight prediction.
+
+**Key finding: Nobody has done activation prediction specifically.** All
+existing speculative methods predict *weights* (what the model parameters will
+be at a future step) not *activations* (what intermediate layer outputs will
+be for a given input). Activation prediction for pipeline bubble reduction
+appears to be a novel or very niche direction.
 
 **The prediction problem**:
 
@@ -187,6 +226,16 @@ interconnect), the gains are marginal because the bubble is small and
 prediction overhead adds complexity. **For our high-latency setup, the idea
 becomes much more compelling** because the bubble is so large that even noisy
 speculative computation beats idle time.
+
+**Novelty note**: The literature survey revealed that all existing speculative
+pipeline methods predict *weights* (what model parameters will be at step t+k),
+not *activations* (what layer outputs will be for a given input). Your idea of
+predicting activations appears to be either novel or very niche. However,
+the practical version for our setup is closer to **Belilovsky et al. 2021**
+(decoupled greedy learning for async distributed), which directly addresses
+asynchronous distributed training with large communication delays. Their
+approach uses local auxiliary losses + replay buffers, which is essentially
+what we'd end up implementing.
 
 The cleanest implementation is decoupled local training (each layer group
 trains with a local loss) with periodic synchronization.
@@ -302,13 +351,14 @@ exploring the decision tree.
 
 ## Summary: What's Worth Prototyping First?
 
-| Idea | Complexity | Promise | Fits Distributed Setup |
-|------|-----------|---------|----------------------|
-| 1. Greedy PPL stages | Low | Medium | Yes (parallel search) |
-| 2. Speculative layers | High | High (for high-latency) | Yes (motivation is high latency) |
-| 3. Ensemble distillation | Medium | High | Yes (no weight merge problems) |
-| 4. Evolutionary/PBT | Low | High | Excellent (naturally async) |
-| 5. Speculative training + rollback | Medium | High | Excellent (uses wait time) |
+| Idea | Complexity | Promise | Novelty | Fits Distributed Setup |
+|------|-----------|---------|---------|----------------------|
+| 1. Greedy PPL stages | Low | Medium | Low (Hyperband-like) | Yes (parallel search) |
+| 2. Speculative activations | High | High (for high-latency) | **High** (unexplored) | Yes (high latency motivated) |
+| 2b. Decoupled local training | Medium | High | Low (Belilovsky 2021) | Yes (directly applicable) |
+| 3. Ensemble distillation | Medium | High | Low (well-studied) | Yes (no weight merge problems) |
+| 4. Evolutionary/PBT | Low | High | Low (Jaderberg 2017) | Excellent (naturally async) |
+| 5. Speculative training + rollback | Medium | High | Medium | Excellent (uses wait time) |
 
 **My recommendation for first prototype**: Idea 4 (PBT/evolutionary). It's the
 simplest to implement, naturally fits the async/high-latency constraints, and
