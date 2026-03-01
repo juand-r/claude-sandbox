@@ -5,12 +5,42 @@
 Compare QAT vs FP32 training convergence at batch sizes 8 and 16, dim=1024.
 We want to see if QAT reaches the same perplexity as FP32 (and how fast).
 
-## 4 Runs (2x2 grid)
+## YOUR JOB: Pick up where the previous session left off
+
+The previous session was about to run `run_remaining.sh` but died before
+getting to it. You need to run **3 experiments sequentially** (they share
+`train.o` so they cannot be parallel):
+
+1. **BS=8 FP32** — rerun from scratch (partial CSV exists but will be overwritten)
+2. **BS=16 QAT** — never started
+3. **BS=16 FP32** — never started
+
+The script `run_remaining.sh` does exactly this. Run it like so:
+
+```bash
+cd explorations/qat-cpu
+nohup bash run_remaining.sh > run_remaining.log 2>&1 &
+```
+
+Then monitor with `tail -f run_remaining.log` and periodically commit the
+CSV files as they complete. Each run takes ~20-25 min (300 steps at ~4-5
+sec/step). Total ~60-75 min for all 3.
+
+When all 3 are done, you should have 4 complete CSVs (the BS=8 QAT one
+already exists). At that point, compare QAT vs FP32 at each batch size
+and update STATUS.md with findings.
+
+**Known issue**: processes have been killed mid-run before (probably OOM).
+If the script dies, check which CSVs are complete (should have 7 data rows
+each) and re-run the missing ones individually (see "Running a single
+experiment" below).
+
+## Status of all 4 runs
 
 | Run | Batch Size | Mode | TRAIN_MODE | CSV file | Status |
 |-----|-----------|------|------------|----------|--------|
-| BS=8 QAT | 8 | QAT (INT8 fwd, FP32 bwd) | 2 | `converge_bs8_qat.csv` | DONE (300 steps, PPL=12.39) |
-| BS=8 FP32 | 8 | FP32 only | 1 | `converge_bs8_fp32.csv` | PARTIAL (step 50, PPL=26.76, process died) |
+| BS=8 QAT | 8 | QAT (INT8 fwd, FP32 bwd) | 2 | `converge_bs8_qat.csv` | DONE (300 steps, final PPL=12.39) |
+| BS=8 FP32 | 8 | FP32 only | 1 | `converge_bs8_fp32.csv` | NEEDS RERUN (died at step 50) |
 | BS=16 QAT | 16 | QAT | 2 | `converge_bs16_qat.csv` | NOT STARTED |
 | BS=16 FP32 | 16 | FP32 only | 1 | `converge_bs16_fp32.csv` | NOT STARTED |
 
