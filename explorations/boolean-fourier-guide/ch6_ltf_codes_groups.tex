@@ -53,7 +53,9 @@ A linear threshold function $f$ is uniquely determined among all LTFs
 by its degree-0 and degree-1 Fourier coefficients:
 $\fhat(\emptyset) = \E[f]$ and $\fhat(\{i\}) = \E[f \cdot x_i]$ for
 $i = 1, \ldots, n$.
-\end{theorem}
+\end{theorem}%
+\footnote{See companion notebook, \S5: Chow parameters of Maj$_n$ for
+$n = 3, 5, 7$ and a weighted threshold gate.}
 
 The $n+1$ values $(\fhat(\emptyset), \fhat(\{1\}), \ldots, \fhat(\{n\}))$
 are called the \emph{Chow parameters}. Chow's theorem says: if two LTFs
@@ -233,7 +235,10 @@ $\text{RM}(r, n)$ is a linear code with:
     $\text{GF}(2)$ (degree~$\leq 1$ over $\text{GF}(2)$).
     There are $2^{n+1}$ codewords. Minimum distance $2^{n-1}$.
 
-    \textbf{Worked example: $\text{RM}(1, 2)$.}
+    \textbf{Worked example: $\text{RM}(1, 2)$.}%
+    \footnote{See companion notebook, \S5: RM$(1,2)$ codeword
+    construction and the degree-increase phenomenon for
+    $n = 2, \ldots, 6$.}
     The affine functions over $\text{GF}(2)$ in two variables are:
     $0$, $1$, $b_1$, $1 \oplus b_1$, $b_2$, $1 \oplus b_2$,
     $b_1 \oplus b_2$, $1 \oplus b_1 \oplus b_2$---eight functions in
