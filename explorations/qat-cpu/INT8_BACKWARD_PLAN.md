@@ -268,12 +268,53 @@ Full convergence run with the standard config used in CONVERGENCE_RUNS.md.
                           FP32      QAT     QAT+INT8bwd
 Val Perplexity:          12.52    12.39        12.70
 Val BPB:                 3.647    3.631        3.667
-ms/step:                 5552     3761         4102
-Speedup vs FP32:            --    1.36x        1.32x
+ms/step:                 5552     5076         4102
 Total time:              1721s    1280s        1305s
 ```
 
-INT8bwd is 1.32x faster than FP32, but 0.98x vs QAT fwd-only. Quality is
-slightly worse (ppl 12.70 vs 12.39 for QAT), suggesting gradient quantization
-noise has a small but real cost. The conclusion remains: INT8 backward adds
-overhead that exceeds the GEMM savings at these dimensions.
+Note: INT8bwd ran with OMP backward enabled, QAT did not (BWD OMP was added
+to backward but not forward at that time). The QAT number (5076 at step 200)
+is from converge_bs8_qat.csv.
+
+INT8bwd quality is slightly worse (ppl 12.70 vs 12.39 for QAT), suggesting
+gradient quantization noise has a small but real cost. The conclusion remains:
+INT8 backward adds overhead that exceeds the GEMM savings at these dimensions.
+
+## Attention OMP Comparison (QAT, dim=1024, 300 steps)
+
+Tested 4 configurations of OMP parallelism for the attention (b,h) loop.
+The inner GEMMs (128x128 at seq=128) are small. When the outer loop is serial,
+the inner GEMMs use all cores via their own OMP. When the outer loop is
+parallel, each thread runs inner GEMMs single-threaded.
+
+All 4 produce identical perplexity (12.39) — same math, different parallelism.
+
+```
+                  ms/step(200)  ms/step(avg)  tok/s   Wall     Speedup
+No OMP:              5045         5647        181    1694s       --
+BWD only:            5117         5382        190    1615s     1.05x
+FWD only:            5253         5456        188    1637s     1.03x
+FWD+BWD:             4802         5187        197    1556s     1.09x
+```
+
+Full step-by-step data:
+
+```
+Step    No OMP    BWD      FWD      FWD+BWD
+  0     8106     5611     5623     5451
+ 50     5522     5280     5526     5235
+100     5408     5238     5474     5056
+150     5324     5171     5324     4909
+200     5045     5117     5253     4802
+250     5333     5096     5174     4923
+299     5395     5297     5570     5015
+```
+
+FWD+BWD is the clear winner (1.09x over no-OMP). The improvement is modest at
+dim=1024 because QATLinear GEMMs dominate (~60% of step time). At dim=512 the
+same comparison showed 1.50x, since attention is a larger fraction of compute.
+
+Profiler comparison (20-step, FP32 mode, before/after FWD OMP only):
+```
+Attention forward:  686 -> 560 ms (FP32), 573 -> 430 ms (QAT)  (-18 to -25%)
+```
