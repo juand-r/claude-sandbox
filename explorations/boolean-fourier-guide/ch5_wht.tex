@@ -19,6 +19,7 @@ comprehensive treatments.
 \section{Hadamard Matrices}\label{sec:hadamard-def}
 
 \begin{definition}[Hadamard matrix, Sylvester construction]\label{def:hadamard}
+\index{Hadamard matrix}
 Define recursively:
 \begin{equation}\label{eq:hadamard-recursion}
   H_0 = (1), \qquad
@@ -127,6 +128,7 @@ $3$ & $11$ & $(-1, -1)$ \\
 \section{The Walsh--Hadamard Transform}\label{sec:wht-def}
 
 \begin{definition}[Walsh--Hadamard Transform]\label{def:wht}
+\index{Walsh--Hadamard transform}
 For a vector $v \in \R^N$ (with $N = 2^n$), the \emph{Walsh--Hadamard
 Transform} is
 \begin{equation}\label{eq:wht}
@@ -177,12 +179,14 @@ Both directions use the same matrix, just with different scaling.
 \section{The Fast Walsh--Hadamard Transform}\label{sec:fwht}
 
 The naive matrix-vector multiplication $H_n v$ costs $O(N^2)$ operations.
-The \emph{Fast Walsh--Hadamard Transform} (FWHT)
+The \emph{Fast Walsh--Hadamard Transform} (FWHT)%
+\index{fast Walsh--Hadamard transform (FWHT)}
 \citep{shanks1969computation} exploits the recursive Kronecker
 structure to compute $H_n v$ in $O(N \log N) = O(N \cdot n)$
 operations, using only additions and subtractions (no multiplications).
 
 \subsection{The Butterfly Algorithm}\label{sec:butterfly}
+\index{butterfly operation}
 
 The recursion $H_n = H_1 \otimes H_{n-1}$ yields a divide-and-conquer
 decomposition. The Kronecker product gives the block form

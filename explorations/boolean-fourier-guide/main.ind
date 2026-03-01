@@ -1,0 +1,96 @@
+\begin{theindex}
+
+  \item AND function, \hyperpage{17}
+
+  \indexspace
+
+  \item Berry--Ess\'een theorem, \hyperpage{11}
+  \item binary neural network, \hyperpage{50}
+  \item BitNet, \hyperpage{51}
+  \item Bonami--Beckner inequality, \hyperpage{28}
+  \item Boolean function, \hyperpage{13}
+  \item butterfly operation, \hyperpage{38}
+
+  \indexspace
+
+  \item central limit theorem, \hyperpage{10}
+  \item character (group), \hyperpage{47}
+  \item Chebyshev's inequality, \hyperpage{10}
+  \item Chow parameters, \hyperpage{43}
+  \item Chow's theorem, \hyperpage{43}
+  \item convolution
+    \subitem dyadic, \hyperpage{21}
+
+  \indexspace
+
+  \item degree (Fourier), \hyperpage{16}
+  \item dictator function, \hyperpage{17}
+
+  \indexspace
+
+  \item fast Walsh--Hadamard transform (FWHT), \hyperpage{38}
+  \item Fourier coefficient, \hyperpage{16}
+  \item Fourier expansion, \hyperpage{16}
+
+  \indexspace
+
+  \item Hadamard matrix, \hyperpage{35}
+  \item hypercontractivity, \hyperpage{28}
+  \item hypercube, \hyperpage{13}
+
+  \indexspace
+
+  \item influence, \hyperpage{22}
+  \item inner product, \hyperpage{8}
+
+  \indexspace
+
+  \item Kronecker product, \hyperpage{9}
+
+  \indexspace
+
+  \item level-$k$ inequality, \hyperpage{29}
+  \item linear threshold function, \hyperpage{42}
+  \item LMN theorem, \hyperpage{32}
+
+  \indexspace
+
+  \item majority function, \hyperpage{18}
+  \item Markov's inequality, \hyperpage{10}
+
+  \indexspace
+
+  \item noise operator, \hyperpage{23}
+  \item noise sensitivity, \hyperpage{25}
+  \item noise stability, \hyperpage{25}
+
+  \indexspace
+
+  \item orthonormality, \hyperpage{15}
+
+  \indexspace
+
+  \item parity function, \hyperpage{14}
+  \item Parseval's identity, \hyperpage{16}
+  \item pseudo-Boolean function, \hyperpage{13}
+
+  \indexspace
+
+  \item Reed--Muller code, \hyperpage{45}
+
+  \indexspace
+
+  \item sign-rounding error, \hyperpage{20}
+  \item spectral parameterization, \hyperpage{52}
+  \item spectral weight, \hyperpage{29}
+  \item straight-through estimator, \hyperpage{51}
+
+  \indexspace
+
+  \item total influence, \hyperpage{23}
+
+  \indexspace
+
+  \item Walsh--Hadamard transform, \hyperpage{37}
+
+\end{theindex}

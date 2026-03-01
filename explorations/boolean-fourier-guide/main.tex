@@ -17,6 +17,15 @@
 \usetikzlibrary{positioning}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{makeidx}
+
+\makeindex
+
+% ── Cover colors ─────────────────────────────────────────────────────
+\definecolor{covblue}{RGB}{41, 98, 255}
+\definecolor{covteal}{RGB}{0, 150, 136}
+\definecolor{covpurp}{RGB}{142, 36, 170}
+\definecolor{covamber}{RGB}{245, 166, 35}
 
 \onehalfspacing
 \pagestyle{fancy}
@@ -60,40 +69,148 @@
 
 \begin{document}
 
-% ── Title page ────────────────────────────────────────────────────────
+% ── Cover page ───────────────────────────────────────────────────────
 \begin{titlepage}
+\thispagestyle{empty}
 \centering
-\vspace*{2cm}
 
-{\LARGE\bfseries Boolean Fourier Analysis and the\\[6pt]
-Walsh--Hadamard Transform}\\[18pt]
-{\Large\bfseries An Expository Guide}\\[12pt]
-{\large From First Principles to Spectral Methods\\[4pt]
+\vspace*{0.8cm}
+
+{\color{covblue}\rule{\linewidth}{2pt}}\\[10pt]
+{\fontsize{28}{34}\selectfont\bfseries Boolean Fourier Analysis\\[6pt]
+and the Walsh--Hadamard Transform}\\[10pt]
+{\color{covblue}\rule{\linewidth}{0.6pt}}\\[6pt]
+{\Large\bfseries An Expository Guide}\\[6pt]
+{\color{covblue}\rule{\linewidth}{2pt}}
+
+\vspace{0.9cm}
+
+% ── Tesseract: the 4-dimensional Boolean hypercube {±1}^4 ────────
+% Projection: (v1,v2,v3,v4) → 1.8·(v1 + φv3, v2 + φv4) where φ ≈ 0.618
+\begin{tikzpicture}[scale=1]
+  \pgfmathsetmacro{\phi}{0.618}
+  \pgfmathsetmacro{\sc}{1.8}
+
+  % Place all 16 vertices
+  \foreach \i in {0,...,15} {
+    \pgfmathsetmacro{\va}{1-2*Mod(\i,2)}
+    \pgfmathsetmacro{\vb}{1-2*Mod(int(\i/2),2)}
+    \pgfmathsetmacro{\vc}{1-2*Mod(int(\i/4),2)}
+    \pgfmathsetmacro{\vd}{1-2*Mod(int(\i/8),2)}
+    \pgfmathsetmacro{\px}{\sc*(\va + \phi*\vc)}
+    \pgfmathsetmacro{\py}{\sc*(\vb + \phi*\vd)}
+    \coordinate (V\i) at (\px, \py);
+  }
+
+  % Edges by dimension (8 edges each, 32 total)
+  % Dimension 1 (bit 0): i even → edge i—(i+1)
+  \foreach \i in {0,2,4,6,8,10,12,14} {
+    \pgfmathtruncatemacro{\j}{\i+1}
+    \draw[covblue, line width=1.3pt, opacity=0.8] (V\i) -- (V\j);
+  }
+  % Dimension 2 (bit 1): i mod 4 < 2 → edge i—(i+2)
+  \foreach \i in {0,1,4,5,8,9,12,13} {
+    \pgfmathtruncatemacro{\j}{\i+2}
+    \draw[covteal, line width=1.3pt, opacity=0.8] (V\i) -- (V\j);
+  }
+  % Dimension 3 (bit 2): i mod 8 < 4 → edge i—(i+4)
+  \foreach \i in {0,1,2,3,8,9,10,11} {
+    \pgfmathtruncatemacro{\j}{\i+4}
+    \draw[covpurp, line width=1.3pt, opacity=0.8] (V\i) -- (V\j);
+  }
+  % Dimension 4 (bit 3): i < 8 → edge i—(i+8)
+  \foreach \i in {0,...,7} {
+    \pgfmathtruncatemacro{\j}{\i+8}
+    \draw[covamber, line width=1.3pt, opacity=0.8] (V\i) -- (V\j);
+  }
+
+  % Vertices
+  \foreach \i in {0,...,15} {
+    \fill[white] (V\i) circle (3.5pt);
+    \fill[black!75] (V\i) circle (2.2pt);
+  }
+
+  % Label two antipodal vertices
+  \node[above right=2pt, font=\footnotesize\itshape, black!70]
+    at (V0) {$(1,1,1,1)$};
+  \node[below left=2pt, font=\footnotesize\itshape, black!70]
+    at (V15) {$(-1,-1,-1,-1)$};
+
+  % Caption
+  \node[below=8pt, font=\small] at (0,-3.3)
+    {The Boolean hypercube $\{-1,+1\}^4$: 16 vertices, 32 edges, four dimensions};
+
+  % Small legend
+  \node[font=\scriptsize, right] at (2.2, -4.0)
+    {{\color{covblue}---}\,$x_1$\quad
+     {\color{covteal}---}\,$x_2$\quad
+     {\color{covpurp}---}\,$x_3$\quad
+     {\color{covamber}---}\,$x_4$};
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+{\large\itshape From First Principles to Spectral Methods\\[3pt]
 for Binary Neural Networks}
 
-\vspace{2cm}
+\vfill
 
-{\large Companion to the thesis proposal:\\[4pt]
+{\large Companion to the thesis:\\[4pt]
 \textit{Spectral Methods for Binary Neural Networks}}
 
-\vspace{1.5cm}
+\vspace{0.8cm}
 
-{\large February 2026}
+{\large March 2026}
 
-\vspace{2cm}
-
-\begin{quote}\small
-This document provides a self-contained exposition of the mathematical
-background needed to read the thesis proposal on spectral methods for
-binary neural networks. It assumes familiarity with undergraduate linear
-algebra, probability, and calculus, but develops all specialized material---Boolean
-Fourier analysis, the Walsh--Hadamard transform, hypercontractivity,
-influence theory, and their connections to coding theory and neural
-networks---from scratch, with full proofs and references.
-\end{quote}
+\vspace{0.5cm}
 
 \end{titlepage}
 
+
+% ── Dedication ───────────────────────────────────────────────────────
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+\large\itshape
+Dedicated to the $2^n$ inhabitants of $\{-1,+1\}^n$.
+\end{center}
+\vspace*{\fill}
+
+
+% ── Epigraph ─────────────────────────────────────────────────────────
+\newpage
+\thispagestyle{empty}
+\vspace*{3cm}
+
+\begin{quote}
+\large\itshape
+``Mathematics compares the most diverse phenomena and discovers the
+secret analogies that unite them.''
+\end{quote}
+\hfill --- Joseph Fourier, \textit{Th\'eorie analytique de la chaleur} (1822)
+
+\vspace{2cm}
+
+\begin{quote}
+\large\itshape
+``In mathematics you don't understand things. You just get used to them.''
+\end{quote}
+\hfill --- John von Neumann
+
+\vspace{2cm}
+
+\begin{quote}
+\large\itshape
+``The purpose of computing is insight, not numbers.''
+\end{quote}
+\hfill --- Richard Hamming, \textit{Numerical Methods for Scientists}\\
+\hfill\textit{and Engineers} (1962)
+
+\newpage
+
+
+% ── Front matter ─────────────────────────────────────────────────────
 \tableofcontents
 \newpage
 
@@ -163,5 +280,93 @@ See also the dependency graph in \Cref{sec:dependency}.
 
 \bibliographystyle{plainnat}
 \bibliography{guide_references}
+
+% ── Index ────────────────────────────────────────────────────────────
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+
+% ── Back-of-book blurb ──────────────────────────────────────────────
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\fill}
+
+\begin{center}
+{\Large\bfseries About This Guide}
+\end{center}
+
+\vspace{0.8cm}
+
+\noindent
+\textit{Boolean Fourier Analysis and the Walsh--Hadamard Transform}
+provides a self-contained, proof-complete exposition of the mathematics
+behind spectral methods for binary neural networks. Starting from
+undergraduate linear algebra and probability, it develops the Fourier
+analysis of Boolean functions on the hypercube $\{-1,+1\}^n$, covers
+influence theory, noise sensitivity, and hypercontractivity, presents the
+fast Walsh--Hadamard transform, and explores connections to Reed--Muller
+codes, linear threshold functions, and the representation theory of
+$\mathbb{Z}_2^n$. The final chapter traces every concept back to its
+application in training neural networks with binary weights.
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Features:}
+\begin{itemize}[nosep,leftmargin=1.2em]
+  \item Full proofs and worked examples for every major result.
+  \item A companion Jupyter notebook with NumPy and PyTorch
+    implementations of all key algorithms.
+  \item Chapter-by-chapter map linking the mathematical theory to the
+    thesis on spectral methods for binary neural networks.
+  \item Concept dependency graph and curated reading lists.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\noindent
+\textit{Written as a companion to the thesis} Spectral Methods for Binary
+Neural Networks, \textit{this guide serves both as a reference for
+researchers at the intersection of Boolean analysis and machine learning,
+and as a self-study introduction for students encountering these ideas
+for the first time.}
+
+\vspace*{\fill}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.45]
+  \pgfmathsetmacro{\phi}{0.618}
+  \pgfmathsetmacro{\sc}{1.8}
+  \foreach \i in {0,...,15} {
+    \pgfmathsetmacro{\va}{1-2*Mod(\i,2)}
+    \pgfmathsetmacro{\vb}{1-2*Mod(int(\i/2),2)}
+    \pgfmathsetmacro{\vc}{1-2*Mod(int(\i/4),2)}
+    \pgfmathsetmacro{\vd}{1-2*Mod(int(\i/8),2)}
+    \pgfmathsetmacro{\px}{\sc*(\va + \phi*\vc)}
+    \pgfmathsetmacro{\py}{\sc*(\vb + \phi*\vd)}
+    \coordinate (V\i) at (\px, \py);
+  }
+  \foreach \i in {0,2,4,6,8,10,12,14} {
+    \pgfmathtruncatemacro{\j}{\i+1}
+    \draw[black!30, line width=0.8pt] (V\i) -- (V\j);
+  }
+  \foreach \i in {0,1,4,5,8,9,12,13} {
+    \pgfmathtruncatemacro{\j}{\i+2}
+    \draw[black!30, line width=0.8pt] (V\i) -- (V\j);
+  }
+  \foreach \i in {0,1,2,3,8,9,10,11} {
+    \pgfmathtruncatemacro{\j}{\i+4}
+    \draw[black!30, line width=0.8pt] (V\i) -- (V\j);
+  }
+  \foreach \i in {0,...,7} {
+    \pgfmathtruncatemacro{\j}{\i+8}
+    \draw[black!30, line width=0.8pt] (V\i) -- (V\j);
+  }
+  \foreach \i in {0,...,15} {
+    \fill[black!40] (V\i) circle (1.8pt);
+  }
+\end{tikzpicture}
+\end{center}
 
 \end{document}

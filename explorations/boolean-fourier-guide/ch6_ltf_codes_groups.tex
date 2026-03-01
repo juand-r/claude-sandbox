@@ -15,6 +15,7 @@ viewpoint (which places the Walsh--Fourier basis in a broader context).
 \section{Linear Threshold Functions}\label{sec:ltf}
 
 \begin{definition}[Linear threshold function (LTF)]\label{def:ltf}
+\index{linear threshold function}
 A \emph{linear threshold function} is a Boolean function of the form
 \begin{equation}\label{eq:ltf}
   f(x) = \sgn\!\left(\sum_{i=1}^n w_i x_i\right)
@@ -49,6 +50,7 @@ classical fact goes back to \citealp{minsky1969perceptrons}).
 
 \begin{theorem}[Chow, 1961; {\citealp{chow1961recognition}}; see also {\citet[Chapter~5]{odonnell2014analysis}}]
 \label{thm:chow}
+\index{Chow's theorem}
 A linear threshold function $f$ is uniquely determined among all LTFs
 by its degree-0 and degree-1 Fourier coefficients:
 $\fhat(\emptyset) = \E[f]$ and $\fhat(\{i\}) = \E[f \cdot x_i]$ for
@@ -58,7 +60,7 @@ $i = 1, \ldots, n$.
 $n = 3, 5, 7$ and a weighted threshold gate.}
 
 The $n+1$ values $(\fhat(\emptyset), \fhat(\{1\}), \ldots, \fhat(\{n\}))$
-are called the \emph{Chow parameters}. Chow's theorem says: if two LTFs
+are called the \emph{Chow parameters}.\index{Chow parameters} Chow's theorem says: if two LTFs
 have the same Chow parameters, they are the same function.
 
 \begin{remark}\label{rem:chow-significance}
@@ -161,6 +163,7 @@ treatment.
 \subsection{Definition}\label{sec:rm-def}
 
 \begin{definition}[Reed--Muller code]\label{def:reed-muller}
+\index{Reed--Muller code}
 Here $\text{GF}(2) = \{0, 1\}$ is the \emph{field with two elements},
 where addition is XOR ($0 \oplus 1 = 1$, $1 \oplus 1 = 0$) and
 multiplication is AND ($1 \cdot 1 = 1$, all others $0$). A
@@ -326,6 +329,7 @@ Then $\phi(a + b) = \phi(a) \cdot \phi(b)$ (coordinatewise).
 \subsection{Characters of Finite Abelian Groups}\label{sec:characters}
 
 \begin{definition}[Character]\label{def:character}
+\index{character (group)}
 A \emph{character} of a finite abelian group $G$ is a group homomorphism
 $\chi \colon G \to \mathbb{C}^*$ (the nonzero complex numbers under
 multiplication). In general, characters are complex-valued, but for

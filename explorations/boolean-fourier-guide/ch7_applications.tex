@@ -36,7 +36,7 @@ weight matrices, and each can be binarized independently.
 
 \subsection{Binary Weight Networks}\label{sec:binary-weights}
 
-A \emph{binary neural network} constrains each weight to $\pm 1$:
+A \emph{binary neural network}\index{binary neural network} constrains each weight to $\pm 1$:
 $W \in \pmone^{m \times n}$. This has dramatic implications:
 \begin{itemize}
   \item \textbf{Storage:} Each weight requires 1 bit instead of 16 or 32
@@ -54,7 +54,7 @@ $W \in \pmone^{m \times n}$. This has dramatic implications:
 The standard approach to training binary networks, introduced by
 \citet{bengio2013estimating} and applied to binary networks by
 \citet{courbariaux2015binaryconnect}, uses the
-\emph{straight-through estimator} (STE):
+\emph{straight-through estimator} (STE):\index{straight-through estimator}
 
 \begin{enumerate}
   \item Maintain \emph{latent weights} $W_{\text{real}} \in \R^{m \times n}$
@@ -76,6 +76,7 @@ analysis of why, and \citet{hubara2016binarized} for extensive empirical
 evidence.
 
 \subsection{BitNet}\label{sec:bitnet}
+\index{BitNet}
 
 BitNet \citep{wang2023bitnet} and its successor BitNet b1.58
 \citep{ma2024era} scale binary (and ternary) weight training to the
@@ -120,6 +121,7 @@ and the spectral coefficients can be computed via the FWHT
 (\Cref{alg:fwht}) in $O(d \log d)$ time.
 
 \subsection{Spectral Parameterization}\label{sec:spectral-param}
+\index{spectral parameterization}
 
 Instead of storing and optimizing the $d$ binary weights directly, the
 thesis proposes storing the spectral coefficients

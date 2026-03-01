@@ -13,7 +13,7 @@ is \citet{dewolf2008brief}.
 \section{The Boolean Hypercube}\label{sec:hypercube}
 
 \begin{definition}[Boolean hypercube]\label{def:hypercube}
-The \emph{Boolean hypercube} of dimension $n$ is the set
+The \emph{Boolean hypercube}\index{hypercube} of dimension $n$ is the set
 \[
   \Omega_n = \pmone^n = \{(x_1, \ldots, x_n) : x_i \in \{-1, +1\}\}.
 \]
@@ -36,8 +36,8 @@ To convert: if $b \in \{0,1\}$, set $x = 1 - 2b = (-1)^b$.
 \end{remark}
 
 \begin{definition}[Boolean and pseudo-Boolean functions]\label{def:boolean-fn}
-A \emph{Boolean function} is a map $f \colon \pmone^n \to \pmone$.
-A \emph{pseudo-Boolean function} is a map $f \colon \pmone^n \to \R$.
+A \emph{Boolean function}\index{Boolean function} is a map $f \colon \pmone^n \to \pmone$.
+A \emph{pseudo-Boolean function}\index{pseudo-Boolean function} is a map $f \colon \pmone^n \to \R$.
 \end{definition}
 
 The set of all pseudo-Boolean functions $f \colon \pmone^n \to \R$ forms
@@ -69,7 +69,7 @@ functions. The key objects are the \emph{parity functions} (also called
 \emph{Walsh functions} \citep{walsh1923closed} or \emph{characters};
 see \Cref{sec:characters} for the group-theoretic viewpoint).
 
-\begin{definition}[Parity function]\label{def:parity}
+\begin{definition}[Parity function]\label{def:parity}\index{parity function}
 For each subset $S \subseteq [n] = \{1, 2, \ldots, n\}$, define
 \begin{equation}\label{eq:chi-def}
   \chi_S(x) = \prod_{i \in S} x_i.
@@ -115,7 +115,7 @@ There are $2^3 = 8$ such functions, one for each subset of $[3]$.
 % ──────────────────────────────────────────────────────────────────────
 \section{Orthonormality}\label{sec:orthonormality}
 
-\begin{theorem}[Orthonormality of parity functions]\label{thm:orthonormality}
+\begin{theorem}[Orthonormality of parity functions]\label{thm:orthonormality}\index{orthonormality}
 For any $S, T \subseteq [n]$:
 \begin{equation}\label{eq:orthonormality}
   \ip{\chi_S}{\chi_T} = \delta_{ST} =
@@ -167,12 +167,12 @@ By \Cref{prop:fourier-finite} (general Fourier expansion) and
 \Cref{cor:parity-onb} (the parity functions form an ONB), we immediately
 obtain:
 
-\begin{theorem}[Fourier expansion on $\pmone^n$]\label{thm:fourier-expansion}
+\begin{theorem}[Fourier expansion on $\pmone^n$]\label{thm:fourier-expansion}\index{Fourier expansion}
 Every function $f \colon \pmone^n \to \R$ has a unique expansion
 \begin{equation}\label{eq:fourier-expansion}
   f(x) = \sum_{S \subseteq [n]} \fhat(S)\, \chi_S(x),
 \end{equation}
-where the \emph{Fourier coefficients} (or \emph{Walsh--Fourier
+where the \emph{Fourier coefficients}\index{Fourier coefficient} (or \emph{Walsh--Fourier
 coefficients}) are
 \begin{equation}\label{eq:fourier-coeff}
   \fhat(S) = \ip{f}{\chi_S}
@@ -187,7 +187,7 @@ $x_i^2 = 1$ for $x_i \in \pmone$, so any higher power reduces). This is
 the unique multilinear representation of $f$.
 
 \begin{definition}[Degree]\label{def:degree}
-The \emph{degree} of the monomial $\chi_S$ is $|S|$. We say $f$ has
+The \emph{degree}\index{degree (Fourier)} of the monomial $\chi_S$ is $|S|$. We say $f$ has
 \emph{Fourier degree at most $d$} if $\fhat(S) = 0$ for all $S$ with
 $|S| > d$.
 \end{definition}
@@ -199,7 +199,7 @@ $|S| > d$.
 Applying \Cref{prop:fourier-finite} (Parseval in the abstract setting)
 with the parity ONB:
 
-\begin{theorem}[Parseval's identity]\label{thm:parseval}
+\begin{theorem}[Parseval's identity]\label{thm:parseval}\index{Parseval's identity}
 For any $f \colon \pmone^n \to \R$:
 \begin{equation}\label{eq:parseval}
   \norm{f}_2^2 = \E_x[f(x)^2] = \sum_{S \subseteq [n]} \fhat(S)^2.
@@ -237,7 +237,7 @@ mass on low-degree coefficients.
 \subsection{Dictator Functions}\label{sec:dictator}
 
 \begin{example}[Dictator]\label{ex:dictator}
-The $i$-th \emph{dictator function} is $f(x) = x_i$. Its Fourier
+The $i$-th \emph{dictator function}\index{dictator function} is $f(x) = x_i$. Its Fourier
 expansion is trivially $f = \chi_{\{i\}}$, so
 \[
   \fhat(S) = \begin{cases} 1 & \text{if } S = \{i\}, \\ 0 & \text{otherwise.} \end{cases}
@@ -251,7 +251,7 @@ energy is on a single degree-1 coefficient.
 
 \subsection{The AND Function}\label{sec:and}
 
-\begin{example}[AND on 2 bits]\label{ex:and}
+\begin{example}[AND on 2 bits]\label{ex:and}\index{AND function}
 Define $\text{AND}(x_1, x_2) = +1$ iff $x_1 = x_2 = +1$, and $-1$
 otherwise. The truth table:
 \begin{center}
@@ -291,7 +291,7 @@ convolution theorem.}
 
 \subsection{The Majority Function}\label{sec:majority}
 
-\begin{example}[Majority on 3 bits]\label{ex:majority}
+\begin{example}[Majority on 3 bits]\label{ex:majority}\index{majority function}
 $\text{Maj}_3(x) = \sgn(x_1 + x_2 + x_3)$, where $\sgn(z) = +1$ if
 $z > 0$ and $\sgn(z) = -1$ if $z < 0$ (for odd $n$, the sum
 $x_1 + \cdots + x_n$ is never zero, so $\sgn(0)$ does not arise).
@@ -424,7 +424,7 @@ For Boolean functions, if we want to \emph{round} $f^{\leq k}$ back to
 $\pmone$ via the sign function, the fraction of inputs where the rounded
 version disagrees with $f$ is bounded by:
 
-\begin{proposition}[Sign-rounding error; thesis Proposition~3.1]\label{prop:sign-rounding}
+\begin{proposition}[Sign-rounding error; thesis Proposition~3.1]\label{prop:sign-rounding}\index{sign-rounding error}
 Let $f \colon \pmone^n \to \pmone$ be Boolean and
 $\tilde{f} = \sgn(f^{\leq k})$. Then
 \[
@@ -482,7 +482,7 @@ where the last step uses orthonormality: $\E[\chi_S \chi_T] = \delta_{ST}$.
 \end{proof}
 
 \begin{definition}[Dyadic convolution]\label{def:convolution}
-For $f, g \colon \pmone^n \to \R$, the \emph{dyadic convolution} is
+For $f, g \colon \pmone^n \to \R$, the \emph{dyadic convolution}\index{convolution!dyadic} is
 \[
   (f \ast g)(x) = \E_y[f(y)\, g(x \cdot y)],
 \]

@@ -19,6 +19,7 @@ flipping $x_i$ changes the output of $f$
 \citep[\S2.2]{odonnell2014analysis}.
 
 \begin{definition}[Influence]\label{def:influence}
+\index{influence}
 For $f \colon \pmone^n \to \pmone$ and $i \in [n]$, the \emph{influence
 of variable $i$} is
 \begin{equation}\label{eq:influence-def}
@@ -60,6 +61,7 @@ By Parseval: $\E[(D_i f)^2] = \sum_{S \ni i} \fhat(S)^2$.
 \end{proof}
 
 \begin{definition}[Total influence]\label{def:total-influence}
+\index{total influence}
 \begin{equation}\label{eq:total-influence}
   \mathbf{I}[f] = \sum_{i=1}^n \Inf_i[f]
   = \sum_{S \subseteq [n]} |S| \cdot \fhat(S)^2.
@@ -97,6 +99,7 @@ is always at least one variable with influence $\Omega(\log n / n)$.
 \section{The Noise Operator}\label{sec:noise-operator}
 
 \begin{definition}[Noise operator]\label{def:noise-operator}
+\index{noise operator}
 For $\rho \in [-1, 1]$, the \emph{Bonami--Beckner noise operator}%
 \footnote{Named after \citet{bonami1970etude} and
 \citet{beckner1975inequalities}, who proved the hypercontractivity
@@ -194,6 +197,7 @@ $\tfrac{1}{4}(1{+}1{+}1) - \tfrac{1}{16}(1) = 3/4 - 1/16 = 11/16$. \checkmark
 \section{Noise Stability}\label{sec:noise-stability}
 
 \begin{definition}[Noise stability]\label{def:noise-stability}
+\index{noise stability}
 The \emph{noise stability} of $f$ at correlation $\rho$ is
 \begin{equation}\label{eq:stab-def}
   \Stab_\rho[f] = \ip{f}{T_\rho f}
@@ -214,6 +218,7 @@ $\ip{f}{T_\rho f} = \sum_S \fhat(S) \cdot \rho^{|S|} \fhat(S) = \sum_S \rho^{|S|
 \end{proof}
 
 \begin{definition}[Noise sensitivity]\label{def:noise-sensitivity}
+\index{noise sensitivity}
 The \emph{noise sensitivity} is
 \[
   \mathbf{NS}_\delta[f] = \Prob_{(x,y)}[f(x) \neq f(y)],

@@ -17,7 +17,7 @@ for probability.
 \section{Inner Product Spaces}\label{sec:inner-product-spaces}
 
 \begin{definition}[Inner product]\label{def:inner-product}
-Let $V$ be a real vector space. An \emph{inner product} on $V$ is a
+Let $V$ be a real vector space. An \emph{inner product}\index{inner product} on $V$ is a
 function $\ip{\cdot}{\cdot} \colon V \times V \to \R$ satisfying, for all
 $u, v, w \in V$ and $\alpha \in \R$:
 \begin{enumerate}[label=(\roman*)]
@@ -77,7 +77,7 @@ expectation inner product, and the ONB will be the parity functions.
 
 \begin{definition}[Kronecker product]\label{def:kronecker}
 Let $A$ be an $m \times n$ matrix and $B$ a $p \times q$ matrix. Their
-\emph{Kronecker product} $A \otimes B$ is the $mp \times nq$ block matrix
+\emph{Kronecker product}\index{Kronecker product} $A \otimes B$ is the $mp \times nq$ block matrix
 \[
   A \otimes B =
   \begin{pmatrix}
@@ -144,7 +144,7 @@ $(\Omega, \mu)$ (where $\mu(\omega)$ is the probability of outcome $\omega$):
 \]
 \end{definition}
 
-\begin{theorem}[Markov's inequality]\label{thm:markov}
+\begin{theorem}[Markov's inequality]\label{thm:markov}\index{Markov's inequality}
 If $X \geq 0$ and $a > 0$, then $\Prob[X \geq a] \leq \E[X] / a$.
 \end{theorem}
 
@@ -152,7 +152,7 @@ If $X \geq 0$ and $a > 0$, then $\Prob[X \geq a] \leq \E[X] / a$.
 $\E[X] = \sum_\omega \mu(\omega) X(\omega) \geq \sum_{\omega : X(\omega) \geq a} \mu(\omega) \cdot a = a \cdot \Prob[X \geq a]$.
 \end{proof}
 
-\begin{corollary}[Chebyshev's inequality]\label{cor:chebyshev}
+\begin{corollary}[Chebyshev's inequality]\label{cor:chebyshev}\index{Chebyshev's inequality}
 $\Prob[|X - \E[X]| \geq t] \leq \Var[X] / t^2$.
 \end{corollary}
 
@@ -167,7 +167,7 @@ degree-truncation approximation bound (Proposition~3.1 of the thesis).
 % ──────────────────────────────────────────────────────────────────────
 \section{The Central Limit Theorem and Berry--Ess\'een}\label{sec:clt}
 
-\begin{theorem}[Central Limit Theorem]\label{thm:clt}
+\begin{theorem}[Central Limit Theorem]\label{thm:clt}\index{central limit theorem}
 Let $X_1, X_2, \ldots$ be independent, identically distributed random
 variables with $\E[X_i] = 0$ and $\Var[X_i] = \sigma^2 > 0$. Write
 $S_n = X_1 + \cdots + X_n$ for the partial sum. Then
@@ -189,7 +189,7 @@ The CLT tells us that $S_n / (\sigma \sqrt{n})$ is approximately
 $\mathcal{N}(0,1)$ for large $n$, but says nothing about the rate of
 convergence. The Berry--Ess\'een theorem quantifies this.
 
-\begin{theorem}[Berry--Ess\'een; \citealp{berry1941accuracy,esseen1942rate}]\label{thm:berry-esseen}
+\begin{theorem}[Berry--Ess\'een; \citealp{berry1941accuracy,esseen1942rate}]\label{thm:berry-esseen}\index{Berry--Ess\'een theorem}
 Under the hypotheses of \Cref{thm:clt}, with additionally
 $\E[|X_i|^3] = \gamma < \infty$, we have
 \[

@@ -1,0 +1,43 @@
+\indexentry{inner product|hyperpage}{8}
+\indexentry{Kronecker product|hyperpage}{9}
+\indexentry{Markov's inequality|hyperpage}{10}
+\indexentry{Chebyshev's inequality|hyperpage}{10}
+\indexentry{central limit theorem|hyperpage}{10}
+\indexentry{Berry--Ess\'een theorem|hyperpage}{11}
+\indexentry{hypercube|hyperpage}{13}
+\indexentry{Boolean function|hyperpage}{13}
+\indexentry{pseudo-Boolean function|hyperpage}{13}
+\indexentry{parity function|hyperpage}{14}
+\indexentry{orthonormality|hyperpage}{15}
+\indexentry{Fourier expansion|hyperpage}{16}
+\indexentry{Fourier coefficient|hyperpage}{16}
+\indexentry{degree (Fourier)|hyperpage}{16}
+\indexentry{Parseval's identity|hyperpage}{16}
+\indexentry{dictator function|hyperpage}{17}
+\indexentry{AND function|hyperpage}{17}
+\indexentry{majority function|hyperpage}{18}
+\indexentry{sign-rounding error|hyperpage}{20}
+\indexentry{convolution!dyadic|hyperpage}{21}
+\indexentry{influence|hyperpage}{22}
+\indexentry{total influence|hyperpage}{23}
+\indexentry{noise operator|hyperpage}{23}
+\indexentry{noise stability|hyperpage}{25}
+\indexentry{noise sensitivity|hyperpage}{25}
+\indexentry{hypercontractivity|hyperpage}{28}
+\indexentry{Bonami--Beckner inequality|hyperpage}{28}
+\indexentry{level-$k$ inequality|hyperpage}{29}
+\indexentry{spectral weight|hyperpage}{29}
+\indexentry{LMN theorem|hyperpage}{32}
+\indexentry{Hadamard matrix|hyperpage}{35}
+\indexentry{Walsh--Hadamard transform|hyperpage}{37}
+\indexentry{fast Walsh--Hadamard transform (FWHT)|hyperpage}{38}
+\indexentry{butterfly operation|hyperpage}{38}
+\indexentry{linear threshold function|hyperpage}{42}
+\indexentry{Chow's theorem|hyperpage}{43}
+\indexentry{Chow parameters|hyperpage}{43}
+\indexentry{Reed--Muller code|hyperpage}{45}
+\indexentry{character (group)|hyperpage}{47}
+\indexentry{binary neural network|hyperpage}{50}
+\indexentry{straight-through estimator|hyperpage}{51}
+\indexentry{BitNet|hyperpage}{51}
+\indexentry{spectral parameterization|hyperpage}{52}
