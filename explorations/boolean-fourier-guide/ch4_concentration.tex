@@ -34,8 +34,10 @@ $0 \leq \rho \leq \sqrt{(p-1)/(q-1)}$:
 \end{equation}
 \end{theorem}
 
-The condition $\rho \leq \sqrt{(p-1)/(q-1)}$ is tight. The most commonly
-used special case is:
+The condition $\rho \leq \sqrt{(p-1)/(q-1)}$ is tight: equality
+can be attained for any $p, q$ by suitable functions (see
+\citealp[Theorem~9.21]{odonnell2014analysis} for the proof of
+tightness). The most commonly used special case is:
 
 \begin{corollary}[$2 \to q$ hypercontractivity]\label{cor:2-to-q}
 For $q \geq 2$ and $\rho \leq 1/\sqrt{q-1}$:
@@ -224,7 +226,8 @@ A \emph{Boolean circuit} is a directed acyclic graph (DAG) where:
   \item \emph{Internal nodes} (``gates'') compute AND or OR of their
     inputs. Each gate has unbounded \emph{fan-in}: it can take any
     number of inputs. (By contrast, the class $\mathsf{NC}$ restricts
-    each gate to fan-in~2.)
+    each gate to fan-in~2; see \citealp{arora2009computational} for
+    standard complexity classes.)
   \item One designated \emph{output gate} produces the function value.
 \end{itemize}
 
@@ -292,13 +295,15 @@ $f$ is computable by a depth-$D$ circuit of size~$M$ and each variable
 is kept alive with probability~$p$, then with probability at least
 $1 - M \cdot (5p)^{k/(D-1)}$ the restricted function depends on at most
 $k$ of the surviving variables. Iterating $D-1$ rounds of restrictions
-reduces the function to a ``junta'' (depending on few variables) with
-high probability.
+reduces the function to a ``junta'' (a function depending on at most
+$k$ of its variables; see \citealp[\S3.1]{odonnell2014analysis})
+with high probability.
 
 \textbf{2. Spectral interpretation.}
 A random restriction that keeps each variable alive with probability $p$
 and kills it with probability $1-p$ is equivalent (in the spectral
-domain) to applying the noise operator $T_{\sqrt{p}}$. The fact that
+domain) to applying the noise operator $T_{\sqrt{p}}$
+\citep[\S4.1]{odonnell2014analysis}. The fact that
 $T_{\sqrt{p}} f$ concentrates on low degrees (after restriction, few
 variables survive) translates to the tail bound on $\fhat(S)^2$.
 

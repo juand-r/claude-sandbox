@@ -43,7 +43,8 @@ $W \in \pmone^{m \times n}$. This has dramatic implications:
     bits ($16\times$ to $32\times$ compression).
   \item \textbf{Computation:} The matrix-vector product $Wx$ for
     $W \in \pmone^{m \times n}$ and $x \in \pmone^n$ reduces to
-    additions and subtractions (or XNOR + popcount on binary hardware).
+    additions and subtractions (or XNOR + popcount on binary hardware;
+    see \citealp{rastegari2016xnor} for the implementation details).
   \item \textbf{Training:} The weight space $\pmone^{m \times n}$ is
     discrete, so standard gradient descent does not apply directly.
 \end{itemize}
@@ -70,7 +71,9 @@ The standard approach to training binary networks, introduced by
 The STE is a heuristic: the sign function has zero derivative almost
 everywhere, so the ``true'' gradient is zero. The STE approximates it by
 pretending the derivative is~1. Despite this, the STE works remarkably
-well in practice \citep{yin2019understanding,hubara2016binarized}.
+well in practice; see \citet{yin2019understanding} for a theoretical
+analysis of why, and \citet{hubara2016binarized} for extensive empirical
+evidence.
 
 \subsection{BitNet}\label{sec:bitnet}
 
@@ -98,6 +101,8 @@ Boolean function and analyzing it via the Walsh--Fourier transform.
 Consider a weight matrix $W \in \pmone^{d \times d}$ (square, for
 simplicity; the thesis also handles rectangular matrices). Each row
 $w_i \in \pmone^d$ is a vector of $d$ binary values.
+(This row-wise viewpoint originates in
+\citealp[\S1.3]{odonnell2014analysis}.)
 
 If $d = 2^n$ (a power of 2), we can view each row as a Boolean function
 $w_i \colon \pmone^n \to \pmone$ by identifying the column index
@@ -230,6 +235,8 @@ $\Stab_\rho[f]$-correlated (in expectation). Thus noise stability
 chains across layers: the effective correlation after $L$ layers depends
 on repeatedly applying the stability function $\rho \mapsto \Stab_\rho[f_\ell]$
 for each layer $\ell$.
+(For details on multi-layer composition in the Boolean setting, see
+\citealp[\S2.4 and Chapter~11]{odonnell2014analysis}.)
 
 \paragraph{Thesis \S2.9 (Group-theoretic perspective).}
 $\to$ \Cref{sec:group-theory} (groups, characters, comparison table).

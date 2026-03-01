@@ -36,7 +36,9 @@ The key structural fact is:
 \begin{theorem}[Cauchy--Schwarz inequality]\label{thm:cauchy-schwarz}
 For all $u, v$ in an inner product space,
 $|\ip{u}{v}| \leq \norm{u}\,\norm{v}$,
-with equality if and only if $u$ and $v$ are linearly dependent.
+with equality if and only if $u$ and $v$ are linearly dependent.%
+\footnote{Proof: see \citet[Chapter~6]{axler2024linear} or
+\citet[Section~5.1]{horn2012matrix}.}
 \end{theorem}
 
 \begin{definition}[Orthonormal basis]\label{def:onb}
@@ -87,7 +89,8 @@ Let $A$ be an $m \times n$ matrix and $B$ a $p \times q$ matrix. Their
 \]
 \end{definition}
 
-Key properties (all straightforward to verify):
+Key properties (all straightforward to verify; see
+\citealp[Chapter~4]{horn2012matrix} for proofs):
 \begin{enumerate}[label=(\roman*)]
   \item $(A \otimes B)(C \otimes D) = (AC) \otimes (BD)$, when the
         products $AC$ and $BD$ are defined.
@@ -176,7 +179,10 @@ $S_n = X_1 + \cdots + X_n$ for the partial sum. Then
 Here $\xrightarrow{d}$ denotes \emph{convergence in distribution}:
 $\Prob[S_n / (\sigma\sqrt{n}) \leq t] \to \Phi(t)$ for every $t$,
 where $\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^t e^{-s^2/2}\,ds$
-is the standard normal CDF.
+is the standard normal CDF.%
+\footnote{For proof via characteristic functions, see
+\citet[Chapter~3]{durrett2019probability} or
+\citet[Chapter~XV]{feller1971introduction}.}
 \end{theorem}
 
 The CLT tells us that $S_n / (\sigma \sqrt{n})$ is approximately
@@ -227,7 +233,8 @@ For $p = \infty$: $\norm{f}_\infty = \max_\omega |f(\omega)|$.
 
 On a probability space, we always have $\norm{f}_p \leq \norm{f}_q$ for
 $1 \leq p \leq q$. To see this: the function $t \mapsto t^{q/p}$ is
-convex (since $q/p \geq 1$), so by Jensen's inequality,
+convex (since $q/p \geq 1$), so by Jensen's inequality
+(see, e.g., \citealp[Theorem~1.6.2]{durrett2019probability}),
 $(\E[|f|^p])^{q/p} \leq \E[|f|^q]$; taking $q$-th roots gives
 $\norm{f}_p \leq \norm{f}_q$. (The direction seems backwards compared
 to ``bigger exponent = bigger norm'' for sums, but the normalization by

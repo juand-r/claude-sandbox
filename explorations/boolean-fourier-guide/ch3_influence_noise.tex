@@ -15,7 +15,8 @@ the Fourier coefficients. The main reference is
 \section{Influence of Variables}\label{sec:influence}
 
 Informally, the \emph{influence} of variable $i$ measures how often
-flipping $x_i$ changes the output of $f$.
+flipping $x_i$ changes the output of $f$
+\citep[\S2.2]{odonnell2014analysis}.
 
 \begin{definition}[Influence]\label{def:influence}
 For $f \colon \pmone^n \to \pmone$ and $i \in [n]$, the \emph{influence
@@ -93,7 +94,10 @@ is always at least one variable with influence $\Omega(\log n / n)$.
 \section{The Noise Operator}\label{sec:noise-operator}
 
 \begin{definition}[Noise operator]\label{def:noise-operator}
-For $\rho \in [-1, 1]$, the \emph{Bonami--Beckner noise operator}
+For $\rho \in [-1, 1]$, the \emph{Bonami--Beckner noise operator}%
+\footnote{Named after \citet{bonami1970etude} and
+\citet{beckner1975inequalities}, who proved the hypercontractivity
+inequality (\Cref{thm:bonami-beckner}) for this operator.}
 $T_\rho$ acts on $f \colon \pmone^n \to \R$ by
 \begin{equation}\label{eq:noise-operator}
   T_\rho f(x) = \E_{y}[f(y)],
@@ -107,7 +111,8 @@ $x$ and returns the expected value of $f$ on a random neighbor of $x$.
 \end{definition}
 
 Equivalently, $y_i = x_i \cdot z_i$ where $z_i$ is an independent
-$\pm 1$ random variable with $\E[z_i] = \rho$.
+$\pm 1$ random variable with $\E[z_i] = \rho$ (so
+$\Prob[z_i = +1] = (1+\rho)/2$ and $\Prob[z_i = -1] = (1-\rho)/2$).
 
 The crucial property of the noise operator is its diagonal action in the
 Fourier basis:
@@ -218,6 +223,8 @@ probability $\delta$, i.e., $\rho = 1 - 2\delta$. For Boolean $f$:
 To see why: since $f(x), f(y) \in \{+1,-1\}$, the product $f(x)f(y)$
 is $+1$ when they agree and $-1$ when they disagree, so
 $\Prob[f(x) \neq f(y)] = (1 - \E[f(x)f(y)])/2 = (1 - \Stab_\rho[f])/2$.
+See \citet[\S2.4]{odonnell2014analysis} for further discussion of noise
+sensitivity and its applications to social choice theory.
 \end{definition}
 
 \paragraph{Relevance to the thesis.}

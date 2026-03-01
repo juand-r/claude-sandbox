@@ -39,7 +39,8 @@ computes $d$ LTFs in parallel (one per row of the weight matrix).
     This function outputs $+1$ when $3x_1 + x_2 - 2x_3 > 0$.
 \end{itemize}
 The parity function $x_1 x_2 \cdots x_n$ is \emph{not} an LTF for
-$n \geq 2$ (it cannot be computed by a single threshold gate).
+$n \geq 2$ (it cannot be computed by a single threshold gate; this
+classical fact goes back to \citealp{minsky1969perceptrons}).
 \end{example}
 
 
@@ -116,7 +117,8 @@ of $w^\top x$), which can be estimated by the CLT applied to the sum
 $w^\top x$ minus the $i$-th term. Berry--Ess\'een
 (\Cref{thm:berry-esseen}) makes this rigorous. For binary weights
 $w \in \pmone^n$, $\norm{w}_1 = n$ and $\norm{w}_2 = \sqrt{n}$, giving
-$\mathbf{I}[f] \approx \sqrt{2n/\pi}$.
+$\mathbf{I}[f] \approx \sqrt{2n/\pi}$
+(see \citealp{peres2004noise} for the precise asymptotics).
 
 \paragraph{Relevance to the thesis.}
 Each row of a binary weight matrix followed by a sign activation computes
@@ -202,7 +204,7 @@ leading coefficient is nonzero, ensuring invertibility at each level.
 Thus, $\text{RM}(r,n)$ in the $\pmone$ convention consists exactly of
 those $\pmone$-vectors whose Walsh--Fourier expansion has degree $\leq r$.
 
-\begin{theorem}[RM parameters]\label{thm:rm-params}
+\begin{theorem}[RM parameters; {\citealp[Chapter~13]{macwilliams1977theory}}]\label{thm:rm-params}
 $\text{RM}(r, n)$ is a linear code with:
 \begin{itemize}
   \item \emph{Length:} $N = 2^n$.
@@ -331,7 +333,10 @@ $(\chi(e_1), \ldots, \chi(e_n)) \in \pmone^n$ give all $2^n$ characters.
 
 \begin{theorem}[Fourier analysis on finite abelian groups]\label{thm:fourier-group}
 For any finite abelian group $G$ with character group $\hat{G}$, the
-characters form an orthonormal basis for $L^2(G)$ (functions $G \to \mathbb{C}$
+characters form an orthonormal basis for $L^2(G)$%
+\footnote{Proof: see \citet[Chapters~1--2]{terras1999fourier} or
+\citet[Chapter~1]{diaconis1988group}.}
+(functions $G \to \mathbb{C}$
 with the inner product $\ip{f}{g} = \frac{1}{|G|}\sum_{x \in G} f(x)\overline{g(x)}$).
 Every function $f \colon G \to \mathbb{C}$ has a unique expansion
 $f = \sum_{\chi \in \hat{G}} \fhat(\chi)\, \chi$, and Parseval holds:

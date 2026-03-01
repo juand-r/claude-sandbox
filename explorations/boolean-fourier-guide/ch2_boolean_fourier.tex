@@ -66,7 +66,8 @@ this inner product space.
 
 We now construct an orthonormal basis for the space of pseudo-Boolean
 functions. The key objects are the \emph{parity functions} (also called
-\emph{Walsh functions} or \emph{characters}).
+\emph{Walsh functions} \citep{walsh1923closed} or \emph{characters};
+see \Cref{sec:characters} for the group-theoretic viewpoint).
 
 \begin{definition}[Parity function]\label{def:parity}
 For each subset $S \subseteq [n] = \{1, 2, \ldots, n\}$, define
@@ -88,7 +89,7 @@ form an orthonormal basis for $L^2([0,1])$, and every square-integrable
 function decomposes into ``frequencies'' indexed by integers $k$. Here,
 the parity functions $\{\chi_S\}_{S \subseteq [n]}$ play the same role:
 every function on $\pmone^n$ decomposes into components indexed by subsets
-$S$. The \emph{degree} $|S|$ is the analogue of frequency: degree-0 is
+$S$. (For more on this analogy, see \citealp[\S1.1]{odonnell2014analysis}.) The \emph{degree} $|S|$ is the analogue of frequency: degree-0 is
 the DC component (the mean), degree-1 terms vary linearly, and high-degree
 terms oscillate rapidly across the hypercube. The key simplification is
 that the Boolean basis is real-valued ($\pm 1$), so there are no complex
@@ -386,7 +387,9 @@ obtains $\E[\fhat(S)^2] = 1/2^n$ for every $S \neq \emptyset$. Since
 there are $\binom{n}{k}$ subsets of size $k$, the expected energy at
 degree $k$ is $\binom{n}{k}/2^n$, which follows a
 $\text{Binomial}(n, 1/2)$ distribution peaked at $k = n/2$.
-So a random Boolean function has its energy concentrated around degree $n/2$.
+So a random Boolean function has its energy concentrated around degree
+$n/2$. (See \citealp[Exercise~1.19]{odonnell2014analysis} for this
+calculation.)
 
 The thesis's central hypothesis is that \emph{trained} binary weight
 matrices, viewed as Boolean functions, have their energy concentrated at
@@ -405,8 +408,9 @@ Similarly, $f^{>k} = f - f^{\leq k}$.
 \end{definition}
 
 The truncation $f^{\leq k}$ is the best degree-$k$ approximation to $f$
-in the $L^2$ norm (this follows from orthogonality: the ``tail''
-$f^{>k}$ is orthogonal to all degree-$\leq k$ functions). The
+in the $L^2$ norm---this is a standard consequence of orthogonal
+projection in Hilbert spaces (see \citealp[Chapter~6]{axler2024linear}):
+the ``tail'' $f^{>k}$ is orthogonal to all degree-$\leq k$ functions. The
 approximation error is:
 \begin{equation}\label{eq:truncation-error}
   \norm{f - f^{\leq k}}_2^2 = \norm{f^{>k}}_2^2

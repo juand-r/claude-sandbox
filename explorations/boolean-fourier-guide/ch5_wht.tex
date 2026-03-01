@@ -90,6 +90,7 @@ and $c = (c_{n-1}, \ldots, c_0)$. Then the $(r,c)$ entry of $H_n$ is:
   = (-1)^{r \cdot c},
 \end{equation}
 where $r \cdot c$ is the bitwise inner product mod~2.
+(This formula appears, e.g., in \citealp[Chapter~1]{horadam2007hadamard}.)
 
 Now identify the column index $c$ with the hypercube point
 $x = ((-1)^{c_0}, (-1)^{c_1}, \ldots, (-1)^{c_{n-1}}) \in \pmone^n$,
@@ -176,8 +177,9 @@ Both directions use the same matrix, just with different scaling.
 \section{The Fast Walsh--Hadamard Transform}\label{sec:fwht}
 
 The naive matrix-vector multiplication $H_n v$ costs $O(N^2)$ operations.
-The \emph{Fast Walsh--Hadamard Transform} (FWHT) exploits the recursive
-Kronecker structure to compute $H_n v$ in $O(N \log N) = O(N \cdot n)$
+The \emph{Fast Walsh--Hadamard Transform} (FWHT)
+\citep{shanks1969computation} exploits the recursive Kronecker
+structure to compute $H_n v$ in $O(N \log N) = O(N \cdot n)$
 operations, using only additions and subtractions (no multiplications).
 
 \subsection{The Butterfly Algorithm}\label{sec:butterfly}
@@ -277,8 +279,9 @@ Indeed, $f = x_1 x_2 = \chi_{\{1,2\}}$. \checkmark
 % ──────────────────────────────────────────────────────────────────────
 \section{Comparison with the FFT}\label{sec:fwht-vs-fft}
 
-The FWHT is the Boolean analogue of the Fast Fourier Transform (FFT).
-The following table highlights the parallels:
+The FWHT is the Boolean analogue of the Fast Fourier Transform (FFT)
+of \citet{cooley1965algorithm}. The following table highlights the
+parallels:
 
 \begin{center}
 \begin{tabular}{lll}
