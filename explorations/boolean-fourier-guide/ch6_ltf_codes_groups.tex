@@ -36,7 +36,7 @@ computes $d$ LTFs in parallel (one per row of the weight matrix).
   \item \textbf{Majority:} $f(x) = \sgn(x_1 + \cdots + x_n)$. Weight
     vector $w = (1, 1, \ldots, 1)$.
   \item \textbf{Weighted threshold:} $f(x) = \sgn(3x_1 + x_2 - 2x_3)$.
-    This function outputs $+1$ when $3x_1 + x_2 - 2x_3 > 0$.
+    This function outputs $+1$ when $3x_1 + x_2 - 2x_3 \geq 0$.
 \end{itemize}
 The parity function $x_1 x_2 \cdots x_n$ is \emph{not} an LTF for
 $n \geq 2$ (it cannot be computed by a single threshold gate; this
@@ -194,15 +194,24 @@ $\text{GF}(2)$-polynomials of degree $\leq r$, after the $b \mapsto (-1)^b$
 map, coincides with the vector space spanned by $\{\chi_S : |S| \leq r\}$.
 This is because both are $(r+1)$-level filtrations of the same
 $2^n$-dimensional space, and the change-of-basis between the two is
-\emph{unitriangular}: when expressing $\text{GF}(2)$-monomials in terms of
-Walsh monomials (ordered by degree), the matrix is lower-triangular with
-$1$s on the diagonal. Concretely, $b_i = (1 - x_i)/2$, so a
+lower-triangular with nonzero diagonal entries: $b_i = (1 - x_i)/2$, so a
 $\text{GF}(2)$-monomial of degree $k$ equals $\prod_{i \in S}(1-x_i)/2^k$,
 which is $(\pm 1/2^k)\,\chi_S$ plus lower-degree Walsh terms. The
 leading coefficient is nonzero, ensuring invertibility at each level.
 
-Thus, $\text{RM}(r,n)$ in the $\pmone$ convention consists exactly of
-those $\pmone$-vectors whose Walsh--Fourier expansion has degree $\leq r$.
+Thus, the real span of the $\{0,1\}$-evaluation vectors of
+$\text{RM}(r,n)$ equals the Walsh subspace
+$\operatorname{span}\{\chi_S : |S| \leq r\}$.
+
+\textbf{Caution:} The $\{0,1\}$-evaluation vectors lie in the
+degree-$\leq r$ Walsh subspace, but the $\pmone$-codewords obtained via
+$0 \mapsto +1$, $1 \mapsto -1$ (i.e., $v \mapsto (-1)^v$) can have
+Walsh--Fourier degree $> r$, because the map $v \mapsto (-1)^v$ is
+nonlinear. For example, $b_1 \oplus b_2$ has $\text{GF}(2)$-degree~$1$,
+but $(-1)^{b_1 \oplus b_2} = (-1)^{b_1}(-1)^{b_2} = x_1 x_2$, which
+has Walsh degree~$2$. More strikingly, $\bigoplus_{i=1}^n b_i$
+(degree~$1$ over $\text{GF}(2)$) maps to $x_1 \cdots x_n = \chi_{[n]}$,
+the full parity of Walsh degree~$n$.
 
 \begin{theorem}[RM parameters; {\citealp[Chapter~13]{macwilliams1977theory}}]\label{thm:rm-params}
 $\text{RM}(r, n)$ is a linear code with:
@@ -221,7 +230,7 @@ $\text{RM}(r, n)$ is a linear code with:
   \item $\text{RM}(1, n)$: the first-order RM code. Dimension $n + 1$.
     Codewords are the $\pmone$-evaluation vectors of affine functions
     $c_\emptyset \oplus c_1 b_1 \oplus \cdots \oplus c_n b_n$ over
-    $\text{GF}(2)$, i.e., functions of Walsh--Fourier degree $\leq 1$.
+    $\text{GF}(2)$ (degree~$\leq 1$ over $\text{GF}(2)$).
     There are $2^{n+1}$ codewords. Minimum distance $2^{n-1}$.
 
     \textbf{Worked example: $\text{RM}(1, 2)$.}
@@ -243,9 +252,12 @@ $\text{RM}(r, n)$ is a linear code with:
     \end{tabular}
     \end{center}
     (plus their bitwise complements for the remaining four).
-    These are exactly the evaluation vectors of the degree-$\leq 1$
-    Walsh functions ($1$, $x_1$, $x_2$); the function $x_1 x_2$
-    would be degree~2, so it is excluded. Minimum distance = $2^{2-1} = 2$.
+    The $\{0,1\}$-evaluation vectors lie in the degree-$\leq 1$ Walsh
+    subspace $\operatorname{span}\{1, x_1, x_2\}$.
+    Note, however, that the $\pmone$-codeword for $b_1 \oplus b_2$ is
+    $(+1,-1,-1,+1) = x_1 x_2$, which has Walsh degree~$2$
+    (illustrating the degree-increase from the $v \mapsto (-1)^v$ map).
+    Minimum distance $= 2^{2-1} = 2$.
   \item $\text{RM}(n, n)$: the full code, containing all $2^{2^n}$
     Boolean functions. Minimum distance~1.
 \end{itemize}
