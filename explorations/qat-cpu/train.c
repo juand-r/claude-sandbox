@@ -20,16 +20,16 @@
 #define VOCAB_SIZE   128   /* ASCII */
 #endif
 #ifndef DIM
-#define DIM          512
+#define DIM          1024
 #endif
 #ifndef N_LAYERS
-#define N_LAYERS     4
+#define N_LAYERS     6
 #endif
 #ifndef N_HEADS
-#define N_HEADS      8
+#define N_HEADS      16
 #endif
 #ifndef HIDDEN_DIM
-#define HIDDEN_DIM   2048
+#define HIDDEN_DIM   4096
 #endif
 #ifndef MAX_SEQ_LEN
 #define MAX_SEQ_LEN  256
