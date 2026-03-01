@@ -35,7 +35,7 @@
 #define MAX_SEQ_LEN  256
 #endif
 #ifndef SEQ_LEN
-#define SEQ_LEN      64    /* Training sequence length */
+#define SEQ_LEN      128   /* Training sequence length */
 #endif
 #ifndef BATCH_SIZE
 #define BATCH_SIZE   8     /* Mini-batch size (sequences per step) */
