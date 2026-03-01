@@ -21,7 +21,7 @@
     border-bottom: 1px solid #30363d;
     padding: 10px 20px;
     display: flex; align-items: center; gap: 20px;
-    height: 52px;
+    flex-wrap: wrap;
   }
   #header h1 {
     font-size: 16px; font-weight: 600; white-space: nowrap;
@@ -29,6 +29,7 @@
   }
   #header .controls {
     display: flex; gap: 12px; align-items: center; font-size: 13px;
+    flex-wrap: wrap;
   }
   #header .controls label { color: #8b949e; }
   #header .controls select, #header .controls input {
@@ -74,49 +75,39 @@
   #mobile-detail .md-impact { font-style: italic; color: #8b949e; font-size: 13px; margin-bottom: 8px; }
   #mobile-detail .md-meta { display: flex; gap: 10px; font-size: 13px; color: #8b949e; flex-wrap: wrap; }
 
-  /* ── Mobile overrides ── */
-  @media (max-width: 768px) {
-    #header {
-      flex-wrap: wrap;
-      height: auto;
-      padding: 8px 12px;
-      gap: 8px;
-    }
-    #header h1 {
-      font-size: 14px;
-      width: 100%;
-    }
-    #header .controls {
-      flex-wrap: wrap;
-      gap: 6px 10px;
-      font-size: 12px;
-    }
-    #header .controls select, #header .controls input {
-      font-size: 12px;
-      padding: 4px 6px;
-    }
-    #header .controls input[type="range"] {
-      width: 80px;
-    }
-    .legend {
-      margin-left: 0;
-      width: 100%;
-    }
-    .legend-bar {
-      width: 120px; height: 12px;
-    }
-    #viewport {
-      top: var(--header-h, 52px);
-    }
-    #footer {
-      display: none;
-    }
-    #tooltip {
-      display: none !important;
-    }
-    body {
-      overflow: hidden;
-    }
+  /* ── Mobile styles (applied via .mobile class by JS) ── */
+  body.mobile #header {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  body.mobile #header h1 {
+    font-size: 14px;
+    width: 100%;
+  }
+  body.mobile #header .controls {
+    gap: 6px 10px;
+    font-size: 12px;
+  }
+  body.mobile #header .controls select,
+  body.mobile #header .controls input {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+  body.mobile #header .controls input[type="range"] {
+    width: 80px;
+  }
+  body.mobile .legend {
+    margin-left: 0;
+    width: 100%;
+  }
+  body.mobile .legend-bar {
+    width: 120px; height: 12px;
+  }
+  body.mobile #footer {
+    display: none;
+  }
+  body.mobile #tooltip {
+    display: none !important;
   }
 
   /* ── Main viewport ── */
@@ -124,6 +115,7 @@
     position: fixed; top: 52px; left: 0; right: 0; bottom: 32px;
     overflow: auto;
     cursor: grab;
+    -webkit-overflow-scrolling: touch;
   }
   #viewport:active { cursor: grabbing; }
   #viewport::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -18699,7 +18691,7 @@ function applyFilters() {
 function render() {
   const canvas = document.getElementById('heatmap');
   const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2); // cap at 2 for mobile canvas limits
 
   const colW = COL_WIDTH * zoom;
   const boxH = BOX_HEIGHT * zoom;
@@ -18997,8 +18989,20 @@ document.getElementById('cat-filter').addEventListener('change', applyFilters);
 document.getElementById('imp-filter').addEventListener('change', applyFilters);
 
 // ─── Mobile support ───
-const isMobile = ('ontouchstart' in window) || window.innerWidth <= 768;
 const mobileDetail = document.getElementById('mobile-detail');
+let isMobile = false;
+
+function detectMobile() {
+  isMobile = ('ontouchstart' in window) ||
+    (window.innerWidth <= 768) ||
+    (navigator.maxTouchPoints > 0) ||
+    (screen.width <= 768);
+  if (isMobile) {
+    document.body.classList.add('mobile');
+  } else {
+    document.body.classList.remove('mobile');
+  }
+}
 
 function closeMobileDetail() {
   mobileDetail.style.display = 'none';
@@ -19028,10 +19032,25 @@ function showMobileDetail(ev, pres) {
   mobileDetail.style.display = 'block';
 }
 
+// Track touch start position to distinguish taps from scrolls
+let touchStartX = 0, touchStartY = 0;
+viewport.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }
+});
+
 // Tap to view event on mobile
 viewport.addEventListener('touchend', (e) => {
   if (e.changedTouches.length !== 1) return;
   const touch = e.changedTouches[0];
+
+  // Ignore if user swiped/scrolled (moved more than 10px)
+  const dx = Math.abs(touch.clientX - touchStartX);
+  const dy = Math.abs(touch.clientY - touchStartY);
+  if (dx > 10 || dy > 10) return;
+
   const rect = viewport.getBoundingClientRect();
   const mx = touch.clientX - rect.left + viewport.scrollLeft;
   const my = touch.clientY - rect.top + viewport.scrollTop;
@@ -19052,33 +19071,51 @@ viewport.addEventListener('touchend', (e) => {
   }
 });
 
-// ─── Responsive header height ───
-function updateHeaderHeight() {
+// ─── Responsive layout ───
+function updateLayout() {
   const header = document.getElementById('header');
   const vp = document.getElementById('viewport');
-  const h = header.getBoundingClientRect().height;
-  vp.style.top = h + 'px';
-  document.documentElement.style.setProperty('--header-h', h + 'px');
+  const footer = document.getElementById('footer');
+  const headerH = header.getBoundingClientRect().height;
+  vp.style.top = headerH + 'px';
+  if (isMobile) {
+    vp.style.bottom = '0px';
+  } else {
+    const footerH = footer.getBoundingClientRect().height;
+    vp.style.bottom = footerH + 'px';
+  }
 }
 
 window.addEventListener('resize', () => {
-  updateHeaderHeight();
+  detectMobile();
+  updateLayout();
   render();
 });
 
-// Auto-set zoom for mobile
-function autoZoomForMobile() {
-  if (window.innerWidth <= 768) {
+// Auto-set zoom for small screens
+function autoZoomForScreen() {
+  const w = Math.min(window.innerWidth, screen.width);
+  if (w <= 480) {
+    zoom = 0.5;
+  } else if (w <= 768) {
     zoom = 0.6;
+  }
+  if (w <= 768) {
     zoomSlider.value = zoom;
     zoomLabel.textContent = Math.round(zoom * 100) + '%';
   }
 }
 
 // ─── Init ───
-autoZoomForMobile();
+detectMobile();
+autoZoomForScreen();
 loadData();
-setTimeout(updateHeaderHeight, 50);
+// Re-measure layout after first paint
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    updateLayout();
+  });
+});
 </script>
 </body>
 </html>
