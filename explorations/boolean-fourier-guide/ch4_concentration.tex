@@ -138,8 +138,9 @@ orthogonal projection of $T_\rho f$ onto the degree-$k$ subspace, and
 projecting onto a subspace cannot increase the $L^2$ norm (this is
 sometimes called \emph{Bessel's inequality}).
 
-For Boolean $f$ ($\norm{f}_\infty = 1$), we use a sharper bound. Since
-$|S| = \sum_{i \in S} 1 = \frac{1}{k}\sum_{i=1}^n \mathbf{1}_{i \in S}$ when $|S| = k$:
+For Boolean $f$ ($\norm{f}_\infty = 1$), we use a sharper bound.
+Each $S$ with $|S| = k$ is counted $k$ times in
+$\sum_{i=1}^n \sum_{S \ni i,\, |S|=k}$ (once per element of $S$), so:
 \[
   W^k[f] = \sum_{|S|=k} \fhat(S)^2
   = \frac{1}{k} \sum_{i=1}^n \sum_{\substack{S \ni i \\ |S| = k}} \fhat(S)^2
@@ -348,7 +349,7 @@ The algorithm works by:
 The challenge is identifying \emph{which} subsets $S$ have large
 coefficients, since there are $2^n$ possibilities. Kushilevitz and
 Mansour showed how to do this efficiently using a ``tree pruning''
-technique: organise the $2^n$ subsets in a binary tree (one level per
+technique: organize the $2^n$ subsets in a binary tree (one level per
 variable, branching on whether $i \in S$), and at each node estimate the
 total squared energy of the subtree. Branches with negligible energy are
 pruned, so only $O(s)$ branches survive to the leaves, keeping the

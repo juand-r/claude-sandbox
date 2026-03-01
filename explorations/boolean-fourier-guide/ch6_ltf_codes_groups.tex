@@ -76,7 +76,7 @@ $g$ agree on average with every coordinate projection.
 
 The key geometric insight: the Chow parameters determine the orthogonal
 projection of $f$ onto the degree-$1$ subspace of $L^2(\pmone^n)$. For
-LTFs, this projection is essentially the (normalised) weight vector---one
+LTFs, this projection is essentially the (normalized) weight vector---one
 can show $\fhat(\{i\}) = c \cdot w_i / \norm{w}_2$ for a constant $c$
 depending only on $\norm{w}$---so two LTFs with the same Chow parameters
 must have proportional weight vectors, hence define the same halfspace.
@@ -244,8 +244,8 @@ $\text{RM}(r, n)$ is a linear code with:
     \end{center}
     (plus their bitwise complements for the remaining four).
     These are exactly the evaluation vectors of the degree-$\leq 1$
-    Walsh functions: $1$, $x_1$, $x_2$, $x_1 x_2$ would be degree~2,
-    so it is excluded. Minimum distance = $2^{2-1} = 2$.
+    Walsh functions ($1$, $x_1$, $x_2$); the function $x_1 x_2$
+    would be degree~2, so it is excluded. Minimum distance = $2^{2-1} = 2$.
   \item $\text{RM}(n, n)$: the full code, containing all $2^{2^n}$
     Boolean functions. Minimum distance~1.
 \end{itemize}
@@ -281,7 +281,7 @@ Three properties of RM codes are relevant:
     Fourier support up to degree~$n$. For example, the degree-1
     polynomial $p(x) = \frac{1}{2}(x_1 + x_2 + x_3)$ has
     $\sgn(p) = \text{Maj}_3$, which has a nonzero degree-3 Fourier
-    coefficient $\widehat{\text{Maj}}_3(\{1,2,3\}) = -\frac{1}{2}$.
+    coefficient $\widehat{\text{Maj}_3}(\{1,2,3\}) = -\frac{1}{2}$.
     The sign operation ``creates'' high-degree spectral content. The RM
     connection provides structural insight but does not directly
     constrain the output.
