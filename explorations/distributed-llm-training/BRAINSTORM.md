@@ -127,28 +127,98 @@ wiki snippets, something manageable.
 |--------|--------|-------|
 | Novelty | Medium | Federated learning via git is a funny twist, but the ML is well-trodden |
 | Feasibility (toy scale) | High | Totally doable with small models on CPU |
-| Feasibility (real LLM) | Very Low | No GPUs, too slow, wrong tool for the job |
+| Feasibility (medium scale) | Medium | 50-150M params feasible with AMX/IPEX per session |
+| Feasibility (real LLM, >1B) | Low | Full training too slow, but LoRA fine-tuning possible |
 | Learning value | High | Covers distributed training, model merging, federated learning |
-| Practical utility | Low | You'd use actual GPU clusters for real work |
+| Practical utility | Medium | 10-100 sessions = real CPU cluster, useful for some workloads |
 | Fun factor | High | It's a weird and interesting hack |
 
-**Bottom line**: As a learning exercise and proof-of-concept, this is solid.
-You'll learn about federated learning, model merging, and distributed
-coordination. As a practical training strategy, it doesn't compete with a
-single A100 for 10 minutes. The model size ceiling is probably sub-10M params
-if you want training to finish in a reasonable time per session.
+**Bottom line**: Better than initially expected. Each session is a 16-core
+AMX-enabled Xeon with 21GB RAM -- a real compute node, not a toy. For
+small-to-medium models (up to ~150M params), distributed training via model
+merging is genuinely feasible. For larger models, LoRA fine-tuning is an option.
+Still can't compete with GPUs for raw training throughput, but the parallelism
+(10-100 independent nodes) partially compensates.
 
 **Recommendation**: Build the proof-of-concept locally first (simulated
-workers, one machine). If it works and is interesting, *then* consider whether
-the multi-session orchestration is worth the effort.
+workers, one machine). Benchmark AMX/IPEX performance to calibrate expectations.
+If throughput is reasonable, the multi-session approach becomes genuinely
+interesting -- not just as a learning exercise but as a practical (if eccentric)
+training strategy.
+
+---
+
+## Measured Resource Limits (Claude Code Web Session, 2026-03-01)
+
+Probed from inside a live session:
+
+| Resource | Value | Notes |
+|----------|-------|-------|
+| **CPU cores** | 16 | Physical cores, 1 thread/core (no hyperthreading) |
+| **CPU model** | Intel (family 6, model 207) | Emerald Rapids or Granite Rapids Xeon |
+| **CPU clock** | 2.1 GHz | |
+| **RAM** | 21 GB total | ~20 GB available |
+| **Disk** | 30 GB | Mounted at / |
+| **GPU** | None | No nvidia-smi, no /dev/dri |
+| **Swap** | None | 0 B |
+| **Internet** | Yes | Can pip install packages |
+| **Python** | 3.11.14 | pip available |
+| **PyTorch** | Not installed | Can be installed via pip |
+| **AVX-512** | Yes | Full suite: F, DQ, CD, BW, VL, VBMI, VBMI2, VNNI, BITALG, VPOPCNTDQ, FP16 |
+| **AMX** | Yes | BF16, INT8, TILE -- Intel Advanced Matrix Extensions |
+| **VNNI** | Yes | Vector Neural Network Instructions |
+| **ulimits** | Generous | No CPU time limit, unlimited processes, unlimited virtual memory |
+| **Session timeout** | Unknown | Need to test empirically |
+
+### Key Takeaway: Better Than Expected
+
+This is a **beefy machine** for CPU work. The critical findings:
+
+1. **16 cores with AVX-512 and AMX** -- these are serious instructions for
+   matrix math. AMX (Advanced Matrix Extensions) is Intel's answer to GPU
+   tensor cores for CPU. It can do BF16 and INT8 matrix multiplies in hardware.
+
+2. **21 GB RAM** -- enough to hold a 1-2B parameter model in memory (in fp32,
+   ~4 bytes/param, so ~500M params fit in 2GB, ~5B params in 20GB at fp32,
+   much more at bf16/int8).
+
+3. **Internet access** -- can pip install PyTorch, transformers, etc.
+
+4. **No hard CPU time limit** in ulimits -- the session timeout is the
+   constraint, not a process kill.
+
+### Revised Model Size Estimates
+
+With AMX/AVX-512 and 16 cores, CPU training is much more viable than I
+initially assumed:
+
+- PyTorch with Intel Extension for PyTorch (IPEX) can leverage AMX for BF16
+  training, which is a significant speedup over vanilla FP32.
+- oneDNN (MKL-DNN) backend in PyTorch already uses AVX-512 VNNI.
+- Realistic training targets (per session, per round):
+  - **10-50M params**: Comfortable. Multiple epochs on small datasets.
+  - **50-150M params**: Feasible for a few hundred steps with IPEX/AMX.
+  - **150M-500M params**: Possible for LoRA/QLoRA fine-tuning (frozen base).
+  - **500M+**: Forward passes yes, full training probably too slow.
+
+### Revised Verdict
+
+The "no GPU = toy only" assessment was too pessimistic. With AMX-enabled Xeons,
+16 cores, and 21GB RAM, each session is a legitimate compute node for
+small-to-medium model training. This pushes the idea from "cute hack" toward
+"might actually be interesting."
+
+The parallelism angle becomes compelling: 10 sessions = 160 cores, 210 GB RAM.
+100 sessions = 1600 cores, 2.1 TB RAM. That's a respectable CPU cluster,
+especially for inference, hyperparameter search, and model merging experiments.
 
 ---
 
 ## Open Questions
 
-- What are the actual resource limits of Claude Code web sessions? (CPU cores,
-  RAM, time limit, disk)
+- What is the actual session timeout? (Need to test empirically)
 - Is there an API or programmatic way to launch multiple sessions?
 - What's the actual use case -- learning federated learning, or genuinely
   trying to train something useful?
 - What model/task do you care about?
+- How fast is AMX BF16 matmul on this hardware? (Should benchmark)
