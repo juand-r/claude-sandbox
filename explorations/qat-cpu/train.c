@@ -23,7 +23,7 @@
 #define DIM          1024
 #endif
 #ifndef N_LAYERS
-#define N_LAYERS     8
+#define N_LAYERS     6
 #endif
 #ifndef N_HEADS
 #define N_HEADS      16
