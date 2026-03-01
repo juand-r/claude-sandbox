@@ -245,7 +245,7 @@ timing is faster because attention OMP was added after the original numbers
 were recorded (535/484/520 ms). The OMP speedup benefits both modes equally
 (backward is all FP32), compressing the QAT forward-pass advantage.
 
-### dim=1024, 200 steps (50.9M params)
+### dim=1024, 200 steps (50.9M params, old config: 4 layers, seq=64)
 
 ```
                           FP32      QAT     QAT+INT8bwd
@@ -259,3 +259,21 @@ At dim=1024, QAT provides 1.09x speedup over FP32 (vs 1.01x at dim=512).
 The larger GEMM sizes favor INT8 VNNI more. INT8 backward quality is fine
 (ppl 13.58 vs 13.76 — actually slightly better, likely noise) but still
 8% slower than QAT fwd-only due to quantize_per_column overhead.
+
+### dim=1024, 300 steps (76M params, 6 layers, seq=128, BS=8)
+
+Full convergence run with the standard config used in CONVERGENCE_RUNS.md.
+
+```
+                          FP32      QAT     QAT+INT8bwd
+Val Perplexity:          12.52    12.39        12.70
+Val BPB:                 3.647    3.631        3.667
+ms/step:                 5552     3761         4102
+Speedup vs FP32:            --    1.36x        1.32x
+Total time:              1721s    1280s        1305s
+```
+
+INT8bwd is 1.32x faster than FP32, but 0.98x vs QAT fwd-only. Quality is
+slightly worse (ppl 12.70 vs 12.39 for QAT), suggesting gradient quantization
+noise has a small but real cost. The conclusion remains: INT8 backward adds
+overhead that exceeds the GEMM savings at these dimensions.
