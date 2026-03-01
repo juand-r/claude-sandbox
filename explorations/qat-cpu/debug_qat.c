@@ -47,9 +47,9 @@ int main(void) {
     Tensor *pos_emb = tensor_create(MAX_SEQ_LEN, DIM);
     tensor_rand(pos_emb, -0.02f, 0.02f, rng);
 
-    TransformerBlock *block0 = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, &kd, rng);
+    TransformerBlock *block0 = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, false, &kd, rng);
     block0->attn->causal = true;
-    TransformerBlock *block1 = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, &kd, rng);
+    TransformerBlock *block1 = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, false, &kd, rng);
     block1->attn->causal = true;
 
     int tokens[SEQ_LEN];

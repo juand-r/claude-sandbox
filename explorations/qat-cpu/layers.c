@@ -718,10 +718,12 @@ void attention_zero_grad(Attention *attn) {
  * Transformer Block
  *
  * x -> norm1 -> attn -> + residual -> norm2 -> FFN -> + residual
- * FFN: up_proj -> GeLU -> down_proj
+ * FFN (GeLU):   up_proj -> GeLU -> down_proj
+ * FFN (SwiGLU): (SiLU(gate_proj) * up_proj) -> down_proj
  * ======================================================================== */
 
 TransformerBlock *transformer_block_create(int dim, int hidden_dim, int n_heads,
+                                           bool use_swiglu,
                                            const KernelDispatch *kd,
                                            uint64_t *rng_state) {
     TransformerBlock *block = (TransformerBlock *)calloc(1, sizeof(TransformerBlock));
@@ -730,11 +732,15 @@ TransformerBlock *transformer_block_create(int dim, int hidden_dim, int n_heads,
     block->dim = dim;
     block->hidden_dim = hidden_dim;
     block->n_heads = n_heads;
+    block->use_swiglu = use_swiglu;
 
     block->norm1 = rmsnorm_create(dim, 1e-5f);
     block->attn = attention_create(dim, n_heads, kd, rng_state);
     block->norm2 = rmsnorm_create(dim, 1e-5f);
     block->ffn_up = qat_linear_create(dim, hidden_dim, false, kd, rng_state);
+    if (use_swiglu) {
+        block->ffn_gate = qat_linear_create(dim, hidden_dim, false, kd, rng_state);
+    }
     block->ffn_down = qat_linear_create(hidden_dim, dim, false, kd, rng_state);
 
     return block;
@@ -746,12 +752,14 @@ void transformer_block_free(TransformerBlock *block) {
     attention_free(block->attn);
     rmsnorm_free(block->norm2);
     qat_linear_free(block->ffn_up);
+    if (block->ffn_gate) qat_linear_free(block->ffn_gate);
     qat_linear_free(block->ffn_down);
     tensor_free(block->saved_residual1);
     tensor_free(block->saved_residual2);
     tensor_free(block->saved_normed1);
     tensor_free(block->saved_normed2);
     tensor_free(block->saved_ffn_hidden);
+    tensor_free(block->saved_ffn_up);
     free(block);
 }
 
@@ -803,18 +811,45 @@ Tensor *transformer_block_forward(TransformerBlock *block,
 
     /* FFN up: [B*S x dim] -> [B*S x hidden] */
     Tensor *ffn_up = qat_linear_forward(block->ffn_up, normed2);
-    tensor_free(normed2);
 
-    /* GeLU activation */
-    if (block->saved_ffn_hidden) tensor_free(block->saved_ffn_hidden);
-    block->saved_ffn_hidden = tensor_create(total_tokens, hidden_dim);
-    tensor_copy(block->saved_ffn_hidden, ffn_up);
+    Tensor *ffn_act; /* Input to down_proj */
+    if (block->use_swiglu) {
+        /* SwiGLU: out = SiLU(gate(x)) * up(x) */
+        Tensor *ffn_gate = qat_linear_forward(block->ffn_gate, normed2);
+        tensor_free(normed2);
 
-    gelu_forward(ffn_up->data, ffn_up->data, total_tokens * hidden_dim);
+        /* Save gate input (pre-SiLU) and up output for backward */
+        if (block->saved_ffn_hidden) tensor_free(block->saved_ffn_hidden);
+        block->saved_ffn_hidden = tensor_create(total_tokens, hidden_dim);
+        tensor_copy(block->saved_ffn_hidden, ffn_gate);
+
+        if (block->saved_ffn_up) tensor_free(block->saved_ffn_up);
+        block->saved_ffn_up = tensor_create(total_tokens, hidden_dim);
+        tensor_copy(block->saved_ffn_up, ffn_up);
+
+        /* SiLU(gate) * up */
+        silu_forward(ffn_gate->data, ffn_gate->data, total_tokens * hidden_dim);
+        ffn_act = tensor_create(total_tokens, hidden_dim);
+        for (int i = 0; i < total_tokens * hidden_dim; i++) {
+            ffn_act->data[i] = ffn_gate->data[i] * ffn_up->data[i];
+        }
+        tensor_free(ffn_gate);
+        tensor_free(ffn_up);
+    } else {
+        tensor_free(normed2);
+
+        /* GeLU: save pre-activation for backward */
+        if (block->saved_ffn_hidden) tensor_free(block->saved_ffn_hidden);
+        block->saved_ffn_hidden = tensor_create(total_tokens, hidden_dim);
+        tensor_copy(block->saved_ffn_hidden, ffn_up);
+
+        gelu_forward(ffn_up->data, ffn_up->data, total_tokens * hidden_dim);
+        ffn_act = ffn_up;
+    }
 
     /* FFN down: [B*S x hidden] -> [B*S x dim] */
-    Tensor *ffn_out = qat_linear_forward(block->ffn_down, ffn_up);
-    tensor_free(ffn_up);
+    Tensor *ffn_out = qat_linear_forward(block->ffn_down, ffn_act);
+    tensor_free(ffn_act);
 
     /* Residual add */
     Tensor *output = tensor_create(total_tokens, dim);
@@ -836,14 +871,67 @@ Tensor *transformer_block_backward(TransformerBlock *block,
 
     /* ---- FFN backward ---- */
     Tensor *grad_ffn_act = qat_linear_backward(block->ffn_down, grad_output);
+    Tensor *grad_normed2;
 
-    Tensor *grad_ffn_up = tensor_create(total_tokens, hidden_dim);
-    gelu_backward(block->saved_ffn_hidden->data, grad_ffn_act->data,
-                  grad_ffn_up->data, total_tokens * hidden_dim);
-    tensor_free(grad_ffn_act);
+    if (block->use_swiglu) {
+        /*
+         * SwiGLU forward was: act = SiLU(gate) * up
+         * where gate = gate_proj(normed2), up = up_proj(normed2)
+         *
+         * d(act)/d(gate_pre_silu) = up * d(SiLU(gate))/d(gate)
+         * d(act)/d(up) = SiLU(gate)
+         */
+        int n = total_tokens * hidden_dim;
 
-    Tensor *grad_normed2 = qat_linear_backward(block->ffn_up, grad_ffn_up);
-    tensor_free(grad_ffn_up);
+        /* Recompute SiLU(gate) from saved pre-SiLU gate values */
+        float *silu_gate = (float *)aligned_alloc(64, n * sizeof(float));
+        silu_forward(block->saved_ffn_hidden->data, silu_gate, n);
+
+        /* grad_up = grad_act * SiLU(gate) */
+        Tensor *grad_up = tensor_create(total_tokens, hidden_dim);
+        for (int i = 0; i < n; i++) {
+            grad_up->data[i] = grad_ffn_act->data[i] * silu_gate[i];
+        }
+
+        /* grad_gate_pre_silu = grad_act * up * SiLU'(gate) */
+        Tensor *grad_gate = tensor_create(total_tokens, hidden_dim);
+        /* SiLU'(x) = sigmoid(x) + x * sigmoid(x) * (1 - sigmoid(x))
+         *          = sigmoid(x) * (1 + x * (1 - sigmoid(x)))
+         *          = silu(x)/x * (1 + x - silu(x))  ... but use the direct form */
+        silu_backward(block->saved_ffn_hidden->data, grad_ffn_act->data,
+                      grad_gate->data, n);
+        /* silu_backward computes: grad_out * silu'(input)
+         * But we need: grad_act * up * silu'(gate)
+         * silu_backward gave us: grad_act * silu'(gate)
+         * We need to multiply by up */
+        for (int i = 0; i < n; i++) {
+            grad_gate->data[i] *= block->saved_ffn_up->data[i];
+        }
+
+        free(silu_gate);
+        tensor_free(grad_ffn_act);
+
+        /* Backprop through both projections (both take normed2 as input) */
+        Tensor *grad_normed2_up = qat_linear_backward(block->ffn_up, grad_up);
+        tensor_free(grad_up);
+        Tensor *grad_normed2_gate = qat_linear_backward(block->ffn_gate, grad_gate);
+        tensor_free(grad_gate);
+
+        /* Sum gradients from both paths */
+        grad_normed2 = grad_normed2_up;
+        for (int i = 0; i < total_tokens * dim; i++) {
+            grad_normed2->data[i] += grad_normed2_gate->data[i];
+        }
+        tensor_free(grad_normed2_gate);
+    } else {
+        Tensor *grad_ffn_up = tensor_create(total_tokens, hidden_dim);
+        gelu_backward(block->saved_ffn_hidden->data, grad_ffn_act->data,
+                      grad_ffn_up->data, total_tokens * hidden_dim);
+        tensor_free(grad_ffn_act);
+
+        grad_normed2 = qat_linear_backward(block->ffn_up, grad_ffn_up);
+        tensor_free(grad_ffn_up);
+    }
 
     Tensor *grad_after_attn = rmsnorm_backward(block->norm2, grad_normed2);
     tensor_free(grad_normed2);
@@ -874,5 +962,6 @@ void transformer_block_zero_grad(TransformerBlock *block) {
     attention_zero_grad(block->attn);
     rmsnorm_zero_grad(block->norm2);
     qat_linear_zero_grad(block->ffn_up);
+    if (block->ffn_gate) qat_linear_zero_grad(block->ffn_gate);
     qat_linear_zero_grad(block->ffn_down);
 }

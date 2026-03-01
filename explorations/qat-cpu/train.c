@@ -56,6 +56,23 @@
 #define WEIGHT_DECAY 0.01f
 #define GEN_TEMP     0.8f
 
+/* SwiGLU: 0=GeLU FFN (default), 1=SwiGLU FFN with iso-param hidden_dim */
+#ifndef USE_SWIGLU
+#define USE_SWIGLU   0
+#endif
+
+/*
+ * Iso-parameter hidden_dim for SwiGLU:
+ * GeLU FFN params per layer:  2 * dim * hidden_dim
+ * SwiGLU FFN params per layer: 3 * dim * swiglu_hidden
+ * For equal params: swiglu_hidden = hidden_dim * 2 / 3
+ */
+#if USE_SWIGLU
+#define FFN_HIDDEN_DIM  ((HIDDEN_DIM * 2) / 3)
+#else
+#define FFN_HIDDEN_DIM  HIDDEN_DIM
+#endif
+
 /* TRAIN_MODE: 0=all (default), 1=FP32 only, 2=QAT only, 3=QAT+INT8bwd only */
 #ifndef TRAIN_MODE
 #define TRAIN_MODE   0
@@ -119,7 +136,7 @@ static GPTModel *gpt_create(const KernelDispatch *kd, uint64_t *rng) {
     m->dim          = DIM;
     m->n_layers     = N_LAYERS;
     m->n_heads      = N_HEADS;
-    m->hidden_dim   = HIDDEN_DIM;
+    m->hidden_dim   = FFN_HIDDEN_DIM;
     m->max_seq_len  = MAX_SEQ_LEN;
     m->kernels      = kd;
 
@@ -134,7 +151,8 @@ static GPTModel *gpt_create(const KernelDispatch *kd, uint64_t *rng) {
     /* Transformer blocks */
     m->blocks = (TransformerBlock **)calloc(N_LAYERS, sizeof(TransformerBlock *));
     for (int i = 0; i < N_LAYERS; i++) {
-        m->blocks[i] = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, kd, rng);
+        m->blocks[i] = transformer_block_create(DIM, FFN_HIDDEN_DIM, N_HEADS,
+                                                 USE_SWIGLU, kd, rng);
         /* Enable causal masking */
         m->blocks[i]->attn->causal = true;
     }
@@ -173,6 +191,7 @@ static void gpt_set_qat(GPTModel *model, bool use_qat) {
         b->attn->wv->use_qat = use_qat;
         b->attn->wo->use_qat = use_qat;
         b->ffn_up->use_qat = use_qat;
+        if (b->ffn_gate) b->ffn_gate->use_qat = use_qat;
         b->ffn_down->use_qat = use_qat;
     }
     model->output_head->use_qat = use_qat;
@@ -186,6 +205,7 @@ static void gpt_set_int8_backward(GPTModel *model, bool use_int8_bwd) {
         b->attn->wv->use_int8_backward = use_int8_bwd;
         b->attn->wo->use_int8_backward = use_int8_bwd;
         b->ffn_up->use_int8_backward = use_int8_bwd;
+        if (b->ffn_gate) b->ffn_gate->use_int8_backward = use_int8_bwd;
         b->ffn_down->use_int8_backward = use_int8_bwd;
     }
     model->output_head->use_int8_backward = use_int8_bwd;
@@ -305,6 +325,7 @@ static void gpt_mark_weights_dirty(GPTModel *m) {
         b->attn->wv->weights_dirty = true;
         b->attn->wo->weights_dirty = true;
         b->ffn_up->weights_dirty = true;
+        if (b->ffn_gate) b->ffn_gate->weights_dirty = true;
         b->ffn_down->weights_dirty = true;
     }
     m->output_head->weights_dirty = true;
@@ -330,13 +351,18 @@ static void gpt_register_params(GPTModel *m, Adam *opt) {
     /* Transformer blocks */
     for (int i = 0; i < m->n_layers; i++) {
         TransformerBlock *b = m->blocks[i];
-        /* Attention projections */
+        /* Attention projections + FFN */
         QATLinear *linears[] = {b->attn->wq, b->attn->wk, b->attn->wv,
                                 b->attn->wo, b->ffn_up, b->ffn_down};
         for (int j = 0; j < 6; j++) {
             adam_add_param(opt, linears[j]->weight->data,
                            linears[j]->grad_weight->data,
                            tensor_numel(linears[j]->weight));
+        }
+        if (b->ffn_gate) {
+            adam_add_param(opt, b->ffn_gate->weight->data,
+                           b->ffn_gate->grad_weight->data,
+                           tensor_numel(b->ffn_gate->weight));
         }
         /* Norms */
         adam_add_param(opt, b->norm1->weight->data, b->norm1->grad_weight->data,
@@ -368,6 +394,7 @@ static int gpt_count_params(GPTModel *m) {
         for (int j = 0; j < 6; j++) {
             total += tensor_numel(linears[j]->weight);
         }
+        if (b->ffn_gate) total += tensor_numel(b->ffn_gate->weight);
         total += tensor_numel(b->norm1->weight);
         total += tensor_numel(b->norm2->weight);
     }
@@ -656,7 +683,8 @@ typedef struct {
  * We count per step = seq_len tokens.
  */
 static double estimate_flops_per_step(void) {
-    double per_layer = 2.0 * DIM * (4.0 * DIM + 2.0 * HIDDEN_DIM);
+    double ffn_flops = USE_SWIGLU ? 3.0 * FFN_HIDDEN_DIM : 2.0 * FFN_HIDDEN_DIM;
+    double per_layer = 2.0 * DIM * (4.0 * DIM + ffn_flops);
     double fwd_per_token = N_LAYERS * per_layer + 2.0 * DIM * VOCAB_SIZE;
     double fwd_bwd_per_token = 3.0 * fwd_per_token;
     return fwd_bwd_per_token * SEQ_LEN * BATCH_SIZE;
@@ -810,8 +838,9 @@ int main(int argc, char **argv) {
     GPTModel *tmp = gpt_create(&kd, rng_tmp);
     int n_params = gpt_count_params(tmp);
     double flops_per_step = estimate_flops_per_step();
-    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d\n",
-           N_LAYERS, DIM, N_HEADS, HIDDEN_DIM);
+    printf("\nModel: %d layers, dim=%d, heads=%d, hidden=%d%s\n",
+           N_LAYERS, DIM, N_HEADS, FFN_HIDDEN_DIM,
+           USE_SWIGLU ? " (SwiGLU)" : " (GeLU)");
     printf("Batch: %d seqs x %d tokens = %d tokens/step\n",
            BATCH_SIZE, SEQ_LEN, BATCH_SIZE * SEQ_LEN);
     printf("Parameters: %d (%.1fK, %.2fM)\n",

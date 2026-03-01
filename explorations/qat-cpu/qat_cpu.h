@@ -485,18 +485,24 @@ void       attention_zero_grad(Attention *attn);
  * Transformer Block
  *
  * input -> RMSNorm -> Attention -> residual add
- *       -> RMSNorm -> FFN (QATLinear -> GeLU -> QATLinear) -> residual add
+ *       -> RMSNorm -> FFN -> residual add
+ *
+ * FFN variants:
+ *   GeLU:   up_proj -> GeLU -> down_proj
+ *   SwiGLU: (SiLU(gate_proj) * up_proj) -> down_proj
  * ======================================================================== */
 
 typedef struct {
     int dim;
     int hidden_dim;   /* FFN hidden dimension, typically 4*dim */
     int n_heads;
+    bool use_swiglu;  /* If true, use SwiGLU FFN instead of GeLU */
 
     RMSNorm   *norm1;
     Attention *attn;
     RMSNorm   *norm2;
     QATLinear *ffn_up;     /* [dim -> hidden_dim] */
+    QATLinear *ffn_gate;   /* [dim -> hidden_dim] (SwiGLU only, NULL otherwise) */
     QATLinear *ffn_down;   /* [hidden_dim -> dim] */
 
     /* Saved for backward */
@@ -504,10 +510,12 @@ typedef struct {
     Tensor *saved_normed1;
     Tensor *saved_residual2;
     Tensor *saved_normed2;
-    Tensor *saved_ffn_hidden;  /* After GeLU */
+    Tensor *saved_ffn_hidden;  /* Pre-activation (GeLU) or gate output (SwiGLU) */
+    Tensor *saved_ffn_up;      /* SwiGLU only: up_proj output before gating */
 } TransformerBlock;
 
 TransformerBlock *transformer_block_create(int dim, int hidden_dim, int n_heads,
+                                           bool use_swiglu,
                                            const KernelDispatch *kd,
                                            uint64_t *rng_state);
 void              transformer_block_free(TransformerBlock *block);

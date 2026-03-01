@@ -256,7 +256,7 @@ static ProfileGPT *pgpt_create(const KernelDispatch *kd, uint64_t *rng) {
     m->grad_pos_emb = tensor_zeros(MAX_SEQ_LEN, DIM);
     m->blocks = (TransformerBlock **)calloc(N_LAYERS, sizeof(TransformerBlock *));
     for (int i = 0; i < N_LAYERS; i++) {
-        m->blocks[i] = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, kd, rng);
+        m->blocks[i] = transformer_block_create(DIM, HIDDEN_DIM, N_HEADS, false, kd, rng);
         m->blocks[i]->attn->causal = true;
     }
     m->final_norm = rmsnorm_create(DIM, 1e-5f);
