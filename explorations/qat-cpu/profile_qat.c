@@ -12,7 +12,7 @@
  *   2. QAT:  INT8 forward, FP32 backward (STE)
  *   3. QAT+INT8bwd: INT8 forward + INT8 backward
  *
- * Config: 4 layers, batch=8, seq=64, dim=1024, 16 heads, hidden=4096.
+ * Config: 6 layers, batch=8, seq=128, dim=1024, 16 heads, hidden=4096.
  * Runs N_WARMUP warmup + N_PROFILE profiled steps, reports ms/step for each.
  */
 
@@ -21,11 +21,11 @@
 
 #define VOCAB_SIZE   128
 #define DIM          1024
-#define N_LAYERS     4
+#define N_LAYERS     6
 #define N_HEADS      16
 #define HIDDEN_DIM   4096
 #define MAX_SEQ_LEN  256
-#define SEQ_LEN      64
+#define SEQ_LEN      128
 #define BATCH_SIZE   8
 #define LR           3e-4f
 #define WEIGHT_DECAY 0.01f

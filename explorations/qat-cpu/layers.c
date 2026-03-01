@@ -486,27 +486,32 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
 
     Tensor *attn_out = tensor_zeros(total_tokens, dim);
 
-    /* Per-head, per-sequence buffers */
-    float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *k_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-    float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-    float *scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *attn_w = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-    float *out_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+    /* Per-head attention loop, parallelized with OMP.
+     * Each thread gets private workspace, same pattern as attention_backward. */
+    int total_iters = batch_size * n_heads;
+    int causal = attn->causal;
 
-    for (int b = 0; b < batch_size; b++) {
-        /* Pointer to this sequence's Q/K/V data: [seq_len, dim] slice */
-        float *q_b = &q->data[b * seq_len * dim];
-        float *k_b = &k->data[b * seq_len * dim];
-        float *v_b = &v->data[b * seq_len * dim];
-        float *out_b = &attn_out->data[b * seq_len * dim];
+    #pragma omp parallel
+    {
+        /* Per-thread workspace */
+        float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *k_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
+        float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
+        float *scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+        float *attn_w_buf = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
+        float *out_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
 
-        for (int h = 0; h < n_heads; h++) {
+        #pragma omp for schedule(static)
+        for (int bh = 0; bh < total_iters; bh++) {
+            int b = bh / n_heads;
+            int h = bh % n_heads;
+            int off = b * seq_len * dim;
+
             /* Extract contiguous per-head slices from this sequence */
-            extract_head(q_b, seq_len, dim, head_dim, h, q_h);
-            extract_head(k_b, seq_len, dim, head_dim, h, k_h);
-            extract_head(v_b, seq_len, dim, head_dim, h, v_h);
+            extract_head(&q->data[off], seq_len, dim, head_dim, h, q_h);
+            extract_head(&k->data[off], seq_len, dim, head_dim, h, k_h);
+            extract_head(&v->data[off], seq_len, dim, head_dim, h, v_h);
 
             /* K_h^T: [seq x hd] -> [hd x seq] */
             transpose_fp32(k_h, seq_len, head_dim, k_h_t);
@@ -520,7 +525,7 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
                  scores, seq_len);
 
             /* Causal mask (within this sequence only) */
-            if (attn->causal) {
+            if (causal) {
                 for (int s1 = 0; s1 < seq_len; s1++) {
                     for (int s2 = s1 + 1; s2 < seq_len; s2++) {
                         scores[s1 * seq_len + s2] = -1e9f;
@@ -529,33 +534,33 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
             }
 
             /* Softmax */
-            softmax_forward(scores, attn_w, seq_len, seq_len);
+            softmax_forward(scores, attn_w_buf, seq_len, seq_len);
 
             /* Save attention weights: index by (b * n_heads + h) */
             int attn_idx = (b * n_heads + h) * seq_len * seq_len;
             memcpy(&attn->saved_attn->data[attn_idx],
-                   attn_w, seq_len * seq_len * sizeof(float));
+                   attn_w_buf, seq_len * seq_len * sizeof(float));
 
             /* out_h[seq x hd] = attn_w[seq x seq] * V_h[seq x hd] */
             gemm(seq_len, head_dim, seq_len,
                  1.0f,
-                 attn_w, seq_len,
+                 attn_w_buf, seq_len,
                  v_h, head_dim,
                  0.0f,
                  out_h, head_dim);
 
             /* Scatter back to interleaved output for this sequence */
-            scatter_head(out_h, seq_len, dim, head_dim, h, out_b);
+            scatter_head(out_h, seq_len, dim, head_dim, h, &attn_out->data[off]);
         }
-    }
 
-    qat_free(q_h);
-    qat_free(k_h);
-    qat_free(k_h_t);
-    qat_free(v_h);
-    qat_free(scores);
-    qat_free(attn_w);
-    qat_free(out_h);
+        qat_free(q_h);
+        qat_free(k_h);
+        qat_free(k_h_t);
+        qat_free(v_h);
+        qat_free(scores);
+        qat_free(attn_w_buf);
+        qat_free(out_h);
+    }
     tensor_free(q);
     tensor_free(k);
     tensor_free(v);
