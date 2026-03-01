@@ -146,7 +146,7 @@ If $X \geq 0$ and $a > 0$, then $\Prob[X \geq a] \leq \E[X] / a$.
 \end{theorem}
 
 \begin{proof}
-$\E[X] = \sum_\omega p(\omega) X(\omega) \geq \sum_{\omega : X(\omega) \geq a} p(\omega) \cdot a = a \cdot \Prob[X \geq a]$.
+$\E[X] = \sum_\omega \mu(\omega) X(\omega) \geq \sum_{\omega : X(\omega) \geq a} \mu(\omega) \cdot a = a \cdot \Prob[X \geq a]$.
 \end{proof}
 
 \begin{corollary}[Chebyshev's inequality]\label{cor:chebyshev}
@@ -194,7 +194,8 @@ $\E[|X_i|^3] = \gamma < \infty$, we have
   \right|
   \leq \frac{C \gamma}{\sigma^3 \sqrt{n}},
 \]
-where $C$ is a universal constant (the best known value is $C < 0.4748$).
+where $C$ is a universal constant (the best known value is $C < 0.4748$;
+see \citealp{shevtsova2011absolute}).
 \end{theorem}
 
 \paragraph{Why this matters for the thesis.}
@@ -243,3 +244,32 @@ $\pmone^n$, we mean the expectation under the uniform measure: each
 $x \in \pmone^n$ has probability $2^{-n}$. So
 $\norm{f}_2^2 = \E_x[f(x)^2] = 2^{-n} \sum_{x \in \pmone^n} f(x)^2$.
 \end{remark}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section*{Recommended Reading}
+
+\begin{itemize}
+  \item \textbf{\citet{axler2024linear}, \emph{Linear Algebra Done Right},
+    4th ed.}
+    A clean, determinant-free treatment of inner product spaces and the
+    spectral theorem. Assumes only calculus. Chapters~6--7 cover exactly
+    the inner-product-space machinery used in this guide.
+
+  \item \textbf{\citet{horn2012matrix}, \emph{Matrix Analysis}, 2nd ed.}
+    The standard reference for Kronecker products (Chapter~4), matrix
+    norms, and structured matrices. More advanced than Axler; useful when
+    you need precise eigenvalue bounds.
+
+  \item \textbf{\citet{durrett2019probability}, \emph{Probability: Theory
+    and Examples}, 5th ed.}
+    A graduate-level probability text. Chapters~3--4 cover the CLT,
+    Berry--Ess\'een, and convergence in distribution rigorously. Freely
+    available from the author's website.
+
+  \item \textbf{\citet{feller1971introduction}, \emph{An Introduction to
+    Probability Theory and Its Applications}, Vol.~2.}
+    The classic reference for characteristic-function proofs of the CLT
+    and Berry--Ess\'een. Older style but very thorough. Good for seeing
+    where the constant $C < 0.4748$ ultimately comes from.
+\end{itemize}

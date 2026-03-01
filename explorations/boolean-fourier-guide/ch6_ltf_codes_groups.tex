@@ -162,8 +162,10 @@ where addition is XOR ($0 \oplus 1 = 1$, $1 \oplus 1 = 0$) and
 multiplication is AND ($1 \cdot 1 = 1$, all others $0$). A
 \emph{linear code} of length $N$ over $\text{GF}(2)$ is a linear
 subspace of $\text{GF}(2)^N$; its \emph{dimension} is the dimension of
-this subspace, and its \emph{minimum distance} is the minimum Hamming
-distance between distinct codewords.
+this subspace, and its \emph{minimum distance} is the minimum
+\emph{Hamming distance} between distinct codewords (the Hamming
+distance between two vectors is the number of coordinates in which
+they differ).
 
 The $r$-th order \emph{Reed--Muller code} $\text{RM}(r, n)$ consists of
 all evaluation vectors of polynomials $p(b_1, \ldots, b_n)$ over
@@ -375,3 +377,34 @@ error-correcting code. And the group-theoretic viewpoint explains
 \emph{why} the Walsh basis is canonical: it consists of exactly the
 characters of the underlying group $\Z_2^n$, the unique orthonormal
 basis that simultaneously diagonalizes all translation operators.
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section*{Recommended Reading}
+
+\begin{itemize}
+  \item \textbf{\citet[Chapter~5]{odonnell2014analysis}.}
+    Full proof of Chow's theorem and a detailed treatment of LTF
+    spectral properties (influence bounds, noise sensitivity, the
+    Gotsman--Linial conjecture). Graduate level.
+
+  \item \textbf{\citet{macwilliams1977theory}, \emph{The Theory of
+    Error-Correcting Codes}.}
+    The encyclopedic reference for coding theory. Chapter~13 covers
+    Reed--Muller codes in detail, including decoding algorithms and
+    weight distributions. Graduate level; assumes abstract algebra.
+
+  \item \textbf{\citet{terras1999fourier}, \emph{Fourier Analysis on
+    Finite Groups and Applications}.}
+    Develops Fourier analysis on arbitrary finite groups, with $\Z_2^n$
+    as a running example. Chapters~1--4 provide the group-theoretic
+    foundation for the character theory in \Cref{sec:characters}.
+    Assumes undergraduate algebra (groups, homomorphisms).
+
+  \item \textbf{\citet{diaconis1988group}, \emph{Group Representations
+    in Probability and Statistics}.}
+    A beautifully written monograph connecting group representations to
+    random walks, card shuffling, and statistical applications. Lighter
+    on Boolean analysis but excellent for building intuition about why
+    Fourier analysis on groups works. Assumes basic group theory.
+\end{itemize}

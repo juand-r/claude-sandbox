@@ -131,7 +131,10 @@ coefficients by $\rho^k$). Therefore:
   \leq \rho^{-2k} \norm{T_\rho f}_2^2
   = \rho^{-2k} \sum_S \rho^{2|S|} \fhat(S)^2,
 \end{equation}
-where the inequality is Bessel's (projection cannot increase the norm).
+where the inequality holds because $(T_\rho f)^{=k}$ is the
+orthogonal projection of $T_\rho f$ onto the degree-$k$ subspace, and
+projecting onto a subspace cannot increase the $L^2$ norm (this is
+sometimes called \emph{Bessel's inequality}).
 
 For Boolean $f$ ($\norm{f}_\infty = 1$), we use a sharper bound. Since
 $|S| = \sum_{i \in S} 1 = \frac{1}{k}\sum_{i=1}^n \mathbf{1}_{i \in S}$ when $|S| = k$:
@@ -177,6 +180,33 @@ relevant to the thesis.
 \end{remark}
 
 
+\begin{example}[Level-$k$ bound for $\text{Maj}_3$]\label{ex:level-k-numerical}
+$\text{Maj}_3$ has total influence $\mathbf{I}[f] = 3/2$
+(\Cref{ex:influences}). The level-$k$ inequality gives:
+\[
+  W^k[\text{Maj}_3] \leq \left(\frac{e \cdot 3/2}{k}\right)^k.
+\]
+\begin{itemize}
+  \item $k=1$: bound $= (3e/2)^1 \approx 4.08$. Since $W^1 \leq 1$
+    always (by Parseval), this is \emph{vacuous}.
+  \item $k=3$: bound $= (e/2)^3 \approx 2.51$. Still vacuous
+    (exceeds 1).
+\end{itemize}
+The actual values are $W^1 = 3/4$ and $W^3 = 1/4$.
+This illustrates the remark above: for small $n$, the level-$k$
+inequality is asymptotic in character and only becomes
+useful when $k \gg e \cdot \mathbf{I}[f]$.
+
+\medskip
+For a more favorable case, consider the AND function on 10 bits,
+$f = \text{AND}_{10}$, which has total influence
+$\mathbf{I}[f] = 10 \cdot 2^{-(10-1)} = 10/512 \approx 0.0195$.
+The bound gives $W^k \leq (e \cdot 0.0195 / k)^k \approx (0.053/k)^k$,
+which is less than $10^{-3}$ already at $k = 1$. Indeed, AND has
+almost all its mass at degree~0: $\fhat(\emptyset)^2 = (1 - 2^{1-n})^2 \approx 1$.
+\end{example}
+
+
 % ──────────────────────────────────────────────────────────────────────
 \section{The LMN Theorem}\label{sec:lmn}
 
@@ -215,9 +245,10 @@ depth.
     inputs exceeds a given threshold. This follows from the lower
     bounds of \citet{razborov1987lower}.
   \item The parity function $x_1 \oplus \cdots \oplus x_n$ is
-    \emph{not} in $\mathsf{AC}^0$ (this is a famous result of
-    Furst--Saxe--Sipser and Ajtai). This is consistent with parity
-    having all its spectral energy at degree $n$.
+    \emph{not} in $\mathsf{AC}^0$. This was proved independently by
+    \citet{furst1984parity} and \citet{ajtai1983sigma11}. It is
+    consistent with parity having all its spectral energy at
+    degree $n$.
 \end{itemize}
 \end{example}
 
@@ -241,8 +272,9 @@ For a depth-$D$, size-$M$ circuit:
     spectral energy is captured by degrees up to
     $k^* = O((\log M)^{D-1})$. For polynomial-size circuits ($M = n^c$),
     this gives $k^* = O((\log n)^{D-1})$.
-  \item For depth $D = 2$ (DNF/CNF formulas of size $M$):
-    $k^* = O(\log M)$. Very strong concentration.
+  \item For depth $D = 2$: the circuits are \emph{DNF} or \emph{CNF}
+    formulas---an OR of ANDs (DNF) or an AND of ORs (CNF)---of size $M$.
+    Then $k^* = O(\log M)$. Very strong concentration.
   \item The bound degrades with depth: deeper circuits can ``hide''
     spectral energy at higher degrees.
 \end{itemize}
@@ -325,3 +357,39 @@ continuous relaxation of the KM algorithm, where instead of
 \emph{estimating} the coefficients from data, we \emph{optimize} them via
 gradient descent.
 \end{remark}
+
+
+% ──────────────────────────────────────────────────────────────────────
+\section*{Recommended Reading}
+
+\begin{itemize}
+  \item \textbf{\citet[Chapters~9--10]{odonnell2014analysis}.}
+    Chapter~9 gives the full proof of Bonami--Beckner hypercontractivity,
+    including the two-function version and the level-$k$ inequality.
+    Chapter~10 covers the LMN theorem and random restrictions.
+    Graduate level.
+
+  \item \textbf{\citet{odonnell2007lecture}, lecture notes.}
+    Earlier, more concise versions of the material that became the
+    textbook. Available online. Good for a quicker read of the
+    hypercontractivity proof.
+
+  \item \textbf{\citet{linial1993constant}, ``Constant Depth Circuits,
+    Fourier Transform, and Learnability.''}
+    The original LMN paper. Sections~1--3 contain the main theorem and
+    its proof; Section~4 gives the learning algorithm. Assumes comfort
+    with circuit complexity basics (as introduced in
+    \Cref{sec:circuits}).
+
+  \item \textbf{\citet{hastad1987computational}, \emph{Computational
+    Limitations of Small-Depth Circuits}.}
+    H\r{a}stad's PhD thesis, which proved the switching lemma in its
+    strongest form. Technically demanding but historically important---it
+    is the key tool behind both the parity lower bound and the LMN
+    theorem.
+
+  \item \textbf{\citet{kushilevitz1991learning}, ``Learning Decision
+    Trees Using the Fourier Spectrum.''}
+    The KM algorithm paper. Short and well-written. The tree-pruning
+    idea is explained clearly in Section~3.
+\end{itemize}
