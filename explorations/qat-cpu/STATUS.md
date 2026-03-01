@@ -57,6 +57,26 @@ step time. The INT8 forward speedup is diluted.
 **Upside:** Quality improved dramatically (ppl 6.14 -> 4.48 in fewer steps),
 throughput tripled (~900 -> ~2700 tok/s), and MFU went from 1.5% to ~5%.
 
+### dim=1024, batch=8, 300 steps (76M params, convergence run)
+- FP32: ppl=12.52, BPB=3.647, 5552 ms/step, 184 tok/s, 1721 sec
+- QAT:  ppl=12.39, BPB=3.631, 3761 ms/step, 272 tok/s, 1280 sec
+- **QAT speedup: 1.36x**
+- **QAT PPL ratio: 0.990** (QAT slightly better, within noise)
+
+### dim=1024, batch=16, 300 steps (76M params, convergence run)
+- FP32: ppl=12.13, BPB=3.601, 10932 ms/step, 187 tok/s, 3353 sec
+- QAT:  ppl=12.16, BPB=3.604, 9289 ms/step, 220 tok/s, 3072 sec
+- **QAT speedup: 1.08x**
+- **QAT PPL ratio: 1.002** (essentially identical)
+
+**Key finding:** At dim=1024 with 6 layers, QAT retains a meaningful speed
+advantage even with batching (1.36x at BS=8, 1.08x at BS=16). This is better
+than dim=512 (0.98x at BS=8), because the larger model has more forward-pass
+compute to accelerate with INT8 VNNI. Quality is identical: convergence curves
+track each other exactly at every checkpoint.
+
+See CONVERGENCE_RUNS.md for detailed step-by-step comparisons.
+
 ## What's Missing / Possible Next Steps
 
 ### Quality improvements (generation quality)

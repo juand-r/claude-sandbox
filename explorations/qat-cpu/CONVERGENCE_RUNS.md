@@ -5,48 +5,109 @@
 Compare QAT vs FP32 training convergence at batch sizes 8 and 16, dim=1024.
 We want to see if QAT reaches the same perplexity as FP32 (and how fast).
 
-## YOUR JOB: Pick up where the previous session left off
-
-The previous session was about to run `run_remaining.sh` but died before
-getting to it. You need to run **3 experiments sequentially** (they share
-`train.o` so they cannot be parallel):
-
-1. **BS=8 FP32** — rerun from scratch (partial CSV exists but will be overwritten)
-2. **BS=16 QAT** — never started
-3. **BS=16 FP32** — never started
-
-The script `run_remaining.sh` does exactly this. Run it like so:
-
-```bash
-cd explorations/qat-cpu
-nohup bash run_remaining.sh > run_remaining.log 2>&1 &
-```
-
-Then monitor with `tail -f run_remaining.log` and periodically commit the
-CSV files as they complete. Each run takes ~20-25 min (300 steps at ~4-5
-sec/step). Total ~60-75 min for all 3.
-
-When all 3 are done, you should have 4 complete CSVs (the BS=8 QAT one
-already exists). At that point, compare QAT vs FP32 at each batch size
-and update STATUS.md with findings.
-
-**Known issue**: processes have been killed mid-run before (probably OOM).
-If the script dies, check which CSVs are complete (should have 7 data rows
-each) and re-run the missing ones individually (see "Running a single
-experiment" below).
-
 ## Status of all 4 runs
 
 | Run | Batch Size | Mode | TRAIN_MODE | CSV file | Status |
 |-----|-----------|------|------------|----------|--------|
-| BS=8 QAT | 8 | QAT (INT8 fwd, FP32 bwd) | 2 | `converge_bs8_qat.csv` | DONE (300 steps, final PPL=12.39) |
-| BS=8 FP32 | 8 | FP32 only | 1 | `converge_bs8_fp32.csv` | NEEDS RERUN (died at step 50) |
-| BS=16 QAT | 16 | QAT | 2 | `converge_bs16_qat.csv` | NOT STARTED |
-| BS=16 FP32 | 16 | FP32 only | 1 | `converge_bs16_fp32.csv` | NOT STARTED |
+| BS=8 QAT | 8 | QAT (INT8 fwd, FP32 bwd) | 2 | `converge_bs8.csv` | DONE (300 steps, final PPL=12.39) |
+| BS=8 FP32 | 8 | FP32 only | 1 | `converge_bs8_fp32.csv` | DONE (300 steps, final PPL=12.52) |
+| BS=16 QAT | 16 | QAT | 2 | `converge_bs16_qat.csv` | DONE (300 steps, final PPL=12.16) |
+| BS=16 FP32 | 16 | FP32 only | 1 | `converge_bs16_fp32.csv` | DONE (300 steps, final PPL=12.13) |
 
-## How to run
+## Results
 
-All runs use the same model config. The only variables are batch size and TRAIN_MODE.
+### Model config (all runs)
+
+```
+DIM=1024  N_LAYERS=6  N_HEADS=16  HIDDEN_DIM=4096
+SEQ_LEN=128  MAX_SEQ_LEN=256  LR=0.000300
+N_STEPS=300  EVAL_EVERY=50  76M params
+```
+
+### BS=8 comparison (QAT vs FP32)
+
+| Step | QAT PPL | FP32 PPL | QAT BPB | FP32 BPB | QAT ms/step | FP32 ms/step |
+|------|---------|----------|---------|----------|-------------|-------------|
+| 0    | 93.27   | 93.08    | 6.543   | 6.540    | 4591        | 6710        |
+| 50   | 26.76   | 26.76    | 4.742   | 4.742    | 4261        | 5407        |
+| 100  | 17.79   | 18.42    | 4.153   | 4.203    | 4015        | 5384        |
+| 150  | 13.78   | 13.77    | 3.785   | 3.784    | 4038        | 5282        |
+| 200  | 12.96   | 13.02    | 3.697   | 3.703    | 4057        | 5381        |
+| 250  | 12.92   | 12.94    | 3.692   | 3.694    | 3849        | 5889        |
+| 300  | 12.39   | 12.52    | 3.631   | 3.647    | 3761        | 5552        |
+
+**Final PPL ratio**: 12.39 / 12.52 = 0.990 (QAT is *better*, likely noise)
+**Avg speedup** (excluding step 0): 5503 / 4032 = **1.36x** (QAT faster)
+**Total time**: QAT 1280 sec vs FP32 1721 sec
+
+### BS=16 comparison (QAT vs FP32)
+
+| Step | QAT PPL | FP32 PPL | QAT BPB | FP32 BPB | QAT ms/step | FP32 ms/step |
+|------|---------|----------|---------|----------|-------------|-------------|
+| 0    | 88.62   | 88.52    | 6.469   | 6.468    | 11870       | 19666       |
+| 50   | 26.59   | 26.59    | 4.733   | 4.733    | 10304       | 10438       |
+| 100  | 17.08   | 16.54    | 4.094   | 4.048    | 9441        | 10958       |
+| 150  | 13.09   | 13.09    | 3.710   | 3.710    | 9217        | 10054       |
+| 200  | 12.68   | 12.55    | 3.664   | 3.650    | 10029       | 10957       |
+| 250  | 12.35   | 12.28    | 3.626   | 3.619    | 9811        | 10614       |
+| 300  | 12.16   | 12.13    | 3.604   | 3.601    | 9289        | 10932       |
+
+**Final PPL ratio**: 12.16 / 12.13 = 1.002 (essentially identical)
+**Avg speedup** (excluding step 0): 10667 / 9832 = **1.08x** (QAT slightly faster)
+**Total time**: QAT 3072 sec vs FP32 3353 sec
+
+### Cross-batch comparison
+
+| Metric | BS=8 QAT | BS=8 FP32 | BS=16 QAT | BS=16 FP32 |
+|--------|----------|-----------|-----------|------------|
+| Final PPL | 12.39 | 12.52 | 12.16 | 12.13 |
+| Final BPB | 3.631 | 3.647 | 3.604 | 3.601 |
+| Avg ms/step | ~4032 | ~5503 | ~9832 | ~10667 |
+| Avg tok/s | ~254 | ~186 | ~208 | ~192 |
+| Total time | 1280s | 1721s | 3072s | 3353s |
+| Total tokens | 308K | 307K | 614K | 614K |
+| QAT speedup | 1.36x | -- | 1.08x | -- |
+| QAT PPL ratio | 0.990 | -- | 1.002 | -- |
+
+## Analysis
+
+### Quality: QAT matches FP32
+
+At both batch sizes, QAT converges to essentially the same perplexity as FP32.
+The PPL ratios are 0.990 (BS=8) and 1.002 (BS=16) -- within noise. The
+convergence curves track each other almost exactly at every checkpoint.
+
+This confirms the finding from the earlier dim=512 experiments: INT8 quantization
+noise in the forward pass (with STE for gradients) does not degrade training
+quality at dim=1024 either.
+
+### Speed: QAT advantage shrinks with batch size
+
+At BS=8, QAT is 1.36x faster. At BS=16, only 1.08x faster. This matches the
+pattern from the dim=512 experiments:
+
+- BS=1 (dim=512): 1.56x speedup
+- BS=8 (dim=512, 2L): 0.98x (no advantage)
+- BS=8 (dim=512, 4L): 1.18x
+- BS=8 (dim=1024, 6L): 1.36x
+- BS=16 (dim=1024, 6L): 1.08x
+
+The trend is clear: larger batch sizes shrink QAT's advantage because the
+FP32 backward pass (identical in both modes) benefits equally from larger
+GEMM sizes and takes a bigger share of total time.
+
+However, at dim=1024 with 6 layers, QAT retains some speed advantage even
+at BS=16. This is because the forward pass is a larger fraction of total
+compute with more layers (6 layers x 6 projections = 36 QATLinear forward
+calls vs the same in backward).
+
+### BS=16 gives slightly better final PPL than BS=8
+
+BS=16 reached PPL 12.13-12.16 vs BS=8's 12.39-12.52, despite seeing 2x as
+many tokens (614K vs 308K). More tokens per step helps, though 300 steps is
+too few for convergence -- the curves are still dropping.
+
+## How to reproduce
 
 ### Shared config (compile-time flags)
 
@@ -77,69 +138,15 @@ make train_qat -s TRAIN_CFLAGS="-DDIM=1024 -DN_LAYERS=6 -DN_HEADS=16 \
 ./train_qat
 ```
 
-The `rm -f train.o` is essential — `train.c` must be recompiled because the
+The `rm -f train.o` is essential -- `train.c` must be recompiled because the
 config is baked in via `-D` defines. The other `.o` files don't change.
 
-Output goes to `<CSV_PREFIX>.csv` in the current directory.
+### CSV files
 
-### Running all remaining experiments
+- `converge_bs8.csv` -- BS=8 QAT (complete, 7 data rows)
+- `converge_bs8_fp32.csv` -- BS=8 FP32 (complete, 7 data rows)
+- `converge_bs16_qat.csv` -- BS=16 QAT (complete, 7 data rows)
+- `converge_bs16_fp32.csv` -- BS=16 FP32 (complete, 7 data rows)
 
-`run_remaining.sh` runs the 3 incomplete experiments sequentially:
-
-```bash
-cd explorations/qat-cpu
-nohup bash run_remaining.sh > run_remaining.log 2>&1 &
-```
-
-It runs BS=8 FP32, BS=16 QAT, BS=16 FP32 in order. Each takes ~20-25 min
-(300 steps at ~4-5 sec/step). Total ~60-75 min.
-
-**Warning**: The BS=8 FP32 CSV already has 2 rows (steps 0 and 50). Running
-`run_remaining.sh` will overwrite the CSV because train.c opens it with `"w"`.
-This is fine — it will regenerate from step 0. If you want to avoid rerunning
-the QAT experiment that's already done, edit the script to remove that line.
-
-### Known issue: process getting killed
-
-The BS=8 QAT run died at step 200 on a prior attempt (then succeeded on a
-later attempt with 300 steps). The BS=8 FP32 run died at step 50. Likely OOM
-or timeout. The model at dim=1024 uses significant memory. Monitor with:
-
-```bash
-tail -f run_remaining.log
-# or check if it's still alive:
-ps aux | grep train_qat
-```
-
-### What "done" looks like
-
-Each CSV should have rows at steps 0, 50, 100, 150, 200, 250, 300 (7 rows
-plus header), unless early stopping triggers (PPL < 10.0), which would end
-the run early.
-
-## Existing results
-
-### BS=8 QAT (converge_bs8_qat.csv) — COMPLETE
-
-```
-Step   0: PPL=93.27, 5650 ms/step
-Step  50: PPL=26.76, 5341 ms/step
-Step 100: PPL=17.79, 5055 ms/step
-Step 150: PPL=13.78, 4911 ms/step
-Step 200: PPL=12.96, 5076 ms/step
-Step 250: PPL=12.92, 3849 ms/step
-Step 300: PPL=12.39, 3761 ms/step
-```
-
-### BS=8 QAT (converge_bs8.csv) — longer run, also complete
-
-Same config but from `run_convergence.sh` (same 300 steps, slightly different
-timings due to different run). Final PPL=12.39.
-
-### BS=8 FP32 (converge_bs8_fp32.csv) — INCOMPLETE
-
-```
-Step   0: PPL=93.08, 6340 ms/step
-Step  50: PPL=26.76, 4990 ms/step
-```
-Process died after step 50.
+Note: `converge_bs8_qat.csv` is an earlier partial run (died at step 200).
+The complete BS=8 QAT data is in `converge_bs8.csv`.
