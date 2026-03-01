@@ -2,6 +2,7 @@
 *.log
 test_qat
 train_qat
+train_qat_*
 debug_qat
 profile_qat
 bench_roofline
