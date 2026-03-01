@@ -320,7 +320,13 @@ but adapted for high-latency, asynchronous communication.
 
 ---
 
-## Idea 5 (Mine): Speculative Training with Rollback
+## ~~Idea 5 (Mine): Speculative Training with Rollback~~
+
+**SKIP THIS -- On reflection, this is just Idea 4 (PBT) with a tree-structured
+search instead of a flat population. The "speculative execution" framing doesn't
+hold up: the "wait time" is ill-defined, and if your checkpoint isn't the winner,
+all speculative work is wasted. The useful kernel (explore multiple branches from
+each checkpoint) is already captured by Idea 4 with mutation.**
 
 ### The Proposal (combines Ideas 1 and 2)
 
