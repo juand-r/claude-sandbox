@@ -6,12 +6,14 @@ logging features at each PPL milestone. The output is a JSON-lines file where
 each record is (config, stage, features, time_to_next_milestone).
 
 Usage:
-    python run_experiment.py [--quick]    # --quick for a fast smoke test (2 configs)
+    python run_experiment.py [--quick]        # Quick smoke test (2 configs)
+    python run_experiment.py [--workers 12]   # Parallel across 12 CPU cores
 """
 
 import argparse
 import json
 import math
+import multiprocessing as mp
 import os
 import sys
 import time
@@ -215,7 +217,7 @@ def train_one_config(
         history["ppl"].append(ppl)
         history["timestamps"].append(elapsed)
 
-        if step % log_every == 0:
+        if log_every > 0 and step % log_every == 0:
             print(f"    step {step:5d} | loss {loss_val:.4f} | ppl {ppl:.2f} | {elapsed:.1f}s")
 
         # Check if we hit a milestone
@@ -298,6 +300,41 @@ def config_id(config: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Multiprocessing worker
+# ---------------------------------------------------------------------------
+
+def _worker_init():
+    """Pin each worker to 1 thread so they don't compete for cores."""
+    torch.set_num_threads(1)
+
+
+def _worker_run(args_tuple):
+    """Run a single config in a worker process.
+
+    Takes (config, milestones, max_steps, expensive_features, text, seq_len)
+    and returns the milestone records list.
+    """
+    config, milestones, max_steps, expensive_features, text, seq_len = args_tuple
+
+    torch.set_num_threads(1)
+    dataset = CharDataset(text, seq_len=seq_len)
+
+    cid = config_id(config)
+    # Minimal per-worker logging (only milestone hits)
+    records = train_one_config(
+        config=config,
+        dataset=dataset,
+        milestones=milestones,
+        max_steps=max_steps,
+        expensive_features=expensive_features,
+        log_every=0,  # suppress per-step logging in workers
+    )
+    n_milestones = len(records)
+    print(f"  [{cid}] done: {n_milestones}/{len(milestones)} milestones reached")
+    return records
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -306,6 +343,8 @@ def main():
     parser.add_argument("--quick", action="store_true", help="Quick smoke test (2 configs)")
     parser.add_argument("--no-expensive", action="store_true", help="Skip expensive features")
     parser.add_argument("--max-steps", type=int, default=10000, help="Max training steps per config")
+    parser.add_argument("--workers", type=int, default=0,
+                        help="Number of parallel workers (0 = sequential, default; -1 = all cores)")
     args = parser.parse_args()
 
     # Download data
@@ -314,6 +353,7 @@ def main():
     print(f"Dataset: {len(text):,} chars, vocab size: {dataset.vocab_size}")
 
     # Config grid
+    seeds_full = [42, 123, 271, 314, 512, 619, 777, 888, 1024, 1337]
     if args.quick:
         configs = [
             {"lr": 1e-3, "batch_size": 32, "seed": 42},
@@ -324,29 +364,53 @@ def main():
             {"lr": lr, "batch_size": bs, "seed": seed}
             for lr in [3e-4, 1e-3, 3e-3]
             for bs in [16, 32, 64]
-            for seed in [42, 123]
+            for seed in seeds_full
         ]
 
     # PPL milestones (character-level, initial PPL ≈ vocab_size ≈ 65)
     milestones = [50, 30, 20, 15, 12, 10, 8]
+    seq_len = 64
+    expensive = not args.no_expensive
+
+    n_workers = args.workers
+    if n_workers == -1:
+        n_workers = mp.cpu_count()
 
     print(f"Running {len(configs)} configs, milestones: {milestones}")
     print(f"Max steps per config: {args.max_steps}")
+    print(f"Workers: {n_workers if n_workers > 0 else 'sequential'}")
     print()
 
     all_records = []
-    for i, config in enumerate(configs):
-        cid = config_id(config)
-        print(f"[{i+1}/{len(configs)}] Config: {cid}")
-        records = train_one_config(
-            config=config,
-            dataset=dataset,
-            milestones=milestones,
-            max_steps=args.max_steps,
-            expensive_features=not args.no_expensive,
-        )
-        all_records.extend(records)
-        print()
+    t_start = time.time()
+
+    if n_workers > 0:
+        # Parallel execution
+        worker_args = [
+            (config, milestones, args.max_steps, expensive, text, seq_len)
+            for config in configs
+        ]
+        with mp.Pool(n_workers, initializer=_worker_init) as pool:
+            results = pool.map(_worker_run, worker_args)
+        for records in results:
+            all_records.extend(records)
+    else:
+        # Sequential execution (original behavior)
+        for i, config in enumerate(configs):
+            cid = config_id(config)
+            print(f"[{i+1}/{len(configs)}] Config: {cid}")
+            records = train_one_config(
+                config=config,
+                dataset=dataset,
+                milestones=milestones,
+                max_steps=args.max_steps,
+                expensive_features=expensive,
+            )
+            all_records.extend(records)
+            print()
+
+    elapsed = time.time() - t_start
+    print(f"\nAll configs done in {elapsed:.1f}s")
 
     # Add time_to_next for each record
     all_records = add_time_to_next(all_records)

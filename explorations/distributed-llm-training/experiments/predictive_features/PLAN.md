@@ -17,8 +17,10 @@ locked in the high-dimensional weights and we can't extract it cheaply.
 - **Config grid** (varied across runs):
   - Learning rate: [3e-4, 1e-3, 3e-3]
   - Batch size: [16, 32, 64]
-  - Seeds: [42, 123]
-  - = 18 runs total
+  - Seeds: [42, 123, 271, 314, 512, 619, 777, 888, 1024, 1337]
+  - = 90 runs total (10 independent seeds per (lr, bs) cell)
+- **Parallelism**: `multiprocessing.Pool` with 1 PyTorch thread per worker.
+  Use `--workers N` to run N configs in parallel (default: sequential).
 - **PPL milestones**: [50, 30, 20, 15, 12, 10, 8] (character-level PPL)
   - Initial PPL ≈ 65 (= vocab size for uniform predictions)
 
