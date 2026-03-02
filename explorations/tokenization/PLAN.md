@@ -82,7 +82,17 @@ Total: ~45-100 minutes for all 5 configs.
 
 ## Status
 
-- [ ] Implement train_tok.c
-- [ ] Build all 5 configs
-- [ ] Run experiments
-- [ ] Analyze results
+- [x] Implement train_tok.c
+- [x] Build all 5 configs
+- [x] Run experiments
+- [x] Analyze results (see RESULTS.md)
+
+## Actual Timings (measured)
+
+- Binary (SEQ=896): 393ms/step, 1177s total
+- Base-4 (SEQ=512): 181ms/step, 542s total
+- Nibble (SEQ=256): 79ms/step, 238s total
+- Char (SEQ=128): 51ms/step, 153s total
+- Bigram (SEQ=64): 159ms/step, 477s total (large output GEMM dominates)
+
+Total: ~2587s = ~43 minutes
