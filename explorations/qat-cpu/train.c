@@ -56,6 +56,14 @@
 #define WEIGHT_DECAY 0.01f
 #define GEN_TEMP     0.8f
 
+/* LR schedule: linear warmup then cosine decay to LR_MIN */
+#ifndef LR_WARMUP
+#define LR_WARMUP    20    /* steps of linear warmup (0 = no warmup) */
+#endif
+#ifndef LR_MIN
+#define LR_MIN       (LR * 0.1f)  /* minimum LR at end of cosine decay */
+#endif
+
 /* SwiGLU: 0=GeLU FFN (default), 1=SwiGLU FFN with iso-param hidden_dim */
 #ifndef USE_SWIGLU
 #define USE_SWIGLU   0
@@ -690,6 +698,23 @@ static double estimate_flops_per_step(void) {
     return fwd_bwd_per_token * SEQ_LEN * BATCH_SIZE;
 }
 
+/*
+ * LR schedule: linear warmup for LR_WARMUP steps, then cosine decay to LR_MIN.
+ *
+ *   step < warmup:  lr = LR * (step+1) / warmup
+ *   step >= warmup: lr = LR_MIN + 0.5*(LR - LR_MIN)*(1 + cos(pi * progress))
+ *     where progress = (step - warmup) / (total_steps - warmup)
+ */
+static float get_lr(int step, int total_steps) {
+    if (LR_WARMUP > 0 && step < LR_WARMUP) {
+        return LR * ((float)(step + 1) / (float)LR_WARMUP);
+    }
+    if (total_steps <= LR_WARMUP) return LR;
+    float progress = (float)(step - LR_WARMUP) / (float)(total_steps - LR_WARMUP);
+    if (progress > 1.0f) progress = 1.0f;
+    return LR_MIN + 0.5f * (LR - LR_MIN) * (1.0f + cosf(3.14159265358979323846f * progress));
+}
+
 static TrainResult train_model(const char *name, GPTModel *model,
                                const int *train_data, int train_len,
                                const int *val_data, int val_len,
@@ -700,12 +725,16 @@ static TrainResult train_model(const char *name, GPTModel *model,
     gpt_register_params(model, opt);
 
     printf("\n--- Training: %s ---\n", name);
-    printf("Steps: %d, seq_len: %d, lr: %.4f\n", N_STEPS, SEQ_LEN, LR);
+    printf("Steps: %d, seq_len: %d, lr: %.6f, lr_min: %.6f, warmup: %d\n",
+           N_STEPS, SEQ_LEN, LR, LR_MIN, LR_WARMUP);
 
     double t_start = timer_sec();
     float smooth_loss = 0.0f;
 
     for (int step = 0; step < N_STEPS; step++) {
+        /* Update learning rate per schedule */
+        opt->config.lr = get_lr(step, N_STEPS);
+
         double step_t0 = timer_sec();
         float loss = train_step(model, opt, train_data, train_len, rng);
         double step_time = timer_sec() - step_t0;
@@ -719,20 +748,22 @@ static TrainResult train_model(const char *name, GPTModel *model,
             double tok_per_sec = (double)(SEQ_LEN * BATCH_SIZE) / step_time;
             printf("  Step %4d/%d: loss=%.4f (smooth=%.4f), "
                    "val_ppl=%.2f, bpb=%.3f, "
-                   "%.1f ms/step, %.0f tok/s\n",
+                   "lr=%.6f, %.1f ms/step, %.0f tok/s\n",
                    step, N_STEPS, loss, smooth_loss,
                    eval.ppl, eval.bpb,
+                   opt->config.lr,
                    step_time * 1000.0, tok_per_sec);
 
             /* Log to CSV */
             if (csv) {
                 double elapsed = timer_sec() - t_start;
                 long tokens_seen = (long)(step + 1) * SEQ_LEN * BATCH_SIZE;
-                fprintf(csv, "%s,%d,%ld,%.4f,%.4f,%.4f,%.3f,%.1f,%.0f,%.1f\n",
+                fprintf(csv, "%s,%d,%ld,%.4f,%.4f,%.4f,%.3f,%.1f,%.0f,%.1f,%.6f\n",
                         name, step, tokens_seen,
                         loss, smooth_loss,
                         eval.ppl, eval.bpb,
-                        step_time * 1000.0, tok_per_sec, elapsed);
+                        step_time * 1000.0, tok_per_sec, elapsed,
+                        opt->config.lr);
                 fflush(csv);
             }
 
@@ -856,7 +887,7 @@ int main(int argc, char **argv) {
     snprintf(csv_filename, sizeof(csv_filename), "%s.csv", STR(CSV_PREFIX));
     FILE *csv = fopen(csv_filename, "w");
     if (csv) {
-        fprintf(csv, "mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec\n");
+        fprintf(csv, "mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec,lr\n");
         fflush(csv);
     }
     printf("CSV log: %s\n", csv_filename);
