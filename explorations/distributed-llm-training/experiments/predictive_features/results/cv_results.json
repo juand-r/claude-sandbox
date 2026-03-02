@@ -1,0 +1,2704 @@
+{
+  "within_cell_spearman": [
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.29761722485368114,
+      "std_spearman": 0.2771910728568901,
+      "n_cells": 54
+    },
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": -0.14287373883747836,
+      "std_spearman": 0.3448884659240981,
+      "n_cells": 54
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": -0.13580560209120546,
+      "std_spearman": 0.3252419910939473,
+      "n_cells": 54
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": -0.12514737992990713,
+      "std_spearman": 0.3782359698733983,
+      "n_cells": 54
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": 0.08381431252043799,
+      "std_spearman": 0.3490587184310055,
+      "n_cells": 54
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": 0.08011419988432081,
+      "std_spearman": 0.35214384195511506,
+      "n_cells": 54
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": 0.07501216721397193,
+      "std_spearman": 0.2894021603716173,
+      "n_cells": 54
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": 0.06968087856225673,
+      "std_spearman": 0.3774012112706604,
+      "n_cells": 54
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": -0.04915266119829485,
+      "std_spearman": 0.36547539018383113,
+      "n_cells": 54
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": -0.04419482310541185,
+      "std_spearman": 0.33404474639783455,
+      "n_cells": 54
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": 0.041755506289429326,
+      "std_spearman": 0.31042529390800266,
+      "n_cells": 54
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": 0.03562878535384658,
+      "std_spearman": 0.33141713623089336,
+      "n_cells": 54
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": 0.027093213586451618,
+      "std_spearman": 0.31682839725871514,
+      "n_cells": 54
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": 0.024605368832286142,
+      "std_spearman": 0.33286563038100003,
+      "n_cells": 54
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": -0.023097412436172627,
+      "std_spearman": 0.30415197485236,
+      "n_cells": 54
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": -0.021047962968410907,
+      "std_spearman": 0.40645791289797795,
+      "n_cells": 54
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": 0.013248735991510796,
+      "std_spearman": 0.33653658569503153,
+      "n_cells": 54
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": 0.010515273209967375,
+      "std_spearman": 0.3087042483856345,
+      "n_cells": 54
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": 0.007637763391033463,
+      "std_spearman": 0.3018104891466359,
+      "n_cells": 54
+    }
+  ],
+  "overall_demeaned": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.023493206251959275,
+        -0.04116346554106043,
+        -0.06594370540084982,
+        -0.0021426923542597898,
+        0.0013994973083907292,
+        -0.007551461546803084,
+        -0.03525586594306662,
+        -0.022671025252889887,
+        -9.437370163811742e-05,
+        -0.011496737208038565
+      ],
+      "mae_per_fold": [
+        1.134531484502106,
+        1.4795998124486442,
+        1.032764204713411,
+        1.436108813553167,
+        1.1981183758659735,
+        1.1590773586854528,
+        1.5987487052409068,
+        1.0191514898628105,
+        1.4720022596334486,
+        0.7963011709615221
+      ],
+      "r2_overall": -0.0038150558049374617,
+      "mae_overall": 1.2326403675467443,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 540
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        0.08763182257670576,
+        -0.06449262987244309,
+        -0.03892217473195059,
+        0.2858308167402619,
+        -0.07576060156748121,
+        0.1429401016224936,
+        0.14846976862648653,
+        -0.027961102000158444,
+        0.06127289991692009,
+        -0.13520657695873428
+      ],
+      "mae_per_fold": [
+        1.136938782839099,
+        1.5085550987137994,
+        1.145621374750452,
+        1.330209467670697,
+        1.3942299985239197,
+        1.1271514463920842,
+        1.5098757232557085,
+        1.207443391263852,
+        1.3591516522808265,
+        0.910689865636009
+      ],
+      "r2_overall": 0.08357882828073071,
+      "mae_overall": 1.2629866801326448,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 540
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        0.07803330240250805,
+        -0.05786794698357767,
+        -0.039042129460859165,
+        0.28100724726177595,
+        -0.08015451763587955,
+        0.15424313762837738,
+        0.14496806827604547,
+        -0.027713728647187574,
+        0.052218407408276546,
+        -0.134400799763011
+      ],
+      "mae_per_fold": [
+        1.1464937375711373,
+        1.5151191615774666,
+        1.1375555282435112,
+        1.31522377280633,
+        1.3756157667485145,
+        1.130767748381316,
+        1.5035033176677,
+        1.2068269104902825,
+        1.3677373472409986,
+        0.9108898999115453
+      ],
+      "r2_overall": 0.08168860302095671,
+      "mae_overall": 1.2609733190638803,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 540
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -0.2713999474202622,
+        -0.22834850313238575,
+        -0.17785152354875922,
+        0.05252537238932631,
+        -0.12791913880819616,
+        -0.31573381382557497,
+        -0.05755265393646414,
+        -0.4305890638994583,
+        -0.0031141777670053994,
+        0.06934427511623564
+      ],
+      "mae_per_fold": [
+        1.197976719854304,
+        1.6749561813663176,
+        1.07563650300367,
+        1.4522724246881409,
+        1.3314629842871,
+        1.3077500336828807,
+        1.686409389369044,
+        1.2051923422499553,
+        1.5392664749851732,
+        0.8154062029353457
+      ],
+      "r2_overall": -0.10837034202700746,
+      "mae_overall": 1.3286329256421932,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 540
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        0.04115010612069947,
+        -0.14187998008181513,
+        -0.11824440878111009,
+        0.2238662408566281,
+        -0.11101010266871247,
+        0.12554152640788319,
+        0.1938801422385148,
+        -0.030503022703826765,
+        0.09411270382517845,
+        0.0201561323466245
+      ],
+      "mae_per_fold": [
+        1.0885518944086439,
+        1.533629710693466,
+        1.0285630122368727,
+        1.2923168522901818,
+        1.3885498625915318,
+        1.07990613732395,
+        1.4252698912732085,
+        1.1533326332775422,
+        1.3341164145542241,
+        0.8194904258740323
+      ],
+      "r2_overall": 0.06905743592898805,
+      "mae_overall": 1.2143726834523654,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 540
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        0.060771971841508954,
+        -0.13084465275676882,
+        -0.11421643251587055,
+        0.21529101533666606,
+        -0.08094576901260209,
+        0.14724983945793269,
+        0.19456865385992683,
+        0.014419045089784976,
+        0.11064500728405224,
+        0.03647527864976308
+      ],
+      "mae_per_fold": [
+        1.0872808207199098,
+        1.5261981830599411,
+        1.023507125881511,
+        1.2958066722623713,
+        1.3887618505901191,
+        1.0673592938231562,
+        1.4170889261158062,
+        1.1285613791944853,
+        1.3307162408019322,
+        0.8097368719739583
+      ],
+      "r2_overall": 0.08135695437856638,
+      "mae_overall": 1.207501736442319,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 540
+    }
+  },
+  "stage_0": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.4575857980876259,
+        -0.1298130530446815,
+        0.02186760762353901,
+        -1.3595482120160378,
+        -0.585819743545039,
+        0.15962361744658016,
+        -0.06592998417035867,
+        -0.15282179938155238,
+        -0.051177015352360966,
+        -0.06688408037909332
+      ],
+      "mae_per_fold": [
+        0.2010924637005183,
+        0.3873752627965776,
+        0.197359967919674,
+        0.21429359866213726,
+        0.4276743507811272,
+        0.21606635688521797,
+        0.761684087008275,
+        0.39305219411978964,
+        0.19479374205038075,
+        0.3565754477094265
+      ],
+      "r2_overall": -0.016064803273428963,
+      "mae_overall": 0.3349967471633124,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -1.4735042855255052,
+        -0.5339523456995376,
+        -0.7821426219294574,
+        -3.0765700343402473,
+        -0.6136049153137861,
+        -0.45276403220205963,
+        -0.13959530978445245,
+        -0.05612921656945824,
+        -1.5753759042460915,
+        -2.293829677625657
+      ],
+      "mae_per_fold": [
+        0.28008498403531296,
+        0.48192376869308085,
+        0.21723034651622994,
+        0.27160814793708127,
+        0.4301335875229609,
+        0.3039445307688392,
+        0.8394836105006882,
+        0.3463603926802755,
+        0.3811668098731249,
+        0.6973214254727633
+      ],
+      "r2_overall": -0.33758770615222566,
+      "mae_overall": 0.42492576040003566,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -1.496073001106168,
+        -0.4305033019124396,
+        -0.7527402484703476,
+        -3.06505012012141,
+        -0.5600809265877349,
+        -0.44186234682080117,
+        -0.14011670228031803,
+        -0.03270430409458602,
+        -1.627412391562951,
+        -2.2774901313552314
+      ],
+      "mae_per_fold": [
+        0.27827500945583045,
+        0.4623562443263616,
+        0.2171453157942015,
+        0.26761591234523263,
+        0.4238041680486371,
+        0.3030044130139226,
+        0.8411793351299064,
+        0.3467466869294147,
+        0.38641889432214516,
+        0.6988733654316195
+      ],
+      "r2_overall": -0.3274423569653011,
+      "mae_overall": 0.42254193447972715,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -0.27517574938700284,
+        -0.1464457012659346,
+        -0.13685084211015242,
+        -4.6904595603361505,
+        -1.0919714394308193,
+        -1.0907043650940293,
+        -0.09661759316421614,
+        -0.45894218089262817,
+        -0.3552546522900615,
+        -0.1137420629491448
+      ],
+      "mae_per_fold": [
+        0.22609034527449146,
+        0.39309319719115965,
+        0.2338774218207729,
+        0.3097882025715664,
+        0.4594166987183647,
+        0.3624260182772055,
+        0.7926419379418363,
+        0.4335682148559573,
+        0.2274930314981573,
+        0.35072396974640657
+      ],
+      "r2_overall": -0.14256968414929916,
+      "mae_overall": 0.37891190378959183,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        -0.40341989790172383,
+        -4.027351825991121,
+        -0.107514050161303,
+        -3.1293400806761014,
+        -0.5379165649381492,
+        -0.1881522368538211,
+        -0.06855245075138838,
+        -0.19800805063570914,
+        -0.5374717044064636,
+        -0.2446657621294226
+      ],
+      "mae_per_fold": [
+        0.2162252514007567,
+        0.7442925322123248,
+        0.21107953339674915,
+        0.27730087528935377,
+        0.41802886276241813,
+        0.24872559724311172,
+        0.7396641445593107,
+        0.4180473373036443,
+        0.26277438777308765,
+        0.438657664218376
+      ],
+      "r2_overall": -0.27199256869354915,
+      "mae_overall": 0.3974796186159132,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        -0.2207868435993774,
+        -3.969984605692879,
+        -0.2899569717912891,
+        -3.3064890102315427,
+        -0.4848464964396657,
+        -0.12362474853941352,
+        -0.07779987452534587,
+        -0.2689028152385131,
+        -0.5663525395463747,
+        -0.19688474529555822
+      ],
+      "mae_per_fold": [
+        0.19923446469887246,
+        0.7357737590954695,
+        0.22001568064107369,
+        0.2920528222776345,
+        0.4069208574018343,
+        0.2359527073027347,
+        0.7446194611874819,
+        0.4355273602845625,
+        0.2657385210121391,
+        0.4410730097717772
+      ],
+      "r2_overall": -0.2742870206737351,
+      "mae_overall": 0.39769086436735795,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_0": [
+    {
+      "feature": "grad_norm",
+      "mean_spearman": -0.2899289179164409,
+      "std_spearman": 0.19972659837755286,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": -0.2857727802749167,
+      "std_spearman": 0.3574533577849817,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": -0.24974809631830558,
+      "std_spearman": 0.2016787237423287,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": -0.22669420884332153,
+      "std_spearman": 0.22870257289834192,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.1765241261766621,
+      "std_spearman": 0.35690489802792713,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": -0.1501932518622025,
+      "std_spearman": 0.27729720698464505,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": -0.12003313001991821,
+      "std_spearman": 0.3267707558005565,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": 0.10221435440872258,
+      "std_spearman": 0.2610641620496487,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": -0.0949322350753738,
+      "std_spearman": 0.3615402863547942,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": -0.07863025339695372,
+      "std_spearman": 0.3401839983923256,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": -0.07863025339695372,
+      "std_spearman": 0.3401839983923256,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": -0.07379032110620283,
+      "std_spearman": 0.3361611844942406,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": -0.06937737814503812,
+      "std_spearman": 0.31175469456218613,
+      "n_cells": 9
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": 0.06760326482777386,
+      "std_spearman": 0.46968815989227836,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": 0.045294784264334836,
+      "std_spearman": 0.27839397015928297,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": 0.04253993650653436,
+      "std_spearman": 0.4094984875739774,
+      "n_cells": 9
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": -0.03517582019279929,
+      "std_spearman": 0.32868023946567215,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": 0.03455493756175274,
+      "std_spearman": 0.2708577900944544,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": 0.03415500436949094,
+      "std_spearman": 0.16088499026551326,
+      "n_cells": 9
+    }
+  ],
+  "stage_1": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.06925748763191408,
+        -0.1781788638112145,
+        -0.0666281508780251,
+        0.0007773514404694204,
+        -0.033068760387351626,
+        -0.017036136967374604,
+        -0.06424694272868203,
+        -0.15864001646474302,
+        -0.15561014087593117,
+        -0.12451329541880751
+      ],
+      "mae_per_fold": [
+        0.5764317901661559,
+        0.6607131621102634,
+        0.3193733309324992,
+        0.3211433688687503,
+        0.36550673218287194,
+        0.4150708854675766,
+        0.33760451896196775,
+        0.5482594366993631,
+        0.2854762297574561,
+        0.4545651970252788
+      ],
+      "r2_overall": -0.03491087033977247,
+      "mae_overall": 0.4284144652172183,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -0.3827677187801508,
+        -0.006670002823379928,
+        -0.4703646066141587,
+        0.04327903504061226,
+        0.30332745672208283,
+        0.10481598099094047,
+        -0.16277861352630096,
+        -0.9532671605869818,
+        -0.4440744348988621,
+        0.27404621595563805
+      ],
+      "mae_per_fold": [
+        0.5969355211083287,
+        0.6222173414429607,
+        0.4162846522592066,
+        0.40821537895416327,
+        0.31983375960771354,
+        0.44807242489131827,
+        0.36168682358474824,
+        0.6639856977265077,
+        0.33674735113121823,
+        0.36773894474654595
+      ],
+      "r2_overall": -0.1451717711409033,
+      "mae_overall": 0.45417178954527115,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -0.3843146864153324,
+        0.0020440139544924962,
+        -0.4079943569935731,
+        0.051504378962510255,
+        0.31993171984786817,
+        0.10520764033715913,
+        -0.1490091171876946,
+        -0.9334167816924615,
+        -0.4195486455881381,
+        0.30785650163094236
+      ],
+      "mae_per_fold": [
+        0.5971283089626641,
+        0.6165094570368811,
+        0.40305992094168797,
+        0.40577896870254526,
+        0.31924108588575095,
+        0.4500051869155332,
+        0.360666027730153,
+        0.6631195143620982,
+        0.3335797927645743,
+        0.36090466431627266
+      ],
+      "r2_overall": -0.13239396664079406,
+      "mae_overall": 0.45099929276181616,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -0.20427006282899618,
+        -0.8122615949456278,
+        0.12943180022750822,
+        -0.3109236566455056,
+        -0.8823953951349004,
+        -0.3021669672498233,
+        -1.1574054892733145,
+        -0.7067064632169022,
+        -0.6691497159746107,
+        -0.000556382702557201
+      ],
+      "mae_per_fold": [
+        0.6695592059774249,
+        0.8354391365693684,
+        0.28382110562977286,
+        0.40549443554272313,
+        0.5033401025245667,
+        0.48693706448011703,
+        0.4608692582846585,
+        0.5466376596602405,
+        0.35513011570568803,
+        0.3904314659555699
+      ],
+      "r2_overall": -0.3972800904675593,
+      "mae_overall": 0.493765955033013,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        -0.41511236592611334,
+        0.3833009896688031,
+        -0.47006385281156127,
+        0.42625213486282654,
+        0.4730008910253828,
+        -0.25973876989228306,
+        0.036012670502673205,
+        -0.20547247959557602,
+        -0.12544092965240572,
+        -0.07624209290398909
+      ],
+      "mae_per_fold": [
+        0.6184552894537965,
+        0.4702952772249356,
+        0.3908571314663893,
+        0.2912383217138841,
+        0.2382474635791479,
+        0.45409833122319093,
+        0.32000380639472475,
+        0.5158401458425013,
+        0.29228435004741143,
+        0.46174317764104367
+      ],
+      "r2_overall": 0.017860685374014085,
+      "mae_overall": 0.4053063294587025,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        -0.3875129138235802,
+        0.369397740272724,
+        -0.4657974435696728,
+        0.37054089862167683,
+        0.4838286043609554,
+        -0.22577346859505676,
+        0.02079366039484365,
+        -0.20217282559760874,
+        -0.3092245235258142,
+        -0.006701063002933605
+      ],
+      "mae_per_fold": [
+        0.5971395370334833,
+        0.4766503890036369,
+        0.3848713575968914,
+        0.3086196602310866,
+        0.22496052349715262,
+        0.4471568197090314,
+        0.3215098451372109,
+        0.5131783700878848,
+        0.31416924315338907,
+        0.45029256861376166
+      ],
+      "r2_overall": 0.021251262379005653,
+      "mae_overall": 0.40385483140635275,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_1": [
+    {
+      "feature": "sharpness",
+      "mean_spearman": -0.2589078026493725,
+      "std_spearman": 0.2556937028732503,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.2522816228569568,
+      "std_spearman": 0.10132386733362439,
+      "n_cells": 9
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": -0.20011138793401345,
+      "std_spearman": 0.31135297491402425,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": 0.19043647883062184,
+      "std_spearman": 0.2597476706049109,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": 0.1507981836603823,
+      "std_spearman": 0.2285597676562578,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": -0.14871628362762712,
+      "std_spearman": 0.20193937777130985,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": -0.13547425671414978,
+      "std_spearman": 0.2895842134054089,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": 0.13531244368987724,
+      "std_spearman": 0.21959884026991822,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": 0.11382049849666971,
+      "std_spearman": 0.28709306600887224,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": -0.11324013871703303,
+      "std_spearman": 0.3308693751526988,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": -0.10324709673577366,
+      "std_spearman": 0.2904598101916998,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": -0.08071610845476096,
+      "std_spearman": 0.23607856416956025,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": 0.07358454831034195,
+      "std_spearman": 0.17073064474392685,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": -0.05655725147956372,
+      "std_spearman": 0.23647776077806293,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": -0.05627012472591743,
+      "std_spearman": 0.23314061062130353,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": -0.04464532792465323,
+      "std_spearman": 0.2473205502341606,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": -0.043453610358127774,
+      "std_spearman": 0.21698135890258669,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": -0.03907128557090894,
+      "std_spearman": 0.39767830564544426,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": 0.02690831509014857,
+      "std_spearman": 0.229415265722479,
+      "n_cells": 9
+    }
+  ],
+  "stage_2": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.5017807179784459,
+        -0.45144304826784,
+        -0.6091364916056712,
+        0.06240911936025839,
+        0.015977963104386372,
+        -0.018452191057644063,
+        0.04001020435502767,
+        -0.0028598637853032294,
+        -0.13251479710426173,
+        -0.6535371113157087
+      ],
+      "mae_per_fold": [
+        0.34738315992771995,
+        0.7922668960345196,
+        0.4494098717316708,
+        0.4497246859094606,
+        0.7220323833117833,
+        0.424746078397741,
+        0.2751186889866238,
+        0.704190582617625,
+        0.4618298447228931,
+        0.5508671211886085
+      ],
+      "r2_overall": -0.028755740995194623,
+      "mae_overall": 0.5177569312828646,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -0.5535602087870184,
+        0.01458893148298912,
+        -0.4510462683145058,
+        0.01655272752611392,
+        0.08642996602923558,
+        -0.39588597363535283,
+        -0.5029424193583194,
+        0.30216413230380934,
+        0.3127609780067375,
+        -1.5313911798697193
+      ],
+      "mae_per_fold": [
+        0.3007947026410459,
+        0.6518550486883719,
+        0.4070852668342192,
+        0.4719663422716312,
+        0.7410485191485743,
+        0.5175795675203448,
+        0.39263607249201965,
+        0.6351562564136297,
+        0.3559190765826001,
+        0.7326005567047275
+      ],
+      "r2_overall": -0.002653460021388998,
+      "mae_overall": 0.5206641409297164,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -0.6109576191843742,
+        -0.014229871367382962,
+        -0.5102651869200039,
+        0.0036017611503641467,
+        0.07659515642570058,
+        -0.3075356127038682,
+        -0.5141210192087582,
+        0.29893339383630047,
+        0.30104084052963764,
+        -1.2738091354415695
+      ],
+      "mae_per_fold": [
+        0.31372402952971046,
+        0.655322132432815,
+        0.42123732816193704,
+        0.47572325534057747,
+        0.7409340833754658,
+        0.503406389698715,
+        0.3903599560116367,
+        0.6486806774808678,
+        0.3533961102113689,
+        0.6871428380383465
+      ],
+      "r2_overall": 0.014608245345413162,
+      "mae_overall": 0.518992680028144,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -1.4616490618292413,
+        -0.37672708995857396,
+        -2.406127055106818,
+        -0.053970593031454905,
+        -0.006409474708965357,
+        -0.7510440975177983,
+        -1.8284644880757077,
+        -0.18071031550629568,
+        -0.8532832701316497,
+        -0.9731915509870295
+      ],
+      "mae_per_fold": [
+        0.4172441243301353,
+        0.7762348831814985,
+        0.7209802538972436,
+        0.49458526914703793,
+        0.7603479914792919,
+        0.5256260687133686,
+        0.5577166741097833,
+        0.7313909069537696,
+        0.5721135795035998,
+        0.5536551774196441
+      ],
+      "r2_overall": -0.3389432948773996,
+      "mae_overall": 0.6109894928735372,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        -0.4104937192107794,
+        -0.1494717690049876,
+        -0.6398829733705949,
+        -0.04020824283449187,
+        0.06696806526568089,
+        -0.15517854656851537,
+        0.06805991903474795,
+        0.3341941006522525,
+        0.34662631829030766,
+        -0.9226377718954588
+      ],
+      "mae_per_fold": [
+        0.3229175827284673,
+        0.675308568381376,
+        0.46483966305700825,
+        0.46169756112606425,
+        0.7451036740923845,
+        0.488347017820871,
+        0.2859422226079114,
+        0.5971833768529584,
+        0.3336054549604575,
+        0.6079294756912587
+      ],
+      "r2_overall": 0.0607300589633849,
+      "mae_overall": 0.49828745973187566,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        -0.3447798986174355,
+        -0.20963332478867303,
+        -0.5298122329323036,
+        -0.046505189266927704,
+        0.10376916331755459,
+        -0.1512564114294992,
+        -0.027848882003217,
+        0.32809755644698135,
+        0.3660596958279516,
+        -0.7561343030920207
+      ],
+      "mae_per_fold": [
+        0.323338139737046,
+        0.6902990727874424,
+        0.4387660655615024,
+        0.4635524722431469,
+        0.7276866506944031,
+        0.4792834903742576,
+        0.3092067751634875,
+        0.598175721679442,
+        0.3371800374844188,
+        0.580792073125943
+      ],
+      "r2_overall": 0.07923960813211428,
+      "mae_overall": 0.4948280498851089,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_2": [
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": 0.22890566568466564,
+      "std_spearman": 0.3050319227882465,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": 0.2254451963409029,
+      "std_spearman": 0.35692014440142145,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": -0.21126013846959318,
+      "std_spearman": 0.26291273333952764,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": 0.17616481651184787,
+      "std_spearman": 0.23738878095464044,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": -0.16574912924090857,
+      "std_spearman": 0.24343969891329298,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": -0.1622326158901761,
+      "std_spearman": 0.3266985860482189,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.1591304952890243,
+      "std_spearman": 0.12688555650708555,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": 0.14989783003120302,
+      "std_spearman": 0.25896436943777074,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": 0.1475965316984928,
+      "std_spearman": 0.3319421364787751,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": -0.12803764366249537,
+      "std_spearman": 0.3466960711055884,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": -0.11984041033861505,
+      "std_spearman": 0.41872311621920366,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": -0.11802467481961965,
+      "std_spearman": 0.41176895665095703,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": -0.1088515026783951,
+      "std_spearman": 0.39524890984477773,
+      "n_cells": 9
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": 0.08890406247232684,
+      "std_spearman": 0.2500557137298354,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": -0.05460214287257259,
+      "std_spearman": 0.3057921281361535,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": 0.04770559930159117,
+      "std_spearman": 0.3582289050248297,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": 0.04681560159293988,
+      "std_spearman": 0.36832493034880626,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": 0.043428046536895824,
+      "std_spearman": 0.31276543557039277,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": 0.03767342078502541,
+      "std_spearman": 0.3483402162494752,
+      "n_cells": 9
+    }
+  ],
+  "stage_3": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.1967648931196777,
+        -0.1621112656553778,
+        -0.11723797418871906,
+        0.09933641529055448,
+        -0.06469496840904165,
+        -0.12525349814991005,
+        -0.255968325823547,
+        -0.050595537413896,
+        -0.05257497052873994,
+        0.0039134208153820405
+      ],
+      "mae_per_fold": [
+        1.214965601722016,
+        1.1713836519883387,
+        1.0182548508895854,
+        0.5647624787045886,
+        1.598171953749473,
+        1.1309800053930235,
+        0.8969940646068516,
+        1.877999109110564,
+        0.9285788318774161,
+        1.2305232836880213
+      ],
+      "r2_overall": 0.0070126504153309455,
+      "mae_overall": 1.1632613831729879,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -0.1514058091718169,
+        -0.7328410816634678,
+        -0.5033502404398136,
+        -0.9425522914415099,
+        0.03445900277638081,
+        -0.22419709962043477,
+        0.4416604098723005,
+        0.11893314752790529,
+        -0.42511305948080014,
+        0.03598605195347071
+      ],
+      "mae_per_fold": [
+        1.1952366305641493,
+        1.4687182020627179,
+        1.111696532083754,
+        0.8228243224169159,
+        1.4433931577237373,
+        1.042760963371264,
+        0.6653079569387449,
+        1.7404078951525235,
+        1.0327563651742575,
+        1.1411230411957738
+      ],
+      "r2_overall": -0.033703837751078325,
+      "mae_overall": 1.166422506668384,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -0.0549201523407008,
+        -0.7324896505089498,
+        -0.3745868213831065,
+        -1.1199004909172072,
+        0.01774419635776403,
+        -0.2403260567852754,
+        0.4249849590849073,
+        0.11534910627713557,
+        -0.46748936857417456,
+        0.05464900781258375
+      ],
+      "mae_per_fold": [
+        1.0930706795424694,
+        1.469329972744897,
+        0.9886154819280704,
+        0.8383438190661967,
+        1.4671745256774609,
+        1.0822239580108466,
+        0.6707808232470354,
+        1.7653791451218206,
+        1.0629696006626326,
+        1.1093015353314966
+      ],
+      "r2_overall": -0.026877403628949637,
+      "mae_overall": 1.1547189541332927,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -0.4871875309917968,
+        -0.805023246527826,
+        -0.38463347481564103,
+        -0.9319038206077388,
+        -0.2931068706796913,
+        -0.22907714357536535,
+        -1.2818155506473845,
+        -0.5220137144936092,
+        0.028562103975728226,
+        -0.4911511435503293
+      ],
+      "mae_per_fold": [
+        1.379689584541416,
+        1.413233939816661,
+        1.2533037910222182,
+        0.7384622491861765,
+        1.6839920992876742,
+        1.0281624705042818,
+        1.1940917037508303,
+        2.247029826635083,
+        0.8271348327066398,
+        1.5914428090105495
+      ],
+      "r2_overall": -0.3358075890189356,
+      "mae_overall": 1.3356543306461528,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        0.05023555796583801,
+        -1.0211776903077148,
+        -1.1060668953223765,
+        -0.7657443312829386,
+        0.19869903534142386,
+        -0.008287896749725299,
+        0.3827551859714736,
+        0.04312568104886705,
+        -0.01532487453380349,
+        -0.11049251404177429
+      ],
+      "mae_per_fold": [
+        0.8993278612507398,
+        1.352108335150998,
+        1.1323926894912595,
+        0.7252568304897992,
+        1.3837375805690493,
+        0.9293903385537902,
+        0.5900523394841312,
+        1.8047009272547438,
+        0.9868592929601753,
+        1.2420970214348253
+      ],
+      "r2_overall": -0.0416617474257579,
+      "mae_overall": 1.1045923216639513,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        0.03336854668312139,
+        -0.9898618941932733,
+        -1.018356392185749,
+        -0.848780965339178,
+        0.19225906340549903,
+        0.055169838248320446,
+        0.38693719709961916,
+        0.08581225000825865,
+        0.012632662300212205,
+        -0.17441413879654566
+      ],
+      "mae_per_fold": [
+        0.8736865392523578,
+        1.3467279723752577,
+        1.1176225291501982,
+        0.7333632624384557,
+        1.394483561636006,
+        0.8733727538686371,
+        0.5977911322447781,
+        1.7702323318041424,
+        0.9635234683415502,
+        1.2756698175450678
+      ],
+      "r2_overall": -0.026798968778120935,
+      "mae_overall": 1.094647336865645,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_3": [
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": -0.5071672903769675,
+      "std_spearman": 0.27504440283018194,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.48179906882222057,
+      "std_spearman": 0.273437160657594,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": -0.46781874293441367,
+      "std_spearman": 0.2573483294275272,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": 0.43620055393214224,
+      "std_spearman": 0.3136861960263485,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": 0.3839509278028508,
+      "std_spearman": 0.39588171203148936,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": -0.38127314272093143,
+      "std_spearman": 0.25483389141368046,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": 0.35855385098200176,
+      "std_spearman": 0.3224963563031614,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": 0.30256912446158907,
+      "std_spearman": 0.275525405567077,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": 0.2303960691932066,
+      "std_spearman": 0.32886230475760336,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": 0.2300652065246134,
+      "std_spearman": 0.3045320067088408,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": 0.20914321556407708,
+      "std_spearman": 0.3359020840501995,
+      "n_cells": 9
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": -0.19933957625637314,
+      "std_spearman": 0.39588171203148936,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": 0.1637412030368145,
+      "std_spearman": 0.29257535023761916,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": 0.1546764990541746,
+      "std_spearman": 0.33256449782251235,
+      "n_cells": 9
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": -0.1070664191231157,
+      "std_spearman": 0.3934965423561722,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": -0.06238756461611263,
+      "std_spearman": 0.22977867730132898,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": 0.047172198968373664,
+      "std_spearman": 0.27007313078090345,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": 0.014115955779802928,
+      "std_spearman": 0.44742597520444244,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": 0.010961955328593757,
+      "std_spearman": 0.23848653839795886,
+      "n_cells": 9
+    }
+  ],
+  "stage_4": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -0.016367955597774708,
+        -0.015714869012980026,
+        -0.04792953715769732,
+        -0.1908578352635748,
+        -0.35135161860920916,
+        -0.15684805951370362,
+        -0.5207613962674422,
+        -0.0059395273904294665,
+        -0.09133817449880399,
+        -0.27647100503868427
+      ],
+      "mae_per_fold": [
+        1.7364300947956455,
+        0.9572288464942125,
+        1.6912178254894288,
+        2.258708095444624,
+        1.888928851028082,
+        1.910970384013967,
+        2.5839811348630217,
+        1.9428646919544705,
+        1.018942951925176,
+        2.7622712433906607
+      ],
+      "r2_overall": -0.052496720664781504,
+      "mae_overall": 1.875154411939929,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -0.2090788058329407,
+        -1.1583940988037869,
+        -0.520865242891861,
+        -0.5057639602512067,
+        -0.8765140155033926,
+        -0.17586591915193517,
+        -0.5472800917063767,
+        -0.5786862176903009,
+        -0.44840324496699235,
+        -0.2954413329307495
+      ],
+      "mae_per_fold": [
+        1.9072630926306142,
+        1.5091393817395506,
+        1.915157075866162,
+        2.294271862387506,
+        2.1591585056159452,
+        1.8663604130552558,
+        2.7347569687963382,
+        2.3300291193785063,
+        1.1758188571292594,
+        2.7938042030868036
+      ],
+      "r2_overall": -0.29284121653358164,
+      "mae_overall": 2.0685759479685943,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -0.18611547413219398,
+        -1.1941693500642976,
+        -0.4743004706206013,
+        -0.50375617710675,
+        -0.7302702497792195,
+        -0.12478558824418728,
+        -0.5409304627624052,
+        -0.5825247843055359,
+        -0.5045077519598888,
+        -0.2887990792542945
+      ],
+      "mae_per_fold": [
+        1.8710320817370854,
+        1.5080209873211903,
+        1.8957404830491487,
+        2.30431921782223,
+        2.0673051359942596,
+        1.8155070438731025,
+        2.715499564413005,
+        2.3327586249558343,
+        1.2506468058195663,
+        2.7852072343111534
+      ],
+      "r2_overall": -0.2709038089046334,
+      "mae_overall": 2.0546037179296572,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -0.816268455299584,
+        -0.8419569053998264,
+        -0.056387441701462704,
+        -0.7521952235131038,
+        -0.3530720143242039,
+        -0.3952073607090638,
+        -0.9167199234541925,
+        0.07780414563294435,
+        -0.05619553751105877,
+        -0.9831091537987846
+      ],
+      "mae_per_fold": [
+        2.438394331879953,
+        1.6314188215513188,
+        1.8144235972123444,
+        2.45667398201296,
+        2.0664177792770624,
+        2.1419899071000645,
+        3.1564330675792767,
+        2.109777897852106,
+        1.195872501328123,
+        3.369455999067566
+      ],
+      "r2_overall": -0.3701135031554843,
+      "mae_overall": 2.2380857884860776,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        -0.3147528036582552,
+        -1.2920716390669527,
+        -0.2454454816075644,
+        -0.877411323203193,
+        -0.7535587486991178,
+        -0.0828951349769147,
+        -0.5755836903579805,
+        -0.3551947967331657,
+        0.09091288521986574,
+        -0.17003808403828558
+      ],
+      "mae_per_fold": [
+        1.9924577574710898,
+        1.5621792122665026,
+        1.8096675863082305,
+        2.4372079040857657,
+        2.146378198432084,
+        1.9831836384774593,
+        2.6306165632429463,
+        2.361072271747572,
+        1.0014064255371917,
+        2.710894404848944
+      ],
+      "r2_overall": -0.25014511358173785,
+      "mae_overall": 2.063506396241779,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        -0.33524753612811,
+        -1.2031832301387402,
+        -0.22638579228149758,
+        -0.8773700832561329,
+        -0.6675648420143048,
+        -0.02535689809199071,
+        -0.430584074306263,
+        -0.4651406214220237,
+        0.06521921472957293,
+        -0.12095300783321838
+      ],
+      "mae_per_fold": [
+        1.9948428749974296,
+        1.5494535417993296,
+        1.7523199986930562,
+        2.3826963936692778,
+        2.076138850460374,
+        1.8712485442519313,
+        2.5114766375733963,
+        2.481829116874105,
+        0.9641290177167883,
+        2.658435385873411
+      ],
+      "r2_overall": -0.22191143184396145,
+      "mae_overall": 2.0242570361909094,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_4": [
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": -0.25734047717043107,
+      "std_spearman": 0.3353021474291921,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": -0.2502750780689191,
+      "std_spearman": 0.35260998020264817,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.24435127235742643,
+      "std_spearman": 0.333376183349273,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": 0.24376748603217782,
+      "std_spearman": 0.30173159789770654,
+      "n_cells": 9
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": -0.24343076499706887,
+      "std_spearman": 0.46293149571663955,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": 0.21893446856425278,
+      "std_spearman": 0.3168563058860226,
+      "n_cells": 9
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": 0.1679258066636657,
+      "std_spearman": 0.2954748331116318,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": 0.15860964056948668,
+      "std_spearman": 0.2975547197280089,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": 0.14428070021458006,
+      "std_spearman": 0.31420618528869704,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": 0.12910362141111045,
+      "std_spearman": 0.34568484260537274,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": 0.09631112108476605,
+      "std_spearman": 0.2712057988633302,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": 0.09618790111144036,
+      "std_spearman": 0.3099691900407224,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": 0.09346194138285273,
+      "std_spearman": 0.31173723925504226,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": 0.08558900111030544,
+      "std_spearman": 0.28696035588200913,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": 0.07895344129707514,
+      "std_spearman": 0.24424308334613665,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": 0.0773545948334935,
+      "std_spearman": 0.3147598936590909,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": -0.06797533064550287,
+      "std_spearman": 0.30840280499555306,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": 0.04207562596400658,
+      "std_spearman": 0.2992324675021239,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": -0.0016711533198431592,
+      "std_spearman": 0.23161067713885272,
+      "n_cells": 9
+    }
+  ],
+  "stage_5": {
+    "ridge_ppl_only": {
+      "r2_per_fold": [
+        -1.043653136660803,
+        -0.23770773005646673,
+        -0.06036884547734367,
+        -0.11685714604135122,
+        -0.13370107501713901,
+        -0.19283896872941209,
+        -0.05528633410120931,
+        -0.2293430917708137,
+        -0.04420653664184049,
+        -0.06962946421475436
+      ],
+      "mae_per_fold": [
+        5.17536061570149,
+        1.6375970847834562,
+        1.8845938361429144,
+        2.293045462841246,
+        7.008038900656327,
+        2.480235717826994,
+        3.1611112518809943,
+        3.2989579550513373,
+        2.34207704019459,
+        2.6680021555396745
+      ],
+      "r2_overall": -0.05400821427932723,
+      "mae_overall": 3.194902002061902,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "ridge_all_features": {
+      "r2_per_fold": [
+        -0.26833933157003265,
+        -1.8649268828459307,
+        0.07049631755063301,
+        -0.6782808030098264,
+        0.308135766240513,
+        -0.8692997101823559,
+        -0.2613620188290642,
+        0.1471038219814238,
+        -1.278940480190776,
+        0.19124590246728668
+      ],
+      "mae_per_fold": [
+        4.18543611583993,
+        2.286251224025113,
+        1.7871507332692878,
+        3.033330996240974,
+        5.435824817823295,
+        3.0145725428269605,
+        2.8026413999461735,
+        3.006932388032997,
+        3.4797278835804515,
+        2.1876552550288113
+      ],
+      "r2_overall": 0.07363089971203218,
+      "mae_overall": 3.121952335661399,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "ridge_gradient_only": {
+      "r2_per_fold": [
+        -0.34417149879976616,
+        -2.2808000005746005,
+        0.19494911710551932,
+        -0.6972425028427909,
+        0.292747634208967,
+        -0.8387650298502056,
+        -0.19781197996500666,
+        0.2494597640025381,
+        -1.1103452461152572,
+        0.10271202156408221
+      ],
+      "mae_per_fold": [
+        4.319967554403214,
+        2.4589293553857097,
+        1.687414850820984,
+        3.068645750544137,
+        5.581738763220225,
+        2.939575722402582,
+        2.6959092779092817,
+        2.6487016351769226,
+        3.3927425683186527,
+        2.4623648735560937
+      ],
+      "r2_overall": 0.07231600492764367,
+      "mae_overall": 3.12559903517378,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    },
+    "rf_ppl_only": {
+      "r2_per_fold": [
+        -1.1772246461784288,
+        -2.727582487548124,
+        -0.7965385371046674,
+        0.19030504853277308,
+        -0.05248305474469861,
+        -0.948071958228851,
+        0.05532775835007653,
+        -0.8733552802329594,
+        -2.4605417773980554,
+        0.07638707851704252
+      ],
+      "mae_per_fold": [
+        5.384073065929913,
+        2.714099048185012,
+        2.7812056247669847,
+        2.2216475537066818,
+        6.800779252324242,
+        2.9080222288676585,
+        2.8834517086100337,
+        4.1392345758108915,
+        4.342998895885312,
+        2.540673149054925
+      ],
+      "r2_overall": -0.2565851716107792,
+      "mae_overall": 3.671618510314165,
+      "features": [
+        "ppl"
+      ],
+      "n_features": 1,
+      "n_samples": 90
+    },
+    "rf_all_features": {
+      "r2_per_fold": [
+        -0.7122433330741154,
+        0.2804107530540444,
+        -0.0743923397138897,
+        -0.06636505312139018,
+        0.028469219809031054,
+        -0.22374799770426268,
+        -0.29154621837212935,
+        0.2363662550173219,
+        -0.6472628379731193,
+        0.13790033865053175
+      ],
+      "mae_per_fold": [
+        4.888034911420735,
+        1.0362349622254423,
+        1.9255349901668681,
+        2.1961143556589477,
+        6.407404180986908,
+        2.238772093857479,
+        3.130068912472728,
+        2.3960039960870776,
+        3.1429536858285116,
+        2.6125521290721485
+      ],
+      "r2_overall": 0.04596341768222778,
+      "mae_overall": 2.997367421777686,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 19,
+      "n_samples": 90
+    },
+    "rf_gradient_only": {
+      "r2_per_fold": [
+        -0.6559361433608433,
+        0.2358696986844694,
+        0.06161525372096133,
+        -0.3477783894629909,
+        0.13275285256898461,
+        -0.17025527165599774,
+        -0.3761614034107734,
+        0.2732263733602115,
+        -0.7012927079217603,
+        0.06380980071764919
+      ],
+      "mae_per_fold": [
+        4.783394324705457,
+        1.074495245902624,
+        1.779887833149748,
+        2.4053067793424296,
+        6.125181047571535,
+        2.064824300830504,
+        3.0174644198016547,
+        2.367429687981869,
+        3.158698695378539,
+        2.7901433687562522
+      ],
+      "r2_overall": 0.06531291773224912,
+      "mae_overall": 2.956682570342061,
+      "features": [
+        "adam_effective_step",
+        "adam_m_mean",
+        "adam_v_max",
+        "adam_v_mean",
+        "grad_norm",
+        "grad_snr",
+        "grad_var",
+        "hessian_trace",
+        "loss_slope",
+        "loss_variance",
+        "ppl_derivative",
+        "sharpness",
+        "weight_dist_from_init",
+        "weight_norm",
+        "grad_layer_norm_mean",
+        "grad_layer_norm_std",
+        "weight_layer_norm_mean",
+        "weight_layer_norm_std"
+      ],
+      "n_features": 18,
+      "n_samples": 90
+    }
+  },
+  "spearman_stage_5": [
+    {
+      "feature": "weight_dist_from_init",
+      "mean_spearman": -0.43816942942025106,
+      "std_spearman": 0.21280313668304954,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_mean",
+      "mean_spearman": -0.4019259431967552,
+      "std_spearman": 0.345611374145592,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_v_max",
+      "mean_spearman": -0.26531037681523123,
+      "std_spearman": 0.385547615038374,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_effective_step",
+      "mean_spearman": 0.21145637032295792,
+      "std_spearman": 0.33164692610120355,
+      "n_cells": 9
+    },
+    {
+      "feature": "hessian_trace",
+      "mean_spearman": 0.13094128523675053,
+      "std_spearman": 0.29364593633303626,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_variance",
+      "mean_spearman": -0.10383446693431274,
+      "std_spearman": 0.3555759610510273,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_std",
+      "mean_spearman": 0.08274282217381321,
+      "std_spearman": 0.29678563815950043,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl",
+      "mean_spearman": 0.0686614812955831,
+      "std_spearman": 0.2954625551687992,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_layer_norm_mean",
+      "mean_spearman": -0.06072396641510613,
+      "std_spearman": 0.30661552890431215,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_std",
+      "mean_spearman": 0.057444694542177974,
+      "std_spearman": 0.262705677365368,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_norm",
+      "mean_spearman": 0.051484234963539044,
+      "std_spearman": 0.30299139293774763,
+      "n_cells": 9
+    },
+    {
+      "feature": "loss_slope",
+      "mean_spearman": 0.048851472811678606,
+      "std_spearman": 0.2850132054714893,
+      "n_cells": 9
+    },
+    {
+      "feature": "adam_m_mean",
+      "mean_spearman": 0.027034639862940354,
+      "std_spearman": 0.2585297357726993,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_var",
+      "mean_spearman": 0.026413090973835218,
+      "std_spearman": 0.28231474943537005,
+      "n_cells": 9
+    },
+    {
+      "feature": "weight_norm",
+      "mean_spearman": 0.025753870759007872,
+      "std_spearman": 0.27569651893708247,
+      "n_cells": 9
+    },
+    {
+      "feature": "sharpness",
+      "mean_spearman": -0.02183680819156197,
+      "std_spearman": 0.2896593682697926,
+      "n_cells": 9
+    },
+    {
+      "feature": "ppl_derivative",
+      "mean_spearman": 0.0138664378914108,
+      "std_spearman": 0.2658696384058521,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_snr",
+      "mean_spearman": 0.005763298780439993,
+      "std_spearman": 0.18145368127245026,
+      "n_cells": 9
+    },
+    {
+      "feature": "grad_layer_norm_mean",
+      "mean_spearman": 0.0036889077238671185,
+      "std_spearman": 0.3004061461889471,
+      "n_cells": 9
+    }
+  ]
+}
