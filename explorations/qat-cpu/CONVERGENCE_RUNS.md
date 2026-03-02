@@ -14,6 +14,7 @@ We want to see if QAT reaches the same perplexity as FP32 (and how fast).
 | BS=16 QAT | 16 | QAT | 2 | `converge_bs16_qat.csv` | DONE (300 steps, final PPL=12.16) |
 | BS=16 FP32 | 16 | FP32 only | 1 | `converge_bs16_fp32.csv` | DONE (300 steps, final PPL=12.13) |
 | BS=8 INT8bwd | 8 | QAT+INT8 backward | 3 | `converge_bs8_int8bwd.csv` | DONE (300 steps, final PPL=12.70) |
+| BS=8 BF16bwd | 8 | QAT+BF16 backward | 2 | `converge_bs8_bf16bwd.csv` | DONE (300 steps, final PPL=12.57) |
 
 ## Results
 
@@ -73,6 +74,25 @@ N_STEPS=300  EVAL_EVERY=50  76M params
 **INT8bwd vs QAT**: ppl 12.70 vs 12.39 (ratio 1.025), 1305s vs 1280s = **0.98x** (2% slower)
 **Quality**: INT8bwd tracks convergence but finishes ~0.3 ppl points behind QAT.
 Gradient quantization noise has a small but real quality cost at 300 steps.
+
+### BS=8 BF16 backward (QAT+BF16bwd vs QAT vs FP32)
+
+| Step | BF16bwd PPL | QAT PPL | FP32 PPL | BF16bwd BPB | QAT BPB | FP32 BPB | BF16bwd ms/step | QAT ms/step | FP32 ms/step |
+|------|-------------|---------|----------|-------------|---------|----------|-----------------|-------------|-------------|
+| 0    | 93.78       | 93.27   | 93.08    | 6.551       | 6.543   | 6.540    | 4664            | 4591        | 6710        |
+| 50   | 26.75       | 26.76   | 26.76    | 4.741       | 4.742   | 4.742    | 4392            | 4261        | 5407        |
+| 100  | 20.69       | 17.79   | 18.42    | 4.371       | 4.153   | 4.203    | 4142            | 4015        | 5384        |
+| 150  | 14.41       | 13.78   | 13.77    | 3.849       | 3.785   | 3.784    | 4110            | 4038        | 5282        |
+| 200  | 13.28       | 12.96   | 13.02    | 3.732       | 3.697   | 3.703    | 4058            | 4057        | 5381        |
+| 250  | 13.06       | 12.92   | 12.94    | 3.707       | 3.692   | 3.694    | 4008            | 3849        | 5889        |
+| 299  | 12.57       | 12.39   | 12.52    | 3.652       | 3.631   | 3.647    | 4239            | 3761        | 5552        |
+
+**BF16bwd vs QAT**: ppl 12.57 vs 12.39 (ratio 1.015), 1301s vs 1280s = **0.98x** (2% slower)
+**BF16bwd vs FP32**: ppl 12.57 vs 12.52 (ratio 1.004), 1301s vs 1721s = **1.32x faster**
+**Verdict**: BF16 backward is slower than FP32 backward and slightly degrades quality.
+The on-the-fly FP32→BF16 conversion overhead negates the VDPBF16PS compute advantage
+at these matrix sizes. The 8-bit mantissa also adds gradient noise (0.18 ppl vs QAT).
+**Recommendation**: Revert to FP32 backward (the original QAT mode).
 
 ### Cross-batch comparison
 
@@ -168,6 +188,7 @@ config is baked in via `-D` defines. The other `.o` files don't change.
 - `converge_bs16_fp32.csv` -- BS=16 FP32 (complete, 7 data rows)
 
 - `converge_bs8_int8bwd.csv` -- BS=8 QAT+INT8bwd (complete, 7 data rows)
+- `converge_bs8_bf16bwd.csv` -- BS=8 QAT+BF16bwd (complete, 7 data rows)
 
 Note: `converge_bs8_qat.csv` is an earlier partial run (died at step 200).
 The complete BS=8 QAT data is in `converge_bs8.csv`.

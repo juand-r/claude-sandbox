@@ -104,16 +104,16 @@ AMX instructions cause SIGILL. arch_prctl(ARCH_REQ_XCOMP_PERM) returns EINVAL.
 Container/VM does not expose AMX hardware. See AMX_PLAN.md for full research
 (preserved for bare-metal access).
 
-#### 1 (revised). AVX-512 BF16 backward GEMMs (1573 ms, 37%) — biggest target
-The backward pass is pure FP32. VDPBF16PS (verified working) does 2 BF16
-fused multiply-adds per cycle vs 1 for FP32 VFMADD, and uses half the memory
-bandwidth (2 bytes vs 4 per element). Expected ~2x speedup on backward GEMMs.
-- BF16 has same exponent range as FP32, just 8-bit mantissa vs 24-bit. For
-  gradient computation this is fine — most frameworks use BF16 for gradients.
-- Estimated savings: 500-800 ms/step (nearly halving the backward)
-- Effort: moderate (BF16 conversion + new GEMM kernel)
-- Risk: low-medium (need to verify convergence is unaffected)
-- See BF16_BACKWARD_PLAN.md for detailed plan.
+#### 1 (revised). ~~AVX-512 BF16 backward GEMMs~~ TESTED — NO BENEFIT
+Implemented and tested (converge_bs8_bf16bwd.csv, 300 steps). Results:
+- Speed: 4158 ms/step avg vs 3997 ms/step for FP32 backward — **4% slower**
+- Quality: PPL 12.57 vs 12.39 (old QAT) — **0.18 ppl worse**
+The on-the-fly FP32→BF16 conversion overhead negated the VDPBF16PS compute
+advantage. The standalone GEMM benchmark showed 1.5-1.6x, but the conversion
+cost adds up across 42 GEMM calls per step. Additionally, the 8-bit mantissa
+introduced gradient noise similar to (but less than) INT8 backward.
+**Verdict**: Revert to FP32 backward. BF16 backward is not viable without
+pre-packed BF16 weight storage (which would add significant complexity).
 
 #### 2. AVX-512 BF16 for attention GEMMs (826+471 = 1297 ms, 31%)
 The attention forward/backward use FP32 GEMM. Same BF16 GEMM kernel can
