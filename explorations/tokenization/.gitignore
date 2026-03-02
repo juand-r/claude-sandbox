@@ -1,0 +1,6 @@
+train_tok_binary
+train_tok_base4
+train_tok_nibble
+train_tok_char
+train_tok_bigram
+shakespeare.txt

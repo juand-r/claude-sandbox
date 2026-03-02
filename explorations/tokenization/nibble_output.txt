@@ -1,0 +1,63 @@
+========================================
+Tokenization Experiment: nibble
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 2007708 tokens (2.0 tok/char)
+Val:   111540 chars -> 223080 tokens
+
+Mode: nibble (vocab=16, seq_len=256 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Parameters: 922752 (922.8K)
+  Embedding: 133120 (133.1K) = 14.4% of total
+  Output head: 2048 (2.0K) = 0.2% of total
+  Transformer body: 787584 (787.6K) = 85.4% of total
+Random baseline BPC: 8.00
+CSV log: nibble.csv
+
+--- Training ---
+Steps: 3000, seq_len: 256 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/3000: loss=2.7989 smooth=2.7989 | val_bpc=7.788 val_loss=2.6990 val_ppl=14.87 | lr=0.000015 187.5ms/step 2730 char/s
+  Step  500/3000: loss=1.5506 smooth=1.5197 | val_bpc=4.318 val_loss=1.4964 val_ppl=4.47 | lr=0.000283 87.6ms/step 5845 char/s
+  Step 1000/3000: loss=1.2976 smooth=1.3257 | val_bpc=3.780 val_loss=1.3100 val_ppl=3.71 | lr=0.000234 79.6ms/step 6432 char/s
+  Step 1500/3000: loss=1.1283 smooth=1.1856 | val_bpc=3.402 val_loss=1.1791 val_ppl=3.25 | lr=0.000166 81.0ms/step 6321 char/s
+  [Sample] The rrallit, fe anke.??INTUI:?Amare mycste thest: threy whisthin ou hiis,?Wison gieserting thanteng yoel
+  Step 2000/3000: loss=1.1358 smooth=1.1245 | val_bpc=3.227 val_loss=1.1183 val_ppl=3.06 | lr=0.000098 73.1ms/step 7001 char/s
+  Step 2500/3000: loss=1.0926 smooth=1.0781 | val_bpc=3.098 val_loss=1.0738 val_ppl=2.93 | lr=0.000048 73.6ms/step 6953 char/s
+  Step 2999/3000: loss=1.0388 smooth=1.0415 | val_bpc=3.040 val_loss=1.0535 val_ppl=2.87 | lr=0.000030 79.3ms/step 6454 char/s
+
+Training complete: 238.2 sec (79.4 ms/step)
+Final val BPC:  3.040
+Final val loss: 1.0535 nats/token
+Final val PPL:  2.87 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The forledenge hembevor.?Mthim diet beaste of him butr. I and and pear,?Ar Ennere lot to seal dudd ther 
+
+  [Prompt: "KING:
+"]
+  KING:?Ne see mon whe since withe hereditun thich,?And ey is supl sueremedet.??WABLO:?Mut reaker whouret ha
+
+  [Prompt: "To be"]
+  To bete thele spour?What bee my dide betrow, a broth simesty o'st thenck,?Haker that and enate fis kes co
+
+
+SUMMARY:nibble,16,2.0,256,922752,3.040,1.0535,2.87,238.2,8.00

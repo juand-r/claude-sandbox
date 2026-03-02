@@ -1,0 +1,63 @@
+========================================
+Tokenization Experiment: base4
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 4015416 tokens (4.0 tok/char)
+Val:   111540 chars -> 446160 tokens
+
+Mode: base4 (vocab=4, seq_len=512 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Parameters: 919680 (919.7K)
+  Embedding: 131584 (131.6K) = 14.3% of total
+  Output head: 512 (0.5K) = 0.1% of total
+  Transformer body: 787584 (787.6K) = 85.6% of total
+Random baseline BPC: 8.00
+CSV log: base4.csv
+
+--- Training ---
+Steps: 3000, seq_len: 512 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/3000: loss=1.4107 smooth=1.4107 | val_bpc=7.944 val_loss=1.3767 val_ppl=3.96 | lr=0.000015 403.4ms/step 1269 char/s
+  Step  500/3000: loss=0.9622 smooth=0.9838 | val_bpc=5.680 val_loss=0.9843 val_ppl=2.68 | lr=0.000283 188.8ms/step 2713 char/s
+  Step 1000/3000: loss=0.7979 smooth=0.8101 | val_bpc=4.662 val_loss=0.8078 val_ppl=2.24 | lr=0.000234 167.6ms/step 3055 char/s
+  Step 1500/3000: loss=0.7145 smooth=0.7269 | val_bpc=4.161 val_loss=0.7211 val_ppl=2.06 | lr=0.000166 163.5ms/step 3132 char/s
+  [Sample] The laust bursne enaynn,?MOnest,, gdo tuk ionuu hyors oiurh,?Sat ioeg wo mu cn iou w, sgobqr ouet bet yo
+  Step 2000/3000: loss=0.6745 smooth=0.6809 | val_bpc=3.905 val_loss=0.6767 val_ppl=1.97 | lr=0.000098 170.2ms/step 3008 char/s
+  Step 2500/3000: loss=0.6554 smooth=0.6606 | val_bpc=3.768 val_loss=0.6529 val_ppl=1.92 | lr=0.000048 166.0ms/step 3085 char/s
+  Step 2999/3000: loss=0.6359 smooth=0.6476 | val_bpc=3.707 val_loss=0.6424 val_ppl=1.90 | lr=0.000030 179.6ms/step 2850 char/s
+
+Training complete: 542.3 sec (180.8 ms/step)
+Final val BPC:  3.707
+Final val loss: 0.6424 nats/token
+Final val PPL:  1.90 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The jotit ghuf hiass hof fenl boriren mrwles cn a hoespeesits thantes nel somt?Aofdg saosis aout theu mn
+
+  [Prompt: "KING:
+"]
+  KING:?ll is.?Lel un lous oares thie firhver piolaeds: was witis hil areti hon bera tho Pegr oru berd ay bo
+
+  [Prompt: "To be"]
+  To bennnemnu.?Ans thaat yan ferth yo the mod do Thas seatsrestiel.?Whnld sealrti if mams tpaen ke the il 
+
+
+SUMMARY:base4,4,4.0,512,919680,3.707,0.6424,1.90,542.3,8.00

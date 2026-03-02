@@ -1,0 +1,63 @@
+========================================
+Tokenization Experiment: char
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 1003854 tokens (1.0 tok/char)
+Val:   111540 chars -> 111540 tokens
+
+Mode: char (vocab=128, seq_len=128 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Parameters: 951424 (951.4K)
+  Embedding: 147456 (147.5K) = 15.5% of total
+  Output head: 16384 (16.4K) = 1.7% of total
+  Transformer body: 787584 (787.6K) = 82.8% of total
+Random baseline BPC: 7.00
+CSV log: char.csv
+
+--- Training ---
+Steps: 3000, seq_len: 128 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/3000: loss=5.0796 smooth=5.0796 | val_bpc=7.221 val_loss=5.0050 val_ppl=149.16 | lr=0.000015 103.4ms/step 4952 char/s
+  Step  500/3000: loss=2.4601 smooth=2.5178 | val_bpc=3.624 val_loss=2.5123 val_ppl=12.33 | lr=0.000283 41.9ms/step 12216 char/s
+  Step 1000/3000: loss=2.3865 smooth=2.3872 | val_bpc=3.421 val_loss=2.3714 val_ppl=10.71 | lr=0.000234 61.6ms/step 8310 char/s
+  Step 1500/3000: loss=2.1781 smooth=2.1913 | val_bpc=3.151 val_loss=2.1838 val_ppl=8.88 | lr=0.000166 44.3ms/step 11564 char/s
+  [Sample] The thy o cherment thouge be ad.?Youht Nou sint wh thou bald, pkin hery thy the bouht wit.??F#ore, frain
+  Step 2000/3000: loss=2.0782 smooth=2.0481 | val_bpc=2.973 val_loss=2.0607 val_ppl=7.85 | lr=0.000098 51.5ms/step 9942 char/s
+  Step 2500/3000: loss=1.8447 smooth=1.9476 | val_bpc=2.876 val_loss=1.9935 val_ppl=7.34 | lr=0.000048 56.5ms/step 9067 char/s
+  Step 2999/3000: loss=1.8459 smooth=1.9072 | val_bpc=2.827 val_loss=1.9593 val_ppl=7.09 | lr=0.000030 51.1ms/step 10013 char/s
+
+Training complete: 152.5 sec (50.8 ms/step)
+Final val BPC:  2.827
+Final val loss: 1.9593 nats/token
+Final val PPL:  7.09 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The and,'s thee thered, all good,?I'll tid with unmernh, samen sus tee,?Lere preaces: sime, and lewll wa
+
+  [Prompt: "KING:
+"]
+  KING:?Ot I him be broves, anly hir grear's and dothered's bage.?I cond to to tent, strace.?That murt! Lity
+
+  [Prompt: "To be"]
+  To besse,?Tis stater ofair there andnept the hat on sent,?Whell con be and ukes thow ill fet arnce,?That 
+
+
+SUMMARY:char,128,1.0,128,951424,2.827,1.9593,7.09,152.5,7.00

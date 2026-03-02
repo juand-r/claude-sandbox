@@ -1,0 +1,64 @@
+========================================
+Tokenization Experiment: bigram
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 501927 tokens (0.5 tok/char)
+Val:   111540 chars -> 55770 tokens
+
+Mode: bigram (vocab=16384, seq_len=64 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Parameters: 5112960 (5113.0K)
+  Embedding: 2228224 (2228.2K) = 43.6% of total
+  Output head: 2097152 (2097.2K) = 41.0% of total
+  Transformer body: 787584 (787.6K) = 15.4% of total
+Random baseline BPC: 7.00
+NOTE: softmax bottleneck -- vocab=16384 > dim=128 (rank limited)
+CSV log: bigram.csv
+
+--- Training ---
+Steps: 3000, seq_len: 64 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/3000: loss=9.9188 smooth=9.9188 | val_bpc=7.097 val_loss=9.8392 val_ppl=18753.99 | lr=0.000015 197.1ms/step 2598 char/s
+  Step  500/3000: loss=4.8053 smooth=4.9702 | val_bpc=3.521 val_loss=4.8810 val_ppl=131.76 | lr=0.000283 159.2ms/step 3217 char/s
+  Step 1000/3000: loss=4.4033 smooth=4.2534 | val_bpc=3.085 val_loss=4.2770 val_ppl=72.02 | lr=0.000234 151.8ms/step 3372 char/s
+  Step 1500/3000: loss=3.9312 smooth=3.9756 | val_bpc=2.929 val_loss=4.0605 val_ppl=58.00 | lr=0.000166 163.9ms/step 3124 char/s
+  [Sample] The suchroch u dear inn'lordobou to nour the be be iRD?Hand thy to simould cill crow, hould wheight but,
+  Step 2000/3000: loss=3.8860 smooth=3.8192 | val_bpc=2.832 val_loss=3.9258 val_ppl=50.69 | lr=0.000098 158.0ms/step 3241 char/s
+  Step 2500/3000: loss=4.0082 smooth=3.7579 | val_bpc=2.797 val_loss=3.8778 val_ppl=48.32 | lr=0.000048 156.7ms/step 3267 char/s
+  Step 2999/3000: loss=3.6202 smooth=3.7249 | val_bpc=2.771 val_loss=3.8409 val_ppl=46.57 | lr=0.000030 165.4ms/step 3096 char/s
+
+Training complete: 477.2 sec (159.1 ms/step)
+Final val BPC:  2.771
+Final val loss: 3.8409 nats/token
+Final val PPL:  46.57 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The as sons?yet thour, lor your sureceoned was in; ford less,?And siret theyMENENIUS:?They, what thereng
+
+  [Prompt: "KING:
+"]
+  KING:?Prover in ing ance in for their baund sideontity of some, fosban your with brom be sperse?reate, her
+
+  [Prompt: "To be"]
+  To but with fathis of thould,?Like mor, you trair thinglusin brought thet daxecien in find slove my bere
+
+
+SUMMARY:bigram,16384,0.5,64,5112960,2.771,3.8409,46.57,477.2,7.00

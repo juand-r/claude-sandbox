@@ -1,0 +1,63 @@
+========================================
+Tokenization Experiment: binary
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 7026978 tokens (7.0 tok/char)
+Val:   111540 chars -> 780780 tokens
+
+Mode: binary (vocab=2, seq_len=896 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Parameters: 919168 (919.2K)
+  Embedding: 131328 (131.3K) = 14.3% of total
+  Output head: 256 (0.3K) = 0.0% of total
+  Transformer body: 787584 (787.6K) = 85.7% of total
+Random baseline BPC: 7.00
+CSV log: binary.csv
+
+--- Training ---
+Steps: 3000, seq_len: 896 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/3000: loss=0.7477 smooth=0.7477 | val_bpc=7.194 val_loss=0.7124 val_ppl=2.04 | lr=0.000015 706.9ms/step 724 char/s
+  Step  500/3000: loss=0.6584 smooth=0.6655 | val_bpc=6.604 val_loss=0.6539 val_ppl=1.92 | lr=0.000283 386.1ms/step 1326 char/s
+  Step 1000/3000: loss=0.5813 smooth=0.5891 | val_bpc=5.968 val_loss=0.5910 val_ppl=1.81 | lr=0.000234 380.3ms/step 1346 char/s
+  Step 1500/3000: loss=0.5785 smooth=0.5745 | val_bpc=5.752 val_loss=0.5696 val_ppl=1.77 | lr=0.000166 371.4ms/step 1379 char/s
+  [Sample] The t?,?v4r`t~tsq2;wvw?6tp6;q?w}?wx26072|w6r{v?32t?u~s?;#00tw9py2Qsz???6z??0v3?678zyw;u?x;v6zD{{w97t?1?B
+  Step 2000/3000: loss=0.5083 smooth=0.5168 | val_bpc=5.177 val_loss=0.5127 val_ppl=1.67 | lr=0.000098 388.1ms/step 1319 char/s
+  Step 2500/3000: loss=0.4799 smooth=0.4868 | val_bpc=4.897 val_loss=0.4849 val_ppl=1.62 | lr=0.000048 429.6ms/step 1192 char/s
+  Step 2999/3000: loss=0.4779 smooth=0.4821 | val_bpc=4.836 val_loss=0.4789 val_ppl=1.61 | lr=0.000030 380.8ms/step 1344 char/s
+
+Training complete: 1177.4 sec (392.5 ms/step)
+Final val BPC:  4.836
+Final val loss: 0.4789 nats/token
+Final val PPL:  1.61 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The ojn oeudndt hnlsmr rgh mq dil qnl avfai` igml jomd ?sskpuu`mtvdc0 qe`kd fmtigdn jilcf bplkil migs?Hb
+
+  [Prompt: "KING:
+"]
+  KING:?a?+s?i?1??-??W+??7?/'??3C#?O'?cO%?'5??A??G??)?#?a???G??g??7??_WCT4*R'G???+?7c-?3W#KG/3?+?CK3???7_+WQ
+
+  [Prompt: "To be"]
+  To besje y jld n`sfmn l,pelm le lhqpmoneuajgqa foji dfd Ic nqaiq v`ea0lq eowen ols slmi amoapd leu whrmue
+
+
+SUMMARY:binary,2,7.0,896,919168,4.836,0.4789,1.61,1177.4,7.00
