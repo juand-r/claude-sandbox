@@ -98,37 +98,33 @@ only targets worth attacking.
 
 ### Next performance targets (ranked by expected impact)
 
-#### 1. AMX-INT8 for QATLinear forward (982 ms, 23%)
-The Xeon 8581C has AMX-INT8 tile registers. AMX does 16x64 * 64x16 INT8 matrix
-multiplies per TDPBSSD instruction — works on 1K-element tiles vs VNNI's 64-byte
-vectors. At dim=1024, the GEMMs are 1024x1024 and 1024x4096, large enough for
-AMX to shine. Expected 2-4x over VNNI on the GEMM portion.
-- Estimated savings: 300-500 ms/step
-- Effort: moderate (new tile-based GEMM kernel, tilecfg setup)
-- Risk: low (hardware confirmed available, well-documented ISA)
+#### 1. ~~AMX-INT8 for QATLinear forward~~ BLOCKED
+CPUID reports AMX-INT8/AMX-BF16/AMX-TILE and XCR0 has bits 17+18 set, but
+AMX instructions cause SIGILL. arch_prctl(ARCH_REQ_XCOMP_PERM) returns EINVAL.
+Container/VM does not expose AMX hardware. See AMX_PLAN.md for full research
+(preserved for bare-metal access).
 
-#### 2. BF16 backward GEMMs (1573 ms, 37%) — biggest single target
-The backward pass is pure FP32. Two options:
-- **AVX-512 BF16**: VDPBF16PS does 2 BF16 fused multiply-adds per cycle vs 1
-  for FP32 VFMADD, and uses half the memory bandwidth (2 bytes vs 4 per element).
-  Expected ~2x speedup on backward GEMMs.
-- **AMX-BF16**: Tile-based BF16 GEMM, same architecture as AMX-INT8. Even faster
-  than AVX-512 BF16 for large matrices.
+#### 1 (revised). AVX-512 BF16 backward GEMMs (1573 ms, 37%) — biggest target
+The backward pass is pure FP32. VDPBF16PS (verified working) does 2 BF16
+fused multiply-adds per cycle vs 1 for FP32 VFMADD, and uses half the memory
+bandwidth (2 bytes vs 4 per element). Expected ~2x speedup on backward GEMMs.
 - BF16 has same exponent range as FP32, just 8-bit mantissa vs 24-bit. For
   gradient computation this is fine — most frameworks use BF16 for gradients.
 - Estimated savings: 500-800 ms/step (nearly halving the backward)
-- Effort: moderate-high (BF16 conversion + GEMM kernel)
+- Effort: moderate (BF16 conversion + new GEMM kernel)
 - Risk: low-medium (need to verify convergence is unaffected)
+- See BF16_BACKWARD_PLAN.md for detailed plan.
 
-#### 3. AMX-BF16 for attention GEMMs (826+471 = 1297 ms, 31%)
-The attention forward/backward use FP32 GEMM on 128x128 per-head matrices.
-These are small for AMX (AMX tiles are 16x16), but there are 8 heads x 8 batch
-items = 64 independent GEMMs per call. Could tile them or use BF16 to cut time.
+#### 2. AVX-512 BF16 for attention GEMMs (826+471 = 1297 ms, 31%)
+The attention forward/backward use FP32 GEMM. Same BF16 GEMM kernel can
+serve these too — just call gemm_bf16 instead of gemm_fp32 for attention.
+Since the attention GEMMs are 128x128 per head (small), the benefit comes
+primarily from halved memory bandwidth.
 - Estimated savings: 200-400 ms/step
-- Effort: moderate
+- Effort: low (reuse BF16 GEMM from #1)
 - Risk: low
 
-#### 4. Cache-tiled GEMMs (applies to all GEMM paths)
+#### 3. Cache-tiled GEMMs (applies to all GEMM paths)
 Current GEMMs are naive row-parallel. At 1024x4096, the working set exceeds
 L1/L2 cache. Tiling (e.g., 64x64 or 128x128 blocks) would improve cache reuse.
 This helps all GEMM paths but is fiddly to implement correctly.
@@ -136,18 +132,22 @@ This helps all GEMM paths but is fiddly to implement correctly.
 - Effort: high (micro-kernel design, tuning)
 - Risk: low (pure optimization, no semantic change)
 
-### Theoretical speed ceiling
+### Theoretical speed ceiling (with AVX-512 BF16, no AMX)
 
-If we got 2x on all GEMMs (AMX + BF16):
-- QATLinear fwd: 982 → ~490 ms
-- QATLinear bwd: 1573 → ~786 ms
-- Attn fwd: 471 → ~235 ms
-- Attn bwd: 826 → ~413 ms
+If BF16 gives ~1.5x on FP32 GEMMs (conservative, memory-bandwidth limited):
+- QATLinear fwd: 982 ms (unchanged, already INT8)
+- QATLinear bwd: 1573 → ~1050 ms
+- Attn fwd: 471 → ~314 ms
+- Attn bwd: 826 → ~550 ms
 - Other: ~302 ms (unchanged)
-- Total: ~2226 ms/step (1.9x over current)
+- Total: ~3198 ms/step (1.32x over current)
 
-Combined with cache tiling (another 10-20%), plausible floor is ~1800-2000 ms/step
-(2.1-2.4x over current 4231 ms/step).
+If BF16 gives ~2x (optimistic, compute-limited regime):
+- QATLinear bwd: 1573 → ~786 ms
+- Attn fwd+bwd: 1297 → ~649 ms
+- Total: ~2719 ms/step (1.56x over current)
+
+Combined with cache tiling: plausible floor ~2400-2800 ms/step (1.5-1.8x).
 
 ### What's been done (profiling + optimization)
 - **Profiling**: Done. See PROFILE_RESULTS.md for detailed breakdown.
