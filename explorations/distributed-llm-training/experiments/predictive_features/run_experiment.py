@@ -384,30 +384,56 @@ def main():
     all_records = []
     t_start = time.time()
 
-    if n_workers > 0:
-        # Parallel execution
-        worker_args = [
-            (config, milestones, args.max_steps, expensive, text, seq_len)
-            for config in configs
-        ]
-        with mp.Pool(n_workers, initializer=_worker_init) as pool:
-            results = pool.map(_worker_run, worker_args)
-        for records in results:
-            all_records.extend(records)
-    else:
-        # Sequential execution (original behavior)
-        for i, config in enumerate(configs):
-            cid = config_id(config)
-            print(f"[{i+1}/{len(configs)}] Config: {cid}")
-            records = train_one_config(
-                config=config,
-                dataset=dataset,
-                milestones=milestones,
-                max_steps=args.max_steps,
-                expensive_features=expensive,
-            )
-            all_records.extend(records)
-            print()
+    # Incremental output: write raw records as each config finishes, so
+    # partial results survive if the session is interrupted.
+    results_dir = Path(__file__).parent / "results"
+    results_dir.mkdir(exist_ok=True)
+    raw_path = results_dir / "milestone_features_raw.jsonl"
+    progress_path = results_dir / "progress.log"
+
+    # Clear previous raw output
+    raw_path.write_text("")
+
+    def _save_records(records, f_raw, completed, total):
+        """Append records to the raw JSONL file and update progress."""
+        for r in records:
+            f_raw.write(json.dumps(r, default=str) + "\n")
+        f_raw.flush()
+        elapsed = time.time() - t_start
+        msg = f"[{completed}/{total}] +{len(records)} records, {elapsed:.0f}s elapsed"
+        print(msg)
+        with open(progress_path, "a") as pf:
+            pf.write(msg + "\n")
+
+    completed = 0
+    with open(raw_path, "a") as f_raw:
+        if n_workers > 0:
+            # Parallel execution with incremental saving
+            worker_args = [
+                (config, milestones, args.max_steps, expensive, text, seq_len)
+                for config in configs
+            ]
+            with mp.Pool(n_workers, initializer=_worker_init) as pool:
+                for records in pool.imap_unordered(_worker_run, worker_args):
+                    all_records.extend(records)
+                    completed += 1
+                    _save_records(records, f_raw, completed, len(configs))
+        else:
+            # Sequential execution (original behavior)
+            for i, config in enumerate(configs):
+                cid = config_id(config)
+                print(f"[{i+1}/{len(configs)}] Config: {cid}")
+                records = train_one_config(
+                    config=config,
+                    dataset=dataset,
+                    milestones=milestones,
+                    max_steps=args.max_steps,
+                    expensive_features=expensive,
+                )
+                all_records.extend(records)
+                completed += 1
+                _save_records(records, f_raw, completed, len(configs))
+                print()
 
     elapsed = time.time() - t_start
     print(f"\nAll configs done in {elapsed:.1f}s")
@@ -415,14 +441,11 @@ def main():
     # Add time_to_next for each record
     all_records = add_time_to_next(all_records)
 
-    # Save results
-    results_dir = Path(__file__).parent / "results"
-    results_dir.mkdir(exist_ok=True)
+    # Save final enriched results (with time_to_next computed)
     out_path = results_dir / "milestone_features.jsonl"
 
     with open(out_path, "w") as f:
         for r in all_records:
-            # Convert any non-serializable values
             f.write(json.dumps(r, default=str) + "\n")
 
     n_with_target = sum(1 for r in all_records if r["time_to_next"] is not None)
