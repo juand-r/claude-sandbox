@@ -486,16 +486,13 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
 
     Tensor *attn_out = tensor_zeros(total_tokens, dim);
 
-    /* Per-head attention loop.
-     * When ATTN_OMP_FWD is defined, parallelized with OMP (per-thread workspace).
-     * Otherwise serial with shared buffers (inner GEMMs use their own OMP). */
+    /* Per-head attention loop, parallelized with OMP.
+     * Each thread gets private workspace. */
     int total_iters = batch_size * n_heads;
     int causal = attn->causal;
 
-#ifdef ATTN_OMP_FWD
     #pragma omp parallel
     {
-        /* Per-thread workspace */
         float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
         float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
         float *k_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
@@ -506,19 +503,6 @@ Tensor *attention_forward(Attention *attn, const Tensor *input,
 
         #pragma omp for schedule(static)
         for (int bh = 0; bh < total_iters; bh++) {
-#else
-    {
-        /* Shared workspace (serial loop, inner GEMMs use OMP) */
-        float *q_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *k_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *k_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-        float *v_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *scores = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *attn_w_buf = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *out_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-
-        for (int bh = 0; bh < total_iters; bh++) {
-#endif
             int b = bh / n_heads;
             int h = bh % n_heads;
             int off = b * seq_len * dim;
@@ -630,10 +614,8 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
 
     int total_iters = batch_size * n_heads;
 
-#ifdef ATTN_OMP_BWD
     #pragma omp parallel
     {
-        /* Per-thread workspace */
         float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
         float *v_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
         float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
@@ -648,23 +630,6 @@ Tensor *attention_backward(Attention *attn, const Tensor *grad_output,
 
         #pragma omp for schedule(static)
         for (int bh = 0; bh < total_iters; bh++) {
-#else
-    {
-        /* Shared workspace (serial loop, inner GEMMs use OMP) */
-        float *go_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *v_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *v_h_t = (float *)qat_alloc(head_dim * seq_len * sizeof(float));
-        float *q_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *k_h  = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *grad_attn_w  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores  = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *grad_scores_t = (float *)qat_alloc(seq_len * seq_len * sizeof(float));
-        float *gq_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *gk_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-        float *gv_h = (float *)qat_alloc(seq_len * head_dim * sizeof(float));
-
-        for (int bh = 0; bh < total_iters; bh++) {
-#endif
             int b = bh / n_heads;
             int h = bh % n_heads;
             int off = b * seq_len * dim;
