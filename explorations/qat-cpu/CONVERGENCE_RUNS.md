@@ -96,12 +96,13 @@ at these matrix sizes. The 8-bit mantissa also adds gradient noise (0.18 ppl vs 
 
 **Caveat (sanity check run)**: A repeat of the original QAT run (converge_bs8_sanity.csv)
 showed identical PPL at every checkpoint but 20-35% slower ms/step (avg 4977 vs 3997).
-This is entirely due to shared cloud machine load variability. The BF16 backward
-comparison above was cross-session (BF16 run on faster machine state, baseline on
-different session), so the speed difference is unreliable. The quality difference
-(12.57 vs 12.39 PPL) is real since PPL is deterministic given the same RNG seed,
-but both are close to FP32's 12.52. Timing comparisons are only reliable within
-the same session.
+A back-to-back A/B test (same session, 50 steps each) comparing OMP-parallel attention
+heads vs serial attention heads showed only 7% difference (5027 vs 5385 ms/step), with
+OMP slightly faster. Both variants were in the 5000-5400 range, confirming the speed
+gap vs the original baseline is entirely shared cloud machine load variability.
+The quality difference (12.57 vs 12.39 PPL) is real since PPL is deterministic given
+the same RNG seed, but both are close to FP32's 12.52. Timing comparisons are only
+reliable within the same session.
 
 ### Cross-batch comparison
 
