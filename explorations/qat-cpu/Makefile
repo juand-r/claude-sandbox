@@ -12,18 +12,21 @@ LDFLAGS = -lm -fopenmp
 CFLAGS_SCALAR = $(CFLAGS_BASE)
 CFLAGS_AVX2   = $(CFLAGS_BASE) -mavx2 -mfma
 CFLAGS_VNNI   = $(CFLAGS_BASE) -mavx512f -mavx512bw -mavx512vnni -mavx512vl
+CFLAGS_BF16   = $(CFLAGS_BASE) -mavx512f -mavx512bw -mavx512bf16
 
 # Source files grouped by ISA requirement
 SRC_SCALAR = memory.c cpu_detect.c kernels_scalar.c quantize.c \
              dispatch.c qat_linear.c layers.c optimizer.c loss.c
 SRC_AVX2   = kernels_avx2.c
 SRC_VNNI   = kernels_vnni.c
+SRC_BF16   = kernels_bf16.c
 
 # Object files
 OBJ_SCALAR = $(SRC_SCALAR:.c=.o)
 OBJ_AVX2   = $(SRC_AVX2:.c=.o)
 OBJ_VNNI   = $(SRC_VNNI:.c=.o)
-OBJ_ALL    = $(OBJ_SCALAR) $(OBJ_AVX2) $(OBJ_VNNI)
+OBJ_BF16   = $(SRC_BF16:.c=.o)
+OBJ_ALL    = $(OBJ_SCALAR) $(OBJ_AVX2) $(OBJ_VNNI) $(OBJ_BF16)
 
 # Targets
 .PHONY: all test bench train clean
@@ -39,6 +42,9 @@ $(OBJ_AVX2): %.o: %.c qat_cpu.h
 
 $(OBJ_VNNI): %.o: %.c qat_cpu.h
 	$(CC) $(CFLAGS_VNNI) -c $< -o $@
+
+$(OBJ_BF16): %.o: %.c qat_cpu.h
+	$(CC) $(CFLAGS_BF16) -c $< -o $@
 
 # Test binary
 test_main.o: test_main.c qat_cpu.h

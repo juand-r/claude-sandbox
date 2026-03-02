@@ -30,10 +30,20 @@ void kernel_dispatch_init(KernelDispatch *kd, const CpuFeatures *cpu) {
         kd->fp32_gemm = gemm_fp32_scalar;
         kd->fp32_name = "Scalar";
     }
+
+    /* BF16 GEMM: use if AVX-512 BF16 available, else fall back to FP32 */
+    if (cpu->has_avx512bf16) {
+        kd->bf16_gemm = gemm_fp32_bf16;
+        kd->bf16_name = "AVX-512 BF16";
+    } else {
+        kd->bf16_gemm = kd->fp32_gemm;
+        kd->bf16_name = "(FP32 fallback)";
+    }
 }
 
 void kernel_dispatch_print(const KernelDispatch *kd) {
     printf("Kernel dispatch:\n");
     printf("  INT8 GEMM: %s\n", kd->int8_name);
     printf("  FP32 GEMM: %s\n", kd->fp32_name);
+    printf("  BF16 GEMM: %s\n", kd->bf16_name);
 }

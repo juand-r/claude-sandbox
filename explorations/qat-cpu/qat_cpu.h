@@ -182,8 +182,10 @@ typedef void (*gemm_fp32_fn)(
 typedef struct {
     gemm_int8_fn  int8_gemm;
     gemm_fp32_fn  fp32_gemm;
+    gemm_fp32_fn  bf16_gemm;   /* BF16 GEMM for large backward GEMMs, falls back to fp32 */
     const char   *int8_name;   /* e.g., "AVX-512 VNNI" */
     const char   *fp32_name;   /* e.g., "AVX-512" */
+    const char   *bf16_name;   /* e.g., "AVX-512 BF16" */
 } KernelDispatch;
 
 /* Initialize kernel dispatch based on CPU features. */
@@ -234,6 +236,14 @@ void gemm_fp32_avx512(int M, int N, int K,
                       const float *B, int ldb,
                       float beta,
                       float *C, int ldc);
+
+/* --- AVX-512 BF16 (Sapphire Rapids+) --- */
+void gemm_fp32_bf16(int M, int N, int K,
+                    float alpha,
+                    const float *A, int lda,
+                    const float *B, int ldb,
+                    float beta,
+                    float *C, int ldc);
 
 /* ========================================================================
  * Quantization
