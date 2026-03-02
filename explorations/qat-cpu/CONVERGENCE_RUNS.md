@@ -94,6 +94,15 @@ The on-the-fly FP32→BF16 conversion overhead negates the VDPBF16PS compute adv
 at these matrix sizes. The 8-bit mantissa also adds gradient noise (0.18 ppl vs QAT).
 **Recommendation**: Revert to FP32 backward (the original QAT mode).
 
+**Caveat (sanity check run)**: A repeat of the original QAT run (converge_bs8_sanity.csv)
+showed identical PPL at every checkpoint but 20-35% slower ms/step (avg 4977 vs 3997).
+This is entirely due to shared cloud machine load variability. The BF16 backward
+comparison above was cross-session (BF16 run on faster machine state, baseline on
+different session), so the speed difference is unreliable. The quality difference
+(12.57 vs 12.39 PPL) is real since PPL is deterministic given the same RNG seed,
+but both are close to FP32's 12.52. Timing comparisons are only reliable within
+the same session.
+
 ### Cross-batch comparison
 
 | Metric | BS=8 QAT | BS=8 FP32 | BS=16 QAT | BS=16 FP32 |
