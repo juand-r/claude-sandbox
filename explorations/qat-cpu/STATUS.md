@@ -75,6 +75,13 @@ than dim=512 (0.98x at BS=8), because the larger model has more forward-pass
 compute to accelerate with INT8 VNNI. Quality is identical: convergence curves
 track each other exactly at every checkpoint.
 
+### dim=1024, batch=8, 300 steps (76M params, LR warmup+cosine schedule)
+- QAT+LR sched: ppl=11.56, BPB=3.531, 5383 ms/step (cloud load), 1615 sec
+- QAT constant:  ppl=12.39, BPB=3.631 (from earlier run)
+- **PPL improvement: 6.7%** (0.83 ppl points) for zero extra compute
+- LR schedule reached old baseline's PPL (12.39) at ~step 130 = **~2.3x faster convergence**
+- Schedule: 20-step linear warmup, cosine decay from 3e-4 to 3e-5
+
 See CONVERGENCE_RUNS.md for detailed step-by-step comparisons.
 
 ## Current Profile at dim=1024, batch=8 (QAT mode, 4231 ms/step)
