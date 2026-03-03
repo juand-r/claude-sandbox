@@ -395,24 +395,129 @@ def train(args):
         weights = F.softmax(model.agg_weights, dim=0)
         print(f"Aggregation weights: {[f'{w:.3f}' for w in weights.tolist()]}")
 
-    return final_val_loss, final_val_ppl
+    # Save checkpoint
+    os.makedirs("checkpoints", exist_ok=True)
+    ckpt_path = f"checkpoints/{args.mode}.pt"
+    torch.save({
+        "model_state_dict": model.state_dict(),
+        "vocab_size": vocab_size,
+        "args": vars(args),
+    }, ckpt_path)
+    print(f"Checkpoint saved to {ckpt_path}")
+
+    return model, vocab_size, final_val_loss, final_val_ppl
+
+
+# ============================================================================
+# Text generation
+# ============================================================================
+
+@torch.no_grad()
+def generate(model, idx, max_new_tokens, context_len, temperature=0.8, top_k=40):
+    """Autoregressive generation. idx is (1, T) starting context."""
+    model.eval()
+    for _ in range(max_new_tokens):
+        # Crop to context window
+        idx_cond = idx[:, -context_len:]
+        logits = model(idx_cond)
+        # Take logits at last position
+        logits = logits[:, -1, :] / temperature
+        # Top-k filtering
+        if top_k > 0:
+            v, _ = torch.topk(logits, top_k)
+            logits[logits < v[:, [-1]]] = float("-inf")
+        probs = F.softmax(logits, dim=-1)
+        next_tok = torch.multinomial(probs, num_samples=1)
+        idx = torch.cat([idx, next_tok], dim=1)
+    return idx
+
+
+def run_generate(args):
+    """Load checkpoint and generate text."""
+    device = torch.device("cpu")
+
+    # Load vocab
+    for path in [
+        "data/shakespeare.txt",
+        "../distributed-llm-training/experiments/predictive_features/data/shakespeare.txt",
+    ]:
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                text = f.read()
+            break
+    else:
+        raise FileNotFoundError("shakespeare.txt not found")
+
+    chars = sorted(set(text))
+    char2idx = {c: i for i, c in enumerate(chars)}
+    idx2char = {i: c for c, i in char2idx.items()}
+    vocab_size = len(chars)
+
+    # Load checkpoint
+    ckpt_path = f"checkpoints/{args.mode}.pt"
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
+    saved_args = ckpt["args"]
+
+    if args.mode == "baseline":
+        model = BaselineModel(vocab_size, saved_args["context_len"])
+    elif args.mode == "swarm":
+        model = SwarmModel(
+            vocab_size, saved_args["context_len"],
+            n_models=saved_args["n_models"],
+            msg_dim=saved_args["msg_dim"],
+            n_rounds=saved_args["n_rounds"],
+        )
+
+    model.load_state_dict(ckpt["model_state_dict"])
+    model = model.to(device)
+    model.eval()
+
+    # Encode prompt
+    prompt = args.prompt
+    prompt_idx = torch.tensor([[char2idx[c] for c in prompt]], dtype=torch.long, device=device)
+
+    print(f"--- {args.mode} (prompt: '{prompt}') ---")
+    t0 = time.time()
+    output_idx = generate(model, prompt_idx, args.gen_length, saved_args["context_len"],
+                          temperature=args.temperature)
+    elapsed = time.time() - t0
+    output_text = "".join(idx2char[i] for i in output_idx[0].tolist())
+    print(output_text)
+    print(f"--- ({elapsed:.1f}s for {args.gen_length} chars, {args.gen_length/elapsed:.1f} char/s) ---")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Swarm LLM experiment")
-    parser.add_argument("--mode", type=str, required=True, choices=["baseline", "swarm"])
-    parser.add_argument("--context_len", type=int, default=128)
-    parser.add_argument("--batch_size", type=int, default=64)
-    parser.add_argument("--lr", type=float, default=3e-3)
-    parser.add_argument("--n_steps", type=int, default=2000)
-    parser.add_argument("--log_interval", type=int, default=100)
-    # Swarm-specific
-    parser.add_argument("--n_models", type=int, default=5)
-    parser.add_argument("--msg_dim", type=int, default=64)
-    parser.add_argument("--n_rounds", type=int, default=2)
+    sub = parser.add_subparsers(dest="command")
+
+    # Train subcommand
+    train_p = sub.add_parser("train")
+    train_p.add_argument("--mode", type=str, required=True, choices=["baseline", "swarm"])
+    train_p.add_argument("--context_len", type=int, default=128)
+    train_p.add_argument("--batch_size", type=int, default=64)
+    train_p.add_argument("--lr", type=float, default=3e-3)
+    train_p.add_argument("--n_steps", type=int, default=2000)
+    train_p.add_argument("--log_interval", type=int, default=100)
+    train_p.add_argument("--n_models", type=int, default=5)
+    train_p.add_argument("--msg_dim", type=int, default=64)
+    train_p.add_argument("--n_rounds", type=int, default=2)
+
+    # Generate subcommand
+    gen_p = sub.add_parser("generate")
+    gen_p.add_argument("--mode", type=str, required=True, choices=["baseline", "swarm"])
+    gen_p.add_argument("--prompt", type=str, default="ROMEO:\n")
+    gen_p.add_argument("--gen_length", type=int, default=500)
+    gen_p.add_argument("--temperature", type=float, default=0.8)
 
     args = parser.parse_args()
-    train(args)
+
+    if args.command == "train":
+        train(args)
+    elif args.command == "generate":
+        run_generate(args)
+    else:
+        # Legacy: support --mode directly for backward compat
+        parser.print_help()
 
 
 if __name__ == "__main__":

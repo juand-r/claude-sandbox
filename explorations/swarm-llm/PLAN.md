@@ -11,11 +11,64 @@ Test whether a swarm of small communicating transformers can match a single larg
 
 ## Architecture
 
-### Swarm communication
-1. All models embed input independently
-2. Round 0: each model does a forward pass, produces a message (mean-pool + linear proj)
-3. Rounds 1-R: each model gets other models' messages as prefix tokens, forward pass, new message
-4. Final: learned weighted sum of all models' logits
+### Baseline (single transformer)
+```
+  Input: "To be or not"
+       |
+  [Embedding + Pos]
+       |
+  [Transformer Block x4]  (embed=128, 4 heads, ffn=512)
+       |
+  [Linear Head]
+       |
+  Output logits --> next char prediction
+```
+
+### Swarm (5 communicating transformers)
+```
+  Input: "To be or not"
+       |
+       +----------+----------+----------+----------+
+       |          |          |          |          |
+     [M1]      [M2]      [M3]      [M4]      [M5]     <-- Round 0: independent
+       |          |          |          |          |        forward pass
+    msg_1      msg_2      msg_3      msg_4      msg_5   <-- extract messages
+       |          |          |          |          |        (mean-pool + linear)
+       +----X-----+----X-----+----X-----+----X-----+
+       |          |          |          |          |
+  [M1+msgs]  [M2+msgs]  [M3+msgs]  [M4+msgs]  [M5+msgs] <-- Round 1: each model
+       |          |          |          |          |        gets others' messages
+    msg_1'     msg_2'     msg_3'     msg_4'     msg_5'      as prefix tokens
+       |          |          |          |          |
+       +----X-----+----X-----+----X-----+----X-----+
+       |          |          |          |          |
+  [M1+msgs]  [M2+msgs]  [M3+msgs]  [M4+msgs]  [M5+msgs] <-- Round 2: repeat
+       |          |          |          |          |
+   logits_1   logits_2   logits_3   logits_4   logits_5
+       |          |          |          |          |
+       +----------+----------+----------+----------+
+                         |
+                  [Weighted Sum]   <-- learned weights: [.18, .18, .17, .23, .24]
+                         |
+                   Output logits
+
+  Each [Mi] = small transformer (embed=64, 2 layers, 2 heads, ffn=256)
+  Each msg  = 64-dim vector, injected as prefix tokens to other models
+  X = message exchange (each model gets N-1 messages from the others)
+```
+
+### Inference cost analysis
+
+With N models and R communication rounds, each token prediction requires:
+- **Baseline**: 1 forward pass
+- **Swarm**: N x (R+1) forward passes = 5 x 3 = **15 forward passes**
+
+Each individual forward pass is cheaper (smaller model), but the total is ~2-5x
+more compute. This is a real cost. Possible mitigations:
+1. Reduce rounds (R=1 might be enough — needs ablation)
+2. Reduce N (3 models instead of 5)
+3. Distill the swarm into a single model after training
+4. Run models in parallel (they're independent within each round)
 
 ## Status
 - [x] Code written
