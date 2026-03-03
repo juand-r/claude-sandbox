@@ -60,11 +60,16 @@ This needs substantial expansion. Below is a suggested structure with specific p
 ### 3. Self-Improvement and Self-Play (expand significantly - currently almost empty)
 
 **Should add:**
-- Self-Rewarding Language Models (Yuan et al. 2024) - models generate their own reward signal for iterative training. Very close in spirit to V2G: the model judges its own outputs and improves from that signal.
-- SPIN (Chen et al. 2024) - Self-Play Fine-Tuning. Model plays against itself to improve. Related framing.
-- ReST / REST^EM (Gulcehre et al. 2023) - Reinforced Self-Training. Sample from model, filter by reward, fine-tune on filtered data.
-- STaR (Zelikman et al. 2022) - Self-Taught Reasoner. Generate rationales, keep correct ones, fine-tune.
+- Self-Rewarding Language Models (Yuan et al. 2024, ICML) - models generate their own reward signal for iterative training. Very close in spirit to V2G: the model judges its own outputs and improves from that signal. Probably the single closest existing work.
+- SPIN (Chen et al. 2024, ICML) - Self-Play Fine-Tuning. Model plays against itself to improve. Related framing.
+- ReST / REST^EM (Gulcehre et al. 2023; Singh et al. 2024, TMLR) - Reinforced Self-Training. Sample from model, filter by reward, fine-tune on filtered data. The generate-then-filter paradigm.
+- STaR (Zelikman et al. 2022, NeurIPS) - Self-Taught Reasoner. Generate rationales, keep correct ones, fine-tune.
+- V-STaR (Hosseini et al. 2024, COLM) - Trains verifiers alongside generators from self-generated data. Uses both correct and incorrect solutions to train a DPO verifier. Very directly relevant.
 - Constitutional AI / RLAIF (Bai et al. 2022; Lee et al. 2023) - AI-generated feedback for alignment. Conceptually similar to using self-validation.
+
+**Also consider:**
+- Weaver / Saad-Falcon et al. 2025 - "Shrinking the Generation-Verification Gap with Weak Verifiers." Directly quantifies the gap: Llama 3.3 70B gets 82.8% pass@100 but only 42.9% on first sample. Very recent and directly relevant.
+- Meta-Rewarding (Yuan et al. 2024, follow-up to Self-Rewarding) - adds meta-judging to prevent validator signal degradation over iterations. Addresses a potential failure mode of V2G-like approaches.
 
 **Narrative:** V2G sits in a family of methods where models improve from their own signal. The distinguishing feature is that V2G specifically exploits the *validation-generation asymmetry*---it's not just self-distillation or filtering, it's leveraging a capability the model demonstrably has (validation) to improve one it demonstrably lacks (generation). This is a sharper motivation than generic "self-improvement."
 
@@ -72,10 +77,20 @@ This needs substantial expansion. Below is a suggested structure with specific p
 
 **Papers:**
 - Cobbe et al. 2021 (GSM8K / training verifiers for math)
-- Lightman et al. 2023 (Process reward models)
-- Snell et al. 2024 (Scaling LLM test-time compute)
+- Lightman et al. 2023 (Process reward models, ICLR 2024)
+- Math-Shepherd (Wang et al. 2024, ACL) - automated process supervision, no human step-level labels
+- Snell et al. 2024 (Scaling LLM test-time compute, ICLR 2025)
+- GenRM (Hossu et al. 2024) - generative verifiers via next-token prediction, blurs generator/validator line
 
 **Narrative:** Using verifiers at inference time (best-of-N sampling with a verifier) is a well-known technique. V2G is complementary: instead of using the validator at test time (which is expensive), you *bake the validator's knowledge into the generator* at training time. This gives you the quality improvement without the inference cost. This is a strong selling point worth highlighting.
+
+### 5. Self-Distillation (optional, brief)
+
+**Papers:**
+- Born-Again Neural Networks (Furlanello et al. 2018, ICML) - same-architecture distillation can surpass teacher
+- GKD / On-Policy Distillation (Agarwal et al. 2024, ICLR) - student trains on its own outputs with teacher feedback
+
+**Narrative:** V2G can be viewed as a form of self-distillation where the "teacher" is the model's own validation mode. Brief mention to connect to this literature.
 
 ### 5. Typicality and Pointwise Mutual Information (optional, brief)
 
