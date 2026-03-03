@@ -161,3 +161,58 @@ The combined loss has three terms with two lambda hyperparameters. Ablation over
 | Medium | Motivate choice of ranking loss vs. DPO | Method / Related Work |
 | Low | Discuss PMI connection for typicality correction | Method |
 | Low | Consider additional tasks for breadth | Experiments |
+
+---
+
+## References
+
+Already in the paper's .bib:
+- West et al. "Symbolic Knowledge Distillation." NAACL 2022.
+- Li et al. "Benchmarking and Improving Generator-Validator Consistency of Language Models." ICLR 2024.
+- Rodriguez et al. "RankAlign: A Ranking View of the Generator-Validator Gap in LLMs." arXiv 2025.
+- Gekhman et al. "Inside-Out: Hidden Factual Knowledge in LLMs." COLM 2025.
+- Kadavath et al. "Language Models (Mostly) Know What They Know." arXiv 2022.
+- Ouyang et al. "Training Language Models to Follow Instructions with Human Feedback." NeurIPS 2022.
+- Rafailov et al. "Direct Preference Optimization (DPO)." NeurIPS 2023.
+- Ziegler et al. "Fine-Tuning Language Models from Human Preferences." arXiv 2019.
+- Stiennon et al. "Learning to Summarize with Human Feedback." NeurIPS 2020.
+- Hu et al. "LoRA: Low-Rank Adaptation of Large Language Models." arXiv 2021.
+- Yao et al. "COLLIE: Systematic Construction of Constrained Text Generation Tasks." ICLR 2024.
+- Min et al. "AmbigQA: Answering Ambiguous Open-domain Questions." EMNLP 2020.
+- Gemma Team. "Gemma 2." arXiv 2024.
+
+Suggested additions -- Generator-Validator Gap:
+- Saad-Falcon et al. "Shrinking the Generation-Verification Gap with Weak Verifiers (Weaver)." arXiv 2025. Quantifies the gap: Llama 3.3 70B gets 82.8% pass@100 but 42.9% first-sample.
+
+Suggested additions -- Preference Optimization:
+- Azar et al. "A General Theoretical Paradigm to Understand Learning from Human Preferences (IPO)." AISTATS 2024. Avoids DPO overfitting via identity mapping.
+- Ethayarajh et al. "KTO: Model Alignment as Prospect Theoretic Optimization." ICML 2024. Binary signal (desirable/undesirable) instead of paired preferences.
+- Zhao et al. "Calibrating Sequence Likelihood Improves Conditional Language Generation (SLiC-HF)." arXiv 2023. Ranking loss for preference optimization, similar to V2G.
+- Hong et al. "ORPO: Monolithic Preference Optimization Without Reference Model." arXiv 2024.
+- Meng et al. "SimPO: Simple Preference Optimization with a Reference-Free Reward." NeurIPS 2024.
+
+Suggested additions -- Self-Improvement / Self-Play:
+- Yuan et al. "Self-Rewarding Language Models." ICML 2024. Model judges itself, builds preference pairs, trains with DPO, iterates. Probably the closest existing work to V2G.
+- Yuan et al. "Meta-Rewarding Language Models." arXiv 2024. Follow-up; adds meta-judging to prevent validator degradation.
+- Chen et al. "Self-Play Fine-Tuning (SPIN)." ICML 2024. Model discriminates own outputs from human text.
+- Gulcehre et al. "Reinforced Self-Training (ReST) for Language Modeling." arXiv 2023. Generate, score, fine-tune on high-scoring.
+- Singh et al. "Beyond Human Data: Scaling Self-Training for Problem-Solving (ReST^EM)." TMLR 2024. ReST cast as EM.
+- Zelikman et al. "STaR: Bootstrapping Reasoning With Reasoning." NeurIPS 2022. Generate rationales, keep correct, fine-tune.
+- Hosseini et al. "V-STaR: Training Verifiers for Self-Taught Reasoners." COLM 2024. Trains DPO verifier from both correct and incorrect self-generated solutions.
+- Bai et al. "Constitutional AI: Harmlessness from AI Feedback." arXiv 2022.
+- Lee et al. "RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback." arXiv 2023.
+
+Suggested additions -- Verifiers / Test-Time Compute:
+- Cobbe et al. "Training Verifiers to Solve Math Word Problems (GSM8K)." arXiv 2021.
+- Lightman et al. "Let's Verify Step by Step (Process Reward Models)." ICLR 2024.
+- Wang et al. "Math-Shepherd: Verify and Reinforce LLMs Step-by-Step." ACL 2024.
+- Snell et al. "Scaling LLM Test-Time Compute Optimally." ICLR 2025.
+- Hossu et al. "Generative Verifiers: Reward Modeling as Next-Token Prediction (GenRM)." arXiv 2024.
+
+Suggested additions -- Self-Distillation:
+- Furlanello et al. "Born-Again Neural Networks." ICML 2018. Same-architecture distillation can surpass teacher.
+- Agarwal et al. "On-Policy Distillation of Language Models (GKD)." ICLR 2024. Student trains on own outputs with teacher feedback.
+
+Suggested additions -- Typicality / PMI:
+- Holtzman et al. "Surface Form Competition." EMNLP 2021. PMI-based scoring for surface form frequency.
+- Li et al. "A Diversity-Promoting Objective Function for Neural Conversation Models (MMI decoding)." NAACL 2016.
