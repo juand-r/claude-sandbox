@@ -153,3 +153,48 @@ Instead of sending full gradients between workers (expensive), send only gradien
 **Idea 2** is less promising upon reflection. The gradient compression literature is mature and the fundamental challenge (you need to know which parameters to update, not just aggregate statistics) may be a dealbreaker. Existing methods (top-k + error feedback) are already extremely effective (600x compression). Hard to see how statistics-only would compete.
 
 **Recommendation:** Focus on Idea 1. The open question is whether gradient/curvature information transfers meaningfully between different landscape regions. This is testable with our existing infrastructure.
+
+---
+
+## Additional Findings (from deeper search)
+
+### Additional Closest Related Work
+
+**GIANT (Wang et al., NeurIPS 2018)**
+- Workers compute local Newton directions (H^{-1}g using local Hessians) and average them
+- Closest to sharing curvature, but all workers are on the same model/objective
+- Directions are simply averaged, not selectively shared based on optimization state
+
+**DiLoCo (Douillard et al., 2023)**
+- Workers share pseudo-gradients (accumulated weight deltas) via outer Nesterov optimizer
+- Similar infrequent-communication pattern, but purely first-order — no curvature awareness
+- Relevant communication topology for our idea
+
+**EASGD (Zhang et al., NeurIPS 2015)**
+- Explicitly designed so workers explore different basins of the loss landscape
+- Closest to the "scouting" aspect
+- But shares weights via elastic forces, not curvature information
+- Workers are pulled toward a center variable, not informed by each other's curvature
+
+**SCAFFOLD (Karimireddy et al., ICML 2020)**
+- Shares gradient correction terms (control variates) between clients
+- Goes beyond raw weight sharing — shares gradient-level information
+- But first-order only, no curvature
+
+**Distributed K-FAC (Ba et al., 2018)**
+- Key practical finding: **curvature changes slowly**, making infrequent sharing viable
+- This is encouraging for our idea — we don't need to share curvature every step
+
+### Practical Building Blocks
+
+- **Sophia (ICLR 2024):** Diagonal Hessian at ~5% overhead, computed every ~10 steps. Makes curvature computation cheap enough to be practical for sharing.
+- **AdaHessian (AAAI 2021):** Hutchinson-based diagonal Hessian estimation
+- **Hessian-free optimization:** HVPs at gradient cost via autodiff
+
+### Five Specific Novel Aspects (confirmed absent from literature)
+
+1. **Selective curvature sharing based on optimization state** — no method lets a stuck model request curvature info from a successful peer. All existing methods treat workers symmetrically.
+2. **HVP exchange between models at different parameter-space locations** — existing distributed second-order methods compute curvature at the same or nearby points.
+3. **Curvature-informed scouting** — EASGD lets workers explore different basins, but only position information flows back. No method sends curvature reports from scouts.
+4. **Gradient covariance as a communication channel** — a Jan 2026 paper showed Hessians can be recovered from gradient statistics. Using this as implicit curvature sharing is unexplored.
+5. **Second-order federated learning with models at very different points** — all federated second-order methods assume clients converge toward the same optimum.
