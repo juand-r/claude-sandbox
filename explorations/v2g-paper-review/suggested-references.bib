@@ -1,0 +1,124 @@
+% Suggested additional references for V2G paper
+% Organized by related work section
+
+% === Self-Improvement / Self-Play ===
+
+@article{yuan2024selfrewarding,
+  title={Self-Rewarding Language Models},
+  author={Yuan, Weizhe and Pang, Richard Yuanzhe and Cho, Kyunghyun and Sukhbaatar, Sainbayar and Xu, Jing and Weston, Jason},
+  journal={arXiv preprint arXiv:2401.10020},
+  year={2024},
+  note={ICML 2024. Models generate own reward signal for iterative improvement. Very close to V2G in spirit.}
+}
+
+@inproceedings{chen2024spin,
+  title={Self-Play Fine-Tuning Converts Weak Language Models to Strong Language Models},
+  author={Chen, Zixiang and Deng, Yihe and Yuan, Huizhuo and Ji, Kaixuan and Gu, Quanquan},
+  booktitle={International Conference on Machine Learning},
+  year={2024},
+  note={ICML 2024. Self-play training without new human data.}
+}
+
+@article{gulcehre2023rest,
+  title={Reinforced Self-Training ({ReST}) for Language Modeling},
+  author={Gulcehre, Caglar and Paine, Tom Le and Srinivasan, Srivatsan and Konyushkova, Ksenia and Weerts, Lotte and Sharma, Abhishek and Siddhant, Aditya and Ahern, Alex and Wang, Miaosen and Gu, Chenjie and others},
+  journal={arXiv preprint arXiv:2308.08998},
+  year={2023},
+  note={Sample from model, filter by reward, fine-tune. Related generate-then-filter paradigm.}
+}
+
+@inproceedings{zelikman2022star,
+  title={{STaR}: Bootstrapping Reasoning With Reasoning},
+  author={Zelikman, Eric and Wu, Yuhuai and Mu, Jesse and Goodman, Noah D},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2022},
+  note={Generate rationales, keep correct ones, fine-tune. Pioneer of self-improvement for reasoning.}
+}
+
+@inproceedings{hosseini2024vstar,
+  title={{V-STaR}: Training Verifiers for Self-Taught Reasoners},
+  author={Hosseini, Arian and Yuan, Xingdi and Hosseini-Asl, Ehsan and Trischler, Adam and Bengio, Yoshua},
+  booktitle={Conference on Language Modeling (COLM)},
+  year={2024},
+  note={Uses both correct and incorrect self-generated solutions to train a verifier via DPO. Very relevant: jointly trains generator + verifier.}
+}
+
+% === Constitutional AI / RLAIF ===
+
+@article{bai2022constitutional,
+  title={Constitutional {AI}: Harmlessness from {AI} Feedback},
+  author={Bai, Yuntao and Kadavath, Saurav and Kundu, Sandipan and Askell, Amanda and Kernion, Jackson and Jones, Andy and Chen, Anna and Goldie, Anna and Mirhoseini, Azalia and McKinnon, Cameron and others},
+  journal={arXiv preprint arXiv:2212.08073},
+  year={2022},
+  note={AI-generated feedback for alignment. Conceptual precursor to using self-validation.}
+}
+
+@article{lee2023rlaif,
+  title={{RLAIF}: Scaling Reinforcement Learning from Human Feedback with {AI} Feedback},
+  author={Lee, Harrison and Phatale, Samrat and Mansoor, Hassan and Lu, Kellie and Mesnard, Thomas and Bishop, Colton and Carbune, Victor and Rastogi, Abhinav},
+  journal={arXiv preprint arXiv:2309.00267},
+  year={2023},
+  note={Shows AI feedback can match human feedback quality for RLHF. Supports V2G's use of model's own signal.}
+}
+
+% === Preference Optimization Variants ===
+
+@inproceedings{azar2023ipo,
+  title={A General Theoretical Paradigm to Understand Learning from Human Preferences},
+  author={Azar, Mohammad Gheshlaghi and Rowland, Mark and Piot, Bilal and Guo, Daniel and Calandriello, Daniele and Valko, Michal and Munos, R{\'e}mi},
+  booktitle={International Conference on Artificial Intelligence and Statistics},
+  year={2024},
+  note={IPO: addresses DPO overfitting via identity mapping. Relevant alternative loss.}
+}
+
+@inproceedings{ethayarajh2024kto,
+  title={{KTO}: Model Alignment as Prospect Theoretic Optimization},
+  author={Ethayarajh, Kawin and Xu, Winnie and Muennighoff, Niklas and Jurafsky, Dan and Kiela, Douwe},
+  booktitle={International Conference on Machine Learning},
+  year={2024},
+  note={ICML 2024. Works with unpaired binary signal (desirable/undesirable). Relevant because V2G could potentially use binary validation rather than paired preferences.}
+}
+
+@article{zhao2023slichf,
+  title={Calibrating Sequence Likelihood Improves Conditional Language Generation},
+  author={Zhao, Yao and Khalman, Misha and Joshi, Rishabh and Narayan, Shashi and Saleh, Mohammad and Liu, Peter J},
+  journal={arXiv preprint arXiv:2210.00045},
+  year={2023},
+  note={SLiC-HF: uses ranking loss for preference optimization. V2G's ranking loss is similar.}
+}
+
+% === Verifiers and Test-Time Compute ===
+
+@article{cobbe2021gsm8k,
+  title={Training Verifiers to Solve Math Word Problems},
+  author={Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and others},
+  journal={arXiv preprint arXiv:2110.14168},
+  year={2021},
+  note={Foundational work on training verifiers. V2G internalizes this verification at training time.}
+}
+
+@article{lightman2023prm,
+  title={Let's Verify Step by Step},
+  author={Lightman, Hunter and Kosaraju, Vineet and Burda, Yuri and Edwards, Harrison and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Alignment, Karl Cobbe},
+  journal={arXiv preprint arXiv:2305.20050},
+  year={2023},
+  note={Process reward models for step-by-step verification. Relevant to verifier literature.}
+}
+
+@article{snell2024scaling,
+  title={Scaling {LLM} Test-Time Compute Optimally can be More Effective than Scaling Model Parameters},
+  author={Snell, Charlie and Lee, Jaehoon and Xu, Kelvin and Kumar, Aviral},
+  journal={arXiv preprint arXiv:2408.03314},
+  year={2024},
+  note={Shows test-time compute (e.g., best-of-N with verifier) can outperform scaling. V2G is complementary: bakes verification into the generator.}
+}
+
+% === PMI / Typicality (optional) ===
+
+@inproceedings{holtzman2021surface,
+  title={Surface Form Competition: Why the Highest Probability Answer Isn't Always Right},
+  author={Holtzman, Ari and West, Peter and Shwartz, Vered and Choi, Yejin and Zettlemoyer, Luke},
+  booktitle={Proceedings of EMNLP},
+  year={2021},
+  note={PMI-based scoring to account for surface form frequency. V2G's typicality correction is related.}
+}
