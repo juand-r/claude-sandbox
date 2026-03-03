@@ -93,6 +93,25 @@
 #ifndef EVAL_EVERY
 #define EVAL_EVERY    500
 #endif
+
+/*
+ * Factored embedding dimensions (ALBERT-style).
+ *
+ * D_IN:  Input embedding factorization.
+ *        token_emb: [V x D_IN], pos_emb: [max_seq x D_IN]
+ *        Followed by linear projection [D_IN -> DIM] when D_IN != DIM.
+ *
+ * D_OUT: Output head factorization.
+ *        Linear projection [DIM -> D_OUT] then [D_OUT -> V] when D_OUT != DIM.
+ *
+ * When D_IN == DIM or D_OUT == DIM, no extra projection is used (original behavior).
+ */
+#ifndef D_IN
+#define D_IN          DIM
+#endif
+#ifndef D_OUT
+#define D_OUT         DIM
+#endif
 #define GEN_EVERY     1500
 #define GEN_CHARS     100       /* Characters to generate */
 #ifndef LR
@@ -241,15 +260,21 @@ typedef struct {
     int hidden_dim;
     int max_seq_len;
 
-    Tensor *token_emb;          /* [vocab_size x dim] */
-    Tensor *pos_emb;            /* [max_seq_len x dim] */
+    Tensor *token_emb;          /* [vocab_size x D_IN] */
+    Tensor *pos_emb;            /* [max_seq_len x D_IN] */
     Tensor *grad_token_emb;
     Tensor *grad_pos_emb;
+
+    /* Factored input: project D_IN -> DIM (NULL when D_IN == DIM) */
+    QATLinear *emb_proj;
 
     TransformerBlock **blocks;
 
     RMSNorm   *final_norm;
-    QATLinear *output_head;     /* [dim x vocab_size] */
+
+    /* Factored output: project DIM -> D_OUT (NULL when D_OUT == DIM) */
+    QATLinear *head_proj;
+    QATLinear *output_head;     /* [D_OUT x vocab_size] */
 
     const KernelDispatch *kernels;
 
@@ -270,12 +295,21 @@ static GPTModel *gpt_create(const KernelDispatch *kd, uint64_t *rng) {
     m->max_seq_len  = MAX_SEQ_LEN;
     m->kernels      = kd;
 
-    m->token_emb = tensor_create(VOCAB_SIZE, DIM);
+    /* Input embeddings in D_IN-dimensional space */
+    m->token_emb = tensor_create(VOCAB_SIZE, D_IN);
     tensor_rand(m->token_emb, -0.02f, 0.02f, rng);
-    m->pos_emb = tensor_create(MAX_SEQ_LEN, DIM);
+    m->pos_emb = tensor_create(MAX_SEQ_LEN, D_IN);
     tensor_rand(m->pos_emb, -0.02f, 0.02f, rng);
-    m->grad_token_emb = tensor_zeros(VOCAB_SIZE, DIM);
-    m->grad_pos_emb = tensor_zeros(MAX_SEQ_LEN, DIM);
+    m->grad_token_emb = tensor_zeros(VOCAB_SIZE, D_IN);
+    m->grad_pos_emb = tensor_zeros(MAX_SEQ_LEN, D_IN);
+
+    /* Factored input projection: D_IN -> DIM (skip if D_IN == DIM) */
+    if (D_IN != DIM) {
+        m->emb_proj = qat_linear_create(D_IN, DIM, false, kd, rng);
+        m->emb_proj->use_qat = false;
+    } else {
+        m->emb_proj = NULL;
+    }
 
     m->blocks = (TransformerBlock **)calloc(N_LAYERS, sizeof(TransformerBlock *));
     for (int i = 0; i < N_LAYERS; i++) {
@@ -285,7 +319,17 @@ static GPTModel *gpt_create(const KernelDispatch *kd, uint64_t *rng) {
     }
 
     m->final_norm = rmsnorm_create(DIM, 1e-5f);
-    m->output_head = qat_linear_create(DIM, VOCAB_SIZE, false, kd, rng);
+
+    /* Factored output projection: DIM -> D_OUT (skip if D_OUT == DIM) */
+    if (D_OUT != DIM) {
+        m->head_proj = qat_linear_create(DIM, D_OUT, false, kd, rng);
+        m->head_proj->use_qat = false;
+    } else {
+        m->head_proj = NULL;
+    }
+
+    /* Output head: D_OUT -> VOCAB_SIZE */
+    m->output_head = qat_linear_create(D_OUT, VOCAB_SIZE, false, kd, rng);
 
     /* Ensure FP32 mode (no QAT) */
     for (int i = 0; i < N_LAYERS; i++) {
@@ -309,10 +353,12 @@ static void gpt_free(GPTModel *m) {
     tensor_free(m->pos_emb);
     tensor_free(m->grad_token_emb);
     tensor_free(m->grad_pos_emb);
+    if (m->emb_proj) qat_linear_free(m->emb_proj);
     for (int i = 0; i < m->n_layers; i++)
         transformer_block_free(m->blocks[i]);
     free(m->blocks);
     rmsnorm_free(m->final_norm);
+    if (m->head_proj) qat_linear_free(m->head_proj);
     qat_linear_free(m->output_head);
     free(m->saved_tokens);
     tensor_free(m->saved_embed);
@@ -330,18 +376,29 @@ static Tensor *gpt_forward(GPTModel *m, const int *tokens,
     m->saved_batch_size = batch_size;
     m->saved_seq_len = seq_len;
 
-    Tensor *x = tensor_create(total_tokens, m->dim);
+    /* Embed in D_IN space: token_emb[tok] + pos_emb[pos] */
+    int emb_dim = D_IN;
+    Tensor *emb = tensor_create(total_tokens, emb_dim);
     for (int b = 0; b < batch_size; b++) {
         for (int s = 0; s < seq_len; s++) {
             int idx = b * seq_len + s;
             int tok = tokens[idx];
             if (tok < 0 || tok >= m->vocab_size) tok = 0;
-            for (int d = 0; d < m->dim; d++) {
-                x->data[idx * m->dim + d] =
-                    m->token_emb->data[tok * m->dim + d] +
-                    m->pos_emb->data[s * m->dim + d];
+            for (int d = 0; d < emb_dim; d++) {
+                emb->data[idx * emb_dim + d] =
+                    m->token_emb->data[tok * emb_dim + d] +
+                    m->pos_emb->data[s * emb_dim + d];
             }
         }
+    }
+
+    /* Project D_IN -> DIM if factored */
+    Tensor *x;
+    if (m->emb_proj) {
+        x = qat_linear_forward(m->emb_proj, emb);
+        tensor_free(emb);
+    } else {
+        x = emb;  /* D_IN == DIM, no projection needed */
     }
 
     if (m->saved_embed) tensor_free(m->saved_embed);
@@ -358,8 +415,17 @@ static Tensor *gpt_forward(GPTModel *m, const int *tokens,
     Tensor *normed = rmsnorm_forward(m->final_norm, x);
     tensor_free(x);
 
-    Tensor *logits = qat_linear_forward(m->output_head, normed);
-    tensor_free(normed);
+    /* Output: project DIM -> D_OUT if factored, then D_OUT -> VOCAB */
+    Tensor *head_input;
+    if (m->head_proj) {
+        head_input = qat_linear_forward(m->head_proj, normed);
+        tensor_free(normed);
+    } else {
+        head_input = normed;  /* D_OUT == DIM, no projection needed */
+    }
+
+    Tensor *logits = qat_linear_forward(m->output_head, head_input);
+    tensor_free(head_input);
 
     return logits;
 }
@@ -368,7 +434,16 @@ static void gpt_backward(GPTModel *m, const Tensor *grad_logits) {
     int batch_size = m->saved_batch_size;
     int seq_len = m->saved_seq_len;
 
+    /* Backward through output head: D_OUT -> VOCAB */
     Tensor *grad = qat_linear_backward(m->output_head, grad_logits);
+
+    /* Backward through head_proj: DIM -> D_OUT (if factored) */
+    if (m->head_proj) {
+        Tensor *grad_tmp = qat_linear_backward(m->head_proj, grad);
+        tensor_free(grad);
+        grad = grad_tmp;
+    }
+
     Tensor *grad2 = rmsnorm_backward(m->final_norm, grad);
     tensor_free(grad);
 
@@ -379,16 +454,25 @@ static void gpt_backward(GPTModel *m, const Tensor *grad_logits) {
         grad2 = prev;
     }
 
+    /* Backward through emb_proj: D_IN -> DIM (if factored) */
+    if (m->emb_proj) {
+        Tensor *grad_emb = qat_linear_backward(m->emb_proj, grad2);
+        tensor_free(grad2);
+        grad2 = grad_emb;
+    }
+
+    /* Scatter gradients to token/position embeddings (in D_IN space) */
+    int emb_dim = D_IN;
     for (int b = 0; b < batch_size; b++) {
         for (int s = 0; s < seq_len; s++) {
             int idx = b * seq_len + s;
             int tok = m->saved_tokens[idx];
             if (tok < 0 || tok >= m->vocab_size) tok = 0;
-            for (int d = 0; d < m->dim; d++) {
-                m->grad_token_emb->data[tok * m->dim + d] +=
-                    grad2->data[idx * m->dim + d];
-                m->grad_pos_emb->data[s * m->dim + d] +=
-                    grad2->data[idx * m->dim + d];
+            for (int d = 0; d < emb_dim; d++) {
+                m->grad_token_emb->data[tok * emb_dim + d] +=
+                    grad2->data[idx * emb_dim + d];
+                m->grad_pos_emb->data[s * emb_dim + d] +=
+                    grad2->data[idx * emb_dim + d];
             }
         }
     }
@@ -397,6 +481,7 @@ static void gpt_backward(GPTModel *m, const Tensor *grad_logits) {
 }
 
 static void gpt_mark_weights_dirty(GPTModel *m) {
+    if (m->emb_proj) m->emb_proj->weights_dirty = true;
     for (int i = 0; i < m->n_layers; i++) {
         TransformerBlock *b = m->blocks[i];
         b->attn->wq->weights_dirty = true;
@@ -406,15 +491,18 @@ static void gpt_mark_weights_dirty(GPTModel *m) {
         b->ffn_up->weights_dirty = true;
         b->ffn_down->weights_dirty = true;
     }
+    if (m->head_proj) m->head_proj->weights_dirty = true;
     m->output_head->weights_dirty = true;
 }
 
 static void gpt_zero_grad(GPTModel *m) {
     memset(m->grad_token_emb->data, 0, tensor_bytes(m->grad_token_emb));
     memset(m->grad_pos_emb->data, 0, tensor_bytes(m->grad_pos_emb));
+    if (m->emb_proj) qat_linear_zero_grad(m->emb_proj);
     for (int i = 0; i < m->n_layers; i++)
         transformer_block_zero_grad(m->blocks[i]);
     rmsnorm_zero_grad(m->final_norm);
+    if (m->head_proj) qat_linear_zero_grad(m->head_proj);
     qat_linear_zero_grad(m->output_head);
 }
 
@@ -423,6 +511,12 @@ static void gpt_register_params(GPTModel *m, Adam *opt) {
                    tensor_numel(m->token_emb));
     adam_add_param(opt, m->pos_emb->data, m->grad_pos_emb->data,
                    tensor_numel(m->pos_emb));
+
+    if (m->emb_proj) {
+        adam_add_param(opt, m->emb_proj->weight->data,
+                       m->emb_proj->grad_weight->data,
+                       tensor_numel(m->emb_proj->weight));
+    }
 
     for (int i = 0; i < m->n_layers; i++) {
         TransformerBlock *b = m->blocks[i];
@@ -442,6 +536,12 @@ static void gpt_register_params(GPTModel *m, Adam *opt) {
     adam_add_param(opt, m->final_norm->weight->data,
                    m->final_norm->grad_weight->data,
                    tensor_numel(m->final_norm->weight));
+
+    if (m->head_proj) {
+        adam_add_param(opt, m->head_proj->weight->data,
+                       m->head_proj->grad_weight->data,
+                       tensor_numel(m->head_proj->weight));
+    }
     adam_add_param(opt, m->output_head->weight->data,
                    m->output_head->grad_weight->data,
                    tensor_numel(m->output_head->weight));
@@ -451,6 +551,7 @@ static int gpt_count_params(GPTModel *m) {
     int total = 0;
     total += tensor_numel(m->token_emb);
     total += tensor_numel(m->pos_emb);
+    if (m->emb_proj) total += tensor_numel(m->emb_proj->weight);
     for (int i = 0; i < m->n_layers; i++) {
         TransformerBlock *b = m->blocks[i];
         QATLinear *linears[] = {b->attn->wq, b->attn->wk, b->attn->wv,
@@ -461,6 +562,7 @@ static int gpt_count_params(GPTModel *m) {
         total += tensor_numel(b->norm2->weight);
     }
     total += tensor_numel(m->final_norm->weight);
+    if (m->head_proj) total += tensor_numel(m->head_proj->weight);
     total += tensor_numel(m->output_head->weight);
     return total;
 }
@@ -842,31 +944,49 @@ int main(int argc, char **argv) {
     int n_params = gpt_count_params(model);
     gpt_free(model);
 
-    int emb_params = VOCAB_SIZE * DIM + MAX_SEQ_LEN * DIM;
-    int head_params = DIM * VOCAB_SIZE;
+    /* Count embedding params: token_emb + pos_emb + emb_proj (if any) */
+    int emb_params = VOCAB_SIZE * D_IN + MAX_SEQ_LEN * D_IN;
+    if (D_IN != DIM) emb_params += D_IN * DIM;  /* emb_proj weight */
+
+    /* Count output head params: head_proj (if any) + output_head */
+    int head_params = D_OUT * VOCAB_SIZE;
+    if (D_OUT != DIM) head_params += DIM * D_OUT;  /* head_proj weight */
 
     printf("\nMode: %s (vocab=%d, seq_len=%d tokens, %d chars context)\n",
            MODE_NAME, VOCAB_SIZE, SEQ_LEN, CHAR_CONTEXT);
     printf("Model: %d layers, dim=%d, heads=%d, hidden=%d\n",
            N_LAYERS, DIM, N_HEADS, HIDDEN_DIM);
+    if (D_IN != DIM || D_OUT != DIM)
+        printf("Factored: d_in=%d, d_out=%d\n", D_IN, D_OUT);
     printf("Parameters: %d (%.1fK)\n", n_params, n_params / 1e3);
-    printf("  Embedding: %d (%.1fK) = %.1f%% of total\n",
+    printf("  Embedding: %d (%.1fK) = %.1f%% of total",
            emb_params, emb_params / 1e3, 100.0 * emb_params / n_params);
-    printf("  Output head: %d (%.1fK) = %.1f%% of total\n",
+    if (D_IN != DIM)
+        printf(" [factored: V*%d + %d*%d]", D_IN, D_IN, DIM);
+    printf("\n");
+    printf("  Output head: %d (%.1fK) = %.1f%% of total",
            head_params, head_params / 1e3, 100.0 * head_params / n_params);
+    if (D_OUT != DIM)
+        printf(" [factored: %d*%d + %d*V]", DIM, D_OUT, D_OUT);
+    printf("\n");
     printf("  Transformer body: %d (%.1fK) = %.1f%% of total\n",
            n_params - emb_params - head_params,
            (n_params - emb_params - head_params) / 1e3,
            100.0 * (n_params - emb_params - head_params) / n_params);
     printf("Random baseline BPC: %.2f\n", random_baseline_bpc());
 #if TOKENIZE_MODE == 4
-    printf("NOTE: softmax bottleneck -- vocab=%d > dim=%d (rank limited)\n",
-           VOCAB_SIZE, DIM);
+    if (D_OUT < VOCAB_SIZE)
+        printf("NOTE: softmax bottleneck -- vocab=%d > d_out=%d (rank limited)\n",
+               VOCAB_SIZE, D_OUT);
 #endif
 
     /* Open CSV log */
     char csv_filename[256];
-    snprintf(csv_filename, sizeof(csv_filename), "%s.csv", MODE_NAME);
+    if (D_IN != DIM || D_OUT != DIM)
+        snprintf(csv_filename, sizeof(csv_filename), "%s_din%d_dout%d.csv",
+                 MODE_NAME, D_IN, D_OUT);
+    else
+        snprintf(csv_filename, sizeof(csv_filename), "%s.csv", MODE_NAME);
     FILE *csv = fopen(csv_filename, "w");
     if (csv) {
         fprintf(csv, "mode,step,chars_seen,loss,smooth_loss,"
@@ -889,10 +1009,11 @@ int main(int argc, char **argv) {
 
     if (csv) fclose(csv);
 
-    /* Print machine-readable summary line (for run_all.sh to collect) */
-    printf("\nSUMMARY:%s,%d,%.1f,%d,%d,%.3f,%.4f,%.2f,%.1f,%.2f\n",
+    /* Print machine-readable summary line (for sweep scripts to collect) */
+    printf("\nSUMMARY:%s,%d,%.1f,%d,%d,%d,%d,%.3f,%.4f,%.2f,%.1f,%.2f\n",
            MODE_NAME, VOCAB_SIZE, TOKENS_PER_CHAR_F, SEQ_LEN,
-           n_params, res.final_bpc, res.final_loss, res.final_ppl,
+           D_IN, D_OUT, n_params,
+           res.final_bpc, res.final_loss, res.final_ppl,
            res.total_time_sec, random_baseline_bpc());
 
     gpt_free(model);

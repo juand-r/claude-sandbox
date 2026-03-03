@@ -46,6 +46,11 @@ train_tok_char: train_tok.c $(QAT_OBJ)
 train_tok_bigram: train_tok.c $(QAT_OBJ)
 	$(CC) $(CFLAGS) $(TRAIN_CFLAGS) -DTOKENIZE_MODE=4 $< $(QAT_OBJ) -o $@ $(LDFLAGS)
 
+# Factored embedding sweep
+sweep_factored: qat_lib data
+	./sweep_factored.sh
+
 clean:
 	rm -f train_tok_binary train_tok_base4 train_tok_nibble train_tok_char train_tok_bigram
 	rm -f *.csv *_output.txt
+	rm -rf factored_results
