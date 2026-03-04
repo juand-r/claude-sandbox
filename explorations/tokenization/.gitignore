@@ -4,3 +4,4 @@ train_tok_nibble
 train_tok_char
 train_tok_bigram
 shakespeare.txt
+test_din4
