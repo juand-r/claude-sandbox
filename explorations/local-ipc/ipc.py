@@ -20,7 +20,7 @@ import time
 import select
 
 PORT = 12321
-HOST = '127.0.0.1'
+HOST = '0.0.0.0'
 BUFSIZE = 4096
 
 
