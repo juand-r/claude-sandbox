@@ -5,3 +5,5 @@ train_tok_char
 train_tok_bigram
 shakespeare.txt
 test_din4
+din4_direct.log
+din4_run.log
