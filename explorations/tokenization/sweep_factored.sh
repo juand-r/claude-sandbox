@@ -29,7 +29,7 @@ QAT_OBJ="${QAT_DIR}/memory.o ${QAT_DIR}/cpu_detect.o ${QAT_DIR}/kernels_scalar.o
 
 # Config
 DIM=128
-N_STEPS=3000
+N_STEPS="${N_STEPS:-3000}"
 D_VALUES="1 2 4 8 16 32 64 128"
 
 # Modes to sweep: "0 4" = binary and bigram
