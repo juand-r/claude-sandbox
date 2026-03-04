@@ -2,4 +2,6 @@ explorations/qat-cpu/bench_omp_threshold
 explorations/qat-cpu/eval_log.csv
 explorations/tokenization/factored_results/
 explorations/tokenization/train_tok_*_din*
+explorations/tokenization/tmp_bigram
+explorations/tokenization/tmp_binary
 explorations/tokenization/*_din*_dout*.csv
