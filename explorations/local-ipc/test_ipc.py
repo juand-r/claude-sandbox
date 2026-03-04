@@ -1,34 +1,35 @@
 #!/usr/bin/env python3
 """
-Self-contained test: starts relay, connects two clients, exchanges messages.
+Self-contained test for Unix domain socket IPC.
 """
 
 import socket
 import threading
 import time
+import os
 import sys
 
-PORT = 9998  # Use a different port to avoid conflicts
+SOCK_PATH = "/home/user/claude-sandbox/explorations/local-ipc/.test.sock"
 
 results = []
 errors = []
 
 
 def relay_server(ready_event, stop_event):
-    """Minimal relay server for testing."""
-    srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    srv.bind(("127.0.0.1", PORT))
+    """Minimal relay for testing."""
+    if os.path.exists(SOCK_PATH):
+        os.unlink(SOCK_PATH)
+    srv = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    srv.bind(SOCK_PATH)
     srv.listen(2)
     srv.settimeout(1.0)
     ready_event.set()
 
     clients = []
     try:
-        # Accept two clients
         while len(clients) < 2 and not stop_event.is_set():
             try:
-                conn, addr = srv.accept()
+                conn, _ = srv.accept()
                 conn.setblocking(True)
                 conn.settimeout(5.0)
                 clients.append(conn)
@@ -38,8 +39,6 @@ def relay_server(ready_event, stop_event):
         if len(clients) < 2:
             return
 
-        # Simple relay loop: read from each, forward to other
-        # Run two relay threads
         def relay(src, dst, label):
             try:
                 while not stop_event.is_set():
@@ -55,16 +54,11 @@ def relay_server(ready_event, stop_event):
             except Exception as e:
                 errors.append(f"relay_{label}: {e}")
 
-        t1 = threading.Thread(target=relay, args=(clients[0], clients[1], "0->1"))
-        t2 = threading.Thread(target=relay, args=(clients[1], clients[0], "1->0"))
-        t1.daemon = True
-        t2.daemon = True
+        t1 = threading.Thread(target=relay, args=(clients[0], clients[1], "0->1"), daemon=True)
+        t2 = threading.Thread(target=relay, args=(clients[1], clients[0], "1->0"), daemon=True)
         t1.start()
         t2.start()
-
-        # Wait until test is done
         stop_event.wait(timeout=10)
-
     finally:
         for c in clients:
             try:
@@ -72,17 +66,18 @@ def relay_server(ready_event, stop_event):
             except OSError:
                 pass
         srv.close()
+        if os.path.exists(SOCK_PATH):
+            os.unlink(SOCK_PATH)
 
 
 def client_a(ready_event):
-    """Client A: waits for both connected, sends message, reads reply."""
     ready_event.wait(timeout=5)
     time.sleep(0.5)
     try:
-        s = socket.socket()
-        s.connect(("127.0.0.1", PORT))
+        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        s.connect(SOCK_PATH)
         s.settimeout(5)
-        time.sleep(1)  # Let client B connect too
+        time.sleep(1)
         s.sendall(b"Hello from A\n")
         data = s.recv(4096)
         results.append(("A_received", data.decode().strip()))
@@ -92,12 +87,11 @@ def client_a(ready_event):
 
 
 def client_b(ready_event):
-    """Client B: connects, reads message from A, sends reply."""
     ready_event.wait(timeout=5)
     time.sleep(0.5)
     try:
-        s = socket.socket()
-        s.connect(("127.0.0.1", PORT))
+        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        s.connect(SOCK_PATH)
         s.settimeout(5)
         data = s.recv(4096)
         results.append(("B_received", data.decode().strip()))
@@ -112,20 +106,18 @@ def main():
     ready = threading.Event()
     stop = threading.Event()
 
-    server_thread = threading.Thread(target=relay_server, args=(ready, stop))
-    server_thread.daemon = True
-    server_thread.start()
-
-    ta = threading.Thread(target=client_a, args=(ready,))
-    tb = threading.Thread(target=client_b, args=(ready,))
-    ta.start()
-    tb.start()
-
-    ta.join(timeout=15)
-    tb.join(timeout=15)
+    threads = [
+        threading.Thread(target=relay_server, args=(ready, stop), daemon=True),
+        threading.Thread(target=client_a, args=(ready,)),
+        threading.Thread(target=client_b, args=(ready,)),
+    ]
+    for t in threads:
+        t.start()
+    for t in threads[1:]:
+        t.join(timeout=15)
 
     stop.set()
-    server_thread.join(timeout=3)
+    threads[0].join(timeout=3)
 
     print("=== TEST RESULTS ===")
     if errors:
@@ -133,12 +125,11 @@ def main():
     for label, msg in results:
         print(f"  {label}: {msg}")
 
-    # Verify
     b_got_a = any(label == "B_received" and "Hello from A" in msg for label, msg in results)
     a_got_b = any(label == "A_received" and "Reply from B" in msg for label, msg in results)
 
     if b_got_a and a_got_b:
-        print("\nSUCCESS: Bidirectional communication works!")
+        print("\nSUCCESS: Unix domain socket IPC works!")
         sys.exit(0)
     else:
         print(f"\nFAILURE: b_got_a={b_got_a}, a_got_b={a_got_b}")

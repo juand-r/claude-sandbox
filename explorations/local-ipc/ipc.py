@@ -2,62 +2,63 @@
 """
 All-in-one IPC tool for Claude instances to communicate.
 
+Uses Unix domain sockets so it works across containers that share a filesystem.
+The socket file is just an address endpoint -- no message data is written to disk.
+All data flows through the kernel's socket buffers (in-memory).
+
 Commands:
-    python3 ipc.py server          Start the relay server (Claude 1 does this)
+    python3 ipc.py server          Start the relay server
     python3 ipc.py listen           Connect and listen for messages
     python3 ipc.py send "message"   Connect, send a message, disconnect
     python3 ipc.py talk "message"   Connect, send message, wait for reply, disconnect
 
-Port: 9999 (default), override with --port
-
 How to use:
-  Claude 1: python3 ipc.py server           (start relay, keeps running)
+  Claude 1: python3 ipc.py server &         (start relay in background)
   Claude 1: python3 ipc.py send "Hello!"     (send a message)
-  Claude 2: python3 ipc.py listen            (listen for messages)
+  Claude 2: python3 ipc.py listen --once     (get one message)
   Claude 2: python3 ipc.py send "Hi back!"   (reply)
 
-For a conversation:
-  Claude 1: python3 ipc.py talk "Hello Claude 2, what is 2+2?"
-  Claude 2: python3 ipc.py listen --once     (get one message, print it)
-  Claude 2: python3 ipc.py talk "The answer is 4"
-  Claude 1: (gets the reply from the talk command)
+Socket path: /home/user/claude-sandbox/explorations/local-ipc/.ipc.sock (default)
 """
 
 import socket
 import selectors
 import sys
+import os
 import time
 import argparse
-import threading
 
-DEFAULT_PORT = 9999
+DEFAULT_SOCK = "/home/user/claude-sandbox/explorations/local-ipc/.ipc.sock"
 
 
 # ===========================================================================
 # RELAY SERVER
 # ===========================================================================
 
-def run_server(port):
+def run_server(sock_path):
     """Accept two persistent connections, relay between them."""
+    # Clean up stale socket file
+    if os.path.exists(sock_path):
+        os.unlink(sock_path)
+
     sel = selectors.DefaultSelector()
-    srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    srv.bind(("127.0.0.1", port))
+    srv = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    srv.bind(sock_path)
     srv.listen(2)
     srv.setblocking(False)
 
-    print(f"[server] Listening on 127.0.0.1:{port}", flush=True)
+    print(f"[server] Listening on {sock_path}", flush=True)
     print("[server] Waiting for two clients...", flush=True)
 
-    clients = []  # [(sock, addr, buffer)]
+    clients = []  # [[sock, label, buffer]]
 
     def accept(sock, mask):
-        conn, addr = sock.accept()
+        conn, _ = sock.accept()
         conn.setblocking(False)
         idx = len(clients)
-        clients.append([conn, addr, b""])
+        clients.append([conn, f"client_{idx}", b""])
         sel.register(conn, selectors.EVENT_READ, relay)
-        print(f"[server] Client {idx} connected from {addr}", flush=True)
+        print(f"[server] Client {idx} connected.", flush=True)
         if len(clients) >= 2:
             sel.unregister(srv)
             print("[server] Both clients connected. Relaying.", flush=True)
@@ -76,19 +77,17 @@ def run_server(port):
         except (ConnectionResetError, OSError):
             data = b""
         if not data:
-            print(f"[server] Client {idx} disconnected. Accepting new connection.", flush=True)
+            print(f"[server] Client {idx} disconnected. Re-listening.", flush=True)
             sel.unregister(sock)
             sock.close()
-            # Allow reconnection: remove and re-listen
             clients.pop(idx)
-            if srv.fileno() != -1:
-                try:
-                    sel.register(srv, selectors.EVENT_READ, accept)
-                except (KeyError, ValueError):
-                    pass
+            # Re-accept new connections
+            try:
+                sel.register(srv, selectors.EVENT_READ, accept)
+            except (KeyError, ValueError):
+                pass
             return
 
-        # Append to buffer, forward complete lines
         clients[idx][2] += data
         while b"\n" in clients[idx][2]:
             line, clients[idx][2] = clients[idx][2].split(b"\n", 1)
@@ -111,18 +110,35 @@ def run_server(port):
     finally:
         sel.close()
         srv.close()
+        if os.path.exists(sock_path):
+            os.unlink(sock_path)
 
 
 # ===========================================================================
 # CLIENT OPERATIONS
 # ===========================================================================
 
-def do_listen(port, once=False, timeout=60):
+def connect(sock_path, retries=10, delay=1.0):
+    """Connect to relay server via Unix domain socket, with retries."""
+    for attempt in range(retries):
+        try:
+            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.connect(sock_path)
+            return sock
+        except (FileNotFoundError, ConnectionRefusedError) as e:
+            if attempt < retries - 1:
+                print(f"[client] Waiting for server... (attempt {attempt+1}/{retries})", flush=True)
+                time.sleep(delay)
+            else:
+                print(f"[client] ERROR: Cannot connect to {sock_path}: {e}", file=sys.stderr)
+                sys.exit(1)
+
+
+def do_listen(sock_path, once=False, timeout=60):
     """Connect to relay and print received messages."""
-    sock = socket.socket()
-    sock.connect(("127.0.0.1", port))
+    sock = connect(sock_path)
     sock.settimeout(timeout if timeout > 0 else None)
-    print(f"[listen] Connected to relay on port {port}. Waiting for messages...", flush=True)
+    print(f"[listen] Connected. Waiting for messages...", flush=True)
 
     buf = b""
     try:
@@ -153,13 +169,11 @@ def do_listen(port, once=False, timeout=60):
             pass
 
 
-def do_send(port, message):
+def do_send(sock_path, message):
     """Connect, send one message, disconnect."""
-    sock = socket.socket()
-    sock.connect(("127.0.0.1", port))
+    sock = connect(sock_path)
     sock.sendall((message + "\n").encode())
     print(f"[send] Sent: {message}", flush=True)
-    # Read any immediate server notification (discard)
     sock.settimeout(0.5)
     try:
         sock.recv(4096)
@@ -168,16 +182,14 @@ def do_send(port, message):
     sock.close()
 
 
-def do_talk(port, message, timeout=60):
+def do_talk(sock_path, message, timeout=60):
     """Connect, send message, wait for one reply, disconnect."""
-    sock = socket.socket()
-    sock.connect(("127.0.0.1", port))
-    sock.settimeout(timeout if timeout > 0 else None)
+    sock = connect(sock_path)
 
     # Read and discard server greeting
     try:
         sock.settimeout(2)
-        greeting = sock.recv(4096)
+        sock.recv(4096)
     except socket.timeout:
         pass
 
@@ -220,9 +232,10 @@ def do_talk(port, message, timeout=60):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="IPC tool for Claude-to-Claude communication via TCP relay"
+        description="IPC tool for Claude-to-Claude communication via Unix domain sockets"
     )
-    parser.add_argument("--port", type=int, default=DEFAULT_PORT)
+    parser.add_argument("--sock", default=DEFAULT_SOCK,
+                        help=f"Socket path (default: {DEFAULT_SOCK})")
     sub = parser.add_subparsers(dest="command")
 
     sub.add_parser("server", help="Start relay server")
@@ -241,13 +254,13 @@ def main():
     args = parser.parse_args()
 
     if args.command == "server":
-        run_server(args.port)
+        run_server(args.sock)
     elif args.command == "listen":
-        do_listen(args.port, once=args.once, timeout=args.timeout)
+        do_listen(args.sock, once=args.once, timeout=args.timeout)
     elif args.command == "send":
-        do_send(args.port, args.message)
+        do_send(args.sock, args.message)
     elif args.command == "talk":
-        do_talk(args.port, args.message, timeout=args.timeout)
+        do_talk(args.sock, args.message, timeout=args.timeout)
     else:
         parser.print_help()
 
