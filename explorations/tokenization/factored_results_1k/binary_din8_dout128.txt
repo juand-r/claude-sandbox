@@ -1,0 +1,38 @@
+========================================
+Tokenization Experiment: binary
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 7026978 tokens (7.0 tok/char)
+Val:   111540 chars -> 780780 tokens
+
+Mode: binary (vocab=2, seq_len=896 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Factored: d_in=8, d_out=128
+Parameters: 797072 (797.1K)
+  Embedding: 9232 (9.2K) = 1.2% of total [factored: V*8 + 8*128]
+  Output head: 256 (0.3K) = 0.0% of total
+  Transformer body: 787584 (787.6K) = 98.8% of total
+Random baseline BPC: 7.00
+CSV log: binary_din8_dout128.csv
+
+--- Training ---
+Steps: 1000, seq_len: 896 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/1000: loss=0.6951 smooth=0.6951 | val_bpc=7.100 val_loss=0.7031 val_ppl=2.02 | lr=0.000015 1222.9ms/step 419 char/s

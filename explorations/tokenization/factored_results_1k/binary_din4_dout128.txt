@@ -1,0 +1,59 @@
+========================================
+Tokenization Experiment: binary
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 7026978 tokens (7.0 tok/char)
+Val:   111540 chars -> 780780 tokens
+
+Mode: binary (vocab=2, seq_len=896 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Factored: d_in=4, d_out=128
+Parameters: 792456 (792.5K)
+  Embedding: 4616 (4.6K) = 0.6% of total [factored: V*4 + 4*128]
+  Output head: 256 (0.3K) = 0.0% of total
+  Transformer body: 787584 (787.6K) = 99.4% of total
+Random baseline BPC: 7.00
+CSV log: binary_din4_dout128.csv
+
+--- Training ---
+Steps: 1000, seq_len: 896 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/1000: loss=0.7577 smooth=0.7577 | val_bpc=7.234 val_loss=0.7163 val_ppl=2.05 | lr=0.000015 1202.7ms/step 426 char/s
+  Step  500/1000: loss=0.6931 smooth=0.6928 | val_bpc=6.998 val_loss=0.6929 val_ppl=2.00 | lr=0.000169 690.2ms/step 742 char/s
+  Step  999/1000: loss=0.6814 smooth=0.6873 | val_bpc=6.928 val_loss=0.6860 val_ppl=1.99 | lr=0.000030 689.1ms/step 743 char/s
+
+Training complete: 770.0 sec (770.0 ms/step)
+Final val BPC:  6.928
+Final val loss: 0.6860 nats/token
+Final val PPL:  1.99 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The ?z~?OgqDnD\?8NLSeR?R#j:?0?d9n.?&|=)>v@i +)GO?-zKm4??;3KpUwpM\~d?<5ye0B&?F?ZIGFN???LCF?b8n{i\?-k?;?hb
+
+  [Prompt: "KING:
+"]
+  KING:?q?jpRh?qS?,q Tk?K?~/g???CcIo"Oco$.`tc?a#Sf??hL!U`???g??a?avo?ORBF4)\ag???/?6b,?sq#Kg???j?@H?_?f4}jf@
+
+  [Prompt: "To be"]
+  To bes[E?9 ?nd?N`?v}~/?8Y?????w?m@;x??FG]q:?YA1V?Ji$Df$&?c;N{??y?>0?????????un?/@{??L?)2???!XD%<?<??82-Wc
+
+
+SUMMARY:binary,2,7.0,896,4,128,792456,6.928,0.6860,1.99,770.0,7.00

@@ -1,0 +1,60 @@
+========================================
+Tokenization Experiment: bigram
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+  BF16 GEMM: AVX-512 BF16
+
+Data: 1115394 chars loaded
+Train: 1003854 chars -> 501927 tokens (0.5 tok/char)
+Val:   111540 chars -> 55770 tokens
+
+Mode: bigram (vocab=16384, seq_len=64 tokens, 128 chars context)
+Model: 4 layers, dim=128, heads=4, hidden=512
+Factored: d_in=16, d_out=128
+Parameters: 3165312 (3165.3K)
+  Embedding: 280576 (280.6K) = 8.9% of total [factored: V*16 + 16*128]
+  Output head: 2097152 (2097.2K) = 66.3% of total
+  Transformer body: 787584 (787.6K) = 24.9% of total
+Random baseline BPC: 7.00
+NOTE: softmax bottleneck -- vocab=16384 > d_out=128 (rank limited)
+CSV log: bigram_din16_dout128.csv
+
+--- Training ---
+Steps: 1000, seq_len: 64 tokens (128 chars), batch: 4, lr: 0.000300
+  Step    0/1000: loss=9.9639 smooth=9.9639 | val_bpc=7.134 val_loss=9.8894 val_ppl=19720.12 | lr=0.000015 227.4ms/step 2252 char/s
+  Step  500/1000: loss=4.9889 smooth=5.1594 | val_bpc=3.656 val_loss=5.0678 val_ppl=158.82 | lr=0.000169 177.8ms/step 2880 char/s
+  Step  999/1000: loss=4.8132 smooth=4.7212 | val_bpc=3.395 val_loss=4.7070 val_ppl=110.72 | lr=0.000030 182.8ms/step 2800 char/s
+
+Training complete: 185.3 sec (185.3 ms/step)
+Final val BPC:  3.395
+Final val loss: 4.7070 nats/token
+Final val PPL:  110.72 (per-token)
+
+--- Generated Samples ---
+  [Prompt: "The "]
+  The all suthy therlesed the the thour thesfo patay, heat'sfor for shrovell.?ay andst, thinkly as, not th
+
+  [Prompt: "KING:
+"]
+  KING:?hit?e-My fidre a:?An:?Be his tme but him do,t whe hoo of shave hade hes thath haioFronp ruthe the oo
+
+  [Prompt: "To be"]
+  To bree the e.??ome ell tratng youll thethatrs fore thooh, sI rders, in we on ciat he eage ther fas aned
+
+
+SUMMARY:bigram,16384,0.5,64,16,128,3165312,3.395,4.7070,110.72,185.3,7.00
