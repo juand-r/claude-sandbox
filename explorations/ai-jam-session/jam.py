@@ -27,7 +27,8 @@ def run_jam(config: SessionConfig) -> str:
     bpr = config.beats_per_round
     unit_label = "measures" if bpr == config.beats_per_measure else f"{bpr}-beat segments"
     print(f"Starting jam session: {config.num_rounds} rounds ({unit_label})")
-    print(f"  Tempo: {config.tempo} BPM | Key: {config.key} | Style: {config.style}")
+    key_str = config.key or "(LLM chooses)"
+    print(f"  Tempo: {config.tempo} BPM | Key: {key_str} | Style: {config.style}")
     print(f"  Beats per round: {bpr}")
     print(f"  LLM: {config.llm.provider} / {config.llm.model}")
     print(f"  Band: {', '.join(INSTRUMENTS)}")
@@ -94,7 +95,7 @@ def main():
     parser.add_argument("--beats-per-round", type=int, default=None,
                         help="Beats per round (default: full measure, e.g. 4 for 4/4). Use 1 or 2 for finer granularity.")
     parser.add_argument("--tempo", type=int, default=120, help="Tempo in BPM")
-    parser.add_argument("--key", type=str, default="C minor", help="Key signature")
+    parser.add_argument("--key", type=str, default=None, help="Key signature (default: LLM chooses)")
     parser.add_argument("--style", type=str, default="jazz fusion with a relaxed groove", help="Style description")
     parser.add_argument("--provider", type=str, default="anthropic", choices=["anthropic", "openai"], help="LLM provider")
     parser.add_argument("--model", type=str, default=None, help="LLM model name (default depends on provider)")

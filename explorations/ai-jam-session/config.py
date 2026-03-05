@@ -18,7 +18,7 @@ class SessionConfig:
     """Configuration for a jam session."""
     # Musical parameters
     tempo: int = 120           # BPM
-    key: str = "C minor"       # Key signature
+    key: str | None = None      # Key signature (None = LLM chooses)
     time_signature: tuple[int, int] = (4, 4)
     num_rounds: int = 8        # Number of rounds to generate
     beats_per_round: int | None = None  # Beats per round (None = full measure)

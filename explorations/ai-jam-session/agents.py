@@ -118,13 +118,19 @@ class Agent:
 
         bpr = config.beats_per_round
         fmt = drum_format_instructions(bpr) if instrument == "drums" else note_format_instructions(bpr)
-        self.system_prompt = (
-            f"{SYSTEM_PROMPTS[instrument]}\n\n"
+        session_info = (
             f"Session info:\n"
             f"- Tempo: {config.tempo} BPM\n"
-            f"- Key: {config.key}\n"
+        )
+        if config.key:
+            session_info += f"- Key: {config.key}\n"
+        session_info += (
             f"- Time signature: {config.time_signature[0]}/{config.time_signature[1]}\n"
-            f"- Style: {config.style}\n\n"
+            f"- Style: {config.style}\n"
+        )
+        self.system_prompt = (
+            f"{SYSTEM_PROMPTS[instrument]}\n\n"
+            f"{session_info}\n"
             f"OUTPUT FORMAT:\n{fmt}"
         )
 
