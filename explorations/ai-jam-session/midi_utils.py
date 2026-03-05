@@ -40,8 +40,13 @@ def midi_to_note_name(midi_num: int) -> str:
     return f"{note}{octave}"
 
 
-def parse_measure(text: str, instrument: str) -> list[dict]:
+def parse_measure(text: str, instrument: str, beats_per_round: float | None = None) -> list[dict]:
     """Parse a text measure into a list of note events.
+
+    Args:
+        text: the raw text output from the LLM
+        instrument: instrument name (for range validation)
+        beats_per_round: if set, clamp note durations so they don't exceed the round boundary
 
     Returns list of dicts with keys:
       - type: "note" or "drum" or "rest"
@@ -70,11 +75,17 @@ def parse_measure(text: str, instrument: str) -> list[dict]:
                 if instrument in INSTRUMENT_RANGES:
                     lo, hi = INSTRUMENT_RANGES[instrument]
                     midi_note = max(lo, min(hi, midi_note))
+                start = float(start_str)
+                duration = float(dur_str)
+                if beats_per_round is not None:
+                    duration = min(duration, beats_per_round - start)
+                if duration <= 0:
+                    continue
                 events.append({
                     "type": "note",
                     "pitch": midi_note,
-                    "start": float(start_str),
-                    "duration": float(dur_str),
+                    "start": start,
+                    "duration": duration,
                     "velocity": int(float(vel_str) * 127),
                 })
 
@@ -83,11 +94,17 @@ def parse_measure(text: str, instrument: str) -> list[dict]:
                 start_str, dur_str, vel_str = parts[2], parts[3], parts[4]
                 if sound_name not in GM_DRUMS:
                     continue  # skip unknown drum sounds
+                start = float(start_str)
+                duration = float(dur_str)
+                if beats_per_round is not None:
+                    duration = min(duration, beats_per_round - start)
+                if duration <= 0:
+                    continue
                 events.append({
                     "type": "drum",
                     "pitch": GM_DRUMS[sound_name],
-                    "start": float(start_str),
-                    "duration": float(dur_str),
+                    "start": start,
+                    "duration": duration,
                     "velocity": int(float(vel_str) * 127),
                 })
 
@@ -158,7 +175,7 @@ def build_midi_file(
         all_msgs = []
         for round_idx, measure_text in enumerate(measures):
             measure_offset = round_idx * ticks_per_round
-            events = parse_measure(measure_text, instrument)
+            events = parse_measure(measure_text, instrument, config.beats_per_round)
             msgs = events_to_midi_messages(events, config.ticks_per_beat)
             for abs_tick, msg in msgs:
                 # Override channel for this instrument

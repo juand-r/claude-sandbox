@@ -65,7 +65,7 @@ def run_jam(config: SessionConfig) -> str:
         # Quick validation: count notes per instrument
         note_counts = []
         for inst in INSTRUMENTS:
-            events = parse_measure(round_results[inst], inst)
+            events = parse_measure(round_results[inst], inst, config.beats_per_round)
             note_counts.append(f"{inst}:{len(events)}")
         print(f"done ({elapsed:.1f}s) [{', '.join(note_counts)}]")
 
@@ -80,7 +80,7 @@ def run_jam(config: SessionConfig) -> str:
     # Print summary
     total_notes = 0
     for inst in INSTRUMENTS:
-        inst_notes = sum(len(parse_measure(m, inst)) for m in history[inst])
+        inst_notes = sum(len(parse_measure(m, inst, config.beats_per_round)) for m in history[inst])
         total_notes += inst_notes
         print(f"  {inst}: {inst_notes} notes across {config.num_rounds} rounds")
     print(f"  Total: {total_notes} notes")
