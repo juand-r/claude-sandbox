@@ -1,8 +1,9 @@
 """Tests for the core effect system and verb framework."""
 
+import warnings
 import pytest
 from effects import Effect, perform, handle, handle_many, UnhandledEffectError
-from verbs import verb, VerbStarted, VerbCompleted, VerbFailed, list_verbs, get_verb, _registry
+from verbs import verb, VerbStarted, VerbCompleted, VerbFailed, UndeclaredEffectWarning, list_verbs, get_verb, _registry
 from ml_effects import Log, LogParams, Save, AllocCompute, ReleaseCompute, Progress
 from ml_verbs import train, evaluate, sweep, analyze, render_table, Config, Run
 
@@ -160,6 +161,35 @@ class TestVerbs:
 
         assert "VerbStarted" in events
         assert "VerbCompleted" in events
+
+    def test_undeclared_effect_warns(self):
+        """Verb warns if it performs effects not listed in `needs`."""
+
+        class Secret(Effect):
+            pass
+
+        @verb(name="_test_sneaky", needs=[], describes="test verb")
+        def sneaky():
+            perform(Secret())
+
+        with handle(Secret, lambda e: None):
+            with pytest.warns(UndeclaredEffectWarning, match="Secret"):
+                sneaky()
+
+    def test_declared_effects_no_warning(self):
+        """Verb does NOT warn when all performed effects are declared."""
+
+        class Declared(Effect):
+            pass
+
+        @verb(name="_test_honest", needs=[Declared], describes="test verb")
+        def honest():
+            perform(Declared())
+
+        with handle(Declared, lambda e: None):
+            with warnings.catch_warnings():
+                warnings.simplefilter("error")
+                honest()  # should not raise
 
 
 # ===========================================================================

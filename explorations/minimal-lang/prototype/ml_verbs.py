@@ -95,7 +95,7 @@ class Run:
 
 @verb(
     name="train",
-    needs=[Log, Save, AllocCompute, ReleaseCompute, Progress],
+    needs=[Log, LogParams, Save, AllocCompute, ReleaseCompute, Progress],
     describes="Train a model on data using a training function",
 )
 def train(model: Any, data: Any, config: Config,

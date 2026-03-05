@@ -27,10 +27,11 @@ from __future__ import annotations
 
 import functools
 import time
+import warnings
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-from effects import Effect, perform, _get_stack
+from effects import Effect, perform, _get_stack, track_effects
 
 
 # ---------------------------------------------------------------------------
@@ -164,8 +165,13 @@ def verb(
 
             start = time.time()
             try:
-                result = fn(*args, **kwargs)
+                with track_effects() as tracker:
+                    result = fn(*args, **kwargs)
                 elapsed = time.time() - start
+
+                # Check for undeclared effects (simulates compile-time checking)
+                _check_undeclared(name, schema.needs, tracker.performed)
+
                 _try_perform(VerbCompleted(name, result, elapsed))
                 return result
             except Exception as e:
@@ -178,6 +184,35 @@ def verb(
         return wrapper
 
     return decorator
+
+
+class UndeclaredEffectWarning(UserWarning):
+    """Warned when a verb performs effects it didn't declare in `needs`."""
+    pass
+
+
+def _check_undeclared(verb_name: str, declared: list[type], performed: set[type]):
+    """Warn if a verb performed effects it didn't declare.
+
+    In a real language with algebraic effects, the type system catches this
+    at compile time. Here we catch it at runtime -- better than not at all.
+
+    Lifecycle effects (VerbStarted/Completed/Failed) are excluded since
+    they're emitted by the verb wrapper, not by the verb body.
+    """
+    # These are system-internal effects, not the verb author's responsibility
+    system_effects = {VerbStarted, VerbCompleted, VerbFailed}
+    declared_set = set(declared) | system_effects
+
+    undeclared = performed - declared_set
+    if undeclared:
+        names = sorted(t.__name__ for t in undeclared)
+        warnings.warn(
+            f"Verb '{verb_name}' performed undeclared effects: {names}. "
+            f"Add them to the `needs` list in @verb().",
+            UndeclaredEffectWarning,
+            stacklevel=3,
+        )
 
 
 def _try_perform(effect: Effect):

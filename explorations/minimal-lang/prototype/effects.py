@@ -27,6 +27,7 @@ Usage:
 from __future__ import annotations
 
 import contextvars
+import warnings
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -36,6 +37,15 @@ from typing import Any, Callable
 
 _handler_stack: contextvars.ContextVar[list[tuple[type, Callable]]] = (
     contextvars.ContextVar("_handler_stack", default=[])
+)
+
+# ---------------------------------------------------------------------------
+# Effect tracking: records which effect types were actually performed
+# during a verb execution, so we can detect undeclared effects.
+# ---------------------------------------------------------------------------
+
+_effect_tracker: contextvars.ContextVar[list[set[type]] | None] = (
+    contextvars.ContextVar("_effect_tracker", default=None)
 )
 
 
@@ -76,6 +86,11 @@ def perform(effect: Effect) -> Any:
     This is the ONLY way verb bodies should interact with the outside
     world. No direct I/O, no direct library calls -- just perform effects.
     """
+    # Record that this effect type was performed (for undeclared effect detection)
+    tracker_stack = _get_tracker_stack()
+    if tracker_stack:
+        tracker_stack[-1].add(type(effect))
+
     stack = _get_stack()
 
     # Walk from top of stack (most recent handler) downward
@@ -87,6 +102,43 @@ def perform(effect: Effect) -> Any:
         f"No handler for effect {type(effect).__name__}. "
         f"Active handlers: {[t.__name__ for t, _ in stack]}"
     )
+
+
+def _get_tracker_stack() -> list[set[type]]:
+    """Get the effect tracker stack, creating if needed."""
+    try:
+        stack = _effect_tracker.get()
+    except LookupError:
+        stack = None
+    if stack is None:
+        stack = []
+        _effect_tracker.set(stack)
+    return stack
+
+
+class track_effects:
+    """Context manager that tracks which effect types are performed.
+
+    Used by the verb wrapper to detect undeclared effects.
+
+    Usage:
+        with track_effects() as tracker:
+            some_function()
+        performed = tracker.performed  # set of effect types
+    """
+
+    def __init__(self):
+        self.performed: set[type] = set()
+
+    def __enter__(self):
+        _get_tracker_stack().append(self.performed)
+        return self
+
+    def __exit__(self, *exc):
+        stack = _get_tracker_stack()
+        if stack:
+            stack.pop()
+        return False
 
 
 class handle:
