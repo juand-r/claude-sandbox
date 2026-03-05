@@ -12,17 +12,18 @@ from agents import Agent
 from midi_utils import format_history_for_prompt, parse_measure, build_midi_file
 
 
-INSTRUMENTS = ["piano", "bass", "drums", "vibraphone", "strings"]
+ALL_INSTRUMENTS = ["piano", "bass", "drums", "vibraphone", "strings"]
 
 
-def run_jam(config: SessionConfig) -> str:
+def run_jam(config: SessionConfig, instruments: list[str] | None = None) -> str:
     """Run a full jam session and return the path to the output MIDI file."""
+    instruments = instruments or ALL_INSTRUMENTS
 
     # Initialize agents
-    agents = {inst: Agent(inst, config) for inst in INSTRUMENTS}
+    agents = {inst: Agent(inst, config) for inst in instruments}
 
     # Shared history: instrument -> list of text measures
-    history: dict[str, list[str]] = {inst: [] for inst in INSTRUMENTS}
+    history: dict[str, list[str]] = {inst: [] for inst in instruments}
 
     bpr = config.beats_per_round
     unit_label = "measures" if bpr == config.beats_per_measure else f"{bpr}-beat segments"
@@ -31,7 +32,7 @@ def run_jam(config: SessionConfig) -> str:
     print(f"  Tempo: {config.tempo} BPM | Key: {key_str} | Style: {config.style}")
     print(f"  Beats per round: {bpr}")
     print(f"  LLM: {config.llm.provider} / {config.llm.model}")
-    print(f"  Band: {', '.join(INSTRUMENTS)}")
+    print(f"  Band: {', '.join(instruments)}")
     print()
 
     for round_idx in range(config.num_rounds):
@@ -46,7 +47,7 @@ def run_jam(config: SessionConfig) -> str:
         with ThreadPoolExecutor(max_workers=5) as executor:
             futures = {
                 executor.submit(agents[inst].generate_measure, history_text, round_idx): inst
-                for inst in INSTRUMENTS
+                for inst in instruments
             }
             for future in as_completed(futures):
                 inst = futures[future]
@@ -59,13 +60,13 @@ def run_jam(config: SessionConfig) -> str:
                     round_results[inst] = f"REST 0.0 {config.beats_per_round}.0"
 
         # Append to history
-        for inst in INSTRUMENTS:
+        for inst in instruments:
             history[inst].append(round_results[inst])
 
         elapsed = time.time() - round_start
         # Quick validation: count notes per instrument
         note_counts = []
-        for inst in INSTRUMENTS:
+        for inst in instruments:
             events = parse_measure(round_results[inst], inst, config.beats_per_round)
             note_counts.append(f"{inst}:{len(events)}")
         print(f"done ({elapsed:.1f}s) [{', '.join(note_counts)}]")
@@ -80,7 +81,7 @@ def run_jam(config: SessionConfig) -> str:
 
     # Print summary
     total_notes = 0
-    for inst in INSTRUMENTS:
+    for inst in instruments:
         inst_notes = sum(len(parse_measure(m, inst, config.beats_per_round)) for m in history[inst])
         total_notes += inst_notes
         print(f"  {inst}: {inst_notes} notes across {config.num_rounds} rounds")
@@ -99,6 +100,8 @@ def main():
     parser.add_argument("--style", type=str, default="jazz fusion with a relaxed groove", help="Style description")
     parser.add_argument("--provider", type=str, default="anthropic", choices=["anthropic", "openai"], help="LLM provider")
     parser.add_argument("--model", type=str, default=None, help="LLM model name (default depends on provider)")
+    parser.add_argument("--instruments", type=str, default=None,
+                        help="Comma-separated list of instruments (default: all). Options: piano,bass,drums,vibraphone,strings")
     parser.add_argument("--output", type=str, default="jam_output.mid", help="Output MIDI file name")
     args = parser.parse_args()
 
@@ -119,7 +122,15 @@ def main():
         output_file=args.output,
     )
 
-    run_jam(config)
+    # Parse instruments
+    instruments = None
+    if args.instruments:
+        instruments = [i.strip() for i in args.instruments.split(",")]
+        for inst in instruments:
+            if inst not in ALL_INSTRUMENTS:
+                parser.error(f"Unknown instrument: {inst}. Options: {', '.join(ALL_INSTRUMENTS)}")
+
+    run_jam(config, instruments)
 
 
 if __name__ == "__main__":
