@@ -53,8 +53,8 @@ class SessionConfig:
 GM_INSTRUMENTS = {
     "piano": 0,        # Acoustic Grand Piano
     "bass": 32,        # Acoustic Bass
-    "saxophone": 66,   # Tenor Sax
-    "guitar": 26,      # Jazz Guitar
+    "vibraphone": 11,  # Vibraphone
+    "strings": 48,     # String Ensemble 1
 }
 
 # General MIDI drum map (channel 10, note numbers)
@@ -80,6 +80,6 @@ GM_DRUMS = {
 INSTRUMENT_RANGES = {
     "piano": (36, 96),      # C2 to C7
     "bass": (28, 60),       # E1 to C4
-    "saxophone": (49, 80),  # Db3 to Ab5
-    "guitar": (40, 84),     # E2 to C6
+    "vibraphone": (53, 89), # F3 to F6
+    "strings": (36, 84),    # C2 to C6
 }

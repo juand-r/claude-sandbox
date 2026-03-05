@@ -12,7 +12,7 @@ from agents import Agent
 from midi_utils import format_history_for_prompt, parse_measure, build_midi_file
 
 
-INSTRUMENTS = ["piano", "bass", "drums", "saxophone", "guitar"]
+INSTRUMENTS = ["piano", "bass", "drums", "vibraphone", "strings"]
 
 
 def run_jam(config: SessionConfig) -> str:
