@@ -62,37 +62,40 @@ def parse_measure(text: str, instrument: str) -> list[dict]:
 
         cmd = parts[0].upper()
 
-        if cmd == "NOTE" and len(parts) >= 5:
-            pitch_str, start_str, dur_str, vel_str = parts[1], parts[2], parts[3], parts[4]
-            midi_note = note_name_to_midi(pitch_str)
-            # Validate range
-            if instrument in INSTRUMENT_RANGES:
-                lo, hi = INSTRUMENT_RANGES[instrument]
-                midi_note = max(lo, min(hi, midi_note))
-            events.append({
-                "type": "note",
-                "pitch": midi_note,
-                "start": float(start_str),
-                "duration": float(dur_str),
-                "velocity": int(float(vel_str) * 127),
-            })
+        try:
+            if cmd == "NOTE" and len(parts) >= 5:
+                pitch_str, start_str, dur_str, vel_str = parts[1], parts[2], parts[3], parts[4]
+                midi_note = note_name_to_midi(pitch_str)
+                # Validate range
+                if instrument in INSTRUMENT_RANGES:
+                    lo, hi = INSTRUMENT_RANGES[instrument]
+                    midi_note = max(lo, min(hi, midi_note))
+                events.append({
+                    "type": "note",
+                    "pitch": midi_note,
+                    "start": float(start_str),
+                    "duration": float(dur_str),
+                    "velocity": int(float(vel_str) * 127),
+                })
 
-        elif cmd == "DRUM" and len(parts) >= 5:
-            sound_name = parts[1].lower()
-            start_str, dur_str, vel_str = parts[2], parts[3], parts[4]
-            if sound_name not in GM_DRUMS:
-                continue  # skip unknown drum sounds
-            events.append({
-                "type": "drum",
-                "pitch": GM_DRUMS[sound_name],
-                "start": float(start_str),
-                "duration": float(dur_str),
-                "velocity": int(float(vel_str) * 127),
-            })
+            elif cmd == "DRUM" and len(parts) >= 5:
+                sound_name = parts[1].lower()
+                start_str, dur_str, vel_str = parts[2], parts[3], parts[4]
+                if sound_name not in GM_DRUMS:
+                    continue  # skip unknown drum sounds
+                events.append({
+                    "type": "drum",
+                    "pitch": GM_DRUMS[sound_name],
+                    "start": float(start_str),
+                    "duration": float(dur_str),
+                    "velocity": int(float(vel_str) * 127),
+                })
 
-        elif cmd == "REST" and len(parts) >= 3:
-            # REST start duration -- we just skip it (silence)
-            pass
+            elif cmd == "REST" and len(parts) >= 3:
+                pass  # silence, nothing to emit
+
+        except (ValueError, IndexError):
+            continue  # skip any malformed line
 
     return events
 
