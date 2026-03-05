@@ -24,8 +24,11 @@ def run_jam(config: SessionConfig) -> str:
     # Shared history: instrument -> list of text measures
     history: dict[str, list[str]] = {inst: [] for inst in INSTRUMENTS}
 
-    print(f"Starting jam session: {config.num_rounds} rounds")
+    bpr = config.beats_per_round
+    unit_label = "measures" if bpr == config.beats_per_measure else f"{bpr}-beat segments"
+    print(f"Starting jam session: {config.num_rounds} rounds ({unit_label})")
     print(f"  Tempo: {config.tempo} BPM | Key: {config.key} | Style: {config.style}")
+    print(f"  Beats per round: {bpr}")
     print(f"  LLM: {config.llm.provider} / {config.llm.model}")
     print(f"  Band: {', '.join(INSTRUMENTS)}")
     print()
@@ -52,7 +55,7 @@ def run_jam(config: SessionConfig) -> str:
                 except Exception as e:
                     print(f"\n  ERROR [{inst}]: {e}")
                     # Generate a silent measure as fallback
-                    round_results[inst] = "REST 0.0 4.0"
+                    round_results[inst] = f"REST 0.0 {config.beats_per_round}.0"
 
         # Append to history
         for inst in INSTRUMENTS:
@@ -79,7 +82,7 @@ def run_jam(config: SessionConfig) -> str:
     for inst in INSTRUMENTS:
         inst_notes = sum(len(parse_measure(m, inst)) for m in history[inst])
         total_notes += inst_notes
-        print(f"  {inst}: {inst_notes} notes across {config.num_rounds} measures")
+        print(f"  {inst}: {inst_notes} notes across {config.num_rounds} rounds")
     print(f"  Total: {total_notes} notes")
 
     return output_path
@@ -87,7 +90,9 @@ def run_jam(config: SessionConfig) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="AI Jam Session")
-    parser.add_argument("--rounds", type=int, default=8, help="Number of rounds/measures")
+    parser.add_argument("--rounds", type=int, default=8, help="Number of rounds")
+    parser.add_argument("--beats-per-round", type=int, default=None,
+                        help="Beats per round (default: full measure, e.g. 4 for 4/4). Use 1 or 2 for finer granularity.")
     parser.add_argument("--tempo", type=int, default=120, help="Tempo in BPM")
     parser.add_argument("--key", type=str, default="C minor", help="Key signature")
     parser.add_argument("--style", type=str, default="jazz fusion with a relaxed groove", help="Style description")
@@ -107,6 +112,7 @@ def main():
         tempo=args.tempo,
         key=args.key,
         num_rounds=args.rounds,
+        beats_per_round=args.beats_per_round,
         style=args.style,
         llm=LLMConfig(provider=args.provider, model=args.model),
         output_file=args.output,

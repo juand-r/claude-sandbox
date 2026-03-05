@@ -53,8 +53,11 @@ Available drum sounds: kick, snare, rimshot, hihat_closed, hihat_open, ride, rid
 }
 
 
-NOTE_FORMAT_INSTRUCTIONS = """
-Output EXACTLY one measure of music in this text format, one event per line:
+def note_format_instructions(beats_per_round: int) -> str:
+    max_beat = beats_per_round - 0.25
+    unit = "measure" if beats_per_round == 4 else f"{beats_per_round}-beat segment"
+    return f"""
+Output EXACTLY one {unit} of music in this text format, one event per line:
 
 For melodic notes:
 NOTE <pitch> <start_beat> <duration> <velocity>
@@ -65,9 +68,10 @@ NOTE Eb4 0.5 0.25 0.7
 NOTE G4 1.0 1.0 0.9
 
 - pitch: note name + octave (C4 = middle C). Use flats (Bb, Eb) not sharps.
-- start_beat: position in the measure (0.0 to 3.75 for 4/4)
+- start_beat: position in the segment (0.0 to {max_beat})
 - duration: in beats (0.25 = sixteenth, 0.5 = eighth, 1.0 = quarter, 2.0 = half)
 - velocity: 0.0 to 1.0 (softness/loudness)
+- IMPORTANT: all notes must start within 0.0 to {max_beat} beats.
 
 For rests (optional, for clarity):
 REST <start_beat> <duration>
@@ -75,8 +79,12 @@ REST <start_beat> <duration>
 Output ONLY the note lines. No explanation, no commentary. Just the notes.
 """
 
-DRUM_FORMAT_INSTRUCTIONS = """
-Output EXACTLY one measure of drums in this text format, one event per line:
+
+def drum_format_instructions(beats_per_round: int) -> str:
+    max_beat = beats_per_round - 0.25
+    unit = "measure" if beats_per_round == 4 else f"{beats_per_round}-beat segment"
+    return f"""
+Output EXACTLY one {unit} of drums in this text format, one event per line:
 
 DRUM <sound> <start_beat> <duration> <velocity>
 
@@ -87,16 +95,17 @@ DRUM hihat_closed 0.5 0.25 0.5
 DRUM snare 1.0 0.25 0.9
 
 - sound: one of kick, snare, rimshot, hihat_closed, hihat_open, ride, ride_bell, crash, tom_high, tom_mid, tom_low, tom_floor, clap, cowbell
-- start_beat: position in the measure (0.0 to 3.75 for 4/4)
+- start_beat: position in the segment (0.0 to {max_beat})
 - duration: in beats
 - velocity: 0.0 to 1.0
+- IMPORTANT: all hits must start within 0.0 to {max_beat} beats.
 
 Output ONLY the drum lines. No explanation, no commentary. Just the drum hits.
 """
 
 
 class Agent:
-    """An AI musician agent that generates one measure at a time."""
+    """An AI musician agent that generates one round at a time."""
 
     def __init__(self, instrument: str, config: SessionConfig, llm_override: LLMConfig | None = None):
         self.instrument = instrument
@@ -106,7 +115,8 @@ class Agent:
         if instrument not in SYSTEM_PROMPTS:
             raise ValueError(f"Unknown instrument: {instrument}")
 
-        fmt = DRUM_FORMAT_INSTRUCTIONS if instrument == "drums" else NOTE_FORMAT_INSTRUCTIONS
+        bpr = config.beats_per_round
+        fmt = drum_format_instructions(bpr) if instrument == "drums" else note_format_instructions(bpr)
         self.system_prompt = (
             f"{SYSTEM_PROMPTS[instrument]}\n\n"
             f"Session info:\n"
@@ -119,10 +129,12 @@ class Agent:
 
     def build_user_prompt(self, history_text: str, current_round: int) -> str:
         """Build the user message for this round."""
+        bpr = self.config.beats_per_round
+        unit = "measure" if bpr == self.config.beats_per_measure else f"{bpr}-beat segment"
         return (
             f"Round {current_round + 1} of {self.config.num_rounds}.\n\n"
             f"Here is what everyone played so far:\n{history_text}\n\n"
-            f"Now play your measure for round {current_round + 1}. "
+            f"Now play your {unit} for round {current_round + 1}. "
             f"Output ONLY the note/drum lines, nothing else."
         )
 

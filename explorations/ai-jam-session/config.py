@@ -20,7 +20,8 @@ class SessionConfig:
     tempo: int = 120           # BPM
     key: str = "C minor"       # Key signature
     time_signature: tuple[int, int] = (4, 4)
-    num_rounds: int = 8        # Number of measures to generate
+    num_rounds: int = 8        # Number of rounds to generate
+    beats_per_round: int | None = None  # Beats per round (None = full measure)
 
     # LLM settings (default for all agents; can be overridden per agent)
     llm: LLMConfig = field(default_factory=LLMConfig)
@@ -31,6 +32,10 @@ class SessionConfig:
     # Output
     output_file: str = "jam_output.mid"
 
+    def __post_init__(self):
+        if self.beats_per_round is None:
+            self.beats_per_round = self.beats_per_measure
+
     @property
     def beats_per_measure(self) -> int:
         return self.time_signature[0]
@@ -38,6 +43,10 @@ class SessionConfig:
     @property
     def ticks_per_beat(self) -> int:
         return 480  # Standard MIDI resolution
+
+    @property
+    def ticks_per_round(self) -> int:
+        return self.beats_per_round * self.ticks_per_beat
 
 
 # General MIDI instrument numbers (0-indexed)

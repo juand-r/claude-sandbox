@@ -131,7 +131,7 @@ def build_midi_file(
         config: session configuration
     """
     mid = mido.MidiFile(ticks_per_beat=config.ticks_per_beat)
-    ticks_per_measure = config.beats_per_measure * config.ticks_per_beat
+    ticks_per_round = config.ticks_per_round
 
     for instrument, measures in all_measures.items():
         track = mido.MidiTrack()
@@ -157,7 +157,7 @@ def build_midi_file(
         # Collect all messages across all measures
         all_msgs = []
         for round_idx, measure_text in enumerate(measures):
-            measure_offset = round_idx * ticks_per_measure
+            measure_offset = round_idx * ticks_per_round
             events = parse_measure(measure_text, instrument)
             msgs = events_to_midi_messages(events, config.ticks_per_beat)
             for abs_tick, msg in msgs:
@@ -185,7 +185,7 @@ def format_history_for_prompt(
 ) -> str:
     """Format the shared history into text for the LLM prompt."""
     if current_round == 0:
-        return "(This is the first measure. There is no history yet. You set the tone!)"
+        return "(This is the first round. There is no history yet. You set the tone!)"
 
     lines = []
     for round_idx in range(current_round):
