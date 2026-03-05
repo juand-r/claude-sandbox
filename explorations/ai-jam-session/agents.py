@@ -136,7 +136,11 @@ class Agent:
             raise ValueError(f"Unknown LLM provider: {self.llm_config.provider}")
 
     def _call_anthropic(self, user_prompt: str) -> str:
-        client = anthropic.Anthropic()  # uses ANTHROPIC_API_KEY env var
+        # Work around env where "export " may be baked into the var name
+        api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+        if not api_key:
+            api_key = os.environ.get("export ANTHROPIC_API_KEY", "")
+        client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
             model=self.llm_config.model,
             max_tokens=self.llm_config.max_tokens,
