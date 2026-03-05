@@ -87,7 +87,8 @@ run_one() {
 
     # Run and capture output
     local out_file="${RESULTS_DIR}/${mode_name}_din${d_in}_dout${d_out}.txt"
-    ./"$bin_name" 2>&1 | tee "$out_file"
+    ./"$bin_name" > "$out_file" 2>&1
+    cat "$out_file"
 
     # Extract SUMMARY line and append to CSV
     local summary
