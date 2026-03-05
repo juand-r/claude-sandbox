@@ -1,4 +1,19 @@
-[watchdog] Starting at Thu Mar  5 01:33:58 UTC 2026
-[watchdog] Completed so far: 
-[watchdog] Next: d_in=4
-[watchdog] Running d_in=4 at Thu Mar  5 01:33:58 UTC 2026
+make: Entering directory '/home/user/claude-sandbox/explorations/qat-cpu'
+make: 'memory.o' is up to date.
+make: 'cpu_detect.o' is up to date.
+make: 'kernels_scalar.o' is up to date.
+make: 'quantize.o' is up to date.
+make: 'dispatch.o' is up to date.
+make: 'qat_linear.o' is up to date.
+make: 'layers.o' is up to date.
+make: 'optimizer.o' is up to date.
+make: 'loss.o' is up to date.
+make: 'kernels_avx2.o' is up to date.
+make: 'kernels_vnni.o' is up to date.
+make: 'kernels_bf16.o' is up to date.
+make: Leaving directory '/home/user/claude-sandbox/explorations/qat-cpu'
+============================================
+Phase 1: Sweeping d_in (d_out=128 fixed)
+============================================
+
+=== din_sweep: mode=binary d_in=4 d_out=128 ===
