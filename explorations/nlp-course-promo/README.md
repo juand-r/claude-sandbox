@@ -19,3 +19,13 @@ Outputs: `promo_video.mp4`
 - moviepy
 - pillow
 - ffmpeg (system)
+
+## Audio assets (CC0)
+Before running, download these CC0 files into `audio/`:
+```bash
+cd audio/
+curl -sLO "https://opengameart.org/sites/default/files/dance_field_2_1.mp3" && mv dance_field_2_1.mp3 dance_field.mp3
+curl -sL -o explosion_synth.flac "https://opengameart.org/sites/default/files/synthetic_explosion_1.flac"
+curl -sL -o whoosh.wav "https://opengameart.org/sites/default/files/whoosh2_0.wav"
+```
+All audio is CC0 (public domain) from [OpenGameArt.org](https://opengameart.org).

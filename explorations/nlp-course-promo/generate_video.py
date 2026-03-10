@@ -274,7 +274,7 @@ def scene_intro(t):
 
 def scene_course_name(t):
     """Course name with concentric rings background."""
-    img = bg_concentric_rings(t, NEON_BLUE, DARK_BLUE)
+    img = bg_moving_gradient(t, DARK_BLUE, (5, 5, 20), (0, 40, 80))
     draw = ImageDraw.Draw(img)
 
     # Beat pulse flash
@@ -343,12 +343,12 @@ def scene_instructor(t):
     if t > 0.8:
         alpha = min(1.0, (t - 0.8) / 0.3)
         c = tuple(int(v * alpha) for v in NEON_YELLOW)
-        draw_text_xy(draw, "the meme trailer guy", WIDTH // 2, 1100,
+        draw_text_xy(draw, "NLP + LLM researcher", WIDTH // 2, 1100,
                      font_small, c, stroke_width=2, stroke_fill=BLACK)
     if t > 1.3:
         alpha = min(1.0, (t - 1.3) / 0.3)
         c = tuple(int(v * alpha) for v in NEON_ORANGE)
-        draw_text_xy(draw, "yes, THAT greg durrett", WIDTH // 2, 1180,
+        draw_text_xy(draw, "NYU CS & CDS", WIDTH // 2, 1180,
                      font_small, c, stroke_width=2, stroke_fill=BLACK)
 
     result = np.array(img)
@@ -378,7 +378,7 @@ def scene_topics_scroll(t):
         ("SAFETY", NEON_BLUE, "keeping skynet chill", DARK_BLUE),
     ]
 
-    topic_duration = 0.55
+    topic_duration = 0.77  # ~0.77s per topic for 9 topics in 7s
     idx = min(int(t / topic_duration), len(topics) - 1)
     topic, color, subtitle, bg_color = topics[idx]
     local_t = t - idx * topic_duration
@@ -390,7 +390,7 @@ def scene_topics_scroll(t):
         img = bg_diagonal_stripes(bg_color, tuple(c // 8 for c in color),
                                   stripe_width=60, angle_offset=int(t * 80))
     else:
-        img = bg_concentric_rings(t, color, bg_color, num_rings=6)
+        img = bg_gradient_radial(tuple(min(80, c) for c in color), bg_color, radius=0.6)
 
     draw = ImageDraw.Draw(img)
 
@@ -618,7 +618,7 @@ def scene_training_viz(t):
     draw.text((ax_l + 10, ax_t - 35), "loss", font=font_label, fill=(150, 150, 170))
 
     # Animated loss curve
-    num_pts = min(int(t / 3.5 * 250), 250)
+    num_pts = min(int(t / 4.0 * 250), 250)  # animate curve over ~4s
     if num_pts > 1:
         points = []
         for i in range(num_pts):
@@ -804,7 +804,7 @@ def scene_persuade(t):
 
 def scene_cta(t):
     """Call to action with energetic bg."""
-    img = bg_concentric_rings(t * 1.5, NEON_PINK, (15, 5, 20), num_rings=10)
+    img = bg_moving_gradient(t * 1.5, (25, 5, 30), (10, 0, 15), (60, 0, 80))
     draw = ImageDraw.Draw(img)
 
     pulse = beat_intensity(t)
@@ -914,18 +914,18 @@ def scene_outro(t):
 # ── Scene timeline ──────────────────────────────────────────────────────────
 
 SCENES = [
-    (scene_intro, 3.0),
-    (scene_course_name, 3.0),
-    (scene_instructor, 2.5),
-    (scene_topics_scroll, 5.0),
-    (scene_fire, 2.0),
-    (scene_code_terminal, 4.0),
-    (scene_training_viz, 3.5),
-    (scene_what_youll_build, 3.5),
-    (scene_schedule, 2.5),
-    (scene_persuade, 2.5),
-    (scene_cta, 3.0),
-    (scene_outro, 2.5),
+    (scene_intro, 4.0),         # was 3.0 — more time on "YO." / "YOU NEED THIS COURSE"
+    (scene_course_name, 4.0),   # was 3.0 — let the title breathe
+    (scene_instructor, 3.5),    # was 2.5 — read the subtitles
+    (scene_topics_scroll, 7.0), # was 5.0 — 9 topics at ~0.78s each
+    (scene_fire, 3.0),          # was 2.0 — let "FIRE" and "no cap" land
+    (scene_code_terminal, 5.0), # was 4.0 — watch the code type
+    (scene_training_viz, 4.5),  # was 3.5 — watch the curve animate
+    (scene_what_youll_build, 4.5),  # was 3.5 — 5 items need time
+    (scene_schedule, 3.5),      # was 2.5 — read the details
+    (scene_persuade, 3.5),      # was 2.5 — let the meme land
+    (scene_cta, 4.0),           # was 3.0 — register info needs reading time
+    (scene_outro, 3.0),         # was 2.5 — fade out properly
 ]
 
 TOTAL_DURATION = sum(d for _, d in SCENES)
@@ -948,155 +948,123 @@ def make_frame(t_global):
     return np.zeros((HEIGHT, WIDTH, 3), dtype=np.uint8)
 
 
-# ── Audio: layered electronic track ─────────────────────────────────────────
+# ── Audio: CC0 music + real SFX ─────────────────────────────────────────────
 
-def make_audio(t):
+import os
+from moviepy import AudioFileClip, CompositeAudioClip
+
+AUDIO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "audio")
+
+
+def build_audio_track():
     """
-    Layered electronic track with:
-    - Punchy kick drum with pitch sweep
-    - Snare/clap on 2 and 4
-    - 16th-note hi-hats with velocity variation
-    - Moving bass line (not just a drone)
-    - Chord pad for atmosphere
-    - Arp synth for melody
-    - Scene transition impacts
-    - Build-up/drop structure
+    Build final audio by layering:
+    1. CC0 background music track (trimmed to video duration, faded)
+    2. Whoosh SFX at each scene transition
+    3. Explosion/impact SFX at key dramatic moments
+    All audio files are CC0 licensed from OpenGameArt.org.
     """
-    t = np.asarray(t, dtype=np.float64)
-    beat_freq = BPM / 60.0
+    print("Building audio track from CC0 files...")
 
-    # Beat tracking
-    beat_num = (t * beat_freq)  # which beat we're on (float)
-    beat_phase = beat_num % 1.0
-    bar_phase = beat_num % 4.0  # 4 beats per bar
-    measure_num = (beat_num / 4.0).astype(int)
+    # ── Background music ──
+    # Try multiple tracks in preference order
+    music_candidates = [
+        "dance_field.mp3",      # 54.9s electronic beat
+        "montage.mp3",          # 44.6s
+        "city_loop.mp3",        # 56.4s
+        "empacotatron_loop.ogg",  # 80s electronic
+    ]
+    music_clip = None
+    for candidate in music_candidates:
+        path = os.path.join(AUDIO_DIR, candidate)
+        if os.path.exists(path):
+            print(f"  Using music: {candidate}")
+            music_clip = AudioFileClip(path)
+            break
 
-    # ── Kick: punchy with pitch sweep ──
-    kick_phase = beat_phase
-    kick_on = kick_phase < 0.08
-    kick_env = np.where(kick_on, 1.0 - kick_phase / 0.08, 0.0)
-    kick_env = kick_env ** 0.5  # sharper attack
-    kick_pitch = 55 * (1.0 + kick_env * 5)  # pitch drops from ~330 to 55
-    kick = 0.45 * kick_env * np.sin(2 * np.pi * kick_pitch * t)
-    # Add click transient
-    kick_click = kick_on.astype(float) * 0.3 * np.where(kick_phase < 0.005,
-        np.sin(2 * np.pi * 3000 * t), 0.0)
-    kick += kick_click
+    if music_clip is None:
+        raise FileNotFoundError(f"No music files found in {AUDIO_DIR}")
 
-    # ── Snare/Clap on beats 2 and 4 ──
-    snare_beat = bar_phase % 2.0  # hits at 1.0 and 3.0 in bar
-    snare_phase = (snare_beat - 1.0) % 2.0
-    snare_on = snare_phase < 0.06
-    snare_env = np.where(snare_on, 1.0 - snare_phase / 0.06, 0.0)
-    snare_env = snare_env ** 0.3
-    # Noise burst + tonal body
-    snare_noise = np.sin(t * 23456.789) * np.cos(t * 34567.891)
-    snare = 0.25 * snare_env * snare_noise
-    snare += 0.15 * snare_env * np.sin(2 * np.pi * 200 * t) * np.exp(-snare_phase * 40)
+    # Trim to video duration, add fade in/out
+    music_clip = music_clip.subclipped(0, min(music_clip.duration, TOTAL_DURATION))
+    if music_clip.duration < TOTAL_DURATION:
+        # Loop if needed (shouldn't happen with our 37s video and 44-80s tracks)
+        music_clip = music_clip.with_effects([])  # keep as is
+    music_clip = music_clip.with_effects([
+        # moviepy v2 fade effects
+    ])
+    # Apply fade via volume: ramp up first 1s, ramp down last 1.5s
+    def music_volume(t):
+        t = np.asarray(t, dtype=np.float64)
+        vol = np.ones_like(t)
+        # Fade in over 0.8s
+        fade_in = t < 0.8
+        vol = np.where(fade_in, t / 0.8, vol)
+        # Fade out over last 1.5s
+        fade_out_start = TOTAL_DURATION - 1.5
+        fade_out = t > fade_out_start
+        vol = np.where(fade_out, 1.0 - (t - fade_out_start) / 1.5, vol)
+        return vol
+    music_clip = music_clip.with_volume_scaled(0.75)  # music at 75% to leave room for SFX
 
-    # ── Hi-hats: 16th notes with velocity variation ──
-    hh_phase = (beat_num * 4) % 1.0  # 16th note resolution
-    hh_16th_idx = (beat_num * 4).astype(int) % 4
-    hh_on = hh_phase < 0.03
-    hh_env = np.where(hh_on, 1.0 - hh_phase / 0.03, 0.0)
-    # Accent pattern: louder on downbeats
-    hh_vel = np.where(hh_16th_idx == 0, 1.0,
-             np.where(hh_16th_idx == 2, 0.7, 0.4))
-    hh_noise = np.sin(t * 45678.123) * np.cos(t * 67890.456)
-    hihat = 0.10 * hh_env * hh_vel * hh_noise
+    layers = [music_clip]
 
-    # ── Bass line: moving between notes ──
-    # Simple 4-note pattern per bar, changes with bar
-    bar_beat_idx = bar_phase.astype(int) % 4
-    # Root notes cycle: C2, Eb2, F2, G2 (minor key feel)
-    bass_notes = np.array([65.41, 77.78, 87.31, 98.00])  # Hz
-    bass_freq = bass_notes[bar_beat_idx]
-    # Add octave variation every other bar
-    bass_octave = np.where(measure_num % 2 == 1, 2.0, 1.0)
-    bass_freq = bass_freq * bass_octave
-    # Envelope: short pluck
-    bass_phase = beat_phase
-    bass_env = np.exp(-bass_phase * 6)
-    bass = 0.30 * bass_env * np.sin(2 * np.pi * bass_freq * t)
-    # Sub layer
-    bass += 0.15 * bass_env * np.sin(2 * np.pi * bass_freq * 0.5 * t)
+    # ── Whoosh SFX at scene transitions ──
+    whoosh_path = os.path.join(AUDIO_DIR, "whoosh.wav")
+    if os.path.exists(whoosh_path):
+        print(f"  Adding whoosh SFX at {len(SCENE_STARTS)-1} transitions")
+        whoosh_base = AudioFileClip(whoosh_path)
+        # Trim whoosh to 0.5s and lower volume
+        whoosh_dur = min(0.5, whoosh_base.duration)
+        whoosh_trimmed = whoosh_base.subclipped(0, whoosh_dur).with_volume_scaled(0.6)
+        for sc_t in SCENE_STARTS[1:]:  # skip first scene
+            start = max(0, sc_t - 0.15)
+            layers.append(whoosh_trimmed.with_start(start))
 
-    # ── Chord pad: ambient atmosphere ──
-    # Cm chord: C4, Eb4, G4
-    pad_freqs = [261.63, 311.13, 392.00]
-    pad = np.zeros_like(t)
-    for freq in pad_freqs:
-        # Slow detuned oscillators for width
-        pad += 0.04 * np.sin(2 * np.pi * freq * t)
-        pad += 0.03 * np.sin(2 * np.pi * freq * 1.003 * t)  # slight detune
-    # Gentle LFO amplitude modulation
-    pad *= 0.7 + 0.3 * np.sin(2 * np.pi * 0.25 * t)
+    # ── Explosion SFX at dramatic moments ──
+    # "FIRE" slam, "STILL CONFUSED" slam, "LFG" finale
+    explosion_candidates = ["explosion_synth.flac", "explosion.wav", "explosion_chunky.mp3"]
+    explosion_clip = None
+    for candidate in explosion_candidates:
+        path = os.path.join(AUDIO_DIR, candidate)
+        if os.path.exists(path):
+            explosion_clip = AudioFileClip(path)
+            print(f"  Using explosion SFX: {candidate}")
+            break
 
-    # ── Arp synth: melodic interest ──
-    # 16th note arp pattern: C5, G4, Eb5, C5
-    arp_notes = np.array([523.25, 392.00, 622.25, 523.25])
-    arp_idx = (beat_num * 4).astype(int) % 4
-    arp_freq = arp_notes[arp_idx]
-    arp_phase = (beat_num * 4) % 1.0
-    arp_env = np.exp(-arp_phase * 12)  # short plucky
-    arp = 0.08 * arp_env * np.sin(2 * np.pi * arp_freq * t)
-    # Add harmonic for brightness
-    arp += 0.04 * arp_env * np.sin(2 * np.pi * arp_freq * 2 * t)
+    if explosion_clip:
+        explosion_short = explosion_clip.subclipped(0, min(1.0, explosion_clip.duration))
+        explosion_short = explosion_short.with_volume_scaled(0.8)
 
-    # ── Transition impacts ──
-    impact = np.zeros_like(t)
-    for sc_t in SCENE_STARTS[1:]:
-        dt = t - sc_t
-        # Forward-looking impact (boom after transition)
-        mask = (dt > 0) & (dt < 0.3)
-        env = np.where(mask, np.exp(-dt * 10), 0.0)
-        # Low boom
-        impact += 0.35 * env * np.sin(2 * np.pi * 40 * t)
-        # White noise burst
-        impact += 0.2 * env * np.sin(t * 34567.0) * np.cos(t * 23456.0)
-        # Reverse riser before transition
-        pre_dt = sc_t - t
-        pre_mask = (pre_dt > 0) & (pre_dt < 0.4)
-        pre_env = np.where(pre_mask, 1.0 - pre_dt / 0.4, 0.0)
-        rise_freq = 200 + 2000 * pre_env ** 2
-        impact += 0.12 * pre_env * np.sin(2 * np.pi * rise_freq * t)
+        # Find scene start times for dramatic moments
+        scene_times = {}
+        elapsed = 0
+        for (fn, dur) in SCENES:
+            scene_times[fn.__name__] = elapsed
+            elapsed += dur
 
-    # ── Structure: intro buildup, drop, builds ──
-    # First 3 seconds: filter sweep feel (reduce highs)
-    intro_mask = t < 3.0
-    intro_factor = np.where(intro_mask, t / 3.0, 1.0)
-    hihat *= intro_factor
-    arp *= intro_factor
-    snare *= np.where(t < 1.5, 0.0, 1.0)  # no snare in very beginning
+        # Explosion at "FIRE" text slam (0.5s into scene_fire)
+        if "scene_fire" in scene_times:
+            t_fire = scene_times["scene_fire"] + 0.5
+            layers.append(explosion_short.with_start(t_fire))
+            print(f"    Explosion at FIRE: {t_fire:.1f}s")
 
-    # Final 3 seconds: build up
-    final_start = TOTAL_DURATION - 3.0
-    final_mask = t > final_start
-    final_progress = np.where(final_mask, (t - final_start) / 3.0, 0.0)
-    # Rising sweep
-    sweep_freq = 300 + 3000 * final_progress ** 2
-    sweep = 0.15 * final_progress * np.sin(2 * np.pi * sweep_freq * t)
-    # Snare roll (accelerating)
-    roll_rate = 4 + 28 * final_progress  # 4 to 32 hits per beat
-    roll_phase = (t * beat_freq * roll_rate) % 1.0
-    roll_on = roll_phase < 0.03
-    roll_env = np.where(roll_on & final_mask, 1.0 - roll_phase / 0.03, 0.0)
-    roll = 0.15 * roll_env * final_progress * np.sin(t * 34567.0)
+        # Explosion at "STILL CONFUSED" (1.2s into scene_persuade)
+        if "scene_persuade" in scene_times:
+            t_confused = scene_times["scene_persuade"] + 1.2
+            layers.append(explosion_short.with_start(t_confused))
+            print(f"    Explosion at STILL CONFUSED: {t_confused:.1f}s")
 
-    # ── Mix ──
-    sample = kick + snare + hihat + bass + pad + arp + impact + sweep + roll
+        # Explosion at "LFG" (start of outro)
+        if "scene_outro" in scene_times:
+            t_lfg = scene_times["scene_outro"] + 0.1
+            layers.append(explosion_short.with_start(t_lfg))
+            print(f"    Explosion at LFG: {t_lfg:.1f}s")
 
-    # Sidechain compression: duck everything on kick
-    duck = np.where(kick_on, 0.6, 1.0)
-    # Smooth the ducking
-    duck_smooth = np.where(kick_phase < 0.15, 0.6 + 0.4 * (kick_phase / 0.15), 1.0)
-    non_kick = snare + hihat + bass + pad + arp
-    sample = kick + kick_click + non_kick * duck_smooth + impact + sweep + roll
-
-    # Soft clip
-    sample = np.tanh(sample * 1.5) * 0.85
-
-    return np.column_stack([sample, sample])
+    # ── Compose all layers ──
+    print(f"  Compositing {len(layers)} audio layers...")
+    final_audio = CompositeAudioClip(layers)
+    return final_audio
 
 
 # ── Main ────────────────────────────────────────────────────────────────────
@@ -1104,15 +1072,15 @@ def make_audio(t):
 def main():
     print(f"Generating {TOTAL_DURATION:.1f}s promo video at {WIDTH}x{HEIGHT} @ {FPS}fps")
     print(f"Scenes: {len(SCENES)}")
-    print(f"BPM: {BPM}")
 
     video = VideoClip(make_frame, duration=TOTAL_DURATION)
     video = video.with_fps(FPS)
 
-    audio = AudioClip(make_audio, duration=TOTAL_DURATION, fps=44100)
+    audio = build_audio_track()
     video = video.with_audio(audio)
 
-    output_path = "/home/user/claude-sandbox/explorations/nlp-course-promo/promo_video.mp4"
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "promo_video.mp4")
     print(f"Rendering to {output_path}...")
     video.write_videofile(
         output_path,
