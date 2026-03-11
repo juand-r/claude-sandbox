@@ -39,7 +39,7 @@ Deep literature review across three themes to understand the relationship betwee
 - Reports saved in this directory
 
 ## Status
-- [ ] Stream 1: Cybernetics Sources
-- [ ] Stream 2: Agents Literature
-- [ ] Stream 3: Bridging Work
-- [ ] Final Synthesis
+- [x] Stream 1: Cybernetics Sources (4,600 words, 25 sources)
+- [x] Stream 2: Agents Literature (4,000 words, 30+ sources)
+- [x] Stream 3: Bridging Work (5,000 words, 36 sources)
+- [x] Final Synthesis (SYNTHESIS.md, ~3,500 words)
