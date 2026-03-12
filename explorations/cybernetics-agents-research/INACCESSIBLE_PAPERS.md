@@ -9,3 +9,9 @@
 ## Thompson, R. (2011). "Viable Computing Systems: A Set Theory Decomposition of Beer's VSM." PhD thesis, LJMU.
 - **Status:** PDF at core.ac.uk returned 404. Listed at https://core.ac.uk/download/pdf/80684155.pdf
 - **Relevance:** The most rigorous formal mathematical treatment of Beer's VSM found — uses set theory to decompose the model algebraically.
+
+---
+
+## Note on Kybernetika Journal Papers
+
+All 7 Kybernetika papers surveyed (2020-2024) were fully accessible. Kybernetika is a **diamond open access** journal — no publication fees, no reader fees. All papers and PDFs available at https://www.kybernetika.cz/. See `notes/journals/kybernetika-*.md` for individual paper notes.
