@@ -72,7 +72,35 @@ The first pass was superficial — survey-level summaries from secondary sources
 
 25. **Stigmergy in multi-agent systems** — Heylighen (2015), formal models.
 
-### D. Analysis & Synthesis
+### D. Secondary Sources (books, papers, reports, conference proceedings)
+
+Search for and read secondary sources that provide substantive analysis (not Wikipedia-level):
+- Recent books on cybernetics and AI/agent design
+- Conference proceedings (AAAI, NeurIPS, ICML, AAMAS, etc.) on agent architectures
+- Technical reports from AI labs on agent failure modes and design patterns
+- Academic survey papers beyond Wang et al.
+- Books/chapters on systems theory applied to AI
+
+### E. Citation Chasing (recursive depth)
+
+For each paper/book already read in notes/:
+- Identify the 2-3 most important/salient references cited
+- Download and read those cited papers
+- Take notes on them
+- Agents doing this work should launch their own sub-agents to follow the most promising citation threads deeper (sub-sub-agents)
+- Goal: build a citation graph of the most important ideas, not just a flat list
+
+### F. Question-Driven Research
+
+Read the existing reports (report-1, report-2, report-3, SYNTHESIS.md) and generate hard, substantive questions:
+- What claims are unsupported or weakly supported?
+- What connections are asserted but not demonstrated?
+- What counter-arguments exist?
+- What's missing entirely?
+
+Then launch sub-agents to search the literature to answer those questions. Results go in `notes/questions/`.
+
+### G. Analysis & Synthesis
 
 26. Build a formal concept mapping: cybernetic formalism → agent design pattern → specific papers on each side
 
@@ -84,15 +112,28 @@ The first pass was superficial — survey-level summaries from secondary sources
 
 30. Identify concrete predictions: what does cybernetics predict about agent failure modes that we observe?
 
+## Research Methodology
+
+- **Download everything**: All papers and books (where possible) should be downloaded so agents can read the actual text, not summaries
+- **Recursive agents**: Agents should launch sub-agents for citation chasing and question answering
+- **Secondary sources welcome**: Books, reports, conference proceedings — anything with more substance than Wikipedia
+- **Notes on everything**: Every source read gets a note in `notes/`
+
 ## Output
 
-- `notes/` directory: detailed notes on each paper read
+- `notes/` directory: detailed notes on each paper/source read
+- `notes/citations/` directory: notes on papers found via citation chasing
+- `notes/questions/` directory: questions generated from reports + answers found
+- `notes/secondary/` directory: notes on secondary sources
 - Revised, deeper reports replacing the v1 reports
 - A final synthesis that is genuinely analytical, not just descriptive
 
 ## Status
 
-- [ ] Stream A: Primary cybernetics sources
-- [ ] Stream B: Modern agent papers
-- [ ] Stream C: Bridging papers
-- [ ] Stream D: Analysis & synthesis
+- [x] Stream A: Primary cybernetics sources (notes complete for items 1-10)
+- [x] Stream B: Modern agent papers (notes complete for items 11-18)
+- [x] Stream C: Bridging papers (notes complete for items 19-25)
+- [ ] Stream D: Secondary sources
+- [ ] Stream E: Citation chasing
+- [ ] Stream F: Question-driven research
+- [ ] Stream G: Analysis & synthesis
