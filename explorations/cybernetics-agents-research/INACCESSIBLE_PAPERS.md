@@ -34,3 +34,25 @@ All 7 Kybernetika papers surveyed (2020-2024) were fully accessible. Kybernetika
 - **Orengo (2018)** "Theoretical notes on practical application of VSM" -- DOI: 10.1108/K-02-2017-0069
 
 See `notes/journals/kybernetes-*.md` for individual paper notes.
+
+---
+
+## Note on IEEE Transactions on Cybernetics Papers
+
+7 papers surveyed (2020-2024). IEEE Transactions on Cybernetics is published by IEEE and is **paywalled** through IEEE Xplore. 1 of 7 papers had full text freely available via arXiv:
+
+### Accessible (arXiv preprints available)
+- **Nguyen, Nguyen & Nahavandi (2020)** "Deep Reinforcement Learning for Multiagent Systems: A Review" -- arXiv: https://arxiv.org/abs/1812.11794
+- **Wang, Ke, Qiao & Chai (2021)** "Large-Scale Traffic Signal Control Using a Novel MARL" -- arXiv: https://arxiv.org/abs/1908.03761
+
+### Partially Accessible (abstract, metadata, citing context)
+- **Modares, Kiumarsi, Lewis et al. (2020)** "Resilient and Robust Synchronization of Multiagent Systems Under Attacks" -- DOI: 10.1109/TCYB.2019.2891437
+- **Qian, Liu, Wan, Lewis & Davoudi (2023)** "Distributed Adaptive Nash Equilibrium for Differential Graphical Games" -- DOI: 10.1109/TCYB.2021.3114749
+- **Lian et al. (2023)** "Anomaly Detection and Correction of Optimizing Autonomous Systems With Inverse RL" -- ResearchGate has PDF but returned 403
+
+### Paywalled (abstracts and search context only)
+- **Deng & Wen (2021)** "MAS-Based Distributed Resilient Control for CPS Under DoS Attacks" -- DOI: 10.1109/TCYB.2020.2972686
+- **Deng, Che & Wu (2021)** "Dynamic Periodic Event-Triggered Consensus of Heterogeneous MAS" -- DOI: 10.1109/TCYB.2019.2920531
+- **Tan et al. (2020)** "Cooperative Deep RL for Large-Scale Traffic Grid Signal Control" -- DOI: 10.1109/TCYB.2019.2904742
+
+See `notes/journals/ieee-cybernetics-*.md` for individual paper notes.
