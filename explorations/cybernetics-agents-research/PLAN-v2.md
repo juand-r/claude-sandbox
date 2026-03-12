@@ -133,7 +133,7 @@ Then launch sub-agents to search the literature to answer those questions. Resul
 - [x] Stream A: Primary cybernetics sources (notes complete for items 1-10)
 - [x] Stream B: Modern agent papers (notes complete for items 11-18)
 - [x] Stream C: Bridging papers (notes complete for items 19-25)
-- [ ] Stream D: Secondary sources
-- [ ] Stream E: Citation chasing
-- [ ] Stream F: Question-driven research
+- [x] Stream D: Secondary sources (9 sources in notes/secondary/)
+- [x] Stream E: Citation chasing (27+ papers in notes/citations/ across both cybernetics and agent lineages)
+- [x] Stream F: Question-driven research (32 questions generated, 8 answered in notes/questions/)
 - [ ] Stream G: Analysis & synthesis
