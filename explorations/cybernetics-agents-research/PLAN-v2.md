@@ -133,7 +133,7 @@ Then launch sub-agents to search the literature to answer those questions. Resul
 - [x] Stream A: Primary cybernetics sources (notes complete for items 1-10)
 - [x] Stream B: Modern agent papers (notes complete for items 11-18)
 - [x] Stream C: Bridging papers (notes complete for items 19-25)
-- [x] Stream D: Secondary sources (9 sources in notes/secondary/)
+- [x] Stream D: Secondary sources (50+ sources in notes/secondary/; includes 2000-2010 bridging works: Pfeifer/Bongard 2006 embodied intelligence, Thompson 2007 enactivism, Pickering 2010 British cybernetics history, Di Paolo 2005 adaptivity deep dive, Froese/Ziemke 2009 enactive AI, Heylighen/Joslyn 2001 cybernetics encyclopedia, Seth 2007 consciousness models, Barandiaran/Moreno 2006 minimally cognitive organization, Boden 2006 cognitive science history, Wooldridge 2002 + Wooldridge/Jennings 1995 agent theory, Ferber 1999 MAS textbook, Weiss 1999 DAI textbook; plus earlier 1990s bridging works and 2007-2017 works)
 - [x] Stream E: Citation chasing (27+ papers in notes/citations/ across both cybernetics and agent lineages)
 - [x] Stream F: Question-driven research (32 questions generated, 8 answered in notes/questions/)
 - [ ] Stream G: Analysis & synthesis

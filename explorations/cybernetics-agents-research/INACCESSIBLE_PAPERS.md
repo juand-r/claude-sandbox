@@ -97,3 +97,50 @@ See `notes/journals/ieee-cybernetics-*.md` for individual paper notes.
   - **Status:** Paywalled (IEEE Xplore). DOI: 10.1109/MAHC.2023.3297745
 
 See `notes/conferences/` for detailed conference notes.
+
+---
+
+## Note on Modern Cybernetics Conference Papers (2023–2025)
+
+### IEEE SMC Conference Proceedings (Paywalled via IEEE Xplore)
+
+All IEEE SMC conference papers are behind IEEE Xplore paywall. Accessible only with institutional access or IEEE membership.
+
+#### IEEE SMC 2024 (Kuching, Malaysia)
+- Proceedings at https://ieeexplore.ieee.org/xpl/conhome/10830919/proceeding
+- **Keynote/plenary speaker details could not be retrieved** — conference website does not expose content to search indexing.
+- Papers found via DBLP/search (abstracts only, full text paywalled):
+  - **Tang & Chen (2024)** "Dynamic Event-Triggered Distributed MPC for UAV-UGV Systems Against DoS Attacks"
+  - **Lin, Lee, Chang, Ku & Sun (2024)** "Formation and Containment Fuzzy Control via Interval Type-2 Approach for Multiple Autonomous Ships"
+  - **"Integrating Task Allocation and Hierarchical Reinforcement Learning for Optimized Cargo Transport Routing"** — IEEE Xplore doc 10831011
+
+#### IEEE SMC 2025 (Vienna, Austria)
+- Conference handbook PDF at https://www.ieeesmc2025.org/files/content/SMC25-Handbook.pdf (not accessed — large PDF)
+- Keynote and plenary details were accessible from conference website.
+- Individual paper full texts will be paywalled on IEEE Xplore.
+
+#### Li, Gravina & Fortino (2025) "Multi-Agent Systems Meet Large Language Models: Architectures, Synergies, and Future Directions"
+- Published as featured article in IEEE SMC Society eNewsletter, Issue 85 (June 2025)
+- **Status:** Could not locate full text. May be available at https://www.ieeesmc.org/ but newsletter content not indexed by search.
+- **Relevance:** Directly addresses convergence of MAS and LLMs within the SMC cybernetics community.
+
+### ASC Conference Papers (Mixed Access)
+
+#### Constructivist Foundations Vol. 20, No. 2 (Spring 2025)
+- Special issue from ASC 2024 60th Anniversary
+- **Status: ACCESSIBLE** — Constructivist Foundations is open access at https://constructivist.info/
+- Editorial: Westermann (2025) "Conversations on Four Cybernetic Approaches to Embracing Uncertainty"
+- Contains 4 target articles with peer commentaries.
+
+#### Tilak, Manning, Glassman, Pangaro & Scott (2024) "Gordon Pask's Conversation Theory and Interaction of Actors Theory: Research to Practice"
+- *Enacting Cybernetics* 2(1), DOI: 10.58695/ec.11
+- **Status: ACCESSIBLE** — Open access at https://enacting-cybernetics.org/articles/10.58695/ec.11
+
+#### Cybernetics & Human Knowing (Spring 2025)
+- Second special issue from ASC 2024. **Status: NOT FOUND** — details and access unknown.
+
+### EMCSR (European Meetings on Cybernetics and Systems Research)
+- **Conference appears inactive since 2018/2020.** No 2022 or 2024 editions found.
+- No recent proceedings to access.
+
+See `notes/conferences/` for detailed conference notes.
