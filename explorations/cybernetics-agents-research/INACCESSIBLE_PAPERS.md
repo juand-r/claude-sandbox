@@ -56,3 +56,44 @@ See `notes/journals/kybernetes-*.md` for individual paper notes.
 - **Tan et al. (2020)** "Cooperative Deep RL for Large-Scale Traffic Grid Signal Control" -- DOI: 10.1109/TCYB.2019.2904742
 
 See `notes/journals/ieee-cybernetics-*.md` for individual paper notes.
+
+---
+
+## Note on Conference Proceedings
+
+### Fully Accessible
+
+- **Yovits & Cameron (eds.) (1960)** *Self-Organizing Systems: Proceedings of an Interdisciplinary Conference, 5-6 May 1959.* Pergamon Press.
+  - **Status:** Freely available on Internet Archive: https://archive.org/details/SelfOrganizingSystems
+  - Includes von Foerster's "On Self-Organizing Systems and Their Environments" (pp. 31-50)
+
+- **NPL (1959)** *Mechanisation of Thought Processes: Proceedings of a Symposium, Nov 24-27, 1958.* HMSO, London. 2 vols, ~980 pp.
+  - **Status:** Freely available on Internet Archive: https://archive.org/details/mechanisationoft02nati
+  - Key papers by Minsky, McCarthy, Selfridge, Rosenblatt, Uttley, Ashby
+
+- **Heims, S.J. (1991)** *The Cybernetics Group.* MIT Press.
+  - **Status:** Full PDF freely available on Monoskop and Internet Archive
+  - https://monoskop.org/images/2/26/Heims_Steve_Joshua_The_Cybernetics_Group_1991.pdf
+
+### Paywalled / Purchase Required
+
+- **Pias, Claus (ed.) (2016)** *Cybernetics: The Macy Conferences 1946-1953. The Complete Transactions.* Diaphanes. 734 pp. ISBN: 978-3-03734-598-6.
+  - **Status:** Commercial publication, ~$40-60. Partial PDF on Scribd (subscription). No free access.
+  - Contains complete transcripts of all 10 Macy conferences (only conferences 6-10 were originally published by von Foerster 1950-1955; conferences 1-5 had no published proceedings).
+
+- **Von Foerster, H. & Zopf, G.W. (eds.) (1962)** *Principles of Self-Organization: Transactions of the University of Illinois Symposium.* Pergamon Press.
+  - **Status:** Not freely available online. Physical copies via university libraries.
+  - Contains Ashby's classic "Principles of the Self-Organizing System" (pp. 255-278) — this individual paper has been republished by E:CO journal and may be findable separately.
+
+- **Yovits, M.C.; Jacobi, G.T.; Goldstein, G.D. (eds.) (1962)** *Self-Organizing Systems, 1962.* Spartan Books, Washington DC. 574 pp.
+  - **Status:** Not freely available online. Physical copies via used book markets (AbeBooks). Reprinted editions exist (ISBN: 978-1258709761).
+  - Contains papers by Rosenblatt, Widrow, McCulloch/Arbib/Cowan, Solomonoff, Selfridge, others.
+
+- **Dupuy, J.-P. (2000)** *The Mechanization of the Mind: On the Origins of Cognitive Science.* Princeton University Press.
+  - **Status:** Paywalled. Available for purchase from Princeton University Press.
+  - Secondary analysis of Macy conferences and origins of cognitive science.
+
+- **IEEE Annals of the History of Computing (2023)** "The Representation of Knowledge and the Relevance of Biological Models at the Symposium on the Mechanization of Thought Processes, 1958"
+  - **Status:** Paywalled (IEEE Xplore). DOI: 10.1109/MAHC.2023.3297745
+
+See `notes/conferences/` for detailed conference notes.
