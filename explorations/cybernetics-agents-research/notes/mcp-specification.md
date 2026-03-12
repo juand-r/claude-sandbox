@@ -1,152 +1,137 @@
-# Anthropic Model Context Protocol (MCP) Specification
+# Anthropic MCP Specification: Cybernetic Analysis
 
 ## Source
-- Specification: https://modelcontextprotocol.io/specification/2025-11-25
-- Announced: November 2024 by Anthropic
-- Major update: November 2025
-- Donated to Linux Foundation's Agentic AI Foundation (AAIF), December 2025
-- Schema source: https://github.com/modelcontextprotocol/specification/blob/main/schema/2025-11-25/schema.ts
+- Model Context Protocol Specification (2025-11-25 revision)
+- https://modelcontextprotocol.io/specification/2025-11-25
+- Originally released by Anthropic, November 2024
+- Donated to Agentic AI Foundation (Linux Foundation), December 2025
 
 ## What MCP Is
 
-An open protocol for standardizing how LLM applications integrate with external data sources and tools. Uses JSON-RPC 2.0 messages. Inspired by the Language Server Protocol (LSP), which standardized programming language support across IDEs. MCP does the analogous thing for AI application integrations.
+MCP is an open protocol standardizing how LLM applications integrate with external data sources and tools. It uses JSON-RPC 2.0 for communication between three roles:
+
+- **Hosts**: LLM applications that initiate connections (the container process)
+- **Clients**: Connectors within the host, each maintaining a 1:1 session with a server
+- **Servers**: Services providing context and capabilities
+
+Inspired by Language Server Protocol (LSP) for IDE tooling. The analogy is deliberate: LSP standardized programming language support across editors; MCP standardizes tool/context integration across AI applications.
 
 ## Architecture: Client-Host-Server
 
-Three-tier model:
+The host process creates and manages multiple client instances. Each client has one stateful session with one server. This is a strict isolation model:
 
-- **Host**: The LLM application (e.g., Claude Desktop, an IDE). Creates/manages multiple clients. Coordinates AI/LLM integration. Enforces security policies and user consent. Aggregates context across clients.
-- **Client**: Created by the host, maintains isolated 1:1 connection with a server. Handles protocol negotiation, capability exchange, message routing, subscriptions.
-- **Server**: Provides context and capabilities. Exposes resources, tools, and prompts. Can be local processes or remote services. Operates independently with focused responsibilities.
+- Servers cannot see the full conversation
+- Servers cannot see into other servers
+- Cross-server interactions are mediated by the host
+- The host enforces all security boundaries
 
-Key isolation property: **Servers cannot see the full conversation, nor can they see into other servers.** The host mediates all cross-server interactions.
+This maps directly to **Ashby's Law of Requisite Variety** in an interesting way: the host is the regulator, and the client-server isolation creates controlled channels of variety.
 
-## Protocol Layers
+## Three Server Primitives
 
-Built on JSON-RPC 2.0 with stateful sessions. Capability negotiation at initialization -- both client and server declare what they support. Features are progressively addable.
+| Primitive | Control | Description |
+|-----------|---------|-------------|
+| **Prompts** | User-controlled | Templates invoked by user choice (slash commands, menus) |
+| **Resources** | Application-controlled | Contextual data attached by the client (files, git history) |
+| **Tools** | Model-controlled | Functions the LLM can invoke to take actions |
 
-## Server Features (What Servers Expose)
+This is a hierarchy of control: user > application > model. The cybernetic significance is that it's a **layered variety management system**. Each layer has different requisite variety:
+- Users have highest variety (can choose any prompt)
+- Applications filter/curate (resource selection)
+- Models have constrained variety (can only call defined tools)
 
-### 1. Tools (Model-Controlled)
-Functions the LLM can discover and invoke autonomously. The LLM decides when to use them based on context.
+## Tools as Variety Amplification
 
-Tool definition schema:
-- `name`: unique identifier (1-128 chars, case-sensitive)
-- `description`: human-readable
-- `inputSchema`: JSON Schema for parameters
-- `outputSchema`: optional JSON Schema for structured results
-- `annotations`: metadata about behavior (untrusted unless from trusted server)
+Tools are the most cybernetically interesting primitive. The tool specification defines:
 
-Invocation flow:
-1. Client sends `tools/list` to discover tools
-2. LLM selects tool to use
-3. Client sends `tools/call` with name + arguments
-4. Server returns result (text, image, audio, resource links, embedded resources)
-5. Server can notify `tools/list_changed` when tool set changes
+```json
+{
+  "name": "tool_name",
+  "description": "Human-readable description",
+  "inputSchema": { /* JSON Schema for parameters */ },
+  "outputSchema": { /* Optional: expected output structure */ },
+  "annotations": { /* Metadata about behavior */ }
+}
+```
 
-Two error types:
-- Protocol errors (JSON-RPC): malformed requests, unknown tools
-- Tool execution errors (`isError: true`): API failures, validation errors. These are fed back to the LLM for self-correction.
+### Discovery and Invocation Flow
+1. Client sends `tools/list` -> Server returns available tools
+2. LLM selects tool based on contextual understanding
+3. Client sends `tools/call` with arguments -> Server executes -> returns result
+4. Server can notify `tools/list_changed` when available tools change
 
-### 2. Resources (Application-Controlled)
-Contextual data attached and managed by the client. Example: file contents, git history. Not directly invoked by the LLM -- the application decides what to attach.
+### Cybernetic Analysis: Tool Use as Variety Amplification
 
-### 3. Prompts (User-Controlled)
-Pre-defined templates invoked by user choice. Example: slash commands, menu options.
+From Ashby's perspective, an LLM without tools is a **variety-limited regulator**. It can only produce text. Adding tools amplifies the model's variety of possible actions:
 
-## Client Features (What Clients Expose to Servers)
+- Without tools: variety = {text outputs}
+- With tools: variety = {text outputs} x {tool_1 actions} x {tool_2 actions} x ... x {tool_n actions}
 
-### 1. Sampling
-Servers can request LLM completions from the client. This is what enables **nested agentic loops**: a server can run its own agent loop using the client's LLM access, while the user retains control.
+Each tool is a **channel of requisite variety** that the model can activate. The JSON Schema input constraints on each tool bound the variety per channel -- you can't call `get_weather` with arbitrary parameters, only those matching the schema. This is **variety attenuation** applied to each amplification channel.
 
-Flow:
-1. Server sends `sampling/createMessage` with messages + optional tools
-2. Client presents request to user for approval (human-in-the-loop)
-3. Client forwards to LLM
-4. LLM responds (possibly with tool_use)
-5. Client presents response to user for review
-6. Client returns approved response to server
+The `listChanged` notification mechanism is a **feedback loop**: the environment (server) signals that available variety has changed, and the system adapts.
 
-Model preferences use abstract priorities (cost, speed, intelligence on 0-1 scale) plus optional model hints (substring matching). This decouples servers from specific model names.
+### Error Handling as Negative Feedback
 
-Supports multi-turn tool loops: server receives tool_use response, executes tools, sends results back in new sampling request. Can iterate until done.
+Two types of errors:
+1. **Protocol errors** (malformed requests) -- structural failures, the channel itself is broken
+2. **Tool execution errors** (`isError: true`) -- actionable feedback the LLM can use to self-correct
 
-### 2. Roots
-Filesystem boundaries. Servers can ask what directories/files they have access to. Must be `file://` URIs.
+Tool execution errors are explicitly designed as negative feedback for the model: "Clients SHOULD provide tool execution errors to language models to enable self-correction." This is a textbook **error-controlled regulator** -- the system detects deviation from desired output and corrects.
 
-### 3. Elicitation
-Server-initiated requests for additional information from users.
+## Sampling: Recursive Variety
 
-## Cybernetic Analysis: Tool Use as Variety Amplification
+The sampling feature allows servers to request LLM completions from the client. This is the inverse flow: instead of the model calling tools on the server, the server calls the model through the client.
 
-### Ashby's Law of Requisite Variety
-The fundamental cybernetic insight: a controller must have at least as much variety as the system it seeks to control. An LLM alone has limited variety -- it can only produce text. Its action space is constrained to language generation.
+Key design:
+- Server sends `sampling/createMessage` with messages, model preferences, optional tools
+- Client mediates: presents to user for approval, forwards to LLM, returns result
+- **Human-in-the-loop is required**: user must approve prompts and review results
+- Server can specify model preferences (cost/speed/intelligence priorities) and hints
 
-### MCP as Variety Amplifier
-MCP dramatically amplifies the LLM's variety through tool access:
+### Agentic Loops via Sampling + Tools
 
-1. **Expanding the action space**: Each tool adds new possible actions (query a database, call an API, write a file, execute code). The LLM's effective variety grows multiplicatively with each tool added.
+The November 2025 update added tools-in-sampling: servers can request LLM completions that include tool definitions. This enables:
+1. Server requests LLM sampling with tools
+2. LLM returns tool_use (stopReason: "toolUse")
+3. Server executes tools, sends results back in new sampling request
+4. LLM processes results, may request more tools or produce final answer
 
-2. **Dynamic variety through discovery**: Tools are not fixed at design time. The `tools/list` + `tools/list_changed` mechanism means the available variety can change during a session. New tools can appear, old ones disappear. This is adaptive variety -- the system's action repertoire evolves.
+This creates **recursive agentic loops** where MCP servers can run their own agent cycles using the client's LLM access. From a cybernetics perspective, this is **recursion in the variety management hierarchy** -- the server becomes a second-order regulator, using the model as its own variety amplifier.
 
-3. **Composability as variety multiplication**: Because servers are independent and composable, variety grows combinatorially. N servers with M tools each gives N*M available actions, plus combinations.
+## Capability Negotiation as Structural Coupling
 
-4. **Recursive variety through sampling**: The sampling feature creates recursive variety amplification. A server can request LLM completions, which can use tools, which can trigger more sampling. This is a positive feedback loop on variety.
+During initialization, clients and servers exchange capability declarations:
+- Server declares: tools, resources, prompts, subscriptions
+- Client declares: sampling, roots, elicitation
 
-### Variety Attenuation (The Control Side)
-MCP also provides variety attenuation -- reducing the space of actions to manageable levels:
+This is **structural coupling** in the Maturana/Varela sense: two systems establishing the parameters of their interaction domain. Neither system dictates to the other; they negotiate a shared interface. The protocol is explicitly designed for progressive feature addition -- you start minimal and add capabilities as needed.
 
-1. **Capability negotiation**: Only declared capabilities are available. This constrains variety to what's been explicitly permitted.
+## Security Model: Variety Attenuation
 
-2. **Human-in-the-loop**: Sampling requires user approval. Every tool invocation SHOULD require user confirmation. This is a critical variety attenuator -- the human filters the LLM's proposed actions.
+The security principles are fundamentally about **constraining variety**:
+1. Users must consent to data access (attenuating information flow)
+2. Servers cannot see full conversations (attenuating context variety)
+3. Tool invocations require human approval (attenuating action variety)
+4. Roots define filesystem boundaries (attenuating spatial variety)
+5. Servers are isolated from each other (preventing variety leakage between channels)
 
-3. **Server isolation**: Servers can't see each other or the full conversation. This constrains the information available for action selection -- a form of information-theoretic variety attenuation.
+The human-in-the-loop requirement for both tool calls and sampling is a **metacontrol mechanism** -- the human operates at a higher logical level, approving or denying the system's proposed actions.
 
-4. **Root boundaries**: Filesystem access is constrained to declared roots. Explicit variety limitation.
+## Cybernetic Significance
 
-5. **Security constraints**: Input validation, access controls, rate limiting, output sanitization. Each is a variety attenuator.
+MCP is, perhaps unintentionally, a practical implementation of several cybernetic principles:
 
-### The Regulator-System Balance
-MCP's architecture embodies Ashby's Law structurally:
-- Tools amplify variety to match the complexity of the tasks (requisite variety for the environment)
-- Capability negotiation, human approval, and isolation attenuate variety to maintain control (requisite variety for safety)
+1. **Requisite Variety (Ashby)**: Tools amplify model variety to match environmental complexity; schemas attenuate each channel
+2. **Error-controlled regulation**: Tool errors as negative feedback for self-correction
+3. **Recursive structure**: Sampling-with-tools creates nested regulatory loops
+4. **Structural coupling**: Capability negotiation establishes interaction domains
+5. **Variety attenuation for safety**: Security model is systematic variety reduction
 
-The balance between these is the core design tension. Too much attenuation (too many approvals, too few tools) and the system is ineffective. Too much amplification (unrestricted tool access, no oversight) and the system is unsafe.
+What MCP does NOT address from a cybernetic perspective:
+- No homeostatic goals or setpoints -- tools are invoked for arbitrary purposes
+- No viability criteria -- there's no notion of system health or survival
+- No autonomy -- servers are entirely reactive, they don't self-organize
+- No model of the environment -- servers expose capabilities but don't model what the host needs
 
-### Connection to Good Regulator Theorem
-MCP tools effectively extend the LLM's model of the world. The Good Regulator Theorem says every good regulator must contain a model of the system it regulates. Tools provide:
-- **Sensing**: Resources and tool outputs give the LLM information about external systems
-- **Acting**: Tool invocations let the LLM modify external systems
-- **Modeling**: The tool descriptions (inputSchema, outputSchema, annotations) give the LLM a model of what each tool does
-
-This is exactly the sense-model-act loop that cybernetics identifies as fundamental to regulation.
-
-### The Tiered Control Hierarchy
-The Host-Client-Server architecture maps onto a hierarchical control structure:
-- **Host** = meta-controller (policy, security, coordination) -- analogous to Beer's System 5/4/3
-- **Client** = operational controller (message routing, capability management) -- analogous to System 2
-- **Server** = operational unit (focused capability) -- analogous to System 1
-
-The host controls what the client can do; the client mediates what servers can access. This is recursive hierarchical control.
-
-### MCP as a Conversation in Pask's Sense
-The protocol is fundamentally conversational:
-- Capability negotiation = establishing a shared language
-- Tool discovery = learning the other's repertoire
-- Tool invocation = making a request in that shared language
-- Tool results = responding in that language
-- Sampling = reversing the direction of conversation (server asks client)
-
-This maps closely onto Pask's Conversation Theory: two participants constructing shared understanding through cyclical exchange.
-
-## Key Design Decision: "Servers Should Be Easy to Build"
-The complexity is pushed to the host/client side. Servers are simple, focused, composable. This is a deliberate asymmetry: the controller (host) absorbs complexity so that the operational units (servers) can remain simple. This follows the cybernetic principle that the controller must have requisite variety, not the controlled elements.
-
-## Security Concerns (Noted)
-- Prompt injection vulnerabilities
-- Tool description spoofing (lookalike tools)
-- Data exfiltration through tool permissions
-- Most MCP servers found to lack authentication (Knostic scan, July 2025)
-- Tool annotations are untrusted by default
-
-These are failures of variety attenuation -- the system allows more variety than it can safely control.
+MCP is a **channel architecture**, not an **autonomous system architecture**. It's infrastructure for variety management, not a viable system itself. To build a viable agent system on MCP, you'd need to add Beer's Systems 2-5 on top of the MCP plumbing.
