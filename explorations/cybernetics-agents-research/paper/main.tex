@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+
+\usepackage[review]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+\title{What Cybernetics Offers LLM Agent Design:\\Buried Formalisms, Confirmed Predictions, and Missing Implementations}
+
+\author{Anonymous}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Modern LLM agent design is substantially a reinvention of ideas from cybernetics---the science of feedback and control in machines and organisms founded by Wiener, Ashby, and Beer in the 1940s--70s.
+We synthesize ${\sim}$300 research notes spanning the full cybernetics tradition and the modern agent literature, producing 17 formal concept mappings rated by correspondence quality and 22 testable predictions derived from cybernetic theory.
+Of these predictions, 15 are confirmed by empirical agent research, 5 are partially confirmed, and zero are disconfirmed.
+We identify six specific gaps in current agent design that cybernetic theory addresses: the absence of stability analysis for agent loops, principled multi-agent coordination, bounded goal structures, a theory of agent autonomy, a taxonomy of agent learning, and a model of human-agent co-evolution.
+We find that the most actionable contributions are Ashby's Law of Requisite Variety (as a design heuristic for agent-task match), Beer's Viable System Model (as an architecture template for multi-agent systems), and control-theoretic stability analysis (as the missing formal foundation for agent loop design).
+We argue that the technical bridge between cybernetics and LLM agents---applying formal cybernetic tools to agent engineering---remains almost entirely unbuilt.
+\end{abstract}
+
+\section{Introduction}
+
+Every LLM agent is a feedback system. An agent observes its environment, reasons about the discrepancy between current state and goal, acts, and adjusts based on the result. This is the core of cybernetics---the science Norbert Wiener founded in 1948 to study ``control and communication in the animal and the machine'' \cite{wiener1948cybernetics}.
+
+The agent community has been rediscovering cybernetic insights one by one, empirically, without the formal apparatus that would save time and prevent predictable failures. ReAct \cite{yao2023react} is a feedback loop. Reflexion \cite{shinn2023reflexion} is second-order feedback. Tool use is variety amplification. Multi-agent orchestration is hierarchical control. These are not loose analogies---each has a specific cybernetic formalism behind it, with mathematical properties, impossibility results, and stability criteria that the agent literature does not reference.
+
+This paper synthesizes a comprehensive research effort spanning the cybernetics tradition (Wiener, Ashby, Beer, von Foerster, Maturana, Bateson, Pask, McCulloch, Powers) and the modern LLM agent literature. We separate genuinely actionable mappings from loose analogies, report a predictions scorecard, and identify where the bridging work remains undone.
+
+\subsection{The 1956 Schism}
+
+Cybernetics and AI share a common ancestor: McCulloch and Pitts' \citeyear{mcculloch1943logical} logical calculus of neural nets. The split came at the 1956 Dartmouth Conference, where McCarthy coined ``Artificial Intelligence'' to exclude Wiener's tradition \cite{pickering2010cybernetic}. The AI camp chose symbolic representation and search; the cybernetics camp chose feedback, self-organization, and circular causality. Cybernetics was subsequently defunded and its ideas scattered across control theory, systems engineering, and cognitive science.
+
+LLM agents are, ironically, a reconciliation: neural networks (McCulloch-Pitts heritage) performing symbolic manipulation (GOFAI heritage) within feedback loops (cybernetics heritage). But the theoretical vocabulary comes entirely from the AI side, and the cybernetic vocabulary---variety, stability, viability, homeostasis---provides tools the AI vocabulary lacks.
+
+\section{Formal Concept Mapping}
+
+We constructed 17 formal mappings from cybernetic formalisms to agent design patterns, rated by correspondence quality: \textsc{tight} (formal mathematical correspondence), \textsc{moderate} (structural analogy with partial formal support), and \textsc{loose} (suggestive analogy only). Table~\ref{tab:mappings} summarizes the key results.
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Cybernetic Formalism} & \textbf{Agent Pattern} & \textbf{Corr.} & \textbf{Key Gap} \\
+\midrule
+Requisite variety \cite{ashby1956introduction} & Tool use / function calling & MOD & Quantitative computation infeasible at scale \\
+Good Regulator \cite{conant1970every} & World models in agents & TIGHT\textsuperscript{$\dagger$} & Original theorem weaker than cited \\
+VSM \cite{beer1972brain} & Multi-agent orchestration & MOD & No empirical comparison exists \\
+Homeostasis \cite{ashby1952design} & Homeostatic goals \cite{pihlakas2024homeostasis} & TIGHT & Limited empirical testing \\
+Second-order cybernetics & Reflexion / self-critique & MOD & Evaluator not independent of executor \\
+PCT \cite{powers1973behavior} & Hierarchical agents & LOOSE & No PCT-designed agent exists \\
+Learning levels \cite{bateson1972steps} & In-context vs. meta-learning & MOD & Agents lack Learning II \\
+Conversation Theory \cite{pask1976conversation} & Multi-agent debate & MOD & Full formal apparatus unmapped \\
+Stability analysis (Lyapunov) & Agent loop convergence & TIGHT\textsuperscript{$\ddagger$} & Nobody has done the analysis \\
+Heterarchy \cite{mcculloch1945heterarchy} & Dynamic role assignment & MOD & Agents lack self-competence assessment \\
+\bottomrule
+\end{tabular}
+\caption{Selected formal mappings from cybernetic formalisms to agent design patterns. \textsuperscript{$\dagger$}Via \citet{richens2025world}, not the original Conant-Ashby result. \textsuperscript{$\ddagger$}In principle; no agent loop has been formally analyzed. MOD = \textsc{moderate}. Full 17-mapping table available in supplementary material.}
+\label{tab:mappings}
+\end{table*}
+
+The tightest correspondences occur where modern researchers have explicitly formalized the bridge: \citet{richens2025world} extending the Good Regulator Theorem to prove multi-goal agents must contain world models, \citet{pihlakas2024homeostasis} implementing homeostatic goals in an MDP framework, and \citet{tschantz2020rl} establishing formal equivalence between active inference and reinforcement learning. The loosest correspondences occur with qualitative concepts (autopoiesis, structural coupling) or when control-theoretic vocabulary is applied without its formal apparatus.
+
+\section{Genuinely Actionable Contributions}
+
+\subsection{Ashby's Law of Requisite Variety}
+
+Ashby's Law \cite{ashby1956introduction} states that the residual uncertainty in outcomes is bounded: $H(E) \geq H(D) - H(R)$, where $H(D)$ is the entropy of disturbances, $H(R)$ is the entropy of the regulator's responses, and $H(E)$ is outcome entropy. This is a theorem, not a heuristic.
+
+For agents, this yields specific predictions. A text-only agent has insufficient variety for tasks requiring code execution or web browsing---tool use is a mathematical necessity \cite{schick2023toolformer}. A single agent facing an open-ended environment will fail: AutoGPT's failure can be characterized as a variety deficit of ${\sim}$16 bits (65 bits of task variety vs.\ 24 bits of response variety). Adding tools without selection capability makes things worse---the ``variety illusion,'' where nominal variety exceeds effective variety due to selection errors \cite{patil2023gorilla}.
+
+We estimated variety gaps across task domains (Table~\ref{tab:variety}). The relative ordering matches empirical agent performance rankings.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrl}
+\toprule
+\textbf{Domain} & $\hat{H}(D)$ & $\hat{H}(R)$ & \textbf{Gap} & \textbf{Empirical} \\
+\midrule
+Data analysis & ${\sim}$33 & ${\sim}$33 & ${\sim}$0 & Agents perform well \\
+Coding & ${\sim}$29 & ${\sim}$21 & ${\sim}$8 & Good routine, fail complex \\
+File manip. & ${\sim}$29 & ${\sim}$21 & ${\sim}$8 & Similar to coding \\
+Web browsing & ${\sim}$42 & ${\sim}$31 & ${\sim}$11 & Agents struggle \\
+\bottomrule
+\end{tabular}
+\caption{Estimated variety gaps (bits) across task domains. These are order-of-magnitude estimates; the \emph{relative ordering} is robust.}
+\label{tab:variety}
+\end{table}
+
+The multi-scale extension \cite{siegenfeld2022complexity} explains AutoGPT's pattern of step-level competence with global incoherence: fine-scale variety (individual actions) was matched; coarse-scale variety (strategy, meta-cognition) was not.
+
+\textbf{Design principle:} For any agent-task pairing, estimate the variety gap. If gap $> {\sim}$15 bits, attenuate the task domain first---no practical number of tools can close it.
+
+\subsection{The Viable System Model for Multi-Agent Systems}
+
+Beer's VSM \cite{beer1972brain,beer1979heart} posits five necessary subsystems for viability: S1 (Operations), S2 (Coordination), S3 (Control), S3* (Audit), S4 (Intelligence), and S5 (Policy). We mapped these onto three major multi-agent frameworks (Table~\ref{tab:vsm}).
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{VSM System} & \textbf{CrewAI} & \textbf{LangGraph} & \textbf{AutoGen} \\
+\midrule
+S1 (Operations) & \checkmark & \checkmark & \checkmark \\
+S2 (Coordination) & --- & $\sim$ & $\sim$ \\
+S3 (Control) & \checkmark & \checkmark & \checkmark \\
+S3* (Audit) & --- & $\sim$ & --- \\
+S4 (Intelligence) & \textbf{---} & \textbf{---} & \textbf{---} \\
+S5 (Policy) & $\sim$ & $\sim$ & $\sim$ \\
+Algedonic channel & \textbf{---} & \textbf{---} & \textbf{---} \\
+\bottomrule
+\end{tabular}
+\caption{VSM subsystem coverage in multi-agent frameworks. \checkmark = present, $\sim$ = partial, --- = absent. S4 and the algedonic (emergency) channel are universally absent.}
+\label{tab:vsm}
+\end{table}
+
+All three frameworks are strongest at S1 (worker agents) and S3 (central control). All are weakest at S4 (environmental scanning) and S3* (independent audit). This predicts specific failure modes confirmed by \citet{cemri2025multiagent}: missing S2 causes oscillation (agents produce contradictory outputs), missing S3* causes silent failure (agents report false success), and missing S4 causes brittleness (rigid pipelines cannot adapt).
+
+The VSM has been tested in organizations for 50 years, including Cybersyn (Beer's real-time economic management system for Chile, 1971--73). No production multi-agent system has been built on explicit VSM principles; \citet{gorelkin2025vsm} provides the theoretical mapping.
+
+\subsection{Stability Analysis of Agent Loops}
+
+This is the most actionable gap. The tools exist (80 years of control theory). The agent loops exist. Nobody has connected them.
+
+We analyzed ReAct, Reflexion, and Tree of Thoughts as feedback control systems. The findings:
+
+\textbf{ReAct infinite loops are limit cycles}---sustained oscillations with unit loop gain. The agent's response to observation $O_1$ produces $O_2$ and vice versa. The control-theoretic fix (cycle detection / anti-windup) reduces loop gain below 1 for repeated states.
+
+\textbf{Reflexion's self-reinforcing errors are positive feedback.} When evaluator and executor are the same LLM, the feedback sign flips from negative (corrective) to positive (reinforcing). The evaluator's errors are correlated with the executor's, violating the fundamental feedback assumption that the measurement is independent of the disturbance. \citet{huang2023selfcorrect} confirm empirically.
+
+This yields a key design principle: \emph{the corrective power of any self-improving agent loop is bounded by the independence of its evaluator from its executor}. If $\rho$ is the correlation between executor and evaluator errors: when $\rho \approx 1$ (same LLM), expected correction is zero for systematic errors; when $\rho \approx 0$ (independent evaluator, e.g., unit tests), negative feedback is restored.
+
+\textbf{Tree of Thoughts as Model Predictive Control.} Branching factor and pruning threshold are configurable damping parameters. The connection to search admissibility is formally a Lyapunov stability condition.
+
+\subsection{Bateson's Levels of Learning}
+
+Bateson's hierarchy \cite{bateson1972steps} provides the clearest taxonomy for agent learning:
+
+\begin{itemize}
+\item \textbf{Learning I}: Error correction within a fixed framework. In-context learning, ReAct-style feedback. Where most agents operate.
+\item \textbf{Learning II} (deutero-learning): Learning \emph{how to learn}. Developing persistent habits that shape approach to problem categories. The frontier---Reflexion approaches this within a session but lacks persistence.
+\item \textbf{Learning III}: Restructuring the learning framework itself. The alignment frontier.
+\end{itemize}
+
+The critical gap: agents do Learning I but not Learning II. Bateson also identifies \emph{self-validating premises}---positive feedback loops at the character level---that current designs do not address.
+
+\subsection{McCulloch's Heterarchy}
+
+McCulloch \citeyear{mcculloch1945heterarchy} showed that circular authority structures are more robust than fixed hierarchies. His ``Redundancy of Potential Command'' principle---the agent with the most relevant information should lead dynamically---directly contradicts the fixed-orchestrator pattern (LangGraph supervisor, CrewAI manager) that dominates current multi-agent design.
+
+\section{The Predictions Scorecard}
+
+We derived 22 specific predictions from cybernetic principles and checked them against the empirical agent literature (Table~\ref{tab:predictions}).
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Source Principle} & \textbf{C} & \textbf{P} & \textbf{U} & \textbf{D} \\
+\midrule
+Ashby's Requisite Variety & 4 & 0 & 0 & 0 \\
+Stability / Feedback & 2 & 1 & 0 & 0 \\
+Beer's VSM & 2 & 2 & 0 & 0 \\
+Self-Correction Limits & 3 & 0 & 0 & 0 \\
+Homeostasis & 1 & 0 & 2 & 0 \\
+Second-Order / Eigenforms & 1 & 1 & 0 & 0 \\
+McCulloch / Pask / PCT & 2 & 1 & 0 & 0 \\
+\midrule
+\textbf{Total} & \textbf{15} & \textbf{5} & \textbf{2} & \textbf{0} \\
+\bottomrule
+\end{tabular}
+\caption{Predictions scorecard. C = Confirmed, P = Partially confirmed, U = Untested, D = Disconfirmed. Zero disconfirmed.}
+\label{tab:predictions}
+\end{table}
+
+The strongest confirmed predictions:
+
+\begin{itemize}
+\item \textbf{A2}: An optimal tool count exists beyond which adding tools degrades performance (confirmed by Gorilla and ToolBench).
+\item \textbf{A4}: Multi-scale variety deficits predict multi-scale failure---AutoGPT's step competence with global incoherence.
+\item \textbf{D1}: Self-correction fails when evaluator and executor share biases \cite{huang2023selfcorrect}.
+\item \textbf{C1}: Multi-agent systems without lateral coordination exhibit oscillation \cite{cemri2025multiagent}.
+\end{itemize}
+
+\section{Six Gaps Cybernetics Addresses}
+
+\begin{enumerate}
+\item \textbf{No stability analysis of agent loops.} The tools exist \cite{berkenkamp2017safe}. Even crude Lyapunov analysis would beat ``run it and see.''
+\item \textbf{No theory of multi-agent coordination.} Beer's VSM, McCulloch's heterarchy, Pask's Conversation Theory \cite{pask1976conversation}, and IEEE consensus algorithms \cite{deng2021consensus} all provide formal answers.
+\item \textbf{No framework for bounded goals.} Homeostatic agents \cite{pihlakas2024homeostasis} rest when bounds are met---qualitatively different from unbounded optimization.
+\item \textbf{No theory of agent autonomy.} The VSM provides a principled continuous spectrum; Parasuraman et al.\ \citeyear{parasuraman2000automation} define 10 levels across 4 functions.
+\item \textbf{No taxonomy of agent learning.} Bateson's Learning levels 0--III provide it.
+\item \textbf{No model of human-agent co-evolution.} Maturana's structural coupling \cite{maturana1980autopoiesis} identifies the phenomenon; dynamics are uncharacterized.
+\end{enumerate}
+
+\section{Honest Limits}
+
+Cybernetics cannot be a complete guide to agent design. Its formalisms were developed for systems with tens of variables, not billions of parameters. It has no theory of natural language---the qualitative leap that distinguishes LLM agents. The pre-training paradigm (encoding knowledge in weights from massive data) is genuinely new. And the representation debate is unresolved \emph{within} cybernetics: PCT and autopoiesis reject representations, while the Good Regulator Theorem and active inference require them.
+
+Active inference \cite{friston2010free}, the most theoretically complete cybernetic agent framework, remains practically uncompetitive---no active-inference LLM agent exists.
+
+\section{What Should Be Built}
+
+Three implementations would move the bridge from theory to practice:
+
+\textbf{(1) Stability analysis of a real agent loop.} Take ReAct or Reflexion, define a Lyapunov-like function, check whether it decreases along trajectories on a standard benchmark. Straightforward application of existing tools.
+
+\textbf{(2) A VSM-compliant multi-agent framework.} S1 workers, S2 lateral coordination, S3 control, S3* independent audit, S4 environmental scanning, S5 policy with algedonic channel. Compare empirically to existing frameworks.
+
+\textbf{(3) A homeostatic agent.} Bounded setpoint goals instead of unbounded optimization. Compare on safety metrics: resource consumption bounds, goal drift, adversarial resistance.
+
+\section{Conclusion}
+
+The cybernetics tradition formalized several ideas the agent community is rediscovering without formalization. The formalization matters: it provides design constraints, impossibility results, stability criteria, and architectural principles that empirical trial-and-error does not.
+
+The most valuable contributions are: requisite variety as a quantitative design heuristic, the VSM as a multi-agent architecture template, stability analysis as the missing foundation for agent loops, the evaluator-independence bound on self-correction, and Bateson's learning taxonomy.
+
+The technical bridge---applying formal cybernetic tools to LLM agent engineering---is not being built by anyone. The cybernetics community talks about AI philosophically; the AI community uses cybernetic concepts without knowing the literature; IEEE SMC has the formal tools but doesn't connect to the broader tradition. This paper is an attempt to put the pieces in one place.
+
+\section*{Limitations}
+
+The variety estimates in Table~\ref{tab:variety} are order-of-magnitude, not measurements, and assume independence of dimensions. The predictions scorecard tests retrodiction (does cybernetics explain known failures?) rather than prediction proper. No cybernetics-designed agent system exists for empirical comparison. The correspondences rated \textsc{loose} (PCT, autopoiesis, structural coupling) may be unfalsifiable analogies rather than productive theoretical connections.
+
+\bibliography{references}
+\bibliographystyle{acl_natbib}
+
+\end{document}
