@@ -21,6 +21,7 @@ organizations into higher-level ones (cells into multicellular organisms,
 organisms into societies). This is the hardest open problem in ALife and
 nobody has cracked it.
 
+
 ---
 
 ## Systems Surveyed
@@ -30,7 +31,9 @@ nobody has cracked it.
 | System | Substrate | Key Finding | Limitation |
 |--------|-----------|-------------|------------|
 | **AlChemy** (Fontana, 1994) | Lambda calculus expressions in well-stirred reactor | Self-maintaining organizations (autopoietic algebra) emerge | No space, organizations can't compose into higher-order entities |
-| **Hutton's Squirm3** | 2D grid atoms with bonds | Self-reproducing cells with membranes | Evolution plateaus quickly |
+| **Hutton's Squirm3** (2002) | 2D grid, 6 atom types, 8 reaction rules | Spontaneous self-replication from random soup (~400k iterations) | Converges to minimal replicators (Spiegelman's monster); reaction set too constrained for innovation |
+| **Ishida** (2024) | Multiset chemical lattice, 18 molecule types, 2D grid | Claims all four life conditions: bounded structures, replication, metabolism, heritable evolution | 18 types creates interaction space so vast that key reactions can't be identified -- hard to evaluate |
+| **Combinatory Chemistry** (Kruszewski & Mikolov, 2020-2024) | Turing-complete rewriting system with conservation laws | Self-reproducing metabolisms from tabula rasa | Still early; open-ended evolution not demonstrated |
 | **Tierra** (Ray, 1991) | Machine code in shared memory | Parasites, immunity, hyper-parasitism | Stalls; selects for efficiency only |
 | **Avida** (Lenski et al., 2003) | Machine code + logic rewards | Complex functions evolve by building on simpler ones | Innovation space predefined by experimenter |
 | **Geb** (Channon, 2001) | Neural networks in spatial world | Only system passing unbounded evolution test | Logarithmic complexity growth; no major transitions |
@@ -58,6 +61,28 @@ nobody has cracked it.
 | **Info-Theoretic Individuality** (Krakauer, Flack) | Individual = aggregate propagating info from past to future | Three formal types; quantifiable; scale-free |
 | **Basal Cognition** (Levin) | Goal-directed competency at every biological scale | Cognitive light cones; agency is graded and substrate-independent |
 | **Enactivism / Hermeneutics** (Varela, Thompson) | Cognition is sense-making, not information processing | Meaning requires embodiment and structural coupling |
+| **Chemoton** (Gánti, 1971) | Three stoichiometrically coupled subsystems: autocatalytic metabolism (A₁→A₂→…→2A₁), template polymer (replicates via polycondensation), self-assembling membrane | The clearest architectural template for minimal life. Coupling is purely chemical, no enzymes needed. Metabolic cycle produces precursors for both template and membrane; template replication produces byproduct needed for membrane precursor conversion; membrane growth increases volume until osmotic pressure triggers division. Produces oscillatory dynamics with a stable limit cycle. |
+| **Autocatalytic Sets / RAF Theory** (Kauffman; Hordijk & Steel) | Self-sustaining autocatalytic networks undergo a sharp phase transition from absent to almost-certain when each molecule catalyzes ~1-2 reactions. Threshold scales only logarithmically with system size. | Provides a quantitative threshold for when autocatalytic closure becomes likely. RAF theory proves hierarchically nested irreducible subsets (irrRAFs) provide a scaffold for incremental complexity growth. Experimentally validated: Vaidya et al. demonstrated 3-member autocatalytic RNA sets. |
+| **Closure of Constraints** (Montévil & Mossio, 2015) | Distinguishes fast thermodynamic processes from slower constraint structures. A constraint acts on a process while being conserved at the process's timescale (e.g., enzyme constrains reaction but remains intact). Closure = constraints are mutually dependent. | Formalizes multi-scale circular causality as what distinguishes biological organization from mere physics. Key insight: biological symmetries are inherently unstable -- unlike physical conservation laws, biological constraints are contingent and historically constituted, which is the basis for genuine novelty. |
+| **Chemical Organization Theory** (Dittrich & Speroni di Fenizio, 2007) | An "organization" is a set of molecular species that is algebraically closed (reactions produce only members) and self-maintaining (every species has non-negative production rate). | Every stationary state of a chemical dynamical system corresponds to an organization. Organizations form a lattice; qualitative transitions = movements through this lattice. |
+
+---
+
+## Ten Recurring Failure Modes
+
+A systematic cross-cutting diagnosis of why artificial systems fail to achieve
+open-ended evolution:
+
+1. **Reductive evolution** toward minimal replicators (Spiegelman's monster effect)
+2. **Organizational closure blocking complexification** (AlChemy's "barrier of objects")
+3. **Absence of genotype-phenotype separation** (no dual information role as in von Neumann's architecture)
+4. **Missing conservation laws** eliminating resource competition
+5. **Homogeneous global rules** preventing species differentiation
+6. **No spatial containment** for individuation
+7. **Externally defined fitness** (experimenter picks what matters)
+8. **Insufficient chemical complexity** (too few reaction types)
+9. **Computational limits** (system too small for emergent phenomena)
+10. **Gap between self-replication and functional innovation** (copying structure ≠ creating function)
 
 ---
 
@@ -104,6 +129,95 @@ All six theoretical frameworks agree on:
 - **Meaning requires embodiment.** The enactivist/hermeneutic tradition insists
   genuine interpretation requires structural coupling to an environment.
   Varela originally called enactivism "the hermeneutic approach."
+
+---
+
+## Origins-of-Life Validation
+
+Real chemistry provides three lessons that abstract artificial chemistries
+have historically ignored:
+
+**1. Boundaries come cheap, coupling is hard.** Szostak's protocell research
+shows fatty acid vesicles self-assemble spontaneously above critical micelle
+concentration, grow by incorporating micelles, and divide under modest shear
+forces without losing internal contents. Fatty acid membranes are naturally
+permeable to charged nucleotides. Rasmussen's "Los Alamos Bug" shows even a
+simple oil droplet suffices as a container. The hard part is not making
+boundaries but coupling boundary production to an internal reaction network.
+
+**2. Autocatalytic sets emerge more easily than intuition suggests.** Hordijk
+and Steel's RAF theory proves self-sustaining networks undergo a sharp phase
+transition when catalytic probability exceeds ~1/n² (n = number of molecule
+types). For 10-20 molecule types, each molecule needs to catalyze only 1-2
+reactions. Experimentally validated: Vaidya et al. demonstrated 3-member
+autocatalytic RNA sets where each ribozyme catalyzes the next.
+
+**3. The metabolism-first vs. replicator-first debate resolves in favor of
+coupling.** Pure metabolism-first (Kauffman, Wächtershäuser) creates
+self-sustaining but potentially non-evolvable systems -- Vasas et al. (2010)
+proved compositional inheritance in autocatalytic networks is too inaccurate
+for Darwinian selection. Pure replicator-first (RNA world) creates evolvable
+but fragile systems. The chemoton resolves this by integrating metabolic
+closure for robustness with template replication for evolvability, connected
+through a self-produced boundary.
+
+---
+
+## Computational Search Methodology
+
+The meta-problem -- how to navigate the vast space of possible artificial
+chemistries -- has shifted from intractable to merely difficult.
+
+### Quality-Diversity Algorithms
+
+MAP-Elites and AURORA (unsupervised QD) can evolve diverse populations of
+artificial life forms. Leniabreeder (Faldor & Cully, ALIFE 2024) applied
+AURORA to Lenia, using a VAE to automatically learn a latent descriptor space
+(eliminating human-defined diversity metrics). Population of 32,768 evolved
+via QDax framework on GPU-accelerated JAX. Discovered patterns that random
+search and human exploration missed.
+
+### Foundation-Model-Driven Search (ASAL)
+
+Sakana AI's ASAL uses CLIP as a proxy for "interestingness." Three modes:
+supervised target search (optimizing toward text prompts), open-endedness
+search (finding systems with persistently novel CLIP trajectories), and
+illumination search (maximizing diversity). Discovered CAs more open-ended
+than Game of Life and previously unknown Lenia lifeforms. Substrate-agnostic:
+works across Boids, Particle Life, GoL, Lenia, Neural CA.
+
+### Curiosity-Driven Goal Exploration (IMGEP)
+
+Oudeyer group (Inria). Algorithm self-generates goals in behavioral metric
+space, selects similar past configurations, mutates parameters, discovers
+diverse behaviors. Applied to Flow-Lenia: discovered feeding behaviors,
+allopatric speciation analogues, complex ecology that random search missed.
+Key innovation: CPPNs for structured initialization (avoids white-noise
+initial conditions that produce only dead or global patterns).
+
+### JAX Ecosystem
+
+JAX has become the dominant framework for scalable ALife. Key tools:
+- **CAX** (ICLR 2025 Oral): GPU-accelerated CA library, up to 2,000x speedup
+- **JAX MD**: differentiable molecular dynamics, spatial partitioning primitives
+- **Leniax**: JAX-powered, fully differentiable, supports QD search
+- **Flow Lenia**: JAX, mass-conservative, parameter localization
+- **ALIEN**: C++/CUDA, millions of particles, won ALIFE 2024 Virtual Creatures
+- **DiffTaichi**: 188x faster than TensorFlow for differentiable physics
+
+Differentiability is a major advantage -- JAX auto-differentiation through
+simulation steps enables meta-optimization of interaction rules and
+gradient-based search through parameter space.
+
+### Measuring "Interestingness"
+
+No single metric suffices (Hickinbotham & Stepney, 2024). Hintze (2019) showed
+a trivial system can satisfy all proposed OEE requirements while remaining
+subjectively uninteresting. Most productive approach combines: evolutionary
+activity statistics (Bedau), compression-based complexity, transfer entropy,
+and assembly-index-like construction complexity. Foundation model embeddings
+(CLIP, DINOv2) outperform pixel-level metrics for capturing human notions of
+diversity but introduce their own biases.
 
 ---
 
@@ -171,6 +285,10 @@ dynamic topology with emergent metric properties may be the sweet spot.
 - Fontana & Buss, "The Arrival of the Fittest" (1994)
 - Mathis et al., "Return to AlChemy" (Chaos, 2024)
 - Hutton, "Evolvable Self-Replicating Molecules" (Artificial Life, 2002)
+- Ishida, "Multiset Chemical Lattice Model" (2024)
+- Kruszewski & Mikolov, "Combinatory Chemistry" (2020-2024)
+- Gánti, "The Principles of Life" (1971/2003)
+- Ono & Ikegami, "Artificial chemistry: computational studies on the emergence of self-reproducing units" (2001)
 
 ### Grid/Particle Systems
 - Chan, "Lenia: Biology of Artificial Life" (arXiv, 2018)
@@ -192,6 +310,22 @@ dynamic topology with emergent metric properties may be the sweet spot.
 - Krakauer et al., "Information Theory of Individuality" (Theory in Biosciences, 2020)
 - Fields & Levin, "Thoughts and Thinkers" (Physics of Life Reviews, 2025)
 - Gallagher & Allen, "Active Inference, Enactivism and Hermeneutics" (Synthese, 2018)
+- Montévil & Mossio, "Biological organisation as closure of constraints" (J. Theoretical Biology, 2015)
+- Dittrich & Speroni di Fenizio, "Chemical Organisation Theory" (Bulletin of Mathematical Biology, 2007)
+- Kauffman, "The Origins of Order" (1993)
+- Hordijk & Steel, "Detecting autocatalytic, self-sustaining sets in chemical reaction systems" (J. Theoretical Biology, 2004)
+- Vasas et al., "Evolution before genes" (Biology Direct, 2010)
+
+### Origins of Life
+- Szostak, "Protocell models" (various, 2001-2020)
+- Rasmussen et al., "Transitions from Nonliving to Living Matter" (Science, 2004)
+- Vaidya et al., "Spontaneous network formation among cooperative RNA replicators" (Nature, 2012)
+
+### Computational Search
+- Faldor & Cully, "Leniabreeder" (ALIFE, 2024)
+- Hickinbotham & Stepney, "Measuring open-endedness" (Artificial Life, 2024)
+- Hintze, "Open-ended evolution and trivial systems" (2019)
+- Oudeyer et al., IMGEP / curiosity-driven exploration (various)
 
 ### Recent ALife
 - Kumar et al., "ASAL: Automated Search for Artificial Life" (arXiv, 2024)
@@ -205,4 +339,8 @@ dynamic topology with emergent metric properties may be the sweet spot.
 
 ---
 
-*Compiled 2026-03-23 from four parallel research surveys.*
+*Compiled 2026-03-23 from four parallel research surveys. Updated 2026-03-24
+with chemoton architecture, coupling thesis, Kauffman/RAF thresholds, closure
+of constraints, origins-of-life validation, computational search methodology,
+and ten failure modes (sourced from "Designing Minimal Artificial Chemistries"
+report).*
