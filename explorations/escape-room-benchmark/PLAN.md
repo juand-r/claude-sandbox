@@ -66,9 +66,9 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
 
 ---
 
-## Step 4: Agent Interface + Baseline Agent
+## Step 4: Agent Interface + First Real Agent
 
-**Goal**: Define the agent contract and build the simplest possible agents to test the environment.
+**Goal**: Define the agent contract and build a real agent (OpenAI Agents SDK) to test the environment. See AGENTS.md for full options analysis.
 
 **Deliverables**:
 - `agent.py` — Agent base class (the contract).
@@ -76,14 +76,16 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
   - `act() -> Action` — returns either a room action or a message to teammate
   - Any agent framework can be wrapped to implement this interface.
 - `scripted_agent.py` — Deterministic agent for testing. Follows a hardcoded action sequence. Used to verify the engine is correct.
-- `baseline_llm_agent.py` — Minimal OpenAI chat completions wrapper. NOT a real agent framework — just the simplest thing that can test the environment end-to-end with an LLM.
+- `openai_sdk_agent.py` — OpenAI Agents SDK wrapper.
+  - Uses `@function_tool` for `send_message` and `submit_action` tools.
+  - `StopAtTools` / `max_turns=1` for step-by-step control.
+  - History via `result.to_input_list()` across turns.
   - System prompt explaining the escape room, available actions, communication protocol.
-  - Response parsing: room action vs. message to teammate.
-  - Uses `OPENAI_API_KEY` from environment.
+  - Uses `OPENAI_API_KEY` from environment, gpt-4o-mini for dev, gpt-4o for real runs.
 
 **Test**:
 1. Scripted agent plays through simple room. Confirms harness loop works.
-2. Baseline LLM agent plays through same room. Confirms the environment works with a real LLM.
+2. OpenAI SDK agent plays through same room. Confirms a real agent can interact with the environment.
 
 **Done when**: Both agents can play through a room end-to-end.
 
@@ -138,21 +140,19 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
 
 ---
 
-## Step 7: Add Real Agent Contestants
+## Step 7: Add Second Agent Contestant (smolagents)
 
-**Goal**: Wrap actual agent frameworks to the agent interface and benchmark them.
+**Goal**: Add smolagents as a second framework to compare against OpenAI Agents SDK. Same LLM (gpt-4o), different agent architecture — isolates framework quality.
 
-**Candidates** (in order of ease of integration):
-1. **smolagents** (HuggingFace) — ~1k LOC, hackable, Python. Wrap its agent loop to our interface.
-2. **OpenAI Agents SDK** — Lightweight, multi-agent via handoffs. Needs a coordinator.
-3. **Pi (`pi-agent-core`)** — Minimal but TypeScript. May need a subprocess wrapper or Python port of the pattern.
-4. **Others** — CrewAI, LangGraph, etc. as needed.
+**Deliverables**:
+- `agents/smolagents_agent.py` — smolagents `ToolCallingAgent` wrapper.
+  - Uses `LiteLLMModel(model_id="gpt-4o")` for apples-to-apples comparison.
+  - Custom `Tool` subclasses for `send_message` and `submit_action`.
+- Results comparison table: OpenAI SDK vs. smolagents across all 5 rooms.
 
-Each contestant gets a wrapper in `agents/` that implements the base `Agent` interface.
+**Test**: Run smolagents through all 5 rooms. Compare metric profiles against OpenAI SDK results.
 
-**Test**: Run each agent type through all 5 rooms. Compare metric profiles.
-
-**Done when**: At least 2 different agent frameworks benchmarked side-by-side with results table.
+**Done when**: Two agent frameworks benchmarked side-by-side with results table.
 
 ---
 
@@ -181,7 +181,7 @@ explorations/escape-room-benchmark/
     channel.py
     agent.py              # base interface
     scripted_agent.py     # deterministic, for testing
-    baseline_llm_agent.py # raw OpenAI, simplest LLM agent
+    openai_sdk_agent.py   # OpenAI Agents SDK wrapper
     harness.py
     metrics.py
     run_benchmark.py
@@ -208,8 +208,8 @@ explorations/escape-room-benchmark/
 - [ ] Step 1: Room Data Model
 - [ ] Step 2: Room Oracle / Game Engine
 - [ ] Step 3: Communication Channel
-- [ ] Step 4: Agent Interface + Baseline Agent
+- [ ] Step 4: Agent Interface + First Real Agent (OpenAI SDK)
 - [ ] Step 5: Hand-Craft the 5 Rooms
 - [ ] Step 6: Eval Harness
-- [ ] Step 7: Add Real Agent Contestants
+- [ ] Step 7: Add Second Agent Contestant (smolagents)
 - [ ] Step 8: Adversarial Variant (stretch)
