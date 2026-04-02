@@ -1,5 +1,14 @@
 # Escape Room Benchmark — Implementation Plan
 
+## Architecture Principle
+
+The benchmark has two clearly separate concerns:
+
+1. **The game environment** — rooms, engine, communication channel, eval harness. This is the product.
+2. **The agents** — contestants that plug into the environment via a defined interface. These are what we're evaluating.
+
+The agent interface is a thin contract. Any agent framework (smolagents, Pi, OpenAI Agents SDK, raw LLM calls, etc.) can be wrapped to conform to it. We start with the simplest possible agent (raw OpenAI chat completions) to test the environment. Then we add real agent frameworks as contestants.
+
 ## Approach
 
 Bottom-up: build and test each layer before the next. Each step has a clear deliverable and a way to verify it works before moving on.
@@ -57,26 +66,26 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
 
 ---
 
-## Step 4: Agent Interface (Scripted + LLM)
+## Step 4: Agent Interface + Baseline Agent
 
-**Goal**: Define the contract between the harness and agents. Build BOTH a scripted agent (for deterministic engine testing) and an LLM agent (for real runs). We integrate LLM early so we catch prompt/parsing issues before building all 5 rooms.
+**Goal**: Define the agent contract and build the simplest possible agents to test the environment.
 
 **Deliverables**:
-- `agent.py` — Agent base class / interface.
+- `agent.py` — Agent base class (the contract).
   - `observe(observation) -> None` — receives new info from the engine or channel
   - `act() -> Action` — returns either a room action or a message to teammate
-- `scripted_agent.py` — Deterministic agent for testing. Follows a hardcoded action sequence.
-- `llm_agent.py` — OpenAI-backed agent.
-  - System prompt explaining the escape room setup, available actions, communication protocol.
-  - Response parsing: distinguish "I want to act on the room" from "I want to message my teammate."
-  - Error handling for malformed responses.
+  - Any agent framework can be wrapped to implement this interface.
+- `scripted_agent.py` — Deterministic agent for testing. Follows a hardcoded action sequence. Used to verify the engine is correct.
+- `baseline_llm_agent.py` — Minimal OpenAI chat completions wrapper. NOT a real agent framework — just the simplest thing that can test the environment end-to-end with an LLM.
+  - System prompt explaining the escape room, available actions, communication protocol.
+  - Response parsing: room action vs. message to teammate.
   - Uses `OPENAI_API_KEY` from environment.
 
 **Test**:
-1. Run the scripted agent through the simple room from Steps 1-2 using the channel from Step 3. Confirm the harness loop works.
-2. Run the LLM agent through the same simple room. Verify the loop completes, logs are clean, and the LLM can actually solve a Type 1 cipher room.
+1. Scripted agent plays through simple room. Confirms harness loop works.
+2. Baseline LLM agent plays through same room. Confirms the environment works with a real LLM.
 
-**Done when**: Both scripted and LLM agents can play through a room end-to-end via the harness loop.
+**Done when**: Both agents can play through a room end-to-end.
 
 ---
 
@@ -117,28 +126,33 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
   - Step efficiency ratio (actual / optimal)
   - Message efficiency (messages sent / minimum needed)
   - Redundancy score (from action logs: did both agents attempt same puzzle?)
+- `run_benchmark.py` — CLI entry point.
+  - `--agent <agent_type>` (scripted, baseline_llm, smolagents, etc.)
+  - `--model <model_name>` (for LLM-backed agents)
+  - `--rooms all` or `--rooms 1,3,5`
+  - `--trials N` for statistical significance
 
-**Test**: Run the scripted agent through all 5 rooms. Verify metrics are computed correctly against known-optimal values.
+**Test**: Run scripted agent through all 5 rooms. Verify metrics against known-optimal values. Then run baseline LLM agent through all 5 rooms, verify logs and metrics are clean.
 
-**Done when**: `python run_benchmark.py --agent scripted` produces a metric profile for all 5 rooms.
+**Done when**: `python run_benchmark.py --agent baseline_llm --model gpt-4o --rooms all` produces a metric profile.
 
 ---
 
-## Step 7: Full Benchmark Runs with LLM Agents
+## Step 7: Add Real Agent Contestants
 
-**Goal**: Run all 5 rooms with LLM agents, collect results, iterate on prompt design.
+**Goal**: Wrap actual agent frameworks to the agent interface and benchmark them.
 
-**Deliverables**:
-- `run_benchmark.py` — CLI entry point.
-  - `--agent llm --model <model_name>` or `--agent scripted`
-  - `--rooms all` or `--rooms 1,3,5`
-  - `--trials N` for statistical significance
-- Results table with metric profiles across all rooms.
-- Prompt tuning based on failure modes observed in earlier rooms.
+**Candidates** (in order of ease of integration):
+1. **smolagents** (HuggingFace) — ~1k LOC, hackable, Python. Wrap its agent loop to our interface.
+2. **OpenAI Agents SDK** — Lightweight, multi-agent via handoffs. Needs a coordinator.
+3. **Pi (`pi-agent-core`)** — Minimal but TypeScript. May need a subprocess wrapper or Python port of the pattern.
+4. **Others** — CrewAI, LangGraph, etc. as needed.
 
-**Test**: `python run_benchmark.py --agent llm --model gpt-4o --rooms all --trials 3` produces a full results table.
+Each contestant gets a wrapper in `agents/` that implements the base `Agent` interface.
 
-**Done when**: Have end-to-end results for all 5 rooms with at least one LLM model.
+**Test**: Run each agent type through all 5 rooms. Compare metric profiles.
+
+**Done when**: At least 2 different agent frameworks benchmarked side-by-side with results table.
 
 ---
 
@@ -165,13 +179,18 @@ explorations/escape-room-benchmark/
     state.py
     engine.py
     channel.py
-    agent.py
-    llm_agent.py
+    agent.py              # base interface
+    scripted_agent.py     # deterministic, for testing
+    baseline_llm_agent.py # raw OpenAI, simplest LLM agent
     harness.py
     metrics.py
     run_benchmark.py
+  agents/                 # real agent framework wrappers
+    smolagents_agent.py
+    openai_sdk_agent.py
+    ...
   rooms/
-    room_01_cipher.json (or .py)
+    room_01_cipher.json
     room_02_code.json
     room_03_cipher_code.json
     room_04_double_split.json
@@ -189,8 +208,8 @@ explorations/escape-room-benchmark/
 - [ ] Step 1: Room Data Model
 - [ ] Step 2: Room Oracle / Game Engine
 - [ ] Step 3: Communication Channel
-- [ ] Step 4: Agent Interface
+- [ ] Step 4: Agent Interface + Baseline Agent
 - [ ] Step 5: Hand-Craft the 5 Rooms
 - [ ] Step 6: Eval Harness
-- [ ] Step 7: Full Benchmark Runs with LLM Agents
+- [ ] Step 7: Add Real Agent Contestants
 - [ ] Step 8: Adversarial Variant (stretch)
