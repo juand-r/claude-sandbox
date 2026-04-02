@@ -21,13 +21,12 @@ class TestRoom1Cipher:
         engine = RoomEngine(room)
         obs_a, obs_b = engine.start()
 
-        # A has the key, B has the encoded message
-        assert "substitution" in obs_a.text.lower()
-        assert "TQXXA IADXP" in obs_b.text
+        # A has the Caesar shift info, B has the encoded message
+        assert "caesar" in obs_a.text.lower() or "shift" in obs_a.text.lower()
+        assert "KHOOR ZRUOG" in obs_b.text
 
-        # TQXXA IADXP with A=M... means shift back by 12.
-        # T->H, Q->E, X->L, X->L, A->O = HELLO
-        # I->W, A->O, D->R, X->L, P->D = WORLD
+        # KHOOR ZRUOG with Caesar shift -3: K->H, H->E, O->L, O->L, R->O = HELLO
+        # Z->W, R->O, U->R, O->L, G->D = WORLD
         result = engine.submit_action(
             Action("agent_a", ActionType.SUBMIT, target="cipher_1", content="hello world")
         )
@@ -37,11 +36,11 @@ class TestRoom1Cipher:
     def test_scripted_playthrough(self):
         room = get_room("room_01_cipher")
         agent_a = ScriptedAgent("A", [
-            AgentAction(AgentActionType.MESSAGE, content="I have the cipher key: A=M, B=N, C=O..."),
+            AgentAction(AgentActionType.MESSAGE, content="Caesar cipher, shifted forward by 3. Shift back to decode."),
             AgentAction(AgentActionType.SUBMIT, puzzle_id="cipher_1", content="hello world"),
         ])
         agent_b = ScriptedAgent("B", [
-            AgentAction(AgentActionType.MESSAGE, content="Encoded message is TQXXA IADXP"),
+            AgentAction(AgentActionType.MESSAGE, content="Encoded message is KHOOR ZRUOG"),
         ])
         result = GameHarness(room, agent_a, agent_b, max_turns=20).run()
         assert result.escaped is True

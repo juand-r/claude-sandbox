@@ -44,4 +44,48 @@ Setting up the project. User is away on a work trip; I have full autonomy.
   3 turns (2 messages + 1 submit). They correctly exchanged key and encoded text, decoded
   the message, and submitted the answer.
 
+### Step 5: Room Definitions — DONE
+- 5 rooms across 3 difficulty tiers, all with verified scripted solutions
+- **Bug caught**: Room 5 cipher text was wrong (YVOLT should have been EZFOG for VAULT
+  with reverse alphabet). Fixed before committing.
+- 15 room-specific tests passing
+
+### Step 6: Metrics + CLI Runner — DONE
+- `src/metrics.py`: Computes success, step_efficiency, message_efficiency, redundancy
+- `run_benchmark.py`: Full CLI with --agent, --model, --rooms, --trials, --max-turns
+- 4 metrics tests passing (total: 64 tests)
+
+### First Full Benchmark Run — gpt-4o-mini
+
+```
+Room                   Diff     Result Turns  Msgs   StepEff  MsgEff   Redund
+room_01_cipher         easy     FAIL   turns=16  msgs=9   7.00   4.50   1.00
+room_02_code           easy     PASS   turns=3   msgs=2   1.00   1.00   0.00
+room_03_study          medium   PASS   turns=6   msgs=2   2.00   0.67   0.50
+room_04_safes          medium   PASS   turns=6   msgs=3   1.50   0.75   0.50
+room_05_archive        hard     FAIL   turns=16  msgs=8   2.67   1.60   0.00
+
+Success rate: 3/5 (60%)
+Avg step efficiency (successful): 1.50
+Avg message efficiency (successful): 0.81
+```
+
+**Observations:**
+- Room 1 (cipher) FAILED: The full 26-letter substitution cipher was too complex for
+  gpt-4o-mini. The agents kept trying wrong decodings and ran out of turns. The redundancy
+  of 1.0 means both agents were submitting wrong answers to the same puzzle.
+- Room 2 (code) PERFECT: The simple digit-sharing task was trivially solved.
+- Rooms 3-4 (medium) PASSED but with some inefficiency and redundancy.
+- Room 5 (archive) FAILED: Reverse alphabet cipher also too hard for gpt-4o-mini.
+  The agents couldn't decode EZFOG -> VAULT.
+
+**Analysis:** The cipher puzzles are too hard for gpt-4o-mini, which is known to be
+weak at character-level manipulation. This is actually fine for the benchmark — it
+distinguishes model capability. But I should consider whether Room 1 (labeled "easy")
+should use a simpler cipher. A Caesar shift might be more appropriate for "easy" tier.
+
+**Decision**: I'll simplify Room 1's cipher to a Caesar shift (like Room 3 uses) and
+keep the reverse alphabet for Room 5 (hard). This gives a better difficulty gradient.
+Then re-run and see if gpt-4o-mini can handle the easy rooms.
+
 ---

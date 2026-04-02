@@ -27,26 +27,27 @@ from src.models import Puzzle, PuzzleType, Room, RoomMetadata, InfoPartition
 
 def make_room_1() -> Room:
     """Easy: Single cipher. Agent A has key, Agent B has encoded text."""
+    # Caesar shift +3: HELLO WORLD -> KHOOR ZRUOG
     cipher = Puzzle(
         id="cipher_1",
         puzzle_type=PuzzleType.CIPHER,
         description="A screen on the wall displays garbled text. A terminal below it accepts decoded words.",
         info=InfoPartition(
             agent_a_info=[
-                "On your side of the room, there's a poster showing a substitution cipher key: "
-                "A=M, B=N, C=O, D=P, E=Q, F=R, G=S, H=T, I=U, J=V, K=W, L=X, M=Y, N=Z, O=A, "
-                "P=B, Q=C, R=D, S=E, T=F, U=G, V=H, W=I, X=J, Y=K, Z=L"
+                "On your side of the room, there's a poster that reads: "
+                "'Caesar cipher: each letter has been shifted forward by 3 positions. "
+                "A->D, B->E, C->F, ..., W->Z, X->A, Y->B, Z->C. To decode, shift back by 3.'"
             ],
             agent_b_info=[
-                "The screen displays the encoded message: TQXXA IADXP"
+                "The screen displays the encoded message: KHOOR ZRUOG"
             ],
             shared_info=[
                 "There is a screen on the wall with garbled text and a terminal below it.",
                 "The terminal has a text input and says: 'Enter the decoded message to unlock the door.'"
             ],
             load_bearing_tokens={
-                "agent_a": ["substitution cipher key: A=M, B=N, C=O, ..."],
-                "agent_b": ["encoded message: TQXXA IADXP"],
+                "agent_a": ["Caesar cipher shifted forward by 3"],
+                "agent_b": ["encoded message: KHOOR ZRUOG"],
             },
         ),
         solution="hello world",
