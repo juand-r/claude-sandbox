@@ -124,6 +124,10 @@ def print_results_table(profiles: list[MetricProfile]):
         print(p.summary_line())
     print("=" * len(header))
 
+    if not profiles:
+        print("\nNo results to summarize.")
+        return
+
     # Summary stats
     n_success = sum(1 for p in profiles if p.success)
     print(f"\nSuccess rate: {n_success}/{len(profiles)} "

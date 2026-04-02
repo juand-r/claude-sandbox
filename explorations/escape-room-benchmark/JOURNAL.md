@@ -88,4 +88,37 @@ should use a simpler cipher. A Caesar shift might be more appropriate for "easy"
 keep the reverse alphabet for Room 5 (hard). This gives a better difficulty gradient.
 Then re-run and see if gpt-4o-mini can handle the easy rooms.
 
+### Step 7: smolagents Integration — DONE
+
+**Setup issues:**
+1. `system_prompt` param doesn't exist — it's `instructions` in smolagents.
+2. `max_steps` and `verbosity_level` go to parent `MultiStepAgent`, not `ToolCallingAgent`.
+3. Tool call interception: smolagents' `run()` returns a final text summary, not tool outputs.
+   Used `step_callbacks` to capture `ActionStep` objects with `tool_calls` attribute.
+4. **Critical issue: memory persistence.** By default, `run(reset=True)` wipes agent memory
+   each call. For multi-turn games, must use `reset=False` on subsequent calls. Without this,
+   smolagents scored 1/5 (20%). With it: 4/5 (80%).
+
+### Comparison: OpenAI SDK vs smolagents (gpt-4o-mini, single trial)
+
+```
+Framework        Room 1   Room 2   Room 3   Room 4   Room 5   Success
+                 (easy)   (easy)   (med)    (med)    (hard)   Rate
+OpenAI SDK       PASS/4t  PASS/3t  PASS/12t PASS/4t  PASS/16t 5/5 (100%)
+smolagents       PASS/2t  PASS/7t  PASS/14t PASS/5t  FAIL/16t 4/5 (80%)
+```
+
+**Observations:**
+- OpenAI SDK has better multi-turn coordination (100% vs 80%)
+- smolagents was more efficient on some rooms (Room 1: 2 turns vs 4, Room 4: 5 vs 6)
+  but less reliable overall
+- smolagents failed Room 5 (hard): the 3-puzzle chain was too complex, agents got
+  stuck on the reverse alphabet cipher
+- Both frameworks struggle with cipher decoding — this is an LLM limitation, not framework
+- smolagents has higher redundancy (both agents trying same puzzle more often)
+
+**Key architectural difference:** OpenAI SDK manages conversation history explicitly
+(`to_input_list()`). smolagents has internal memory but needs `reset=False` to persist
+it across calls. The OpenAI SDK's approach gives more control.
+
 ---

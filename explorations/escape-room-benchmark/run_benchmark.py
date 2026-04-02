@@ -26,8 +26,11 @@ def create_agent(agent_type: str, model: str, name: str):
     if agent_type == "openai_sdk":
         from agent_wrappers.openai_sdk_agent import OpenAISDKAgent
         return OpenAISDKAgent(name=name, model=model)
+    elif agent_type == "smolagents":
+        from agent_wrappers.smolagents_agent import SmolagentsAgent
+        return SmolagentsAgent(name=name, model=model)
     else:
-        raise ValueError(f"Unknown agent type: {agent_type}. Available: openai_sdk")
+        raise ValueError(f"Unknown agent type: {agent_type}. Available: openai_sdk, smolagents")
 
 
 def run_trial(room_id: str, agent_type: str, model: str, max_turns: int) -> tuple[TrialResult, MetricProfile]:
