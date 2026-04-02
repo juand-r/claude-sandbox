@@ -205,11 +205,11 @@ explorations/escape-room-benchmark/
 
 ## Status
 
-- [ ] Step 1: Room Data Model
-- [ ] Step 2: Room Oracle / Game Engine
-- [ ] Step 3: Communication Channel
-- [ ] Step 4: Agent Interface + First Real Agent (OpenAI SDK)
-- [ ] Step 5: Hand-Craft the 5 Rooms
-- [ ] Step 6: Eval Harness
-- [ ] Step 7: Add Second Agent Contestant (smolagents)
+- [x] Step 1: Room Data Model
+- [x] Step 2: Room Oracle / Game Engine
+- [x] Step 3: Communication Channel
+- [x] Step 4: Agent Interface + First Real Agent (OpenAI SDK)
+- [x] Step 5: Hand-Craft the 5 Rooms
+- [x] Step 6: Eval Harness
+- [x] Step 7: Add Second Agent Contestant (smolagents)
 - [ ] Step 8: Adversarial Variant (stretch)

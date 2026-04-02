@@ -121,4 +121,33 @@ smolagents       PASS/2t  PASS/7t  PASS/14t PASS/5t  FAIL/16t 4/5 (80%)
 (`to_input_list()`). smolagents has internal memory but needs `reset=False` to persist
 it across calls. The OpenAI SDK's approach gives more control.
 
+### Multi-Trial Benchmark (3 trials each, gpt-4o-mini, max 16 turns)
+
+```
+Framework      Success   Avg StepEff   Avg MsgEff   Notes
+OpenAI SDK     13/15     1.53          0.76         Failed: Room 3 (1x), Room 5 (1x)
+smolagents     13/15     2.68          0.88         Failed: Room 5 (2x)
+```
+
+**Per-room breakdown (pass rate out of 3 trials):**
+```
+Room           OpenAI SDK   smolagents
+Room 1 (easy)  3/3          3/3
+Room 2 (easy)  3/3          3/3
+Room 3 (med)   2/3          3/3
+Room 4 (med)   3/3          3/3
+Room 5 (hard)  2/3          1/3
+```
+
+**Key findings:**
+1. Both frameworks achieve 87% overall success with gpt-4o-mini.
+2. OpenAI SDK is more efficient (avg step_eff 1.53 vs 2.68) — fewer wasted turns.
+3. smolagents is slightly more reliable on Room 3 (3/3 vs 2/3) but worse on Room 5 (1/3 vs 2/3).
+4. Room 5 (hard) is the true differentiator — both frameworks struggle with the 3-puzzle chain.
+5. The difficulty gradient works: easy rooms = ~100%, medium = ~90%, hard = ~50%.
+
+**Conclusion:** The benchmark successfully distinguishes framework quality on multi-agent
+collaboration. The difficulty curve is reasonable. The benchmark is ready for broader testing
+with different models and additional agent frameworks.
+
 ---
