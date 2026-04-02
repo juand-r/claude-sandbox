@@ -57,20 +57,26 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
 
 ---
 
-## Step 4: Agent Interface
+## Step 4: Agent Interface (Scripted + LLM)
 
-**Goal**: Define the contract between the harness and an LLM agent.
+**Goal**: Define the contract between the harness and agents. Build BOTH a scripted agent (for deterministic engine testing) and an LLM agent (for real runs). We integrate LLM early so we catch prompt/parsing issues before building all 5 rooms.
 
 **Deliverables**:
 - `agent.py` — Agent base class / interface.
   - `observe(observation) -> None` — receives new info from the engine or channel
   - `act() -> Action` — returns either a room action or a message to teammate
-  - An LLM-backed implementation that formats observations into a prompt and parses the LLM response into an action or message.
-  - A scripted/dummy agent for testing without LLM calls.
+- `scripted_agent.py` — Deterministic agent for testing. Follows a hardcoded action sequence.
+- `llm_agent.py` — OpenAI-backed agent.
+  - System prompt explaining the escape room setup, available actions, communication protocol.
+  - Response parsing: distinguish "I want to act on the room" from "I want to message my teammate."
+  - Error handling for malformed responses.
+  - Uses `OPENAI_API_KEY` from environment.
 
-**Test**: Run the dummy agent through the simple room from Steps 1-2 using the channel from Step 3. Confirm the harness loop works: observe -> act -> engine processes -> next turn.
+**Test**:
+1. Run the scripted agent through the simple room from Steps 1-2 using the channel from Step 3. Confirm the harness loop works.
+2. Run the LLM agent through the same simple room. Verify the loop completes, logs are clean, and the LLM can actually solve a Type 1 cipher room.
 
-**Done when**: A scripted agent can play through a room end-to-end via the harness loop.
+**Done when**: Both scripted and LLM agents can play through a room end-to-end via the harness loop.
 
 ---
 
@@ -118,23 +124,21 @@ Bottom-up: build and test each layer before the next. Each step has a clear deli
 
 ---
 
-## Step 7: LLM Agent Integration
+## Step 7: Full Benchmark Runs with LLM Agents
 
-**Goal**: Plug in actual LLM agents and run the benchmark.
+**Goal**: Run all 5 rooms with LLM agents, collect results, iterate on prompt design.
 
 **Deliverables**:
-- LLM agent implementation in `agent.py` (or `llm_agent.py`).
-  - System prompt explaining the escape room setup, available actions, communication protocol.
-  - Response parsing: distinguish "I want to act on the room" from "I want to message my teammate."
-  - Error handling for malformed responses.
 - `run_benchmark.py` — CLI entry point.
-  - `--agent llm --model <model_name>`
+  - `--agent llm --model <model_name>` or `--agent scripted`
   - `--rooms all` or `--rooms 1,3,5`
   - `--trials N` for statistical significance
+- Results table with metric profiles across all rooms.
+- Prompt tuning based on failure modes observed in earlier rooms.
 
-**Test**: Run a single easy room with an LLM agent pair. Verify the loop completes, logs are clean, metrics are computed.
+**Test**: `python run_benchmark.py --agent llm --model gpt-4o --rooms all --trials 3` produces a full results table.
 
-**Done when**: Can run `python run_benchmark.py --agent llm --model <model> --rooms all --trials 5` and get a results table.
+**Done when**: Have end-to-end results for all 5 rooms with at least one LLM model.
 
 ---
 
@@ -188,5 +192,5 @@ explorations/escape-room-benchmark/
 - [ ] Step 4: Agent Interface
 - [ ] Step 5: Hand-Craft the 5 Rooms
 - [ ] Step 6: Eval Harness
-- [ ] Step 7: LLM Agent Integration
+- [ ] Step 7: Full Benchmark Runs with LLM Agents
 - [ ] Step 8: Adversarial Variant (stretch)
