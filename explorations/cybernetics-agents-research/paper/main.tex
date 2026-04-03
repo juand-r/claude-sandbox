@@ -12,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{multirow}
+\usepackage{amssymb}
 
 \title{What Cybernetics Offers LLM Agent Design:\\Buried Formalisms, Confirmed Predictions, and Missing Implementations}
 
@@ -50,7 +51,7 @@ We constructed 17 formal mappings from cybernetic formalisms to agent design pat
 \begin{table*}[t]
 \centering
 \small
-\begin{tabular}{llll}
+\begin{tabular}{p{3.8cm}p{3.2cm}cp{4.2cm}}
 \toprule
 \textbf{Cybernetic Formalism} & \textbf{Agent Pattern} & \textbf{Corr.} & \textbf{Key Gap} \\
 \midrule
@@ -60,7 +61,7 @@ VSM \cite{beer1972brain} & Multi-agent orchestration & MOD & No empirical compar
 Homeostasis \cite{ashby1952design} & Homeostatic goals \cite{pihlakas2024homeostasis} & TIGHT & Limited empirical testing \\
 Second-order cybernetics & Reflexion / self-critique & MOD & Evaluator not independent of executor \\
 PCT \cite{powers1973behavior} & Hierarchical agents & LOOSE & No PCT-designed agent exists \\
-Learning levels \cite{bateson1972steps} & In-context vs. meta-learning & MOD & Agents lack Learning II \\
+Learning levels \cite{bateson1972steps} & In-context vs.\ meta-learning & MOD & Agents lack Learning II \\
 Conversation Theory \cite{pask1976conversation} & Multi-agent debate & MOD & Full formal apparatus unmapped \\
 Stability analysis (Lyapunov) & Agent loop convergence & TIGHT\textsuperscript{$\ddagger$} & Nobody has done the analysis \\
 Heterarchy \cite{mcculloch1945heterarchy} & Dynamic role assignment & MOD & Agents lack self-competence assessment \\
