@@ -1,0 +1,208 @@
+\chapter{Gibbs Measures and Temperature Decoding}
+\label{ch14}
+
+\section{Recap: The Gibbs–Generating Function Bridge}
+\label{ch14:recap}
+
+Chapter~13 introduced Boltzmann sampling on combinatorial structures via the substitution $x = e^{-\beta}$: if $A(x)$ is the ordinary generating function of a combinatorial class, the Boltzmann distribution at inverse temperature $\beta$ assigns probability $e^{-\beta |a|}/A(e^{-\beta})$ to structure $a$, turning size into energy and the generating function evaluated at $e^{-\beta}$ into a partition function $Z(\beta) = A(e^{-\beta})$. This chapter transfers that framework to language models. The combinatorial class becomes the set of finite strings $\Sigma^*$, the ``size'' of a string is replaced by the negative log-probability under a learned model, and temperature becomes a control knob that interpolates between greedy decoding ($\beta \to \infty$) and uniform sampling ($\beta \to 0$). The mathematics is the same; what changes is what the energy functional means and how it is computed.
+
+\section{The LLM Energy Functional}
+\label{ch14:energy}
+
+Let $\Sigma$ be a finite vocabulary including a distinguished end-of-sequence token $\EOS$. An autoregressive language model, as developed in Chapter~10, defines a probability distribution $\mu$ over $\Sigma^* = \bigcup_{n \geq 0} \Sigma^n$ by the factorization
+\[
+  \mu(w) = \prod_{t=1}^{|w|} p(w_t \mid w_1, \ldots, w_{t-1}),
+\]
+where the product runs through the tokens of $w$ including the terminal $\EOS$, and each conditional $p(\cdot \mid w_{<t})$ is a probability distribution over $\Sigma$ produced by the model (e.g., the output softmax of a Transformer).
+
+\begin{definition}[LLM Energy]
+\label{ch14:def-energy}
+For a string $w \in \Sigma^*$, define the \emph{energy} of $w$ under $\mu$ as
+\[
+  E(w) = -\log \mu(w).
+\]
+\end{definition}
+
+Because $\mu$ factorizes, the energy decomposes as a sum over token positions:
+\[
+  E(w) = \sum_{t=1}^{|w|} \bigl(-\log p(w_t \mid w_{<t})\bigr).
+\]
+Each term $-\log p(w_t \mid w_{<t})$ is the per-token \emph{surprisal}. This additive structure is precisely what makes autoregressive sampling computationally tractable: the energy of a string can be accumulated token by token as the string is generated, without looking ahead. If the model is tight (i.e., $\sum_{w \in \Sigma^*} \mu(w) = 1$, as discussed in Chapter~7), then $\mu$ is a genuine probability measure, and $E$ is its negative log-likelihood.
+
+\begin{remark}
+The energy functional is not an externally imposed Hamiltonian; it is derived entirely from the model's own distribution. In statistical physics one starts from an energy and derives a distribution. Here the direction is reversed: the distribution comes first, and the energy is defined from it. The Gibbs formalism nevertheless applies, because all that the formalism requires is an energy function on the sample space.
+\end{remark}
+
+\section{Temperature Sampling}
+\label{ch14:temp-sampling}
+
+\subsection{The Global Gibbs Distribution}
+\label{ch14:global-gibbs}
+
+Given the energy $E(w) = -\log \mu(w)$, the \emph{global Gibbs distribution at inverse temperature $\beta > 0$} is
+\[
+  \mu_\beta(w) = \frac{e^{-\beta E(w)}}{Z(\beta)} = \frac{\mu(w)^\beta}{Z(\beta)},
+\]
+where the partition function is
+\[
+  Z(\beta) = \sum_{w \in \Sigma^*} \mu(w)^\beta.
+\]
+At $\beta = 1$ we recover $\mu_1 = \mu$ (assuming $\mu$ is tight). As $\beta \to \infty$, $\mu_\beta$ concentrates on the strings that maximize $\mu(w)$, i.e., greedy (or beam-search) decoding. As $\beta \to 0$, $\mu_\beta$ approaches the uniform distribution over strings (modulo the issues of infinite support). The temperature $T = 1/\beta$ is the parameter commonly exposed in LLM APIs.
+
+\subsection{Token-Wise Temperature Sampling}
+\label{ch14:local-temp}
+
+In practice, temperature is not applied globally to $\mu$. Instead, at each decoding step $t$, the model produces logits $\ell_i = \log p(w_t = i \mid w_{<t})$ for $i \in \Sigma$, and these are divided by temperature $T$ before taking the softmax:
+\[
+  p_i^{(T)} = \frac{\exp(\ell_i / T)}{\sum_{j \in \Sigma} \exp(\ell_j / T)}.
+\]
+Equivalently, writing $\beta = 1/T$, the per-step distribution is proportional to $p(i \mid w_{<t})^\beta$. The string distribution induced by iterating this local procedure will be denoted $\widetilde{\mu}_\beta$. The question is whether $\widetilde{\mu}_\beta = \mu_\beta$.
+
+\subsection{Local vs. Global: The Markov Approximation}
+\label{ch14:markov-approx}
+
+The local procedure replaces each conditional $p(\cdot \mid w_{<t})$ with its $\beta$-tilted version, renormalizing at each step. The resulting string probability is
+\[
+  \widetilde{\mu}_\beta(w) = \prod_{t=1}^{|w|} \frac{p(w_t \mid w_{<t})^\beta}{\widetilde{Z}_t(\beta, w_{<t})},
+\]
+where $\widetilde{Z}_t(\beta, w_{<t}) = \sum_{a \in \Sigma} p(a \mid w_{<t})^\beta$ is the local per-step partition function. On the other hand, the global Gibbs distribution is
+\[
+  \mu_\beta(w) = \frac{\prod_{t=1}^{|w|} p(w_t \mid w_{<t})^\beta}{Z(\beta)}.
+\]
+These are equal if and only if the product $\prod_t \widetilde{Z}_t(\beta, w_{<t})$ equals $Z(\beta)$ for all $w$, which is generically false. The global partition function $Z(\beta)$ accounts for the entire future subtree of completions from every prefix, while $\widetilde{Z}_t$ accounts only for the single next token. We record this precisely.
+
+\begin{proposition}[Local vs.\ Global Temperature]
+\label{ch14:prop-local-global}
+Let $\mu$ be a tight autoregressive language model. For $\beta \neq 1$, the local temperature distribution $\widetilde{\mu}_\beta$ and the global Gibbs distribution $\mu_\beta$ satisfy
+\[
+  \frac{\widetilde{\mu}_\beta(w)}{\mu_\beta(w)} = \frac{Z(\beta)}{\prod_{t=1}^{|w|} \widetilde{Z}_t(\beta, w_{<t})},
+\]
+and this ratio is not constant over $w$ unless all per-step partition functions $\widetilde{Z}_t(\beta, w_{<t})$ are equal (independent of the prefix). In particular, $\widetilde{\mu}_\beta = \mu_\beta$ when $\beta = 1$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The formula for the ratio follows immediately from the two expressions for $\widetilde{\mu}_\beta(w)$ and $\mu_\beta(w)$ written above. At $\beta = 1$, both $\widetilde{Z}_t = 1$ for all $t$ (since $\sum_a p(a \mid w_{<t}) = 1$) and $Z(1) = \sum_{w'} \mu(w') = 1$ by tightness, so the ratio is $1/1 = 1$. For general $\beta$, fix two completions $w$ and $w'$ of a common prefix $w_{<t^*}$ that branch at step $t^*$ into two subtrees with unequal total $\mu^\beta$-masses. Then $\widetilde{Z}_{t^*}$ is the same for both (it depends only on the shared prefix), but $Z(\beta)$ weights each path by the entire subtree mass; the resulting ratio differs for $w$ and $w'$, so the correction factor is non-constant.
+\end{proof}
+
+\subsection{Concrete 2-Token Example}
+\label{ch14:example}
+
+\begin{example}[Two tokens, two branches]
+\label{ch14:ex-two-token}
+Let $\Sigma = \{a, b, \EOS\}$, and consider strings of length exactly 2 (plus $\EOS$). Suppose the model gives:
+\[
+  p(a \mid \varepsilon) = 0.8, \quad p(b \mid \varepsilon) = 0.2,
+\]
+\[
+  p(\EOS \mid a) = 0.9, \quad p(\EOS \mid b) = 0.1,
+\]
+so the two complete strings are $w_1 = a\EOS$ with $\mu(w_1) = 0.8 \times 0.9 = 0.72$ and $w_2 = b\EOS$ with $\mu(w_2) = 0.2 \times 0.1 = 0.02$ (ignoring the small residual probability; normalize if you wish). Take $\beta = 0.5$ (temperature $T = 2$).
+
+\textbf{Global Gibbs.} $Z(0.5) = 0.72^{0.5} + 0.02^{0.5} \approx 0.8485 + 0.1414 = 0.9899$. So
+\[
+  \mu_{0.5}(w_1) \approx 0.8485 / 0.9899 \approx 0.857, \quad \mu_{0.5}(w_2) \approx 0.143.
+\]
+
+\textbf{Local temperature.} At step 1: $\widetilde{Z}_1 = 0.8^{0.5} + 0.2^{0.5} \approx 0.8944 + 0.4472 = 1.3416$. Local probability of choosing $a$: $0.8944 / 1.3416 \approx 0.667$; of $b$: $0.4472 / 1.3416 \approx 0.333$. At step 2 given $a$: $\widetilde{Z}_2(a) = 0.9^{0.5} \approx 0.9487$ (only one token continues); probability of $\EOS \mid a$ is $1$ (it is the only continuation here). Given $b$: similarly probability of $\EOS \mid b$ is $1$. Thus:
+\[
+  \widetilde{\mu}_{0.5}(w_1) \approx 0.667, \quad \widetilde{\mu}_{0.5}(w_2) \approx 0.333.
+\]
+
+The global Gibbs distribution gives roughly $0.857$ vs.\ $0.143$, while local temperature gives $0.667$ vs.\ $0.333$. The local procedure over-promotes the low-probability branch $b\EOS$ because it does not account for the fact that $b$'s subtree has much lower overall mass.
+\end{example}
+
+\cite{KemptonBurrell2025} study this gap systematically and provide bounds on how far $\widetilde{\mu}_\beta$ can deviate from $\mu_\beta$ in terms of the spread of per-step partition functions across the tree of continuations.
+
+\section{The ARM–EBM Bijection}
+\label{ch14:arm-ebm}
+
+A natural question is whether autoregressive models (ARMs), which are locally normalized, and energy-based models (EBMs), which are globally normalized, differ in expressive power. \cite{BlondelEtAl2025} answer this precisely via a soft Bellman equation.
+
+\begin{theorem}[ARM–EBM Bijection, Blondel et al.\ 2025]
+\label{ch14:thm-bijection}
+Every tight autoregressive language model $\mu$ corresponds uniquely to an energy-based model via the following construction. Define the \emph{value function}
+\[
+  V(w_{<t}) = \log \sum_{w' \in \Sigma^* : w_{<t} \sqsubset w'} \mu(w'),
+\]
+i.e., the log-probability of all completions of prefix $w_{<t}$. Define the \emph{soft Q-value}
+\[
+  Q(w_{<t}, a) = -\log p(a \mid w_{<t}) + V(w_{<t} \cdot a).
+\]
+Then $\mu$ is the \emph{Boltzmann policy} with respect to $Q$:
+\[
+  p(a \mid w_{<t}) = \frac{e^{-Q(w_{<t}, a)}}{\sum_{b} e^{-Q(w_{<t}, b)}},
+\]
+and the value function satisfies the soft Bellman equation $V(w_{<t}) = -\log \sum_a e^{-Q(w_{<t}, a)}$.
+\end{theorem}
+
+The proof follows from the observation that the completions mass $\exp(V(w_{<t}))$ is exactly the probability the model assigns to all continuations of $w_{<t}$, which satisfies a Bellman-like recursion: $\exp(V(w_{<t})) = \sum_a p(a \mid w_{<t}) \exp(V(w_{<t} \cdot a))$.
+
+The significance of this result is the following. An EBM on $\Sigma^*$ specifies a string energy $E(w)$ and samples via $e^{-E(w)}/Z$; it is globally normalized and in general intractable. An ARM samples greedily by factorizing the distribution. Blondel et al.\ show that when the underlying function class is rich enough to represent arbitrary $V$ and $Q$ functions, the two parameterizations have identical expressive power: every EBM distribution on $\Sigma^*$ can be realized as the path distribution of an ARM, and vice versa. The difference is not what distributions they can represent, but how they are learned and sampled. The ARM parameterization makes forward sampling trivial (left-to-right) but makes inference about global properties (e.g., computing $Z(\beta)$) hard. The EBM parameterization specifies global energies naturally but requires approximate sampling. This is the fundamental tension that temperature decoding must navigate.
+
+\section{Kempton and Burrell 2025: Local Normalization Distortion}
+\label{ch14:kempton-burrell}
+
+The mismatch identified in Section~\ref{ch14:markov-approx} has a clear structural cause: local renormalization at each step throws away information about the future subtree. When you divide logits by $T$ and re-softmax at step $t$, you are computing the $\beta$-tilted version of the one-step conditional $p(\cdot \mid w_{<t})$, but the one-step conditional is not the same as the marginal of the $\beta$-tilted global distribution at that position. The marginal of $\mu_\beta$ at step $t$ is:
+\[
+  p_\beta(a \mid w_{<t}) \propto p(a \mid w_{<t})^\beta \cdot \left(\sum_{w' \text{ extends } w_{<t} \cdot a} \mu(w')^\beta / \mu(a \mid w_{<t})^\beta\right)^{\vphantom{X}},
+\]
+which depends on the subtree mass of all continuations beyond $a$. Token-wise temperature sampling ignores this subtree factor, as the example in Section~\ref{ch14:example} illustrates.
+
+\cite{KemptonBurrell2025} quantify the distortion in terms of the variance of the log-partition functions $\log \widetilde{Z}_t(\beta, w_{<t})$ across prefixes. When this variance is small (i.e., the per-step partition functions do not vary much), the local and global procedures are close. This occurs approximately when the model's token distributions are nearly uniform at every step — a situation far from typical language model behavior where distributions are peaky.
+
+The conclusion for practitioners is sharp: temperature decoding as universally implemented in LLM APIs is not a principled sample from the global Gibbs distribution $\mu_\beta$. It is a Markov approximation of $\mu_\beta$, and it systematically distorts the relative weights of high- and low-probability branches in ways that depend on the subtree structure of the model's distribution.
+
+\section{Structural Constraints on LLM Energy}
+\label{ch14:lin-tegmark}
+
+\cite{LinTegmarkRolnick2017} provide a perspective on why the Gibbs framework is nonetheless well-behaved for language model distributions arising from physical or natural data. Their argument, originally cast for neural networks applied to physics, implies that for data generated by processes with limited long-range interactions (e.g., text, images), the log-probability $\log \mu(w)$ is approximately polynomial of low degree in a suitable representation of $w$. Concretely, the energy $E(w) = -\log \mu(w)$ has an approximate expansion of bounded polynomial degree, which rules out the pathological Gibbs phenomena (e.g., non-analytic phase transitions driven by infinite-degree interactions) that can occur in worst-case energy landscapes.
+
+For language models specifically, this translates to the observation that Transformer attention has bounded context and the energy is a sum of contributions that have diminishing interaction range. This does not mean $E$ is polynomial in the token indices — it means the energy landscape on $\Sigma^*$ does not have structure that would require exponentially many parameters to describe. The implication for temperature decoding is that the partition function $Z(\beta)$ is likely analytic (as a function of $\beta$) over a useful range, so the Gibbs distribution varies smoothly with temperature rather than exhibiting sharp discontinuities. Chapter~15 will revisit this claim in the generating-function setting.
+
+\section{Beyond Full Gibbs: Top-\texorpdfstring{$k$}{k} and Nucleus Sampling}
+\label{ch14:truncations}
+
+In practice, temperature sampling is often combined with truncation heuristics. Two common variants are:
+
+\begin{itemize}
+\item \textbf{Top-$k$ sampling}: at each step, restrict the next-token distribution to the $k$ highest-probability tokens, re-normalize, then sample. This is a truncation of the local distribution $p(\cdot \mid w_{<t})$ before applying temperature.
+
+\item \textbf{Nucleus (top-$p$) sampling}: at each step, retain the smallest set of tokens whose cumulative probability exceeds $p$, re-normalize, then sample.
+\end{itemize}
+
+From the Gibbs perspective, neither of these is a principled operation on $\mu_\beta$. Top-$k$ truncation removes tokens whose contribution to $Z(\beta)$ may be non-negligible — the discarded tail can carry significant probability mass at high temperatures ($\beta < 1$). Nucleus sampling adapts the truncation to the shape of the distribution at each step, which is heuristically more sensible but still does not correspond to any well-defined global distribution on $\Sigma^*$. Analytically, both operations introduce a step-dependent truncation that breaks the Markov structure of the generation process and makes the resulting string distribution very difficult to characterize. They are better understood as variance-reduction heuristics for sampling than as approximations to a Gibbs measure.
+
+\section{Creative vs.\ Greedy Decoding}
+\label{ch14:creative-greedy}
+
+The temperature parameter $T = 1/\beta$ has a natural interpretation in the generating-function sense. As $\beta \to \infty$ ($T \to 0$), the Gibbs distribution concentrates on the mode: $\mu_\beta$ assigns essentially all mass to the string $w^* = \arg\max_{w} \mu(w)$, and sampling from $\mu_\beta$ is equivalent to greedy decoding. As $\beta \to 0$ ($T \to \infty$), $\mu_\beta$ approaches the distribution that assigns equal mass to all strings — pure noise. The regime $\beta < 1$ ($T > 1$) flattens the distribution relative to $\mu$, increasing entropy and diversity of samples; this is colloquially called ``creative'' decoding. The regime $\beta > 1$ ($T < 1$) sharpens the distribution, reducing diversity and pushing toward the most probable completions.
+
+In the generating-function language of Chapter~13, varying $\beta$ corresponds to moving along the real axis in the $x = e^{-\beta}$ substitution. The radius of convergence of $A(x) = \sum_{w} \mu(w) x^{-\log \mu(w) / \log x}$ (with suitable interpretation) sets the range of $\beta$ over which the partition function is finite. Chapter~15 will show that the boundary of this convergence region is where phase transitions occur: qualitative changes in the character of typical samples from $\mu_\beta$.
+
+\begin{remark}
+It is a common misconception that high temperature always makes a model ``more creative'' in a meaningful sense. What it does is increase entropy and reduce the probability gap between the most likely and least likely continuations. Whether this produces outputs that humans judge as creative depends on the structure of $\mu$; for a model trained on diverse text, the high-entropy region of $\mu$ may correspond to semantically coherent but unusual continuations, or to incoherent sequences, depending on $\beta$.
+\end{remark}
+
+\section{Notes and Further Reading}
+\label{ch14:notes}
+
+The energy-based view of language models is developed in \cite{DuEtAl2023}, which surveys EBMs in natural language processing and discusses the difficulties of training and sampling from globally normalized distributions. The ARM–EBM bijection of \cite{BlondelEtAl2025} (arXiv:2512.15605) sharpens this picture by showing the two model classes are equiexpressive under suitable function-class assumptions, with the equivalence mediated by soft Bellman equations from reinforcement learning theory.
+
+\cite{KemptonBurrell2025} provide the most careful mathematical treatment of the local-vs.-global temperature gap. Their analysis is closely related to the theory of weighted automata (Chapter~6) and to the notion of ``backward'' vs.\ ``forward'' partition functions in graphical models.
+
+The observation of \cite{LinTegmarkRolnick2017} that physical data distributions have low-degree energy functions connects to the renormalization-group perspective on deep learning, which is beyond the scope of this text. The key point for our purposes is that it gives a heuristic justification for treating $Z(\beta)$ as analytic in $\beta$ over a wide range.
+
+For the statistical physics background, the standard reference is Georgii's \emph{Gibbs Measures and Phase Transitions}. The connection between Boltzmann sampling and analytic combinatorics is treated in Flajolet and Sedgewick, Chapter~XII.
+
+\section*{Exercises}
+\label{ch14:exercises}
+
+\begin{exercise}
+\label{ch14:ex1}
+Let $\Sigma = \{0, 1, \EOS\}$ and define a model by $p(0 \mid \varepsilon) = p(1 \mid \varepsilon) = 0.5$, $p(\EOS \mid 0) = 0.8$, $p(\EOS \mid 1) = 0.2$ (so strings are of length at most 2). Compute $Z(\beta)$ for general $\beta > 0$. Show that the global Gibbs probabilities of the two length-2 strings at $\beta = 2$ differ from the probabilities produced by local temperature sampling with $T = 0.5$. What is the ratio $\widetilde{\mu}_\beta(w) / \mu_\beta(w)$ for each string?
+\end{exercise}
+
+\begin{exercise}
+\label{ch14:ex2}
+Suppose $\mu$ is a tight autoregressive model on $\Sigma^*$ such that the per-step conditional distributions $p(\cdot \mid w_{<t})$ are all equal to the same fixed distribution $q$ on $\Sigma$ (i.e., the model is memoryless and time-homogeneous). Show that in this case the local temperature distribution $\widetilde{\mu}_\beta$ equals the global Gibbs distribution $\mu_\beta$ for all $\beta > 0$. Explain why the result in Proposition~\ref{ch14:prop-local-global} is consistent with this: what happens to the per-step partition functions?
+\end{exercise}
