@@ -1,0 +1,416 @@
+\chapter{Phase Transitions in Language Model Output}
+\label{ch15}
+
+The temperature parameter of a language model is not merely a knob for controlling
+output randomness. At certain critical values it can trigger qualitative, system-wide
+changes in the structure of the output distribution --- changes that physicists call
+\emph{phase transitions}. This chapter makes that claim precise, connects it to the
+singularity theory developed in Chapters 1--5, and reviews the growing empirical
+evidence from large-scale experiments on GPT-2, Pythia, Mistral, and Llama.
+
+\section{Phase Transitions: The Analytic Definition}
+\label{ch15:analytic-definition}
+
+Throughout Chapters 13--14 we associated to any probability measure $\mu$ on
+$\Sigma^*$ the \emph{partition function}
+\[
+  Z(\beta) = \sum_{w \in \Sigma^*} \mu(w)^{\,\beta}, \qquad \beta > 0,
+\]
+and the \emph{free energy}
+\[
+  f(\beta) = -\frac{1}{\beta}\log Z(\beta).
+\]
+The Gibbs measure at inverse temperature $\beta$ assigns to each word $w$ the
+probability $\mu_\beta(w) = \mu(w)^\beta / Z(\beta)$.  Temperature in the sense
+of Chapter 14 is $T = 1/\beta$.
+
+\begin{definition}[Phase transition]
+\label{ch15:def-phase-transition}
+A \emph{phase transition} of the system $(\mu, \beta)$ is a point $\beta_c \in
+(0,\infty)$ at which the free energy $f(\beta)$ fails to be real-analytic. The
+transition is \emph{first-order} if $f'$ has a jump discontinuity at $\beta_c$;
+it is \emph{second-order} (or \emph{continuous}) if $f'$ is continuous at
+$\beta_c$ but $f''$ diverges there.
+\end{definition}
+
+In statistical mechanics the second derivative $-\beta^2 f''(\beta)$ is
+proportional to the \emph{susceptibility}, measuring how sensitively the mean
+energy responds to a change in temperature. A diverging susceptibility is
+therefore the signature of a second-order transition.
+
+\subsection{Connection to Singularities of Generating Functions}
+\label{ch15:gf-connection}
+
+Write $z = e^{-\beta}$, so $Z(\beta) = A(z)$ where $A(z) = \sum_{w} \mu(w)^\beta$
+is interpreted as a generating function evaluated at $z = e^{-\beta}$.  Then
+$\beta_c$ is a phase-transition point if and only if $z_c = e^{-\beta_c}$ is a
+singularity of $A(z)$ on the boundary of its disk of convergence.
+
+This is precisely the setting of Chapter 4's singularity classification:
+
+\begin{itemize}
+  \item A \emph{simple pole} of $A(z)$ at $z_c$ gives a first-order transition.
+    The dominant coefficient grows as $z_c^{-n}$ with no polynomial correction,
+    and the free energy has a kink.
+  \item A \emph{square-root branch point}, $A(z) \sim C(1 - z/z_c)^{1/2}$,
+    gives a second-order transition: $Z(\beta)$ is continuous through $\beta_c$
+    but $Z''(\beta)$ diverges.  The associated coefficient asymptotics carry the
+    $n^{-3/2}$ factor familiar from Chapter 5.
+  \item An \emph{essential singularity} can produce more exotic behavior
+    (infinitely many derivatives discontinuous) that lies outside the standard
+    first/second-order classification.
+\end{itemize}
+
+\begin{proposition}
+\label{ch15:2nd-order}
+Suppose $A(z)$ has a unique dominant singularity at $z_c$ of the square-root
+algebraic type,
+\[
+  A(z) = g(z) - h(z)\sqrt{1 - z/z_c},
+\]
+where $g, h$ are analytic and nonzero at $z_c$. Then the free energy
+$f(\beta) = -\beta^{-1}\log A(e^{-\beta})$ is $C^1$ at $\beta_c = -\log z_c$
+but $f''$ has an integrable singularity there, giving a second-order phase
+transition.
+\end{proposition}
+
+The proof is a direct computation: one writes
+$A(e^{-\beta}) = g(e^{-\beta}) - h(e^{-\beta})\sqrt{1 - e^{-(\beta-\beta_c)}}$
+and expands near $\beta = \beta_c$.  The square root produces a branch cut in
+$\beta$, so all higher derivatives of $f$ diverge at $\beta_c$, while $f$ and $f'$
+remain finite.
+
+The upshot: \emph{the order of the phase transition is determined by the type of
+the dominant singularity of $A(z)$}.  This is the bridge between Chapter 4's
+taxonomy and the thermodynamics of Chapters 13--14.
+
+\section{Composition Schemes and Universal Transition Signatures}
+\label{ch15:composition-schemes}
+
+A natural mechanism by which a smooth generating function can develop a
+singularity is the \emph{composition scheme}: take an outer function $A(u)$,
+analytic in a neighborhood of $u=0$, and an inner function $B(z)$ with radius of
+convergence $\rho_B$.  The composed function $F(z) = A(B(z))$ has its dominant
+singularity at $z = \rho_B$, but the \emph{type} of that singularity depends on
+whether $\rho_B$ is an ordinary point or a critical point of $A$.
+
+\cite{BanderierKubaWallner2021} carried out a systematic analysis of such
+composition schemes and classified the possible singularity types that arise. The
+central finding is:
+
+\begin{itemize}
+  \item If $B(\rho_B) < \rho_A$ (where $\rho_A$ is the radius of convergence of
+    $A$), the singularity of $F$ at $\rho_B$ is of the same type as that of $B$.
+  \item If $B(\rho_B) = \rho_A$ --- the \emph{critical} or \emph{confluent} case
+    --- the singularity type changes, typically from rational to square-root
+    algebraic.  The coefficient asymptotics transition from exponential-only to
+    exponential times $n^{-3/2}$, with an Airy-function limit law governing the
+    fluctuations.
+  \item More degenerate confluences (higher-order critical points) produce
+    $n^{-5/3}$ and related exponents tied to higher Airy-type kernels.
+\end{itemize}
+
+In the language of this chapter, the passage from the sub-critical to the
+critical composition scheme is itself a second-order phase transition.  As a
+control parameter (say, the mean branching number in a context-free grammar)
+crosses a threshold, the dominant singularity of $F(z)$ changes character, and
+the free energy acquires a new non-analyticity.
+
+\begin{remark}
+\label{ch15:remark-universality}
+The Airy-function limit law is \emph{universal} in the sense that the same law
+emerges for a wide variety of combinatorial structures (binary trees, planar maps,
+context-free languages) whenever the composition scheme is at criticality.  This
+universality is the analytic-combinatorics analog of universality classes in
+physics.
+\end{remark}
+
+The composition-scheme framework gives a \emph{catalogue} of possible phase-transition
+signatures for systems whose partition function is (or is approximated by) a composed
+generating function.  Chapter 18 will revisit which entries of this catalogue are
+plausible candidates for real language models.
+
+\section{A Worked Example: The Catalan Partition Function}
+\label{ch15:catalan-example}
+
+Before turning to the empirical literature, we work through the simplest non-trivial
+case.
+
+\begin{example}[Catalan partition function]
+\label{ch15:ex-catalan}
+Let $A(z) = \frac{1 - \sqrt{1-4z}}{2z}$, the generating function of the Catalan
+numbers $C_n = \binom{2n}{n}/(n+1)$.  Its radius of convergence is $\rho = 1/4$,
+with a square-root branch point there.
+
+Define the partition function $Z(\beta) = A(e^{-\beta})$ for $\beta > 0$.  The
+critical inverse temperature is
+\[
+  \beta_c = -\log \rho = -\log(1/4) = \log 4.
+\]
+For $\beta > \beta_c$ we have $e^{-\beta} < 1/4$ and $Z(\beta)$ is analytic; for
+$\beta < \beta_c$ the argument exits the radius of convergence and $Z(\beta)$ is
+defined by analytic continuation through the cut.
+
+Near $\beta_c$ write $\epsilon = \beta - \beta_c$ and expand:
+\[
+  1 - 4e^{-\beta} = 1 - 4e^{-\beta_c - \epsilon} = 1 - e^{-\epsilon}
+  \approx \epsilon - \tfrac{\epsilon^2}{2} + O(\epsilon^3).
+\]
+Thus
+\[
+  Z(\beta) \approx \frac{1 - \sqrt{\epsilon}}{2e^{-\beta_c}} + O(\epsilon)
+  = 2(1 - \sqrt{\epsilon} + O(\epsilon))
+\]
+(where we use $e^{\beta_c} = 4$ and the leading term of the Catalan GF at the
+singularity).  The free energy is
+\[
+  f(\beta) = -\frac{1}{\beta}\log Z(\beta) \approx -\frac{1}{\beta_c}
+  \bigl(\log 2 - \tfrac{1}{2}\epsilon + O(\epsilon)\bigr).
+\]
+Computing: $f'(\beta)$ is continuous at $\beta_c$ (the $\sqrt{\epsilon}$ term in
+$Z$ contributes a $\epsilon^{-1/2}$ term to $Z'/Z$, which enters $f'$ as
+$(\log Z)' / \beta + (\log Z) / \beta^2$; the leading $\epsilon^{-1/2}$
+singularity is integrable). However, $f''(\beta)$ diverges as $\epsilon \to 0$
+like $\epsilon^{-1/2}$, confirming a second-order transition.
+
+The coefficient asymptotics of $A(z)$, namely $[z^n]A(z) = C_n \sim
+4^n n^{-3/2} / \sqrt{\pi}$, appear on the Gibbs side as the probability mass
+that the Boltzmann sampler assigns to strings of length $n$ at the critical
+temperature: it decays as $n^{-3/2}$, the signature of the algebraic singularity
+noted in Chapter 5.
+\end{example}
+
+This example is the canonical prototype.  Every algebraic generating function
+with a square-root dominant singularity gives the same exponents, which is why
+the $n^{-3/2}$ law and its associated Airy limit are called \emph{universal}.
+
+\section{Empirical Evidence from Language Models}
+\label{ch15:empirical}
+
+We now turn to recent experimental work.  The experiments are independent and use
+different models, but they converge on a consistent picture: GPT-family language
+models exhibit temperature-driven phase transitions whose signatures are
+quantitatively consistent with second-order universality.
+
+\subsection{GPT-2: Nakaishi, Nishikawa, and Hukushima (2024)}
+\label{ch15:nakaishi}
+
+\cite{NakaishiNishikawaHukushima2024} (arXiv:2406.05335) studied GPT-2 by
+treating the temperature $T = 1/\beta$ as a tunable control parameter and
+measuring standard finite-size-scaling observables on the output distribution.
+Their methodology is borrowed from computational statistical mechanics: they
+measure a quantity analogous to the magnetic susceptibility, locate its peak as a
+function of $T$, and track how the peak height and location shift as the model
+size (or the prompt length used as a proxy for system size) varies.
+
+Their main findings are:
+
+\begin{itemize}
+  \item There is a temperature $T_c \approx 1$ (i.e., $\beta_c \approx 1$) at
+    which the susceptibility-analog peaks sharply.
+  \item The peak height scales with the system-size proxy in a manner consistent
+    with a second-order transition, with fitted critical exponents.
+  \item The transition separates a low-temperature \emph{ordered} phase (where
+    the output concentrates on a small number of high-probability completions) from
+    a high-temperature \emph{disordered} phase (where the output approaches
+    uniform).
+\end{itemize}
+
+These are empirical observations with fitted exponents.  The paper does not prove
+that $Z(\beta)$ is non-analytic at $\beta_c$; it demonstrates scaling behavior
+that is consistent with such non-analyticity.  The distinction matters: finite
+models always have analytic $Z(\beta)$ (the sum is finite), so what one observes
+in practice is a rapid crossover that sharpens as model size grows, analogous to
+the finite-size rounding of phase transitions in statistical mechanics.
+
+\subsection{Pythia, Mistral, Llama: Arnold et al. (2024)}
+\label{ch15:arnold}
+
+\cite{ArnoldEtAl2024} (arXiv:2405.17088) extended the investigation to three
+open-weight model families: Pythia (70M to 12B parameters), Mistral (7B), and
+Llama (7B to 70B). They scanned temperature and measured several observables
+including token-rank distributions, entropy, and a susceptibility proxy across
+all these models.
+
+The key findings of \cite{ArnoldEtAl2024} are:
+
+\begin{itemize}
+  \item Phase-transition signatures are \emph{robust across model families and
+    parameter scales}.  The critical temperature $T_c$ varies somewhat, but all
+    models show qualitatively identical behavior.
+  \item The scaling of observables near $T_c$ is consistent with second-order
+    criticality.
+  \item There is a \emph{temperature window} around $T = 1$ where the output
+    distribution is neither too concentrated nor too flat, and within this window
+    the Zipf-like rank-frequency exponent is approximately constant across models.
+\end{itemize}
+
+The robustness across model families is significant: it suggests the phenomenon
+is not an artifact of a particular training procedure or architecture, but a
+structural property of the output distributions produced by autoregressive models
+trained on natural-language corpora.
+
+Again, this is empirical evidence.  The universality class is inferred from
+exponent fits, not derived from first principles.
+
+\subsection{Universality and the Temperature Window: Mikhaylovskiy (2025)}
+\label{ch15:mikhaylovskiy}
+
+\cite{Mikhaylovskiy2025} goes a step further and argues that the observed
+transitions across models sit in a \emph{common universality class} that is
+consistent with the predictions of analytic-combinatorics composition schemes.
+Specifically, the fitted critical exponents are compatible with those arising from
+square-root singularities of composed generating functions --- the same universality
+class as the Catalan example of Section~\ref{ch15:catalan-example}.
+
+\cite{Mikhaylovskiy2025} also identifies and analyzes the \emph{temperature window}
+regime: a range of temperatures near $T_c$ in which the rank-frequency (Zipf)
+exponent $\alpha$ satisfies $\alpha \approx 1$ and is approximately constant as a
+function of $T$.  This is consistent with the plateau in the free energy's second
+derivative that one would expect if the singularity is approached slowly from
+a non-analytic direction.  Chapter 16 will examine the temperature window in
+detail; here we note only that its existence is further evidence of an underlying
+analytic structure.
+
+The universality claim of \cite{Mikhaylovskiy2025} is stronger than those of
+\cite{NakaishiNishikawaHukushima2024} and \cite{ArnoldEtAl2024} --- it makes a
+claim about \emph{which} universality class, not merely that one exists.  It
+remains to be verified whether the exponents are truly universal or whether
+finite-size effects or model-family-specific features contaminate the fits.
+
+\subsection{Additional Corroboration: Li et al. (2024)}
+\label{ch15:li}
+
+\cite{LiEtAl2024} provide additional empirical corroboration from a somewhat
+different angle.  They carry out a finite-size-scaling analysis of LLM output
+distributions and show that an $O(N)$ estimation procedure for the partition
+function (where $N$ is vocabulary size or sequence length) reproduces the
+transition signatures found by the other groups.  Their work is notable for its
+computational efficiency: rather than sampling extensively, they use analytic
+approximations to $Z(\beta)$ that are tractable for large models, making the
+phase-transition analysis practical at scale.
+
+\section{The Bridging Proposal}
+\label{ch15:bridge}
+
+We can now state the central proposal of Part V of this book.
+
+\begin{remark}[The analytic-combinatorics explanation]
+\label{ch15:remark-bridge}
+The empirical phase transitions observed by
+\cite{NakaishiNishikawaHukushima2024}, \cite{ArnoldEtAl2024}, and
+\cite{Mikhaylovskiy2025} are proposed to be \emph{analytic phase transitions}
+of the partition function
+\[
+  Z(\beta) = \sum_{w \in \Sigma^*} \mu(w)^{\,\beta},
+\]
+where $\mu$ is the LLM's output distribution, viewed through the Boltzmann
+correspondence of Chapter 13 and the singularity classification of Chapter 4.
+\end{remark}
+
+To make this concrete, consider what happens if $\mu$ were \emph{exactly} a
+PCFG distribution in the sense of Chapter 8.  Then by the Chomsky--Schützenberger
+theorem (Chapter 5), the generating function $A(z) = Z(\beta)\big|_{z=e^{-\beta}}$
+would be algebraic over $\mathbb{Q}(z)$.  Its dominant singularity would be a
+branch point of algebraic type, typically square-root.  The partition function
+$Z(\beta) = A(e^{-\beta})$ would then exhibit a second-order phase transition at
+$\beta_c = -\log \rho$, with universal $n^{-3/2}$ Boltzmann weights at
+criticality.  The Nakaishi--Arnold--Mikhaylovskiy scaling would be a theorem
+rather than an empirical observation.
+
+The LLM case is not provably of this form.  A trained Transformer is not a PCFG;
+its output distribution has no known closed-form algebraic structure.  But the
+empirical scaling is consistent with the algebraic scenario, and the robustness
+across model families suggests that the phenomenon is structural rather than
+incidental.
+
+The working hypothesis, which Chapter 18 will list as Gap 3 among the ten open
+problems of Part V, is:
+
+\begin{quote}
+\emph{The output distribution $\mu$ of a large autoregressive language model
+trained on natural language admits an effective algebraic approximation in the
+sense that $Z(\beta) = \sum_w \mu(w)^\beta$ has a dominant singularity of
+square-root type at some $\beta_c$, and the resulting second-order phase
+transition is what the empirical experiments are detecting.}
+\end{quote}
+
+What would it take to verify this?  One would need either (a) a theoretical
+derivation of the algebraic structure of the LLM's output distribution --- which
+seems currently out of reach --- or (b) a more refined experimental protocol that
+distinguishes square-root from other singularity types by measuring not just the
+location but the \emph{shape} of the transition in detail.  Chapter 16 takes
+a step toward (b) by analyzing the temperature window, and Chapter 19 discusses
+what theoretical progress on (a) might look like.
+
+\section{Summary}
+\label{ch15:summary}
+
+The main points of this chapter:
+
+\begin{enumerate}
+  \item A phase transition of a temperature-parameterized system is a
+    non-analyticity of the free energy $f(\beta)$. The order of the transition is
+    determined by which derivative of $f$ first diverges.
+  \item Via the substitution $z = e^{-\beta}$, the type of the dominant
+    singularity of $A(z) = Z(\beta)$ determines the order of the transition.
+    Square-root singularities give second-order transitions; poles give
+    first-order.
+  \item Composition schemes \cite{BanderierKubaWallner2021} provide a catalogue
+    of universal transition signatures, with the Airy-function universality class
+    (associated with $n^{-3/2}$ coefficient asymptotics) being the most
+    prominent.
+  \item Empirical experiments on GPT-2
+    \cite{NakaishiNishikawaHukushima2024}, and on Pythia, Mistral, and Llama
+    \cite{ArnoldEtAl2024}, provide evidence for temperature-driven phase
+    transitions consistent with second-order criticality. \cite{Mikhaylovskiy2025}
+    identifies the likely universality class, and \cite{LiEtAl2024} provide
+    additional corroboration.
+  \item The bridging proposal: these empirical transitions may be explained as
+    analytic phase transitions of the LLM partition function, consistent with the
+    PCFG/algebraic scenario but not yet proved to be so.
+\end{enumerate}
+
+\section{Notes and Further Reading}
+\label{ch15:notes}
+
+The connection between singularities of generating functions and thermodynamic
+phase transitions is classical in the theory of exactly solvable models; see
+\cite{FlajoletSedgewick2009}, Chapter~VII, for the combinatorics perspective.
+Composition schemes and their singularity-confluence phenomena are developed
+in detail in \cite{BanderierKubaWallner2021}; the Airy limit law they discuss
+has a long history in map enumeration going back to Tutte.
+
+The statistical-mechanics methodology applied to language models
+--- finite-size scaling, susceptibility peaks, critical exponent fitting --- is
+standard in the physics of disordered systems.  Readers unfamiliar with this
+methodology should consult any graduate statistical-mechanics text before trying
+to interpret the exponent fits in
+\cite{NakaishiNishikawaHukushima2024} and \cite{ArnoldEtAl2024}.
+
+The temperature window and its relation to Zipf's law in LLM output is discussed
+further in Chapter 16.  The relationship between the ARM--EBM bijection
+(Chapter 14) and the phase-transition picture is explored in Chapter 17: briefly,
+the EBM formulation makes it natural to define an order parameter for the
+transition, which the ARM formulation does not provide directly.
+
+\begin{exercise}
+\label{ch15:ex1}
+Let $A(z) = (1-z)^{-2}$, which has a double pole at $z=1$. Compute $Z(\beta) =
+A(e^{-\beta})$ for $\beta > 0$, identify $\beta_c$, and compute $f(\beta) =
+-\beta^{-1}\log Z(\beta)$ near $\beta_c$. Show that $f'$ has a jump discontinuity
+at $\beta_c$, confirming a first-order transition. Compare with the Catalan
+(square-root) case of Section~\ref{ch15:catalan-example}.
+\end{exercise}
+
+\begin{exercise}
+\label{ch15:ex2}
+The generating function of Motzkin numbers satisfies $M(z) = 1 + z M(z) + z^2
+M(z)^2$, giving $M(z) = (1 - z - \sqrt{(1-z)^2 - 4z^2}) / (2z^2)$ with radius of
+convergence $\rho = 1/3$. Let $Z_M(\beta) = M(e^{-\beta})$ and $\beta_c = \log 3$.
+(a) Show that $Z_M$ has a square-root singularity at $\beta_c$, giving a
+second-order transition. (b) Determine the coefficient asymptotics $[z^n]M(z)$
+and verify that the Boltzmann weight at $\beta_c$ decays as $n^{-3/2}$. (c)
+Explain why the Catalan and Motzkin systems are in the same universality class
+despite having different $\rho$ and different $\beta_c$.
+\end{exercise}
