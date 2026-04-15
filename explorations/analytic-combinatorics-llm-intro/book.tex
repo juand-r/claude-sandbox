@@ -1,0 +1,61 @@
+\documentclass[11pt,a4paper]{book}
+\input{preamble}
+
+\title{\Huge Analytic Combinatorics and\\ Large Language Models\\[0.5em]
+       \Large An Expository Introduction}
+\author{RACA Notes}
+\date{April 2026}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This book is an extended expository introduction to the research territory
+where analytic combinatorics meets large language models. It is written for a
+student who knows calculus, linear algebra, and a little probability, has
+perhaps seen complex numbers, and wants to understand both halves of the
+subject from scratch: the symbolic method and singularity analysis of Flajolet
+and Sedgewick on one side, and the probabilistic, formal-language, and
+statistical-mechanics views of neural language models on the other.
+
+The organizing claim of the book is that these two traditions, despite rarely
+citing each other, are talking about the same mathematical objects: partition
+functions are generating functions, critical temperatures are radii of
+convergence, phase transitions are singularities, rational-series theorems
+from automata are dominant-pole theorems from analytic combinatorics. The
+research frontier consists largely of building bridges that the two communities
+have, until recently, avoided building. The final chapters make those bridges
+explicit and give a student a plausible starting point.
+
+Part~I develops the classical machinery of analytic combinatorics from zero,
+up to the $n^{-3/2}\rho^{-n}$ asymptotic for unambiguous context-free
+languages. Part~II turns to weighted formal languages, probabilistic grammars,
+tightness, and the entropy-rate identity $h = \log(1/R)$. Part~III introduces
+autoregressive language models and the formal-language theory of transformers,
+then surveys the weighted-finite-automaton approximation pipeline. Part~IV is
+devoted to Boltzmann sampling, Gibbs-measure views of temperature decoding, and
+phase transitions. Part~V covers Zipf's law, motif statistics, and the ten open
+problems we currently see at the frontier.
+
+Exercises are scattered throughout but are not the point. The point is to get
+a reader who starts knowing none of this to the point where they can open an
+arXiv paper from 2025 on, say, phase transitions in Pythia or WFA extraction
+from a Mistral model, and see what is going on.
+
+\mainmatter
+\input{partI}
+\input{partII}
+\input{partIII}
+\input{partIV}
+\input{partV}
+
+\backmatter
+\input{bibliography}
+
+\end{document}
