@@ -1,0 +1,242 @@
+\chapter{Just Enough Complex Analysis}
+
+Chapter~1 treated $z$ as a formal symbol, manipulated according to algebraic rules
+with no thought of convergence or magnitude.
+The real power of analytic combinatorics comes from promoting $z$ to a genuine
+complex variable and extracting the asymptotic growth of the coefficients
+$[z^n] A(z)$ from the analytic structure of the function $A$.
+This chapter develops the minimum complex analysis required to make that move
+rigorous and computational.
+The reader who has seen complex numbers but not complex functions will find
+everything needed here; the reader who has taken a full complex analysis course
+may skim and use this chapter as a reference for notation.
+The standard treatment of all topics below is \cite{FlajoletSedgewick2009}, Part~A.
+
+\section{Complex Numbers and Convergence}
+
+Recall that $\mathbb{C} = \{x + iy : x, y \in \mathbb{R}\}$ with the convention
+$i^2 = -1$.
+The \emph{modulus} of $z = x + iy$ is $|z| = \sqrt{x^2 + y^2}$, and the
+\emph{argument} $\arg z$ is the angle $\theta \in (-\pi, \pi]$ such that
+$x = |z|\cos\theta$, $y = |z|\sin\theta$.
+Euler's formula
+\[
+  e^{i\theta} = \cos\theta + i\sin\theta
+\]
+allows every nonzero complex number to be written in \emph{polar form}
+$z = r e^{i\theta}$ with $r = |z| > 0$ and $\theta = \arg z$.
+Multiplication becomes transparent in polar form: $r_1 e^{i\theta_1} \cdot
+r_2 e^{i\theta_2} = r_1 r_2 \, e^{i(\theta_1+\theta_2)}$, so moduli multiply
+and arguments add.
+
+Convergence in $\mathbb{C}$ is measured by the modulus: a sequence $(z_k)$
+converges to $L$ if $|z_k - L| \to 0$.
+A series $\sum_k w_k$ \emph{converges absolutely} if $\sum_k |w_k| < \infty$,
+and absolute convergence implies convergence.
+The geometric series identity
+\[
+  \sum_{k=0}^{N} w^k = \frac{1 - w^{N+1}}{1 - w}, \quad w \neq 1,
+\]
+shows that $\sum_{k=0}^{N} w^k \to 1/(1-w)$ as $N \to \infty$ whenever
+$|w| < 1$, since $|w|^{N+1} \to 0$.
+We will use this repeatedly.
+
+\section{Power Series and Radius of Convergence}
+
+Let $A(z) = \sum_{n \ge 0} a_n z^n$ be a formal power series with coefficients
+$a_n \in \mathbb{C}$.
+Treating $z$ as a complex variable, the set of $z$ for which this series converges
+absolutely is a disk.
+
+\begin{theorem}[Cauchy--Hadamard]
+  The power series $A(z) = \sum_{n \ge 0} a_n z^n$ converges absolutely for every
+  $z$ with $|z| < R$ and diverges for every $z$ with $|z| > R$, where the
+  \emph{radius of convergence} $R$ is given by
+  \[
+    \frac{1}{R} = \limsup_{n \to \infty} |a_n|^{1/n}.
+  \]
+\end{theorem}
+
+The formula follows from comparing $|a_n z^n|^{1/n} = |a_n|^{1/n} |z|$
+with the ratio test: absolute convergence holds when this quantity is eventually
+less than $1$, i.e., when $|z| < 1/\limsup |a_n|^{1/n}$.
+
+The combinatorial import of Cauchy--Hadamard is immediate: the radius of
+convergence captures the \emph{exponential growth rate} of $(a_n)$.
+If $R > 0$ is finite, then $a_n$ grows (roughly) like $R^{-n}$, in the sense that
+$|a_n|^{1/n} \to R^{-1}$.
+More precisely, $a_n = R^{-n} \cdot \theta(n)$ where $\theta(n)$ is
+\emph{subexponential}: $|\theta(n)|^{1/n} \to 1$.
+Determining the fine structure of $\theta(n)$ is precisely what asymptotic
+analysis does.
+
+\begin{example}
+  For $B(z) = 1/(1-2z) = \sum_{n \ge 0} 2^n z^n$, we have $b_n = 2^n$ and
+  $|b_n|^{1/n} = 2$ for all $n$, so $R = 1/2$.
+  The singularity of $B$ at $z = 1/2$ is directly visible as a pole,
+  and the exponential growth rate $2^n = (1/2)^{-n}$ agrees with $R^{-n}$.
+
+  For the Fibonacci generating function $F(z) = z/(1 - z - z^2)$,
+  the poles are at the roots of $1 - z - z^2 = 0$, namely $z = (-1 \pm \sqrt{5})/2$.
+  The root of smallest modulus is $1/\varphi$ where $\varphi = (1+\sqrt{5})/2
+  \approx 1.618$ is the golden ratio, so $R = 1/\varphi$ and
+  $f_n \sim C \varphi^n$ for some explicit constant $C$.
+\end{example}
+
+\section{Analytic Functions}
+
+A function $f: U \to \mathbb{C}$ defined on an open set $U \subseteq \mathbb{C}$
+is \emph{holomorphic} on $U$ (also called \emph{analytic}) if it is
+complex-differentiable at every point of $U$.
+A fundamental and non-trivial theorem of complex analysis states that the
+following conditions are equivalent for a function on an open set:
+(1) $f$ is complex-differentiable (the limit $\lim_{h \to 0}(f(z+h)-f(z))/h$
+exists in $\mathbb{C}$);
+(2) $f$ is infinitely differentiable and satisfies the Cauchy--Riemann equations
+$\partial_x u = \partial_y v$, $\partial_y u = -\partial_x v$ where $f = u + iv$;
+(3) $f$ is locally representable by a convergent power series around every point.
+We will take this equivalence as given.
+
+The key example: if $A(z) = \sum_{n \ge 0} a_n z^n$ has radius of convergence
+$R > 0$, then $A$ is holomorphic on the open disk $|z| < R$.
+This follows because power series can be differentiated term by term within
+their disk of convergence, and the resulting series again converges.
+Conversely, a holomorphic function on $|z| < R$ is completely determined by
+its power series at the origin.
+The formal generating functions of Chapter~1, as soon as their coefficients
+grow at most geometrically, are genuine holomorphic functions on a nontrivial disk.
+
+\section{The Geometric Series as Prototype}
+
+The function $f(z) = 1/(1-z)$ is the model example.
+For $|z| < 1$ the series $\sum_{n \ge 0} z^n$ converges absolutely, and
+multiplying by $(1-z)$ collapses the partial sums to $1 - z^{N+1} \to 1$, giving
+\[
+  \frac{1}{1-z} = \sum_{n \ge 0} z^n, \quad |z| < 1.
+\]
+The function $1/(1-z)$ is holomorphic on all of $\mathbb{C} \setminus \{1\}$;
+it extends analytically well beyond the disk of convergence of the series,
+but the series itself is unable to see past the boundary $|z|=1$.
+The point $z = 1$ is a \emph{simple pole}: $f(z) = 1/(1-z)$ blows up like
+$(1-z)^{-1}$ near $z = 1$, which is the simplest possible singularity.
+
+The lesson is structural: the singularity at $z=1$ is what \emph{prevents}
+the radius of convergence from exceeding $1$, because the series cannot
+represent a function that blows up.
+In general, the radius of convergence of a power series at a point $z_0$
+equals the distance from $z_0$ to the nearest singularity of the function
+that the series represents.
+Every analytic-combinatorics computation ultimately reduces to locating
+the nearest singularity of a generating function.
+
+\section{Cauchy's Integral Formula for Coefficients}
+
+The coefficients of a power series can be recovered by a contour integral.
+Let $f$ be holomorphic on $|z| < R$ and let $0 < r < R$.
+Then
+\[
+  a_n = [z^n] f(z) = \frac{1}{2\pi i} \oint_{|z| = r} \frac{f(z)}{z^{n+1}}\, dz,
+\]
+where the contour integral runs counterclockwise around the circle of radius $r$.
+This follows from Cauchy's integral formula for derivatives: for a holomorphic
+$f$ on an open disk,
+\[
+  f^{(n)}(0) = \frac{n!}{2\pi i} \oint_{|z|=r} \frac{f(z)}{z^{n+1}}\, dz,
+\]
+combined with Taylor's theorem $f(z) = \sum_n a_n z^n$ implying
+$f^{(n)}(0) = n!\, a_n$.
+Dividing both sides by $n!$ gives the coefficient formula.
+
+The crucial observation for asymptotics is that the contour $|z| = r$ can be
+\emph{deformed outward}, provided it remains in the region where $f$ is
+holomorphic.
+On a circle of radius $r > 1$ (say), the integrand $|f(z)/z^{n+1}|$ is bounded
+above by $\max_{|z|=r} |f(z)| \cdot r^{-(n+1)}$, which decays exponentially in
+$n$ at rate $r^{-1}$.
+A larger $r$ gives a tighter upper bound, and hence a sharper estimate on $a_n$.
+The contour can be pushed outward as far as possible without crossing a
+singularity of $f$; the singularity forms an impassable barrier.
+It is at the nearest singularity---the one that stops the contour---that
+the dominant contribution to $a_n$ resides.
+This is the geometric heart of singularity analysis: singularities are not
+obstacles to computation but rather the \emph{source} of asymptotic information.
+
+\section{Classifying Singularities}
+
+The type of a singularity determines the subexponential correction to the
+exponential growth rate.
+Let $\rho > 0$ be the location of the dominant singularity (so $|\rho|$ equals
+the radius of convergence).
+The three types that appear most frequently in combinatorics are the following.
+
+\textbf{Poles.}
+If $f(z) = 1/(1 - z/\rho)^k$ for a positive integer $k$, then by the
+generalized binomial theorem,
+\[
+  \frac{1}{(1 - z/\rho)^k} = \sum_{n \ge 0} \binom{n + k - 1}{k - 1} \rho^{-n} z^n,
+\]
+so $[z^n] f = \binom{n+k-1}{k-1} \rho^{-n} \sim \frac{n^{k-1}}{(k-1)!} \rho^{-n}$.
+The subexponential factor is a polynomial of degree $k-1$ in $n$.
+A simple pole ($k=1$) contributes a pure exponential; a double pole ($k=2$)
+contributes a linear factor $n \cdot \rho^{-n}$; and so on.
+Most rational generating functions have poles, and they arise naturally whenever
+a linear recurrence has a unique dominant root.
+
+\textbf{Square-root branch points.}
+If $f(z) = \sqrt{1 - z/\rho} = (1 - z/\rho)^{1/2}$, then the generalized
+binomial theorem gives $f(z) = \sum_{n \ge 0} \binom{1/2}{n} (-z/\rho)^n$.
+Computing the coefficient $\binom{1/2}{n}(-1)^n$ by Stirling's formula yields
+\[
+  [z^n]\sqrt{1 - z/\rho} = -\frac{1}{2\sqrt{\pi}}\, n^{-3/2}\, \rho^{-n}\bigl(1 + O(1/n)\bigr).
+\]
+The exponent $-3/2$ in the polynomial correction $n^{-3/2}$ is the
+\emph{fingerprint} of a square-root singularity.
+This type arises pervasively in combinatorics because the kernel method and
+quadratic equations produce square roots; trees, lattice paths, and
+many self-referential structures lead to generating functions with
+$\sqrt{1 - z/\rho}$ as a factor.
+We will return to this in Chapter~5.
+
+\textbf{Logarithmic singularities.}
+If $f(z) = \log(1/(1 - z/\rho))$, then $f(z) = \sum_{n \ge 1} \rho^{-n} z^n / n$,
+so $[z^n] f = \rho^{-n}/n$.
+The correction factor is $1/n$, slower to decay than any negative power with
+exponent greater than $-1$ but faster than a constant.
+Logarithms appear, for instance, in the generating functions for labelled
+structures involving cycles, and in the analysis of certain algorithms.
+They are less common than poles or branch points but arise naturally whenever
+the symbolic construction includes $\SET$ or $\CYC$ operators.
+
+\textbf{Essential singularities.}
+Functions such as $e^{1/(1-z)}$ have an essential singularity at $z = 1$:
+they blow up in a highly oscillatory, non-power-law fashion governed by
+Picard's theorem.
+The elementary transfer-theorem machinery does not apply at essential
+singularities, and special methods are required.
+Such singularities are rare in the combinatorial generating functions
+considered in this book, and we will not develop the necessary tools here.
+
+\section{The Big Picture}
+
+The moral of this chapter is simple to state and powerful to apply.
+If $A(z)$ is a generating function whose nearest singularity to the origin
+lies at $|z| = \rho$, then $a_n$ grows exponentially like $\rho^{-n}$.
+That much is determined purely by the \emph{location} of the singularity.
+The \emph{type} of the singularity---pole of order $k$, square-root branch
+point, logarithm---controls the subexponential factor $n^{\alpha}$ for some
+$\alpha$ determined by the local singular behavior.
+Flajolet and Odlyzko's transfer theorem, developed in Chapter~4, makes
+this dictionary precise and gives explicit asymptotic expansions to any
+desired order of precision \cite{FlajoletSedgewick2009}.
+
+All the complex analysis we use in this book reduces to three steps:
+(i) find a useful closed form for the generating function $A(z)$, using the
+symbolic method from Chapter~1; (ii) locate the singularities on the boundary
+of the disk of convergence; (iii) read the asymptotics off their type using
+the classification above.
+The deeper machinery of complex analysis---contour deformation through branch
+cuts, analytic continuation to Riemann surfaces, the residue theorem in full
+generality, the saddle-point method---belongs to a dedicated complex-analysis
+course and will appear in this book only when no simpler approach suffices.
+The examples of Chapter~3 will make the three-step program concrete before
+we prove the transfer theorem in Chapter~4.
