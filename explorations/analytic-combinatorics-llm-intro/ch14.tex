@@ -27,7 +27,7 @@ Because $\mu$ factorizes, the energy decomposes as a sum over token positions:
 \[
   E(w) = \sum_{t=1}^{|w|} \bigl(-\log p(w_t \mid w_{<t})\bigr).
 \]
-Each term $-\log p(w_t \mid w_{<t})$ is the per-token \emph{surprisal}. This additive structure is precisely what makes autoregressive sampling computationally tractable: the energy of a string can be accumulated token by token as the string is generated, without looking ahead. If the model is tight (i.e., $\sum_{w \in \Sigma^*} \mu(w) = 1$, as discussed in Chapter~7), then $\mu$ is a genuine probability measure, and $E$ is its negative log-likelihood.
+Each term $-\log p(w_t \mid w_{<t})$ is the per-token \emph{surprisal}. This additive structure is precisely what makes autoregressive sampling computationally tractable: the energy of a string can be accumulated token by token as the string is generated, without looking ahead. If the model is tight (i.e., $\sum_{w \in \Sigma^*} \mu(w) = 1$, as discussed in Chapter~8), then $\mu$ is a genuine probability measure, and $E$ is its negative log-likelihood.
 
 \begin{remark}
 The energy functional is not an externally imposed Hamiltonian; it is derived entirely from the model's own distribution. In statistical physics one starts from an energy and derives a distribution. Here the direction is reversed: the distribution comes first, and the energy is defined from it. The Gibbs formalism nevertheless applies, because all that the formalism requires is an energy function on the sample space.
@@ -188,7 +188,7 @@ It is a common misconception that high temperature always makes a model ``more c
 
 The energy-based view of language models is developed in \cite{DuEtAl2023}, which surveys EBMs in natural language processing and discusses the difficulties of training and sampling from globally normalized distributions. The ARM–EBM bijection of \cite{BlondelEtAl2025} (arXiv:2512.15605) sharpens this picture by showing the two model classes are equiexpressive under suitable function-class assumptions, with the equivalence mediated by soft Bellman equations from reinforcement learning theory.
 
-\cite{KemptonBurrell2025} provide the most careful mathematical treatment of the local-vs.-global temperature gap. Their analysis is closely related to the theory of weighted automata (Chapter~6) and to the notion of ``backward'' vs.\ ``forward'' partition functions in graphical models.
+\cite{KemptonBurrell2025} provide the most careful mathematical treatment of the local-vs.-global temperature gap. Their analysis is closely related to the theory of weighted automata (Chapter~7) and to the notion of ``backward'' vs.\ ``forward'' partition functions in graphical models.
 
 The observation of \cite{LinTegmarkRolnick2017} that physical data distributions have low-degree energy functions connects to the renormalization-group perspective on deep learning, which is beyond the scope of this text. The key point for our purposes is that it gives a heuristic justification for treating $Z(\beta)$ as analytic in $\beta$ over a wide range.
 

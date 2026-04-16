@@ -138,19 +138,11 @@ C(z) = 2 - 4(1 - z/\rho)^{1/2} + O(1 - z/\rho).
 \]
 The constant term $2 = C(1/4)$ does not contribute to the asymptotics of coefficients. The singular part is $-4(1 - z/\rho)^{1/2}$, corresponding to $\alpha = 1/2$ and $C = -4$. However, this is not the form $(1-z/\rho)^{-\alpha}$; rather it is $(1-z/\rho)^{+1/2}$, corresponding to $-\alpha = 1/2$, i.e., $\alpha = -1/2$ in the theorem's notation. We have $C = -4$ and $\alpha = -1/2$.
 
-Applying the transfer theorem:
-\[
-[z^n] C(z) \sim \frac{-4}{\Gamma(-1/2)}\, n^{-3/2}\, \rho^{-n} = \frac{-4}{-2\sqrt{\pi}}\, n^{-3/2}\, 4^n = \frac{2}{\sqrt{\pi}}\cdot \frac{4^n}{n^{3/2}}.
-\]
-Wait, let us recheck: the singular part of $C(z)$ is $-4(1-z/\rho)^{1/2}$, which written as $C_{\mathrm{sing}}(1-z/\rho)^{-\alpha}$ requires $-\alpha = 1/2$, i.e., $\alpha = -1/2$ and $C_{\mathrm{sing}} = -4$. So
-\[
-C_n \sim \frac{-4}{\Gamma(-1/2)}\, n^{-1/2 - 1}\, 4^n = \frac{-4}{-2\sqrt{\pi}}\, n^{-3/2}\, 4^n = \frac{2}{\sqrt{\pi}}\,\frac{4^n}{n^{3/2}}.
-\]
-Hmm, but the classical asymptotic is $C_n \sim 4^n/(\sqrt{\pi}\, n^{3/2})$, differing by a factor of $2$. The discrepancy is resolved by noting that the full expansion is $C(z) = 2 - 2\sqrt{1-4z} + O(1-4z)$, so the coefficient of $(1-4z)^{1/2}$ is $-2$, not $-4$. Writing in terms of $(1-z/\rho)^{1/2}$ with $\rho = 1/4$: since $1-4z = 4(1/4-z) = 4\rho(1 - z/\rho)$, we have $\sqrt{1-4z} = 2\sqrt{\rho}\sqrt{1-z/\rho} = \sqrt{1-z/\rho}$ (because $\rho = 1/4$ so $\sqrt{4\rho} = 1$). Therefore $C(z) \sim 2 - 2(1-z/\rho)^{1/2}$, giving $C_{\mathrm{sing}} = -2$ and $\alpha = -1/2$:
+A naive first attempt at applying the transfer theorem might use $C_{\mathrm{sing}} = -4$, but this would give $C_n \sim 2 \cdot 4^n/(\sqrt{\pi}\, n^{3/2})$, which is off by a factor of $2$ from the classical asymptotic. The error lies in the change of variables. The full expansion is $C(z) = 2 - 2\sqrt{1-4z} + O(1-4z)$, and the coefficient of $(1-4z)^{1/2}$ is $-2$, not $-4$. Since $1-4z = 4(1/4-z) = 4\rho(1 - z/\rho)$, we have $\sqrt{1-4z} = 2\sqrt{\rho}\sqrt{1-z/\rho} = \sqrt{1-z/\rho}$ (because $\rho = 1/4$, so $\sqrt{4\rho} = 1$). Therefore $C(z) \sim 2 - 2(1-z/\rho)^{1/2}$, giving $C_{\mathrm{sing}} = -2$ and $\alpha = -1/2$. Applying the transfer theorem:
 \[
 C_n \sim \frac{-2}{\Gamma(-1/2)}\, n^{-3/2}\, 4^n = \frac{-2}{-2\sqrt{\pi}}\, n^{-3/2}\, 4^n = \frac{4^n}{\sqrt{\pi}\, n^{3/2}}.
 \]
-This agrees exactly with the asymptotic derived from Stirling's formula applied to the exact formula $C_n = \binom{2n}{n}/(n+1)$. The $n^{-3/2} \cdot 4^n$ form is the prototype of what Chapter~5 will call the \emph{$n^{-3/2}$ law}.
+This agrees exactly with the asymptotic derived from Stirling's formula applied to the exact formula $C_n = \binom{2n}{n}/(n+1)$. The moral is that the change of variables from $(1-4z)$ to $(1-z/\rho)$ must be tracked carefully; a factor of $\sqrt{4\rho}$ is easy to drop. The $n^{-3/2} \cdot 4^n$ form is the prototype of what Chapter~5 will call the \emph{$n^{-3/2}$ law}.
 \end{example}
 
 \section{Summary and Preview}
