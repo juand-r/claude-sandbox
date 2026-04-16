@@ -1,4 +1,5 @@
 \chapter{Formal Language Theory of Transformers}
+\label{ch11:top}
 
 When a transformer LLM assigns probabilities to strings, what kind of formal object is it, really? This question matters for the analytic-combinatorics program because the generating function of the output distribution inherits its analytic type from the underlying formal class. If an LLM is (approximately) a weighted finite automaton, its generating function is rational and Chapter~7's partial-fraction story applies verbatim. If it is strictly more expressive, the generating function could be algebraic, $D$-finite, or wilder still, with correspondingly richer singular structure and qualitatively different asymptotics for $[z^n]L(z)$. This chapter surveys what is known about the answer, drawing on a body of results from circuit complexity theory, automata-theoretic language theory, and the expressivity literature for neural sequence models.
 

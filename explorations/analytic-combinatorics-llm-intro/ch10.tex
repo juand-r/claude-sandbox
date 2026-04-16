@@ -1,4 +1,5 @@
 \chapter{Autoregressive Language Models}
+\label{ch10:top}
 
 So far we have treated ``distributions over strings'' abstractly: a probability measure $\mu$ on $\Sigma^*$, a weighted automaton, a formal power series with nonnegative coefficients summing to one. This chapter introduces the concrete object that the rest of the book analyzes: a large language model. The exposition is deliberately stripped down. An LLM, for our purposes, is a probability distribution on $\Sigma^*$, nothing more. The neural network is the parameter, not the object. What matters is what distribution it induces, and what mathematical tools are available for analyzing that distribution. Once we have this, the singularity analysis of Part I and the entropy theory of Part II can be brought to bear directly.
 

@@ -1,4 +1,5 @@
 \chapter{Weighted Finite Automata and Rational Power Series}
+\label{ch07:top}
 
 Chapter~6 established finite automata as devices that assign a binary verdict---accept or reject---to every string over a finite alphabet. The present chapter replaces that verdict with a weight drawn from an algebraic structure called a semiring. Each string $w$ receives a weight $f(w) \in K$, and the resulting object is a \emph{weighted finite automaton} (WFA). When $K = \mathbb{R}_{\ge 0}$ and the weights are normalized to sum to one, the WFA becomes a probabilistic generative model over $\Sigma^*$. The central theorem of the chapter is that the length-indexed generating function of any such model is automatically a rational function of $z$, bringing the full machinery of Part~I---partial fractions, dominant-pole asymptotics, entropy rates via spectral radii---to bear on probabilistic language models. This rationality result is not an approximation or a limiting statement; it is an exact algebraic consequence of the matrix structure of WFAs, and it is the engine driving Threads T4 and T5 of the research program described in the introduction.
 

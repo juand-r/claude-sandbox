@@ -1,7 +1,7 @@
 \chapter{Approximating Language Models by Weighted Finite Automata}
 \label{ch12:top}
 
-Chapter~\ref{ch11:top} established a hard ceiling: Transformers with fixed precision lie in $\mathsf{TC}^0$, cannot compute $\mathsf{PARITY}$ exactly, and therefore cannot be rational power series in any faithful sense. Yet Chapter~\ref{ch7:top} gave us a clean toolkit --- weighted finite automata (WFA) and their rational generating functions $F(z)=\alpha(I-zA)^{-1}\beta$ --- whose asymptotic behavior we control completely via the singularity analysis of Chapter~\ref{ch4:top}. The gap between these two statements is the subject of this chapter.
+Chapter~\ref{ch11:top} established a hard ceiling: Transformers with fixed precision lie in $\mathsf{TC}^0$, cannot compute $\mathsf{PARITY}$ exactly, and therefore cannot be rational power series in any faithful sense. Yet Chapter~\ref{ch07:top} gave us a clean toolkit --- weighted finite automata (WFA) and their rational generating functions $F(z)=\alpha(I-zA)^{-1}\beta$ --- whose asymptotic behavior we control completely via the singularity analysis of Chapter~\ref{ch04:top}. The gap between these two statements is the subject of this chapter.
 
 The proposal is pragmatic: if we cannot describe a Transformer exactly as a WFA, we can still try to \emph{approximate} it by one. A good approximation is one that is faithful enough for the statistics we care about (per-token probabilities, conditional distributions, string-level scores) and small enough that its rational generating function is tractable. Once such an approximation is in hand, every theorem of Parts~I and~II applies to it: entropy rate, coefficient asymptotics, limit laws, phase transitions.
 
@@ -95,7 +95,7 @@ Lacroce, Panangaden and Rabusseau 2021 \cite{LacrocePanangadenRabusseau2021} app
 
 A running theme in lines 3 and 4 is that the cleanest theory is the one-letter theory. When $|\Sigma|=1$, a rational power series $\sum_n f(1^n)z^n$ is an ordinary scalar power series in $z$, and its singularities sit in $\mathbb{C}$ where all the tools of Part~I apply directly. The Hankel operator $\Gamma$ is a scalar Hankel matrix in Hardy space, where AAK is classical. Spectral learning becomes linear algebra over the reals, without the free-semigroup combinatorics.
 
-This is not a pathology to be overcome. It is the setting in which the analytic-combinatorics dictionary translates most literally, and it is the setting in which the entropy-rate identity $h=\log(1/R)$ of Chapter~\ref{ch9:top} takes its textbook form. A multi-letter LLM can be coarsened to a one-letter surrogate simply by collapsing the alphabet: define $\tilde f(1^n)=\sum_{w:\,|w|=n}\mu(w)$ and work with $\tilde f$. The resulting scalar power series is the length probability generating function of Chapter~\ref{ch10:top}, and its singularity structure governs length-based statistics exactly.
+This is not a pathology to be overcome. It is the setting in which the analytic-combinatorics dictionary translates most literally, and it is the setting in which the entropy-rate identity $h=\log(1/R)$ of Chapter~\ref{ch09:top} takes its textbook form. A multi-letter LLM can be coarsened to a one-letter surrogate simply by collapsing the alphabet: define $\tilde f(1^n)=\sum_{w:\,|w|=n}\mu(w)$ and work with $\tilde f$. The resulting scalar power series is the length probability generating function of Chapter~\ref{ch10:top}, and its singularity structure governs length-based statistics exactly.
 
 The multi-letter theory then supplies refined joint information once the univariate picture is understood. The hierarchy is: start with the one-letter projection, compute its radius of convergence and singular exponent, then refine.
 
@@ -110,7 +110,7 @@ Second, the equivalence-query problem in $L^*$ becomes essentially intractable: 
 
 Third, the distillation objective is well-defined but the target class of WFAs is small compared to the signal you are trying to fit. Any distilled WFA will systematically lose information at long range.
 
-None of this argues against the programme. It argues that the programme must begin on small, controllable surrogates --- for instance, Transformers trained on PCFG-generated data (Chapter~\ref{ch8:top}) where the ground-truth rational structure is known --- and graduate to realistic models only once the surrogate theory is in place.
+None of this argues against the programme. It argues that the programme must begin on small, controllable surrogates --- for instance, Transformers trained on PCFG-generated data (Chapter~\ref{ch08:top}) where the ground-truth rational structure is known --- and graduate to realistic models only once the surrogate theory is in place.
 
 \section{What WFA Approximation Buys}
 \label{ch12:payoff}
@@ -119,11 +119,11 @@ Suppose we have a WFA approximation $\widehat{M}$ of an LLM with transition matr
 
 \begin{proposition}[Entropy rate of the approximation]
 \label{ch12:prop-entropy}
-If $\widehat{M}$ is a WFA whose transition matrix $\hat A$ is irreducible with spectral radius $\hat\rho=\rho(\hat A)$, then the entropy rate of the stationary distribution on $\widehat{M}$-emitted strings equals $\log \hat\rho$, and the radius of convergence of $\hat F(z)$ equals $1/\hat\rho$. In particular, the universal identity $\hat h=\log(1/R_{\hat F})$ of Chapter~\ref{ch9:top} holds for $\widehat{M}$.
+If $\widehat{M}$ is a WFA whose transition matrix $\hat A$ is irreducible with spectral radius $\hat\rho=\rho(\hat A)$, then the entropy rate of the stationary distribution on $\widehat{M}$-emitted strings equals $\log \hat\rho$, and the radius of convergence of $\hat F(z)$ equals $1/\hat\rho$. In particular, the universal identity $\hat h=\log(1/R_{\hat F})$ of Chapter~\ref{ch09:top} holds for $\widehat{M}$.
 \end{proposition}
 
 \begin{proof}[Proof sketch]
-The entries of $\hat A^n$ grow as $\hat\rho^n$ by Perron--Frobenius, so $[z^n]\hat F(z)\sim C\hat\rho^n$ for some constant $C$. The radius of convergence of $\hat F$ is therefore $1/\hat\rho$, and the exponential growth rate of the counting generating function is $\log\hat\rho$, which is the entropy rate under the symbolic-dynamics interpretation of Chapter~\ref{ch9:top}.
+The entries of $\hat A^n$ grow as $\hat\rho^n$ by Perron--Frobenius, so $[z^n]\hat F(z)\sim C\hat\rho^n$ for some constant $C$. The radius of convergence of $\hat F$ is therefore $1/\hat\rho$, and the exponential growth rate of the counting generating function is $\log\hat\rho$, which is the entropy rate under the symbolic-dynamics interpretation of Chapter~\ref{ch09:top}.
 \end{proof}
 
 The proposition transfers immediately if you accept $\widehat M$ as a faithful proxy for the original. The caveat is the fidelity gap: $\hat h$ may differ from the true $h$ by something controlled by the approximation error of the WFA. Quantifying this gap analytically (rather than empirically) is one of the open problems listed in Chapter~\ref{ch18:top}.

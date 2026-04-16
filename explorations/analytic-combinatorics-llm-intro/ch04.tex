@@ -1,4 +1,5 @@
 \chapter{Singularity Analysis}
+\label{ch04:top}
 
 Chapter~2 established the basic relationship between generating functions and asymptotics: if $A(z) = \sum_{n \ge 0} a_n z^n$ has radius of convergence $R$, then the sequence $a_n$ grows exponentially at rate $1/R$. That is the coarsest possible information about the coefficients. This chapter refines it considerably. The central insight, due to Flajolet and Odlyzko~\cite{FlajoletOdlyzko1990}, is that the \emph{type} of the dominant singularity of $A$ on its circle of convergence determines not only the exponential growth rate $\rho^{-n}$ (where $\rho = R$) but also the subexponential correction factor and the multiplicative constant. The full asymptotic takes the form $a_n \sim C n^{\alpha - 1} \rho^{-n}$, and reading off $C$, $\alpha$, and $\rho$ is a matter of inspecting the local behavior of $A$ near its singularity. This is the Flajolet--Odlyzko transfer theorem, the workhorse of analytic combinatorics~\cite{FlajoletSedgewick2009}.
 
