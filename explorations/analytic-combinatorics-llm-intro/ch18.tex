@@ -1,0 +1,152 @@
+\chapter{Ten Open Problems at the Frontier}
+\label{ch18:top}
+
+This chapter collects ten precisely stated open problems at the intersection of analytic combinatorics and large language models. Each problem is accompanied by a statement of what is known, why existing work stops short, and what a solution would look like. The numbering is for reference only and does not imply an ordering by importance; Chapter~\ref{ch19:top} addresses tractability.
+
+\section{Gap 1a: A Generating Function for LLM Length Distributions}
+\label{ch18:gap1a}
+
+Let $\mu$ be the distribution over $\Sigma^*$ induced by an autoregressive language model (Chapter~10). The \emph{length probability generating function} (length PGF) is
+$$
+L(z)=\sum_{n=0}^{\infty}\Pr[|W|=n]\,z^n = \sum_{n=0}^{\infty}\biggl(\sum_{\substack{w\in\Sigma^* \\ |w|=n}}\mu(w)\biggr)z^n.
+$$
+This is a well-defined formal power series with non-negative coefficients summing to $1$ (by tightness, Chapter~8). Its radius of convergence $R_L$ satisfies $R_L\ge 1$.
+
+\textbf{What is known.} Du \emph{et al.}\ 2023 \cite{DuEtAl2023} give a necessary and sufficient condition for tightness ($\sum_t\tilde p_{\EOS}(t)=\infty$) and prove that every softmax Transformer is tight. They do not construct $L(z)$ explicitly or characterize its singularity structure.
+
+\textbf{Why it stops short.} Tightness is the statement $L(1)=1$. The analytic-combinatorics programme needs far more: the location of the dominant singularity of $L(z)$, its type (polar, algebraic, logarithmic), and the resulting coefficient asymptotics $\Pr[|W|=n]\sim\,?$ These would tell us, for example, whether LLM output lengths follow a geometric tail (pole), a subexponential power-law tail ($n^{-3/2}$ from a square-root branch point), or something else entirely.
+
+\textbf{What a solution looks like.} An explicit formula for $L(z)$ in terms of the model's parameters --- or at least a proof that $L(z)$ belongs to a specific function class (rational, algebraic, D-finite) --- together with a singularity analysis yielding the asymptotic form of $\Pr[|W|=n]$.
+
+\section{Gap 1b: The Entropy-Rate Identity for LLM Counting GFs}
+\label{ch18:gap1b}
+
+Chapter~9 established the identity $h=\log(1/R)$ connecting the entropy rate of a stochastic source to the radius of convergence of its \emph{counting} generating function $C(z)=\sum_n |\mathcal{L}_n|\,z^n$, where $\mathcal{L}_n$ is the set of strings of length $n$ in the source's support. This identity holds for regular languages (rational $C$) and for unambiguous context-free languages (algebraic $C$).
+
+\textbf{What is known.} The identity is classical for Markov sources and PCFGs. Shannon's original work, Kontoyiannis 1998, and Takahashi and Tanaka-Ishii 2018 \cite{TakahashiTanakaIshii2018} (who estimate the entropy rate of natural language at approximately 1.12 bits per character) all operate in this regime. Scheibner, Smith and Bialek 2025 \cite{ScheibnerSmithBialek2025} (arXiv:2512.24969) revisit the question with modern LLM-based estimators.
+
+\textbf{Why it stops short.} The counting GF of an LLM's support is not the same object as the length PGF of Gap~1a. The length PGF weights strings by their probability; the counting GF counts strings in the support without weighting. For PCFGs these are related by the Chomsky--Sch\"utzenberger theorem; for LLMs the relationship is unclear. No one has carefully stated, let alone proved, $h=\log(1/R)$ for a counting GF associated with a Transformer's support language.
+
+\textbf{What a solution looks like.} A rigorous statement and proof of $h=\log(1/R_C)$ for an appropriate counting GF $C(z)$ of a class of autoregressive models, with explicit hypotheses on the model class.
+
+\section{Gap 2: Rigorous Boltzmann--Temperature Correspondence}
+\label{ch18:gap2}
+
+Chapter~13 introduced the substitution $x=e^{-\beta}$ that turns a combinatorial generating function $A(x)$ into a partition function $Z(\beta)=A(e^{-\beta})$. Chapter~14 defined the LLM Gibbs measure $\mu_\beta(w)\propto\mu(w)^\beta$. The bridge between them is the \emph{global} partition function
+$$
+Z(\beta)=\sum_{w\in\Sigma^*}\mu(w)^\beta.
+$$
+
+\textbf{What is known.} Blondel \emph{et al.}\ 2025 \cite{BlondelEtAl2025} (arXiv:2512.15605) establish a bijection between autoregressive models and energy-based models via the soft Bellman equation. Kempton and Burrell 2025 \cite{KemptonBurrell2025} quantify the gap between local temperature sampling and the global Gibbs measure. Neither constructs $Z(\beta)$ as an analytic function of $\beta$ or identifies its singularities.
+
+\textbf{What a solution looks like.} For a concrete non-trivial model class (e.g.\ a softmax Transformer trained on a PCFG corpus), construct $Z(\beta)$ explicitly, determine its domain of analyticity in $\beta$, and locate any phase-transition points $\beta_c$ where $Z$ or its derivatives become singular.
+
+\section{Gap 3: ACSV for Tokenized Models}
+\label{ch18:gap3}
+
+When the alphabet $|\Sigma|>2$ and we want joint statistics --- for example, the joint distribution of the counts of two specific tokens in a sample of length $n$ --- the natural tool is multivariate generating functions and the Pemantle--Wilson framework of analytic combinatorics in several variables (ACSV) \cite{PemantleWilson2013}.
+
+\textbf{What is known.} ACSV provides a complete asymptotic theory for coefficients of rational and algebraic multivariate generating functions, governed by the geometry of the singular variety. The framework is mature for combinatorial applications (lattice paths, queuing models).
+
+\textbf{Why it stops short.} No one has applied ACSV to LLM output distributions. The multivariate GF of token-count statistics under an autoregressive model has not been constructed, and the singular variety has not been analyzed.
+
+\textbf{What a solution looks like.} A multivariate GF $F(z_1,\ldots,z_k)$ tracking token counts under a WFA-approximated LLM, with ACSV applied to extract joint asymptotics.
+
+\section{Gap 4: A Chomsky--Sch\"utzenberger Test for LLM Support}
+\label{ch18:gap4}
+
+Chapter~5 established that unambiguous context-free languages have algebraic generating functions whose coefficients obey $[z^n]C(z)\sim c\cdot n^{-3/2}\rho^{-n}$. This is a \emph{testable prediction}: sample strings from an LLM, estimate the length distribution, and fit the asymptotic form.
+
+\textbf{What is known.} Banderier and Drmota 2015 \cite{BanderierDrmota2015} classify the possible asymptotic forms of coefficients of algebraic generating functions. The $n^{-3/2}$ exponent is universal for strongly connected unambiguous CFGs.
+
+\textbf{Why it stops short.} No one has run this test on LLM outputs. It is not known whether the length distribution of samples from GPT-4, Llama, or any open-weight model is consistent with the algebraic asymptotic class.
+
+\textbf{What a solution looks like.} An empirical study fitting $\Pr[|W|=n]$ from LLM samples to the form $c\cdot n^{\alpha}\rho^{-n}$ and testing whether $\alpha=-3/2$ is consistent with the data. A positive result would be evidence that LLM output languages are ``approximately context-free'' in a precise analytic sense.
+
+\section{Gap 5: Gaussian Limit Laws via Hwang's Quasi-Power Theorem}
+\label{ch18:gap5}
+
+Hwang 1998 \cite{Hwang1998} proved a meta-theorem: if a bivariate generating function $F(z,u)$ tracking a statistic has the ``quasi-power'' form
+$$
+[z^n]F(z,u)=A(u)\cdot B(u)^n\cdot\bigl(1+O(1/n)\bigr)
+$$
+uniformly near $u=1$, then the statistic is asymptotically Gaussian with mean $\mu_n\sim n\cdot B'(1)/B(1)$ and variance $\sigma_n^2\sim n\cdot V$ for an explicit $V$.
+
+\textbf{What is known.} The quasi-power theorem is a workhorse of analytic combinatorics, applied to hundreds of combinatorial statistics (inversions, descents, pattern occurrences). Chapter~17's motif-count statistics are a direct instance.
+
+\textbf{Why it stops short.} Verifying the quasi-power hypothesis for a statistic measured on \emph{LLM output} --- e.g.\ the count of a motif in a sample of length $n$ --- requires knowing the bivariate GF $F(z,u)$ of the LLM, which is Gap~1a generalized. For WFA-approximated LLMs, $F(z,u)$ is rational in $(z,u)$ and the hypothesis is often checkable.
+
+\textbf{What a solution looks like.} For a WFA-approximated LLM, verify the quasi-power form for a concrete statistic (e.g.\ occurrences of a specific bigram), state the Gaussian limit, and compare with empirical histograms.
+
+\section{Gap 6: Thermodynamic Formalism and Generating Functions}
+\label{ch18:gap6}
+
+The thermodynamic formalism of Ruelle \cite{Ruelle1978}, Bowen \cite{Bowen1975}, and Sinai studies shift-invariant measures on symbolic sequences via transfer operators and pressure functions. Chapter~13's Gibbs/GF correspondence is a special case. The full formalism provides a theory of equilibrium states, variational principles, and phase transitions that subsumes both the combinatorial Boltzmann picture and the information-theoretic entropy picture.
+
+\textbf{What is known.} The thermodynamic formalism is fully developed for subshifts of finite type (which are the symbolic-dynamics analogues of regular languages / finite-state sources). The pressure function $P(\phi)$ for a H\"older-continuous potential $\phi$ on a mixing subshift is real-analytic, and equilibrium states are unique.
+
+\textbf{Why it stops short.} LLMs are not subshifts of finite type. Their potential functions (the log-probabilities) are computed by deep networks, not by finite-state rules. Extending the formalism to ``soft'' potentials arising from neural networks requires either (a) approximation by finite-state potentials (back to Chapter~12) or (b) new theorems about transfer operators with neural-network potentials.
+
+\textbf{What a solution looks like.} A rigorous pressure function for a class of autoregressive models, with analyticity properties and a variational characterization, expressed in terms of the model's generating function.
+
+\section{Gap 7: Classification of LLM Singularity Types}
+\label{ch18:gap7}
+
+Analytic combinatorics has a well-developed zoology of singular behaviors: polar (rational GFs, geometric coefficients), algebraic-logarithmic (algebraic GFs, $n^{-3/2}$ and its cousins $n^{-(2k+1)/2}$), and essential (entire functions with super-exponential growth, requiring saddle-point methods). Which of these appear in LLM counting or length generating functions? Is there a new type?
+
+\textbf{What is known.} WFA approximations give rational GFs (polar singularities). PCFG approximations give algebraic GFs (branch-point singularities). Real LLMs presumably have singularity structure that is neither purely rational nor purely algebraic.
+
+\textbf{What a solution looks like.} A classification theorem: ``for autoregressive models in class $\mathcal{C}$, the length PGF has singularities of type $X$, and the coefficient asymptotics are of form $Y$.'' Even a conjectural classification backed by numerical evidence would be a contribution.
+
+\section{Gap 8: Phase-Transition Classification via Composition Schemes}
+\label{ch18:gap8}
+
+Banderier, Kuba and Wallner 2021 \cite{BanderierKubaWallner2021} classified the phase transitions arising from composition-scheme generating functions $A(B(z))$ where the inner and outer singularities interact. Chapter~15 argued that empirical LLM phase transitions (Nakaishi \emph{et al.}\ \cite{NakaishiNishikawaHukushima2024}, Arnold \emph{et al.}\ \cite{ArnoldEtAl2024}) may be instances of this classification.
+
+\textbf{What is known.} The composition-scheme classification produces Airy-type universal behavior at critical points. Mikhaylovskiy 2025 \cite{Mikhaylovskiy2025} argues that empirical LLM phase transitions are consistent with this universality class.
+
+\textbf{Why it stops short.} The match is qualitative. No one has derived a composition-scheme structure from an LLM's architecture or from a WFA approximation of one, and then matched the predicted critical exponents to the empirical ones.
+
+\textbf{What a solution looks like.} For a concrete LLM surrogate (e.g.\ a Transformer trained on a PCFG), derive the composition-scheme structure of $Z(\beta)$, predict the critical exponents, and verify them empirically.
+
+\section{Gap 9: A WFA Pipeline with Analytic Error Bounds}
+\label{ch18:gap9}
+
+Chapter~12 surveyed four approaches to WFA extraction. None comes with end-to-end \emph{analytic} error bounds relating the approximation quality (in KL divergence, total variation, or Hankel-operator norm) to the rank of the extracted WFA and the spectral properties of the original model.
+
+\textbf{What is known.} AAK theory (Section~12.4) gives optimal Hankel-operator-norm bounds for the one-letter case. Spectral learning gives Frobenius-norm bounds on the Hankel matrix. $L^*$ has polynomial query complexity in the number of states of the target DFA. These bounds exist in isolation.
+
+\textbf{What a solution looks like.} A combined pipeline: extract a WFA of rank $k$ from an LLM, with a theorem stating that the KL divergence between the WFA's distribution and the LLM's distribution is at most $\varepsilon(k,\sigma_{k+1})$ where $\sigma_{k+1}$ is the $(k+1)$st singular value of the empirical Hankel matrix. This is the most tractable of the ten gaps.
+
+\section{Gap 10: Phase Transitions as Confluent Singularities}
+\label{ch18:gap10}
+
+A confluent singularity is a point in parameter space where two or more singular surfaces of a generating function merge. In the composition-scheme setting of Gap~8, these produce Airy-function asymptotics with universal critical exponents. The conjecture, motivated by Mikhaylovskiy 2025 \cite{Mikhaylovskiy2025} and the empirical evidence of Chapter~15, is that the observed phase transitions in LLM output are confluent singularities of $Z(\beta)$.
+
+\textbf{What is known.} Confluent singularities are well understood for algebraic generating functions arising from context-free grammars (Flajolet and Sedgewick \cite{FlajoletSedgewick2009}, Chapter~VII). The Airy function $\operatorname{Ai}(\cdot)$ appears universally.
+
+\textbf{What a solution looks like.} For a concrete model, prove that $Z(\beta)$ has a confluent singularity at $\beta_c$, identify the Airy scaling, and match to the empirical critical exponents of Nakaishi \emph{et al.}\ and Arnold \emph{et al.}
+
+\section{Summary of Gaps}
+
+\begin{description}
+\item[Gap 1a] Construct the length PGF $L(z)$ for an LLM and analyze its singularities.
+\item[Gap 1b] Prove $h=\log(1/R)$ for the counting GF of an LLM's support.
+\item[Gap 2] Construct $Z(\beta)=\sum_w\mu(w)^\beta$ as an analytic function and locate phase transitions.
+\item[Gap 3] Apply ACSV to multivariate token-count GFs from LLMs.
+\item[Gap 4] Test whether LLM length distributions exhibit the $n^{-3/2}$ algebraic signature.
+\item[Gap 5] Verify the quasi-power hypothesis and derive Gaussian limit laws for LLM statistics.
+\item[Gap 6] Extend thermodynamic formalism to neural-network potentials.
+\item[Gap 7] Classify the singularity types of LLM generating functions.
+\item[Gap 8] Match empirical LLM phase transitions to composition-scheme universality classes.
+\item[Gap 9] Build a WFA extraction pipeline with end-to-end analytic error bounds.
+\item[Gap 10] Prove that LLM phase transitions are confluent singularities with Airy scaling.
+\end{description}
+
+\section{Research Suggestions}
+
+Gap~9 is the most tractable starting point: it synthesizes existing tools (AAK bounds, spectral learning, $L^*$) and does not require new theorems about LLMs themselves. Gap~5 is an attractive second target because Hwang's quasi-power theorem is a ready-made meta-theorem with checkable hypotheses. Gap~10 is the prize: a proof would unify the empirical phase-transition observations with the analytic-combinatorics classification programme. Chapter~\ref{ch19:top} develops a concrete research roadmap from these priorities.
+
+\section{Notes and Further Reading}
+
+The ten gaps are distilled from the broader research programme described in the source literature. Flajolet and Sedgewick \cite{FlajoletSedgewick2009} remains the central reference for the analytic side; their Chapters~VI--IX cover the singularity analysis, algebraic functions, and limit-law machinery that most of these gaps require. Pemantle and Wilson \cite{PemantleWilson2013} is the reference for Gap~3. The empirical phase-transition literature (Nakaishi \emph{et al.}\ \cite{NakaishiNishikawaHukushima2024}, Arnold \emph{et al.}\ \cite{ArnoldEtAl2024}, Mikhaylovskiy \cite{Mikhaylovskiy2025}) motivates Gaps~8 and~10 directly.
