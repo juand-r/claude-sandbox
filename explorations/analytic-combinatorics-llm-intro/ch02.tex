@@ -57,9 +57,20 @@ absolutely is a disk.
   \]
 \end{theorem}
 
-The formula follows from comparing $|a_n z^n|^{1/n} = |a_n|^{1/n} |z|$
-with the root test: absolute convergence holds when this quantity is eventually
-less than $1$, i.e., when $|z| < 1/\limsup |a_n|^{1/n}$.
+\begin{proof}[Proof sketch]
+Fix $z$ with $|z| < R$. Then $|z| < 1/\limsup |a_n|^{1/n}$, so there exists
+$\delta > 0$ with $|z| \le (1-\delta)/\limsup |a_n|^{1/n}$. By the definition
+of $\limsup$, for all sufficiently large $n$ we have
+$|a_n|^{1/n} \le (1/R) + \epsilon$ for any $\epsilon > 0$; choosing $\epsilon$
+small enough that $(1/R+\epsilon)|z| < 1$, we get
+$|a_n z^n| = (|a_n|^{1/n}|z|)^n \le r^n$ for some $r < 1$ and all large $n$.
+The series $\sum |a_n z^n|$ is then bounded above by a convergent geometric
+series, so $\sum a_n z^n$ converges absolutely.
+
+Conversely, if $|z| > R$, then $\limsup |a_n|^{1/n} |z| > 1$, so
+$|a_n z^n| > 1$ for infinitely many $n$, and the terms do not tend to zero.
+The series diverges.
+\end{proof}
 
 The combinatorial import of Cauchy--Hadamard is immediate: the radius of
 convergence captures the \emph{exponential growth rate} of $(a_n)$.
@@ -161,16 +172,24 @@ Dividing both sides by $n!$ gives the coefficient formula.
 
 The crucial observation for asymptotics is that the contour $|z| = r$ can be
 \emph{deformed outward}, provided it remains in the region where $f$ is
-holomorphic.
-If $f$ happens to be holomorphic on a disk of radius $r$ (with all singularities
-outside $|z| = r$), the integrand $|f(z)/z^{n+1}|$ on that circle is bounded
-above by $\max_{|z|=r} |f(z)| \cdot r^{-(n+1)}$, which decays exponentially in
-$n$ at rate $r^{-1}$.
-A larger $r$ gives a tighter upper bound, and hence a sharper estimate on $a_n$.
-The contour can be pushed outward as far as possible without crossing a
-singularity of $f$; the singularity forms an impassable barrier.
-It is at the nearest singularity---the one that stops the contour---that
-the dominant contribution to $a_n$ resides.
+holomorphic. Suppose $f$ is holomorphic on a disk of radius $r$ (with all
+singularities outside $|z| = r$). Write $M(r) = \max_{|z|=r}|f(z)|$. Then
+the standard \emph{ML bound} on contour integrals gives
+\[
+  |a_n| = \frac{1}{2\pi}\biggl|\oint_{|z|=r}\frac{f(z)}{z^{n+1}}\,dz\biggr|
+  \le \frac{1}{2\pi}\cdot 2\pi r \cdot \frac{M(r)}{r^{n+1}}
+  = \frac{M(r)}{r^n}.
+\]
+(The factor $2\pi r$ is the length of the circle; $|f(z)/z^{n+1}| \le M(r)/r^{n+1}$
+on the contour.) This is an \emph{exponential} upper bound on $|a_n|$: the decay
+rate $r^{-n}$ improves as $r$ increases, while $M(r)$ is a constant (depending
+on $r$ but not on $n$). The contour can be pushed outward as far as possible
+without crossing a singularity of $f$; the singularity forms an impassable
+barrier. Taking $r$ just below the distance to the nearest singularity $\rho$
+gives $|a_n| \le M(\rho-\epsilon)/(\rho-\epsilon)^n$ for any $\epsilon > 0$,
+which is essentially $\rho^{-n}$ times a constant. The dominant contribution to
+$a_n$ therefore comes from the behavior of $f$ near its nearest singularity.
+
 This is the geometric heart of singularity analysis: singularities are not
 obstacles to computation but rather the \emph{source} of asymptotic information.
 
@@ -188,26 +207,54 @@ arises in combinatorics.)
 The three types that appear most frequently are the following.
 
 \textbf{Poles.}
-If $f(z) = 1/(1 - z/\rho)^k$ for a positive integer $k$, then by the
-generalized binomial theorem,
+Consider $f(z) = 1/(1 - z/\rho)^k$ for a positive integer $k$. We build up the
+coefficient formula from first principles. For $k=1$, this is the geometric
+series: $1/(1-w) = \sum_{n \ge 0} w^n$ with $w = z/\rho$, giving
+$[z^n]f = \rho^{-n}$. For $k=2$, differentiate the geometric series:
+$\frac{d}{dw}\frac{1}{1-w} = \frac{1}{(1-w)^2} = \sum_{n \ge 1} n\, w^{n-1}
+= \sum_{n \ge 0} (n+1) w^n$, so $[z^n]\frac{1}{(1-z/\rho)^2} = (n+1)\rho^{-n}$.
+Differentiating again: $\frac{1}{(1-w)^3} = \frac{1}{2}\sum_{n \ge 0}(n+2)(n+1)w^n$,
+so $[z^n] = \binom{n+2}{2}\rho^{-n}$. In general, differentiating $k-1$ times:
 \[
-  \frac{1}{(1 - z/\rho)^k} = \sum_{n \ge 0} \binom{n + k - 1}{k - 1} \rho^{-n} z^n,
+  \frac{1}{(1 - z/\rho)^k} = \sum_{n \ge 0} \binom{n + k - 1}{k - 1} \rho^{-n} z^n.
 \]
-so $[z^n] f = \binom{n+k-1}{k-1} \rho^{-n} \sim \frac{n^{k-1}}{(k-1)!} \rho^{-n}$.
-The subexponential factor is a polynomial of degree $k-1$ in $n$.
-A simple pole ($k=1$) contributes a pure exponential; a double pole ($k=2$)
-contributes a linear factor $n \cdot \rho^{-n}$; and so on.
-Most rational generating functions have poles, and they arise naturally whenever
-a linear recurrence has a unique dominant root.
+(This can also be derived from the generalized binomial theorem of Chapter~1
+with $\alpha = -k$.)
+
+The coefficient $\binom{n+k-1}{k-1}$ is a polynomial of degree $k-1$ in $n$.
+To see this, write it out:
+\[
+  \binom{n+k-1}{k-1} = \frac{(n+k-1)(n+k-2)\cdots(n+1)}{(k-1)!}.
+\]
+The numerator is a product of $k-1$ factors, each of the form $n + (\text{constant})$,
+so it is a polynomial of degree $k-1$ in $n$ with leading term $n^{k-1}$.
+Dividing by the constant $(k-1)!$:
+\[
+  \binom{n+k-1}{k-1} \;\sim\; \frac{n^{k-1}}{(k-1)!} \quad\text{as } n \to \infty.
+\]
+A simple pole ($k=1$) contributes a pure exponential $\rho^{-n}$; a double
+pole ($k=2$) contributes $(n+1)\rho^{-n} \sim n\rho^{-n}$; a triple pole
+($k=3$) contributes $\binom{n+2}{2}\rho^{-n} \sim \frac{n^2}{2}\rho^{-n}$;
+and so on. Most rational generating functions have poles, and they arise
+naturally whenever a linear recurrence has a unique dominant root.
 
 \textbf{Square-root branch points.}
 If $f(z) = \sqrt{1 - z/\rho} = (1 - z/\rho)^{1/2}$, then the generalized
 binomial theorem gives $f(z) = \sum_{n \ge 0} \binom{1/2}{n} (-z/\rho)^n$.
 In Chapter~1 we derived $\binom{1/2}{n} = (-1)^{n-1}/(2^{2n-1}n)\binom{2n-2}{n-1}$,
 so $[z^n]f = \binom{1/2}{n}(-1)^n\rho^{-n} = -\rho^{-n}/(2^{2n-1}n)\binom{2n-2}{n-1}$.
-Stirling's approximation ($m! \approx \sqrt{2\pi m}\,(m/e)^m$) applied to the
-central binomial coefficient gives $\binom{2n-2}{n-1} \sim 4^{n-1}/\sqrt{\pi n}$
-for large $n$.  Substituting and noting $4^{n-1}/2^{2n-1} = 1/2$:
+
+It remains to estimate $\binom{2n-2}{n-1}$ for large $n$. This is a central
+binomial coefficient (up to a shift), and its asymptotics follow from
+Stirling's approximation $m! \approx \sqrt{2\pi m}\,(m/e)^m$. Write $m = n-1$:
+\[
+  \binom{2m}{m} = \frac{(2m)!}{(m!)^2}
+  \approx \frac{\sqrt{2\pi(2m)}\,(2m/e)^{2m}}{(\sqrt{2\pi m}\,(m/e)^m)^2}
+  = \frac{\sqrt{4\pi m}\, \cdot\, 2^{2m} m^{2m}/e^{2m}}{2\pi m \,\cdot\, m^{2m}/e^{2m}}
+  = \frac{2^{2m}}{\sqrt{\pi m}}.
+\]
+So $\binom{2n-2}{n-1} \sim 4^{n-1}/\sqrt{\pi(n-1)} \sim 4^{n-1}/\sqrt{\pi n}$
+for large $n$. Substituting and noting $4^{n-1}/2^{2n-1} = 2^{2n-2}/2^{2n-1} = 1/2$:
 \[
   [z^n]\sqrt{1 - z/\rho} = -\frac{1}{2\sqrt{\pi}}\, n^{-3/2}\, \rho^{-n}\bigl(1 + O(1/n)\bigr).
 \]
