@@ -127,3 +127,12 @@ At level~1, the correspondence breaks down in a more severe way. Context-sensiti
 For the remainder of this book we work almost exclusively at the regular and context-free levels of the hierarchy (Types~3 and~2, respectively). The context-sensitive level appears in occasional warnings: if a model class tacitly encodes context-sensitive computations, one should not expect the clean rational or algebraic asymptotics that the transfer theorems deliver. Understanding precisely where a language sits in the hierarchy is therefore not merely a theoretical exercise—it determines which analytic tools are available.
 
 Chapter~7 develops the theory of weighted finite automata, the probabilistic refinement of level~3 that assigns real-valued weights to transitions and thereby models probability distributions over $\Sigma^*$. This is the direct precursor to the $n$-gram language models of Part~III, and it is where the connection between regular languages and rational generating functions becomes computationally actionable.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \cite{HopcroftUllman1979} --- the definitive classical treatment of automata theory, formal languages, and the Chomsky hierarchy, with careful proofs of all major results including the Myhill--Nerode theorem and both pumping lemmas.
+  \item \cite{Sipser2013} --- a modern, accessible introduction to the theory of computation covering DFAs, NFAs, CFGs, pushdown automata, and undecidability; the standard graduate textbook for the material of this chapter.
+  \item \cite{FlajoletSedgewick2009} --- Part~A develops the symbolic method and the connection between grammar structure and generating function type; the bridge between formal languages and analytic combinatorics that underlies this chapter's payoff section.
+  \item \cite{BerstelReutenauer2011} --- treats rational and recognizable power series over noncommutative alphabets; the algebraic foundation for the transfer from regular languages to rational generating functions developed in Chapter~7.
+\end{itemize}
