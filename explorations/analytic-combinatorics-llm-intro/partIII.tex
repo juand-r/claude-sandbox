@@ -1,5 +1,7 @@
 \part{Large Language Models and Their Formal Theory}
 
+We now turn to the objects that motivate the entire enterprise: large language models. Chapter~10 introduces an LLM as a probability distribution on $\Sigma^*$ defined by the autoregressive factorization, and proves that every softmax Transformer is tight. Chapter~11 surveys the formal-language theory of Transformers --- the $\mathsf{TC}^0$ complexity ceiling, Hahn's impossibility results, and Merrill--Sabharwal's chain-of-thought breakthrough --- explaining what these results mean for the analytic structure of LLM output distributions. Chapter~12 asks: if we cannot describe a Transformer exactly as a weighted finite automaton, how well can we approximate it by one? Four approaches (distillation, architectural equivalence, $L^*$ extraction, spectral/AAK methods) are surveyed, each connecting back to the rational-GF machinery of Parts~I--II.
+
 \input{ch10}
 \input{ch11}
 \input{ch12}
