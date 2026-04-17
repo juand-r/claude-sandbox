@@ -297,3 +297,13 @@ first as probability distributions over $\Sigma^*$, then through the lens of
 formal-language theory applied to transformer architectures, and finally as
 weighted-finite-automaton approximations whose spectral structure directly
 instantiates the framework developed in these pages.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \cite{Shannon1951} --- the original guessing-game experiment estimating the entropy rate of printed English; the historical starting point for all subsequent entropy-rate estimation work.
+  \item \cite{KontoyiannisEtAl1998} --- establishes the longest-match-length estimator $\hat{h}_n = (\log_2 n)/L_n$ and proves its almost-sure convergence to the entropy rate under mixing conditions; the rigorous nonparametric approach to entropy-rate estimation.
+  \item \cite{Szpankowski2001} --- applies Mellin transforms, depoissonization, and singularity analysis to entropy-related combinatorial problems; the reference for the analytic toolkit connecting generating-function singularity type to estimation convergence rates.
+  \item \cite{TakahashiTanakaIshii2018} --- extrapolates neural language model cross-entropies to infinite data and infinite context, obtaining a precise entropy-rate estimate of approximately $1.12$ bits per character for English.
+  \item \cite{ScheibnerSmithBialek2025} --- uses frontier LLMs as predictors in Shannon's guessing paradigm, finding that conditional entropy continues to decrease at context lengths well beyond those studied in earlier work and providing evidence for a slow-converging singularity in the English counting GF.
+\end{itemize}

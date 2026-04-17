@@ -224,6 +224,18 @@ The recursive method, against which Boltzmann sampling is compared in Section~\r
 
 The identification of the radius of convergence with the critical inverse temperature, and the free energy computation of Section~\ref{ch13:free-energy}, are standard in the statistical mechanics of polymers and random combinatorial structures; see the monograph of Velenik for a textbook treatment in the physics tradition.
 
+\begin{itemize}
+  \item \cite{DuchonFlajoletLouchardSchaeffer2004} --- The foundational paper on Boltzmann samplers: introduces the framework, proves the recursive construction rules for all symbolic-method operators, and establishes the $\Theta(n)$ expected-time complexity via saddle-point tuning and rejection sampling.
+
+  \item \cite{FlajoletSedgewick2009} --- Chapter VII gives the authoritative treatment of Boltzmann samplers in the context of the full analytic combinatorics toolkit, including the set and cycle constructions omitted in Section~\ref{ch13:construction} and the connection to complex analysis of generating functions.
+
+  \item \cite{BanderierKubaWallner2021} --- Analyzes composition schemes and their singularity types systematically; directly relevant to understanding how the Gibbs measure's critical behavior (Section~\ref{ch13:critical-temp}) depends on whether the generating function has a square-root or higher-order branch point.
+
+  \item \cite{BlondelEtAl2025} --- Establishes the ARM--EBM bijection for autoregressive language models via soft Bellman equations, grounding the ``LLM as partition function machine'' analogy previewed in Section~\ref{ch13:preview} in a rigorous equiexpressiveness theorem.
+
+  \item \cite{KemptonBurrell2025} --- Quantifies the gap between local (token-wise) and global (Gibbs) temperature sampling, providing bounds that make precise the approximation implicit in the preview of Chapter 14 at the end of this chapter.
+\end{itemize}
+
 \section{Exercises}
 \label{ch13:exercises}
 

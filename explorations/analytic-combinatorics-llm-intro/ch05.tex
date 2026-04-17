@@ -177,3 +177,17 @@ The irreducibility and aperiodicity conditions in Theorem~\ref{thm:n32law} are n
 We now have the complete analytic-combinatorics toolkit assembled over Chapters~1--5. The workflow is four steps: (i) encode a combinatorial class via the symbolic method (Chapter~3) to obtain a functional equation for its generating function; (ii) identify the dominant singularity of that generating function, using the implicit-function characteristic system or direct computation; (iii) extract the local singular form, invoking Puiseux's theorem when the generating function is algebraic; (iv) apply the Flajolet--Odlyzko transfer theorem (Chapter~4) to convert the singular form into coefficient asymptotics. The present chapter has shown that for unambiguous context-free languages this entire pipeline collapses to a single universal output: the $n^{-3/2}$ polynomial prefactor is a theorem, not a coincidence.
 
 The remainder of the book applies this machinery beyond the purely combinatorial setting. Part~II develops the formal language theory that contextualises Theorem~\ref{thm:n32law}. Parts~III and~IV extend the framework to probabilistic generative models, where the generating function becomes a probability-generating function and the asymptotics must be reinterpreted accordingly. Part~V confronts the theory with neural language models, asking which analytic-combinatoric signatures survive the transition from symbolic to statistical generation. The tools are in place; the questions are open.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \cite{ChomskySchutzenberger1963} --- The original paper proving that the generating function of any unambiguous context-free language is algebraic; essential reading for understanding the historical context and the original inductive proof that underpins Theorem~\ref{thm:cs}.
+
+  \item \cite{Drmota2009} --- A monograph devoted to random trees and context-free structures; Chapters~2--3 cover Puiseux expansions, the characteristic system, and the square-root universality theorem in a self-contained and detailed way, making it the most direct complement to the present chapter.
+
+  \item \cite{BanderierDrmota2015} --- Establishes a general framework (``algebraic systems'') subsuming many classes of context-free generating functions, and proves universal distributional limit laws; the paper is the state of the art on the $n^{-3/2}$ universality beyond leading-order asymptotics.
+
+  \item \cite{FlajoletSedgewick2009}, Chapter~VII --- Covers algebraic functions and the Newton polygon method for computing Puiseux expansions algorithmically; complements the sketch given in Theorem~\ref{thm:puiseux} with explicit procedures for finding $d$ and the coefficients $a_k$.
+
+  \item \textbf{M. Drmota, É. Fusy, M. Kang, V. Kraus, and J. Rué}, ``Asymptotic study of subcritical graph classes,'' \emph{SIAM Journal on Discrete Mathematics} 25 (2011), 1615--1651 --- Illustrates how the characteristic-system approach of this chapter extends to more complex algebraic systems (subcritical graph families), where the same $n^{-3/2}$ universality holds under analogous irreducibility conditions.
+\end{itemize}

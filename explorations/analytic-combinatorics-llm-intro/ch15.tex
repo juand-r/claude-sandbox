@@ -394,6 +394,20 @@ further in Chapter 16.  The relationship between the ARM--EBM bijection
 the EBM formulation makes it natural to define an order parameter for the
 transition, which the ARM formulation does not provide directly.
 
+\begin{itemize}
+  \item \cite{BanderierKubaWallner2021} --- Systematic analysis of composition schemes $F(z) = A(B(z))$ and their singularity types; establishes the catalogue of universal phase-transition signatures (including the Airy universality class with $n^{-3/2}$ exponents) that provides the theoretical backbone for interpreting the empirical LLM results.
+
+  \item \cite{FlajoletSedgewick2009} --- Chapter VII develops the connection between generating-function singularities and thermodynamic phase transitions in the combinatorial setting, including the Gibbs/Boltzmann correspondence; the primary analytic-combinatorics reference for the framework of this chapter.
+
+  \item \cite{NakaishiNishikawaHukushima2024} --- Studies GPT-2 using finite-size-scaling observables borrowed from computational statistical mechanics, finding a temperature-driven phase transition near $T_c \approx 1$ with scaling exponents consistent with second-order criticality.
+
+  \item \cite{ArnoldEtAl2024} --- Extends the phase-transition analysis to Pythia, Mistral, and Llama at multiple parameter scales, demonstrating that the critical behavior is robust across architectures and establishing the existence of a temperature window with stable Zipf exponent.
+
+  \item \cite{Mikhaylovskiy2025} --- Argues that the LLM phase transitions sit in a specific universality class consistent with square-root singularities of composed generating functions, providing the strongest current link between the empirical scaling and the analytic-combinatorics prediction.
+
+  \item \cite{BlondelEtAl2025} --- The ARM--EBM bijection underpins the energy-functional view of LLM output; relevant here because the EBM formulation naturally furnishes an order parameter for the phase transition that the ARM formulation does not directly provide.
+\end{itemize}
+
 \begin{exercise}
 \label{ch15:ex1}
 Let $A(z) = (1-z)^{-2}$, which has a double pole at $z=1$. Compute $Z(\beta) =

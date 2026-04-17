@@ -112,3 +112,13 @@ The two theories also share the same critical boundary behavior. A critical PCFG
 Cotterell et al.\ \cite{CotterellEtAl2023} situate these definitions within the broader framework of language models as probability measures on $\Sigma^*$, connecting the linguistic and probabilistic perspectives. The theorem of Du et al.\ that every softmax Transformer is tight is, from the vantage point of this book, not a peripheral remark about neural architecture but a foundational result: it is the permission slip granting Transformer language models entry into the class of objects to which the machinery of Part I applies.
 
 The next chapter takes up entropy rate --- the average per-token surprise under a stationary distribution --- and shows how, for tight models, the entropy rate can be computed from the radius of convergence of a suitably defined generating function, closing the loop between information-theoretic and analytic-combinatorial perspectives.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \cite{BoothThompson1973} --- the original paper introducing the consistency criterion for PCFGs via the spectral radius of the first-moment matrix; the primary source for the theorem bearing their names.
+  \item \cite{Chi1999} --- proves that maximum-likelihood PCFG estimation from finite treebanks always yields a consistent grammar, establishing automatic consistency as a property of the standard estimation procedure.
+  \item \cite{DuEtAl2023} --- provides the measure-theoretic framework for tightness of autoregressive language models, proves the Borel--Cantelli-type criterion, and shows that every softmax Transformer is tight; the modern counterpart to the Booth--Thompson theorem.
+  \item \cite{CotterellEtAl2023} --- situates tightness and consistency within a unified probabilistic framework for language models as measures on $\Sigma^*$, connecting the PCFG and autoregressive perspectives.
+  \item \cite{FlajoletSedgewick2009} --- the singularity analysis in Parts~B and~C provides the analytic machinery presupposed by the tightness condition: consistent and tight models are exactly those whose PGFs satisfy $F(1)=1$, permitting the Darboux and transfer theorems to apply.
+\end{itemize}

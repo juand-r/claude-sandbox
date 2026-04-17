@@ -150,3 +150,19 @@ Gap~9 is the most tractable starting point: it synthesizes existing tools (AAK b
 \section{Notes and Further Reading}
 
 The ten gaps are distilled from the broader research programme described in the source literature. Flajolet and Sedgewick \cite{FlajoletSedgewick2009} remains the central reference for the analytic side; their Chapters~VI--IX cover the singularity analysis, algebraic functions, and limit-law machinery that most of these gaps require. Pemantle and Wilson \cite{PemantleWilson2013} is the reference for Gap~3. The empirical phase-transition literature (Nakaishi \emph{et al.}\ \cite{NakaishiNishikawaHukushima2024}, Arnold \emph{et al.}\ \cite{ArnoldEtAl2024}, Mikhaylovskiy \cite{Mikhaylovskiy2025}) motivates Gaps~8 and~10 directly.
+
+\subsection*{Recommended Reading}
+
+\begin{itemize}
+  \item \cite{FlajoletSedgewick2009} --- Chapters~VI--IX supply the singularity analysis, algebraic-function theory, transfer-matrix machinery, and limit-law framework that underpin Gaps~1a, 1b, 4, 5, 7, and 10. Required reading before attempting any of the analytic gaps.
+
+  \item \cite{PemantleWilson2013} --- The reference for analytic combinatorics in several variables (ACSV). Develops the critical-point theory and stratified-Morse-theory tools needed for Gap~3 (multivariate token-count generating functions).
+
+  \item \cite{Hwang1998} --- Proves the quasi-power meta-theorem central to Gap~5. Reading this paper makes clear exactly what hypotheses need to be verified for a WFA-approximated LLM, and how Gaussian limit laws follow once they are.
+
+  \item \cite{Ruelle1978} --- The foundational reference for the thermodynamic formalism of equilibrium states, pressure functions, and transfer operators on subshifts of finite type. Essential background for Gap~6 (extending the formalism to neural-network potentials).
+
+  \item \cite{Bowen1975} --- Develops the Ruelle--Bowen theory of Gibbs states and the variational principle for topological pressure on Axiom~A systems. Read alongside Ruelle for Gap~6; together they give the ergodic-theory substrate that Gap~6 seeks to extend.
+
+  \item \cite{Mikhaylovskiy2025b} --- Empirically identifies temperature-driven phase transitions in transformer outputs and connects them to Zipf-exponent shifts. The primary empirical motivation for Gaps~8 and~10, and a concrete target for what a positive resolution would need to explain.
+\end{itemize}

@@ -98,3 +98,13 @@ A unigram model, $p(\sigma \mid h) = q(\sigma)$ for a fixed distribution $q$, is
 \end{example}
 
 Chapter~11 maps the transformer architecture against the formal language hierarchy, and makes precise why vanilla transformers without chain-of-thought are constrained to operate near the rational-stochastic corner of that hierarchy. This matters because it implies that the output GFs of such models are expected to be ``close to rational''---they should have a small number of dominant poles, with subdominant algebraic or essential singularities suppressed---and therefore amenable to the weighted finite automaton approximation program developed in Chapter~12. The tightness theorem of this chapter is the necessary prerequisite: it tells us the object whose singularities we are about to study is a genuine probability measure, not a ghost.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \cite{VaswaniEtAl2017} --- the original transformer paper introducing scaled dot-product attention, multi-head attention, and positional encoding; the architectural description underlying the tightness argument in Section~5.
+  \item \cite{DuEtAl2023} --- the primary source for the tightness theorem for softmax transformers and for the measure-theoretic framework distinguishing tight from non-tight autoregressive models.
+  \item \cite{CotterellEtAl2023} --- develops the Gap~1 vs.\ Gap~2 dichotomy and the framework for comparing language models as probability measures on $\Sigma^*$; directly relevant to Section~6's separation of the length PGF from the counting GF.
+  \item \cite{Icard2020} --- the probabilistic Chomsky hierarchy establishes that the rational-stochastic and algebraic-stochastic classes are distinct; the theoretical background for the question of where LLM output distributions fall in this hierarchy.
+  \item \cite{FlajoletSedgewick2009} --- the singularity analysis machinery applied throughout Parts~IV and~V to the length PGF and counting GF of LLMs; the analytic-combinatorics reference for the program outlined at this chapter's close.
+\end{itemize}

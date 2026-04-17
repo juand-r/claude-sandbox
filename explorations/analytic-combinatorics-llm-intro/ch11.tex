@@ -100,3 +100,20 @@ The $\mathsf{TC}^0$ upper bound does not rule out the possibility that a transfo
 \end{remark}
 
 The reader who has internalized this chapter is equipped to open any 2024--2026 paper on transformer expressivity and situate its claims precisely: which architecture, which precision, which mode of operation (single-pass or CoT), and which complexity class is being invoked. Chapter~12 turns to the operational question: given a trained LLM operating in single-pass mode, can one actually extract a WFA approximation, and if so, how faithfully does the extracted automaton capture the original distribution's generating function?
+
+\section*{Further Reading}
+\label{ch11:further-reading}
+
+\begin{itemize}
+  \item \cite{StroblEtAl2024} --- A comprehensive survey of transformer expressivity results, systematizing the $\mathsf{TC}^0$ upper bounds across model variants (attention type, precision, positional encoding) and clarifying which architectural choices matter for the complexity classification.
+
+  \item \cite{MerrillSabharwalSmith2022} --- Introduces saturated transformers and proves the foundational $\mathsf{TC}^0$ upper bound via an explicit circuit simulation; the paper that established the main complexity ceiling discussed throughout this chapter.
+
+  \item \cite{Hahn2020} --- Proves that fixed-depth soft-attention transformers cannot represent $\mathrm{PARITY}$ or $2\mathrm{DYCK}$ uniformly across lengths; the cleanest impossibility result in the expressivity literature and essential context for understanding the WFA approximation program.
+
+  \item \cite{SveteCotterell2023} --- Establishes the exact equivalence between Elman RNN language models and probabilistic finite-state automata, with tight bounds on the hidden-dimension cost of representing a PFSA; provides the recurrent-architecture counterpart to the transformer results.
+
+  \item \cite{RizviEtAl2024} --- Gives constructive simulation theorems showing that transformers at logarithmic depth can exactly (or approximately) simulate weighted finite automata via parallel-prefix scans of the WFA transition matrices.
+
+  \item \cite{MerrillSabharwal2024} --- Proves that transformers with polynomial-length chain-of-thought exactly recognize $\mathsf{P}$, establishing the decisive break beyond the $\mathsf{TC}^0$ ceiling and its implications for the analytic structure of CoT-enabled LLM distributions.
+\end{itemize}
