@@ -128,7 +128,7 @@ For $\beta > \beta_c$ (i.e., $e^{-\beta} < \rho_A$), the partition function $Z(\
 
 For $\beta < \beta_c$ (i.e., $e^{-\beta} > \rho_A$), the series $A(e^{-\beta})$ diverges, so no normalizable Gibbs measure exists on the whole class. One can still define a uniform distribution on each fixed $\mathcal{A}_n$ separately (the recursive method does exactly this), but there is no consistent extension to a single measure across all sizes.
 
-At $\beta = \beta_c$, whether the partition function converges depends on the growth rate of $a_n$. For many natural classes, $a_n \sim C \rho^{-n} n^{-\alpha}$ with $\alpha = 3/2$ (trees, planar maps, etc.), in which case $Z(\beta_c) = A(\rho)$ diverges since $\sum n^{-3/2} < \infty$ but barely so. The singular sampler at $x = \rho$ is a borderline case that produces a well-defined but heavy-tailed size distribution, which feeds into the rejection scheme of Proposition~\ref{ch13:rejection-complexity}.
+At $\beta = \beta_c$, whether the partition function converges depends on the growth rate of $a_n$. For many natural classes, $a_n \sim C \rho^{-n} n^{-\alpha}$ with $\alpha = 3/2$ (trees, planar maps, etc.), in which case $Z(\beta_c) = A(\rho) = \sum a_n \rho^n \sim \sum C n^{-3/2}$, which \emph{converges} (since $3/2 > 1$). Thus the partition function is finite at criticality, and the Gibbs measure at $\beta_c$ is well-defined, though the resulting size distribution $\Pr_{\beta_c}(N = n) \propto n^{-3/2}$ is heavy-tailed. This heavy-tailed sampler at $x = \rho$ feeds into the rejection scheme of Proposition~\ref{ch13:rejection-complexity}.
 
 \section{Free Energy and the Thermodynamic Limit}
 \label{ch13:free-energy}
@@ -182,7 +182,7 @@ Setting this equal to a target $n$ and solving gives $x^*(n) = n/(2(n+1))$, whic
 \]
 This is finite for $\beta > \beta_c = \log 2$. The partition function restricted to size $n$ is $Z_n(\beta) = 2^n e^{-\beta n}$, and the free energy per bit is $f(\beta) = \beta - \log 2$.
 
-\paragraph{Uniformity check.} Among all binary strings of length $n$, there are $2^n$ of them, each with probability $x^n / A(x)$, so each has equal probability $x^n (1-2x) / (2x)^n = (1-2x)/2^n \cdot (1/x)^n \cdot x^n$. Wait — more directly, among strings of length $n$, $\Pr_x(\text{specific string}) = x^n / A(x)$, and since all $2^n$ such strings have the same weight, they are equiprobable, as required.
+\paragraph{Uniformity check.} Among strings of length $n$, each specific string has probability $\Pr_x(\text{specific string}) = x^n / A(x)$. Since all $2^n$ strings of length $n$ receive the same weight, they are equiprobable, as required.
 \end{example}
 
 \begin{example}

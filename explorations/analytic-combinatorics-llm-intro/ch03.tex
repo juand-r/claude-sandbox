@@ -31,13 +31,13 @@ is finite for every $n \ge 0$.  Write $c_n = |\mathcal{C}_n|$.  The
 
 The finiteness condition on $\mathcal{C}_n$ guarantees that $C(z)$ is a
 well-defined formal power series; whether it converges anywhere other than $z = 0$
-is a separate analytic question taken up in Chapter~4.  Three archetypal classes
+is a separate analytic question taken up in Chapter~2.  Three archetypal classes
 will recur throughout: the class $\mathcal{W}$ of binary words over $\{a,b\}$
 with $|w|$ equal to the word length; the class $\mathcal{T}$ of plane trees (also
 called ordered or planar trees) with $|t|$ equal to the number of nodes; and the
 class $\mathfrak{S}$ of permutations with $|\sigma|$ equal to the length.  For
 permutations one uses instead an \emph{exponential generating function} (EGF),
-discussed briefly in Section~3; the unlabeled classes $\mathcal{W}$ and
+discussed briefly in the subsection on labeled classes below; the unlabeled classes $\mathcal{W}$ and
 $\mathcal{T}$ are handled by ordinary generating functions.
 
 Two distinguished classes serve as universal building blocks.
@@ -121,8 +121,9 @@ zero constant term by hypothesis).
 \begin{remark}
 The $\SEQ$ constructor is often written with a subscript constraint:
 $\SEQ_{\ge k}(\mathcal{A})$ denotes sequences of length at least $k$, with OGF
-$A(z)^k/(1 - A(z))$.  In particular $\SEQ_{\ge 1}(\mathcal{A})$ has OGF
-$A(z)/(1-A(z))$.
+$A(z)^k/(1 - A(z))$.  This follows because $\SEQ_{\ge k}(\mathcal{A}) =
+\mathcal{A}^k \times \SEQ(\mathcal{A})$, so the OGF is $A(z)^k \cdot 1/(1-A(z))$.
+In particular $\SEQ_{\ge 1}(\mathcal{A})$ has OGF $A(z)/(1-A(z))$.
 \end{remark}
 
 \subsection*{Marking variables and bivariate generating functions}
@@ -141,11 +142,16 @@ $n$ is
   \mathbf{E}[\chi \mid |\gamma| = n]
   \;=\; \frac{[z^n]\,\partial_u C(z,u)\big|_{u=1}}{[z^n]\,C(z,1)}.
 \]
+To see why: differentiating $u^{\chi(\gamma)}$ with respect to $u$ and setting
+$u = 1$ replaces each $u^{\chi(\gamma)}$ by $\chi(\gamma)$, so
+$[z^n]\,\partial_u C(z,u)|_{u=1} = \sum_{|\gamma|=n} \chi(\gamma)$.
+Dividing by $c_n = [z^n]\,C(z,1)$ gives the mean.
 
 The \emph{pointing} (or \emph{derived}) class $\mathcal{C}^\bullet$ marks one
 distinguished atom in each structure.  If objects of size $n$ each contain exactly
 $n$ atoms, then $C^\bullet(z) = z\,C'(z)$ where $C' = dC/dz$, because pointing
-multiplies the number of structures of size $n$ by $n$.
+multiplies the number of structures of size $n$ by $n$: the GF of pointed objects
+is $\sum_{n \ge 0} n\,c_n\, z^n = z \sum_{n \ge 0} n\,c_n\, z^{n-1} = z\,C'(z)$.
 
 \subsection*{Labeled classes and EGFs}
 
@@ -197,6 +203,13 @@ size $0$) is
   T(z) \;=\; \frac{1 - \sqrt{1 - 4z}}{2}.
 \]
 Expanding the square root via the generalized binomial theorem (Chapter~1),
+$(1-4z)^{1/2} = \sum_{n \ge 0} \binom{1/2}{n}(-4z)^n$, so
+\[
+  [z^n]\,\sqrt{1-4z}
+  \;=\; \binom{1/2}{n}(-4)^n
+  \;=\; \frac{-2}{n}\binom{2(n-1)}{n-1} \quad (n \ge 1).
+\]
+Since $T(z) = \tfrac{1}{2}(1 - \sqrt{1-4z})$, we get
 \[
   [z^n]\,T(z)
   \;=\; \frac{1}{n}\binom{2(n-1)}{n-1}
@@ -255,7 +268,7 @@ number of $a$'s in a word of length $n$ is
   \;=\; \frac{n}{2},
 \]
 as expected by symmetry.  The bivariate framework will become essential in
-Chapter~6 when we study parameters of parse trees arising from probabilistic
+Chapter~8 when we study parameters of parse trees arising from probabilistic
 context-free grammars.
 \end{example}
 
@@ -286,7 +299,7 @@ productions of the grammar).  Such systems define algebraic functions by the
 implicit function theorem over formal power series, and the theory of algebraic
 singularities then gives the $n^{-3/2}$ universal exponent as a consequence of
 the irreducibility of the grammar.  Every unambiguous context-free language has
-$2^{\Theta(n)}$ or $n^{-3/2} \rho^n$ asymptotics; the symbolic method is the
+$2^{\Theta(n)}$ or $n^{-3/2} \rho^{-n}$ asymptotics; the symbolic method is the
 reason this dichotomy exists.
 
 The connection to language models, foreshadowed for Part~III, runs as follows.  A

@@ -10,7 +10,7 @@ for a grammar-specific constant $C > 0$ and exponential rate $\rho > 0$. The cru
 
 A \emph{context-free grammar} $\mathcal{G} = (V, \Sigma, S, \mathcal{P})$ consists of a finite set $V$ of nonterminal symbols, a finite alphabet $\Sigma$ of terminal symbols disjoint from $V$, a designated start symbol $S \in V$, and a finite set $\mathcal{P}$ of productions of the form $A \to \alpha$ where $A \in V$ and $\alpha \in (V \cup \Sigma)^*$. The language $L(\mathcal{G}) \subseteq \Sigma^*$ is the set of all terminal strings derivable from $S$ by successive application of productions. A grammar is \emph{unambiguous} if every string $w \in L(\mathcal{G})$ admits a unique leftmost derivation, or equivalently a unique parse tree.
 
-Ambiguity is the enemy of enumeration: if a string can be parsed in multiple ways, a naive translation of the grammar into generating-function equations overcounts. Unambiguity ensures that the generating function for $L(\mathcal{G})$, counting words by length, can be extracted directly from the grammar's combinatorial structure. Part~II (Chapter~6) develops the theory of context-free languages in depth; here we need only the fact that unambiguous grammars translate productions into polynomial equations on generating functions.
+Ambiguity is the enemy of enumeration: if a string can be parsed in multiple ways, a naive translation of the grammar into generating-function equations overcounts. Unambiguity ensures that the generating function for $L(\mathcal{G})$, counting words by length, can be extracted directly from the grammar's combinatorial structure. Part~II (Chapters~6--9) develops the theory of context-free languages in depth; here we need only the fact that unambiguous grammars translate productions into polynomial equations on generating functions.
 
 \section{From Productions to Polynomial Equations}
 
@@ -111,7 +111,7 @@ We now have everything needed to apply the Flajolet--Odlyzko transfer theorem \c
 \[
   L(z) = g(z) - h(z)\sqrt{1 - z/\rho} = g(z) - h(z)\left(1 - z/\rho\right)^{1/2}.
 \]
-The analytic part $g(z)$ contributes coefficients that are exponentially smaller than those from the branch-cut term (its singularities are further from the origin, by the irreducibility assumption). The transfer theorem identifies $(1 - z/\rho)^{1/2}$ as a function of type $\alpha = 1/2$ in the sense of Chapter~4, with
+The analytic part $g(z)$ contributes coefficients that are exponentially smaller than those from the branch-cut term (its singularities are further from the origin, by the irreducibility assumption). The transfer theorem applies to the singular factor $(1 - z/\rho)^{1/2}$, which corresponds to $\alpha = -1/2$ in the Chapter~4 convention $(1-z/\rho)^{-\alpha}$, giving
 \[
   [z^n](1 - z/\rho)^{1/2} \sim \frac{-1/2}{\Gamma(-1/2)}\cdot \frac{\rho^{-n}}{n^{3/2}} \cdot (-1) = \frac{\rho^{-n}}{2\sqrt{\pi}\, n^{3/2}},
 \]
