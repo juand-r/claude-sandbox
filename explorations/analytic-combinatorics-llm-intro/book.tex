@@ -13,6 +13,61 @@
 
 \tableofcontents
 
+\chapter*{Notation}
+\addcontentsline{toc}{chapter}{Notation}
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Symbol} & \textbf{Meaning} \\[4pt]
+\multicolumn{2}{@{}l}{\emph{Generating functions and asymptotics}} \\
+$A(z), B(z), C(z), \ldots$ & Ordinary generating functions (OGFs) \\
+$\hat{A}(z)$ & Exponential generating function (EGF) of $A$ \\
+$[z^n] A(z)$ & Coefficient of $z^n$ in $A(z)$ \\
+$[z^n/n!] \hat{A}(z)$ & $n! \cdot [z^n] \hat{A}(z)$; the $n$-th EGF coefficient \\
+$R$ & Radius of convergence (Cauchy--Hadamard) \\
+$\rho$ & Location of dominant singularity; equals $R$ for aperiodic GFs \\
+$\alpha$ & Singularity exponent in $(1-z/\rho)^{-\alpha}$ \\
+$f(n) \sim g(n)$ & $\lim_{n\to\infty} f(n)/g(n) = 1$ \\[6pt]
+
+\multicolumn{2}{@{}l}{\emph{Combinatorial constructions}} \\
+$\mathcal{E}$ & Neutral class (one object of size $0$; OGF $= 1$) \\
+$\mathcal{Z}$ & Atomic class (one object of size $1$; OGF $= z$) \\
+$\SEQ(\mathcal{A})$ & Sequences of $\mathcal{A}$-objects; OGF $= 1/(1-A(z))$ \\
+$\SET(\mathcal{A})$ & Unordered sets; EGF $= \exp\hat{A}(z)$ \\
+$\CYC(\mathcal{A})$ & Cyclic sequences; EGF $= \log(1/(1-\hat{A}(z)))$ \\[6pt]
+
+\multicolumn{2}{@{}l}{\emph{Formal languages and automata}} \\
+$\Sigma$ & Finite alphabet \\
+$\Sigma^*$ & Set of all finite strings over $\Sigma$ \\
+$\EOS$ & End-of-sequence token \\
+$L \subseteq \Sigma^*$ & A formal language \\
+$(\alpha, \{A_\sigma\}, \beta)$ & Weighted finite automaton: initial vector, transition matrices, final vector \\
+$A = \sum_\sigma A_\sigma$ & Aggregate transition matrix of a WFA \\
+$\rho(A)$ & Spectral radius of matrix $A$ \\[6pt]
+
+\multicolumn{2}{@{}l}{\emph{Probability and information theory}} \\
+$\mu$ & Probability distribution on $\Sigma^*$ (LLM output distribution) \\
+$p(\sigma \mid h)$ & Conditional next-token probability given history $h$ \\
+$h$ & Shannon entropy rate (bits or nats per symbol) \\
+$H(X_1^n)$ & Block entropy of a length-$n$ string \\[6pt]
+
+\multicolumn{2}{@{}l}{\emph{Statistical mechanics / temperature}} \\
+$E(w) = -\log \mu(w)$ & Energy of string $w$ under model $\mu$ \\
+$\beta = 1/T$ & Inverse temperature \\
+$Z(\beta) = \sum_w \mu(w)^\beta$ & Partition function \\
+$\mu_\beta(w) \propto \mu(w)^\beta$ & Gibbs distribution at inverse temperature $\beta$ \\
+$\beta_c$ & Critical inverse temperature (phase transition point) \\[6pt]
+
+\multicolumn{2}{@{}l}{\emph{Named constants}} \\
+$\varphi = (1+\sqrt{5})/2$ & Golden ratio ($\approx 1.618$) \\
+$\hat\varphi = (1-\sqrt{5})/2$ & Conjugate of the golden ratio ($\approx -0.618$) \\
+$\Gamma(\alpha)$ & Euler gamma function \\
+\end{tabular}
+
+\bigskip
+
+\noindent Throughout, $\log$ denotes the natural logarithm unless a base is
+indicated (as in $\log_2$).
+
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 
