@@ -109,6 +109,23 @@ $\partial_x u = \partial_y v$, $\partial_y u = -\partial_x v$ where $f = u + iv$
 (3) $f$ is locally representable by a convergent power series around every point.
 We will take this equivalence as given.
 
+The intuition behind this equivalence is worth pausing on, even without a proof.
+Real differentiability requires only that a function have a well-defined slope when
+you approach a point along the real line---from the left or from the right.
+Complex differentiability demands something far more stringent: the limit
+$(f(z+h)-f(z))/h$ must yield the \emph{same} value no matter what direction $h$
+approaches zero in the complex plane---horizontally, vertically, diagonally,
+or along any curve whatsoever.
+This is an overdetermined system: two partial derivatives of the real and imaginary
+parts must simultaneously satisfy the Cauchy--Riemann equations, which is already
+a strong constraint, and having this hold at every point is stronger still.
+The result is that a function with even one complex derivative everywhere is
+automatically infinitely smooth, and its values in any open disk are completely
+determined by a convergent power series---a rigidity that has no real analogue.
+Real-differentiable functions can have kinks and corners in their higher derivatives;
+complex-differentiable functions cannot, because the complex constraint leaves no
+room for local irregularity.
+
 The key example: if $A(z) = \sum_{n \ge 0} a_n z^n$ has radius of convergence
 $R > 0$, then $A$ is holomorphic on the open disk $|z| < R$.
 This follows because power series can be differentiated term by term within

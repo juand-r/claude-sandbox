@@ -73,7 +73,32 @@ for some $\alpha \in \mathbb{R} \setminus \mathbb{Z}_{\le 0}$ and $C \ne 0$. The
 as $n \to \infty$.
 \end{theorem}
 
-We do not prove this theorem here; a full proof via the Hankel contour integral appears in~\cite{FlajoletSedgewick2009}. What matters is the structural decomposition of the conclusion:
+The proof is a beautiful application of contour deformation from Ch2, and we sketch it here to give the reader confidence that the formula is not magic.
+Start with the Cauchy coefficient formula from Chapter~2:
+\[
+  a_n = \frac{1}{2\pi i} \oint_{|z|=r} \frac{A(z)}{z^{n+1}}\, dz,
+\]
+where the contour is a small circle of radius $r < \rho$ centered at the origin.
+By the contour deformation principle (Chapter~2), we may deform this circle outward
+to any path that stays within the region where $A$ is holomorphic.
+Because $A$ is $\Delta$-analytic at $\rho$, we can push the contour past the circle
+$|z| = \rho$ everywhere \emph{except} near the singularity, wrapping it tightly
+around the branch cut or pole at $z = \rho$; this is the \emph{Hankel contour}.
+The Hankel contour consists of a large outer arc plus two segments running along
+opposite sides of the branch cut connecting $\rho$ to infinity.
+By the ML bound from Chapter~2, the contribution from the large outer arc
+is at most (length) $\times$ (maximum of $|A(z)/z^{n+1}|$ on the arc),
+and since $|z^{n+1}|$ grows exponentially in $n$ on the arc, this contribution
+decays exponentially and is negligible.
+The two segments hugging the singularity are what survive, and on them
+the integrand is governed entirely by the local behavior $A(z) \approx C(1-z/\rho)^{-\alpha}$.
+Substituting $z = \rho(1 - t/n)$ and rescaling, the integral over the two segments
+reduces to an Euler-type integral that evaluates to $\int_0^\infty t^{\alpha-1}e^{-t}\,dt = \Gamma(\alpha)$,
+with the $\rho^{-n}$ and $n^{\alpha-1}$ factors emerging from the change of variables.
+Dividing out $\Gamma(\alpha)$ produces the stated formula.
+Full details appear in~\cite{FlajoletSedgewick2009}, Chapter~VI.
+
+What matters for applications is the structural decomposition of the conclusion:
 
 \begin{enumerate}
 \item The exponential factor $\rho^{-n}$ is determined entirely by the \emph{location} of the singularity, not its type. Moving the singularity closer to or farther from the origin changes the exponential growth rate.

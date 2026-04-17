@@ -165,9 +165,44 @@ of the EGF absorbs the $\binom{n}{k}$ ways to partition a label set of size $n$
 between the two factors.  Beyond sequences, labeled structures admit two further
 constructions: $\SET(\mathcal{A})$ (unordered collections, with repetition
 forbidden) translates to $\exp \hat{A}(z)$, and $\CYC(\mathcal{A})$ (cyclic
-sequences) translates to $\log(1/(1 - \hat{A}(z)))$.  These rules, stated here
-without derivation, are developed fully in~\cite{FlajoletSedgewick2009},
-Chapter~II.
+sequences) translates to $\log(1/(1 - \hat{A}(z)))$.  Here is the derivation of
+the $\SET$ rule, which is short and illuminates the whole labeled framework.
+
+A set of $k$ labeled $\mathcal{A}$-structures is formed by (i) partitioning the
+label set $[n]$ into $k$ blocks of sizes $n_1, \ldots, n_k$ with
+$n_1 + \cdots + n_k = n$, (ii) placing one $\mathcal{A}$-structure on each block,
+and (iii) forgetting the order of the $k$ components (since a set is unordered).
+Steps (i) and (ii) together contribute
+\[
+  \binom{n}{n_1, \ldots, n_k} \cdot a_{n_1} \cdots a_{n_k}
+\]
+ways to build an ordered $k$-tuple of $\mathcal{A}$-structures on labels $[n]$.
+Step (iii) divides by $k!$ to forget the ordering.  Summing over all $k \ge 0$
+and all compositions of $n$, the EGF of $\SET(\mathcal{A})$ is
+\[
+  \widehat{\SET(\mathcal{A})}(z)
+  \;=\; \sum_{k \ge 0} \frac{\hat{A}(z)^k}{k!}
+  \;=\; \exp\!\bigl(\hat{A}(z)\bigr).
+\]
+The $k!$ in the denominator is the key: it is exactly the number of ways to
+permute $k$ indistinguishable components, canceling the overcounting from treating
+an unordered set as an ordered tuple.  The labeled product rule (the EGF of
+an ordered $k$-tuple is $\hat{A}(z)^k$) combined with division by $k!$ is
+precisely the exponential series, which is why EGFs and the exponential function
+are inseparable in the labeled world.
+
+For $\CYC(\mathcal{A})$, the same argument applies with one change: cyclic sequences
+have $k$ rotations rather than $k!$ permutations as symmetries, so the EGF of
+$k$-cycles is $\hat{A}(z)^k / k$ instead of $\hat{A}(z)^k / k!$.  Summing over
+$k \ge 1$ gives
+\[
+  \widehat{\CYC(\mathcal{A})}(z)
+  \;=\; \sum_{k \ge 1} \frac{\hat{A}(z)^k}{k}
+  \;=\; \log\!\frac{1}{1 - \hat{A}(z)}.
+\]
+The full derivation, including careful bookkeeping for the $k = 0$ case and the
+formal treatment via species, is in~\cite{FlajoletSedgewick2009}, Chapter~II;
+see also~\cite{BergeronLabelleLeRoux1998} for the species-theoretic account.
 
 \section{Worked Examples}
 

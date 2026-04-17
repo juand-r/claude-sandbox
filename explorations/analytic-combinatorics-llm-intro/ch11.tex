@@ -11,6 +11,33 @@ The tools that turn out to be most useful for characterizing transformer express
 $\mathsf{AC}^0$ is the class of languages recognizable by constant-depth, polynomial-size circuits over unbounded-fan-in \textsc{and}, \textsc{or}, and \textsc{not} gates. $\mathsf{TC}^0$ extends $\mathsf{AC}^0$ by adding threshold gates, which output $1$ if and only if at least $k$ of their inputs are $1$, for any fixed $k$. $\mathsf{NC}^1$ is the class recognizable by circuits of logarithmic depth and polynomial size over fan-in-$2$ gates.
 \end{definition}
 
+To build intuition for what these classes actually \emph{do}, consider the following picture.
+$\mathsf{AC}^0$ can compute an unbounded $\textsc{and}$ or $\textsc{or}$ over all its inputs in a
+single layer---``are \emph{all} of these bits $1$?'' or ``is \emph{any} bit $1$?''---because
+the gates have unbounded fan-in.  But $\mathsf{AC}^0$ cannot \emph{count}: it cannot
+determine whether the number of $1$-bits in a string is even (the $\mathrm{PARITY}$ language)
+or whether it exceeds some threshold.  This is Håstad's switching lemma, and the
+intuitive reason is that counting requires depth proportional to the word length unless
+you have gates designed for it.
+$\mathsf{TC}^0$ adds exactly those gates: a threshold gate fires if at least $k$ of
+its inputs are $1$.  With threshold gates you can add $n$-bit integers (carry-propagation
+is a threshold computation), multiply them, and sort a list---all in constant depth.
+What $\mathsf{TC}^0$ cannot do is parse an arbitrarily deeply nested structure such as
+a string of balanced parentheses $(\,((\,)\,)\,)$ at unbounded nesting depth; tracking
+which opener matches which closer requires a kind of hierarchical bookkeeping that eludes
+constant-depth circuits even with counting.
+$\mathsf{NC}^1$ allows depth to grow as $O(\log n)$, which is just enough to evaluate an
+arbitrary Boolean formula by splitting it into two halves recursively, solving each half,
+and combining---a balanced binary tree of depth $\log n$ over fan-in-$2$ gates.  The
+logarithmic depth is exactly what is needed to parse context-free languages (by a
+parallel CYK algorithm) and to compute the word problem for finite groups.
+For this book, the critical fact is that a vanilla transformer at fixed depth and bounded
+arithmetic precision is essentially a $\mathsf{TC}^0$ circuit: it can count and aggregate
+information over its input, but it cannot parse arbitrarily deep nesting in a single
+forward pass.  This ceiling---$\mathsf{TC}^0$ and not $\mathsf{NC}^1$---is what forces
+a transformer's output distribution toward rational (WFA-like) rather than algebraic
+generating functions.
+
 It is widely conjectured, though not proved, that these containments are strict: $\mathsf{AC}^0 \subsetneq \mathsf{TC}^0 \subsetneq \mathsf{NC}^1$. Several classical separation results support this picture. $\mathrm{PARITY}$---the language of binary strings containing an even number of $1$'s---is not in $\mathsf{AC}^0$ (H\r{a}stad's switching lemma) but lies in $\mathsf{TC}^0$ via a single threshold gate that computes the sum of the input bits modulo $2$ through counting. General context-free language recognition, and the word problem for the symmetric group $S_5$, lie in $\mathsf{NC}^1$ but are believed to lie outside $\mathsf{TC}^0$, though this separation is conditional on standard complexity-theoretic assumptions.
 
 For us the critical class is $\mathsf{TC}^0$. The central theme of this chapter is that vanilla transformers---constant depth, bounded precision, no scratchpad---are essentially contained in $\mathsf{TC}^0$, and that this ceiling has direct consequences for the analytic structure of the distributions they can represent.
