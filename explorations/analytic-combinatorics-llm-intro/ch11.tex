@@ -1,0 +1,146 @@
+\chapter{Formal Language Theory of Transformers}
+\label{ch11:top}
+
+When a transformer LLM assigns probabilities to strings, what kind of formal object is it, really? This question matters for the analytic-combinatorics program because the generating function of the output distribution inherits its analytic type from the underlying formal class. If an LLM is (approximately) a weighted finite automaton, its generating function is rational and Chapter~7's partial-fraction story applies verbatim. If it is strictly more expressive, the generating function could be algebraic, $D$-finite, or wilder still, with correspondingly richer singular structure and qualitatively different asymptotics for $[z^n]L(z)$. This chapter surveys what is known about the answer, drawing on a body of results from circuit complexity theory, automata-theoretic language theory, and the expressivity literature for neural sequence models.
+
+\section{Circuit Complexity as a Measuring Stick}
+
+The tools that turn out to be most useful for characterizing transformer expressivity come not from automata theory directly but from Boolean circuit complexity. Three classes matter for what follows.
+
+\begin{definition}
+$\mathsf{AC}^0$ is the class of languages recognizable by constant-depth, polynomial-size circuits over unbounded-fan-in \textsc{and}, \textsc{or}, and \textsc{not} gates. $\mathsf{TC}^0$ extends $\mathsf{AC}^0$ by adding threshold gates, which output $1$ if and only if at least $k$ of their inputs are $1$, for any fixed $k$. $\mathsf{NC}^1$ is the class recognizable by circuits of logarithmic depth and polynomial size over fan-in-$2$ gates.
+\end{definition}
+
+To build intuition for what these classes actually \emph{do}, consider the following picture.
+$\mathsf{AC}^0$ can compute an unbounded $\textsc{and}$ or $\textsc{or}$ over all its inputs in a
+single layer---``are \emph{all} of these bits $1$?'' or ``is \emph{any} bit $1$?''---because
+the gates have unbounded fan-in.  But $\mathsf{AC}^0$ cannot \emph{count}: it cannot
+determine whether the number of $1$-bits in a string is even (the $\mathrm{PARITY}$ language)
+or whether it exceeds some threshold.  This is Håstad's switching lemma, and the
+intuitive reason is that counting requires depth proportional to the word length unless
+you have gates designed for it.
+$\mathsf{TC}^0$ adds exactly those gates: a threshold gate fires if at least $k$ of
+its inputs are $1$.  With threshold gates you can add $n$-bit integers (carry-propagation
+is a threshold computation), multiply them, and sort a list---all in constant depth.
+What $\mathsf{TC}^0$ cannot do is parse an arbitrarily deeply nested structure such as
+a string of balanced parentheses $(\,((\,)\,)\,)$ at unbounded nesting depth; tracking
+which opener matches which closer requires a kind of hierarchical bookkeeping that eludes
+constant-depth circuits even with counting.
+$\mathsf{NC}^1$ allows depth to grow as $O(\log n)$, which is just enough to evaluate an
+arbitrary Boolean formula by splitting it into two halves recursively, solving each half,
+and combining---a balanced binary tree of depth $\log n$ over fan-in-$2$ gates.  The
+logarithmic depth is exactly what is needed to parse context-free languages (by a
+parallel CYK algorithm) and to compute the word problem for finite groups.
+For this book, the critical fact is that a vanilla transformer at fixed depth and bounded
+arithmetic precision is essentially a $\mathsf{TC}^0$ circuit: it can count and aggregate
+information over its input, but it cannot parse arbitrarily deep nesting in a single
+forward pass.  This ceiling---$\mathsf{TC}^0$ and not $\mathsf{NC}^1$---is what forces
+a transformer's output distribution toward rational (WFA-like) rather than algebraic
+generating functions.
+
+It is widely conjectured, though not proved, that these containments are strict: $\mathsf{AC}^0 \subsetneq \mathsf{TC}^0 \subsetneq \mathsf{NC}^1$. Several classical separation results support this picture. $\mathrm{PARITY}$---the language of binary strings containing an even number of $1$'s---is not in $\mathsf{AC}^0$ (H\r{a}stad's switching lemma) but lies in $\mathsf{TC}^0$ via a single threshold gate that computes the sum of the input bits modulo $2$ through counting. General context-free language recognition, and the word problem for the symmetric group $S_5$, lie in $\mathsf{NC}^1$ but are believed to lie outside $\mathsf{TC}^0$, though this separation is conditional on standard complexity-theoretic assumptions.
+
+For us the critical class is $\mathsf{TC}^0$. The central theme of this chapter is that vanilla transformers---constant depth, bounded precision, no scratchpad---are essentially contained in $\mathsf{TC}^0$, and that this ceiling has direct consequences for the analytic structure of the distributions they can represent.
+
+\section{Saturated Transformers and the $\mathsf{TC}^0$ Upper Bound}
+
+\cite{MerrillSabharwalSmith2022} introduced the notion of a \emph{saturated transformer} to make the expressivity analysis tractable. A softmax attention layer with queries $Q$ and keys $K$ computes attention weights $\alpha_{ij} = \exp(q_i^\top k_j) / \sum_\ell \exp(q_i^\top k_\ell)$. In the saturated limit, one takes the hard version: each query attends uniformly and exclusively to those positions $j$ that maximize $q_i^\top k_j$. This ``hard attention'' is a faithful proxy for the asymptotic behavior of softmax when the norms of queries and keys are held bounded and the model is evaluated on long sequences.
+
+\begin{theorem}[Merrill, Sabharwal, Smith 2022]
+Saturated transformers of constant depth and polynomial embedding dimension can be simulated by constant-depth Boolean threshold circuits of polynomial size. Consequently, any language recognized by such a model lies in $\mathsf{TC}^0$.
+\end{theorem}
+
+The proof constructs the circuit layer by layer. Each attention head computes, for each query position, a maximum over key-query dot products---an operation realizable by threshold gates---and then a uniform average over the selected positions, which is again a threshold computation. The feed-forward sublayers are handled by approximating \textsc{relu} or \textsc{gelu} activations with polynomially many threshold gates. The depth of the resulting circuit is proportional to the depth of the transformer, hence constant.
+
+The survey \cite{StroblEtAl2024} systematizes and sharpens this line of work. For essentially every variant of ``vanilla'' transformer one might study---fixed depth, soft or hard attention, log-precision floating-point arithmetic, no intermediate scratchpad---the conclusion is the same: the class of languages recognizable lies inside $\mathsf{TC}^0$. The survey also clarifies which model-theoretic choices (precision, positional encoding scheme, attention type) affect the exact position within $\mathsf{TC}^0$ versus which merely amount to different constant-factor overheads.
+
+The consequence for generating functions is sharp and important. If an LLM is constrained to $\mathsf{TC}^0$ and therefore cannot uniformly recognize context-free languages, it is extremely unlikely to produce a distribution whose generating function satisfies a nontrivial polynomial equation over $\mathbb{Q}(z)$---that is, to be genuinely algebraic in the sense of Chapter~5. The natural expectation is that vanilla transformers produce distributions whose generating functions are approximately rational, ``WFA-like'' modulo approximation error at any fixed sequence length. This is the conceptual foundation for the WFA extraction program taken up in Chapter~12.
+
+\section{Hahn's Impossibility Theorem}
+
+Before the $\mathsf{TC}^0$ machinery became standard, \cite{Hahn2020} proved a clean impossibility result by a soft-attention smoothing argument. The result remains the most intuitive lower-bound warning in the expressivity literature.
+
+\begin{theorem}[Hahn 2020]
+A fixed-depth, fixed-width transformer with soft attention cannot learn $\mathrm{PARITY}$ uniformly. More precisely, the cross-entropy loss of any such model on uniformly random binary strings of length $n$ is bounded away from zero by a constant independent of $n$. The same conclusion holds for $2\mathrm{DYCK}$, the language of well-matched parentheses over two bracket types, at arbitrary nesting depths.
+\end{theorem}
+
+The argument turns on a Lipschitz property of soft attention. Softmax attention weights are smooth functions of the input embeddings; if the keys and queries have bounded norm, a small perturbation of any single input token produces a small perturbation of every attention weight. By a telescoping argument across depth, the transformer's output is a Lipschitz function of each input token, with Lipschitz constant that does not grow with sequence length for fixed depth and width. But $\mathrm{PARITY}$ is maximally sensitive: flipping any single input bit flips the correct label, regardless of where in the string that bit appears. No Lipschitz function can track such global sensitivity uniformly over all lengths with constant Lipschitz constant. The same argument applies to $2\mathrm{DYCK}$ because the matching structure at arbitrary depth requires unbounded hierarchical bookkeeping; a soft-attention model's ability to track bracket nesting collapses as nesting depth grows.
+
+The moral for analytic combinatorics is precise. $\mathrm{PARITY}$ is the canonical language whose generating function has a singularity at $z = -1$: the string $0^k1^k0^k\cdots$ patterns that witness parity are exactly what produce alternating-sign contributions in the coefficient expansion. A model that cannot represent $\bmod\ 2$ counting cannot put mass consistently on such patterns, and therefore its generating function cannot have a pole at $z = -1$ arising from the underlying formal structure. More generally, periodic finite-state structure (controlled by roots of unity in the GF) and unbounded hierarchical nesting (controlled by branch points in the algebraic GF) are precisely the phenomena a vanilla transformer cannot faithfully reproduce.
+
+\section{Svete and Cotterell: RNN Language Models as Probabilistic Finite-State Automata}
+
+\cite{SveteCotterell2023} establish an exact correspondence on the recurrent side of the architecture landscape. They prove that simple Elman-style RNN language models---networks where the hidden state $h_t = \sigma(W_h h_{t-1} + W_x x_t + b)$ updates recurrently---are equivalent, as distributions over $\Sigma^*$, to a specific subclass of probabilistic finite-state automata (PFSAs). The equivalence holds in both directions: every Elman RNN with a fixed activation function defines a PFSA, and every PFSA in the relevant subclass can be realized by some Elman RNN.
+
+\begin{theorem}[Svete, Cotterell 2023]
+An Elman RNN language model over alphabet $\Sigma$ with hidden dimension $d$ defines a distribution over $\Sigma^*$ that is equivalent to a probabilistic finite-state automaton. Furthermore, representing an arbitrary $N$-state deterministic PFSA over $\Sigma$ requires $\Omega(N|\Sigma|)$ hidden units, and this lower bound is asymptotically tight.
+\end{theorem}
+
+The tightness proof is a direct construction: one can embed the transition table of an $N$-state PFSA into the weight matrices of an RNN using exactly $N|\Sigma|$ hidden units, with each unit tracking one state-symbol pair. The lower bound follows from a rank argument on the weight matrices.
+
+This correspondence identifies a swath of recurrent language models with rational formal power series. For the corresponding subclass, the length-indexed generating function $L(z) = \sum_{n \geq 0} p_n z^n$, where $p_n$ is the total probability mass on strings of length $n$, is a rational function of $z$. The Flajolet--Sedgewick toolkit then applies verbatim: one performs a partial-fraction decomposition of $L(z)$ over $\mathbb{C}$, identifies the dominant pole $\rho$ (the smallest-modulus pole), and reads off the exponential decay rate $[z^n]L(z) \sim C \rho^{-n} n^k$ where $k$ is the order of the pole minus one. The entire Chapter~7 program is available, and the translation from RNN architecture to analytic GF is explicit rather than approximate.
+
+\section{Rizvi et al.: Transformers Simulating Weighted Automata}
+
+\cite{RizviEtAl2024} carry the equivalence across the architectural gap from recurrent networks to transformers, giving constructive simulation theorems.
+
+\begin{theorem}[Rizvi et al. 2024, Theorem 1]
+A transformer with bilinear attention layers and hard attention can exactly simulate any $n$-state weighted finite automaton (WFA) over inputs of length $T$, using depth $O(\log T)$, embedding dimension $O(n^2)$, and $O(1)$ attention heads per layer.
+\end{theorem}
+
+\begin{theorem}[Rizvi et al. 2024, Theorem 2]
+A standard transformer with softmax attention and feed-forward MLP sublayers can approximately simulate any $n$-state WFA over inputs of length $T$, at depth $O(\log T)$, with approximation error controlled by the MLP approximation quality.
+\end{theorem}
+
+The construction underlying both results is a parallel-prefix scan of the WFA's matrix semiring. For a WFA with transition matrices $\{M_\sigma\}_{\sigma \in \Sigma}$, the weight assigned to a string $x_1 x_2 \cdots x_T$ is $\alpha^\top M_{x_1} M_{x_2} \cdots M_{x_T} \beta$, where $\alpha$ and $\beta$ are initial and final weight vectors. Computing this product in a transformer requires aggregating information from all positions, which cannot be done with constant depth and a linear scan. Instead, Rizvi et al. implement the product via a divide-and-conquer binary tree: the transformer at depth $\ell$ holds partial products over intervals of length $2^\ell$, combining them layer by layer. This is precisely the kind of computation that $\mathsf{TC}^0$ at logarithmic depth (which does reach $\mathsf{NC}^1$) admits, and the $O(\log T)$ depth is not an accident---it matches the depth of the binary tree over the input positions. Rizvi et al. also extend the construction to weighted tree automata over balanced binary trees, again at logarithmic depth.
+
+Combined with the universal approximation result of \cite{YunEtAl2020}---which establishes that transformers with positional encodings are dense in the space of continuous sequence-to-sequence functions on compact domains---this gives a quantitative picture: transformers are, in a precise sense, WFAs plus controlled error at each fixed input length, with the approximation quality improving as depth grows logarithmically in sequence length. The gap between ``exact simulation'' and ``actual vanilla transformer'' is an engineering matter of depth and precision, not a fundamental structural one.
+
+\section{Chain of Thought Breaks the $\mathsf{TC}^0$ Ceiling}
+
+Everything in the previous sections applies to transformers that commit to an answer in a single forward pass. The architecture reads the input, computes through its layers, and outputs a distribution over the next token (or a label) in one shot. But modern LLMs are often deployed in a mode where they emit intermediate tokens---reasoning steps, calculations, scratch work---before committing to a final answer. This is chain-of-thought (CoT) prompting, and it fundamentally changes the expressivity analysis.
+
+\cite{MerrillSabharwal2024} give an exact characterization of what CoT enables.
+
+\begin{theorem}[Merrill, Sabharwal 2024]
+A transformer with generalized pre-norm, when allowed to emit and re-read a polynomial number of intermediate chain-of-thought tokens before producing its final output, recognizes exactly the class of languages in $\mathsf{P}$---the class of problems decidable in polynomial time by a deterministic Turing machine.
+\end{theorem}
+
+This is the first exact identification of a transformer variant with a standard complexity class, and it is a decisive break: $\mathsf{TC}^0 \subseteq \mathsf{NC}^1 \subseteq \mathsf{P}$ by classical inclusions, and $\mathsf{P}$ is believed to be strictly larger than $\mathsf{NC}^1$ (this is the $\mathsf{NC} \neq \mathsf{P}$ conjecture, closely related to $\mathsf{P} \neq \mathsf{NC}$). The mechanism is that each CoT token allows the transformer to use its full $\mathsf{TC}^0$ machinery to compute one step of a Turing machine simulation; stringing together polynomially many such steps gives full polynomial-time computation.
+
+The analytic-combinatorics consequence is radical. CoT is the mechanism by which a transformer stops being (approximately) a WFA and starts producing distributions whose generating functions need not be rational at all. If the transformer uses CoT to simulate a pushdown automaton, the resulting string distribution is context-free, and its generating function satisfies an algebraic equation---yielding the $n^{-3/2}$ coefficient decay and square-root branch-point structure described in Chapter~5. If the CoT implements polynomial-time algorithms of greater complexity, even holonomic ($D$-finite) structure is possible, with richer singular geometry beyond the scope of this book.
+
+Concretely: if you are computing $[z^n]L(z)$ for a CoT-enabled LLM and you expect rational asymptotics, you may be making an architectural error. The model you are analyzing may be in $\mathsf{P}$, not in $\mathsf{TC}^0$, and the generating function may have branch points rather than poles as its dominant singularities. The mathematical objects are different, not merely quantitatively but qualitatively.
+
+\section{Synthesis for the Remainder of the Book}
+
+The theoretical picture assembled in this chapter---drawing on \cite{StroblEtAl2024}, \cite{Hahn2020}, \cite{MerrillSabharwalSmith2022}, \cite{SveteCotterell2023}, \cite{RizviEtAl2024}, and \cite{MerrillSabharwal2024}---yields three precise conclusions that organize the rest of the book.
+
+\textbf{(i) Without chain-of-thought}, a transformer LM's distribution is constrained to live near the WFA-approximable corner of the $\mathsf{TC}^0$ landscape. Its length generating function $L(z)$ is expected to be well-approximated by a rational function up to controlled error, with approximation quality improving with model depth and the logarithm of sequence length. The dominant pole of a WFA approximation is the natural first-order description of the exponential decay rate of the length tail, and the finite spectrum of subdominant poles controls subleading corrections. The partial-fraction decomposition framework of Chapter~7 applies, at least approximately.
+
+\textbf{(ii) With chain-of-thought}, the same model can produce distributions whose analytic structure escapes the rational regime entirely. Algebraic generating functions with square-root branch points are achievable---which, by Chapter~5's transfer theorems, would produce $n^{-3/2}$ asymptotics in the length distribution rather than the pure exponential decay characteristic of poles. Whether actual deployed LLMs in CoT mode exhibit this algebraic signature is an open empirical question; it is listed as Gap~5 in Part~V. The conjecture is plausible for models that have been trained to reason about balanced structures (such as mathematical proofs with matched quantifiers, or code with balanced brackets), but it has not been verified by a direct singularity analysis.
+
+\textbf{(iii) Any study of LLM output distributions via analytic combinatorics must declare which regime it operates in.} The mathematics differs not by degree but by kind. Rational generating functions have finitely many singularities, all poles, with coefficient asymptotics that are linear combinations of terms of the form $C_k \rho_k^{-n} n^{m_k}$. Algebraic generating functions have branch points whose local Puiseux expansions control more complex coefficient behavior. $D$-finite generating functions satisfy linear differential equations with polynomial coefficients, and their asymptotics are governed by the local monodromy of those equations. These are not the same mathematical universe, and applying the wrong toolkit produces wrong answers.
+
+\begin{remark}
+The $\mathsf{TC}^0$ upper bound does not rule out the possibility that a transformer in single-pass mode can approximate any rational GF arbitrarily well in the total-variation sense on strings of length up to $T$. What it rules out is \emph{uniform} recognition across all lengths with a fixed circuit. In practice, the approximation will be excellent for lengths well within the training distribution and will degrade near the boundary of that distribution. This distributional mismatch is itself a singularity-like phenomenon: the model's effective GF changes character as $n$ grows beyond the training horizon. Detecting and characterizing this transition is one of the goals of the empirical program in Part~IV.
+\end{remark}
+
+The reader who has internalized this chapter is equipped to open any 2024--2026 paper on transformer expressivity and situate its claims precisely: which architecture, which precision, which mode of operation (single-pass or CoT), and which complexity class is being invoked. Chapter~12 turns to the operational question: given a trained LLM operating in single-pass mode, can one actually extract a WFA approximation, and if so, how faithfully does the extracted automaton capture the original distribution's generating function?
+
+\section*{Further Reading}
+\label{ch11:further-reading}
+
+\begin{itemize}
+  \item \textbf{L. Strobl, W. Merrill, G. Weiss, D. Chiang, and D. Angluin}, ``What formal languages can transformers express? A survey,'' \emph{Trans.\ Assoc.\ Comput.\ Linguist.}\ 12:543--561 (2024) \cite{StroblEtAl2024} --- A comprehensive survey of transformer expressivity results, systematizing the $\mathsf{TC}^0$ upper bounds across model variants (attention type, precision, positional encoding) and clarifying which architectural choices matter for the complexity classification.
+
+  \item \textbf{W. Merrill, A. Sabharwal, and N. A. Smith}, ``Saturated transformers are constant-depth threshold circuits,'' \emph{Trans.\ Assoc.\ Comput.\ Linguist.}\ 10:843--856 (2022) \cite{MerrillSabharwalSmith2022} --- Introduces saturated transformers and proves the foundational $\mathsf{TC}^0$ upper bound via an explicit circuit simulation; the paper that established the main complexity ceiling discussed throughout this chapter.
+
+  \item \textbf{M. Hahn}, ``Theoretical limitations of self-attention in neural sequence models,'' \emph{Trans.\ Assoc.\ Comput.\ Linguist.}\ 8:156--171 (2020) \cite{Hahn2020} --- Proves that fixed-depth soft-attention transformers cannot represent $\mathrm{PARITY}$ or $2\mathrm{DYCK}$ uniformly across lengths; the cleanest impossibility result in the expressivity literature and essential context for understanding the WFA approximation program.
+
+  \item \textbf{A. Svete and R. Cotterell}, ``Recurrent neural networks and weighted finite-state transducers,'' \emph{Proc.\ ACL} (2023) \cite{SveteCotterell2023} --- Establishes the exact equivalence between Elman RNN language models and probabilistic finite-state automata, with tight bounds on the hidden-dimension cost of representing a PFSA; provides the recurrent-architecture counterpart to the transformer results.
+
+  \item \textbf{M. Rizvi-Martel, M. Lizaire, C. Lacroce, and G. Rabusseau}, ``Simulating weighted automata over sequences and trees with transformers,'' \emph{Proc.\ AISTATS} (2024) \cite{RizviEtAl2024} --- Gives constructive simulation theorems showing that transformers at logarithmic depth can exactly (or approximately) simulate weighted finite automata via parallel-prefix scans of the WFA transition matrices.
+
+  \item \textbf{W. Merrill and A. Sabharwal}, ``The expressive power of transformers with chain of thought,'' \emph{Proc.\ ICLR} (2024) \cite{MerrillSabharwal2024} --- Proves that transformers with polynomial-length chain-of-thought exactly recognize $\mathsf{P}$, establishing the decisive break beyond the $\mathsf{TC}^0$ ceiling and its implications for the analytic structure of CoT-enabled LLM distributions.
+\end{itemize}

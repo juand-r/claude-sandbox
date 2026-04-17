@@ -1,0 +1,124 @@
+\chapter{Probabilistic Grammars and Tightness}
+\label{ch08:top}
+
+Every generating-function manipulation in this book presupposes that the object being analyzed is actually a probability distribution --- that the weights sum to 1 and no probability mass escapes to infinity. That assumption is not automatic for generative models defined by recursion. A grammar or a neural model may, through the compounding of local conditional probabilities, assign positive measure to the event that generation never halts, in which case the induced measure on finite strings is strictly defective. This chapter develops the tightness condition carefully in two settings: probabilistic context-free grammars, the classical case worked out by Booth and Thompson in 1973, and autoregressive neural language models, the modern case formalized by Du et al.\ in 2023. The two stories are the same story, written in different dialects fifty years apart. Each culminates in a condition that is necessary and sufficient for the length probability generating function to satisfy $F(1) = 1$, the measure-theoretic precondition without which the singularity analysis of \cite{FlajoletSedgewick2009} cannot be applied.
+
+\section{Probabilistic Context-Free Grammars}
+
+A context-free grammar $G = (V, \Sigma, P, S)$ consists of a finite set of nonterminals $V$, a finite terminal alphabet $\Sigma$ disjoint from $V$, a finite set of productions $P \subset V \times (V \cup \Sigma)^*$, and a distinguished start symbol $S \in V$. A \emph{probabilistic context-free grammar} (PCFG) augments this structure with a probability assignment: for each nonterminal $A \in V$, suppose the productions with left-hand side $A$ are $A \to \alpha_1, \ldots, A \to \alpha_k$; one assigns nonnegative weights $p_1, \ldots, p_k$ with $\sum_{i=1}^k p_i = 1$. The probability of a leftmost derivation $d = (r_1, r_2, \ldots, r_m)$, where $r_i \in P$ are the productions applied in order, is $\prod_i p(r_i)$, the product of the individual production probabilities. The probability of a terminal string $w \in \Sigma^*$ is then
+\[
+  p(w) = \sum_{d : d \Rightarrow^* w} \prod_{r \in d} p(r),
+\]
+summed over all leftmost derivations producing $w$. A PCFG thus attempts to define a probability distribution on $L(G) \subseteq \Sigma^*$.
+
+The local normalization $\sum_i p_i = 1$ for each nonterminal is a necessary but not sufficient condition for this global distribution to be proper. The difficulty arises from infinitely long derivations. Consider the single-nonterminal grammar with productions $S \to SS$ (probability $q$) and $S \to a$ (probability $1-q$), where $q > 1/2$. In a single expansion of $S$, the expected number of $S$-nonterminals in the right-hand side is $q \cdot 2 + (1-q) \cdot 0 = 2q > 1$. The derivation process is therefore a supercritical multi-type Galton--Watson branching process, and by the theory of such processes, there is positive probability that the nonterminal population never dies out --- the derivation never reaches a terminal string. The total probability assigned to finite derivations is strictly less than 1.
+
+\section{The Booth--Thompson Consistency Criterion}
+
+\cite{BoothThompson1973} asked exactly when a PCFG defines a proper distribution and introduced the term \emph{consistent} for PCFGs where the answer is affirmative.
+
+\begin{definition}
+A PCFG is \emph{consistent} if $\sum_{w \in L(G)} p(w) = 1$, i.e.\ if the total probability assigned to finite terminal derivations equals 1.
+\end{definition}
+
+Associate to the PCFG its \emph{first-moment matrix} $M$, indexed by pairs of nonterminals: the entry $M_{A,B}$ is the expected number of occurrences of nonterminal $B$ in the right-hand side of a single random expansion of $A$, where the expansion is drawn according to the production probabilities. Formally,
+\[
+  M_{A,B} = \sum_{\alpha : A \to \alpha \in P} p(A \to \alpha) \cdot |\alpha|_B,
+\]
+where $|\alpha|_B$ denotes the number of occurrences of $B$ in the sentential form $\alpha$. The matrix $M$ is precisely the mean matrix of the multi-type Galton--Watson branching process with one type per nonterminal, in which each individual of type $A$ produces offspring according to the distribution over right-hand sides of productions $A \to \alpha$.
+
+\begin{theorem}[Booth--Thompson 1973]
+A PCFG is consistent if and only if the spectral radius $\rho(M) \le 1$.
+\end{theorem}
+
+When $\rho(M) < 1$ the branching process is subcritical: the nonterminal population dies out almost surely, and moreover the expected total derivation length is finite. The marginal case $\rho(M) = 1$ (critical branching) still yields an almost-sure extinction --- and hence a consistent PCFG --- but with infinite expected derivation length and heavy tails on parse-tree size. The supercritical case $\rho(M) > 1$ produces inconsistency: with positive probability the derivation is infinite, and $\sum_w p(w) < 1$.
+
+The generating-function reformulation makes the connection to Part I explicit. Let $F_A(z) = \sum_{n \ge 0} q_{A,n} \, z^n$ be the probability generating function for the total number of terminal symbols produced by a derivation rooted at nonterminal $A$, where $q_{A,n}$ is the probability that $A$ generates a string of length exactly $n$. Consistency of the PCFG is equivalent to $F_S(1) = 1$, i.e.\ the PGF of the start symbol evaluates to 1 at $z = 1$. This is precisely the condition that $F_S$ represents a genuine probability distribution on $\mathbb{Z}_{\ge 0}$. Any attempt to apply the transfer theorems of \cite{FlajoletSedgewick2009} --- expanding $F_S$ in a Puiseux series around the dominant singularity, reading off tail asymptotics of the length distribution --- requires this evaluation; a defective distribution has $F_S(1) < 1$ and the standard radius-of-convergence analysis at $z=1$ is invalidated.
+
+\section{Chi's Theorem and Maximum-Likelihood Estimation}
+
+\cite{Chi1999} proved a fundamental result about PCFGs fitted to data. In computational linguistics the standard procedure is to read a treebank --- a corpus of sentences paired with their parse trees --- and set each production probability $p(A \to \alpha)$ to the relative frequency of that production among all expansions of $A$ in the corpus. This maximum-likelihood estimator has a closed form, and Chi showed it is automatically consistent.
+
+\begin{theorem}[Chi 1999]
+The maximum-likelihood PCFG estimated from any finite treebank is consistent. Moreover, the parse-tree size (number of internal nodes, number of leaves, tree depth) has finite moments of all orders under this distribution.
+\end{theorem}
+
+The proof proceeds via multi-type Galton--Watson theory. One shows that the ML estimator always satisfies the system of fixed-point equations $\mathbf{F}(1) = \mathbf{1}$ (where $\mathbf{F}(z)$ is the vector of PGFs, one per nonterminal) and that these equations together with the criticality condition $\rho(M) \le 1$ are consequences of the ML conditions on a finite corpus. Generating functions appear in Chi's argument as auxiliary computational devices --- the $z=1$ evaluation --- rather than as the primary objects of study; the core reasoning is probabilistic. The practical upshot is that for any PCFG fitted by maximum likelihood, consistency is automatic and one may apply singularity analysis to $\mathbf{F}(z)$ without further verification.
+
+\section{Autoregressive Language Models}
+
+An \emph{autoregressive language model} over a finite vocabulary $\Sigma$ is a family of conditional distributions
+\[
+  \bigl\{ p(\cdot \mid h) : h \in \Sigma^* \bigr\},
+\]
+where each $p(\cdot \mid h)$ is a probability distribution on $\Sigma \cup \{\EOS\}$, the vocabulary extended by a distinguished end-of-sequence symbol $\EOS \notin \Sigma$. The generative procedure initializes with the empty history, samples $w_1 \sim p(\cdot \mid \varepsilon)$, then $w_2 \sim p(\cdot \mid w_1)$, and so on, halting as soon as $\EOS$ is emitted. The probability assigned to a finite string $w = w_1 w_2 \cdots w_n \in \Sigma^*$ is
+\[
+  p(w) = p(\EOS \mid w_1 \cdots w_n) \prod_{t=1}^n p(w_t \mid w_1 \cdots w_{t-1}).
+\]
+
+The same measure-theoretic question arises: does $\sum_{w \in \Sigma^*} p(w) = 1$? In general the answer is no. The local normalization $\sum_{v \in \Sigma \cup \{\EOS\}} p(v \mid h) = 1$ for every history $h$ is again necessary but not sufficient. A model may compound small EOS probabilities across long prefixes in a way that places positive measure on the event that generation continues forever, producing an infinite string. In that case $\sum_{w \in \Sigma^*} p(w) < 1$ and the model is not a proper distribution on $\Sigma^*$.
+
+\section{Du et al.'s Measure-Theoretic Framework}
+
+\cite{DuEtAl2023} provide a rigorous formulation. Define the extended sample space $\Sigma^\infty = \Sigma^* \cup \Sigma^\omega$, the set of all finite or infinite strings over $\Sigma$. Equip $\Sigma^\infty$ with the cylinder $\sigma$-algebra: for each finite string $u \in \Sigma^*$ the cylinder $[u] = \{ x \in \Sigma^\infty : x \text{ has prefix } u \}$ is measurable, and the $\sigma$-algebra is generated by all such cylinders. The autoregressive conditional probabilities determine a consistent family of finite-dimensional distributions (via the chain rule), and by Carath\'{e}odory's extension theorem this family extends uniquely to a probability measure $\mu$ on $\Sigma^\infty$.
+
+\begin{definition}[Du et al.\ 2023]
+An autoregressive language model is \emph{tight} if $\mu(\Sigma^*) = 1$, i.e.\ if the induced measure assigns probability 1 to the event that generation halts in finite time.
+\end{definition}
+
+To state the necessary and sufficient condition, define $\widetilde{p}_{\EOS}(t)$ as the conditional probability that generation halts at exactly step $t$ given that it has not halted before step $t$ --- formally, $\widetilde{p}_{\EOS}(t) = \mathbb{E}[p(\EOS \mid w_1 \cdots w_{t-1}) \mid \text{not halted before } t]$, where the expectation is over prefixes of length $t-1$ generated by the model conditioned on survival to step $t$.
+
+\begin{theorem}[Du et al.\ 2023, Theorem 4.7]
+An autoregressive language model is tight if and only if
+\[
+  \sum_{t=1}^\infty \widetilde{p}_{\EOS}(t) = +\infty.
+\]
+\end{theorem}
+
+This is a Borel--Cantelli-type criterion: if the conditional halting probabilities form a summable sequence, then generation survives to infinity with positive probability, and the model is non-tight. Divergence of the series, by contrast, forces almost-sure halting.
+
+A more directly usable sufficient condition follows from a comparison argument. If there exists a function $f : \mathbb{Z}_{>0} \to [0,1]$ such that $p(\EOS \mid x) \ge f(t)$ for every prefix $x$ of length $t-1$ (uniformly over all prefixes of that length) and $\sum_{t=1}^\infty f(t) = \infty$, then the model is tight. In particular, if there exists $\varepsilon > 0$ such that $p(\EOS \mid h) \ge \varepsilon$ for every history $h \in \Sigma^*$, then $\widetilde{p}_{\EOS}(t) \ge \varepsilon$ for all $t$, the series $\sum_t \varepsilon$ diverges, and tightness holds immediately.
+
+\section{Examples on Both Sides of the Threshold}
+
+The abstract criterion becomes concrete through the examples constructed in \cite{DuEtAl2023}.
+
+\begin{example}[Non-tight recurrence]
+Consider a recurrent architecture whose hidden state $h_t \in \mathbb{R}$ evolves by a one-dimensional ReLU map, with EOS probability $p(\EOS \mid h_t) = 1/(e^{h_t} + 1)$ (note: this is a decreasing function of $h_t$, so as the hidden state grows the model becomes less likely to stop), and where $h_t$ grows roughly linearly in $t$. Then $\widetilde{p}_{\EOS}(t) \sim C/(e^t + 1)$ for some constant $C$, which decays exponentially. The series $\sum_t \widetilde{p}_{\EOS}(t)$ converges, so the model is non-tight: with positive probability the sampler runs forever and the output lies in $\Sigma^\omega$.
+\end{example}
+
+\begin{example}[Tight but heavy-tailed]
+A softplus RNN can be constructed so that $\widetilde{p}_{\EOS}(t) \sim 1/(t+1)$, the harmonic series. The divergence $\sum_t 1/(t+1) = \infty$ confirms tightness, but only barely: there is no finite upper bound on the expected output length, and the length distribution has a power-law tail. This model generates finite strings almost surely, yet its generating function $F(z) = \sum_n p_n z^n$ has radius of convergence exactly 1, with a singularity at $z = 1$ of logarithmic type.
+\end{example}
+
+\begin{theorem}[Du et al.\ 2023, Section 5.2]
+Every Transformer language model with softmax output layer is tight.
+\end{theorem}
+
+The proof turns on a structural property of the softmax function. For a finite vocabulary $\Sigma \cup \{\EOS\}$ of size $V$, and any logit vector $\ell \in \mathbb{R}^V$, the softmax probability assigned to EOS satisfies
+\[
+  p(\EOS \mid h) = \frac{e^{\ell_{\EOS}}}{\sum_{v} e^{\ell_v}} > 0.
+\]
+Since the logit vector is computed by a Transformer with bounded weights (the model has finitely many parameters), the logits are continuous functions of the input history as embedded in a compact representation. Over any bounded set of inputs, the minimum EOS softmax probability is bounded away from zero. Even without compactness of the input space, the strict positivity of softmax over a finite alphabet means there is always some positive EOS probability, and one can show (by a careful bounding argument) that this positivity is uniform enough to satisfy the Proposition 4.3 floor condition. The decisive structural feature is that softmax over a finite set cannot assign exactly zero probability to any token: the exponential function is everywhere positive, and the normalizing constant is finite. Constructing a non-tight model requires engineering EOS probabilities that tend to zero at an exponential rate, which the softmax architecture structurally prevents.
+
+\section{The Parallel Between the Two Theories}
+
+The Booth--Thompson theorem and the Du et al.\ theorem are instances of the same mathematical phenomenon, and it is worth stating the isomorphism precisely. In the PCFG setting, one has a recursive generative process in which each expansion step introduces new subproblems (nonterminals) that must themselves terminate; consistency asks whether this branching process almost surely reaches a leaf configuration. In the autoregressive setting, one has a sequential generative process in which each step emits a token or halts; tightness asks whether the sequential process almost surely halts. Both are questions about the total mass assigned to finite outcomes by a process defined through local stochastic rules that are individually normalized.
+
+The Booth--Thompson condition $\rho(M) \le 1$ is equivalent, via the theory of multi-type branching processes, to the statement $\mathbf{F}(1) = \mathbf{1}$ for the vector of PGFs. The Du et al.\ condition $\sum_t \widetilde{p}_{\EOS}(t) = \infty$ is equivalent to $\sum_n p_n = 1$ for the length distribution, i.e.\ $F(1) = 1$ for the length PGF. Both conditions say: the probability generating function of the length (or derivation size) of a random output evaluates to 1 at the boundary point $z = 1$. Both are prerequisites for the singularity analysis program of \cite{FlajoletSedgewick2009}: if $F(1) < 1$ then $F$ is a defective distribution, the radius of convergence may be $> 1$, and the standard transfer theorems that read off asymptotics from the behavior of $F$ near its dominant singularity require modification or fail outright.
+
+The two theories also share the same critical boundary behavior. A critical PCFG with $\rho(M) = 1$ and a just-barely tight autoregressive model with $\sum_t \widetilde{p}_{\EOS}(t) = \infty$ diverging like the harmonic series both exhibit infinite expected output length and generating functions with a logarithmic singularity at $z = 1$. This is precisely the regime studied by algebraic-logarithmic transfer lemmas. The subcritical PCFG and the uniformly positive-EOS autoregressive model, by contrast, have $F(z)$ analytic in a disk strictly larger than the unit disk, and the length distribution decays exponentially.
+
+Cotterell et al.\ \cite{CotterellEtAl2023} situate these definitions within the broader framework of language models as probability measures on $\Sigma^*$, connecting the linguistic and probabilistic perspectives. The theorem of Du et al.\ that every softmax Transformer is tight is, from the vantage point of this book, not a peripheral remark about neural architecture but a foundational result: it is the permission slip granting Transformer language models entry into the class of objects to which the machinery of Part I applies.
+
+The next chapter takes up entropy rate --- the average per-token surprise under a stationary distribution --- and shows how, for tight models, the entropy rate can be computed from the radius of convergence of a suitably defined generating function, closing the loop between information-theoretic and analytic-combinatorial perspectives.
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \textbf{T. L. Booth and R. A. Thompson}, ``Applying probability measures to abstract languages'' (1973) \cite{BoothThompson1973} --- the original paper introducing the consistency criterion for PCFGs via the spectral radius of the first-moment matrix; the primary source for the theorem bearing their names.
+  \item \textbf{Z. Chi}, ``Statistical properties of probabilistic context-free grammars'' (1999) \cite{Chi1999} --- proves that maximum-likelihood PCFG estimation from finite treebanks always yields a consistent grammar, establishing automatic consistency as a property of the standard estimation procedure.
+  \item \textbf{L. Du, L. Hennigen, T. Pimentel, C. Meister, J. Eisner, and R. Cotterell}, ``A measure-theoretic characterization of tight language models'' (2023) \cite{DuEtAl2023} --- provides the measure-theoretic framework for tightness of autoregressive language models, proves the Borel--Cantelli-type criterion, and shows that every softmax Transformer is tight; the modern counterpart to the Booth--Thompson theorem.
+  \item \textbf{R. Cotterell, A. Svete, C. Meister, T. Liu, and L. Du}, ``Formal aspects of language modeling'' (2023) \cite{CotterellEtAl2023} --- situates tightness and consistency within a unified probabilistic framework for language models as measures on $\Sigma^*$, connecting the PCFG and autoregressive perspectives.
+  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (2009) \cite{FlajoletSedgewick2009} --- the singularity analysis in Parts~B and~C provides the analytic machinery presupposed by the tightness condition: consistent and tight models are exactly those whose PGFs satisfy $F(1)=1$, permitting the Darboux and transfer theorems to apply.
+\end{itemize}

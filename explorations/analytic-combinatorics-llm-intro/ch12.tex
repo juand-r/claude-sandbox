@@ -1,0 +1,164 @@
+\chapter{Approximating Language Models by Weighted Finite Automata}
+\label{ch12:top}
+
+Chapter~\ref{ch11:top} established a hard ceiling: Transformers with fixed precision lie in $\mathsf{TC}^0$, cannot compute $\mathsf{PARITY}$ exactly, and therefore cannot be rational power series in any faithful sense. Yet Chapter~\ref{ch07:top} gave us a clean toolkit --- weighted finite automata (WFA) and their rational generating functions $F(z)=\alpha(I-zA)^{-1}\beta$ --- whose asymptotic behavior we control completely via the singularity analysis of Chapter~\ref{ch04:top}. The gap between these two statements is the subject of this chapter.
+
+The proposal is pragmatic: if we cannot describe a Transformer exactly as a WFA, we can still try to \emph{approximate} it by one. A good approximation is one that is faithful enough for the statistics we care about (per-token probabilities, conditional distributions, string-level scores) and small enough that its rational generating function is tractable. Once such an approximation is in hand, every theorem of Parts~I and~II applies to it: entropy rate, coefficient asymptotics, limit laws, phase transitions.
+
+This chapter surveys four lines of attack on the approximation problem. They are not mutually exclusive; a mature pipeline would combine them.
+
+\section{Line 1: Black-Box Distillation}
+\label{ch12:distillation}
+
+The oldest and simplest approach treats the language model as an opaque scoring function $s:\Sigma^*\to\mathbb{R}$, $s(w)=\log\mu(w)$, and fits a WFA to minimize the KL divergence between the WFA's induced distribution and the model's on a corpus.
+
+Concretely: fix a target number of states $k$, a target alphabet (possibly a coarsening of the model's tokenizer), and a parameterization of $(A_\sigma)_{\sigma\in\Sigma}$ with $\alpha,\beta$. Write the WFA-induced score as $\hat s(w)=\log \alpha A_{w_1}\cdots A_{w_n}\beta$. Minimize
+$$
+\mathcal{L}(A,\alpha,\beta)=\frac{1}{|\mathcal{D}|}\sum_{w\in\mathcal{D}}\bigl(s(w)-\hat s(w)\bigr)^2
+$$
+or the corresponding KL objective on a held-out sample from the LLM.
+
+Historically this idea predates the Transformer era. Lecorv\'e and Motlicek 2012 \cite{LecorveMotlicek2012} compile a neural recurrent language model into a weighted finite-state transducer for speech-recognition rescoring; the motivation was latency and integration with existing finite-state decoders. Suresh, Roark, Riley, Schogol \emph{et al.} 2021 \cite{SureshEtAl2021} extend the programme to modern neural LMs, distilling them into $n$-gram and WFST surrogates that fit on-device and meet real-time constraints.
+
+The limitations are real: black-box distillation treats the LLM as a teacher whose internal structure gives no guidance to the student. The student's expressive power is bounded by its state count, and its error depends on how well the corpus $\mathcal{D}$ covers the parts of $\Sigma^*$ that matter. What it buys you: a genuinely rational $\hat s$, hence a genuinely rational generating function $\hat F(z)=\alpha(I-zA)^{-1}\beta$ where $A=\sum_\sigma A_\sigma$, to which all of Parts~I and~II applies.
+
+\section{Line 2: Architectural Equivalence}
+\label{ch12:architectural}
+
+A complementary observation is that several popular recurrent architectures \emph{are already} weighted finite automata --- or rather, their computation graph is literally that of a WFA with a particular semiring and a particular transition operator. Recognising this turns an empirical fit into a structural identity.
+
+Schwartz, Thomson and Smith 2018 \cite{SchwartzThomsonSmith2018} (``Bridging CNNs, RNNs, and Weighted Finite-State Machines'') show that certain RNN variants with elementwise activations and specific gating patterns compute exactly the function
+$$
+h_t=\bigoplus_{\sigma\in\Sigma} A_\sigma\odot h_{t-1}
+$$
+with $(\oplus,\odot)$ a semiring. Different choices of semiring recover different RNN variants. Peng, Schwartz, Thomson and Smith 2018 \cite{PengEtAl2018} (``Rational Recurrences'') make the equivalence precise: an RNN is a \emph{rational recurrence} when its hidden state evolves as a WFA over an appropriate semiring. They exhibit several contemporary architectures as rational recurrences in disguise.
+
+The payoff is conceptual. If a model is a rational recurrence, then its log-score is a log-rational function and the counting generating function of its high-probability language is governed by the same machinery as classical rational power series. Transformers are \emph{not} rational recurrences --- Chapter~\ref{ch11:top} ruled this out --- but some of their submodules and many of their competitors are.
+
+\section{Line 3: Query Learning and $L^*$}
+\label{ch12:lstar}
+
+A more ambitious approach refuses to pick the WFA architecture in advance. Angluin's $L^*$ algorithm (1987) learns a minimal DFA from a teacher who answers two kinds of queries:
+\begin{itemize}
+\item \emph{Membership queries}: ``is $w\in L$?''
+\item \emph{Equivalence queries}: ``is my current hypothesis $H$ equal to $L$? If not, return a counterexample.''
+\end{itemize}
+$L^*$ maintains an observation table indexed by candidate prefixes and candidate suffixes; membership queries fill in the table, and when the table is closed and consistent, the implied DFA is the current hypothesis. An equivalence query either confirms or returns a string on which $H$ and $L$ disagree, which the algorithm uses to refine the table. The running time is polynomial in the size of the minimal DFA and the length of the longest counterexample.
+
+Weiss, Goldberg and Yahav 2018 \cite{WeissGoldbergYahav2018} adapt $L^*$ to extract automata from trained RNNs. The RNN plays the role of the teacher. Membership queries are cheap: just run the RNN on $w$ and threshold its score. Equivalence queries are the hard part --- there is no oracle that can certify two infinite-state machines are equivalent --- so they are approximated by sampling from a space of potential counterexamples and by using state-partitioning heuristics on the RNN's hidden activations.
+
+The WFA extension is straightforward in principle: replace the DFA observation table with a Hankel matrix (below) and replace minimality with rank-minimality. The hard part remains the equivalence query. For LLMs, practical $L^*$ variants usually stop at a prescribed fidelity level on a validation set rather than at exact equivalence.
+
+\begin{remark}
+\label{ch12:rem-lstar}
+The $L^*$ route has a feature that distillation lacks: it is \emph{adaptive}. Rather than scoring a fixed corpus, the algorithm chooses which strings to query based on what it currently does not know. This makes it well-suited to exposing rare but structurally important strings --- counter-examples --- that blind corpus sampling would miss.
+\end{remark}
+
+\section{Line 4: Spectral Learning and the AAK Approach}
+\label{ch12:spectral}
+
+The fourth line is the most mathematically substantial and connects directly to the generating-function viewpoint. It is built on the \emph{Hankel matrix} of a string function.
+
+To motivate the definition, think of the Hankel matrix as the natural lookup table for a string function: the entry $(u, v)$ records the score $f(uv)$ that the function assigns to the concatenation of prefix $u$ and suffix $v$. If $f$ is computable by a WFA, then processing $u$ drives the automaton to some internal state, and that state summarises everything the prefix contributes to future outputs; the suffix $v$ then determines the rest of the computation from that state. This means the Hankel matrix factors through a finite-dimensional intermediate space --- one dimension per reachable state --- so it has finite rank, with rank at most the number of WFA states. Conversely, if the Hankel matrix has rank $k$, a $k$-state WFA realising $f$ can be recovered by linear algebra: take a rank-$k$ SVD of any large finite submatrix and read off the transition matrices via the spectral construction described below. This is the WFA analogue of the Myhill--Nerode theorem from Chapter~6: where Myhill--Nerode counts equivalence classes of prefixes under the Boolean relation ``distinguished by some suffix,'' the Hankel rank counts the dimension of the linear span of prefix-induced row vectors, replacing the Boolean notion of distinguishability with a linear one.
+
+\begin{definition}[Hankel matrix]
+\label{ch12:def-hankel}
+Let $f:\Sigma^*\to\mathbb{R}$. The \emph{Hankel matrix} of $f$ is the bi-infinite matrix $H_f$ with rows indexed by prefixes $u\in\Sigma^*$, columns indexed by suffixes $v\in\Sigma^*$, and entries
+$$
+(H_f)_{u,v}=f(uv).
+$$
+\end{definition}
+
+The fundamental theorem of rational power series (Fliess 1974; see also Berstel--Reutenauer 1988) states that $f$ is rational (computable by a WFA with finitely many states) if and only if $H_f$ has finite rank, and the minimal rank equals the minimal number of WFA states. This identifies the problem of finding a small WFA with the problem of finding a low-rank approximation of a Hankel matrix.
+
+\begin{proposition}[Spectral realization]
+\label{ch12:prop-spectral}
+Suppose $f$ has Hankel matrix of rank $k$. Let $H=U\Sigma V^\top$ be a compact SVD truncated to rank $k$. Then there exist explicit formulas for $\alpha\in\mathbb{R}^k$, $\beta\in\mathbb{R}^k$, and matrices $A_\sigma\in\mathbb{R}^{k\times k}$ such that $f(w)=\alpha^\top A_{w_1}\cdots A_{w_n}\beta$ for every $w$.
+\end{proposition}
+
+The explicit formulas are:
+$$
+A_\sigma=(U^\top H)^{+}\,U^\top H^{(\sigma)}(V^\top)^{+},\qquad
+\alpha=(U^\top)^{+}h_\varepsilon^{\text{row}},\qquad
+\beta=V^{+}h_\varepsilon^{\text{col}},
+$$
+where $H^{(\sigma)}$ is the shifted Hankel matrix $H^{(\sigma)}_{u,v}=f(u\sigma v)$, and $h_\varepsilon^{\text{row}},h_\varepsilon^{\text{col}}$ are the prefix/suffix rows at the empty string. This is the \emph{spectral learning} construction of Hsu--Kakade--Zhang 2009, Bailly--Denis--Ralaivola 2009, and Balle--Quattoni--Carreras 2014, among others.
+
+Rabusseau, Li and Precup 2019 \cite{RabusseauLiPrecup2019} apply spectral learning directly to RNNs: sample enough values of $f(w)=s_{\text{RNN}}(w)$ to populate a sufficiently large finite submatrix of $H_f$, take its SVD, read off a WFA.
+
+The problem is that the Hankel matrix of a real LLM is essentially full rank. Spectral learning returns a WFA whose rank you must choose, and a straightforward low-rank truncation of the SVD gives only a Frobenius-optimal approximation, not the optimal WFA in any natural norm on the string function.
+
+The operator-theoretic remedy is the \emph{Adamyan--Arov--Krein (AAK) theorem}. In its classical form (one-letter alphabet, Hardy space $H^2$), AAK states that for a bounded Hankel operator $\Gamma$, the best rank-$k$ approximation $\Gamma_k$ in operator norm satisfies $\|\Gamma-\Gamma_k\|=\sigma_{k+1}(\Gamma)$, and $\Gamma_k$ is itself Hankel. In plain terms: the best low-rank approximation of a Hankel matrix that is \emph{still Hankel} (and hence still corresponds to a genuine WFA, not to an arbitrary low-rank matrix) has error exactly the $(k+1)$st singular value.
+
+Lacroce, Panangaden and Rabusseau 2021 \cite{LacrocePanangadenRabusseau2021} apply constrained AAK theory to WFA extraction from RNNs, and Lacroce, Balle, Panangaden and Rabusseau 2024 \cite{LacroceEtAl2024} (MSCS) give a clean treatment of the one-letter case. Balle and collaborators \cite{BalleEtAl2024} extend the machinery to multi-letter alphabets, which is technically much harder because the right notion of Hankel operator is non-commutative.
+
+\section{One-Letter Is a Feature, Not a Bug}
+\label{ch12:one-letter}
+
+A running theme in lines 3 and 4 is that the cleanest theory is the one-letter theory. When $|\Sigma|=1$, a rational power series $\sum_n f(1^n)z^n$ is an ordinary scalar power series in $z$, and its singularities sit in $\mathbb{C}$ where all the tools of Part~I apply directly. The Hankel operator $\Gamma$ is a scalar Hankel matrix in Hardy space, where AAK is classical. Spectral learning becomes linear algebra over the reals, without the free-semigroup combinatorics.
+
+This is not a pathology to be overcome. It is the setting in which the analytic-combinatorics dictionary translates most literally, and it is the setting in which the entropy-rate identity $h=\log(1/R)$ of Chapter~\ref{ch09:top} takes its textbook form. A multi-letter LLM can be coarsened to a one-letter surrogate simply by collapsing the alphabet: define $\tilde f(1^n)=\sum_{w:\,|w|=n}\mu(w)$ and work with $\tilde f$. The resulting scalar power series is the length probability generating function of Chapter~\ref{ch10:top}, and its singularity structure governs length-based statistics exactly.
+
+The multi-letter theory then supplies refined joint information once the univariate picture is understood. The hierarchy is: start with the one-letter projection, compute its radius of convergence and singular exponent, then refine.
+
+\section{Scale Realities}
+\label{ch12:scale}
+
+All four lines have been validated on small recurrent models --- LSTMs and GRUs with a few hundred to a few thousand hidden units, trained on Penn Treebank or similar corpora. Scaling to contemporary Transformers is an open problem with multiple obstructions.
+
+First, the empirical Hankel matrix of a multi-billion-parameter LLM has effective rank that is certainly much larger than anything a spectral method can realize. Whether there is a meaningful low-rank approximation at all is not obvious; empirically, the singular-value decay of Hankel submatrices sampled from Transformers is slow.
+
+Second, the equivalence-query problem in $L^*$ becomes essentially intractable: no sample-based approximation plausibly certifies agreement with a trillion-token model.
+
+Third, the distillation objective is well-defined but the target class of WFAs is small compared to the signal you are trying to fit. Any distilled WFA will systematically lose information at long range.
+
+None of this argues against the programme. It argues that the programme must begin on small, controllable surrogates --- for instance, Transformers trained on PCFG-generated data (Chapter~\ref{ch08:top}) where the ground-truth rational structure is known --- and graduate to realistic models only once the surrogate theory is in place.
+
+\section{What WFA Approximation Buys}
+\label{ch12:payoff}
+
+Suppose we have a WFA approximation $\widehat{M}$ of an LLM with transition matrix $\hat A=\sum_\sigma \hat A_\sigma$ and rational generating function $\hat F(z)=\hat\alpha(I-z\hat A)^{-1}\hat\beta$. What can we then say about the original LLM?
+
+\begin{proposition}[Entropy rate of the approximation]
+\label{ch12:prop-entropy}
+If $\widehat{M}$ is a WFA whose transition matrix $\hat A$ is irreducible with spectral radius $\hat\rho=\rho(\hat A)$, then the entropy rate of the stationary distribution on $\widehat{M}$-emitted strings equals $\log \hat\rho$, and the radius of convergence of $\hat F(z)$ equals $1/\hat\rho$. In particular, the universal identity $\hat h=\log(1/R_{\hat F})$ of Chapter~\ref{ch09:top} holds for $\widehat{M}$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The entries of $\hat A^n$ grow as $\hat\rho^n$ by Perron--Frobenius, so $[z^n]\hat F(z)\sim C\hat\rho^n$ for some constant $C$. The radius of convergence of $\hat F$ is therefore $1/\hat\rho$, and the exponential growth rate of the counting generating function is $\log\hat\rho$, which is the entropy rate under the symbolic-dynamics interpretation of Chapter~\ref{ch09:top}.
+\end{proof}
+
+The proposition transfers immediately if you accept $\widehat M$ as a faithful proxy for the original. The caveat is the fidelity gap: $\hat h$ may differ from the true $h$ by something controlled by the approximation error of the WFA. Quantifying this gap analytically (rather than empirically) is one of the open problems listed in Chapter~\ref{ch18:top}.
+
+\section{Notes and Further Reading}
+\label{ch12:notes}
+
+The weighted-automata / spectral-learning literature is larger than any single chapter can cover. Berstel and Reutenauer's \emph{Noncommutative Rational Series with Applications} (Cambridge, 2011) is the authoritative algebraic reference. Balle's survey on spectral learning of WFAs (JMLR MLOSS special issue) collects the practical algorithms. The distillation line of work is covered in the references cited in Section~\ref{ch12:distillation}. For the AAK theorem in its classical Hardy-space form, Peller's \emph{Hankel Operators and Their Applications} (Springer, 2003) is the standard monograph; Lacroce's thesis and the papers cited in Section~\ref{ch12:spectral} adapt it to the WFA setting.
+
+\begin{itemize}
+  \item \textbf{G. Lecorvé and P. Motlicek}, ``Conversion of recurrent neural network language models to weighted finite-state transducers for automatic speech recognition,'' \emph{Proc.\ Interspeech} (2012) \cite{LecorveMotlicek2012} --- Early instantiation of the distillation program: compiles a neural recurrent language model into a weighted finite-state transducer for speech-recognition rescoring, motivating the black-box approximation approach of Section~\ref{ch12:distillation}.
+
+  \item \textbf{A. T. Suresh, B. Roark, M. Riley, and V. Schogol}, ``Approximating probabilistic models as weighted finite automata,'' \emph{Comput.\ Linguist.}\ 47(2):221--254 (2021) \cite{SureshEtAl2021} --- Extends neural LM distillation to modern architectures, producing $n$-gram and WFST surrogates suitable for on-device deployment; demonstrates the practical viability of rational approximations at scale.
+
+  \item \textbf{G. Weiss, Y. Goldberg, and E. Yahav}, ``Extracting automata from recurrent neural networks using queries and counterexamples,'' \emph{Proc.\ ICML} (2018) \cite{WeissGoldbergYahav2018} --- Adapts Angluin's $L^*$ algorithm to extract automata from trained RNNs, with the RNN serving as the membership oracle; the foundational paper for the query-learning line of WFA extraction.
+
+  \item \textbf{G. Rabusseau, T. Li, and D. Precup}, ``Connecting weighted automata and recurrent neural networks through spectral learning,'' \emph{Proc.\ AISTATS} (2019) \cite{RabusseauLiPrecup2019} --- Applies spectral learning (Hankel-matrix SVD) directly to RNN state representations, providing explicit algorithms for reading off WFA transition matrices from the singular vectors.
+
+  \item \textbf{C. Lacroce, P. Panangaden, and G. Rabusseau}, ``Extracting weighted finite automata from recurrent neural networks using constrained AAK theory,'' \emph{Proc.\ ICGI} (2021) \cite{LacrocePanangadenRabusseau2021} --- Applies constrained AAK theory to WFA extraction, showing that the best rank-$k$ approximation that is \emph{still} a genuine WFA (i.e., still Hankel) has operator-norm error equal to $\sigma_{k+1}$ of the Hankel operator.
+
+  \item \textbf{M. Blondel, M. E. Sander, G. Vivier-Ardisson, T. Liu, and V. Roulet}, ``Autoregressive language models are secretly energy-based models,'' \emph{arXiv preprint} arXiv:2512.15605 (2025) \cite{BlondelEtAl2025} --- Proves the ARM--EBM bijection via soft Bellman equations, establishing that autoregressive and energy-based parameterizations are equiexpressive; directly relevant to understanding the limits of WFA approximation for globally normalized models.
+\end{itemize}
+
+\begin{exercise}
+\label{ch12:ex-2state}
+Consider a 2-state WFA over $\{a\}$ with
+$$
+A_a=\begin{pmatrix}0 & 1\\ 1 & 1\end{pmatrix},\quad\alpha=(1,0),\quad\beta=(0,1)^\top.
+$$
+Compute the scalar generating function $F(z)=\alpha(I-zA_a)^{-1}\beta$ and identify its poles. Verify that the coefficients $[z^n]F(z)$ are Fibonacci numbers and that the dominant pole corresponds to the golden ratio.
+\end{exercise}
+
+\begin{exercise}
+\label{ch12:ex-hankel}
+Let $f(1^n)=n+1$. Show that the scalar Hankel matrix $H_{i,j}=f(1^{i+j})$ has rank~$2$ and exhibit an explicit 2-state WFA realizing $f$. (Hint: $f(1^n)$ is rational with a double pole at $z=1$.)
+\end{exercise}

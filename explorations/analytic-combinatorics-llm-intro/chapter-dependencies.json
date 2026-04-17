@@ -1,0 +1,360 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "title": "What is a Generating Function?",
+      "essential_prereqs": [],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "formal power series",
+        "OGF",
+        "EGF",
+        "coefficient extraction operator",
+        "recurrence-to-GF recipe",
+        "partial fractions",
+        "generalized binomial theorem",
+        "Catalan numbers",
+        "Fibonacci generating function",
+        "binomial convolution"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Just Enough Complex Analysis",
+      "essential_prereqs": [1],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "radius of convergence",
+        "Cauchy-Hadamard theorem",
+        "holomorphic / analytic functions",
+        "singularity",
+        "dominant singularity",
+        "Cauchy integral formula for coefficients",
+        "ML bound",
+        "poles",
+        "square-root branch points",
+        "logarithmic singularities",
+        "analytic continuation",
+        "Delta-domain (sketch)",
+        "Pringsheim-Vivanti theorem"
+      ],
+      "notes": "Explicitly builds on Ch1 formal power series becoming complex functions; references Ch1 generalized binomial theorem for branch-point coefficient extraction; previews transfer theorem of Ch4 and symbolic method of Ch3."
+    },
+    {
+      "id": 3,
+      "title": "The Symbolic Method",
+      "essential_prereqs": [1],
+      "optional_prereqs": [2],
+      "key_concepts_introduced": [
+        "combinatorial class",
+        "disjoint union",
+        "Cartesian product",
+        "SEQ constructor",
+        "SET constructor",
+        "CYC constructor",
+        "OGF translation dictionary",
+        "EGF translation dictionary",
+        "bivariate generating functions",
+        "pointing / derived class",
+        "labeled vs unlabeled structures"
+      ],
+      "notes": "Requires Ch1 for OGF/EGF definitions and convolution. References Ch2 for convergence/analyticity (optional — the symbolic method itself is purely algebraic). Previews asymptotic results of Ch4 and Ch5. The complex-analytic content of Ch2 is not used in the proofs of Ch3."
+    },
+    {
+      "id": 4,
+      "title": "Singularity Analysis",
+      "essential_prereqs": [2, 3],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "exponential growth rate",
+        "Flajolet-Odlyzko transfer theorem",
+        "Delta-domain",
+        "Delta-analyticity",
+        "Hankel contour",
+        "catalogue of singular exponents (poles, square-root, inverse square-root, log)",
+        "asymptotic form C * n^(alpha-1) * rho^(-n)",
+        "Gamma function in asymptotics"
+      ],
+      "notes": "Explicitly uses Cauchy integral formula and contour deformation from Ch2 in the proof sketch. Requires Ch3's symbolic method to set up GF equations whose singularities are analyzed. Applies the transfer theorem to the Catalan GF derived in Ch1."
+    },
+    {
+      "id": 5,
+      "title": "Algebraic Generating Functions and the n^{-3/2} Law",
+      "essential_prereqs": [4],
+      "optional_prereqs": [3],
+      "key_concepts_introduced": [
+        "context-free grammar (CFG)",
+        "unambiguous CFG",
+        "Chomsky-Schutzenberger theorem",
+        "Puiseux expansion / Puiseux's theorem",
+        "characteristic system",
+        "square-root universality",
+        "n^{-3/2} law for context-free languages",
+        "Drmota-Lalley-Woods theorem",
+        "Newton polygon method (sketch)"
+      ],
+      "notes": "Directly applies the Flajolet-Odlyzko transfer theorem from Ch4 as the main tool. Symbolic method from Ch3 is used in examples but not strictly required to follow the main theorem chain. The Catalan/plane tree examples re-use Ch1 and Ch3 results."
+    },
+    {
+      "id": 6,
+      "title": "Formal Languages and the Chomsky Hierarchy",
+      "essential_prereqs": [5],
+      "optional_prereqs": [3],
+      "key_concepts_introduced": [
+        "alphabet, string, language",
+        "DFA, NFA",
+        "Myhill-Nerode theorem",
+        "regular expressions",
+        "Kleene's theorem",
+        "pumping lemma (regular)",
+        "context-free grammar",
+        "pushdown automaton",
+        "pumping lemma (context-free)",
+        "Chomsky hierarchy (Types 0-3)",
+        "regular => rational GF",
+        "CFL => algebraic GF"
+      ],
+      "notes": "Requires Ch5 for the Chomsky-Schutzenberger connection (algebraic GF for CFLs) stated as a theorem. Symbolic method (Ch3) is referenced but the chapter is largely self-contained in its automata-theory content. The analytic payoff section ties back to Ch4-5."
+    },
+    {
+      "id": 7,
+      "title": "Weighted Finite Automata and Rational Power Series",
+      "essential_prereqs": [4, 6],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "semiring",
+        "weighted finite automaton (WFA)",
+        "stochastic WFA",
+        "aggregate transition matrix",
+        "rationality of WFA generating functions",
+        "F(z) = alpha (I - zA)^{-1} beta",
+        "Kleene-Schutzenberger theorem",
+        "Icard hierarchy",
+        "rational stochastic languages",
+        "spectral radius and dominant pole",
+        "HMMs as WFAs"
+      ],
+      "notes": "Requires Ch4 for the partial-fraction / singularity analysis of the rational GF that emerges. Requires Ch6 for the formal-language context (DFAs, recognizable series, Kleene's theorem). Also uses Perron-Frobenius, previewing Ch9."
+    },
+    {
+      "id": 8,
+      "title": "Probabilistic Grammars and Tightness",
+      "essential_prereqs": [5, 7],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "PCFG",
+        "consistent PCFG",
+        "first-moment matrix M",
+        "Booth-Thompson theorem (rho(M) <= 1)",
+        "Chi's theorem (MLE consistency)",
+        "autoregressive language model (formal definition)",
+        "tight autoregressive model",
+        "Du et al. tightness criterion",
+        "Transformer tightness",
+        "length PGF F(1) = 1"
+      ],
+      "notes": "Requires Ch5 for PCFGs and algebraic GFs (the PGF framework for nonterminals). Requires Ch7 for the WFA/stochastic-automaton context and the stochastic-normalization discussion. The Galton-Watson branching process theory used is self-contained."
+    },
+    {
+      "id": 9,
+      "title": "Entropy Rate and the Identity h = log(1/R)",
+      "essential_prereqs": [2, 8],
+      "optional_prereqs": [7],
+      "key_concepts_introduced": [
+        "block entropy",
+        "entropy rate h",
+        "Shannon-McMillan-Breiman theorem",
+        "typical set",
+        "asymptotic equipartition property (AEP)",
+        "h = log(1/R) identity",
+        "counting GF vs length PGF distinction",
+        "entropy rate of natural language estimates",
+        "slow convergence as singularity-type diagnostic"
+      ],
+      "notes": "Requires Ch2 for Cauchy-Hadamard (used to derive h = log(1/R) from the radius of convergence). Requires Ch8 for the tightness prerequisite (P(1)=1, ensuring the length PGF is a valid probability distribution). References Ch7 for finite-state sources and transfer matrices (optional, as context). References Ch4 transfer theorem for singularity-type / convergence-rate discussion."
+    },
+    {
+      "id": 10,
+      "title": "Autoregressive Language Models",
+      "essential_prereqs": [8, 9],
+      "optional_prereqs": [7],
+      "key_concepts_introduced": [
+        "tokenization (BPE, WordPiece)",
+        "autoregressive factorization",
+        "softmax output",
+        "temperature scaling",
+        "Transformer architecture (brief)",
+        "length PGF for LLMs",
+        "counting GF for LLMs",
+        "LLM as high-order Markov source",
+        "Gap 1 vs Gap 2 dichotomy"
+      ],
+      "notes": "Requires Ch8 for tightness of Transformers (the Du et al. theorem is restated and applied as the central permission for the rest of the book). Requires Ch9 for the distinction between length PGF and counting GF, which is the conceptual framework of the whole chapter. References Ch7 for the Markov-chain / rational-GF perspective."
+    },
+    {
+      "id": 11,
+      "title": "Formal Language Theory of Transformers",
+      "essential_prereqs": [7, 10],
+      "optional_prereqs": [5, 6],
+      "key_concepts_introduced": [
+        "AC^0, TC^0, NC^1 circuit complexity classes",
+        "saturated transformers",
+        "Merrill-Sabharwal-Smith TC^0 upper bound",
+        "Hahn impossibility theorem (PARITY, 2DYCK)",
+        "Svete-Cotterell RNN = PFSA equivalence",
+        "Rizvi et al. Transformer simulates WFA",
+        "chain-of-thought breaks TC^0 ceiling",
+        "Merrill-Sabharwal CoT = P theorem",
+        "rational vs algebraic GF implications"
+      ],
+      "notes": "Requires Ch7 for WFAs and the rational-GF framework (the simulation theorems are about WFA simulation). Requires Ch10 for the LLM distribution framework being analyzed. References Ch5 for algebraic GFs and the CoT/PCFG connection. References Ch6 for formal language hierarchy context."
+    },
+    {
+      "id": 12,
+      "title": "Approximating Language Models by Weighted Finite Automata",
+      "essential_prereqs": [7, 11],
+      "optional_prereqs": [9],
+      "key_concepts_introduced": [
+        "black-box WFA distillation",
+        "rational recurrences",
+        "Angluin L* algorithm",
+        "Hankel matrix of a string function",
+        "finite-rank Hankel <=> rational function",
+        "spectral learning (Hankel SVD)",
+        "Adamyan-Arov-Krein (AAK) theorem",
+        "WFA extraction entropy rate proposition",
+        "one-letter projection to length PGF"
+      ],
+      "notes": "Requires Ch7 for the WFA rationality theorem and the GF framework F(z) = alpha(I-zA)^{-1}beta. Requires Ch11 for the architectural context (why approximation is needed, TC^0 ceiling). References Ch9 for the entropy-rate identity h=log(1/R) applied to the WFA approximation. References Ch4 for singularity analysis of the resulting rational GF."
+    },
+    {
+      "id": 13,
+      "title": "Boltzmann Sampling",
+      "essential_prereqs": [3, 4],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "Boltzmann sampler Gamma A(x)",
+        "Boltzmann weight x^{|gamma|}/A(x)",
+        "recursive Boltzmann construction (union, product, SEQ, SET, CYC)",
+        "rejection sampling for exact size",
+        "Gibbs/Boltzmann distribution interpretation",
+        "generating function = partition function",
+        "critical inverse temperature beta_c = -log(rho)",
+        "free energy f(beta)",
+        "thermodynamic limit"
+      ],
+      "notes": "Requires Ch3 (symbolic method) for the recursive construction from combinatorial specifications. Requires Ch4 (singularity analysis / transfer theorem) for the coefficient asymptotics used in the rejection-sampling complexity analysis and the n^{-3/2} / critical-temperature discussion. The GF = partition function identification is the chapter's core."
+    },
+    {
+      "id": 14,
+      "title": "Gibbs Measures and Temperature Decoding",
+      "essential_prereqs": [10, 13],
+      "optional_prereqs": [8],
+      "key_concepts_introduced": [
+        "LLM energy functional E(w) = -log mu(w)",
+        "global Gibbs distribution mu_beta",
+        "token-wise (local) temperature sampling",
+        "local vs global temperature gap",
+        "ARM-EBM bijection (Blondel et al.)",
+        "soft Bellman equation / value function",
+        "Kempton-Burrell distortion bounds",
+        "top-k and nucleus sampling as non-Gibbs truncations",
+        "creative vs greedy decoding"
+      ],
+      "notes": "Requires Ch13 for the Boltzmann/Gibbs/partition-function framework (directly continued here). Requires Ch10 for the autoregressive LLM definition and the energy factorization. References Ch8 for tightness (needed for the global normalization). The ARM-EBM bijection builds on the tightness framework."
+    },
+    {
+      "id": 15,
+      "title": "Phase Transitions in Language Model Output",
+      "essential_prereqs": [4, 14],
+      "optional_prereqs": [5],
+      "key_concepts_introduced": [
+        "phase transition (analytic definition)",
+        "first-order vs second-order transition",
+        "free energy f(beta)",
+        "singularity type => transition order (pole=first, sqrt=second)",
+        "composition schemes and universal transition signatures",
+        "Airy-function universality class",
+        "n^{-3/2} / Boltzmann weight at criticality",
+        "empirical evidence (Nakaishi et al., Arnold et al., Mikhaylovskiy)",
+        "temperature window",
+        "bridging proposal (LLM transitions as analytic phase transitions)"
+      ],
+      "notes": "Requires Ch4 for the singularity classification (pole vs branch point => transition order). Requires Ch14 for the partition function Z(beta) and Gibbs framework applied to LLMs. References Ch5 for the n^{-3/2} universality and PCFG/algebraic connection. References Banderier-Kuba-Wallner (2021) composition scheme results as the theoretical framework."
+    },
+    {
+      "id": 16,
+      "title": "Zipf's Law and Token Distributions",
+      "essential_prereqs": [4, 15],
+      "optional_prereqs": [3],
+      "key_concepts_introduced": [
+        "Zipf's law (rank-frequency distribution)",
+        "Mandelbrot refinement",
+        "Piantadosi critique",
+        "Pitman-Yor process",
+        "Chinese restaurant process",
+        "two-stage PY model",
+        "Berman's combinatorial derivation",
+        "Mikhaylovskiy's temperature window and Zipf exponent",
+        "quantization model (Michaud et al.)",
+        "bivariate GF proposal for joint rank-length distribution"
+      ],
+      "notes": "Requires Ch4 for the singularity analysis and bivariate GF transfer lemma used in the BGF proposal. Requires Ch15 for the temperature window context (Mikhaylovskiy's result directly connects phase transitions to Zipf behavior). References Ch3 for bivariate GF machinery. The chapter is largely review/proposal-oriented."
+    },
+    {
+      "id": 17,
+      "title": "Motif Statistics and Analytic Information Theory",
+      "essential_prereqs": [4, 7, 9],
+      "optional_prereqs": [12],
+      "key_concepts_introduced": [
+        "analytic information theory (Szpankowski program)",
+        "bivariate motif generating function",
+        "autocorrelation polynomial (Guibas-Odlyzko)",
+        "transfer matrix for motif counting",
+        "Gaussian limit law for motif counts (Nicodeme-Salvy-Flajolet)",
+        "trie depth",
+        "E[D_n] ~ (log n)/h (Jacquet-Szpankowski)",
+        "saddle-point method",
+        "Mellin transform",
+        "connection to entropy rate (h = log(1/R))",
+        "LLM motif statistics via WFA approximation"
+      ],
+      "notes": "Requires Ch4 for singularity analysis / transfer lemma (the singularity perturbation argument for Gaussian limits). Requires Ch7 for WFAs and the transfer matrix framework (building the product automaton for motif counting). Requires Ch9 for the entropy rate identity h=log(1/R) (used in trie depth connection and the WFA entropy rate). References Ch12 for WFA approximation context (optional — needed only for the LLM application discussion)."
+    },
+    {
+      "id": 18,
+      "title": "Ten Open Problems at the Frontier",
+      "essential_prereqs": [10, 12, 15, 17],
+      "optional_prereqs": [5, 11, 16],
+      "key_concepts_introduced": [
+        "Gap 1a (length PGF singularity structure)",
+        "Gap 1b (entropy-rate identity for LLM counting GF)",
+        "Gap 2 (Boltzmann temperature correspondence)",
+        "Gap 3 (ACSV for tokenized models)",
+        "Gap 4 (Chomsky-Schutzenberger test / n^{-3/2} empirical test)",
+        "Gap 5 (Gaussian limits via Hwang quasi-power theorem)",
+        "Gap 6 (thermodynamic formalism for neural potentials)",
+        "Gap 7 (singularity type classification)",
+        "Gap 8 (composition-scheme phase transition classification)",
+        "Gap 9 (WFA pipeline with analytic error bounds)",
+        "Gap 10 (confluent singularities / Airy scaling)"
+      ],
+      "notes": "This is a synthesis chapter that references essentially all prior chapters. The most directly essential are Ch10 (LLM framework), Ch12 (WFA approximation), Ch15 (phase transitions), and Ch17 (analytic information theory), as each Gap is explicitly tied to gaps in those chapters' stories. Also requires Ch9 for Gap 1b and Ch5 for Gap 4."
+    },
+    {
+      "id": 19,
+      "title": "A Research Roadmap",
+      "essential_prereqs": [18],
+      "optional_prereqs": [],
+      "key_concepts_introduced": [
+        "three-phase research programme",
+        "Phase 1: WFA extraction pipeline",
+        "Phase 2: entropy-rate identity verification",
+        "Phase 3: temperature scan / singularity confluence",
+        "tractability ranking of the ten gaps",
+        "recommended reading order for new researchers"
+      ],
+      "notes": "This chapter is purely a synthesis and roadmap chapter. It requires Ch18 (the ten gaps) as its direct prerequisite, since it is organized around prioritizing and sequencing those gaps. All other references are backward pointers to the full book."
+    }
+  ]
+}
