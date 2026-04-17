@@ -48,7 +48,7 @@ Regular expressions over $\Sigma$ are built by the following inductive syntax: t
 A language is regular if and only if it is denoted by some regular expression.
 \end{theorem}
 
-The equivalence is constructive in both directions: one converts a DFA to a regular expression by a state-elimination procedure, and one converts a regular expression to an NFA by structural induction. In the analytic-combinatorial vocabulary, the operations $+$, concatenation, and $*$ correspond exactly to disjoint union, the $\SEQ$ construction applied to a pair of classes, and $\SEQ$ applied to a single class without restriction on length; the close parallel between regular expressions and the symbolic method will be made precise in Chapter~7.
+The equivalence is constructive in both directions: one converts a DFA to a regular expression by a state-elimination procedure, and one converts a regular expression to an NFA by structural induction. In the analytic-combinatorial vocabulary, the operations $+$, concatenation, and $*$ correspond exactly to disjoint union, the $\SEQ$ construction applied to a pair of classes, and $\SEQ$ applied to a single class without restriction on length; the close parallel between regular expressions and the symbolic method is visible here and will be developed further through weighted automata in Chapter~7.
 
 \section{The Pumping Lemma for Regular Languages}
 
@@ -124,6 +124,6 @@ At level~1, the correspondence breaks down in a more severe way. Context-sensiti
 \text{unambiguous CFL} &\;\longleftrightarrow\; \text{algebraic } L(z),\\
 \text{context-sensitive} &\;\longleftrightarrow\; \text{possibly transcendental or exotic } L(z).
 \end{align*}
-For the remainder of this book we work almost exclusively within levels~2 and~3 of the hierarchy. Level~1 appears in occasional warnings: if a model class tacitly encodes context-sensitive computations, one should not expect the clean rational or algebraic asymptotics that the transfer theorems deliver. Understanding precisely where a language sits in the hierarchy is therefore not merely a theoretical exercise—it determines which analytic tools are available.
+For the remainder of this book we work almost exclusively at the regular and context-free levels of the hierarchy (Types~3 and~2, respectively). The context-sensitive level appears in occasional warnings: if a model class tacitly encodes context-sensitive computations, one should not expect the clean rational or algebraic asymptotics that the transfer theorems deliver. Understanding precisely where a language sits in the hierarchy is therefore not merely a theoretical exercise—it determines which analytic tools are available.
 
 Chapter~7 develops the theory of weighted finite automata, the probabilistic refinement of level~3 that assigns real-valued weights to transitions and thereby models probability distributions over $\Sigma^*$. This is the direct precursor to the $n$-gram language models of Part~III, and it is where the connection between regular languages and rational generating functions becomes computationally actionable.

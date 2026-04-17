@@ -84,7 +84,7 @@ A more directly usable sufficient condition follows from a comparison argument. 
 The abstract criterion becomes concrete through the examples constructed in \cite{DuEtAl2023}.
 
 \begin{example}[Non-tight recurrence]
-Consider a recurrent architecture whose hidden state $h_t \in \mathbb{R}$ evolves by a one-dimensional ReLU map, with EOS probability $p(\EOS \mid h_t) = 1/(e^{h_t} + 1)$, and where $h_t$ grows roughly linearly in $t$. Then $\widetilde{p}_{\EOS}(t) \sim C/(e^t + 1)$ for some constant $C$, which decays exponentially. The series $\sum_t \widetilde{p}_{\EOS}(t)$ converges, so the model is non-tight: with positive probability the sampler runs forever and the output lies in $\Sigma^\omega$.
+Consider a recurrent architecture whose hidden state $h_t \in \mathbb{R}$ evolves by a one-dimensional ReLU map, with EOS probability $p(\EOS \mid h_t) = 1/(e^{h_t} + 1)$ (note: this is a decreasing function of $h_t$, so as the hidden state grows the model becomes less likely to stop), and where $h_t$ grows roughly linearly in $t$. Then $\widetilde{p}_{\EOS}(t) \sim C/(e^t + 1)$ for some constant $C$, which decays exponentially. The series $\sum_t \widetilde{p}_{\EOS}(t)$ converges, so the model is non-tight: with positive probability the sampler runs forever and the output lies in $\Sigma^\omega$.
 \end{example}
 
 \begin{example}[Tight but heavy-tailed]

@@ -144,7 +144,7 @@ The significance of this result is the following. An EBM on $\Sigma^*$ specifies
 
 The mismatch identified in Section~\ref{ch14:markov-approx} has a clear structural cause: local renormalization at each step throws away information about the future subtree. When you divide logits by $T$ and re-softmax at step $t$, you are computing the $\beta$-tilted version of the one-step conditional $p(\cdot \mid w_{<t})$, but the one-step conditional is not the same as the marginal of the $\beta$-tilted global distribution at that position. The marginal of $\mu_\beta$ at step $t$ is:
 \[
-  p_\beta(a \mid w_{<t}) \propto p(a \mid w_{<t})^\beta \cdot \left(\sum_{w' \text{ extends } w_{<t} \cdot a} \mu(w')^\beta / \mu(a \mid w_{<t})^\beta\right)^{\vphantom{X}},
+  p_\beta(a \mid w_{<t}) \propto p(a \mid w_{<t})^\beta \cdot \sum_{w' \text{ extends } w_{<t} \cdot a} \mu(w')^\beta / \mu(a \mid w_{<t})^\beta,
 \]
 which depends on the subtree mass of all continuations beyond $a$. Token-wise temperature sampling ignores this subtree factor, as the example in Section~\ref{ch14:example} illustrates.
 
@@ -186,13 +186,13 @@ It is a common misconception that high temperature always makes a model ``more c
 \section{Notes and Further Reading}
 \label{ch14:notes}
 
-The energy-based view of language models is developed in \cite{DuEtAl2023}, which surveys EBMs in natural language processing and discusses the difficulties of training and sampling from globally normalized distributions. The ARM–EBM bijection of \cite{BlondelEtAl2025} (arXiv:2512.15605) sharpens this picture by showing the two model classes are equiexpressive under suitable function-class assumptions, with the equivalence mediated by soft Bellman equations from reinforcement learning theory.
+The measure-theoretic framework for language model tightness is developed in \cite{DuEtAl2023}, which also discusses the energy-based perspective on autoregressive models. The ARM–EBM bijection of \cite{BlondelEtAl2025} (arXiv:2512.15605) sharpens this picture by showing the two model classes are equiexpressive under suitable function-class assumptions, with the equivalence mediated by soft Bellman equations from reinforcement learning theory.
 
 \cite{KemptonBurrell2025} provide the most careful mathematical treatment of the local-vs.-global temperature gap. Their analysis is closely related to the theory of weighted automata (Chapter~7) and to the notion of ``backward'' vs.\ ``forward'' partition functions in graphical models.
 
 The observation of \cite{LinTegmarkRolnick2017} that physical data distributions have low-degree energy functions connects to the renormalization-group perspective on deep learning, which is beyond the scope of this text. The key point for our purposes is that it gives a heuristic justification for treating $Z(\beta)$ as analytic in $\beta$ over a wide range.
 
-For the statistical physics background, the standard reference is Georgii's \emph{Gibbs Measures and Phase Transitions}. The connection between Boltzmann sampling and analytic combinatorics is treated in Flajolet and Sedgewick, Chapter~XII.
+For the statistical physics background, the standard reference is Georgii's \emph{Gibbs Measures and Phase Transitions}. The connection between Boltzmann sampling and analytic combinatorics is treated in Flajolet and Sedgewick, Chapter~VII.
 
 \section*{Exercises}
 \label{ch14:exercises}
