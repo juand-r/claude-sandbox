@@ -67,6 +67,21 @@ Let $\Sigma=\{a,b\}$. The language
   L = \{w : w \text{ contains an even number of } a\text{'s}\}
 \]
 is recognized by a DFA with two states: ``even'' and ``odd.'' Reading an $a$ switches the state, while reading a $b$ leaves it unchanged. The start state is ``even,'' and it is also the only accepting state.
+
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt, node distance=2.5cm, on grid, auto,
+    every state/.style={circle, draw, minimum size=1cm, text centered}]
+  
+  \node[state, accepting, initial, initial text={}] (q0) {even};
+  \node[state] (q1) [right=of q0] {odd};
+  
+  \path[->] 
+    (q0) edge [bend left] node [above] {$a$} (q1)
+         edge [loop above] node {$b$} ()
+    (q1) edge [bend left] node [below] {$a$} (q0)
+         edge [loop above] node {$b$} ();
+\end{tikzpicture}
+\end{center}
 \end{example}
 
 A \emph{nondeterministic finite automaton} (NFA) allows several possible next states, and usually also $\varepsilon$-transitions. One may therefore think of its transition map as taking values in subsets of states over letters in $\Sigma \cup \{\varepsilon\}$. The key determinization theorem is this:

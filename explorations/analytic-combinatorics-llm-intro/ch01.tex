@@ -258,6 +258,61 @@ and satisfies the recurrence
 \]
 Here is the structural reason. A full binary tree with $n \ge 1$ internal nodes has a root. If the left subtree has $k$ internal nodes, then the right subtree must have the remaining $n-1-k$. For $n=3$, the three possibilities are $(k,n-1-k)=(0,2),(1,1),(2,0)$.
 
+\begin{center}
+\begin{tikzpicture}[
+  level distance=0.8cm,
+  sibling distance=1.2cm,
+  every node/.style={circle, draw, fill=black!10, inner sep=1.5pt},
+  leaf/.style={rectangle, draw=none, fill=none, font=\small}
+]
+  % Generic decomposition
+  \node (root) {}
+    child {node[draw=none, fill=none] {$\triangle$} edge from parent node[left, draw=none, fill=none] {$k$}}
+    child {node[draw=none, fill=none] {$\triangle$} edge from parent node[right, draw=none, fill=none] {$n-1-k$}};
+  \node[draw=none, fill=none, right=2cm of root] (eq) {\Large $\longrightarrow$};
+  
+  % n=3 examples
+  \begin{scope}[shift={(5, 0.5)}, sibling distance=0.8cm, level distance=0.6cm]
+    \node[draw=none, fill=none, above=0.2cm] {$(0,2)$};
+    \node {}
+      child {node[leaf] {}}
+      child {node {}
+        child {node[leaf] {}}
+        child {node {}
+          child {node[leaf] {}}
+          child {node[leaf] {}}
+        }
+      };
+  \end{scope}
+
+  \begin{scope}[shift={(7.5, 0.5)}, sibling distance=0.8cm, level distance=0.6cm]
+    \node[draw=none, fill=none, above=0.2cm] {$(1,1)$};
+    \node {}
+      child {node {}
+        child {node[leaf] {}}
+        child {node[leaf] {}}
+      }
+      child {node {}
+        child {node[leaf] {}}
+        child {node[leaf] {}}
+      };
+  \end{scope}
+
+  \begin{scope}[shift={(10, 0.5)}, sibling distance=0.8cm, level distance=0.6cm]
+    \node[draw=none, fill=none, above=0.2cm] {$(2,0)$};
+    \node {}
+      child {node {}
+        child {node {}
+          child {node[leaf] {}}
+          child {node[leaf] {}}
+        }
+        child {node[leaf] {}}
+      }
+      child {node[leaf] {}};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
 Define $C(z)=\sum_{n \ge 0} C_n z^n$. Multiply the recurrence by $z^n$ and sum over $n \ge 1$. The left side is
 \[
   \sum_{n \ge 1} C_n z^n = C(z)-1.

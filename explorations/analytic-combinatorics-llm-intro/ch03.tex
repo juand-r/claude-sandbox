@@ -32,6 +32,31 @@ Three archetypal classes will recur throughout the book.
 \end{itemize}
 For example, the plane trees of sizes $1$ and $2$ look like a single root, and a root with one child; and a size-$3$ permutation is something like $(2,3,1)$, where the labels matter.
 
+\begin{center}
+\begin{tikzpicture}[
+  level distance=0.6cm,
+  sibling distance=0.8cm,
+  every node/.style={circle, draw, fill=black!10, inner sep=1.5pt}
+]
+  \begin{scope}[shift={(0,0)}]
+    \node[draw=none, fill=none, above=0.2cm] {Size 1};
+    \node {};
+  \end{scope}
+  \begin{scope}[shift={(2.5,0)}]
+    \node[draw=none, fill=none, above=0.2cm] {Size 2};
+    \node {} child {node {}};
+  \end{scope}
+  \begin{scope}[shift={(5.5,0)}]
+    \node[draw=none, fill=none, above=0.2cm] {Size 3};
+    \node {} child {node {} child {node {}}};
+  \end{scope}
+  \begin{scope}[shift={(7.5,0)}]
+    \node[draw=none, fill=none, above=0.2cm] {Size 3};
+    \node {} child {node {}} child {node {}};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
 Two tiny classes serve as universal building blocks.
 
 \begin{definition}
@@ -232,6 +257,24 @@ So there are $2^n$ binary words of length $n$.
 
 \begin{example}[Plane trees and Catalan numbers]
 A plane tree consists of a root together with an ordered list of plane trees attached to that root as children. The children are ordered, so a sequence is exactly the right constructor. If size means number of nodes, then the root contributes one atom and the child list contributes a sequence of smaller trees:
+
+\begin{center}
+\begin{tikzpicture}[
+  level distance=0.8cm,
+  sibling distance=1.2cm,
+  every node/.style={circle, draw, fill=black!10, inner sep=1.5pt}
+]
+  \node (T) {$\mathcal{T}$};
+  \node[draw=none, fill=none, right=0.5cm of T] (eq) {$=$};
+  \node[right=0.5cm of eq] (root) {};
+  \node[draw=none, fill=none, right=0.5cm of root] (times) {$\times$};
+  \node[draw=none, fill=none, right=0.5cm of times] (seq) {$\SEQ\Big($};
+  \node[right=0.2cm of seq] (T2) {$\mathcal{T}$};
+  \node[draw=none, fill=none, right=0.2cm of T2] (close) {$\Big)$};
+\end{tikzpicture}
+\end{center}
+
+This translates to
 \[
   \mathcal{T} = \mathcal{Z} \times \SEQ(\mathcal{T}).
 \]

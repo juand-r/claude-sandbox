@@ -264,6 +264,28 @@ so that
   dz = i r e^{it}\,dt.
 \]
 
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+  % Axes
+  \draw[->, gray] (-1.5, 0) -- (1.8, 0) node[right, text=black] {$\mathrm{Re}(z)$};
+  \draw[->, gray] (0, -1.5) -- (0, 1.5) node[above, text=black] {$\mathrm{Im}(z)$};
+  
+  % Disk of convergence
+  \draw[dashed, gray] (0,0) circle (1.2);
+  \node[gray, below right] at (1.2, 0) {$R$};
+  
+  % Singularity on boundary
+  \filldraw[red] (1.2, 0) circle (1.5pt) node[above right, text=black] {Singularity};
+  
+  % Contour
+  \draw[thick, blue, decoration={markings, mark=at position 0.125 with {\arrow{>}}}, postaction={decorate}] (0,0) circle (0.8);
+  \node[blue, above left] at (-0.56, 0.56) {$|z|=r$};
+  
+  % Radius r
+  \draw[->, blue] (0,0) -- (0.8, 0) node[midway, below] {$r$};
+\end{tikzpicture}
+\end{center}
+
 \begin{proposition}[Coefficient formula on a circle]
 Let
 \[

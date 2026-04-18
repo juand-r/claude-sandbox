@@ -164,6 +164,48 @@ A function is \emph{$\Delta$-analytic at $\rho$} if it is analytic in some such 
 
 Geometrically, this is a disk of radius $\eta$ centered at the origin with a small wedge removed around the ray starting at $\rho$ and extending to the right. The removed wedge is exactly the place where a branch cut for $(1-z/\rho)^{\alpha}$ is allowed to sit.
 
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+  \def\rho{1.0}
+  \def\eta{2.0}
+  \def\phi{25} % angle in degrees
+  
+  % Fill the Delta domain
+  \begin{scope}
+    \clip (0,0) circle (\eta);
+    \fill[blue!10] (-2.5,-2.5) rectangle (2.5,2.5);
+    \fill[white] (\rho,0) -- ++(\phi:2.5) -- ++(-\phi:2.5) -- cycle;
+  \end{scope}
+
+  % Draw axes
+  \draw[->, gray] (-2.2, 0) -- (2.5, 0) node[right, text=black] {$\mathrm{Re}(z)$};
+  \draw[->, gray] (0, -2.2) -- (0, 2.2) node[above, text=black] {$\mathrm{Im}(z)$};
+  
+  % Draw the boundary of the Delta domain
+  \begin{scope}
+    \clip (0,0) circle (\eta);
+    \draw[thick, blue] (\rho,0) -- ++(\phi:2.5);
+    \draw[thick, blue] (\rho,0) -- ++(-\phi:2.5);
+  \end{scope}
+  
+  % Draw the circular arc
+  \draw[thick, blue] 
+    ({\rho + (\eta-\rho)*cos(\phi)}, {(\eta-\rho)*sin(\phi)}) 
+    arc[start angle={asin(((\eta-\rho)*sin(\phi))/\eta)}, end angle={360-asin(((\eta-\rho)*sin(\phi))/\eta)}, radius=\eta];
+    
+  % Mark rho
+  \filldraw (\rho,0) circle (1pt) node[below right] {$\rho$};
+  
+  % Mark the angle phi
+  \draw[dashed] (\rho,0) -- (2.2,0);
+  \draw[->] (\rho+0.5,0) arc[start angle=0, end angle=\phi, radius=0.5];
+  \node at (\rho+0.6, 0.15) {$\phi$};
+  
+  % Label eta
+  \draw[<->] (0,0) -- (-1.414, 1.414) node[midway, above left] {$\eta$};
+\end{tikzpicture}
+\end{center}
+
 \begin{definition}
 For $\alpha > 0$, the Gamma function is
 \[
@@ -207,10 +249,33 @@ A few comments are worth making immediately.
 The rigorous proof uses Cauchy's coefficient formula, contour deformation, a contour that passes near the singularity while avoiding the branch cut, and a rescaling that produces the Gamma integral. We do \emph{not} prove those steps in full here. The roadmap is:
 \begin{enumerate}
   \item write $[z^n]A(z)$ as a contour integral;
-  \item deform the contour so that only a neighborhood of the dominant singularity matters;
+  \item deform the contour so that only a neighborhood of the dominant singularity matters, wrapping it tightly around the branch cut (this is the \emph{Hankel contour});
   \item replace $A(z)$ by its local singular model near $\rho$;
   \item rescale by $z = \rho(1-t/n)$, which produces the factors $\rho^{-n}$ and $n^{\alpha-1}$ and leads to the Gamma integral.
 \end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+  % Axes
+  \draw[->, gray] (-1.5, 0) -- (2.5, 0) node[right, text=black] {$\mathrm{Re}(z)$};
+  \draw[->, gray] (0, -1.5) -- (0, 1.5) node[above, text=black] {$\mathrm{Im}(z)$};
+  
+  \def\rho{1.0}
+  \def\eta{2.0}
+  \def\phi{25} % angle in degrees
+  
+  % Branch cut
+  \draw[very thick, red] (\rho, 0) -- (2.5, 0);
+  \filldraw (\rho,0) circle (1pt) node[below right] {$\rho$};
+  
+  % Hankel contour
+  \draw[thick, blue, decoration={markings, mark=at position 0.3 with {\arrow{>}}}, postaction={decorate}] 
+    (2.2, 0.15) -- (\rho+0.1, 0.15) arc (90:270:0.15) -- (2.2, -0.15);
+    
+  \node[blue, above] at (1.5, 0.15) {Hankel contour};
+\end{tikzpicture}
+\end{center}
+
 Full details are in \cite{FlajoletSedgewick2009}, Chapter~VI.
 \end{remark}
 
