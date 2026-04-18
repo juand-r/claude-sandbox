@@ -1,0 +1,335 @@
+\chapter{A Research Roadmap}
+\label{ch19:top}
+\label{ch19}
+
+\section{Where We Stand}
+\label{ch19:wherewestand}
+
+Part~I of this book developed the toolkit of analytic combinatorics:
+generating functions, singularity analysis, transfer matrices, and
+Boltzmann samplers~\cite{FlajoletSedgewick2009}.  Part~II established
+the linguistic foundations: weighted finite automata, the Hankel
+characterisation, PCFGs, entropy rates, and the Chomsky--Schützenberger
+theorem.  Part~III introduced the Transformer architecture and surveyed
+the theoretical results bearing on its expressive power and
+limitations~\cite{WeissGoldbergYahav2018,MerrillSabharwalSmith2022,RizviEtAl2024}.
+Part~IV built the bridge: Boltzmann sampling interpreted as a Gibbs
+measure, the partition function $Z(\beta)$ as a generating function
+with temperature as a parameter, and the emergence of phase transitions
+at confluent singularities~\cite{BanderierKubaWallner2021}.  Part~V
+surveyed Zipf distributions, motif statistics, and their analytic
+explanations~\cite{Szpankowski2001}, before Chapter~18 catalogued ten
+open problems --- Gaps~1a, 1b, 2, 3, 4, 5, 6, 7, 8, 9, 10 --- at the
+frontier.  This final chapter answers a practical question: given that
+background, what should a researcher actually work on first?
+% NOTE: This chapter works well as a pragmatic roadmap. Since several earlier chapters
+% intentionally blended secure theorems with still-speculative LLM bridges, it may help
+% to keep signaling here which recommendations depend only on classical mathematics and
+% which depend on unresolved conjectural links in the current draft.
+
+\section{Ranking the Gaps by Tractability}
+\label{ch19:ranking}
+
+Not all ten gaps are equally open.  Some are computation problems
+waiting for careful accounting; others require new mathematics that is
+not yet in sight.  The following ranking is a judgement call, not a
+theorem.
+
+\textbf{Most tractable: Gap~9 (WFA-approximation pipeline with analytic
+error bounds).}  The four approximation strategies surveyed in
+Chapter~12 --- spectral learning from moment matrices, AAK-based
+Hankel truncation, $L^*$-style automaton learning, and tensor-network
+contraction --- are each well understood in isolation.  What is missing
+is a unified error budget: given that each step introduces its own
+approximation error, what does the compound bound look like?  The
+ingredients are already on the shelf.  The AAK singular-value bounds
+were made explicit for weighted automata by Lacroce, Panangaden, and
+Rabusseau~\cite{LacrocePanangadenRabusseau2021}; the $L^*$ convergence
+guarantees are classical.  The missing piece is to compose these bounds
+and state a single theorem of the form: ``for a rank-$r$ WFA
+approximation to an LLM distribution over sequences of length at most
+$n$, the total-variation error is at most $f(r,n)$.''  This is, in
+essence, a careful accounting exercise.  It does not require proving
+anything new about LLMs themselves.
+% NOTE: Strong and concrete starting point. One possible sharpening is to say more
+% explicitly which approximation target is primary (full string distribution, truncated
+% length law, conditional next-token kernel, etc.), since Ch. 12 stressed that these
+% are not automatically interchangeable for analytic conclusions.
+
+\textbf{Second: Gap~5 (Gaussian limit laws via the Hwang quasi-power
+theorem).}  Hwang's 1998 meta-theorem~\cite{Hwang1998} gives Gaussian
+limits essentially for free once the probability generating function
+satisfies a quasi-power hypothesis.  Verifying that hypothesis for a
+concrete LLM surrogate --- say, a small PCFG with a softmax output head
+--- is a calculation, not an open problem in the usual sense.  The
+difficulty is making the surrogate tractable enough that the PGF can be
+computed or tightly bounded.  A PCFG with $k$ nonterminals has an
+algebraic GF of degree at most $k$; the softmax perturbs it in a
+controlled way.  Working through this for the simplest non-trivial case
+would constitute a publishable result and, more importantly, would
+establish whether the quasi-power hypothesis is robust to the softmax
+perturbation.
+
+\textbf{Third: Gap~1b (the entropy-rate identity $h = \log(1/R)$ for
+LLM counting GFs).}  Once Gap~9 is resolved and a WFA approximation
+exists, Gap~1b is nearly a corollary.  The transition matrix $M$ of a
+WFA defines a linear recurrence for the sequence of partition functions
+$Z_n$ (the sums of weights over all strings of length $n$).  The
+radius of convergence of the associated generating function $Z(x) =
+\sum_n Z_n x^n$ is then $R = 1/\rho(M)$, where $\rho(M)$ is the
+spectral radius of $M$, by Perron--Frobenius.  On the other hand, the
+entropy rate of the WFA-approximated distribution is $h = \log \rho(M)$
+by standard spectral theory of Markov-type operators.  So $h = \log
+(1/R)$ holds immediately for the WFA approximation.  The substantive
+question is how faithfully this approximation captures the entropy rate
+of the original LLM distribution, which circles back to the quality of
+the Gap~9 bound.  One must also be precise about the distinction
+between the length probability generating function (Gap~1a, concerning
+$\sum_n p_n x^n$ where $p_n = \Pr[\text{length} = n]$) and the
+counting GF (Gap~1b, concerning $\sum_n Z_n x^n$ where $Z_n$ counts
+weighted paths).  These are not the same object and the singularities
+can differ; the chapter's exposition must keep them separate.
+% NOTE: This roadmap step still leans on the unresolved Ch. 9 / Ch. 17 issue of when
+% log(1/R) is genuinely Shannon entropy rather than support/topological growth. If that
+% earlier bridge remains conjectural, this paragraph may need to be softened from
+% "nearly a corollary" to an empirical / surrogate verification programme.
+
+\textbf{Big prize: Gap~10 (phase transitions as confluent
+singularities).}  The empirical observations of Nakaishi et
+al.~\cite{NakaishiNishikawaHukushima2024}, Arnold et
+al.~\cite{ArnoldEtAl2024}, and
+Mikhaylovskiy~\cite{Mikhaylovskiy2025} all point to sharp transitions
+in LLM-generated text statistics at critical temperatures.  The
+Banderier--Kuba--Wallner composition-scheme framework~\cite{BanderierKubaWallner2021}
+gives a rigorous mechanism for such transitions: they arise when two
+dominant singularities of the partition function $Z(\beta, x)$ coalesce
+as $\beta$ varies.  A positive result connecting these two bodies of
+work --- proving that the observed transitions correspond to singularity
+confluence in $Z(\beta, x)$ for an explicit surrogate model --- would
+be a significant contribution.  This is the right long-term target
+but not the right starting point.
+% NOTE: Good "prize problem" framing. It may help to remind the reader here that Chs.
+% 14--15 still leave open whether the empirically varied temperature is the same object
+% as the global Gibbs parameter of Z(\beta), so this phase inherits that conceptual gap.
+
+\textbf{Long shot in the sense of ease of entry, not in probability of
+success: Gap~4 (Chomsky--Schützenberger test).}  This is an
+empirical project.  The idea is simple: sample strings from a
+medium-sized open-weight LLM at fixed temperature, fit a counting GF to
+the empirical length distribution, and ask whether the dominant
+singularity is algebraic of the type $\sim C \cdot n^{-3/2} r^{-n}$
+(the signature of a non-degenerate context-free language).  Anyone with
+a GPU cluster and access to an open-weight model can start this
+tomorrow.  The theoretical interpretation of a positive or negative
+result is less straightforward, but the empirical finding would itself
+be informative.  This gap is listed last in tractability not because it
+is hard to attempt but because the result is harder to interpret without
+the theoretical scaffolding of Phases~1--2.
+% NOTE: Worth keeping the caution that an empirical n^{-3/2} fit is suggestive, not a
+% direct proof that the support language is approximately context-free. Several earlier
+% chapters already needed stronger hypotheses before that exponent could be interpreted.
+
+\section{A Three-Phase Programme}
+\label{ch19:threephase}
+
+The following programme is designed so that each phase produces
+publishable intermediate results while also building the substrate for
+the next phase.
+
+\paragraph{Phase~1: Implement and benchmark a WFA-extraction pipeline.}
+\label{ch19:phase1}
+
+Choose a small LLM surrogate: a 2-layer Transformer trained on a corpus
+generated by a known PCFG.  Using the PCFG, the ground-truth
+distribution is computable, so errors can be measured exactly.  Extract
+the Hankel matrix $H$ of the surrogate's string probabilities up to
+length $L$, compute its singular-value decomposition, and truncate to
+rank~$r$.  Record the singular-value decay as a function of $r$ (this
+is a diagnostic of how well a WFA can approximate the model).  Construct
+the rank-$r$ WFA by the spectral-learning procedure of
+Balle--Mohri or equivalently via Lacroce--Panangaden--Rabusseau~\cite{LacrocePanangadenRabusseau2021}.
+Measure the empirical KL divergence between the WFA distribution and the
+surrogate distribution as a function of $r$ and $L$.  Compare to the
+theoretical AAK bound.
+
+Deliverables: a codebase, a table of singular-value plots, and a
+graph of empirical KL divergence versus rank.  The gap between the
+empirical error and the AAK bound, if large, is itself an interesting
+finding.
+% NOTE: Good concrete phase. It may help to say explicitly whether the extracted WFA is
+% intended to approximate the full string distribution, the length distribution only, or
+% a truncated conditional model, since those lead to different downstream analyses.
+
+\paragraph{Phase~2: Verify the entropy-rate identity.}
+\label{ch19:phase2}
+
+Using the rank-$r$ WFA from Phase~1, compute the transition matrix $M$
+and extract $\rho(M)$.  Compute $R = 1/\rho(M)$ and compare to the
+empirically measured entropy rate $h$ of the surrogate (estimated by
+the standard cross-entropy method on a held-out corpus).  If the
+WFA approximation is tight, the identity $h \approx \log(1/R)$ should
+hold up to an error controlled by the Phase~1 KL bound.  Do this
+for several values of $r$ and record how quickly the discrepancy
+decays.
+
+This closes Gap~1b for the surrogate model and provides a template for
+how the argument would go in the general case.  The writeup should make
+explicit which step fails if the WFA approximation is not tight,
+pointing toward what Gap~9's missing theoretical bound would need to
+say.
+% NOTE: As written, this phase still depends on the unstable Ch. 9 identity. If the
+% earlier chapters are revised to separate entropy, support growth, and counting GFs
+% more carefully, this roadmap step should be updated to match the repaired statement.
+
+\paragraph{Phase~3: Scan temperature and look for singularity
+confluence.}
+\label{ch19:phase3}
+
+Fix the surrogate from Phases~1--2.  Define the temperature-parameterised
+partition function $Z(\beta) = \sum_{\mathbf{x}} p(\mathbf{x})^\beta$,
+where the sum runs over all strings $\mathbf{x}$ up to length $L$.
+For each $\beta$ in a grid, compute the dominant singularity of the
+associated WFA (the reciprocal spectral radius $R(\beta)$).  Plot
+$R(\beta)$ as a function of $\beta$ and look for non-analyticity:
+a kink in $R(\beta)$ signals a singularity crossing, which in the
+Banderier--Kuba--Wallner framework~\cite{BanderierKubaWallner2021}
+corresponds to a phase transition.  If a transition is found, attempt to
+classify the type of confluence (smooth, cusp, or higher order) by
+examining the local expansion of $Z(\beta, x)$ near the critical
+point.
+% NOTE: Because the sum is truncated to length <= L, this is necessarily a finite-size
+% proxy rather than a literal singularity of the infinite-volume partition function.
+% Saying that explicitly would align this phase with the finite-size caveats from Ch. 15.
+
+A positive finding here constitutes empirical evidence for Gap~10.  A
+negative finding is also informative: it would suggest that LLM phase
+transitions, when they occur, are not of the composition-scheme type
+and would require a different theoretical explanation.
+
+\section{Parallel Tracks and What to Avoid First}
+\label{ch19:parallel}
+
+Gap~4 (the Chomsky--Schützenberger numerical test) is an orthogonal
+project that does not depend on the WFA pipeline.  It can be pursued
+in parallel by a researcher with access to a real open-weight
+LLM~\cite{BlondelEtAl2025,DuEtAl2023} and a good sampling implementation.
+The main risk is that the length distribution of LLM output is heavily
+confounded by prompt length and stopping heuristics; controlling for
+these requires care.
+% NOTE: Another confounder worth naming here is the local-vs-global temperature
+% distinction from Ch. 14: if empirical sampling varies local decoding temperature,
+% fitting a "global" analytic model to the tails may be conceptually ambiguous.
+
+Gap~5 (Hwang quasi-power limits) can be pursued as a theoretical
+side-project by a combinatorics-oriented researcher who does not have
+access to GPU resources.  The calculation for the PCFG-plus-softmax
+surrogate can be carried out on paper or with a computer-algebra
+system~\cite{Hwang1998}.
+
+\textbf{What not to work on first.}  Three gaps should be deferred.
+
+Gap~6 (thermodynamic formalism) is where the cleanest theory lives:
+the Ruelle--Bowen--Sinai transfer operator gives a complete account of
+the free energy and its singularities.  But this background is a
+semester course on its own, with prerequisites in ergodic theory that
+most combinatorics or machine-learning students will not have.  Return
+to it after Phases~1--3 have built intuition.
+
+Gap~7 (classification of all singularity types arising in LLM partition
+functions) is probably the ultimate theoretical destination of this
+research programme, but it presupposes Gap~10 being resolved and a
+rich collection of examples to classify.  It is not a starting point.
+% NOTE: This also seems to presuppose first deciding what analytic class the partition
+% function Z(\beta) actually belongs to (ordinary GF, Dirichlet/Mellin-type object,
+% something else), which Ch. 15 currently leaves unresolved.
+
+Gap~3 (ACSV for tokenized models) requires the Pemantle--Wilson
+multivariate machinery~\cite{PemantleWilson2013} in its full
+generality.  This is technically demanding --- the critical-point
+analysis for multivariate GFs involves stratified Morse theory ---
+and the payoff depends on first establishing that LLM generating
+functions have the right structure to make the analysis applicable.
+Defer until the univariate picture (Phases~1--2) is settled.
+
+\section{For a Student Entering the Field}
+\label{ch19:student}
+
+The following reading order is recommended for a graduate student
+who has not yet read this book and wants to enter this research area
+efficiently.
+
+\begin{enumerate}
+  \item \textbf{Flajolet--Sedgewick~\cite{FlajoletSedgewick2009},
+  Chapters~I--IV.}  This covers symbolic combinatorics, ordinary and
+  exponential GFs, and the singularity-analysis framework.  These
+  chapters correspond to Chapters~1--5 of this book.  This material is
+  non-negotiable; everything else builds on it.
+
+  \item \textbf{This book, Part~II} (WFAs, PCFGs, entropy rates).
+  The primary mathematical objects are the Hankel matrix and the
+  Perron--Frobenius theorem applied to weighted transition matrices.
+
+  \item \textbf{Szpankowski~\cite{Szpankowski2001}.}  For researchers
+  whose interest is in word statistics, motif occurrences, and
+  large-deviation results.  Chapter~17 of this book is an appetiser;
+  Szpankowski's monograph is the full treatment.
+
+  \item \textbf{Rizvi et al.~\cite{RizviEtAl2024} and
+  Merrill--Sabharwal--Smith~\cite{MerrillSabharwalSmith2022}.}  For the
+  LLM side: what Transformers can and cannot express as formal languages,
+  and what circuit-complexity arguments say about their computational
+  depth.  Read alongside Strobl et al.~\cite{StroblEtAl2024} for the
+  broader survey of formal language results.
+
+  \item \textbf{Duchon--Flajolet--Louchard--Schaeffer~\cite{DuchonFlajoletLouchardSchaeffer2004}.}
+  The foundational reference for Boltzmann sampling.  Read this before
+  attempting Phase~3; the connection between the Boltzmann parameter and
+  the thermodynamic $\beta$ is made explicit there.
+\end{enumerate}
+
+This reading list is not comprehensive, but it covers the minimum
+required to engage with the three-phase programme above without
+repeatedly needing to pause and build background.
+% NOTE: Student-facing refinement: it might help to flag which earlier chapters should be
+% read as "classical exact toolkit" versus "research bridges still under construction"
+% (especially Chs. 9, 14, and 15), so the roadmap is read with the right confidence.
+
+\section{Closing}
+\label{ch19:closing}
+
+The purpose of this book has been to place in one document the pieces
+of two literatures --- analytic combinatorics and large language model
+theory --- that have developed largely independently.  The mathematical
+community has Flajolet--Sedgewick, Szpankowski, and Pemantle--Wilson;
+the machine-learning community has Transformer theory, scaling laws,
+and empirical phase-transition observations.  These are not separate
+subjects.  The formal-language perspective forces precision about what
+a language model is computing; the singularity-analysis perspective
+gives a vocabulary for what happens at critical temperatures.  If the
+book has done its job, a reader should be able to move between a
+chapter of Flajolet--Sedgewick and a survey such as Strobl et
+al.~\cite{StroblEtAl2024} without feeling that they have changed
+disciplines.  The ten gaps of Chapter~18 and the programme sketched
+here are an invitation to close that distance further.  They are not
+a manifesto; they are a list of things that seem doable.
+
+\section*{Further Reading}
+\label{ch19:furtherreading}
+
+The reading list in Section~\ref{ch19:student} covers the minimum
+required for the three-phase programme.  The items below are the core
+references specifically for the roadmap itself.
+
+\begin{itemize}
+  \item \textbf{P.~Flajolet and R.~Sedgewick}, \emph{Analytic Combinatorics} (Cambridge University Press, 2009) \cite{FlajoletSedgewick2009} --- The analytical backbone of Phases~1--3. Chapters~VI--IX on singularity analysis, algebraic functions, and the saddle-point method are used directly; Chapter~IX on words and tries is the template for the WFA transition-matrix computations in Phase~2.
+
+  \item \textbf{W.~Szpankowski}, \emph{Average Case Analysis of Algorithms on Sequences} (Wiley, 2001) \cite{Szpankowski2001} --- The bridge between analytic combinatorics and information theory. For researchers entering from the combinatorics side, this monograph makes entropy rates, trie depths, and suffix-tree statistics into singularity-analysis problems, exactly the translation needed for Phase~2.
+
+  \item \textbf{R.~Pemantle and M.~C. Wilson}, \emph{Analytic Combinatorics in Several Variables} (Cambridge University Press, 2013) \cite{PemantleWilson2013} --- Required for Gap~3 and for Phase~3 once the analysis extends beyond univariate generating functions. The critical-point and stratified-Morse-theory toolkit for multivariate coefficient asymptotics.
+
+  \item \textbf{H.-K. Hwang}, ``On convergence rates in the central limit theorems for combinatorial structures,'' \emph{European J.\ Combin.} (1998) \cite{Hwang1998} --- The quasi-power meta-theorem that converts a bivariate generating function in quasi-power form into a Gaussian limit law. A short paper with large returns: reading it clarifies exactly what Phase~1's WFA extraction must deliver for Gap~5 to follow automatically.
+
+  \item \textbf{D.~Ruelle}, \emph{Thermodynamic Formalism} (Addison-Wesley, 1978) \cite{Ruelle1978} --- Background for Gap~6 and for understanding why Phase~3's $Z(\beta)$ behaves like a thermodynamic pressure function. The Ruelle transfer operator is the infinite-alphabet generalisation of the WFA transition matrix.
+
+  \item \textbf{R.~Bowen}, \emph{Equilibrium States and the Ergodic Theory of Anosov Diffeomorphisms} (Springer, 1975) \cite{Bowen1975} --- Companion to Ruelle for the variational principle and Gibbs-state characterisation. Together these two short books give the ergodic-theoretic language that the roadmap's Phase~3 is, in spirit, trying to instantiate for neural-network potentials.
+\end{itemize}

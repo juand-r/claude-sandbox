@@ -1,0 +1,7 @@
+\part{Statistical Mechanics Meets Generating Functions}
+
+This part builds the bridge between the analytic-combinatorics side of the book and the statistical-physics side. Chapter~13 introduces Boltzmann sampling and makes the central identification: a generating function evaluated at $x = e^{-\beta}$ \emph{is} a partition function, and the radius of convergence corresponds to a critical temperature. Chapter~14 transfers this framework to LLMs, defining the energy $E(w) = -\log\mu(w)$ and showing that temperature decoding is (approximately) sampling from a Gibbs measure --- with a precise characterization of when the local and global versions agree. Chapter~15 reviews the growing empirical evidence that LLM output distributions undergo genuine phase transitions as temperature varies, and proposes that these transitions can be explained as singularities of the partition function.
+
+\input{ch13}
+\input{ch14}
+\input{ch15}

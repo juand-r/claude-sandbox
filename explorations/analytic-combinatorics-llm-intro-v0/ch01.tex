@@ -1,0 +1,228 @@
+\chapter{What is a Generating Function?}
+
+A sequence of numbers $(a_n)_{n \ge 0}$ is the natural output of a counting problem: how many binary strings of length $n$, how many trees with $n$ nodes, how many ways to parse a sentence of length $n$ according to a given grammar. Studying the sequence directly forces us to deal with each index separately, and recurrences --- while precise --- often resist closed-form extraction. The central idea of generating function theory is to encode the entire sequence as a single algebraic object,
+\[
+  A(z) \;=\; \sum_{n \ge 0} a_n z^n,
+\]
+and then let the algebra of formal power series do the bookkeeping. This is not mere notational convenience. Operations on sequences that would otherwise require index gymnastics --- shifting, convolving, differencing --- correspond to clean algebraic operations on $A(z)$. Recurrences, which are linear or polynomial relations among the $a_n$, become \emph{functional equations} for $A(z)$, and those equations can often be solved in closed form. The solution then exposes structure invisible in the raw sequence.
+
+\begin{definition}
+The set of \emph{formal power series} over $\mathbb{Q}$, denoted $\mathbb{Q}[[z]]$, consists of all expressions $A(z) = \sum_{n \ge 0} a_n z^n$ with $a_n \in \mathbb{Q}$. Two series are added term by term: $(A+B)(z) = \sum_n (a_n + b_n) z^n$. Their product is defined by
+\[
+  (A \cdot B)(z) \;=\; \sum_{n \ge 0} c_n z^n, \qquad c_n = \sum_{k=0}^{n} a_k b_{n-k}.
+\]
+The product formula follows from collecting all pairs of terms $a_k z^k$ and $b_m z^m$ whose exponents add to $n$: $z^k \cdot z^m = z^n$ requires $m = n-k$, so the coefficient of $z^n$ in the product is $a_0 b_n + a_1 b_{n-1} + \cdots + a_n b_0$.
+\end{definition}
+
+At this stage $z$ is a \emph{formal indeterminate} --- it carries no numerical value, and questions of convergence are entirely irrelevant. The set $\mathbb{Q}[[z]]$ with these operations behaves like the rational numbers do under addition and multiplication: one can add, subtract, and multiply freely. (Algebraists call $\mathbb{Q}[[z]]$ a \emph{commutative ring}; this terminology is not needed for what follows.)
+
+\begin{definition}
+The \emph{coefficient extraction operator} $[z^n]$ picks out the $n$-th coefficient of a power series:
+\[
+  [z^n] A(z) \;:=\; a_n.
+\]
+It is linear ($[z^n](A+B) = [z^n]A + [z^n]B$) and respects products via the convolution formula $[z^n](A \cdot B) = \sum_{k=0}^{n} a_k b_{n-k}$.
+\end{definition}
+
+One further algebraic fact is useful: any series $A(z)$ with $a_0 \ne 0$ has a multiplicative inverse $A(z)^{-1}$ in $\mathbb{Q}[[z]]$, constructed coefficient by coefficient. The idea is to find a series $D(z) = \sum d_n z^n$ satisfying $A(z) \cdot D(z) = 1$. The constant term gives $a_0 d_0 = 1$, so $d_0 = 1/a_0$. The $z^1$ equation gives $a_0 d_1 + a_1 d_0 = 0$, so $d_1 = -a_1 d_0 / a_0$. In general, $d_n = -(a_1 d_{n-1} + \cdots + a_n d_0)/a_0$; each coefficient is determined by the preceding ones. When $a_0 = 0$, division by $a_0$ fails and no inverse exists.
+
+Two operations on power series appear repeatedly. The \emph{shift} by $z$ sends $A(z)$ to $z A(z) = \sum_{n \ge 1} a_{n-1} z^n$, so $[z^n](zA(z)) = a_{n-1}$. The \emph{formal derivative} is $A'(z) = \sum_{n \ge 1} n a_n z^{n-1}$, defined term by term with no analytic content; it satisfies the product rule $(f \cdot g)' = f' \cdot g + f \cdot g'$ by direct verification on the coefficient formulas.
+
+\section*{The method: from recurrences to functional equations}
+
+The central technique of this chapter is a three-step recipe for converting a recurrence into a closed-form generating function.
+
+\begin{enumerate}
+\item \textbf{Define} the generating function $A(z) = \sum_{n \ge 0} a_n z^n$.
+\item \textbf{Multiply} every term of the recurrence $a_n = (\text{expression in } a_{n-1}, a_{n-2}, \ldots)$ by $z^n$ and \textbf{sum} over all valid $n$. Recognize each resulting sum as an expression involving $A(z)$.
+\item \textbf{Solve} the resulting equation for $A(z)$.
+\end{enumerate}
+
+Step~2 is the key move. Why does it work? Because every occurrence of $a_{n-k}$ in the recurrence, after multiplication by $z^n$ and summation, becomes a shifted version of $A(z)$. For instance, $\sum_n a_{n-1} z^n = z A(z)$, and $\sum_n a_{n-2} z^n = z^2 A(z)$, and in general multiplying by $z^k$ in front of $A(z)$ shifts the index by $k$. The recurrence, which was an infinite family of equations (one for each $n$), collapses into a single equation for the single unknown $A(z)$.
+
+We now demonstrate this on three progressively harder examples.
+
+\section*{Binary strings}
+
+Let $b_n$ denote the number of binary strings of length $n$. Every such string is a sequence of $n$ bits, each chosen from $\{0,1\}$, so $b_n = 2^n$. We can derive this from the recurrence and simultaneously demonstrate the recipe. Any binary string of length $n \ge 1$ is obtained by appending one of two symbols to a string of length $n-1$, giving $b_n = 2 b_{n-1}$ for $n \ge 1$, with $b_0 = 1$.
+
+Following the recipe: define $B(z) = \sum_{n \ge 0} b_n z^n$, multiply both sides of the recurrence by $z^n$, and sum over $n \ge 1$:
+\[
+  \sum_{n \ge 1} b_n z^n \;=\; 2z \sum_{n \ge 1} b_{n-1} z^{n-1}.
+\]
+The left side is $B(z) - b_0 = B(z) - 1$. For the right side, substitute $m = n-1$ in the sum: $\sum_{n \ge 1} b_{n-1} z^{n-1} = \sum_{m \ge 0} b_m z^m = B(z)$, so the right side is $2z B(z)$. Thus
+\[
+  B(z) - 1 \;=\; 2z B(z), \qquad \text{so} \qquad B(z) \;=\; \frac{1}{1 - 2z}.
+\]
+This could equally be read as the geometric series $\sum_{n \ge 0} (2z)^n = \sum_{n \ge 0} 2^n z^n$, confirming $[z^n] B(z) = 2^n$. The functional equation route is more instructive: it works even when no closed-form formula for $b_n$ is obvious beforehand.
+
+\section*{Fibonacci numbers}
+
+The Fibonacci sequence is defined by $F_0 = 0$, $F_1 = 1$, and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 2$. Setting $F(z) = \sum_{n \ge 0} F_n z^n$ and converting the recurrence: multiply $F_n = F_{n-1} + F_{n-2}$ by $z^n$ and sum over $n \ge 2$,
+\[
+  \sum_{n \ge 2} F_n z^n
+  \;=\; z \sum_{n \ge 2} F_{n-1} z^{n-1}
+  \;+\; z^2 \sum_{n \ge 2} F_{n-2} z^{n-2}.
+\]
+The left side is $F(z) - F_1 z - F_0 = F(z) - z$. The two sums on the right are $z$ times $\sum_{m \ge 1} F_m z^m = F(z) - F_0 = F(z)$ and $z^2$ times $\sum_{m \ge 0} F_m z^m = F(z)$, respectively. Collecting terms,
+\[
+  F(z) - z \;=\; z F(z) + z^2 F(z),
+\]
+which gives immediately
+\[
+  F(z) \;=\; \frac{z}{1 - z - z^2}.
+\]
+To extract $F_n$ explicitly, we factor the denominator and use partial fractions. Define the \emph{golden ratio} $\varphi = (1+\sqrt{5})/2 \approx 1.618$ and its conjugate $\hat{\varphi} = (1-\sqrt{5})/2 \approx -0.618$. These are the two roots of $x^2 - x - 1 = 0$ (check: $\varphi^2 = \varphi + 1$ and $\hat\varphi^2 = \hat\varphi + 1$, both by direct computation). We claim
+\[
+  1 - z - z^2 \;=\; (1 - \varphi z)(1 - \hat\varphi z).
+\]
+To verify, expand the right side: $(1-\varphi z)(1-\hat\varphi z) = 1 - (\varphi + \hat\varphi)z + \varphi\hat\varphi\, z^2$. Now $\varphi + \hat\varphi = 1$ and $\varphi\hat\varphi = (1+\sqrt{5})(1-\sqrt{5})/4 = (1-5)/4 = -1$, so the product is $1 - z - z^2$ as claimed. The roots of $1 - z - z^2 = 0$ are therefore $z = 1/\varphi \approx 0.618$ and $z = 1/\hat\varphi = -\varphi \approx -1.618$.
+
+Now we decompose $F(z)$ into partial fractions. We seek constants $A$ and $B$ such that
+\[
+  F(z) \;=\; \frac{z}{(1-\varphi z)(1-\hat\varphi z)} \;=\; \frac{A}{1-\varphi z} + \frac{B}{1-\hat\varphi z}.
+\]
+Multiply both sides by $(1-\varphi z)(1-\hat\varphi z)$:
+\[
+  z \;=\; A(1-\hat\varphi z) + B(1-\varphi z).
+\]
+Comparing constant terms ($z^0$): $0 = A + B$, so $B = -A$. Comparing coefficients of $z$: $1 = -A\hat\varphi - B\varphi = -A\hat\varphi + A\varphi = A(\varphi - \hat\varphi)$. Since $\varphi - \hat\varphi = \sqrt{5}$, we get $A = 1/\sqrt{5}$ and $B = -1/\sqrt{5}$. Therefore
+\[
+  F(z) \;=\; \frac{1}{\sqrt{5}}\cdot\frac{1}{1 - \varphi z} \;-\; \frac{1}{\sqrt{5}}\cdot\frac{1}{1 - \hat\varphi z}.
+\]
+Each factor is a geometric series, exactly as in the binary-string example: $1/(1-\varphi z) = \sum_{n \ge 0} \varphi^n z^n$ and $1/(1-\hat\varphi z) = \sum_{n \ge 0} \hat\varphi^n z^n$. Reading off the coefficient of $z^n$ gives Binet's formula,
+\[
+  F_n \;=\; \frac{\varphi^n - \hat\varphi^n}{\sqrt{5}}.
+\]
+The key observation is that this closed form was \emph{forced} by the location of the poles of $F(z)$. The dominant term as $n \to \infty$ comes from the pole closest to the origin, which is at $z = 1/\varphi$, yielding $F_n \sim \varphi^n / \sqrt{5}$. This is not a coincidence: singularities of generating functions control asymptotics, a theme developed fully in Chapters~2 and~4. The standard reference for the entire theory is \cite{FlajoletSedgewick2009}.
+
+\section*{Catalan numbers}
+
+The Catalan numbers $C_n$ count full binary trees (every internal node has exactly two children) with $n$ internal nodes; equivalently, they count triangulations of a convex $(n+2)$-gon, Dyck paths of length $2n$, and well-formed parenthesizations of length $n$, among many other combinatorial families. The sequence begins $1, 1, 2, 5, 14, 42, \ldots$ and satisfies the recurrence
+\[
+  C_n \;=\; \sum_{k=0}^{n-1} C_k\, C_{n-1-k}, \qquad C_0 = 1.
+\]
+This recurrence reflects a structural decomposition: a binary tree with $n \ge 1$ internal nodes consists of a root together with a left subtree on $k$ internal nodes and a right subtree on $n-1-k$ nodes, for some $0 \le k \le n-1$.
+
+Following the same recipe as before: define $C(z) = \sum_{n \ge 0} C_n z^n$, multiply both sides of the recurrence by $z^n$, and sum over $n \ge 1$. The left side gives $\sum_{n \ge 1} C_n z^n = C(z) - C_0 = C(z) - 1$. For the right side, observe that $\sum_{k=0}^{n-1} C_k C_{n-1-k}$ is the convolution $[z^{n-1}](C(z)^2)$ (the coefficient of $z^{n-1}$ in $C(z)^2$). So
+\[
+  \sum_{n \ge 1}\biggl(\sum_{k=0}^{n-1} C_k C_{n-1-k}\biggr) z^n
+  \;=\; z \sum_{n \ge 1} [z^{n-1}](C(z)^2)\, z^{n-1}
+  \;=\; z\, C(z)^2.
+\]
+(The first equality factors $z^n = z \cdot z^{n-1}$ and pulls out the $z$. For the second, substitute $m = n-1$: the sum $\sum_{m \ge 0} [z^m](C^2)\cdot z^m$ simply reconstructs the series $C(z)^2$ from its coefficients --- a tautology, since any power series \emph{is} the sum of its terms.) Equating left and right sides:
+\[
+  C(z) - 1 \;=\; z\, C(z)^2, \qquad\text{i.e.,}\qquad C(z) \;=\; 1 + z\, C(z)^2.
+\]
+This is our first \emph{quadratic} functional equation. Rearrange it as $z\,C(z)^2 - C(z) + 1 = 0$, which is a quadratic equation in the unknown $C(z)$ with coefficients that happen to involve $z$. Applying the quadratic formula (with $a = z$, $b = -1$, $c = 1$):
+\[
+  C(z) \;=\; \frac{-(-1) \pm \sqrt{(-1)^2 - 4 \cdot z \cdot 1}}{2z} \;=\; \frac{1 \pm \sqrt{1 - 4z}}{2z}.
+\]
+The sign must be chosen so that $C(z)$ is a valid formal power series with $C_0 = 1$. To check: expand the numerator $1 + \sqrt{1-4z} = 1 + (1 - 2z - \cdots) = 2 - 2z - \cdots$, so $(1+\sqrt{1-4z})/(2z) = (2-2z-\cdots)/(2z) = 1/z - 1 - \cdots$, which contains a $z^{-1}$ term and is not a power series. The minus sign gives $1 - \sqrt{1-4z} = 1 - (1 - 2z - \cdots) = 2z + \cdots$, so $(1-\sqrt{1-4z})/(2z) = (2z + \cdots)/(2z) = 1 + \cdots$, which begins with $C_0 = 1$ as required. We take the minus sign:
+\[
+  C(z) \;=\; \frac{1 - \sqrt{1 - 4z}}{2z}.
+\]
+To extract coefficients, we need the \emph{generalized binomial theorem}. For any real number $\alpha$ and non-negative integer $n$, define the \emph{generalized binomial coefficient}
+\[
+  \binom{\alpha}{n} \;=\; \frac{\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-n+1)}{n!},
+\]
+a product of $n$ terms in the numerator (an empty product for $n=0$, giving $\binom{\alpha}{0}=1$). When $\alpha$ is a positive integer this reduces to the usual binomial coefficient; when $\alpha$ is not a non-negative integer the product never terminates, and the resulting series $(1+w)^\alpha = \sum_{n \ge 0}\binom{\alpha}{n}w^n$ is infinite. This identity is valid as a formal power series (and converges for $|w|<1$).
+
+Apply this with $\alpha = 1/2$ and $w = -4z$:
+\[
+  \sqrt{1-4z} \;=\; (1-4z)^{1/2} \;=\; \sum_{n \ge 0} \binom{1/2}{n}(-4z)^n.
+\]
+We need the explicit form of $\binom{1/2}{n}$ for $n \ge 1$. Writing out the falling factorial:
+\[
+  \binom{1/2}{n} = \frac{\tfrac{1}{2}(\tfrac{1}{2}-1)(\tfrac{1}{2}-2)\cdots(\tfrac{1}{2}-n+1)}{n!}
+  = \frac{\tfrac{1}{2}\cdot(-\tfrac{1}{2})\cdot(-\tfrac{3}{2})\cdots(\tfrac{3-2n}{2})}{n!}.
+\]
+The numerator has $n$ factors, each with a $2$ in the denominator, contributing $1/2^n$ overall. The remaining numerator (ignoring the $2^n$) is $1 \cdot (-1) \cdot (-3) \cdots (3-2n)$. The first factor is $+1$; the remaining $n-1$ factors are all negative, contributing a sign of $(-1)^{n-1}$. Their absolute values are $1, 1, 3, 5, \ldots, 2n-3$, whose product is the \emph{double factorial} $(2n-3)!! = 1 \cdot 3 \cdot 5 \cdots (2n-3)$. To convert this to ordinary factorials, note that $(2m)! = (1 \cdot 3 \cdot 5 \cdots (2m-1)) \cdot (2 \cdot 4 \cdot 6 \cdots 2m) = (2m-1)!! \cdot 2^m m!$, so $(2m-1)!! = (2m)!/(2^m m!)$; setting $m = n-1$ gives $(2n-3)!! = (2n-2)!/(2^{n-1}(n-1)!)$. Assembling everything:
+\[
+  \binom{1/2}{n}
+  = \frac{(-1)^{n-1}(2n-2)!}{2^n \cdot n! \cdot 2^{n-1}(n-1)!}
+  = \frac{(-1)^{n-1}}{2^{2n-1}\cdot n}\binom{2n-2}{n-1} \quad\text{for } n \ge 1,
+\]
+where the last step uses $\binom{2n-2}{n-1} = (2n-2)!/((n-1)!(n-1)!)$ and $n! = n \cdot (n-1)!$. (Verify for small $n$: $\binom{1/2}{1} = 1/2$, $\binom{1/2}{2} = -1/8$, $\binom{1/2}{3} = 1/16$.)
+
+Now substitute into $C(z) = (1-\sqrt{1-4z})/(2z)$:
+\[
+  C(z) = \frac{1}{2z}\Bigl(1 - \sum_{n \ge 0}\binom{1/2}{n}(-4z)^n\Bigr)
+  = \frac{-1}{2z}\sum_{n \ge 1}\binom{1/2}{n}(-4z)^n,
+\]
+since the $n=0$ term of the sum is $\binom{1/2}{0}(-4z)^0 = 1$, which cancels the leading $1$. Dividing by $2z$ shifts the power of $z$ down by one, so for $n \ge 0$:
+\[
+  [z^n]C(z) = \frac{-1}{2}\binom{1/2}{n+1}(-4)^{n+1}
+  = \frac{(-4)^{n+1}}{-2} \cdot \frac{(-1)^{n}}{2^{2n+1}(n+1)}\binom{2n}{n}.
+\]
+The sign: $(-4)^{n+1} = (-1)^{n+1} \cdot 4^{n+1}$, and $(-1)^{n+1} \cdot (-1)^n = (-1)^{2n+1} = -1$, so the factor $(-4)^{n+1} \cdot (-1)^n / (-2) = (-1)\cdot 4^{n+1}/(-2) = 4^{n+1}/2$. The powers of $2$: $4^{n+1}/2 = 2^{2n+2}/2 = 2^{2n+1}$, which cancels the $2^{2n+1}$ in the denominator. What remains is
+\[
+  [z^n] C(z) \;=\; \frac{1}{n+1}\binom{2n}{n},
+\]
+the standard formula for the $n$-th Catalan number. The appearance of $\sqrt{1-4z}$ is significant: $C(z)$ is not a rational function but an \emph{algebraic} one, satisfying a polynomial equation over $\mathbb{Q}(z)$. Algebraic generating functions have branch-point singularities rather than poles. The branch point of $C(z)$ at $z = 1/4$ is a square-root singularity, and from the local expansion $C(z) \sim 2 - 2\sqrt{1-4z}$ near $z = 1/4$, one can show (see Chapter~5) that
+\[
+  C_n \;\sim\; \frac{4^n}{n^{3/2}\sqrt{\pi}},
+\]
+a formula whose $n^{-3/2}$ subexponential factor is a direct signature of the square-root branch point. This pattern is universal: any combinatorial class whose generating function is algebraic with a square-root singularity as its dominant singularity will exhibit $n^{-3/2}$ subexponential decay in its coefficients. Unambiguous context-free grammars always produce algebraic generating functions, and this has concrete implications for the statistical structure of natural language sentences --- a connection we will revisit when discussing the relationship between pushdown automata and the token distributions produced by language models.
+
+\section*{Ordinary versus exponential generating functions}
+
+The generating functions above are \emph{ordinary generating functions} (OGFs): the sequence element $a_n$ is literally the coefficient of $z^n$. For \emph{unlabeled} combinatorial structures, where we only care about shape and not about which specific elements occupy which positions, OGFs are the natural choice.
+
+But many problems in combinatorics --- and in the analysis of language models --- involve \emph{labeled} structures, where the $n$ atoms in a structure carry distinct labels from $\{1, \ldots, n\}$ and the assignment of labels matters. The canonical example is permutations: the number of permutations of $n$ distinct elements is $n!$. Combining two labeled structures requires choosing which labels go where. Suppose we have a labeled $A$-structure on some subset of $k$ labels, and a labeled $B$-structure on the remaining $n-k$ labels. The number of ways to choose the subset is $\binom{n}{k}$, so the total count of combined structures of size $n$ is $\sum_{k=0}^n \binom{n}{k} a_k b_{n-k}$. This is called \emph{binomial convolution}, and it differs from the ordinary convolution $\sum_k a_k b_{n-k}$ by the binomial coefficient.
+
+\begin{definition}
+The \emph{exponential generating function} (EGF) of a sequence $(a_n)_{n \ge 0}$ is
+\[
+  \hat{A}(z) \;=\; \sum_{n \ge 0} a_n \frac{z^n}{n!}.
+\]
+\end{definition}
+
+The key algebraic fact is that binomial convolution of sequences corresponds to ordinary multiplication of EGFs. To see this, multiply $\hat{A}(z) = \sum a_n z^n/n!$ by $\hat{B}(z) = \sum b_n z^n/n!$. The coefficient of $z^n$ in the product is
+\[
+  [z^n](\hat A \cdot \hat B) \;=\; \sum_{k=0}^n \frac{a_k}{k!}\cdot\frac{b_{n-k}}{(n-k)!}
+  \;=\; \frac{1}{n!}\sum_{k=0}^n \binom{n}{k}a_k\,b_{n-k},
+\]
+since $\binom{n}{k} = n!/(k!(n-k)!)$. So $n!\cdot[z^n](\hat A \cdot \hat B)$ is exactly the binomial convolution --- the right combinatorial count for labeled structures. This is the algebraic reason that labeled structures prefer EGFs.
+
+We write $[z^n/n!]\hat{A}(z)$ as shorthand for $n!\cdot [z^n]\hat{A}(z) = a_n$, i.e., the coefficient of $z^n/n!$ in the EGF.
+
+\begin{example}
+Consider the sequence $a_n = n!$, counting permutations. Its OGF is $\sum_{n \ge 0} n! \, z^n$. The coefficients $n!$ grow much faster than any geometric sequence $C^n$, which means this series is only useful as a formal object; it does not converge to an analytic function for any $z \ne 0$. (Chapter~2 will make the notion of convergence precise via the \emph{radius of convergence}.) Its EGF, on the other hand, is
+\[
+  \hat{S}(z) \;=\; \sum_{n \ge 0} n! \cdot \frac{z^n}{n!} \;=\; \sum_{n \ge 0} z^n \;=\; \frac{1}{1-z},
+\]
+which is a clean rational function. The coefficient $[z^n/n!]\,\hat{S}(z) = 1$ tells us there is, up to labeling, one ``shape'' of permutation at each size; multiplying by $n!$ recovers the actual count $n!$.
+\end{example}
+
+The distinction between OGF and EGF is not merely aesthetic: using an OGF for a labeled structure or an EGF for an unlabeled one leads to incorrect functional equations. Part of the skill of analytic combinatorics is recognizing which generating function type matches the combinatorial product being modeled. The \emph{symbolic method}, developed in Chapter~3, makes this assignment systematic: the constructions $\SEQ$, $\SET$, $\CYC$, and $\MSET$ each translate directly into GF operations, and the labeled/unlabeled distinction determines whether the translation uses OGF or EGF conventions.
+
+\section*{Road map}
+
+This chapter has introduced generating functions purely as formal algebraic objects, and the examples have already shown their power: a recurrence becomes a functional equation, and the equation's solution encodes both exact counts and, implicitly, asymptotic behavior. The next chapter treats $z$ as a complex variable and develops the analytic theory that lets us extract asymptotics from singularities --- the principle that the growth rate of $a_n$ is governed by the location of the nearest singularity of $A(z)$ in $\mathbb{C}$, and the subexponential factor is governed by the type of that singularity. Chapter~3 introduces the symbolic method, turning combinatorial grammar rules directly into GF equations without any manual index manipulation. Chapters~4 and~5 then apply singularity analysis to rational and algebraic generating functions respectively, recovering the $\varphi^n$ growth of Fibonacci numbers and the $4^n n^{-3/2}$ growth of Catalan numbers from first principles. Throughout, we will draw connections to the statistical structure of sequences produced by large language models: such models define probability distributions over discrete sequences, and generating functions provide the right language for analyzing those distributions at scale.
+
+\begin{exercise}
+Find the ordinary generating function for the sequence $a_n = 3^n$ (ternary strings of length $n$) by both methods: (a) summing the geometric series directly, and (b) applying the recurrence-to-GF recipe to the recurrence $a_n = 3a_{n-1}$, $a_0 = 1$.
+\end{exercise}
+
+\begin{exercise}
+Use the generating function method to solve the recurrence $a_n = 2a_{n-1} + 1$ for $n \ge 1$, with $a_0 = 0$. (Hint: multiply by $z^n$ and sum. You will need to handle $\sum_{n \ge 1} z^n = z/(1-z)$ for the constant term on the right side. Use partial fractions on the resulting $A(z)$ to find a closed form for $a_n$.)
+\end{exercise}
+
+\begin{exercise}
+Verify the generalized binomial coefficient formula $\binom{1/2}{n} = (-1)^{n-1}/(2^{2n-1} n) \cdot \binom{2n-2}{n-1}$ for $n = 1, 2, 3, 4$ by computing both sides directly.
+\end{exercise}
+
+\section*{Further Reading}
+
+\begin{itemize}
+  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (Cambridge University Press, 2009) \cite{FlajoletSedgewick2009} --- The definitive reference for analytic combinatorics. Part~A (Chapters~I--II) covers formal power series, OGFs, EGFs, and the translation dictionary between combinatorial constructions and generating-function operations with full proofs and extensive examples.
+
+  \item \textbf{A. Nijenhuis and H.\,S. Wilf}, \emph{Combinatorial Algorithms} (Academic Press, 2nd ed., 1978) \cite{NijenhuisWilf1978} --- Focuses on algorithms for random generation and enumeration of combinatorial structures; includes generating-function derivations as part of the algorithmic analysis, with a hands-on computational style that complements the more theoretical approach of the present chapter.
+
+  \item \textbf{H.\,S. Wilf}, \emph{generatingfunctionology} (2nd ed., Academic Press, 1994; freely available online) --- A short, readable introduction to generating functions aimed at undergraduates. Covers OGFs and EGFs through worked problems; an excellent companion for anyone finding the present chapter's pace too quick.
+
+  \item \textbf{R.\,P. Stanley}, \emph{Enumerative Combinatorics}, Vol.~1 (Cambridge, 1997) --- Chapter~1 gives a thorough algebraic treatment of formal power series and the ring $\mathbb{Q}[[z]]$; Chapter~4 covers rational and algebraic generating functions in depth appropriate for graduate study.
+
+  \item \textbf{D.\,E. Knuth}, \emph{The Art of Computer Programming}, Vol.~1, \S1.2.9 --- A classic account of generating functions as a tool for solving recurrences, with worked examples drawn from algorithm analysis; especially useful for readers interested in the connection to computer science.
+\end{itemize}
