@@ -1,376 +1,346 @@
 \chapter{The Symbolic Method}
 
-The central ambition of analytic combinatorics is to pass mechanically from a
-structural description of a class of combinatorial objects to an equation satisfied
-by its generating function, and thence---via the complex-analytic machinery of
-Chapter~2---to precise asymptotic counts.  The \emph{symbolic method} is the first
-half of that program.  It is a formal calculus in which set-theoretic operations on
-combinatorial classes correspond, under a precise dictionary, to algebraic
-operations on power series.  No coefficient computation by hand is required; the
-structure of an object class \emph{is} its generating function equation.  The
-standard reference for everything in this chapter is~\cite{FlajoletSedgewick2009},
-Part~A.
+The central ambition of analytic combinatorics is to pass from a structural description of a class of objects to an equation satisfied by its generating function, and then --- via the analytic machinery of Chapter~2 --- to asymptotic counting formulas. The \emph{symbolic method} is the first half of that program. It is a dictionary translating set-theoretic constructions on combinatorial classes into algebraic operations on generating functions.
+
+There is one important warning at the outset. A symbolic specification is not just a vague resemblance between formulas and objects. It must describe each object \emph{exactly once}. If the same object can be built in two different ways, the generating function will overcount. So the symbolic method works best when a combinatorial decomposition is really a bijection between objects and structured tuples, sequences, or sets of simpler objects. The standard reference for the material in this chapter is \cite{FlajoletSedgewick2009}, Part~A.
 
 \section{Combinatorial Classes}
 
 \begin{definition}
-A \emph{combinatorial class} is a pair $(\mathcal{C}, |\cdot|)$ where
-$\mathcal{C}$ is a (typically countably infinite) set and
-$|\cdot| : \mathcal{C} \to \mathbb{Z}_{\ge 0}$ is a \emph{size function} such
-that the level set
+A \emph{combinatorial class} is a pair $(\mathcal{C}, |\cdot|)$ where $\mathcal{C}$ is a set and
 \[
-  \mathcal{C}_n \;=\; \{\,\gamma \in \mathcal{C} : |\gamma| = n\,\}
+  |\cdot| : \mathcal{C} \to \mathbb{Z}_{\ge 0}
 \]
-is finite for every $n \ge 0$.  Write $c_n = |\mathcal{C}_n|$.  The
-\emph{ordinary generating function} (OGF) of $\mathcal{C}$ is
+is a \emph{size function} such that, for every $n \ge 0$, the level set
 \[
-  C(z) \;=\; \sum_{\gamma \in \mathcal{C}} z^{|\gamma|}
-            \;=\; \sum_{n \ge 0} c_n\, z^n.
+  \mathcal{C}_n = \{\gamma \in \mathcal{C} : |\gamma| = n\}
 \]
+is finite.
 \end{definition}
 
-The finiteness condition on $\mathcal{C}_n$ guarantees that $C(z)$ is a
-well-defined formal power series; whether it converges anywhere other than $z = 0$
-is a separate analytic question taken up in Chapter~2.  Three archetypal classes
-will recur throughout: the class $\mathcal{W}$ of binary words over $\{a,b\}$
-with $|w|$ equal to the word length; the class $\mathcal{T}$ of plane trees (also
-called ordered or planar trees) with $|t|$ equal to the number of nodes; and the
-class $\mathfrak{S}$ of permutations with $|\sigma|$ equal to the length.  For
-permutations one uses instead an \emph{exponential generating function} (EGF),
-discussed briefly in the subsection on labeled classes below; the unlabeled classes $\mathcal{W}$ and
-$\mathcal{T}$ are handled by ordinary generating functions.
+Write $c_n = |\mathcal{C}_n|$. The \emph{ordinary generating function} (OGF) of $\mathcal{C}$ is
+\[
+  C(z) = \sum_{\gamma \in \mathcal{C}} z^{|\gamma|} = \sum_{n \ge 0} c_n z^n.
+\]
+The second equality comes from grouping together all objects of the same size $n$: there are exactly $c_n$ of them. The finiteness of each level set is what makes this a valid formal power series, because the coefficient of $z^n$ is the finite number $c_n$.
 
-Two distinguished classes serve as universal building blocks.
+Three archetypal classes will recur throughout the book.
+\begin{itemize}
+  \item Binary words over $\{a,b\}$, with size equal to word length.
+  \item Plane trees, where the children of each node are ordered from left to right.
+  \item Permutations, which are naturally \emph{labeled} objects and therefore call for exponential generating functions rather than ordinary ones.
+\end{itemize}
+For example, the plane trees of sizes $1$ and $2$ look like a single root, and a root with one child; and a size-$3$ permutation is something like $(2,3,1)$, where the labels matter.
+
+Two tiny classes serve as universal building blocks.
 
 \begin{definition}
-The \emph{neutral class} $\mathcal{E} = \{\epsilon\}$ contains a single object of
-size $0$; its OGF is $E(z) = 1$.  The \emph{atomic class} $\mathcal{Z} =
-\{\bullet\}$ contains a single object of size $1$; its OGF is $Z(z) = z$.
+The \emph{neutral class} $\mathcal{E} = \{\epsilon\}$ contains one object of size $0$, so its OGF is $E(z)=1$. The \emph{atomic class} $\mathcal{Z} = \{\bullet\}$ contains one object of size $1$, so its OGF is $Z(z)=z$.
 \end{definition}
 
-Every combinatorial class is, in the symbolic framework, built from $\mathcal{E}$
-and $\mathcal{Z}$ by iterating a small family of constructions.  Making this precise
-is the content of the next section.
+These are the combinatorial analogues of the constants $1$ and $z$. For instance, a word of length $3$ built from three atoms has the symbolic form
+\[
+  \mathcal{Z} \times \mathcal{Z} \times \mathcal{Z}.
+\]
+The rest of the symbolic method consists of combining $\mathcal{E}$ and $\mathcal{Z}$ through a small family of constructors.
 
 \section{The Translation Dictionary for OGFs}
 
-\begin{proposition}[Symbolic Transfer, Unlabeled Case]
+\begin{proposition}[Symbolic transfer, unlabeled case]
 \label{prop:symbolic-ogf}
-Let $\mathcal{A}$ and $\mathcal{B}$ be combinatorial classes with OGFs $A(z)$ and
-$B(z)$ respectively.  The following constructions on classes translate into the
-indicated operations on OGFs.
+Let $\mathcal{A}$ and $\mathcal{B}$ be combinatorial classes with OGFs $A(z)$ and $B(z)$. Then the following constructions translate into the following OGF operations.
 \begin{enumerate}
-  \item \textbf{Disjoint union.}  If $\mathcal{A} + \mathcal{B}$ denotes the
-        disjoint union of $\mathcal{A}$ and $\mathcal{B}$ (with size inherited from
-        each summand), then
-        \[
-          \mathcal{A} + \mathcal{B} \;\longleftrightarrow\; A(z) + B(z).
-        \]
-  \item \textbf{Cartesian product.}  Define the size of a pair by
-        $|(a,b)| = |a| + |b|$.  Then
-        \[
-          \mathcal{A} \times \mathcal{B} \;\longleftrightarrow\; A(z)\,B(z).
-        \]
-  \item \textbf{Sequence.}  Provided $\mathcal{A}$ contains no object of size $0$,
-        \[
-          \SEQ(\mathcal{A}) \;\longleftrightarrow\; \frac{1}{1 - A(z)}.
-        \]
+  \item \textbf{Disjoint union.} If every object is tagged as coming from the $\mathcal{A}$ side or the $\mathcal{B}$ side, then
+  \[
+    \mathcal{A} + \mathcal{B} \longleftrightarrow A(z)+B(z).
+  \]
+  \item \textbf{Cartesian product.} If objects are ordered pairs $(a,b)$ with size $|(a,b)|=|a|+|b|$, then
+  \[
+    \mathcal{A} \times \mathcal{B} \longleftrightarrow A(z)B(z).
+  \]
+  \item \textbf{Sequence.} If $\mathcal{A}$ contains no object of size $0$, then finite sequences of $\mathcal{A}$-objects satisfy
+  \[
+    \SEQ(\mathcal{A}) \longleftrightarrow \frac{1}{1-A(z)}.
+  \]
 \end{enumerate}
 \end{proposition}
 
-\begin{proof}[Proof sketch]
-For the disjoint union, the sum defining the OGF splits over the two components:
-\[
-  \sum_{\gamma \in \mathcal{A} \sqcup \mathcal{B}} z^{|\gamma|}
-  \;=\;
-  \sum_{\alpha \in \mathcal{A}} z^{|\alpha|}
-  \;+\;
-  \sum_{\beta \in \mathcal{B}} z^{|\beta|}
-  \;=\; A(z) + B(z).
-\]
-For the Cartesian product, the additive size convention gives
-\[
-  \sum_{(a,b)\, \in\, \mathcal{A} \times \mathcal{B}} z^{|(a,b)|}
-  \;=\;
-  \sum_{a \in \mathcal{A}} \sum_{b \in \mathcal{B}} z^{|a| + |b|}
-  \;=\;
-  \left(\sum_{a \in \mathcal{A}} z^{|a|}\right)
-  \left(\sum_{b \in \mathcal{B}} z^{|b|}\right)
-  \;=\; A(z)\,B(z).
-\]
-This is precisely the Cauchy convolution of coefficient sequences, matching the
-observation in Chapter~1 that $[z^n]\,A(z)\,B(z) = \sum_{k=0}^n a_k\,b_{n-k}$.
+The word \emph{disjoint} matters. If the same underlying object could belong to both classes, it would be counted twice. When two classes are not literally disjoint, one uses a \emph{tagged disjoint union}: an object is paired with a label saying which side it came from.
 
-For sequences, by definition
-$\SEQ(\mathcal{A}) = \mathcal{E} + \mathcal{A} + \mathcal{A}^2 + \mathcal{A}^3 +
-\cdots$, where $\mathcal{A}^k$ is the $k$-fold Cartesian product and the sum is
-disjoint union.  The absence of size-$0$ objects in $\mathcal{A}$ ensures that
-each $\mathcal{A}^k$ contributes only to $[z^n]$ for $n \ge k$, so the formal
-sum is locally finite and defines a valid combinatorial class.  Applying the first
-two rules,
+\begin{proof}
+For disjoint union, every object belongs to exactly one summand, so the OGF simply splits:
 \[
-  \SEQ(\mathcal{A})
-  \;\longleftrightarrow\;
-  1 + A(z) + A(z)^2 + A(z)^3 + \cdots
-  \;=\; \frac{1}{1 - A(z)},
+  \sum_{\gamma \in \mathcal{A}+\mathcal{B}} z^{|\gamma|}
+  = \sum_{\alpha \in \mathcal{A}} z^{|\alpha|} + \sum_{\beta \in \mathcal{B}} z^{|\beta|}
+  = A(z)+B(z).
 \]
-the last equality holding as an identity of formal power series (since $A(z)$ has
-zero constant term by hypothesis).
+
+For Cartesian products, we use the additive size rule:
+\[
+  \sum_{(a,b) \in \mathcal{A}\times\mathcal{B}} z^{|(a,b)|}
+  = \sum_{(a,b)} z^{|a|+|b|}
+  = \sum_{a \in \mathcal{A}} \sum_{b \in \mathcal{B}} z^{|a|}z^{|b|}
+  = A(z)B(z).
+\]
+At the coefficient level,
+\[
+  [z^n]A(z)B(z) = \sum_{k=0}^n a_k b_{n-k},
+\]
+which has the expected combinatorial meaning: to build a size-$n$ pair, choose a size-$k$ object from $\mathcal{A}$ and a size-$(n-k)$ object from $\mathcal{B}$. Only finitely many splits $k+(n-k)=n$ are possible.
+
+For sequences, a finite list of $\mathcal{A}$-objects can have length $0,1,2,\dots$, so as a class,
+\[
+  \SEQ(\mathcal{A}) = \mathcal{E} + \mathcal{A} + \mathcal{A}^2 + \mathcal{A}^3 + \cdots,
+\]
+where $\mathcal{A}^k$ means a $k$-fold Cartesian product and therefore represents ordered sequences of length $k$. The union is disjoint because the sequence length is part of the data: a 2-term sequence is not the same kind of object as a 3-term sequence.
+
+Why do we exclude size-$0$ objects from $\mathcal{A}$? Because otherwise local finiteness can fail. If $\mathcal{A}$ had even one size-$0$ object, then a size-$1$ sequence could be padded with arbitrarily many zero-size entries, producing infinitely many distinct sequences of total size $1$. By contrast, if every object of $\mathcal{A}$ has size at least $1$, then a sequence of total size $n$ can have length at most $n$. So only finitely many sequence lengths contribute to the coefficient of $z^n$.
+
+Now apply the union and product rules:
+\[
+  \SEQ(\mathcal{A}) \longleftrightarrow 1 + A(z) + A(z)^2 + A(z)^3 + \cdots.
+\]
+Because $\mathcal{A}$ has no size-$0$ object, the constant term of $A(z)$ is $0$. So Chapter~1's formal geometric-series identity applies and gives
+\[
+  1 + A(z) + A(z)^2 + A(z)^3 + \cdots = \frac{1}{1-A(z)}.
+\]
+Equivalently, the coefficient of $z^n$ on the left counts all sequences of total size $n$, and only finitely many powers $A(z)^k$ can contribute because $k \le n$.
 \end{proof}
 
 \begin{remark}
-The $\SEQ$ constructor is often written with a subscript constraint:
-$\SEQ_{\ge k}(\mathcal{A})$ denotes sequences of length at least $k$, with OGF
-$A(z)^k/(1 - A(z))$.  This follows because $\SEQ_{\ge k}(\mathcal{A}) =
-\mathcal{A}^k \times \SEQ(\mathcal{A})$, so the OGF is $A(z)^k \cdot 1/(1-A(z))$.
-In particular $\SEQ_{\ge 1}(\mathcal{A})$ has OGF $A(z)/(1-A(z))$.
+The constructor
+\[
+  \SEQ_{\ge k}(\mathcal{A})
+\]
+means sequences of length at least $k$. Structurally, that is
+\[
+  \SEQ_{\ge k}(\mathcal{A}) = \mathcal{A}^k \times \SEQ(\mathcal{A}),
+\]
+because one first chooses the required first $k$ entries and then any additional tail. Therefore its OGF is
+\[
+  \frac{A(z)^k}{1-A(z)}.
+\]
+In particular,
+\[
+  \SEQ_{\ge 1}(\mathcal{A}) \longleftrightarrow \frac{A(z)}{1-A(z)}.
+\]
 \end{remark}
 
-\subsection*{Marking variables and bivariate generating functions}
+\section{Marking Variables and Bivariate Generating Functions}
 
-A single extra variable $u$ allows one to track a statistic simultaneously with
-size.  Suppose $\chi : \mathcal{C} \to \mathbb{Z}_{\ge 0}$ is a combinatorial
-parameter.  Define the \emph{bivariate OGF}
+A second variable can track a statistic at the same time as size. Let $\chi : \mathcal{C} \to \mathbb{Z}_{\ge 0}$ be a parameter, and define the bivariate OGF
 \[
-  C(z,u) \;=\; \sum_{\gamma \in \mathcal{C}} z^{|\gamma|}\, u^{\chi(\gamma)}
-            \;=\; \sum_{n,k \ge 0} c_{n,k}\, z^n u^k,
+  C(z,u) = \sum_{\gamma \in \mathcal{C}} z^{|\gamma|}u^{\chi(\gamma)} = \sum_{n,k \ge 0} c_{n,k} z^n u^k,
 \]
-where $c_{n,k} = |\{\gamma : |\gamma| = n,\, \chi(\gamma) = k\}|$.  The
-univariate OGF is recovered as $C(z,1)$.  The mean of $\chi$ over objects of size
-$n$ is
+where $c_{n,k}$ counts objects of size $n$ with statistic value $k$. The ordinary OGF is recovered by setting $u=1$.
+
+To speak about an \emph{expected value} at size $n$, we must put a probability distribution on the finite set $\mathcal{C}_n$. In this chapter we use the \emph{uniform distribution} on $\mathcal{C}_n$. Then
 \[
-  \mathbf{E}[\chi \mid |\gamma| = n]
-  \;=\; \frac{[z^n]\,\partial_u C(z,u)\big|_{u=1}}{[z^n]\,C(z,1)}.
+  \mathbf{E}[\chi \mid |\gamma|=n]
+  = \frac{[z^n] \partial_u C(z,u)\big|_{u=1}}{[z^n] C(z,1)}.
 \]
-To see why: differentiating $u^{\chi(\gamma)}$ with respect to $u$ and setting
-$u = 1$ replaces each $u^{\chi(\gamma)}$ by $\chi(\gamma)$, so
-$[z^n]\,\partial_u C(z,u)|_{u=1} = \sum_{|\gamma|=n} \chi(\gamma)$.
-Dividing by $c_n = [z^n]\,C(z,1)$ gives the mean.
-
-The \emph{pointing} (or \emph{derived}) class $\mathcal{C}^\bullet$ marks one
-distinguished atom in each structure.  If objects of size $n$ each contain exactly
-$n$ atoms, then $C^\bullet(z) = z\,C'(z)$ where $C' = dC/dz$, because pointing
-multiplies the number of structures of size $n$ by $n$: the GF of pointed objects
-is $\sum_{n \ge 0} n\,c_n\, z^n = z \sum_{n \ge 0} n\,c_n\, z^{n-1} = z\,C'(z)$.
-
-\subsection*{Labeled classes and EGFs}
-
-For labeled structures---where the $n$ atoms carry distinct labels from $\{1,
-\ldots, n\}$---the correct accounting replaces OGFs with \emph{exponential
-generating functions} (EGFs): $\hat{C}(z) = \sum_{n \ge 0} c_n\, z^n/n!$.  The
-translation rules for disjoint union and sequence are formally identical in
-shape.  The \emph{labeled product} of classes $\hat{\mathcal{A}}$ and
-$\hat{\mathcal{B}}$ yields OGF $\hat{A}(z)\,\hat{B}(z)$; the $1/n!$ normalization
-of the EGF absorbs the $\binom{n}{k}$ ways to partition a label set of size $n$
-between the two factors.  Beyond sequences, labeled structures admit two further
-constructions: $\SET(\mathcal{A})$ (unordered collections, with repetition
-forbidden) translates to $\exp \hat{A}(z)$, and $\CYC(\mathcal{A})$ (cyclic
-sequences) translates to $\log(1/(1 - \hat{A}(z)))$.  Here is the derivation of
-the $\SET$ rule, which is short and illuminates the whole labeled framework.
-
-A set of $k$ labeled $\mathcal{A}$-structures is formed by (i) partitioning the
-label set $[n]$ into $k$ blocks of sizes $n_1, \ldots, n_k$ with
-$n_1 + \cdots + n_k = n$, (ii) placing one $\mathcal{A}$-structure on each block,
-and (iii) forgetting the order of the $k$ components (since a set is unordered).
-Steps (i) and (ii) together contribute
+Indeed,
 \[
-  \binom{n}{n_1, \ldots, n_k} \cdot a_{n_1} \cdots a_{n_k}
+  \partial_u u^{\chi(\gamma)} = \chi(\gamma)u^{\chi(\gamma)-1},
 \]
-ways to build an ordered $k$-tuple of $\mathcal{A}$-structures on labels $[n]$.
-Step (iii) divides by $k!$ to forget the ordering.  Summing over all $k \ge 0$
-and all compositions of $n$, the EGF of $\SET(\mathcal{A})$ is
+so after setting $u=1$,
+\[
+  [z^n] \partial_u C(z,u)\big|_{u=1} = \sum_{|\gamma|=n} \chi(\gamma).
+\]
+Dividing by $|\mathcal{C}_n| = [z^n]C(z,1)$ gives the uniform mean.
+
+A related construction is \emph{pointing}. Suppose each size-$n$ object is built from exactly $n$ atomic positions counted by the variable $z$. Then the pointed class $\mathcal{C}^{\bullet}$ is obtained by choosing one distinguished atom. Every size-$n$ object therefore gives rise to exactly $n$ pointed objects, so
+\[
+  C^{\bullet}(z) = zC'(z).
+\]
+For example, a 4-letter word has exactly 4 possible pointings, one for each letter position.
+
+\section{Labeled Classes and EGFs}
+
+For labeled structures, the $n$ atoms carry distinct labels from $\{1,\dots,n\}$. A labeled object is therefore an underlying shape together with a bijection from its $n$ atomic positions to the label set $[n]$. The natural generating function is the \emph{exponential generating function} (EGF)
+\[
+  \hat{C}(z) = \sum_{n \ge 0} c_n \frac{z^n}{n!}.
+\]
+The factor $1/n!$ removes the arbitrary naming of the labels and leaves only the structural count.
+For example, a labeled object of size $3$ uses the labels $\{1,2,3\}$ exactly once each, assigned to its three atomic positions.
+
+Disjoint union works exactly as before. The crucial new rule is the labeled product. Suppose $\hat{\mathcal{A}}$ and $\hat{\mathcal{B}}$ are labeled classes with EGFs $\hat{A}(z)$ and $\hat{B}(z)$. To build a size-$n$ product object, choose $k$ of the $n$ labels for the $\hat{\mathcal{A}}$ part and give the remaining $n-k$ labels to the $\hat{\mathcal{B}}$ part. Therefore
+\[
+  n![z^n]\,\hat{A}(z)\hat{B}(z)
+  = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k},
+\]
+which is exactly the number of labeled product objects of size $n$. This is the same binomial-convolution calculation from Chapter~1, now interpreted combinatorially.
+
+If a labeled class has no size-$0$ object, then the sequence rule again has the same formal shape:
+\[
+  \SEQ(\hat{\mathcal{A}}) \longleftrightarrow \frac{1}{1-\hat{A}(z)}.
+\]
+The underlying reason is that an ordered list of labeled components still has no symmetry: once the list order is fixed, there is nothing to divide out.
+
+The next labeled constructor is \emph{set}. Here the order of the components is forgotten.
+
+\begin{proposition}[Set constructor in the labeled setting]
+If $\hat{\mathcal{A}}$ has no size-$0$ object, then
+\[
+  \widehat{\SET(\mathcal{A})}(z) = \exp(\hat{A}(z)).
+\]
+\end{proposition}
+
+\begin{proof}
+Let $\SET_k(\mathcal{A})$ denote sets of exactly $k$ labeled $\mathcal{A}$-objects. First pretend the $k$ components are ordered. Then the EGF is $\hat{A}(z)^k$, because we are taking a $k$-fold labeled product. But a set forgets the order of its $k$ components, and there are exactly $k!$ ways to order them. So
+\[
+  \widehat{\SET_k(\mathcal{A})}(z) = \frac{\hat{A}(z)^k}{k!}.
+\]
+Now sum over all $k \ge 0$:
 \[
   \widehat{\SET(\mathcal{A})}(z)
-  \;=\; \sum_{k \ge 0} \frac{\hat{A}(z)^k}{k!}
-  \;=\; \exp\!\bigl(\hat{A}(z)\bigr).
+  = \sum_{k \ge 0} \frac{\hat{A}(z)^k}{k!}
+  = \exp(\hat{A}(z)).
 \]
-The $k!$ in the denominator is the key: it is exactly the number of ways to
-permute $k$ indistinguishable components, canceling the overcounting from treating
-an unordered set as an ordered tuple.  The labeled product rule (the EGF of
-an ordered $k$-tuple is $\hat{A}(z)^k$) combined with division by $k!$ is
-precisely the exponential series, which is why EGFs and the exponential function
-are inseparable in the labeled world.
+The exclusion of size-$0$ objects is again needed to prevent infinitely many zero-size components from appearing.
+\end{proof}
 
-For $\CYC(\mathcal{A})$, the same argument applies with one change: cyclic sequences
-have $k$ rotations rather than $k!$ permutations as symmetries, so the EGF of
-$k$-cycles is $\hat{A}(z)^k / k$ instead of $\hat{A}(z)^k / k!$.  Summing over
-$k \ge 1$ gives
+As a tiny example, the class of finite sets of labeled atoms is $\SET(\mathcal{Z})$, so its EGF is
 \[
-  \widehat{\CYC(\mathcal{A})}(z)
-  \;=\; \sum_{k \ge 1} \frac{\hat{A}(z)^k}{k}
-  \;=\; \log\!\frac{1}{1 - \hat{A}(z)}.
+  \exp(z).
 \]
-The full derivation, including careful bookkeeping for the $k = 0$ case and the
-formal treatment via species, is in~\cite{FlajoletSedgewick2009}, Chapter~II;
-see also~\cite{BergeronLabelleLeRoux1998} for the species-theoretic account.
+The coefficient of $z^n/n!$ is $1$, which matches the fact that on a given label set $[n]$ there is exactly one $n$-element set.
+
+Cyclic structures are subtler. The standard labeled rule is
+\[
+  \widehat{\CYC(\mathcal{A})}(z) = \log\!\frac{1}{1-\hat{A}(z)}.
+\]
+We record this formula here because it is important and useful, but we will treat it as a black-box rule in this chapter. A full proof belongs to the theory of combinatorial species; see \cite{BergeronLabelleLeRoux1998} or \cite{FlajoletSedgewick2009}.
 
 \section{Worked Examples}
 
 \begin{example}[Binary words]
-Let $\mathcal{A} = \{a\}$ and $\mathcal{B} = \{b\}$, each a copy of $\mathcal{Z}$.
-A binary word is an element of $\SEQ(\mathcal{A} + \mathcal{B})$.  By
-Proposition~\ref{prop:symbolic-ogf},
+Let $\mathcal{A}=\{a\}$ and $\mathcal{B}=\{b\}$, each a copy of $\mathcal{Z}$. A binary word is a finite sequence of one-letter choices, so
 \[
-  W(z) \;=\; \frac{1}{1 - (z + z)} \;=\; \frac{1}{1 - 2z} \;=\; \sum_{n \ge 0} 2^n z^n.
+  \mathcal{W} = \SEQ(\mathcal{A}+\mathcal{B}).
 \]
-There are $2^n$ binary words of length $n$.  This is the simplest instance of the
-method: a one-line specification yields a one-line OGF.
+Since each one-letter choice contributes $z$, the class $\mathcal{A}+\mathcal{B}$ has OGF
+\[
+  z+z = 2z.
+\]
+Therefore
+\[
+  W(z) = \frac{1}{1-2z} = \sum_{n \ge 0} 2^n z^n.
+\]
+So there are $2^n$ binary words of length $n$.
 \end{example}
 
 \begin{example}[Plane trees and Catalan numbers]
-A plane tree $t \in \mathcal{T}$ consists of a root node (contributing one unit of
-size) together with an ordered, possibly empty sequence of plane trees (the
-subtrees hanging from the root).  The self-referential description translates
-immediately:
+A plane tree consists of a root together with an ordered list of plane trees attached to that root as children. The children are ordered, so a sequence is exactly the right constructor. If size means number of nodes, then the root contributes one atom and the child list contributes a sequence of smaller trees:
 \[
-  \mathcal{T} \;=\; \mathcal{Z} \times \SEQ(\mathcal{T})
-  \quad\Longrightarrow\quad
-  T(z) \;=\; \frac{z}{1 - T(z)}.
+  \mathcal{T} = \mathcal{Z} \times \SEQ(\mathcal{T}).
 \]
-This is a functional equation for $T$, not a closed form---but extracting the
-closed form is straightforward.  Rearranging gives $T(z)(1 - T(z)) = z$, or
+Proposition~\ref{prop:symbolic-ogf} therefore gives
 \[
-  T(z)^2 - T(z) + z \;=\; 0.
+  T(z) = \frac{z}{1-T(z)}.
 \]
-The quadratic formula yields two branches; the branch with $T(0) = 0$ (no trees of
-size $0$) is
+Rearranging,
 \[
-  T(z) \;=\; \frac{1 - \sqrt{1 - 4z}}{2}.
+  T(z)^2 - T(z) + z = 0.
 \]
-Expanding the square root via the generalized binomial theorem (Chapter~1),
-$(1-4z)^{1/2} = \sum_{n \ge 0} \binom{1/2}{n}(-4z)^n$, so
+Solving the quadratic yields
 \[
-  [z^n]\,\sqrt{1-4z}
-  \;=\; \binom{1/2}{n}(-4)^n
-  \;=\; \frac{-2}{n}\binom{2(n-1)}{n-1} \quad (n \ge 1).
+  T(z) = \frac{1 \pm \sqrt{1-4z}}{2}.
 \]
-Since $T(z) = \tfrac{1}{2}(1 - \sqrt{1-4z})$, we get
+Chapter~1 showed that there is a unique formal square root with constant term $1$, and the condition $T(0)=0$ forces the minus sign. So
 \[
-  [z^n]\,T(z)
-  \;=\; \frac{1}{n}\binom{2(n-1)}{n-1}
-  \;=\; C_{n-1},
+  T(z) = \frac{1-\sqrt{1-4z}}{2}.
 \]
-the $(n-1)$-st Catalan number.  Crucially, the symbolic specification
-$\mathcal{T} = \mathcal{Z} \times \SEQ(\mathcal{T})$ \emph{determines} the
-appearance of the square-root singularity: any class satisfying a quadratic
-equation of this shape will have a square-root branch point at its radius of
-convergence, with the $n^{-3/2}$ asymptotic law that Chapter~4 will make
-precise.
+Chapter~1 also computed the coefficients of $\sqrt{1-4z}$, which gives
+\[
+  [z^n]T(z) = \frac{1}{n}\binom{2n-2}{n-1} \qquad (n \ge 1).
+\]
+This is the Catalan number $C_{n-1}$. The index shift comes from our size convention: a plane tree with $n$ nodes corresponds to the $(n-1)$st Catalan number because Catalan numbers are often indexed by edges or by internal nodes rather than total nodes.
+
+This example is our first encounter with a square-root expression coming from a symbolic specification. Later chapters will explain when such equations really do force square-root singularities and $n^{-3/2}$ asymptotics; that conclusion is only a preview here.
 \end{example}
 
 \begin{example}[Integer compositions]
-A \emph{composition} of $n$ is an ordered tuple of positive integers summing to
-$n$.  A positive integer of value $k$ is naturally modeled as a sequence of
-exactly $k$ atoms, so the class of positive integers is
-$\mathcal{I} = \SEQ_{\ge 1}(\mathcal{Z})$, with OGF
+A positive integer of value $k$ can be modeled as a block of exactly $k$ atoms, because the block size records the integer's value. So the class of positive integers is
 \[
-  I(z) \;=\; \frac{z}{1 - z}.
+  \mathcal{I} = \SEQ_{\ge 1}(\mathcal{Z}),
+  \qquad
+  I(z) = \frac{z}{1-z}.
 \]
-A composition is then a nonempty sequence of positive integers:
-$\mathcal{K} = \SEQ_{\ge 1}(\mathcal{I})$, giving
+A composition is then a nonempty sequence of such blocks:
 \[
-  K(z)
-  \;=\; \frac{I(z)}{1 - I(z)}
-  \;=\; \frac{z/(1-z)}{1 - z/(1-z)}
-  \;=\; \frac{z}{1 - 2z}.
+  \mathcal{K} = \SEQ_{\ge 1}(\mathcal{I}).
 \]
-Thus $[z^n]\,K(z) = 2^{n-1}$ for $n \ge 1$: there are $2^{n-1}$ compositions of
-$n$.  This is again a one-paragraph derivation; a direct combinatorial proof
-(choosing which of the $n-1$ gaps between $n$ ones to include as part breaks) gives
-the same answer, but the generating-function route required no such insight.
+Therefore
+\[
+  K(z) = \frac{I(z)}{1-I(z)} = \frac{z/(1-z)}{1-z/(1-z)} = \frac{z}{1-2z}.
+\]
+So
+\[
+  [z^n]K(z) = 2^{n-1} \qquad (n \ge 1).
+\]
+This matches the direct gaps argument: between $n$ ones there are $n-1$ gaps, and each gap is either cut or not cut.
 \end{example}
 
 \begin{example}[Bivariate marking: number of $a$'s in a binary word]
-Let $\chi(w)$ count the number of occurrences of the letter $a$ in a binary word
-$w$.  Mark each $a$ by $u$ and each $b$ by $1$ to obtain the bivariate OGF:
+Let $\chi(w)$ count the number of letters $a$ in a binary word $w$. Each letter contributes one factor of $z$ for its size. In addition, the letter $a$ contributes a factor of $u$ while the letter $b$ contributes no extra factor. So a single letter contributes either $zu$ or $z$, and an arbitrary binary word has bivariate OGF
 \[
-  W(z, u)
-  \;=\; \frac{1}{1 - zu - z}
-  \;=\; \frac{1}{1 - z(u + 1)}.
+  W(z,u) = \frac{1}{1-(zu+z)} = \frac{1}{1-z(u+1)}.
 \]
-Expanding,
+Now expand the geometric series:
 \[
-  [z^n u^k]\, W(z,u)
-  \;=\; [u^k]\,(u+1)^n
-  \;=\; \binom{n}{k}.
+  W(z,u) = \sum_{n \ge 0} z^n (u+1)^n.
 \]
-So among the $2^n$ binary words of length $n$, exactly $\binom{n}{k}$ contain
-exactly $k$ letters $a$.  Setting $u = 1$ recovers $W(z,1) = 1/(1-2z)$.  The mean
-number of $a$'s in a word of length $n$ is
+Therefore
 \[
-  \frac{[z^n]\,\partial_u W(z,u)\big|_{u=1}}{[z^n]\,W(z,1)}
-  \;=\; \frac{n \cdot 2^{n-1}}{2^n}
-  \;=\; \frac{n}{2},
+  [z^n u^k]W(z,u) = [u^k](u+1)^n = \binom{n}{k}.
 \]
-as expected by symmetry.  The bivariate framework will become essential in
-Chapter~8 when we study parameters of parse trees arising from probabilistic
-context-free grammars.
+So among the $2^n$ binary words of length $n$, exactly $\binom{n}{k}$ contain $k$ letters $a$.
+
+Using the uniform distribution on binary words of length $n$, the mean number of $a$'s is
+\[
+  \frac{[z^n]\partial_u W(z,u)\big|_{u=1}}{[z^n]W(z,1)}
+  = \frac{[z^n]\frac{z}{(1-z(u+1))^2}\big|_{u=1}}{2^n}
+  = \frac{[z^n]\frac{z}{(1-2z)^2}}{2^n}
+  = \frac{n2^{n-1}}{2^n}
+  = \frac{n}{2},
+\]
+as symmetry suggests.
 \end{example}
 
 \section{Why the Symbolic Method Matters}
 
-The examples above share a common pattern: write down what an object \emph{is}
-(in terms of simpler objects), apply the dictionary in Proposition~\ref{prop:symbolic-ogf},
-and obtain a functional equation for the generating function.  This equation is
-typically polynomial or algebraic in the GF, and sometimes transcendental
-(involving $\exp$ or $\log$ in the labeled setting).  The algebraic case---arising
-whenever the specification uses only $+$, $\times$, and $\SEQ$---is of special
-importance: a GF satisfying a polynomial equation with algebraic-function
-coefficients is itself algebraic, and algebraic functions have branch-point
-singularities of square-root type (or more generally, $p/q$ type for integers $p$
-and $q$).  As Chapter~4 will show, the location and nature of the dominant
-singularity determines the leading asymptotic behavior of the coefficients; for the
-algebraic case, the result is always a term of the form $\kappa \rho^{-n} n^{-3/2}$
-for explicit constants $\kappa$ and $\rho$.
+The examples above share a common pattern: write down what an object \emph{is}, check that the decomposition is unique, apply the translation dictionary, and obtain a functional equation for the generating function. That equation may be rational, algebraic, or --- in the labeled setting --- involve familiar transcendental functions such as $\exp$ and $\log$.
 
-Chapter~5 makes this connection explicit through context-free grammars.  A
-context-free grammar over a terminal alphabet is, from the symbolic-method
-perspective, exactly a system of simultaneous equations of the form
+At this stage, however, one must be careful not to overstate what has been proved. This chapter establishes the \emph{combinatorial-to-algebraic translation}. It does \emph{not} yet prove the later analytic claims about singularities or asymptotics. For example:
+\begin{itemize}
+  \item Using only $+$, $\times$, and $\SEQ$ often leads to rational expressions in generating functions, and clearing denominators can produce polynomial equations.
+  \item Many context-free grammars later translate into polynomial systems in several generating functions.
+  \item Generic square-root singularities often lead to $n^{-3/2}$ factors.
+\end{itemize}
+But each of these statements requires additional hypotheses and later theorems. In particular, it is \emph{not} true that every algebraic generating function automatically has $n^{-3/2}$ asymptotics: rational functions are algebraic too, and poles lead to different behavior.
+
+Chapter~5 will return to context-free grammars and explain carefully when grammar equations produce algebraic generating functions and when generic square-root asymptotics really appear. The symbolic method is the combinatorial front end of that theory, not the whole theory by itself.
+
+The connection to language models must also be kept precise. In this chapter we are studying \emph{counting} generating functions attached to combinatorial classes. Later chapters will introduce weighted and probabilistic generating functions as separate objects. The symbolic method supplies the counting side of that dictionary, but one should not identify counting OGFs, probability generating functions, and partition functions without saying exactly what has been weighted and how.
+
+\begin{exercise}
+Let $\mathcal{P}$ be the class of balanced parenthesis strings (Dyck words). Write a symbolic specification for $\mathcal{P}$ using a decomposition at the first return to height zero, derive the OGF, and verify that
 \[
-  Y_i(z) \;=\; \Phi_i(z, Y_1(z), \ldots, Y_k(z)), \qquad i = 1, \ldots, k,
+  [z^{2n}]P(z) = C_n.
 \]
-where each $\Phi_i$ is a polynomial (the polynomial is read off from the
-productions of the grammar).  Such systems define algebraic functions by the
-implicit function theorem over formal power series, and the theory of algebraic
-singularities then gives the $n^{-3/2}$ universal exponent as a consequence of
-the irreducibility of the grammar.  Every unambiguous context-free language has
-$2^{\Theta(n)}$ or $n^{-3/2} \rho^{-n}$ asymptotics; the symbolic method is the
-reason this dichotomy exists.
-
-The connection to language models, foreshadowed for Part~III, runs as follows.  A
-generative language model over a finite vocabulary can be viewed as a probability
-distribution on finite strings.  When the model is constrained to generate strings
-that belong to a combinatorial class $\mathcal{C}$---for instance, well-formed
-programs, grammatical sentences, or structured data formats---the generating
-function of $\mathcal{C}$ encodes the normalization constant and partition function
-of the model.  Sampling from the model efficiently, computing the probability of a
-given string, and estimating the entropy rate all reduce, in the structured setting,
-to analytic properties of $C(z)$.  The symbolic method is thus not merely a
-counting device; it is the algebraic skeleton onto which probabilistic and
-information-theoretic content is attached~\cite{FlajoletSedgewick2009}.
-
-\begin{exercise}
-Let $\mathcal{P}$ be the class of nonempty strings over $\{(, )\}$ that form a
-balanced parenthesization (i.e., Dyck prefixes of zero net height at the end).
-Write a symbolic specification for $\mathcal{P}$ using $\SEQ$ and a suitable
-decomposition at the first return to height zero, and derive the OGF.  Verify that
-$[z^{2n}]\,P(z) = C_n$, the $n$-th Catalan number.
 \end{exercise}
 
 \begin{exercise}
-A \emph{unary-binary tree} is either a leaf (one node) or an internal node with
-exactly one child or exactly two children.  Write a symbolic equation for the class
-$\mathcal{U}$ of unary-binary trees (with size = number of nodes), derive the OGF
-as a root of a quadratic, and identify the radius of convergence.
+A \emph{unary-binary tree} is either a leaf (one node) or an internal node with exactly one child or exactly two children. Write a symbolic equation for the class $\mathcal{U}$ of unary-binary trees (size = number of nodes), derive the OGF as a root of a quadratic, and identify its radius of convergence.
 \end{exercise}
 
-\begin{exercise}
-Using the labeled setting, let $\mathcal{S}$ be the class of permutations, with
-size equal to the number of elements.  The EGF is $\hat S(z) = \sum_n z^n = 1/(1-z)$.
-Now let $\mathcal{D}$ be the class of derangements.  Using $\SET(\CYC_{\ge
-2}(\mathcal{Z}))$ (cycles of length at least $2$), derive the EGF of derangements
-and confirm that the probability a random permutation of $[n]$ is a derangement
-tends to $e^{-1}$ as $n \to \infty$.
+\begin{exercise}[Challenge]
+Using the labeled setting and the standard cycle-construction rule recorded above, let $\mathcal{S}$ be the class of permutations and let $\mathcal{D}$ be the class of derangements. Starting from the specification
+\[
+  \mathcal{D} = \SET(\CYC_{\ge 2}(\mathcal{Z})),
+\]
+derive the EGF of derangements and confirm that the probability a random permutation of $[n]$ is a derangement tends to $e^{-1}$ as $n \to \infty$.
 \end{exercise}
 
 \section*{Further Reading}

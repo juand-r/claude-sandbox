@@ -1,309 +1,277 @@
 \chapter{Entropy Rate and the Identity $h = \log(1/R)$}
 \label{ch09:top}
 
-One of the cleanest bridges between information theory and analytic combinatorics
-is the identity
+This chapter builds a bridge between information theory and generating functions. The bridge is real, but one must keep the objects straight. There are three related quantities that are easy to confuse:
+\begin{itemize}
+  \item the Shannon entropy rate of a probabilistic source,
+  \item the growth rate of a typical set,
+  \item and the length distribution of outputs from a halting model.
+\end{itemize}
+Only the second of these is directly encoded by the counting-type generating function that leads to the identity
 \begin{equation}
   \label{eq:h-log-R}
-  h = \log_2(1/R),
+  h = \log_2(1/R).
 \end{equation}
-where $h$ is the entropy rate of a stationary source and $R$ is the radius of
-convergence of a suitable counting-type generating function. This chapter
-develops the identity carefully, warns against a common conflation, and surveys
-what is known about entropy rates for natural language and LLM outputs.
+A main goal of the chapter is to make that distinction explicit.
 
-%----------------------------------------------------------------------
 \section{Entropy Rate}
-%----------------------------------------------------------------------
 
-Let $X_1, X_2, \ldots$ be a stationary stochastic process over a finite alphabet
-$\Sigma$. The \emph{block entropy} at length $n$ is
+Let $X_1,X_2,\dots$ be a stationary stochastic process over a finite alphabet $\Sigma$. Define the block entropy
 \[
-  H(X_1^n) := -\sum_{w \in \Sigma^n} p(w)\log_2 p(w),
+  H_n := H(X_1^n) = -\sum_{w \in \Sigma^n} p(w) \log_2 p(w),
 \]
-where $p(w) = \Pr(X_1 \cdots X_n = w)$. The \emph{entropy rate} is
+where $p(w)=\Pr(X_1\cdots X_n = w)$.
+
+\begin{proposition}
+For a stationary finite-alphabet source, the limit
 \[
-  h := \lim_{n \to \infty} \frac{H(X_1^n)}{n},
+  h = \lim_{n \to \infty} \frac{H_n}{n}
 \]
-when the limit exists. Stationarity guarantees existence and the further
-identity
+exists. Moreover,
 \[
   h = \lim_{n \to \infty} H(X_n \mid X_1^{n-1}).
 \]
-The conditional form shows that $h$ measures the irreducible uncertainty per
-new symbol given arbitrarily long past context.
+\end{proposition}
 
-Informally, $h$ bits per symbol are necessary and sufficient (on average) to
-losslessly encode a long sample. For a memoryless uniform source on $\Sigma$,
-$h = \log_2|\Sigma|$, the maximum possible. In general,
-$0 \le h \le \log_2|\Sigma|$, with $h = \log_2|\Sigma|$ if and only if the
-source is uniform i.i.d.
+\begin{proof}[Proof sketch]
+The chain rule gives
+\[
+  H_{m+n} = H(X_1^{m+n}) \le H(X_1^m) + H(X_{m+1}^{m+n}).
+\]
+By stationarity,
+\[
+  H(X_{m+1}^{m+n}) = H(X_1^n),
+\]
+so $(H_n)$ is subadditive:
+\[
+  H_{m+n} \le H_m + H_n.
+\]
+A standard subadditivity theorem therefore implies that $H_n/n$ has a limit.
 
-%----------------------------------------------------------------------
+Also,
+\[
+  H_n = \sum_{t=1}^n H(X_t \mid X_1^{t-1})
+\]
+by the chain rule. Stationarity implies that the sequence of conditional entropies
+\[
+  H(X_n \mid X_1^{n-1})
+\]
+is nonincreasing in $n$ and bounded below by $0$, so it converges. Its Ces\`aro average is exactly $H_n/n$, hence both limits agree.
+\end{proof}
+
+The quantity $h$ is the average uncertainty per new symbol once arbitrarily long context is known. It always satisfies
+\[
+  0 \le h \le \log_2 |\Sigma|.
+\]
+The upper bound is attained by the uniform i.i.d. source; in that case every new symbol is maximally unpredictable.
+
 \section{Shannon--McMillan--Breiman and Typical Sets}
-%----------------------------------------------------------------------
 
-The fundamental limit theorem of source coding is the following.
+From this point through the typical-set construction, assume in addition that the stationary source is ergodic. The key imported theorem is the asymptotic equipartition property.
 
-\begin{theorem}[Shannon--McMillan--Breiman]
-  Let $\{X_n\}$ be an ergodic stationary source over $\Sigma$ with entropy
-  rate $h$. Then
-  \[
-    -\frac{1}{n}\log_2 p(X_1 \cdots X_n) \;\to\; h
-    \quad \text{almost surely as } n \to \infty.
-  \]
+\begin{theorem}[Shannon--McMillan--Breiman, used as a black box]
+For an ergodic stationary source with entropy rate $h$,
+\[
+  -\frac{1}{n}\log_2 p(X_1\cdots X_n) \to h
+\]
+almost surely.
 \end{theorem}
 
-This is the \emph{asymptotic equipartition property} (AEP). The block
-log-probability concentrates, almost surely, at $-nh$.
+This motivates the usual typical sets.
 
-\begin{definition}[Typical set]
-  For $\epsilon > 0$, the \emph{$\epsilon$-typical set} at length $n$ is
-  \[
-    T_n^{(\epsilon)} := \Bigl\{ w \in \Sigma^n :
-      \bigl| {-\tfrac{1}{n}\log_2 p(w)} - h \bigr| < \epsilon \Bigr\}.
-  \]
+\begin{definition}
+For $\varepsilon > 0$, the $\varepsilon$-typical set at length $n$ is
+\[
+  T_n^{(\varepsilon)} = \left\{w \in \Sigma^n : \left| -\frac{1}{n}\log_2 p(w) - h \right| < \varepsilon \right\}.
+\]
 \end{definition}
 
-The AEP immediately yields three properties: (i) $\Pr(X_1^n \in T_n^{(\epsilon)})
-\to 1$; (ii) each $w \in T_n^{(\epsilon)}$ satisfies
-$2^{-n(h+\epsilon)} \le p(w) \le 2^{-n(h-\epsilon)}$; and therefore
-(iii) the cardinality satisfies
+For large $n$, most of the probability mass lies in $T_n^{(\varepsilon)}$, and every typical word has probability between
 \[
-  (1-\delta_n) \cdot 2^{n(h-\epsilon)}
-  \;\le\; |T_n^{(\epsilon)}|
-  \;\le\; 2^{n(h+\epsilon)}
+  2^{-n(h+\varepsilon)} \quad\text{and}\quad 2^{-n(h-\varepsilon)}.
 \]
-for any $\delta_n \to 0$. Setting $\epsilon \to 0$ slowly: $|T_n| \approx 2^{nh}$
-up to subexponential factors.
-
-%----------------------------------------------------------------------
-\section{From Typical Sets to Generating Functions}
-%----------------------------------------------------------------------
-
-Package the cardinality of the typical set into an ordinary generating function.
-Let $a_n := |T_n|$ for a fixed (small) $\epsilon$. Consider
+From this one obtains the standard cardinality estimate:
 \[
-  A(z) = \sum_{n \ge 0} a_n z^n, \qquad a_n \approx 2^{nh}.
+  (1-\delta_n)2^{n(h-\varepsilon)} \le |T_n^{(\varepsilon)}| \le 2^{n(h+\varepsilon)},
 \]
-By the Cauchy--Hadamard formula (Chapter 2), the radius of convergence is
+where
 \[
-  \frac{1}{R} = \limsup_{n\to\infty} a_n^{1/n} = 2^h.
+  \delta_n = 1 - \Pr(X_1^n \in T_n^{(\varepsilon)}) \to 0.
 \]
-Therefore $R = 2^{-h}$ and we recover the identity \eqref{eq:h-log-R}:
+The lower bound comes from the fact that the typical set carries probability close to $1$, while each individual typical word has probability at most $2^{-n(h-\varepsilon)}$.
+
+\section{A Corrected Typical-Set Identity}
+
+The displayed bounds for a \emph{fixed} $\varepsilon$ only pin down the exponential growth rate up to an $\varepsilon$-window. To obtain the exact exponent $h$, we let the window shrink with $n$.
+
+Choose a sequence
 \[
-  \boxed{h = \log_2(1/R).}
+  \varepsilon_n \downarrow 0
 \]
-
-\begin{remark}
-  The identity is classical for finite-state sources. If the source is generated
-  by a finite automaton with transition matrix $M$, then $a_n$ counts paths of
-  length $n$ in the automaton. The transfer-matrix method (Chapter 7) gives
-  $[z^n]A(z) \sim C \cdot \rho(M)^n$, where $\rho(M)$ is the Perron eigenvalue.
-  The radius of convergence is $R = 1/\rho(M)$, and the entropy rate of the
-  corresponding stationary Markov chain satisfies $h = \log_2 \rho(M)$.
-  The identity thus unifies the Perron--Frobenius spectral picture (Chapters 6--7)
-  with the information-theoretic picture.
-\end{remark}
-
-%----------------------------------------------------------------------
-\section{A Crucial Distinction}
-%----------------------------------------------------------------------
-
-The identity $h = \log_2(1/R)$ applies to a \emph{counting} generating function
-whose coefficients grow like $2^{nh}$. It does not apply to the
-\emph{length probability} generating function, and confusing the two leads to
-error.
-
-Define the length probability generating function by
+slowly enough that
 \[
-  P(z) := \sum_{n \ge 0} p_n\, z^n, \qquad p_n = \Pr(|W| = n),
+  \Pr(X_1^n \in T_n^{(\varepsilon_n)}) \to 1.
 \]
-for a model that generates strings of random length (such as an autoregressive
-language model with an end-of-sequence token). Since the $p_n$ are probabilities
-summing to 1, we have $P(1) = 1$, and therefore the radius of convergence satisfies
-$R_P \ge 1$. Consequently,
+(One can do this because the Shannon--McMillan--Breiman theorem says the deviations from $h$ vanish almost surely.) Now define
+\[
+  a_n := \left|T_n^{(\varepsilon_n)}\right|.
+\]
+For completeness one may set $a_0=1$; the asymptotic argument concerns large $n$.
+There is no single canonical choice of the sequence $\varepsilon_n$, but the exponential growth rate below does not depend on that choice.
+
+From the cardinality bounds we get
+\[
+  (1-\delta_n)2^{n(h-\varepsilon_n)} \le a_n \le 2^{n(h+\varepsilon_n)},
+\]
+with $\delta_n \to 0$. Taking logarithms and dividing by $n$ gives
+\[
+  h-\varepsilon_n + \frac{1}{n}\log_2(1-\delta_n) \le \frac{1}{n}\log_2 a_n \le h+\varepsilon_n.
+\]
+Since both error terms go to $0$, we obtain
+\[
+  \frac{1}{n}\log_2 a_n \to h.
+\]
+Therefore
+\[
+  a_n^{1/n} \to 2^h.
+\]
+Now form the counting-type generating function
+\[
+  A(z) = \sum_{n \ge 0} a_n z^n.
+\]
+By Cauchy--Hadamard,
+\[
+  \frac{1}{R} = \limsup_{n \to \infty} a_n^{1/n} = 2^h.
+\]
+So indeed
+\[
+  h = \log_2(1/R).
+\]
+This is the corrected form of the identity: it applies to an \emph{entropy-typical counting generating function}, built from a shrinking typicality window.
+
+\section{A Crucial Distinction: Counting Growth vs. Length Distribution}
+
+The identity above does \emph{not} apply to the length PGF of a halting model. If
+\[
+  P(z) = \sum_{n \ge 0} p_n z^n,
+  \qquad p_n = \Pr(|W|=n),
+\]
+then
+\[
+  P(1)=\sum_{n \ge 0} p_n = 1
+\]
+for a proper model, so the radius of convergence satisfies
+\[
+  R_P \ge 1.
+\]
+Thus
 \[
   \log_2(1/R_P) \le 0,
 \]
-which cannot encode a positive entropy rate. What $R_P$ and the singularity
-structure of $P$ near $z = 1$ \emph{do} encode is the tail behavior of the
-length distribution: exponential decay, subexponential decay, polynomial decay,
-and so on.
+which cannot encode a positive entropy rate.
 
-Two distinct generating functions thus play two distinct roles.
+So we must keep two generating functions separate.
 \begin{enumerate}
-  \item \textbf{The counting-type generating function} $A(z) = \sum a_n z^n$,
-    where $a_n$ counts strings of length $n$ in the typical set (or, for
-    finite-state sources, paths of length $n$ in the underlying automaton).
-    Its radius satisfies $R = 2^{-h}$ and encodes the entropy rate.
-  \item \textbf{The length probability generating function} $P(z) = \sum p_n z^n$.
-    Its radius satisfies $R_P \ge 1$ and its singularity type encodes the
-    length-distribution tail.
+  \item A \textbf{counting-type typical-set GF}
+  \[
+    A(z)=\sum a_n z^n,
+  \]
+  whose coefficients grow like $2^{nh}$ and whose radius encodes entropy rate.
+  \item A \textbf{length probability generating function}
+  \[
+    P(z)=\sum p_n z^n,
+  \]
+  whose singularity structure describes tail behavior of output length.
 \end{enumerate}
 
-When you encounter the phrase ``the generating function of the LLM'' in a
-paper, you must ask which of these two objects is intended. The two questions
-one can ask about a source --- how large is the typical set, and how are string
-lengths distributed --- correspond to two generating functions with radii of
-convergence on opposite sides of $z = 1$.
+A concrete example helps. For a halting model with geometric length distribution,
+\[
+  p_n = q(1-q)^n,
+\]
+one gets
+\[
+  P(z) = \sum_{n \ge 0} q(1-q)^n z^n = \frac{q}{1-(1-q)z},
+\]
+whose radius is
+\[
+  R_P = \frac{1}{1-q} > 1.
+\]
+This radius says something about how fast long outputs become unlikely. It says nothing by itself about Shannon entropy rate.
 
-%----------------------------------------------------------------------
-\section{Classical Entropy-Rate Estimation for Natural Language}
-%----------------------------------------------------------------------
+\section{Finite-State Sources: Topological vs. Shannon Entropy}
 
-Entropy-rate estimation for natural language has a history of more than seventy
-years, and the problem remains open at the precision needed for modern
-applications.
+This is the place where one must be especially careful. For a finite-state automaton or subshift of finite type, the number of \emph{allowed paths} of length $n$ often grows like
+\[
+  \rho(M)^n,
+\]
+where $M$ is an adjacency matrix. The corresponding logarithm
+\[
+  \log_2 \rho(M)
+\]
+is a \emph{support-growth} or \emph{topological} entropy.
+
+That is not the same as Shannon entropy rate of a probabilistic source in general.
+
+\begin{example}[Biased one-state source]
+Take one state and two emitted symbols, $0$ and $1$, with probabilities $0.9$ and $0.1$. Every binary word of length $n$ is allowed, so the support-counting growth rate is
+\[
+  2^n,
+  \qquad
+  \log_2 2 = 1.
+\]
+But the Shannon entropy rate is
+\[
+  h = -0.9\log_2 0.9 - 0.1\log_2 0.1 < 1.
+\]
+So path counting and Shannon entropy are genuinely different quantities.
+\end{example}
+
+The identity $h = \log_2(1/R)$ in this chapter applies to the entropy-typical counting object, not to naive support counting of all admissible paths.
+
+\section{Entropy Estimation: Classical Results and Modern Reinterpretation}
+
+The historical literature estimates Shannon entropy rate directly, not by literally writing down a typical-set generating function.
 
 \paragraph{Shannon (1951).}
-Shannon \cite{Shannon1951} estimated the entropy of printed English via a
-guessing experiment. Human subjects predicted the next character of a text
-given the preceding characters; the distribution of guesses yields an upper
-bound on conditional entropy, while the reciprocal of the guessed character's
-rank in a natural ordering yields a lower bound. For contexts of length
-$N = 100$, Shannon's estimates placed the entropy rate in the range
-$[0.6, 1.3]$ bits per character. In the language of Section~3, Shannon was
-estimating $\log_2(1/R)$ for the counting generating function of English,
-though he never wrote that function down. The width of his interval reflects
-both experimental variance and the slow convergence of the conditional entropy
-to its limit, a theme we return to below.
+Shannon's guessing experiments \cite{Shannon1951} produced upper and lower bounds for the entropy rate of printed English. In the language of this chapter, one may \emph{reinterpret} those estimates as probing the exponential growth rate of near-typical sets. That reinterpretation is modern and conceptual; it is not something Shannon himself formulated in generating-function language.
 
-\paragraph{Kontoyiannis et al.\ (1998).}
-Kontoyiannis, Algoet, Suhov, and Wyner \cite{KontoyiannisEtAl1998} sharpen
-the estimation problem using longest-match-length statistics. Let $L_n$ denote
-the length of the longest prefix of $(X_{n+1}, X_{n+2}, \ldots)$ that has
-appeared as a substring in $(X_1, \ldots, X_n)$. Their estimator is
-\[
-  \hat{h}_n := \frac{\log_2 n}{L_n}.
-\]
-Under a Doeblin-type mixing condition on the source, $\hat{h}_n \to h$ almost
-surely. The convergence rate is controlled by how cleanly the dominant
-singularity of $A(z)$ is separated from the remainder of the spectrum on the
-circle $|z| = R$; a simple isolated pole gives geometric convergence, while
-a more complex singularity structure degrades the rate.
+\paragraph{Kontoyiannis et al.
+(1998).}
+Kontoyiannis, Algoet, Suhov, and Wyner \cite{KontoyiannisEtAl1998} study entropy-rate estimation through longest-match statistics. Their work is rigorous information theory. The connection to generating functions is again interpretive: these estimators measure the same entropy rate $h$ that appears in the exponential growth of entropy-typical sets.
 
-\paragraph{Szpankowski (2001).}
-The book \cite{Szpankowski2001} applies the full Flajolet--Sedgewick toolkit
---- Mellin transforms, depoissonization, singularity analysis --- to these
-questions in the context of digital data structures and source models. Part V,
-Chapter 17 of the present text covers this material in depth.
+\paragraph{Modern neural estimates.}
+Takahashi and Tanaka-Ishii \cite{TakahashiTanakaIshii2018} and Scheibner, Smith, and Bialek \cite{ScheibnerSmithBialek2025} provide increasingly refined empirical estimates of the entropy rate of natural language using neural models and long contexts. It is reasonable to read these as sharper measurements of the same quantity $h$, but the present chapter does not construct a canonical ``English generating function'' whose radius is being measured directly.
 
-%----------------------------------------------------------------------
-\section{Modern LLM-Era Estimates}
-%----------------------------------------------------------------------
+\section{A Research Hypothesis: Convergence Rate and Singularity Type}
 
-\paragraph{Takahashi and Tanaka-Ishii (2018).}
-Takahashi and Tanaka-Ishii \cite{TakahashiTanakaIshii2018} extrapolate neural
-language-model cross-entropies simultaneously to infinite training data and
-infinite context length. Their extrapolation procedure fits the observed
-cross-entropies as a function of both corpus size and context window using a
-two-parameter model, and takes the joint limit. For English, they obtain an
-entropy-rate estimate of approximately 1.12 bits per character. In the present
-framework, this is an estimate of $\log_2(1/R)$ for the English counting
-generating function, computed indirectly via the cross-entropy of a neural
-model serving as a proxy for the true source distribution.
+The location of the dominant singularity of a typical-set counting GF determines the entropy rate. A more ambitious question is whether the \emph{type} of that singularity leaves a detectable signature in the finite-context convergence of entropy estimators.
 
-The result is consistent with, and more precise than, Shannon's original
-interval. The narrowing was achieved not by a more careful experiment but by
-using a much better predictor, trained on vastly more text with much longer
-effective context.
-
-\paragraph{Scheibner, Smith, and Bialek (2025).}
-Scheibner, Smith, and Bialek \cite{ScheibnerSmithBialek2025} return to
-Shannon's guessing-game paradigm but replace human subjects with frontier large
-language models as predictors. The central finding is that conditional entropy
-continues to decrease with context length out to $N \sim 10^4$ characters, at
-scales of dependency that Shannon could not access and that substantially
-exceed the context lengths used in \cite{TakahashiTanakaIshii2018}. The
-running entropy-rate estimate does not settle within the range of context
-lengths they study.
-
-%----------------------------------------------------------------------
-\section{Slow Convergence as a Diagnostic for Singularity Type}
-%----------------------------------------------------------------------
-
-The identity $h = \log_2(1/R)$ specifies the location of the dominant
-singularity of $A(z)$ but says nothing about its \emph{type}. The type of the
-singularity determines the rate at which the conditional entropy
-$H(X_{n+1} \mid X_1^n)$ converges to $h$, and this convergence rate is exactly
-what entropy-estimation experiments measure.
-
-To be precise, recall from Chapter 4 that the coefficient asymptotics of a GF
-with a dominant singularity at $z = R$ depend on the local behavior of $A(z)$
-near $R$.
+This chapter does \emph{not} prove such a theorem. Instead, we record the idea as a research hypothesis.
 
 \begin{itemize}
-  \item If $A(z)$ has a \emph{simple pole} at $R$, then
-    $[z^n]A(z) = C R^{-n}(1 + O(\theta^n))$ for some $\theta < 1/R$.
-    The conditional entropy satisfies $H(X_{n+1}\mid X_1^n) - h = O(\theta^n)$:
-    exponentially fast convergence. A few hundred characters of context suffice
-    to pin down $h$ to three decimal places. This is the Markov chain and
-    finite-automaton case.
-
-  \item If $A(z)$ has an \emph{algebraic branch point} of exponent $\alpha$,
-    meaning $A(z) \sim C(1-z/R)^\alpha$ as $z \to R$ with $\alpha \notin \mathbb{Z}$,
-    then by the Transfer Lemma (Chapter 4),
-    \[
-      [z^n]A(z) \;\sim\; C' \cdot R^{-n} \cdot n^{-\alpha-1}.
-    \]
-    The conditional entropy converges with a polynomial residual,
-    $H(X_{n+1}\mid X_1^n) - h \sim C'' n^{-\alpha-1}$.
-
-  \item If $A(z)$ has a \emph{logarithmic singularity},
-    $A(z) \sim C(1-z/R)^\alpha \log(1-z/R)$, the residual is $(\log n)^{-\beta}$,
-    decaying more slowly than any power law.
-
-  \item A \emph{confluence of singularities} on the circle $|z| = R$ introduces
-    oscillatory corrections on top of the algebraic or logarithmic envelope.
+  \item In simple finite-memory models, entropy estimates often converge rapidly.
+  \item In more structured or long-range sources, the convergence can be much slower.
+  \item It is plausible that singularity type on the counting side and estimator convergence on the information-theoretic side are related.
 \end{itemize}
 
-The Shannon-to-Takahashi-Tanaka-Ishii span of $\sim 0.6$ bits is not
-measurement noise; it is a signal. Estimates of $h$ via finite-context
-predictors converge to the true entropy rate from above as context length
-increases, and the \emph{rate} at which they converge encodes the singularity
-type of $A(z)$. If the convergence were geometric, the 1951 and 2018 estimates
-would agree to many significant figures. They do not. Scheibner et al.'s
-finding that the estimate continues to drift downward past $N = 10^4$ characters
-is consistent with a singularity that is algebraic or logarithmic, with a slow
-polynomial or logarithmic tail on the convergence.
+But turning that philosophy into a theorem would require a much more precise bridge than we have built here. So the safe conclusion is only this: long-context entropy drift is suggestive, not diagnostic. It may be a clue about deeper singularity structure, but at present that is part of the research program rather than an established consequence of Chapters~1--9.
 
-\begin{remark}
-  This reframes a classical problem in information theory. Decades of work have
-  been devoted to estimating the exponent $h = \log_2(1/R)$. The type of the
-  singularity of $A(z)$ --- which controls how fast the estimate converges and
-  thus how long a memory the source requires --- has received almost no
-  systematic attention. In the language of Part V, this is a question about the
-  \emph{nature} of the dominant singularity, not merely its \emph{location}. The
-  entropy-rate convergence curves produced by modern LLMs, evaluated at
-  progressively longer contexts, are, in principle, a fine-resolution probe of
-  that singularity type. Threading together the analytic-combinatorics tools of
-  Part I with the estimation procedures of Part V is a program
-  taken up in Chapter 17.
-\end{remark}
+\section*{Summary}
 
-\bigskip
+This chapter's strongest rigorous conclusion is the corrected identity
+\[
+  h = \log_2(1/R),
+\]
+where $R$ is the radius of convergence of an entropy-typical counting generating function built from a shrinking typicality window. Its strongest conceptual lesson is the distinction between that counting object and the length PGF of a halting model.
 
-We have completed the foundations of Part II. The identity $h = \log_2(1/R)$
-ties together the entropy rate of a stationary source, the asymptotics of its
-typical set, and the singularity analysis of its counting generating function.
-The distinction between the counting GF and the length probability GF is
-essential and is frequently missed. The convergence rate of entropy estimators
-to $h$ is a window onto the singularity type of $A(z)$, and that type is what
-modern LLM experiments are beginning to resolve.
-
-Part III turns to autoregressive language models as mathematical objects:
-first as probability distributions over $\Sigma^*$, then through the lens of
-formal-language theory applied to transformer architectures, and finally as
-weighted-finite-automaton approximations whose spectral structure directly
-instantiates the framework developed in these pages.
+The next parts of the book must keep that distinction visible. Support growth, entropy rate, and output-length tails are related, but they are not interchangeable.
 
 \section*{Further Reading}
 
 \begin{itemize}
-  \item \textbf{C. E. Shannon}, ``Prediction and entropy of printed English'' (1951) \cite{Shannon1951} --- the original guessing-game experiment estimating the entropy rate of printed English; the historical starting point for all subsequent entropy-rate estimation work.
-  \item \textbf{I. Kontoyiannis, P. H. Algoet, Y. M. Suhov, and A. J. Wyner}, ``Nonparametric entropy estimation for stationary processes and random fields'' (1998) \cite{KontoyiannisEtAl1998} --- establishes the longest-match-length estimator $\hat{h}_n = (\log_2 n)/L_n$ and proves its almost-sure convergence to the entropy rate under mixing conditions; the rigorous nonparametric approach to entropy-rate estimation.
-  \item \textbf{W. Szpankowski}, \emph{Average Case Analysis of Algorithms on Sequences} (2001) \cite{Szpankowski2001} --- applies Mellin transforms, depoissonization, and singularity analysis to entropy-related combinatorial problems; the reference for the analytic toolkit connecting generating-function singularity type to estimation convergence rates.
-  \item \textbf{S. Takahashi and K. Tanaka-Ishii}, ``Cross entropy of neural language models at infinity---a new bound of the entropy rate'' (2018) \cite{TakahashiTanakaIshii2018} --- extrapolates neural language model cross-entropies to infinite data and infinite context, obtaining a precise entropy-rate estimate of approximately $1.12$ bits per character for English.
-  \item \textbf{D. Scheibner, C. Smith, and W. Bialek}, ``Entropy rate of natural language revisited'' (2025) \cite{ScheibnerSmithBialek2025} --- uses frontier LLMs as predictors in Shannon's guessing paradigm, finding that conditional entropy continues to decrease at context lengths well beyond those studied in earlier work and providing evidence for a slow-converging singularity in the English counting GF.
+  \item \textbf{C. E. Shannon}, ``Prediction and entropy of printed English'' (1951) \cite{Shannon1951} --- the historical starting point for entropy-rate estimation.
+  \item \textbf{I. Kontoyiannis, P. H. Algoet, Y. M. Suhov, and A. J. Wyner}, ``Nonparametric entropy estimation for stationary processes and random fields'' (1998) \cite{KontoyiannisEtAl1998} --- a rigorous source on entropy-rate estimation.
+  \item \textbf{W. Szpankowski}, \emph{Average Case Analysis of Algorithms on Sequences} (2001) \cite{Szpankowski2001} --- for analytic tools around strings, tries, and entropy-related sequence problems.
+  \item \textbf{S. Takahashi and K. Tanaka-Ishii}, ``Cross entropy of neural language models at infinity---a new bound of the entropy rate'' (2018) \cite{TakahashiTanakaIshii2018} --- for modern neural extrapolation of entropy rate.
+  \item \textbf{D. Scheibner, C. Smith, and W. Bialek}, ``Entropy rate of natural language revisited'' (2025) \cite{ScheibnerSmithBialek2025} --- for long-context entropy estimation using frontier language models.
 \end{itemize}

@@ -1,261 +1,301 @@
 \chapter{Boltzmann Sampling}
 \label{ch13}
 
+This chapter has one beautiful exact insight at its center:
+\begin{quote}
+For a combinatorial class counted by size, Boltzmann sampling is exactly a Gibbs distribution with energy equal to size, and the ordinary generating function is exactly the partition function.
+\end{quote}
+That statement is precise, not metaphorical. Everything else in the chapter should be read as built on top of that fact.
+
 \section{Motivation}
-\label{ch13:motivation}
 
-Suppose we want to draw a uniformly random element of $\mathcal{A}_n$, the set of all structures in a combinatorial class $\mathcal{A}$ of size exactly $n$. If $\mathcal{A}$ is described by a symbolic specification, the classical approach is the \emph{recursive method} of Nijenhuis and Wilf \cite{NijenhuisWilf1978}, later systematized by Flajolet, Zimmermann and Van Cutsem \cite{FlajoletZimmermannVanCutsem1994}. The idea is to precompute a table of values $[z^k]A(z)$ for $k \leq n$, then walk down the recursive structure of the specification, at each node making a random choice with probabilities proportional to those table entries. This is exact and elegant, but it has costs: storing the table requires $O(n^2)$ space (one entry per size per subclass), and generating a single sample takes $O(n \log n)$ arithmetic operations once the table is built.
+Suppose we want a uniform random object of size exactly $n$ from a combinatorial class $\mathcal{A}$. A classical approach uses a recursive sampler together with precomputed counting tables. Boltzmann sampling takes a different route: instead of forcing the size to be exactly $n$, it samples from all sizes at once with a tunable parameter $x$ and then, if necessary, conditions or rejects to recover exact size.
 
-For large $n$, or for classes whose specifications are complex, this becomes unwieldy. Duchon, Flajolet, Louchard and Schaeffer \cite{DuchonFlajoletLouchardSchaeffer2004} proposed an alternative: rather than insisting on \emph{exact} size $n$, allow the size to be random, governed by a parameter $x$. By tuning $x$ one can concentrate the size distribution near a target $n$, and by combining this with rejection sampling one recovers a uniform sampler for exact size $n$ at a dramatically reduced cost — $\Theta(n)$ expected time for well-behaved classes, with no precomputed tables.
-
-The approach is called \emph{Boltzmann sampling}, and as we shall see, the name is not accidental. The probability weights assigned to structures are precisely Boltzmann weights from statistical physics. This identification — generating function equals partition function — is the central observation of this chapter, and it will be the bridge to Chapter 14, where LLM temperature decoding is read in exactly the same terms.
+The main point for this book is not the last word on complexity bounds. It is the formula for the distribution itself and how naturally it interacts with generating functions.
 
 \section{Boltzmann Samplers}
-\label{ch13:boltzmann-samplers}
 
-\subsection{Definition}
-\label{ch13:def}
-
-Let $\mathcal{A}$ be a combinatorial class with generating function $A(x) = \sum_{n \geq 0} a_n x^n$, where $a_n = |\mathcal{A}_n|$, and let $\rho_A$ denote the radius of convergence of $A$.
+Let
+\[
+  A(x)=\sum_{n \ge 0} a_n x^n,
+  \qquad a_n = |\mathcal{A}_n|,
+\]
+be the ordinary generating function of a combinatorial class $\mathcal{A}$, and let $\rho$ be its radius of convergence.
 
 \begin{definition}
-\label{ch13:def-sampler}
-Fix $x \in (0, \rho_A)$. A \emph{(free) Boltzmann sampler} $\Gamma A(x)$ is a random procedure that produces an object $\gamma \in \mathcal{A}$ with probability
+For a parameter $x \in (0,\rho)$, the \emph{Boltzmann distribution} on $\mathcal{A}$ is
 \[
-    \Pr_x(\gamma) = \frac{x^{|\gamma|}}{A(x)}.
+  \Pr_x(\gamma) = \frac{x^{|\gamma|}}{A(x)}.
 \]
+A random generator with this law is called a \emph{Boltzmann sampler}.
 \end{definition}
 
-Several observations are immediate. First, this is a valid probability distribution: summing over all $\gamma \in \mathcal{A}$,
+The normalization is immediate:
 \[
-    \sum_{\gamma \in \mathcal{A}} \frac{x^{|\gamma|}}{A(x)}
-    = \frac{1}{A(x)} \sum_{n \geq 0} a_n x^n = 1.
+  \sum_{\gamma \in \mathcal{A}} \Pr_x(\gamma)
+  = \frac{1}{A(x)} \sum_{n \ge 0} a_n x^n = 1.
 \]
-Second, all objects of the \emph{same size} $n$ receive equal probability $x^n / A(x)$. So conditioning on size, $\Gamma A(x)$ yields a uniform element of $\mathcal{A}_n$. This is the key uniformity property that makes Boltzmann samplers useful for random generation.
+Every object of the same size receives the same probability. Therefore, conditioning on the event $|\gamma|=n$ produces a uniform random element of $\mathcal{A}_n$.
 
-Third, the size $N = |\gamma|$ is a random variable. Its distribution is
+The size itself is random, with distribution
 \[
-    \Pr_x(N = n) = \frac{a_n x^n}{A(x)},
+  \Pr_x(|\gamma|=n)=\frac{a_n x^n}{A(x)}.
 \]
-which is the probability generating function (PGF) model with weight $a_n x^n$ normalized by $A(x)$. The expected size is
+Its mean is
 \[
-    \mathbb{E}_x[N] = \sum_{n \geq 0} n \cdot \frac{a_n x^n}{A(x)} = \frac{x A'(x)}{A(x)}.
+  \mathbb E_x[N] = \frac{xA'(x)}{A(x)}.
 \]
-
-This last formula is important: as $x$ increases toward $\rho_A$, the expected size grows (often without bound), so we can tune the expected size of our random sample by adjusting $x$.
-
-\subsection{Construction from Symbolic Specifications}
-\label{ch13:construction}
-
-The power of the Boltzmann framework lies in how naturally it interacts with the symbolic method. If $\mathcal{A}$ is defined by a combinatorial specification, the corresponding Boltzmann sampler is built recursively from the same structure.
-
-We record the four main constructors; proofs are straightforward from the definition.
-
-\paragraph{Disjoint union.} Suppose $\mathcal{A} = \mathcal{B} + \mathcal{C}$, so $A(x) = B(x) + C(x)$. Then $\Gamma A(x)$ proceeds as follows: flip a biased coin that lands on $\mathcal{B}$ with probability $B(x)/A(x)$ and on $\mathcal{C}$ with probability $C(x)/A(x)$; if $\mathcal{B}$ is chosen, return $\Gamma B(x)$; otherwise return $\Gamma C(x)$.
-
-To verify: an object $\gamma \in \mathcal{B}$ is produced with probability
+The mean is monotone in $x$ because
 \[
-    \frac{B(x)}{A(x)} \cdot \frac{x^{|\gamma|}}{B(x)} = \frac{x^{|\gamma|}}{A(x)},
+  \frac{d}{dx}\left(\frac{xA'(x)}{A(x)}\right) = \frac{\operatorname{Var}_x(N)}{x} \ge 0.
 \]
-and similarly for $\mathcal{C}$, so the definition is satisfied.
+So increasing $x$ pushes mass toward larger objects.
 
-\paragraph{Cartesian product.} Suppose $\mathcal{A} = \mathcal{B} \times \mathcal{C}$, so $A(x) = B(x) \cdot C(x)$. Then $\Gamma A(x)$ independently draws $\beta \sim \Gamma B(x)$ and $\gamma \sim \Gamma C(x)$, and returns the pair $(\beta, \gamma)$.
+\section{Recursive Construction from Symbolic Specifications}
 
-Indeed, $\Pr_x((\beta, \gamma)) = \frac{x^{|\beta|}}{B(x)} \cdot \frac{x^{|\gamma|}}{C(x)} = \frac{x^{|\beta|+|\gamma|}}{A(x)}$, as required.
+The symbolic method translates directly into Boltzmann samplers.
 
-\paragraph{Sequence.} Suppose $\mathcal{A} = \SEQ(\mathcal{B})$, so $A(x) = 1/(1 - B(x))$, valid when $B(x) < 1$. Draw a length $K$ from the geometric distribution $\Pr(K = k) = (1 - B(x)) B(x)^k$ for $k \geq 0$, then independently draw $K$ objects from $\Gamma B(x)$, and return the sequence $(\beta_1, \ldots, \beta_K)$.
-
-The probability of producing a specific sequence $(\beta_1, \ldots, \beta_k)$ of total size $n = |\beta_1| + \cdots + |\beta_k|$ is
+\paragraph{Disjoint union.}
+If
 \[
-    (1 - B(x)) B(x)^k \cdot \prod_{i=1}^k \frac{x^{|\beta_i|}}{B(x)}
-    = (1 - B(x)) \cdot \frac{x^n}{B(x)^k} \cdot B(x)^k
-    = (1 - B(x)) x^n = \frac{x^n}{A(x)},
+  \mathcal{A} = \mathcal{B} + \mathcal{C},
+  \qquad A(x)=B(x)+C(x),
 \]
-confirming the Boltzmann property.
+then choose the $\mathcal B$ branch with probability $B(x)/A(x)$ and the $\mathcal C$ branch with probability $C(x)/A(x)$.
 
-\paragraph{Set and cycle.} For $\mathcal{A} = \SET(\mathcal{B})$ and $\mathcal{A} = \CYC(\mathcal{B})$, the constructions involve Poisson distributions and logarithmic-series distributions respectively. Specifically, the number of copies of a given unlabeled component of size $k$ in a random set structure follows a Poisson distribution with mean $(x^k/k!)$, and analogously for cycles. We do not spell out the full surgery here; the reader should consult \cite{FlajoletSedgewick2009}, Chapter VII, for the complete treatment.
-
-\subsection{Tuning the Size and Rejection Sampling}
-\label{ch13:rejection}
-
-For a fixed target size $n$, one uses $\Gamma A(x)$ as a subroutine in a rejection scheme: run $\Gamma A(x)$ repeatedly and keep only outputs of size $n$. Since all such outputs are equally likely (by the uniformity property), each kept sample is uniform over $\mathcal{A}_n$.
-
-The question is efficiency. The probability of getting an object of size exactly $n$ is $a_n x^n / A(x)$. To maximize this, one should choose $x$ to maximize $a_n x^n / A(x)$ over $x \in (0, \rho)$, which by a saddle-point argument gives $x^* = x^*(n)$ satisfying $x^* A'(x^*)/A(x^*) = n$, i.e., the expected size equals $n$.
-
-\begin{proposition}
-\label{ch13:rejection-complexity}
-For combinatorial classes satisfying the smoothness conditions of \cite{DuchonFlajoletLouchardSchaeffer2004} (roughly: $a_n \sim C \rho^{-n} n^{-\alpha}$ for some $\alpha > 0$), rejection sampling with the optimal parameter $x^*(n)$ produces a uniform element of $\mathcal{A}_n$ in $\Theta(\sqrt{n})$ expected trials if $\alpha = 3/2$, and $\Theta(1)$ if $\alpha > 1$. In either case the total expected work is $\Theta(n)$.
-\end{proposition}
-
-This should be contrasted with the recursive method's $O(n^2)$ preprocessing: for large classes and large $n$, the Boltzmann approach wins decisively.
-
-\section{The Gibbs Measure Interpretation}
-\label{ch13:gibbs}
-
-We now come to the central observation of this chapter.
-
-\subsection{Boltzmann Weights as Gibbs Weights}
-\label{ch13:gibbs-weights}
-
-Make the substitution $x = e^{-\beta}$, where $\beta \in \mathbb{R}$ is to be thought of as an \emph{inverse temperature}. The Boltzmann sampler probability becomes
+\paragraph{Cartesian product.}
+If
 \[
-    \Pr_\beta(\gamma) = \frac{e^{-\beta |\gamma|}}{A(e^{-\beta})}.
+  \mathcal{A} = \mathcal{B} \times \mathcal{C},
+  \qquad A(x)=B(x)C(x),
 \]
-Define the \emph{energy} of a structure $\gamma$ to be its size: $E(\gamma) = |\gamma|$. Then
+then sample independently from the Boltzmann laws on $\mathcal B$ and $\mathcal C$ and return the pair.
+
+\paragraph{Sequence.}
+If
 \[
-    \Pr_\beta(\gamma) = \frac{e^{-\beta E(\gamma)}}{Z(\beta)}, \qquad Z(\beta) = A(e^{-\beta}).
+  \mathcal{A} = \SEQ(\mathcal{B}),
+  \qquad A(x)=\frac{1}{1-B(x)},
 \]
-
-This is exactly the Gibbs (Boltzmann) distribution from statistical mechanics. The normalization $Z(\beta)$ is the \emph{partition function}, and here it is simply the generating function of the class, evaluated at $e^{-\beta}$.
-
-\begin{remark}
-\label{ch13:gibbs-correspondence}
-\textbf{The generating function is the partition function.} For any combinatorial class $\mathcal{A}$ with generating function $A(z)$ and energy function $E(\gamma) = |\gamma|$, the Gibbs distribution at inverse temperature $\beta$ is
+with $B(x)<1$, then the number of components has geometric law
 \[
-    \Pr_\beta(\gamma) = \frac{e^{-\beta |\gamma|}}{A(e^{-\beta})},
+  \Pr(K=k) = (1-B(x))B(x)^k,
+  \qquad k \ge 0.
 \]
-and the partition function is $Z(\beta) = A(e^{-\beta})$. This identification is not a formal analogy — it is an equality of formulas. The analytic-combinatorics side (generating functions, singularities, coefficients) and the statistical-physics side (partition functions, free energy, phase transitions) are the same mathematical object viewed through different lenses. This is the single most important observation of this chapter.
-\end{remark}
+After drawing $K$, sample $K$ independent Boltzmann objects from $\mathcal B$ and concatenate them.
 
-\subsection{The Critical Temperature}
-\label{ch13:critical-temp}
+These are the constructors we need most often. More delicate labeled and cycle constructions exist as well, but they are better treated in a specialized reference than in a one-page summary. The important point here is that the symbolic specification and the sampling rule use the same algebra.
 
-The radius of convergence $\rho_A$ of $A(z)$ corresponds to a \emph{critical inverse temperature}
+\section{Tuning and Exact-Size Rejection}
+
+If the target is exact size $n$, a natural choice of parameter $x$ is the one that makes the expected size equal to $n$:
 \[
-    \beta_c = -\log \rho_A.
+  \frac{xA'(x)}{A(x)} = n.
 \]
-For $\beta > \beta_c$ (i.e., $e^{-\beta} < \rho_A$), the partition function $Z(\beta) = A(e^{-\beta})$ is finite, and the Gibbs measure is a well-defined probability distribution on $\bigcup_{n \geq 0} \mathcal{A}_n$.
-
-For $\beta < \beta_c$ (i.e., $e^{-\beta} > \rho_A$), the series $A(e^{-\beta})$ diverges, so no normalizable Gibbs measure exists on the whole class. One can still define a uniform distribution on each fixed $\mathcal{A}_n$ separately (the recursive method does exactly this), but there is no consistent extension to a single measure across all sizes.
-
-At $\beta = \beta_c$, whether the partition function converges depends on the growth rate of $a_n$. For many natural classes, $a_n \sim C \rho^{-n} n^{-\alpha}$ with $\alpha = 3/2$ (trees, planar maps, etc.), in which case $Z(\beta_c) = A(\rho) = \sum a_n \rho^n \sim \sum C n^{-3/2}$, which \emph{converges} (since $3/2 > 1$). Thus the partition function is finite at criticality, and the Gibbs measure at $\beta_c$ is well-defined, though the resulting size distribution $\Pr_{\beta_c}(N = n) \propto n^{-3/2}$ is heavy-tailed. This heavy-tailed sampler at $x = \rho$ feeds into the rejection scheme of Proposition~\ref{ch13:rejection-complexity}.
-
-\section{Free Energy and the Thermodynamic Limit}
-\label{ch13:free-energy}
-
-For finite-system statistical mechanics, it is standard to study the partition function restricted to systems of size $n$:
+This same equation also appears by maximizing the exact-size probability
 \[
-    Z_n(\beta) = a_n \, e^{-\beta n} = [z^n] A(z) \cdot e^{-\beta n}.
+  \Pr_x(N=n)=\frac{a_n x^n}{A(x)}
 \]
-This is simply $a_n$ rescaled, and it is the unnormalized probability of drawing a structure of size $n$ from the Gibbs distribution.
-
-The \emph{free energy per unit size} is
+with respect to $x$: differentiate
 \[
-    f(\beta) = -\lim_{n \to \infty} \frac{1}{n} \log Z_n(\beta)
-    = \beta - \lim_{n \to \infty} \frac{1}{n} \log a_n.
+  n\log x - \log A(x)
 \]
-By the standard theory of exponential growth rates, if $a_n \sim C \rho^{-n} n^{-\alpha}$, then $\lim_{n \to \infty} n^{-1} \log a_n = \log(1/\rho)$. Hence
+and set the derivative to zero.
+
+This tuning equation need not have a solution for every class and every large $n$; it depends on the expected size actually diverging as $x \uparrow \rho$. After tuning $x$, one may simply rerun the Boltzmann sampler until the drawn object has the desired size. In many tree-like and admissible classes this is extremely efficient, but the precise complexity depends on local limit behavior and class-specific regularity assumptions. We deliberately avoid stating a one-line universal theorem here.
+
+\section{The Gibbs Interpretation}
+
+Now make the substitution
 \[
-    f(\beta) = \beta - \log(1/\rho) = \beta + \log \rho.
+  x=e^{-\beta},
 \]
-At the critical temperature $\beta_c = -\log \rho$, the free energy vanishes: $f(\beta_c) = 0$.
-
-This connects directly to the entropy rate of Chapter 9. There we saw that the exponential growth rate $\log(1/R)$ of the coefficient sequence of a generating function is the entropy rate of the associated random process (with $R$ the radius of convergence). Here the same quantity $\log(1/\rho)$ appears as the thermodynamic driving force: the free energy is zero when the inverse temperature is tuned to the entropy rate.
-
-At high temperature ($\beta$ small, $x = e^{-\beta}$ close to $1$), the Gibbs measure strongly favors large structures; the expected size $xA'(x)/A(x)$ diverges as $x \to \rho^-$. At low temperature ($\beta$ large), the measure concentrates on small structures, with $\Pr_\beta(N = 0) \to 1$ as $\beta \to \infty$ if $a_0 > 0$.
-
-\section{Worked Example: Binary Strings}
-\label{ch13:example}
-
-\begin{example}
-\label{ch13:ex-binary}
-Let $\mathcal{A} = \SEQ(\mathcal{Z}_0 + \mathcal{Z}_1)$ be the class of binary strings, where $\mathcal{Z}_0$ and $\mathcal{Z}_1$ are atoms of size 1. The generating function is
+with $\beta$ interpreted as inverse temperature. Then
 \[
-    A(z) = \frac{1}{1 - 2z}, \qquad \rho_A = \frac{1}{2}.
+  \Pr_\beta(\gamma) = \frac{e^{-\beta |\gamma|}}{A(e^{-\beta})}.
+\]
+If we define the energy of a structure to be its size,
+\[
+  E(\gamma)=|\gamma|,
+\]
+then this becomes
+\[
+  \Pr_\beta(\gamma)=\frac{e^{-\beta E(\gamma)}}{Z(\beta)},
+  \qquad
+  Z(\beta)=A(e^{-\beta}).
 \]
 
-\paragraph{The sampler.} To run $\Gamma A(x)$, we use the sequence recipe: draw $K \sim \mathrm{Geom}(1 - 2x)$ (so $\Pr(K = k) = (1-2x)(2x)^k$), then draw each of the $K$ bits independently and uniformly from $\{0, 1\}$. The output is a uniformly random binary string of length $K$.
+So in this exact combinatorial setting:
+\begin{itemize}
+  \item the generating function is the partition function,
+  \item Boltzmann weights are Gibbs weights,
+  \item and the size variable is the energy.
+\end{itemize}
 
-\paragraph{Size distribution.} The length $K$ has distribution
-\[
-    \Pr_x(K = n) = \frac{2^n x^n}{A(x)} = (1 - 2x)(2x)^n,
-\]
-which is geometric with success parameter $1 - 2x$. The expected length is
-\[
-    \mathbb{E}_x[K] = \frac{x A'(x)}{A(x)} = \frac{x \cdot 2/(1-2x)^2}{1/(1-2x)} = \frac{2x}{1 - 2x}.
-\]
-Setting this equal to a target $n$ and solving gives $x^*(n) = n/(2(n+1))$, which approaches $\rho = 1/2$ as $n \to \infty$.
+This exactness depends on the particular choice of energy $E(\gamma)=|\gamma|$. If one changes the energy, one changes the partition function accordingly.
 
-\paragraph{Partition function.} Substituting $x = e^{-\beta}$:
-\[
-    Z(\beta) = A(e^{-\beta}) = \frac{1}{1 - 2e^{-\beta}}.
-\]
-This is finite for $\beta > \beta_c = \log 2$. The partition function restricted to size $n$ is $Z_n(\beta) = 2^n e^{-\beta n}$, and the free energy per bit is $f(\beta) = \beta - \log 2$.
+\section{Critical Temperature}
 
-\paragraph{Uniformity check.} Among strings of length $n$, each specific string has probability $\Pr_x(\text{specific string}) = x^n / A(x)$. Since all $2^n$ strings of length $n$ receive the same weight, they are equiprobable, as required.
+The radius of convergence determines the critical inverse temperature:
+\[
+  \beta_c = -\log \rho.
+\]
+For
+\[
+  \beta > \beta_c
+  \qquad (x=e^{-\beta}<\rho),
+\]
+the partition function is finite and the Gibbs distribution is well defined. At the boundary
+\[
+  \beta = \beta_c
+  \qquad (x=\rho),
+\]
+convergence depends on the coefficient tail.
+
+If
+\[
+  a_n \sim C\rho^{-n} n^{-\alpha},
+\]
+then at criticality
+\[
+  a_n \rho^n \sim C n^{-\alpha}.
+\]
+So:
+\begin{itemize}
+  \item if $\alpha>1$, the critical partition function still converges;
+  \item if $\alpha \le 1$, it diverges.
+\end{itemize}
+
+Even when the critical partition function converges, the expected size may still diverge. For example, if $\alpha=3/2$, then
+\[
+  \sum_n a_n \rho^n \sim \sum_n n^{-3/2}
+\]
+converges, but
+\[
+  \sum_n n a_n \rho^n \sim \sum_n n^{-1/2}
+\]
+diverges. This is why critical Boltzmann samplers often produce heavy-tailed sizes.
+
+The physically relevant ``high-temperature'' limit inside the normalizable regime is therefore not ``$x$ close to $1$'' in general. It is the approach to criticality
+\[
+  x \uparrow \rho
+  \qquad\text{or equivalently}\qquad
+  \beta \downarrow \beta_c.
+\]
+
+\section{A Free-Energy Viewpoint}
+
+It is sometimes useful to isolate the size-$n$ contribution
+\[
+  Z_n(\beta) = a_n e^{-\beta n}.
+\]
+This is the size-restricted partition weight. Its exponential rate is governed by
+\[
+  \frac{1}{n}\log Z_n(\beta) = -\beta + \frac{1}{n}\log a_n.
+\]
+If
+\[
+  a_n \sim C\rho^{-n}n^{-\alpha},
+\]
+then
+\[
+  \lim_{n\to\infty} \frac{1}{n}\log a_n = \log(1/\rho),
+\]
+so the leading exponential growth/decay rate is
+\[
+  -\beta + \log(1/\rho).
+\]
+This is a combinatorial growth exponent. One may call the negative of this quantity a free energy per unit size if desired, but the important point for this chapter is simpler: the same radius of convergence that controls coefficients also controls the thermodynamic threshold.
+
+We deliberately avoid calling this quantity an entropy rate here. Chapter~9 showed that entropy-rate identities require a carefully specified probabilistic source and a carefully specified counting object.
+
+\section{Worked Examples}
+
+\begin{example}[Binary strings]
+For binary strings,
+\[
+  A(z)=\frac{1}{1-2z},
+  \qquad \rho=\frac{1}{2}.
+\]
+The Boltzmann sampler draws a geometric length $N$ with
+\[
+  \Pr_x(N=n) = (1-2x)(2x)^n,
+\]
+and then chooses a uniformly random binary string of that length. The expected size is
+\[
+  \mathbb E_x[N] = \frac{2x}{1-2x}.
+\]
+The partition function is
+\[
+  Z(\beta)=A(e^{-\beta})=\frac{1}{1-2e^{-\beta}},
+\]
+so
+\[
+  \beta_c = \log 2.
+\]
 \end{example}
 
-\begin{example}
-\label{ch13:ex-catalan}
-For comparison, consider plane binary trees (Catalan structures), with generating function
+\begin{example}[Catalan structures]
+For Catalan objects,
 \[
-    C(z) = \frac{1 - \sqrt{1 - 4z}}{2z}, \qquad \rho_C = \frac{1}{4},
+  C(z)=\frac{1-\sqrt{1-4z}}{2z},
+  \qquad \rho=\frac{1}{4},
 \]
-so $[z^n] C(z) = \binom{2n}{n}/(n+1) \sim 4^n / (n^{3/2} \sqrt{\pi})$. The partition function at inverse temperature $\beta$ is $Z(\beta) = C(e^{-\beta})$, finite for $\beta > \beta_c = \log 4$.
-
-The free energy per node is $f(\beta) = \beta - \log 4$. From the statistical-physics side, the $n^{-3/2}$ factor in the coefficient asymptotics appears as a sub-exponential correction to $Z_n(\beta)$: $Z_n(\beta_c) = [z^n]C(z) \sim C n^{-3/2}$. This is precisely the $n^{-3/2}$ singularity exponent that Chapter 5 derived via singularity analysis of $C(z)$ at $z = 1/4$. The same fact — viewed there as a transfer lemma for square-root singularities, viewed here as a sub-leading correction to the free energy — is the same computation.
+and
+\[
+  [z^n]C(z) \sim \frac{4^n}{\sqrt{\pi}n^{3/2}}.
+\]
+At criticality,
+\[
+  \Pr_{\beta_c}(N=n) \propto [z^n]C(z)\rho^n \sim \frac{1}{\sqrt{\pi}n^{3/2}}.
+\]
+So the partition function is finite, but the expected size diverges. This is the same $n^{-3/2}$ exponent that earlier chapters encountered through square-root singularities.
 \end{example}
 
-\section{Preview of Chapter 14}
-\label{ch13:preview}
+\section*{Preview of Chapter 14}
 
-The machinery developed here admits a direct generalization that connects to language model temperature decoding.
-
-Replace the combinatorial class $\mathcal{A}$ with the set $\mathcal{W}^*$ of finite strings over a vocabulary $\mathcal{V}$, and replace the uniform-within-size distribution of the Boltzmann sampler with the distribution $\mu$ defined by an autoregressive LLM (as in Chapter 10). Define the energy of a string $w$ by
+There is a tempting analogy between Boltzmann sampling and temperature in autoregressive language models. For a global string distribution $\mu(w)$, the Gibbs-style reweighting
 \[
-    E(w) = -\log \mu(w),
+  \mu_\beta(w) \propto \mu(w)^\beta
 \]
-the negative log-probability under the model. Then temperature-$T$ sampling produces $w$ with probability proportional to
-\[
-    \mu(w)^{1/T} = e^{-E(w)/T},
-\]
-which is a Gibbs distribution at inverse temperature $\beta = 1/T$ with energy $E(w)$.
+really is a partition-function construction. Practical LLM temperature decoding, however, is usually applied \emph{locally} at each next-token distribution. Those two operations are related, but they are not identical in general. Chapter~14 will focus on that distinction rather than blur it.
 
-The partition function is $Z(\beta) = \sum_w \mu(w)^\beta$, a Rényi-type sum over all strings. At $\beta = 1$ (temperature 1), this is just $\sum_w \mu(w) = 1$, always finite. At $\beta > 1$ (low temperature), the measure sharpens; at $\beta < 1$ (high temperature), it flattens toward uniform. At $\beta \to 0$ (infinite temperature), all strings of a given length become equally likely, which is the analogue of the Boltzmann sampler at $x \to 1$.
-
-The analogy is exact: the LLM is a partition function machine. Chapter 14 will develop this correspondence carefully, using the WFA approximation of Chapter 12 to connect the LLM partition function to a rational generating function, and thereby apply the singularity analysis of Chapters 3--5 to the thermodynamics of language model decoding.
-
-\section{Notes and Further Reading}
-\label{ch13:notes}
-
-The Boltzmann sampler framework originates in \cite{DuchonFlajoletLouchardSchaeffer2004}, which gives full proofs of all the constructions in Section~\ref{ch13:construction} and the complexity results of Proposition~\ref{ch13:rejection-complexity}. The connection between generating functions and partition functions is classical in combinatorics (it is implicit in Polya's enumeration theorem and the transfer matrix method), but the Boltzmann sampling paper makes it algorithmic.
-
-The recursive method, against which Boltzmann sampling is compared in Section~\ref{ch13:motivation}, is developed in \cite{NijenhuisWilf1978} and \cite{FlajoletZimmermannVanCutsem1994}. For sets and cycles (sketched in Section~\ref{ch13:construction}), the detailed Boltzmann constructions appear in \cite{FlajoletSedgewick2009}, Chapter VII.
-
-The identification of the radius of convergence with the critical inverse temperature, and the free energy computation of Section~\ref{ch13:free-energy}, are standard in the statistical mechanics of polymers and random combinatorial structures; see the monograph of Velenik for a textbook treatment in the physics tradition.
+\section*{Further Reading}
 
 \begin{itemize}
-  \item \textbf{P. Duchon, P. Flajolet, G. Louchard, and G. Schaeffer}, ``Boltzmann samplers for the random generation of combinatorial structures,'' \emph{Combin.\ Probab.\ Comput.}\ 13(4--5):577--625 (2004) \cite{DuchonFlajoletLouchardSchaeffer2004} --- The foundational paper on Boltzmann samplers: introduces the framework, proves the recursive construction rules for all symbolic-method operators, and establishes the $\Theta(n)$ expected-time complexity via saddle-point tuning and rejection sampling.
-
-  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics}, Cambridge University Press (2009) \cite{FlajoletSedgewick2009} --- Chapter VII gives the authoritative treatment of Boltzmann samplers in the context of the full analytic combinatorics toolkit, including the set and cycle constructions omitted in Section~\ref{ch13:construction} and the connection to complex analysis of generating functions.
-
-  \item \textbf{C. Banderier, M. Kuba, S. Wagner, and M. Wallner}, ``Phase transitions of composition schemes: Mittag-Leffler and mixed Poisson distributions,'' \emph{Ann.\ Appl.\ Probab.}\ 34(5):4500--4546 (2024) \cite{BanderierKubaWallner2021} --- Analyzes composition schemes and their singularity types systematically; directly relevant to understanding how the Gibbs measure's critical behavior (Section~\ref{ch13:critical-temp}) depends on whether the generating function has a square-root or higher-order branch point.
-
-  \item \textbf{M. Blondel, M. E. Sander, G. Vivier-Ardisson, T. Liu, and V. Roulet}, ``Autoregressive language models are secretly energy-based models,'' \emph{arXiv preprint} arXiv:2512.15605 (2025) \cite{BlondelEtAl2025} --- Establishes the ARM--EBM bijection for autoregressive language models via soft Bellman equations, grounding the ``LLM as partition function machine'' analogy previewed in Section~\ref{ch13:preview} in a rigorous equiexpressiveness theorem.
-
-  \item \textbf{T. Kempton and C. Burrell}, ``Temperature and local normalization in autoregressive models,'' Manuscript (2025) \cite{KemptonBurrell2025} --- Quantifies the gap between local (token-wise) and global (Gibbs) temperature sampling, providing bounds that make precise the approximation implicit in the preview of Chapter 14 at the end of this chapter.
+  \item \textbf{P. Duchon, P. Flajolet, G. Louchard, and G. Schaeffer}, ``Boltzmann samplers for the random generation of combinatorial structures'' (2004) \cite{DuchonFlajoletLouchardSchaeffer2004} --- the foundational Boltzmann-sampling paper.
+  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (2009) \cite{FlajoletSedgewick2009} --- for the full sampler dictionary and analytic background.
+  \item \textbf{A. Nijenhuis and H.\,S. Wilf}, \emph{Combinatorial Algorithms} (1978) \cite{NijenhuisWilf1978} --- for classical recursive sampling.
+  \item \textbf{M. Blondel et al.}, ``Autoregressive language models are secretly energy-based models'' (2025) \cite{BlondelEtAl2025} --- for a modern global energy-based perspective on autoregressive models.
+  \item \textbf{T. Kempton and C. Burrell}, ``Temperature and local normalization in autoregressive models'' (2025) \cite{KemptonBurrell2025} --- for the gap between local temperature scaling and global Gibbs reweighting.
 \end{itemize}
 
 \section{Exercises}
-\label{ch13:exercises}
 
 \begin{exercise}
-\label{ch13:ex-plane-trees}
-Let $\mathcal{T}$ be the class of rooted plane trees, satisfying the specification $\mathcal{T} = \mathcal{Z} \times \SEQ(\mathcal{T})$, so $T(z) = z/(1 - T(z))$, giving $T(z) = (1 - \sqrt{1 - 4z})/2$ and $\rho_T = 1/4$.
-\begin{enumerate}
-    \item[(a)] Describe the Boltzmann sampler $\Gamma T(x)$ as an explicit random procedure using the recursive specification.
-    \item[(b)] Compute $\mathbb{E}_x[N]$ and find the value $x^*(n)$ that makes the expected tree size equal to $n$.
-    \item[(c)] Compute the critical inverse temperature $\beta_c$ and the free energy $f(\beta)$ for $\beta > \beta_c$.
-    \item[(d)] Explain why the singularity exponent $-3/2$ in $[z^n]T(z) \sim C \cdot 4^n n^{-3/2}$ implies that the Gibbs measure at $\beta = \beta_c$ assigns probability $\Pr_{\beta_c}(N = n) \sim C' n^{-3/2}$ to size-$n$ trees, and find the normalizing constant (up to a multiplicative constant).
-\end{enumerate}
+For a combinatorial class with generating function $A(x)$, prove the variance identity
+\[
+  \operatorname{Var}_x(N) = x\frac{d}{dx}\left(\frac{xA'(x)}{A(x)}\right).
+\]
+Deduce that the expected size is monotone nondecreasing in $x$.
 \end{exercise}
 
 \begin{exercise}
-\label{ch13:ex-temperature}
-Let $\mathcal{A}$ be a combinatorial class with generating function $A(z) = \sum_n a_n z^n$ and radius of convergence $\rho$.
-\begin{enumerate}
-    \item[(a)] Show that the variance of the size under $\Gamma A(x)$ is $\mathrm{Var}_x(N) = x \frac{d}{dx}\left(\frac{x A'(x)}{A(x)}\right)$.
-    \item[(b)] For $A(z) = e^z$ (the class of all sets of labeled atoms), compute $\mathbb{E}_x[N]$ and $\mathrm{Var}_x(N)$. What distribution does $N$ follow?
-    \item[(c)] In the Gibbs interpretation with $x = e^{-\beta}$, express the variance $\mathrm{Var}_\beta(E)$ of the energy (here $E(\gamma) = |\gamma|$) in terms of $\beta$ and $A$. This quantity is the \emph{heat capacity} $C_V(\beta) = -\partial^2 \log Z / \partial \beta^2$. Verify your formula against the result of part (b).
-\end{enumerate}
+For binary strings, solve
+\[
+  \frac{2x}{1-2x}=n
+\]
+for the tuned parameter $x=x^*(n)$.
+\end{exercise}
+
+\begin{exercise}
+Show that for Catalan structures at criticality,
+\[
+  \sum_{n \ge 0} [z^n]C(z)\rho^n < \infty
+\]
+but
+\[
+  \sum_{n \ge 0} n [z^n]C(z)\rho^n = \infty.
+\]
+Interpret this probabilistically.
 \end{exercise}

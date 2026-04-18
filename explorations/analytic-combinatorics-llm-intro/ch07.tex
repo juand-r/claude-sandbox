@@ -1,143 +1,278 @@
 \chapter{Weighted Finite Automata and Rational Power Series}
 \label{ch07:top}
 
-Chapter~6 established finite automata as devices that assign a binary verdict---accept or reject---to every string over a finite alphabet. The present chapter replaces that verdict with a weight drawn from an algebraic structure called a semiring. Each string $w$ receives a weight $f(w) \in K$, and the resulting object is a \emph{weighted finite automaton} (WFA). When $K = \mathbb{R}_{\ge 0}$ and the weights are normalized to sum to one, the WFA becomes a probabilistic generative model over $\Sigma^*$. The central theorem of the chapter is that the length-indexed generating function of any such model is automatically a rational function of $z$, bringing the full machinery of Part~I---partial fractions, dominant-pole asymptotics, entropy rates via spectral radii---to bear on probabilistic language models. This rationality result is not an approximation or a limiting statement; it is an exact algebraic consequence of the matrix structure of WFAs, and it is the engine driving the WFA-approximation program developed in Chapter~12.
+Chapter~6 studied finite automata that answer a yes/no question about each string. A \emph{weighted finite automaton} (WFA) replaces that binary verdict by a numerical weight. The main exact theorem of the chapter is simple and powerful:
+\begin{quote}
+For a WFA over $\mathbb{R}$ or $\mathbb{C}$, the generating function obtained by summing weights by string length is always rational.
+\end{quote}
+That places WFAs squarely inside the pole-based world of Chapters~1--4.
+
+Two distinctions are important from the start.
+\begin{enumerate}
+  \item The definition of a WFA makes sense over an arbitrary semiring, but the resolvent formula $(I-zA)^{-1}$ belongs to the real/complex matrix setting.
+  \item A \emph{locally stochastic} WFA is not automatically a proper probability distribution on finite strings. Properness is a separate almost-sure-halting condition.
+\end{enumerate}
+These two distinctions will prevent several common confusions later in the book.
 
 \section{Semirings}
 
-A \emph{semiring} $(K, \oplus, \otimes, \mathbf{0}, \mathbf{1})$ is a set $K$ equipped with two binary operations satisfying the following axioms: $(K, \oplus, \mathbf{0})$ is a commutative monoid; $(K, \otimes, \mathbf{1})$ is a monoid; $\otimes$ distributes over $\oplus$ from both sides; and $\mathbf{0} \otimes a = a \otimes \mathbf{0} = \mathbf{0}$ for all $a \in K$. The crucial omission relative to a ring is that $\oplus$ need not have inverses. The name ``semi'' reflects exactly this missing structure.
-
-Two semirings dominate the present chapter. The \emph{Boolean semiring} $(\{0,1\}, \vee, \wedge, 0, 1)$ reduces the theory to classical unweighted automata: transition weights are either present or absent, matrix multiplication becomes the Boolean matrix product, and the WFA accepts a string iff the computed weight is $1$. The \emph{nonneg\-ative real semiring} $(\mathbb{R}_{\ge 0}, +, \times, 0, 1)$ produces the probabilistic theory. One may also work over $\mathbb{R}$ or $\mathbb{C}$ (discarding the nonnegativity constraint), over the tropical semiring $(\mathbb{R} \cup \{+\infty\}, \min, +, +\infty, 0)$ for optimization problems, or over the formal power series ring $\mathbb{R}[[z]]$ itself. The general theory of WFAs over arbitrary semirings is developed in \cite{DrosteKuichVogler2009}; for present purposes the nonnegative reals suffice.
+A \emph{semiring} is a set where one can add and multiply, multiplication distributes over addition, and subtraction need not exist. The examples to keep in mind are:
+\begin{itemize}
+  \item the Boolean semiring, for ordinary accept/reject automata;
+  \item the nonnegative reals, for probabilistic or weighted counting models;
+  \item the tropical semiring, for shortest-path style problems.
+\end{itemize}
+General semiring language is useful because it unifies several automata theories at once. For the analytic results of this chapter, however, we will soon specialize to matrices over $\mathbb{R}$ or $\mathbb{C}$.
 
 \section{Weighted Finite Automata}
 
 \begin{definition}
-A \emph{weighted finite automaton} (WFA) over alphabet $\Sigma$ with $n$ states and weights in semiring $K$ is a triple $\mathcal{A} = (\alpha, \{A_\sigma\}_{\sigma \in \Sigma}, \beta)$ where:
+A \emph{weighted finite automaton} over alphabet $\Sigma$ with $n$ states is a triple
+\[
+  \mathcal{A} = (\alpha, \{A_\sigma\}_{\sigma \in \Sigma}, \beta),
+\]
+where
 \begin{itemize}
-  \item $\alpha \in K^{1 \times n}$ is a row vector of initial weights,
-  \item $\beta \in K^{n \times 1}$ is a column vector of final weights,
-  \item $A_\sigma \in K^{n \times n}$ is a transition matrix for each letter $\sigma \in \Sigma$.
+  \item $\alpha$ is a $1 \times n$ row vector of initial weights,
+  \item $\beta$ is an $n \times 1$ column vector of final weights,
+  \item each $A_\sigma$ is an $n \times n$ transition matrix.
 \end{itemize}
-The weight assigned to a string $w = \sigma_1 \sigma_2 \cdots \sigma_k$ is
-\begin{equation}\label{eq:wfa-weight}
-  f_\mathcal{A}(w) = \alpha \cdot A_{\sigma_1} A_{\sigma_2} \cdots A_{\sigma_k} \cdot \beta \in K.
-\end{equation}
-The empty string $\varepsilon$ receives weight $f_\mathcal{A}(\varepsilon) = \alpha \cdot \beta$.
+For a word $w = \sigma_1 \cdots \sigma_k$, its weight is
+\[
+  f_{\mathcal A}(w) = \alpha A_{\sigma_1} \cdots A_{\sigma_k} \beta.
+\]
+The empty word has weight
+\[
+  f_{\mathcal A}(\varepsilon) = \alpha I \beta = \alpha\beta.
+\]
 \end{definition}
 
-The computation \eqref{eq:wfa-weight} has a concrete state-sum interpretation. Define the weight of a path $q_0 \xrightarrow{\sigma_1} q_1 \xrightarrow{\sigma_2} \cdots \xrightarrow{\sigma_k} q_k$ as $\alpha_{q_0} \cdot (A_{\sigma_1})_{q_0, q_1} \cdots (A_{\sigma_k})_{q_{k-1}, q_k} \cdot \beta_{q_k}$. Then $f_\mathcal{A}(w)$ is the $\oplus$-sum of this quantity over all paths labeled by $w$, which is precisely the $(1,1)$ entry of the matrix product in \eqref{eq:wfa-weight} once one accounts for the vector boundary conditions. In the Boolean semiring this collapses to: $f_\mathcal{A}(w) = 1$ iff at least one accepting path exists, recovering the classical Myhill-Nerode picture from Chapter~6.
-
-\begin{example}[Fibonacci WFA]\label{ex:fibonacci-wfa}
-Let $\Sigma = \{a\}$, $n = 2$, $K = \mathbb{R}$. Set
+The matrix dimensions are worth noticing:
 \[
-  \alpha = \begin{pmatrix} 1 & 0 \end{pmatrix}, \quad
-  \beta = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \quad
-  A_a = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}.
+  (1\times n)(n\times n)\cdots(n\times n)(n\times 1) = (1\times 1),
 \]
-Then $f_\mathcal{A}(a^k) = \alpha A_a^k \beta$. One verifies directly:
-$k=1$: $\alpha A_a \beta = (1,0)\begin{pmatrix}0&1\\1&1\end{pmatrix}\begin{pmatrix}0\\1\end{pmatrix} = (1,0)\begin{pmatrix}1\\1\end{pmatrix} = 1 = F_1$.
-$k=2$: $\alpha A_a^2 \beta = (1,0)\begin{pmatrix}1&1\\1&2\end{pmatrix}\begin{pmatrix}0\\1\end{pmatrix} = (1,0)\begin{pmatrix}1\\2\end{pmatrix} = 1 = F_2$.
-$k=3$: $A_a^3 = A_a^2 \cdot A_a = \begin{pmatrix}1&1\\1&2\end{pmatrix}\begin{pmatrix}0&1\\1&1\end{pmatrix} = \begin{pmatrix}1&2\\2&3\end{pmatrix}$, so $\alpha A_a^3 \beta = (1,0)\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}0\\1\end{pmatrix} = 2 = F_3$.
-In general $f_\mathcal{A}(a^k) = F_k$, the $k$-th Fibonacci number (with $F_0 = 0$, $F_1 = 1$). The two-state automaton encodes the linear recurrence $F_k = F_{k-1} + F_{k-2}$ in the companion matrix $A_a$.
+so the result is a scalar.
+
+The formula is really a sum over hidden state paths. For a two-letter word $\sigma\tau$,
+\[
+  \alpha A_\sigma A_\tau \beta
+  = \sum_{i,j,k} \alpha_i (A_\sigma)_{ij}(A_\tau)_{jk}\beta_k.
+\]
+So one sums over all choices of start state $i$, intermediate state $j$, and final state $k$. This is exactly the path-sum interpretation of matrix multiplication.
+
+In the Boolean semiring, the same formula says whether there exists an accepting path labeled by the word, so WFAs genuinely extend ordinary finite automata.
+
+\begin{example}[A Fibonacci WFA]
+Let $\Sigma=\{a\}$ and define
+\[
+  \alpha = \begin{pmatrix}1 & 0\end{pmatrix},
+  \qquad
+  \beta = \begin{pmatrix}0\\1\end{pmatrix},
+  \qquad
+  A_a = \begin{pmatrix}0 & 1\\1 & 1\end{pmatrix}.
+\]
+Then
+\[
+  f_{\mathcal A}(a^k) = \alpha A_a^k \beta.
+\]
+A standard induction shows that
+\[
+  A_a^k = \begin{pmatrix}F_{k-1} & F_k\\ F_k & F_{k+1}\end{pmatrix}
+  \qquad (k \ge 1),
+\]
+so
+\[
+  f_{\mathcal A}(a^k) = F_k.
+\]
+Thus a two-state WFA already realizes the Fibonacci sequence.
 \end{example}
 
-\section{Stochastic WFAs and Probabilistic Language Models}
+\section{Local Stochasticity Versus Properness}
 
-Specialize now to $K = \mathbb{R}_{\ge 0}$. A WFA is \emph{stochastic} if $\alpha$ is a probability distribution over states (i.e., $\sum_q \alpha_q = 1$, $\alpha_q \ge 0$) and if the following row-stochasticity condition holds: for each state $q$,
-\[
-  \sum_{\sigma \in \Sigma} \sum_{q'} (A_\sigma)_{q,q'} + \beta_q = 1.
-\]
-The interpretation is that from state $q$, the automaton either emits a letter $\sigma$ and transitions to state $q'$ (with probability $(A_\sigma)_{q,q'}$) or emits the end-of-sequence symbol $\EOS$ and halts (with probability $\beta_q$). Under this condition $f_\mathcal{A}(w)$ is exactly the probability that the automaton generates the string $w$ and then halts, and the weights sum to one over all $w \in \Sigma^*$.
+Now specialize to nonnegative weights. A WFA is \emph{locally stochastic} if
+\begin{itemize}
+  \item the initial vector $\alpha$ is a probability distribution on states, and
+  \item for each state $q$,
+  \[
+    \sum_{\sigma \in \Sigma} \sum_{q'} (A_\sigma)_{q,q'} + \beta_q = 1.
+  \]
+\end{itemize}
+The intended interpretation is that from state $q$, the automaton either emits a symbol and changes state, or halts via the final weight $\beta_q$.
 
-Stochastic WFAs generalize \emph{hidden Markov models} (HMMs). In a standard HMM there is a Markov chain over hidden states and at each step a symbol is emitted from a state-dependent emission distribution; one may always write such a model as a stochastic WFA by absorbing the emission distributions into the transition matrices $A_\sigma$. The converse does not hold without further structural conditions: a stochastic WFA can encode transitions that depend simultaneously on both the current and next state in ways that are not directly factored as emission times transition. The representational difference is analytically subtle but matters for expressiveness arguments in Section~6.
+But this local condition does \emph{not} by itself guarantee a probability distribution on finite strings.
 
-\section{The Generating Function is Rational}
-
-Fix a WFA $\mathcal{A} = (\alpha, \{A_\sigma\}, \beta)$ over $K = \mathbb{R}$ (or $\mathbb{C}$). Define the \emph{aggregate transition matrix}
+\begin{example}[A non-halting locally stochastic WFA]
+Take one state, one letter $a$, and
 \[
-  A := \sum_{\sigma \in \Sigma} A_\sigma \in \mathbb{R}^{n \times n}.
+  \alpha=(1), \qquad A_a=(1), \qquad \beta=(0).
 \]
-The length-indexed generating function of $\mathcal{A}$ is
-\[
-  F(z) := \sum_{w \in \Sigma^*} f_\mathcal{A}(w)\, z^{|w|}.
-\]
-Group terms by length:
-\[
-  F(z) = \sum_{k \ge 0} z^k \!\!\!\sum_{\substack{w \in \Sigma^* \\ |w| = k}} f_\mathcal{A}(w)
-       = \sum_{k \ge 0} z^k \!\!\!\sum_{\substack{\sigma_1,\ldots,\sigma_k \\ \in \Sigma}} \alpha A_{\sigma_1} \cdots A_{\sigma_k} \beta.
-\]
-The key step: the multilinear expansion of a product of sums gives
-\[
-  \sum_{\sigma_1,\ldots,\sigma_k \in \Sigma} A_{\sigma_1} \cdots A_{\sigma_k} = \Bigl(\sum_{\sigma \in \Sigma} A_\sigma\Bigr)^k = A^k,
-\]
-because the $A_\sigma$ are matrices over a ring (not merely a semiring), so ordinary matrix algebra applies. Therefore
-\[
-  F(z) = \sum_{k \ge 0} z^k\, \alpha A^k \beta = \alpha \Bigl(\sum_{k \ge 0} (zA)^k\Bigr) \beta.
-\]
-The matrix power series $\sum_{k \ge 0} (zA)^k$ converges to $(I - zA)^{-1}$ whenever $|z| < 1/\rho(A)$, where $\rho(A)$ denotes the spectral radius of $A$. This yields:
-
-\begin{theorem}[Rationality of WFA Generating Functions]\label{thm:wfa-rational}
-For any WFA $\mathcal{A} = (\alpha, \{A_\sigma\}, \beta)$ over $\mathbb{R}$ (or $\mathbb{C}$), the length-indexed generating function is rational:
-\[
-  F(z) = \alpha (I - zA)^{-1} \beta,
-\]
-where $A = \sum_{\sigma \in \Sigma} A_\sigma$. This rational function has poles only at the reciprocals of the nonzero eigenvalues of $A$, and the power series converges for $|z| < 1/\rho(A)$.
-\end{theorem}
-
-The numerator polynomial arises from Cramer's rule applied to $(I - zA)^{-1}$: each entry is a ratio of degree-$(n-1)$ and degree-$n$ polynomials in $z$, so $F(z) = P(z)/Q(z)$ with $\deg P \le n-1$ and $Q(z) = \det(I - zA)$ the characteristic polynomial of $A$ (with variable substitution $\lambda \mapsto 1/z$).
-
-The connection to Part~I is immediate. Chapter~4 established that the coefficients of a rational generating function $P(z)/Q(z)$ satisfy a linear recurrence with characteristic polynomial $Q$, and the asymptotic behavior is governed by the pole of smallest modulus (i.e., the reciprocal of the dominant eigenvalue). Precisely, if $\lambda_1$ is the eigenvalue of $A$ with largest absolute value and multiplicity $m$, then
-\[
-  [z^n] F(z) \sim C \lambda_1^n n^{m-1}
-\]
-for some constant $C$ depending on the eigenvector structure and the boundary vectors $\alpha$, $\beta$.
-
-For stochastic WFAs the row-stochasticity condition $A\mathbf{1} + \beta = \mathbf{1}$ with $\beta \ge 0$ implies $A\mathbf{1} \le \mathbf{1}$, so $A$ is substochastic and has spectral radius $\rho(A) \le 1$. When the automaton defines a proper probability distribution---a condition analyzed in depth in Chapter~8---one has $\rho(A) < 1$, the generating function $F(z)$ has no pole on the unit circle, and the string probabilities decay geometrically in length.
-
-\begin{example}[Fibonacci asymptotics via Theorem~\ref{thm:wfa-rational}]
-Returning to Example~\ref{ex:fibonacci-wfa}, the aggregate matrix is $A = A_a = \begin{pmatrix}0&1\\1&1\end{pmatrix}$. Its characteristic polynomial is $\lambda^2 - \lambda - 1 = 0$, with roots $\varphi = (1+\sqrt{5})/2$ (the golden ratio) and $\hat\varphi = (1-\sqrt{5})/2$. The generating function is
-\[
-  F(z) = \alpha(I - zA)^{-1}\beta = \frac{z}{1 - z - z^2},
-\]
-with poles at $z = 1/\varphi$ and $z = 1/\hat\varphi$. The dominant pole is $1/\varphi$, and partial fractions (exactly as in Chapter~1) give $[z^n]F(z) = F_n \sim \varphi^n/\sqrt{5}$. Theorem~\ref{thm:wfa-rational} recovers this from the WFA structure without any ad hoc computation.
+The local stochasticity condition holds, but the machine loops forever with probability $1$ and halts with probability $0$. So every finite string receives probability $0$, and the total mass on $\Sigma^*$ is also $0$.
 \end{example}
 
-\section{The Kleene--Schützenberger Theorem}
+This is why we need a second notion.
 
-The classical Kleene theorem characterizes the languages accepted by finite automata as exactly the regular languages---those definable by regular expressions built from union, concatenation, and Kleene star. Schützenberger's generalization lifts this to the weighted setting. A formal power series $S = \sum_{w \in \Sigma^*} c_w \cdot w$ over a semiring $K$ is called \emph{recognizable} if it equals $f_\mathcal{A}$ for some WFA $\mathcal{A}$, and \emph{rational} if it belongs to the smallest family of series containing all polynomials (finite sums $\sum_{w} c_w \cdot w$) and closed under sum, product, and the operation $S^* := \sum_{k \ge 0} S^k$ (defined when the constant term of $S$ is $\mathbf{0}$).
+\begin{definition}
+A nonnegative WFA is \emph{proper} if the total weight of all finite strings is exactly $1$:
+\[
+  \sum_{w \in \Sigma^*} f_{\mathcal A}(w) = 1.
+\]
+Equivalently, the model halts almost surely.
+\end{definition}
 
-\begin{theorem}[Kleene--Schützenberger, informal]
-A formal power series $S \in K\langle\!\langle \Sigma^* \rangle\!\rangle$ is recognizable if and only if it is rational.
+Chapter~8 will study properness systematically. For the present chapter, the main point is conceptual: local stochasticity is a step toward probability, not the whole story.
+
+\section{The Length Generating Function is Rational}
+
+From now on we work over $\mathbb{R}$ or $\mathbb{C}$. Define the aggregate matrix
+\[
+  A = \sum_{\sigma \in \Sigma} A_\sigma.
+\]
+This forgets which symbol was emitted and keeps only the total one-step weight.
+
+The length generating function of the WFA is
+\[
+  F(z) = \sum_{w \in \Sigma^*} f_{\mathcal A}(w) z^{|w|}.
+\]
+Group words by length:
+\[
+  F(z) = \sum_{k \ge 0} z^k \sum_{|w|=k} f_{\mathcal A}(w).
+\]
+A word of length $k$ is exactly a $k$-tuple of symbols, so
+\[
+  \sum_{|w|=k} f_{\mathcal A}(w)
+  = \sum_{\sigma_1,\dots,\sigma_k \in \Sigma} \alpha A_{\sigma_1}\cdots A_{\sigma_k}\beta.
+\]
+By distributivity,
+\[
+  \sum_{\sigma_1,\dots,\sigma_k \in \Sigma} A_{\sigma_1}\cdots A_{\sigma_k}
+  = \left(\sum_{\sigma \in \Sigma} A_\sigma\right)^k
+  = A^k.
+\]
+This step uses only distributivity, so it already makes sense over semirings. Hence
+\[
+  F(z) = \sum_{k \ge 0} z^k \alpha A^k \beta = \alpha \left(\sum_{k \ge 0} (zA)^k\right) \beta.
+\]
+
+Now the real/complex specialization matters. As a \emph{formal} matrix identity,
+\[
+  (I-zA)\sum_{k \ge 0} (zA)^k = I,
+\]
+so
+\[
+  \sum_{k \ge 0} (zA)^k = (I-zA)^{-1}
+\]
+as a matrix power series. Analytically, the same Neumann series converges for
+\[
+  |z| < 1/\rho(A),
+\]
+where $\rho(A)$ is the spectral radius of $A$.
+So the same algebraic expression serves two roles: formally it is a power-series identity, and inside the disk of convergence it is an honest analytic rational function.
+
+\begin{theorem}[Rationality of WFA length generating functions]
+\label{thm:wfa-rational}
+For a WFA over $\mathbb{R}$ or $\mathbb{C}$,
+\[
+  F(z) = \alpha (I-zA)^{-1} \beta,
+  \qquad
+  A = \sum_{\sigma \in \Sigma} A_\sigma.
+\]
+In particular, $F(z)$ is a rational function of $z$.
 \end{theorem}
 
-This result, proved in full generality in \cite{BerstelReutenauer2011}, is the noncommutative analogue of Kleene's theorem. The ``noncommutative'' qualifier is essential: the series lives over the free monoid $\Sigma^*$ where word concatenation is not commutative, so $S^*$ must be interpreted with care and the star is not the geometric series in a scalar variable but rather the fixed-point equation $S^* = \varepsilon + S \cdot S^*$. The connection to Theorem~\ref{thm:wfa-rational} is that when one commutes all the variables---replacing each word $w$ by its length $z^{|w|}$---the rational series maps to a rational function of $z$, recovering the scalar generating function.
+Because
+\[
+  (I-zA)^{-1} = \frac{\operatorname{adj}(I-zA)}{\det(I-zA)},
+\]
+each entry is rational. The possible poles occur among the reciprocals of the nonzero eigenvalues of $A$, though cancellations can remove some of them after multiplication by $\alpha$ and $\beta$.
 
-\section{The Icard Hierarchy and What WFAs Cannot Express}
+\section{Rational Asymptotics and What Must Be Assumed}
 
-Theorem~\ref{thm:wfa-rational} implies a sharp limitation: the generating function of any WFA-definable distribution is rational, hence its Taylor coefficients satisfy a linear recurrence. But Chapter~5 introduced distributions whose generating functions are genuinely algebraic---satisfying a polynomial equation $P(z, F(z)) = 0$ but not a linear equation $Q(z) F(z) = R(z)$---and whose coefficients obey the $n^{-3/2}$ subexponential law characteristic of algebraic singularities. No WFA can reproduce such behavior.
+Chapter~4 analyzed rational generating functions in terms of their poles. The correct moral for WFAs is therefore this:
 
-This observation is formalized by the \emph{probabilistic Chomsky hierarchy} of \cite{Icard2020}. At the finite-state level sit the \emph{rational stochastic languages}: probability distributions over $\Sigma^*$ computable by some stochastic WFA. At the context-free level sit the \emph{algebraic stochastic languages}: distributions definable by probabilistic context-free grammars (PCFGs). Icard's non-collapse theorem states that these two classes are strictly distinct: there exist PCFG-definable distributions whose generating functions are algebraic but not rational, and no stochastic WFA matches them. The proof proceeds by exhibiting a PCFG for balanced-parentheses strings, whose length-distribution generating function satisfies $F = z + F^2$ (a quadratic, not a rational function), and arguing that no WFA can replicate this distribution.
+\begin{quote}
+The asymptotics are controlled by the dominant pole of the scalar rational function $F(z)=\alpha(I-zA)^{-1}\beta$, not merely by the raw eigenvalue multiplicities of $A$.
+\end{quote}
 
-Complementarily, \cite{SmithJohnson2007} showed that at the context-free level, adding arbitrary positive weights to a CFG (producing a general weighted CFG) does not increase the class of conditional parse distributions beyond what a properly normalized PCFG can represent. This means the additional flexibility of arbitrary weights buys nothing at the context-free level---the representational power is captured by the probabilistic normalization alone.
+A safe statement is the following.
 
-Together, these results carve out the following picture. WFAs occupy a well-defined and analytically tractable niche: their distributions are exactly the rational-stochastic languages, their generating functions are rational, and the full arsenal of Part~I applies. PCFGs occupy the algebraic level above, and Chapters~9--11 will develop their theory. The generating functions there satisfy polynomial equations, the Flajolet--Odlyzko transfer theorems for algebraic singularities apply, and the asymptotic coefficients reflect the tree-counting structure of context-free derivations. The general reference for the WFA theory is \cite{DrosteKuichVogler2009}; the generating function perspective is detailed in \cite{FlajoletSedgewick2009}.
+\begin{proposition}
+Suppose $F(z)=\alpha(I-zA)^{-1}\beta$ has a unique dominant pole at $z=1/\lambda$ of order $m$. Then
+\[
+  [z^n]F(z) \sim C\,\lambda^n n^{m-1}
+\]
+for some constant $C \ne 0$.
+\end{proposition}
 
-\section{Significance for Language Models}
+This formulation avoids several pitfalls at once:
+\begin{itemize}
+  \item multiple poles on the spectral circle can create oscillations,
+  \item the boundary vectors $\alpha$ and $\beta$ can cancel some eigen-directions,
+  \item and the relevant order is the actual pole order of the scalar function, not merely the algebraic multiplicity of an eigenvalue of $A$.
+\end{itemize}
 
-A large language model is neither a WFA nor a PCFG. It is a high-dimensional, nonlinear function---typically a transformer with billions of parameters---and its associated distribution over $\Sigma^*$ has no obvious algebraic characterization. Nevertheless, the WFA framework provides two concrete analytical tools.
+For proper stochastic WFAs, the coefficients
+\[
+  p_n = [z^n]F(z) = \sum_{|w|=n} f_{\mathcal A}(w)
+\]
+form the length distribution. In the simple aperiodic case with a unique simple dominant pole, this total probability decays geometrically with $n$.
 
-First, if an LLM's next-token distribution can be \emph{approximated} by a WFA---in the sense that there exists a stochastic WFA $\mathcal{A}$ such that $\|f_{\mathcal{A}} - f_{\mathrm{LLM}}\|$ is small in some appropriate norm---then the LLM's generating function is approximately rational, and the Flajolet--Sedgewick machinery yields approximate asymptotics. The quality of the approximation is controlled by the number of states $n$: larger $n$ allows more complex rational approximations. Chapter~12 develops this WFA-approximation approach and gives conditions under which the approximation error vanishes as $n \to \infty$.
+\begin{example}[Fibonacci again]
+For the Fibonacci WFA,
+\[
+  A = A_a = \begin{pmatrix}0 & 1\\1 & 1\end{pmatrix},
+\]
+so
+\[
+  F(z) = \alpha(I-zA)^{-1}\beta = \frac{z}{1-z-z^2}.
+\]
+This is the same generating function as in Chapters~1 and~4, and its dominant pole at $z=1/\varphi$ gives
+\[
+  [z^n]F(z) = F_n \sim \frac{\varphi^n}{\sqrt{5}}.
+\]
+The WFA viewpoint reaches the same asymptotic through matrix structure.
+\end{example}
 
-Second, the Icard hierarchy provides sharp obstructions. If empirical measurements reveal that a language model's length distribution follows a $n^{-3/2}$ law (as Chapter~5 suggests for certain grammatical structures), this is a signature of algebraic, not rational, behavior. No WFA approximation---regardless of the number of states---can reproduce this law exactly, because all rational functions have exponential or polynomial-times-exponential coefficient asymptotics, never a pure power law with negative fractional exponent. The algebraic structure must be modeled at the PCFG level or above. This is the content of Icard's non-collapse theorem applied to empirical data, and it provides a principled test for whether a finite-state approximation is adequate for a given modeling task.
+\section{Recognizable Versus Rational Series}
 
-The generating function $F(z) = \alpha(I - zA)^{-1}\beta$ of Theorem~\ref{thm:wfa-rational} will reappear throughout Part~III. Its dominant pole at $z = 1/\rho(A)$ determines the exponential decay rate of string-length probabilities (when $\mathcal{A}$ is stochastic and irreducible, $\Pr(|W|=n) \sim C\rho(A)^n$). The entropy rate of the source, discussed in Chapter~9, is a separate quantity computed from the per-symbol conditional distributions, not directly from $\rho(A)$. Chapter~8 addresses the foundational question that must precede all asymptotic analysis: when does a probabilistic grammar define a \emph{proper} probability distribution---one that assigns total mass one to $\Sigma^*$---and what algebraic conditions govern this consistency?
+There is also a noncommutative version of the story. A formal series over words,
+\[
+  S = \sum_{w \in \Sigma^*} c_w \, w,
+\]
+can be viewed as assigning a coefficient directly to each word rather than first collapsing everything to a length variable. Such a series is called \emph{recognizable} if it comes from a WFA, and \emph{rational} if it is built from finite series using sum, concatenation, and star.
+
+\begin{theorem}[Kleene--Sch\"utzenberger, used as a black box]
+A noncommutative formal series is recognizable if and only if it is rational.
+\end{theorem}
+
+The star operation again requires the analogue of a zero constant term, for the same reason as in Chapter~3: one must avoid infinitely many ways to build the same total length. If we now send each word $w$ to the commutative monomial $z^{|w|}$, concatenation of words becomes multiplication of powers of $z$ because lengths add. That is the bridge from noncommutative rationality to the ordinary rational function $F(z)$ above.
+
+\section{What WFAs Can and Cannot Express Exactly}
+
+The rationality theorem gives an exact limitation. An exact WFA model always has a rational length generating function. Therefore it cannot exactly realize a genuine square-root algebraic length law such as the Catalan/Dyck behavior studied in Chapters~3--5.
+
+This is one way to read the probabilistic hierarchy discussed by Icard \cite{Icard2020}: finite-state weighted models sit at a rational level, while context-free probabilistic models can produce algebraic length behavior above that level. The exact details of that hierarchy are not needed here. The main message is simpler: exact WFA models occupy the rational regime.
+
+\section{Why This Matters for Language Models}
+
+A large language model is not literally a WFA. Still, the WFA viewpoint matters in two different ways.
+
+First, it provides a tractable exact model class. When a sequence model really is finite-state weighted, its length generating function is rational and the pole analysis of Part~I applies exactly.
+
+Second, it provides a research program for approximation. If some finite-state surrogate approximates a language model well on finite strings or finite contexts, that may still be useful. But one must be careful: closeness of distributions or coefficients on a finite range does \emph{not} automatically imply closeness of dominant singularities or asymptotic regimes. Chapter~12 returns to this issue and formulates approximation targets more carefully.
+
+A good rule of thumb is:
+\begin{itemize}
+  \item exact WFA model $\Rightarrow$ exact rational length generating function;
+  \item observed square-root algebraic correction $\Rightarrow$ evidence against an exact WFA description;
+  \item useful finite-length approximation does not automatically imply the same asymptotic singularity type.
+\end{itemize}
+We will use that distinction repeatedly later.
 
 \section*{Further Reading}
 
 \begin{itemize}
-  \item \textbf{M. Droste, W. Kuich, and H. Vogler} (eds.), \emph{Handbook of Weighted Automata} (2009) \cite{DrosteKuichVogler2009} --- the comprehensive reference for weighted automata over arbitrary semirings, covering the algebraic foundations, closure properties, and decision problems; the standard source for the general theory presented in this chapter.
-  \item \textbf{J. Berstel and C. Reutenauer}, \emph{Noncommutative Rational Series with Applications} (2011) \cite{BerstelReutenauer2011} --- develops rational series over free monoids from first principles, proving the Kleene--Schützenberger theorem in full generality and connecting recognizable series to matrix representations.
-  \item \textbf{T. Icard}, ``Calibrating generative models: the probabilistic Chomsky--Schützenberger hierarchy'' (2020) \cite{Icard2020} --- establishes the probabilistic Chomsky hierarchy and the non-collapse theorem separating rational stochastic languages from algebraic ones; the direct source for the Icard hierarchy discussion in Section~6.
-  \item \textbf{N. A. Smith and M. Johnson}, ``Weighted and probabilistic context-free grammars are equally expressive'' (2007) \cite{SmithJohnson2007} --- shows that weighted CFGs with arbitrary positive weights are representationally equivalent to properly normalized PCFGs at the context-free level, settling a question about the expressiveness of unnormalized weighting schemes.
-  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (2009) \cite{FlajoletSedgewick2009} --- Chapter~V on applications of rational and meromorphic asymptotics provides the analytic-combinatorics counterpart to the WFA rationality theorem, including the transfer theorems that translate pole locations into coefficient asymptotics.
+  \item \textbf{M. Droste, W. Kuich, and H. Vogler} (eds.), \emph{Handbook of Weighted Automata} (2009) \cite{DrosteKuichVogler2009} --- the standard general reference for weighted automata over semirings.
+  \item \textbf{J. Berstel and C. Reutenauer}, \emph{Noncommutative Rational Series with Applications} (2011) \cite{BerstelReutenauer2011} --- for recognizable versus rational series and the noncommutative Kleene--Sch\"utzenberger theorem.
+  \item \textbf{T. Icard}, ``Calibrating generative models: the probabilistic Chomsky--Sch\"utzenberger hierarchy'' (2020) \cite{Icard2020} --- for one formal version of the rational-versus-algebraic probabilistic hierarchy.
+  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (2009) \cite{FlajoletSedgewick2009} --- for the rational-function asymptotics that make the WFA theorem analytically useful.
 \end{itemize}

@@ -1,110 +1,186 @@
 \chapter{Autoregressive Language Models}
 \label{ch10:top}
 
-So far we have treated ``distributions over strings'' abstractly: a probability measure $\mu$ on $\Sigma^*$, a weighted automaton, a formal power series with nonnegative coefficients summing to one. This chapter introduces the concrete object that the rest of the book analyzes: a large language model. The exposition is deliberately stripped down. An LLM, for our purposes, is a probability distribution on $\Sigma^*$, nothing more. The neural network is the parameter, not the object. What matters is what distribution it induces, and what mathematical tools are available for analyzing that distribution. Once we have this, the singularity analysis of Part I and the entropy theory of Part II can be brought to bear directly.
+Earlier chapters spoke abstractly about distributions on strings. This chapter fixes the concrete convention used for the rest of the book when the strings come from a large language model. The main conceptual move is simple but important: the mathematical object is the induced distribution on outputs, not the neural network parameters themselves.
+
+To make that precise, we must first settle the sample space cleanly.
 
 \section{Tokens, Vocabulary, and End-of-Sequence}
 
-An LLM operates over a finite vocabulary $\Sigma$, typically consisting of \emph{tokens} obtained by applying a subword encoding to a large text corpus. The three standard algorithms are byte-pair encoding (BPE), WordPiece, and the unigram language model. Each algorithm merges or segments character sequences according to corpus statistics, producing units that are neither words nor characters but lie somewhere between. Modern vocabularies range from $|\Sigma| \approx 30{,}000$ (as in GPT-2 and the Llama family) to $|\Sigma| \approx 200{,}000$ (as in GPT-4). The vocabulary always includes a distinguished \emph{end-of-sequence token} $\EOS \in \Sigma$. Every sampled string ends with the first occurrence of $\EOS$, at which point sampling halts. Strings not containing $\EOS$ in their interior are the only grammatical outputs; $\EOS$ appearing mid-string would be treated as a terminal event, truncating everything after it.
+Let $\Sigma$ denote the vocabulary of ordinary content tokens, and let
+\[
+  \EOS \notin \Sigma
+\]
+be a distinguished end-of-sequence symbol. The model emits tokens from the enlarged alphabet
+\[
+  \Sigma \cup \{\EOS\},
+\]
+but the actual finite outputs are strings in
+\[
+  \Sigma^*.
+\]
+A generated string ends when the first $\EOS$ is emitted. Thus:
+\begin{itemize}
+  \item histories during generation are strings in $\Sigma^*$,
+  \item outputs are strings in $\Sigma^*$,
+  \item and $\EOS$ is a stopping action, not a symbol that appears inside the returned output string.
+\end{itemize}
 
-Tokenization is not a detail to be abstracted away. It determines what counts as an atom for the combinatorial class of LLM outputs. A byte-pair tokenizer running on English text will produce a granularity different from word-level and different from character-level. Zipf exponents on token frequencies, length distributions measured in tokens, and entropy rates all depend on which tokenizer was applied. Two models with identical weights but different tokenizers define genuinely different distributions on $\Sigma^*$. Part~V returns to this in Chapter~16, where tokenization artifacts appear as poles in the length generating function.
+This convention is the cleanest one for the later generating functions. It also matches the length PGF of Chapter~8, where length means ``number of non-$\EOS$ tokens before termination.''
+
+Tokenization still matters. A model over characters, one over words, and one over BPE tokens define genuinely different distributions on $\Sigma^*$. All later counting, length, and entropy questions depend on that choice of atomic units.
 
 \section{The Autoregressive Factorization}
 
-An LLM defines, for every history $h \in \Sigma^*$, a conditional distribution $p(\cdot \mid h) \in \Delta(\Sigma)$ over the next token, treating $\EOS$ as an ordinary token. Given these conditionals, the probability of generating a specific finite string $w = w_1 w_2 \cdots w_n$ followed immediately by $\EOS$ is
+An autoregressive language model specifies, for every history $h \in \Sigma^*$, a conditional distribution
 \[
-  p(w \cdot \EOS) \;=\; p(\EOS \mid w_1 \cdots w_n) \prod_{t=1}^{n} p(w_t \mid w_1 \cdots w_{t-1}),
+  p(\cdot \mid h) \in \Delta(\Sigma \cup \{\EOS\}).
 \]
-where the empty product at $t = 0$ is $1$ (so the probability of the string consisting of $\EOS$ alone is $p(\EOS \mid \varepsilon)$). Sampling proceeds left to right: draw $w_1 \sim p(\cdot \mid \varepsilon)$, then $w_2 \sim p(\cdot \mid w_1)$, and so on, until $\EOS$ is sampled. This procedure is called \emph{autoregressive decoding}.
+If the model outputs
+\[
+  w = w_1 w_2 \cdots w_n \in \Sigma^*,
+\]
+then its probability is
+\[
+  p(w) = p(\EOS \mid w_1\cdots w_n) \prod_{t=1}^n p(w_t \mid w_1\cdots w_{t-1}).
+\]
+The empty output has probability
+\[
+  p(\varepsilon) = p(\EOS \mid \varepsilon).
+\]
 
 \begin{definition}[Autoregressive language model]
-An \emph{autoregressive language model} over $\Sigma$ is a family $\mathcal{M} = \{p(\cdot \mid h)\}_{h \in \Sigma^*}$ of conditional distributions $p(\cdot \mid h) \in \Delta(\Sigma)$, one for each finite history $h \in \Sigma^*$. The induced distribution on $\Sigma^*$ is defined by the autoregressive factorization above.
+An \emph{autoregressive language model} over content vocabulary $\Sigma$ is a family of conditional distributions
+\[
+  \mathcal{M} = \{p(\cdot \mid h)
+  : h \in \Sigma^*\},
+\]
+where each conditional is supported on $\Sigma \cup \{\EOS\}$. The induced output distribution on $\Sigma^*$ is defined by the factorization above.
 \end{definition}
 
-The parameters of the neural network are merely a compact representation of the family $\mathcal{M}$; the mathematical object is the family itself. Two distinct parameter vectors that induce the same family of conditionals define the same language model in our sense. This is the appropriate level of abstraction for the analytic combinatorics program: we care about generating functions of the output distribution, and those are determined by $\mathcal{M}$, not by the network's internal weight matrices.
+The conditionals after a history already containing $\EOS$ are irrelevant, because such histories are never reached by the sampling process. One may define them arbitrarily or ignore them entirely.
 
-\section{Softmax and the Role of Temperature}
+This is the right abstraction for the book. The network parameters are one way to represent the family $\mathcal M$; they are not themselves the primary mathematical object.
 
-In every modern LLM, the conditional $p(\cdot \mid h)$ is computed via \emph{softmax} applied to a vector of real-valued \emph{logits} $\ell(h) \in \mathbb{R}^{|\Sigma|}$:
+\section{Softmax and Temperature}
+
+In practice, modern LLMs compute the conditional distribution by applying softmax to a vector of logits:
 \[
-  p(\sigma \mid h) \;=\; \frac{e^{\ell_\sigma(h)}}{\displaystyle\sum_{\sigma' \in \Sigma} e^{\ell_{\sigma'}(h)}}.
+  p(\sigma \mid h) = \frac{e^{\ell_\sigma(h)}}{\sum_{\tau \in \Sigma \cup \{\EOS\}} e^{\ell_\tau(h)}}.
 \]
-Softmax maps any real vector to a strictly positive probability distribution: every token, including every token that might look semantically bizarre in context, receives nonzero probability. This seemingly minor property has structural consequences that will dominate the next two sections.
-
-\emph{Temperature scaling.} In practice one often samples from the tempered distribution
+For every finite temperature parameter $T>0$, the tempered distribution is
 \[
-  p_T(\sigma \mid h) \;=\; \frac{e^{\ell_\sigma(h)/T}}{\displaystyle\sum_{\sigma'} e^{\ell_{\sigma'}(h)/T}},
+  p_T(\sigma \mid h) = \frac{e^{\ell_\sigma(h)/T}}{\sum_{\tau} e^{\ell_\tau(h)/T}}.
 \]
-where $T > 0$ is the \emph{sampling temperature}. At $T = 1$ one recovers the model's native distribution. As $T \to 0$, all mass concentrates on the $\operatorname{argmax}$ token (greedy decoding). As $T \to \infty$, $p_T(\cdot \mid h)$ converges to the uniform distribution on $\Sigma$. Temperature scaling is a one-parameter deformation of the model's output distribution; it preserves the support (every token remains reachable for any $T > 0$) while reshaping the entropy. Temperature is the central object of Part~IV, where its effect on the dominant singularity of the length PGF is analyzed.
+At $T=1$ this is the native model. For every fixed finite $T>0$, every token in $\Sigma \cup \{\EOS\}$ keeps strictly positive probability. As $T \to 0$, mass concentrates on the set of maximizers of the logits; if there are ties, the limiting distribution is supported on the tied argmax set.
+
+Temperature will matter later when we distinguish local tokenwise rescaling from more global Gibbs-style reweighting of full strings.
 
 \section{Transformers in One Paragraph}
 
-A transformer maps the history $h$ to the logits $\ell(h)$ through a stack of $L$ layers, each consisting of a multi-head self-attention sublayer followed by a position-wise feedforward network, with residual connections and layer normalization at each sublayer \cite{VaswaniEtAl2017}. The formal object we care about is the input--output function $h \mapsto \ell(h)$; the internal mechanism is parameterization, not the subject of study. What matters analytically is that this function is (i) computable in polynomial time per step (quadratic in the context length via the attention computation), (ii) differentiable in the parameters, and (iii) structurally forced to produce strictly positive softmax outputs at every step. Property~(iii) is what the next section exploits. Nothing about the specific form of self-attention, feedforward width, or normalization scheme enters the tightness argument; the argument requires only that the logit function $h \mapsto \ell(h)$ maps into a bounded region of $\mathbb{R}^{|\Sigma|}$ for fixed parameters.
-
-\section{Tightness for Transformer Language Models}
-
-Chapter~8 defined \emph{tightness}: the autoregressive factorization yields a proper probability measure on $\Sigma^*$ (i.e., $\sum_{w \in \Sigma^*} p(w \cdot \EOS) = 1$) if and only if the sum $\sum_{t=1}^\infty \widetilde{p}_\EOS(t)$ diverges, where $\widetilde{p}_\EOS(t)$ is the probability that $\EOS$ has not yet been emitted by step $t$. For transformer language models, tightness is automatic by a result of Du et al.\ \cite{DuEtAl2023}.
-
-The argument is essentially the following. The logit vector $\ell(h) \in \mathbb{R}^{|\Sigma|}$ depends on the history $h$ through the transformer, but because the transformer's parameters are a fixed finite collection of weight matrices and biases, and because attention weights and layer normalizations are bounded per step, there is a uniform constant $C > 0$ depending only on the parameters such that $|\ell_\sigma(h)| \le C$ for all $h \in \Sigma^*$ and all $\sigma \in \Sigma$. Then
+A transformer is one specific neural parameterization of the history-to-logit map
 \[
-  p(\EOS \mid h) \;=\; \frac{e^{\ell_\EOS(h)}}{\displaystyle\sum_{\sigma \in \Sigma} e^{\ell_\sigma(h)}} \;\ge\; \frac{e^{-C}}{|\Sigma|\, e^{C}} \;=\; \frac{e^{-2C}}{|\Sigma|} \;=:\; \varepsilon \;>\; 0.
+  h \longmapsto \ell(h).
 \]
-The EOS probability is bounded below by a uniform constant $\varepsilon$ that depends only on the parameter bound $C$ and the vocabulary size. By Proposition~4.3 of Du et al., a uniform lower bound $p(\EOS \mid h) \ge \varepsilon > 0$ for all histories implies tightness: the probability of still generating at time $t$ is at most $(1 - \varepsilon)^t$, so $\widetilde{p}_\EOS(t) \le (1-\varepsilon)^t$, and the survival sum is bounded by a convergent geometric series, meaning generation terminates almost surely.
+For the mathematics of this chapter, the exact architecture matters less than the existence of that map. The only reason to mention the architecture at all is that some later theorems, such as tightness results of Du et al., are proved for particular model classes rather than for arbitrary conditional families.
 
-\begin{theorem}[Du et al.\ 2023, \cite{DuEtAl2023}]
-Every softmax-output transformer language model with bounded parameters is tight: it defines a proper probability measure on $\Sigma^*$, assigning zero total mass to the set of infinite strings $\Sigma^\omega$.
+\section{Tightness}
+
+Chapter~8 introduced the right probability-theoretic notion.
+
+\begin{definition}
+An autoregressive language model is \emph{tight} if the total probability of finite outputs is $1$:
+\[
+  \sum_{w \in \Sigma^*} p(w) = 1.
+\]
+Equivalently, generation halts almost surely.
+\end{definition}
+
+For a tight model, the length distribution
+\[
+  p_n = \Pr(|W|=n)
+\]
+is a genuine probability distribution on $\mathbb{Z}_{\ge 0}$.
+
+We use the Du et al.
+result as a black box.
+
+\begin{theorem}[Du et al., black box]
+Under the hypotheses of their framework, softmax transformer language models are tight.
 \end{theorem}
 
-This theorem is not a curiosity. It is the permission slip for everything that follows. All of the singularity-analysis machinery of Part~I presupposes that the object being analyzed is actually a probability distribution, not a defective measure leaking mass to $\Sigma^\omega$. Tightness is what guarantees that the length PGF $P(z) = \sum_{n \ge 0} p_n z^n$ satisfies $P(1) = 1$ and that the counting generating function of the typical set has a well-defined radius of convergence whose reciprocal encodes the entropy rate. Transformers come with this guarantee built in, for free, by the structure of softmax.
+We deliberately do not reproduce a proof sketch here. Positivity of softmax alone is not enough for a self-contained proof, and the real argument is architectural and measure-theoretic. For this chapter, the safe lesson is simply that there are important LLM classes for which properness has been proved, not merely hoped for.
 
-\begin{remark}
-The tightness bound $\varepsilon = e^{-2C}/|\Sigma|$ is extremely loose for any well-trained model. In practice $p(\EOS \mid h)$ varies enormously with $h$, approaching $1$ at natural sentence boundaries and near $0$ mid-token. But for the purpose of the existence theorem, the uniform floor suffices.
-\end{remark}
+\section{Two Generating Functions Attached to an LLM}
 
-Contrast with non-tight recurrent models. Du et al.\ show by explicit construction that an RNN with ReLU activations can be non-tight: one can tune the network so that the EOS logit decays faster than any polynomial in the sequence length, causing $\sum_t \widetilde{p}_\EOS(t)$ to converge (their Example~2.4). Non-tightness is therefore a genuine pathology, not an artifact of poor training. It is avoidable only by architectural choice. The softmax output layer is exactly such a choice; other choices, including hard gates or ReLU activations applied directly to the EOS logit, do not yield the same guarantee. This makes the softmax operation load-bearing in a mathematical sense that goes beyond its role as a differentiable normalization.
+Once the output distribution is fixed, there are at least two different generating functions one might attach to it.
 
-\section{Generating Functions for a Concrete LLM}
-
-Chapters~8 and~9 distinguished two generating functions associated with a string-valued distribution. For a concrete LLM both are well-defined objects, and the distinction matters.
-
-\emph{Length PGF.} Define $p_n = \Pr_{\mathcal{M}}(|W| = n)$, the probability that the model generates a string of exactly $n$ tokens before emitting $\EOS$ (not counting the $\EOS$ token itself). The length probability generating function is
+\paragraph{1. The length PGF.}
+For a tight model, define
 \[
-  P(z) \;=\; \sum_{n \ge 0} p_n z^n.
+  P(z) = \sum_{n \ge 0} p_n z^n,
+  \qquad
+  p_n = \Pr(|W|=n).
 \]
-For a tight model, $P(1) = 1$. The singularity of $P$ closest to the origin on the positive real axis --- whether it lies at $z = 1$, beyond $z = 1$, or is a branch point --- controls how the tail $p_n$ decays as $n \to \infty$. This is the natural object when asking: ``how long does the LLM generate before emitting $\EOS$?'' A model with a simple pole of $P$ at $z_0 > 1$ produces geometrically decaying length tails; a model whose $P$ has a branch point at $z = 1$ produces polynomial tails.
+This is the right object for questions about how long the model tends to generate before stopping.
 
-\emph{Counting GF.} For $\alpha \in (0,1)$, define the \emph{$\alpha$-typical set} $T_n^\alpha$ to be the set of strings $w$ of length $n$ with $p(w) \ge 2^{-n(h+\alpha)}$, where $h$ is the entropy rate of $\mathcal{M}$. The counting generating function of the typical set is
+\paragraph{2. A counting-type typical-set GF.}
+If one later chooses an entropy notion and a typicality criterion as in Chapter~9, one can count how many outputs of length $n$ are ``typical'' and form a second generating function
 \[
-  A(z) \;=\; \sum_{n \ge 0} |T_n^\alpha| \, z^n.
+  A(z) = \sum_{n \ge 0} a_n z^n.
 \]
-By the asymptotic equipartition property, $|T_n^\alpha| \sim 2^{nh}$ for large $n$, so the radius of convergence of $A(z)$ is $R = 2^{-h}$, giving $h = \log_2(1/R)$. This is the natural object when asking: ``how large is the set of likely outputs at length $n$?'' The dominant singularity of $A$ at $z = R$ connects the entropy rate of the model to the analytic structure of the counting series.
+This is a counting object, not a length-probability object.
 
-The two objects address two different questions, and the literature on each is largely disjoint. The length PGF $P$ belongs to the domain of stopping-time analysis; the counting GF $A$ belongs to the domain of information-theoretic combinatorics. Part~V makes the separation explicit through the ``Gap~1 vs.\ Gap~2'' dichotomy \cite{CotterellEtAl2023}: Gap~1 concerns the discrepancy between a model's probability and a reference measure at fixed length (related to $A$), while Gap~2 concerns the probability assigned to strings beyond a certain length (related to $P$). When someone says ``the generating function of an LLM,'' one must always ask which of these is meant.
+The point of this section is not to define every such counting GF in full detail again. It is to prevent confusion: `P(z)` and `A(z)` answer different questions and generally have different radii and different singularity interpretations.
 
-\section{An LLM as a Very-High-Order Markov Source}
+\section{Prefix Dependence and the Markov Viewpoint}
 
-The autoregressive factorization makes an LLM a Markov chain on the state space $\Sigma^*$ (the entire set of finite prefixes) with transition kernel $p(\cdot \mid h)$. This is an enormously high-dimensional, indeed uncountably branching, Markov chain, but it is still a Markov chain in the formal sense, and the theory of entropy rate, stationary distributions, and mixing from Part~II Chapter~9 applies formally. The entropy rate
+There is one useful formal viewpoint. The sampling process can be seen as a Markov chain on the countable state space of finite prefixes $\Sigma^*$. From any history there are only finitely many next-token choices, so the branching is large but still finite at each step.
+
+However, Chapter~9's entropy-rate theory for stationary infinite processes does \emph{not} transfer automatically to this terminated setting. A tight autoregressive model produces a finite output and then stops. To speak about an entropy rate in the stationary sense, one would need an additional construction, such as an associated infinite process or a conditioning scheme. We therefore avoid claiming in this chapter that a generic tight LLM comes with a Chapter~9 entropy rate for free.
+
+What we can say safely is simpler:
+\begin{itemize}
+  \item finite-context models behave more like finite-order Markov sources,
+  \item full-prefix models can depend on the entire history,
+  \item and the generating functions of their output distributions need not be rational unless further finite-state structure is present.
+\end{itemize}
+
+\section{A Unigram Example}
+
+Consider the simplest autoregressive model: at every step, independently of history, emit a non-$\EOS$ token with total probability $1-q$ and emit $\EOS$ with probability $q$.
+
+Then
 \[
-  h(\mathcal{M}) \;=\; \lim_{n \to \infty} \frac{1}{n} H(W_1, \ldots, W_n)
+  \Pr(|W|=n) = q(1-q)^n
+  \qquad (n \ge 0),
 \]
-exists for any tight autoregressive model by the subadditivity of entropy.
+so the length PGF is
+\[
+  P(z) = \sum_{n \ge 0} q(1-q)^n z^n = \frac{q}{1-(1-q)z}.
+\]
+This is a rational function with a simple pole at
+\[
+  z = \frac{1}{1-q} > 1.
+\]
+So even the most trivial autoregressive model already fits the rational pole picture of Part~I.
 
-What is structurally new in the LLM setting is the scale of state dependence. A classical $k$-th order Markov source has transition kernel depending only on the last $k$ tokens; its entropy rate can be estimated from $(k+1)$-gram statistics, and its generating functions are rational by the transfer matrix theorem of Chapters~6--7. An LLM with full self-attention, by contrast, has transition kernel $p(\cdot \mid h)$ depending on the entire prefix $h$: the distribution over the next token can depend, in principle, on the token at position one. The long-range attention patterns break the finite-Markov-order structure entirely.
+\section*{Preview}
 
-This has a direct consequence for the singularity-analysis program. The transfer matrix theorem guarantees rational GFs for finite-state Markov sources. If an LLM's attention machinery lets it approximate context-free or even more exotic behavior (Chapter~11), then the natural question becomes: does the LLM's output distribution lie in the rational, algebraic, or some wilder class of formal power series, and what does the dominant singularity of its length PGF or counting GF look like? These are precisely the questions of Parts~IV and~V.
+The next two chapters ask how far that rational picture extends.
 
-\begin{example}
-A unigram model, $p(\sigma \mid h) = q(\sigma)$ for a fixed distribution $q$, is a zero-order Markov source. Its length PGF is $P(z) = q(\EOS) z / (1 - (1 - q(\EOS))z)$, a rational function with a simple pole at $z = 1/(1 - q(\EOS)) > 1$. Its counting GF has radius $2^{-H(q \setminus \EOS)}$ where $H(q \setminus \EOS)$ is the per-token entropy over non-EOS tokens. A full transformer deforms both of these objects in ways that depend on the corpus and the architecture, and the analytic structure of the resulting GFs is the subject of the rest of this book.
-\end{example}
+\begin{itemize}
+  \item Chapter~11 studies what kinds of formal-language behavior transformer architectures can and cannot support.
+  \item Chapter~12 asks under what approximation targets a finite-state weighted model is a useful surrogate for a neural language model.
+\end{itemize}
 
-Chapter~11 maps the transformer architecture against the formal language hierarchy, and makes precise why vanilla transformers without chain-of-thought are constrained to operate near the rational-stochastic corner of that hierarchy. This matters because it implies that the output GFs of such models are expected to be ``close to rational''---they should have a small number of dominant poles, with subdominant algebraic or essential singularities suppressed---and therefore amenable to the weighted finite automaton approximation program developed in Chapter~12. The tightness theorem of this chapter is the necessary prerequisite: it tells us the object whose singularities we are about to study is a genuine probability measure, not a ghost.
+Those are the chapters where ``close to rational'' must be made precise. This chapter only sets up the underlying probabilistic object and the two generating functions one might study.
 
 \section*{Further Reading}
 
 \begin{itemize}
-  \item \textbf{A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, {\L}. Kaiser, and I. Polosukhin}, ``Attention is all you need'' (2017) \cite{VaswaniEtAl2017} --- the original transformer paper introducing scaled dot-product attention, multi-head attention, and positional encoding; the architectural description underlying the tightness argument in Section~5.
-  \item \textbf{L. Du, L. Hennigen, T. Pimentel, C. Meister, J. Eisner, and R. Cotterell}, ``A measure-theoretic characterization of tight language models'' (2023) \cite{DuEtAl2023} --- the primary source for the tightness theorem for softmax transformers and for the measure-theoretic framework distinguishing tight from non-tight autoregressive models.
-  \item \textbf{R. Cotterell, A. Svete, C. Meister, T. Liu, and L. Du}, ``Formal aspects of language modeling'' (2023) \cite{CotterellEtAl2023} --- develops the Gap~1 vs.\ Gap~2 dichotomy and the framework for comparing language models as probability measures on $\Sigma^*$; directly relevant to Section~6's separation of the length PGF from the counting GF.
-  \item \textbf{T. Icard}, ``Calibrating generative models: the probabilistic Chomsky--Schützenberger hierarchy'' (2020) \cite{Icard2020} --- the probabilistic Chomsky hierarchy establishes that the rational-stochastic and algebraic-stochastic classes are distinct; the theoretical background for the question of where LLM output distributions fall in this hierarchy.
-  \item \textbf{P. Flajolet and R. Sedgewick}, \emph{Analytic Combinatorics} (2009) \cite{FlajoletSedgewick2009} --- the singularity analysis machinery applied throughout Parts~IV and~V to the length PGF and counting GF of LLMs; the analytic-combinatorics reference for the program outlined at this chapter's close.
+  \item \textbf{A. Vaswani et al.}, ``Attention is all you need'' (2017) \cite{VaswaniEtAl2017} --- the original transformer architecture paper.
+  \item \textbf{L. Du et al.}, ``A measure-theoretic characterization of tight language models'' (2023) \cite{DuEtAl2023} --- the main reference for tightness of autoregressive language models.
+  \item \textbf{R. Cotterell et al.}, ``Formal aspects of language modeling'' (2023) \cite{CotterellEtAl2023} --- for a broader formal perspective on language models as probability measures on strings.
+  \item \textbf{T. Icard}, ``Calibrating generative models: the probabilistic Chomsky--Schützenberger hierarchy'' (2020) \cite{Icard2020} --- for one formal hierarchy comparing rational and algebraic probabilistic models.
 \end{itemize}
