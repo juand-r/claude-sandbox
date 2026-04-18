@@ -15,7 +15,6 @@ This is a well-defined formal power series with non-negative coefficients summin
 \textbf{What is known.} Du \emph{et al.}\ 2023 \cite{DuEtAl2023} give a stopping-hazard criterion for tightness and prove that broad classes of softmax Transformers are tight. They do not construct $L(z)$ explicitly or characterize its singularity structure.
 
 \textbf{Why it stops short.} Tightness is the statement $L(1)=1$. The analytic-combinatorics programme needs far more: the location of the dominant singularity of $L(z)$, its type (polar, algebraic, logarithmic), and the resulting coefficient asymptotics $\Pr[|W|=n]\sim\,?$ These would tell us, for example, whether LLM output lengths follow a geometric tail (pole), a subexponential power-law tail ($n^{-3/2}$ from a square-root branch point), or something else entirely.
-% NOTE: This is a strong and well-posed gap. One possible sharpening: explicitly separate
 % "length PGF as an exact object" from "tractable approximation of the length PGF via WFA
 % extraction," since later gaps (especially Gap 9) seem to aim at the second route.
 
@@ -32,7 +31,7 @@ Chapter~9 showed that an entropy-rate identity of the form $h=\log(1/R)$ can hol
 
 \textbf{What a solution looks like.} A rigorous statement and proof of $h=\log(1/R_C)$ for a clearly specified entropy-related counting object $C(z)$ attached to a class of autoregressive models, with explicit hypotheses on the model class and an explicit distinction from both support growth and length PGFs.
 
-\section{Gap 2: Rigorous Boltzmann--Temperature Correspondence}
+\section{Gap 2: Boltzmann--Temperature Correspondence}
 \label{ch18:gap2}
 
 Chapter~13 introduced the substitution $x=e^{-\beta}$ that turns a combinatorial generating function $A(x)$ into a partition function $Z(\beta)=A(e^{-\beta})$. Chapter~14 defined the LLM Gibbs measure $\mu_\beta(w)\propto\mu(w)^\beta$. The bridge between them is the \emph{global} partition function
@@ -81,7 +80,6 @@ uniformly near $u=1$, then the statistic is asymptotically Gaussian with mean $\
 \textbf{Why it stops short.} Verifying the quasi-power hypothesis for a statistic measured on \emph{LLM output} --- e.g.\ the count of a motif in a sample of length $n$ --- requires knowing the bivariate GF $F(z,u)$ of the LLM, which is Gap~1a generalized. For WFA-approximated LLMs, $F(z,u)$ is rational in $(z,u)$ and the hypothesis is often checkable.
 
 \textbf{What a solution looks like.} For a WFA-approximated LLM, verify the quasi-power form for a concrete statistic (e.g.\ occurrences of a specific bigram), state the Gaussian limit, and compare with empirical histograms.
-% NOTE: This is one of the clearest / most tractable gaps in the chapter. It may help
 % to emphasize that this gap is about a *stable statistic under approximation* rather
 % than about recovering the full asymptotic language class of the model.
 
@@ -102,7 +100,6 @@ The thermodynamic formalism of Ruelle \cite{Ruelle1978}, Bowen \cite{Bowen1975},
 Analytic combinatorics has a well-developed zoology of singular behaviors: polar (rational GFs, geometric coefficients), algebraic-logarithmic (algebraic GFs, $n^{-3/2}$ and its cousins $n^{-(2k+1)/2}$), and essential (entire functions with super-exponential growth, requiring saddle-point methods). Which of these appear in LLM counting or length generating functions? Is there a new type?
 
 \textbf{What is known.} WFA approximations give rational GFs (polar singularities). PCFG approximations give algebraic GFs (branch-point singularities). Real LLMs presumably have singularity structure that is neither purely rational nor purely algebraic.
-% NOTE: "presumably" is the right hedge here. Given Chs. 11--15, this chapter should
 % probably continue to mark the rational / algebraic / beyond-algebraic trichotomy as a
 % working hypothesis rather than an already established classification principle.
 
@@ -128,7 +125,6 @@ Chapter~12 surveyed four approaches to WFA extraction. None comes with end-to-en
 \textbf{What is known.} AAK theory (Section~12.4) gives optimal Hankel-operator-norm bounds for the one-letter case. Spectral learning gives Frobenius-norm bounds on the Hankel matrix. $L^*$ has polynomial query complexity in the number of states of the target DFA. These bounds exist in isolation.
 
 \textbf{What a solution looks like.} A combined pipeline: extract a WFA of rank $k$ from an LLM, with a theorem stating that the KL divergence between the WFA's distribution and the LLM's distribution is at most $\varepsilon(k,\sigma_{k+1})$ where $\sigma_{k+1}$ is the $(k+1)$st singular value of the empirical Hankel matrix. This is the most tractable of the ten gaps.
-% NOTE: This is a strong and concrete problem statement. One possible refinement:
 % specify which approximation target is intended (full string distribution, truncated
 % length distribution, conditional next-token distributions, etc.), since Ch. 12 showed
 % that those are not automatically interchangeable.
@@ -177,7 +173,7 @@ The ten gaps are distilled from the broader research programme described in the 
 
   \item \textbf{D.~Ruelle}, \emph{Thermodynamic Formalism} (Addison-Wesley, 1978) \cite{Ruelle1978} --- The foundational reference for the thermodynamic formalism of equilibrium states, pressure functions, and transfer operators on subshifts of finite type. Essential background for Gap~6 (extending the formalism to neural-network potentials).
 
-  \item \textbf{R.~Bowen}, \emph{Equilibrium States and the Ergodic Theory of Anosov Diffeomorphisms} (Springer, 1975) \cite{Bowen1975} --- Develops the Ruelle--Bowen theory of Gibbs states and the variational principle for topological pressure on Axiom~A systems. Read alongside Ruelle for Gap~6; together they give the ergodic-theory substrate that Gap~6 seeks to extend.
+  \item \textbf{R.~Bowen}, \emph{Equilibrium States and the Ergodic Theory of Anosov Diffeomorphisms} (1975) \cite{Bowen1975} --- Develops the Ruelle--Bowen theory of Gibbs states and the variational principle for topological pressure on Axiom~A systems. Read alongside Ruelle for Gap~6; together they give the ergodic-theory substrate that Gap~6 seeks to extend.
 
   \item \textbf{N.~Mikhaylovskiy}, ``Zipf's law and the temperature window in transformer language models,'' \emph{Findings of EMNLP} (2025) \cite{Mikhaylovskiy2025b} --- Empirically identifies temperature-driven phase transitions in transformer outputs and connects them to Zipf-exponent shifts. The primary empirical motivation for Gaps~8 and~10, and a concrete target for what a positive resolution would need to explain.
 \end{itemize}

@@ -40,7 +40,7 @@ $\Sigma$ & Finite alphabet \\
 $\Sigma^*$ & Set of all finite strings over $\Sigma$ \\
 $\EOS$ & End-of-sequence token \\
 $L \subseteq \Sigma^*$ & A formal language \\
-$(\alpha, \{A_\sigma\}, \beta)$ & Weighted finite automaton: initial vector, transition matrices, final vector \\
+$(\alpha, \{A_\sigma\}, \beta)$ & WFA: initial vector, transition matrices, final vector \\
 $A = \sum_\sigma A_\sigma$ & Aggregate transition matrix of a WFA \\
 $\rho(A)$ & Spectral radius of matrix $A$ \\[6pt]
 
@@ -90,7 +90,7 @@ intervening material; Chapters~18--19 synthesize everything.
 \definecolor{partV}{RGB}{153,102,204}
 
 \begin{center}
-\begin{tikzpicture}[
+\begin{tikzpicture}[scale=0.9, transform shape,
     node distance=0.9cm and 1.4cm,
     ch/.style={
         rectangle, rounded corners=2pt, draw=#1!80, fill=#1!12,

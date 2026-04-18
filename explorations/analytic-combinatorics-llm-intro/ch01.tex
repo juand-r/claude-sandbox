@@ -371,14 +371,14 @@ Setting $m=n-1$ gives
   (2n-3)!! = \frac{(2n-2)!}{2^{n-1}(n-1)!}.
 \]
 Substituting this back into the formula for $\binom{1/2}{n}$, we obtain
-\[
+\begin{align*}
   \binom{1/2}{n}
-  = \frac{(-1)^{n-1}}{2^n n!}(2n-3)!!
-  = \frac{(-1)^{n-1}}{2^n n!}\cdot \frac{(2n-2)!}{2^{n-1}(n-1)!}
-  = \frac{(-1)^{n-1}(2n-2)!}{2^n n! \, 2^{n-1}(n-1)!}
-  = \frac{(-1)^{n-1}}{2^{2n-1}n}\binom{2n-2}{n-1}
+  &= \frac{(-1)^{n-1}}{2^n n!}(2n-3)!! \\
+  &= \frac{(-1)^{n-1}}{2^n n!}\cdot \frac{(2n-2)!}{2^{n-1}(n-1)!} \\
+  &= \frac{(-1)^{n-1}(2n-2)!}{2^{2n-1} n! \, (n-1)!} \\
+  &= \frac{(-1)^{n-1}}{2^{2n-1}n}\binom{2n-2}{n-1}
   \qquad (n \ge 1).
-\]
+\end{align*}
 
 Now substitute the binomial expansion into $C(z)$:
 \[

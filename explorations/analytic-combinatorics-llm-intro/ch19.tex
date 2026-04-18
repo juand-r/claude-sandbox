@@ -19,7 +19,6 @@ explanations~\cite{Szpankowski2001}, before Chapter~18 catalogued ten
 open problems --- Gaps~1a, 1b, 2, 3, 4, 5, 6, 7, 8, 9, 10 --- at the
 frontier.  This final chapter answers a practical question: given that
 background, what should a researcher actually work on first?
-% NOTE: This chapter works well as a pragmatic roadmap. Since several earlier chapters
 % intentionally blended secure theorems with still-speculative LLM bridges, it may help
 % to keep signaling here which recommendations depend only on classical mathematics and
 % which depend on unresolved conjectural links in the current draft.
@@ -32,7 +31,7 @@ waiting for careful accounting; others require new mathematics that is
 not yet in sight.  The following ranking is a judgement call, not a
 theorem.
 
-\textbf{Most tractable: Gap~9 (WFA-approximation pipeline with analytic
+\textbf{Most tractable: Gap~9 (WFA approximation pipeline with
 error bounds).}  The four approximation strategies surveyed in
 Chapter~12 --- spectral learning from moment matrices, AAK-based
 Hankel truncation, $L^*$-style automaton learning, and tensor-network
@@ -44,7 +43,8 @@ were made explicit for weighted automata by Lacroce, Panangaden, and
 Rabusseau~\cite{LacrocePanangadenRabusseau2021}; the $L^*$ convergence
 guarantees are classical.  The missing piece is to compose these bounds
 and state a single theorem of the form: ``for a rank-$r$ WFA
-approximation to a clearly specified target --- for example, the full string distribution over sequences of length at most
+approximation to a clearly specified target --- for example, the full
+string distribution over sequences of length at most
 $n$, the total-variation error is at most $f(r,n)$.''  This is, in
 essence, a careful accounting exercise.  It does not require proving
 anything new about LLMs themselves.
@@ -212,7 +212,7 @@ to tails produced under local decoding temperature can be conceptually
 ambiguous.
 
 Gap~5 (Hwang quasi-power limits) can be pursued as a theoretical
-side-project by a combinatorics-oriented researcher who does not have
+side-project by a researcher in combinatorics who lacks
 access to GPU resources.  The calculation for the PCFG-plus-softmax
 surrogate can be carried out on paper or with a computer-algebra
 system~\cite{Hwang1998}.
@@ -322,5 +322,5 @@ references specifically for the roadmap itself.
 
   \item \textbf{D.~Ruelle}, \emph{Thermodynamic Formalism} (Addison-Wesley, 1978) \cite{Ruelle1978} --- Background for Gap~6 and for understanding why Phase~3's $Z(\beta)$ behaves like a thermodynamic pressure function. The Ruelle transfer operator is the infinite-alphabet generalisation of the WFA transition matrix.
 
-  \item \textbf{R.~Bowen}, \emph{Equilibrium States and the Ergodic Theory of Anosov Diffeomorphisms} (Springer, 1975) \cite{Bowen1975} --- Companion to Ruelle for the variational principle and Gibbs-state characterisation. Together these two short books give the ergodic-theoretic language that the roadmap's Phase~3 is, in spirit, trying to instantiate for neural-network potentials.
+  \item \textbf{R.~Bowen}, \emph{Equilibrium States and the Ergodic Theory of Anosov Diffeomorphisms} (1975) \cite{Bowen1975} --- Companion to Ruelle for the variational principle and Gibbs-state characterisation. Together these two short books give the ergodic-theoretic language that the roadmap's Phase~3 is, in spirit, trying to instantiate for neural-network potentials.
 \end{itemize}
