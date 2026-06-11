@@ -31,6 +31,13 @@ log hypotheses + findings, commit per milestone, report negative results too.
   as F3 in another guise -- structure that maximises capacity (tight coupling /
   positional code) is fragile; redundancy buys robustness.
 
+### F5. Robustness of the dissociation — it is a regime, not a knife-edge.
+- Over a 60s window, sweeping event rate 0.05 -> 8 /s: prospective felt time
+  decreases monotonically (54.7 -> 2.8 s) and retrospective load increases
+  monotonically (91 -> 7034). The two curves cross; dissociation holds everywhere.
+- "Busy flies" (negative felt-vs-rate slope) holds across gate_k in {0.5..3} and
+  activity_tau in {0.5..4}; these only change the steepness, never the sign.
+
 ## Tonight's queue
 1. Stage 1b: SBF coincidence read-out (analytic cosines).
    - Hyp: scalar property emerges from per-trial FREQUENCY jitter via the readout
