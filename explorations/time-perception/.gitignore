@@ -1,4 +1,9 @@
+*.aux
+*.log
+*.out
 *.png
 *.pyc
+*.synctex.gz
+*.toc
 __pycache__/
 stage1_results.png
