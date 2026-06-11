@@ -52,14 +52,25 @@ headline result, and it is why this is more than a timestamp counter.
 - [x] Demo B: idle detection / self-regulation (felt-idle threshold -> check-in).
 - [x] Validation: scalar property (CV ~ flat across durations with jitter).
 
-### Stage 1b — back-end read-outs (later)
-- [ ] Central tendency (Bayesian prior over the tested range).
-- [ ] Bisection (detector training; geometric-mean crossover with log-spaced omega).
+### Stage 1b — back-end read-outs (DONE)
+- [x] Central tendency (Bayesian prior over the range) -> slope 0.79, indiff ~ geom mean.
+- [x] Bisection -> geometric mean via the LOG observer (SBF coincidence cannot do it;
+      see report). Controlled log-vs-linear-freq comparison done.
+- [x] Found: scalar property needs COMMON-MODE rate noise, not independent jitter.
 
-### Stage 2 — interaction
-- [ ] Weak / hierarchical coupling (Kuramoto and/or fast-ticks-slow cascade).
-- [ ] Emergent coherence-decay recency; nested-scale loops.
-- [ ] Check whether coupling buys anything Stage 1 did not.
+### Stage 2 — interaction (DONE)
+- [x] Kuramoto coupling; coherence-decay recency signal.
+- [x] Hierarchical cascade (odometer) = nested loops; exponential range.
+- [x] Answered: coupling earns its place only in a narrow weak window (K~6-8);
+      strong coupling collapses the code at the sync transition (K_c~8).
+- [x] Bonus: cascade vs bank robustness trade-off (brittle vs graceful).
+
+### Open / next (not done)
+- [ ] Close the self-regulation loop (feed check-ins back as events) and study the
+      emergent rhythm.
+- [ ] Combine the log observer with the oscillator substrate into one pipeline.
+- [ ] Stage 2 structured (hierarchical) coupling that STABILISES rather than
+      destroys the code (predicted from F3/F4; not yet built).
 
 ## Notes log
 - Stage 1 works. Dissociation reproduced: busy felt ~6s / idle felt ~43s over the
