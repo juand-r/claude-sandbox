@@ -16,6 +16,21 @@ log hypotheses + findings, commit per milestone, report negative results too.
   just below K_c. It buys a longer-lasting recency signal without killing the
   code. Above K_c it is catastrophic. Matches the Stage-1 skeptical prediction.
 
+### F4. Cascade (nested loops) vs incommensurate bank — a capacity/robustness trade-off.
+- Cascade = ladder of oscillators each Mx slower = odometer/mixed-radix code.
+  4 stages (M=10) -> exact decode over a 1000s range (exponential capacity from a
+  linear number of oscillators). Noiseless max error 0.
+- BUT catastrophically brittle: per-oscillator phase noise of 0.01 already gives
+  off-by-1s errors, 0.02 -> off-by-10s (a flipped digit costs M^k). 90th-pct error
+  0 -> 1 -> 10 -> 19s as noise rises.
+- Incommensurate bank over the same range degrades GRACEFULLY: 90th-pct error stays
+  0.02 -> 0.06s across the same noise range. Robust, but needs more oscillators and
+  has a bounded unique range (recurrence horizon).
+- Two opposite multi-scale strategies: cascade = compact + exact + brittle (digital);
+  bank = redundant + graceful + bounded-range (analog). Note: this is the SAME lesson
+  as F3 in another guise -- structure that maximises capacity (tight coupling /
+  positional code) is fragile; redundancy buys robustness.
+
 ## Tonight's queue
 1. Stage 1b: SBF coincidence read-out (analytic cosines).
    - Hyp: scalar property emerges from per-trial FREQUENCY jitter via the readout
