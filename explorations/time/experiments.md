@@ -211,5 +211,7 @@ latency-decoupling — if it doesn't, the self-perception lane changes shape ent
 - [ ] E7 — harden + scale E3
 - [ ] E8 — internalization experiment
 - [ ] E9 — sensor-format ablation
-- [ ] E10 — reasoning-model hidden-token probe — **now higher priority** (E5+E6 both isolate
-  reasoning-model hidden tokens as *the* boundary where in-context fixes fail)
+- [x] E10 — reasoning-model hidden-token probe — **done, hypothesis overturned**: reasoning
+  models are NOT blind — effort-rating ρ up to 0.91 (ordinal awareness intact) — they only fail
+  at *magnitude* (token estimates off ~5–6×, gpt5 refuses). The boundary is a calibration
+  problem on an ordered signal (like E6), i.e. tractable, not a wall.

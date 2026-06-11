@@ -15,6 +15,7 @@ recommendation.
 | **E4** | Does a harness-injected elapsed-time field beat text timestamps? | **Yes, decisively.** Correct decisions: no-signal **0.49** → text timestamps **0.80** → harness clock **0.96**. Biggest lift on weaker models. |
 | **E5** | Does E1/E2's calibration survive when latency is *decoupled* from output length? | **No — confirming it's a pure length proxy.** Output-driven control ρ **0.79**, but reasoning-decoupled ρ **≈0** and input-decoupled ρ **≈0** (models emit a *constant* time estimate for 100→30 000-token inputs). Reconciles E1/E2 with the literature: regime is the hidden variable. |
 | **E6** | Can the ~2× output-length undershoot be fixed in-context (no training)? | **Mostly, for non-reasoning models.** Self-revision moves pooled gm 0.37 → **0.76** with ρ intact; strong models land near 1.0. Weak models overcorrect (haiku 2.0×); o4-mini stays stuck (0.08→0.19). Target 1 is nearly free except the reasoning-model hidden-token case. |
+| **E10** | Can a reasoning model predict its own reasoning length? | **Ordinally yes, magnitude no — overturns the "blindness" framing.** Effort rating (1–10) tracks actual reasoning tokens (ρ up to **0.91**, pooled 0.77); but token-count estimates are off ~5–6× and gpt5 refuses them. The boundary is fixable calibration on an ordered signal, not a wall. |
 
 ## The unifying story
 
@@ -49,6 +50,23 @@ hidden tokens are the one place every length/clock proxy and every in-context fi
 is the real research target — it promotes E10 (reasoning-token self-prediction) from a refinement
 to a priority, and it is the precise gap the "train it in" program (`direction-train-it-in.md`)
 should aim at.
+
+**Update (E10) — the boundary is softer than it looked.** We then probed it directly. Reasoning
+models are *not* blind to their own reasoning: asked to *rate* (1–10) how much thinking a problem
+needs, their rating tracks actual reasoning-token expenditure well (effort ρ up to 0.91, pooled
+0.77; gpt5 won't name a token count but rates effort excellently). What fails is *magnitude* —
+token estimates are off ~5–6× and the hardest cases are badly under-rated. So the boundary is
+**ordinal awareness intact, magnitude calibration broken** — structurally the same problem E6
+fixed for output length (intact ranking, fixable scale). The reasoning-model boundary is a
+tractable calibration target, not a fundamental wall. This is the most actionable update from the
+follow-up round and de-risks the train-it-in program's hardest case.
+
+**Robustness (bootstrap CIs, `bootstrap_ci.py`).** 95% cluster-bootstrap intervals on the
+headlines: E4's ladder is cleanly separated (none 0.49 [0.49,0.50], text 0.80 [0.74,0.85],
+harness 0.96 [0.92,0.98]); E5 confirms the proxy story (control ρ +0.79 [+0.24,+0.84] clearly
+positive; reasoning-decoupled straddles zero; input-decoupled excludes positive). The wider
+intervals (E5-C, E2's seconds-vs-tokens) are limited by **task/scenario count, not trial count**
+— so the principled way to tighten them is more scenarios (E7), not more N=3→5 trials.
 
 The two lanes agree: **don't try to train a clock into the model — give it one.**
 
