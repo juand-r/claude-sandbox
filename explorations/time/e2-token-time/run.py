@@ -198,6 +198,9 @@ if __name__ == "__main__":
                     help="1 model x 1 task x 1 trial, to verify parsing.")
     ap.add_argument("--models", nargs="*", default=None)
     ap.add_argument("--n", type=int, default=N_TRIALS)
+    # accept a bare `dryrun` token as an alias for --dry (uniform with the other run.py)
+    if "dryrun" in sys.argv:
+        sys.argv = [a for a in sys.argv if a != "dryrun"] + ["--dry"]
     args = ap.parse_args()
 
     models = args.models or ROSTER

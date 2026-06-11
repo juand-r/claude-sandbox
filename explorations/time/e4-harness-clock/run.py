@@ -302,5 +302,5 @@ def run(dry=False):
 
 
 if __name__ == "__main__":
-    dry = "--dry" in sys.argv
+    dry = "--dry" in sys.argv or "dryrun" in sys.argv
     run(dry=dry)

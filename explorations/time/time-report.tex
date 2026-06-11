@@ -155,8 +155,14 @@ for d in e1-self-duration e2-token-time e3-log-gap-probe \
   ( cd $d && python analyze.py )
 done
 
-# To re-collect from scratch (spends API budget), per experiment:
-#   cd eN-* && python run.py        # resumable; dedups via ../dedup.py if needed
+# To re-collect raw data (spends API budget). run.py RESUMES from results.jsonl,
+# so for a true from-scratch run, move the existing file aside first:
+#   cd eN-*
+#   mv results.jsonl results.jsonl.bak        # keep a backup; run.py starts fresh
+#   python run.py                             # collect; resumable if interrupted
+#   python ../dedup.py eN-*                   # only needed if writers ran concurrently
+# Quick smoke test of one model/task without a full sweep:  python run.py dryrun
+# Collection knobs (model ROSTER, N_TRIALS) are at the top of each eN-*/run.py.
 \end{lstlisting}
 Re-running \code{analyze.py} on the committed \code{results.jsonl} reproduces every statistic in
 this report exactly. Re-collecting with \code{run.py} reproduces them up to sampling noise.
