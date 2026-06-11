@@ -540,10 +540,10 @@ ill-posed.
 \paragraph{Process notes (so the next run avoids these).}
 \begin{itemize}
   \item \textbf{Concurrent-writer bug.} Orchestration relaunched \code{run.py} while an earlier
-  instance was still alive; both passed \code{load\_done()} and produced duplicate rows in E2 and
-  E4. Root cause: append + \code{load\_done()} is not concurrency-safe. Mitigation: single writer
-  per experiment, and \code{dedup.py} before analysis. A file lock or a single coordinator is the
-  proper fix.
+  instance was still alive; both passed \code{load\_done()} and produced 492 duplicate rows in
+  E4 (the E5/E6 driver hit the same race transiently but dedups every loop). Root cause: append
+  + \code{load\_done()} is not concurrency-safe. Mitigation: single writer per experiment, and
+  \code{dedup.py} before analysis. A file lock or a single coordinator is the proper fix.
   \item \textbf{Relative interpreter paths.} \code{.venv/bin/python} breaks inside a
   \code{cd}-subshell (exit 127); use the absolute interpreter path in scripts.
   \item \textbf{Background-job lifetime.} Long collections (slow reasoning models) outlived the

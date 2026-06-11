@@ -127,7 +127,8 @@ well within the $50/$50 budget.
 
 The four data-collection agents each bailed early (launched collection in the background,
 ended their turns expecting to be re-woken), leaving orphaned `run.py` processes that the
-orchestrator's resumes then raced — producing duplicate rows in E4 and E2. Root cause: the
+orchestrator's resumes then raced — producing 492 duplicate rows in E4 (E2's orphan was
+killed before it could race). Root cause: the
 append-only + `load_done()` resume scheme is **not safe against concurrent writers**. Fixed
 by killing all writers, deduping on the logical key, and finishing each model as a single
 writer. Documented here so the next run uses a file lock or a single coordinator process.
