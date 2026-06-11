@@ -31,6 +31,9 @@ N_TRIALS = 3
 CONDITIONS = ["none", "text", "harness"]
 MAX_TOKENS = 16          # only need the label (reasoning models bumped to 4096 in common)
 TEMPERATURE = 0.0        # ignored by reasoning models
+# Some models reject the temperature param entirely (opus-4-8 deprecates it; reasoning
+# models in common.py already skip it). For those we pass temperature=None.
+NO_TEMPERATURE = {"opus"}
 
 # Base reference time for building absolute timestamps in the TEXT condition.
 BASE_NOW = datetime.datetime(2026, 6, 11, 14, 0, 0)
@@ -265,8 +268,9 @@ def run(dry=False):
                     if key in done:
                         continue
                     prompt = build_prompt(scn, gap_s, cond)
+                    temp = None if model in NO_TEMPERATURE else TEMPERATURE
                     res = call(model, prompt, system=SYSTEM,
-                               max_tokens=MAX_TOKENS, temperature=TEMPERATURE)
+                               max_tokens=MAX_TOKENS, temperature=temp)
                     if not res.ok:
                         print(f"  FAIL {model} {scn['id']} {gap_s}s {cond} t{trial}: {res.error}")
                         # fail loudly but keep going so one bad cell doesn't kill the run

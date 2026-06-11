@@ -1,0 +1,8 @@
+models=['haiku', 'sonnet', 'opus', 'gpt4o-mini', 'gpt4o', 'o4-mini'] tasks=12 n_trials=3 (4 calls per model*task*trial)
+haiku       t12_story    t0 cond_seconds  est=65.0 unit=seconds lat=4.20s out=354
+haiku       t12_story    t0 cond_tokens   est=850.0 unit=tokens lat=2.51s out=207
+haiku       t12_story    t0 cond_reason   est=12.0 unit=seconds lat=2.18s out=129
+haiku       t12_story    t0 gen           lat=11.71s out=832 (71.1 tok/s)
+haiku       t12_story    t1 cond_seconds  est=25.0 unit=seconds lat=4.26s out=305
+haiku       t12_story    t1 cond_tokens   est=490.0 unit=tokens lat=2.85s out=247
+haiku       t12_story    t1 cond_reason   est=4.0 unit=seconds lat=1.81s out=91
