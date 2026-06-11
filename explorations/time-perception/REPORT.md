@@ -20,6 +20,9 @@ TL;DR of the science:
    is compact and exact but catastrophically brittle; the **incommensurate bank**
    is robust but bounded in range. Same lesson twice: capacity trades off against
    robustness.
+6. That trade-off is resolvable: **local (adjacent) coupling stabilises the
+   brittle cascade** (~90x lower error under drift) without the code collapse that
+   *global* coupling causes. Locality is the key distinction.
 
 ---
 
@@ -158,6 +161,26 @@ same capacity-vs-robustness trade-off as the coupling result, in another guise.
 
 ---
 
+## 5b. Structured coupling — the synthesis (figure: `structured_results.png`)
+
+I pursued the open lead directly: F3 said global coupling destroys the code, F4
+said the cascade is brittle. The natural resolution is **local** coupling — lock
+only adjacent scales, M:1, so each slow stage is slaved to a sub-harmonic of its
+faster, more accurate neighbour.
+
+With 3% per-stage frequency drift over a 60 s run:
+- **unlocked** cascade: 90th-pct decode error **7.25 s** (digit flips).
+- **adjacent locking (K=2):** **0.08 s** — a ~90x improvement.
+- **K=32:** still **0.08 s** — local coupling does **not** collapse the code even
+  when strong, unlike the global coupling of Section 4 (which collapses past K_c≈8).
+- Drift tolerance: unlocked error grows to ~18 s at 12% drift; locked stays <0.3 s.
+
+This resolves the capacity-vs-robustness tension: the brittle, high-capacity
+cascade becomes robust when stabilised by *structured* (local) coupling. The
+distinction that matters is locality — adjacent coupling preserves the frequency
+ladder; all-to-all coupling erases it. (Residual: occasional ~4 s glitches at
+digit boundaries remain even when locked.)
+
 ## 6. Honest limitations
 
 - **Scalar property is partly "by construction."** In both the Stage-1 accumulator
@@ -180,11 +203,9 @@ same capacity-vs-robustness trade-off as the coupling result, in another guise.
 1. **Close the self-regulation loop.** Feed check-ins back as events and study the
    emergent rhythm/period — this is where "nested feedback loops" becomes dynamic
    rather than just a code. Currently check-ins are detected but not fed back.
-2. **Structured (hierarchical) coupling that *stabilises*.** F3 showed global
-   coupling destroys the code; F4 showed the cascade is brittle. The natural
-   synthesis — weak coupling *between adjacent scales only* — should correct drift
-   without global lock-in. Predicted, not yet built. This is the most interesting
-   open lead.
+2. ~~Structured (hierarchical) coupling that stabilises.~~ **DONE** — see Section 5b.
+   Next within this thread: make stage 0 itself noisy (no perfect reference) and
+   add redundancy to remove the residual digit-boundary glitches.
 3. **One unified pipeline:** oscillator substrate -> log read-out -> Bayesian
    prior, so a single object produces estimates with scalar noise, geometric-mean
    bisection, and central tendency together.
@@ -198,3 +219,5 @@ same capacity-vs-robustness trade-off as the coupling result, in another guise.
 - F3: coupling — recency vs code-collapse trade-off; sweet spot K~6-8.
 - F4: cascade vs bank — capacity vs robustness.
 - F5: dissociation is a robust regime, not a knife-edge.
+- F6: local (adjacent) coupling stabilises the cascade; locality avoids the global
+  coupling collapse — capacity and robustness together.

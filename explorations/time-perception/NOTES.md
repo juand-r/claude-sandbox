@@ -38,6 +38,18 @@ log hypotheses + findings, commit per milestone, report negative results too.
 - "Busy flies" (negative felt-vs-rate slope) holds across gate_k in {0.5..3} and
   activity_tau in {0.5..4}; these only change the steepness, never the sign.
 
+### F6. Structured (adjacent-scale) coupling STABILISES the cascade. (the synthesis)
+- Adjacent M:1 phase-locking (each slow stage slaved to a sub-harmonic of its
+  faster, accurate neighbour) corrects frequency drift without global lock-in.
+- With 3% per-stage drift: unlocked 90th-pct decode error 7.25s; locked (K=2) 0.08s.
+- Stabilises at modest K (>=0.25) and DOES NOT COLLAPSE even at K=32 (still 0.08s).
+  Contrast F3: global all-to-all coupling collapses the code past K_c~8. Locality
+  is the difference -- adjacent coupling preserves the frequency ladder.
+- Drift tolerance: unlocked error grows to ~18s at drift 0.12; locked stays <0.3s.
+- This resolves the F3/F4 tension: the brittle high-capacity cascade becomes robust
+  when stabilised by LOCAL coupling. Capacity + robustness, if coupling is structured.
+- Residual: occasional ~4s glitches at digit boundaries even when locked (honest).
+
 ## Tonight's queue
 1. Stage 1b: SBF coincidence read-out (analytic cosines).
    - Hyp: scalar property emerges from per-trial FREQUENCY jitter via the readout
