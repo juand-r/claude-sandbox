@@ -120,4 +120,91 @@ problem, not a model-capability problem. Strong framing result for the project.
 - [x] E3 — log-gap probe — **done** (sensitivity scales with model strength; deficit is attention, not calibration)
 - [x] E4 — harness clock — **done** (hypothesis supported; harness clock 0.96 vs text 0.80 vs none 0.49)
 
-See `SUMMARY.md` for the cross-experiment synthesis and recommendation.
+See `SUMMARY.md` for the cross-experiment synthesis and recommendation, and
+`direction-train-it-in.md` for the counterpoint research direction.
+
+---
+
+# Next experiments (E5–E10)
+
+Guiding principle: before building a research program on the scoping findings, the next
+experiments should first try to **break** them, then invest in the flagship. Tiers are
+ordered by information-per-dollar.
+
+## Tier 1 — Validate the headline (cheap, do first)
+
+### E5 — Latency-decoupled probe (the linchpin)
+**Why.** Our entire "models track length, not time" story (E1/E2) only holds in an
+**output-length-dominated** regime — the main threat to validity in E1's report. E5 tests
+whether the finding survives when latency is decoupled from output length.
+
+**Setup.** Three task families, all logging pre-estimate + actual latency + output tokens:
+- **Type A (reasoning-decoupled):** matched *short* output, varying difficulty (easy
+  arithmetic vs hard combinatorics, both "answer with just the number"). Latency varies via
+  hidden reasoning, not output length. Most meaningful for reasoning models.
+- **Type B (input-decoupled):** fixed short output, varying *input/context* length (short vs
+  ~2k vs ~8k tokens of filler, then a one-word task). Latency varies via prefill.
+- **Type C (output-driven control):** E1-style length-varying tasks, as a positive control
+  that calibration still holds in this harness.
+
+**Metric.** Spearman ρ(estimate, actual) and gm ratio *within each type*. **Prediction:** ρ
+stays high in C, drops in A and B. That would *confirm* "models track length they can see,
+not latency they can't" — strengthening E1/E2. If ρ stays high in A/B, the self-estimation
+story is richer than a pure length proxy (models have some genuine latency sense), and the
+literature's negative result is the artifact.
+
+**Cost.** ~$2–5, API-only, reuses E1 infra. Roster leans on reasoning models for Type A.
+
+### E6 — Length-estimation bias correction (cheap Target 1 test)
+**Why.** E2 found a systematic ~2× output-length undershoot. Before anyone fine-tunes, test
+whether it closes with **in-context** calibration.
+
+**Setup.** Predict output tokens under conditions: (a) bare [E2 baseline], (b) few-shot
+anchors ("one word ≈ 3 tokens, a haiku ≈ 30, a 500-word essay ≈ 700"), (c) predict-then-
+self-revise. Measure gm(predicted/actual tokens) → does it move toward 1.0? Plus ρ.
+
+**Prediction / payoff.** If few-shot fixes the bias, Target 1 (length self-estimation) needs
+**no training at all** — a cheap, decision-relevant result for `direction-train-it-in.md`.
+
+**Cost.** ~$1–2, short outputs, E2 roster.
+
+## Tier 2 — The flagship (only after Tier 1 confirms the premise)
+
+### E7 — Harden + scale E3 (prerequisite for E8)
+Remove E3/E4's biggest caveat: the prompt currently **states** the staleness rule, so we test
+the sensor, not threshold knowledge. Drop the stated rule; add multi-turn transcripts and
+real elapsed-time consequences; scale 9 → ~200 scenarios; hold out whole scenario families and
+threshold regimes. This is the training/eval substrate for E8.
+
+### E8 — Internalization experiment (the "train it in" flagship)
+SFT (LoRA; OpenAI FT API available) one weak + one strong model on text-timestamp transcripts
+→ correct decision. Report **internalization fraction = (trained − base)/(E4 ceiling − base)**
+per model. Prediction: highest for weak models (the sensor substitutes for capability strong
+models already have). Decides whether the project's thesis is "give it a sensor" or "a clock
+is learnable — here's how much." See `direction-train-it-in.md`. Higher cost (fine-tune +
+eval) — do not start before E5 confirms the self-perception premise.
+
+## Tier 3 — Refinements (opportunistic)
+
+### E9 — Sensor-format ablation (extends E4)
+Absolute timestamp vs elapsed field vs relative ("3h ago") vs countdown-to-deadline. Which
+representation carries the 0.80 → 0.96 lift? Cheap, sharpens the deployable result.
+
+### E10 — Reasoning-model hidden-token probe
+Can o4-mini/gpt5.2 estimate their *own reasoning length*? This is the boundary case that
+breaks Targets 1–2 (self-estimation). Probe-first before assuming it's trainable.
+
+## Recommendation
+
+Run **E5 + E6 first** (~$3 together): they either harden the foundation or save us from
+building on sand. Do **not** start E8 (fine-tuning) until E5 confirms the premise survives
+latency-decoupling — if it doesn't, the self-perception lane changes shape entirely.
+
+## Status (next batch)
+
+- [ ] E5 — latency-decoupled probe
+- [ ] E6 — length-estimation bias correction
+- [ ] E7 — harden + scale E3
+- [ ] E8 — internalization experiment
+- [ ] E9 — sensor-format ablation
+- [ ] E10 — reasoning-model hidden-token probe
