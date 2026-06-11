@@ -4,10 +4,12 @@ This is an exploration/sandbox repository. The goal is rapid experimentation and
 
 ## General Principles
 
-### Be Concise
+### Be Concise and Clear
 - Keep explanations short and to the point
 - Don't over-explain obvious things
 - Let the code speak for itself when possible
+- Good exposition is ESSENTIAL for reports. They should be self-contained.
+- Avoid non-standard jargon
 
 ### Process
 - Make a plan, which should be saved in .md, to guide your work.
