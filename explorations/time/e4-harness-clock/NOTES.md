@@ -21,6 +21,14 @@
   (load_done) refills only missing cells.
 - First background launch wrote 11-12 opus failures before/around the edit landing;
   cleaned them out by filtering ok==False rows, then relaunched.
+- CONCURRENCY BUG (mine): I relaunched run.py while an earlier instance was still alive
+  (pkill didn't catch it / pgrep matched its own subshell). Two processes both loaded the
+  same `done` set at startup and raced, producing duplicate rows (file grew past the 1620
+  expected cells). Fix: dedup by (model,scenario,gap,condition,trial), keeping first
+  occurrence. temp=0 made dup-disagreements tiny (~3%, then 2/60). Lesson: the append-only
+  + load_done() resume scheme is NOT safe against concurrent writers; only ever run ONE
+  instance. Final file is deduped to exactly 1620 unique rows (324/model). results.jsonl
+  is the cleaned set; raw pre-dedup backup was discarded after verification.
 
 ## Observations during dry run (stock_price, threshold 5 min)
 - haiku & sonnet in `none` default to REFETCH for everything (wrong on fresh gaps) —

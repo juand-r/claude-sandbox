@@ -30,3 +30,11 @@ o4-mini     t04_arith    t0 cond_seconds  est=1.0 unit=seconds lat=1.84s out=216
 o4-mini     t04_arith    t0 cond_tokens   est=1.0 unit=tokens lat=3.15s out=499
 o4-mini     t04_arith    t0 cond_reason   est=0.1 unit=seconds lat=4.07s out=514
 o4-mini     t04_arith    t0 gen           lat=1.45s out=84 (57.8 tok/s)
+o4-mini     t04_arith    t1 cond_seconds  est=0.2 unit=seconds lat=5.68s out=474
+o4-mini     t04_arith    t1 cond_tokens   est=1.0 unit=tokens lat=2.08s out=218
+o4-mini     t04_arith    t1 cond_reason   est=0.1 unit=seconds lat=3.71s out=496
+o4-mini     t04_arith    t1 gen           lat=0.86s out=84 (98.0 tok/s)
+o4-mini     t04_arith    t2 cond_seconds  est=0.2 unit=seconds lat=2.38s out=346
+o4-mini     t04_arith    t2 cond_tokens   est=1.0 unit=tokens lat=5.41s out=794
+o4-mini     t04_arith    t2 cond_reason   est=0.1 unit=seconds lat=3.08s out=306
+o4-mini     t04_arith    t2 gen           lat=1.70s out=148 (86.9 tok/s)

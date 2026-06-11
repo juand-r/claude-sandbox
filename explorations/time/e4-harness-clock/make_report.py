@@ -32,7 +32,6 @@ anth_cost = oai_cost = 0.0; spend_lines = []
 for m in tok.index:
     pin, pout = PRICES[m]
     cost = tok.loc[m,"input_tokens"]/1e6*pin + tok.loc[m,"output_tokens"]/1e6*pout
-    (globals().__setitem__('anth_cost', anth_cost+cost) if m in ANTH else None)
     if m in ANTH: anth_cost += cost
     else: oai_cost += cost
     spend_lines.append(f"| {m} | {int(tok.loc[m,'input_tokens'])} | {int(tok.loc[m,'output_tokens'])} | ${cost:.4f} |")
