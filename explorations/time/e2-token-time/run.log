@@ -72,3 +72,13 @@ haiku       t07_list     t0 cond_tokens   est=18.0 unit=tokens lat=3.19s out=317
 haiku       t07_list     t0 cond_reason   est=0.5 unit=seconds lat=1.59s out=63
 haiku       t07_list     t0 gen           lat=1.08s out=28 (26.0 tok/s)
 haiku       t07_list     t1 cond_seconds  est=1.0 unit=seconds lat=2.08s out=130
+haiku       t07_list     t1 cond_tokens   est=15.0 unit=tokens lat=2.87s out=259
+haiku       t07_list     t1 cond_reason   est=0.5 unit=seconds lat=1.07s out=53
+haiku       t07_list     t1 gen           lat=1.08s out=27 (25.0 tok/s)
+haiku       t07_list     t2 cond_seconds  est=1.0 unit=seconds lat=2.75s out=189
+haiku       t07_list     t2 cond_tokens   est=18.0 unit=tokens lat=2.39s out=201
+haiku       t07_list     t2 cond_reason   est=0.5 unit=seconds lat=1.35s out=59
+haiku       t07_list     t2 gen           lat=1.08s out=38 (35.3 tok/s)
+haiku       t08_steps    t0 cond_seconds  est=6.0 unit=seconds lat=3.06s out=239
+haiku       t08_steps    t0 cond_tokens   est=68.0 unit=tokens lat=2.96s out=209
+haiku       t08_steps    t0 cond_reason   est=3.0 unit=seconds lat=1.31s out=61
