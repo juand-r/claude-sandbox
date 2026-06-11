@@ -21,3 +21,6 @@ opus        t10_summary  t0 cond_reason   est=5.0 unit=seconds lat=1.73s out=55
 opus        t10_summary  t0 gen           lat=5.21s out=367 (70.5 tok/s)
 opus        t10_summary  t1 cond_seconds  est=9.0 unit=seconds lat=0.78s out=18
 opus        t10_summary  t1 cond_tokens   est=205.0 unit=tokens lat=2.78s out=149
+opus        t10_summary  t1 cond_reason   est=6.0 unit=seconds lat=1.84s out=64
+opus        t10_summary  t1 gen           lat=5.55s out=365 (65.8 tok/s)
+opus        t10_summary  t2 cond_seconds  est=8.0 unit=seconds lat=5.55s out=134
