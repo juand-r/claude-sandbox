@@ -81,6 +81,16 @@ decreases monotonically (54.7 -> 2.8 s) while load increases monotonically
 
 ---
 
+### Self-regulation loop closed (figure: `selfreg_results.png`)
+Feeding check-ins back as self-events makes the loop dynamic. With no external
+input the agent self-paces at a **regular limit cycle** (interval 9.82 s, std
+0.003 s for a felt threshold of 8 s). The period exceeds the threshold because a
+check-in bumps activity and lowers the gate, so felt time accrues slowly until the
+activity leaks away — the period is *emergent* from the gate dynamics, not just the
+threshold. Background activity **suppresses** the rhythm smoothly (check-in rate
+0.10/s when idle -> ~0 once background exceeds ~0.8/s): the agent checks in less
+when much is happening. This is context-gated self-pacing.
+
 ## 3. Stage 1b — psychophysics, and where it actually lives
    (figure: `stage1b_results.png`)
 
@@ -200,9 +210,9 @@ digit boundaries remain even when locked.)
 
 ## 7. What I'd do next (in priority order)
 
-1. **Close the self-regulation loop.** Feed check-ins back as events and study the
-   emergent rhythm/period — this is where "nested feedback loops" becomes dynamic
-   rather than just a code. Currently check-ins are detected but not fed back.
+1. ~~Close the self-regulation loop.~~ **DONE** — see Section 2b (emergent self-paced
+   limit cycle, context-suppressed). Next: couple the self-pace period to the
+   *retrospective load* so a "full" stretch changes the rhythm.
 2. ~~Structured (hierarchical) coupling that stabilises.~~ **DONE** — see Section 5b.
    Next within this thread: make stage 0 itself noisy (no perfect reference) and
    add redundancy to remove the residual digit-boundary glitches.
@@ -221,3 +231,5 @@ digit boundaries remain even when locked.)
 - F5: dissociation is a robust regime, not a knife-edge.
 - F6: local (adjacent) coupling stabilises the cascade; locality avoids the global
   coupling collapse — capacity and robustness together.
+- F7: self-regulation loop closed — emergent self-paced limit cycle, smoothly
+  suppressed by context.

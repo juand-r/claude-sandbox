@@ -15,6 +15,8 @@ python experiments.py            # Stage 1: the dissociation + self-reg + scalar
 python experiments_stage1b.py    # Stage 1b: SBF substrate vs log observer
 python experiments_stage2.py     # Stage 2: coupling (recency vs code collapse)
 python experiments_cascade.py    # nested-loop cascade vs incommensurate bank
+python experiments_structured.py # adjacent coupling stabilises the cascade
+python experiments_selfreg.py    # closed self-regulation loop (self-paced rhythm)
 python robustness.py             # robustness of the dissociation
 ```
 Each writes a `*_results.png` and prints a summary.
@@ -25,6 +27,7 @@ Each writes a `*_results.png` and prints a summary.
 - `readouts.py`    — SBF coincidence substrate + log observer (Stage 1b).
 - `coupling.py`    — Kuramoto-coupled bank (Stage 2).
 - `cascade.py`     — hierarchical odometer cascade (nested loops).
+- `structured.py`  — adjacent-scale coupling that stabilises the cascade.
 - `experiments*.py`, `robustness.py` — experiments.
 
 ## Headline findings

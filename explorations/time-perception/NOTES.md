@@ -50,6 +50,16 @@ log hypotheses + findings, commit per milestone, report negative results too.
   when stabilised by LOCAL coupling. Capacity + robustness, if coupling is structured.
 - Residual: occasional ~4s glitches at digit boundaries even when locked (honest).
 
+### F7. Self-regulation loop closed -> emergent self-paced rhythm.
+- Check-ins fed back as self-events. With no external input the agent self-paces at
+  a very regular limit cycle: interval mean 9.82s, std 0.003s (felt threshold 8s).
+- Period (9.82s) > threshold (8s) because a check-in bumps activity, lowering the
+  gate, so felt time accrues slowly until activity leaks away -> emergent, not just
+  =threshold. The gate-recovery time sets the extra ~1.8s.
+- Background activity suppresses the rhythm smoothly: check-in rate 0.10/s at bg=0
+  -> ~0 at bg>=0.8. The agent checks in less when much is happening. Context-gated
+  self-pacing -- the nested feedback loop is now dynamic, not just a detector.
+
 ## Tonight's queue
 1. Stage 1b: SBF coincidence read-out (analytic cosines).
    - Hyp: scalar property emerges from per-trial FREQUENCY jitter via the readout
