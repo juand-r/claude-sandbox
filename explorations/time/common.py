@@ -52,6 +52,7 @@ class Result:
     latency_s: float       # wall-clock for the API call
     input_tokens: int
     output_tokens: int     # includes reasoning tokens for reasoning models
+    reasoning_tokens: int = 0   # OpenAI reasoning models only; 0 otherwise
     ok: bool = True
     error: str = ""
 
@@ -106,7 +107,10 @@ def call(model: str, prompt: str, *, system: str | None = None,
                 dt = time.perf_counter() - t0
                 text = r.choices[0].message.content or ""
                 u = r.usage
-                return Result(model, text, dt, u.prompt_tokens, u.completion_tokens)
+                det = getattr(u, "completion_tokens_details", None)
+                rtok = getattr(det, "reasoning_tokens", 0) or 0
+                return Result(model, text, dt, u.prompt_tokens, u.completion_tokens,
+                              reasoning_tokens=rtok)
         except Exception as e:  # noqa: BLE001 - surface error after retries
             last_err = repr(e)[:300]
             if attempt < retries - 1:

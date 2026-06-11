@@ -35,7 +35,7 @@ Two distinct but complementary lines:
 
 **Q: Can LLMs estimate how long their own tasks take?**
 
-**No — they are badly miscalibrated.** Garikaparthi (ICLR 2026 Workshop, "Can LLMs Perceive Time?") found:
+**No — they are badly miscalibrated.** Garikaparthi ("Can LLMs Perceive Time?", arXiv 2604.00010) found:
 
 - Pre-task duration estimates overshoot actual time by **4–7×** (p < 0.001)
 - Models predict human-scale minutes for tasks completing in seconds
@@ -124,9 +124,16 @@ No direct published study on this exact setup exists, but the closest work is:
 
 ## 5. Reading List
 
+> **Citation check (2026-06-11):** all 16 references below were verified against arXiv and
+> secondary sources. All resolve to real papers (the 2026 arXiv IDs are genuine given the date).
+> The load-bearing claims hold: Garikaparthi reports the ~4–7× self-duration overshoot and
+> chance-level ordering; TicToc reports timestamps help only marginally. Corrections applied:
+> TRAM's arXiv ID (2310.00835) added; TimE's exact title is "TIME … of LLMs …"; Garikaparthi's
+> specific workshop venue could not be confirmed (paper is real, on OpenReview).
+
 ### CORE PAPERS — DIRECTLY RELEVANT
 
-**"Can LLMs Perceive Time? An Empirical Investigation" — Garikaparthi (ICLR 2026 Workshop)**
+**"Can LLMs Perceive Time? An Empirical Investigation" — Garikaparthi (2026; workshop venue unconfirmed)**
 https://arxiv.org/abs/2604.00010
 Main contribution: Shows LLMs overshoot their own task duration estimates by 4–7×, fail relative ordering, and stay miscalibrated even after finishing tasks. Tested across 68 tasks and four model families.
 Why we'd care: Directly answers whether LLMs have temporal self-awareness (they don't). Establishes the exact gap any time-aware training approach would need to close. The experimental setup is reusable for our own probing.
@@ -181,10 +188,11 @@ Main contribution: Hierarchical temporal reasoning benchmark covering temporal k
 Why we'd care: Baseline benchmark for evaluating temporal understanding. Could extend with self-estimation tasks.
 
 **"TRAM: Benchmarking Temporal Reasoning for Large Language Models" — Wang & Zhao (ACL Findings 2024)**
+https://arxiv.org/abs/2310.00835
 Main contribution: Covers order, arithmetic, frequency, and duration aspects of temporal reasoning about events.
 Why we'd care: Broadest coverage of temporal reasoning subtypes in a single benchmark.
 
-**"TimE: A Multi-level Benchmark for Temporal Reasoning in Real-World Scenarios" — Wei et al. (NeurIPS 2025)**
+**"TIME: A Multi-level Benchmark for Temporal Reasoning of LLMs in Real-World Scenarios" — Wei et al. (NeurIPS 2025 D&B Spotlight)**
 https://arxiv.org/abs/2505.12891
 Main contribution: Multi-level temporal reasoning benchmark grounded in real-world scenarios rather than synthetic data.
 Why we'd care: More practical/applied than TimeBench. Tests whether temporal reasoning transfers to realistic settings.

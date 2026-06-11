@@ -26,6 +26,7 @@ KEYS = {
     "e4-harness-clock": ("model", "scenario_id", "gap_seconds", "condition", "trial"),
     "e5-latency-decoupled": ("model", "task_id", "trial", "condition"),
     "e6-length-bias": ("model", "task_id", "trial", "condition"),
+    "e10-reasoning-tokens": ("model", "task_id", "trial", "condition"),
 }
 
 
