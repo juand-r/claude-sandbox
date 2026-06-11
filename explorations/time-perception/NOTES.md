@@ -3,6 +3,19 @@
 Working autonomously while the user sleeps. Discipline: one change at a time,
 log hypotheses + findings, commit per milestone, report negative results too.
 
+### F3. Stage 2, coupling — answers the open question with a quantified trade-off.
+- Setup: Kuramoto mean-field, 24 oscillators, f in [0.5, 4] Hz.
+- Sync transition at K_c ~ 8 (steady-state r jumps 0.2 -> ~0.9 around K=8-10).
+- Coding horizon (first recurrence of the start pattern) COLLAPSES at the same K:
+  >30s (censored) for K<=7.5, then 25.7 (K=8) -> 3.4 (K=9) -> 0.46 (K>=12).
+  Strong coupling locks everything to one frequency -> the multi-scale code dies.
+- Recency (order parameter at t=2s after a reset): K=0 -> 0.10 (decays fast);
+  rises with K. SWEET SPOT K~6-8: r(2s) ~0.27-0.37 (recency sustained ~3x longer)
+  while horizon still intact (>=25s). K>=9: strong recency but code destroyed.
+- VERDICT: coupling earns its place, but only in a narrow weak-coupling window
+  just below K_c. It buys a longer-lasting recency signal without killing the
+  code. Above K_c it is catastrophic. Matches the Stage-1 skeptical prediction.
+
 ## Tonight's queue
 1. Stage 1b: SBF coincidence read-out (analytic cosines).
    - Hyp: scalar property emerges from per-trial FREQUENCY jitter via the readout
