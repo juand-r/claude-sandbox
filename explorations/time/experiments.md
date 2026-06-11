@@ -202,9 +202,14 @@ latency-decoupling — if it doesn't, the self-perception lane changes shape ent
 
 ## Status (next batch)
 
-- [ ] E5 — latency-decoupled probe
-- [ ] E6 — length-estimation bias correction
+- [x] E5 — latency-decoupled probe — **done** (prediction confirmed: control ρ 0.79, but
+  reasoning-decoupled ρ ≈ 0 and input-decoupled ρ ≈ 0 — calibration is a pure output-length
+  proxy; reconciles E1/E2 with the literature)
+- [x] E6 — length-estimation bias correction — **done** (self-revision closes the undershoot
+  0.37 → 0.76 gm for non-reasoning models; reasoning models stay stuck → Target 1 nearly free
+  except for the hidden-token case)
 - [ ] E7 — harden + scale E3
 - [ ] E8 — internalization experiment
 - [ ] E9 — sensor-format ablation
-- [ ] E10 — reasoning-model hidden-token probe
+- [ ] E10 — reasoning-model hidden-token probe — **now higher priority** (E5+E6 both isolate
+  reasoning-model hidden tokens as *the* boundary where in-context fixes fail)

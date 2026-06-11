@@ -1,8 +1,9 @@
 # Time Project — Cross-Experiment Synthesis
 
-Four scoping experiments, run on a shared roster (haiku, sonnet, opus, gpt4o-mini, gpt4o,
-and a reasoning model gpt5.2/o4-mini), API-only, no training. Full method/results per
-experiment in each `eN-*/REPORT.md`. This is the synthesis and the recommendation.
+Six experiments (E1–E4 scoping; E5–E6 follow-up validation), run on a shared roster (haiku,
+sonnet, opus, gpt4o-mini, gpt4o, and a reasoning model gpt5.2/o4-mini), API-only, no training.
+Full method/results per experiment in each `eN-*/REPORT.md`. This is the synthesis and the
+recommendation.
 
 ## One-line findings
 
@@ -12,6 +13,8 @@ experiment in each `eN-*/REPORT.md`. This is the synthesis and the recommendatio
 | **E2** | Is length-space better than second-space? | **Yes.** Token-space estimates beat seconds (pooled ρ 0.889 vs 0.657, Δ+0.231) and are far more consistent across models. Confirms E1's mechanism. Caveat: models under-predict their own length ~2×; reasoning first does not help. |
 | **E3** | Are agents blind to timestamp gaps in a transcript? | **Graded, not blind.** Sensitivity scales with model strength (opus 9/9 scenarios → haiku 5/9); when models *do* read the clock they are well-calibrated (0.80–0.93). The deficit is **inconsistent attention**, not bad judgment. |
 | **E4** | Does a harness-injected elapsed-time field beat text timestamps? | **Yes, decisively.** Correct decisions: no-signal **0.49** → text timestamps **0.80** → harness clock **0.96**. Biggest lift on weaker models. |
+| **E5** | Does E1/E2's calibration survive when latency is *decoupled* from output length? | **No — confirming it's a pure length proxy.** Output-driven control ρ **0.79**, but reasoning-decoupled ρ **≈0** and input-decoupled ρ **≈0** (models emit a *constant* time estimate for 100→30 000-token inputs). Reconciles E1/E2 with the literature: regime is the hidden variable. |
+| **E6** | Can the ~2× output-length undershoot be fixed in-context (no training)? | **Mostly, for non-reasoning models.** Self-revision moves pooled gm 0.37 → **0.76** with ρ intact; strong models land near 1.0. Weak models overcorrect (haiku 2.0×); o4-mini stays stuck (0.08→0.19). Target 1 is nearly free except the reasoning-model hidden-token case. |
 
 ## The unifying story
 
@@ -33,6 +36,19 @@ The four experiments split cleanly into two lanes, and they tell **one coherent 
   stated elapsed-time field from the harness gets you almost all the way (0.96). The gap
   between 0.49 and 0.96 is almost entirely a **missing-sensor problem**, not a
   missing-capability problem.
+
+**Follow-up (E5–E6) — the premise survived, and the boundary is sharp.** E5 was the linchpin
+validity check, and it cleanly confirmed the length-proxy story: calibration is high only when
+latency is output-driven (ρ 0.79) and vanishes when latency is decoupled (reasoning ρ≈0,
+prefill ρ≈0 — models give a *constant* time estimate for a 300× change in input size). This
+**reconciles E1's apparent contradiction of the literature** — both are true, regime is the
+hidden variable — so the project's premise is solid, not an artifact. E6 then showed the
+output-length undershoot is **mostly fixable in-context** (self-revision 0.37 → 0.76) for
+non-reasoning models. Across E5 and E6 the *same* boundary keeps appearing: **reasoning-model
+hidden tokens are the one place every length/clock proxy and every in-context fix fails.** That
+is the real research target — it promotes E10 (reasoning-token self-prediction) from a refinement
+to a priority, and it is the precise gap the "train it in" program (`direction-train-it-in.md`)
+should aim at.
 
 The two lanes agree: **don't try to train a clock into the model — give it one.**
 

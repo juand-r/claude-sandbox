@@ -15,6 +15,9 @@ estimation, time-aware agents, and continuity over long horizons.
 - `e2-token-time/` — Is length-space better-calibrated than second-space? (self-perception)
 - `e3-log-gap-probe/` — Are agents blind to timestamp gaps? (lane: time-aware agency)
 - `e4-harness-clock/` — Does an injected elapsed-time field beat text timestamps? (agency)
+- `e5-latency-decoupled/` — Does E1/E2's calibration survive when latency is decoupled from
+  output length? (self-perception; the linchpin validity check)
+- `e6-length-bias/` — Can the ~2× output-length undershoot be fixed in-context? (self-perception)
 
 Each `eN-*/` has `run.py` (collect → `results.jsonl`), `analyze.py` (stats + PNG figures),
 and `REPORT.md` (findings + verdict).
