@@ -7,6 +7,10 @@ estimation, time-aware agents, and continuity over long horizons.
 
 - `research-notes.md` — Compiled literature notes and reading list (the seed doc).
 - `experiments.md` — The four-experiment scoping plan.
+- `time-report.pdf` / `time-report.tex` — **Self-contained technical report (all six
+  experiments, methods, results, reproduction). The single best entry point.**
+- `requirements.txt` — Pinned Python dependencies (exact versions used).
+- `dedup.py` — Canonicalize a `results.jsonl` by its logical key (concurrency-safety).
 - `SUMMARY.md` — **Cross-experiment synthesis and recommendation. Start here for results.**
 - `direction-train-it-in.md` — Counterpoint direction: treat E4's sensor as a *ceiling* and
   train the time skill in; measure how much of the gap the model internalizes.
