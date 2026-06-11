@@ -115,7 +115,9 @@ problem, not a model-capability problem. Strong framing result for the project.
 
 ## Status
 
-- [ ] E1 — self-duration calibration
-- [ ] E2 — token/step proxy
-- [ ] E3 — log-gap probe
-- [ ] E4 — harness clock
+- [x] E1 — self-duration calibration — **done** (hypothesis rejected for this regime; models track latency via output-length proxy)
+- [x] E2 — token/step proxy — **done** (hypothesis supported; token-space Δρ +0.231 over seconds)
+- [x] E3 — log-gap probe — **done** (sensitivity scales with model strength; deficit is attention, not calibration)
+- [x] E4 — harness clock — **done** (hypothesis supported; harness clock 0.96 vs text 0.80 vs none 0.49)
+
+See `SUMMARY.md` for the cross-experiment synthesis and recommendation.
