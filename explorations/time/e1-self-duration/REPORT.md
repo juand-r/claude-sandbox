@@ -81,7 +81,12 @@ fail on latency they cannot see."
   literature's negative result. This is the obvious follow-up.
 - **Wall-clock is harness/hardware specific.** Absolute ratios would shift on different
   hardware or under load; the *ordering* and *correlation* results are far more robust and
-  are the headline.
+  are the headline. Note this does **not** make seconds-prediction untrainable: the median
+  latency CV across trials here was only 0.04–0.14, so within a *fixed* deployment the seconds
+  target is reproducible and learnable — it just won't transfer across environments. (An
+  earlier reading of this report over-claimed that wall-clock seconds is unlearnable because
+  it "isn't a function of the inputs"; that holds only across environments, not within one.
+  See `../direction-train-it-in.md`.)
 - **PRE estimates are coarse integers** (1s, 2s, 4s…), which slightly quantizes ratios but
   does not affect rank statistics.
 - N=3 trials; latency CV is low so this is adequate for means, thin for tails.

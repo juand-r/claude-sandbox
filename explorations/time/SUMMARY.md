@@ -62,10 +62,31 @@ the capability the strong models already have. If that holds, the project's thes
 **temporal awareness in agents is a tooling problem with a one-line fix, and the residual is
 the part worth post-training.**
 
+## Correction: wall-clock seconds *is* trainable in a fixed environment
+
+An earlier draft of this doc claimed wall-clock self-prediction is ill-posed because latency
+"isn't a function of the inputs." **That was overstated.** It only holds if you marginalize
+over all hardware/load/batch states. Condition on a *fixed deployment* (this model, this
+hardware, typical load) and `P(seconds | prompt, environment)` is tight with a learnable
+mean — the environment is just a constant that post-training absorbs into the weights. This
+is how a human develops "a sense of how long things take here."
+
+E1's own data supports the corrected view: the median CV of actual latency across trials was
+only **0.04–0.14** in this sandbox — i.e., the seconds target was already highly reproducible.
+What wrecked pooled calibration in E2 was cross-model scale error and the model's own
+miscalibration, **not** environmental noise. So the decomposition is
+`latency ≈ length(prompt) × sec_per_token_here + overhead_here`: E2 shows the model can
+estimate `length`; in-environment post-training pins the two constants. The real (narrower)
+caveats: the predictor is **deployment-specific** (re-calibrate on drift), the achievable
+floor equals the per-prompt latency variance in that environment (measurable — it's the CV),
+and **reasoning models** add stochastic hidden-token variance a fixed constant can't absorb.
+The full alternative direction is written up in `direction-train-it-in.md`.
+
 ## What NOT to chase (yet)
 
-- Training a model to predict its own wall-clock seconds — E1/E2 show the target isn't a
-  function of the inputs; at best train token/step prediction with a bias correction.
+- Training a model to predict wall-clock seconds in a way that **transfers across
+  environments** from the prompt alone — *that* is ill-posed (the cross-environment target
+  isn't a function of the inputs). The fixed-environment version above is fine.
 - Extending TimeBench-style *text* temporal reasoning — saturated, and orthogonal to the
   agency deficit that actually bites in deployment.
 

@@ -8,6 +8,8 @@ estimation, time-aware agents, and continuity over long horizons.
 - `research-notes.md` — Compiled literature notes and reading list (the seed doc).
 - `experiments.md` — The four-experiment scoping plan.
 - `SUMMARY.md` — **Cross-experiment synthesis and recommendation. Start here for results.**
+- `direction-train-it-in.md` — Counterpoint direction: treat E4's sensor as a *ceiling* and
+  train the time skill in; measure how much of the gap the model internalizes.
 - `common.py` — Shared LLM-call helper (unified Anthropic/OpenAI, latency + token usage).
 - `e1-self-duration/` — Can a model estimate its own generation time? (lane: self-perception)
 - `e2-token-time/` — Is length-space better-calibrated than second-space? (self-perception)
