@@ -235,3 +235,10 @@ Changes:
 spot checks vs o4-mini's 0–4000+). The E10 correlation may be underpowered. An inconclusive Fable
 result is *uninformative* (cannot distinguish "no ordinal awareness" from "too little variation to
 detect"), and will be reported honestly as such rather than forced into the existing narrative.
+
+**Outcome (done):** Not underpowered — Fable's actual reasoning range over the 14 tasks was
+0–1105, ample to rank. Fable **replicated** the ordinal finding across providers: effort ρ=0.784,
+token ρ=0.892 (and, unlike gpt5, it gave token estimates on all 14 tasks). New twist: the
+magnitude error is model-specific in *direction* — OpenAI models under-predict reasoning
+(gm 0.17–0.25), Fable over-predicts (gm 1.96). Common structure across all three: good ranking,
+bad scale. This strengthened rather than muddied the E10 claim; folded into the report (36pp).
