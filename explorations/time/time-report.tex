@@ -124,7 +124,7 @@ throughout the code to the provider's API model identifier. The study was run on
 \begin{center}
 \begin{tabular}{@{}lllc@{}}
 \toprule
-Roster key & Provider & API model identifier & Reasoning model? \\
+Roster key & Provider & API model identifier & Reasoning engaged? \\
 \midrule
 \code{haiku}      & Anthropic & \code{claude-haiku-4-5-20251001} & no \\
 \code{sonnet}     & Anthropic & \code{claude-sonnet-4-6}         & no \\
@@ -138,10 +138,38 @@ Roster key & Provider & API model identifier & Reasoning model? \\
 \end{tabular}
 \end{center}
 
-The three OpenAI reasoning models spend a hidden internal-reasoning budget before producing
-their visible output, with the result that their wall-clock latency decouples from the length
-of the visible reply. This decoupling is itself a recurring feature of the findings below
-and is the boundary that E10 (Section~\ref{sec:e10}) probes directly.
+\paragraph{Reasoning capability versus reasoning engaged --- an important clarification.} The
+last column records whether the model \emph{actually performed hidden reasoning during our
+runs}, not whether it is reasoning-\emph{capable}. The distinction matters and we were careful
+to verify it from the code, because it affects how every self-perception result should be
+read.
+
+The three Anthropic models (haiku, sonnet, opus) are all reasoning-capable: they support
+extended thinking. We disabled it \emph{explicitly} rather than relying on a default. The
+single call site in \code{common.py} passes \code{thinking=\{"type": "disabled"\}} on every
+Anthropic request, and records the thinking-token count returned in the usage object, which is
+zero on every Anthropic row in the data. (An earlier version of the harness left thinking
+implicit; we made it explicit precisely so that no result depends on an undocumented model
+default.) With thinking disabled, on a hard problem (checking primality, computing a
+derangement of nine) these models return a single \code{text} content block, zero thinking
+tokens, and the answer directly, with no chain of thought. Every haiku, sonnet, and opus data
+point in this report is therefore a \emph{thinking-off} run, verifiable from the recorded
+\code{reasoning\_tokens} field. The three
+OpenAI models marked ``yes'' (gpt5, gpt5.2, o4-mini) did perform hidden reasoning, which the
+API reports as nonzero \code{reasoning\_tokens}; for them, wall-clock latency decouples from
+the length of the visible reply. This decoupling is the recurring boundary that E10
+(Section~\ref{sec:e10}) probes directly.
+
+\textbf{Consequence for interpretation.} The ``self-perception is a length proxy'' finding
+(E1, E2, E5) is established for reasoning-capable models \emph{run with thinking off}. We
+should not assume it holds when their thinking is engaged: with extended thinking on, an
+Anthropic model's latency would include hidden thinking tokens, and we would expect it to
+undershoot its own latency in the same way gpt5.2 and o4-mini did. Testing the Anthropic models
+with thinking enabled is a clean follow-up that we have not run; note also that the documented
+\code{thinking=\{type:enabled\}} parameter is rejected by the API gateway in this environment,
+so engaging thinking here would require a different mechanism. The reasoning-capable model that
+\emph{does} think by default in this environment, Fable~5 (\code{claude-fable-5}), was not part
+of the original roster; adding it is noted as future work.
 
 The roster has two provider quirks that \code{common.py} handles transparently. First, the
 OpenAI reasoning models require the \code{max\_completion\_tokens} field rather than the

@@ -81,7 +81,16 @@ def call(model: str, prompt: str, *, system: str | None = None,
         try:
             t0 = time.perf_counter()
             if provider == "anthropic":
+                # Extended thinking is EXPLICITLY disabled -- we do not rely on the
+                # model default. Every Anthropic model in the roster is reasoning-capable,
+                # so leaving this implicit would make the runs depend on an undocumented
+                # default. thinking={"type":"disabled"} pins them to thinking-off.
+                # (Note: the gateway in this environment rejects thinking=enabled, so we
+                # cannot turn it on here even if we wanted to.) We also capture the
+                # thinking-token count from usage, so the recorded data proves thinking
+                # was off (reasoning_tokens == 0 on every Anthropic row).
                 kwargs = dict(model=api_id, max_tokens=max_tokens,
+                              thinking={"type": "disabled"},
                               messages=[{"role": "user", "content": prompt}])
                 if system:
                     kwargs["system"] = system
@@ -90,8 +99,10 @@ def call(model: str, prompt: str, *, system: str | None = None,
                 m = anthropic_c.messages.create(**kwargs)
                 dt = time.perf_counter() - t0
                 text = "".join(b.text for b in m.content if b.type == "text")
+                det = getattr(m.usage, "output_tokens_details", None)
+                think = (getattr(det, "thinking_tokens", 0) or 0) if det else 0
                 return Result(model, text, dt, m.usage.input_tokens,
-                              m.usage.output_tokens)
+                              m.usage.output_tokens, reasoning_tokens=think)
             else:  # openai
                 msgs = ([{"role": "system", "content": system}] if system else []) \
                        + [{"role": "user", "content": prompt}]
