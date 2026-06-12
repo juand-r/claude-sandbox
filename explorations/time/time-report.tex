@@ -554,7 +554,9 @@ The OpenAI reasoning model o4-mini is the outlier throughout. Its token-space GM
 $0.10$, meaning it estimates its own output to be roughly ten times shorter than it actually
 is. This is consistent with the E1 finding for gpt5.2: reasoning models cannot count tokens
 they will spend on hidden reasoning, and visible output length is a poor proxy for their
-total token output. E10 (Section~\ref{sec:e10}) probes this directly.
+total token output. E10 (Section~\ref{sec:e10}) probes this directly. The per-run scatter of
+predicted vs.\ actual output tokens (one dot per trial) is Figure~\ref{fig:e2raw} in
+Appendix~\ref{app:raw}.
 
 \paragraph{Verdict.} Supported. Models track their own output length, not time. The natural
 target for any self-estimation procedure is token (or step) space, with a learned bias
@@ -866,21 +868,23 @@ estimate as input grows. Inspection of individual cells (sorted by input size, a
 trials):
 
 \begin{center}
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}llrrrr@{}}
 \toprule
-model        & 100 tok & 1k tok & 8k tok & 30k tok \\
+model & quantity & 100 tok & 1k tok & 8k tok & 30k tok \\
 \midrule
-haiku  & estimate (s) & 1.0 & 1.0 & 1.3 & 1.0 \\
-       & actual   (s) & 0.52 & 0.59 & 0.71 & 0.97 \\
-o4-mini  & estimate (s) & 1.0 & 1.0 & 1.0 & 1.0 \\
-       & actual   (s) & 1.27 & 0.89 & 1.00 & 1.09 \\
+haiku   & estimate (s) & 1.0 & 1.0 & 1.3 & 1.0 \\
+        & actual   (s) & 0.52 & 0.59 & 0.71 & 0.97 \\
+o4-mini & estimate (s) & 1.0 & 1.0 & 1.0 & 1.0 \\
+        & actual   (s) & 1.27 & 0.89 & 1.00 & 1.09 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 Real latency rises monotonically with prefill size; the estimate does not move. A 300-fold
 change in input length produces no change at all in the model's predicted time. The model
-does not even attempt to use the information.
+does not even attempt to use the information. The per-run scatter for all three task types is
+Figure~\ref{fig:e5raw} in Appendix~\ref{app:raw}, where types A and B appear as vertical
+stripes (predicted value fixed, actual latency varying).
 
 \paragraph{Reconciliation of E1 with the literature.} E1 appeared to contradict
 \citet{garikaparthi2026time}, but E5 shows there is no contradiction at the mechanism level.
@@ -956,7 +960,8 @@ suggests. Under self-revision, strong models land close to perfect calibration: 
 $0.82\times$, sonnet $0.78\times$. Weak models, by contrast, \emph{over-correct}: haiku
 swings from a $0.64\times$ bare undershoot to a $2.01\times$ self-revise overshoot, because
 the verbal nudge ``you tend to under-count'' is too blunt. The reasoning model o4-mini stays
-stuck near $0.19\times$ across all three conditions; no in-context fix moves it, consistent
+stuck near $0.19\times$ across all three conditions (visible as the lowest band in the per-run
+scatter, Figure~\ref{fig:e6raw} in Appendix~\ref{app:raw}); no in-context fix moves it, consistent
 with the result throughout this report that reasoning models cannot estimate the tokens they
 will spend on hidden reasoning.
 
@@ -1048,7 +1053,9 @@ counting/modular problems) to $4.7$ (derangements of nine). For o4-mini the tren
 but noisier. In both models the extreme outlier --- a five-person ordering puzzle that drew
 $\sim$4000 reasoning tokens, five to ten times the next-hardest task --- received a rating of
 only $3$ out of $10$. The ordinal signal saturates: models distinguish easy from hard but
-flatten near the top.
+flatten near the top. The per-run scatter of token estimates against actual reasoning tokens
+is Figure~\ref{fig:e10raw}, and the full per-task raw numbers (actual reasoning, token
+estimate, effort rating) are in Table~\ref{tab:e10raw}, both in Appendix~\ref{app:raw}.
 
 \paragraph{Interpretation: ordinal awareness, broken magnitude.} The recurring ``reasoning
 model'' boundary in E1, E2, E5, E6 is not the categorical blindness it appeared to be. It is
@@ -1289,6 +1296,61 @@ E10 & 252 & Reasoning models are ordinally aware (effort $\rho$ up to $0.91$) bu
 \bottomrule
 \end{tabular}
 \end{center}
+
+\section{Raw per-run data}
+\label{app:raw}
+
+The figures in the body of the report mostly show aggregate statistics. Because the study is
+small (each experiment has a few hundred runs at most), this appendix shows the underlying raw
+data directly. The scatter plots here put one dot per individual trial (no averaging across the
+three trials), faceted per model. The two per-task tables give exact numbers. The complete
+per-trial record for every experiment, including the conditions not shown here, is in the
+committed \code{results.jsonl} files and can be re-derived with \code{raw\_views.py}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{e2-token-time/scatter_perrun.png}
+\caption{E2, per run: predicted vs.\ actual output tokens (token-estimate condition), one dot
+per trial, log--log, dashed line is perfect calibration. The consistent offset below the
+diagonal is the systematic $\sim$2$\times$ undershoot; o4-mini (a reasoning model) sits far
+below, undershooting roughly ten-fold.}
+\label{fig:e2raw}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{e5-latency-decoupled/scatter_perrun.png}
+\caption{E5, per run: predicted vs.\ actual latency, one dot per trial, coloured by task type.
+Type C (output-driven, green) tracks the diagonal; types A (reasoning-decoupled, red) and B
+(input-decoupled, orange) form vertical stripes --- the predicted value barely moves while the
+actual latency varies widely, which is the visual signature of the model not reading the
+relevant signal.}
+\label{fig:e5raw}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{e6-length-bias/scatter_perrun.png}
+\caption{E6, per run: predicted vs.\ actual output tokens by condition, one dot per trial,
+coloured by model. The point cloud lifts toward the diagonal from bare to self\_revise; the
+lone band that stays far below in every condition is o4-mini.}
+\label{fig:e6raw}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{e10-reasoning-tokens/scatter_perrun.png}
+\caption{E10, per run: predicted vs.\ actual reasoning tokens, one dot per trial (actual zeros
+plotted at 1 for the log axis). Estimates occupy a narrow vertical band relative to the wide
+horizontal spread of actuals: the models cannot size their own reasoning, and gpt5's lone
+high outlier ($\sim$10$^5$ predicted tokens) is the inconsistency noted in
+Section~\ref{sec:e10}.}
+\label{fig:e10raw}
+\end{figure}
+
+\input{raw_tables/e1_pertask}
+
+\input{raw_tables/e10_pertask}
 
 \section{Task catalogs and example responses}
 \label{app:tasks}

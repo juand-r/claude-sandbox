@@ -1,0 +1,40 @@
+\begin{longtable}{@{}lrrrr@{}}
+\caption{E10 per-task raw numbers: mean actual reasoning tokens, mean reasoning-token estimate, and mean 1--10 effort rating, each averaged over 3 trials. A `--' for the token estimate means the model gave no parseable number.}\label{tab:e10raw}\\
+\toprule
+task & model & actual reas. & tok.\,est & effort \\
+\midrule
+\endfirsthead
+\toprule
+task & model & actual reas. & tok.\,est & effort \\
+\midrule
+\endhead
+\code{triv\_add} & o4-mini & 0 & 4 & 1.0 \\
+\code{triv\_add} & gpt5 & 0 & 4 & 1.0 \\
+\code{easy\_mul} & o4-mini & 0 & 18 & 1.0 \\
+\code{easy\_mul} & gpt5 & 0 & 266 & 1.0 \\
+\code{easy\_even} & o4-mini & 21 & 7 & 1.0 \\
+\code{easy\_even} & gpt5 & 0 & -- & 1.0 \\
+\code{easy\_rev} & o4-mini & 21 & 4 & 1.0 \\
+\code{easy\_rev} & gpt5 & 64 & 5 & 1.0 \\
+\code{triv\_cap} & o4-mini & 21 & 7 & 1.0 \\
+\code{triv\_cap} & gpt5 & 21 & -- & 1.0 \\
+\code{med\_word} & o4-mini & 43 & 10 & 1.0 \\
+\code{med\_word} & gpt5 & 21 & 60 & 1.0 \\
+\code{hard\_prime} & o4-mini & 64 & 150 & 2.0 \\
+\code{hard\_prime} & gpt5 & 832 & -- & 2.7 \\
+\code{med\_units} & o4-mini & 85 & 22 & 1.0 \\
+\code{med\_units} & gpt5 & 64 & 1 & 2.0 \\
+\code{hard\_d6} & o4-mini & 192 & 37 & 1.0 \\
+\code{hard\_d6} & gpt5 & 320 & -- & 2.0 \\
+\code{hard\_mod} & o4-mini & 277 & 43 & 2.0 \\
+\code{hard\_mod} & gpt5 & 363 & 2 & 2.0 \\
+\code{med\_gcd} & o4-mini & 427 & 33 & 1.0 \\
+\code{med\_gcd} & gpt5 & 320 & 20 & 1.7 \\
+\code{vhard\_d9} & o4-mini & 448 & 43 & 1.0 \\
+\code{vhard\_d9} & gpt5 & 491 & 89007 & 4.7 \\
+\code{vhard\_count} & o4-mini & 747 & 63 & 2.3 \\
+\code{vhard\_count} & gpt5 & 896 & -- & 3.0 \\
+\code{vhard\_logic} & o4-mini & 4075 & 60 & 3.0 \\
+\code{vhard\_logic} & gpt5 & 4757 & -- & 3.0 \\
+\bottomrule
+\end{longtable}

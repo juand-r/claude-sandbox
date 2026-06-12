@@ -1,0 +1,24 @@
+\begin{longtable}{@{}lrrrrrrr@{}}
+\caption{E1 per-task raw numbers: mean actual latency (s), pooled over models, and the mean pre-estimate (s) for each model (each averaged over 3 trials). Full per-trial data is in \code{e1-self-duration/results.jsonl}.}\label{tab:e1raw}\\
+\toprule
+task & actual\,(s) & haiku & sonnet & opus & g4om & g4o & g5.2 \\
+\midrule
+\endfirsthead
+\toprule
+task & actual\,(s) & haiku & sonnet & opus & g4om & g4o & g5.2 \\
+\midrule
+\endhead
+\code{arith} & 0.7 & 1 & 1 & 1 & 2 & 1 & 0 \\
+\code{code} & 3.6 & 2 & 4 & 4 & 2 & 2 & 1 \\
+\code{define\_word} & 1.0 & 0 & 2 & 2 & 2 & 1 & 0 \\
+\code{essay} & 12.2 & 8 & 11 & 12 & 7 & 13 & 6 \\
+\code{explain\_short} & 1.8 & 1 & 2 & 3 & 2 & 2 & 1 \\
+\code{haiku} & 1.4 & 1 & 2 & 2 & 2 & 2 & 1 \\
+\code{list3} & 1.4 & 0 & 1 & 0 & 1 & 0 & 0 \\
+\code{oneword\_capital} & 0.9 & 0 & 1 & 0 & 1 & 1 & 0 \\
+\code{paragraph} & 3.7 & 2 & 3 & 6 & 2 & 3 & 2 \\
+\code{steps\_tea} & 2.2 & 1 & 3 & 4 & 2 & 1 & 1 \\
+\code{story} & 6.6 & 3 & 4 & 8 & 5 & 4 & 3 \\
+\code{yesno} & 0.8 & 0 & 1 & 0 & 1 & 1 & 0 \\
+\bottomrule
+\end{longtable}
