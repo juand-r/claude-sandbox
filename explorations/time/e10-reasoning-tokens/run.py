@@ -28,7 +28,7 @@ from common import call  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 RESULTS = os.path.join(HERE, "results.jsonl")
 
-ROSTER = ["o4-mini", "gpt5"]
+ROSTER = ["o4-mini", "gpt5", "fable"]  # fable added as a cross-provider reasoning-model check
 N_TRIALS = 3
 
 # Short-answer problems across a reasoning-difficulty gradient (trivial -> very hard).

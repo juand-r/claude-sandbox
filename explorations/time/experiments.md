@@ -215,3 +215,23 @@ latency-decoupling — if it doesn't, the self-perception lane changes shape ent
   models are NOT blind — effort-rating ρ up to 0.91 (ordinal awareness intact) — they only fail
   at *magnitude* (token estimates off ~5–6×, gpt5 refuses). The boundary is a calibration
   problem on an ordered signal (like E6), i.e. tractable, not a wall.
+
+### E10 addendum — Fable (cross-provider robustness check)
+
+Plan (in progress): add `claude-fable-5` as a third E10 reasoning model, to test whether the
+"ordinally aware, magnitude-blind" finding generalises beyond OpenAI (E10 originally used only
+o4-mini and gpt5, both OpenAI). Fable is an Anthropic *forced-adaptive-thinking* model: thinking
+cannot be disabled and has no budget knob, and `temperature` is deprecated.
+
+Changes:
+1. `common.py`: add `fable` to roster; `ADAPTIVE_THINKING_MODELS={"fable"}` → pass
+   `thinking={type:adaptive}`, omit temperature; capture `thinking_tokens` as `reasoning_tokens`.
+2. `e10-*/run.py`: add `fable` to ROSTER; resume collects only Fable's 126 cells (378 total).
+3. Re-run `analyze.py`, `raw_views.py`, `gm_intervals.py` (all generic over models → pick up Fable).
+4. Report: add Fable to the roster table (§2.1) and to Table~\ref{tab:e10}; expand the E10 setup
+   and interpretation; update the per-run figure and call counts (252→378).
+
+**Pre-registered caveat:** Fable's thinking range is narrow and uncontrollable (~6–82 tokens in
+spot checks vs o4-mini's 0–4000+). The E10 correlation may be underpowered. An inconclusive Fable
+result is *uninformative* (cannot distinguish "no ordinal awareness" from "too little variation to
+detect"), and will be reported honestly as such rather than forced into the existing narrative.

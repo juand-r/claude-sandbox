@@ -22,6 +22,7 @@ MODELS = {
     "haiku":   ("anthropic", "claude-haiku-4-5-20251001"),
     "sonnet":  ("anthropic", "claude-sonnet-4-6"),
     "opus":    ("anthropic", "claude-opus-4-8"),
+    "fable":   ("anthropic", "claude-fable-5"),   # forced-adaptive thinking (see below)
     # OpenAI
     "gpt4o-mini": ("openai", "gpt-4o-mini"),
     "gpt4o":      ("openai", "gpt-4o"),
@@ -30,7 +31,14 @@ MODELS = {
     "o4-mini":    ("openai", "o4-mini"),     # reasoning model
 }
 
+# OpenAI reasoning models: use max_completion_tokens, reject temperature, reasoning_tokens>0.
 REASONING_MODELS = {"gpt5", "gpt5.2", "o4-mini"}
+
+# Anthropic models whose thinking is FORCED ADAPTIVE: thinking cannot be disabled (the API
+# rejects thinking={type:disabled}) and temperature is deprecated. Fable always reasons; we
+# pass thinking={type:adaptive} explicitly. (haiku/sonnet/opus, by contrast, accept
+# thinking={type:disabled} and are pinned thinking-off.)
+ADAPTIVE_THINKING_MODELS = {"fable"}
 
 _anthropic = None
 _openai = None
@@ -81,21 +89,28 @@ def call(model: str, prompt: str, *, system: str | None = None,
         try:
             t0 = time.perf_counter()
             if provider == "anthropic":
-                # Extended thinking is EXPLICITLY disabled -- we do not rely on the
-                # model default. Every Anthropic model in the roster is reasoning-capable,
-                # so leaving this implicit would make the runs depend on an undocumented
-                # default. thinking={"type":"disabled"} pins them to thinking-off.
-                # (Note: the gateway in this environment rejects thinking=enabled, so we
-                # cannot turn it on here even if we wanted to.) We also capture the
-                # thinking-token count from usage, so the recorded data proves thinking
-                # was off (reasoning_tokens == 0 on every Anthropic row).
-                kwargs = dict(model=api_id, max_tokens=max_tokens,
-                              thinking={"type": "disabled"},
-                              messages=[{"role": "user", "content": prompt}])
-                if system:
-                    kwargs["system"] = system
-                if temperature is not None:
-                    kwargs["temperature"] = temperature
+                # Thinking mode is set EXPLICITLY per model -- we never rely on a default.
+                # Fable's thinking is forced-adaptive (disabled/enabled both rejected) and its
+                # temperature is deprecated, so it gets thinking={type:adaptive} and no
+                # temperature. The other Anthropic models are reasoning-capable but pinned
+                # thinking-OFF via thinking={type:disabled}. In both cases we capture the
+                # thinking-token count from usage into reasoning_tokens, so the recorded data
+                # proves the mode (0 for the disabled models, >0 when Fable reasons).
+                if model in ADAPTIVE_THINKING_MODELS:
+                    kwargs = dict(model=api_id, max_tokens=max_tokens,
+                                  thinking={"type": "adaptive"},
+                                  messages=[{"role": "user", "content": prompt}])
+                    if system:
+                        kwargs["system"] = system
+                    # temperature deliberately omitted (deprecated for this model)
+                else:
+                    kwargs = dict(model=api_id, max_tokens=max_tokens,
+                                  thinking={"type": "disabled"},
+                                  messages=[{"role": "user", "content": prompt}])
+                    if system:
+                        kwargs["system"] = system
+                    if temperature is not None:
+                        kwargs["temperature"] = temperature
                 m = anthropic_c.messages.create(**kwargs)
                 dt = time.perf_counter() - t0
                 text = "".join(b.text for b in m.content if b.type == "text")
