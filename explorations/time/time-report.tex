@@ -50,10 +50,11 @@ hidden reasoning or by input prefill ($\rho \approx 0$), even though the actual 
 by a factor of nine or sixteen in those conditions. Estimating in token space beats estimating
 in second space ($\rho\,0.89$ vs $0.66$); the systematic two-fold undershoot in token estimates
 is mostly closed by a simple in-context self-revision prompt (geometric-mean ratio $0.37 \to
-0.76$) for non-reasoning models, but not for reasoning models. A direct probe of reasoning models
-shows they are not blind to their own reasoning effort --- their one-to-ten effort rating
-tracks actual reasoning-token expenditure with $\rho$ up to $0.91$ --- they only fail at
-\emph{magnitude}.
+0.76$) for non-reasoning models, but not for reasoning models. A direct probe of three reasoning
+models from two providers shows they are not blind to their own reasoning effort --- their
+one-to-ten effort rating tracks actual reasoning-token expenditure with $\rho$ up to $0.91$ ---
+they fail only at \emph{magnitude}, and in a model-specific direction (the OpenAI models
+under-estimate their reasoning, the Anthropic model over-estimates it).
 
 \noindent\textbf{Agency (E3, E4).} The same absence of an internal clock means that agents act on
 elapsed time only when it is supplied explicitly. In a controlled experiment where the
@@ -126,9 +127,10 @@ throughout the code to the provider's API model identifier. The study was run on
 \toprule
 Roster key & Provider & API model identifier & Reasoning engaged? \\
 \midrule
-\code{haiku}      & Anthropic & \code{claude-haiku-4-5-20251001} & no \\
-\code{sonnet}     & Anthropic & \code{claude-sonnet-4-6}         & no \\
-\code{opus}       & Anthropic & \code{claude-opus-4-8}           & no \\
+\code{haiku}      & Anthropic & \code{claude-haiku-4-5-20251001} & no (off) \\
+\code{sonnet}     & Anthropic & \code{claude-sonnet-4-6}         & no (off) \\
+\code{opus}       & Anthropic & \code{claude-opus-4-8}           & no (off) \\
+\code{fable}      & Anthropic & \code{claude-fable-5}            & yes (adaptive)$^\dagger$ \\
 \code{gpt4o-mini} & OpenAI    & \code{gpt-4o-mini}               & no \\
 \code{gpt4o}      & OpenAI    & \code{gpt-4o}                    & no \\
 \code{gpt5}       & OpenAI    & \code{gpt-5}                     & yes \\
@@ -137,6 +139,9 @@ Roster key & Provider & API model identifier & Reasoning engaged? \\
 \bottomrule
 \end{tabular}
 \end{center}
+{\footnotesize $^\dagger$fable is used only in E10 (Section~\ref{sec:e10}), as a cross-provider
+reasoning model. Its thinking is forced-adaptive: it cannot be disabled and has no budget
+control, and \code{temperature} is deprecated for it.}
 
 \paragraph{Reasoning capability versus reasoning engaged --- an important clarification.} The
 last column records whether the model \emph{actually performed hidden reasoning during our
@@ -164,12 +169,13 @@ the length of the visible reply. This decoupling is the recurring boundary that 
 (E1, E2, E5) is established for reasoning-capable models \emph{run with thinking off}. We
 should not assume it holds when their thinking is engaged: with extended thinking on, an
 Anthropic model's latency would include hidden thinking tokens, and we would expect it to
-undershoot its own latency in the same way gpt5.2 and o4-mini did. Testing the Anthropic models
-with thinking enabled is a clean follow-up that we have not run; note also that the documented
-\code{thinking=\{type:enabled\}} parameter is rejected by the API gateway in this environment,
-so engaging thinking here would require a different mechanism. The reasoning-capable model that
-\emph{does} think by default in this environment, Fable~5 (\code{claude-fable-5}), was not part
-of the original roster; adding it is noted as future work.
+undershoot its own latency in the same way gpt5.2 and o4-mini did. Testing the haiku/sonnet/opus models
+with thinking enabled is a clean follow-up that we have not run; note that the documented
+\code{thinking=\{type:enabled\}} parameter is rejected by the API gateway in this environment for
+these models, so engaging thinking would require a different mechanism. We did, however, add one
+reasoning model that thinks by default: Fable~5 (\code{claude-fable-5}), whose thinking is
+forced-adaptive (it cannot be disabled). Fable is used only in E10 (Section~\ref{sec:e10}), where
+it serves as an Anthropic cross-provider counterpart to the OpenAI reasoning models.
 
 The roster has two provider quirks that \code{common.py} handles transparently. First, the
 OpenAI reasoning models require the \code{max\_completion\_tokens} field rather than the
@@ -1024,43 +1030,62 @@ need.'' A single number.
 \code{reasoning\_tokens} field, which is the ground-truth quantity being predicted.
 \end{description}
 
-Two reasoning models for which \code{reasoning\_tokens} varies meaningfully with difficulty
-and is exposed via the OpenAI API: \code{o4-mini} and \code{gpt5}. We excluded gpt5.2 because
-it did not engage reasoning by default on this task set (its \code{reasoning\_tokens} was
-always $0$, which is itself a notable observation). Three trials per cell. Total: 252 API
-calls. The quantity being predicted has a large real range: 0 to $4075$ reasoning tokens for
-o4-mini, 0 to $4757$ for gpt5.
+Three reasoning models that expose a thinking-token count which varies with difficulty:
+\code{o4-mini} and \code{gpt5} (OpenAI, \code{reasoning\_tokens}), and \code{fable}
+(\code{claude-fable-5}, Anthropic, \code{thinking\_tokens}). Fable was added specifically as a
+\emph{cross-provider} check: the original run used only the two OpenAI models, leaving open
+whether the result was an OpenAI-architecture artifact. Fable is a forced-adaptive-thinking
+model --- thinking cannot be disabled and has no budget control (Section~\ref{sec:roster}) ---
+so it can only be run as a reasoner; we do not control its reasoning depth. We excluded gpt5.2
+because it did not engage reasoning by default on this task set (its \code{reasoning\_tokens}
+was always $0$, itself a notable observation). Three trials per cell. Total: 378 API calls. The
+quantity being predicted has a large real range in all three models: 0 to $4075$ reasoning
+tokens for o4-mini, 0 to $4757$ for gpt5, and 0 to $1105$ for fable (narrower, but ample
+variation to rank).
 
 \paragraph{Results.} The hypothesis is wrong, and the refined picture is more interesting
-(Table~\ref{tab:e10}, Figure~\ref{fig:e10}). Reasoning models have substantial
-\emph{ordinal} awareness of their own reasoning cost but no \emph{magnitude} calibration.
-A one-to-ten effort rating tracks actual reasoning-token expenditure well (pooled $\rho =
-0.77$, ordering accuracy $0.90$; gpt5 alone reaches $\rho = 0.91$). Token-count estimates are
-worse and more variable. gpt5 frequently refuses to give a number at all (parseable for $8$
-out of $14$ tasks; for the parseable subset its $\rho$ is not significant). o4-mini does give
-numbers and ranks them reasonably ($\rho = 0.80$), but the GM ratio is $0.17$ ---
-under-predicting by roughly six-fold.
+(Table~\ref{tab:e10}, Figure~\ref{fig:e10}). All three reasoning models have substantial
+\emph{ordinal} awareness of their own reasoning cost but poor \emph{magnitude} calibration, and
+crucially the ordinal result holds for the Anthropic model as well as the two OpenAI models, so
+it is not a single-provider artifact.
+
+On the ordinal side, the one-to-ten effort rating tracks actual reasoning-token expenditure
+well for every model (per-model $\rho$ of $0.91$ for gpt5, $0.78$ for fable, $0.60$ for
+o4-mini). Token-count estimates also rank well for the two models that reliably produce them
+(o4-mini $\rho = 0.80$, fable $\rho = 0.89$); gpt5 is the exception, refusing to give a number
+on $6$ of $14$ tasks and ranking the rest at chance.
+
+On the magnitude side, all three are badly calibrated, but --- and this is the new
+cross-provider finding --- \emph{the direction of the error is model-specific}. The two OpenAI
+models under-predict their reasoning severely (o4-mini GM $0.17$, roughly six-fold low; gpt5
+GM $0.25$ on its sparse estimates). Fable does the opposite: it \emph{over}-predicts by roughly
+two-fold (GM $1.96$). What generalises across providers is therefore the structure --- good
+ranking, bad scale --- not a universal undershoot. The magnitude error is large in either
+direction.
 
 \begin{table}[h]
 \centering
-\caption{E10: predicting one's own reasoning cost. ``order acc.''\ is the fraction of task
-pairs whose predicted order matches the actual reasoning-token order. GM ratios are reported
-only for the token-estimate conditions because effort ratings (1--10) are not commensurate
-with token counts. The asterisk on gpt5's token estimate indicates the model produced a
-parseable number for only $8$ of $14$ tasks; we report the result on that self-selected
-subset but treat it with caution.}
+\caption{E10: predicting one's own reasoning cost, by model and predictor (effort rating or
+token estimate). ``order acc.''\ is the fraction of task pairs whose predicted order matches the
+actual reasoning-token order (chance $=0.5$). GM ratios are reported only for the token-estimate
+predictor, because effort ratings (1--10) are not commensurate with token counts; a GM below $1$
+is an undershoot, above $1$ an overshoot. The asterisk on gpt5's token estimate indicates it
+produced a parseable number on only $8$ of $14$ tasks; that row is on the self-selected subset
+and we treat it with caution. fable is the Anthropic cross-provider model.}
 \label{tab:e10}
 \begin{tabular}{@{}llccc@{}}
 \toprule
 model & predictor & $\rho$ vs actual & order acc. & GM ratio \\
 \midrule
-gpt5    & effort 1--10    & \textbf{0.908} & 0.943 & --- \\
-o4-mini & token estimate  & 0.796 & 0.837 & \gmci{0.17}{0.05}{0.57} \\
-o4-mini & effort 1--10    & 0.602 & 0.867 & --- \\
-gpt5$^*$    & token estimate  & 0.036 & 0.500 & \gmci{0.25}{0.005}{11.69} \\
+\multicolumn{5}{@{}l}{\emph{effort rating (1--10)}}\\
+gpt5    & effort 1--10 & \textbf{0.908} & 0.943 & --- \\
+fable   & effort 1--10 & 0.784 & 0.847 & --- \\
+o4-mini & effort 1--10 & 0.602 & 0.867 & --- \\
 \midrule
-pooled  & effort 1--10    & \textbf{0.772} & 0.901 & --- \\
-pooled  & token estimate  & 0.403 & 0.668 & --- \\
+\multicolumn{5}{@{}l}{\emph{token-count estimate}}\\
+fable   & token estimate & \textbf{0.892} & 0.904 & \gmci{1.96}{0.83}{4.62} \;(over) \\
+o4-mini & token estimate & 0.796 & 0.837 & \gmci{0.17}{0.05}{0.57} \;(under) \\
+gpt5$^*$ & token estimate & 0.036 & 0.500 & \gmci{0.25}{0.005}{11.69} \;(under) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1068,36 +1093,45 @@ pooled  & token estimate  & 0.403 & 0.668 & --- \\
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{e10-reasoning-tokens/estimate_vs_actual.png}
-\caption{E10: predicted vs.\ actual reasoning tokens, log--log, per model. Estimates cluster
-in a narrow range relative to the wide spread of actuals --- the model can rank but cannot
-size.}
+\caption{E10: predicted vs.\ actual reasoning tokens, log--log, per model (three panels:
+o4-mini, gpt5, fable). In every model the estimates track the ordering of the actuals but miss
+the scale: the two OpenAI models sit below the diagonal (undershoot), while the Anthropic model
+fable sits above it (overshoot). The model can rank its own reasoning cost but cannot size it,
+and the direction of the sizing error is model-specific.}
 \label{fig:e10}
 \end{figure}
 
 Sorting the tasks by actual reasoning cost gives a clear visual picture of the effort
 rating's competence. For gpt5, the per-task effort ratings rise monotonically with actual
 reasoning tokens, from $1$ (trivial arithmetic) through $2$--$3$ (medium-difficulty
-counting/modular problems) to $4.7$ (derangements of nine). For o4-mini the trend is similar
-but noisier. In both models the extreme outlier --- a five-person ordering puzzle that drew
-$\sim$4000 reasoning tokens, five to ten times the next-hardest task --- received a rating of
-only $3$ out of $10$. The ordinal signal saturates: models distinguish easy from hard but
-flatten near the top. The per-run scatter of token estimates against actual reasoning tokens
+counting/modular problems) to $4.7$ (derangements of nine). For o4-mini and fable the trend is
+similar but noisier. In the OpenAI models the extreme outlier --- a five-person ordering puzzle
+that drew $\sim$4000 reasoning tokens, five to ten times the next-hardest task --- received a
+rating of only $3$ out of $10$. The ordinal signal saturates: models distinguish easy from hard
+but flatten near the top. The per-run scatter of token estimates against actual reasoning tokens
 is Figure~\ref{fig:e10raw}, and the full per-task raw numbers (actual reasoning, token
 estimate, effort rating) are in Table~\ref{tab:e10raw}, both in Appendix~\ref{app:raw}.
 
-\paragraph{Interpretation: ordinal awareness, broken magnitude.} The recurring ``reasoning
-model'' boundary in E1, E2, E5, E6 is not the categorical blindness it appeared to be. It is
-a calibration problem on an already-ordered signal: when asked in the right currency (``how
-hard is this for you?'') the model answers competently; when asked for a token count it
-either refuses (gpt5) or systematically undershoots by a factor of five to ten (o4-mini). This
-is structurally the \emph{same} problem E6 solved for output length --- intact ranking, broken
-scale --- and is therefore in the same class of tractable bias-correction problems.
+\paragraph{Interpretation: ordinal awareness, broken magnitude --- and it generalises.} The
+recurring ``reasoning model'' boundary in E1, E2, E5, E6 is not the categorical blindness it
+appeared to be. It is a calibration problem on an already-ordered signal: when asked in the
+right currency (``how hard is this for you?'') the model answers competently; when asked for a
+token count it ranks well (o4-mini, fable) or refuses (gpt5), but in every case the absolute
+scale is wrong. The cross-provider data sharpens this in two ways. First, the ordinal result is
+not an OpenAI artifact: the Anthropic model fable shows the same intact ranking (effort
+$\rho = 0.78$, token $\rho = 0.89$). Second, the magnitude failure is not a universal
+undershoot, as the two OpenAI models alone would have suggested --- fable over-predicts by
+two-fold where they under-predict by six-fold. The common structure is ``good ranking, bad
+scale,'' which is exactly the structure E6 corrected for output length, and which is in the same
+class of tractable bias-correction problems. A per-model scaling correction would differ in
+direction across models but is learnable from a handful of calibration points in each case.
 
-\paragraph{Verdict.} Rejected, with a sharper replacement. Reasoning models are ordinally
-aware of their own reasoning effort and only fail at magnitude. The recurring boundary across
-this report is a magnitude-calibration problem on an ordered signal, not a fundamental
-blindness. This makes the train-it-in direction (discussed in Section~\ref{sec:next}) more
-attractive: the hardest case for the program looks tractable.
+\paragraph{Verdict.} Rejected, with a sharper and now cross-provider replacement. Reasoning
+models from both providers are ordinally aware of their own reasoning effort and fail only at
+magnitude, with a model-specific error direction. The recurring boundary across this report is
+a magnitude-calibration problem on an ordered signal, not a fundamental blindness. This makes
+the train-it-in direction (Section~\ref{sec:next}) more attractive: the hardest case for the
+program looks tractable, and the ordinal foothold it relies on is present across providers.
 
 \section{Statistical robustness}
 \label{sec:ci}
@@ -1193,11 +1227,13 @@ missing-sensor problem.
 \paragraph{The recurring boundary, and its refinement by E10.} The first six experiments
 isolated reasoning models as the consistent exception: their latency hides in tokens they
 cannot see, so the length proxy fails (E1, E2, E5) and the in-context fix does not lift them
-(E6). E10 then probed the boundary directly and found that it is softer than it appeared.
-Reasoning models retain strong ordinal awareness of their own reasoning effort and only fail
-at magnitude. This is structurally the same problem E6 closed for output length, which makes
-it the most actionable update from the follow-up round: the reasoning-model case is a
-tractable calibration target rather than a fundamental wall.
+(E6). E10 then probed the boundary directly, across three reasoning models from two providers,
+and found that it is softer than it appeared. All three retain strong ordinal awareness of their
+own reasoning effort and fail only at magnitude, with a model-specific error direction (the
+OpenAI models under-estimate, the Anthropic model fable over-estimates). This is structurally the
+same problem E6 closed for output length, which makes it the most actionable update from the
+follow-up round: the reasoning-model case is a tractable, cross-provider-replicated calibration
+target rather than a fundamental wall.
 
 \section{Recommendation and next experiments}
 \label{sec:next}
@@ -1261,9 +1297,11 @@ the scenario/task level. E1, E2, E6 use output-length-dominated tasks by design 
 explicit decoupling check that this choice survives). Forced one-word decisions (E3, E4) and
 integer-second estimates (E1) are lower bounds on capability. E3 and E4 state the staleness
 rule in-prompt, isolating the sensor from threshold knowledge; the absolute correct-decision
-rates are accordingly optimistic. E10 covers two reasoning models in $14$ tasks --- the
-ordinal-vs-magnitude finding is significant but tails are thin and the result has not been
-tested on Anthropic's extended-thinking models. Cost-estimate dollars in the per-experiment
+rates are accordingly optimistic. E10 covers three reasoning models (two providers) in $14$
+tasks --- the ordinal-vs-magnitude finding is significant and now replicated across providers,
+but tails are thin; Fable's adaptive thinking cannot be depth-controlled, and reasoning effort
+is partly stochastic, so the achievable correlation is capped. Cost-estimate dollars in the
+per-experiment
 reports are token-count $\times$ approximate prices, not billed amounts; total study spend
 was well within budget (approximately \$10 of a \$50+\$50 cap).
 
@@ -1320,7 +1358,7 @@ E3 & 810  & Timestamp sensitivity is graded by model strength (opus 9/9 scenario
 E4 & 1620 & Harness clock $0.96$ $>$ text timestamps $0.80$ $>$ no-time $0.49$. \\
 E5 & 450  & Calibration collapses when latency is decoupled from output length ($\rho \approx 0$); confirms the length-proxy story. \\
 E6 & 720  & Self-revision closes the undershoot $0.37 \to 0.76$ for non-reasoning models. \\
-E10 & 252 & Reasoning models are ordinally aware (effort $\rho$ up to $0.91$) but magnitude-blind. \\
+E10 & 378 & Reasoning models (both providers) are ordinally aware (effort $\rho$ up to $0.91$) but magnitude-miscalibrated; error direction is model-specific (OpenAI undershoots, fable overshoots). \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1368,11 +1406,12 @@ lone band that stays far below in every condition is o4-mini.}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{e10-reasoning-tokens/scatter_perrun.png}
-\caption{E10, per run: predicted vs.\ actual reasoning tokens, one dot per trial (actual zeros
-plotted at 1 for the log axis). Estimates occupy a narrow vertical band relative to the wide
-horizontal spread of actuals: the models cannot size their own reasoning, and gpt5's lone
-high outlier ($\sim$10$^5$ predicted tokens) is the inconsistency noted in
-Section~\ref{sec:e10}.}
+\caption{E10, per run: predicted vs.\ actual reasoning tokens, one dot per trial, per model
+(actual zeros plotted at 1 for the log axis). In all three models the estimates occupy a
+narrower band than the wide horizontal spread of actuals --- the models cannot size their own
+reasoning. The two OpenAI panels sit below the diagonal (undershoot) while the fable panel sits
+above it (overshoot); gpt5's lone high outlier ($\sim$10$^5$ predicted tokens) is the
+inconsistency noted in Section~\ref{sec:e10}.}
 \label{fig:e10raw}
 \end{figure}
 

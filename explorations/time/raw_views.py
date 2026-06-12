@@ -243,7 +243,7 @@ def e10_table():
     tasks = sorted({k[1] for k in act}, key=lambda t: np.mean(act[("o4-mini", t)] or [0]))
     out = []
     for t in tasks:
-        for m in ["o4-mini", "gpt5"]:
+        for m in ["o4-mini", "gpt5", "fable"]:
             a = np.mean(act[(m, t)]) if act[(m, t)] else float("nan")
             tk = f"{np.mean(tok[(m, t)]):.0f}" if tok[(m, t)] else "--"
             ef = f"{np.mean(eff[(m, t)]):.1f}" if eff[(m, t)] else "--"
