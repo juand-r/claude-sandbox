@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adaptive Ring System</title>
+<style>
+  :root { --bg:#15161a; --panel:#1e2027; --ink:#e6e6e6; --muted:#9aa0aa;
+          --accent:#e06c3a; --green:#2ad27e; --blue:#3a8fe0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:13px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  header { padding:14px 18px 6px; }
+  h1 { font-size:17px; margin:0 0 2px; font-weight:600; }
+  .sub { color:var(--muted); font-size:12px; max-width:760px; }
+  .wrap { display:flex; flex-wrap:wrap; gap:16px; padding:12px 18px 24px; }
+  .panel { background:var(--panel); border-radius:8px; padding:10px 12px; }
+  .panel h2 { font-size:12px; margin:0 0 6px; color:var(--muted);
+              font-weight:600; letter-spacing:.02em; }
+  canvas { display:block; image-rendering:pixelated; }
+  .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+              padding:8px 18px; }
+  button { background:#2b2f3a; color:var(--ink); border:1px solid #3a3f4c;
+           border-radius:6px; padding:6px 12px; cursor:pointer; font-size:13px; }
+  button:hover { background:#343a48; }
+  button.primary { background:var(--green); color:#06281a; border:none; font-weight:600; }
+  label { color:var(--muted); }
+  input[type=number] { width:64px; background:#11131a; color:var(--ink);
+           border:1px solid #3a3f4c; border-radius:5px; padding:4px 6px; }
+  input[type=range] { vertical-align:middle; }
+  .stats { font-variant-numeric:tabular-nums; color:var(--muted);
+           padding:2px 18px 0; font-size:12px; }
+  .stats b { color:var(--ink); font-weight:600; }
+  .gridrow { display:flex; gap:8px; align-items:flex-start; }
+  .note { color:var(--muted); font-size:11px; margin-top:6px; max-width:300px; }
+  code { color:#cdd; background:#11131a; padding:1px 4px; border-radius:4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Adaptive Ring System</h1>
+  <div class="sub">256 self-modifying rings. Each ring is 36 bits and is at
+  once data, an elementary-CA rule, and a node in a transformation network.
+  No controller, no fitness, no energy &mdash; births, deaths, mutation, and a
+  hard cap only.</div>
+</header>
+
+<div class="controls">
+  <button id="play" class="primary">Play</button>
+  <button id="stepBtn">Step</button>
+  <button id="reset">Reset</button>
+  <label>seed <input id="seed" type="number" value="0"/></label>
+  <label>init rings <input id="init" type="number" value="16" min="1" max="256"/></label>
+  <label>speed <input id="speed" type="range" min="1" max="60" value="20"/></label>
+  <span id="speedval" class="muted"></span>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="wrap">
+  <div class="panel">
+    <h2>SLOTS &mdash; colour = RULE (position is address, not space)</h2>
+    <div class="gridrow">
+      <canvas id="grid" width="288" height="288"></canvas>
+      <canvas id="cbar" width="54" height="288"></canvas>
+    </div>
+    <div class="note">Each cell is one of the 256 slots. Colour = that ring's
+    8-bit RULE. Dark = empty. Adjacent cells are <i>not</i> neighbours; rings
+    interact by address via pull/push.</div>
+  </div>
+
+  <div class="panel">
+    <h2>GENOMES &mdash; one row per slot, 36 bits</h2>
+    <canvas id="raster" width="432" height="530"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>METRICS</h2>
+    <canvas id="chart" width="380" height="180"></canvas>
+    <div class="note">green = population, blue = unique genotypes (of 256).</div>
+  </div>
+</div>
+
+<script>
+"use strict";
+// ---- model constants (mirror ring_system.py) ---------------------------
+const NB = 36, NMAX = 256;
+const RULE=[0,8], PULL=[8,16], PUSH=[16,24], ORDER=[24,32];
+const SPAWN=32, DEATH=33;
+const AMBIENT_P = [0.0005, 0.002, 0.01, 0.05];   // per ring, per tick
+const BIRTH_P   = [0.005, 0.02, 0.05, 0.15];     // per child bit, once
+
+// ---- seeded RNG --------------------------------------------------------
+function mulberry32(a){ return function(){
+  a |= 0; a = a + 0x6D2B79F5 | 0;
+  let t = Math.imul(a ^ a >>> 15, 1 | a);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+  return ((t ^ t >>> 14) >>> 0) / 4294967296;
+};}
+
+// ---- state -------------------------------------------------------------
+let bits, occ, rng, tickCount, popHist, uniqHist, last;
+
+function fieldVal(b, r, span){
+  let v = 0, base = r*NB;
+  for (let i = span[0]; i < span[1]; i++) v = (v<<1) | b[base+i];
+  return v;
+}
+function mutLevelAt(b, r){ return b[r*NB+34]*2 + b[r*NB+35]; }
+
+function applyRule(rule, src, out){           // one circular ECA step
+  for (let i = 0; i < NB; i++){
+    const left = src[(i-1+NB)%NB], center = src[i], right = src[(i+1)%NB];
+    const idx = (left<<2) | (center<<1) | right;
+    out[i] = (rule >> idx) & 1;
+  }
+}
+
+function reset(){
+  const seed = parseInt(document.getElementById('seed').value)||0;
+  let n = parseInt(document.getElementById('init').value)||16;
+  n = Math.max(1, Math.min(NMAX, n));
+  rng = mulberry32(seed);
+  bits = new Uint8Array(NMAX*NB);
+  occ  = new Uint8Array(NMAX);
+  tickCount = 0; popHist = []; uniqHist = [];
+  // place n random rings in distinct random slots
+  const slots = Array.from({length:NMAX}, (_,i)=>i);
+  for (let i = slots.length-1; i>0; i--){ const j=Math.floor(rng()*(i+1));
+    [slots[i],slots[j]]=[slots[j],slots[i]]; }
+  for (let k = 0; k < n; k++){ const r = slots[k]; occ[r]=1;
+    for (let i=0;i<NB;i++) bits[r*NB+i] = rng()<0.5 ? 1 : 0; }
+  last = {births:0,deaths:0,amb:0,activity:0};
+  recordMetrics();
+  draw();
+}
+
+// ---- one tick (mirrors the DESIGN.md tick cycle) -----------------------
+function step(){
+  const b0 = bits.slice(), o0 = occ.slice();
+  const occList = [];
+  const order0 = new Int32Array(NMAX), rule0 = new Int32Array(NMAX);
+  for (let r=0;r<NMAX;r++) if (o0[r]){ occList.push(r);
+    order0[r]=fieldVal(b0,r,ORDER); rule0[r]=fieldVal(b0,r,RULE); }
+
+  // transformer multiset (pull and push, NOT deduplicated)
+  const targets = new Map();
+  for (const r of occList) targets.set(r, []);
+  for (const t of occList){ const s=fieldVal(b0,t,PULL);
+    if (s<NMAX && o0[s]) targets.get(t).push([order0[s], s]); }
+  for (const s of occList){ const t=fieldVal(b0,s,PUSH);
+    if (t<NMAX && o0[t]) targets.get(t).push([order0[s], s]); }
+
+  // synchronous compose: lowest order applied innermost
+  const nb = b0.slice();
+  const bufA = new Uint8Array(NB), bufB = new Uint8Array(NB);
+  for (const [t, insts] of targets){
+    if (!insts.length) continue;
+    insts.sort((x,y)=> x[0]-y[0] || x[1]-y[1]);
+    for (let i=0;i<NB;i++) bufA[i] = b0[t*NB+i];
+    let cur = bufA, nxt = bufB;
+    for (const inst of insts){ applyRule(rule0[inst[1]], cur, nxt);
+      const tmp=cur; cur=nxt; nxt=tmp; }
+    for (let i=0;i<NB;i++) nb[t*NB+i] = cur[i];
+  }
+
+  let activity = 0;
+  for (const r of occList){ const base=r*NB;
+    for (let i=0;i<NB;i++) if (nb[base+i]!==b0[base+i]) activity++; }
+
+  const o1 = o0.slice();
+
+  // births (from snapshot spawn bits) -- before deaths, into S0-empty slots
+  const pool = [];
+  for (let r=0;r<NMAX;r++) if (!o0[r]) pool.push(r);
+  for (let i=pool.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+    [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  let ptr=0, births=0; const newborns = new Set();
+  for (const s of occList){
+    if (b0[s*NB+SPAWN] !== 1) continue;
+    if (ptr >= pool.length) break;
+    const slot = pool[ptr++];
+    const p = BIRTH_P[mutLevelAt(b0,s)];
+    for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1;
+      nb[slot*NB+i]=bit; }
+    o1[slot]=1; newborns.add(slot); births++;
+  }
+
+  // deaths (from snapshot death bits)
+  let deaths=0;
+  for (const d of occList){ if (b0[d*NB+DEATH]===1){ o1[d]=0;
+    for (let i=0;i<NB;i++) nb[d*NB+i]=0; deaths++; } }
+
+  // ambient mutation on survivors present at tick start (not newborns)
+  let amb=0;
+  for (let r=0;r<NMAX;r++){
+    if (!o1[r] || newborns.has(r)) continue;
+    const p = AMBIENT_P[mutLevelAt(nb,r)];
+    let flipped=false;
+    for (let i=0;i<NB;i++) if (rng()<p){ nb[r*NB+i]^=1; flipped=true; }
+    if (flipped) amb++;
+  }
+
+  bits = nb; occ = o1; tickCount++;
+  last = {births, deaths, amb, activity};
+  recordMetrics();
+}
+
+function recordMetrics(){
+  let pop=0, sumMut=0; const geno=new Set(), rules=new Set();
+  for (let r=0;r<NMAX;r++){ if (!occ[r]) continue; pop++;
+    sumMut += mutLevelAt(bits,r); rules.add(fieldVal(bits,r,RULE));
+    let key=''; const base=r*NB; for (let i=0;i<NB;i++) key+=bits[base+i];
+    geno.add(key); }
+  popHist.push(pop); uniqHist.push(geno.size);
+  if (popHist.length > 2000){ popHist.shift(); uniqHist.shift(); }
+  window._cur = {pop, unique:geno.size, rules:rules.size,
+                 meanMut: pop ? sumMut/pop : 0};
+}
+
+// ---- viridis colormap (anchor interpolation) ---------------------------
+const VIR = [[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+function viridis(x){
+  x = Math.max(0, Math.min(1, x));
+  const f = x*(VIR.length-1), i = Math.floor(f), t = f-i;
+  if (i >= VIR.length-1) return VIR[VIR.length-1];
+  const a=VIR[i], b=VIR[i+1];
+  return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];
+}
+
+// ---- rendering ---------------------------------------------------------
+const gridCv=document.getElementById('grid'), gctx=gridCv.getContext('2d');
+const cbarCv=document.getElementById('cbar'), cctx=cbarCv.getContext('2d');
+const rasterCv=document.getElementById('raster'), rctx=rasterCv.getContext('2d');
+const chartCv=document.getElementById('chart'), hctx=chartCv.getContext('2d');
+const SIDE=16, CELL=288/SIDE;
+const COL=432/NB, ROW=2, RH=NMAX*ROW;          // raster geometry
+const off=document.createElement('canvas'); off.width=NB; off.height=NMAX;
+const octx=off.getContext('2d'); const oimg=octx.createImageData(NB, NMAX);
+
+function drawGrid(){
+  for (let r=0;r<NMAX;r++){
+    const x=(r%SIDE)*CELL, y=Math.floor(r/SIDE)*CELL;
+    if (occ[r]){ const c=viridis(fieldVal(bits,r,RULE)/255);
+      gctx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
+    else gctx.fillStyle='#15161a';
+    gctx.fillRect(x,y,CELL,CELL);
+  }
+}
+function drawCbar(){
+  cctx.clearRect(0,0,cbarCv.width,cbarCv.height);
+  const H=256;
+  for (let i=0;i<H;i++){ const c=viridis((H-1-i)/(H-1));
+    cctx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; cctx.fillRect(0,i,16,1); }
+  cctx.fillStyle='#9aa0aa'; cctx.font='10px sans-serif';
+  cctx.fillText('255',20,9); cctx.fillText('0',20,255);
+  cctx.save(); cctx.translate(50,150); cctx.rotate(Math.PI/2);
+  cctx.fillText('RULE',0,0); cctx.restore();
+}
+function drawRaster(){
+  const d=oimg.data;
+  for (let r=0;r<NMAX;r++){ const base=r*NB;
+    for (let i=0;i<NB;i++){ const px=(r*NB+i)*4; let v;
+      if (!occ[r]) { v=[40,42,50]; }                 // empty row: grey
+      else v = bits[base+i] ? [10,10,12] : [235,235,235];
+      d[px]=v[0]; d[px+1]=v[1]; d[px+2]=v[2]; d[px+3]=255;
+    }
+  }
+  octx.putImageData(oimg,0,0);
+  rctx.clearRect(0,0,rasterCv.width,rasterCv.height);
+  rctx.imageSmoothingEnabled=false;
+  rctx.drawImage(off,0,0,NB,NMAX,0,0,NB*COL,RH);
+  // field boundaries + labels
+  rctx.strokeStyle='#e06c3a'; rctx.lineWidth=1;
+  for (const b of [8,16,24,32,33,34]){ const x=b*COL;
+    rctx.beginPath(); rctx.moveTo(x,0); rctx.lineTo(x,RH); rctx.stroke(); }
+  rctx.fillStyle='#9aa0aa'; rctx.font='10px sans-serif'; rctx.textAlign='center';
+  const labs=[['RULE',4],['PULL',12],['PUSH',20],['ORD',28],['S',32],['D',33],['M',34.5]];
+  for (const [t,c] of labs) rctx.fillText(t, c*COL, RH+14);
+  rctx.textAlign='left';
+}
+function drawChart(){
+  const W=chartCv.width, H=chartCv.height;
+  hctx.clearRect(0,0,W,H); hctx.fillStyle='#11131a'; hctx.fillRect(0,0,W,H);
+  const n=popHist.length; if (n<2) return;
+  const plot=(arr,color)=>{ hctx.strokeStyle=color; hctx.lineWidth=1.4;
+    hctx.beginPath();
+    for (let i=0;i<n;i++){ const x=i/(n-1)*W, y=H-(arr[i]/NMAX)*H;
+      i?hctx.lineTo(x,y):hctx.moveTo(x,y); } hctx.stroke(); };
+  plot(popHist,'#2ad27e'); plot(uniqHist,'#3a8fe0');
+}
+function drawStats(){
+  const c=window._cur||{pop:0,unique:0,rules:0,meanMut:0};
+  document.getElementById('stats').innerHTML =
+    `t=<b>${tickCount}</b> &nbsp; pop=<b>${c.pop}</b> &nbsp; `+
+    `unique=<b>${c.unique}</b> &nbsp; rules=<b>${c.rules}</b> &nbsp; `+
+    `births=<b>${last.births}</b> &nbsp; deaths=<b>${last.deaths}</b> &nbsp; `+
+    `ambient=<b>${last.amb}</b> &nbsp; activity=<b>${last.activity}</b> &nbsp; `+
+    `mut=<b>${c.meanMut.toFixed(2)}</b>`;
+}
+function draw(){ drawGrid(); drawCbar(); drawRaster(); drawChart(); drawStats(); }
+
+// ---- run loop ----------------------------------------------------------
+let playing=false, acc=0, lastT=0;
+function loop(ts){
+  if (playing){
+    const sp=parseInt(document.getElementById('speed').value);
+    acc += (ts-lastT)/1000 * sp;
+    let n=0;
+    while (acc>=1 && n<sp){ step(); acc--; n++; }
+    if (n) draw();
+  }
+  lastT=ts; requestAnimationFrame(loop);
+}
+rasterCv.height = RH + 18;
+
+document.getElementById('play').onclick=function(){
+  playing=!playing; this.textContent=playing?'Pause':'Play';
+  this.classList.toggle('primary', !playing); };
+document.getElementById('stepBtn').onclick=()=>{ step(); draw(); };
+document.getElementById('reset').onclick=()=>{ playing=false;
+  document.getElementById('play').textContent='Play';
+  document.getElementById('play').classList.add('primary'); reset(); };
+const sp=document.getElementById('speed'), spv=document.getElementById('speedval');
+sp.oninput=()=>{ spv.textContent=sp.value+' ticks/s'; };
+spv.textContent=sp.value+' ticks/s';
+
+reset();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

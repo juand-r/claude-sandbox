@@ -90,6 +90,13 @@ def render_gif(bits, occ, metrics, path, side, fps, max_frames):
     cmap_grid = plt.cm.viridis.copy()
     cmap_grid.set_under("#15161a")  # empty slots (value -1)
 
+    # colorbar for the RULE scale (added once; ax_grid.clear() leaves it).
+    sm = plt.cm.ScalarMappable(cmap=cmap_grid, norm=plt.Normalize(0, 255))
+    sm.set_array([])
+    cbar = fig.colorbar(sm, ax=ax_grid, fraction=0.046, pad=0.04)
+    cbar.set_label("RULE (0--255); dark = empty", fontsize=7)
+    cbar.ax.tick_params(labelsize=6)
+
     writer = PillowWriter(fps=fps)
     with writer.saving(fig, path, dpi=90):
         for t in frames:
@@ -99,7 +106,7 @@ def render_gif(bits, occ, metrics, path, side, fps, max_frames):
             g = grid_image(bits[t], occ[t], side)
             ax_grid.imshow(g, cmap=cmap_grid, vmin=0, vmax=255,
                            interpolation="nearest")
-            ax_grid.set_title(f"universe (RULE colour)  t={t}", fontsize=10)
+            ax_grid.set_title(f"slots (colour = RULE)  t={t}", fontsize=10)
             ax_grid.set_xticks([]); ax_grid.set_yticks([])
 
             # genome raster: occupied rings stacked, 36 bits wide
