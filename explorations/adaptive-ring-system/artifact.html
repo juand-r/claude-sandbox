@@ -55,6 +55,17 @@
   <span id="speedval" class="muted"></span>
 </div>
 
+<div class="controls">
+  <label><input type="checkbox" id="muton" checked/> mutations</label>
+  <label>mut &times; <input id="mutscale" type="range" min="0" max="4" step="0.1" value="1"/>
+    <span id="mutscaleval" class="muted"></span></label>
+  <label title="hold RULE+PULL+PUSH fixed under transformation (heredity experiment H1)">
+    <input type="checkbox" id="protect"/> protect RULE+addr</label>
+  <label title="skip the transformation step (drift-only control)">
+    <input type="checkbox" id="notransform"/> transform off</label>
+  <span class="muted" style="font-size:11px;">&larr; live knobs; change while running</span>
+</div>
+
 <div class="stats" id="stats"></div>
 
 <div class="wrap">
@@ -137,6 +148,12 @@ function reset(){
 
 // ---- one tick (mirrors the DESIGN.md tick cycle) -----------------------
 function step(){
+  // live hyperparameters (read each tick so they can change mid-run)
+  const mutScale = document.getElementById('muton').checked
+    ? parseFloat(document.getElementById('mutscale').value) : 0;
+  const protectCore = document.getElementById('protect').checked;
+  const transformOff = document.getElementById('notransform').checked;
+
   const b0 = bits.slice(), o0 = occ.slice();
   const occList = [];
   const order0 = new Int32Array(NMAX), rule0 = new Int32Array(NMAX);
@@ -146,10 +163,12 @@ function step(){
   // transformer multiset (pull and push, NOT deduplicated)
   const targets = new Map();
   for (const r of occList) targets.set(r, []);
-  for (const t of occList){ const s=fieldVal(b0,t,PULL);
-    if (s<NMAX && o0[s]) targets.get(t).push([order0[s], s]); }
-  for (const s of occList){ const t=fieldVal(b0,s,PUSH);
-    if (t<NMAX && o0[t]) targets.get(t).push([order0[s], s]); }
+  if (!transformOff){
+    for (const t of occList){ const s=fieldVal(b0,t,PULL);
+      if (s<NMAX && o0[s]) targets.get(t).push([order0[s], s]); }
+    for (const s of occList){ const t=fieldVal(b0,s,PUSH);
+      if (t<NMAX && o0[t]) targets.get(t).push([order0[s], s]); }
+  }
 
   // synchronous compose: lowest order applied innermost
   const nb = b0.slice();
@@ -163,6 +182,9 @@ function step(){
       const tmp=cur; cur=nxt; nxt=tmp; }
     for (let i=0;i<NB;i++) nb[t*NB+i] = cur[i];
   }
+  // H1: hold RULE+PULL+PUSH (bits 0..23) fixed under transformation
+  if (protectCore) for (let r=0;r<NMAX;r++){ const base=r*NB;
+    for (let i=0;i<24;i++) nb[base+i] = b0[base+i]; }
 
   let activity = 0;
   for (const r of occList){ const base=r*NB;
@@ -180,7 +202,7 @@ function step(){
     if (b0[s*NB+SPAWN] !== 1) continue;
     if (ptr >= pool.length) break;
     const slot = pool[ptr++];
-    const p = BIRTH_P[mutLevelAt(b0,s)];
+    const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
     for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1;
       nb[slot*NB+i]=bit; }
     o1[slot]=1; newborns.add(slot); births++;
@@ -195,7 +217,7 @@ function step(){
   let amb=0;
   for (let r=0;r<NMAX;r++){
     if (!o1[r] || newborns.has(r)) continue;
-    const p = AMBIENT_P[mutLevelAt(nb,r)];
+    const p = AMBIENT_P[mutLevelAt(nb,r)] * mutScale;
     let flipped=false;
     for (let i=0;i<NB;i++) if (rng()<p){ nb[r*NB+i]^=1; flipped=true; }
     if (flipped) amb++;
@@ -324,6 +346,9 @@ document.getElementById('reset').onclick=()=>{ playing=false;
 const sp=document.getElementById('speed'), spv=document.getElementById('speedval');
 sp.oninput=()=>{ spv.textContent=sp.value+' ticks/s'; };
 spv.textContent=sp.value+' ticks/s';
+const ms=document.getElementById('mutscale'), msv=document.getElementById('mutscaleval');
+ms.oninput=()=>{ msv.textContent=ms.value+'×'; };
+msv.textContent=ms.value+'×';
 
 reset();
 requestAnimationFrame(loop);

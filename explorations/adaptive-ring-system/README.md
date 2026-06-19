@@ -18,7 +18,17 @@ The full specification and every design decision (with rationale) is in
 | `test_ring_system.py` | tests for the load-bearing semantics               |
 | `viz.py`              | dashboard viewer (animated GIF + summary figure)   |
 | `run.py`              | CLI: run a simulation, log, save history, render    |
+| `artifact.html`       | self-contained interactive dashboard (live knobs)  |
+| `RESEARCH_PLAN.md`    | operational defs + metrics for "self-organization" |
+| `analyze.py`          | discriminating metrics (churn vs. organization)    |
+| `experiments.py`      | battery of configs + side-by-side metric table     |
+| `EXPERIMENTS.md`      | experiment log (findings, interpretation)          |
 | `NOTES.md`            | running log of observations                         |
+
+The simulator has experimental knobs (`mut_scale`, `protect`,
+`transform_off`) whose defaults reproduce the faithful spec; `artifact.html`
+exposes them as live controls. See `RESEARCH_PLAN.md` and `EXPERIMENTS.md`
+for the iteration toward emergent self-organization.
 
 ## How to run
 

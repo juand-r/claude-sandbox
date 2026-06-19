@@ -152,17 +152,36 @@ class Universe:
     nmax: int = 256
     seed: int = 0
     record_history: bool = True
+    # --- experimental knobs (defaults reproduce the faithful spec) ---------
+    mut_scale: float = 1.0          # multiplies both mutation tables; 0 = off
+    protect: tuple = ()             # field spans (lo, hi) held fixed under
+                                    # transformation (heredity experiment, H1)
+    transform_off: bool = False     # skip the transformation step entirely
+                                    # (drift-only control: birth/death/mutation)
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
     tick_count: int = field(init=False, default=0)
     history_bits: list = field(init=False, default_factory=list)
     history_occ: list = field(init=False, default_factory=list)
+    history_ids: list = field(init=False, default_factory=list)
 
     def __post_init__(self):
         self.rng = np.random.default_rng(self.seed)
         self.bits = np.zeros((self.nmax, N_BITS), dtype=np.uint8)
         self.occupied = np.zeros(self.nmax, dtype=bool)
+        # per-ring identity for lineage tracking (0 = empty slot)
+        self.ids = np.zeros(self.nmax, dtype=np.int64)
+        self.next_id = 1
+        self.births_log: list[tuple[int, int, int]] = []  # (tick, child, parent)
+        # boolean mask of protected bit positions
+        if self.protect:
+            m = np.zeros(N_BITS, dtype=bool)
+            for lo, hi in self.protect:
+                m[lo:hi] = True
+            self._protect_mask = m
+        else:
+            self._protect_mask = None
 
     # -- seeding -----------------------------------------------------------
     def seed_random(self, n: int):
@@ -170,26 +189,41 @@ class Universe:
         slots = self.rng.choice(self.nmax, size=n, replace=False)
         self.bits[slots] = self.rng.integers(0, 2, size=(n, N_BITS), dtype=np.uint8)
         self.occupied[slots] = True
+        for s in slots:
+            self.ids[s] = self.next_id
+            self.next_id += 1
         self._snapshot()
 
     def place(self, slot: int, row: np.ndarray):
         """Place a specific ring (for tests / hand-built universes)."""
         self.bits[slot] = np.asarray(row, dtype=np.uint8)
         self.occupied[slot] = True
+        self.ids[slot] = self.next_id
+        self.next_id += 1
 
     def _snapshot(self):
         if self.record_history:
             self.history_bits.append(self.bits.copy())
             self.history_occ.append(self.occupied.copy())
+            self.history_ids.append(self.ids.copy())
 
     # -- the tick cycle ----------------------------------------------------
     def step(self) -> Metrics:
         bits0 = self.bits
         occ0 = self.occupied
 
+        new_tick = self.tick_count + 1
+
         # 2-3. transform (synchronous, from the snapshot)
-        targets, rule = build_transformers(bits0, occ0)
-        bits1 = compose_apply(bits0, targets, rule)
+        if self.transform_off:
+            bits1 = bits0.copy()
+        else:
+            targets, rule = build_transformers(bits0, occ0)
+            bits1 = compose_apply(bits0, targets, rule)
+        # H1: hold protected fields fixed under transformation (empties are 0
+        # in both arrays, so a blanket restore is safe).
+        if self._protect_mask is not None:
+            bits1[:, self._protect_mask] = bits0[:, self._protect_mask]
         activity = int(np.sum(bits1[occ0] != bits0[occ0]))
 
         occ1 = occ0.copy()
@@ -206,12 +240,16 @@ class Universe:
                 break
             slot = int(empty_pool[ptr]); ptr += 1
             child = bits0[s].copy()
-            p = BIRTH_P[mut_level(bits0[s])]
+            p = BIRTH_P[mut_level(bits0[s])] * self.mut_scale
             child ^= (self.rng.random(N_BITS) < p).astype(np.uint8)
             bits1[slot] = child
             occ1[slot] = True
             newborns.append(slot)
             births += 1
+            # lineage: child inherits a fresh id, parent is slot s
+            self.ids[slot] = self.next_id
+            self.births_log.append((new_tick, self.next_id, int(self.ids[s])))
+            self.next_id += 1
 
         # 5. deaths (from S0 death bits)
         death = (bits0[:, DEATH_BIT] == 1) & occ0
@@ -219,13 +257,14 @@ class Universe:
         for d in np.where(death)[0]:
             occ1[d] = False
             bits1[d] = 0
+            self.ids[d] = 0
 
         # 6. ambient mutation on survivors present at tick start (not newborns)
         survivors = occ1.copy()
         survivors[newborns] = False
         amb = 0
         for idx in np.where(survivors)[0]:
-            p = AMBIENT_P[mut_level(bits1[idx])]
+            p = AMBIENT_P[mut_level(bits1[idx])] * self.mut_scale
             flips = self.rng.random(N_BITS) < p
             if flips.any():
                 bits1[idx] ^= flips.astype(np.uint8)
@@ -274,10 +313,14 @@ class Universe:
         """Save the recorded state history for the viewer (.npz)."""
         if not self.history_bits:
             raise RuntimeError("no history recorded (record_history=False)")
+        births = (np.array(self.births_log, dtype=np.int64)
+                  if self.births_log else np.zeros((0, 3), dtype=np.int64))
         np.savez_compressed(
             path,
             bits=np.stack(self.history_bits),
             occ=np.stack(self.history_occ),
+            ids=np.stack(self.history_ids),
+            births=births,
         )
 
 
