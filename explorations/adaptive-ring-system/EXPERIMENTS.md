@@ -488,3 +488,99 @@ templating *onto the neighbour* --- a ring reproduces by copying itself onto
 its push-target's location --- which spreads a genome to its neighbourhood and
 should couple self-stability to spatial agreement, the plausible route to
 domains that are heritable *and* emergent (no protection).
+
+> **Correction (see Reflection R1):** the conclusion that E6-local is
+> "unstructured" is **wrong** --- an artifact of measuring spatial structure
+> with Moran's I on rule *values*. With the correct categorical metric, E6-local
+> already forms strong emergent genome domains. The central problem was solved
+> here, not at E7.
+
+---
+
+## Reflection R1 --- a metric error and what it overturns
+
+**The error.** Spatial structure was being measured with Moran's I of the RULE
+field. Moran's I assumes the variable is *ordinal* --- it sums products of
+value deviations, so it treats rule 1 and rule 2 as "close" and rule 1 and rule
+255 as "far." But rule numbers are **categorical** (rule 110 and rule 111 are
+unrelated behaviours). A grid tiled with domains of categorically-identical
+genomes whose rule *numbers* are scattered scores Moran's I ~0 --- exactly the
+"unstructured" reading we got for E6.
+
+**The fix.** Measure **neighbour identity**: the fraction of adjacent occupied
+pairs with the *same* rule (or the same full genome), divided by the chance
+rate 1/(distinct types). Implemented as `analyze.neighbour_identity`.
+
+**What it overturns.** Re-measuring the spatial experiments (genome-domain
+enrichment = neighbour genome-identity / chance, 5 seeds, 500 ticks):
+
+| config (no bits protected unless noted) | genome-domain enrichment |
+|-----------------------------------------|-------------------------:|
+| E1 nonlocal faithful                    |                    ~1    |
+| E4 local + protected rule + mut (imposed heredity) | ~4 (rule-only) |
+| **E6 local + self-templating**          |          **14--18x**     |
+| E7 local + self-templating + overwrite  |              ~16x        |
+| self-templating, well-mixed (clone)     |          ~4 (uniform)    |
+
+So **E6 already solved the central problem**: local addressing + self-templating
+produces emergent domains of *identical, self-consistent genomes* with nothing
+protected (genome-match 0.15--0.19 vs chance ~0.012, robust across 5 seeds,
+building up over time). Emergent individual heredity (E6's preservation -> 1.0)
+and emergent spatial structure are the *same* phenomenon when viewed with the
+right metric; they were never separate. The imposed-heredity domains of E4 are,
+by contrast, only *rule*-uniform --- their action bits churn, so their
+genome-domain enrichment is a mere ~4x.
+
+**Lesson logged:** match the metric to the variable's type. An ordinal
+statistic on a categorical field produced a confident, wrong negative that
+stood for two experiments. Always sanity-check structure metrics against a
+direct categorical measure and against a rendered frame.
+
+---
+
+## E7 --- Templating onto the neighbour
+
+### Design
+
+A ring's child overwrites a random Moore-neighbour (occupied -> replaced, empty
+-> filled) instead of only filling empty slots, spreading the genome through
+the neighbourhood (`overwrite_birth`). Also adds `local_range`: the max |offset|
+for local PULL/PUSH, so interaction can be made genuinely short-range (range 8
+= the original half-torus reach; range 1--2 = near-neighbour).
+
+### Prediction
+
+Spreading the genome onto neighbours should reinforce domains; short-range
+interaction should let a domain's *transformers* also be domain-mates, reducing
+the churn that long-range transformers inflict.
+
+### Observation
+
+With the categorical metric, genome-domain enrichment (seed 3, 500 ticks):
+
+| config | genome-domain enrich | turnover | self-pres |
+|--------|---------------------:|---------:|----------:|
+| E6 local + self-templating (range 8) |  16   | 0.63 | 0.95 |
+| E7 + overwrite, range 2              |  16   | 1.61 | 0.96 |
+| overwrite, range 2, *no* self-template |  ~2 | high | 0.88 |
+
+### Interpretation
+
+- **Overwrite is not the active ingredient; self-templating is.** Overwrite
+  without self-templating gives almost no genome domains (~2x); with it, ~16x.
+  Spreading a genome only builds a domain if the genome is stable enough to
+  survive transformation, which self-templating provides. Overwrite mainly
+  raises turnover (1.6 vs 0.6) without adding domain structure beyond E6.
+- **Short-range interaction did not obviously help** the genome-domain metric
+  here (E6 at range 8 already ~16x). It remains worth a clean sweep with the
+  correct metric (E8), because the *stability* of domains --- not just their
+  presence at a snapshot --- should depend on whether a domain's transformers
+  are domain-mates.
+
+### Takeaway
+
+E7 confirms (does not create) the E6 result and isolates self-templating as the
+mechanism behind emergent genome domains. The open question shifts from "can
+domains form?" (yes, E6) to "are they *stable* self-maintaining structures, or
+dynamic clusters that churn?" --- which is what short-range interaction (E8)
+and a persistence analysis should settle.

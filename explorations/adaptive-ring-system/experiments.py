@@ -36,10 +36,14 @@ CONFIGS = {
     # selection for genomes stable under their own rule (no bits protected).
     "selftmpl_local":  dict(local_addr=True, self_template=True),
     "selftmpl_mixed":  dict(self_template=True),
+    # E7: templating onto the neighbour (overwrite) + short-range interaction.
+    "e7_overwrite":    dict(local_addr=True, self_template=True,
+                            overwrite_birth=True, local_range=2),
 }
 
 # configs that should be seeded full (spatial runs start from a filled grid)
-FULL_SEED = {"local_faithful", "local_stable", "selftmpl_local", "selftmpl_mixed"}
+FULL_SEED = {"local_faithful", "local_stable", "selftmpl_local", "selftmpl_mixed",
+             "e7_overwrite"}
 
 
 def main():
@@ -72,12 +76,12 @@ def main():
 
     print("\n\n==== comparison (means over run / last ticks) ====")
     hdr = f"{'config':16} {'pop':>7} {'turnover':>9} {'conc':>7} " \
-          f"{'persist':>8} {'compress':>9} {'moran':>7}"
+          f"{'persist':>8} {'compress':>9} {'gdomain':>8}"
     print(hdr); print("-" * len(hdr))
     for name, m in rows:
         print(f"{name:16} {m['meanpop']:7.1f} {m['turnover']:9.3f} "
               f"{m['concentration']:7.3f} {m['persistence_max']:8d} "
-              f"{m['compressibility']:9.3f} {m['moran']:7.3f}")
+              f"{m['compressibility']:9.3f} {m['gdom']:8.1f}")
 
 
 if __name__ == "__main__":

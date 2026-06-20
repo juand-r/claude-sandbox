@@ -27,18 +27,23 @@ spatial offsets) plus a heritable rule produces the strongest and most legible
 result: an emergent, dynamic *ecology* of ~15--20 coexisting spatial domains
 that grow, shrink, and turn over.
 
-A later modification softens what first looked like the system's defining
+A later modification removes what first looked like the system's defining
 limitation. Heredity does **not** have to be imposed: gating reproduction on
 self-consistency (a ring's ability to survive its own rule) makes
 heredity-compatibility *emerge* through selection, with no bits protected
-(self-preservation rises from chance, 0.52, to ~1.0). But emergent
-self-consistency is necessary, not sufficient: well-mixed it yields a trivial
-frozen clone, and spatially it yields an active but unstructured population ---
-not the coexisting domains that imposed heredity produced. The real gap is now
-between emergent *individual* heredity (shown) and emergent *collective,
-spatial* organization (not yet shown). Across every experiment, the substrate
-has still produced nothing that both organizes spatially and sustains itself
-without some ingredient supplied by us.
+(self-preservation rises from chance, 0.52, to ~1.0). And --- once measured
+correctly --- this same modification, run spatially, produces emergent
+**domains of identical, self-consistent genomes** (neighbour genome-identity
+~16x chance, robust across seeds, nothing protected). Emergent individual
+heredity and emergent spatial structure turn out to be the *same* phenomenon,
+not two halves to be bridged. (An earlier draft reported the spatial version as
+"unstructured"; that was a measurement error --- Moran's I on categorical rule
+numbers --- corrected in Reflection R1.)
+
+What the substrate has *not* yet shown is that these emergent domains are
+**self-maintaining** (autopoietic) rather than dynamic clusters churned by
+long-range transformation, and whether anything open-ended (sustained novelty
+rather than a fixed regime) ever arises. Those are the live questions.
 
 ---
 
@@ -225,20 +230,31 @@ heredity-compatibility emerge on its own.
 > of their bits), so the gradient is real, not a lucky jump. (E6.)
 
 This is genuine emergent selection: the system discovers genomes that survive
-their own transformation. But it does not, by itself, produce rich
-organization, because the two regimes are both limited. Well-mixed, the
-population collapses to a near-frozen, low-diversity clone (preservation ~1.0,
-activity ~9 bits/tick, 2--14 rules) --- heredity emerges, but as a single
-trivial fixed point. Local, the population stays diverse and active and
-self-consistent, but forms no spatial domains (Moran's I ~0).
+their own transformation. Well-mixed, the population collapses to a near-frozen,
+low-diversity clone (preservation ~1.0, activity ~9 bits/tick, 2--14 rules) ---
+heredity emerges, but as a single trivial fixed point. Spatially (local
+reproduction), it does something far more interesting: it forms **emergent
+domains of identical, self-consistent genomes**.
 
-The reason is precise and worth stating: self-consistency is being a fixed
-point of one's *own* rule, whereas a ring is transformed by its *neighbour's*
-rule. Self-templating selects for individual self-stability, not for
-neighbours sharing a rule. So well-mixed dynamics can only reach global
-heredity by collapsing to one rule everywhere; local dynamics cannot, so
-differently-ruled (but each self-consistent) neighbours keep disrupting one
-another. Emergent individual heredity is not emergent collective organization.
+> **Evidence (corrected metric).** Neighbour genome-identity is 0.15--0.19
+> versus a chance rate ~0.012 --- a 14--18x enrichment, robust across five
+> seeds and building up over time, with nothing protected. (E6 re-measured;
+> Reflection R1.) The imposed-heredity domains of E4, by contrast, are only
+> *rule*-uniform (their action bits churn), enriching genome-identity a mere
+> ~4x.
+
+The earlier claim that the spatial case was "unstructured" was a measurement
+artifact: Moran's I treats rule numbers as ordinal, so it scores ~0 on a grid
+tiled with categorically-identical genomes whose rule *numbers* happen to be
+scattered. The lesson --- match the statistic to the variable's type --- is
+logged in Reflection R1.
+
+So self-templating delivers both at once: heredity the system discovers itself,
+*and* the spatial domain structure that makes it interesting, with nothing
+supplied by us. The remaining question is not whether domains form but whether
+they are *self-maintaining* (§3.5's autopoiesis question, now to be re-asked of
+these emergent domains) or merely dynamic clusters churned by the long-range
+transformers that E6 still allows.
 
 ## 4. Synthesis
 
@@ -251,28 +267,25 @@ distinguishes the configuration that organizes from the ones that do not
 nothing is stably inherited; wherever it succeeds, heredity has been imposed by
 protecting bits.
 
-**Emergent individual heredity, yes; emergent collective organization, not
-yet.** Imposed heredity is not strictly necessary --- selection for
-self-templating makes self-consistency emerge (3.6). But what emerges that way
-is either a trivial frozen clone or a self-consistent yet spatially
-unstructured population. Conversely, the one configuration that produced rich
-*spatial* organization (the coexisting ecology, 3.4) got its heredity from
-imposed protection. No single configuration has yet delivered both at once:
-heredity that the system discovers itself *and* the spatial, coexisting
-structure that makes it interesting. Bridging the two is the central unsolved
-problem, and 3.6 locates exactly why they are separate --- self-consistency
-selects over a ring's own rule, while spatial structure needs neighbours to
-share rules.
+**Emergent heredity and emergent spatial structure are one phenomenon.**
+Self-templating (selection for surviving one's own rule) makes self-consistency
+emerge, and spatially this *is* domain formation: neighbourhoods of identical
+self-consistent genomes, nothing protected (3.6). The earlier belief that these
+were two separate achievements to be bridged was an artifact of a wrong metric
+(Moran's I on categorical rules); the categorical neighbour-identity metric
+shows them as the same thing. Imposed protection (3.4) gives a different,
+shallower object --- domains uniform in rule but churning in their action bits.
 
 So the answer to the original question, so far: the faithful system does not
-self-organize; surgical heredity buys fragile selection; spatial locality plus
-imposed heredity buys a genuine emergent ecology of coexisting domains (the
-headline success); and self-templating shows heredity can emerge unaided,
-though so far only in a limited individual form. True adaptive
-self-organization in the strong sense --- structure that is spatial,
-coexisting, *and* self-maintained without anything supplied by us --- has not
-appeared, and the evidence now points to *coupling self-templating to the
-neighbourhood* as the most promising way to reach it.
+self-organize; surgical heredity buys fragile selection; and **self-templating
+in a spatial medium produces emergent domains of self-consistent genomes ---
+heredity the system discovers itself, expressed directly as spatial
+structure**, the headline success. What remains genuinely open is the *strong*
+form of self-organization: are these emergent domains self-maintaining
+(autopoietic), and does the system ever produce open-ended novelty rather than
+settling into a fixed regime? The autopoiesis question (3.5), answered
+negatively for the imposed-heredity domains, has not yet been re-asked of the
+emergent ones.
 
 ## 5. Limitations
 

@@ -68,18 +68,19 @@ def apply_rule(rule: int, bits: np.ndarray) -> np.ndarray:
     return ((rule >> idx) & 1).astype(np.uint8)
 
 
-def local_target(byte: int, slot: int, side: int) -> int:
+def local_target(byte: int, slot: int, side: int, rng: int = 8) -> int:
     """Interpret an 8-bit address as a signed (dx, dy) offset on the torus and
-    return the destination slot. Low nibble = dx, high nibble = dy, each in
-    -8..7. byte 0x88 (136) is the zero offset (self)."""
+    return the destination slot. Each nibble maps to -rng..+rng. rng=8 gives
+    the original -8..7 (nibble 0..15 < 17, so the modulo is a no-op)."""
+    span = 2 * rng + 1
+    dx = (byte & 0xF) % span - rng
+    dy = ((byte >> 4) & 0xF) % span - rng
     x, y = slot % side, slot // side
-    dx = (byte & 0xF) - 8
-    dy = ((byte >> 4) & 0xF) - 8
     return ((y + dy) % side) * side + ((x + dx) % side)
 
 
 def build_transformers(bits: np.ndarray, occ: np.ndarray,
-                       local: bool = False, side: int = 0):
+                       local: bool = False, side: int = 0, lrange: int = 8):
     """For each occupied target, the ordered multiset of transformer slots.
 
     Returns (targets, rule) where targets[t] is a list of (order, slot)
@@ -103,12 +104,12 @@ def build_transformers(bits: np.ndarray, occ: np.ndarray,
     # An address >= nmax (possible only when nmax < 256) names no slot, so it
     # behaves like an empty slot: no edge.
     for t in np.where(occ)[0]:
-        s = local_target(int(pull[t]), int(t), side) if local else int(pull[t])
+        s = local_target(int(pull[t]), int(t), side, lrange) if local else int(pull[t])
         if s < nmax and occ[s]:
             targets[t].append((int(order[s]), s))
     # push edge: source s transforms t = push[s]
     for s in np.where(occ)[0]:
-        t = local_target(int(push[s]), int(s), side) if local else int(push[s])
+        t = local_target(int(push[s]), int(s), side, lrange) if local else int(push[s])
         if t < nmax and occ[t]:
             targets[t].append((int(order[s]), s))
     for t in targets:
@@ -188,6 +189,11 @@ class Universe:
                                     # (prob = preservation**power), to select
                                     # for genomes stable under their own rule
     self_template_power: float = 2.0
+    overwrite_birth: bool = False   # E7: a child overwrites a random Moore
+                                    # neighbour (occupied or empty), spreading
+                                    # the genome through the neighbourhood
+    local_range: int = 8            # E7: max |offset| for local PULL/PUSH (8 =
+                                    # original; small = genuinely short-range)
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -290,8 +296,8 @@ class Universe:
         if self.transform_off:
             bits1 = bits0.copy()
         else:
-            targets, rule = build_transformers(bits0, occ0,
-                                               self.local_addr, self.side)
+            targets, rule = build_transformers(bits0, occ0, self.local_addr,
+                                               self.side, self.local_range)
             bits1 = compose_apply(bits0, targets, rule)
         # H1: hold protected fields fixed under transformation (empties are 0
         # in both arrays, so a blanket restore is safe).
@@ -315,10 +321,15 @@ class Universe:
             for s in spawners:
                 if self.self_template and not self._st_pass(int(s), bits0, rules):
                     continue
-                cands = [n for n in self._moore[s] if not filled[n]]
-                if not cands:
-                    continue
-                slot = int(cands[self.rng.integers(len(cands))])
+                if self.overwrite_birth:
+                    # spread into the neighbourhood: overwrite any Moore
+                    # neighbour (occupied -> replaced, empty -> filled)
+                    slot = int(self._moore[s][self.rng.integers(8)])
+                else:
+                    cands = [n for n in self._moore[s] if not filled[n]]
+                    if not cands:
+                        continue
+                    slot = int(cands[self.rng.integers(len(cands))])
                 filled[slot] = True
                 self._place_child(int(s), slot, bits0, bits1, occ1,
                                   newborns, new_tick)

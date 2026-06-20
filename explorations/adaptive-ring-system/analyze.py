@@ -240,6 +240,32 @@ def self_preservation_series(bits, occ, ticks=None):
     return np.array(out)
 
 
+def neighbour_identity(bits, occ, tick, side, full_genome=False):
+    """Fraction of adjacent occupied pairs (4-neighbour torus) with identical
+    rule (or identical full genome), and the enrichment over chance. This is
+    the correct *categorical* domain metric -- Moran's I wrongly treats rule
+    numbers as ordinal. Returns (match_fraction, enrichment_over_chance)."""
+    o = occ[tick]
+    if full_genome:
+        keys = {s: bits[tick][s].tobytes() for s in range(len(o)) if o[s]}
+    else:
+        rule = rs.get_field(bits[tick], rs.RULE)
+        keys = {s: int(rule[s]) for s in range(len(o)) if o[s]}
+    same = tot = 0
+    for s in keys:
+        x, y = s % side, s // side
+        for dx, dy in ((1, 0), (0, 1)):
+            n = ((y + dy) % side) * side + (x + dx) % side
+            if o[n]:
+                tot += 1; same += (keys[s] == keys[n])
+    if tot == 0:
+        return float("nan"), float("nan")
+    frac = same / tot
+    n_distinct = len(set(keys.values()))
+    chance = 1.0 / n_distinct if n_distinct else 1.0
+    return frac, frac / chance if chance else float("nan")
+
+
 def summarize(path, label=None):
     d = np.load(path)
     bits, occ = d["bits"], d["occ"]
@@ -255,8 +281,10 @@ def summarize(path, label=None):
     comp = compressibility(bits, occ, sample_ticks, rng)
     g = graph_stats(bits, occ, T - 1)
     side = int(round(occ.shape[1] ** 0.5))
-    moran = (spatial_moran(bits, occ, T - 1, side)
-             if side * side == occ.shape[1] else float("nan"))
+    square = side * side == occ.shape[1]
+    moran = spatial_moran(bits, occ, T - 1, side) if square else float("nan")
+    gdom = (neighbour_identity(bits, occ, T - 1, side, full_genome=True)[1]
+            if square else float("nan"))   # genome-domain enrichment over chance
     lin = lineage_stats(occ, ids, births) if ids is not None else None
 
     name = label or path
@@ -267,7 +295,8 @@ def summarize(path, label=None):
     print(f"  persistence (max run)  {pmax:7d}   ticks")
     print(f"  genotypes >5 / >20 tk  {p5:5d} / {p20:<5d}")
     print(f"  compressibility ratio  {comp:7.3f}   (<1 = structure vs random)")
-    print(f"  spatial Moran's I      {moran:7.3f}   (>0 = spatial domains)")
+    print(f"  spatial Moran's I      {moran:7.3f}   (rule-value autocorr; ordinal)")
+    print(f"  genome-domain enrich   {gdom:7.2f}   (neighbour genome-identity / chance)")
     if g:
         real, null = g
         print(f"  push-graph  max in-deg {real['max_indeg']:4d}  "
@@ -278,7 +307,8 @@ def summarize(path, label=None):
         print(f"  top-founder share      {lin['founder_share']:7.3f}   "
               f"({lin['n_founders']} founders alive)")
     return dict(meanpop=meanpop, turnover=turn, concentration=conc,
-                persistence_max=pmax, compressibility=comp, moran=moran)
+                persistence_max=pmax, compressibility=comp, moran=moran,
+                gdom=gdom)
 
 
 if __name__ == "__main__":
