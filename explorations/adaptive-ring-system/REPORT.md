@@ -76,6 +76,30 @@ then reproduce, die, and mutate, under a hard population cap.
 The full specification and the resolution of its ambiguities are in
 `DESIGN.md`.
 
+### 1.1 Scope note --- what system, and is the grid real? (read this first)
+
+Two points that govern how to read everything below:
+
+- **Most results are about *modified* variants, not the faithful spec.** The
+  faithful spec is only the E1 baseline (and it is pure churn). Every later
+  finding switches on one or more modifications --- imposed or emergent
+  heredity, local addressing, self-templating, and so on. They default off, so
+  the faithful system is recovered by turning them all off. The full knob list
+  and which experiment introduced each is in `DESIGN.md` section 10.
+
+- **The grid is cosmetic by default and only becomes real space under "local
+  addressing."** In the faithful spec, the PULL/PUSH addresses are *absolute
+  slot indices*: the universe is 256 arbitrarily-wired slots with no geometry,
+  and the 16x16 grid is just a way to draw them (adjacent cells are not
+  neighbours). The "H4" modification (`local_addr`) reinterprets addresses as
+  **(dx, dy) offsets on a 2-D torus**, at which point the grid is genuine space
+  and adjacency drives the dynamics. **Every spatial claim in this report ---
+  domains, the neighbour-identity metric, "spirals" --- is from local-addressing
+  runs**, where the geometry is real; the metric counts pairs adjacent *on the
+  torus*, not in the display. See `DESIGN.md` section 3.7. (Sanity check: the
+  same render shows noise with local addressing off and domains with it on, so
+  the structure cannot be a display artifact.)
+
 ## 2. Making the question testable
 
 "Self-organization" must be made operational or the project degenerates into

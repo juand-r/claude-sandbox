@@ -23,16 +23,28 @@ The full specification and every design decision (with rationale) is in
 | `RESEARCH_PLAN.md`    | operational defs + metrics for "self-organization" |
 | `analyze.py`          | discriminating metrics (churn vs. organization)    |
 | `experiments.py`      | battery of configs + side-by-side metric table     |
-| `EXPERIMENTS.md`      | experiment log (findings, interpretation)          |
+| `spatial_probes.py`   | E5/E8 domain-trajectory and invasion probes        |
+| `EXPERIMENTS.md`      | experiment log E1--E13 (+ reflections), full detail |
+| `TRAJECTORY.md`       | the tree of explored paths (map of the program)    |
 | `NOTES.md`            | running log of observations                         |
 
-The simulator has experimental knobs (`mut_scale`, `protect`, `transform_off`,
-`spawn_code`/`death_code` for a heritable reproduction trigger, `base_death`
-for tunable turnover, and `local_addr` for spatial dynamics) whose defaults
-reproduce the faithful spec; `artifact.html` exposes them as live controls.
-See `RESEARCH_PLAN.md` and `EXPERIMENTS.md` for the iteration toward emergent
-self-organization --- the headline result so far is that local addressing plus
-a heritable rule produces emergent spatial domains (E4).
+The simulator has experimental knobs --- `mut_scale`, `protect`,
+`transform_off`, `spawn_code`/`death_code` (heritable reproduction trigger),
+`base_death` (turnover), `local_addr`/`local_range` (spatial addressing),
+`self_template` (emergent heredity), `overwrite_birth`, `cyclic_dominance` ---
+**all defaulting to the faithful spec**. The full list and which experiment
+introduced each is in `DESIGN.md` section 10; `artifact.html` exposes the main
+ones as live toggles.
+
+**Read `REPORT.md` for the findings.** Headline: the faithful system is pure
+churn; local addressing + heredity (imposed or, via self-templating, emergent)
+produces emergent spatial domains; emergent heredity then unlocks robust
+adaptation and sustained open-ended novelty --- but not complexity growth.
+
+> **Note on the grid:** by default the universe has no geometry --- addresses
+> are absolute slot indices and the 16x16 grid is cosmetic. It becomes real 2-D
+> space only under `local_addr` (the "H4" modification). All spatial results use
+> that mode. See `DESIGN.md` section 3.7.
 
 ## How to run
 
@@ -57,7 +69,9 @@ python3 viz.py out/history.npz --gif out/evolution.gif --summary out/summary.png
 ## Reading the dashboard
 
 - **universe grid** --- the 256 slots as a 16x16 grid, coloured by each
-  ring's RULE value; dark cells are empty slots.
+  ring's RULE value; dark cells are empty slots. *Adjacency is meaningful only
+  under local addressing* (see the grid note above); in the default absolute
+  mode this grid is a cosmetic tiling of the slots.
 - **genome raster** --- every occupied ring as a row of 36 bits, with the
   RULE / PULL / PUSH / ORDER / SPAWN / DEATH / MUTATION field boundaries
   marked. This is the population's DNA at a glance.
@@ -74,6 +88,10 @@ A 400-tick run from 16 random rings (`run.py --ticks 400 --init 16`):
 
 ## What we observe
 
-From random seeds the system settles into a non-degenerate regime: it neither
-freezes nor saturates. Population self-stabilises well below the cap with
-continuous birth/death turnover and high genotypic diversity. See `NOTES.md`.
+The sample run above is the **faithful spec** (absolute addressing, no
+modifications). It looks lively --- stable population, high genotype diversity
+--- but that liveliness is **high-entropy churn, not organization**: roughly the
+whole population is replaced each tick and no structure persists (this is the E1
+finding; the apparent diversity is entropy). Genuine self-organization appears
+only under the modifications --- see `REPORT.md` for the real results and
+`EXPERIMENTS.md` for the full investigation.

@@ -1,11 +1,21 @@
 # Adaptive Ring System --- Design & Implementation Plan
 
-Status: **awaiting sign-off**. No code is written until this document is approved.
+Status: **implemented and signed off.** This document specifies the **faithful
+spec** --- the system as originally agreed. The simulator (`ring_system.py`)
+implements exactly this when all experimental knobs are at their defaults; the
+research that followed layers *modifications* on top (see section 10 and
+`EXPERIMENTS.md`). Read this for the base mechanics; read `REPORT.md` for what
+the modified variants do.
 
-This file is the agreed interpretation of the original spec
-(`adaptive_ring_system.md`). Where the spec was silent or ambiguous, the
-resolution and its rationale are recorded here so the decision is easy to
-revisit later.
+The original specification was provided by the project owner in conversation at
+the start of the project (there is no separate spec file --- **this document is
+its authoritative written capture**). Where the original was silent or
+ambiguous, the resolution and its rationale are recorded here so the decision is
+easy to revisit later. The defining requirements from the original spec were:
+36-bit rings that are at once data / CA-rule / network-node; transformation by
+elementary CA rule; pull/push wiring; order composition; reproduction, mutation,
+death under a hard cap; the "Minimal Philosophy" (no controller, fitness,
+energy, or separate memory); and "zero mutation does not exist."
 
 ---
 
@@ -119,6 +129,46 @@ its rule to itself twice: `A' = A(A(A))`.
 
 Both fall out naturally because we only ever build transformer instances
 from **occupied** slots.
+
+### 3.7 Addressing modes --- IS THE GRID REAL? (important)
+
+PULL/PUSH are 8-bit numbers, but there are **two ways to interpret them**, and
+they give completely different topologies. This is the single most important
+thing to be clear about when reading any spatial claim.
+
+- **Absolute addressing (the faithful spec; default `local_addr=False`).**
+  PULL/PUSH are *absolute slot indices* 0..255. A ring addresses slot #173
+  wherever #173 is. There is **no geometry**: the universe is a set of 256
+  labelled slots wired arbitrarily to one another. The 16x16 grid drawn by the
+  viewer is **pure visual convenience** (slot = row*16 + col); two cells
+  adjacent in the picture are *not* neighbours in any dynamical sense. Births
+  go to a **uniformly random empty slot**. Faithful-spec runs (the E1 baseline)
+  use this mode, and they correctly look like spatial noise.
+
+- **Local addressing (the H4 modification; `local_addr=True`).** PULL/PUSH are
+  reinterpreted as signed **(dx, dy) offsets on a 2-D torus** of side
+  `sqrt(nmax)` (16 for nmax=256). A ring at (x, y) is transformed by the ring
+  at (x+dx, y+dy); each nibble maps to `-local_range .. +local_range`. Now the
+  grid is **real space** --- Euclidean adjacency is the actual interaction
+  topology --- so domains, fronts and "spirals" are genuine spatial structure,
+  not display artifacts. Births go to an **empty Moore-neighbour** of the
+  parent (local reproduction). Every spatial result in `EXPERIMENTS.md` (E4
+  onward) uses this mode.
+
+Two details that are easy to miss:
+
+- **Birth radius and transformation range are decoupled.** Local births are
+  always to the immediate Moore neighbourhood (radius 1). `local_range` controls
+  only how far PULL/PUSH *transformation* reaches; with the default 8 on a
+  16-wide torus, "local" transformation can reach halfway across, so it is only
+  loosely local until `local_range` is made small (E7/E8).
+- **Two different "circular" things.** The 36-bit genome is a *ring* (circular
+  bitstring) for the CA; the universe is (under local addressing) a *torus*.
+  These are unrelated wrap-arounds.
+
+The dashboard's "local addressing (H4)" checkbox toggles between these modes,
+which is a direct demonstration that the grid is cosmetic in one mode and real
+in the other: the same render shows noise with it off and domains with it on.
 
 ---
 
@@ -261,3 +311,44 @@ deletion.
 2. The near-capacity turnover consequence (section 4) --- accepted to honor
    birth-before-death; flag if you'd rather free death slots first.
 3. Everything else above is considered settled per our discussion.
+
+---
+
+## 10. Experimental modifications (beyond the faithful spec)
+
+**Important:** sections 1--8 describe the faithful spec. The research program
+(`EXPERIMENTS.md`, `REPORT.md`) studies *modified* variants, switched on by the
+knobs below. **All knobs default to values that reproduce the faithful spec**,
+so `Universe()` with no arguments is the spec. Only the **E1 baseline** is the
+faithful spec; **every later result uses one or more of these modifications** ---
+do not read E4+ findings as properties of the original system.
+
+| knob | default (= faithful) | what it changes | first used |
+|------|----------------------|-----------------|-----------|
+| `mut_scale` | 1.0 | scales both mutation tables; 0 disables mutation | E1 (mut_off) |
+| `protect` | () | field spans held fixed under transformation (imposed heredity) | E1 (H1) |
+| `transform_off` | False | skip the transformation step (drift-only control) | E1 |
+| `spawn_code` / `death_code` | None | gate reproduction/death on a heritable key (`key_span`, default ORDER's low nibble) | E2 (H2) |
+| `base_death` | 0.0 | extra uniform per-tick death probability (tunable turnover) | E3 (H2c) |
+| `local_addr` | False | **addressing mode** (section 3.7): absolute -> local 2-D torus | E4 (H4) |
+| `local_range` | 8 | max |offset| for local PULL/PUSH (small = truly short-range) | E7 |
+| `self_template` / `self_template_power` | False / 2.0 | gate reproduction on self-consistency (emergent heredity) | E6 |
+| `overwrite_birth` | False | child overwrites a Moore neighbour (spreads genome) | E7 |
+| `cyclic_dominance` | False | overwrite only a type it beats (rule%3 rock-paper-scissors) | E11 |
+
+Deviations from the *letter* of the faithful spec worth flagging explicitly:
+
+- **`mut_scale=0` violates "zero mutation does not exist"** --- used only as a
+  control, never as a claimed faithful run.
+- **The reproduction key reuses ORDER's low nibble** (`key_span=(28,32)`),
+  mildly conflating composition rank with reproduction eligibility. A dedicated
+  field would remove this; deferred (see E2).
+- **Lineage tracking** (per-ring ids, birth records) is always on but is pure
+  instrumentation --- it does not affect dynamics.
+- **Ambient mutation skips this-tick newborns** (a one-tick grace), a small
+  implementation choice not in the spec text; immaterial to results.
+
+The interactive dashboard (`artifact.html`) exposes the most important knobs
+(mutations on/off + scale, protect, transform-off, H2 trigger, local
+addressing, self-templating) as live toggles; a few engine-only knobs
+(`overwrite_birth`, `cyclic_dominance`, `local_range`) are not in the UI.

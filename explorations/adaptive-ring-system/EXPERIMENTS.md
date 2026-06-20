@@ -2,10 +2,44 @@
 
 Each entry: configuration, prediction, observation, interpretation. Observation
 and interpretation are kept visibly separate (per repo report guidelines).
-All runs single-seed (seed 0, init 16, 256 slots, 400 ticks) unless noted ---
-treat magnitudes as indicative, not precise, until replicated across seeds.
+Unless noted, runs use 256 slots; sample sizes are small (often 3--5 seeds, some
+single) --- treat magnitudes as indicative, qualitative separations as robust.
 
-Reproduce with: `python3 experiments.py --ticks 400 --init 16 --seed 0`
+Reproduce with: `python3 experiments.py` (battery) and `python3 spatial_probes.py`
+(E5/E8 probes). Spatial experiments require `local_addr=True` --- see DESIGN.md
+section 3.7 on addressing modes (the grid is only real space in local mode).
+
+## Metrics glossary
+
+All implemented in `analyze.py`. Each is read against a null where possible.
+
+- **turnover** --- (births + deaths) / population per tick. Churn rate.
+- **activity** --- bits changed by transformation per tick. Microscopic churn.
+- **genotype concentration** --- largest single-genotype share of the
+  population. High = takeover/clone.
+- **persistence** --- longest run of consecutive ticks any genotype stays
+  present.
+- **compressibility** --- gzip size of the living population's bits / same for a
+  random matrix. <1 means internal structure.
+- **self-preservation** --- mean fraction of a ring's bits left unchanged by its
+  *own* rule. The emergent-heredity / self-templating signal (E6). Chance ~0.5.
+- **neighbour-identity ("genome-domain enrichment")** --- fraction of
+  torus-adjacent occupied pairs with the *same* rule (or whole genome), divided
+  by the chance rate 1/(distinct types). The **correct categorical metric for
+  spatial domains** (E5/R1). The chance baseline is approximate (assumes
+  well-mixed types).
+- **flip-rate** --- fraction of continuously-occupied slots whose genome changes
+  between consecutive ticks. Low = static domains; high = dynamic (E8).
+- **novelty** --- fraction of a tick's genomes never seen before. Open-endedness
+  signal (E9/E12).
+- **key-share** --- fraction of rings whose key (`key_span`) equals a code. The
+  directional-selection signal (E2/E10). Chance = 1/16 = 0.0625.
+- **Moran's I (DEPRECATED)** --- spatial autocorrelation of the rule *value*.
+  **Misleading**: rule numbers are categorical, not ordinal, so a grid of
+  categorically-identical domains with scattered rule *numbers* scores ~0. It
+  produced a false "unstructured" negative for two experiments (see Reflection
+  R1). Retained in output only as a flawed historical reference; use
+  neighbour-identity instead.
 
 ---
 
@@ -321,6 +355,12 @@ addressing with a heritable rule produces emergent spatial domains (Moran's I
 visible directly in the dashboard's universe grid. Unlike E2, the structure is
 discovered by the system rather than named by us.
 
+(Metric note, added post-R1: Moran's I is a valid domain signal *here* only
+because the rule is **protected** --- every ring in a domain has the identical
+rule *value*, which clusters. The categorical neighbour-identity metric
+corroborates it: rule-match 15.8x chance. When rules are *not* protected (E6),
+Moran fails and only neighbour-identity works. See Reflection R1.)
+
 ### What this points to next
 
 The domains are static-ish aggregates. The open question is whether spatial
@@ -461,6 +501,9 @@ Mean self-preservation (start -> end) and the resulting population, 500 ticks:
     fixed point --- a self-perpetuating clone, not an ecology.
   - *Local* stays diverse (23--36 rules) and active (~1000 bits/tick) and
     self-consistent (0.95), but forms **no spatial domains** (Moran ~0).
+    **[WRONG --- corrected in Reflection R1: this is a Moran-metric artifact;
+    E6-local DOES form strong genome domains, ~16x chance, by neighbour-identity.
+    The interpretation in this bullet and the next paragraph is superseded.]**
 - **Why self-consistency does not give spatial heredity.** Self-consistency is
   being a fixed point of one's *own* rule, but a ring is transformed by its
   *neighbour's* rule. Self-templating therefore selects for individual

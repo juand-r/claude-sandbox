@@ -1,6 +1,11 @@
 # NOTES --- Adaptive Ring System
 
-Running log of observations and decisions made during implementation.
+Running log of observations and decisions made during **implementation** (the
+E1 era). This is a historical log, kept for the record; the "First runs"
+interpretation below describes the faithful-spec baseline, which later work
+(`EXPERIMENTS.md`, `REPORT.md`) characterises as high-entropy churn rather than
+organization. For the current picture read `REPORT.md`; for the path tree read
+`TRAJECTORY.md`.
 
 ## Implementation
 

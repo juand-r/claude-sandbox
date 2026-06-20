@@ -197,8 +197,11 @@ def key_share_series(bits, occ, span, code):
 
 
 def spatial_moran(bits, occ, tick, side, span=rs.RULE):
-    """Moran's I of a field over the torus grid at one tick (occupied slots,
-    Moore neighbours). >0 = spatial clustering, ~0 = no structure."""
+    """DEPRECATED -- use neighbour_identity instead. Moran's I of a field over
+    the torus. It treats the field as ORDINAL, but rule numbers are CATEGORICAL,
+    so a grid tiled with categorically-identical domains whose rule *numbers* are
+    scattered scores ~0. This produced a false 'unstructured' negative for E6
+    (see EXPERIMENTS.md Reflection R1). Kept only as a historical reference."""
     o = occ[tick]
     idx = np.where(o)[0]
     if len(idx) < 3:
@@ -295,8 +298,10 @@ def summarize(path, label=None):
     print(f"  persistence (max run)  {pmax:7d}   ticks")
     print(f"  genotypes >5 / >20 tk  {p5:5d} / {p20:<5d}")
     print(f"  compressibility ratio  {comp:7.3f}   (<1 = structure vs random)")
-    print(f"  spatial Moran's I      {moran:7.3f}   (rule-value autocorr; ordinal)")
-    print(f"  genome-domain enrich   {gdom:7.2f}   (neighbour genome-identity / chance)")
+    print(f"  spatial Moran's I      {moran:7.3f}   (DEPRECATED: ordinal, misleading"
+          f" for categorical rules -- see R1; prefer genome-domain)")
+    print(f"  genome-domain enrich   {gdom:7.2f}   (neighbour genome-identity / chance"
+          f"; the correct spatial-domain metric)")
     if g:
         real, null = g
         print(f"  push-graph  max in-deg {real['max_indeg']:4d}  "
