@@ -1126,6 +1126,51 @@ updates; the mechanism is demonstrated.
 
 ---
 
+## E17 --- Larger grids: correlation length is dynamics-set, not grid-set
+
+### Design
+
+Does enlarging the grid produce crisper RPS spirals? Run symmetric cyclic
+dominance (E16) at 64x64, 96x96, 128x128 (with `transform_off` for speed --- the
+type is protected, so transformation is irrelevant to the pattern) and measure
+the **domain (connected same-type region) size**, which is the spatial
+correlation length.
+
+### Observation
+
+| grid    | population | type balance        | mean domain | max domain |
+|---------|-----------:|---------------------|------------:|-----------:|
+| 64x64   | 4090       | 1340 / 1415 / 1335  | 8.9         | 329 |
+| 96x96   | 9212       | 2780 / 3105 / 3327  | 8.0         | 385 |
+
+(mut_scale 0.02). At mut_scale 0.01, 128x128 gives visibly larger, smoother
+interlocking domains with curved wave-fronts (rendered frame
+`out/_rps128_last.png` / `sample_rps128.png`).
+
+### Interpretation
+
+- **The characteristic domain size (~8--9 cells) is essentially independent of
+  grid size.** It is set by the *dynamics* --- the balance of invasion rate
+  against mutation noise --- not by the arena. A bigger grid therefore holds
+  *more* domains of the same size (and a larger single max domain), but does not
+  make individual structures bigger or sharper.
+- **Crispness is a correlation-length question, controlled by noise.** Lowering
+  mutation (0.02 -> 0.01) visibly enlarges and smooths the domains at 128x128.
+  So the recipe for clean waves is **low noise** (long correlation length) *plus*
+  a **large grid** (room for many fronts) --- the grid alone is not enough.
+
+### Takeaway
+
+Refines the E16 remark "crisp spirals need a larger grid": only half right.
+Grid size sets how many spiral cores fit; sharpness is set by noise. Textbook
+rotating spirals would need mutation near zero (and likely asynchronous
+updates); within this stochastic, synchronous substrate the achievable pattern
+is clean *coexistence with travelling fronts*, clearest at large grid + low
+noise. This is now selectable live in `artifact.html` (grid size + cyclic RPS +
+the mut x slider).
+
+---
+
 ## Reflection R4 --- the complexity ceiling is real and layered
 
 The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing
