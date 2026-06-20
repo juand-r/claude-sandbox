@@ -69,7 +69,16 @@
     <input type="checkbox" id="local"/> local addressing (H4)</label>
   <label title="E6: reproduction gated on self-consistency (how well a ring survives its own rule). Watch self-pres% climb. Without local, the system freezes into a self-consistent clone.">
     <input type="checkbox" id="selftmpl"/> self-templating (E6)</label>
-  <span class="muted" style="font-size:11px;">&larr; live knobs; change while running</span>
+  <label title="E16: rock-paper-scissors among 3 heritable types (each overwrites the one it beats). Colours show type. Use a large grid + low mut for waves/spirals.">
+    <input type="checkbox" id="rps"/> cyclic RPS (E16)</label>
+  <label>grid
+    <select id="gridsize" title="grid side; resets on change. Bigger = clearer spatial patterns but slower.">
+      <option value="16">16&times;16</option>
+      <option value="32">32&times;32</option>
+      <option value="48">48&times;48</option>
+      <option value="64" selected>64&times;64</option>
+    </select></label>
+  <span class="muted" style="font-size:11px;">&larr; live knobs (grid/RPS reset on change)</span>
 </div>
 
 <div class="stats" id="stats"></div>
@@ -154,20 +163,27 @@
       <td style="padding:4px 8px;"><b>local</b> + <b>self-templating</b> + <b>heritable trigger</b></td>
       <td style="padding:4px 8px;">robust adaptation (emergent heredity unlocks selection)</td>
       <td style="padding:4px 8px;"><b>key=15%</b> climbs strongly (to ~0.75 in the engine)</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E16</td>
+      <td style="padding:4px 8px;"><b>cyclic RPS</b>, <b>grid 64</b>, mut&times; low (~0.1)</td>
+      <td style="padding:4px 8px;">3 heritable types compete (rock-paper-scissors)</td>
+      <td style="padding:4px 8px;">colours = type; balanced coexistence + chasing waves (bigger grid = clearer)</td></tr>
     </tbody>
   </table>
   <div class="note" style="max-width:920px; margin-top:8px;">
-    Engine-only experiments not in this UI: spatial rock-paper-scissors waves
-    (E11/E16), and the complexity-ceiling / variable-length "program ring" runs
-    (E13&ndash;E15) &mdash; see <code>experiments.py</code>,
-    <code>spatial_probes.py</code>, <code>growth.py</code>.
+    The <b>grid</b> selector resizes the world (bigger = clearer spatial
+    patterns, slower); changing grid or RPS resets. Engine-only experiments not
+    in this UI: the complexity-ceiling / variable-length "program ring" runs
+    (E13&ndash;E15) &mdash; see <code>growth.py</code>, <code>experiments.py</code>,
+    <code>spatial_probes.py</code>.
   </div>
 </div>
 
 <script>
 "use strict";
 // ---- model constants (mirror ring_system.py) ---------------------------
-const NB = 36, NMAX = 256;
+const NB = 36;
+let NMAX = 256, SIDE = 16;   // mutable: grid size is selectable (reset rebuilds)
 const RULE=[0,8], PULL=[8,16], PUSH=[16,24], ORDER=[24,32];
 const SPAWN=32, DEATH=33;
 const AMBIENT_P = [0.0005, 0.002, 0.01, 0.05];   // per ring, per tick
@@ -200,17 +216,17 @@ function applyRule(rule, src, out){           // one circular ECA step
 }
 
 // H4 spatial: addresses as (dx,dy) offsets on the SIDE x SIDE torus
-const SIDE = 16;
 function localTarget(b, slot){
   const x = slot % SIDE, y = (slot / SIDE) | 0;
   const dx = (b & 0xF) - 8, dy = ((b >> 4) & 0xF) - 8;
   return ((y + dy + SIDE) % SIDE) * SIDE + (x + dx + SIDE) % SIDE;
 }
-const MOORE = (() => { const m = [];
+let MOORE = buildMoore();
+function buildMoore(){ const m = [];
   for (let s = 0; s < NMAX; s++){ const x = s % SIDE, y = (s / SIDE) | 0; const ns = [];
     for (let dy=-1;dy<=1;dy++) for (let dx=-1;dx<=1;dx++){ if (!dx && !dy) continue;
       ns.push(((y+dy+SIDE)%SIDE)*SIDE + (x+dx+SIDE)%SIDE); } m.push(ns); }
-  return m; })();
+  return m; }
 
 // E6 self-templating: fraction of a ring's bits left unchanged by its own rule
 function selfPreserve(b, s){
@@ -224,9 +240,16 @@ function selfPreserve(b, s){
 }
 
 function reset(){
+  // grid size (rebuilds geometry)
+  SIDE = parseInt(document.getElementById('gridsize').value) || 16;
+  NMAX = SIDE * SIDE;
+  MOORE = buildMoore();
+  setGeometry();
   const seed = parseInt(document.getElementById('seed').value)||0;
+  const rps = document.getElementById('rps').checked;
   let n = parseInt(document.getElementById('init').value)||16;
-  n = Math.max(1, Math.min(NMAX, n));
+  // RPS wants a full grid; otherwise scale the seed count with the grid
+  n = rps ? NMAX : Math.max(1, Math.min(NMAX, n * (NMAX / 256) | 0 || n));
   rng = mulberry32(seed);
   bits = new Uint8Array(NMAX*NB);
   occ  = new Uint8Array(NMAX);
@@ -252,6 +275,7 @@ function step(){
   const h2 = document.getElementById('h2').checked;
   const local = document.getElementById('local').checked;
   const selfT = document.getElementById('selftmpl').checked;
+  if (document.getElementById('rps').checked){ stepRPS(mutScale); return; }
   const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
@@ -349,6 +373,33 @@ function step(){
   recordMetrics();
 }
 
+// E16 cyclic rock-paper-scissors: type = bits 24-25 mod 3 (heritable; not
+// transformed here). Each ring overwrites a random neighbour it beats, or
+// colonises an empty one. Colours show type. Large grid + low mut -> waves.
+function rpsType(b, s){ return ((b[s*NB+24]<<1 | b[s*NB+25]) % 3); }
+function stepRPS(mutScale){
+  const b0 = bits.slice(), o0 = occ.slice();
+  const occList = []; for (let r=0;r<NMAX;r++) if (o0[r]) occList.push(r);
+  for (let i=occList.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+    [occList[i],occList[j]]=[occList[j],occList[i]]; }
+  const nb = b0.slice(), o1 = o0.slice(), filled = o0.slice();
+  let births=0, deaths=0;
+  for (const s of occList){
+    const n = MOORE[s][Math.floor(rng()*8)];
+    let win = false;
+    if (!filled[n]) win = true;                                  // colonise empty
+    else if (((rpsType(b0,s) - rpsType(b0,n) + 3) % 3) === 1) win = true;  // beats it
+    if (!win) continue;
+    const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
+    for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1; nb[n*NB+i]=bit; }
+    if (!o1[n]) births++;
+    o1[n]=1; filled[n]=1;
+  }
+  bits = nb; occ = o1; tickCount++;
+  last = {births, deaths, amb:0, activity:0};
+  recordMetrics();
+}
+
 function recordMetrics(){
   let pop=0, sumMut=0, k15=0, presSum=0; const geno=new Set(), rules=new Set();
   for (let r=0;r<NMAX;r++){ if (!occ[r]) continue; pop++;
@@ -379,18 +430,30 @@ const gridCv=document.getElementById('grid'), gctx=gridCv.getContext('2d');
 const cbarCv=document.getElementById('cbar'), cctx=cbarCv.getContext('2d');
 const rasterCv=document.getElementById('raster'), rctx=rasterCv.getContext('2d');
 const chartCv=document.getElementById('chart'), hctx=chartCv.getContext('2d');
-const CELL=288/SIDE;   // SIDE is declared once near the model constants
-const COL=432/NB, ROW=2, RH=NMAX*ROW;          // raster geometry
-const off=document.createElement('canvas'); off.width=NB; off.height=NMAX;
-const octx=off.getContext('2d'); const oimg=octx.createImageData(NB, NMAX);
+const GRIDPX=288;                  // grid canvas pixel size (fixed)
+const COL=432/NB, RROWS=256, ROW=2, RH=RROWS*ROW;   // raster: sample up to 256 rings
+let CELL=GRIDPX/SIDE;
+const off=document.createElement('canvas'); off.width=NB; off.height=RROWS;
+const octx=off.getContext('2d'); const oimg=octx.createImageData(NB, RROWS);
+const TYPECOL=[[224,68,58],[58,176,74],[58,111,224]];   // RPS type colours
+function setGeometry(){
+  CELL=GRIDPX/SIDE;
+  gridCv.width=GRIDPX; gridCv.height=GRIDPX;
+  rasterCv.width=NB*COL; rasterCv.height=RH+18;
+}
 
 function drawGrid(){
+  const rps=document.getElementById('rps').checked;
+  const cs=Math.ceil(CELL)+1;
   for (let r=0;r<NMAX;r++){
     const x=(r%SIDE)*CELL, y=Math.floor(r/SIDE)*CELL;
-    if (occ[r]){ const c=viridis(fieldVal(bits,r,RULE)/255);
-      gctx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
-    else gctx.fillStyle='#15161a';
-    gctx.fillRect(x,y,CELL,CELL);
+    if (occ[r]){
+      if (rps){ const c=TYPECOL[rpsType(bits,r)];
+        gctx.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`; }
+      else { const c=viridis(fieldVal(bits,r,RULE)/255);
+        gctx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
+    } else gctx.fillStyle='#15161a';
+    gctx.fillRect(Math.floor(x),Math.floor(y),cs,cs);
   }
 }
 function drawCbar(){
@@ -405,17 +468,21 @@ function drawCbar(){
 }
 function drawRaster(){
   const d=oimg.data;
-  for (let r=0;r<NMAX;r++){ const base=r*NB;
-    for (let i=0;i<NB;i++){ const px=(r*NB+i)*4; let v;
-      if (!occ[r]) { v=[40,42,50]; }                 // empty row: grey
-      else v = bits[base+i] ? [10,10,12] : [235,235,235];
+  // sample up to RROWS occupied rings (so big grids stay cheap)
+  const idx=[]; for (let r=0;r<NMAX;r++) if (occ[r]) idx.push(r);
+  const rows = idx.length<=RROWS ? idx
+    : Array.from({length:RROWS},(_,k)=>idx[(k*idx.length/RROWS)|0]);
+  for (let rr=0; rr<RROWS; rr++){
+    for (let i=0;i<NB;i++){ const px=(rr*NB+i)*4; let v;
+      if (rr>=rows.length) v=[20,21,26];             // unused row
+      else v = bits[rows[rr]*NB+i] ? [10,10,12] : [235,235,235];
       d[px]=v[0]; d[px+1]=v[1]; d[px+2]=v[2]; d[px+3]=255;
     }
   }
   octx.putImageData(oimg,0,0);
   rctx.clearRect(0,0,rasterCv.width,rasterCv.height);
   rctx.imageSmoothingEnabled=false;
-  rctx.drawImage(off,0,0,NB,NMAX,0,0,NB*COL,RH);
+  rctx.drawImage(off,0,0,NB,RROWS,0,0,NB*COL,RH);
   // field boundaries + labels
   rctx.strokeStyle='#e06c3a'; rctx.lineWidth=1;
   for (const b of [8,16,24,32,33,34]){ const x=b*COL;
@@ -460,7 +527,6 @@ function loop(ts){
   }
   lastT=ts; requestAnimationFrame(loop);
 }
-rasterCv.height = RH + 18;
 
 document.getElementById('play').onclick=function(){
   playing=!playing; this.textContent=playing?'Pause':'Play';
@@ -469,6 +535,9 @@ document.getElementById('stepBtn').onclick=()=>{ step(); draw(); };
 document.getElementById('reset').onclick=()=>{ playing=false;
   document.getElementById('play').textContent='Play';
   document.getElementById('play').classList.add('primary'); reset(); };
+// changing grid size or RPS mode rebuilds the world
+document.getElementById('gridsize').onchange=()=>{ reset(); };
+document.getElementById('rps').onchange=()=>{ reset(); };
 const sp=document.getElementById('speed'), spv=document.getElementById('speedval');
 sp.oninput=()=>{ spv.textContent=sp.value+' ticks/s'; };
 spv.textContent=sp.value+' ticks/s';
