@@ -196,6 +196,31 @@ def key_share_series(bits, occ, span, code):
     return np.array(out)
 
 
+def spatial_moran(bits, occ, tick, side, span=rs.RULE):
+    """Moran's I of a field over the torus grid at one tick (occupied slots,
+    Moore neighbours). >0 = spatial clustering, ~0 = no structure."""
+    o = occ[tick]
+    idx = np.where(o)[0]
+    if len(idx) < 3:
+        return float("nan")
+    vals = rs.get_field(bits[tick], span).astype(float)
+    xbar = vals[o].mean()
+    num = 0.0; W = 0
+    for s in idx:
+        x, y = s % side, s // side
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                if dx == 0 and dy == 0:
+                    continue
+                n = ((y + dy) % side) * side + (x + dx) % side
+                if o[n]:
+                    num += (vals[s] - xbar) * (vals[n] - xbar); W += 1
+    den = ((vals[o] - xbar) ** 2).sum()
+    if den == 0 or W == 0:
+        return float("nan")
+    return (len(idx) / W) * (num / den)
+
+
 def summarize(path, label=None):
     d = np.load(path)
     bits, occ = d["bits"], d["occ"]
@@ -210,6 +235,9 @@ def summarize(path, label=None):
     pmax, p5, p20 = persistence(bits, occ)
     comp = compressibility(bits, occ, sample_ticks, rng)
     g = graph_stats(bits, occ, T - 1)
+    side = int(round(occ.shape[1] ** 0.5))
+    moran = (spatial_moran(bits, occ, T - 1, side)
+             if side * side == occ.shape[1] else float("nan"))
     lin = lineage_stats(occ, ids, births) if ids is not None else None
 
     name = label or path
@@ -220,6 +248,7 @@ def summarize(path, label=None):
     print(f"  persistence (max run)  {pmax:7d}   ticks")
     print(f"  genotypes >5 / >20 tk  {p5:5d} / {p20:<5d}")
     print(f"  compressibility ratio  {comp:7.3f}   (<1 = structure vs random)")
+    print(f"  spatial Moran's I      {moran:7.3f}   (>0 = spatial domains)")
     if g:
         real, null = g
         print(f"  push-graph  max in-deg {real['max_indeg']:4d}  "
@@ -230,7 +259,7 @@ def summarize(path, label=None):
         print(f"  top-founder share      {lin['founder_share']:7.3f}   "
               f"({lin['n_founders']} founders alive)")
     return dict(meanpop=meanpop, turnover=turn, concentration=conc,
-                persistence_max=pmax, compressibility=comp)
+                persistence_max=pmax, compressibility=comp, moran=moran)
 
 
 if __name__ == "__main__":

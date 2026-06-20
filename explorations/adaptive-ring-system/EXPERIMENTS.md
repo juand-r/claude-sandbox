@@ -191,3 +191,142 @@ e.g. a low uniform death rate, or making the non-reproducing keys mortal ---
 so selection can keep operating. Separately, replacing the ORDER-nibble key
 with a dedicated field would remove the rank/reproduction conflation before
 pushing further.
+
+---
+
+## E3 --- Turnover (H2c)
+
+### Design
+
+Add `base_death`, a uniform per-tick death probability applied to all existing
+rings, on top of the h2_key_only heritable trigger. Sweep it and ask whether
+selection on the key goes to fixation, and whether the population survives.
+(seed 0--3, init 16, 500 ticks.)
+
+### Observation
+
+key-15 end share (final population in parentheses); chance = 0.0625:
+
+| base_death | seed0 | seed1 | seed2 | seed3 |
+|-----------:|------:|------:|------:|------:|
+| 0.00       | 0.11 (256) | 0.08 (256) | 0.09 (256) | 0.11 (256) |
+| 0.01       | 0.13 (254) | 0.19 (252) | 0.15 (253) | **0.00 (0)** |
+| 0.02       | 0.17 (249) | 0.18 (251) | 0.18 (249) | **0.00 (0)** |
+| 0.05       | **0.00 (0)** | 0.20 (246) | 0.26 (243) | **0.00 (0)** |
+| 0.10       | **0.00 (0)** | 0.26 (235) | 0.34 (232) | **0.00 (0)** |
+
+### Interpretation
+
+- **Turnover does strengthen selection.** Where the population survives, more
+  death raises key-15 enrichment monotonically, from ~1.6x chance at no extra
+  death to ~5x (0.34) at base_death 0.10. The saturation diagnosis from E2 is
+  confirmed: freeing slots lets selection keep acting.
+- **But the substrate is too fragile to reach fixation.** No run approaches
+  fixation (max 0.34 at 500 ticks), and higher death rates cause stochastic
+  **extinction** (2 of 4 seeds at base_death >= 0.05). The reason is structural:
+  reproduction requires a key-15 ring that *also* has its spawn bit toggled on
+  by transformation *and* an empty slot --- a low, noisy rate. Early on, when
+  key-15 is rare, that rate cannot cover a high uniform death rate, so the
+  population death-spirals before selection can enrich it. Selection strength
+  and viability are in direct tension.
+
+### Takeaway
+
+H2c confirms the mechanism (turnover -> stronger selection) but also a hard
+limit: this substrate's reproduction is too weak and noisy to support robust,
+sustained directional selection. Pushing turnover trades selection strength
+for extinction risk. This reinforces that imposed-code selection is near its
+useful ceiling here, and motivates changing the *kind* of dynamics rather than
+tuning this one further.
+
+---
+
+## E4 --- Spatial self-organization (H4)
+
+### Motivation
+
+E2/E3 produced *selection*, but the H2 trigger names the winner in advance, so
+its success is partly built in. This experiment seeks structure that is
+**emergent** --- not named in the rules --- and visually legible.
+
+### Design
+
+Two changes turn the non-spatial slot census into an actual space (the 16x16
+torus the dashboard already draws):
+
+1. **Local addressing** (`local_addr`): PULL/PUSH are read as signed (dx, dy)
+   offsets (each -8..7) instead of absolute slot indices, so a ring interacts
+   with nearby slots.
+2. **Local reproduction:** a child is placed in an empty Moore-neighbour of its
+   parent (no teleporting to a random slot).
+
+Grid starts full (256 random rings). Metric: Moran's I of the RULE field over
+the torus (occupied slots, Moore weights); >0 means spatial clustering.
+Configs (3 seeds, 300 ticks):
+
+| name           | change                                              |
+|----------------|-----------------------------------------------------|
+| local_faithful | local addressing only, otherwise faithful           |
+| local_stable   | local + RULE/addr protected + mutation x0.3         |
+
+### Prediction
+
+Locality alone will not organize a system that churns its whole genome every
+tick; but locality **plus a heritable rule** should let each lineage's rule
+spread to its neighbours through local reproduction, forming spatial domains
+(Moran's I clearly > 0).
+
+### Observation
+
+Moran's I of RULE at the final tick (mean over 3 seeds):
+
+| config            | Moran's I | mean pop |
+|-------------------|----------:|---------:|
+| nonlocal_faithful |    -0.028 |      144 |
+| local_faithful    |     0.038 |      198 |
+| local_mutoff      |     0.010 |      137 |
+| local_lowmut      |     0.064 |      170 |
+| **local_stable**  | **0.278** |      176 |
+
+Visually, `local_stable` develops contiguous coloured domains of similar rule
+that nucleate by ~t=30 and grow into large coherent regions by ~t=285,
+starting from an initially salt-and-pepper grid. The non-local and
+faithful-local runs stay salt-and-pepper.
+
+### Interpretation
+
+- **Spatial self-organization appears, and it is emergent.** Only the
+  combination of locality and a heritable rule yields strong clustering
+  (Moran's I 0.278, vs ~0 for every other config). The domains are not
+  specified anywhere in the rules; they form because local reproduction copies
+  a lineage's heritable rule into adjacent slots, and like-rules aggregate.
+  This is qualitatively different from the H2 result, where the favoured type
+  was named in advance.
+- **Heredity is again the enabling ingredient.** `local_faithful` (locality,
+  no heredity) barely clusters (0.038): without a stable rule there is nothing
+  for space to organize. `local_mutoff` collapses to a clone (no variation, so
+  no domain *structure*). Moderate mutation on a protected rule is the sweet
+  spot --- enough heredity to hold domains, enough variation to keep them
+  distinct.
+- **Domains persist despite high action-bit turnover.** local_stable still has
+  turnover ~0.7/tick, but the *rule* field (protected) is stable, so the
+  spatial pattern lives in the heritable layer while the action bits churn
+  underneath.
+
+### Takeaway
+
+This is the strongest self-organization result so far: combining local
+addressing with a heritable rule produces emergent spatial domains (Moran's I
+~0.28) that the well-mixed baseline cannot. It is also the most legible ---
+visible directly in the dashboard's universe grid. Unlike E2, the structure is
+discovered by the system rather than named by us.
+
+### What this points to next
+
+The domains are static-ish aggregates. The open question is whether spatial
+*and* selective pressure together produce **dynamic** patterns --- travelling
+fronts, competition between domains, or coexistence (an ecology) rather than a
+single eventual winner. Natural next steps: combine local addressing with the
+heritable trigger (H2) and a modest death rate (H2c) to see whether domains
+compete and turn over; and probe whether any rule-domain actively maintains
+itself (an autopoietic signature) versus merely being inherited.

@@ -65,6 +65,8 @@
     <input type="checkbox" id="notransform"/> transform off</label>
   <label title="H2: reproduce only if key(=ORDER low nibble)==15, die only if ==0; key held heritable. Watch key=15% climb above 6%.">
     <input type="checkbox" id="h2"/> heritable trigger (H2)</label>
+  <label title="H4: PULL/PUSH are (dx,dy) offsets on the 16x16 torus; births go to an empty neighbour. Try with 'protect RULE+addr' on and mut x ~0.3 to grow spatial domains.">
+    <input type="checkbox" id="local"/> local addressing (H4)</label>
   <span class="muted" style="font-size:11px;">&larr; live knobs; change while running</span>
 </div>
 
@@ -129,6 +131,19 @@ function applyRule(rule, src, out){           // one circular ECA step
   }
 }
 
+// H4 spatial: addresses as (dx,dy) offsets on the SIDE x SIDE torus
+const SIDE = 16;
+function localTarget(b, slot){
+  const x = slot % SIDE, y = (slot / SIDE) | 0;
+  const dx = (b & 0xF) - 8, dy = ((b >> 4) & 0xF) - 8;
+  return ((y + dy + SIDE) % SIDE) * SIDE + (x + dx + SIDE) % SIDE;
+}
+const MOORE = (() => { const m = [];
+  for (let s = 0; s < NMAX; s++){ const x = s % SIDE, y = (s / SIDE) | 0; const ns = [];
+    for (let dy=-1;dy<=1;dy++) for (let dx=-1;dx<=1;dx++){ if (!dx && !dy) continue;
+      ns.push(((y+dy+SIDE)%SIDE)*SIDE + (x+dx+SIDE)%SIDE); } m.push(ns); }
+  return m; })();
+
 function reset(){
   const seed = parseInt(document.getElementById('seed').value)||0;
   let n = parseInt(document.getElementById('init').value)||16;
@@ -156,6 +171,7 @@ function step(){
   const protectCore = document.getElementById('protect').checked;
   const transformOff = document.getElementById('notransform').checked;
   const h2 = document.getElementById('h2').checked;
+  const local = document.getElementById('local').checked;
   const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
@@ -168,9 +184,11 @@ function step(){
   const targets = new Map();
   for (const r of occList) targets.set(r, []);
   if (!transformOff){
-    for (const t of occList){ const s=fieldVal(b0,t,PULL);
+    for (const t of occList){
+      const s = local ? localTarget(fieldVal(b0,t,PULL), t) : fieldVal(b0,t,PULL);
       if (s<NMAX && o0[s]) targets.get(t).push([order0[s], s]); }
-    for (const s of occList){ const t=fieldVal(b0,s,PUSH);
+    for (const s of occList){
+      const t = local ? localTarget(fieldVal(b0,s,PUSH), s) : fieldVal(b0,s,PUSH);
       if (t<NMAX && o0[t]) targets.get(t).push([order0[s], s]); }
   }
 
@@ -199,21 +217,32 @@ function step(){
 
   const o1 = o0.slice();
 
-  // births (from snapshot spawn bits) -- before deaths, into S0-empty slots
-  const pool = [];
-  for (let r=0;r<NMAX;r++) if (!o0[r]) pool.push(r);
-  for (let i=pool.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
-    [pool[i],pool[j]]=[pool[j],pool[i]]; }
-  let ptr=0, births=0; const newborns = new Set();
+  // births (from snapshot spawn bits) -- before deaths
+  let spawners = [];
   for (const s of occList){
     if (b0[s*NB+SPAWN] !== 1) continue;
     if (h2 && fieldVal(b0, s, KEY) !== 15) continue;   // gated reproduction
-    if (ptr >= pool.length) break;
-    const slot = pool[ptr++];
+    spawners.push(s);
+  }
+  for (let i=spawners.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+    [spawners[i],spawners[j]]=[spawners[j],spawners[i]]; }
+  const filled = o0.slice();                 // occupancy as newborns are placed
+  let globalEmpty=null, gptr=0;
+  if (!local){ globalEmpty=[]; for (let r=0;r<NMAX;r++) if (!filled[r]) globalEmpty.push(r);
+    for (let i=globalEmpty.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+      [globalEmpty[i],globalEmpty[j]]=[globalEmpty[j],globalEmpty[i]]; } }
+  let births=0; const newborns = new Set();
+  for (const s of spawners){
+    let slot = -1;
+    if (local){ const cands = MOORE[s].filter(n => !filled[n]);
+      if (!cands.length) continue;
+      slot = cands[Math.floor(rng()*cands.length)]; }
+    else { while (gptr<globalEmpty.length && filled[globalEmpty[gptr]]) gptr++;
+      if (gptr>=globalEmpty.length) break; slot = globalEmpty[gptr++]; }
     const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
     for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1;
       nb[slot*NB+i]=bit; }
-    o1[slot]=1; newborns.add(slot); births++;
+    o1[slot]=1; filled[slot]=1; newborns.add(slot); births++;
   }
 
   // deaths (from snapshot death bits)

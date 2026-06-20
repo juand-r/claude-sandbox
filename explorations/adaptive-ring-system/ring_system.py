@@ -68,13 +68,27 @@ def apply_rule(rule: int, bits: np.ndarray) -> np.ndarray:
     return ((rule >> idx) & 1).astype(np.uint8)
 
 
-def build_transformers(bits: np.ndarray, occ: np.ndarray):
+def local_target(byte: int, slot: int, side: int) -> int:
+    """Interpret an 8-bit address as a signed (dx, dy) offset on the torus and
+    return the destination slot. Low nibble = dx, high nibble = dy, each in
+    -8..7. byte 0x88 (136) is the zero offset (self)."""
+    x, y = slot % side, slot // side
+    dx = (byte & 0xF) - 8
+    dy = ((byte >> 4) & 0xF) - 8
+    return ((y + dy) % side) * side + ((x + dx) % side)
+
+
+def build_transformers(bits: np.ndarray, occ: np.ndarray,
+                       local: bool = False, side: int = 0):
     """For each occupied target, the ordered multiset of transformer slots.
 
     Returns (targets, rule) where targets[t] is a list of (order, slot)
     transformer instances sorted ascending by (order, slot), and rule is the
     per-slot RULE value. Pull and push each contribute one instance and are
     NOT deduplicated, so A.push==B with B.pull==A yields B' = A(A(B)).
+
+    When `local`, PULL/PUSH are read as (dx, dy) offsets on the `side` torus
+    instead of absolute slot indices.
     """
     nmax = len(occ)
     order = get_field(bits, ORDER)
@@ -89,12 +103,12 @@ def build_transformers(bits: np.ndarray, occ: np.ndarray):
     # An address >= nmax (possible only when nmax < 256) names no slot, so it
     # behaves like an empty slot: no edge.
     for t in np.where(occ)[0]:
-        s = int(pull[t])
+        s = local_target(int(pull[t]), int(t), side) if local else int(pull[t])
         if s < nmax and occ[s]:
             targets[t].append((int(order[s]), s))
     # push edge: source s transforms t = push[s]
     for s in np.where(occ)[0]:
-        t = int(push[s])
+        t = local_target(int(push[s]), int(s), side) if local else int(push[s])
         if t < nmax and occ[t]:
             targets[t].append((int(order[s]), s))
     for t in targets:
@@ -165,6 +179,11 @@ class Universe:
     spawn_code: int | None = None
     death_code: int | None = None
     key_span: tuple = (28, 32)
+    base_death: float = 0.0         # H2c: extra uniform per-tick death
+                                    # probability (frees slots; tunable turnover)
+    local_addr: bool = False        # H4: interpret PULL/PUSH as (dx,dy) offsets
+                                    # on the sqrt(nmax) torus; births go to an
+                                    # empty Moore-neighbour (spatial dynamics)
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -189,6 +208,27 @@ class Universe:
             self._protect_mask = m
         else:
             self._protect_mask = None
+        # spatial geometry for local addressing (H4)
+        self.side = int(round(self.nmax ** 0.5))
+        if self.local_addr:
+            assert self.side * self.side == self.nmax, \
+                "local_addr requires nmax to be a perfect square"
+            self._moore = self._build_moore()
+
+    def _build_moore(self):
+        """For each slot, its 8 Moore-neighbour slots on the torus."""
+        side = self.side
+        nb = []
+        for slot in range(self.nmax):
+            x, y = slot % side, slot // side
+            ns = []
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    if dx == 0 and dy == 0:
+                        continue
+                    ns.append(((y + dy) % side) * side + (x + dx) % side)
+            nb.append(ns)
+        return nb
 
     # -- seeding -----------------------------------------------------------
     def seed_random(self, n: int):
@@ -214,6 +254,18 @@ class Universe:
             self.history_occ.append(self.occupied.copy())
             self.history_ids.append(self.ids.copy())
 
+    def _place_child(self, parent, slot, bits0, bits1, occ1, newborns, tick):
+        """Write a mutated copy of `parent` (snapshot bits) into `slot`."""
+        child = bits0[parent].copy()
+        p = BIRTH_P[mut_level(bits0[parent])] * self.mut_scale
+        child ^= (self.rng.random(N_BITS) < p).astype(np.uint8)
+        bits1[slot] = child
+        occ1[slot] = True
+        newborns.append(slot)
+        self.ids[slot] = self.next_id
+        self.births_log.append((tick, self.next_id, int(self.ids[parent])))
+        self.next_id += 1
+
     # -- the tick cycle ----------------------------------------------------
     def step(self) -> Metrics:
         bits0 = self.bits
@@ -225,7 +277,8 @@ class Universe:
         if self.transform_off:
             bits1 = bits0.copy()
         else:
-            targets, rule = build_transformers(bits0, occ0)
+            targets, rule = build_transformers(bits0, occ0,
+                                               self.local_addr, self.side)
             bits1 = compose_apply(bits0, targets, rule)
         # H1: hold protected fields fixed under transformation (empties are 0
         # in both arrays, so a blanket restore is safe).
@@ -235,30 +288,36 @@ class Universe:
 
         occ1 = occ0.copy()
 
-        # 4. births (from S0 spawn bits) -- before deaths, into S0-empty slots
+        # 4. births (from S0 spawn bits) -- before deaths
         spawn = (bits0[:, SPAWN_BIT] == 1) & occ0
         if self.spawn_code is not None:
             spawn &= get_field(bits0, self.key_span) == self.spawn_code
-        empty_pool = np.where(~occ0)[0].copy()
-        self.rng.shuffle(empty_pool)
-        ptr = 0
-        births = 0
         newborns: list[int] = []
-        for s in np.where(spawn)[0]:
-            if ptr >= len(empty_pool):
-                break
-            slot = int(empty_pool[ptr]); ptr += 1
-            child = bits0[s].copy()
-            p = BIRTH_P[mut_level(bits0[s])] * self.mut_scale
-            child ^= (self.rng.random(N_BITS) < p).astype(np.uint8)
-            bits1[slot] = child
-            occ1[slot] = True
-            newborns.append(slot)
-            births += 1
-            # lineage: child inherits a fresh id, parent is slot s
-            self.ids[slot] = self.next_id
-            self.births_log.append((new_tick, self.next_id, int(self.ids[s])))
-            self.next_id += 1
+        if self.local_addr:
+            # spatial: each child goes to an empty Moore-neighbour of its parent
+            filled = occ0.copy()
+            spawners = np.where(spawn)[0].copy()
+            self.rng.shuffle(spawners)
+            for s in spawners:
+                cands = [n for n in self._moore[s] if not filled[n]]
+                if not cands:
+                    continue
+                slot = int(cands[self.rng.integers(len(cands))])
+                filled[slot] = True
+                self._place_child(int(s), slot, bits0, bits1, occ1,
+                                  newborns, new_tick)
+        else:
+            # well-mixed: each child goes to a uniformly random empty slot
+            empty_pool = np.where(~occ0)[0].copy()
+            self.rng.shuffle(empty_pool)
+            ptr = 0
+            for s in np.where(spawn)[0]:
+                if ptr >= len(empty_pool):
+                    break
+                slot = int(empty_pool[ptr]); ptr += 1
+                self._place_child(int(s), slot, bits0, bits1, occ1,
+                                  newborns, new_tick)
+        births = len(newborns)
 
         # 5. deaths (from S0 death bits)
         death = (bits0[:, DEATH_BIT] == 1) & occ0
@@ -269,6 +328,18 @@ class Universe:
             occ1[d] = False
             bits1[d] = 0
             self.ids[d] = 0
+
+        # 5b. H2c: extra uniform random death among existing rings (not
+        # newborns), to keep slots cycling so selection is not slot-starved.
+        if self.base_death > 0.0:
+            cull = occ1.copy()
+            cull[newborns] = False
+            roll = self.rng.random(self.nmax) < self.base_death
+            for d in np.where(cull & roll)[0]:
+                occ1[d] = False
+                bits1[d] = 0
+                self.ids[d] = 0
+                deaths += 1
 
         # 6. ambient mutation on survivors present at tick start (not newborns)
         survivors = occ1.copy()

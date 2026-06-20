@@ -28,7 +28,14 @@ CONFIGS = {
     "h2_protected":    dict(protect=CORE, spawn_code=15, death_code=0),
     "h2_key_only":     dict(protect=((28, 32),), spawn_code=15, death_code=0),
     "h2_unprotected":  dict(spawn_code=15, death_code=0),   # control: key not heritable
+    # H4: spatial. local addressing + heritable rule -> domains form.
+    "local_faithful":  dict(local_addr=True),
+    "local_stable":    dict(local_addr=True, protect=((0, 8), (8, 16), (16, 24)),
+                            mut_scale=0.3),
 }
+
+# configs that should be seeded full (spatial runs start from a filled grid)
+FULL_SEED = {"local_faithful", "local_stable"}
 
 
 def main():
@@ -43,7 +50,7 @@ def main():
     rows = []
     for name, kw in CONFIGS.items():
         u = rs.Universe(nmax=256, seed=args.seed, record_history=True, **kw)
-        u.seed_random(args.init)
+        u.seed_random(256 if name in FULL_SEED else args.init)
         u.run(args.ticks)
         path = os.path.join(args.outdir, f"exp_{name}.npz")
         u.save_history(path)
@@ -61,12 +68,12 @@ def main():
 
     print("\n\n==== comparison (means over run / last ticks) ====")
     hdr = f"{'config':16} {'pop':>7} {'turnover':>9} {'conc':>7} " \
-          f"{'persist':>8} {'compress':>9}"
+          f"{'persist':>8} {'compress':>9} {'moran':>7}"
     print(hdr); print("-" * len(hdr))
     for name, m in rows:
         print(f"{name:16} {m['meanpop']:7.1f} {m['turnover']:9.3f} "
               f"{m['concentration']:7.3f} {m['persistence_max']:8d} "
-              f"{m['compressibility']:9.3f}")
+              f"{m['compressibility']:9.3f} {m['moran']:7.3f}")
 
 
 if __name__ == "__main__":

@@ -123,3 +123,31 @@ intact and is always the control.
   why") is a result.
 - Keep variants minimal and toggleable; do not build a framework ahead of
   need.
+
+## 7. Roadmap (post-E2, project lead: Claude)
+
+E1 established the baseline is churn; E2 showed a *heritable* trigger produces
+real but saturation-throttled selection, and exposed the central tension
+(transformation is both the engine of activity and the destroyer of heredity).
+Direction from here:
+
+- **H2c --- turnover.** Add a tunable uniform death rate so non-reproducers are
+  displaced and selection is not slot-starved. Question: does the heritable
+  trigger go to fixation? (Validates the mechanism fully.)
+- **Endogenous fitness (the main push).** The fixed-code trigger names the
+  winner in advance, so its success is partly tautological. Replace it with a
+  *functional* reproduction condition that names no genotype:
+  **self-templating** --- a ring reproduces only if it has made its
+  push-target equal to itself (copied itself onto a neighbour). This tests for
+  genuine emergence: replicators that the system discovers, not ones we
+  specify. Measured with the existing discriminators plus replicator-specific
+  probes.
+- **Spatial self-organization (H4).** Interpret addresses as relative offsets
+  so locality and pattern formation (gliders, domains) become possible. A
+  different, visually legible flavour of self-organization.
+
+Success here is stronger than E2: a structure or replicator that arises
+*without being named in the rules*, persists, reproduces, and shifts the
+population beyond drift. Negative results (e.g. "self-templating goes extinct
+because the substrate cannot copy itself reliably") are equally reportable and
+informative about the substrate's limits.

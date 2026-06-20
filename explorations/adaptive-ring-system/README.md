@@ -25,10 +25,13 @@ The full specification and every design decision (with rationale) is in
 | `EXPERIMENTS.md`      | experiment log (findings, interpretation)          |
 | `NOTES.md`            | running log of observations                         |
 
-The simulator has experimental knobs (`mut_scale`, `protect`,
-`transform_off`) whose defaults reproduce the faithful spec; `artifact.html`
-exposes them as live controls. See `RESEARCH_PLAN.md` and `EXPERIMENTS.md`
-for the iteration toward emergent self-organization.
+The simulator has experimental knobs (`mut_scale`, `protect`, `transform_off`,
+`spawn_code`/`death_code` for a heritable reproduction trigger, `base_death`
+for tunable turnover, and `local_addr` for spatial dynamics) whose defaults
+reproduce the faithful spec; `artifact.html` exposes them as live controls.
+See `RESEARCH_PLAN.md` and `EXPERIMENTS.md` for the iteration toward emergent
+self-organization --- the headline result so far is that local addressing plus
+a heritable rule produces emergent spatial domains (E4).
 
 ## How to run
 
