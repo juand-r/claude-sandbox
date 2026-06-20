@@ -197,6 +197,10 @@ class Universe:
     cyclic_dominance: bool = False  # E11: overwrite an occupied neighbour only
                                     # if type(self) beats type(nbr), type =
                                     # rule % 3 (rock-paper-scissors)
+    cyclic_field: tuple | None = None  # E16: take the RPS type from this 2-bit
+                                    # field % 3 instead of rule%3, and hold it
+                                    # heritable (auto-protected) -> symmetric
+                                    # types -> spirals
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -213,10 +217,14 @@ class Universe:
         self.ids = np.zeros(self.nmax, dtype=np.int64)
         self.next_id = 1
         self.births_log: list[tuple[int, int, int]] = []  # (tick, child, parent)
-        # boolean mask of protected bit positions
-        if self.protect:
+        # boolean mask of protected bit positions (cyclic_field is auto-protected
+        # so the RPS type is heritable)
+        spans = list(self.protect)
+        if self.cyclic_field is not None:
+            spans.append(self.cyclic_field)
+        if spans:
             m = np.zeros(N_BITS, dtype=bool)
-            for lo, hi in self.protect:
+            for lo, hi in spans:
                 m[lo:hi] = True
             self._protect_mask = m
         else:
@@ -314,6 +322,8 @@ class Universe:
         spawn = (bits0[:, SPAWN_BIT] == 1) & occ0
         if self.spawn_code is not None:
             spawn &= get_field(bits0, self.key_span) == self.spawn_code
+        if self.cyclic_dominance:
+            spawn = occ0.copy()   # every ring attempts invasion (RPS dynamics)
         rules = (get_field(bits0, RULE)
                  if (self.self_template or self.cyclic_dominance) else None)
         newborns: list[int] = []
@@ -329,9 +339,14 @@ class Universe:
                     # spread into the neighbourhood: overwrite any Moore
                     # neighbour (occupied -> replaced, empty -> filled)
                     slot = int(self._moore[s][self.rng.integers(8)])
-                    if (self.cyclic_dominance and occ0[slot] and
-                            (int(rules[s]) - int(rules[slot])) % 3 != 1):
-                        continue   # can only overwrite a type it beats
+                    if self.cyclic_dominance and occ0[slot]:
+                        if self.cyclic_field is not None:
+                            ts = int(get_field(bits0[s:s+1], self.cyclic_field)[0]) % 3
+                            tn = int(get_field(bits0[slot:slot+1], self.cyclic_field)[0]) % 3
+                        else:
+                            ts, tn = int(rules[s]) % 3, int(rules[slot]) % 3
+                        if (ts - tn) % 3 != 1:
+                            continue   # can only overwrite a type it beats
                 else:
                     cands = [n for n in self._moore[s] if not filled[n]]
                     if not cands:

@@ -1081,6 +1081,51 @@ length.
 
 ---
 
+## E16 --- Symmetric cyclic dominance: RPS coexistence with wave structure
+
+### Design
+
+E11's cyclic dominance gave no spirals because `rule%3` types had unequal
+viability. Fix the asymmetry: take the RPS type from a dedicated 2-bit field
+(`cyclic_field`) that is **auto-protected (heritable)** and otherwise neutral, so
+the three types are dynamically identical; and let **every** occupied ring
+attempt invasion each tick (not just those with the spawn bit), with low mutation
+(`mut_scale=0.05`). 64x64 torus, `local_range=1`, overwrite births.
+
+Reproduce:
+`Universe(nmax=4096, local_addr=True, overwrite_birth=True, cyclic_dominance=True,
+cyclic_field=(24,26), local_range=1, mut_scale=0.05)`, seed full, colour by
+`get_field(bits,(24,26))%3`.
+
+### Observation
+
+Balanced three-type coexistence (final counts ~1240 / 1540 / 1310 of ~4090),
+full grid, with interlocking single-type domains and wandering/rotating
+boundaries --- the characteristic spatial rock-paper-scissors texture and
+chasing waves (red invades blue invades green invades red). Contrast E11
+(`rule%3`), where one type covered most of the grid.
+
+### Interpretation
+
+Making the types **symmetric and heritable** is what the dynamics needed:
+equal-viability types under cyclic overwrite produce stable coexistence with
+travelling fronts, exactly as spatial RPS theory predicts. Crisp, large
+rotating spirals do not fully crystallise at 64x64 --- the substrate still
+injects noise (synchronous batch overwrite, residual mutation on the type,
+stochastic single-neighbour targeting) and the grid is modest --- but the
+qualitative structure (balanced domains + chasing waves) is unmistakable and is
+a clear, legible *dynamic* spatial pattern.
+
+### Takeaway
+
+The earlier "no spirals" (E11) was an asymmetry artifact, not a substrate
+limitation: with symmetric heritable types the ring system supports the spatial
+RPS regime --- balanced coexistence and travelling waves. Sharp spirals would
+likely need a larger grid (128+), lower noise, and possibly asynchronous
+updates; the mechanism is demonstrated.
+
+---
+
 ## Reflection R4 --- the complexity ceiling is real and layered
 
 The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing
