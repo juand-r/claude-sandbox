@@ -313,7 +313,7 @@ const gridCv=document.getElementById('grid'), gctx=gridCv.getContext('2d');
 const cbarCv=document.getElementById('cbar'), cctx=cbarCv.getContext('2d');
 const rasterCv=document.getElementById('raster'), rctx=rasterCv.getContext('2d');
 const chartCv=document.getElementById('chart'), hctx=chartCv.getContext('2d');
-const SIDE=16, CELL=288/SIDE;
+const CELL=288/SIDE;   // SIDE is declared once near the model constants
 const COL=432/NB, ROW=2, RH=NMAX*ROW;          // raster geometry
 const off=document.createElement('canvas'); off.width=NB; off.height=NMAX;
 const octx=off.getContext('2d'); const oimg=octx.createImageData(NB, NMAX);
