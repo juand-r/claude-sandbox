@@ -584,3 +584,127 @@ mechanism behind emergent genome domains. The open question shifts from "can
 domains form?" (yes, E6) to "are they *stable* self-maintaining structures, or
 dynamic clusters that churn?" --- which is what short-range interaction (E8)
 and a persistence analysis should settle.
+
+---
+
+## E8 --- Are the emergent domains stable? (no: they are dynamic)
+
+### Design
+
+Sweep `local_range` (transformation reach) for the E6 self-templating
+configuration, measuring genome-domain enrichment, self-preservation, and a
+**flip-rate** (fraction of continuously-occupied slots whose genome changes
+between consecutive ticks; low = stable domains). 3 seeds, 500 ticks.
+
+### Observation
+
+| local_range | genome-domain | flip-rate | self-pres |
+|------------:|--------------:|----------:|----------:|
+| 1           |        19.5x  |     0.31  |     0.96  |
+| 2           |        11.3x  |     0.43  |     0.93  |
+| 3           |         5.0x  |     0.75  |     0.81  |
+| 4           |        14.6x  |     0.30  |     0.95  |
+| 8           |        15.5x  |     0.27  |     0.95  |
+
+### Interpretation
+
+- **Domains are dynamic, not static, at every range.** Flip-rate never drops
+  below ~0.27 --- at least a quarter of the population changes genome each
+  tick even where genome-domain enrichment is ~16--19x. The domains exist as
+  snapshots but continually churn and reform; they are not frozen structures.
+- **No clean short-range stabilization.** The hypothesis that short-range
+  transformation (a domain's transformers being domain-mates) would stabilize
+  domains is not supported: the range dependence is non-monotonic and noisy
+  (ranges 3 and 6 are notably worse on only 3 seeds), with no trend toward low
+  flip-rate at small range. Whatever stabilizes a domain, it is not simply the
+  locality of its transformers.
+
+### Takeaway
+
+The emergent domains are **dynamic clusters maintained through flux**, not
+static crystals. This is consistent either with a self-maintaining
+process-structure (interesting) or with turbulent coarsening (mundane); E8
+alone does not distinguish them. It reframes the autopoiesis question as one
+about *pattern* persistence under substrate churn, not slot-level stability.
+
+---
+
+## E9 --- Open-endedness: does novelty persist or freeze?
+
+### Design
+
+Run 2000 ticks and measure **novelty** (fraction of a tick's genomes never seen
+in any previous tick) and cumulative distinct genomes. The question: does the
+system keep generating new structure, settle to a fixed point, or just emit
+noise?
+
+### Observation
+
+| config | novelty @150 / 950 / 1950 | cumulative distinct @500/1000/2000 |
+|--------|---------------------------|-------------------------------------|
+| baseline churn            | 0.71 / 0.69 / 0.66 | 49k / 100k / 195k |
+| self-templating, mixed    | 0.65 / 0.006 / 0.002 | 30k / 36k / 36k |
+| self-templating, **local**| 0.35 / 0.30 / 0.22 | 19k / 33k / 56k |
+
+### Interpretation
+
+Three qualitatively distinct fates:
+
+- **Baseline churn** sustains high novelty, but it is meaningless --- pure
+  mutational noise with no heredity or structure (cumulative diversity diverges
+  linearly at ~100/tick).
+- **Self-templating, well-mixed** *freezes*: novelty collapses to ~0 and
+  cumulative diversity saturates. The system finds a self-consistent clone (a
+  fixed point) and stops.
+- **Self-templating, local** sits between: **sustained, structured novelty**
+  (0.2--0.35) with cumulative diversity still growing ~linearly (~23/tick),
+  while maintaining genome domains and heredity. New self-consistent genomes
+  keep arising and forming domains.
+
+### Takeaway
+
+The `selftmpl_local` regime is the most life-like found: neither frozen
+(well-mixed) nor structureless noise (baseline), but ongoing generation of new
+self-consistent genomes organized into domains --- an edge-of-chaos sweet spot.
+Caveat: the novelty *rate* is slowly declining over 2000 ticks, so whether this
+is genuinely open-ended or merely freezing very slowly is unresolved; it needs
+much longer runs and a saturation test. The novelty is also *exploratory* (it
+roams the self-consistent manifold) rather than *directional* (self-preservation
+has already plateaued at ~0.95), so it is not yet adaptation in the strong
+sense.
+
+---
+
+## Reflection R2 --- where the program stands (after E9)
+
+**Map of regimes (the substrate's phase diagram, informally):**
+
+- *Faithful / well-mixed* -> high-entropy churn (no heredity).
+- *Imposed heredity (protect bits)* -> rule-domains, an ecology, but heredity
+  supplied by us and not self-maintaining (E4/E5).
+- *Self-templating, well-mixed* -> emergent heredity but a frozen clone (E6/E9).
+- *Self-templating, local* -> **emergent self-consistent genome domains with
+  sustained structured novelty** (E6/E7/E9). The richest regime.
+
+**What is established:** heredity and spatial structure emerge together from
+self-templating in a local medium, with nothing protected (R1). This is a solid,
+reproducible positive answer to "can adaptive self-organization arise, and what
+makes it." The enabling modifications, in order of necessity: locality,
+heredity (here emergent via self-templating), and a balance of
+mutation/turnover that avoids both freeze and noise.
+
+**What remains genuinely open (the live frontier):**
+
+1. **Open-endedness** --- is `selftmpl_local` novelty sustained or slowly
+   freezing? (needs 10k+ tick runs; B4)
+2. **Adaptation vs exploration** --- can a *directional* selective gradient act
+   on the emergent domains, giving improvement rather than neutral roaming?
+   Combine self-templating with a functional task or competition (B2/B3).
+3. **Autopoiesis, re-asked** --- are the dynamic domains self-maintaining
+   patterns or turbulent coarsening? (a pattern-persistence test, not the
+   slot-level one of E8)
+
+**Next moves:** B2/B3 (couple emergent heredity to a directional/competitive
+pressure to seek adaptation) looks higher-value than more B5 substrate sweeps,
+because structure now exists and the missing element is *direction*. I will
+pursue adaptation next (E10+), then return to a long open-endedness run.

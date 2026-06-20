@@ -62,8 +62,16 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
-- E8 [B1/B5] next: short-range interaction (local_range sweep) + domain
-  persistence -- are emergent domains stable or churning?
+- E10 [B2] next: couple emergent heredity (self-templating) to a DIRECTIONAL
+  selective gradient -> seek adaptation (improvement), not just exploration.
+- R2 [reflection] [done] phase-diagram of regimes; selftmpl_local is the
+  richest (structured sustained novelty). Frontier = open-endedness, adaptation,
+  autopoiesis-of-dynamic-domains. EXPERIMENTS.md R2.
+- E9 [B4] [done] open-endedness: selftmpl_local = sustained structured novelty
+  (sweet spot); mixed freezes; baseline = noise. EXPERIMENTS.md E9.
+- E8 [B1/B5] [done] local_range sweep: emergent domains are DYNAMIC (flip-rate
+  >=0.27 everywhere), not static; no clean short-range stabilization.
+  EXPERIMENTS.md E8.
 - E7 [B1] [done] overwrite + local_range. Self-templating is the active
   ingredient; overwrite mostly adds turnover. EXPERIMENTS.md E7.
 - R1 [reflection] [done] metric correction (Moran -> neighbour-identity);
