@@ -62,8 +62,19 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
-- E14 [B7] next: GENOME GROWTH / composability -- the principled attack on the
-  complexity ceiling. Variable-length rings or rings-of-rings.
+- B10/B11 next (LARGE departures): a composable primitive (replace ECA rules
+  with a smoothly-composable instruction set) and/or endogenous escalating
+  (coevolutionary) pressure -- the only routes left to open-ended complexity.
+  Or deliberately accept the boundary. See R4.
+- R4 [reflection] [done] complexity ceiling is REAL and 3-layered: passive cap
+  (E13, removed by B7), active parsimony (E14), representational ruggedness of
+  ECA-rule programs (E15). Deep cause = the ECA primitive. EXPERIMENTS.md R4.
+- E15 [B8] [done] reward complexity via a task: length lifts 1->~2.5 then
+  PLATEAUS (task-fit ~0.77); ECA-rule programs don't compose smoothly.
+  EXPERIMENTS.md E15. growth.py (task support).
+- E14 [B7] [done] genome growth: program length COLLAPSES to floor (parsimony);
+  self-consistency selects against complexity. growth.py (new var-length module).
+  EXPERIMENTS.md E14.
 - R3 [reflection] [done] the arc (E1->E13) and the wall: heredity is the master
   key; novelty is open-ended but COMPLEXITY is not (plateaus). Next branches
   B7 (genome growth), B8 (changing environment), B9 (complexity metrics).

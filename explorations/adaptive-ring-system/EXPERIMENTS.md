@@ -979,3 +979,139 @@ sparse, ~10-bit self-consistent attractor genomes E13 finds.
 
 I will pursue B7 (genome growth / composability) next --- it is the direction
 most likely to break the ceiling, and the most interesting if it does.
+
+---
+
+## E14 --- Genome growth (B7): parsimony wins, the ceiling is *defended*
+
+### Design
+
+A variable-length variant (`growth.py`, a departure from the 36-bit spec): each
+ring is a sequence of 8-bit genes --- header (PULL, PUSH, CTRL) plus a
+**rule program** of genes 3.., and "B transforms A" applies B's whole program as
+successive CA steps. Indel mutation inserts/deletes whole genes, so program
+length (= functional complexity) can evolve freely. Run with self-templating
+(the regime that gave emergent heredity), local addressing, 2000 ticks, 3 seeds,
+starting from 2 program rules.
+
+### Prediction
+
+Two outcomes are possible: program length grows (complexity breaks the ceiling)
+or shrinks (parsimony --- shorter programs are more easily self-consistent).
+
+### Observation
+
+Mean program length (rules per ring) over time:
+
+| seed | t=100 | t=500 | t=1000 | t=2000 |
+|-----:|------:|------:|-------:|-------:|
+| 0    | 1.85  | 1.04  | 1.01   | 1.01   |
+| 1    | 1.11  | 1.02  | 1.01   | 1.20   |
+| 2    | 1.16  | 1.06  | 1.02   | 1.04   |
+
+It collapses to the **minimum (1 rule)** by ~t=500 and stays there; self-pres
+holds ~0.9; population healthy.
+
+### Interpretation
+
+Allowing genome growth does not break the ceiling --- it makes the wall
+*actively defended*. Self-templating selects **against** program length: a
+longer program is more CA steps applied to one's own genome, which is harder to
+leave self-consistent, so short programs reproduce better and length is driven
+to the floor. The complexity ceiling of E13 is therefore not merely a passive
+cap (fixed genome) but a **selective gradient pointing down**: under
+self-consistency pressure, the system actively simplifies.
+
+### Takeaway
+
+Genome growth is necessary but nowhere near sufficient. Confirms the E13
+hypothesis sharply: without a pressure that makes complexity *pay*, parsimony
+collapses it. The next test (E15) must supply such a pressure --- a task that
+longer programs perform better --- and ask whether complexity can grow *at all*
+in this substrate when directly rewarded.
+
+---
+
+## E15 --- Rewarding complexity (B8): shallow growth, then a representational wall
+
+### Design
+
+Add a fixed computational **task** to the variable-length system: targets are
+produced by a length-6 "secret" rule program, and reproduction probability is
+scaled by `task_fit ** tpow` (mean bit-match of a ring's program against 8
+input/target pairs). Matching a length-6 target should reward comparable program
+length. Tested with and without self-templating, 1500 ticks.
+
+### Observation
+
+| config | program length (t=100 -> 1500) | task-fit | pop |
+|--------|-------------------------------:|---------:|----:|
+| task only            | 2.0 -> ~2.3 (peaks ~2.5) | ~0.77 | ~110 |
+| task + self-template | 2.0 -> ~2.0--2.5         | ~0.77 | ~140 |
+
+### Interpretation
+
+- **Complexity *can* grow when rewarded --- a little.** A direct task lifts
+  program length off the parsimony floor (1 -> ~2--2.5), overcoming the downward
+  gradient of E14. So the substrate is not strictly frozen at minimal
+  complexity.
+- **But it plateaus almost immediately, at shallow complexity and mediocre
+  performance.** Task-fit sticks at ~0.77 (chance 0.5, perfect 1.0) and length
+  stops well short of the length-6 secret. Even 2-rule programs already reach
+  ~0.77, so the fitness gradient beyond that is flat: there is no incremental
+  reward for getting longer or closer.
+- **The wall is (also) representational.** Sequences of elementary CA rules do
+  not **compose smoothly**: ECA rules are individually chaotic/contractive, and
+  stacking more of them rarely yields a controllable incremental improvement
+  toward an arbitrary target function. The search landscape is rugged and
+  saturates fast. So even with pressure, this representation is only *shallowly
+  evolvable* --- it cannot accumulate complexity the way a composable
+  instruction set (Avida) or a smooth function class could.
+
+### Takeaway
+
+Across E13--E15 the complexity ceiling is now characterized as **three layered
+obstacles**: a passive cap (fixed genome --- removed in B7), an active downward
+gradient (parsimony from self-consistency --- E14), and, underneath, a
+**representational limit** (ECA-rule programs are not smoothly composable, so
+selection saturates at shallow complexity --- E15). Removing the first two still
+leaves the third. Open-ended complexity growth would need a *different primitive*
+than raw ECA rules --- one whose compositions vary smoothly and richly with
+length.
+
+---
+
+## Reflection R4 --- the complexity ceiling is real and layered
+
+The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing
+genome growth and (b) rewarding complexity. Result: the ceiling is robust and
+has **three distinct causes**, peeled back in turn:
+
+1. *Passive cap* --- a fixed 36-bit genome bounds complexity (E13). Removed by
+   variable length (E14).
+2. *Active parsimony* --- self-consistency selects for short programs; with no
+   counter-pressure, length collapses to the floor (E14).
+3. *Representational ruggedness* --- even with a direct complexity-rewarding
+   task overcoming parsimony, sequences of ECA rules do not compose into
+   incrementally-better behaviour, so complexity plateaus shallow (E15).
+
+Cause 3 is the deep one and is a property of the **primitive** (the elementary
+CA rule), not of any tuning. This is an honest boundary on the original
+substrate: it is excellent at persistence, heredity, adaptation, spatial
+self-organization and sustained novelty, but its building block (8-bit ECA
+rules) is not a substrate for open-ended *complexity* growth.
+
+Where the tree goes from here (all are larger departures):
+
+- **B10 --- a composable primitive.** Replace/augment ECA rules with operations
+  that compose smoothly and richly (e.g. a small reversible/Turing-ish
+  instruction set, or rules over a larger alphabet/neighbourhood whose
+  compositions are expressive). This is the principled route to testing
+  open-ended complexity, but it is essentially a new substrate (Avida-adjacent).
+- **B11 --- endogenous, escalating pressure.** E15's task was static, so its
+  gradient saturated. A *coevolutionary* task (rings' targets set by other
+  rings) could keep moving the goalposts. Likely still limited by cause 3, but
+  worth pairing with B10.
+- **Accept the boundary.** The substrate's natural ceiling is itself a clean,
+  well-supported scientific result; further complexity work means studying a
+  *different* system, which should be a deliberate choice, not a drift.

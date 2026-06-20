@@ -53,12 +53,18 @@ The `selftmpl_local` regime is also **sustainably open-ended in novelty**: over
 then plateaus near 0.18 (flat, not freezing), with cumulative diversity growing
 without bound --- it keeps discovering new self-consistent genomes indefinitely.
 But this open-endedness has a hard **ceiling**: complexity does *not* grow. Every
-complexity proxy (rule count, compressibility, genome density) plateaus by
-~t=2000 and merely fluctuates thereafter. The system explores a
-fixed-complexity manifold forever; it never complexifies. This is the substrate's
-wall, and it looks intrinsic --- a fixed 36-bit genome with no composability
-bounds attainable complexity from the start. Breaking it would need genome
-growth or rings built from rings, the most promising remaining direction.
+complexity proxy plateaus by ~t=2000 and merely fluctuates thereafter; the
+system explores a fixed-complexity manifold forever (E13). Trying to break the
+ceiling (B7/B8) revealed it is **layered, with three distinct causes** (E14/E15):
+a passive cap (the fixed genome --- removed by allowing variable length); an
+active downward gradient (self-consistency selects for *short* programs, so
+without counter-pressure complexity collapses to the floor); and, underneath, a
+**representational wall** --- even when a task directly rewards complexity, the
+length lifts only slightly (1 -> ~2.5 rules) and stalls, because sequences of
+elementary CA rules do not *compose smoothly* toward richer behaviour. The deep
+cause is the primitive itself (8-bit ECA rules are chaotic and non-composable),
+not any tuning. Open-ended complexity growth would require a different,
+composable primitive --- essentially a different substrate.
 
 ---
 
