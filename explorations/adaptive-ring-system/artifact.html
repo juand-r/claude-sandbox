@@ -98,6 +98,72 @@
   </div>
 </div>
 
+<div class="panel" style="margin:0 18px 28px; max-width:1000px;">
+  <h2>FINDINGS GUIDE &mdash; reproduce the experiments</h2>
+  <div class="note" style="max-width:920px; margin-bottom:8px;">
+    For each recipe: set the toggles, click <b>Reset</b>, then <b>Play</b>, and
+    watch the named readout. Full write-ups are in <code>EXPERIMENTS.md</code> /
+    <code>REPORT.md</code>. (The grid is only real 2-D space when
+    <b>local addressing</b> is on; otherwise it is a cosmetic tiling.)
+  </div>
+  <table style="border-collapse:collapse; font-size:12px; width:100%;">
+    <thead><tr style="color:var(--muted); text-align:left;">
+      <th style="padding:4px 8px;">#</th>
+      <th style="padding:4px 8px;">toggles to set (all others off)</th>
+      <th style="padding:4px 8px;">what happens</th>
+      <th style="padding:4px 8px;">what to watch</th>
+    </tr></thead>
+    <tbody>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E1</td>
+      <td style="padding:4px 8px;">defaults (the faithful spec)</td>
+      <td style="padding:4px 8px;">high-entropy churn, no structure</td>
+      <td style="padding:4px 8px;">activity high; unique &asymp; pop; grid is noise</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">&mdash;</td>
+      <td style="padding:4px 8px;">turn <b>mutations</b> OFF</td>
+      <td style="padding:4px 8px;">collapses to one clone (a trivial fixed point)</td>
+      <td style="padding:4px 8px;">unique &rarr; 1; activity &rarr; ~0</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">&mdash;</td>
+      <td style="padding:4px 8px;"><b>transform off</b></td>
+      <td style="padding:4px 8px;">freezes near full (drift only)</td>
+      <td style="padding:4px 8px;">pop &rarr; 256; activity &rarr; 0</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E2</td>
+      <td style="padding:4px 8px;"><b>heritable trigger (H2)</b></td>
+      <td style="padding:4px 8px;">selection on a heritable key</td>
+      <td style="padding:4px 8px;"><b>key=15%</b> climbs above its 6% chance line</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E4</td>
+      <td style="padding:4px 8px;"><b>local addressing</b> + <b>protect RULE+addr</b>, mut&times; &asymp; 0.3</td>
+      <td style="padding:4px 8px;">imposed-heredity spatial domains</td>
+      <td style="padding:4px 8px;">grid forms coloured domains (not noise)</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E6</td>
+      <td style="padding:4px 8px;"><b>local addressing</b> + <b>self-templating</b></td>
+      <td style="padding:4px 8px;">EMERGENT heredity + genome domains (nothing protected)</td>
+      <td style="padding:4px 8px;"><b>self-pres%</b> climbs to ~95%; domains form</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">&mdash;</td>
+      <td style="padding:4px 8px;"><b>self-templating</b> only (no local)</td>
+      <td style="padding:4px 8px;">emergent heredity, but a frozen clone</td>
+      <td style="padding:4px 8px;">self-pres% &rarr; ~100%; unique tiny; activity low</td></tr>
+    <tr style="border-top:1px solid #3a3f4c;">
+      <td style="padding:4px 8px;">E10</td>
+      <td style="padding:4px 8px;"><b>local</b> + <b>self-templating</b> + <b>heritable trigger</b></td>
+      <td style="padding:4px 8px;">robust adaptation (emergent heredity unlocks selection)</td>
+      <td style="padding:4px 8px;"><b>key=15%</b> climbs strongly (to ~0.75 in the engine)</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="max-width:920px; margin-top:8px;">
+    Engine-only experiments not in this UI: spatial rock-paper-scissors waves
+    (E11/E16), and the complexity-ceiling / variable-length "program ring" runs
+    (E13&ndash;E15) &mdash; see <code>experiments.py</code>,
+    <code>spatial_probes.py</code>, <code>growth.py</code>.
+  </div>
+</div>
+
 <script>
 "use strict";
 // ---- model constants (mirror ring_system.py) ---------------------------
