@@ -48,12 +48,17 @@ heritable. So the full chain the project set as its success criterion ---
 persistence, heredity, adaptation --- now holds, all on emergent (not imposed)
 heredity.
 
-What the substrate has *not* yet shown is that these emergent domains are
-**self-maintaining** (autopoietic) rather than dynamic clusters churned by
-long-range transformation, and whether anything **open-ended** (a gradient
-never finished climbing, sustained novelty rather than a fixed regime) ever
-arises. The `selftmpl_local` regime sustains structured novelty for thousands
-of ticks but at a slowly declining rate. Those are the live questions.
+The `selftmpl_local` regime is also **sustainably open-ended in novelty**: over
+8000 ticks its rate of never-before-seen genomes decays through a transient and
+then plateaus near 0.18 (flat, not freezing), with cumulative diversity growing
+without bound --- it keeps discovering new self-consistent genomes indefinitely.
+But this open-endedness has a hard **ceiling**: complexity does *not* grow. Every
+complexity proxy (rule count, compressibility, genome density) plateaus by
+~t=2000 and merely fluctuates thereafter. The system explores a
+fixed-complexity manifold forever; it never complexifies. This is the substrate's
+wall, and it looks intrinsic --- a fixed 36-bit genome with no composability
+bounds attainable complexity from the start. Breaking it would need genome
+growth or rings built from rings, the most promising remaining direction.
 
 ---
 

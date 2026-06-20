@@ -853,3 +853,86 @@ self-templating in a local medium with nothing protected. The novelty is still
 *exploratory* (roaming the self-consistent manifold) rather than *directionally
 complexifying*; whether complexity itself grows over time is the next question
 (B4, a complexity-over-time measure).
+
+---
+
+## E13 --- The ceiling: novelty without complexification
+
+### Design
+
+E12 showed sustained novelty. Does anything *complexify*, or does the system
+roam a fixed-complexity manifold? Over 6000 ticks (`selftmpl_local`), track
+crude complexity proxies: number of distinct rules, population compressibility
+(gzip vs random; lower = more internal structure), mean bits-set per genome,
+and self-preservation.
+
+### Observation
+
+| tick | rules | compressibility | mean bits-set | self-pres |
+|-----:|------:|----------------:|--------------:|----------:|
+|    0 |    79 |           0.997 |          17.9 |     0.62  |
+| 1000 |    32 |           0.512 |          11.6 |     0.96  |
+| 2000 |    22 |           0.442 |           9.7 |     0.93  |
+| 3000 |    25 |           0.449 |          10.8 |     0.96  |
+| 4000 |    38 |           0.503 |           9.4 |     0.93  |
+| 6000 |    22 |           0.443 |           9.0 |     0.99  |
+
+### Interpretation
+
+Every complexity proxy **plateaus by ~t=1000--2000 and then fluctuates around a
+stable level** --- it does not trend upward. Structure appears fast
+(compressibility 1.0 -> ~0.45, genomes settle sparse at ~10 of 36 bits, rules
+contract to a stable 20--40) and then holds. The sustained novelty of E12
+happens *within* this fixed-complexity manifold: the system keeps finding new
+self-consistent genomes of roughly constant complexity, not progressively more
+complex ones.
+
+### Takeaway
+
+This is the project's **ceiling result**, and an honest negative on the hardest
+ALife goal. `selftmpl_local` is open-ended in *novelty* but **not in
+complexity**: there is no complexity growth, no sign of major transitions or
+escalating sophistication. The substrate supports persistence, heredity,
+adaptation, spatial self-organization, and sustained exploratory novelty --- but
+not open-ended *complexification*. The latter likely needs ingredients this
+substrate lacks: composability/hierarchy (rings made of rings), a reason for
+complexity to pay (a richer, changing selective environment), or
+genome growth (a fixed 36-bit genome caps attainable complexity from the
+start).
+
+---
+
+## Reflection R3 --- the arc, and the wall
+
+**The arc (E1->E13).** Starting from a faithful system that is pure churn, a
+short chain of modifications --- locality, self-templating (emergent heredity),
+balanced mutation --- climbs the full ladder set out in RESEARCH_PLAN section 1:
+persistence -> heredity -> adaptation, plus emergent spatial structure and
+sustained open-ended novelty. Almost all of it is *emergent* (nothing protected
+by us) once self-templating is in. The one repeated lesson is that **heredity is
+the master key**: every capability unlocked the moment genomes could reliably
+persist, and self-templating is the minimal way to make that emerge.
+
+**The wall (E13).** Novelty is sustained but complexity is not. The system
+reaches a fixed-complexity manifold and explores it forever. This looks like a
+real ceiling of the substrate, not a tuning failure --- consistent with the
+sparse, ~10-bit self-consistent attractor genomes E13 finds.
+
+**What would test the wall (the next branches):**
+
+- **B7 --- genome growth / composability.** The 36-bit genome bounds complexity
+  a priori. Allowing variable-length rings, or rings whose "rule" is itself
+  built from other rings, is the principled way to ask whether complexity *can*
+  grow. This is the most fundamental and most promising remaining direction.
+- **B8 --- a changing environment.** Static selection plateaus. A selective
+  pressure that itself moves (coevolution that does not collapse, or an
+  exogenous environment that drifts) might keep complexity paying off. E11's
+  cyclic dominance was a first, symmetric-but-unbalanced attempt; a coevolving
+  predator-prey coupling is the stronger version.
+- **B9 --- better complexity metrics.** "Compressibility of the population" is
+  crude. Logical depth, or the functional diversity of what rings *do* to one
+  another, would measure complexity more faithfully before concluding the wall
+  is real.
+
+I will pursue B7 (genome growth / composability) next --- it is the direction
+most likely to break the ceiling, and the most interesting if it does.

@@ -62,8 +62,14 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
-- E13 [B4] next: complexity-over-time -- does anything COMPLEXIFY, or just roam
-  the self-consistent manifold? (compressibility/entropy of genomes vs time)
+- E14 [B7] next: GENOME GROWTH / composability -- the principled attack on the
+  complexity ceiling. Variable-length rings or rings-of-rings.
+- R3 [reflection] [done] the arc (E1->E13) and the wall: heredity is the master
+  key; novelty is open-ended but COMPLEXITY is not (plateaus). Next branches
+  B7 (genome growth), B8 (changing environment), B9 (complexity metrics).
+- E13 [B4] [done] complexity-over-time: all proxies PLATEAU by t~2000 ->
+  open-ended in novelty (E12) but NOT in complexity. The substrate's ceiling.
+  EXPERIMENTS.md E13.
 - E12 [B4] [done] open-endedness RESOLVED: selftmpl_local novelty plateaus at
   ~0.18 (flat slope over 4000t), cumulative diversity unbounded -> sustainably
   open-ended, not freezing. EXPERIMENTS.md E12.
