@@ -62,6 +62,12 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
+- CAPSTONE [done] REPORT.md finalized as the capstone (conclusions + future
+  directions); artifact findings guide added. Option 2 (spirals/E16) + option 1
+  (capstone) complete. Standing fork: option 3 = new composable substrate
+  (deliberate choice).
+- E16 [B3/option2] [done] symmetric cyclic dominance -> spatial RPS coexistence
+  with waves (the E11 asymmetry was the issue). EXPERIMENTS.md E16.
 - B10/B11 next (LARGE departures): a composable primitive (replace ECA rules
   with a smoothly-composable instruction set) and/or endogenous escalating
   (coevolutionary) pressure -- the only routes left to open-ended complexity.

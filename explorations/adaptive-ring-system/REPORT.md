@@ -296,10 +296,49 @@ logged in Reflection R1.
 
 So self-templating delivers both at once: heredity the system discovers itself,
 *and* the spatial domain structure that makes it interesting, with nothing
-supplied by us. The remaining question is not whether domains form but whether
-they are *self-maintaining* (§3.5's autopoiesis question, now to be re-asked of
-these emergent domains) or merely dynamic clusters churned by the long-range
-transformers that E6 still allows.
+supplied by us.
+
+### 3.7 Adaptation, open-ended novelty --- and a complexity ceiling
+
+Three further results complete the picture of what the emergent-heredity regime
+can do.
+
+**Adaptation (E10).** Emergent heredity makes *directional* selection work where
+imposed heredity could not. The same heritable-key gate that imposed heredity
+pushed only to ~0.11 (and that drove E3 extinct) drives the trait from chance
+(0.06) to ~0.75 across every seed, population stable, once self-templating makes
+the whole genome reliably heritable. Reliable heredity was the precondition
+selection needed all along. With this, the full ladder of section 2 ---
+persistence, heredity, adaptation --- holds on emergent heredity.
+
+**Open-ended novelty (E12).** Over 8000 ticks the spatial self-templating regime
+keeps producing never-before-seen self-consistent genomes: novelty decays
+through a transient and then *plateaus* at ~0.18 (flat slope), with cumulative
+diversity growing without bound. It is sustainably open-ended in novelty ---
+neither freezing (the well-mixed clone) nor structureless noise (the baseline).
+
+**But not in complexity (E13--E15).** Complexity does not grow. Every complexity
+proxy plateaus early; the system roams a fixed-complexity manifold. Pushing on
+this (a variable-length "rule program" variant, where transformation is a
+sequence of CA rules whose length can mutate) showed the ceiling is **layered**:
+allowing genome growth makes program length *collapse* to the floor, because
+self-consistency selects for short programs (E14); adding a task that directly
+rewards complexity lifts length only slightly and then stalls (E15), because
+sequences of chaotic elementary-CA rules do not *compose smoothly* toward a
+target. The deepest cause is the primitive itself --- the 8-bit CA rule is not
+composable --- so open-ended complexity would require a different substrate, not
+a tuning change.
+
+### 3.8 Spatial competition: cyclic coexistence and waves
+
+Beyond domains, the spatial medium supports **frequency-dependent** ecology. With
+rock-paper-scissors competition among three *symmetric, heritable* types (each
+overwrites the type it beats), the system reaches balanced three-type
+coexistence with interlocking domains and travelling boundaries --- the spatial
+RPS regime (E16). An earlier attempt (E11) failed to show this only because its
+types (rule mod 3) had unequal viability; symmetry was the missing ingredient,
+not a substrate limitation. (Crisp large spirals would need a bigger grid and
+lower noise; the coexistence-with-waves structure is clear at 64x64.)
 
 ## 4. Synthesis
 
@@ -321,57 +360,109 @@ were two separate achievements to be bridged was an artifact of a wrong metric
 shows them as the same thing. Imposed protection (3.4) gives a different,
 shallower object --- domains uniform in rule but churning in their action bits.
 
-So the answer to the original question, so far: the faithful system does not
-self-organize; surgical heredity buys fragile selection; and **self-templating
-in a spatial medium produces emergent domains of self-consistent genomes ---
-heredity the system discovers itself, expressed directly as spatial
-structure**, the headline success. What remains genuinely open is the *strong*
-form of self-organization: are these emergent domains self-maintaining
-(autopoietic), and does the system ever produce open-ended novelty rather than
-settling into a fixed regime? The autopoiesis question (3.5), answered
-negatively for the imposed-heredity domains, has not yet been re-asked of the
-emergent ones.
+**The substrate climbs the whole ladder except complexity.** The answer to the
+original question: the faithful system does not self-organize; surgical heredity
+buys fragile selection; and **self-templating in a spatial medium produces
+emergent domains of self-consistent genomes, robust directional adaptation, and
+sustained open-ended novelty --- heredity the system discovers itself, expressed
+as spatial structure, with nothing supplied by us.** It also supports a
+frequency-dependent ecology (cyclic coexistence with waves). The one thing it
+does *not* do is grow in complexity: it explores a fixed-complexity manifold
+forever, and the cause is the non-composable CA primitive, not a missing tweak.
+The one strong claim it does not earn is autopoiesis: the domains are dynamic
+clusters maintained by spatial separation and renewal, not structures shown to
+defend themselves.
 
 ## 5. Limitations
 
-- **Heredity is imposed, not emergent.** All positive results depend on
-  protecting bits from transformation. We have not shown the system can evolve
-  its own heredity.
+- **Complexity does not grow** (E13--E15) --- the substrate's primitive is not
+  composable. Every "open-ended" claim here is about *novelty*, not complexity.
+- **Autopoiesis is not demonstrated** --- the emergent domains are dynamic
+  clusters, not shown to actively self-maintain; the invasion probe is
+  underpowered (3.5).
 - **The reproduction key reuses the ORDER field's low nibble**, mildly
   conflating composition rank with reproduction eligibility. A dedicated field
   would remove this; deferred until it matters.
 - **Sample sizes are small.** Most results are 3--5 seeds. Magnitudes are
-  indicative; the qualitative separations (e.g. Moran's I 0.28 vs ~0) are
-  robust, fine-grained numbers less so.
-- **The autopoiesis probe is underpowered** for small domains (3.5).
+  indicative; the qualitative separations are robust, fine-grained numbers less.
 - **Mutation-rate magnitudes were chosen, not tuned**, and could shift the
   regime boundaries.
+- **Many results use modifications, not the faithful spec** (section 1.1); only
+  E1 is the faithful system.
 
-## 6. Open questions and next steps
+## 6. Conclusions
 
-E6 answered the first open thread (heredity can emerge) but exposed the next:
-self-templating selects over a ring's *own* rule, while spatial domains need
-*neighbours* to share a rule. The natural next experiment (E7) is **templating
-onto the neighbour** --- a ring reproduces by copying itself onto its
-push-target's location --- which spreads a genome into its neighbourhood and
-should couple self-stability to spatial agreement. That is the most promising
-route to domains that are heritable *and* emergent, with nothing protected by
-us. If it produces candidate self-maintaining domains, the strengthened
-autopoiesis probe (size-matched domains, many rule pairs, a neutral
-rule-relabeling null) becomes worth building to test them properly.
+The investigation set out to ask whether the Adaptive Ring System produces
+emergent adaptive self-organization, and what modifications make it do so. After
+sixteen experiments and four reflection rounds, the answer is clear and largely
+positive, with one sharp boundary.
 
-## 7. Reproducibility
+1. **The faithful system does not self-organize.** It is high-entropy churn with
+   no unit of heredity --- a structural consequence of transformation rewriting
+   the whole genome every tick (3.1).
+
+2. **Heredity is the master key.** Every capability the system can show is
+   unlocked the moment genomes can reliably persist, and blocked whenever they
+   cannot (3.2). This single fact organizes every result.
+
+3. **Heredity, spatial structure, adaptation, and open-ended novelty all emerge
+   together** from one minimal modification --- *self-templating* (rewarding
+   rings that survive their own rule) in a *local* (spatial) medium, with
+   nothing protected by us (3.6, 3.7). This is the headline success: the system
+   discovers its own heredity and expresses it directly as emergent genome
+   domains, supports robust directional adaptation, and sustains open-ended
+   novelty.
+
+4. **The substrate has a hard ceiling at complexity** (3.7). It never
+   complexifies; the cause is the non-composable elementary-CA primitive, shown
+   by removing the other obstacles and watching complexity still refuse to grow.
+   Open-ended complexity is beyond this substrate by design.
+
+5. **A methodological lesson** (R1): a wrong metric (Moran's I on categorical
+   rule numbers) produced a confident false negative that stood for two
+   experiments. Matching the statistic to the variable's type overturned it.
+   Logged because it nearly buried the project's central result.
+
+The original question is answered: adaptive self-organization *does* arise, and
+the modifications that produce it are, in order of necessity, **locality** and
+**heredity** (best supplied emergently, by self-templating). What does not arise
+is open-ended complexity growth.
+
+## 7. Future directions
+
+Within the ring system (incremental):
+
+- **Coevolution / escalating pressure** --- replace the static key/task with
+  goalposts set by other rings, to seek non-plateauing adaptation.
+- **Stronger autopoiesis probe** --- size-matched domains, many rule pairs, a
+  neutral rule-relabeling null, to settle whether any emergent domain
+  self-maintains.
+- **Robustness / regime maps** --- systematic sweeps over grid size,
+  neighbourhood, mutation, range.
+
+Beyond the ring system (a deliberate new substrate):
+
+- **A composable primitive** --- the only route to open-ended *complexity* is to
+  replace the elementary-CA rule with operations that compose smoothly and
+  richly (an Avida-adjacent instruction set). This is a new project, not a
+  modification, and should be chosen deliberately (it is the standing "option 3"
+  in the project's planning).
+
+## 8. Reproducibility
 
 | file | role |
 |------|------|
-| `ring_system.py` | simulator; experimental knobs default to the faithful spec |
+| `ring_system.py` | fixed-length simulator; knobs default to the faithful spec |
+| `growth.py` | variable-length "program ring" variant (E14--E15) |
 | `test_ring_system.py` | 12 tests of the load-bearing semantics |
-| `analyze.py` | discriminating metrics + nulls |
-| `experiments.py` | the E1/E2/E4 config battery and comparison table |
-| `spatial_probes.py` | E5 domain-trajectory and invasion probes |
-| `EXPERIMENTS.md` | per-experiment log (E1--E5), full configs and numbers |
+| `analyze.py` | discriminating metrics + nulls (incl. neighbour-identity) |
+| `experiments.py` | the E1/E2/E4/E6/E7 config battery and comparison table |
+| `spatial_probes.py` | E5/E8 domain-trajectory and invasion probes |
+| `EXPERIMENTS.md` | per-experiment log (E1--E16 + R1--R4), full detail |
+| `TRAJECTORY.md` | the tree of explored paths |
+| `DESIGN.md` | faithful spec + addressing modes + knob table |
 | `RESEARCH_PLAN.md` | operational definitions, metrics, roadmap |
-| `artifact.html` | interactive dashboard with live knobs for every modification |
+| `artifact.html` | interactive dashboard with live knobs + findings guide |
 
 Headline commands:
 
