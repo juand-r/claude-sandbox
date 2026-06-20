@@ -194,6 +194,9 @@ class Universe:
                                     # the genome through the neighbourhood
     local_range: int = 8            # E7: max |offset| for local PULL/PUSH (8 =
                                     # original; small = genuinely short-range)
+    cyclic_dominance: bool = False  # E11: overwrite an occupied neighbour only
+                                    # if type(self) beats type(nbr), type =
+                                    # rule % 3 (rock-paper-scissors)
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -311,7 +314,8 @@ class Universe:
         spawn = (bits0[:, SPAWN_BIT] == 1) & occ0
         if self.spawn_code is not None:
             spawn &= get_field(bits0, self.key_span) == self.spawn_code
-        rules = get_field(bits0, RULE) if self.self_template else None
+        rules = (get_field(bits0, RULE)
+                 if (self.self_template or self.cyclic_dominance) else None)
         newborns: list[int] = []
         if self.local_addr:
             # spatial: each child goes to an empty Moore-neighbour of its parent
@@ -325,6 +329,9 @@ class Universe:
                     # spread into the neighbourhood: overwrite any Moore
                     # neighbour (occupied -> replaced, empty -> filled)
                     slot = int(self._moore[s][self.rng.integers(8)])
+                    if (self.cyclic_dominance and occ0[slot] and
+                            (int(rules[s]) - int(rules[slot])) % 3 != 1):
+                        continue   # can only overwrite a type it beats
                 else:
                     cands = [n for n in self._moore[s] if not filled[n]]
                     if not cands:

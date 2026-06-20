@@ -766,3 +766,90 @@ adaptation --- that the project set out (RESEARCH_PLAN section 1) as the
 operational definition of adaptive self-organization. The remaining frontier is
 *open-ended* adaptation (a gradient the system never finishes climbing) rather
 than this single imposed target.
+
+---
+
+## E11 --- Cyclic dominance: coexistence without spirals
+
+### Design
+
+Add competitive, frequency-dependent dynamics to avoid freezing and seek
+striking spatial patterns. Type = rule mod 3; a ring may overwrite an occupied
+neighbour only if its type *beats* the neighbour's (rock-paper-scissors:
+0>1>2>0) (`cyclic_dominance`, on top of local + overwrite + self-templating).
+Tested at 16x16 and, to give spirals room, 64x64 (4096 slots --- local
+addressing uses offsets, so the grid can grow without changing the genome).
+
+### Observation
+
+- **Three-way coexistence is robust.** All three types persist for 600+ ticks
+  with fluctuating abundances (e.g. one seed's type counts move
+  [45,15,10] -> [54,74,22] -> [64,53,86]); none fixes, unlike ordinary
+  competition which would let one type win.
+- **No clean spirals.** At 64x64 the spatial pattern is *patchy* coexistence,
+  with one type (rule%3 == 0) noticeably dominant in area, not the symmetric
+  rotating spirals of textbook spatial RPS.
+
+### Interpretation
+
+The cyclic rule successfully prevents takeover and sustains a non-freezing
+three-type ecology --- a different route to "not frozen" than E9's novelty. But
+the spirals fail to form because the three types are **not symmetric** in this
+substrate: rule%3 classes differ in self-consistency and viability, so the
+competition is unbalanced (one type is intrinsically stronger), which breaks
+the rotational symmetry that spiral formation requires. Imposing a clean
+cyclic *label* does not impose clean cyclic *dynamics* when the underlying types
+have heterogeneous fitness.
+
+### Takeaway
+
+Frequency-dependent cyclic dominance buys robust three-way coexistence (a
+non-freezing ecology) and demonstrates the substrate scales to larger grids,
+but not the striking spiral patterns, because the substrate's types have
+unequal viability. Getting spirals would require equalizing type fitness (e.g.
+defining types so all three are equally self-consistent) --- a tuning exercise
+deferred in favour of the open-endedness question (E12).
+
+(Infrastructure note: this established that local-addressing runs work at
+nmax = 4096 (64x64); larger grids are now available for any spatial experiment.)
+
+---
+
+## E12 --- Open-endedness resolved: novelty plateaus, it does not freeze
+
+### Design
+
+E9 left it unresolved whether `selftmpl_local` novelty is sustained or slowly
+freezing (the rate was declining over 2000 ticks). Settle it with a long run:
+8000 ticks, novelty measured online, and the novelty slope over the second half.
+
+### Observation
+
+| t ~ | 100 | 1000 | 2000 | 4000 | 6000 | 7900 |
+|-----|----:|-----:|-----:|-----:|-----:|-----:|
+| novelty | 0.50 | 0.29 | 0.21 | 0.17 | 0.20 | 0.18 |
+
+- Novelty slope over the last 4000 ticks: **-0.003 per 1000 ticks** (flat).
+- Cumulative distinct genomes: 168,577, still growing ~linearly (~21/tick).
+
+### Interpretation
+
+The declining novelty of E9 was an **initial transient**, not a slide toward
+freezing. After ~t=4000 the novelty rate **plateaus at ~0.18--0.20 and holds**:
+roughly a fifth of the population is a never-before-seen self-consistent genome
+every tick, indefinitely, while the system keeps its domain structure and
+heredity. Cumulative diversity grows without bound at a steady rate.
+
+### Takeaway
+
+`selftmpl_local` is **sustainably open-ended** over the horizon tested (8000
+ticks): it neither freezes (contrast self-templating well-mixed, E9) nor emits
+structureless noise (contrast baseline). It continuously generates new
+self-consistent genomes organized into domains --- ongoing structured novelty
+at a stable positive rate. This is the strongest "alive" result of the project:
+emergent heredity (E6), emergent spatial domains (E6/R1), robust adaptation when
+a gradient is present (E10), and sustained open-ended novelty (E12), all from
+self-templating in a local medium with nothing protected. The novelty is still
+*exploratory* (roaming the self-consistent manifold) rather than *directionally
+complexifying*; whether complexity itself grows over time is the next question
+(B4, a complexity-over-time measure).

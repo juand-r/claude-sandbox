@@ -62,9 +62,14 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
-- E11 [B3] next: frequency-dependent / competitive dynamics (e.g. spatial
-  cyclic dominance) -> seek non-freezing, open-ended adaptation + striking
-  spatial patterns (spirals).
+- E13 [B4] next: complexity-over-time -- does anything COMPLEXIFY, or just roam
+  the self-consistent manifold? (compressibility/entropy of genomes vs time)
+- E12 [B4] [done] open-endedness RESOLVED: selftmpl_local novelty plateaus at
+  ~0.18 (flat slope over 4000t), cumulative diversity unbounded -> sustainably
+  open-ended, not freezing. EXPERIMENTS.md E12.
+- E11 [B3] [done] cyclic dominance -> robust 3-way coexistence but NO spirals
+  (types have unequal viability, breaks RPS symmetry). Scales to 64x64.
+  EXPERIMENTS.md E11.
 - E10 [B2] [done] emergent heredity unlocks ROBUST adaptation: key-gate drives
   trait 0.06 -> 0.75 (vs 0.11 imposed, vs extinction in E3). Full chain
   persistence->heredity->adaptation now holds on emergent heredity.
