@@ -330,3 +330,77 @@ single eventual winner. Natural next steps: combine local addressing with the
 heritable trigger (H2) and a modest death rate (H2c) to see whether domains
 compete and turn over; and probe whether any rule-domain actively maintains
 itself (an autopoietic signature) versus merely being inherited.
+
+---
+
+## E5 --- Domain dynamics and an autopoiesis probe
+
+Reproduce: `python3 spatial_probes.py` (local + protected RULE/addr + mut x0.3).
+
+### E5a --- The domains form a dynamic, coexisting ecology
+
+Question: do the E4 domains coarsen to a single winner, freeze, or coexist?
+
+Observation (seed 1, 800 ticks; #domains = connected same-rule components of
+size >= 3):
+
+| tick | pop | Moran's I | #domains | largest |
+|-----:|----:|----------:|---------:|--------:|
+|   0  | 256 |    -0.023 |        0 |       2 |
+|  50  | 188 |     0.505 |       14 |      16 |
+| 100  | 199 |     0.450 |       16 |      11 |
+| 200  | 194 |     0.304 |       17 |      14 |
+| 400  | 210 |     0.232 |       15 |      10 |
+| 600  | 197 |     0.370 |       20 |       9 |
+| 800  | 224 |     0.444 |       18 |      47 |
+
+Interpretation: the system reaches a **dynamic steady state of ~15--20
+coexisting domains**, not a single winner and not a frozen pattern. Moran's I
+fluctuates (0.23--0.50) and the largest domain fluctuates (16 -> 9 -> 47),
+i.e. domains continually grow, shrink, fragment and occasionally swell. This
+is an ecology-like regime, sustained by the balance of heritable rules (which
+hold a domain together), birth mutation (which keeps seeding new domains), and
+local competition. This is the clearest "interesting dynamic pattern" found so
+far, and it is emergent.
+
+### E5b --- Do domains actively maintain themselves? (no clear evidence)
+
+Question: is a domain a self-maintaining structure (resists invasion) or a
+passive inherited blob?
+
+Probe: inject a patch of one rule into another domain's territory and watch.
+
+- **Naive version is confounded.** Injecting an arbitrary far-in-bitspace rule
+  into a host domain, it always vanished (e.g. 9 -> 0) --- but a control
+  planting those same rules as their own block showed they decay on their own
+  too (16 -> 0). So the reabsorption was **invader weakness, not host
+  resistance.** Most random rules are simply poor reproducers; only a minority
+  form persisting domains.
+- **Clean version is mixed.** Injecting each of the two largest *distinct*
+  domains' rules into half of the other's home, outcomes vary by seed:
+  competitive dominance in some (seed 0: rule 151 grows 25->42 while rule 230
+  -> 0), co-persistence in others (seed 5: both rules survive, 79->64 and
+  61->56), and no signal where domains are small (half-domain patches of a few
+  rings die in the noise).
+
+Interpretation: there is **no systematic evidence of autopoietic
+self-maintenance**. The mix of competitive dominance and co-persistence is
+what passive local reproduction with rule-dependent reproductive rates would
+produce; domains do not appear to actively defend their boundaries beyond the
+inertia of in-place copying. The natural coexistence of E5a is therefore best
+read as maintained by **spatial separation plus mutational renewal**, not by
+self-maintenance.
+
+Caveat: the probe is underpowered for small domains and uses a single
+perturbation per seed. A stronger test (size-matched domains, many rule pairs,
+comparison to a neutral rule-relabeling null) is needed before the
+self-maintenance question can be settled.
+
+### Takeaway
+
+Space + heredity gives a genuine emergent dynamic: a coexisting, turning-over
+ecology of rule-domains (E5a). But the domains are not (demonstrably)
+self-maintaining (E5b) --- coexistence is structural and mutational, not
+autopoietic. Getting true self-maintenance, if the substrate allows it,
+probably needs reproduction tied to a ring's *function* (e.g. self-templating)
+rather than rules competing as passive spatial tags.
