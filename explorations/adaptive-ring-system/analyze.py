@@ -221,6 +221,25 @@ def spatial_moran(bits, occ, tick, side, span=rs.RULE):
     return (len(idx) / W) * (num / den)
 
 
+def self_preservation_series(bits, occ, ticks=None):
+    """Mean fraction of bits each occupied ring leaves unchanged under its own
+    rule, per tick. The emergent-selection signal for self-templating (E6)."""
+    T = occ.shape[0]
+    ticks = ticks if ticks is not None else range(T)
+    out = []
+    for t in ticks:
+        o = occ[t]; idx = np.where(o)[0]
+        if len(idx) == 0:
+            out.append(float("nan")); continue
+        rules = rs.get_field(bits[t], rs.RULE)
+        tot = 0.0
+        for s in idx:
+            pred = rs.apply_rule(int(rules[s]), bits[t][s])
+            tot += np.mean(pred == bits[t][s])
+        out.append(tot / len(idx))
+    return np.array(out)
+
+
 def summarize(path, label=None):
     d = np.load(path)
     bits, occ = d["bits"], d["occ"]

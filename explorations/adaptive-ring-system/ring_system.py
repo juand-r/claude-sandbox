@@ -184,6 +184,10 @@ class Universe:
     local_addr: bool = False        # H4: interpret PULL/PUSH as (dx,dy) offsets
                                     # on the sqrt(nmax) torus; births go to an
                                     # empty Moore-neighbour (spatial dynamics)
+    self_template: bool = False     # E6: gate reproduction on self-consistency
+                                    # (prob = preservation**power), to select
+                                    # for genomes stable under their own rule
+    self_template_power: float = 2.0
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -254,6 +258,15 @@ class Universe:
             self.history_occ.append(self.occupied.copy())
             self.history_ids.append(self.ids.copy())
 
+    def _st_pass(self, s, bits0, rules):
+        """Self-templating gate: succeed with probability (preservation)^power,
+        where preservation is the fraction of the ring's bits left unchanged by
+        its own rule. Selects for genomes stable under their own transformation.
+        """
+        pred = apply_rule(int(rules[s]), bits0[s])
+        pres = float(np.mean(pred == bits0[s]))
+        return self.rng.random() < pres ** self.self_template_power
+
     def _place_child(self, parent, slot, bits0, bits1, occ1, newborns, tick):
         """Write a mutated copy of `parent` (snapshot bits) into `slot`."""
         child = bits0[parent].copy()
@@ -292,6 +305,7 @@ class Universe:
         spawn = (bits0[:, SPAWN_BIT] == 1) & occ0
         if self.spawn_code is not None:
             spawn &= get_field(bits0, self.key_span) == self.spawn_code
+        rules = get_field(bits0, RULE) if self.self_template else None
         newborns: list[int] = []
         if self.local_addr:
             # spatial: each child goes to an empty Moore-neighbour of its parent
@@ -299,6 +313,8 @@ class Universe:
             spawners = np.where(spawn)[0].copy()
             self.rng.shuffle(spawners)
             for s in spawners:
+                if self.self_template and not self._st_pass(int(s), bits0, rules):
+                    continue
                 cands = [n for n in self._moore[s] if not filled[n]]
                 if not cands:
                     continue
@@ -314,6 +330,8 @@ class Universe:
             for s in np.where(spawn)[0]:
                 if ptr >= len(empty_pool):
                     break
+                if self.self_template and not self._st_pass(int(s), bits0, rules):
+                    continue
                 slot = int(empty_pool[ptr]); ptr += 1
                 self._place_child(int(s), slot, bits0, bits1, occ1,
                                   newborns, new_tick)

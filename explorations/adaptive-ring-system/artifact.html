@@ -67,6 +67,8 @@
     <input type="checkbox" id="h2"/> heritable trigger (H2)</label>
   <label title="H4: PULL/PUSH are (dx,dy) offsets on the 16x16 torus; births go to an empty neighbour. Try with 'protect RULE+addr' on and mut x ~0.3 to grow spatial domains.">
     <input type="checkbox" id="local"/> local addressing (H4)</label>
+  <label title="E6: reproduction gated on self-consistency (how well a ring survives its own rule). Watch self-pres% climb. Without local, the system freezes into a self-consistent clone.">
+    <input type="checkbox" id="selftmpl"/> self-templating (E6)</label>
   <span class="muted" style="font-size:11px;">&larr; live knobs; change while running</span>
 </div>
 
@@ -144,6 +146,17 @@ const MOORE = (() => { const m = [];
       ns.push(((y+dy+SIDE)%SIDE)*SIDE + (x+dx+SIDE)%SIDE); } m.push(ns); }
   return m; })();
 
+// E6 self-templating: fraction of a ring's bits left unchanged by its own rule
+function selfPreserve(b, s){
+  const base = s*NB, r = fieldVal(b, s, RULE); let match = 0;
+  for (let i=0;i<NB;i++){
+    const left=b[base+((i-1+NB)%NB)], center=b[base+i], right=b[base+((i+1)%NB)];
+    const out = (r >> ((left<<2)|(center<<1)|right)) & 1;
+    if (out === center) match++;
+  }
+  return match / NB;
+}
+
 function reset(){
   const seed = parseInt(document.getElementById('seed').value)||0;
   let n = parseInt(document.getElementById('init').value)||16;
@@ -172,6 +185,7 @@ function step(){
   const transformOff = document.getElementById('notransform').checked;
   const h2 = document.getElementById('h2').checked;
   const local = document.getElementById('local').checked;
+  const selfT = document.getElementById('selftmpl').checked;
   const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
@@ -233,6 +247,7 @@ function step(){
       [globalEmpty[i],globalEmpty[j]]=[globalEmpty[j],globalEmpty[i]]; } }
   let births=0; const newborns = new Set();
   for (const s of spawners){
+    if (selfT && rng() >= selfPreserve(b0, s) ** 2) continue;   // self-templating gate
     let slot = -1;
     if (local){ const cands = MOORE[s].filter(n => !filled[n]);
       if (!cands.length) continue;
@@ -269,16 +284,18 @@ function step(){
 }
 
 function recordMetrics(){
-  let pop=0, sumMut=0, k15=0; const geno=new Set(), rules=new Set();
+  let pop=0, sumMut=0, k15=0, presSum=0; const geno=new Set(), rules=new Set();
   for (let r=0;r<NMAX;r++){ if (!occ[r]) continue; pop++;
     sumMut += mutLevelAt(bits,r); rules.add(fieldVal(bits,r,RULE));
     if (fieldVal(bits,r,[28,32])===15) k15++;
+    presSum += selfPreserve(bits, r);
     let key=''; const base=r*NB; for (let i=0;i<NB;i++) key+=bits[base+i];
     geno.add(key); }
   popHist.push(pop); uniqHist.push(geno.size);
   if (popHist.length > 2000){ popHist.shift(); uniqHist.shift(); }
   window._cur = {pop, unique:geno.size, rules:rules.size,
-                 meanMut: pop ? sumMut/pop : 0, key15: pop ? k15/pop : 0};
+                 meanMut: pop ? sumMut/pop : 0, key15: pop ? k15/pop : 0,
+                 pres: pop ? presSum/pop : 0};
 }
 
 // ---- viridis colormap (anchor interpolation) ---------------------------
@@ -353,14 +370,15 @@ function drawChart(){
   plot(popHist,'#2ad27e'); plot(uniqHist,'#3a8fe0');
 }
 function drawStats(){
-  const c=window._cur||{pop:0,unique:0,rules:0,meanMut:0,key15:0};
+  const c=window._cur||{pop:0,unique:0,rules:0,meanMut:0,key15:0,pres:0};
   document.getElementById('stats').innerHTML =
     `t=<b>${tickCount}</b> &nbsp; pop=<b>${c.pop}</b> &nbsp; `+
     `unique=<b>${c.unique}</b> &nbsp; rules=<b>${c.rules}</b> &nbsp; `+
     `births=<b>${last.births}</b> &nbsp; deaths=<b>${last.deaths}</b> &nbsp; `+
     `ambient=<b>${last.amb}</b> &nbsp; activity=<b>${last.activity}</b> &nbsp; `+
     `mut=<b>${c.meanMut.toFixed(2)}</b> &nbsp; `+
-    `key=15=<b>${(c.key15*100).toFixed(0)}%</b> <span class="muted">(chance 6%)</span>`;
+    `key=15=<b>${(c.key15*100).toFixed(0)}%</b> &nbsp; `+
+    `self-pres=<b>${(c.pres*100).toFixed(0)}%</b>`;
 }
 function draw(){ drawGrid(); drawCbar(); drawRaster(); drawChart(); drawStats(); }
 

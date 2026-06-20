@@ -404,3 +404,87 @@ self-maintaining (E5b) --- coexistence is structural and mutational, not
 autopoietic. Getting true self-maintenance, if the substrate allows it,
 probably needs reproduction tied to a ring's *function* (e.g. self-templating)
 rather than rules competing as passive spatial tags.
+
+---
+
+## E6 --- Self-templating: can heredity *emerge* instead of being imposed?
+
+Reproduce: `selftmpl_local` / `selftmpl_mixed` in `experiments.py`; the
+self-preservation signal is `analyze.self_preservation_series`.
+
+### Motivation
+
+Every earlier positive result imposed heredity by protecting bits. The
+question this experiment asks is whether the system can *discover* heredity on
+its own --- genomes that survive transformation without being protected.
+
+### Design
+
+Tie the right to reproduce to a functional ability: a ring's reproduction is
+gated stochastically on its **self-consistency** --- the fraction of its bits
+left unchanged when its own CA rule is applied to it (preservation), with
+success probability `preservation**power` (power 2 unless noted). No bits are
+protected. A feasibility check first confirmed a climbable gradient:
+preservation over random genomes is smoothly distributed (mean 0.52, ~0.5%
+already perfect, 8% above 0.8), so selection has somewhere to go.
+
+### Prediction
+
+Self-templating should raise mean self-preservation over time (emergent
+selection for self-stability). If self-stability is sufficient for heredity,
+spatial domains should also form *without* protection.
+
+### Observation
+
+Mean self-preservation (start -> end) and the resulting population, 500 ticks:
+
+| config             | preservation | pop | unique | rules | activity | Moran |
+|--------------------|-------------:|----:|-------:|------:|---------:|------:|
+| local, no template | 0.52 -> 0.70 | 156 |    145 |    74 |      945 | -0.05 |
+| local + template   | 0.52 -> 0.95 | 215 |  84--102|  23--36|    ~1000 | -0.05 |
+| local + template p4| 0.52 -> 0.97 | 223 |     90 |    26 |     1101 |  0.12 |
+| mixed + template   | 0.52 -> 0.99 | 256 |   4--45 |  2--14 |    9--40 | ~0.00 |
+
+(local/mixed + template ranges are over 4 seeds; both effects are robust.)
+
+### Interpretation
+
+- **Heredity-compatibility emerges --- the open question is answered "yes, in
+  principle."** Self-templating reliably drives self-preservation from chance
+  (0.52) to 0.95--1.0 with no bits protected: the system discovers genomes
+  that are (near) fixed points of their own rule, i.e. that survive their own
+  transformation. This is emergent selection, not imposed stability.
+- **But emergent self-consistency is necessary, not sufficient, for rich
+  organization, and the two regimes are both limited:**
+  - *Well-mixed* collapses to a near-frozen, low-diversity clone (preservation
+    ~1.0, activity ~9, 2--14 rules). Heredity emerges, but as a trivial single
+    fixed point --- a self-perpetuating clone, not an ecology.
+  - *Local* stays diverse (23--36 rules) and active (~1000 bits/tick) and
+    self-consistent (0.95), but forms **no spatial domains** (Moran ~0).
+- **Why self-consistency does not give spatial heredity.** Self-consistency is
+  being a fixed point of one's *own* rule, but a ring is transformed by its
+  *neighbour's* rule. Self-templating therefore selects for individual
+  self-stability, not for neighbours sharing a rule. Well-mixed dynamics reach
+  global heredity only by collapsing to one rule everywhere (frozen clone);
+  local dynamics cannot collapse globally, so neighbours with different
+  (individually self-consistent) rules keep disrupting each other --- active,
+  but unstructured.
+
+### Takeaway
+
+This revises the project's central claim. Heredity does *not* have to be
+imposed: selection for self-templating makes it emerge (preservation
+0.52 -> ~1.0, robust). But emergent self-consistency alone yields either a
+trivial frozen clone (well-mixed) or an active but spatially unstructured
+population (local) --- not the coexisting domains that imposed protection
+produced. Emergent *individual* heredity is not the same as emergent
+*collective/spatial* organization.
+
+### What this points to next
+
+The missing ingredient is **neighbourhood agreement**: domains need neighbours
+to share a rule, which self-consistency does not select for. The natural E7 is
+templating *onto the neighbour* --- a ring reproduces by copying itself onto
+its push-target's location --- which spreads a genome to its neighbourhood and
+should couple self-stability to spatial agreement, the plausible route to
+domains that are heritable *and* emergent (no protection).

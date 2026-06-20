@@ -27,11 +27,18 @@ spatial offsets) plus a heritable rule produces the strongest and most legible
 result: an emergent, dynamic *ecology* of ~15--20 coexisting spatial domains
 that grow, shrink, and turn over.
 
-What the substrate has **not** shown, across every experiment, is anything
-self-maintaining or functionally self-reproducing. Rules behave as passive
-tags that are inherited and compete; they do not actively preserve themselves.
-Heredity must be imposed from outside (by protecting bits) rather than
-emerging, and that is the system's defining limitation.
+A later modification softens what first looked like the system's defining
+limitation. Heredity does **not** have to be imposed: gating reproduction on
+self-consistency (a ring's ability to survive its own rule) makes
+heredity-compatibility *emerge* through selection, with no bits protected
+(self-preservation rises from chance, 0.52, to ~1.0). But emergent
+self-consistency is necessary, not sufficient: well-mixed it yields a trivial
+frozen clone, and spatially it yields an active but unstructured population ---
+not the coexisting domains that imposed heredity produced. The real gap is now
+between emergent *individual* heredity (shown) and emergent *collective,
+spatial* organization (not yet shown). Across every experiment, the substrate
+has still produced nothing that both organizes spatially and sustains itself
+without some ingredient supplied by us.
 
 ---
 
@@ -205,6 +212,34 @@ domains and uses a single perturbation per seed. A size-matched design with
 many rule pairs and a neutral rule-relabeling null is needed before the
 self-maintenance question is settled.
 
+### 3.6 Heredity can emerge --- but only as individual self-consistency
+
+Every result to this point imposed heredity by protecting bits. Gating
+reproduction on a *functional* ability instead --- a ring may reproduce only
+in proportion to how well its own rule preserves its own genome --- makes
+heredity-compatibility emerge on its own.
+
+> **Evidence.** With no bits protected, mean self-preservation rises from
+> chance (0.52) to 0.95--1.0 over 500 ticks, robustly across seeds. The
+> distribution it climbs is smooth (8% of random genomes already preserve >80%
+> of their bits), so the gradient is real, not a lucky jump. (E6.)
+
+This is genuine emergent selection: the system discovers genomes that survive
+their own transformation. But it does not, by itself, produce rich
+organization, because the two regimes are both limited. Well-mixed, the
+population collapses to a near-frozen, low-diversity clone (preservation ~1.0,
+activity ~9 bits/tick, 2--14 rules) --- heredity emerges, but as a single
+trivial fixed point. Local, the population stays diverse and active and
+self-consistent, but forms no spatial domains (Moran's I ~0).
+
+The reason is precise and worth stating: self-consistency is being a fixed
+point of one's *own* rule, whereas a ring is transformed by its *neighbour's*
+rule. Self-templating selects for individual self-stability, not for
+neighbours sharing a rule. So well-mixed dynamics can only reach global
+heredity by collapsing to one rule everywhere; local dynamics cannot, so
+differently-ruled (but each self-consistent) neighbours keep disrupting one
+another. Emergent individual heredity is not emergent collective organization.
+
 ## 4. Synthesis
 
 Two threads run through every result.
@@ -216,21 +251,28 @@ distinguishes the configuration that organizes from the ones that do not
 nothing is stably inherited; wherever it succeeds, heredity has been imposed by
 protecting bits.
 
-**Heredity does not emerge --- it has to be imposed.** This is the substrate's
-defining limitation. Every positive result required us to hold some bits stable
-by fiat. The system never discovered, on its own, a configuration that
-preserves its own information against the transforming flood. Relatedly, it
-never produced a self-maintaining or self-reproducing structure: rules act as
-passive tags that are inherited and compete, not as machinery that perpetuates
-itself.
+**Emergent individual heredity, yes; emergent collective organization, not
+yet.** Imposed heredity is not strictly necessary --- selection for
+self-templating makes self-consistency emerge (3.6). But what emerges that way
+is either a trivial frozen clone or a self-consistent yet spatially
+unstructured population. Conversely, the one configuration that produced rich
+*spatial* organization (the coexisting ecology, 3.4) got its heredity from
+imposed protection. No single configuration has yet delivered both at once:
+heredity that the system discovers itself *and* the spatial, coexisting
+structure that makes it interesting. Bridging the two is the central unsolved
+problem, and 3.6 locates exactly why they are separate --- self-consistency
+selects over a ring's own rule, while spatial structure needs neighbours to
+share rules.
 
 So the answer to the original question, so far: the faithful system does not
-self-organize; a minimal modification (surgical heredity) buys fragile
-selection; and adding spatial locality buys a genuine emergent ecology of
-coexisting domains. That ecology is the headline success. True adaptive
-self-organization in the strong sense --- structures that maintain and
-reproduce themselves without being named or protected by us --- has not
-appeared, and may require changing what "reproduction" means in the substrate.
+self-organize; surgical heredity buys fragile selection; spatial locality plus
+imposed heredity buys a genuine emergent ecology of coexisting domains (the
+headline success); and self-templating shows heredity can emerge unaided,
+though so far only in a limited individual form. True adaptive
+self-organization in the strong sense --- structure that is spatial,
+coexisting, *and* self-maintained without anything supplied by us --- has not
+appeared, and the evidence now points to *coupling self-templating to the
+neighbourhood* as the most promising way to reach it.
 
 ## 5. Limitations
 
@@ -249,19 +291,16 @@ appeared, and may require changing what "reproduction" means in the substrate.
 
 ## 6. Open questions and next steps
 
-The E5b conclusion points the way: to get genuine self-maintenance, tie
-reproduction to a ring's *function* rather than treating rules as inert tags.
-The next planned experiment is **self-templating reproduction** --- a ring
-reproduces only if it successfully copies itself onto its (local) push-target
---- which rewards replicators the system discovers rather than ones we specify,
-and is the most promising route to a structure that perpetuates itself. If it
-yields candidate self-maintaining structures, the strengthened autopoiesis
-probe (size-matched domains, neutral-relabeling null) becomes worth building.
-
-A second open thread is whether heredity can be made *emergent* rather than
-imposed: can selection favour rings whose own rules happen to preserve genomes
-(ordered, class-1/2 rules), so that stable regions arise from the dynamics
-instead of from protected bits?
+E6 answered the first open thread (heredity can emerge) but exposed the next:
+self-templating selects over a ring's *own* rule, while spatial domains need
+*neighbours* to share a rule. The natural next experiment (E7) is **templating
+onto the neighbour** --- a ring reproduces by copying itself onto its
+push-target's location --- which spreads a genome into its neighbourhood and
+should couple self-stability to spatial agreement. That is the most promising
+route to domains that are heritable *and* emergent, with nothing protected by
+us. If it produces candidate self-maintaining domains, the strengthened
+autopoiesis probe (size-matched domains, many rule pairs, a neutral
+rule-relabeling null) becomes worth building to test them properly.
 
 ## 7. Reproducibility
 

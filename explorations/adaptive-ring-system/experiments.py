@@ -32,10 +32,14 @@ CONFIGS = {
     "local_faithful":  dict(local_addr=True),
     "local_stable":    dict(local_addr=True, protect=((0, 8), (8, 16), (16, 24)),
                             mut_scale=0.3),
+    # E6: self-templating. reproduction gated on self-consistency -> emergent
+    # selection for genomes stable under their own rule (no bits protected).
+    "selftmpl_local":  dict(local_addr=True, self_template=True),
+    "selftmpl_mixed":  dict(self_template=True),
 }
 
 # configs that should be seeded full (spatial runs start from a filled grid)
-FULL_SEED = {"local_faithful", "local_stable"}
+FULL_SEED = {"local_faithful", "local_stable", "selftmpl_local", "selftmpl_mixed"}
 
 
 def main():
