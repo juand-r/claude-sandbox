@@ -181,6 +181,21 @@ def lineage_stats(occ, ids, births):
     return dict(founder_share=float(top), n_founders=len(counts))
 
 
+def key_share_series(bits, occ, span, code):
+    """Per-tick fraction of living rings whose key (field `span`) == code.
+    The direct selection signal for the H2 trigger experiment."""
+    lo, hi = span
+    weights = 1 << np.arange(hi - lo - 1, -1, -1)
+    out = []
+    for t in range(occ.shape[0]):
+        o = occ[t]
+        if not o.any():
+            out.append(0.0); continue
+        keys = bits[t][o][:, lo:hi] @ weights
+        out.append(float((keys == code).mean()))
+    return np.array(out)
+
+
 def summarize(path, label=None):
     d = np.load(path)
     bits, occ = d["bits"], d["occ"]

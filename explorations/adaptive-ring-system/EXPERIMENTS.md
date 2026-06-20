@@ -100,3 +100,94 @@ reproduction/death *conditional* on something a ring could come to "control"
 (e.g. a multi-bit code, or a function of the ring's own state), so that
 survival and reproduction can correlate with genotype and give selection
 something to act on --- ideally combined with a protected heritable core.
+
+---
+
+## E2 --- Conditional reproduction on a heritable key (H2)
+
+### Design
+
+Reproduction (and death) are gated on a 4-bit **key** --- the low nibble of
+the ORDER field. A ring reproduces only if its spawn bit is set *and*
+`key == spawn_code`; it dies only if its death bit is set *and*
+`key == death_code`, with `spawn_code = 15` and `death_code = 0` (different, so
+key-15 rings reproduce and never die, key-0 rings die and never reproduce, the
+other 14 keys persist statically). Gating both events keeps birth and death
+rates commensurate; gating spawn alone drove the population to ~3 (deaths far
+outran the 1/16-throttled births).
+
+Heredity of the key is the variable under test, set by which bits
+transformation may overwrite:
+
+| name           | protection          | key heritable? |
+|----------------|---------------------|----------------|
+| h2_protected   | whole core (0--31)  | yes            |
+| h2_key_only    | key bits (28--31)   | yes            |
+| h2_unprotected | none                | no (control)   |
+
+Selection signal: the share of living rings with `key == spawn_code` (chance =
+1/16 = 0.0625). Reusing ORDER's low nibble as the key mildly conflates
+composition rank with reproduction eligibility; a dedicated field would remove
+this, deferred until the mechanism is shown to matter.
+
+### Prediction
+
+If a heritable trigger enables selection, the key-15 share rises above chance
+when the key is heritable (h2_protected, h2_key_only) and stays at chance when
+it is not (h2_unprotected).
+
+### Observation
+
+| config         |   pop | turnover | concentration | key share (start->end) |
+|----------------|------:|---------:|--------------:|------------------------:|
+| h2_protected   |  10.8 |    0.001 |         0.093 |        0.062 -> 0.100   |
+| h2_key_only    | 239.2 |    0.008 |         0.107 |        0.062 -> 0.098   |
+| h2_unprotected | 248.8 |    0.011 |         0.883 |        0.062 -> 0.000   |
+
+Key-15 end share across 5 seeds:
+
+- **h2_key_only:** 0.098, 0.082, 0.094, 0.110, 0.103 (mean ~0.097, all above
+  chance, tight).
+- **h2_unprotected:** 0.000, 0.012, 0.074, 0.258, 0.000 (mean ~0.069 ~ chance,
+  high variance).
+
+### Interpretation
+
+- **A heritable trigger produces real selection.** Whenever the key is
+  heritable, its share rises consistently to ~1.5x chance and clusters
+  tightly across seeds. The non-heritable control scatters around chance ---
+  its occasional spikes (seed 3: 0.258) are clonal flukes, not selection.
+  This is the first signal in this system of selection acting beyond neutral
+  drift, and it is cleanly attributable to **heredity**, since the trigger is
+  identical in all three configs and only protection differs.
+- **The core tension: transformation is both the engine of activity and the
+  destroyer of heredity.** Protecting the whole core makes the key heritable
+  but freezes the population to near-extinction (pop 10.8): with RULE fixed,
+  the spawn bit stops being toggled and reproduction stalls. No protection
+  keeps the system lively but lets transformation scramble the key every tick,
+  so selection cannot accumulate (and a limit-cycle clone takes over instead
+  --- concentration 0.88 with key share 0). Only **surgical** protection of
+  the key alone (h2_key_only) escapes the dilemma: a lively population
+  (pop 239) *and* a heritable, selectable tag.
+- **Effect size is throttled by saturation.** Enrichment stops near 0.10, not
+  1.0, because the universe fills with immortal non-reproducing keys (1--14)
+  and key-15 rings can only reproduce into the few slots freed by key-0
+  deaths. Selection is real but slot-limited.
+
+### Takeaway
+
+H2 is confirmed in principle: conditioning reproduction on a *heritable* key
+yields replicable selection (key-only protection, +~55% over chance across 5
+seeds), where the faithful baseline showed none. The decisive ingredient is
+heredity, achieved by protecting only the key so transformation stays lively
+elsewhere.
+
+### What this points to next
+
+Selection works but is weak because the population saturates with static
+non-reproducers, starving selection of free slots. The next lever (H2c) is a
+**turnover mechanism** that frees slots without crashing the population ---
+e.g. a low uniform death rate, or making the non-reproducing keys mortal ---
+so selection can keep operating. Separately, replacing the ORDER-nibble key
+with a dedicated field would remove the rank/reproduction conflation before
+pushing further.

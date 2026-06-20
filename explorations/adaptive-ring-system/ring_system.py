@@ -158,6 +158,13 @@ class Universe:
                                     # transformation (heredity experiment, H1)
     transform_off: bool = False     # skip the transformation step entirely
                                     # (drift-only control: birth/death/mutation)
+    # H2: gate reproduction/death on a heritable multi-bit key. The key is the
+    # 4-bit slice `key_span` (low nibble of ORDER by default). When a code is
+    # set, the event fires only if the ring's key equals it (in addition to the
+    # spawn/death bit). None = ungated (faithful single-bit behaviour).
+    spawn_code: int | None = None
+    death_code: int | None = None
+    key_span: tuple = (28, 32)
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -230,6 +237,8 @@ class Universe:
 
         # 4. births (from S0 spawn bits) -- before deaths, into S0-empty slots
         spawn = (bits0[:, SPAWN_BIT] == 1) & occ0
+        if self.spawn_code is not None:
+            spawn &= get_field(bits0, self.key_span) == self.spawn_code
         empty_pool = np.where(~occ0)[0].copy()
         self.rng.shuffle(empty_pool)
         ptr = 0
@@ -253,6 +262,8 @@ class Universe:
 
         # 5. deaths (from S0 death bits)
         death = (bits0[:, DEATH_BIT] == 1) & occ0
+        if self.death_code is not None:
+            death &= get_field(bits0, self.key_span) == self.death_code
         deaths = int(np.sum(death))
         for d in np.where(death)[0]:
             occ1[d] = False

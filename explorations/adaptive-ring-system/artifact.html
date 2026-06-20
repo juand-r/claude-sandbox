@@ -63,6 +63,8 @@
     <input type="checkbox" id="protect"/> protect RULE+addr</label>
   <label title="skip the transformation step (drift-only control)">
     <input type="checkbox" id="notransform"/> transform off</label>
+  <label title="H2: reproduce only if key(=ORDER low nibble)==15, die only if ==0; key held heritable. Watch key=15% climb above 6%.">
+    <input type="checkbox" id="h2"/> heritable trigger (H2)</label>
   <span class="muted" style="font-size:11px;">&larr; live knobs; change while running</span>
 </div>
 
@@ -153,6 +155,8 @@ function step(){
     ? parseFloat(document.getElementById('mutscale').value) : 0;
   const protectCore = document.getElementById('protect').checked;
   const transformOff = document.getElementById('notransform').checked;
+  const h2 = document.getElementById('h2').checked;
+  const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
   const occList = [];
@@ -185,6 +189,9 @@ function step(){
   // H1: hold RULE+PULL+PUSH (bits 0..23) fixed under transformation
   if (protectCore) for (let r=0;r<NMAX;r++){ const base=r*NB;
     for (let i=0;i<24;i++) nb[base+i] = b0[base+i]; }
+  // H2: hold the key (bits 28..31) heritable so selection can act on it
+  if (h2) for (let r=0;r<NMAX;r++){ const base=r*NB;
+    for (let i=28;i<32;i++) nb[base+i] = b0[base+i]; }
 
   let activity = 0;
   for (const r of occList){ const base=r*NB;
@@ -200,6 +207,7 @@ function step(){
   let ptr=0, births=0; const newborns = new Set();
   for (const s of occList){
     if (b0[s*NB+SPAWN] !== 1) continue;
+    if (h2 && fieldVal(b0, s, KEY) !== 15) continue;   // gated reproduction
     if (ptr >= pool.length) break;
     const slot = pool[ptr++];
     const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
@@ -210,8 +218,11 @@ function step(){
 
   // deaths (from snapshot death bits)
   let deaths=0;
-  for (const d of occList){ if (b0[d*NB+DEATH]===1){ o1[d]=0;
-    for (let i=0;i<NB;i++) nb[d*NB+i]=0; deaths++; } }
+  for (const d of occList){
+    if (b0[d*NB+DEATH]!==1) continue;
+    if (h2 && fieldVal(b0, d, KEY) !== 0) continue;    // gated death
+    o1[d]=0; for (let i=0;i<NB;i++) nb[d*NB+i]=0; deaths++;
+  }
 
   // ambient mutation on survivors present at tick start (not newborns)
   let amb=0;
@@ -229,15 +240,16 @@ function step(){
 }
 
 function recordMetrics(){
-  let pop=0, sumMut=0; const geno=new Set(), rules=new Set();
+  let pop=0, sumMut=0, k15=0; const geno=new Set(), rules=new Set();
   for (let r=0;r<NMAX;r++){ if (!occ[r]) continue; pop++;
     sumMut += mutLevelAt(bits,r); rules.add(fieldVal(bits,r,RULE));
+    if (fieldVal(bits,r,[28,32])===15) k15++;
     let key=''; const base=r*NB; for (let i=0;i<NB;i++) key+=bits[base+i];
     geno.add(key); }
   popHist.push(pop); uniqHist.push(geno.size);
   if (popHist.length > 2000){ popHist.shift(); uniqHist.shift(); }
   window._cur = {pop, unique:geno.size, rules:rules.size,
-                 meanMut: pop ? sumMut/pop : 0};
+                 meanMut: pop ? sumMut/pop : 0, key15: pop ? k15/pop : 0};
 }
 
 // ---- viridis colormap (anchor interpolation) ---------------------------
@@ -312,13 +324,14 @@ function drawChart(){
   plot(popHist,'#2ad27e'); plot(uniqHist,'#3a8fe0');
 }
 function drawStats(){
-  const c=window._cur||{pop:0,unique:0,rules:0,meanMut:0};
+  const c=window._cur||{pop:0,unique:0,rules:0,meanMut:0,key15:0};
   document.getElementById('stats').innerHTML =
     `t=<b>${tickCount}</b> &nbsp; pop=<b>${c.pop}</b> &nbsp; `+
     `unique=<b>${c.unique}</b> &nbsp; rules=<b>${c.rules}</b> &nbsp; `+
     `births=<b>${last.births}</b> &nbsp; deaths=<b>${last.deaths}</b> &nbsp; `+
     `ambient=<b>${last.amb}</b> &nbsp; activity=<b>${last.activity}</b> &nbsp; `+
-    `mut=<b>${c.meanMut.toFixed(2)}</b>`;
+    `mut=<b>${c.meanMut.toFixed(2)}</b> &nbsp; `+
+    `key=15=<b>${(c.key15*100).toFixed(0)}%</b> <span class="muted">(chance 6%)</span>`;
 }
 function draw(){ drawGrid(); drawCbar(); drawRaster(); drawChart(); drawStats(); }
 

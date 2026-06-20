@@ -12,6 +12,8 @@ import os
 import analyze
 import ring_system as rs
 
+CORE = ((0, 8), (8, 16), (16, 24), (24, 32))   # full genotype (RULE+addr+ORDER)
+
 # name -> kwargs for Universe (beyond nmax/seed)
 CONFIGS = {
     "baseline":        dict(),
@@ -20,6 +22,12 @@ CONFIGS = {
     "protect_core":    dict(protect=((0, 8), (8, 16), (16, 24))),  # H1
     "protect_lowmut":  dict(protect=((0, 8), (8, 16), (16, 24)),
                             mut_scale=0.3),            # H1 + H3
+    # H2: conditional reproduction AND death on a heritable key (low nibble of
+    # ORDER). spawn_code != death_code, so key==15 rings reproduce and never
+    # die, key==0 rings die and never reproduce, others persist statically.
+    "h2_protected":    dict(protect=CORE, spawn_code=15, death_code=0),
+    "h2_key_only":     dict(protect=((28, 32),), spawn_code=15, death_code=0),
+    "h2_unprotected":  dict(spawn_code=15, death_code=0),   # control: key not heritable
 }
 
 
@@ -40,6 +48,15 @@ def main():
         path = os.path.join(args.outdir, f"exp_{name}.npz")
         u.save_history(path)
         m = analyze.summarize(path, label=name)
+        if kw.get("spawn_code") is not None:
+            import numpy as np
+            d = np.load(path)
+            ks = analyze.key_share_series(d["bits"], d["occ"],
+                                          kw.get("key_span", (28, 32)),
+                                          kw["spawn_code"])
+            print(f"  key==spawn_code share   {ks[0]:.3f} -> {ks[-1]:.3f}   "
+                  f"(selection signal; chance = {1/16:.3f})")
+            m["key_final"] = float(ks[-1])
         rows.append((name, m))
 
     print("\n\n==== comparison (means over run / last ticks) ====")
