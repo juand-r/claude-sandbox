@@ -40,10 +40,20 @@ not two halves to be bridged. (An earlier draft reported the spatial version as
 "unstructured"; that was a measurement error --- Moran's I on categorical rule
 numbers --- corrected in Reflection R1.)
 
+On top of this, emergent heredity unlocks **robust adaptation**: a directional
+selective gate that imposed heredity could push only weakly (and fatally ---
+E2/E3 went extinct) drives a trait from chance to near-fixation (0.06 -> ~0.75,
+every seed, no extinction) once self-templating makes the whole genome reliably
+heritable. So the full chain the project set as its success criterion ---
+persistence, heredity, adaptation --- now holds, all on emergent (not imposed)
+heredity.
+
 What the substrate has *not* yet shown is that these emergent domains are
 **self-maintaining** (autopoietic) rather than dynamic clusters churned by
-long-range transformation, and whether anything open-ended (sustained novelty
-rather than a fixed regime) ever arises. Those are the live questions.
+long-range transformation, and whether anything **open-ended** (a gradient
+never finished climbing, sustained novelty rather than a fixed regime) ever
+arises. The `selftmpl_local` regime sustains structured novelty for thousands
+of ticks but at a slowly declining rate. Those are the live questions.
 
 ---
 

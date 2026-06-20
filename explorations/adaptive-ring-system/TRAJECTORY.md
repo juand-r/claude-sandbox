@@ -62,8 +62,13 @@ or dynamic clusters churned by long-range transformers? And does anything
 
 (newest first; each entry: which branch, what was tried, outcome pointer)
 
-- E10 [B2] next: couple emergent heredity (self-templating) to a DIRECTIONAL
-  selective gradient -> seek adaptation (improvement), not just exploration.
+- E11 [B3] next: frequency-dependent / competitive dynamics (e.g. spatial
+  cyclic dominance) -> seek non-freezing, open-ended adaptation + striking
+  spatial patterns (spirals).
+- E10 [B2] [done] emergent heredity unlocks ROBUST adaptation: key-gate drives
+  trait 0.06 -> 0.75 (vs 0.11 imposed, vs extinction in E3). Full chain
+  persistence->heredity->adaptation now holds on emergent heredity.
+  EXPERIMENTS.md E10.
 - R2 [reflection] [done] phase-diagram of regimes; selftmpl_local is the
   richest (structured sustained novelty). Frontier = open-endedness, adaptation,
   autopoiesis-of-dynamic-domains. EXPERIMENTS.md R2.

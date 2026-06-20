@@ -708,3 +708,61 @@ mutation/turnover that avoids both freeze and noise.
 pressure to seek adaptation) looks higher-value than more B5 substrate sweeps,
 because structure now exists and the missing element is *direction*. I will
 pursue adaptation next (E10+), then return to a long open-endedness run.
+
+---
+
+## E10 --- Emergent heredity unlocks robust directional adaptation
+
+### Motivation
+
+In E2/E3 directional selection on a heritable key was *fragile*: it plateaued
+near 0.10 and pushing it caused extinction, because heredity was imposed by
+freezing bits while the rest of the genome (and reproduction) stayed noisy. Now
+that self-templating supplies *emergent* heredity, does the same directional
+gate work?
+
+### Design
+
+Local addressing; reproduction gated on `key == 15` (directional pressure),
+death on `key == 0`. Compare the heredity mechanism: imposed (protect the key
+bits, E2-style) vs emergent (self-templating). Key-15 share is the adaptation
+signal (chance = 0.0625). 4 seeds, 600 ticks.
+
+### Observation
+
+| heredity mechanism (local, key-gated) | key-15 end share | population |
+|---------------------------------------|-----------------:|-----------:|
+| imposed (protect key bits)            | 0.10--0.12       | ~250 |
+| **emergent (self-templating)**        | **0.70--0.77**   | 254--256 |
+| emergent + short range (range 2)      | 0.74--0.76       | 256 |
+| *control:* self-templating, **no gate** | 0.10--0.15     | --- |
+
+### Interpretation
+
+- **Emergent heredity makes directional selection strong and robust.** The
+  identical key-gate that imposed heredity could push only to ~0.11 reaches
+  ~0.75 (12x chance) under self-templating, across every seed, with the
+  population full and stable --- none of E3's extinction.
+- **The gate is what drives it.** Self-templating without the gate leaves
+  key-15 at ~0.12 (mild drift enrichment from domain formation), so the rise
+  to 0.75 is selection on the imposed gradient, not an artifact of
+  self-templating.
+- **Why imposed heredity failed and emergent heredity works.** Protecting the
+  key makes the *tag* heritable but leaves the rest of the genome and the spawn
+  machinery noisy, and the universe saturates with immortal non-reproducers
+  (E2/E3) --- so a key-15 ring is not reliably a good replicator. Self-templating
+  makes the *whole* genome viable and self-consistent, so key-15 rings
+  reproduce reliably, form domains, and spread. Reliable heredity is the
+  precondition selection needed all along.
+
+### Takeaway
+
+This is the project's first instance of strong, robust **adaptation**:
+directional selection driving a trait from chance (0.06) to fixation-approaching
+(0.75) without fragility, built on emergent heredity. Together with E6
+(emergent heredity + domains) and E9 (sustained novelty), self-templating in a
+local medium now supports the full chain --- persistence, heredity, and
+adaptation --- that the project set out (RESEARCH_PLAN section 1) as the
+operational definition of adaptive self-organization. The remaining frontier is
+*open-ended* adaptation (a gradient the system never finishes climbing) rather
+than this single imposed target.
