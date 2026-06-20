@@ -1,0 +1,88 @@
+========================================
+QAT-CPU End-to-End Training
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+
+Data: 1115394 chars loaded
+Train: 1003854 tokens, Val: 111540 tokens
+
+Model: 2 layers, dim=512, heads=8, hidden=2048
+Parameters: 6490624 (6490.6K)
+
+--- Training: FP32 ---
+Steps: 5000, seq_len: 64, lr: 0.0003
+  Step    0/5000: loss=4.9593 (smooth=4.9593), val_ppl=65.11, 145.1 ms/step
+  Step 1000/5000: loss=2.3322 (smooth=2.5076), val_ppl=13.66, 113.6 ms/step
+  Step 2000/5000: loss=2.3717 (smooth=2.3860), val_ppl=11.35, 116.6 ms/step
+  [Sample] The ses oaim tisst this an,?A arive my ben ther, cat th a dit of.?Aimives whinin, thilllont h theathuce wo thy itithoroutisure w
+  Step 3000/5000: loss=2.4310 (smooth=2.2380), val_ppl=10.11, 118.3 ms/step
+  Step 4000/5000: loss=2.3283 (smooth=2.1901), val_ppl=9.39, 117.8 ms/step
+  Step 4999/5000: loss=2.0725 (smooth=2.1011), val_ppl=8.65, 116.7 ms/step
+
+  Training complete: 626.3 sec (125.3 ms/step)
+  Final val perplexity: 8.65
+
+  --- Generated Samples (FP32) ---
+  [Prompt: "The "]
+  The a pry.?Hot breisermice, do that to st my ster poust boch thers te bir, lise cadre s, ous ono by t wacto, o, aclithare tompe 
+
+  [Prompt: "KING:
+"]
+  KING:?Sur ber a cake thime tobfion grace will beithe somor a re, aithatithourt stharrr abrese d me whe,?Ty thelandomous diche th
+
+  [Prompt: "To be or not"]
+  To be or nothis bot dou the mes this,?Th sot lone be cand comesces iorcelice bartho by t wome age we the: ken liose ust, ton, My
+
+
+--- Training: QAT (INT8 fwd, FP32 bwd) ---
+Steps: 5000, seq_len: 64, lr: 0.0003
+  Step    0/5000: loss=4.9624 (smooth=4.9624), val_ppl=65.13, 98.0 ms/step
+  Step 1000/5000: loss=2.3945 (smooth=2.5041), val_ppl=13.62, 81.4 ms/step
+  Step 2000/5000: loss=2.2992 (smooth=2.3841), val_ppl=11.31, 75.2 ms/step
+  [Sample] The ses mainespert this an.??ABIRYORITEDEO:?LUSGo coms.??DEIS and I atr thy the NRUSTETIF win the s, I lowerive thisupsouthor fr
+  Step 3000/5000: loss=2.3936 (smooth=2.2310), val_ppl=10.08, 79.6 ms/step
+  Step 4000/5000: loss=2.3114 (smooth=2.2026), val_ppl=9.40, 76.8 ms/step
+  Step 4999/5000: loss=2.0689 (smooth=2.1086), val_ppl=8.75, 80.6 ms/step
+
+  Training complete: 408.2 sec (81.6 ms/step)
+  Final val perplexity: 8.75
+
+  --- Generated Samples (QAT (INT8 fwd, FP32 bwd)) ---
+  [Prompt: "The "]
+  The a suterrour thereene clifeere isto spart.??Sharrow-??NANGENCUT:??AMERCLINTh PE: glos loullerily t,-----------?TPRGANo? t, d 
+
+  [Prompt: "KING:
+"]
+  KING:?NoH ano, a e sor whomett he mes allovem a surs;?Thou a so wame hitorouly so atho a thouce me whe hes theale thithank sthir
+
+  [Prompt: "To be or not"]
+  To be or not. Thas's praterce, ar somfor spuld;?Tham a mis semonere pom t I de stho by thowe I an wh the ingome ne athouthorerat
+
+
+========================================
+COMPARISON
+========================================
+                                FP32        QAT
+Val Perplexity:                 8.65       8.75
+Total Time (sec):              626.3      408.2
+ms/step:                       125.3       81.6
+
+QAT perplexity ratio:  1.011 (1.0 = matches FP32)
+QAT speedup:           1.53x
+
+Result: QAT matches FP32 quality (<5% perplexity increase).

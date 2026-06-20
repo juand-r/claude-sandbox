@@ -1,0 +1,121 @@
+========================================
+QAT-CPU End-to-End Training
+========================================
+CPU: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz
+Cores: 16
+Features:
+  SSE4.2:       YES
+  AVX2:         YES
+  FMA:          YES
+  AVX-512F:     YES
+  AVX-512BW:    YES
+  AVX-512 VNNI: YES
+  AVX-512 BF16: YES
+  AMX-TILE:     YES
+  AMX-INT8:     YES
+  AMX-BF16:     YES
+Kernel dispatch:
+  INT8 GEMM: AVX-512 VNNI
+  FP32 GEMM: AVX-512
+
+Data: 1115394 chars loaded
+Train: 1003854 tokens, Val: 111540 tokens
+
+Model: 4 layers, dim=512, heads=8, hidden=2048
+Batch: 8 seqs x 64 tokens = 512 tokens/step
+Parameters: 12849664 (12849.7K, 12.85M)
+Est. FLOPs/step: 38856.03M (fwd+bwd, 512 tokens)
+Random baseline: ppl=128, bpb=7.00
+
+--- Training: FP32 ---
+Steps: 10000, seq_len: 64, lr: 0.0003
+  Step    0/10000: loss=5.1653 (smooth=5.1653), val_ppl=82.49, bpb=6.366, 737.0 ms/step, 695 tok/s
+  Step 1000/10000: loss=2.0262 (smooth=1.9732), val_ppl=7.67, bpb=2.940, 522.4 ms/step, 980 tok/s
+  Step 2000/10000: loss=1.6571 (smooth=1.7034), val_ppl=5.95, bpb=2.573, 677.7 ms/step, 755 tok/s
+  [Sample] The set o' here to the hath a bout,?Is beg them we set a bear sone ilived y the aronononononich she y alovetousetonot t, were moronaleth k h tinotheth; amee me ononononorit the ame onalousp-rrinonoveve so
+  Step 3000/10000: loss=1.7464 (smooth=1.6024), val_ppl=5.25, bpb=2.391, 392.0 ms/step, 1306 tok/s
+  Step 4000/10000: loss=1.4973 (smooth=1.5242), val_ppl=4.88, bpb=2.288, 375.1 ms/step, 1365 tok/s
+  Step 5000/10000: loss=1.4266 (smooth=1.4695), val_ppl=4.61, bpb=2.205, 463.7 ms/step, 1104 tok/s
+  [Sample] The paude death to this chance offence alone.??KING RICHARD III:?HARD y, Iwaverellld by, hy, 'tareretarestaritaritaro, s. lo, horeld merarerarelld teld, s carere teretaurererere: h, mares tarond hutave s 
+  Step 6000/10000: loss=1.4095 (smooth=1.4474), val_ppl=4.45, bpb=2.153, 444.0 ms/step, 1153 tok/s
+  Step 7000/10000: loss=1.3680 (smooth=1.3967), val_ppl=4.33, bpb=2.113, 409.5 ms/step, 1250 tok/s
+  [Sample] The set odd hourse this be daily words and sking???MERCU:?Here ise isese ave, se tse fusitt h t t t wainswathousehe wat witt hathe Linounourath vefuse y t h mit he sesesenousenonop nonousitensele wont are
+  Step 8000/10000: loss=1.4606 (smooth=1.3781), val_ppl=4.24, bpb=2.084, 399.9 ms/step, 1280 tok/s
+  Step 9000/10000: loss=1.4533 (smooth=1.3708), val_ppl=4.10, bpb=2.037, 407.9 ms/step, 1255 tok/s
+  Step 9999/10000: loss=1.2801 (smooth=1.3348), val_ppl=4.11, bpb=2.038, 435.1 ms/step, 1177 tok/s
+
+  Training complete: 4731.1 sec (473.1 ms/step)
+  Final val loss: 1.4124 nats
+  Final val perplexity: 4.11
+  Final val BPB: 2.038
+  Throughput: 1082 tok/s
+  Effective TFLOPS: 0.0821
+
+  --- Generated Samples (FP32) ---
+  [Prompt: "The "]
+  The bestrength from sugger'd in;?And, thinks this ling fately havimig boned's p d ave'gine, bone cous w avig mat ates bouly bus t ate re res at ch bis wimote at ous h bougs it I h d be his gore the hes he
+
+  [Prompt: "KING:
+"]
+  KING:?Proceed a charge which, for her brought fits.??MENENIUS:?If disisithe, wa, h mith I buse a, he me mono, th, she, a, I na, he, mith, h thousthe buth ba, he I h, indithe sif fithe batith, ce, mesith h A
+
+  [Prompt: "To be or not"]
+  To be or nothing one roble's grave;?So many have been gone them re he futhare arout burouts han e wigly me tharine arourout funithoure? ararouraroury me be p wile thararit mare toune urarithe he he arare tigly de
+
+
+--- Training: QAT (INT8 fwd, FP32 bwd) ---
+Steps: 10000, seq_len: 64, lr: 0.0003
+  Step    0/10000: loss=5.1654 (smooth=5.1654), val_ppl=82.49, bpb=6.366, 451.7 ms/step, 1133 tok/s
+  Step 1000/10000: loss=2.0224 (smooth=1.9752), val_ppl=7.61, bpb=2.928, 338.3 ms/step, 1513 tok/s
+  Step 2000/10000: loss=1.6216 (smooth=1.7069), val_ppl=5.98, bpb=2.579, 450.9 ms/step, 1135 tok/s
+  [Sample] The say o'e, withing the gal a nown not him.??ROMEO:?Unce hath ise istreldsee share sererere Inoure wally, the'lre sustherenf ly! h pely ishath thely ronore me; h'le wereath, sp se nh gristh, sthatwewe st
+  Step 3000/10000: loss=1.7753 (smooth=1.6022), val_ppl=5.28, bpb=2.401, 383.0 ms/step, 1337 tok/s
+  Step 4000/10000: loss=1.5044 (smooth=1.5253), val_ppl=4.90, bpb=2.294, 383.7 ms/step, 1334 tok/s
+  Step 5000/10000: loss=1.4329 (smooth=1.4749), val_ppl=4.48, bpb=2.164, 395.1 ms/step, 1296 tok/s
+  [Sample] The set o' thy love.??KING RICHARD III:?How now, can that deserve an ts t y t, it, s dith, h Cy t t y anowathore the. thous: g wit I ous it!?Tisthous st th chit, t. norithous th t:?I aly, thithe itwe? and
+  Step 6000/10000: loss=1.4206 (smooth=1.4462), val_ppl=4.44, bpb=2.150, 377.6 ms/step, 1356 tok/s
+  Step 7000/10000: loss=1.3834 (smooth=1.3881), val_ppl=4.27, bpb=2.094, 349.8 ms/step, 1464 tok/s
+  [Sample] The revenber with but so hand and there done is the crown?Discoure hanurifuns orante curis; h t orise abut tite ts ourorourore wis abis, is ann tis t ovabe bly man orororis te mance n e. tis wis ity we or
+  Step 8000/10000: loss=1.4278 (smooth=1.3773), val_ppl=4.20, bpb=2.071, 427.6 ms/step, 1197 tok/s
+  Step 9000/10000: loss=1.4232 (smooth=1.3693), val_ppl=4.12, bpb=2.043, 375.4 ms/step, 1364 tok/s
+  Step 9999/10000: loss=1.2957 (smooth=1.3380), val_ppl=4.11, bpb=2.039, 443.3 ms/step, 1155 tok/s
+
+  Training complete: 3996.5 sec (399.6 ms/step)
+  Final val loss: 1.4131 nats
+  Final val perplexity: 4.11
+  Final val BPB: 2.039
+  Throughput: 1281 tok/s
+  Effective TFLOPS: 0.0972
+
+  --- Generated Samples (QAT (INT8 fwd, FP32 bwd)) ---
+  [Prompt: "The "]
+  The city; not she so thing.??KING RICHARD IIII:?We have been so winonelenenitithafay ithatitenenonseret ay, belonathenenonoulon t anononeneteethawanonititirit s; doneelonay ks I k heitensedondononononseno
+
+  [Prompt: "KING:
+"]
+  KING:?Sum all a charge when you have, I do bear?my soul! pardon y ale tititinin s aly, a, ane ak me:?Th nte, ouage, tith t ple, mery, minouan y, y s anouabably, aly tindouaman I cith h anouaby ly, h; ouage 
+
+  [Prompt: "To be or not"]
+  To be or nother counsel the lives?To the nose were be contented oueded but?Baledy, aly't ts haled wedoued hit it, nes. ites es ts, ches, d out aly ts ly bededy aly, aly's.?Paly th aly.??Ifuedit aly, t t dit med i
+
+
+========================================
+COMPARISON
+========================================
+                                FP32        QAT
+--- Quality ---
+Val Loss (nats):              1.4124     1.4131
+Val Perplexity:                 4.11       4.11
+Val BPB:                       2.038      2.039
+--- Speed ---
+Total Time (sec):             4731.1     3996.5
+ms/step:                       473.1      399.6
+Tokens/sec:                     1082       1281
+Effective TFLOPS:             0.0821     0.0972
+
+--- Summary ---
+QAT perplexity ratio:  1.001 (1.0 = matches FP32)
+QAT BPB delta:         +0.001 bits/byte
+QAT speedup:           1.18x
+
+Result: QAT matches FP32 quality (<5% perplexity increase).
