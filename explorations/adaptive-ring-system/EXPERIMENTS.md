@@ -1227,6 +1227,61 @@ generations. Demonstrated in `spiral_rps.py`; now also a live mode in
 
 ---
 
+## E19 --- Mobility integrated into the ring dynamics (RPS from the real substrate)
+
+### Motivation
+
+E18's spirals came from a *standalone* model; in the artifact the RPS toggle
+bypassed the ring engine, so no other knob mattered. The goal here: make cyclic
+competition a property of the **real ring dynamics** --- rings that physically
+move --- so spatial waves emerge from the substrate itself and the other
+mechanisms (transformation, mutation, self-templating) stay in effect.
+
+### Design
+
+Add a `mobility` knob to `ring_system.py`: after each tick, perform
+`mobility * nmax` random adjacent (von Neumann) swaps of neighbouring slots
+(genome + occupancy + id). Combined with the existing `cyclic_dominance` +
+`overwrite_birth` + heritable `cyclic_field`, this is cyclic competition with
+diffusion inside the real `step()`. The artifact's RPS mode now runs the real
+step (no bypass).
+
+### Observation (80x80, transform off, mut x0.01, 450 ticks)
+
+- **mobility 0** -> grainy small clusters (as E16/E17).
+- **mobility 0.2** -> large, smooth, interlocking cyclic domains with curved
+  wave-fronts; balanced three-type coexistence (~2200/2400/1800).
+  (`sample_integrated_rps.png`, `out/integ_rps.gif`.)
+
+With transformation *on*, the death bit churns (~half die per tick) and the
+pattern is grainy/noisy; clean structure needs transform off + low mutation.
+
+### Interpretation
+
+Mobility is confirmed as the organising ingredient *within the real substrate*:
+diffusion turns the static clustered coexistence into large moving cyclic
+domains/fronts. Because this runs in the real `step()`, the other knobs are live
+again (mutation noise fragments the domains at high `mut_scale`; transformation
+adds death-bit churn; self-templating can gate reproduction) --- fixing the
+earlier "only mobility matters" complaint.
+
+Honest caveat: the integrated version uses the substrate's *overwrite* births
+(direct replacement) with *synchronous* updates, so it produces large smooth
+cyclic **coexistence waves** rather than the razor-sharp *rotating spirals* of
+the empty-mediated, asynchronous Reichenbach model (standalone E18). Both
+demonstrate that mobility is the missing ingredient; crisp rotating spirals
+specifically require the empty-mediated reactions, which remain available in
+`spiral_rps.py`.
+
+### Takeaway
+
+Cyclic competition + mobility is now integrated into the ring dynamics: spatial
+cyclic waves emerge from the real substrate, with all other knobs in effect. The
+artifact exposes it as the RPS toggle + mobility slider (recommended for clean
+waves: transform off, mobility ~0.2, low mut, grid >= 64).
+
+---
+
 ## Reflection R4 --- the complexity ceiling is real and layered
 
 The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing
