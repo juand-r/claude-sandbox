@@ -26,6 +26,7 @@ The full specification and every design decision (with rationale) is in
 | `spatial_probes.py`   | E5/E8 domain-trajectory and invasion probes        |
 | `EXPERIMENTS.md`      | experiment log E1--E13 (+ reflections), full detail |
 | `TRAJECTORY.md`       | the tree of explored paths (map of the program)    |
+| `REFERENCES.md`       | related literature + why each is relevant          |
 | `NOTES.md`            | running log of observations                         |
 
 The simulator has experimental knobs --- `mut_scale`, `protect`,

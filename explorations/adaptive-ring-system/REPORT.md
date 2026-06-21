@@ -462,6 +462,7 @@ Beyond the ring system (a deliberate new substrate):
 | `TRAJECTORY.md` | the tree of explored paths |
 | `DESIGN.md` | faithful spec + addressing modes + knob table |
 | `RESEARCH_PLAN.md` | operational definitions, metrics, roadmap |
+| `REFERENCES.md` | related literature + why each is relevant |
 | `artifact.html` | interactive dashboard with live knobs + findings guide |
 
 Headline commands:

@@ -183,6 +183,44 @@
   </div>
 </div>
 
+<div class="panel" style="margin:0 18px 40px; max-width:1000px;">
+  <h2>REFERENCES &amp; RELATED WORK</h2>
+  <div class="note" style="max-width:920px; margin-bottom:8px;">
+    Background literature for the phenomena this project touches, and why each is
+    relevant. These frame the concepts and the spiral model; they are not inputs
+    to the simulations. (Citation details from memory &mdash; verify before
+    formal use.)
+  </div>
+  <ol style="font-size:12px; line-height:1.5; color:var(--ink); max-width:960px; padding-left:20px;">
+    <li><b>Wolfram, "Statistical mechanics of cellular automata," Rev. Mod. Phys. 55 (1983); <i>A New Kind of Science</i> (2002).</b>
+      &mdash; Elementary cellular automata and the 0&ndash;255 rule numbering used as each ring's transformation primitive.</li>
+    <li><b>Cook, "Universality in elementary cellular automata," Complex Systems 15 (2004).</b>
+      &mdash; Rule 110 is Turing-complete: a single ECA rule can compute, yet (E15) a single 8-bit rule still is not a <i>composable</i> substrate &mdash; context for the complexity ceiling.</li>
+    <li><b>Langton, "Computation at the edge of chaos," Physica D 42 (1990).</b>
+      &mdash; The order/chaos boundary where information is both stored and transmitted; frames E9's "edge-of-chaos" sweet spot (structured sustained novelty).</li>
+    <li><b>Eigen, "Selforganization of matter and the evolution of biological macromolecules," Naturwissenschaften 58 (1971).</b>
+      &mdash; Quasispecies and the error threshold: why "zero mutation does not exist" yet too much mutation dissolves heredity (E3 fragility; the mutation/heredity tension).</li>
+    <li><b>Maturana &amp; Varela, <i>Autopoiesis and Cognition</i> (1980).</b>
+      &mdash; Autopoiesis = a structure that actively maintains itself; the property probed (and not found) for the emergent domains in E5/E5b.</li>
+    <li><b>Kauffman, <i>The Origins of Order</i> (1993); autocatalytic sets.</b>
+      &mdash; Self-maintaining cycles of mutual production; frames the E1 finding that transformation builds hubs but suppresses cycles, and the autopoiesis question.</li>
+    <li><b>May &amp; Leonard, "Nonlinear aspects of competition between three species," SIAM J. Appl. Math. 29 (1975).</b>
+      &mdash; Foundational cyclic (rock-paper-scissors) competition dynamics behind E11/E16/E18.</li>
+    <li><b>Kerr, Riley, Feldman &amp; Bohannan, "Local dispersal promotes biodiversity in a real-life game of rock-paper-scissors," Nature 418 (2002).</b>
+      &mdash; <i>Local</i> interaction maintains coexistence; mirrors our finding that spatial separation (not self-maintenance) sustains the ecology (E5, E16).</li>
+    <li><b>Reichenbach, Mobilia &amp; Frey, "Mobility promotes and jeopardizes biodiversity in rock-paper-scissors games," Nature 448 (2007).</b>
+      &mdash; The spiral-wave result: spirals require an intermediate <i>mobility</i> (exchange) term. This is exactly the model in E18, and why the no-mobility E16/E17 showed no spirals.</li>
+    <li><b>Turing, "The chemical basis of morphogenesis," Phil. Trans. R. Soc. B 237 (1952).</b>
+      &mdash; Reaction-diffusion pattern formation; the intellectual lineage of "emergent spatial patterns from local rules."</li>
+    <li><b>Ray, "An approach to the synthesis of life" (Tierra), in <i>Artificial Life II</i> (1991).</b>
+      &mdash; Self-replicating machine-code organisms seeded from a hand-written ancestor; the template for option 3's plan (self-replication must usually be seeded).</li>
+    <li><b>Lenski, Ofria, Pennock &amp; Adami, "The evolutionary origin of complex features," Nature 423 (2003) (Avida).</b>
+      &mdash; Complex functions evolve when rewarded via logic tasks on a composable instruction set; directly motivates E15's task and the option-3 substrate.</li>
+    <li><b>Moran, "Notes on continuous stochastic phenomena," Biometrika 37 (1950).</b>
+      &mdash; Moran's I spatial autocorrelation: the metric used early and then flagged as wrong for categorical rule fields (Reflection R1).</li>
+  </ol>
+</div>
+
 <script>
 "use strict";
 // ---- model constants (mirror ring_system.py) ---------------------------
