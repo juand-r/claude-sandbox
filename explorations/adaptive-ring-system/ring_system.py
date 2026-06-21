@@ -201,6 +201,10 @@ class Universe:
                                     # field % 3 instead of rule%3, and hold it
                                     # heritable (auto-protected) -> symmetric
                                     # types -> spirals
+    mobility: float = 0.0           # E19: per-tick adjacent-swap rate (rings
+                                    # physically diffuse). mobility*nmax random
+                                    # von-Neumann swaps; spatial (needs square
+                                    # grid). Enables RPS spirals in real dynamics.
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -402,6 +406,22 @@ class Universe:
             if flips.any():
                 bits1[idx] ^= flips.astype(np.uint8)
                 amb += 1
+
+        # 7. mobility (E19): random adjacent swaps so rings physically diffuse.
+        # This is the ingredient that turns cyclic competition into spiral waves.
+        if self.mobility > 0.0:
+            side = self.side
+            for _ in range(int(self.mobility * self.nmax)):
+                p = int(self.rng.integers(self.nmax))
+                x, y = p % side, p // side
+                d = int(self.rng.integers(4))
+                if d == 0:   q = ((y - 1) % side) * side + x
+                elif d == 1: q = ((y + 1) % side) * side + x
+                elif d == 2: q = y * side + (x - 1) % side
+                else:        q = y * side + (x + 1) % side
+                bits1[[p, q]] = bits1[[q, p]]
+                occ1[p], occ1[q] = occ1[q], occ1[p]
+                self.ids[p], self.ids[q] = self.ids[q], self.ids[p]
 
         self.bits = bits1
         self.occupied = occ1
