@@ -69,7 +69,7 @@
     <input type="checkbox" id="local"/> local addressing (H4)</label>
   <label title="E6: reproduction gated on self-consistency (how well a ring survives its own rule). Watch self-pres% climb. Without local, the system freezes into a self-consistent clone.">
     <input type="checkbox" id="selftmpl"/> self-templating (E6)</label>
-  <label title="E18: rock-paper-scissors with MOBILITY (selection/reproduction/exchange). Colours show type. Spirals form at intermediate mobility on a big grid.">
+  <label title="E18: rock-paper-scissors with MOBILITY (selection/reproduction/exchange). STANDALONE model -- the ring-dynamics knobs (mutations, protect, transform, H2, local, self-templating) are ignored and greyed out; only mobility, grid, seed, speed matter. Spirals form at intermediate mobility on a big grid.">
     <input type="checkbox" id="rps"/> cyclic RPS + spirals (E18)</label>
   <label title="E18 mobility (adjacent-swap rate). ~0.2 gives spirals; too low = grainy clusters, too high = mixed.">mobility
     <input id="mobility" type="range" min="0" max="0.6" step="0.02" value="0.2"/>
@@ -583,7 +583,18 @@ document.getElementById('reset').onclick=()=>{ playing=false;
   document.getElementById('play').classList.add('primary'); reset(); };
 // changing grid size or RPS mode rebuilds the world
 document.getElementById('gridsize').onchange=()=>{ reset(); };
-document.getElementById('rps').onchange=()=>{ reset(); };
+document.getElementById('rps').onchange=()=>{ updateControls(); reset(); };
+// when RPS is on it is a standalone model: only mobility (+ grid/seed/speed)
+// matters, so grey out the ring-dynamics knobs to make that explicit.
+function updateControls(){
+  const rps=document.getElementById('rps').checked;
+  ['muton','mutscale','protect','notransform','h2','local','selftmpl'].forEach(id=>{
+    const e=document.getElementById(id);
+    e.disabled=rps; if (e.parentElement) e.parentElement.style.opacity = rps?0.35:1;
+  });
+  const mob=document.getElementById('mobility');
+  mob.disabled=!rps; if (mob.parentElement) mob.parentElement.style.opacity = rps?1:0.35;
+}
 const sp=document.getElementById('speed'), spv=document.getElementById('speedval');
 sp.oninput=()=>{ spv.textContent=sp.value+' ticks/s'; };
 spv.textContent=sp.value+' ticks/s';
@@ -594,6 +605,7 @@ const mob=document.getElementById('mobility'), mobv=document.getElementById('mob
 mob.oninput=()=>{ mobv.textContent=mob.value; };
 mobv.textContent=mob.value;
 
+updateControls();
 reset();
 requestAnimationFrame(loop);
 </script>
