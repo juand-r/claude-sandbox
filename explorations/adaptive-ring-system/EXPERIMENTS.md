@@ -1282,6 +1282,55 @@ waves: transform off, mobility ~0.2, low mut, grid >= 64).
 
 ---
 
+## E20 --- Native Reichenbach spirals in the ring engine
+
+### Motivation
+
+E19's integrated RPS (overwrite + mobility) gave smooth coexistence waves, not
+the razor-sharp rotating spirals of the empty-mediated Reichenbach model. To get
+true spirals *from the real substrate*, add the empty-mediated reactions to the
+engine.
+
+### Design
+
+`reichenbach` mode (`ring_system.py`): random-sequential micro-updates on the
+real 36-bit genomes. Per micro-update pick a site + von-Neumann neighbour, then:
+exchange with prob `mobility`; else if both occupied, cyclic **selection**
+(loser -> empty); else **reproduction** of an occupied into an empty (a mutated
+copy, so birth mutation is live). type = `cyclic_field` % 3, carried in the
+genome and inherited. This replaces the CA birth/death with the three
+Reichenbach reactions, on the actual rings.
+
+### Observation (128x128, mobility 0.2, mut 0)
+
+Clear **rotating spiral waves** with curved arms and cores
+(`sample_reichenbach_spirals.png`, `out/reich_spirals.gif`); balanced three-type
+coexistence (~5500/5000/4600). Without mobility -> coarsening to large blobs;
+with mobility -> the characteristic spiral wavelength.
+
+### Interpretation
+
+Empty-mediated predation + reproduction + mobility, on the real genomes,
+produces genuine Reichenbach spirals natively --- the overwrite model (E19)
+could not, because fusing predation and reproduction (no empty intermediate)
+removes the excitable-medium structure spirals need.
+
+Honest scope: this is a **distinct birth/death rule**. In `reichenbach` mode the
+CA transformation, spawn/death bits, protection, H2 and self-templating do not
+operate --- the live knobs are **mutation** (birth mutation on reproduction) and
+**mobility**. That is inherent: true Reichenbach spirals require these specific
+reactions, not CA transformation. So the rings, genomes and mutation are real
+(more than the standalone `spiral_rps.py`), but transformation is set aside.
+
+### Takeaway
+
+The ring engine now has two cyclic modes: E19 overwrite+mobility (integrated
+with all CA knobs, smooth waves) and E20 reichenbach (distinct dynamics,
+mutation+mobility, true spirals). The artifact's RPS toggle uses E20 (spirals);
+the inapplicable CA knobs are greyed so it is explicit which controls act.
+
+---
+
 ## Reflection R4 --- the complexity ceiling is real and layered
 
 The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing

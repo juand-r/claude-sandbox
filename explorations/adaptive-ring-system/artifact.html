@@ -69,8 +69,8 @@
     <input type="checkbox" id="local"/> local addressing (H4)</label>
   <label title="E6: reproduction gated on self-consistency (how well a ring survives its own rule). Watch self-pres% climb. Without local, the system freezes into a self-consistent clone.">
     <input type="checkbox" id="selftmpl"/> self-templating (E6)</label>
-  <label title="E18/E19: cyclic rock-paper-scissors INTEGRATED into the real ring dynamics. A ring overwrites a Moore neighbour it beats (type=bits24-25); 'mobility' adds adjacent swaps -> spirals. All other knobs still apply (mutation, transform, self-templating). For clean spirals: transform off, mobility ~0.2, grid 96.">
-    <input type="checkbox" id="rps"/> cyclic RPS + spirals (E18)</label>
+  <label title="E20: native Reichenbach spirals -- empty-mediated cyclic dynamics on the real genomes (selection->empty, reproduction->fill, exchange=mobility). Live knobs: mutation (mut x) + mobility (CA-dynamics knobs don't apply here, greyed). For crisp spirals: mut x = 0, mobility ~0.2, grid 96.">
+    <input type="checkbox" id="rps"/> cyclic RPS + spirals (E20)</label>
   <label title="E18 mobility (adjacent-swap rate). ~0.2 gives spirals; too low = grainy clusters, too high = mixed.">mobility
     <input id="mobility" type="range" min="0" max="0.6" step="0.02" value="0.2"/>
     <span id="mobilityval" class="muted"></span></label>
@@ -168,10 +168,10 @@
       <td style="padding:4px 8px;">robust adaptation (emergent heredity unlocks selection)</td>
       <td style="padding:4px 8px;"><b>key=15%</b> climbs strongly (to ~0.75 in the engine)</td></tr>
     <tr style="border-top:1px solid #3a3f4c;">
-      <td style="padding:4px 8px;">E18/E19</td>
-      <td style="padding:4px 8px;"><b>cyclic RPS</b> + <b>transform off</b>, <b>grid 96</b>, <b>mobility &asymp; 0.2</b>, mut&times; low</td>
-      <td style="padding:4px 8px;">cyclic competition integrated into real dynamics + mobility &rarr; rotating spiral waves</td>
-      <td style="padding:4px 8px;">colours = type; spirals at mid mobility (0 = grainy clusters, high = mixed)</td></tr>
+      <td style="padding:4px 8px;">E20</td>
+      <td style="padding:4px 8px;"><b>cyclic RPS</b>, <b>grid 96</b>, <b>mut&times; = 0</b>, <b>mobility &asymp; 0.2</b></td>
+      <td style="padding:4px 8px;">native Reichenbach spirals (empty-mediated cyclic dynamics on real genomes)</td>
+      <td style="padding:4px 8px;">colours = type; rotating spirals at mid mobility (0 = grainy, high = mixed)</td></tr>
     </tbody>
   </table>
   <div class="note" style="max-width:920px; margin-top:8px;">
@@ -316,9 +316,10 @@ function step(){
   const transformOff = document.getElementById('notransform').checked;
   const h2 = document.getElementById('h2').checked;
   const selfT = document.getElementById('selftmpl').checked;
-  const rps = document.getElementById('rps').checked;     // cyclic competition (integrated)
+  const rps = document.getElementById('rps').checked;     // cyclic competition (Reichenbach)
   const mobility = parseFloat(document.getElementById('mobility').value);
-  const local = document.getElementById('local').checked || rps;  // rps implies spatial
+  if (rps){ stepReichenbach(mutScale, mobility); return; }
+  const local = document.getElementById('local').checked;
   const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
@@ -357,9 +358,6 @@ function step(){
   // H2: hold the key (bits 28..31) heritable so selection can act on it
   if (h2) for (let r=0;r<NMAX;r++){ const base=r*NB;
     for (let i=28;i<32;i++) nb[base+i] = b0[base+i]; }
-  // RPS: hold the type (bits 24..25) heritable so spatial competition is stable
-  if (rps) for (let r=0;r<NMAX;r++){ const base=r*NB;
-    nb[base+24]=b0[base+24]; nb[base+25]=b0[base+25]; }
 
   let activity = 0;
   for (const r of occList){ const base=r*NB;
@@ -368,51 +366,32 @@ function step(){
   const o1 = o0.slice();
   let births=0; const newborns = new Set();
 
-  if (rps){
-    // CYCLIC COMPETITION (integrated): every ring overwrites a Moore neighbour
-    // it beats (type = bits 24-25 mod 3), or colonises an empty one. Spread of
-    // the genome through the neighbourhood; mutation/self-templating still apply.
-    let spawners = occList.slice();
-    for (let i=spawners.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
-      [spawners[i],spawners[j]]=[spawners[j],spawners[i]]; }
-    for (const s of spawners){
-      if (selfT && rng() >= selfPreserve(b0, s) ** 2) continue;
-      const slot = MOORE[s][Math.floor(rng()*8)];
-      if (o0[slot]){ const ts=rpsType(b0,s), tn=rpsType(b0,slot);
-        if ((((ts-tn)%3)+3)%3 !== 1) continue; }   // overwrite only a type it beats
-      const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
-      for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1; nb[slot*NB+i]=bit; }
-      if (!o1[slot]) births++;
-      o1[slot]=1; newborns.add(slot);
-    }
-  } else {
-    // births (from snapshot spawn bits) -- before deaths
-    let spawners = [];
-    for (const s of occList){
-      if (b0[s*NB+SPAWN] !== 1) continue;
-      if (h2 && fieldVal(b0, s, KEY) !== 15) continue;   // gated reproduction
-      spawners.push(s);
-    }
-    for (let i=spawners.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
-      [spawners[i],spawners[j]]=[spawners[j],spawners[i]]; }
-    const filled = o0.slice();
-    let globalEmpty=null, gptr=0;
-    if (!local){ globalEmpty=[]; for (let r=0;r<NMAX;r++) if (!filled[r]) globalEmpty.push(r);
-      for (let i=globalEmpty.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
-        [globalEmpty[i],globalEmpty[j]]=[globalEmpty[j],globalEmpty[i]]; } }
-    for (const s of spawners){
-      if (selfT && rng() >= selfPreserve(b0, s) ** 2) continue;   // self-templating gate
-      let slot = -1;
-      if (local){ const cands = MOORE[s].filter(n => !filled[n]);
-        if (!cands.length) continue;
-        slot = cands[Math.floor(rng()*cands.length)]; }
-      else { while (gptr<globalEmpty.length && filled[globalEmpty[gptr]]) gptr++;
-        if (gptr>=globalEmpty.length) break; slot = globalEmpty[gptr++]; }
-      const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
-      for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1;
-        nb[slot*NB+i]=bit; }
-      o1[slot]=1; filled[slot]=1; newborns.add(slot); births++;
-    }
+  // births (from snapshot spawn bits) -- before deaths
+  let spawners = [];
+  for (const s of occList){
+    if (b0[s*NB+SPAWN] !== 1) continue;
+    if (h2 && fieldVal(b0, s, KEY) !== 15) continue;   // gated reproduction
+    spawners.push(s);
+  }
+  for (let i=spawners.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+    [spawners[i],spawners[j]]=[spawners[j],spawners[i]]; }
+  const filled = o0.slice();
+  let globalEmpty=null, gptr=0;
+  if (!local){ globalEmpty=[]; for (let r=0;r<NMAX;r++) if (!filled[r]) globalEmpty.push(r);
+    for (let i=globalEmpty.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
+      [globalEmpty[i],globalEmpty[j]]=[globalEmpty[j],globalEmpty[i]]; } }
+  for (const s of spawners){
+    if (selfT && rng() >= selfPreserve(b0, s) ** 2) continue;   // self-templating gate
+    let slot = -1;
+    if (local){ const cands = MOORE[s].filter(n => !filled[n]);
+      if (!cands.length) continue;
+      slot = cands[Math.floor(rng()*cands.length)]; }
+    else { while (gptr<globalEmpty.length && filled[globalEmpty[gptr]]) gptr++;
+      if (gptr>=globalEmpty.length) break; slot = globalEmpty[gptr++]; }
+    const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
+    for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1;
+      nb[slot*NB+i]=bit; }
+    o1[slot]=1; filled[slot]=1; newborns.add(slot); births++;
   }
 
   // deaths (from snapshot death bits)
@@ -459,6 +438,38 @@ function step(){
 // real step() (overwrite + mobility), so the OTHER knobs (mutation, transform,
 // self-templating) remain in effect -- it is no longer a standalone model.
 function rpsType(b, s){ return ((b[s*NB+24]<<1 | b[s*NB+25]) % 3); }
+
+// E20: native Reichenbach spirals -- empty-mediated cyclic dynamics on the REAL
+// genomes, random-sequential. Per micro-update pick a site + von-Neumann
+// neighbour: with prob mobility exchange them; else if both occupied apply
+// cyclic selection (loser -> empty); else reproduce an occupied into an empty
+// (mutated copy, so the mutation knob is live). Other ring knobs (transform,
+// protect, H2, self-templating) do not apply in this mode -- it is a distinct
+// birth/death rule, which is what true Reichenbach spirals require.
+function stepReichenbach(mutScale, pe){
+  for (let k=0;k<NMAX;k++){
+    const p=(rng()*NMAX)|0, x=p%SIDE, y=(p/SIDE)|0, d=(rng()*4)|0;
+    let q;
+    if      (d===0) q=((y-1+SIDE)%SIDE)*SIDE+x;
+    else if (d===1) q=((y+1)%SIDE)*SIDE+x;
+    else if (d===2) q=y*SIDE+(x-1+SIDE)%SIDE;
+    else            q=y*SIDE+(x+1)%SIDE;
+    if (rng() < pe){                                       // exchange (mobility)
+      for (let i=0;i<NB;i++){ const t=bits[p*NB+i]; bits[p*NB+i]=bits[q*NB+i]; bits[q*NB+i]=t; }
+      const t=occ[p]; occ[p]=occ[q]; occ[q]=t;
+    } else if (occ[p] && occ[q]){                          // selection -> empty
+      const tp=rpsType(bits,p), tq=rpsType(bits,q);
+      if ((((tp-tq)%3)+3)%3===1){ occ[q]=0; }
+      else if ((((tq-tp)%3)+3)%3===1){ occ[p]=0; }
+    } else if (occ[p] || occ[q]){                          // reproduction -> fill
+      const src = occ[p]? p : q, dst = occ[p]? q : p;
+      const pm = BIRTH_P[mutLevelAt(bits,src)] * mutScale;
+      for (let i=0;i<NB;i++){ let bit=bits[src*NB+i]; if (rng()<pm) bit^=1; bits[dst*NB+i]=bit; }
+      occ[dst]=1;
+    }
+  }
+  tickCount++; last={births:0,deaths:0,amb:0,activity:0}; recordMetrics();
+}
 
 function recordMetrics(){
   let pop=0, sumMut=0, k15=0, presSum=0; const geno=new Set(), rules=new Set();
@@ -598,11 +609,18 @@ document.getElementById('reset').onclick=()=>{ playing=false;
 // changing grid size or RPS mode rebuilds the world
 document.getElementById('gridsize').onchange=()=>{ reset(); };
 document.getElementById('rps').onchange=()=>{ updateControls(); reset(); };
-// RPS is now integrated into the real dynamics, so every knob is live. Mobility
-// only acts spatially (local addressing or RPS); dim it otherwise as a hint.
+// RPS (Reichenbach) is a distinct empty-mediated dynamics on the real genomes:
+// MUTATION and MOBILITY are live (and grid/seed/speed), but the CA-dynamics
+// knobs (transform, protect, H2, self-templating, local) do not apply -- grey
+// them so it is explicit. Mobility is dimmed when non-spatial.
 function updateControls(){
-  const spatial = document.getElementById('rps').checked || document.getElementById('local').checked;
+  const rps=document.getElementById('rps').checked;
+  ['protect','notransform','h2','selftmpl','local'].forEach(id=>{
+    const e=document.getElementById(id); e.disabled=rps;
+    if (e.parentElement) e.parentElement.style.opacity = rps?0.35:1;
+  });
   const mob=document.getElementById('mobility');
+  const spatial = rps || document.getElementById('local').checked;
   if (mob.parentElement) mob.parentElement.style.opacity = spatial?1:0.5;
 }
 document.getElementById('local').onchange=updateControls;

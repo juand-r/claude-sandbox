@@ -205,6 +205,11 @@ class Universe:
                                     # physically diffuse). mobility*nmax random
                                     # von-Neumann swaps; spatial (needs square
                                     # grid). Enables RPS spirals in real dynamics.
+    reichenbach: bool = False       # E20: empty-mediated cyclic dynamics on the
+                                    # real genomes (random-sequential selection
+                                    # -> empty, reproduction -> fill, exchange =
+                                    # mobility). Needs cyclic_field. -> true
+                                    # rotating spirals natively.
 
     bits: np.ndarray = field(init=False)
     occupied: np.ndarray = field(init=False)
@@ -300,8 +305,50 @@ class Universe:
         self.births_log.append((tick, self.next_id, int(self.ids[parent])))
         self.next_id += 1
 
+    def _reichenbach_tick(self) -> Metrics:
+        """E20: empty-mediated cyclic dynamics on the real genomes, random-
+        sequential (the Reichenbach-Mobilia-Frey reactions that give spirals):
+        per micro-update pick a site and a von-Neumann neighbour, then with
+        prob `mobility` exchange them, else if both occupied apply cyclic
+        selection (loser -> empty), else reproduce an occupied into an empty
+        (mutated copy). type = cyclic_field % 3 (held in the genome, inherited)."""
+        side, n = self.side, self.nmax
+        lo = self.cyclic_field[0]
+        bits, occ = self.bits, self.occupied
+        births = deaths = 0
+        for _ in range(n):
+            p = int(self.rng.integers(n)); x, y = p % side, p // side
+            d = int(self.rng.integers(4))
+            if d == 0:   q = ((y - 1) % side) * side + x
+            elif d == 1: q = ((y + 1) % side) * side + x
+            elif d == 2: q = y * side + (x - 1) % side
+            else:        q = y * side + (x + 1) % side
+            if self.rng.random() < self.mobility:                 # exchange
+                bits[[p, q]] = bits[[q, p]]
+                occ[p], occ[q] = occ[q], occ[p]
+                self.ids[p], self.ids[q] = self.ids[q], self.ids[p]
+            elif occ[p] and occ[q]:                               # selection
+                tp = (int(bits[p, lo]) * 2 + int(bits[p, lo + 1])) % 3
+                tq = (int(bits[q, lo]) * 2 + int(bits[q, lo + 1])) % 3
+                if (tp - tq) % 3 == 1:
+                    occ[q] = False; bits[q] = 0; self.ids[q] = 0; deaths += 1
+                elif (tq - tp) % 3 == 1:
+                    occ[p] = False; bits[p] = 0; self.ids[p] = 0; deaths += 1
+            elif occ[p] or occ[q]:                                # reproduction
+                src, dst = (p, q) if occ[p] else (q, p)
+                child = bits[src].copy()
+                pm = BIRTH_P[mut_level(bits[src])] * self.mut_scale
+                child ^= (self.rng.random(N_BITS) < pm).astype(np.uint8)
+                bits[dst] = child; occ[dst] = True
+                self.ids[dst] = self.next_id; self.next_id += 1; births += 1
+        self.tick_count += 1
+        self._snapshot()
+        return self._metrics(births, deaths, 0, 0)
+
     # -- the tick cycle ----------------------------------------------------
     def step(self) -> Metrics:
+        if self.reichenbach:
+            return self._reichenbach_tick()
         bits0 = self.bits
         occ0 = self.occupied
 
