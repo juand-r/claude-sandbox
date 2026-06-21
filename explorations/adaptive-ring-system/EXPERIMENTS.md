@@ -1171,6 +1171,62 @@ the mut x slider).
 
 ---
 
+## E18 --- Spirals require MOBILITY (correcting E16/E17)
+
+### The error in E16/E17
+
+E16/E17 tried to get rock-paper-scissors spirals with an **in-place overwrite**
+model (a ring overwrites a neighbour it beats; predation and reproduction fused;
+no empty sites; rings never move). That model can only produce grainy clustered
+coexistence, and I wrongly diagnosed the lack of spirals as a noise/grid-size
+issue. It is not: it is a **missing mechanism**.
+
+### What actually produces spirals
+
+The canonical cyclic-competition model (Reichenbach, Mobilia & Frey, Nature
+2007) needs three reactions on the lattice, applied to random adjacent pairs:
+
+- **selection** --- predator kills prey, leaving an *empty* site (B -> 0);
+- **reproduction** --- an occupied site fills an *empty* neighbour;
+- **exchange / mobility** --- two neighbours swap contents.
+
+The **mobility** term (absent from E16/E17 entirely) is the diffusion that
+organises random domains into rotating spirals, and spirals appear only at
+*intermediate* mobility. Implemented in `spiral_rps.py`.
+
+### Observation (160x160, 700 generations)
+
+Mobility sweep (pe = per-pair exchange probability):
+
+| pe (mobility) | pattern |
+|---------------|---------|
+| 0.03 | small grainy clusters (correlation length tiny) |
+| 0.08 | larger curved domains, arms forming |
+| **0.20** | **large, smooth rotating spiral waves** (the sweet spot) |
+| 0.50 | structures enlarge but break up toward well-mixed |
+
+(`out/_spiral_sweep.png`; the pe=0.2 animation is `out/spiral_pe02.gif` /
+`sample_spiral.png`.)
+
+### Interpretation
+
+Spirals are a mobility phenomenon. With no mobility the system sits in the
+clustered-coexistence phase (E16/E17); adding exchange and tuning it through the
+intermediate regime produces the textbook rotating spirals. Grid size only sets
+how many spiral cores fit; noise sets boundary sharpness; **mobility sets whether
+spirals exist at all.** The ring substrate's RPS lacked it, which is the real
+reason E16/E17 showed none --- a mechanism gap I should have identified instead
+of rationalising it as noise.
+
+### Takeaway
+
+To get spirals: use the three-reaction model *with* an exchange/mobility term at
+an intermediate rate (here pe~0.2), a reasonably large grid, and enough
+generations. Demonstrated in `spiral_rps.py`; now also a live mode in
+`artifact.html` (mobility slider).
+
+---
+
 ## Reflection R4 --- the complexity ceiling is real and layered
 
 The B7/B8 branch set out to break the E13 complexity ceiling by (a) allowing
