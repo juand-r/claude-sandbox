@@ -69,14 +69,18 @@
     <input type="checkbox" id="local"/> local addressing (H4)</label>
   <label title="E6: reproduction gated on self-consistency (how well a ring survives its own rule). Watch self-pres% climb. Without local, the system freezes into a self-consistent clone.">
     <input type="checkbox" id="selftmpl"/> self-templating (E6)</label>
-  <label title="E16: rock-paper-scissors among 3 heritable types (each overwrites the one it beats). Colours show type. Use a large grid + low mut for waves/spirals.">
-    <input type="checkbox" id="rps"/> cyclic RPS (E16)</label>
+  <label title="E18: rock-paper-scissors with MOBILITY (selection/reproduction/exchange). Colours show type. Spirals form at intermediate mobility on a big grid.">
+    <input type="checkbox" id="rps"/> cyclic RPS + spirals (E18)</label>
+  <label title="E18 mobility (adjacent-swap rate). ~0.2 gives spirals; too low = grainy clusters, too high = mixed.">mobility
+    <input id="mobility" type="range" min="0" max="0.6" step="0.02" value="0.2"/>
+    <span id="mobilityval" class="muted"></span></label>
   <label>grid
     <select id="gridsize" title="grid side; resets on change. Bigger = clearer spatial patterns but slower.">
       <option value="16">16&times;16</option>
       <option value="32">32&times;32</option>
       <option value="48">48&times;48</option>
-      <option value="64" selected>64&times;64</option>
+      <option value="64">64&times;64</option>
+      <option value="96" selected>96&times;96</option>
     </select></label>
   <span class="muted" style="font-size:11px;">&larr; live knobs (grid/RPS reset on change)</span>
 </div>
@@ -164,10 +168,10 @@
       <td style="padding:4px 8px;">robust adaptation (emergent heredity unlocks selection)</td>
       <td style="padding:4px 8px;"><b>key=15%</b> climbs strongly (to ~0.75 in the engine)</td></tr>
     <tr style="border-top:1px solid #3a3f4c;">
-      <td style="padding:4px 8px;">E16</td>
-      <td style="padding:4px 8px;"><b>cyclic RPS</b>, <b>grid 64</b>, mut&times; low (~0.1)</td>
-      <td style="padding:4px 8px;">3 heritable types compete (rock-paper-scissors)</td>
-      <td style="padding:4px 8px;">colours = type; balanced coexistence + chasing waves (bigger grid = clearer)</td></tr>
+      <td style="padding:4px 8px;">E18</td>
+      <td style="padding:4px 8px;"><b>cyclic RPS</b>, <b>grid 96</b>, <b>mobility &asymp; 0.2</b></td>
+      <td style="padding:4px 8px;">rock-paper-scissors with mobility &rarr; rotating spiral waves</td>
+      <td style="padding:4px 8px;">colours = type; spirals at mid mobility (too low = grainy, too high = mixed)</td></tr>
     </tbody>
   </table>
   <div class="note" style="max-width:920px; margin-top:8px;">
@@ -275,7 +279,7 @@ function step(){
   const h2 = document.getElementById('h2').checked;
   const local = document.getElementById('local').checked;
   const selfT = document.getElementById('selftmpl').checked;
-  if (document.getElementById('rps').checked){ stepRPS(mutScale); return; }
+  if (document.getElementById('rps').checked){ stepRPS(); return; }
   const KEY = [28, 32];   // 4-bit key = low nibble of ORDER
 
   const b0 = bits.slice(), o0 = occ.slice();
@@ -373,31 +377,35 @@ function step(){
   recordMetrics();
 }
 
-// E16 cyclic rock-paper-scissors: type = bits 24-25 mod 3 (heritable; not
-// transformed here). Each ring overwrites a random neighbour it beats, or
-// colonises an empty one. Colours show type. Large grid + low mut -> waves.
+// E18 spatial rock-paper-scissors WITH MOBILITY (Reichenbach-Mobilia-Frey):
+// type = bits 24-25 mod 3 (a beats b iff (a-b)%3==2). Random-sequential
+// micro-updates of adjacent pairs: selection (predator empties prey),
+// reproduction (fill empty neighbour), and EXCHANGE (swap = mobility). The
+// exchange rate (mobility slider) controls spiral formation; ~0.2 = spirals.
 function rpsType(b, s){ return ((b[s*NB+24]<<1 | b[s*NB+25]) % 3); }
-function stepRPS(mutScale){
-  const b0 = bits.slice(), o0 = occ.slice();
-  const occList = []; for (let r=0;r<NMAX;r++) if (o0[r]) occList.push(r);
-  for (let i=occList.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1));
-    [occList[i],occList[j]]=[occList[j],occList[i]]; }
-  const nb = b0.slice(), o1 = o0.slice(), filled = o0.slice();
-  let births=0, deaths=0;
-  for (const s of occList){
-    const n = MOORE[s][Math.floor(rng()*8)];
-    let win = false;
-    if (!filled[n]) win = true;                                  // colonise empty
-    else if (((rpsType(b0,s) - rpsType(b0,n) + 3) % 3) === 1) win = true;  // beats it
-    if (!win) continue;
-    const p = BIRTH_P[mutLevelAt(b0,s)] * mutScale;
-    for (let i=0;i<NB;i++){ let bit=b0[s*NB+i]; if (rng()<p) bit^=1; nb[n*NB+i]=bit; }
-    if (!o1[n]) births++;
-    o1[n]=1; filled[n]=1;
+function stepRPS(){
+  const pe = parseFloat(document.getElementById('mobility').value);
+  for (let k=0;k<NMAX;k++){
+    const p = (rng()*NMAX)|0, x = p%SIDE, y = (p/SIDE)|0, d = (rng()*4)|0;
+    let q;
+    if      (d===0) q = ((y-1+SIDE)%SIDE)*SIDE + x;
+    else if (d===1) q = ((y+1)%SIDE)*SIDE + x;
+    else if (d===2) q = y*SIDE + (x-1+SIDE)%SIDE;
+    else            q = y*SIDE + (x+1)%SIDE;
+    if (rng() < pe){                                   // exchange = mobility
+      for (let i=0;i<NB;i++){ const t=bits[p*NB+i]; bits[p*NB+i]=bits[q*NB+i]; bits[q*NB+i]=t; }
+      const t=occ[p]; occ[p]=occ[q]; occ[q]=t;
+    } else if (occ[p] && occ[q]){                       // selection
+      const ta=rpsType(bits,p), tb=rpsType(bits,q);
+      if ((ta-tb+3)%3===2) occ[q]=0;                    // p beats q -> q dies
+      else if ((tb-ta+3)%3===2) occ[p]=0;
+    } else if (occ[p] && !occ[q]){                      // reproduction p->q
+      for (let i=0;i<NB;i++) bits[q*NB+i]=bits[p*NB+i]; occ[q]=1;
+    } else if (occ[q] && !occ[p]){                      // reproduction q->p
+      for (let i=0;i<NB;i++) bits[p*NB+i]=bits[q*NB+i]; occ[p]=1;
+    }
   }
-  bits = nb; occ = o1; tickCount++;
-  last = {births, deaths, amb:0, activity:0};
-  recordMetrics();
+  tickCount++; last={births:0,deaths:0,amb:0,activity:0}; recordMetrics();
 }
 
 function recordMetrics(){
@@ -544,6 +552,9 @@ spv.textContent=sp.value+' ticks/s';
 const ms=document.getElementById('mutscale'), msv=document.getElementById('mutscaleval');
 ms.oninput=()=>{ msv.textContent=ms.value+'×'; };
 msv.textContent=ms.value+'×';
+const mob=document.getElementById('mobility'), mobv=document.getElementById('mobilityval');
+mob.oninput=()=>{ mobv.textContent=mob.value; };
+mobv.textContent=mob.value;
 
 reset();
 requestAnimationFrame(loop);
