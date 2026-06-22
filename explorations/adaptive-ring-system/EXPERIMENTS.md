@@ -1365,3 +1365,83 @@ Where the tree goes from here (all are larger departures):
 - **Accept the boundary.** The substrate's natural ceiling is itself a clean,
   well-supported scientific result; further complexity work means studying a
   *different* system, which should be a deliberate choice, not a drift.
+
+---
+
+## E21 --- Composable primitive (option 3): complexity grows only with program/data separation
+
+Built per `OPTION3_COMPOSABLE_SUBSTRATE.md` (variant i): replace the ECA rule
+with a composable straight-line bit-op program (`composable.py`), holding the
+ring architecture fixed, and ask whether complexity can now grow.
+
+### M1 --- the VM
+
+The program primitive composes **smoothly**: a random length-L program changes a
+fraction of tape bits that rises gently with L (0.016 -> 0.10 over L = 1..16),
+versus a single ECA rule's chaotic ~0.5. This is the property E15 found ECA
+lacked. (Unit-tested per instruction.)
+
+### M2 --- in the ring dynamics: heredity becomes free
+
+Dropped into the ring tick, self-preservation is **~0.99 from the start** (not
+~0.5 as for ECA): composable programs are near-identity at short length, so
+genomes barely scramble themselves. Heredity is no longer the bottleneck ---
+populations persist trivially. A genuine shift from the ECA substrate.
+
+### M3 --- the decisive experiment
+
+Target = bit-complement (a strong, monotone gradient that genuinely demands
+complexity). Complexity measured as **used-ops** (`effective_ops`: instructions
+whose removal changes the output --- not raw length, per the E14 trap).
+
+| configuration | used-ops over time |
+|---------------|--------------------|
+| conflated + task (ring architecture: self-templating, transform on) | ~1.1 -> 1.3 (no growth) |
+| **separated + task** (faithful copy; program acts on external task data) | **1.3 -> 5.3, still climbing** (program length 4 -> 20) |
+| separated, no task (control) | ~0.9 (flat) |
+
+### Interpretation
+
+- **A composable primitive is necessary but not sufficient.** In the ring
+  architecture (program operates on genomes), complexity still does not grow.
+  The reason is sharp: a program that does real work also rewrites its *own*
+  genome when self-applied, so it has low self-preservation and the
+  self-templating gate blocks its reproduction; and transformation scrambles
+  neighbours' genomes between births. Useful programs are self-destructive.
+- **Program/data separation is the missing ingredient.** Once the program is a
+  faithfully-copied genome that acts on a *separate* data tape (no
+  self-application, no neighbour-scrambling), used-computation climbs steadily
+  past the E15 ECA plateau (~2) and the no-task control (~1), and is still
+  rising at the horizon tested --- the first genuine complexity growth in the
+  project.
+
+### Takeaway
+
+Complexity growth needs **both** a composable primitive **and** program/data
+separation. The ring substrate has neither; option 3 (variant i) supplied the
+first but, by keeping the ring architecture, withheld the second --- a clean
+controlled result. The separated configuration is effectively a minimal
+spatial-Avida; pursuing open-ended complexity means committing to that
+architecture (the original "option ii"), now empirically justified rather than
+assumed.
+
+---
+
+## Reflection R5 --- the deeper wall: program/data conflation
+
+R4 located the complexity ceiling in three layers (fixed genome, parsimony,
+ECA non-composability). E21 adds and reorders: the **architectural** layer is
+the deepest. The ring system's defining feature --- a rule/program transforms
+genomes, including (under self-application) its own --- means any program
+complex enough to be useful is also self-destructive, so heredity and
+functional complexity are in direct opposition. This is the same
+"transformation destroys heredity" tension that ran through E1--E6, now seen as
+fatal *specifically for complexity*: emergent heredity (self-templating) can be
+bought for near-identity programs (M2), but not for working ones.
+
+Open-ended complexity therefore requires the von Neumann / Avida move ---
+**separate the program (heritable, copied) from the data it computes on**.
+The ring system, beautiful for studying emergent heredity, spatial
+self-organization, adaptation and open-ended *novelty*, is structurally the
+wrong substrate for open-ended *complexity*. That is the project's final,
+well-supported boundary --- and option 3 earned it rather than assuming it.

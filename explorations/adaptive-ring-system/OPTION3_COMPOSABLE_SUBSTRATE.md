@@ -1,7 +1,18 @@
 # Option 3 (revised) --- A Composable Primitive *Within* the Ring Architecture
 
-Status: **design agreed (variant i); implementing.** Supersedes the original
-Avida-clone recommendation. The goal is a *controlled* test of the R4
+Status: **DONE (M1--M3 complete). Result in EXPERIMENTS.md E21 / Reflection R5.**
+Outcome: a composable primitive is *necessary but not sufficient*. Within the
+ring architecture complexity still does not grow --- a working program rewrites
+its own genome under self-application, so it is self-destructive and the
+self-templating gate blocks it. Only with **program/data separation** (faithful
+copy + program acting on a separate data tape) does used-computation climb past
+the ECA plateau. The controlled experiment thus isolates the deepest cause as
+the ring's **program/data conflation**, and shows open-ended complexity requires
+the von Neumann / Avida architecture (the original "option ii"), now empirically
+justified. Implementation: `composable.py`.
+
+Status (historical): **design agreed (variant i); implementing.** Supersedes the
+original Avida-clone recommendation. The goal is a *controlled* test of the R4
 hypothesis: change **only the primitive** (the per-step transformation
 operation), holding the ring architecture fixed, and ask whether complexity can
 then grow where the elementary-CA primitive plateaued (E13--E15).

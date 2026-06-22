@@ -63,8 +63,15 @@ without counter-pressure complexity collapses to the floor); and, underneath, a
 length lifts only slightly (1 -> ~2.5 rules) and stalls, because sequences of
 elementary CA rules do not *compose smoothly* toward richer behaviour. The deep
 cause is the primitive itself (8-bit ECA rules are chaotic and non-composable),
-not any tuning. Open-ended complexity growth would require a different,
-composable primitive --- essentially a different substrate.
+not any tuning. **Option 3 then tested the fix** and found a deeper cause
+(E21/R5): even with a genuinely composable primitive, complexity does *not* grow
+inside the ring architecture, because a program complex enough to be useful also
+rewrites its own genome under self-application (the ring conflates program and
+data) and is therefore self-destructive. Only with **program/data separation**
+(faithful-copy heredity + the program acting on a separate data tape --- the von
+Neumann/Avida architecture) does used-computation climb past the plateau. So the
+deepest barrier is architectural, and open-ended complexity requires a substrate
+the ring system structurally is not.
 
 ---
 

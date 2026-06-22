@@ -68,7 +68,14 @@ or dynamic clusters churned by long-range transformers? And does anything
   (deliberate choice).
 - E16 [B3/option2] [done] symmetric cyclic dominance -> spatial RPS coexistence
   with waves (the E11 asymmetry was the issue). EXPERIMENTS.md E16.
-- B10/B11 next (LARGE departures): a composable primitive (replace ECA rules
+- E21/R5 [option3, variant i] [done] composable primitive (composable.py).
+  M1 VM composes smoothly; M2 heredity is FREE (programs near-identity); M3
+  decisive: complexity grows ONLY with program/data SEPARATION, not in the ring
+  architecture (working programs self-destruct under self-application). Deepest
+  cause of the ceiling = program/data conflation. Open-ended complexity needs
+  the von Neumann/Avida separation (option ii), now empirically justified.
+  EXPERIMENTS.md E21/R5.
+- B10/B11 (superseded by E21): a composable primitive (replace ECA rules
   with a smoothly-composable instruction set) and/or endogenous escalating
   (coevolutionary) pressure -- the only routes left to open-ended complexity.
   Or deliberately accept the boundary. See R4.
