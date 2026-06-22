@@ -1,116 +1,117 @@
-# Option 3 --- A Composable-Primitive Substrate (design / launch doc)
+# Option 3 (revised) --- A Composable Primitive *Within* the Ring Architecture
 
-Status: **design, awaiting go-ahead on the primitive choice.** This begins the
-deliberate "option 3" pivot flagged in `REPORT.md` section 7 and `TRAJECTORY.md`.
-It is a *new substrate*, not a modification of the ring system; it reuses the
-ring system's hard-won lessons but replaces the building block.
+Status: **design agreed (variant i); implementing.** Supersedes the original
+Avida-clone recommendation. The goal is a *controlled* test of the R4
+hypothesis: change **only the primitive** (the per-step transformation
+operation), holding the ring architecture fixed, and ask whether complexity can
+then grow where the elementary-CA primitive plateaued (E13--E15).
 
-## 1. Why
+## 1. Why this design (vs. an Avida clone)
 
-The ring system climbs the whole ladder --- persistence, heredity, adaptation,
-emergent spatial structure, open-ended novelty --- but **walls at complexity**
-(E13--E15, R4). The cause is specific and now well established: the elementary
-8-bit CA rule is **not composable**. Stacking ECA rules does not yield
-incrementally-better behaviour, so selection saturates at shallow complexity even
-when complexity is directly rewarded (E15). To test whether *open-ended
-complexity growth* is achievable at all, we need a primitive whose compositions
-vary smoothly and richly with length.
+An Avida-adjacent VM would largely re-derive a known result (complexity evolves
+when rewarded; Lenski et al. 2003) and would throw away the project's two best
+results: the **ring substrate** and **emergent heredity** (E6/E10 --- heredity
+the system discovers via self-templating, not a hardwired copy loop). Instead we
+keep all of that and replace just the building block. A positive result then
+cleanly attributes the E13 ceiling to the *primitive*; a negative result says
+composability alone is insufficient. Either is a real finding, not a replication.
 
-## 2. What to keep (the transferable lessons)
+## 2. What is kept (unchanged from the ring system)
 
-These were substrate-independent and should carry over:
+- Rings transform rings via PULL/PUSH; **local addressing** + **mobility**
+  (spatial); the snapshot tick.
+- **Emergent heredity via self-templating** (E6): a ring reproduces in
+  proportion to how well its own program preserves its own genome.
+- Variable-length genomes + indel mutation (from `growth.py`), so program length
+  can grow or shrink.
+- Analysis discipline: nulls, categorical metrics (R1), and a *used-computation*
+  complexity metric (not raw length --- E14 junk trap).
 
-- **Heredity is the master key** --- nothing works until genomes reliably
-  persist. The new substrate must make heredity cheap (likely built-in copying,
-  Tierra/Avida-style, rather than emergent-from-chaos).
-- **Locality matters** --- a spatial medium gave coexistence, ecology, and made
-  structure legible. Keep an optional 2-D torus.
-- **Self-templating / functional reproduction** --- tying reproduction to a
-  ring's *function* gave emergent selection. The analog here is self-replication.
-- **Measure against nulls; match metric to type** (R1). Reuse the analysis
-  discipline; add a real complexity metric (e.g. logical depth / task repertoire,
-  not just compressibility).
+## 3. What changes: the primitive
 
-## 3. Design goals
+Replace the single 8-bit ECA rule with a **short straight-line program of
+composable bit operations**. "B transforms A" = run B's program on A's genome
+(as a bit-tape). The genome is a variable-length bitstring:
 
-1. **Composability** --- adding instructions can incrementally change behaviour,
-   so selection has a gradient to climb toward complex function.
-2. **Expressiveness** --- Turing-ish; able in principle to compute non-trivial
-   functions and to copy itself.
-3. **Self-reference** --- a ring can read/write rings (including itself), so
-   "rings transform rings" and self-replication both have meaning.
-4. **Minimal** --- the smallest instruction set that gives 1--3; resist
-   feature creep.
-5. **Comparable** --- keep a logic-task harness like E15 so we can directly ask
-   "does complexity grow where ECA could not?"
+```
+[ header (fixed) | program (variable) ]
+  header: PULL(8) PUSH(8) CTRL(8)   CTRL = spawn,death,mut(2),type(2),spare
+  program: a sequence of 4-bit opcodes (the rest of the genome)
+```
 
-## 4. Candidate primitives (with trade-offs)
+**Instruction set** (4-bit opcode; straight-line, bounded runtime = program
+length; pointer `p` over the tape, wraps mod L):
 
-- **(A) Linear VM / Avida-adjacent assembly.** A ring is a program of
-  instructions over a small register/stack machine; execution can copy code into
-  a neighbour (replication) and compute logic tasks. *Pros:* the most validated
-  route to evolved self-replication and rising complexity in ALife; directly
-  comparable to E15's task framing; composability is natural (longer programs do
-  more). *Cons:* self-replication must usually be **seeded** (random programs
-  almost never replicate); heavier to implement; needs an instruction set chosen
-  with care.
-- **(B) Combinatory logic / term rewriting (SKI, lambda).** *Pros:* maximally
-  composable --- composition *is* function application; elegant and minimal.
-  *Cons:* evolving a specific function or a self-replicator is a rugged search;
-  spatial embedding and "data" are less natural; harder to define a smooth task
-  gradient.
-- **(C) Tag systems / Post rewriting / string rewriting (L-systems).** *Pros:*
-  very small spec; rewriting composes; growth is natural. *Cons:* expressiveness
-  and self-replication are awkward to steer; weak control over a fitness
-  gradient.
-- **(D) Small register/stack machine without a copy loop**, transformation-only
-  (B's program runs with A as data). *Pros:* closest to the ring system's
-  "B transforms A". *Cons:* without built-in copy, heredity is again hard ---
-  re-creates the ring system's core problem.
+| op | name   | effect                                             |
+|----|--------|----------------------------------------------------|
+| 0  | NOP    | --                                                 |
+| 1  | FWD    | p += 1                                              |
+| 2  | BACK   | p -= 1                                              |
+| 3  | FLIP   | tape[p] ^= 1                                        |
+| 4  | COPY   | tape[p+1] = tape[p]                                 |
+| 5  | XORB   | tape[p] ^= tape[p-1]                                |
+| 6  | SKIPZ  | if tape[p]==0: skip next instruction               |
+| 7  | SKIPNZ | if tape[p]==1: skip next instruction               |
+| 8--15 | NOP (reserved for later ops)                              |
 
-## 5. Recommendation
+Rationale: this set **composes richly and (relatively) smoothly** --- adding an
+instruction makes a targeted, conditional edit that builds on prior pointer
+state, so longer programs realize more input/output behaviour incrementally.
+Contrast ECA, where each rule is a fixed chaotic whole-tape map and stacking
+them stays chaotic (E15). Straight-line + conditional SKIP gives expressiveness
+without halting problems (no loops -> runtime bounded by program length).
 
-**Option (A), a minimal Avida-adjacent linear VM, seeded with an ancestor
-replicator.** Rationale: it is the only candidate with a track record of
-producing *both* sustained self-replication *and* rising functional complexity
-under selection, and it keeps the E15 task comparison exact. (B) is more elegant
-but its rugged landscape risks reproducing the E15 plateau for a different
-reason, which would not cleanly answer the question. We can revisit (B) as a
-second substrate if (A) shows complexity does grow and we want to test
-generality.
+Self-templating, reproduction (copy + indel mutation), death, spawn, type/RPS,
+local addressing, mobility all work exactly as in the ring engine --- only the
+"apply rule" step is replaced by "run program".
 
-## 6. Minimal first milestone (the decisive experiment)
+## 4. The decisive experiment (with the E14 lesson designed in)
 
-1. Implement the VM + instruction set; unit-test each instruction.
-2. Hand-write an **ancestor self-replicator**; verify it copies itself into a
-   neighbour and populates an empty world (the Tierra "Ameba" check).
-3. Add mutation (copy errors) + a hard population cap + death; confirm
-   evolution runs without collapsing.
-4. Add a **logic-task reward** (the E15 analog) and measure **complexity over
-   time** (program length that is *used*, and task repertoire) against the ECA
-   ceiling. *Decisive question:* does complexity grow and keep growing, or
-   plateau as in E15?
+Complexity will collapse to the floor unless something makes it pay (E14). So:
 
-A positive result would show the ring-system ceiling was a property of the
-*primitive*, not of the broader setup; a negative result (plateau even here)
-would be a strong statement that open-ended complexity needs more than
-composability.
+1. **Persistent complexity reward.** A fixed task: program applied to K fixed
+   input tapes must match targets produced by a fixed nontrivial "secret"
+   program. Reproduction probability scales with `task_fit^power` (a *standing*
+   pressure, like Avida's metabolic bonus), combined with the self-templating
+   gate so heredity is retained.
+2. **Controls (predict the outcomes):**
+   - *no-reward control* -> program length should collapse (parsimony, E14).
+   - *ECA-primitive control* -> the E15 plateau (~2 effective rules).
+3. **Measure complexity over time** as **used-instruction count** (instructions
+   that actually affect the output on the task inputs --- not raw length) and
+   **task repertoire**, vs. the controls.
 
-## 7. Risks
+**Success criterion:** used-instruction count (and task-fit) rises and *stays*
+clearly above the no-reward control and the ECA plateau, across >=3 seeds.
+**Kill criterion:** if no self-replicating/self-consistent population sustains
+for ~1000 ticks after a few tuning attempts, stop and report the negative.
 
-- **Bootstrapping:** random programs ~never self-replicate; we seed an ancestor
-  (standard practice; means "open-ended from scratch" is not claimed).
-- **Scope:** a VM + instruction set + tasks is a real project; keep the
-  instruction set minimal and resist Avida feature-parity.
-- **Performance:** executing many programs per tick is heavier than the ECA
-  sweep; start small (e.g. a few hundred rings, short programs).
-- **Honesty:** "complexity grew" must be measured as *used* computation (task
-  repertoire / logical depth), not raw genome length, to avoid the E14 trap of
-  rewarding junk.
+## 5. Build phases (each a checkpoint; tests before moving on)
 
-## 8. Open decision (need a steer)
+- **M1 --- the VM.** Encode/decode genome; `run(program, tape)`; unit-test every
+  instruction and a few hand-written programs; a "composability" sanity check
+  (compositions vary richly, not chaotically).
+- **M2 --- dynamics.** Drop the VM into the ring tick (transform = run program);
+  reproduction via self-templating + indel; confirm a population persists and is
+  heritable (self-preservation rises, as E6) with no transformation collapse.
+- **M3 --- the experiment.** Add the task reward + controls; measure complexity
+  over time; report against the ceiling.
 
-Primitive choice: **(A) linear VM** is my recommendation. If you prefer the more
-elegant but riskier **(B) combinators**, or want me to keep it as close as
-possible to the ring system **(D)**, say so --- it determines the whole build.
-Default if you don't weigh in: proceed with (A).
+## 6. Risks
+
+- **Scope:** a VM + dynamics + task + metrics is multi-session; M1--M3 are hard
+  checkpoints, and the kill criterion bounds the downside.
+- **Smoothness not guaranteed:** the chosen instruction set is a *hypothesis*
+  about composability; if its landscape is also rugged (plateau like E15), that
+  itself is an informative result about what "composable" requires.
+- **Performance:** running a program per transformation per tick is heavier than
+  the ECA sweep; start small (few hundred rings, short programs, modest grid).
+- **Honesty:** report *used* computation, not raw length; keep the no-reward and
+  ECA controls in every comparison.
+
+## 7. Out of scope (deliberately)
+
+Turing-complete loops / self-copying-via-program (we keep reproduction built into
+the ring substrate, so the program need not copy itself); Avida feature-parity;
+claims of "open-ended from scratch" (the population is seeded random, and a
+viable region must be found by selection, not assumed).
