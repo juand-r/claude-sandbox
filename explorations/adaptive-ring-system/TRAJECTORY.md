@@ -70,10 +70,13 @@ or dynamic clusters churned by long-range transformers? And does anything
   with waves (the E11 asymmetry was the issue). EXPERIMENTS.md E16.
 - E21/R5 [option3, variant i] [done] composable primitive (composable.py).
   M1 VM composes smoothly; M2 heredity is FREE (programs near-identity); M3
-  decisive: complexity grows ONLY with program/data SEPARATION, not in the ring
-  architecture (working programs self-destruct under self-application). Deepest
-  cause of the ceiling = program/data conflation. Open-ended complexity needs
-  the von Neumann/Avida separation (option ii), now empirically justified.
+  (multi-seed, corrected): the PRIMITIVE breaks the ECA ceiling -- used-ops rises
+  above the plateau (~2) in BOTH the conflated ring architecture (mean 2.47) and
+  the separated variant (2.83); no-task control collapses (0.69). Conflation
+  taxes complexity (modest self-templating penalty) but does NOT block it;
+  separation is an optimization, not a precondition. (An earlier single-run entry
+  over-claimed "growth only with separation"; corrected after re-running seeds.)
+  Deepest cause of the original ceiling = the ECA primitive, as R4 hypothesized.
   EXPERIMENTS.md E21/R5.
 - B10/B11 (superseded by E21): a composable primitive (replace ECA rules
   with a smoothly-composable instruction set) and/or endogenous escalating

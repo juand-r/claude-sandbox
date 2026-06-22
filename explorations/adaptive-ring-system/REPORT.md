@@ -63,15 +63,18 @@ without counter-pressure complexity collapses to the floor); and, underneath, a
 length lifts only slightly (1 -> ~2.5 rules) and stalls, because sequences of
 elementary CA rules do not *compose smoothly* toward richer behaviour. The deep
 cause is the primitive itself (8-bit ECA rules are chaotic and non-composable),
-not any tuning. **Option 3 then tested the fix** and found a deeper cause
-(E21/R5): even with a genuinely composable primitive, complexity does *not* grow
-inside the ring architecture, because a program complex enough to be useful also
-rewrites its own genome under self-application (the ring conflates program and
-data) and is therefore self-destructive. Only with **program/data separation**
-(faithful-copy heredity + the program acting on a separate data tape --- the von
-Neumann/Avida architecture) does used-computation climb past the plateau. So the
-deepest barrier is architectural, and open-ended complexity requires a substrate
-the ring system structurally is not.
+not any tuning. **Option 3 then tested the fix and confirmed it** (E21/R5):
+replacing the ECA rule with a composable straight-line bit-op program, while
+holding the ring architecture fixed, lifts complexity above the ECA plateau.
+With a standing task reward, used-computation rises well past the plateau in
+*both* the conflated ring architecture (2.47, multi-seed mean) and a program/data
+*separated* variant (2.83); a no-task control collapses (0.69). Separation buys a
+modest margin --- a working program self-applied partially rewrites its own
+genome and pays a small self-templating penalty --- but it is not a precondition:
+conflation taxes complexity rather than blocking it. So the decisive barrier was
+the *primitive*; the von Neumann/Avida program/data separation remains the
+cleaner substrate for pushing complexity further, but the ring architecture is
+not structurally barred from it.
 
 ---
 
@@ -420,10 +423,15 @@ positive, with one sharp boundary.
    domains, supports robust directional adaptation, and sustains open-ended
    novelty.
 
-4. **The substrate has a hard ceiling at complexity** (3.7). It never
-   complexifies; the cause is the non-composable elementary-CA primitive, shown
-   by removing the other obstacles and watching complexity still refuse to grow.
-   Open-ended complexity is beyond this substrate by design.
+4. **The ECA primitive --- not the ring architecture --- is the complexity
+   ceiling** (3.7, E21/R5). With the elementary-CA rule the system never
+   complexifies, even after the other obstacles are removed. Option 3 tested the
+   diagnosis directly: replacing the rule with a composable bit-op program, while
+   keeping the ring architecture, lifts used-computation above the plateau under a
+   standing task reward (multi-seed mean 2.47 conflated, 2.83 separated, vs. 0.69
+   no-task control). Program/data separation buys a modest margin but is not
+   required --- conflation taxes complexity, it does not block it. The barrier
+   was the primitive.
 
 5. **A methodological lesson** (R1): a wrong metric (Moran's I on categorical
    rule numbers) produced a confident false negative that stood for two
@@ -449,11 +457,12 @@ Within the ring system (incremental):
 
 Beyond the ring system (a deliberate new substrate):
 
-- **A composable primitive** --- the only route to open-ended *complexity* is to
-  replace the elementary-CA rule with operations that compose smoothly and
-  richly (an Avida-adjacent instruction set). This is a new project, not a
-  modification, and should be chosen deliberately (it is the standing "option 3"
-  in the project's planning).
+- **A composable primitive** --- DONE (option 3, E21/R5, `composable.py`).
+  Replacing the elementary-CA rule with a smoothly-composing bit-op instruction
+  set lifts complexity above the ECA plateau inside the ring architecture itself.
+  The open follow-on is the **separated (Avida-adjacent) variant**: it carries no
+  self-application tax and is the cleaner substrate for pushing complexity
+  *open-endedly*, but it is now an optimization, not a precondition.
 
 ## 8. Reproducibility
 

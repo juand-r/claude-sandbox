@@ -1368,7 +1368,7 @@ Where the tree goes from here (all are larger departures):
 
 ---
 
-## E21 --- Composable primitive (option 3): complexity grows only with program/data separation
+## E21 --- Composable primitive (option 3): the primitive breaks the ECA ceiling
 
 Built per `OPTION3_COMPOSABLE_SUBSTRATE.md` (variant i): replace the ECA rule
 with a composable straight-line bit-op program (`composable.py`), holding the
@@ -1394,54 +1394,79 @@ Target = bit-complement (a strong, monotone gradient that genuinely demands
 complexity). Complexity measured as **used-ops** (`effective_ops`: instructions
 whose removal changes the output --- not raw length, per the E14 trap).
 
-| configuration | used-ops over time |
-|---------------|--------------------|
-| conflated + task (ring architecture: self-templating, transform on) | ~1.1 -> 1.3 (no growth) |
-| **separated + task** (faithful copy; program acts on external task data) | **1.3 -> 5.3, still climbing** (program length 4 -> 20) |
-| separated, no task (control) | ~0.9 (flat) |
+**Correction (multi-seed).** An earlier single-run version of this table reported
+the conflated config flat at ~1.3 (no growth) and concluded complexity grows
+*only* with program/data separation. A headline figure then showed the conflated
+config also climbing to ~4, contradicting that claim, so I re-ran the comparison
+across 4 seeds. The honest numbers (final used-ops at t = 1500; ECA plateau ~2):
+
+| configuration | used-ops (mean of 4 seeds) | per-seed |
+|---------------|----------------------------|----------|
+| conflated + task (ring architecture: self-templating, transform on) | **2.47** | [3.5, 2.7, 2.5, 1.3] |
+| separated + task (faithful copy; program acts on external task data) | **2.83** | [3.7, 1.0, 3.4, 3.2] |
+| no-task control | **0.69** | [0.9, 0.0, 0.6, 1.3] |
 
 ### Interpretation
 
-- **A composable primitive is necessary but not sufficient.** In the ring
-  architecture (program operates on genomes), complexity still does not grow.
-  The reason is sharp: a program that does real work also rewrites its *own*
-  genome when self-applied, so it has low self-preservation and the
-  self-templating gate blocks its reproduction; and transformation scrambles
-  neighbours' genomes between births. Useful programs are self-destructive.
-- **Program/data separation is the missing ingredient.** Once the program is a
-  faithfully-copied genome that acts on a *separate* data tape (no
-  self-application, no neighbour-scrambling), used-computation climbs steadily
-  past the E15 ECA plateau (~2) and the no-task control (~1), and is still
-  rising at the horizon tested --- the first genuine complexity growth in the
-  project.
+- **The composable primitive is what breaks the ECA ceiling.** Both task
+  configurations climb clearly past the E15 plateau (~2) and far past the
+  no-task control (~0.7). The single-run "conflated stays flat" reading was a
+  seed artifact (one of four seeds landed at 1.3); the multi-seed mean is 2.47.
+  Replacing the chaotic, non-composable ECA rule with a smoothly-composing
+  bit-op program is the change that lets complexity grow at all.
+- **The task pressure is what makes it pay.** The no-task control collapses to
+  ~0.7 (E14 parsimony, reproduced): a composable primitive alone does nothing
+  without a standing reward for complexity.
+- **Program/data separation helps, but is not strictly necessary.** Separated
+  edges out conflated (2.83 vs 2.47), consistent with the mechanism --- under
+  self-application a working program does partially rewrite its own genome and
+  pay a self-templating penalty --- but with a strong survival gradient that tax
+  is modest (~0.5 on the gate), not fatal. Conflation *taxes* complexity; it
+  does not *block* it. Both architectures support real growth.
 
 ### Takeaway
 
-Complexity growth needs **both** a composable primitive **and** program/data
-separation. The ring substrate has neither; option 3 (variant i) supplied the
-first but, by keeping the ring architecture, withheld the second --- a clean
-controlled result. The separated configuration is effectively a minimal
-spatial-Avida; pursuing open-ended complexity means committing to that
-architecture (the original "option ii"), now empirically justified rather than
-assumed.
+The decisive variable is the **primitive**, not the architecture. A composable
+bit-op primitive plus a standing complexity reward lifts used-computation well
+above the ECA plateau in *both* the conflated ring architecture and the
+separated (Avida-like) one; program/data separation buys a modest additional
+margin rather than being a precondition. This narrows R4's diagnosis: the E13--E15
+ceiling was the ECA primitive's non-composability, full stop. The separated
+configuration remains the cleaner substrate for *open-ended* complexity (no
+self-application tax, no neighbour-scrambling), so it is still the natural next
+step --- but as an optimization, not a necessity.
 
 ---
 
-## Reflection R5 --- the deeper wall: program/data conflation
+## Reflection R5 --- the primitive was the wall (a correction)
 
 R4 located the complexity ceiling in three layers (fixed genome, parsimony,
-ECA non-composability). E21 adds and reorders: the **architectural** layer is
-the deepest. The ring system's defining feature --- a rule/program transforms
-genomes, including (under self-application) its own --- means any program
-complex enough to be useful is also self-destructive, so heredity and
-functional complexity are in direct opposition. This is the same
-"transformation destroys heredity" tension that ran through E1--E6, now seen as
-fatal *specifically for complexity*: emergent heredity (self-templating) can be
-bought for near-identity programs (M2), but not for working ones.
+ECA non-composability). E21 set out to test the deepest layer by changing only
+the primitive. My first write-up of E21 over-reached: from a single run it
+declared the *architecture* (program/data conflation) the deepest cause and the
+composable primitive "necessary but not sufficient." The multi-seed comparison
+does not support that. With a composable primitive and a standing task reward,
+used-computation rises above the ECA plateau in **both** the conflated ring
+architecture (2.47) and the separated one (2.83); the no-task control collapses
+(0.69). The decisive factor is the primitive, exactly as R4 hypothesized ---
+not a new architectural layer.
 
-Open-ended complexity therefore requires the von Neumann / Avida move ---
-**separate the program (heritable, copied) from the data it computes on**.
-The ring system, beautiful for studying emergent heredity, spatial
-self-organization, adaptation and open-ended *novelty*, is structurally the
-wrong substrate for open-ended *complexity*. That is the project's final,
-well-supported boundary --- and option 3 earned it rather than assuming it.
+What conflation does is *tax* complexity, not forbid it. Under self-application a
+working program partially rewrites its own genome and pays a self-templating
+penalty, which is why separated runs sit modestly higher. But a strong survival
+gradient pays that tax, so heredity and functional complexity coexist rather than
+being in flat opposition. The E1--E6 "transformation destroys heredity" tension
+is real but quantitative, not categorical, once the primitive composes.
+
+Conclusion, corrected: the E13--E15 ceiling was the **ECA primitive's
+non-composability**. Swapping in a composable primitive lifts the ceiling in the
+ring architecture itself. Program/data separation (the von Neumann / Avida move)
+remains the cleaner substrate for pushing *open-ended* complexity --- no
+self-application tax, no neighbour-scrambling --- so it is the natural next step,
+but the project no longer claims it is a precondition.
+
+**Process note.** This entry began as an over-claim from a single seed and was
+caught by rendering the headline figure and re-running across seeds before it
+hardened. The lesson (logged here per CLAUDE.md's "check your work"): a
+qualitative claim of "no growth vs. growth" must clear a multi-seed bar before it
+goes in the report; one run is a hypothesis, not a result.

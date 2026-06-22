@@ -1,15 +1,17 @@
 # Option 3 (revised) --- A Composable Primitive *Within* the Ring Architecture
 
 Status: **DONE (M1--M3 complete). Result in EXPERIMENTS.md E21 / Reflection R5.**
-Outcome: a composable primitive is *necessary but not sufficient*. Within the
-ring architecture complexity still does not grow --- a working program rewrites
-its own genome under self-application, so it is self-destructive and the
-self-templating gate blocks it. Only with **program/data separation** (faithful
-copy + program acting on a separate data tape) does used-computation climb past
-the ECA plateau. The controlled experiment thus isolates the deepest cause as
-the ring's **program/data conflation**, and shows open-ended complexity requires
-the von Neumann / Avida architecture (the original "option ii"), now empirically
-justified. Implementation: `composable.py`.
+Outcome (corrected after multi-seed re-run): the composable primitive is the
+decisive change. With a standing task reward, used-computation rises above the
+ECA plateau (~2) in **both** the conflated ring architecture (multi-seed mean
+2.47) and a program/data **separated** variant (2.83); a no-task control collapses
+(0.69). An earlier single-run write-up over-claimed that complexity grows *only*
+with separation; the seeds do not support that --- conflation *taxes* complexity
+(a working program self-applied pays a modest self-templating penalty) but does
+not block it. Program/data separation remains the cleaner substrate for pushing
+complexity open-endedly (no self-application tax), so the von Neumann / Avida
+direction is the natural next step, but as an optimization rather than a
+precondition. Implementation: `composable.py`.
 
 Status (historical): **design agreed (variant i); implementing.** Supersedes the
 original Avida-clone recommendation. The goal is a *controlled* test of the R4
