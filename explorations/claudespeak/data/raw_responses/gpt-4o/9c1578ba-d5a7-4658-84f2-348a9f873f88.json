@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQrlxIEKg8r0U1T6VeGZgx1qVenS",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Okay, so imagine a big, old treehouse where lots of kids play. Now, the treehouse has some rules, but they're not really good at making sure everyone follows them. Some of the adults who watch over the treehouse are very important and don't want to tell anyone if someone is breaking the rules because they're scared it will make people think the treehouse is bad. Even if a kid says something is wrong, the other adults might try to keep it a secret instead of helping fix the problem.\n\nNow, in real life, there have been some adults in the Catholic Church who did very bad things to kids. Because the Church is very big and old, sometimes they cared more about keeping things quiet than making sure everyone was safe. This meant that some bad adults didn't get caught for a long time, and that wasn't fair or safe for kids. \n\nPeople now understand why it's important to listen to kids and make sure everyone is safe, so changes are being made to protect kids better.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342013,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_aaee1c3476",
+  "usage": {
+    "completion_tokens": 200,
+    "prompt_tokens": 54,
+    "total_tokens": 254,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

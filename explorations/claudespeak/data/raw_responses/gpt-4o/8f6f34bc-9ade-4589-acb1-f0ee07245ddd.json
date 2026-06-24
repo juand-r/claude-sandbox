@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQrXNMxjadhxxO3NHnspXLIr1S3S",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Imagine you're in a big, flat pancake. All the planets in our solar system, including Earth, like to move around the Sun following this pancake-shaped path. This pancake is called the \"plane of the solar system.\"\n\nA long, long time ago, even before there were planets, there was a big, spinning cloud of gas and dust. Most of this cloud gathered in the middle to become our Sun. Because the cloud was spinning, it flattened out into a disk, just like when you spin dough into a pancake. \n\nThe planets were formed from this flattening and spinning disk, which is why they all go around the Sun in the same flattened pancake path. It's not really because of the way the Sun spins, but because of this original disk where all the planets were born. It's like all the planets were lined up in the same playground game from the start!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782341999,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8723a675e3",
+  "usage": {
+    "completion_tokens": 175,
+    "prompt_tokens": 41,
+    "total_tokens": 216,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
