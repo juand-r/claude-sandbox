@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQpbS77zZLRUbmb1QcS1Qmdb8wHH",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Imagine if you had a toy car that could only go as fast as you could walk. It wouldn’t be much fun if you wanted to zoom around quickly, right? Similarly, cars are made to go fast because sometimes people need to speed up to get somewhere quickly or safely, like when they’re on a big road called a highway.\n\nHowever, even though cars can go very fast, we have rules, called speed limits, that tell us how fast we should go to stay safe. Just like you need to be careful and follow rules when playing, drivers need to follow speed limits and drive carefully to keep everyone on the road safe.\n\nMaking cars that can go fast is like having the option to go faster when it’s needed, but it’s important to remember to drive at safe speeds and follow the rules.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782341879,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8772b5f549",
+  "usage": {
+    "completion_tokens": 163,
+    "prompt_tokens": 51,
+    "total_tokens": 214,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

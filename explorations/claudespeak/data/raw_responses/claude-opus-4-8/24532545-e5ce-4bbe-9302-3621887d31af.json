@@ -1,0 +1,33 @@
+{
+  "id": "msg_014bn8URoJ3jPh8avM1EnwRQ",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# The Moonwalk Explained! 🌙\n\nThe moonwalk is a cool dance move that makes it look like you're walking *forward* while actually gliding *backward*. It's a fun trick for your eyes!\n\n## The Big Secret\n\nThe whole trick is about **switching which foot is flat and which foot is on tiptoes**. When you do it smoothly, your brain gets confused in a fun way!\n\n## Step-by-Step (Like Building with Blocks!)\n\n**1. Start position**\n- Stand with your feet a little apart\n- Put your **weight on one foot** (let's say your LEFT foot stays flat on the ground)\n- Lift your RIGHT **heel** up so you're on your right tiptoe\n\n**2. The slide**\n- Now **slide your tiptoe foot backward** (the right one) while it stays on its toes\n- Your flat foot (left) stays put—it's holding your weight\n\n**3. The switch!** ⭐ *This is the magic part*\n- When your sliding foot gets behind you, quickly:\n  - Put that back foot **flat**\n  - Lift the OTHER foot onto its **tiptoes**\n- Now switch your weight to the other foot\n\n**4. Repeat!**\n- Keep switching: flat foot slides back, tiptoe foot becomes the new flat foot\n- Slide, switch, slide, switch!\n\n## Why It Works\n\nYour foot **gliding smoothly** + the **quick weight switch** tricks people's eyes. It looks like you're stepping forward, but you're actually sliding backward! 🪄\n\n## Tips to Practice\n- **Wear smooth socks** on a smooth floor—it slides easier!\n- Go **slow** at first\n- Practice the foot switch over and over\n\nWould you like me to break down any specific part more? 😊",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 44,
+    "output_tokens": 584,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

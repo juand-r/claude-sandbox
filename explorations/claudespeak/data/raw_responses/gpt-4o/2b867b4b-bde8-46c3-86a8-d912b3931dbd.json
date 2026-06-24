@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQpQQU7DnZJ5ibUyJ0pT7MwHwYqD",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Okay, kiddo, let's imagine two boxes of candy called Obamacare and the American Healthcare Act. These candy boxes are very special because they help people pay for their doctor visits and medicine when they get sick. But the way each box works is a little different:\n\n1. **Obamacare Box**: This box makes sure everyone gets a candy, even those who are already feeling a little sick. It tries to help people who don't have a lot of money by giving them extra candies for free or cheap. The rule with this box is that everyone has to have a candy so that there's enough to share with others.\n\n2. **American Healthcare Act Box**: This box wants to let people choose if they want candy or not. Some rules are different, making it a little harder for those already feeling sick to get candies. It gives people more choice, but sometimes it means they get fewer candies if they don’t have enough money saved up.\n\nSo, both boxes try to help people stay healthy, but they have different ideas on how to share the candies!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782341868,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8772b5f549",
+  "usage": {
+    "completion_tokens": 212,
+    "prompt_tokens": 31,
+    "total_tokens": 243,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

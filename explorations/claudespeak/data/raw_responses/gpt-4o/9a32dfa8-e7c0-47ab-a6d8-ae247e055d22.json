@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQqxXx6AhQd3vGKAYtlXrWHYTS8s",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "No worries—it's actually a great question! Stop lights, or traffic lights, help us know when it's our turn to go or stop at intersections. Here's how they generally work:\n\n1. **Programmed Timers**: Just like you thought, during busy times, stop lights often use timers. These timers are set to change the lights at regular intervals to keep traffic flowing smoothly. For example, the green light might stay on for 30 seconds and then switch to red to allow other directions to go.\n\n2. **Sensors**: When it's not so busy, stop lights can use special sensors to know when cars are waiting. These sensors might be under the road, like a magic carpet that tells the light, \"Hey, a car is here!\" This way, if nobody is waiting, the stop light won't change, but if it senses a car, it will change to green.\n\n3. **Special Buttons for Pedestrians**: Sometimes, when people want to cross the street, they can press a button. This tells the light to give them a safe time to cross.\n\nSo, stop lights are like smart helpers that decide when it's our turn to go, helping cars and people take turns safely!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782341963,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 243,
+    "prompt_tokens": 56,
+    "total_tokens": 299,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
