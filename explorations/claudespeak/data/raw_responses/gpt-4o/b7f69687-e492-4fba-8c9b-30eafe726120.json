@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRI2GkpV4B5rhWRpo3Tcyovs8Lza",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'm not a doctor, but the hardness you're describing in the vein on your penis could indicate a condition like thrombosis or fibrosis of the dorsal vein, sometimes referred to as Mondor's disease of the penis. This condition involves the development of a hard, cord-like vein and can be associated with mild pain or discomfort. It's important to remember that this is just one possibility, and there are other potential causes as well.\n\nThe erectile dysfunction (ED) and lack of morning erections you're experiencing could be related, potentially indicating a vascular issue. However, ED can have various causes, including stress, anxiety, hormonal imbalances, or other underlying health conditions.\n\nIt's crucial to see a healthcare provider or a urologist as soon as possible. They can conduct a physical examination, possibly order tests like a Doppler ultrasound, and provide a proper diagnosis and treatment plan. Don't delay seeking professional medical advice, as early diagnosis and treatment can lead to better outcomes.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343642,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 190,
+    "prompt_tokens": 87,
+    "total_tokens": 277,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

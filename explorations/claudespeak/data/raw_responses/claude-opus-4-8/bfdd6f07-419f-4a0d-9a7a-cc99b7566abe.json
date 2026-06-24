@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Hg7TgiZv8VAsqQbHZdvv32",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Artichoke Seeds\n\nIn a typical edible globe artichoke, you actually **don't eat or encounter seeds** because the artichoke is harvested as an **immature flower bud** before it goes to seed.\n\n## Where seeds would develop:\n\n**The \"choke\"** - This is the fuzzy, hairy part in the center of the artichoke (above the heart). The choke is actually the immature flower. If left to grow:\n\n- The bud would bloom into a beautiful purple/violet thistle flower\n- The fuzzy choke fibers are the immature flower petals/florets\n- **Seeds would develop at the base of these florets**, deep in the center, after the flower blooms and is pollinated\n\n## Key points:\n\n- In artichokes you buy at the store, there are **no mature seeds** because they're picked too early\n- The fuzzy choke is removed before eating because it's inedible (and would eventually become the seed-bearing flower)\n- To actually get seeds, you'd need to let the artichoke fully bloom and dry out on the plant\n\nSo the short answer: **seeds form in the center, at the base of the fuzzy choke**, but only if the artichoke is allowed to fully mature and flower—which doesn't happen with the ones we eat.\n\nWould you like to know how to harvest artichoke seeds for planting?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 18,
+    "output_tokens": 422,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

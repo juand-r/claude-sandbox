@@ -1,0 +1,33 @@
+{
+  "id": "msg_01AxyKegjrUyKzLBy5AJK5tu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# The Long Secular Bull Market in U.S. Treasuries\n\nThe roughly 40-year bull market in Treasuries (from the early 1980s to around 2020-2021) was driven by a confluence of structural forces. Here are the main factors:\n\n## Disinflation and the Volcker Legacy\nThe starting point was the early 1980s, when Fed Chair Paul Volcker drove interest rates to extreme highs (the 10-year yield peaked above 15%) to crush runaway inflation. Once inflation expectations were broken, yields had decades of room to fall as inflation steadily declined—the single most important driver, since bond yields and prices move inversely.\n\n## Demographics\nAging populations across developed economies increased demand for safe, income-producing assets. As the large Baby Boomer cohort moved toward retirement, the desire for capital preservation and reliable yield supported Treasury demand.\n\n## Globalization and Excess Savings\n- **The \"global savings glut\"** (a term popularized by Ben Bernanke) described how export-oriented economies—especially China and oil exporters—accumulated massive dollar reserves.\n- Much of this was recycled into Treasuries, suppressing yields.\n- Cheaper labor and goods from globalization also exerted persistent downward pressure on inflation.\n\n## Declining Productivity and Growth Trends\nSlowing trend growth and weaker productivity gains in the post-2000 era lowered the \"neutral\" rate of interest (r*), pulling long-term yields down structurally.\n\n## Central Bank Policy\n- Increasingly accommodative monetary policy, especially after the 2008 financial crisis.\n- **Quantitative easing (QE)** involved central banks directly purchasing trillions in government bonds, pushing prices up and yields down.\n- A general pattern of \"lower for longer\" rate expectations.\n\n## Flight-to-Safety Demand\nTreasuries serve as the world's premier safe-haven asset. Crises (2008, 2011 European debt crisis, 2020 pandemic) repeatedly drove investors into Treasuries, reinforcing the trend.\n\n---\n\n## A Note on What Changed\nIt's worth recognizing that this secular bull market appears to have **ended around 2020-2021**. The post-pandemic inflation surge, aggressive Fed tightening, large fiscal deficits, and questions about structural inflation have prompted many to argue we've entered a new regime—possibly a secular bear market or at least a higher-rate equilibrium.\n\nWould you like me to go deeper on any particular driver, or on the debate about whether the regime has truly shifted?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 28,
+    "output_tokens": 855,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

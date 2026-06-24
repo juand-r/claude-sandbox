@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRQxRp1P0GyqGJKvvwa9Rgp6UHL5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Harvard Business School (HBS) is the graduate business school of Harvard University, located in Boston, Massachusetts. It is one of the most prestigious business schools in the world and is renowned for its rigorous academic programs, influential faculty, and a strong emphasis on leadership development.\n\nHBS offers a full-time Master of Business Administration (MBA) program, doctoral programs, and numerous executive education programs. The school's MBA program is particularly well-known for its case method of teaching, which immerses students in real-world business scenarios, requiring them to analyze complex situations and propose solutions. This approach is designed to cultivate critical thinking, decision-making, and leadership skills.\n\nIn addition to its academic offerings, HBS is also heavily involved in business research through its faculty, research centers, and publications, such as the Harvard Business Review, which is widely read by business professionals around the world.\n\nThe HBS campus is situated in Allston, on the other side of the Charles River from Harvard's main campus in Cambridge, and includes state-of-the-art facilities such as classrooms, research centers, and a large library dedicated to business and management studies. The school's alumni network is vast and influential, including leaders in diverse industries and sectors globally.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782344195,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a7bbaf60cc",
+  "usage": {
+    "completion_tokens": 243,
+    "prompt_tokens": 17,
+    "total_tokens": 260,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

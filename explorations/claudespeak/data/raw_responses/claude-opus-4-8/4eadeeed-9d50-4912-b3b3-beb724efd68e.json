@@ -1,0 +1,33 @@
+{
+  "id": "msg_015HUyCJao4A426KGn7zF7Qs",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Computer Stereo Vision\n\n**Computer stereo vision** is a technique that extracts 3D information from digital images by using two or more cameras positioned at slightly different viewpoints. It mimics the way human binocular vision works, where our two eyes see slightly different perspectives of the world, allowing our brain to perceive depth.\n\n## How It Works\n\nThe core principle relies on **triangulation**:\n\n1. **Two cameras** capture images of the same scene from different positions (similar to your left and right eyes)\n2. **Corresponding points** in both images are identified (the same physical point appearing in each image)\n3. **Disparity** is calculated—the difference in position of an object between the two images\n4. **Depth is computed** using geometry, since objects closer to the cameras show greater disparity than distant objects\n\n## Key Concepts\n\n- **Disparity**: The horizontal shift of a point between the left and right images. Closer objects = larger disparity; farther objects = smaller disparity\n- **Epipolar geometry**: The mathematical relationship between the two camera views that simplifies the search for matching points\n- **Calibration**: Determining the cameras' internal parameters and relative positions for accurate measurements\n- **Depth map / Disparity map**: The output—an image where each pixel's value represents distance from the camera\n\n## The Basic Formula\n\nDepth (Z) is inversely related to disparity:\n\n$$Z = \\frac{f \\times B}{d}$$\n\nWhere:\n- **f** = focal length\n- **B** = baseline (distance between cameras)\n- **d** = disparity\n\n## Common Applications\n\n- **Robotics**: Navigation and obstacle avoidance\n- **Autonomous vehicles**: Understanding the 3D environment\n- **3D reconstruction**: Creating 3D models of objects or scenes\n- **Augmented reality (AR)**: Placing virtual objects realistically\n- **Industrial inspection**: Measuring objects and quality control\n- **Medical imaging**: Surgical guidance systems\n\n## Challenges\n\n- **Matching problem**: Finding correct corresponding points, especially in textureless or repetitive regions\n- **Occlusions**: When objects visible in one camera are hidden in the other\n- **Computational cost**: Processing can be intensive for real-time applications\n- **Lighting variations**: Differences in illumination between images\n\n---\n\nWould you like me to dive deeper into any specific aspect, such as the matching algorithms, camera calibration, or how it compares to other depth-sensing methods like LiDAR?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 22,
+    "output_tokens": 823,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

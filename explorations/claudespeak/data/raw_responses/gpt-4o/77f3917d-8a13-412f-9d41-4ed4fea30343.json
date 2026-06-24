@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuR9VecGC45B9LJ61h3NvQBrGuULk",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Land parcels are defined sections of land, often delineated for purposes of ownership, management, or development. These parcels are typically mapped and recorded by government entities, such as local or regional land registries, and they have specific boundaries that can be described in terms of their dimensions and geographic location. \n\nKey characteristics of land parcels include:\n\n1. **Boundaries**: These are the defined edges of a parcel that separate it from adjacent parcels. Boundaries can be natural, like rivers or ridges, or artificial, like fences or roads.\n\n2. **Legal Description**: Each parcel has a legal description that may be used in deeds or property records to precisely identify it. This can include metes and bounds, a lot and block system, or other cadastral systems.\n\n3. **Ownership**: Land parcels are typically associated with legal ownership, and records are maintained to indicate who owns the parcel and any associated rights or restrictions.\n\n4. **Size and Shape**: Parcels vary in size and shape and can range from small town lots to extensive rural tracts.\n\n5. **Usage**: Parcels can be zoned for different kinds of use such as residential, commercial, agricultural, or industrial. Zoning laws dictate what can be done with a parcel of land.\n\n6. **Improvements and Structures**: Many parcels include improvements, such as buildings or infrastructure, which can affect the value and usage of the parcel.\n\n7. **Assessed Value**: Government entities often assess land parcels for taxation purposes, assigning a value based on various factors including the land's location, use, and improvements.\n\nUnderstanding these elements is crucial for real estate transactions, land development projects, urban planning, and legal processes involving property.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343113,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_221a386d86",
+  "usage": {
+    "completion_tokens": 348,
+    "prompt_tokens": 11,
+    "total_tokens": 359,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQtCBgc5Zd5Z4pBuN4ZxtrSJKiaT",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Alright! So, imagine TV companies want to know how many people watch their shows, kind of like how you might want to know how many friends came to your birthday party. But it would be too hard to ask everyone who watched, just like it would be too hard to ask everyone in the whole world if they came to your party.\n\nInstead, TV companies use something like a \"special counting box\" known as a Nielsen box. They give it to a small group of families who agree to let the box count what shows they watch. Each family represents a lot of other families, just like if you asked five friends if they liked your cake, and they each represented other kids in your class.\n\nFor online viewing, they use different tools that work inside apps or websites, which can count clicks and streams like a digital version of that special box. By combining all these numbers, TV companies can guess what the whole party—or the whole country—is watching, even if it’s on different screens. They know it’s not perfect, but it gives them a pretty good idea!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342102,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8723a675e3",
+  "usage": {
+    "completion_tokens": 215,
+    "prompt_tokens": 40,
+    "total_tokens": 255,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

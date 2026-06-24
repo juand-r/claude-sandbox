@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQtTSqNEXQ7uH6nVMfbk1uYPdw04",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The idea that left-handed people have a shorter lifespan than right-handed people is a misconception. This myth came from a study in the late 1980s that was later found to be flawed. The researchers looked at death records and found that fewer older people were left-handed, leading them to believe left-handed people didn’t live as long.\n\nHowever, the real reason for fewer older left-handed people is a mix of historical and cultural factors. In the past, more people were encouraged or forced to use their right hand, even if they were naturally left-handed. This means many older people who might have been left-handed were recorded or lived as right-handed.\n\nToday, there is no scientific evidence supporting the idea that left-handed people live shorter lives. So there's no need to worry—being left-handed doesn’t affect your lifespan.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342119,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_683410201e",
+  "usage": {
+    "completion_tokens": 165,
+    "prompt_tokens": 63,
+    "total_tokens": 228,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

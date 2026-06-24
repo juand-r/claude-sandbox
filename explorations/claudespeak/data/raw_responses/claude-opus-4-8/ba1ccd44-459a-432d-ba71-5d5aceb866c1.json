@@ -1,0 +1,33 @@
+{
+  "id": "msg_01WqfKPQnVkeWT7iAo5v3bvA",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Time Complexity\n\n**Time complexity** is a way to describe how the runtime of an algorithm grows as the size of its input increases. It helps us analyze and compare the efficiency of algorithms without depending on specific hardware or programming languages.\n\n## Key Idea\n\nInstead of measuring exact runtime in seconds, time complexity counts the **number of operations** an algorithm performs relative to the input size (usually denoted as **n**).\n\n## Big O Notation\n\nTime complexity is most commonly expressed using **Big O notation**, which describes the *worst-case* growth rate. Here are the most common types, from fastest to slowest:\n\n| Notation | Name | Example |\n|----------|------|---------|\n| **O(1)** | Constant | Accessing an array element by index |\n| **O(log n)** | Logarithmic | Binary search |\n| **O(n)** | Linear | Looping through a list once |\n| **O(n log n)** | Linearithmic | Efficient sorting (merge sort, quicksort) |\n| **O(n²)** | Quadratic | Nested loops (bubble sort) |\n| **O(2ⁿ)** | Exponential | Recursive Fibonacci |\n| **O(n!)** | Factorial | Brute-force traveling salesman |\n\n## Simple Examples\n\n**O(1) – Constant Time**\n```python\ndef get_first(arr):\n    return arr[0]  # Always one operation\n```\n\n**O(n) – Linear Time**\n```python\ndef find_max(arr):\n    max_val = arr[0]\n    for num in arr:      # Runs n times\n        if num > max_val:\n            max_val = num\n    return max_val\n```\n\n**O(n²) – Quadratic Time**\n```python\ndef print_pairs(arr):\n    for i in arr:        # Outer loop: n times\n        for j in arr:    # Inner loop: n times\n            print(i, j)  # Total: n × n operations\n```\n\n## Why It Matters\n\n- **Scalability**: An O(n²) algorithm might be fine for 100 items but extremely slow for 1,000,000 items.\n- **Comparison**: It lets you choose the better algorithm before writing code.\n- **Hardware-independent**: The analysis stays valid regardless of computer speed.\n\n## A Quick Comparison\n\nFor an input of **n = 1,000,000**:\n- O(log n) ≈ 20 operations\n- O(n) ≈ 1,000,000 operations\n- O(n²) ≈ 1,000,000,000,000 operations 😱\n\n---\n\nWould you like me to explain a **related concept** like *space complexity*, or go deeper into how to **calculate** time complexity for a specific algorithm?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 19,
+    "output_tokens": 873,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

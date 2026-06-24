@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRCvR9DUjb4N7sDjaP0Pnl2F1ewo",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Cubic feet (often abbreviated as cu ft or ft³) is a unit of volume used in the Imperial and U.S. customary measurement systems. It represents the volume of a cube with sides that are each one foot in length. To calculate the volume in cubic feet, you multiply the length, width, and height of an object (all in feet). For example, if you have a box that is 2 feet long, 2 feet wide, and 2 feet high, its volume would be 2 ft × 2 ft × 2 ft = 8 cubic feet. It's commonly used to measure the volume of spaces such as rooms, shipping containers, and storage units.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343325,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_aaee1c3476",
+  "usage": {
+    "completion_tokens": 139,
+    "prompt_tokens": 11,
+    "total_tokens": 150,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

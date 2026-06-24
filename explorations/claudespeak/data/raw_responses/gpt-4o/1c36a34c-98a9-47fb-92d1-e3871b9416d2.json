@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQsm7owR8gb4gE6QuMSFifVEkCD5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "When people drink a lot of alcohol, it can make them look older faster. Imagine your body is like a car engine, and alcohol is like sand. If you put sand in an engine, it can cause wear and tear. Similarly, alcohol can be hard on your body.\n\n1. **Skin:** Alcohol can make the skin dry and cause wrinkles, sort of like how a raisin is wrinklier than a grape because it lost its water. \n\n2. **Sleep:** Sometimes, alcohol can make it harder to sleep well, and just like plants look droopy without enough water, people can look tired and older if they don’t get enough good sleep.\n\n3. **Nutrients:** Our bodies need vitamins and nutrients to stay healthy and strong, and alcohol can take those away, like how a plant can't grow well without sunlight and water.\n\n4. **Organs:** Drinking a lot can also make important body parts like the liver work too hard, and if they're busy all the time, they can get tired quicker, kind of like if you play with your toys non-stop, and they start to break.\n\nSo, when people drink too much alcohol over time, it can make them look older because it affects many parts of their body, inside and out.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342076,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_683410201e",
+  "usage": {
+    "completion_tokens": 255,
+    "prompt_tokens": 52,
+    "total_tokens": 307,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

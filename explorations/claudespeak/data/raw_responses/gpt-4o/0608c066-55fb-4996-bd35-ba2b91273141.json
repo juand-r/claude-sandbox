@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRDyUq9fNUgbuP8nMs1yJmZqVgC0",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "It's understandable to have concerns when you notice a change in your menstrual cycle. Menstrual flow can vary from cycle to cycle and can be influenced by a variety of factors. Having a lighter period or a scanty period occasionally can be normal, but it's important to consider a few factors that could contribute to this change:\n\n1. **Stress or Lifestyle Changes**: Stress, significant weight loss or gain, changes in diet, and increased physical activity can affect hormone levels and menstrual flow.\n\n2. **Hormonal Fluctuations**: Hormonal imbalances, particularly with estrogen and progesterone, can lead to changes in your menstrual cycle.\n\n3. **Birth Control**: If you're using hormonal birth control (pills, implants, injections), it can result in lighter periods or even skipped periods.\n\n4. **Health Conditions**: Conditions like polycystic ovary syndrome (PCOS) or thyroid imbalances can lead to irregular or lighter periods.\n\n5. **Pregnancy**: If there's a possibility of pregnancy and your period is lighter or different than usual, consider taking a pregnancy test to rule this out.\n\n6. **Age and Puberty**: At 18, your body might still be regulating your menstrual cycle, especially if you've recently started menstruating.\n\nIf this change in your period is one-time or infrequent and you feel well otherwise, it might not be a cause for concern. However, if you experience other symptoms or if your periods continue to be irregular or scanty over several cycles, it would be a good idea to consult a healthcare professional to rule out any underlying conditions and get personalized advice.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343390,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_221a386d86",
+  "usage": {
+    "completion_tokens": 327,
+    "prompt_tokens": 87,
+    "total_tokens": 414,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "msg_018bUSRwG2UqRDZ9jj7pC9Mk",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Total Bilirubin\n\n**Total bilirubin** is a blood test that measures the overall amount of bilirubin in your bloodstream. Bilirubin is a yellowish-orange pigment produced when red blood cells break down.\n\n## What It Measures\n\nTotal bilirubin includes two types:\n\n1. **Direct (conjugated) bilirubin** – processed by the liver, water-soluble\n2. **Indirect (unconjugated) bilirubin** – not yet processed by the liver, fat-soluble\n\n## Normal Range (Adults)\n\n| Type | Typical Range |\n|------|--------------|\n| Total bilirubin | 0.1 – 1.2 mg/dL |\n| Direct bilirubin | 0.0 – 0.3 mg/dL |\n| Indirect bilirubin | 0.2 – 0.8 mg/dL |\n\n*Ranges may vary slightly between laboratories.*\n\n## Why It's Tested\n\n- Evaluate **liver function**\n- Diagnose or monitor **jaundice** (yellowing of skin/eyes)\n- Detect **bile duct blockages**\n- Identify causes of **anemia** (red blood cell breakdown)\n- Monitor **newborn jaundice**\n\n## What High Levels May Indicate\n\n- **Liver diseases** (hepatitis, cirrhosis)\n- **Gallstones** or bile duct obstruction\n- **Hemolytic anemia** (excessive red blood cell destruction)\n- **Gilbert's syndrome** (a common, harmless genetic condition)\n\n## What Low Levels Mean\n\nLow bilirubin is generally **not a concern** and usually doesn't require treatment.\n\n---\n\n⚠️ **Note:** Test results should always be interpreted by a healthcare provider, as they consider your symptoms, medical history, and other test results.\n\nWould you like more detail on any specific aspect, such as causes of high bilirubin or what symptoms to watch for?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 14,
+    "output_tokens": 641,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRCZIesVbN0o3pclIA9Q7sLjR5mF",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Sertraline, which is marketed under the brand name Zoloft among others, was approved by the U.S. Food and Drug Administration (FDA) in 1991. It is a selective serotonin reuptake inhibitor (SSRI) commonly used to treat depression, anxiety disorders, and other mood disorders.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343303,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_aaee1c3476",
+  "usage": {
+    "completion_tokens": 63,
+    "prompt_tokens": 16,
+    "total_tokens": 79,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRCGTCXg5HaiDaXRrXy8PtUoZo8P",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Kennywood is an amusement park located in West Mifflin, Pennsylvania, which is a suburb southeast of Pittsburgh. The park is approximately 12 miles from downtown Pittsburgh. Its address is 4800 Kennywood Boulevard, West Mifflin, PA 15122.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343284,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a7bbaf60cc",
+  "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 16,
+    "total_tokens": 73,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

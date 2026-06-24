@@ -1,0 +1,33 @@
+{
+  "id": "msg_01EnPgvWbpCMRUe4vX946XD9",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Foreign Earned Income Exclusion: Services vs. Products\n\nThe Foreign Earned Income Exclusion (FEIE) treats **service income** and **product/business income** differently. This is an important distinction for U.S. expats and business owners abroad.\n\n## Service Income (Personal Services)\n\n**Fully excludable** (up to the annual limit—$126,500 for 2024)\n\nIf your income comes from **personal services you perform**, the entire amount can qualify for the FEIE, provided you meet either the:\n- **Physical Presence Test** (330 days abroad in 12 months), or\n- **Bona Fide Residence Test**\n\n**Examples:**\n- Freelance consulting\n- Salaried employment abroad\n- Professional services (writing, design, programming)\n- Coaching/teaching\n\n## Product/Capital-Based Income\n\n**Partially excludable** — limited to **30% of net profits**\n\nIf income comes from a business where **capital is a material income-producing factor** (i.e., you're selling products, using equipment, inventory, etc.), the IRS treats only **30%** of the net profit as \"earned income\" eligible for FEIE.\n\nThe remaining **70%** is considered a **return on capital/investment** and does NOT qualify.\n\n**Examples:**\n- E-commerce/dropshipping (selling physical goods)\n- Manufacturing\n- Retail businesses\n- Businesses with significant inventory or equipment\n\n## The Key Rule (IRC §911)\n\n| Income Type | % Eligible for FEIE |\n|-------------|--------------------|\n| Pure services | 100% |\n| Capital-intensive business | 30% max |\n\n## Practical Implications\n\n**Sole proprietor selling products:**\n- If you have $100,000 in net profit selling goods\n- Only **$30,000** may qualify for exclusion\n\n**Mixed businesses** require allocation between the service component and capital component.\n\n## Important Considerations\n\n⚠️ **This is a nuanced area.** A few things to keep in mind:\n\n1. **Self-employment tax still applies** — FEIE excludes income tax but NOT self-employment tax (15.3%)\n2. **Corporate structures** (e.g., a foreign corporation) can change the analysis significantly\n3. **Drop-shipping vs. dropshipper-as-service** — facts matter\n\n---\n\n**Would you like me to elaborate on:**\n- How to allocate income in a mixed service/product business?\n- Strategies to maximize the exclusion (entity structuring)?\n- How self-employment tax interacts with FEIE?\n\n*Note: This is general educational information. Consult a qualified expat tax professional (CPA/EA) for your specific situation.*",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 29,
+    "output_tokens": 870,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQvawBtYzHtcAQUB1tH2FTvpWXwl",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Okay! So, imagine your skin is like a superhero costume that protects your body. Sometimes, tiny things like dust, bugs, or even something like grass can touch your costume and make it feel tickly or uncomfortable. When this happens, your skin sends a message to your brain saying, \"Hey, something's bothering me!\"\n\nYour brain then tells you, “Scratch here!” because scratching can help stop the tickly feeling. But remember, just like sometimes you shouldn't scratch a scab or boo-boo, it's good not to scratch too hard because it might make the skin unhappier. Sometimes, your skin can also be itchy if it's too dry, so giving it a little \"drink\" with lotion can help it feel better!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342250,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 149,
+    "prompt_tokens": 24,
+    "total_tokens": 173,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

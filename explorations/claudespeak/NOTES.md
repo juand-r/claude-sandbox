@@ -46,9 +46,20 @@ the two tracks are complementary. Both feed the same feature pipeline.
 **License:** HC3 is public research data (BY-SA / research use). We commit a
 200-row research subset + derived generations.
 
-### TODO (Phase 0 remaining)
-- [ ] Run `generate_pilot.py` (Claude + GPT-4o over 200 prompts).
-- [ ] Add AlpacaEval multi-model track (Gemini/DeepSeek/Qwen/Llama/Phi reuse +
-      Claude generation on those prompts).
-- [ ] Optional: Claude thinking-effort sweep (low/med/high) as within-Claude var.
-- [ ] Phase 1: descriptive stylometry + first "Claudeisms" tables.
+### Phase 1 first cut — DONE (see reports/FINDINGS_pilot.md)
+- [x] Generated Claude Opus 4.8 + GPT-4o over 200 prompts (400/400 ok). Full
+      4-way parallel corpus: human / chatgpt-hc3 / gpt-4o / claude-opus-4-8.
+- [x] Descriptive stylometry + Claude-vs-rest effect sizes → reports/pilot_stylometry.md
+- [x] Markdown-stripped ablation → reports/pilot_ablation_markdown.md
+
+**Headline result:** Claude signal is large AND survives markdown stripping.
+Raw-prose separators: sentence burstiness (d≈1.69), function-word density
+(d≈1.47), em-dash habit (d≈0.87). Lexical tics ("delve" etc.) DON'T separate
+(d≈0.15) — contra popular belief. Claude is LESS lexically diverse than humans.
+
+### TODO (next)
+- [ ] Length-stratified re-run of the prose ablation (robustness).
+- [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.
+- [ ] Claude thinking-effort sweep (low/med/high).
+- [ ] n-gram mining (rusty-dawg / infini-gram) for over-represented phrases.
+- [ ] Interpretable classifier on prose-only features (separability number).

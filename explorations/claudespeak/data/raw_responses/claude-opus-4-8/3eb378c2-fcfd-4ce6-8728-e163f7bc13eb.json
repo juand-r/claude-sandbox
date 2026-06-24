@@ -1,0 +1,33 @@
+{
+  "id": "msg_014cw1CpyH3xQuiGbG1iZnDY",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Wiki Platform\n\nA **wiki platform** is software that enables people to create, edit, and organize web content collaboratively through a web browser. The term \"wiki\" comes from the Hawaiian word for \"quick.\"\n\n## Key Characteristics\n\n- **Collaborative editing** — Multiple users can contribute and modify content\n- **Easy editing** — Usually requires minimal technical knowledge\n- **Version history** — Tracks changes over time, allowing you to revert to previous versions\n- **Interlinking** — Pages link to each other, creating a connected web of information\n- **Open or controlled access** — Can be public or restricted to certain users\n\n## Common Use Cases\n\n| Use Case | Example |\n|----------|---------|\n| Public knowledge sharing | Encyclopedias |\n| Company documentation | Internal knowledge bases |\n| Software documentation | Project guides and manuals |\n| Team collaboration | Shared notes and project info |\n| Personal knowledge management | Note-taking systems |\n\n## Popular Wiki Platforms\n\n- **Wikipedia/MediaWiki** — The software behind Wikipedia; powerful and widely used\n- **Confluence** — Popular for business and team collaboration\n- **Notion** — Modern, flexible workspace with wiki features\n- **DokuWiki** — Lightweight, no database required\n- **Obsidian** — Popular for personal knowledge management\n- **TiddlyWiki** — Single-file, highly customizable\n- **Fandom** — Hosts community wikis for games, shows, etc.\n\n## Why Use a Wiki?\n\nWikis are great for organizing information that **grows and changes over time**, especially when **multiple people** need to contribute. The interconnected structure makes it easy to navigate related topics.\n\nWould you like recommendations for a specific use case, like personal notes, team documentation, or a public community?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 14,
+    "output_tokens": 610,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

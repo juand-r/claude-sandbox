@@ -1,0 +1,33 @@
+{
+  "id": "msg_011GeZdtTUvYmPc4xvtAov2S",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Face ID\n\n**Face ID** is a facial recognition technology developed by **Apple** for secure authentication on their devices. It was first introduced in **2017** with the iPhone X.\n\n## How It Works\n\nFace ID uses a sophisticated system called the **TrueDepth camera** to map and recognize your face:\n\n1. **Dot Projector** – Projects over 30,000 invisible infrared dots onto your face\n2. **Infrared Camera** – Reads the pattern of these dots to create a detailed 3D map\n3. **Flood Illuminator** – Allows the system to work in low-light or dark conditions\n\nThis creates a unique mathematical representation of your face, which is stored securely on the device.\n\n## Key Features\n\n- **Adaptive Recognition** – Adjusts to changes in your appearance, such as wearing glasses, growing a beard, or wearing makeup\n- **Attention Awareness** – Can require that your eyes are open and looking at the device for added security\n- **Works with Masks** – Newer versions (iOS 15.4+) can recognize faces even when wearing a mask\n\n## Common Uses\n\n- **Unlocking your device**\n- **Apple Pay** purchases\n- **App Store** and iTunes purchases\n- **Authenticating** in third-party apps (banking, passwords, etc.)\n\n## Security & Privacy\n\n- Face data is encrypted and stored in the **Secure Enclave**, a protected area of the chip\n- The data **never leaves your device** and isn't backed up to iCloud or Apple's servers\n- Apple states the probability of a random person unlocking your phone is about **1 in 1,000,000**\n\n## Devices That Use Face ID\n\nFace ID is available on most modern **iPhones** (iPhone X and later, except some SE models) and certain **iPad Pro** models.\n\n---\n\nWould you like to know more about how Face ID compares to Touch ID, or how to set it up?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 18,
+    "output_tokens": 622,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

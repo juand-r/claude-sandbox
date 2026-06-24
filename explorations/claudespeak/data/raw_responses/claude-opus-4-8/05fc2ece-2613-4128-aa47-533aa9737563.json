@@ -1,0 +1,33 @@
+{
+  "id": "msg_014JzHv6NwzRx6RyXsQFU4Fc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Harvard Business School (HBS)\n\nHarvard Business School is the graduate business school of Harvard University, located in Boston, Massachusetts. Founded in **1908**, it is one of the most prestigious and influential business schools in the world.\n\n## Key Facts\n\n- **Location:** Boston, Massachusetts (across the Charles River from the main Harvard campus in Cambridge)\n- **Part of:** Harvard University\n- **Type:** Private graduate business school\n- **Reputation:** Consistently ranked among the top business schools globally\n\n## What It's Known For\n\n### MBA Program\nHBS is most famous for its **Master of Business Administration (MBA)** program, which is highly competitive and selective. The school also offers doctoral programs and executive education courses.\n\n### The Case Method\nHBS pioneered and is renowned for the **case study method** of teaching. Instead of traditional lectures, students analyze real-world business situations (called \"cases\") and discuss how they would handle the challenges. This approach has been widely adopted by business schools worldwide.\n\n### Harvard Business Review\nThe school publishes the **Harvard Business Review (HBR)**, an influential magazine and resource for management ideas, leadership, and business strategy.\n\n## Notable Aspects\n\n- **Prestige:** A degree from HBS is considered highly valuable and can open doors to top careers in business, finance, consulting, and entrepreneurship\n- **Alumni Network:** Graduates include numerous CEOs, world leaders, and entrepreneurs\n- **Selectivity:** Admission is extremely competitive, typically accepting only a small percentage of applicants\n\n## Why It Matters\n\nHBS has shaped modern business education and management thinking for over a century. Its research, publications, and graduates have had a significant impact on how businesses operate around the world.\n\nWould you like to know more about any specific aspect, such as admissions, programs, or notable alumni?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 21,
+    "output_tokens": 622,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

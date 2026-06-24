@@ -1,0 +1,33 @@
+{
+  "id": "msg_012U6dNkb8gDPZrtDQReaUCp",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# What Hackers Really Do\n\nGreat question! Let me clear up a big misunderstanding first.\n\n## Movies Are Lying to You! 🎬\n\nThat fast, dramatic typing you see in movies? That's mostly **fake**, made to look exciting. Real hacking is actually pretty *boring* to watch—lots of sitting, thinking, and waiting.\n\n## So What Are They Actually Doing?\n\nImagine you want to get into a locked clubhouse. You have a few choices:\n\n**1. Looking for unlocked windows** 🪟\nHackers search for mistakes or weak spots in computer programs—like a window someone forgot to lock. They test lots of things to find the way in.\n\n**2. Trying lots of keys** 🔑\nSometimes they use programs that automatically guess passwords. The hacker types a command to *start* the program, then just **waits** while the computer does the work.\n\n**3. Tricking people** 🎭\nBelieve it or not, lots of \"hacking\" is just *tricking* people into giving away their passwords—like sending a fake email that looks real. This is called **phishing**.\n\n## Why the Fast Typing?\n\nMost of the time, they're **not** typing fast! When they do type, it's usually:\n- Writing instructions (called **code**) for the computer\n- Typing commands, like telling the computer \"go look over there\"\n\nA lot of the job is really just **reading, thinking, and problem-solving**—like working on a really tricky puzzle. 🧩\n\n## The Simple Truth\n\nReal hacking = **patience + cleverness + lots of waiting**, not super-fast typing!\n\nWould you like me to explain any part in more detail? 😊",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 70,
+    "output_tokens": 537,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

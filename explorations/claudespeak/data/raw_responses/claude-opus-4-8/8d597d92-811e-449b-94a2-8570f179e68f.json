@@ -1,0 +1,33 @@
+{
+  "id": "msg_0121NmZa8vpH5PNJNLxDTZb5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Sources for Historical Mutual Fund Distribution Data\n\n## Free Resources\n\n**Fund Company Websites**\n- Most fund companies (Vanguard, Fidelity, T. Rowe Price, etc.) provide distribution history directly on their fund pages\n- Usually found under \"Distributions\" or \"Tax Center\" sections\n- Often the most accurate source since it's from the issuer\n\n**SEC EDGAR Database**\n- Free access to official fund filings (N-CEN, N-PORT, annual reports)\n- Available at sec.gov/edgar\n\n**Financial News Sites**\n- Yahoo Finance, Google Finance, MarketWatch\n- Show distribution history under the \"Historical Data\" tabs\n\n## Subscription/Paid Resources\n\n**Morningstar**\n- Comprehensive distribution data, including capital gains and dividend breakdowns\n- Premium subscription offers deeper historical archives\n\n**Bloomberg Terminal**\n- Professional-grade data (typically used by institutions)\n\n**Lipper (Refinitiv)**\n- Detailed fund analytics and historical distributions\n\n## What to Look For\n\nWhen researching distributions, check for these components:\n- **Ordinary dividends**\n- **Qualified dividends**\n- **Short-term capital gains**\n- **Long-term capital gains**\n- **Return of capital** (if applicable)\n\n## Tips for Accuracy\n\n1. **Cross-reference** multiple sources to verify data\n2. **Use the fund's own filings** as the gold standard\n3. **Check the record date and payable date** to align with your needs\n4. **Note the CUSIP or ticker** carefully to avoid confusing similar funds\n\n---\n\nAre you looking for distribution data for a specific purpose, such as **tax reporting**, **investment research**, or **performance analysis**? I can offer more targeted suggestions if you let me know.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 27,
+    "output_tokens": 615,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

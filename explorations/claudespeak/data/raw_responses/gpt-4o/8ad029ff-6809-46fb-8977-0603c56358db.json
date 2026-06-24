@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRFzqKRG0sahWaMdsH91yjBsjhaq",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The tiny holes on the outside of your son's ears are likely preauricular pits, which are small congenital openings or indentations near the front of the ear. They are a relatively common congenital condition and are usually harmless. These pits form during fetal development and are thought to result from incomplete fusion of the tissues of the ear.\n\nThe connection between preauricular pits and kidney health that the doctors checked for is due to the fact that ear and kidney development in the embryo occur simultaneously. However, in the vast majority of cases, there is no associated kidney problem, especially if initial tests and X-rays have shown no issues.\n\nRegarding the discharge, it can occur occasionally if the sinus tract under the pit becomes filled with dead skin cells or becomes mildly infected. You should keep an eye on the area for signs of infection such as redness, swelling, pain, or significant discharge. If these symptoms occur, or if the pits become frequently infected, it may be worth discussing potential treatment options with your pediatrician or an ENT specialist.\n\nGenerally, though, if the pits are not causing any problems or infections, they typically do not require any treatment. As always, if you have concerns or notice any changes, follow up with your healthcare provider for personalized advice.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343515,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_f38a9d6fcb",
+  "usage": {
+    "completion_tokens": 249,
+    "prompt_tokens": 93,
+    "total_tokens": 342,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

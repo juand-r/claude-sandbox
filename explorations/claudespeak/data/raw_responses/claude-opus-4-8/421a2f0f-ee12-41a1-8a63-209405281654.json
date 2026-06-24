@@ -1,0 +1,33 @@
+{
+  "id": "msg_0154M1nZX7MN1ZnSfYRcgU47",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Linear Regression\n\nLinear regression is one of the most fundamental and widely-used techniques in statistics and machine learning. It models the relationship between variables by fitting a straight line (or hyperplane) through data points.\n\n## Core Concept\n\nLinear regression assumes a **linear relationship** between:\n- **Independent variable(s)** (X) — the input/predictor\n- **Dependent variable** (Y) — the output you want to predict\n\nThe goal is to find the best-fitting line that describes how Y changes as X changes.\n\n## The Equation\n\n**Simple Linear Regression** (one input variable):\n\n$$Y = \\beta_0 + \\beta_1 X + \\epsilon$$\n\nWhere:\n- **β₀** = intercept (value of Y when X = 0)\n- **β₁** = slope (how much Y changes per unit change in X)\n- **ε** = error term (the random noise)\n\n**Multiple Linear Regression** (multiple inputs):\n\n$$Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\dots + \\beta_n X_n + \\epsilon$$\n\n## How It Works\n\nThe model finds the optimal line by minimizing the **sum of squared errors** — the differences between predicted values and actual values. This method is called **Ordinary Least Squares (OLS)**.\n\n```\nError = Actual value − Predicted value\n```\n\nThe \"best\" line minimizes the total of all these squared errors.\n\n## Simple Example\n\nPredicting **house price** based on **size**:\n\n| Size (sq ft) | Price ($) |\n|--------------|-----------|\n| 1000         | 200,000   |\n| 1500         | 280,000   |\n| 2000         | 350,000   |\n\nLinear regression might learn:\n**Price = 50,000 + 150 × (Size)**\n\nThis means each additional square foot adds about $150 to the price.\n\n## Common Applications\n\n- 📈 **Economics** — predicting sales, demand\n- 🏠 **Real estate** — estimating property values\n- 🏥 **Healthcare** — relating dosage to outcomes\n- 📊 **Business** — forecasting trends\n\n## Key Assumptions\n\nFor reliable results, linear regression assumes:\n1. **Linearity** — the relationship is actually linear\n2. **Independence** — observations are independent\n3. **Homoscedasticity** — constant variance of errors\n4. **Normality** — errors are normally distributed\n\n## Advantages & Limitations\n\n| ✅ Advantages | ❌ Limitations |\n|--------------|----------------|\n| Simple and interpretable | Only captures linear relationships |\n| Fast to compute | Sensitive to outliers |\n| Good baseline model | Assumes independence of features |\n\n---\n\nWould you like me to explain any specific aspect in more detail, such as the math behind least squares, how to evaluate model performance, or a coding example?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 19,
+    "output_tokens": 933,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

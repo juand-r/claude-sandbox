@@ -1,0 +1,33 @@
+{
+  "id": "msg_016LUoCVFNnUUxHjxC6c21t8",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The European Union has **27 member countries**.\n\nThis number has been stable since 2020, when the United Kingdom officially left the EU (an event commonly known as \"Brexit\").\n\nSome of the member countries include Germany, France, Italy, Spain, Poland, the Netherlands, Belgium, and Sweden, among others.\n\nWould you like a complete list of all 27 member states?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 17,
+    "output_tokens": 120,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

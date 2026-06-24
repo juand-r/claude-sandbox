@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRPzW7t26hQqe2bcqDl1WFsEOgrv",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The Hungarian language, known as \"Magyar\" in Hungarian, is a Uralic language spoken primarily in Hungary and by Hungarian communities in surrounding countries. It is the official language of Hungary and is recognized as a minority language in several other nations, such as Romania, Slovakia, Serbia, and Ukraine, where there are significant Hungarian-speaking populations.\n\nLinguistically, Hungarian is part of the Uralic language family, which also includes Finnish and Estonian, although Hungarian is quite distinct from these languages. It is notably different from most of the other languages spoken in Central Europe, which are primarily Indo-European languages. Hungarian is known for its complex grammar, agglutinative structure (where affixes are added to word stems), extensive use of vowel harmony, and a large number of cases — typically around 18, depending on the analysis.\n\nThe language has a rich history and cultural significance and is an essential part of Hungarian identity. It uses the Latin alphabet with several additional diacritics to accommodate the sounds unique to the language. Due to its unique structure and vocabulary, Hungarian is often considered one of the more challenging languages for English speakers to learn.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782344135,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 231,
+    "prompt_tokens": 16,
+    "total_tokens": 247,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

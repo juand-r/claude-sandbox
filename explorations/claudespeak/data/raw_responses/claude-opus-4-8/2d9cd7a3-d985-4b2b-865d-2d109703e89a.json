@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Nynn9AfM8vfYqvpVD3QvEV",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Beam Search\n\n**Beam search** is a heuristic search algorithm that explores a graph or tree by expanding the most promising nodes within a limited set. It's widely used in scenarios where finding the optimal solution through exhaustive search would be computationally expensive.\n\n## Core Concept\n\nBeam search is essentially an optimization of **best-first search** that reduces memory requirements. Instead of exploring all possible paths, it keeps only a fixed number of the best candidates at each step.\n\nThe key parameter is the **beam width (k)**:\n- At each level, the algorithm generates all possible successors\n- It keeps only the **k best** candidates (based on a scoring function)\n- All other candidates are discarded (pruned)\n\n## How It Works\n\n1. **Start** with an initial state\n2. **Expand** the current candidates to generate possible next states\n3. **Score** each candidate using a heuristic or probability function\n4. **Select** the top-k candidates and discard the rest\n5. **Repeat** until reaching a goal state or stopping condition\n\n## Beam Width Trade-offs\n\n| Beam Width | Behavior |\n|------------|----------|\n| **k = 1** | Equivalent to greedy search (fast but may miss good solutions) |\n| **k = ∞** | Equivalent to breadth-first search (thorough but expensive) |\n| **Moderate k** | Balance between speed and quality |\n\n## Common Applications\n\nBeam search is especially popular in:\n\n- **Natural Language Processing (NLP)**\n  - Machine translation\n  - Text generation (e.g., language models)\n  - Speech recognition\n\n- **Sequence-to-sequence models**\n  - Generating output sequences word-by-word\n  - Keeping multiple candidate sentences and selecting the most likely\n\n## Example in Text Generation\n\nWhen a language model generates text, at each step it could pick:\n- **Greedy approach (k=1):** Always choose the single most likely next word\n- **Beam search (k=3):** Track 3 possible sequences, allowing for better overall sentences even if individual word choices aren't locally optimal\n\n## Advantages & Limitations\n\n**✅ Advantages:**\n- More memory-efficient than exhaustive search\n- Often finds good solutions quickly\n- Tunable via beam width\n\n**❌ Limitations:**\n- **Not guaranteed** to find the optimal solution (it's a heuristic)\n- Can miss the best path if it falls outside the beam early on\n- Choosing the right beam width requires experimentation\n\n---\n\nWould you like me to explain a specific application in more detail, or walk through a concrete example?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 18,
+    "output_tokens": 843,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

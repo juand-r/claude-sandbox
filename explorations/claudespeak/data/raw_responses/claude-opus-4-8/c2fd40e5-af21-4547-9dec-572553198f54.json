@@ -1,0 +1,33 @@
+{
+  "id": "msg_0148amcmECEqH9JPP326Yqkd",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Motorcycle Speedway Racing\n\nSpeedway is a form of **motorcycle racing** conducted on **oval dirt tracks**. It's a thrilling, high-speed sport popular in many parts of the world, particularly in Europe.\n\n## Key Characteristics\n\n**The Bikes:**\n- Use specialized motorcycles with **no brakes**\n- Run on **methanol fuel**\n- Have only **one gear**\n- Lightweight and built for rapid acceleration\n\n**The Track:**\n- Typically **oval-shaped**, made of loose dirt, shale, or crushed granite\n- Usually around **260-425 meters** in length\n- Riders race **counter-clockwise**\n\n## How Races Work\n\n- Races are called **\"heats\"**\n- Typically **4 riders** compete per heat\n- Races last **4 laps** around the track\n- A full match consists of multiple heats between two teams\n\n## The Distinctive Riding Style\n\nThe most recognizable feature is **\"broadsliding\"** or **power-sliding**—riders deliberately slide their bikes sideways through corners, using their body and the rear wheel to control direction. Riders often wear a **steel shoe** on one boot to support themselves as they slide.\n\n## Where It's Popular\n\n- **United Kingdom** (very strong tradition)\n- **Poland** (huge popularity)\n- **Scandinavia** (Sweden, Denmark)\n- **Australia**\n- Various other European countries\n\n## Major Competitions\n\n- **Speedway Grand Prix** (individual world championship)\n- **Speedway World Cup** (team competition)\n- Various national leagues\n\nWould you like more detail on any particular aspect, such as the bikes, racing rules, or how to get involved?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 18,
+    "output_tokens": 562,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "msg_017TaxhD2QfoZ4NKUPwFP9em",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "Yes, this is almost certainly a scam. Unsolicited cashier's checks are one of the most common fraud setups out there. Here's what's likely going on:\n\n**The typical scam pattern:**\n- You receive a check you weren't expecting\n- Soon you'll get contacted (or already have been) with a reason you need to send some of the money back, pay a \"fee,\" or forward funds somewhere\n- Common cover stories: mystery shopper jobs, overpayment for something you're selling, lottery/prize winnings, work-from-home jobs, or \"accidental\" overpayments\n\n**Why it works:**\n- When you deposit the check, your bank may make funds *appear* available within a day or two\n- But the check is fake, and it can take weeks to actually bounce\n- By then you've already wired/sent real money to the scammer\n- You're on the hook for the full amount once the check fails\n\n**What you should do:**\n1. **Don't deposit it**, and definitely don't send anyone money or gift cards\n2. **Don't respond** to anyone contacting you about it\n3. If you already deposited it, **don't spend or send any of it** — talk to your bank\n4. Consider reporting it to the **FTC (reportfraud.ftc.gov)** and the **US Postal Inspection Service** if it came by mail\n\n**A few questions that might help:**\n- Has anyone contacted you about what to do with it?\n- Were you recently selling something online or applying for remote jobs?\n- Did it come with any letter or instructions?\n\nThe golden rule: legitimate money doesn't show up unexpectedly with strings attached. If someone sends you money and then asks you to send some back, it's a scam virtually every time.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 33,
+    "output_tokens": 540,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

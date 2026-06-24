@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuR6IOFWDki6dwUvHd4ROdJ7Np4vM",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "When filing a U.S. Form 1065 as a general partnership, each partner typically accounts for their own share of expenses, including those related to a home office. The IRS allows for the deduction of home office expenses if certain criteria are met, but how those expenses are handled in a partnership can vary depending on the partnership agreement and the specific circumstances of your business.\n\n1. **Direct Partnership Expense**: If the home office is being used for the partnership's trade or business, and if it is agreed upon in the partnership agreement, the partnership might pay for those home office expenses directly and deduct them on Form 1065.\n\n2. **Unreimbursed Partnership Expenses (UPE)**: In many cases, home office expenses can be considered unreimbursed partnership expenses. Each partner would calculate their own home office deduction based on their individual usage and claim it on their personal tax return (Form 1040, Schedule E). This is common when expenses are not directly reimbursed by the partnership.\n\n3. **Reimbursement Plan**: Alternatively, the partnership can establish an accountable plan to reimburse partners for their home office expenses. Under an accountable plan, partners submit their expenses to the partnership, which then reimburses them. The expenses are then deducted by the partnership.\n\nIt is important to document and maintain records for any home office expenses and the business use of the space. Consulting with a tax professional or accountant who can take into account your specific circumstances and the partnership agreement can be helpful in determining the best approach.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342914,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 305,
+    "prompt_tokens": 29,
+    "total_tokens": 334,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

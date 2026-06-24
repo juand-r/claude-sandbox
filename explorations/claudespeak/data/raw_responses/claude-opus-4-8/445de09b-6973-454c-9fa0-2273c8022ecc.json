@@ -1,0 +1,33 @@
+{
+  "id": "msg_01XmTyLsKYW7dE8oEDtKDQbj",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Hungarian Language\n\n**Hungarian** (*magyar nyelv*) is the official language of Hungary and one of the most distinctive languages in Europe.\n\n## Key Facts\n\n- **Native speakers:** Approximately 13-14 million people worldwide\n- **Official status:** Hungary, and a recognized minority language in several neighboring countries (Romania, Slovakia, Serbia, Ukraine, Croatia, Austria, and Slovenia)\n- **Language family:** Uralic (specifically, the Finno-Ugric branch)\n\n## What Makes It Unique\n\nHungarian is unusual because it is **not** an Indo-European language, unlike most languages spoken in Europe (such as English, German, French, or Russian). Its closest relatives are:\n\n- **Finnish** and **Estonian** (though these are quite distant relatives)\n- Several smaller languages spoken in Russia, like Mansi and Khanty\n\nThis means Hungarian is largely **unrelated to the languages of its surrounding countries**, making it linguistically isolated in Central Europe.\n\n## Notable Features\n\n1. **Agglutinative structure** – Words are built by adding many suffixes to a root, which can express meaning that would require several separate words in English.\n   - Example: *ház* (house) → *házaimban* (in my houses)\n\n2. **Vowel harmony** – Vowels within a word tend to match in certain qualities, affecting which suffixes are used.\n\n3. **Rich case system** – Hungarian has around **18 grammatical cases**, expressing relationships like location, direction, and possession.\n\n4. **No grammatical gender** – Unlike German or French, there's no masculine/feminine distinction.\n\n## Writing System\n\nHungarian uses the **Latin alphabet** with additional letters and special characters, including accented vowels (á, é, í, ó, ö, ő, ú, ü, ű) and digraphs (like *cs*, *sz*, *gy*).\n\n## Brief History\n\nThe Magyar people brought the language to the Carpathian Basin around the **9th century AD**. Over time, it absorbed loanwords from Turkic, Slavic, Latin, German, and other languages, but retained its distinct Uralic core.\n\n---\n\nWould you like to learn about Hungarian grammar, common phrases, or its history in more detail?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 20,
+    "output_tokens": 758,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

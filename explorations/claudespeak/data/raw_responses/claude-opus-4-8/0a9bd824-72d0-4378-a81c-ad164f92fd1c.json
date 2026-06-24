@@ -1,0 +1,33 @@
+{
+  "id": "msg_01WhBvNXRgt7HVBZm8UwhqdW",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Why U.S. Credit Unions Have Membership Requirements\n\nCredit unions aren't open to everyone primarily due to their **legal structure and founding philosophy**. Here are the main reasons:\n\n## 1. Legal Definition and Tax Status\nCredit unions are **not-for-profit financial cooperatives**. To maintain their tax-exempt status under federal law, they're required to serve a defined \"field of membership\" rather than the general public. This is a key distinction from banks, which are for-profit and taxed differently.\n\n## 2. The \"Common Bond\" Requirement\nFederal law (the Federal Credit Union Act of 1934) requires members to share a **common bond**, which typically falls into these categories:\n\n- **Employer-based** – Working for a specific company or industry\n- **Geographic** – Living, working, or worshipping in a particular area\n- **Associational** – Belonging to a group, church, or organization\n- **Family** – Being related to an existing member\n\n## 3. The Cooperative Model\nCredit unions are **owned by their members**, not outside shareholders. When you join, you become a part-owner with voting rights. This member-ownership structure assumes a connection to the institution beyond just being a customer.\n\n## The Good News: They're Easier to Join Than You Might Think\n\nIn practice, membership barriers have become quite low:\n\n- Many credit unions have **broad geographic fields** (entire counties or states)\n- Some allow membership through a **small donation** to an associated nonprofit\n- Joining a qualifying organization (sometimes for a nominal fee) can grant eligibility\n- Once you're a member, **family members** often qualify too\n\nSo while they're technically restricted, **most people can find a credit union they're eligible to join** with minimal effort.\n\nWould you like tips on how to find a credit union you might qualify for?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 24,
+    "output_tokens": 586,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

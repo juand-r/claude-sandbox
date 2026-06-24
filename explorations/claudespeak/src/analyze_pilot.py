@@ -23,12 +23,17 @@ FEATS_CSV = os.path.join(CORPUS_DIR, "pilot_features.csv")
 CLAUDE = "claude-opus-4-8"
 
 
-def load_corpus() -> pd.DataFrame:
+def load_corpus_raw() -> pd.DataFrame:
+    """All records as a DataFrame, keeping the raw 'completion' column."""
     rows = []
     for path in sorted(glob.glob(os.path.join(CORPUS_DIR, "pilot_*.jsonl"))):
         for r in read_records(path):
             rows.append(r)
-    df = pd.DataFrame(rows)
+    return pd.DataFrame(rows)
+
+
+def load_corpus() -> pd.DataFrame:
+    df = load_corpus_raw()
     feat = df["completion"].apply(features).apply(pd.Series)
     return pd.concat([df.drop(columns=["completion"]), feat], axis=1)
 

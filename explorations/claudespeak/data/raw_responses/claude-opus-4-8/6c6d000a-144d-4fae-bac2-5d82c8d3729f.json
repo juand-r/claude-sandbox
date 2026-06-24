@@ -1,0 +1,33 @@
+{
+  "id": "msg_01AosQtyByxTC5cafmwQLbkc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Convertible Debt Instruments: Same vs. Different\n\nThese terms are often used **somewhat interchangeably**, but there are meaningful distinctions. Here's a breakdown:\n\n## The Umbrella Term\n**Convertible Debt** is the broad category—it refers to any debt instrument that can be converted into equity (shares). The others are specific *types* of convertible debt.\n\n## The Specific Instruments\n\n| Term | Key Characteristics |\n|------|---------------------|\n| **Convertible Note** | • Typically **short-term**<br>• Often **unsecured**<br>• Common in **startups/early-stage** financing<br>• Usually simpler documentation |\n| **Convertible Bond** | • Typically **long-term**<br>• Often issued by **larger/established companies**<br>• Usually **secured** or backed by assets<br>• Traded on public markets |\n| **Convertible Debenture** | • A type of bond that is **unsecured** (backed only by issuer's creditworthiness)<br>• Long-term<br>• Relies on issuer reputation |\n\n## Quick Summary\n\n✅ **Same concept:** All represent borrowed money that can convert to equity\n\n⚠️ **Key differences come down to:**\n- **Maturity** (notes = short-term; bonds/debentures = long-term)\n- **Security** (debentures are unsecured; bonds may be secured)\n- **Issuer type** (notes → startups; bonds → established firms)\n- **Formality/size** (bonds are larger, more standardized)\n\n## Important Caveat\n> Usage **varies by region**. In some countries (like India or the UK), \"debenture\" is the standard term for corporate bonds. In the US, \"bond\" and \"note\" are more common.\n\n---\n\nWould you like me to go deeper on any specific instrument or explain how the **conversion mechanics** work?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 33,
+    "output_tokens": 604,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

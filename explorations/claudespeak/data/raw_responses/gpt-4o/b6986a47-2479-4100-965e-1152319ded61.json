@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRCnalaFLERXhnKWFduwoSwce31u",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "As of October 2023, the highest-scoring player in NBA history is LeBron James. He surpassed Kareem Abdul-Jabbar's long-standing record for the most career points scored in the NBA. Keep in mind that these records are subject to change as current players continue to accumulate points.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343317,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8772b5f549",
+  "usage": {
+    "completion_tokens": 60,
+    "prompt_tokens": 14,
+    "total_tokens": 74,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

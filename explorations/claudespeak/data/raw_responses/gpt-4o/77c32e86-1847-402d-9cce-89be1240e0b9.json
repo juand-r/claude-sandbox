@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuR5AekdQOad5FqfnVjKy3rbMA3GM",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Receiving an unexpected cashier's check can be a sign of a potential scam. Scammers often use fake or fraudulent cashier's checks in schemes to deceive people. Here are some considerations and steps you should take:\n\n1. **Do Not Cash or Deposit the Check Immediately**: Cashing or depositing the check could make you responsible if it turns out to be fake.\n\n2. **Verify the Check's Authenticity**: Contact the bank that supposedly issued the check. Use contact information obtained independently, not from the check, to verify its authenticity.\n\n3. **Look for Red Flags**: Examine the check for signs of fraud such as misspellings, suspicious account numbers, poor print quality, or inconsistencies.\n\n4. **Remember Common Scams**: \n   - **Overpayment Scam**: You’re sent a check, asked to deposit it, keep part of the money, and send back the rest. The check turns out to be fake, but you’ve already sent real money.\n   - **Lottery or Prize Scams**: Told you’ve won a prize or lottery that you didn’t enter, requiring you to pay fees or taxes upfront.\n   - **Mystery Shopper or Job Scams**: Told you’ve been selected for a job and receive a check to purchase items or transfer money.\n\n5. **Consult with Your Bank**: If you decide to deposit the check, speak with your bank first. They may provide advice or detect potential fraud.\n\n6. **Report the Incident**: If you suspect fraud, report it to relevant authorities such as the Federal Trade Commission (FTC) or local law enforcement.\n\n7. **Stay Calm and Informed**: It's important to stay cautious and not act impulsively.\n\nTaking these precautions will help ensure that you protect yourself from potential fraud.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342844,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8772b5f549",
+  "usage": {
+    "completion_tokens": 362,
+    "prompt_tokens": 27,
+    "total_tokens": 389,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

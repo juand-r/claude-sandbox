@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRATVhQbDAPR7SSWohcpClrz0Fy5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The seeds of an artichoke are not typically what people refer to when discussing this vegetable, as artichokes are primarily cultivated for their edible flower buds. However, if you allow an artichoke to mature and bloom, it turns into a large purple flower. The seeds are located within this mature flower. As the flower dries out, seeds can be found at the center, similar to how sunflower seeds are found in a sunflower. If you're growing artichokes for propagation purposes, you would let the flowers bloom and collect the seeds after they’ve dried.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343173,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a7bbaf60cc",
+  "usage": {
+    "completion_tokens": 113,
+    "prompt_tokens": 17,
+    "total_tokens": 130,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

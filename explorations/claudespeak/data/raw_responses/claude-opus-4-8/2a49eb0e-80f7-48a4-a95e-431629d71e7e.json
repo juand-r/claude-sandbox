@@ -1,0 +1,38 @@
+{
+  "id": "msg_01HN3iiF2M5tjGfjDX6vAkaz",
+  "container": null,
+  "content": [
+    {
+      "signature": "EscCCmMIDxgCKkB99WREw8yoLLMEmMyU04HzJvDSZiuClF2Gzjh77fiPqPLGrAuBUWo5fqisY23ajQX5lvtNdh7xdL4wEnxz+OPGMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDJpSnw/3rhSSoq5GkxoMJ9FONxXXdNNcXGQIIjC4jNNQVFr+LRQGqYklhNlBaLQDMd0UjPmvywyi+79N2DAPwdyzoYkC5SgfR1AU9BAqkQFeMPjY01Nku2VYs3MVirsBEyNjxvl3FqW8IxNGn90KdIO/IFCRT7OWeA1dOpbYfWF0c4bwAt7u4DLkuPTKiDkpqmB13aq6xs8nVYbxW49Z3mEG1ugqk9YBpNHsy2UGBaZq5FraP5TztWnGLuj2g1sfwD6YxGYWW4qEkUzMeg0FAOoeLYh7nDS+/Eyr9dmptGVaGAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "The Lord of the Rings has a few different \"made\" dates depending on what you mean:\n\n**The Books (by J.R.R. Tolkien):**\n- Written over many years and published in three volumes in **1954–1955**\n  - *The Fellowship of the Ring* – 1954\n  - *The Two Towers* – 1954\n  - *The Return of the King* – 1955\n\n**The Peter Jackson Film Trilogy:**\n- *The Fellowship of the Ring* – **2001**\n- *The Two Towers* – **2002**\n- *The Return of the King* – **2003**\n\n**Earlier Animated Film:**\n- Ralph Bakshi's animated version – **1978**\n\nWhich one were you asking about? Let me know if you'd like more details!",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 15,
+    "output_tokens": 283,
+    "output_tokens_details": {
+      "thinking_tokens": 39
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

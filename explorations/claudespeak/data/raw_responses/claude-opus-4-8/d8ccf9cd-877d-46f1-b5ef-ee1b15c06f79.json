@@ -1,0 +1,33 @@
+{
+  "id": "msg_01P4LyAcWRFxEjKbuNYAypy3",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Why Things Are Scarier at Night\n\nGreat question! There are a few reasons why nighttime makes scary things *extra* scary:\n\n## 1. You Can't See Very Well\nAt night, it's dark! When you can't see clearly, your brain starts to wonder, *\"What's hiding in that shadow?\"* Your imagination fills in the blanks—and your imagination usually picks something scary. During the day, you can see that the shadow is just your coat hanging on a chair.\n\n## 2. Everything Gets Quiet\nAt night, the world goes quiet. So when you hear a little creak or bump, it sounds REALLY loud and spooky. During the day, there are so many normal sounds (cars, people, birds) that you don't even notice the little ones.\n\n## 3. Your Brain Gets Tired\nBy nighttime, your brain has been working all day and it's tired. A tired brain has a harder time staying calm and telling you, *\"It's okay, monsters aren't real.\"* So you feel more jumpy and nervous.\n\n## 4. It's \"Sleepy Time\" for Your Body\nA long, long time ago, when humans lived in caves, nighttime was actually dangerous—wild animals came out to hunt! So our bodies learned to be extra careful and alert at night. Even though we're safe now, our bodies still remember to be a little nervous in the dark.\n\nSo when you add a scary movie on top of all that... it feels *much* scarier!\n\n**Tip:** If a movie scares you at night, try watching something silly or happy afterward. It helps your brain feel safe again before sleep! 😊",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 72,
+    "output_tokens": 512,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

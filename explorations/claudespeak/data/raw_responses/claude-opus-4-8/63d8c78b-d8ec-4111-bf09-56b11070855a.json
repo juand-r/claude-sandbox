@@ -1,0 +1,33 @@
+{
+  "id": "msg_01PkAgdMKdfKwuusU57ejByf",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Making Your Charitable Donations Count\n\nHere are practical strategies to maximize your impact when donating:\n\n## Research Effectiveness\n\n- **Use charity evaluators** like GiveWell, Charity Navigator, or GuideStar to assess organizations\n- **Look at overhead ratios**, but don't obsess over them—some effective charities need higher operating costs\n- **Check for transparency** in how funds are used and outcomes reported\n\n## Focus on Impact\n\n- **Consider cost-effectiveness**: Some interventions save lives or improve wellbeing more per dollar (e.g., malaria nets, deworming programs)\n- **Look for evidence-based programs** with measurable results\n- **Think about neglected causes** where your contribution fills a gap others overlook\n\n## Practical Approaches\n\n- **Give regularly** rather than only sporadically—predictable funding helps charities plan\n- **Donate unrestricted funds** when possible, letting experts allocate where needed most\n- **Consider matching opportunities** through employers to double your impact\n\n## Choose Causes That Resonate\n\nEffective giving works best when sustainable, so balance impact with personal connection:\n- Global health and poverty\n- Local community needs\n- Causes tied to your values or experiences\n\n## Smart Logistics\n\n- **Keep records** for tax deductions\n- **Set a giving budget** you can maintain\n- **Consider donor-advised funds** for larger or strategic giving\n\n## Avoid Common Pitfalls\n\n- Be cautious of high-pressure solicitations\n- Verify legitimacy before giving to disaster relief or new organizations\n- Watch for scams mimicking established charities\n\n---\n\n**Want more specific guidance?** Let me know:\n- What causes matter most to you?\n- Are you giving locally or globally?\n- What's your budget or giving timeline?\n\nI'm happy to tailor suggestions to your situation.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 20,
+    "output_tokens": 615,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

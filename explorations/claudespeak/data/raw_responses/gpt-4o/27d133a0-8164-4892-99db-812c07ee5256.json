@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQvost5IRYlgGTiSA7qZJszlvTrI",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Okay, imagine you have a really special and very big piggy bank filled with toys instead of money. Now, every year you keep adding more and more exciting toys to it. Soon, it becomes the most amazing piggy bank because it has so many great toys inside.\n\nBerkshire Hathaway is like that special piggy bank, but instead of toys, it has shares and pieces of other companies. Over many, many years, it's collected lots of valuable businesses. People really want a piece of this big, exciting piggy bank, but there are only a few pieces available. That's why each piece, or share, costs so much! It's like buying part of the biggest and coolest toy collection ever.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342264,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_f38a9d6fcb",
+  "usage": {
+    "completion_tokens": 142,
+    "prompt_tokens": 32,
+    "total_tokens": 174,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

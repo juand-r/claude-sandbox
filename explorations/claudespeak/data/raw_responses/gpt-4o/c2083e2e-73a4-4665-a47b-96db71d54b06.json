@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQwsuv5rWlzv9vetu81lCIbTzw8r",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Okay! Let's imagine your body is like a superhero team, always ready to fight off bad guys, who are like germs and viruses. Chickenpox is one of those bad guys. It's a virus that likes to sneak in and cause itchy spots and sometimes a fever. When you get chickenpox, your superhero team fights it off and learns how to beat it really well. This is like getting special training so that if the chickenpox virus tries to come back, your team can stop it super-fast. \n\nThat's why most people only get it once. Your body remembers how to fight it off so quickly that you usually don’t get sick again. Long ago, everyone used to get chickenpox, but now there's a vaccine, like a shield, that helps your superhero team be ready without actually getting sick. This way, fewer people need to pass it around!",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342330,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_e6c46296c9",
+  "usage": {
+    "completion_tokens": 172,
+    "prompt_tokens": 48,
+    "total_tokens": 220,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

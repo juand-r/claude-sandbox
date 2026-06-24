@@ -1,0 +1,33 @@
+{
+  "id": "msg_01X5obFP8Mz2kiBBa8fovnZB",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# TNX and the 10x Discrepancy\n\nThe difference you're seeing comes down to **how each platform scales the Treasury yield index**, and it relates to the original CBOE specification.\n\n## The Core Issue\n\nThe CBOE's official **TNX index** is defined as **10 times the actual yield** of the 10-year Treasury note. So:\n\n- If the actual 10-year yield is **4.5%**\n- CBOE's TNX shows **45.0**\n\nThis was the original design—CBOE created these yield indices (TNX, TYX for 30-year, FVX for 5-year, IRX for 13-week) multiplied by 10.\n\n## Why the Platforms Differ\n\n**Yahoo Finance** displays TNX as the **actual yield** (e.g., 4.5), effectively dividing the CBOE value by 10 to show the \"real\" percentage that most people intuitively understand.\n\n**Google Finance and CBOE** tend to show the **raw index value** (e.g., 45.0) as originally specified.\n\n## Which Is \"Correct\"?\n\nNeither is wrong—they're just different conventions:\n\n| Platform | Shows | Example (4.5% yield) |\n|----------|-------|---------------------|\n| CBOE (official index) | 10× yield | 45.0 |\n| Yahoo Finance | actual yield | 4.5 |\n| Google Finance | raw index | 45.0 |\n\n## Practical Takeaway\n\nIf you're comparing data across platforms, just **multiply or divide by 10** to reconcile them. The underlying data is identical—Yahoo simply presents it in the more intuitive \"percentage yield\" format that matches what you'd see quoted elsewhere for bond yields.\n\nAre you working with this data for a specific purpose (like options pricing or charting)? That might affect which convention is more convenient to use.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 47,
+    "output_tokens": 590,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQuKqqTjsLwrLQ115S6VZVmah2n4",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "When a human embryo isn't viable, the body can naturally terminate the pregnancy through a process called miscarriage. This happens because the body has built-in checks and balances to support healthy development. Here's a simplified explanation:\n\n1. **Early Signals**: In the earliest stages of pregnancy, the embryo's cells are rapidly dividing and forming structures. Sometimes, there might be problems like genetic abnormalities, which means the embryo might not develop properly or isn't viable.\n\n2. **Hormonal Monitoring**: The body closely monitors hormonal levels, like human chorionic gonadotropin (hCG). If the embryo isn't developing correctly, the levels of these hormones may not rise or might drop, signaling that something could be wrong.\n\n3. **Immune System's Role**: The immune system is also involved. If the embryo isn't growing properly, it might not \"communicate\" the right signals to the mother's body to maintain the pregnancy.\n\n4. **Uterine Environment**: The uterus is designed to support the growth of the embryo. If it detects the embryo isn't attaching correctly or isn't healthy, it might not provide the necessary support.\n\nWhen these signals indicate a problem, the body might naturally decide that it's better to end the pregnancy to prevent unnecessary strain and allow for the possibility of a future healthy pregnancy. This is essentially the body's way of recognizing that \"this isn't working,\" and choosing to \"scrap it\" for the best chance of a healthy outcome later.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342172,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 291,
+    "prompt_tokens": 59,
+    "total_tokens": 350,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

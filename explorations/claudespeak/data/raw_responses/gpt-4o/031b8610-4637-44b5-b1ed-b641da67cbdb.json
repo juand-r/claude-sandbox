@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRC9SgvNkENHchBY3ytvHwkiAFAp",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The most popular sports in the United States are often considered to be:\n\n1. **American Football**: The NFL (National Football League) is the most popular and widely watched sports league in the U.S., with the Super Bowl being a major annual event.\n\n2. **Basketball**: The NBA (National Basketball Association) is extremely popular, as is college basketball, particularly the NCAA Men's Basketball Tournament, known as March Madness.\n\n3. **Baseball**: Often referred to as America’s pastime, Major League Baseball (MLB) has a long history and remains popular, although its viewership has seen some decline in recent years.\n\n4. **Soccer**: While traditionally less popular than other sports, soccer has been rapidly growing in popularity in the U.S., with Major League Soccer (MLS) expanding and international soccer events drawing large audiences.\n\n5. **Ice Hockey**: The NHL (National Hockey League) has a dedicated fan base, especially in regions with cold climates.\n\n6. **Auto Racing**: NASCAR and Formula 1 have significant followings, particularly NASCAR in the southern and southeastern U.S.\n\n7. **Golf**: Golf has a wide following, with events like The Masters and the U.S. Open attracting large audiences.\n\n8. **Tennis**: Tennis events such as the U.S. Open are very popular and attract considerable attention.\n\n9. **Mixed Martial Arts (MMA)** and **Boxing**: Both sports have significant followings, with organizations like the UFC (Ultimate Fighting Championship) and major boxing matches drawing large pay-per-view audiences.\n\nThese sports have broad appeal across various demographics and regions within the United States.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343277,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 336,
+    "prompt_tokens": 15,
+    "total_tokens": 351,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

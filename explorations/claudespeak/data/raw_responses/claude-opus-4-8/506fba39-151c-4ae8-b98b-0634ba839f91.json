@@ -1,0 +1,33 @@
+{
+  "id": "msg_017j2vdJfv1HzccGqaaBnfQq",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Related Hedges (Pairs/Correlation Hedging)\n\nA **related hedge** (also called a *proxy hedge* or *cross hedge*) involves protecting a position using a **different but correlated instrument**, rather than the exact same asset. Here's how it works:\n\n## Core Concept\n\nInstead of hedging Asset A with Asset A directly, you hedge it with Asset B, which tends to move in a related way.\n\n**Why use it?**\n- The exact hedging instrument may be unavailable, illiquid, or expensive\n- You want to hedge a broad exposure (e.g., sector, currency, rate) rather than one specific name\n\n## How It Works\n\n### 1. Identify the Correlation\nYou find an instrument that moves **predictably** in relation to your position.\n\n| Position | Related Hedge |\n|----------|---------------|\n| Jet fuel exposure | Crude oil or heating oil futures |\n| A single tech stock | NASDAQ index / sector ETF |\n| Corporate bond | Treasury futures or CDS index |\n| Foreign asset | Currency forward in a correlated currency |\n\n### 2. Calculate the Hedge Ratio\nYou size the hedge based on the **relationship strength** (often via beta or regression):\n\n$$\\text{Hedge Ratio} = \\beta = \\frac{\\text{Cov}(A, B)}{\\text{Var}(B)}$$\n\nThis tells you how many units of B to trade per unit of A.\n\n### 3. Offset the Risk\nIf your main position loses value, the hedge ideally gains (or vice versa), reducing **net** volatility.\n\n## Key Risk: Basis Risk\n\nThis is the **central trade-off**. Because the instruments aren't identical:\n\n- The correlation can **break down** unexpectedly\n- The hedge may **under- or over-perform** the position\n- You're left with **residual risk** = the gap between the two\n\n> ⚠️ A \"perfect\" hedge eliminates risk; a related hedge only reduces it, leaving basis risk.\n\n## Simple Example\n\nYou hold **$1M in jet fuel** but no jet fuel futures exist liquidly. You hedge with **crude oil futures**:\n\n1. Historically, jet fuel and crude move together (~0.9 correlation)\n2. You short crude futures roughly matched to your fuel exposure\n3. If oil prices fall, your fuel loses value but your short crude position gains\n4. **Basis risk:** if the *crack spread* (refining margin) shifts, jet fuel and crude diverge, and the hedge isn't perfect\n\n---\n\nWould you like me to go deeper on any specific aspect — like **calculating hedge ratios**, **basis risk management**, or **examples in a particular market** (equities, FX, commodities, rates)?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 19,
+    "output_tokens": 902,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

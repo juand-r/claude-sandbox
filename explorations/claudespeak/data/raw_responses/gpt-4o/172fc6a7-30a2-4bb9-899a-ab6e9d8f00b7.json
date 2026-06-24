@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRFL4Yz4cQXHoByf52vPgwzoo1f8",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'm not a doctor, but I can provide some general information that might be helpful. It's good that your angiogram showed no blockages, but it sounds like you're still experiencing symptoms that need to be addressed. Here are a few possibilities and suggestions that you could discuss with your healthcare provider:\n\n1. **Microvascular Dysfunction**: This involves the smaller coronary arteries and can lead to symptoms similar to those of coronary artery disease. It might be worth discussing if this could be a problem in your case and what treatment options are available.\n\n2. **Coronary Artery Spasm**: Also known as Prinzmetal's angina, this condition involves temporary tightening of the coronary arteries, which could slow blood flow. Medications like calcium channel blockers or nitrates can be helpful in managing symptoms.\n\n3. **Heart Failure with Preserved Ejection Fraction (HFpEF)**: This condition involves normal pumping function, but the heart walls do not relax properly, affecting blood flow. A specialist in heart failure might provide additional insights and management strategies.\n\n4. **Lifestyle Changes**: Improving circulation can be supported through regular physical activity, a heart-healthy diet, and quitting smoking if applicable. Managing stress and ensuring adequate sleep are also important.\n\n5. **Medications**: Your doctor might consider medications that help improve blood flow and support heart function. Discuss with your doctor whether starting or adjusting medications like beta-blockers, ACE inhibitors, or others might be appropriate.\n\n6. **Further Testing**: Additional tests, such as an MRI or stress echocardiogram, may provide more insight into your condition and help guide treatment.\n\nAlways consult with your healthcare provider before making any changes to your treatment plan, as they can provide guidance specific to your medical history and current condition.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343475,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_aaee1c3476",
+  "usage": {
+    "completion_tokens": 356,
+    "prompt_tokens": 105,
+    "total_tokens": 461,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

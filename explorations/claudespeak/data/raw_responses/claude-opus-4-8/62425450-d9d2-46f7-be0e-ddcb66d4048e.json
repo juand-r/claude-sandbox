@@ -1,0 +1,33 @@
+{
+  "id": "msg_012RMGoCNybXnAGcrRTZDAK8",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "I can hear how worried you are, and I want to help reassure you. Let me explain what's happening.\n\n## Yes, this bleeding is normal\n\nBleeding or spotting after taking an emergency contraceptive pill (like i-pill) is a **very common side effect**. The pill contains hormones that can cause:\n\n- Light bleeding or spotting (like what you're having)\n- This can happen a few days to a week after taking it\n- It usually lasts **a few days** and then stops on its own\n\nThis is not dangerous, and it does **not** mean something is wrong.\n\n## What about your next period?\n\n- The pill can make your next period come **earlier or later than usual**\n- Your period might be lighter or heavier than normal\n- Since you already have irregular periods, this is a bit harder to predict, but it should still come within a few weeks\n\n## Did the pill work?\n\nYou did everything right—you took it within 1 hour, which is excellent timing (the sooner, the better). This makes it very effective.\n\n**The best way to confirm** is to take a home pregnancy test if your next period is **more than 1 week late**. Take it about 3 weeks after the sex you had (so around January 10th or later) for the most accurate result.\n\n## When to see a doctor\n\nPlease talk to a doctor if:\n- The bleeding is very **heavy** (soaking a pad every hour)\n- You have **severe** pain\n- You feel dizzy or faint\n- Your period doesn't come at all in the next 3-4 weeks\n\n## A gentle note\n\nYou handled a stressful situation responsibly. Try to take a deep breath—what you're experiencing sounds completely normal. 💛\n\nIs there anything specific you're still worried about? I'm happy to explain more.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 160,
+    "output_tokens": 545,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

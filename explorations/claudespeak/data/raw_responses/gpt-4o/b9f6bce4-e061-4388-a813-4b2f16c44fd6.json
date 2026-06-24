@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRO3XV7pekn0PFsdFXBgfVxJ6ycU",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Fred Brooks was an American computer scientist and software engineer, best known for his work in software development and project management. He was born on April 19, 1931, and passed away on November 17, 2022. Brooks is perhaps most famous for his book \"The Mythical Man-Month: Essays on Software Engineering,\" which was first published in 1975. In this influential work, he discusses the complexities and challenges of software project management and introduces the concept known as \"Brooks’ Law,\" which states, \"Adding manpower to a late software project makes it later.\"\n\nBrooks also led the development of IBM's System/360 family of computers, which was groundbreaking in the 1960s and had a profound impact on computer architecture and operating systems. For his contributions to computer science, Brooks received several prestigious awards, including the Turing Award in 1999.\n\nIn addition to his technical achievements, Brooks has been a significant figure in the academic world. He was a long-time professor at the University of North Carolina at Chapel Hill, where he contributed to the development of computer science education and research.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782344015,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a7bbaf60cc",
+  "usage": {
+    "completion_tokens": 226,
+    "prompt_tokens": 15,
+    "total_tokens": 241,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

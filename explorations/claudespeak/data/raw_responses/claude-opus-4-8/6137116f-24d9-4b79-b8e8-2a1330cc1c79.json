@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Bj5sYuJzrtUKNt8bHF9xAh",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Fuzzy Rule\n\nA **fuzzy rule** is a conditional statement used in fuzzy logic systems that handles imprecise, uncertain, or vague information. Unlike traditional binary logic (true/false), fuzzy rules allow for degrees of truth, making them useful for modeling human-like reasoning.\n\n## Basic Structure\n\nFuzzy rules typically follow an **IF-THEN** format:\n\n```\nIF <antecedent> THEN <consequent>\n```\n\nFor example:\n- **IF** temperature is *hot* **THEN** fan speed is *high*\n- **IF** distance is *close* **AND** speed is *fast* **THEN** braking is *strong*\n\n## Key Components\n\n**1. Antecedent (Premise)**\n- The \"IF\" part containing conditions\n- Uses linguistic variables (e.g., \"hot,\" \"cold,\" \"fast,\" \"slow\")\n\n**2. Consequent (Conclusion)**\n- The \"THEN\" part defining the output or action\n\n**3. Linguistic Variables**\n- Words instead of numbers (e.g., \"tall,\" \"warm,\" \"low\")\n- These map to **membership functions** that assign degrees between 0 and 1\n\n## How It Differs from Classical Logic\n\n| Classical Logic | Fuzzy Logic |\n|----------------|-------------|\n| Temperature IS 30°C → hot (yes/no) | Temperature is *80% hot* |\n| Binary (0 or 1) | Continuous (0 to 1) |\n| Sharp boundaries | Gradual transitions |\n\n## Example in Practice\n\nConsider an air conditioning system:\n\n```\nRule 1: IF temperature is WARM THEN cooling is MEDIUM\nRule 2: IF temperature is HOT THEN cooling is HIGH\n```\n\nIf the actual temperature is partly \"warm\" (0.6) and partly \"hot\" (0.3), both rules activate **partially**, and their outputs are combined to produce a smooth, blended response.\n\n## Common Applications\n\n- 🌡️ **Climate control** systems\n- 🚗 **Automotive** (ABS, transmission control)\n- 📷 **Cameras** (autofocus, image stabilization)\n- 🏭 **Industrial** process control\n- 🧺 **Home appliances** (washing machines, rice cookers)\n\n## Why Use Fuzzy Rules?\n\nThey excel at:\n- Handling **uncertainty** and **imprecision**\n- Mimicking **human reasoning**\n- Working with **incomplete information**\n- Creating **smooth control** responses\n\n---\n\nWould you like me to explain a specific aspect in more detail, such as **membership functions**, **fuzzy inference systems**, or how multiple rules are **combined** (defuzzification)?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 22,
+    "output_tokens": 904,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

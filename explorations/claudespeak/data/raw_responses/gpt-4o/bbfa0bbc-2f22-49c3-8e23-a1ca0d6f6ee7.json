@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuQv0YKNkCGjD03vQ5wKAX1EyNY19",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Imagine your computer is like a big, magical toy box that has lots of cool stuff inside, like games, pictures, and secrets. Hackers are like sneaky explorers who are trying to peek inside other people’s toy boxes without permission. They type really fast on their keyboards because they are trying lots of special secret codes and tricks to open the toy boxes.\n\nSometimes, they want to find special treasures, like hidden information or locked doors in a game. Other times, they try to play tricks, like making silly things happen on the computer. They need to be quick and precise because if they make a mistake, the toy box might stay closed or someone might catch them exploring!\n\nSo, when you see hackers typing fast, they're usually trying their best to solve a big digital puzzle as quickly and secretly as they can.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342214,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_e6c46296c9",
+  "usage": {
+    "completion_tokens": 164,
+    "prompt_tokens": 49,
+    "total_tokens": 213,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

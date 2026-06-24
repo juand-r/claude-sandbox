@@ -1,0 +1,33 @@
+{
+  "id": "msg_018ZwRSshMWZDUe4GRpMBcoU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Why Airplane Windows Don't Line Up With Seats\n\nGreat question! It seems like it *should* be easy, but here's what's really going on:\n\n## The Window Spots Are Decided First\n\nWhen engineers build an airplane, they decide where the windows go based on how the **airplane's body** is built—not based on where seats will be. The windows are placed at regular spots along the metal frame of the plane.\n\n## Airlines Move the Seats Around\n\nHere's the tricky part! Different airlines want different things:\n- Some want **lots of seats** crammed close together to fit more people\n- Some want **fewer seats** with more legroom for comfort\n\nSo airlines slide the seats forward or backward to fit *their* plan. The windows stay put, but the seats get moved!\n\n## Like a Cookie Sheet 🍪\n\nImagine a cookie sheet with little marks already painted on it (those are the windows). Now you start placing cookies (the seats) on the sheet. \n\nIf you make **big cookies**, they might match the marks. But if you make **small cookies** to fit MORE of them, they won't line up with the painted marks anymore!\n\n## The Simple Answer\n\nThe windows are built into the plane **one way**, but airlines arrange the seats a **different way** to fit more passengers. So they just don't match up perfectly!\n\n---\n\nDoes that make sense? It's basically because two different teams—the plane builders and the airlines—make their choices separately! ✈️",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 54,
+    "output_tokens": 461,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

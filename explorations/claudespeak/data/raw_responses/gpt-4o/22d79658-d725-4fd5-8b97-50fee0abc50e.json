@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRJQ12T8RZTExstT2L14c5JkVbSD",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'm not a doctor, but I can offer some general advice on what to consider when your infant is experiencing vomiting and unusual stool color. It’s important to consult with a pediatrician as soon as possible to ensure your baby receives appropriate care. Here are a few considerations until you can get medical advice:\n\n1. **Monitor Hydration:** Ensure your baby remains hydrated. Dehydration can happen quickly in infants. If she is vomiting, continue to offer her small, frequent feedings to help maintain fluid intake.\n\n2. **Check for Symptoms of Illness:** Observe your daughter for any additional symptoms such as fever, lethargy, or irritability, which could indicate an infection or other issues that require prompt medical attention.\n\n3. **Color of Stool:** Light grey or green stool can sometimes occur due to dietary changes (yours, if breastfeeding, or formula if it's changed). However, grey stool can also suggest a liver or gallbladder issue, so it’s important to mention this when you speak to your doctor.\n\n4. **Vomiting:** Occasional spit-up or mild vomiting can be normal for infants, but frequent, forceful vomiting might indicate other issues such as reflux or an allergy/intolerance.\n\n5. **Keep Track of Episodes:** Document the frequency and volume of the vomiting and stools, as well as any other symptoms. This information will be valuable for your pediatrician.\n\n6. **Feeding Adjustments:** While waiting for a doctor's guidance, consider offering smaller, more frequent feedings to see if that helps with the vomiting.\n\nYour pediatrician will be able to provide a more specific diagnosis and treatment plan based on your daughter’s symptoms and health history. If she becomes lethargic, stops eating, or you notice other concerning symptoms, seek immediate medical attention.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343728,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_f38a9d6fcb",
+  "usage": {
+    "completion_tokens": 359,
+    "prompt_tokens": 83,
+    "total_tokens": 442,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

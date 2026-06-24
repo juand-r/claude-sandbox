@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuR5ioO8IPpUEN99j7Nq3MuPCgAVd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Yes, it is possible to trade Contracts for Difference (CFDs) without using leverage, or with minimal leverage. Leverage is a key feature of CFD trading that allows traders to gain larger exposure to the market with a smaller amount of capital. However, you can choose not to use leverage by using a 1:1 ratio, meaning you are trading with your own capital without borrowing additional funds to increase your position size.\n\nTrading CFDs without leverage effectively means that you are investing the full value of the CFD position you want to open. This reduces your risk exposure, as you are not amplifying your potential gains or losses. It can be a more straightforward way to manage risk, but it also means that you need to have sufficient capital to cover the entire value of your trades.\n\nIt is important to check with your CFD provider or broker to confirm their requirements and to ensure they offer the option to trade without leverage, as different providers may have different terms and conditions regarding leverage and margin requirements.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342878,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_8723a675e3",
+  "usage": {
+    "completion_tokens": 198,
+    "prompt_tokens": 16,
+    "total_tokens": 214,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

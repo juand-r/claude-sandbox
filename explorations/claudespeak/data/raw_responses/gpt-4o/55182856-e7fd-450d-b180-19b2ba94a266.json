@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuR4TDpWzWf119fI59eL3SL11HZhr",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "When a certified bank check is not cashed, the original funds remain with the bank. The bank typically sets aside the funds from the issuer’s account at the time the check is certified to ensure the check can be paid. If the check goes uncashed for a specific period, which varies by bank and jurisdiction, the funds may eventually be considered unclaimed property. \n\nIn the United States, after the dormancy period set by state law, which usually ranges from three to five years, the money may be transferred to the state under escheatment laws. Before this happens, the bank might attempt to contact the issuer or the payee to resolve the situation or remind them to cash the check. If the check was lost or the payee never received it, the issuer might be able to request the bank cancel and reissue the check.\n\nIf you find yourself in this situation, it's advisable to contact your bank to discuss your options and next steps.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782342801,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_221a386d86",
+  "usage": {
+    "completion_tokens": 193,
+    "prompt_tokens": 23,
+    "total_tokens": 216,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

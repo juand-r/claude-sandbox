@@ -1,0 +1,33 @@
+{
+  "id": "msg_01YWpakApTCFruT7va4Zt4Pc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Strategic Games\n\nA **strategic game** (also called a *normal-form game* or *strategic-form game*) is a fundamental concept in **game theory**, the mathematical study of decision-making among multiple interacting agents.\n\n## Core Definition\n\nA strategic game is a model of situations where:\n- **Multiple players** make decisions\n- Each player's outcome depends on the choices of *all* players\n- Players choose their strategies **simultaneously** (or without knowing what others have chosen)\n\n## Three Essential Components\n\nEvery strategic game consists of:\n\n1. **Players** — The decision-makers (e.g., individuals, companies, nations)\n2. **Strategies** — The set of possible actions available to each player\n3. **Payoffs** — The rewards or outcomes each player receives based on the combination of strategies chosen by everyone\n\n## Classic Example: The Prisoner's Dilemma\n\nTwo suspects are interrogated separately and each must choose to **Cooperate** (stay silent) or **Defect** (betray the other):\n\n|  | Player 2: Cooperate | Player 2: Defect |\n|---|---|---|\n| **Player 1: Cooperate** | (-1, -1) | (-3, 0) |\n| **Player 1: Defect** | (0, -3) | (-2, -2) |\n\n*Numbers represent payoffs (years in prison, shown as negatives) for (Player 1, Player 2).*\n\n## Key Concepts\n\n- **Nash Equilibrium** — A stable outcome where no player can improve their payoff by changing their strategy *alone*. This is the central solution concept in strategic games.\n- **Dominant Strategy** — A strategy that is best regardless of what others do.\n\n## Why It Matters\n\nStrategic games are widely applied in:\n- **Economics** (competition, pricing, auctions)\n- **Political science** (voting, international relations)\n- **Biology** (evolutionary strategies)\n- **Computer science** (multi-agent systems, AI)\n\n---\n\nWould you like me to explain a specific aspect, such as **Nash equilibrium**, the difference between strategic and **extensive-form games**, or work through another example?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 19,
+    "output_tokens": 699,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

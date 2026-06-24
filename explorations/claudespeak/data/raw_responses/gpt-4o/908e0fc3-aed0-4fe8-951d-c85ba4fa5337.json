@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRB6DRNS6zuCwMZD05TKiYFtO3Fk",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Bilirubin total refers to the measurement of all the bilirubin in the blood. Bilirubin is a yellow pigment that is a byproduct of the normal breakdown of red blood cells. It is processed by the liver, excreted in bile, and ultimately removed from the body through feces.\n\nThere are two main forms of bilirubin: unconjugated (indirect) and conjugated (direct). Unconjugated bilirubin is not water-soluble and travels to the liver bound to a protein called albumin. In the liver, it is converted to conjugated bilirubin, which is water-soluble and can be excreted in bile.\n\nThe total bilirubin level in the blood comprises both unconjugated and conjugated bilirubin. Elevated levels of total bilirubin can indicate various conditions, including liver disease, bile duct obstruction, or hemolysis (the breakdown of red blood cells). A bilirubin test is often part of liver function tests to help assess liver health and diagnose conditions related to liver function and blood disorders.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343212,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a77e540149",
+  "usage": {
+    "completion_tokens": 211,
+    "prompt_tokens": 12,
+    "total_tokens": 223,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

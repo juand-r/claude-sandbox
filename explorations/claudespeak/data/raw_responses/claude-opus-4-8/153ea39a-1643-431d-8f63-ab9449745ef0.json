@@ -1,0 +1,33 @@
+{
+  "id": "msg_01RTrvM6dBRLjpWb9BtnSqxH",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Credit Card Expenses Showing as Liabilities in QuickBooks\n\nThis is actually **normal and correct** behavior! Here's why and how it works.\n\n## Why Credit Cards Are Liabilities\n\nA credit card represents **money you owe** to the credit card company, which makes it a liability—not an expense by itself. When you make a purchase:\n\n- The **expense** is recorded (e.g., Office Supplies)\n- The **credit card liability** increases (you owe more)\n\nThese are two sides of the same transaction.\n\n## How It Should Work\n\n**When you make a purchase:**\n- Expense account ↑ (increases)\n- Credit Card liability ↑ (increases)\n\n**When you pay the credit card bill:**\n- Bank account ↓ (decreases)\n- Credit Card liability ↓ (decreases)\n\n## Common Issues & Fixes\n\n### 1. Expenses not appearing on Profit & Loss\n**Cause:** You may have categorized purchases to the credit card account itself instead of expense accounts.\n\n**Fix:** Make sure each transaction is coded to the proper expense category, not just the credit card.\n\n### 2. Double-counting expenses\n**Mistake:** Recording the expense when purchased AND again when paying the card.\n\n**Fix:** Only record expenses at purchase. Payment should just reduce the liability and bank balance.\n\n### 3. Credit card set up as wrong account type\n**Fix:** \n- Go to **Chart of Accounts**\n- The card should be type **Credit Card** (under Liabilities)\n\n## Quick Question to Help You Better\n\nCan you clarify what specifically concerns you?\n- Are expenses **not showing on your P&L report**?\n- Is the **balance sheet** showing something unexpected?\n- Are you trying to **record payments** correctly?\n- Did you **import transactions** that look wrong?\n\nLet me know and I can give you specific step-by-step guidance! 🎯",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 28,
+    "output_tokens": 628,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

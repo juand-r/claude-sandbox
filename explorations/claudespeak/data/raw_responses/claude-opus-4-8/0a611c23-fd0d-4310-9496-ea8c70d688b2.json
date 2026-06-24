@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Nnu9R9LSX2qdcT7KQ65qSK",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# How the Body \"Decides\" to End a Non-Viable Pregnancy\n\nGreat question! The short answer is: **there's no central \"decision-maker.\"** It's not like your brain or body consciously evaluates the embryo and votes to scrap it. Instead, it's a bunch of automatic mechanical and chemical failures that cascade.\n\nLet me break down the main mechanisms:\n\n## 1. The Embryo Stops Sending the \"Stay Pregnant\" Signal\n\nA healthy embryo produces a hormone called **hCG** (this is what pregnancy tests detect). This hormone basically tells your body: *\"Hey, keep the pregnancy support systems running!\"*\n\n- If the embryo is failing, it stops making enough hCG\n- Without that signal, your body stops maintaining the uterine lining\n- The lining breaks down and sheds — resulting in a miscarriage\n\nThink of it like a \"dead man's switch\" — as long as the embryo is healthy, it keeps the button pressed. When it can't anymore, the system shuts down on its own.\n\n## 2. Chromosomal Errors Cause Things to Simply Not Build Correctly\n\nMost early miscarriages (~50%+) happen because of **chromosomal abnormalities** — the embryo has the wrong number of chromosomes or major genetic errors.\n\n- Cells need correct instructions to divide and build a body\n- If the instructions are scrambled, development just **stalls and fails**\n- It's less \"the body rejects it\" and more \"the construction project collapses because the blueprints were broken\"\n\n## 3. The Immune System & Inflammation\n\nSometimes the body detects that something isn't developing properly and triggers inflammation, which contributes to ending the pregnancy.\n\n---\n\n## The ELI5 Version 🧸\n\nImagine you're building a LEGO tower, and the instructions are missing pages. You start building, but pieces don't fit, the tower gets wobbly, and eventually it just **falls down on its own**. Nobody decided to knock it over — it just couldn't hold itself up.\n\nThe body works similarly: a non-viable embryo usually can't keep itself going, so the support systems naturally wind down.\n\n---\n\nWould you like me to go deeper on any one of these mechanisms?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 84,
+    "output_tokens": 727,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

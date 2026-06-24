@@ -1,0 +1,33 @@
+{
+  "id": "msg_01CrT3BbYD7BAMXBJmxrQPK7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Buying Index Funds and Individual Stocks in a Canadian TFSA\n\nYes, you can absolutely buy both index funds and individual stocks within a Tax-Free Savings Account (TFSA). Here's what you need to know:\n\n## What You Can Hold in a TFSA\n\n**Eligible investments include:**\n- Index funds (mutual funds)\n- ETFs (Exchange-Traded Funds)\n- Individual stocks (Canadian and foreign)\n- Bonds and GICs\n- Mutual funds\n- Cash\n\n## Getting Started\n\nTo buy these investments, you'll need a **self-directed TFSA** (also called a trading or investment TFSA), not just a savings account TFSA. Options include:\n\n**Discount Brokerages:**\n- Questrade\n- Wealthsimple Trade\n- Qtrade\n- TD Direct Investing\n- RBC Direct Investing\n- BMO InvestorLine\n\n## Key Considerations\n\n**Contribution Limits**\n- 2024 limit: $7,000\n- Cumulative room since 2009 if you were 18+ and a resident\n- Check your room via CRA My Account\n\n**Foreign Stocks (especially US):**\n- ⚠️ US dividends are subject to a **15% withholding tax** in a TFSA (this tax is NOT recoverable, unlike in an RRSP)\n- Capital gains on US stocks remain tax-free\n- This makes TFSAs slightly less ideal for US dividend-paying stocks\n\n**Index Funds vs. ETFs:**\n- ETFs typically have lower fees (MERs)\n- Index mutual funds may have no trading commissions but higher MERs\n- Popular low-cost options: Vanguard, iShares, BMO ETFs\n\n## Tax Advantages\n\n- ✅ All capital gains are tax-free\n- ✅ Canadian dividends are tax-free\n- ✅ No tax on withdrawals\n- ✅ Withdrawals restore contribution room (next calendar year)\n\n## A Word of Caution\n\nAvoid **day trading** in your TFSA. The CRA may classify frequent trading as business income and tax it, removing the tax-free benefit.\n\n---\n\nWould you like more specific guidance on choosing a brokerage, selecting index funds, or understanding contribution room?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 31,
+    "output_tokens": 756,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

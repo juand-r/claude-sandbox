@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-DuRDVEAaW9PlULcoZRhdEDzGcoEKN",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Afghan cuisine is diverse and reflects the country's rich cultural history, incorporating influences from Persia, India, and Central Asia. Here are some popular Afghan dishes:\n\n1. **Kabuli Pulao**: Often considered the national dish of Afghanistan, this is a rice dish cooked with raisins, carrots, and lamb or beef. It’s flavored with a variety of spices, making it aromatic and delicious.\n\n2. **Mantu**: These are steamed dumplings typically filled with spiced ground meat, usually lamb or beef, and onions. They are often served with a tomato-based sauce and a yogurt mint sauce.\n\n3. **Ashak**: Similar to mantu, ashak is another type of dumpling, usually filled with a mixture of leeks or scallions. It is served with a meat sauce and sometimes topped with yogurt or a garlic mint sauce.\n\n4. **Qorma (Korma)**: A slow-cooked stew or curry with various ingredients like meat, vegetables, or legumes in a spiced sauce. There are many variations, such as Qorma-e-Sabzi (spinach) and Qorma-e-Lubia (bean).\n\n5. **Bolani**: A type of stuffed flatbread, bolani is often filled with ingredients like potatoes, pumpkin, or green lentils. It's pan-fried and served with a yogurt sauce.\n\n6. **Naan**: Afghan bread that comes in various forms, often served as an accompaniment to meals. It is usually baked in a traditional tandoor oven.\n\n7. **Sheer Khurma**: A popular dessert made from vermicelli noodles cooked in milk and flavored with cardamom, raisins, dates, and nuts. It is commonly served during Eid celebrations.\n\n8. **Firni**: A creamy dessert made from milk, sugar, and ground rice, typically flavored with cardamom and topped with pistachios or almonds.\n\n9. **Kofta**: Meatballs made from ground lamb or beef mixed with spices and herbs. They can be fried or cooked in sauce and served with rice or bread.\n\n10. **Dopiaza**: A flavorful dish made with meat (usually lamb or chicken), featuring a significant amount of onions prepared in two stages, giving it its name \"two onions.\"\n\nThese dishes reflect the traditional flavors and culinary practices of Afghanistan. Meals are often accompanied by salads, chutneys, and pickles, adding extra layers of flavor to the dining experience.",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1782343361,
+  "model": "gpt-4o-2024-08-06",
+  "object": "chat.completion",
+  "moderation": null,
+  "service_tier": "default",
+  "system_fingerprint": "fp_a7bbaf60cc",
+  "usage": {
+    "completion_tokens": 500,
+    "prompt_tokens": 13,
+    "total_tokens": 513,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}
