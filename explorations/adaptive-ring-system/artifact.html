@@ -183,6 +183,60 @@
   </div>
 </div>
 
+<div style="border-top:2px solid #3a3f4c; margin:24px 18px 0;"></div>
+<header>
+  <h1>Simulator 2 &mdash; Composable Substrate (E21): does complexity grow?</h1>
+  <div class="sub">The same rings, but each ring's transformation is now a short
+  <b>program</b> of composable bit-operations (FWD/BACK/FLIP/COPY/XORB/SKIP)
+  instead of one chaotic elementary-CA rule. A standing <b>task</b> selects
+  programs that reproduce a fixed target (bit-complement). Watch
+  <b>used-computation</b> climb past the elementary-CA ceiling (&asymp;2 ops,
+  E15). The corrected finding (EXPERIMENTS.md E21/R5): the composable primitive
+  &mdash; not program/data separation &mdash; is what breaks the ceiling; both
+  the <i>conflated</i> ring architecture and a <i>separated</i> (Avida-like)
+  variant exceed the plateau.</div>
+</header>
+
+<div class="controls">
+  <button id="c_play" class="primary">Play</button>
+  <button id="c_step">Step</button>
+  <button id="c_reset">Reset</button>
+  <label>seed <input id="c_seed" type="number" value="0"/></label>
+  <label>speed <input id="c_speed" type="range" min="1" max="60" value="20"/>
+    <span id="c_speedval" class="muted"></span></label>
+  <label title="conflated = program runs on genomes incl. its own (ring architecture, self-templating gate, transform on). separated = faithful copy, program runs only on external task data (no self-application). control = no task (E14 parsimony: length collapses).">mode
+    <select id="c_mode">
+      <option value="conflated">conflated + task (ring architecture)</option>
+      <option value="separated">separated + task (program/data split)</option>
+      <option value="control">no-task control</option>
+    </select></label>
+  <span class="muted" style="font-size:11px;">&larr; mode resets the run</span>
+</div>
+
+<div class="stats" id="c_stats"></div>
+
+<div class="wrap">
+  <div class="panel">
+    <h2>RINGS &mdash; colour = program length</h2>
+    <div class="gridrow">
+      <canvas id="c_grid" width="288" height="288"></canvas>
+      <canvas id="c_cbar" width="80" height="288"></canvas>
+    </div>
+    <div class="note">Each cell is a ring; colour = number of instructions in its
+    program (dark = empty/short, bright = long). Under the task, programs lengthen
+    as more computation is rewarded; in the control they collapse to the floor.</div>
+  </div>
+
+  <div class="panel">
+    <h2>COMPLEXITY OVER TIME &mdash; used-ops vs the ECA ceiling</h2>
+    <canvas id="c_chart" width="380" height="220"></canvas>
+    <div class="note">green = mean <b>used-computation</b> (effective ops:
+    instructions whose removal changes the output &mdash; honest complexity, not
+    raw length); dashed = the elementary-CA plateau (&asymp;2, E15); blue = mean
+    task-fit (0&ndash;1). With the task on, green rises above the dashed line.</div>
+  </div>
+</div>
+
 <div class="panel" style="margin:0 18px 40px; max-width:1000px;">
   <h2>REFERENCES &amp; RELATED WORK</h2>
   <div class="note" style="max-width:920px; margin-bottom:8px;">
@@ -637,6 +691,268 @@ mobv.textContent=mob.value;
 updateControls();
 reset();
 requestAnimationFrame(loop);
+</script>
+
+<script>
+"use strict";
+// ===== Simulator 2: composable substrate (mirrors composable.py) =========
+// Self-contained IIFE; the only symbol it borrows from the first script is the
+// global `viridis` colormap. All other names are scoped here.
+(function(){
+  const HEADER=24, OP_BITS=4;
+  const C_PULL=[0,8], C_PUSH=[8,16];     // CTRL=[16,24]: spawn=16 death=17 mut=18,19
+  const SPAWN=16, DEATH=17;
+  const AMBIENT_P=[0.0005,0.002,0.01,0.05];
+  const BIRTH_P=[0.005,0.02,0.05,0.15];
+  const NMAX=256, SIDE=16, PLATEAU=2;     // ECA used-ops plateau (E15)
+  const INIT_OPS=4, INPUT_LEN=16, N_PAIRS=6, LOCAL_RANGE=2, ST_POWER=2.0;
+  const USED_STRIDE=4;                     // recompute the costly used-ops metric every N ticks
+  const MAXLEN=20, YMAX=8;
+
+  function mulberry32(a){ return function(){
+    a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a);
+    t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; };}
+
+  // ---- the VM ----------------------------------------------------------
+  function cfield(g,span){ let v=0; for(let i=span[0];i<span[1];i++) v=(v<<1)|g[i]; return v; }
+  function mutLevel(g){ return (g[18]<<1)|g[19]; }
+  function nOps(g){ return (g.length-HEADER)/OP_BITS|0; }
+  function programOps(g){
+    const n=(g.length-HEADER)/OP_BITS|0, ops=new Array(n);
+    for(let k=0;k<n;k++){ const o=HEADER+k*OP_BITS;
+      ops[k]=(g[o]<<3)|(g[o+1]<<2)|(g[o+2]<<1)|g[o+3]; }
+    return ops;
+  }
+  function run(ops,tape){
+    const t=tape.slice(), L=t.length; if(L===0) return t;
+    let p=0,i=0; const n=ops.length;
+    while(i<n){ const o=ops[i];
+      if(o===1) p=(p+1)%L;
+      else if(o===2) p=(p-1+L)%L;
+      else if(o===3) t[p]^=1;
+      else if(o===4) t[(p+1)%L]=t[p];
+      else if(o===5) t[p]^=t[(p-1+L)%L];
+      else if(o===6){ if(t[p]===0) i++; }
+      else if(o===7){ if(t[p]===1) i++; }
+      i++;
+    }
+    return t;
+  }
+  function selfPreservation(g){
+    const out=run(programOps(g),g); let m=0;
+    for(let i=0;i<g.length;i++) if(out[i]===g[i]) m++;
+    return m/g.length;
+  }
+  function arrEq(a,b){ for(let i=0;i<a.length;i++) if(a[i]!==b[i]) return false; return true; }
+  function effectiveOps(g,inputs){
+    const ops=programOps(g); if(ops.length===0) return 0;
+    const base=inputs.map(x=>run(ops,x));
+    let used=0;
+    for(let k=0;k<ops.length;k++){
+      const red=ops.slice(0,k).concat(ops.slice(k+1));
+      for(let j=0;j<inputs.length;j++){ if(!arrEq(run(red,inputs[j]),base[j])){ used++; break; } }
+    }
+    return used;
+  }
+  function localTarget(byte,slot,R){
+    const span=2*R+1;
+    const dx=((byte&0xF)%span)-R, dy=(((byte>>4)&0xF)%span)-R;
+    const x=slot%SIDE, y=(slot/SIDE)|0;
+    return ((y+dy+SIDE)%SIDE)*SIDE + (x+dx+SIDE)%SIDE;
+  }
+  const MOORE=[]; for(let s=0;s<NMAX;s++){ const x=s%SIDE,y=(s/SIDE)|0,ns=[];
+    for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){ if(!dx&&!dy)continue;
+      ns.push(((y+dy+SIDE)%SIDE)*SIDE+(x+dx+SIDE)%SIDE); } MOORE.push(ns); }
+
+  // ---- config presets (mirror composable.py complexity_experiment) -----
+  const PRESETS={
+    conflated:{task:true,  self_template:true,  transform_off:false},
+    separated:{task:true,  self_template:false, transform_off:true },
+    control:  {task:false, self_template:false, transform_off:true },
+  };
+  const COMMON={tpow:1.5, base_death:0.2, mut_scale:1.5, p_indel:0.06};
+  const MODE_NAME={conflated:'conflated + task', separated:'separated + task', control:'no-task control'};
+
+  // ---- state -----------------------------------------------------------
+  let cfg, rng, genomes, occupied, tickC, usedHist, fitHist, TASK, INPUTS;
+  let cur={pop:0,len:0,used:0,fit:0,pres:0};
+
+  function makeTask(){
+    const tr=mulberry32(98765); TASK=[]; INPUTS=[];
+    for(let k=0;k<N_PAIRS;k++){ const inp=new Uint8Array(INPUT_LEN), tgt=new Uint8Array(INPUT_LEN);
+      for(let i=0;i<INPUT_LEN;i++){ inp[i]=tr()<0.5?1:0; tgt[i]=1-inp[i]; }
+      TASK.push([inp,tgt]); INPUTS.push(inp); }
+  }
+  function taskFit(g){
+    const ops=programOps(g); let s=0;
+    for(const pair of TASK){ const o=run(ops,pair[0]); let m=0;
+      for(let i=0;i<pair[0].length;i++) if(o[i]===pair[1][i]) m++; s+=m/pair[0].length; }
+    return s/TASK.length;
+  }
+  function randGenome(){
+    const len=HEADER+INIT_OPS*OP_BITS, g=new Uint8Array(len);
+    for(let i=0;i<len;i++) g[i]=rng()<0.5?1:0; return g;
+  }
+  function mutate(g){
+    const p=BIRTH_P[mutLevel(g)]*cfg.mut_scale; let h=g.slice();
+    for(let i=0;i<h.length;i++) if(rng()<p) h[i]^=1;
+    if(rng()<cfg.p_indel){
+      const no=nOps(h);
+      if(rng()<0.5){ const pos=HEADER+((rng()*(no+1))|0)*OP_BITS;
+        const ins=new Uint8Array(OP_BITS); for(let i=0;i<OP_BITS;i++) ins[i]=rng()<0.5?1:0;
+        const nh=new Uint8Array(h.length+OP_BITS);
+        nh.set(h.subarray(0,pos),0); nh.set(ins,pos); nh.set(h.subarray(pos),pos+OP_BITS); h=nh;
+      } else if(no>1){ const pos=HEADER+((rng()*no)|0)*OP_BITS;
+        const nh=new Uint8Array(h.length-OP_BITS);
+        nh.set(h.subarray(0,pos),0); nh.set(h.subarray(pos+OP_BITS),pos); h=nh;
+      }
+    }
+    return h;
+  }
+
+  function reset(){
+    const seed=parseInt(document.getElementById('c_seed').value)||0;
+    const mode=document.getElementById('c_mode').value;
+    cfg=Object.assign({}, COMMON, PRESETS[mode]);
+    rng=mulberry32(seed); makeTask();
+    genomes=new Array(NMAX); occupied=new Uint8Array(NMAX);
+    for(let s=0;s<NMAX;s++){ genomes[s]=randGenome(); occupied[s]=1; }
+    tickC=0; usedHist=[]; fitHist=[]; cur={pop:0,len:0,used:0,fit:0,pres:0};
+    sampleMetrics(); draw();
+  }
+
+  function step(){
+    const R=LOCAL_RANGE;
+    const g0=genomes.map(x=>x?x.slice():null);
+    const occ0=occupied.slice();
+    const occIdx=[]; for(let s=0;s<NMAX;s++) if(occ0[s]) occIdx.push(s);
+    const targets=new Map(); for(const t of occIdx) targets.set(t,[]);
+    for(const t of occIdx){ const s=localTarget(cfield(g0[t],C_PULL),t,R);
+      if(occ0[s]) targets.get(t).push(s); }
+    for(const s of occIdx){ const t=localTarget(cfield(g0[s],C_PUSH),s,R);
+      if(occ0[t]) targets.get(t).push(s); }
+    const nw=g0.map(x=>x?x.slice():null);
+    if(!cfg.transform_off){
+      for(const [t,srcs] of targets){ if(!srcs.length) continue;
+        srcs.sort((a,b)=>a-b); let curg=g0[t];
+        for(const s of srcs) curg=run(programOps(g0[s]),curg);
+        nw[t]=curg; }
+    }
+    const occ1=occ0.slice(), filled=occ0.slice(), newborns=new Set();
+    let spawners=[]; for(const s of occIdx) if(g0[s][SPAWN]===1) spawners.push(s);
+    for(let i=spawners.length-1;i>0;i--){ const j=(rng()*(i+1))|0;
+      const tmp=spawners[i]; spawners[i]=spawners[j]; spawners[j]=tmp; }
+    for(const s of spawners){
+      if(cfg.self_template && rng()>=Math.pow(selfPreservation(g0[s]),ST_POWER)) continue;
+      const cands=MOORE[s].filter(n=>!filled[n]); if(!cands.length) continue;
+      const slot=cands[(rng()*cands.length)|0];
+      nw[slot]=mutate(g0[s].slice());
+      occ1[slot]=1; filled[slot]=1; newborns.add(slot);
+    }
+    for(const d of occIdx){
+      if(g0[d][DEATH]===1){ occ1[d]=0; nw[d]=null; continue; }
+      const dp=cfg.task ? cfg.base_death*Math.pow(1-taskFit(g0[d]),cfg.tpow) : cfg.base_death;
+      if(rng()<dp){ occ1[d]=0; nw[d]=null; }
+    }
+    for(let s=0;s<NMAX;s++){ if(!occ1[s]||newborns.has(s)||nw[s]===null) continue;
+      const p=AMBIENT_P[mutLevel(nw[s])]*cfg.mut_scale;
+      for(let i=0;i<nw[s].length;i++) if(rng()<p) nw[s][i]^=1;
+    }
+    genomes=nw; occupied=occ1; tickC++;
+    sampleMetrics();
+  }
+
+  function sampleMetrics(){
+    const idx=[]; for(let s=0;s<NMAX;s++) if(occupied[s]) idx.push(s);
+    const pop=idx.length; let sumLen=0,sumFit=0,sumPres=0;
+    for(let k=0;k<pop;k++) sumLen+=nOps(genomes[idx[k]]);
+    const K=Math.min(40,pop);
+    for(let k=0;k<K;k++){ const g=genomes[idx[k]];
+      sumPres+=selfPreservation(g); if(cfg.task) sumFit+=taskFit(g); }
+    if(pop===0) cur.used=0;
+    else if(tickC%USED_STRIDE===0 || usedHist.length===0){
+      const KU=Math.min(30,pop); let su=0;
+      for(let k=0;k<KU;k++) su+=effectiveOps(genomes[idx[k]],INPUTS);
+      cur.used=su/KU;
+    }
+    cur.pop=pop; cur.len=pop?sumLen/pop:0;
+    cur.fit=(pop&&cfg.task)?sumFit/K:0; cur.pres=pop?sumPres/K:0;
+    usedHist.push(cur.used); fitHist.push(cur.fit);
+    if(usedHist.length>1200){ usedHist.shift(); fitHist.shift(); }
+  }
+
+  // ---- rendering -------------------------------------------------------
+  const gridCv=document.getElementById('c_grid'), gx=gridCv.getContext('2d');
+  const cbarCv=document.getElementById('c_cbar'), cbx=cbarCv.getContext('2d');
+  const chartCv=document.getElementById('c_chart'), chx=chartCv.getContext('2d');
+  const GP=288, CELL=GP/SIDE;
+  function drawGrid(){
+    for(let s=0;s<NMAX;s++){ const x=(s%SIDE)*CELL, y=((s/SIDE)|0)*CELL;
+      if(occupied[s]){ const c=viridis(Math.min(1,nOps(genomes[s])/MAXLEN));
+        gx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
+      else gx.fillStyle='#15161a';
+      gx.fillRect(Math.floor(x),Math.floor(y),Math.ceil(CELL)+1,Math.ceil(CELL)+1);
+    }
+  }
+  function drawCbar(){
+    cbx.clearRect(0,0,cbarCv.width,cbarCv.height); const H=256;
+    for(let i=0;i<H;i++){ const c=viridis((H-1-i)/(H-1));
+      cbx.fillStyle=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; cbx.fillRect(0,i,16,1); }
+    cbx.fillStyle='#9aa0aa'; cbx.font='10px sans-serif';
+    cbx.fillText(MAXLEN+'+',20,9); cbx.fillText('0',20,255);
+    cbx.save(); cbx.translate(56,200); cbx.rotate(Math.PI/2);
+    cbx.fillText('program length (ops)',0,0); cbx.restore();
+  }
+  function drawChart(){
+    const W=chartCv.width, H=chartCv.height;
+    chx.clearRect(0,0,W,H); chx.fillStyle='#11131a'; chx.fillRect(0,0,W,H);
+    const yP=H-(PLATEAU/YMAX)*H;
+    chx.strokeStyle='#666'; chx.setLineDash([4,4]); chx.lineWidth=1;
+    chx.beginPath(); chx.moveTo(0,yP); chx.lineTo(W,yP); chx.stroke(); chx.setLineDash([]);
+    chx.fillStyle='#888'; chx.font='10px sans-serif';
+    chx.fillText('ECA plateau ('+PLATEAU+')',4,yP-3);
+    for(let v=2;v<=YMAX;v+=2){ const y=H-(v/YMAX)*H; chx.fillStyle='#555';
+      chx.fillText(String(v),W-16,y+3); }
+    const n=usedHist.length; if(n<2) return;
+    const line=(arr,scale,color,w)=>{ chx.strokeStyle=color; chx.lineWidth=w; chx.beginPath();
+      for(let i=0;i<n;i++){ const x=i/(n-1)*W, y=H-Math.min(1,arr[i]/scale)*H;
+        i?chx.lineTo(x,y):chx.moveTo(x,y); } chx.stroke(); };
+    if(cfg.task) line(fitHist,1,'#3a8fe0',1.2);
+    line(usedHist,YMAX,'#2ad27e',1.8);
+  }
+  function drawStats(){
+    document.getElementById('c_stats').innerHTML=
+      `mode=<b>${MODE_NAME[document.getElementById('c_mode').value]}</b> &nbsp; `+
+      `t=<b>${tickC}</b> &nbsp; pop=<b>${cur.pop}</b> &nbsp; `+
+      `mean length=<b>${cur.len.toFixed(1)}</b> ops &nbsp; `+
+      `used-ops=<b>${cur.used.toFixed(2)}</b> (plateau ${PLATEAU}) &nbsp; `+
+      (cfg.task?`task-fit=<b>${(cur.fit*100).toFixed(0)}%</b> &nbsp; `:'')+
+      `self-pres=<b>${(cur.pres*100).toFixed(0)}%</b>`;
+  }
+  function draw(){ drawGrid(); drawCbar(); drawChart(); drawStats(); }
+
+  // ---- run loop --------------------------------------------------------
+  let playing=false, lastT=0, acc=0;
+  function loop(ts){
+    if(playing){ const sp=parseInt(document.getElementById('c_speed').value);
+      acc+=(ts-lastT)/1000*sp; let n=0;
+      while(acc>=1 && n<sp){ step(); acc--; n++; }
+      if(n) draw(); }
+    lastT=ts; requestAnimationFrame(loop);
+  }
+  document.getElementById('c_play').onclick=function(){ playing=!playing;
+    this.textContent=playing?'Pause':'Play'; this.classList.toggle('primary',!playing); };
+  document.getElementById('c_step').onclick=()=>{ step(); draw(); };
+  document.getElementById('c_reset').onclick=()=>{ playing=false;
+    const pb=document.getElementById('c_play'); pb.textContent='Play'; pb.classList.add('primary'); reset(); };
+  document.getElementById('c_mode').onchange=()=>{ playing=false;
+    const pb=document.getElementById('c_play'); pb.textContent='Play'; pb.classList.add('primary'); reset(); };
+  const csp=document.getElementById('c_speed'), cspv=document.getElementById('c_speedval');
+  csp.oninput=()=>{ cspv.textContent=csp.value+' ticks/s'; }; cspv.textContent=csp.value+' ticks/s';
+
+  reset();
+  requestAnimationFrame(loop);
+})();
 </script>
 </body>
 </html>
