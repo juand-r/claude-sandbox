@@ -68,6 +68,14 @@ Result: **delve/crucial/intricate are GPT/ChatGPT signatures, not Claude.**
   list mislabeled as generic. Claude's signal is structural/rhythmic first,
   conversational-lexical second.
 
+### Phase 2 (locked plan: PLAN_phase2.md) — Step 1 DONE
+**Step 1 (n-gram signature, Fightin' Words):** Claude DOES have a lexical
+signature — interactional, not delve-family. Top: the offer-closer
+"would you like me to explain in more detail / go deeper into any specific
+aspect", "let me", second-person, "actually". Anti-signature: "it is important
+to" (GPT frame), formal deferral, function-word connectives. → reports/claude_ngram_signature.md.
+Vindicates JdR's point: right words, wrong list before.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.
