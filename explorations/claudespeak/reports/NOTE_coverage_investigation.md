@@ -58,6 +58,21 @@ Only 48/400 prompts are subjective; the corpus almost never asks Claude to hold,
 defend, or revise a position. Sensitive prompts exist mostly in HC3 (66, largely
 medicine), but as information requests, not as refusal-provoking asks.
 
+### 3.3b Prompt variety is narrow on every axis (speech act, register, tone, topic)
+Profiling the prompts themselves (not the responses) along several axes confirms
+the uniformity:
+- **Speech act:** questions (HC3 75%, AlpacaEval 53%) or directives (23% / 46%);
+  **assertions $\le$1 per track.** The corpus essentially never states a claim for
+  Claude to agree with, qualify, or contest.
+- **Register:** neutral 65% / casual ~33% / **formal ~2%**.
+- **Tone:** **neutral 82–87%**; emotional 10%/2%, playful/urgent marginal; no
+  hostile prompts.
+- **Topic:** concentrated (HC3: health 28%, science 24%, finance 20% = ~72% in
+  three topics); `personal_life` ~0 in HC3.
+This matters because the missing behaviors are *gated on the missing cells*: the
+concession/push-back register needs declarative challenges (assertions), which are
+absent; an emotional-support register needs emotional tone, which is marginal.
+
 ### 3.4 A coverage win that doubles as a result
 The audit's statistics also produced a genuine finding. In the sentence-mood
 split, Claude's responses are **17% interrogative on HC3 and 10% on AlpacaEval,

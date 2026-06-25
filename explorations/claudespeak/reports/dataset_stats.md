@@ -85,24 +85,70 @@ Questions vs declaratives etc. for the PROMPTS (what we ask Claude).
 
 | category                  |   AlpacaEval |   HC3 |
 |:--------------------------|-------------:|------:|
-| advice_recommendation     |           31 |    46 |
+| advice_recommendation     |           31 |    49 |
 | classification_extraction |            8 |     0 |
-| code                      |           10 |     0 |
-| creative_writing          |           23 |     0 |
-| explanation               |           34 |    95 |
-| factual_qa                |           28 |    55 |
-| instruction_task          |           29 |     2 |
-| math_reasoning            |           15 |     0 |
-| opinion_subjective        |           12 |     0 |
-| other                     |            1 |     2 |
-| personal_emotional        |            1 |     0 |
-| roleplay                  |            2 |     0 |
-| summarize_rewrite_edit    |            6 |     0 |
+| code                      |           11 |     0 |
+| creative_writing          |           24 |     0 |
+| explanation               |           33 |    94 |
+| factual_qa                |           29 |    53 |
+| instruction_task          |           26 |     3 |
+| math_reasoning            |           14 |     0 |
+| opinion_subjective        |           11 |     0 |
+| other                     |            1 |     1 |
+| roleplay                  |            4 |     0 |
+| summarize_rewrite_edit    |            7 |     0 |
+
+
+### speech_act
+
+| speech_act   |   AlpacaEval |   HC3 |
+|:-------------|-------------:|------:|
+| assertion    |            0 |     1 |
+| directive    |           93 |    46 |
+| expressive   |            0 |     1 |
+| other        |            0 |     2 |
+| question     |          106 |   150 |
+
+
+### register
+
+| register   |   AlpacaEval |   HC3 |
+|:-----------|-------------:|------:|
+| casual     |           62 |    70 |
+| formal     |            7 |     0 |
+| neutral    |          130 |   130 |
+
+
+### tone
+
+| tone      |   AlpacaEval |   HC3 |
+|:----------|-------------:|------:|
+| emotional |            5 |    20 |
+| neutral   |          175 |   165 |
+| playful   |           18 |     1 |
+| urgent    |            1 |    14 |
+
+
+### topic
+
+| topic            |   AlpacaEval |   HC3 |
+|:-----------------|-------------:|------:|
+| arts_humanities  |           17 |     4 |
+| education_howto  |           21 |     2 |
+| entertainment    |           18 |    15 |
+| finance_business |           18 |    41 |
+| health_medicine  |            6 |    57 |
+| math_logic       |           14 |     8 |
+| other            |            9 |     8 |
+| personal_life    |           20 |     1 |
+| science_tech     |           33 |    48 |
+| society_politics |           18 |    11 |
+| software_code    |           25 |     5 |
 
 
 ### interaction flags (count)
 
 | track      |   subjective |   sensitive |   multiturn_implied |
 |:-----------|-------------:|------------:|--------------------:|
-| AlpacaEval |           35 |          14 |                   3 |
-| HC3        |           13 |          66 |                   5 |
+| AlpacaEval |           39 |          16 |                   4 |
+| HC3        |           14 |          61 |                   8 |

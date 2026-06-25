@@ -433,6 +433,37 @@ exclamatory are $\le$2\% and $\le$7\% respectively.
 Reading Ease are in \texttt{stats\_register.csv}; Claude shows the lowest Flesch
 (\,$\approx$40, denser/harder) of all sources on both tracks.
 
+\paragraph{Prompt variety (audit, counts of 200 per track).} The prompts are
+narrow on every axis (Table~\ref{tab:variety}): almost all are
+\emph{questions} or \emph{directives} (assertions $\le$1); tone is
+overwhelmingly \emph{neutral} (82--87\%); register is neutral/casual with almost
+no \emph{formal} prompts; and topics concentrate (HC3: health 28\%, science 24\%,
+finance 20\%). This uniformity---not insufficient sample size---is the coverage
+problem the expansion targets.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Axis & Value & HC3 & Alpaca \\
+\midrule
+speech act & question & 150 & 106 \\
+ & directive & 46 & 93 \\
+ & assertion & 1 & 0 \\
+register & neutral & 130 & 130 \\
+ & casual & 70 & 62 \\
+ & formal & 0 & 7 \\
+tone & neutral & 165 & 175 \\
+ & emotional & 20 & 5 \\
+ & playful / urgent & 1/14 & 18/1 \\
+\bottomrule
+\end{tabular}
+\caption{Prompt variety along speech act, register, and tone (counts of 200).
+Assertions, formal register, and non-neutral tones are nearly absent. Topic and
+intent breakdowns: \texttt{coverage\_labels.csv}.}
+\label{tab:variety}
+\end{table}
+
 \paragraph{Coverage expansion (planned).} To move beyond the single-turn
 informational slice (\S\ref{sec:coverage}) we will (i) sample real first-turn
 prompts from WildChat / LMSYS-Chat-1M to populate under-covered intents
