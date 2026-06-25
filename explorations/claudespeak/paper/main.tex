@@ -2,6 +2,7 @@
 \usepackage[review]{acl}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{times}        % Times-like body font (ACL requirement; avoids CM/Type-3)
 \usepackage{microtype}
 \microtypesetup{expansion=false} % avoid pdftex scalable-font expansion error
 \usepackage{graphicx}
@@ -150,16 +151,15 @@ the AlpacaEval track).
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{@{}lll@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}ll p{4.4cm}@{}}
 \toprule
 Track & Prompts & Sources (same prompt each) \\
 \midrule
-HC3 & 200 & human, ChatGPT (GPT-3.5 era), \\
-(human- & (5 dom.) & GPT-4o$^\dagger$, \textbf{Claude Opus 4.8}$^\dagger$ \\
-anchored) & & \\[2pt]
-Alpaca & 200 & gpt-4-turbo, gpt-4o, gemini-pro, \\
-Eval & (instr.) & deepseek-67b, Qwen2-72B, \\
-(modern) & & Llama-3-70B, \textbf{Claude Opus 4.8}$^\dagger$ \\
+HC3 & 200 & human, ChatGPT (GPT-3.5 era),
+  GPT-4o$^\dagger$, \textbf{Claude}$^\dagger$ \\[3pt]
+AlpacaEval & 200 & gpt-4-turbo, gpt-4o, gemini-pro,
+  deepseek-67b, Qwen2-72B, Llama-3-70B, \textbf{Claude}$^\dagger$ \\
 \bottomrule
 \end{tabular}
 \caption{The two parallel corpus tracks. $\dagger$ = self-generated; all other
@@ -184,9 +184,10 @@ vs.\ 46--52), consistent with higher content-word density.
 
 \begin{table}[t]
 \centering\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Track & Prompts & Prompt & Claude resp. & Total \\
+Track & Prompts & Prompt & Claude & Total \\
  & & wds (md) & wds (md) & words \\
 \midrule
 HC3 & 200 & 10 & 267 & 156k \\
@@ -300,19 +301,21 @@ load-bearing stylistic findings.
 
 \begin{table}[t]
 \centering\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-Prose feature (markdown stripped) & $|d|$ & Claude vs.\ others \\
+Prose feature & $|d|$ & Claude / others \\
 \midrule
-Sentence burstiness & 1.69 & 0.86 vs.\ 0.36--0.55 \\
-Function-word rate (lower) & 1.47 & 0.33 vs.\ 0.37--0.44 \\
-Em-dash rate & 0.87 & 0.88 vs.\ $\le$0.40 \\
-Colon rate & 0.84 & 1.41 vs.\ 0.24--1.69 \\
-Question rate & 0.82 & 0.61 vs.\ 0.01--0.28 \\
+Sentence burstiness & 1.69 & 0.86 / 0.36--0.55 \\
+Function-word rate $\downarrow$ & 1.47 & 0.33 / 0.37--0.44 \\
+Em-dash rate & 0.87 & 0.88 / $\le$0.40 \\
+Colon rate & 0.84 & 1.41 / 0.24--1.69 \\
+Question rate & 0.82 & 0.61 / 0.01--0.28 \\
 \bottomrule
 \end{tabular}
-\caption{HC3 track, Claude vs.\ pooled others, prose only. Mean $|$Cohen's $d|$
-and group means.}
+\caption{HC3 track, Claude vs.\ pooled others, markdown stripped. Mean
+$|$Cohen's $d|$ and group means (Claude\,/\,range over the other sources).
+$\downarrow$ = Claude lower.}
 \label{tab:prose}
 \end{table}
 
@@ -404,11 +407,13 @@ result is not a length artifact.
 \toprule
 Track & with formatting & prose only \\
 \midrule
-HC3 (vs.\ human/GPT-4o/old-ChatGPT) & 0.982 & 0.946 \\
-AlpacaEval (vs.\ 6 modern models) & 0.901 & 0.867 \\
+HC3 & 0.982 & 0.946 \\
+AlpacaEval & 0.901 & 0.867 \\
 \bottomrule
 \end{tabular}
-\caption{Claude-vs-rest ROC-AUC, logistic regression, 5-fold CV.}
+\caption{Claude-vs-rest ROC-AUC (logistic regression, 5-fold CV). HC3 contrasts
+Claude with \{human, GPT-4o, GPT-3.5-era ChatGPT\}; AlpacaEval with the six modern
+models.}
 \label{tab:clf}
 \end{table}
 
