@@ -337,7 +337,25 @@ Claude \emph{underuses}---is led by the formal frame \emph{it is important to}.
 At the sentence level this closer registers as a striking jump in interrogatives:
 \textbf{17\%/10\% of Claude's response sentences are questions (HC3/AlpacaEval),
 versus $\le$4\% for every other source} (Appendix~\ref{app:stats}).
-Suffix-automaton mining (\S\ref{sec:dawg}) confirms the pattern at arbitrary length.
+Suffix-automaton mining (\S\ref{sec:dawg}) confirms the pattern at arbitrary
+length. Figure~\ref{fig:example} shows the fingerprint in a single matched pair.
+
+\begin{figure}[t]
+\small
+\fbox{\parbox{\dimexpr\columnwidth-2\fboxsep-2\fboxrule\relax}{%
+\textbf{Prompt (ELI5):} \emph{Why is skin itchy?}\\[2pt]
+\textbf{Human:} ``As far as I know, scratching is an evolved reaction to help
+stop insects and other parasites from sucking our blood\ldots''\\[2pt]
+\textbf{Claude Opus 4.8:} ``\ldots scratching sends a \emph{new} signal to your
+brain that covers up the itchy feeling. But scratching too much can hurt your
+skin, so it's better to be gentle! \textbf{Would you like me to explain anything
+else?}'' [closes with an emoji]%
+}}
+\caption{Same prompt, two sources (excerpts). Claude's answer is longer, more
+structured, and ends with the offer-to-continue closer; the human answer is
+terse and declarative.}
+\label{fig:example}
+\end{figure}
 
 \subsection{The ``delve'' vocabulary is a GPT trait Claude avoids}
 \label{sec:delve}
