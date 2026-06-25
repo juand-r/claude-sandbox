@@ -1,0 +1,12 @@
+track,source,interrog%,imper%,exclam%,declar%
+HC3,chatgpt-hc3,2,1,0,97
+HC3,claude-opus-4-8,17,1,7,75
+HC3,gpt-4o,1,1,2,95
+HC3,human,4,0,1,95
+AlpacaEval,Meta-Llama-3-70B-Instruct,3,1,3,94
+AlpacaEval,Qwen2-72B-Instruct,2,1,1,96
+AlpacaEval,claude-opus-4-8,10,1,4,86
+AlpacaEval,deepseek-llm-67b-chat,1,1,1,97
+AlpacaEval,gemini-pro,2,2,1,96
+AlpacaEval,gpt-4-turbo-2024-04-09,1,1,2,96
+AlpacaEval,gpt-4o-2024-05-13,2,1,2,96

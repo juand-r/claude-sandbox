@@ -1,0 +1,12 @@
+track,source,records,resp_words_total,resp_words_mean,resp_words_median,resp_words_p25,resp_words_p75
+HC3,chatgpt-hc3,200,35267,176.3,178.0,129.2,215.5
+HC3,claude-opus-4-8,200,50741,253.7,267.0,230.2,292.8
+HC3,gpt-4o,200,45513,227.6,238.5,163.2,294.8
+HC3,human,200,24015,120.1,76.5,37.0,148.5
+AlpacaEval,Meta-Llama-3-70B-Instruct,200,59445,297.2,307.5,179.2,419.8
+AlpacaEval,Qwen2-72B-Instruct,200,52032,260.2,258.5,137.0,366.5
+AlpacaEval,claude-opus-4-8,200,50779,253.9,229.5,166.5,279.8
+AlpacaEval,deepseek-llm-67b-chat,200,37199,186.0,184.0,98.0,254.2
+AlpacaEval,gemini-pro,200,44399,222.0,234.0,82.5,317.5
+AlpacaEval,gpt-4-turbo-2024-04-09,200,54468,272.3,284.5,117.5,383.8
+AlpacaEval,gpt-4o-2024-05-13,200,55897,279.5,284.5,122.2,385.8

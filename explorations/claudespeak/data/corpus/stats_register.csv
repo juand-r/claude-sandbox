@@ -1,0 +1,12 @@
+track,source,first_person_per100,second_person_per100,flesch
+HC3,chatgpt-hc3,0.25,2.21,47.6
+HC3,claude-opus-4-8,0.67,2.41,39.5
+HC3,gpt-4o,0.14,1.8,45.8
+HC3,human,0.93,2.14,47.8
+AlpacaEval,Meta-Llama-3-70B-Instruct,0.76,1.37,48.6
+AlpacaEval,Qwen2-72B-Instruct,0.75,1.58,52.4
+AlpacaEval,claude-opus-4-8,1.08,1.64,39.9
+AlpacaEval,deepseek-llm-67b-chat,0.92,1.4,51.9
+AlpacaEval,gemini-pro,0.73,1.15,50.5
+AlpacaEval,gpt-4-turbo-2024-04-09,0.51,1.45,47.4
+AlpacaEval,gpt-4o-2024-05-13,0.63,1.31,48.8
