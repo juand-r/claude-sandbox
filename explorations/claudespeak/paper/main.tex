@@ -1,0 +1,346 @@
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\microtypesetup{expansion=false} % avoid pdftex scalable-font expansion error
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{url}
+
+\title{Claudespeak: Characterizing the Stylistic Fingerprint of \\ a Frontier Language Model}
+
+\author{Juan D.\,R. \\
+  The University of Texas at Austin \\
+  \texttt{juand-r@utexas.edu} \\}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large language models are widely believed to have recognizable writing styles,
+but most popular claims (e.g.\ that models overuse the word \emph{delve}) are
+derived from \emph{ChatGPT} and applied indiscriminately to all models. We ask
+what, specifically, characterizes the prose of one frontier model---Anthropic's
+Claude Opus 4.8---relative to human writing and to seven other models, holding
+topic constant via parallel corpora. Combining interpretable stylometry,
+log-odds $n$-gram selection, a length-controlled regression, an interpretable
+classifier, and suffix-automaton ($n$-gram novelty) mining, we find a stable
+fingerprint that is \emph{structural, rhythmic, and interactional} rather than
+lexical-in-the-stereotyped-sense. Claude is identifiable from prose alone
+(classifier AUC $0.95$ vs.\ human/GPT-4o; $0.87$ vs.\ six modern models), driven
+by markedly higher sentence-length variability, denser content-word usage, a
+strong em-dash habit, and---most diagnostically---a verbatim offer-to-continue
+closing move (``would you like me to go deeper into\ldots'') that appears dozens
+of times in Claude and \emph{zero} times across humans and all other models.
+We further show that the stereotyped ``delve'' vocabulary is a GPT (and
+other-model) trait that Claude \emph{avoids}: across seven models in an essay
+genre, Claude is the only model that never writes \emph{delve} and uses
+\emph{crucial} least. We release the fully provenanced corpus and pipeline.
+Sections on the effect of reasoning effort, Claude versions, and multi-turn
+dynamics are forthcoming.
+\end{abstract}
+
+\section{Introduction}
+The claim that text ``sounds like AI'' is now commonplace, and a folk
+vocabulary of tells---\emph{delve}, \emph{tapestry}, \emph{crucial},
+\emph{intricate}---circulates widely. Two problems undercut these claims as
+characterizations of any \emph{particular} model. First, the evidence base is
+overwhelmingly about ChatGPT \citep{kobak2024delving}, yet the conclusions are
+applied to ``LLMs'' generically. Second, most analyses do not control topic: a
+classifier that distinguishes model from human text may be learning the prompt
+distribution, not the writing style.
+
+We study a single frontier model, Anthropic's Claude Opus 4.8, and ask a
+deliberately narrow question: \emph{holding the prompt fixed, what makes Claude's
+prose identifiable relative to humans and to other models?} We build two
+topic-matched parallel corpora in which the same prompts are answered by Claude,
+by humans, and by up to six other models, and we attack the question with five
+complementary methods. Our contributions:
+\begin{enumerate}
+  \itemsep0em
+  \item A parallel-corpus protocol and a fully provenanced dataset
+    (every generation stored with model, decoding configuration, token usage,
+    and timestamp) that supports reuse without regeneration.
+  \item Evidence that Claude's fingerprint is \emph{structural and rhythmic}
+    (sentence-length burstiness, content-word density, em-dashes) and survives
+    both markdown stripping and length control.
+  \item Identification of a verbatim \emph{interactional} signature---an
+    offer-to-continue closer---via log-odds and suffix-automaton mining, present
+    in Claude and absent from all other sources.
+  \item A reconciliation of the ``delve'' folklore: the stereotyped vocabulary
+    is a GPT/other-model trait; Claude is the cleanest frontier model on it.
+\end{enumerate}
+
+\section{Related Work}
+\paragraph{LLM stylometry and detection.} Distinguishing machine- from
+human-written text is an active area, with large shared benchmarks
+\citep{dugan2024raid} and classical authorship features such as function-word
+distributions and Burrows's Delta \citep{burrows2002delta}. We use interpretable
+features in this tradition, but our goal is \emph{characterization}---naming what
+differs---rather than detection alone.
+
+\paragraph{Excess vocabulary and ``delve.''} \citet{kobak2024delving} track
+``excess words'' in 14M+ PubMed abstracts after ChatGPT's release, finding a
+surge of style words (\emph{delves}, \emph{intricate}, \emph{crucial}). This
+phenomenon is tied to ChatGPT specifically; popular accounts attribute the
+``delve'' habit to OpenAI's RLHF annotation pipeline \citep{willison2024delve}.
+A direct Claude-vs-GPT comparison reports the opposite lean for Claude---toward
+casual, subjective phrasing \citep{personalization2025}. Our results corroborate
+and quantify this on parallel data.
+
+\paragraph{$n$-gram selection and novelty.} For surfacing characteristic
+phrases we use the log-odds-ratio-with-informative-Dirichlet-prior estimator of
+\citet{monroe2008fightin}, and for arbitrary-length span statistics we use
+suffix-automaton tooling \citep{liu2024rustydawg} in the spirit of unbounded
+$n$-gram modeling \citep{liu2024infinigram}.
+
+\paragraph{Data.} Our human anchor is HC3 \citep{guo2023hc3}; our modern
+multi-model contrast reuses published completions from AlpacaEval
+\citep{alpacaeval2023}.
+
+\section{Corpus}
+We construct two parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
+of prompts is answered by multiple sources, so that any feature separating Claude
+reflects \emph{how} it writes rather than \emph{what} it was asked. Claude
+(and GPT-4o on the HC3 track) are generated by us with adaptive thinking at
+\texttt{effort=high}; all other cells are reused from the source datasets. Every
+record stores full provenance---model and version, decoding configuration,
+token usage, timestamp, and code commit---plus the verbatim API response.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Track & Prompts & Sources (same prompt each) \\
+\midrule
+HC3 & 200 & human, ChatGPT (GPT-3.5 era), \\
+(human- & (5 dom.) & GPT-4o$^\dagger$, \textbf{Claude Opus 4.8}$^\dagger$ \\
+anchored) & & \\[2pt]
+Alpaca & 200 & gpt-4-turbo, gpt-4o, gemini-pro, \\
+Eval & (instr.) & deepseek-67b, Qwen2-72B, \\
+(modern) & & Llama-3-70B, \textbf{Claude Opus 4.8}$^\dagger$ \\
+\bottomrule
+\end{tabular}
+\caption{The two parallel corpus tracks. $\dagger$ = self-generated; all other
+cells reused. HC3 carries a human anchor; AlpacaEval carries the modern
+multi-model contrast (no human, by design).}
+\label{tab:corpus}
+\end{table}
+
+\section{Methods}
+We compute interpretable features per response (lexical: type-token ratio,
+hapax rate, function-word rate; punctuation: em-dash, colon, question,
+exclamation, emoji; syntax: mean sentence length and \emph{burstiness}, the
+ratio of the standard deviation to the mean of words-per-sentence;
+markdown/structure; and rhetoric). Rates are per 100 or 1000 words so that text
+length does not mechanically dominate. We summarize source differences with
+Cohen's $d$ (Claude vs.\ a comparison group). To separate \emph{voice} from
+\emph{formatting}, we additionally compute all prose features after stripping
+markdown markup. We mine characteristic $n$-grams with the
+\citet{monroe2008fightin} log-odds estimator; quantify length-independence with
+OLS (\S\ref{sec:length}); measure separability with $\ell_2$-regularized logistic
+regression under 5-fold cross-validation; and mine arbitrary-length spans and
+$n$-gram novelty with a suffix automaton \citep{liu2024rustydawg}.
+
+\section{Results}
+
+\subsection{A large signal, dominated at first by formatting}
+The strongest raw separators between Claude and the other HC3 sources are
+markdown-structural: markdown headers ($d{=}2.9$), bold ($d{=}2.3$), and bullets
+($d{=}1.8$), which the human and old-ChatGPT cells use essentially never. This
+is real but is a \emph{formatting} habit; the decisive question is whether
+anything survives removing it.
+
+\subsection{The voice survives markdown stripping}
+\label{sec:prose}
+With all markup stripped, Claude still separates strongly on prose
+(Table~\ref{tab:prose}): it interleaves short and long sentences far more than
+any other source (burstiness), writes denser content-word prose (lower
+function-word rate), and retains a marked em-dash habit. These are the
+load-bearing stylistic findings.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Prose feature (markdown stripped) & $|d|$ & Claude vs.\ others \\
+\midrule
+Sentence burstiness & 1.69 & 0.86 vs.\ 0.36--0.55 \\
+Function-word rate (lower) & 1.47 & 0.33 vs.\ 0.37--0.44 \\
+Em-dash rate & 0.87 & 0.88 vs.\ $\le$0.40 \\
+Colon rate & 0.84 & 1.41 vs.\ 0.24--1.69 \\
+Question rate & 0.82 & 0.61 vs.\ 0.01--0.28 \\
+\bottomrule
+\end{tabular}
+\caption{HC3 track, Claude vs.\ pooled others, prose only. Mean $|$Cohen's $d|$
+and group means.}
+\label{tab:prose}
+\end{table}
+
+\subsection{The signature is not a length artifact}
+\label{sec:length}
+Claude writes longer answers (mean 253 words vs.\ 120 for humans, 228 for
+GPT-4o), so we test whether the prose effects merely track length. Within every
+word-count quartile the effects persist, and a length-controlled regression
+($\text{feature}\sim\text{is\_claude}+z(\text{n\_words})$) leaves the Claude
+coefficient large and highly significant: burstiness $t{=}20.6$, function-word
+rate $t{=}{-}14.4$, em-dash $t{=}12.6$, question rate $t{=}4.6$. Type-token ratio
+is length-sensitive and we treat lexical-diversity claims as length-conditioned.
+
+\subsection{The interactional signature: an offer-to-continue closer}
+\label{sec:ngram}
+Data-driven $n$-gram mining \citep{monroe2008fightin} surfaces a clear
+interactional fingerprint rather than a content-word list. The most Claude-like
+trigrams (HC3) are \emph{would you like}, \emph{like me to}, \emph{me to
+explain}, \emph{in more detail}, \emph{to go deeper}; the anti-signature---terms
+Claude \emph{underuses}---is led by the formal frame \emph{it is important to}.
+Suffix-automaton mining (\S\ref{sec:dawg}) confirms this at arbitrary length.
+
+\subsection{The ``delve'' vocabulary is a GPT trait Claude avoids}
+\label{sec:delve}
+On the AlpacaEval track---an essay/instruction genre that \emph{does} elicit the
+stereotyped words---Claude is the cleanest of seven models
+(Table~\ref{tab:delve}). It is the only model that never writes \emph{delve} or
+\emph{delves}, and it uses \emph{crucial} least of all (0.04 per 1k vs.\ 0.34--0.42
+for the GPT models and Qwen). Claude's own lexical lean is conversational
+(``actually'' occurs $\sim$6$\times$ more often in Claude than GPT-4o on HC3),
+consistent with \citet{personalization2025}; this is a secondary signal beneath
+the structural one.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+per-1k & Claude & g4t & g4o & qwen & llama \\
+\midrule
+delve   & \textbf{0} & .018 & .018 & 0 & .017 \\
+delves  & \textbf{0} & .037 & .089 & .019 & .034 \\
+crucial & \textbf{.039} & .422 & .340 & .346 & .185 \\
+intricate & \textbf{0} & 0 & 0 & .019 & .050 \\
+pivotal & \textbf{0} & .073 & .018 & .038 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{Frequency (per 1000 words) of stereotyped ``excess'' words on the
+AlpacaEval essay track. g4t = gpt-4-turbo, g4o = gpt-4o. Claude is at or near
+the minimum for every term. (gemini/deepseek omitted for space; same pattern.)}
+\label{tab:delve}
+\end{table}
+
+\subsection{Separability}
+\label{sec:clf}
+An interpretable classifier confirms a stable, learnable voice
+(Table~\ref{tab:clf}). Stripping markdown reduces AUC only modestly, so the
+classifier is not merely reading layout; and its top coefficients are exactly the
+features of \S\ref{sec:prose} (burstiness, function-word density, em-dash,
+question rate), an independent-method confirmation.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Track & with formatting & prose only \\
+\midrule
+HC3 (vs.\ human/GPT-4o/old-ChatGPT) & 0.982 & 0.946 \\
+AlpacaEval (vs.\ 6 modern models) & 0.901 & 0.867 \\
+\bottomrule
+\end{tabular}
+\caption{Claude-vs-rest ROC-AUC, logistic regression, 5-fold CV.}
+\label{tab:clf}
+\end{table}
+
+\subsection{Arbitrary-length spans and $n$-gram novelty}
+\label{sec:dawg}
+Suffix-automaton mining \citep{liu2024rustydawg} gives the most concrete form of
+the signature. Spans up to \emph{eight words} occur dozens of times in Claude and
+\emph{zero} times across humans plus all six other models combined:
+\emph{would you like me to explain any} ($\times$20), \emph{would you like me to
+go deeper into} ($\times$14), and on AlpacaEval \emph{would you like me to expand
+on any} ($\times$7). Claude also has the highest $n$-gram novelty of any source
+(e.g.\ bigram novelty 0.519 vs.\ 0.27--0.36 for the six AlpacaEval models): its
+exact phrasing overlaps least with the pool. We read novelty as relative
+distinctiveness, not absolute creativity (see Limitations).
+
+\subsection{Secondary analyses (in progress)}
+\label{sec:secondary}
+Three planned analyses are not yet included; designs and placeholder tables
+appear in Appendix~\ref{app:placeholders}.
+\begin{itemize}
+  \itemsep0em
+  \item \textbf{Effect of reasoning effort/thinking.} Whether the fingerprint
+    intensifies or attenuates across \texttt{effort}$\in\{$low, medium, high$\}$
+    and with thinking disabled. \emph{[To be completed; Appendix~\ref{app:effort}.]}
+  \item \textbf{Across Claude versions.} Intra-Claude drift across model versions
+    (e.g.\ Opus/Sonnet/Haiku and older releases). \emph{[To be completed;
+    Appendix~\ref{app:versions}.]}
+  \item \textbf{Multi-turn and self-interaction.} Turn-dependent traits and the
+    Claude-to-Claude ``spiritual bliss'' attractor reported in
+    \citep{anthropic2025claude4}. \emph{[To be completed;
+    Appendix~\ref{app:multiturn}.]}
+\end{itemize}
+
+\section{Discussion}
+Across two corpora, four methods, and eight comparison sources, the same
+fingerprint recurs and survives every control: Claudespeak is
+markdown-scaffolded, rhythmically varied, content-dense, and
+engagement-and-offer-oriented prose---and specifically \emph{not} the ``delve''
+register. A methodological lesson follows: borrowed AI-word lists largely measure
+\emph{GPT}, and characterizing a specific model requires data-driven discovery
+against topic-matched references.
+
+\section*{Limitations}
+We study a single Claude configuration (Opus 4.8, \texttt{effort=high}); the
+effort, version, and multi-turn axes are not yet measured (\S\ref{sec:secondary}).
+We cover two English genres (Q\&A, instructions). Reused contrast completions are
+their published vintages (e.g.\ gemini-pro~1.0, Qwen2-72B, GPT-4-turbo/4o~2024),
+modern-ish but not the absolute latest. $n$-gram novelty is measured relative to
+our corpus pool, not a large external reference, and may be inflated for Claude
+as the lone out-of-cluster (and only freshly generated) source. The HC3 human
+anchor is informal web text, so part of the human--Claude gap reflects register
+rather than authorship.
+
+\section*{Ethics Statement}
+This work characterizes model writing style using public datasets and model
+outputs; it involves no human subjects or private data. Stylistic fingerprints
+can aid provenance and detection but could also inform evasion; we report
+aggregate, interpretable features rather than a deployable detector.
+
+\bibliography{custom}
+
+\appendix
+
+\section{Feature definitions}
+\label{app:features}
+Full definitions of all interpretable features (rates, burstiness, markdown and
+rhetorical markers) are provided with the released code (\texttt{src/features.py}).
+
+\section{Placeholders for secondary analyses}
+\label{app:placeholders}
+
+\subsection{Effect of reasoning effort}
+\label{app:effort}
+\emph{Planned design.} Regenerate the 200 HC3 prompts (and 200 AlpacaEval
+prompts) under \texttt{effort}$\in\{$low, medium, high$\}$ and with thinking
+disabled, holding all else fixed; recompute the \S\ref{sec:prose} features and
+the \S\ref{sec:clf} classifier within each setting; report whether burstiness,
+density, em-dash, and the offer-closer scale with effort.
+\emph{[Results table to be inserted.]}
+
+\subsection{Across Claude versions}
+\label{app:versions}
+\emph{Planned design.} Generate the same prompts with additional Claude versions
+(e.g.\ Sonnet/Haiku, and an older 3.x), then measure intra-Claude drift in the
+fingerprint features and the offer-closer rate.
+\emph{[Results table to be inserted.]}
+
+\subsection{Multi-turn and self-interaction}
+\label{app:multiturn}
+\emph{Planned design.} (i) Two-turn parallel probes (e.g.\ MT-Bench-style) to
+measure turn-dependent traits comparatively; (ii) elicited Claude-to-Claude
+conversations to test the ``spiritual bliss'' attractor
+\citep{anthropic2025claude4} quantitatively (e.g.\ trajectory of
+consciousness/gratitude vocabulary and vocabulary collapse over turns).
+\emph{[Results table to be inserted.]}
+
+\end{document}
