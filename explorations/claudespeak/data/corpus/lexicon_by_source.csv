@@ -1,0 +1,32 @@
+set,term,chatgpt-hc3,claude-opus-4-8,gpt-4o,human
+GPT-excess (Kobak),delve,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),delves,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),delving,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),intricate,0.0,0.0,0.022,0.0
+GPT-excess (Kobak),showcasing,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),showcase,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),underscore,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),underscores,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),crucial,0.0,0.039,0.725,0.0
+GPT-excess (Kobak),pivotal,0.0,0.0,0.0,0.083
+GPT-excess (Kobak),comprehensive,0.113,0.079,0.264,0.042
+GPT-excess (Kobak),meticulous,0.0,0.0,0.022,0.0
+GPT-excess (Kobak),meticulously,0.0,0.0,0.0,0.0
+GPT-excess (Kobak),notably,0.0,0.0,0.044,0.083
+GPT-excess (Kobak),realm,0.0,0.0,0.022,0.0
+GPT-excess (Kobak),robust,0.0,0.02,0.066,0.0
+GPT-excess (Kobak),seamless,0.0,0.0,0.022,0.0
+GPT-excess (Kobak),leverage,0.142,0.177,0.22,0.0
+GPT-excess (Kobak),essential,0.028,0.138,0.286,0.042
+GPT-excess (Kobak),potential,1.021,0.236,1.406,0.125
+Claude-casual,believe,0.085,0.099,0.088,0.083
+Claude-casual,feel,0.482,0.611,0.395,0.208
+Claude-casual,think,0.113,0.65,0.286,0.708
+Claude-casual,actually,0.198,1.38,0.22,0.125
+Claude-casual,really,0.085,0.512,0.527,0.625
+Claude-casual,probably,0.028,0.079,0.0,0.541
+Claude-casual,it's worth,0.057,0.217,0.022,0.042
+Claude-casual,kind of,0.0,0.099,0.286,0.208
+Claude-casual,things like,0.085,0.059,0.022,0.042
+Claude-casual,feel that,0.0,0.0,0.0,0.042
+Claude-casual,a bit,0.0,0.177,0.264,0.167

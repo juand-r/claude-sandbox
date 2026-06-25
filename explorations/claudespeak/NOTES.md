@@ -57,6 +57,17 @@ Raw-prose separators: sentence burstiness (d≈1.69), function-word density
 (d≈1.47), em-dash habit (d≈0.87). Lexical tics ("delve" etc.) DON'T separate
 (d≈0.15) — contra popular belief. Claude is LESS lexically diverse than humans.
 
+### Lexical-tic reconciliation — DONE (reports/LITREVIEW_lexical_tics.md)
+JdR asked to reconcile "tics don't separate Claude" with the delve discourse.
+Result: **delve/crucial/intricate are GPT/ChatGPT signatures, not Claude.**
+- Literature: Kobak 2024 (excess vocab → ChatGPT); delve origin = OpenAI RLHF;
+  arXiv 2502.08972 (Claude=casual, GPT=formal "crucial to").
+- Our data: GPT-4o > Claude on EVERY excess word that appears (crucial 18×);
+  delve = 0 everywhere. Claude leads conversational markers (actually 1.38/1k).
+- Corrected FINDINGS_pilot.md §5 (was an overclaim). My tic-list was a GPT-ism
+  list mislabeled as generic. Claude's signal is structural/rhythmic first,
+  conversational-lexical second.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.

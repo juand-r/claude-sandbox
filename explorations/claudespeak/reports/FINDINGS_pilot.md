@@ -90,16 +90,32 @@ its **em-dash habit** (0.88/100w vs ≤0.40 elsewhere).
 raw prose, Opus 4.8 is identifiable by rhythm and lexical density. This is the
 first defensible piece of the characterization.
 
-## 5. Result C — two popular beliefs not supported here
+## 5. Result C — the "delve" vocabulary is a GPT signature, not a Claude one
 
-- **Lexical tics ("delve", "tapestry", "crucial", …) barely separate Claude**
-  (mean |d| ≈ 0.15). On these tasks, current Opus 4.8 does not lean on the
-  vocabulary the "delve" discourse attributes to LLMs. The signal is structural
-  and rhythmic, not a word-list.
-- **Claude is *less* lexically diverse than humans**, not more: type-token ratio
-  0.62 vs human 0.73, hapax rate 0.46 vs 0.59. Against the *old* ChatGPT the sign
-  flips (Claude is more diverse than GPT-3.5-era text). So "diverse vocabulary" is
-  relative to the comparison, and humans still win it.
+> **Refined after literature review** (see `reports/LITREVIEW_lexical_tics.md`).
+> The pilot's first pass lumped the stereotyped "LLM tics" into one list and found
+> they barely separate Claude (mean |d| ≈ 0.15). That list was effectively a list
+> of *ChatGPT/GPT* excess words, so the null for Claude is correct and expected.
+
+- **The stereotyped tic vocabulary (delve, crucial, intricate, comprehensive, …)
+  is a GPT/ChatGPT signature.** Kobak et al. (Science Advances 2024) tie the
+  post-ChatGPT "excess vocabulary" surge to ChatGPT; the "delve" origin story is
+  about OpenAI's RLHF pipeline. In our corpus, **GPT-4o uses every excess word
+  more than Claude** — "crucial" 0.73 vs 0.04 /1k (~18×); "delve" itself appears
+  zero times (and is not a Claude word regardless). So the popular belief holds —
+  *for GPT* — and was never a Claude property.
+- **Claude has its own, different lexical lean: conversational/subjective markers**
+  — "actually" (1.38/1k, ~6× GPT-4o), "feel", "it's worth", "think". This matches
+  a published Claude-vs-GPT-4o contrast (arXiv 2502.08972: Claude favors casual
+  "believe"/"feel that"/"kind of"; GPT favors formal "crucial to"). But it is a
+  **secondary** signal — smaller than Claude's structural/rhythmic fingerprint.
+- **Claude is *less* lexically diverse than humans** (type-token ratio 0.62 vs
+  0.73, hapax 0.46 vs 0.59); the sign flips only against GPT-3.5-era text.
+
+Net: Claude's identity here is **structural and rhythmic first** (markdown,
+burstiness, function-word density, em-dashes), with a **conversational lexical
+lean second** — and it is specifically NOT the delve-class vocabulary that the
+popular discourse (correctly) pins on GPT.
 
 ## 6. Boundary conditions (do not over-read)
 
