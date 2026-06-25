@@ -1,0 +1,33 @@
+{
+  "id": "msg_014EJs87BiFgBJYbYDBPyCXy",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# How to Build a PC\n\nBuilding a PC is very achievable for beginners. Here's a step-by-step guide.\n\n## 1. Gather Your Components\n\nYou'll need these core parts:\n- **CPU** (processor)\n- **Motherboard** (compatible with your CPU)\n- **RAM** (memory)\n- **GPU** (graphics card—optional if your CPU has integrated graphics)\n- **Storage** (SSD and/or HDD)\n- **Power Supply (PSU)**\n- **Case**\n- **CPU Cooler** (some CPUs include one)\n\n**Tip:** Use a site like **PCPartPicker.com** to check compatibility and stay within budget.\n\n## 2. Prepare Your Workspace\n\n- Work on a clean, flat, non-carpeted surface\n- Keep a Phillips-head screwdriver handy\n- Avoid static (touch a metal object or use an anti-static wrist strap)\n\n## 3. Assembly Steps\n\n1. **Install the CPU** onto the motherboard (line up the arrows/triangles, don't force it)\n2. **Install RAM** into the slots (push until they click)\n3. **Mount the CPU cooler** (apply thermal paste if it's not pre-applied)\n4. **Install the M.2 SSD** (if you have one) onto the motherboard\n5. **Mount the motherboard** into the case using standoff screws\n6. **Install the power supply** into the case\n7. **Install the GPU** into the top PCIe slot\n8. **Connect storage drives** (SATA SSD/HDD)\n9. **Connect all cables:**\n   - 24-pin motherboard power\n   - 8-pin CPU power\n   - GPU power\n   - Front panel connectors (power button, USB, etc.)\n\n## 4. First Boot\n\n- Double-check all connections\n- Connect monitor, keyboard, and mouse\n- Power on—you should see the BIOS screen\n- Install your operating system (usually from a USB drive)\n\n## 5. Install Drivers & OS\n\n- Install **Windows/Linux** from a bootable USB\n- Download motherboard and GPU drivers\n- Update everything\n\n## Helpful Resources\n\n- **YouTube:** Search for build guides (Linus Tech Tips has a great beginner one)\n- **r/buildapc** on Reddit for advice\n\n---\n\nWould you like help with **choosing parts for a specific budget**, or do you have questions about a **particular step**?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 14,
+    "output_tokens": 799,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

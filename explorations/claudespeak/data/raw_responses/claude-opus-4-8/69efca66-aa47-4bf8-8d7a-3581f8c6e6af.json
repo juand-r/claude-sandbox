@@ -1,0 +1,38 @@
+{
+  "id": "msg_01LhqG98mf5SPFf7wme2bmh1",
+  "container": null,
+  "content": [
+    {
+      "signature": "EsICCmMIDxgCKkD8GJUZc0iMU1mL3mynmF8F+Sy4aQvxy3EeJv9HcCV3L86AA/hSZUAL6Sll4cUwxaRADY/j1LeQYyPUdOGHcwS0Mg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDDPHHE90gCTZ74wFGBoMOoQg50Dsq5qZxEI9IjD08gPleLUptn2P8wj0tldyujPAPNIuqppxOZjSpUIuMnhHEZuU38evmBfDKpVLzUoqjAGoUUVeW/BSl/C1IvjWHYvGAOs6GijqXvu301J2q7VUiaV2BkKgt6mmpC42g0Iq0Ubjv+6AnPYORqKjb4bIs8cil9IQDNO76iWAsVTwbc3QpUAUK6xY4SrL6sb0IloqFj7chOdzIzZWUljomqUxT2DTN3VmszHm5anVeC7BtBHWO52solCDPX0afkwNxRgB",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "# Here's to the Women\n\nHere's to the women who run the whole show,\nWho multitask faster than Wi-Fi can go,\nWho find the lost keys, the shoes, and the phone,\nWhile answering emails and holding the throne.\n\nShe's a doctor, a dreamer, a fixer of hearts,\nA scientist splitting both atoms and farts—\n(Yes, even the goddesses, queens of the land,\nHave moments less graceful than history planned.)\n\nShe negotiates peace at the breakfast table,\nThen conquers the boardroom whenever she's able.\nShe cried at the movie, then lifted the couch,\nDon't mistake her soft heart for a permanent ouch.\n\nShe's been told to be quiet, to shrink, and to wait,\nYet she rewrote the rules and unlatched the gate.\nFrom Curie to Malala, from your mom to your aunt,\nWhen the world said \"you can't,\" she just laughed: *\"Oh, I can't?\"*\n\nSo here's to the laughter, the grit, and the grace,\nThe wrinkles that map every smile on her face.\nTo the women who rise, who inspire, who roam—\nYou're the heartbeat of life, the soul of every home.\n\nNot perfect, just powerful—messy and grand,\nBuilding tomorrow with dirt on each hand.\nSo lift up your coffee (or wine, no one's judging),\n**To women!** Unstoppable, fierce, and never budging.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 29,
+    "output_tokens": 502,
+    "output_tokens_details": {
+      "thinking_tokens": 43
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

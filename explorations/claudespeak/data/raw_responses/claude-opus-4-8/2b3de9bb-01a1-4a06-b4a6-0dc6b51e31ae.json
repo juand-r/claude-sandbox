@@ -1,0 +1,33 @@
+{
+  "id": "msg_01VDigrVaxX89dY5J8rX1XCB",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# TCP/IP Model Layers and Protocols\n\nThe TCP/IP model consists of **four layers**:\n\n| Layer | Example Protocol |\n|-------|------------------|\n| **Application Layer** | HTTP (Hypertext Transfer Protocol) |\n| **Transport Layer** | TCP (Transmission Control Protocol) |\n| **Internet Layer** | IP (Internet Protocol) |\n| **Network Access Layer** (Link Layer) | Ethernet |\n\n## Brief Description of Each Layer\n\n1. **Application Layer** – Provides network services directly to applications and end users.\n   - Other protocols: FTP, SMTP, DNS, HTTPS\n\n2. **Transport Layer** – Handles end-to-end communication and data flow control.\n   - Other protocols: UDP\n\n3. **Internet Layer** – Manages logical addressing and routing of packets across networks.\n   - Other protocols: ICMP, ARP\n\n4. **Network Access Layer** – Deals with physical transmission of data over the network medium.\n   - Other protocols: Wi-Fi (IEEE 802.11), PPP\n\n---\n\n💡 **Note:** The TCP/IP model is sometimes shown with **five layers**, splitting the Network Access Layer into separate **Data Link** and **Physical** layers, similar to the OSI model.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 31,
+    "output_tokens": 446,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

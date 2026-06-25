@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Tb1PEXqpw4NUsPuHednc9d",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# User Stories for Gmail\n\n## Email Composition & Sending\n\n**As a** busy professional,\n**I want to** compose and send emails to multiple recipients at once,\n**So that** I can communicate efficiently with my team without sending individual messages.\n\n---\n\n## Search Functionality\n\n**As a** user with thousands of emails,\n**I want to** search my inbox using keywords, sender names, or dates,\n**So that** I can quickly find specific messages without scrolling endlessly.\n\n---\n\n## Organization with Labels\n\n**As a** person managing different aspects of my life,\n**I want to** create labels and filters to categorize my incoming emails,\n**So that** I can keep my work, personal, and subscription emails organized automatically.\n\n---\n\n## Spam Protection\n\n**As a** privacy-conscious user,\n**I want to** have unwanted and suspicious emails automatically filtered into a spam folder,\n**So that** I can keep my inbox clean and protect myself from phishing attempts.\n\n---\n\n## Attachments\n\n**As a** student collaborating on projects,\n**I want to** attach documents, images, and files to my emails,\n**So that** I can share my work with classmates and professors easily.\n\n---\n\n## Mobile Access\n\n**As a** frequent traveler,\n**I want to** access my email through a mobile app,\n**So that** I can stay connected and respond to important messages while away from my computer.\n\n---\n\n## Draft Saving\n\n**As a** thoughtful writer,\n**I want** my unfinished emails to be saved automatically as drafts,\n**So that** I don't lose my work if I get interrupted or need to finish later.\n\n---\n\nWould you like me to expand on any of these user stories with **acceptance criteria** or focus on a specific Gmail feature?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 52,
+    "output_tokens": 553,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

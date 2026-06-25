@@ -1,0 +1,33 @@
+{
+  "id": "msg_01EDDfS8ufBm5Xt6JvEv1BTa",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# How Polar Bears Stay Warm in the Arctic\n\nPolar bears are remarkably well-adapted to survive in one of Earth's harshest environments. Here are their key survival features:\n\n## Insulation Systems\n\n**Thick Fat Layer**\n- A layer of blubber up to 4.5 inches (11 cm) thick\n- Provides excellent insulation and energy storage\n- Helps them survive long periods between meals\n\n**Dense Fur**\n- Two layers: a dense underfur and longer guard hairs\n- Traps a layer of warm air close to the body\n- The guard hairs are water-repellent, helping them dry quickly after swimming\n\n## Clever Adaptations\n\n**Black Skin**\n- Beneath their fur, polar bears have black skin\n- This absorbs and retains heat from sunlight\n\n**Translucent Fur**\n- Their fur isn't actually white—it's transparent and hollow\n- Appears white due to light reflection\n- The hollow hairs may help channel warmth\n\n## Body Design\n\n**Compact Build**\n- Small ears and a short tail minimize heat loss\n- Their large, rounded body shape retains heat efficiently (less surface area relative to volume)\n\n**Large Paws**\n- Act like snowshoes to distribute weight\n- Fur on the soles provides insulation and traction on ice\n\n## Behavioral Strategies\n- Females dig dens in snow for shelter and to raise cubs\n- They can slow their metabolism during lean times\n- They conserve energy through efficient hunting strategies\n\nWould you like me to expand on any of these adaptations?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 24,
+    "output_tokens": 517,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

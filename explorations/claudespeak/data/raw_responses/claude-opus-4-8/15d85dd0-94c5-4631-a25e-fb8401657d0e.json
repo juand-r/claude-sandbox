@@ -1,0 +1,38 @@
+{
+  "id": "msg_01J2y9Laq1RtBXB1YybyBLTM",
+  "container": null,
+  "content": [
+    {
+      "signature": "EswCCmMIDxgCKkCaPwiFcry2H221NYF1iT43MTUCDqZBMROouIKp5jKKYYzwXhUNfbDqElHlXjZK/rcwRFvEj/yXYOPh7LrepevaMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDN4Jzm8PQzSICM9rbRoMAUohOVWFuNjhk0S4IjDfoLWHWIFDcJXK4i98XT80TtEtK/rN4NM2SMMJHf8sq0uQrSpqCmmww3+bI7h1nw4qlgFvxJwO9QlrXBFYgPVFCgRBJxqhU68xhZky9FRe0xFvguzvI2Ie3oKyvmePX7PGwr5S+KFnCojj5i3PaOJmTZGSA2aLkSI1OeJr5qh9ARequEE4CkhQZhjdk5gVTRWwfHYTu8AuRy7F8U4mldTgjst9m2RXDAFO9Xchpq9m6p5BmjzRm3FYctH/9itMEmPjKAn1sZyndboYAQ==",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "# Job Application – Rejection Letter\n\n**Subject: Update on Your Application for [Job Title]**\n\nDear [Candidate Name],\n\nThank you for taking the time to interview for the [Job Title] position and for sharing your experience and insights with us throughout the process. It was a genuine pleasure getting to know you.\n\nAfter careful consideration, we have decided to move forward with another candidate for this role. I want you to know that this was an exceptionally difficult decision. You were among our top choices, and you came in a very close second. The qualifications, professionalism, and enthusiasm you demonstrated made the final decision a challenging one for our team.\n\nPlease don't view this as a reflection of your abilities or potential. We were genuinely impressed by you, and I would strongly encourage you to apply for future openings with us, as we believe you could be an excellent fit for our organization.\n\nWe will keep your details on file and reach out should a suitable opportunity arise. In the meantime, we wish you the very best in your job search and future career.\n\nThank you again for your interest in joining our team.\n\nWarm regards,\n\n[Your Name]\n[Your Title]\n[Company Name]\n[Contact Information]\n\n---\n\n*Feel free to share these details with me if you'd like me to personalize it further: the candidate's name, job title, your name/title, and company name.*",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 46,
+    "output_tokens": 462,
+    "output_tokens_details": {
+      "thinking_tokens": 41
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

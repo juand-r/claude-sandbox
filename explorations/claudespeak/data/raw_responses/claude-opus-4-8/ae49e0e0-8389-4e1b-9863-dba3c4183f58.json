@@ -1,0 +1,33 @@
+{
+  "id": "msg_01PQeH2yN2fp72AMSuMoxoyU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# A Hidden Gem for Pizza Lovers\n\nI recently visited Pizzeria and walked away thoroughly impressed by the whole experience.\n\nFirst off, the **prices** are wonderfully reasonable. You can enjoy a satisfying meal without worrying about breaking the bank, which is increasingly rare these days.\n\nThe atmosphere is another highlight. Unlike many crowded, noisy spots, this is a **quiet place** where you can actually hear your dining companions and enjoy a relaxed conversation. It's perfect for a peaceful dinner or a calm lunch break.\n\nOf course, the most important part—the food—did not disappoint. Every bite was **tasty** and clearly made with quality ingredients. The flavors were spot-on and left me wanting to come back for more.\n\nTo top it all off, the **staff** were genuinely nice and welcoming. They were attentive without being intrusive and made us feel right at home throughout our visit.\n\n**Overall:** If you're looking for delicious pizza, fair prices, and a calm setting with friendly service, Pizzeria is well worth a visit. I'll definitely be returning!\n\n⭐⭐⭐⭐⭐",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 53,
+    "output_tokens": 385,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

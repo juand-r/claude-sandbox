@@ -1,0 +1,33 @@
+{
+  "id": "msg_01W2ZFiVLnrnHo4kVH7LSTVM",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Understanding Octane Ratings\n\nThe octane rating measures a fuel's ability to resist **\"knocking\"** or **\"pinging\"** during combustion—an undesirable phenomenon where fuel ignites prematurely or unevenly in the engine.\n\n## What the Numbers Mean\n\nHigher octane numbers indicate **greater resistance to premature ignition**. Common ratings include:\n\n- **Regular (87)** – Standard for most vehicles\n- **Mid-grade (89-90)** – Middle option\n- **Premium (91-94)** – Higher resistance to knocking\n\n## How Knocking Happens\n\nIn an engine, the fuel-air mixture is compressed and ignited by the spark plug at a precise moment. If the fuel ignites too early (from heat and pressure alone), it causes knocking, which can:\n\n- Reduce efficiency\n- Cause engine damage over time\n- Create that distinctive pinging sound\n\nHigher-octane fuel withstands more compression before igniting, allowing it to wait for the spark plug.\n\n## Which Should You Use?\n\n**Use what your manufacturer recommends.** Check your owner's manual or the inside of your fuel door.\n\n- **If your car requires regular:** Premium gas won't improve performance or efficiency—you'd just be spending more money.\n- **If your car requires premium:** Using regular can reduce performance and potentially cause long-term engine issues. High-performance and turbocharged engines often need premium because they run at higher compression.\n\n## Common Myth\n\nHigher octane does **not** mean \"better\" or \"cleaner\" fuel in general terms—it specifically means more knock resistance. It doesn't contain more energy or automatically clean your engine better.\n\n---\n\nWould you like more detail on how octane is measured or why certain engines need premium fuel?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 21,
+    "output_tokens": 582,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

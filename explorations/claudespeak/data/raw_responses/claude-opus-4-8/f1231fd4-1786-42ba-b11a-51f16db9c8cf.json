@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Ej8uwTxvxEHz7GoY6dFdWp",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "There are quite a few reasons people might prefer paper maps or asking for directions:\n\n**Practical reliability**\n- GPS signal can be weak or unavailable in remote areas, tunnels, dense urban \"canyons,\" or wilderness\n- Phone batteries die; paper maps don't need power\n- No dependence on cellular data or coverage\n- Devices can malfunction, freeze, or have software glitches\n\n**Better spatial understanding**\n- Paper maps show the broader context and surrounding area at a glance, not just a narrow route\n- They can help people build a stronger mental model of geography and how places connect\n- Some research suggests heavy GPS reliance may weaken our natural navigation and memory skills\n\n**The human element**\n- Asking locals can surface knowledge no app has: a road closure, a shortcut, a scenic detour, or which neighborhoods to avoid\n- It creates social interaction and connection, which some people genuinely enjoy\n- Locals can interpret your actual intent (\"I want a nice walk\" vs. \"fastest route\")\n\n**Accuracy and trust issues**\n- GPS data can be outdated, sending people down closed roads or nonexistent paths\n- Apps sometimes optimize for things you don't want (toll roads, sketchy \"shortcuts\")\n\n**Personal preference and experience**\n- Some find screens distracting or prefer to disconnect\n- Planning a trip on a big map can be enjoyable and part of the adventure\n- Privacy concerns—not wanting movements tracked or data collected\n\n**Cost and accessibility**\n- Avoiding data charges, especially when traveling internationally\n- A paper map is cheap and doesn't require owning a smartphone\n\nMany experienced travelers actually use a combination—relying on GPS for convenience while keeping a paper map as backup and for the bigger picture.\n\nIs there a particular context you're thinking about, like hiking, road trips, or international travel?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 43,
+    "output_tokens": 621,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

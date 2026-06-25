@@ -1,0 +1,33 @@
+{
+  "id": "msg_01XU2oSsY8Z68PqcGE9pBzWC",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "I think you may be referring to a popular claim about Harry Anslinger, the first commissioner of the Federal Bureau of Narcotics, who championed marijuana prohibition in the 1930s. But I want to give you accurate information rather than confirm a specific story that may be distorted.\n\nHere's what I can clarify:\n\n**The \"200 doctors\" claim**\n\nThere's a widely circulated story that Anslinger fabricated or misrepresented the views of physicians. The actual basis seems to be his \"Gore Files\"—lurid anecdotes about violence allegedly caused by marijuana, which were often exaggerated, unsupported, or fabricated.\n\nA more documented point: When the American Medical Association (through Dr. William C. Woodward) actually opposed the Marihuana Tax Act of 1937, Anslinger and supporters reportedly misrepresented the AMA's position to Congress, suggesting the AMA was on board when it was not.\n\n**What I'd caution about**\n\nThe specific detail of \"falsified signatures and testimony of more than 200 doctors\" is not something I can verify from reliable historical records. It may be an embellishment or conflation of several criticisms of Anslinger. I don't want to hand you a citation for something that might be apocryphal.\n\n**Better sources to investigate this properly:**\n\n1. **The Marihuana Tax Act of 1937 hearings** — congressional records, including Woodward's actual testimony\n2. **\"The Marihuana Conviction\" by Bonnie & Whitebread** — a serious academic history\n3. **\"Smoke and Mirrors\" by Dan Baum** — drug war history\n4. Anslinger's own writings, including *\"The Murderers\"* and his \"Gore Files\"\n\nCould you tell me where you originally heard the \"200 doctors\" claim? That would help me steer you toward verifying or correcting it. What's the context you need this for?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 113,
+    "output_tokens": 609,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

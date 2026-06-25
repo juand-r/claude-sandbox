@@ -1,0 +1,38 @@
+{
+  "id": "msg_016DSVYEzFh7cLLhB2vJychB",
+  "container": null,
+  "content": [
+    {
+      "signature": "Er8DCmMIDxgCKkDsspKBSyoeuCrC36OxJw1ZhCaMhXmO377GOa9xQpPYVQlI87gE8GsCRqYTs3vflRgkZS8F6nk799AjGiaVHWNqMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDL4nANijthkEh8mmsRoMoRQwOpsRuY0EBVUyIjA6VwD6Rkujb4h1aHoYXywLIG7p1+PnXXnc11lTEdtjIJwSR7qfonL1bDVlOPPoOAwqiQJvx7ldCq1vGr3nQl8bl8GFABQNDrc3VHor+XVULSJdZJV7VhVuCaQVUm/kP5lsFal/cpsE5ClOXKH7r1rnK5PboZ+d3YkVLpAPWAAFJ857n0d6Z+ZAL1othxvXpAA/ekOZ/lJ59tVJSmyPYB1IeZOujtYtUNGJLM22Nso5skOiK82CFgZuSFBXEiiSziw96sZw6FdK6kjtOMI8dgc8jVduuCSjMTKenDWw3PiATexteVHZGTG8HsE8C6qhAkNsarrugx56YxDGZKN4MRBdB8LktrAzoCrFFb/tskjjgojxr4Bd8etrkBzbNIso33WcemiI2n1ANp4ZYGxmThPriaqDVyGPrE2W1A3bGAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "The sentence \"The chicken is ready to eat\" is ambiguous because it can be interpreted in two ways:\n\n**Interpretation 1 — The chicken (food) is cooked and can be eaten:**\n- \"The chicken is cooked and ready to be eaten.\"\n- \"The chicken dish is prepared and ready for us to eat.\"\n\n**Interpretation 2 — The chicken (animal) is hungry and wants to eat:**\n- \"The chicken is hungry and ready to eat its food.\"\n- \"The live chicken is ready to be fed.\"\n\nChoose the version that matches your intended meaning. If you tell me which interpretation you meant, I can refine it further.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 50,
+    "output_tokens": 306,
+    "output_tokens_details": {
+      "thinking_tokens": 93
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

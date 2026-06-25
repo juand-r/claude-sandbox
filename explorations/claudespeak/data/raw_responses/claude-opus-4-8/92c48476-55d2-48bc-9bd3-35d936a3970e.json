@@ -1,0 +1,33 @@
+{
+  "id": "msg_014ivrcXWyz8jVXSUydxPwrm",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "When someone's sick, easy-to-digest and comforting foods usually work best. Here are some good options to make for your girlfriend:\n\n**Classic comfort foods:**\n- **Chicken soup** – a reliable choice. The warm broth helps with hydration, congestion, and it's gentle on the stomach.\n- **Plain rice or congee** (rice porridge) – soft, bland, and easy to digest.\n- **Toast or plain crackers** – good if she has an upset stomach.\n\n**Soothing options:**\n- **Broth or bone broth** – hydrating and nourishing if she doesn't have much appetite.\n- **Oatmeal** – warm, soft, and easy to eat.\n- **Mashed potatoes** – comforting and gentle.\n- **Bananas and applesauce** – easy on the stomach, especially if she has nausea.\n\n**For hydration:**\n- **Herbal tea** with honey (great for a sore throat)\n- **Ginger tea** – helps with nausea\n- **Warm water with lemon and honey**\n- Lots of plain water or electrolyte drinks\n\n**A few tips:**\n- Keep it mild and not too spicy or greasy, especially if she has stomach issues.\n- Small portions are often better when appetite is low.\n- Warm foods tend to be more soothing than cold ones.\n\nWould you like a simple recipe for any of these? If you let me know her symptoms (sore throat, upset stomach, congestion, etc.), I can suggest something more specific. That's a really sweet thing to do for her. 💛",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 39,
+    "output_tokens": 506,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

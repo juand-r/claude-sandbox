@@ -82,6 +82,15 @@ function-word density t=-14.4, em-dash t=12.6, question-rate t=4.6; within-quart
 Cohen's d holds across bins. Caveat: TTR/hapax are length-sensitive (Claude<human
 holds only in direct human comparison). → reports/pilot_length_control.md.
 
+### Step 3 (AlpacaEval modern-model track) DONE
+1400 records, 7 sources (Claude + 6 reused modern models). Findings:
+- Structural/rhythmic signature REPLICATES vs modern: burstiness d=1.01, em-dash
+  d=0.63, function-word density d=-0.55, question/offer d=0.50.
+- VOCAB RECONCILIATION CONFIRMED: in essay genre, Claude is the LEAST delve/crucial
+  model of 7 (only model with delve=delves=0; crucial 0.039 lowest vs GPT 0.34-0.42).
+- Offer-closer n-grams replicate ("would you like me to", "let me know if you'd like").
+→ reports/alpaca_track.md. Corpus: alpaca_reused.jsonl + alpaca_generated.jsonl.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.

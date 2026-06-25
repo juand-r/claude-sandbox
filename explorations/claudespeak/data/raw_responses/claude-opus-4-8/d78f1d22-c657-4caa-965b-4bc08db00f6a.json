@@ -1,0 +1,38 @@
+{
+  "id": "msg_0184JbvHiqKLSdeHUoyv6jV9",
+  "container": null,
+  "content": [
+    {
+      "signature": "EtkGCmMIDxgCKkDYX0ZOmg/Swro1KV2/27foIzRzM6i7rObrPJ4r3NrwCHigtDWdyrMQ8N++krBk9FW69j49nCAUYZtNQeEx3T4jMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDKzDVG/GoLU+dQctThoM399hQszY1GNo4SL0IjCTtN5H9alQJFaF+p2sazd6WPz7RCLZrlnHeW7IkRMo5lm1IUy00SYBN+HCKyUj7uYqowWUaY9M+WHEK7N3Uqm7MxznpooeYhZOkv942kmM6WuvivuNMUwcHV6D8zE+fD/+g8Fz+f7YBGostaeRhdxkgB8iRtS2ACipEqlLOHkMLmMKtHuHNBtg0ukvljq/KRYIGo0orP8cVUfVwjdTQ3+W3U+Ezg+yTcemZzneoJrp5BE1igSUemcVGJnZMgteaLmia2jxH3S1ydSwS7wpIlcwz12D7w/xFhh58S7toBkPZANYnRZCwTPT4PuiTOeGZP6hpuRdcPqoXK4+9zjbtLTOTUTnC6yeFr3yDlSOGhkNWaB9aXppNjvIItq2YoojeryKmI84iCh1mXQ4PjB/XI6YbzFyinhO8y5/PhQgnkqw0/TDl4D2QKe/8kDj24xulCeLoJSvNXCTtUSDDMvCdCYb5Chh5xb2tKUoDW0zqPzhrh/KBAAxgA5sUa5tluBhKzRreG7E86txLE8W7mv8Fc/NKPfYK2pwhSa+I4uxjWfSeeEcbFr30it92AGZ7BPu/Tirk87dKRP1uhbse3KJWSXAqhF196wKWHNY4KoKwo54FkmEnNzmllLPXbgqoIZQguIcS6vnXIA/b2mdwWpdA0/SORNvernb9noDNj4yy07RElEjS88g8kYs2YH82stjwaaQ3IixrkIX4XJYOY/4uf4aaQHCMZdA2FQVNZkeFECntjLku7NhvPIKdWtB4x79Q+ZW3wWUuzuIldV3a6k8s/1nRcqYcEbVQIGahyiiPl+2CrzX+xbx8BjK3U/VyUaHvhWXslPO//bry1OvREWzbdA3xekce6664ZWcV/aAj7yxaoaGwqHSjmJGu7fgunWdpVCnJxPJ+wl1GZwPuBsX9obz6u1fq1GAhqsnB2nHKK2fNu+rnXyhATdgzUaKVb7Ut548Sos2ElcYAQ==",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "Here are some poems that mention Santa Claus:\n\n1. **\"A Visit from St. Nicholas\"** (popularly known as **\"'Twas the Night Before Christmas\"**) — by **Clement Clarke Moore**\n   *(This famous poem describes the jolly figure who became the basis for the modern Santa Claus.)*\n\n2. **\"Santa Claus\"** — by **Howard Nemerov**\n\n3. **\"santa claus: a morality\"** — by **E. E. Cummings**\n\n4. **\"Old Santeclaus with Much Delight\"** — **Anonymous** (1821)\n   *(One of the earliest poems to feature the character.)*\n\n5. **\"Jest 'Fore Christmas\"** — by **Eugene Field**\n\n6. **\"Letter to Santa Claus\"** — by **Eugene Field**\n\nIf you'd like, I can provide excerpts or summaries from any of these poems, or look for additional examples.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 39,
+    "output_tokens": 581,
+    "output_tokens_details": {
+      "thinking_tokens": 276
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

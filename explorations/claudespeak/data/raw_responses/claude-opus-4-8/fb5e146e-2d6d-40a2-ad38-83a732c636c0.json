@@ -1,0 +1,33 @@
+{
+  "id": "msg_01XtDKRQcRbvGkBWm8XGuG3q",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "No, that's a misconception that conflates two very different groups.\n\n**Native Australians (Aboriginal peoples)** are the Indigenous inhabitants of Australia who have lived on the continent for at least 50,000-65,000 years, long before any European contact. They were not prisoners—they were the original peoples whose lands were colonized by the British starting in 1788.\n\n**British convicts** are likely what you're thinking of. Britain did transport prisoners to Australia, particularly to penal colonies in New South Wales and later Tasmania, beginning in 1788. Over about 80 years, roughly 160,000 convicts were transported there. These were British and Irish prisoners, not Indigenous Australians.\n\nSo the confusion seems to mix up:\n- **Aboriginal Australians** – the Indigenous population (not prisoners)\n- **Convict settlers** – transported British/Irish prisoners (these were the prisoners)\n\nIt's worth noting that British colonization had devastating effects on Aboriginal peoples, including loss of land, violence, and population decline from introduced diseases. So while Aboriginal Australians weren't prisoners themselves, they were profoundly harmed by the colonial system that brought convicts and settlers to the continent.\n\nIs there a particular aspect of Australian history you'd like to know more about?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 25,
+    "output_tokens": 425,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

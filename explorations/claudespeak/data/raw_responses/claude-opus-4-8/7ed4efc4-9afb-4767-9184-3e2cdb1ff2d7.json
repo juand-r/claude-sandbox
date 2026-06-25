@@ -1,0 +1,33 @@
+{
+  "id": "msg_017VQ2WeTK4LpWrqNfvKgQpo",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "As of my knowledge cutoff in early 2025, there has been **no official announcement of StarCraft 3**, and therefore no release date.\n\nHere's the relevant context:\n\n- **StarCraft II** received its last major expansion, *Legacy of the Void*, in 2015, with the *Nova Covert Ops* mission packs following in 2016.\n- Blizzard largely wound down active development on StarCraft II's content, shifting most of the dedicated team to other projects around 2017-2020.\n- There have been various rumors and fan speculation over the years, but Blizzard has not confirmed any sequel.\n\nA few things worth noting:\n- In recent years, Microsoft acquired Activision Blizzard (completed in late 2023), which has led to some renewed speculation about the future of various Blizzard franchises, including StarCraft.\n- There have been occasional reports and rumors about Blizzard exploring StarCraft projects, but nothing officially confirmed as \"StarCraft 3.\"\n\n**My information may be out of date.** Since announcements can happen at any time, I'd recommend checking official sources like Blizzard's website, their social media channels, or reputable gaming news outlets for the very latest news.\n\nIs there anything specific about the StarCraft franchise I can help you with in the meantime?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 29,
+    "output_tokens": 416,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

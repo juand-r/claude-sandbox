@@ -1,0 +1,33 @@
+{
+  "id": "msg_018faEJPmrEx6jQnGy57daCn",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Upsell Email Copy\n\n**Subject: Quick solution to get you the best value 🎯**\n\n---\n\nHi [Customer Name],\n\nThanks so much for your interest in [Product Name] — I'm excited to get you set up!\n\nI wanted to reach out personally because I found a way to actually give you **more value** here.\n\nHere's the situation: Our system processes orders starting at $20, and I didn't want that to be a roadblock for you. So instead of you paying more for less, I'd love to make this a no-brainer.\n\n**Here's what I can do:**\n\nFor just a few dollars more, I'll include **[Second Product Name]** — which normally sells for $13 on its own. This means instead of getting one product, you'll walk away with **both** for essentially the price of one-and-a-half.\n\nSo you'd get:\n- ✅ [Product 1] — [one-line benefit]\n- ✅ [Product 2] — [one-line benefit]\n\n**Total value: $26 → Yours today for just $20**\n\nHonestly, [Product 2] pairs perfectly with what you're already getting because [specific reason — e.g., \"it helps you get results faster\" / \"it solves the next problem you'll run into\"].\n\nWant me to send over the invoice for both? Just reply \"yes\" and I'll have it to you in the next few minutes.\n\nLooking forward to getting you started!\n\nBest,\n[Your Name]\n[Your Title / Company]\n[Contact Info]\n\n---\n\n## A few quick tips to make this convert better:\n\n1. **Make Product 2 genuinely relevant** — The upsell should solve a problem *created by* or *related to* Product 1. That's what makes it feel like a gift, not a sales tactic.\n\n2. **Anchor the value** — Notice I framed it as \"$26 value for $20.\" The customer feels like they're *saving* money, not spending $7 more.\n\n3. **Keep the CTA dead simple** — \"Reply yes\" removes friction. Don't make them think.\n\n4. **Add urgency if true** — If there's a real reason to act now (limited spots, bonus expiring), include it.\n\nWant me to tailor this for your **specific products**? Just tell me what both products are and I'll write a sharper, ready-to-send version.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 100,
+    "output_tokens": 713,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

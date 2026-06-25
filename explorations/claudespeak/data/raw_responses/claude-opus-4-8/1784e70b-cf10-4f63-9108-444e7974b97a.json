@@ -1,0 +1,33 @@
+{
+  "id": "msg_01FDyQNgKeXuNMc4rnMoFz8W",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Simple Guide: Uploading a Bibliography Database on Overleaf\n\nA bibliography database is typically a `.bib` file containing all your references. Here's how to add it to your Overleaf project.\n\n## Step 1: Prepare Your .bib File\n\nMake sure you have a bibliography file (e.g., `references.bib`) saved on your computer. This file contains your references in BibTeX format, like:\n\n```bibtex\n@article{einstein1905,\n  author  = {Albert Einstein},\n  title   = {On the Electrodynamics of Moving Bodies},\n  journal = {Annalen der Physik},\n  year    = {1905},\n}\n```\n\n## Step 2: Upload the File to Overleaf\n\n1. Open your project in Overleaf.\n2. In the **left-hand file panel**, click the **Upload** icon (an arrow pointing up).\n3. Select **\"Upload\"** and choose your `.bib` file from your computer (or drag and drop it).\n4. The file will now appear in your project's file list.\n\n## Step 3: Link the Bibliography in Your Document\n\nIn your main `.tex` file, add the following near the end (before `\\end{document}`):\n\n```latex\n\\bibliographystyle{plain}     % choose a style (plain, ieeetr, apalike, etc.)\n\\bibliography{references}      % filename without the .bib extension\n```\n\n## Step 4: Cite Your References\n\nIn the body of your document, use `\\cite{}` with the citation key:\n\n```latex\nAs shown by Einstein \\cite{einstein1905}, the theory...\n```\n\n## Step 5: Compile\n\nClick the **Recompile** button. Overleaf automatically runs BibTeX, so your citations and bibliography will appear correctly.\n\n---\n\n### Tips\n\n- **Citation keys** must match exactly between your `.bib` file and your `\\cite{}` commands.\n- If references don't appear, try recompiling **two or three times**.\n- For modern documents, consider using **biblatex** with `biber` instead:\n\n```latex\n\\usepackage[backend=biber]{biblatex}\n\\addbibresource{references.bib}\n...\n\\printbibliography\n```\n\nThat's it! Your bibliography database is now uploaded and working in Overleaf.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 32,
+    "output_tokens": 721,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

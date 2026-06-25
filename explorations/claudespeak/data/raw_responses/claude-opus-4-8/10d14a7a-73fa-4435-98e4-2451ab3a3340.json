@@ -1,0 +1,33 @@
+{
+  "id": "msg_01VuzTz1Cj9GS3HtTjiFDcg7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The best approach to habit formation combines several evidence-based strategies. Here's what tends to work:\n\n## Start small\nMake the habit so easy you can't say no. Want to exercise? Start with two minutes a day. Want to read more? Read one page. The goal initially is consistency, not intensity. You can scale up once the behavior is established.\n\n## Anchor it to existing routines\nLink your new habit to something you already do reliably. \"After I pour my morning coffee, I'll meditate for two minutes.\" This is sometimes called \"habit stacking,\" and it uses established neural pathways as a trigger.\n\n## Make it obvious and easy\nDesign your environment to support the habit. Want to take vitamins? Put them next to your toothbrush. Reduce the friction for good habits and increase friction for bad ones.\n\n## Track your progress\nSimple tracking—like marking an X on a calendar—creates a satisfying visual chain you won't want to break. It also keeps you honest.\n\n## Focus on identity, not just outcomes\nInstead of \"I want to run a marathon,\" think \"I'm becoming a runner.\" When a habit becomes part of how you see yourself, it sticks better.\n\n## Be patient and forgiving\nResearch suggests habits take anywhere from a few weeks to a few months to feel automatic—the often-cited \"21 days\" is a myth. Also, missing one day won't ruin your progress. The rule of thumb: never miss twice in a row.\n\n## A few practical tips\n- **Be specific:** Define exactly when, where, and how you'll do it.\n- **Pair it with something enjoyable** to build positive associations.\n- **Plan for obstacles** in advance (\"If X happens, I'll do Y instead\").\n\nIf you tell me what specific habit you're trying to build, I can offer more tailored suggestions.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 18,
+    "output_tokens": 580,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

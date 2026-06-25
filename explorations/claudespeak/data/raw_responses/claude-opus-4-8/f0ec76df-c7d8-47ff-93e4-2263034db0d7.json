@@ -1,0 +1,33 @@
+{
+  "id": "msg_01L7CY6tYLrSt724LPX4nxok",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "Exhaustion as a parent is real and valid—you're not failing by feeling this way. Let me give you an honest take rather than just reassurance.\n\nA nanny can genuinely help if:\n- You're stretched thin between work, parenting, and basic self-care\n- You can afford it without creating financial stress that adds its own strain\n- You need consistent, reliable help rather than occasional babysitting\n\nBut it's worth examining what's actually driving the exhaustion, because a nanny solves some problems and not others:\n\n- If you're burned out from the sheer logistics and hours, hired help is a direct fix\n- If the exhaustion is more about isolation, lack of partner support, or your own mental health, a nanny might help but won't address the root\n- If it's a temporary crunch (new baby, work deadline season), shorter-term help might make more sense than a full arrangement\n\nA few practical questions to sit with:\n- What would you actually do with the freed-up time? Rest, work, reconnect with your partner?\n- Is full-time care needed, or would part-time or a few days a week be enough?\n- Are there other options—family help, daycare, a mother's helper, splitting duties differently with a partner?\n\nThere's also no shame in this. Plenty of capable, loving parents use childcare help, and \"I'm exhausted\" is a perfectly good reason on its own.\n\nWhat does a typical day look like for you right now? That might help clarify whether a nanny is the right fit or whether something else would relieve more pressure.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 26,
+    "output_tokens": 472,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

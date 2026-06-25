@@ -1,0 +1,33 @@
+{
+  "id": "msg_01NAgYPqBKUc64NftCwaB6Hu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Game Day Party Snacks 🏈\n\n## Classic Crowd-Pleasers\n- **Buffalo wings** (with ranch or blue cheese dip)\n- **Nachos** loaded with cheese, jalapeños, and salsa\n- **Sliders** (cheeseburger, pulled pork, or BBQ chicken)\n- **Pigs in a blanket**\n- **Mozzarella sticks**\n\n## Dips & Spreads\n- **Seven-layer dip**\n- **Buffalo chicken dip**\n- **Spinach artichoke dip**\n- **Guacamole**\n- **Queso** (warm cheese dip)\n- **French onion dip** with chips\n\n## Finger Foods\n- **Jalapeño poppers**\n- **Deviled eggs**\n- **Meatballs** (in BBQ or marinara sauce)\n- **Stuffed mushrooms**\n- **Chicken tenders** with assorted sauces\n\n## Chips & Dippers\n- Tortilla chips\n- Potato chips\n- Pretzels\n- Pita chips\n- Veggie tray with ranch\n\n## Heartier Options\n- **Pizza** (or pizza rolls)\n- **Loaded potato skins**\n- **Chili** (with toppings bar)\n- **Pulled pork sandwiches**\n- **Soft pretzels** with cheese sauce\n\n## Sweet Treats\n- **Brownies** or cookies\n- **Football-shaped Rice Krispie treats**\n- **Chocolate-covered pretzels**\n- **Team-colored cupcakes**\n\n## Drinks\n- Beer and soda\n- Lemonade or iced tea\n- Spiked punch\n- Water (don't forget hydration!)\n\n---\n\n**Pro tip:** Set up a self-serve buffet so guests can graze throughout the game without missing the big plays! 🎉\n\nWant recipes for any of these, or suggestions tailored to a specific team's colors or dietary needs?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 30,
+    "output_tokens": 648,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

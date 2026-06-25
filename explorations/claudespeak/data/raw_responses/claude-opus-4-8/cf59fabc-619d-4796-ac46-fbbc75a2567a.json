@@ -1,0 +1,33 @@
+{
+  "id": "msg_01FSQKWPcD8jmqpuMZU4NN3k",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "It's really kind that you want to be there for your friend. Here are some ways to help:\n\n**What to say**\n- Keep it simple and genuine: \"I'm so sorry. I know how much they meant to you.\"\n- Acknowledge the loss directly—don't avoid mentioning the dog. Using the pet's name can be comforting.\n- Validate their grief: \"It makes sense that you're hurting this much.\"\n\n**What to avoid**\n- Clichés like \"It was just a dog\" or \"You can get another one.\" Pets are family, and losing one is a real loss.\n- Rushing them to \"move on\" or feel better on your timeline.\n- Comparing it to other losses or one-upping with your own stories.\n\n**What to do**\n- Just be present. Sometimes sitting with someone in their sadness matters more than any words.\n- Offer specific help rather than \"let me know if you need anything\"—try \"Can I bring you dinner tonight?\" or \"Want to go for a walk?\"\n- Let them talk about their dog and share memories if they want to.\n- Check in again in a few days or weeks. Grief doesn't end quickly, and people often feel forgotten after the initial sympathy fades.\n\n**A few thoughtful gestures**\n- A card, a small plant, or a donation to an animal shelter in the pet's name.\n- A framed photo of their dog, if that feels right for them.\n\nThe most important thing is showing up and letting them feel what they feel without judgment. Your presence and patience will mean a lot.\n\nIs your friend more of a \"wants to talk about it\" person or someone who prefers quiet company? I can tailor some suggestions if that helps.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 29,
+    "output_tokens": 519,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

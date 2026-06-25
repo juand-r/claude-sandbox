@@ -1,0 +1,33 @@
+{
+  "id": "msg_01T8hEerqMTPZ61vmeKjM3P5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Period Dramas\n\nPeriod dramas are films and television shows set in a specific historical era, recreating the customs, fashion, social norms, and atmosphere of the past. These productions transport viewers to bygone times, ranging from ancient civilizations to the more recent decades of the 20th century.\n\n## Key Characteristics\n\n- **Historical settings** that authentically depict a particular time period\n- **Elaborate costumes** and production design reflecting the era\n- **Period-accurate** language, etiquette, and social structures\n- **Themes** often exploring class, romance, politics, and societal change\n\n## Common Subgenres\n\n- **Costume dramas** focusing on aristocracy and lavish settings\n- **Literary adaptations** based on classic novels\n- **Historical epics** covering significant events or figures\n- **Romantic period pieces** centered on love stories of the past\n\n## Popular Examples\n\n- *Pride and Prejudice*\n- *Downton Abbey*\n- *Bridgerton*\n- *The Crown*\n\nPeriod dramas appeal to audiences who enjoy rich storytelling combined with the visual splendor and intrigue of historical worlds.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 30,
+    "output_tokens": 372,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

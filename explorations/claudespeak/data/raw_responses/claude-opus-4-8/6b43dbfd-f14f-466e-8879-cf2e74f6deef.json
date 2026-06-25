@@ -1,0 +1,33 @@
+{
+  "id": "msg_01HyUwSBzLhL5mkVTst5R2fR",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Opor Ayam (Indonesian Chicken in Coconut Milk)\n\nOpor Ayam is a beloved Indonesian dish, especially popular during festive occasions like Lebaran (Eid). It's a mild, creamy chicken curry with rich coconut and aromatic spices.\n\n## Ingredients\n\n**Main:**\n- 1 whole chicken (about 1.5 kg), cut into 8-10 pieces\n- 1 liter coconut milk (or 400ml thick + 600ml thin)\n- 2 stalks lemongrass, bruised\n- 4 kaffir lime leaves\n- 2 bay leaves (preferably Indonesian salam leaves)\n- 1 cinnamon stick (optional)\n- 2 tbsp cooking oil\n- Salt and sugar to taste\n\n**Spice paste (blend together):**\n- 8 shallots\n- 5 cloves garlic\n- 4 candlenuts (or macadamia nuts as substitute)\n- 1 tsp coriander seeds\n- 1 tsp cumin (optional)\n- 2 cm fresh ginger\n- 2 cm galangal\n- 1 tsp turmeric (or fresh turmeric)\n- 1/2 tsp white pepper\n\n## Instructions\n\n1. **Prepare the chicken:** Rinse and pat dry. You can lightly fry the pieces first for extra flavor, though this is optional.\n\n2. **Sauté the spice paste:** Heat oil in a large pot. Add the blended spice paste, lemongrass, kaffir lime leaves, bay leaves, and cinnamon. Cook over medium heat for 3-5 minutes until fragrant.\n\n3. **Add chicken:** Add the chicken pieces and stir to coat with the spice paste. Cook for about 5 minutes until the chicken changes color.\n\n4. **Add coconut milk:** Pour in the thinner coconut milk (or all if using a single type). Bring to a gentle simmer, stirring occasionally to prevent the coconut milk from splitting.\n\n5. **Simmer:** Cook uncovered on low-medium heat for 30-40 minutes until the chicken is tender. If using thick coconut milk separately, add it in the last 10 minutes.\n\n6. **Season:** Add salt and a little sugar to taste. Continue stirring gently so the sauce stays smooth.\n\n7. **Finish:** The sauce should be creamy and pale yellow. Serve hot.\n\n## Serving Suggestions\n\n- Serve with steamed rice or **ketupat** (rice cakes)\n- Garnish with **fried shallots** (bawang goreng)\n- Pairs well with **sambal** for those who like heat\n\n**Tip:** Stir the coconut milk frequently and keep the heat moderate to avoid curdling. The dish tastes even better the next day as the flavors deepen.\n\nWould you like a recipe for a complementary Indonesian dish or drink to round out your menu?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 82,
+    "output_tokens": 979,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

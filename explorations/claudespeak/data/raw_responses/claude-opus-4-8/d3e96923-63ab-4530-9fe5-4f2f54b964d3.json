@@ -1,0 +1,38 @@
+{
+  "id": "msg_01BfeFHDjB4TPrwyf3cnLTUR",
+  "container": null,
+  "content": [
+    {
+      "signature": "EqkCCmMIDxgCKkAG3gLwWmkYasD6ZyAhVXYcGjHS1ccC9Dr3X6QULmPE2aRjNrjcTX8R8AglbxOZxzGyEuAPmb9Cf1aYtQkJiFsBMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDN22hLO+ab+oib7qFhoMn4Nrka5yC6mdEeUdIjAcxO9cPS9MQH4PhtfBAzVHTYRnZabjwrmS3+8CorJdb0OXPoBK1TPxUtQM/0IAM90qdFn5j5SYeEEEQDbnruAUXzSUxfjoEpdevqGgwAWUIWCnovu5OQ3DzHZ/eOWDwJ6eSJaay97cMTUd779V0XqfMVpZMFjZLnxYPYHGp37XxEmoMay6igDOQzRouy3gNrXVvTVrpgOd/zY8RBjgsbhG1w8e5TSDGAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "Thank you so much for being a returning guest—it truly means the world to us that you keep coming back!\n\nWe're thrilled that you enjoyed the Succotash Omelet, the Pulled Pork Benedict, and the Hangtown Fry. Our kitchen takes great pride in serving generous portions at fair prices, so it's wonderful to hear that came through in your experience. (And next time, that Beignet Flight will be waiting for you—consider it a delicious reason to return!)\n\nWe also appreciate you mentioning the wait times. As a no-reservation, first-come-first-served spot during our busy breakfast and brunch hours, things can get lively, and we're grateful for guests like you who bring patience and good spirits. Please know our team is always happy to keep you comfortable while you wait.\n\nThank you, too, for the thoughtful note about the surrounding neighborhood. The safety and comfort of our guests are always a priority, and our staff is available anytime to help with directions, parking guidance, or anything else you may need.\n\nWe can't wait to welcome you and your wife back for another memorable meal—Beignet Flight included!\n\nWarm regards,\nThe Management Team",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 224,
+    "output_tokens": 406,
+    "output_tokens_details": {
+      "thinking_tokens": 31
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

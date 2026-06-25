@@ -1,0 +1,33 @@
+{
+  "id": "msg_01WXxzPHRvDDkUYUm7S9y8Lb",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "There are tons of delicious options! Here are some ideas organized by type:\n\n**Italian-Inspired**\n- Pizza (classic, with endless topping variations)\n- Calzones (folded, stuffed pizza pockets)\n- Stromboli (rolled and stuffed)\n- Cheese-stuffed breadsticks\n- Garlic cheese bread\n\n**Filled Pastries & Pockets**\n- Cheese empanadas\n- Cheese-filled pierogi\n- Hot pockets (homemade style)\n- Cheese turnovers\n- Bourekas (flaky Middle Eastern pastries)\n\n**Breads & Rolls**\n- Cheese buns or rolls\n- Cheesy pull-apart bread\n- Stuffed bagels\n- Cheese danishes (with a sweeter dough)\n\n**Fried Options**\n- Mozzarella sticks (with a dough or breading coating)\n- Cheese fritters\n- Fried cheese curds\n\n**International Dishes**\n- Quesadillas (with tortilla-style dough)\n- Khachapuri (Georgian cheese bread, often with an egg)\n- Gözleme (Turkish stuffed flatbread)\n- Cheese-filled paratha (Indian)\n\n**Savory Bites**\n- Cheese scones\n- Cheese crackers\n- Cheese straws or twists\n- Mini cheese tarts\n\nDo you have a specific type of dough or cheese you're working with? I can give you more targeted suggestions or even a recipe if you'd like!",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 25,
+    "output_tokens": 500,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

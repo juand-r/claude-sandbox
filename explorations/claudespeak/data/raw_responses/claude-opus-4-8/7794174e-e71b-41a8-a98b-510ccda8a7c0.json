@@ -1,0 +1,38 @@
+{
+  "id": "msg_01UDhT3imRJVdP94UgaFHtKR",
+  "container": null,
+  "content": [
+    {
+      "signature": "EvoCCmMIDxgCKkCZeznSwcrcZBYZwnk/WyrEZxvIa3l7122065TA/CAOwEaTz+xSbO29eO73JmEUEOCDWhW4SX3Mid2RqlydVDLsMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDO457iAV3wKYFsg6+RoMXbNlvwU015w0nIKWIjDTpbUgqIB7hgCpfiko4nZB7dEGtvkUL2XuN9DTj4h0/d42BvYEnjaf5TpN0Fypfh4qxAFc8+DSX9Gf9FNK5S+noWPgjCIBB0y4udlt3AGnExKzxaIaCxJ2R7iQV5pd8xz5EJ5rf2JHYanzjkKKLTCw5C+oYMkvNrx+yS9Gjwh0pxRCE0HLg6SDNAGO5HjbncX3uxG18jP/lN+wUYFWwqRb7RgGT/eNPhvK38TG92f+1pBF9yxiShmVwFo0nCAR8HlfF/ThYrkwDEtZyCxSIdET59fAWrGVp2eSVQizOx/CDlvDkXVTD0kRmvzxClyEbrrTZo/XVkG+GAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "The LaTeX code above will produce a PDF document containing a single paragraph of text. The output would look like this:\n\n---\n\nFirst document. This is a simple example, with no extra parameters or packages included.\n\n---\n\n**Explanation of what happens:**\n\n- `\\documentclass{article}` — Sets the document type to \"article\" (a standard formatting style).\n- `\\begin{document}` ... `\\end{document}` — Everything between these commands is the actual content that gets rendered.\n- The text itself is displayed as a normal paragraph.\n\n**Notes:**\n- The line break in the source code (after \"no\") does **not** create a line break in the output. LaTeX treats single line breaks as regular spaces, so the text flows together as one continuous paragraph.\n- The text would appear with default article formatting (typically Computer Modern font, justified alignment).",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 66,
+    "output_tokens": 314,
+    "output_tokens_details": {
+      "thinking_tokens": 51
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

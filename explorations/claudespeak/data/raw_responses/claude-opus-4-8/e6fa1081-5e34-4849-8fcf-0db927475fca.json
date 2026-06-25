@@ -1,0 +1,33 @@
+{
+  "id": "msg_01JCzKooYbuFwC6apfWAsQhU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Useful Links for \"SQL Find Duplicate Values\"\n\nHere are some helpful resources for finding duplicate values in SQL:\n\n## Official Documentation\n- **PostgreSQL Docs** – [GROUP BY and HAVING Clauses](https://www.postgresql.org/docs/current/tutorial-agg.html)\n- **MySQL Docs** – [GROUP BY Optimization](https://dev.mysql.com/doc/refman/8.0/en/group-by-optimization.html)\n- **Microsoft SQL Server** – [GROUP BY (Transact-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql)\n- **SQLite Docs** – [Aggregate Functions](https://www.sqlite.org/lang_aggfunc.html)\n\n## Tutorials & Guides\n- **W3Schools** – [SQL GROUP BY Statement](https://www.w3schools.com/sql/sql_groupby.asp)\n- **GeeksforGeeks** – [How to Find Duplicate Values in SQL](https://www.geeksforgeeks.org/sql-query-to-find-duplicate-names-in-a-table/)\n- **SQLShack** – [Different Ways to SQL Delete Duplicate Rows](https://www.sqlshack.com/different-ways-to-sql-delete-duplicate-rows-from-a-sql-table/)\n- **Mode Analytics** – [SQL GROUP BY Tutorial](https://mode.com/sql-tutorial/sql-group-by/)\n\n## Community Q&A\n- **Stack Overflow** – [Find duplicate records in a table](https://stackoverflow.com/questions/2594829/finding-duplicate-values-in-a-sql-table)\n- **Stack Overflow** – [How to find duplicate rows with SQL](https://stackoverflow.com/questions/18932/how-can-i-remove-duplicate-rows)\n\n## Key Concepts to Search\n- `GROUP BY` + `HAVING COUNT(*) > 1`\n- `ROW_NUMBER()` window function with `PARTITION BY`\n- `DISTINCT` keyword\n- Common Table Expressions (CTEs) for deduplication\n\n---\n\n**Quick Tip:** The most common approach is:\n```sql\nSELECT column_name, COUNT(*)\nFROM table_name\nGROUP BY column_name\nHAVING COUNT(*) > 1;\n```\n\nLet me know if you'd like help with a specific database system or scenario!",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 111,
+    "output_tokens": 862,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

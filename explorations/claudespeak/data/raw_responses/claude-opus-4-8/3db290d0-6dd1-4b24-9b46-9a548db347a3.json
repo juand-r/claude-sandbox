@@ -1,0 +1,33 @@
+{
+  "id": "msg_01MKkPVFxPhyfLhPhmYz1i37",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "Here are some taglines for **Joker (2019)**:\n\n**Official tagline:**\n- \"Put on a happy face.\"\n\n**Other promotional taglines used:**\n- \"The world is finally getting what it deserves.\"\n\nThese taglines perfectly capture the film's dark psychological tone and the tragic transformation of Arthur Fleck into the Joker. The ironic contrast in \"Put on a happy face\" hints at the mask of forced happiness hiding deep pain.\n\nWould you like me to suggest taglines for other movies, or would you like me to create some original taglines for a film you have in mind?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 91,
+    "output_tokens": 189,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

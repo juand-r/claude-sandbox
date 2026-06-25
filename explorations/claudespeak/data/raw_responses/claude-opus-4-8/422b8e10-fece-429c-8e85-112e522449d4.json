@@ -1,0 +1,33 @@
+{
+  "id": "msg_012CYCrryBhdWs6pd8SfpfFA",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# Top Real Estate Marketing Words to Boost Listings\n\n## Words That Convey Value & Quality\n- **Luxurious**\n- **Upgraded**\n- **Custom**\n- **Premium**\n- **High-end**\n- **Designer**\n- **Stainless steel** (appliances)\n- **Granite/Quartz** (countertops)\n- **Hardwood**\n\n## Words That Create Urgency & Appeal\n- **Move-in ready**\n- **Turnkey**\n- **Rare**\n- **Must-see**\n- **Won't last**\n- **Priced to sell**\n- **Motivated seller**\n\n## Words That Evoke Emotion & Lifestyle\n- **Charming**\n- **Stunning**\n- **Inviting**\n- **Cozy**\n- **Spacious**\n- **Tranquil**\n- **Entertainer's dream**\n- **Pride of ownership**\n\n## Words That Highlight Location & Convenience\n- **Prime location**\n- **Walkable**\n- **Sought-after**\n- **Highly desirable**\n- **Close to everything**\n- **Quiet cul-de-sac**\n\n## Words That Emphasize Natural Features\n- **Sun-drenched**\n- **Bright & airy**\n- **Open-concept**\n- **Panoramic views**\n- **Lush landscaping**\n- **Private oasis**\n\n## Words for Financial/Practical Appeal\n- **Updated**\n- **Energy-efficient**\n- **Low-maintenance**\n- **Newly renovated**\n- **Investment opportunity**\n\n---\n\n### 💡 Pro Tips\n- **Be specific and honest** — words like \"updated\" should reflect actual improvements to avoid misleading buyers.\n- **Avoid overused fluff** — terms like \"nice\" or \"good\" add little value.\n- **Paint a picture** — combine sensory words to help buyers imagine living there.\n- **Match the audience** — luxury buyers respond to different language than first-time homebuyers.\n\nWould you like help crafting a sample listing description using these words?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 35,
+    "output_tokens": 668,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

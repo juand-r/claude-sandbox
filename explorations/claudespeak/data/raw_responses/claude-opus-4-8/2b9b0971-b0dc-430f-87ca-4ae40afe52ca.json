@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Xbv44z1du6GZGnbzn4PZYc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# How to Defrost a Freezer\n\n## Preparation\n1. **Empty the freezer** – Move food to a cooler with ice packs, or time it when supplies are low\n2. **Turn it off** – Unplug or set to \"defrost\" mode\n3. **Protect the area** – Lay towels around the base to catch water, and place a tray or shallow pan inside\n\n## Defrosting Methods (fastest to slowest)\n\n**Bowl of hot water (recommended)**\n- Place bowls of hot/boiling water inside and close the door\n- The steam loosens ice in 20–30 minutes\n- Refill water as it cools\n\n**Hairdryer**\n- Use on a warm setting, keeping it well away from water and walls\n- Be careful not to touch heating elements to plastic\n\n**Fan**\n- Point a fan into the freezer to circulate room-temperature air\n- Slower but effortless\n\n**Just wait**\n- Leave the door open and let it melt naturally (1–3 hours)\n\n## Important Don'ts\n- ❌ **Never use sharp tools** (knives, ice picks) to chip ice – you can puncture the lining or coils\n- ❌ Don't use excessive force on stuck ice – let it melt instead\n\n## Finishing Up\n1. Wipe away remaining water and ice\n2. Clean interior with a mild solution (1 tbsp baking soda per quart of water)\n3. Dry thoroughly\n4. Plug back in and let it reach temperature (~30 min) before reloading food\n\n## Prevention Tips\n- Keep the door closed as much as possible\n- Check the door seal for gaps\n- Don't overfill, and avoid putting warm food inside\n- Defrost regularly before ice exceeds ¼ inch thick\n\nWould you like tips specific to a particular type of freezer (chest, upright, or built-in)?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 23,
+    "output_tokens": 600,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

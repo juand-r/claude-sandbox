@@ -1,0 +1,38 @@
+{
+  "id": "msg_012MWMtk1bomkbGdRrMRpqkN",
+  "container": null,
+  "content": [
+    {
+      "signature": "EugBCmMIDxgCKkCSMl6jYCXw52uJmgWPFSXUMUS1Bla3zOtt927G2ZvhhKFi52Qr2cT2rU7iWDtDWOXVDFv8UmBINIZLxd2H6KQjMg9jbGF1ZGUtb3B1cy00LTg4AEIIdGhpbmtpbmcSDPwDC4IcaP51P5Q5WBoMDyKjuMfcPMmign1LIjCIJSqi4DzY9dSaHdAmP52+kOQpbDGTJ819/OJ+NM6Cb9vkaDTLJ78e2Hax/oSxUE0qM62RU7y8SjXkwGc3QMAUplotE4X/mB0LzZG+B5nSEnvL3avwj3GMfmftx+dXBIb86fRVqRgB",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "# Calculating a 14% Tip on $47.50\n\n## Step 1: Convert the percentage to a decimal\n$$14\\% = 0.14$$\n\n## Step 2: Multiply the bill by the decimal\n$$47.50 \\times 0.14 = 6.65$$\n\n## Result\n\n| Item | Amount |\n|------|--------|\n| Bill | $47.50 |\n| Tip (14%) | **$6.65** |\n| **Total** | **$54.15** |\n\nThe appropriate tip is **$6.65**.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 33,
+    "output_tokens": 197,
+    "output_tokens_details": {
+      "thinking_tokens": 27
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

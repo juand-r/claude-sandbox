@@ -1,0 +1,33 @@
+{
+  "id": "msg_01VNvTZ64DRjZFPGxPjCzryJ",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# How Volcanoes Form\n\nVolcanoes form primarily due to the movement of molten rock (magma) from deep within the Earth to the surface. Here are the main causes:\n\n## The Basic Mechanism\n\nVolcanoes occur where magma from the Earth's mantle finds a pathway to the surface. The key factors include:\n\n- **Heat and pressure** deep underground melt rock into magma\n- **Buoyancy** causes the less-dense magma to rise toward the surface\n- **Pressure release** allows trapped gases to expand, driving eruptions\n\n## Three Main Volcanic Settings\n\n**1. Divergent Boundaries (Plates Pulling Apart)**\n- As tectonic plates separate, magma rises to fill the gap\n- Creates underwater ridges and some surface volcanoes\n- Example: Iceland, Mid-Atlantic Ridge\n\n**2. Convergent Boundaries (Plates Colliding)**\n- One plate slides beneath another (subduction)\n- The descending plate melts, feeding magma upward\n- Creates many of Earth's most explosive volcanoes\n- Example: The \"Ring of Fire\" around the Pacific Ocean\n\n**3. Hotspots**\n- Plumes of unusually hot mantle material rise in the middle of plates\n- The plate moves over the stationary hotspot, creating volcano chains\n- Example: The Hawaiian Islands\n\n## Why Some Erupt Explosively\n\nThe \"style\" of eruption depends largely on magma composition:\n- **Thick, gas-rich magma** traps pressure and erupts violently\n- **Thin, runny magma** allows gases to escape, producing gentler lava flows\n\nWould you like me to explain any of these processes in more detail?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 20,
+    "output_tokens": 569,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

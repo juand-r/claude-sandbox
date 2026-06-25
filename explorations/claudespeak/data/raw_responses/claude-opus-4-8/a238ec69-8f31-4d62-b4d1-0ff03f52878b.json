@@ -1,0 +1,33 @@
+{
+  "id": "msg_01XNUw4LXkM3dQCe1FEop8LP",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "Here are some practical strategies to boost your productivity while working from home:\n\n## Set Up Your Environment\n- **Create a dedicated workspace** separate from where you relax, even if it's just a specific corner or desk\n- **Invest in good ergonomics**—a comfortable chair and proper monitor height prevent fatigue\n- **Minimize visual clutter** to reduce distractions\n\n## Structure Your Day\n- **Keep consistent hours** to maintain a routine and signal when work starts and ends\n- **Get dressed** as if going to the office—it shifts your mindset\n- **Plan your day the night before** or first thing in the morning with a prioritized task list\n\n## Manage Focus\n- **Try time-blocking**—dedicate specific chunks to specific tasks\n- **Use techniques like Pomodoro** (25 min work, 5 min break) to maintain concentration\n- **Tackle your most demanding work** during your peak energy hours\n- **Batch similar tasks** like emails or calls together\n\n## Minimize Distractions\n- **Turn off non-essential notifications** during focus periods\n- **Set boundaries** with family members or roommates\n- **Keep your phone out of reach** when you need deep focus\n\n## Protect Your Wellbeing\n- **Take real breaks**—step away from your screen and move around\n- **Set a clear end to your workday** to avoid burnout\n- **Stay connected** with colleagues to combat isolation\n\n## Find What Works for You\nExperiment with different approaches—everyone's ideal setup is different. What helps one person focus might distract another.\n\nWould you like me to go deeper on any of these areas, such as specific tools, dealing with particular distractions, or building a routine?",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 20,
+    "output_tokens": 553,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

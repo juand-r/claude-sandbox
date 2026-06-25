@@ -1,0 +1,33 @@
+{
+  "id": "msg_014fT379XddKLhAyDsbG2Jo2",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "# The Agile Millionaires\n\nMike and Joe, two coaches bold,\nHad dreams of agile worth their weight in gold,\nWith AI tools to guide their way,\nThey sought to change how teams would play.\n\n*\"Individuals and interactions,\"*\nThey preached with passion, not distractions,\n*Over processes and tools so cold,*\nA human-centered truth they told.\n\nThe algorithms learned their craft,\nWhile Mike and Joe just smiled and laughed,\n*\"Working software,\"* came their cry,\n*Over docs that pile up to the sky.*\n\nTheir AI parsed each sprint and stand-up,\nHelping struggling teams to grand-up,\n*\"Customer collaboration,\"* they would teach,\n*Over contracts out of reach.*\n\nThe retrospechoes filled with wisdom,\nBacklogs flowed in perfect rhythm,\n*\"Responding to change,\"* their golden rule,\n*Over plans that lock you to a tool.*\n\nThe clients came from near and far,\nTo learn from coaches raising bar,\nWith AI insights crisp and clear,\nThey banished every project fear.\n\nThe millions rolled like waterfalls\n(The irony not lost at all),\nFor teams that once were stuck and slow\nNow thrived with help from Mike and Joe.\n\nTwo millionaires with hearts still true,\nTo values that they always knew:\nThat people, working, change, and trust,\nMade agile coaching truly just.\n\nSo raise a glass to this duo grand,\nWho built an empire, sprint-by-hand,\nWith AI as their trusted friend,\nTheir agile legacy won't end.",
+      "type": "text"
+    }
+  ],
+  "model": "claude-opus-4-8",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 63,
+    "output_tokens": 514,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}
