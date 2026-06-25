@@ -91,6 +91,12 @@ holds only in direct human comparison). → reports/pilot_length_control.md.
 - Offer-closer n-grams replicate ("would you like me to", "let me know if you'd like").
 → reports/alpaca_track.md. Corpus: alpaca_reused.jsonl + alpaca_generated.jsonl.
 
+### Step 4 (interpretable classifier) DONE
+Claude highly separable, mostly from prose: HC3 prose-only AUC 0.946 (with-fmt
+0.982); AlpacaEval vs 6 modern models prose-only AUC 0.867 (with-fmt 0.901).
+Driving coefs match Steps 1-2 (burstiness+, function-word density+, em-dash+,
+question/offer+) — independent-method consistency check. → reports/pilot_classifier.md.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.
