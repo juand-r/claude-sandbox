@@ -97,6 +97,17 @@ Claude highly separable, mostly from prose: HC3 prose-only AUC 0.946 (with-fmt
 Driving coefs match Steps 1-2 (burstiness+, function-word density+, em-dash+,
 question/offer+) — independent-method consistency check. → reports/pilot_classifier.md.
 
+### Step 5 (rusty-dawg / suffix-automaton) DONE — finale
+Used AI2 rusty_dawg (pip). Gotcha: recompute_lengths() segfaults at scale and is
+unnecessary — get_count correct after build() alone (verified).
+- Exact long templates UNIQUE to Claude (zero in human+all 6 other models), up to
+  8-grams: "would you like me to go deeper into", "...explain any", "...expand on any".
+- Claude has HIGHEST n-gram novelty of all 7 sources (phrasing overlaps least).
+→ reports/ngram_dawg.md. Consolidated: reports/FINDINGS.md (all 5 steps).
+
+### Phase 2 COMPLETE. Possible next axes: effort/thinking sweep, more Claude
+versions, multi-turn (Sense B/C), other genres/languages, larger corpus.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.
