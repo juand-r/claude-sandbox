@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{url}
+\usepackage[textsize=footnotesize]{todonotes} % draft TODO notes; remove for camera-ready
 
 \title{Claudespeak: Characterizing the Stylistic Fingerprint of \\ a Frontier Language Model}
 
@@ -32,8 +33,9 @@ lexical-in-the-stereotyped-sense. Claude is identifiable from prose alone
 (classifier AUC $0.95$ vs.\ human/GPT-4o; $0.87$ vs.\ six modern models), driven
 by markedly higher sentence-length variability, denser content-word usage, a
 strong em-dash habit, and---most diagnostically---a verbatim offer-to-continue
-closing move (``would you like me to go deeper into\ldots'') that appears dozens
-of times in Claude and \emph{zero} times across humans and all other models.
+closing move (``would you like me to go deeper into\ldots'') that, in our corpus,
+appears dozens of times in Claude and \emph{zero} times across humans and all
+other models.
 We further show that the stereotyped ``delve'' vocabulary is a GPT (and
 other-model) trait that Claude \emph{avoids}: across seven models in an essay
 genre, Claude is the only model that never writes \emph{delve} and uses
@@ -68,7 +70,7 @@ complementary methods. Our contributions:
     both markdown stripping and length control.
   \item Identification of a verbatim \emph{interactional} signature---an
     offer-to-continue closer---via log-odds and suffix-automaton mining, present
-    in Claude and absent from all other sources.
+    in Claude and absent from all other sources in our corpus.
   \item A reconciliation of the ``delve'' folklore: the stereotyped vocabulary
     is a GPT/other-model trait; Claude is the cleanest frontier model on it.
   \item A \emph{coverage taxonomy} (intent $\times$ interaction structure $\times$
@@ -80,31 +82,57 @@ complementary methods. Our contributions:
 \end{enumerate}
 
 \section{Related Work}
-\paragraph{LLM stylometry and detection.} Distinguishing machine- from
-human-written text is an active area, with large shared benchmarks
-\citep{dugan2024raid} and classical authorship features such as function-word
-distributions and Burrows's Delta \citep{burrows2002delta}. We use interpretable
-features in this tradition, but our goal is \emph{characterization}---naming what
-differs---rather than detection alone.
 
-\paragraph{Excess vocabulary and ``delve.''} \citet{kobak2024delving} track
-``excess words'' in 14M+ PubMed abstracts after ChatGPT's release, finding a
-surge of style words (\emph{delves}, \emph{intricate}, \emph{crucial}). This
-phenomenon is tied to ChatGPT specifically; popular accounts attribute the
-``delve'' habit to OpenAI's RLHF annotation pipeline \citep{willison2024delve}.
-A direct Claude-vs-GPT comparison reports the opposite lean for Claude---toward
-casual, subjective phrasing \citep{personalization2025}. Our results corroborate
-and quantify this on parallel data.
+\paragraph{Detecting machine-generated text.}
+A large literature aims to decide \emph{whether} a text is machine-generated.
+Supervised detectors fine-tune classifiers such as RoBERTa on model outputs
+\citep{solaiman2019release}, while zero-shot methods exploit statistical
+signatures of the generating distribution: probability curvature
+\citep{mitchell2023detectgpt} or the cross-perplexity of a model pair
+\citep{hans2024binoculars}. \citet{dugan2024raid} show such detectors are brittle
+across domains and attacks, and watermarking \citep{kirchenbauer2023watermark}
+sidesteps detection by injecting a signal at generation time. We do not detect
+machine text; we instead \emph{characterize} the style of one frontier model,
+assuming provenance is known.
 
-\paragraph{$n$-gram selection and novelty.} For surfacing characteristic
-phrases we use the log-odds-ratio-with-informative-Dirichlet-prior estimator of
-\citet{monroe2008fightin}, and for arbitrary-length span statistics we use
-suffix-automaton tooling \citep{liu2024rustydawg} in the spirit of unbounded
-$n$-gram modeling \citep{liu2024infinigram}.
+\paragraph{Attributing text to a model.}
+Closer to our aim is work on \emph{which} model wrote a text. Surveys frame this
+as authorship attribution in the LLM era \citep{huang2024authorship}, and
+discriminative classifiers can separate model families. We complement
+attribution: rather than optimizing a label, we use an interpretable,
+length-controlled regression and log-odds $n$-gram selection
+\citep{monroe2008fightin} to surface \emph{what} distinguishes Claude, and we
+audit which stylistic claims hold up under corpus coverage.
 
-\paragraph{Data.} Our human anchor is HC3 \citep{guo2023hc3}; our modern
-multi-model contrast reuses published completions from AlpacaEval
-\citep{alpacaeval2023}.
+\paragraph{Excess vocabulary and ``AI-ese.''}
+\citet{kobak2024delving} quantify LLM-marker words (e.g.\ ``delve'') as excess
+vocabulary in the biomedical literature; popular accounts trace the habit to
+RLHF annotation pipelines \citep{willison2024delve}. Such word-lists, however,
+are largely a ChatGPT/GPT signature. We treat the ``delve'' folklore as a
+hypothesis to test rather than a given: our markers are discovered
+data-drivenly from parallel corpora, and we show this trait is \emph{not}
+characteristic of Claude.
+
+\paragraph{Stylometry and $n$-gram novelty.}
+Our features build on classical stylometry, notably function-word frequencies
+and Burrows's Delta \citep{burrows2002delta}. To probe memorization versus
+genuine novelty, we adopt suffix-automaton $n$-gram search
+\citep{merrill2024rustydawg} and unbounded $n$-gram indexing
+\citep{liu2024infinigram}, applying novelty mining to a single model's outputs
+comparatively.
+
+\paragraph{Sycophancy and persona.}
+Frontier models exhibit measurable behavioral signatures: sycophancy and
+agreement under pressure \citep{perez2022discovering,sharma2023sycophancy}, and
+self-interaction attractors such as the ``spiritual bliss'' state reported for
+Claude \citep{anthropic2025claude4}. These motivate our future-work agenda on
+multi-turn corrective behavior, where stylistic fingerprints may interact with
+concession dynamics.
+
+\paragraph{Data.}
+We draw on parallel human/LLM corpora including HC3 \citep{guo2023hc3} and
+AlpacaEval \citep{alpacaeval2023}, repurposing them for comparative stylometric
+characterization rather than detection or preference ranking.
 
 \section{Corpus}
 We construct two parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
@@ -169,13 +197,22 @@ the track. Full per-source distributions: Appendix~\ref{app:stats}.}
 Because style is context-dependent, we audit \emph{what behavior the prompts
 elicit}, labeling every prompt by intent, speech act, register, tone, and topic,
 plus interaction flags (\texttt{src/analyze\_coverage.py}; Table~\ref{tab:coverage}).
+Labels are produced by Claude Opus 4.8 itself (the model under study), a
+circularity we flag in Limitations.\todo[inline]{TODO (human validation pending):
+hand-annotate a $\sim$50-prompt sample, report inter-annotator agreement with the
+LLM labels, and add a small validation table. Quick human pass to be added.}
 The corpus occupies a narrow region of the behavior space along several axes:
 \begin{itemize}
   \itemsep0em
-  \item \textbf{Speech act / mood.} Prompts are 74\% (HC3) / 58\% (AlpacaEval)
-    \emph{interrogative} and 2\% / 20\% imperative; only $\sim$22\% are
-    \emph{declarative}. The corpus almost never presents Claude with an
-    \emph{assertion} to agree with, qualify, or contest.
+  \item \textbf{Mood and speech act.} We measure both the \emph{syntactic mood}
+    (rule-based, from punctuation and sentence-initial cues) and the
+    \emph{pragmatic speech act} (LLM-labeled), which differ because many
+    syntactically interrogative prompts (``Can you write\ldots?'') are pragmatic
+    directives. Syntactically, prompts are 74\%/58\% (HC3/AlpacaEval)
+    interrogative, 2\%/20\% imperative, $\sim$22\% declarative; pragmatically they
+    are questions or directives with $\le$1 \emph{assertion} per track
+    (Appendix~\ref{app:stats}). Either way, the corpus almost never presents
+    Claude with an assertion to agree with, qualify, or contest.
   \item \textbf{Interaction.} Only $\sim$2\% of prompts imply multi-turn
     interaction, and essentially none are adversarial or corrective.
   \item \textbf{Intent.} Code, creative, opinion, and emotional intents are rare
@@ -198,23 +235,25 @@ and interaction structure) that we describe as future work
 \toprule
 Intent (primary) & HC3 & AlpacaEval \\
 \midrule
-explanation & 95 & 34 \\
-factual QA & 55 & 28 \\
-advice/recommendation & 46 & 31 \\
-instruction task & 2 & 29 \\
-creative writing & 0 & 23 \\
-math/reasoning & 0 & 15 \\
-opinion/subjective & 0 & 12 \\
-code & 0 & 10 \\
-other (classif., edit, roleplay, & 2 & 18 \\
-\quad personal, $\ldots$) & & \\
+explanation & 94 & 33 \\
+factual QA & 53 & 29 \\
+advice/recommendation & 49 & 31 \\
+instruction task & 3 & 26 \\
+creative writing & 0 & 24 \\
+math/reasoning & 0 & 14 \\
+code & 0 & 11 \\
+opinion/subjective & 0 & 11 \\
+other (classif., edit, roleplay) & 1 & 20 \\
 \midrule
-\emph{flag:} multi-turn implied & 5 & 3 \\
-\emph{flag:} subjective & 13 & 35 \\
+\emph{flag:} multi-turn implied & 8 & 4 \\
+\emph{flag:} subjective & 14 & 39 \\
+\emph{flag:} sensitive & 61 & 16 \\
 \bottomrule
 \end{tabular}
-\caption{Prompt intent distribution and interaction flags (counts of 200 per
-track). The corpus is single-turn, cooperative, and information-oriented.}
+\caption{Prompt intent distribution and interaction flags (HC3 $n{=}200$;
+AlpacaEval $n{=}199$, one prompt unlabeled). Single frozen audit run
+(\texttt{coverage\_labels.csv}). The corpus is single-turn, cooperative, and
+information-oriented.}
 \label{tab:coverage}
 \end{table}
 
@@ -231,7 +270,7 @@ markdown markup. We mine characteristic $n$-grams with the
 \citet{monroe2008fightin} log-odds estimator; quantify length-independence with
 OLS (\S\ref{sec:length}); measure separability with $\ell_2$-regularized logistic
 regression under 5-fold cross-validation; and mine arbitrary-length spans and
-$n$-gram novelty with a suffix automaton \citep{liu2024rustydawg}.
+$n$-gram novelty with a suffix automaton \citep{merrill2024rustydawg}.
 
 \section{Results}
 
@@ -285,7 +324,10 @@ interactional fingerprint rather than a content-word list. The most Claude-like
 trigrams (HC3) are \emph{would you like}, \emph{like me to}, \emph{me to
 explain}, \emph{in more detail}, \emph{to go deeper}; the anti-signature---terms
 Claude \emph{underuses}---is led by the formal frame \emph{it is important to}.
-Suffix-automaton mining (\S\ref{sec:dawg}) confirms this at arbitrary length.
+At the sentence level this closer registers as a striking jump in interrogatives:
+\textbf{17\%/10\% of Claude's response sentences are questions (HC3/AlpacaEval),
+versus $\le$4\% for every other source} (Appendix~\ref{app:stats}).
+Suffix-automaton mining (\S\ref{sec:dawg}) confirms the pattern at arbitrary length.
 
 \subsection{The ``delve'' vocabulary is a GPT trait Claude avoids}
 \label{sec:delve}
@@ -294,9 +336,8 @@ stereotyped words---Claude is the cleanest of seven models
 (Table~\ref{tab:delve}). It is the only model that never writes \emph{delve} or
 \emph{delves}, and it uses \emph{crucial} least of all (0.04 per 1k vs.\ 0.34--0.42
 for the GPT models and Qwen). Claude's own lexical lean is conversational
-(``actually'' occurs $\sim$6$\times$ more often in Claude than GPT-4o on HC3),
-consistent with \citet{personalization2025}; this is a secondary signal beneath
-the structural one.
+(``actually'' occurs $\sim$6$\times$ more often in Claude than GPT-4o on HC3);
+this conversational lean is a secondary signal beneath the structural one.
 
 \begin{table}[t]
 \centering\small
@@ -323,7 +364,10 @@ An interpretable classifier confirms a stable, learnable voice
 (Table~\ref{tab:clf}). Stripping markdown reduces AUC only modestly, so the
 classifier is not merely reading layout; and its top coefficients are exactly the
 features of \S\ref{sec:prose} (burstiness, function-word density, em-dash,
-question rate), an independent-method confirmation.
+question rate), an independent-method confirmation. Raw length is not a feature,
+and residualizing every feature on response length barely changes separation
+(prose-only AUC $0.946{\to}0.931$ on HC3, $0.867{\to}0.861$ on AlpacaEval), so the
+result is not a length artifact.
 
 \begin{table}[t]
 \centering\small
@@ -341,15 +385,29 @@ AlpacaEval (vs.\ 6 modern models) & 0.901 & 0.867 \\
 
 \subsection{Arbitrary-length spans and $n$-gram novelty}
 \label{sec:dawg}
-Suffix-automaton mining \citep{liu2024rustydawg} gives the most concrete form of
-the signature. Spans up to \emph{eight words} occur dozens of times in Claude and
-\emph{zero} times across humans plus all six other models combined:
-\emph{would you like me to explain any} ($\times$20), \emph{would you like me to
-go deeper into} ($\times$14), and on AlpacaEval \emph{would you like me to expand
+Suffix-automaton mining \citep{merrill2024rustydawg} gives the most concrete form of
+the signature. Within each track, spans up to \emph{eight words} occur dozens of
+times in Claude and \emph{zero} times across that track's non-Claude sources
+(HC3: humans $+$ 2 models; AlpacaEval: 6 models, no human): on HC3,
+\emph{would you like me to explain any} ($\times$20) and \emph{would you like me
+to go deeper into} ($\times$14); on AlpacaEval, \emph{would you like me to expand
 on any} ($\times$7). Claude also has the highest $n$-gram novelty of any source
-(e.g.\ bigram novelty 0.519 vs.\ 0.27--0.36 for the six AlpacaEval models): its
-exact phrasing overlaps least with the pool. We read novelty as relative
-distinctiveness, not absolute creativity (see Limitations).
+(Figure~\ref{fig:novelty}; e.g.\ bigram novelty 0.519 vs.\ 0.27--0.36 for the six
+AlpacaEval models): its exact phrasing overlaps least with the pool. We read
+novelty as relative distinctiveness, not absolute creativity (see Limitations).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_placeholder.png}
+\caption{\textbf{[Placeholder image---replace with real plot.]} $n$-gram novelty
+by source: the fraction of each source's $n$-grams ($n{=}1\ldots10$) that are
+absent from the pooled other sources (AlpacaEval track). Claude's curve sits
+above all six other models at every $n$ (bigram novelty $0.519$ vs.\
+$0.27$--$0.36$), i.e.\ its phrasing overlaps least with the pool. Data:
+\texttt{reports/ngram\_dawg.md}.\todo[inline]{Replace the grey placeholder with
+the real novelty-curve figure (one line per source).}}
+\label{fig:novelty}
+\end{figure}
 
 \subsection{Secondary analyses (in progress)}
 \label{sec:secondary}
@@ -370,7 +428,7 @@ appear in Appendix~\ref{app:placeholders}.
 \end{itemize}
 
 \section{Discussion}
-Across two corpora, four methods, and eight comparison sources, the same
+Across two corpora, five methods, and eight comparison sources, the same
 fingerprint recurs and survives every control: Claudespeak is
 markdown-scaffolded, rhythmically varied, content-dense, and
 engagement-and-offer-oriented prose---and specifically \emph{not} the ``delve''
@@ -392,7 +450,12 @@ modern-ish but not the absolute latest. $n$-gram novelty is measured relative to
 our corpus pool, not a large external reference, and may be inflated for Claude
 as the lone out-of-cluster (and only freshly generated) source. The HC3 human
 anchor is informal web text, so part of the human--Claude gap reflects register
-rather than authorship.
+rather than authorship. The coverage audit's labels are produced by an LLM (the
+model under study), introducing a circularity; a human-validation pass on a
+labeled sample is pending. Finally, raw length is excluded from the classifier
+features and the feature effects are length-controlled (\S\ref{sec:length}), but
+some prose features still correlate with length; we report a length-residualized
+classifier as a check (\S\ref{sec:clf}).
 
 \section*{Ethics Statement}
 This work characterizes model writing style using public datasets and model
@@ -458,9 +521,11 @@ tone & neutral & 165 & 175 \\
  & playful / urgent & 1/14 & 18/1 \\
 \bottomrule
 \end{tabular}
-\caption{Prompt variety along speech act, register, and tone (counts of 200).
-Assertions, formal register, and non-neutral tones are nearly absent. Topic and
-intent breakdowns: \texttt{coverage\_labels.csv}.}
+\caption{Prompt variety along \emph{pragmatic} speech act (LLM-labeled),
+register, and tone (HC3 $n{=}200$; AlpacaEval $n{=}199$). Assertions, formal
+register, and non-neutral tones are nearly absent. Topic and intent breakdowns:
+\texttt{coverage\_labels.csv}. (Syntactic mood, which differs, is in
+\S\ref{sec:coverage}.)}
 \label{tab:variety}
 \end{table}
 
