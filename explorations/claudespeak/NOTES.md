@@ -76,6 +76,12 @@ aspect", "let me", second-person, "actually". Anti-signature: "it is important
 to" (GPT frame), formal deferral, function-word connectives. → reports/claude_ngram_signature.md.
 Vindicates JdR's point: right words, wrong list before.
 
+### Step 2 (length control) DONE
+Headline prose effects survive length control: burstiness OLS t=20.6,
+function-word density t=-14.4, em-dash t=12.6, question-rate t=4.6; within-quartile
+Cohen's d holds across bins. Caveat: TTR/hapax are length-sensitive (Claude<human
+holds only in direct human comparison). → reports/pilot_length_control.md.
+
 ### TODO (next)
 - [ ] Length-stratified re-run of the prose ablation (robustness).
 - [ ] AlpacaEval track: modern Gemini/DeepSeek/Qwen/Llama/Phi (reused) + Claude.
