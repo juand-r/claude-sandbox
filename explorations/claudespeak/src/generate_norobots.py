@@ -34,6 +34,8 @@ def work(item) -> bool:
             rec = generate_claude(item["prompt"], item["prompt_id"], model=GEN,
                                   effort="high", max_tokens=8000,
                                   prompt_source=item["prompt_source"])
+            rec.domain = item.get("domain")          # carry task labels from manifest
+            rec.task_type = item.get("task_type")
             with _lock:
                 append_records(OUT, [rec])
             return True
