@@ -327,6 +327,10 @@ length-controlled regression (HC3)
 coefficient large and highly significant: burstiness $t{=}20.6$, function-word
 rate $t{=}{-}14.4$, em-dash $t{=}12.6$, question rate $t{=}4.6$. Type-token ratio
 is length-sensitive and we treat lexical-diversity claims as length-conditioned.
+The effects also hold \emph{within every domain} (Appendix~\ref{app:domain}):
+across all nine domains in both tracks, burstiness has $d>0$, function-word rate
+$d<0$ (Claude denser), and em-dash and question rate $d>0$, so the fingerprint is
+not a topic artifact.
 
 \subsection{The interactional signature: an offer-to-continue closer}
 \label{sec:ngram}
@@ -577,6 +581,37 @@ scenarios (user challenges or corrects Claude) to elicit concession / push-back
 behavior; and (iii) add a small, defensively-framed sensitive/refusal set.
 Targets are $\sim$100--150 prompts per intent cell and $\sim$80--120 corrective
 scenarios; the audit tooling re-runs on the expanded corpus.
+
+\section{Per-domain robustness}
+\label{app:domain}
+Claude-vs-pooled-others Cohen's $d$ (markdown-stripped prose) computed
+\emph{within} each domain (Table~\ref{tab:domain}). The signs are uniform across
+all nine domains---burstiness and em-dash/question positive, function-word rate
+negative (Claude denser)---so the fingerprint is not driven by any single topic.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Track & Domain & burst. & func$\downarrow$ & em-d. & ques. \\
+\midrule
+HC3 & cs/ai & 2.50 & $-$1.86 & 1.12 & 1.02 \\
+HC3 & finance & 2.11 & $-$1.75 & 0.94 & 1.55 \\
+HC3 & general & 1.46 & $-$0.97 & 0.95 & 0.17 \\
+HC3 & medicine & 2.65 & $-$1.28 & 2.41 & 0.72 \\
+Alpaca & helpful & 1.19 & $-$0.81 & 0.66 & 0.85 \\
+Alpaca & koala & 0.99 & $-$0.43 & 2.02 & 0.25 \\
+Alpaca & oasst & 1.46 & $-$0.77 & 1.38 & 1.26 \\
+Alpaca & selfinst. & 0.56 & $-$0.40 & 0.26 & 0.29 \\
+Alpaca & vicuna & 1.98 & $-$1.17 & 3.22 & 2.21 \\
+\bottomrule
+\end{tabular}
+\caption{Per-domain Claude-vs-others Cohen's $d$, prose only. burst.\ = sentence
+burstiness; func$\downarrow$ = function-word rate (negative = Claude denser);
+em-d.\ = em-dash; ques.\ = question rate. Uniform signs across domains.}
+\label{tab:domain}
+\end{table}
 
 \section{Placeholders for secondary analyses}
 \label{app:placeholders}
