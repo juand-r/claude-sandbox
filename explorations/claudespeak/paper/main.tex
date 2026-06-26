@@ -23,25 +23,27 @@ Large language models are widely believed to have recognizable writing styles,
 but most popular claims (e.g.\ that models overuse the word \emph{delve}) are
 derived from \emph{ChatGPT} and applied indiscriminately to all models. We ask
 what, specifically, characterizes the prose of one frontier model---Anthropic's
-Claude Opus 4.8---relative to human writing and to seven other models, holding
-topic constant via parallel corpora. Combining interpretable stylometry,
-log-odds $n$-gram selection, a length-controlled regression, an interpretable
-classifier, and suffix-automaton ($n$-gram novelty) mining, we find a stable
-fingerprint that is \emph{structural, rhythmic, and interactional} rather than a
-matter of stereotyped vocabulary. Claude is identifiable from prose alone
-(prose-only classifier AUC $0.95$ vs.\ a human/GPT-4o/GPT-3.5 panel; $0.87$ vs.\
-six modern models), driven
-by markedly higher sentence-length variability, denser content-word usage, a
-strong em-dash habit, and---most diagnostically---a verbatim offer-to-continue
-closing move (``would you like me to go deeper into\ldots'') that, in our corpus,
-appears dozens of times in Claude and \emph{zero} times across humans and all
-other models.
+Claude Opus 4.8---relative to human writing and to eight other models, holding
+topic constant via four parallel corpora that span informational QA, essays, real
+in-the-wild prompts, and ten professionally-authored task types. Combining
+interpretable stylometry, log-odds $n$-gram selection, a length-controlled
+regression, an interpretable classifier, and suffix-automaton ($n$-gram novelty)
+mining, we find a stable fingerprint that is \emph{structural, rhythmic, and
+interactional} rather than a matter of stereotyped vocabulary. The fingerprint
+replicates with consistent sign across all four corpora, and Claude is
+identifiable from prose alone in every one (prose-only classifier AUC
+$0.79$--$0.95$ across four independent contrasts), driven by markedly higher
+sentence-length variability, denser content-word usage, a strong em-dash habit,
+and---most diagnostically---a verbatim offer-to-continue closing move (``would you
+like me to go deeper into\ldots'') that, in our corpus, appears dozens of times in
+Claude and \emph{zero} times across humans and all other models.
 We further show that the stereotyped ``delve'' vocabulary is a GPT (and
 other-model) trait that Claude \emph{avoids}: across seven models in an essay
 genre, Claude is the only model that never writes \emph{delve} and uses
-\emph{crucial} least. We release the fully provenanced corpus and pipeline.
-Sections on the effect of reasoning effort, Claude versions, and multi-turn
-dynamics are forthcoming.
+\emph{crucial} least. Finally, we audit corpus coverage and, finding the standard
+benchmarks narrow, broaden it with two diverse sources, releasing the fully
+provenanced corpus and pipeline. Sections on the effect of reasoning effort,
+Claude versions, and multi-turn dynamics are forthcoming.
 \end{abstract}
 
 \section{Introduction}
@@ -62,12 +64,15 @@ by humans, and by up to six other models, and we attack the question with five
 complementary methods. Our contributions:
 \begin{enumerate}
   \itemsep0em
-  \item A parallel-corpus protocol and a fully provenanced dataset
-    (every generation stored with model, decoding configuration, token usage,
-    and timestamp) that supports reuse without regeneration.
+  \item A parallel-corpus protocol and a fully provenanced dataset---four tracks,
+    eight contrast models and two human anchors, every generation stored with
+    model, decoding configuration, token usage, and timestamp---that supports
+    reuse without regeneration.
   \item Evidence that Claude's fingerprint is \emph{structural and rhythmic}
-    (sentence-length burstiness, content-word density, em-dashes) and survives
-    both markdown stripping and length control.
+    (sentence-length burstiness, content-word density, em-dashes), survives both
+    markdown stripping and length control, and \emph{replicates with consistent
+    sign across all four corpora} despite different prompt distributions and
+    contrast sources.
   \item Identification of a verbatim \emph{interactional} signature---an
     offer-to-continue closer---via log-odds and suffix-automaton mining, present
     in Claude and absent from all other sources in our corpus.
@@ -75,10 +80,12 @@ complementary methods. Our contributions:
     is a GPT/other-model trait; Claude is the cleanest frontier model on it.
   \item A \emph{coverage taxonomy} (intent $\times$ interaction structure $\times$
     stance) and a reproducible audit showing that standard corpora occupy a
-    narrow slice (single-turn, cooperative, informational); we argue that
-    extending model characterization into the under-observed cells---multi-turn
-    corrective, contested-stance, sensitive, emotional---is itself a
-    contribution, and we release the audit tooling.
+    narrow slice (single-turn, cooperative, informational). We then \emph{act on}
+    the audit, broadening coverage with two diverse sources---real in-the-wild
+    prompts and ten professionally-authored task types---and show the fingerprint
+    persists, while naming the cells that remain under-observed (multi-turn
+    corrective, contested-stance) as targets for future work. We release the audit
+    tooling.
 \end{enumerate}
 
 \section{Related Work}
@@ -131,54 +138,76 @@ concession dynamics.
 
 \paragraph{Data.}
 We draw on parallel human/LLM corpora including HC3 \citep{guo2023hc3} and
-AlpacaEval \citep{alpacaeval2023}, repurposing them for comparative stylometric
-characterization rather than detection or preference ranking.
+AlpacaEval \citep{alpacaeval2023}, and broaden coverage with real in-the-wild user
+prompts from WildChat \citep{zhao2024wildchat} and the professionally
+hand-authored No Robots dataset \citep{norobots2023}, repurposing all of them for
+comparative stylometric characterization rather than detection or preference
+ranking.
 
 \section{Corpus}
-We construct two parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
+We construct four parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
 of prompts is answered by multiple sources, so that any feature separating Claude
 reflects \emph{how} it writes rather than \emph{what} it was asked. Claude
 (and GPT-4o on the HC3 track) are generated by us with adaptive thinking at
 \texttt{effort=high}; all other cells are reused from the source datasets. Every
 record stores full provenance---model and version, decoding configuration,
-token usage, timestamp, and code commit---plus the verbatim API response. The
-seven distinct non-Claude models are GPT-3.5-era ChatGPT, GPT-4o, GPT-4-turbo,
-Gemini-pro, DeepSeek-67B, Qwen2-72B, and Llama-3-70B; with the human anchor this
-gives eight comparison sources (six of which---the ``modern models''---appear on
-the AlpacaEval track).
+token usage, timestamp, and code commit---plus the verbatim API response.
+
+The first two tracks (HC3, AlpacaEval) supply a human anchor and a modern
+multi-model contrast but, as our coverage audit shows (\S\ref{sec:coverage}), they
+occupy a narrow behavioral slice: short, single-turn, information-seeking
+\emph{questions}. The last two tracks are added precisely to broaden that slice.
+\textbf{WildChat} contributes real, in-the-wild first-turn user prompts (heavy on
+creative writing, code, and roleplay) with the original GPT-4-0314 reply as a
+reused contrast. \textbf{No Robots} contributes professionally hand-written
+prompts \emph{and} answers, balanced across ten task types (generation,
+brainstorming, rewriting, summarization, classification, extraction, coding,
+chat, and open/closed QA); it is our second human anchor and the first one on
+non-QA tasks. Across all tracks there are eight distinct non-Claude models
+(GPT-3.5-era ChatGPT, GPT-4o, GPT-4-turbo, GPT-4-0314, Gemini-pro, DeepSeek-67B,
+Qwen2-72B, Llama-3-70B) and two human anchors (informal web text in HC3,
+professional annotators in No Robots).
 
 \begin{table}[t]
 \centering\small
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}ll p{4.4cm}@{}}
+\begin{tabular}{@{}ll p{4.3cm}@{}}
 \toprule
 Track & Prompts & Sources (same prompt each) \\
 \midrule
 HC3 & 200 & human, ChatGPT (GPT-3.5 era),
   GPT-4o$^\dagger$, \textbf{Claude}$^\dagger$ \\[3pt]
 AlpacaEval & 200 & gpt-4-turbo, gpt-4o, gemini-pro,
-  deepseek-67b, Qwen2-72B, Llama-3-70B, \textbf{Claude}$^\dagger$ \\
+  deepseek-67b, Qwen2-72B, Llama-3-70B, \textbf{Claude}$^\dagger$ \\[3pt]
+WildChat & 1500 & GPT-4-0314, \textbf{Claude}$^{\dagger\ddagger}$ \\[3pt]
+No Robots & 1500 & human (professional), \textbf{Claude}$^\dagger$ \\
 \bottomrule
 \end{tabular}
-\caption{The two parallel corpus tracks. $\dagger$ = self-generated; all other
-cells reused. HC3 carries a human anchor; AlpacaEval carries the modern
-multi-model contrast (no human, by design). HC3 spans five source domains
-(reddit-ELI5 and open-QA are merged into ``general'' for reporting).}
+\caption{The four parallel corpus tracks. $\dagger$ = self-generated; all other
+cells reused. HC3 and No Robots carry human anchors; AlpacaEval carries the
+modern multi-model contrast; WildChat carries real in-the-wild prompts.
+$\ddagger$ Claude on WildChat is currently a 628/1500 subset (generation
+interrupted); all WildChat comparisons use the matched 628-prompt subset, and
+the remaining cells will be filled and the tables regenerated.}
 \label{tab:corpus}
 \end{table}
 
 \subsection{Corpus statistics}
 \label{sec:stats}
-Table~\ref{tab:stats} summarizes volume and length. Responses are model-typical in
-length (Claude median 230--267 words); the human HC3 answers are much shorter and
-more variable (median 77, mean 120), which we account for via length controls
-(\S\ref{sec:length}). Prompts are short (median 10--18 words) and roughly half are
-phrased as questions. Per-domain volume and full distributions are in
-Appendix~\ref{app:stats}. Two corpus-level register signals already foreshadow the
-results: Claude's responses are markedly more \emph{interrogative} at the sentence
-level (17\% of sentences on HC3, 10\% on AlpacaEval, vs.\ $\le$4\% for every other
-source---the offer-closer, \S\ref{sec:ngram}), and least readable (Flesch $\approx$40
-vs.\ 46--52), consistent with higher content-word density.
+Table~\ref{tab:stats} summarizes volume and length. The four tracks span a wide
+range of registers and lengths. Prompts grow from terse HC3/AlpacaEval questions
+(median 10--18 words) to substantial WildChat and No Robots tasks (median 35 and
+49 words). Response lengths likewise spread: Claude's median answer ranges from
+162 words (No Robots' often-constrained tasks) to 334 on WildChat, where its
+creative-writing responses push the mean to 611; the two human anchors are short
+and variable (HC3 median 77, No Robots median 48). We account for length via
+length controls (\S\ref{sec:length}). Per-domain volume and full distributions are
+in Appendix~\ref{app:stats}. A corpus-level register signal already foreshadows
+the results: Claude's responses are the most \emph{interrogative} at the sentence
+level on every track (17\%/10\%/6\%/9\% of sentences on HC3/AlpacaEval/WildChat/No
+Robots, vs.\ $\le$5\% for every contrast source---the offer-closer,
+\S\ref{sec:ngram}), and Claude is denser than its human anchors (Flesch
+$\approx$40--48).
 
 \begin{table}[t]
 \centering\small
@@ -190,75 +219,82 @@ Track & Prompts & Prompt & Claude & Total \\
 \midrule
 HC3 & 200 & 10 & 267 & 156k \\
 AlpacaEval & 200 & 18 & 230 & 354k \\
+WildChat & 1500$^\ddagger$ & 35 & 334 & 946k \\
+No Robots & 1500 & 49 & 162 & 397k \\
 \bottomrule
 \end{tabular}
 \caption{Corpus volume and length (median word counts). Totals sum all sources in
-the track. Full per-source distributions: Appendix~\ref{app:stats}.}
+the track. $\ddagger$ Claude answered 628 of the 1500 WildChat prompts so far.
+Full per-source distributions: Appendix~\ref{app:stats}.}
 \label{tab:stats}
 \end{table}
 
-\subsection{Coverage and its limits}
+\subsection{Coverage: auditing and expanding the behavioral slice}
 \label{sec:coverage}
 Because style is context-dependent, we audit \emph{what behavior the prompts
 elicit}, labeling every prompt by intent, speech act, register, tone, and topic,
-plus interaction flags (\texttt{src/analyze\_coverage.py}; Table~\ref{tab:coverage}).
-Labels are produced by Claude Opus 4.8 itself (the model under study), a
-circularity we flag in Limitations.\todo[inline]{TODO (human validation pending):
-hand-annotate a $\sim$50-prompt sample, report inter-annotator agreement with the
-LLM labels, and add a small validation table. Quick human pass to be added.}
-The corpus occupies a narrow region of the behavior space along several axes:
-\begin{itemize}
-  \itemsep0em
-  \item \textbf{Mood and speech act.} We measure both the \emph{syntactic mood}
-    (rule-based, from punctuation and sentence-initial cues) and the
-    \emph{pragmatic speech act} (LLM-labeled), which differ because many
-    syntactically interrogative prompts (``Can you write\ldots?'') are pragmatic
-    directives. Syntactically, prompts are 74\%/58\% (HC3/AlpacaEval)
-    interrogative, 2\%/20\% imperative, $\sim$22\% declarative; pragmatically they
-    are questions or directives with $\le$1 \emph{assertion} per track
-    (Appendix~\ref{app:stats}). Either way, the corpus almost never presents
-    Claude with an assertion to agree with, qualify, or contest.
-  \item \textbf{Interaction.} Only $\sim$2\% of prompts imply multi-turn
-    interaction, and essentially none are adversarial or corrective.
-  \item \textbf{Intent.} Code, creative, opinion, and emotional intents are rare
-    or absent, especially in HC3 (Table~\ref{tab:coverage}).
-  \item \textbf{Stance / register / tone.} Prompts are predominantly neutral in
-    tone and information-seeking; subjective or contested-stance prompts are a
-    small minority.
-\end{itemize}
-Consequently the fingerprint we report should be read as Claude's
-\emph{single-turn informational} voice. Behaviors gated on other cells---e.g.\ the
-concession move ``you're right to push back on that,'' which requires a
-\emph{declarative} challenge across turns---are out of scope here and motivate the
-corpus expansion (more prompt variety across topic, register, tone, speech act,
-and interaction structure) that we describe as future work
-(\S\ref{sec:secondary}, Appendix~\ref{app:stats}).
+plus interaction flags (\texttt{src/analyze\_coverage.py}; large tracks sampled at
+$n{=}400$). Labels are produced by Claude Opus 4.8 itself (the model under study),
+a circularity we flag in Limitations.\todo[inline]{TODO (human validation
+pending): hand-annotate a $\sim$50-prompt sample, report inter-annotator agreement
+with the LLM labels, and add a small validation table. Quick human pass to be
+added.}
+
+The audit shows that HC3 and AlpacaEval alone occupy a narrow region: HC3 is 96\%
+explanation/QA/advice and 75\% \emph{questions}; AlpacaEval is broader but still
+question/directive and information-oriented. Treating this as a coverage problem
+to fix rather than merely report, we add the WildChat and No Robots tracks, and
+the four tracks are \emph{complementary} (Table~\ref{tab:coverage}): WildChat is
+dominated by creative writing (42\%) and code (11\%), No Robots by classification/
+extraction (25\%), summarization/rewriting (19\%), and QA (20\%). Intents that
+were absent or near-absent in the first two tracks---creative writing, code,
+roleplay, summarization, rewriting, classification, extraction, and
+personal/emotional---are now substantially represented. The expansion also shifts
+the other axes (Appendix~\ref{app:stats}): the dominant speech act flips from HC3's
+75\% \emph{questions} to 59--73\% \emph{directives} on the new tracks; a non-trivial
+\emph{formal} register appears (10\% of WildChat prompts) where it was nearly
+absent; and topics broaden from HC3's health/science/finance concentration to
+include entertainment, software, the arts, and personal life.
+
+Two limits remain, and we are explicit about them. First, the corpus is still
+\emph{single-turn}: only WildChat shows a non-trivial fraction of prompts that
+imply follow-up (7\%), and essentially none are adversarial or corrective, so
+behaviors gated on a multi-turn \emph{declarative} challenge---e.g.\ the concession
+move ``you're right to push back on that''---remain out of scope and motivate the
+multi-turn extension (\S\ref{sec:secondary}). Second, contested-stance prompts
+(those that hand Claude an assertion to agree with or contest) are still a small
+minority on every track. The fingerprint we report should therefore be read as
+Claude's \emph{single-turn} voice---but now across a markedly broader range of
+single-turn tasks than informational QA alone.
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{@{}lrr@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Intent (primary) & HC3 & AlpacaEval \\
+Intent (primary, \%) & HC3 & Alpaca & WildC & NoRob \\
 \midrule
-explanation & 94 & 33 \\
-factual QA & 53 & 29 \\
-advice/recommendation & 49 & 31 \\
-instruction task & 3 & 26 \\
-creative writing & 0 & 24 \\
-math/reasoning & 0 & 14 \\
-code & 0 & 11 \\
-opinion/subjective & 0 & 11 \\
-other (classif., edit, roleplay) & 1 & 20 \\
+explanation & 47 & 17 & 9 & 4 \\
+factual QA & 27 & 15 & 11 & 20 \\
+advice/recommendation & 25 & 16 & 5 & 9 \\
+instruction task & 2 & 13 & 8 & 2 \\
+creative writing & 0 & 12 & \textbf{42} & 10 \\
+code & 0 & 6 & 11 & 10 \\
+summarize/rewrite/edit & 0 & 4 & 3 & \textbf{19} \\
+classification/extraction & 0 & 5 & 1 & \textbf{25} \\
+opinion/subjective & 0 & 6 & 2 & 0 \\
+math/roleplay/other & 1 & 11 & 9 & 2 \\
 \midrule
-\emph{flag:} multi-turn implied & 8 & 4 \\
-\emph{flag:} subjective & 14 & 39 \\
-\emph{flag:} sensitive & 61 & 16 \\
+\emph{flag:} multi-turn impl.\ & 4 & 2 & 7 & 1 \\
+\emph{flag:} subjective & 7 & 20 & 11 & 8 \\
+\emph{flag:} sensitive & 31 & 8 & 20 & 6 \\
 \bottomrule
 \end{tabular}
-\caption{Prompt intent distribution and interaction flags (HC3 $n{=}200$;
-AlpacaEval $n{=}199$, one prompt unlabeled). Single frozen audit run
-(\texttt{coverage\_labels.csv}). The corpus is single-turn, cooperative, and
-information-oriented.}
+\caption{Prompt intent distribution and interaction flags, \% of audited prompts
+(HC3/AlpacaEval $n{=}200$; WildChat/No Robots sampled $n{=}400$;
+\texttt{coverage\_labels.csv}). The four tracks are complementary: bold marks each
+new track's distinctive contribution. Multi-turn and contested-stance prompts
+remain scarce on all tracks.}
 \label{tab:coverage}
 \end{table}
 
@@ -328,9 +364,53 @@ coefficient large and highly significant: burstiness $t{=}20.6$, function-word
 rate $t{=}{-}14.4$, em-dash $t{=}12.6$, question rate $t{=}4.6$. Type-token ratio
 is length-sensitive and we treat lexical-diversity claims as length-conditioned.
 The effects also hold \emph{within every domain} (Appendix~\ref{app:domain}):
-across all nine domains in both tracks, burstiness has $d>0$, function-word rate
-$d<0$ (Claude denser), and em-dash and question rate $d>0$, so the fingerprint is
-not a topic artifact.
+across all nine domains of the HC3 and AlpacaEval tracks, burstiness has $d>0$,
+function-word rate $d<0$ (Claude denser), and em-dash and question rate $d>0$, so
+the fingerprint is not a topic artifact; the next section extends this check to two
+further corpora.
+
+\subsection{The fingerprint replicates across all four tracks}
+\label{sec:crosstrack}
+The prose and length analyses above are on HC3. Do the same features distinguish
+Claude when the prompt distribution and the contrast source change? We compute
+Claude-vs-pooled Cohen's $d$ separately within each track (for WildChat, on the
+matched 628-prompt subset, preserving the parallel-corpus control;
+\texttt{src/analyze\_tracks.py}). The headline features carry the \emph{same sign
+in all four tracks} (Table~\ref{tab:crosstrack}): Claude writes with higher
+sentence-length burstiness, denser content-word prose (lower function-word rate),
+more em-dashes, more markdown scaffolding, and more questions---against a human
+panel, against six modern models, against GPT-4-0314 on real prompts, and against
+professional human writers on diverse tasks. Magnitudes are largest on HC3, whose
+short, informal contrast cells make the gap widest, and shrink on the harder,
+more varied contrasts, but the direction never flips. (Two weaker features---
+colon rate and type-token ratio---are \emph{not} sign-stable across tracks and we
+do not claim them as part of the fingerprint.) The interactional question habit is
+the one headline feature that fades on No Robots ($d{=}0.03$), whose
+classification, extraction, and rewriting tasks do not invite an offer to
+continue---a sensible boundary condition rather than a failure
+(\S\ref{sec:ngram}).
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrc@{}}
+\toprule
+Feature & HC3 & Alp & WiC & NoR & sign \\
+\midrule
+sentence burstiness & 1.56 & 0.45 & 0.58 & 0.63 & +4/4 \\
+function-word rate & $-$1.29 & $-$0.57 & $-$0.49 & $-$0.24 & $-$4/4 \\
+em-dash rate & 0.86 & 0.12 & 0.48 & 0.34 & +4/4 \\
+markdown headers & 4.06 & 1.81 & 1.26 & 0.66 & +4/4 \\
+markdown bold & 2.72 & 0.88 & 1.12 & 1.09 & +4/4 \\
+question rate & 0.35 & 0.40 & 0.32 & 0.03 & +4/4 \\
+\bottomrule
+\end{tabular}
+\caption{Claude-vs-pooled Cohen's $d$ within each track (raw features). The sign
+is consistent across all four tracks for every headline feature; magnitude is
+largest where the contrast is cleanest (HC3). The question/offer habit is robust
+except on No Robots, whose task mix does not invite continuation.}
+\label{tab:crosstrack}
+\end{table}
 
 \subsection{The interactional signature: an offer-to-continue closer}
 \label{sec:ngram}
@@ -405,17 +485,22 @@ result is not a length artifact.
 
 \begin{table}[t]
 \centering\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-Track & with formatting & prose only \\
+Track (contrast) & w/ fmt & prose \\
 \midrule
-HC3 & 0.982 & 0.946 \\
-AlpacaEval & 0.901 & 0.867 \\
+HC3 (human, GPT-4o, 3.5) & 0.982 & 0.946 \\
+AlpacaEval (6 modern) & 0.901 & 0.867 \\
+WildChat (GPT-4-0314) & 0.973 & 0.854 \\
+No Robots (human, pro) & 0.922 & 0.788 \\
 \bottomrule
 \end{tabular}
-\caption{Claude-vs-rest ROC-AUC (logistic regression, 5-fold CV). HC3 contrasts
-Claude with \{human, GPT-4o, GPT-3.5-era ChatGPT\}; AlpacaEval with the six modern
-models.}
+\caption{Claude-vs-rest ROC-AUC (logistic regression, 5-fold CV) on all four
+tracks. Claude is highly separable under every contrast, including from prose
+alone; the lowest prose-only AUC (No Robots, 0.79) is the hardest case---against
+professional human writers on short, constrained tasks---and is still well above
+chance.}
 \label{tab:clf}
 \end{table}
 
@@ -464,42 +549,50 @@ appear in Appendix~\ref{app:placeholders}.
 \end{itemize}
 
 \section{Discussion}
-Across two corpora, five methods, and eight comparison sources, the same
-fingerprint recurs and survives every control: Claudespeak is
+Across four corpora, five methods, eight contrast models, and two human anchors,
+the same fingerprint recurs and survives every control: Claudespeak is
 markdown-scaffolded, rhythmically varied, content-dense, and
 engagement-and-offer-oriented prose---and specifically \emph{not} the ``delve''
-register. A methodological lesson follows: borrowed AI-word lists largely measure
-\emph{GPT}, and characterizing a specific model requires data-driven discovery
-against topic-matched references.
+register. That the signature holds in sign from terse factual QA to in-the-wild
+creative writing to constrained extraction tasks suggests it is a property of the
+model rather than of any one prompt genre. A methodological lesson follows:
+borrowed AI-word lists largely measure \emph{GPT}, and characterizing a specific
+model requires data-driven discovery against topic-matched references.
 
 \section*{Limitations}
 We study a single Claude configuration (Opus 4.8, \texttt{effort=high}); the
 effort, version, and multi-turn axes are not yet measured (\S\ref{sec:secondary}).
-Crucially, our coverage audit (\S\ref{sec:coverage}) shows the corpus is
-single-turn, cooperative, and information-oriented, so the reported fingerprint is
-Claude's \emph{single-turn informational} voice; context-gated behaviors
-(corrective concession, refusal, emotional support, code/creative registers) are
-out of scope and are the target of the planned expansion (English only).
-Reused contrast completions are
-their published vintages (e.g.\ gemini-pro~1.0, Qwen2-72B, GPT-4-turbo/4o~2024),
-modern-ish but not the absolute latest. $n$-gram novelty is measured relative to
-our corpus pool, not a large external reference, and may be inflated for Claude
-as the lone out-of-cluster (and only freshly generated) source. The HC3 human
-anchor is informal web text, so part of the human--Claude gap reflects register
-rather than authorship. The coverage audit's labels are produced by an LLM (the
-model under study), introducing a circularity; a human-validation pass on a
-labeled sample is pending. Finally, raw length is excluded from the classifier
-features and the feature effects are length-controlled (\S\ref{sec:length}), but
-some prose features still correlate with length; we report a length-residualized
-classifier as a check (\S\ref{sec:clf}).
+Our coverage expansion (\S\ref{sec:coverage}) broadens the corpus well beyond
+informational QA---into creative writing, code, summarization, rewriting,
+classification, and extraction---but it remains \emph{single-turn}: context-gated
+behaviors that require a multi-turn declarative challenge (corrective concession,
+sustained refusal) are still out of scope and are the target of the planned
+multi-turn extension (English only). The WildChat Claude cells are currently a
+628/1500 subset (generation interrupted); all WildChat comparisons use the matched
+subset, and the remaining cells and refreshed tables are pending. Reused contrast
+completions are their published vintages (e.g.\ GPT-4-0314, gemini-pro~1.0,
+Qwen2-72B, GPT-4-turbo/4o~2024), modern-ish but not the absolute latest. $n$-gram
+novelty is measured relative to our corpus pool, not a large external reference,
+and may be inflated for Claude as the lone out-of-cluster (and only freshly
+generated) source. The two human anchors differ in register---HC3 is informal web
+text, No Robots is professional annotation---which lets us check that the
+human--Claude gap is not merely an artifact of informal writing (the fingerprint
+holds against both), though neither is edited published prose. The coverage
+audit's labels are produced by an LLM (the model under study), introducing a
+circularity; a human-validation pass on a labeled sample is pending. Finally, raw
+length is excluded from the classifier features and the feature effects are
+length-controlled (\S\ref{sec:length}), but some prose features still correlate
+with length; we report a length-residualized classifier as a check
+(\S\ref{sec:clf}).
 
 \section*{Data and Reproducibility}
 We do not test mechanism, but the interactional, low-formality, offer-oriented
 profile is consistent with post-training (RLHF) that rewards helpful, engaging,
 and appropriately hedged responses. Code and the fully provenanced corpus
 (generations plus metadata, and the audit tooling) will be released at an
-anonymized URL. HC3 and AlpacaEval are public research artifacts used under their
-licenses; we redistribute only derived statistics and our own model generations.
+anonymized URL. HC3, AlpacaEval, WildChat, and No Robots are public research
+artifacts used under their licenses; we redistribute only derived statistics and
+our own model generations.
 
 \section*{Ethics Statement}
 This work characterizes model writing style using public datasets and model
@@ -521,66 +614,75 @@ rhetorical markers) are provided with the released code (\texttt{src/features.py
 All statistics here are reproducible via \texttt{src/dataset\_stats.py} (volume,
 lengths, sentence mood, register) and \texttt{src/analyze\_coverage.py} (intent).
 
-\paragraph{Response length by source (words).}
-HC3: human 120/77 (mean/median), ChatGPT 176/178, GPT-4o 228/239, Claude
-254/267. AlpacaEval: deepseek-67b 186/184, gemini-pro 222/234, Claude 254/230,
-Qwen2-72B 260/259, gpt-4-turbo 272/285, gpt-4o 280/285, Llama-3-70B 297/308.
+\paragraph{Response length by source (words, mean/median).}
+HC3: human 120/77, ChatGPT 176/178, GPT-4o 228/239, Claude 254/267. AlpacaEval:
+deepseek-67b 186/184, gemini-pro 222/234, Claude 254/230, Qwen2-72B 260/259,
+gpt-4-turbo 272/285, gpt-4o 280/285, Llama-3-70B 297/308. WildChat: GPT-4-0314
+375/357, Claude 611/334 (the high mean is driven by long creative-writing
+responses). No Robots: human 90/48, Claude 175/162.
 
-\paragraph{Volume by domain (prompts; total response words, all sources).}
+\paragraph{Volume by domain / task (prompts; total response words, all sources).}
 HC3: general 80/47k, finance 40/40k, cs\_ai 40/35k, medicine 40/33k. AlpacaEval:
 selfinstruct 64/79k, oasst 49/96k, helpful\_base 35/70k, koala 35/67k, vicuna
-17/43k.
+17/43k. No Robots (balanced, 150 prompts each): generation, brainstorm, coding,
+and rewrite are the highest-volume task types; classify, extract, and closed-QA
+the lowest (short answers). WildChat carries no source task labels (real user
+logs); its task mix is the LLM-labeled distribution in Table~\ref{tab:coverage}.
 
 \paragraph{Sentence mood (\% of response sentences).} Interrogative sentences:
-Claude 17\% (HC3) / 10\% (AlpacaEval) vs.\ 1--4\% for all other sources;
-declarative 75\% (Claude, HC3) vs.\ 95--97\% for others. Imperative and
-exclamatory are $\le$2\% and $\le$7\% respectively.
+Claude 17\%/10\%/6\%/9\% (HC3/AlpacaEval/WildChat/No Robots) vs.\ 1--5\% for every
+contrast source---Claude is the most interrogative on every track. Imperative and
+exclamatory sentences are $\le$2\% and $\le$7\% respectively throughout.
 
 \paragraph{Register.} First-/second-person pronoun rates per 100 words and Flesch
-Reading Ease are in \texttt{stats\_register.csv}; Claude shows the lowest Flesch
-(\,$\approx$40, denser/harder) of all sources on both tracks.
+Reading Ease are in \texttt{stats\_register.csv}. Claude is denser (lower Flesch)
+than both human anchors (HC3 human 48, No Robots human 59, vs.\ Claude
+$\approx$40--48) and than the modern-model panel on AlpacaEval; on WildChat its
+readability is comparable to GPT-4-0314's.
 
-\paragraph{Prompt variety (audit, counts of 200 per track).} The prompts are
-narrow on every axis (Table~\ref{tab:variety}): almost all are
-\emph{questions} or \emph{directives} (assertions $\le$1); tone is
-overwhelmingly \emph{neutral} (82--87\%); register is neutral/casual with almost
-no \emph{formal} prompts; and topics concentrate (HC3: health 28\%, science 24\%,
-finance 20\%). This uniformity---not insufficient sample size---is the coverage
-problem the expansion targets.
+\paragraph{Prompt variety (audit).} Where HC3 and AlpacaEval are narrow---almost
+all \emph{questions}/\emph{directives}, overwhelmingly \emph{neutral} tone, and
+nearly no \emph{formal} register---the two added tracks broaden every axis
+(Table~\ref{tab:variety}): directives become the dominant speech act, a
+non-trivial formal register appears on WildChat (10\%), and topics spread from
+HC3's health/science/finance concentration to entertainment, software, the arts,
+and personal life. Non-neutral tone and contested-stance assertions remain scarce
+on all four tracks.
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{@{}llrr@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrr@{}}
 \toprule
-Axis & Value & HC3 & Alpaca \\
+Axis & Value & HC3 & Alp & WiC & NoR \\
 \midrule
-speech act & question & 150 & 106 \\
- & directive & 46 & 93 \\
- & assertion & 1 & 0 \\
-register & neutral & 130 & 130 \\
- & casual & 70 & 62 \\
- & formal & 0 & 7 \\
-tone & neutral & 165 & 175 \\
- & emotional & 20 & 5 \\
- & playful / urgent & 1/14 & 18/1 \\
+speech act & question & 75 & 53 & 23 & 38 \\
+ & directive & 23 & 47 & 74 & 59 \\
+ & assertion & 0 & 0 & 2 & 0 \\
+register & neutral & 65 & 65 & 62 & 79 \\
+ & casual & 35 & 31 & 27 & 19 \\
+ & formal & 0 & 3 & 10 & 1 \\
+tone & neutral & 82 & 88 & 86 & 90 \\
+ & emotional & 10 & 2 & 1 & 1 \\
+ & playful & 0 & 9 & 11 & 7 \\
 \bottomrule
 \end{tabular}
-\caption{Prompt variety along \emph{pragmatic} speech act (LLM-labeled),
-register, and tone (HC3 $n{=}200$; AlpacaEval $n{=}199$). Assertions, formal
-register, and non-neutral tones are nearly absent. Topic and intent breakdowns:
-\texttt{coverage\_labels.csv}. (Syntactic mood, which differs, is in
-\S\ref{sec:coverage}.)}
+\caption{Prompt variety (\% of audited prompts) along \emph{pragmatic} speech act
+(LLM-labeled), register, and tone. HC3/AlpacaEval $n{=}200$; WildChat/No Robots
+sampled $n{=}400$. The added tracks shift the dominant speech act to directives
+and introduce a formal register; non-neutral tone and assertions stay rare. Topic
+and intent breakdowns: \texttt{coverage\_labels.csv}. (Syntactic mood, which
+differs, is in \S\ref{sec:coverage}.)}
 \label{tab:variety}
 \end{table}
 
-\paragraph{Coverage expansion (planned).} To move beyond the single-turn
-informational slice (\S\ref{sec:coverage}) we will (i) sample real first-turn
-prompts from WildChat / LMSYS-Chat-1M to populate under-covered intents
-(code, creative, opinion, emotional); (ii) \emph{construct} multi-turn corrective
-scenarios (user challenges or corrects Claude) to elicit concession / push-back
-behavior; and (iii) add a small, defensively-framed sensitive/refusal set.
-Targets are $\sim$100--150 prompts per intent cell and $\sim$80--120 corrective
-scenarios; the audit tooling re-runs on the expanded corpus.
+\paragraph{Coverage expansion (delivered, and remaining).} The WildChat and No
+Robots tracks (\S\ref{sec:coverage}) populate intents that HC3/AlpacaEval lacked:
+creative writing, code, roleplay, summarization, rewriting, classification, and
+extraction. Two cells remain under-observed and motivate future work: (i)
+multi-turn corrective scenarios (a user challenges or corrects Claude) to elicit
+concession / push-back behavior, and (ii) a small, defensively-framed
+sensitive/refusal set. The audit tooling re-runs unchanged on any added track.
 
 \section{Per-domain robustness}
 \label{app:domain}
