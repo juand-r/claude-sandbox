@@ -114,3 +114,49 @@ versions, multi-turn (Sense B/C), other genres/languages, larger corpus.
 - [ ] Claude thinking-effort sweep (low/med/high).
 - [ ] n-gram mining (rusty-dawg / infini-gram) for over-represented phrases.
 - [ ] Interpretable classifier on prose-only features (separability number).
+
+---
+
+## Phase 3.0 — Corpus diversity expansion (WildChat + No Robots)
+
+Motivation (user): "not enough samples and not enough diversity." HC3+AlpacaEval
+were 200 prompts each, concentrated in explanation/QA and mostly *questions*.
+
+### Sources added
+- **WildChat** (allenai/WildChat-1M): 1500 real single-turn user prompts;
+  reused GPT-4-0314 reply as contrast; Claude generated separately.
+  src/acquire_wildchat.py, src/generate_wildchat.py.
+- **No Robots** (HuggingFaceH4/no_robots): 1500 human prompts AND human answers,
+  balanced across 10 task types (Generation/Brainstorm/QA/Rewrite/Summarize/
+  Coding/Classify/Extract/Chat). First HUMAN anchor on non-QA tasks.
+  src/acquire_no_robots.py, src/generate_norobots.py.
+
+### Generation status
+- No Robots Claude: **1500/1500 complete**.
+- WildChat Claude: **628/1500** — STOPPED. API hit "credit balance is too low"
+  (HTTP 400 invalid_request) around the 600-700 mark while running concurrently
+  with No Robots. Remaining ~870 DEFERRED until credits replenished. Job is
+  resumable (skips done prompt_ids). 628 is still a usable sample (3x per-track n
+  of HC3/AlpacaEval). Cost so far this session ~$0.037/gen.
+
+### Coverage gain (src/analyze_coverage.py, sampled 400/large track)
+New tracks fill the gaps HC3/AlpacaEval left empty:
+- intent: +creative_writing (WildChat 41%), +code, +roleplay; +classification_
+  extraction (NoRobots 25%), +summarize_rewrite (18%), +personal_emotional.
+- speech act: flips from HC3's 75% questions to 59-73% DIRECTIVES.
+- register: formal appears (WildChat 10%), previously near-absent.
+- topic: entertainment/software_code/personal_life/arts now well represented.
+
+### Fingerprint replication (src/analyze_tracks.py)
+Claude vs pooled non-Claude, Cohen's d, per track. WildChat aligned to its 628
+shared prompts (parallel-corpus control). Headline features replicate 4/4 sign:
+burstiness (+), function_word_rate (-), em-dash (+), markdown header/bold/bullet
+(+), questions/offer-closer (+ except No Robots, whose classify/extract/rewrite
+tasks don't invite continuation). Magnitudes shrink on the diverse tracks
+(HC3 had the cleanest contrast) but the fingerprint holds. ttr/colon NOT robust.
+→ reports/cross_track_fingerprint.md, reports/dataset_stats.md.
+
+### BLOCKER / decision point
+- Finishing WildChat (~870 more Claude gens, ~$32) needs API credits topped up.
+- Paper still describes only HC3+AlpacaEval; needs rewrite to fold in the two new
+  tracks (corpus tables, coverage section, dataset stats, cross-track result).
