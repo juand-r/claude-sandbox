@@ -2,30 +2,6 @@
 
 Logistic regression, standardized features, class-balanced, 5-fold stratified CV. AUC=1.0 perfect, 0.5 chance.
 
-## Conclusion
-
-**Claude is highly separable — and the signal is mostly prose, not formatting.**
-
-| Track | with formatting | prose only |
-|---|---|---|
-| HC3 (vs human / GPT-4o / old-ChatGPT) | AUC 0.982 | **AUC 0.946** |
-| AlpacaEval (vs 6 modern frontier models) | AUC 0.901 | **AUC 0.867** |
-
-- Stripping markdown drops AUC only modestly (0.982→0.946; 0.901→0.867), so the
-  classifier is not just reading layout — prose alone identifies Claude well, even
-  against six modern models.
-- The driving coefficients **match the descriptive findings** (a good consistency
-  check): prose-only separation is led by **sentence burstiness (+)**,
-  **function-word density (− function-word rate)**, **em-dash rate (+)**, and on
-  AlpacaEval the **question/offer rate (+)** — the same features Steps 1–2 found,
-  arrived at by an independent method.
-- Interpretation: there is a stable, learnable Claude "voice" at the prose level.
-  This is a *detectability* number; the *characterization* (what the voice is) is
-  the burstiness / density / em-dash / offer-closer profile named above.
-
----
-
-
 ## Summary
 
 | track                      | condition       |   AUC |   acc |   n_claude |   n_total |
@@ -34,6 +10,10 @@ Logistic regression, standardized features, class-balanced, 5-fold stratified CV
 | HC3 (human-anchored)       | prose_only      | 0.946 | 0.895 |        200 |       800 |
 | AlpacaEval (modern models) | with_formatting | 0.901 | 0.869 |        200 |      1400 |
 | AlpacaEval (modern models) | prose_only      | 0.867 | 0.826 |        200 |      1400 |
+| WildChat (vs GPT-4-0314)   | with_formatting | 0.973 | 0.934 |        628 |      2128 |
+| WildChat (vs GPT-4-0314)   | prose_only      | 0.854 | 0.789 |        628 |      2128 |
+| NoRobots (vs human)        | with_formatting | 0.922 | 0.864 |       1500 |      3000 |
+| NoRobots (vs human)        | prose_only      | 0.788 | 0.721 |       1500 |      3000 |
 
 
 ## HC3 (human-anchored) — with_formatting (AUC=0.982, acc=0.976)
@@ -106,3 +86,75 @@ Top features (|standardized coef|); + = pushes toward Claude:
 | function_word_rate  |      -0.28 |
 | exclaim_per100      |      -0.23 |
 | tricolon_per100w    |      -0.23 |
+
+
+## WildChat (vs GPT-4-0314) — with_formatting (AUC=0.973, acc=0.934)
+
+Top features (|standardized coef|); + = pushes toward Claude:
+
+| feature             |   std_coef |
+|:--------------------|-----------:|
+| md_bold_per100w     |       7.43 |
+| md_header_per100w   |       2.36 |
+| hapax_rate          |       1.79 |
+| ttr                 |      -1.74 |
+| md_bullet_per100w   |      -1.03 |
+| md_code_per100w     |      -0.93 |
+| lexical_tic_per1k   |      -0.83 |
+| colon_per100        |      -0.74 |
+| emdash_per100       |       0.46 |
+| canned_phrase_per1k |      -0.37 |
+
+
+## WildChat (vs GPT-4-0314) — prose_only (AUC=0.854, acc=0.789)
+
+Top features (|standardized coef|); + = pushes toward Claude:
+
+| feature             |   std_coef |
+|:--------------------|-----------:|
+| sentence_burstiness |       1.16 |
+| emdash_per100       |       0.84 |
+| function_word_rate  |      -0.5  |
+| lexical_tic_per1k   |      -0.48 |
+| question_per100     |       0.39 |
+| comma_per100        |      -0.36 |
+| colon_per100        |      -0.33 |
+| canned_phrase_per1k |      -0.32 |
+| ttr                 |       0.25 |
+| exclaim_per100      |      -0.25 |
+
+
+## NoRobots (vs human) — with_formatting (AUC=0.922, acc=0.864)
+
+Top features (|standardized coef|); + = pushes toward Claude:
+
+| feature             |   std_coef |
+|:--------------------|-----------:|
+| md_bold_per100w     |       8.83 |
+| hapax_rate          |       0.72 |
+| emoji_per100        |       0.62 |
+| ttr                 |      -0.56 |
+| md_header_per100w   |       0.34 |
+| sentence_burstiness |       0.32 |
+| mean_sentence_len   |       0.26 |
+| emdash_per100       |       0.25 |
+| md_code_per100w     |       0.23 |
+| comma_per100        |       0.2  |
+
+
+## NoRobots (vs human) — prose_only (AUC=0.788, acc=0.721)
+
+Top features (|standardized coef|); + = pushes toward Claude:
+
+| feature             |   std_coef |
+|:--------------------|-----------:|
+| sentence_burstiness |       0.81 |
+| mean_sentence_len   |       0.73 |
+| semicolon_per100    |      -0.64 |
+| emdash_per100       |       0.53 |
+| function_word_rate  |      -0.3  |
+| exclaim_per100      |      -0.19 |
+| colon_per100        |       0.15 |
+| comma_per100        |       0.08 |
+| tricolon_per100w    |      -0.08 |
+| ttr                 |       0.07 |

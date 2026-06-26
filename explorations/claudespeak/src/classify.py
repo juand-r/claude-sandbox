@@ -70,7 +70,9 @@ def evaluate(df: pd.DataFrame, prose_only: bool):
 def main():
     os.makedirs(REPORTS, exist_ok=True)
     tracks = {"HC3 (human-anchored)": "pilot_*.jsonl",
-              "AlpacaEval (modern models)": "alpaca_*.jsonl"}
+              "AlpacaEval (modern models)": "alpaca_*.jsonl",
+              "WildChat (vs GPT-4-0314)": "wildchat_*.jsonl",
+              "NoRobots (vs human)": "norobots_*.jsonl"}
     lines = ["# Step 4 — interpretable classifier (Claude vs not-Claude)\n",
              "Logistic regression, standardized features, class-balanced, "
              "5-fold stratified CV. AUC=1.0 perfect, 0.5 chance.\n"]
