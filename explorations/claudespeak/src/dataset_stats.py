@@ -1,6 +1,6 @@
 """Reproducible dataset statistics for the Claudespeak corpus.
 
-Computes, for both tracks (HC3, AlpacaEval) and every source:
+Computes, for every track (HC3, AlpacaEval, WildChat, NoRobots, ...) and source:
   - volume: #prompts, #records, total response words & sentences;
   - prompt-length and response-length distributions (mean/median/p25/p75);
   - per-domain volume;
@@ -39,9 +39,19 @@ P1 = {"i", "me", "my", "mine", "we", "us", "our", "ours", "myself"}
 P2 = {"you", "your", "yours", "yourself", "yourselves"}
 
 
+# Display order for tracks; any dataset not listed is appended alphabetically.
+TRACK_ORDER = ["HC3", "AlpacaEval", "WildChat", "NoRobots"]
+
+
 def track_of(rec) -> str:
-    ds = (rec.get("prompt_source") or {}).get("dataset", "")
-    return "HC3" if ds == "HC3" else "AlpacaEval" if ds == "AlpacaEval" else "?"
+    return (rec.get("prompt_source") or {}).get("dataset") or "?"
+
+
+def tracks_present(recs):
+    present = {r["_track"] for r in recs}
+    ordered = [t for t in TRACK_ORDER if t in present]
+    ordered += sorted(present - set(ordered))
+    return ordered
 
 
 def sentences(text: str):
@@ -102,14 +112,15 @@ def dist(vals):
 def main():
     os.makedirs(REPORTS, exist_ok=True)
     recs = []
-    for p in sorted(glob.glob(os.path.join(CORPUS_DIR, "pilot_*.jsonl")) +
-                    glob.glob(os.path.join(CORPUS_DIR, "alpaca_*.jsonl"))):
+    for p in sorted(glob.glob(os.path.join(CORPUS_DIR, "*.jsonl"))):
         recs += read_records(p)
 
     for r in recs:
         r["_track"] = track_of(r)
         r["_rwords"] = len(WORD.findall(r["completion"] or ""))
         r["_rsents"] = len(sentences(r["completion"]))
+
+    TRACKS = tracks_present(recs)
 
     # unique prompts (dedupe by prompt_id) for prompt-side stats
     seen, prompts = set(), []
@@ -123,7 +134,7 @@ def main():
     # 1. volume + response length by track and source
     lines.append("## 1. Volume and response length by source\n")
     rows = []
-    for t in ("HC3", "AlpacaEval"):
+    for t in TRACKS:
         for g in sorted({r["generator"] for r in recs if r["_track"] == t}):
             sub = [r for r in recs if r["_track"] == t and r["generator"] == g]
             d = dist([r["_rwords"] for r in sub])
@@ -138,7 +149,7 @@ def main():
     # 2. prompt-length stats by track (unique prompts)
     lines.append("## 2. Prompt length by track (unique prompts)\n")
     prows = []
-    for t in ("HC3", "AlpacaEval"):
+    for t in TRACKS:
         pl = [len(WORD.findall(r["prompt"] or "")) for r in prompts if r["_track"] == t]
         nq = sum(1 for r in prompts if r["_track"] == t and "?" in (r["prompt"] or ""))
         d = dist(pl)
@@ -153,7 +164,7 @@ def main():
     lines.append("## 2b. Prompt mood (syntactic; % of unique prompts)\n")
     lines.append("Questions vs declaratives etc. for the PROMPTS (what we ask Claude).\n")
     pm = []
-    for t in ("HC3", "AlpacaEval"):
+    for t in TRACKS:
         c = Counter(prompt_mood(r["prompt"]) for r in prompts if r["_track"] == t)
         n = sum(c.values()) or 1
         pm.append({"track": t,
@@ -181,7 +192,7 @@ def main():
     lines.append("## 4. Sentence mood in responses by source "
                  "(% of sentences; questions vs declaratives etc.)\n")
     mrows = []
-    for t in ("HC3", "AlpacaEval"):
+    for t in TRACKS:
         for g in sorted({r["generator"] for r in recs if r["_track"] == t}):
             cnt = Counter()
             for r in recs:
@@ -200,7 +211,7 @@ def main():
     # 5. register: pronoun rates + readability by source
     lines.append("## 5. Register signals by source (per 100 words; Flesch readability)\n")
     rr = []
-    for t in ("HC3", "AlpacaEval"):
+    for t in TRACKS:
         for g in sorted({r["generator"] for r in recs if r["_track"] == t}):
             sub = [r for r in recs if r["_track"] == t and r["generator"] == g]
             words = [w for r in sub for w in WORD.findall((r["completion"] or "").lower())]
