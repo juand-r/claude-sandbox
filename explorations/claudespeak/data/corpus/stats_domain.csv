@@ -8,3 +8,15 @@ HC3,cs_ai,40,160,35366
 HC3,finance,40,160,39914
 HC3,general,80,320,47162
 HC3,medicine,40,160,33094
+NoRobots,?,1500,1500,262520
+NoRobots,Brainstorm,150,150,32956
+NoRobots,Chat,150,150,3569
+NoRobots,Classify,150,150,4254
+NoRobots,Closed QA,150,150,3348
+NoRobots,Coding,150,150,17448
+NoRobots,Extract,150,150,3831
+NoRobots,Generation,150,150,26669
+NoRobots,Open QA,150,150,10018
+NoRobots,Rewrite,150,150,23887
+NoRobots,Summarize,150,150,8710
+WildChat,?,1500,2128,945624

@@ -10,3 +10,7 @@ AlpacaEval,deepseek-llm-67b-chat,0.92,1.4,51.9
 AlpacaEval,gemini-pro,0.73,1.15,50.5
 AlpacaEval,gpt-4-turbo-2024-04-09,0.51,1.45,47.4
 AlpacaEval,gpt-4o-2024-05-13,0.63,1.31,48.8
+WildChat,claude-opus-4-8,1.31,1.3,44.9
+WildChat,gpt-4-0314,1.07,1.16,42.9
+NoRobots,claude-opus-4-8,1.2,1.4,48.2
+NoRobots,human,1.3,1.68,58.7

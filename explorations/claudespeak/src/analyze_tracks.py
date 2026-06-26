@@ -71,6 +71,10 @@ def main():
     nrec = {}
     for t in tracks:
         sub = df[df["_track"] == t]
+        # Parallel-corpus control: compare only on prompts Claude also answered
+        # (a no-op for fully-generated tracks; matters for partial WildChat).
+        claude_pids = set(sub[sub["generator"] == CLAUDE]["prompt_id"])
+        sub = sub[sub["prompt_id"].isin(claude_pids)]
         claude = sub[sub["generator"] == CLAUDE]
         others = sub[sub["generator"] != CLAUDE]
         nrec[t] = (len(claude), len(others))

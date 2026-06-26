@@ -15,6 +15,10 @@
 | AlpacaEval | gemini-pro                |       200 |              44399 |             222   |               234   |             82.5 |            317.5 |
 | AlpacaEval | gpt-4-turbo-2024-04-09    |       200 |              54468 |             272.3 |               284.5 |            117.5 |            383.8 |
 | AlpacaEval | gpt-4o-2024-05-13         |       200 |              55897 |             279.5 |               284.5 |            122.2 |            385.8 |
+| WildChat   | claude-opus-4-8           |       628 |             383927 |             611.3 |               333.5 |            202.5 |            841.8 |
+| WildChat   | gpt-4-0314                |      1500 |             561697 |             374.5 |               357   |            168.2 |            554.8 |
+| NoRobots   | claude-opus-4-8           |      1500 |             262520 |             175   |               162   |             72.2 |            244   |
+| NoRobots   | human                     |      1500 |             134690 |              89.8 |                48   |             21   |            120   |
 
 ## 2. Prompt length by track (unique prompts)
 
@@ -22,6 +26,8 @@
 |:-----------|----------:|--------------------:|----------------------:|-------------------:|-------------------:|-------------------------:|
 | HC3        |       200 |                25.5 |                    10 |                6   |               42.8 |                       54 |
 | AlpacaEval |       200 |                28.5 |                    18 |               10.2 |               31.8 |                       52 |
+| WildChat   |      1500 |                60.5 |                    35 |               13.2 |               78   |                       21 |
+| NoRobots   |      1500 |               101.6 |                    49 |               18.2 |              153   |                       53 |
 
 ## 2b. Prompt mood (syntactic; % of unique prompts)
 
@@ -31,6 +37,8 @@ Questions vs declaratives etc. for the PROMPTS (what we ask Claude).
 |:-----------|-----------------:|--------------:|---------------:|
 | HC3        |               74 |             2 |             24 |
 | AlpacaEval |               58 |            20 |             21 |
+| WildChat   |               27 |            35 |             38 |
+| NoRobots   |               54 |            21 |             26 |
 
 ## 3. Volume by domain (response words, all sources)
 
@@ -45,6 +53,18 @@ Questions vs declaratives etc. for the PROMPTS (what we ask Claude).
 | HC3        | finance      |        40 |       160 |              39914 |
 | HC3        | general      |        80 |       320 |              47162 |
 | HC3        | medicine     |        40 |       160 |              33094 |
+| NoRobots   | ?            |      1500 |      1500 |             262520 |
+| NoRobots   | Brainstorm   |       150 |       150 |              32956 |
+| NoRobots   | Chat         |       150 |       150 |               3569 |
+| NoRobots   | Classify     |       150 |       150 |               4254 |
+| NoRobots   | Closed QA    |       150 |       150 |               3348 |
+| NoRobots   | Coding       |       150 |       150 |              17448 |
+| NoRobots   | Extract      |       150 |       150 |               3831 |
+| NoRobots   | Generation   |       150 |       150 |              26669 |
+| NoRobots   | Open QA      |       150 |       150 |              10018 |
+| NoRobots   | Rewrite      |       150 |       150 |              23887 |
+| NoRobots   | Summarize    |       150 |       150 |               8710 |
+| WildChat   | ?            |      1500 |      2128 |             945624 |
 
 ## 4. Sentence mood in responses by source (% of sentences; questions vs declaratives etc.)
 
@@ -61,6 +81,10 @@ Questions vs declaratives etc. for the PROMPTS (what we ask Claude).
 | AlpacaEval | gemini-pro                |           2 |        2 |         1 |        96 |
 | AlpacaEval | gpt-4-turbo-2024-04-09    |           1 |        1 |         2 |        96 |
 | AlpacaEval | gpt-4o-2024-05-13         |           2 |        1 |         2 |        96 |
+| WildChat   | claude-opus-4-8           |           6 |        1 |         3 |        91 |
+| WildChat   | gpt-4-0314                |           3 |        1 |         2 |        94 |
+| NoRobots   | claude-opus-4-8           |           9 |        1 |         5 |        86 |
+| NoRobots   | human                     |           5 |        1 |         5 |        90 |
 
 ## 5. Register signals by source (per 100 words; Flesch readability)
 
@@ -77,78 +101,86 @@ Questions vs declaratives etc. for the PROMPTS (what we ask Claude).
 | AlpacaEval | gemini-pro                |                  0.73 |                   1.15 |     50.5 |
 | AlpacaEval | gpt-4-turbo-2024-04-09    |                  0.51 |                   1.45 |     47.4 |
 | AlpacaEval | gpt-4o-2024-05-13         |                  0.63 |                   1.31 |     48.8 |
+| WildChat   | claude-opus-4-8           |                  1.31 |                   1.3  |     44.9 |
+| WildChat   | gpt-4-0314                |                  1.07 |                   1.16 |     42.9 |
+| NoRobots   | claude-opus-4-8           |                  1.2  |                   1.4  |     48.2 |
+| NoRobots   | human                     |                  1.3  |                   1.68 |     58.7 |
 
 ## 6. Prompt variety by dimension (counts of 200 per track)
 
 
 ### category
 
-| category                  |   AlpacaEval |   HC3 |
-|:--------------------------|-------------:|------:|
-| advice_recommendation     |           31 |    49 |
-| classification_extraction |            8 |     0 |
-| code                      |           11 |     0 |
-| creative_writing          |           24 |     0 |
-| explanation               |           33 |    94 |
-| factual_qa                |           29 |    53 |
-| instruction_task          |           26 |     3 |
-| math_reasoning            |           14 |     0 |
-| opinion_subjective        |           11 |     0 |
-| other                     |            1 |     1 |
-| roleplay                  |            4 |     0 |
-| summarize_rewrite_edit    |            7 |     0 |
+| category                  |   ? |   AlpacaEval |   HC3 |   NoRobots |   WildChat |
+|:--------------------------|----:|-------------:|------:|-----------:|-----------:|
+| advice_recommendation     |   0 |           31 |    49 |         35 |         18 |
+| classification_extraction |   0 |            9 |     0 |        101 |          5 |
+| code                      |   0 |           11 |     0 |         39 |         44 |
+| creative_writing          |   0 |           24 |     0 |         40 |        166 |
+| explanation               |   0 |           33 |    94 |         14 |         37 |
+| factual_qa                |   0 |           29 |    53 |         78 |         44 |
+| instruction_task          |   0 |           26 |     3 |          9 |         32 |
+| math_reasoning            |   0 |           14 |     0 |          1 |         11 |
+| opinion_subjective        |   0 |           11 |     0 |          1 |          8 |
+| other                     |   0 |            1 |     1 |          2 |         15 |
+| personal_emotional        |   0 |            0 |     0 |          6 |          0 |
+| roleplay                  |   0 |            4 |     0 |          0 |          9 |
+| summarize_rewrite_edit    |   1 |            7 |     0 |         74 |         11 |
 
 
 ### speech_act
 
-| speech_act   |   AlpacaEval |   HC3 |
-|:-------------|-------------:|------:|
-| assertion    |            0 |     1 |
-| directive    |           93 |    46 |
-| expressive   |            0 |     1 |
-| other        |            0 |     2 |
-| question     |          106 |   150 |
+| speech_act   |   ? |   AlpacaEval |   HC3 |   NoRobots |   WildChat |
+|:-------------|----:|-------------:|------:|-----------:|-----------:|
+| assertion    |   0 |            0 |     1 |          1 |          9 |
+| directive    |   1 |           94 |    46 |        238 |        295 |
+| expressive   |   0 |            0 |     1 |          6 |          0 |
+| other        |   0 |            0 |     2 |          0 |          2 |
+| question     |   0 |          106 |   150 |        155 |         94 |
 
 
 ### register
 
-| register   |   AlpacaEval |   HC3 |
-|:-----------|-------------:|------:|
-| casual     |           62 |    70 |
-| formal     |            7 |     0 |
-| neutral    |          130 |   130 |
+| register   |   ? |   AlpacaEval |   HC3 |   NoRobots |   WildChat |
+|:-----------|----:|-------------:|------:|-----------:|-----------:|
+| casual     |   1 |           62 |    70 |         77 |        108 |
+| formal     |   0 |            7 |     0 |          4 |         42 |
+| neutral    |   0 |          131 |   130 |        319 |        250 |
 
 
 ### tone
 
-| tone      |   AlpacaEval |   HC3 |
-|:----------|-------------:|------:|
-| emotional |            5 |    20 |
-| neutral   |          175 |   165 |
-| playful   |           18 |     1 |
-| urgent    |            1 |    14 |
+| tone      |   ? |   AlpacaEval |   HC3 |   NoRobots |   WildChat |
+|:----------|----:|-------------:|------:|-----------:|-----------:|
+| emotional |   0 |            5 |    20 |          7 |          7 |
+| neutral   |   1 |          176 |   165 |        363 |        346 |
+| playful   |   0 |           18 |     1 |         29 |         45 |
+| urgent    |   0 |            1 |    14 |          1 |          2 |
 
 
 ### topic
 
-| topic            |   AlpacaEval |   HC3 |
-|:-----------------|-------------:|------:|
-| arts_humanities  |           17 |     4 |
-| education_howto  |           21 |     2 |
-| entertainment    |           18 |    15 |
-| finance_business |           18 |    41 |
-| health_medicine  |            6 |    57 |
-| math_logic       |           14 |     8 |
-| other            |            9 |     8 |
-| personal_life    |           20 |     1 |
-| science_tech     |           33 |    48 |
-| society_politics |           18 |    11 |
-| software_code    |           25 |     5 |
+| topic            |   ? |   AlpacaEval |   HC3 |   NoRobots |   WildChat |
+|:-----------------|----:|-------------:|------:|-----------:|-----------:|
+| arts_humanities  |   0 |           17 |     4 |         59 |         32 |
+| education_howto  |   0 |           21 |     2 |         25 |         21 |
+| entertainment    |   0 |           18 |    15 |         72 |        121 |
+| finance_business |   0 |           18 |    41 |         28 |         35 |
+| health_medicine  |   0 |            6 |    57 |         17 |         32 |
+| math_logic       |   0 |           14 |     8 |          2 |         14 |
+| other            |   0 |            9 |     8 |         28 |         21 |
+| personal_life    |   0 |           20 |     1 |         43 |          9 |
+| science_tech     |   0 |           34 |    48 |         44 |         21 |
+| society_politics |   0 |           18 |    11 |         37 |         15 |
+| software_code    |   1 |           25 |     5 |         45 |         79 |
 
 
 ### interaction flags (count)
 
 | track      |   subjective |   sensitive |   multiturn_implied |
 |:-----------|-------------:|------------:|--------------------:|
+| ?          |            0 |           0 |                   0 |
 | AlpacaEval |           39 |          16 |                   4 |
 | HC3        |           14 |          61 |                   8 |
+| NoRobots   |           33 |          25 |                   4 |
+| WildChat   |           44 |          80 |                  27 |
