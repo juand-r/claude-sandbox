@@ -160,3 +160,35 @@ tasks don't invite continuation). Magnitudes shrink on the diverse tracks
 - Finishing WildChat (~870 more Claude gens, ~$32) needs API credits topped up.
 - Paper still describes only HC3+AlpacaEval; needs rewrite to fold in the two new
   tracks (corpus tables, coverage section, dataset stats, cross-track result).
+
+---
+
+## Phase 3 harnesses: self-interaction (C2) + multi-turn (C1) — BUILT, awaiting API credits
+
+Built the two generation harnesses the project's most interesting open questions
+need. Both are written, structurally tested (role-alternation, resumability,
+serialization), and ready to fire the moment the Anthropic credit balance is
+topped up. Neither has been run (generation is credit-blocked).
+
+New primitive: `generate.generate_claude_chat(messages, ...)` — multi-turn Claude
+generation that captures the reasoning trace into the new `Record.thinking_text`
+field (for the Sense C "what does Claude fixate on" analysis).
+
+### C2 — Claude-to-Claude self-interaction (src/generate_selfplay.py)
+Two instances of Claude converse from a seed opener for N_TURNS (default 30) across
+5 registers (open-ended, philosophical, task, adversarial, everyday) to test where
+any attractor (cf. the Claude 4 "spiritual bliss" state) emerges. Seed = A's turn 0;
+roles alternate validly from each side. Resumable per conversation. Captures
+thinking per turn. Cost ~5x30=150 calls (~a few USD).
+
+### C1 — multi-turn (src/acquire_mtbench.py + src/generate_mtbench.py)
+acquire_mtbench.py downloaded the 80 MT-Bench questions (8 categories x 10, two
+turns each) -> data/sources/mtbench_manifest.jsonl (DONE, no API). generate_mtbench.py
+generates Claude's turn-1 and turn-2 answers per question to test whether the
+fingerprint intensifies/shifts across turns. Concurrent, resumable. Cost ~80x2=160 calls.
+
+### To run when credits land
+    python3 src/generate_selfplay.py     # -> data/corpus/selfplay_generated.jsonl
+    python3 src/generate_mtbench.py      # -> data/corpus/mtbench_generated.jsonl
+Then build the analyses (style trajectory over turns; vocab/affirmation/emoji
+collapse in self-play; thinking-trace topics for Sense C).
