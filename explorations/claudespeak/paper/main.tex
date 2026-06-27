@@ -95,46 +95,97 @@ A large literature aims to decide \emph{whether} a text is machine-generated.
 Supervised detectors fine-tune classifiers such as RoBERTa on model outputs
 \citep{solaiman2019release}, while zero-shot methods exploit statistical
 signatures of the generating distribution: probability curvature
-\citep{mitchell2023detectgpt} or the cross-perplexity of a model pair
-\citep{hans2024binoculars}. \citet{dugan2024raid} show such detectors are brittle
-across domains and attacks, and watermarking \citep{kirchenbauer2023watermark}
-sidesteps detection by injecting a signal at generation time. We do not detect
-machine text; we instead \emph{characterize} the style of one frontier model,
-assuming provenance is known.
+\citep{mitchell2023detectgpt}, its efficient conditional-sampling successor
+\citep{bao2024fastdetectgpt}, structured search over weaker-model features
+\citep{verma2024ghostbuster}, or the cross-perplexity of a model pair
+\citep{hans2024binoculars}. ``In-the-wild'' benchmarks
+\citep{li2024mage,wang2024m4} and \citet{dugan2024raid} show such detectors are
+brittle across domains and attacks; paraphrasing in particular evades them
+\citep{krishna2023dipper}, with adversarial training
+\citep{hu2023radar} as a partial defense and arguments that reliable detection
+may be fundamentally hard \citep{sadasivan2023reliable}. Watermarking
+\citep{kirchenbauer2023watermark} sidesteps detection by injecting a signal at
+generation time. We do not detect machine text; we instead \emph{characterize}
+the style of one frontier model, assuming provenance is known.
 
 \paragraph{Attributing text to a model.}
 Closer to our aim is work on \emph{which} model wrote a text. Surveys frame this
-as authorship attribution in the LLM era \citep{huang2024authorship}, and
-discriminative classifiers can separate model families. We complement
+as authorship attribution in the LLM era \citep{huang2024authorship}, and a recent
+forensic survey organizes the field into detection, attribution, and
+\emph{characterization} \citep{kumarage2024forensicsurvey}---the last being our
+category. Attribution methods range from multi-class benchmarks
+\citep{uchendu2021turingbench} to contrastive-perplexity origin tracing
+\citep{li2023origintracing}, information-density features
+\citep{venkatraman2024gptwho}, learned style representations
+\citep{riverasoto2024fewshot}, and interpretable stylometry
+\citep{kumarage2023neural}; notably, stylistic signatures persist even in text
+optimized to fool detectors \citep{riverasoto2025fingerprints}. We complement
 attribution: rather than optimizing a label, we use an interpretable,
 length-controlled regression and log-odds $n$-gram selection
 \citep{monroe2008fightin} to surface \emph{what} distinguishes Claude, and we
 audit which stylistic claims hold up under corpus coverage.
 
+\paragraph{Characterizing model writing style.}
+Most directly related is recent work that compares the \emph{style} of LLM and
+human text rather than detecting it. \citet{reinhart2025llmwrite} build parallel
+human/LLM corpora and apply Biber's grammatical/rhetorical features, finding
+systematic, scale-growing differences; \citet{sun2025idiosyncrasies} show models
+are mutually distinguishable from word-level idiosyncrasies that survive paraphrase;
+and \citet{mcgovern2024fingerprints} recover model ``fingerprints'' from simple
+lexical/POS frequencies. Classic stylometry has likewise been applied to AI
+creative writing \citep{osullivan2025stylometry}, and a parallel line operationalizes
+low-quality ``AI slop'' as measurable dimensions \citep{shaib2025slop}. We share the
+parallel-corpus, interpretable-feature stance but go deeper on a single model: we
+characterize Claude specifically, isolate an \emph{interactional} closing move that
+feature inventories do not capture, add suffix-automaton novelty evidence, and show
+the fingerprint replicates across four corpora.
+
 \paragraph{Excess vocabulary and ``AI-ese.''}
 \citet{kobak2024delving} quantify LLM-marker words (e.g.\ ``delve'') as excess
-vocabulary in the biomedical literature; popular accounts trace the habit to
-RLHF annotation pipelines \citep{willison2024delve}. Such word-lists, however,
-are largely a ChatGPT/GPT signature. We treat the ``delve'' folklore as a
-hypothesis to test rather than a given: our markers are discovered
-data-drivenly from parallel corpora, and we show this trait is \emph{not}
-characteristic of Claude.
+vocabulary in the biomedical literature, and corpus-scale estimators track the
+rising LLM footprint in papers, peer reviews, and society at large
+\citep{liang2024mapping,liang2024monitoring}, with parallel evidence from arXiv
+abstracts \citep{geng2024transforming} and even spoken language
+\citep{yakura2024spoken}. Popular accounts trace the habit to RLHF annotation
+pipelines \citep{willison2024delve}, a hypothesis given peer-reviewed support by
+\citet{juzek2024delve}. Such word-lists, however, are largely a ChatGPT/GPT
+signature and are unstable over time---``delve'' fell once it was publicly flagged
+\citep{geng2025coevolution}. We therefore treat the ``delve'' folklore as a
+hypothesis to test rather than a given: our markers are discovered data-drivenly
+from parallel corpora, and we show this trait is \emph{not} characteristic of Claude.
 
 \paragraph{Stylometry and $n$-gram novelty.}
 Our features build on classical stylometry, notably function-word frequencies
-and Burrows's Delta \citep{burrows2002delta}. To probe memorization versus
-genuine novelty, we adopt suffix-automaton $n$-gram search
-\citep{merrill2024rustydawg} and unbounded $n$-gram indexing
-\citep{liu2024infinigram}, applying novelty mining to a single model's outputs
-comparatively.
+and Burrows's Delta \citep{burrows2002delta}. To probe memorization
+\citep{carlini2023memorization} versus genuine novelty, we adopt suffix-automaton
+$n$-gram search \citep{merrill2024rustydawg,merrill2024ngramnovelty}, unbounded
+$n$-gram indexing \citep{liu2024infinigram}, and related corpus-search tooling
+\citep{elazar2024wimbd}, applying novelty mining to a single model's outputs
+comparatively. We read novelty as relative distinctiveness, not creativity: it
+correlates with but does not equal creative quality
+\citep{lu2024creativityindex,saakyan2026deathofnovelty}.
 
-\paragraph{Sycophancy and persona.}
-Frontier models exhibit measurable behavioral signatures: sycophancy and
-agreement under pressure \citep{perez2022discovering,sharma2023sycophancy}, and
-self-interaction attractors such as the ``spiritual bliss'' state reported for
-Claude \citep{anthropic2025claude4}. These motivate our future-work agenda on
-multi-turn corrective behavior, where stylistic fingerprints may interact with
-concession dynamics.
+\paragraph{Post-training, persona, and behavioral signatures.}
+The voice we characterize is a product of post-training: instruction tuning and
+RLHF \citep{ouyang2022instructgpt} and, for Claude, RL from AI feedback
+\citep{bai2022constitutional} produce the ``assistant'' and its register, which can
+be framed as a trained persona \citep{shanahan2023roleplay} with steerable,
+training-induced trait directions \citep{chen2025personavectors}; Anthropic
+describes Claude's voice as deliberately shaped by character training
+\citep{anthropic2024claudecharacter}. Several of our specific markers have known
+post-training causes: reward correlates with length \citep{singhal2023length},
+preference models favor lists/bold/emphasis \citep{zhang2024formatbias}, and RLHF
+reduces output diversity \citep{kirk2024rlhfdiversity,padmakumar2024diversity}---a
+verbosity-and-formatting-and-homogenization profile consistent with what we observe.
+Frontier models also exhibit behavioral signatures: verbosity bias in LLM judges
+\citep{zheng2023mtbench}, sycophancy and agreement under pressure
+\citep{perez2022discovering,sharma2023sycophancy,xu2023askagain}, exaggerated
+safety/over-refusal \citep{rottger2024xstest}, persona/identity drift over turns
+\citep{li2024instability,choi2024identitydrift}, and self-interaction attractors
+such as the ``spiritual bliss'' state reported for Claude
+\citep{anthropic2025claude4}. These motivate our future-work agenda on multi-turn
+corrective behavior, where stylistic fingerprints may interact with concession and
+drift dynamics.
 
 \paragraph{Data.}
 We draw on parallel human/LLM corpora including HC3 \citep{guo2023hc3} and
@@ -142,7 +193,9 @@ AlpacaEval \citep{alpacaeval2023}, and broaden coverage with real in-the-wild us
 prompts from WildChat \citep{zhao2024wildchat} and the professionally
 hand-authored No Robots dataset \citep{norobots2023}, repurposing all of them for
 comparative stylometric characterization rather than detection or preference
-ranking.
+ranking. Other large conversation corpora---LMSYS-Chat-1M and Chatbot Arena
+\citep{zheng2024lmsyschat1m,zheng2023mtbench}---offer naturally parallel,
+multi-model and multi-turn material for future extensions.
 
 \section{Corpus}
 We construct four parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
