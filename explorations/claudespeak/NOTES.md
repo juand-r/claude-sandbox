@@ -171,8 +171,9 @@ serialization), and ready to fire the moment the Anthropic credit balance is
 topped up. Neither has been run (generation is credit-blocked).
 
 New primitive: `generate.generate_claude_chat(messages, ...)` — multi-turn Claude
-generation that captures the reasoning trace into the new `Record.thinking_text`
-field (for the Sense C "what does Claude fixate on" analysis).
+generation; the per-turn reasoning trace is stored in the new `Record.thinking_text`
+field (kept because it is irrecoverable after generation; analyzing it is not a
+priority now, but the option stays open).
 
 ### C2 — Claude-to-Claude self-interaction (src/generate_selfplay.py)
 Two instances of Claude converse from a seed opener for N_TURNS (default 30) across
@@ -190,5 +191,6 @@ fingerprint intensifies/shifts across turns. Concurrent, resumable. Cost ~80x2=1
 ### To run when credits land
     python3 src/generate_selfplay.py     # -> data/corpus/selfplay_generated.jsonl
     python3 src/generate_mtbench.py      # -> data/corpus/mtbench_generated.jsonl
-Then build the analyses (style trajectory over turns; vocab/affirmation/emoji
-collapse in self-play; thinking-trace topics for Sense C).
+Then build the analyses on the answer text (style trajectory over turns;
+vocab/affirmation/emoji collapse in self-play). Reasoning traces are stored
+alongside and can be analyzed later if we choose.

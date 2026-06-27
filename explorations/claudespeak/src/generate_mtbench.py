@@ -1,4 +1,4 @@
-"""Generate Claude over MT-Bench (multi-turn track, Exp C1).
+"""Generate Claude over MT-Bench (multi-turn track).
 
 For each of the 80 MT-Bench questions we generate Claude's turn-1 answer, then its
 turn-2 answer conditioned on the real follow-up. This lets us ask whether the
@@ -7,9 +7,9 @@ attenuates, or shifts from turn 1 to turn 2 -- the offer-to-continue closer in
 particular is a turn-final move whose role may change across turns.
 
 Records share conversation_id = prompt_id with turn_index 0 (first answer) and 1
-(follow-up answer); the reasoning trace is captured per turn (thinking_text).
+(follow-up answer); the per-turn thinking trace is stored (Record.thinking_text).
 Concurrent across questions, sequential within a question, resumable. NEEDS API
-CREDITS. Cost (rough): 80 x 2 = 160 Claude calls with thinking on.
+CREDITS. Cost (rough): 80 x 2 = 160 Claude calls.
 """
 from __future__ import annotations
 

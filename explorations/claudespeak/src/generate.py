@@ -114,9 +114,10 @@ def generate_claude_chat(
 
     `messages` is a full alternating user/assistant list (last entry must be a
     user turn); this is the primitive behind the multi-turn and self-interaction
-    harnesses. Captures the reasoning trace into Record.thinking_text (Sense C).
-    The Record's `prompt` field stores the latest user message; the full dialogue
-    is reconstructable from conversation_id + turn_index across the corpus file.
+    harnesses. The Record's `prompt` field stores the latest user message; the full
+    dialogue is reconstructable from conversation_id + turn_index across the corpus
+    file. Reasoning stays on (effort) for comparability, and the thinking trace is
+    stored in Record.thinking_text (its length is also in usage.thinking_chars).
     """
     if effort is None:
         thinking = {"type": "disabled"}

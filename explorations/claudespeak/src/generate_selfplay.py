@@ -1,11 +1,11 @@
-"""Claude-to-Claude self-interaction harness (Sense B/C).
+"""Claude-to-Claude self-interaction harness.
 
 Two instances of the same Claude model converse for N turns from a seed opener.
-We study (B) what the *style* does over a long self-conversation -- does it drift
-into an attractor, collapse in vocabulary, pile on emoji/affirmation? -- and (C)
-what the *reasoning traces* fixate on (Record.thinking_text is captured per turn).
-This is the quantitative counterpart to the ``spiritual bliss'' attractor reported
-in the Claude 4 system card.
+We study what the answer *style* does over a long self-conversation: does it drift
+into an attractor, collapse in vocabulary, pile on emoji/affirmation? This is the
+quantitative counterpart to the ``spiritual bliss'' attractor reported in the
+Claude 4 system card. (Reasoning stays on for comparability; the per-turn thinking
+trace is stored for possible later use, but analyzing it is not a priority now.)
 
 Design: the seed is treated as instance A's turn 0 (fixed text); instance B replies
 (turn 1), A replies (turn 2), and so on, so user/assistant roles alternate validly
@@ -30,7 +30,7 @@ from schema import read_records, append_records, CORPUS_DIR
 from generate import generate_claude_chat, _anthropic
 
 MODEL = "claude-opus-4-8"
-EFFORT = "high"            # thinking ON so we capture reasoning traces (Sense C)
+EFFORT = "high"            # reasoning on, to match the rest of the corpus
 N_TURNS = 30              # generated turns per conversation (excludes the seed)
 MAX_TOKENS = 2048
 OUT = os.path.join(CORPUS_DIR, "selfplay_generated.jsonl")

@@ -65,7 +65,7 @@ class Record:
     # reproducibility core
     gen_params: dict = field(default_factory=dict)
     usage: Optional[dict] = None
-    thinking_text: Optional[str] = None  # captured reasoning trace (Sense C); may be None
+    thinking_text: Optional[str] = None  # captured reasoning trace (stored, may be None)
     timestamp_utc: str = field(default_factory=utcnow_iso)
     harness_git_commit: Optional[str] = field(default_factory=git_commit)
     raw_response_path: Optional[str] = None
