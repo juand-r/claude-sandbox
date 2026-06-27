@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{url}
 \usepackage[textsize=footnotesize]{todonotes} % draft TODO notes; remove for camera-ready
 
@@ -89,6 +90,7 @@ complementary methods. Our contributions:
 \end{enumerate}
 
 \section{Related Work}
+\label{sec:related}
 
 \paragraph{Detecting machine-generated text.}
 A large literature aims to decide \emph{whether} a text is machine-generated.
@@ -109,21 +111,23 @@ generation time. We do not detect machine text; we instead \emph{characterize}
 the style of one frontier model, assuming provenance is known.
 
 \paragraph{Attributing text to a model.}
-Closer to our aim is work on \emph{which} model wrote a text. Surveys frame this
-as authorship attribution in the LLM era \citep{huang2024authorship}, and a recent
-forensic survey organizes the field into detection, attribution, and
-\emph{characterization} \citep{kumarage2024forensicsurvey}---the last being our
-category. Attribution methods range from multi-class benchmarks
-\citep{uchendu2021turingbench} to contrastive-perplexity origin tracing
-\citep{li2023origintracing}, information-density features
-\citep{venkatraman2024gptwho}, learned style representations
-\citep{riverasoto2024fewshot}, and interpretable stylometry
-\citep{kumarage2023neural}; notably, stylistic signatures persist even in text
-optimized to fool detectors \citep{riverasoto2025fingerprints}. We complement
-attribution: rather than optimizing a label, we use an interpretable,
-length-controlled regression and log-odds $n$-gram selection
-\citep{monroe2008fightin} to surface \emph{what} distinguishes Claude, and we
-audit which stylistic claims hold up under corpus coverage.
+Closer to our aim is work on \emph{which} model wrote a text. A recent forensic
+survey organizes this space into detection, attribution, and
+\emph{characterization} \citep{kumarage2024forensicsurvey}; the last is our
+category, and the problem is also framed as authorship attribution in the LLM era
+\citep{huang2024authorship}. Concrete attribution methods exploit a range of
+signals---multi-class benchmarks over many generators
+\citep{uchendu2021turingbench}, contrastive perplexity for origin tracing
+\citep{li2023origintracing}, information density \citep{venkatraman2024gptwho}, and
+learned style representations \citep{riverasoto2024fewshot}---and, closest to us,
+interpretable stylometry \citep{kumarage2023neural}. One result matters for our
+framing in particular: a model's stylistic signature persists even in text
+deliberately optimized to evade detectors \citep{riverasoto2025fingerprints}, so
+style is robust enough to be worth characterizing in its own right. Rather than
+optimize a label, we use an interpretable, length-controlled regression and
+log-odds $n$-gram selection \citep{monroe2008fightin} to surface \emph{what}
+distinguishes Claude, and we audit which stylistic claims hold up under corpus
+coverage.
 
 \paragraph{Characterizing model writing style.}
 Most directly related is recent work that compares the \emph{style} of LLM and
@@ -165,27 +169,31 @@ comparatively. We read novelty as relative distinctiveness, not creativity: it
 correlates with but does not equal creative quality
 \citep{lu2024creativityindex,saakyan2026deathofnovelty}.
 
-\paragraph{Post-training, persona, and behavioral signatures.}
-The voice we characterize is a product of post-training: instruction tuning and
-RLHF \citep{ouyang2022instructgpt} and, for Claude, RL from AI feedback
-\citep{bai2022constitutional} produce the ``assistant'' and its register, which can
-be framed as a trained persona \citep{shanahan2023roleplay} with steerable,
-training-induced trait directions \citep{chen2025personavectors}; Anthropic
-describes Claude's voice as deliberately shaped by character training
-\citep{anthropic2024claudecharacter}. Several of our specific markers have known
-post-training causes: reward correlates with length \citep{singhal2023length},
-preference models favor lists/bold/emphasis \citep{zhang2024formatbias}, and RLHF
-reduces output diversity \citep{kirk2024rlhfdiversity,padmakumar2024diversity}---a
-verbosity-and-formatting-and-homogenization profile consistent with what we observe.
-Frontier models also exhibit behavioral signatures: verbosity bias in LLM judges
-\citep{zheng2023mtbench}, sycophancy and agreement under pressure
-\citep{perez2022discovering,sharma2023sycophancy,xu2023askagain}, exaggerated
-safety/over-refusal \citep{rottger2024xstest}, persona/identity drift over turns
-\citep{li2024instability,choi2024identitydrift}, and self-interaction attractors
-such as the ``spiritual bliss'' state reported for Claude
-\citep{anthropic2025claude4}. These motivate our future-work agenda on multi-turn
-corrective behavior, where stylistic fingerprints may interact with concession and
-drift dynamics.
+\paragraph{How post-training shapes style.}
+The voice we characterize is a product of post-training. Instruction tuning and
+RLHF \citep{ouyang2022instructgpt}, and for Claude RL from AI feedback
+\citep{bai2022constitutional}, produce the helpful ``assistant'' and its register,
+which can be read as a trained persona \citep{shanahan2023roleplay} with steerable,
+training-induced trait directions \citep{chen2025personavectors}, and which
+Anthropic describes as deliberately shaped by character training
+\citep{anthropic2024claudecharacter}. Crucially, several of our specific markers
+have documented post-training causes: reward correlates with response length
+\citep{singhal2023length}, preference models favor lists, bold, and emphasis
+\citep{zhang2024formatbias}, and RLHF reduces output diversity
+\citep{kirk2024rlhfdiversity,padmakumar2024diversity}. This profile---verbose,
+formatted, and homogenized---matches the markdown-scaffolded, content-dense voice we
+measure, though we test for the style itself rather than its mechanism.
+
+\paragraph{Behavioral signatures and multi-turn dynamics.}
+Beyond surface style, frontier models show measurable behavioral signatures:
+verbosity bias in LLM judges \citep{zheng2023mtbench}, sycophancy and agreement
+under pressure \citep{perez2022discovering,sharma2023sycophancy,xu2023askagain},
+exaggerated-safety over-refusal \citep{rottger2024xstest}, persona and identity
+drift across turns \citep{li2024instability,choi2024identitydrift}, and
+self-interaction attractors such as the ``spiritual bliss'' state reported for
+Claude \citep{anthropic2025claude4}. Most of these are interaction-gated, and they
+motivate our future-work agenda on multi-turn corrective behavior, where a
+stylistic fingerprint may interact with concession and drift dynamics.
 
 \paragraph{Data.}
 We draw on parallel human/LLM corpora including HC3 \citep{guo2023hc3} and
@@ -193,9 +201,48 @@ AlpacaEval \citep{alpacaeval2023}, and broaden coverage with real in-the-wild us
 prompts from WildChat \citep{zhao2024wildchat} and the professionally
 hand-authored No Robots dataset \citep{norobots2023}, repurposing all of them for
 comparative stylometric characterization rather than detection or preference
-ranking. Other large conversation corpora---LMSYS-Chat-1M and Chatbot Arena
-\citep{zheng2024lmsyschat1m,zheng2023mtbench}---offer naturally parallel,
-multi-model and multi-turn material for future extensions.
+ranking. Table~\ref{tab:datasets} situates these against the broader landscape of
+public corpora usable for comparative LLM stylometry, noting for each which sources
+(human and which models) it contains, whether multiple sources answer the
+\emph{same} prompt (the parallel property our design needs), whether it is
+multi-turn, and what annotations it carries. Two properties are scarce in
+combination: most corpora are either parallel-but-narrow (HC3, AlpacaEval) or
+diverse-but-not-parallel (WildChat, LMSYS-Chat-1M); Chatbot Arena and MT-Bench
+\citep{zheng2024lmsyschat1m,zheng2023mtbench} are naturally parallel and multi-turn
+and are the most promising material for future extensions.
+
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llp{3.6cm}lcp{3.4cm}c@{}}
+\toprule
+Dataset & Size$^\ast$ & Sources (human / models) & Parallel$^\dagger$ & Turns & Key annotations & Used \\
+\midrule
+HC3            & 24k Q      & human; ChatGPT (GPT-3.5)            & H vs model   & single   & human/AI label                     & \checkmark \\
+AlpacaEval     & 805 instr. & 6+ LLMs (no human)                  & cross-model  & single   & GPT-4 preference / win-rate        & \checkmark \\
+WildChat       & 1M conv    & real users; GPT-3.5/4 (incl.\ 0314) & no           & multi    & toxicity, language, redaction, geo & \checkmark \\
+No Robots      & 10k        & human prompts \& answers            & human only   & single   & task category ($\times$10)         & \checkmark \\
+\midrule
+LMSYS-Chat-1M  & 1M conv    & 25 LLMs (no human)                  & no           & multi    & toxicity, language, model id       & cand. \\
+Chatbot Arena  & 33k conv   & 20+ LLMs, pairwise                  & 2/prompt     & multi    & human preference vote, language    & cand. \\
+MT-Bench       & 80 Q $\times$6 & 6 LLMs                          & cross-model  & multi (2)& expert pairwise judgments          & cand. \\
+TuringBench    & 168k       & 19 generators + human               & partial      & single   & human/machine + author label       & --- \\
+MAGE           & 448k       & 27 LLMs + human                     & no           & single   & detection + generator id           & --- \\
+M4             & 122k       & multi-gen, multilingual             & no           & single   & detection + attribution            & --- \\
+RAID           & 6M+        & 11 models $\times$ attacks          & no           & single   & detection labels                   & --- \\
+\bottomrule
+\end{tabular}
+\caption{Landscape of public corpora for comparative LLM stylometry (cited in
+\S\ref{sec:related} as they appear: HC3, AlpacaEval, WildChat, No Robots,
+LMSYS-Chat-1M / Chatbot Arena / MT-Bench, TuringBench, MAGE, M4, RAID). The four
+tracks we use (top) are complementary; candidate (``cand.'') corpora are promising
+for future extensions; the rest are detection/attribution benchmarks useful mainly
+for external validation. $^\ast$Sizes approximate (prompts, conversations, or items
+as native to each). $^\dagger$\emph{Parallel} = multiple sources answer the same
+prompt (the property that controls topic in our design); ``no'' = one model per
+conversation.}
+\label{tab:datasets}
+\end{table*}
 
 \section{Corpus}
 We construct four parallel tracks (Table~\ref{tab:corpus}). In each, a fixed set
