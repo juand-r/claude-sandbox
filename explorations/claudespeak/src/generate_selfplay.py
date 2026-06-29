@@ -32,7 +32,7 @@ from generate import generate_claude_chat, _anthropic
 MODEL = "claude-opus-4-8"
 EFFORT = "high"            # reasoning on, to match the rest of the corpus
 N_TURNS = 30              # generated turns per conversation (excludes the seed)
-MAX_TOKENS = 2048
+MAX_TOKENS = 4096         # room for thinking + answer (2048 starved answers -> empty)
 OUT = os.path.join(CORPUS_DIR, "selfplay_generated.jsonl")
 
 # (seed_id, register, opener). The opener is instance A's turn 0 (fixed).
@@ -94,6 +94,7 @@ def run_conversation(seed_id, register, opener, have):
     for t in range(start, N_TURNS + 1):
         speaker = speaker_for(t)
         msgs = view(transcript, speaker)
+        done_turn = False
         for attempt in range(4):
             try:
                 rec = generate_claude_chat(
@@ -102,8 +103,18 @@ def run_conversation(seed_id, register, opener, have):
                     conversation_id=seed_id, turn_index=t,
                     prompt_source=psrc, domain="selfplay", task_type=register,
                     notes=f"self-interaction; speaker={speaker}")
+                # An empty answer (thinking ate the budget, or a refusal) must NOT
+                # be appended: replaying empty message content 400s the next call.
+                if not rec.completion.strip():
+                    if attempt < 3:
+                        time.sleep(2)
+                        continue
+                    print(f"  empty completion {seed_id} t{t}; ending conversation "
+                          f"early ({t - 1} turns kept)", file=sys.stderr)
+                    return
                 append_records(OUT, [rec])
                 transcript.append((speaker, rec.completion))
+                done_turn = True
                 break
             except Exception as e:
                 time.sleep(2 ** (attempt + 1))
@@ -111,6 +122,8 @@ def run_conversation(seed_id, register, opener, have):
                     print(f"  GAVE UP {seed_id} t{t}: {type(e).__name__} "
                           f"{str(e)[:100]}", file=sys.stderr)
                     return
+        if not done_turn:
+            return
         print(f"  {seed_id} t{t} ({speaker}): {rec.completion[:70]!r}")
 
 
