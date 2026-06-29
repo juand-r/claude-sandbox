@@ -52,7 +52,9 @@ def generate_claude(
         thinking = {"type": "disabled"}
         output_config = None
     else:
-        thinking = {"type": "adaptive"}
+        # display=summarized: Opus 4.8 omits thinking text by default; this returns
+        # a readable summary of the reasoning (the raw CoT is never exposed).
+        thinking = {"type": "adaptive", "display": "summarized"}
         output_config = {"effort": effort}
 
     kwargs = dict(model=model, max_tokens=max_tokens, thinking=thinking,
@@ -75,6 +77,7 @@ def generate_claude(
         generator=model, generator_family="claude", generator_version=model,
         source_type="model", completion=text, provenance="self_generated",
         prompt_source=prompt_source or {}, domain=domain, task_type=task_type,
+        thinking_text=thinking_text or None,
         gen_params={
             "temperature": None, "top_p": None, "top_k": None,
             "max_tokens": max_tokens,
@@ -123,7 +126,8 @@ def generate_claude_chat(
         thinking = {"type": "disabled"}
         output_config = None
     else:
-        thinking = {"type": "adaptive"}
+        # display=summarized so the reasoning summary is returned (see generate_claude).
+        thinking = {"type": "adaptive", "display": "summarized"}
         output_config = {"effort": effort}
 
     kwargs = dict(model=model, max_tokens=max_tokens, thinking=thinking,
