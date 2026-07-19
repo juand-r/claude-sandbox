@@ -1,0 +1,1366 @@
+Proceedings of the First BabyLM Workshop, pages 445–453
+November 8, 2025 ©2025 Association for Computational Linguistics
+Mask and You Shall Receive: Optimizing Masked
+Language Modeling For Pretraining BabyLMs
+Lukas Edman1,2
+Alexander Fraser1,2,3
+1School of Computation, Information and Technology, TU Munich
+2Munich Center for Machine Learning
+3Munich Data Science Institute
+lukas.edman@tum.de
+Abstract
+We describe our strategy for the 2025 edition
+of the BabyLM Challenge. Our main contri-
+bution is that of an improved form of Masked
+Language Modeling (MLM), which adapts the
+probabilities of the tokens masked according to
+the model’s ability to predict them. The results
+show a substantial increase in performance on
+(Super)GLUE tasks over the standard MLM.
+We also incorporate sub-token embeddings,
+finding that this increases the model’s morpho-
+logical generalization capabilities. Our submis-
+sion beats the baseline in the strict-small
+track.
+1
+Introduction
+Traditionally, language models (LMs) have re-
+quired billions to trillions of tokens for training,
+much less than a human typically sees, all while
+still suffering from the inability to accomplish rela-
+tively trivial tasks for humans. The 3rd BabyLM
+Challenge (Charpentier et al., 2025), asks if we can
+train models more efficiently, making it more akin
+to the efficiency of human learning.
+A notable difference in standard LM training
+from human learning is that schooling is typically
+organized in curricula, meanwhile LMs tend to
+train on data in an unstructured, random manner.
+Thus, it is natural to consider bringing the concept
+of curriculum learning to LM training. Several
+works have attempted this, with only minimal suc-
+cess being shown in BabyLM’s tracks (Warstadt
+et al., 2023; Hu et al., 2024).
+Our approach for this year’s BabyLM returns
+to this ever-elusive goal of effectively incorporat-
+ing curriculum learning by optimizing the Masked
+Language Modeling (MLM) objective used to train
+encoder models. MLM by default masks every to-
+ken with equal probability, but this is likely not
+optimal. Certain tokens that are easy to predict
+are likely a waste of time to mask, while other to-
+kens that are more difficult to mask may require
+the model to learn key language concepts in order
+to reliably predict them.
+We introduce a form of MLM that adapts over
+the course of training, weighting the probabilities
+of masking individual tokens differently, based on
+the model’s performance predicting them.
+We also introduce an entirely different concept,
+designed instead to incorporate sub-token level in-
+formation into the model’s embeddings. Many
+works have shown the potential benefits of a model
+having access to sub-tokens or individual charac-
+ters. While the evaluation tasks from previous
+BabyLM years did not require such finer-grained
+information to complete them, adjective nominal-
+ization was added as a task this year, alongside a
+similar task of converting to past tense, which was
+added as a hidden task for the final evaluation. We
+expect finer-grained character information to be
+useful for this task, especially.
+2
+Related Work
+We focus on works related to our novel methods:
+Adaptive MLM and N-hot encodings.
+2.1
+Masked Language Modeling
+A number of works have looked at improving the
+Masked Language Modeling objective. Wettig et al.
+(2023) experimented with the probability of mask-
+ing a token, finding that values higher than the
+standard 15% worked well in certain tests. Yang
+et al. (2023) continued along these lines and found
+that higher probabilities work better early in train-
+ing, and lower values are better later. They also
+adjusted the probabilities of words being masked
+based on their POS tag, arguing that some word
+classes are much easier to predict and thus a waste
+of training time. Belfathi et al. (2024) similarly
+weigh words based on their domain specificity in
+order to do domain adaptation.
+The most similar work to ours is Zhang et al.
+445
+
+(2023b), whose dynamic masking strategy works
+similarly to our soft approach. They also weigh
+tokens based on their respective loss, but instead
+with the explicit purpose of oversampling rare to-
+kens. This is used as a further pre-training strategy
+for BERT, and shows some limited improvement.
+In terms of cognitive plausibility, the adaptive
+method we introduce has some similarities to hu-
+man behavior. In eye-tracking studies, humans tend
+to fixate on words that are more difficult to pre-
+dict (Ehrlich and Rayner, 1981; Rayner and Well,
+1996). EEG studies have similarly shown that un-
+predictable words require more cognitive effort to
+process (Kutas and Hillyard, 1984). Our method
+similarly steers the model to focus more on words
+that are difficult to predict.
+2.2
+Character-level Information
+A number of works have sought to include char-
+acter information in models.
+CharacterBERT
+(El Boukkouri et al., 2020), ByT5 (Xue et al.,
+2022), Byte Latent Transformer (Pagnoni et al.,
+2025), among many others have attempted to incor-
+porate character or byte-level information within
+large-scale models. These works have noted that
+character-level models tend to train more efficiently,
+showing the normalized loss (bits-per-byte) can
+reach the same level in fewer steps, but they have
+not been extensively studied in a limited-resource
+setting such as BabyLM.
+For BabyLM itself, Edman and Bylinina (2023)
+have attempted to first pretrain on a character-level
+vocabulary and swapping to a BPE vocabulary with-
+out much success. Goriely et al. (2024) trained
+phoneme-level models but did not find improve-
+ments on the BabyLM benchmarks. The lack of
+improvements could be due to BabyLM not suf-
+ficiently measuring the models’ understanding of
+orthography, phonology, or other aspects that re-
+quire finer-grained information within the inputs.
+New to this year however is the adjective nomi-
+nalization and past tense tasks (Hofmann et al.,
+2025), which measure a model’s morphological in-
+tuition by choosing the perceived correct ending to
+an imaginary adjective in order to convert it to a
+noun, or the perceived correct past-tense form of
+an imaginary infinitive verb.
+3
+Method
+We first describe our adaptive masked language
+modeling (AMLM) scheme, then our token-level
+n-hot embedding architecture, and finally note the
+experimental details.
+3.1
+Adaptive MLM
+The goal of AMLM is to improve the masking
+strategy such that we train the model on tokens
+from which it can learn the most. Therefore, tokens
+that are easy to predict should be assigned a lower
+probability of being masked. We employ 2 metrics
+to weigh each token: accuracy (hard) and loss
+(soft).
+For both metrics, we start with a uniform proba-
+bility for each token in the vocabulary:
+wt=0,i = pmlm,
+∀i ∈V
+(1)
+where pmlm is the overall probability of a token
+being masked in any given sequence, typically 15%.
+For every batch, we record the statistics of whether
+the model correctly predicted the masked tokens
+and the token-level loss of masked tokens. At the
+start of every timestep t (which we define as 200
+batches), we update the probabilities:
+wt,i = λ wt−1,i + (1 −λ) ˜wt,i
+(2)
+˜wt,i = pmlm (1 −scoret−1,i)
+(3)
+where scoret,i is a scoring function, using either
+the hard or soft metric. We set λ = 0.2 empirically,
+which weighs the most recent statistics highly, but
+accumulates with previous timesteps nonetheless.
+For the accuracy-based hard metric, our scoring
+function is a smoothed accuracy:
+scoret,i = correctt,i + 0.5
+totalt,i + 1
+(4)
+where correctt,i and totalt,i refer to the number
+of correctly predicted tokens of type i at timestep
+t, and the total number of predicted tokens. For
+the loss-based soft metric, the scoring function is a
+normalized, inverted loss:
+scoret,i = 1 −norm(ℓt,i)
+(5)
+with ℓt,i corresponding to the average cross-entropy
+loss of token i for timestep t.
+We allow the scores to range between 0 and 1, so
+that if the model is perfect at predicting a token (a
+score of 1), the probability of masking said token
+tends to 0. Meanwhile, a score of 0 causes the
+probability to tend towards pmlm. Finally, when
+masking each input sequence, the probabilities per
+token are normalized such that the average is pmlm,
+allowing individual tokens’ mask probabilities to
+exceed pmlm.
+446
+
+3.2
+Token-level N-hot Embeddings
+Another strategy we try is incorporating more
+character-level information into the input embed-
+dings. We accomplish this by what we call token-
+level n-hot embeddings, and it is best illustrated
+with an example: For the token _doing, we get
+all of the substrings that are also in our vocabu-
+lary, e.g., _doin, g, _do, ing, etc. These substrings
+are then encoded as an n-hot feature vector, i.e., 1
+for _doin, g, _do, ing, etc., and 0 for everything
+else (hence the name n-hot). We then project this
+encoding into the embedding space with a linear
+layer, and add that to a separate, standard token
+embedding. To make this efficient, all of the n-
+hot encodings can be pre-calculated, with only the
+linear layer being trained on-the-fly, making the
+increase in training time negligible.
+This strategy should be useful for any tasks that
+involve sub-token information. In particular, the
+adjective nominalization task asks for the model
+to provide the most plausible nominalization to a
+made-up adjective, e.g., “wugable” →“wugabil-
+ity”. The ability for token-level n-hot encodings to
+trivially encode morphemes should make this task
+easier.
+3.3
+Experimental Setup
+Our setup most closely follows that used by the
+strict-small GPT-BERT baseline1, using the same
+learning rate, optimizer, and batch size. We use the
+same hidden and intermediate size for our model,
+however we use the Deberta-V2 (He et al., 2021) ar-
+chitecture instead, given its ease of use and overall
+similarity to GPT-BERT, having the same attention
+mechanism. We use a starting sequence length of
+64 and raise it to 256 after 5 epochs. We use BPE
+with byte-fallback and a vocabulary size of 40k,
+following Edman and Bylinina (2023)’s findings
+that 40k appears near optimal. In terms of the prob-
+ability of masking a token, we experiment with a
+decaying mask as suggested by Yang et al. (2023),
+opting for 40% at the start and linearly decaying
+to 15%. We compare this to the standard constant
+15%. All of the hyperparameters are listed in Ap-
+pendix A.
+In terms of data, we use the same data as in
+Edman et al. (2024), which consists of the initial
+BabyLM data, with the child-directed speech re-
+moved, and replaced with data from Zhang et al.
+1https://huggingface.co/BabyLM-community/
+babylm-baseline-10m-gpt-bert-masked-focus
+(2023a).
+Their data is synthetically generated
+triplets of sentences, paraphrases, and contradic-
+tions. We only use the data, not their contrastive
+learning approach. We compare this dataset to the
+original dataset from the shared task, as well as
+vocabulary size, in Appendix B.
+4
+Results
+We first present our results using our MLM objec-
+tive. In Table 1, we see that, overall, AMLM with
+the hard metric and decaying mask performs best
+overall. In general, the hard method performs bet-
+ter than the soft as well as regular MLM. While the
+differences are not very large, the hard mask strat-
+egy performs consistently better across multiple
+runs.
+In terms of using a decaying mask versus a con-
+stant one, the results are not as immediately clear,
+mainly due to adjective nominalization having a
+strong effect on zero-shot performance. In head-
+to-head comparisons for zero-shot, the decaying
+mask is better in 55% (15/27) of tasks, tied in 7%
+(2/27), and worse in 37% (10/27). Combined with
+the better performance in fine-tuning, this confirms
+evidence from Yang et al. (2023).
+4.1
+N-hot Encodings
+We show the scores for the model with n-hot en-
+codings also in Table 1. We show only results with
+n-hot alongside the hard method, as it is the most
+performant, but the n-hot encodings are compatible
+with any form of pretraining.
+On average, the n-hot encodings do not appear
+better or worse. Focusing on specific tasks, they
+perform noticeably worse on BLiMP. We suspect
+this is due to a sub-optimal manner of combining
+the n-hot embeddings with the regular ones. The
+performance on the (Super)GLUE tasks is compa-
+rable, suggesting that fine-tuning this model for a
+task may still yield competitive results. The per-
+formance on adjective nominalization is the most
+promising. There, we see the performance increase
+from 10 to 30 points over the comparable hard
+methods.
+It is not entirely clear why we do not see the
+same increase with the past-tense task. This may
+be due to the past-tense examples including more
+options, lowering the chance of human agreement,
+the options being more irregular, e.g. the past tense
+of “veed” could be “veeded”, “ved”, or “vode”, or
+there being more collisions with real words, e.g.
+447
+
+Constant Mask
+Decaying Mask
+Hard + N-Hot
+Reg
+Hard
+Soft
+Reg
+Hard
+Soft
+Const
+Decay
+Zero-shot
+BLiMP
+70.7
+70.0
+69.7
+70.8
+71.3
+71.4
+68.1
+67.7
+Supplement
+55.5
+56.9
+56.2
+57.8
+58.3
+58.1
+56.2
+56.4
+EWoK
+50.6
+49.9
+50.7
+50.2
+50.9
+50.1
+50.5
+50.2
+Eye-tracking
+9.0
+9.2
+9.4
+9.1
+8.9
+8.8
+8.6
+8.5
+Self-paced Reading
+4.2
+4.0
+4.0
+4.1
+3.7
+4.0
+3.9
+3.8
+Entity Tracking
+42.9
+43.8
+42.9
+44.5
+44.4
+39.3
+43.3
+34.5
+Adj Nominalization
+35.3
+34.3
+22.0
+11.7
+14.3
+0.0
+43.7
+42.0
+Past-tense
+4.0
+6.3
+-6.7
+1.3
+1.3
+1.7
+-0.3
+4.0
+COMPS
+52.6
+53.1
+53.2
+53.9
+54.0
+53.2
+52.0
+52.4
+Zero-shot Avg
+36.1
+36.4
+33.5
+33.7
+34.1
+32.2
+36.2
+35.5
+Finetune
+BoolQ
+69.7
+68.6
+69.7
+70.2
+69.2
+69.6
+67.3
+70.2
+MNLI
+59.1
+59.9
+59.3
+61.8
+62.3
+61.6
+59.3
+62.5
+MRPC
+88.1
+89.6
+88.2
+89.8
+90.6
+89.8
+85.7
+89.1
+QQP
+72.5
+72.6
+72.4
+72.9
+73.1
+72.9
+72.2
+72.8
+MultiRC
+68.1
+65.2
+68.3
+64.6
+68.2
+67.9
+64.4
+68.4
+RTE
+57.8
+60.2
+58.0
+62.1
+64.3
+62.6
+62.1
+60.2
+WSC
+64.1
+66.7
+64.1
+66.7
+63.5
+67.3
+67.3
+66.0
+Finetune Avg
+68.5
+70.0
+68.6
+69.4
+70.1
+69.9
+68.3
+69.9
+Table 1: Results of Regular MLM versus Hard and Soft AMLM, averaged over 3 runs. We also show performance
+when adding n-hot encodings using hard AMLM.
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+Training Step
+0.130
+0.135
+0.140
+0.145
+0.150
+0.155
+0.160
+0.165
+0.170
+Average Probability
+0k
+5k
+10k
+15k
+20k
+25k
+30k
+35k
+40k
+Frequency Rank
+Figure 1: Token masking probabilities for hard method,
+grouped by frequency rank (in groups of 1000). Lower
+rank indicates higher frequency (e.g., blue is the most
+frequent group of words).
+“scor” possibly becoming “scored”. Ultimately,
+these tasks have no objectively correct answer. It
+would be better to measure the performance of n-
+hot encodings and similar methods that incorporate
+character-level information on tasks that require
+such information, like morphological inflection,
+for example.
+4.2
+AMLM Analysis
+As we record the statistics of the model’s masked-
+token predictions, we can analyze the fluctuations
+of the probabilities with respect to various proper-
+ties of words. We focus on two here: frequency
+and part-of-speech (POS).
+In Figure 1, we can see the average probabilities
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+Training Step
+0.11
+0.12
+0.13
+0.14
+0.15
+0.16
+0.17
+0.18
+Average Probability
+0k
+5k
+10k
+15k
+20k
+25k
+30k
+35k
+40k
+Frequency Rank
+Figure 2: Token masking probabilities for soft method,
+grouped by frequency rank (in groups of 1000). Lower
+rank indicates higher frequency.
+of masking words using the hard method, grouped
+by frequency, in bins of 1000. Here, we see that
+initially, more frequent tokens are weighted higher,
+and rarer tokens lower. The weights of the top 5000
+tokens quickly drop down, but the middle 20000
+end up generally higher. The bottom 10000 tokens
+rise in weight but not back to 15%.
+Figure 2 shows the soft masking probabilities,
+with a similar trend over time but quite different
+initial steps. The start sees common tokens quickly
+dropping in probability and rare words rising. The
+stark difference is due to the continuous nature of
+the soft method versus the discrete nature of the
+hard method. In the soft method, the loss goes
+down steadily, which immediately affects the prob-
+abilities. In the hard method, the accuracy does not
+448
+
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+Training Step
+0.13
+0.14
+0.15
+0.16
+0.17
+0.18
+0.19
+Average Probability
+POS Tag
+ADJ
+ADP
+ADV
+AUX
+CCONJ
+DET
+INTJ
+NOUN
+NUM
+PART
+PRON
+PROPN
+PUNCT
+SCONJ
+SYM
+VERB
+X
+Figure 3: Masking probabilities by POS tag for hard
+method.
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+Training Step
+0.08
+0.10
+0.12
+0.14
+Average Probability
+POS Tag
+ADJ
+ADP
+ADV
+AUX
+CCONJ
+DET
+INTJ
+NOUN
+NUM
+PART
+PRON
+PROPN
+PUNCT
+SCONJ
+SYM
+VERB
+X
+Figure 4: Masking probabilities by POS tag for soft
+method.
+immediately go up, as it takes time for the model to
+promote the correct token to the highest probability.
+The smoothing applied in Equation 4 causes the
+more common words to be favored for masking,
+hence the steep increase in the beginning.
+Given that the hard method performs slightly
+better overall, these results indicate that masking
+common words more often at the start, even more
+often than the standard MLM does already due to
+their frequency in the text, may be a useful strategy
+for training more efficiently with MLM. As noted
+in Section 2, our soft approach is similar to the strat-
+egy used by Zhang et al. (2023b), whose goal was
+to mask rarer tokens. Although the settings differ,
+our results may explain the limited improvement
+seen in their work.
+In Figure 3, we can see the hard masking prob-
+abilities grouped by POS tag. We can see that the
+probabilities per POS tag are not uniform; instead,
+adverbs, subordinating conjunctions, numbers, and
+verbs are given higher weights. This tracks in gen-
+eral with intuition: adverbs have a lot of flexibility
+in their usage, as they can modify verbs, adjec-
+tives, or other adverbs, making them difficult to pre-
+dict. Subordinating conjunctions being weighted
+higher might indicate that the model has difficulty
+understanding logical connections between multi-
+ple clauses. Exact numbers can also be difficult to
+predict.
+Meanwhile, we see that particles, proper nouns,
+and X are weighted lower. The most common
+particle, “to”, should be easy to predict when the
+model can see that the next token is an infinitive
+verb. Proper nouns may also be relatively easy,
+as their usage is usually very context-dependent.
+X comprises mainly of subtokens, e.g., “arrog”,
+which would typically be part of “arrogant” or “ar-
+rogance”, but is split by BPE due to the limited
+vocabulary size.
+In Figure 4, we see a very different story: X and
+proper nouns are weighted highly while most other
+classes are weighted lower. It may seem as if the
+average does not equal 15%, but X and PROPN,
+along with NOUN, are the 3 most common token
+classes in the vocabulary, making up 8.4k, 9.2k,
+and 12.4k, respectively.
+The fact that we are POS tagging on the token
+level brings the unfortunate side effect of grouping
+several word parts into the X category. However,
+given that the X category, along with proper nouns,
+constitutes the majority of the difference, it is inter-
+esting to speculate why. Given their high weight for
+the soft method and low weight in the hard method,
+these words are often correctly predicted, but with
+a high loss. This is likely due to there being sev-
+eral candidate tokens that would fit the sentence.
+For example, “arrog” could easily be replaced with
+‘ignor” without much change in meaning. Further
+analysis is needed for a better understanding of this
+difference.
+4.3
+Submission
+Here we compare our submitted models to the
+leaderboard with the strongest baseline provided by
+the organizers. We select only models trained with
+RNG seed 0 so as not to overfit to the evaluation
+benchmark. The results are shown in Table 2.
+Here, we can see that our hard decay model
+and hard n-hot models outperform the baseline ac-
+cording to the aggregate score. For the hard decay
+model, the main improvement appears to be the (Su-
+per)GLUE scores, however these are aggregated
+into one value for the final score, so their weighting
+is less important. Entity tracking seems to be the
+only other culprit, as the rest of the scores are fairly
+close to each other.
+The n-hot model stands out in its performance
+on adjective nominalization, which is enough for
+449
+
+BertGPT
+AMLM
+Masked MNTP
+Hard
+Hard Decay
+N-hot Hard
+Zero-shot
+BLiMP
+70.4
+69.9
+71.4
+65.6
+Supplement
+63.7
+57.9
+59.2
+54.8
+EWoK
+50.0
+50.0
+51.0
+49.7
+Eye-tracking
+9.4
+8.9
+8.3
+8.1
+Self-paced Reading
+3.4
+4.0
+3.5
+3.3
+Entity Tracking
+40.0
+43.6
+44.2
+43.7
+Adj Nominalization
+2.7
+41.0
+34.0
+64.0
+Past-tense
+28.7
+8.0
+6.0
+1.0
+COMPS
+53.5
+52.3
+54.2
+51.3
+AoA
+0.3
+-15.0
+-0.9
+16.3
+Zero-shot Avg
+32.2
+32.1
+33.1
+35.9
+Finetune
+BoolQ
+67.6
+69.2
+69.5
+68.9
+MNLI
+51.4
+59.3
+62.3
+58.5
+MRPC
+86.1
+90.3
+90.5
+81.0
+QQP
+67.4
+72.4
+73.1
+72.2
+MultiRC
+71.6
+69.8
+68.6
+57.5
+RTE
+57.5
+61.1
+63.3
+64.0
+WSC
+61.5
+73.1
+63.5
+69.2
+Finetune Avg
+66.2
+70.7
+70.1
+67.3
+Final Score
+38.2
+34.2
+38.3
+41.9
+Table 2: Our submission models (AMLM) versus the comparable BabyLM baseline (BertGPT). Final score refers
+to the scoring equation used by the BabyLM evaluation leaderboard.
+the average on zero-shot tasks to favor this model,
+as well as the aggregate score. As the n-hot model
+performs poorly on most other tasks, the final scor-
+ing metric seems to be unfairly skewed. We further
+question the efficacy of the BabyLM metrics in
+Appendix C, where we find that a model whose
+training loss spikes due to a mistake on our part ac-
+tually gets a higher aggregate score than any model
+introduced so far.
+5
+Conclusion
+The BabyLM Challenge challenges us to train lan-
+guage models on a limited data budget and, for the
+first time this year, a limited training time budget
+(by way of epochs). We show that greater training
+efficiency can be achieved through Adaptive MLM,
+which changes the probabilities of tokens being
+masked during training, according to their difficulty.
+The results show an increase in performance, beat-
+ing the baseline set by the organizers. We also in-
+vestigate a method of incorporating subtoken-level
+information into the model, which showed promis-
+ing performance on adjective nominalization, the
+task that requires finer-grained, morpheme-level
+understanding.
+There is plenty of future work to be investigated.
+The adaptive masking scheme required setting sev-
+eral hyperparameters empirically, and is likely far
+from optimized. While we use generic statistics
+based on individual tokens, groups of tokens be-
+ing masked in tandem may be more challenging
+and force the model to learn more properties of
+language. For this, we would suggest word-level
+or phrase-level masking, or more interestingly, a
+neural masker, which learns to mask tokens based
+on what is most challenging for the main model to
+predict.
+Our subtoken approach is also far from optimal.
+In theory, it should be possible to incorporate two
+or more granularities of input without any negative
+effects on downstream performance. Such improve-
+ments would have a considerable impact not only
+in the BabyLM sphere, but higher-resource NLP as
+well.
+Acknowledgements
+We thank BabyLM anonymous reviewers for the
+helpful comments. The work was supported by the
+European Research Council (ERC) under the Euro-
+pean Union’s Horizon Europe research and innova-
+tion programme (grant agreement No. 101113091)
+and by the German Research Foundation (DFG;
+grant FR 2829/7-1).
+450
+
+References
+Anas Belfathi, Ygor Gallina, Nicolas Hernandez,
+Richard Dufour, and Laura Monceaux. 2024. Lan-
+guage model adaptation to specialized domains
+through selective masking based on genre and topical
+characteristics. Preprint, arXiv:2402.12036.
+Lucas Charpentier, Leshem Choshen, Ryan Cotterell,
+Mustafa Omer Gul, Michael Hu, Jaap Jumelet, Tal
+Linzen, Jing Liu, Aaron Mueller, Candace Ross,
+Raj Sanjay Shah, Alex Warstadt, Ethan Wilcox, and
+Adina Williams. 2025. Babylm turns 3: Call for
+papers for the 2025 babylm workshop.
+Preprint,
+arXiv:2502.10645.
+Lukas Edman and Lisa Bylinina. 2023. Too much in-
+formation: Keeping training simple for BabyLMs.
+pages 89–97, Singapore.
+Lukas Edman, Lisa Bylinina, Faeze Ghorbanpour, and
+Alexander Fraser. 2024. Are BabyLMs second lan-
+guage learners? In The 2nd BabyLM Challenge at
+the 28th Conference on Computational Natural Lan-
+guage Learning, pages 166–173, Miami, FL, USA.
+Association for Computational Linguistics.
+Susan F Ehrlich and Keith Rayner. 1981. Contextual
+effects on word perception and eye movements dur-
+ing reading. Journal of verbal learning and verbal
+behavior, 20(6):641–655.
+Hicham El Boukkouri, Olivier Ferret, Thomas Lavergne,
+Hiroshi Noji, Pierre Zweigenbaum, and Jun’ichi Tsu-
+jii. 2020. CharacterBERT: Reconciling ELMo and
+BERT for word-level open-vocabulary representa-
+tions from characters. pages 6903–6915, Barcelona,
+Spain (Online). International Committee on Compu-
+tational Linguistics.
+Zébulon Goriely, Richard Diehl Martinez, Andrew
+Caines, Paula Buttery, and Lisa Beinborn. 2024.
+From babble to words: Pre-training language mod-
+els on continuous streams of phonemes. In The 2nd
+BabyLM Challenge at the 28th Conference on Com-
+putational Natural Language Learning, pages 37–53,
+Miami, FL, USA. Association for Computational Lin-
+guistics.
+Pengcheng He, Jianfeng Gao, and Weizhu Chen. 2021.
+Debertav3: Improving deberta using electra-style pre-
+training with gradient-disentangled embedding shar-
+ing. arXiv preprint arXiv:2111.09543.
+Valentin Hofmann, Leonie Weissweiler, David R.
+Mortensen, Hinrich Schütze, and Janet B. Pierre-
+humbert. 2025.
+Derivational morphology reveals
+analogical generalization in large language models.
+Proceedings of the National Academy of Sciences,
+122(19):e2423232122.
+Michael Y. Hu, Aaron Mueller, Candace Ross, Ad-
+ina Williams, Tal Linzen, Chengxu Zhuang, Ryan
+Cotterell, Leshem Choshen, Alex Warstadt, and
+Ethan Gotlieb Wilcox. 2024. Findings of the sec-
+ond BabyLM challenge: Sample-efficient pretraining
+on developmentally plausible corpora. In The 2nd
+BabyLM Challenge at the 28th Conference on Com-
+putational Natural Language Learning, pages 1–21,
+Miami, FL, USA. Association for Computational Lin-
+guistics.
+Marta Kutas and Steven A Hillyard. 1984. Brain po-
+tentials during reading reflect word expectancy and
+semantic association. Nature, 307(5947):161–163.
+Artidoro Pagnoni, Ramakanth Pasunuru, Pedro Ro-
+driguez, John Nguyen, Benjamin Muller, Margaret
+Li, Chunting Zhou, Lili Yu, Jason E Weston, Luke
+Zettlemoyer, Gargi Ghosh, Mike Lewis, Ari Holtz-
+man, and Srini Iyer. 2025. Byte latent transformer:
+Patches scale better than tokens.
+In Proceedings
+of the 63rd Annual Meeting of the Association for
+Computational Linguistics (Volume 1: Long Papers),
+pages 9238–9258, Vienna, Austria. Association for
+Computational Linguistics.
+Keith Rayner and Arnold D Well. 1996. Effects of con-
+textual constraint on eye movements in reading: A
+further examination. Psychonomic Bulletin & Re-
+view, 3(4):504–509.
+Alex Warstadt, Aaron Mueller, Leshem Choshen, Ethan
+Wilcox, Chengxu Zhuang, Juan Ciro, Rafael Mos-
+quera, Bhargavi Paranjabe, Adina Williams, Tal
+Linzen, and Ryan Cotterell. 2023. Findings of the
+BabyLM challenge: Sample-efficient pretraining on
+developmentally plausible corpora. pages 1–34, Sin-
+gapore.
+Alexander Wettig, Tianyu Gao, Zexuan Zhong, and
+Danqi Chen. 2023. Should you mask 15% in masked
+language modeling? pages 2985–3000, Dubrovnik,
+Croatia.
+Linting Xue, Aditya Barua, Noah Constant, Rami Al-
+Rfou, Sharan Narang, Mihir Kale, Adam Roberts,
+and Colin Raffel. 2022. ByT5: Towards a token-free
+future with pre-trained byte-to-byte models. Transac-
+tions of the Association for Computational Linguis-
+tics, 10:291–306.
+Dongjie Yang, Zhuosheng Zhang, and Hai Zhao. 2023.
+Learning better masking for better language model
+pre-training. pages 7255–7267, Toronto, Canada.
+Junlei Zhang, Zhenzhong Lan, and Junxian He. 2023a.
+Contrastive learning of sentence embeddings from
+scratch. pages 3916–3932, Singapore.
+Linhan Zhang, Qian Chen, Wen Wang, Chong Deng,
+Xin Cao, Kongzhang Hao, Yuxin Jiang, and Wei
+Wang. 2023b. Weighted sampling for masked lan-
+guage modeling. Preprint, arXiv:2302.14225.
+A
+Training Hyperparameters
+We note the complete hyperparameters used in Ta-
+ble 4.
+451
+
+BertGPT Baselines
+AMLM - Hard Decay
+Causal
+Masked
+Success
+Failure
+Untrained
+BLiMP
+71.7
+70.4
+71.4
+59.0
+48.8
+BLiMP Supplement
+63.2
+63.7
+59.2
+51.7
+42.3
+EWoK
+49.5
+50.0
+51.0
+56.0
+50.0
+Entity Tracking
+34.6
+40.1
+44.2
+41.3
+41.7
+Adj Nominalization
+59.2
+2.7
+22.3
+78.1
+77.4
+Past Tense
+12.9
+28.7
+6.2
+-12.1
+-16.2
+COMPS
+52.8
+53.6
+54.2
+82.2
+50.0
+Reading
+6.7
+6.4
+5.9
+6.4
+5.7
+AoA
+-3.9
+0.3
+-0.9
+34.2
+0.0
+(Super)GLUE
+65.1
+66.0
+69.8
+57.7
+62.1
+Avg
+41.2
+38.2
+38.3
+45.4
+36.2
+Table 3: Baselines and our best submitted model, compared to a failed run and untrained model.
+Parameter
+Value
+Model
+Architecture
+Deberta
+Hidden Size
+384
+Intermediate Size
+1280
+Dropout
+0.1
+Vocabulary Size
+40000
+Training
+Sequence Length
+64, 256
+Batch Size (in tokens)
+16384
+Learning Rate
+7e-3
+Epochs
+10
+Number of Steps
+8325
+Scheduler
+Cosine
+Warmup Ratio
+1%
+Mask Ratio
+0.4→0.15
+Random Ratio
+0.1
+Keep Ratio
+0.1
+Weight Decay
+0.01
+Optimizer
+LAMB
+Optimizer Epsilon
+1e-8
+Optimizer Beta 1
+0.9
+Optimizer Beta 2
+0.95
+Grdient Clipping
+1
+Table 4: Hyperparameters used (except where otherwise
+indicated).
+B
+Ablation of Dataset and Vocabulary
+Size
+Two of the major differences between our models
+and the baselines trained by the organizers are the
+training dataset and vocabulary size. We ablate the
+two with a standard MLM training scheme and our
+hard AMLM method in Table 5.
+First, concerning the dataset, the new dataset
+appears generally better for the finetuning tasks.
+Most of this increase is in the MNLI, MRPC, and
+QQP tasks. This aligns with the findings of Ed-
+man and Bylinina (2023), and can be explained
+by the additional data having similar content (i.e.,
+paraphrases).
+As for vocabulary size, the results appear depen-
+dent on the dataset. For the new dataset, the higher
+vocabulary size appears to perform better, espe-
+cially for BLiMP and Entity Tracking. The higher
+vocabulary size may be slightly more optimal for
+the new dataset, but for the original dataset, the
+lower vocabulary size appears more optimal. The
+difference in zero-shot performance on adjective
+nominalization and past-tense is quite substantial,
+though the variance in these metrics is high, so it is
+difficult to gauge the importance of these results.
+C
+Should we trust BabyLM Metrics?
+During our experimentation, we encountered some
+surprising results with respect to some of the met-
+rics used to evaluate models. First, we found that
+one could obtain quite high scores on adjective
+nominalization, around 78, just from initialization,
+no training required.
+Furthermore, we accidentally trained a model
+with too low a batch size for the corresponding
+learning rate, causing the loss to spike during
+452
+
+Regular
+AMLM - Hard
+Original
+New
+Original
+New
+16k
+40k
+16k
+40k
+16k
+40k
+16k
+40k
+Zero-shot
+BLiMP
+66.9
+66.4
+67.2
+70.7
+67.5
+67.0
+68.8
+70.0
+Supplement
+58.9
+59.2
+58.3
+55.5
+62.0
+59.0
+57.9
+56.9
+EWoK
+49.9
+50.6
+49.0
+50.6
+51.2
+50.8
+50.3
+49.9
+Eye-tracking
+6.2
+6.3
+7.2
+9.0
+6.5
+5.9
+6.7
+9.2
+Self-paced Reading
+3.6
+3.2
+4.0
+4.2
+3.5
+4.0
+3.6
+4.0
+Entity Tracking
+31.2
+27.5
+32.6
+42.9
+32.1
+35.6
+36.9
+43.8
+Adj Nominalization
+37.0
+18.0
+56.0
+35.3
+50.0
+11.0
+43.0
+34.3
+Past-tense
+29.0
+18.0
+0.0
+4.0
+23.0
+-10.0
+18.0
+6.3
+COMPS
+51.4
+52.0
+51.9
+52.6
+51.9
+51.9
+52.7
+53.1
+Zero-shot Avg
+37.1
+33.5
+36.2
+36.1
+38.6
+30.6
+37.5
+36.4
+Finetune
+BoolQ
+68.5
+67.8
+70.9
+69.7
+70.2
+68.4
+68.8
+68.6
+MNLI
+44.0
+47.3
+56.6
+59.1
+44.5
+48.5
+57.9
+59.9
+MRPC
+82.6
+82.0
+86.7
+88.1
+82.7
+83.7
+88.7
+89.6
+QQP
+66.3
+67.8
+71.6
+72.5
+67.0
+68.8
+72.7
+72.6
+MultiRC
+67.1
+66.6
+66.6
+68.1
+66.2
+64.4
+67.8
+65.2
+RTE
+59.7
+59.0
+59.0
+57.8
+56.8
+53.2
+61.1
+60.2
+WSC
+65.4
+65.4
+61.5
+64.1
+63.5
+61.5
+65.4
+66.7
+Finetune Avg
+64.8
+65.1
+67.5
+68.5
+64.4
+64.1
+68.9
+69.0
+Table 5: Ablation of vocabulary size and dataset.
+training and never recover. While it performs ex-
+pectedly poorly on some metrics, such as BLiMP
+and (Super)GLUE, it performs remarkably well on
+others, namely EWoK, adjective nominalization
+(again), COMPS, and AoA. We show the results in
+Table 3.
+This raises the question: should we trust the
+metrics used in BabyLM? For BLiMP and (Su-
+per)GLUE the answer appears to be yes. Failed
+and untrained models perform expectedly poorly
+on these. For self-paced reading and eye-tracking,
+the numbers appear to stay relatively similar, re-
+gardless of the model. And for the rest, their scores
+should probably be taken with a baby fist of salt.
+453
