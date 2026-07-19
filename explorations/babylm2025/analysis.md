@@ -1,253 +1,341 @@
 # Which BabyLM 2025 scores are meaningful?
 
 This note answers one question: of the many numbers reported in the 3rd BabyLM
-Challenge (2025), which ones actually carry signal — reliable, discriminative
-between models, not saturated and not stuck at chance — and which ones are mostly
-noise. The point is practical: for a 2026 entry we want to know what to optimize
-and what to safely ignore.
+Challenge (2025), which ones actually carry signal — reliable across seeds,
+discriminative between models, construct-valid, not stuck at chance or broken — and
+which do not. The purpose is practical: for a 2026 entry we want to know what to
+optimize, what to report, and what to ignore.
 
-The analysis is built from the organizers' own report (*Findings of the Third
-BabyLM Challenge*, ACL Anthology 2025.babylm-main.28), specifically its results
-table, its training-dynamics figure, and its per-task range figures, together with
-the evaluation-pipeline documentation. It does **not** yet rest on a first-hand
-recomputation of variance over the raw leaderboard; see "Limitations" at the end.
+Unlike a first draft of this note that leaned on the organizers' *Findings* paper
+alone, the assessment below is grounded in the **primary submission papers**. All 41
+papers of the *Proceedings of the First BabyLM Workshop* (ACL Anthology
+`2025.babylm-main`) were downloaded and read; the per-paper receipts — quotes and
+numbers — are in `evidence.md`, and the extracted text is under `papers/`. Paper
+references use the anthology number, e.g. (main.31); a number↔author map is at the
+end.
+
+The conclusions turned out to be sharper, and more critical of the aggregate, than
+the *Findings* summary alone would suggest. Several are stated by the winning teams
+themselves.
 
 ---
 
 ## Bottom line
 
-- **The single most meaningful number is BLiMP** (with its supplement). It is
-  accuracy-based, it rises monotonically with training data, and it separates weak
-  from strong models cleanly — with one caveat: the best models are approaching
-  ceiling, so at the top the metric compresses.
-- **(Super)GLUE is the second most meaningful**, but it is expensive (requires
-  finetuning) and, strikingly, barely separates a 10× difference in training data.
-- **The entire "human-likeness" (cognitive) half of the score is low
-  signal-to-noise.** Its component tasks — reading-time correlation, the WUG
-  morphology tasks, and age-of-acquisition — are the ones the organizers
-  themselves flag as "more variable," several show no clear relationship with
-  training, and the aggregate can even go negative. Small differences on this half
-  are almost certainly noise.
-- **The headline `Macro Average` gives that noisy half a full 50% weight.** It is
-  the simple mean of the NLP score and the human-likeness score. So half of the
-  flagship ranking number is built on the least reliable measurements.
-- **EWoK is close to uninformative at this scale**: models sit at roughly
-  0.50–0.54, i.e. barely above the 0.5 chance line, with almost no spread.
+1. **Only two scores are trustworthy: BLiMP and (Super)GLUE.** Multiple teams
+   independently confirm these move with genuine model quality and that broken or
+   untrained models score low on them. Everything else is compromised in a
+   specific, documented way.
 
-The clean takeaway for 2026: **treat the accuracy tasks (BLiMP first, then GLUE)
-as the real leaderboard, and treat the human-likeness tasks as a separate, noisy
-side-competition where only large gaps mean anything.**
+2. **BLiMP is the best signal but must be read coarsely.** It rises monotonically
+   with training and separates strong from weak models — but it has a scoring
+   artifact that inflates degenerate models (main.16), it collapses toward chance
+   under weak compute (main.11, main.12), it saturates at the top, and its
+   *supplement* is often near chance and carries preprocessing artifacts (main.22).
+   Trust the big gaps, not the third decimal.
+
+3. **EWoK is broken at this scale — do not optimize it.** It sits at ~0.50 chance in
+   every text-track paper that reports it, and one outstanding paper shows *why*:
+   13% of EWoK test items involve concepts that never appear in the training data
+   (main.15). It is also gameable by tokenizer choice (main.21).
+
+4. **The entire "human-likeness" half is at the noise floor or outright buggy.**
+   Reading-time correlations are near-zero and model-insensitive; the WUG morphology
+   tasks are high-variance, frequently *negative*, and had an evaluation bug
+   (main.14); and **the Age-of-Acquisition metric is miscomputed in the pipeline** —
+   its sigmoid fit uses only 1–5 data points, yielding "misleading" zero or
+   strong-negative correlations (main.29).
+
+5. **The headline `Macro Average` is therefore not a trustworthy ranking.** It is the
+   simple mean of the NLP score and the human-likeness score, so it hands the broken
+   half a full 50% weight. The most direct proof: a team that *accidentally broke a
+   training run* found it beat every properly-trained model on the aggregate, driven
+   by EWoK, AoA, COMPS and adjective-nomination (main.31). One award (Strict-Small
+   human-likeness, main.39) was decided almost entirely by the miscomputed AoA task.
+
+**Practical reading:** treat **BLiMP as the primary metric and GLUE as the
+secondary**, report **per-task with seeds and confidence intervals** (as main.2 and
+main.22 model), and treat the human-likeness aggregate as a noisy side-signal where
+only very large gaps mean anything.
 
 ---
 
-## 1. How the 2025 score was actually built
+## 1. How the 2025 score was built
 
-Every model in the text tracks (Strict, Strict-Small, Interaction) was reduced to
-two headline numbers and one aggregate:
+Every text-track model was reduced to two headline numbers and one aggregate:
 
-1. **NLP score** — an *accuracy* average over the tasks where the model must assign
-   the highest probability to the correct option (or, for GLUE, predict the right
-   label). These tasks: **BLiMP**, **BLiMP-supplement**, **EWoK**, **Entity
-   Tracking**, **COMPS**, and the finetuned **(Super)GLUE** suite (BoolQ, MultiRC,
-   RTE, WSC, MRPC, QQP, MNLI, with large sets subsampled to 10k).
+- **NLP score** — an accuracy average over the *forced-choice / labelled* tasks:
+  **BLiMP**, **BLiMP-supplement**, **EWoK**, **Entity Tracking**, **COMPS**, and the
+  finetuned **(Super)GLUE** suite (BoolQ, MultiRC, RTE, WSC, MRPC, QQP, MNLI; large
+  sets subsampled to 10k).
+- **Human-likeness score** — a *correlation-to-humans* average over **reading-time
+  prediction** (surprisal vs human reading times), the two **WUG** morphology tasks
+  (model inflection preference vs the human distribution), and **age-of-acquisition**
+  (model word-learning curves vs WordBank).
+- **Macro Average** — the leaderboard sort key.
 
-2. **Human-likeness score** — a *correlation-to-humans* average over the tasks that
-   compare the model's behaviour to human data: **reading-time prediction**
-   (surprisal vs human reading times), the two **WUG** morphology tasks (model
-   inflection preference vs the human preference distribution), and
-   **age-of-acquisition / word-learning** (model learning curves vs WordBank AoA).
-
-3. **Macro Average** — the aggregate the leaderboard sorts on.
-
-The aggregation rule (from the pipeline docs) is a two-level unweighted mean: each
-task score is the mean of its subtasks, and the macro average is the mean across
-tasks. Checking it against the report's own table confirms the precise structure:
-
-> CLASS-IT: human-likeness 20.4, NLP 52.9 → macro 36.6 ( = mean(20.4, 52.9) ).
-> Simple-Diffusion: 12.6, 58.4 → 35.5. MoEP: 31.5, 53.2 → 42.3.
-
-So **`Macro Average = mean(NLP score, Human-likeness score)`** — a flat 50/50 split
-between the accuracy half and the correlation half. This single fact drives most of
-what follows: the flagship number is half made of the least reliable half of the
+The aggregation is a two-level unweighted mean: each task score is the mean of its
+subtasks, and the macro average is the mean across tasks. Checking against the
+*Findings* table confirms the exact structure — `Macro = mean(NLP, human-likeness)`
+(e.g. CLASS-IT 20.4/52.9 → 36.6; MoEP 31.5/53.2 → 42.3). **This 50/50 split is the
+crux:** half the flagship number comes from the least reliable half of the
 evaluation.
 
-(Note: some online summaries quote a 50% BLiMP / 30% GLUE / 20% MSGS weighting.
-That is the *2023* scheme; MSGS was not used in 2025. Do not apply it here.)
+(Some online summaries quote a 50% BLiMP / 30% GLUE / 20% MSGS weighting. That is
+the *2023* scheme; MSGS was not used in 2025. Do not apply it here.)
 
 ---
 
-## 2. The evidence that the two halves are not interchangeable
+## 2. Task-by-task verdict, grounded in the papers
 
-If the accuracy half and the human-likeness half measured "the same underlying
-quality," it would not much matter that the macro average mixes them. They do not.
+The table is the summary; the subsections give the evidence. "At chance" means ≈0.50
+for a two-alternative task. Full quotes/numbers are in `evidence.md`.
 
-**They are decoupled — and at the top of the most popular track, essentially
-anti-aligned.** The report states it found a positive correlation between linguistic
-and cognitive performance *except in the Strict-Small track* — which was the largest
-track (15 models). The winners make the decoupling concrete. In Strict-Small:
-
-| Model | Human-likeness | NLP | Macro | Won |
-|---|---|---|---|---|
-| MoEP | **31.5** | 53.2 | 42.3 | human-likeness award |
-| AMLM-Hard-Decay | 8.4 | **58.3** | 33.3 | NLP award |
-
-The two award winners are near-opposites: the human-likeness winner is mid-pack on
-NLP, and the NLP winner is near the bottom on human-likeness. Optimizing one did not
-buy the other. A single macro-average ranking hides this completely.
-
-**Interpretation.** "Which model is best" has no track-independent answer in 2025;
-it depends entirely on which half you weight. The macro average's answer (weight
-them equally) is a defensible convention, not a fact about the models.
-
----
-
-## 3. Task-by-task: what carries signal
-
-The table summarises the verdict; the prose gives the evidence. "Discriminates"
-means the spread across models is large relative to noise; "monotone" means the
-score reliably rises as the model sees more training data (the organizers'
-Figure 5).
-
-| Task | Type | Verdict | Why |
+| Task | Type | Verdict | Core evidence |
 |---|---|---|---|
-| **BLiMP (+ supplement)** | accuracy | **High signal** | Monotone with data; separates weak/strong; but saturating at top |
-| **(Super)GLUE** | accuracy (finetune) | **Good, with caveats** | Stable; but barely separates 10× data; costly; all models far below human |
-| **Entity Tracking** | accuracy | **Interventional only** | "More variable"; U-shaped with data; huge tokenizer sensitivity |
-| **COMPS** | accuracy | Moderate | Minimal-pair accuracy; little discussed; hidden task |
-| **EWoK** | accuracy | **Near-uninformative** | Sits at ~0.50–0.54, barely above chance; tiny spread |
-| **Reading-time** | correlation | **Low signal** | "More variable"; no clear relation to training amount |
-| **WUG past-tense** | correlation | **Low / phase-shifted** | Flat for first 10–50M words, then rises; "more variable" |
-| **WUG adjective** | correlation | **Low signal** | "No strong relationship with number of pretraining words" |
-| **AoA / word-learning** | correlation | **Idiosyncratic** | Can single-handedly swing the human-likeness award |
+| **BLiMP** | accuracy | **Trust — coarsely** | Monotone (main.34); but tie artifact (main.16), chance under weak compute (main.11/12), saturating |
+| **(Super)GLUE** | accuracy (finetune) | **Trust — with caveats** | Trusted by main.31; but often inert (main.36/41), high seed variance on RTE/WSC (main.19) |
+| **BLiMP-supplement** | accuracy | **Weak** | Often near chance (main.5); speaker-label artifact (main.22) |
+| **Entity Tracking** | accuracy | **Probe only, never rank** | Seed SD 6–9 pts (main.22); mid-run collapse (main.34); U-shaped |
+| **COMPS** | accuracy | **Floor-limited** | At chance for weak models (main.14/22) |
+| **EWoK** | accuracy | **Broken at scale** | ~0.50 everywhere; 13% of items' concepts absent from training (main.15) |
+| **Reading-time** | correlation | **Noise floor** | ~0, model-insensitive (main.31/32); tokenizer-fragile (main.41) |
+| **WUG past-tense** | correlation | **Broken / noisy** | Eval bug (main.14); sign-flipping negatives (main.22/38) |
+| **WUG adjective** | correlation | **Gameable** | Untrained model scores ~78 (main.31); non-discriminative (main.32) |
+| **AoA** | correlation | **Miscomputed** | Sigmoid fit on 1–5 points → "misleading" (main.29); decided an award (main.39) |
 
-### The reliable core
+### The reliable core: BLiMP and (Super)GLUE
 
-**BLiMP** is the anchor. Figure 5 shows BLiMP performance rising with pre-training
-words *for all models* — the cleanest monotone signal in the suite — and Figure 4
-shows real spread across models, with the best Strict/Interaction models reaching
-the neighbourhood of a Llama-70B reference on this task. That last point is also the
-caveat: **BLiMP is starting to saturate**. Near the top, differences shrink, so a
-0.01 BLiMP gap between two strong models is worth much less than the same gap lower
-down. Track it, but do not over-read tiny margins between already-good models.
+**BLiMP** is the anchor and the one metric the field trusts. It rises smoothly with
+training — "BLiMP scores demonstrate a gradual and consistent increase during
+training" (main.34) — and, decisively, the Strict-Small NLP winner's own audit
+("Should we trust BabyLM Metrics?") concludes that for BLiMP and (Super)GLUE the
+answer "appears to be yes … Failed and untrained models perform expectedly poorly on
+these" (main.31).
 
-**(Super)GLUE** is genuinely informative about downstream NLU capability and is
-accuracy-based, so it is stable. Two caveats keep it from the top spot. First, it
-requires finetuning, which is the expensive, higher-variance part of the pipeline
-(the organizers subsampled and pruned tasks precisely to tame this). Second, and
-more telling, it **barely reflects data scale**: only two of the seven Strict
-(100M-word) models beat the best Strict-Small (10M-word) model on GLUE. A metric
-that hardly moves across an order of magnitude of training data is a blunt
-instrument for ranking models that differ by far less.
+But three caveats keep it from being read at fine granularity:
 
-### Real but noisy — useful for detecting interventions, not for ranking
+- **A scoring artifact inflates degenerate models.** In 22 of 67 BLiMP subtasks the
+  two sentences are word-order permutations of each other; the pipeline counts tied
+  scores as correct, so any order-invariant scorer is credited. A dummy model forced
+  to output equal log-likelihoods "yields a reported score of 100.0." Removing those
+  subtasks drops a word-frequency baseline from 0.663 to 0.498 — i.e. to chance — and
+  the authors note the flaw "still" persists in the 2025 pipeline (main.16).
+- **It is not robust at the low end.** Under compute constraints BLiMP "hovers 44–52
+  across configurations" and is "insensitive" to the manipulation (main.12); a
+  heavily-quantized model scores 48.7, i.e. below chance (main.11). So a low BLiMP
+  is not always informative about grammar per se.
+- **It saturates at the top**, where the strongest models approach a Llama-70B
+  reference, so gaps among good models compress.
 
-**Entity Tracking** is the clearest "handle with care" case. Figure 5 flags it as
-"more variable," and it shows U-shaped scaling (performance falls before it rises).
-Yet it is highly *sensitive to specific interventions*: morphology-aware
-tokenization reportedly moved it by ~40%. So it is valuable as a probe — "did my
-tokenizer change help?" — but unreliable as a stable component of a ranking, because
-a model can sit anywhere on the U depending on its training length.
+The **BLiMP-supplement** is weaker than BLiMP proper: several models sit near 0.50 on
+it (main.5), and one paper traces a supplement "advantage" entirely to three
+subcategories (QA_easy, QA_tricky, turn-taking) that contain speaker labels only one
+condition's data preprocessing preserved — a headline difference that is a data-
+cleaning artifact, not model quality (main.22).
 
-### Low signal — do not over-index
+**(Super)GLUE** is the trustworthy secondary. It is accuracy-based, it moves with
+model quality (main.31), and MNLI/MRPC/RTE carry real pretraining signal (main.1).
+Its caveats are cost and patchy sensitivity: it requires finetuning (the expensive,
+higher-variance stage the organizers deliberately pruned); it barely reflects a 10×
+data difference (only two of seven Strict models beat the best Strict-Small model on
+GLUE, per *Findings*); it is sometimes wholly inert (frozen at 57.7 across every
+configuration in main.36; ~63.5 flat in main.41; MultiRC/WSC ≈ majority class in
+main.1); and WSC/RTE carry 4–12-point seed variance, enough that main.19 dropped WSC
+from its analysis. Use the aggregate, not individual small tasks.
 
-**EWoK** is the weakest link among the accuracy tasks. Figure 4 puts models at
-roughly 0.50–0.54, i.e. a few points above the 0.5 chance floor, with almost no
-separation between them. At the BabyLM data scale the models simply do not have
-enough world knowledge for this task to discriminate. It improves slowly with data
-but the absolute signal is tiny; small EWoK differences are noise.
+### Broken at scale: EWoK
 
-The **human-likeness (correlation) tasks as a group** are the noisy half. Reading-time
-prediction and WUG-adjective show *no* clear relationship with the amount of
-training data; WUG past-tense is flat for the first 10–50M words before a phase
-shift; the organizers explicitly group reading-time, WUG, and entity tracking as
-"more variable." Because these are correlations against human data, the averaged
-score is small in magnitude and can even be **negative** (e.g. BitMar at −9.3 on the
-multimodal human-likeness average). A metric that swings from −9 to +31 across
-models, built from components with weak or absent learning trends, has a low
-signal-to-noise ratio. Large gaps on it are real; small ones are not.
+**Observation.** EWoK is at chance in essentially every text-track paper that reports
+it: 52.7–56.7 across all model sizes (main.1); 53.0–53.8 across all methods (main.2);
+49.4–50.5 (main.34); 49.9–50.5 (main.22); 0.494–0.519 across 14 curricula (main.26);
+49.1–50.2, "none of the models perform better than a random guess" (main.41).
 
-**AoA** deserves a specific warning: MoEP won the Strict-Small human-likeness award
-in large part through a high AoA score. A single correlation-based subtask being
-able to swing an award is exactly the fragility you would expect from a low-SNR
-metric, and it means the human-likeness ranking can be moved by targeting one
-idiosyncratic task rather than by becoming broadly more human-like.
+**Mechanism (not inference — measured).** The outstanding paper main.15 states EWoK
+"demonstrates no sensitivity to changes in architecture or training strategy, with
+performance remaining around 50% regardless of the experiment conditions," and
+diagnoses the cause: in 37.7% of EWoK items at least one tested concept appears fewer
+than 100 times in the training corpus, and in 13% both concepts appear zero times —
+"the training dataset does not properly support EWoK evaluation."
+
+**Confound.** Where EWoK does move, it is suspect: a morpheme tokenizer pushes it to
+67–71, which the authors themselves call "surprising, as EWoK measures basic world
+knowledge rather than a linguistic task" (main.21) — i.e. the movement reflects
+log-probability/segmentation effects, not acquired knowledge.
+
+**Recommendation.** Do not spend effort on EWoK; do not read small EWoK differences
+as anything. **COMPS** shares the floor problem (at chance for weak models: 49.4–50.7
+in main.14/22) though strong baselines can reach 56–60.
+
+### Probe-only: Entity Tracking
+
+Entity Tracking is the most *method-sensitive* accuracy task — several interventions
+move it (multi-token prediction +4–5 pts, main.41; contrastive data +7%, main.2;
+recombination 12.95→19.65, main.40) — but it is also the **highest-variance** metric
+on the board, which makes it worthless as a ranking component:
+
+- Seed standard deviations of 6–9 points at fixed configuration (20.70 ± 6.09;
+  31.68 ± 8.75) — noise comparable to between-condition differences (main.22).
+- Mid-run collapse: "performance rises to 41.8 at 20M tokens before collapsing to
+  13.4 by the end of training" (main.34); "drops sharply after the first epoch"
+  (main.41); U-shaped scaling in the *Findings* training-dynamics figure.
+- A barely-trained model beats a strong GPT-BERT on it (41.8 vs 39.9, main.36) — a
+  sign the score is not tracking general competence.
+
+**Recommendation.** Use Entity Tracking only as a diagnostic for a *specific*
+intervention, and only with multiple seeds and confidence intervals; never treat a
+single-run Entity number as a capability ranking.
+
+### Noise floor or broken: the human-likeness half
+
+**Reading-time prediction** (eye-tracking + self-paced reading) has near-zero
+magnitude and is insensitive to model quality. main.31's audit: the numbers "stay
+relatively similar, regardless of the model." main.32: "the correlations of all
+models are below 0.1." Values routinely sit at 0.0–0.1 partial-R² (main.36, main.22),
+flip sign when the tokenizer changes (main.41), and — perversely — can favour smaller
+models, so the metric may reward low capacity rather than quality (main.30, main.17).
+
+**WUG (past-tense and adjective-nomination)** is unreliable in several independent
+ways. There was an outright **evaluation bug** — "a bug was discovered in the
+evaluation for the WuG task … we therefore exclude this task" (main.14). Under a
+morpheme tokenizer every configuration scores *exactly* 100.00, a near-certain
+normalization artifact (main.21). The past-tense correlation routinely goes strongly
+**negative** and sign-flips across near-identical models (−20.7 vs +37.5 in main.14;
+−24 to +2 with SD up to ±10 in main.22; +22→−22 swings in main.38). And the
+adjective task is gameable: "one could obtain quite high scores on adjective
+nominalization, around 78, just from initialization, no training required" (main.31);
+where it does correlate it does so "for all models" and thus does not discriminate
+(main.32).
+
+**Age-of-Acquisition is the most dangerous number on the board — it is miscomputed.**
+main.29 inspected the pipeline: "only very few data points (1–5 words) are considered
+… due to an unpassed condition on the parameters of the fitted sigmoid function …
+Limited data points lead to either a score of zero or a strong negative correlation;
+hence, these results can be misleading." This explains the wild spread seen
+elsewhere: mostly −0.07 to 0 with lone outliers (main.34), literal 0.00 at p=1.0
+(main.40), −79.6 (main.29), +22→−22 (main.38). It is also inflated by broken/untrained
+runs (main.31).
 
 ---
 
-## 4. A sanity check the aggregate scores fail: the Strict track
+## 3. Why the aggregate cannot be trusted
 
-If the macro average were a sharp instrument, you would expect the challenge's
-submissions to climb clearly above the provided baselines. In the **Strict track,
-no submission beat the strongest baseline on the macro average.** The best
-non-baseline Strict macro scores were BLaLM 39.0 (a workshop paper) and CLASS-IT
-36.6, while the GPT-BERT baselines sat at 43.5, 43.4, 42.3, 41.6, 40.8. The same
-holds component-wise: the Strict "NLP winner," Simple-Diffusion, scored 58.4, below
-five different GPT-BERT baselines (up to 63.0). The awards go to the best
-*submissions*, with baselines excluded — which is why there are winners at all.
+The individual-task problems would matter less if they averaged out. They do not,
+because the macro average weights the broken half at 50% and because the noisiest
+tasks have the widest ranges, so they dominate the aggregate's movement.
 
-Two readings, both worth stating:
+**The decisive demonstration (main.31).** A team accidentally trained a model with
+too-low a batch size, spiking the loss. It "performs expectedly poorly on … BLiMP and
+(Super)GLUE" but "remarkably well on … EWoK, adjective nominalization, COMPS, and
+AoA," and its aggregate (45.4) **beat every properly-trained model.** Their verdict on
+the aggregate: "the final scoring metric seems to be unfairly skewed." A metric a
+broken run can win is not a safe ranking.
 
-- **Optimistic:** last year's winning architecture (GPT-BERT) is simply very strong
-  and hard to beat at 100M words.
-- **Cautionary (the relevant one here):** in the Strict track the spread among the
-  serious entries is small enough that the aggregate barely separates them, so the
-  macro-average ranking there is carrying little information. The action in 2025 was
-  in Strict-Small and Interaction, where submissions *did* clear the baselines.
+**A real award turned on it (main.39).** MoEP won the Strict-Small human-likeness
+award only because AoA was included in the macro: its AoA (53.70) is 4–14× any
+baseline's (which sit at −3.9 to 14.5), while on BLiMP it is *below* every baseline
+(59.15). Given that AoA is the miscomputed task (main.29), this award rests on an
+artifact rather than a genuine human-alignment improvement.
 
-Either way, the lesson for reading 2025 results is: **a macro-average rank in the
-Strict track is close to a coin-flip among the good models; do not treat small
-macro gaps as real.**
+**The spread is often within noise.** Run-to-run macro standard deviation is ~1–2
+points (35.75 ± 1.74; 36.24 ± 1.16, main.14) — larger than many ranking gaps. main.16
+raises the question directly: arbitrary dataset changes move scores by ≥0.05, which
+"raises an important concern on when to decide if a system is actually stronger than
+another." And main.12 warns the whole exercise "risks that the task 'overfits' on the
+most successful-seeming approaches."
 
-A related point, reassuring for the challenge's design: model score is **not** well
-predicted by training FLOPs (a positive relationship appears only in the Interaction
-track). So the rankings are not merely a compute proxy — the meaningful variation is
-methodological, not resource-driven. That is a point in favour of the *accuracy*
-metrics specifically, since they are the ones that responded to method rather than
-to compute.
+**Cross-metric non-transfer means no single scalar is honest.** Every substantive
+paper reports that interventions move one metric-family and not another — grammar
+(BLiMP, perplexity) versus knowledge/reasoning (EWoK, Entity, COMPS) move
+independently or oppositely (main.1, main.2, main.5, main.11, main.12), and BLiMP↔GLUE
+even diverge under synthetic data (main.33). Collapsing them "would obscure these
+distinctions and reduce interpretability" (main.13). The two headline halves are
+themselves decoupled, and *anti*-aligned at the top of the largest track: the
+Strict-Small NLP and human-likeness winners are near-opposites (AMLM: 8.4/58.3 vs
+MoEP: 31.5/53.2).
 
 ---
 
-## 5. What to optimize for 2026
+## 4. What to do for 2026
 
 The 2026 challenge keeps the same evaluation philosophy — "much of the evaluation
 will continue to be based on zero-shot probability comparisons of two text
-sequences" — and keeps BLiMP-style minimal-pair scoring at its centre, so the
-reliable-vs-noisy split above should carry over. Concretely:
+sequences" — so this reliable-vs-broken split should largely carry over (whether the
+specific pipeline bugs are fixed is worth checking against the 2026 release).
 
-1. **Optimize BLiMP + BLiMP-supplement first.** It is the most reliable, most
-   monotone, most discriminative signal, and it is cheap (zero-shot). It is also the
-   task where the strongest known levers act — training objective and architecture
-   (diffusion MLM, adaptive masking, GPT-BERT-style dual objective) moved it most in
-   2025.
-2. **Treat GLUE as the secondary target** for downstream capability, but budget for
-   its finetuning cost and do not expect it to reward data-scale tricks.
-3. **Use Entity Tracking as a diagnostic, not a target** — it is where a good
-   tokenizer shows up, but its U-shaped, high-variance behaviour makes it a poor
-   thing to chase directly.
-4. **Decide up front whether you are competing on accuracy or on human-likeness.**
-   They are different competitions with different (sometimes opposite) winners. If
-   human-likeness, note that the award can be won by a targeted intervention on one
-   idiosyncratic task (AoA, morphology) rather than by broad gains — but also that
-   any single such score is fragile.
-5. **Discount EWoK and small human-likeness differences.** Do not spend effort
-   moving a number that lives at chance or inside the noise band.
+1. **Optimize BLiMP + BLiMP-supplement first**, via the levers that actually moved
+   them in 2025: training objective and architecture (diffusion MLM main.38, adaptive
+   masking main.31, GPT-BERT-style dual objective, multi-token prediction). It is the
+   most reliable, most monotone, cheapest (zero-shot) signal.
+2. **Treat GLUE as the secondary target**, budget for finetuning variance, and report
+   the aggregate rather than WSC/RTE/MultiRC individually.
+3. **Do not optimize EWoK, COMPS, or the human-likeness tasks for their own sake.**
+   If you compete on human-likeness, know that the award can be captured by a targeted
+   push on one idiosyncratic (and possibly broken) task — but that any single such
+   score is fragile and, in the case of AoA, mis-measured.
+4. **Use Entity Tracking as a diagnostic, not a target**, and only with seeds + CIs.
+5. **Report per-task, with multiple seeds and confidence intervals**, following the
+   best-practice examples in the field: main.2 (10 seeds, paired bootstrap CIs) and
+   main.22 (4 seeds, per-task SDs). A single-checkpoint, single-seed macro number is
+   not evidence that one model is better than another.
+6. **If you can, verify the pipeline before trusting a number** — check the BLiMP
+   tie-handling (main.16) and the AoA sigmoid-fit condition (main.29) in the 2026 code.
 
 ---
 
-## 6. Limitations
+## 5. Confidence and limitations
 
-The meaningfulness verdicts here are inferred from the organizers' published
-figures and table — Figure 5 (which tasks are "more variable" and which are
-monotone with training), Figure 4 (per-task ranges and proximity to skylines), and
-Table 3 (the real per-track scores) — plus the qualitative findings in the report.
-They are **not** yet backed by a first-hand computation of (a) the cross-model
-variance of each task, (b) each task's test–retest / seed reliability, or (c) the
-inter-task correlation matrix.
+The verdicts above are unusually well-supported for a challenge post-mortem because
+they are *convergent across many independent submissions* and, in the strongest cases,
+stated by the winning teams and diagnosed mechanistically (EWoK data coverage in
+main.15; AoA sigmoid-fit in main.29; BLiMP tie-counting in main.16). That is stronger
+evidence than a single organizer figure.
 
-Those three quantities are exactly what would turn this from a well-supported
-argument into a measurement. The raw material is public: the HF space
-`BabyLM-community/babylm-leaderboard-2025-all-tasks` holds the per-model,
-per-subtask results for all 32 models. Pulling that and computing the variance and
-correlations directly is the natural next step — it was blocked mid-session only
-because the Hugging Face connector dropped. I would expect the numbers to sharpen
-these conclusions rather than overturn them, but that is a prediction, not a result.
+Two limitations remain. First, this synthesis reads reported numbers and authors'
+statements; it does not yet include a **first-hand recomputation of cross-model
+variance and the inter-task correlation matrix** over the full leaderboard. That
+reanalysis — cross-model SD per task, test–retest reliability, and task–task
+correlations — is the natural next step and would quantify what is argued here
+qualitatively. The raw material is the HF dataset
+`BabyLM-community/leaderboard-all-results`; the pull is currently blocked only because
+the authenticated Hugging Face tool needs interactive approval in this environment.
+Second, a handful of the 41 papers (main.3, main.9, main.27) do not use the BabyLM
+suite and contribute nothing here; two multimodal/Hebrew papers (main.5, main.6) are
+included only for their at-chance and non-transfer evidence.
+
+I would expect the raw-data reanalysis to sharpen these conclusions, not overturn
+them — but that is a prediction, not yet a result.
+
+---
+
+## Appendix: paper number ↔ identity
+
+Numbers are ACL Anthology `2025.babylm-main.N`. Only papers cited above are listed;
+`evidence.md` covers all 41.
+
+- main.1 — Velasco & Roque, *Rethinking the Role of Text Complexity*
+- main.2 — Ulm et al., *Contrastive Decoding for Synthetic Data* (10-seed CIs)
+- main.5 — Takmaz et al., *Model Merging* (multimodal)
+- main.11 — Aman et al., *BitMar* (multimodal, low-bit)
+- main.12 — Loáiciga et al., *Smaller batch sizes for ELC-BERT*
+- main.13 — Gao et al., *BLiSS* (L2 selective tolerance)
+- main.14 — Haller et al., *BLaLM* (linear attention; reports the WUG bug)
+- main.15 — Ganescu et al., *Looking to Learn* (outstanding; EWoK data-coverage)
+- main.16 — Păpușoi & Nisioi, *Elementary Baselines* (BLiMP tie artifact)
+- main.17 — McCurdy et al., *Hall of Mirrors* (surprisal instability)
+- main.19 — Roque & Velasco, *Text Simplification + Curriculum*
+- main.21 — Bölücü & Can, *Morpheme-Aware* (tokenizer effects; WUG=100 artifact)
+- main.22 — "Do Syntactic Categories Help…" (4-seed variance; supplement artifact)
+- main.26 — Schoenegger et al., *Influence-driven Curriculum*
+- main.28 — *Findings of the Third BabyLM Challenge* (organizers)
+- main.29 — Padovani et al., *Dialogue Is Not Enough* (AoA miscomputation)
+- main.31 — Edman & Fraser, *Mask and You Shall Receive* / AMLM (Strict-Small NLP
+  winner; "Should we trust BabyLM Metrics?")
+- main.32 — Martins et al., *Once Upon a Time* / BLM (Interaction winner)
+- main.33 — Kamzela et al., *LLM-designed study plans*
+- main.34 — Fysikoudi et al., *Active Curriculum LM*
+- main.36 — *Batch-wise Convergent Pre-training* (GLUE frozen at 57.7)
+- main.38 — Kosmopoulou et al., *Masked Diffusion* (Strict NLP winner)
+- main.39 — Tapaninaho, *MoEP* (Strict-Small human-likeness winner; AoA-driven)
+- main.40 — Tampier et al., *RecombiText*
+- main.41 — Aynetdinov & Akbik, *Multi-Token Prediction*

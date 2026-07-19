@@ -15,13 +15,28 @@ a `babylm2025/` subdirectory; this satisfies both.
       exact aggregation formula.
 - [x] Recover the 2025 results (Table 3 of the Findings paper) and the
       organizers' own observations on score variance / discriminability.
-- [x] Assess each task's meaningfulness (reliable / noisy / at-chance / saturated).
-- [ ] (Next step, blocked) Pull the raw per-model per-subtask leaderboard from
-      the HF space `BabyLM-community/babylm-leaderboard-2025-all-tasks` to compute
-      cross-model variance per task and inter-task correlations directly.
-      Blocked because the Hugging Face MCP server disconnected mid-session.
-- [x] Write up `analysis.md` (the deliverable) and `rules-2026.md` (reference).
+- [x] Download and read ALL 41 proceedings papers (2025.babylm-main) from the ACL
+      Anthology — not just the Findings summary. Extracted text under `papers/`;
+      per-paper reliability receipts in `evidence.md` (five parallel readers).
+- [x] Assess each task's meaningfulness (reliable / noisy / at-chance / broken),
+      grounded in the primary papers. Rewrote `analysis.md` around this evidence.
+- [ ] (Next step, blocked on approval) Pull the raw per-model per-subtask leaderboard
+      from the HF dataset `BabyLM-community/leaderboard-all-results` to compute
+      cross-model variance per task and the inter-task correlation matrix directly.
+      Blocked: the authenticated Hugging Face tool returns "requires approval" and
+      isn't being granted in this environment; the dataset is gated (401 via HTTP).
+- [x] Write up `analysis.md` (deliverable), `evidence.md` (receipts),
+      `rules-2026.md` (reference).
 - [x] Commit and push to `claude/babylm-2026-scores-cyhbhz`.
+
+## What the primary-source read changed vs. the first draft
+The Findings-only draft said "human-likeness half is low SNR." The papers show it is
+worse than that, and pin down mechanisms: EWoK is at chance because 13% of its items'
+concepts never appear in training (main.15); AoA is literally miscomputed on 1-5 data
+points (main.29); WUG had an eval bug (main.14) and hits exactly 100.00 under morpheme
+tokenizers (main.21); BLiMP has a tie-counting inflation artifact (main.16); and a
+BROKEN training run beat every real model on the macro aggregate (main.31). The
+aggregate ranking itself is not safe — a stronger claim than the draft made.
 
 ## Sources
 - Findings of the Third BabyLM Challenge (2025), ACL Anthology 2025.babylm-main.28.
