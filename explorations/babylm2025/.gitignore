@@ -1,0 +1,8 @@
+# Large source PDFs (keep extracted .txt instead)
+papers/*.pdf
+# LaTeX build artifacts
+report/*.aux
+report/*.log
+report/*.out
+report/*.b*.log
+report/b*.log

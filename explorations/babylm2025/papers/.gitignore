@@ -1,0 +1,3 @@
+# Large binary PDFs of the ACL Anthology proceedings; regenerate via download.
+*.pdf
+volume.html

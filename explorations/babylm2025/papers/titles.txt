@@ -1,0 +1,41 @@
+1	Rethinking the Role of Text Complexity in Language Model Pretraining
+2	Contrastive Decoding for Synthetic Data Generation in Low-Resource Language Modeling
+3	Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models
+4	Are BabyLMs Deaf to Gricean Maxims? A Pragmatic Evaluation of Sample-efficient Language Models
+5	Model Merging to Maintain Language-Only Performance in Developmentally Plausible Multimodal Models
+6	TafBERTa: Learning Grammatical Rules from Small-Scale Language Acquisition Data in Hebrew
+7	FORGETTER with forgetful hyperparameters and recurring sleeps can continue to learn beyond normal overtfitting limits
+8	Large Language Models and Children Have Different Learning Trajectories in Determiner Acquisition
+9	Design and Analysis of few Million Parameter Transformer-based Language Models trained over a few Million Tokens Dataset
+10	What is the Best Sequence Length for BabyLM?
+11	BitMar: Low-Bit Multimodal Fusion with Episodic Memory for Edge Devices
+12	Exploring smaller batch sizes for a high-performing BabyLM model architecture
+13	BLiSS: Evaluating Bilingual Learner Competence in Second Language Small Language Models
+14	Sample-Efficient Language Modeling with Linear Attention and Lightweight Enhancements
+15	Looking to Learn: Token-wise Dynamic Gating for Low-Resource Vision-Language Modelling
+16	A Comparison of Elementary Baselines for BabyLM
+17	Two ways into the hall of mirrors: Language exposure and lossy memory drive cross-linguistic grammaticality illusions in language models
+18	What did you say? Generating Child-Directed Speech Questions to Train LLMs
+19	Beyond Repetition: Text Simplification and Curriculum Learning for Data-Constrained Pretraining
+20	CurLL: A Developmental Framework to Evaluate Continual Learning in Language Models
+21	A Morpheme-Aware Child-Inspired Language Model
+22	Do Syntactic Categories Help in Developmentally Motivated Curriculum Learning for Language Models?
+23	SlovakBabyLM: Replication of the BabyLM and Sample-efficient Pretraining for a Low-Resource Language
+24	Single layer tiny Co4 outpaces GPT-2 and GPT-BERT
+25	Teacher Demonstrations in a BabyLM’s Zone of Proximal Development for Contingent Multi-Turn Interaction
+26	Influence-driven Curriculum Learning for Pre-training on Limited Data
+27	Understanding and Enhancing Mamba-Transformer Hybrids for Memory Recall and Language Modeling
+28	Findings of the Third BabyLM Challenge: Accelerating Language Modeling Research with Cognitively Plausible Data
+29	Dialogue Is Not Enough to Make a Communicative BabyLM (But Neither Is Developmentally Inspired Reinforcement Learning)
+30	CLASS-IT: Conversational and Lecture-Aligned Small-Scale Instruction Tuning for BabyLMs
+31	Mask and You Shall Receive: Optimizing Masked Language Modeling For Pretraining BabyLMs
+32	Once Upon a Time: Interactive Learning for Storytelling with Small Language Models
+33	You are an LLM teaching a smaller model everything you know: Multi-task pretraining of language models with LLM-designed study plans
+34	Active Curriculum Language Modeling over a Hybrid Pre-training Method
+35	Linguistic Units as Tokens: Intrinsic and Extrinsic Evaluation with BabyLM
+36	Batch-wise Convergent Pre-training: Step-by-Step Learning Inspired by Child Language Development
+37	Pretraining Language Models with LoRA and Artificial Languages
+38	Masked Diffusion Language Models with Frequency-Informed Training
+39	MoEP: Modular Expert Paths for Sample-Efficient Language Modeling
+40	RecombiText: Compositional Data Augmentation for Enhancing LLM Pre-Training Datasets in Low-Resource Scenarios
+41	Babies Learn to Look Ahead: Multi-Token Prediction in Small LMs

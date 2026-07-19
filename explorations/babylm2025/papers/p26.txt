@@ -1,0 +1,4468 @@
+Proceedings of the First BabyLM Workshop, pages 356–379
+November 8, 2025 ©2025 Association for Computational Linguistics
+Influence-driven Curriculum Learning for Pre-training on Limited Data
+Loris Schoenegger1,2, Lukas Thoma1,2,
+Terra Blevins1,4, Benjamin Roth1,3
+1Faculty of Computer Science, University of Vienna, Vienna, Austria
+2UniVie Doctoral School Computer Science, University of Vienna, Vienna, Austria
+3Faculty of Philological and Cultural Studies, University of Vienna, Vienna, Austria
+4Khoury College of Computer Sciences, Northeastern University, Boston, USA
+Correspondence: loris.schoenegger@univie.ac.at
+Abstract
+Curriculum learning, a training technique
+where data is presented to the model in order of
+example difficulty (e.g., from simpler to more
+complex documents), has shown limited suc-
+cess for pre-training language models. In this
+work, we investigate whether curriculum learn-
+ing becomes competitive if we replace conven-
+tional human-centered difficulty metrics with
+one that more closely corresponds to example
+difficulty as observed during model training.
+Specifically, we experiment with sorting train-
+ing examples by their training data influence,
+a score which estimates the effect of individ-
+ual training examples on the model’s output.
+Models trained on our curricula are able to out-
+perform ones trained in random order by over
+10 percentage points in benchmarks, confirm-
+ing that curriculum learning is beneficial for
+language model pre-training, as long as a more
+model-centric notion of difficulty is adopted.
+1
+Introduction
+Curriculum learning, a training paradigm where
+the training data is presented to the model in non-
+random order (Bengio et al., 2009), has recently
+been explored extensively as a pretraining strategy
+for language models due to its potential to improve
+performance in low-resource settings (Timiryasov
+and Tastet, 2023), reduce training time (Platan-
+ios et al., 2019), or to make the training process
+more data-efficient and developmentally plausible
+(i.e., more similar to how humans acquire language;
+Warstadt et al., 2023a; Hu et al., 2024). A popu-
+lar form of curriculum learning relies on heuristics
+that sort training data by increasing difficulty
+(e.g., lexical diversity trough type-token ratio: Mi,
+2023). However, in low-resource language mod-
+eling, approaches that incorporate this curriculum
+learning strategy have not yielded the anticipated
+improvements and show no consistent positive ef-
+fect on model performance (Hu et al., 2024). In this
+work, we therefore investigate whether curriculum
+learning becomes competitive for language model
+pretraining, if we replace human-centered difficulty
+measures with one that better reflects training dy-
+namics. Specifically, we derive a novel form of cur-
+riculum from training data influence estimates,
+that we obtain from a surrogate model trained with
+randomly ordered data: These estimates assign
+documents from the training data scores propor-
+tional to their impact on the model’s output. We
+adapt a gradient similarity-based influence score
+(Pruthi et al., 2020), where influence is measured
+by comparing loss-gradients of training and test
+instances, with higher similarity signifying greater
+influence. We experiment with 10 different sorting
+3
+Re-order training data by influence
+Train new models and 
+benchmark against random order
+2
+Estimate training 
+data influence
+1
+Train in random order
+LM
+...
+LM
+LM
+LM
+4
+1:
+2:
+...
+#132
+#5432
+...
+...
+time ? 
+data mix
+Curriculum:
+...
+Figure 1: In our method, we extract training data influ-
+ence estimates from models trained in random order, to
+create better-performing curricula.
+strategies, all based on the average influence that
+a given training example exerts on the prediction of
+other examples sampled from the training data. We
+compare model performance under these curricula
+to both random training and curriculum learning
+using three human-centered difficulty heuristics.
+Through experiments with RoBERTa- (Liu et al.,
+356
+
+2019) and Llama models (Touvron et al., 2023),
+we demonstrate that our approach is more effec-
+tive than handcrafted curricula, and analyze what
+ranking and coverage strategies are most effective.
+We find that source-difficulty curricula, a popular
+human-centered design that arranges datasets by
+their difficulty, are ineffective compared to alter-
+native dataset coverage strategies, and we offer
+insights into the reasons for their low performance.
+Our main contributions are as follows:1
+(1) We demonstrate that our curricula yield an in-
+crease of over 10 percentage points (pp) in
+accuracy for RoBERTa- and over 4 pp for
+Llama models on a popular challenge dataset
+for low-resource pre-training (BabyLM 10M-
+word dataset: Choshen et al., 2024).
+(2) We analyze the data mix of the generated cur-
+ricula (e.g., child-directed speech, dialogue,
+etc.) and how it evolves over time;
+(3) Analyze loss trajectories to study how our cur-
+ricula affect the model’s learning process;
+(4) Explore how example ordering within influ-
+ence curricula relates to existing heuristics.
+2
+Related Work
+Curriculum Learning
+can roughly be catego-
+rized into dynamic and static approaches. Dynamic
+designs incorporate difficulty heuristics directly
+into the training process, generating or updating
+the curriculum during training (e.g., Kumar et al.,
+2010; Sedova et al., 2023). Static curricula have re-
+cently proven popular in the BabyLM challenge, a
+competition promoting the creation of more devel-
+opmentally plausible language models (Hu et al.,
+2024): Motivated by the observation that humans
+only require up to 100 million words to reach na-
+tive levels in a language (Gilkerson et al., 2017),
+this challenge invites NLP researchers to explore
+human-centered learning strategies on a dataset
+of just 10M or 100M words. Participants have
+incorporated various sorting heuristics into curricu-
+lum learning schemes, such as sorting by increas-
+ing sentence length (Platanios et al., 2019; Gha-
+nizadeh and Dousti, 2024; Borazjanizadeh, 2023;
+Spitkovsky et al., 2010), document- or sentence
+complexity (Oba et al., 2023; Opper et al., 2023),
+lexical diversity (Mi, 2023; Ghanizadeh and Dousti,
+2024), or dataset-level source difficulty by category
+1We release our code at https://doi.org/10.5281/
+zenodo.16919045, and host all datasets and models on
+the Hugging Face Hub at https://huggingface.co/
+collections/loris3/ticl-68a6fd8bcc3093f239439e42.
+(Thoma et al., 2023; Huebner et al., 2021; Martinez
+et al., 2023; Opper et al., 2023). However, static
+approaches following this framework have shown
+no consistent positive effect on model performance
+(Hu et al., 2024).
+Our method is motivated by the assumption that
+children’s language learning proceeds from easy to
+complex input (Elman, 1993), but represents a mid-
+dle ground between static and dynamic approaches:
+we generate static curricula, but base them on a
+score that reflects training dynamics.
+Training Data Influence for CL
+Bejan et al.
+(2023) employ TracIn self-influence (Pruthi et al.,
+2020) for curriculum learning in the fine-tuning
+setting.
+For them, self-influence is defined as
+∇ℓ(wt, z) · ∇ℓ(wt, z) (Pruthi et al., 2020), which
+does not relate to other data points in the training
+data, and effectively only quantifies magnitude for
+a given example. In contrast to our approach, their
+focus lies on improving performance by filtering
+outliers and up-weighting the most influential ex-
+amples. Our approach incorporates more informa-
+tion, specifically pairwise influence scores between
+one example and all other examples in the training
+data, as outlined in Section 3.1.
+Role of Example Difficulty in Learning
+Sev-
+eral authors have utilized measures of example
+difficulty to systematically study the effect of cur-
+riculum learning for supervised fine-tuning tasks
+and in the image domain (Hacohen and Weinshall,
+2019; Wu et al., 2020; Jiang et al., 2021; Baldock
+et al., 2021). For instance, Wu et al. (2020), study
+whether examples of similar difficulty are learned
+at similar stages across architectures through com-
+paring the learned iteration of examples across
+models, a metric defined as the first epoch at which
+the model correctly predicts them. Our setup differs
+in that we study the model’s downstream perfor-
+mance and operate within an unsupervised setting.
+3
+Methodology
+In this work, we investigate the benefits of incorpo-
+rating training data influence estimates into curricu-
+lum learning methods, particularly for low-data pre-
+training settings. We first introduce our approach
+for estimating example difficulty using training gra-
+dients. Then, we describe our curriculum designs
+and outline our experimental setup.
+357
+
+3.1
+Training Data Influence Estimation
+We define a new metric for measuring example
+difficulty in curriculum design that leverages train-
+ing data influence estimates: We adapt TracinCP
+(Pruthi et al., 2020) for this, which in its origi-
+nal formulation estimates the point-wise influence
+ϕTracInCP(z, z′) that training on an instance z had
+on the model, when predicting a test instance z′.
+The estimation process involves measuring the sim-
+ilarity between the gradients of the model’s loss
+function, when evaluated on z and z′ respectively,
+w.r.t some set of parameters wt, and is repeated at
+a series of checkpoints T:
+ϕTracInCP(z, z′) =
+X
+∀t∈T
+ηt∇ℓ(wt, z) · ∇ℓ(wt, z′) (1)
+Following Yeh et al. (2022), we let wt be the
+model’s input embeddings at checkpoint t.2 To
+leverage this point-wise influence score for cur-
+riculum learning, we propose to calculate the av-
+erage influence ϕt(z, D) that a given training ex-
+ample exerts on the prediction of all other examples
+from the training data D. Omitting the learning rate
+ηt, for one training instance z, and one checkpoint
+t we calculate:
+ϕt(z, D) =
+P
+∀z′∈D ∇ℓ(wt, z) · ∇ℓ(wt, z′)
+|D|
+(2)
+= ∇ℓ(wt, z) · Ez′∼D[∇ℓ(wt, z′)]
+(3)
+Intuitively, this score quantifies the average utility
+of a given example during training. Unlike mea-
+sures of surprisal such as perplexity, it is high for
+prototypical examples (which feature loss gradients
+similar to the average gradient) and low for outliers.
+Doing so for all examples in the training dataset D,
+at regular checkpoints for a model trained in ran-
+dom order, yields a matrix Φ ∈R|D|×|T| like the
+one depicted in Figure 2, which we subsequently
+use for constructing curricula with various reorder-
+ing functions. In initial experiments, we observed
+that this score based on dot-product similarity was
+biased against longer examples, which was also
+observed by Xia et al. (2024). Thus, we normalize
+the loss gradients to reduce the impact of gradi-
+ent magnitude on the similarity scores, effectively
+yielding cosine similarity (Hammoudeh and Lowd,
+2022, 2024; Park et al., 2023; Xia et al., 2024).
+2Note that this score incorporates information about the
+full model, as the gradient chains through higher layers as
+well (Yeh et al., 2022).
+step →
+step →
+Figure 2: Left: measured influence on Crand; Right:
+anticipated influence if sorted according to C↘.
+3.2
+Curriculum Design
+This section introduces our 10 curriculum design
+methods based on influence estimates, as well as
+4 baseline curricula. Our designs can be broadly
+categorized into two categories, characterized by
+their coverage strategy: the first group of curric-
+ula covers the full dataset every epoch, while the
+second group progressively increases example dif-
+ficulty across epochs, consequently not re-visiting
+examples from early epochs in later ones.
+Epoch-wise Dataset Coverage Strategies
+In the curricula C↘and C↗, we sort documents
+in descending (↘) or ascending (↗) order of in-
+fluence, measured using model checkpoints of a
+surrogate model trained in random order stored af-
+ter each epoch t. We include an additional pair
+of curricula C∼
+↘and C∼
+↗, where, in an attempt to
+increase data diversity during training, we addition-
+ally divide the curriculum into ordered subsets of
+1000 documents, and then randomly shuffle the doc-
+uments within these subsets. Similarly, motivated
+by the intuition that examples with lasting influence
+across epochs should be prioritized because they
+appear to have been more difficult for the surrogate
+model to learn, we add a re-weighting step to the
+two curricula (C ∗h)∼
+↘and (C ∗h)∼
+↗, where we
+convolve the influence estimates Φ with a lognor-
+mal filter h before the sorting step; this thus up-
+weights examples that remain influential in subse-
+quent epochs: (C ∗h)(t,i) = PT
+k=0 Φ(t−k,i) · h(k).
+Lastly, emulating prior works that used influ-
+ence estimates for data cleaning and not solely for
+re-ordering (e.g., Bejan et al., 2023), we add a cur-
+riculum C{50} where we discard the 50% least in-
+fluential examples in each epoch, while keeping the
+total number of words shown to the model constant.
+We shuffle once per epoch.
+Cumulative Dataset Coverage Strategies
+Source difficulty curricula (Martinez et al., 2023)
+are a curriculum learning strategy where models are
+358
+
+trained on a collection of datasets that are manually
+sorted by difficulty (but the individual examples
+within these datasets are not). In CE
+↘and CE
+↗, we
+design a similar coverage strategy, allowing us to
+subsequently test whether curricula based on train-
+ing data influence yield similar dataset mixtures as
+handcrafted ones: In contrast to the curriculum de-
+signs introduced so far, we aggregate the individual
+influence estimates for a given example across all T
+epochs to obtain a measure of its overall influence
+during training (ϕT (z, D) = P
+∀t ϕt(z, D)). We
+then sort examples by this score, either in ascend-
+ing (↗) or descending order (↘). Subsequently,
+we divide this ordered data into m = 10 segments,
+from which we then randomly sample to create m
+equal-length epochs with examples of increasing
+or decreasing difficulty respectively.
+Our last curriculum, CA, is designed as a com-
+promise between curricula with epoch-wise dataset
+coverage strategies and CE
+· : In this curriculum, we
+alternate between showing subsets of high influ-
+ence scores and subsets of low influence scores,
+but shuffle the individual examples within each
+segment randomly. Specifically, we first sort exam-
+ples by their aggregate score ϕT (z, D), and create
+m = 10 segments just as for CE
+· . We then assem-
+ble the curriculum from these segments by alter-
+nating between the highest-influence and lowest-
+influence ones until all are used. We train for 10
+epochs in this order, randomly shuffling the exam-
+ples within each segment before each pass.
+Baseline Curricula
+We include 4 baseline curricula Crand, Csource,
+CMATTR and CPPL: In Crand we emulate non-
+curriculum learning, performing 10 full passes over
+the training data in random order. We train one
+model per dataset using this curriculum, storing
+checkpoints after each full pass so that it can serve
+both as a surrogate model for extracting influence
+estimates and as a baseline (we utilize a total of
+T = 10 checkpoints).
+Handcrafted source-difficulty curricula present
+datasets sorted by difficulty as distinct blocks (e.g.,
+children’s books before Wikipedia articles). We
+define such a curriculum in Csource, by assign-
+ing the datasets in Table 1 to one of 5 stages (C1-
+C5), following previous work (Thoma et al., 2023;
+Huebner et al., 2021; Martinez et al., 2023; Opper
+et al., 2023). Similar to CE
+↗and CE
+↘, we train for
+two epochs per stage, randomly shuffling examples
+within each epoch.
+CMATTR is inspired by Mi’s (2023) use of type-
+token ratio (TTR) for curriculum learning. Here,
+we sort documents by increasing moving average
+type-token ratio (CMATTR (with a window length
+of 5); Covington et al., 2010).3 Lastly, for CPPL,
+we sort in order of increasing perplexity under a
+static uni-gram model, as described in Martinez
+et al. (2023). With both CMATTR and CPPL, we
+train the model on full epochs in this order 10 times.
+3.3
+Datasets
+We train models on three datasets:
+• D2024 is the 10M word text-only dataset utilized
+in the 2024 and 2025 iterations of the BabyLM
+challenge (Choshen et al., 2024; Charpentier
+et al., 2025), which is composed of datasets of
+various levels of difficulty listed in Table 1.
+• To facilitate analysis of source-difficulty curric-
+ula, we construct Dstratified, which has an equal
+number of words per stage. We sample from the
+same datasets underlying D2024, but add sources
+to balance word counts (Table 1).
+• As document length varies substantially by
+source, we additionally control for the number of
+words per document in a third dataset Dequitoken
+(also stratified and balanced w.r.t stages); specif-
+ically, we create synthetic documents that are
+exactly 100 words long by concatenation.
+Finally, we create a shared evaluation set for all
+D∗, sampled from the 100M word version of said
+BabyLM dataset (|Deval| = 0.05 · |D2024|).
+3.4
+Models
+Our experiments produce a total of 84 models, one
+RoBERTa- (126M params) and one Llama model
+(97.2M params), both with random initializations,
+for each combination of the 3 datasets and 14 cur-
+ricula. We train on 4 NVIDIA H100 GPUs with an
+effective batch size of 2048, using the parameters
+summarized in Table 3 in Appendix A. Each cur-
+riculum includes at most 100 million words (e.g.,
+10 passes over a dataset of 10M tokens for Crand).
+4
+Results and Analysis
+This section presents and analyzes the results of our
+curriculum design experiments. Specifically, we:
+3We choose to use MATTR over TTR as a metric to make
+our curricula more robust to variation in document length.
+359
+
+C1
+Child Directed Speech
+CHILDES (MacWhinney, 2014)
+C2
+Unscripted Dialogue
+Switchboard Dialog Act Corpus (Stolcke et al., 2000)
+British National Corpus (BNC),
+dialogue portion (Consortium, 2007)
+C3
+Scripted Dialogue
+OpenSubtitles (Lison and Tiedemann, 2016)
+C4
+Wiki
+Simple Wiki (Warstadt et al., 2023a)
+C5
+Written English
+Standardized Project Gutenberg Corpus (Gerlach and
+Font-Clos, 2018)
+C1
+Child Directed Speech
+CHILDES (MacWhinney, 2014)
+C2
+Children’s Books
+Children Stories Text Corpus (Bensaid et al., 2021)
+Children’s Book Test (Hill et al., 2016)
+C3
+Dialogue
+Switchboard Dialog Act Corpus (Stolcke et al., 2000)
+British National Corpus (BNC), dialogue portion (Consortium, 2007)
+OpenSubtitles (Lison and Tiedemann, 2016)
+C4
+Educational
+Simple Wiki (Warstadt et al., 2023a)
+QED (Abdelali et al., 2014)
+C5
+Written English
+Standardized Project Gutenberg Corpus (Gerlach and Font-Clos, 2018)
+Wikipedia (Warstadt et al., 2023a)
+Table 1: Curriculum stages in Csource. Stages for D2024 (left) differ from those in Dstratified and Dequitoken
+(right) to allow for a balanced split. We make all three datasets available under CC BY 4.0.
+D2024
++4.34 pp
++3.07 pp
++1.07 pp
++1.78 pp
++0.21 pp
++1.77 pp
++1.37 pp
++0.17 pp
++0.72 pp
++1.29 pp
+-0.02 pp
+-4.84 pp
+-3.83 pp
++10.71 pp
++10.97 pp
++11.77 pp
++11.00 pp
++12.42 pp
++9.36 pp
++9.13 pp
++10.19 pp
++9.49 pp
++8.74 pp
++8.72 pp
++10.98 pp
++3.02 pp
+(C * h)
+CMATTR
+Csource
+C
+C{50}
+C
+C
+CA
+CPPL
+(C * h)
+C
+CE
+CE
+Dstratified
++3.08 pp
++4.18 pp
++4.18 pp
++4.62 pp
++2.41 pp
++2.37 pp
++1.86 pp
++0.92 pp
++1.73 pp
++3.97 pp
+-1.39 pp
+-3.11 pp
+-4.79 pp
++7.96 pp
++6.67 pp
++4.26 pp
++3.51 pp
++4.47 pp
++4.16 pp
++3.81 pp
++4.52 pp
++3.32 pp
+-0.28 pp
++3.89 pp
++4.40 pp
++0.36 pp
+(C * h)
+CA
+C
+C
+(C * h)
+C
+CMATTR
+C{50}
+C
+CPPL
+Csource
+CE
+CE
+Dequitoken
++3.16 pp
++2.29 pp
++1.50 pp
++1.31 pp
++0.42 pp
+-0.12 pp
+-0.65 pp
+-1.24 pp
+-0.72 pp
+-1.82 pp
+-3.10 pp
++0.53 pp
+-5.02 pp
++4.54 pp
++3.57 pp
++3.31 pp
++3.12 pp
++4.00 pp
++4.12 pp
++3.92 pp
++4.36 pp
++2.62 pp
++3.10 pp
++4.16 pp
+-0.55 pp
++1.93 pp
+C
+C
+C
+C
+(C * h)
+Csource
+CPPL
+C{50}
+CMATTR
+(C * h)
+CE
+CA
+CE
+Llama
+RoBERTa
+Figure 3: Average change in macro-accuracy across benchmark tasks w.r.t. training on the random curriculum.
+Sorted by average change across RoBERTa and Llama models.
+(1) present the benchmark performance of our mod-
+els on downstream tasks; (2) compare the source
+composition of our curricula to those of the base-
+lines; (3) analyze training- and evaluation loss tra-
+jectories; (4) and explore how example ordering in
+the influence curricula correlates with the orderings
+of existing heuristics.
+4.1
+Benchmark Performance
+Llama
+Llama
+RoBERTa
+RoBERTa
+Dataset
+Crand
+(C ∗h)∼
+↗
+Crand
+(C ∗h)∼
+↗
+D2024
+0.541
+0.554
+0.466
+0.553
+Dstratified
+0.536
+0.566
+0.512
+0.592
+Dequitoken
+0.523
+0.527
+0.492
+0.532
+Table 2: Macro-Accuracy across tasks for random order
+and the (C ∗h)∼
+↗curriculum.
+We evaluate our curricula by comparing their per-
+formance to models trained on the same data in
+random order. In Figure 3, we report the increase
+or decrease in macro-accuracy across individual
+benchmark tasks from BLiMP (Warstadt et al.,
+2020), BLiMP supplement (Warstadt et al., 2023b),
+EWOK (Ivanova et al., 2024), Super GLUE (Wang
+et al., 2019), as well as an entity tracking task (Kim
+and Schuster, 2023) and an adjective nominaliza-
+tion task (Hofmann et al., 2024), as implemented
+specifically for the BabyLM challenge (Charpentier
+et al., 2025). Results for the individual benchmarks
+are provided in Appendix D.
+In terms of raw performance, the RoBERTa
+model trained using (C ∗h)∼
+↗(sorted by increas-
+ing influence, re-weighted with lognormal filter)
+on Dstratified is the best performing model over-
+all (0.592 macro-acc, +7.96 pp over Crand), with
+the best Llama model being the one trained with
+(C ∗h)∼
+↘(sorted by decreasing influence) on D2024
+(0.584, +4.34 pp). RoBERTa models see higher ab-
+solute gains through the addition of curriculum
+learning than Llama models in our experiments.
+This can partially be attributed to their lower ini-
+tial accuracy when trained in random order, with
+Llama models outperforming RoBERTa models
+by 7.5, 2.4, and 3.1 pp on the D2024, Dstratified,
+360
+
+and Dequitoken datasets, respectively (Table 2). No-
+tably, for RoBERTa models, the handcrafted source
+curriculum was effective on D2024 (+11.77 pp),
+and only two curricula lead to a decrease in per-
+formance, namely CPPL on Dstratified (-0.28 pp),
+and CA on Dequitoken (-0.55 pp). For Llama mod-
+els, in contrast, the worst-performing curricula CE
+↘
+and CE
+↗incur a considerable 3.10-5.02 pp decrease
+in accuracy over training in random order.
+For both model architectures, the highest gains
+through curriculum learning are on D2024 followed
+by Dstratified (equal number of words per stage),
+and Dequitoken (equal number of documents per
+stage, and words per document).
+Dataset Coverage Strategies
+Models trained with handcrafted- (Csource) and
+synthetic source difficulty curricula (CE
+↘, CE
+↗),
+both designed to increase difficulty gradually
+across epochs (cumulative coverage strategies), per-
+form worse overall than the other designs, which
+perform one full pass over the data each epoch (per-
+epoch coverage strategies). CA, where we alternate
+between showing subsets of high influence scores
+and subsets of low influence scores, shows signifi-
+cant improvements over training in random order
+for both Llama (+4.18 pp) and RoBERTa (+6.67
+pp) on Dstratified and D2024 for RoBERTa (+10.19
+pp), but not for the remaining three models.
+Sorting Direction and Shuffling Strategy
+Surprisingly, our benchmark results do not conclu-
+sively show whether curricula sorted by ascending
+(↗) or descending (↘) influence perform better;
+the ascending version of the same strategy does
+not consistently outperform the descending ver-
+sion (and vice versa). Curricula where we shuffle
+within stages (e.g., C∼
+↘) similarly do not reliably
+outperform ones without, the same applies to curric-
+ula built from lognorm-filtered influence estimates
+((C ∗h)∼
+↘). We offer a potential explanation for
+this in Section 5.
+4.2
+Source Composition
+The datasets we utilize are themselves composed
+of sources of varying difficulty; similar to previous
+work (Thoma et al., 2023) we have attributed each
+to one of five stages of increasing difficulty (C1-C5;
+from a human learning perspective) for construct-
+ing the handcrafted curricula (Table 1). Based on
+these labels, we plot the source compositions of the
+training data shown to the Llama models over time
+in Figure 4 and provide those of RoBERTa models
+in Appendix C.
+We observe that our influence curricula are
+highly sensitive to the source distribution of the
+dataset. C1: Child Directed Speech and C3: Di-
+alogue, the two largest stages in the unbalanced
+D2024 dataset, are scheduled first in the synthetic
+source difficulty curriculum CE
+↘, with more than
+half of the training steps allocated to them. For
+C{50}, where we discard the 50% least influential
+examples in each epoch, the share of child directed
+speech accounts for over 90% of examples through-
+out the training process, despite accounting for only
+roughly half of D2024 by number of documents.
+This over-representation of child directed
+speech in the majority of epochs may explain why
+these curricula perform worse in benchmark tasks
+than all other influence curricula across all datasets
+and model types: When controlling for the number
+of words per source (Dstratified), the effect is less
+extreme, yet, C1: Child-Directed Speech, C3: Di-
+alogue, and C4: Educational are more frequently
+shown in early rather than in later epochs in CE
+↘,
+with C5: Written English following the opposite
+trend. For Dequitoken however, where the model
+used for influence estimation sees an equal number
+of tokens and documents per stage, all trends are
+reversed, with C1 now shown more often in later
+epochs, and C5 in earlier ones. One possible ex-
+planation stems from the definition of our datasets,
+which sample based on a word-based budget rather
+than one based on the number of documents: In
+D2024, C1 accounts for 54% of documents but only
+28% of words, while C5 comprises 25% of words
+within just 6% of the dataset’s documents.4 Be-
+cause our sorting relies on a per-document average
+influence measure, similarity to the larger subset C1
+likely disproportionately impacts influence scores
+compared to similarity with C5. This suggests
+that our ranking method is biased against smaller
+sources (by number of documents).
+Contrary to our initial expectation that the in-
+fluence of child-directed speech would diminish
+in later epochs, the source composition of epoch-
+wise dataset coverage strategies (e.g., C↘), does
+not strongly vary over time. To obtain a formal
+measure of how similar a curriculum’s source dis-
+tribution over time is to the model-agnostic base-
+lines, we split both curricula into n = 1000 seg-
+ments, for which we then calculate the average
+4the same pattern applies in Dstratified
+361
+
+Figure 4: Dataset mix of curricula for Llama models. We trace back documents to the stages defined in Table 1.
+Jensen-Shannon divergence5. We find that our cur-
+ricula’s source distribution is closer to that of Crand
+than to other baselines (i.e., our curricula retain the
+dataset’s source distribution, Figure 5). We there-
+fore cannot explain the performance of influence
+curricula through their source distributions alone.
+(C * h)
+(C * h)
+CE
+CE
+C
+C
+C{50}
+C
+CA
+C
+CMATTR
+CPPL
+Crand
+Csource
+0.25
+0.17
+0.23
+0.21
+0.25
+0.17
+0.18
+0.25
+0.22
+0.17
+0.21
+0.12
+0.19
+0.18
+0.21
+0.11
+0.14
+0.21
+0.15
+0.11
+0.08
+0.08
+0.09
+0.10
+0.07
+0.07
+0.05
+0.07
+0.09
+0.07
+0.42
+0.41
+0.48
+0.43
+0.42
+0.41
+0.41
+0.42
+0.42
+0.41
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+Figure 5: Average Jensen-Shannon divergence between
+curricula for Llama models. Lower values indicate more
+similar stage distributions.
+4.3
+Loss Trajectories
+We provide training- and evaluation loss trajecto-
+ries for a subset of our models in Figure 6, and the
+remaining ones in Appendix D. For one RoBERTa
+model (CE
+↗on D2024) and 9 Llama models (D2024:
+{CE
+↗, CA, Csource, CMATTR, Crand}, Dstratified:
+{CE
+↗, CE
+↘, C{50}
+↗
+, Crand}) we measure higher eval-
+uation loss at the end of training compared to the
+beginning, suggesting training divergence.
+We observe substantial training loss spikes,
+which in non-curriculum learning often indicates
+training instability (Li et al., 2022). However, as
+evident in Figure 6, the model that performs best in
+5µJSD(pa||pb) := Pn
+i=1
+DKL(pi
+a||pi
+b)+DKL(pi
+b||pi
+a)
+2
+/n,
+where pi
+a and pi
+b are the source distributions of two segments
+benchmarks ((C ∗h)∼
+↗, RoBERTa) exhibits more
+severe training loss-spikes than the worse perform-
+ing Csource, CE
+↘or Crandom. We extend this analy-
+sis to all 84 models, calculating the Spearman rank
+correlation between a curriculum’s gain in bench-
+mark performance (over training in random order)
+and the loss-ratio (a measure of training instability;
+Li et al., 2022) in Appendix B. We find no sig-
+nificant negative rank correlation for any dataset6,
+indicating that at least within the limited number
+of epochs we train for, training loss trajectories
+appear less informative of downstream perfor-
+mance compared to training in random order.
+4.4
+Document Order
+We additionally explore how the ordering of ex-
+amples under influence curricula correlates with
+ordering of existing heuristics. We use Kendall’s τ,
+calculated on a per-epoch basis as documents are
+shown multiple times during training.7 Curricula
+sorted by decreasing influence (C∼
+↘, C↘, (C∗h)∼
+↘)
+show significantly stronger correlations with both
+CMATTR and CPPL than curricula sorted by in-
+creasing influence (CMATTR : +0.047∗, CPPL :
++0.084∗). This suggests that our influence measure
+may be inversely related to example difficulty
+as defined by these curricula (i.e., higher influence
+implies lower difficulty). Rank correlation between
+any type of influence curriculum and Crand, as well
+as between influence curricula and Csource is neg-
+ligible, which is to be expected as we shuffle these
+within epochs or stages respectively. Convolving
+6D2024: 0.177, Dequitoken: 0.096, Dstratified: 0.197
+7As documents may also be visited multiple times within
+an epoch, we use tau-b (Kendall, 1945) to account for ties. We
+truncate the longer of the two curricula where necessary.
+362
+
+4 × 100
+6 × 100
+Eval Loss
+4 × 100
+5 × 100
+6 × 100
+7 × 100
+8 × 100
+0
+2
+4
+6
+8
+10
+Epoch
+101
+2 × 100
+3 × 100
+4 × 100
+6 × 100
+2 × 101
+Train Loss
+0
+2
+4
+6
+8
+10
+Epoch
+102
+2 × 101
+3 × 101
+4 × 101
+6 × 101
+RoBERTa
+LLaMA
+CE
+(C * h)
+Crand
+Csource
+Figure 6: Train- and evaluation loss of baselines and influence curricula for Dstratified.
+CE
+CE
+C
+C
+(C * h)
+(C * h)
+C
+C
+C{50}
+CA
+Crand
+Csource
+CMATTR
+CPPL
+0.00
+0.00
+0.00
+-0.00
+-0.00
+0.00
+-0.00
+-0.00
+-0.00
+-0.00
+0.00
+-0.00
+0.00
+0.00
+-0.00
+-0.00
+-0.00
+0.00
+-0.00
+-0.00
+0.00
+0.00
+-0.03
+0.03
+-0.06
+0.05
+-0.03
+0.03
+0.00
+0.01
+0.00
+0.00
+-0.05
+0.04
+-0.07
+0.06
+-0.05
+0.04
+0.00
+0.02
+0.20
+0.15
+0.10
+0.05
+0.00
+0.05
+0.10
+0.15
+0.20
+Figure 7: Rank-similarity between influence-curricula
+and baselines: Mean Kendall τb.
+with a log-norm filter before sorting ((C ∗h)∼
+↘)
+has a marginal positive, but insignificant effect on
+the similarity to baselines (+0.016 w.r.t. C∼
+↘for
+CMATTR, +0.013 w.r.t CPPL).
+5
+Discussion
+Our results indicate that curricula based on training
+data influence estimates can be viable from a per-
+formance perspective; however, they are only so if
+paired with non-developmentally plausible cover-
+age strategies (i.e., ones roughly inspired by how
+humans acquire language), in which the full train-
+ing data is visited once per epoch: When specif-
+ically comparing the handcrafted- (Csource), and
+the two synthetic source-difficulty curricula (CE
+↗,
+CE
+↘), it is evident that our sorting strategy based
+on training dynamics was unable to compensate for
+this less effective human-centered form of schedul-
+ing in terms of performance. Future work should
+therefore explore coverage strategies that more ef-
+fectively balance model performance and develop-
+mentally plausible scheduling.
+The observation that the ascending versions of
+the same strategy do not consistently outperform
+the descending versions (e.g., C↘and C↗) and
+vice versa suggests that the observed increase in
+performance might not stem from the specific sort-
+ing order (by increasing or decreasing influence),
+but rather from an improved grouping of exam-
+ples: examples of similar influence are more likely
+located in the same batch. This would also ex-
+plain the competitive performance of sorting by
+the model-agnostic difficulty heuristic CMATTR
+on D2024 and Dstratified.
+6
+Conclusion
+In this work, we study curriculum learning for lan-
+guage model pretraining and propose a novel type
+of curricula based on training data influence, which
+outperforms training in random order by up to
+12.42 pp for RoBERTa models (C{50}, D2024) and
+up to 4.62 pp for Llama models (C↗, Dstratified).
+In contrast to recent experiments with handcrafted
+curricula, our results indicate that curriculum learn-
+ing with our method has potential to improve data
+efficiency in low-resource settings.
+Through an analysis of the data distribution
+in our curricula derived from influence estimates,
+we find that their source composition does not
+strongly vary over time, contrasting that of ex-
+isting source-difficulty curricula, which are typi-
+cally designed to decrease the proportion of child-
+directed speech in later epochs (replacing it with
+more complex text). Furthermore, by conducting
+an analysis of training- and evaluation loss trajecto-
+ries, we have observed that the severe spikes in
+training loss seen with this form of curriculum
+learning are not significantly correlated with model
+performance on downstream benchmarks. Lastly,
+we explore how the ordering of examples with in-
+fluence curricula correlates with existing sorting
+heuristics, finding that our measure is inversely
+363
+
+correlated to example difficulty (i.e., higher in-
+fluence implies lower difficulty). In conclusion,
+our results suggest that curricula based on train-
+ing data influence estimates can be viable from a
+performance perspective, but, their success may
+be attributed to training dynamics rather than in-
+creased developmental plausibility.
+Limitations
+We use a two-step approach to estimating training
+data influence: we first pre-train a model in random
+order, and subsequently extract the loss-gradients
+we utilize for influence estimation (one example
+at a time). We opted for this implementation to
+simplify our experimental setup, as our primary
+focus was on studying curriculum learning rather
+than minimizing training time. To improve compu-
+tational efficiency within our framework, one could
+reuse (mini-batch) gradients from model training
+for influence estimation. We provide additional
+details on runtime in Appendix A.
+In Section 4.2, where we study the data mix of
+our curricula, we observe that our influence curric-
+ula are highly sensitive to the source distribution
+of the dataset. If future work has an intention to
+use a similar influence estimation method for data
+cleaning or selection (as we did in C{50}), it should
+explore measures to ensure appropriate data bal-
+ancing. In our setup, the failure to do so primarily
+results in lower benchmark performance for C{50}.
+Lastly, our experiments are based on relatively
+small language models and datasets due to the
+lack of large-scale pre-training datasets that both
+cover and categorize examples across different dif-
+ficulty levels. However, with D2024 we include a
+dataset that is widely used and studied through the
+BabyLM challenge (see Charpentier et al., 2025).
+Acknowledgments
+The present research was funded by the Go!Digital
+3.0 grant program of the Austrian Academy
+of
+Sciences
+(GD3.0_2021-18_CogML)
+and
+by the Vienna Science and Technology Fund
+(WWTF)[10.47379/VRG19008]
+"Knowledge-
+infused Deep Learning for Natural Language
+Processing".
+References
+Ahmed Abdelali, Francisco Guzman, Hassan Sajjad,
+and Stephan Vogel. 2014. The AMARA Corpus:
+Building Parallel Language Resources for the Edu-
+cational Domain. In Proceedings of the Ninth In-
+ternational Conference on Language Resources and
+Evaluation (LREC‘14), pages 1856–1862, Reykjavik,
+Iceland. European Language Resources Association
+(ELRA).
+Robert Baldock, Hartmut Maennel, and Behnam
+Neyshabur. 2021. Deep Learning Through the Lens
+of Example Difficulty. In Advances in Neural Infor-
+mation Processing Systems, volume 34, pages 10876–
+10889. Curran Associates, Inc.
+Irina Bejan, Artem Sokolov, and Katja Filippova. 2023.
+Make Every Example Count: On the Stability and
+Utility of Self-Influence for Learning from Noisy
+NLP Datasets. In Proceedings of the 2023 Confer-
+ence on Empirical Methods in Natural Language Pro-
+cessing, pages 10107–10121, Singapore. Association
+for Computational Linguistics.
+Yoshua Bengio, Jérôme Louradour, Ronan Collobert,
+and Jason Weston. 2009. Curriculum learning. In
+Proceedings of the 26th Annual International Confer-
+ence on Machine Learning, ICML ’09, pages 41–48,
+New York, NY, USA. Association for Computing
+Machinery.
+Eden Bensaid, Mauro Martino, Benjamin Hoover, and
+Hendrik Strobelt. 2021.
+FairyTailor:
+A Multi-
+modal Generative Framework for Storytelling. arXiv
+preprint. ArXiv:2108.04324 [cs].
+Nasim Borazjanizadeh. 2023. Optimizing GPT-2 Pre-
+training on BabyLM Corpus with Difficulty-based
+Sentence Reordering. In Proceedings of the BabyLM
+Challenge at the 27th Conference on Computational
+Natural Language Learning, pages 356–365, Singa-
+pore. Association for Computational Linguistics.
+Lucas Charpentier, Leshem Choshen, Ryan Cotterell,
+Mustafa Omer Gul, Michael Hu, Jaap Jumelet, Tal
+Linzen, Jing Liu, Aaron Mueller, Candace Ross,
+Raj Sanjay Shah, Alex Warstadt, Ethan Wilcox, and
+Adina Williams. 2025. BabyLM Turns 3: Call for pa-
+pers for the 2025 BabyLM workshop. arXiv preprint.
+ArXiv:2502.10645 [cs].
+Leshem Choshen, Ryan Cotterell, Michael Y. Hu,
+Tal Linzen, Aaron Mueller, Candace Ross, Alex
+Warstadt, Ethan Wilcox, Adina Williams, and
+Chengxu Zhuang. 2024. [Call for Papers] The 2nd
+BabyLM Challenge: Sample-efficient pretraining on
+a developmentally plausible corpus. arXiv preprint.
+ArXiv:2404.06214.
+B. N. C. Consortium. 2007.
+British National Cor-
+pus, XML edition. Accepted: 2018-07-27 Artwork
+Medium: Digital bitstream Interview Medium: Digi-
+tal bitstream Publisher: University of Oxford.
+Michael
+A.
+Covington,
+,
+and
+Joe
+D.
+Mc-
+Fall.
+2010.
+Cutting
+the
+Gordian
+Knot:
+The
+Moving-Average
+Type–Token
+Ratio
+(MATTR).
+Journal of Quantitative Linguis-
+tics, 17(2):94–100. Publisher: Routledge _eprint:
+https://doi.org/10.1080/09296171003643098.
+364
+
+Jeffrey L. Elman. 1993. Learning and development in
+neural networks: the importance of starting small.
+Cognition, 48(1):71–99.
+Martin Gerlach and Francesc Font-Clos. 2018. A stan-
+dardized Project Gutenberg corpus for statistical anal-
+ysis of natural language and quantitative linguistics.
+arXiv preprint. ArXiv:1812.08092 [cs].
+Mohammad Amin Ghanizadeh and Mohammad Javad
+Dousti. 2024.
+Towards Data-Efficient Language
+Models: A Child-Inspired Approach to Language
+Learning. In The 2nd BabyLM Challenge at the 28th
+Conference on Computational Natural Language
+Learning, pages 22–27, Miami, FL, USA. Associ-
+ation for Computational Linguistics.
+Jill Gilkerson, Jeffrey A. Richards, Steven F. Warren, Ju-
+dith K. Montgomery, Charles R. Greenwood, D. Kim-
+brough Oller, John H. L. Hansen, and Terrance D.
+Paul. 2017. Mapping the early language environ-
+ment using all-day recordings and automated analy-
+sis. American Journal of Speech-Language Pathol-
+ogy, 26(2):248–265.
+Guy Hacohen and Daphna Weinshall. 2019. On The
+Power of Curriculum Learning in Training Deep Net-
+works. arXiv preprint. ArXiv:1904.03626 [cs].
+Zayd Hammoudeh and Daniel Lowd. 2022. Identifying
+a Training-Set Attack’s Target Using Renormalized
+Influence Estimation. In Proceedings of the 2022
+ACM SIGSAC Conference on Computer and Com-
+munications Security, CCS ’22, pages 1367–1381,
+New York, NY, USA. Association for Computing
+Machinery.
+Zayd Hammoudeh and Daniel Lowd. 2024. Training
+data influence analysis and estimation: a survey. Ma-
+chine Learning, 113(5):2351–2403.
+Felix Hill, Antoine Bordes, Sumit Chopra, and Jason
+Weston. 2016. The Goldilocks Principle: Reading
+Children’s Books with Explicit Memory Representa-
+tions. arXiv preprint. ArXiv:1511.02301 [cs].
+Valentin
+Hofmann,
+Leonie
+Weissweiler,
+David
+Mortensen, Hinrich Schütze, and Janet Pierrehum-
+bert. 2024. Derivational Morphology Reveals Ana-
+logical Generalization in Large Language Models.
+arXiv preprint. ArXiv:2411.07990 [cs].
+Michael Y. Hu, Aaron Mueller, Candace Ross, Ad-
+ina Williams, Tal Linzen, Chengxu Zhuang, Ryan
+Cotterell, Leshem Choshen, Alex Warstadt, and
+Ethan Gotlieb Wilcox. 2024. Findings of the Second
+BabyLM Challenge: Sample-Efficient Pretraining on
+Developmentally Plausible Corpora. arXiv preprint.
+ArXiv:2412.05149 [cs] version: 1.
+Philip A. Huebner, Elior Sulem, Fisher Cynthia, and
+Dan Roth. 2021. BabyBERTa: Learning More Gram-
+mar With Small-Scale Child-Directed Language. In
+Proceedings of the 25th Conference on Computa-
+tional Natural Language Learning, pages 624–646,
+Online. Association for Computational Linguistics.
+Anna A. Ivanova, Aalok Sathe, Benjamin Lipkin, Un-
+nathi Kumar, Setayesh Radkani, Thomas H. Clark,
+Carina Kauf, Jennifer Hu, R. T. Pramod, Gabriel
+Grand, Vivian Paulun, Maria Ryskina, Ekin Akyürek,
+Ethan Wilcox, Nafisa Rashid, Leshem Choshen,
+Roger Levy, Evelina Fedorenko, Joshua Tenenbaum,
+and Jacob Andreas. 2024. Elements of World Knowl-
+edge (EWOK): A cognition-inspired framework for
+evaluating basic world knowledge in language mod-
+els. arXiv preprint. ArXiv:2405.09605 [cs] version:
+1.
+Ziheng Jiang, Chiyuan Zhang, Kunal Talwar, and
+Michael C. Mozer. 2021. Characterizing Structural
+Regularities of Labeled Data in Overparameterized
+Models. In Proceedings of the 38th International
+Conference on Machine Learning, pages 5034–5044.
+PMLR. ISSN: 2640-3498.
+M. G. Kendall. 1945. THE TREATMENT OF TIES
+IN RANKING PROBLEMS. Biometrika, 33(3):239–
+251.
+Najoung Kim and Sebastian Schuster. 2023. Entity
+Tracking in Language Models. In Proceedings of the
+61st Annual Meeting of the Association for Compu-
+tational Linguistics (Volume 1: Long Papers), pages
+3835–3855, Toronto, Canada. Association for Com-
+putational Linguistics.
+M. Kumar, Benjamin Packer, and Daphne Koller. 2010.
+Self-Paced Learning for Latent Variable Models. In
+Advances in Neural Information Processing Systems,
+volume 23. Curran Associates, Inc.
+Conglong Li, Minjia Zhang, and Yuxiong He. 2022.
+The Stability-Efficiency Dilemma: Investigating Se-
+quence Length Warmup for Training GPT Models.
+Advances in Neural Information Processing Systems,
+35:26736–26750.
+Pierre Lison and Jörg Tiedemann. 2016. OpenSubti-
+tles2016: Extracting Large Parallel Corpora from
+Movie and TV Subtitles. In Proceedings of the Tenth
+International Conference on Language Resources
+and Evaluation (LREC‘16), pages 923–929, Portorož,
+Slovenia. European Language Resources Association
+(ELRA).
+Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Man-
+dar Joshi, Danqi Chen, Omer Levy, Mike Lewis,
+Luke Zettlemoyer, and Veselin Stoyanov. 2019.
+RoBERTa: A Robustly Optimized BERT Pretrain-
+ing Approach. arXiv preprint. ArXiv:1907.11692
+[cs].
+Brian MacWhinney. 2014. The Childes Project, 0 edi-
+tion. Psychology Press.
+Richard Diehl Martinez, Hope McGovern, Zebulon
+Goriely, Christopher Davis, Andrew Caines, Paula
+Buttery, and Lisa Beinborn. 2023. CLIMB – Cur-
+riculum Learning for Infant-inspired Model Build-
+ing. In Proceedings of the BabyLM Challenge at
+the 27th Conference on Computational Natural Lan-
+guage Learning, pages 112–127, Singapore. Associa-
+tion for Computational Linguistics.
+365
+
+Maggie Mi. 2023. Mmi01 at The BabyLM Challenge:
+Linguistically Motivated Curriculum Learning for
+Pretraining in Low-Resource Settings. In Proceed-
+ings of the BabyLM Challenge at the 27th Confer-
+ence on Computational Natural Language Learning,
+pages 269–278, Singapore. Association for Compu-
+tational Linguistics.
+Miyu Oba, Akari Haga, Akiyo Fukatsu, and Yohei Os-
+eki. 2023. BabyLM Challenge: Curriculum learn-
+ing based on sentence complexity approximating lan-
+guage acquisition. In Proceedings of the BabyLM
+Challenge at the 27th Conference on Computational
+Natural Language Learning, pages 290–297, Singa-
+pore. Association for Computational Linguistics.
+Mattia Opper, J. Morrison, and N. Siddharth. 2023. On
+the effect of curriculum learning with developmental
+data for grammar acquisition.
+In Proceedings of
+the BabyLM Challenge at the 27th Conference on
+Computational Natural Language Learning, pages
+346–355, Singapore. Association for Computational
+Linguistics.
+Sung Min Park, Kristian Georgiev, Andrew Ilyas, Guil-
+laume Leclerc, and Aleksander Madry. 2023. TRAK:
+Attributing Model Behavior at Scale. In Proceedings
+of the 40th International Conference on Machine
+Learning, pages 27074–27113. PMLR. ISSN: 2640-
+3498.
+Emmanouil Antonios Platanios, Otilia Stretcu, Graham
+Neubig, Barnabas Poczos, and Tom Mitchell. 2019.
+Competence-based Curriculum Learning for Neural
+Machine Translation. In Proceedings of the 2019
+Conference of the North American Chapter of the
+Association for Computational Linguistics: Human
+Language Technologies, Volume 1 (Long and Short
+Papers), pages 1162–1172, Minneapolis, Minnesota.
+Association for Computational Linguistics.
+Garima Pruthi, Frederick Liu, Satyen Kale, and Mukund
+Sundararajan. 2020. Estimating Training Data Influ-
+ence by Tracing Gradient Descent. In Advances in
+Neural Information Processing Systems, volume 33,
+pages 19920–19930. Curran Associates, Inc.
+Anastasiia Sedova, Lena Zellinger, and Benjamin Roth.
+2023.
+Learning with Noisy Labels by Adaptive
+Gradient-Based Outlier Removal. In Machine Learn-
+ing and Knowledge Discovery in Databases: Re-
+search Track, pages 237–253. Springer, Cham. ISSN:
+1611-3349.
+Valentin I. Spitkovsky, Hiyan Alshawi, and Dan Ju-
+rafsky. 2010. From baby steps to leapfrog: How
+“less is more” in unsupervised dependency parsing.
+In Human Language Technologies: The 2010 An-
+nual Conference of the North American Chapter of
+the Association for Computational Linguistics, pages
+751–759.
+Andreas Stolcke, Klaus Ries, Noah Coccaro, Eliza-
+beth Shriberg, Rebecca Bates, Daniel Jurafsky, Paul
+Taylor, Rachel Martin, Carol Van Ess-Dykema, and
+Marie Meteer. 2000. Dialogue act modeling for au-
+tomatic tagging and recognition of conversational
+speech. Computational Linguistics, 26(3):339–374.
+Place: Cambridge, MA Publisher: MIT Press.
+Lukas Thoma, Ivonne Weyers, Erion Çano, Stefan
+Schweter, Jutta L Mueller, and Benjamin Roth. 2023.
+CogMemLM: Human-Like Memory Mechanisms
+Improve Performance and Cognitive Plausibility of
+LLMs. In Proceedings of the BabyLM Challenge
+at the 27th Conference on Computational Natural
+Language Learning, pages 180–185, Singapore. As-
+sociation for Computational Linguistics.
+Inar Timiryasov and Jean-Loup Tastet. 2023. Baby
+Llama: knowledge distillation from an ensemble of
+teachers trained on a small dataset with no perfor-
+mance penalty. In Proceedings of the BabyLM Chal-
+lenge at the 27th Conference on Computational Nat-
+ural Language Learning, pages 279–289, Singapore.
+Association for Computational Linguistics.
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier
+Martinet, Marie-Anne Lachaux, Timothée Lacroix,
+Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal
+Azhar, Aurelien Rodriguez, Armand Joulin, Edouard
+Grave, and Guillaume Lample. 2023. LLaMA: Open
+and Efficient Foundation Language Models. arXiv
+preprint. ArXiv:2302.13971 [cs].
+Alex Wang, Amanpreet Singh, Julian Michael, Felix
+Hill, Omer Levy, and Samuel R. Bowman. 2019.
+GLUE: A Multi-Task Benchmark and Analysis Plat-
+form for Natural Language Understanding. arXiv
+preprint. ArXiv:1804.07461.
+Alex Warstadt, Leshem Choshen, Aaron Mueller, Ad-
+ina Williams, Ethan Wilcox, and Chengxu Zhuang.
+2023a. Call for Papers – The BabyLM Challenge:
+Sample-efficient pretraining on a developmentally
+plausible corpus. arXiv preprint. ArXiv:2301.11796.
+Alex Warstadt, Aaron Mueller, Leshem Choshen, Ethan
+Wilcox, Chengxu Zhuang, Juan Ciro, Rafael Mos-
+quera, Bhargavi Paranjabe, Adina Williams, Tal
+Linzen, and Ryan Cotterell. 2023b. Findings of the
+BabyLM Challenge: Sample-Efficient Pretraining on
+Developmentally Plausible Corpora. In Proceedings
+of the BabyLM Challenge at the 27th Conference on
+Computational Natural Language Learning, pages
+1–34, Singapore. Association for Computational Lin-
+guistics.
+Alex Warstadt, Alicia Parrish, Haokun Liu, Anhad Mo-
+hananey, Wei Peng, Sheng-Fu Wang, and Samuel R.
+Bowman. 2020. BLiMP: The Benchmark of Lin-
+guistic Minimal Pairs for English. Transactions of
+the Association for Computational Linguistics, 8:377–
+392.
+Xiaoxia Wu, Ethan Dyer, and Behnam Neyshabur. 2020.
+When Do Curricula Work? In International Confer-
+ence on Learning Representations.
+366
+
+Mengzhou Xia, Sadhika Malladi, Suchin Gururangan,
+Sanjeev Arora, and Danqi Chen. 2024. LESS: Select-
+ing Influential Data for Targeted Instruction Tuning.
+arXiv preprint. ArXiv:2402.04333 [cs].
+Chih-Kuan Yeh, Ankur Taly, Mukund Sundararajan,
+Frederick Liu, and Pradeep Ravikumar. 2022. First is
+Better Than Last for Language Data Influence. arXiv
+preprint. ArXiv:2202.11844 [cs].
+367
+
+A
+Implementation Details
+Influence Estimation
+To enable influence estimation for the RoBERTa
+models, which are trained with dynamic masking
+(tokens are masked differently at each epoch), we
+implement a custom Data Collator for use with
+the Hugging Face Trainer: This collator makes
+masking reproducible by computing a hash based
+on the document and the epoch number.
+Runtime
+Pre-training of all 84 models took 195 hours on
+4 NVIDIA H100 GPUs (approximately 2h20m
+per model). The runtime of the influence estima-
+tion step, which is only required once per dataset,
+depends on the number of documents. On aver-
+age (across model architectures and datasets) it
+amounts to roughly 44.3h if estimation is run se-
+quentially for each checkpoint, or just under 5h if
+run in parallel. Sequential runtime would amount
+to 7h45h for Dequitoken, 109h for D2024 (both
+ran on NVIDIA H100 GPUs), and 149h30min on
+Dstratified (ran on a lower-spec NVIDIA V100
+GPUs), totaling 266 GPU hours overall.
+RoBERTa
+LLaMA
+Vocabulary size
+52k
+Hidden size
+768
+Number of layers
+12
+Number of attention heads
+12
+Initializer range
+0.02
+Tie word embeddings
+True
+Max position embeddings
+514
+256
+Intermediate (FFN) size
+3072
+2048
+Norm epsilon
+1e-5
+1e-6
+Attention dropout
+0.1
+0
+Activation function
+gelu
+silu
+Hidden dropout
+0.1
+-
+FP16
+False
+Per Device Batch Size
+32
+Gradient Accumulation Steps
+16
+GPUs
+4
+Adam β1
+0.9
+Adam β2
+0.98
+Adam ϵ
+1e-6
+Weight Decay ϵ
+0.01
+Learning rate
+5e-4
+7e-4
+Scheduler
+polynomial
+cosine
+Table 3: Training parameters used for all models.
+B
+Loss Trajectories
+Our curricula sort examples based on their influ-
+ence, which may inadvertently reduce example di-
+versity within training batches. We hypothesize
+that this led to the substantial training loss spikes
+observed. While one can measure loss during train-
+ing with a separate evaluation set (as we have done),
+this adds significant overhead during training. To
+analyze whether training loss spikes are still indica-
+tive of training instability for curriculum learning,
+i.e. wether their severity ultimately impacts bench-
+mark performance, we employ the loss ratio metric
+proposed by Li et al. (2022), as a measure of train-
+ing instability, which compares the loss at the cur-
+rent step s to the lowest loss achieved in any prior
+step: lr(s) =
+ℓ(s)
+mins′<s ℓ(s′). Intuitively (if training
+in random order), one would expect models with
+high loss ratios to have lower benchmark perfor-
+mance. However, an analysis of the corelation
+between a curriculum’s gain in benchmark perfor-
+mance (over training in random order) and this loss-
+ratio indeed does not reveal a significant negative
+Spearman rank correlation for any dataset: D2024:
+0.177; Dequitoken: 0.096; Dstratified: 0.197.
+368
+
+C
+Complementary Figures
+This section presents complementary figures for RoBERTa or Llama models, with the respective other
+model type included in the main body of our paper.
+(C * h)
+(C * h)
+CE
+CE
+C
+C
+C{50}
+C
+CA
+C
+CMATTR
+CPPL
+Crand
+Csource
+0.21
+0.17
+0.20
+0.18
+0.19
+0.20
+0.16
+0.19
+0.20
+0.20
+0.17
+0.10
+0.16
+0.16
+0.15
+0.12
+0.11
+0.15
+0.14
+0.12
+0.04
+0.04
+0.06
+0.07
+0.04
+0.04
+0.00
+0.04
+0.06
+0.04
+0.41
+0.40
+0.47
+0.40
+0.40
+0.40
+0.38
+0.40
+0.41
+0.40
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+Figure 8: Comparison of curriculum stage distributions: Average Jensen–Shannon divergence between 1000
+segments of two given curricula for RoBERTa models. Lower values indicate more similar stage distributions.
+Figure 9: Dataset mix of curricula for RoBERTa models. We trace back documents to the stages defined in Table 1.
+D
+Full Benchmark Results and Loss Trajectories
+Table 4: Macro-average gain in accuracy over the corresponding random curriculum.
+Curriculum
+Dataset
+Architecture
+Improvement
+p-val
+Model acc
+Random acc
+Crand
+D2024
+RoBERTa
++0.00 pp
+-
+0.466
+-
+Crand
+Dequitoken
+RoBERTa
++0.00 pp
+-
+0.492
+-
+Crand
+Dstratified
+RoBERTa
++0.00 pp
+-
+0.512
+-
+Crand
+Dequitoken
+Llama
++0.00 pp
+-
+0.523
+-
+Crand
+Dstratified
+Llama
++0.00 pp
+-
+0.536
+-
+Crand
+D2024
+Llama
++0.00 pp
+-
+0.541
+-
+CE
+↗
+Dequitoken
+Llama
+-5.02 pp**
+0.033
+0.473
+0.523
+CE
+↘
+D2024
+Llama
+-4.84 pp***
+0.004
+0.493
+0.541
+CE
+↗
+Dstratified
+Llama
+-4.79 pp***
+0.005
+0.488
+0.536
+CE
+↗
+D2024
+Llama
+-3.83 pp*
+0.065
+0.503
+0.541
+CE
+↘
+Dstratified
+Llama
+-3.11 pp***
+0.002
+0.504
+0.536
+CE
+↘
+Dequitoken
+Llama
+-3.10 pp
+0.100
+0.492
+0.523
+(C ∗h)∼
+↘
+Dequitoken
+Llama
+-1.82 pp
+0.400
+0.505
+0.523
+Continued on next page
+369
+
+Continued from previous page
+Curriculum
+Dataset
+Architecture
+Improvement
+p-val
+Model acc
+Random acc
+Csource
+Dstratified
+Llama
+-1.39 pp
+0.167
+0.522
+0.536
+C{50}
+↗
+Dequitoken
+Llama
+-1.24 pp
+0.504
+0.511
+0.523
+CMAT T R
+Dequitoken
+Llama
+-0.72 pp
+0.293
+0.516
+0.523
+CP P L
+Dequitoken
+Llama
+-0.65 pp
+0.431
+0.517
+0.523
+CA
+Dequitoken
+RoBERTa
+-0.55 pp
+0.726
+0.487
+0.492
+CP P L
+Dstratified
+RoBERTa
+-0.28 pp
+0.877
+0.510
+0.512
+Csource
+Dequitoken
+Llama
+-0.12 pp
+0.856
+0.522
+0.523
+C↘
+D2024
+Llama
+-0.02 pp
+0.991
+0.541
+0.541
+CA
+D2024
+Llama
++0.17 pp
+0.796
+0.543
+0.541
+C{50}
+↗
+D2024
+Llama
++0.21 pp
+0.918
+0.543
+0.541
+CE
+↗
+Dstratified
+RoBERTa
++0.36 pp
+0.801
+0.516
+0.512
+(C ∗h)∼
+↗
+Dequitoken
+Llama
++0.42 pp
+0.848
+0.527
+0.523
+CA
+Dequitoken
+Llama
++0.53 pp
+0.813
+0.528
+0.523
+CP P L
+D2024
+Llama
++0.72 pp
+0.317
+0.548
+0.541
+C{50}
+↗
+Dstratified
+Llama
++0.92 pp
+0.619
+0.545
+0.536
+Csource
+D2024
+Llama
++1.07 pp
+0.242
+0.552
+0.541
+(C ∗h)∼
+↗
+D2024
+Llama
++1.29 pp
+0.504
+0.554
+0.541
+C∼
+↘
+Dequitoken
+Llama
++1.31 pp
+0.150
+0.536
+0.523
+C∼
+↘
+D2024
+Llama
++1.37 pp
+0.477
+0.555
+0.541
+C∼
+↗
+Dequitoken
+Llama
++1.50 pp
+0.494
+0.538
+0.523
+C∼
+↗
+Dstratified
+Llama
++1.73 pp***
+0.007
+0.553
+0.536
+C∼
+↗
+D2024
+Llama
++1.77 pp
+0.362
+0.559
+0.541
+C↗
+D2024
+Llama
++1.78 pp
+0.371
+0.559
+0.541
+CMAT T R
+Dstratified
+Llama
++1.86 pp**
+0.029
+0.554
+0.536
+CE
+↗
+Dequitoken
+RoBERTa
++1.93 pp
+0.236
+0.512
+0.492
+C↘
+Dequitoken
+Llama
++2.29 pp***
+0.006
+0.546
+0.523
+C↘
+Dstratified
+Llama
++2.37 pp***
+0.002
+0.559
+0.536
+(C ∗h)∼
+↘
+Dstratified
+Llama
++2.41 pp***
+0.001
+0.560
+0.536
+CMAT T R
+Dequitoken
+RoBERTa
++2.62 pp
+0.138
+0.518
+0.492
+CE
+↗
+D2024
+RoBERTa
++3.02 pp
+0.124
+0.496
+0.466
+CMAT T R
+D2024
+Llama
++3.07 pp***
+0.000
+0.572
+0.541
+(C ∗h)∼
+↗
+Dstratified
+Llama
++3.08 pp
+0.122
+0.566
+0.536
+(C ∗h)∼
+↘
+Dequitoken
+RoBERTa
++3.10 pp
+0.123
+0.523
+0.492
+C∼
+↘
+Dequitoken
+RoBERTa
++3.12 pp*
+0.079
+0.523
+0.492
+C↗
+Dequitoken
+Llama
++3.16 pp
+0.142
+0.555
+0.523
+C∼
+↗
+Dequitoken
+RoBERTa
++3.31 pp*
+0.077
+0.525
+0.492
+C∼
+↗
+Dstratified
+RoBERTa
++3.32 pp
+0.166
+0.546
+0.512
+C↗
+Dstratified
+RoBERTa
++3.51 pp
+0.140
+0.548
+0.512
+C↘
+Dequitoken
+RoBERTa
++3.57 pp**
+0.050
+0.528
+0.492
+CMAT T R
+Dstratified
+RoBERTa
++3.81 pp
+0.126
+0.551
+0.512
+Csource
+Dstratified
+RoBERTa
++3.89 pp
+0.120
+0.551
+0.512
+CP P L
+Dequitoken
+RoBERTa
++3.92 pp**
+0.032
+0.531
+0.492
+CP P L
+Dstratified
+Llama
++3.97 pp***
+0.000
+0.575
+0.536
+(C ∗h)∼
+↗
+Dequitoken
+RoBERTa
++4.00 pp*
+0.050
+0.532
+0.492
+Csource
+Dequitoken
+RoBERTa
++4.12 pp*
+0.052
+0.533
+0.492
+CE
+↘
+Dequitoken
+RoBERTa
++4.16 pp**
+0.041
+0.534
+0.492
+C↘
+Dstratified
+RoBERTa
++4.16 pp*
+0.079
+0.554
+0.512
+CA
+Dstratified
+Llama
++4.18 pp***
+0.000
+0.577
+0.536
+C∼
+↘
+Dstratified
+Llama
++4.18 pp***
+0.000
+0.577
+0.536
+C∼
+↘
+Dstratified
+RoBERTa
++4.26 pp*
+0.094
+0.555
+0.512
+(C ∗h)∼
+↘
+D2024
+Llama
++4.34 pp**
+0.028
+0.584
+0.541
+C{50}
+↗
+Dequitoken
+RoBERTa
++4.36 pp**
+0.039
+0.536
+0.492
+CE
+↘
+Dstratified
+RoBERTa
++4.40 pp*
+0.052
+0.556
+0.512
+(C ∗h)∼
+↘
+Dstratified
+RoBERTa
++4.47 pp*
+0.072
+0.557
+0.512
+C{50}
+↗
+Dstratified
+RoBERTa
++4.52 pp*
+0.067
+0.558
+0.512
+C↗
+Dequitoken
+RoBERTa
++4.54 pp**
+0.031
+0.538
+0.492
+C↗
+Dstratified
+Llama
++4.62 pp***
+0.000
+0.582
+0.536
+CA
+Dstratified
+RoBERTa
++6.67 pp***
+0.004
+0.579
+0.512
+(C ∗h)∼
+↗
+Dstratified
+RoBERTa
++7.96 pp***
+0.000
+0.592
+0.512
+C↘
+D2024
+RoBERTa
++8.72 pp***
+0.004
+0.553
+0.466
+(C ∗h)∼
+↗
+D2024
+RoBERTa
++8.74 pp***
+0.002
+0.553
+0.466
+C∼
+↘
+D2024
+RoBERTa
++9.13 pp***
+0.002
+0.557
+0.466
+C∼
+↗
+D2024
+RoBERTa
++9.36 pp***
+0.000
+0.559
+0.466
+Continued on next page
+370
+
+Continued from previous page
+Curriculum
+Dataset
+Architecture
+Improvement
+p-val
+Model acc
+Random acc
+CP P L
+D2024
+RoBERTa
++9.49 pp***
+0.000
+0.561
+0.466
+CA
+D2024
+RoBERTa
++10.19 pp***
+0.001
+0.568
+0.466
+(C ∗h)∼
+↘
+D2024
+RoBERTa
++10.71 pp***
+0.000
+0.573
+0.466
+CMAT T R
+D2024
+RoBERTa
++10.97 pp***
+0.000
+0.575
+0.466
+CE
+↘
+D2024
+RoBERTa
++10.98 pp***
+0.000
+0.576
+0.466
+C↗
+D2024
+RoBERTa
++11.00 pp***
+0.000
+0.576
+0.466
+Csource
+D2024
+RoBERTa
++11.77 pp***
+0.000
+0.583
+0.466
+C{50}
+↗
+D2024
+RoBERTa
++12.42 pp***
+0.000
+0.590
+0.466
+Emixed
+ext
+gpt-bert
+-
+-
+0.498
+-
+Ecausal
+ext
+gpt-bert
+-
+-
+0.502
+-
+Emasked
+ext
+gpt-bert
+-
+-
+0.504
+-
+Egpt2
+ext
+-
+-
+-
+0.551
+-
+371
+
+Crand
+CMATTR
+CPPL
+Egpt2
+Csource
+Emixed
+Ecausal
+Emasked
+(C * h)
+C
+C
+(C * h)
+CA
+C
+CE
+C
+C{50}
+CE
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+CMATTR
+Egpt2
+Crand
+Csource
+CPPL
+Emixed
+Ecausal
+Emasked
+C
+C
+CA
+(C * h)
+C
+C
+(C * h)
+C{50}
+CE
+CE
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Crand
+CPPL
+Csource
+Egpt2
+CMATTR
+Emixed
+Ecausal
+Emasked
+C
+C
+CA
+C
+C
+(C * h)
+(C * h)
+C{50}
+CE
+CE
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+D2024
+Dequitoken
+Dstratified
+Figure 10: Benchmark results for Llama models.
+CMATTR
+Csource
+Egpt2
+CPPL
+Emixed
+Ecausal
+Emasked
+Crand
+(C * h)
+C{50}
+C
+C
+CA
+C
+(C * h)
+CE
+C
+CE
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Egpt2
+CPPL
+Csource
+Emixed
+Ecausal
+Crand
+CMATTR
+Emasked
+C
+C
+C{50}
+C
+CE
+CE
+(C * h)
+(C * h)
+C
+CA
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+CMATTR
+Csource
+Egpt2
+CPPL
+Crand
+Emixed
+Ecausal
+Emasked
+(C * h)
+C
+C{50}
+(C * h)
+CA
+C
+C
+C
+CE
+CE
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+D2024
+Dequitoken
+Dstratified
+Figure 11: Benchmark results for RoBERTa models.
+372
+
+Table 5: Macro accuracy for Llama models across tasks, per benchmark and overall. E· denotes baseline models from the BabyLM challange, the fine-tuning evaluation pipeline
+fails for the Egpt2 model.
+Curriculum
+Dataset
+(Super) GLUE
+blimp_filtered
+supplement_filtered
+entity_tracking
+ewok_filtered
+wug_adj_nominalization
+Macro acc
+(C ∗h)∼
+↘
+D2024
+0.579
+0.688
+0.559
+0.302
+0.509
+0.570
+0.584
+C↗
+Dstratified
+0.573
+0.715
+0.546
+0.208
+0.503
+0.600
+0.582
+CA
+Dstratified
+0.575
+0.675
+0.575
+0.306
+0.507
+0.560
+0.577
+C∼
+↘
+Dstratified
+0.573
+0.695
+0.558
+0.242
+0.519
+0.495
+0.577
+CP P L
+Dstratified
+0.573
+0.696
+0.532
+0.239
+0.510
+0.480
+0.575
+CMAT T R
+D2024
+0.573
+0.671
+0.551
+0.295
+0.507
+0.550
+0.572
+(C ∗h)∼
+↗
+Dstratified
+0.572
+0.678
+0.567
+0.245
+0.501
+0.540
+0.566
+(C ∗h)∼
+↘
+Dstratified
+0.573
+0.691
+0.542
+0.169
+0.507
+0.510
+0.560
+C↘
+Dstratified
+0.567
+0.694
+0.533
+0.164
+0.512
+0.420
+0.559
+C↗
+D2024
+0.575
+0.686
+0.566
+0.184
+0.494
+0.500
+0.559
+C∼
+↗
+D2024
+0.571
+0.683
+0.566
+0.184
+0.506
+0.565
+0.559
+C∼
+↘
+D2024
+0.571
+0.679
+0.571
+0.176
+0.506
+0.500
+0.555
+C↗
+Dequitoken
+0.575
+0.618
+0.514
+0.389
+0.489
+0.555
+0.555
+CMAT T R
+Dstratified
+0.571
+0.663
+0.539
+0.227
+0.516
+0.495
+0.554
+(C ∗h)∼
+↗
+D2024
+0.570
+0.692
+0.536
+0.136
+0.511
+0.515
+0.554
+C∼
+↗
+Dstratified
+0.568
+0.684
+0.514
+0.169
+0.499
+0.535
+0.553
+Csource
+D2024
+0.576
+0.628
+0.503
+0.336
+0.505
+0.560
+0.552
+Egpt2
+ext
+nan
+0.673
+0.591
+0.189
+0.498
+0.390
+0.551
+CP P L
+D2024
+0.582
+0.655
+0.508
+0.226
+0.499
+0.655
+0.548
+C↘
+Dequitoken
+0.577
+0.615
+0.528
+0.336
+0.501
+0.685
+0.546
+C{50}
+↗
+Dstratified
+0.575
+0.633
+0.540
+0.267
+0.510
+0.635
+0.545
+CA
+D2024
+0.573
+0.660
+0.520
+0.178
+0.506
+0.635
+0.543
+C{50}
+↗
+D2024
+0.572
+0.618
+0.541
+0.314
+0.497
+0.635
+0.543
+Crand
+D2024
+0.572
+0.658
+0.497
+0.193
+0.500
+0.440
+0.541
+C↘
+D2024
+0.573
+0.674
+0.521
+0.133
+0.500
+0.530
+0.541
+C∼
+↗
+Dequitoken
+0.577
+0.634
+0.561
+0.234
+0.503
+0.465
+0.538
+Crand
+Dstratified
+0.576
+0.662
+0.517
+0.142
+0.500
+0.550
+0.536
+C∼
+↘
+Dequitoken
+0.578
+0.650
+0.514
+0.179
+0.502
+0.620
+0.536
+CA
+Dequitoken
+0.577
+0.634
+0.547
+0.184
+0.492
+0.625
+0.528
+(C ∗h)∼
+↗
+Dequitoken
+0.577
+0.638
+0.559
+0.168
+0.495
+0.485
+0.527
+Crand
+Dequitoken
+0.579
+0.615
+0.548
+0.215
+0.493
+0.625
+0.523
+Csource
+Dequitoken
+0.577
+0.609
+0.480
+0.244
+0.499
+0.615
+0.522
+Csource
+Dstratified
+0.577
+0.593
+0.479
+0.286
+0.518
+0.570
+0.522
+CP P L
+Dequitoken
+0.582
+0.635
+0.490
+0.129
+0.498
+0.610
+0.517
+CMAT T R
+Dequitoken
+0.579
+0.627
+0.529
+0.141
+0.498
+0.665
+0.516
+C{50}
+↗
+Dequitoken
+0.579
+0.592
+0.535
+0.228
+0.503
+0.495
+0.511
+(C ∗h)∼
+↘
+Dequitoken
+0.578
+0.610
+0.542
+0.136
+0.502
+0.520
+0.505
+Emasked
+ext
+0.665
+0.508
+0.483
+0.419
+0.502
+0.965
+0.504
+Continued on next page
+373
+
+Continued from previous page
+Curriculum
+Dataset
+(Super) GLUE
+blimp_filtered
+supplement_filtered
+entity_tracking
+ewok_filtered
+wug_adj_nominalization
+Macro acc
+CE
+↘
+Dstratified
+0.576
+0.577
+0.535
+0.242
+0.500
+0.555
+0.504
+CE
+↗
+D2024
+0.570
+0.518
+0.499
+0.412
+0.506
+0.925
+0.503
+Ecausal
+ext
+0.654
+0.514
+0.449
+0.412
+0.502
+0.770
+0.502
+Emixed
+ext
+0.660
+0.505
+0.459
+0.414
+0.500
+0.780
+0.498
+CE
+↘
+D2024
+0.577
+0.586
+0.486
+0.152
+0.512
+0.635
+0.493
+CE
+↘
+Dequitoken
+0.576
+0.587
+0.507
+0.148
+0.502
+0.590
+0.492
+CE
+↗
+Dstratified
+0.573
+0.562
+0.510
+0.201
+0.505
+0.640
+0.488
+CE
+↗
+Dequitoken
+0.570
+0.471
+0.502
+0.415
+0.502
+0.685
+0.473
+Table 6: Macro accuracy for RoBERTa models across tasks, per benchmark and overall. E· denotes baseline models from the BabyLM challange, the fine-tuning evaluation
+pipeline fails for the Egpt2 model.
+Curriculum
+Dataset
+(Super) GLUE
+blimp_filtered
+supplement_filtered
+entity_tracking
+ewok_filtered
+wug_adj_nominalization
+Macro acc
+(C ∗h)∼
+↗
+Dstratified
+0.650
+0.694
+0.535
+0.307
+0.507
+0.570
+0.592
+C{50}
+↗
+D2024
+0.634
+0.700
+0.578
+0.268
+0.501
+0.690
+0.590
+Csource
+D2024
+0.635
+0.683
+0.563
+0.290
+0.507
+0.670
+0.583
+CA
+Dstratified
+0.629
+0.698
+0.555
+0.238
+0.497
+0.460
+0.579
+C↗
+D2024
+0.643
+0.664
+0.535
+0.309
+0.504
+0.780
+0.576
+CE
+↘
+D2024
+0.641
+0.689
+0.530
+0.237
+0.500
+0.655
+0.576
+CMAT T R
+D2024
+0.642
+0.701
+0.556
+0.186
+0.505
+0.715
+0.575
+(C ∗h)∼
+↘
+D2024
+0.645
+0.702
+0.570
+0.171
+0.500
+0.680
+0.573
+CA
+D2024
+0.636
+0.691
+0.529
+0.187
+0.505
+0.675
+0.568
+CP P L
+D2024
+0.633
+0.614
+0.534
+0.402
+0.500
+0.620
+0.561
+C∼
+↗
+D2024
+0.639
+0.658
+0.567
+0.239
+0.501
+0.715
+0.559
+C{50}
+↗
+Dstratified
+0.647
+0.690
+0.571
+0.126
+0.503
+0.650
+0.558
+C∼
+↘
+D2024
+0.637
+0.692
+0.561
+0.117
+0.502
+0.775
+0.557
+(C ∗h)∼
+↘
+Dstratified
+0.650
+0.689
+0.538
+0.140
+0.502
+0.560
+0.557
+CE
+↘
+Dstratified
+0.647
+0.680
+0.563
+0.162
+0.499
+0.530
+0.556
+C∼
+↘
+Dstratified
+0.638
+0.690
+0.556
+0.128
+0.503
+0.460
+0.555
+C↘
+Dstratified
+0.643
+0.679
+0.559
+0.149
+0.500
+0.610
+0.554
+C↘
+D2024
+0.639
+0.675
+0.565
+0.149
+0.501
+0.765
+0.553
+(C ∗h)∼
+↗
+D2024
+0.626
+0.675
+0.571
+0.148
+0.511
+0.745
+0.553
+CMAT T R
+Dstratified
+0.648
+0.683
+0.535
+0.127
+0.502
+0.505
+0.551
+Csource
+Dstratified
+0.636
+0.668
+0.560
+0.177
+0.499
+0.560
+0.551
+Egpt2
+ext
+nan
+0.673
+0.591
+0.189
+0.498
+0.390
+0.551
+C↗
+Dstratified
+0.644
+0.677
+0.530
+0.125
+0.499
+0.715
+0.548
+Continued on next page
+374
+
+Continued from previous page
+Curriculum
+Dataset
+(Super) GLUE
+blimp_filtered
+supplement_filtered
+entity_tracking
+ewok_filtered
+wug_adj_nominalization
+Macro acc
+C∼
+↗
+Dstratified
+0.638
+0.677
+0.535
+0.123
+0.502
+0.540
+0.546
+C↗
+Dequitoken
+0.611
+0.575
+0.476
+0.409
+0.501
+0.925
+0.538
+C{50}
+↗
+Dequitoken
+0.605
+0.575
+0.488
+0.409
+0.500
+0.690
+0.536
+CE
+↘
+Dequitoken
+0.600
+0.573
+0.485
+0.406
+0.502
+0.720
+0.534
+Csource
+Dequitoken
+0.609
+0.569
+0.488
+0.407
+0.500
+0.855
+0.533
+(C ∗h)∼
+↗
+Dequitoken
+0.612
+0.570
+0.471
+0.409
+0.498
+0.690
+0.532
+CP P L
+Dequitoken
+0.605
+0.566
+0.486
+0.411
+0.501
+0.770
+0.531
+C↘
+Dequitoken
+0.606
+0.564
+0.475
+0.409
+0.496
+0.690
+0.528
+C∼
+↗
+Dequitoken
+0.602
+0.558
+0.484
+0.411
+0.500
+0.720
+0.525
+C∼
+↘
+Dequitoken
+0.612
+0.559
+0.450
+0.409
+0.491
+0.600
+0.523
+(C ∗h)∼
+↘
+Dequitoken
+0.614
+0.557
+0.484
+0.406
+0.501
+0.495
+0.523
+CMAT T R
+Dequitoken
+0.603
+0.552
+0.455
+0.409
+0.499
+0.525
+0.518
+CE
+↗
+Dstratified
+0.594
+0.550
+0.462
+0.414
+0.492
+0.400
+0.516
+Crand
+Dstratified
+0.591
+0.542
+0.467
+0.408
+0.504
+0.520
+0.512
+CE
+↗
+Dequitoken
+0.605
+0.531
+0.506
+0.411
+0.501
+0.795
+0.512
+CP P L
+Dstratified
+0.645
+0.535
+0.488
+0.411
+0.497
+0.195
+0.510
+Emasked
+ext
+0.665
+0.508
+0.483
+0.419
+0.502
+0.965
+0.504
+Ecausal
+ext
+0.654
+0.514
+0.449
+0.412
+0.502
+0.770
+0.502
+Emixed
+ext
+0.660
+0.505
+0.459
+0.414
+0.500
+0.780
+0.498
+CE
+↗
+D2024
+0.591
+0.516
+0.459
+0.407
+0.497
+0.540
+0.496
+Crand
+Dequitoken
+0.595
+0.506
+0.438
+0.418
+0.494
+0.660
+0.492
+CA
+Dequitoken
+0.597
+0.501
+0.441
+0.413
+0.489
+0.510
+0.487
+Crand
+D2024
+0.601
+0.462
+0.465
+0.409
+0.507
+0.490
+0.466
+375
+
+Table 7: Average % R2 gain for Llama models in the reading benchmarks (not included in the main paper). E·
+denotes baseline models from the BabyLM challenge.
+Curriculum
+Dataset
+Eye Tracking Score
+Self-Paced Reading Score
+Avg
+Ecausal
+ext
+0.102
+0.029
+0.065
+Emasked
+ext
+0.103
+0.027
+0.065
+Emixed
+ext
+0.099
+0.025
+0.062
+CE
+↗
+Dequitoken
+0.024
+0.009
+0.016
+CE
+↗
+D2024
+0.021
+0.010
+0.016
+Csource
+Dstratified
+0.011
+0.001
+0.006
+CE
+↘
+Dstratified
+0.012
+0.000
+0.006
+CE
+↘
+D2024
+0.009
+0.001
+0.005
+Csource
+D2024
+0.006
+0.001
+0.003
+C{50}
+↗
+Dequitoken
+0.006
+0.000
+0.003
+Crand
+Dequitoken
+0.005
+0.001
+0.003
+Csource
+Dequitoken
+0.005
+0.001
+0.003
+Crand
+D2024
+0.005
+0.001
+0.003
+C↘
+Dstratified
+0.006
+0.001
+0.003
+C↘
+Dequitoken
+0.005
+0.000
+0.003
+C↘
+D2024
+0.005
+0.000
+0.003
+CP P L
+Dequitoken
+0.006
+0.001
+0.003
+CMAT T R
+Dequitoken
+0.005
+0.000
+0.003
+C{50}
+↗
+Dstratified
+0.005
+0.001
+0.003
+(C ∗h)∼
+↗
+D2024
+0.003
+0.002
+0.003
+C↗
+Dstratified
+0.005
+0.000
+0.003
+(C ∗h)∼
+↗
+Dstratified
+0.005
+0.001
+0.003
+(C ∗h)∼
+↘
+Dequitoken
+0.007
+0.000
+0.003
+C∼
+↘
+Dequitoken
+0.006
+0.000
+0.003
+CP P L
+Dstratified
+0.003
+0.000
+0.002
+(C ∗h)∼
+↘
+D2024
+0.004
+0.001
+0.002
+(C ∗h)∼
+↘
+Dstratified
+0.005
+0.000
+0.002
+Crand
+Dstratified
+0.004
+0.000
+0.002
+CE
+↘
+Dequitoken
+0.004
+0.000
+0.002
+C∼
+↗
+D2024
+0.003
+0.000
+0.002
+C∼
+↗
+Dequitoken
+0.004
+0.000
+0.002
+C∼
+↗
+Dstratified
+0.005
+0.000
+0.002
+C∼
+↘
+D2024
+0.004
+0.000
+0.002
+CP P L
+D2024
+0.003
+0.001
+0.002
+C∼
+↘
+Dstratified
+0.004
+0.000
+0.002
+CA
+Dstratified
+0.003
+0.001
+0.002
+CA
+Dequitoken
+0.004
+0.000
+0.002
+CA
+D2024
+0.005
+0.000
+0.002
+(C ∗h)∼
+↗
+Dequitoken
+0.005
+0.000
+0.002
+C↗
+Dequitoken
+0.004
+0.000
+0.002
+C↗
+D2024
+0.002
+0.000
+0.001
+CMAT T R
+Dstratified
+0.002
+0.000
+0.001
+CMAT T R
+D2024
+0.003
+0.000
+0.001
+CE
+↗
+Dstratified
+0.002
+0.000
+0.001
+Egpt2
+ext
+0.001
+0.000
+0.001
+C{50}
+↗
+D2024
+0.001
+0.002
+0.001
+Table 8: Average % R2 gain for RoBERTa models in the reading benchmarks (not included in the main paper). E·
+denotes baseline models from the BabyLM challenge.
+Curriculum
+Dataset
+Eye Tracking Score
+Self-Paced Reading Score
+Avg
+Ecausal
+ext
+0.102
+0.029
+0.065
+Emasked
+ext
+0.103
+0.027
+0.065
+Emixed
+ext
+0.099
+0.025
+0.062
+CE
+↗
+Dstratified
+0.076
+0.015
+0.046
+CE
+↗
+D2024
+0.074
+0.014
+0.044
+Crand
+Dstratified
+0.070
+0.016
+0.043
+C↗
+Dstratified
+0.075
+0.009
+0.042
+CP P L
+Dstratified
+0.071
+0.012
+0.041
+Continued on next page
+376
+
+Continued from previous page
+Curriculum
+Dataset
+Eye Tracking Score
+Self-Paced Reading Score
+Avg
+Crand
+D2024
+0.064
+0.011
+0.037
+CP P L
+D2024
+0.060
+0.007
+0.033
+C∼
+↗
+Dstratified
+0.051
+0.007
+0.029
+CE
+↗
+Dequitoken
+0.045
+0.011
+0.028
+C↗
+D2024
+0.050
+0.006
+0.028
+CA
+Dequitoken
+0.045
+0.012
+0.028
+Crand
+Dequitoken
+0.041
+0.012
+0.027
+(C ∗h)∼
+↘
+Dstratified
+0.046
+0.005
+0.026
+CE
+↘
+Dstratified
+0.043
+0.004
+0.024
+CE
+↘
+D2024
+0.045
+0.003
+0.024
+C∼
+↘
+D2024
+0.039
+0.007
+0.023
+(C ∗h)∼
+↘
+D2024
+0.039
+0.005
+0.022
+Csource
+D2024
+0.039
+0.003
+0.021
+C∼
+↗
+D2024
+0.035
+0.007
+0.021
+CA
+D2024
+0.036
+0.005
+0.021
+C↘
+Dstratified
+0.036
+0.003
+0.020
+C{50}
+↗
+Dstratified
+0.034
+0.004
+0.019
+CA
+Dstratified
+0.034
+0.003
+0.018
+C∼
+↘
+Dstratified
+0.033
+0.003
+0.018
+C↘
+D2024
+0.030
+0.005
+0.017
+C{50}
+↗
+D2024
+0.033
+0.002
+0.017
+(C ∗h)∼
+↗
+Dstratified
+0.031
+0.002
+0.016
+CMAT T R
+D2024
+0.029
+0.003
+0.016
+Csource
+Dstratified
+0.024
+0.003
+0.014
+(C ∗h)∼
+↗
+D2024
+0.019
+0.001
+0.010
+C↘
+Dequitoken
+0.015
+0.003
+0.009
+(C ∗h)∼
+↘
+Dequitoken
+0.015
+0.003
+0.009
+C∼
+↗
+Dequitoken
+0.015
+0.003
+0.009
+Csource
+Dequitoken
+0.016
+0.003
+0.009
+CMAT T R
+Dstratified
+0.018
+0.001
+0.009
+(C ∗h)∼
+↗
+Dequitoken
+0.014
+0.003
+0.008
+C{50}
+↗
+Dequitoken
+0.012
+0.002
+0.007
+CP P L
+Dequitoken
+0.011
+0.003
+0.007
+C↗
+Dequitoken
+0.011
+0.002
+0.007
+C∼
+↘
+Dequitoken
+0.012
+0.002
+0.007
+CE
+↘
+Dequitoken
+0.012
+0.002
+0.007
+CMAT T R
+Dequitoken
+0.011
+0.002
+0.007
+Egpt2
+ext
+0.001
+0.000
+0.001
+377
+
+0
+5
+10
+roberta
+Crand
+Crand
+dataset = babylm_2024
+Crand
+Crand
+dataset = stratified_equitoken
+Crand
+Crand
+dataset = stratified
+0
+5
+10
+roberta
+C
+C
+C
+0
+5
+10
+roberta
+C
+C
+C
+0
+5
+10
+roberta
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+0
+5
+10
+roberta
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+0
+5
+10
+roberta
+C
+C
+C
+0
+5
+10
+roberta
+C
+C
+C
+0
+5
+10
+roberta
+C{50}
+C{50}
+C{50}
+C{50}
+C{50}
+C{50}
+0
+5
+10
+roberta
+CA
+CA
+CA
+CA
+CA
+CA
+0
+5
+10
+roberta
+Csource
+Csource
+Csource
+Csource
+Csource
+Csource
+0
+5
+10
+roberta
+CE
+CE
+CE
+CE
+CE
+CE
+0
+5
+10
+roberta
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+0
+5
+10
+roberta
+CPPL
+CPPL
+CPPL
+CPPL
+CPPL
+CPPL
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+0
+5
+10
+roberta
+CE
+CE
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+CE
+CE
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+CE
+CE
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+0
+50
+100
+llama
+RoBERTa
+Llama
+Figure 12: Training loss trajectories under different curricula.
+378
+
+5
+10
+15
+roberta
+Crand
+Crand
+dataset = babylm_2024
+Crand
+Crand
+dataset = stratified_equitoken
+Crand
+Crand
+dataset = stratified
+5
+10
+15
+roberta
+C
+C
+C
+5
+10
+15
+roberta
+C
+C
+C
+5
+10
+15
+roberta
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+5
+10
+15
+roberta
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+(C * h)
+5
+10
+15
+roberta
+C
+C
+C
+5
+10
+15
+roberta
+C
+C
+C
+5
+10
+15
+roberta
+C{50}
+C{50}
+C{50}
+C{50}
+C{50}
+C{50}
+5
+10
+15
+roberta
+CA
+CA
+CA
+CA
+CA
+CA
+5
+10
+15
+roberta
+Csource
+Csource
+Csource
+Csource
+Csource
+Csource
+5
+10
+15
+roberta
+CE
+CE
+CE
+CE
+CE
+CE
+5
+10
+15
+roberta
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+CMATTR
+5
+10
+15
+roberta
+CPPL
+CPPL
+CPPL
+CPPL
+CPPL
+CPPL
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+5
+10
+15
+roberta
+CE
+CE
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+CE
+CE
+0.0
+2.5
+5.0
+7.5
+10.0
+Epoch
+CE
+CE
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+5
+10
+15
+llama
+RoBERTa
+Llama
+Figure 13: Evaluation loss trajectories under different curricula. We construct an evaluation set by sampling the
+100M word 2024 BabyLM dataset (D2024 is the 10M version; Choshen et al., 2024). |Deval| = 0.05 · |D2024|.
+379
