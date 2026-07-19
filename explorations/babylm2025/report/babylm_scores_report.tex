@@ -217,9 +217,9 @@ artifact, not model quality (m.22).
 
 \textbf{(Super)GLUE} is the trustworthy secondary: accuracy-based, moves with model quality
 (m.31), with MNLI/MRPC/RTE carrying the real signal (m.1). Its caveats are cost and patchy
-sensitivity: it requires finetuning (the expensive, higher-variance stage); it barely reflects a
-$10\times$ data difference (only two of seven Strict systems beat the best Strict-Small system on
-GLUE); it is sometimes wholly inert (frozen at 57.7 across every configuration in m.36; $\approx$63.5
+sensitivity: it requires finetuning (the expensive, higher-variance stage); it barely reflects the data
+budget (in Figure~\ref{fig:spread} the best Strict-Small 10M-word systems sit at or above most Strict
+100M-word systems on GLUE); it is sometimes wholly inert (frozen at 57.7 across every configuration in m.36; $\approx$63.5
 flat in m.41); and WSC/RTE carry 4--12-point seed variance, enough that m.19 dropped WSC from its
 analysis. Read the aggregate, not the individual small tasks.
 
@@ -393,9 +393,9 @@ standard deviation near 9.5. A one-point BLiMP difference low down is meaningful
 because the strongest models approach the reference and the metric saturates.
 
 \textbf{(Super)GLUE is compressed and scale-insensitive.} Its range is about 19 points (53 to 72),
-standard deviation near 6. Only two of seven Strict (100M-word) systems beat the best Strict-Small
-(10M-word) system on GLUE --- a metric that barely reflects a $10\times$ data difference cannot finely
-rank models that differ by far less. Read GLUE as a coarse band, not a ranking.
+standard deviation near 6. In Figure~\ref{fig:spread} the best Strict-Small (10M-word) systems match or
+exceed most Strict (100M-word) systems on GLUE --- a metric that barely reflects a $10\times$ data
+difference cannot finely rank models that differ by far less. Read GLUE as a coarse band, not a ranking.
 
 \textbf{The two are weakly correlated, so ``good'' is metric-specific.} Systems with strong BLiMP and
 mediocre GLUE (Once Upon a Time: 77.5/53) and the reverse (Batchwise-Convergent: 49/58) both exist. A
@@ -516,7 +516,8 @@ conditions''; 37.7\% of items have a concept appearing $<$100 times in training,
 the end of training''; seed SD 6--9 points (20.70$\pm$6.09).
 
 \textbf{GLUE insensitivity (m.36).} (Super)GLUE frozen at exactly 57.7 across every proposed and controlled
-configuration. Organizers: only two of seven Strict systems beat the best Strict-Small system on GLUE.
+configuration. In the compiled cross-section (Fig.~\ref{fig:spread}) the best 10M-word systems match or
+exceed most 100M-word systems on GLUE, i.e.\ it does not track the data budget.
 
 \textbf{Metric decoupling (m.32, m.13).} RL ``primarily enhances narrative coherence\,\dots\ while leaving
 surface-level fluency --- measured by the BabyLM tasks --- largely unchanged''; combining metrics into one

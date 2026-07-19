@@ -137,9 +137,10 @@ cleaning artifact, not model quality (main.22).
 **(Super)GLUE** is the trustworthy secondary. It is accuracy-based, it moves with
 model quality (main.31), and MNLI/MRPC/RTE carry real pretraining signal (main.1).
 Its caveats are cost and patchy sensitivity: it requires finetuning (the expensive,
-higher-variance stage the organizers deliberately pruned); it barely reflects a 10×
-data difference (only two of seven Strict models beat the best Strict-Small model on
-GLUE, per *Findings*); it is sometimes wholly inert (frozen at 57.7 across every
+higher-variance stage the organizers deliberately pruned); it barely reflects the
+data budget (in the compiled cross-section the best Strict-Small 10M-word systems sit
+at or above most Strict 100M-word systems on GLUE — see `figure/`); it is sometimes
+wholly inert (frozen at 57.7 across every
 configuration in main.36; ~63.5 flat in main.41; MultiRC/WSC ≈ majority class in
 main.1); and WSC/RTE carry 4–12-point seed variance, enough that main.19 dropped WSC
 from its analysis. Use the aggregate, not individual small tasks.
