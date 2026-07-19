@@ -5,65 +5,301 @@
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{amssymb}
-\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 \usepackage{titlesec}
-\titlespacing*{\section}{0pt}{1.3ex}{0.6ex}
-\titlespacing*{\subsection}{0pt}{1.0ex}{0.4ex}
+\titlespacing*{\section}{0pt}{1.6ex}{0.7ex}
+\titlespacing*{\subsection}{0pt}{1.1ex}{0.4ex}
 \newcommand{\fixed}{\textcolor{green!55!black}{\textbf{Fixed}}}
 \newcommand{\partialx}{\textcolor{orange!85!black}{\textbf{Partial}}}
 \newcommand{\notfixed}{\textcolor{red!75!black}{\textbf{Not fixed}}}
 \newcommand{\removed}{\textcolor{blue!70!black}{\textbf{Removed}}}
-\setlength{\parskip}{0.4em}
+\newcommand{\trust}{\textcolor{green!55!black}{\textbf{Trust}}}
+\newcommand{\probe}{\textcolor{orange!85!black}{\textbf{Probe only}}}
+\newcommand{\noise}{\textcolor{red!75!black}{\textbf{Noise}}}
+\newcommand{\broken}{\textcolor{red!75!black}{\textbf{Broken}}}
+\setlength{\parskip}{0.45em}
 \setlength{\parindent}{0pt}
 
-\title{\vspace{-3.5em}\textbf{BabyLM: what the 2025 scores looked like, and which\\
-evaluation bugs the 2026 pipeline fixed}}
-\author{Working note --- \texttt{explorations/babylm2025}}
+\title{\vspace{-3.5em}\textbf{Reading BabyLM scores: which 2025 numbers are\\
+meaningful, what the field achieved, and which evaluation\\
+bugs the 2026 pipeline fixed}}
+\author{Working note}
 \date{\today}
 
 \begin{document}
 \maketitle
-\vspace{-2.2em}
+\vspace{-2.4em}
 
 \begin{abstract}
-\noindent This note does two things for a prospective 2026 BabyLM entrant. First,
-it audits — against the actual code of the 2026 evaluation pipeline
-(\texttt{github.com/babylm-org/babylm-eval}) — which of the concrete evaluation
-bugs reported in the 2025 challenge papers were fixed. Second, it shows what the
-spread of \textbf{BLiMP} and \textbf{(Super)GLUE} scores across 2025 systems
-actually looks like, so that a new score can be placed in context. The short story
-on the bugs: the BLiMP tie/NaN inflation and the age-of-acquisition mis-fit are
-fixed, the buggy WUG morphology tasks were deleted outright, but the EWoK
-``concepts-absent-from-training'' problem is a data issue that remains. The short
-story on the scores: BLiMP spreads widely ($\approx$49--80) and is the metric that
-actually separates systems; (Super)GLUE is compressed ($\approx$53--72) and barely
-distinguishes a $10\times$ difference in training data.
+\noindent This is a self-contained guide to interpreting BabyLM challenge scores, aimed
+at someone preparing a 2026 entry who wants to know three things: which of the many
+evaluation numbers actually carry signal, how a given score compares to the field, and
+which of the concrete evaluation bugs reported in the 2025 papers have been fixed in the
+2026 pipeline. The findings are drawn from a full reading of all 41 papers of the 2025
+proceedings (\texttt{2025.babylm-main}) and from reading the actual source of the 2026
+evaluation pipeline (\texttt{github.com/babylm-org/babylm-eval}). \textbf{Headline
+conclusions.} (i)~Only two scores are trustworthy for ranking: \textbf{BLiMP} and
+\textbf{(Super)GLUE}; the rest are at chance, at the noise floor, or were outright buggy.
+(ii)~BLiMP spreads widely across systems ($\approx$49--80) and is the axis that separates
+models; (Super)GLUE is compressed ($\approx$53--72) and barely reflects a $10\times$
+difference in training data. (iii)~The 2026 pipeline fixes the two most damaging scoring
+bugs (BLiMP tie/NaN inflation; age-of-acquisition mis-fit) and deletes the unreliable WUG
+tasks, but the EWoK ``concepts-absent-from-training'' problem remains.
 \end{abstract}
 
-\section{Sources and scope}
-The evaluation bugs are those documented in the 2025 BabyLM proceedings
-(\texttt{2025.babylm-main}; all 41 papers were read --- see the companion
-\texttt{evidence.md}). The fix status is established by reading the 2026 pipeline
-source and its git history, not from any changelog (there is none). Paper
-references use the anthology number, e.g.\ (main.16). The score data are compiled
-from the primary submission papers; the caveats on that are stated in
-Section~\ref{sec:spread}.
+\tableofcontents
+\vspace{0.6em}
+\hrule
 
-\section{Which evaluation bugs were fixed in 2026?}
-Table~\ref{tab:bugs} is the summary; the notes below give the mechanism and the
-code evidence.
+\section{Purpose, method, and how to read this}
+\label{sec:intro}
+The BabyLM Challenge asks entrants to pretrain a language model on a human-scale amount of
+text --- 100M words or fewer (Strict), or 10M or fewer (Strict-Small) --- and evaluates it
+on a fixed suite of linguistic and cognitive benchmarks. Because that suite reports on the
+order of a dozen numbers per model, and because those numbers are then blended into a single
+leaderboard rank, it is easy to over-read a score that is really noise. This report exists to
+prevent that.
+
+It answers three questions. \textbf{(1)~Which scores are meaningful?}
+(Section~\ref{sec:meaningful}) --- i.e.\ reliable across seeds, discriminative between
+models, construct-valid, and not stuck at chance. \textbf{(2)~What does the field look like?}
+(Section~\ref{sec:spread}) --- the actual spread of the two trustworthy metrics, with
+reference bands so a new score can be placed without the leaderboard.
+\textbf{(3)~Which 2025 bugs did 2026 fix?} (Section~\ref{sec:bugs}) --- audited against the
+real pipeline code, not a changelog (there is none).
+
+\textbf{Method and sourcing.} The reliability verdicts come from a full reading of the 41
+papers in \emph{Proceedings of the First BabyLM Workshop} (\texttt{2025.babylm-main.1}
+through \texttt{.41}); the organizers' summary is \texttt{.28}. Individual papers are cited
+by anthology number, e.g.\ (m.16) for \texttt{2025.babylm-main.16}; a full number$\to$identity
+map is in Appendix~\ref{app:papers}, and a condensed set of the load-bearing quotes and
+numbers is in Appendix~\ref{app:evidence}. The bug-fix status was established by cloning and
+diffing the 2025 (\texttt{babylm/evaluation-pipeline-2025}) and 2026
+(\texttt{babylm-org/babylm-eval}) pipelines. This report is intended to be read on its own.
+
+\section{The BabyLM setting (2025 and 2026)}
+\label{sec:setting}
+\textbf{Tracks and budgets.} Table~\ref{tab:tracks} summarizes the 2026 structure. The core
+Strict / Strict-Small text tracks are unchanged from 2025; the standalone Interaction and
+Multimodal tracks of 2025 were folded back into Strict (teacher feedback and multimodal data
+are now allowed within the word budget rather than being their own competitions); and a new
+Multilingual track was added.
 
 \begin{table}[h]
-\centering
-\small
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Track} & \textbf{Budget} & \textbf{Notes}\\
+\midrule
+Strict & $\le$100M words & or up to 1B with the $\le$10-epoch exposure cap\\
+Strict-Small & $\le$10M words & or up to 100M with the exposure cap\\
+Multilingual (new 2026) & 100M tokens & English/Dutch/Chinese, byte-premium adjusted\\
+\bottomrule
+\end{tabular}
+\caption{2026 competition tracks. All tracks cap training exposure at $\le$10 epochs and
+require intermediate checkpoints (every 1M words to 10M, every 10M to 100M). A detoxified
+training corpus is provided.}
+\label{tab:tracks}
+\end{table}
+
+\textbf{Evaluation philosophy.} Most of the suite is \emph{zero-shot}: the model assigns
+(pseudo-)log-probabilities to candidate strings, and accuracy is whether it prefers the
+correct one, exactly as in BLiMP minimal pairs. The organizers investigated replacing the
+finetuned (Super)GLUE tasks with zero-shot prompting but concluded that robust in-context
+learning does not emerge at this data scale (induction heads require billions of tokens), so
+finetuning was kept. This philosophy carries into 2026, which is why the 2025 reliability
+picture below is directly relevant to a 2026 entry.
+
+\section{How a submission is scored}
+\label{sec:scoring}
+Every text-track model is reduced to two headline numbers and one aggregate.
+
+\begin{itemize}\itemsep2pt
+\item \textbf{NLP score} --- an \emph{accuracy} average over the forced-choice / labelled
+tasks: BLiMP, BLiMP-Supplement, EWoK, Entity Tracking, COMPS, and the finetuned
+(Super)GLUE suite (BoolQ, MNLI, MRPC, MultiRC, QQP, RTE, WSC; MNLI/QQP subsampled to 10k;
+CoLA, SST2, MNLI-mm, QNLI dropped as redundant).
+\item \textbf{Human-likeness score} --- a \emph{correlation-to-humans} average over
+reading-time prediction (surprisal vs human reading times), the two WUG morphology tasks
+(model inflection preference vs the human distribution), and age-of-acquisition (model
+word-learning curves vs WordBank).
+\item \textbf{Macro Average} --- the leaderboard sort key.
+\end{itemize}
+
+The aggregation is a two-level unweighted mean: each task score is the mean of its subtasks,
+and the macro is the mean across tasks. Checking against the organizers' results table pins
+the exact structure down: \textbf{Macro $=$ mean(NLP score, Human-likeness score)} --- a flat
+50/50 split (e.g.\ CLASS-IT 20.4/52.9$\to$36.6; MoEP 31.5/53.2$\to$42.3). \emph{This 50/50
+split is the crux of Section~\ref{sec:meaningful}:} half the flagship number comes from the
+least reliable half of the suite. (Note: some online summaries quote a 50\%/30\%/20\%
+BLiMP/GLUE/MSGS weighting --- that is the \emph{2023} scheme; MSGS was not used in 2025.)
+
+\textbf{What the field actually achieved.} Table~\ref{tab:winners} gives the 2025 track
+winners against the strongest provided baseline. Two facts stand out and inform how to read a
+rank. First, human-likeness and NLP were awarded separately because a system could win either;
+and at the top of the largest track (Strict-Small) the two winners are near-opposites (MoEP
+31.5/53.2 vs AMLM 8.4/58.3), i.e.\ the two halves are decoupled. Second, in the Strict track
+\emph{no submission beat the strongest GPT-BERT baseline on the macro average} --- the awards
+go to the best non-baseline entries.
+
+\begin{table}[h]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l l r r r@{}}
+\toprule
+\textbf{Track} & \textbf{System (award)} & \textbf{Human-lik.} & \textbf{NLP} & \textbf{Macro}\\
+\midrule
+Strict & Simple-Diffusion (NLP winner) & 12.6 & 58.4 & 35.5\\
+       & CLASS-IT (human-lik.\ winner) & 20.4 & 52.9 & 36.6\\
+       & \emph{GPT-BERT baseline (best)} & \emph{24.2} & \emph{62.7} & \emph{43.5}\\
+\midrule
+Strict-Small & AMLM-Hard-Decay (NLP winner) & 8.4 & 58.3 & 33.3\\
+             & MoEP (human-lik.\ winner) & 31.5 & 53.2 & 42.3\\
+             & \emph{GPT-BERT baseline (best)} & \emph{18.7} & \emph{56.1} & \emph{37.4}\\
+\midrule
+Interaction & BLM / Once Upon a Time (both) & 20.8 & 54.4 & 37.6\\
+\bottomrule
+\end{tabular}
+\caption{2025 track winners vs the best provided baseline, from the organizers' results table.
+Note the Strict baseline is not beaten on Macro, and the Strict-Small winners are
+anti-aligned across the two headline metrics.}
+\label{tab:winners}
+\end{table}
+
+\section{Which scores are meaningful?}
+\label{sec:meaningful}
+Table~\ref{tab:verdict} is the summary; the subsections give the evidence. ``At chance'' means
+$\approx$0.50 for a two-alternative task. The verdicts are unusually well-supported because they
+are \emph{convergent across many independent submissions} and, in the strongest cases, stated by
+the winning teams and diagnosed mechanistically.
+
+\begin{table}[h]
+\centering\small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{@{}p{3.5cm} p{5.0cm} p{4.4cm} c@{}}
+\begin{tabular}{@{}l l l p{6.4cm}@{}}
+\toprule
+\textbf{Task} & \textbf{Type} & \textbf{Verdict} & \textbf{Core evidence}\\
+\midrule
+BLiMP            & accuracy    & \trust   & Monotone with training (m.34); separates models; but tie artifact (m.16), chance under weak compute (m.11,m.12), saturating at top\\
+(Super)GLUE      & accuracy (FT)& \trust  & Trusted by the winners' audit (m.31); but sometimes inert (m.36,m.41), high seed variance on RTE/WSC (m.19); costly\\
+BLiMP-Supplement & accuracy    & \probe   & Often near chance (m.5); a supplement ``gap'' was a speaker-label preprocessing artifact (m.22)\\
+Entity Tracking  & accuracy    & \probe   & Seed SD 6--9 pts (m.22); mid-run collapse 41.8$\to$13.4 (m.34); U-shaped; tokenizer-sensitive\\
+COMPS            & accuracy    & \noise   & At chance for weak models (m.14,m.22); floor-limited\\
+EWoK             & accuracy    & \broken  & $\approx$0.50 everywhere; 13\% of items' concepts never appear in training (m.15)\\
+Reading-time     & correlation & \noise   & $\approx$0, model-insensitive (m.31,m.32); tokenizer-fragile (m.41)\\
+WUG past-tense   & correlation & \broken  & Eval bug (m.14); sign-flipping negatives (m.22,m.38)\\
+WUG adjective    & correlation & \broken  & Untrained model scores $\approx$78 (m.31); non-discriminative (m.32)\\
+Age-of-Acquisition& correlation& \broken  & Sigmoid fit on 1--5 points $\to$ ``misleading'' (m.29); decided an award (m.39)\\
+\bottomrule
+\end{tabular}
+\caption{Per-task reliability verdict for the 2025 suite. \trust{} = reliable enough to rank
+on; \probe{} = real signal but too noisy/format-sensitive to rank on; \noise{}/\broken{} = do
+not read small differences.}
+\label{tab:verdict}
+\end{table}
+
+\subsection{The reliable core: BLiMP and (Super)GLUE}
+\textbf{BLiMP} is the anchor. It rises smoothly with training --- ``BLiMP scores demonstrate a
+gradual and consistent increase during training'' (m.34) --- and the Strict-Small NLP winner's
+own audit, an appendix literally titled \emph{``Should we trust BabyLM Metrics?''}, concludes
+that for BLiMP and (Super)GLUE the answer ``appears to be yes\,\dots\ Failed and untrained
+models perform expectedly poorly on these'' (m.31). Three caveats keep it from being read at
+fine granularity: a scoring artifact could inflate degenerate models in 2025
+(Section~\ref{sec:bugs}); it collapses toward chance under weak compute (``BLiMP\,\dots\ hovers
+44--52 across configurations,'' m.12; 48.7 for a heavily-quantized model, m.11); and it saturates
+at the top, where the best models approach the human/large-LM reference.
+
+The \textbf{BLiMP-Supplement} is weaker: several models sit near 0.50 on it (m.5), and one paper
+traced a supplement ``advantage'' entirely to three subcategories containing speaker labels that
+only one condition's preprocessing preserved --- a headline difference that was a data-cleaning
+artifact, not model quality (m.22).
+
+\textbf{(Super)GLUE} is the trustworthy secondary: accuracy-based, moves with model quality
+(m.31), with MNLI/MRPC/RTE carrying the real signal (m.1). Its caveats are cost and patchy
+sensitivity: it requires finetuning (the expensive, higher-variance stage); it barely reflects a
+$10\times$ data difference (only two of seven Strict systems beat the best Strict-Small system on
+GLUE); it is sometimes wholly inert (frozen at 57.7 across every configuration in m.36; $\approx$63.5
+flat in m.41); and WSC/RTE carry 4--12-point seed variance, enough that m.19 dropped WSC from its
+analysis. Read the aggregate, not the individual small tasks.
+
+\subsection{Real but too noisy to rank: Entity Tracking}
+Entity Tracking is the most \emph{method-sensitive} accuracy task --- multi-token prediction
+(+4--5 pts, m.41), contrastive data (+7\%, m.2), and recombination (12.95$\to$19.65, m.40) all
+move it --- but it is also the highest-variance metric on the board: seed SD of 6--9 points
+(20.70$\pm$6.09; 31.68$\pm$8.75, m.22), mid-run collapse (``rises to 41.8 at 20M tokens before
+collapsing to 13.4,'' m.34; ``drops sharply after the first epoch,'' m.41), and a barely-trained
+model beating a strong GPT-BERT on it (m.36). Use it only as a seeded diagnostic for a specific
+intervention, never as a ranking component.
+
+\subsection{Broken at this scale: EWoK (and COMPS)}
+\textbf{EWoK} is at chance in essentially every text-track paper that reports it: 52.7--56.7
+across all sizes (m.1); 53.0--53.8 across all methods (m.2); 0.494--0.519 across 14 curricula
+(m.26); ``none of the models perform better than a random guess'' (m.41). The outstanding paper
+m.15 supplies the mechanism, and it is a \emph{data} problem: EWoK ``demonstrates no sensitivity
+to changes in architecture or training strategy, with performance remaining around 50\%\dots'',
+because in 37.7\% of EWoK items at least one tested concept appears fewer than 100 times in the
+training corpus and in 13\% both concepts appear zero times --- ``the training dataset does not
+properly support EWoK evaluation.'' Where EWoK \emph{does} move it is suspect: a morpheme tokenizer
+pushes it to 67--71, which the authors themselves call ``surprising, as EWoK measures basic world
+knowledge rather than a linguistic task'' (m.21), i.e.\ a segmentation/log-probability artifact.
+\textbf{COMPS} shares the floor problem (at chance for weak models, m.14,m.22) though strong
+baselines reach 56--60. Do not optimize either, and do not read small differences.
+
+\subsection{Noise floor or buggy: the human-likeness half}
+\textbf{Reading-time prediction} has near-zero magnitude and is insensitive to model quality:
+the winners' audit found the numbers ``stay relatively similar, regardless of the model'' (m.31);
+``the correlations of all models are below 0.1'' (m.32). Values sit at 0.0--0.1 partial-$R^2$,
+flip sign when the tokenizer changes (m.41), and can perversely favour \emph{smaller} models
+(m.30,m.17).
+
+\textbf{WUG} (past-tense and adjective-nomination) is unreliable in several independent ways.
+There was an outright evaluation bug --- ``a bug was discovered in the evaluation for the WuG
+task\,\dots\ we therefore exclude this task'' (m.14). Under a morpheme tokenizer every configuration
+scores \emph{exactly} 100.00, a normalization artifact (m.21). The past-tense correlation routinely
+goes strongly \emph{negative} and sign-flips across near-identical models ($-20.7$ vs $+37.5$, m.14;
+$-24$ to $+2$ with SD up to $\pm$10, m.22). And the adjective task is gameable: ``one could obtain
+quite high scores on adjective nominalization, around 78, just from initialization, no training
+required'' (m.31).
+
+\textbf{Age-of-Acquisition} was, in 2025, the most dangerous number on the board --- it was
+\emph{miscomputed}. m.29 inspected the pipeline: ``only very few data points (1--5 words) are
+considered\,\dots\ due to an unpassed condition on the parameters of the fitted sigmoid function
+\,\dots\ Limited data points lead to either a score of zero or a strong negative correlation; hence,
+these results can be misleading.'' This explains the wild spread (mostly $-0.07$ to $0$ with lone
+outliers, m.34; literal $0.00$ at $p{=}1.0$, m.40; $-79.6$, m.29). It was also inflated by
+broken/untrained runs (m.31). \emph{This specific bug is fixed in 2026} (Section~\ref{sec:bugs}).
+
+\subsection{Why the aggregate is not a safe ranking}
+The individual-task problems would matter less if they averaged out. They do not, because the
+macro weights the broken half at 50\% and the noisiest tasks have the widest ranges. The decisive
+demonstration (m.31): a team accidentally trained a model with too-low a batch size, spiking the
+loss; it ``performs expectedly poorly on\,\dots\ BLiMP and (Super)GLUE'' but ``remarkably well
+on\,\dots\ EWoK, adjective nominalization, COMPS, and AoA,'' and its aggregate \emph{beat every
+properly-trained model}. Their verdict: ``the final scoring metric seems to be unfairly skewed.''
+Relatedly, one real award (Strict-Small human-likeness, MoEP, m.39) turned almost entirely on the
+miscomputed AoA task: its AoA (53.70) was 4--14$\times$ any baseline's, while on BLiMP it was
+\emph{below} every baseline. Run-to-run macro SD is $\approx$1--2 points (m.14) --- larger than many
+ranking gaps --- and cross-metric non-transfer is pervasive (grammar and knowledge/reasoning move
+independently or oppositely under the same intervention: m.1,m.2,m.5,m.11,m.12), so no single scalar
+is honest. Collapsing the metrics ``would obscure these distinctions and reduce interpretability''
+(m.13).
+
+\section{The 2026 pipeline: which evaluation bugs were fixed}
+\label{sec:bugs}
+Table~\ref{tab:bugs} is the summary; the notes give the mechanism and code evidence, established by
+reading the 2026 source and its git history.
+
+\begin{table}[h]
+\centering\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{3.3cm} p{4.7cm} p{4.4cm} c@{}}
 \toprule
 \textbf{Issue (reported by)} & \textbf{2025 behaviour} & \textbf{2026 state} & \textbf{Verdict}\\
 \midrule
-BLiMP tie / NaN inflation \newline (main.16) &
-\texttt{torch.max} picks first index on ties; NaNs propagate; a degenerate model can report 100.0 &
-NaN$\to-\infty$ and \emph{random} tie-breaking; degenerate models now score at chance (commit \texttt{9bcf1f2}, Apr 2026) &
+BLiMP tie / NaN inflation (m.16) &
+\texttt{torch.max(...)[1]} picks first index on ties; NaNs propagate; a degenerate model can report 100.0 &
+NaN$\to-\infty$ and \emph{random} tie-breaking; degenerate models now score at chance (\texttt{9bcf1f2}, Apr 2026) &
 \fixed \\
 
 \quad --- underlying permutation items &
@@ -71,84 +307,67 @@ NaN$\to-\infty$ and \emph{random} tie-breaking; degenerate models now score at c
 Same 67 paradigms still shipped; only the \emph{scoring} changed &
 \partialx \\
 
-Age-of-Acquisition mis-fit \newline (main.29) &
+Age-of-Acquisition mis-fit (m.29) &
 Unbounded sigmoid fit (\texttt{maxfev=1000}) diverges and drops most words, so the correlation uses only 1--5 points &
-Bounded fit, \texttt{maxfev=20000}, per-checkpoint averaging, corrected chance ceiling, $p$-value gate (commit \texttt{7d0a6c8}, Jul 2026) &
+Bounded fit, \texttt{maxfev=20000}, per-checkpoint averaging, corrected chance ceiling, $p$-value gate (\texttt{7d0a6c8}, Jul 2026) &
 \fixed \\
 
-WUG evaluation bug \newline (main.14); WUG${=}100$ under morpheme tokenizers (main.21) &
+WUG bug (m.14); WUG${=}100$ under morpheme tokenizers (m.21) &
 Buggy morphological WUG (past/adj) correlation tasks &
-Both WUG tasks \emph{deleted} from the 2026 suite (commit \texttt{9bcf1f2}) &
+Both WUG tasks \emph{deleted} from the 2026 suite (\texttt{9bcf1f2}) &
 \removed \\
 
-EWoK at chance: ${\sim}13\%$ of items use concepts absent from training (main.15) &
+EWoK at chance: ${\sim}13\%$ of items use concepts absent from training (m.15) &
 Filter only drops out-of-vocab items; no training-coverage check &
-\texttt{ewok/dl\_and\_filter.py} and \texttt{vocab.txt} byte-identical; pair construction/collation fixed but coverage untouched &
+\texttt{dl\_and\_filter.py} and \texttt{vocab.txt} byte-identical; pair construction/collation fixed but coverage untouched &
 \notfixed \\
 
-Reading-time task (fragility noted by main.17, main.31) &
+Reading-time fragility (m.17,m.31) &
 Surprisal--RT regression &
 Unchanged except a tokenizer-loading fallback &
 --- \\
 \bottomrule
 \end{tabular}
-\caption{Status in the 2026 pipeline of evaluation bugs reported in the 2025
-challenge papers. ``Verdict'' colours: \fixed{} / \partialx{} / \removed{} /
-\notfixed.}
+\caption{Status in the 2026 pipeline (\texttt{babylm-org/babylm-eval}) of evaluation bugs reported
+in the 2025 papers.}
 \label{tab:bugs}
 \end{table}
 
-\textbf{BLiMP tie/NaN (fixed).} In 2025, \texttt{rank\_and\_evaluate} chose the
-argmax candidate with \texttt{torch.max(...)[1]}, which returns the
-\emph{first} index on ties and lets NaNs create spurious maxima; an order-invariant
-or degenerate model could therefore be scored as correct, and a dummy model could
-report 100.0. The 2026 code first maps NaN to $-\infty$ and then breaks ties
-\emph{randomly}, so a model that cannot distinguish the minimal pair now scores at
-chance. This removes the inflation. It does \emph{not} remove the 22 paradigms
-whose two sentences are permutations of one another --- they are still in the data
-snapshot; they simply no longer inflate a degenerate model.
+\textbf{BLiMP tie/NaN (fixed).} In 2025, \texttt{rank\_and\_evaluate} chose the argmax candidate with
+\texttt{torch.max(...)[1]}, which returns the \emph{first} index on ties and lets NaNs create spurious
+maxima; an order-invariant or degenerate model could therefore be scored as correct, and a dummy model
+could report 100.0. The 2026 code first maps NaN to $-\infty$ and then breaks ties \emph{randomly}, so a
+model that cannot distinguish the minimal pair now scores at chance. It does \emph{not} remove the 22
+paradigms whose two sentences are permutations of one another --- they are still in the data snapshot;
+they simply no longer inflate a degenerate model.
 
-\textbf{Age-of-Acquisition (fixed).} The 2025 model-side sigmoid fit was unbounded
-and capped at \texttt{maxfev=1000}; on many clean learning curves the shape
-parameter diverged and the word was discarded, leaving the human--model correlation
-computed over a handful of survivors --- exactly the ``unpassed condition on the
-parameters of the fitted sigmoid'' that main.29 diagnosed. The 2026 fit is
-\emph{bounded}, uses $20\times$ more evaluations, averages surprisals within each
-checkpoint, corrects the chance-surprisal ceiling, and gates on a $p$-value. One
-caveat: the 2026 strict \textsc{readme} reports AoA as an MSE-like quantity
-computed server-side, so the exact headline number may differ from the repository's
+\textbf{Age-of-Acquisition (fixed).} The 2025 model-side sigmoid fit was unbounded and capped at
+\texttt{maxfev=1000}; on many clean learning curves the shape parameter diverged and the word was
+discarded, leaving the correlation computed over a handful of survivors --- exactly the ``unpassed
+condition on the parameters of the fitted sigmoid'' that m.29 diagnosed. The 2026 fit is \emph{bounded},
+uses $20\times$ more evaluations, averages surprisals within each checkpoint, corrects the chance-surprisal
+ceiling, and gates on a $p$-value. One caveat: the 2026 strict \textsc{readme} reports AoA as an MSE-like
+quantity computed server-side, so the exact headline number may differ from the repository's
 Pearson-correlation code; only the repo-side fit could be verified here.
 
-\textbf{WUG (removed).} Rather than repair the morphological WUG past/adj tasks,
-2026 deletes them: the \texttt{rank\_and\_evaluate\_wug} routine, the task
-dispatch, and the collation entries are all gone. The ``WUG${=}100.00$ under a
-morpheme tokenizer'' artifact and the sign-flipping negative correlations are
-therefore moot --- but so is any WUG signal.
+\textbf{WUG (removed).} Rather than repair the morphological WUG tasks, 2026 deletes them --- the scoring
+routine, the task dispatch, and the collation entries are all gone. The ``WUG${=}100$'' artifact and the
+sign-flipping correlations are therefore moot, but so is any WUG signal.
 
-\textbf{EWoK (not fixed).} main.15 showed EWoK sits at chance partly because
-${\sim}13\%$ of its test items involve concepts that never appear in the training
-corpus. That is a property of the \emph{data}, and the 2026 filter and vocabulary
-files are byte-for-byte identical to 2025. Recent 2026 commits fixed how EWoK pairs
-are \emph{constructed and scored} (two context-based minimal pairs; a
-prediction/target matching fix), which improves correctness, but the
-coverage problem --- the reason EWoK barely rises above $0.50$ --- is untouched.
-Treat EWoK the same way in 2026 as in 2025: near-uninformative at this scale.
+\textbf{EWoK (not fixed).} The reason EWoK sits at chance is that $\approx$13\% of its items use concepts
+absent from the training corpus (m.15) --- a property of the \emph{data}, and the 2026 filter and
+vocabulary files are byte-for-byte identical to 2025. Recent 2026 commits fixed how EWoK pairs are
+\emph{constructed and scored} (two context-based minimal pairs; a prediction/target matching fix), which
+improves correctness, but the coverage problem is untouched. Treat EWoK the same in 2026 as in 2025:
+near-uninformative at this scale.
 
-\subsection{Other changes worth knowing}
-\textbf{Task list.} The 2026 strict zero-shot suite keeps BLiMP, BLiMP-Supplement,
-EWoK, Entity Tracking, COMPS, reading-time and AoA, \emph{drops} both WUG tasks, and
-\emph{adds} GlobalPIQA (length-normalised). Fine-tuning keeps the same seven
-(Super)GLUE tasks (BoolQ, MNLI, MRPC, MultiRC, QQP, RTE, WSC; MNLI/QQP subsampled to
-10k). A new \textbf{Multilingual} track (English/Dutch/Chinese) adds MultiBLiMP,
-Hanzi structure/pinyin minimal pairs, and MECO reading-time.
-
-\textbf{Aggregation.} Neither the 2025 nor the 2026 repository computes the headline
-Macro Average; it is calculated server-side on the leaderboard. In 2025 it was the
-mean of the accuracy (``NLP'') average and the correlation (``human-likeness'')
-average --- a 50/50 split. Whether 2026 keeps that exact weighting cannot be
-determined from the pipeline code, but the \emph{composition} of the two halves has
-changed: the human-likeness side lost the WUG tasks, and the accuracy side gained
-GlobalPIQA.
+\textbf{Other changes worth knowing.} The 2026 strict zero-shot suite keeps BLiMP, BLiMP-Supplement, EWoK,
+Entity Tracking, COMPS, reading-time and AoA, \emph{drops} both WUG tasks, and \emph{adds} GlobalPIQA
+(length-normalized). Fine-tuning keeps the same seven (Super)GLUE tasks. A new Multilingual track
+(English/Dutch/Chinese) adds MultiBLiMP, Hanzi structure/pinyin minimal pairs, and MECO reading-time.
+The Macro Average is computed server-side in both years, so the exact 2026 weighting cannot be read from
+the pipeline code; but the \emph{composition} of the two halves changed --- the human-likeness side lost
+WUG, the accuracy side gained GlobalPIQA.
 
 \section{What the BLiMP and (Super)GLUE spread looks like}
 \label{sec:spread}
@@ -156,79 +375,152 @@ GlobalPIQA.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{../figure/blimp_glue_spread.pdf}
-\caption{BLiMP versus (Super)GLUE for a cross-section of 2025 systems.
-\textbf{(A)} Each point is one system; colour is the track; the star is the
-official GPT-BERT baseline. \textbf{(B)} The same values shown as a one-dimensional
-spread per metric (black bar = mean, whisker = min--max). BLiMP ranges $\approx$49--80;
-(Super)GLUE is compressed into $\approx$53--72. Across systems the two are only
-weakly related (Pearson $r\approx0.25$). Data compiled from the primary submission
-papers; each point's BLiMP and GLUE come from the \emph{same} source, but values are
-as-reported (including author re-implementations of the baselines) and GLUE-vs-SuperGLUE
-averaging conventions vary slightly. This is not the official leaderboard table,
-which is gated.}
+\caption{BLiMP versus (Super)GLUE for a cross-section of 2025 systems. \textbf{(A)}~Each point is one
+system; colour is the track; the star is the official GPT-BERT baseline. \textbf{(B)}~The same values as
+a one-dimensional spread per metric (black bar $=$ mean, whisker $=$ min--max). BLiMP ranges
+$\approx$49--80; (Super)GLUE is compressed into $\approx$53--72. Across systems the two are only weakly
+related (Pearson $r\approx0.25$). Data compiled from the primary submission papers; each point's BLiMP and
+GLUE come from the \emph{same} source, but values are as-reported (including author re-implementations of
+the baselines) and GLUE-vs-SuperGLUE averaging conventions vary slightly. This is not the official
+leaderboard table, which is gated.}
 \label{fig:spread}
 \end{figure}
 
 Three things stand out, and they are what matter for judging a new score.
 
-\textbf{BLiMP is the metric that separates systems.} Its range across these systems
-is about 31 points (49 to 80), with a standard deviation near 9.5. A one-point BLiMP
-difference low down is meaningful; near the top it is not, because the strongest
-models approach the human/large-LM reference and the metric saturates.
+\textbf{BLiMP is the metric that separates systems.} Its range here is about 31 points (49 to 80),
+standard deviation near 9.5. A one-point BLiMP difference low down is meaningful; near the top it is not,
+because the strongest models approach the reference and the metric saturates.
 
-\textbf{(Super)GLUE is compressed and scale-insensitive.} Its range is about 19
-points (53 to 72), standard deviation near 6. The organisers' own finding reinforces
-this: only two of seven Strict (100M-word) systems beat the best Strict-Small
-(10M-word) system on GLUE. A metric that barely reflects a $10\times$ data difference
-cannot finely rank models that differ by far less --- so read GLUE as a coarse band,
-not a ranking.
+\textbf{(Super)GLUE is compressed and scale-insensitive.} Its range is about 19 points (53 to 72),
+standard deviation near 6. Only two of seven Strict (100M-word) systems beat the best Strict-Small
+(10M-word) system on GLUE --- a metric that barely reflects a $10\times$ data difference cannot finely
+rank models that differ by far less. Read GLUE as a coarse band, not a ranking.
 
-\textbf{The two are weakly correlated, so ``good'' is metric-specific.} Systems with
-strong BLiMP and mediocre GLUE (Once Upon a Time: 77.5 / 53) and the reverse
-(Batchwise-Convergent: 49 / 58) both exist. A single system can look strong on one
-axis and ordinary on the other; the baseline (GPT-BERT) is the rare point that is at
-the top of both.
+\textbf{The two are weakly correlated, so ``good'' is metric-specific.} Systems with strong BLiMP and
+mediocre GLUE (Once Upon a Time: 77.5/53) and the reverse (Batchwise-Convergent: 49/58) both exist. A
+single system can look strong on one axis and ordinary on the other; the baseline (GPT-BERT) is the rare
+point at the top of both.
 
 \subsection{Reference bands for placing your own score}
-From Figure~\ref{fig:spread} and the challenge results, the following anchors let a
-new score be judged without the leaderboard. They are approximate and track-dependent.
+Table~\ref{tab:bands} gives approximate, track-dependent anchors that let a new score be judged without the
+leaderboard. To decide whether a submission is good, compare its \textbf{BLiMP} against the GPT-BERT
+baseline for its track ($\approx$80 for Strict, high-60s to low-70s for Strict-Small) --- that is the
+number that most cleanly says ``ahead of'' or ``behind'' the field --- and treat \textbf{GLUE} as a wide
+competitive band. Do \emph{not} use EWoK or the human-likeness tasks to decide whether a model is good;
+small movements there are noise.
 
 \begin{table}[h]
-\centering
-\small
+\centering\small
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{@{}l l l l l@{}}
 \toprule
 \textbf{Metric} & \textbf{Chance / floor} & \textbf{Weak} & \textbf{Competitive} & \textbf{Strong / reference}\\
 \midrule
-BLiMP        & 50 (minimal pairs)   & 50--62 & 67--75 & 76--80 (GPT-BERT); 85--89 skyline\\
+BLiMP        & 50 (minimal pairs)   & 50--62 & 67--75 & 76--80 (GPT-BERT); $\approx$88 human\\
 (Super)GLUE  & $\approx$50 (majority)& 53--57 & 58--66 & 67--72 (GPT-BERT $\approx$71)\\
 EWoK         & 50                   & \multicolumn{3}{l}{$\approx$50--54 for \emph{everyone} --- do not read differences}\\
 Entity Track.& $\approx$20          & \multicolumn{3}{l}{high-variance (seed SD 6--9 pts); use only as a seeded probe}\\
 \bottomrule
 \end{tabular}
-\caption{Rough reference bands for the metrics that carry signal, from the 2025
-cross-section. The BLiMP ``skyline'' anchor is the original benchmark's human
-agreement ($\approx$88.6\%); the organisers additionally plot a Llama-70B skyline
-that the best Strict/Interaction systems approach on BLiMP.}
+\caption{Rough reference bands for the metrics that carry signal, from the 2025 cross-section. The BLiMP
+``human'' anchor is the original benchmark's human agreement ($\approx$88.6\%); the organizers additionally
+plot a Llama-70B skyline that the best Strict/Interaction systems approach on BLiMP.}
 \label{tab:bands}
 \end{table}
 
-Practical reading: to know whether a submission is good, compare its \textbf{BLiMP}
-against the GPT-BERT baseline for its track (about 80 for Strict, high-60s to low-70s
-for Strict-Small) --- that is the number that most cleanly says ``ahead of'' or
-``behind'' the field --- and treat \textbf{GLUE} as a wide competitive band around
-the high-50s to low-70s rather than a fine ranking. Do not use EWoK or the
-human-likeness tasks to decide whether a model is good; as the audit shows and the
-2025 papers repeatedly found, small movements there are noise (and, for AoA in 2025,
-were partly a bug now fixed).
+\section{Recommendations for a 2026 entry}
+\label{sec:rec}
+\begin{enumerate}\itemsep2pt
+\item \textbf{Optimize BLiMP $+$ BLiMP-Supplement first}, via the levers that actually moved them in 2025:
+training objective and architecture (diffusion MLM m.38, adaptive masking m.31, GPT-BERT-style dual
+objective, multi-token prediction m.41). It is the most reliable, most monotone, cheapest (zero-shot) signal.
+\item \textbf{Treat GLUE as the secondary target}; budget for finetuning variance; report the aggregate, not
+WSC/RTE/MultiRC individually.
+\item \textbf{Do not optimize EWoK, COMPS, or the human-likeness tasks for their own sake.} If you compete on
+human-likeness, note the award can be captured by a targeted push on one idiosyncratic task, but any single
+such score is fragile.
+\item \textbf{Use Entity Tracking as a diagnostic, not a target}, and only with multiple seeds and confidence
+intervals.
+\item \textbf{Report per-task, with seeds and confidence intervals}, following the best-practice examples in
+the field: m.2 (10 seeds, bootstrap CIs) and m.22 (4 seeds, per-task SDs). A single-seed macro number is not
+evidence that one model is better than another.
+\item \textbf{Verify the pipeline before trusting a number} --- the BLiMP tie-handling and AoA fit were both
+buggy in 2025 and both are worth re-checking in the 2026 code you actually run.
+\end{enumerate}
 
 \section{Bottom line}
-The 2026 pipeline is genuinely cleaner: the two most damaging scoring bugs (BLiMP
-tie/NaN inflation, AoA mis-fit) are fixed, and the unreliable WUG tasks are gone. The
-one substantive issue that survives is EWoK's data-coverage problem, so EWoK remains
-near-uninformative. For contextualising a score, BLiMP is the axis to trust and to
-compare against the track baseline; (Super)GLUE is a coarse, compressed band; and the
-rest should be read with the scepticism the 2025 submissions themselves recommended.
+The trustworthy scores are BLiMP (read coarsely, compared to the track baseline) and (Super)GLUE (a coarse,
+compressed band). EWoK is at chance, the human-likeness tasks are at the noise floor or were buggy, and the
+2025 Macro Average was unsafe enough that a broken training run topped it. The 2026 pipeline is genuinely
+cleaner: the two most damaging scoring bugs (BLiMP tie/NaN, AoA mis-fit) are fixed and the unreliable WUG
+tasks are gone; the one substantive survivor is EWoK's data-coverage problem. Judge a submission by its BLiMP
+relative to the baseline, corroborate with GLUE, and read everything else with the scepticism the 2025
+submissions themselves recommended.
+
+\appendix
+\section{Paper number $\to$ identity}
+\label{app:papers}
+Numbers are ACL Anthology \texttt{2025.babylm-main.N}. Only papers cited above are listed.
+
+\newcommand{\pp}[2]{\textbf{m.#1}~#2}
+
+{\small
+\pp{1}{Velasco \& Roque, \emph{Rethinking the Role of Text Complexity}} \textbullet\
+\pp{2}{Ulm et al., \emph{Contrastive Decoding for Synthetic Data} (10-seed CIs)} \textbullet\
+\pp{5}{Takmaz et al., \emph{Model Merging} (multimodal)} \textbullet\
+\pp{11}{Aman et al., \emph{BitMar} (low-bit multimodal)} \textbullet\
+\pp{12}{Loáiciga et al., \emph{Smaller batch sizes for ELC-BERT}} \textbullet\
+\pp{13}{Gao et al., \emph{BLiSS} (L2 selective tolerance)} \textbullet\
+\pp{14}{Haller et al., \emph{BLaLM} (linear attention; reports the WUG bug)} \textbullet\
+\pp{15}{Ganescu et al., \emph{Looking to Learn} (outstanding; EWoK data-coverage)} \textbullet\
+\pp{16}{Păpușoi \& Nisioi, \emph{Elementary Baselines} (BLiMP tie artifact)} \textbullet\
+\pp{17}{McCurdy et al., \emph{Hall of Mirrors} (surprisal instability)} \textbullet\
+\pp{19}{Roque \& Velasco, \emph{Text Simplification $+$ Curriculum}} \textbullet\
+\pp{21}{Bölücü \& Can, \emph{Morpheme-Aware} (tokenizer; WUG${=}100$ artifact)} \textbullet\
+\pp{22}{\emph{Do Syntactic Categories Help\dots} (4-seed variance; supplement artifact)} \textbullet\
+\pp{26}{Schoenegger et al., \emph{Influence-driven Curriculum}} \textbullet\
+\pp{28}{\emph{Findings of the Third BabyLM Challenge} (organizers)} \textbullet\
+\pp{29}{Padovani et al., \emph{Dialogue Is Not Enough} (AoA miscomputation)} \textbullet\
+\pp{31}{Edman \& Fraser, \emph{Mask and You Shall Receive} / AMLM (SS NLP winner; ``Should we trust BabyLM Metrics?'')} \textbullet\
+\pp{32}{Martins et al., \emph{Once Upon a Time} / BLM (Interaction winner)} \textbullet\
+\pp{33}{Kamzela et al., \emph{LLM-designed study plans}} \textbullet\
+\pp{34}{Fysikoudi et al., \emph{Active Curriculum LM}} \textbullet\
+\pp{36}{\emph{Batch-wise Convergent Pre-training} (GLUE frozen at 57.7)} \textbullet\
+\pp{38}{Kosmopoulou et al., \emph{Masked Diffusion} (Strict NLP winner)} \textbullet\
+\pp{39}{Tapaninaho, \emph{MoEP} (SS human-likeness winner; AoA-driven)} \textbullet\
+\pp{40}{Tampier et al., \emph{RecombiText}} \textbullet\
+\pp{41}{Aynetdinov \& Akbik, \emph{Multi-Token Prediction}}.
+\par}
+
+\section{Selected evidence (load-bearing quotes and numbers)}
+\label{app:evidence}
+{\small
+\textbf{BLiMP tie artifact (m.16).} ``In 22 of the 67 BLiMP subtasks, the two sentences\,\dots\ are
+permutations of the same multiset of words\,\dots\ ties are counted as correct, which inflates accuracy.''
+Removing the 22 subtasks drops a word-frequency baseline from 0.663 to 0.498 (chance).
+
+\textbf{Winners' audit (m.31, Appendix ``Should we trust BabyLM Metrics?'').} An untrained model scores
+$\approx$78 on adjective-nomination; a broken run (spiked loss) beat every properly-trained model on the
+aggregate via EWoK/adj-nom/COMPS/AoA. Verdict: trust BLiMP and (Super)GLUE; reading/eye-tracking ``stay
+relatively similar, regardless of the model''; ``the rest\,\dots\ a baby fist of salt.''
+
+\textbf{AoA miscomputation (m.29).} ``only very few data points (1--5 words) are considered\,\dots\ due to an
+unpassed condition on the parameters of the fitted sigmoid function\,\dots\ these results can be misleading.''
+
+\textbf{EWoK data coverage (m.15).} ``EWoK\,\dots\ remaining around 50\% regardless of the experiment
+conditions''; 37.7\% of items have a concept appearing $<$100 times in training, 13\% have both at zero ---
+``the training dataset does not properly support EWoK evaluation.''
+
+\textbf{Entity-tracking instability (m.34, m.22).} ``rises to 41.8 at 20M tokens before collapsing to 13.4 by
+the end of training''; seed SD 6--9 points (20.70$\pm$6.09).
+
+\textbf{GLUE insensitivity (m.36).} (Super)GLUE frozen at exactly 57.7 across every proposed and controlled
+configuration. Organizers: only two of seven Strict systems beat the best Strict-Small system on GLUE.
+
+\textbf{Metric decoupling (m.32, m.13).} RL ``primarily enhances narrative coherence\,\dots\ while leaving
+surface-level fluency --- measured by the BabyLM tasks --- largely unchanged''; combining metrics into one
+score ``would obscure these distinctions and reduce interpretability.''
+\par}
 
 \end{document}
