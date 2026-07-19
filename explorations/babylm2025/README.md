@@ -19,16 +19,23 @@ to optimize for a 2026 entry.
 - `papers/` — extracted text of all 41 `2025.babylm-main` papers (PDFs gitignored).
 - `PLAN.md` — plan, progress, and caveats.
 
-## One-line takeaway
+## One-line takeaway (2025 scores)
 Trust **BLiMP** (read coarsely) and **(Super)GLUE**; treat everything else as
 compromised — **EWoK is at chance**, the **human-likeness half is at the noise floor
-or buggy** (AoA is literally miscomputed), and the flagship `Macro Average` is
-unsafe: a *broken training run* beat every real model on it. Grounded in the winners'
-own papers. See `analysis.md`.
+or buggy** (AoA was literally miscomputed in 2025), and the flagship `Macro Average`
+is unsafe: a *broken training run* beat every real model on it. Grounded in the
+winners' own papers. See `analysis.md`.
 
-## Open next step
-A first-hand reanalysis over the raw per-model leaderboard
-(`BabyLM-community/leaderboard-all-results` on HF) — cross-model variance per task
-and the inter-task correlation matrix — would turn the argument into a measurement.
-It is currently blocked only by the Hugging Face MCP tool needing interactive
-approval.
+## 2026 pipeline: which bugs got fixed
+Audited against the real 2026 code (`github.com/babylm-org/babylm-eval`). BLiMP
+tie/NaN inflation → **fixed**; AoA mis-fit → **fixed**; WUG tasks → **removed**;
+EWoK concept-absence → **not fixed**; reading-time → unchanged. New: GlobalPIQA
+added, Multilingual track added. Full detail + code evidence in the report.
+
+## Open next step (deferred to user)
+A first-hand reanalysis over the raw per-model **2025** leaderboard
+(`BabyLM-community/leaderboard-all-results`, gated) — cross-model variance per task
+and the inter-task correlation matrix — would replace the figure's paper-compiled
+points with exact numbers. Blocked here because the Hugging Face MCP tool's approval
+dialog does not resolve in this remote session. The user is handling the 2026
+leaderboard (`BabyLM-community/BabyLM-Leaderboard-2026`) separately.
