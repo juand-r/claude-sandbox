@@ -5,6 +5,11 @@ meaningful — reliable, discriminative, not saturated or at chance — so we kn
 to optimize for a 2026 entry.
 
 ## Files
+- `report/babylm_scores_report.pdf` — compiled LaTeX report: which 2025 eval bugs
+  the **2026** pipeline fixed (audited against `babylm-org/babylm-eval` source), plus
+  a figure of the **BLiMP vs (Super)GLUE spread** across systems and reference bands
+  for judging a score. Source: `report/babylm_scores_report.tex`; figure:
+  `figure/make_figure.py` (+ `blimp_glue_data.csv`).
 - `analysis.md` — the main write-up: what each 2025 score measures, how the
   aggregate is built, and which numbers carry signal vs. noise. **Start here.**
 - `evidence.md` — per-paper receipts (quotes + numbers) backing every claim in
