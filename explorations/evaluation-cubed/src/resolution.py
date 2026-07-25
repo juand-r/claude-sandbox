@@ -158,13 +158,15 @@ def main() -> None:
             a = mixture_scores(S_j[:, :, w], mA, rng, N_ASSIGN)
             bb = mixture_scores(S_j[:, :, b], mB, rng, N_ASSIGN)
             curves["adversarial"].append(float(np.mean(a > bb) + 0.5 * np.mean(a == bb)))
-            # random style assignment
+            # random style assignment: enumerate ALL ordered style pairs and average, so
+            # this is the exact expectation under a uniform style assignment rather than
+            # a noisy 4-draw estimate of it
             hits = []
-            for _ in range(4):
-                s1, s2 = rng.integers(0, len(STYLES), 2)
-                a = mixture_scores(S_j[:, :, s1], mA, rng, N_ASSIGN // 4)
-                bb = mixture_scores(S_j[:, :, s2], mB, rng, N_ASSIGN // 4)
-                hits.append(np.mean(a > bb) + 0.5 * np.mean(a == bb))
+            for s1 in range(len(STYLES)):
+                for s2 in range(len(STYLES)):
+                    a = mixture_scores(S_j[:, :, s1], mA, rng, N_ASSIGN // 3)
+                    bb = mixture_scores(S_j[:, :, s2], mB, rng, N_ASSIGN // 3)
+                    hits.append(np.mean(a > bb) + 0.5 * np.mean(a == bb))
             curves["random"].append(float(np.mean(hits)))
         info["curves"] = curves
 

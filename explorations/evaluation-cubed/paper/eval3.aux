@@ -1,0 +1,112 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{zheng2023judging,lambert2024rewardbench,tan2025judgebench}
+\citation{norman2026reliability}
+\citation{rao2026agreement}
+\citation{weng2026policy}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{balli2026oracle}
+\@writefile{toc}{\contentsline {paragraph}{The obstacle, and how we get around it.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What we found, including what we expected and did not find.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Setup and theory}{2}{section.2}\protected@file@percent }
+\newlabel{sec:theory}{{2}{2}{Setup and theory}{section.2}{}}
+\newlabel{prop:decomp}{{1}{2}{Only differential bias can corrupt a ranking}{theorem.1}{}}
+\citation{norman2026reliability}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Pooled meta-evaluation cannot determine ranking validity}{3}{subsection.2.1}\protected@file@percent }
+\newlabel{thm:pooled}{{3}{3}{Pooling destroys the relevant information}{theorem.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Resolution limits and a label-free certificate}{3}{subsection.2.2}\protected@file@percent }
+\newlabel{thm:cert}{{5}{3}{Perturbation certificate}{theorem.5}{}}
+\citation{balli2026oracle}
+\citation{balli2026oracle}
+\@writefile{toc}{\contentsline {paragraph}{Scope, stated plainly.}{4}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}The Eval\textsuperscript  {3} benchmark}{4}{section.3}\protected@file@percent }
+\newlabel{sec:benchmark}{{3}{4}{The Eval\textsuperscript {3} benchmark}{section.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Items.}{4}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Systems.}{4}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Continuous quality gaps at zero additional cost.}{4}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Judges.}{4}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Stimulus integrity, and a fault it caught}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:integrity}{{3.1}{4}{Stimulus integrity, and a fault it caught}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Judges are not bad at ranking; they have resolution limits}{4}{section.4}\protected@file@percent }
+\newlabel{sec:limits}{{4}{4}{Judges are not bad at ranking; they have resolution limits}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Observation 1: at large gaps, ranking is essentially solved.}{4}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Two-way ANOVA on each judge's system means. Because restyling preserves quality by construction, the style and interaction components are pure bias and the quality component is the only valid signal. \textbf  {Takeaway:} at the coarse quality gaps of the original grid, valid signal dominates for every judge---which is why ranking looks solved there, and why the interesting question is what happens as the gap shrinks.}}{5}{figure.1}\protected@file@percent }
+\newlabel{fig:decomp}{{1}{5}{Two-way ANOVA on each judge's system means. Because restyling preserves quality by construction, the style and interaction components are pure bias and the quality component is the only valid signal. \textbf {Takeaway:} at the coarse quality gaps of the original grid, valid signal dominates for every judge---which is why ranking looks solved there, and why the interesting question is what happens as the gap shrinks}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Probability of correctly ordering two systems as a function of their true quality gap (log axis), for five representative judges ordered by resolution limit. Black: both systems rendered in the same style. Teal: styles assigned independently at random. Orange: the worse system wears the judge's preferred style. Dashed grey marks the measured resolution limit. \textbf  {Takeaway:} the adversarial curve is a step, and its location---not the judge's average accuracy---is what determines whether a leaderboard gap means anything.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:curves}{{2}{5}{Probability of correctly ordering two systems as a function of their true quality gap (log axis), for five representative judges ordered by resolution limit. Black: both systems rendered in the same style. Teal: styles assigned independently at random. Orange: the worse system wears the judge's preferred style. Dashed grey marks the measured resolution limit. \textbf {Takeaway:} the adversarial curve is a step, and its location---not the judge's average accuracy---is what determines whether a leaderboard gap means anything}{figure.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Observation 2: the picture inverts at small gaps.}{5}{section*.10}\protected@file@percent }
+\citation{norman2026reliability}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {(a)} Measured resolution limit for all 28 judge configurations, coloured by model family. \textbf  {(b)} The same limits against pooled meta-evaluation accuracy. \textbf  {Takeaway:} the quantity that decides whether a leaderboard gap is meaningful varies by $60\times $ across judges, and the accuracy scale compresses that into $22$ points.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:limits}{{3}{6}{\textbf {(a)} Measured resolution limit for all 28 judge configurations, coloured by model family. \textbf {(b)} The same limits against pooled meta-evaluation accuracy. \textbf {Takeaway:} the quantity that decides whether a leaderboard gap is meaningful varies by $60\times $ across judges, and the accuracy scale compresses that into $22$ points}{figure.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Observation 3: limits vary by $60\times $; accuracy varies by $22$ points.}{6}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Observation 4: verbosity preference is the norm, and it reverses at the frontier.}{6}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}What the meta-benchmark can and cannot tell you}{6}{section.5}\protected@file@percent }
+\newlabel{sec:composition}{{5}{6}{What the meta-benchmark can and cannot tell you}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Predicting a judge's resolution limit. Residual standard deviation is in units of true quality (fraction of an answer's factual content); lower is better. Gold-label predictors require an annotated meta-benchmark; $\delta _{\mathrm  {style}}$ requires none.}}{7}{table.1}\protected@file@percent }
+\newlabel{tab:calib}{{1}{7}{Predicting a judge's resolution limit. Residual standard deviation is in units of true quality (fraction of an answer's factual content); lower is better. Gold-label predictors require an annotated meta-benchmark; $\dstyle $ requires none}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Recovering the resolution limit. \textbf  {(a)} The label-free predictor $\delta _{\mathrm  {style}}$; dotted line is $y=x$. \textbf  {(b)} Gold-label accuracy on a clear-cut, style-matched meta-benchmark. \textbf  {Takeaway:} both are informative, but only the label-free predictor is calibrated well enough to convert into a decision about a specific leaderboard gap.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:calibration}{{4}{7}{Recovering the resolution limit. \textbf {(a)} The label-free predictor $\dstyle $; dotted line is $y=x$. \textbf {(b)} Gold-label accuracy on a clear-cut, style-matched meta-benchmark. \textbf {Takeaway:} both are informative, but only the label-free predictor is calibrated well enough to convert into a decision about a specific leaderboard gap}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}The certificate in the leaderboard regime}{7}{section.6}\protected@file@percent }
+\newlabel{sec:certificate}{{6}{7}{The certificate in the leaderboard regime}{section.6}{}}
+\citation{zheng2023judging}
+\citation{lambert2024rewardbench,tan2025judgebench,zeng2024llmbar}
+\citation{gu2024survey}
+\citation{bavaresco2024llms}
+\citation{norman2026reliability}
+\citation{rao2026agreement}
+\citation{pooled2026leaderboards}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Certificate performance, averaged over 28 judge configurations, $4{,}000$ pairs each.}}{8}{table.2}\protected@file@percent }
+\newlabel{tab:cert}{{2}{8}{Certificate performance, averaged over 28 judge configurations, $4{,}000$ pairs each}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The certificate in the leaderboard regime (gaps $\le 16.7\%$ of factual content, independent styles). \textbf  {(a)} Judges sorted by raw accuracy. \textbf  {(b)} Coverage against accuracy. \textbf  {Takeaway:} certified orderings are reliable across the whole judge pool, the pairs the certificate declines are exactly the unreliable ones, and weak judges correctly certify almost nothing.}}{8}{figure.5}\protected@file@percent }
+\newlabel{fig:cert}{{5}{8}{The certificate in the leaderboard regime (gaps $\le 16.7\%$ of factual content, independent styles). \textbf {(a)} Judges sorted by raw accuracy. \textbf {(b)} Coverage against accuracy. \textbf {Takeaway:} certified orderings are reliable across the whole judge pool, the pairs the certificate declines are exactly the unreliable ones, and weak judges correctly certify almost nothing}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Where the regress terminates}{8}{section.7}\protected@file@percent }
+\newlabel{sec:regress}{{7}{8}{Where the regress terminates}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related work}{8}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Meta-evaluation of judges.}{8}{section*.13}\protected@file@percent }
+\citation{feuer2026biasbounded}
+\citation{weng2026policy}
+\citation{judgeharness2026,perteval2024,singlechar2025}
+\citation{constructvalidity2025}
+\citation{toolcallingaudit2026}
+\citation{reiter2018structured,chaganty2018price}
+\citation{jacobs2021measurement}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{bavaresco2024llms}{{1}{2024}{{bav}}{{}}}
+\@writefile{toc}{\contentsline {paragraph}{Bounding judge bias.}{9}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Benchmark validity.}{9}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Limitations}{9}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion}{9}{section.10}\protected@file@percent }
+\bibcite{gu2024survey}{{2}{2024}{{gu2}}{{}}}
+\bibcite{perteval2024}{{3}{2024}{{per}}{{}}}
+\bibcite{constructvalidity2025}{{4}{2025}{{con}}{{}}}
+\bibcite{singlechar2025}{{5}{2025}{{sin}}{{}}}
+\bibcite{judgeharness2026}{{6}{2026}{{jud}}{{}}}
+\bibcite{pooled2026leaderboards}{{7}{2026}{{poo}}{{}}}
+\bibcite{toolcallingaudit2026}{{8}{2026}{{too}}{{}}}
+\bibcite{balli2026oracle}{{9}{2026}{{Ball{\i }}}{{}}}
+\bibcite{chaganty2018price}{{10}{2018}{{Chaganty et~al.}}{{Chaganty, Mussmann, and Liang}}}
+\bibcite{feuer2026biasbounded}{{11}{2026}{{Feuer et~al.}}{{Feuer, Rosenblatt, and Elachqar}}}
+\bibcite{jacobs2021measurement}{{12}{2021}{{Jacobs and Wallach}}{{}}}
+\bibcite{lambert2024rewardbench}{{13}{2024}{{Lambert et~al.}}{{Lambert, Pyatkin, Morrison, Miranda, Lin, Chandu, Dziri, Kumar, Zick, Choi, Smith, and Hajishirzi}}}
+\bibcite{norman2026reliability}{{14}{2026}{{Norman et~al.}}{{Norman, Rivera, and Hughes}}}
+\bibcite{rao2026agreement}{{15}{2026}{{Rao and Callison-Burch}}{{}}}
+\bibcite{reiter2018structured}{{16}{2018}{{Reiter}}{{}}}
+\bibcite{tan2025judgebench}{{17}{2025}{{Tan et~al.}}{{Tan, Zhuang, Montgomery, Tang, Cuadron, Wang, Popa, and Stoica}}}
+\bibcite{weng2026policy}{{18}{2026}{{Weng et~al.}}{{Weng, Feng, and Xie}}}
+\bibcite{zeng2024llmbar}{{19}{2024}{{Zeng et~al.}}{{Zeng, Yu, Gao, Meng, Goyal, and Chen}}}
+\bibcite{zheng2023judging}{{20}{2023}{{Zheng et~al.}}{{Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez, and Stoica}}}
+\citation{balli2026oracle}
+\citation{balli2026oracle}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Theorem~\ref {thm:pooled}}{11}{appendix.A}\protected@file@percent }
+\newlabel{app:proofs}{{A}{11}{Proof of Theorem~\ref {thm:pooled}}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Stimulus-integrity detail}{11}{appendix.B}\protected@file@percent }
+\newlabel{app:integrity}{{B}{11}{Stimulus-integrity detail}{appendix.B}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Stimulus-integrity checks. ``Verbatim copies'' counts answers that normalise to the joined claim list, i.e.\ that were not rewritten at all.}}{11}{table.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Restricted transformation family}{12}{appendix.C}\protected@file@percent }
+\newlabel{app:restricted}{{C}{12}{Restricted transformation family}{appendix.C}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Restricted family $\mathcal  {T}'$ versus the full family $\mathcal  {T}$.}}{12}{table.4}\protected@file@percent }
+\gdef \@abspage@last{12}

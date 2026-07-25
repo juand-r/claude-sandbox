@@ -1,20 +1,25 @@
 """
-Stage 7: figures. Every figure has one stated takeaway (see the caption in the paper).
+Stage 7: figures. Each figure makes exactly one point, stated in its caption.
 
-Style: no seaborn, no gridlines fighting the data, colourblind-safe palette, and the
-same judge ordering everywhere so the eye can track a judge across panels.
+F1  resolution limits span ~60x across judges, and meta-evaluation accuracy compresses
+    that range into ~20 accuracy points
+F2  fidelity as a function of the true quality gap, under matched / random / adversarial
+    style assignment -- the shape that defines a resolution limit
+F3  calibration: the label-free predictor recovers the limit; gold-label accuracy does not
+F4  the certificate in the leaderboard regime
+F5  where a judge's between-system variance comes from (ANOVA decomposition)
 """
 
 from __future__ import annotations
 
 import json
 import os
-import sys
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
+from scipy import stats  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RESULTS = os.path.join(HERE, "..", "results")
@@ -22,171 +27,195 @@ FIGS = os.path.join(HERE, "..", "figures")
 
 plt.rcParams.update({
     "font.size": 8, "axes.labelsize": 8, "axes.titlesize": 8.5,
-    "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
+    "xtick.labelsize": 6.5, "ytick.labelsize": 7, "legend.fontsize": 6.8,
     "figure.dpi": 200, "savefig.dpi": 200, "savefig.bbox": "tight",
     "axes.spines.top": False, "axes.spines.right": False,
-    "font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"],
+    "font.family": "serif", "font.serif": ["DejaVu Serif"], "mathtext.fontset": "dejavuserif",
 })
 
-C = {"quality": "#0F7B6C", "style": "#D4762A", "inter": "#B0A8A0",
-     "gold": "#7C3AED", "free": "#0E7490", "oracle": "#111111", "rand": "#999999"}
+CQ, CS, CI_ = "#0F7B6C", "#D4762A", "#B0A8A0"
+CGOLD, CFREE = "#7C3AED", "#0E7490"
+FAMCOL = {"5.4": "#0F7B6C", "5-": "#0E7490", "4.1": "#D4762A", "4o": "#A03030"}
 
 
-def short(j: str) -> str:
+def fam(j):
+    m = j.split("::")[0]
+    if "5.4" in m:
+        return "5.4"
+    if m.startswith("gpt-5"):
+        return "5-"
+    if "4o" in m:
+        return "4o"
+    return "4.1"
+
+
+def short(j):
     m, p = j.split("::")
-    m = (m.replace("gpt-", "").replace("-nano", "n").replace("-mini", "m")
-          .replace("4.1", "41").replace("4o", "4o").replace("5.4", "54"))
+    m = m.replace("gpt-", "").replace("-nano", "-n").replace("-mini", "-m")
     return f"{m}/{p[:4]}"
 
 
 def load():
+    R = json.load(open(os.path.join(RESULTS, "resolution.json")))
+    C = json.load(open(os.path.join(RESULTS, "composition.json")))
+    E = json.load(open(os.path.join(RESULTS, "certificate_eval.json")))
     A = json.load(open(os.path.join(RESULTS, "analysis.json")))
-    B = json.load(open(os.path.join(RESULTS, "bootstrap.json")))
-    return A, B
+    return R, C, E, A
 
 
-def fig_decomposition(A, B, judges):
-    """F2: where a judge's between-system variance actually comes from."""
-    fig, ax = plt.subplots(figsize=(6.6, 2.5))
+def f1_limits(R, C):
+    judges = R["judges"]
+    lim = np.array([R["per_judge"][j]["observed_resolution_limit"] for j in judges])
+    acc = np.array([C["compositions"]["full"]["accuracy"][j] for j in judges])
+    o = np.argsort(lim)
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.9),
+                             gridspec_kw={"width_ratios": [1.55, 1]})
+    ax = axes[0]
+    y = np.arange(len(o))
+    ax.barh(y, lim[o] * 100, color=[FAMCOL[fam(judges[i])] for i in o], height=0.72)
+    ax.set_yticks(y)
+    ax.set_yticklabels([short(judges[i]) for i in o], fontsize=5.6)
+    ax.invert_yaxis()
+    ax.set_xlabel("resolution limit (% of factual content)")
+    ax.set_title("(a) what quality gap a judge can actually resolve")
+    ax.text(0.97, 0.06, f"{lim.max()/lim.min():.0f}$\\times$ spread", transform=ax.transAxes,
+            ha="right", fontsize=8, color="#444")
+
+    ax = axes[1]
+    ax.scatter(acc * 100, lim * 100, s=24,
+               color=[FAMCOL[fam(j)] for j in judges], zorder=3)
+    ax.set_xlabel("meta-evaluation accuracy (%)")
+    ax.set_ylabel("resolution limit (% of factual content)")
+    ax.set_title("(b) accuracy compresses the difference")
+    ax.annotate("", xy=(acc.min() * 100, 1), xytext=(acc.max() * 100, 1),
+                arrowprops=dict(arrowstyle="<->", color="#888", lw=0.8))
+    ax.text((acc.min() + acc.max()) * 50, 2.5,
+            f"{(acc.max()-acc.min())*100:.0f} accuracy points", fontsize=6.2,
+            ha="center", color="#666")
+    fig.savefig(os.path.join(FIGS, "f1_limits.pdf"))
+    plt.close(fig)
+
+
+def f2_curves(R):
+    gaps = np.array(R["gaps"]) / 6.0
+    picks = ["gpt-5.4-mini::rubric", "gpt-4.1::direct",
+             "gpt-4.1-mini::cot", "gpt-4o-mini::direct", "gpt-4.1-nano::direct"]
+    picks = [p for p in picks if p in R["per_judge"]]
+    fig, axes = plt.subplots(1, len(picks), figsize=(6.9, 1.95), sharey=True)
+    for ax, j in zip(axes, picks):
+        c = R["per_judge"][j]["curves"]
+        ax.plot(gaps * 100, c["matched"], color="#333", lw=1.3, label="matched style")
+        ax.plot(gaps * 100, c["random"], color=CFREE, lw=1.3, ls="-.", label="random style")
+        ax.plot(gaps * 100, c["adversarial"], color=CS, lw=1.3, label="adversarial style")
+        ax.axhline(0.5, color="crimson", lw=0.6, ls=":")
+        lim = R["per_judge"][j]["observed_resolution_limit"] * 100
+        ax.axvline(lim, color="#888", lw=0.8, ls="--")
+        ax.set_xscale("log")
+        ax.set_title(short(j), fontsize=6.8)
+        ax.set_xlabel("true gap (%)", fontsize=6.8)
+        ax.set_ylim(0.15, 1.03)
+    axes[0].set_ylabel("P(correct order)")
+    axes[0].legend(frameon=False, loc="lower right", fontsize=5.6)
+    fig.savefig(os.path.join(FIGS, "f2_curves.pdf"))
+    plt.close(fig)
+
+
+def f3_calibration(R, C):
+    judges = R["judges"]
+    lim = np.array([R["per_judge"][j]["observed_resolution_limit"] for j in judges])
+    ds = np.array([R["per_judge"][j]["delta_style"] for j in judges])
+    acc = np.array([C["compositions"]["clearcut+matched"]["accuracy"][j] for j in judges])
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.7))
+
+    ax = axes[0]
+    ax.scatter(ds * 100, lim * 100, s=26, color=CFREE, zorder=3)
+    b, a = np.polyfit(ds, lim, 1)
+    xs = np.linspace(0, ds.max(), 50)
+    ax.plot(xs * 100, (a + b * xs) * 100, color="#444", lw=0.9)
+    ax.plot([0, ds.max() * 100], [0, ds.max() * 100], color="#BBB", lw=0.8, ls=":")
+    r2 = C["calibration"]["delta_style"]["r2"]
+    sd = C["calibration"]["delta_style"]["resid_sd_claims"]
+    ax.set_xlabel(r"label-free predictor $\delta_{\mathrm{style}}$ (%)")
+    ax.set_ylabel("observed resolution limit (%)")
+    ax.set_title(f"(a) label-free: $R^2$={r2:.3f}, resid {np.floor(sd*1000+0.5)/10:.1f}%")
+
+    ax = axes[1]
+    ax.scatter(acc * 100, lim * 100, s=26, color=CGOLD, zorder=3)
+    b2, a2 = np.polyfit(acc, lim, 1)
+    xs = np.linspace(acc.min(), acc.max(), 50)
+    ax.plot(xs * 100, (a2 + b2 * xs) * 100, color="#444", lw=0.9)
+    r2b = C["calibration"]["clearcut+matched"]["r2"]
+    sdb = C["calibration"]["clearcut+matched"]["resid_sd_claims"]
+    ax.set_xlabel("gold-label meta-evaluation accuracy (%)")
+    ax.set_ylabel("observed resolution limit (%)")
+    ax.set_title(f"(b) gold-label: $R^2$={r2b:.3f}, resid {np.floor(sdb*1000+0.5)/10:.1f}%")
+    fig.savefig(os.path.join(FIGS, "f3_calibration.pdf"))
+    plt.close(fig)
+
+
+def f4_certificate(E):
+    judges = E["judges"]
+    raw = np.array([E["per_judge"][j]["raw_acc"] for j in judges])
+    cov = np.array([E["per_judge"][j]["coverage"] for j in judges])
+    cer = np.array([E["per_judge"][j]["certified_acc"] for j in judges])
+    abst = np.array([E["per_judge"][j]["abstained_acc"] for j in judges])
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.7))
+
+    ax = axes[0]
+    o = np.argsort(raw)
+    x = np.arange(len(o))
+    ax.plot(x, raw[o] * 100, "o-", ms=3, lw=1, color="#888", label="trust the judge")
+    ax.plot(x, cer[o] * 100, "o-", ms=3, lw=1, color=CFREE, label="certified pairs only")
+    ax.plot(x, abst[o] * 100, "o-", ms=3, lw=1, color=CS, label="pairs it abstains on")
+    ax.set_xticks(x)
+    ax.set_xticklabels([short(judges[i]) for i in o], rotation=90, fontsize=4.8)
+    ax.set_ylabel("ranking accuracy (%)")
+    ax.set_title("(a) the certificate separates trustworthy claims")
+    ax.legend(frameon=False, loc="lower right", fontsize=6)
+
+    ax = axes[1]
+    ax.scatter(cov * 100, cer * 100, s=26, color=CFREE, zorder=3, label="certified")
+    ax.scatter(cov * 100, raw * 100, s=18, color="#BBB", zorder=2, label="raw")
+    for c, a, b in zip(cov, raw, cer):
+        ax.plot([c * 100, c * 100], [a * 100, b * 100], color="#DDD", lw=0.6, zorder=1)
+    ax.set_xlabel("coverage (% of pairs certified)")
+    ax.set_ylabel("ranking accuracy (%)")
+    ax.set_title("(b) coverage / soundness trade-off")
+    ax.legend(frameon=False, loc="lower right", fontsize=6)
+    fig.savefig(os.path.join(FIGS, "f4_certificate.pdf"))
+    plt.close(fig)
+
+
+def f5_decomposition(A):
+    judges = A["judges"]
     q = np.array([A["decomposition"][j]["ss_quality"] for j in judges])
     s = np.array([A["decomposition"][j]["ss_style"] for j in judges])
     i = np.array([A["decomposition"][j]["ss_inter"] for j in judges])
     tot = q + s + i
-    x = np.arange(len(judges))
-    ax.bar(x, q / tot, color=C["quality"], label="quality (valid signal)")
-    ax.bar(x, s / tot, bottom=q / tot, color=C["style"], label="style (pure bias)")
-    ax.bar(x, i / tot, bottom=(q + s) / tot, color=C["inter"],
-           label="quality$\\times$style (pure bias)")
+    o = np.argsort(-(q / tot))
+    fig, ax = plt.subplots(figsize=(6.9, 2.3))
+    x = np.arange(len(o))
+    ax.bar(x, (q / tot)[o], color=CQ, label="quality (valid signal)")
+    ax.bar(x, (s / tot)[o], bottom=(q / tot)[o], color=CS, label="style (pure bias)")
+    ax.bar(x, (i / tot)[o], bottom=((q + s) / tot)[o], color=CI_,
+           label=r"quality$\times$style (pure bias)")
     ax.set_xticks(x)
-    ax.set_xticklabels([short(j) for j in judges], rotation=60, ha="right")
-    ax.set_ylabel("share of between-system variance")
+    ax.set_xticklabels([short(judges[k]) for k in o], rotation=90, fontsize=5)
+    ax.set_ylabel("share of between-system\nvariance")
     ax.set_ylim(0, 1)
-    ax.axhline(0.5, color="k", lw=0.5, ls=":")
-    ax.legend(ncol=3, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.28))
-    fig.savefig(os.path.join(FIGS, "f2_decomposition.pdf"))
-    plt.close(fig)
-
-
-def fig_gap(A, judges):
-    """F1: meta-benchmark accuracy against realised ranking fidelity."""
-    fig, axes = plt.subplots(1, 2, figsize=(6.6, 2.6))
-    fid = {j: np.array(A["population_fidelity"][j]) for j in judges}
-    pf = A["protocol_scores_full_grid"]
-    x = np.array([pf[j]["P1_pair_acc"] for j in judges])
-
-    ax = axes[0]
-    y = np.array([fid[j].mean() for j in judges])
-    lo = np.array([fid[j].min() for j in judges])
-    hi = np.array([fid[j].max() for j in judges])
-    ax.vlines(x, lo, hi, color="#BBBBBB", lw=1.2, zorder=1)
-    ax.scatter(x, y, s=22, color=C["gold"], zorder=2)
-    ax.axhline(0.5, color="k", lw=0.6, ls="--")
-    ax.set_xlabel("meta-evaluation accuracy $P_1$ (pooled, gold labels)")
-    ax.set_ylabel("system ranking accuracy")
-    ax.set_title("(a) accuracy vs. fidelity\n(bars = range over 243 populations)")
-
-    ax = axes[1]
-    e2 = A["E2"]
-    names = ["P1_pair_acc", "P2_item_rho", "P3_dev_sra",
-             "P4a_style_spread", "P4c_sep_over_bias", "P4d_monotonicity"]
-    lab = ["$P_1$ pair acc", "$P_2$ item $\\rho$", "$P_3$ dev SRA",
-           "$P_4^a$ style spread", "$P_4^c$ sep/bias", "$P_4^d$ monotonicity"]
-    xx = np.arange(len(names))
-    ind = [e2[n]["rho_in_distribution"] for n in names]
-    tra = [e2[n]["rho_transfer"] for n in names]
-    cols = [C["gold"]] * 3 + [C["free"]] * 3
-    ax.bar(xx - 0.2, ind, 0.38, color=cols, alpha=0.45, label="same population")
-    ax.bar(xx + 0.2, tra, 0.38, color=cols, label="transfer to a new population")
-    ax.axhline(0, color="k", lw=0.6)
-    ax.set_xticks(xx)
-    ax.set_xticklabels(lab, rotation=45, ha="right")
-    ax.set_ylabel(r"$\rho$ with realised fidelity")
-    ax.set_title("(b) does the protocol predict fidelity?")
-    ax.legend(frameon=False, loc="lower left")
-    fig.savefig(os.path.join(FIGS, "f1_gap.pdf"))
-    plt.close(fig)
-
-
-def fig_populations(A, judges):
-    """F3: a judge's fidelity is not a number, it is a range."""
-    fig, ax = plt.subplots(figsize=(6.6, 2.7))
-    data = [np.array(A["population_fidelity"][j]) for j in judges]
-    order = np.argsort([d.mean() for d in data])[::-1]
-    data = [data[i] for i in order]
-    js = [judges[i] for i in order]
-    parts = ax.violinplot(data, showextrema=False, widths=0.85)
-    for pc in parts["bodies"]:
-        pc.set_facecolor(C["free"])
-        pc.set_alpha(0.55)
-        pc.set_edgecolor("none")
-    for i, d in enumerate(data):
-        ax.plot([i + 1], [d.mean()], marker="o", ms=3, color="k", zorder=3)
-    ax.axhline(0.5, color="crimson", lw=0.8, ls="--")
-    ax.text(len(data) + 0.4, 0.5, "chance", color="crimson", va="center", fontsize=6.5)
-    ax.set_xticks(np.arange(1, len(js) + 1))
-    ax.set_xticklabels([short(j) for j in js], rotation=60, ha="right")
-    ax.set_ylabel("system ranking accuracy")
-    ax.set_title("fidelity across the 243 populations with identical true ranking")
-    fig.savefig(os.path.join(FIGS, "f3_populations.pdf"))
-    plt.close(fig)
-
-
-def fig_regret(A):
-    """F4: the level-3 metric. Which protocol picks a judge that actually ranks well?"""
-    e4 = A["E4"]
-    keys = [k for k in e4 if k not in ("ORACLE", "random judge")]
-    gold_dev = [k for k in keys if "@dev" in k]
-    gold_tgt = [k for k in keys if "label oracle" in k]
-    free = [k for k in keys if "label-free" in k]
-    order = gold_dev + gold_tgt + free
-    vals = [e4[k]["mean_regret"] for k in order]
-    cols = ([C["gold"]] * len(gold_dev) + ["#B39DDB"] * len(gold_tgt)
-            + [C["free"]] * len(free))
-    fig, ax = plt.subplots(figsize=(6.6, 2.6))
-    y = np.arange(len(order))
-    ax.barh(y, vals, color=cols)
-    ax.set_yticks(y)
-    ax.set_yticklabels([k.replace("_", " ") for k in order], fontsize=6.5)
-    ax.invert_yaxis()
-    ax.axvline(e4["random judge"]["mean_regret"], color=C["rand"], ls="--", lw=1)
-    ax.text(e4["random judge"]["mean_regret"], -0.8, " random judge",
-            color=C["rand"], fontsize=6.5, va="bottom")
-    ax.set_xlabel("mean judge-selection regret on the target population (lower is better)")
-    for yi, v in zip(y, vals):
-        ax.text(v + 0.002, yi, f"{v:.3f}", va="center", fontsize=6.5)
-    fig.savefig(os.path.join(FIGS, "f4_regret.pdf"))
-    plt.close(fig)
-
-
-def fig_certificate(A, judges):
-    """F5: the certificate trades coverage for soundness, and the soundness holds."""
-    e5 = A["E5"]
-    fig, ax = plt.subplots(figsize=(3.3, 2.6))
-    cov = np.array([e5[j]["coverage"] for j in judges])
-    cac = np.array([e5[j]["certified_acc"] for j in judges])
-    raw = np.array([e5[j]["uncert_acc"] for j in judges])
-    ax.scatter(cov, raw, s=20, color="#BBBBBB", label="all pairs (uncertified)")
-    ax.scatter(cov, cac, s=22, color=C["free"], label="certified pairs only")
-    for c, a, b in zip(cov, raw, cac):
-        ax.plot([c, c], [a, b], color="#DDDDDD", lw=0.6, zorder=0)
-    ax.axhline(1.0, color="k", lw=0.5, ls=":")
-    ax.set_xlabel("coverage (fraction of pairs certified)")
-    ax.set_ylabel("ranking accuracy")
-    ax.legend(frameon=False, loc="lower right", fontsize=6.5)
-    fig.savefig(os.path.join(FIGS, "f5_certificate.pdf"))
+    ax.legend(ncol=3, frameon=False, loc="lower left", fontsize=6.2)
+    fig.savefig(os.path.join(FIGS, "f5_decomposition.pdf"))
     plt.close(fig)
 
 
 def main():
     os.makedirs(FIGS, exist_ok=True)
-    A, B = load()
-    judges = A["judges"]
-    fig_decomposition(A, B, judges)
-    fig_gap(A, judges)
-    fig_populations(A, judges)
-    fig_regret(A)
-    fig_certificate(A, judges)
-    print("wrote figures to", FIGS)
+    R, C, E, A = load()
+    f1_limits(R, C)
+    f2_curves(R)
+    f3_calibration(R, C)
+    f4_certificate(E)
+    f5_decomposition(A)
     for f in sorted(os.listdir(FIGS)):
         print("  ", f)
 

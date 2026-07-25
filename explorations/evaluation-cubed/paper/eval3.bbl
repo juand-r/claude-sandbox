@@ -1,0 +1,123 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[bav(2024)]{bavaresco2024llms}
+{LLM}s instead of human judges? a large scale empirical study across 20 {NLP}
+  evaluation tasks.
+\newblock \emph{arXiv preprint arXiv:2406.18403}, 2024.
+
+\bibitem[gu2(2024)]{gu2024survey}
+From generation to judgment: Opportunities and challenges of {LLM}-as-a-judge.
+\newblock \emph{arXiv preprint arXiv:2411.16594}, 2024.
+
+\bibitem[per(2024)]{perteval2024}
+{PertEval}: Unveiling real knowledge capacity of {LLM}s with
+  knowledge-invariant perturbations.
+\newblock \emph{arXiv preprint arXiv:2405.19740}, 2024.
+
+\bibitem[con(2025)]{constructvalidity2025}
+Measuring what matters: Construct validity in large language model benchmarks.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS),
+  Datasets and Benchmarks Track}, 2025.
+
+\bibitem[sin(2025)]{singlechar2025}
+A single character can make or break your {LLM} evals.
+\newblock \emph{arXiv preprint arXiv:2510.05152}, 2025.
+
+\bibitem[jud(2026)]{judgeharness2026}
+Judge reliability harness: Stress testing the reliability of {LLM} judges.
+\newblock \emph{arXiv preprint arXiv:2603.05399}, 2026.
+
+\bibitem[poo(2026)]{pooled2026leaderboards}
+Pooled leaderboards hide system-specific winners: A reporting-protocol audit of
+  offline root-cause analysis benchmarks.
+\newblock \emph{arXiv preprint arXiv:2606.29159}, 2026.
+
+\bibitem[too(2026)]{toolcallingaudit2026}
+Benchmarking the benchmarks: A validity audit of tool-calling evaluation.
+\newblock \emph{arXiv preprint arXiv:2607.02577}, 2026.
+
+\bibitem[Ball{\i}(2026)]{balli2026oracle}
+Serkan Ball{\i}.
+\newblock The test oracle problem in synthetic {LLM}-as-judge corpora:
+  Disappearance, distortion and a validation protocol.
+\newblock \emph{arXiv preprint arXiv:2607.13707}, 2026.
+
+\bibitem[Chaganty et~al.(2018)Chaganty, Mussmann, and Liang]{chaganty2018price}
+Arun~Tejasvi Chaganty, Stephen Mussmann, and Percy Liang.
+\newblock The price of debiasing automatic metrics in natural language
+  evaluation.
+\newblock \emph{Proceedings of the Association for Computational Linguistics
+  (ACL)}, 2018.
+
+\bibitem[Feuer et~al.(2026)Feuer, Rosenblatt, and
+  Elachqar]{feuer2026biasbounded}
+Benjamin Feuer, Lucas Rosenblatt, and Oussama Elachqar.
+\newblock Towards provably unbiased {LLM} judges via bias-bounded evaluation.
+\newblock \emph{arXiv preprint arXiv:2603.05485}, 2026.
+
+\bibitem[Jacobs and Wallach(2021)]{jacobs2021measurement}
+Abigail~Z. Jacobs and Hanna Wallach.
+\newblock Measurement and fairness.
+\newblock \emph{Proceedings of the ACM Conference on Fairness, Accountability,
+  and Transparency (FAccT)}, 2021.
+
+\bibitem[Lambert et~al.(2024)Lambert, Pyatkin, Morrison, Miranda, Lin, Chandu,
+  Dziri, Kumar, Zick, Choi, Smith, and Hajishirzi]{lambert2024rewardbench}
+Nathan Lambert, Valentina Pyatkin, Jacob Morrison, LJ~Miranda, Bill~Yuchen Lin,
+  Khyathi Chandu, Nouha Dziri, Sachin Kumar, Tom Zick, Yejin Choi, Noah~A.
+  Smith, and Hannaneh Hajishirzi.
+\newblock {RewardBench}: Evaluating reward models for language modeling.
+\newblock \emph{arXiv preprint arXiv:2403.13787}, 2024.
+
+\bibitem[Norman et~al.(2026)Norman, Rivera, and Hughes]{norman2026reliability}
+Justin~D. Norman, Michael~U. Rivera, and D.~Alex Hughes.
+\newblock Reliability without validity: A systematic, large-scale evaluation of
+  {LLM}-as-a-judge models across agreement, consistency, and bias.
+\newblock \emph{arXiv preprint arXiv:2606.19544}, 2026.
+
+\bibitem[Rao and Callison-Burch(2026)]{rao2026agreement}
+Delip Rao and Chris Callison-Burch.
+\newblock Agreement metrics for {LLM}-as-judge evaluation: What to report and
+  why.
+\newblock \emph{arXiv preprint arXiv:2606.00093}, 2026.
+
+\bibitem[Reiter(2018)]{reiter2018structured}
+Ehud Reiter.
+\newblock A structured review of the validity of {BLEU}.
+\newblock \emph{Computational Linguistics}, 44\penalty0 (3), 2018.
+
+\bibitem[Tan et~al.(2025)Tan, Zhuang, Montgomery, Tang, Cuadron, Wang, Popa,
+  and Stoica]{tan2025judgebench}
+Sijun Tan, Siyuan Zhuang, Kyle Montgomery, William~Y. Tang, Alejandro Cuadron,
+  Chenguang Wang, Raluca~Ada Popa, and Ion Stoica.
+\newblock {JudgeBench}: A benchmark for evaluating {LLM}-based judges.
+\newblock \emph{International Conference on Learning Representations (ICLR)},
+  2025.
+
+\bibitem[Weng et~al.(2026)Weng, Feng, and Xie]{weng2026policy}
+Shihao Weng, Yang Feng, and Xiaofei Xie.
+\newblock Beyond accuracy: Policy invariance as a reliability test for {LLM}
+  safety judges.
+\newblock \emph{arXiv preprint arXiv:2605.06161}, 2026.
+
+\bibitem[Zeng et~al.(2024)Zeng, Yu, Gao, Meng, Goyal, and Chen]{zeng2024llmbar}
+Zhiyuan Zeng, Jiatong Yu, Tianyu Gao, Yu~Meng, Tanya Goyal, and Danqi Chen.
+\newblock Evaluating large language models at evaluating instruction following.
+\newblock \emph{International Conference on Learning Representations (ICLR)},
+  2024.
+
+\bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
+  Li, Xing, Zhang, Gonzalez, and Stoica]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric~P. Xing, Hao Zhang, Joseph~E.
+  Gonzalez, and Ion Stoica.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
+\newblock \emph{Advances in Neural Information Processing Systems (NeurIPS),
+  Datasets and Benchmarks Track}, 2023.
+
+\end{thebibliography}

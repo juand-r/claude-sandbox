@@ -113,8 +113,34 @@ mirror 403s from this sandbox).
 
 - [x] 6.0 Literature review (`notes/related_work.md`)
 - [x] 6.1 Item + atomic-claim dataset generation — 85 items, 510 verified claim pairs
-- [ ] 6.4b Oracle-integrity protocol per 2607.13707: mechanical no-op check, degeneration
-      rates, manual read of 15–20 items per condition
+- [x] 6.4b Oracle-integrity protocol per 2607.13707 — caught the verbatim-concatenation
+      fault in `plain`; fixed and re-rendered (`notes/stimulus_integrity_log.md`)
+- [x] 6.2–6.7 system grid, judge harness, full run (28 judge configs, 40,120 judgements)
+- [x] 6.8–6.11 analysis — **note the mid-project redesign below**
+- [x] 6.12 theory (Prop 1, Thm 1 pooling impossibility, Thm 2 certificate)
+- [x] 6.13 figures (5) ; 6.14 paper drafted + built ; 6.15 committed and pushed
+- [x] audit: all 25 numbers quoted in the paper re-derived from results (`src/audit_numbers.py`)
+
+## 8. Mid-project redesign (recorded, not hidden)
+
+The original grid compared systems at corruption levels k=0..4, i.e. quality gaps up to 4 of
+6 claims. **At that separation almost every judge ranks perfectly** (SRA = 1.000 for 18 of 24
+pointwise configs; mean 0.977). H1 and H2 as originally written were therefore untestable on
+this grid — there was no outcome variance to explain.
+
+Two further hypotheses also failed and are reported in the paper rather than dropped:
+- pooled agreement *does* predict ranking validity ordinally (rho = -0.89), contra H1;
+- restricting the meta-benchmark to clear-cut, style-matched pairs does *not* destroy that
+  signal (rho -0.79 to -0.89), contra the follow-up conjecture.
+
+The redesign: define a system by its *mean* corruption level over items, which yields
+arbitrarily fine quality gaps by re-aggregating judge scores already collected — zero extra
+API calls. This exposed the quantity that does vary: the **resolution limit**, spanning 60x
+across judges. The surviving claim is about **calibration**, not rank order, and the
+label-free estimator halves the residual error of the best gold-label predictor.
+
+Lesson for next time: choose the manipulation range by asking what regime the *decision*
+lives in, not what makes the manipulation check easy to pass.
 - [ ] 6.2 Verify claims are independently checkable (automatic + spot check)
 - [ ] 6.3 System construction: corruption + style transforms
 - [ ] 6.4 Validate construction (corruptions really are wrong; styles really are neutral)

@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: eval3.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Warning--to sort, need author or key in gu2024survey
+Warning--to sort, need author or key in bavaresco2024llms
+Warning--to sort, need author or key in pooled2026leaderboards
+Warning--to sort, need author or key in judgeharness2026
+Warning--to sort, need author or key in perteval2024
+Warning--to sort, need author or key in singlechar2025
+Warning--to sort, need author or key in constructvalidity2025
+Warning--to sort, need author or key in toolcallingaudit2026
+Warning--empty author in bavaresco2024llms
+Warning--empty author in gu2024survey
+Warning--empty author in perteval2024
+Warning--empty author in constructvalidity2025
+Warning--empty author in singlechar2025
+Warning--empty author in judgeharness2026
+Warning--empty author in pooled2026leaderboards
+Warning--empty author in toolcallingaudit2026
+You've used 20 entries,
+            2773 wiz_defined-function locations,
+            669 strings with 8455 characters,
+and the built_in function-call counts, 8024 in all, are:
+= -- 662
+> -- 545
+< -- 4
++ -- 191
+- -- 171
+* -- 669
+:= -- 1196
+add.period$ -- 52
+call.type$ -- 20
+change.case$ -- 117
+chr.to.int$ -- 20
+cite$ -- 64
+duplicate$ -- 392
+empty$ -- 644
+format.name$ -- 187
+if$ -- 1668
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 20
+newline$ -- 100
+num.names$ -- 48
+pop$ -- 270
+preamble$ -- 1
+purify$ -- 97
+quote$ -- 0
+skip$ -- 311
+stack$ -- 0
+substring$ -- 48
+swap$ -- 21
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 220
+warning$ -- 16
+while$ -- 36
+width$ -- 0
+write$ -- 232
+(There were 16 warnings)

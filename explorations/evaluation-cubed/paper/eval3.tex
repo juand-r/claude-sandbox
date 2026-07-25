@@ -1,0 +1,708 @@
+\documentclass{article}
+
+\usepackage[preprint]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\qhat}{\hat{q}}
+\newcommand{\Qhat}{\hat{Q}}
+\newcommand{\dstyle}{\delta_{\mathrm{style}}}
+\newcommand{\SRA}{\mathrm{SRA}}
+
+\title{Evaluation Cubed: LLM Judges Have Resolution Limits,\\
+and You Can Measure Them Without Labels}
+
+\author{%
+  Anonymous Author(s) \\
+  Affiliation \\
+  \texttt{email}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Language models are ranked by LLM judges, and judges are validated by meta-evaluation:
+agreement with gold labels on a pooled item set. Nobody evaluates the meta-evaluation. We
+build the third level---\emph{Eval\textsuperscript{3}}---and use it to ask whether
+meta-evaluation delivers what it is used for, namely trustworthy system rankings. Our
+benchmark sidesteps the annotation bottleneck that makes such studies impractical: answers
+are assembled from atomic factual claims, so true quality is known \emph{by construction},
+and a quality-preserving restyling gives label-free access to judge error. Across 28 judge
+configurations and 40{,}120 judgements we find, first, a negative result that reframes the
+problem: when systems differ by a large margin every judge ranks them correctly, so judges
+are not simply bad. What varies, enormously, is each judge's \emph{resolution limit}---the
+smallest true quality gap it can order reliably once systems differ in surface form. Limits
+span $60\times$, from $0.8\%$ to $50\%$ of an answer's factual content. Meta-evaluation
+accuracy tracks this quantity ordinally ($\rho=-0.89$) but compresses a $60\times$
+difference into $22$ accuracy points, and cannot be converted into a limit: its residual
+error is $6.3\%$ of factual content, larger than the entire limit of the seven best judges. We
+give a label-free estimator that can, with residual error $3.3\%$ ($R^2=0.93$), and a
+per-comparison \emph{certificate}: in the leaderboard regime it raises ranking accuracy
+from $0.860$ to $0.969$ while declining to certify the pairs on which accuracy is $0.721$,
+using no human labels. We argue this is where the evaluation regress terminates: rankings
+depend only on quality \emph{differences}, and transformations with known quality effect
+supply differences without supplying labels.
+\end{abstract}
+
+\section{Introduction}
+
+Almost every claim about which language model is better now passes through an LLM judge.
+Because judges are known to be fallible, the field validates them by \emph{meta-evaluation}:
+collect human preference labels, ask how often the judge agrees, and report that agreement
+\citep{zheng2023judging,lambert2024rewardbench,tan2025judgebench}. Meta-evaluation is itself
+an evaluation procedure, with its own design choices---which items, which systems, which
+statistic---and those choices are not themselves evaluated against anything.
+
+This is uncomfortable for a reason that is easy to state and hard to dismiss. Meta-evaluation
+scores a judge by its \emph{agreement with labels}. Practitioners use a judge to
+\emph{rank systems}. These are different quantities, and the field has recently accumulated
+evidence that the link between them is loose: judge rankings shift by up to $14$ positions
+across meta-benchmarks \citep{norman2026reliability}, exact-match agreement systematically
+overstates discrimination \citep{rao2026agreement}, and judges respond to cosmetic rewrites
+about as strongly as to meaningful ones \citep{weng2026policy}. What is missing is an account
+of \emph{what} the loose link costs a practitioner, and a way to bound that cost.
+
+We supply the missing level. Writing L1 for evaluating a system, L2 for evaluating a judge,
+this paper is L3: evaluating the meta-evaluation, judged against the decision it actually
+informs. We call it \emph{Eval\textsuperscript{3}}.
+
+\paragraph{The obstacle, and how we get around it.}
+Any L2 or L3 study needs ground truth, and collecting it by annotation is exactly what makes
+such studies rare. We avoid annotation entirely by \emph{constructing} it. Each item is a
+question plus six atomic, independently checkable factual claims. A system is defined by how
+many of those claims are replaced by minimally corrupted variants (a wrong date, a swapped
+name, a reversed relation), so its true quality is a design parameter rather than an estimate.
+Orthogonally, the same claim set is rendered in three styles. Since the content is held
+fixed, restyling is quality-preserving \emph{by construction}, and any judge score difference
+across styles is judge error---measurable with no labels at all. This design also has the
+property that its faults are mechanically catchable, which recent work argues is the decisive
+advantage of perturbation-based corpora over LLM-generated ones
+\citep{balli2026oracle}; we run their integrity protocol and report it, including a fault it
+caught (Section~\ref{sec:integrity}).
+
+\paragraph{What we found, including what we expected and did not find.}
+Our first result is negative and it reframes everything after it. At the quality gaps our
+grid was originally built to test---up to four of six claims---nearly every judge ranks
+systems perfectly (system ranking accuracy $1.000$ for $18$ of $24$ pointwise
+configurations; mean $0.977$). Judges are not broadly incompetent at ranking. We had also
+expected that pooled agreement would fail to predict ranking validity, and that restricting
+a meta-benchmark to clear-cut, stylistically matched pairs would destroy the signal. Neither
+held: agreement predicts ordinally ($\rho=-0.89$) and does so robustly across every
+composition we ablated ($\rho$ from $-0.79$ to $-0.89$). We report these because they
+constrain the claim that survives.
+
+What survives is sharper. Every judge has a \textbf{resolution limit}: a true quality gap
+below which its ranking can be reversed by nothing but surface form. These limits span
+$60\times$ across our judge pool. The same $5\%$ leaderboard gap is decisive evidence under
+one judge and meaningless under another, and current practice reports no quantity from which
+you could tell which. Meta-evaluation accuracy is ordinally informative but not
+\emph{calibrated}: mapping accuracy to a limit leaves a residual of $6.3\%$ of factual
+content, which exceeds the entire limit of the seven best judges we tested.
+
+\paragraph{Contributions.}
+\begin{enumerate}\itemsep1pt
+\item \textbf{Eval\textsuperscript{3}}, a benchmark and harness for evaluating
+meta-evaluation \emph{protocols}, built on construction-based ground truth so that no human
+annotation is required at any level (Section~\ref{sec:benchmark}).
+\item A decomposition showing that only \emph{differential} judge bias can corrupt a
+ranking, and a proof that no pooled meta-evaluation metric can determine ranking validity,
+because such metrics are invariant to a group that ranking fidelity is not invariant to
+(Section~\ref{sec:theory}).
+\item The \textbf{resolution limit} as the decision-relevant summary of a judge, its
+measurement, and the empirical finding that it varies $60\times$ while accuracy varies $22$
+points (Section~\ref{sec:limits}).
+\item A \textbf{label-free estimator} of the limit ($R^2=0.93$, residual $3.3\%$ versus
+$6.3\%$ for the best gold-label predictor) and a per-comparison \textbf{certificate} that
+raises ranking accuracy from $0.860$ to $0.969$ at $55.8\%$ coverage
+(Sections~\ref{sec:theory},~\ref{sec:certificate}).
+\item An argument that the evaluation regress \emph{terminates} at L3, because the external
+grounding L3 requires is $O(1)$ in the number of systems, judges and items
+(Section~\ref{sec:regress}).
+\end{enumerate}
+
+\section{Setup and theory}
+\label{sec:theory}
+
+Let systems be $s$ drawn from a population $\mathcal{P}$ and items $i$ from a distribution
+$\mathcal{I}$. Write $q(s,i)\in[0,1]$ for true per-item quality and $Q(s)=\mathbb{E}_i q(s,i)$
+for true system quality. A judge $J$ returns $\qhat(s,i)$, giving $\Qhat(s)=\mathbb{E}_i
+\qhat(s,i)$. Define judge error $e(s,i)=\qhat(s,i)-q(s,i)$ and its item-average
+$\bar e(s)=\mathbb{E}_i e(s,i)$, and split
+\begin{equation}
+\bar e(s) = \mu + \delta(s), \qquad \mu=\mathbb{E}_s \bar e(s), \quad \textstyle\sum_s \delta(s)=0 .
+\end{equation}
+
+\begin{proposition}[Only differential bias can corrupt a ranking]
+\label{prop:decomp}
+For any two systems, $\Qhat(s)-\Qhat(s') = \bigl(Q(s)-Q(s')\bigr) + \bigl(\delta(s)-\delta(s')\bigr)$.
+The global bias $\mu$ cancels exactly, and the idiosyncratic residual $e(s,i)-\bar e(s)$ has
+zero mean and affects only the sampling variance of $\Qhat$, not its expectation. Hence the
+judge orders the pair correctly whenever $|\delta(s)-\delta(s')| < |Q(s)-Q(s')|$.
+\end{proposition}
+
+Judge error therefore splits into three parts with entirely different consequences: $\mu$ is
+harmless for ranking, the idiosyncratic part costs statistical power but not correctness, and
+$\delta$ is the whole problem. Meta-evaluation accuracy is a monotone function of
+$\mathbb{E}|e|$, which mixes all three. This is the source of the difficulty, and it is not
+repaired by choosing a better agreement statistic.
+
+\subsection{Pooled meta-evaluation cannot determine ranking validity}
+
+\begin{definition}[Pooled metric]
+A meta-evaluation metric is \emph{pooled} if it is a function only of the multiset
+$\{(\qhat(x),q(x)) : x\in\mathcal{X}\}$ of (judge score, gold label) pairs over the
+evaluation set, discarding which system produced each $x$.
+\end{definition}
+
+Item-level agreement, pairwise preference accuracy, correlation with gold, Cohen's $\kappa$
+and Brier score are all pooled, as is essentially every number reported by current
+meta-benchmarks.
+
+\begin{theorem}[Pooling destroys the relevant information]
+\label{thm:pooled}
+Let $G$ be the group of permutations that exchange the judge scores of two cells carrying the
+same gold label, possibly belonging to different systems. Every pooled metric is
+$G$-invariant, whereas $\Qhat(\cdot)$, and hence the induced ranking, is not. Consequently, if
+$\mathcal{P}$ contains two systems sharing a gold-label value on at least $m$ items each, and
+the judge's scores are non-constant within that label class, then for every pooled metric $M$
+there exist judges $J_1,J_2$ with $M(J_1)=M(J_2)$ but $\SRA(J_1,\mathcal{P})=1$ and
+$\SRA(J_2,\mathcal{P})=0$, provided the within-label score spread scaled by $m/n$ exceeds the
+true quality gap.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Applying an element of $G$ leaves the multiset of (score, label) pairs unchanged, so $M$ is
+unchanged. Each swap that moves a high judge score from the better system's label-$c$ cells to
+the worse system's label-$c$ cells decreases $\Qhat(\text{better})-\Qhat(\text{worse})$ by a
+fixed amount. Accumulate swaps until the sign flips. Full proof in Appendix~\ref{app:proofs}.
+\end{proof}
+
+The reading is not that current meta-benchmarks are carelessly designed. It is that no amount
+of care \emph{within the pooled frame} can settle the question they are used to settle. This
+is consistent with, and explains, the empirical instability reported by
+\citet{norman2026reliability}, and it is why we look for a quantity outside that frame.
+
+\subsection{Resolution limits and a label-free certificate}
+
+\begin{definition}[Quality-preserving family]
+A transformation $T$ is \emph{quality-preserving} if $q(T(x))=q(x)$ for every output $x$.
+Given a family $\mathcal{T}$ of such transformations, the judge's \emph{style range} on
+$\mathcal{P}$ is
+$R_J = \max_{T,T'\in\mathcal{T}}\bigl|\,\mathbb{E}_s \Qhat(T\!\circ\! s) - \mathbb{E}_s \Qhat(T'\!\circ\! s)\bigr|$.
+\end{definition}
+
+$R_J$ requires no quality labels. It uses only the fact that $\mathcal{T}$ preserves quality,
+which is a property of transformations we wrote, not an annotation of any system under test.
+
+\begin{theorem}[Perturbation certificate]
+\label{thm:cert}
+Suppose the differential bias is generated by the family, i.e.\ $\max_s\delta - \min_s\delta
+\le R_J$. Then for any pair with $|\Qhat(s)-\Qhat(s')| > R_J$ the judge's ordering is correct.
+\end{theorem}
+
+\begin{proof}
+Say $\Qhat(s)>\Qhat(s')$. By Proposition~\ref{prop:decomp},
+$Q(s)-Q(s') = (\Qhat(s)-\Qhat(s')) - (\delta(s)-\delta(s')) > R_J - R_J = 0$.
+\end{proof}
+
+Dividing $R_J$ by the judge's sensitivity to real quality converts it into the units of the
+quality construct.
+
+\begin{definition}[Resolution limit]
+Let $\beta_J$ be the judge's score change per unit of true quality, estimated by applying a
+degradation of \emph{known} magnitude. The judge's resolution limit is
+$\dstyle(J) = R_J / \beta_J$: the true quality difference that the judge's preference over
+surface form can counterfeit.
+\end{definition}
+
+Both $R_J$ and $\beta_J$ are estimable without quality labels---the first from restyling, the
+second from applying a known corruption---so $\dstyle$ is label-free while being expressed in
+interpretable units ("fraction of an answer's factual content").
+
+\paragraph{Scope, stated plainly.} Theorem~\ref{thm:cert} is sound \emph{relative to}
+$\mathcal{T}$. It bounds the component of $\delta$ generated by the perturbations actually
+tested and is silent about a confound orthogonal to them. We regard this as the honest form of
+the guarantee rather than a weakness: it replaces an unfalsifiable "trust the judge" with an
+explicit, extensible list of confounds, and widening $\mathcal{T}$ strengthens the guarantee
+monotonically. Section~\ref{sec:certificate} measures the residual empirically.
+
+\section{The Eval\textsuperscript{3} benchmark}
+\label{sec:benchmark}
+
+\paragraph{Items.} We generated $96$ questions across $32$ topics, each with six atomic
+claims and a minimally corrupted variant of each claim, labelled by corruption type
+(quantity, date, entity, relation, mechanism) with at least three types per item. An
+independent verification pass checked that every true claim is true and every corrupted claim
+false; items where any of the six pairs failed were dropped, leaving \textbf{85 items and 510
+verified claim pairs}. Mean claim length is $12.7$ words.
+
+\paragraph{Systems.} A system is a cell of a balanced $5\times3$ design: quality level
+$k\in\{0,\dots,4\}$ (how many of the six claims are corrupted; nested, so quality is monotone
+in $k$ within every item) crossed with style $\in$ \{plain, polished, padded\}. Content is
+fixed by $(\text{item},k)$ and shared across styles. True quality is $(6-k)/6$ by
+construction. Rendering is done by a single fixed model so that rendering skill cannot vary
+across cells, giving $85\times5\times3=1275$ answers.
+
+\paragraph{Continuous quality gaps at zero additional cost.} A system need not corrupt every
+item equally. Defining a system by its \emph{mean} corruption level $m$---giving a fraction of
+items $k=\lfloor m\rfloor$ and the rest $\lceil m\rceil$---yields any true quality gap we like,
+and its judge score is an average of scores we have already collected. The entire continuous
+quality axis therefore costs no additional API calls.
+
+\paragraph{Judges.} Eight models spanning a wide capability range
+(\texttt{gpt-4.1-nano}, \texttt{gpt-4o-mini}, \texttt{gpt-4.1-mini}, \texttt{gpt-4.1},
+\texttt{gpt-5-nano}, \texttt{gpt-5-mini}, \texttt{gpt-5.4-nano}, \texttt{gpt-5.4-mini})
+$\times$ three pointwise protocols (\textsc{direct} 1--10, \textsc{rubric}, \textsc{cot}),
+plus a pairwise-against-anchor protocol on four models run in both presentation orders. That
+is \textbf{28 judge configurations} and \textbf{40{,}120 judgements} ($30{,}600$ pointwise,
+$9{,}520$ pairwise). Unparseable rate: $0$ pointwise, $0.75\%$ pairwise.
+
+\subsection{Stimulus integrity, and a fault it caught}
+\label{sec:integrity}
+
+\citet{balli2026oracle} show that a silently failing generation step can manufacture an
+effect that does not exist ("disappearance") or bend the magnitude and even the direction of
+one that does ("distortion"), and that aggregate statistics cannot distinguish the two. We ran
+their protocol before computing any statistic.
+
+\emph{Mechanical no-op check}: $0/510$ corrupted claims were string-identical to their true
+counterpart. \emph{Word count per condition}: flat across quality levels within each style
+(maximum deviation $2\%$), so corruption does not interact with length.
+\emph{Degeneration}: no fragments under three words anywhere.
+
+The check earned its keep on the fourth item. In the first build, \textbf{61--68 of 85
+\texttt{plain} answers were verbatim concatenations of the claim list}: the instruction
+("4--7 short sentences, no formatting") was satisfiable by emitting the six claims one per
+sentence. That condition was not a rewrite at all but the raw stimulus, and comparing a bare
+fact list against prose would have inflated our central quantity---precisely the distortion
+mode \citet{balli2026oracle} describe. We rewrote the instruction to forbid one-claim-per-sentence
+restatement and re-rendered. After the fix: $0$ verbatim copies in all $15$ conditions, and
+\texttt{plain} rose from $77$ to $99$ words, consistent with genuine synthesis. Final claim
+fidelity is $7621/7650=99.6\%$ of claim slots asserting the intended version, with verified
+true-claim counts of $6.00/5.02/4.01/3.01/1.99$ against intended $6/5/4/3/2$. All statistics
+below are computed on the corrected corpus. We also read $20$ raw items per condition by hand,
+as they recommend; details and one instructive false alarm are in Appendix~\ref{app:integrity}.
+
+\section{Judges are not bad at ranking; they have resolution limits}
+\label{sec:limits}
+
+\paragraph{Observation 1: at large gaps, ranking is essentially solved.}
+On the original grid, where systems differ by one to four of six claims, mean system ranking
+accuracy across the $15$-system grid is $0.977$, and is exactly $1.000$ for $18$ of the $24$
+pointwise configurations. A two-way ANOVA on each judge's system means decomposes its
+between-system variance into a quality component (valid signal) and style plus interaction
+components (pure bias, since restyling preserves quality by construction). The quality share
+ranges from $0.684$ to $0.998$ (Figure~\ref{fig:decomp}). \emph{Interpretation:} quality
+dominates surface form for every judge we tested, and with $85$ items the law of large numbers
+does the rest. Claims that LLM judges cannot rank systems are, in this regime, not supported.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/f5_decomposition.pdf}
+\caption{Two-way ANOVA on each judge's system means. Because restyling preserves quality by
+construction, the style and interaction components are pure bias and the quality component is
+the only valid signal. \textbf{Takeaway:} at the coarse quality gaps of the original grid,
+valid signal dominates for every judge---which is why ranking looks solved there, and why the
+interesting question is what happens as the gap shrinks.}
+\label{fig:decomp}
+\end{figure}
+
+\paragraph{Observation 2: the picture inverts at small gaps.}
+Figure~\ref{fig:curves} sweeps the true quality gap continuously and plots the probability
+that a judge orders a pair correctly, under three style regimes: both systems in the same
+style, styles assigned independently at random, and an adversarial assignment in which the
+\emph{worse} system wears the judge's preferred style. Under matched styles, accuracy climbs
+quickly. Under adversarial assignment it is pinned near zero until the true gap exceeds a
+threshold, then steps to one---exactly the step Proposition~\ref{prop:decomp} predicts, since
+a fixed style pair contributes a constant offset. The random-assignment curve, the realistic
+case for a heterogeneous leaderboard, sits between the two and approaches one only slowly.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/f2_curves.pdf}
+\caption{Probability of correctly ordering two systems as a function of their true quality
+gap (log axis), for five representative judges ordered by resolution limit. Black: both
+systems rendered in the same style. Teal: styles assigned independently at random. Orange:
+the worse system wears the judge's preferred style. Dashed grey marks the measured resolution
+limit. \textbf{Takeaway:} the adversarial curve is a step, and its location---not the judge's
+average accuracy---is what determines whether a leaderboard gap means anything.}
+\label{fig:curves}
+\end{figure}
+
+\paragraph{Observation 3: limits vary by $60\times$; accuracy varies by $22$ points.}
+We define a judge's measured resolution limit as the smallest gap beyond which adversarial
+accuracy stays above $0.95$ for all larger gaps. Figure~\ref{fig:limits}(a) reports it for all
+$28$ configurations. The best, \texttt{gpt-5.4-mini}/\textsc{rubric}, resolves $0.83\%$ of an
+answer's factual content; the worst, \texttt{gpt-4.1-nano}/\textsc{direct}, needs $50\%$. The
+median is $10.8\%$. Over the same pool, pooled meta-evaluation accuracy spans $66.1\%$ to
+$88.3\%$.
+
+\emph{Interpretation.} Accuracy and the limit are strongly related in rank order
+($\rho=-0.89$), so accuracy is not uninformative---a hypothesis we entered with and
+abandoned. But the accuracy scale is severely non-linear in the decision-relevant quantity: a
+$22$-point accuracy range corresponds to a $60\times$ range in resolving power
+(Figure~\ref{fig:limits}(b)). Reading "this judge scores $0.69$ and that one $0.88$" as a
+modest difference is a serious misreading of what those numbers imply for a leaderboard.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/f1_limits.pdf}
+\caption{\textbf{(a)} Measured resolution limit for all 28 judge configurations, coloured by
+model family. \textbf{(b)} The same limits against pooled meta-evaluation accuracy.
+\textbf{Takeaway:} the quantity that decides whether a leaderboard gap is meaningful varies by
+$60\times$ across judges, and the accuracy scale compresses that into $22$ points.}
+\label{fig:limits}
+\end{figure}
+
+\paragraph{Observation 4: verbosity preference is the norm, and it reverses at the frontier.}
+Of $28$ configurations, $18$ score the \texttt{padded} style highest, $7$ \texttt{plain} and
+$3$ \texttt{polished}. The exceptions are concentrated in the newest family: the four
+\texttt{gpt-5.4} pointwise configurations prefer \texttt{plain} in three of four cases.
+Protocol matters as much as model: within \texttt{gpt-5.4-mini}, the limit is $0.83\%$ under
+\textsc{rubric}, $2.5\%$ under \textsc{direct}, $5.0\%$ under \textsc{cot} and $10.8\%$ under
+pairwise. \emph{Interpretation, offered cautiously:} our pairwise arm shows \emph{larger}
+style sensitivity than pointwise scoring for the same models, which sits awkwardly beside
+\citet{norman2026reliability}'s finding that verbosity bias is small ($<0.011$) under a
+pairwise rubric. Our pairwise score is a win rate against a fixed anchor, a different
+estimator on a different scale, so we do not treat this as a contradiction; we flag it as a
+place where protocol-level differences deserve direct study.
+
+\section{What the meta-benchmark can and cannot tell you}
+\label{sec:composition}
+
+We expected the informativeness of pooled agreement to depend on how the meta-benchmark is
+composed, and specifically that restricting it to clear-cut pairs---the standard design goal,
+since ambiguous pairs are unreliable to annotate---would destroy the signal. \textbf{It does
+not.} We recomputed accuracy under five compositions and correlated each with the resolution
+limit: \emph{full} $\rho=-0.89$, \emph{clear-cut only} ($|\Delta k|\ge3$) $\rho=-0.80$,
+\emph{style-matched pairs only} $\rho=-0.87$, \emph{both restrictions} $\rho=-0.79$,
+\emph{near-ties only} ($|\Delta k|=1$) $\rho=-0.89$. The ordinal signal is robust.
+
+The failure is not ordinal but \emph{metric}. Table~\ref{tab:calib} regresses the resolution
+limit on each predictor and reports the residual spread in the units that matter.
+
+\begin{table}[t]
+\caption{Predicting a judge's resolution limit. Residual standard deviation is in units of
+true quality (fraction of an answer's factual content); lower is better. Gold-label
+predictors require an annotated meta-benchmark; $\dstyle$ requires none.}
+\label{tab:calib}
+\centering
+\begin{tabular}{llcc}
+\toprule
+Predictor & Labels needed & $R^2$ & Residual s.d. (\% of content) \\
+\midrule
+Accuracy, full composition            & gold & $0.723$ & $6.3$ \\
+Accuracy, clear-cut pairs             & gold & $0.699$ & $6.6$ \\
+Accuracy, style-matched pairs         & gold & $0.684$ & $6.7$ \\
+Accuracy, clear-cut $+$ matched       & gold & $0.667$ & $6.9$ \\
+Accuracy, near-ties only              & gold & $0.698$ & $6.6$ \\
+\midrule
+$\dstyle$ (ours)                      & \textbf{none} & $\mathbf{0.927}$ & $\mathbf{3.3}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Interpretation.} A residual of $6.3\%$ of factual content is not a small error. It
+exceeds the entire resolution limit of the six best judges in our pool. So a practitioner who
+knows a judge's meta-benchmark accuracy still cannot answer the question they need answered:
+\emph{is my observed $5\%$ leaderboard gap real?} The label-free estimator halves that
+residual and is expressed directly in the units of the question
+(Figure~\ref{fig:calibration}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/f3_calibration.pdf}
+\caption{Recovering the resolution limit. \textbf{(a)} The label-free predictor $\dstyle$;
+dotted line is $y=x$. \textbf{(b)} Gold-label accuracy on a clear-cut, style-matched
+meta-benchmark. \textbf{Takeaway:} both are informative, but only the label-free predictor is
+calibrated well enough to convert into a decision about a specific leaderboard gap.}
+\label{fig:calibration}
+\end{figure}
+
+\section{The certificate in the leaderboard regime}
+\label{sec:certificate}
+
+The regime that matters is the one leaderboards live in: systems separated by small margins,
+each rendered in whatever style it happens to produce. We drew $4{,}000$ random system pairs
+per judge with true quality gaps uniform in $(0.8\%,16.7\%]$ of factual content and styles
+drawn independently, then applied Theorem~\ref{thm:cert}: certify the ordering iff
+$|\Qhat(s)-\Qhat(s')|>R_J$, with $R_J$ measured with no labels.
+
+\begin{table}[t]
+\caption{Certificate performance, averaged over 28 judge configurations, $4{,}000$ pairs each.}
+\label{tab:cert}
+\centering
+\begin{tabular}{lcc}
+\toprule
+& Mean & Worst judge \\
+\midrule
+Ranking accuracy if you simply trust the judge & $0.860$ & $0.687$ \\
+Coverage (fraction of pairs certified)         & $0.558$ & --- \\
+Ranking accuracy on \emph{certified} pairs     & $\mathbf{0.969}$ & $0.834$ \\
+Ranking accuracy on pairs it \emph{declines}   & $0.721$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Observation.} The certificate separates the trustworthy claims from the rest: accuracy
+is $0.969$ on the pairs it certifies and $0.721$ on the pairs it refuses, a gap of $24.8$
+points, at $55.8\%$ coverage and zero labelling cost. For the strongest judge
+(\texttt{gpt-5.4-mini}/\textsc{direct}) coverage reaches $97.2\%$ at $98.8\%$ accuracy; for the
+weakest it correctly collapses to $12.5\%$ coverage, which is the right behaviour---a judge
+that cannot resolve the gaps in question should certify almost nothing.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/f4_certificate.pdf}
+\caption{The certificate in the leaderboard regime (gaps $\le 16.7\%$ of factual content,
+independent styles). \textbf{(a)} Judges sorted by raw accuracy. \textbf{(b)} Coverage against
+accuracy. \textbf{Takeaway:} certified orderings are reliable across the whole judge pool, the
+pairs the certificate declines are exactly the unreliable ones, and weak judges correctly
+certify almost nothing.}
+\label{fig:cert}
+\end{figure}
+
+\emph{Interpretation, including the shortfall.} Theorem~\ref{thm:cert} would give $100\%$
+certified accuracy if $\delta$ were generated entirely by the style family. The observed
+$96.9\%$ therefore \emph{measures} the residual differential bias $\delta_\perp$ orthogonal to
+our three transformations. That $3.1\%$ is the price of a finite $\mathcal{T}$, and it is the
+quantity a practitioner reduces by adding transformations. We prefer reporting it to
+asserting a guarantee we have not earned.
+
+\section{Where the regress terminates}
+\label{sec:regress}
+
+The worry motivating this paper is a regress: judges need meta-evaluation, meta-evaluation
+needs meta-meta-evaluation, without ground. It terminates at L3, and Proposition~\ref{prop:decomp}
+says why. \textbf{Rankings are invariant to the level of quality; they depend only on
+differences.} Levels require external grounding. Differences do not: a transformation with a
+\emph{known} effect on quality supplies signed information about differences without ever
+naming a quality value.
+
+The precise claim is about how grounding scales. L1 needs labels for every item, $O(\text{items})$.
+L2 needs a labelled meta-benchmark, $O(\text{items})$, and by Theorem~\ref{thm:pooled} plus the
+population-dependence in Section~\ref{sec:limits} it must be re-collected when the system
+population changes. L3 needs only that the transformation family is quality-preserving---a
+fixed, one-off, reusable assumption about $|\mathcal{T}|$ transformations we authored, $O(1)$
+in systems, judges and items. A level-4 question ("is $\mathcal{T}$ really quality-preserving?")
+is a single finite check, not a demand that grows with what is being evaluated. The regress
+terminates not because we run out of patience but because the grounding requirement stops
+growing.
+
+\section{Related work}
+
+\paragraph{Meta-evaluation of judges.} LLM-as-judge and its biases were charted by
+\citet{zheng2023judging}; benchmarks followed \citep{lambert2024rewardbench,tan2025judgebench,zeng2024llmbar},
+along with surveys \citep{gu2024survey} and large cross-task studies \citep{bavaresco2024llms}.
+The closest empirical neighbour is \citet{norman2026reliability}: $21$ judges, $\sim$541k
+judgements, showing universal $\kappa$ deflation, judge rankings shifting by up to $14$
+positions across meta-benchmarks, and a consistency--bias paradox. They establish that judge
+rankings are unstable; we ask what that instability costs at the level of a system ranking,
+explain it via Theorem~\ref{thm:pooled}, and give a label-free remedy.
+\citet{rao2026agreement} show that five commonly reported agreement statistics collapse to one
+value on binary verdicts and recommend a reporting checklist; their scope is explicitly
+single-judge validation, not whether agreement predicts system ranking. Our Table~\ref{tab:calib}
+supplies that missing link and finds the relationship ordinally sound but poorly calibrated.
+\citet{pooled2026leaderboards} independently argue that pooled reporting hides
+system-specific structure.
+
+\paragraph{Bounding judge bias.} \citet{feuer2026biasbounded} propose average
+bias-boundedness, an algorithmic framework that \emph{enforces} a guarantee by modifying the
+evaluation, validated on Arena-Hard-Auto. Ours is a \emph{post-hoc certificate} on an ordering
+already produced, requiring no change to the judge; the two compose.
+\citet{weng2026policy} are the closest neighbour to our label-free diagnostic: a Policy
+Invariance Score from certified-equivalent rubric rewrites, with a reporting card and proved
+properties of the score itself. Three differences matter. Their rewrites are certified by
+three human annotators, ours are quality-preserving by construction; theirs are rubric-side,
+ours output-side; and, in their own words, they do not bound downstream ranking error, which
+is exactly the gap Theorem~\ref{thm:cert} and Section~\ref{sec:certificate} fill. Perturbation
+and metamorphic stress-testing more broadly \citep{judgeharness2026,perteval2024,singlechar2025}
+supplies the intellectual ancestry of our transformation family.
+
+\paragraph{Benchmark validity.} A systematic review of $445$ benchmark papers found only
+$16\%$ report uncertainty estimates \citep{constructvalidity2025}; we bootstrap every headline
+number over items. Validity audits of specific benchmark families \citep{toolcallingaudit2026}
+and older work on the validity of automatic metrics \citep{reiter2018structured,chaganty2018price}
+and on measurement modelling \citep{jacobs2021measurement} frame the construct question our
+declared transformation family operationalises.
+
+\section{Limitations}
+
+\textbf{One provider.} All judges and all generation come from a single model family; no
+Anthropic API key was available in our environment. Our claims concern the \emph{protocol}
+rather than any vendor, and the pool spans a wide capability range, but cross-provider
+replication is the obvious next step and we make no cross-provider claim.
+
+\textbf{A narrow quality construct.} True quality here is the fraction of six atomic factual
+claims that are correct. This is deliberate---it is the dimension along which ground truth is
+\emph{constructible}---but our results speak to ranking on factual accuracy, not to helpfulness,
+style, or safety.
+
+\textbf{Is restyling really quality-preserving?} A reader may hold that verbosity genuinely
+degrades an answer, in which case our \texttt{padded} transform is not quality-preserving and
+part of what we call bias is signal. We take this seriously and re-ran everything with the
+restricted family \{plain, polished\}, which are close in length ($99$ vs $130$ words) and
+differ essentially in formatting. The quality share of variance rises but the ordering and
+the phenomena persist (Appendix~\ref{app:restricted}). More fundamentally, the framework
+\emph{requires} declaring $\mathcal{T}$, which forces an explicit commitment to a quality
+construct rather than leaving it implicit.
+
+\textbf{The certificate is relative to $\mathcal{T}$.} Its $3.1\%$ shortfall from soundness
+measures confounds outside our three transformations. We report rather than hide this.
+
+\textbf{Constructed systems.} Our systems are built, not sampled from real deployments. The
+continuous-gap family inherits that. Extending the harness to real model populations---where
+the certificate applies unchanged, since it needs no labels---is the natural follow-up.
+
+\section{Conclusion}
+
+Meta-evaluation asks how often a judge agrees with a label. Practitioners need to know whether
+a leaderboard gap is real. We showed these come apart in a specific, measurable way: judges
+have resolution limits varying $60\times$ across a single provider's model range, agreement
+tracks those limits ordinally but compresses them into $22$ accuracy points and cannot be
+converted into one, and a label-free perturbation estimator both predicts the limit
+($R^2=0.93$) and certifies individual ranking claims ($0.860\to0.969$ accuracy at $55.8\%$
+coverage). The practical recommendation is small and concrete: alongside judge accuracy,
+report the judge's resolution limit in the units of your quality construct, and do not defend a
+leaderboard gap smaller than it.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+
+\appendix
+
+\section{Proof of Theorem~\ref{thm:pooled}}
+\label{app:proofs}
+
+Fix a population containing systems $s_1$ (the better) and $s_2$, each evaluated on $n$
+items. Suppose both have at least $m$ items carrying the same gold-label value $c$, and let
+$H_1, H_2$ be those label-$c$ cell sets, $|H_1|,|H_2|\ge m$.
+
+Let $\sigma$ be the transposition that exchanges the judge scores of one cell $x_1\in H_1$
+and one cell $x_2\in H_2$, leaving all gold labels in place. Because $q(x_1)=q(x_2)=c$, the
+multiset $\{(\qhat(x),q(x))\}$ over the whole evaluation set is unchanged by $\sigma$:
+the pair $(\qhat(x_1),c)$ and the pair $(\qhat(x_2),c)$ simply trade positions. Hence
+$M(\sigma J)=M(J)$ for every pooled metric $M$, and the group $G$ generated by all such
+transpositions leaves $M$ invariant.
+
+The system means are not invariant. Applying $\sigma$ changes
+\[
+\Qhat(s_1)-\Qhat(s_2) \;\longmapsto\; \Qhat(s_1)-\Qhat(s_2) - \tfrac{2}{n}\bigl(\qhat(x_1)-\qhat(x_2)\bigr).
+\]
+Choose $x_1$ to carry a high score and $x_2$ a low one, so each transposition strictly
+decreases the gap by $\tfrac{2}{n}\Delta$ with $\Delta>0$ the within-label score spread
+realised by that swap. Applying $t \le m$ disjoint such transpositions gives
+\[
+\Qhat(s_1)-\Qhat(s_2) \;=\; \bigl(Q(s_1)-Q(s_2)\bigr) + \bigl(\delta(s_1)-\delta(s_2)\bigr) - \tfrac{2t}{n}\bar\Delta ,
+\]
+where $\bar\Delta$ is the mean spread over the chosen swaps. Whenever
+$\tfrac{2m}{n}\bar\Delta$ exceeds the initial gap, some $t\le m$ drives the difference
+strictly negative, so the judge $J_2 = \sigma_t\cdots\sigma_1 J$ orders the pair wrongly while
+$J_1=J$ orders it correctly. Both have identical $M$. Restricting the population to
+$\{s_1,s_2\}$ gives $\SRA(J_1)=1$ and $\SRA(J_2)=0$. $\square$
+
+Two remarks. First, the construction needs the judge to be non-constant within the label
+class; a judge that assigns one value to every gold-$c$ item is unaffected, but such a judge
+also carries no information beyond the label. Second, the theorem is about what a pooled
+metric \emph{determines}, not about what is typical: it says the map from pooled metric to
+ranking fidelity is not a function, so no refinement of the metric within the pooled frame
+can make it one.
+
+\section{Stimulus-integrity detail}
+\label{app:integrity}
+
+Full protocol of \citet{balli2026oracle}, run before any statistic was computed. Round~1 is
+the initial build; round~2 is after the fix described in Section~\ref{sec:integrity}.
+
+\begin{table}[h]
+\caption{Stimulus-integrity checks. ``Verbatim copies'' counts answers that normalise to the
+joined claim list, i.e.\ that were not rewritten at all.}
+\centering\small
+\begin{tabular}{lccccc}
+\toprule
+& \multicolumn{2}{c}{mean words} & \multicolumn{2}{c}{verbatim copies / 425} & claim \\
+Condition & round 1 & round 2 & round 1 & round 2 & fidelity \\
+\midrule
+plain    & $77$  & $99$  & $325$ & $\mathbf{0}$ & $0.995$ \\
+polished & $130$ & $130$ & $0$   & $0$          & $0.998$ \\
+padded   & $286$ & $286$ & $0$   & $0$          & $0.995$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Mechanical no-op check: $0/510$ corrupted claims string-identical to their true counterpart,
+under exact and whitespace-normalised comparison. This is the cheap oracle whose absence
+\citet{balli2026oracle} identify as the structural weakness of LLM-generated-negative
+corpora; because our corruption step is a claim substitution, it costs nothing here.
+Fragments under three words: $0$ in all $15$ conditions. Rendering-level no-ops (an answer at
+$k>0$ in which the checker detects no false claim): $5/1020$ ($0.5\%$), reported rather than
+removed.
+
+We also read $20$ raw items per condition by hand. One apparent fault turned out to be our own
+misreading and is worth recording, since it illustrates why the manual pass is not optional in
+either direction. In item \texttt{it0072} the corrupted claim ``The Flyer used a
+12-horsepower gasoline engine built by the Wright brothers'' looked wrong, because $\sim$12
+horsepower is historically correct. Inspecting the pair showed the horsepower is held constant
+across both versions and the corruption is the \emph{builder} (Charlie Taylor $\to$ ``the
+Wright brothers''): a correctly constructed minimal entity substitution. From an aggregate
+view this is invisible; from the raw pair it takes ten seconds.
+
+\section{Restricted transformation family}
+\label{app:restricted}
+
+A reader may hold that verbosity genuinely degrades an answer, so that our \texttt{padded}
+transform is not quality-preserving and part of what we call bias is signal. We therefore
+repeat the analysis with $\mathcal{T}'=\{\texttt{plain},\texttt{polished}\}$, which are close
+in length ($99$ vs $130$ words) and differ essentially in formatting.
+
+\begin{table}[h]
+\caption{Restricted family $\mathcal{T}'$ versus the full family $\mathcal{T}$.}
+\centering\small
+\begin{tabular}{lcc}
+\toprule
+& $\mathcal{T}$ (3 styles) & $\mathcal{T}'$ (2 styles) \\
+\midrule
+Mean quality share of between-system variance & $0.935$ & $0.978$ \\
+Minimum quality share over judges             & $0.684$ & $0.711$ \\
+Spread of resolution limits across judges     & $60\times$ & $35\times$ \\
+$\rho(\dstyle,\ \text{limit})$ within family  & $0.936$ & $0.786$ \\
+$R^2$ predicting the limit within family      & $0.927$ & $0.876$ \\
+Residual s.d. (\% of factual content)         & $3.3$ & $2.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The phenomena survive: even with the disputed condition removed, resolution limits still span
+$35\times$ and the label-free estimator still recovers them far more precisely than any
+gold-label predictor does ($2.5\%$ residual against $\sim$$6.3\%$; Table~\ref{tab:calib}).
+
+One cross-family result is worth stating because it could be mistaken for a failure. Using the
+restricted estimator $\dstyle^{\mathcal{T}'}$ to predict the \emph{full-family} limit gives
+only $\rho=0.489$. This is the theory behaving as advertised rather than breaking:
+Theorem~\ref{thm:cert} is sound relative to the declared family, and a family that contains no
+verbosity contrast cannot bound a confound driven by verbosity. The estimator predicts exactly
+the confounds it is asked about. The practical consequence is that $\mathcal{T}$ must be
+declared, and declaring it is precisely the act of committing to a quality construct.
+
+\end{document}
