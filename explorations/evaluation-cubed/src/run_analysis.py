@@ -204,6 +204,48 @@ def main() -> None:
     out["E5_summary"] = {"coverage": float(cov), "certified_acc": float(cacc),
                          "raw_acc": float(racc)}
 
+    # ---------------------------------------------------------------- E6
+    # Robustness: restrict the transformation family to {plain, polished}. These are
+    # matched in length (99 vs 130 words) and differ essentially in formatting, so a
+    # reader who disputes that verbosity is quality-preserving can read this column
+    # instead. If the phenomena survive here, nothing hinges on the `padded` condition.
+    print("\n=== E6  restricted transformation family {plain, polished} ===")
+    RS = ["plain", "polished"]
+    rpops = [p for _, p in __import__("analysis").all_style_assignments(RS)]
+    rfid = {j: np.array([sra(sysm[j], p) for p in rpops]) for j in judges}
+    rdec = {j: anova_decomposition(sysm[j], styles=RS) for j in judges}
+    rproto = {(j, i): protocol_scores(scores[j], items, p, styles=RS)
+              for j in judges for i, p in enumerate(rpops)}
+    e6 = {"n_populations": len(rpops), "per_judge": {}}
+    print(f"{'judge':<28} {'V(3-style)':>11} {'V(2-style)':>11} {'fid mean':>9} "
+          f"{'fid min':>8} {'fid max':>8}")
+    for j in judges:
+        e6["per_judge"][j] = {
+            "validity_ratio_restricted": rdec[j]["validity_ratio"],
+            "style_range_restricted": rdec[j]["style_range"],
+            "fid_mean": float(rfid[j].mean()), "fid_min": float(rfid[j].min()),
+            "fid_max": float(rfid[j].max()),
+        }
+        print(f"{j:<28} {dec[j]['validity_ratio']:11.3f} "
+              f"{rdec[j]['validity_ratio']:11.3f} {rfid[j].mean():9.3f} "
+              f"{rfid[j].min():8.3f} {rfid[j].max():8.3f}")
+
+    rng6 = np.random.default_rng(11)
+    tr6 = [(int(a), int(b)) for a, b in rng6.integers(0, len(rpops), (3000, 2)) if a != b]
+    e6["regret"] = {}
+    for name in GOLD_PROTOCOLS + FREE_PROTOCOLS:
+        sgn = 1 if HIGHER_BETTER[name] else -1
+        use_target = name in FREE_PROTOCOLS
+        regs = []
+        for d, t in tr6:
+            src = t if use_target else d
+            j = max(judges, key=lambda jj: sgn * rproto[(jj, src)][name])
+            regs.append(max(rfid[jj][t] for jj in judges) - rfid[j][t])
+        e6["regret"][name] = float(np.mean(regs))
+        tag = "@target (label-free)" if use_target else "@dev  (realistic)"
+        print(f"  {name:<20} {tag:<22} regret={np.mean(regs):.4f}")
+    out["E6_restricted_family"] = e6
+
     with open(os.path.join(RESULTS, "analysis.json"), "w") as f:
         json.dump(out, f, indent=1)
     print(f"\nwrote {os.path.join(RESULTS, 'analysis.json')}")

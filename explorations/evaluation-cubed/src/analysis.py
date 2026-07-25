@@ -113,32 +113,39 @@ def kendall_fidelity(sys_scores: dict[str, float], population: list[str]) -> flo
 
 
 # ------------------------------------------------------------------ populations
-def homogeneous_populations() -> dict[str, list[str]]:
-    return {f"all-{st}": [f"k{k}_{st}" for k in KS] for st in STYLES}
+def homogeneous_populations(styles: list[str] | None = None) -> dict[str, list[str]]:
+    return {f"all-{st}": [f"k{k}_{st}" for k in KS] for st in (styles or STYLES)}
 
 
-def all_style_assignments() -> list[tuple[tuple[str, ...], list[str]]]:
+def all_style_assignments(styles: list[str] | None = None
+                          ) -> list[tuple[tuple[str, ...], list[str]]]:
     """The 3^5 = 243 populations that contain exactly one system per quality level.
 
     Every one of these has the SAME true ranking (k=0 > 1 > 2 > 3 > 4). They differ only
     in which quality-preserving style each level is rendered in. So any variation in a
     judge's fidelity across them is caused entirely by judge error, never by the task."""
     out = []
-    for combo in itertools.product(STYLES, repeat=len(KS)):
+    for combo in itertools.product(styles or STYLES, repeat=len(KS)):
         pop = [f"k{k}_{st}" for k, st in zip(KS, combo)]
         out.append((combo, pop))
     return out
 
 
 # ------------------------------------------------------------------ decomposition
-def anova_decomposition(sys_scores: dict[str, float]) -> dict[str, float]:
-    """Two-way ANOVA on the 15 cell means of the balanced quality x style grid.
+def anova_decomposition(sys_scores: dict[str, float],
+                        styles: list[str] | None = None) -> dict[str, float]:
+    """Two-way ANOVA on the cell means of the balanced quality x style grid.
 
     Returns sums of squares and the validity ratio
         V = SS_quality / (SS_quality + SS_style + SS_inter),
     i.e. the share of a judge's between-system variance that reflects real quality
-    differences rather than reaction to quality-preserving surface form."""
-    M = np.array([[sys_scores[f"k{k}_{st}"] for st in STYLES] for k in KS])  # 5 x 3
+    differences rather than reaction to quality-preserving surface form.
+
+    `styles` restricts the transformation family. Passing ["plain", "polished"] gives the
+    length-matched family, used to show the results do not hinge on the verbose condition
+    (whose quality-preservation a reader might reasonably dispute)."""
+    STYLES = styles or globals()["STYLES"]
+    M = np.array([[sys_scores[f"k{k}_{st}"] for st in STYLES] for k in KS])
     grand = M.mean()
     row = M.mean(axis=1)     # quality marginals
     col = M.mean(axis=0)     # style marginals
@@ -160,14 +167,18 @@ def anova_decomposition(sys_scores: dict[str, float]) -> dict[str, float]:
 
 # ------------------------------------------------------------------ L2 protocols
 def protocol_scores(scores: dict[tuple[str, str], float], items: list[str],
-                    population: list[str]) -> dict[str, float]:
+                    population: list[str],
+                    styles: list[str] | None = None) -> dict[str, float]:
     """Compute every level-2 meta-evaluation protocol's score for one judge, using only
     data from `population` (the 'development' systems) and `items`.
 
     Gold-label protocols (P1-P3) use the true quality of the dev systems.
     Label-free protocols (P4*) use only the knowledge that the style transform preserves
     quality and that increasing k degrades it -- properties of the *transformations*,
-    which require no annotation of any system's outputs."""
+    which require no annotation of any system's outputs.
+
+    `styles` restricts the perturbation family (see anova_decomposition)."""
+    STYLES = styles or globals()["STYLES"]
     pop = set(population)
 
     # ---- P1: pooled item-level pairwise agreement with gold. The standard meta-eval
