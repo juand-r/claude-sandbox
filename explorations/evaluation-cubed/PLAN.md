@@ -86,9 +86,35 @@ This is the methodological core: **construction-based ground truth**, replacing 
 3. Empirical study answering H1–H4.
 4. NeurIPS paper (`paper/`), full exposition per repo report guidelines.
 
+## 5b. Literature review — DONE, see `notes/related_work.md`
+
+Should have been step zero. Doing it late nearly cost us: three 2026 papers sit close to
+this design. Summary of what it changed:
+
+- **2606.19544 "Reliability without Validity"** already shows judge *rankings* shift across
+  meta-benchmarks. So "meta-eval is unstable" is no longer a novel claim. Our novelty must
+  be the *reason* (T1), the *downstream bound* (T2), and the *level-3 decision framing*.
+- **2605.06161 "Policy Invariance"** proposes a perturbation-based judge score, but states
+  explicitly that it does **not** bound downstream ranking error. That is our gap.
+- **2603.05485 "Bias-Bounded Evaluation"** enforces bias bounds algorithmically; ours is a
+  post-hoc per-pair certificate. Complementary, must be cited.
+- **2607.13707 "Test Oracle Problem"** endorses mechanical-perturbation corpora (our design)
+  over LLM-generated-negative corpora, but mandates a validation protocol we must adopt:
+  manual read of 15–20 items per condition, mean word count per condition, degeneration
+  rates. **Adopted as task 6.4b.**
+- **2606.19544** finds verbosity bias *small* under a pairwise rubric; our pilot finds large
+  style effects under pointwise scoring. Keep the pairwise arm and report the contrast.
+
+Venue decision: **NeurIPS 2026, Track on Evaluations and Datasets** (`eandd`), 9 content
+pages. Official `neurips_2026.sty` obtained from an arXiv e-print (the media.neurips.cc
+mirror 403s from this sandbox).
+
 ## 6. Task list
 
-- [ ] 6.1 Item + atomic-claim dataset generation
+- [x] 6.0 Literature review (`notes/related_work.md`)
+- [x] 6.1 Item + atomic-claim dataset generation — 85 items, 510 verified claim pairs
+- [ ] 6.4b Oracle-integrity protocol per 2607.13707: mechanical no-op check, degeneration
+      rates, manual read of 15–20 items per condition
 - [ ] 6.2 Verify claims are independently checkable (automatic + spot check)
 - [ ] 6.3 System construction: corruption + style transforms
 - [ ] 6.4 Validate construction (corruptions really are wrong; styles really are neutral)

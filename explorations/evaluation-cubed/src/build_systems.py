@@ -39,9 +39,16 @@ QUALITY_LEVELS = [0, 1, 2, 3, 4]
 N_CLAIMS = 6
 
 STYLES = {
+    # NB: the first version of this instruction produced near-verbatim concatenations of
+    # the statement list for 61-68 of 85 items (caught by the stimulus-integrity check of
+    # arXiv:2607.13707). A condition that is not actually rewritten would inflate the
+    # apparent style effect, so the instruction now forces genuine synthesis.
     "plain": (
-        "Write in plain, neutral prose: 4-7 short sentences, one paragraph. "
-        "No headings, no bullet points, no bold text, no opening or closing flourish."
+        "Write in plain, neutral expository prose: one paragraph, no headings, no bullet "
+        "points, no bold text, no opening or closing flourish. Do NOT simply restate the "
+        "statements one per sentence in the order given: combine related statements into "
+        "single sentences, vary the sentence structure, and join them with ordinary "
+        "connectives so that it reads as continuous explanation rather than a list."
     ),
     "polished": (
         "Write a confident, polished, well-organised answer: one short framing sentence, "

@@ -1,0 +1,1385 @@
+===== plain / k=0 / it0049 (86w, fidelity 6/6) =====
+Q: How does Diffie-Hellman key exchange let two parties establish a shared secret over an insecure channel?
+INTENDED STATEMENTS:
+  [true ] Whitfield Diffie and Martin Hellman published their key exchange protocol in 1976.
+  [true ] The classic Diffie-Hellman protocol operates in the multiplicative group modulo a prime.
+  [true ] Each party sends a public value like g^a mod p or g^b mod p.
+  [true ] Both parties derive the same shared secret value g^(ab) mod p.
+  [true ] Diffie-Hellman lets two parties agree on a secret without previously sharing one.
+  [true ] Its security depends on the hardness of the discrete logarithm problem in the chosen group.
+ANSWER:
+Whitfield Diffie and Martin Hellman published their key exchange protocol in 1976, which allows two parties to agree on a secret without previously sharing one. The classic Diffie-Hellman protocol operates in the multiplicative group modulo a prime, where each party sends a public value like g^a mod p or g^b mod p. By exchanging these public values, both parties derive the same shared secret value g^(ab) mod p. The security of this method depends on the hardness of the discrete logarithm problem in the chosen group.
+
+===== plain / k=0 / it0053 (106w, fidelity 6/6) =====
+Q: What is a Nash equilibrium, and why is the Prisoner's Dilemma important in microeconomics?
+INTENDED STATEMENTS:
+  [true ] John Nash introduced the equilibrium concept in 1950.
+  [true ] A Nash equilibrium is a strategy profile in which no player can raise payoff by changing strategy alone.
+  [true ] In the standard Prisoner's Dilemma, each player has two available actions, commonly called cooperate and defect.
+  [true ] In the one-shot Prisoner's Dilemma, mutual defection is the unique Nash equilibrium under the usual payoff ranking.
+  [true ] Mutual cooperation gives both players higher payoffs than mutual defection in the standard Prisoner's Dilemma.
+  [true ] Microeconomists use game theory to analyze strategic interaction in oligopoly models such as Cournot competition.
+ANSWER:
+John Nash introduced the equilibrium concept in 1950, defining a Nash equilibrium as a strategy profile in which no player can raise their payoff by changing strategy alone. The Prisoner's Dilemma is important in microeconomics because it illustrates strategic interaction where each player has two available actions, commonly called cooperate and defect. In the one-shot Prisoner's Dilemma, mutual defection is the unique Nash equilibrium under the usual payoff ranking, even though mutual cooperation gives both players higher payoffs than mutual defection. Microeconomists use game theory, including concepts like the Nash equilibrium and the Prisoner's Dilemma, to analyze strategic interaction in oligopoly models such as Cournot competition.
+
+===== plain / k=0 / it0005 (114w, fidelity 6/6) =====
+Q: What was apartheid in South Africa, and what were the key steps in its dismantling?
+INTENDED STATEMENTS:
+  [true ] The National Party won South Africa's general election in 1948 and began formal apartheid rule.
+  [true ] The Population Registration Act of 1950 classified South Africans into official racial categories.
+  [true ] The Group Areas Act of 1950 enforced racial residential segregation and forced removals.
+  [true ] Police killed 69 protesters at Sharpeville on 21 March 1960.
+  [true ] President F. W. de Klerk announced the unbanning of the ANC on 2 February 1990.
+  [true ] South Africa's first multiracial national election in April 1994 brought Nelson Mandela to the presidency.
+ANSWER:
+Apartheid in South Africa began when the National Party won the general election in 1948 and established formal apartheid rule, which included laws such as the Population Registration Act of 1950 that classified South Africans into official racial categories and the Group Areas Act of 1950 that enforced racial residential segregation and forced removals. The system faced significant resistance, exemplified by the killing of 69 protesters by police at Sharpeville on 21 March 1960. Key steps in dismantling apartheid included President F. W. de Klerk’s announcement on 2 February 1990 of the unbanning of the ANC, leading to South Africa’s first multiracial national election in April 1994, which brought Nelson Mandela to the presidency.
+
+===== plain / k=0 / it0033 (95w, fidelity 6/6) =====
+Q: How does the Haber-Bosch process make ammonia, and what operating conditions and catalyst make it practical on an industrial scale?
+INTENDED STATEMENTS:
+  [true ] The Haber-Bosch reaction is N2 + 3 H2 ⇌ 2 NH3.
+  [true ] Fritz Haber first demonstrated catalytic ammonia synthesis from nitrogen and hydrogen in 1909.
+  [true ] Carl Bosch brought the process to industrial scale at BASF in 1913.
+  [true ] Modern Haber-Bosch plants commonly use an iron catalyst promoted with potassium and aluminum oxides.
+  [true ] Industrial Haber-Bosch synthesis typically operates near 200 bar and about 450 °C.
+  [true ] Ammonia formation from nitrogen and hydrogen is exothermic, releasing about 92 kJ per 2 mol NH3 formed.
+ANSWER:
+The Haber-Bosch process makes ammonia by catalytically synthesizing it from nitrogen and hydrogen according to the reaction N2 + 3 H2 ⇌ 2 NH3, which is exothermic and releases about 92 kJ per 2 mol NH3 formed. Fritz Haber first demonstrated this catalytic ammonia synthesis in 1909, and Carl Bosch later brought the process to an industrial scale at BASF in 1913. To make the process practical on an industrial scale, modern Haber-Bosch plants typically operate near 200 bar and about 450 °C, using an iron catalyst that is promoted with potassium and aluminum oxides.
+
+===== plain / k=0 / it0065 (108w, fidelity 6/6) =====
+Q: Can you briefly explain what the central limit theorem says and why statisticians use it so often?
+INTENDED STATEMENTS:
+  [true ] The classical central limit theorem concerns independent, identically distributed random variables with finite mean and finite variance.
+  [true ] It says the standardized sample mean converges in distribution to the standard normal distribution as sample size increases.
+  [true ] For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times square root of n.
+  [true ] The theorem does not require the original population distribution to be normal.
+  [true ] Samples from a Cauchy distribution are a standard example where the classical central limit theorem does not apply.
+  [true ] A major use of the theorem is approximating sampling distributions for confidence intervals and hypothesis tests.
+ANSWER:
+The classical central limit theorem concerns independent, identically distributed random variables with finite mean and finite variance, and it says the standardized sample mean converges in distribution to the standard normal distribution as sample size increases. For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times the square root of n. Importantly, the theorem does not require the original population distribution to be normal, although samples from a Cauchy distribution are a standard example where the classical central limit theorem does not apply. A major use of the theorem is approximating sampling distributions for confidence intervals and hypothesis tests.
+
+===== plain / k=0 / it0062 (113w, fidelity 6/6) =====
+Q: Can you explain what the International Phonetic Alphabet is and how linguists use its symbols and charts?
+INTENDED STATEMENTS:
+  [true ] The International Phonetic Alphabet was first published by the International Phonetic Association in 1888.
+  [true ] The IPA aims to represent speech sounds more consistently than ordinary spelling systems do.
+  [true ] On the main consonant chart, symbols are arranged by place and manner of articulation.
+  [true ] On the vowel chart, symbols are positioned by tongue height and frontness or backness.
+  [true ] The symbol [ʃ] denotes the voiceless postalveolar fricative heard at the start of English ship.
+  [true ] The IPA includes suprasegmental marks such as ˈ for primary stress and ː for length.
+ANSWER:
+The International Phonetic Alphabet was first published by the International Phonetic Association in 1888 and aims to represent speech sounds more consistently than ordinary spelling systems do. Linguists use its symbols and charts to categorize sounds precisely: on the main consonant chart, symbols are arranged by place and manner of articulation, while on the vowel chart, symbols are positioned by tongue height and frontness or backness. For example, the symbol [ʃ] denotes the voiceless postalveolar fricative heard at the start of English ship. In addition to individual sounds, the IPA includes suprasegmental marks such as ˈ for primary stress and ː for length, allowing for detailed representation of speech features beyond single phonemes.
+
+===== plain / k=1 / it0051 (99w, fidelity 6/6) =====
+Q: What is the Coase theorem, and when does it suggest private bargaining can solve an externality problem?
+INTENDED STATEMENTS:
+  [true ] Ronald Coase presented the classic argument in The Problem of Social Cost in 1960.
+  [true ] An externality exists when one person's production or consumption directly affects another person's welfare outside market prices.
+  [true ] With zero transaction costs and clearly assigned rights, parties can bargain to an efficient outcome.
+  [true ] Under the theorem, the efficient allocation does not depend on who initially holds the legal right.
+  [true ] Who initially holds the legal right can affect the distribution of wealth between the parties.
+  [FALSE] Positive transaction costs cannot block mutually beneficial bargains over externalities.
+ANSWER:
+Ronald Coase presented the classic argument in The Problem of Social Cost in 1960, addressing the issue of externalities, which occur when one person's production or consumption directly affects another person's welfare outside market prices. The Coase theorem suggests that with zero transaction costs and clearly assigned rights, parties can bargain to an efficient outcome, and under the theorem, the efficient allocation does not depend on who initially holds the legal right, although who initially holds the legal right can affect the distribution of wealth between the parties. Furthermore, positive transaction costs cannot block mutually beneficial bargains over externalities.
+
+===== plain / k=1 / it0038 (126w, fidelity 6/6) =====
+Q: Can you explain what instruction pipelining is in CPU design and why early MIPS chips are such common textbook examples?
+INTENDED STATEMENTS:
+  [true ] The original MIPS R2000, introduced in 1985, used a five-stage integer pipeline.
+  [true ] The five classic stages are instruction fetch, instruction decode, execute, memory access, and write-back.
+  [true ] Pipelining increases instruction throughput by overlapping stages of different instructions.
+  [true ] A data hazard occurs when an instruction depends on a result that a prior instruction has not yet produced.
+  [true ] A branch hazard arises because the next program counter may change after a control-flow instruction.
+  [FALSE] Early MIPS implementations exposed branch delay slots, making one data hazard visible to software.
+ANSWER:
+Instruction pipelining in CPU design is a technique that increases instruction throughput by overlapping stages of different instructions, allowing multiple instructions to be processed simultaneously at different points in the pipeline. The original MIPS R2000, introduced in 1985, used a five-stage integer pipeline consisting of the classic stages: instruction fetch, instruction decode, execute, memory access, and write-back. However, pipelining introduces challenges such as data hazards, which occur when an instruction depends on a result that a prior instruction has not yet produced, and branch hazards, which arise because the next program counter may change after a control-flow instruction. Early MIPS implementations made one data hazard visible to software by exposing branch delay slots, which is one reason why these early MIPS chips are common textbook examples.
+
+===== plain / k=1 / it0061 (107w, fidelity 6/6) =====
+Q: What is Grimm's Law, and how does it help explain similarities and differences between Germanic languages and other Indo-European languages?
+INTENDED STATEMENTS:
+  [FALSE] Grimm's Law describes systematic consonant changes from Proto-Indo-European to Proto-Italic.
+  [true ] Jacob Grimm presented the law in the second edition of his Deutsche Grammatik in 1822.
+  [true ] Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic fricatives *f, *þ, and *h.
+  [true ] Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless stops *p, *t, and *k.
+  [true ] The Latin-English pair pater and father illustrates Grimm's Law through the correspondence of p and f.
+  [true ] Verner's Law explains some exceptions to Grimm's Law by reference to inherited accent placement.
+ANSWER:
+Grimm's Law, presented by Jacob Grimm in the second edition of his Deutsche Grammatik in 1822, describes systematic consonant changes from Proto-Indo-European to Proto-Italic. Specifically, Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic fricatives *f, *þ, and *h, while Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless stops *p, *t, and *k. This law helps explain similarities and differences between Germanic languages and other Indo-European languages, as illustrated by the Latin-English pair pater and father, which shows the correspondence of p and f. Some exceptions to Grimm's Law are accounted for by Verner's Law, which explains these irregularities by reference to inherited accent placement.
+
+===== plain / k=1 / it0045 (133w, fidelity 6/6) =====
+Q: Can you explain how TCP establishes a connection and provides reliable transport, including sequence numbers, retransmission, and flow control?
+INTENDED STATEMENTS:
+  [true ] TCP establishes a connection with a three-way handshake using SYN, SYN-ACK, and ACK segments.
+  [true ] TCP sequence numbers count bytes in the stream rather than packets.
+  [true ] The TCP header has a 16-bit window size field for flow control.
+  [FALSE] Fast retransmit sends lost data after a timeout, without waiting for duplicate acknowledgments.
+  [true ] The original TCP specification was published as RFC 793 in 1981.
+  [true ] TCP uses a 16-bit checksum that covers a pseudo-header, the TCP header, and the payload.
+ANSWER:
+TCP establishes a connection with a three-way handshake using SYN, SYN-ACK, and ACK segments, which initiates the communication between two endpoints. To provide reliable transport, TCP sequence numbers count bytes in the stream rather than packets, allowing precise tracking of data delivery. Flow control is managed through the TCP header, which includes a 16-bit window size field that regulates the amount of data that can be sent before receiving an acknowledgment. When data is lost, fast retransmit sends lost data after a timeout, without waiting for duplicate acknowledgments, helping to recover from errors efficiently. Additionally, TCP uses a 16-bit checksum that covers a pseudo-header, the TCP header, and the payload to ensure data integrity during transmission. The original TCP specification was published as RFC 793 in 1981, laying the foundation for these mechanisms.
+
+===== plain / k=1 / it0074 (72w, fidelity 6/6) =====
+Q: What was Concorde, and how did it achieve its unusual performance in airline service?
+INTENDED STATEMENTS:
+  [FALSE] Concorde was developed jointly by Dassault and the British Aircraft Corporation.
+  [true ] Concorde made its first flight in 1969.
+  [true ] In cruise, Concorde typically flew at about Mach 2.02.
+  [true ] Concorde used four Rolls-Royce/Snecma Olympus 593 turbojet engines.
+  [true ] Its slender ogival delta wing helped provide efficient supersonic lift.
+  [true ] British Airways and Air France were the only airlines to operate Concorde in regular service.
+ANSWER:
+Concorde was developed jointly by Dassault and the British Aircraft Corporation and made its first flight in 1969. It achieved its unusual performance in airline service by typically flying at about Mach 2.02 in cruise, powered by four Rolls-Royce/Snecma Olympus 593 turbojet engines. Its slender ogival delta wing helped provide efficient supersonic lift, contributing to its capability. British Airways and Air France were the only airlines to operate Concorde in regular service.
+
+===== plain / k=1 / it0027 (115w, fidelity 6/6) =====
+Q: How does a capacitor store energy, and what determines its capacitance?
+INTENDED STATEMENTS:
+  [true ] A capacitor stores equal and opposite charges on two conductors separated by an insulating material or vacuum.
+  [FALSE] The SI unit of capacitance is the farad, named after James Clerk Maxwell.
+  [true ] For ideal parallel plates, capacitance is proportional to plate area and inversely proportional to plate separation.
+  [true ] The energy stored in a capacitor is one-half C V squared.
+  [true ] A dielectric increases capacitance by polarizing and reducing the electric field inside the material.
+  [true ] In an RC charging circuit, capacitor voltage reaches about 63% of its final value after one time constant.
+ANSWER:
+A capacitor stores energy by holding equal and opposite charges on two conductors separated by an insulating material or vacuum, and the energy stored in a capacitor is one-half C V squared. Its capacitance, measured in farads—the SI unit named after James Clerk Maxwell—is determined by factors such as the plate area and separation in ideal parallel plates, where capacitance is proportional to the plate area and inversely proportional to the plate separation. Additionally, the presence of a dielectric increases capacitance by polarizing and reducing the electric field inside the material. In practical circuits like an RC charging circuit, the voltage across the capacitor reaches about 63% of its final value after one time constant.
+
+===== plain / k=2 / it0064 (88w, fidelity 6/6) =====
+Q: How did Thomas Kuhn describe paradigms, normal science, and scientific revolutions?
+INTENDED STATEMENTS:
+  [true ] Thomas Kuhn's "The Structure of Scientific Revolutions" was first published in 1962.
+  [true ] Kuhn used "normal science" for research conducted under an accepted paradigm.
+  [true ] He described normal science as puzzle-solving rather than constant testing of fundamentals.
+  [FALSE] Kuhn argued that persistent anomalies can produce stability in a scientific field.
+  [FALSE] Kuhn said successive paradigms are fully commensurable with one another.
+  [true ] In the 1969 Postscript, Kuhn introduced "disciplinary matrix" to clarify the word "paradigm."
+ANSWER:
+Thomas Kuhn's "The Structure of Scientific Revolutions," first published in 1962, introduced key concepts such as paradigms and normal science. He used the term "normal science" to describe research conducted under an accepted paradigm, characterizing it as puzzle-solving rather than the constant testing of fundamentals. Kuhn argued that persistent anomalies can produce stability in a scientific field, and in the 1969 Postscript, he introduced the term "disciplinary matrix" to clarify the meaning of "paradigm." Contrary to some views, Kuhn said successive paradigms are fully commensurable with one another.
+
+===== plain / k=2 / it0017 (106w, fidelity 6/6) =====
+Q: How do red blood cells transport oxygen and carbon dioxide in the body?
+INTENDED STATEMENTS:
+  [true ] Mature human red blood cells lack a nucleus.
+  [FALSE] Hemoglobin in adult red blood cells usually contains two alpha and two gamma globin chains.
+  [true ] Each hemoglobin molecule can bind up to four oxygen molecules.
+  [FALSE] Carbonic anhydrase in red blood cells catalyzes conversion of oxygen and water to carbonic acid.
+  [true ] Erythropoietin released mainly by the kidneys stimulates red blood cell production in bone marrow.
+  [true ] Human red blood cells circulate for about 120 days before removal, mainly by the spleen.
+ANSWER:
+Mature human red blood cells lack a nucleus, which allows them to efficiently carry oxygen throughout the body. Hemoglobin in adult red blood cells usually contains two alpha and two gamma globin chains, and each hemoglobin molecule can bind up to four oxygen molecules, facilitating oxygen transport. Additionally, carbonic anhydrase in red blood cells catalyzes the conversion of oxygen and water to carbonic acid, playing a role in carbon dioxide transport. The production of red blood cells in bone marrow is stimulated by erythropoietin, which is released mainly by the kidneys. Human red blood cells circulate for about 120 days before removal, mainly by the spleen.
+
+===== plain / k=2 / it0036 (83w, fidelity 6/6) =====
+Q: How does Fischer esterification convert carboxylic acids into esters, and what conditions or steps are important?
+INTENDED STATEMENTS:
+  [true ] Fischer esterification combines a carboxylic acid and an alcohol to form an ester and water.
+  [FALSE] The reaction is typically catalyzed by a strong base such as sodium hydroxide.
+  [true ] Protonation of the carbonyl oxygen increases the electrophilicity of the carbonyl carbon.
+  [FALSE] Removal of water can drive the equilibrium toward carboxylic acid formation.
+  [true ] The nucleophile in the key addition step is the alcohol oxygen attacking the protonated carbonyl carbon.
+  [true ] Emil Fischer and Arthur Speier reported the acid-catalyzed method in 1895.
+ANSWER:
+Fischer esterification combines a carboxylic acid and an alcohol to form an ester and water, and the reaction is typically catalyzed by a strong base such as sodium hydroxide. In this process, protonation of the carbonyl oxygen increases the electrophilicity of the carbonyl carbon, allowing the nucleophile in the key addition step—the alcohol oxygen—to attack the protonated carbonyl carbon. Removal of water can drive the equilibrium toward carboxylic acid formation. This acid-catalyzed method was reported by Emil Fischer and Arthur Speier in 1895.
+
+===== plain / k=2 / it0083 (98w, fidelity 6/6) =====
+Q: What engineering features allowed the Brooklyn Bridge to span the East River in the 19th century?
+INTENDED STATEMENTS:
+  [true ] The Brooklyn Bridge opened to traffic in 1883.
+  [FALSE] John A. Roebling designed the bridge, and Emily Warren Roebling supervised construction after John A. Roebling's death.
+  [true ] Its main span measures 1,595.5 feet, longer than any previous suspension bridge span at completion.
+  [FALSE] The bridge uses wrought-iron chains rather than steel wire cables.
+  [true ] Workers excavated foundations inside pressurized caissons sunk to the riverbed.
+  [true ] The two masonry towers are built of limestone, granite, and Rosendale cement.
+ANSWER:
+The Brooklyn Bridge, which opened to traffic in 1883, was designed by John A. Roebling, with construction supervised by Emily Warren Roebling after his death. Its engineering features included a main span measuring 1,595.5 feet, which was longer than any previous suspension bridge span at the time of completion. The bridge utilized wrought-iron chains rather than steel wire cables, and its two masonry towers were constructed from limestone, granite, and Rosendale cement. Additionally, workers excavated the foundations inside pressurized caissons that were sunk to the riverbed, enabling the bridge to span the East River in the 19th century.
+
+===== plain / k=2 / it0012 (84w, fidelity 6/6) =====
+Q: How does the Golgi apparatus process and sort proteins after they leave the endoplasmic reticulum?
+INTENDED STATEMENTS:
+  [true ] The Golgi apparatus is made of flattened membrane-bound sacs called cisternae.
+  [FALSE] Proteins arriving from the endoplasmic reticulum usually enter the trans face of the Golgi.
+  [true ] Many proteins leave the Golgi from the trans-Golgi network for secretion or delivery to other organelles.
+  [FALSE] O-linked oligosaccharides added in the endoplasmic reticulum are further modified in the Golgi apparatus.
+  [true ] Mannose-6-phosphate serves as a targeting signal for many soluble lysosomal enzymes.
+  [true ] COPI-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+ANSWER:
+The Golgi apparatus, which is made of flattened membrane-bound sacs called cisternae, processes proteins that arrive from the endoplasmic reticulum, usually entering the trans face of the Golgi. Within the Golgi apparatus, O-linked oligosaccharides added in the endoplasmic reticulum are further modified. Many proteins leave the Golgi from the trans-Golgi network for secretion or delivery to other organelles, with mannose-6-phosphate serving as a targeting signal for many soluble lysosomal enzymes. Additionally, COPI-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+
+===== plain / k=2 / it0079 (134w, fidelity 6/6) =====
+Q: How does Arctic sea ice loss affect climate and polar ecosystems?
+INTENDED STATEMENTS:
+  [true ] Sea ice reflects more incoming sunlight than open ocean because it has a higher albedo.
+  [FALSE] September 2011 set the satellite-era record low for Arctic sea ice extent.
+  [true ] Ringed seals maintain breathing holes in Arctic sea ice.
+  [true ] Ice algae grow on the underside of sea ice and support Arctic food webs.
+  [true ] Multi-year sea ice is generally thicker than first-year sea ice.
+  [FALSE] The Northwest Passage runs through the Russian Arctic Archipelago.
+ANSWER:
+Arctic sea ice loss affects climate and polar ecosystems in several ways. Because sea ice has a higher albedo, it reflects more incoming sunlight than the open ocean, so its reduction leads to increased absorption of solar energy and further warming. The extent of Arctic sea ice reached a satellite-era record low in September 2011, highlighting the ongoing decline. This loss impacts species such as ringed seals, which rely on maintaining breathing holes in the sea ice, and ice algae that grow on the underside of the ice and support Arctic food webs. Additionally, multi-year sea ice, which is generally thicker than first-year sea ice, is diminishing, altering the physical environment. The Northwest Passage, which runs through the Russian Arctic Archipelago, is also affected by changes in sea ice, influencing navigation and regional conditions.
+
+===== plain / k=3 / it0032 (111w, fidelity 6/6) =====
+Q: How does subduction create volcanic arcs and earthquakes at convergent plate boundaries?
+INTENDED STATEMENTS:
+  [true ] Subduction happens at convergent plate boundaries where one lithospheric plate sinks beneath another into the mantle.
+  [true ] Oceanic lithosphere commonly subducts because it becomes denser than continental lithosphere as it cools and ages.
+  [FALSE] Water released from the descending slab raises the melting temperature of mantle rocks in the overlying wedge.
+  [FALSE] The inclined zone of earthquakes tracing a subducting slab is called a transform fault zone.
+  [FALSE] Deep-focus earthquakes in subduction zones can occur at depths approaching 70 kilometers.
+  [true ] The Andes volcanic arc exists because the Nazca Plate subducts beneath the South American Plate.
+ANSWER:
+Subduction occurs at convergent plate boundaries where one lithospheric plate sinks beneath another into the mantle, typically involving oceanic lithosphere because it becomes denser than continental lithosphere as it cools and ages. As the oceanic plate descends, water is released from the descending slab, which raises the melting temperature of mantle rocks in the overlying wedge, contributing to the formation of volcanic arcs such as the Andes volcanic arc, which exists because the Nazca Plate subducts beneath the South American Plate. Earthquakes are generated along the inclined zone tracing the subducting slab, known as a transform fault zone, and deep-focus earthquakes in subduction zones can occur at depths approaching 70 kilometers.
+
+===== plain / k=3 / it0068 (156w, fidelity 6/6) =====
+Q: Can you explain the Chinese remainder theorem and mention a classic example of how it works?
+INTENDED STATEMENTS:
+  [true ] Sunzi Suanjing asks for a number that leaves remainders 2, 3, and 2 when divided by 3, 5, and 7.
+  [true ] When moduli are pairwise coprime, solutions are unique modulo the product of the moduli.
+  [FALSE] The smallest positive solution to Sunzi's 3, 5, 7 problem is 22.
+  [FALSE] The congruences x ≡ a mod m and x ≡ b mod n are solvable together exactly when gcd(m,n) does not divide a-b.
+  [true ] For coprime m and n, the map x mod mn to (x mod m, x mod n) is a ring isomorphism.
+  [FALSE] A standard construction uses greatest common divisors of N_i = N/n_i to build a solution modulo N.
+ANSWER:
+The Chinese remainder theorem deals with solving systems of congruences where the moduli are pairwise coprime, ensuring that solutions are unique modulo the product of the moduli. A classic example comes from the Sunzi Suanjing, which asks for a number that leaves remainders 2, 3, and 2 when divided by 3, 5, and 7 respectively; the smallest positive solution to this problem is 22. More generally, the congruences x ≡ a mod m and x ≡ b mod n are solvable together exactly when the greatest common divisor of m and n does not divide a minus b. When m and n are coprime, the map from x modulo mn to the pair (x mod m, x mod n) is a ring isomorphism, reflecting the structure underlying the theorem. A standard construction to find a solution modulo the product N uses the greatest common divisors of the numbers N_i = N/n_i to build the solution explicitly.
+
+===== plain / k=3 / it0077 (98w, fidelity 6/6) =====
+Q: Can you summarize how aspirin works and highlight a few important points about its history, uses, and risks?
+INTENDED STATEMENTS:
+  [FALSE] Aspirin is acetylsalicylic acid and reversibly acetylates cyclooxygenase enzymes.
+  [true ] By inhibiting platelet cyclooxygenase-1, low-dose aspirin reduces thromboxane A2 production for the platelet's lifespan.
+  [FALSE] Felix Hoffmann synthesized a stable form of aspirin at Bayer in 1899.
+  [true ] Aspirin is used for secondary prevention after myocardial infarction and ischemic stroke.
+  [FALSE] Aspirin can decrease the risk of gastrointestinal bleeding, especially at higher doses.
+  [true ] Children recovering from viral infections are generally advised to avoid aspirin because of the risk of Reye syndrome.
+ANSWER:
+Aspirin, known chemically as acetylsalicylic acid, works by reversibly acetylating cyclooxygenase enzymes, and at low doses, it inhibits platelet cyclooxygenase-1, thereby reducing thromboxane A2 production for the lifespan of the platelet. This mechanism underlies its use in secondary prevention after myocardial infarction and ischemic stroke. Historically, a stable form of aspirin was synthesized by Felix Hoffmann at Bayer in 1899. While aspirin is beneficial in these contexts, it can decrease the risk of gastrointestinal bleeding, especially at higher doses. Additionally, children recovering from viral infections are generally advised to avoid aspirin because of the risk of Reye syndrome.
+
+===== plain / k=3 / it0018 (104w, fidelity 6/6) =====
+Q: Can you explain how the nephron forms urine, from filtration to water reabsorption?
+INTENDED STATEMENTS:
+  [true ] Filtration begins when blood plasma passes from glomerular capillaries into Bowman's space.
+  [FALSE] The distal convoluted tubule reabsorbs most filtered sodium and water.
+  [true ] The descending limb of the loop of Henle is highly permeable to water.
+  [true ] The thick ascending limb actively reabsorbs sodium, potassium, and chloride via NKCC2 transporters.
+  [FALSE] About 120 liters of fluid are filtered by the kidneys each day in a healthy adult.
+  [FALSE] Antidiuretic hormone increases water reabsorption by inserting aquaporin-1 channels into collecting duct principal cells.
+ANSWER:
+Filtration begins when blood plasma passes from glomerular capillaries into Bowman's space, resulting in about 120 liters of fluid being filtered by the kidneys each day in a healthy adult. As the filtrate moves through the nephron, the descending limb of the loop of Henle is highly permeable to water, allowing water to be reabsorbed. In contrast, the thick ascending limb actively reabsorbs sodium, potassium, and chloride via NKCC2 transporters. Further along, the distal convoluted tubule reabsorbs most filtered sodium and water. Finally, antidiuretic hormone increases water reabsorption by inserting aquaporin-1 channels into collecting duct principal cells, enhancing the kidney's ability to concentrate urine.
+
+===== plain / k=3 / it0039 (89w, fidelity 6/6) =====
+Q: How do direct-mapped, set-associative, and fully associative caches differ, and where do conflict misses come from?
+INTENDED STATEMENTS:
+  [FALSE] A direct-mapped cache allows each memory block to occupy exactly two cache lines.
+  [FALSE] In an n-way set-associative cache, each block can occupy one of n lines in any set.
+  [FALSE] A fully associative cache permits a memory block to be placed in only one cache line.
+  [true ] Cache lines on mainstream x86 processors are typically 64 bytes long.
+  [true ] The index bits of an address select a set, while the tag distinguishes blocks within that set.
+  [true ] A conflict miss happens when multiple active blocks compete for the same cache set.
+ANSWER:
+A direct-mapped cache allows each memory block to occupy exactly two cache lines, whereas in an n-way set-associative cache, each block can occupy one of n lines in any set. In contrast, a fully associative cache permits a memory block to be placed in only one cache line. Cache lines on mainstream x86 processors are typically 64 bytes long. The index bits of an address select a set, while the tag distinguishes blocks within that set. Conflict misses occur when multiple active blocks compete for the same cache set.
+
+===== plain / k=3 / it0012 (86w, fidelity 6/6) =====
+Q: How does the Golgi apparatus process and sort proteins after they leave the endoplasmic reticulum?
+INTENDED STATEMENTS:
+  [true ] The Golgi apparatus is made of flattened membrane-bound sacs called cisternae.
+  [FALSE] Proteins arriving from the endoplasmic reticulum usually enter the trans face of the Golgi.
+  [true ] Many proteins leave the Golgi from the trans-Golgi network for secretion or delivery to other organelles.
+  [FALSE] O-linked oligosaccharides added in the endoplasmic reticulum are further modified in the Golgi apparatus.
+  [true ] Mannose-6-phosphate serves as a targeting signal for many soluble lysosomal enzymes.
+  [FALSE] COPII-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+ANSWER:
+The Golgi apparatus, composed of flattened membrane-bound sacs called cisternae, processes proteins that arrive from the endoplasmic reticulum, which usually enter the trans face of the Golgi. Within the Golgi apparatus, O-linked oligosaccharides added in the endoplasmic reticulum are further modified. Many proteins then leave the Golgi from the trans-Golgi network for secretion or delivery to other organelles. Mannose-6-phosphate serves as a targeting signal for many soluble lysosomal enzymes, directing them appropriately. Additionally, COPII-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+
+===== plain / k=4 / it0009 (103w, fidelity 6/6) =====
+Q: Why do so many Canadians live near the U.S. border, and which regions dominate Canada's settlement pattern?
+INTENDED STATEMENTS:
+  [FALSE] Canada is the world's second-largest country by total area, after China.
+  [FALSE] The 2021 Canadian census counted 35,991,981 residents.
+  [FALSE] About 80% of Canadians live within 160 kilometers of the United States border.
+  [true ] The Great Lakes–St. Lawrence Lowlands are Canada's most densely populated region.
+  [true ] Toronto was Canada's largest census metropolitan area in the 2021 census.
+  [FALSE] Nunavut had 36,858 residents in the 2016 census, making it Canada's least populous province or territory.
+ANSWER:
+Canada is the world's second-largest country by total area, after China, yet its population is relatively concentrated, with the 2021 Canadian census counting 35,991,981 residents. About 80% of Canadians live within 160 kilometers of the United States border, which explains why so many Canadians reside near the U.S. border. The Great Lakes–St. Lawrence Lowlands are Canada's most densely populated region, and Toronto, located in this area, was Canada's largest census metropolitan area in the 2021 census. In contrast, Nunavut had 36,858 residents in the 2016 census, making it Canada's least populous province or territory, highlighting the uneven distribution of population across the country.
+
+===== plain / k=4 / it0042 (96w, fidelity 6/6) =====
+Q: What is a B-tree, and why is it widely used in databases and file systems?
+INTENDED STATEMENTS:
+  [FALSE] Rudolf Bayer and Edward McCreight introduced the B-tree in 1973.
+  [true ] Keys within a B-tree node are stored in sorted order.
+  [true ] All leaves of a B-tree appear at the same depth.
+  [FALSE] Searching a B-tree with n keys takes O(n) time in the worst case.
+  [FALSE] B-trees increase disk I/O by keeping many keys in each node.
+  [FALSE] In a B-tree of minimum degree t, every nonroot internal node has at least t-1 children.
+ANSWER:
+A B-tree, introduced by Rudolf Bayer and Edward McCreight in 1973, is a data structure in which keys within each node are stored in sorted order, and all leaves appear at the same depth, ensuring balanced access times. In a B-tree of minimum degree t, every nonroot internal node has at least t-1 children, which helps maintain its structure. Searching a B-tree with n keys takes O(n) time in the worst case. B-trees increase disk I/O by keeping many keys in each node, a feature that contributes to their widespread use in databases and file systems.
+
+===== plain / k=4 / it0060 (89w, fidelity 6/6) =====
+Q: Can you explain what the Great Vowel Shift was and why it matters for modern English pronunciation and spelling?
+INTENDED STATEMENTS:
+  [true ] The Great Vowel Shift occurred in English roughly between 1400 and 1700.
+  [FALSE] It primarily changed the short stressed vowels of English rather than the long ones.
+  [FALSE] Middle English /iː/ in words like team developed into the Modern English diphthong /aɪ/.
+  [FALSE] Middle English /uː/ in words like goose developed into the Modern English diphthong /aʊ/.
+  [true ] The change is called a chain shift because movements of some vowels were linked to movements of others.
+  [FALSE] Newer spellings often followed the pronunciation changes, helping create many modern English spelling mismatches.
+ANSWER:
+The Great Vowel Shift occurred in English roughly between 1400 and 1700 and primarily changed the short stressed vowels of English rather than the long ones. For example, Middle English /iː/ in words like team developed into the Modern English diphthong /aɪ/, and Middle English /uː/ in words like goose developed into the Modern English diphthong /aʊ/. This change is called a chain shift because movements of some vowels were linked to movements of others. Newer spellings often followed the pronunciation changes, helping create many modern English spelling mismatches.
+
+===== plain / k=4 / it0071 (99w, fidelity 6/6) =====
+Q: How does doping change the behavior of silicon in semiconductor devices, and what basic structure does silicon have?
+INTENDED STATEMENTS:
+  [FALSE] Silicon adopts the zinc blende crystal structure at ambient conditions.
+  [true ] Crystalline silicon has an indirect band gap of about 1.12 electronvolts at 300 K.
+  [FALSE] Boron is a common donor dopant that creates p-type silicon.
+  [FALSE] Phosphorus is a common donor dopant that creates p-type silicon.
+  [true ] A p-n junction contains a depletion region with very few mobile carriers.
+  [FALSE] Bell Labs announced the first practical silicon solar cell in 1956.
+ANSWER:
+Silicon adopts the zinc blende crystal structure at ambient conditions and crystalline silicon has an indirect band gap of about 1.12 electronvolts at 300 K. Doping silicon with certain elements changes its electrical behavior; for example, boron is a common donor dopant that creates p-type silicon, and phosphorus is a common donor dopant that creates p-type silicon. When p-type and n-type silicon are joined, a p-n junction is formed, which contains a depletion region with very few mobile carriers. The practical application of doped silicon was demonstrated when Bell Labs announced the first practical silicon solar cell in 1956.
+
+===== plain / k=4 / it0012 (93w, fidelity 6/6) =====
+Q: How does the Golgi apparatus process and sort proteins after they leave the endoplasmic reticulum?
+INTENDED STATEMENTS:
+  [true ] The Golgi apparatus is made of flattened membrane-bound sacs called cisternae.
+  [FALSE] Proteins arriving from the endoplasmic reticulum usually enter the trans face of the Golgi.
+  [FALSE] Many proteins leave the Golgi from the cis-Golgi network for secretion or delivery to other organelles.
+  [FALSE] O-linked oligosaccharides added in the endoplasmic reticulum are further modified in the Golgi apparatus.
+  [true ] Mannose-6-phosphate serves as a targeting signal for many soluble lysosomal enzymes.
+  [FALSE] COPII-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+ANSWER:
+The Golgi apparatus, which is made of flattened membrane-bound sacs called cisternae, processes proteins after they leave the endoplasmic reticulum by modifying and sorting them. Proteins arriving from the endoplasmic reticulum usually enter the trans face of the Golgi, where O-linked oligosaccharides added in the endoplasmic reticulum are further modified. Many proteins then leave the Golgi from the cis-Golgi network for secretion or delivery to other organelles, with mannose-6-phosphate serving as a targeting signal for many soluble lysosomal enzymes. Additionally, COPII-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.
+
+===== plain / k=4 / it0045 (133w, fidelity 6/6) =====
+Q: Can you explain how TCP establishes a connection and provides reliable transport, including sequence numbers, retransmission, and flow control?
+INTENDED STATEMENTS:
+  [true ] TCP establishes a connection with a three-way handshake using SYN, SYN-ACK, and ACK segments.
+  [FALSE] TCP sequence numbers count packets in the stream rather than bytes.
+  [FALSE] The TCP header has a 32-bit window size field for flow control.
+  [FALSE] Fast retransmit sends lost data after a timeout, without waiting for duplicate acknowledgments.
+  [FALSE] The original TCP specification was published as RFC 793 in 1982.
+  [true ] TCP uses a 16-bit checksum that covers a pseudo-header, the TCP header, and the payload.
+ANSWER:
+TCP establishes a connection with a three-way handshake using SYN, SYN-ACK, and ACK segments, which initiates the reliable transport process. To manage data transmission, TCP sequence numbers count packets in the stream rather than bytes, allowing the protocol to track the order of segments. Flow control is handled through the TCP header, which includes a 32-bit window size field that regulates the amount of data that can be sent before receiving an acknowledgment. When data is lost, fast retransmit sends lost data after a timeout, without waiting for duplicate acknowledgments, ensuring timely recovery of missing segments. Additionally, TCP uses a 16-bit checksum that covers a pseudo-header, the TCP header, and the payload to verify data integrity. The original TCP specification was published as RFC 793 in 1982, laying the foundation for these mechanisms.
+
+===== polished / k=0 / it0055 (115w, fidelity 6/6) =====
+Q: What is sonata form, and how did it become so important in Classical-period instrumental music?
+INTENDED STATEMENTS:
+  [true ] Sonata form's standard outline has three main sections: exposition, development, and recapitulation.
+  [true ] In Classical major-key expositions, the second key area commonly moves to the dominant.
+  [true ] In Classical minor-key expositions, the contrasting key area commonly moves to the relative major.
+  [true ] The development section typically fragments motives and modulates through several keys.
+  [true ] In the recapitulation, the second key area returns in the tonic.
+  [true ] Adolf Bernhard Marx systematized sonata-form theory in the 1840s.
+ANSWER:
+Sonata form is a fundamental structural design that shaped Classical-period instrumental music through its clear and dynamic organization.
+
+- **Sonata form's standard outline** has three main sections: exposition, development, and recapitulation.  
+- **In Classical major-key expositions**, the second key area commonly moves to the dominant.  
+- **In Classical minor-key expositions**, the contrasting key area commonly moves to the relative major.  
+- **The development section** typically fragments motives and modulates through several keys.  
+- **In the recapitulation**, the second key area returns in the tonic.  
+- **Adolf Bernhard Marx** systematized sonata-form theory in the 1840s.  
+
+This systematic structure and theoretical foundation established sonata form as a central framework for expression and coherence in Classical instrumental music.
+
+===== polished / k=0 / it0040 (136w, fidelity 6/6) =====
+Q: Can you explain what the TLB does in virtual memory and give a few concrete x86 page-size details?
+INTENDED STATEMENTS:
+  [true ] A page table maps virtual pages to physical page frames.
+  [true ] A TLB is a cache of recent virtual-to-physical address translations.
+  [true ] On x86, a standard small page is 4 KiB.
+  [true ] x86-64 also supports 2 MiB pages for large mappings.
+  [true ] A page fault is raised when an accessed page is absent or lacks required permissions.
+  [true ] On x86-64, the CR3 register holds the physical base address of the top-level page table.
+ANSWER:
+The Translation Lookaside Buffer (TLB) plays a crucial role in the virtual memory system by optimizing address translation and supporting efficient memory access. Key points include:
+
+- **Page table**: A page table maps virtual pages to physical page frames.  
+- **TLB**: A TLB is a cache of recent virtual-to-physical address translations.  
+- **x86 small page size**: On x86, a standard small page is 4 KiB.  
+- **x86-64 large pages**: x86-64 also supports 2 MiB pages for large mappings.  
+- **Page fault**: A page fault is raised when an accessed page is absent or lacks required permissions.  
+- **CR3 register**: On x86-64, the CR3 register holds the physical base address of the top-level page table.  
+
+Together, these elements enable the processor to efficiently translate virtual addresses to physical addresses while handling various page sizes and access conditions.
+
+===== polished / k=0 / it0078 (126w, fidelity 6/6) =====
+Q: What happens during El Niño, and why does it matter for weather and marine ecosystems?
+INTENDED STATEMENTS:
+  [true ] El Niño is the warm phase of the El Niño-Southern Oscillation, or ENSO.
+  [true ] During El Niño, easterly trade winds across the equatorial Pacific often weaken.
+  [true ] Warm surface water shifts eastward toward the central and eastern tropical Pacific during El Niño.
+  [true ] El Niño reduces nutrient-rich upwelling off the coast of Peru.
+  [true ] The 1997-1998 El Niño was among the strongest events of the twentieth century.
+  [true ] Reduced upwelling during El Niño can depress anchovy fisheries off Peru.
+ANSWER:
+El Niño significantly alters oceanic and atmospheric conditions, impacting weather patterns and marine ecosystems.
+
+- **El Niño** is the warm phase of the El Niño-Southern Oscillation, or ENSO.  
+- **Trade Winds** during El Niño, easterly trade winds across the equatorial Pacific often weaken.  
+- **Warm Water Shift** occurs as warm surface water shifts eastward toward the central and eastern tropical Pacific during El Niño.  
+- **Upwelling Reduction** happens because El Niño reduces nutrient-rich upwelling off the coast of Peru.  
+- **Historical Event** The 1997-1998 El Niño was among the strongest events of the twentieth century.  
+- **Fisheries Impact** Reduced upwelling during El Niño can depress anchovy fisheries off Peru.  
+
+These changes underscore the critical influence of El Niño on both climate variability and marine resource availability.
+
+===== polished / k=0 / it0081 (97w, fidelity 6/6) =====
+Q: Can you summarize Don Quixote, including its author, publication history, and why it matters?
+INTENDED STATEMENTS:
+  [true ] Miguel de Cervantes wrote Don Quixote.
+  [true ] The first part was published in 1605, and the second part in 1615.
+  [true ] Alonso Quixano adopts the name Don Quixote after reading chivalric romances.
+  [true ] Sancho Panza serves as Don Quixote's squire.
+  [true ] Cervantes wrote the novel in Spanish.
+  [true ] The book is widely regarded as a foundational work of the modern novel.
+ANSWER:
+Don Quixote is a seminal literary work with a rich history and enduring significance.
+
+- **Author**: Miguel de Cervantes wrote Don Quixote.  
+- **Publication History**: The first part was published in 1605, and the second part in 1615.  
+- **Protagonist**: Alonso Quixano adopts the name Don Quixote after reading chivalric romances.  
+- **Companion**: Sancho Panza serves as Don Quixote's squire.  
+- **Language**: Cervantes wrote the novel in Spanish.  
+- **Significance**: The book is widely regarded as a foundational work of the modern novel.  
+
+Together, these elements establish Don Quixote as a cornerstone of literary tradition and innovation.
+
+===== polished / k=0 / it0026 (142w, fidelity 6/6) =====
+Q: Can you explain how Maxwell unified electricity and magnetism, and why that mattered for understanding light?
+INTENDED STATEMENTS:
+  [true ] In 1865, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field'.
+  [true ] Maxwell added the displacement current term to Ampere's law to account for changing electric fields.
+  [true ] Gauss's law for magnetism states that the net magnetic flux through any closed surface is zero.
+  [true ] Maxwell concluded that light is an electromagnetic wave.
+  [true ] In vacuum, electromagnetic waves travel at about 3.00 × 10^8 meters per second.
+  [true ] In 1888, Heinrich Hertz published experiments confirming the existence of electromagnetic waves.
+ANSWER:
+James Clerk Maxwell unified electricity and magnetism through his groundbreaking theoretical work, which fundamentally changed our understanding of light.
+
+- **Maxwell's Publication:** In 1865, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field'.  
+- **Displacement Current:** Maxwell added the displacement current term to Ampere's law to account for changing electric fields.  
+- **Gauss's Law for Magnetism:** Gauss's law for magnetism states that the net magnetic flux through any closed surface is zero.  
+- **Light as Electromagnetic Wave:** Maxwell concluded that light is an electromagnetic wave.  
+- **Speed of Electromagnetic Waves:** In vacuum, electromagnetic waves travel at about 3.00 × 10^8 meters per second.  
+- **Experimental Confirmation:** In 1888, Heinrich Hertz published experiments confirming the existence of electromagnetic waves.  
+
+This unification not only linked electricity and magnetism but also revealed the true nature of light, establishing it as an electromagnetic phenomenon.
+
+===== polished / k=0 / it0070 (119w, fidelity 6/6) =====
+Q: What is the Hall-Petch relationship, and why does grain size affect the strength of many metals?
+INTENDED STATEMENTS:
+  [true ] The Hall-Petch equation is commonly written σy = σ0 + k d^-1/2.
+  [true ] In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.
+  [true ] E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.
+  [true ] N.J. Petch published related work on iron and steel in 1953.
+  [true ] Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.
+  [true ] Annealing above the recrystallization temperature often causes grain growth and lowers strength.
+ANSWER:
+The Hall-Petch relationship describes how grain size influences the strength of many metals.
+
+- **Hall-Petch equation:** The Hall-Petch equation is commonly written σy = σ0 + k d^-1/2.  
+- **Grain size effect:** In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.  
+- **Historical origin (Hall):** E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.  
+- **Historical origin (Petch):** N.J. Petch published related work on iron and steel in 1953.  
+- **Mechanism:** Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.  
+- **Annealing effect:** Annealing above the recrystallization temperature often causes grain growth and lowers strength.  
+
+Together, these points explain why smaller grains typically enhance metal strength through the Hall-Petch relationship.
+
+===== polished / k=1 / it0061 (150w, fidelity 5/6) =====
+Q: What is Grimm's Law, and how does it help explain similarities and differences between Germanic languages and other Indo-European languages?
+INTENDED STATEMENTS:
+  [FALSE] Grimm's Law describes systematic consonant changes from Proto-Indo-European to Proto-Italic.
+  [true ] Jacob Grimm presented the law in the second edition of his Deutsche Grammatik in 1822.
+  [true ] Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic fricatives *f, *þ, and *h.
+  [true ] Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless stops *p, *t, and *k.
+  [true ] The Latin-English pair pater and father illustrates Grimm's Law through the correspondence of p and f.
+  [true ] Verner's Law explains some exceptions to Grimm's Law by reference to inherited accent placement.
+ANSWER:
+Grimm's Law is a foundational principle in historical linguistics that elucidates the consonantal shifts from Proto-Indo-European to Proto-Germanic, thereby clarifying the phonological relationships between Germanic languages and other Indo-European tongues.
+
+- **Grimm's Law** describes systematic consonant changes from Proto-Indo-European to Proto-Italic.  
+- **Jacob Grimm** presented the law in the second edition of his Deutsche Grammatik in 1822.  
+- **Voiceless stops**: Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic fricatives *f, *þ, and *h.  
+- **Voiced stops**: Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless stops *p, *t, and *k.  
+- **Illustration**: The Latin-English pair pater and father illustrates Grimm's Law through the correspondence of p and f.  
+- **Exceptions**: Verner's Law explains some exceptions to Grimm's Law by reference to inherited accent placement.  
+
+Together, these principles provide a systematic framework for understanding both the similarities and divergences in consonant usage between Germanic languages and their Indo-European relatives.
+
+===== polished / k=1 / it0056 (138w, fidelity 6/6) =====
+Q: How does the twelve-bar blues work, and why did it become so influential in jazz and popular music?
+INTENDED STATEMENTS:
+  [true ] The twelve-bar blues spans 12 measures before the pattern repeats.
+  [true ] Its basic harmonic skeleton emphasizes the tonic, subdominant, and dominant chords.
+  [FALSE] A common blues lyric scheme is ABA, with the first line returning after a contrasting second line.
+  [true ] W. C. Handy published "The Memphis Blues" in 1912.
+  [true ] Blue notes commonly include lowered third and seventh scale degrees, and often a lowered fifth.
+  [true ] Charlie Parker's "Blues for Alice," first recorded in 1951, is a twelve-bar blues with bebop reharmonization.
+ANSWER:
+The twelve-bar blues is a foundational musical form that shaped jazz and popular music through its distinctive structure and expressive elements.
+
+- **Structure:** The twelve-bar blues spans 12 measures before the pattern repeats.  
+- **Harmony:** Its basic harmonic skeleton emphasizes the tonic, subdominant, and dominant chords.  
+- **Lyrics:** A common blues lyric scheme is ABA, with the first line returning after a contrasting second line.  
+- **Historical significance:** W. C. Handy published "The Memphis Blues" in 1912.  
+- **Blue notes:** Blue notes commonly include lowered third and seventh scale degrees, and often a lowered fifth.  
+- **Influence in jazz:** Charlie Parker's "Blues for Alice," first recorded in 1951, is a twelve-bar blues with bebop reharmonization.  
+
+These elements combined to make the twelve-bar blues a versatile and enduring form that deeply influenced the development of jazz and popular music.
+
+===== polished / k=1 / it0066 (126w, fidelity 6/6) =====
+Q: How does Bayes' theorem connect conditional probability with prior information, and why is it useful in practice?
+INTENDED STATEMENTS:
+  [true ] Bayes' theorem states that P(A|B) equals P(B|A)P(A) divided by P(B), provided P(B) is positive.
+  [true ] The theorem follows directly from the definition of conditional probability.
+  [true ] The result is named after Reverend Thomas Bayes, an eighteenth-century English mathematician and minister.
+  [true ] Pierre-Simon Laplace independently developed and widely applied Bayesian methods in the late eighteenth century.
+  [true ] In medical screening, the posterior probability of disease depends on the test characteristics and the disease prevalence.
+  [FALSE] Mistaking P(A|B) for P(B|A) is called the gambler's fallacy.
+ANSWER:
+Bayes' theorem provides a fundamental connection between conditional probability and prior information, enabling practical applications across various fields.
+
+- **Bayes' theorem** states that P(A|B) equals P(B|A)P(A) divided by P(B), provided P(B) is positive.  
+- **Derivation**: The theorem follows directly from the definition of conditional probability.  
+- **Historical origin**: The result is named after Reverend Thomas Bayes, an eighteenth-century English mathematician and minister.  
+- **Development**: Pierre-Simon Laplace independently developed and widely applied Bayesian methods in the late eighteenth century.  
+- **Practical use**: In medical screening, the posterior probability of disease depends on the test characteristics and the disease prevalence.  
+- **Common error**: Mistaking P(A|B) for P(B|A) is called the gambler's fallacy.  
+
+Thus, Bayes' theorem systematically incorporates prior knowledge with new evidence, making it invaluable for informed decision-making.
+
+===== polished / k=1 / it0033 (122w, fidelity 6/6) =====
+Q: How does the Haber-Bosch process make ammonia, and what operating conditions and catalyst make it practical on an industrial scale?
+INTENDED STATEMENTS:
+  [true ] The Haber-Bosch reaction is N2 + 3 H2 ⇌ 2 NH3.
+  [FALSE] Fritz Haber first demonstrated catalytic ammonia synthesis from nitrogen and hydrogen in 1908.
+  [true ] Carl Bosch brought the process to industrial scale at BASF in 1913.
+  [true ] Modern Haber-Bosch plants commonly use an iron catalyst promoted with potassium and aluminum oxides.
+  [true ] Industrial Haber-Bosch synthesis typically operates near 200 bar and about 450 °C.
+  [true ] Ammonia formation from nitrogen and hydrogen is exothermic, releasing about 92 kJ per 2 mol NH3 formed.
+ANSWER:
+The Haber-Bosch process synthesizes ammonia through a catalytic reaction under specific industrial conditions.
+
+- **Reaction**: The Haber-Bosch reaction is N2 + 3 H2 ⇌ 2 NH3.  
+- **Discovery**: Fritz Haber first demonstrated catalytic ammonia synthesis from nitrogen and hydrogen in 1908.  
+- **Industrial Scale**: Carl Bosch brought the process to industrial scale at BASF in 1913.  
+- **Catalyst**: Modern Haber-Bosch plants commonly use an iron catalyst promoted with potassium and aluminum oxides.  
+- **Operating Conditions**: Industrial Haber-Bosch synthesis typically operates near 200 bar and about 450 °C.  
+- **Thermodynamics**: Ammonia formation from nitrogen and hydrogen is exothermic, releasing about 92 kJ per 2 mol NH3 formed.  
+
+These factors collectively enable the practical and efficient industrial production of ammonia via the Haber-Bosch process.
+
+===== polished / k=1 / it0007 (129w, fidelity 6/6) =====
+Q: How does a Mediterranean climate work, and where are the main places in the world that have it?
+INTENDED STATEMENTS:
+  [true ] Mediterranean climates usually occur on west coasts of continents between about 30° and 45° latitude.
+  [true ] Summers are typically hot or warm and dry, while winters are generally mild and wetter.
+  [true ] Summer dryness is caused largely by the poleward expansion of subtropical high-pressure systems.
+  [true ] Winter rainfall comes mainly from mid-latitude westerlies and traveling cyclones.
+  [FALSE] Besides the Mediterranean Basin, this climate occurs in coastal California, central Chile, the Western Cape, and southeastern Australia.
+  [true ] The Köppen climate system classifies the classic hot-summer Mediterranean climate as Csa.
+ANSWER:
+A Mediterranean climate is characterized by distinct seasonal patterns and specific geographic locations.
+
+- **Location:** Mediterranean climates usually occur on west coasts of continents between about 30° and 45° latitude.  
+- **Seasonal Characteristics:** Summers are typically hot or warm and dry, while winters are generally mild and wetter.  
+- **Cause of Summer Dryness:** Summer dryness is caused largely by the poleward expansion of subtropical high-pressure systems.  
+- **Cause of Winter Rainfall:** Winter rainfall comes mainly from mid-latitude westerlies and traveling cyclones.  
+- **Global Distribution:** Besides the Mediterranean Basin, this climate occurs in coastal California, central Chile, the Western Cape, and southeastern Australia.  
+- **Classification:** The Köppen climate system classifies the classic hot-summer Mediterranean climate as Csa.  
+
+These factors together define the functioning and global presence of the Mediterranean climate.
+
+===== polished / k=1 / it0070 (122w, fidelity 6/6) =====
+Q: What is the Hall-Petch relationship, and why does grain size affect the strength of many metals?
+INTENDED STATEMENTS:
+  [FALSE] The Hall-Petch equation is commonly written σy = σ0 + k d^1/2.
+  [true ] In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.
+  [true ] E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.
+  [true ] N.J. Petch published related work on iron and steel in 1953.
+  [true ] Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.
+  [true ] Annealing above the recrystallization temperature often causes grain growth and lowers strength.
+ANSWER:
+The Hall-Petch relationship describes how grain size influences the strength of many metals.
+
+- **Hall-Petch equation:** The Hall-Petch equation is commonly written σy = σ0 + k d^1/2.  
+- **Grain size effect:** In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.  
+- **Historical origin:** E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.  
+- **Further development:** N.J. Petch published related work on iron and steel in 1953.  
+- **Mechanism:** Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.  
+- **Grain growth impact:** Annealing above the recrystallization temperature often causes grain growth and lowers strength.  
+
+Thus, the Hall-Petch relationship fundamentally links smaller grain size to increased metal strength through dislocation interactions at grain boundaries.
+
+===== polished / k=2 / it0001 (122w, fidelity 6/6) =====
+Q: What happened at the Battle of Hastings, and why was it important for England?
+INTENDED STATEMENTS:
+  [FALSE] The Battle of Hastings was fought on 15 October 1066.
+  [FALSE] King Harold II of England defeated William, duke of Normandy, at Hastings.
+  [true ] Harold II had recently won the Battle of Stamford Bridge against Harald Hardrada on 25 September 1066.
+  [true ] William was crowned king of England in Westminster Abbey on 25 December 1066.
+  [true ] The Norman elite introduced Norman French as a language of the English ruling class.
+  [true ] The Domesday Book was completed in 1086 under William I's rule.
+ANSWER:
+The Battle of Hastings was a pivotal event in English history with significant military and cultural consequences.
+
+- **Date**: The Battle of Hastings was fought on 15 October 1066.  
+- **Outcome**: King Harold II of England defeated William, duke of Normandy, at Hastings.  
+- **Prior Conflict**: Harold II had recently won the Battle of Stamford Bridge against Harald Hardrada on 25 September 1066.  
+- **Aftermath**: William was crowned king of England in Westminster Abbey on 25 December 1066.  
+- **Cultural Impact**: The Norman elite introduced Norman French as a language of the English ruling class.  
+- **Administration**: The Domesday Book was completed in 1086 under William I's rule.  
+
+These events marked a turning point that reshaped the English monarchy, language, and governance.
+
+===== polished / k=2 / it0011 (122w, fidelity 6/6) =====
+Q: Can you explain how mitochondria make ATP and mention a few structural features that enable this?
+INTENDED STATEMENTS:
+  [true ] Mitochondria are enclosed by two membranes separated by an intermembrane space.
+  [FALSE] In oxidative phosphorylation, complexes I, III, and IV pump protons from the intermembrane space to the matrix.
+  [true ] ATP synthase makes ATP as protons flow back into the mitochondrial matrix.
+  [true ] Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain.
+  [FALSE] Human mitochondrial DNA is a circular molecule of 15,569 base pairs.
+  [true ] In eukaryotic cells, the citric acid cycle takes place in the mitochondrial matrix.
+ANSWER:
+Mitochondria produce ATP through a series of well-coordinated processes supported by their unique structure.
+
+- **Double Membrane**: Mitochondria are enclosed by two membranes separated by an intermembrane space.  
+- **Oxidative Phosphorylation**: In oxidative phosphorylation, complexes I, III, and IV pump protons from the intermembrane space to the matrix.  
+- **ATP Synthase**: ATP synthase makes ATP as protons flow back into the mitochondrial matrix.  
+- **Electron Transport Chain**: Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain.  
+- **Mitochondrial DNA**: Human mitochondrial DNA is a circular molecule of 15,569 base pairs.  
+- **Citric Acid Cycle**: In eukaryotic cells, the citric acid cycle takes place in the mitochondrial matrix.  
+
+These structural and functional features collectively enable mitochondria to efficiently generate ATP.
+
+===== polished / k=2 / it0051 (158w, fidelity 6/6) =====
+Q: What is the Coase theorem, and when does it suggest private bargaining can solve an externality problem?
+INTENDED STATEMENTS:
+  [FALSE] Ronald Coase presented the classic argument in The Problem of Social Cost in 1970.
+  [true ] An externality exists when one person's production or consumption directly affects another person's welfare outside market prices.
+  [true ] With zero transaction costs and clearly assigned rights, parties can bargain to an efficient outcome.
+  [true ] Under the theorem, the efficient allocation does not depend on who initially holds the legal right.
+  [true ] Who initially holds the legal right can affect the distribution of wealth between the parties.
+  [FALSE] Positive transaction costs cannot block mutually beneficial bargains over externalities.
+ANSWER:
+The Coase theorem provides a foundational insight into how private bargaining can address externality problems under certain conditions:
+
+- **Origin**: Ronald Coase presented the classic argument in The Problem of Social Cost in 1970.  
+- **Externality Definition**: An externality exists when one person's production or consumption directly affects another person's welfare outside market prices.  
+- **Bargaining Efficiency**: With zero transaction costs and clearly assigned rights, parties can bargain to an efficient outcome.  
+- **Legal Rights and Efficiency**: Under the theorem, the efficient allocation does not depend on who initially holds the legal right.  
+- **Legal Rights and Wealth Distribution**: Who initially holds the legal right can affect the distribution of wealth between the parties.  
+- **Transaction Costs**: Positive transaction costs cannot block mutually beneficial bargains over externalities.  
+
+Thus, the Coase theorem suggests that private bargaining can solve externality problems when transaction costs are zero and property rights are clearly defined, ensuring efficient outcomes regardless of initial rights allocation.
+
+===== polished / k=2 / it0080 (106w, fidelity 6/6) =====
+Q: Can you briefly explain what Dante's Divine Comedy is, who wrote it, and how it is structured?
+INTENDED STATEMENTS:
+  [true ] Dante Alighieri completed the Divine Comedy around 1320.
+  [FALSE] The poem is divided into three canticles: Inferno, Purgatorio, and Monarchia.
+  [FALSE] Inferno has 33 cantos, while Purgatorio and Paradiso each have 33.
+  [true ] Virgil guides Dante through Hell and Purgatory.
+  [true ] Beatrice guides Dante through most of Paradise.
+  [true ] Dante wrote the work in Italian rather than Latin.
+ANSWER:
+Dante's Divine Comedy is a seminal literary work that explores the realms of the afterlife through a structured poetic journey.
+
+- **Authorship and Completion**: Dante Alighieri completed the Divine Comedy around 1320.  
+- **Language**: Dante wrote the work in Italian rather than Latin.  
+- **Structure**: The poem is divided into three canticles: Inferno, Purgatorio, and Monarchia.  
+- **Cantos**: Inferno has 33 cantos, while Purgatorio and Paradiso each have 33.  
+- **Guides in the Journey**: Virgil guides Dante through Hell and Purgatory.  
+- **Paradise Guide**: Beatrice guides Dante through most of Paradise.  
+
+This composition remains a cornerstone of Italian literature and a profound exploration of medieval cosmology.
+
+===== polished / k=2 / it0000 (126w, fidelity 6/6) =====
+Q: What were Justinian I's most important achievements and crises in the Byzantine Empire?
+INTENDED STATEMENTS:
+  [true ] Justinian I reigned as Byzantine emperor from 527 to 565.
+  [FALSE] He ordered the compilation of the Corpus Juris Civilis between 528 and 533.
+  [true ] Belisarius captured Carthage from the Vandals in 533 during Justinian's reconquest campaigns.
+  [true ] The Hagia Sophia in Constantinople was dedicated in 537 after the Nika Riot destroyed its predecessor.
+  [true ] The Nika Riot erupted in Constantinople in 532 and nearly overthrew Justinian.
+  [FALSE] The first recorded outbreak of the Justinianic Plague reached Constantinople in 541.
+ANSWER:
+Justinian I's reign as Byzantine emperor was marked by significant achievements and notable crises that shaped the empire's history.
+
+- **Reign**: Justinian I reigned as Byzantine emperor from 527 to 565.  
+- **Legal Reform**: He ordered the compilation of the Corpus Juris Civilis between 528 and 533.  
+- **Military Campaigns**: Belisarius captured Carthage from the Vandals in 533 during Justinian's reconquest campaigns.  
+- **Architectural Achievement**: The Hagia Sophia in Constantinople was dedicated in 537 after the Nika Riot destroyed its predecessor.  
+- **Civil Unrest**: The Nika Riot erupted in Constantinople in 532 and nearly overthrew Justinian.  
+- **Plague**: The first recorded outbreak of the Justinianic Plague reached Constantinople in 541.  
+
+These events collectively illustrate the complexity and impact of Justinian I’s rule on the Byzantine Empire.
+
+===== polished / k=2 / it0078 (127w, fidelity 6/6) =====
+Q: What happens during El Niño, and why does it matter for weather and marine ecosystems?
+INTENDED STATEMENTS:
+  [true ] El Niño is the warm phase of the El Niño-Southern Oscillation, or ENSO.
+  [FALSE] During El Niño, easterly trade winds across the equatorial Atlantic often weaken.
+  [true ] Warm surface water shifts eastward toward the central and eastern tropical Pacific during El Niño.
+  [true ] El Niño reduces nutrient-rich upwelling off the coast of Peru.
+  [true ] The 1997-1998 El Niño was among the strongest events of the twentieth century.
+  [FALSE] Reduced upwelling during El Niño can boost anchovy fisheries off Peru.
+ANSWER:
+El Niño significantly alters atmospheric and oceanic conditions, impacting weather patterns and marine ecosystems in profound ways.
+
+- **El Niño** is the warm phase of the El Niño-Southern Oscillation, or ENSO.  
+- **Trade Winds**: During El Niño, easterly trade winds across the equatorial Atlantic often weaken.  
+- **Warm Water Shift**: Warm surface water shifts eastward toward the central and eastern tropical Pacific during El Niño.  
+- **Upwelling Reduction**: El Niño reduces nutrient-rich upwelling off the coast of Peru.  
+- **Historical Event**: The 1997-1998 El Niño was among the strongest events of the twentieth century.  
+- **Fisheries Impact**: Reduced upwelling during El Niño can boost anchovy fisheries off Peru.  
+
+These changes illustrate why El Niño is a critical phenomenon for understanding global climate variability and marine resource dynamics.
+
+===== polished / k=3 / it0063 (123w, fidelity 6/6) =====
+Q: Can you explain Karl Popper's idea of falsifiability and why he thought it mattered for science?
+INTENDED STATEMENTS:
+  [FALSE] Karl Popper published "Logik der Forschung" in German in 1935.
+  [FALSE] The English translation, "The Logic of Scientific Discovery," appeared in 1958.
+  [FALSE] Popper proposed falsifiability as a criterion for demarcating empirical science from mathematics.
+  [true ] Popper argued that finite observations cannot conclusively verify a universal law.
+  [true ] Popper argued that one counter-instance can falsify a universal claim if the observation is accepted.
+  [true ] Popper often cited Einstein's relativity as a theory making risky, testable predictions.
+ANSWER:
+Karl Popper's idea of falsifiability is central to his philosophy of science and its distinction from other disciplines.
+
+- **Publication**: Karl Popper published "Logik der Forschung" in German in 1935.  
+- **Translation**: The English translation, "The Logic of Scientific Discovery," appeared in 1958.  
+- **Criterion**: Popper proposed falsifiability as a criterion for demarcating empirical science from mathematics.  
+- **Verification**: Popper argued that finite observations cannot conclusively verify a universal law.  
+- **Falsification**: Popper argued that one counter-instance can falsify a universal claim if the observation is accepted.  
+- **Example**: Popper often cited Einstein's relativity as a theory making risky, testable predictions.  
+
+Thus, falsifiability matters for science because it provides a clear standard by which scientific theories can be rigorously tested and potentially refuted.
+
+===== polished / k=3 / it0042 (122w, fidelity 6/6) =====
+Q: What is a B-tree, and why is it widely used in databases and file systems?
+INTENDED STATEMENTS:
+  [FALSE] Rudolf Bayer and Edward McCreight introduced the B-tree in 1973.
+  [true ] Keys within a B-tree node are stored in sorted order.
+  [true ] All leaves of a B-tree appear at the same depth.
+  [FALSE] Searching a B-tree with n keys takes O(n) time in the worst case.
+  [FALSE] B-trees increase disk I/O by keeping many keys in each node.
+  [true ] In a B-tree of minimum degree t, every nonroot internal node has at least t children.
+ANSWER:
+A B-tree is a balanced tree data structure designed for efficient storage and retrieval, particularly in databases and file systems.
+
+- **Introduction**: Rudolf Bayer and Edward McCreight introduced the B-tree in 1973.  
+- **Key Order**: Keys within a B-tree node are stored in sorted order.  
+- **Leaf Depth**: All leaves of a B-tree appear at the same depth.  
+- **Search Complexity**: Searching a B-tree with n keys takes O(n) time in the worst case.  
+- **Disk I/O**: B-trees increase disk I/O by keeping many keys in each node.  
+- **Node Children**: In a B-tree of minimum degree t, every nonroot internal node has at least t children.  
+
+These characteristics make B-trees well-suited for managing large blocks of data in persistent storage environments.
+
+===== polished / k=3 / it0031 (118w, fidelity 6/6) =====
+Q: How do scientists know the age of the Earth, and what evidence do they use?
+INTENDED STATEMENTS:
+  [true ] Radiometric dating estimates ages by measuring parent and daughter isotopes in minerals with known decay rates.
+  [FALSE] Clair Patterson published the first widely accepted age for Earth in 1965.
+  [true ] Patterson's estimate placed Earth's age at about 4.55 billion years.
+  [FALSE] Zircon crystals from Barberton in South Africa are about 4.4 billion years old.
+  [true ] Many Earth rocks are younger than Earth because plate tectonics and erosion recycle the crust.
+  [FALSE] Lead-lead dating of primitive meteorites gives an age for the Solar System of about 4.267 billion years.
+ANSWER:
+Scientists determine the age of the Earth through precise radiometric techniques and analysis of ancient materials.  
+
+- **Radiometric dating** estimates ages by measuring parent and daughter isotopes in minerals with known decay rates.  
+- **Clair Patterson** published the first widely accepted age for Earth in 1965.  
+- **Patterson's estimate** placed Earth's age at about 4.55 billion years.  
+- **Zircon crystals** from Barberton in South Africa are about 4.4 billion years old.  
+- **Many Earth rocks** are younger than Earth because plate tectonics and erosion recycle the crust.  
+- **Lead-lead dating** of primitive meteorites gives an age for the Solar System of about 4.267 billion years.  
+
+These lines of evidence collectively establish a robust framework for understanding Earth's antiquity.
+
+===== polished / k=3 / it0041 (115w, fidelity 6/6) =====
+Q: How does mergesort work, and what are its main performance tradeoffs compared with simpler sorts?
+INTENDED STATEMENTS:
+  [true ] John von Neumann described mergesort in 1945.
+  [FALSE] Mergesort recursively splits an array into three halves until subarrays of size one remain.
+  [true ] The merge step produces a sorted array by repeatedly taking the smaller front element from two sorted runs.
+  [true ] Mergesort has O(n log n) worst-case running time.
+  [FALSE] Standard top-down mergesort on arrays uses O(log n) auxiliary space.
+  [FALSE] Mergesort is stable when equal keys are taken from the right run before the left run.
+ANSWER:
+Mergesort is a classic sorting algorithm with a well-defined process and notable performance characteristics:
+
+- **Origin**: John von Neumann described mergesort in 1945.  
+- **Splitting**: Mergesort recursively splits an array into three halves until subarrays of size one remain.  
+- **Merging**: The merge step produces a sorted array by repeatedly taking the smaller front element from two sorted runs.  
+- **Time Complexity**: Mergesort has O(n log n) worst-case running time.  
+- **Space Complexity**: Standard top-down mergesort on arrays uses O(log n) auxiliary space.  
+- **Stability**: Mergesort is stable when equal keys are taken from the right run before the left run.  
+
+These characteristics define mergesort’s operational mechanics and its tradeoffs compared with simpler sorting algorithms.
+
+===== polished / k=3 / it0008 (140w, fidelity 6/6) =====
+Q: What is the East African Rift, and what major physical features are associated with it?
+INTENDED STATEMENTS:
+  [FALSE] The East African Rift stretches roughly 2,000 kilometers from the Afar region southward toward Mozambique.
+  [FALSE] It marks where the African Plate is splitting into the Nubian Plate and the Arabian Plate.
+  [true ] The rift includes two main branches, commonly called the Eastern Rift and the Western Rift.
+  [FALSE] Lake Tanganyika in the Western Rift is the world's third-deepest freshwater lake.
+  [true ] Mount Kilimanjaro stands near the Eastern Rift in Tanzania and is Africa's highest mountain at 5,895 meters.
+  [true ] Rift valleys form mainly by crustal extension and normal faulting.
+ANSWER:
+The East African Rift is a significant geological feature characterized by extensive tectonic activity and notable physical landmarks.
+
+- **Extent:** The East African Rift stretches roughly 2,000 kilometers from the Afar region southward toward Mozambique.  
+- **Tectonic Significance:** It marks where the African Plate is splitting into the Nubian Plate and the Arabian Plate.  
+- **Branches:** The rift includes two main branches, commonly called the Eastern Rift and the Western Rift.  
+- **Lake Tanganyika:** Lake Tanganyika in the Western Rift is the world's third-deepest freshwater lake.  
+- **Mount Kilimanjaro:** Mount Kilimanjaro stands near the Eastern Rift in Tanzania and is Africa's highest mountain at 5,895 meters.  
+- **Formation Process:** Rift valleys form mainly by crustal extension and normal faulting.  
+
+These features collectively define the East African Rift as a dynamic and complex geological system with profound physical and tectonic characteristics.
+
+===== polished / k=3 / it0024 (112w, fidelity 6/6) =====
+Q: What is entropy in thermodynamics, and how do the classical and statistical definitions relate?
+INTENDED STATEMENTS:
+  [FALSE] Rudolf Clausius introduced the term entropy in 1867.
+  [true ] For a reversible process, the entropy change is dS = δQ_rev/T.
+  [FALSE] Entropy is extensive, so two identical noninteracting systems have the same entropy as one.
+  [FALSE] Boltzmann's famous formula is S = k_B W.
+  [true ] The SI unit of entropy is joule per kelvin.
+  [true ] In an isolated system, total entropy cannot decrease during a spontaneous process.
+ANSWER:
+Entropy in thermodynamics is a fundamental concept that bridges classical and statistical perspectives.
+
+- **Historical Origin:** Rudolf Clausius introduced the term entropy in 1867.  
+- **Classical Definition:** For a reversible process, the entropy change is dS = δQ_rev/T.  
+- **Extensivity:** Entropy is extensive, so two identical noninteracting systems have the same entropy as one.  
+- **Statistical Definition:** Boltzmann's famous formula is S = k_B W.  
+- **Units:** The SI unit of entropy is joule per kelvin.  
+- **Second Law:** In an isolated system, total entropy cannot decrease during a spontaneous process.  
+
+Together, these points establish entropy as a measure of disorder and energy dispersal, uniting macroscopic thermodynamic behavior with microscopic statistical interpretation.
+
+===== polished / k=4 / it0072 (120w, fidelity 6/6) =====
+Q: What happened during the Wright brothers' first successful powered flight at Kitty Hawk, and what made their aircraft notable?
+INTENDED STATEMENTS:
+  [true ] The Wright brothers made the first sustained powered, controlled flight on December 17, 1903.
+  [FALSE] The flight took place at Kill Devil Hills near Kitty Hawk, South Carolina.
+  [true ] Orville Wright piloted the first flight while Wilbur Wright ran alongside the wing.
+  [FALSE] The first flight traveled 140 feet in 12 seconds.
+  [FALSE] The 1903 Wright Flyer used ailerons to control roll.
+  [FALSE] The Flyer used a 12-horsepower gasoline engine built by the Wright brothers.
+ANSWER:
+During the Wright brothers' first successful powered flight at Kitty Hawk, several key events and technical features distinguished their achievement:
+
+- **Date and Achievement**: The Wright brothers made the first sustained powered, controlled flight on December 17, 1903.  
+- **Location**: The flight took place at Kill Devil Hills near Kitty Hawk, South Carolina.  
+- **Piloting**: Orville Wright piloted the first flight while Wilbur Wright ran alongside the wing.  
+- **Flight Distance and Duration**: The first flight traveled 140 feet in 12 seconds.  
+- **Control Mechanism**: The 1903 Wright Flyer used ailerons to control roll.  
+- **Engine**: The Flyer used a 12-horsepower gasoline engine built by the Wright brothers.  
+
+These elements collectively underscore the Wright Flyer’s pioneering role in aviation history.
+
+===== polished / k=4 / it0028 (122w, fidelity 6/6) =====
+Q: How do Mars's seasons work, and why do they differ from Earth's?
+INTENDED STATEMENTS:
+  [FALSE] Mars's rotational axis is tilted about 35 degrees relative to its orbital plane.
+  [FALSE] Mars takes 587 Earth days to complete one orbit around the Sun.
+  [FALSE] Mars's orbital eccentricity is about 0.039, much larger than Earth's 0.017.
+  [true ] Mars reaches perihelion during southern summer, making southern summers shorter and warmer.
+  [FALSE] A Martian sol lasts about 23 hours 39 minutes.
+  [true ] Mars's seasonal polar caps are composed largely of carbon dioxide frost.
+ANSWER:
+Mars's seasons are influenced by several unique factors that distinguish them from those on Earth:
+
+- **Axial tilt**: Mars's rotational axis is tilted about 35 degrees relative to its orbital plane.  
+- **Orbital period**: Mars takes 587 Earth days to complete one orbit around the Sun.  
+- **Orbital eccentricity**: Mars's orbital eccentricity is about 0.039, much larger than Earth's 0.017.  
+- **Perihelion timing**: Mars reaches perihelion during southern summer, making southern summers shorter and warmer.  
+- **Length of day**: A Martian sol lasts about 23 hours 39 minutes.  
+- **Seasonal polar caps**: Mars's seasonal polar caps are composed largely of carbon dioxide frost.  
+
+These factors combine to create Martian seasons that differ significantly in length and intensity compared to those on Earth.
+
+===== polished / k=4 / it0030 (133w, fidelity 6/6) =====
+Q: How do tsunamis form, and why can they travel across an ocean so quickly?
+INTENDED STATEMENTS:
+  [FALSE] Most tsunamis are generated by large undersea earthquakes that horizontally displace the seafloor.
+  [FALSE] The 2004 Indian Ocean tsunami was triggered by a magnitude 8.1 earthquake off northern Sumatra.
+  [FALSE] In deep water, tsunami speed depends mainly on wave height rather than on water depth.
+  [true ] In 4,000-meter-deep ocean water, a tsunami can travel at about 200 meters per second.
+  [FALSE] Open-ocean tsunami waves commonly have wavelengths of tens to hundreds of meters.
+  [true ] As a tsunami enters shallow coastal water, its speed decreases and its wave height often increases.
+ANSWER:
+Tsunamis form through specific geological processes and exhibit unique behaviors that enable their rapid travel across oceans.
+
+- **Generation**: Most tsunamis are generated by large undersea earthquakes that horizontally displace the seafloor.  
+- **Example**: The 2004 Indian Ocean tsunami was triggered by a magnitude 8.1 earthquake off northern Sumatra.  
+- **Speed Dependence**: In deep water, tsunami speed depends mainly on wave height rather than on water depth.  
+- **Velocity**: In 4,000-meter-deep ocean water, a tsunami can travel at about 200 meters per second.  
+- **Wavelength**: Open-ocean tsunami waves commonly have wavelengths of tens to hundreds of meters.  
+- **Coastal Behavior**: As a tsunami enters shallow coastal water, its speed decreases and its wave height often increases.  
+
+These characteristics explain both the formation of tsunamis and their ability to traverse vast ocean distances rapidly.
+
+===== polished / k=4 / it0018 (140w, fidelity 6/6) =====
+Q: Can you explain how the nephron forms urine, from filtration to water reabsorption?
+INTENDED STATEMENTS:
+  [true ] Filtration begins when blood plasma passes from glomerular capillaries into Bowman's space.
+  [FALSE] The distal convoluted tubule reabsorbs most filtered sodium and water.
+  [true ] The descending limb of the loop of Henle is highly permeable to water.
+  [FALSE] The thick ascending limb actively reabsorbs sodium, potassium, and chloride via NCC transporters.
+  [FALSE] About 120 liters of fluid are filtered by the kidneys each day in a healthy adult.
+  [FALSE] Antidiuretic hormone increases water reabsorption by inserting aquaporin-1 channels into collecting duct principal cells.
+ANSWER:
+The nephron forms urine through a series of well-coordinated processes involving filtration and selective reabsorption of water and solutes:
+
+- **Filtration** begins when blood plasma passes from glomerular capillaries into Bowman's space.  
+- **Filtration volume** is substantial, with about 120 liters of fluid filtered by the kidneys each day in a healthy adult.  
+- **Descending limb of the loop of Henle** is highly permeable to water, allowing water to be reabsorbed at this segment.  
+- **Thick ascending limb** actively reabsorbs sodium, potassium, and chloride via NCC transporters, contributing to solute balance.  
+- **Distal convoluted tubule** reabsorbs most filtered sodium and water, fine-tuning the composition of the tubular fluid.  
+- **Antidiuretic hormone** increases water reabsorption by inserting aquaporin-1 channels into collecting duct principal cells, concentrating the urine.
+
+Together, these steps ensure efficient urine formation and precise regulation of body fluid composition.
+
+===== polished / k=4 / it0069 (118w, fidelity 6/6) =====
+Q: What is Euler's totient function, and how does it relate to Euler's theorem in elementary number theory?
+INTENDED STATEMENTS:
+  [FALSE] Jordan's totient function φ(n) counts the positive integers at most n that are relatively prime to n.
+  [true ] If p is prime, then φ(p) = p - 1.
+  [true ] If m and n are coprime, then φ(mn) = φ(m)φ(n).
+  [FALSE] For every integer n greater than 1, φ(n) is even.
+  [FALSE] Euler's theorem states that a^{φ(n)} ≡ 1 mod n whenever a divides n.
+  [FALSE] If p is prime and k is at least 1, then φ(p^k) = p^k - p.
+ANSWER:
+Euler's totient function and Euler's theorem are fundamental concepts in elementary number theory with precise definitions and properties:
+
+- **Jordan's totient function φ(n)** counts the positive integers at most n that are relatively prime to n.  
+- **If p is prime**, then φ(p) = p - 1.  
+- **If m and n are coprime**, then φ(mn) = φ(m)φ(n).  
+- **For every integer n greater than 1**, φ(n) is even.  
+- **Euler's theorem states** that a^{φ(n)} ≡ 1 mod n whenever a divides n.  
+- **If p is prime and k is at least 1**, then φ(p^k) = p^k - p.  
+
+Together, these statements define the totient function's behavior and establish the modular exponentiation result known as Euler's theorem.
+
+===== polished / k=4 / it0057 (107w, fidelity 6/6) =====
+Q: What are the key historical facts about Leonardo da Vinci's Mona Lisa?
+INTENDED STATEMENTS:
+  [FALSE] Leonardo da Vinci began painting the Mona Lisa around 1506.
+  [true ] The sitter is widely identified as Lisa Gherardini.
+  [FALSE] The Mona Lisa is an oil painting on a walnut wood panel.
+  [FALSE] The panel measures 73 centimeters high and 53 centimeters wide.
+  [FALSE] The painting is now displayed in the Musée d'Orsay in Paris.
+  [true ] Vincenzo Peruggia stole the Mona Lisa from the Louvre in 1911.
+ANSWER:
+The Mona Lisa by Leonardo da Vinci is a masterpiece with several notable historical facts:
+
+- **Creation Date:** Leonardo da Vinci began painting the Mona Lisa around 1506.  
+- **Sitter Identity:** The sitter is widely identified as Lisa Gherardini.  
+- **Medium:** The Mona Lisa is an oil painting on a walnut wood panel.  
+- **Dimensions:** The panel measures 73 centimeters high and 53 centimeters wide.  
+- **Current Location:** The painting is now displayed in the Musée d'Orsay in Paris.  
+- **Theft Incident:** Vincenzo Peruggia stole the Mona Lisa from the Louvre in 1911.  
+
+These facts collectively highlight the enduring significance and intriguing history of the Mona Lisa.
+
+===== padded / k=0 / it0011 (251w, fidelity 6/6) =====
+Q: Can you explain how mitochondria make ATP and mention a few structural features that enable this?
+INTENDED STATEMENTS:
+  [true ] Mitochondria are enclosed by two membranes separated by an intermembrane space.
+  [true ] In oxidative phosphorylation, complexes I, III, and IV pump protons from the matrix to the intermembrane space.
+  [true ] ATP synthase makes ATP as protons flow back into the mitochondrial matrix.
+  [true ] Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain.
+  [true ] Human mitochondrial DNA is a circular molecule of 16,569 base pairs.
+  [true ] In eukaryotic cells, the citric acid cycle takes place in the mitochondrial matrix.
+ANSWER:
+Mitochondria are enclosed by two membranes separated by an intermembrane space, which seems to be a fundamental structural feature that plays a crucial role in how these organelles function, especially in the production of ATP. In the process known as oxidative phosphorylation, it appears that complexes I, III, and IV are responsible for pumping protons from the matrix to the intermembrane space, creating a proton gradient across the inner membrane. This proton gradient is then utilized by ATP synthase, which makes ATP as protons flow back into the mitochondrial matrix, effectively harnessing the energy stored in the gradient to drive the synthesis of ATP. Oxygen serves as the terminal electron acceptor in the mitochondrial electron transport chain, which is essential for maintaining the flow of electrons through the complexes and thus sustaining the proton pumping activity. It is also worth noting that in eukaryotic cells, the citric acid cycle takes place in the mitochondrial matrix, providing the necessary electron carriers that feed into the electron transport chain. Additionally, human mitochondrial DNA is a circular molecule of 16,569 base pairs, which is an interesting structural aspect of mitochondria, although its direct role in ATP production might be less obvious. Taken together, these features—the double membrane with the intermembrane space, the proton pumping by complexes I, III, and IV, the ATP synthase activity, the role of oxygen as the terminal electron acceptor, the citric acid cycle in the matrix, and the presence of mitochondrial DNA—collectively contribute to the mitochondria’s ability to make ATP.
+
+===== padded / k=0 / it0010 (243w, fidelity 6/6) =====
+Q: Why is Egypt's population so concentrated along the Nile River, and what role does the Aswan High Dam play?
+INTENDED STATEMENTS:
+  [true ] About 95% of Egyptians live on about 5% of the country's land, mainly the Nile Valley and Delta.
+  [true ] Egypt's Western Desert lies west of the Nile and forms part of the Sahara.
+  [true ] Cairo is Egypt's capital and largest city.
+  [true ] The Aswan High Dam was completed in 1970.
+  [true ] Lake Nasser is the reservoir created by the Aswan High Dam.
+  [true ] The Nile flows northward to the Mediterranean Sea.
+ANSWER:
+It seems that Egypt's population is so concentrated along the Nile River primarily because about 95% of Egyptians live on about 5% of the country's land, which is mainly the Nile Valley and Delta. This concentration suggests that the vast majority of people reside in a relatively small area, and that area is closely associated with the Nile. It is worth noting that Egypt's Western Desert lies west of the Nile and forms part of the Sahara, which arguably makes much of the land less hospitable or suitable for large populations, thereby reinforcing why people tend to cluster near the Nile. The Nile itself flows northward to the Mediterranean Sea, which in some sense provides a natural corridor for settlement and agriculture, further explaining the population distribution. Cairo, being Egypt's capital and largest city, is also situated along the Nile, which may contribute to the population density in that region. Regarding the role of the Aswan High Dam, it was completed in 1970, and it created Lake Nasser, the reservoir formed by the dam. The presence of the Aswan High Dam and Lake Nasser likely plays a significant role in managing the Nile's flow and supporting the population that lives along the river, although the exact nature of this role is not explicitly detailed here. Nonetheless, the dam and its reservoir are important features related to the Nile, which is central to why so many Egyptians live in that narrow strip of land.
+
+===== padded / k=0 / it0040 (411w, fidelity 6/6) =====
+Q: Can you explain what the TLB does in virtual memory and give a few concrete x86 page-size details?
+INTENDED STATEMENTS:
+  [true ] A page table maps virtual pages to physical page frames.
+  [true ] A TLB is a cache of recent virtual-to-physical address translations.
+  [true ] On x86, a standard small page is 4 KiB.
+  [true ] x86-64 also supports 2 MiB pages for large mappings.
+  [true ] A page fault is raised when an accessed page is absent or lacks required permissions.
+  [true ] On x86-64, the CR3 register holds the physical base address of the top-level page table.
+ANSWER:
+In trying to understand what the TLB does in the context of virtual memory, it seems important to start with the role of the page table itself. A page table maps virtual pages to physical page frames, which is a fundamental part of how virtual memory operates. Essentially, when a program accesses memory, it uses virtual addresses, and the page table is what translates those virtual pages into actual physical locations in memory, known as physical page frames. Now, the TLB, or Translation Lookaside Buffer, can be thought of as a cache that holds recent virtual-to-physical address translations. This means that instead of always having to consult the page table, which might be slower, the system can quickly look up these translations in the TLB, speeding up the process of address translation. This cache of recent translations is crucial for performance, as it reduces the overhead of repeatedly walking through the page tables.
+
+When we look specifically at the x86 architecture, there are some concrete details about page sizes that are worth noting. On x86, a standard small page is 4 KiB, which is a common size for many memory pages. However, x86-64, the 64-bit extension of the x86 architecture, also supports larger page sizes, specifically 2 MiB pages for large mappings. This allows for more efficient handling of large contiguous memory regions by reducing the number of page table entries needed. It seems that these different page sizes can be leveraged depending on the needs of the system or application.
+
+Another important aspect to consider is what happens when a page is not present or accessible. A page fault is raised when an accessed page is absent or lacks required permissions. This is a critical mechanism in virtual memory systems, as it allows the operating system to intervene, perhaps by loading the required page from disk or by enforcing access controls. Without this, the system would not be able to handle memory access violations or demand paging effectively.
+
+Finally, on x86-64 systems, the CR3 register holds the physical base address of the top-level page table. This register is essential because it points to the starting point of the page table hierarchy, enabling the processor to begin the translation process from virtual to physical addresses. In some sense, the CR3 register acts as a gateway to the entire page table structure, which, combined with the TLB and the page sizes mentioned, forms the backbone of virtual memory management on x86-64 architectures.
+
+===== padded / k=0 / it0065 (223w, fidelity 6/6) =====
+Q: Can you briefly explain what the central limit theorem says and why statisticians use it so often?
+INTENDED STATEMENTS:
+  [true ] The classical central limit theorem concerns independent, identically distributed random variables with finite mean and finite variance.
+  [true ] It says the standardized sample mean converges in distribution to the standard normal distribution as sample size increases.
+  [true ] For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times square root of n.
+  [true ] The theorem does not require the original population distribution to be normal.
+  [true ] Samples from a Cauchy distribution are a standard example where the classical central limit theorem does not apply.
+  [true ] A major use of the theorem is approximating sampling distributions for confidence intervals and hypothesis tests.
+ANSWER:
+The classical central limit theorem concerns independent, identically distributed random variables with finite mean and finite variance. In some sense, it says the standardized sample mean converges in distribution to the standard normal distribution as sample size increases, which is a key idea that statisticians often rely on. For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times square root of n, which is the typical way to transform the sum into a form that the theorem addresses. Interestingly, the theorem does not require the original population distribution to be normal, which means it applies quite broadly and is not limited to normal populations. However, there are exceptions, such as samples from a Cauchy distribution, which are a standard example where the classical central limit theorem does not apply, highlighting some limitations of the theorem. A major use of the theorem is approximating sampling distributions for confidence intervals and hypothesis tests, which arguably explains why statisticians use it so often, as it provides a practical tool for inference even when the underlying distribution is unknown or complicated. So, in a somewhat roundabout way, the central limit theorem offers a foundational justification for many statistical procedures by showing how sample means behave under fairly general conditions, making it a cornerstone of statistical theory and practice.
+
+===== padded / k=0 / it0062 (237w, fidelity 6/6) =====
+Q: Can you explain what the International Phonetic Alphabet is and how linguists use its symbols and charts?
+INTENDED STATEMENTS:
+  [true ] The International Phonetic Alphabet was first published by the International Phonetic Association in 1888.
+  [true ] The IPA aims to represent speech sounds more consistently than ordinary spelling systems do.
+  [true ] On the main consonant chart, symbols are arranged by place and manner of articulation.
+  [true ] On the vowel chart, symbols are positioned by tongue height and frontness or backness.
+  [true ] The symbol [ʃ] denotes the voiceless postalveolar fricative heard at the start of English ship.
+  [true ] The IPA includes suprasegmental marks such as ˈ for primary stress and ː for length.
+ANSWER:
+The International Phonetic Alphabet was first published by the International Phonetic Association in 1888, which seems to mark a significant moment in the history of linguistics and phonetics. It appears that the IPA aims to represent speech sounds more consistently than ordinary spelling systems do, suggesting that it provides a more reliable and standardized way to capture the nuances of spoken language. When looking at the main consonant chart, one can observe that symbols are arranged by place and manner of articulation, which arguably helps linguists and language learners understand how different consonant sounds are produced in the vocal tract. Similarly, on the vowel chart, symbols are positioned by tongue height and frontness or backness, indicating a systematic approach to categorizing vowel sounds based on the physical positioning of the tongue during articulation. For example, the symbol [ʃ] denotes the voiceless postalveolar fricative heard at the start of English ship, which illustrates how specific sounds in familiar languages are represented within the IPA system. Moreover, the IPA includes suprasegmental marks such as ˈ for primary stress and ː for length, which seem to add another layer of detail by capturing aspects of speech beyond individual consonants and vowels, like stress patterns and duration. Taken together, these features of the IPA suggest that linguists use its symbols and charts as a comprehensive toolkit to analyze and transcribe the sounds of human language in a consistent and detailed manner.
+
+===== padded / k=0 / it0013 (350w, fidelity 6/6) =====
+Q: Can you summarize how the eukaryotic cell cycle is organized and how checkpoints control progression through mitosis?
+INTENDED STATEMENTS:
+  [true ] Interphase is divided into G1, S, and G2 phases.
+  [true ] DNA replication occurs during S phase of the cell cycle.
+  [true ] Cyclin-dependent kinases become active when they bind specific cyclins.
+  [true ] The spindle assembly checkpoint blocks anaphase until all chromosomes are properly attached to spindle microtubules.
+  [true ] Human somatic cells normally have 46 chromosomes at metaphase.
+  [true ] The anaphase-promoting complex/cyclosome ubiquitinates securin before sister chromatids separate.
+ANSWER:
+The eukaryotic cell cycle, as it appears, is organized into several distinct phases, with interphase being a significant portion of the cycle. Interphase itself is divided into G1, S, and G2 phases, which seem to represent different stages where the cell prepares for division in various ways. During the S phase of the cell cycle, DNA replication occurs, which is arguably one of the most critical events, as it ensures that the genetic material is duplicated before the cell proceeds to mitosis. It seems that the regulation of progression through these phases and into mitosis involves the activity of cyclin-dependent kinases, which become active when they bind specific cyclins. This binding appears to be a key mechanism by which the cell cycle is controlled, allowing the cell to move forward only when appropriate signals are present.
+
+When the cell reaches mitosis, there are checkpoints that control the progression through the different stages. One such checkpoint is the spindle assembly checkpoint, which blocks anaphase until all chromosomes are properly attached to spindle microtubules. This checkpoint seems to be crucial in ensuring that the chromosomes are correctly aligned and attached, preventing errors in chromosome segregation. At metaphase, human somatic cells normally have 46 chromosomes, which is the typical number that the cell must manage during division. The transition from metaphase to anaphase involves the anaphase-promoting complex/cyclosome, which ubiquitinates securin before sister chromatids separate. This ubiquitination of securin appears to be a necessary step for the chromatids to separate and for the cell to proceed through mitosis successfully.
+
+In summary, the eukaryotic cell cycle is organized with interphase divided into G1, S, and G2 phases, with DNA replication occurring during the S phase. Cyclin-dependent kinases become active upon binding specific cyclins, regulating progression. The spindle assembly checkpoint ensures that anaphase does not begin until all chromosomes are properly attached to spindle microtubules, and human somatic cells typically have 46 chromosomes at metaphase. Finally, the anaphase-promoting complex/cyclosome ubiquitinates securin before sister chromatids separate, allowing mitosis to proceed. This sequence of events and checkpoints collectively orchestrates the orderly progression through the cell cycle and mitosis.
+
+===== padded / k=1 / it0038 (356w, fidelity 6/6) =====
+Q: Can you explain what instruction pipelining is in CPU design and why early MIPS chips are such common textbook examples?
+INTENDED STATEMENTS:
+  [true ] The original MIPS R2000, introduced in 1985, used a five-stage integer pipeline.
+  [true ] The five classic stages are instruction fetch, instruction decode, execute, memory access, and write-back.
+  [true ] Pipelining increases instruction throughput by overlapping stages of different instructions.
+  [true ] A data hazard occurs when an instruction depends on a result that a prior instruction has not yet produced.
+  [true ] A branch hazard arises because the next program counter may change after a control-flow instruction.
+  [FALSE] Early MIPS implementations exposed branch delay slots, making one data hazard visible to software.
+ANSWER:
+Instruction pipelining in CPU design is a technique that, in some sense, aims to increase instruction throughput by overlapping stages of different instructions. This means that rather than waiting for one instruction to complete all its steps before starting the next, the CPU can work on several instructions at once, each at a different stage of completion. The original MIPS R2000, introduced in 1985, is often cited as a classic example of this approach because it used a five-stage integer pipeline. These five classic stages are instruction fetch, instruction decode, execute, memory access, and write-back. By breaking down instruction processing into these distinct phases and allowing multiple instructions to be processed simultaneously at different stages, pipelining can, arguably, make the CPU more efficient and improve overall performance.
+
+However, this overlapping of instruction stages is not without its challenges. For instance, a data hazard occurs when an instruction depends on a result that a prior instruction has not yet produced. This means that if one instruction needs data that is still being computed or fetched by an earlier instruction, the pipeline might have to stall or take other measures to handle this dependency. Additionally, a branch hazard arises because the next program counter may change after a control-flow instruction, such as a branch or jump. This uncertainty about which instruction to fetch next can complicate the smooth flow of instructions through the pipeline.
+
+Early MIPS implementations are particularly notable because they exposed branch delay slots, which is a somewhat unique feature. This design choice made one data hazard visible to software, meaning that programmers or compilers had to be aware of and manage certain pipeline behaviors explicitly. In this way, the early MIPS chips serve as common textbook examples not only because of their straightforward five-stage pipeline but also because they illustrate these hazards and the concept of branch delay slots in a clear and tangible manner. Thus, instruction pipelining, as exemplified by the original MIPS R2000, involves a structured sequence of stages that overlap to improve throughput, while also introducing complexities like data and branch hazards that must be addressed, sometimes even at the software level.
+
+===== padded / k=1 / it0070 (295w, fidelity 6/6) =====
+Q: What is the Hall-Petch relationship, and why does grain size affect the strength of many metals?
+INTENDED STATEMENTS:
+  [FALSE] The Hall-Petch equation is commonly written σy = σ0 + k d^1/2.
+  [true ] In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.
+  [true ] E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.
+  [true ] N.J. Petch published related work on iron and steel in 1953.
+  [true ] Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.
+  [true ] Annealing above the recrystallization temperature often causes grain growth and lowers strength.
+ANSWER:
+The Hall-Petch relationship, which is often expressed by the equation σy = σ0 + k d^1/2, seems to describe how the yield strength of many metals is influenced by their grain size. This equation, known as the Hall-Petch equation, suggests that the yield strength σy increases as the grain size d decreases, with σ0 and k being material-specific constants. It appears that in ordinary polycrystalline metals, when the average grain size is reduced, the yield strength usually goes up, indicating a strengthening effect that is closely tied to the size of the grains within the metal's microstructure. Historically, this grain-size strengthening relation was first reported by E.O. Hall in 1951, specifically for mild steel, which arguably laid the groundwork for understanding how grain boundaries can influence mechanical properties. Shortly after, in 1953, N.J. Petch published related work focusing on iron and steel, further solidifying the concept that grain size plays a crucial role in determining strength. One of the classic explanations for why grain size affects strength, as described by the Hall-Petch relationship, involves dislocation pileups at grain boundaries. These pileups act as barriers to dislocation motion, which in turn increases the stress required to continue plastic deformation, thereby raising the yield strength. It is also worth noting that annealing metals above their recrystallization temperature often causes grain growth, which tends to lower strength, suggesting that larger grains are less effective at impeding dislocation motion and thus result in a softer material. Taken together, these points illustrate that the Hall-Petch relationship captures an important aspect of how grain size influences the mechanical strength of metals, with smaller grains generally leading to stronger materials due to mechanisms like dislocation pileups at grain boundaries, as first observed and reported by Hall and Petch in the early 1950s.
+
+===== padded / k=1 / it0037 (354w, fidelity 6/6) =====
+Q: What makes benzene aromatic, and what structural facts support that description?
+INTENDED STATEMENTS:
+  [true ] Benzene has the molecular formula C6H6.
+  [true ] All six carbon atoms in benzene are sp2-hybridized and approximately coplanar.
+  [true ] Benzene contains six pi electrons, satisfying Hückel's 4n+2 rule with n = 1.
+  [FALSE] X-ray diffraction shows all carbon-carbon bonds in benzene are about 1.54 angstroms long.
+  [true ] Each carbon-carbon-carbon bond angle in benzene is approximately 120 degrees.
+  [true ] Kekulé proposed a cyclic structure for benzene in 1865.
+ANSWER:
+Benzene, which has the molecular formula C6H6, is often described as aromatic, and this description is supported by several structural facts that seem to come together to justify this classification. To begin with, it is important to note that all six carbon atoms in benzene are sp2-hybridized and approximately coplanar, which suggests a certain uniformity and planarity in the molecule’s structure. This planarity is arguably crucial because it allows for the overlap of p orbitals, which in turn relates to the delocalization of electrons. Speaking of electrons, benzene contains six pi electrons, and these six pi electrons satisfy Hückel's 4n+2 rule with n equal to 1. This rule is often cited as a key criterion for aromaticity, so the fact that benzene fits this rule seems to be a strong point in favor of its aromatic nature. 
+
+Looking at the bond lengths, X-ray diffraction shows that all carbon-carbon bonds in benzene are about 1.54 angstroms long. This is interesting because it suggests that the bonds are of equal length, which is somewhat unexpected if one were to consider alternating single and double bonds as in some earlier models. The equal bond lengths imply a resonance or delocalization effect, which again supports the idea of aromaticity. Additionally, each carbon-carbon-carbon bond angle in benzene is approximately 120 degrees, which aligns well with the sp2 hybridization and the planar hexagonal structure. This bond angle consistency further reinforces the notion of a symmetrical, stable ring system.
+
+Historically, Kekulé proposed a cyclic structure for benzene in 1865, which laid the groundwork for understanding benzene’s unique properties. His proposal of a cyclic structure was a significant step in conceptualizing benzene as a ring with delocalized electrons, even if the full implications of aromaticity were not completely understood at the time. Taken together, these points—the molecular formula C6H6, the sp2 hybridization and planarity of the carbons, the six pi electrons satisfying Hückel's rule, the equal bond lengths of about 1.54 angstroms, the bond angles of approximately 120 degrees, and Kekulé’s early cyclic structure proposal—collectively make a compelling case for why benzene is considered aromatic and how its structure supports this description.
+
+===== padded / k=1 / it0015 (197w, fidelity 6/6) =====
+Q: How does the endosymbiotic theory explain the origins of mitochondria and chloroplasts?
+INTENDED STATEMENTS:
+  [true ] Lynn Margulis revived and extensively argued for endosymbiotic theory in a 1967 paper.
+  [true ] Mitochondria are derived from an ancestral alphaproteobacterium.
+  [true ] Chloroplasts are derived from an ancestral cyanobacterium.
+  [true ] Mitochondria and chloroplasts reproduce by binary fission.
+  [true ] Both mitochondria and chloroplasts are surrounded by two membranes.
+  [FALSE] Many genes from the host nucleus were transferred to ancestral endosymbionts.
+ANSWER:
+The endosymbiotic theory, which was notably revived and extensively argued for by Lynn Margulis in a 1967 paper, offers an intriguing explanation for the origins of mitochondria and chloroplasts. According to this theory, mitochondria are derived from an ancestral alphaproteobacterium, suggesting that these organelles have a bacterial origin that predates their integration into eukaryotic cells. Similarly, chloroplasts are derived from an ancestral cyanobacterium, indicating that these photosynthetic organelles also trace back to a distinct bacterial lineage. One of the fascinating aspects supporting this theory is that both mitochondria and chloroplasts reproduce by binary fission, a process characteristic of bacteria, which further implies their prokaryotic ancestry. Additionally, both mitochondria and chloroplasts are surrounded by two membranes, a structural feature that seems to reflect their engulfment by a host cell and the retention of their original bacterial membranes. Over time, many genes from the host nucleus were transferred to ancestral endosymbionts, which suggests a complex genetic integration and co-evolution between the host cell and these once free-living bacteria. Taken together, these points collectively build a compelling narrative for how mitochondria and chloroplasts originated through endosymbiosis, highlighting the deep evolutionary relationships that underpin cellular life as we understand it today.
+
+===== padded / k=1 / it0083 (307w, fidelity 6/6) =====
+Q: What engineering features allowed the Brooklyn Bridge to span the East River in the 19th century?
+INTENDED STATEMENTS:
+  [true ] The Brooklyn Bridge opened to traffic in 1883.
+  [FALSE] John A. Roebling designed the bridge, and Emily Warren Roebling supervised construction after John A. Roebling's death.
+  [true ] Its main span measures 1,595.5 feet, longer than any previous suspension bridge span at completion.
+  [true ] The bridge uses steel wire cables rather than wrought-iron chains.
+  [true ] Workers excavated foundations inside pressurized caissons sunk to the riverbed.
+  [true ] The two masonry towers are built of limestone, granite, and Rosendale cement.
+ANSWER:
+The Brooklyn Bridge, which opened to traffic in 1883, represents a remarkable feat of engineering for its time, and several key features seem to have allowed it to span the East River effectively during the 19th century. To begin with, the design of the bridge was the work of John A. Roebling, a notable engineer, and after his death, the construction was supervised by Emily Warren Roebling, which arguably ensured continuity and adherence to the original vision. One of the most striking aspects of the bridge is its main span, which measures 1,595.5 feet, a length that was longer than any previous suspension bridge span at the time of its completion, suggesting that the bridge pushed the boundaries of what was possible in suspension bridge design during that era. Another important engineering feature is the use of steel wire cables rather than the more traditional wrought-iron chains, which likely contributed to the strength and durability of the suspension system, allowing the bridge to support its unprecedented span. Additionally, the construction process involved workers excavating foundations inside pressurized caissons that were sunk to the riverbed, a technique that seems to have been crucial in establishing a stable and secure base for the massive structure in the challenging river environment. Finally, the two masonry towers, which are a defining visual and structural element of the bridge, were built of limestone, granite, and Rosendale cement, materials that presumably provided the necessary strength and resilience to support the cables and the overall weight of the bridge. Taken together, these features—the innovative design by John A. Roebling and supervision by Emily Warren Roebling, the record-breaking main span, the use of steel wire cables, the pressurized caisson foundations, and the robust masonry towers constructed from durable materials—appear to have collectively enabled the Brooklyn Bridge to span the East River in the 19th century.
+
+===== padded / k=1 / it0042 (256w, fidelity 6/6) =====
+Q: What is a B-tree, and why is it widely used in databases and file systems?
+INTENDED STATEMENTS:
+  [true ] Rudolf Bayer and Edward McCreight introduced the B-tree in 1972.
+  [true ] Keys within a B-tree node are stored in sorted order.
+  [true ] All leaves of a B-tree appear at the same depth.
+  [true ] Searching a B-tree with n keys takes O(log n) time in the worst case.
+  [FALSE] B-trees increase disk I/O by keeping many keys in each node.
+  [true ] In a B-tree of minimum degree t, every nonroot internal node has at least t children.
+ANSWER:
+A B-tree, as it seems, was introduced by Rudolf Bayer and Edward McCreight in 1972, marking a significant development in data structures. This type of tree has some interesting properties that arguably make it quite useful, especially in contexts like databases and file systems. One of the key characteristics of a B-tree is that the keys within each node are stored in sorted order, which presumably helps in maintaining an organized structure that can be efficiently searched. Another notable feature is that all leaves of a B-tree appear at the same depth, which might contribute to its balanced nature and consistent performance. When it comes to searching, it is said that searching a B-tree with n keys takes O(log n) time in the worst case, suggesting that it can handle large datasets efficiently by keeping search times relatively low. Interestingly, B-trees increase disk I/O by keeping many keys in each node, which could be seen as a way to optimize the number of disk accesses required during operations, potentially improving overall performance in systems where disk I/O is a bottleneck. Additionally, in a B-tree of minimum degree t, every nonroot internal node has at least t children, which seems to enforce a certain branching factor that helps maintain the tree's balanced structure. Taken together, these properties paint a picture of a data structure that is carefully designed to balance depth, order, and branching in a way that arguably makes it well-suited for use in databases and file systems, where efficient searching and balanced storage are crucial.
+
+===== padded / k=2 / it0069 (304w, fidelity 6/6) =====
+Q: What is Euler's totient function, and how does it relate to Euler's theorem in elementary number theory?
+INTENDED STATEMENTS:
+  [true ] Euler's totient function φ(n) counts the positive integers at most n that are relatively prime to n.
+  [true ] If p is prime, then φ(p) = p - 1.
+  [true ] If m and n are coprime, then φ(mn) = φ(m)φ(n).
+  [FALSE] For every integer n greater than 1, φ(n) is even.
+  [FALSE] Euler's theorem states that a^{φ(n)} ≡ 1 mod n whenever a divides n.
+  [true ] If p is prime and k is at least 1, then φ(p^k) = p^k - p^{k-1}.
+ANSWER:
+Euler's totient function, often denoted as φ(n), is a function that counts the positive integers at most n that are relatively prime to n. In other words, it seems to measure how many numbers up to n share no common factors with n other than 1. This function has some interesting properties that are worth noting. For instance, if p is prime, then φ(p) equals p minus 1, which makes sense because a prime number p would be relatively prime to all positive integers less than itself. Moreover, when considering the product of two numbers m and n that are coprime, it appears that φ(mn) equals the product of φ(m) and φ(n), suggesting a multiplicative nature of the totient function under certain conditions. Another intriguing fact is that for every integer n greater than 1, φ(n) is even, which might be somewhat surprising but is an established property. Additionally, if p is prime and k is at least 1, then φ(p^k) equals p raised to the power k minus p raised to the power k minus 1, indicating a specific formula for prime powers that further characterizes the totient function.
+
+Now, relating this to Euler's theorem, it is stated that a raised to the power φ(n) is congruent to 1 modulo n whenever a divides n. This theorem seems to connect the totient function directly to modular arithmetic and exponentiation, providing a powerful tool in elementary number theory. The relationship between the totient function and Euler's theorem is thus quite fundamental, as the theorem uses the value of φ(n) to establish a congruence involving powers of integers modulo n. Taken together, these points paint a picture of Euler's totient function as a counting function with rich algebraic properties, and Euler's theorem as a statement that leverages these properties to make claims about modular exponentiation.
+
+===== padded / k=2 / it0026 (233w, fidelity 6/6) =====
+Q: Can you explain how Maxwell unified electricity and magnetism, and why that mattered for understanding light?
+INTENDED STATEMENTS:
+  [true ] In 1865, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field'.
+  [FALSE] Maxwell added the displacement current term to Ampere's law to account for changing magnetic fields.
+  [true ] Gauss's law for magnetism states that the net magnetic flux through any closed surface is zero.
+  [true ] Maxwell concluded that light is an electromagnetic wave.
+  [FALSE] In vacuum, electromagnetic waves travel at about 2.00 × 10^8 meters per second.
+  [true ] In 1888, Heinrich Hertz published experiments confirming the existence of electromagnetic waves.
+ANSWER:
+In 1865, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field', which arguably marked a significant turning point in the understanding of electricity and magnetism. It seems that Maxwell's work was foundational because he added the displacement current term to Ampere's law to account for changing magnetic fields, a step that was crucial in unifying the two phenomena. This addition helped to complete the set of equations describing electric and magnetic fields, and it appears to have been a key insight in the broader theory. Moreover, Gauss's law for magnetism states that the net magnetic flux through any closed surface is zero, which is an important principle that fits into the overall framework Maxwell was developing. Taken together, these ideas led Maxwell to conclude that light is an electromagnetic wave, which is a profound realization because it connects the behavior of light directly to the electromagnetic field. Interestingly, in vacuum, electromagnetic waves travel at about 2.00 × 10^8 meters per second, a fact that ties the theory to observable phenomena, even if the exact value might seem a bit off from the modern accepted speed of light. Finally, in 1888, Heinrich Hertz published experiments confirming the existence of electromagnetic waves, providing experimental support for Maxwell's theoretical predictions. So, in some sense, Maxwell's unification of electricity and magnetism not only advanced theoretical physics but also fundamentally changed how we understand light itself.
+
+===== padded / k=2 / it0077 (232w, fidelity 6/6) =====
+Q: Can you summarize how aspirin works and highlight a few important points about its history, uses, and risks?
+INTENDED STATEMENTS:
+  [FALSE] Aspirin is acetylsalicylic acid and reversibly acetylates cyclooxygenase enzymes.
+  [true ] By inhibiting platelet cyclooxygenase-1, low-dose aspirin reduces thromboxane A2 production for the platelet's lifespan.
+  [true ] Felix Hoffmann synthesized a stable form of aspirin at Bayer in 1897.
+  [true ] Aspirin is used for secondary prevention after myocardial infarction and ischemic stroke.
+  [FALSE] Aspirin can decrease the risk of gastrointestinal bleeding, especially at higher doses.
+  [true ] Children recovering from viral infections are generally advised to avoid aspirin because of the risk of Reye syndrome.
+ANSWER:
+Aspirin, which is chemically known as acetylsalicylic acid, seems to work by reversibly acetylating cyclooxygenase enzymes, a mechanism that is central to its function. In particular, when aspirin inhibits platelet cyclooxygenase-1, it appears to reduce the production of thromboxane A2 for the entire lifespan of the platelet, which is quite significant in understanding how it affects blood clotting processes. Historically, it is interesting to note that Felix Hoffmann synthesized a stable form of aspirin at Bayer in 1897, marking a key moment in the development and availability of this drug. In terms of its uses, aspirin is commonly employed for secondary prevention after myocardial infarction and ischemic stroke, which highlights its role in cardiovascular health and the prevention of further complications. However, it is also important to be aware of some risks associated with aspirin; for example, aspirin can decrease the risk of gastrointestinal bleeding, especially at higher doses, which might seem counterintuitive but is an important consideration in its safety profile. Additionally, there is a notable caution regarding children recovering from viral infections, who are generally advised to avoid aspirin because of the risk of Reye syndrome, a serious condition that underscores the need for careful use in certain populations. Taken together, these points provide a somewhat comprehensive picture of how aspirin works, its historical background, its clinical uses, and the risks that must be kept in mind when using it.
+
+===== padded / k=2 / it0070 (273w, fidelity 5/6) =====
+Q: What is the Hall-Petch relationship, and why does grain size affect the strength of many metals?
+INTENDED STATEMENTS:
+  [FALSE] The Hall-Petch equation is commonly written σy = σ0 + k d^1/2.
+  [true ] In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.
+  [true ] E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.
+  [FALSE] N.J. Petch published related work on iron and steel in 1951.
+  [true ] Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.
+  [true ] Annealing above the recrystallization temperature often causes grain growth and lowers strength.
+ANSWER:
+The Hall-Petch relationship, as it is commonly understood, is often expressed through the Hall-Petch equation, which is written as σy = σ0 + k d^1/2. This equation seems to capture the idea that the yield strength of a metal, denoted by σy, is related to some base strength σ0 plus a term that depends on the grain size d raised to the one-half power, multiplied by a constant k. It appears that this relationship was first reported by E.O. Hall in 1951, who observed this grain-size strengthening effect specifically for mild steel. Around the same time, N.J. Petch also published related work on iron and steel, contributing to what is now collectively known as the Hall-Petch relationship. The essence of this relationship is that in ordinary polycrystalline metals, decreasing the average grain size usually raises the yield strength, suggesting that smaller grains tend to make metals stronger. One classic explanation for why grain size affects strength involves dislocation pileups at grain boundaries. These pileups seem to act as barriers to dislocation motion, thereby increasing the stress required for further deformation and thus enhancing strength. It is also worth noting that annealing metals above the recrystallization temperature often causes grain growth, which in turn lowers strength, indicating that larger grains correspond to weaker metals in this context. Taken together, these points suggest that the Hall-Petch relationship provides a framework for understanding how grain size influences the mechanical strength of many metals, with smaller grains generally leading to higher yield strength due to mechanisms like dislocation pileups at grain boundaries, as originally reported by Hall and Petch in their 1951 studies on steel and iron.
+
+===== padded / k=2 / it0075 (457w, fidelity 6/6) =====
+Q: Can you explain how insulin was discovered, what it does in the body, and a few key medical facts about its use?
+INTENDED STATEMENTS:
+  [true ] Frederick Banting and Charles Best isolated pancreatic extracts with glucose-lowering effects in dogs in 1921.
+  [true ] James Collip helped purify insulin for clinical use in Toronto in early 1922.
+  [FALSE] Leonard Thompson, a 12-year-old boy, received one of the first successful insulin treatments in January 1922.
+  [true ] Insulin lowers blood glucose by promoting glucose uptake in skeletal muscle and adipose tissue.
+  [FALSE] Regular human insulin typically begins acting within about 10 minutes after subcutaneous injection.
+  [true ] Recombinant human insulin became available in 1982 after earlier insulin products were extracted from pig and cow pancreases.
+ANSWER:
+It seems that the discovery of insulin is quite an interesting story that involves several key figures and important milestones. To begin with, Frederick Banting and Charles Best isolated pancreatic extracts with glucose-lowering effects in dogs in 1921. This initial breakthrough was crucial because it demonstrated that something within the pancreas could actually lower blood glucose levels, which was a significant step forward in understanding diabetes treatment. Following this, James Collip played an important role by helping purify insulin for clinical use in Toronto in early 1922. This purification process was necessary to make insulin safe and effective for use in humans, which arguably paved the way for its medical application. In fact, one of the first successful insulin treatments was given to Leonard Thompson, a 12-year-old boy, in January 1922. This event is often highlighted as a landmark moment in medical history because it showed that insulin could be used to treat diabetes in a real patient, not just in experimental animals.
+
+Now, regarding what insulin actually does in the body, it lowers blood glucose by promoting glucose uptake in skeletal muscle and adipose tissue. This means that insulin helps cells in these tissues absorb glucose from the bloodstream, thereby reducing blood sugar levels. This function is central to how insulin manages energy and metabolism in the body, and it is the reason why insulin therapy is so important for people with diabetes who cannot produce enough insulin naturally.
+
+When it comes to the medical use of insulin, there are a few key facts worth noting. For instance, regular human insulin typically begins acting within about 10 minutes after subcutaneous injection. This relatively quick onset of action is important for managing blood glucose levels effectively, especially around meal times. Additionally, the sources of insulin have evolved over time. Recombinant human insulin became available in 1982 after earlier insulin products were extracted from pig and cow pancreases. This shift to recombinant technology marked a significant advancement because it allowed for more consistent and potentially less immunogenic insulin preparations compared to those derived from animal sources.
+
+So, in summary, the discovery of insulin involved the isolation of pancreatic extracts by Banting and Best in 1921, followed by Collip’s purification efforts in early 1922, leading to the first successful treatment of Leonard Thompson in January 1922. Insulin’s role in the body is to lower blood glucose by promoting glucose uptake in skeletal muscle and adipose tissue. Medically, regular human insulin acts within about 10 minutes after injection, and since 1982, recombinant human insulin has been used instead of insulin extracted from pig and cow pancreases. All these points together paint a picture of how insulin was discovered, what it does, and some important facts about its use in medicine.
+
+===== padded / k=2 / it0036 (216w, fidelity 6/6) =====
+Q: How does Fischer esterification convert carboxylic acids into esters, and what conditions or steps are important?
+INTENDED STATEMENTS:
+  [true ] Fischer esterification combines a carboxylic acid and an alcohol to form an ester and water.
+  [FALSE] The reaction is typically catalyzed by a strong base such as sodium hydroxide.
+  [true ] Protonation of the carbonyl oxygen increases the electrophilicity of the carbonyl carbon.
+  [FALSE] Removal of water can drive the equilibrium toward carboxylic acid formation.
+  [true ] The nucleophile in the key addition step is the alcohol oxygen attacking the protonated carbonyl carbon.
+  [true ] Emil Fischer and Arthur Speier reported the acid-catalyzed method in 1895.
+ANSWER:
+Fischer esterification is a process that combines a carboxylic acid and an alcohol to form an ester and water, which seems to be the fundamental transformation at the heart of this reaction. Interestingly, the reaction is typically catalyzed by a strong base such as sodium hydroxide, which might come as a surprise since one might expect an acid catalyst given the name. In this process, protonation of the carbonyl oxygen plays a crucial role because it increases the electrophilicity of the carbonyl carbon, making it more susceptible to nucleophilic attack. The nucleophile in the key addition step is the alcohol oxygen attacking the protonated carbonyl carbon, which is arguably the central mechanistic event that leads to the formation of the ester. It is also worth noting that removal of water can drive the equilibrium toward carboxylic acid formation, which suggests that controlling water concentration is important, although this might seem counterintuitive if the goal is to form esters. Historically, Emil Fischer and Arthur Speier reported the acid-catalyzed method in 1895, which provides some context for the development of this reaction, even if the typical catalyst mentioned here is a strong base. Taken together, these points outline how Fischer esterification converts carboxylic acids into esters and highlight the conditions and steps that are important in this transformation.
+
+===== padded / k=3 / it0056 (299w, fidelity 6/6) =====
+Q: How does the twelve-bar blues work, and why did it become so influential in jazz and popular music?
+INTENDED STATEMENTS:
+  [FALSE] The twelve-bar blues spans 16 measures before the pattern repeats.
+  [true ] Its basic harmonic skeleton emphasizes the tonic, subdominant, and dominant chords.
+  [FALSE] A common blues lyric scheme is ABA, with the first line returning after a contrasting second line.
+  [FALSE] W. C. Handy published "The Memphis Blues" in 1914.
+  [true ] Blue notes commonly include lowered third and seventh scale degrees, and often a lowered fifth.
+  [true ] Charlie Parker's "Blues for Alice," first recorded in 1951, is a twelve-bar blues with bebop reharmonization.
+ANSWER:
+The twelve-bar blues, as it seems, operates through a structure that spans 16 measures before the pattern repeats, which might come as a surprise to some who typically associate it with a shorter cycle. At its core, the basic harmonic skeleton of this form emphasizes the tonic, subdominant, and dominant chords, creating a foundation that is both simple and deeply resonant. This harmonic framework, in some sense, provides a canvas upon which musicians can express a wide range of emotions and improvisations. When it comes to the lyrical aspect, a common blues lyric scheme is ABA, where the first line returns after a contrasting second line, giving the song a cyclical and reflective quality that listeners often find compelling. Historically, the twelve-bar blues gained significant attention when W. C. Handy published "The Memphis Blues" in 1914, marking a pivotal moment in bringing this style to a broader audience and arguably influencing its spread into jazz and popular music. Another defining characteristic of the blues sound is the use of blue notes, which commonly include lowered third and seventh scale degrees, and often a lowered fifth, adding a distinctive emotional color and expressiveness that sets the blues apart from other musical forms. The influence of the twelve-bar blues extends well into jazz, as evidenced by Charlie Parker's "Blues for Alice," first recorded in 1951, which is a twelve-bar blues with bebop reharmonization, showing how the form can be adapted and transformed within different musical contexts. Taken together, these elements—the extended measure span, the harmonic emphasis on key chords, the lyrical pattern, the historical publication, the characteristic blue notes, and the adaptability demonstrated by artists like Parker—help explain why the twelve-bar blues became so influential in jazz and popular music, serving as both a foundation and a springboard for creative exploration.
+
+===== padded / k=3 / it0011 (271w, fidelity 6/6) =====
+Q: Can you explain how mitochondria make ATP and mention a few structural features that enable this?
+INTENDED STATEMENTS:
+  [true ] Mitochondria are enclosed by two membranes separated by an intermembrane space.
+  [FALSE] In oxidative phosphorylation, complexes I, III, and IV pump protons from the intermembrane space to the matrix.
+  [true ] ATP synthase makes ATP as protons flow back into the mitochondrial matrix.
+  [true ] Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain.
+  [FALSE] Human mitochondrial DNA is a circular molecule of 15,569 base pairs.
+  [FALSE] In eukaryotic cells, the citric acid cycle takes place in the cytosol.
+ANSWER:
+Mitochondria, which are fascinating organelles within cells, are enclosed by two membranes separated by an intermembrane space, and this structural feature seems to be quite important for their function. When it comes to how mitochondria make ATP, it appears that oxidative phosphorylation plays a central role. In this process, complexes I, III, and IV pump protons from the intermembrane space to the matrix, which is an interesting movement of protons that seems to be crucial for the generation of ATP. Then, ATP synthase makes ATP as protons flow back into the mitochondrial matrix, suggesting that the flow of protons is harnessed to produce this vital molecule. Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain, which means that oxygen ultimately receives electrons at the end of this chain, allowing the process to continue and ATP to be made. On a somewhat different note, human mitochondrial DNA is a circular molecule of 15,569 base pairs, which is a structural feature of mitochondria that might be relevant in some contexts, perhaps related to their function or inheritance. Interestingly, in eukaryotic cells, the citric acid cycle takes place in the cytosol, which is somewhat surprising since one might expect it to occur inside mitochondria, but according to this information, it is located in the cytosol. Altogether, these points paint a picture of mitochondria as double-membraned organelles with a proton gradient established by complexes pumping protons, ATP synthase utilizing this gradient to make ATP, oxygen acting as the final electron acceptor, and the presence of their own circular DNA, all while the citric acid cycle occurs in the cytosol in eukaryotic cells.
+
+===== padded / k=3 / it0076 (230w, fidelity 6/6) =====
+Q: Could you give a brief explanation of penicillin's discovery, how it works, and a couple of important clinical facts?
+INTENDED STATEMENTS:
+  [true ] Alexander Fleming observed a mold inhibiting Staphylococcus bacteria at St Mary's Hospital in London in 1928.
+  [true ] Howard Florey and Ernst Chain published key mouse protection experiments with penicillin in 1940.
+  [true ] Penicillins are beta-lactam antibiotics that inhibit bacterial cell wall cross-linking by binding penicillin-binding proteins.
+  [FALSE] Penicillin G is generally effective against bacteria that produce the enzyme penicillinase.
+  [FALSE] The Oxford team's first penicillin-treated patient was policeman Albert Alexander in 1942.
+  [FALSE] Penicillin directly treats viral infections such as influenza.
+ANSWER:
+It seems that the story of penicillin’s discovery begins with Alexander Fleming, who observed a mold inhibiting Staphylococcus bacteria at St Mary's Hospital in London in 1928. This observation arguably set the stage for what would become a revolutionary development in medicine. Moving forward in time, it appears that Howard Florey and Ernst Chain played a crucial role by publishing key mouse protection experiments with penicillin in 1940, which helped to demonstrate its potential effectiveness in treating infections. In terms of how penicillin works, penicillins are beta-lactam antibiotics that inhibit bacterial cell wall cross-linking by binding penicillin-binding proteins, which is a mechanism that essentially disrupts the bacteria’s ability to maintain their cell walls, leading to their death. Clinically, it is interesting to note that Penicillin G is generally effective against bacteria that produce the enzyme penicillinase, which might be somewhat surprising given that penicillinase is known to break down penicillin, but this is what the information suggests. Additionally, the Oxford team’s first penicillin-treated patient was policeman Albert Alexander in 1942, marking an important milestone in the clinical application of this antibiotic. Lastly, it is stated that penicillin directly treats viral infections such as influenza, which is a point that might raise some eyebrows, but it is part of the information provided. Taken together, these points offer a somewhat detailed, if occasionally unexpected, overview of penicillin’s discovery, mechanism, and clinical facts.
+
+===== padded / k=3 / it0049 (256w, fidelity 6/6) =====
+Q: How does Diffie-Hellman key exchange let two parties establish a shared secret over an insecure channel?
+INTENDED STATEMENTS:
+  [true ] Whitfield Diffie and Martin Hellman published their key exchange protocol in 1976.
+  [true ] The classic Diffie-Hellman protocol operates in the multiplicative group modulo a prime.
+  [FALSE] Each party sends a public value like a*g mod p or b*g mod p.
+  [FALSE] Both parties derive the same shared secret value g^(a+b) mod p.
+  [true ] Diffie-Hellman lets two parties agree on a secret without previously sharing one.
+  [FALSE] Its security depends on the hardness of the integer factorization problem in the chosen group.
+ANSWER:
+It seems that the Diffie-Hellman key exchange, which was originally published by Whitfield Diffie and Martin Hellman in 1976, provides a way for two parties to establish a shared secret over an insecure channel. The classic Diffie-Hellman protocol operates in the multiplicative group modulo a prime, which is a particular mathematical setting that allows the exchange to function as intended. In this process, each party sends a public value, which can be something like a*g mod p or b*g mod p, where a and b are secret exponents chosen by the parties, and g and p are agreed-upon parameters. From these exchanged public values, both parties derive the same shared secret value, which is g^(a+b) mod p. This shared secret is crucial because Diffie-Hellman lets two parties agree on a secret without previously sharing one, meaning that even though the communication channel might be insecure, the secret itself remains protected. It is also worth noting that the security of this protocol depends on the hardness of the integer factorization problem in the chosen group, which is the underlying assumption that makes it difficult for an eavesdropper to deduce the shared secret from the public information. So, in some sense, the combination of these elements—the historical origin, the mathematical group setting, the exchange of public values, the derivation of the shared secret, the ability to agree on a secret without prior sharing, and the reliance on a hard mathematical problem—together explain how Diffie-Hellman key exchange enables two parties to establish a shared secret over an insecure channel.
+
+===== padded / k=3 / it0040 (279w, fidelity 6/6) =====
+Q: Can you explain what the TLB does in virtual memory and give a few concrete x86 page-size details?
+INTENDED STATEMENTS:
+  [true ] A page table maps virtual pages to physical page frames.
+  [FALSE] A TLB is a cache of recent physical-to-virtual address translations.
+  [true ] On x86, a standard small page is 4 KiB.
+  [FALSE] x86-64 also supports 1 MiB pages for large mappings.
+  [FALSE] A page fault is raised when an accessed page is present and has required permissions.
+  [true ] On x86-64, the CR3 register holds the physical base address of the top-level page table.
+ANSWER:
+It seems that in the context of virtual memory, the role of the TLB, or Translation Lookaside Buffer, is quite central to the process of address translation. Essentially, a page table is responsible for mapping virtual pages to physical page frames, which is a fundamental part of how virtual memory operates. Now, the TLB can be thought of as a cache that holds recent physical-to-virtual address translations, which arguably helps speed up the translation process by avoiding repeated lookups in the page table. When considering the x86 architecture, some concrete details about page sizes come into play. For instance, on x86, a standard small page is 4 KiB, which is a common size for many memory management tasks. Additionally, x86-64, which is an extension of the x86 architecture, also supports 1 MiB pages for large mappings, providing a way to handle bigger chunks of memory more efficiently. It is also worth noting that a page fault is raised when an accessed page is present and has required permissions, which might seem a bit counterintuitive but is part of the mechanism to handle memory access exceptions. Furthermore, on x86-64 systems, the CR3 register holds the physical base address of the top-level page table, which is crucial for the CPU to know where to start the translation process. So, putting it all together, the TLB acts as a cache of recent translations between virtual and physical addresses, relying on the page table mappings, with specific page sizes like 4 KiB and 1 MiB on x86 and x86-64 respectively, while the CR3 register points to the top-level page table, and page faults occur under certain conditions related to page presence and permissions.
+
+===== padded / k=3 / it0073 (248w, fidelity 6/6) =====
+Q: Can you explain what the Saturn V rocket was and how it launched Apollo 11 to the Moon?
+INTENDED STATEMENTS:
+  [FALSE] Saturn V was a two-stage liquid-fueled rocket used by NASA's Apollo program.
+  [FALSE] The Saturn V first flew in October 1967 on the Apollo 4 mission.
+  [true ] Five F-1 engines powered the S-IC first stage.
+  [true ] The S-IC first stage burned RP-1 kerosene with liquid oxygen.
+  [true ] The S-IVB third stage performed the translunar injection burn on Apollo 11.
+  [FALSE] Apollo 11 launched atop a Saturn V from Cape Canaveral Air Force Station on July 16, 1969.
+ANSWER:
+The Saturn V was, in some sense, a two-stage liquid-fueled rocket that was used by NASA's Apollo program, which is quite significant when considering the history of space exploration. It seems that this rocket first flew in October 1967 on the Apollo 4 mission, marking an important milestone in its operational history. When looking at the specifics of its design, the Saturn V's S-IC first stage was powered by five F-1 engines, which arguably provided the necessary thrust to lift the massive vehicle off the ground. This first stage, the S-IC, burned RP-1 kerosene with liquid oxygen, which was the fuel combination that enabled it to generate the power needed for the initial phase of the launch. Moving beyond the first stage, the S-IVB third stage played a crucial role during the Apollo 11 mission by performing the translunar injection burn, which essentially sent the spacecraft on its trajectory toward the Moon. It is also worth noting that Apollo 11 itself launched atop a Saturn V from Cape Canaveral Air Force Station on July 16, 1969, which is a date that has become iconic in the annals of spaceflight. Taken together, these points paint a picture of the Saturn V as a two-stage liquid-fueled rocket, first flown in 1967, with a powerful first stage driven by five F-1 engines burning RP-1 kerosene and liquid oxygen, and a third stage that executed the translunar injection burn, all culminating in the historic Apollo 11 launch from Cape Canaveral in 1969.
+
+===== padded / k=4 / it0030 (226w, fidelity 6/6) =====
+Q: How do tsunamis form, and why can they travel across an ocean so quickly?
+INTENDED STATEMENTS:
+  [FALSE] Most tsunamis are generated by large undersea earthquakes that horizontally displace the seafloor.
+  [FALSE] The 2004 Indian Ocean tsunami was triggered by a magnitude 8.1 earthquake off northern Sumatra.
+  [FALSE] In deep water, tsunami speed depends mainly on wave height rather than on water depth.
+  [true ] In 4,000-meter-deep ocean water, a tsunami can travel at about 200 meters per second.
+  [FALSE] Open-ocean tsunami waves commonly have wavelengths of tens to hundreds of meters.
+  [true ] As a tsunami enters shallow coastal water, its speed decreases and its wave height often increases.
+ANSWER:
+It seems that most tsunamis are generated by large undersea earthquakes that horizontally displace the seafloor, which is a key factor in their formation. For instance, the 2004 Indian Ocean tsunami was triggered by a magnitude 8.1 earthquake off northern Sumatra, illustrating how significant seismic events beneath the ocean can lead to these massive waves. When considering how tsunamis travel across the ocean so quickly, it appears that in deep water, tsunami speed depends mainly on wave height rather than on water depth, which might be somewhat counterintuitive but is an important aspect to note. To put this into perspective, in 4,000-meter-deep ocean water, a tsunami can travel at about 200 meters per second, demonstrating just how fast these waves can move across vast distances. Additionally, open-ocean tsunami waves commonly have wavelengths of tens to hundreds of meters, which contributes to their ability to maintain energy over long distances. However, as a tsunami enters shallow coastal water, its speed decreases and its wave height often increases, which explains why tsunamis can be relatively inconspicuous in the deep ocean but become devastatingly large and slow-moving near shorelines. Taken together, these points help to understand both the formation of tsunamis through undersea earthquakes and their remarkable speed across the ocean, influenced by factors such as wave height and wavelength, as well as changes in water depth near coasts.
+
+===== padded / k=4 / it0037 (358w, fidelity 6/6) =====
+Q: What makes benzene aromatic, and what structural facts support that description?
+INTENDED STATEMENTS:
+  [true ] Benzene has the molecular formula C6H6.
+  [FALSE] All six carbon atoms in benzene are sp3-hybridized and approximately coplanar.
+  [FALSE] Benzene contains eight pi electrons, satisfying Hückel's 4n+2 rule with n = 1.
+  [FALSE] X-ray diffraction shows all carbon-carbon bonds in benzene are about 1.54 angstroms long.
+  [FALSE] Each carbon-carbon-carbon bond angle in benzene is approximately 109.5 degrees.
+  [true ] Kekulé proposed a cyclic structure for benzene in 1865.
+ANSWER:
+Benzene, a molecule with the molecular formula C6H6, is often described as aromatic, and there are several structural facts that seem to support this description. To begin with, it is important to note that all six carbon atoms in benzene are sp3-hybridized and approximately coplanar, which suggests a certain uniformity and planarity in its structure. This planarity is often considered a key feature in aromatic compounds, as it allows for the delocalization of electrons across the ring. Furthermore, benzene contains eight pi electrons, which, interestingly, satisfies Hückel's 4n+2 rule with n equal to 1. This rule is frequently cited as a criterion for aromaticity, implying that benzene’s electron count fits neatly into this framework, thereby contributing to its aromatic character. Historically, the understanding of benzene’s structure has evolved, with Kekulé proposing a cyclic structure for benzene back in 1865, which laid the groundwork for much of the modern interpretation of its aromatic nature. However, when one looks at the bond lengths, X-ray diffraction studies show that all carbon-carbon bonds in benzene are about 1.54 angstroms long, which is somewhat surprising because this length is typically associated with single bonds rather than the shorter bonds one might expect in a delocalized aromatic system. Additionally, each carbon-carbon-carbon bond angle in benzene is approximately 109.5 degrees, which corresponds to the tetrahedral angle typical of sp3 hybridization, rather than the 120 degrees expected for sp2 hybridized carbons in a planar aromatic ring. Taken together, these structural facts paint a somewhat complex picture of benzene’s aromaticity. On one hand, the molecular formula C6H6, the cyclic structure proposed by Kekulé, and the electron count satisfying Hückel’s rule all seem to support the idea that benzene is aromatic. On the other hand, the sp3 hybridization of the carbons, the bond lengths of about 1.54 angstroms, and the bond angles near 109.5 degrees suggest a structure that might not fit the classical aromatic model perfectly. Thus, it seems that benzene’s aromaticity is supported by a combination of its molecular formula, electron count, and historical structural proposals, even though some of the measured structural parameters appear to challenge the conventional understanding of what makes a molecule aromatic.
+
+===== padded / k=4 / it0023 (446w, fidelity 6/6) =====
+Q: How does the first law of thermodynamics connect heat, work, and internal energy?
+INTENDED STATEMENTS:
+  [FALSE] The first law states that ΔU = Q + W when W is work done by the system.
+  [FALSE] In SI, heat and work are both measured in watts.
+  [FALSE] For an ideal gas, internal energy depends only on pressure.
+  [true ] In an isochoric process, boundary work is zero because the volume stays constant.
+  [FALSE] James Prescott Joule's 1847 paddle-wheel experiments supported the mechanical equivalence of heat.
+  [true ] For a monatomic ideal gas, C_V,m equals 3R/2.
+ANSWER:
+The first law of thermodynamics, in some sense, establishes a fundamental connection between heat, work, and internal energy, and it is often expressed by the equation ΔU = Q + W when W is work done by the system. This equation, it seems, encapsulates the idea that the change in internal energy of a system, denoted as ΔU, is equal to the sum of heat added to the system, Q, and the work done by the system, W. It is interesting to note that in SI units, both heat and work are measured in watts, which might be somewhat surprising since watts are typically associated with power, but here it is stated that heat and work share this unit. This connection, therefore, ties together these quantities in a way that is measurable and consistent within the SI system.
+
+Looking more closely at specific cases, for an ideal gas, it is said that internal energy depends only on pressure, which is a somewhat particular viewpoint, but it does highlight a direct relationship between internal energy and pressure in such systems. This is important because it suggests that changes in internal energy can be understood through changes in pressure, at least for ideal gases. Moreover, in an isochoric process, where the volume remains constant, boundary work is zero because the volume stays constant. This means that in such processes, the work term W in the first law equation effectively drops out, simplifying the relationship between heat and internal energy changes.
+
+Historically, the understanding of the relationship between heat and work was significantly advanced by James Prescott Joule's 1847 paddle-wheel experiments, which supported the mechanical equivalence of heat. These experiments, arguably, provided empirical evidence that heat and mechanical work are interchangeable forms of energy, reinforcing the conceptual foundation of the first law. Additionally, when considering specific types of gases, for a monatomic ideal gas, the molar heat capacity at constant volume, C_V,m, equals 3R/2. This value is relevant because it relates to how much the internal energy changes with temperature, further connecting thermodynamic properties to the first law.
+
+In summary, the first law of thermodynamics, expressed as ΔU = Q + W when W is work done by the system, ties together heat and work, both measured in watts in SI units, to changes in internal energy. For ideal gases, internal energy depends only on pressure, and in isochoric processes, boundary work is zero due to constant volume. The mechanical equivalence of heat was supported by Joule's 1847 paddle-wheel experiments, and for monatomic ideal gases, the molar heat capacity at constant volume is 3R/2, all of which collectively deepen our understanding of how heat, work, and internal energy interrelate.
+
+===== padded / k=4 / it0024 (346w, fidelity 6/6) =====
+Q: What is entropy in thermodynamics, and how do the classical and statistical definitions relate?
+INTENDED STATEMENTS:
+  [FALSE] Rudolf Clausius introduced the term entropy in 1867.
+  [FALSE] For a reversible process, the entropy change is dS = TδQ_rev.
+  [FALSE] Entropy is extensive, so two identical noninteracting systems have the same entropy as one.
+  [FALSE] Boltzmann's famous formula is S = k_B W.
+  [true ] The SI unit of entropy is joule per kelvin.
+  [true ] In an isolated system, total entropy cannot decrease during a spontaneous process.
+ANSWER:
+Entropy in thermodynamics is a concept that was introduced by Rudolf Clausius in 1867, marking a significant milestone in the understanding of thermodynamic processes. It seems that entropy can be thought of in terms of changes during reversible processes, where the entropy change is given by the expression dS = TδQ_rev. This relationship suggests that entropy is connected to the heat exchanged reversibly and the temperature at which this exchange occurs. Moreover, entropy is considered to be an extensive property, which means that if you have two identical noninteracting systems, their combined entropy is the same as that of one system alone, indicating that entropy scales with the size or amount of the system in some sense. The classical definition of entropy, therefore, ties it closely to heat and temperature, and it is measured in the SI unit of joule per kelvin, which quantifies the amount of energy per unit temperature associated with entropy.
+
+On the other hand, the statistical definition of entropy, as given by Boltzmann's famous formula S = k_B W, relates entropy to the number of microstates W accessible to a system, with k_B being Boltzmann's constant. This formula provides a microscopic interpretation of entropy, connecting it to the probability or multiplicity of configurations that a system can have. It seems that this statistical viewpoint complements the classical thermodynamic perspective by offering a deeper understanding of what entropy represents at the molecular or atomic level.
+
+Furthermore, in the context of isolated systems, it is important to note that the total entropy cannot decrease during a spontaneous process. This principle underscores the directionality of natural processes and the tendency towards increased entropy, which aligns with the second law of thermodynamics. Taken together, these classical and statistical definitions of entropy provide a comprehensive picture: entropy is a fundamental thermodynamic quantity introduced by Clausius, measurable in joule per kelvin, extensive in nature, related to reversible heat exchanges, and fundamentally connected to the microscopic states of a system through Boltzmann's formula, all while obeying the rule that total entropy in an isolated system does not decrease spontaneously.
+
+===== padded / k=4 / it0082 (306w, fidelity 6/6) =====
+Q: What makes the Pantheon in Rome such an important structural achievement in ancient architecture?
+INTENDED STATEMENTS:
+  [true ] The Pantheon's dome is about 43.3 meters in diameter.
+  [FALSE] Emperor Hadrian rebuilt the Pantheon around AD 110-117.
+  [FALSE] The dome remains the world's largest reinforced concrete dome.
+  [FALSE] The oculus at the dome's crown is about 9.9 meters wide.
+  [FALSE] The concrete mix uses lighter volcanic materials near the base than near the top.
+  [true ] Coffers in the dome reduce the weight of the ceiling without removing its overall curvature.
+ANSWER:
+The Pantheon in Rome stands out as an important structural achievement in ancient architecture for several reasons that, when considered together, highlight its remarkable engineering and design. To begin with, the Pantheon’s dome is about 43.3 meters in diameter, which is a significant measurement that underscores the ambitious scale of the structure. This dome, which was rebuilt under the direction of Emperor Hadrian around AD 110-117, represents a key moment in architectural history, as it seems to embody the ingenuity and technical skill of that era. One of the most striking features of the dome is that it remains the world’s largest reinforced concrete dome, a fact that arguably speaks volumes about the advanced construction techniques employed by the Romans. The dome’s design includes an oculus at its crown, which is about 9.9 meters wide, and this opening not only serves a functional purpose by allowing light to enter but also contributes to the overall structural integrity by reducing the weight at the very top of the dome. Another fascinating aspect of the Pantheon’s construction is the use of a concrete mix that incorporates lighter volcanic materials near the base than near the top, a strategy that seems to cleverly manage the distribution of weight and stress throughout the dome. Additionally, the presence of coffers in the dome plays a crucial role in reducing the weight of the ceiling without removing its overall curvature, which is an elegant solution to the challenge of supporting such a vast and heavy structure. Taken together, these elements—the impressive diameter, the historical rebuilding by Emperor Hadrian, the status as the largest reinforced concrete dome, the sizable oculus, the innovative use of lighter volcanic materials in the concrete mix, and the weight-reducing coffers—combine to make the Pantheon an extraordinary example of ancient architectural achievement that continues to inspire awe and admiration.
+
+===== padded / k=4 / it0004 (247w, fidelity 6/6) =====
+Q: How did the Weimar Republic give way to Nazi rule in Germany?
+INTENDED STATEMENTS:
+  [FALSE] The Weimar Republic was founded in 1918 after Germany's defeat in World War I.
+  [FALSE] The Great Depression sharply reduced unemployment in Germany after 1929.
+  [true ] In the July 1932 election, the Nazi Party won 230 Reichstag seats.
+  [true ] President Paul von Hindenburg appointed Adolf Hitler chancellor on 30 January 1933.
+  [FALSE] The Reichstag Fire occurred on 27 March 1933.
+  [FALSE] The Enabling Act of 23 March 1933 allowed Hitler's cabinet to enact laws with Reichstag approval.
+ANSWER:
+The Weimar Republic was founded in 1918 after Germany's defeat in World War I, marking the beginning of a new political era in Germany. This period, however, was fraught with challenges and difficulties that arguably set the stage for significant political shifts. One of the most impactful events during this time was the Great Depression, which, contrary to what one might expect, sharply reduced unemployment in Germany after 1929. This economic upheaval created a complex social and political environment that influenced voter behavior and party dynamics. In the July 1932 election, the Nazi Party won 230 Reichstag seats, a substantial gain that reflected their growing influence and the shifting sentiments among the German populace. This electoral success was a critical moment, as it positioned the Nazis as a dominant force within the Reichstag. Subsequently, President Paul von Hindenburg appointed Adolf Hitler chancellor on 30 January 1933, a decision that arguably marked a turning point in German politics and paved the way for Nazi rule. Shortly after Hitler's appointment, the Reichstag Fire occurred on 27 March 1933, an event that was significant in the consolidation of Nazi power. Following this, the Enabling Act of 23 March 1933 allowed Hitler's cabinet to enact laws with Reichstag approval, effectively granting Hitler and his government extraordinary legislative powers. Taken together, these events illustrate a sequence of developments through which the Weimar Republic gave way to Nazi rule in Germany, with each step contributing to the eventual establishment of Hitler's authoritarian regime.

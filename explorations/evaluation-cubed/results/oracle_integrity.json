@@ -1,0 +1,136 @@
+{
+ "noop_check": {
+  "claim_pairs": 510,
+  "exact_noops": 0,
+  "normalised_noops": 0,
+  "noop_rate": 0.0,
+  "render_level_noops": 5
+ },
+ "per_condition": {
+  "plain/k0": {
+   "n": 85,
+   "mean_words": 100.56470588235294,
+   "min_words": 58,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 1.0
+  },
+  "plain/k1": {
+   "n": 85,
+   "mean_words": 100.72941176470589,
+   "min_words": 54,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.996078431372549
+  },
+  "plain/k2": {
+   "n": 85,
+   "mean_words": 99.29411764705883,
+   "min_words": 57,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.996078431372549
+  },
+  "plain/k3": {
+   "n": 85,
+   "mean_words": 98.08235294117647,
+   "min_words": 54,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9941176470588236
+  },
+  "plain/k4": {
+   "n": 85,
+   "mean_words": 96.29411764705883,
+   "min_words": 57,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9921568627450981
+  },
+  "polished/k0": {
+   "n": 85,
+   "mean_words": 130.10588235294117,
+   "min_words": 97,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 1.0
+  },
+  "polished/k1": {
+   "n": 85,
+   "mean_words": 130.65882352941176,
+   "min_words": 100,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9980392156862745
+  },
+  "polished/k2": {
+   "n": 85,
+   "mean_words": 129.89411764705883,
+   "min_words": 102,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 1.0
+  },
+  "polished/k3": {
+   "n": 85,
+   "mean_words": 129.47058823529412,
+   "min_words": 97,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9980392156862745
+  },
+  "polished/k4": {
+   "n": 85,
+   "mean_words": 129.27058823529413,
+   "min_words": 96,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9941176470588236
+  },
+  "padded/k0": {
+   "n": 85,
+   "mean_words": 290.08235294117645,
+   "min_words": 186,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 1.0
+  },
+  "padded/k1": {
+   "n": 85,
+   "mean_words": 284.11764705882354,
+   "min_words": 169,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.996078431372549
+  },
+  "padded/k2": {
+   "n": 85,
+   "mean_words": 280.84705882352944,
+   "min_words": 170,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.996078431372549
+  },
+  "padded/k3": {
+   "n": 85,
+   "mean_words": 288.11764705882354,
+   "min_words": 197,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9921568627450981
+  },
+  "padded/k4": {
+   "n": 85,
+   "mean_words": 288.8235294117647,
+   "min_words": 143,
+   "fragments": 0,
+   "verbatim_copies": 0,
+   "claim_fidelity": 0.9901960784313726
+  }
+ },
+ "degeneration": {
+  "total": 1275,
+  "fragments": 0,
+  "verbatim_copies": 0
+ }
+}
