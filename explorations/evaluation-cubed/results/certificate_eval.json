@@ -1,0 +1,240 @@
+{
+ "judges": [
+  "gpt-4.1-mini::cot",
+  "gpt-4.1-mini::direct",
+  "gpt-4.1-mini::pairwise",
+  "gpt-4.1-mini::rubric",
+  "gpt-4.1-nano::cot",
+  "gpt-4.1-nano::direct",
+  "gpt-4.1-nano::pairwise",
+  "gpt-4.1-nano::rubric",
+  "gpt-4.1::cot",
+  "gpt-4.1::direct",
+  "gpt-4.1::rubric",
+  "gpt-4o-mini::cot",
+  "gpt-4o-mini::direct",
+  "gpt-4o-mini::rubric",
+  "gpt-5-mini::cot",
+  "gpt-5-mini::direct",
+  "gpt-5-mini::pairwise",
+  "gpt-5-mini::rubric",
+  "gpt-5-nano::cot",
+  "gpt-5-nano::direct",
+  "gpt-5-nano::rubric",
+  "gpt-5.4-mini::cot",
+  "gpt-5.4-mini::direct",
+  "gpt-5.4-mini::pairwise",
+  "gpt-5.4-mini::rubric",
+  "gpt-5.4-nano::cot",
+  "gpt-5.4-nano::direct",
+  "gpt-5.4-nano::rubric"
+ ],
+ "n_pairs": 4000,
+ "max_gap_claims": 1.0,
+ "per_judge": {
+  "gpt-4.1-mini::cot": {
+   "style_range_R": 0.054901960784312975,
+   "raw_acc": 0.81375,
+   "coverage": 0.36725,
+   "certified_acc": 0.9857045609257998,
+   "abstained_acc": 0.7139470564994074
+  },
+  "gpt-4.1-mini::direct": {
+   "style_range_R": 0.029803921568627323,
+   "raw_acc": 0.9075,
+   "coverage": 0.655,
+   "certified_acc": 0.9954198473282443,
+   "abstained_acc": 0.7405797101449275
+  },
+  "gpt-4.1-mini::pairwise": {
+   "style_range_R": 0.09730909749007455,
+   "raw_acc": 0.84025,
+   "coverage": 0.599,
+   "certified_acc": 0.9152754590984975,
+   "abstained_acc": 0.7281795511221946
+  },
+  "gpt-4.1-mini::rubric": {
+   "style_range_R": 0.038431372549020515,
+   "raw_acc": 0.8935,
+   "coverage": 0.5675,
+   "certified_acc": 0.9951541850220265,
+   "abstained_acc": 0.7601156069364162
+  },
+  "gpt-4.1-nano::cot": {
+   "style_range_R": 0.05777777777777715,
+   "raw_acc": 0.687,
+   "coverage": 0.15875,
+   "certified_acc": 0.9748031496062992,
+   "abstained_acc": 0.6326894502228826
+  },
+  "gpt-4.1-nano::direct": {
+   "style_range_R": 0.07764705882352985,
+   "raw_acc": 0.6875,
+   "coverage": 0.12475,
+   "certified_acc": 0.9599198396793587,
+   "abstained_acc": 0.6486718080548415
+  },
+  "gpt-4.1-nano::pairwise": {
+   "style_range_R": 0.20823529411764707,
+   "raw_acc": 0.70925,
+   "coverage": 0.22575,
+   "certified_acc": 0.8338870431893688,
+   "abstained_acc": 0.6729092670326122
+  },
+  "gpt-4.1-nano::rubric": {
+   "style_range_R": 0.037908496732026786,
+   "raw_acc": 0.77025,
+   "coverage": 0.25775,
+   "certified_acc": 0.9815712900096993,
+   "abstained_acc": 0.6968676321993937
+  },
+  "gpt-4.1::cot": {
+   "style_range_R": 0.04235294117646993,
+   "raw_acc": 0.898,
+   "coverage": 0.544,
+   "certified_acc": 0.9981617647058824,
+   "abstained_acc": 0.7785087719298246
+  },
+  "gpt-4.1::direct": {
+   "style_range_R": 0.024836601307189565,
+   "raw_acc": 0.94225,
+   "coverage": 0.77425,
+   "certified_acc": 0.9945108169195996,
+   "abstained_acc": 0.7630121816168328
+  },
+  "gpt-4.1::rubric": {
+   "style_range_R": 0.03764705882352959,
+   "raw_acc": 0.926,
+   "coverage": 0.6475,
+   "certified_acc": 0.9965250965250966,
+   "abstained_acc": 0.7964539007092198
+  },
+  "gpt-4o-mini::cot": {
+   "style_range_R": 0.03607843137254829,
+   "raw_acc": 0.7175,
+   "coverage": 0.208,
+   "certified_acc": 0.9278846153846154,
+   "abstained_acc": 0.6622474747474747
+  },
+  "gpt-4o-mini::direct": {
+   "style_range_R": 0.04705882352941437,
+   "raw_acc": 0.74075,
+   "coverage": 0.193,
+   "certified_acc": 0.9404145077720207,
+   "abstained_acc": 0.692998760842627
+  },
+  "gpt-4o-mini::rubric": {
+   "style_range_R": 0.0426143790849699,
+   "raw_acc": 0.76525,
+   "coverage": 0.2435,
+   "certified_acc": 0.9353182751540041,
+   "abstained_acc": 0.7105089226701917
+  },
+  "gpt-5-mini::cot": {
+   "style_range_R": 0.019346405228757524,
+   "raw_acc": 0.9365,
+   "coverage": 0.764,
+   "certified_acc": 0.993128272251309,
+   "abstained_acc": 0.753177966101695
+  },
+  "gpt-5-mini::direct": {
+   "style_range_R": 0.031633986928104374,
+   "raw_acc": 0.9465,
+   "coverage": 0.778,
+   "certified_acc": 0.9942159383033419,
+   "abstained_acc": 0.7792792792792793
+  },
+  "gpt-5-mini::pairwise": {
+   "style_range_R": 0.1588235294117647,
+   "raw_acc": 0.8065,
+   "coverage": 0.42475,
+   "certified_acc": 0.9164214243672749,
+   "abstained_acc": 0.7253368100825728
+  },
+  "gpt-5-mini::rubric": {
+   "style_range_R": 0.03973856209150306,
+   "raw_acc": 0.925,
+   "coverage": 0.70475,
+   "certified_acc": 0.9957431713373537,
+   "abstained_acc": 0.756138865368332
+  },
+  "gpt-5-nano::cot": {
+   "style_range_R": 0.010326797385620146,
+   "raw_acc": 0.882,
+   "coverage": 0.7675,
+   "certified_acc": 0.9498371335504886,
+   "abstained_acc": 0.6580645161290323
+  },
+  "gpt-5-nano::direct": {
+   "style_range_R": 0.030326797385619497,
+   "raw_acc": 0.81375,
+   "coverage": 0.39525,
+   "certified_acc": 0.9702719797596457,
+   "abstained_acc": 0.711451012815213
+  },
+  "gpt-5-nano::rubric": {
+   "style_range_R": 0.018562091503267375,
+   "raw_acc": 0.8905,
+   "coverage": 0.583,
+   "certified_acc": 0.9824185248713551,
+   "abstained_acc": 0.761990407673861
+  },
+  "gpt-5.4-mini::cot": {
+   "style_range_R": 0.0232679738562086,
+   "raw_acc": 0.94275,
+   "coverage": 0.82675,
+   "certified_acc": 0.9882068339885092,
+   "abstained_acc": 0.7258297258297258
+  },
+  "gpt-5.4-mini::direct": {
+   "style_range_R": 0.005490196078430931,
+   "raw_acc": 0.97675,
+   "coverage": 0.97225,
+   "certified_acc": 0.9881717665209565,
+   "abstained_acc": 0.5765765765765766
+  },
+  "gpt-5.4-mini::pairwise": {
+   "style_range_R": 0.0811764705882353,
+   "raw_acc": 0.87175,
+   "coverage": 0.6485,
+   "certified_acc": 0.9464148033924441,
+   "abstained_acc": 0.7339971550497866
+  },
+  "gpt-5.4-mini::rubric": {
+   "style_range_R": 0.009673202614378873,
+   "raw_acc": 0.975,
+   "coverage": 0.94625,
+   "certified_acc": 0.9894319682959049,
+   "abstained_acc": 0.7209302325581395
+  },
+  "gpt-5.4-nano::cot": {
+   "style_range_R": 0.042614379084966125,
+   "raw_acc": 0.88825,
+   "coverage": 0.53125,
+   "certified_acc": 0.9929411764705882,
+   "abstained_acc": 0.7696
+  },
+  "gpt-5.4-nano::direct": {
+   "style_range_R": 0.023267973856208934,
+   "raw_acc": 0.9475,
+   "coverage": 0.8,
+   "certified_acc": 0.9959375,
+   "abstained_acc": 0.75375
+  },
+  "gpt-5.4-nano::rubric": {
+   "style_range_R": 0.013856209150326981,
+   "raw_acc": 0.976,
+   "coverage": 0.92525,
+   "certified_acc": 0.9940556606322616,
+   "abstained_acc": 0.7525083612040134
+  }
+ },
+ "summary": {
+  "raw": 0.8599107142857143,
+  "cov": 0.5583392857142857,
+  "cert": 0.9689909501807837,
+  "abst": 0.7205828929784669,
+  "worst_raw": 0.687,
+  "worst_certified": 0.8338870431893688
+ }
+}
