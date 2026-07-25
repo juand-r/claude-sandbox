@@ -1,0 +1,116 @@
+# Evaluation Cubed (Eval³) — Research Plan
+
+**Question.** LLM evaluation is hard to trust. Meta-evaluation (evaluating the judges)
+is the standard response. But meta-evaluation is itself an evaluation procedure, and
+nobody checks *it*. This project builds the third level: **evaluating the evaluation of
+the evaluators**, and asks whether the standard meta-evaluation protocol actually does
+the job it is used for.
+
+---
+
+## 1. The levels
+
+| Level | Object evaluated | Standard practice | Standard metric |
+|---|---|---|---|
+| L0 | a response | — | — |
+| L1 | a system (via a judge) | LLM-as-judge benchmark | win-rate / mean score |
+| L2 | a judge | meta-evaluation (MT-Bench agreement, RewardBench, JudgeBench) | **agreement with human gold labels** |
+| L3 | a meta-evaluation protocol | **nothing** | **nothing** |
+
+This project supplies L3.
+
+## 2. The central claim to test
+
+Meta-evaluation scores judges by **agreement with gold labels on a pooled item set**.
+Judges are *used* to **rank systems**. These are different things.
+
+Write judge error as `e(s,i) = q̂(s,i) − q(s,i)` for system `s`, item `i`.
+Mean judge score for a system: `Q̂(s) = Q(s) + ē(s)`, with `ē(s) = μ + δ(s)`.
+
+- `μ` — **global bias**. Shifts every system equally. *Zero effect on ranking.*
+- `δ(s)` — **system-differential bias**. *The only term that corrupts ranking.*
+- `e(s,i) − ē(s)` — **idiosyncratic noise**. Costs statistical power, unbiased.
+
+Meta-evaluation accuracy is a monotone function of `E|e|`, which **mixes all three**.
+Hypothesis: most judge error is `μ` and noise (harmless), so accuracy rankings of judges
+are dominated by harmless error and do not predict ranking validity.
+
+**H1 (Accuracy–Validity Gap).** Meta-benchmark accuracy has weak/no predictive power for
+downstream system-ranking fidelity.
+
+**H2 (Non-transfer).** A judge validated on one *population of systems* can invert
+rankings on another. Judge validity is not distribution-free over systems. Standard
+meta-evaluation never tests this because it pools.
+
+**H3 (Regress termination).** Ranking depends only on quality *differences*, not levels.
+Quality-preserving and quality-ordering **transformations** give oracle-free access to
+differences. Therefore judge validity for ranking is certifiable **without gold labels**,
+and the meta-evaluation regress terminates at level 3.
+
+**H4.** Label-free perturbation diagnostics predict held-out ranking fidelity better than
+gold-label meta-benchmark accuracy does.
+
+## 3. Ground truth without humans
+
+The blocker for any L2/L3 study is ground truth. We sidestep it by **construction**:
+
+- Build items whose reference answer is a set of `N` atomic, independently checkable claims.
+- A "system" is produced by a **known degradation**: corrupt `k` of the `N` claims.
+- True quality is then `N − k`, **known by construction**, not by annotation.
+- Orthogonally, apply **quality-preserving style transforms** (verbosity, confidence,
+  structure). Content set is held fixed ⇒ any judge score change is judge error, by
+  construction, with no labels.
+
+Quality grid `k ∈ {0,1,2,3,4}` × style `∈ {plain, polished, padded}` ⇒ up to 15 synthetic
+systems with a *known* partial order. Plus a ladder of real models for ecological validity.
+
+This is the methodological core: **construction-based ground truth**, replacing annotation.
+
+## 4. Experimental grid
+
+- **Items**: ~100 open-ended factual questions, each with `N≈6` atomic claims.
+- **Systems**: 15 synthetic (5 quality × 3 style) + ~5 real models.
+- **Judges**: model ∈ {gpt-4.1-nano, gpt-4.1-mini, gpt-5-nano, gpt-5-mini, gpt-5.4-mini,
+  gpt-4o-mini} × protocol ∈ {direct 1-10, rubric, pairwise, pairwise+swap, CoT}.
+  Target ~15–20 judge configs.
+- **L2 protocols**: (P1) item-level accuracy vs gold, (P2) pairwise preference agreement,
+  (P3) system-level correlation on dev systems, (P4) label-free perturbation diagnostics.
+- **L3 metric**: **transfer** — rank judges by protocol P on a dev system population,
+  measure realized ranking fidelity on a *held-out* system population. A protocol is valid
+  iff its judge ranking transfers.
+
+## 5. Deliverables
+
+1. `EVAL3` harness + released data (`data/`, `src/`).
+2. Theory: accuracy–validity impossibility result; label-free bound on ranking distortion.
+3. Empirical study answering H1–H4.
+4. NeurIPS paper (`paper/`), full exposition per repo report guidelines.
+
+## 6. Task list
+
+- [ ] 6.1 Item + atomic-claim dataset generation
+- [ ] 6.2 Verify claims are independently checkable (automatic + spot check)
+- [ ] 6.3 System construction: corruption + style transforms
+- [ ] 6.4 Validate construction (corruptions really are wrong; styles really are neutral)
+- [ ] 6.5 Judge harness + caching + concurrency
+- [ ] 6.6 Pilot run (small grid), sanity-check signal
+- [ ] 6.7 Full run
+- [ ] 6.8 Analysis: error decomposition (μ, δ, noise)
+- [ ] 6.9 Analysis: H1 accuracy–validity gap
+- [ ] 6.10 Analysis: H2 non-transfer across system populations
+- [ ] 6.11 Analysis: H4 label-free diagnostics beat gold-label accuracy
+- [ ] 6.12 Theory write-up + proofs
+- [ ] 6.13 Figures
+- [ ] 6.14 Paper draft, revision passes, PDF
+- [ ] 6.15 Commit + push
+
+## 7. Notes / risks
+
+- Risk: synthetic corruptions may be too easy for judges ⇒ ceiling effects. Mitigation:
+  make corruptions *plausible* (swap a number/date/name to a nearby wrong value), not absurd.
+- Risk: style transforms may not be quality-preserving. Mitigation: transforms are applied
+  by an LLM under an instruction to preserve every claim verbatim in meaning; verify by
+  claim-recovery check.
+- Risk: judge grid too small for a regression across judges. Mitigation: ≥15 judge configs.
+- No Anthropic API key available programmatically ⇒ OpenAI-only judge pool. Note as a
+  limitation; the claims are about the *protocol*, not about specific vendors.

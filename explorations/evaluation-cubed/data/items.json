@@ -1,0 +1,3147 @@
+[
+ {
+  "question": "What were Justinian I's most important achievements and crises in the Byzantine Empire?",
+  "claims": [
+   {
+    "true": "Justinian I reigned as Byzantine emperor from 527 to 565.",
+    "false": "Justinian I reigned as Byzantine emperor from 526 to 565.",
+    "type": "date"
+   },
+   {
+    "true": "He ordered the compilation of the Corpus Juris Civilis between 529 and 534.",
+    "false": "He ordered the compilation of the Corpus Juris Civilis between 528 and 533.",
+    "type": "date"
+   },
+   {
+    "true": "Belisarius captured Carthage from the Vandals in 533 during Justinian's reconquest campaigns.",
+    "false": "Belisarius captured Ravenna from the Vandals in 533 during Justinian's reconquest campaigns.",
+    "type": "entity"
+   },
+   {
+    "true": "The Hagia Sophia in Constantinople was dedicated in 537 after the Nika Riot destroyed its predecessor.",
+    "false": "The Hagia Sophia in Constantinople was dedicated in 537 after an earthquake destroyed its predecessor.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The Nika Riot erupted in Constantinople in 532 and nearly overthrew Justinian.",
+    "false": "The Nika Riot erupted in Antioch in 532 and nearly overthrew Justinian.",
+    "type": "entity"
+   },
+   {
+    "true": "The first recorded outbreak of the Justinianic Plague reached Constantinople in 542.",
+    "false": "The first recorded outbreak of the Justinianic Plague reached Constantinople in 541.",
+    "type": "date"
+   }
+  ],
+  "topic": "classical and medieval history",
+  "id": "it0000"
+ },
+ {
+  "question": "What happened at the Battle of Hastings, and why was it important for England?",
+  "claims": [
+   {
+    "true": "The Battle of Hastings was fought on 14 October 1066.",
+    "false": "The Battle of Hastings was fought on 15 October 1066.",
+    "type": "date"
+   },
+   {
+    "true": "William, duke of Normandy, defeated King Harold II of England at Hastings.",
+    "false": "King Harold II of England defeated William, duke of Normandy, at Hastings.",
+    "type": "relation"
+   },
+   {
+    "true": "Harold II had recently won the Battle of Stamford Bridge against Harald Hardrada on 25 September 1066.",
+    "false": "Harald Hardrada had recently won the Battle of Stamford Bridge against Harold II on 25 September 1066.",
+    "type": "relation"
+   },
+   {
+    "true": "William was crowned king of England in Westminster Abbey on 25 December 1066.",
+    "false": "William was crowned king of England in Canterbury Cathedral on 25 December 1066.",
+    "type": "entity"
+   },
+   {
+    "true": "The Norman elite introduced Norman French as a language of the English ruling class.",
+    "false": "The Norman elite introduced Norman French as a language of the English peasantry.",
+    "type": "relation"
+   },
+   {
+    "true": "The Domesday Book was completed in 1086 under William I's rule.",
+    "false": "The Domesday Book was completed in 1085 under William I's rule.",
+    "type": "date"
+   }
+  ],
+  "topic": "classical and medieval history",
+  "id": "it0001"
+ },
+ {
+  "question": "Why was Charlemagne's coronation in 800 significant for medieval Europe?",
+  "claims": [
+   {
+    "true": "Charlemagne became king of the Franks in 768.",
+    "false": "Charlemagne became king of the Franks in 769.",
+    "type": "date"
+   },
+   {
+    "true": "Pope Leo III crowned Charlemagne emperor in Rome on 25 December 800.",
+    "false": "Pope Adrian I crowned Charlemagne emperor in Rome on 25 December 800.",
+    "type": "entity"
+   },
+   {
+    "true": "The coronation took place in Old St. Peter's Basilica.",
+    "false": "The coronation took place in the Lateran Basilica.",
+    "type": "entity"
+   },
+   {
+    "true": "Charlemagne's empire included much of modern France, western Germany, and northern Italy.",
+    "false": "Charlemagne's empire included much of modern France, eastern Germany, and northern Italy.",
+    "type": "entity"
+   },
+   {
+    "true": "The Carolingian Renaissance promoted a standardized script known as Caroline minuscule.",
+    "false": "The Carolingian Renaissance promoted a standardized script known as Gothic minuscule.",
+    "type": "entity"
+   },
+   {
+    "true": "The Treaty of Verdun in 843 divided Charlemagne's empire among his grandsons.",
+    "false": "The Treaty of Verdun in 843 divided Charlemagne's empire among his sons.",
+    "type": "relation"
+   }
+  ],
+  "topic": "classical and medieval history",
+  "id": "it0002"
+ },
+ {
+  "question": "Can you briefly explain what happened during the Cuban Missile Crisis and how it was resolved?",
+  "claims": [
+   {
+    "true": "A U-2 flight photographed Soviet medium-range missile sites in Cuba on 14 October 1962.",
+    "false": "A U-2 flight photographed Soviet medium-range missile sites in Cuba on 16 October 1962.",
+    "type": "date"
+   },
+   {
+    "true": "Kennedy began meeting with the Executive Committee of the National Security Council on 16 October 1962.",
+    "false": "Kennedy began meeting with the Joint Chiefs of Staff on 16 October 1962.",
+    "type": "entity"
+   },
+   {
+    "true": "President John F. Kennedy announced the discovery in a televised address on 22 October 1962.",
+    "false": "President John F. Kennedy announced the discovery in a televised address on 24 October 1962.",
+    "type": "date"
+   },
+   {
+    "true": "The United States imposed a naval quarantine around Cuba rather than immediately launching air strikes.",
+    "false": "The United States launched immediate air strikes against Cuba rather than imposing a naval quarantine.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Nikita Khrushchev agreed on 28 October 1962 to remove Soviet missiles from Cuba.",
+    "false": "Nikita Khrushchev agreed on 27 October 1962 to remove Soviet missiles from Cuba.",
+    "type": "date"
+   },
+   {
+    "true": "The settlement included a secret U.S. promise to remove Jupiter missiles from Turkey.",
+    "false": "The settlement included a secret U.S. promise to remove Jupiter missiles from Italy.",
+    "type": "entity"
+   }
+  ],
+  "topic": "20th century political history",
+  "id": "it0003"
+ },
+ {
+  "question": "How did the Weimar Republic give way to Nazi rule in Germany?",
+  "claims": [
+   {
+    "true": "The Weimar Republic was founded in 1919 after Germany's defeat in World War I.",
+    "false": "The Weimar Republic was founded in 1918 after Germany's defeat in World War I.",
+    "type": "date"
+   },
+   {
+    "true": "The Great Depression sharply increased unemployment in Germany after 1929.",
+    "false": "The Great Depression sharply reduced unemployment in Germany after 1929.",
+    "type": "relation"
+   },
+   {
+    "true": "In the July 1932 election, the Nazi Party won 230 Reichstag seats.",
+    "false": "In the July 1932 election, the Nazi Party won 220 Reichstag seats.",
+    "type": "quantity"
+   },
+   {
+    "true": "President Paul von Hindenburg appointed Adolf Hitler chancellor on 30 January 1933.",
+    "false": "President Paul von Hindenburg appointed Franz von Papen chancellor on 30 January 1933.",
+    "type": "entity"
+   },
+   {
+    "true": "The Reichstag Fire occurred on 27 February 1933.",
+    "false": "The Reichstag Fire occurred on 27 March 1933.",
+    "type": "date"
+   },
+   {
+    "true": "The Enabling Act of 23 March 1933 allowed Hitler's cabinet to enact laws without Reichstag approval.",
+    "false": "The Enabling Act of 23 March 1933 allowed Hitler's cabinet to enact laws with Reichstag approval.",
+    "type": "relation"
+   }
+  ],
+  "topic": "20th century political history",
+  "id": "it0004"
+ },
+ {
+  "question": "What was apartheid in South Africa, and what were the key steps in its dismantling?",
+  "claims": [
+   {
+    "true": "The National Party won South Africa's general election in 1948 and began formal apartheid rule.",
+    "false": "The United Party won South Africa's general election in 1948 and began formal apartheid rule.",
+    "type": "entity"
+   },
+   {
+    "true": "The Population Registration Act of 1950 classified South Africans into official racial categories.",
+    "false": "The Population Registration Act of 1952 classified South Africans into official racial categories.",
+    "type": "date"
+   },
+   {
+    "true": "The Group Areas Act of 1950 enforced racial residential segregation and forced removals.",
+    "false": "The Group Areas Act of 1950 enforced racial residential integration and free movement.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Police killed 69 protesters at Sharpeville on 21 March 1960.",
+    "false": "Police killed 79 protesters at Sharpeville on 21 March 1960.",
+    "type": "quantity"
+   },
+   {
+    "true": "President F. W. de Klerk announced the unbanning of the ANC on 2 February 1990.",
+    "false": "President P. W. Botha announced the unbanning of the ANC on 2 February 1990.",
+    "type": "entity"
+   },
+   {
+    "true": "South Africa's first multiracial national election in April 1994 brought Nelson Mandela to the presidency.",
+    "false": "South Africa's first multiracial national election in April 1994 kept F. W. de Klerk in the presidency.",
+    "type": "relation"
+   }
+  ],
+  "topic": "20th century political history",
+  "id": "it0005"
+ },
+ {
+  "question": "Can you describe the physical geography of the Andes Mountains and why they are important in South America?",
+  "claims": [
+   {
+    "true": "The Andes extend about 7,000 kilometers along the western edge of South America.",
+    "false": "The Andes extend about 6,000 kilometers along the western edge of South America.",
+    "type": "quantity"
+   },
+   {
+    "true": "The Andes pass through seven countries: Venezuela, Colombia, Ecuador, Peru, Bolivia, Chile, and Argentina.",
+    "false": "The Andes pass through six countries: Venezuela, Colombia, Ecuador, Peru, Bolivia, and Chile.",
+    "type": "quantity"
+   },
+   {
+    "true": "Aconcagua in Argentina is the highest peak in the Andes at 6,961 meters.",
+    "false": "Ojos del Salado in Argentina is the highest peak in the Andes at 6,961 meters.",
+    "type": "entity"
+   },
+   {
+    "true": "The Andes formed mainly by subduction of the Nazca Plate beneath the South American Plate.",
+    "false": "The Andes formed mainly by transform sliding of the Nazca Plate past the South American Plate.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The Altiplano is a high plateau in the central Andes, centered in Bolivia and Peru.",
+    "false": "The Altiplano is a high plateau in the central Andes, centered in Bolivia and Ecuador.",
+    "type": "entity"
+   },
+   {
+    "true": "The Andes help create the Atacama Desert by blocking moist air from the Atlantic side and reinforcing a rain shadow in northern Chile.",
+    "false": "The Andes help create the Atacama Desert by blocking moist air from the Pacific side and reinforcing a rain shadow in northern Chile.",
+    "type": "relation"
+   }
+  ],
+  "topic": "physical geography",
+  "id": "it0006"
+ },
+ {
+  "question": "How does a Mediterranean climate work, and where are the main places in the world that have it?",
+  "claims": [
+   {
+    "true": "Mediterranean climates usually occur on west coasts of continents between about 30° and 45° latitude.",
+    "false": "Mediterranean climates usually occur on west coasts of continents between about 20° and 35° latitude.",
+    "type": "quantity"
+   },
+   {
+    "true": "Summers are typically hot or warm and dry, while winters are generally mild and wetter.",
+    "false": "Summers are typically hot or warm and wet, while winters are generally mild and drier.",
+    "type": "relation"
+   },
+   {
+    "true": "Summer dryness is caused largely by the poleward expansion of subtropical high-pressure systems.",
+    "false": "Summer dryness is caused largely by the equatorward expansion of subtropical high-pressure systems.",
+    "type": "relation"
+   },
+   {
+    "true": "Winter rainfall comes mainly from mid-latitude westerlies and traveling cyclones.",
+    "false": "Winter rainfall comes mainly from trade winds and traveling anticyclones.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Besides the Mediterranean Basin, this climate occurs in coastal California, central Chile, the Western Cape, and southwestern Australia.",
+    "false": "Besides the Mediterranean Basin, this climate occurs in coastal California, central Chile, the Western Cape, and southeastern Australia.",
+    "type": "entity"
+   },
+   {
+    "true": "The Köppen climate system classifies the classic hot-summer Mediterranean climate as Csa.",
+    "false": "The Köppen climate system classifies the classic hot-summer Mediterranean climate as Cfa.",
+    "type": "entity"
+   }
+  ],
+  "topic": "physical geography",
+  "id": "it0007"
+ },
+ {
+  "question": "What is the East African Rift, and what major physical features are associated with it?",
+  "claims": [
+   {
+    "true": "The East African Rift stretches roughly 3,000 kilometers from the Afar region southward toward Mozambique.",
+    "false": "The East African Rift stretches roughly 2,000 kilometers from the Afar region southward toward Mozambique.",
+    "type": "quantity"
+   },
+   {
+    "true": "It marks where the African Plate is splitting into the Nubian Plate and the Somali Plate.",
+    "false": "It marks where the African Plate is splitting into the Nubian Plate and the Arabian Plate.",
+    "type": "entity"
+   },
+   {
+    "true": "The rift includes two main branches, commonly called the Eastern Rift and the Western Rift.",
+    "false": "The rift includes three main branches, commonly called the Eastern Rift and the Western Rift.",
+    "type": "quantity"
+   },
+   {
+    "true": "Lake Tanganyika in the Western Rift is the world's second-deepest freshwater lake.",
+    "false": "Lake Tanganyika in the Western Rift is the world's third-deepest freshwater lake.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mount Kilimanjaro stands near the Eastern Rift in Tanzania and is Africa's highest mountain at 5,895 meters.",
+    "false": "Mount Kilimanjaro stands near the Eastern Rift in Tanzania and is Africa's highest mountain at 5,695 meters.",
+    "type": "quantity"
+   },
+   {
+    "true": "Rift valleys form mainly by crustal extension and normal faulting.",
+    "false": "Rift valleys form mainly by crustal compression and thrust faulting.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "physical geography",
+  "id": "it0008"
+ },
+ {
+  "question": "Why do so many Canadians live near the U.S. border, and which regions dominate Canada's settlement pattern?",
+  "claims": [
+   {
+    "true": "Canada is the world's second-largest country by total area, after Russia.",
+    "false": "Canada is the world's second-largest country by total area, after China.",
+    "type": "entity"
+   },
+   {
+    "true": "The 2021 Canadian census counted 36,991,981 residents.",
+    "false": "The 2021 Canadian census counted 35,991,981 residents.",
+    "type": "quantity"
+   },
+   {
+    "true": "About 90% of Canadians live within 160 kilometers of the United States border.",
+    "false": "About 80% of Canadians live within 160 kilometers of the United States border.",
+    "type": "quantity"
+   },
+   {
+    "true": "The Great Lakes–St. Lawrence Lowlands are Canada's most densely populated region.",
+    "false": "The Great Lakes–St. Lawrence Lowlands are Canada's least densely populated region.",
+    "type": "relation"
+   },
+   {
+    "true": "Toronto was Canada's largest census metropolitan area in the 2021 census.",
+    "false": "Montreal was Canada's largest census metropolitan area in the 2021 census.",
+    "type": "entity"
+   },
+   {
+    "true": "Nunavut had 36,858 residents in the 2021 census, making it Canada's least populous province or territory.",
+    "false": "Nunavut had 36,858 residents in the 2016 census, making it Canada's least populous province or territory.",
+    "type": "date"
+   }
+  ],
+  "topic": "human geography and demographics",
+  "id": "it0009"
+ },
+ {
+  "question": "Why is Egypt's population so concentrated along the Nile River, and what role does the Aswan High Dam play?",
+  "claims": [
+   {
+    "true": "About 95% of Egyptians live on about 5% of the country's land, mainly the Nile Valley and Delta.",
+    "false": "About 95% of Egyptians live on about 15% of the country's land, mainly the Nile Valley and Delta.",
+    "type": "quantity"
+   },
+   {
+    "true": "Egypt's Western Desert lies west of the Nile and forms part of the Sahara.",
+    "false": "Egypt's Eastern Desert lies west of the Nile and forms part of the Sahara.",
+    "type": "entity"
+   },
+   {
+    "true": "Cairo is Egypt's capital and largest city.",
+    "false": "Alexandria is Egypt's capital and largest city.",
+    "type": "entity"
+   },
+   {
+    "true": "The Aswan High Dam was completed in 1970.",
+    "false": "The Aswan High Dam was completed in 1974.",
+    "type": "date"
+   },
+   {
+    "true": "Lake Nasser is the reservoir created by the Aswan High Dam.",
+    "false": "Lake Qarun is the reservoir created by the Aswan High Dam.",
+    "type": "entity"
+   },
+   {
+    "true": "The Nile flows northward to the Mediterranean Sea.",
+    "false": "The Nile flows southward to the Mediterranean Sea.",
+    "type": "relation"
+   }
+  ],
+  "topic": "human geography and demographics",
+  "id": "it0010"
+ },
+ {
+  "question": "Can you explain how mitochondria make ATP and mention a few structural features that enable this?",
+  "claims": [
+   {
+    "true": "Mitochondria are enclosed by two membranes separated by an intermembrane space.",
+    "false": "Mitochondria are enclosed by one membrane separated by an intermembrane space.",
+    "type": "quantity"
+   },
+   {
+    "true": "In oxidative phosphorylation, complexes I, III, and IV pump protons from the matrix to the intermembrane space.",
+    "false": "In oxidative phosphorylation, complexes I, III, and IV pump protons from the intermembrane space to the matrix.",
+    "type": "relation"
+   },
+   {
+    "true": "ATP synthase makes ATP as protons flow back into the mitochondrial matrix.",
+    "false": "ATP synthase makes ATP as protons flow back into the intermembrane space.",
+    "type": "relation"
+   },
+   {
+    "true": "Oxygen is the terminal electron acceptor in the mitochondrial electron transport chain.",
+    "false": "Ubiquinone is the terminal electron acceptor in the mitochondrial electron transport chain.",
+    "type": "entity"
+   },
+   {
+    "true": "Human mitochondrial DNA is a circular molecule of 16,569 base pairs.",
+    "false": "Human mitochondrial DNA is a circular molecule of 15,569 base pairs.",
+    "type": "quantity"
+   },
+   {
+    "true": "In eukaryotic cells, the citric acid cycle takes place in the mitochondrial matrix.",
+    "false": "In eukaryotic cells, the citric acid cycle takes place in the cytosol.",
+    "type": "entity"
+   }
+  ],
+  "topic": "cell biology",
+  "id": "it0011"
+ },
+ {
+  "question": "How does the Golgi apparatus process and sort proteins after they leave the endoplasmic reticulum?",
+  "claims": [
+   {
+    "true": "The Golgi apparatus is made of flattened membrane-bound sacs called cisternae.",
+    "false": "The Golgi apparatus is made of one membrane-bound sac called a cisterna.",
+    "type": "quantity"
+   },
+   {
+    "true": "Proteins arriving from the endoplasmic reticulum usually enter the cis face of the Golgi.",
+    "false": "Proteins arriving from the endoplasmic reticulum usually enter the trans face of the Golgi.",
+    "type": "relation"
+   },
+   {
+    "true": "Many proteins leave the Golgi from the trans-Golgi network for secretion or delivery to other organelles.",
+    "false": "Many proteins leave the Golgi from the cis-Golgi network for secretion or delivery to other organelles.",
+    "type": "relation"
+   },
+   {
+    "true": "N-linked oligosaccharides added in the endoplasmic reticulum are further modified in the Golgi apparatus.",
+    "false": "O-linked oligosaccharides added in the endoplasmic reticulum are further modified in the Golgi apparatus.",
+    "type": "entity"
+   },
+   {
+    "true": "Mannose-6-phosphate serves as a targeting signal for many soluble lysosomal enzymes.",
+    "false": "Mannose-6-phosphate serves as a targeting signal for many soluble peroxisomal enzymes.",
+    "type": "entity"
+   },
+   {
+    "true": "COPI-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.",
+    "false": "COPII-coated vesicles mediate retrograde transport from the Golgi back to the endoplasmic reticulum.",
+    "type": "entity"
+   }
+  ],
+  "topic": "cell biology",
+  "id": "it0012"
+ },
+ {
+  "question": "Can you summarize how the eukaryotic cell cycle is organized and how checkpoints control progression through mitosis?",
+  "claims": [
+   {
+    "true": "Interphase is divided into G1, S, and G2 phases.",
+    "false": "Interphase is divided into G1, M, and G2 phases.",
+    "type": "entity"
+   },
+   {
+    "true": "DNA replication occurs during S phase of the cell cycle.",
+    "false": "DNA replication occurs during G2 phase of the cell cycle.",
+    "type": "entity"
+   },
+   {
+    "true": "Cyclin-dependent kinases become active when they bind specific cyclins.",
+    "false": "Cyclin-dependent kinases become inactive when they bind specific cyclins.",
+    "type": "relation"
+   },
+   {
+    "true": "The spindle assembly checkpoint blocks anaphase until all chromosomes are properly attached to spindle microtubules.",
+    "false": "The spindle assembly checkpoint blocks metaphase until all chromosomes are properly attached to spindle microtubules.",
+    "type": "relation"
+   },
+   {
+    "true": "Human somatic cells normally have 46 chromosomes at metaphase.",
+    "false": "Human somatic cells normally have 48 chromosomes at metaphase.",
+    "type": "quantity"
+   },
+   {
+    "true": "The anaphase-promoting complex/cyclosome ubiquitinates securin before sister chromatids separate.",
+    "false": "The anaphase-promoting complex/cyclosome phosphorylates securin before sister chromatids separate.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "cell biology",
+  "id": "it0013"
+ },
+ {
+  "question": "How did Darwin and Wallace develop the idea of natural selection, and what were some key steps in its early publication?",
+  "claims": [
+   {
+    "true": "Charles Darwin and Alfred Russel Wallace independently formulated natural selection in the 1850s.",
+    "false": "Charles Darwin and Alfred Russel Wallace independently formulated natural selection in the 1840s.",
+    "type": "date"
+   },
+   {
+    "true": "Their joint paper was presented to the Linnean Society of London on 1 July 1858.",
+    "false": "Their joint paper was presented to the Royal Society of London on 1 July 1858.",
+    "type": "entity"
+   },
+   {
+    "true": "Darwin published On the Origin of Species in 1859.",
+    "false": "Darwin published On the Origin of Species in 1869.",
+    "type": "date"
+   },
+   {
+    "true": "Darwin said reading Thomas Malthus's 1798 essay on population helped him conceive natural selection.",
+    "false": "Darwin said reading Jean-Baptiste Lamarck's 1798 essay on population helped him conceive natural selection.",
+    "type": "entity"
+   },
+   {
+    "true": "Natural selection requires heritable variation that affects survival or reproductive success.",
+    "false": "Natural selection requires heritable variation that affects survival but not reproductive success.",
+    "type": "relation"
+   },
+   {
+    "true": "Darwin used artificial selection by pigeon and livestock breeders as an analogy for natural selection.",
+    "false": "Darwin used artificial selection by pigeon and livestock breeders as a contrast to natural selection.",
+    "type": "relation"
+   }
+  ],
+  "topic": "evolutionary biology",
+  "id": "it0014"
+ },
+ {
+  "question": "How does the endosymbiotic theory explain the origins of mitochondria and chloroplasts?",
+  "claims": [
+   {
+    "true": "Lynn Margulis revived and extensively argued for endosymbiotic theory in a 1967 paper.",
+    "false": "Lynn Margulis revived and extensively argued for endosymbiotic theory in a 1977 paper.",
+    "type": "date"
+   },
+   {
+    "true": "Mitochondria are derived from an ancestral alphaproteobacterium.",
+    "false": "Mitochondria are derived from an ancestral gammaproteobacterium.",
+    "type": "entity"
+   },
+   {
+    "true": "Chloroplasts are derived from an ancestral cyanobacterium.",
+    "false": "Chloroplasts are derived from an ancestral actinobacterium.",
+    "type": "entity"
+   },
+   {
+    "true": "Mitochondria and chloroplasts reproduce by binary fission.",
+    "false": "Mitochondria and chloroplasts reproduce by mitosis.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Both mitochondria and chloroplasts are surrounded by two membranes.",
+    "false": "Both mitochondria and chloroplasts are surrounded by one membrane.",
+    "type": "quantity"
+   },
+   {
+    "true": "Many genes from ancestral endosymbionts were transferred to the host nucleus.",
+    "false": "Many genes from the host nucleus were transferred to ancestral endosymbionts.",
+    "type": "relation"
+   }
+  ],
+  "topic": "evolutionary biology",
+  "id": "it0015"
+ },
+ {
+  "question": "How does genetic drift alter populations, and what do biologists mean by founder effects and bottlenecks?",
+  "claims": [
+   {
+    "true": "Genetic drift changes allele frequencies through random sampling from one generation to the next.",
+    "false": "Genetic drift changes allele frequencies through natural selection from one generation to the next.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Genetic drift has stronger effects in small populations than in large populations.",
+    "false": "Genetic drift has stronger effects in large populations than in small populations.",
+    "type": "relation"
+   },
+   {
+    "true": "A founder effect occurs when a new population is established by a small number of individuals.",
+    "false": "A founder effect occurs when a new population is established by a large number of individuals.",
+    "type": "quantity"
+   },
+   {
+    "true": "A population bottleneck is a sharp reduction in population size that can reduce genetic variation.",
+    "false": "A population bottleneck is a sharp increase in population size that can reduce genetic variation.",
+    "type": "relation"
+   },
+   {
+    "true": "Genetic drift can fix or eliminate alleles even when they do not affect fitness.",
+    "false": "Genetic drift can fix or eliminate alleles only when they affect fitness.",
+    "type": "relation"
+   },
+   {
+    "true": "Northern elephant seals passed through a severe 19th-century bottleneck and retain low genetic diversity today.",
+    "false": "Northern elephant seals passed through a severe 20th-century bottleneck and retain low genetic diversity today.",
+    "type": "date"
+   }
+  ],
+  "topic": "evolutionary biology",
+  "id": "it0016"
+ },
+ {
+  "question": "How do red blood cells transport oxygen and carbon dioxide in the body?",
+  "claims": [
+   {
+    "true": "Mature human red blood cells lack a nucleus.",
+    "false": "Mature human red blood cells contain a nucleus.",
+    "type": "relation"
+   },
+   {
+    "true": "Hemoglobin in adult red blood cells usually contains two alpha and two beta globin chains.",
+    "false": "Hemoglobin in adult red blood cells usually contains two alpha and two gamma globin chains.",
+    "type": "entity"
+   },
+   {
+    "true": "Each hemoglobin molecule can bind up to four oxygen molecules.",
+    "false": "Each hemoglobin molecule can bind up to five oxygen molecules.",
+    "type": "quantity"
+   },
+   {
+    "true": "Carbonic anhydrase in red blood cells catalyzes conversion of carbon dioxide and water to carbonic acid.",
+    "false": "Carbonic anhydrase in red blood cells catalyzes conversion of oxygen and water to carbonic acid.",
+    "type": "entity"
+   },
+   {
+    "true": "Erythropoietin released mainly by the kidneys stimulates red blood cell production in bone marrow.",
+    "false": "Erythropoietin released mainly by the liver stimulates red blood cell production in bone marrow.",
+    "type": "entity"
+   },
+   {
+    "true": "Human red blood cells circulate for about 120 days before removal, mainly by the spleen.",
+    "false": "Human red blood cells circulate for about 90 days before removal, mainly by the spleen.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "human physiology",
+  "id": "it0017"
+ },
+ {
+  "question": "Can you explain how the nephron forms urine, from filtration to water reabsorption?",
+  "claims": [
+   {
+    "true": "Filtration begins when blood plasma passes from glomerular capillaries into Bowman's space.",
+    "false": "Filtration begins when blood plasma passes from Bowman's space into glomerular capillaries.",
+    "type": "relation"
+   },
+   {
+    "true": "The proximal convoluted tubule reabsorbs most filtered sodium and water.",
+    "false": "The distal convoluted tubule reabsorbs most filtered sodium and water.",
+    "type": "entity"
+   },
+   {
+    "true": "The descending limb of the loop of Henle is highly permeable to water.",
+    "false": "The descending limb of the loop of Henle is highly impermeable to water.",
+    "type": "relation"
+   },
+   {
+    "true": "The thick ascending limb actively reabsorbs sodium, potassium, and chloride via NKCC2 transporters.",
+    "false": "The thick ascending limb actively reabsorbs sodium, potassium, and chloride via NCC transporters.",
+    "type": "entity"
+   },
+   {
+    "true": "About 180 liters of fluid are filtered by the kidneys each day in a healthy adult.",
+    "false": "About 120 liters of fluid are filtered by the kidneys each day in a healthy adult.",
+    "type": "quantity"
+   },
+   {
+    "true": "Antidiuretic hormone increases water reabsorption by inserting aquaporin-2 channels into collecting duct principal cells.",
+    "false": "Antidiuretic hormone increases water reabsorption by inserting aquaporin-1 channels into collecting duct principal cells.",
+    "type": "entity"
+   }
+  ],
+  "topic": "human physiology",
+  "id": "it0018"
+ },
+ {
+  "question": "How does a skeletal muscle fiber contract after a motor neuron fires?",
+  "claims": [
+   {
+    "true": "An action potential in a motor neuron triggers acetylcholine release at the neuromuscular junction.",
+    "false": "An action potential in a motor neuron triggers dopamine release at the neuromuscular junction.",
+    "type": "entity"
+   },
+   {
+    "true": "Acetylcholine binds nicotinic receptors on the muscle end plate to depolarize the sarcolemma.",
+    "false": "Acetylcholine binds muscarinic receptors on the muscle end plate to depolarize the sarcolemma.",
+    "type": "entity"
+   },
+   {
+    "true": "Depolarization travels down T tubules and activates voltage-sensitive dihydropyridine receptors.",
+    "false": "Depolarization travels down T tubules and activates ligand-sensitive dihydropyridine receptors.",
+    "type": "mechanism"
+   },
+   {
+    "true": "In skeletal muscle, calcium released from the sarcoplasmic reticulum binds troponin C.",
+    "false": "In skeletal muscle, calcium released from the sarcoplasmic reticulum binds troponin I.",
+    "type": "entity"
+   },
+   {
+    "true": "ATP binding to myosin causes myosin to detach from actin.",
+    "false": "ATP binding to myosin causes myosin to attach to actin.",
+    "type": "relation"
+   },
+   {
+    "true": "The power stroke occurs when myosin releases inorganic phosphate after cross-bridge formation.",
+    "false": "The power stroke occurs when myosin releases ADP after cross-bridge formation.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "human physiology",
+  "id": "it0019"
+ },
+ {
+  "question": "What determines the motion and period of a simple pendulum in classical mechanics?",
+  "claims": [
+   {
+    "true": "For small oscillations, a simple pendulum's period is T = 2π√(L/g).",
+    "false": "For small oscillations, a simple pendulum's period is T = 2π√(g/L).",
+    "type": "relation"
+   },
+   {
+    "true": "In the small-angle approximation, the period does not depend on the bob's mass.",
+    "false": "In the small-angle approximation, the period does depend on the bob's mass.",
+    "type": "relation"
+   },
+   {
+    "true": "Near Earth's surface, a pendulum of length 1 meter has a period of about 2.0 seconds.",
+    "false": "Near the Moon's surface, a pendulum of length 1 meter has a period of about 2.0 seconds.",
+    "type": "entity"
+   },
+   {
+    "true": "Air resistance and pivot friction cause a real pendulum's amplitude to decrease over time.",
+    "false": "Air resistance and pivot friction cause a real pendulum's amplitude to increase over time.",
+    "type": "relation"
+   },
+   {
+    "true": "At the highest point of its swing, the bob's speed is zero.",
+    "false": "At the highest point of its swing, the bob's speed is maximal.",
+    "type": "relation"
+   },
+   {
+    "true": "In an ideal simple pendulum, gravity provides the restoring torque about the pivot.",
+    "false": "In an ideal simple pendulum, tension provides the restoring torque about the pivot.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "classical mechanics",
+  "id": "it0020"
+ },
+ {
+  "question": "How do Kepler's laws connect to Newton's law of gravitation?",
+  "claims": [
+   {
+    "true": "Johannes Kepler published his first two laws of planetary motion in 1609.",
+    "false": "Johannes Kepler published his first two laws of planetary motion in 1619.",
+    "type": "date"
+   },
+   {
+    "true": "Kepler's third law states that T^2 is proportional to a^3 for planets orbiting the same central mass.",
+    "false": "Kepler's third law states that T^2 is proportional to a^2 for planets orbiting the same central mass.",
+    "type": "quantity"
+   },
+   {
+    "true": "Under Newtonian gravity, bound two-body orbits can be ellipses with the central mass at one focus.",
+    "false": "Under Newtonian gravity, bound two-body orbits can be ellipses with the central mass at the center.",
+    "type": "relation"
+   },
+   {
+    "true": "Isaac Newton published the Principia in 1687.",
+    "false": "Isaac Newton published the Principia in 1686.",
+    "type": "date"
+   },
+   {
+    "true": "For a circular orbit of radius r, the orbital speed is √(GM/r).",
+    "false": "For a circular orbit of radius r, the orbital speed is √(GMr).",
+    "type": "relation"
+   },
+   {
+    "true": "Equal areas are swept in equal times because gravity is a central force, so angular momentum is conserved.",
+    "false": "Equal areas are swept in equal times because gravity is a tangential force, so angular momentum is conserved.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "classical mechanics",
+  "id": "it0021"
+ },
+ {
+  "question": "Can you explain what the Carnot cycle is and why it matters for heat-engine efficiency?",
+  "claims": [
+   {
+    "true": "Sadi Carnot published \"Reflections on the Motive Power of Fire\" in 1824.",
+    "false": "Sadi Carnot published \"Reflections on the Motive Power of Fire\" in 1826.",
+    "type": "date"
+   },
+   {
+    "true": "A Carnot cycle contains two isothermal steps and two adiabatic steps.",
+    "false": "A Carnot cycle contains two isothermal steps and two isobaric steps.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The cycle runs between a hot reservoir at temperature T_h and a cold reservoir at temperature T_c.",
+    "false": "The cycle runs between a hot reservoir at temperature T_c and a cold reservoir at temperature T_h.",
+    "type": "relation"
+   },
+   {
+    "true": "Its reversible efficiency is 1 − T_c/T_h when both temperatures are measured in kelvins.",
+    "false": "Its reversible efficiency is 1 − T_h/T_c when both temperatures are measured in kelvins.",
+    "type": "relation"
+   },
+   {
+    "true": "No engine operating between the same two reservoirs can be more efficient than a reversible Carnot engine.",
+    "false": "No engine operating between the same two reservoirs can be less efficient than a reversible Carnot engine.",
+    "type": "relation"
+   },
+   {
+    "true": "Carnot's efficiency limit follows from the second law of thermodynamics.",
+    "false": "Carnot's efficiency limit follows from the first law of thermodynamics.",
+    "type": "entity"
+   }
+  ],
+  "topic": "thermodynamics",
+  "id": "it0022"
+ },
+ {
+  "question": "How does the first law of thermodynamics connect heat, work, and internal energy?",
+  "claims": [
+   {
+    "true": "The first law states that ΔU = Q − W when W is work done by the system.",
+    "false": "The first law states that ΔU = Q + W when W is work done by the system.",
+    "type": "relation"
+   },
+   {
+    "true": "In SI, heat and work are both measured in joules.",
+    "false": "In SI, heat and work are both measured in watts.",
+    "type": "entity"
+   },
+   {
+    "true": "For an ideal gas, internal energy depends only on temperature.",
+    "false": "For an ideal gas, internal energy depends only on pressure.",
+    "type": "relation"
+   },
+   {
+    "true": "In an isochoric process, boundary work is zero because the volume stays constant.",
+    "false": "In an isochoric process, boundary work is zero because the pressure stays constant.",
+    "type": "mechanism"
+   },
+   {
+    "true": "James Prescott Joule's 1845 paddle-wheel experiments supported the mechanical equivalence of heat.",
+    "false": "James Prescott Joule's 1847 paddle-wheel experiments supported the mechanical equivalence of heat.",
+    "type": "date"
+   },
+   {
+    "true": "For a monatomic ideal gas, C_V,m equals 3R/2.",
+    "false": "For a monatomic ideal gas, C_V,m equals 5R/2.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "thermodynamics",
+  "id": "it0023"
+ },
+ {
+  "question": "What is entropy in thermodynamics, and how do the classical and statistical definitions relate?",
+  "claims": [
+   {
+    "true": "Rudolf Clausius introduced the term entropy in 1865.",
+    "false": "Rudolf Clausius introduced the term entropy in 1867.",
+    "type": "date"
+   },
+   {
+    "true": "For a reversible process, the entropy change is dS = δQ_rev/T.",
+    "false": "For a reversible process, the entropy change is dS = TδQ_rev.",
+    "type": "relation"
+   },
+   {
+    "true": "Entropy is extensive, so two identical noninteracting systems have twice the entropy of one.",
+    "false": "Entropy is extensive, so two identical noninteracting systems have the same entropy as one.",
+    "type": "relation"
+   },
+   {
+    "true": "Boltzmann's famous formula is S = k_B ln W.",
+    "false": "Boltzmann's famous formula is S = k_B W.",
+    "type": "relation"
+   },
+   {
+    "true": "The SI unit of entropy is joule per kelvin.",
+    "false": "The SI unit of entropy is joule per mole.",
+    "type": "entity"
+   },
+   {
+    "true": "In an isolated system, total entropy cannot decrease during a spontaneous process.",
+    "false": "In an isolated system, total entropy cannot increase during a spontaneous process.",
+    "type": "relation"
+   }
+  ],
+  "topic": "thermodynamics",
+  "id": "it0024"
+ },
+ {
+  "question": "How does electromagnetic induction work, and what did Faraday and Lenz contribute to understanding it?",
+  "claims": [
+   {
+    "true": "Michael Faraday demonstrated electromagnetic induction in 1831.",
+    "false": "Michael Faraday demonstrated electromagnetic induction in 1832.",
+    "type": "date"
+   },
+   {
+    "true": "Changing magnetic flux through a closed circuit induces an electromotive force in that circuit.",
+    "false": "Steady magnetic flux through a closed circuit induces an electromotive force in that circuit.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Lenz's law states that the induced current's magnetic field opposes the change in flux that produced it.",
+    "false": "Lenz's law states that the induced current's magnetic field reinforces the change in flux that produced it.",
+    "type": "relation"
+   },
+   {
+    "true": "A transformer transfers energy between coils by mutual induction and usually requires changing current in the primary coil.",
+    "false": "A transformer transfers energy between coils by electrostatic induction and usually requires changing current in the primary coil.",
+    "type": "mechanism"
+   },
+   {
+    "true": "An electric generator produces electricity by moving a conductor through a magnetic field.",
+    "false": "An electric generator produces electricity by passing steady current through a conductor in a magnetic field.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The SI unit of inductance is the henry, named after Joseph Henry.",
+    "false": "The SI unit of inductance is the henry, named after William Thomson.",
+    "type": "entity"
+   }
+  ],
+  "topic": "electromagnetism",
+  "id": "it0025"
+ },
+ {
+  "question": "Can you explain how Maxwell unified electricity and magnetism, and why that mattered for understanding light?",
+  "claims": [
+   {
+    "true": "In 1865, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field'.",
+    "false": "In 1866, James Clerk Maxwell published 'A Dynamical Theory of the Electromagnetic Field'.",
+    "type": "date"
+   },
+   {
+    "true": "Maxwell added the displacement current term to Ampere's law to account for changing electric fields.",
+    "false": "Maxwell added the displacement current term to Ampere's law to account for changing magnetic fields.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Gauss's law for magnetism states that the net magnetic flux through any closed surface is zero.",
+    "false": "Gauss's law for magnetism states that the net electric flux through any closed surface is zero.",
+    "type": "entity"
+   },
+   {
+    "true": "Maxwell concluded that light is an electromagnetic wave.",
+    "false": "Maxwell concluded that light is an electrostatic wave.",
+    "type": "relation"
+   },
+   {
+    "true": "In vacuum, electromagnetic waves travel at about 3.00 × 10^8 meters per second.",
+    "false": "In vacuum, electromagnetic waves travel at about 2.00 × 10^8 meters per second.",
+    "type": "quantity"
+   },
+   {
+    "true": "In 1888, Heinrich Hertz published experiments confirming the existence of electromagnetic waves.",
+    "false": "In 1888, Oliver Lodge published experiments confirming the existence of electromagnetic waves.",
+    "type": "entity"
+   }
+  ],
+  "topic": "electromagnetism",
+  "id": "it0026"
+ },
+ {
+  "question": "How does a capacitor store energy, and what determines its capacitance?",
+  "claims": [
+   {
+    "true": "A capacitor stores equal and opposite charges on two conductors separated by an insulating material or vacuum.",
+    "false": "A capacitor stores equal and like charges on two conductors separated by an insulating material or vacuum.",
+    "type": "relation"
+   },
+   {
+    "true": "The SI unit of capacitance is the farad, named after Michael Faraday.",
+    "false": "The SI unit of capacitance is the farad, named after James Clerk Maxwell.",
+    "type": "entity"
+   },
+   {
+    "true": "For ideal parallel plates, capacitance is proportional to plate area and inversely proportional to plate separation.",
+    "false": "For ideal parallel plates, capacitance is proportional to plate area and directly proportional to plate separation.",
+    "type": "relation"
+   },
+   {
+    "true": "The energy stored in a capacitor is one-half C V squared.",
+    "false": "The energy stored in a capacitor is one-third C V squared.",
+    "type": "quantity"
+   },
+   {
+    "true": "A dielectric increases capacitance by polarizing and reducing the electric field inside the material.",
+    "false": "A dielectric increases capacitance by ionizing and increasing the electric field inside the material.",
+    "type": "mechanism"
+   },
+   {
+    "true": "In an RC charging circuit, capacitor voltage reaches about 63% of its final value after one time constant.",
+    "false": "In an RC charging circuit, capacitor voltage reaches about 37% of its final value after one time constant.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "electromagnetism",
+  "id": "it0027"
+ },
+ {
+  "question": "How do Mars's seasons work, and why do they differ from Earth's?",
+  "claims": [
+   {
+    "true": "Mars's rotational axis is tilted about 25 degrees relative to its orbital plane.",
+    "false": "Mars's rotational axis is tilted about 35 degrees relative to its orbital plane.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mars takes 687 Earth days to complete one orbit around the Sun.",
+    "false": "Mars takes 587 Earth days to complete one orbit around the Sun.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mars's orbital eccentricity is about 0.093, much larger than Earth's 0.017.",
+    "false": "Mars's orbital eccentricity is about 0.039, much larger than Earth's 0.017.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mars reaches perihelion during southern summer, making southern summers shorter and warmer.",
+    "false": "Mars reaches perihelion during northern summer, making southern summers shorter and warmer.",
+    "type": "relation"
+   },
+   {
+    "true": "A Martian sol lasts about 24 hours 39 minutes.",
+    "false": "A Martian sol lasts about 23 hours 39 minutes.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mars's seasonal polar caps are composed largely of carbon dioxide frost.",
+    "false": "Mars's seasonal polar caps are composed largely of water ice.",
+    "type": "entity"
+   }
+  ],
+  "topic": "astronomy and planetary science",
+  "id": "it0028"
+ },
+ {
+  "question": "What are Saturn's rings made of, and how are they arranged around the planet?",
+  "claims": [
+   {
+    "true": "Saturn's rings are composed mostly of water ice with smaller amounts of rocky material and dust.",
+    "false": "Saturn's rings are composed mostly of carbon dioxide ice with smaller amounts of rocky material and dust.",
+    "type": "entity"
+   },
+   {
+    "true": "From Saturn outward, the major named rings are D, C, B, A, F, G, and E.",
+    "false": "From Saturn outward, the major named rings are D, C, A, B, F, G, and E.",
+    "type": "relation"
+   },
+   {
+    "true": "The Cassini Division separates Saturn's A ring from its B ring.",
+    "false": "The Cassini Division separates Saturn's A ring from its C ring.",
+    "type": "entity"
+   },
+   {
+    "true": "Typical ring particles range from tiny grains to chunks several meters across.",
+    "false": "Typical ring particles range from tiny grains to chunks several kilometers across.",
+    "type": "quantity"
+   },
+   {
+    "true": "Saturn's bright main rings lie inside the planet's Roche limit for icy material.",
+    "false": "Saturn's bright main rings lie outside the planet's Roche limit for icy material.",
+    "type": "relation"
+   },
+   {
+    "true": "In many places, Saturn's main rings are only about 10 meters thick.",
+    "false": "In many places, Saturn's main rings are only about 100 meters thick.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "astronomy and planetary science",
+  "id": "it0029"
+ },
+ {
+  "question": "How do tsunamis form, and why can they travel across an ocean so quickly?",
+  "claims": [
+   {
+    "true": "Most tsunamis are generated by large undersea earthquakes that vertically displace the seafloor.",
+    "false": "Most tsunamis are generated by large undersea earthquakes that horizontally displace the seafloor.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The 2004 Indian Ocean tsunami was triggered by a magnitude 9.1 earthquake off northern Sumatra.",
+    "false": "The 2004 Indian Ocean tsunami was triggered by a magnitude 8.1 earthquake off northern Sumatra.",
+    "type": "quantity"
+   },
+   {
+    "true": "In deep water, tsunami speed depends mainly on water depth rather than on wave height.",
+    "false": "In deep water, tsunami speed depends mainly on wave height rather than on water depth.",
+    "type": "relation"
+   },
+   {
+    "true": "In 4,000-meter-deep ocean water, a tsunami can travel at about 200 meters per second.",
+    "false": "In 4,000-meter-deep ocean water, a tsunami can travel at about 120 meters per second.",
+    "type": "quantity"
+   },
+   {
+    "true": "Open-ocean tsunami waves commonly have wavelengths of tens to hundreds of kilometers.",
+    "false": "Open-ocean tsunami waves commonly have wavelengths of tens to hundreds of meters.",
+    "type": "quantity"
+   },
+   {
+    "true": "As a tsunami enters shallow coastal water, its speed decreases and its wave height often increases.",
+    "false": "As a tsunami enters shallow coastal water, its speed increases and its wave height often increases.",
+    "type": "relation"
+   }
+  ],
+  "topic": "geology and earth science",
+  "id": "it0030"
+ },
+ {
+  "question": "How do scientists know the age of the Earth, and what evidence do they use?",
+  "claims": [
+   {
+    "true": "Radiometric dating estimates ages by measuring parent and daughter isotopes in minerals with known decay rates.",
+    "false": "Radiometric dating estimates ages by measuring parent and daughter isotopes in minerals with known diffusion rates.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Clair Patterson published the first widely accepted age for Earth in 1956.",
+    "false": "Clair Patterson published the first widely accepted age for Earth in 1965.",
+    "type": "date"
+   },
+   {
+    "true": "Patterson's estimate placed Earth's age at about 4.55 billion years.",
+    "false": "Patterson's estimate placed Earth's age at about 3.55 billion years.",
+    "type": "quantity"
+   },
+   {
+    "true": "Zircon crystals from Jack Hills in Western Australia are about 4.4 billion years old.",
+    "false": "Zircon crystals from Barberton in South Africa are about 4.4 billion years old.",
+    "type": "entity"
+   },
+   {
+    "true": "Many Earth rocks are younger than Earth because plate tectonics and erosion recycle the crust.",
+    "false": "Many Earth rocks are younger than Earth because ocean tides and erosion recycle the crust.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Lead-lead dating of primitive meteorites gives an age for the Solar System of about 4.567 billion years.",
+    "false": "Lead-lead dating of primitive meteorites gives an age for the Solar System of about 4.267 billion years.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "geology and earth science",
+  "id": "it0031"
+ },
+ {
+  "question": "How does subduction create volcanic arcs and earthquakes at convergent plate boundaries?",
+  "claims": [
+   {
+    "true": "Subduction happens at convergent plate boundaries where one lithospheric plate sinks beneath another into the mantle.",
+    "false": "Subduction happens at divergent plate boundaries where one lithospheric plate sinks beneath another into the mantle.",
+    "type": "relation"
+   },
+   {
+    "true": "Oceanic lithosphere commonly subducts because it becomes denser than continental lithosphere as it cools and ages.",
+    "false": "Oceanic lithosphere commonly subducts because it becomes less dense than continental lithosphere as it cools and ages.",
+    "type": "relation"
+   },
+   {
+    "true": "Water released from the descending slab lowers the melting temperature of mantle rocks in the overlying wedge.",
+    "false": "Water released from the descending slab raises the melting temperature of mantle rocks in the overlying wedge.",
+    "type": "relation"
+   },
+   {
+    "true": "The inclined zone of earthquakes tracing a subducting slab is called a Wadati-Benioff zone.",
+    "false": "The inclined zone of earthquakes tracing a subducting slab is called a transform fault zone.",
+    "type": "entity"
+   },
+   {
+    "true": "Deep-focus earthquakes in subduction zones can occur at depths approaching 700 kilometers.",
+    "false": "Deep-focus earthquakes in subduction zones can occur at depths approaching 70 kilometers.",
+    "type": "quantity"
+   },
+   {
+    "true": "The Andes volcanic arc exists because the Nazca Plate subducts beneath the South American Plate.",
+    "false": "The Andes volcanic arc exists because the Cocos Plate subducts beneath the South American Plate.",
+    "type": "entity"
+   }
+  ],
+  "topic": "geology and earth science",
+  "id": "it0032"
+ },
+ {
+  "question": "How does the Haber-Bosch process make ammonia, and what operating conditions and catalyst make it practical on an industrial scale?",
+  "claims": [
+   {
+    "true": "The Haber-Bosch reaction is N2 + 3 H2 ⇌ 2 NH3.",
+    "false": "The Haber-Bosch reaction is N2 + 2 H2 ⇌ 2 NH3.",
+    "type": "quantity"
+   },
+   {
+    "true": "Fritz Haber first demonstrated catalytic ammonia synthesis from nitrogen and hydrogen in 1909.",
+    "false": "Fritz Haber first demonstrated catalytic ammonia synthesis from nitrogen and hydrogen in 1908.",
+    "type": "date"
+   },
+   {
+    "true": "Carl Bosch brought the process to industrial scale at BASF in 1913.",
+    "false": "Carl Bosch brought the process to industrial scale at Bayer in 1913.",
+    "type": "entity"
+   },
+   {
+    "true": "Modern Haber-Bosch plants commonly use an iron catalyst promoted with potassium and aluminum oxides.",
+    "false": "Modern Haber-Bosch plants commonly use a nickel catalyst promoted with potassium and aluminum oxides.",
+    "type": "entity"
+   },
+   {
+    "true": "Industrial Haber-Bosch synthesis typically operates near 200 bar and about 450 °C.",
+    "false": "Industrial Haber-Bosch synthesis typically operates near 20 bar and about 450 °C.",
+    "type": "quantity"
+   },
+   {
+    "true": "Ammonia formation from nitrogen and hydrogen is exothermic, releasing about 92 kJ per 2 mol NH3 formed.",
+    "false": "Ammonia formation from nitrogen and hydrogen is endothermic, releasing about 92 kJ per 2 mol NH3 formed.",
+    "type": "relation"
+   }
+  ],
+  "topic": "inorganic chemistry",
+  "id": "it0033"
+ },
+ {
+  "question": "Why are many transition-metal complexes colored, and how do ligand field strength and geometry affect the colors you see?",
+  "claims": [
+   {
+    "true": "Many transition-metal complex colors arise from absorption of visible light in d-d transitions.",
+    "false": "Many transition-metal complex colors arise from emission of visible light in d-d transitions.",
+    "type": "mechanism"
+   },
+   {
+    "true": "In an octahedral field, the d orbitals split into lower-energy t2g and higher-energy eg levels.",
+    "false": "In an octahedral field, the d orbitals split into lower-energy eg and higher-energy t2g levels.",
+    "type": "relation"
+   },
+   {
+    "true": "For the same metal and ligands, tetrahedral splitting is about four-ninths of octahedral splitting.",
+    "false": "For the same metal and ligands, tetrahedral splitting is about five-ninths of octahedral splitting.",
+    "type": "quantity"
+   },
+   {
+    "true": "Zn2+ complexes are often colorless because Zn2+ has a 3d10 electron configuration.",
+    "false": "Cu2+ complexes are often colorless because Cu2+ has a 3d10 electron configuration.",
+    "type": "entity"
+   },
+   {
+    "true": "Cyanide is a stronger-field ligand than water in the spectrochemical series.",
+    "false": "Chloride is a stronger-field ligand than water in the spectrochemical series.",
+    "type": "entity"
+   },
+   {
+    "true": "Charge-transfer transitions usually give more intense colors than d-d transitions.",
+    "false": "Charge-transfer transitions usually give less intense colors than d-d transitions.",
+    "type": "relation"
+   }
+  ],
+  "topic": "inorganic chemistry",
+  "id": "it0034"
+ },
+ {
+  "question": "Can you explain the Diels–Alder reaction and mention its key mechanistic features and selectivity trends?",
+  "claims": [
+   {
+    "true": "The Diels–Alder reaction is a [4+2] cycloaddition between a conjugated diene and a dienophile.",
+    "false": "The Diels–Alder reaction is a [2+2] cycloaddition between a conjugated diene and a dienophile.",
+    "type": "quantity"
+   },
+   {
+    "true": "It proceeds in a single concerted step through a cyclic transition state.",
+    "false": "It proceeds in a stepwise sequence through a zwitterionic intermediate.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Thermal Diels–Alder cycloadditions are allowed under Woodward–Hoffmann orbital symmetry rules.",
+    "false": "Thermal Diels–Alder cycloadditions are forbidden under Woodward–Hoffmann orbital symmetry rules.",
+    "type": "relation"
+   },
+   {
+    "true": "Electron-withdrawing groups on the dienophile generally increase its reactivity toward the diene.",
+    "false": "Electron-donating groups on the dienophile generally increase its reactivity toward the diene.",
+    "type": "entity"
+   },
+   {
+    "true": "The diene must adopt an s-cis conformation to react efficiently in a Diels–Alder reaction.",
+    "false": "The diene must adopt an s-trans conformation to react efficiently in a Diels–Alder reaction.",
+    "type": "entity"
+   },
+   {
+    "true": "Otto Diels and Kurt Alder reported the reaction in 1928.",
+    "false": "Otto Diels and Kurt Alder reported the reaction in 1926.",
+    "type": "date"
+   }
+  ],
+  "topic": "organic chemistry",
+  "id": "it0035"
+ },
+ {
+  "question": "How does Fischer esterification convert carboxylic acids into esters, and what conditions or steps are important?",
+  "claims": [
+   {
+    "true": "Fischer esterification combines a carboxylic acid and an alcohol to form an ester and water.",
+    "false": "Fischer esterification combines a carboxylic acid and an aldehyde to form an ester and water.",
+    "type": "entity"
+   },
+   {
+    "true": "The reaction is typically catalyzed by a strong acid such as concentrated sulfuric acid.",
+    "false": "The reaction is typically catalyzed by a strong base such as sodium hydroxide.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Protonation of the carbonyl oxygen increases the electrophilicity of the carbonyl carbon.",
+    "false": "Protonation of the carbonyl oxygen decreases the electrophilicity of the carbonyl carbon.",
+    "type": "relation"
+   },
+   {
+    "true": "Removal of water can drive the equilibrium toward ester formation.",
+    "false": "Removal of water can drive the equilibrium toward carboxylic acid formation.",
+    "type": "relation"
+   },
+   {
+    "true": "The nucleophile in the key addition step is the alcohol oxygen attacking the protonated carbonyl carbon.",
+    "false": "The nucleophile in the key addition step is the carbonyl oxygen attacking the protonated alcohol carbon.",
+    "type": "relation"
+   },
+   {
+    "true": "Emil Fischer and Arthur Speier reported the acid-catalyzed method in 1895.",
+    "false": "Emil Fischer and Arthur Speier reported the acid-catalyzed method in 1893.",
+    "type": "date"
+   }
+  ],
+  "topic": "organic chemistry",
+  "id": "it0036"
+ },
+ {
+  "question": "What makes benzene aromatic, and what structural facts support that description?",
+  "claims": [
+   {
+    "true": "Benzene has the molecular formula C6H6.",
+    "false": "Benzene has the molecular formula C6H8.",
+    "type": "quantity"
+   },
+   {
+    "true": "All six carbon atoms in benzene are sp2-hybridized and approximately coplanar.",
+    "false": "All six carbon atoms in benzene are sp3-hybridized and approximately coplanar.",
+    "type": "entity"
+   },
+   {
+    "true": "Benzene contains six pi electrons, satisfying Hückel's 4n+2 rule with n = 1.",
+    "false": "Benzene contains eight pi electrons, satisfying Hückel's 4n+2 rule with n = 1.",
+    "type": "quantity"
+   },
+   {
+    "true": "X-ray diffraction shows all carbon-carbon bonds in benzene are about 1.39 angstroms long.",
+    "false": "X-ray diffraction shows all carbon-carbon bonds in benzene are about 1.54 angstroms long.",
+    "type": "quantity"
+   },
+   {
+    "true": "Each carbon-carbon-carbon bond angle in benzene is approximately 120 degrees.",
+    "false": "Each carbon-carbon-carbon bond angle in benzene is approximately 109.5 degrees.",
+    "type": "quantity"
+   },
+   {
+    "true": "Kekulé proposed a cyclic structure for benzene in 1865.",
+    "false": "Kekulé proposed a cyclic structure for benzene in 1875.",
+    "type": "date"
+   }
+  ],
+  "topic": "organic chemistry",
+  "id": "it0037"
+ },
+ {
+  "question": "Can you explain what instruction pipelining is in CPU design and why early MIPS chips are such common textbook examples?",
+  "claims": [
+   {
+    "true": "The original MIPS R2000, introduced in 1985, used a five-stage integer pipeline.",
+    "false": "The original MIPS R2000, introduced in 1986, used a five-stage integer pipeline.",
+    "type": "date"
+   },
+   {
+    "true": "The five classic stages are instruction fetch, instruction decode, execute, memory access, and write-back.",
+    "false": "The five classic stages are instruction fetch, instruction decode, execute, instruction issue, and write-back.",
+    "type": "entity"
+   },
+   {
+    "true": "Pipelining increases instruction throughput by overlapping stages of different instructions.",
+    "false": "Pipelining increases instruction throughput by serializing stages of different instructions.",
+    "type": "mechanism"
+   },
+   {
+    "true": "A data hazard occurs when an instruction depends on a result that a prior instruction has not yet produced.",
+    "false": "A data hazard occurs when an instruction depends on a result that a later instruction has not yet produced.",
+    "type": "relation"
+   },
+   {
+    "true": "A branch hazard arises because the next program counter may change after a control-flow instruction.",
+    "false": "A branch hazard arises because the next program counter is fixed after a control-flow instruction.",
+    "type": "relation"
+   },
+   {
+    "true": "Early MIPS implementations exposed branch delay slots, making one control hazard visible to software.",
+    "false": "Early MIPS implementations exposed branch delay slots, making one data hazard visible to software.",
+    "type": "relation"
+   }
+  ],
+  "topic": "computer architecture",
+  "id": "it0038"
+ },
+ {
+  "question": "How do direct-mapped, set-associative, and fully associative caches differ, and where do conflict misses come from?",
+  "claims": [
+   {
+    "true": "A direct-mapped cache allows each memory block to occupy exactly one cache line.",
+    "false": "A direct-mapped cache allows each memory block to occupy exactly two cache lines.",
+    "type": "quantity"
+   },
+   {
+    "true": "In an n-way set-associative cache, each block can occupy one of n lines in its indexed set.",
+    "false": "In an n-way set-associative cache, each block can occupy one of n lines in any set.",
+    "type": "relation"
+   },
+   {
+    "true": "A fully associative cache permits a memory block to be placed in any cache line.",
+    "false": "A fully associative cache permits a memory block to be placed in only one cache line.",
+    "type": "relation"
+   },
+   {
+    "true": "Cache lines on mainstream x86 processors are typically 64 bytes long.",
+    "false": "Cache lines on mainstream x86 processors are typically 32 bytes long.",
+    "type": "quantity"
+   },
+   {
+    "true": "The index bits of an address select a set, while the tag distinguishes blocks within that set.",
+    "false": "The tag bits of an address select a set, while the index distinguishes blocks within that set.",
+    "type": "relation"
+   },
+   {
+    "true": "A conflict miss happens when multiple active blocks compete for the same cache set.",
+    "false": "A conflict miss happens when multiple active blocks compete for the same DRAM row.",
+    "type": "entity"
+   }
+  ],
+  "topic": "computer architecture",
+  "id": "it0039"
+ },
+ {
+  "question": "Can you explain what the TLB does in virtual memory and give a few concrete x86 page-size details?",
+  "claims": [
+   {
+    "true": "A page table maps virtual pages to physical page frames.",
+    "false": "A page table maps physical pages to virtual page frames.",
+    "type": "relation"
+   },
+   {
+    "true": "A TLB is a cache of recent virtual-to-physical address translations.",
+    "false": "A TLB is a cache of recent physical-to-virtual address translations.",
+    "type": "relation"
+   },
+   {
+    "true": "On x86, a standard small page is 4 KiB.",
+    "false": "On x86, a standard small page is 8 KiB.",
+    "type": "quantity"
+   },
+   {
+    "true": "x86-64 also supports 2 MiB pages for large mappings.",
+    "false": "x86-64 also supports 1 MiB pages for large mappings.",
+    "type": "quantity"
+   },
+   {
+    "true": "A page fault is raised when an accessed page is absent or lacks required permissions.",
+    "false": "A page fault is raised when an accessed page is present and has required permissions.",
+    "type": "relation"
+   },
+   {
+    "true": "On x86-64, the CR3 register holds the physical base address of the top-level page table.",
+    "false": "On x86-64, the CR2 register holds the physical base address of the top-level page table.",
+    "type": "entity"
+   }
+  ],
+  "topic": "computer architecture",
+  "id": "it0040"
+ },
+ {
+  "question": "How does mergesort work, and what are its main performance tradeoffs compared with simpler sorts?",
+  "claims": [
+   {
+    "true": "John von Neumann described mergesort in 1945.",
+    "false": "John von Neumann described mergesort in 1946.",
+    "type": "date"
+   },
+   {
+    "true": "Mergesort recursively splits an array into two halves until subarrays of size one remain.",
+    "false": "Mergesort recursively splits an array into three halves until subarrays of size one remain.",
+    "type": "quantity"
+   },
+   {
+    "true": "The merge step produces a sorted array by repeatedly taking the smaller front element from two sorted runs.",
+    "false": "The merge step produces a sorted array by repeatedly taking the larger front element from two sorted runs.",
+    "type": "relation"
+   },
+   {
+    "true": "Mergesort has O(n log n) worst-case running time.",
+    "false": "Mergesort has O(n^2) worst-case running time.",
+    "type": "quantity"
+   },
+   {
+    "true": "Standard top-down mergesort on arrays uses O(n) auxiliary space.",
+    "false": "Standard top-down mergesort on arrays uses O(log n) auxiliary space.",
+    "type": "quantity"
+   },
+   {
+    "true": "Mergesort is stable when equal keys are taken from the left run before the right run.",
+    "false": "Mergesort is stable when equal keys are taken from the right run before the left run.",
+    "type": "relation"
+   }
+  ],
+  "topic": "algorithms and data structures",
+  "id": "it0041"
+ },
+ {
+  "question": "What is a B-tree, and why is it widely used in databases and file systems?",
+  "claims": [
+   {
+    "true": "Rudolf Bayer and Edward McCreight introduced the B-tree in 1972.",
+    "false": "Rudolf Bayer and Edward McCreight introduced the B-tree in 1973.",
+    "type": "date"
+   },
+   {
+    "true": "Keys within a B-tree node are stored in sorted order.",
+    "false": "Keys within a B-tree node are stored in reverse order.",
+    "type": "relation"
+   },
+   {
+    "true": "All leaves of a B-tree appear at the same depth.",
+    "false": "All leaves of a B-tree appear at different depths.",
+    "type": "relation"
+   },
+   {
+    "true": "Searching a B-tree with n keys takes O(log n) time in the worst case.",
+    "false": "Searching a B-tree with n keys takes O(n) time in the worst case.",
+    "type": "quantity"
+   },
+   {
+    "true": "B-trees reduce disk I/O by keeping many keys in each node.",
+    "false": "B-trees increase disk I/O by keeping many keys in each node.",
+    "type": "relation"
+   },
+   {
+    "true": "In a B-tree of minimum degree t, every nonroot internal node has at least t children.",
+    "false": "In a B-tree of minimum degree t, every nonroot internal node has at least t-1 children.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "algorithms and data structures",
+  "id": "it0042"
+ },
+ {
+  "question": "How does Dijkstra's algorithm find shortest paths, and what are its main limitations?",
+  "claims": [
+   {
+    "true": "Edsger W. Dijkstra published the algorithm in 1959.",
+    "false": "Edsger W. Dijkstra published the algorithm in 1960.",
+    "type": "date"
+   },
+   {
+    "true": "It computes shortest-path distances from one source to all vertices in a graph with nonnegative edge weights.",
+    "false": "It computes shortest-path distances from one source to all vertices in a graph with negative edge weights.",
+    "type": "relation"
+   },
+   {
+    "true": "At each step, the algorithm selects the unvisited vertex with the smallest tentative distance.",
+    "false": "At each step, the algorithm selects the unvisited vertex with the largest tentative distance.",
+    "type": "relation"
+   },
+   {
+    "true": "Relaxing an edge updates a tentative distance when a shorter path is found.",
+    "false": "Relaxing an edge updates a tentative distance when a longer path is found.",
+    "type": "relation"
+   },
+   {
+    "true": "Using adjacency lists and a binary heap, Dijkstra's algorithm runs in O((V + E) log V) time.",
+    "false": "Using adjacency lists and a binary heap, Dijkstra's algorithm runs in O(V + E) time.",
+    "type": "quantity"
+   },
+   {
+    "true": "Dijkstra's algorithm can give incorrect results when negative edge weights are present.",
+    "false": "Bellman-Ford's algorithm can give incorrect results when negative edge weights are present.",
+    "type": "entity"
+   }
+  ],
+  "topic": "algorithms and data structures",
+  "id": "it0043"
+ },
+ {
+  "question": "How does the Domain Name System resolve a website name, and what roles do common DNS record types and transport choices play?",
+  "claims": [
+   {
+    "true": "Recursive resolvers follow referrals from root, TLD, and authoritative servers to resolve uncached names.",
+    "false": "Authoritative resolvers follow referrals from root, TLD, and authoritative servers to resolve uncached names.",
+    "type": "entity"
+   },
+   {
+    "true": "Standard DNS queries and replies usually use UDP port 53.",
+    "false": "Standard DNS queries and replies usually use UDP port 54.",
+    "type": "quantity"
+   },
+   {
+    "true": "DNS zone transfers commonly use TCP port 53 between servers.",
+    "false": "DNS zone transfers commonly use UDP port 53 between servers.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Paul Mockapetris designed the modern DNS and published RFC 882 and RFC 883 in 1983.",
+    "false": "Paul Mockapetris designed the modern DNS and published RFC 882 and RFC 883 in 1984.",
+    "type": "date"
+   },
+   {
+    "true": "A records map hostnames to IPv4 addresses, while AAAA records map hostnames to IPv6 addresses.",
+    "false": "A records map hostnames to IPv6 addresses, while AAAA records map hostnames to IPv4 addresses.",
+    "type": "relation"
+   },
+   {
+    "true": "The root zone is signed with DNSSEC, which provides origin authentication and integrity for DNS data.",
+    "false": "The root zone is signed with DNSSEC, which provides confidentiality and integrity for DNS data.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "computer networking",
+  "id": "it0044"
+ },
+ {
+  "question": "Can you explain how TCP establishes a connection and provides reliable transport, including sequence numbers, retransmission, and flow control?",
+  "claims": [
+   {
+    "true": "TCP establishes a connection with a three-way handshake using SYN, SYN-ACK, and ACK segments.",
+    "false": "TCP establishes a connection with a two-way handshake using SYN, SYN-ACK, and ACK segments.",
+    "type": "quantity"
+   },
+   {
+    "true": "TCP sequence numbers count bytes in the stream rather than packets.",
+    "false": "TCP sequence numbers count packets in the stream rather than bytes.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The TCP header has a 16-bit window size field for flow control.",
+    "false": "The TCP header has a 32-bit window size field for flow control.",
+    "type": "quantity"
+   },
+   {
+    "true": "Fast retransmit sends lost data after three duplicate acknowledgments, without waiting for a timeout.",
+    "false": "Fast retransmit sends lost data after a timeout, without waiting for duplicate acknowledgments.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The original TCP specification was published as RFC 793 in 1981.",
+    "false": "The original TCP specification was published as RFC 793 in 1982.",
+    "type": "date"
+   },
+   {
+    "true": "TCP uses a 16-bit checksum that covers a pseudo-header, the TCP header, and the payload.",
+    "false": "TCP uses a 32-bit checksum that covers a pseudo-header, the TCP header, and the payload.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "computer networking",
+  "id": "it0045"
+ },
+ {
+  "question": "What are the different roles of BGP and OSPF in Internet routing, and what technical details distinguish how they operate?",
+  "claims": [
+   {
+    "true": "BGP-4 is defined in RFC 4271, published in 2006.",
+    "false": "BGP-4 is defined in RFC 4271, published in 2005.",
+    "type": "date"
+   },
+   {
+    "true": "BGP sessions normally run over TCP port 179.",
+    "false": "BGP sessions normally run over TCP port 178.",
+    "type": "quantity"
+   },
+   {
+    "true": "OSPF is an interior gateway protocol, while BGP is the standard exterior gateway protocol between autonomous systems.",
+    "false": "BGP is an interior gateway protocol, while OSPF is the standard exterior gateway protocol between autonomous systems.",
+    "type": "relation"
+   },
+   {
+    "true": "OSPF computes routes with Dijkstra's shortest path first algorithm.",
+    "false": "OSPF computes routes with the Bellman-Ford algorithm.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The AS_PATH attribute records the autonomous systems a BGP route advertisement has traversed.",
+    "false": "The NEXT_HOP attribute records the autonomous systems a BGP route advertisement has traversed.",
+    "type": "entity"
+   },
+   {
+    "true": "OSPFv2 packets are carried directly in IP with protocol number 89.",
+    "false": "OSPFv2 packets are carried directly in IP with protocol number 88.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "computer networking",
+  "id": "it0046"
+ },
+ {
+  "question": "Can you explain how RSA works at a high level and where it came from?",
+  "claims": [
+   {
+    "true": "RSA was publicly described in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman.",
+    "false": "RSA was publicly described in 1978 by Ron Rivest, Adi Shamir, and Leonard Adleman.",
+    "type": "date"
+   },
+   {
+    "true": "The name RSA comes from the surnames of Rivest, Shamir, and Adleman.",
+    "false": "The name RSA comes from the surnames of Rivest, Shamir, and Anderson.",
+    "type": "entity"
+   },
+   {
+    "true": "In textbook RSA, the modulus n is the product of two prime numbers.",
+    "false": "In textbook RSA, the modulus n is the product of three prime numbers.",
+    "type": "quantity"
+   },
+   {
+    "true": "RSA encryption and signature verification use the public exponent modulo n.",
+    "false": "RSA encryption and signature verification use the private exponent modulo n.",
+    "type": "relation"
+   },
+   {
+    "true": "RSA decryption and signing use a private exponent related to Euler's totient of n.",
+    "false": "RSA decryption and signing use a private exponent related to the sum of the prime factors of n.",
+    "type": "mechanism"
+   },
+   {
+    "true": "A widely used public exponent in RSA implementations is 65537.",
+    "false": "A widely used public exponent in RSA implementations is 65535.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "cryptography",
+  "id": "it0047"
+ },
+ {
+  "question": "What is AES, and how does it differ from the older DES standard?",
+  "claims": [
+   {
+    "true": "NIST published the AES standard as FIPS 197 in 2001.",
+    "false": "NIST published the AES standard as FIPS 197 in 2000.",
+    "type": "date"
+   },
+   {
+    "true": "AES is a symmetric block cipher with a 128-bit block size.",
+    "false": "AES is a symmetric block cipher with a 64-bit block size.",
+    "type": "quantity"
+   },
+   {
+    "true": "AES supports key sizes of 128, 192, and 256 bits.",
+    "false": "AES supports key sizes of 128, 224, and 256 bits.",
+    "type": "quantity"
+   },
+   {
+    "true": "DES has an effective key length of 56 bits.",
+    "false": "DES has an effective key length of 64 bits.",
+    "type": "quantity"
+   },
+   {
+    "true": "AES uses 10, 12, or 14 rounds as the key size increases.",
+    "false": "AES uses 14, 12, or 10 rounds as the key size increases.",
+    "type": "relation"
+   },
+   {
+    "true": "Rijndael was designed by Belgian cryptographers Joan Daemen and Vincent Rijmen.",
+    "false": "Rijndael was designed by Belgian cryptographers Joan Daemen and Eli Biham.",
+    "type": "entity"
+   }
+  ],
+  "topic": "cryptography",
+  "id": "it0048"
+ },
+ {
+  "question": "How does Diffie-Hellman key exchange let two parties establish a shared secret over an insecure channel?",
+  "claims": [
+   {
+    "true": "Whitfield Diffie and Martin Hellman published their key exchange protocol in 1976.",
+    "false": "Whitfield Diffie and Martin Hellman published their key exchange protocol in 1977.",
+    "type": "date"
+   },
+   {
+    "true": "The classic Diffie-Hellman protocol operates in the multiplicative group modulo a prime.",
+    "false": "The classic Diffie-Hellman protocol operates in the additive group modulo a prime.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Each party sends a public value like g^a mod p or g^b mod p.",
+    "false": "Each party sends a public value like a*g mod p or b*g mod p.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Both parties derive the same shared secret value g^(ab) mod p.",
+    "false": "Both parties derive the same shared secret value g^(a+b) mod p.",
+    "type": "relation"
+   },
+   {
+    "true": "Diffie-Hellman lets two parties agree on a secret without previously sharing one.",
+    "false": "Diffie-Hellman lets two parties agree on a secret only after previously sharing one.",
+    "type": "relation"
+   },
+   {
+    "true": "Its security depends on the hardness of the discrete logarithm problem in the chosen group.",
+    "false": "Its security depends on the hardness of the integer factorization problem in the chosen group.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "cryptography",
+  "id": "it0049"
+ },
+ {
+  "question": "How did the Bretton Woods monetary system operate, and what caused it to break down?",
+  "claims": [
+   {
+    "true": "Delegates from 44 countries met at Bretton Woods, New Hampshire, in July 1944.",
+    "false": "Delegates from 44 countries met at Bretton Woods, New Hampshire, in July 1945.",
+    "type": "date"
+   },
+   {
+    "true": "Under Bretton Woods, member currencies were pegged to the U.S. dollar rather than directly to gold.",
+    "false": "Under Bretton Woods, member currencies were pegged to the British pound rather than directly to gold.",
+    "type": "entity"
+   },
+   {
+    "true": "The United States promised to convert official foreign dollar holdings into gold at $35 per ounce.",
+    "false": "The United States promised to convert official foreign dollar holdings into gold at $42 per ounce.",
+    "type": "quantity"
+   },
+   {
+    "true": "The IMF was created to provide short-term balance-of-payments financing to member countries.",
+    "false": "The IMF was created to provide long-term development financing to member countries.",
+    "type": "mechanism"
+   },
+   {
+    "true": "President Richard Nixon suspended dollar-gold convertibility on August 15, 1971.",
+    "false": "President Gerald Ford suspended dollar-gold convertibility on August 15, 1971.",
+    "type": "entity"
+   },
+   {
+    "true": "Most major economies had shifted to generalized floating exchange rates by 1973.",
+    "false": "Most major economies had shifted to generalized floating exchange rates by 1972.",
+    "type": "date"
+   }
+  ],
+  "topic": "macroeconomics",
+  "id": "it0050"
+ },
+ {
+  "question": "What is the Coase theorem, and when does it suggest private bargaining can solve an externality problem?",
+  "claims": [
+   {
+    "true": "Ronald Coase presented the classic argument in The Problem of Social Cost in 1960.",
+    "false": "Ronald Coase presented the classic argument in The Problem of Social Cost in 1970.",
+    "type": "date"
+   },
+   {
+    "true": "An externality exists when one person's production or consumption directly affects another person's welfare outside market prices.",
+    "false": "An externality exists when one person's production or consumption directly affects another person's welfare through market prices.",
+    "type": "mechanism"
+   },
+   {
+    "true": "With zero transaction costs and clearly assigned rights, parties can bargain to an efficient outcome.",
+    "false": "With zero transaction costs and clearly assigned rights, parties can bargain to an inefficient outcome.",
+    "type": "relation"
+   },
+   {
+    "true": "Under the theorem, the efficient allocation does not depend on who initially holds the legal right.",
+    "false": "Under the theorem, the efficient allocation does depend on who initially holds the legal right.",
+    "type": "relation"
+   },
+   {
+    "true": "Who initially holds the legal right can affect the distribution of wealth between the parties.",
+    "false": "Who initially holds the legal right cannot affect the distribution of wealth between the parties.",
+    "type": "relation"
+   },
+   {
+    "true": "Positive transaction costs can block mutually beneficial bargains over externalities.",
+    "false": "Positive transaction costs cannot block mutually beneficial bargains over externalities.",
+    "type": "relation"
+   }
+  ],
+  "topic": "microeconomics",
+  "id": "it0051"
+ },
+ {
+  "question": "How does a monopolist choose price and output differently from a perfectly competitive firm?",
+  "claims": [
+   {
+    "true": "A profit-maximizing monopolist sets output where marginal revenue equals marginal cost.",
+    "false": "A profit-maximizing monopolist sets output where average revenue equals marginal cost.",
+    "type": "mechanism"
+   },
+   {
+    "true": "For a downward-sloping demand curve, marginal revenue is less than price.",
+    "false": "For a downward-sloping demand curve, marginal revenue is greater than price.",
+    "type": "relation"
+   },
+   {
+    "true": "In perfect competition, an individual firm faces a horizontal demand curve at the market price.",
+    "false": "In monopolistic competition, an individual firm faces a horizontal demand curve at the market price.",
+    "type": "entity"
+   },
+   {
+    "true": "A monopolist faces the market demand curve for its product.",
+    "false": "A monopolist faces the market supply curve for its product.",
+    "type": "entity"
+   },
+   {
+    "true": "Relative to perfect competition, monopoly creates deadweight loss by restricting output.",
+    "false": "Relative to perfect competition, monopoly creates deadweight loss by expanding output.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Barriers to entry are a defining condition of monopoly in standard microeconomics.",
+    "false": "Barriers to exit are a defining condition of monopoly in standard microeconomics.",
+    "type": "relation"
+   }
+  ],
+  "topic": "microeconomics",
+  "id": "it0052"
+ },
+ {
+  "question": "What is a Nash equilibrium, and why is the Prisoner's Dilemma important in microeconomics?",
+  "claims": [
+   {
+    "true": "John Nash introduced the equilibrium concept in 1950.",
+    "false": "John Nash introduced the equilibrium concept in 1951.",
+    "type": "date"
+   },
+   {
+    "true": "A Nash equilibrium is a strategy profile in which no player can raise payoff by changing strategy alone.",
+    "false": "A Nash equilibrium is a strategy profile in which no player can raise payoff by changing strategy together.",
+    "type": "relation"
+   },
+   {
+    "true": "In the standard Prisoner's Dilemma, each player has two available actions, commonly called cooperate and defect.",
+    "false": "In the standard Prisoner's Dilemma, each player has two available actions, commonly called cooperate and bargain.",
+    "type": "entity"
+   },
+   {
+    "true": "In the one-shot Prisoner's Dilemma, mutual defection is the unique Nash equilibrium under the usual payoff ranking.",
+    "false": "In the one-shot Prisoner's Dilemma, mutual cooperation is the unique Nash equilibrium under the usual payoff ranking.",
+    "type": "entity"
+   },
+   {
+    "true": "Mutual cooperation gives both players higher payoffs than mutual defection in the standard Prisoner's Dilemma.",
+    "false": "Mutual cooperation gives both players lower payoffs than mutual defection in the standard Prisoner's Dilemma.",
+    "type": "relation"
+   },
+   {
+    "true": "Microeconomists use game theory to analyze strategic interaction in oligopoly models such as Cournot competition.",
+    "false": "Microeconomists use game theory to analyze strategic interaction in monopoly models such as Cournot competition.",
+    "type": "entity"
+   }
+  ],
+  "topic": "microeconomics",
+  "id": "it0053"
+ },
+ {
+  "question": "Can you explain what equal temperament is and why Bach's The Well-Tempered Clavier is important in that history?",
+  "claims": [
+   {
+    "true": "In 12-tone equal temperament, the octave is divided into 12 equal semitones.",
+    "false": "In 12-tone equal temperament, the octave is divided into 10 equal semitones.",
+    "type": "quantity"
+   },
+   {
+    "true": "Each semitone in 12-tone equal temperament has a frequency ratio of the twelfth root of 2.",
+    "false": "Each semitone in 12-tone equal temperament has a frequency ratio of the thirteenth root of 2.",
+    "type": "quantity"
+   },
+   {
+    "true": "Book I of The Well-Tempered Clavier was completed in 1722.",
+    "false": "Book I of The Well-Tempered Clavier was completed in 1732.",
+    "type": "date"
+   },
+   {
+    "true": "Each book of The Well-Tempered Clavier contains 24 preludes and fugues.",
+    "false": "Each book of The Well-Tempered Clavier contains 22 preludes and fugues.",
+    "type": "quantity"
+   },
+   {
+    "true": "The pieces in each book proceed chromatically from C major and C minor to B major and B minor.",
+    "false": "The pieces in each book proceed chromatically from C major and C minor to A major and A minor.",
+    "type": "entity"
+   },
+   {
+    "true": "In Bach's time, well temperament meant an unequal tuning that allowed playing in all keys.",
+    "false": "In Bach's time, well temperament meant an equal tuning that allowed playing in all keys.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "music theory and music history",
+  "id": "it0054"
+ },
+ {
+  "question": "What is sonata form, and how did it become so important in Classical-period instrumental music?",
+  "claims": [
+   {
+    "true": "Sonata form's standard outline has three main sections: exposition, development, and recapitulation.",
+    "false": "Sonata form's standard outline has four main sections: exposition, development, and recapitulation.",
+    "type": "quantity"
+   },
+   {
+    "true": "In Classical major-key expositions, the second key area commonly moves to the dominant.",
+    "false": "In Classical major-key expositions, the second key area commonly moves to the subdominant.",
+    "type": "relation"
+   },
+   {
+    "true": "In Classical minor-key expositions, the contrasting key area commonly moves to the relative major.",
+    "false": "In Classical minor-key expositions, the contrasting key area commonly moves to the dominant.",
+    "type": "relation"
+   },
+   {
+    "true": "The development section typically fragments motives and modulates through several keys.",
+    "false": "The development section typically fragments motives and remains in one key.",
+    "type": "mechanism"
+   },
+   {
+    "true": "In the recapitulation, the second key area returns in the tonic.",
+    "false": "In the recapitulation, the second key area returns in the dominant.",
+    "type": "relation"
+   },
+   {
+    "true": "Adolf Bernhard Marx systematized sonata-form theory in the 1840s.",
+    "false": "Adolf Bernhard Marx systematized sonata-form theory in the 1850s.",
+    "type": "date"
+   }
+  ],
+  "topic": "music theory and music history",
+  "id": "it0055"
+ },
+ {
+  "question": "How does the twelve-bar blues work, and why did it become so influential in jazz and popular music?",
+  "claims": [
+   {
+    "true": "The twelve-bar blues spans 12 measures before the pattern repeats.",
+    "false": "The twelve-bar blues spans 16 measures before the pattern repeats.",
+    "type": "quantity"
+   },
+   {
+    "true": "Its basic harmonic skeleton emphasizes the tonic, subdominant, and dominant chords.",
+    "false": "Its basic harmonic skeleton emphasizes the tonic, supertonic, and dominant chords.",
+    "type": "entity"
+   },
+   {
+    "true": "A common blues lyric scheme is AAB, with the first line repeated before a concluding third line.",
+    "false": "A common blues lyric scheme is ABA, with the first line returning after a contrasting second line.",
+    "type": "mechanism"
+   },
+   {
+    "true": "W. C. Handy published \"The Memphis Blues\" in 1912.",
+    "false": "W. C. Handy published \"The Memphis Blues\" in 1914.",
+    "type": "date"
+   },
+   {
+    "true": "Blue notes commonly include lowered third and seventh scale degrees, and often a lowered fifth.",
+    "false": "Blue notes commonly include lowered second and sixth scale degrees, and often a lowered fourth.",
+    "type": "entity"
+   },
+   {
+    "true": "Charlie Parker's \"Blues for Alice,\" first recorded in 1951, is a twelve-bar blues with bebop reharmonization.",
+    "false": "Dizzy Gillespie's \"Blues for Alice,\" first recorded in 1951, is a twelve-bar blues with bebop reharmonization.",
+    "type": "entity"
+   }
+  ],
+  "topic": "music theory and music history",
+  "id": "it0056"
+ },
+ {
+  "question": "What are the key historical facts about Leonardo da Vinci's Mona Lisa?",
+  "claims": [
+   {
+    "true": "Leonardo da Vinci began painting the Mona Lisa around 1503.",
+    "false": "Leonardo da Vinci began painting the Mona Lisa around 1506.",
+    "type": "date"
+   },
+   {
+    "true": "The sitter is widely identified as Lisa Gherardini.",
+    "false": "The sitter is widely identified as Isabella d'Este.",
+    "type": "entity"
+   },
+   {
+    "true": "The Mona Lisa is an oil painting on a poplar wood panel.",
+    "false": "The Mona Lisa is an oil painting on a walnut wood panel.",
+    "type": "entity"
+   },
+   {
+    "true": "The panel measures 77 centimeters high and 53 centimeters wide.",
+    "false": "The panel measures 73 centimeters high and 53 centimeters wide.",
+    "type": "quantity"
+   },
+   {
+    "true": "The painting is now displayed in the Louvre Museum in Paris.",
+    "false": "The painting is now displayed in the Musée d'Orsay in Paris.",
+    "type": "entity"
+   },
+   {
+    "true": "Vincenzo Peruggia stole the Mona Lisa from the Louvre in 1911.",
+    "false": "Vincenzo Peruggia stole the Mona Lisa from the Louvre in 1913.",
+    "type": "date"
+   }
+  ],
+  "topic": "art history",
+  "id": "it0057"
+ },
+ {
+  "question": "How did Gothic architecture change medieval cathedral design in Europe?",
+  "claims": [
+   {
+    "true": "Gothic architecture emerged in the Île-de-France region during the twelfth century.",
+    "false": "Gothic architecture emerged in the Île-de-France region during the thirteenth century.",
+    "type": "date"
+   },
+   {
+    "true": "Abbot Suger oversaw the rebuilding of the choir of Saint-Denis in the 1140s.",
+    "false": "Abbot Bernard oversaw the rebuilding of the choir of Saint-Denis in the 1140s.",
+    "type": "entity"
+   },
+   {
+    "true": "Pointed arches are a defining structural feature of Gothic cathedrals.",
+    "false": "Rounded arches are a defining structural feature of Gothic cathedrals.",
+    "type": "entity"
+   },
+   {
+    "true": "Flying buttresses helped support taller walls by transferring lateral thrust outward.",
+    "false": "Flying buttresses helped support taller walls by transferring lateral thrust inward.",
+    "type": "relation"
+   },
+   {
+    "true": "Chartres Cathedral was largely rebuilt after a fire in 1194.",
+    "false": "Chartres Cathedral was largely rebuilt after a fire in 1198.",
+    "type": "date"
+   },
+   {
+    "true": "Large stained-glass windows became a hallmark of Gothic church interiors.",
+    "false": "Large fresco cycles became a hallmark of Gothic church interiors.",
+    "type": "entity"
+   }
+  ],
+  "topic": "art history",
+  "id": "it0058"
+ },
+ {
+  "question": "Can you summarize the historical context and main features of Picasso's Guernica?",
+  "claims": [
+   {
+    "true": "Pablo Picasso painted Guernica in 1937.",
+    "false": "Pablo Picasso painted Guernica in 1938.",
+    "type": "date"
+   },
+   {
+    "true": "The mural was created in response to the bombing of the Basque town of Guernica.",
+    "false": "The mural was created in response to the bombing of the Basque town of Bilbao.",
+    "type": "entity"
+   },
+   {
+    "true": "The Spanish Republican government commissioned Guernica for its pavilion at the 1937 Paris Exposition.",
+    "false": "The Spanish Nationalist government commissioned Guernica for its pavilion at the 1937 Paris Exposition.",
+    "type": "entity"
+   },
+   {
+    "true": "Picasso rendered Guernica in black, white, and gray rather than vivid colors.",
+    "false": "Picasso rendered Guernica in black, white, and blue rather than vivid colors.",
+    "type": "entity"
+   },
+   {
+    "true": "Guernica is about 3.49 meters high and 7.76 meters wide.",
+    "false": "Guernica is about 3.49 meters high and 7.26 meters wide.",
+    "type": "quantity"
+   },
+   {
+    "true": "After returning to Spain in 1981, Guernica moved to Madrid's Museo Reina Sofía in 1992.",
+    "false": "After returning to Spain in 1981, Guernica moved to Madrid's Museo del Prado in 1992.",
+    "type": "entity"
+   }
+  ],
+  "topic": "art history",
+  "id": "it0059"
+ },
+ {
+  "question": "Can you explain what the Great Vowel Shift was and why it matters for modern English pronunciation and spelling?",
+  "claims": [
+   {
+    "true": "The Great Vowel Shift occurred in English roughly between 1400 and 1700.",
+    "false": "The Great Vowel Shift occurred in English roughly between 1300 and 1600.",
+    "type": "date"
+   },
+   {
+    "true": "It primarily changed the long stressed vowels of English rather than the short ones.",
+    "false": "It primarily changed the short stressed vowels of English rather than the long ones.",
+    "type": "relation"
+   },
+   {
+    "true": "Middle English /iː/ in words like time developed into the Modern English diphthong /aɪ/.",
+    "false": "Middle English /iː/ in words like team developed into the Modern English diphthong /aɪ/.",
+    "type": "entity"
+   },
+   {
+    "true": "Middle English /uː/ in words like house developed into the Modern English diphthong /aʊ/.",
+    "false": "Middle English /uː/ in words like goose developed into the Modern English diphthong /aʊ/.",
+    "type": "entity"
+   },
+   {
+    "true": "The change is called a chain shift because movements of some vowels were linked to movements of others.",
+    "false": "The change is called a chain shift because movements of some consonants were linked to movements of others.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Older spellings often remained after the pronunciation changes, helping create many modern English spelling mismatches.",
+    "false": "Newer spellings often followed the pronunciation changes, helping create many modern English spelling mismatches.",
+    "type": "relation"
+   }
+  ],
+  "topic": "linguistics",
+  "id": "it0060"
+ },
+ {
+  "question": "What is Grimm's Law, and how does it help explain similarities and differences between Germanic languages and other Indo-European languages?",
+  "claims": [
+   {
+    "true": "Grimm's Law describes systematic consonant changes from Proto-Indo-European to Proto-Germanic.",
+    "false": "Grimm's Law describes systematic consonant changes from Proto-Indo-European to Proto-Italic.",
+    "type": "entity"
+   },
+   {
+    "true": "Jacob Grimm presented the law in the second edition of his Deutsche Grammatik in 1822.",
+    "false": "Jacob Grimm presented the law in the second edition of his Deutsche Grammatik in 1812.",
+    "type": "date"
+   },
+   {
+    "true": "Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic fricatives *f, *þ, and *h.",
+    "false": "Proto-Indo-European voiceless stops *p, *t, and *k became Proto-Germanic stops *p, *t, and *k.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless stops *p, *t, and *k.",
+    "false": "Proto-Indo-European voiced stops *b, *d, and *g became Proto-Germanic voiceless fricatives *f, *þ, and *h.",
+    "type": "relation"
+   },
+   {
+    "true": "The Latin-English pair pater and father illustrates Grimm's Law through the correspondence of p and f.",
+    "false": "The Latin-English pair pater and father illustrates Grimm's Law through the correspondence of t and f.",
+    "type": "relation"
+   },
+   {
+    "true": "Verner's Law explains some exceptions to Grimm's Law by reference to inherited accent placement.",
+    "false": "Verner's Law explains some exceptions to Grimm's Law by reference to vowel length.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "linguistics",
+  "id": "it0061"
+ },
+ {
+  "question": "Can you explain what the International Phonetic Alphabet is and how linguists use its symbols and charts?",
+  "claims": [
+   {
+    "true": "The International Phonetic Alphabet was first published by the International Phonetic Association in 1888.",
+    "false": "The International Phonetic Alphabet was first published by the International Phonetic Association in 1898.",
+    "type": "date"
+   },
+   {
+    "true": "The IPA aims to represent speech sounds more consistently than ordinary spelling systems do.",
+    "false": "The IPA aims to represent speech sounds less consistently than ordinary spelling systems do.",
+    "type": "relation"
+   },
+   {
+    "true": "On the main consonant chart, symbols are arranged by place and manner of articulation.",
+    "false": "On the main consonant chart, symbols are arranged by voicing and stress.",
+    "type": "mechanism"
+   },
+   {
+    "true": "On the vowel chart, symbols are positioned by tongue height and frontness or backness.",
+    "false": "On the vowel chart, symbols are positioned by lip rounding and stress.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The symbol [ʃ] denotes the voiceless postalveolar fricative heard at the start of English ship.",
+    "false": "The symbol [ʒ] denotes the voiceless postalveolar fricative heard at the start of English ship.",
+    "type": "entity"
+   },
+   {
+    "true": "The IPA includes suprasegmental marks such as ˈ for primary stress and ː for length.",
+    "false": "The IPA includes suprasegmental marks such as ˈ for primary stress and ʰ for length.",
+    "type": "entity"
+   }
+  ],
+  "topic": "linguistics",
+  "id": "it0062"
+ },
+ {
+  "question": "Can you explain Karl Popper's idea of falsifiability and why he thought it mattered for science?",
+  "claims": [
+   {
+    "true": "Karl Popper published \"Logik der Forschung\" in German in 1934.",
+    "false": "Karl Popper published \"Logik der Forschung\" in German in 1935.",
+    "type": "date"
+   },
+   {
+    "true": "The English translation, \"The Logic of Scientific Discovery,\" appeared in 1959.",
+    "false": "The English translation, \"The Logic of Scientific Discovery,\" appeared in 1958.",
+    "type": "date"
+   },
+   {
+    "true": "Popper proposed falsifiability as a criterion for demarcating empirical science from non-science.",
+    "false": "Popper proposed falsifiability as a criterion for demarcating empirical science from mathematics.",
+    "type": "entity"
+   },
+   {
+    "true": "Popper argued that finite observations cannot conclusively verify a universal law.",
+    "false": "Popper argued that finite observations can conclusively verify a universal law.",
+    "type": "relation"
+   },
+   {
+    "true": "Popper argued that one counter-instance can falsify a universal claim if the observation is accepted.",
+    "false": "Popper argued that one counter-instance can verify a universal claim if the observation is accepted.",
+    "type": "relation"
+   },
+   {
+    "true": "Popper often cited Einstein's relativity as a theory making risky, testable predictions.",
+    "false": "Popper often cited Freud's psychoanalysis as a theory making risky, testable predictions.",
+    "type": "entity"
+   }
+  ],
+  "topic": "philosophy of science",
+  "id": "it0063"
+ },
+ {
+  "question": "How did Thomas Kuhn describe paradigms, normal science, and scientific revolutions?",
+  "claims": [
+   {
+    "true": "Thomas Kuhn's \"The Structure of Scientific Revolutions\" was first published in 1962.",
+    "false": "Thomas Kuhn's \"The Structure of Scientific Revolutions\" was first published in 1961.",
+    "type": "date"
+   },
+   {
+    "true": "Kuhn used \"normal science\" for research conducted under an accepted paradigm.",
+    "false": "Kuhn used \"normal science\" for research conducted without an accepted paradigm.",
+    "type": "relation"
+   },
+   {
+    "true": "He described normal science as puzzle-solving rather than constant testing of fundamentals.",
+    "false": "He described normal science as constant testing of fundamentals rather than puzzle-solving.",
+    "type": "relation"
+   },
+   {
+    "true": "Kuhn argued that persistent anomalies can produce crisis in a scientific field.",
+    "false": "Kuhn argued that persistent anomalies can produce stability in a scientific field.",
+    "type": "relation"
+   },
+   {
+    "true": "Kuhn said successive paradigms are partly incommensurable with one another.",
+    "false": "Kuhn said successive paradigms are fully commensurable with one another.",
+    "type": "relation"
+   },
+   {
+    "true": "In the 1969 Postscript, Kuhn introduced \"disciplinary matrix\" to clarify the word \"paradigm.\"",
+    "false": "In the 1969 Postscript, Kuhn introduced \"disciplinary model\" to clarify the word \"paradigm.\"",
+    "type": "entity"
+   }
+  ],
+  "topic": "philosophy of science",
+  "id": "it0064"
+ },
+ {
+  "question": "Can you briefly explain what the central limit theorem says and why statisticians use it so often?",
+  "claims": [
+   {
+    "true": "The classical central limit theorem concerns independent, identically distributed random variables with finite mean and finite variance.",
+    "false": "The classical central limit theorem concerns dependent, identically distributed random variables with finite mean and finite variance.",
+    "type": "relation"
+   },
+   {
+    "true": "It says the standardized sample mean converges in distribution to the standard normal distribution as sample size increases.",
+    "false": "It says the standardized sample mean converges in distribution to the uniform distribution as sample size increases.",
+    "type": "entity"
+   },
+   {
+    "true": "For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times square root of n.",
+    "false": "For sums, the usual standardization subtracts n times the population mean and divides by the population standard deviation times n.",
+    "type": "quantity"
+   },
+   {
+    "true": "The theorem does not require the original population distribution to be normal.",
+    "false": "The theorem requires the original population distribution to be normal.",
+    "type": "relation"
+   },
+   {
+    "true": "Samples from a Cauchy distribution are a standard example where the classical central limit theorem does not apply.",
+    "false": "Samples from a normal distribution are a standard example where the classical central limit theorem does not apply.",
+    "type": "entity"
+   },
+   {
+    "true": "A major use of the theorem is approximating sampling distributions for confidence intervals and hypothesis tests.",
+    "false": "A major use of the theorem is computing exact finite-sample distributions for confidence intervals and hypothesis tests.",
+    "type": "relation"
+   }
+  ],
+  "topic": "statistics and probability",
+  "id": "it0065"
+ },
+ {
+  "question": "How does Bayes' theorem connect conditional probability with prior information, and why is it useful in practice?",
+  "claims": [
+   {
+    "true": "Bayes' theorem states that P(A|B) equals P(B|A)P(A) divided by P(B), provided P(B) is positive.",
+    "false": "Bayes' theorem states that P(A|B) equals P(B|A)P(A) divided by P(A), provided P(B) is positive.",
+    "type": "relation"
+   },
+   {
+    "true": "The theorem follows directly from the definition of conditional probability.",
+    "false": "The theorem follows directly from the law of large numbers.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The result is named after Reverend Thomas Bayes, an eighteenth-century English mathematician and minister.",
+    "false": "The result is named after Reverend Richard Price, an eighteenth-century English mathematician and minister.",
+    "type": "entity"
+   },
+   {
+    "true": "Pierre-Simon Laplace independently developed and widely applied Bayesian methods in the late eighteenth century.",
+    "false": "Pierre-Simon Laplace independently developed and widely applied Bayesian methods in the late nineteenth century.",
+    "type": "date"
+   },
+   {
+    "true": "In medical screening, the posterior probability of disease depends on the test characteristics and the disease prevalence.",
+    "false": "In medical screening, the posterior probability of disease depends on the test characteristics but not the disease prevalence.",
+    "type": "relation"
+   },
+   {
+    "true": "Mistaking P(A|B) for P(B|A) is called the transposed conditional fallacy.",
+    "false": "Mistaking P(A|B) for P(B|A) is called the gambler's fallacy.",
+    "type": "entity"
+   }
+  ],
+  "topic": "statistics and probability",
+  "id": "it0066"
+ },
+ {
+  "question": "What does the Poisson distribution model, and what are some of its main mathematical properties?",
+  "claims": [
+   {
+    "true": "The Poisson distribution models counts of events in a fixed interval when events occur independently at a constant average rate.",
+    "false": "The Poisson distribution models counts of events in a fixed interval when events occur dependently at a constant average rate.",
+    "type": "relation"
+   },
+   {
+    "true": "A Poisson distribution has a single parameter lambda, and both its mean and variance equal lambda.",
+    "false": "A Poisson distribution has a single parameter lambda, and both its mean and standard deviation equal lambda.",
+    "type": "relation"
+   },
+   {
+    "true": "For k equal to 0, 1, 2, and so on, P(X=k)=e^-lambda lambda^k divided by k factorial.",
+    "false": "For k equal to 1, 2, 3, and so on, P(X=k)=e^-lambda lambda^k divided by k factorial.",
+    "type": "quantity"
+   },
+   {
+    "true": "The distribution is named after Simeon Denis Poisson, whose book on probability appeared in 1837.",
+    "false": "The distribution is named after Simeon Denis Poisson, whose book on probability appeared in 1827.",
+    "type": "date"
+   },
+   {
+    "true": "The sum of independent Poisson random variables is Poisson, with parameter equal to the sum of the individual parameters.",
+    "false": "The sum of independent Poisson random variables is Poisson, with parameter equal to the product of the individual parameters.",
+    "type": "relation"
+   },
+   {
+    "true": "A binomial distribution with large n and small p is often approximated by a Poisson distribution with mean np.",
+    "false": "A binomial distribution with large n and small p is often approximated by a Poisson distribution with mean n divided by p.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "statistics and probability",
+  "id": "it0067"
+ },
+ {
+  "question": "Can you explain the Chinese remainder theorem and mention a classic example of how it works?",
+  "claims": [
+   {
+    "true": "Sunzi Suanjing asks for a number that leaves remainders 2, 3, and 2 when divided by 3, 5, and 7.",
+    "false": "Sunzi Suanjing asks for a number that leaves remainders 2, 3, and 3 when divided by 3, 5, and 7.",
+    "type": "quantity"
+   },
+   {
+    "true": "When moduli are pairwise coprime, solutions are unique modulo the product of the moduli.",
+    "false": "When moduli are pairwise coprime, solutions are unique modulo the sum of the moduli.",
+    "type": "relation"
+   },
+   {
+    "true": "The smallest positive solution to Sunzi's 3, 5, 7 problem is 23.",
+    "false": "The smallest positive solution to Sunzi's 3, 5, 7 problem is 22.",
+    "type": "quantity"
+   },
+   {
+    "true": "The congruences x ≡ a mod m and x ≡ b mod n are solvable together exactly when gcd(m,n) divides a-b.",
+    "false": "The congruences x ≡ a mod m and x ≡ b mod n are solvable together exactly when gcd(m,n) does not divide a-b.",
+    "type": "relation"
+   },
+   {
+    "true": "For coprime m and n, the map x mod mn to (x mod m, x mod n) is a ring isomorphism.",
+    "false": "For coprime m and n, the map x mod mn to (x mod m, x mod n) is a field isomorphism.",
+    "type": "entity"
+   },
+   {
+    "true": "A standard construction uses modular inverses of N_i = N/n_i to build a solution modulo N.",
+    "false": "A standard construction uses greatest common divisors of N_i = N/n_i to build a solution modulo N.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "number theory",
+  "id": "it0068"
+ },
+ {
+  "question": "What is Euler's totient function, and how does it relate to Euler's theorem in elementary number theory?",
+  "claims": [
+   {
+    "true": "Euler's totient function φ(n) counts the positive integers at most n that are relatively prime to n.",
+    "false": "Jordan's totient function φ(n) counts the positive integers at most n that are relatively prime to n.",
+    "type": "entity"
+   },
+   {
+    "true": "If p is prime, then φ(p) = p - 1.",
+    "false": "If p is prime, then φ(p) = p - 2.",
+    "type": "quantity"
+   },
+   {
+    "true": "If m and n are coprime, then φ(mn) = φ(m)φ(n).",
+    "false": "If m and n are coprime, then φ(m+n) = φ(m)φ(n).",
+    "type": "relation"
+   },
+   {
+    "true": "For every integer n greater than 2, φ(n) is even.",
+    "false": "For every integer n greater than 1, φ(n) is even.",
+    "type": "quantity"
+   },
+   {
+    "true": "Euler's theorem states that a^{φ(n)} ≡ 1 mod n whenever gcd(a,n) = 1.",
+    "false": "Euler's theorem states that a^{φ(n)} ≡ 1 mod n whenever a divides n.",
+    "type": "mechanism"
+   },
+   {
+    "true": "If p is prime and k is at least 1, then φ(p^k) = p^k - p^{k-1}.",
+    "false": "If p is prime and k is at least 1, then φ(p^k) = p^k - p.",
+    "type": "quantity"
+   }
+  ],
+  "topic": "number theory",
+  "id": "it0069"
+ },
+ {
+  "question": "What is the Hall-Petch relationship, and why does grain size affect the strength of many metals?",
+  "claims": [
+   {
+    "true": "The Hall-Petch equation is commonly written σy = σ0 + k d^-1/2.",
+    "false": "The Hall-Petch equation is commonly written σy = σ0 + k d^1/2.",
+    "type": "relation"
+   },
+   {
+    "true": "In ordinary polycrystalline metals, decreasing average grain size usually raises yield strength.",
+    "false": "In ordinary polycrystalline metals, decreasing average grain size usually lowers yield strength.",
+    "type": "relation"
+   },
+   {
+    "true": "E.O. Hall reported this grain-size strengthening relation for mild steel in 1951.",
+    "false": "E.O. Hall reported this grain-size strengthening relation for mild steel in 1953.",
+    "type": "date"
+   },
+   {
+    "true": "N.J. Petch published related work on iron and steel in 1953.",
+    "false": "N.J. Petch published related work on iron and steel in 1951.",
+    "type": "date"
+   },
+   {
+    "true": "Dislocation pileups at grain boundaries are a classic explanation for Hall-Petch strengthening.",
+    "false": "Vacancy diffusion at grain boundaries is a classic explanation for Hall-Petch strengthening.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Annealing above the recrystallization temperature often causes grain growth and lowers strength.",
+    "false": "Annealing above the recrystallization temperature often causes grain growth and raises strength.",
+    "type": "relation"
+   }
+  ],
+  "topic": "materials science",
+  "id": "it0070"
+ },
+ {
+  "question": "How does doping change the behavior of silicon in semiconductor devices, and what basic structure does silicon have?",
+  "claims": [
+   {
+    "true": "Silicon adopts the diamond cubic crystal structure at ambient conditions.",
+    "false": "Silicon adopts the zinc blende crystal structure at ambient conditions.",
+    "type": "entity"
+   },
+   {
+    "true": "Crystalline silicon has an indirect band gap of about 1.12 electronvolts at 300 K.",
+    "false": "Crystalline silicon has an indirect band gap of about 1.42 electronvolts at 300 K.",
+    "type": "quantity"
+   },
+   {
+    "true": "Boron is a common acceptor dopant that creates p-type silicon.",
+    "false": "Boron is a common donor dopant that creates p-type silicon.",
+    "type": "relation"
+   },
+   {
+    "true": "Phosphorus is a common donor dopant that creates n-type silicon.",
+    "false": "Phosphorus is a common donor dopant that creates p-type silicon.",
+    "type": "relation"
+   },
+   {
+    "true": "A p-n junction contains a depletion region with very few mobile carriers.",
+    "false": "A p-n junction contains a depletion region with very many mobile carriers.",
+    "type": "relation"
+   },
+   {
+    "true": "Bell Labs announced the first practical silicon solar cell in 1954.",
+    "false": "Bell Labs announced the first practical silicon solar cell in 1956.",
+    "type": "date"
+   }
+  ],
+  "topic": "materials science",
+  "id": "it0071"
+ },
+ {
+  "question": "What happened during the Wright brothers' first successful powered flight at Kitty Hawk, and what made their aircraft notable?",
+  "claims": [
+   {
+    "true": "The Wright brothers made the first sustained powered, controlled flight on December 17, 1903.",
+    "false": "The Wright brothers made the first sustained powered, controlled flight on December 17, 1902.",
+    "type": "date"
+   },
+   {
+    "true": "The flight took place at Kill Devil Hills near Kitty Hawk, North Carolina.",
+    "false": "The flight took place at Kill Devil Hills near Kitty Hawk, South Carolina.",
+    "type": "entity"
+   },
+   {
+    "true": "Orville Wright piloted the first flight while Wilbur Wright ran alongside the wing.",
+    "false": "Wilbur Wright piloted the first flight while Orville Wright ran alongside the wing.",
+    "type": "relation"
+   },
+   {
+    "true": "The first flight traveled 120 feet in 12 seconds.",
+    "false": "The first flight traveled 140 feet in 12 seconds.",
+    "type": "quantity"
+   },
+   {
+    "true": "The 1903 Wright Flyer used wing-warping to control roll.",
+    "false": "The 1903 Wright Flyer used ailerons to control roll.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The Flyer used a 12-horsepower gasoline engine built by mechanic Charlie Taylor.",
+    "false": "The Flyer used a 12-horsepower gasoline engine built by the Wright brothers.",
+    "type": "entity"
+   }
+  ],
+  "topic": "aviation and aerospace",
+  "id": "it0072"
+ },
+ {
+  "question": "Can you explain what the Saturn V rocket was and how it launched Apollo 11 to the Moon?",
+  "claims": [
+   {
+    "true": "Saturn V was a three-stage liquid-fueled rocket used by NASA's Apollo program.",
+    "false": "Saturn V was a two-stage liquid-fueled rocket used by NASA's Apollo program.",
+    "type": "quantity"
+   },
+   {
+    "true": "The Saturn V first flew in November 1967 on the Apollo 4 mission.",
+    "false": "The Saturn V first flew in October 1967 on the Apollo 4 mission.",
+    "type": "date"
+   },
+   {
+    "true": "Five F-1 engines powered the S-IC first stage.",
+    "false": "Four F-1 engines powered the S-IC first stage.",
+    "type": "quantity"
+   },
+   {
+    "true": "The S-IC first stage burned RP-1 kerosene with liquid oxygen.",
+    "false": "The S-IC first stage burned liquid hydrogen with liquid oxygen.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The S-IVB third stage performed the translunar injection burn on Apollo 11.",
+    "false": "The S-II second stage performed the translunar injection burn on Apollo 11.",
+    "type": "relation"
+   },
+   {
+    "true": "Apollo 11 launched atop a Saturn V from Kennedy Space Center on July 16, 1969.",
+    "false": "Apollo 11 launched atop a Saturn V from Cape Canaveral Air Force Station on July 16, 1969.",
+    "type": "entity"
+   }
+  ],
+  "topic": "aviation and aerospace",
+  "id": "it0073"
+ },
+ {
+  "question": "What was Concorde, and how did it achieve its unusual performance in airline service?",
+  "claims": [
+   {
+    "true": "Concorde was developed jointly by Sud Aviation and the British Aircraft Corporation.",
+    "false": "Concorde was developed jointly by Dassault and the British Aircraft Corporation.",
+    "type": "entity"
+   },
+   {
+    "true": "Concorde made its first flight in 1969.",
+    "false": "Concorde made its first flight in 1968.",
+    "type": "date"
+   },
+   {
+    "true": "In cruise, Concorde typically flew at about Mach 2.02.",
+    "false": "In cruise, Concorde typically flew at about Mach 2.20.",
+    "type": "quantity"
+   },
+   {
+    "true": "Concorde used four Rolls-Royce/Snecma Olympus 593 turbojet engines.",
+    "false": "Concorde used four Rolls-Royce/Snecma Olympus 593 turbofan engines.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Its slender ogival delta wing helped provide efficient supersonic lift.",
+    "false": "Its variable-sweep wing helped provide efficient supersonic lift.",
+    "type": "mechanism"
+   },
+   {
+    "true": "British Airways and Air France were the only airlines to operate Concorde in regular service.",
+    "false": "Lufthansa and Air France were the only airlines to operate Concorde in regular service.",
+    "type": "entity"
+   }
+  ],
+  "topic": "aviation and aerospace",
+  "id": "it0074"
+ },
+ {
+  "question": "Can you explain how insulin was discovered, what it does in the body, and a few key medical facts about its use?",
+  "claims": [
+   {
+    "true": "Frederick Banting and Charles Best isolated pancreatic extracts with glucose-lowering effects in dogs in 1921.",
+    "false": "Frederick Banting and John Macleod isolated pancreatic extracts with glucose-lowering effects in dogs in 1921.",
+    "type": "entity"
+   },
+   {
+    "true": "James Collip helped purify insulin for clinical use in Toronto in early 1922.",
+    "false": "James Collip helped purify insulin for clinical use in Toronto in early 1923.",
+    "type": "date"
+   },
+   {
+    "true": "Leonard Thompson, a 14-year-old boy, received one of the first successful insulin treatments in January 1922.",
+    "false": "Leonard Thompson, a 12-year-old boy, received one of the first successful insulin treatments in January 1922.",
+    "type": "quantity"
+   },
+   {
+    "true": "Insulin lowers blood glucose by promoting glucose uptake in skeletal muscle and adipose tissue.",
+    "false": "Insulin lowers blood glucose by inhibiting glucose uptake in skeletal muscle and adipose tissue.",
+    "type": "relation"
+   },
+   {
+    "true": "Regular human insulin typically begins acting within about 30 minutes after subcutaneous injection.",
+    "false": "Regular human insulin typically begins acting within about 10 minutes after subcutaneous injection.",
+    "type": "quantity"
+   },
+   {
+    "true": "Recombinant human insulin became available in 1982 after earlier insulin products were extracted from pig and cow pancreases.",
+    "false": "Recombinant human insulin became available in 1978 after earlier insulin products were extracted from pig and cow pancreases.",
+    "type": "date"
+   }
+  ],
+  "topic": "medicine and pharmacology",
+  "id": "it0075"
+ },
+ {
+  "question": "Could you give a brief explanation of penicillin's discovery, how it works, and a couple of important clinical facts?",
+  "claims": [
+   {
+    "true": "Alexander Fleming observed a mold inhibiting Staphylococcus bacteria at St Mary's Hospital in London in 1928.",
+    "false": "Alexander Fleming observed a mold inhibiting Staphylococcus bacteria at Guy's Hospital in London in 1928.",
+    "type": "entity"
+   },
+   {
+    "true": "Howard Florey and Ernst Chain published key mouse protection experiments with penicillin in 1940.",
+    "false": "Howard Florey and Selman Waksman published key mouse protection experiments with penicillin in 1940.",
+    "type": "entity"
+   },
+   {
+    "true": "Penicillins are beta-lactam antibiotics that inhibit bacterial cell wall cross-linking by binding penicillin-binding proteins.",
+    "false": "Penicillins are beta-lactam antibiotics that inhibit bacterial protein synthesis by binding ribosomes.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Penicillin G is generally ineffective against bacteria that produce the enzyme penicillinase.",
+    "false": "Penicillin G is generally effective against bacteria that produce the enzyme penicillinase.",
+    "type": "relation"
+   },
+   {
+    "true": "The Oxford team's first penicillin-treated patient was policeman Albert Alexander in 1941.",
+    "false": "The Oxford team's first penicillin-treated patient was policeman Albert Alexander in 1942.",
+    "type": "date"
+   },
+   {
+    "true": "Penicillin does not directly treat viral infections such as influenza.",
+    "false": "Penicillin directly treats viral infections such as influenza.",
+    "type": "relation"
+   }
+  ],
+  "topic": "medicine and pharmacology",
+  "id": "it0076"
+ },
+ {
+  "question": "Can you summarize how aspirin works and highlight a few important points about its history, uses, and risks?",
+  "claims": [
+   {
+    "true": "Aspirin is acetylsalicylic acid and irreversibly acetylates cyclooxygenase enzymes.",
+    "false": "Aspirin is acetylsalicylic acid and reversibly acetylates cyclooxygenase enzymes.",
+    "type": "mechanism"
+   },
+   {
+    "true": "By inhibiting platelet cyclooxygenase-1, low-dose aspirin reduces thromboxane A2 production for the platelet's lifespan.",
+    "false": "By inhibiting platelet cyclooxygenase-2, low-dose aspirin reduces thromboxane A2 production for the platelet's lifespan.",
+    "type": "entity"
+   },
+   {
+    "true": "Felix Hoffmann synthesized a stable form of aspirin at Bayer in 1897.",
+    "false": "Felix Hoffmann synthesized a stable form of aspirin at Bayer in 1899.",
+    "type": "date"
+   },
+   {
+    "true": "Aspirin is used for secondary prevention after myocardial infarction and ischemic stroke.",
+    "false": "Aspirin is used for secondary prevention after myocardial infarction and hemorrhagic stroke.",
+    "type": "entity"
+   },
+   {
+    "true": "Aspirin can increase the risk of gastrointestinal bleeding, especially at higher doses.",
+    "false": "Aspirin can decrease the risk of gastrointestinal bleeding, especially at higher doses.",
+    "type": "relation"
+   },
+   {
+    "true": "Children recovering from viral infections are generally advised to avoid aspirin because of the risk of Reye syndrome.",
+    "false": "Children recovering from viral infections are generally advised to take aspirin because of the risk of Reye syndrome.",
+    "type": "relation"
+   }
+  ],
+  "topic": "medicine and pharmacology",
+  "id": "it0077"
+ },
+ {
+  "question": "What happens during El Niño, and why does it matter for weather and marine ecosystems?",
+  "claims": [
+   {
+    "true": "El Niño is the warm phase of the El Niño-Southern Oscillation, or ENSO.",
+    "false": "El Niño is the cold phase of the El Niño-Southern Oscillation, or ENSO.",
+    "type": "relation"
+   },
+   {
+    "true": "During El Niño, easterly trade winds across the equatorial Pacific often weaken.",
+    "false": "During El Niño, easterly trade winds across the equatorial Atlantic often weaken.",
+    "type": "entity"
+   },
+   {
+    "true": "Warm surface water shifts eastward toward the central and eastern tropical Pacific during El Niño.",
+    "false": "Warm surface water shifts westward toward the central and eastern tropical Pacific during El Niño.",
+    "type": "relation"
+   },
+   {
+    "true": "El Niño reduces nutrient-rich upwelling off the coast of Peru.",
+    "false": "El Niño strengthens nutrient-rich upwelling off the coast of Peru.",
+    "type": "relation"
+   },
+   {
+    "true": "The 1997-1998 El Niño was among the strongest events of the twentieth century.",
+    "false": "The 1998-1999 El Niño was among the strongest events of the twentieth century.",
+    "type": "date"
+   },
+   {
+    "true": "Reduced upwelling during El Niño can depress anchovy fisheries off Peru.",
+    "false": "Reduced upwelling during El Niño can boost anchovy fisheries off Peru.",
+    "type": "relation"
+   }
+  ],
+  "topic": "ecology and climate",
+  "id": "it0078"
+ },
+ {
+  "question": "How does Arctic sea ice loss affect climate and polar ecosystems?",
+  "claims": [
+   {
+    "true": "Sea ice reflects more incoming sunlight than open ocean because it has a higher albedo.",
+    "false": "Sea ice reflects more incoming sunlight than open ocean because it has a lower albedo.",
+    "type": "relation"
+   },
+   {
+    "true": "September 2012 set the satellite-era record low for Arctic sea ice extent.",
+    "false": "September 2011 set the satellite-era record low for Arctic sea ice extent.",
+    "type": "date"
+   },
+   {
+    "true": "Ringed seals maintain breathing holes in Arctic sea ice.",
+    "false": "Harp seals maintain breathing holes in Arctic sea ice.",
+    "type": "entity"
+   },
+   {
+    "true": "Ice algae grow on the underside of sea ice and support Arctic food webs.",
+    "false": "Ice algae grow on the topside of sea ice and support Arctic food webs.",
+    "type": "relation"
+   },
+   {
+    "true": "Multi-year sea ice is generally thicker than first-year sea ice.",
+    "false": "Multi-year sea ice is generally thinner than first-year sea ice.",
+    "type": "relation"
+   },
+   {
+    "true": "The Northwest Passage runs through the Canadian Arctic Archipelago.",
+    "false": "The Northwest Passage runs through the Russian Arctic Archipelago.",
+    "type": "entity"
+   }
+  ],
+  "topic": "ecology and climate",
+  "id": "it0079"
+ },
+ {
+  "question": "Can you briefly explain what Dante's Divine Comedy is, who wrote it, and how it is structured?",
+  "claims": [
+   {
+    "true": "Dante Alighieri completed the Divine Comedy around 1320.",
+    "false": "Dante Alighieri completed the Divine Comedy around 1310.",
+    "type": "date"
+   },
+   {
+    "true": "The poem is divided into three canticles: Inferno, Purgatorio, and Paradiso.",
+    "false": "The poem is divided into three canticles: Inferno, Purgatorio, and Monarchia.",
+    "type": "entity"
+   },
+   {
+    "true": "Inferno has 34 cantos, while Purgatorio and Paradiso each have 33.",
+    "false": "Inferno has 33 cantos, while Purgatorio and Paradiso each have 33.",
+    "type": "quantity"
+   },
+   {
+    "true": "Virgil guides Dante through Hell and Purgatory.",
+    "false": "Dante guides Virgil through Hell and Purgatory.",
+    "type": "relation"
+   },
+   {
+    "true": "Beatrice guides Dante through most of Paradise.",
+    "false": "Saint Bernard guides Dante through most of Paradise.",
+    "type": "entity"
+   },
+   {
+    "true": "Dante wrote the work in Italian rather than Latin.",
+    "false": "Dante wrote the work in Latin rather than Italian.",
+    "type": "relation"
+   }
+  ],
+  "topic": "world literature",
+  "id": "it0080"
+ },
+ {
+  "question": "Can you summarize Don Quixote, including its author, publication history, and why it matters?",
+  "claims": [
+   {
+    "true": "Miguel de Cervantes wrote Don Quixote.",
+    "false": "Lope de Vega wrote Don Quixote.",
+    "type": "entity"
+   },
+   {
+    "true": "The first part was published in 1605, and the second part in 1615.",
+    "false": "The first part was published in 1605, and the second part in 1616.",
+    "type": "date"
+   },
+   {
+    "true": "Alonso Quixano adopts the name Don Quixote after reading chivalric romances.",
+    "false": "Sancho Panza adopts the name Don Quixote after reading chivalric romances.",
+    "type": "relation"
+   },
+   {
+    "true": "Sancho Panza serves as Don Quixote's squire.",
+    "false": "Don Quixote serves as Sancho Panza's squire.",
+    "type": "relation"
+   },
+   {
+    "true": "Cervantes wrote the novel in Spanish.",
+    "false": "Cervantes wrote the novel in Catalan.",
+    "type": "entity"
+   },
+   {
+    "true": "The book is widely regarded as a foundational work of the modern novel.",
+    "false": "The book is widely regarded as a foundational work of modern drama.",
+    "type": "entity"
+   }
+  ],
+  "topic": "world literature",
+  "id": "it0081"
+ },
+ {
+  "question": "What makes the Pantheon in Rome such an important structural achievement in ancient architecture?",
+  "claims": [
+   {
+    "true": "The Pantheon's dome is about 43.3 meters in diameter.",
+    "false": "The Pantheon's dome is about 45.3 meters in diameter.",
+    "type": "quantity"
+   },
+   {
+    "true": "Emperor Hadrian rebuilt the Pantheon around AD 118-125.",
+    "false": "Emperor Hadrian rebuilt the Pantheon around AD 110-117.",
+    "type": "date"
+   },
+   {
+    "true": "The dome remains the world's largest unreinforced concrete dome.",
+    "false": "The dome remains the world's largest reinforced concrete dome.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The oculus at the dome's crown is about 8.9 meters wide.",
+    "false": "The oculus at the dome's crown is about 9.9 meters wide.",
+    "type": "quantity"
+   },
+   {
+    "true": "The concrete mix uses lighter volcanic materials near the top than near the base.",
+    "false": "The concrete mix uses lighter volcanic materials near the base than near the top.",
+    "type": "relation"
+   },
+   {
+    "true": "Coffers in the dome reduce the weight of the ceiling without removing its overall curvature.",
+    "false": "Coffers in the dome increase the weight of the ceiling without removing its overall curvature.",
+    "type": "mechanism"
+   }
+  ],
+  "topic": "architecture and civil engineering",
+  "id": "it0082"
+ },
+ {
+  "question": "What engineering features allowed the Brooklyn Bridge to span the East River in the 19th century?",
+  "claims": [
+   {
+    "true": "The Brooklyn Bridge opened to traffic in 1883.",
+    "false": "The Brooklyn Bridge opened to traffic in 1884.",
+    "type": "date"
+   },
+   {
+    "true": "John A. Roebling designed the bridge, and Washington Roebling supervised construction after John A. Roebling's death.",
+    "false": "John A. Roebling designed the bridge, and Emily Warren Roebling supervised construction after John A. Roebling's death.",
+    "type": "entity"
+   },
+   {
+    "true": "Its main span measures 1,595.5 feet, longer than any previous suspension bridge span at completion.",
+    "false": "Its main span measures 1,695.5 feet, longer than any previous suspension bridge span at completion.",
+    "type": "quantity"
+   },
+   {
+    "true": "The bridge uses steel wire cables rather than wrought-iron chains.",
+    "false": "The bridge uses wrought-iron chains rather than steel wire cables.",
+    "type": "mechanism"
+   },
+   {
+    "true": "Workers excavated foundations inside pressurized caissons sunk to the riverbed.",
+    "false": "Workers excavated foundations inside unpressurized caissons sunk to the riverbed.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The two masonry towers are built of limestone, granite, and Rosendale cement.",
+    "false": "The two masonry towers are built of limestone, granite, and Portland cement.",
+    "type": "entity"
+   }
+  ],
+  "topic": "architecture and civil engineering",
+  "id": "it0083"
+ },
+ {
+  "question": "How does the Panama Canal use locks to move ships between the Atlantic and Pacific oceans?",
+  "claims": [
+   {
+    "true": "The original Panama Canal opened in 1914.",
+    "false": "The original Panama Canal opened in 1915.",
+    "type": "date"
+   },
+   {
+    "true": "Gatun Lake sits about 26 meters above sea level.",
+    "false": "Gatun Lake sits about 24 meters above sea level.",
+    "type": "quantity"
+   },
+   {
+    "true": "Ships are raised and lowered by gravity-fed lock chambers rather than by pumps lifting the water.",
+    "false": "Ships are raised and lowered by pumps lifting the water rather than by gravity-fed lock chambers.",
+    "type": "mechanism"
+   },
+   {
+    "true": "The canal's original lock chambers are 110 feet wide and 1,000 feet long.",
+    "false": "The canal's original lock chambers are 120 feet wide and 1,000 feet long.",
+    "type": "quantity"
+   },
+   {
+    "true": "The canal crosses the Isthmus of Panama from the Atlantic side near Colón to the Pacific side near Panama City.",
+    "false": "The canal crosses the Isthmus of Panama from the Pacific side near Colón to the Atlantic side near Panama City.",
+    "type": "relation"
+   },
+   {
+    "true": "The Culebra Cut was excavated through the continental divide to connect Gatun Lake with the Pacific locks.",
+    "false": "The Culebra Cut was excavated through the continental divide to connect Gatun Lake with the Atlantic locks.",
+    "type": "relation"
+   }
+  ],
+  "topic": "architecture and civil engineering",
+  "id": "it0084"
+ }
+]
