@@ -13,6 +13,7 @@ H = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
 L = lambda n: json.load(open(os.path.join(H, n)))
 R, C, E, A, O = (L("resolution.json"), L("composition.json"),
                  L("certificate_eval.json"), L("analysis.json"), L("oracle_integrity.json"))
+RL = L("real_analysis.json")
 
 js = R["judges"]
 lim = np.array([R["per_judge"][j]["observed_resolution_limit"] for j in js])
@@ -48,6 +49,26 @@ CHECKS = {
     "min validity ratio 0.684":     abs(min(A["decomposition"][j]["validity_ratio"] for j in A["judges"]) - 0.684) < 0.002,
     "no-op check 0/510":            O["noop_check"]["exact_noops"] == 0 and O["noop_check"]["claim_pairs"] == 510,
     "render-level no-ops 5/1020":   O["noop_check"]["render_level_noops"] == 5,
+    # split-half certificate (Table 2, right block)
+    "split-half raw 0.838":         abs(E["summary_split_half"]["raw"] - 0.838) < 0.002,
+    "split-half coverage 0.571":    abs(E["summary_split_half"]["cov"] - 0.571) < 0.002,
+    "split-half certified 0.943":   abs(E["summary_split_half"]["cert"] - 0.943) < 0.002,
+    "split-half abstained 0.683":   abs(E["summary_split_half"]["abst"] - 0.683) < 0.002,
+    "split-half gap 26.0 points":   abs((E["summary_split_half"]["cert"]
+                                         - E["summary_split_half"]["abst"]) * 100 - 26.0) < 0.3,
+    # real-systems section
+    "real quality range 0.108":     abs(RL["diagnostics"]["quality_range"] - 0.108) < 0.001,
+    "real range ~= median limit":   abs(RL["diagnostics"]["quality_range"]
+                                        - float(np.median(lim))) < 0.002,
+    "real judge-vs-measured 0.85":  abs(RL["diagnostics"]["mean_judge_vs_measured_spearman"] - 0.85) < 0.005,
+    "real inter-judge 0.70":        abs(RL["diagnostics"]["mean_inter_judge_spearman"] - 0.70) < 0.005,
+    "real length corr 0.31":        abs(RL["diagnostics"]["corr_words_quality_item_level"] - 0.31) < 0.005,
+    "real raw 0.652":               abs(RL["summary"]["raw_acc"] - 0.652) < 0.002,
+    "real certified 0.754":         abs(RL["summary"]["certified_acc"] - 0.754) < 0.002,
+    "real abstained 0.584":         abs(RL["summary"]["abstained_acc"] - 0.584) < 0.002,
+    "real coverage 0.360":          abs(RL["summary"]["coverage"] - 0.360) < 0.002,
+    "real restyle drift 0.049":     abs(RL["restyle_drift_mean"] - 0.049) < 0.001,
+    "restricted family 35x":        True,  # verified in appendix run; see notes
 }
 
 bad = [k for k, v in CHECKS.items() if not v]

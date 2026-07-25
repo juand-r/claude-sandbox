@@ -20,10 +20,24 @@ reliably once systems differ in surface form.
 | Label-free predictor `δ_style` | R² = 0.927, residual **3.3%** |
 | Certificate, leaderboard regime | raw **0.860** → certified **0.969** at 55.8% coverage |
 | Accuracy on pairs the certificate declines | **0.721** |
+| Same, threshold estimated on disjoint items | raw 0.838 → certified **0.943** vs 0.683 declined |
 
 The residual of the best gold-label predictor (6.3%) is larger than the entire resolution
 limit of the seven best judges — so knowing a judge's meta-benchmark accuracy does not tell
 you whether your 5% leaderboard gap is real. The label-free estimator does.
+
+## Real systems
+
+Five real models answering freely span a measured quality range of **0.108** — almost exactly
+the median judge's resolution limit (0.108). Real comparisons therefore sit right at the edge
+of what these judges can resolve: raw ranking accuracy on fine-grained pairs falls to 0.652,
+and the certificate separates 0.754 (certified) from 0.584 (declined).
+
+Read this as showing *which regime* real comparisons occupy, not as a second validation. The
+measured quality proxy is coverage-weighted (correlates with answer length, r = 0.31 at item
+level) and restyling real answers drifts measured quality by 0.049, so quality-preservation is
+approximate here rather than exact by construction. Those are precisely the costs of leaving
+construction-based ground truth, which is why the constructed arm carries the main claims.
 
 ## Two hypotheses that did not survive
 
@@ -56,7 +70,9 @@ python3 src/certificate_eval.py     # 6. certificate
 python3 src/run_analysis.py         # 7. ANOVA, populations, regret
 python3 src/bootstrap.py 300        # 8. bootstrap CIs over items
 python3 src/figures.py              # 9. figures
-python3 src/audit_numbers.py        # 10. verify every number quoted in the paper
+python3 src/real_systems.py         # 10. real-model arm (5 models, measured quality)
+python3 src/real_analysis.py        # 11. real-model analysis
+python3 src/audit_numbers.py        # 12. verify every number quoted in the paper (41 checks)
 cd paper && pdflatex eval3 && bibtex eval3 && pdflatex eval3 && pdflatex eval3
 ```
 
@@ -85,6 +101,8 @@ paper/eval3.tex|.pdf           the paper; official neurips_2026.sty
   the obvious next step.
 - **Narrow construct.** True quality here is factual-claim correctness — deliberately, since
   that is the dimension along which ground truth is constructible.
+- **The real-model arm is the weakest part.** Its quality proxy is not independently
+  defensible; see the caveats above and §8 of the paper.
 - **The certificate is relative to the declared transformation family.** Its 3.1% shortfall
   from soundness measures confounds outside the three transformations, and is reported rather
   than hidden. `notes/related_work.md` explains how this differs from the closest prior work.

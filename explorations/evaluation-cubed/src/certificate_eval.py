@@ -39,6 +39,7 @@ RESULTS = os.path.join(HERE, "..", "results")
 N_CLAIMS = 6
 N_PAIRS = 4000
 MAX_GAP_CLAIMS = 1.0   # leaderboard regime: at most 1 of 6 claims apart (<=16.7%)
+SPLIT_HALF = True      # estimate R_J on one half of the items, evaluate on the other
 
 
 def main() -> None:
@@ -52,12 +53,27 @@ def main() -> None:
     out = {"judges": judges, "n_pairs": N_PAIRS, "max_gap_claims": MAX_GAP_CLAIMS,
            "per_judge": {}}
 
-    print(f"{'judge':<28} {'R_J':>7} {'raw':>7} {'cover':>7} {'certified':>10} "
-          f"{'abstained':>10}")
-    agg = {"raw": [], "cov": [], "cert": [], "abst": []}
-    for jx, j in enumerate(judges):
+    # Split-half: the threshold R_J must be estimated from data, so estimating it on the
+    # same items used to evaluate the certificate would flatter it. We estimate on a random
+    # half of the items and evaluate on the held-out half.
+    n_items = S.shape[1]
+    perm = rng.permutation(n_items)
+    est_idx, ev_idx = perm[: n_items // 2], perm[n_items // 2:]
+
+    def run(split_half: bool, label: str) -> dict:
+      print(f"\n--- {label} ---")
+      print(f"{'judge':<28} {'R_J':>7} {'raw':>7} {'cover':>7} {'certified':>10} "
+            f"{'abstained':>10}")
+      agg = {"raw": [], "cov": [], "cert": [], "abst": []}
+      per = {}
+      for jx, j in enumerate(judges):
         S_j = S[jx]
-        R = style_range(S_j)          # label-free
+        if split_half:
+            # threshold estimated on items disjoint from those used to evaluate it
+            R = style_range(S_j[est_idx])
+            S_j = S_j[ev_idx]
+        else:
+            R = style_range(S_j)          # label-free
         n_ok = n_cert = n_cert_ok = n_abst = n_abst_ok = 0
         for _ in range(N_PAIRS):
             mA = rng.uniform(0, 4 - MAX_GAP_CLAIMS)
@@ -81,22 +97,32 @@ def main() -> None:
             "certified_acc": n_cert_ok / n_cert if n_cert else float("nan"),
             "abstained_acc": n_abst_ok / n_abst if n_abst else float("nan"),
         }
-        out["per_judge"][j] = res
+        per[j] = res
         agg["raw"].append(res["raw_acc"])
         agg["cov"].append(res["coverage"])
         agg["cert"].append(res["certified_acc"])
         agg["abst"].append(res["abstained_acc"])
         print(f"{j:<28} {R:7.4f} {res['raw_acc']:7.3f} {res['coverage']:7.3f} "
               f"{res['certified_acc']:10.3f} {res['abstained_acc']:10.3f}")
+      summary = {k: float(np.nanmean(v)) for k, v in agg.items()}
+      summary["worst_raw"] = float(np.min(agg["raw"]))
+      summary["worst_certified"] = float(np.nanmin(agg["cert"]))
+      summary["n_eval_items"] = len(ev_idx) if split_half else S.shape[1]
+      print(f"{'MEAN':<28} {'':>7} {summary['raw']:7.3f} {summary['cov']:7.3f} "
+            f"{summary['cert']:10.3f} {summary['abst']:10.3f}")
+      return {"per_judge": per, "summary": summary}
 
-    out["summary"] = {k: float(np.nanmean(v)) for k, v in agg.items()}
-    out["summary"]["worst_raw"] = float(np.min(agg["raw"]))
-    out["summary"]["worst_certified"] = float(np.nanmin(agg["cert"]))
-    print(f"\n{'MEAN':<28} {'':>7} {np.mean(agg['raw']):7.3f} "
-          f"{np.mean(agg['cov']):7.3f} {np.nanmean(agg['cert']):10.3f} "
-          f"{np.nanmean(agg['abst']):10.3f}")
-    print(f"worst judge: raw {np.min(agg['raw']):.3f} -> certified "
-          f"{np.nanmin(agg['cert']):.3f}")
+    # Two configurations. `full_sample` uses all 85 items for both estimating R and
+    # evaluating; `split_half` estimates R on 42 items and evaluates on the disjoint 43.
+    # Note the split-half run also *halves the evaluation set*, which independently adds
+    # sampling noise to every system mean and so lowers raw accuracy too -- the two effects
+    # are reported together, not disentangled.
+    full = run(False, "full sample (85 items for both)")
+    half = run(True, "split half (R on 42 items, evaluated on the disjoint 43)")
+    out["full_sample"], out["split_half"] = full, half
+    out["per_judge"] = full["per_judge"]
+    out["summary"] = full["summary"]
+    out["summary_split_half"] = half["summary"]
 
     with open(os.path.join(RESULTS, "certificate_eval.json"), "w") as f:
         json.dump(out, f, indent=1)

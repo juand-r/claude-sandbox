@@ -126,9 +126,40 @@ def main() -> None:
               f"{res['coverage']:7.3f} {res['certified_acc']:8.3f} "
               f"{res['abstained_acc']:7.3f}")
 
+    # Diagnostics needed to interpret the numbers above.
+    #  (a) how far apart the real systems actually are, in the units of the resolution limit
+    #  (b) whether judges agree with the measured quality, and with each other
+    #  (c) how much the measured quality is a coverage/length proxy rather than accuracy
+    per_model_judge = np.array(
+        [[np.nanmean(S[ji[j]][:, mi[m], :]) for m in models] for j in judges])
+    inter = [stats.spearmanr(per_model_judge[a], per_model_judge[b]).statistic
+             for a in range(len(judges)) for b in range(a + 1, len(judges))]
+    words = np.array([np.mean([len(r["answer"].split()) for r in recs
+                               if r["style"] == "native" and r["model"] == m]) for m in models])
+    it_w, it_q = [], []
+    for r in recs:
+        if r["style"] == "native":
+            it_w.append(len(r["answer"].split()))
+            it_q.append(r["quality"])
+    out["diagnostics"] = {
+        "quality_range": float(Qm.max() - Qm.min()),
+        "mean_inter_judge_spearman": float(np.mean(inter)),
+        "mean_judge_vs_measured_spearman": float(np.mean(
+            [stats.spearmanr(r, Qm).statistic for r in per_model_judge])),
+        "corr_words_quality_model_level": float(stats.pearsonr(words, Qm).statistic),
+        "corr_words_quality_item_level": float(stats.pearsonr(it_w, it_q).statistic),
+    }
+    print("\ndiagnostics:")
+    for k, v in out["diagnostics"].items():
+        print(f"  {k:<38} {v:.4f}")
+
     agg = lambda k: float(np.nanmean([out["per_judge"][j][k] for j in judges]))
     out["summary"] = {k: agg(k) for k in
-                      ("raw_acc", "coverage", "certified_acc", "abstained_acc", "delta_style")}
+                      ("raw_acc", "coverage", "certified_acc", "abstained_acc")}
+    finite = [out["per_judge"][j]["delta_style"] for j in judges
+              if np.isfinite(out["per_judge"][j]["delta_style"])]
+    out["summary"]["delta_style"] = float(np.mean(finite))
+    out["summary"]["n_delta_style_undefined"] = len(judges) - len(finite)
     print(f"\n{'MEAN':<26} {'':>7} {'':>7} {out['summary']['delta_style']:9.4f} "
           f"{out['summary']['raw_acc']:7.3f} {out['summary']['coverage']:7.3f} "
           f"{out['summary']['certified_acc']:8.3f} {out['summary']['abstained_acc']:7.3f}")
