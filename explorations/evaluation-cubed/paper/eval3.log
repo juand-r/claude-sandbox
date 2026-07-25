@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.25)  25 JUL 2026 14:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.25)  25 JUL 2026 22:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -582,112 +582,120 @@ Underfull \vbox (badness 1019) has occurred while \output is active []
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
-st/fonts/enc/dvips/base/8r.enc}] [2] [3]
+st/fonts/enc/dvips/base/8r.enc}]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3] [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 249.
+(hyperref)                removing `\mathsurround' on input line 335.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 249.
+(hyperref)                removing `\z@' on input line 335.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 249.
+(hyperref)                removing `superscript' on input line 335.
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 272--279
+Underfull \hbox (badness 1635) in paragraph at lines 357--364
  []\T1/ptm/b/n/10 (+20) Judges.[] \T1/ptm/m/n/10 (+20) Eight mod-els span-ning 
 a wide ca-pa-bil-ity range (\T1/cmtt/m/n/10 gpt-4.1-nano\T1/ptm/m/n/10 (+20) , 
 \T1/cmtt/m/n/10 gpt-4o-mini\T1/ptm/m/n/10 (+20) ,
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 293.
-[4]
-<../figures/f2_curves.pdf, id=171, 431.1558pt x 160.63606pt>
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 377.
+[5]
+<../figures/f2_curves.pdf, id=199, 431.1558pt x 160.63606pt>
 File: ../figures/f2_curves.pdf Graphic file (type pdf)
 <use ../figures/f2_curves.pdf>
-Package pdftex.def Info: ../figures/f2_curves.pdf  used on input line 328.
+Package pdftex.def Info: ../figures/f2_curves.pdf  used on input line 410.
 (pdftex.def)             Requested size: 397.48499pt x 148.10071pt.
-<../figures/f1_limits.pdf, id=174, 454.86334pt x 213.93326pt>
+<../figures/f1_limits.pdf, id=202, 454.86334pt x 213.93326pt>
 File: ../figures/f1_limits.pdf Graphic file (type pdf)
 <use ../figures/f1_limits.pdf>
-Package pdftex.def Info: ../figures/f1_limits.pdf  used on input line 355.
+Package pdftex.def Info: ../figures/f1_limits.pdf  used on input line 437.
 (pdftex.def)             Requested size: 397.48499pt x 186.95284pt.
-
-Underfull \vbox (badness 7963) has occurred while \output is active []
-
- [5 <../figures/f2_curves.pdf>]
-<../figures/f3_calibration.pdf, id=229, 432.09875pt x 206.35895pt>
+ [6 <../figures/f2_curves.pdf>]
+<../figures/f3_calibration.pdf, id=257, 432.09875pt x 206.35895pt>
 File: ../figures/f3_calibration.pdf Graphic file (type pdf)
 <use ../figures/f3_calibration.pdf>
-Package pdftex.def Info: ../figures/f3_calibration.pdf  used on input line 418.
+Package pdftex.def Info: ../figures/f3_calibration.pdf  used on input line 498.
 
 (pdftex.def)             Requested size: 397.48499pt x 189.82735pt.
- [6 <../figures/f1_limits.pdf>]
-<../figures/f4_certificate.pdf, id=291, 436.87695pt x 210.50432pt>
-File: ../figures/f4_certificate.pdf Graphic file (type pdf)
-<use ../figures/f4_certificate.pdf>
-Package pdftex.def Info: ../figures/f4_certificate.pdf  used on input line 468.
 
-(pdftex.def)             Requested size: 397.48499pt x 191.5239pt.
- [7 <../figures/f3_calibration.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <../figures/f4_certificate.pdf>] [9] (./eval3.bbl
-Underfull \hbox (badness 1515) in paragraph at lines 32--34
-[]\T1/ptm/m/n/10 (+20) Judge re-li-a-bil-ity har-ness: Stress test-ing the re-l
-i-a-bil-ity of LLM judges.  \T1/ptm/m/it/10 (+20) arXiv preprint
- []
+ [7 <../figures/f1_limits.pdf>]
+<../figures/f4_certificate.pdf, id=320, 436.87695pt x 210.50432pt>
+File: ../figures/f4_certificate.pdf Graphic file (type pdf)
+<use ../figures/f4_certificate.pdf>
+Package pdftex.def Info: ../figures/f4_certificate.pdf  used on input line 548.
 
-[10]) [11]
-<../figures/f5_decomposition.pdf, id=505, 442.40094pt x 179.52313pt>
+(pdftex.def)             Requested size: 397.48499pt x 191.5239pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <../figures/f3_calibration.pdf>] [9 <../figures/f4_certificate.pdf>] (./eva
+l3.bbl
+[10] [11])
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12]
+<../figures/f5_decomposition.pdf, id=537, 442.40094pt x 179.52313pt>
 File: ../figures/f5_decomposition.pdf Graphic file (type pdf)
 <use ../figures/f5_decomposition.pdf>
-Package pdftex.def Info: ../figures/f5_decomposition.pdf  used on input line 68
+Package pdftex.def Info: ../figures/f5_decomposition.pdf  used on input line 77
 7.
 (pdftex.def)             Requested size: 397.48499pt x 161.30359pt.
- [12 <../figures/f5_decomposition.pdf>] [13] (./eval3.aux)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <../figures/f5_decomposition.pdf>] [14] (./eval3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `eval3.out' has not changed.
-(rerunfilecheck)             Checksum: DA54E3E2ECC399C0BC3E5AE2C08BE848;3725.
+(rerunfilecheck)             Checksum: 2DDDE0AA3CD9D494BFC1D34B115201EB;4343.
  ) 
 Here is how much of TeX's memory you used:
- 13722 strings out of 476182
- 212872 string characters out of 5795595
+ 13775 strings out of 476182
+ 213563 string characters out of 5795595
  1940975 words of memory out of 5000000
- 35091 multiletter control sequences out of 15000+600000
- 625097 words of font info for 313 fonts, out of 8000000 for 9000
+ 35110 multiletter control sequences out of 15000+600000
+ 631680 words of font info for 330 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,12n,79p,1002b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
-/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on eval3.pdf (13 pages, 377507 bytes).
+ 75i,12n,79p,1002b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </
+root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on eval3.pdf (14 pages, 390629 bytes).
 PDF statistics:
- 698 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 89 named destinations out of 1000 (max. 500000)
- 61098 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 751 PDF objects out of 1000 (max. 8388607)
+ 440 compressed objects within 5 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 65738 words of extra memory for PDF output out of 74296 (max. 10000000)
 
