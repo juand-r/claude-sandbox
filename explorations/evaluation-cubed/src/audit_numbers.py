@@ -14,6 +14,7 @@ L = lambda n: json.load(open(os.path.join(H, n)))
 R, C, E, A, O = (L("resolution.json"), L("composition.json"),
                  L("certificate_eval.json"), L("analysis.json"), L("oracle_integrity.json"))
 RL = L("real_analysis.json")
+RF = L("robustness_fidelity.json")
 
 js = R["judges"]
 lim = np.array([R["per_judge"][j]["observed_resolution_limit"] for j in js])
@@ -69,6 +70,12 @@ CHECKS = {
     "real coverage 0.360":          abs(RL["summary"]["coverage"] - 0.360) < 0.002,
     "real restyle drift 0.049":     abs(RL["restyle_drift_mean"] - 0.049) < 0.001,
     "restricted family 35x":        True,  # verified in appendix run; see notes
+    # rendering-fidelity robustness (Appendix: 2.2% of cells, does not move the headline)
+    "28/1275 unfaithful cells":     RF["n_bad_cells"] == 28 and RF["n_cells"] == 1275,
+    "15 affected items":            RF["n_bad_items"] == 15,
+    "excl. rho 0.964":              abs(RF["affected items excluded"]["spearman"] - 0.964) < 0.005,
+    "excl. R2 0.942":               abs(RF["affected items excluded"]["r2"] - 0.942) < 0.005,
+    "predictor rank agree 0.985":   abs(RF["rank_agreement_of_predictor"] - 0.985) < 0.005,
 }
 
 bad = [k for k, v in CHECKS.items() if not v]

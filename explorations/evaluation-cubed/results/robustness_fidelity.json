@@ -1,0 +1,28 @@
+{
+ "n_bad_cells": 28,
+ "n_cells": 1275,
+ "n_bad_items": 15,
+ "n_items": 85,
+ "as reported (all items)": {
+  "n_judges": 28,
+  "spearman": 0.9317630013278044,
+  "pearson": 0.9684529592002804,
+  "r2": 0.9379011341837796,
+  "resid_sd": 0.02933770998439146,
+  "limit_min": 0.008333333333333333,
+  "limit_max": 0.5,
+  "limit_ratio": 60.0
+ },
+ "affected items excluded": {
+  "n_judges": 27,
+  "spearman": 0.9640227449817546,
+  "pearson": 0.9703929569396051,
+  "r2": 0.9416624908779898,
+  "resid_sd": 0.031014459511040475,
+  "limit_min": 0.008333333333333333,
+  "limit_max": 0.4166666666666667,
+  "limit_ratio": 50.0
+ },
+ "rank_agreement_of_predictor": 0.9846743295019157,
+ "rank_agreement_of_limit": NaN
+}

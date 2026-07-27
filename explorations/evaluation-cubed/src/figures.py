@@ -76,7 +76,7 @@ def f1_limits(R, C):
     ax.set_yticks(y)
     ax.set_yticklabels([short(judges[i]) for i in o], fontsize=5.6)
     ax.invert_yaxis()
-    ax.set_xlabel("resolution limit (% of factual content)")
+    ax.set_xlabel("measured resolution limit $L_J$ (% of factual content)")
     ax.set_title("(a) what quality gap a judge can actually resolve")
     ax.text(0.97, 0.06, f"{lim.max()/lim.min():.0f}$\\times$ spread", transform=ax.transAxes,
             ha="right", fontsize=8, color="#444")
@@ -85,7 +85,7 @@ def f1_limits(R, C):
     ax.scatter(acc * 100, lim * 100, s=24,
                color=[FAMCOL[fam(j)] for j in judges], zorder=3)
     ax.set_xlabel("meta-evaluation accuracy (%)")
-    ax.set_ylabel("resolution limit (% of factual content)")
+    ax.set_ylabel("measured resolution limit $L_J$ (%)")
     ax.set_title("(b) accuracy compresses the difference")
     ax.annotate("", xy=(acc.min() * 100, 1), xytext=(acc.max() * 100, 1),
                 arrowprops=dict(arrowstyle="<->", color="#888", lw=0.8))
@@ -135,8 +135,8 @@ def f3_calibration(R, C):
     ax.plot([0, ds.max() * 100], [0, ds.max() * 100], color="#BBB", lw=0.8, ls=":")
     r2 = C["calibration"]["delta_style"]["r2"]
     sd = C["calibration"]["delta_style"]["resid_sd_claims"]
-    ax.set_xlabel(r"label-free predictor $\delta_{\mathrm{style}}$ (%)")
-    ax.set_ylabel("observed resolution limit (%)")
+    ax.set_xlabel(r"label-free predictor: bias-equivalent gap $\gamma_J$ (%)")
+    ax.set_ylabel("measured resolution limit $L_J$ (%)")
     ax.set_title(f"(a) label-free: $R^2$={r2:.3f}, resid {np.floor(sd*1000+0.5)/10:.1f}%")
 
     ax = axes[1]
@@ -147,7 +147,7 @@ def f3_calibration(R, C):
     r2b = C["calibration"]["clearcut+matched"]["r2"]
     sdb = C["calibration"]["clearcut+matched"]["resid_sd_claims"]
     ax.set_xlabel("gold-label meta-evaluation accuracy (%)")
-    ax.set_ylabel("observed resolution limit (%)")
+    ax.set_ylabel("measured resolution limit $L_J$ (%)")
     ax.set_title(f"(b) gold-label: $R^2$={r2b:.3f}, resid {np.floor(sdb*1000+0.5)/10:.1f}%")
     fig.savefig(os.path.join(FIGS, "f3_calibration.pdf"))
     plt.close(fig)

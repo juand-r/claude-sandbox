@@ -24,7 +24,8 @@
 
 \newcommand{\qhat}{\hat{q}}
 \newcommand{\Qhat}{\hat{Q}}
-\newcommand{\dstyle}{\delta_{\mathrm{style}}}
+\newcommand{\bgap}{\gamma}
+\newcommand{\rlim}{L}
 \newcommand{\SRA}{\mathrm{SRA}}
 
 \title{Evaluation Cubed: Judges Have Resolution Limits,\\
@@ -57,9 +58,9 @@ accuracy tracks this quantity ordinally ($\rho=-0.89$) but compresses a $60\time
 difference into $22$ accuracy points, and cannot be converted into a limit: its residual
 error is $6.3\%$ of factual content, larger than the entire limit of the seven best judges. We
 give a label-free estimator that can, with residual error $3.3\%$ ($R^2=0.93$), and a
-per-comparison \emph{certificate}: in the leaderboard regime it raises ranking accuracy
-from $0.860$ to $0.969$ while declining to certify the pairs on which accuracy is $0.721$,
-using no human labels. We argue this is where the evaluation regress terminates: rankings
+per-comparison \emph{certificate}: in the leaderboard regime it certifies $55.8\%$ of
+comparisons and is right on $96.9\%$ of those, against $86.0\%$ if one simply trusts the judge
+and $72.1\%$ on the comparisons it declines---all without human labels. We argue this is where the evaluation regress terminates: rankings
 depend only on quality \emph{differences}, and transformations with known quality effect
 supply differences without supplying labels.
 \end{abstract}
@@ -110,7 +111,7 @@ constrain the claim that survives.
 
 What survives is sharper. Every judge has a \textbf{resolution limit}: a true quality gap below
 which its ranking can be reversed by nothing but surface form. These limits span $60\times$
-across our judge pool, so the same $5\%$ leaderboard gap is decisive under one judge and
+across our pool of judge configurations, so the same $5\%$ leaderboard gap is decisive under one judge and
 meaningless under another---and current practice reports no quantity from which you could tell
 which. Meta-evaluation accuracy is ordinally informative but not \emph{calibrated}: mapping it
 to a limit leaves a residual of $6.3\%$ of factual content, exceeding the entire limit of the
@@ -139,7 +140,62 @@ grounding L3 requires is $O(1)$ in the number of systems, judges and items
 \section{The problem, concretely}
 \label{sec:theory}
 
+\subsection{What the data looks like}
+\label{sec:datalook}
+
+Everything below refers to a corpus we build rather than annotate, so it helps to see one item
+first. Each item is a question plus six atomic reference claims. A \emph{system} is defined by
+how many of those claims are swapped for a minimally corrupted variant, and the resulting claim
+set is then rendered into three surface styles. Content is identical across the three styles by
+construction.
+
+\begin{figure}[h]
+\small
+\fbox{\begin{minipage}{0.97\textwidth}
+\textbf{Question.} \emph{What are the key historical facts about Leonardo da Vinci's Mona Lisa?}
+
+\smallskip
+\textbf{The six reference claims}, one shown corrupted (this system is at $k=1$, so its true
+quality is $Q=5/6$):
+\begin{itemize}\itemsep0pt \parskip0pt \topsep2pt
+\item Leonardo da Vinci began painting the Mona Lisa around 1503.
+\item The sitter is widely identified as Lisa Gherardini.
+\item The Mona Lisa is an oil painting on a poplar wood panel.
+\item[\textcolor{red}{$\bullet$}] \textcolor{red}{The panel measures \textbf{73} centimetres
+      high and 53 wide.} \quad\emph{(true: 77\,cm; a minimal, plausible quantity corruption)}
+\item The painting is now displayed in the Louvre Museum in Paris.
+\item Vincenzo Peruggia stole the Mona Lisa from the Louvre in 1911.
+\end{itemize}
+
+\smallskip
+\textbf{\textsc{plain}} (59 words). ``Leonardo da Vinci began painting the Mona Lisa around
+1503, creating an oil painting on a poplar wood panel that measures \textcolor{red}{73
+centimeters} high and 53 centimeters wide. The sitter is widely identified as Lisa Gherardini,
+and the painting is now displayed in the Louvre Museum in Paris. In 1911, Vincenzo Peruggia
+stole the Mona Lisa from the Louvre.''
+
+\smallskip
+\textbf{\textsc{polished}} (107 words). ``The Mona Lisa by Leonardo da Vinci is a masterpiece
+with several notable historical facts: \textbullet\ \textbf{Creation Date:} \dots\ \textbullet\
+\textbf{Dimensions:} The panel measures \textcolor{red}{73 centimeters} high\dots\ These facts
+collectively highlight the enduring significance\dots''
+
+\smallskip
+\textbf{\textsc{padded}} (242 words). ``It seems that the Mona Lisa, one of the most renowned
+paintings in history, was begun by Leonardo da Vinci around the year 1503. This fact places the
+creation of the artwork in the early 16th century, a period rich with artistic
+innovation\dots\ The panel itself measures \textcolor{red}{73 centimeters} in height and 53
+centimeters in width, giving us a sense of the painting's physical dimensions and scale\dots''
+\end{minipage}}
+\caption{One item of the corpus, at quality level $k=1$, in all three styles. The three
+renderings assert exactly the same six claims---including the same false one---and differ only
+in surface form. Any difference in a judge's score between them is therefore judge error, and
+we know that without needing anyone to label how good these answers are.}
+\label{fig:example}
+\end{figure}
+
 \subsection{A worked example}
+
 \label{sec:example}
 
 Two systems answer the same $85$ questions. System $A$ states all six of each question's
@@ -162,9 +218,9 @@ $[0,1]$; they are not comparable across judges, only within a row.}
 \toprule
 Judge & $A$: 6/6 correct, plain & $B$: 5/6 correct, verbose & Prefers \\
 \midrule
-\texttt{gpt-4.1-nano}/\textsc{direct} & $0.746$ & $0.754$ & $B$ \quad(wrong) \\
-\texttt{gpt-4o-mini}/\textsc{direct}  & $0.805$ & $0.817$ & $B$ \quad(wrong) \\
-\texttt{gpt-5.4-mini}/\textsc{rubric} & $0.801$ & $0.648$ & $A$ \quad(right) \\
+\texttt{gpt-4.1-nano}/\textsc{direct} & $0.746$ & $0.754$ & $B$ --- judge is wrong \\
+\texttt{gpt-4o-mini}/\textsc{direct}  & $0.805$ & $0.817$ & $B$ --- judge is wrong \\
+\texttt{gpt-5.4-mini}/\textsc{rubric} & $0.801$ & $0.648$ & $A$ --- judge is right \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -190,7 +246,9 @@ required is that larger means better. In a classification benchmark $q(s,i)$ wou
 $s$ labels item $i$ correctly and $0$ otherwise; in a regression benchmark it might be negative
 squared error. \textbf{In this paper $q(s,i)$ is the fraction of the item's six atomic
 reference claims that $s$ asserts correctly}, so it takes values in
-$\{0,\tfrac16,\dots,1\}$ and $Q(s)$ is a system's average factual-claim accuracy. We use that
+$\{0,\tfrac16,\dots,1\}$ and $Q(s)$ is a system's average factual-claim accuracy. (Our
+constructed systems corrupt at most four of six claims, so they occupy $Q\in[\tfrac13,1]$; the
+mixture construction of Section~\ref{sec:benchmark} then fills in that interval continuously.) We use that
 scale because it makes the paper's central quantity readable as a percentage of an answer's
 factual content.
 
@@ -235,13 +293,19 @@ The judge therefore orders the pair correctly whenever
 $|\delta(s)-\delta(s')| < \beta_J\,|Q(s)-Q(s')|$.
 \end{proposition}
 
-Three consequences, with very different practical weight. The common offset $\mu$ and the
-intercept $\alpha$ \emph{cancel exactly}: a judge that is uniformly harsh, or that uses only
-the top of its scale, ranks just as well. Per-item noise $\qhat(s,i)-\mathbb{E}_i\qhat(s,i)$
+Three consequences, with very different practical weight. Everything constant across
+systems---the intercept $\alpha$ and the common offset $\mu$---drops out of the difference, so a
+judge that is uniformly harsh, or that compresses everything into the top of its scale, ranks
+just as well as a perfectly calibrated one. Miscalibration is not a ranking problem. Per-item noise $\qhat(s,i)-\mathbb{E}_i\qhat(s,i)$
 has zero mean and affects only the sampling variance of $\Qhat$, not which system it favours;
 it costs statistical power, not correctness. Everything that can actually invert a ranking sits
 in $\delta$, the part of the judge's surface-form response that \emph{differs across the
 systems being compared}.
+
+We will repeatedly need a name for how well a judge orders a set of systems. Write
+$\SRA(J,\mathcal{P})$, \emph{system ranking accuracy}, for the fraction of system pairs in
+$\mathcal{P}$ with different true quality that $J$ orders correctly, counting a tie as $\tfrac12$.
+$\SRA=1$ is a perfect leaderboard, $\SRA=\tfrac12$ is a coin flip.
 
 This is why agreement rates mislead. A judge's disagreement with gold labels aggregates all
 three parts, and the two harmless ones typically dominate. In the worked example, both
@@ -273,9 +337,20 @@ score spread scaled by $m/n$ exceeds the true quality gap.
 A swap inside a label class leaves the pooled multiset untouched, so $M$ cannot see it, but it
 moves score mass from one system's average to another's, which is exactly what a ranking reads.
 Accumulating such swaps drives the ranking to either extreme at fixed $M$. Proof in
-Appendix~\ref{app:proofs}. The reading is not that current meta-benchmarks are carelessly
-designed; it is that no refinement \emph{within the pooled frame} can settle the question they
-are used to settle.
+Appendix~\ref{app:proofs}.
+
+\paragraph{What this does and does not say---read this before Section~\ref{sec:composition}.}
+Theorem~\ref{thm:pooled} is a \emph{non-identifiability} result: it says the map from a pooled
+score to ranking validity is not a function, so no pooled number \emph{determines} validity. It
+is emphatically \textbf{not} the claim that pooled scores are empirically useless. Those are
+different statements, and our own experiments make the difference concrete: in
+Section~\ref{sec:composition} pooled accuracy turns out to predict a judge's resolution limit
+rather well in rank order ($\rho=-0.89$). There is no contradiction. The theorem describes what
+an adversary could construct; the correlation describes what happens across one particular pool
+of 28 real judges. The practical consequence of the theorem is not "ignore agreement" but
+"agreement cannot be converted into a guarantee"---and Section~\ref{sec:composition} shows that
+in this pool it cannot even be converted into a reliable \emph{number}, which is the weaker and
+more useful empirical version of the same point.
 
 \subsection{The resolution limit, and a certificate}
 
@@ -311,22 +386,30 @@ and that its surface-form response is bounded by something we can measure.
 To turn $R_J$ into a statement about systems rather than about scores, divide by the judge's
 sensitivity.
 
-\begin{definition}[Resolution limit]
-$\dstyle(J) = R_J/\beta_J$.
+\begin{definition}[Bias-equivalent gap]
+$\bgap_J = R_J/\beta_J$.
 \end{definition}
 
 The division is a unit conversion: $R_J$ is in judge-score units, $\beta_J$ is judge-score
-units per unit of quality, so $\dstyle$ is in the units of $q$---for us, fraction of an answer's
-factual content. It is the true quality difference that a judge's preference over surface form
-can counterfeit, and by Proposition~\ref{prop:decomp} a pair separated by less than it can be
-ordered either way depending only on how the two systems happen to write. For
-\texttt{gpt-4.1-nano}/\textsc{direct}, $\dstyle=37.6\%$: two systems must differ by more than a
-third of their factual content before this judge's ranking is safe from styling. For
-\texttt{gpt-5.4-mini}/\textsc{rubric} it is $1.3\%$.
+units per unit of quality, so $\bgap_J$ is in the units of $q$. It is the true quality
+difference that a judge's preference over surface form can counterfeit, and by
+Proposition~\ref{prop:decomp} a pair separated by less than it can be ordered either way
+depending only on how the two systems happen to write.
 
 Crucially $\beta_J$, like $R_J$, is estimable without quality labels: apply a degradation of
-\emph{known} size---corrupt one claim of six---and see how far the score moves. So $\dstyle$ is
+\emph{known} size---corrupt one claim of six---and see how far the score moves. So $\bgap_J$ is
 label-free end to end.
+
+\paragraph{Two quantities, one idea; do not confuse them.} $\bgap_J$ is a \emph{prediction}
+derived from the model of Equation~\ref{eq:model}. Separately, and without reference to that
+model, we will \emph{measure} how large a true quality gap has to be before a judge's ordering
+actually becomes reliable, by sweeping the gap and reading off a threshold from the resulting
+curve. We call that measured threshold the judge's \textbf{resolution limit} $\rlim_J$, and
+define it operationally in Section~\ref{sec:limits}. The paper's central empirical claim is
+that the label-free $\bgap_J$ recovers the label-requiring $\rlim_J$
+(Section~\ref{sec:composition}); they are a predictor and its target, never the same number.
+For \texttt{gpt-4.1-nano}/\textsc{direct}, $\bgap_J = 37.6\%$ and $\rlim_J = 50\%$; for
+\texttt{gpt-5.4-mini}/\textsc{rubric}, $1.3\%$ and $0.83\%$.
 
 The guarantee is sound \emph{relative to} $\mathcal{T}$: it bounds the component of $\delta$
 generated by the perturbations actually tested, and is silent about a confound orthogonal to
@@ -343,7 +426,12 @@ failed were dropped, leaving \textbf{85 items and 510 verified claim pairs}.
 
 \paragraph{Systems.} A system is a cell of a balanced $5\times3$ design: quality level
 $k\in\{0,\dots,4\}$ (how many claims are corrupted; nested, so quality is monotone in $k$ within
-every item) crossed with style $\in$ \{plain, polished, padded\}. Content is fixed by
+every item) crossed with a style. The three styles, which constitute the transformation family
+$\mathcal{T}$ that every certificate below is relative to, are: \textsc{plain}, continuous
+expository prose in one paragraph with no formatting (mean 99 words); \textsc{polished}, a
+framing sentence then a bulleted list with bolded key terms then a closing sentence, in a
+confident register (130 words); and \textsc{padded}, deliberately verbose and hedged prose with
+restatement and filler (286 words). Figure~\ref{fig:example} shows all three. Content is fixed by
 $(\text{item},k)$ and shared across styles, and $Q(s)=(6-k)/6$ by construction. A single fixed
 model does all rendering so that rendering skill cannot vary across cells, giving
 $85\times5\times3=1275$ answers.
@@ -354,7 +442,17 @@ at $k=\lfloor m\rfloor$, the rest at $\lceil m\rceil$---yields any true quality 
 with a judge score averaged over cells already collected. The continuous quality axis therefore
 costs no additional API calls.
 
-\paragraph{Judges.} Eight models spanning a wide capability range
+This is worth pausing on, because it is what makes quality gaps below $1/6$ meaningful. A single
+answer contains six claims, so on one answer the finest possible quality difference is one claim,
+or $16.7\%$. But $Q(s)$ is an \emph{average over the 85 items}, and a system that is degraded on
+only $10\%$ of items sits $1.7\%$ below one that is not. Every gap we quote is a difference
+between system-level averages, not a difference visible within any single answer. When we say a
+judge resolves $0.83\%$ of factual content, we mean it correctly orders two systems whose
+average factual accuracy over the evaluation set differs by that much---which is exactly the
+kind of margin real leaderboards report.
+
+\paragraph{Judges.} We evaluate 28 \emph{judge configurations}, each a (model, protocol) pair; when we say ``a
+judge'' below we mean a configuration, not a model. Eight models spanning a wide capability range
 (\texttt{gpt-4.1-nano}, \texttt{gpt-4o-mini}, \texttt{gpt-4.1-mini}, \texttt{gpt-4.1},
 \texttt{gpt-5-nano}, \texttt{gpt-5-mini}, \texttt{gpt-5.4-nano}, \texttt{gpt-5.4-mini})
 $\times$ three pointwise protocols (\textsc{direct} 1--10, \textsc{rubric}, \textsc{cot}),
@@ -467,9 +565,10 @@ near-ties only $-0.89$. The ordinal signal is robust.
 The failure is not ordinal but \emph{metric} (Table~\ref{tab:calib}).
 
 \begin{table}[t]
-\caption{Predicting a judge's resolution limit. Residual standard deviation is in units of
-true quality (fraction of an answer's factual content); lower is better. Gold-label
-predictors require an annotated meta-benchmark; $\dstyle$ requires none.}
+\caption{Predicting a judge's measured resolution limit $\rlim_J$. Residual standard deviation
+is in units of true quality; lower is better. The gold-label predictors require an annotated
+meta-benchmark; the bias-equivalent gap $\bgap_J$ requires no labels at all. $\rlim_J$ itself
+is measured with labels---the point is that $\bgap_J$ recovers it without them.}
 \label{tab:calib}
 \centering
 \begin{tabular}{llcc}
@@ -482,7 +581,7 @@ Accuracy, style-matched pairs         & gold & $0.684$ & $6.7$ \\
 Accuracy, clear-cut $+$ matched       & gold & $0.667$ & $6.9$ \\
 Accuracy, near-ties only              & gold & $0.698$ & $6.6$ \\
 \midrule
-$\dstyle$ (ours)                      & \textbf{none} & $\mathbf{0.927}$ & $\mathbf{3.3}$ \\
+$\bgap_J$, bias-equivalent gap (ours) & \textbf{none} & $\mathbf{0.927}$ & $\mathbf{3.3}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -496,7 +595,7 @@ in the units of the question (Figure~\ref{fig:calibration}).
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{../figures/f3_calibration.pdf}
-\caption{Recovering the resolution limit. \textbf{(a)} The label-free predictor $\dstyle$;
+\caption{Recovering the resolution limit. \textbf{(a)} The label-free predictor $\bgap$;
 dotted line is $y=x$. \textbf{(b)} Gold-label accuracy on a clear-cut, style-matched
 meta-benchmark. \textbf{Takeaway:} both are informative, but only the label-free predictor is
 calibrated well enough to convert into a decision about a specific leaderboard gap.}
@@ -579,7 +678,9 @@ certified against $0.584$ declined. \emph{Interpretation:} this is what the theo
 a population separated by less than the resolution limit, and it is the ordinary case rather
 than an adversarial one. With a noisy proxy and approximate quality-preservation the ceiling
 here is well below one, so we read it as establishing \emph{which regime} real comparisons
-occupy, not as a second validation of the certificate.
+occupy, not as a second validation of the certificate. Concretely: treat
+Sections~\ref{sec:limits}--\ref{sec:certificate} as the evidence for the method, and this
+section as evidence that the method is aimed at the right target.
 
 \section{Where the regress terminates}
 \label{sec:regress}
@@ -784,6 +885,39 @@ interesting question is what happens as the gap shrinks.}
 \end{figure}
 
 
+\section{Judge prompts}
+\label{app:prompts}
+
+All three pointwise protocols present the question and the answer and ask for a line
+\texttt{SCORE: <number>}. \textsc{direct}: ``Rate the overall quality of the following answer
+\dots\ Give a score from 1 (very poor) to 10 (excellent).'' \textsc{rubric}: the same, prefaced
+by ``Consider: factual accuracy---are the stated facts correct? completeness---does it cover
+what the question asks? clarity---is it well written?'' \textsc{cot}: ``First reason briefly (at
+most 80 words) about the answer's strengths and weaknesses. Then give an overall score\dots''
+The pairwise protocol shows two answers to the same question and asks for
+\texttt{VERDICT: A} or \texttt{VERDICT: B}; each pair is run in both orders against a fixed
+anchor system ($k{=}2$, \textsc{plain}), and a system's score is its win rate against that
+anchor. Unparseable outputs: $0$ of $30{,}600$ pointwise, $71$ of $9{,}520$ pairwise ($0.75\%$).
+
+\section{Rendering fidelity, and whether it matters}
+\label{app:fidelity}
+
+The renderer is an LLM, so faithfulness is checked, not assumed. Across all $1275$ cells,
+$7621/7650 = 99.6\%$ of claim slots assert the intended version. Aggregating to cells,
+\textbf{28 of 1275 ($2.2\%$) contain at least one slot where the renderer silently repaired a
+corrupted claim or dropped a true one}, so those cells' real quality differs from their intended
+$Q=(6-k)/6$ by one claim out of six. The failures are spread over $15$ of the $85$ items and
+across all three styles (\textsc{padded} 12, \textsc{plain} 11, \textsc{polished} 5).
+
+Since every analysis uses the intended quality as ground truth, we checked whether this matters
+by dropping all $15$ affected items and redoing the headline analysis on the remaining $70$.
+The label-free predictor's recovery of the measured resolution limit is unchanged:
+$\rho = 0.964$ and $R^2 = 0.942$ on the reduced set against $\rho = 0.932$ and $R^2 = 0.938$ on
+the full set, with the predictor's ordering of judges essentially identical across the two
+($\rho = 0.985$). The spread of resolution limits is $50\times$ rather than $60\times$, since
+excluding items removes some of the extremes. We report the full-set numbers throughout and
+regard the fidelity slippage as real but not load-bearing.
+
 \section{Restricted transformation family}
 \label{app:restricted}
 
@@ -802,7 +936,7 @@ in length ($99$ vs $130$ words) and differ essentially in formatting.
 Mean quality share of between-system variance & $0.935$ & $0.978$ \\
 Minimum quality share over judges             & $0.684$ & $0.711$ \\
 Spread of resolution limits across judges     & $60\times$ & $35\times$ \\
-$\rho(\dstyle,\ \text{limit})$ within family  & $0.936$ & $0.786$ \\
+$\rho(\bgap,\ \text{limit})$ within family  & $0.936$ & $0.786$ \\
 $R^2$ predicting the limit within family      & $0.927$ & $0.876$ \\
 Residual s.d. (\% of factual content)         & $3.3$ & $2.5$ \\
 \bottomrule
@@ -814,7 +948,7 @@ $35\times$ and the label-free estimator still recovers them far more precisely t
 gold-label predictor does ($2.5\%$ residual against $\sim$$6.3\%$; Table~\ref{tab:calib}).
 
 One cross-family result is worth stating because it could be mistaken for a failure. Using the
-restricted estimator $\dstyle^{\mathcal{T}'}$ to predict the \emph{full-family} limit gives
+restricted estimator $\bgap^{\mathcal{T}'}$ to predict the \emph{full-family} limit gives
 only $\rho=0.489$. This is the theory behaving as advertised rather than breaking:
 Theorem~\ref{thm:cert} is sound relative to the declared family, and a family that contains no
 verbosity contrast cannot bound a confound driven by verbosity. The estimator predicts exactly
