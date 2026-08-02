@@ -1,0 +1,5 @@
+# CLICS4 source data — 390 MB, re-fetch with src/setup_clics4.sh
+vendor/
+
+# API responses can be large; keep the summaries, not the raw dumps
+data/raw_responses/

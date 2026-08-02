@@ -1,0 +1,128 @@
+concept1	concept2	family_count	language_count	spanish_forms
+wife	woman	0	0	m.u.x.e.ɾ
+time	weather	0	0	tiempo, tjempo
+tie	tieuptether	0	0	ataɾ
+that	this	0	0	esto
+speak	talk	0	0	aβlaɾ
+soninlawofman	soninlawofwoman	0	0	yerno
+smooth	soft	0	0	suave
+sibling	youngersisterofwoman	0	0	hermana
+sibling	youngersisterofman	0	0	hermana
+sibling	youngerbrotherofwoman	0	0	hermano
+sibling	youngerbrotherofman	0	0	hermano
+shovel	spade	0	0	pala
+shoot	throw	0	0	tirar
+seize	take	0	0	coger
+rot	spoilbecomespoiled	0	0	puðɾiɾse
+roll	wrap	0	0	enrollar
+rich	tasty	0	0	ɾiko
+puton	setheavenlybodies	0	0	poneɾse
+pull	throw	0	0	t.i.ɾ.a.ɾ, tirar
+pull	shoot	0	0	tirar, tiɾaɾ
+pointed	sharp	0	0	aɣuðo
+plantsomething	sowseeds	0	0	sembrar
+pick	seize	0	0	koxeɾ
+people	village	0	0	pueblo, pweβlo
+oldersisterofwoman	sibling	0	0	hermana
+oldersisterofman	sibling	0	0	hermana
+olderbrotherofwoman	sibling	0	0	hermano
+olderbrotherofman	sibling	0	0	hermano
+motherinlawofman	motherinlawofwoman	0	0	suegra
+morning	tomorrow	0	0	maɲana
+maleperson	person	0	0	o.m.b.ɾ.e, ombɾe
+low	shallow	0	0	bajo
+love	want	0	0	keɾeɾ
+look	watch	0	0	miɾaɾ
+like	want	0	0	keɾeɾ
+like	love	0	0	keɾeɾ
+leave	split	0	0	partir
+leather	skin	0	0	piel
+language	tongue	0	0	lengua, leŋɡwa
+kill	murder	0	0	matar
+keep	preserve	0	0	conservar
+it	she	0	0	ella, ello, él
+if	yes	0	0	si, sí
+hold	own	0	0	tener
+high	tall	0	0	alto
+hideconceal	hideoneself	0	0	eskondeɾ
+heaven	sky	0	0	cielo
+he	she	0	0	ella, ello, él
+he	it	0	0	ella, ello, él
+hay	thatch	0	0	paja
+have	own	0	0	tener
+have	hold	0	0	tener
+guest	host	0	0	huésped
+grow	increase	0	0	kɾeθeɾ
+grief	pain	0	0	dolor
+green	unripe	0	0	verde
+gourd	pumpkin	0	0	calabaza
+goupascend	risemoveupwards	0	0	subir
+go	walk	0	0	andaɾ
+glue	tail	0	0	cola
+gather	pickup	0	0	recoger, ɾekoxeɾ
+fur	skin	0	0	piel, pjel
+fur	leather	0	0	piel
+food	meal	0	0	comida
+flow	run	0	0	correr, koreɾ
+floor	ground	0	0	swelo
+flesh	meat	0	0	carne
+flee	retreat	0	0	huir
+fineorthin	thinofshapeofobject	0	0	fino
+find	meet	0	0	encontrar, eŋkontɾaɾ
+field	plain	0	0	campo
+fence	near	0	0	cerca
+feel	regret	0	0	sentir
+feather	pen	0	0	pluma
+fatherinlawofman	fatherinlawofwoman	0	0	suegro
+famine	hunger	0	0	hambre
+ewe	sheep	0	0	oveja
+evening	night	0	0	noche, not͡ʃe
+earthsoil	floor	0	0	suelo
+dwelllivereside	life	0	0	vivir
+drive	leadguide	0	0	conducir
+drive	go	0	0	iɾ
+dribble	dripemitliquid	0	0	gotear
+dream	sleepstate	0	0	sweɲo
+down	shallow	0	0	bajo
+down	low	0	0	bajo
+dish	plate	0	0	plato
+dinnersupper	meal	0	0	comida
+dinnersupper	food	0	0	comida
+deceive	swindle	0	0	eŋɡaɲaɾ
+daughterinlawofman	daughterinlawofwoman	0	0	nuera
+count	tell	0	0	contar, kontaɾ
+cooksomething	prepare	0	0	pɾepaɾaɾ
+connect	join	0	0	uniɾ
+condemn	convict	0	0	condenar
+command	send	0	0	mandar
+comeback	turnsomething	0	0	bolβeɾ
+collar	neck	0	0	cuello, kweʝo
+clear	lightcolor	0	0	claro
+chopintopieces	cut	0	0	koɾtaɾ
+childdescendant	son	0	0	hijo
+childdescendant	daughter	0	0	hija
+cease	finish	0	0	akaβaɾ, terminar, teɾminaɾ
+cattle	livestock	0	0	ganado
+catch	take	0	0	coger
+catch	seize	0	0	coger, koxeɾ
+catch	pick	0	0	koxeɾ
+candle	sailcloth	0	0	vela
+calculate	tell	0	0	kontaɾ
+calculate	count	0	0	kontaɾ
+breast	chest	0	0	pet͡ʃo
+braid	braidverborweavebasket	0	0	trenzar
+blame	fault	0	0	culpa
+bird	fowl	0	0	ave
+bend	fold	0	0	doblar
+beloworunder	shallow	0	0	bajo
+beloworunder	low	0	0	bajo
+beloworunder	down	0	0	abajo, bajo, debajo
+believe	thinkbelieve	0	0	creer
+before	infrontof	0	0	delante
+beam	rafter	0	0	viga
+bealive	dwelllivereside	0	0	biβiɾ, vivir
+beable	power	0	0	poðeɾ
+bad	evil	0	0	malo
+baby	childyounghuman	0	0	niɲo
+arch	bow	0	0	arco
+afternoon	late	0	0	tarde
