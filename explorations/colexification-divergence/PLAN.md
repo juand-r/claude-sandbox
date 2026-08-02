@@ -90,19 +90,24 @@ abandoned (with a note).
 - [x] Clone CLICS4 into `vendor/`, gitignore it
 - [x] Audit the inherited claims against the data (above)
 - [x] Write this plan
-- [ ] Commit the starting state before changing anything
+- [x] Commit the starting state before changing anything
 
 ### Phase 1 — Rebuild the CLICS extraction so its output is trustworthy
-- [ ] Fix the concept join (normalise slug vs. name across the two tables)
-- [ ] Implement the homophone filter: within a language, flag pairs whose
-      `Segments` match but whose `Form` differs, since those are candidates for
-      accidental homophony rather than shared meaning
-- [ ] Add the corroboration test the design doc already proposed: a pair attested
-      in many unrelated families is unlikely to be coincidence, so global family
-      count is itself evidence against homophony
-- [ ] Generalise from hardcoded English/Spanish to an arbitrary language pair
-- [ ] Regenerate the asymmetry tables and compare against `inherited/data/*.tsv`,
-      recording what the fix changes
+- [x] Fix the concept join (normalise slug vs. name across the two tables)
+- [x] Implement the homophone filter, with the complication the plan missed: the
+      `Form` column is orthographic in some CLICS4 varieties and IPA in others,
+      so the naive spelling comparison passes every homophone
+- [x] Add the corroboration test the design doc proposed (global family count).
+      It turns out to subsume the homophone filter almost entirely — see
+      `notes/phase1-data-quality.md`
+- [x] Handle a third defect neither document anticipated: source cells listing
+      alternatives get split across concepts and manufacture colexifications
+      (Spanish appears to colexify HE with SHE)
+- [x] Generalise from hardcoded English/Spanish to an arbitrary language pair
+- [x] Regenerate the asymmetry tables; findings written up in
+      `notes/phase1-data-quality.md`
+- [x] Add `src/test_clics.py`, asserting against known CLICS4 facts so a
+      recurrence of the silent-join class of bug fails loudly
 
 ### Phase 2 — Test set
 Blocked on question 3 (corpus choice). Sub-steps depend on the answer.
@@ -134,4 +139,12 @@ Blocked on question 2 (what to measure).
 ## Log
 
 - **2 Aug 2026** — Set up, audited inherited work, found and confirmed the join
-  bug. Wrote this plan. Awaiting answers on the four questions above.
+  bug. Wrote this plan.
+- **2 Aug 2026** — Phase 1 done. Rebuilt the extraction on `src/clics.py`, fixed
+  the join, and found two further data-quality defects beyond the one the handoff
+  anticipated. Asymmetry tables regenerated for Spanish, Russian and Japanese
+  against English; all three of the predecessor's chosen concept pairs come out
+  at the top of their tables, and several strong new candidates appear
+  (Russian FINGER/TOE at 39 families, Japanese LOWER ARM/UPPER ARM at 199).
+  Full write-up in `notes/phase1-data-quality.md`. Awaiting answers on the four
+  questions above before starting Phase 2 or 3.

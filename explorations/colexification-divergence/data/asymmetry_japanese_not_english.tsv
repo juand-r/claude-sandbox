@@ -1,0 +1,266 @@
+concept1	concept2	families	languages	varieties	n_varieties_here	likely_homophone	alternatives_only	segments	forms
+HE	SHE	226	1395	1946	2	False	False	k a n o ʑ o | k a r e | k a ɾ e	kanojo,kare,kaɾe | kanojo,kare,kaɾe
+HE	IT	225	713	958	2	False	False	k a n o ʑ o | k a r e | k a ɾ e	kanojo,kare,kaɾe | kanojo,kare,kaɾe
+IT	SHE	225	711	954	2	False	False	k a n o ʑ o | k a r e | k a ɾ e	kanojo,kare,kaɾe | kanojo,kare,kaɾe
+HIDE (CONCEAL)	HIDE (ONESELF)	215	1072	1275	2	False	False	k a k ɯ s ɯ	kakɯsɯ,käkɯsɯ | kakɯsɯ,käkɯsɯ
+LOWER ARM	UPPER ARM	199	217	217	1	None	False	ɯ d e	ɯde | ɯde
+FLESH	MEAT	105	1159	1560	1	False	False	n i k ɯ	niku | niku
+FOOT	LEG	100	993	1365	2	False	False	a ɕ i	ashi,äɕi | ashi,äɕi
+DAY (NOT NIGHT)	SUN	68	202	290	2	None	False	h i	hi | hi
+CLAW	FINGERNAIL	65	392	523	1	None	False	ts u m e	tsume | tsume
+MONTH	MOON	60	319	430	2	False	False	ts u k i | ts ɯ kʲ i	tsuki,t͡sɯkʲi | tsuki,t͡sɯkʲi
+BELOW OR UNDER	DOWN	60	194	234	1	False	False	ɕ i t a	shita | shita
+FOOT	LOWER LEG	60	60	61	1	None	False	a ɕ i	aɕi | aɕi
+TREE	WOOD	58	256	319	2	None	False	k i | kʲ i	ki,kʲi | ki,kʲi
+HEAR	LISTEN	53	105	110	2	False	False	k i k ɯ | kʲ i k ɯ	kiku,kʲikɯ | kiku,kʲikɯ
+SON-IN-LAW (OF MAN)	SON-IN-LAW (OF WOMAN)	52	306	429	1	None	False	m u k o	muko | muko
+MALE (OF PERSON)	MALE PERSON	52	134	149	1	None	True	d a n s e i | o t o k o	dansei,otoko | dansei,otoko
+DAUGHTER-IN-LAW (OF MAN)	DAUGHTER-IN-LAW (OF WOMAN)	50	161	194	1	False	False	j o m e	yome | yome
+LANGUAGE	WORD	47	102	116	1	None	True	k o t o b a	kotoba | kotoba
+LEATHER	SKIN	45	168	206	1	None	True	k a w a	kawa | kawa
+FEATHER	WING	45	128	181	1	False	False	h a n e̞	häne̞ | häne̞
+CLIMB	GO UP (ASCEND)	45	126	138	1	False	False	n o b o r ɯ	noboru | noboru
+FATHER-IN-LAW (OF MAN)	FATHER-IN-LAW (OF WOMAN)	43	124	148	1	False	False	ɕ ɯː t o	shūto | shūto
+DISH	PLATE	43	108	123	1	None	False	s a r a	sara | sara
+MOTHER-IN-LAW (OF MAN)	MOTHER-IN-LAW (OF WOMAN)	41	122	147	1	False	False	ɕ ɯː t o m e	shūtome | shūtome
+FEMALE (OF PERSON)	WOMAN	41	93	97	1	False	True	o n n a | ʑ o s e i	josei,onna | josei,onna
+HIGH	TALL	38	132	143	1	None	False	t a k a i	takai | takai
+NAPE (OF NECK)	NECK	38	73	81	1	None	False	k ɯ bʲ i	kɯbʲi | kɯbʲi
+NARROW	THIN (OF SHAPE OF OBJECT)	38	57	72	1	None	True	h o s o i	hosoi | hosoi
+LOOK	SEE	36	161	194	1	False	False	m i r ɯ	miru | miru
+BREAST	UDDER	36	78	80	1	False	True	o pː a i	oppai | oppai
+LIE DOWN	SLEEP	35	200	252	1	False	True	n e r ɯ	neru | neru
+BEFORE	IN FRONT OF	34	95	132	2	None	False	m a e	mae | mae
+FAT (ORGANIC SUBSTANCE)	OIL (ORGANIC SUBSTANCE)	34	86	90	1	None	True	a b u r a	abura | abura
+CHIN	JAW	33	56	62	2	False	False	a g o | a g o̞	ago,äɡo̞ | ago,äɡo̞
+LEARN	STUDY	32	90	99	1	False	True	b e n k j oː | m a n a b ɯ	benkyō,manabu | benkyō,manabu
+AGE	YEAR	28	51	53	2	False	False	t o ɕ i | t o̞ ɕ i	toshi,to̞ɕi | toshi,to̞ɕi
+IT	THAT	27	60	76	1	None	True	s o r e	sore | sore
+BELOW OR UNDER	LOW	27	53	63	1	False	False	ɕ i t a + nʲ i	ɕitä_nʲi | ɕitä_nʲi
+HOLD	TAKE	26	41	45	1	False	False	t o r ɯ	toru | toru
+KEEP	PRESERVE	25	95	123	1	False	True	t a m o ts ɯ	tamotsu | tamotsu
+OAR	PADDLE	25	87	121	1	None	True	k a i	kai | kai
+BOAT	SHIP	25	43	46	1	False	False	ɸ u n e	fune | fune
+DIVIDE	SEPARATE	24	50	53	1	False	False	w a k e r ɯ	wakeru | wakeru
+POTATO	SWEET POTATO	24	46	50	1	None	True	i m o	imo | imo
+BOWL	CUP	21	36	45	1	False	True	tɕ a w a n	chawan | chawan
+DIVIDE	SHARE	19	81	96	1	False	False	w a k e r ɯ	wakeru | wakeru
+BAKE	FRY	19	76	92	2	False	False	j a k ɯ	jäkɯ,yaku | jäkɯ,yaku
+HOUR	TIME	19	23	23	1	False	False	ʑ i k a n	jikan | jikan
+CATCH	TRAP (CATCH)	18	57	73	1	False	False	t o r a e r ɯ	toraeru | toraeru
+PAN	POT	18	52	60	1	None	False	n a b e	nabe | nabe
+BAKE	ROAST (SOMETHING)	17	62	73	1	False	False	j a k ɯ	yaku | yaku
+BITE	CHEW	17	45	49	1	False	False	k a m ɯ	kamu | kamu
+CARRY IN HAND	HOLD	17	31	32	1	False	False	m o ts ɯ	motsu | motsu
+BESIDE	SIDE	17	25	25	1	False	False	j o k o	yoko | yoko
+BAD	EVIL	15	558	666	1	False	False	w a ɾ ɯ i	wäɾɯi | wäɾɯi
+CLAY	EARTH (SOIL)	15	35	42	1	False	False	ts u tɕ i	tsuchi | tsuchi
+BLAME	FAULT	15	27	28	1	None	True	s e k i n i n	sekinin | sekinin
+SHOOT	STRIKE	15	27	28	1	False	False	ɯ ts ɯ	utsu | utsu
+GRANDMOTHER	OLD WOMAN	15	26	26	1	False	True	o b aː s a n	obāsan | obāsan
+SPEAK	TALK	14	58	58	1	False	False	h a n a s ɯ	hänäsɯ | hänäsɯ
+CLEVER	WISE	14	56	67	1	False	True	k a ɕ i k o i | s oː m e i	kashikoi,sōmei | kashikoi,sōmei
+DRIVE	GO	14	38	38	1	None	False	i k ɯ	ikɯ | ikɯ
+BREAK (CLEAVE)	DESTROY	14	32	35	1	False	False	k o w a s ɯ	kowasu | kowasu
+LAND	MAINLAND	14	21	21	1	False	True	t a i r i k ɯ	tairiku | tairiku
+HEART	SOUL	13	51	53	1	None	True	k o k o r o	kokoro | kokoro
+BRIGHT	LIGHT (COLOR)	13	49	61	1	None	False	a k a r u i	akarui | akarui
+PULL	STRETCH	13	47	61	1	False	True	h i pː a r ɯ	hipparu | hipparu
+FLY (MOVE THROUGH AIR)	JUMP	13	40	44	2	False	False	t o b ɯ | t o̞ b ɯ	tobu,to̞bɯ | tobu,to̞bɯ
+DECEIVE	SWINDLE	13	37	37	1	False	False	d a m a s ɯ	dämäsɯ | dämäsɯ
+CULTIVATE	PLOUGH	13	29	31	1	False	False	t a g a j a s ɯ	tagayasu | tagayasu
+DAY (24 HOURS)	SUN	13	24	25	1	None	True	h i	hi | hi
+DRAW MILK	SQUEEZE	13	24	24	1	False	False	ɕ i b o r ɯ	shiboru | shiboru
+PART	PIECE	13	22	24	1	None	False	b ɯ b ɯ̃ ɴ	bɯbɯ̃ɴ | bɯbɯ̃ɴ
+FEEL	TOUCH	13	21	21	1	False	True	s a w a r ɯ	sawaru | sawaru
+CATCH	GET	13	20	20	1	None	False	ɯ kʲ e̞ ɾ ɯ	ɯkʲe̞ɾɯ | ɯkʲe̞ɾɯ
+HARE	RABBIT	13	16	16	1	False	False	ɯ s a g i	usagi | usagi
+EAR	EARLOBE	12	20	20	1	False	True	ʑ i d a	jida | jida
+COME BACK	RETURN HOME	11	55	60	1	False	False	k a e r ɯ	kaeru | kaeru
+SEPARATE	SHARE	11	23	24	1	False	False	w a k e r ɯ	wakeru | wakeru
+COOKED	COOK (SOMETHING)	11	22	22	1	False	True	h i + o + t oː s ɯ | tɕ oː r i	chōri,hi_o_tōsu | chōri,hi_o_tōsu
+MIND	SOUL	11	19	20	1	False	True	k o k o r o | s e i ɕ i n	kokoro,seishin | kokoro,seishin
+IN	INSIDE	11	18	18	1	None	False	n a k a	naka | naka
+DISEASE	SICK	11	17	18	1	False	False	b j oː k i	byōki | byōki
+GRANDFATHER	OLD MAN	11	16	16	1	False	True	o ʑ iː s a n	ojiisan | ojiisan
+BOLT (OF LIGHTNING)	THUNDER	11	15	15	1	None	True	k a m i n a r i	kaminari | kaminari
+HOST	MASTER	10	52	67	1	False	True	a r u ʑ i | ɕ u ʑ i n	aruji,shujin | aruji,shujin
+BREAK (BREAKING)	DESTROY	10	24	25	1	False	False	k o w a s ɯ	kowasu | kowasu
+HAVE	HOLD	10	13	13	1	False	True	m o ts ɯ	motsu | motsu
+BEAUTIFUL	CLEAN	10	12	15	1	None	True	k i r e i	kirei | kirei
+INSECT	WORM	9	26	27	1	False	False	m u ɕ i	mushi | mushi
+BUTTOCKS	HIP	9	24	26	1	False	True	d e n b ɯ | ɕ i r i	denbu,shiri | denbu,shiri
+NASAL MUCUS (SNOT)	NOSE	9	21	25	1	None	False	h a n a	hana | hana
+EDGE	END (OF SPACE)	9	19	21	1	False	True	h a ɕ i	hashi | hashi
+ADJUDICATE	JUDGMENT	9	15	16	1	False	True	h a n k e ts ɯ	hanketsu | hanketsu
+DRESS UP	PUT ON	9	14	14	1	None	False	kʲ i ɾ ɯ	kʲiɾɯ | kʲiɾɯ
+ABOVE	UP	9	11	11	1	False	False	ɯ e	ue | ue
+AND	WITH	8	21	21	1	None	True	t o	to | to
+PRESS	PUSH	8	18	18	1	False	False	o s ɯ	osu | osu
+RUB	SCRAPE	8	17	17	1	False	False	k o s u r ɯ	kosuru | kosuru
+SPLIT	TEAR (SHRED)	8	17	20	1	False	True	s a k ɯ	saku | saku
+SMOKE (INHALE)	SUCK	8	14	14	1	False	False	s ɯ ɯ	suu | suu
+BEAT	SHOOT	8	10	11	1	False	False	ɯ ts ɯ	utsu | utsu
+BURN (SOMETHING)	FRY	8	9	9	1	False	False	j a k ɯ	jäkɯ | jäkɯ
+SEE	WATCH	7	27	27	1	None	False	mʲ i ɾ ɯ	mʲiɾɯ | mʲiɾɯ
+CARVE	CUT (WITH AXE)	7	22	27	1	False	False	k i z a m ɯ	kizamu | kizamu
+CARVE	CHOP (INTO PIECES)	7	22	27	1	False	False	k i z a m ɯ	kizamu | kizamu
+DITCH	FURROW	7	18	20	1	None	False	m i z o	mizo | mizo
+EARLY	FAST	7	16	17	1	False	False	h a j a i	hayai | hayai
+DO	GIVE	7	14	24	1	False	True	j a r ɯ	yaru | yaru
+PRAY	WORSHIP	7	11	11	1	False	True	o g a m ɯ	ogamu | ogamu
+AT	WITH	7	9	9	1	None	True	d e	de | de
+BLUE	UNRIPE	7	8	8	1	None	False	a o i	aoi | aoi
+BRING	CARRY IN HAND	7	8	8	1	False	False	m o ts ɯ	motsu | motsu
+GRANDMOTHER	PATERNAL AUNT (FATHER'S SISTER)	7	8	9	1	False	True	o̞ b aː s ã ɴ	o̞bäːsã̈ɴ | o̞bäːsã̈ɴ
+GRANDMOTHER	MATERNAL AUNT (MOTHER'S SISTER)	7	8	9	1	False	True	o̞ b aː s ã ɴ	o̞bäːsã̈ɴ | o̞bäːsã̈ɴ
+HEART	MIND	6	14	14	1	None	True	k o k o r o	kokoro | kokoro
+CITIZEN	PEOPLE	6	12	13	1	None	True	k o k u m i n	kokumin | kokumin
+FOLLOW	OBEY	6	6	6	1	False	True	ɕ i t a g a ɯ	shitagau | shitagau
+BARLEY	WHEAT	5	16	19	1	None	True	m u g i	mugi | mugi
+HUSBAND	MASTER	5	9	10	1	False	True	ɕ u ʑ i n	shujin | shujin
+LATE	SLOW	5	8	10	1	None	False	o s o i	osoi | osoi
+JOIN	TIE	5	7	7	1	False	True	m u s u b ɯ	musubu | musubu
+SET (HEAVENLY BODIES)	SINK (DESCEND)	5	7	7	1	None	False	ɕ i z ɯ m ɯ	ɕizɯmɯ | ɕizɯmɯ
+BAKE	BURN (SOMETHING)	5	6	6	1	False	False	j a k ɯ	jäkɯ | jäkɯ
+GARDEN	YARD	5	6	6	1	None	False	n i w a	niwa | niwa
+BRING	HOLD	5	5	5	1	False	False	m o ts ɯ	motsu | motsu
+BREATHE	SUCK	4	6	7	2	False	False	s ɯ ɯ | s ɯː	suu,sɯɯ | suu,sɯɯ
+LEATHER	SKIN (OF FRUIT)	4	6	6	1	False	False	k a w a	käwä | käwä
+ASK (INQUIRE)	HEAR	4	5	8	2	False	False	k i k ɯ | kʲ i k ɯ	kiku,kʲikɯ | kiku,kʲikɯ
+CARRY IN HAND	HAVE	4	4	4	1	False	False	m o ts ɯ	motsu | motsu
+ASK (INQUIRE)	LISTEN	3	29	40	2	False	False	k i k ɯ | kʲ i k ɯ	kiku,kʲikɯ | kiku,kʲikɯ
+GRIND	PULL	3	25	39	1	False	True	h i k ɯ	hiku | hiku
+COMMON COLD (DISEASE)	WIND	3	16	16	1	None	False	k a z e	kaze | kaze
+CUT	PUT ON	3	14	18	2	False	False	k i r ɯ | kʲ i ɾ ɯ	kiru,kʲiɾɯ | kiru,kʲiɾɯ
+MEAL	RICE	3	11	11	1	None	True	g o h a n	gohan | gohan
+DRINK	SWALLOW	3	9	11	1	False	False	n o m ɯ	nomu | nomu
+HOT	THICK	3	9	12	3	False	False	a ts u i | a ts ɯ i	atsui,atsɯi,ät͡sɯi | atsui,atsɯi,ät͡sɯi
+FAULT	SIN	3	7	7	1	False	False	ts ɯ mʲ i	t͡sɯmʲi | t͡sɯmʲi
+COPULATE	SLEEP	3	4	4	1	False	True	n e r ɯ	neru | neru
+ARRIVE	FOLLOW	3	3	3	1	False	True	ts u k ɯ	tsuku | tsuku
+BORROW	OWE	3	3	3	1	False	False	k a r i r ɯ	kariru | kariru
+CARRY UNDER ARM	EMBRACE	3	3	3	1	False	False	d a k ɯ	daku | daku
+CARVE	DIG	3	3	3	1	False	False	h o r ɯ	horu | horu
+FOLLOW	PUSH	3	3	3	1	False	True	ts u k ɯ	tsuku | tsuku
+HOOK	NEEDLE (FOR SEWING)	3	3	3	1	False	False	h a ɾ i	häɾi | häɾi
+JUMP	SPLASH	3	3	3	1	False	True	h a n e r ɯ	haneru | haneru
+LEAF	TOOTH	2	19	24	3	False	False	h a	ha,hä | ha,hä
+DAY (NOT NIGHT)	TWO	2	5	5	1	None	False	nʲ i	nʲi | nʲi
+HOST	HUSBAND	2	5	6	1	False	True	ɕ u ʑ i n	shujin | shujin
+DAY (NOT NIGHT)	FIRE	2	3	4	2	None	False	h i	hi | hi
+ARRIVE	STING	2	2	2	1	False	False	ts ɯ k ɯ	t͡sɯkɯ | t͡sɯkɯ
+ARRIVE	PUSH	2	2	2	1	False	True	ts u k ɯ	tsuku | tsuku
+AT	TWO	2	2	2	1	None	True	n i	ni | ni
+BARLEY	OAT	2	2	2	1	None	True	m u g i	mugi | mugi
+BECOME	SOUND (OF INSTRUMENT OR VOICE)	2	2	2	1	False	False	n a ɾ ɯ	näɾɯ | näɾɯ
+BEGET	EARN	2	2	2	1	False	False	m oː k e r ɯ	mōkeru | mōkeru
+CHANGE	COME BACK	2	2	3	2	False	False	k a e r ɯ | k a e̞ ɾ ɯ	kaeru,käe̞ɾɯ | kaeru,käe̞ɾɯ
+CHOOSE	WASH	2	2	2	1	False	True	s e n t a k ɯ	sentaku | sentaku
+CUT	DRESS UP	2	2	2	1	None	False	kʲ i ɾ ɯ	kʲiɾɯ | kʲiɾɯ
+DONATE	SEND	2	2	2	1	None	False	o̞ k ɯ ɾ ɯ	o̞kɯɾɯ | o̞kɯɾɯ
+EXPENSIVE	TALL	2	2	2	1	None	False	t a k a i	takai | takai
+EXPENSIVE	HIGH	2	2	2	1	None	False	t a k a i	takai | takai
+FIRE	SUN	2	2	3	2	None	False	h i	hi | hi
+GUN	TEN	2	2	2	1	False	True	ʑ ɯː	jū | jū
+INTENTION	TREE	2	2	2	1	None	False	k i	ki | ki
+MIX	SCRATCH	2	2	2	1	False	False	k a k ɯ	kaku | kaku
+OAT	WHEAT	2	2	2	1	None	True	m u g i	mugi | mugi
+SWORD	TENDON	2	2	2	1	None	True	k e n	ken | ken
+FLOWER	NOSE	1	19	27	3	False	False	h a n a	hana,hänä | hana,hänä
+BELOW OR UNDER	TONGUE	1	7	8	2	False	False	ɕ i t a	shita,ɕita | shita,ɕita
+PUS	SEA	1	6	7	1	False	False	ɯ m i	umi | umi
+BOTTOM	THERE	1	4	5	1	None	False	s o k o	soko | soko
+CLOUD	SPIDER	1	2	3	2	None	False	k u m o | k ɯ m o̞	kumo,kɯmo̞ | kumo,kɯmo̞
+DOWN	TONGUE	1	2	2	1	False	False	ɕ i t a	shita | shita
+FLOWER	NASAL MUCUS (SNOT)	1	2	2	1	None	False	h a n a	hana | hana
+ADMIT	MERCHANT	1	1	1	1	False	False	ɕ oː n i n	shōnin | shōnin
+ADMIT	WITNESS	1	1	1	1	False	True	ɕ oː n i n	shōnin | shōnin
+AFFAIR	TENDON	1	1	1	1	False	False	kʲ ẽ̞ ɴ	kʲẽ̞ɴ | kʲẽ̞ɴ
+AGAIN	OR	1	1	1	1	None	True	m a t a	mata | mata
+AGE	TOWN	1	1	2	2	False	True	t o ɕ i | t o̞ ɕ i	toshi,to̞ɕi | toshi,to̞ɕi
+ANCHOR	ANGER	1	1	1	1	None	False	i k a r i	ikari | ikari
+AND	DOOR	1	1	1	1	None	True	t o̞	to̞ | to̞
+AND	ARROW	1	1	1	1	False	False	j a	ya | ya
+ARSON	BEEHIVE	1	1	1	1	False	False	h oː k a	hōka | hōka
+ASH	YES	1	1	1	1	None	False	h a i	hai | hai
+AWL	FOG	1	1	1	1	None	False	k i r i	kiri | kiri
+BAD LUCK	TODAY	1	1	1	1	False	False	k j oː	kyō | kyō
+BALL	NINE	1	1	1	1	False	True	k j ɯː	kyū | kyū
+BALL	BOWL	1	1	1	1	False	True	b oː r ɯ	bōru | bōru
+BEAM	NEEDLE (FOR SEWING)	1	1	1	1	None	False	h a r i	hari | hari
+BECAUSE	EMPTY	1	1	2	2	None	False	k a r a | k a ɾ a	kara,kaɾa | kara,kaɾa
+BITE	STAB TO DEATH	1	1	1	1	False	False	s a s ɯ	sasu | sasu
+BLOW (OF WIND)	WIPE	1	1	2	2	False	False	f ɯ k ɯ | ɸ u k ɯ	fuku,fɯkɯ | fuku,fɯkɯ
+BLOW (OF WIND)	CLOTHES	1	1	1	1	False	False	ɸ u k ɯ	fuku | fuku
+BLOW (WITH MOUTH)	WIPE	1	1	1	1	None	False	f ɯ k ɯ	fɯkɯ | fɯkɯ
+BOWL	EIGHT	1	1	1	1	False	True	h a tɕ i	hachi | hachi
+BOWL	WASP	1	1	1	1	False	False	h a tɕ i	hachi | hachi
+BREAST	FATHER	1	1	1	1	False	True	tɕ i tɕ i	chichi | chichi
+BREATHE	SMOKE (INHALE)	1	1	1	1	False	True	s ɯ ɯ	suu | suu
+BRIDGE	END (OF SPACE)	1	1	2	2	False	False	h a ɕ i	hashi,häɕi | hashi,häɕi
+BRIDGE	EDGE	1	1	1	1	False	False	h a ɕ i	hashi | hashi
+BRING	HAVE	1	1	1	1	False	False	m o ts ɯ	motsu | motsu
+BUTTERFLY	INTESTINES	1	1	1	1	False	False	tɕ oː	chō | chō
+CHANGE	FROG	1	1	1	1	False	False	k a e r ɯ	kaeru | kaeru
+CHANGE	RETURN HOME	1	1	1	1	False	False	k a e r ɯ	kaeru | kaeru
+CHARCOAL	CORNER	1	1	1	1	None	True	s u m i	sumi | sumi
+CHISEL	FLEA	1	1	1	1	None	False	n o m i	nomi | nomi
+CLAW	SHEARS	1	1	1	1	None	False	h a s a m i	hasami | hasami
+CLAY	HAMMER	1	1	1	1	False	True	ts u tɕ i	tsuchi | tsuchi
+CLOTHES	WIPE	1	1	1	1	False	False	ɸ u k ɯ	fuku | fuku
+COME BACK	FROG	1	1	1	1	False	False	k a e r ɯ	kaeru | kaeru
+COOK (SOMETHING)	SIMILAR	1	1	1	1	False	False	n i r ɯ	niru | niru
+COPPER	HOW	1	1	1	1	False	False	d oː	dō | dō
+COPULATE	LIE DOWN	1	1	1	1	False	True	n e r ɯ	neru | neru
+CUSTOM	WEEK	1	1	1	1	False	False	ɕ ɯː k a n	shūkan | shūkan
+DAY (24 HOURS)	FIRE	1	1	1	1	None	False	h i	hi | hi
+DEITY	HAIR	1	1	1	1	False	False	k a mʲ i	kämʲi | kämʲi
+DEITY	PAPER	1	1	1	1	None	False	k a m i	kami | kami
+DEITY	HAIR (HEAD)	1	1	1	1	None	False	k a m i	kami | kami
+DIE	FAT (ORGANIC SUBSTANCE)	1	1	1	1	False	True	ɕ i b oː	shibō | shibō
+EARTH (SOIL)	HAMMER	1	1	1	1	False	False	ts u tɕ i	tsuchi | tsuchi
+EASY	READY	1	1	1	1	False	True	j oː i	yōi | yōi
+EIGHT	WASP	1	1	1	1	False	False	h a tɕ i	hachi | hachi
+ELEPHANT	STATUE	1	1	1	1	False	False	z oː	zō | zō
+FENCE	TEAR (SHRED)	1	1	1	1	False	True	s a k ɯ	saku | saku
+FENCE	SPLIT	1	1	1	1	False	True	s a k ɯ	saku | saku
+FIVE	WORD	1	1	1	1	None	True	g o	go | go
+FLOWING BODY OF WATER	LEATHER	1	1	1	1	None	False	k a w a	kawa | kawa
+FLOWING BODY OF WATER	SKIN	1	1	1	1	None	False	k a w a	kawa | kawa
+FOAM	MILLET	1	1	1	1	None	False	a w a	awa | awa
+FROG	RETURN HOME	1	1	1	1	False	False	k a e r ɯ	kaeru | kaeru
+GLUE	SPRINGTIME	1	1	1	1	False	False	h a ɾ ɯ	häɾɯ | häɾɯ
+HAIR (HEAD)	PAPER	1	1	1	1	None	False	k a m i	kami | kami
+HOOK	KEY	1	1	1	1	None	False	k a g i	kagi | kagi
+HUNT	MOW	1	1	1	1	False	False	k a r ɯ	karu | karu
+INTENTION	THREAD	1	1	1	1	None	False	i t o	ito | ito
+INTENTION	WOOD	1	1	1	1	None	True	k i	ki | ki
+KNOW (SOMETHING)	SOUP	1	1	1	1	False	False	ɕ i r ɯ	shiru | shiru
+LAGOON	SHOULDER	1	1	1	1	None	False	k a t a	kata | kata
+LEATHER	RIVER	1	1	1	1	False	False	k a w a	käwä | käwä
+LEAVE	MONKEY	1	1	1	1	False	False	s a r ɯ	saru | saru
+LET GO OR SET FREE	SPEAK	1	1	1	1	False	False	h a n a s ɯ	hanasu | hanasu
+LINE	TENDON	1	1	1	1	False	True	s u ʑ i	suji | suji
+LINE	THOUSAND	1	1	2	2	False	False	s e n | s ẽ̞ ɴ	sen,sẽ̞ɴ | sen,sẽ̞ɴ
+MALE (OF ANIMAL)	PUSH	1	1	1	1	False	False	o s ɯ	osu | osu
+MALE (OF ANIMAL)	PRESS	1	1	1	1	False	False	o s ɯ	osu | osu
+MARKET	ONE	1	1	1	1	False	False	i tɕ i	ichi | ichi
+MERCHANT	WITNESS	1	1	1	1	False	False	ɕ oː n i n	shōnin | shōnin
+MIX	WRITE	1	1	1	1	False	False	k a k ɯ	kaku | kaku
+MOSQUITO	OR	1	1	1	1	None	False	k a	ka | ka
+NEAR	OATH	1	1	1	1	False	False	tɕ i k a i	chikai | chikai
+NIGHT	TWIST	1	1	1	1	False	False	j o r ɯ	yoru | yoru
+OAR	SHELL	1	1	1	1	None	False	k a i	kai | kai
+OATH	TEACHER	1	1	1	1	None	True	s e n s e i	sensei | sensei
+OCEAN	SUN	1	1	1	1	False	True	t a i j oː	taiyō | taiyō
+PADDLE	SHELL	1	1	1	1	None	False	k a i	kai | kai
+PINE	WAIT (FOR)	1	1	1	1	False	False	m a ts ɯ	mät͡sɯ | mät͡sɯ
+RIVER	SKIN (OF FRUIT)	1	1	1	1	False	False	k a w a	käwä | käwä
+ROUGH (OF SEA)	WET	1	1	1	1	False	False	ɕ i k e r ɯ	shikeru | shikeru
+SCRATCH	WRITE	1	1	1	1	False	False	k a k ɯ	kaku | kaku
+STEAL	TAKE	1	1	1	1	None	False	t o̞ ɾ ɯ	to̞ɾɯ | to̞ɾɯ
+SWEEP	VOMIT	1	1	1	1	False	True	h a k ɯ	haku | haku
+TEN	TOWER	1	1	1	1	False	False	t oː	tō | tō
+THOU	YOLK	1	1	1	1	None	False	k i m i	kimi | kimi
+TOWN	YEAR	1	1	2	2	False	False	t o ɕ i | t o̞ ɕ i	toshi,to̞ɕi | toshi,to̞ɕi

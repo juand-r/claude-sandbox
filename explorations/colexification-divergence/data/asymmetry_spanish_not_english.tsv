@@ -1,0 +1,128 @@
+concept1	concept2	families	languages	varieties	n_varieties_here	likely_homophone	alternatives_only	segments	forms
+HE	SHE	226	1395	1946	1	False	True	e ʎ a | e ʎ o | ɛ l	ella,ello,él | ella,ello,él
+HE	IT	225	713	958	1	False	True	e ʎ a | e ʎ o | ɛ l	ella,ello,él | ella,ello,él
+IT	SHE	225	711	954	1	False	True	e ʎ a | e ʎ o | ɛ l	ella,ello,él | ella,ello,él
+HIDE (CONCEAL)	HIDE (ONESELF)	215	1072	1275	1	None	False	e s k o n d e ɾ	eskondeɾ | eskondeɾ
+FLESH	MEAT	105	1159	1560	1	False	False	k a ɾ n e	carne | carne
+BELOW OR UNDER	DOWN	60	194	234	1	False	True	a β a x o | b a x o | d e β a x o	abajo,bajo,debajo | abajo,bajo,debajo
+WIFE	WOMAN	59	275	379	1	None	False	m u x e ɾ	m.u.x.e.ɾ | m.u.x.e.ɾ
+MALE PERSON	PERSON	55	181	216	2	None	False	o m b ɾ e	o.m.b.ɾ.e,ombɾe | o.m.b.ɾ.e,ombɾe
+SON-IN-LAW (OF MAN)	SON-IN-LAW (OF WOMAN)	52	306	429	1	False	False	ɟ ʝ ɛ ɾ n o	yerno | yerno
+DAUGHTER-IN-LAW (OF MAN)	DAUGHTER-IN-LAW (OF WOMAN)	50	161	194	1	False	False	n w ɛ ɾ a	nuera | nuera
+LEATHER	SKIN	45	168	206	1	False	True	p j ɛ l	piel | piel
+FATHER-IN-LAW (OF MAN)	FATHER-IN-LAW (OF WOMAN)	43	124	148	1	False	False	s w e ɣ ɾ o	suegro | suegro
+DISH	PLATE	43	108	123	1	None	False	p l a t o	plato | plato
+POINTED	SHARP	42	110	132	1	None	True	a ɣ u ð o	aɣuðo | aɣuðo
+MOTHER-IN-LAW (OF MAN)	MOTHER-IN-LAW (OF WOMAN)	41	122	147	1	False	False	s w e ɣ ɾ a	suegra | suegra
+FOOD	MEAL	40	86	97	1	False	False	k o m i ð a	comida | comida
+HIGH	TALL	38	132	143	1	None	False	a l t o	alto | alto
+THAT	THIS	38	74	77	1	None	False	e s t o	esto | esto
+GO	WALK	36	177	235	1	None	False	a n d a ɾ	andaɾ | andaɾ
+CATCH	SEIZE	36	121	153	2	False	False	k o x e ɾ | k o x ɛ ɾ	coger,koxeɾ | coger,koxeɾ
+BEFORE	IN FRONT OF	34	95	132	1	None	True	d e l a n t e	delante | delante
+HEAVEN	SKY	34	84	88	1	False	False	θ j e l o	cielo | cielo
+FUR	SKIN	33	94	107	2	False	False	p j e l | p j ɛ l	piel,pjel | piel,pjel
+BABY	CHILD (YOUNG HUMAN)	33	90	101	1	None	False	n i ɲ o	niɲo | niɲo
+EARTH (SOIL)	FLOOR	32	45	45	1	False	False	s w e l o	suelo | suelo
+FUR	LEATHER	30	75	81	1	False	False	p j ɛ l	piel | piel
+SEIZE	TAKE	30	55	60	1	False	True	k o x ɛ ɾ	coger | coger
+SHOVEL	SPADE	29	93	107	1	None	False	p a l a	pala | pala
+HAVE	OWN	29	78	83	1	False	False	t e n ɛ ɾ	tener | tener
+FIND	MEET	29	46	52	2	False	False	e n k o n t ɾ a ɾ | e ŋ k o n t ɾ a ɾ	encontrar,eŋkontɾaɾ | encontrar,eŋkontɾaɾ
+BE ALIVE	DWELL (LIVE, RESIDE)	28	98	123	2	False	True	b i β i ɾ	biβiɾ,vivir | biβiɾ,vivir
+CATCH	TAKE	28	54	56	1	False	False	k o x ɛ ɾ	coger | coger
+GO UP (ASCEND)	RISE (MOVE UPWARDS)	27	60	64	1	False	False	s u β i ɾ	subir | subir
+BELOW OR UNDER	LOW	27	53	63	1	False	False	b a x o	bajo | bajo
+CHILD (DESCENDANT)	SON	27	42	42	1	False	False	i x o	hijo | hijo
+PLANT (SOMETHING)	SOW SEEDS	26	48	51	1	False	True	s e m b ɾ a ɾ	sembrar | sembrar
+KEEP	PRESERVE	25	95	123	1	False	True	k o n s ɛ ɾ β a ɾ	conservar | conservar
+BREAST	CHEST	25	66	71	1	False	False	p e tʃ o	pet͡ʃo | pet͡ʃo
+SIBLING	YOUNGER BROTHER (OF WOMAN)	24	66	81	1	False	True	ɛ ɾ m a n o	hermano | hermano
+SMOOTH	SOFT	24	37	46	1	False	False	s w a β e	suave | suave
+OLDER BROTHER (OF MAN)	SIBLING	23	65	80	1	False	True	ɛ ɾ m a n o	hermano | hermano
+OLDER BROTHER (OF WOMAN)	SIBLING	23	65	80	1	False	True	ɛ ɾ m a n o	hermano | hermano
+SIBLING	YOUNGER BROTHER (OF MAN)	23	65	80	1	False	True	ɛ ɾ m a n o	hermano | hermano
+SHOOT	THROW	23	55	69	1	False	True	t i ɾ a ɾ	tirar | tirar
+GATHER	PICK UP	23	47	52	2	False	False	r e k o x ɛ ɾ | ɾ e k o x e ɾ	recoger,ɾekoxeɾ | recoger,ɾekoxeɾ
+LOVE	WANT	23	37	39	1	None	False	k e ɾ e ɾ	keɾeɾ | keɾeɾ
+LOW	SHALLOW	23	30	33	1	False	False	b a x o	bajo | bajo
+CHOP (INTO PIECES)	CUT	22	94	108	1	None	False	k o ɾ t a ɾ	koɾtaɾ | koɾtaɾ
+KILL	MURDER	22	41	41	1	False	False	m a t a ɾ	matar | matar
+FLEE	RETREAT	22	31	31	1	False	False	w i ɾ	huir | huir
+CEASE	FINISH	21	57	58	2	False	True	a k a β a ɾ | t e ɾ m i n a ɾ | t ɛ ɾ m i n a ɾ	akaβaɾ,terminar,teɾminaɾ | akaβaɾ,terminar,teɾminaɾ
+BIRD	FOWL	21	36	37	1	False	False	a β e	ave | ave
+FAMINE	HUNGER	20	70	79	1	False	False	a m b ɾ e	hambre | hambre
+SIBLING	YOUNGER SISTER (OF MAN)	20	59	73	1	False	True	ɛ ɾ m a n a	hermana | hermana
+CATTLE	LIVESTOCK	19	59	64	1	False	False	g a n a ð o	ganado | ganado
+SIBLING	YOUNGER SISTER (OF WOMAN)	19	58	72	1	False	True	ɛ ɾ m a n a	hermana | hermana
+OLDER SISTER (OF MAN)	SIBLING	19	57	71	1	False	True	ɛ ɾ m a n a	hermana | hermana
+OLDER SISTER (OF WOMAN)	SIBLING	19	57	71	1	False	True	ɛ ɾ m a n a	hermana | hermana
+GREEN	UNRIPE	18	55	60	1	False	False	b ɛ ɾ ð e	verde | verde
+BRAID	BRAID (VERB) OR WEAVE (BASKET)	18	50	50	1	False	False	t ɾ e n θ a ɾ	trenzar | trenzar
+DWELL (LIVE, RESIDE)	LIFE	17	59	72	1	False	True	b i β i ɾ	vivir | vivir
+EWE	SHEEP	17	55	70	1	False	False	o β e x a	oveja | oveja
+MORNING	TOMORROW	17	36	39	2	None	False	m a ɲ a n a	maɲana | maɲana
+DOWN	LOW	17	34	39	1	False	False	b a x o	bajo | bajo
+COMMAND	SEND	17	25	25	1	False	True	m a n d a ɾ	mandar | mandar
+AFTERNOON	LATE	17	24	25	1	False	False	t a ɾ ð e	tarde | tarde
+EVENING	NIGHT	16	45	50	2	False	False	n o tʃ e	noche,not͡ʃe | noche,not͡ʃe
+TIME	WEATHER	16	36	44	2	False	False	t j e m p o	tiempo,tjempo | tiempo,tjempo
+BEAM	RAFTER	16	32	45	1	False	False	b i ɣ a	viga | viga
+BAD	EVIL	15	558	666	1	None	False	m a l o	malo | malo
+GOURD	PUMPKIN	15	61	85	1	False	False	k a l a β a θ a	calabaza | calabaza
+BLAME	FAULT	15	27	28	1	False	False	k u l p a	culpa | culpa
+DRIBBLE	DRIP (EMIT LIQUID)	15	27	27	1	False	True	g o t e a ɾ	gotear | gotear
+CHILD (DESCENDANT)	DAUGHTER	15	17	17	1	False	False	i x a	hija | hija
+TIE	TIE UP (TETHER)	14	61	64	1	None	False	a t a ɾ	ataɾ | ataɾ
+SPEAK	TALK	14	58	58	1	None	False	a β l a ɾ	aβlaɾ | aβlaɾ
+FIELD	PLAIN	14	55	63	1	False	True	k a m p o	campo | campo
+ROT	SPOIL (BECOME SPOILED)	14	52	52	1	None	False	p u ð ɾ i ɾ s e	puðɾiɾse | puðɾiɾse
+CALCULATE	COUNT	14	41	41	1	None	False	k o n t a ɾ	kontaɾ | kontaɾ
+DRIVE	GO	14	38	38	1	None	False	i ɾ	iɾ | iɾ
+LANGUAGE	TONGUE	13	105	147	2	False	False	l e n g w a | l e ŋ g w a	lengua,leŋɡwa | lengua,leŋɡwa
+LOOK	WATCH	13	44	44	1	None	False	m i ɾ a ɾ	miɾaɾ | miɾaɾ
+DECEIVE	SWINDLE	13	37	37	1	False	False	e ŋ g a ɲ a ɾ	eŋɡaɲaɾ | eŋɡaɲaɾ
+COLLAR	NECK	13	30	38	2	False	False	k w e ʎ o | k w e ʝ o	cuello,kweʝo | cuello,kweʝo
+FLOW	RUN	13	27	30	2	False	False	k o r e ɾ | k o r ɛ ɾ	correr,koreɾ | correr,koreɾ
+CLEAR	LIGHT (COLOR)	12	28	32	1	False	False	k l a ɾ o	claro | claro
+DINNER (SUPPER)	MEAL	12	20	20	1	False	False	k o m i ð a	comida | comida
+HOLD	OWN	12	15	15	1	False	True	t e n ɛ ɾ	tener | tener
+LIKE	LOVE	11	37	39	1	None	False	k e ɾ e ɾ	keɾeɾ | keɾeɾ
+BEND	FOLD	11	22	23	1	False	False	d o β l a ɾ	doblar | doblar
+BELIEVE	THINK (BELIEVE)	11	17	17	1	False	False	k ɾ e ɛ ɾ	creer | creer
+CONDEMN	CONVICT	10	28	28	1	False	False	k o n d e n a ɾ	condenar | condenar
+HAVE	HOLD	10	13	13	1	False	False	t e n ɛ ɾ	tener | tener
+COOK (SOMETHING)	PREPARE	9	39	39	1	None	False	p ɾ e p a ɾ a ɾ	pɾepaɾaɾ | pɾepaɾaɾ
+DINNER (SUPPER)	FOOD	9	12	12	1	False	True	k o m i ð a	comida | comida
+ARCH	BOW	8	20	21	1	False	False	a ɾ k o	arco | arco
+GRIEF	PAIN	8	12	12	1	False	False	d o l o ɾ	dolor | dolor
+DREAM	SLEEP (STATE)	7	25	25	1	None	False	s w e ɲ o	sweɲo | sweɲo
+FINE OR THIN	THIN (OF SHAPE OF OBJECT)	7	22	22	1	None	True	f i n o	fino | fino
+DRIVE	LEAD (GUIDE)	7	20	21	1	False	False	k o n d u θ i ɾ	conducir | conducir
+FLOOR	GROUND	7	12	12	1	None	False	s w e l o	swelo | swelo
+ROLL	WRAP	7	12	12	1	False	True	e n r o ʎ a ɾ	enrollar | enrollar
+CONNECT	JOIN	6	20	20	1	None	False	u n i ɾ	uniɾ | uniɾ
+FENCE	NEAR	6	7	7	1	False	True	θ ɛ ɾ k a	cerca | cerca
+FEATHER	PEN	5	15	15	1	None	False	p l u m a	pluma | pluma
+GROW	INCREASE	5	15	15	1	None	False	k ɾ e θ e ɾ	kɾeθeɾ | kɾeθeɾ
+LIKE	WANT	5	9	9	1	None	False	k e ɾ e ɾ	keɾeɾ | keɾeɾ
+COME BACK	TURN (SOMETHING)	5	8	8	1	None	False	b o l β e ɾ	bolβeɾ | bolβeɾ
+PEOPLE	VILLAGE	5	6	7	2	False	False	p w e β l o	pueblo,pweβlo | pueblo,pweβlo
+PULL	SHOOT	4	9	10	2	False	False	t i ɾ a ɾ	tirar,tiɾaɾ | tirar,tiɾaɾ
+COUNT	TELL	4	8	11	2	False	False	k o n t a ɾ	contar,kontaɾ | contar,kontaɾ
+IF	YES	4	5	5	1	None	False	s i	si | sí
+GUEST	HOST	3	5	5	1	False	True	w ɛ s p ɛ ð	huésped | huésped
+CANDLE	SAILCLOTH	3	4	4	1	False	False	b e l a	vela | vela
+HAY	THATCH	3	4	4	1	False	False	p a x a	paja | paja
+BELOW OR UNDER	SHALLOW	3	3	3	1	False	True	b a x o	bajo | bajo
+FEEL	REGRET	2	2	2	1	False	False	s e n t i ɾ	sentir | sentir
+GLUE	TAIL	2	2	2	1	False	False	k o l a	cola | cola
+PICK	SEIZE	2	2	2	1	None	False	k o x e ɾ	koxeɾ | koxeɾ
+PULL	THROW	2	2	3	2	False	False	t i ɾ a ɾ	t.i.ɾ.a.ɾ,tirar | t.i.ɾ.a.ɾ,tirar
+BE ABLE	POWER	1	3	3	1	None	False	p o ð e ɾ	poðeɾ | poðeɾ
+LEAVE	SPLIT	1	2	2	1	False	True	p a ɾ t i ɾ	partir | partir
+PUT ON	SET (HEAVENLY BODIES)	1	2	2	1	None	False	p o n e ɾ s e	poneɾse | poneɾse
+CALCULATE	TELL	1	1	1	1	None	False	k o n t a ɾ	kontaɾ | kontaɾ
+CATCH	PICK	1	1	1	1	None	False	k o x e ɾ	koxeɾ | koxeɾ
+DOWN	SHALLOW	1	1	1	1	False	True	b a x o	bajo | bajo
+RICH	TASTY	1	1	1	1	None	False	ɾ i k o	ɾiko | ɾiko

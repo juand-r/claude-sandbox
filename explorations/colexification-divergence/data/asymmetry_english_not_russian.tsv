@@ -1,0 +1,107 @@
+concept1	concept2	families	languages	varieties	n_varieties_here	likely_homophone	alternatives_only	segments	forms
+BEAT	STRIKE	92	416	535	2	False	True	b iː t | h ɪ t | s t r aɪ k	beat,biːt,hit,hɪt,strike | beat,biːt,hit,hɪt,strike
+HILL	MOUNTAIN	84	468	620	2	False	True	h ɪ l | m aʊ n t ɪ n	hill,hɪl,maʊntɪn,mountain | hill,hɪl,maʊntɪn,mountain
+DO	MAKE	76	561	742	1	None	False	d uː	duː | duː
+CHOP (INTO PIECES)	CUT (WITH AXE)	70	384	457	2	False	False	tʃ ɒ p | tʃ ɔ p	chop,ʧɔp | chop,ʧɔp
+SPRING (OF WATER)	WELL	69	261	322	2	False	True	s p r ɪ ŋ | w ɛ l	spring,sprɪŋ,well,wɛl | spring,sprɪŋ,well,wɛl
+FRY	ROAST (SOMETHING)	66	236	286	2	False	True	f r aɪ | r ɔː s t	fraɪ,fry,roast,rɔːst | fraɪ,fry,roast,rɔːst
+BE ALIVE	LIFE	65	258	309	1	False	False	ə + l aɪ v	ə-laɪv | ə-laɪv
+POWERFUL	STRONG	65	238	302	1	None	False	s t r ɔ ŋ	strɔŋ | strɔŋ
+MALE (OF ANIMAL)	MALE (OF PERSON)	61	420	575	1	False	False	m eɪ l	male | male
+BREATH	BREATHE	58	228	268	1	None	False	b r iː ð	briːð | briːð
+KNIFE	KNIFE (FOR EATING)	50	182	217	1	False	False	n aɪ f	knife | knife
+FEMALE (OF ANIMAL)	FEMALE (OF PERSON)	44	109	119	1	False	False	f iː m eɪ l	female | female
+BRAID (VERB) OR WEAVE (BASKET)	WEAVE	40	93	97	2	False	False	w iː v	weave,wiːv | weave,wiːv
+THOU	YOU	34	78	93	4	False	False	j u | j uː	j.u,juː,you | j.u,juː,you
+END (OF SPACE)	END (OF TIME)	30	82	93	1	False	False	ɛ n d	end | end
+ASK (INQUIRE)	ASK (REQUEST)	30	60	68	1	False	False	ɑː s k	ask | ask
+FLY (INSECT)	FLY (MOVE THROUGH AIR)	22	28	30	3	False	False	f l a ɪ | f l aɪ	flaɪ,fly | flaɪ,fly
+DAY (24 HOURS)	DAY (NOT NIGHT)	16	27	27	1	False	False	d eɪ	day | day
+CORRECT (RIGHT)	RIGHT	13	45	64	2	False	False	r aɪ t	r.aɪ.t,right | r.aɪ.t,right
+CALL	CALL BY NAME	13	38	43	1	False	False	k ɔː l	call | call
+LIGHT (COLOR)	LIGHT (RADIATION)	13	22	24	1	False	False	l aɪ t	light | light
+BLOW (OF WIND)	BLOW (WITH MOUTH)	11	51	55	1	None	False	b l ə ʊ	bləʊ | bləʊ
+BE LATE	LATE	10	17	19	1	False	False	l eɪ t	late | late
+FOR A LONG TIME	LONG	9	29	32	1	None	False	l ɒ ŋ	lɒŋ | lɒŋ
+DONATE	GIVE	8	25	26	1	False	False	g ɪ v	ɡɪv | ɡɪv
+SMOKE (EXHAUST)	SMOKE (INHALE)	8	23	23	1	False	False	s m əʊ k	smoke | smoke
+FAN (ACTION)	FAN (OBJECT)	8	20	20	1	False	False	f æ n	fan | fan
+FOREST	WOOD	8	20	22	1	False	False	w ʊ d	wood(s) | wood
+PAINTING	PAINT (PIGMENTS)	8	12	13	2	False	False	p e ɪ n t | p eɪ n t	paint,peɪnt | paint,peɪnt
+CALL BY NAME	NAME	8	10	10	1	None	False	n e ɪ m	neɪm | neɪm
+COLD	COMMON COLD (DISEASE)	8	10	12	1	False	False	k əʊ l d	cold | cold
+BEVERAGE	DRINK	7	11	13	2	False	False	d r ɪ ŋ k	drink,drɪŋk | drink,drɪŋk
+BOIL (OF LIQUID)	BOIL (SOMETHING)	6	18	18	1	None	False	b ɔ ɪ l	bɔɪl | bɔɪl
+THUNDER	THUNDER (VERB)	6	14	14	1	None	False	θ ʌ n d ə	ˈθʌndə | ˈθʌndə
+WASH	WASH (ONESELF)	6	12	12	1	None	False	w ɒ ʃ	wɒʃ | wɒʃ
+FAT (OBESE)	FAT (ORGANIC SUBSTANCE)	5	18	18	1	None	False	f æ t	fæt | fæt
+FINGERNAIL	NAIL (TOOL)	5	13	14	2	False	False	n e ɪ l | n eɪ l	(finger)nail,neɪl | nail,neɪl
+PLANT (SOMETHING)	PLANT (VEGETATION)	5	9	10	1	False	False	p l ɑː n t	plant | plant
+SLEEP	SLEEP (STATE)	5	8	9	1	None	False	s l iː p	sliːp | sliːp
+TRAP (CATCH)	TRAP (PITFALL)	5	7	7	1	False	False	t r æ p	trap | trap
+NAIL (TOOL)	TOENAIL	4	7	7	1	None	False	n e ɪ l	neɪl | neɪl
+DRY	DRY UP	3	14	16	1	None	False	d ɹ a ɪ	dɹaɪ | dɹaɪ
+BOIL (OF LIQUID)	BOIL (OF SKIN)	3	6	6	1	False	False	b ɔɪ l	boil | boil
+COMB	COMB (VERB)	3	6	6	1	None	False	k ə ʊ m	kəʊm | kəʊm
+MORTAR	MORTAR BINDER	3	6	6	1	False	False	m ɔː t ə ɹ	mortar | mortar
+DRAW MILK	MILK	3	5	6	2	False	False	m ɪ l k	milk,mɪlk | milk,mɪlk
+FISH	FISHING	3	5	5	1	None	False	f ɪ ʃ	fɪʃ | fɪʃ
+LIGHT (COLOR)	LIGHT (WEIGHT)	3	5	6	1	False	False	l aɪ t	light | light
+WORK (ACTIVITY)	WORK (LABOUR)	3	5	5	1	None	False	w ɜː k	wɜːk | wɜːk
+SEW	SOW SEEDS	3	4	4	1	True	False	s əʊ	sew | sow
+TEAR (OF EYE)	TEAR (SHRED)	3	4	4	1	False	False	t ɛə ɹ	tear | tear
+PULL OFF (SKIN)	SKIN	3	3	4	2	False	False	s k ɪ n	skin,skɪn | skin,skɪn
+IRRIGATE	WATER	2	6	6	1	None	False	w ɔː t ə	ˈwɔːtə | ˈwɔːtə
+LIGHT (RADIATION)	LIGHT (WEIGHT)	2	5	5	1	False	False	l aɪ t	light | light
+ROUGH	ROUGH (OF SEA)	2	5	5	1	False	False	r ʌ f	rough | rough
+SEA	SEE	2	4	7	4	True	False	s i | s iː	s.i,s.iː,sea,siː | s.i,s.iː,see,siː
+LIGHT (IGNITE)	LIGHT (RADIATION)	2	3	5	3	False	False	l a ɪ t | l aɪ t	laɪt,light | laɪt,light
+SAIL	SAILCLOTH	2	3	3	1	False	False	s eɪ l	sail | sail
+ALL	AWL	2	2	2	1	True	False	ɔː l	all | awl
+BARK	BARKING	2	2	2	1	None	False	b ɑː k	bɑːk | bɑːk
+FIR	FUR	2	2	3	2	True	False	f ɜː | f ɜː ɹ	fir,fɜː | fur,fɜː
+HIDE (CONCEAL)	SKIN	2	2	2	1	False	False	h aɪ d	hide | hide
+TEMPLE	TEMPLES	2	2	2	1	False	False	t ɛ m p l̩	temple | temple(s)
+CEASE	END (OF SPACE)	1	4	4	1	None	False	e n d	end | end
+LIGHT (COLOR)	LIGHT (IGNITE)	1	3	3	1	False	False	l aɪ t	light | light
+SON	SUN	1	3	5	3	True	False	s ʌ n	son,sʌn | sun,sʌn
+ABSTAIN FROM FOOD	FAST	1	2	2	1	False	False	f ɑː s t	fast | fast
+CALF	CALF OF LEG	1	2	3	2	False	False	k ɑː f	calf,kɑːf | calf,kɑːf
+CORRECT (RIGHT)	WRITE	1	2	2	1	True	False	r aɪ t	right | write
+CURE	HEEL	1	2	3	2	True	False	h iː l	heal,hiːl | heel,hiːl
+EYE	I	1	2	5	4	True	False	a ɪ | ai | aɪ	ai,aɪ,eye | I,ai,aɪ
+FLEA	FLEE	1	2	2	1	True	False	f l iː	flea | flee
+FLOUR	FLOWER	1	2	2	1	True	False	f l aʊ ə ɹ	flour | flower
+KNEAD	NEED (NOUN)	1	2	2	1	True	False	n iː d	knead | need
+LAND	LAND (DESCEND)	1	2	2	1	False	False	l æ n d	land | land
+LEAD (CHEMICAL ELEMENT)	LEAD (GUIDE)	1	2	2	1	False	False	l iː d	lead | lead
+LIGHT (IGNITE)	LIGHT (WEIGHT)	1	2	2	1	False	False	l aɪ t	light | light
+MAGICIAN	WHICH	1	2	2	1	True	False	w ɪ tʃ	witch | which?
+MANNER	WEIGH	1	2	2	1	True	False	w eɪ	way | weigh
+MEAT	MEET	1	2	3	2	True	False	m iː t	meat,miːt | meet,miːt
+PALM OF HAND	PALM TREE	1	2	2	1	False	False	p ɑː m	palm | palm
+RIGHT	WRITE	1	2	3	2	True	False	r aɪ t | ɹ a ɪ t	right,ɹaɪt | write,ɹaɪt
+SPRING (OF WATER)	SPRINGTIME	1	2	2	1	False	False	s p r ɪ ŋ	spring | spring
+SPRINGTIME	WELL	1	2	2	1	False	False	s p r ɪ ŋ	spring | spring
+WEAK	WEEK	1	2	3	2	True	False	w iː k	weak,wiːk | week,wiːk
+BE	BEE	1	1	1	1	True	False	b iː	be | bee
+BOAR (MALE PIG)	BORE	1	1	1	1	True	False	b ɔː ɹ	boar | bore
+CERTAIN	SHORE	1	1	1	1	True	False	ʃ ɔː ɹ	sure | shore
+COVER	LID (COVER, CAP)	1	1	1	1	None	False	k ʌ v ə	ˈkʌvə | ˈkʌvə
+DIE	DYE	1	1	3	3	True	False	d a ɪ | d aɪ	daɪ,die | daɪ,dye
+EWE	YOU	1	1	1	1	True	False	j uː	ewe | you
+EWE	THOU	1	1	1	1	True	False	j uː	ewe | you
+HAIR	HARE	1	1	1	1	None	False	h e ə	heə | heə
+HAIR (HEAD)	HARE	1	1	1	1	True	False	h ɛə ɹ	hair | hare
+HEAR	HERE	1	1	4	4	False	False	h j ə | h ɪ r | h ɪ ə	h.ɪ.r,h.ɪə,hear,hɪə | h.ɪ.r,h.ɪə,here,hɪə
+KNOT	NOT	1	1	2	2	True	False	n ɒ t	knot,nɒt | not,nɒt
+KNOW (SOMETHING)	NO	1	1	1	1	True	False	n əʊ	know | no
+OAR	OR	1	1	2	2	True	False	ɔː | ɔː ɹ	oar,ɔː | or,ɔː
+OF THIS KIND (SUCH)	SEW	1	1	1	1	None	False	s ə ʊ	səʊ | səʊ
+PEACE	PIECE	1	1	1	1	True	False	p iː s	peace | piece
+POOR	POUR	1	1	3	3	True	False	p ɔː | p ɔː r | p ɔː ɹ	poor,pɔː,pɔːr | pour,pɔː,pɔːr
+READ	RED	1	1	1	1	True	False	r ɛ d	read | red
+SEW	SOW (FEMALE PIG)	1	1	1	1	True	False	s əʊ	sew | sow
+SOUND (OF INSTRUMENT OR VOICE)	SOUND OR NOISE	1	1	1	1	None	False	s a ʊ n d	saʊnd | saʊnd
+SOW (FEMALE PIG)	SOW SEEDS	1	1	2	2	False	False	s əʊ	sow,səʊ | sow,səʊ
+YOKE	YOLK	1	1	1	1	True	False	j əʊ k	yoke | yolk
