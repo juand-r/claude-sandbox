@@ -1,0 +1,3 @@
+mode,step,tokens_seen,loss,smooth_loss,val_ppl,bpb,ms_per_step,tok_per_sec,elapsed_sec
+QAT (INT8 fwd, FP32 bwd),0,4096,5.1664,5.1664,89.6491,6.486,21246.6,193,32.4
+QAT (INT8 fwd, FP32 bwd),9,40960,3.8745,5.4616,37.9538,5.246,19512.1,210,216.7
