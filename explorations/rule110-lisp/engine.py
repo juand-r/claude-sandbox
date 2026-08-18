@@ -70,3 +70,34 @@ def save_png(hist, path, scale=1):
         img = img.resize((img.width * scale, img.height * scale),
                          Image.NEAREST)
     img.save(path)
+
+
+# ---------------------------------------------------------------------------
+# Bit-packed engine: 64 cells per uint64 word, LSB-first (cell k lives in
+# word k//64, bit k%64). Rule 110 in boolean form:
+#     new = (center OR right) AND NOT (left AND center AND right)
+# Verified against `step` in tests.
+
+def pack(cells):
+    """uint8 0/1 array -> uint64 packed array (width padded to 64)."""
+    pad = (-len(cells)) % 64
+    if pad:
+        cells = np.concatenate([cells, np.zeros(pad, dtype=np.uint8)])
+    return np.packbits(cells.reshape(-1, 8)[:, ::-1]).view(np.uint64)
+
+
+def unpack(words, width):
+    """uint64 packed array -> uint8 0/1 array of the given width."""
+    return np.unpackbits(words.view(np.uint8)).reshape(-1, 8)[:, ::-1].reshape(-1)[:width]
+
+
+def step_packed(a):
+    """One Rule 110 step on a packed row (cyclic across the whole array).
+
+    The cyclic boundary is at the packed width (a multiple of 64); callers
+    padding a non-multiple width must keep the wrap seam out of their
+    measurements, as with any wrap seam.
+    """
+    left = (a << np.uint64(1)) | (np.roll(a, 1) >> np.uint64(63))
+    right = (a >> np.uint64(1)) | ((np.roll(a, -1) & np.uint64(1)) << np.uint64(63))
+    return (a | right) & ~(left & a & right)

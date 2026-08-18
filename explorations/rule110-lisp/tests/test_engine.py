@@ -67,3 +67,15 @@ def test_history_shape():
     h = history(ether_tape(28), 10)
     assert h.shape == (11, 28)
     assert np.array_equal(h[10], run(ether_tape(28), 10))
+
+
+def test_packed_engine_matches_scalar():
+    from engine import pack, unpack, step_packed
+    rng = np.random.default_rng(7)
+    cells = rng.integers(0, 2, size=64 * 37, dtype=np.uint8)
+    a = pack(cells)
+    ref = cells.copy()
+    for _ in range(50):
+        a = step_packed(a)
+        ref = step(ref)
+    assert np.array_equal(unpack(a, len(cells)), ref)
