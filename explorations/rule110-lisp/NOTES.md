@@ -140,3 +140,18 @@ Feasible glider-level deliverables instead:
 The Lisp tower above the CTS layer remains exact and differentially
 tested at the symbolic layers; physical runs stop where the arithmetic
 says they stop, with measured constants in the report.
+
+## Collatz run #1 (De Mol x=3, T=1.35M): two findings
+
+1. Read cadence: front symbols are consumed at t ~ 2.5k, 107k, 210k,
+   315k, 417k, 522k -- ONE CTS read per left period (~104k generations),
+   not one per ossifier. The four A^4s per period evidently split roles
+   (ossify / accept / reject supply). All prior timing estimates were 4x
+   optimistic; x=3 -> 5 (4 tag steps = 48 reads) needs ~5M generations
+   and ~48 left periods.
+2. Death at t ~ 565-592k: the tape erodes from the BACK over ~30k steps
+   -- a destruction wave arriving from the right, killing the machinery
+   long before wrap corruption could (>1.1M). Under diagnosis with a
+   defect video. Prime suspects: the right-edge trim seam, or an error
+   in my right-side sizing (appendant supply vs actual consumption
+   pattern).
