@@ -29,10 +29,10 @@ of cyclic tag programs + measured blowup factors per layer.
 - [ ] Commit
 
 ## Layer 3 - Lisp
-- [ ] Mini-Lisp spec (atoms, cons/car/cdr, cond, lambda, define, recursion)
-- [ ] Reference interpreter in Python
-- [ ] Lisp -> machine model compilation/interpretation
-- [ ] Differential tests
+- [x] Mini-Lisp spec + reference interpreter
+- [x] Reference interpreter in Python
+- [x] Lisp -> SKI compiler (bracket abstraction); SKI string engine (TM spec) + graph engine (fast, fuzz-tested vs spec); Lisp -> TM via SKI machine still open
+- [x] Differential tests: reference vs compiled on both engines
 - [ ] Commit
 
 ## End to end
