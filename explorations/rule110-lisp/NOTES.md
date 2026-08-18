@@ -51,3 +51,28 @@ Open: long-run validation (glider-level CTS steps take ~O(10^4-10^5)
 generations), output decoding (reading appended data / halting signature
 01101001101000), and sizing rules for left_periods/right_periods vs
 simulation length.
+
+## Long-run findings (first dynamic test, 2026-08-18)
+
+Example {YN, NYYN, e, e}, tape NNYN, 30k generations, decoded every 100:
+
+- Decoded front-of-tape progression NNYN -> NYN -> YN -> N matches the
+  reference interpreter exactly.
+- Ossifiers arrive every ~390 generations (364-cell spacing / relative
+  speed 28/30) and transform the tape front; while one is crossing, reads
+  are transiently unreadable (decoder raises on implausible pitch --
+  correct behavior, sample later).
+- One appendant cycle costs ~22.6k generations, dominated by the A^v
+  ether gap (v = 754 here): the CTS "clock" is the ossifier supply.
+- The endgame misbehaved (Y/YN flicker, no halt signature). Two causes
+  suspected, in order of likelihood: (1) this CTS is NOT dynamically
+  valid for the construction -- appendant YN has length 2, not a multiple
+  of 6, and gets rejected at step 1, which the paper explicitly says the
+  construction does not support; (2) cyclic-wrap corruption reaches the
+  active zone near t~25k at this width. Both to be fixed: use conforming
+  CTSs (lengths multiples of 6, or the paper's expansion transform) and
+  larger margins.
+
+Timescale estimate for later blowup accounting: one CTS symbol read
+~= one ossifier ~= 390 generations; one appendant cycle ~= 22.6k
+generations at this program size (v scales with program).
