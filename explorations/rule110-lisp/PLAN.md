@@ -14,10 +14,10 @@ of cyclic tag programs + measured blowup factors per layer.
 - [ ] Commit
 
 ## Layer 1 - Cyclic tag -> gliders (Cook encoding)
-- [ ] Glider catalog: find/verify gliders needed by the construction
+- [x] Block catalog: Cook 2009 bit-blocks A-L extracted from arXiv EPS figures
       (A, B, C2, E-bar, ...) as ether-phase-aware patterns
-- [ ] Tape builder: place gliders at controlled positions/phases in ether
-- [ ] Encode: ossifiers + tape data + appendants -> initial condition
+- [x] Tape builder: seam-matching canvas gluing, unique placements
+- [x] Encode: central region + ossifier side + appendant side -> initial row
 - [ ] Decode: read emitted glider stream back to tag output
 - [ ] Validate: run a real cyclic tag program on the CA, compare vs Layer 2 reference
 - [ ] Commit
