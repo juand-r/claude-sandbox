@@ -23,9 +23,9 @@ of cyclic tag programs + measured blowup factors per layer.
 - [ ] Commit
 
 ## Layer 2 - Cyclic tag system layer
-- [ ] Direct cyclic tag interpreter (reference semantics)
-- [ ] Machine model -> cyclic tag compiler (Neary-Woods style, polynomial)
-- [ ] Differential tests machine vs compiled tag system
+- [x] Direct cyclic tag interpreter (reference semantics)
+- [x] TS -> CTS compiler (Cook unary encoding); TM -> TS (Cocke-Minsky); Neary-Woods polynomial route still open
+- [x] Differential tests: Chapman 3x+1 TS vs CTS; TM visits vs TS firings; TM -> TS -> CTS composed
 - [ ] Commit
 
 ## Layer 3 - Lisp
