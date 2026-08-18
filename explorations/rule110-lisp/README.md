@@ -1,25 +1,32 @@
 # rule110-lisp
 
-A Lisp interpreter that executes on the Rule 110 cellular automaton.
+A Lisp that runs on the Rule 110 cellular automaton -- as far down the
+tower as physics and arithmetic allow. The construction is a chain of
+verified translations:
 
-The construction is a tower of verified translations:
+    mini-Lisp -> SKI -> Turing machine -> clockwise binary TM
+      -> 2-tag system (Neary-Woods) -> cyclic tag system
+      -> Rule 110 gliders (Cook's blocks)
 
-    mini-Lisp  ->  machine model  ->  cyclic tag system  ->  Rule 110 gliders
+Every arrow is differentially tested against the layer above. Compiled
+Lisp runs on a 255-state Turing machine; a full machine-to-CTS tower is
+verified exactly; Cook's glider construction is reproduced and runs real
+cyclic tag programs on the actual automaton. Physical execution of the
+whole tower is out of reach by ~17 measured orders of magnitude --
+REPORT.md tells that story with the numbers.
 
-The glider level follows Cook (2004), "Universality in Elementary Cellular
-Automata". The machine-to-cyclic-tag step follows the polynomial-overhead
-approach of Neary & Woods (2006) rather than the exponential Cocke-Minsky
-2-tag route, so that computations are physically runnable as far down the
-tower as compute allows.
+## Files
 
-## Layout
-
-- `PLAN.md`    - live work plan with milestones, checked off as completed
-- `NOTES.md`   - findings, hypotheses, dead ends (created as work proceeds)
-- `engine.py`  - Layer 0: fast Rule 110 simulator + ether tooling
-- `tests/`     - pytest suite; every layer is differentially tested
+- `REPORT.md` - the full writeup: results, defect analysis, blowup table
+- `PLAN.md`, `NOTES.md` - live plan and lab notes (incl. debugging log)
+- `engine.py` - Rule 110 simulators (scalar + bit-packed)
+- `encoder.py`, `decoder.py`, `data/blocks.json` - CTS <-> Rule 110
+- `cts.py`, `tag.py`, `tm.py`, `cw.py`, `nw.py` - the machine layers
+- `lisp.py`, `lisp_to_ski.py`, `ski.py`, `ski_graph.py`, `ski_tm.py` - Lisp
+- `run_*.py` - CA experiment scripts (see REPORT.md, Reproduction)
+- `tools/extract_blocks.py` - regenerates block data from arXiv:0906.3248
 
 ## Running
 
     pip install numpy pytest pillow
-    pytest explorations/rule110-lisp/tests -q
+    pytest explorations/rule110-lisp/tests -q     # 38 tests, ~8 s

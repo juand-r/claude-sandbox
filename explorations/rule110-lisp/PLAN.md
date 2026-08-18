@@ -1,41 +1,40 @@
 # Plan
 
 Agreed scope (2026-08-18): full Cook-style construction, Lisp front end,
-Python, Neary-Woods polynomial route at the machine->cyclic-tag step.
-Honesty clause: if full Lisp eval at glider level exceeds available compute,
-the deliverable is the complete verified pipeline + real glider-level runs
-of cyclic tag programs + measured blowup factors per layer.
+Python, Neary-Woods polynomial route. Honesty clause: if full Lisp eval
+at glider level exceeds available compute, the deliverable is the
+complete verified pipeline + real glider-level runs of cyclic tag
+programs + measured blowup factors per layer.
+
+Status: tower complete and tested end-to-end (see REPORT.md).
 
 ## Layer 0 - Rule 110 engine
 - [x] Vectorized simulator (numpy), cyclic boundary
-- [x] Differential test vs naive pure-Python reference
-- [x] Ether background: verify spatial period 14 / temporal period 7 empirically
-- [x] Spacetime rendering (text + PNG) for debugging
-- [ ] Commit
+- [x] Bit-packed uint64 engine, 39x faster, cross-checked
+- [x] Ether background verified; spacetime rendering
 
-## Layer 1 - Cyclic tag -> gliders (Cook encoding)
-- [x] Block catalog: Cook 2009 bit-blocks A-L extracted from arXiv EPS figures
-      (A, B, C2, E-bar, ...) as ether-phase-aware patterns
-- [x] Tape builder: seam-matching canvas gluing, unique placements
-- [x] Encode: central region + ossifier side + appendant side -> initial row
-- [ ] Decode: read emitted glider stream back to tag output
-- [ ] Validate: run a real cyclic tag program on the CA, compare vs Layer 2 reference
-- [ ] Commit
+## Layer 1 - CTS -> gliders (Cook 2009)
+- [x] Block catalog extracted from the paper's figures
+- [x] Seam-matching assembly; local exactness verified (1.15M cells)
+- [x] Decoder (mature-symbol core matching, block-extent aliasing fix)
+- [x] Dynamic validation on empty-appendant-free programs
+- [ ] BLOCKED: short-leader (L) block self-destroys at its preparation
+      collision -> all TS-compiled programs unrunnable physically.
+      Localized (see NOTES.md); fix would unlock De Mol 3x+1 on gliders.
 
-## Layer 2 - Cyclic tag system layer
-- [x] Direct cyclic tag interpreter (reference semantics)
-- [x] TS -> CTS compiler (Cook unary encoding); TM -> TS (Cocke-Minsky); Neary-Woods polynomial route still open
-- [x] Differential tests: Chapman 3x+1 TS vs CTS; TM visits vs TS firings; TM -> TS -> CTS composed
-- [ ] Commit
+## Layer 2 - machines -> CTS
+- [x] CTS reference interpreter
+- [x] Tag-system layer; TS -> CTS (Chapman + De Mol 3x+1 verified)
+- [x] TM -> TS (Cocke-Minsky, exponential; test path only)
+- [x] Two-way TM -> clockwise TM -> binary clockwise TM
+- [x] Neary-Woods 2-tag from clockwise binary TM (stage tables)
+- [x] Capstone: full tower on a 3-state TM, exact at every level
 
 ## Layer 3 - Lisp
 - [x] Mini-Lisp spec + reference interpreter
-- [x] Reference interpreter in Python
-- [x] Lisp -> SKI compiler (bracket abstraction); SKI string engine (TM spec) + graph engine (fast, fuzz-tested vs spec); Lisp -> TM via SKI machine still open
-- [x] Differential tests: reference vs compiled on both engines
-- [ ] Commit
+- [x] Lisp -> SKI compiler; SKI string engine (spec) + graph engine
+- [x] SKI Turing machine (255 states): Lisp runs on a TM
+      ((car (quote (a b))) -> a, 5.9e8 steps)
 
-## End to end
-- [ ] Smallest Lisp computation pushed as deep as compute allows
-- [ ] Measure blowup factors at each layer
-- [ ] REPORT.md
+## Reporting
+- [x] REPORT.md with measured blowup table and defect analysis
