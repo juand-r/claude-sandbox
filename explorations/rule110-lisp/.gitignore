@@ -1,0 +1,6 @@
+# experiment outputs: reproducible from the run_*.py scripts
+*.npy
+*.log
+*.out
+# spacetime renders: kept out of git; regenerate with the run scripts
+*.png

@@ -1,22 +1,4 @@
-variant 0 apps=['YNNNNN', ''] v=1737 width=1044645
-t=0: YN
-t=12500: NYNYN
-t=25000: NYYYNN
-t=37500: NYYNY
-t=50000: NYNYN
-t=62500: YNYNN
-t=75000: YYYNN
-t=87500: YNYYN
-t=100000: YNYYN
-t=112500: NNNN
-t=125000: YN
-t=137500: 
-t=150000: 
-t=162500: 
-t=175000: 
-t=187500: 
-t=200000: 
-t=212500: 
-t=225000: 
-t=237500: 
-t=250000: 
+Traceback (most recent call last):
+  File "/home/user/claude-sandbox/run_L_min.py", line 5, in <module>
+    from encoder import assemble, _left_v
+ModuleNotFoundError: No module named 'encoder'
