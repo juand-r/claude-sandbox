@@ -107,3 +107,36 @@ diagnostics only.
    N-runs grow without bound) are impossible with a periodic left side.
    Our first canonical run confirmed this empirically: the machinery
    dismantled itself in a leader-ossifier cascade at t~89k.
+
+## Blowup arithmetic and revised CA-level goals (2026-08-18)
+
+Full-tape content decoding during maturation is unreliable (mixed run
+{YYYYNN}: quiescent windows dominated by rejected reads; clean reads are
+near-misses consistent with immature Y-symbols aliasing N). Content
+decoding is hereby demoted to diagnostics.
+
+Measured/derived scaling for the glider level:
+- one CTS symbol read = one ossifier ~ 390 generations + v-gap share
+- v =~ 80 * (total CTS appendant content) and one appendant cycle costs
+  ~ v*30 generations at ~28*v cells of left-side width per period.
+- TM-compiled programs (Cocke-Minsky): |Phi| = 4m+3ms; CTS appendant
+  content ~ |Phi|^2 scale. For the 3-state test TM: v ~ 1.9M,
+  ~10^10 generations per TM step. Physically out of reach -- the honesty
+  clause bites ~10 orders of magnitude before Lisp.
+
+Feasible glider-level deliverables instead:
+1. Halting semantics: tiny halting CTS (e.g. {YYYYNN} from tape NN) must
+   produce Cook's F-glider signature (spatial 01101001101000, temporal
+   110101010111111); its non-halting twin must not. Decisive, no
+   maturation issues.
+2. De Mol's 3x+1 tag system {A->CY, C->A, Y->AAA} (deletion 2), which
+   the paper singles out as directly implementable: its CTS satisfies
+   the one-append-per-cycle validity condition with the DEFAULT v
+   (~3400). One tag step ~ 310k generations at ~1M cells: real Collatz
+   arithmetic by gliders, feasible with a bit-packed engine.
+3. Maturation study (zoomed spacetime of an append) to close the decoder
+   question honestly.
+
+The Lisp tower above the CTS layer remains exact and differentially
+tested at the symbolic layers; physical runs stop where the arithmetic
+says they stop, with measured constants in the report.
