@@ -76,3 +76,34 @@ Example {YN, NYYN, e, e}, tape NNYN, 30k generations, decoded every 100:
 Timescale estimate for later blowup accounting: one CTS symbol read
 ~= one ossifier ~= 390 generations; one appendant cycle ~= 22.6k
 generations at this program size (v scales with program).
+
+## Decoder fidelity limit (found with the all-Y grower test)
+
+Observation: with appendant list {YYYYYY} and tape Y -- a program whose
+tape can never contain an N -- the full-tape decoder still reports
+transient N's behind the front (e.g. reads YYNYN persisting for ~1000
+generations between ossifier passes).
+
+Interpretation: a freshly appended symbol is not born as a finished E/F
+block. Its gliders reach their final spacing through a sequence of
+collisions, and intermediate spacings can exactly alias the other
+symbol's core. Core matching is therefore only trustworthy for symbols
+that have finished maturing -- in particular the front symbol, which the
+machinery itself guarantees is mature by read time.
+
+Consequence: end-to-end validation uses the consumed-symbol sequence
+(front symbol at each ossifier consumption, extracted by consumed.py),
+which fully determines the CTS computation. Full-tape reads remain as
+diagnostics only.
+
+## Program-validity constraints for the periodic left side (collected)
+
+1. Every appendant length must be a multiple of 6 (else only if always
+   appended).
+2. The first appendant must be nonempty (no prepared-short-leader block).
+3. The default v assumes >= 1 nonempty appendant appended per cycle;
+   longer bounded rejection runs need larger v (v_override); unbounded
+   rejection runs (e.g. the Wolfram p.96 CTS {YYYYYY,e,NNNNNN,e}, whose
+   N-runs grow without bound) are impossible with a periodic left side.
+   Our first canonical run confirmed this empirically: the machinery
+   dismantled itself in a leader-ossifier cascade at t~89k.

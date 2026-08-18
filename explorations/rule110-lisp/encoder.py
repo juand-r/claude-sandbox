@@ -165,6 +165,9 @@ def _right_block_seq(appendants):
 
 
 def _left_v(appendants):
+    """Paper's ossifier-spacing estimate. Valid only if at least one
+    nonempty appendant is appended per appendant cycle; programs with
+    longer rejection runs need a larger v (pass v_override to assemble)."""
     ys = sum(a.count("Y") for a in appendants)
     ns = sum(a.count("N") for a in appendants)
     nonempty = sum(1 for a in appendants if a)
@@ -172,13 +175,14 @@ def _left_v(appendants):
     return 76 * ys + 80 * ns + 60 * nonempty + 43 * empty
 
 
-def _left_block_seq(appendants):
+def _left_block_seq(appendants, v_override=None):
     """One period of the left side, listed right-to-left starting from C."""
-    v = _left_v(appendants)
+    v = v_override if v_override is not None else _left_v(appendants)
     return "B" + "A" * 12 + "B" + "A" * 11 + "B" + "A" * 13 + "B" + "A" * v
 
 
-def assemble(tape, appendants, left_periods=1, right_periods=1):
+def assemble(tape, appendants, left_periods=1, right_periods=1,
+             v_override=None):
     """Build the Rule 110 initial row for a cyclic tag system.
 
     tape: string of 'Y'/'N' (the CTS initial tape, must be nonempty).
@@ -212,7 +216,7 @@ def assemble(tape, appendants, left_periods=1, right_periods=1):
             placed.append(_attach(placed[-1], blocks[name], "R"))
 
     left = [c]
-    left_seq = _left_block_seq(appendants)
+    left_seq = _left_block_seq(appendants, v_override)
     for _ in range(left_periods):
         for name in left_seq:
             left.append(_attach(left[-1], blocks[name], "L"))
