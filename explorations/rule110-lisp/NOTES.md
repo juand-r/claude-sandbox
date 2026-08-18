@@ -155,3 +155,46 @@ says they stop, with measured constants in the report.
    defect video. Prime suspects: the right-edge trim seam, or an error
    in my right-side sizing (appendant supply vs actual consumption
    pattern).
+
+## The L-block (short leader) failure -- localized, parked (2026-08-18)
+
+Controlled experiments, all with v_override = 3x default, T = 250k:
+
+| program                          | empties | outcome            |
+|----------------------------------|---------|--------------------|
+| {YYYYNN}                         | 0       | healthy at 250k    |
+| {YYYYNN, e}                      | 1       | dead by ~160k      |
+| {YYYYNN, e, e}                   | 2       | dead by ~200k      |
+| {YNNNNN, e} tape YN (minimal)    | 1       | dead by ~180k      |
+| {YNNNNN, YNNNNN} tape YN control | 0       | healthy at 250k    |
+
+Empty appendants (L blocks) are the specific killer; the De Mol and
+Wolfram-p.96 deaths are both explained by their empties (the p.96 system
+is additionally invalid for unbounded rejections).
+
+Side-by-side event renders of the minimal pair localize the failure to
+the moment read-1's acceptor reaches the raw short leader to prepare it
+(the paper's figSketchesPQR(r) collision), t ~ 54k at the L cluster.
+The static properties of my L data all check out: figure extraction
+(0x00/0xFF/0x80 clean), (30,-8) periodicity, unique seam fits, zero
+rule-110 violations across LL/JL/LK seams, and the 45-generation
+evolution match covers L blocks too. The paper's note that raw short
+leaders sit "up +3 higher, as measured through the E^n s, than the raw
+regular leaders" names exactly the kind of long-range alignment that
+pure jigsaw gluing cannot verify; either the L figure in the arXiv
+source, my reading of it, or my phase chain is wrong in that measure.
+
+Next steps if resumed: (a) implement the ovd/upd bookkeeping from Cook
+2004 and check the L's up-distance mod 6 statically; (b) obtain a known-
+good initial condition (e.g. Martinez's published Rule 110 CTS
+simulations) and diff block placements.
+
+## Corrected machinery model (replaces earlier note)
+
+The whole assembly B A^13 B A^11 B A^12 B is ONE ossifier (the paper
+says so explicitly); its four A^4 packets arrive ~390 steps apart and
+perform one CTS read per left period (~30v generations). The earlier
+"4 reads per period" and "1-of-4 ossifiers destroyed" readings were
+windowing artifacts of the A4 detector (the tight group registers as
+one crossing). With one read per period, x=3 Collatz needs ~5M
+generations -- attainable once the L bug is fixed (De Mol needs L).

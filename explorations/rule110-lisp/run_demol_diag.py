@@ -24,6 +24,8 @@ a = pack(row)
 T0, T1, SAMPLE = 420_000, 660_000, 120
 frames = []
 for t in range(T1 + 1):
+    if t == T0:
+        np.save("demol_ckpt420k.npy", a)
     if t >= T0 and (t - T0) % SAMPLE == 0:
         center = c0 + int(round(-8 * t / 30))
         lo = center - 12_000
@@ -32,6 +34,7 @@ for t in range(T1 + 1):
         frames.append((cur ^ np.roll(cur, 14)).copy())
     a = step_packed(a)
 h = np.array(frames)
-hd = h.reshape(h.shape[0], -1, 30).max(axis=2)
+wc = h.shape[1] // 30 * 30
+hd = h[:, :wc].reshape(h.shape[0], -1, 30).max(axis=2)
 save_png(hd, "demol_death.png")
 print("saved", hd.shape)
