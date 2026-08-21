@@ -1,0 +1,29 @@
+{
+  "pdp-vol1-foundations.jpg": {
+    "bytes": 66340,
+    "description": "PDP Volume 1: Foundations (Rumelhart, McClelland & the PDP Research Group, MIT Press 1986). Paperback, ISBN 026268053X. Blue cover.",
+    "format": "jpeg",
+    "height": 475,
+    "sha256": "b0d89ada83095b71db00b83fcf6e5138db7602224e348349d8a3d15d66549c5b",
+    "url": "https://covers.openlibrary.org/b/isbn/026268053X-L.jpg?default=false",
+    "width": 344
+  },
+  "pdp-vol2-psychological-and-biological-models.jpg": {
+    "bytes": 70899,
+    "description": "PDP Volume 2: Psychological and Biological Models (McClelland, Rumelhart & the PDP Research Group, MIT Press 1986). Paperback, ISBN 0262631105. Red cover.",
+    "format": "jpeg",
+    "height": 475,
+    "sha256": "5029e6fe9bf486dae8777b8b683704b1210d87988a0ead811643944f8a4a4665",
+    "url": "https://covers.openlibrary.org/b/isbn/0262631105-L.jpg?default=false",
+    "width": 344
+  },
+  "pdp-vol3-handbook.jpg": {
+    "bytes": 89332,
+    "description": "Explorations in Parallel Distributed Processing: A Handbook of Models, Programs, and Exercises (McClelland & Rumelhart, MIT Press 1988), the third volume of the set. Macintosh version, ISBN 026263113X. Teal cover.",
+    "format": "jpeg",
+    "height": 500,
+    "sha256": "e28af668fa7b7494d4cd7efb363880c4528f62cd053acb359789ed56ea23e5d4",
+    "url": "https://covers.openlibrary.org/b/isbn/026263113X-L.jpg?default=false",
+    "width": 320
+  }
+}

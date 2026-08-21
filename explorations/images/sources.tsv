@@ -1,0 +1,8 @@
+# filename<TAB>url<TAB>description
+# Covers come from the Open Library cover API, keyed by ISBN:
+#   https://covers.openlibrary.org/b/isbn/<ISBN>-L.jpg?default=false
+# The ?default=false is important: without it a missing cover returns a blank
+# placeholder image with HTTP 200 instead of failing.
+pdp-vol1-foundations.jpg	https://covers.openlibrary.org/b/isbn/026268053X-L.jpg?default=false	PDP Volume 1: Foundations (Rumelhart, McClelland & the PDP Research Group, MIT Press 1986). Paperback, ISBN 026268053X. Blue cover.
+pdp-vol2-psychological-and-biological-models.jpg	https://covers.openlibrary.org/b/isbn/0262631105-L.jpg?default=false	PDP Volume 2: Psychological and Biological Models (McClelland, Rumelhart & the PDP Research Group, MIT Press 1986). Paperback, ISBN 0262631105. Red cover.
+pdp-vol3-handbook.jpg	https://covers.openlibrary.org/b/isbn/026263113X-L.jpg?default=false	Explorations in Parallel Distributed Processing: A Handbook of Models, Programs, and Exercises (McClelland & Rumelhart, MIT Press 1988), the third volume of the set. Macintosh version, ISBN 026263113X. Teal cover.
