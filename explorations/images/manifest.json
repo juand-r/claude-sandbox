@@ -25,5 +25,32 @@
     "sha256": "e28af668fa7b7494d4cd7efb363880c4528f62cd053acb359789ed56ea23e5d4",
     "url": "https://covers.openlibrary.org/b/isbn/026263113X-L.jpg?default=false",
     "width": 320
+  },
+  "perceptrons-1969.jpg": {
+    "bytes": 48866,
+    "description": "Perceptrons: An Introduction to Computational Geometry (Minsky & Papert, MIT Press 1969). Original edition, ISBN 0262630222. Red cover with the two purple spirals.",
+    "format": "jpeg",
+    "height": 500,
+    "sha256": "63fc9f82781c29572d7829ade4a535789de5cee37e303ad3255913428e9e3df2",
+    "url": "https://covers.openlibrary.org/b/isbn/0262630222-L.jpg?default=false",
+    "width": 331
+  },
+  "perceptrons-1988-expanded.jpg": {
+    "bytes": 22983,
+    "description": "Perceptrons, Expanded Edition (Minsky & Papert, MIT Press 1988), ISBN 0262631113. Green cover with the red-and-green nested squares.",
+    "format": "jpeg",
+    "height": 475,
+    "sha256": "a463d8cef62b0e0742a867bf9abe05dea8e5b8d86aac06fc621c724ad75283cf",
+    "url": "https://covers.openlibrary.org/b/isbn/0262631113-L.jpg?default=false",
+    "width": 325
+  },
+  "perceptrons-2017-reissue.jpg": {
+    "bytes": 21363,
+    "description": "Perceptrons, 2017 reissue of the 1988 expanded edition with a foreword by Leon Bottou, ISBN 9780262534772. Orange cover, spirals redrawn.",
+    "format": "jpeg",
+    "height": 500,
+    "sha256": "77100c87fc4d40b71908866ad60742d4c1d81ba184407de1564d1b79f745e1c0",
+    "url": "https://covers.openlibrary.org/b/isbn/9780262534772-L.jpg?default=false",
+    "width": 333
   }
 }

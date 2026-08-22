@@ -10,6 +10,9 @@ alongside them.
 | `pdp-vol1-foundations.jpg` | *Parallel Distributed Processing*, Volume 1: Foundations (Rumelhart, McClelland & the PDP Research Group, MIT Press, 1986). The blue one. |
 | `pdp-vol2-psychological-and-biological-models.jpg` | *Parallel Distributed Processing*, Volume 2: Psychological and Biological Models (McClelland, Rumelhart & the PDP Research Group, MIT Press, 1986). The red one. |
 | `pdp-vol3-handbook.jpg` | *Explorations in Parallel Distributed Processing: A Handbook of Models, Programs, and Exercises* (McClelland & Rumelhart, MIT Press, 1988) — the third volume of the set. The teal one. |
+| `perceptrons-1969.jpg` | *Perceptrons: An Introduction to Computational Geometry* (Minsky & Papert, MIT Press, 1969), original edition. Red cover, two purple spirals. |
+| `perceptrons-1988-expanded.jpg` | *Perceptrons*, Expanded Edition (1988). Green cover, nested red squares. |
+| `perceptrons-2017-reissue.jpg` | *Perceptrons*, 2017 reissue of the expanded edition, with a foreword by Léon Bottou. Orange cover, spirals redrawn. |
 
 ## How to add more
 
