@@ -52,5 +52,86 @@
     "sha256": "77100c87fc4d40b71908866ad60742d4c1d81ba184407de1564d1b79f745e1c0",
     "url": "https://covers.openlibrary.org/b/isbn/9780262534772-L.jpg?default=false",
     "width": 333
+  },
+  "pluribus/bts-gilligan-on-set.jpg": {
+    "bytes": 2271397,
+    "description": "Behind the scenes: Vince Gilligan kneeling with a phone on a night shoot. Frame from the \"From Every Angle\" featurette, 3840x2160.",
+    "format": "jpeg",
+    "height": 2160,
+    "sha256": "07a3b4b69d13a2671fb7222cd848c114f4993c4c77998eca8fea3ed470e80d71",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/ZrrYXiZR9gLQnAlxjCAvnw/3840x2160.jpg",
+    "width": 3840
+  },
+  "pluribus/bts-gilligan-seehorn-interview.jpg": {
+    "bytes": 851271,
+    "description": "Behind the scenes: Vince Gilligan and Rhea Seehorn seated for the \"What on Earth Is Pluribus?\" featurette, 3840x2160.",
+    "format": "jpeg",
+    "height": 2160,
+    "sha256": "98d9c01d1757319f986b27b978866064e85ac4eb252547e7081936c1cbc1554d",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/tmmmXFZCxis3QmtoH28TyA/3840x2160.jpg",
+    "width": 3840
+  },
+  "pluribus/key-art-16x9.png": {
+    "bytes": 6871387,
+    "description": "Official Pluribus key art, 16:9 landscape. Apple TV+ press kit, 3840x2160.",
+    "format": "png",
+    "height": 2160,
+    "sha256": "2db3d43dbc2b8ecfef0731cf3916085ef1974a169c302d6460556a4c2eafe2f2",
+    "url": "https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/Apple_TV_Pluribus_Key_Art.zip#Apple_TV_Pluribus_Key_Art_16_4.png",
+    "width": 3840
+  },
+  "pluribus/key-art-header-4x1.jpg": {
+    "bytes": 212913,
+    "description": "Pluribus key art as the 4:1 banner used on the Apple TV+ press page.",
+    "format": "jpeg",
+    "height": 688,
+    "sha256": "10e4f3b83edfb8e15c379c7affad0e3b22cce5c71ea681420b4c090d111bc898",
+    "url": "https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/4x1/Apple_TV_Pluribus_Key_Art_graphic_header_4_1_show_home.jpg",
+    "width": 2364
+  },
+  "pluribus/key-art-poster-2x3.png": {
+    "bytes": 5108627,
+    "description": "Official Pluribus key art, 2:3 poster (yellow, Carol screaming). Apple TV+ press kit, 2000x3000.",
+    "format": "png",
+    "height": 3000,
+    "sha256": "6ee0039658f2074aec621b088aa1eabec1958c025ddb4a31d9d3a5923719239c",
+    "url": "https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/Apple_TV_Pluribus_Key_Art.zip#Apple_TV_Pluribus_Key_Art_2_3.png",
+    "width": 2000
+  },
+  "pluribus/logo.svg": {
+    "bytes": 53051,
+    "description": "The Pluribus logotype as vector art. Wikimedia Commons, public domain (simple typography, below the threshold of originality).",
+    "format": "svg",
+    "height": null,
+    "sha256": "65a0d9eb0d9d92c2fd1ef14f14f9492f7fd9c8958ac825c8be286a97704b7ff1",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Pluribus_Logo.svg",
+    "width": null
+  },
+  "pluribus/rhea-seehorn-qa.jpg": {
+    "bytes": 869760,
+    "description": "Rhea Seehorn at a Pluribus Q&A in Santa Monica. Wikimedia Commons, photo by Kevin Paul, CC BY 4.0. 1600x2000.",
+    "format": "jpeg",
+    "height": 2000,
+    "sha256": "c06ce016528bcfccbd547495ca3f1ff71be746861468114e94d62d3d0a390158",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Rhea_Seehorn_-_Pluribus.jpg",
+    "width": 1600
+  },
+  "pluribus/still-carol-yellow-jacket-closeup.jpg": {
+    "bytes": 1098286,
+    "description": "Screen still: Carol Sturka (Rhea Seehorn) in close-up, yellow leather jacket. Cover frame of the \"Happiness\" trailer, 3840x2160.",
+    "format": "jpeg",
+    "height": 2160,
+    "sha256": "bc08f2d8f4c35207ba3d9e98a2f2205113ba00b7ab484afad7d9154020546a3a",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/cc3uCQFHD6YJEqmhxYeDNQ/3840x2160.jpg",
+    "width": 3840
+  },
+  "pluribus/still-carol-yellow-jacket-dark.jpg": {
+    "bytes": 809053,
+    "description": "Screen still: Carol lit against a black background, looking up. Cover frame of the \"Join Us\" trailer, 3840x2160.",
+    "format": "jpeg",
+    "height": 2160,
+    "sha256": "ebe5188e63a1337539737d5b18f5da1f7e8a56218d2658dbb24edde023ac8052",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/ntLNBvnQxDUKa70T9THm8Q/3840x2160.jpg",
+    "width": 3840
   }
 }

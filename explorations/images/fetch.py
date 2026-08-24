@@ -18,10 +18,12 @@ came from (url, sha256, size, pixel dimensions) so provenance is not lost.
 
 import argparse
 import hashlib
+import io
 import json
 import struct
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -69,6 +71,11 @@ def sniff_format(data):
             if name == "webp" and data[8:12] != b"WEBP":
                 continue
             return name
+    # SVG is text, so it has no magic number: look for the root element instead.
+    head = data[:512].lstrip()
+    if head.startswith(b"<?xml") or head.startswith(b"<svg"):
+        if b"<svg" in data[:2048]:
+            return "svg"
     return None
 
 
@@ -98,12 +105,33 @@ def image_size(data, fmt):
     return None
 
 
-def download(url):
-    """Fetch url and return (bytes, format). Raises on anything that is not an image."""
+def fetch_bytes(url):
+    """Fetch url and return (bytes, declared content type)."""
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as response:
         content_type = (response.headers.get("Content-Type") or "").split(";")[0].strip()
-        data = response.read()
+        return response.read(), content_type
+
+
+def download(url):
+    """Fetch url and return (bytes, format). Raises on anything that is not an image.
+
+    A url of the form `https://.../pack.zip#member.png` downloads the zip and
+    pulls that one member out of it. Some publishers (Apple's press site, for
+    one) only distribute their high-resolution artwork as an archive.
+    """
+    if "#" in url:
+        archive_url, member = url.split("#", 1)
+        archive, _ = fetch_bytes(archive_url)
+        with zipfile.ZipFile(io.BytesIO(archive)) as zf:
+            if member not in zf.namelist():
+                raise ValueError(
+                    f"{member!r} is not in the archive. It contains: {zf.namelist()}"
+                )
+            data = zf.read(member)
+        content_type = "image/" + member.rsplit(".", 1)[-1].lower()
+    else:
+        data, content_type = fetch_bytes(url)
 
     if not content_type.startswith("image/"):
         raise ValueError(
@@ -130,6 +158,7 @@ def main():
 
     for filename, url, description in entries:
         target = HERE / filename
+        target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists() and not args.force:
             print(f"skip     {filename} (already present)")
             continue

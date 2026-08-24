@@ -1,0 +1,11 @@
+# Apple TV+ press-kit and storefront artwork. Apple's LEGAL_NOTICE.rtf permits
+# "personal or editorial and non-commercial" use, which does not sit well with
+# redistributing the files from a public, MIT-licensed repository. They are
+# therefore fetched on demand rather than committed: run `python3 fetch.py`.
+# The two freely licensed Pluribus files (logo.svg, rhea-seehorn-qa.jpg) are
+# tracked normally.
+pluribus/key-art-*
+pluribus/still-*
+pluribus/bts-*
+
+__pycache__/

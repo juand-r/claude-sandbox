@@ -9,3 +9,19 @@ pdp-vol3-handbook.jpg	https://covers.openlibrary.org/b/isbn/026263113X-L.jpg?def
 perceptrons-1969.jpg	https://covers.openlibrary.org/b/isbn/0262630222-L.jpg?default=false	Perceptrons: An Introduction to Computational Geometry (Minsky & Papert, MIT Press 1969). Original edition, ISBN 0262630222. Red cover with the two purple spirals.
 perceptrons-1988-expanded.jpg	https://covers.openlibrary.org/b/isbn/0262631113-L.jpg?default=false	Perceptrons, Expanded Edition (Minsky & Papert, MIT Press 1988), ISBN 0262631113. Green cover with the red-and-green nested squares.
 perceptrons-2017-reissue.jpg	https://covers.openlibrary.org/b/isbn/9780262534772-L.jpg?default=false	Perceptrons, 2017 reissue of the 1988 expanded edition with a foreword by Leon Bottou, ISBN 9780262534772. Orange cover, spirals redrawn.
+
+# --- Pluribus (Apple TV+, Vince Gilligan, 2025) ---
+# Key art comes from Apple's press site. Its bundled LEGAL_NOTICE.rtf reads:
+# "By using any of the media included in this zipped file, you agree that the
+# use is personal or editorial and non-commercial. Images and video cannot be
+# altered or modified in any way." The 4K frames come from the Apple TV
+# storefront's artwork CDN, whose {w}x{h} template is filled in below.
+pluribus/key-art-poster-2x3.png	https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/Apple_TV_Pluribus_Key_Art.zip#Apple_TV_Pluribus_Key_Art_2_3.png	Official Pluribus key art, 2:3 poster (yellow, Carol screaming). Apple TV+ press kit, 2000x3000.
+pluribus/key-art-16x9.png	https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/Apple_TV_Pluribus_Key_Art.zip#Apple_TV_Pluribus_Key_Art_16_4.png	Official Pluribus key art, 16:9 landscape. Apple TV+ press kit, 3840x2160.
+pluribus/key-art-header-4x1.jpg	https://www.apple.com/tv-pr/shows-and-films/p/pluribus/images/season-01/show-home-graphic-header/key-art-02/4x1/Apple_TV_Pluribus_Key_Art_graphic_header_4_1_show_home.jpg	Pluribus key art as the 4:1 banner used on the Apple TV+ press page.
+pluribus/still-carol-yellow-jacket-closeup.jpg	https://is1-ssl.mzstatic.com/image/thumb/cc3uCQFHD6YJEqmhxYeDNQ/3840x2160.jpg	Screen still: Carol Sturka (Rhea Seehorn) in close-up, yellow leather jacket. Cover frame of the "Happiness" trailer, 3840x2160.
+pluribus/still-carol-yellow-jacket-dark.jpg	https://is1-ssl.mzstatic.com/image/thumb/ntLNBvnQxDUKa70T9THm8Q/3840x2160.jpg	Screen still: Carol lit against a black background, looking up. Cover frame of the "Join Us" trailer, 3840x2160.
+pluribus/bts-gilligan-on-set.jpg	https://is1-ssl.mzstatic.com/image/thumb/ZrrYXiZR9gLQnAlxjCAvnw/3840x2160.jpg	Behind the scenes: Vince Gilligan kneeling with a phone on a night shoot. Frame from the "From Every Angle" featurette, 3840x2160.
+pluribus/bts-gilligan-seehorn-interview.jpg	https://is1-ssl.mzstatic.com/image/thumb/tmmmXFZCxis3QmtoH28TyA/3840x2160.jpg	Behind the scenes: Vince Gilligan and Rhea Seehorn seated for the "What on Earth Is Pluribus?" featurette, 3840x2160.
+pluribus/logo.svg	https://upload.wikimedia.org/wikipedia/commons/c/cd/Pluribus_Logo.svg	The Pluribus logotype as vector art. Wikimedia Commons, public domain (simple typography, below the threshold of originality).
+pluribus/rhea-seehorn-qa.jpg	https://upload.wikimedia.org/wikipedia/commons/b/b3/Rhea_Seehorn_-_Pluribus.jpg	Rhea Seehorn at a Pluribus Q&A in Santa Monica. Wikimedia Commons, photo by Kevin Paul, CC BY 4.0. 1600x2000.
