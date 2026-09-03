@@ -29,466 +29,622 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\itshape How Researchers Use LLMs}
+\fancyhead[L]{\small\leftmark}
 \fancyhead[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-
-\title{\textbf{How Researchers Use LLMs:\\Datasets, Evidence, and Replication Strategies}}
-\author{Research survey compiled August 29, 2026}
-\date{}
 
 \begin{document}
-\maketitle
-\thispagestyle{fancy}
 
-\begin{abstract}
-This report synthesizes findings from six primary-source deep-dives into how scientists and CS researchers use large language models in practice. It covers three questions: (1) what researchers are actually doing with AI---which models, agents, and workflows---based on empirical data; (2) whether anyone has replicated research workflows with Claude specifically, and what the most productive elicitation strategies are; (3) budget-conscious advice on whether to focus on ideation-only with expensive models or run a full pipeline with cheap ones. The evidence base spans ${\sim}108$K scientific papers, ${\sim}94$K real-world use cases, ${\sim}128$K GitHub projects, conversation logs from millions of users, and several controlled experiments.
-\end{abstract}
+\begin{center}
+{\LARGE\bfseries How Scientists Use LLMs in 2025--2026:\\
+Models, Agents, Workflows, and What Actually Works}
+
+\vspace{0.8em}
+{\large Research Landscape Report}
+
+\vspace{0.5em}
+{\normalsize September 2026}
+\end{center}
+
+\vspace{1em}
 
 \tableofcontents
 \newpage
 
-%=============================================================================
-\section{What Are Researchers Actually Doing with AI?}
-%=============================================================================
+%% ============================================================
+\section{Introduction}
+%% ============================================================
 
-\subsection{Which Models Do Scientists Use?}
+This report synthesizes empirical evidence on how scientists and CS researchers are using large language models as of mid-2026. It draws on large-scale surveys, bibliometric analyses, benchmark evaluations, and case studies to answer three questions:
 
-The most direct evidence comes from Trišovi\'{c}~\cite{trisovic2026}, who tracked 62 LLM variants across 108K citing papers from 2018--2025. The study classified every citation as either background reference or active adoption (using or extending the model's weights), with Bayesian error correction to handle the asymmetric false-positive risk inherent in rare-event classification.
+\begin{enumerate}
+\item \textbf{What are researchers actually doing with AI?} Not what they could do in principle, but what they are doing now---which models, which tools, which tasks, how often, and with what results.
 
-\subsubsection{Key findings on model adoption}
+\item \textbf{Can these workflows be replicated with Claude?} What Claude-specific infrastructure exists, and what are five concrete elicitation strategies that cover the most common research use cases?
 
-The study does not publish a simple ``top $N$ most-adopted models'' ranking---its contribution is about lifecycle dynamics, not market share. What it does establish:
-
-\begin{itemize}[nosep]
-    \item Scientific adoption follows an \textbf{inverted-U trajectory}: usage rises after release, peaks, and declines as newer models appear. The aggregate peak across the 2019--2022 cohorts is at \textbf{3.58 years} (95\% CI: 3.30--3.87) post-release.
-    \item This lifecycle is \textbf{compressing rapidly}. Each successive release year is associated with a 27\% shorter time-to-peak ($p < 0.001$) and a 23\% shorter lifespan ($p < 0.001$).
-\end{itemize}
-
-\begin{table}[h]
-\centering
-\caption{Peak adoption timing by release cohort}
-\label{tab:peak-adoption}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-Release cohort & Peak adoption (years) & Peak (months) \\
-\midrule
-2019 & 4.0 & 48 \\
-2020 & 3.4 & 40 \\
-2021 & 2.9 & 35 \\
-2022 & 2.0 & 24 \\
-2023 & 1.5 & 18 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{itemize}[nosep]
-    \item \textbf{Release timing dominates model-level attributes} as a predictor of lifecycle dynamics. A decoder-only model and an encoder-decoder from the same year have more similar lifecycles than two decoder-only models released three years apart. Architecture, openness, and scale have little independent predictive power for time-to-peak or lifespan once release year is controlled.
-    \item For \textbf{adoption volume} (as opposed to lifecycle shape), model size and API accessibility do matter: larger models and API-accessible models accumulate more total adoptions. Fine-tuned models accumulate fewer---they serve narrower communities.
-    \item The ten pre-2022 models with highest \textbf{retention} (2025 adoption as fraction of their peak) are: RoBERTa Large (0.79), GPT-2 1.5B (0.78), DeBERTa (0.72), CodeT5 Base (0.67), XLM-RoBERTa (0.66), T5-3B (0.59), T5-11B (0.56), mT5-XXL (0.54), SciBERT (0.52), and Transformer-XL (0.47). All are base/pretrained models spanning all three architecture classes.
-    \item GPT-4 is classified as ``still rising'' (not yet peaked), so it is excluded from time-to-peak estimation.
-\end{itemize}
-
-\subsubsection{What the study does not answer}
-
-Which specific models are \#1, \#2, \#3 by total adoption count, and whether adoption patterns differ by scientific field. The author cites a companion paper (Trišovi\'{c} et al., arXiv:2511.21739) and Pramanick et al.~(2026) as sources for cross-field breakdowns.
-
-\subsubsection{Implication for choosing a model today}
-
-The compression trend means any model you adopt for a research workflow will likely be displaced within 1--2 years by something newer. This argues for building workflows that are \textbf{model-agnostic}---structured around the pipeline stages and prompt strategies rather than tightly coupled to one model's API quirks.
-
-
-\subsection{What Do Researchers Use LLMs For?}
-
-The REALM dataset~\cite{cheng2025realm} provides the most granular answer. It contains 94K curated real-world LLM use cases from Reddit (${\sim}15$K) and news articles (${\sim}79$K), spanning June 2020 through December 2024, annotated with a 14-category use-case taxonomy and 14 occupation groups.
-
-\begin{table}[h]
-\centering
-\caption{Use-case distribution (share of use-case $\times$ occupation links)}
-\label{tab:use-case-dist}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-Category & News (\%) & Reddit (\%) \\
-\midrule
-Content Synthesis (summarize, integrate) & 22.4 & 25.0 \\
-Content Creation (generate text, code, data) & 17.9 & 23.8 \\
-Process Automation & 14.9 & 14.8 \\
-Decision Making & 14.9 & 11.6 \\
-Digital Assistance & 9.1 & 11.5 \\
-Everything else combined & 20.8 & 13.3 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Content Creation and Content Synthesis together account for ${\sim}40$\% of all LLM use across both sources. This is consistent with writing assistance, summarization, and code generation being the dominant real-world applications.
-
-\textbf{Scientists specifically} (the Life, Physical, and Social Science occupation group) are disproportionately linked to \textbf{Discovery}-type use cases---finding/uncovering new insights, exploratory analysis---which distinguishes them from Business/Management users (Decision Making, Process Automation) and Arts/Media users (Content Creation). The paper states: ``professionals in Computer Science, Mathematics, Physical Sciences, and Social Sciences are notably involved in discovery-oriented tasks, highlighting the potential of LLMs to advance scientific research.''
-
-However, scientists represent a modest share of overall LLM discourse: ${\sim}4.8$\% of news links and ${\sim}4.3$\% of Reddit links. Computer \& Mathematical occupations are much larger (17.3\% news, 28.3\% Reddit). After normalizing for each occupation's baseline share of media attention, Education, Healthcare, and Art \& Media show the highest ``exposure rates''---meaning LLM-related content is a disproportionately large fraction of what gets said about those fields.
-
-REALM does \emph{not} contain per-model usage breakdowns. Model names were used only as search keywords to filter the initial corpus, not analyzed as an output variable.
-
-
-\subsection{Coding Agents: Adoption and Usage Patterns}
-
-Two large-scale studies cover this territory in detail.
-
-\subsubsection{GitHub-wide adoption}
-
-Robbes et al.~\cite{robbes2026} analyzed 128,018 projects for coding agent adoption markers (config files like \texttt{CLAUDE.md}/\texttt{.cursorrules}/\texttt{AGENTS.md}, and commit-message signatures).
-
-\begin{itemize}[nosep]
-    \item \textbf{Overall adoption rate: 22--29\%} of projects show evidence of coding-agent use as of February 2026---reached in roughly one year from when full-fledged agents appeared.
-\end{itemize}
-
-\begin{table}[h]
-\centering
-\caption{Coding agent market share by adopting-project count}
-\label{tab:agent-share}
-\begin{tabular}{@{}lr@{}}
-\toprule
-Tool & Adopting projects \\
-\midrule
-Copilot & 13,890 \\
-Claude Code & 12,053 \\
-Generic/AGENTS.md (likely mostly Codex) & 5,325 \\
-Cursor & 4,416 \\
-Codex (explicit) & 2,965 \\
-Gemini & 2,147 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{itemize}[nosep]
-    \item \textbf{What agents do} (classification of 790 Claude Code commits): 35.7\% new features, 29.9\% bug fixes, 10.9\% docs, 9.9\% refactoring, 5.4\% tests, 7.1\% chores. Roughly double the feature-commit share of human-authored commits.
-    \item \textbf{AI-assisted commits are substantially larger}: median 31 added lines (AI) vs.\ 11 (human). Commits touching 20+ files are ${\sim}30$\% more frequent for AI-assisted work.
-    \item \textbf{Youngest projects adopt most}: 26.4\% file-level adoption for projects $\leq$1 year old vs.\ 8.0\% for projects $>$10 years old.
-\end{itemize}
-
-\subsubsection{Microsoft internal study}
-
-Murphy-Hill et al.~\cite{murphyhill2026} studied Claude Code and GitHub Copilot CLI adoption among tens of thousands of engineers over ${\sim}4$ months (Jan--Apr 2026).
-
-\begin{itemize}[nosep]
-    \item \textbf{Productivity lift: +24\% merged PRs/engineer/day} (95\% CI: +14.5\%, +33.7\%), with no decay over 4 months. Dose-response is monotone: +15\% at 3 tool-use days/week, +50\% at 5+ days/week.
-    \item \textbf{Social exposure is the strongest adoption predictor}: +216\% higher odds of trying the tool when $>$25\% of skip-level peers already used it.
-    \item \textbf{Neither study measures code quality directly.} Both explicitly flag this as the critical open question. The GitHub study found increased churn/complexity; a related Cursor study found increasing static-analysis warnings over time. The throughput gains are real, but whether they translate into better software is unresolved.
-\end{itemize}
-
-
-\subsection{LLM-Based Scientific Agent Systems}
-
-The survey by Ren et al.~\cite{ren2025} catalogs 120+ LLM-based scientific agent systems. The most documented ones are summarized in Table~\ref{tab:agent-systems}.
-
-\begin{table}[h]
-\centering
-\caption{Major LLM-based scientific agent systems}
-\label{tab:agent-systems}
-\small
-\begin{tabular}{@{}L{2.4cm}L{1.4cm}L{3.8cm}L{2.8cm}R{1.2cm}@{}}
-\toprule
-System & Domain & Pipeline stages & Models & Cost \\
-\midrule
-AI Scientist v1 (Sakana, 2024) & ML/CS & Full: idea $\to$ code $\to$ experiments $\to$ paper $\to$ review & GPT-4 / Claude 3.5 Sonnet & ${\sim}\$15$ \\
-AI Scientist v2 (Sakana, 2025) & ML/CS & Same + agentic tree search, VLM figure feedback & Claude 3.5 Sonnet & ${\sim}\$20$--25 \\
-Agent Lab.\ (Schmidgall, 2025) & ML & Lit review $\to$ plan $\to$ data prep $\to$ experiments $\to$ report & GPT-4o / o1-mini / o1-preview & \$2.33--13.10 \\
-ChemCrow (2024) & Chemistry & Reasoning + 18 tools & GPT-4 & N/R \\
-Coscientist (2023) & Chemistry & Lit $\to$ plan $\to$ robotic synthesis & GPT-4 & N/R \\
-ResearchAgent (2024) & General & Ideation + multi-agent peer review & Various & N/R \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsubsection{The typical automated pipeline}
-
-From Agent Laboratory~\cite{schmidgall2025}, the best-documented system:
-\begin{enumerate}[nosep]
-    \item \textbf{Literature Review}---agent queries arXiv, iteratively builds a curated paper set
-    \item \textbf{Plan Formulation}---``PhD'' and ``Postdoc'' agents dialogue to consensus
-    \item \textbf{Data Preparation}---code generation for data loading (HuggingFace datasets)
-    \item \textbf{Experiments}---iterative code generation with LLM-reward scoring and self-reflection
-    \item \textbf{Results Interpretation}---joint interpretation by multiple agents
-    \item \textbf{Report Writing}---LaTeX scaffold, arXiv-grounded editing, automated NeurIPS-style review
+\item \textbf{What is the right budget strategy?} Given limited resources, should one invest in ideation-only with frontier models, or run a full pipeline with cheaper models?
 \end{enumerate}
 
-\subsubsection{Which stages work vs.\ which don't}
+The evidence is drawn from over 30 primary sources published between late 2024 and mid-2026.
 
-\begin{itemize}[nosep]
-    \item \textbf{Most automatable}: code generation/debugging (objective compiler/test feedback), literature retrieval, data preparation, simulator-checkable steps.
-    \item \textbf{Least automatable}: scientific idea novelty/significance judgment, safety-critical decisions, and (surprisingly) the literature review \emph{execution} itself---Agent Laboratory's lit review phase failed 60--80\% of the time depending on backend.
-    \item \textbf{Human-in-the-loop raises quality but not significance}: co-pilot mode raised human-rated quality/clarity/soundness, but significance scores barely moved (+0.03/10).
+
+%% ============================================================
+\section{The Current Landscape: Researcher AI Adoption}
+\label{sec:adoption}
+%% ============================================================
+
+\subsection{Adoption rates}
+
+Multiple independent surveys converge on the same picture: AI adoption among researchers has crossed the majority threshold and is accelerating.
+
+\begin{table}[h]
+\centering
+\caption{Researcher AI adoption surveys (2024--2026)}
+\label{tab:adoption}
+\begin{tabular}{L{3.2cm} R{0.7cm} L{2.8cm} L{5.5cm}}
+\toprule
+\textbf{Survey} & \textbf{$n$} & \textbf{Date} & \textbf{Key finding} \\
+\midrule
+Wiley ExplanAItions~\cite{wiley2025} & 2,430 & Aug 2025 & 84\% use AI tools (up from 57\% in 2024); 62\% for research tasks \\
+Liao et al.~\cite{liao2024} & 816 & Nov 2024 & 81\% have used LLMs in their research pipeline \\
+Scientists who program~\cite{sciwhoprogram2025} & 868 & Dec 2025 & Adoption highest among students; general-purpose chat preferred over IDE tools \\
+Harvard GenAI Tracker~\cite{harvard2025} & --- & Nov 2025 & 62\% of professional/scientific/technical workers use GenAI \\
+Stanford HAI~\cite{stanfordhai2026} & --- & 2026 & 53\% population adoption within 3 years; 88\% of organizations use AI in $\geq$1 function \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+One important caveat from the Wiley survey: while adoption surged, expectations have recalibrated. In 2024, researchers believed AI outperformed humans for over half of presented use cases. By 2025, that dropped to less than one-third~\cite{wiley2025}. Researchers are moving from hype to evidence-based adoption.
+
+\subsection{Which models}
+
+Among researchers who name their tools, general-purpose LLMs dominate overwhelmingly---75.9\% of all tool mentions are general-purpose models, compared to 7.2\% for writing tools and 5.6\% for literature discovery tools~\cite{wiley2025}.
+
+\begin{table}[h]
+\centering
+\caption{Model preferences among researchers (Wiley 2025)}
+\label{tab:models}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Model/Tool} & \textbf{Mention rate} & \textbf{YoY growth} \\
+\midrule
+ChatGPT (OpenAI) & 36.8\% & +23pp \\
+Gemini (Google) & 19.4\% & +10pp \\
+Claude (Anthropic) & 6.5\% & +10pp \\
+Copilot (Microsoft) & --- & +11pp \\
+Specialized tools & 25\% (combined) & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Claude has the smallest base but the highest relative growth rate. Only 11\% of researchers have heard of specialized research AI tools (Elicit, Consensus, Scite, etc.), despite these tools serving over 5 million users collectively~\cite{wiley2025}.
+
+\subsection{Which tasks}
+
+The most common uses, ranked by frequency across surveys~\cite{liao2024,wiley2025,sciwhoprogram2025}:
+
+\begin{enumerate}
+\item \textbf{Information seeking and literature review.} The dominant use case. Researchers query LLMs to find papers, understand concepts, and synthesize across sources. This is the ``entry drug''---almost every researcher who uses AI at all uses it for this.
+
+\item \textbf{Writing and editing.} Drafting, polishing, translating. Especially valued by non-native English speakers, who report higher perceived benefits~\cite{liao2024}.
+
+\item \textbf{Coding and computational work.} Code generation, debugging, data processing scripts. Scientists overwhelmingly prefer general-purpose chat interfaces (ChatGPT) over developer-specific tools (Copilot) for this~\cite{sciwhoprogram2025}.
+
+\item \textbf{Brainstorming and ideation.} Generating hypotheses, research questions, experimental designs. Used by the majority but less frequently than the above.
+
+\item \textbf{Data analysis and generation.} The \emph{least} common use. Researchers remain cautious about letting LLMs touch their actual data or generate synthetic data~\cite{liao2024}.
+\end{enumerate}
+
+An important equity finding: traditionally disadvantaged groups in academia---non-White, junior, and non-native English-speaking researchers---report \emph{higher} LLM usage and perceived benefits, suggesting potential for improved research equity~\cite{liao2024}.
+
+
+%% ============================================================
+\section{The Writing Revolution}
+\label{sec:writing}
+%% ============================================================
+
+The most dramatic and measurable impact of LLMs on science is in writing. Multiple independent analyses using excess-vocabulary detection methods converge:
+
+\begin{itemize}
+\item \textbf{89\%} of PubMed papers published in December 2025 show detectable LLM vocabulary influence~\cite{tubingen2026}.
+\item Whole-year estimates: 77\% for 2025, 52\% for 2024~\cite{tubingen2026}.
+\item On arXiv: 10\% of 2023 abstracts, 21\% of 2024, 27\% of early 2025 exceeded pre-LLM thresholds~\cite{arxivwriting2025}.
+\item In civil/environmental engineering: 26.2\% in 2025, with construction journals reaching 38.4\%~\cite{tubingen2026}.
+\item A cross-disciplinary PNAS analysis of 7.3 million articles confirmed sharp post-ChatGPT rises across CS, Physics, Mathematics, and Statistics~\cite{pnas2026}.
 \end{itemize}
 
-\subsubsection{Quality reality check}
+Does AI-assisted writing affect impact? An analysis of 1.17 million engineering papers found LLM-assisted writing is associated with \emph{higher} citations~\cite{jinformatics2026}. A study of 69,209 Health Informatics papers found links to more focused presentation and broader citation practices. The authors caution that these patterns do not prove better science, but they argue against penalizing tool use per se.
 
-Agent Laboratory papers scored \textbf{3.5--4.0/10} on human-rated NeurIPS-style reviews (autonomous mode), vs.\ the NeurIPS 2024 acceptance average of \textbf{5.85--5.9/10}. Co-pilot mode reached 4.38/10---still 1.45 points below the acceptance bar. The automated reviewer overestimated quality by 2.3 points. One AI Scientist v2 paper was accepted at an ICLR workshop (scores 6/7/6), but this is a single anecdote at a workshop, not the main conference.
+In peer review, 53\% of reviewers have used AI tools, with 59\% of those using it to help write the review report itself~\cite{frontiersreview2025}. Computational analysis estimates 6.5--16.9\% of reviews at major AI conferences contain substantially LLM-modified text.
 
 
-\subsection{The Prompt Dataset Landscape}
+%% ============================================================
+\section{Coding Agents in Research}
+\label{sec:coding}
+%% ============================================================
 
-Zhang et al.~\cite{zhang2026} cataloged 129 LLM prompt datasets ($>$1.22~TB, $>$673M instances) into a structured taxonomy:
+AI-assisted coding has become the fastest-growing research workflow change.
 
-\begin{itemize}[nosep]
-    \item 62.8\% were created by LLM researchers (for fine-tuning/benchmarking), 22.5\% by end users, and only \textbf{14.7\% by domain scientists}.
-    \item The 19 domain-scientist datasets are overwhelmingly math/science reasoning corpora (SciInstruct, DeepMath, NuminaMath, PubMedQA, etc.)---they capture the \emph{kind} of questions scientists ask LLMs, but are not logs of scientists' actual LLM usage sessions.
-    \item \textbf{Critical gap}: no dataset in their catalogue contains actual researcher/scientist chat logs during real research work. Commercial assistant traffic (ChatGPT, Claude) is entirely absent. This is the biggest hole for studying research workflows specifically.
+\subsection{Adoption numbers}
+
+\begin{itemize}
+\item \textbf{29\%} of new Python functions in the US are now AI-assisted, based on 30 million commits by 160,000 developers~\cite{daniotti2026}.
+\item \textbf{Claude Code} reached 4.5\% of public GitHub weekly commits by March 2026 (2.6M/week), representing 42,896$\times$ growth in 13 months. 18\% workplace adoption per JetBrains~\cite{jetbrains2026}.
+\item \textbf{GitHub Copilot}: $\sim$20M all-time users, 4.7M paid subscribers. Workplace adoption \emph{declining} from 29\% to 21\% (Jan--mid 2026)~\cite{jetbrains2026}.
+\item \textbf{Robbes et al.}~\cite{robbes2026}: 22--29\% of 128,018 GitHub projects show coding agent traces (Feb 2026). A follow-up found new projects show $>$2$\times$ higher adoption, with many built almost entirely by agents~\cite{robbes2026b}.
 \end{itemize}
 
-For actual conversation data, the best public resources remain \textbf{WildChat-4.8M} (Allen AI; 4.8M real ChatGPT conversations with metadata, through July 2025) and \textbf{LMSYS-Chat-1M} (1M conversations across 25 LLMs from Chatbot Arena). Neither is scientist-specific, but both can be filtered by topic.
+\subsection{Productivity effects}
+
+The evidence is mixed in interesting ways:
+
+\begin{itemize}
+\item \textbf{Murphy-Hill et al.}~\cite{murphyhill2026}: Tens of thousands of Microsoft engineers; adopters merged 24\% more PRs per day. Adoption spread through social networks; retention predicted by coding activity, not demographics.
+\item \textbf{BIS study}~\cite{bis2025}: Lines of code produced increased by 55\% with LLM assistance, with $\sim$1/3 directly attributable to LLM-generated code. 22\% increase in tasks completed.
+\item \textbf{METR RCT}~\cite{metr2025}: 16 experienced open-source developers, 246 tasks---AI tools made them 19\% \emph{slower}, yet they estimated 20\% \emph{faster}. This contradicts the throughput findings above.
+\end{itemize}
+
+The reconciliation: the METR study measured experienced developers on their own codebases (where they already knew the code well), while Murphy-Hill and BIS measured broader populations including many working in unfamiliar code. AI coding tools may help most when the developer needs to learn or navigate, and help least (or hurt) when they already have deep context.
+
+\subsection{Autonomous agent benchmarks}
+
+\begin{table}[h]
+\centering
+\caption{Coding agent benchmark performance (SWE-bench Verified, 2026)}
+\label{tab:agents}
+\begin{tabular}{lr}
+\toprule
+\textbf{Agent} & \textbf{Score} \\
+\midrule
+SWE-agent & 72.0\% \\
+OpenHands & 68.4\% \\
+Devin 2.0 & 45.8\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+By April 2026, agent-attributed commits on GitHub exceeded 320,000 per month~\cite{robbes2026b}.
+
+A notable scientific computing result: Google's ERA system discovered 40 new methods for single-cell analysis, published in \emph{Nature} 2026~\cite{googleera2026}.
 
 
-%=============================================================================
+%% ============================================================
+\section{Scientific Agent Systems}
+\label{sec:agents}
+%% ============================================================
+
+A new class of autonomous research systems has emerged. These systems attempt to automate the full research pipeline---from idea to paper---with varying degrees of success.
+
+\subsection{AI Scientist v2 (Sakana AI, April 2025)}
+
+The headline: one AI Scientist v2 manuscript was accepted at an ICLR 2025 workshop (``I Can't Believe It's Not Better''), making it the first entirely AI-generated paper to pass peer review~\cite{sakana2025v2}.
+
+Cost: \$20--25 per paper. The system uses progressive agentic tree-search managed by a dedicated experiment manager agent. Unlike v1, it eliminates reliance on human-authored code templates.
+
+However, an independent evaluation found serious problems: 42\% experiment failure rate, 57\% hallucinated results, and ScholarPeer scores of $\sim$2.5/10 with 0/15 papers accepted~\cite{scholarpeer2026}. The system struggles with genuinely novel hypotheses and cannot justify design decisions with deep domain expertise.
+
+\subsection{Agent Laboratory (EMNLP 2025)}
+
+Accepts a human-provided research idea and progresses through literature review, experimentation, and report writing. Best results with o1-preview, scoring 4.0/10 on NeurIPS-style reviews (gpt-4o scored 3.5/10)~\cite{agentlab2025}. Human involvement at each stage significantly improves quality. Achieves 84\% cost reduction vs.\ previous autonomous methods.
+
+\subsection{FARS --- Fully Automated Research System (Feb--Mar 2026)}
+
+Produced 166 complete papers across 67 AI/ML topics in 228 hours. 282 structured reviews covering 140 papers found the output ``review-worthy and occasionally strong,'' but with recurring narrow experimental scope, methodological limitations, and integrity issues~\cite{fars2026}.
+
+\subsection{FutureHouse Robin (\emph{Nature}, May 2026)}
+
+A multi-agent system with three specialized agents (Crow for literature, Falcon for experimental design, Finch for data analysis). Demonstrated proof-of-concept by identifying ripasudil as a novel candidate for dry age-related macular degeneration in 2.5 months from conception to paper~\cite{futurehouse2026}. Commercialized through Edison Scientific.
+
+\subsection{Other notable systems}
+
+\begin{itemize}
+\item \textbf{AgentRxiv}~\cite{agentrxiv2025}: Collaborative autonomous research where agent labs upload/retrieve reports from a shared preprint server. Accuracy on MATH-500 improved from 70.2\% to 78.2\% through iterative agent collaboration.
+\item \textbf{SciAgents}~\cite{sciagents2025}: Knowledge graphs + multi-agent for biologically inspired materials. Published in \emph{Advanced Materials}.
+\item \textbf{EvoScientist}~\cite{evoscientist2026}: Adaptive multi-agent framework with persistent memory. Outperforms 7 systems on scientific idea generation.
+\item \textbf{ScientistOne}~\cite{scientistone2026}: Achieved 40\% acceptance under automated review with zero hallucinated references.
+\end{itemize}
+
+\subsection{Summary assessment}
+
+The state of automated research pipelines in mid-2026 is: \textbf{workshop-level quality is achievable; main-conference quality is not yet reliable}. AI Scientist v2 demonstrated that an AI-generated paper can pass peer review at a workshop, and several systems produce output that reviewers call ``occasionally strong.'' But none of 117 papers in the most comprehensive evaluation reached top-tier acceptance~\cite{scholarpeer2026}. Dominant failure modes remain fabricated results (5--77\% of papers), underpowered experiments (26--82\%), and fake references (8--72\%).
+
+This is a fast-moving target. The gap between automated output and human work has narrowed substantially since 2024, and current frontier models (Claude Opus 4.8, GPT-5.1, Gemini 2.5) have not yet been fully evaluated in these pipelines.
+
+
+%% ============================================================
+\section{LLM-Assisted Ideation: What Works and What Doesn't}
+\label{sec:ideation}
+%% ============================================================
+
+\subsection{The Si et al.\ result and the execution gap}
+
+The most cited study on LLM ideation is Si et al.\ (ICLR 2025)~\cite{si2025}. In blind evaluation by 79 expert reviewers across 7 NLP topics, LLM-generated ideas (from a Claude 3.5 Sonnet agent) scored \textbf{5.64 on novelty vs.\ 4.84 for human experts} ($p < 0.05$). This was widely reported as evidence that LLMs generate more novel ideas than humans.
+
+The critical follow-up (June 2025) reversed this picture~\cite{si2025followup}. When 43 researchers actually \emph{executed} both LLM and human ideas (100+ hours each), LLM ideas dropped dramatically:
+
+\begin{itemize}
+\item Novelty: $-$1.049
+\item Excitement: $-$1.760
+\item Effectiveness: $-$1.879
+\end{itemize}
+
+The interpretation: LLMs are good at generating ideas that \emph{sound} novel in a short description, but these ideas are disproportionately impractical or shallow when subjected to real implementation. The lesson is not that LLM ideation is useless---it is that idea \emph{proposals} must be filtered through feasibility analysis before committing resources.
+
+\subsection{Ideation Arena rankings (August 2026)}
+
+The Ideation Arena~\cite{ideationarena2026} provides the most comprehensive model comparison for research ideation:
+
+\begin{table}[h]
+\centering
+\caption{Ideation Arena Elo rankings (August 2026)}
+\label{tab:ideation}
+\begin{tabular}{lr}
+\toprule
+\textbf{System} & \textbf{Elo} \\
+\midrule
+GPT-5.1 & 1293.8 \\
+AI-Researcher / DeepSeek V3.2 & 1276.5 \\
+Claude 4.5 Opus & 1221.2 \\
+Claude 4.5 Sonnet & 1220.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A crucial finding: \textbf{agent architecture matters enormously}. The same base model varied by +177 to $-$228 Elo depending on the prompting framework used. This means the scaffolding around the model matters as much as the model itself for ideation quality.
+
+All LLMs showed \textbf{distributional narrowing}---entropy 0.55--0.88 vs.\ 0.92+ for humans. Extended chain-of-thought reasoning \emph{worsened} this narrowing. LLMs cluster around a narrower set of ``obvious good ideas'' while humans explore a wider space.
+
+\subsection{Elicitation strategies that work}
+
+From the empirical literature on what actually improves LLM ideation quality~\cite{si2025,ideationarena2026,iris2025}:
+
+\begin{enumerate}
+\item \textbf{Chain-of-thought prompting} produces the highest diversity among single-agent strategies.
+\item \textbf{Professional persona assignment} (``You are a computational biologist specializing in X'') improves knowledge partitioning and coverage across subfields.
+\item \textbf{Combining CoT + personas} outperforms human brainstorming on diversity metrics.
+\item \textbf{MCTS-based ideation} (as in IRIS~\cite{iris2025}, ACL 2025) improved idea quality by 0.5 points through tree-search over the idea space.
+\item \textbf{Data augmentation with metadata} (field context, related work summaries) improved feasibility scores by 20\%.
+\end{enumerate}
+
+One negative result: \textbf{generate-then-judge is unreliable}. The best LLM judge achieved only 72.56\% accuracy at distinguishing good from bad ideas. Do not rely on the same LLM (or any LLM) to both generate and evaluate ideas~\cite{ideationarena2026}.
+
+
+%% ============================================================
+\section{The Research Tool Ecosystem}
+\label{sec:tools}
+%% ============================================================
+
+Beyond general-purpose LLMs, a growing ecosystem of specialized research tools has emerged.
+
+\subsection{Claude Science (Anthropic, June 2026)}
+
+Claude Science~\cite{claudescience2026} is a dedicated research workbench, not a new model. It integrates existing Claude models with:
+
+\begin{itemize}
+\item \textbf{60+ scientific database connectors} (genomics, single-cell, proteomics, cheminformatics).
+\item \textbf{Native rendering} of 3D protein structures, genome browser tracks, chemical structures.
+\item \textbf{HPC integration}: Slurm job orchestration over SSH, on-demand cloud compute via Modal.
+\item \textbf{Reproducibility}: full audit trails preserving code, environment, and conversation history.
+\item \textbf{A reviewer agent} that checks citations and calculations.
+\end{itemize}
+
+A researcher used Claude Science to analyze 490 papers on zoonotic spillover for \$26, discovering that the field's working vocabulary was 4$\times$ richer than its formal ontologies~\cite{drakeforbes2026}.
+
+Anthropic opened 10,000 free/discounted seats for scientists (August 2026) and offered AI for Science grants of up to \$30,000 in credits.
+
+Before Claude Science, Claude was validated in the wet lab: Adaptyv Bio and Twist Bioscience benchmarked Claude on protein binder design, achieving a 26.8\% hit rate vs.\ a typical industry range of 10--15\%, with 95\% of designs successfully expressed~\cite{adaptyvbio2026}.
+
+\subsection{Other major tools}
+
+\begin{table}[h]
+\centering
+\caption{Research AI tools and their current status (mid-2026)}
+\label{tab:tools}
+\begin{tabular}{L{2.8cm} L{5cm} L{4.5cm}}
+\toprule
+\textbf{Tool} & \textbf{What it does} & \textbf{Adoption / caveat} \\
+\midrule
+Elicit & Systematic review automation over 138M+ papers; PRISMA-2020 workflows & 5M+ researchers, 50K+ paying. Independent study found 37.9\% sensitivity in real use~\cite{elicitcochrane2025} \\
+OpenAI Deep Research & Agentic multi-step web research, analyst-grade reports & Available to all Plus users (25 queries/mo) \\
+Gemini Notebook (was NotebookLM) & 1M-token context; Deep Research mode; audio/video summaries & Best for synthesizing multiple full papers \\
+Semantic Scholar & 235M+ papers; AI2 Scholar QA for structured literature synthesis & Most-used citation API alongside OpenAlex \\
+Consensus & Evidence-based answers synthesized across papers & Focused on factual scientific questions \\
+Perplexity & Real-time search + synthesis; prioritizes academic sources & 100M+ monthly queries; 37\% citation error rate~\cite{perplexity2025} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Domain-specific tools}
+
+\begin{itemize}
+\item \textbf{AlphaFold 3} (DeepMind): Protein, DNA, RNA, ligand structures. Isomorphic Labs advancing first-in-human clinical trials. IsoDDE (Feb 2026) doubled protein-ligand benchmark performance.
+\item \textbf{FutureHouse Robin}: Multi-agent scientific discovery, published in \emph{Nature}~\cite{futurehouse2026}.
+\item \textbf{Self-driving laboratories}: Autonomous platforms that design, execute, and analyze experiments; one system collects 10$\times$ more data through real-time dynamic experiments~\cite{sdl2025}.
+\item \textbf{Paper2Code / AutoP2C}: Multi-stage LLM pipelines that translate ML papers into functioning code repositories.
+\end{itemize}
+
+
+%% ============================================================
 \section{Replicating Research Workflows with Claude}
-%=============================================================================
+\label{sec:claude}
+%% ============================================================
 
-\subsection{Has Anyone Done This?}
+\subsection{Claude's current position}
 
-Yes, on multiple fronts.
+Claude is the third most-mentioned general-purpose LLM among researchers (6.5\%), behind ChatGPT (36.8\%) and Gemini (19.4\%), but growing fastest (+10pp year-over-year)~\cite{wiley2025}. Claude Code reached 18\% workplace adoption and 4.5\% of all public GitHub commits by March 2026~\cite{jetbrains2026}.
 
-\subsubsection{Anthropic's own push (Claude Science, launched June 2026)}
+With Claude Science launched in June 2026, Anthropic now offers a dedicated research infrastructure. The key advantages are the database connectors, HPC integration, and audit trails---features that general-purpose ChatGPT lacks.
 
-\begin{itemize}[nosep]
-    \item J\'{e}r\^{o}me Lecoq (Allen Institute, neuroscience) built a multi-agent ``computational review template'' with ${\sim}20$ custom skills: sub-agents read thousands of papers, extract claims/quantitative findings into an evidence database, then co-write a long-form review section by section---a task previously taking up to two years.
-    \item Biomni (Stanford)---a Claude-powered biomedical agent that completed a GWAS in 20 minutes (vs.\ months normally).
-    \item Lundberg Lab (Stanford)---uses Claude for hypothesis generation in gene screening, testing whether Claude-generated candidate genes outperform human expert picks.
-    \item Cheeseman Lab (MIT)---PhD student built ``MozzareLLM'' to automate CRISPR knockout screen interpretation.
-\end{itemize}
+\subsection{Five recommended elicitation strategies}
 
-\subsubsection{Independent replication studies}
+Based on the empirical evidence above, here are five strategies ordered from lightweight to intensive. Together they cover the most common research workflows.
 
-\begin{itemize}[nosep]
-    \item \textbf{``Read the Paper, Write the Code''}~\cite{readthepaper2026}---gives coding agents only a paper's methods section plus original data, has them reimplement the analysis. A Claude-Code-based configuration scored 93.4\% task-level / 78.0\% paper-level accuracy vs.\ 62.1\%/35.8\% for Codex-based approaches.
-    \item \textbf{``Coding-agents can replicate scientific ML papers''}~\cite{codingagents2026}---12 workspaces, 158 recorded targets, all matched with report coverage across four ML papers.
-    \item \textbf{Andy Hall} (political scientist)---Claude Code produced ``a full empirical polisci study in an hour'': downloaded original repo, translated Stata to Python, pulled updated data, reran analyses, generated tables/figures, did a literature review, and wrote a paper draft.
-    \item \textbf{Scott Cunningham} (economist, Baylor)---running an ongoing public series ``Claude Code for Economists'' on Substack, including a coding audit that reimplements diff-in-diff pipelines across Python/R/Stata.
-    \item \textbf{pedrohcgs/claude-code-my-workflow} on GitHub---a ready-made academic Claude Code template for LaTeX/Beamer + R work, with multi-agent review, quality gates, and replication protocols.
-\end{itemize}
+\textbf{Strategy 1: Literature-Trajectory Prompting.} Feed Claude a seed set of 5--10 key papers (abstracts + key results) and ask it to identify gaps, emerging directions, and under-explored intersections. Use chain-of-thought prompting. This maps to the dominant use case (information seeking / literature review) and leverages Claude's long context window.
+
+\textbf{Strategy 2: Multi-Persona Brainstorming.} Assign 3--5 domain-specific personas (e.g., ``computational biologist,'' ``clinical researcher,'' ``statistician'') and have each generate ideas independently, then synthesize. This directly addresses the distributional narrowing problem---personas improve coverage across subfields~\cite{ideationarena2026}.
+
+\textbf{Strategy 3: Structured Proposal Elicitation.} Ask Claude to produce a structured research proposal: problem statement, hypotheses, expected contributions, experimental plan, related work positioning. Provide a template. This is the ``ideation-only'' workflow---cheap, fast, and produces the artifact most researchers actually need from AI.
+
+\textbf{Strategy 4: Iterative Refinement with Feasibility Checks.} Generate ideas, then in a separate conversation (to avoid self-confirmation bias), ask Claude to critique each idea's feasibility, identify the hardest technical challenge, and estimate compute/data requirements. Do \emph{not} use the same conversation to both generate and judge---the evidence shows this is unreliable~\cite{ideationarena2026}.
+
+\textbf{Strategy 5: Code-First Prototyping with Claude Code.} For computational research, use Claude Code to rapidly prototype an experiment: data loading, baseline implementation, preliminary results. This is where AI assistance has the strongest documented productivity gains (24--55\% improvement~\cite{murphyhill2026,bis2025}). The prototype then informs whether the idea is worth pursuing at scale.
 
 
-\subsection{Five Elicitation Strategies That Give the Most Coverage}
+%% ============================================================
+\section{Budget Analysis}
+\label{sec:budget}
+%% ============================================================
 
-Based on the ideation literature~\cite{si2025,chainofideas2025,gilonreview2025} and the IdeaBench/AI Idea Bench benchmarks:
-
-\subsubsection{Strategy 1: Literature-Trajectory Prompting (Chain-of-Ideas style)}
-
-Organize relevant papers into a chronological chain anchored on one seed paper---backward to its references, forward to its citations and follow-up work. Feed this trajectory to the LLM so it sees a \emph{research arc}, not an unstructured pile. Then prompt for ideas that extend the trajectory's direction, fill gaps it reveals, or combine insights from different points along it.
-
-\emph{Coverage:} Best for incremental/extension ideas in a well-established area. Matches the Discovery use-case pattern identified in REALM for scientific occupations.
-
-\subsubsection{Strategy 2: Multi-Persona Brainstorming (PersonaFlow style)}
-
-Assign the LLM multiple expert personas (e.g., ``domain expert in X,'' ``methodologist in Y,'' ``skeptic who worries about Z'') and have it generate ideas from each perspective, then cross-pollinate. This directly targets the diversity problem: Si et al.~\cite{si2025} found LLM-generated ideas scored higher on novelty than expert human ideas but suffered from repetitiveness across generations. Multiple personas force divergent thinking.
-
-\emph{Coverage:} Best for cross-disciplinary or unconventional ideas. Addresses the main weakness of single-pass LLM ideation.
-
-\subsubsection{Strategy 3: Generate-Then-Judge (Two-Pass)}
-
-First pass: generate a large batch (20--50) of candidate ideas without any quality filter---maximize volume and variety. Second pass: score each idea on explicit criteria (novelty, feasibility, significance, testability) using a separate prompt or a different model. This mirrors classic brainstorming theory and is supported by the Wharton ``Ideas are Dimes a Dozen'' study, which found GPT-4's \emph{best} outputs from a large batch beat human best-effort, even when its median was comparable.
-
-\emph{Coverage:} Best overall general-purpose strategy. The most robust to model choice since even weaker models can contribute useful ideas to a big batch that a strong judge later filters.
-
-\subsubsection{Strategy 4: Actor-Critic with Iterative Refinement}
-
-Use two agents: one generates a research proposal, the other reviews it as a simulated peer reviewer (with explicit review criteria: novelty, soundness, significance, clarity). Iterate 2--3 rounds. This is the pattern Anthropic's own Claude Science team uses (actor-critic agent pairs), and it directly addresses the finding that LLMs are poor at self-evaluating their own ideas by separating generation from judgment.
-
-\emph{Coverage:} Best for producing polished, defensible proposals rather than raw idea lists. Most closely simulates the actual peer-review loop.
-
-\subsubsection{Strategy 5: Structured Proposal Elicitation}
-
-Prompt the LLM to produce not just an idea but a structured research proposal with explicit sections: problem statement, hypothesis, proposed method, expected contributions, key experiments, anticipated results, limitations, and related work. This forces the model to think through feasibility (the weakest dimension in benchmarks---consistently below 0.5 on IdeaBench) and produces output that is immediately usable as a working document.
-
-\emph{Coverage:} Best for the ``ideation-only'' workflow---produces a document you can evaluate, share, and act on without running experiments.
-
-\subsubsection{Combining strategies}
-
-Strategies 1--3 are complementary (trajectory context $\to$ diverse generation $\to$ quality filtering). Strategy 4 takes the best outputs from 3 and polishes them. Strategy 5 is the output format for the final deliverable. A complete ideation workflow would chain: $1 \to 2 \to 3 \to 4 \to 5$.
-
-
-%=============================================================================
-\section{Budget Advice}
-%=============================================================================
-
-\subsection{The Cost Landscape}
+\subsection{Cost data for automated research}
 
 \begin{table}[h]
 \centering
-\caption{Cost and quality of automated research pipelines}
-\label{tab:cost}
-\small
-\begin{tabular}{@{}L{5.5cm}R{1.8cm}L{4.5cm}@{}}
+\caption{Cost per paper for automated research systems}
+\label{tab:costs}
+\begin{tabular}{lrl}
 \toprule
-Approach & Cost & Quality (human-rated) \\
+\textbf{System} & \textbf{Cost/paper} & \textbf{Quality level} \\
 \midrule
-AI Scientist v1, full, GPT-4o & ${\sim}\$15$/paper & Not formally scored \\
-AI Scientist v2, full, Claude 3.5 Sonnet & ${\sim}\$20$--25/paper & One ICLR workshop accept (6.33/10) \\
-Agent Lab., full, GPT-4o & \$2.33/paper & 3.5--4.0/10 (NeurIPS scale) \\
-Agent Lab., full, o1-preview & \$13.10/paper & 3.5--4.0/10 (marginal gain) \\
-Agent Lab., co-pilot (human-in-loop) & Same + human time & 4.38/10 (still 1.45 pts below bar) \\
+AI Scientist v2~\cite{sakana2025v2} & \$20--25 & Workshop acceptance (1/3) \\
+Agent Laboratory (o1-preview)~\cite{agentlab2025} & \$2--13 & 4.0/10 NeurIPS-style \\
+FARS~\cite{fars2026} & \$1,040 (at scale) & ``Occasionally strong'' \\
+Minimal scaffold~\cite{fars2026} & \$9 & Low quality \\
+LUMEN (systematic review)~\cite{lumen2026} & \$19--29 & 100\% directional agreement w/ meta-analyses \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Per-phase cost breakdown} (Agent Laboratory, GPT-4o): Literature Review \$0.12, Plan \$0.03, Data Prep \$0.09, \textbf{Report Writing \$1.73} (74\% of total cost). The writing phase dominates regardless of backend---\$9.58 for o1-preview.
+Token costs have fallen approximately 50$\times$ since late 2022. A single Claude Science analysis of 490 papers cost \$26~\cite{drakeforbes2026}.
 
+\subsection{The case for ideation-only with frontier models}
 
-\subsection{The Critical Tradeoff}
+Arguments in favor:
+\begin{itemize}
+\item The \emph{ideation} phase is where LLMs add the most unique value---generating and structuring ideas humans might not explore.
+\item Agent architecture matters as much as model quality for ideation (Elo gap of $\pm$200 from scaffolding alone), so investing in good prompting of a frontier model is high-leverage.
+\item Execution reveals that LLM ideas often don't hold up (Si et al.\ follow-up), so human judgment during execution is essential anyway.
+\item Frontier models produce dramatically better proposals: Claude Opus 4.5 scores 1221 Elo vs.\ much lower for smaller models~\cite{ideationarena2026}.
+\item Cost is low: ideation with a frontier model costs single-digit dollars per session.
+\end{itemize}
 
-No study has run a head-to-head comparison of ``ideation-only with expensive model'' vs.\ ``full pipeline with cheap models'' on research-quality outcomes. This is an open gap. But the evidence points strongly in one direction.
+\subsection{The case for a full pipeline with cheaper models}
 
-\subsubsection{The case for ideation-only with the best model available}
+Arguments in favor:
+\begin{itemize}
+\item Full pipelines have improved substantially---from 3.5/10 in 2024 to workshop-level acceptance in 2025.
+\item Agent Laboratory achieves its best results at \$2--13 per paper, making full-pipeline experimentation cheap.
+\item Rapid prototyping with Claude Code (the coding phase) has the strongest documented productivity gains.
+\item For systematic reviews, LUMEN achieves 100\% directional agreement with published meta-analyses at \$19--29~\cite{lumen2026}.
+\item The full pipeline produces concrete artifacts (code, figures, draft text) that accelerate the human-led phases.
+\end{itemize}
 
-\begin{enumerate}[nosep]
-    \item \textbf{Feasibility degrades more than novelty with cheaper models.} IdeaBench testing found small models (Llama 3.1 8B) scored well on novelty but poorly on feasibility, generating ``large amounts of irrelevant or incoherent text.'' The novelty/feasibility gap is a robust finding across benchmarks: LLMs commonly score above 0.6 on novelty but below 0.5 on feasibility.
-
-    \item \textbf{The full pipeline does not produce publishable work anyway.} Agent Laboratory's best configuration (o1-preview + human-in-the-loop) scored 4.38/10, vs.\ the NeurIPS acceptance bar of ${\sim}5.85$/10. The value of the full pipeline is as a \emph{draft} that a human researcher substantially reworks---and at that point, you are doing most of the real work yourself regardless.
-
-    \item \textbf{Self-evaluation is unreliable at every scale.} The automated reviewer overestimated quality by 2.3 points (6.1 vs.\ 3.8 human score). If even a strong model cannot reliably judge its own output, a cheap-model pipeline (where both generation \emph{and} judging are weak) compounds the unreliability.
-
-    \item \textbf{The literature review phase is the most failure-prone.} Agent Laboratory's lit review failed 60--80\% of the time. This is the stage that requires the most world knowledge and reasoning---exactly where model quality matters and where cheap models will fail worst.
-
-    \item \textbf{Report writing dominates pipeline cost.} At \$1.73 of \$2.33 (GPT-4o), writing is 74\% of the total. If you skip report writing (because you will write the actual paper yourself), the remaining pipeline stages cost ${\sim}\$0.60$. At that price point, the ``full pipeline with cheap models'' savings are negligible.
-\end{enumerate}
-
-\subsubsection{The case for the full pipeline with cheap models (weaker, but real)}
-
-\begin{enumerate}[nosep]
-    \item \textbf{FrugalGPT-style cascading}~\cite{frugalgpt2023} (cheap model first, escalate when uncertain) can match GPT-4 accuracy at up to 98\% cost reduction on general LLM tasks.
-
-    \item \textbf{The full pipeline produces artifacts}---code, data, preliminary results---that inform the ideation process. Ideas generated without experimental grounding tend to be more novel but less feasible. Running even rough experiments can surface practical constraints that reshape the research direction productively.
-
-    \item \textbf{GPT-4o already costs only \$2.33/paper} in Agent Laboratory. ``Cheap models'' might save you \$1--2 per paper at the cost of substantially worse output. The absolute dollars are already low enough that the cost difference is unlikely to matter unless you are running hundreds of papers.
-\end{enumerate}
-
+Arguments against:
+\begin{itemize}
+\item Fabrication rates remain high (5--77\%). Every output requires careful human verification.
+\item Cheaper models score substantially lower on ideation quality.
+\item The ``execution gap'' (Si et al.) means pipeline output looks better than it is until you try to build on it.
+\end{itemize}
 
 \subsection{Recommendation}
 
-\textbf{Do ideation-only with the best model, but structure it carefully.}
+\textbf{Do both, staged.} The framing of ``ideation-only vs.\ full pipeline'' is a false dichotomy. The evidence supports a hybrid approach:
 
-The full pipeline's output quality (3.5--4.0/10) is too far below the publishability bar (${\sim}5.85$/10) to be useful as-is. Meanwhile, the ideation stage is where model quality matters most (feasibility, coherence, world knowledge) and where the absolute compute cost is lowest (${\sim}\$0.12$--\$0.60 per run).
+\begin{enumerate}
+\item \textbf{Ideation phase}: Use a frontier model (Claude Opus or GPT-5-class). Apply Strategies 1--4 above. Cost: \$5--20 per research direction explored. This produces the structured proposal.
 
-\subsubsection{Concrete workflow}
+\item \textbf{Feasibility filter}: Use a separate conversation to stress-test each idea's feasibility (Strategy 4). Discard ideas that don't survive scrutiny. This is where most budget savings come from---you avoid investing execution time in ideas that won't work.
 
-\begin{enumerate}[nosep]
-    \item \textbf{Seed with literature trajectories} (Strategy 1): Feed 5--10 key papers into Claude as a research trajectory. Use the extended context window.
-    \item \textbf{Multi-persona brainstorm} (Strategy 2): Generate 20--30 candidate ideas across 3--4 expert personas.
-    \item \textbf{Filter with a separate judge pass} (Strategy 3): Score each idea on novelty, feasibility, significance, testability. Keep the top 5.
-    \item \textbf{Refine via actor-critic} (Strategy 4): Take the top 5 and run 2--3 rounds of proposal $\to$ review $\to$ revision.
-    \item \textbf{Produce structured proposals} (Strategy 5): Final output is a full research proposal for each surviving idea.
+\item \textbf{Selective execution}: For the 1--2 ideas that survive, use Claude Code (Strategy 5) for rapid prototyping. Claude Code on Sonnet-class models is cheap and has the best-documented productivity gains for coding. If the prototype validates the idea, \emph{then} invest human effort in the full execution.
+
+\item \textbf{Writing assistance}: Use a frontier model for the final paper. LLM-assisted writing is associated with higher citations~\cite{jinformatics2026}, and 77--89\% of researchers are already doing this.
 \end{enumerate}
 
-\textbf{What this gives you:} A portfolio of 3--5 fully elaborated research proposals, each grounded in real literature, stress-tested against reviewer objections, and structured enough to evaluate or hand to a collaborator. Total compute cost: probably \$1--5 depending on context length and iteration count.
+Total estimated cost for this workflow: \$30--80 per research direction, from idea to validated prototype and draft.
 
-\textbf{What you lose vs.\ the full pipeline:} Preliminary experimental results, code prototypes, and the ``reality check'' of running experiments. You can partially compensate by asking Claude to write \emph{pseudocode} or \emph{experimental plans} with expected failure modes, without actually executing them.
-
-\textbf{If you do want to run some experiments cheaply:} Use Claude for ideation (the first 5 steps above), then use a cheap model (GPT-4o-mini, Haiku, or an open model via Ollama) for the mechanical parts: data loading code, boilerplate, simple analysis scripts. Keep Claude for interpreting results and revising the proposal based on findings. This hybrid approach follows the FrugalGPT principle: expensive model where judgment matters, cheap model where it is just code execution.
+The key insight from the evidence: \textbf{the bottleneck is experimental rigor, not writing quality or idea generation}. Automated pipelines fail on fabricated results and underpowered experiments, not on prose. This means human effort should concentrate on experimental design and result verification, while AI handles the phases where it adds the most value (literature synthesis, ideation, coding, drafting).
 
 
-%=============================================================================
-\section{Key Datasets and Resources}
-%=============================================================================
+%% ============================================================
+\section{Risks and Paradoxes}
+\label{sec:risks}
+%% ============================================================
 
-\subsection{For studying how people use LLMs}
+\subsection{The ``Lonely Crowds'' effect}
 
-\begin{table}[h]
-\centering
-\small
-\begin{tabular}{@{}L{3cm}L{2.2cm}L{5cm}L{2.5cm}@{}}
-\toprule
-Dataset & Size & What it captures & Source \\
-\midrule
-WildChat-4.8M & 4.8M convs. & Real ChatGPT conversations with metadata & Allen AI / HuggingFace \\
-LMSYS-Chat-1M & 1M convs. & Conversations across 25 LLMs & LMSYS / HuggingFace \\
-REALM & 94K use cases & Use-case taxonomy $\times$ occupation & arXiv:2503.18792 \\
-Prompt Dataset Survey & 129 datasets & Taxonomy of 673M+ prompt instances & arXiv:2510.09316 \\
-\bottomrule
-\end{tabular}
-\end{table}
+A \emph{Nature} 2025 study by Evans and colleagues~\cite{lonelycrowds2025} reveals a paradox at the collective level:
 
-\subsection{For studying scientific model adoption}
+Individual benefits are clear:
+\begin{itemize}
+\item Scientists using AI publish 3.02$\times$ more papers.
+\item They receive 4.84$\times$ more citations.
+\item They become research project leaders 1.37 years earlier.
+\end{itemize}
 
-\begin{table}[h]
-\centering
-\small
-\begin{tabular}{@{}L{5cm}L{8cm}@{}}
-\toprule
-Resource & What it covers \\
-\midrule
-Trišovi\'{c} (2026), arXiv:2604.07530 & 62 LLMs $\times$ 108K papers, adoption lifecycles \\
-Trišovi\'{c} et al.\ (2025), arXiv:2511.21739 & Companion paper, may have per-field breakdown \\
-Pramanick et al.\ (2026), PLoS One & Cross-field LLM adoption beyond CS \\
-\bottomrule
-\end{tabular}
-\end{table}
+But collective costs are real:
+\begin{itemize}
+\item AI adoption \emph{shrinks} the collective volume of scientific topics studied by 4.63\%.
+\item It \emph{decreases} scientist engagement with one another by 22\%.
+\item Popular topics attract concentrated attention with reduced interaction, creating ``lonely crowds'' and more overlapping research.
+\end{itemize}
 
-\subsection{For ideation benchmarks}
+\subsection{Model lifecycle compression}
 
-\begin{table}[h]
-\centering
-\small
-\begin{tabular}{@{}L{5cm}L{8cm}@{}}
-\toprule
-Resource & What it measures \\
-\midrule
-Si et al.\ (ICLR 2025), arXiv:2409.04109 & LLM vs.\ human idea novelty/feasibility \\
-IdeaBench, arXiv:2411.02429 & 2,374 biomedical papers, idea quality scoring \\
-AI Idea Bench 2025, arXiv:2504.14191 & 3,495 AI-conference papers, guards against leakage \\
-\bottomrule
-\end{tabular}
-\end{table}
+Trisovi\'{c} (2026)~\cite{trisovic2026} analyzed 62 LLM variants across 108,514 citing papers and found that scientists adopt and abandon LLMs in a rapidly compressing inverted-U lifecycle. Each successive release year: 27\% shorter time-to-peak and 23\% shorter lifespan ($p<0.001$). Pre-2020 models accumulated adoption over 3--4 years; post-2022 models peak within 1--2 years. Release timing---not architecture, size, or openness---drives lifecycle duration.
+
+\subsection{Integrity concerns}
+
+The automated research pipeline studies consistently report high rates of fabrication:
+\begin{itemize}
+\item Fabricated/hallucinated results: 5--77\% of papers depending on system~\cite{scholarpeer2026}.
+\item Underpowered experiments: 26--82\%.
+\item Fake references: 8--72\%.
+\end{itemize}
+
+These are not minor issues. Any use of automated pipelines requires rigorous human verification of every factual claim, every citation, and every experimental result.
 
 
-%=============================================================================
+%% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ============================================================
+
+The empirical picture in mid-2026 is this: AI adoption among researchers has crossed 80\% and is no longer a question of whether but how. The dominant pattern is pragmatic---researchers use general-purpose LLMs (primarily ChatGPT, then Gemini, then Claude) for information seeking, writing, and coding, treating them as productivity tools rather than autonomous research agents.
+
+Automated research pipelines have improved from clearly unpublishable (2024) to workshop-level (2025--2026), but remain unreliable for main-conference work due to persistent experimental integrity issues. The gap is narrowing, and current frontier models have not yet been fully evaluated in these systems.
+
+For a budget-constrained researcher, the evidence-based strategy is: invest in frontier-model ideation and feasibility analysis (\$5--20), prototype with coding agents (\$5--20), and use writing assistance for the final paper. This captures most of the productivity benefit at a fraction of the cost of a full autonomous pipeline, while keeping human judgment where it matters most---experimental design and verification.
+
+\newpage
+
+%% ============================================================
 \begin{thebibliography}{99}
-%=============================================================================
+%% ============================================================
 
-\bibitem{trisovic2026}
-A.~Trišovi\'{c}, ``The Shrinking Lifespan of LLMs in Science,'' arXiv:2604.07530v2, June 2026.
+\bibitem{wiley2025}
+Wiley, ``AI Adoption Jumps to 84\% Among Researchers as Expectations Undergo Significant Reality Check,'' ExplanAItions Study, October 2025. \url{https://newsroom.wiley.com/press-releases/press-release-details/2025/AI-Adoption-Jumps-to-84-Among-Researchers/}
 
-\bibitem{cheng2025realm}
-J.~Cheng, K.~Ghate, W.~Hua, W.~Y.~Wang, H.~Shen, and F.~Fang, ``REALM: A Dataset of Real-World LLM Use Cases,'' in \emph{Findings of ACL 2025}, arXiv:2503.18792.
+\bibitem{liao2024}
+W.~Liao et al., ``Large-Scale Survey of LLM Use by Research Article Authors,'' arXiv:2411.05025, November 2024.
 
-\bibitem{zhang2026}
-Y.~Zhang, Y.~Lin, A.~Khan, and H.~Wan, ``A Survey of LLM Prompt Datasets: Taxonomy, Linguistic Patterns, and Practical Uses,'' in \emph{Findings of EMNLP 2026}, arXiv:2510.09316.
+\bibitem{sciwhoprogram2025}
+``Generative AI Usage by Scientists Who Program,'' arXiv:2512.19644, December 2025.
 
-\bibitem{ren2025}
-J.~Ren et al., ``Towards Scientific Intelligence: A Survey of LLM-based Scientific Agents,'' arXiv:2503.24047, 2025.
+\bibitem{harvard2025}
+Harvard Kennedy School, ``The State of Generative AI Adoption 2025,'' GenAI Adoption Tracker, November 2025.
 
-\bibitem{schmidgall2025}
-S.~Schmidgall et al., ``Agent Laboratory: Using LLM Agents as Research Assistants,'' arXiv:2501.04227, 2025.
+\bibitem{stanfordhai2026}
+Stanford HAI, ``2026 AI Index Report,'' 2026. \url{https://hai.stanford.edu/ai-index/2026-ai-index-report}
+
+\bibitem{tubingen2026}
+T\"{u}bingen researchers, ``Excess LLM Vocabulary in Scientific Writing,'' \emph{Science Advances}, August 2026. DOI:~10.1126/sciadv.adt3813.
+
+\bibitem{arxivwriting2025}
+``LLM-Associated Language in arXiv Abstracts,'' arXiv:2512.01560, December 2025.
+
+\bibitem{pnas2026}
+``Diffusion of LLMs in Published Academic Articles,'' \emph{PNAS}, 2026. DOI:~10.1073/pnas.2605754123.
+
+\bibitem{jinformatics2026}
+``LLM-Assisted Writing and Citations in Engineering,'' \emph{Journal of Informetrics}, 2026.
+
+\bibitem{frontiersreview2025}
+``AI in Peer Review Survey,'' \emph{Nature}, December 2025.
+
+\bibitem{daniotti2026}
+Daniotti et al., ``AI-Assisted Code Generation,'' \emph{Science}, 2026.
+
+\bibitem{jetbrains2026}
+JetBrains Developer Ecosystem Survey, January--mid 2026.
 
 \bibitem{robbes2026}
-R.~Robbes, D.~Matricon, T.~Degueule, A.~Hora, and S.~Zacchiroli, ``Agentic Much? Adoption of Coding Agents on GitHub,'' arXiv:2601.18341v2, April 2026.
+R.~Robbes et al., ``Coding Agent Adoption on GitHub,'' arXiv:2601.18341, \emph{ACM TOSEM}, 2026.
+
+\bibitem{robbes2026b}
+R.~Robbes et al., ``Follow-up: New Projects and Agent Adoption,'' arXiv:2606.07448, 2026.
 
 \bibitem{murphyhill2026}
-E.~Murphy-Hill, S.~Butler, and A.~Savelieva, ``Adoption and Impact of Command-Line AI Coding Agents,'' arXiv:2607.01418, July 2026.
+E.~Murphy-Hill et al., ``Claude Code vs.\ Copilot at Microsoft,'' arXiv:2607.01418, 2026.
 
-\bibitem{si2025}
-C.~Si, D.~Yang, and T.~Hashimoto, ``Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers,'' in \emph{Proc.\ ICLR 2025}, arXiv:2409.04109.
+\bibitem{bis2025}
+BIS, ``The Impact of AI on Programmer Productivity,'' Working Paper No.~1208, 2025.
 
-\bibitem{chainofideas2025}
-S.~Li et al., ``Chain of Ideas: Revolutionizing Research Via Novel Idea Development with LLM Agents,'' in \emph{Findings of EMNLP 2025}, arXiv:2410.13185.
+\bibitem{metr2025}
+METR, ``AI Tools and Developer Productivity: RCT,'' 2025.
 
-\bibitem{gilonreview2025}
-D.~Gilon et al., ``A Review of LLM-Assisted Ideation,'' arXiv:2503.00946, 2025.
-
-\bibitem{sakana2024}
-C.~Lu et al., ``The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery,'' Sakana AI, 2024.
+\bibitem{googleera2026}
+Google, ``ERA: Automated Scientific Discovery for Single-Cell Analysis,'' \emph{Nature}, 2026.
 
 \bibitem{sakana2025v2}
-T.~Yamada et al., ``AI Scientist v2,'' arXiv:2504.08066, 2025.
+Sakana AI, ``AI Scientist v2,'' arXiv:2504.08066, April 2025.
 
-\bibitem{frugalgpt2023}
-L.~Chen, M.~Zaharia, and J.~Zou, ``FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance,'' arXiv:2305.05176, 2023.
+\bibitem{scholarpeer2026}
+``ScholarPeer: Independent Evaluation of AI-Generated Research,'' 2026.
 
-\bibitem{readthepaper2026}
-``Read the Paper, Write the Code: Agentic Reproduction of Social-Science Results,'' arXiv:2604.21965, 2026.
+\bibitem{agentlab2025}
+``Agent Laboratory,'' \emph{EMNLP 2025 Findings}, 2025.
 
-\bibitem{codingagents2026}
-``Coding-agents can replicate scientific machine learning papers,'' arXiv:2607.02134, 2026.
+\bibitem{fars2026}
+``FARS: Fully Automated Research System,'' arXiv:2606.31651, 2026.
+
+\bibitem{futurehouse2026}
+FutureHouse, ``Robin: Multi-Agent Scientific Discovery,'' \emph{Nature}, May 2026. DOI:~10.1038/s41586-026-10652-y.
+
+\bibitem{agentrxiv2025}
+``AgentRxiv: Collaborative Autonomous Research,'' arXiv:2503.18102, March 2025.
+
+\bibitem{sciagents2025}
+``SciAgents,'' \emph{Advanced Materials}, 2025. DOI:~10.1002/adma.202413523.
+
+\bibitem{evoscientist2026}
+``EvoScientist: Adaptive Multi-Agent Framework,'' arXiv:2603.08127, March 2026.
+
+\bibitem{scientistone2026}
+``ScientistOne,'' 2026.
+
+\bibitem{si2025}
+C.~Si et al., ``Can LLMs Generate Novel Research Ideas?,'' \emph{ICLR 2025}.
+
+\bibitem{si2025followup}
+C.~Si et al., ``From Ideas to Execution: Evaluating LLM-Generated Ideas Through Expert-Led Experiments,'' June 2025.
+
+\bibitem{ideationarena2026}
+``Ideation Arena: LLM Ideation Benchmarks,'' August 2026.
+
+\bibitem{iris2025}
+``IRIS: MCTS-Based Scientific Ideation,'' \emph{ACL 2025}, 2025.
+
+\bibitem{claudescience2026}
+Anthropic, ``Claude Science: AI Workbench for Scientists,'' June 2026. \url{https://www.anthropic.com/news/claude-science-ai-workbench}
+
+\bibitem{drakeforbes2026}
+J.~Drake, ``Anthropic's New AI Workbench Mapped My Field for \$26,'' \emph{Forbes}, June 2026.
+
+\bibitem{adaptyvbio2026}
+Adaptyv Bio, ``Benchmarking Claude's Protein Design Capabilities,'' 2026.
+
+\bibitem{elicitcochrane2025}
+J.~Lau et al., ``Evaluating Elicit for Systematic Reviews,'' \emph{Cochrane Evidence Synthesis and Methods}, 2025.
+
+\bibitem{perplexity2025}
+``Perplexity AI Citation Accuracy Study,'' March 2025.
+
+\bibitem{sdl2025}
+``Self-Driving Laboratories 2.0,'' \emph{RSC Materials Horizons}, 2025--2026.
+
+\bibitem{lonelycrowds2025}
+J.~Evans et al., ``AI Creates `Lonely Crowds' in Science,'' \emph{Nature}, 2025.
+
+\bibitem{trisovic2026}
+A.~Trisovi\'{c}, ``The Shrinking Lifespan of LLMs in Science,'' arXiv:2604.07530, 2026.
+
+\bibitem{lumen2026}
+``LUMEN: Automated Systematic Reviews,'' 2026.
+
+\bibitem{surveytowardssci2025}
+``Towards Scientific Intelligence: A Survey of LLM-Based Scientific Agents,'' arXiv:2503.24047, March 2025.
 
 \end{thebibliography}
 
