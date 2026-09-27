@@ -165,6 +165,24 @@ Response: about 300 to 450 words, ending with one line beginning "In short:". As
 Do not grade on the author's reputation, and do not soften a verdict because some
 sentences are good. One sentence of credit is enough when credit is due.
 
+After the third round of "not critical enough", these patterns were purged. Do not
+write them:
+- credit phrases in notes: "does its job", "a good move", "the essay at its best",
+  "lands well", "a good close", "sound advice", "the best paragraph";
+- charitable repairs: supplying the argument the author did not give ("Perhaps
+  because people pick moderate ratios by habit"). If the author gave no reason, say
+  there is none. Do not invent one for them;
+- "the point survives" when an error happens to favor the author. Say what was wrong.
+
+And look for these, which the first passes missed:
+- invented examples presented as typical (Wulky Wilkinsen does not exist; the
+  comedian is someone else's "somewhat silly" hypothetical);
+- whether the author applies the rule to himself (the rent test would evict his own
+  many-worlds belief, argued in 2008 on simplicity, not on different predictions);
+- whether a text about giving up beliefs ever gives one up;
+- whether the recommended fix is itself the thing criticized ("reputation
+management" is the PR industry's own name for its service).
+
 ## 6. Verification rules (non-negotiable)
 
 - Never quote from memory. Every quotation, from the post or from anyone else, must be

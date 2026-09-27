@@ -124,3 +124,8 @@ and Grace") in a wide right margin. Same five pilot posts.
   one per substantial paragraph, on job / placement / links / shape / cost. Removed
   about ten local notes or clauses that duplicated them, and two praise-only paragraph
   notes. Wrote annotated/README.md: instructions for the next annotator.
+- Third pass (user: not critical or scathing enough). Removed leftover credit and
+  charitable repairs from notes and Responses; added: Wulky is invented; rigged tree
+  tests; many-worlds (2008, verified quotes) fails the rent test; conclusion-first is
+  not the fault, lack of testing is; the arithmetic error no longer excused; "reputation
+  management" is PR's own term; Twelve Virtues relinquishes nothing. README updated.
