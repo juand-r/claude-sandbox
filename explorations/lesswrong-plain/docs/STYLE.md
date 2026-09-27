@@ -41,6 +41,10 @@ author's words.
 
 Added September 2026 after the user objected to "the rule comes with its own exit".
 
+Main principle: avoid strange constructions, figures of speech and Claudisms that a
+reader would have to decode. Clear jokes are fine; puzzles are not. The rules below
+are applications of this.
+
 1. No invented metaphors. Never describe an argument, a rule or a text as an object
    or a place: no exits, doors, gates, ladders, bridges, seals, anchors, engines,
    machinery, scaffolding, weight-bearing. Say literally what happens.
