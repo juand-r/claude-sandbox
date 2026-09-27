@@ -59,3 +59,6 @@ and Grace") in a wide right margin. Same five pilot posts.
   (Wikipedia); West & Stanovich 1997 is the source behind "12% aren't overconfident";
   Barber, Lee, Liu, Odean: <1% of Taiwanese day traders predictably profitable;
   "What Evidence Filtered Evidence?" posted 29 Sep 2007, day after "The Bottom Line".
+
+- Removed the "good" notes at the user's request. Two of them also held criticism
+  (Bottom Line: thesis comes late; PR: structure, stray comma); those parts kept as style notes.
