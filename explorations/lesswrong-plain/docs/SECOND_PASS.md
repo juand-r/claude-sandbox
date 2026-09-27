@@ -56,3 +56,39 @@ then the Summary and Response. Log changes here, per post.
 - absence-of-evidence: the note said the condition "contradicts always"; it does not
   (always, for observations that are evidence). Rewritten. Double negative in the
   Response fixed; verdict now blames the unchecked source, not a petty detail. Cut typo nit.
+- conservation-of-expected-evidence: Response said the author "presents it as a law he
+  identified"; he only names it. Softened to what the text says.
+- argument-screens-off-authority: cut a typo nit and a petty sunlight/night note;
+  removed a repeated sentence in the Jaynes note.
+- bayes: Popper note said he held "the opposite"; he held both halves. Rewritten, and the
+  Response too. Newton note softened ("loose", limiting case). Cut the note citing the
+  author's lack of schooling: it judges the writer, not the essay, against the
+  anonymous-essay standard. Cut barrel/bin nit.
+- second-law: checked; dense but accurate; no change.
+- toolbox-thinking: Response misquoted the post ("stereotype him"; it says "this
+  conversation"). Fixed in body and verdict. Cut typo nit.
+- local-validity: cut three petty style notes (one was wrong: singular "they" is
+  standard); untangled a garbled list sentence in the Response.
+- when-science-cant-help: Response claimed to know what the author "does not know";
+  changed to "does not cite". Verdict made exact.
+- faster-than-science: Response implied the 2025 survey refutes a 2008 trend claim; it
+  only shows many-worlds still a minority view. Reworded. Cut comma-splice nit.
+- science-doesnt-trust: checked (French Revolution claim verified); cut a cross-reference in a grammar note.
+- Consistency: dissolving-the-question had five separate comma notes; kept the first
+  and folded the count into it. Removed "other posts this week" cross-references.
+- no-safe-defense: checked; no other change.
+- taboo-your-words: checked; no change.
+- dissolving-the-question: checked (dream quote verified); no further change.
+- diseased-thinking: moved the one concession in the Response from the end of an
+  unrelated paragraph to where the argument starts. Cut two typo nits.
+- Banned-word sweep: "ladder"/"rung" used as metaphors in Bayes, dissolving-the-question
+  and hug-the-query (notes and Responses). Replaced with plain words.
+- hug-the-query: otherwise checked; no change.
+- say-not-complexity: cut typo nit; otherwise checked.
+- mind-projection-fallacy: removed a repeated sentence in the Kant note; untangled a Response sentence.
+- how-an-algorithm-feels-from-inside: removed banned phrase (load-bearing); otherwise checked.
+- Consistency: seven Responses opened a paragraph with the same formula ("What the
+  essay does ..."). Rewritten plainly in each.
+- expecting-short-inferential-distances: cut a signposting sentence in the Response.
+- illusion-of-transparency: Response put "vague" in the post's mouth (it says
+  "polite diplomatese"); fixed. Cut an unsupported sentence about what readers remember.

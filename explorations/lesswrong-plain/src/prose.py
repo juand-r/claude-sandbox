@@ -23,7 +23,7 @@ def our_text(name):
 
 RULES = {
     "italics": r"\\emph\{", "em dash": r"—|---", "intensifier": r"\b(clearly|obviously|notably|importantly|undoubtedly|crucially|simply put)\b",
-    "signpost": r"\b(The key point|The central finding|It is worth noting|The headline|Here's the thing|load-bearing)\b",
+    "signpost": r"\b(The key point|The central finding|It is worth noting|The headline|Here's the thing|load-bearing|ladder|rungs?)\b",
     "not X but Y": r"\bis not \w+[^.;]{0,40}, it is\b|\bnot just\b",
 }
 
