@@ -62,3 +62,12 @@ and Grace") in a wide right margin. Same five pilot posts.
 
 - Removed the "good" notes at the user's request. Two of them also held criticism
   (Bottom Line: thesis comes late; PR: structure, stray comma); those parts kept as style notes.
+- Added "Twelve Virtues of Rationality" (user's request) as post 6, and a table of
+  contents. Adjacent note marks now get a comma ("1,2", not "12").
+- check_verbatim.py: now also handles footnote markers after closing quotes, "######"
+  footnote lists, and Unicode normalization (the original spells "é" in Saint-Exupéry
+  as e + combining accent). All six posts match.
+- Facts checked for Twelve Virtues notes: Saint-Exupéry's French begins "Il semble
+  que", in a passage on aircraft design; Musashi quotation matches Victor Harris's
+  translation; counts in the notes ("the Way" 6x, "Art" 2x, "Beware lest" 3x) counted
+  with grep.

@@ -30,8 +30,13 @@
 \newcommand{\pendingnotes}{}
 % \cnote{kind}{text}: mark the text with a number and queue the note.
 \makeatletter
+% Two notes in a row get a comma between their marks: each mark ends with a tiny
+% kern that the next \cnote can detect.
+\newdimen\cnote@kern \cnote@kern=0.01pt
 \newcommand{\cnote}[2]{%
-  \refstepcounter{cnote}\textsuperscript{\footnotesize\thecnote}%
+  \ifdim\lastkern=\cnote@kern\textsuperscript{\footnotesize,}\fi
+  \refstepcounter{cnote}\textsuperscript{\footnotesize\thecnote}\kern\cnote@kern
+  %
   \edef\cnote@head{\noexpand\printnote{\thecnote}}%
   \expandafter\g@addto@macro\expandafter\pendingnotes\expandafter{\cnote@head{#1}{#2}}}
 \makeatother
@@ -51,6 +56,7 @@
 % \post{title}{author}{year}{url} starts a post; \closepost closes it.
 \newcommand{\post}[4]{%
   \clearpage
+  \phantomsection\addcontentsline{toc}{section}{#1}%
   {\noindent\Large #1\par}\vspace{0.3ex}
   {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
   \begin{paracol}{2}}
@@ -58,10 +64,11 @@
 
 \begin{document}
 
-{\noindent\LARGE Five LessWrong Posts, Annotated\par}\medskip
+{\noindent\LARGE Six LessWrong Posts, Annotated\par}\medskip
 {\noindent\large Original text with marginal commentary\par}\bigskip
 
 \begin{minipage}{0.6\textwidth}
+\setlength{\parskip}{0.7\baselineskip}
 The left column reproduces each post as published on LessWrong. I have changed nothing except to convert web formatting to print: links become plain text, and the authors' italics and bold stay as they were. The numbered marks are mine.
 
 The right column holds my comments. Each starts with a tag:
@@ -76,10 +83,15 @@ The right column holds my comments. Each starts with a tag:
 This is a personal study copy. The posts belong to their authors.
 \end{minipage}
 
+\bigskip
+\renewcommand{\contentsname}{Contents}
+\tableofcontents
+
 \input{posts/making-beliefs-pay-rent}\closepost
 \input{posts/the-bottom-line}\closepost
 \input{posts/strong-evidence-is-common}\closepost
 \input{posts/pr-is-corrosive}\closepost
 \input{posts/humans-are-not-automatically-strategic}\closepost
+\input{posts/twelve-virtues-of-rationality}\closepost
 
 \end{document}

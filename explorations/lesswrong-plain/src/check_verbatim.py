@@ -11,6 +11,7 @@ Exits with status 1 and prints the differences if the texts differ.
 """
 
 import difflib
+import unicodedata
 import re
 import sys
 from pathlib import Path
@@ -83,12 +84,17 @@ def md_to_text(md: str) -> str:
     md = re.sub(r"^\s*> ?", "", md, flags=re.M)  # blockquote markers
     md = re.sub(r"^\s*[*-] ", "", md, flags=re.M)  # bullet markers
     md = re.sub(r"^\s*\d+\. ", "", md, flags=re.M)  # numbered-list markers
-    md = re.sub(r"(?<=[?.])\[1\]", "", md)  # bare [1] marker in text
-    md = re.sub(r"^\[1\]", "", md, flags=re.M)  # bare [1] at footnote start
-    return md
+    md = re.sub(r"\[\d+\](?!\()", "", md)  # bare footnote markers like [1]
+    # Footnote list written as "###### 1. text" headings: move it to the end, where
+    # the annotated file's author footnotes end up, and drop the numbering.
+    notes = re.findall(r"^#+ \d+\. (.*)$", md, flags=re.M)
+    md = re.sub(r"^#+ \d+\. .*$", "", md, flags=re.M)
+    md = re.sub(r"^---$", "", md, flags=re.M)  # horizontal rules
+    return md + "\n" + "\n".join(notes)
 
 
 def normalize(text: str) -> list[str]:
+    text = unicodedata.normalize("NFC", text)  # e.g. "é" as one or two code points
     for a, b in [("“", '"'), ("”", '"'), ("‘", "'"), ("’", "'")]:
         text = text.replace(a, b)
     return text.split()
