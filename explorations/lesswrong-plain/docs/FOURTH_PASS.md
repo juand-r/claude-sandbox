@@ -79,3 +79,34 @@ section on. The first-section Responses still repeated removed points. Fixed her
 - Pronouns: replaced "she"/"her" for Anna Salamon (two afterwords) and P. C. Hodgell with neutral wording, per the rule not to infer pronouns from names.
 
 Part A complete.
+
+## Part B: motive readings reconsidered
+
+Test for restoring a reading: the text must contain what the reading points at (a word, a pairing, a link, a structural parallel), and the note must say which part is observation and which is my inference. Readings that rest only on a guess about intent stay out.
+
+Restored (all flagged as "my reading" or "inference" where they go beyond the text):
+- avoiding-your-beliefs-real-weak-points: the parenthesis that sets the author beside the one relative who left; the grand-uncle's eulogy read as doctrine (now with the substantive point that a grieving son at a funeral may not be committing to a theology). One sentence added to the Response.
+- belief-as-attire: the nerd/bar sorting ("the reader is invited to be the nerd"); the footnote as attire. The Response already carried both.
+- an-intuitive-explanation-of-bayes: the initiation frame, from "What is the secret that the adherents of Bayes know?" to "You are now an initiate", acknowledged as a joke, with the reading that it invites the reader to wear a theorem as a badge.
+- local-validity: the flattering identity ("an intellectually strong mind", "the unusually healthy of mind", set against a "harbinger of the collapse of civilization"), as a Response paragraph.
+- no-safe-defense: childhood as qualification, "the other children weren't intelligent enough", and the closing promise of an identity ("start your journey as a rationalist").
+- say-not-complexity: the examiner frame ("not yet accepted him as my apprentice", "Maybe this one is teachable" in bold).
+- making-beliefs-pay-rent: the pairing of a humanities parody with physics examples, read as telling the reader where floating beliefs live.
+- dissolving-the-question: the "prestigious journal of philosophy" caricature giving the reader someone to feel superior to.
+- when-science-can-t-help: the death toll's rhetorical work; the undisclosed Global Catastrophic Risks link (two chapters by the author, verified).
+- lonely-dissent: the author claiming, under irony, the rare trait ("my own nature"); one sentence added to the Response.
+- diseased-thinking: the first-person plural offering the reader a side to join.
+- what-do-we-mean-by-rationality: the foozal test not applied to the name "rationalist" (the author's usage checked in "No Safe Defense").
+- Handled during Part A: something-to-protect (the unnamed cause), the-gift (the reader as "you"), tsuyoku-naritai (the closing rule parallels the rabbi in the joke), on-caring ("join the ranks", stated in the text), a-sense-that-more-is-possible (the call for schools is open, so no inference needed), pr-is-corrosive (NYT timing, now supported by the post's own last link).
+
+Considered and not restored:
+- expecting-short-inferential-distances ("a flattering account of why they are not believed"): the post applies the diagnosis symmetrically to the biologist and the layperson.
+- knowing-about-biases ("who may be trusted"): the Response already says the author is the one who understood and the others misused what he taught; the rest added nothing.
+- mind-projection-fallacy (comic register for abduction scenes): the register matches camp pulp covers; a matter of taste, not a flaw.
+- conservation-of-expected-evidence (the "quiet strain" trained against religion): it rested on the claim that the religion example is invalid, which does not hold (present silence and ancient miracles are the same kind of observation).
+- the-lens-that-sees-its-flaws (mice and the reader's superiority): no text beyond the mice sentence supports it.
+- the-martial-art-of-rationality (anatomy as flattery): too thin.
+
+## Totals
+
+Notes: 966 before this pass, 665 after Part A, 675 after Part B (ten new notes; other restorations were folded into existing notes or Responses). All 52 posts pass the verbatim check; all Responses are 300 to 450 words and end with "In short:". Cross-references re-checked; one fixed (Avoiding, note 0). PDF: 248 pages.
