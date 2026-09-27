@@ -2,25 +2,107 @@
 
 This directory builds a PDF in which each LessWrong post appears verbatim in the left
 column, with numbered critical commentary in the right column, followed by a Summary
-and a Response. Read this whole file before touching anything. The user has corrected
-earlier work several times; the corrections are folded in below, so that you do not
-repeat them.
+and a Response. Read this whole file before touching anything, and section 1 twice. The user has
+corrected earlier work several times; the corrections are folded in below, so that you
+do not repeat them.
 
-## 1. What the user wants
+## 1. The standard: read this first
 
-A careful, skeptical, unforgiving reading of each post, of the kind a very good English
-teacher and a very good logician would give an anonymous student essay. Judge the text,
-not the author's reputation. The user has said, in so many words:
+The user has sent this work back four times for being too gentle: "too nice",
+"hyper-local", "not critical or scathing enough". Assume your first draft will be too
+soft, because every draft so far has been. The target is the harshest reading the text
+and the evidence will support, written in plain, calm, exact prose.
 
-- "Your judgment is too nice." Earlier Responses praised too readily. Do not.
-- "Your comments are hyper-local." Sentence-level notes are not enough. Every
-  paragraph must be read as a unit, and the essay as a whole.
-- No praise notes. A "good" tag existed and was removed at the user's request. Do not
-  reintroduce praise in any other tag. (It crept back once, into four notes of
-  "Twelve Virtues"; they had to be removed a second time.)
-- Quoting other writers is optional. Use a quotation only when it does work in your
-  argument (for example Quine on testing beliefs one at a time, or the dictionary on
-  "humility"). Never pad with context for its own sake.
+### 1.1 Stance
+
+- Treat each post as an anonymous essay handed in for grading. The author's name,
+  fame, following, awards (Annual Review wins, "Highlights" status) and later
+  influence earn nothing. A sentence is judged by what it does on the page.
+- Nothing is earned by default. Every paragraph must justify its place, every claim
+  its support, every example its relevance, every term its definition. Where the text
+  does not do the work, say so.
+- Give no benefit of the doubt. Do not supply the argument the author left out. Do not
+  guess at what they "probably meant" and then grade the guess. If the text gives no
+  reason, the note says there is no reason.
+- Do not balance. You are not writing a fair-minded review with strengths and
+  weaknesses in proportion. Credit is allowed only where omitting it would mislead,
+  and then in one clause. No praise in the margin notes at all. At most one sentence
+  of credit in a Response.
+- Look past the sentence to what the text is doing to its reader: whom it flatters,
+  whom it makes the villain, what identity it offers, what it lets the reader do to
+  others, what it sells.
+- Turn the author's rules on the author. If the essay sets a test, apply it to the
+  essay and to the author's other beliefs. If it names a virtue, check whether the
+  author practices it.
+
+### 1.2 Tone
+
+Scathing means unsparing and exact. It does not mean rude.
+
+- Let the evidence carry the force. Quote the sentence, show the flaw, state the
+  consequence. "A post whose subject is Bayes's rule gets its one Bayes calculation
+  wrong" is devastating because it is true and specific. Do not reach for insults or
+  loaded adjectives ("lazy", "terrible", "embarrassing"); they weaken a note.
+- State judgments flatly. Do not hedge your own verdicts ("may be", "seems", "perhaps",
+  "arguably") unless you are genuinely unsure, and if you are unsure, say what you
+  would need to check.
+- Short declarative sentences. End on the damaging point.
+- Every harsh claim must be demonstrable from the text or from a source you have read
+  in this session. Harshness that is wrong is worse than softness. Mark every
+  inference as an inference.
+- Criticize the text, not the person. Biography enters only when it bears on the
+  text (the author's own statements about his abilities, in the note on humility), and
+  then only through checked quotations.
+
+### 1.3 Calibration: before and after
+
+These pairs are real revisions the user asked for. Aim for the right-hand side.
+
+| Too soft (rejected) | Target |
+|---|---|
+| "Does its job: it turns the riddle into three concrete, checkable questions." | "It turns the riddle into three checkable questions, and it is misplaced ... It also rigs the case. All three tests are chosen so that 'sound' makes no difference, which is true by construction." |
+| "A fair example of a floating belief, but it rides on a cheap shot at literary criticism." | "Wulky Wilkinsen does not exist. The essay could not produce one real floating belief to quote, so it invented one and assigned it to a profession." |
+| "The error runs in the author's favor, so the point survives, but a post about Bayes's rule should get its one Bayes calculation right." | "A post whose subject is Bayes's rule gets its one Bayes calculation wrong." |
+| "This is the most interesting claim in the post ... Perhaps because people pick moderate likelihood ratios by habit." | "The post's boldest claim, in its last paragraph, with no argument and no evidence. It tells readers that their careful calculations are too cautious, which is permission to be more confident, given in a post that has just miscalculated." |
+| "The best definition in the text: specific, active, and testable." (on "humility") | "This is not what humility means. Merriam-Webster: 'freedom from pride or arrogance' ... Taking precautions against your own errors is prudence. A proud person can do it too." |
+| "The central image ... this is the essay at its best." | "The central image, shown rather than told. The essay's content ends here. The remaining ten paragraphs explain an image the reader already understands." |
+| Verdict: "a memorable statement of a sound habit, oversold as a foundation, and pointed at a convenient target." | Verdict: "an old idea sold as a foundation, demonstrated on invented and dead targets, and not applied by its author to his own beliefs." |
+
+### 1.4 Never write these
+
+- Credit phrases in notes: "does its job", "a good move", "the essay at its best",
+  "lands well", "a good close", "sound advice", "the best paragraph", "a fair
+  example", "efficient", "a clear setup", "the sharpest example", "which is good".
+- Charitable repairs: any sentence that supplies a reason, mechanism or example the
+  author did not give.
+- Excuses: "the point survives", "the error runs in the author's favor", "fine for a
+  forum post", "this may be true".
+- Concessions that open a note ("A good point, but ..."). Start with the problem.
+- Praise hidden in other tags. A `\cstyle` note that says "a clear example, clearly
+  told" is a praise note. (This happened; it had to be removed twice.)
+
+### 1.5 What the early passes missed, and you must look for
+
+- Invented examples passed off as typical (Wulky Wilkinsen does not exist; the
+  comedian is someone else's "somewhat silly" hypothetical).
+- Rigged examples, built so the conclusion is true by construction.
+- The author's own rule applied to the author (the rent test would evict his
+  many-worlds belief, which he defended in 2008 on simplicity, while granting that a
+  rival differing in "some as-yet-untestable detail" cannot be proved wrong).
+- Virtues preached and not practiced (an essay on giving up beliefs never gives one up).
+- Fixes that are the thing criticized ("reputation management" is the PR industry's
+  own name for its service).
+- Redefined words (humility). Look them up.
+- Old ideas presented as new without credit.
+- The central claim false as written, even if the author corrected it elsewhere; say
+  which version readers actually meet.
+
+### 1.6 Other standing instructions
+
+- Comment at every level. Sentence notes alone were called "hyper-local". Every
+  substantial paragraph gets a `\cpara` judgment, and the Response judges the whole.
+- Quoting other writers is optional. Use one only when it does work in your argument
+  (Quine on testing beliefs together; the dictionary on "humility").
 - Do not cite Émile Torres. Cite primary sources.
 
 ## 2. Files and build
@@ -155,33 +237,15 @@ Response: about 300 to 450 words, ending with one line beginning "In short:". As
   the reader a weapon to use on others.)
 - What is its structure, and is it the right one? (Verdict before definitions;
   thesis two-thirds of the way in; best idea in a footnote.)
-- Where is it strongest, stated in one sentence, and where does that strength stop?
+- At most one sentence of credit, and only if leaving it out would mislead.
 - What would a careful critic of the essay's own position say?
 - Is its central claim true as written? If the author corrected it elsewhere, say so
   and say which version readers actually meet.
 - What context changes how it should be read (date, what happened the day before,
   what the author went on to sell or found)? Mark inferences as inferences.
 
-Do not grade on the author's reputation, and do not soften a verdict because some
-sentences are good. One sentence of credit is enough when credit is due.
-
-After the third round of "not critical enough", these patterns were purged. Do not
-write them:
-- credit phrases in notes: "does its job", "a good move", "the essay at its best",
-  "lands well", "a good close", "sound advice", "the best paragraph";
-- charitable repairs: supplying the argument the author did not give ("Perhaps
-  because people pick moderate ratios by habit"). If the author gave no reason, say
-  there is none. Do not invent one for them;
-- "the point survives" when an error happens to favor the author. Say what was wrong.
-
-And look for these, which the first passes missed:
-- invented examples presented as typical (Wulky Wilkinsen does not exist; the
-  comedian is someone else's "somewhat silly" hypothetical);
-- whether the author applies the rule to himself (the rent test would evict his own
-  many-worlds belief, argued in 2008 on simplicity, not on different predictions);
-- whether a text about giving up beliefs ever gives one up;
-- whether the recommended fix is itself the thing criticized ("reputation
-management" is the PR industry's own name for its service).
+Apply section 1 in full. The "In short:" line is the verdict; it should be the
+sentence the author would least like to read, and it must be true.
 
 ## 6. Verification rules (non-negotiable)
 
@@ -217,11 +281,14 @@ The user's rules, which apply to everything you write here:
 
 1. `check_verbatim.py` prints OK for every post.
 2. Every substantial paragraph has a `\cpara` note, and every note is a judgment.
-3. No praise-only notes anywhere (`grep -n 'best\|good\|clear example' posts/*.tex`
-   and read each hit).
-4. No point is made twice across note levels, or between the notes and the Response.
-5. Every quotation checked against a source read this session; every inference marked.
-6. Build has no errors; overfull boxes under 1pt are acceptable.
-7. Look at the rendered pages (`pdftoppm -r 70 -png`), not only the log.
-8. Log what you did and any mistakes in `../docs/NOTES.md`. Commit only committable
+3. No praise anywhere in the notes (`grep -niE 'best|good|well|fair|clear|strong' posts/*.tex`
+   and read each hit), and nothing from the list in section 1.4.
+4. Reread every note and Response asking: does this concede, excuse, repair or hedge?
+   Delete the concession unless accuracy requires it. Then ask: what is the harshest
+   true thing about this paragraph, and does the note say it?
+5. No point is made twice across note levels, or between the notes and the Response.
+6. Every quotation checked against a source read this session; every inference marked.
+7. Build has no errors; overfull boxes under 1pt are acceptable.
+8. Look at the rendered pages (`pdftoppm -r 70 -png`), not only the log.
+9. Log what you did and any mistakes in `../docs/NOTES.md`. Commit only committable
    files; push.

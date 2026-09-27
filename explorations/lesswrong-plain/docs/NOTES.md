@@ -129,3 +129,7 @@ and Grace") in a wide right margin. Same five pilot posts.
   tests; many-worlds (2008, verified quotes) fails the rent test; conclusion-first is
   not the fault, lack of testing is; the arithmetic error no longer excused; "reputation
   management" is PR's own term; Twelve Virtues relinquishes nothing. README updated.
+- README rewritten (user request): section 1 now sets the standard up front: stance,
+  tone (scathing = unsparing and exact, not rude), before/after calibration table from
+  real revisions (quotes verified against current notes), banned phrases, what early
+  passes missed. Checklist gains a concede/excuse/repair/hedge pass.
