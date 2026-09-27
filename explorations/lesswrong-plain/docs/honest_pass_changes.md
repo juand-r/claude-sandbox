@@ -996,3 +996,243 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: I do not mention either difference.
 - After: I do not mention either difference. Twice, in consecutive paragraphs, I explain that we do not reason this out explicitly, because ``that is not the nature of evolutionary psychology'' and because ``that's not how evolutionary psychology works.''
 
+
+## positive-bias-look-into-the-dark
+
+- Before: The mistake, I say, is below the level of words, so knowing about it will not fix it.
+- After: The mistake, I say, is below the level of words, so knowing about it will not fix it. I then give the fix in words: ``You have to learn, wordlessly, to zag instead of zig.''
+
+- Before: I report the fifth.
+- After: I report the fifth. I remind you that I have long argued that ``the strength of a hypothesis is what it can't explain, not what it can.''
+
+
+## knowing-about-biases-can-hurt-people
+
+- Before: he called me one without naming any flaw.
+- After: he called me one without naming any flaw. He ``had acquired yet another Fully General Counterargument.''
+
+
+## making-beliefs-pay-rent
+
+- Before: I end: ``Every question of belief should flow from a question of anticipation.''
+- After: I end: ``Every question of belief should flow from a question of anticipation.'' Then I say it again with ``guess'' for ``question'': ``Every guess of belief should begin by flowing to a specific guess of anticipation.''
+
+
+## what-is-evidence
+
+- Before: This post is about evidence.
+- After: This post is about evidence. I return to Tarski's snow in my last two paragraphs.
+
+
+## how-much-evidence-does-it-take
+
+- Before: What thin evidence cannot give you is a right to be confident.}
+- After: What thin evidence cannot give you is a right to be confident.} My example is ten boxes that all beep for the same combination, which a losing combination would do only once in a million tries. Still, I say, ``131 losing tickets will pass such a test for every winner.'' I add: ``That's not a pointless bureaucratic regulation; it's math.''
+
+
+## absence-of-evidence-is-evidence-of-absence
+
+- Before: but no sabotage is still more likely if there is no Fifth Column at all.
+- After: but no sabotage is still more likely if there is no Fifth Column at all. In my words, ``the absence of a Fifth Column would perform an absence of sabotage.''
+
+
+## conservation-of-expected-evidence
+
+- Before: I leave for you to work out.
+- After: I leave for you to work out. Then comes the slogan: ``for every expectation of evidence, there is an equal and opposite expectation of counterevidence.''
+
+
+## taboo-your-words
+
+- Before: to see whether you can think without using those terms at all.''
+- After: to see whether you can think without using those terms at all.'' I add that you must also ban ``any of their short synonyms,'' and not ``invent a new word to use instead.'' Instead: ``Describe outward observables and interior mechanisms.''
+
+- Before: ``mostly they won't be able to answer at all.''
+- After: ``mostly they won't be able to answer at all.'' The reason, I say, is that their belief is mostly profession, ``and you cannot cognitively zoom in on an audio recording.''
+
+
+## dissolving-the-question
+
+- Before: The homework: describe the mental algorithm that produces the debate about free will.
+- After: The homework: describe the mental algorithm that produces the debate about free will. I spend four paragraphs on what the homework is not.
+
+
+## hug-the-query
+
+- Before: Accusing someone of ``Bias \#182'' cannot settle a question of fact.
+- After: Accusing someone of ``Bias \#182'' cannot settle a question of fact. If you forget this, I say, ``learning about more biases will hurt you, because it will distract you from more direct arguments.''
+
+
+## say-not-complexity
+
+- Before: He answered, ``But there's got to be some amount of complexity that does it.''
+- After: He answered, ``But there's got to be some amount of complexity that does it.'' Here I close my eyes, and explain to the reader that deliberating in words about every sentence you think ``would require an infinite recursion.''
+
+
+## mind-projection-fallacy
+
+- Before: E. T. Jaynes named this error
+- After: E. T. Jaynes, whom I introduce as ``a late grand master of the Bayesian Conspiracy,'' named this error
+
+
+## how-an-algorithm-feels-from-inside
+
+- Before: I cite no study of how brains or people sort things into categories.
+- After: I cite no study of how brains or people sort things into categories. Introspection, I add, gives you no ``direct access to neural network structures,'' and ``That's why the ancient Greeks didn't invent computational neuroscience.''
+
+- Before: Did the tree make a sound? Is Pluto a planet?
+- After: Did the tree make a sound? Is Pluto a planet? I ask the Pluto question twice, in the same words: ``We know where Pluto is, and where it's going; we know Pluto's shape, and Pluto's mass---but is it a planet?''
+
+
+## expecting-short-inferential-distances
+
+- Before: My example: a biologist can justify evolution to a physicist by calling it ``the simplest explanation.''
+- After: My example: a biologist can justify evolution to a physicist by calling it ``the simplest explanation.'' For a scientist, I say, the phrase is ``a Word of Power, spoken at the birth of theories and carved on their tombstones.''
+
+
+## the-lens-that-sees-its-flaws
+
+- Before: \nb{People call this wishful thinking, and have for a long time.}
+- After: \nb{People call this wishful thinking, and have for a long time.} Along the way the mind is a camera, a ``flawed lens,'' a map and a ``mapping engine.'' Once it is also a painter: happiness, I say, should not come from ``tampering with the mental paintbrushes.''
+
+
+## what-do-we-mean-by-rationality-1
+
+- Before: I say the judgment breaks a law of probability.
+- After: I say the judgment breaks a law of probability. The ``gold standards,'' I say, are probability theory and decision theory, and someone who obeys them is ``acting like a Bayesian.'' That, I add, is not acting like Mr.\ Spock, which does not help ``one hair''; in a footnote I say rationality also applies to ``urges, hunches, perceptions, and wordless intuitions.''
+
+- Before: ``One receives no points merely for pronouncing it loudly.''
+- After: ``One receives no points merely for pronouncing it loudly.'' My last sentence brings in a grander word: ``If you speak overmuch of the Way, you will not attain it.''
+
+
+## humans-are-not-automatically-strategic
+
+- Before: or arrange our surroundings to keep us motivated.
+- After: or arrange our surroundings to keep us motivated. Instead, I say, ``we mostly just do things.'' We act from habit or impulse, or pick an action that ``feels associated'' with the goal.
+
+
+## the-meditation-on-curiosity
+
+- Before: Yudkowsky had said exactly this in August, in ``Conservation of Expected Evidence.''}
+- After: Yudkowsky had said exactly this in August, in ``Conservation of Expected Evidence.''} I also ask whether you are ``criticizing your belief at its strong points, rather than its weak points.''
+
+- Before: The litany goes:
+- After: I call it the Litany of Tarski, ``really a meta-litany that specializes for each instance (this is only appropriate).'' I do not say what makes it appropriate. The litany goes:
+
+
+## the-importance-of-saying-oops
+
+- Before: So admit a large mistake all at once.
+- After: So admit a large mistake all at once. It is important, I say, to have ``the watershed moment, the moment of humbling realization,'' which is what I said near the start about Enron, in almost the same words.
+
+- Before: Since then, I say, I have watched others concede each millimeter of ground.
+- After: Since then, I say, I have watched others concede each millimeter of ground. These are the words I used earlier for my own mistake: ``grudgingly conceding each millimeter of ground.''
+
+
+## the-martial-art-of-rationality
+
+- Before: I give no finding from any of them.
+- After: I give no finding from any of them. Instead I call them ``new focusing lenses through which to view the landscape of our own minds,'' through which we may see ``the muscles of our brains, the fingers of thought as they move.''
+
+
+## twelve-virtues-of-rationality
+
+- Before: Every step of your reasoning must likewise cut through to the correct answer.
+- After: Every step of your reasoning must likewise cut through to the correct answer. I add: ``If you fail to achieve a correct answer, it is futile to protest that you acted with propriety.''
+
+- Before: I should say what experience that would lead you to expect. I do not.
+- After: I should say what experience that would lead you to expect. I do not. Then I list the twelve virtues. The last, the one I called nameless, is ``the void.''
+
+
+## argument-screens-off-authority
+
+- Before: I show that they are not, with a sprinkler.
+- After: I show that they are not, with a sprinkler. I call this ``half a technical demonstration'' and add: ``The rest you can take on my personal authority, or look up in the references.''
+
+
+## an-intuitive-explanation-of-bayes-s-theorem
+
+- Before: ``this introduction has entirely succeeded in its purpose.''
+- After: ``this introduction has entirely succeeded in its purpose.'' I state the lesson: ``Evidence is always the result of the differential between the two conditional probabilities.'' And: ``Strong evidence is not the product of a very high probability that A leads to X, but the product of a very low probability that not-A could have led to X.''
+
+- Before: and Newtonians kept their theory the whole time.}
+- After: and Newtonians kept their theory the whole time.} Then I go back to the notation and explain it again, and I note that a better notation exists, ``which it is now too late to adopt.''
+
+
+## the-second-law-of-thermodynamics-and-engines-of-cognition
+
+- Before: This is Liouville's theorem.
+- After: This is Liouville's theorem. I state it three times, twice before I name it, and each time I say it ``can be proven.'' I do not prove it.
+
+- Before: which is Bennett's account.
+- After: which is Bennett's account. Knowledge, I say, ``has to be represented in a brain, and that makes it as physical as anything else.'' So ``one subsystem cannot increase in mutual information with another subsystem, without (a) interacting with it and (b) doing thermodynamic work.''
+
+
+## toolbox-thinking-and-law-thinking
+
+- Before: I never answer his question.
+- After: I never answer his question. I allow that there may be ``a symmetrical form of durable misunderstanding'': a law thinker may suspect a toolbox thinker of ``some absurd motte-and-bailey.''
+
+
+## local-validity-as-a-key-to-sanity-and-civilization
+
+- Before: ``because there are tiny elves that whisper them to people.''
+- After: ``because there are tiny elves that whisper them to people.'' Making such an argument terrible is no harder, I add, ``since the tiny elves own lawnmowers.''
+
+- Before: can be written down.
+- After: can be written down. So human law, I say, is what people at least ``believe to be a set of simple rules that can be locally checked to test okay behavior.''
+
+
+## faster-than-science
+
+- Before: since Hans Reichenbach in the 1930s.}
+- After: since Hans Reichenbach in the 1930s.} Then I tell you: ``Now put your Bayesian goggles back on.'' I have not yet asked you to put them on.
+
+
+## no-safe-defense-not-even-science
+
+- Before: Not even Science can save you.
+- After: Not even Science can save you. Its ideals, I say, ``were born centuries ago, in a time when no one knew anything about probability theory or cognitive biases,'' and it ``demands too little of you, it blesses your good intentions too easily.''
+
+- Before: their tools have shattered in their hand.''
+- After: their tools have shattered in their hand.'' Earlier, about discovering that my own theory was stupid, I said: ``I don't really go in for that kind of drama.''
+
+
+## something-to-protect
+
+- Before: ``like picking out nice living-room drapes.''
+- After: ``like picking out nice living-room drapes.'' Later in the same sentence the cause brightens their days ``by adding some color, like nice living-room drapes.''
+
+- Before: notice a difference like 80 against 90 less, not more.}
+- After: notice a difference like 80 against 90 less, not more.} Then I say that pride in being a rationalist can stop you from learning: ``You will only be able to learn something about rationality if your daughter's life matters more to you than your pride as a rationalist.''
+
+
+## the-gift-we-give-to-tomorrow
+
+- Before: \nb{The part about humans is a guess.}
+- After: \nb{The part about humans is a guess.} Asked whether this explains the flower away, the answerer says: ``No, I explain it.'' When I call the creation of love ``a moral miracle,'' the answerer agrees, and says that if it still seems less wonderful to me, I ``have problems taking joy in the merely real.''
+
+- Before: They appear as background in a bedtime story.
+- After: They appear as background in a bedtime story. The words ``gift'' and ``tomorrow'' appear only in the title.
+
+
+## on-caring
+
+- Before: and billions are suffering.
+- After: and billions are suffering. I say twice that it cannot measure that much: it ``simply doesn't go up that far,'' and a section later it ``just doesn't go up that high.''
+
+- Before: \nb{The author was then a research fellow at MIRI.} I do not mention this.
+- After: \nb{The author was then a research fellow at MIRI.} I do not mention this. Part of the answer, I think, is ``a certain sort of desperate perspective'': you would give your life to the world's 100th biggest problem, ``but you can't, because there are 99 bigger problems you have to address first.''
+
+
+## tsuyoku-naritai-i-want-to-become-stronger
+
+- Before: Do not take pride in confessing your flaws, I say.
+- After: Do not take pride in confessing your flaws, I say. If we do, then when someone brings a plan for correcting a bias, ``We will shake our heads sadly and say, `You must not be very self-aware.'\,''
+
+
+## pr-is-corrosive
+
+- Before: ``can know or choose directly.''
+- After: ``can know or choose directly.'' So honor, I say, ``leaves them free to communicate something,'' while PR ``somehow (I think?) tends to pull a person away from communicating anything at all.''
+
