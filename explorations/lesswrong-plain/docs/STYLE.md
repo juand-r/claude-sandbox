@@ -64,3 +64,32 @@ are applications of this.
    the text. Satire comes from stating plainly what the post does, not from wordplay.
 5. Before finishing, reread every sentence and ask: what does this mean, literally?
    If the answer takes more words than the sentence, rewrite the sentence.
+
+# Checklist: run after writing each section of LessWrong, Honestly
+
+Mandatory. Run each pass separately, in this order, before showing a section to the user.
+Each pass looks for one kind of error only.
+
+1. Decode pass. For every sentence, state its literal claim to myself. If that takes
+   more words than the sentence, or needs knowledge the reader does not have, rewrite
+   the sentence. Every "it", "this", "that", "they" must have exactly one possible
+   referent. No invented figures of speech (see the rules above). Clear jokes stay.
+2. Verbs-against-source pass. For every verb that characterizes the author (claims,
+   admits, reverses, dismisses, proves, ignores, never says, repeats), open the
+   original and confirm the author did exactly that. Same for numbers, counts
+   ("two of my eight paragraphs"), dates and names. Apply this to my own fixes too.
+   Quoted words: check verbatim against data/originals.
+3. Voice pass. Every sentence is either the author speaking in the first person about
+   what the post does ("I say...", "I do not mention...") or a marked quotation. An
+   editorial objection must be phrased as the author's omission or act, never as a
+   free-standing statement in the author's mouth.
+4. Source pass. Claims taken from the annotated edition (notes, Responses) are leads,
+   not proof. Any factual claim about the world or the post's errors must be checkable
+   in the original or in a source cited in the notes; if I cannot confirm it, drop it.
+5. Diff pass (for edits). Change only the phrases I can name as faulty. Diff and confirm
+   nothing else moved.
+6. Optional cold read. An agent reads the section without context and lists every
+   sentence it had to reread. I verify each item before acting on it.
+
+Model sections: the three samples as of commit 7753c93, especially The Lens That Sees
+Its Flaws. Length about 300 to 450 words; long posts may run longer.
