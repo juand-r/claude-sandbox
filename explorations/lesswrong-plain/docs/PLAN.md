@@ -11,6 +11,7 @@
 - [ ] User reviews annotated edition; decide on commentary density and tone.
 - [ ] Decide which subset of Review winners to include (by year rank? by category?).
 - [ ] Decide where rewrites live (repo is public; private repo or local only).
-- [ ] Rewrite remaining Highlights.
+- [x] Annotated edition of all 50 Highlights + 2 Review winners (272 pages).
+      Remaining 46 done by 12 parallel agents in two waves, each batch reviewed.
 - [ ] Rewrite chosen Review winners.
 - [ ] Reading site: static site styled like LessWrong.

@@ -173,6 +173,11 @@ The repo is public. Never commit a post's text, a PDF, or anything in `data/orig
 - A new tag must be added in three places: a macro in `main.tex`, a line in the tag
   list on the title page, and `COMMENT_MACROS` in `src/check_verbatim.py`.
 - Two adjacent marks get a comma automatically (the `\cnote` kern trick).
+- Links inside the two columns print as plain text (`\nolinks` in `\post`): a
+  hyperlink broken across a page inside paracol crashes pdflatex. Only the header link
+  to the original is clickable.
+- Build the whole volume with `../src/make_main.py` then latexmk; it includes every
+  post that has both a post file and an afterword.
 - Do not use Tufte sidenotes or `marginfix`. Both were tried; notes ran off the page or
   onto the next post's page. See `../docs/NOTES.md`.
 - Unicode: some originals use decomposed accents (e + combining accent). Write the
@@ -316,16 +321,19 @@ The user's rules, which apply to everything you write here:
 
 ## 8. Checklist before sending a new PDF
 
-1. `check_verbatim.py` prints OK for every post.
-2. Every substantial paragraph has a `\cpara` note, and every note is a judgment.
-3. No praise anywhere in the notes (`grep -niE 'best|good|well|fair|clear|strong' posts/*.tex`
+1. `../src/audit.py` (no arguments) shows every post: verbatim OK, a `\cpara` on
+   every substantial paragraph, Summary, Response and "In short:". Read its
+   praise-word flags by hand.
+2. `check_verbatim.py` prints OK for every post.
+3. Every substantial paragraph has a `\cpara` note, and every note is a judgment.
+4. No praise anywhere in the notes (`grep -niE 'best|good|well|fair|clear|strong' posts/*.tex`
    and read each hit), and nothing from the list in section 1.4.
-4. Reread every note and Response asking: does this concede, excuse, repair or hedge?
+5. Reread every note and Response asking: does this concede, excuse, repair or hedge?
    Delete the concession unless accuracy requires it. Then ask: what is the harshest
    true thing about this paragraph, and does the note say it?
-5. No point is made twice across note levels, or between the notes and the Response.
-6. Every quotation checked against a source read this session; every inference marked.
-7. Build has no errors; overfull boxes under 1pt are acceptable.
-8. Look at the rendered pages (`pdftoppm -r 70 -png`), not only the log.
-9. Log what you did and any mistakes in `../docs/NOTES.md`. Commit only committable
+6. No point is made twice across note levels, or between the notes and the Response.
+7. Every quotation checked against a source read this session; every inference marked.
+8. Build has no errors; overfull boxes under 1pt are acceptable.
+9. Look at the rendered pages (`pdftoppm -r 70 -png`), not only the log.
+10. Log what you did and any mistakes in `../docs/NOTES.md`. Commit only committable
    files; push.
