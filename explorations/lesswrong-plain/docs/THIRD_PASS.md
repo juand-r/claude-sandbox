@@ -66,3 +66,18 @@ sentence goes.
 - how-an-algorithm-feels-from-inside: 32 -> 21. Removed "invented figure" and "objects that do not exist" (illustrations), restatement notes, hedge counts, a joke taken literally, typography and Allais-link notes; "rigged" wording removed.
 - expecting-short-inferential-distances: 31 -> 13. Removed wording nits (a.k.a., tribe/band, noun piles, recurse, chat), the invented-number note on an illustrative "one concept", "the reader is told which side they stand on", the evolution-example note (the example illustrates a short explanation, not the case for evolution), the closing-joke-as-defense reading. Response rewritten to match.
 - illusion-of-transparency: 25 -> 20. Removed coinage, grammar and mock-scriptural nits, a footnote quip note; trimmed zingers from the Jane/June and Griffin notes.
+- something-to-protect: 56 -> 32. Removed manga plot details, wording and scripture-formula nits, self-quotation notes, restatement notes, "rigged" wording, and the inference that the essay steers readers to its author's cause. Response aligned.
+- the-gift-we-give-to-tomorrow: 40 -> 22. Removed the complaints that the author writes both sides of his own dialogue (that is the form), that "cruel" and "stupid" personify a process (a figure of speech), the origin-of-life dating and campfire-tale notes, grammar and jargon nits, restatement notes. Response rewritten around the notes that remain.
+- on-caring: 72 -> 40. Removed complaints that the illustrative characters are invented (Alice, Bob, Christine, Daniel, their jobs, their imagined reactions), the WWF name and the photo-source notes, "dailydeadbirds" snark, grammar and intensifier nits, readings of literary lines as feelings offered in place of argument, recruiting and identity readings, restatement notes. Response: "conversion story" and "recruiting pitch" framing removed; the undisclosed-employer point kept.
+- tsuyoku-naritai: 23 -> 16. Removed the halving-steps pedantry, the translation quibble, the childhood-skeptic and persecution readings, the joke-about-rank reading, a synonym nit. Response aligned.
+- a-sense-that-more-is-possible: 34 -> 23. Removed house-jargon and pronoun nits, the rhetorical 98% taken as a statistic, feelings-of-colleagues and brick-punching readings, "invented number", restatement notes. Response: "prospectus" framing and an aspiration inference removed.
+- strong-evidence-is-common: 19 -> 15. Removed bold-type, synonym, hedge and calibration-gloss nits; the last note cut to its claim.
+- pr-is-corrosive: 20 -> 10. Removed wording nits (throat-clearing, afaict, miasma, loopier, slashes, links), the Lannister reading, the Orwell/Strunk confusion note.
+
+## Result
+- Notes: 1,560 -> 966 across 52 posts. Verbatim check passes for all 52; every
+  Response is still 300-450 words with an "In short" line; 0 LaTeX errors; 253 pages.
+- Cross-references between notes were checked after the cuts; two pointed at removed
+  notes (humans-are-not-automatically-strategic, on-caring) and were fixed.
+- Responses were edited wherever they repeated a removed point, so notes and
+  Responses agree.
