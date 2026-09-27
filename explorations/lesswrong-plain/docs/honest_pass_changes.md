@@ -976,3 +976,23 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: ``If you want to try this at home,'' also avoid
 - After: ``If you want to try this at home,'' I add, also avoid
 
+
+# Completeness pass
+
+## avoiding-your-belief-s-real-weak-points
+
+- Before: Everyone avoids the painful weak points of their beliefs, by instinct.
+- After: Everyone avoids the painful weak points of their beliefs, by instinct. I add that a better title for this post would be ``Not Spontaneously Thinking About Your Belief's Most Painful Weaknesses.'' I keep the old one.
+
+
+## the-fallacy-of-gray
+
+- Before: I name none of these people either, and I point to no specific problem in anything they said.
+- After: I name none of these people either, and I point to no specific problem in anything they said. Then, for the third time, I state the thesis: ``If there is no black and white, there is yet lighter and darker, and not all grays are the same.''
+
+
+## lonely-dissent
+
+- Before: I do not mention either difference.
+- After: I do not mention either difference. Twice, in consecutive paragraphs, I explain that we do not reason this out explicitly, because ``that is not the nature of evolutionary psychology'' and because ``that's not how evolutionary psychology works.''
+
