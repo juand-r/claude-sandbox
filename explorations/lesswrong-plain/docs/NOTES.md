@@ -172,4 +172,5 @@ and Grace") in a wide right margin. Same five pilot posts.
   "acoustic"; the regress is acknowledged in the paragraph note). Added 12 missing
   \cpara notes myself (4 in The Gift, 8 in Bayes). All 52 posts: verbatim OK, In short
   present. Full volume 272 pages, 0 errors, largest overfull 0.53pt.
-  Totals from review: 6 overreaches corrected across 12 batches; all others held up.
+  Totals from review: 4 overreaches corrected, all in wave one (Asch, Lens illusion,
+  Belief as Attire, "ten years"); wave two needed none. All other spot checks held up.
