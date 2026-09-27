@@ -71,3 +71,12 @@ and Grace") in a wide right margin. Same five pilot posts.
   que", in a passage on aircraft design; Musashi quotation matches Victor Harris's
   translation; counts in the notes ("the Way" 6x, "Art" 2x, "Beware lest" 3x) counted
   with grep.
+- Added a Summary and a Response after each post (annotated/afterwords/, committed:
+  my own writing). Response judges the post as an anonymous essay and places it in
+  context. Quotes verified before use: Peirce 1878 pragmatic maxim; James 1907
+  squirrel; Quine 1951 "corporate body"; Franklin's "reasonable creature"; Feynman
+  1974; Bernays 1928 ch. 1 first sentence (checked in the text); Sagan/Truzzi dates;
+  Turing & Good ban/deciban 1940; Nisbett & Cohen honor/homicide finding; Simon 1956
+  satisficing; Stanovich & West 2000 System 1/2; CFAR 2012; Sosa 1980.
+- Marked as my inference in the text: the PR post (14 Feb 2021) may respond to the
+  NYT article on Slate Star Codex (13 Feb 2021).

@@ -62,6 +62,15 @@
   \begin{paracol}{2}}
 \newcommand{\closepost}{\flushnotes\end{paracol}}
 
+% ---- Summary and Response after each post -------------------------------------
+% Single column, same width as the text column, so line length stays readable.
+\newenvironment{afterword}
+  {\bigskip\begin{list}{}{\leftmargin=0pt\rightmargin=0.4\textwidth
+     \listparindent=0pt\itemindent=0pt\parsep=0.7\baselineskip}\item\relax}
+  {\end{list}}
+\newcommand{\summaryhead}{{\large Summary}\par}
+\newcommand{\responsehead}{\medskip{\large Response}\par}
+
 \begin{document}
 
 {\noindent\LARGE Six LessWrong Posts, Annotated\par}\medskip
@@ -88,10 +97,16 @@ This is a personal study copy. The posts belong to their authors.
 \tableofcontents
 
 \input{posts/making-beliefs-pay-rent}\closepost
+\input{afterwords/making-beliefs-pay-rent}
 \input{posts/the-bottom-line}\closepost
+\input{afterwords/the-bottom-line}
 \input{posts/strong-evidence-is-common}\closepost
+\input{afterwords/strong-evidence-is-common}
 \input{posts/pr-is-corrosive}\closepost
+\input{afterwords/pr-is-corrosive}
 \input{posts/humans-are-not-automatically-strategic}\closepost
+\input{afterwords/humans-are-not-automatically-strategic}
 \input{posts/twelve-virtues-of-rationality}\closepost
+\input{afterwords/twelve-virtues-of-rationality}
 
 \end{document}
