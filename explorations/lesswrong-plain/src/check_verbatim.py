@@ -72,7 +72,7 @@ def tex_to_text(tex: str) -> str:
     tex = re.sub(r"\\(flushnotes|item|quad)\b", " ", tex)
     tex = re.sub(r"\\(begin|end)\{\w+\}", " ", tex)
     tex = tex.replace("\\\\", " ")  # table row ends
-    for esc, ch in [(r"\textbackslash{}", "\\"), (r"\^{}", "^"), (r"\~{}", "~"), (r"\{", "{"), (r"\}", "}"),
+    for esc, ch in [(r"\textbackslash{}", "\\"), (r"\slash{}", "/"), (r"\^{}", "^"), (r"\~{}", "~"), (r"\{", "{"), (r"\}", "}"),
                     (r"\$", "$"), (r"\&", "&"), (r"\#", "#"), (r"\_", "_"), (r"\%", "%")]:
         tex = tex.replace(esc, ch)
     tex = tex.replace("-{}-", "--")
