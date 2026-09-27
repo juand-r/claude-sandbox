@@ -107,3 +107,4 @@ and Grace") in a wide right margin. Same five pilot posts.
 - Per user: removed the Torres citation; the note now cites the archived page directly
   (web.archive.org snapshot 2001-02-05, #timeline_birth). I still have not read that page:
   archive.org is blocked here. Wording rests on the secondary quotation until checked.
+- User checked the archived page (2001-02-05 snapshot) and confirmed the quote is there.
