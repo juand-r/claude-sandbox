@@ -81,8 +81,9 @@ Each pass looks for one kind of error only.
    Quoted words: check verbatim against data/originals.
 3. Voice pass. Every sentence is either the author speaking in the first person about
    what the post does ("I say...", "I do not mention...") or a marked quotation. An
-   editorial objection must be phrased as the author's omission or act, never as a
-   free-standing statement in the author's mouth.
+   short plain comment is fine, as in the model sections ("That is a joke, and it is
+   the whole defense"). What must never happen is that a reader cannot tell whose view
+   a sentence states, or that the author seems to assert something the post denies.
 4. Source pass. Claims taken from the annotated edition (notes, Responses) are leads,
    not proof. Any factual claim about the world or the post's errors must be checkable
    in the original or in a source cited in the notes; if I cannot confirm it, drop it.
