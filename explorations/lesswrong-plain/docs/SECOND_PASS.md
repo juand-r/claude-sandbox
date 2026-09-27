@@ -92,3 +92,18 @@ then the Summary and Response. Log changes here, per post.
 - expecting-short-inferential-distances: cut a signposting sentence in the Response.
 - illusion-of-transparency: Response put "vague" in the post's mouth (it says
   "polite diplomatese"); fixed. Cut an unsupported sentence about what readers remember.
+- something-to-protect: checked (Spider-Man verified); cut a grammar nit, fixed verdict punctuation.
+- the-gift-we-give-to-tomorrow: cut four typo/punctuation nits; otherwise checked.
+- on-caring: cut four typo notes; otherwise checked.
+- tsuyoku-naritai: cut punctuation nit; otherwise checked.
+- a-sense-that-more-is-possible: cut three petty notes; fixed an illogical sentence in the Response.
+- strong-evidence-is-common: 200:1 error rechecked against the original; cut two typo notes.
+- pr-is-corrosive: date of the NYT link verified (post 14 Feb 2021); cut two nits; removed a praise word from the Response.
+- twelve-virtues: verdict opened with praise ("quotable and memorable"), out of line with the other verdicts; rewritten.
+- Verdict sweep: the-bottom-line, humans-are-not-automatically-strategic and
+  strong-evidence-is-common opened their "In short" with praise ("good image", "good
+  analogy", "good observation"), softer than the rest of the volume. Rewritten to state
+  the concession plainly. The Bottom Line Response also dropped "a strong image".
+- strong-evidence-is-common: Response was 257 words (below the 300 floor); added a
+  paragraph on the Sagan inversion. Bayes Response trimmed from 466 to 447 words.
+- Final typo sweep: cut three more typo-level notes (humans, what-do-we-mean, something-to-protect).
