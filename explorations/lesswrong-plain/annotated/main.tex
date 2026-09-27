@@ -1,0 +1,87 @@
+% Annotated LessWrong posts: original text in the left column, commentary in the right.
+% Build: latexmk -pdf -outdir=build main.tex   (post files in posts/ are not in git; see README)
+%
+% Layout: paracol keeps the two columns in step. Notes made inside a paragraph are
+% collected and printed in the right column when \flushnotes is called at the end of
+% that paragraph, so each note starts beside its own paragraph and long notes can
+% break across pages.
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathpazo}
+\usepackage[left=16mm,right=16mm,top=20mm,bottom=22mm]{geometry}
+\usepackage{paracol}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\columnratio{0.60}
+\setlength{\columnsep}{8mm}
+\setlength{\emergencystretch}{3em}  % narrow columns: avoid lines sticking out
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7\baselineskip}
+\definecolor{notecolor}{gray}{0.25}
+
+% ---- Commentary notes -------------------------------------------------------
+\newcounter{cnote}
+\newcommand{\pendingnotes}{}
+% \cnote{kind}{text}: mark the text with a number and queue the note.
+\makeatletter
+\newcommand{\cnote}[2]{%
+  \refstepcounter{cnote}\textsuperscript{\footnotesize\thecnote}%
+  \edef\cnote@head{\noexpand\printnote{\thecnote}}%
+  \expandafter\g@addto@macro\expandafter\pendingnotes\expandafter{\cnote@head{#1}{#2}}}
+\makeatother
+\newcommand{\printnote}[3]{%
+  {\footnotesize\RaggedRight\color{notecolor}\textsuperscript{#1}\textsc{#2}.\ #3\par}}
+% Print queued notes beside the paragraph just finished, then realign the columns.
+\newcommand{\flushnotes}{%
+  \switchcolumn\pendingnotes\gdef\pendingnotes{}\switchcolumn*}
+
+\newcommand{\cstyle}[1]{\cnote{style}{#1}}
+\newcommand{\clogic}[1]{\cnote{logic}{#1}}
+\newcommand{\cfact}[1]{\cnote{fact}{#1}}
+\newcommand{\ccut}[1]{\cnote{cut}{#1}}
+\newcommand{\cgood}[1]{\cnote{good}{#1}}
+\newcommand{\cauthor}[1]{\cnote{author's footnote}{#1}}
+
+% ---- Post header ------------------------------------------------------------
+% \post{title}{author}{year}{url} starts a post; \closepost closes it.
+\newcommand{\post}[4]{%
+  \clearpage
+  {\noindent\Large #1\par}\vspace{0.3ex}
+  {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
+  \begin{paracol}{2}}
+\newcommand{\closepost}{\flushnotes\end{paracol}}
+
+\begin{document}
+
+{\noindent\LARGE Five LessWrong Posts, Annotated\par}\medskip
+{\noindent\large Original text with marginal commentary\par}\bigskip
+
+\begin{minipage}{0.6\textwidth}
+The left column reproduces each post as published on LessWrong. I have changed nothing except to convert web formatting to print: links become plain text, and the authors' italics and bold stay as they were. The numbered marks are mine.
+
+The right column holds my comments. Each starts with a tag:
+
+\begin{itemize}
+\item \textsc{style}: the writing could be clearer or shorter. Many of these cite principles from Joseph Williams, \textsc{Style: Lessons in Clarity and Grace}: put the characters in the subjects and the actions in the verbs; put old information before new; save the end of a sentence for what matters most; cut hedges, intensifiers and redundant words.
+\item \textsc{logic}: the argument has a gap, an unstated assumption, or a claim that goes beyond its support.
+\item \textsc{fact}: a factual or arithmetic claim that is wrong, or that needs a source.
+\item \textsc{cut}: the passage does no work and could go.
+\item \textsc{good}: something that works, noted so the criticism is calibrated.
+\end{itemize}
+
+This is a personal study copy. The posts belong to their authors.
+\end{minipage}
+
+\input{posts/making-beliefs-pay-rent}\closepost
+\input{posts/the-bottom-line}\closepost
+\input{posts/strong-evidence-is-common}\closepost
+\input{posts/pr-is-corrosive}\closepost
+\input{posts/humans-are-not-automatically-strategic}\closepost
+
+\end{document}

@@ -6,7 +6,9 @@
 - [x] Fetcher + manifests; fetch the 50 Highlights.
 - [x] Draft style guide (docs/STYLE.md, v0.1).
 - [x] Pilot: rewrite 5 posts (3 Sequences-era, 2 Review winners).
-- [ ] User reviews pilot; revise style guide.
+- [x] Plain-English rewrites of the 5 pilot posts (rewrites/, superseded).
+- [x] Annotated edition of the 5 pilot posts: verbatim text + margin commentary (annotated/).
+- [ ] User reviews annotated edition; decide on commentary density and tone.
 - [ ] Decide which subset of Review winners to include (by year rank? by category?).
 - [ ] Decide where rewrites live (repo is public; private repo or local only).
 - [ ] Rewrite remaining Highlights.

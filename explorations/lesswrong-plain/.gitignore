@@ -1,3 +1,7 @@
 .venv/
 data/originals/
 rewrites/
+annotated/posts/
+annotated/build/
+annotated/build.log
+*.pdf
