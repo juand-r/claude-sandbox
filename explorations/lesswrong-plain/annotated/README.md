@@ -97,6 +97,24 @@ These pairs are real revisions the user asked for. Aim for the right-hand side.
 - The central claim false as written, even if the author corrected it elsewhere; say
   which version readers actually meet.
 
+### 1.7 Harsh must still be exact: the overreach pattern
+
+The first wave of 29 posts produced four overreaches, all of one kind: a true
+criticism ("the evidence supports less than the text claims") was upgraded into a false
+one ("the text gets it backwards", "demonstrates the opposite", "false as written").
+Examples, all corrected:
+- "It gets Asch backwards." The essay said being the first dissenter is harder, and
+  Asch's data confirm that. The true point: the essay omits that lonely dissent was
+  still the most common response.
+- "The illusion demonstrates the opposite of the thesis." The paragraph's own claim was
+  "you don't always have to believe your own eyes", which the illusion does show. The
+  true point: it does not show the paragraph's stronger claim that we "correct" illusions.
+- "False as written" about "you cannot say X", when the counterexamples said something
+  close to X but not X.
+Before writing "false", "backwards" or "the opposite", quote the exact sentence you are
+refuting and check that your evidence contradicts that sentence, not a paraphrase of it.
+
+
 ### 1.6 Other standing instructions
 
 - Comment at every level. Sentence notes alone were called "hyper-local". Every
