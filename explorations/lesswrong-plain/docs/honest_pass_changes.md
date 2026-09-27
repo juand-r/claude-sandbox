@@ -1370,3 +1370,15 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before:  I say twice that it cannot measure that much: it ``simply doesn't go up that far,'' and a section later it ``just doesn't go up that high.''
 - After: 
 
+
+## what-do-we-mean-by-rationality-1
+
+- Before:  My last sentence brings in a grander word: ``If you speak overmuch of the Way, you will not attain it.''
+- After: 
+
+
+## no-safe-defense-not-even-science
+
+- Before:  Earlier, about discovering that my own theory was stupid, I said: ``I don't really go in for that kind of drama.''
+- After: 
+
