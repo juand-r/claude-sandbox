@@ -94,3 +94,8 @@ and Grace") in a wide right margin. Same five pilot posts.
   from rationality.org FAQ via search.
 - Lesson: I was grading on the authors' reputation and on surface quality. Read for
   what the piece does to its reader, and check my own praise as hard as my criticism.
+- Humility note (Twelve Virtues) extended with quotes from "AGI Ruin: A List of
+  Lethalities" (2022, items 41-42), checked verbatim against the fetched post, and the
+  "Against Modest Epistemology" chapter of Inadequate Equilibria (2017). The post says he
+  is the only one who could write the list, not literally the only one who can save the
+  world; the note quotes what it says.
