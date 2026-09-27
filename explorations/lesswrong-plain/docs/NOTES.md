@@ -156,3 +156,6 @@ and Grace") in a wide right margin. Same five pilot posts.
 - C2b (Local Validity) accepted without changes after checks: Kelvin/nuclear myth
   (England et al. 2007), "son" vs townsman (Lu Meng, marked as identification), juror
   removed by voir dire, Chollet "general" dropped (note says misstates, not misquotes).
+- G1 accepted without changes after checks: Spider-Man "to keep him busy" (origin is
+  guilt over Uncle Ben); 80/90 = 400/450 so love and multiplying cannot disagree in the
+  example; flower "imitating mating signs" (sexual deception known only in orchids).
