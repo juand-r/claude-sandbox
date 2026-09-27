@@ -5,6 +5,12 @@
 \usepackage[left=30mm,right=30mm,top=25mm,bottom=28mm]{geometry}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+% \nb{...}: the editor's corrections, outside facts and judgments.
+% Change this one definition to restyle every note.
+\definecolor{nbcolor}{HTML}{8B1A1A}
+\newcommand{\nb}[1]{{\color{nbcolor}[n.b.\ #1]}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6\baselineskip}
 
@@ -27,6 +33,8 @@
 Each section retells one post in its author's voice. It follows the post from start to finish and says plainly what each part does: what it claims, what it shows, and what it only appears to show. Where a paragraph contributes nothing to the argument, the retelling says so.
 
 These are parodies written by the editor of \textsc{LessWrong, Annotated}, not the authors' words. Words inside quotation marks are the authors' own and have been checked against the originals. Every other claim about a post, including its errors, rests on the notes and Responses in the annotated edition, where the evidence is given.
+
+Remarks in \textcolor{nbcolor}{dark red, marked n.b.,} are the editor's: corrections, facts from outside the post, and judgments. Everything else is in the author's voice, including the ironic lines.
 
 The satire is meant to be fair. Where a post gets something right, the retelling says that too.
 
