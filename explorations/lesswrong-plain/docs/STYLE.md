@@ -36,3 +36,23 @@ earlymoderntexts.com: keep the author's argument, change only the prose.
 Each rewrite is Markdown with a header: original title, author, date,
 source link, and a line saying it is a plain-English rewrite, not the
 author's words.
+
+# Rules for my own prose (all documents in this project)
+
+Added September 2026 after the user objected to "the rule comes with its own exit".
+
+1. No invented metaphors. Never describe an argument, a rule or a text as an object
+   or a place: no exits, doors, gates, ladders, bridges, seals, anchors, engines,
+   machinery, scaffolding, weight-bearing. Say literally what happens.
+   - Bad: "the rule comes with its own exit."
+     Good: "any group can declare itself rational, so anyone can exempt themselves."
+   - Bad: "the clause seals the thesis against its audience."
+     Good: "a reader who disagrees only confirms the diagnosis."
+2. No cryptic jokes or teasers. If a sentence makes the reader stop to decode it,
+   rewrite it. "In case the first marvel did not take" -> "and asks you to marvel again."
+3. No compressed allusions to what comes later ("I will need that reason in a minute").
+   State the point where it applies.
+4. Each sentence makes one literal claim that a first-time reader can check against
+   the text. Satire comes from stating plainly what the post does, not from wordplay.
+5. Before finishing, reread every sentence and ask: what does this mean, literally?
+   If the answer takes more words than the sentence, rewrite the sentence.
