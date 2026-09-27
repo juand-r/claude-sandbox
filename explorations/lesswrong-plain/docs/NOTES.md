@@ -148,3 +148,8 @@ and Grace") in a wide right margin. Same five pilot posts.
   Corrected an overreach: "gets Asch backwards" -> "reports half the result" (the
   essay says first dissent is harder, which Asch confirms; it omits that lonely dissent
   was still the majority response). Response: "misreported" -> "reported selectively".
+- A and B1 accepted after checks (chest-pain advice; conservation 69/71 misstatement;
+  Jewish blessing on bad news; PhD grievance in text). Two overreaches corrected:
+  Lens illusion "demonstrates the opposite" -> "shows less than the paragraph claims";
+  Belief as Attire "False as written" -> "Stated as an absolute; the record is mixed".
+  Pattern: agents turn a true "weaker than claimed" into a false "opposite/backwards".
