@@ -161,3 +161,7 @@ and Grace") in a wide right margin. Same five pilot posts.
   example; flower "imitating mating signs" (sexual deception known only in orchids).
 - C2a accepted without changes after check: the demon "generates entropy in the
   process of inspecting" is the Szilard/Brillouin account superseded by Bennett 1982.
+- G2 accepted without changes after checks ($60/h rate; 833 h ~ 5 months at 40 h/wk;
+  the note states its assumption). Build crash found by G2: \href breaking across a
+  page inside paracol segfaults pdflatex. Fix: \nolinks inside the columns (links
+  print as text; the header link stays). Full volume builds: 258 pages, 0 errors.

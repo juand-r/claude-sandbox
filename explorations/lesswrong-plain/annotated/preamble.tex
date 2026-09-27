@@ -48,6 +48,15 @@
 % Paragraph-level note: placed at the start of a paragraph, so it prints first in the margin.
 \newcommand{\cpara}[1]{\cnote{paragraph}{#1}}
 
+
+% Inside the two columns, links print as plain text. A hyperlink that breaks across a
+% page boundary inside paracol crashes pdflatex (seen on "On Caring": "\pdfendlink ended
+% up in different nesting level", then a segfault). The link to each original, in the
+% post header, stays clickable.
+\makeatletter
+\newcommand{\nolinks}{\let\href\@secondoftwo\let\url\nolinkurl}
+\makeatother
+
 % ---- Post header ------------------------------------------------------------
 % \post{title}{author}{year}{url} starts a post; \closepost closes it.
 \newcommand{\post}[4]{%
@@ -55,7 +64,7 @@
   \phantomsection\addcontentsline{toc}{section}{#1}%
   {\noindent\Large #1\par}\vspace{0.3ex}
   {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
-  \begin{paracol}{2}}
+  \begin{paracol}{2}\nolinks}
 \newcommand{\closepost}{\flushnotes\end{paracol}}
 
 % ---- Summary and Response after each post -------------------------------------
