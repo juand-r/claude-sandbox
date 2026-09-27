@@ -99,3 +99,8 @@ and Grace") in a wide right margin. Same five pilot posts.
   "Against Modest Epistemology" chapter of Inadequate Equilibria (2017). The post says he
   is the only one who could write the list, not literally the only one who can save the
   world; the note quotes what it says.
+- Humility note: added the "only one who can make the effort" quote from Yudkowsky's
+  ~2000 autobiography. Primary (web.archive.org) unreachable from this environment;
+  quoted via Torres, with the archive link, and the note says so. Added his own
+  disclaimer (yudkowsky.net/singularity, verified): everything 2002 or earlier obsolete.
+  The 2015 LessWrong post with the same wording is satire, not the source.
