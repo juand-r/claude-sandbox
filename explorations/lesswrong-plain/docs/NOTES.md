@@ -165,3 +165,6 @@ and Grace") in a wide right margin. Same five pilot posts.
   the note states its assumption). Build crash found by G2: \href breaking across a
   page inside paracol segfaults pdflatex. Fix: \nolinks inside the columns (links
   print as text; the header link stays). Full volume builds: 258 pages, 0 errors.
+- F2 accepted without changes after checks: Chamberlain letter 22 Aug (ten days, not
+  two); "Jane" for June; editors "Griffin Gilovich"; Hume "anywhere"/"any where" and
+  not about a priori.
