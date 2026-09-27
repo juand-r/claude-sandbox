@@ -109,7 +109,10 @@ These pairs are real revisions the user asked for. Aim for the right-hand side.
 
 ```
 annotated/
-  main.tex              layout, macros, title page, table of contents (committed)
+  main.tex              title page, table of contents, list of posts (committed)
+  preamble.tex          layout and macros, shared with preview.sh (committed)
+  preview.sh            build one post on its own (committed)
+  skeletons/<slug>.tex  verbatim text from md2tex.py, no notes (NOT committed)
   posts/<name>.tex      verbatim post text + notes (NOT committed: authors' copyright)
   afterwords/<name>.tex Summary and Response (committed: our own writing)
   build/                LaTeX output (not committed)
@@ -122,6 +125,22 @@ Build: `cd annotated && latexmk -pdf -interaction=nonstopmode -outdir=build main
 Then copy `build/main.pdf` to `../lesswrong-annotated.pdf` and send it to the user.
 
 The repo is public. Never commit a post's text, a PDF, or anything in `data/originals`.
+
+### 2.1 Starting a new post
+
+1. The verbatim text already exists as a skeleton: `skeletons/<slug>.tex`, made by
+   `../src/md2tex.py` (run `../src/make_skeletons.py` to regenerate all of them). Copy it
+   to `posts/<slug>.tex` and annotate the copy. Never retype the text.
+2. The skeleton marks things the converter could not reproduce: `\figph{url}` for an
+   image (the reader sees a link), `\fnnum{n}` for a footnote number the original prints
+   as plain text, `\posthead{...}` for a heading inside the post. Do not change these.
+3. Insert notes only by adding `\cpara{...}`, `\cstyle{...}` etc. Change nothing else.
+4. Build the one post with `./preview.sh posts <slug>` (it includes
+   `afterwords/<slug>.tex` if present) and look at the PDF in `build-preview/`.
+5. Run the verbatim checker after every editing session.
+6. Images: when a figure matters to the argument, describe in a note what it shows,
+   from the surrounding text or the image link; say that you could not see it if you
+   could not.
 
 ## 3. Layout mechanics (read before editing a post file)
 

@@ -93,3 +93,8 @@
 \DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
 % A stray private-use glyph inside a formula in the Bayes essay; it carries no meaning.
 \DeclareUnicodeCharacter{10FC06}{}
+
+% Part heading for a group of posts (a sequence of the Highlights), with a contents entry.
+\newcommand{\sequencehead}[1]{%
+  \clearpage\phantomsection\addcontentsline{toc}{part}{#1}%
+  \vspace*{0.3\textheight}{\noindent\huge #1\par}}
