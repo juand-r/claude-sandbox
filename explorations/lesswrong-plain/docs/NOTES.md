@@ -144,3 +144,7 @@ and Grace") in a wide right margin. Same five pilot posts.
   "ten years" in When Science Cannot Help are hypothetical; Response now says so.
   Agents collided in the shared scratchpad (one post briefly had no notes); src/audit.py
   added to count paragraphs vs notes for every post.
+- B2 accepted after checks (Cowen "and interpreted" dropped; All/All Nixon wording).
+  Corrected an overreach: "gets Asch backwards" -> "reports half the result" (the
+  essay says first dissent is harder, which Asch confirms; it omits that lonely dissent
+  was still the majority response). Response: "misreported" -> "reported selectively".
