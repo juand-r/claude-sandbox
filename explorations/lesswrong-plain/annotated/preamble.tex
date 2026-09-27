@@ -1,0 +1,95 @@
+% Shared preamble for main.tex and preview.sh.
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathpazo}
+\usepackage[left=16mm,right=16mm,top=20mm,bottom=22mm]{geometry}
+\usepackage{paracol}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}  % URLs may break anywhere, so long ones stay in the column
+
+\columnratio{0.60}
+\setlength{\columnsep}{8mm}
+\setlength{\emergencystretch}{3em}  % narrow columns: avoid lines sticking out
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7\baselineskip}
+\definecolor{notecolor}{gray}{0.25}
+
+% ---- Commentary notes -------------------------------------------------------
+\newcounter{cnote}
+\newcommand{\pendingnotes}{}
+% \cnote{kind}{text}: mark the text with a number and queue the note.
+\makeatletter
+% Two notes in a row get a comma between their marks: each mark ends with a tiny
+% kern that the next \cnote can detect.
+\newdimen\cnote@kern \cnote@kern=0.01pt
+\newcommand{\cnote}[2]{%
+  \ifdim\lastkern=\cnote@kern\textsuperscript{\footnotesize,}\fi
+  \refstepcounter{cnote}\textsuperscript{\footnotesize\thecnote}\kern\cnote@kern
+  %
+  \edef\cnote@head{\noexpand\printnote{\thecnote}}%
+  \expandafter\g@addto@macro\expandafter\pendingnotes\expandafter{\cnote@head{#1}{#2}}}
+\makeatother
+\newcommand{\printnote}[3]{%
+  {\footnotesize\RaggedRight\color{notecolor}\textsuperscript{#1}\textsc{#2}.\ #3\par}}
+% Print queued notes beside the paragraph just finished, then realign the columns.
+\newcommand{\flushnotes}{%
+  \switchcolumn\pendingnotes\gdef\pendingnotes{}\switchcolumn*}
+
+\newcommand{\cstyle}[1]{\cnote{style}{#1}}
+\newcommand{\clogic}[1]{\cnote{logic}{#1}}
+\newcommand{\cfact}[1]{\cnote{fact}{#1}}
+\newcommand{\ccut}[1]{\cnote{cut}{#1}}
+\newcommand{\cauthor}[1]{\cnote{author's footnote}{#1}}
+% Paragraph-level note: placed at the start of a paragraph, so it prints first in the margin.
+\newcommand{\cpara}[1]{\cnote{paragraph}{#1}}
+
+% ---- Post header ------------------------------------------------------------
+% \post{title}{author}{year}{url} starts a post; \closepost closes it.
+\newcommand{\post}[4]{%
+  \clearpage
+  \phantomsection\addcontentsline{toc}{section}{#1}%
+  {\noindent\Large #1\par}\vspace{0.3ex}
+  {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
+  \begin{paracol}{2}}
+\newcommand{\closepost}{\flushnotes\end{paracol}}
+
+% ---- Summary and Response after each post -------------------------------------
+% Single column, same width as the text column, so line length stays readable.
+\newenvironment{afterword}
+  {\bigskip\begin{list}{}{\leftmargin=0pt\rightmargin=0.4\textwidth
+     \listparindent=0pt\itemindent=0pt\parsep=0.7\baselineskip}\item\relax}
+  {\end{list}}
+\newcommand{\summaryhead}{{\large Summary}\par}
+\newcommand{\responsehead}{\medskip{\large Response}\par}
+
+% ---- Elements produced by src/md2tex.py -------------------------------------
+% Images are not reproduced; a placeholder links to the original image.
+\newcommand{\figph}[1]{{\small\color{notecolor}[Figure in the original: \href{#1}{link}.]}}
+% Footnote numbers that the original prints as plain [1], and numbers of end notes.
+\newcommand{\fnnum}[1]{\textsuperscript{#1}}
+% Section headings inside a post.
+\newcommand{\posthead}[1]{\medskip{\large #1}\par}
+
+% Characters pdflatex does not know by default, as they occur in the originals.
+\DeclareUnicodeCharacter{00AC}{\ensuremath{\neg}}
+\DeclareUnicodeCharacter{00D7}{\ensuremath{\times}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{03A0}{\ensuremath{\Pi}}
+\DeclareUnicodeCharacter{2260}{\ensuremath{\neq}}
+\DeclareUnicodeCharacter{FFFC}{}
+\DeclareUnicodeCharacter{0391}{A}
+\DeclareUnicodeCharacter{0392}{B}
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
+\DeclareUnicodeCharacter{03A6}{\ensuremath{\Phi}}
+\DeclareUnicodeCharacter{21D2}{\ensuremath{\Rightarrow}}
+\DeclareUnicodeCharacter{2190}{\ensuremath{\leftarrow}}
+\DeclareUnicodeCharacter{2715}{\ensuremath{\times}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
+% A stray private-use glyph inside a formula in the Bayes essay; it carries no meaning.
+\DeclareUnicodeCharacter{10FC06}{}

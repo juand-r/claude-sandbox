@@ -5,73 +5,7 @@
 % collected and printed in the right column when \flushnotes is called at the end of
 % that paragraph, so each note starts beside its own paragraph and long notes can
 % break across pages.
-\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{mathpazo}
-\usepackage[left=16mm,right=16mm,top=20mm,bottom=22mm]{geometry}
-\usepackage{paracol}
-\usepackage{microtype}
-\usepackage{ragged2e}
-\usepackage{xcolor}
-\usepackage[hidelinks]{hyperref}
-\usepackage{url}
-
-\columnratio{0.60}
-\setlength{\columnsep}{8mm}
-\setlength{\emergencystretch}{3em}  % narrow columns: avoid lines sticking out
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.7\baselineskip}
-\definecolor{notecolor}{gray}{0.25}
-
-% ---- Commentary notes -------------------------------------------------------
-\newcounter{cnote}
-\newcommand{\pendingnotes}{}
-% \cnote{kind}{text}: mark the text with a number and queue the note.
-\makeatletter
-% Two notes in a row get a comma between their marks: each mark ends with a tiny
-% kern that the next \cnote can detect.
-\newdimen\cnote@kern \cnote@kern=0.01pt
-\newcommand{\cnote}[2]{%
-  \ifdim\lastkern=\cnote@kern\textsuperscript{\footnotesize,}\fi
-  \refstepcounter{cnote}\textsuperscript{\footnotesize\thecnote}\kern\cnote@kern
-  %
-  \edef\cnote@head{\noexpand\printnote{\thecnote}}%
-  \expandafter\g@addto@macro\expandafter\pendingnotes\expandafter{\cnote@head{#1}{#2}}}
-\makeatother
-\newcommand{\printnote}[3]{%
-  {\footnotesize\RaggedRight\color{notecolor}\textsuperscript{#1}\textsc{#2}.\ #3\par}}
-% Print queued notes beside the paragraph just finished, then realign the columns.
-\newcommand{\flushnotes}{%
-  \switchcolumn\pendingnotes\gdef\pendingnotes{}\switchcolumn*}
-
-\newcommand{\cstyle}[1]{\cnote{style}{#1}}
-\newcommand{\clogic}[1]{\cnote{logic}{#1}}
-\newcommand{\cfact}[1]{\cnote{fact}{#1}}
-\newcommand{\ccut}[1]{\cnote{cut}{#1}}
-\newcommand{\cauthor}[1]{\cnote{author's footnote}{#1}}
-% Paragraph-level note: placed at the start of a paragraph, so it prints first in the margin.
-\newcommand{\cpara}[1]{\cnote{paragraph}{#1}}
-
-% ---- Post header ------------------------------------------------------------
-% \post{title}{author}{year}{url} starts a post; \closepost closes it.
-\newcommand{\post}[4]{%
-  \clearpage
-  \phantomsection\addcontentsline{toc}{section}{#1}%
-  {\noindent\Large #1\par}\vspace{0.3ex}
-  {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
-  \begin{paracol}{2}}
-\newcommand{\closepost}{\flushnotes\end{paracol}}
-
-% ---- Summary and Response after each post -------------------------------------
-% Single column, same width as the text column, so line length stays readable.
-\newenvironment{afterword}
-  {\bigskip\begin{list}{}{\leftmargin=0pt\rightmargin=0.4\textwidth
-     \listparindent=0pt\itemindent=0pt\parsep=0.7\baselineskip}\item\relax}
-  {\end{list}}
-\newcommand{\summaryhead}{{\large Summary}\par}
-\newcommand{\responsehead}{\medskip{\large Response}\par}
+\input{preamble}
 
 \begin{document}
 

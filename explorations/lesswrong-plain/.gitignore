@@ -2,6 +2,8 @@
 data/originals/
 rewrites/
 annotated/posts/
+annotated/skeletons/
+annotated/build-preview/
 annotated/build/
 annotated/build.log
 *.pdf

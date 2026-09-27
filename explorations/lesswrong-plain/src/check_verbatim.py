@@ -64,32 +64,50 @@ def tex_to_text(tex: str) -> str:
         tex, _ = remove_macro(tex, name)
     tex, author_notes = remove_macro(tex, AUTHOR_MACRO)
     tex = tex + "\n" + "\n".join(author_notes)
+    tex, _ = remove_macro(tex, "figph")  # image placeholders (images are dropped on both sides)
+    tex, _ = remove_macro(tex, "fnnum")  # footnote numbers (dropped on both sides)
     tex = unwrap(tex, "href", keep_arg=2, nargs=2)
-    for name in ["emph", "textbf", "url"]:
+    for name in ["emph", "textbf", "url", "posthead"]:
         tex = unwrap(tex, name, keep_arg=1, nargs=1)
-    tex = re.sub(r"\\(flushnotes|item)\b", " ", tex)
+    tex = re.sub(r"\\(flushnotes|item|quad)\b", " ", tex)
     tex = re.sub(r"\\(begin|end)\{\w+\}", " ", tex)
-    tex = tex.replace(r"\%", "%").replace(r"\&", "&").replace("-{}-", "--")
+    tex = tex.replace("\\\\", " ")  # table row ends
+    for esc, ch in [(r"\textbackslash{}", "\\"), (r"\^{}", "^"), (r"\~{}", "~"), (r"\{", "{"), (r"\}", "}"),
+                    (r"\$", "$"), (r"\&", "&"), (r"\#", "#"), (r"\_", "_"), (r"\%", "%")]:
+        tex = tex.replace(esc, ch)
+    tex = tex.replace("-{}-", "--")
     tex = tex.replace("``", "\"").replace("''", "\"")
     return tex
 
 
-def md_to_text(md: str) -> str:
+def md_to_text(md: str, move_notes: bool = True) -> str:
     md = md.split("\n---\n", 1)[1]  # drop the header written by fetch.py
     md = re.sub(r"\[(\d+)\]\(#[^)]*\)", "", md)  # footnote markers like [1](#fn1x27)
-    md = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", md)  # links -> link text
+    md = re.sub(r"\[!\[[^\]]*\]\([^)]*\)\]\([^)]*\)", "", md)  # linked images
+    md = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", md)  # images
+    md = re.sub(r"\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)\s]*)(?:\s+\"[^\"]*\")?\)", r"\1", md)  # links -> text
+    md = re.sub(r"^```.*$", "", md, flags=re.M)  # code fences
+    md = re.sub(r"^\|[\s|:-]+\|$", "", md, flags=re.M)  # table separator rows
+    md = re.sub(r"^\|(.*)\|$", lambda m: m.group(1).replace("|", " "), md, flags=re.M)  # table rows
     md = re.sub(r"<(http[^>]*)>", r"\1", md)  # autolinks
+    md = re.sub(r"(?<!\\)\[\d+\](?!\()", "", md)  # bare, unescaped footnote markers like [1]
+    md = re.sub(r"\\([\\`_{}\[\]()#+\-.!|>])", r"\1", md)  # other Markdown escapes (\[1\] is literal text)
     md = md.replace(r"\*", "\x00")  # escaped literal asterisks survive
     md = md.replace("**", "").replace("*", "").replace("\x00", "*")
     md = re.sub(r"^\s*> ?", "", md, flags=re.M)  # blockquote markers
     md = re.sub(r"^\s*[*-] ", "", md, flags=re.M)  # bullet markers
     md = re.sub(r"^\s*\d+\. ", "", md, flags=re.M)  # numbered-list markers
-    md = re.sub(r"\[\d+\](?!\()", "", md)  # bare footnote markers like [1]
     # Footnote list written as "###### 1. text" headings: move it to the end, where
     # the annotated file's author footnotes end up, and drop the numbering.
-    notes = re.findall(r"^#+ \d+\. (.*)$", md, flags=re.M)
-    md = re.sub(r"^#+ \d+\. .*$", "", md, flags=re.M)
-    md = re.sub(r"^---$", "", md, flags=re.M)  # horizontal rules
+    # (Only when the annotated file moved them into \cauthor notes; when it keeps them in
+    # place as \fnnum paragraphs, leave them where they are.)
+    notes = re.findall(r"^#+ \d+\. (.*)$", md, flags=re.M) if move_notes else []
+    if move_notes:
+        md = re.sub(r"^#+ \d+\. .*$", "", md, flags=re.M)
+    else:
+        md = re.sub(r"^#+ \d+\. ", "", md, flags=re.M)  # kept in place; numbers are \fnnum
+    md = re.sub(r"^---+$", "", md, flags=re.M)  # horizontal rules
+    md = re.sub(r"^#{1,6}\s*", "", md, flags=re.M)  # heading markers
     return md + "\n" + "\n".join(notes)
 
 
@@ -101,8 +119,9 @@ def normalize(text: str) -> list[str]:
 
 
 def main(tex_path: str, md_path: str) -> int:
-    got = normalize(tex_to_text(Path(tex_path).read_text()))
-    want = normalize(md_to_text(Path(md_path).read_text()))
+    tex_src = Path(tex_path).read_text()
+    got = normalize(tex_to_text(tex_src))
+    want = normalize(md_to_text(Path(md_path).read_text(), move_notes="\\fnnum{" not in tex_src))
     if got == want:
         print(f"OK  {tex_path}: {len(got)} words match")
         return 0

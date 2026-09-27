@@ -133,3 +133,9 @@ and Grace") in a wide right margin. Same five pilot posts.
   tone (scathing = unsparing and exact, not rude), before/after calibration table from
   real revisions (quotes verified against current notes), banned phrases, what early
   passes missed. Checklist gains a concede/excuse/repair/hedge pass.
+- Tooling for the remaining 46 Highlights: src/md2tex.py (verbatim skeletons),
+  src/make_skeletons.py, annotated/preamble.tex (shared), annotated/preview.sh.
+  Checker extended (images, tables, escapes, headings, code fences, plain [n] markers,
+  in-place end notes). All 46 skeletons pass verbatim and compile; old 6 still pass.
+  Bugs found on the way: intraword emphasis, | in formulas, literal [1] vs marker,
+  hyperref .out name clash in preview.sh, U+10FC06 stray glyph, long URLs (xurl).
