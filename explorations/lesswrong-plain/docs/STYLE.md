@@ -48,8 +48,12 @@ Added September 2026 after the user objected to "the rule comes with its own exi
      Good: "any group can declare itself rational, so anyone can exempt themselves."
    - Bad: "the clause seals the thesis against its audience."
      Good: "a reader who disagrees only confirms the diagnosis."
-2. No cryptic jokes or teasers. If a sentence makes the reader stop to decode it,
-   rewrite it. "In case the first marvel did not take" -> "and asks you to marvel again."
+2. Jokes are welcome when their literal meaning is instantly clear. "Ask you to marvel
+   again, in case the first marvel did not take" is fine: it says exactly what happens.
+   What is banned is a figure of speech the reader must decode to find the claim
+   ("the rule comes with its own exit"). Test: can a first-time reader say what the
+   sentence claims without pausing? If yes, keep the joke. Do not strip humor in the
+   name of plainness (the user objected when I did).
 3. No compressed allusions to what comes later ("I will need that reason in a minute").
    State the point where it applies.
 4. Each sentence makes one literal claim that a first-time reader can check against
