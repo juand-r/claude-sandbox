@@ -94,3 +94,16 @@ Each pass looks for one kind of error only.
 
 Model sections: the three samples as of commit 7753c93, especially The Lens That Sees
 Its Flaws. Length about 300 to 450 words; long posts may run longer.
+
+# Rules of thumb for LessWrong, Honestly (from the user's review, September 2026)
+
+These came out of one round of review. Apply them by hand, sentence by sentence. Never apply them with a regex or a batch script.
+
+1. **Separate the two voices.** The author's voice retells the post, including ironic lines that describe what the post does or leaves out ("I give no example", "I do not mention this"). The editor's corrections, facts from outside the post, and judgments go in `\nb{...}`, in the third person ("Yudkowsky had written", not "I had written"). If an ironic line depends on an outside fact, put that fact in an n.b. just before it. Merge neighbouring notes when that reads more clearly.
+2. **No bare verdicts.** Cut sentences like "This is sensible", "Also good", "This is good advice". Keep a verdict only when the next sentence turns on it ("That is true. It also contradicts…"). Decide each case by reading the whole paragraph.
+3. **Name what you refer to, and stop there.** "Two of those fields" becomes "two of those fields, social psychology and evolutionary psychology". "An earlier post" becomes the post's title. "A physicist" becomes the name. Do not add examples, dates, numbers or explanations that the sentence does not need.
+4. **Quotes are the author's exact words.** A quote that stands alone as a sentence gets a short tag that states the author's move: "I say", "I admit", "I repeat", "I state without evidence", "Then I contradict myself". A harsh tag is allowed only when the surrounding text shows it is deserved. Quotes inside a sentence that already names the speaker need no tag.
+5. **Paraphrase only when it helps, and keep the key terms.** Do not change words for the sake of change. If the post says "causal graphs", "nodes" and "screen off", a paraphrase keeps them.
+6. **Plain language in our own voice.** Drop jargon in the editor's voice and in the retelling. The exception is the community's overused terms ("epistemics", "update your priors", "Bayesian", "rationalist", "the Way"). Keep those in the author's words, in quotation marks, where mocking them is the point.
+7. **Do only what was asked.** Make the smallest edit that does the job. Show every change (before and after). Never widen an edit on your own.
+8. **Opening note stays true.** If a rule changes what the document does, check that the opening note still describes it.
