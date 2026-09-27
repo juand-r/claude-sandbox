@@ -139,3 +139,8 @@ and Grace") in a wide right margin. Same five pilot posts.
   in-place end notes). All 46 skeletons pass verbatim and compile; old 6 still pass.
   Bugs found on the way: intraword emphasis, | in formulas, literal [1] vs marker,
   hyperref .out name clash in preview.sh, U+10FC06 stray glyph, long URLs (xurl).
+- Wave 1 review: D (Bayes), C1, E accepted after spot checks (1 in 125,000; Warren
+  AG not governor; 125 not 131; Aaronson doubled "are" and dropped point). One fix: the
+  "ten years" in When Science Cannot Help are hypothetical; Response now says so.
+  Agents collided in the shared scratchpad (one post briefly had no notes); src/audit.py
+  added to count paragraphs vs notes for every post.
