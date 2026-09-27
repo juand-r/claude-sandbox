@@ -159,3 +159,5 @@ and Grace") in a wide right margin. Same five pilot posts.
 - G1 accepted without changes after checks: Spider-Man "to keep him busy" (origin is
   guilt over Uncle Ben); 80/90 = 400/450 so love and multiplying cannot disagree in the
   example; flower "imitating mating signs" (sexual deception known only in orchids).
+- C2a accepted without changes after check: the demon "generates entropy in the
+  process of inspecting" is the Szilard/Brillouin account superseded by Bennett 1982.
