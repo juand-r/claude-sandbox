@@ -107,3 +107,22 @@ then the Summary and Response. Log changes here, per post.
 - strong-evidence-is-common: Response was 257 words (below the 300 floor); added a
   paragraph on the Sagan inversion. Bayes Response trimmed from 466 to 447 words.
 - Final typo sweep: cut three more typo-level notes (humans, what-do-we-mean, something-to-protect).
+
+## Thinning (user request: "Thin them")
+
+Three posts carried more notes than a reader can use. Rule applied: keep every factual
+correction and every objection to the argument; cut notes that only say a paragraph
+restates another, style nits, notes that repeat the Response or a neighbouring note;
+shorten long notes to their claim and one piece of evidence.
+
+| post | notes before | after | note words before | after |
+|---|---|---|---|---|
+| an-intuitive-explanation-of-bayes-s-theorem | 99 | 61 | 4,127 | ~2,440 |
+| the-second-law-of-thermodynamics-and-engines-of-cognition | 67 | 37 | 2,588 | ~1,660 |
+| local-validity-as-a-key-to-sanity-and-civilization | 80 | 49 | 3,704 | ~2,490 |
+
+Checked afterwards: verbatim text unchanged; every "see the note" still has a target;
+every quotation attributed to the post was matched against the original. That check
+caught one quotation I had invented while shortening (Pendarvis "not a major
+character"; the essay says "isn't ... even much of a side character") and two
+paraphrases in quotation marks. All three fixed.
