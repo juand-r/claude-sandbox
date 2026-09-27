@@ -108,3 +108,15 @@ and Grace") in a wide right margin. Same five pilot posts.
   (web.archive.org snapshot 2001-02-05, #timeline_birth). I still have not read that page:
   archive.org is blocked here. Wording rests on the secondary quotation until checked.
 - User checked the archived page (2001-02-05 snapshot) and confirmed the quote is there.
+- Full passage, as transcribed by the user from the archived page (for the record; too
+  long to quote in the note): "That's why I matter, and that's why I think my efforts
+  could spell the difference between life and death for most of humanity, or even the
+  difference between a Singularity and a lifeless, sterilized planet. I don't mean to
+  say, of course, that the entire causal load should be attributed to me; if I make it,
+  then Ed Regis or Vernor Vinge, both of whom got me into this, would equally be able to
+  say "My efforts made the difference between Singularity and destruction." The same
+  goes for Brian Atkins, and Eric Drexler, and so on. History is a fragile thing. So are
+  our causal intuitions, where linear chains of dependencies are concerned. Nonetheless,
+  I think that I can save the world, not just because I'm the one who happens to be
+  making the effort, but because I'm the only one who can make the effort. And that is
+  why I get up in the morning."
