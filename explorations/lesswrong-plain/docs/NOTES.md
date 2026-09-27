@@ -153,3 +153,6 @@ and Grace") in a wide right margin. Same five pilot posts.
   Lens illusion "demonstrates the opposite" -> "shows less than the paragraph claims";
   Belief as Attire "False as written" -> "Stated as an absolute; the record is mixed".
   Pattern: agents turn a true "weaker than claimed" into a false "opposite/backwards".
+- C2b (Local Validity) accepted without changes after checks: Kelvin/nuclear myth
+  (England et al. 2007), "son" vs townsman (Lu Meng, marked as identification), juror
+  removed by voir dire, Chollet "general" dropped (note says misstates, not misquotes).
