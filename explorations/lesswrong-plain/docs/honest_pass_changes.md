@@ -1236,3 +1236,137 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: ``can know or choose directly.''
 - After: ``can know or choose directly.'' So honor, I say, ``leaves them free to communicate something,'' while PR ``somehow (I think?) tends to pull a person away from communicating anything at all.''
 
+
+# Review of the silly/redundant additions: removed as nitpicking
+
+## avoiding-your-belief-s-real-weak-points
+
+- Before:  I add that a better title for this post would be ``Not Spontaneously Thinking About Your Belief's Most Painful Weaknesses.'' I keep the old one.
+- After: 
+
+
+## the-fallacy-of-gray
+
+- Before:  Then, for the third time, I state the thesis: ``If there is no black and white, there is yet lighter and darker, and not all grays are the same.''
+- After: 
+
+
+## positive-bias-look-into-the-dark
+
+- Before:  I then give the fix in words: ``You have to learn, wordlessly, to zag instead of zig.''
+- After: 
+
+
+## making-beliefs-pay-rent
+
+- Before:  Then I say it again with ``guess'' for ``question'': ``Every guess of belief should begin by flowing to a specific guess of anticipation.''
+- After: 
+
+
+## absence-of-evidence-is-evidence-of-absence
+
+- Before:  In my words, ``the absence of a Fifth Column would perform an absence of sabotage.''
+- After: 
+
+
+## taboo-your-words
+
+- Before:  The reason, I say, is that their belief is mostly profession, ``and you cannot cognitively zoom in on an audio recording.''
+- After: 
+
+
+## dissolving-the-question
+
+- Before:  I spend four paragraphs on what the homework is not.
+- After: 
+
+
+## say-not-complexity
+
+- Before:  Here I close my eyes, and explain to the reader that deliberating in words about every sentence you think ``would require an infinite recursion.''
+- After: 
+
+
+## how-an-algorithm-feels-from-inside
+
+- Before:  Introspection, I add, gives you no ``direct access to neural network structures,'' and ``That's why the ancient Greeks didn't invent computational neuroscience.''
+- After: 
+
+- Before:  I ask the Pluto question twice, in the same words: ``We know where Pluto is, and where it's going; we know Pluto's shape, and Pluto's mass---but is it a planet?''
+- After: 
+
+
+## expecting-short-inferential-distances
+
+- Before:  For a scientist, I say, the phrase is ``a Word of Power, spoken at the birth of theories and carved on their tombstones.''
+- After: 
+
+
+## the-lens-that-sees-its-flaws
+
+- Before:  Along the way the mind is a camera, a ``flawed lens,'' a map and a ``mapping engine.'' Once it is also a painter: happiness, I say, should not come from ``tampering with the mental paintbrushes.''
+- After: 
+
+
+## the-meditation-on-curiosity
+
+- Before: I call it the Litany of Tarski, ``really a meta-litany that specializes for each instance (this is only appropriate).'' I do not say what makes it appropriate. 
+- After: 
+
+
+## the-importance-of-saying-oops
+
+- Before:  It is important, I say, to have ``the watershed moment, the moment of humbling realization,'' which is what I said near the start about Enron, in almost the same words.
+- After: 
+
+- Before:  These are the words I used earlier for my own mistake: ``grudgingly conceding each millimeter of ground.''
+- After: 
+
+
+## twelve-virtues-of-rationality
+
+- Before:  Then I list the twelve virtues. The last, the one I called nameless, is ``the void.''
+- After: 
+
+
+## argument-screens-off-authority
+
+- Before:  I call this ``half a technical demonstration'' and add: ``The rest you can take on my personal authority, or look up in the references.''
+- After: 
+
+
+## the-second-law-of-thermodynamics-and-engines-of-cognition
+
+- Before:  I state it three times, twice before I name it, and each time I say it ``can be proven.'' I do not prove it.
+- After: 
+
+
+## local-validity-as-a-key-to-sanity-and-civilization
+
+- Before:  Making such an argument terrible is no harder, I add, ``since the tiny elves own lawnmowers.''
+- After: 
+
+
+## faster-than-science
+
+- Before:  Then I tell you: ``Now put your Bayesian goggles back on.'' I have not yet asked you to put them on.
+- After: 
+
+
+## something-to-protect
+
+- Before:  Later in the same sentence the cause brightens their days ``by adding some color, like nice living-room drapes.''
+- After: 
+
+
+## the-gift-we-give-to-tomorrow
+
+- Before:  The words ``gift'' and ``tomorrow'' appear only in the title.
+- After: 
+
+
+## on-caring
+
+- Before:  I say twice that it cannot measure that much: it ``simply doesn't go up that far,'' and a section later it ``just doesn't go up that high.''
+- After: 
+
