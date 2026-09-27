@@ -174,3 +174,33 @@ and Grace") in a wide right margin. Same five pilot posts.
   present. Full volume 272 pages, 0 errors, largest overfull 0.53pt.
   Totals from review: 4 overreaches corrected, all in wave one (Asch, Lens illusion,
   Belief as Attire, "ten years"); wave two needed none. All other spot checks held up.
+
+## Plain paragraph notes (September 2026)
+
+User request: every paragraph of the posts that had no paragraph note gets one, shorter
+than the paragraph, stating plainly what it says. These are summaries, not critique.
+
+- Scope: prose paragraphs of 15+ words and block quotes or lists of 30+ words without a
+  `\cpara`. Headings, images and one-line fragments skipped (a note would be longer than
+  the text). 664 targets in 49 posts; 3 posts had none.
+- Method: `src/pn_extract.py` lists targets by block index; notes are written to one
+  JSON file per post; `src/pn_apply.py` checks each note (shorter than the paragraph, max
+  40 words, no em dashes, no italics, escaped LaTeX, banned phrases) and inserts it.
+  Pilot on Strong Evidence Is Common by hand; six agents drafted the rest from a common
+  brief; every note was then reviewed against its paragraph. About 40 notes corrected:
+  added tone ("joking", "with irony"), a claim merged from the next paragraph, a wrong
+  subject in dialogue, bits as base 2 instead of base 1/2, and "degrees of freedom"
+  paraphrased away in paragraphs about that term.
+- Notes live in the gitignored post files, like all other margin notes.
+- Full volume: 251 pages, 0 errors.
+
+## Correction: Local Validity, Chinese general
+
+An outside review claimed the story was Sun Wu and the concubines. I checked with two
+web agents that did not find the straw-hat story, and replaced the Response sentence with
+"matches no single historical account". That was wrong. The post's own paragraph note
+(third pass) already identified it: Lü Meng at Jiangling, Records of the Three Kingdoms,
+who executed a soldier from his home commandery for taking a villager's hat to cover his
+armor. Verified again (kongming.net translation of the Sanguozhi biography). Original
+sentence restored. Lesson: check the project's own notes and docs before acting on an
+outside review.
