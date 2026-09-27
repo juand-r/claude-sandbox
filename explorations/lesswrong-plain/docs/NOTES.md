@@ -80,3 +80,17 @@ and Grace") in a wide right margin. Same five pilot posts.
   satisficing; Stanovich & West 2000 System 1/2; CFAR 2012; Sosa 1980.
 - Marked as my inference in the text: the PR post (14 Feb 2021) may respond to the
   NYT article on Slate Star Codex (13 Feb 2021).
+- User: Responses too nice. Rewrote all six to judge what each piece is doing
+  (rhetorical function, whom it flatters, hidden assumptions), quoting others only
+  where the quote does work. Each ends with "In short: ...".
+- Mistake corrected: I had praised Twelve Virtues' definition of humility as "the best
+  definition in the text". Merriam-Webster: humility = "freedom from pride or
+  arrogance"; humble = "not proud or haughty: not arrogant or assertive"; Latin
+  humilis "low". The essay's definition is prudence, not humility. Margin note replaced.
+- Also found and removed praise that had crept back into four Twelve Virtues margin
+  notes after the user asked to drop "good" comments.
+- Checked all quotations in the new Responses against the originals; fixed one
+  misquote ("glimpsed" -> "glimpse the center"). CFAR workshop price ($3,900, 4 days)
+  from rationality.org FAQ via search.
+- Lesson: I was grading on the authors' reputation and on surface quality. Read for
+  what the piece does to its reader, and check my own praise as hard as my criticism.
