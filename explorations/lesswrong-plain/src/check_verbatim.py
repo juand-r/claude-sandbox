@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-COMMENT_MACROS = ["cstyle", "clogic", "cfact", "ccut", "cgood"]
+COMMENT_MACROS = ["cpara", "cstyle", "clogic", "cfact", "ccut", "cgood"]
 AUTHOR_MACRO = "cauthor"
 
 

@@ -120,3 +120,7 @@ and Grace") in a wide right margin. Same five pilot posts.
   I think that I can save the world, not just because I'm the one who happens to be
   making the effort, but because I'm the only one who can make the effort. And that is
   why I get up in the morning."
+- Second pass (user: comments too local). Added a "paragraph" tag (\cpara): 67 notes,
+  one per substantial paragraph, on job / placement / links / shape / cost. Removed
+  about ten local notes or clauses that duplicated them, and two praise-only paragraph
+  notes. Wrote annotated/README.md: instructions for the next annotator.

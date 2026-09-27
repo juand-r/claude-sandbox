@@ -51,6 +51,8 @@
 \newcommand{\cfact}[1]{\cnote{fact}{#1}}
 \newcommand{\ccut}[1]{\cnote{cut}{#1}}
 \newcommand{\cauthor}[1]{\cnote{author's footnote}{#1}}
+% Paragraph-level note: placed at the start of a paragraph, so it prints first in the margin.
+\newcommand{\cpara}[1]{\cnote{paragraph}{#1}}
 
 % ---- Post header ------------------------------------------------------------
 % \post{title}{author}{year}{url} starts a post; \closepost closes it.
@@ -83,6 +85,7 @@ The left column reproduces each post as published on LessWrong. I have changed n
 The right column holds my comments. Each starts with a tag:
 
 \begin{itemize}
+\item \textsc{paragraph}: marked at the start of a paragraph. What the paragraph as a whole is for, whether it does that job, and how it fits with the paragraphs around it.
 \item \textsc{style}: the writing could be clearer or shorter. Many of these cite principles from Joseph Williams, \textsc{Style: Lessons in Clarity and Grace}: put the characters in the subjects and the actions in the verbs; put old information before new; save the end of a sentence for what matters most; cut hedges, intensifiers and redundant words.
 \item \textsc{logic}: the argument has a gap, an unstated assumption, or a claim that goes beyond its support.
 \item \textsc{fact}: a factual or arithmetic claim that is wrong, or that needs a source.
