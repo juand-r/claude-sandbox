@@ -104,3 +104,6 @@ and Grace") in a wide right margin. Same five pilot posts.
   quoted via Torres, with the archive link, and the note says so. Added his own
   disclaimer (yudkowsky.net/singularity, verified): everything 2002 or earlier obsolete.
   The 2015 LessWrong post with the same wording is satire, not the source.
+- Per user: removed the Torres citation; the note now cites the archived page directly
+  (web.archive.org snapshot 2001-02-05, #timeline_birth). I still have not read that page:
+  archive.org is blocked here. Wording rests on the secondary quotation until checked.
