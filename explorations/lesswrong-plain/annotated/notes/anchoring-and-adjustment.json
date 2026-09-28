@@ -1,0 +1,53 @@
+{
+ "slug": "anchoring-and-adjustment",
+ "header": "\\post{Anchoring and Adjustment}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/bMkCEZoBNhgRBtzoj/anchoring-and-adjustment}\n",
+ "skeleton_sha": "afc0eca4ab01ff88b9d9e305edb9e55ac25772954109ba84045b455f8c73d52b",
+ "post_sha": "488bd003576b1d1d440a908242cfe9c9faace35b31ec0d1b48049daf9b077687",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Sets the reader the first test: a wheel of fortune stops at 65, then the question of what share of UN member countries are in Africa.}"
+  ],
+  [
+   525,
+   "\\cpara{Sets the second test: estimate the product 1 × 2 × \\ldots\\ × 8 within five seconds.}"
+  ],
+  [
+   732,
+   "\\cpara{Reports the wheel result correctly: the 1974 paper gives median estimates of ``25 and 45 for groups that received 10 and 65, respectively.'' Anchoring itself has held up in a large replication. In the Many Labs project, which repeated 13 effects in 36 samples (Klein et al., \\textsc{Social Psychology}, 2014), anchoring replicated in a later version of the task, and the original studies ``produced underestimates'' of its size.}"
+  ],
+  [
+   985,
+   "\\cfact{The subjects did not choose the anchor as a starting point on their own. The paper says they were instructed to estimate each quantity ``by moving upward or downward from the given number.''}"
+  ],
+  [
+   1120,
+   "\\cpara{Overstated for the post's own main example. Stopping at the first answer that seems plausible is the account Epley and Gilovich (2001) defended for anchors people produce themselves, as in the multiplication task below. For numbers supplied by the experimenter, as with the wheel, the same paper says that the effects ``appear to be produced by the increased accessibility of anchor-consistent information.'' The post's own source for the Einstein study, Strack and Mussweiler (1997), argues that anchoring ``is a special case of semantic priming,'' and a month later, in ``Priming and Contamination,'' the author wrote that ``most anchoring is actually due to contamination, not sliding adjustment.''}"
+  ],
+  [
+   1603,
+   "\\cpara{Reports the multiplication study correctly: high school students, five seconds, medians of 512 and 2,250 against a true value of 40,320 (1974 paper). Here the anchor is the students' own partial product.}"
+  ],
+  [
+   2120,
+   "\\cpara{Matches the 1974 paper, which says only: ``Payoffs for accuracy did not reduce the anchoring effect.''}"
+  ],
+  [
+   2233,
+   "\\cpara{Reports Study 3 of Strack and Mussweiler (1997). The four Einstein anchors match the paper's table. Einstein was one of eight questions, and the result is for all eight taken together (67 students). The authors write that ``implausible anchors were at least as effective as plausible ones.''}"
+  ],
+  [
+   2680,
+   "\\cpara{Names salary negotiations and car buying as places to watch for people who exploit anchoring.}"
+  ],
+  [
+   2838,
+   "\\cpara{Tells the reader to notice when they are adjusting a figure to reach an estimate.}"
+  ],
+  [
+   2963,
+   "\\cpara{Offers two remedies as the author's own suggestions; the post reports no test of either. A method with published support at the time was a different one. Mussweiler, Strack and Pfeiffer (2000) reduced anchoring by having people list arguments against the given anchor, ``generating reasons why an anchor is inappropriate.''}"
+  ]
+ ]
+}

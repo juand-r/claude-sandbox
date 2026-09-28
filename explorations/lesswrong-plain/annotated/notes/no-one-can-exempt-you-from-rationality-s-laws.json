@@ -1,0 +1,65 @@
+{
+ "slug": "no-one-can-exempt-you-from-rationality-s-laws",
+ "header": "\\post{No One Can Exempt You From Rationality's Laws}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/eY45uCCX7DdwJ4Jha/no-one-can-exempt-you-from-rationality-s-laws}\n",
+ "skeleton_sha": "0a848b8a1af16046bae7d278607e8818cc911ce39330d4498a0503148836f189",
+ "post_sha": "a1853b0dbaa52d963089cde3d242cfa1989046f89e90a5961cf1af3a1a172526",
+ "edits": [],
+ "notes": [
+  [
+   176,
+   "\\cpara{Describes ``Traditional Rationality'' as a set of social obligations: supply evidence, make bold predictions, expose theories to falsification. As in earlier posts, the tradition is described without naming anyone who holds it, and its falsification rules are Karl Popper's, uncredited (see our notes on ``Your Strength as a Rationalist'' and ``Rationalization'').}"
+  ],
+  [
+   822,
+   "\\cpara{Explains why the tradition is phrased socially: that makes it easy to pass on by word of mouth, because people detect cheating better than they detect breaches of abstract rules. The cited research is about detecting violations. That the social phrasing helps the tradition spread is the post's own addition, given without evidence.}"
+  ],
+  [
+   1073,
+   "\\cfact{The finding comes from Wason's selection task: people do far better when asked to police a social rule, such as a drinking age, than an abstract rule of the same form. That difference is the standard result. Whether the two versions are really ``isomorphic'' is disputed. Von Sydow (2006), for example, argues that rules about what people must do have to be distinguished from rules that describe the world, and are tested differently (Wikipedia, ``Wason selection task''). The post does not mention the dispute.}"
+  ],
+  [
+   1439,
+   "\\cpara{The example: religious people answer criticism with ``you can't justify your belief in science!'', which the post reads as a charge of hypocrisy. The retort can also be read as a challenge to the standard itself, since the evidence for science rests on induction. This post does not take up that reading; on it, see our notes on ``The Fallacy of Gray.''}"
+  ],
+  [
+   1696,
+   "\\cpara{The central claim: the principles of rationality are laws like the second law of thermodynamics. A reliable belief needs a calculable amount of evidence, as cooling a refrigerator needs a calculable minimum of energy. Here the claim is made by analogy. The author argued for it at length in ``The Second Law of Thermodynamics, and Engines of Cognition'' (February 2008); see our notes there.}"
+  ],
+  [
+   2124,
+   "\\cpara{Grants that a refrigerator could cool itself, and a correct map of New York be drawn without visiting, with tiny probabilities.}"
+  ],
+  [
+   2580,
+   "\\clogic{The probability is tiny because the map is detailed: a blind guess must get every street right. For a belief that answers a single yes-or-no question, a guess made without evidence is right about half the time. What such a guess lacks is reliability, which is the word the previous paragraph uses (``obtaining a reliable belief''). The analogy's force depends on how much detail a belief carries, and the post does not say how much the beliefs it has in mind carry.}"
+  ],
+  [
+   2627,
+   "\\cpara{A joke: before mapping an unseen territory, wait for a cup of water to freeze by itself.}"
+  ],
+  [
+   3054,
+   "\\cpara{Describes, as satire, where the social view leads: everyone excused, and ``liberty, fraternity, and equality.''}"
+  ],
+  [
+   3546,
+   "\\cpara{The law view: pointing to others' evidence-free beliefs helps as much as listing reasons not to fall off a cliff. Votes do not power refrigerators or correct maps.}"
+  ],
+  [
+   4085,
+   "\\cpara{Two bad contracts may go unpunished, but two bad engines both fail: ``One design error cannot excuse another.'' This is the standard answer to a tu quoque, the reply ``you do it too.''}"
+  ],
+  [
+   4675,
+   "\\cpara{Separates the legal right to one's beliefs from any entitlement to accurate ones.}"
+  ],
+  [
+   5105,
+   "\\cpara{Concludes that rationalists, like physicists, guess the laws and do not decide them, so no authority can grant an exemption: ``There is only cause and effect.'' The line about ``rationalize'' repeats one from ``Rationalization,'' posted a week earlier.}"
+  ],
+  [
+   5661,
+   "\\cpara{Closes by addressing the reader: ``We can't excuse you.''}"
+  ]
+ ]
+}

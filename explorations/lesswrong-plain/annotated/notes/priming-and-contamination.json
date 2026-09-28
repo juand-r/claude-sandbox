@@ -1,0 +1,69 @@
+{
+ "slug": "priming-and-contamination",
+ "header": "\\post{Priming and Contamination}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/BaCWFCxBQYjJXSsah/priming-and-contamination}\n",
+ "skeleton_sha": "15d7f8b5a3a5b7fd67230b7a320b288a14d0d8ce9abec98f088e2772a611d0a7",
+ "post_sha": "32ad148b6354d8f8e061a9bdb25b655b0f11863f32cf67d8cc14c3a776da1937",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Describes semantic priming in a word-recognition task. Wikipedia's article ``Priming (psychology)'' says that ``semantic, associative, and form priming are well established,'' while ``some longer-term priming effects were not replicated.'' The priming findings that failed to replicate were of another kind (see the notes on the last paragraph).}"
+  ],
+  [
+   536,
+   "\\cpara{Points out that priming acts on word recognition, a step one would expect to come before thinking about meaning.}"
+  ],
+  [
+   776,
+   "\\cpara{Takes priming as a sign that activation spreads to many associated words at once; the other words are offered with ``probably.''}"
+  ],
+  [
+   1089,
+   "\\cpara{Stated as fact, with no source. ``Unstoppable'' was disputed before the post. Stolz and Besner (\\textsc{Current Directions in Psychological Science}, 1999) argued against the view that reading activates meaning automatically, concluding that ``Semantic processing depends strongly on attentional control over how activation is distributed across different levels of representation.''}"
+  ],
+  [
+   1303,
+   "\\cpara{Suggests the Stroop test as a home demonstration: the word's meaning gets in the way of naming its color.}"
+  ],
+  [
+   1526,
+   "\\cpara{Reports the experiment correctly. It is Study 1 of Mussweiler and Strack (\\textsc{Journal of Personality and Social Psychology}, 2000), with 28 students and German words such as ``kalt'' (cold) and ``Sonne'' (sun). I could not check the 1999 review the post cites.}"
+  ],
+  [
+   2202,
+   "\\cpara{Names the general finding, that irrelevant or known-false information affects estimates and decisions: ``contamination.''}"
+  ],
+  [
+   2751,
+   "\\cpara{Restates the wheel study and the adjustment account. The detail of stopping ``at one end of a confidence interval'' is not in the 1974 paper cited for it, which says only that ``adjustments are typically insufficient.''}"
+  ],
+  [
+   3381,
+   "\\cpara{Revises the account of ``Anchoring and Adjustment,'' posted a month earlier (see the note there), without saying that it does. That post called adjustment ``The current theory'' for the wheel experiment; this one attributes most anchoring to contamination.}"
+  ],
+  [
+   3905,
+   "\\clogic{Offered with ``seems,'' and the cited paper does not support ``most.'' Epley and Gilovich separate anchors people produce themselves from anchors an experimenter supplies, and do not say which kind is more common. Their abstract argues against the view that no adjustment takes place, calling it ``premature.''}"
+  ],
+  [
+   3919,
+   "\\cpara{Rests ``shown to work'' on one paper, Wansink, Kent and Hoch (1998). I found no retraction or correction of it (none is listed by Crossref). Its first author was found by Cornell in 2018 to have committed scientific misconduct in other work, and many of Wansink's papers were retracted (Wikipedia, ``Brian Wansink'').}"
+  ],
+  [
+   4547,
+   "\\cpara{Links contamination to confirmation bias. The link has a basis in the post's sources. In the selective accessibility account the post cites, answering an anchor question means testing whether the anchor is right, and people ``evaluate hypotheses by attempting to confirm them'' (Epley and Gilovich's summary, 2001).}"
+  ],
+  [
+   5312,
+   "\\clogic{Unsupported by the post's evidence. Its studies measure how fast words are recognized and what estimates people give in the same session. None measures whether a primed idea lasts, so nothing shown here ``ensures'' an idea's continued existence.}"
+  ],
+  [
+   5579,
+   "\\cpara{The last step goes from recognizing words to holding conclusions, with no evidence in between. ``A single fleeting image can be enough to prime associated words for recognition'' is about word recognition. ``The bottom line is already decided'' is about beliefs. The post shows the first and asserts the second.}"
+  ],
+  [
+   5768,
+   "\\cfact{Later research on that second step, in which brief primes were said to change later judgments and behavior, ran into replication failures after the post. Doyen and colleagues (\\textsc{PLoS ONE}, 2012) could not reproduce slower walking after primes about old age. In the Many Labs project (2014), two priming effects, ``flag priming influencing conservatism and currency priming influencing system justification,'' ``did not replicate.'' The post could not have known this.}"
+  ]
+ ]
+}

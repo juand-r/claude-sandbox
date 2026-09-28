@@ -1,0 +1,165 @@
+{
+ "slug": "crisis-of-faith",
+ "header": "\\post{Crisis of Faith}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/BcYBfG8KomcpcxkEg/crisis-of-faith}\n",
+ "skeleton_sha": "edb30f3e667fb000082d954b00e9f5d2ade1fa08e481158cda2e023c1f87efb3",
+ "post_sha": "88323419c6d1af1243cc48603a6e879f474f4c746ebdb73f1b444daf03e0a288",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{States the post's standard: a crisis of faith counts only if either outcome is possible. I could not find the source of the line.}"
+  ],
+  [
+   252,
+   "\\cpara{The premise: many people keep beliefs whose flaws a ten-year-old hearing them fresh could see. Religion is the example, through a quotation from ``Premise Checker'' that I could not trace. That religion is an error of this kind is asserted here and taken as given in the rest of the post.}"
+  ],
+  [
+   985,
+   "\\cpara{The evidence that the danger is real is one case, Robert Aumann. That he questioned his faith is a guess (``I feel reasonably confident in venturing''). That he ``did not doubt successfully'' follows only if his belief is false, which is the premise of the first paragraph, not something this case shows. The linked post, ``The Proper Use of Doubt,'' says that when a doubt fails to destroy its target, ``the doubt has died unfulfilled'' and that ``is still a resolution.''}"
+  ],
+  [
+   1329,
+   "\\cfact{Aumann's own account of his religion differs from the post's picture of it. In a 2005 interview with Sergiu Hart he said that religion is ``mainly an emotional and aesthetic'' experience: ``It is not about whether the earth is 5,765 years old.'' Science and religion, he said, ``coexist side by side without conflict,'' though ``Belief is an important part of religion, certainly.'' On this account the main part of his religion is not a rival model of the world. The post does not cite what he had said.}"
+  ],
+  [
+   1566,
+   "\\cfact{Where a religious claim could be tested, Aumann let the test decide. He had pushed for research on the Bible codes and sponsored a paper on them. A committee he chaired, set up to rerun one codes experiment, found no effect (Dror Bar-Natan, ``The Gans Report,'' 2002). Wikipedia quotes his conclusion: ``So I must return to my a priori estimate, that the Codes phenomenon is improbable.''}"
+  ],
+  [
+   1580,
+   "\\cpara{Draws the lesson from the one case: expertise and Bayesian training do not protect a belief that has ``long festered.''}"
+  ],
+  [
+   2038,
+   "\\cpara{Reframes the problem: the hard question is not how to reject a false belief but how to tell whether a belief is false, and self-honesty is weakest when you do not know.}"
+  ],
+  [
+   2499,
+   "\\cpara{Takes religion as the practice case, and warns that thinking of theists as ``evil mutants'' makes their inner trials impossible to imagine.}"
+  ],
+  [
+   3051,
+   "\\cpara{Anticipates the reader's answer: a list of standard atheist arguments, ending with Occam's razor.}"
+  ],
+  [
+   3419,
+   "\\cpara{The post's central point: rehearsing arguments you already hold is the habit that keeps believers in their religion. The post turns this on its own readers' standard replies, not only on theists'.}"
+  ],
+  [
+   4009,
+   "\\cpara{Says, on the author's observation (``I've noticed''), that many people, ``even technical folk,'' cannot follow arguments this abstract. No evidence is given.}"
+  ],
+  [
+   4613,
+   "\\cfact{The phrase alludes, I take it, to ``The camel has two humps'' (2006), a paper by Saeed Dehnadi and Richard Bornat on a test meant to predict who can learn to program. In 2014, after this post, Bornat retracted ``Many of the extravagant claims I made'': Dehnadi ``didn't find a way of dividing programming sheep from non-programming goats.'' The post offers the idea only as a pessimistic wonder.}"
+  ],
+  [
+   4627,
+   "\\cpara{Explains the step up: for a rationalist to call ``Use Occam's Razor'' the general strategy is like a theist calling faith the general strategy, since each is the reply one's friends already give.}"
+  ],
+  [
+   5402,
+   "\\cpara{Voices the reader's objection that Occam's razor really is better than faith.}"
+  ],
+  [
+   5629,
+   "\\cpara{Grants the objection and answers it. The point is not which justification is better, but that a justification recited from memory cannot test a belief. So you should ask whether Occam's razor really endorses X, whether you understand it, and whether simplicity has worked in such cases.}"
+  ],
+  [
+   7100,
+   "\\clogic{The footnote's example of people who must question their formulation of Occam's razor are those who think it ``outlaws many-worlds.'' Five months earlier, in ``Many Worlds, One Best Guess'' (May 2008), the author had argued from Occam's razor that many-worlds ``wins outright given our current state of evidence.'' The footnote does not ask of that formulation what the paragraph asks of the reader's: whether it ``really endorses X.'' For its limits, see the notes on ``Occam's Razor'' (the choice of machine) and on ``Making Beliefs Pay Rent'' (many-worlds).}"
+  ],
+  [
+   7114,
+   "\\cpara{Restates the advice as an instruction: block the standard reply from completing itself.}"
+  ],
+  [
+   7355,
+   "\\cpara{Gives a better rule: imagine a skeptic's reply to your reply, and then a harder one. It is the advice that closes ``Avoiding Your Belief's Real Weak Points.''}"
+  ],
+  [
+   7683,
+   "\\cpara{The main rule: the effort a theist would need to leave their religion.}"
+  ],
+  [
+   7811,
+   "\\cpara{Justifies the rule: without that effort, your head ``could be stuffed full of nonsense as bad as religion.''}"
+  ],
+  [
+   7964,
+   "\\cpara{Restates the rule with Aumann as the measure.}"
+  ],
+  [
+   8147,
+   "\\clogic{Here the rule covers every belief (``how dare you believe anything''). Three paragraphs later the post narrows it: ``Not every doubt calls for staging an all-out Crisis of Faith.'' Later still it adds that a belief ``as solidly supported as gravity'' needs none. The rest of the post uses the narrower version.}"
+  ],
+  [
+   8161,
+   "\\cpara{Cites an unnamed observer (``I forget who''): people have only until a certain age to leave their faith, after which they have answers to every objection. The post uses it as a challenge, not as evidence.}"
+  ],
+  [
+   8556,
+   "\\cpara{Returns (``again'') to the reframing: the effort is to find out whether to throw off the chains, not to undo them after deciding.}"
+  ],
+  [
+   9160,
+   "\\cpara{Narrows the rule to beliefs with warning signs, and lists five.}"
+  ],
+  [
+   9741,
+   "\\cpara{Says the warning signs are not disproofs, and that they apply to Richard Dawkins's belief in evolutionary biology as well as to the Pope's Catholicism. The test is stated for any belief, the author's side included.}"
+  ],
+  [
+   10031,
+   "\\cpara{Adds that equal attachment does not mean equal evidence: the aim is a map that reflects the territory, not shallow beliefs.}"
+  ],
+  [
+   10314,
+   "\\cpara{Explains the purpose: to let you admit the warning signs without admitting the belief is false.}"
+  ],
+  [
+   10485,
+   "\\cpara{Says such beliefs need more than ordinary effort to doubt, and compares a belief held whatever the evidence to an eye that sends the same signal whatever the light.}"
+  ],
+  [
+   11138,
+   "\\cpara{Gives the trigger: feeling unstable inside while rationalizing reasons the belief is still solid. A belief ``as solidly supported as gravity'' needs no crisis, though theists would like to put God in that class.}"
+  ],
+  [
+   11846,
+   "\\cpara{Gives the procedure: rest the day before, set aside uninterrupted hours somewhere quiet, clear your mind of standard arguments, and make a desperate effort. No evidence is offered that the procedure changes outcomes, and no crisis, the author's or anyone's, is described.}"
+  ],
+  [
+   12306,
+   "\\cfact{The setting has a famous precedent. Descartes's First Meditation (1641) begins: ``So today I have set all my worries aside and arranged for myself a clear stretch of free time. I am here quite alone, and at last I will devote myself, sincerely and without holding back, to demolishing my opinions'' (Jonathan Bennett's version). Descartes doubted all his opinions at once; the post aims at one belief. It names no precedent.}"
+  ],
+  [
+   12513,
+   "\\cpara{Lists the earlier essays that supply the technique's parts, each with a one-line summary.}"
+  ],
+  [
+   13954,
+   "\\clogic{With ``(on average)'' this is correct: the expected change in belief is zero. It is more careful than the glosses in ``The Meditation on Curiosity'' itself (see the notes there).}"
+  ],
+  [
+   14429,
+   "\\clogic{For the limits of Gendlin's line, see the notes on ``You Can Face Reality.''}"
+  ],
+  [
+   15917,
+   "\\clogic{Repeated from ``The Importance of Saying `Oops' '', where it was also stated without a source (see the notes there).}"
+  ],
+  [
+   17336,
+   "\\cpara{Names two books of \\textsc{Rationality: A--Z} (2015) in a post dated 2008. The text as LessWrong prints it now was revised for the book; so were many of the links and the first footnote.}"
+  ],
+  [
+   19273,
+   "\\cpara{Points to material still to come, and names the effort needed to surpass Aumann and ``all the great scientists throughout history who never broke free of their faiths.''}"
+  ],
+  [
+   19695,
+   "\\cpara{Places the crisis inside a lifelong effort: the moment to use practised skills against oneself.}"
+  ]
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "slug": "evaluability-and-cheap-holiday-shopping",
+ "header": "\\post{Evaluability (And Cheap Holiday Shopping)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/3T6p93Mut7G8qdkAs/evaluability-and-cheap-holiday-shopping}\n",
+ "skeleton_sha": "403a47cd0a0a78d8488a520ed0f0c97698cbe5cdaf175b2ac80e6cae592ba937",
+ "post_sha": "b925f20dac68f5eba3ba754b0cc676d191b41f5ccae80fa383b252a329ff4931",
+ "edits": [],
+ "notes": [
+  [
+   166,
+   "\\cpara{Opens with a joke: a question from an imagined reader who wants to be seen as generous without spending much.}"
+  ],
+  [
+   491,
+   "\\cpara{Reports Hsee's gift result. The sentence leaves out what made it work. Respondents were told the store's price range: scarves from \\$5 to \\$50, coats from \\$50 to \\$500. The \\$45 scarf sat near the top of its range and the \\$55 coat near the bottom (as described by Vonasch et al., \\textsc{Collabra: Psychology}, 2023, who replicated the study). The post states the general rule, the cheaper the class the more expensive an item looks, only near its end.}"
+  ],
+  [
+   882,
+   "\\cpara{Introduces Hsee's 1996 dictionary study. Respondents were students asked to imagine they were music majors in a used bookstore, planning to spend \\$10 to \\$50.}"
+  ],
+  [
+   934,
+   "\\clogic{Hsee's gift study had no side-by-side condition, so it did not show the reversal that the dictionaries show. The 2023 replication added one: 63\\% of those shown both gifts chose the scarf. The replicators say this may mean the cheapest coat is seen as a poor coat, in which case the paradigm would not show a reversal at all; they could not settle the question.}"
+  ],
+  [
+   1673,
+   "\\cpara{The figures match Hsee's Figure 1, with about 39 respondents in each group. In joint evaluation B was worth more by a wide margin. In separate evaluation the gap for A (\\$24 against \\$20) was not significant on its own ($p = .1$); what was significant was the reversal, the difference between the two gaps ($p < .001$).}"
+  ],
+  [
+   1954,
+   "\\cpara{Gives Hsee's explanation: a number of entries means little on its own, while a torn cover is plainly bad. Slovic and colleagues, the post's next source, put it in the same affective terms: the defect is ``an affective variable.''}"
+  ],
+  [
+   2408,
+   "\\cpara{Completes the explanation: side by side, the entries can be compared, and they then outweigh the cover.}"
+  ],
+  [
+   2684,
+   "\\cpara{Turns to gambles, from Slovic and colleagues.}"
+  ],
+  [
+   2788,
+   "\\cfact{Most of the gamble figures that follow (the prices, the 13.2 and 7.5, the 33\\% and 60.8\\%, ``exceeded our expectations'') are in another paper by the same authors, ``The Affect Heuristic'' (2002; reprinted 2007). ``Rational Actors or Rational Fools'' gives only the 9.4 and 14.9.}"
+  ],
+  [
+   2914,
+   "\\cpara{The figures and the procedure match ``The Affect Heuristic'': subjects were told a pair of bets would be selected and they would play the one rated or priced higher, and some gambles were in fact played.}"
+  ],
+  [
+   3463,
+   "\\cpara{Gives the researchers' hypothesis, compatibility between the response scale and the part of the gamble, as the source states it.}"
+  ],
+  [
+   3864,
+   "\\cpara{Describes the added 5-cent loss and why it should make the \\$9 easier to value.}"
+  ],
+  [
+   4251,
+   "\\cpara{Matches the source. It also reports that a gamble with a 25-cent loss (mean 11.7) was still rated above the gamble with no loss.}"
+  ],
+  [
+   4556,
+   "\\cpara{Matches the source: 96 University of Oregon students, split between the two gambles. Both gambles are worth less on average than the sure \\$2: $\\frac{7}{36} \\times 9 = 1.75$ dollars, and about 1.71 with the loss. So 60.8\\% chose a gamble worth less than the sum they gave up.}"
+  ],
+  [
+   4999,
+   "\\cpara{States the moral, correctly: the new gamble is strictly worse than the old one. Ends with an aside about designing AI.}"
+  ],
+  [
+   5216,
+   "\\cpara{Stated as a fact. The source reports no test in which both gambles were shown together. It is a reasonable prediction from the dictionary results, not a finding.}"
+  ],
+  [
+   5445,
+   "\\cpara{The text does not say what the figure shows. Vendor H serves 8 oz of ice cream in a 10 oz cup; Vendor L serves 7 oz overfilling a 5 oz cup (Hsee 1998, as described in the 2023 replication's materials). Without the image a reader cannot tell that H gives more ice cream.}"
+  ],
+  [
+   5563,
+   "\\cpara{The figures match those reported for Hsee's study. Hsee did not give group sizes; the 2023 replicators assume about 23 per group. Their replication found the same pattern with a smaller effect in separate evaluation.}"
+  ],
+  [
+   5874,
+   "\\cpara{Applies the result to gifts: a \\$400 iPod Touch is the top of its class, a \\$400 Wii the bottom of its class, and the recipient sees only one.}"
+  ],
+  [
+   6349,
+   "\\cpara{The advice, offered as a joke with a true core. Its rule, ``The cheaper the class of objects, the more expensive a particular object will appear,'' is Hsee's own conclusion from the scarf study. It works only if the recipient knows roughly what the class costs, as Hsee's respondents were told.}"
+  ],
+  [
+   6883,
+   "\\cpara{Extends the joke to Japanese gift melons, and then to \\$25 toothpicks and \\$10 dust specks.}"
+  ],
+  [
+   7391,
+   "\\cpara{A closing joke.}"
+  ]
+ ]
+}

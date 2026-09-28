@@ -1,0 +1,73 @@
+{
+ "slug": "when-none-dare-urge-restraint",
+ "header": "\\post{When None Dare Urge Restraint}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Tw9cLvzSKrkGjNHW3/when-none-dare-urge-restraint}\n",
+ "skeleton_sha": "44ce614c6dda8b6a27863177755eb11a41bc639a7a13ec3560e33e0fceba458e",
+ "post_sha": "2e1853f6b43507e7c85d732316980e8280a91bce76d0e8e5db04b0258e3471bf",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Sets the scene: the author learned of the attacks from the morning news.}"
+  ],
+  [
+   393,
+   "\\cpara{Gives the author's first three thoughts. The third is the prediction the post goes on to judge. It is recalled six years later, and the reader has only the author's memory for it.}"
+  ],
+  [
+   674,
+   "\\cpara{Says the prediction was too mild, then turns it into a joke about pessimism.}"
+  ],
+  [
+   748,
+   "\\clogic{No measure is given, so the claim cannot be checked as stated. By one measure it holds: in March 2008 CNN put estimates of the Iraqi death toll at ``about 80,000 to the hundreds of thousands,'' against 2,977 victims on 11 September. By American military deaths in Iraq, which reached 4,000 that month, the ratio is under two.}"
+  ],
+  [
+   981,
+   "\\cpara{The prediction behind the title, and a hypothetical politician whose remark would have ended a career. The hypothetical makes its point as a figure; its arithmetic is close enough.}"
+  ],
+  [
+   1184,
+   "\\cfact{One member of Congress did, three days later, in nearly these words. Opposing the authorization of force on 14 September 2001, Barbara Lee said that ``some of us must urge the use of restraint,'' ``so that this does not spiral out of control'' (Congressional Record). The House passed the resolution 420 to 1, and Lee was called a ``traitor'' and received death threats (Wikipedia). The record fits the prediction closely, with one exception.}"
+  ],
+  [
+   1418,
+   "\\cpara{States the mechanism. If emphasizing the harm is rewarded and urging restraint is not, the response will exceed ``the appropriate level, whatever the appropriate level may be.'' The argument does not depend on knowing the right level.}"
+  ],
+  [
+   1702,
+   "\\cpara{Names the ``spiral of hate'' as the mirror of the happy death spiral of the posts before. The patriot and traitor rule restates ``Arguments are soldiers'' from ``Politics is the Mind-Killer.''}"
+  ],
+  [
+   2102,
+   "\\cpara{The example is real. On the day of the attacks President Bush promised to punish ``those responsible for these cowardly acts'' (remarks at Barksdale Air Force Base). The post's reply had been made in public within two weeks, by Bill Maher and Susan Sontag, at a cost; as in ``Belief as Attire'' (see the note there), the post does not mention them.}"
+  ],
+  [
+   2594,
+   "\\cpara{Gives two reasons accuracy about enemies matters, and applies the rule to every target, Hitler included.}"
+  ],
+  [
+   2974,
+   "\\cpara{The post names no war or policy; the reader must supply them. If it means the war in Iraq, its figure of ``thousands of soldiers' lives'' is borne out: American military deaths there reached 4,000 in March 2008 (CNN), more than the 2,977 people killed on 11 September.}"
+  ],
+  [
+   3379,
+   "\\cpara{Two claims: ignoring the attack would have been better, and politicians could not afford to say so.}"
+  ],
+  [
+   3526,
+   "\\clogic{Stated without a hedge. The post does not say what an ignored attack would have led to, so the comparison rests on the costs of the actual response alone.}"
+  ],
+  [
+   3757,
+   "\\cfact{Bin Laden claimed as much in 2004: ``All that we have mentioned has made it easy for us to provoke and bait this administration,'' and ``we are continuing this policy in bleeding America to the point of bankruptcy'' (Al Jazeera transcript). A boast after the fact, but it fits the post.}"
+  ],
+  [
+   3872,
+   "\\cpara{Praises a remark by a member of Congress, quoted from memory (``I forget who''); I could not find its source. The remark ranks defense above the economy and health care. The post values it for being candid, not for urging restraint.}"
+  ],
+  [
+   4351,
+   "\\cpara{The conclusion, as a general law: once restraint is unspeakable, fury and folly ``can only rise with time.'' No evidence is given for the law, and the post gives no way for a spiral to end. The case it describes did not keep rising: in Gallup's poll of 30 November to 2 December 2007, a week before the post, 57\\% of Americans said the United States had made ``a mistake in sending troops to Iraq,'' against 23\\% in March 2003.}"
+  ]
+ ]
+}

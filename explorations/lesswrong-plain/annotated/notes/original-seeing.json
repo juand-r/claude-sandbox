@@ -1,0 +1,33 @@
+{
+ "slug": "original-seeing",
+ "header": "\\post{Original Seeing}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/SA79JMXKWke32A3hG/original-seeing}\n",
+ "skeleton_sha": "772d6ad8635536bae5750a35b9d483f7305f84efbf20c13e4bde003eedf8e8b5",
+ "post_sha": "85e1f826d7f9f534d0e5529860b9fed57d22744f6c0498ec65500611c524798d",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{The post's own text: two sentences, which hand the rest of the post to a passage from Robert Pirsig's \\textsc{Zen and the Art of Motorcycle Maintenance}.}"
+  ],
+  [
+   244,
+   "\\cfact{The book answers this in part. Its Author's Note begins: ``What follows is based on actual occurrences. Although much has been changed for rhetorical purposes, it must be regarded in its essence as fact.''}"
+  ],
+  [
+   271,
+   "\\clogic{The claim that the lesson is true ``either way'' rests on the story alone. If the story may be invented, it cannot also be the evidence for its lesson, and the post gives no other. Two days later, in ``The Logical Fallacy of Generalization from Fictional Evidence,'' the author asked of a novel: ``Does the issue not have to be argued in its own right, regardless of how Vinge depicted his characters?''}"
+  ],
+  [
+   299,
+   "\\cpara{The passage begins. Its ``he'' is the narrator's former self, whom the book calls Phaedrus, teaching rhetoric at the college in Bozeman.}"
+  ],
+  [
+   2479,
+   "\\cpara{The narrator's diagnosis: she was blocked because she was ``trying to repeat, in her writing, things she had already heard.'' This is close to the idea of ``Cached Thoughts,'' posted three days before. The post leaves the connection to the reader.}"
+  ],
+  [
+   3266,
+   "\\cfact{The book goes on where the post stops. The teacher had a whole class write for an hour about the back of his thumb, then another about a coin, ``and there wasn't a single complaint about `nothing to say.'\\,'' This is the same book's anecdote, but it is its only sign that the method worked for more than one student.}"
+  ]
+ ]
+}

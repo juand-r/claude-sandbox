@@ -1,0 +1,85 @@
+{
+ "slug": "evaporative-cooling-of-group-beliefs",
+ "header": "\\post{Evaporative Cooling of Group Beliefs}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/ZQG9cwKbct2LtmL3p/evaporative-cooling-of-group-beliefs}\n",
+ "skeleton_sha": "e10a205c4bed9deb3d81190faa574b2c96098402614bca8c8245b76e2d0d0280",
+ "post_sha": "6e80dfdd22c7da9ced8c883cadf5d840a6a09e5177d6dcec7e08b28638126e3d",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Opens with the effect to be explained, stated as established, and two examples. Both show a group surviving a failed date. The post gives no evidence that either came back stronger.}"
+  ],
+  [
+   208,
+   "\\cfact{The one study the post names was not surprised. Festinger, Riecken and Schachter predicted the effect from their theory, then found the group and joined it to ``test our theoretical ideas under natural conditions'' (\\textsc{When Prophecy Fails}, Foreword).}"
+  ],
+  [
+   398,
+   "\\clogic{Disputed. Melton (1985) held that ``[t]imes of testing tend to strengthen, not destroy, religious groups.'' Thomas Kelly argues that failed prophecies are often fatal, and that the literature on survival suffers from survivorship bias, since ``surviving cults are easier to observe than defunct cults'' (as Kelly summarizes the debate in \\textsc{Journal of the History of the Behavioral Sciences}, 2026).}"
+  ],
+  [
+   507,
+   "\\cfact{By Wikipedia's account (``Eschatology of Jehovah's Witnesses''), Witness literature taught that Armageddon ``could begin by 1975,'' sometimes with ``cautionary remarks,'' and baptism and preaching figures for 1976--80 ``showed that many became inactive.'' The movement survived the date. It did not, on this evidence, come back stronger.}"
+  ],
+  [
+   632,
+   "\\cfact{Unarius did survive several failed landing predictions, and after one of them ``new members were attracted to the group'' (Wikipedia, ``Ruth Norman,'' citing Tumminia). I could not confirm a landing date of 27 September 1975.}"
+  ],
+  [
+   646,
+   "\\cpara{Poses the question the rest of the post answers.}"
+  ],
+  [
+   752,
+   "\\cpara{Presents the cognitive-dissonance account as purely individual. The book's own account is not. Its fifth condition reads ``The individual believer must have social support,'' because ``It is unlikely that one isolated believer could withstand'' the disconfirmation. The contrast the post draws next, between an individual and a group mechanism, is sharper than its source allows.}"
+  ],
+  [
+   1303,
+   "\\cpara{Explains evaporative cooling and says how the idea came to the author. The physics serves as an analogy; the post does not use it as evidence.}"
+  ],
+  [
+   2215,
+   "\\cpara{Right about the book. The member who left that night, Kurt Freund, was ``a firm, though usually not an outspoken, skeptic,'' and on 18 December ``the sole vocal skeptic in the group.'' He left after the 4:45 a.m. message that explained the failure away, not at midnight. The authors themselves reported that the only two members who gave up the belief were both ``lightly committed to begin with.''}"
+  ],
+  [
+   2288,
+   "\\cfact{The book is weak support for the claim of the first paragraph. By its own account the group did not come back stronger: it ``failed to win a single new convert,'' and ``By January 9, there was no group in Lake City.'' Kelly (2026), drawing on newly unsealed archival material,'' argues that the book misreported more: the group ``actively proselytized well before the prophecy failed,'' and its leader recanted.}"
+  ],
+  [
+   2606,
+   "\\cpara{The first half of the mechanism is arithmetic. If the least committed members leave, the average of those who remain rises, and the group's ``middle'' moves with it, even if no one changes their mind.}"
+  ],
+  [
+   2860,
+   "\\cpara{Points back to the fission analogy of ``Affective Death Spirals'' (2 December) and adds the stronger claim, with ``may'': once the moderates are gone, those who remain grow more fanatical. None of the post's three examples of the mechanism tests it. Each shows who left, not a change in those who stayed.}"
+  ],
+  [
+   3390,
+   "\\cpara{The second example has the right shape: a scandal, a split, a remaining core. But it joins two splits about twenty years apart (next notes). The explanation comes with ``perhaps'' and ``may,'' and the claim about the Institute with ``reportedly.''}"
+  ],
+  [
+   3572,
+   "\\cfact{Not at the time of the split. In 1968 Rand publicly broke with Branden, accusing him among other things of ``deliberate deception of several persons,'' and Branden's reply suggested that the real cause was his refusal of a romantic relationship with her. The affair itself was first made public in Barbara Branden's \\textsc{The Passion of Ayn Rand} (1986) (Wikipedia).}"
+  ],
+  [
+   3737,
+   "\\cfact{The ``open system'' faction formed in 1989--90 around David Kelley, not Branden. After 1968 the Brandens ``had little involvement with the Objectivist movement'' until their books appeared. The two events are linked: the 1989 dispute began when Kelley spoke at an event of a bookseller whose list included \\textsc{The Passion of Ayn Rand} (Wikipedia, ``Objectivist movement'').}"
+  ],
+  [
+   4137,
+   "\\cpara{A third example, from the author's experience, which the reader cannot check. Here the departures were forced: one faction drove another out with insults. That is the ejection the post goes on to warn against, not the voluntary departure of the Festinger case.}"
+  ],
+  [
+   4704,
+   "\\cfact{A related idea had been. Albert Hirschman's \\textsc{Exit, Voice, and Loyalty} (1970) argued that when the members who care most leave an organization, it loses the people who would have pressed it to change; in his school example, the parents ``who cared sufficiently about the quality to point to exactly where it had failed'' (Wikipedia's summary).}"
+  ],
+  [
+   4803,
+   "\\cpara{The practical advice, and a modest one: delay ejection, do not forbid it. The next paragraph and its footnote qualify it at once.}"
+  ],
+  [
+   5244,
+   "\\cpara{Kuhn is reported fairly: in \\textsc{The Structure of Scientific Revolutions} (ch.~2), early books are addressed ``to anyone who might be interested,'' later papers ``only to professional colleagues.'' But Kuhn describes more than excluding outsiders. Those who ``cling to one or another of the older views'' are ``simply read out of the profession,'' which is the ejection of dissenters that the previous paragraph warned against. The post calls this the ``flip side'' and gives no way to tell the two kinds of exclusion apart.}"
+  ]
+ ]
+}

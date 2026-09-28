@@ -1,0 +1,49 @@
+{
+ "slug": "we-change-our-minds-less-often-than-we-think",
+ "header": "\\post{We Change Our Minds Less Often Than We Think}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/buixYfcXBah9hbSNZ/we-change-our-minds-less-often-than-we-think}\n",
+ "skeleton_sha": "75af4fae7a5be0a7c5644bc2ba36b16e918f0afc636176d4e42dbc61e1489675",
+ "post_sha": "1f8844cb45da850043bc2b12c5758c0372502bc4c74c32a8cced82e06d5d0dc8",
+ "edits": [],
+ "notes": [
+  [
+   188,
+   "\\cpara{The post's one piece of evidence, quoted from Griffin and Tversky (1992, pp.~424--425). In the paper it is an informal survey of 24 colleagues, reported in one paragraph, and it illustrates underconfidence: the authors introduce it with ``the prediction of one's own behavior may be underconfident.'' Their explanation is that confidence follows the balance of arguments: a 2-to-1 balance ``would produce confidence of about 2/3, although the probability of choosing A over B is likely to be higher.''}"
+  ],
+  [
+   814,
+   "\\cpara{The post's reading of the survey, and its thesis. The survey measured how well people predicted their own choice. It did not measure when they decided, or whether a later reason could have changed the choice. The authors' account fits the same numbers with no early decision: people weigh reasons, and ``even a small advantage for job A over B would generally lead to the choice of A.'' ``In all probability, already decided'' is the post's inference, not the paper's.}"
+  ],
+  [
+   1168,
+   "\\clogic{The source does not support the general form. On the same page Griffin and Tversky write that ``there are situations in which people exhibit overconfidence even in predicting their own behavior,'' citing Vallone and colleagues (1990), whose students' predictions of their own actions ``proved to be consistently overconfident.'' In the paper, which way the error runs depends on ``the relation between the strength and the weight of the available evidence.''}"
+  ],
+  [
+   1283,
+   "\\clogic{No source is given for the half second. The survey concerns job offers and records no timing.}"
+  ],
+  [
+   1297,
+   "\\cpara{Extends the point from choices to ``questions of fact.'' The survey concerned choices only, and no evidence is given for beliefs about facts.}"
+  ],
+  [
+   1506,
+   "\\cpara{Restates the principle of ``The Bottom Line'' (28 September 2007, five days earlier).}"
+  ],
+  [
+   1803,
+   "\\cpara{States the plan the post argues against: reach a belief or decision by any means, then check its justification and drop it if the check fails.}"
+  ],
+  [
+   1986,
+   "\\cpara{The reply to that plan rests on the survey. In its own terms the survey points this way: at 66\\% average confidence, about 8 of the 24 would be expected to choose the other job, and 1 did. But it concerns people weighing two job offers, not conclusions reached by non-rational means and then checked. It does not record anyone testing a justification and keeping a view that failed.}"
+  ],
+  [
+   2072,
+   "\\cpara{Suggests why people overrate their readiness to change their minds: the occasions when they changed are easier to recall than the occasions when they did not. Offered as a question.}"
+  ],
+  [
+   2339,
+   "\\cpara{Ends with a list of named biases, hedged with ``probably,'' and no study. The finding closest to the claim, which the post does not name, is belief perseverance. Ross, Lepper and Hubbard (1975) found that impressions formed from false feedback persisted ``after the initial basis for such perceptions has been completely discredited.''}"
+  ]
+ ]
+}

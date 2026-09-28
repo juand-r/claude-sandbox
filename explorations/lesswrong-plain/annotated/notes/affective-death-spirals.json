@@ -1,0 +1,77 @@
+{
+ "slug": "affective-death-spirals",
+ "header": "\\post{Affective Death Spirals}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/XrzQW69HpidzvBxGr/affective-death-spirals}\n",
+ "skeleton_sha": "e34910304601dae1e4b51299c25d1f3bffc618813b6eac29879511be903a302a",
+ "post_sha": "d0f155f74f394d04f8ff9bdbd32a79b611cd351b94f8da1fc8a5be6cf63c81fa",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{Describes the familiar cycle: a favoured theory, used to explain more and more, seems truer, so conflicting evidence is doubted and the theory is applied more widely.}"
+  ],
+  [
+   381,
+   "\\cfact{The charge repeats ``Fake Causality''; see the note there. The theory did forbid some outcomes: burned metals should have lost phlogiston, and the finding that some gain weight counted against it.}"
+  ],
+  [
+   732,
+   "\\cpara{Two joke examples of beliefs the cycle might start, offered with ``probably'' as ``how they got started.''}"
+  ],
+  [
+   957,
+   "\\cpara{A joke: the reader will now see the theory confirmed everywhere.}"
+  ],
+  [
+   1058,
+   "\\cpara{Sums up the first cycle as a source of much error, in science and in everyday life.}"
+  ],
+  [
+   1220,
+   "\\cpara{States the post's claim: a cycle that starts from a thought that feels good is far worse. ``Nothing compared to'' is asserted, not shown; the post compares the two cycles on no case.}"
+  ],
+  [
+   1365,
+   "\\cpara{Three examples of such thoughts: a political system, a leader, a tonic.}"
+  ],
+  [
+   1527,
+   "\\cpara{A joke on how the three combine, each good thing taken to imply the others. It is the halo effect before it is named.}"
+  ],
+  [
+   1673,
+   "\\cpara{Defines the halo effect. The evidence is not repeated here; it was summarized two days earlier, in ``The Halo Effect.''}"
+  ],
+  [
+   1930,
+   "\\cpara{Introduces the chain-reaction analogy: each positive perception raises others, as a fissioning atom's neutrons split other atoms.}"
+  ],
+  [
+   2133,
+   "\\cpara{Applies the analogy to weak affect: each boost produces less than one further boost, so the effect dies out. The physics is stated correctly (an effective multiplication factor below one means subcritical), and the post marks it as a metaphor.}"
+  ],
+  [
+   2292,
+   "\\clogic{This is the step a spiral needs: the judgment that was raised must in turn raise the first. It is offered with ``perhaps'' and no evidence. The studies summarized in ``The Halo Effect'' measure one trait coloring judgments of others, on one occasion; none follows judgments feeding back over time.}"
+  ],
+  [
+   2456,
+   "\\cpara{The central example. Most of it is the cycle of the first paragraph: every event is interpreted by the theory, and each interpretation confirms it. What it adds is pleasure, and the claim, marked ``of course,'' that feeling good makes us want to believe. It contains no case of one positive trait raising the perception of another, the mechanism just introduced.}"
+  ],
+  [
+   2838,
+   "\\cfact{Karl Popper described the same experience with a closely similar example, down to the newspaper, in \\textsc{Conjectures and Refutations} (1962): ``A Marxist could not open a newspaper without finding on every page confirming evidence for his interpretation of history.'' Of the admirers of Marx, Freud and Adler he wrote: ``Whatever happened always confirmed it.'' The post does not mention him (for Popper uncredited, see the note on ``Your Strength as a Rationalist'').}"
+  ],
+  [
+   3099,
+   "\\cpara{Adds the believer who seeks out new occasions to apply the idea, and restates the chain reaction with the classroom demonstration of mousetraps and ping-pong balls.}"
+  ],
+  [
+   3388,
+   "\\cpara{Offers joke names and settles on the post's own term, ``affective death spiral.''}"
+  ],
+  [
+   3562,
+   "\\cpara{Announces the next post. The footnote says what the remedy will not be: refusing to admire anything, or keeping it in a separate domain.}"
+  ]
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "slug": "uncritical-supercriticality",
+ "header": "\\post{Uncritical Supercriticality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/NCefvet6X3Sd4wrPc/uncritical-supercriticality}\n",
+ "skeleton_sha": "eb6a23613bafcfeeed034896273c28c75874c126b725810a03533173a352b90b",
+ "post_sha": "ff31d0dd1bf1f712d457cc0af7620a52aca666f56106ea3312e04f89fbba4e69",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{Opens with the dispute over whether atheism is a religion, and says that arguing over a word ``nearly always'' means the original question has been lost. The earlier post cited, ``Purpose and Pragmatism'' (26 November 2007), is not in the book. Its example is the falling tree: if you need to know whether a landmine will go off, no agreement about the word ``sound'' changes the answer.}"
+  ],
+  [
+   510,
+   "\\cpara{Imagines how the dispute starts: an atheist blames religion for the Inquisition and the Crusades, the believer replies that atheism is a religion too, and a quip about stamp collecting follows.}"
+  ],
+  [
+   903,
+   "\\cpara{A second version: the believer cites Stalin, the atheist answers that Communism was Stalin's religion, and the post calls that answer a ``No true Scotsman'' move, a redefinition made to save a generalization.}"
+  ],
+  [
+   1409,
+   "\\cpara{Shows, with two definitions made up for the purpose, that whether Stalin counts as religious depends only on the definition.}"
+  ],
+  [
+   1880,
+   "\\cpara{Names the question behind the dispute: why large groups of people have been slaughtered in the name of an idea.}"
+  ],
+  [
+   2226,
+   "\\cpara{Grants that there may be no single cause, then offers an ``ur-mistake,'' hedged (``if I had to suggest''), and lets a passage of scripture state it.}"
+  ],
+  [
+   2471,
+   "\\cpara{Deuteronomy 13: whoever tempts you to serve other gods, even a brother, child, spouse or closest friend, must not be listened to but stoned. The numbering is the Hebrew one, used by the New Jerusalem Bible; the King James Version numbers the passage 13:6--10.}"
+  ],
+  [
+   3254,
+   "\\cpara{Says Stalin and Hitler set the same rule: do not argue with the critic, turn him in to the secret police.}"
+  ],
+  [
+   3619,
+   "\\cfact{The record bears this out in substance. The Soviet state made a hero of Pavlik Morozov, a boy said to have denounced his father; the story was largely fictional, but it was ``used to encourage Soviet Bloc children to also inform on their parents'' (Wikipedia, ``Pavlik Morozov''). In Nazi Germany most Gestapo investigations began with denunciations by ordinary Germans (Wikipedia, ``Gestapo,'' citing Gellately and Rees).}"
+  ],
+  [
+   3619,
+   "\\clogic{What the passage and the history show is that such a rule was stated and enforced where the killing happened. The post does not show that the rule came first and led to the killing, which is what an ``ur-mistake'' would be; it offers the claim as a suggestion.}"
+  ],
+  [
+   3633,
+   "\\cpara{Recalls the previous post's remedy, and states the threshold correctly: below criticality, one nice claim triggers fewer than one more, on average.}"
+  ],
+  [
+   4379,
+   "\\cpara{The thesis: the spiral goes supercritical when it feels wrong to argue against any positive claim about the Great Idea.}"
+  ],
+  [
+   4569,
+   "\\cpara{Repeats two slogans from ``Politics is the Mind-Killer'' and the image that goes with them: to argue against your own side is to stab your friends in the back.}"
+  ],
+  [
+   4847,
+   "\\cpara{Four signs that a spiral has gone supercritical. The first comes from the author's own side: feeling that correcting a flawed argument for evolution would help the creationists.}"
+  ],
+  [
+   5439,
+   "\\cfact{In the 2007 version the words ``stoned to death'' were struck through, a joke: the biblical penalty corrected to the Soviet one. The book text that LessWrong now shows has lost the strikethrough.}"
+  ],
+  [
+   5467,
+   "\\cpara{Names the result: a Super Happy Death Spiral.}"
+  ],
+  [
+   5580,
+   "\\cpara{Argues that religion is not the key category. Supernatural claims are a distinct kind of mistake, and the post says they ``always turn out to be wrong,'' but singling them out ``buys into religious exceptionalism.''}"
+  ],
+  [
+   5979,
+   "\\cfact{The distinction is Richard Carrier's, from his blog post ``Defining the Supernatural'' (January 2007): naturalism holds that ``every mental thing is entirely caused by fundamentally nonmental things.'' The post says only that it is the best the author has heard. Yudkowsky credited Carrier by name in ``Excluding the Supernatural'' (September 2008).}"
+  ],
+  [
+   6428,
+   "\\cpara{Grants that spirals form easily around monotheism, but says they also form around political innovations, leaders, racial destiny and economic theories, so religion is not special enough to be the key problem.}"
+  ],
+  [
+   7086,
+   "\\cpara{Credits Sam Harris's target, faith, as nearer the mark: without a burden of proof on each nice claim, spirals start easily. The account of how Christianity defended itself and of the New Agers' many spirals is given without evidence.}"
+  ],
+  [
+   7680,
+   "\\cpara{The thesis in full: praise cannot be capped, but no idea is so true that criticizing an argument for it is wrong, since most possible supporting arguments, even for a true belief, are false. The causal claim that opens the paragraph is now stated without the earlier hedge (``if I had to suggest'').}"
+  ],
+  [
+   8333,
+   "\\cpara{Ends with the one rule said to have no exceptions: bad argument gets counterargument, not a bullet.}"
+  ]
+ ]
+}

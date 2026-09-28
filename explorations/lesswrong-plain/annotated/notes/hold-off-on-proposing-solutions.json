@@ -1,0 +1,61 @@
+{
+ "slug": "hold-off-on-proposing-solutions",
+ "header": "\\post{Hold Off On Proposing Solutions}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/uHYYA32CKgKT3FagE/hold-off-on-proposing-solutions}\n",
+ "skeleton_sha": "b08ec02d08f6a17c0f02e9900e073f03a77c3e2dca2f0b81346062504c65b5e9",
+ "post_sha": "17a59285bcf08c64513c22df1eed2cb380a99107f71d4510ed841b92a18b7692",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{Introduces a long quotation from Dawes's 1988 textbook. I could not reach the book or Maier's papers, so the passage and the experiment it reports are unchecked here.}"
+  ],
+  [
+   409,
+   "\\cpara{Dawes reports Maier's observation and his rule for groups. Maier's reason is a group process: members ``become emotionally attached'' to the solutions they have suggested. Dawes limits what is easy to show: the rule works ``in contexts where there are objectively defined good solutions to problems.''}"
+  ],
+  [
+   1082,
+   "\\cpara{Describes the role-play, a problem with a known best answer: the two abler workers rotate and the least able keeps the easiest job. No result figures are given beyond ``a much higher probability''; the 20\\% and 19\\% are productivity figures in the story, not results of the experiment.}"
+  ],
+  [
+   2486,
+   "\\cpara{Dawes's evidence for tough problems is his own experience, with his caveat: ``I have no objective criterion on which to judge the quality of the problem solving of the groups,'' so the rule only ``appears to foster better solutions.''}"
+  ],
+  [
+   2863,
+   "\\cpara{The post's verdict on the quotation, ``This is so true it's not even funny,'' is firmer than its source, whose author says the rule ``appears'' to help on tough problems. Then the first example: people who ``seem to know exactly how to build an artificial general intelligence.''}"
+  ],
+  [
+   3621,
+   "\\cfact{The footnote cites the author's own chapter. The passage there reads ``One common reaction I encounter is for people to immediately declare that Friendly AI is an impossibility''; it gives no count, so ``an actual majority'' rests on the author's encounters.}"
+  ],
+  [
+   3666,
+   "\\cpara{Extends the pattern, as jokes, to physics, economics and evolutionary biology.}"
+  ],
+  [
+   4024,
+   "\\cpara{Links Maier's rule to ``The Bottom Line'': a decision made early rests on little thought, whatever arguments come after it.}"
+  ],
+  [
+   4464,
+   "\\cpara{Restates the Griffin and Tversky figures correctly, and repeats the reading drawn from them in ``We Change Our Minds Less Often Than We Think'' (3 October 2007), now hedged with ``probably''; see the notes there. The half second is again given without a source.}"
+  ],
+  [
+   4950,
+   "\\cpara{Contrasts the proposal with ``Traditional Rationality,'' a school the post does not identify (see the notes on ``Rationalization''). The two reasons given for preferring prevention to later correction, that ideas are hard to dislodge and strong evidence is often not available, are reasonable ones.}"
+  ],
+  [
+   5288,
+   "\\cpara{The post's proposal, offered with ``I suspect.'' The one experiment in the post concerned groups, and Maier's stated reason was attachment to proposals made in discussion. No evidence is given that a single person can put off guessing an answer, or gains by doing so.}"
+  ],
+  [
+   5542,
+   "\\cfact{The advice for individuals is old. John Dewey, \\textsc{How We Think} (1910): ``The essence of critical thinking is suspended judgment; and the essence of this suspense is inquiry to determine the nature of the problem before proceeding to attempts at its solution.''}"
+  ],
+  [
+   5556,
+   "\\cpara{A closing line on the half second.}"
+  ]
+ ]
+}

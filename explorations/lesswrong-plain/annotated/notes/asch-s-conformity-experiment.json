@@ -1,0 +1,89 @@
+{
+ "slug": "asch-s-conformity-experiment",
+ "header": "\\post{Asch's Conformity Experiment}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/WHK94zXkQm7qm7wXk/asch-s-conformity-experiment}\n",
+ "skeleton_sha": "3c93e7b75d40ca2efffe794def347c08c4e290d9c6170bd707ac2fb34341553c",
+ "post_sha": "07049679e5260b7791a83b3a9aa6602fcd7dad8c8d5b3b010d7a8d6d1bd85406",
+ "edits": [],
+ "notes": [
+  [
+   142,
+   "\\cpara{Introduces Asch's line-judgment experiment and asks the reader to try it. ``Well-replicated since'' holds for the effect, not for its size: the meta-analysis the post cites below found that in American studies ``conformity has declined since the 1950s'' (Bond and Smith, 1996, abstract). The figures that follow are Asch's own, from the 1950s.}"
+  ],
+  [
+   500,
+   "\\cpara{The diagram is not reproduced here. From the text it shows a standard line X and three comparison lines A, B and C, of which B matches X.}"
+  ],
+  [
+   577,
+   "\\cpara{Describes the set-up. It matches Asch's 1956 report, in which the real subject ``was nearly always seated before the last member of the majority.''}"
+  ],
+  [
+   1106,
+   "\\cpara{Both figures are right. In Asch's 1956 table of 123 subjects, 94 erred at least once and 39 erred on seven or more of the twelve critical trials. They answer the question the post asked, which was about people. They leave out the figure per answer: subjects went along ``in 36.8 per cent of the selections'' (1955), so nearly two answers in three were correct. Asch wrote that the majority effect ``was by no means complete, or even the strongest force at work'' (1956).}"
+  ],
+  [
+   1272,
+   "\\cpara{Reports the interviews. Asch's own summary gives no proportions, and it gives belief more room than ``some'' suggests. It lists ``a very few'' yielding subjects who seemed unaware of the majority's effect, ``a substantial proportion'' who ``yielded once their confidence was shaken,'' and others moved by ``an imperious desire not to appear different'' (1956).}"
+  ],
+  [
+   1714,
+   "\\cpara{Asch's comment on his results. The words are from his 1955 article ``Opinions and Social Pressure'' in \\textsc{Scientific American}, where the meta-analysis also cites them (p.~34). The footnote cites the 1956 monograph, in which I did not find them.}"
+  ],
+  [
+   1933,
+   "\\cpara{Asks whether the subjects were irrational, and answers that it is not obvious, since other people's beliefs are evidence.}"
+  ],
+  [
+   2223,
+   "\\clogic{The theorem has a second condition, which the sentence leaves out. Aumann's abstract: ``If two people have the same priors, and their posteriors for an event A are common knowledge, then these posteriors are equal'' (1976). Honest Bayesians with different priors can agree to disagree.}"
+  ],
+  [
+   2446,
+   "\\cpara{A thought experiment with stipulated conditions: the others are known to be honest and to see the same diagram. Under them, the author hopes to give the majority more than even odds.}"
+  ],
+  [
+   3047,
+   "\\cpara{Recommends reporting what one sees while granting that one's own view is no better than the others'. Some of Asch's independent subjects did this: they ``came to believe that the majority was correct in its answers, but they continued their dissent on the simple ground that it was their obligation to call the play as they saw it'' (1955).}"
+  ],
+  [
+   3560,
+   "\\cpara{Turns from the thought experiment to the data, attributed to the meta-analysis by Bond and Smith (133 studies). Several of the findings that follow were first reported by Asch himself: the effect of majority size, the dissenting partner and the partner who changes sides are all in his 1955 article.}"
+  ],
+  [
+   4071,
+   "\\cpara{Asch (1955): beyond a majority of three, ``further increases in the size of the majority apparently did not increase the weight of the pressure substantially.'' A later analysis of the studies in the cited meta-analysis found a weak rise with majority size, and similar conformity for majorities of three to seven, which it counted as ``some support'' for Asch (Bond, 2005).}"
+  ],
+  [
+   4352,
+   "\\cpara{The dissenter result, and the post's argument that it fits nervousness better than evidence. Asch's figures are shares of answers, not of subjects, and they depend on the kind of dissenter. With a truthful partner, errors fell to ``one fourth'' of the rate under a unanimous majority. With a dissenter whose wrong answer was more extreme than the majority's, they fell to ``only 9 per cent.'' With a dissenter whose wrong answer was less extreme, ``the effect of the majority on the subject decreases by approximately one third'' (1955).}"
+  ],
+  [
+   5186,
+   "\\cpara{Matches Asch: the subjects ``repudiated the suggestion that the partner decided them to be independent'' (1955). Asch reports a second finding that supports the post's point about self-awareness, and the post does not use it: ``All the yielding subjects underestimated the frequency with which they conformed.''}"
+  ],
+  [
+   5926,
+   "\\cpara{Matches Asch: after the partner joined the majority, submission was ``just about as frequent as when the minority subject was opposed by a unanimous majority throughout'' (1955). Asch traced this to the ``desertion,'' and ran a version in which the partner simply left the room. Then ``the partner's effect outlasted his presence'': errors rose after he left, ``but less markedly.'' The support largely vanished when the dissenter changed sides, not when the dissent stopped.}"
+  ],
+  [
+   6208,
+   "\\cpara{The direction is supported: the cited meta-analysis found conformity related to the share of women among the subjects (as summarized in Bond, 2005). I could not find a source for ``one-half the women'' against ``a third of the men.'' The argument needs only that the rates differ.}"
+  ],
+  [
+   6645,
+   "\\cpara{Also supported in direction: whether the majority were an out-group for the subject was among the moderators the meta-analysis found significant (as summarized in Bond, 2005). I could not check the example of handicapped subjects.}"
+  ],
+  [
+   6840,
+   "\\cpara{Asch found the same: resistance ``depends to a considerable degree on how wrong the majority is'' (1955). The meta-analysis found stimulus ambiguity significant (as summarized in Bond, 2005).}"
+  ],
+  [
+   7096,
+   "\\clogic{The finding is also what the evidence reading predicts: the clearer one's own view, the less other people's answers should move one. Majority size, the dissenter and private answers count against that reading; this item fits it. Together they fit a mixture of the two motives, which the ``(all)'' leaves room for.}"
+  ],
+  [
+   7110,
+   "\\cpara{The last finding. The two readings the post has tested, others' answers as evidence and the wish not to stand out, are the distinction Deutsch and Gerard drew in 1955 between ``informational'' and ``normative'' social influence, in a study that ran face-to-face and anonymous versions of Asch's task. Deutsch later wrote that the distinction ``caught on and has been widely employed,'' and Wikipedia's article on the experiments says they were later interpreted as reflecting ``both normative and informational social influence.'' The post does not mention the distinction.}"
+  ]
+ ]
+}

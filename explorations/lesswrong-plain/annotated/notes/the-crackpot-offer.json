@@ -1,0 +1,81 @@
+{
+ "slug": "the-crackpot-offer",
+ "header": "\\post{The Crackpot Offer}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/qRWfvgJG75ESLRNu9/the-crackpot-offer}\n",
+ "skeleton_sha": "4a6fcbbd60e55712df426f92b8f17ae506aa168a27194d5426ac9f8a4031f22f",
+ "post_sha": "6a48f51e0ec865fccc32583386b0ad05a2ff4fb7aded4f105e369bcfe25164e3",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Recalls a supposed disproof of Cantor's diagonal argument at thirteen or fourteen, and the dreams of fame that went with it.}"
+  ],
+  [
+   332,
+   "\\cfact{Correct in substance, with one step left implicit. The argument (Cantor, 1891) shows that no list indexed by the whole numbers can contain every infinite sequence of 0s and 1s; in its general form, every set of whole numbers. The reals outnumber the rationals because the rationals can be so listed and the reals cannot (Wikipedia, ``Cantor's diagonal argument'' and ``Countable set''). The construction in the next paragraph attacks the form about sets of whole numbers.}"
+  ],
+  [
+   403,
+   "\\cpara{The mathematics is right, including the counterexample. Writing a number in binary and listing the positions of its 1s pairs the whole numbers one-to-one with the finite sets of whole numbers, and misses every infinite set. The diagonal argument, applied to this pairing, builds the set of all $n$ that are not in the set paired with $n$. Since $n$ is always less than $2^n$, bit $n$ of $n$ is always 0, so every $n$ qualifies. The diagonal set is all the whole numbers: the post's binary $\\ldots1111$.}"
+  ],
+  [
+   951,
+   "\\cpara{Reports that the disproof failed, and the dreams with it.}"
+  ],
+  [
+   1082,
+   "\\cpara{Admits disappointment.}"
+  ],
+  [
+   1131,
+   "\\cpara{Describes the first reaction: resentment of the theorem for being ``obstinately true,'' and a search for other disproofs.}"
+  ],
+  [
+   1437,
+   "\\cpara{The turn. Having found the mistake, the author sees no more reason to doubt this theorem than any other major theorem. The inference is correct: a failed disproof leaves a proof exactly where it was.}"
+  ],
+  [
+   1698,
+   "\\cpara{Names the danger: becoming a math crank, ``writing angry letters in green ink to math professors.''}"
+  ],
+  [
+   1930,
+   "\\cpara{Lets the idea go with ``a small laugh,'' and does not question the theorem again.}"
+  ],
+  [
+   2113,
+   "\\cpara{Calls this an unfair test for a child of thirteen, and grants not remembering whether the thought came then or later.}"
+  ],
+  [
+   2349,
+   "\\cpara{Offers, with ``may'' and no evidence, that smarter people meet their first revolutionary-seeming idea younger. The rest lists the author's luck: the mistake was found without help, and was simple enough to understand.}"
+  ],
+  [
+   2889,
+   "\\cpara{Two speculations, posed as questions: how many cranks began with a mistake at thirteen, and how many were once promising.}"
+  ],
+  [
+   3069,
+   "\\cpara{Insists that the mistake had nothing right in it. For the claimed disproof this is exact, because a proof with a gap proves nothing. The pairing itself was correct as far as it went, but the post's claim is about the disproof.}"
+  ],
+  [
+   3456,
+   "\\cpara{Argues that pride, by reading the mistake as partly right, would have kept the search going, until the author ``might have found'' a flaw in the argument.}"
+  ],
+  [
+   3785,
+   "\\cpara{States a general law: until you admit a mistake, your self-image stays bound to it. The evidence offered is the one case.}"
+  ],
+  [
+   3920,
+   "\\cpara{The general rule, with ``crackpot'' defined by clinging alone, so that it covers mistakes that no one else ever hears of.}"
+  ],
+  [
+   4042,
+   "\\clogic{The rule names its target in hindsight: a thought is one ``you would never have thought if you had been wiser'' only once the mistake is known. The post's own case was settled by a proof within a week. It does not say how to tell, before that point, whether one is holding a mistaken thought or a correct unpopular one.}"
+  ],
+  [
+   4296,
+   "\\cpara{Ends by repeating the point in short sentences. ``Not every cloud has a silver lining'' allows that some do; the post does not say how to tell the two kinds of mistake apart. The last line sends the reader to say ``oops,'' as in ``The Importance of Saying Oops,'' posted a month earlier.}"
+  ]
+ ]
+}

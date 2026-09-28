@@ -1,0 +1,57 @@
+{
+ "slug": "the-affect-heuristic",
+ "header": "\\post{The Affect Heuristic}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Kow8xRzpfkoY7pa69/the-affect-heuristic}\n",
+ "skeleton_sha": "c181cb86d409110590b39ff8e1b881b01452788e70e42b9464aa8c92cc93537f",
+ "post_sha": "cefb7875ba97509c7135d5f57ff15adbcde02fd937bcf0131c0dd318df0a8dce",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{Defines the affect heuristic as Slovic and colleagues do, as quick judgment by a feeling of good or bad, and promises a series of biases in rising order of strangeness.}"
+  ],
+  [
+   414,
+   "\\cpara{The first study, Hsee and Kunreuther's clock. The description agrees with Slovic and colleagues' summary: people would pay ``twice as much'' to insure the beloved clock, and ``the insurance paid \\$100 in both cases.'' I could read only the abstract of the paper itself.}"
+  ],
+  [
+   1512,
+   "\\cpara{Sets aside ``purchase of consolation'' as something one might ``get away with claiming.'' It is the paper's own explanation, and the post does not say so. The authors propose a ``consolation hypothesis,'' in which ``people perceive insurance compensation as a token of consolation.''}"
+  ],
+  [
+   1712,
+   "\\cpara{The second study. In the summaries I could read, both descriptions were death rates in a population, and each subject rated both. Bonner and Newell (2008): ``participants rated cancer as riskier when it was described as killing 1,286 out of 10,000 people than as killing 24.14 out of 100 people.'' They class the result with the ratio bias, a focus on the number of deaths rather than the proportion. The post's contrast, a thousand bodies against ``a single person,'' is its own, and is offered with ``Apparently.'' I could not read the paper.}"
+  ],
+  [
+   2298,
+   "\\cpara{The third study. The figures match the table in Slovic and colleagues' paper ``The Affect Heuristic'' (2007): mean support of 10.4 for saving 150 lives and 13.6 for saving 98\\% of them, on a scale from 0 to 20. Saving 98\\% of 150 lives saves 147, so the measure that saved fewer lives got more support. The same table has 95\\%, 90\\% and 85\\% conditions, each also rated above the 150-lives condition.}"
+  ],
+  [
+   3351,
+   "\\cpara{The fourth study. The description matches the paper's abstract, which says subjects ``frequently elected'' the bowl with more red beans and worse odds, ``e.g., 7 in 100'' against ``1 in 10.''}"
+  ],
+  [
+   3886,
+   "\\cpara{Reports the subjects' own account, which is in the abstract: ``although they knew the probabilities were against them, they felt they had a better chance when there were more red beans.'' Then an ironic defense of it.}"
+  ],
+  [
+   4584,
+   "\\cpara{Returns to the study of ``The Scales of Justice, the Notebook of Rationality'' (13 March 2007). This time the design is described as it was: information about one attribute of a technology moved judgments of the other. In the earlier post the reactor example was the post's own (see the notes there).}"
+  ],
+  [
+   5219,
+   "\\cpara{Reports the time-pressure study and ties it to a ``general finding'' about time pressure, poor information and distraction, for which no source is given.}"
+  ],
+  [
+   5360,
+   "\\cfact{``Greatly'' is the word of the authors' later summaries (``increased greatly under time pressure''). The 2000 paper, a study of 54 first-year psychology students, reports a smaller effect. The mean correlation between a person's risk and benefit ratings was $-0.45$ under time pressure and $-0.33$ without it, a difference that ``approached significance.''}"
+  ],
+  [
+   5543,
+   "\\cpara{The last study. The description agrees with Ganzach's abstract: for unfamiliar assets, judgments of risk and return are both ``derived from global preference toward the asset,'' and for familiar ones from the asset's values in the market.}"
+  ],
+  [
+   6358,
+   "\\cpara{Recommends the article cited in footnote 3. It covers the airport study and Finucane's work. The clock, disease, jelly-bean and stock studies are summarized instead in another paper by the same authors, ``The Affect Heuristic'' (2002, reprinted 2007).}"
+  ]
+ ]
+}

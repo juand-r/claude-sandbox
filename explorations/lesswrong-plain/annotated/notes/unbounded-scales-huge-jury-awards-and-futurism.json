@@ -1,0 +1,81 @@
+{
+ "slug": "unbounded-scales-huge-jury-awards-and-futurism",
+ "header": "\\post{Unbounded Scales, Huge Jury Awards, \\& Futurism}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/5u5THLyRkTpPHiaG5/unbounded-scales-huge-jury-awards-and-futurism}\n",
+ "skeleton_sha": "7d0f8b3a0bcb3e18501ee8d3150b2e910c548934623f333469e1e9a7bf36055c",
+ "post_sha": "c902d0d8b97970dc4a8e6921989dfbf32fed88e7bcdc32eac4424d9c4dcaff36",
+ "edits": [],
+ "notes": [
+  [
+   179,
+   "\\cpara{Introduces psychophysics with loudness. ``More like eight times'' fits Stevens's exponent of 0.67 for loudness against sound pressure, which is about 0.33 against energy, and $2^{3} = 8$. The common rule that 10 decibels doubles loudness gives ten times.}"
+  ],
+  [
+   610,
+   "\\cpara{Explains bounded and unbounded rating scales, and the modulus: a standard stimulus given a fixed number, against which others are rated. This is Stevens's method of magnitude estimation.}"
+  ],
+  [
+   1370,
+   "\\cpara{Without a modulus, people keep the ratios between stimuli but choose their own scale, so one person's 10 may be another's 1,000.}"
+  ],
+  [
+   2124,
+   "\\cpara{No source or figure is given for ``nearly all.'' The authors of the study the post turns to next say only that scaling without a modulus ``produces extremely large variability in judgments of any particular stimulus'' (Sunstein, Kahneman and Schkade, \\textsc{Yale Law Journal}, 1998).}"
+  ],
+  [
+   2362,
+   "\\cpara{Offers the analogy to punitive damages as the reader's own thought, and the study as its test. The analogy was the study's starting point: its abstract calls the results ``familiar characteristics of judgments made on unbounded magnitude scales.''}"
+  ],
+  [
+   2597,
+   "\\cpara{Matches the paper: 899 people from the Travis County, Texas voter rolls, of whom 32 were dropped, leaving 867. Each read ten short cases and was told that \\$200,000 in compensatory damages had already been awarded. The burned child is a case about flammable pajamas.}"
+  ],
+  [
+   3443,
+   "\\cpara{The agreement the paper reports is between averages: of demographic groups (median correlations of .94 for outrage, .99 for punishment, .65 for dollars) and of simulated juries. Single respondents agreed less: the case explained 29 per cent of the variance in individual outrage ratings.}"
+  ],
+  [
+   3771,
+   "\\cpara{The three figures match the paper's Table 6.}"
+  ],
+  [
+   4168,
+   "\\cpara{Restates the figures in words.}"
+  ],
+  [
+   4480,
+   "\\cfact{Overstated. The case explained 6 per cent of the variance in dollar awards, not none, and 42 per cent of the variance in their logarithms, close to the 51 per cent for ranks. The authors agree with a study of real awards (Eisenberg et al., 1997) that ``log awards are reasonably predictable,'' and reply that ``Defendants and plaintiffs, however, live in a world of dollars, not log dollars.''}"
+  ],
+  [
+   4494,
+   "\\cpara{Matches the paper. Sets of simulated twelve-person juries agreed with each other at $r = .42$ on dollars, against .87 and .89 on outrage and punishment; with thirty-person juries the dollar figure rose to .80.}"
+  ],
+  [
+   4588,
+   "\\cpara{The conclusion is the paper's. Its juries were medians of individual answers to short vignettes, with no deliberation and no plaintiff's demand. In the law-review version the authors write that ``these findings do not replicate the real world of punitive damage awards''; in the journal paper they argue that deliberation would not change the main findings.}"
+  ],
+  [
+   4795,
+   "\\cpara{Turns to forecasts of human-level AI. The evidence is the spread of answers the author has seen and one remembered answer, ``Five hundred years.''}"
+  ],
+  [
+   4900,
+   "\\clogic{The jury conclusion rested on a measured pattern: agreement on bounded scales and on ranks, disagreement on raw dollars. The post shows no such pattern for forecasts.}"
+  ],
+  [
+   5125,
+   "\\cpara{Says the forecaster could not have looked into the future or used Moore's law, and asks what the number 500 meant.}"
+  ],
+  [
+   5190,
+   "\\clogic{If the date is not very predictable, honest forecasters would also give answers ``all over the map.'' The spread the post cites does not tell attitude expression from real uncertainty.}"
+  ],
+  [
+   5468,
+   "\\cpara{The author's guess, marked as one: people rate how hard AI feels on an unbounded scale and add ``years.''}"
+  ],
+  [
+   6059,
+   "\\cpara{Adds a second substituted question, how good AI feels, with shorter times for warmer feelings. A later survey fits the thesis. In 2016, machine-learning researchers gave a 50 per cent chance of machines doing every task better than humans in 45 years, and of full automation of labor, which its authors call a logically similar question, in 122 years. Answers also changed with how the question was framed (Grace et al., 2018).}"
+  ]
+ ]
+}

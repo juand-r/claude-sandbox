@@ -1,0 +1,65 @@
+{
+ "slug": "on-expressing-your-concerns",
+ "header": "\\post{On Expressing Your Concerns}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/ovvwAhKKoNbfcMz8K/on-expressing-your-concerns}\n",
+ "skeleton_sha": "47bae67467e4f4e6cffc2901274e49b8e854b05418f14b399530d374d61dc1dc",
+ "post_sha": "f370aced3360e98fc149036a3b0559ed2c4a50da0b5222d8c7a555c15afa0ef5",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{Summarizes the previous day's post, ``Asch's Conformity Experiment,'' in three findings: conformity, the effect of one dissenter, and the return of conformity when the dissenter sides with the group.}"
+  ],
+  [
+   704,
+   "\\clogic{Asch at first read the result the same way: having had a partner ``had failed to strengthen the individuals' independence.'' He then traced the rise to the partner's ``desertion.'' When the partner simply left the room instead, ``the partner's effect outlasted his presence'' (1955). See the notes on the previous post.}"
+  ],
+  [
+   718,
+   "\\cpara{States the benefits and costs of dissent in four short sentences. The rest of the post elaborates them.}"
+  ],
+  [
+   887,
+   "\\cpara{The source of the post's ``sudden insight'' about how groups become overconfident: one conversation, told from the author's side.}"
+  ],
+  [
+   1499,
+   "\\cpara{Turns the anecdote into a general mechanism: politeness stops people from questioning each other's competence, so two doubters reassure each other into optimism. It is stated as general fact (``will have natural doubts,'' ``Together they become more optimistic''), with no support beyond the anecdote.}"
+  ],
+  [
+   2067,
+   "\\cpara{Extends the mechanism to whole groups and gives it its name.}"
+  ],
+  [
+   2389,
+   "\\cpara{Places the author and Robin Hanson in their debate on when to disagree, and says both accept a strong reading of Aumann's theorem. The footnoted post, ``The Modesty Argument'' (December 2006), gives the author's side of the debate: ``it can be rational for an individual to not adjust their own probability estimate in the direction of someone else who disagrees with them.'' The paragraph's last sentence reads as a mock rant; the next paragraph opens ``Ahem.''}"
+  ],
+  [
+   2921,
+   "\\clogic{The theorem assumes a common prior (see the notes on the previous post), and so does Hanson's own statement of the result: ``honest truth-seeking agents with common priors should not knowingly disagree'' (Cowen and Hanson, ``Are Disagreements Honest?''). To get ``someone must be irrational'' one needs the further claim that rational agents must share their priors, and that claim is disputed. Hanson's paper ``Uncommon Priors Require Origin Disputes,'' which ``The Modesty Argument'' cites, reports that some derive common priors from common knowledge of rationality, and that ``Others do not find this argument compelling''; Hanson argues for a version of the claim by another route. The post states the conclusion as agreed without the premise.}"
+  ],
+  [
+   3272,
+   "\\cpara{Draws the moral for rationalists: disagreeing with a group is ``serious business,'' not a matter of everyone's right to an opinion.}"
+  ],
+  [
+   3449,
+   "\\cpara{The lesson the post calls ``most important.'' Voicing a concern is not a promise to disagree at the end.}"
+  ],
+  [
+   3710,
+   "\\cpara{Says that ideal reasoners converge by sharing evidence the listener could not have predicted, and that this looks nothing like bargaining. Hanson's paper (\\textsc{Economics Letters}, 2002, titled ``Disagreement is unpredictable'') shows that such agents ``cannot publicly anticipate the direction in which other agents will disagree with them.'' The link to the lesson is left implicit. My reading: a voiced concern is shared evidence, not a stated position.}"
+  ],
+  [
+   4323,
+   "\\cpara{Concedes that socially there is ``not much difference'' between a concern and a disagreement, that speaking out cannot be undone, and that the offended party ``will probably hold just as much of a grudge.'' This confines the lesson to groups that agree to honour the distinction, and the post says even they would be pretending.}"
+  ],
+  [
+   4956,
+   "\\cpara{Weighs both sides again: dissent inspires, conformity is powerful, the first to speak pays, and the distinction is ``a rationalist's artifice.''}"
+  ],
+  [
+   5841,
+   "\\cpara{Ends by leaving the decision to the reader. After naming the distinction as the ``most important lesson,'' the post gives no advice on when a concern is worth its cost.}"
+  ]
+ ]
+}

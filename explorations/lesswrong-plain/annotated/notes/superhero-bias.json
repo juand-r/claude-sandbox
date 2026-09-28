@@ -1,0 +1,97 @@
+{
+ "slug": "superhero-bias",
+ "header": "\\post{Superhero Bias}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/krMzmSXgvEdf7iBT6/superhero-bias}\n",
+ "skeleton_sha": "1f4c61bb06929b2bf25db39c2c0f78932bb22f81b1b2c1fde18c96225692bb36",
+ "post_sha": "77f4b0399a9c4b4d7b4541736c8d82900fa544cbec9e06437c9412c91c6c1515",
+ "edits": [],
+ "notes": [
+  [
+   114,
+   "\\cpara{Sets up a hostage case, granting that in real life the police rarely storm in.}"
+  ],
+  [
+   523,
+   "\\cpara{Introduces two heroes who charge into the room.}"
+  ],
+  [
+   648,
+   "\\cpara{The first hero is invulnerable and saves two hundred children.}"
+  ],
+  [
+   1009,
+   "\\cpara{The second is an ordinary officer who saves three adults. The pair differ at once in risk, in the number saved and in who is saved; the post separates risk from numbers later.}"
+  ],
+  [
+   1158,
+   "\\cpara{Poses the two questions the rest of the post answers.}"
+  ],
+  [
+   1287,
+   "\\cpara{Restates the halo effect in a stronger form than the day before: ``all positive traits.'' The list of traits is Cialdini's, and the review behind it found the effect near zero for honesty and kindness (see the notes on ``The Halo Effect'').}"
+  ],
+  [
+   1505,
+   "\\cpara{The post's name for the bias rests on this sentence.}"
+  ],
+  [
+   1660,
+   "\\clogic{Inferred from the halo effect, with no study of how people judge the courage of comic-book characters. The support offered is a line from a comic.}"
+  ],
+  [
+   1852,
+   "\\cpara{A second claim, that fame adds to every other trait, offered with ``seems'' and no evidence. The author says it may or may not be original. Gandhi is the example.}"
+  ],
+  [
+   2488,
+   "\\cpara{Asks how Gandhi felt about his fame, and answers ``I don't know; I'm not Gandhi.''}"
+  ],
+  [
+   2705,
+   "\\cfact{Stated without a hedge, inside a question. It fits some events: at Dharasana in May 1930, marchers were clubbed while Gandhi was already under arrest. But his prominence also made him a target. A mob attacked him when he landed in Durban in 1897, and there were attempts on his life in 1934, 1944 and January 1948 before he was shot (Wikipedia, ``Assassination of Mahatma Gandhi''). In the next paragraph the post softens ``protected'' to ``somewhat-but-not-entirely protected,'' but it counts only the protection fame gave, not the risk it brought.}"
+  ],
+  [
+   2920,
+   "\\cpara{Denies criticizing Gandhi and grants that his actions took courage, though less than marching anonymously.}"
+  ],
+  [
+   3324,
+   "\\cpara{Names the bias: fame ``seems'' to be added to a person's real virtue. The anonymous marcher is an illustration, not a case.}"
+  ],
+  [
+   3765,
+   "\\cpara{Returns to the opening comparison, now with the numbers alone.}"
+  ],
+  [
+   3897,
+   "\\cpara{First sense of ``greater'': as an outcome, saving two hundred beats saving three.}"
+  ],
+  [
+   4143,
+   "\\cfact{The saying is from the Mishnah (Sanhedrin 4:5), where a court warns witnesses in capital cases how grave false testimony is. It is not offered there as advice about whom to save.}"
+  ],
+  [
+   4475,
+   "\\cpara{Second sense: revealed virtue. The comparison is stated carefully, between someone who would take the risk for three and someone who would take it only for two hundred, and it holds as stated.}"
+  ],
+  [
+   4711,
+   "\\cpara{Adds that choosing the smaller rescue in order to show virtue is a moral failure, ``the moral equivalent of manslaughter.''}"
+  ],
+  [
+   5306,
+   "\\cpara{Borrows wu wei, the Daoist ideal of acting without striving, for the point that virtue cannot be revealed by trying to reveal it. ``Lost purpose'' refers to the author's ``Lost Purposes,'' posted six days earlier.}"
+  ],
+  [
+   5754,
+   "\\cpara{Draws the consequence: people who try to save lives will look for safer and larger rescues, and so reveal less virtue.}"
+  ],
+  [
+   6029,
+   "\\cpara{Whatever risk remains after that reveals real courage.}"
+  ],
+  [
+   6219,
+   "\\cpara{Answers the opening question: the officer reveals more virtue than Superman. The conclusion follows from the post's definition of revealed virtue.}"
+  ]
+ ]
+}

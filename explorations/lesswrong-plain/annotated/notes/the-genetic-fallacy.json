@@ -1,0 +1,85 @@
+{
+ "slug": "the-genetic-fallacy",
+ "header": "\\post{The Genetic Fallacy}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/KZLa74SzyKhSJ3M55/the-genetic-fallacy}\n",
+ "skeleton_sha": "32261c40117ff6522d6d1b46e5337acd3bff8f78fa2c059b4603f32f57128fec",
+ "post_sha": "fdd8a275041b3193a721fb10423bc0d53d433b25f6d0a737b526c58a93b9be07",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Defines the genetic fallacy, in its attacking form: rejecting a belief because of why someone holds it.}"
+  ],
+  [
+   291,
+   "\\cpara{Objects that the causes of a belief are what make it reliable, as when we trust Deep Blue because we understand its code. The objection concerns how far to trust a belief before other evidence is in. The post separates that from a belief's current justification three paragraphs later.}"
+  ],
+  [
+   746,
+   "\\cpara{Reports what articles on the fallacy say, and reports it fairly. The Fallacy Files entry, as it now reads, says that the origin of testimony ``carries weight in evaluating it,'' while Kekulé's dream ``is neither evidence for nor against the hypothesis that benzene has a ring structure.''}"
+  ],
+  [
+   1142,
+   "\\cpara{Mocks the articles' position. It is the position the post itself reaches: the source stops mattering once there is ``sufficiently clear-cut evidence,'' as with Kekulé, and in its absence ``you do need to pay attention to the original sources of ideas,'' as with experts. What the post adds is the point about human minds that comes next.}"
+  ],
+  [
+   1226,
+   "\\cpara{Gives the reason it is a fallacy: a belief's original cause is not its current justification, the support now known for and against it.}"
+  ],
+  [
+   1457,
+   "\\cpara{The post's own contribution: because people revise beliefs poorly, a belief's origin matters more for humans than for an ideal reasoner. The support is the job-choice survey of ``We Change Our Minds Less Often Than We Think,'' which does not concern discredited sources (see the notes there). The belief-perseverance studies mentioned there fit this case better, since they discredit the source of an impression and measure what remains.}"
+  ],
+  [
+   1614,
+   "\\cpara{Names the remedy: when a source you relied on comes under suspicion, clear your mind.}"
+  ],
+  [
+   1774,
+   "\\cpara{The example. ``They have failed to clear their minds'' is a verdict on unnamed people, given without a case, a pattern already noted in ``Fake Justification'' (see the notes there). Whether a given person re-examined the Bible's ethics after losing faith is a question of fact about that person.}"
+  ],
+  [
+   2268,
+   "\\cpara{Adds the limit from ``Reversed Stupidity Is Not Intelligence'' (12 December 2007): doubting a source is not negating it.}"
+  ],
+  [
+   2529,
+   "\\cpara{Explains why doubt should reach the ``leaves'': support found after an idea was adopted was found under its influence.}"
+  ],
+  [
+   2791,
+   "\\cpara{Says that clearing the mind is hard, and that it means real reconsideration, not the rehearsal of ``cached arguments.''}"
+  ],
+  [
+   2979,
+   "\\clogic{Offered without evidence. In the perseverance study cited in the notes on ``We Change Our Minds Less Often Than We Think,'' a ``process'' debriefing, which explained the perseverance process to subjects, ``generally proved sufficient to eliminate erroneous self-perceptions.'' That is one laboratory task, but it sits uneasily with ``convulsive effort.''}"
+  ],
+  [
+   3165,
+   "\\cpara{Gives the test: if every idea from a source you now distrust still seems right, suspect your own judgment.}"
+  ],
+  [
+   3421,
+   "\\cpara{Grants the limit: with enough experimental evidence, as for the benzene ring, the source of an idea no longer matters.}"
+  ],
+  [
+   4045,
+   "\\cpara{Says what to do without such evidence: weigh sources, give experts in respected fields more credence, and distrust people with suspect motives unless they offer arguments beyond their own authority.}"
+  ],
+  [
+   4433,
+   "\\cpara{The post's definition: a fallacy when other justifications exist but the genetic accusation is presented as settling the issue. Wikipedia's definition says the same with the word ``solely'': arguments or information ``dismissed or validated based solely on their source or origin.''}"
+  ],
+  [
+   4787,
+   "\\cfact{This sentence was added after publication. The link is to a comment Hal Finney left on this post on the day it appeared: ``Instead of calling it the `genetic fallacy', maybe we should re-christen it the `genetic heuristic'.''}"
+  ],
+  [
+   4801,
+   "\\cpara{Introduces four rules of thumb.}"
+  ],
+  [
+   4875,
+   "\\cpara{The rules follow from the argument. The second, that technical arguments take priority over judging motives, agrees with ``Argument Screens Off Authority'' and ``Hug the Query.''}"
+  ]
+ ]
+}

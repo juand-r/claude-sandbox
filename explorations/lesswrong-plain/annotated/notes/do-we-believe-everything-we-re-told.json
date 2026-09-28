@@ -1,0 +1,144 @@
+{
+ "slug": "do-we-believe-everything-we-re-told",
+ "header": "\\post{Do We Believe Everything We're Told?}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/TiDGXt3WrQwtCdDj3/do-we-believe-everything-we-re-told}\n",
+ "skeleton_sha": "40ad80708d6611aec6d22cc173c39a80735be4000460ffd1a4cf366f7ab79c66",
+ "post_sha": "812499a9b923f8c0347ef7b39471b2de4f04279fa6cbd03dfb6d2e547db60c5a",
+ "edits": [
+  {
+   "at": 2888,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "caut"
+  },
+  {
+   "at": 2889,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "o"
+  },
+  {
+   "at": 2890,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "{Dani"
+  },
+  {
+   "at": 2891,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "l T. Gilbert, Romin W. Ta"
+  },
+  {
+   "at": 2892,
+   "del_len": 4,
+   "del_sha": "cb494324e5d182bdd365e51818dccb0bf9c956f1a7b040ee554a2727c0e7dcef",
+   "ins": "ar"
+  },
+  {
+   "at": 2897,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "di, and Patrick S. Malone, “You Can’t N"
+  },
+  {
+   "at": 2899,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " Believe Everythi"
+  },
+  {
+   "at": 2900,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "g Y"
+  },
+  {
+   "at": 2901,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "u Read,” \\emph{Journal of Personali"
+  },
+  {
+   "at": 2902,
+   "del_len": 1,
+   "del_sha": "3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea",
+   "ins": "y and Social Psychology} 65 ("
+  },
+  {
+   "at": 2904,
+   "del_len": 2,
+   "del_sha": "c3ae149fe0039e4b60dbe36167a43ad1f99d8e313bbf3f0d01d107f627d61ab0",
+   "ins": " 1993): "
+  },
+  {
+   "at": 2907,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "21–233."
+  },
+  {
+   "at": 4944,
+   "del_len": 193,
+   "del_sha": "92b1f37c6db1f35379fc9cfaa14645b8569becddd25c731dcc6a0498ebda5171",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   157,
+   "\\cpara{Sets the scene without naming an experiment. Gilbert, Krull and Malone's 1990 paper points to wider evidence: in research on attribution, persuasion and lie detection, ``instances of inappropriate belief'' are, ``in general,'' ``exacerbated by cognitive load and interruption.''}"
+  ],
+  [
+   588,
+   "\\cpara{Introduces Gilbert's question: do we believe everything we are told?}"
+  ],
+  [
+   822,
+   "\\cpara{States the two models as Gilbert and colleagues state them. For Spinoza, in their words, all ideas are ``accepted (i.e., represented in the mind as true) prior to a rational analysis of their veracity.''}"
+  ],
+  [
+   1363,
+   "\\cpara{The first sentence sits uneasily with the post's own source. Gilbert, Krull and Malone write that philosophers such as Reid and Russell ``found cause to question the Cartesian distinction,'' and that what ``continues to embrace'' it is ``modern psychology.''}"
+  ],
+  [
+   1651,
+   "\\cfact{The footnote cites a post by Robin Hanson about policy debates. It does not mention Descartes, Spinoza or philosophers, so the sentence it is attached to has no source.}"
+  ],
+  [
+   1751,
+   "\\cpara{States the two predictions as the 1990 paper does: interruption should make a Spinozan mind ``mistake false ideas for true ones, but not vice versa.''}"
+  ],
+  [
+   2077,
+   "\\cpara{Reports Study 1 correctly: 55\\% and 58\\% correct for true statements, 55\\% and 35\\% for false ones. The figures rest on 35 students, each of whom had two interrupted true statements and two interrupted false ones.}"
+  ],
+  [
+   2125,
+   "\\clogic{The results fit Spinoza's model, but the model was already disputed when the post appeared (see also the note on ``Your Strength as a Rationalist''). Hasson, Simmons and Todorov (\\textsc{Psychological Science}, 2005) found the same asymmetry only for statements that tell you little when false, not for statements that are informative when false, and concluded that ``comprehending a statement may not require believing it.'' Later, Nadarevic and Erdfelder (\\textsc{Memory \\& Cognition}, 2013) reported results that they said ``clearly contradict the Spinozan model.''}"
+  ],
+  [
+   2693,
+   "\\cpara{Describes Experiment 1 of the 1993 paper accurately: statements in red were false, the busy group searched for the digit 5, and prison terms ran from 0 to 20 years. The subjects were 71 female students, of whom 68 were analysed.}"
+  ],
+  [
+   3686,
+   "\\cpara{Reports the busy group correctly: 11.15 and 5.83 years (the paper's Table 1). The ratio is 1.9, and the paper reports the difference as significant.}"
+  ],
+  [
+   4174,
+   "\\cpara{Reports the non-busy group correctly: 7.03 and 6.03 years. The paper says these terms were ``only marginally affected'' by the false statements, and the post does not claim more.}"
+  ],
+  [
+   4601,
+   "\\cpara{Gives the 1993 paper's title.}"
+  ],
+  [
+   4710,
+   "\\cpara{Draws a modest practical lesson. It follows from the crime-report study whichever theory explains it: statements labeled false changed the judgments of busy readers.}"
+  ],
+  [
+   4961,
+   "\\cpara{Ends with a joke, flagged as made up.}"
+  ]
+ ]
+}

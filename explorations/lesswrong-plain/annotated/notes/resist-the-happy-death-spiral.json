@@ -1,0 +1,121 @@
+{
+ "slug": "resist-the-happy-death-spiral",
+ "header": "\\post{Resist the Happy Death Spiral}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/hwi8JQjspnMWyWs4g/resist-the-happy-death-spiral}\n",
+ "skeleton_sha": "99a01a13f1c0c629a15e5d0c0d68d7aa5081b73c53916c091f10b1a17f2e6f9b",
+ "post_sha": "4bef770e285161dce0e3fe0722c8baa7835da24a620b785dc3f29075186b2cfb",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Tells the story of a man sure his Great Idea would unravel the universe, overturn the Establishment, feed the hungry and heal the sick.}"
+  ],
+  [
+   661,
+   "\\cpara{Names the man: Francis Bacon, the one ``crackpot'' whose claims of benefit came true. The footnote grants that Bacon did not invent science alone.}"
+  ],
+  [
+   990,
+   "\\cfact{``Completely right'' holds for the benefits. Bacon's package also held a timetable. In the \\textsc{Novum Organum} (1620, book I, aphorism 112) he wrote: ``If we had but any one who could actually answer our interrogations of nature, the invention of all causes and sciences would be the labor of but a few years.'' Four centuries of answered questions have not completed that work. The post's own later advice, to split a Great Idea into parts and judge each, applies to its first example.}"
+  ],
+  [
+   1004,
+   "\\cpara{Draws the lesson: since some ideas really are that good, refusing to admire anything that much cannot be the remedy.}"
+  ],
+  [
+   1225,
+   "\\cpara{Asks how to resist the spiral about science itself, restates the spiral, and ends with a joke about one starting in the author.}"
+  ],
+  [
+   1786,
+   "\\cpara{Sets aside the standard criticisms of science as cached thoughts, and attributes them, with ``Probably,'' to people whose pet beliefs science threatened.}"
+  ],
+  [
+   2408,
+   "\\clogic{No originator is named, and prominent early versions came from scientists. In October 1949 the scientists advising the US Atomic Energy Commission, with J.~Robert Oppenheimer as chairman, recommended against building the hydrogen bomb; two physicists among them, Enrico Fermi and I.~I. Rabi, called it ``necessarily an evil thing considered in any light.'' For the second thought, see the note on ``Cached Thoughts'' about Stephen Jay Gould's argued version.}"
+  ],
+  [
+   2422,
+   "\\cpara{Says that someone who feels ``the exultation of science'' needs other criticisms than the standard ones.}"
+  ],
+  [
+   2673,
+   "\\cpara{Raises the objection to that plan: a selective search for negatives is rationalization.}"
+  ],
+  [
+   2972,
+   "\\cpara{Rejects using one bias to cancel another, with the image of a mechanic who breaks the second windshield wiper to match the first. The remedy, the author says, should involve believing true things.}"
+  ],
+  [
+   3495,
+   "\\cpara{Asks whether confining science to a narrow domain would work, since seeing the Great Idea everywhere is part of the spiral. Adds, with ``Probably'' and no source, that claiming expertise in everything is the most reliable sign of a cult guru.}"
+  ],
+  [
+   4097,
+   "\\cpara{Answers no: science bears on nearly everything, even a parent's love, as when Martine Rothblatt founded United Therapeutics to seek a cure for her daughter's disease.}"
+  ],
+  [
+   4687,
+   "\\cfact{``Successfully'' reads as a cure found. The company's first drug for the disease, Remodulin, was approved in the United States in 2002, and it treats the disease (Wikipedia, ``United Therapeutics''). The US National Heart, Lung, and Blood Institute says: ``There is usually no cure for pulmonary hypertension.''}"
+  ],
+  [
+   4810,
+   "\\cpara{Asks for an example of a false nice claim about science.}"
+  ],
+  [
+   4914,
+   "\\cpara{Gives one, hedged (``in my humble opinion''): that scientists need not take ethical responsibility for their work, since science will turn out well regardless. It is the kind of claim a real admirer of science might make.}"
+  ],
+  [
+   5382,
+   "\\cpara{Drops that example because it is ``not beyond dispute,'' and replaces it with claims no admirer of science makes: that publishing papers cures a cancer patient, that a rule of $p < 0.05$ cures sociopaths. The method that follows is shown only on these. The post itself locates the danger in ``unsettled'' claims, like the example just dropped, and on those it gives no demonstration.}"
+  ],
+  [
+   5731,
+   "\\cpara{Lists wrong ways to resist the absurd claims: capping one's admiration, looking for reasons why papers cause cancer, or denying that science bears on cancer.}"
+  ],
+  [
+   6029,
+   "\\cpara{The method: know specifically how science works, and ask whether the proposed chain of cause and effect would work.}"
+  ],
+  [
+   6351,
+   "\\cpara{Traces the spiral to the halo effect, which ``will probably always influence us a little,'' and advises treating each added nice claim as a burdensome detail.}"
+  ],
+  [
+   6853,
+   "\\cpara{Advises against drawing happiness from claims that ``can't be disproven'' or have arguments ``both for and against.''}"
+  ],
+  [
+   7343,
+   "\\cpara{Restates the aim in the terms of the previous post: keep the halos subcritical, so that the resonance dies out.}"
+  ],
+  [
+   7697,
+   "\\cpara{Suggests (``You might even say'') that without the conjunction fallacy there would be a halo effect but no spiral. The footnote points to three posts in \\textsc{Map and Territory}.}"
+  ],
+  [
+   8478,
+   "\\cpara{Says a perfect reasoner would feel no resonance, and that people can come close enough. The footnote previews the next post: the reaction goes supercritical when criticizing any positive claim feels bad or is socially unacceptable.}"
+  ],
+  [
+   9154,
+   "\\cpara{Introduces a reader's advice. The quotation matches Stuart Armstrong's comment on ``Affective Death Spirals,'' posted on 3 December 2007, without its first words and its last sentence.}"
+  ],
+  [
+   9307,
+   "\\cpara{Armstrong's advice: split the Great Thingy into parts, as a Marxist might split Marx into theories of value, class, wages and the final state, and judge each independently.}"
+  ],
+  [
+   9871,
+   "\\cpara{Endorses the advice with the image of subcritical masses of plutonium kept apart, and applies it by asking specific questions about the claim that papers cure cancer.}"
+  ],
+  [
+   10038,
+   "\\clogic{Asserted without evidence. The halo effect, as ``Affective Death Spirals'' defines it, acts between separate traits of one person: attractiveness raises perceived honesty. Splitting an idea into parts produces the same kind of setting: separate parts of one admired thing. Armstrong's condition, that you ``treat them as independent,'' is what the halo makes hard, and splitting alone does not supply it.}"
+  ],
+  [
+   10580,
+   "\\cpara{Lists five remedies and three mistakes. No evidence is given that any of the remedies reduces the effect.}"
+  ]
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "slug": "the-halo-effect",
+ "header": "\\post{The Halo Effect}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/ACGeaAk6KButv2xwQ/the-halo-effect}\n",
+ "skeleton_sha": "21fce812456ee16bf8a2a5ff6b79c18a6bcf17d062b6487a8c60e962aa3b40e5",
+ "post_sha": "6eaa99d2e98033a8c0cee0f90e611f38f4a60718a0b9fff08e9d6fbd527635e0",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{Recalls ``The Affect Heuristic,'' posted three days earlier, with two of its findings: benefits information lowering perceived risk of nuclear power, and analysts judging unfamiliar stocks as all good or all bad. Their sources are given there.}"
+  ],
+  [
+   639,
+   "\\cpara{Defines the halo effect as the affect heuristic in social psychology. The evidence that follows is one long passage from Cialdini's \\textsc{Influence}, a book for general readers; the post cites the studies only through it.}"
+  ],
+  [
+   877,
+   "\\cpara{Cialdini on attractiveness: judges credit good-looking people with better traits without knowing it, and voters favor attractive candidates while denying it.}"
+  ],
+  [
+   1101,
+   "\\cfact{The review does not support two of the four traits. Eagly and colleagues found the differences between attractive and unattractive people ``largest for indexes of social competence; intermediate for potency, adjustment, and intellectual competence; and near zero for integrity and concern for others.'' Honesty and kindness fall in the last group. They also found the effect ``moderate'' on average and ``not as strong or general'' as ``what is beautiful is good'' suggests.}"
+  ],
+  [
+   1511,
+   "\\cfact{Cialdini's own notes give the source as an unpublished University of Toronto manuscript. I could not check it. Later published work finds the same direction on a smaller scale: in Finland, one standard deviation of rated beauty went with 20 per cent more votes for the average non-incumbent parliamentary candidate (Berggren, Jordahl and Poutvaara, 2010).}"
+  ],
+  [
+   2062,
+   "\\cpara{Cialdini on hiring and pay. The pay figure is broadly in line with Hamermesh and Biddle, who put the penalty for plain looks at 5 to 10 per cent and the premium for good looks slightly lower.}"
+  ],
+  [
+   2657,
+   "\\cpara{Cialdini on courts: a field study of sentences and a mock negligence trial.}"
+  ],
+  [
+   3425,
+   "\\cfact{The ratio is right (54 against 23 per cent avoided jail), but it is a raw comparison. The attractive defendants also faced less serious charges ($r = -.32$), which the jail figures do not control for. Allowing for seriousness, attractiveness still predicted shorter sentences, and Stewart called the relationship ``a weak one.''}"
+  ],
+  [
+   3808,
+   "\\cpara{Cialdini on help and persuasion.}"
+  ],
+  [
+   4060,
+   "\\cpara{Argues that attractiveness has no legitimate bearing on honesty, while honesty and intelligence may go together in fact. (On honesty and kindness, see the note on Cialdini's first sentence.)}"
+  ],
+  [
+   4615,
+   "\\cpara{Advises suspicion of anyone who seems good in every way, and of a world that sorts too cleanly into devils and angels.}"
+  ],
+  [
+   4766,
+   "\\cfact{What the post offers as a suspicion was the original finding. Thorndike named the halo effect in 1920 for ratings of the same person on ``intelligence, industry, technical skill, reliability,'' and of officers on intelligence, leadership and character, which correlated ``too high and too even.'' Like the post, Thorndike allowed that such traits really go together to some degree; his point was that the ratings were ``higher than reality, plus the attenuation due to erroneous judgments, could well give.''}"
+  ],
+  [
+   5218,
+   "\\cpara{The practical advice, drawn from the voting studies.}"
+  ]
+ ]
+}

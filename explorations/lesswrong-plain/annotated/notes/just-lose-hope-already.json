@@ -1,0 +1,53 @@
+{
+ "slug": "just-lose-hope-already",
+ "header": "\\post{Just Lose Hope Already}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/waqC6FihC2ryAZuAq/just-lose-hope-already}\n",
+ "skeleton_sha": "01aa9455264a3c2cef6c5f8786b79caebc3b363f9af04745f57b18a912721c18",
+ "post_sha": "047f2691dddbc4758c6c6ef0a548ae5d3d0f6fd6345350b8798c572e2a6d0a3f",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Opens with Casey Serin. The main details match contemporary reports. ABC's \\textsc{Nightline} (April 2007) described a ``24-year-old'' former ``Web site programmer'' who bought ``eight homes in eight months in four different states,'' and quoted him: ``In total I was \\$2.2 million in debt between mortgages and unsecured lines of credit and credit cards.'' Wikipedia reports that he claimed on his loan applications ``roughly five times his actual pay.''}"
+  ],
+  [
+   572,
+   "\\cpara{The point of the example: Serin will not give up. He refuses bankruptcy and a job, buys more seminars, and tried for a ninth house. Wikipedia's account agrees on the seminars and the ninth application, which a lender turned down after finding his blog.}"
+  ],
+  [
+   971,
+   "\\cpara{Draws the moral from the one case.}"
+  ],
+  [
+   1034,
+   "\\cpara{Turns to a second case: two Nobel-prize-winning economists.}"
+  ],
+  [
+   1165,
+   "\\cpara{Names Merton and Scholes, who shared the Nobel prize in economics in 1997. LTCM was founded and run by John Meriwether; Merton and Scholes were partners. The Federal Reserve Bank of Richmond's history of the fund reports that when it moved into new markets in 1997, ``Some of the partners, most notably Scholes, were uneasy,'' and that Scholes warned the firm had no ``informational advantage'' there.}"
+  ],
+  [
+   1243,
+   "\\cpara{Says LTCM's edge vanished as others learned the trick. The Richmond Fed's history agrees: from 1997 its markets ``became too crowded,'' and its return fell to 17 percent after fees, from about 43 and 41 percent in 1995 and 1996.}"
+  ],
+  [
+   1450,
+   "\\cpara{The figures match those Wikipedia gives, from Lowenstein's history, for the start of 1998: equity of \\$4.7 billion, more than \\$124.5 billion borrowed, and derivatives with a notional value of about \\$1.25 trillion. The post's account ends here and does not describe the collapse.}"
+  ],
+  [
+   1476,
+   "\\clogic{The record gives this more support than the post uses. After Russia's default in August 1998, according to the Richmond Fed's history, ``Meriwether still believed that their trades would pay off if they could simply weather the storm,'' and the partners looked for new capital.}"
+  ],
+  [
+   1739,
+   "\\cfact{What followed: Wikipedia reports that the fund ``lost \\$4.6 billion in less than four months due to a combination of high leverage and exposure to'' the Asian and Russian crises, and that its positions, taken over by a group of banks, ``were eventually liquidated at a small profit to the rescuers.''}"
+  ],
+  [
+   1753,
+   "\\cpara{The thesis, hedged with ``it seems to me'': not turning little mistakes into big ones is much the same art across professions, and one key is to be ready to admit you lost. Both examples are debt-financed bets on markets. ``Romance'' and the other professions get no example.}"
+  ],
+  [
+   2297,
+   "\\clogic{The post gives no way to tell a loss from a setback, and its second case shows why one is needed. LTCM's founder believed its trades would pay off, and on Wikipedia's account the trades did, for the banks that could afford to wait. My inference from that account: what sank the fund was the borrowing, which left it unable to wait, more than a refusal to admit that its bets had failed.}"
+  ]
+ ]
+}
