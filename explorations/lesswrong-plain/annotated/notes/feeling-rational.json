@@ -1,0 +1,76 @@
+{
+ "slug": "feeling-rational",
+ "header": "\\post{Feeling Rational}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/SqF8cHjJv43mvJJzx/feeling-rational}\n",
+ "skeleton_sha": "036494585f226103e71852f7382a15b1ff1b9b84673f780a9abb59ce56da9ac0",
+ "post_sha": "faf3480bc5500e1a7ba1fb8f74fe9e3360ba9fb753098d0cc15c6d79fd8b7f9f",
+ "edits": [
+  {
+   "at": 3259,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   118,
+   "\\cpara{Picks up the end of ``Why Truth?'' (posted five months earlier, on 27 November 2006), which named curiosity the most foundational motive, and states the view the post will answer: that rationality opposes all emotion. The line about a ``theorem of probability theory'' is a joke.}"
+  ],
+  [
+   562,
+   "\\cpara{Suggests, hedged (``I suspect''), that the popular contrast is really one between fast perceptual judgment and slow deliberation, and says that each can be right or wrong. The test in the next paragraph is about beliefs instead.}"
+  ],
+  [
+   1036,
+   "\\cpara{The post's test: an emotion is ``not rational'' if it rests on mistaken beliefs or mistake-producing conduct, and rational if correct beliefs evoke it. It is offered as a label (``I label''), not as a finding. Its stated advantage is that calm stops being the rational default.}"
+  ],
+  [
+   1379,
+   "\\clogic{The quotation is not attributed. It is from the author's own ``Twelve Virtues of Rationality,'' in the passage on the second virtue.}"
+  ],
+  [
+   1613,
+   "\\cpara{Answers ``No'' to whether rationality and feeling are unrelated, with the example of a dream: happiness at dreaming that a dead brother is alive gives way to sadness at the truth, and the sadness is rational.}"
+  ],
+  [
+   1704,
+   "\\clogic{Stated as a general fact, with no evidence. The dream is the easy case, in which the feeling changes as soon as the belief does. Feelings that outlast a change of belief are not discussed, though the last paragraph reports a feeling that persists ``Despite all my philosophy.''}"
+  ],
+  [
+   2048,
+   "\\cpara{Extends the standard from beliefs to every thought that depends on them, and gives the goblin example: believing that a goblin ties your laces is a belief about the world.}"
+  ],
+  [
+   2750,
+   "\\cpara{Grants that anger at the goblin is not only a belief: a calm person would expect to find the same knotted laces, and the feeling should not change the forecast.}"
+  ],
+  [
+   3376,
+   "\\cpara{Says the standard reaches the anger because the anger rests on the belief. It reaches only that part. The previous paragraph granted that anger is ``not just about how-the-world-is,'' and the post does not say what judges the rest, such as whether the anger fits its cause in kind or in size. By the test as written, any feeling that a true belief evokes is rational, however large.}"
+  ],
+  [
+   3703,
+   "\\cpara{Claims that becoming more rational can strengthen feelings as well as weaken them, if people had been denying facts to escape strong feelings. The claim is conditional and hedged (``Sometimes'', ``If so''), and no evidence is given.}"
+  ],
+  [
+   4111,
+   "\\cpara{Turns from argument to the author's history: early doubt about whether strong feeling was allowed, and the same doubt seen in others.}"
+  ],
+  [
+   4775,
+   "\\cfact{A claim about all of cultured society since Socrates, with no source, and overstated. The eighteenth century had a fashion that prized visible feeling: in the novel of sensibility, ``The ability to display feelings was thought to show character and experience'' (Wikipedia, ``Sentimental novel'').}"
+  ],
+  [
+   5067,
+   "\\clogic{Hedged (``I think''). The post names the simpler explanation, the unusual subject, and sets it aside without a reason.}"
+  ],
+  [
+   5081,
+   "\\cpara{The conclusion, ``it is rational to feel,'' follows from the label in the third paragraph: if a feeling is rational when true beliefs evoke it, then feeling is rational whenever the beliefs are true. The paragraph also adds a rule of the author's own, ``That which the truth nourishes should thrive,'' beside Hodgell's.}"
+  ],
+  [
+   5510,
+   "\\cfact{The link goes to the author's essay ``Yehuda Yudkowsky, 1985-2004,'' on the death of the author's younger brother in November 2004.}"
+  ]
+ ]
+}

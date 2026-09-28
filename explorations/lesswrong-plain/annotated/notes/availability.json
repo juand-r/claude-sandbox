@@ -1,0 +1,69 @@
+{
+ "slug": "availability",
+ "header": "\\post{Availability}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/R8cpqD3NA4rZxRdQ4/availability}\n",
+ "skeleton_sha": "202d843f686e2ca3ec7fb9de3f023444ba1864b383c04dae4d32ec1a7b11a41d",
+ "post_sha": "8cf70f0dc7c0616651d8bb86e79d35f3d12f21fb597a0cbb7b5aa7719ab18d5f",
+ "edits": [],
+ "notes": [
+  [
+   110,
+   "\\cpara{Defines the term. The idea and the name come from Tversky and Kahneman, ``Availability: A Heuristic for Judging Frequency and Probability'' (1973).}"
+  ],
+  [
+   268,
+   "\\cpara{Gives the evidence: a 1978 study of how people judge the frequency of causes of death. Both errors the post reports are in it.}"
+  ],
+  [
+   767,
+   "\\cpara{Proposes that murders and accidents are talked about more, and cites a 1979 follow-up that related people's judgments to newspaper coverage.}"
+  ],
+  [
+   1567,
+   "\\cpara{Argues that selective reporting is stronger today than among our ancestors, who knew most things first- or second-hand.}"
+  ],
+  [
+   1872,
+   "\\clogic{A claim about how news travelled in the ancestral environment, with ``usually'' as its only hedge and no source.}"
+  ],
+  [
+   2217,
+   "\\cpara{Gives two examples of selective reporting: Bill Gates, heard of far more often than his share of the population, and the very poor, heard from far less.}"
+  ],
+  [
+   2416,
+   "\\clogic{The post gives Gates's objective frequency, but the error it names is comparing your success to his and feeling worse, not misjudging how common such success is. Availability was defined as a way of judging frequency.}"
+  ],
+  [
+   2660,
+   "\\cpara{Claims, with ``seems'', that availability produces an absurdity bias: events never experienced are ``deemed to have probability zero''. The flood evidence that follows shows people underreacting to a risk, which is weaker than treating it as impossible.}"
+  ],
+  [
+   3477,
+   "\\cfact{Much of this post follows the author's paper ``Cognitive Biases Potentially Affecting Judgment of Global Risks''. Its draft of August 2006 gives these words to Kunreuther et al. (1993), as the post does. The version published in 2008 gives them to Robert Kates (1962), and reads ``upper bound'' for ``upward bound''. I could not reach Kates's report or the 1993 paper to check which is right.}"
+  ],
+  [
+   3491,
+   "\\cpara{Reports, from a 1978 book on environmental hazards, that dams cut the number of floods but raise the average yearly damage, because people take fewer precautions.}"
+  ],
+  [
+   3846,
+   "\\cpara{Generalizes from floods to societies: past small hazards set the perceived upper bound on risk.}"
+  ],
+  [
+   4183,
+   "\\clogic{Stronger than its evidence. The paragraph before reported ``reduced precautions''; here it becomes ``no action'', and one kind of hazard, floods, becomes a rule about societies.}"
+  ],
+  [
+   4382,
+   "\\cpara{Concludes, more modestly than the paragraph before, that memory is ``not always'' a good guide to probability.}"
+  ],
+  [
+   4484,
+   "\\cpara{The source given for the flood quotation; see the note there.}"
+  ],
+  [
+   4656,
+   "\\cpara{The source for the claim about dams. I could not reach the book.}"
+  ]
+ ]
+}

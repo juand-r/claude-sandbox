@@ -1,0 +1,81 @@
+{
+ "slug": "why-truth",
+ "header": "\\post{Why Truth?}{Eliezer Yudkowsky}{2006}{https://www.lesswrong.com/posts/YshRbqZHYFoEMqFAu/why-truth}\n",
+ "skeleton_sha": "51f88b2b337ec6c4eeb1491e9261b04321996d0b8664f46b89ca737f6a1e1bad",
+ "post_sha": "bc02703bebb13398e8b77f9c833ad0ded160120872d8357cad90c8b1c68c76e0",
+ "edits": [],
+ "notes": [
+  [
+   105,
+   "\\cpara{States the question, why rationalists care about truth, and the plan: several answers, each of which shapes the search differently. The post then pairs each motive with its own way of ranking questions.}"
+  ],
+  [
+   442,
+   "\\cpara{The first motive: truth-seeking as noble in itself. It ranks questions by ideals about which truths matter most.}"
+  ],
+  [
+   695,
+   "\\cpara{Says this motive ``tends to'' become moral: a person who feels a duty to look expects others to look too.}"
+  ],
+  [
+   972,
+   "\\cpara{States the objection to the moral motive, hedged (``I tend to be suspicious''): a sense of duty can teach bad habits of thought. The next two paragraphs give an example and a mechanism.}"
+  ],
+  [
+   1259,
+   "\\cpara{The example is a fictional character, and it shows a mistaken idea of what rationality is: constant calm, and more digits than the numbers deserve. It does not show what the previous paragraph claimed, that holding rationality as a duty produces such mistakes. A person could hold the Spock picture with no sense of duty at all.}"
+  ],
+  [
+   1622,
+   "\\cpara{The mechanism: a moral duty takes on the looseness of a custom, and people defend their conduct instead of checking their answers. It is stated in two sentences, without a case.}"
+  ],
+  [
+   1934,
+   "\\cpara{The second motive: truth as a means to a goal, from building an airplane to buying chocolate milk.}"
+  ],
+  [
+   2291,
+   "\\cpara{Says a practical motive ranks questions by how much an answer could change a choice and how much the choice matters. This is the decision-theory idea of the value of information, stated in plain words.}"
+  ],
+  [
+   2613,
+   "\\cpara{Gives the reason for valuing practical truth: it brings feedback. A plane that falls, or a shop with no chocolate milk, shows that some way of thinking failed. Of the three motives, this is the only one the post credits with a test.}"
+  ],
+  [
+   3052,
+   "\\cpara{The third motive: curiosity.}"
+  ],
+  [
+   3159,
+   "\\cpara{Says curiosity ranks questions by how interesting they are, and may prefer a harder problem because it is more fun.}"
+  ],
+  [
+   3519,
+   "\\cpara{Contrasts curiosity with moral duty: both value truth for itself, but they rank questions differently.}"
+  ],
+  [
+   3871,
+   "\\cpara{Weighs curiosity against practical use, and gives practical use the credit for science: curiosity ``may not linger too long on verifying its answers,'' and campfire tales satisfied it as well as the truth did.}"
+  ],
+  [
+   4269,
+   "\\clogic{A claim about the origin of science, given with no source and no example. A related claim, that science won through technology, returns in ``Something to Protect'' (2008); the notes on that post give evidence that bears on it.}"
+  ],
+  [
+   4435,
+   "\\cfact{Loosely worded, and overstated if it covers the Greeks the paragraph has just named. Xenophanes, in the late sixth century BC, complained that ``Homer and Hesiod have attributed to the gods all sorts of things that are matters of reproach and censure among men,'' and noted that each people pictures its gods in its own likeness (fragments B11, B15 and B16, as given in the \\textsc{Stanford Encyclopedia of Philosophy}).}"
+  ],
+  [
+   4449,
+   "\\cpara{Turns to the need for deliberate rules of thinking, ``things that look like norms of rationalist `propriety.'\\,'' Propriety is the word the post used against the moral motive a few paragraphs earlier: people ``indignantly protest that they acted with propriety.'' The post does not say what keeps the new norms from the trouble it described there.}"
+  ],
+  [
+   4903,
+   "\\cpara{The verdict: curiosity is ``most foundational.'' It is offered as the author's own answer (``if you were to ask me''), and the only reason given is ``I also just really want to know.'' The post's own arguments point elsewhere: curiosity may not check its answers, campfire tales satisfied it ``just as well,'' and the practical motive is the one given a test and the credit for science. ``Foundational'' is not defined.}"
+  ],
+  [
+   5326,
+   "\\cpara{A joke: a Spock-style line with four significant digits, set against how often the ship survives.}"
+  ]
+ ]
+}

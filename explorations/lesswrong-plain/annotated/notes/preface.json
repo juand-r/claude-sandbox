@@ -1,0 +1,85 @@
+{
+ "slug": "preface",
+ "header": "\\post{Preface}{Eliezer Yudkowsky}{2015}{https://www.lesswrong.com/posts/uXn3LyA8eNqpvdoZw/preface}\n",
+ "skeleton_sha": "54cb542ae695a23b8e149e0930469efe20a0b11837e53e3caf9fabf64f86541d",
+ "post_sha": "f6554f9f3b2570759befe85f40d03c4c402a07da55af979dbc4719606b233b9b",
+ "edits": [],
+ "notes": [
+  [
+   100,
+   "\\cpara{Opens by saying the author now sees many mistakes in the posts, and that not seeing any would mean the author had learned nothing since 2009.}"
+  ],
+  [
+   667,
+   "\\cpara{Names a mistake: the posts aimed at big, difficult problems, with impressive-sounding, abstract examples, rather than at readers' everyday lives.}"
+  ],
+  [
+   973,
+   "\\cpara{Ranks that mistake second and names the largest: not seeing that the hard part of learning this way of thinking is practice, not theory.}"
+  ],
+  [
+   1368,
+   "\\cpara{Grants that big problems can be important, but says skills need practice, which is harder on distant problems. The parenthesis assigns the repair of this mistake about practice to the Center for Applied Rationality, outside the book, and does not say what that repair is.}"
+  ],
+  [
+   1726,
+   "\\cpara{Names a third mistake in one sentence, with no example: too much on rational belief, too little on rational action.}"
+  ],
+  [
+   1840,
+   "\\cpara{Names a fourth mistake: the posts were badly organized and hard to read in sequence.}"
+  ],
+  [
+   2082,
+   "\\cpara{The only one of the five mistakes that the book corrects. Bensinger reordered the posts ``without trying to rewrite all the actual material.'' The first three mistakes concern what the posts teach and how, and the preface does not say that the reordering, or the ``bit'' of rewriting, addressed any of them.}"
+  ],
+  [
+   2324,
+   "\\cpara{Names the fifth mistake: open contempt for ideas the author thought stupid. ``Bulverism'' is C. S. Lewis's name for explaining why people hold a view before showing that the view is wrong; the gloss here is close to Lewis's. The author then gives the 2009 reason for the contempt and says it still holds: courtesy is taken ``by many people on some level'' to mean that a belief costs them no status.}"
+  ],
+  [
+   3188,
+   "\\clogic{Offered as the author's view (``I thought, and still do think''), with no example or evidence that mockery changes anyone's belief.}"
+  ],
+  [
+   3202,
+   "\\cpara{Says the author would now write more courteously, hedged with ``I think,'' and weighs the discourtesy's use against the risk of communities that mock outsiders. That the discourtesy helped some readers is offered with ``I think'' and no evidence.}"
+  ],
+  [
+   3522,
+   "\\cpara{Says the readership has been ``amazingly good'' about not using the author's rhetoric to bully others, and says Scott Alexander may deserve part of the credit for the community's health.}"
+  ],
+  [
+   3937,
+   "\\cpara{Turns from the mistakes to the goals they imply.}"
+  ],
+  [
+   4076,
+   "\\cpara{Introduces the goal: ``a certain valuable way of thinking'' that schools do not teach and that some people absorb from books such as \\textsc{Surely You're Joking, Mr. Feynman} or from a great teacher. The claim that it ``is not taught systematically at all'' is given without support.}"
+  ],
+  [
+   4414,
+   "\\cpara{Ties the way of thinking to science and the experimental method: looking at the world instead of making things up, and saying ``Oops'' when experiments go against a theory.}"
+  ],
+  [
+   4722,
+   "\\cpara{Extends it to daily life. Outside the laboratory it is described only as being able to say ``Oops'' and give up on what is not working; the rest is left to the book. The reader is told that somewhere in their life they are like the people who keep ``shooting yourself in the foot.''}"
+  ],
+  [
+   5433,
+   "\\cpara{The case for reading the book: the posts ``appeared to help a surprising number of people a surprising amount.'' The claim is hedged, and no number, example or source is given.}"
+  ],
+  [
+   5636,
+   "\\cpara{Explains the help: so little of this is taught that even ``a massive brain-dump'' of philosophy and science can be ``surprisingly good for you.''}"
+  ],
+  [
+   6067,
+   "\\cpara{Says twice that ``it is all, in the end, one thing'': the laws governing distant problems and daily life are the same. No argument is given. The claim is the paragraph's answer to the admission that the author ``picked all the wrong examples.''}"
+  ],
+  [
+   6493,
+   "\\cpara{Ends on a modest verdict, hedged with ``appears'': the book is ``better than nothing.''}"
+  ]
+ ]
+}

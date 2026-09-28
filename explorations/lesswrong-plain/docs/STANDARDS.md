@@ -28,8 +28,11 @@ For a post with slug `<slug>` (the file name of `data/originals/<slug>.md`):
 
 Models to imitate (read them before writing): annotated and honest versions of
 `the-lens-that-sees-its-flaws`, `use-the-try-harder-luke`, `the-bottom-line`,
-`positive-bias-look-into-the-dark`, `something-to-protect`. These are the corrected
-versions after four review rounds.
+`positive-bias-look-into-the-dark`, `something-to-protect`, and from the pilot
+`planning-fallacy`, `scope-insensitivity`, `burdensome-details`. Use the models for format,
+density and voice. Where a model's tone is harsher than section 2 allows (some of the
+original 52 still say "mind-reading" or "only decoration"), section 2 wins; the original
+52 will be brought in line in the whole-book pass.
 
 ## 2. The critical standard
 
@@ -66,7 +69,14 @@ if any of these replies is correct:
 6. "You read my term against its meaning here." Read technical and coined terms in the
    sense the post uses ("novel prediction" is a term of art; "can't help" means "gives
    no verdict in time", not "gives a wrong verdict").
-7. "That is your guess about my motives." No readings of motive, purpose or effect on the
+7. "You quoted my other post out of context." When a note says another post hedged,
+   contradicted or conceded something, read what the quoted words refer to in that post.
+   (Pilot case: "does not prove" in one post referred to a single correlation, and the same
+   post called the finding "nearly absolutely nailed down".)
+8. "I meant the real figure." A claim introduced by "actually" or "in fact" is about the
+   world, not only about the study just cited; check it against current data before
+   calling it loose.
+9. "That is your guess about my motives." No readings of motive, purpose or effect on the
    reader ("exists to flatter", "the reader is invited to feel superior", "the rule is
    for everyone else") unless the text itself supports it, and then marked "My reading:"
    or "I infer". When in doubt, cut it. Jabs at readers or the community are cut.
@@ -87,8 +97,14 @@ check whether the difference changes the meaning; a dropped plural is not worth 
 A note is removed when it (1) takes a joke or figure of speech literally; (2) nitpicks
 wording, names, typos or an editor's slip with no consequence for the argument; (3) reads
 motives with no textual basis; (4) faults the post for what any short essay does;
-(5) rests on a contrived or speculative objection; (6) repeats a point already made in
-another note or in the Response.
+(5) rests on a contrived or speculative objection, including an alternative explanation
+that has no source; (6) repeats a point already made in another note or in the Response;
+(7) faults a preface or introduction for doing what prefaces do (thanking or praising
+readers, stating the book's aims without evidence).
+
+Numbers: recompute every number a note relies on, but give a number its own note only if
+the error changes the argument, or the post's figure is off by more than about a fifth and
+the reader would be misled. Smaller discrepancies go in the report.
 
 ### 2.5 Consistency
 
@@ -98,10 +114,14 @@ another note or in the Response.
 - Between the editions: the annotated notes, the Response and the honest n.b. notes must
   agree on every fact and every judgment. If one is corrected, correct the others.
 - Across posts: a statement about another post ("two days later the author wrote ...")
-  must match that post's original in `data/originals/`, and must agree with what our
+  must match that post's original in `data/originals/` (fetch it with
+  `src/fetch.py post <id>` if it is outside the collection), and must agree with what our
   notes on that post say. A recurring criticism (for example, many-worlds held on
-  simplicity; Popper uncredited) is made in full once, where it matters most, and
-  elsewhere at most briefly with a pointer.
+  simplicity; Popper uncredited) is made in full once, at its first occurrence in book
+  order, and elsewhere at most briefly with a pointer back.
+- Text version: annotate the text as LessWrong publishes it now. Do not use earlier
+  revisions as grounds for criticism. If the printed text is a later revision that refers
+  to things written after the post's date, one neutral note may say so.
 - Dates: use the `Posted:` line of `data/originals/<slug>.md`. Do not compute "two
   days later" from memory.
 
@@ -128,6 +148,13 @@ pronouns may keep them.
    must be right, and must be checkable from a cited source or a shown derivation. If
    you are not sure, do not assert it. Say what is unsupported instead.
 5. Counts ("three examples", "the fourth paragraph") are counted, not estimated.
+6. Tools. WebFetch passes a page through a summarizing model, so its "quotations" are not
+   verbatim: use it to find a source, then get exact words with curl (plus `pdftotext` for
+   PDFs, `?action=raw` for Wikipedia). Search results that repeat the post (LessWrong
+   mirrors, readthesequences.com) are not confirmation. Save fetched source texts in
+   `data/sources/` (not committed) so later agents can reuse them; list the file in your report.
+7. Figures in the post that cannot be checked (paywalled source): list them in the report.
+   Mention one in a note only if the argument depends on it and there is reason to doubt it.
 
 ## 4. The annotated edition
 
@@ -136,7 +163,9 @@ words and facts). In short:
 
 - Start from the skeleton made by `src/md2tex.py`; copy it to `annotated/posts/<slug>.tex`.
   Insert notes only. Change no character of the post text.
-- `\cpara{...}` at the start of every substantial paragraph (the audit counts them).
+- `\cpara{...}` at the start of every substantial paragraph (the audit counts them). Citation-
+  only footnotes and one-line questions get a one-line description or nothing.
+- Prefaces and introductions get the same standard: judge what they claim, not the genre.
   Sentence-level notes: `\clogic{}`, `\cfact{}`, `\cstyle{}`, `\ccut{}`, placed right
   after the words they discuss. `\cauthor{}` holds the post's own footnotes; do not
   touch it.
@@ -163,7 +192,9 @@ Rules: `docs/STYLE.md` (all of it). In short:
   written"). A sentence that reads as an outsider judging the post goes in an n.b.
 - Quotes are the author's exact words, checked. Keep the post's key terms.
 - No bare verdicts ("This is sensible"). Name what you refer to (titles, names).
-- Length: about 150 to 500 words; up to about 900 for very long posts.
+- Length: about 150 to 500 words; up to about 900 for very long posts. (This replaces the
+  "300 to 450" in STYLE.md.)
+- In n.b. notes, name the post's actual author (Yudkowsky, Bensinger), or say "the author".
 - Every n.b. must agree with the annotated notes and Response (section 2.5), and must
   pass the fair-defender test.
 

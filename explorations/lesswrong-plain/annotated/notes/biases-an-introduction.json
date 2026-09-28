@@ -1,0 +1,120 @@
+{
+ "slug": "biases-an-introduction",
+ "header": "\\post{Biases: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/ptxnyfLWqRZ98wnYi/biases-an-introduction}\n",
+ "skeleton_sha": "c7f9838f29619b9658dddd84c6f6658d570e8b0713d84b6d34f6bf9c59c39aef",
+ "post_sha": "06c9970259ef300e0a8928fcfa23a04f1351ffdcfa0a313ee3eb66b35e969d61",
+ "edits": [
+  {
+   "at": 5078,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   127,
+   "\\cpara{Sets up the example: an urn of seventy white and thirty red balls, from which you draw ten.}"
+  ],
+  [
+   260,
+   "\\cpara{Shows random error: a sample of ten may give the right count or, by chance, a wrong one.}"
+  ],
+  [
+   506,
+   "\\cpara{Says random error is right on average and shrinks as you learn more. Both are true of a random sample.}"
+  ],
+  [
+   726,
+   "\\cpara{Introduces bias with one change: the heavier white balls sink, so samples lean toward red.}"
+  ],
+  [
+   903,
+   "\\cpara{Defines statistical bias and draws the contrast with random error: more data may not help.}"
+  ],
+  [
+   1133,
+   "\\cpara{Draws the lesson: to be sure that learning more helps, we must find and correct the biases in our data.}"
+  ],
+  [
+   1400,
+   "\\cpara{Defines cognitive bias by analogy: a systematic error in how we think, as opposed to a random error or plain ignorance. The parenthesis widens it to thinking that ``less reliably serves our other goals.''}"
+  ],
+  [
+   1843,
+   "\\cpara{Illustrates with the urn: wanting the red balls to cure your brother leads you to overestimate how many there are.}"
+  ],
+  [
+   2111,
+   "\\cpara{Lists what the two kinds of bias share, and says debiasing is harder when the faulty instrument is yourself.}"
+  ],
+  [
+   2412,
+   "\\cpara{Argues that biases are the place to start, since trusting anything depends on trusting your brain.}"
+  ],
+  [
+   2573,
+   "\\cpara{Opens a version of Tversky and Kahneman's ``Steve'' problem (\\textsc{Science}, 1974), cut down to one trait. Their Steve is ``very shy and withdrawn,'' with a longer description, and their list of occupations includes ``salesman'' and ``librarian.''}"
+  ],
+  [
+   2778,
+   "\\cpara{Gives the answer most people give and the base rate that makes it a mistake: salespeople are seventy-five times as common as librarians in the United States. The figure is sourced to a psychology textbook, which I could not check.}"
+  ],
+  [
+   3022,
+   "\\cpara{Names the error, base rate neglect, and adds a second bias, the sunk cost fallacy.}"
+  ],
+  [
+   3448,
+   "\\cpara{States the difficulty the book must meet: knowing about a bias neither protects you from it nor lets you notice it in action.}"
+  ],
+  [
+   3599,
+   "\\cpara{Reports Hansen et al. (2014) accurately. Participants were led to use a strategy they rated as biasing (seeing the painter's name before judging), were biased by it, and afterward ``claimed more objectivity than they had prior to using the strategy.''}"
+  ],
+  [
+   4094,
+   "\\cpara{Adds the bias blind spot: people see bias in others more readily than in themselves, and read the absence of ``biased-feeling thoughts'' as the absence of bias. I did not check the two studies cited.}"
+  ],
+  [
+   4369,
+   "\\cpara{The turn of the argument: biases can be overcome, though ``It's just not trivial.'' The only evidence given is one sentence, without a source, about thinking of probabilities as frequencies.}"
+  ],
+  [
+   4599,
+   "\\cpara{States the book's method and its support. The support is a comparison, made conditional (``To the extent this volume does its job''), with Serfas's finding that accounting courses reduced sunk-cost bias and work experience did not. Accounting courses are formal instruction in a subject; the book is a collection of blog essays. The introduction gives no evidence that reading them has the effect the courses had.}"
+  ],
+  [
+   4758,
+   "\\clogic{This is an approach through understanding. It sits uneasily with the Preface, a few pages earlier, which calls Yudkowsky's largest mistake not seeing that ``the big problem in learning this valuable way of thinking was figuring out how to practice it, not knowing the theory.''}"
+  ],
+  [
+   5079,
+   "\\cpara{Quotes Serfas: expertise needs an understanding of a bias's rationale, the ability ``to spot it in the particular setting,'' and ``the appropriate tools at hand to counteract the bias.'' The book's stated approach, understanding, is the first of these three. I could not check the quotation against Serfas's book.}"
+  ],
+  [
+   5743,
+   "\\cpara{States the goal: rationality ``expertise,'' meaning a deep understanding of human bias and self-deception.}"
+  ],
+  [
+   6075,
+   "\\cpara{Gives the book's origin: Yudkowsky's essays of 2006 to 2009, grouped into sequences and then into six books.}"
+  ],
+  [
+   6607,
+   "\\cpara{Describes the style as personal and irreverent, and links it to Yudkowsky's \\textsc{Harry Potter and the Methods of Rationality}.}"
+  ],
+  [
+   7291,
+   "\\cpara{Credits the book's organizing idea to Korzybski. The quotation matches the one Wikipedia gives from \\textsc{Science and Sanity} (1933), p.~58.}"
+  ],
+  [
+   7615,
+   "\\cpara{Names the book's four sequences and its closing dialogue, ``The Simple Truth.''}"
+  ],
+  [
+   8343,
+   "\\cpara{Ends with Dan Ariely's phrase ``predictably irrational'' and the hope that understanding our errors can help us build a better future.}"
+  ]
+ ]
+}

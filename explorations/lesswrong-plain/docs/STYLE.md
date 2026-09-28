@@ -93,7 +93,7 @@ Each pass looks for one kind of error only.
    sentence it had to reread. I verify each item before acting on it.
 
 Model sections: the three samples as of commit 7753c93, especially The Lens That Sees
-Its Flaws. Length about 300 to 450 words; long posts may run longer.
+Its Flaws. Length: see docs/STANDARDS.md section 5 (about 150 to 500 words).
 
 # Rules of thumb for LessWrong, Honestly (from the user's review, September 2026)
 
@@ -112,7 +112,7 @@ These came out of one round of review. Apply them by hand, sentence by sentence.
 
 Read each section against its original and check:
 
-1. Voices. Every sentence outside an n.b. is something the author says, or an ironic line the author could plausibly say about himself. A sentence that reads as an outsider describing or judging the post ("X had not said...", "the post leaves out...") belongs in an n.b.
+1. Voices. Every sentence outside an n.b. is something the author says, or an ironic line the author could plausibly say about the post. A sentence that reads as an outsider describing or judging the post ("X had not said...", "the post leaves out...") belongs in an n.b.
 2. Placement. Each n.b. sits next to what it comments on. No n.b. / author line / n.b. sequences that depend on each other; merge them into one note.
 3. Accuracy. Every paraphrase matches the original; every fact in an n.b. is checked.
 4. Clarity. Each note says one clear thing a reader can follow without the original.

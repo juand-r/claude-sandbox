@@ -1,0 +1,120 @@
+{
+ "slug": "planning-fallacy",
+ "header": "\\post{Planning Fallacy}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/CPm5LTwHrvBJCa9h5/planning-fallacy}\n",
+ "skeleton_sha": "ada57bc662502fac5ac3c825761a03f51401cd9b29ef617633b49b62ca97d5f2",
+ "post_sha": "cd41c3eaf085403587c01ba32d2c9a8162e83618898e73725f51060228cc298a",
+ "edits": [
+  {
+   "at": 5602,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   118,
+   "\\cpara{Opens with the first of three large overruns. The 16-month delay matches the US General Accounting Office's 1995 report. The cost overrun depends on which estimate is taken as the baseline, as the post's footnote allows: the GAO puts construction costs ``close to \\$1 billion over the original estimate,'' plus about \\$300 million of interest caused by the delay.}"
+  ],
+  [
+   222,
+   "\\cpara{The second overrun, given without a source. The figures I could find (Wikipedia's article on the aircraft, citing a House of Commons committee) are for the United Kingdom's share alone and are in pounds: an estimate of \\pounds7 billion in 1985, \\pounds20 billion by 2003, and an in-service date ``54 months late.'' I could not reach the committee's report.}"
+  ],
+  [
+   394,
+   "\\cpara{The third overrun. The figures match the paper cited in the post's footnote 2 (Buehler, Griffin and Ross, 1994), which takes them from Hall (1980).}"
+  ],
+  [
+   602,
+   "\\cpara{The post grants that its three opening cases are ``very probably'' products of selective attention or bad incentives. So the first three paragraphs cannot show the bias on their own: the case for a bias in individual planners rests on the student studies that follow. For Denver the GAO names yet another cause: ``Most of the cost increases were due to changes in the scope of the airport.''}"
+  ],
+  [
+   884,
+   "\\cpara{Describes the study of students' 50\\%, 75\\% and 99\\% forecasts, cited to a 1995 review by the same authors, and asks the reader to guess the results.}"
+  ],
+  [
+   1625,
+   "\\cpara{Quotes the researchers on the 99\\% result: fewer than half the students finished by a date they felt ``virtually certain'' of meeting.}"
+  ],
+  [
+   1942,
+   "\\cpara{Names the effect, with a joke. The name is older than these studies: the 1994 paper says the tendency ``has been termed the planning fallacy (Kahneman \\& Tversky, 1979).''}"
+  ],
+  [
+   2087,
+   "\\cpara{Reports a finding of Newby-Clark and colleagues (2000): ``realistic'' forecasts and ``best case'' forecasts came out the same. I could read only the paper's abstract. It says that plans ``normally resemble best-case scenarios,'' but it does not give this comparison.}"
+  ],
+  [
+   2480,
+   "\\cpara{Interprets the finding: a ``realistic'' scenario leaves out surprises, so it is the best case under another name.}"
+  ],
+  [
+   2699,
+   "\\cpara{Given without a source. The nearest measurement I found is in the 1994 paper. Honors students were asked for a completion date ``if everything went as poorly as it possibly could''; ``fewer than half of the respondents (48.7\\%)'' finished by it, and the average shortfall ``was not significant.'' That fits the sentence narrowly, for one class of 33 students.}"
+  ],
+  [
+   2798,
+   "\\cpara{Introduces the fix, the ``outside view,'' and limits it to personal and small organizational planning. The limit leaves out the kind of project the post opened with.}"
+  ],
+  [
+   3128,
+   "\\cpara{Describes the inside view as ordinary planning: building a scenario from the features of the task. The 1994 paper's think-aloud data agree; students ``focused primarily on future scenarios'' when they predicted.}"
+  ],
+  [
+   3382,
+   "\\cpara{Says the inside view leaves out unexpected delays, and that even picturing the worst case does not correct for them.}"
+  ],
+  [
+   3799,
+   "\\clogic{The nearest thing shown before is the 99\\% forecasts; the one sentence about the worst case itself had no source. Direct support is in the paper of footnote 5, whose abstract reports that ``Pessimistic scenarios did not affect predictions or accuracy.'' The post reports a different finding from that paper and leaves this one out.}"
+  ],
+  [
+   3853,
+   "\\cpara{Defines the outside view, and names the reason people resist it: the inside view has more detail, so it feels more careful.}"
+  ],
+  [
+   4273,
+   "\\cpara{Gives the Christmas-shopping experiment. I could not reach the chapter the post cites. A review by Roy, Christenfeld and McKenzie (2005) reports the same direction for this study, ``with underestimation greatest for participants who formed detailed future plans.''}"
+  ],
+  [
+   4828,
+   "\\cpara{Reports a cross-cultural study: Japanese students' past record predicted when they would finish, and their plans did not. That shows the record was informative, not that consulting it improves a forecast. I could not reach the source.}"
+  ],
+  [
+   5198,
+   "\\cpara{Offered with ``often'' and no source. The one test of outside forecasters in the 1994 paper (Study 5) used fellow students, not experienced outsiders. They were less optimistic than the people doing the task, but ``no more accurate than the actors' predictions''; they erred in the other direction. The post's sources, as far as I could check them, do not support ``much more accurate.''}"
+  ],
+  [
+   5430,
+   "\\cpara{Restates the fix. The 1994 paper tested something close to it (Study 4). Students who first recalled when they had finished similar assignments still predicted optimistically: ``leading people to remember past experiences did not, in itself, reduce the optimistic bias.'' The bias disappeared only for students who were also asked to relate those experiences to the task at hand. So the study supports the fix when people are made to connect the past to the present case, not when they only ask.}"
+  ],
+  [
+   5809,
+   "\\cpara{The conclusion, without a hedge. In the 1994 paper the outside information corrected the average lean of the forecasts, not their distance from the truth. In Study 4, ``Predictions were no more accurate in the recall-relevant condition than in the other conditions.'' An outside-view estimate is a better starting guess; ``This answer is true'' claims more than the evidence gives.}"
+  ],
+  [
+   6018,
+   "\\cpara{Notes that other figures for Denver's overrun exist.}"
+  ],
+  [
+   6072,
+   "\\cpara{Cites the 1994 paper, the source of the Sydney figures.}"
+  ],
+  [
+   6310,
+   "\\cpara{Cites the 1995 review, the source of the 50\\%, 75\\% and 99\\% study.}"
+  ],
+  [
+   6499,
+   "\\cpara{Cites the 2002 chapter, the source of the quotation.}"
+  ],
+  [
+   6840,
+   "\\cpara{Cites Newby-Clark and colleagues (2000).}"
+  ],
+  [
+   7081,
+   "\\cpara{Cites the 2002 chapter again, for the Christmas-shopping study.}"
+  ]
+ ]
+}

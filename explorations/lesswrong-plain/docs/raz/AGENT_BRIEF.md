@@ -14,8 +14,9 @@ Use `.venv/bin/python` for every script.
    Its section 1 is superseded by STANDARDS.md.
 4. The model posts, all three files each:
    `annotated/posts/<m>.tex`, `annotated/afterwords/<m>.tex`, `honest/sections/<m>.tex`
-   for m in: the-lens-that-sees-its-flaws, use-the-try-harder-luke, the-bottom-line,
-   something-to-protect. Note their density: a `\cpara` on every substantial paragraph,
+   for every model listed in STANDARDS section 1 (five from the original edition, three
+   from the pilot). Where a model is harsher than STANDARDS section 2, STANDARDS wins.
+   Note their density: a `\cpara` on every substantial paragraph,
    a few sentence notes, a Response of 250 to 450 words, an honest section of 150 to 500
    words with a handful of n.b. notes.
 5. Your posts' originals: `data/originals/<slug>.md`. Read each post twice before writing.
@@ -60,6 +61,16 @@ Use `.venv/bin/python` for every script.
 - No em dashes (—, ---) and no italics in your own text; book titles in `\textsc{}`.
   Plain English, short sentences. No "notably", "importantly", "clearly".
 - Pronouns: never he/his/she/her for a post's author.
+
+## Lessons from the pilot
+
+- Check an "actually" claim against real figures, not only against the cited study.
+- An alternative explanation you cannot source is not a note.
+- When you quote another post's hedge, read what the hedge was about.
+- WebFetch is not verbatim; use curl for exact words. Save sources in `data/sources/`.
+- Math in notes: the preamble has amsmath, but prefer `\mbox{}` to `\text{}`.
+- Your scratch files go in `data/sources/` or your own temporary directory, not the
+  main session's scratchpad.
 
 ## Do not
 

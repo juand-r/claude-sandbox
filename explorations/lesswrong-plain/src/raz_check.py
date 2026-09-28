@@ -13,6 +13,7 @@ It never edits anything. Exit status 1 if the verbatim check fails or a file is 
 """
 
 import re
+import signal
 import subprocess
 import sys
 import unicodedata
@@ -86,7 +87,8 @@ def quotes_not_in_post(ours: str, original: str) -> list[str]:
 
 def flags(label: str, text: str) -> list[str]:
     out = []
-    for m in re.finditer(RESERVED, text, re.I):
+    unquoted = re.sub(r"``.*?''", lambda m: " " * len(m.group(0)), text, flags=re.S)
+    for m in re.finditer(RESERVED, unquoted, re.I):
         out.append(f"reserved '{m.group(0)}': ...{text[max(0, m.start()-60):m.end()+40]}...")
     for m in re.finditer(PRONOUNS, text, re.I):
         out.append(f"pronoun '{m.group(0)}': ...{text[max(0, m.start()-60):m.end()+30]}...")
@@ -137,6 +139,7 @@ def check(slug: str) -> bool:
 
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)  # allow piping into head
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     results = [check(s) for s in sys.argv[1:]]

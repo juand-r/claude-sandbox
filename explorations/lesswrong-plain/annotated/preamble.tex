@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
+\usepackage{amsmath}
 \usepackage{mathpazo}
 \usepackage[left=16mm,right=16mm,top=20mm,bottom=22mm]{geometry}
 \usepackage{paracol}
@@ -102,6 +103,14 @@
 \DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
 % A stray private-use glyph inside a formula in the Bayes essay; it carries no meaning.
 \DeclareUnicodeCharacter{10FC06}{}
+% Superscript digits used as footnote markers in some originals (¹²³ are in Latin-1 already).
+\DeclareUnicodeCharacter{2070}{\textsuperscript{0}}
+\DeclareUnicodeCharacter{2074}{\textsuperscript{4}}
+\DeclareUnicodeCharacter{2075}{\textsuperscript{5}}
+\DeclareUnicodeCharacter{2076}{\textsuperscript{6}}
+\DeclareUnicodeCharacter{2077}{\textsuperscript{7}}
+\DeclareUnicodeCharacter{2078}{\textsuperscript{8}}
+\DeclareUnicodeCharacter{2079}{\textsuperscript{9}}
 
 % Book and sequence headings (Rationality: A-Z has six books of sequences), with contents
 % entries: book = part, sequence = section, post = subsection.

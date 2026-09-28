@@ -1,0 +1,57 @@
+{
+ "slug": "what-s-a-bias",
+ "header": "\\post{What's a Bias?}{Eliezer Yudkowsky}{2006}{https://www.lesswrong.com/posts/jnZbHi873v9vcpGpZ/what-s-a-bias}\n",
+ "skeleton_sha": "524b3ce88e574d9d7f0baee5a11f18178a1a55c4c1db6da97939e75723e7035a",
+ "post_sha": "651ecbf092d56c7d90d193a8b8cf0ffe4b06ba9ecbe319d893b39a4ef19b7f01",
+ "edits": [],
+ "notes": [
+  [
+   113,
+   "\\cpara{Opens with availability and scope insensitivity as examples of cognitive bias. The text printed here is a later revision of the 2006 post (LessWrong's revision history dates it to 2019), which is why it can refer to ``Scope Insensitivity'' and ``Availability'', written in 2007.}"
+  ],
+  [
+   390,
+   "\\cpara{Defines cognitive biases as obstacles to truth that come from ``the shape of our own mental machinery'', not from costly information or limited computing power, and suggests three ways that could happen.}"
+  ],
+  [
+   1249,
+   "\\clogic{The line between the two causes is not drawn. A shortcut such as availability is used because a full calculation costs too much, yet its errors count as biases, while errors ``produced \\ldots\\ by limited computing power'' do not. The post does not say how to tell them apart.}"
+  ],
+  [
+   1263,
+   "\\cpara{Adds that we call something a bias once someone has identified the problem ``verbally and concretely'', and separates this sense from the everyday ``that person is biased''.}"
+  ],
+  [
+   1615,
+   "\\cpara{Separates biases from ``mistakes'', errors of learned content, which it says are much easier to correct once noticed. No evidence is given for ``much easier''.}"
+  ],
+  [
+   1748,
+   "\\cfact{``In cognitive science'' presents the distinction as the field's. No source is given.}"
+  ],
+  [
+   1994,
+   "\\cpara{Separates biases from errors caused by brain damage or by absorbed culture: biases come from machinery that is ``humanly universal''.}"
+  ],
+  [
+   2190,
+   "\\cpara{Illustrates the definitions with Plato. His ignorance of relativity is not a bias. A belief in philosopher-kings would be one if it came from a universal instinct for self-promotion, and not from his father's teaching or from sniffing glue.}"
+  ],
+  [
+   2804,
+   "\\clogic{The test sorts one belief by its cause, and the post gives no way to find the cause, for Plato or for anyone else. The example shows what the definition means, not how it could be applied. The same holds for ``humanly universal'' in the paragraph before: the post does not say how universality would be established.}"
+  ],
+  [
+   2818,
+   "\\cpara{Says the project does not depend on the term: if ``cognitive bias'' proves unhelpful, drop it. This comes after five paragraphs on the definition.}"
+  ],
+  [
+   3096,
+   "\\cpara{Rejects a duty to ``reduce bias'' for its own sake: a bias matters because it stands in the way of truth. The Feynman aside turns the post's own phrase, ``bad and evil and Just Not Done'', on the habit it describes, as a joke.}"
+  ],
+  [
+   3647,
+   "\\cpara{Closes with the purpose: we seek truth because we need the knowledge and are curious, and we should overcome whatever blocks it, whatever we call it.}"
+  ]
+ ]
+}

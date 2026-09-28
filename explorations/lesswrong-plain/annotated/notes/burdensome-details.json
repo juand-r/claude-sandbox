@@ -1,0 +1,101 @@
+{
+ "slug": "burdensome-details",
+ "header": "\\post{Burdensome Details}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Yq6aA4M3JKWaQepPJ/burdensome-details}\n",
+ "skeleton_sha": "5441d6f89395b0757b9168f83e00408f8c3d32b688b242c9e45e4ab9d6cee933",
+ "post_sha": "08d3323908ed8fe12f14e7aab3f081e9a7da21b355928aea54fe860aa689f37b",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Pooh-Bah's line in \\textsc{The Mikado}, said of the made-up details of an execution that never took place. Tversky and Kahneman quote the same line in the 1983 paper the post cites (p.~308).}"
+  ],
+  [
+   348,
+   "\\cpara{Defines the conjunction fallacy and gives the Reagan example. The rule stated, that a conjunction is never likelier than either part, is correct.}"
+  ],
+  [
+   860,
+   "\\cpara{Gives the explanation: people judge by representativeness, and an added detail can make an outcome seem more typical, so the two claims ``average out''.}"
+  ],
+  [
+   1598,
+   "\\cpara{States the moral. It is Tversky and Kahneman's own conclusion about scenarios, in the paper the post cites: added details ``can only lower probability'' (1983, p.~308).}"
+  ],
+  [
+   1741,
+   "\\cpara{Names, ``hypothetically speaking'', where the fallacy should show up: futurists' detailed histories and bundles of unsupported claims.}"
+  ],
+  [
+   2011,
+   "\\cpara{Says that correcting yourself on a direct comparison is a patch for one problem, not a general fix.}"
+  ],
+  [
+   2268,
+   "\\cpara{Recalls the 1982 experiment with professional forecasters, in which each group saw only one statement, and asks what they could have done.}"
+  ],
+  [
+   3007,
+   "\\cpara{Repeats, in new words, the point made two paragraphs earlier (``slapping a band-aid on the problem, not fixing it in general'').}"
+  ],
+  [
+   3135,
+   "\\cpara{Answers, with ``It seems to me'': the forecasters would need to notice the word ``and'', recoil from it, and cut their estimate by a factor of four or more.}"
+  ],
+  [
+   3903,
+   "\\cpara{Adds a second remedy, for the other group: think of the many reasons the plain event could happen. With this the post covers both sides of the comparison, since the group that saw no ``and'' could have raised its estimate.}"
+  ],
+  [
+   4228,
+   "\\cpara{Applies the remedy to the Reagan subjects: add the improbabilities, measured in bits, instead of averaging them.}"
+  ],
+  [
+   4526,
+   "\\clogic{Loosely stated. Adding the two numbers gives the absurdity of both claims only if they are independent. In general $P(A \\mbox{ and } B) = P(A) \\times P(B \\mid A)$, so the second term must be the absurdity of B given A. In a causal story, where one detail makes the next likelier, adding the details' separate absurdities overstates the penalty.}"
+  ],
+  [
+   4889,
+   "\\cpara{Turns to the dice experiment, where 65 percent chose a sequence dominated by a shorter one it contains. It sets aside noticing the inclusion as a patch, and exact calculation as not always possible.}"
+  ],
+  [
+   5601,
+   "\\cpara{Contrasts the losing thought (``highest proportion of green to red'') with the winning one (``Sequence 1 is short!'').}"
+  ],
+  [
+   5855,
+   "\\clogic{Shortness decides this case only because sequence 2 contains sequence 1. Between sequences that do not contain each other it can mislead. With this die, GGGGGG has probability $(2/3)^6 \\approx 0.088$ at a given position and RRRRR has $(1/3)^5 \\approx 0.0041$: the longer one is about 21 times likelier.}"
+  ],
+  [
+   5869,
+   "\\cpara{States the general remedy, the post's answer to its own question: feel every added detail as a burden. No evidence is given that people who feel details this way make fewer errors.}"
+  ],
+  [
+   6042,
+   "\\cpara{An anecdote: the author persuades a listener by comparing ``universes replicate for any reason'' with a longer chain of claims.}"
+  ],
+  [
+   6726,
+   "\\cpara{Draws the lesson: support for one claim in a package is not support for the package.}"
+  ],
+  [
+   7201,
+   "\\cpara{Tells the reader to ask of each detail ``How do we know this detail?'', with a hypothetical futurist scenario about China as the example.}"
+  ],
+  [
+   7788,
+   "\\cpara{Quotes, as scripture, two sentences from the author's own ``Twelve Virtues of Rationality'' (2006), from the seventh virtue, simplicity. The post does not say whose words they are.}"
+  ],
+  [
+   7934,
+   "\\cpara{The source for the Reagan experiment. I could not reach it, so the 68\\% figure is unchecked.}"
+  ],
+  [
+   8189,
+   "\\cpara{The sources for the representativeness explanation.}"
+  ],
+  [
+   8696,
+   "\\cpara{The source for the forecasting experiment.}"
+  ]
+ ]
+}

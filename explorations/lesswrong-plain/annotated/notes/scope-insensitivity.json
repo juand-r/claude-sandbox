@@ -1,0 +1,57 @@
+{
+ "slug": "scope-insensitivity",
+ "header": "\\post{Scope Insensitivity}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/2ftJ38y9SRBCBsCzy/scope-insensitivity}\n",
+ "skeleton_sha": "f036db3f742b561907e8f1d4252ddd79962b705fb976d5fc40b2352e4afd7cc2",
+ "post_sha": "7729982d6a9bd8ac7e44afa241e01b9f14c7312c813dbca4c2d26d2081d1bb34",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Reports the bird study correctly: mean answers of \\$80, \\$78 and \\$88 per household per year (Desvousges et al., Table 5-1). It leaves out what respondents were told: that the three numbers were ``much less than 1 percent,'' ``less than 1 percent'' and ``about 2 percent'' of the 8.5 million migratory waterfowl in the Central Flyway. Someone who cares about the population, not about each bird, has less reason to pay a hundred times more for the largest number. The post does not consider this.}"
+  ],
+  [
+   527,
+   "\\cpara{Adds two more surveys, then explains the bird result by the image of one oiled bird. The explanation is stated as fact (``People visualize,'' ``primarily responsible''); only the last sentence calls it a hypothesis.}"
+  ],
+  [
+   944,
+   "\\cfact{The quotation is changed. Kahneman, Ritov and Schkade (1999, p.~212) write that the story ``probably evokes for many readers a mental representation of a prototypical incident, perhaps an image of an exhausted bird, its feathers soaked in black oil, unable to escape.'' The post adds ``single,'' which is its own point, and drops ``probably'' and ``perhaps.'' I could not open the paper. This wording is as quoted by Wikipedia (``Scope neglect'') and by Yudkowsky's own 2008 chapter, ``Cognitive Biases Potentially Affecting Judgment of Global Risks,'' which quotes it without ``single.''}"
+  ],
+  [
+   1338,
+   "\\clogic{No source is given for ``the usual finding.'' The one study in the post with three levels, the birds, shows no steady increase: \\$80, \\$78, \\$88.}"
+  ],
+  [
+   1567,
+   "\\cpara{Gives a second explanation, ``purchase of moral satisfaction'': people pay for a warm glow, and the amount has ``nothing to do with the number of birds.'' The post leaves both explanations standing and does not say which the evidence favors.}"
+  ],
+  [
+   1910,
+   "\\cpara{Extends the finding to human lives. A risk about 600 times larger raised willingness to pay about fourfold (\\$15.23 against \\$3.78). The post counts a fourfold rise as insensitivity without saying how large a rise would have been right.}"
+  ],
+  [
+   2236,
+   "\\cpara{Reports Fetherstonhaugh et al. (1997). The paper found that a program saving a fixed number of lives was judged better when fewer lives were at risk overall, and named this ``psychophysical numbing.'' It mentions Weber's law only in its introduction, as background, so ``collected evidence that our perception of human deaths follows Weber's Law'' overstates what it did.}"
+  ],
+  [
+   2914,
+   "\\cfact{The description matches the paper's Study 1. In 2021, three preregistered replications of that study found the opposite, a preference for the program in the larger camp. Two replications of the paper's Study 2, which used the same two camp sizes in another design, did find the original effect (Ziano et al., \\textsc{Journal of Experimental Social Psychology} 97).}"
+  ],
+  [
+   3126,
+   "\\cfact{This is Task 1 of the paper's Study 3, in which over 67\\% of respondents answered this way. In Task 2, where the treatments were described by the lives they would save, 16\\% did. The authors conclude that the way the information was framed ``changed the degree of numbing.''}"
+  ],
+  [
+   3140,
+   "\\cpara{The moral: an effective altruist must reason with the numbers, not with the image. It does not say what reasoning with the numbers requires, for example whether the value of saving birds should rise in proportion to their number. The studies show answers that barely move; they do not show what the right answers are.}"
+  ],
+  [
+   3191,
+   "\\clogic{Every study in the post asks people to state what they would pay, or to judge proposed programs; none observes real giving. Kahneman, Ritov and Schkade, whom the post cites, argue that such dollar answers ``are better understood as expressions of attitudes than as indications of economic preferences.'' The post applies the results to real giving without discussing this.}"
+  ],
+  [
+   3403,
+   "\\cpara{The study was first published in 1992; the post cites the 2010 second edition. Exxon paid for it after the Exxon Valdez spill, to test the accuracy of such surveys for measuring damages. Its authors concluded that the survey estimates ``fail to reflect large and realistic differences in levels of natural resource services,'' and wrote that ``our study does not determine the cause of this failure.''}"
+  ]
+ ]
+}

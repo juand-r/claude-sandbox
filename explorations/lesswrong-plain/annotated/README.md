@@ -9,7 +9,9 @@ do not repeat them.
 > **Superseded in part (28 September 2026).** The critical standard is now
 > `../docs/STANDARDS.md`, section 2. Where section 1 below ("harshest reading", the
 > calibration table, "give no benefit of the doubt") conflicts with it, STANDARDS.md wins.
-> Sections 2 to 4 of this file (files, layout, verbatim rule) still apply.
+> Sections 2 to 4 of this file (files, layout, verbatim rule) and the checklists in 5.2
+> still apply. In 5.1 and 5.3, the rules "every note a judgment", "at most one sentence of
+> credit" and "the sentence the author would least like to read" are also superseded.
 
 ## 1. The standard: read this first
 
