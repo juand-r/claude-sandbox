@@ -25,9 +25,9 @@ posts are merged in.
 3. [x] Standards: `docs/STANDARDS.md` (specification), `docs/raz/AGENT_BRIEF.md`
        (agent instructions), `src/raz_check.py` (mechanical checks), `src/new_post.py`
        (skeletons), `src/edlog.py` (logged edits).
-4. [ ] Pilot: the 9 new posts of "Predictably Wrong", 3 agents × 3 posts. Editor's final
+4. [x] Pilot: the 9 new posts of "Predictably Wrong", 3 agents × 3 posts. Editor's final
        pass on all 9. Revise the standards and brief from what the pilot shows.
-5. [ ] Book generators: `annotated/main.tex` and `honest/honest.tex` in collection order
+5. [x] Book generators (`src/make_books.py`): `annotated/main.tex` and `honest/honest.tex` in collection order
        with book and sequence headings.
 6. [ ] Batches: one sequence (or half of a long one) per wave, about 3 posts per agent.
        After each batch: editor's final pass, raz_check on every post, notes export,
@@ -45,4 +45,5 @@ posts are merged in.
 
 | Batch | Sequence | Posts | Drafted | Final pass | Committed |
 |---|---|---|---|---|---|
-| pilot | Predictably Wrong | 9 | | | |
+| pilot | Predictably Wrong | 9 | yes | yes | 43b43b5 |
+| 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | running | | |
