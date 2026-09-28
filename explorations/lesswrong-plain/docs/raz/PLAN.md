@@ -46,4 +46,5 @@ posts are merged in.
 | Batch | Sequence | Posts | Drafted | Final pass | Committed |
 |---|---|---|---|---|---|
 | pilot | Predictably Wrong | 9 | yes | yes | 43b43b5 |
-| 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | yes | yes | see log |
+| 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | yes | yes | fa1c1ba |
+| 2a | Overly Convenient Excuses, Politics and Rationality, Against Rationalization, Against Doublethink | 33 | running | | |
