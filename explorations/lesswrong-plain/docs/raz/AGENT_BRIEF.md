@@ -72,6 +72,30 @@ Use `.venv/bin/python` for every script.
 - Your scratch files go in `data/sources/` or your own temporary directory, not the
   main session's scratchpad.
 
+## Lessons from Book II (the editor cut or recast these most often)
+
+- A conditional claim is not refuted by a case where the condition fails. "Once X, Y can
+  only rise" is not contradicted by Y falling after X ended.
+- Respect the post's scope. A rule about what to do after a mistake is known is not faulty
+  for saying nothing about spotting mistakes. A "possibility raised by" a study is not a
+  claim that the study showed it. If the fault is only that the post did not address
+  something, say it as scope, in one sentence, or leave it out.
+- Read the post's own words for what it claims. "Completely right" about benefits is not a
+  claim about a timetable; "not widely understood" is not contradicted by an old source.
+- Before calling a claim unsupported by the post's source, read the source's abstract. One
+  note was reversed because the abstract said what the post said.
+- No guilt by association: an author's misconduct in other work is not a note on this paper.
+- Prior work that supports the post is credit, not a fault. "Thorndike found this first"
+  supports the post's suspicion.
+- A post's main idea is not a flaw because it is simple. If the post's mechanism is a
+  selection effect, do not present "that is just arithmetic" as a criticism.
+- Your own speculative argument against the post is as unsupported as the claim it answers;
+  leave it out.
+- Omitting evidence that would help the post is not a fault of the post; give it as
+  information for the reader.
+- Two metaphors in two posts running in opposite directions, a word's dictionary gloss, and
+  whether a result was significant when the post reports the means correctly are nitpicks.
+
 ## Do not
 
 - Do not edit any file other than the ones for your assigned slugs, and your reports.
