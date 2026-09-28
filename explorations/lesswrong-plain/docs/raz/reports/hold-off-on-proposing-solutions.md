@@ -1,0 +1,5 @@
+# Report: hold-off-on-proposing-solutions ("Hold Off On Proposing Solutions", Yudkowsky, posted 2007-10-17)
+
+## 1. The argument in three sentences (written before annotating)
+
+A long quotation from Robyn Dawes reports Norman Maier's rule for groups, "Do not propose solutions until the problem has been discussed as thoroughly as possible without suggesting any," and a role-playing experiment in which groups given the rule more often found a better solution to a dispute among three assembly-line workers. The author says the problem gets worse the harder the problem, citing people who instantly solve artificial intelligence, Friendly AI, physics, economics and evolutionary biology, and ties the rule to the principle of the bottom line and to the Griffin and Tversky finding that once you can guess your answer you have probably already decided. Since an idea once lodged takes too much evidence to remove, the author suspects that a more powerful method than falsification is to hold off on thinking of an answer at all, lengthening the moment before one can guess one's answer.

@@ -1,0 +1,29 @@
+{
+ "slug": "stranger-than-history",
+ "header": "\\post{Stranger Than History}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/h3vdnR34ZvohDEFT5/stranger-than-history}\n",
+ "skeleton_sha": "634f2e6aa0f7c3fcc4d22b912453a121f1673fe02004a56d4aa653036a5190f5",
+ "post_sha": "bc0566359bca7d45c7baf009e361527b5762658e41c40cc54152258e33740c27",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Sets up three claims made to sound absurd: paint that reverses gravity, black spheres in the sky that sell sex, and grandchildren who think jail for thieves is evil.}"
+  ],
+  [
+   864,
+   "\\cpara{Asks the reader, placed in 1901, to choose between those claims and three that were true when the post was written. The lists are chosen: the true claims were picked for strangeness and are worded in ways that make them sound odder (``pretending they are made out of numbers''), and the false ones were made up to be absurd. The comparison shows that some truths would have sounded crazy in 1901, which is the post's point.}"
+  ],
+  [
+   1194,
+   "\\cfact{For physicists in 1901 part of this was not new. FitzGerald (1889) and Lorentz (1892) had proposed that bodies moving through the ether contract, to explain the Michelson--Morley result, and Lorentz had introduced a ``local time'' (1895), which he did not regard as real time (Wikipedia, ``Length contraction''). The first claim would have sounded stranger to the public than to the specialists.}"
+  ],
+  [
+   1797,
+   "\\cfact{A forecast of 1900 came close to this. John Elfreth Watkins, in the \\textsc{Ladies' Home Journal} for December 1900, wrote: ``Man will see around the world. Persons and things of all kinds will be brought within focus of cameras connected electrically with screens at opposite ends of circuits, thousands of miles at a span.'' The article opened with ``These prophecies will seem strange, almost impossible'' (as quoted by BBC News, 2012).}"
+  ],
+  [
+   1989,
+   "\\cpara{Credits the idea to Robin Hanson's comment on ``Making History Available,'' posted the day before. The quotation matches the comment, which starts from the saying ``truth is stranger than fiction.''}"
+  ]
+ ]
+}

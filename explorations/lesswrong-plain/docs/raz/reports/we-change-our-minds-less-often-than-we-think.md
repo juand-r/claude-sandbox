@@ -1,0 +1,5 @@
+# Report: we-change-our-minds-less-often-than-we-think ("We Change Our Minds Less Often Than We Think", Yudkowsky, posted 2007-10-03)
+
+## 1. The argument in three sentences (written before annotating)
+
+Griffin and Tversky found that colleagues choosing between job offers gave their predicted choice an average probability of only 66%, yet 23 of 24 chose it; the author concludes that once you can guess your answer, you have in all probability already decided, and that this usually happens within half a second of hearing the question. By the principle of the bottom line, only the real causes of a belief or decision matter, so the plan of deciding by non-rational means and then checking the justification fails, because we change our minds much less often than we think. We remember the times we changed our minds and not the times we did not, and a list of biases (hindsight, fake causality, positive bias, anchoring, confirmation bias) means that an idea, once in your head, will probably stay there.

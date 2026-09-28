@@ -1,0 +1,133 @@
+{
+ "slug": "the-logical-fallacy-of-generalization-from-fictional",
+ "header": "\\post{The Logical Fallacy of Generalization from Fictional Evidence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/rHBdcHGLJ7KvLJQPk/the-logical-fallacy-of-generalization-from-fictional}\n",
+ "skeleton_sha": "d1e3a46b97fe7649c6a1f812315f08168a7aa77af2cee4a6cdc48ebc81ba378b",
+ "post_sha": "e1161fcdd0332d3346c63209633a25abbbcec18e9f7253f076732eddd9a702a8",
+ "edits": [],
+ "notes": [
+  [
+   199,
+   "\\cpara{Opens with the author's experience: ``more than half the time,'' the first reply to talk of advanced AI names a film or Asimov's robots.}"
+  ],
+  [
+   548,
+   "\\cpara{The second sentence holds the word ``example,'' which the post later says it left in on purpose as a mistake.}"
+  ],
+  [
+   676,
+   "\\cpara{States the objection fairly: no one claims the fiction is true, and science fiction is thinking about the future already done.}"
+  ],
+  [
+   1047,
+   "\\cpara{Answers that one can go wrong without believing anything false.}"
+  ],
+  [
+   1194,
+   "\\cpara{The first argument: storytelling and forecasting have different requirements. It is the point the notes on ``Use the Try Harder, Luke'' cite from this post.}"
+  ],
+  [
+   1517,
+   "\\cfact{Bostrom offers this as a hypothesis. Bostrom's paragraph begins ``Suppose our intuitions about which future scenarios are plausible and realistic are shaped by what we see on TV and in movies and what we read in novels,'' and says the resulting ``Good-story bias could be quite powerful.'' The author's chapter on global risks had called it ``the good-story bias hypothesized in (Bostrom 2002).'' The quoted words match Bostrom's paper.}"
+  ],
+  [
+   2106,
+   "\\cpara{The second argument: a story cannot express uncertainty, since it must tell one sequence of events. The parody that follows shows what a story with probabilities would read like.}"
+  ],
+  [
+   3574,
+   "\\cpara{Draws the parody's moral: the author must commit to one line of events and fill it with detail.}"
+  ],
+  [
+   3904,
+   "\\cpara{Links the point to ``Burdensome Details'': a story's details come bundled under one label and feel like one claim. The footnote's ``this volume'' and \\textsc{Map and Territory} refer to the 2015 book, not to anything that existed when the post appeared.}"
+  ],
+  [
+   4326,
+   "\\cpara{Applies the argument of ``Einstein's Arrogance'' (25 September 2007): most of the work lies in finding the hypothesis worth considering. The notes on that post discuss the idea's history. The bit counts here are illustrative, and consistent: 98 bits of evidence bring a 100-bit proposition to odds of about 1 to 4, and five bits more to about 8 to 1.}"
+  ],
+  [
+   4960,
+   "\\cpara{Lists what that preliminary step involves: weighing what one knows and can predict, widening confidence intervals, allowing for Black Swans.}"
+  ],
+  [
+   5431,
+   "\\cpara{The third argument: the film sets the terms of the debate. The alternative it names, ``a superintelligence snapping nanotechnological fingers,'' is offered as what the film's frame leaves out, not argued for; it is also a specific scenario, and the post gives it no support.}"
+  ],
+  [
+   6010,
+   "\\cpara{Lists what the film's frame leaves out: several possible designs of mind, dependence on initial conditions, the power and unpredictability of smarter-than-human intelligence, and serious effort on the problem.}"
+  ],
+  [
+   6375,
+   "\\cpara{Compares starting from \\textsc{Terminator} to the loaded labels each side of the gun-control debate would reject.}"
+  ],
+  [
+   6893,
+   "\\cpara{A choice between two films, compared to a loaded choice between two policies. The footnote's ``The Third Alternative'' treats the same trap.}"
+  ],
+  [
+   7181,
+   "\\cpara{The first sentence repeats, almost word for word, a sentence of ``Making History Available'' (31 August 2007); the notes there observe that no evidence is given for it.}"
+  ],
+  [
+   7439,
+   "\\clogic{No study is cited. In the author's chapter on global risks the same argument rests on anchoring experiments, in which a number shown first shifts a later estimate. A glimpse of ``a single word'' with ``demonstrated strong influence on probability estimates'' is a different claim, and the post does not say where it was demonstrated.}"
+  ],
+  [
+   7752,
+   "\\cpara{The answer rests on the author's impression (``So far as I can tell''). There was published support for it that the post does not cite. Green and Brock (\\textsc{Journal of Personality and Social Psychology}, 2000) found that readers absorbed in a story came to hold beliefs that fit it, and that these effects ``were generally unaffected by labeling a story as fact or as fiction.''}"
+  ],
+  [
+   8185,
+   "\\cpara{States the diagnosis: the film is recalled not as prophecy but ``as an illustrative historical case,'' the account that opened ``Making History Available.''}"
+  ],
+  [
+   8750,
+   "\\cpara{The post's one detailed case of the error, and the author is the one who commits it.}"
+  ],
+  [
+   9226,
+   "\\cpara{Draws the lesson: a writer's choice may say something about the writer's forecast, but a character's fate is evidence of nothing, because ``There is no was of Tunç Blumenthal.''}"
+  ],
+  [
+   9694,
+   "\\cpara{Points back to ``example'' in the fourth paragraph: a film is not an example, since nothing in it happened.}"
+  ],
+  [
+   9928,
+   "\\cpara{Names a neighbouring error, treating evidence one imagines as evidence one has.}"
+  ],
+  [
+   10229,
+   "\\clogic{Asserted in a parenthesis. No mathematics is given, and the post does not say in what sense the two are mirror images.}"
+  ],
+  [
+   10243,
+   "\\cpara{Adds a second mechanism: seeing a few members of a class creates a category with automatic expectations.}"
+  ],
+  [
+   10652,
+   "\\cpara{Applies it to the Borg and brain-computer interfaces. The journalists' thoughts are the post's reconstruction; no article is cited.}"
+  ],
+  [
+   11418,
+   "\\cpara{Introduces Orwell. Orwell's subject is stock phrases; the post applies it by analogy to stock stories.}"
+  ],
+  [
+   11589,
+   "\\cpara{The quotation matches ``Politics and the English Language,'' with the omission marked. ``Rationality and the English Language'' quoted the same passage in September.}"
+  ],
+  [
+   11979,
+   "\\cpara{The post's last claim, marked as the author's estimate: fiction's worst effect is that it stops people using their own imagination.}"
+  ],
+  [
+   12289,
+   "\\cpara{The quotation matches Pirsig's text. Pirsig's student was blocked by things she ``had already heard,'' not by fiction; the post applies the diagnosis by analogy. Two days earlier, in ``Original Seeing,'' the author quoted the whole Bozeman story and wrote: ``I don't know if this story is based on reality or not, but either way, it's true.''}"
+  ],
+  [
+   12761,
+   "\\cpara{Restates the estimate of two paragraphs earlier without its hedge, and more strongly: remembered fictions are ``the deadliest convenience of all.''}"
+  ]
+ ]
+}

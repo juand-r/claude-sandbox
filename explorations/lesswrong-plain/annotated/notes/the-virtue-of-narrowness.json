@@ -1,0 +1,69 @@
+{
+ "slug": "the-virtue-of-narrowness",
+ "header": "\\post{The Virtue of Narrowness}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/yDfxTj9TKYsYiWH5o/the-virtue-of-narrowness}\n",
+ "skeleton_sha": "8be31ebc6754d9634febf683365580829a7442ae62f5c8cf79bc15812357887d",
+ "post_sha": "643548d328e3afebe4ce6aad67b8f4f247aacbc490e30d9587cfdf04f4117c7d",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{The epigraph is the author's own, from the tenth virtue, precision, in ``Twelve Virtues of Rationality'' (2006).}"
+  ],
+  [
+   354,
+   "\\cpara{Gives three examples of people who draw fine distinctions in their own trades: the mechanic, the hunter-gatherer, the janitor.}"
+  ],
+  [
+   756,
+   "\\cpara{States the fault the post opposes: outside their trades, people ``often'' stretch a word as wide as it will go. The reason is supplied by the post, in rhetorical questions: a general theory sounds loftier than an answer to a specific question.}"
+  ],
+  [
+   1358,
+   "\\cpara{The parable decides the question in advance. The pebbles the curious pick really are diamonds, so whoever wants to widen the name is wrong by construction. In a real dispute over a word, whether the other pebbles share the ``inner qualities'' is the open question, and the parable gives no way to settle it.}"
+  ],
+  [
+   2126,
+   "\\cpara{Extends the point to poets: even connotation needs precise tracking, as in choosing a flower with thorns to stand for jealous love.}"
+  ],
+  [
+   2791,
+   "\\cpara{Restates the parable as the thesis: attending to what a few special pebbles share ``is not a sin.''}"
+  ],
+  [
+   3061,
+   "\\cpara{The post names no one who reasons from the shared word to ``the same thing,'' and the shared word shows nothing by itself. ``Stellar evolution'' is astronomers' standard term for how a star changes over its life, and it implies no natural selection. The word's general sense, ``a process of change in a certain direction : unfolding'' (Merriam-Webster), is older than the biological one: the Online Etymology Dictionary dates the word in English to the 1620s and its use for the development of species to 1832.}"
+  ],
+  [
+   3643,
+   "\\cpara{Mocks ``Everything is connected to everything else'' as Deep Wisdom. The argument against it comes in the next paragraph.}"
+  ],
+  [
+   3939,
+   "\\cpara{The argument, and it is sound. A graph with every edge and a graph with no edges are complements of each other, and neither says which things are related to which. What informs is a pattern that joins some things and not others.}"
+  ],
+  [
+   4252,
+   "\\cpara{Says that endless verbal comparison connects everything, and that detailed study removes the false connections.}"
+  ],
+  [
+   4691,
+   "\\cpara{Carries the point from categories to hypotheses: a good one excludes some outcomes. This is Karl Popper's criterion, uncredited here as in ``Your Strength as a Rationalist'' (see the notes there).}"
+  ],
+  [
+   4873,
+   "\\cpara{Newton's gravity is the standard case of a theory that joined things thought separate: the fall of bodies on Earth, the orbits of the planets, the tides. It is a law about all the apples in the world. It excludes money and blood, as the post says, but its achievement was a new connection. Two paragraphs earlier the post said that detailed study leads to ``subtracting edges.'' The example shows that a category is judged by which things it joins as well as by which it leaves out; the post does not say how to judge either.}"
+  ],
+  [
+   5403,
+   "\\cpara{Socrates is answering Glaucon's praise of astronomy (529a--c). His complaint is against astronomy done by gazing at the sky instead of by mathematics; Paul Shorey's note on the passage calls it ``Plato's exasperation at the sentimentalists who prefer star-gazing to mathematical science.'' The passage says nothing of manual labor or slaves, the link the post draws. The translation is not named; it is neither Jowett's nor Shorey's, though the sense agrees with both.}"
+  ],
+  [
+   6089,
+   "\\cpara{Restates the thesis.}"
+  ],
+  [
+   6713,
+   "\\cpara{A closing aside, in capitals, that declines to argue against three broad uses of terms from the author's own field: artificial intelligence, the Singularity, superintelligence.}"
+  ]
+ ]
+}
