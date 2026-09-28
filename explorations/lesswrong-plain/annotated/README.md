@@ -184,7 +184,7 @@ The repo is public. Never commit a post's text, a PDF, or anything in `data/orig
 - Links inside the two columns print as plain text (`\nolinks` in `\post`): a
   hyperlink broken across a page inside paracol crashes pdflatex. Only the header link
   to the original is clickable.
-- Build the whole volume with `../src/make_main.py` then latexmk; it includes every
+- Build the whole volume with `../src/make_books.py` then latexmk; it includes every
   post that has both a post file and an afterword.
 - Do not use Tufte sidenotes or `marginfix`. Both were tried; notes ran off the page or
   onto the next post's page. See `../docs/NOTES.md`.

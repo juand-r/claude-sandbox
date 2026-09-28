@@ -61,7 +61,7 @@
 % \post{title}{author}{year}{url} starts a post; \closepost closes it.
 \newcommand{\post}[4]{%
   \clearpage
-  \phantomsection\addcontentsline{toc}{section}{#1}%
+  \phantomsection\addcontentsline{toc}{subsection}{#1}%
   {\noindent\Large #1\par}\vspace{0.3ex}
   {\noindent\small #2, #3.\quad \href{#4}{Original on LessWrong}\par}\vspace{1ex}
   \begin{paracol}{2}\nolinks}
@@ -103,7 +103,11 @@
 % A stray private-use glyph inside a formula in the Bayes essay; it carries no meaning.
 \DeclareUnicodeCharacter{10FC06}{}
 
-% Part heading for a group of posts (a sequence of the Highlights), with a contents entry.
-\newcommand{\sequencehead}[1]{%
+% Book and sequence headings (Rationality: A-Z has six books of sequences), with contents
+% entries: book = part, sequence = section, post = subsection.
+\newcommand{\bookhead}[1]{%
   \clearpage\phantomsection\addcontentsline{toc}{part}{#1}%
   \vspace*{0.3\textheight}{\noindent\huge #1\par}}
+\newcommand{\sequencehead}[1]{%
+  \clearpage\phantomsection\addcontentsline{toc}{section}{#1}%
+  \vspace*{0.2\textheight}{\noindent\LARGE #1\par}}
