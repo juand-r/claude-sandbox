@@ -1,0 +1,69 @@
+{
+ "slug": "semantic-stopsigns",
+ "header": "\\post{Semantic Stopsigns}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/FWMfQKG3RpZx6irjm/semantic-stopsigns}\n",
+ "skeleton_sha": "136440d1b65556b7a9ec94adf9a412d463318d6e41239e1353caa5858e2150c9",
+ "post_sha": "21d166d9184be9f63236e65cd284c676ec237afa936b56e2826d9846d5115907",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Opens with a child's chain of questions about where things came from. The answers follow Norse myth as Snorri's \\textsc{Prose Edda} tells it, in which the gods made ``of his bones the rocks'' from the body of the giant Ymir. The last answer, ``Never ask that question,'' is the post's own.}"
+  ],
+  [
+   792,
+   "\\cpara{Sets out the puzzle of the First Cause: tracing events back to the Big Bang leaves the physical laws unexplained, and a simulation only moves the question to another world's laws.}"
+  ],
+  [
+   1431,
+   "\\cpara{Introduces the answer the post examines.}"
+  ],
+  [
+   1483,
+   "\\cpara{Argues that ``God!'' does not help: ``Where did God come from?'' follows at once, and ``God is uncaused'' leaves the same question as ``Time began with the Big Bang.''}"
+  ],
+  [
+   1929,
+   "\\clogic{Defenders of the argument have an answer to this question, and the post does not mention it. In the argument from contingency, ``what needs explanation is the existence of what is contingent, not the existence of everything (that is, of necessary beings as well)''; the kalam version asks a cause only for what ``begins to exist'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Cosmological Argument''). Whether these replies succeed is disputed. They are the reason defenders themselves give for thinking that God helps with the First Cause.}"
+  ],
+  [
+   1943,
+   "\\cpara{Asks why anyone would think ``God!'' resolves the puzzle, and answers with a motive: saying it ``is a way of belonging to a tribe.'' The claim is about the motives of an unnamed group, and no evidence is offered for it.}"
+  ],
+  [
+   2541,
+   "\\cpara{Credits the idea to Jonathan Wallace, and the attribution checks. In an essay written after the September 11 attacks, Wallace called preaching that God is beyond question ``the use of God as a semantic stop-sign''; in 1995 Wallace had called ``God'' ``the greatest non-answer of all.'' The 1995 essay also uses a short chain of questions, much like the post's opening: ``Who created Og?'' ``No-one created Og. Og always was.''}"
+  ],
+  [
+   2892,
+   "\\cpara{Turns to a reader assumed to be an atheist, and says ``God!'' is only the first example.}"
+  ],
+  [
+   3067,
+   "\\cpara{Sets up the policy questions raised by new technologies, where the obvious next question about any proposed institution is whether it will work.}"
+  ],
+  [
+   3895,
+   "\\cpara{The main modern example cannot be checked: one unnamed acquaintance, known to the reader only through the author's summary (``That's it. That's his answer.'').}"
+  ],
+  [
+   4316,
+   "\\cpara{Applies the test that defines a stopsign: would the person ask of another answer the questions he will not ask of his own? The test is a fair one. Here its second half is imagined. The post reports what the acquaintance ``would have asked'' of ``the Coca-Cola corporation,'' not anything he said.}"
+  ],
+  [
+   4750,
+   "\\cpara{States the test in general form with a pair of hypotheticals: the questions you would ask about a claimed Mexican-American plot, you should ask about a claimed corporate one.}"
+  ],
+  [
+   5214,
+   "\\cpara{Limits the idea: no word is a stopsign in itself, strong feeling does not make one, and the author admits that ``intelligence'' once was one for the author.}"
+  ],
+  [
+   5895,
+   "\\clogic{By this test the post's first example needs a qualification. A theist who replies to ``Where did God come from?'' that only contingent things need a cause has considered the obvious next question, whether or not the reply is sound. Such a person is not using a stopsign in the post's sense, though the post offered ``God!'' as ``the obvious first example.''}"
+  ],
+  [
+   5909,
+   "\\cpara{Cites Wallace's two essays.}"
+  ]
+ ]
+}

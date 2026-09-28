@@ -1,0 +1,81 @@
+{
+ "slug": "belief-in-belief",
+ "header": "\\post{Belief in Belief}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/CqyJzDZWvGhhFJ7dY/belief-in-belief}\n",
+ "skeleton_sha": "1c7b3f848a9631f91e75b75e706398ec33f6b3863f03e1641e061d3bb17cccea",
+ "post_sha": "c08d2350d10eab5089140b85cc5a7d02ec76adacadabdd2d1f30ee540d62434d",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Introduces the parable from Carl Sagan's \\textsc{The Demon-Haunted World}, chapter ``The Dragon in My Garage.'' The summary is fair: in Sagan the claimant, asked for proof, says ``I neglected to mention that she's an invisible dragon.''}"
+  ],
+  [
+   454,
+   "\\cpara{Sagan does make this point. He imagines that ``things had gone otherwise'': footprints appear in the flour and the infrared detector ``reads off-scale,'' and then ``you must now acknowledge that there's something here.''}"
+  ],
+  [
+   809,
+   "\\cpara{Retells the claimant's excuses for each test proposed: inaudible, does not breathe, permeable to flour.}"
+  ],
+  [
+   1266,
+   "\\cpara{The post's own contribution, and it goes beyond Sagan. Sagan draws from the excuses only that ``something funny is going on inside my head'' and asks ``what convinced me.'' The post draws a sharper inference: to excuse the right tests in advance, the claimant must already expect them to come out empty.}"
+  ],
+  [
+   1658,
+   "\\cpara{The philosophers are not named, and their question is misdescribed. It is not an assumption that the brain can hold one belief at a time. It is the ``static paradox'' of self-deception, which the \\textsc{Stanford Encyclopedia of Philosophy} states as ``How can a person simultaneously hold contradictory beliefs?'' Among the answers it lists from before 2007 are Robert Audi's (1982, 1988), that the self-deceived person sincerely avows what they do not believe, and Eric Funkhouser's (2005), which it summarizes as: ``they believe that they believe that p.'' These are close to the answer this post goes on to give.}"
+  ],
+  [
+   2567,
+   "\\cpara{Grants that the rule of ``Making Beliefs Pay Rent,'' posted the day before, does not reach this case: the dragon belief connects easily to what one would see in the garage. The problem is not that the belief floats.}"
+  ],
+  [
+   3327,
+   "\\cpara{Introduces Dennett's term with two examples: a child who doubts Santa Claus but thinks they are supposed to believe, and a contradictory statement, a sky both ``perfectly blue and perfectly green,'' which is easier to think good to believe than to believe. The post credits Dennett for the term. I could not check the paraphrase of Dennett against the book.}"
+  ],
+  [
+   4214,
+   "\\cpara{The post's addition to Dennett: a person who only believes in belief cannot admit it to themselves, because what is virtuous is to believe. The first sentence is hedged with ``I think''; the rest (``Nobody will admit'') is stated as fact about everyone, with no evidence.}"
+  ],
+  [
+   4911,
+   "\\cpara{An aside: mathematical logic distinguishes a proposition, a proof of it, and a proof that it is provable; the post lists the parallel distinctions among believing, wanting and believing that you believe.}"
+  ],
+  [
+   5257,
+   "\\cpara{Lists kinds of belief in belief: an explicit sentence recited to oneself, fear of public ridicule, and a flinch that protects a self-image as ``the glorious discoverer of the dragon.''}"
+  ],
+  [
+   6089,
+   "\\cpara{Claims that wordless images, flinches and unacknowledged desires ``account for as much of ourselves as words.'' It is offered as a general truth, without support.}"
+  ],
+  [
+   6390,
+   "\\cpara{Presents the wider concept of belief as the post's addition to Dennett (``But we need a wider concept of belief''). Dennett had drawn a similar line himself. In \\textsc{Brainstorms} (1978) he separated beliefs, dispositions to act that animals also have, from ``opinions,'' commitments to sentences, and suggested that self-deception arises when the two diverge. I have this from Keith Frankish's account (\\textsc{Philosophical Psychology}, 1998); I could not read Dennett's chapter, or check whether \\textsc{Breaking the Spell} uses the distinction.}"
+  ],
+  [
+   7166,
+   "\\cpara{Illustrates wordless belief: you expect no dragon when you open a door without ever thinking the sentence ``There is no dragon in my garage.''}"
+  ],
+  [
+   7576,
+   "\\cpara{Illustrates wordless belief in belief: to protect the belief one need only flinch from admitting it is gone, not think a sentence about wanting it.}"
+  ],
+  [
+   7923,
+   "\\cpara{Ends with the post's practical sign, hedged with ``it would seem'': excuses made in advance show that belief and belief in belief have come apart. It is the one observable test in the post.}"
+  ],
+  [
+   8353,
+   "\\cpara{Cites Dennett's book on religion, the source of the term.}"
+  ],
+  [
+   8464,
+   "\\cpara{Says, as fact and without support, that a rationalist would congratulate the claimant for admitting the mistake, and that ridicule is likelier for going on.}"
+  ],
+  [
+   8645,
+   "\\cpara{Adds that belief in belief can still interfere when the belief itself is not fully confident.}"
+  ]
+ ]
+}

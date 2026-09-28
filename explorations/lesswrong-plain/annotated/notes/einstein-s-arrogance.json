@@ -1,0 +1,85 @@
+{
+ "slug": "einstein-s-arrogance",
+ "header": "\\post{Einstein's Arrogance}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/MwQRucYo6BZZwjKE7/einstein-s-arrogance}\n",
+ "skeleton_sha": "45509101dbe6b1a62b7c29826907c3c9a12179ff45199d0c981a447abfa548c7",
+ "post_sha": "c717d8a854634898ff5745dc4b56554126bd543bc77279ad73e1dcb05c4bc2ef",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{Sets up the quotation. The account usually given for it differs on two points that matter here. The question came from a philosophy student, Ilse Rosenthal-Schneider, not a journalist. And it came after 22 September 1919, when Lorentz had telegraphed Einstein a first report that Eddington had found the bending of starlight; Einstein was asked what he would have said had the result gone the other way (Lemos, arXiv:1912.05587; Wikiquote, citing Rosenthal-Schneider's \\textsc{Reality and Scientific Truth}, 1980, p.~74). I could not read the memoir itself.}"
+  ],
+  [
+   549,
+   "\\cpara{States the objection the post will answer: no one can know a theory is correct before the test. By the account in the previous note, Einstein spoke after a first report of the test. The objection still applies to his confidence before 1919, which is what the post's argument is about.}"
+  ],
+  [
+   914,
+   "\\cpara{Sets aside, with a joke, the fact that Einstein was right: the author saves criticism for people who are wrong. The post returns to the outcome in its last sentence.}"
+  ],
+  [
+   1132,
+   "\\cpara{Announces the defense.}"
+  ],
+  [
+   1215,
+   "\\cpara{Applies the previous day's arithmetic (``How Much Evidence Does It Take?'') to 100 million hypotheses. The figures check. The base-2 logarithm of 100 million is 26.6, so 27 bits give better than even odds, and a test with a one-in-a-million false-positive rate lets through 100 of 100 million wrong candidates.}"
+  ],
+  [
+   1817,
+   "\\cpara{Contrasts justifying a hypothesis to others with finding it in the first place. Philosophers of science know the pair as the ``context of justification'' and the ``context of discovery'' (Stanford Encyclopedia of Philosophy, ``Abduction'', supplement on Peirce).}"
+  ],
+  [
+   2549,
+   "\\cpara{The central claim: finding a hypothesis in a large space takes about as much evidence as the hypothesis is complex, before any question of persuading others.}"
+  ],
+  [
+   2714,
+   "\\cfact{The counting argument is older than the post. Charles Peirce, in his 1903 lectures on pragmatism: ``Think of what trillions of trillions of hypotheses might be made of which one only is true; and yet after two or three or at the very most a dozen guesses, the physicist hits pretty nearly on the correct hypothesis. By chance he would not have been likely to do so \\ldots'' (\\textsc{Collected Papers} 5.172). Peirce drew a different lesson about confidence: the guessing faculty is an insight ``not strong enough to be oftener right than wrong'' (5.173). The post does not mention him.}"
+  ],
+  [
+   2924,
+   "\\cpara{Extends the claim to hunches: an unconscious guess needs the same evidence as a conscious one. The numbers check: 19 bits give $2^{19} = 524{,}288$, fewer than a million, so about two wrong targets would pass for each right one.}"
+  ],
+  [
+   3506,
+   "\\cpara{Applies the claim to Einstein: when the equations first came to him, he must already have held the evidence that singled them out.}"
+  ],
+  [
+   3644,
+   "\\cfact{The history does not fit a single moment. Einstein reached the final equations in November 1915, after two years on the Entwurf theory written with Marcel Grossmann, which accounted for only 18 of the 43 seconds of arc per century missing from Mercury's orbit (Janssen and Renn, arXiv:2111.11238). In March 1914 he wrote to Michele Besso: ``Now I am perfectly satisfied and no longer doubt the correctness of the whole system, regardless of whether the observation of the solar eclipse will be successful or not'' (translation in Weinstein, arXiv:1204.3386). That theory was wrong.}"
+  ],
+  [
+   3736,
+   "\\cfact{The post names none of this evidence. The best-known piece is Mercury's orbit: in November 1915 Einstein showed that the finished theory accounts for all 43 missing seconds of arc (Janssen and Renn). Lemos calls it ``an a posteriori confirmation, not an apriori prediction.'' It is an ordinary reason for confidence before 1919, and the post does not use it.}"
+  ],
+  [
+   3866,
+   "\\clogic{The inference runs from the theory being right to Einstein having had the evidence. Before a test, whether the theory is right is the open question, and Einstein stated his confidence in the Entwurf theory in almost the same terms (previous note). So the argument can show that confidence was justified only once the result is known. It gives no way to tell, beforehand, the confidence of 1915 from the confidence of 1914.}"
+  ],
+  [
+   3880,
+   "\\cpara{Asks how likely it is that Einstein had just enough evidence to find the theory but only enough for 55\\% confidence.}"
+  ],
+  [
+   4260,
+   "\\clogic{The question sets a point against a range. What matters is not whether Einstein had exactly 29.5 bits but whether he had less than enough to be ``damn sure.'' At 99\\% that takes about 6.6 more bits than the 29.3 (the base-2 logarithm of 99), so anything from 29.3 to about 36 bits leaves him short. The post gives no reason to think his evidence was unlikely to fall in that range.}"
+  ],
+  [
+   4274,
+   "\\cpara{Concludes, with ``probably,'' that Einstein had enough evidence to be very sure.}"
+  ],
+  [
+   4517,
+   "\\cpara{Adds, again with ``probably,'' that an inefficient brain must have held far more evidence than a perfect reasoner would need.}"
+  ],
+  [
+   4773,
+   "\\clogic{The premise is about what a perfect Bayesian could conclude from Einstein's evidence. The conclusion the post needs is about Einstein's own confidence. A brain that used the evidence inefficiently to find the theory may also have used it inefficiently to judge it, and the post does not show that his confidence rested on the surplus.}"
+  ],
+  [
+   4787,
+   "\\cpara{Returns to the quotation, now read as the confidence of someone holding overwhelming evidence, and ends on the theory's success. That success is the premise of the argument (see the note on ``Or he couldn't have gotten them right''), not further support for it.}"
+  ]
+ ]
+}

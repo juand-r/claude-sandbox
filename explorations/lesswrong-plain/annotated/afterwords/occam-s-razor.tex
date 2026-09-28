@@ -1,0 +1,17 @@
+\begin{afterword}
+\summaryhead
+
+The post asks how to measure the complexity of an explanation. The common phrasing of Occam's razor, ``The simplest explanation that fits the facts,'' fails: a reply attributed to Heinlein is that the simplest explanation is ``The lady down the street is a witch; she did it.'' English sentences are a poor measure because words such as ``witch'' and ``anger'' are labels whose content the listener already stores. That is why Thor seems simpler than Maxwell's equations, although a program simulating Maxwell's equations is far shorter than one simulating a mind.
+
+Solomonoff induction measures complexity by the length of the shortest program that produces a description, and the choice of programming language changes this only by a constant. Programs that assign probabilities to data are weighted by 2 to the minus their length and by how well they fit, so one extra bit of program must buy at least a doubling of fit; otherwise every fair coin would look fixed. Minimum Message Length is nearly the same method. On it, ``A witch did it'' does not shorten the message describing the data, so it is a useless prologue.
+
+\responsehead
+
+The post gives a sound short account of how algorithmic information theory treats Occam's razor. Its descriptions match standard sources: complexity as the length of the shortest program, a prior of 2 to the minus a program's length, prediction by a weighted mixture of all programs, and Minimum Message Length as a near relative. Its argument for the exchange rate between program length and fit is correct and well worked on the coin example. Its treatment of the witch, a hypothesis that does not shorten the message, is the right answer to Heinlein's joke.
+
+The weak point is the step the post needs most. Its opening examples show that English hides complexity in labels: ``witch'' and ``anger'' look short because the listener already stores what they mean. The post then moves to programs and settles the choice of programming language with ``only a constant complexity penalty.'' A programming language can store a label just as English does. A universal machine built with Thor as a one-bit instruction is still universal, and on it Thor is simpler than Maxwell. The invariance theorem allows this, because the constant it promises can be as large as the hypotheses being compared. So the formalism does not by itself show that Maxwell's equations are simpler than Thor; that needs a reason to prefer some machines to others, and the post offers ``as it turns out.'' In 2015 Leike and Hutter called the choice of machine ``a big open question.''
+
+The post also answers its opening question, how to measure the complexity of an explanation, with a measure it concedes is uncomputable, and apart from the comparison of Maxwell and Thor it gives no way to estimate the measure for a real explanation. Outside toy cases like the coin, the reader has an ideal and no method.
+
+In short: an accurate sketch of Solomonoff induction and Minimum Message Length, in which the choice of language is passed over as ``only a constant,'' although it raises the same problem as the post's own ``Fnord'' example.
+\end{afterword}
