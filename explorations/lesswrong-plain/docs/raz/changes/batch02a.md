@@ -22,3 +22,19 @@ Why: Test 4/9: the student is a hypothetical; drop the jab, keep the observation
 - Before: The student now cites the problem of induction. The reply here is a motive, which the post can assign because the student is hypothetical (``go home and play video games''). The reasoned reply, the bridge test, comes four paragraphs later.
 - After: The student now cites the problem of induction, and the first reply is about motive (``go home and play video games''). The reasoned reply, the bridge test, comes four paragraphs later.
 
+
+## annotated/afterwords/0-and-1-are-not-probabilities.tex
+
+Why: Fair-defender: the post says itself that its proposal would upset probability theorists and require rederiving theorems.
+
+- Before: stretched into a title claim that the axioms of probability rule out, with no replacement offered for the axiom it would drop.
+- After: stretched into a title claim that would mean giving up an axiom of probability, which the post admits and for which it offers no replacement.
+
+
+## annotated/afterwords/infinite-certainty.tex
+
+Why: Proportion: a slip that understates the post's own point stays in the margin, not the verdict.
+
+- Before: largely repeated from the previous day's post, with one illustration off by a factor of a hundred and no mention that standard probability theory gives logical truths probability 1.
+- After: largely repeated from the previous day's post, with no mention that standard probability theory gives logical truths probability 1.
+

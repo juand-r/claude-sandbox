@@ -1,0 +1,105 @@
+{
+ "slug": "0-and-1-are-not-probabilities",
+ "header": "\\post{0 And 1 Are Not Probabilities}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/QGkYCwyC7wTDyt3yT/0-and-1-are-not-probabilities}\n",
+ "skeleton_sha": "9d08a53b2bcf8be448fa3de657bc55c60f62cbd966a31dc2cd999d0c02a3c061",
+ "post_sha": "b7bbf24920ec806f94e2d40096af701ff7d3288131ebaba97354c7c6ae783688",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Opens with an analogy from arithmetic: counting up or down never reaches infinity, so infinity is not an integer.}"
+  ],
+  [
+   441,
+   "\\cpara{Explains why: infinity does not follow the rules of integer arithmetic, since ``infinity - infinity = 5'' does not follow from ``5 + infinity = infinity.''}"
+  ],
+  [
+   962,
+   "\\cpara{Concludes that mixing infinity with the integers would need special rules that real integers do not need.}"
+  ],
+  [
+   1276,
+   "\\cpara{Adds that no one has counted or measured an infinity of anything, so the real world does not need it. The footnote heads off objections from set theory.}"
+  ],
+  [
+   2157,
+   "\\cpara{Turns to probability, written in the usual way as numbers from 0 to 1.}"
+  ],
+  [
+   2372,
+   "\\cpara{Introduces odds, $O = P/(1-P)$, and the reverse formula, and calls the two scales isomorphic.}"
+  ],
+  [
+   2968,
+   "\\cpara{Works a Bayesian update in odds. The arithmetic checks: prior odds of 1:5 times a likelihood ratio of 2 give 2:5, a probability of 2/7, about 29\\%.}"
+  ],
+  [
+   3691,
+   "\\cpara{Gives the other side: probabilities of exclusive outcomes add, and odds do not. The odds of rolling 1 to 4 are 4:2, not 0.8.}"
+  ],
+  [
+   4145,
+   "\\cpara{States the purpose of the detour: odds are as legitimate a scale as probabilities, and Cox's theorem shows that all reasonable ways of representing uncertainty are equivalent.}"
+  ],
+  [
+   4604,
+   "\\cfact{The theorem also fixes where certainty goes. In Jaynes's presentation of it (\\textsc{Probability Theory: The Logic of Science}, chapter 2), consistency requires that ``Certainty is represented by w(A|C) = 1,'' with 0 for impossibility, and Jaynes adopts $0 \\le w(x) \\le 1$ with ``no loss of generality.'' The theorem the post cites puts certainty on the scale, at 1; on the odds scale the same point is written as infinity.}"
+  ],
+  [
+   4618,
+   "\\cpara{An argument from appearance, and the appearance depends on the scale. On odds, 1 looks remote; but 0 still goes to 0, so impossibility looks as easy to reach as before. Which appearance to trust is settled only by the argument from evidence later in the post (``reaching infinite certainty requires infinitely strong evidence'').}"
+  ],
+  [
+   5047,
+   "\\cpara{Introduces log odds in decibels, crediting Jaynes, and works an example. The figures check: a probability of 0.0001 is odds of 1:9,999, about $-40$ dB; a likelihood ratio of 100 is 20 dB; and $-20$ dB is odds of 1:100, a probability of about 0.0099.}"
+  ],
+  [
+   5584,
+   "\\cpara{On log odds both ends are infinite. The claim is hedged: they ``seem a bit more out-of-reach.''}"
+  ],
+  [
+   5789,
+   "\\cpara{Sets up a comparison: in probability, the gap from 0.502 to 0.503 is larger than the gap from 0.9999 to 0.99999.}"
+  ],
+  [
+   6065,
+   "\\cpara{Shows that on odds and log odds the comparison reverses. The conversions are right to the digits given.}"
+  ],
+  [
+   6352,
+   "\\cpara{The post's central fact, and correct. In log odds, Bayes's rule is addition: posterior log odds equal prior log odds plus the logarithm of the likelihood ratio. So the gap between two degrees of belief is the evidence needed to cross it.}"
+  ],
+  [
+   6616,
+   "\\cpara{Correct for updating. From prior odds strictly between 0 and infinity, the posterior odds stay finite unless the likelihood ratio is infinite, that is, unless the evidence has probability 0 under the alternative.}"
+  ],
+  [
+   6806,
+   "\\cpara{True of the elementary form of Bayes's rule, which divides by the probability of the observation. But standard theory meets this case all the time. ``The (absolute) probability for a continuous random variable to take on any particular value is zero'' (Wikipedia, ``Probability density function''), yet some value is observed, and updating on it is done with densities. There are pitfalls: the Borel--Kolmogorov paradox shows that the answer can depend on how the observation is described. In standard theory, probability 0 does not mean impossible.}"
+  ],
+  [
+   7043,
+   "\\cpara{The proposal claims more than the argument showed. The log-odds argument shows that certainty cannot be reached by updating from a belief short of it. It does not show that nothing may have probability 1, for example $A$ or not-$A$. The title and this paragraph make the second claim.}"
+  ],
+  [
+   7230,
+   "\\clogic{Taken literally, the proposal also rules out continuous distributions. Among mutually exclusive events, at most $n$ can have probability above $1/n$, or together they would have more than 1. So at most countably many can have positive probability, and a quantity with uncountably many possible exact values must give most of them probability 0.}"
+  ],
+  [
+   7244,
+   "\\cpara{Understates what would go. That the probabilities of all possibilities sum to 1 is not an assumption made in some proofs. It is one of Kolmogorov's three axioms, $P(\\Omega)=1$, and $P(\\emptyset)=0$ follows from them (Wikipedia, ``Probability axioms''). So every probability model has events of probability 1 and 0, such as $A$ or not-$A$, and $A$ and not-$A$. Here the analogy of the previous paragraph fails: infinity breaks the field axioms of the real numbers, while the axioms of probability require 0 and 1.}"
+  ],
+  [
+   7490,
+   "\\cpara{Rightly says that a model's list of outcomes may leave something out. That puts the probability of the listed outcomes below 1. It does not remove 1 from the scale, as the next paragraph concedes: the list plus ``all possibilities I haven't considered'' still has certainty.}"
+  ],
+  [
+   7773,
+   "\\cpara{The ``magical symbol'' T is what standard theory calls the sample space: the event that some outcome, listed or not, occurs. It has probability 1 by axiom and obeys the same rules as every other event. The post calls it magic but names no rule it breaks.}"
+  ],
+  [
+   8015,
+   "\\cpara{Ends with a wish (``I would rather ask whether there's some way''). The post proposes no axiom to replace the one it would drop, and derives no theorem without it.}"
+  ]
+ ]
+}
