@@ -2403,3 +2403,156 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: He also said that the dogmatic attitude of sticking to a theory as long as possible is ``of considerable significance.''}
 - After: He also said that ``a critical attitude needs for its raw material, as it were, theories or beliefs which are held more or less dogmatically.''}
 
+
+## is-that-your-true-rejection
+
+- Before: My evidence is that the same critics do not ask for a PhD when I write about rationality, and one story about Eric Drexler. From this I describe what happens in their heads.
+- After: From two pieces of evidence, both below, I describe what happens in their heads.
+
+- Before: ``If that,'' I add. This is a convenient threshold for someone without a doctorate.
+- After: ``If that,'' I add.
+
+- Before: argued in print that Drexler's machines could not work.} I do not mention him, or consider that the doubters stayed doubters for technical reasons.
+- After: argued in print that Drexler's machines could not work. The post does not mention him, or consider that the doubters stayed doubters for technical reasons.}
+
+
+## avoiding-your-belief-s-real-weak-points
+
+- Before: I could have predicted this. I make the prediction after knowing the outcome. I add that he is the only member of my family besides me to have left.
+- After: I could have predicted this. \nb{The prediction is made after knowing the outcome.} I add that he is the only member of my extended family besides me to have left, as far as I know.
+
+- Before: Orthodox Judaism, I say, is like no other religion: you may notice
+- After: Modern Orthodox Judaism, I say, is like no other religion I have heard of: you may notice
+
+- Before: Three paragraphs later I grant that there are ``probably a dozen'' replies. A dozen replies means that someone asked. I do not discuss any of them.
+- After: Three paragraphs later I grant that there are ``probably a dozen'' replies. \nb{A dozen replies means that someone asked.} I do not discuss any of them.
+
+- Before: and then to your second. I do not apply this to my own belief, that believers stay by avoiding their weak points. Its weakest point is what Jews actually say about the hard passages, and I avoid it.
+- After: and then to your second. \nb{The post does not apply this advice to its own thesis, that believers stay by avoiding their weak points. The thesis's weakest point is what Jews actually say about the hard passages, and the post does not look at it.}
+
+
+## belief-as-attire
+
+- Before: and I call it ``belief as attire.'' My only test is ``you can tell, because the Enemy talks about it.'' It cannot tell a badge from a belief that one's group holds for good reasons.
+- After: and I call it ``belief as attire.'' \nb{The post gives no way to tell a belief worn as a badge from a belief the group holds for good reasons, beyond the quip ``you can tell, because the Enemy talks about it.''}
+
+- Before: \nb{The first phrase is President Bush's, from his speech to Congress nine days after the attacks.} I present it as what ordinary Americans say. In America
+- After: \nb{The first phrase echoes President Bush's speech to Congress nine days after the attacks: ``They hate our freedoms.''} In America
+
+- Before: The people whose beliefs I describe as attire are Americans in an Alabama bar, the Enemy, and the supporters of both parties. I do not ask whether any belief of mine, or of my readers, is worn this way.
+- After: \nb{The post applies the idea to Americans in an Alabama bar, the Enemy, religious people and supporters of both parties. It does not ask whether any belief of its author or its readers is worn this way.}
+
+
+## cached-thoughts
+
+- Before: consists of looking things up. After this I use only one phrase from it, ``the brain completes the pattern.''
+- After: consists of looking things up. \nb{After this the post uses only one phrase from the neuroscience, ``the brain completes the pattern.''}
+
+- Before: \nb{This is a man who acted on a bad source without checking it.} From here on, a ``cached thought'' means believing what someone told you.
+- After: \nb{This is a man who acted on a bad source without checking it. From here on, a ``cached thought'' in the post means believing what someone told you.}
+
+- Before: raised by wolves, I would hardly be human. \nb{So relying on other people's conclusions is how knowledge works, and the real question is which conclusions to trust.} My only answer is to distrust thoughts ``not invented by critical thinkers.''
+- After: raised by wolves, I would hardly be human. The flip side, I say, is that people who aspire to critical thinking repeat thoughts ``not invented by critical thinkers.'' \nb{So relying on other people's conclusions is how knowledge works. The real question is which conclusions to trust, and the post does not take it up.}
+
+- Before: Next come my examples of cached thoughts. The first, I say, is repeated even by people who aspire to critical thinking: ``You can't
+- After: Next come my examples of cached thoughts. The first is a skeptic's concession: ``You can't
+
+- Before: \nb{The first had a well-known, argued defense by the scientist Stephen Jay Gould.} I do not mention him; a post I link in a footnote argues against the idea. Here I add that a few centuries ago
+- After: \nb{The first had a well-known, argued defense by the scientist Stephen Jay Gould. The post does not mention him.} Of the first, I say it is ``simply false as probability theory,'' pointing to an earlier post, and add that a few centuries ago
+
+- Before: you will think, ``Cached thoughts.'' Earlier I asked what patterns are being completed ``inside your mind.'' But the use I name at the end is for views you already reject, held by other people. I then ask
+- After: you will think, ``Cached thoughts.'' \nb{Earlier the post asked what patterns are being completed ``inside your mind.'' The use it names at the end is for views the reader already rejects, held by other people.} Then I ask
+
+
+## the-fallacy-of-gray
+
+- Before: I open with a dialogue from a novel.
+- After: I open with a dialogue from Marc Stiegler's novel \textsc{David's Sling}.
+
+- Before: the Sun is made mostly of hydrogen are both
+- After: the Sun is made mostly of hydrogen and helium are both
+
+- Before: theories are always applied through personal and cultural filters. \nb{Cowen's point was that economic theory has biases of its own, and that judgment can offset them. That is a claim about which gray is lighter, which is the essay's own subject.} I answer as if he had said that all grays are the same.
+- After: theories are always applied through personal and cultural filters. I reply that you can try to minimize that effect, and then call the result ``straightforward.'' \nb{Cowen's point was that economic theory has biases of its own, and that judgment can offset them. That is a claim about which gray is lighter, which is the essay's own subject. The post uses him as an example of treating all grays as the same.}
+
+- Before: \nb{That is true. But whether you may assume that the future will resemble the past is exactly what the objection ``science is faith too'' is about.} I simply assume it. \nb{Six months later, in ``Where Recursive Justification Hits Bottom,'' Yudkowsky conceded that probability theory does not by itself solve this problem.}
+- After: \nb{That is true. But whether you may assume that the future will resemble the past is exactly what the objection ``science is faith too'' is about, and the post simply assumes it. Six months later, in ``Where Recursive Justification Hits Bottom,'' Yudkowsky wrote that his own defense of induction goes ``around in a loop'': he expects the future to resemble the past because that rule has usually worked before.}
+
+- Before: I name none of these people either, and I diagnose their motives instead of answering them.
+- After: I name none of these people either.
+
+
+## lonely-dissent
+
+- Before: and that a quarter of them never gave in at all.} I leave that out.
+- After: and that a quarter of them never gave in at all. The post leaves this out.}
+
+- Before: which I support. The listeners I imagine do doubt that it will work (``You think that's going to stop you from dying?''), but I treat their doubt as incomprehension, not as a judgment that might be right.
+- After: which I support. \nb{The imagined listeners do doubt that it will work (``You think that's going to stop you from dying?''), but the post treats their doubt as incomprehension, not as a judgment that might be right.}
+
+- Before: Then an evolutionary story, which I call post facto and then use as fact. A small group
+- After: Then an evolutionary story, which I say I am ``tempted'' to offer as a post facto explanation. A small group
+
+- Before: probably died. So ``the fear of thinking really different is stronger than the fear of death.'' My evidence is that
+- After: probably died. The case of cryonics, I say, shows that ``the fear of thinking really different is stronger than the fear of death,'' because
+
+- Before: and no one has ever been revived.} I do not mention either difference.
+- After: and no one has ever been revived. The post does not mention either difference.}
+
+- Before: I link the two by one feature, being first. I do not ask whether cryonics is also right, which by my next paragraph is the hard part.
+- After: \nb{The post links Ettinger and the scientific revolutionaries by one feature, being first. It does not ask whether cryonics is also right, which a few paragraphs later it calls the hard part.}
+
+- Before: Then come the two sentences that matter most. Not every dissenting idea is good, and
+- After: Then I say that not every dissenting idea is good, and that
+
+- Before: \nb{Hanson's post argues that careless dissenters are the main obstacle to good new ideas.} I do not apply this to cryonics.
+- After: \nb{Hanson's post argues that ``undiscriminating freethinkers are our main obstacle to innovation.'' The post does not apply this to cryonics.}
+
+
+## positive-bias-look-into-the-dark
+
+- Before: The hard part is choosing which case that should not fit to test.} I do not say how to choose.
+- After: The hard part is choosing which case that should not fit to test, and the post does not say how to choose.}
+
+- Before: and that it fails mainly in tasks built like this one.} I do not mention them.
+- After: and that it fails mainly in tasks built like this one. The post does not mention them.}
+
+- Before: From one experiment built to defeat positive testing, I conclude that looking only at positive cases is ``human instinct.'' ``For by instinct,
+- After: Looking for negative cases, I say, goes against what experiment has shown to be ``human instinct.'' ``For by instinct,
+
+- Before: so knowing about it will not fix it.
+- After: so knowing about it in words will not by itself fix it.
+
+- Before: but it shows the error depends on how the task is framed, not only on instinct.} I report the fifth. I remind you
+- After: but it shows the error depends on how the task is framed, not only on instinct. The post reports only the fifth.} I remind you
+
+
+## knowing-about-biases-can-hurt-people
+
+- Before: such as weather forecasters, are well calibrated.} So my first sentence hands my mother a weapon stronger than the evidence for it.
+- After: such as weather forecasters, are well calibrated. So the post's first sentence hands the mother a weapon stronger than the evidence for it.}
+
+- Before: motivated skepticism and sophisticated arguers, which are more names for other people's errors. ``The literature
+- After: motivated skepticism and sophisticated arguers. ``The literature
+
+- Before: I add: ``First, do no harm!'' The rule changes the order of the warnings. The man in my story had heard the warning, and used it on me.
+- After: I add: ``First, do no harm!'' \nb{The rule changes only the order of the warnings. The man in the story had heard the warning about sophisticated arguers, and used it against the author. The post itself says that notion ``can be deadly.''}
+
+
+## politics-is-the-mind-killer
+
+- Before: could get you killed. No evidence follows, then or later.
+- After: could get you killed. I give no evidence for this.
+
+- Before: ``unless all the discussants are already rational.'' Any group that wants to argue about politics can decide it qualifies, so anyone can exempt themselves from the rule.
+- After: ``unless all the discussants are already rational.'' \nb{Any group that wants to argue about politics can decide it qualifies.}
+
+- Before: I decide it was to get in a dig at the other side. I offer no evidence for the motive, and I do not consider the plain reason: Nixon was a famous man who was both a Quaker and a Republican.
+- After: I say it was ``probably'' to get in a dig at the other side. \nb{The post offers no evidence for the motive, and does not consider the plain reason: Nixon was a famous man who was both a Quaker and a Republican.}
+
+- Before: What matters is ``the spiritual growth of the community.'' So the rule exists to keep the peace, and I say so. Keeping the peace and finding out what is true are different aims, and here I argue only for the first.
+- After: What matters is ``the spiritual growth of the community.'' \nb{So this rule exists to keep the peace. Keeping the peace and finding out what is true are different aims, and here the post argues only for the first.}
+
+- Before: My title says that politics kills minds. My essay says that politics is a poor place to practice. Readers will remember the title, and use it to end conversations. \nb{Seven years later,
+- After: \nb{The title says that politics kills minds; the essay says that politics is a poor place to practice. The title is the part that gets quoted. Seven years later,
+
