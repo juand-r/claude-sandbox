@@ -420,3 +420,140 @@ My extraction script at first read only `\cpara` and `\clogic`. The annotated ed
 - **ANN≠HON, weak.** The "Jane" `\cstyle` and the afterword ("the post twice calls her 'Jane'"). Pass 2 cut this from the honest rewrite as a nitpick. The "Griffin Gilovich" editor slip in the afterword is similar: true, but trivial.
 - **ANN, OK.** The overhearers narrowing the mechanism (the abstract's "informed about the speakers' intention" and "monitor their own utterances," verified in pass 2 via Crossref), ambiguous sentences chosen by design, the Chamberlain date (22 August against 1 September), and the letter's wording all check out. So does the careful hedge on what Hitler privately expected.
 - **HON, OK.**
+
+## 46. Something to Protect
+
+- **ANN≠HON, error.** The afterword says "Change the numbers so that they disagree, and love points the other way." While the parent does not know which of the 500 is the daughter, the numbers cannot be changed so that they disagree. Her chance under each option is always the expected number saved divided by 500. This was established and corrected in the skeptic pass, where the honest note says the two always agree, "as the post itself says." The margin note's own counterexample changes the *information* (the parent knows the daughter is among the 400), not the numbers. It also leaves the post's stated case ("you don't know which one"). "The example was built for ... [them] to agree" suggests design, where the agreement is an identity.
+- **ANN, OK (sharp point).** The note that the daughter's framing removes the certainty is correct. From her side, option 1 saves her with probability 80%, so the "comforting feeling of certainty" the essay says love overcomes is gone before love does anything. This point is not in the honest rewrite. It is a fair addition if you want it.
+- **ANN, weak.** The teenage drink-drivers note (a small chance of death, not death) is fair but minor.
+- **ANN, not re-verified.** The "Magnitude of His Own Folly" quotation ("that one most precious thing, far more important than my own life") and Khan's NBER paper wording were not rechecked here. The inference about the unnamed cause is labelled.
+- **ANN, OK.** Spider-Man's motive, Rottenstreich and Hsee, "forget for a moment" left standing, and the one-person history for a universal claim all check out.
+- **HON, OK.**
+
+## 47. The Gift We Give To Tomorrow
+
+- **ANN≠HON, error.** The flower `\cfact` quotes Streinzer and others (2010): sexual deception "has so far only been discovered in the orchid family." The afterword says it "is known only in orchids." The honest rewrite was corrected in the verification round (commit 3b7725c): cases are also known in a South African daisy (*Gorteria diffusa*, reported in 2010) and an Asian iris (*Iris paradoxa*). The annotated edition still has the older, absolute claim. The main point, that flowers in general do not imitate bee mating signals, stands.
+- **ANN, not re-verified.** The SEP quotation on evolutionary "etiology," the SEP summary of Street, and Ollerton, Winfree and Tarrant's 87.5% figure were not rechecked here.
+- **ANN, OK.** The pronoun choice (labelled inference), the Gandhi objection left unanswered, no outside standard of value assumed where it matters, the complexity "law" assumed, the evolutionary debunking literature (Street 2006, Joyce, the replies), and the unargued future in the fairy tale all check out.
+- **HON, OK.**
+
+## 48. On Caring
+
+- **ANN, error (overclaim).** The margin note says "The story's hero, as told, gives nothing," and the afterword says he "gives nothing, to the birds or to anything else." The post says only that "Daniel doesn't wind up giving $50k to the WWF, and he also doesn't donate to ALSA or NBCF." It does not say he gives nothing to anything else. It hopes he finds effective altruism, which implies he will give somewhere. The honest rewrite states exactly the three charities, which is the accurate version. The point that the one worked case ends in a change of attitude is fair.
+- **ANN, not re-verified.** Slovic's closing quotation ("we must look to moral argument and international law") and Soares's 2015 announcement ("a little over a year") were not rechecked here. The paper title from Mother Teresa is standard.
+- **ANN, OK.** The unstated assumption that each bird is worth the same however many there are (with fair rival views), no multiplication shown for poverty or the future, Mother Teresa enlisted against her own statement, MIRI undisclosed, and the unsourced "quadrillions" as the only bridge all check out.
+- **HON, OK.**
+
+## 49. Tsuyoku Naritai! (I Want To Become Stronger)
+
+- **ANN≠HON, unfair.** The last margin note and the afterword ("closing in the posture of the rabbi it has just made the butt of a joke") set the closing line beside the rabbi's "Look who thinks he's nothing." The skeptic pass cut this from the honest rewrite as unsupported. The rabbi guards his rank in humility, while the author's line does not deny anyone equality in flaws. It says confession without a plan is empty, which is the essay's thesis. The notes label it as inference, but the parallel does not hold, and it is the afterword's closing line.
+- **ANN, not re-verified.** The conditional wording of Shabbat 112b (Sefaria) and the Schechter Institute statement that Rav Hamnuna's confession "is found in most versions of the mahzor" were not rechecked here. The Maimonides passage and the Yoma 87b line were verified on Sefaria in pass 2.
+- **ANN, OK.** The central point, that the essay's thesis is the tradition's own rule, presented as a correction of it, is sound, and it appears in both editions.
+- **HON, OK.**
+
+## 50. A Sense That More Is Possible
+
+- **ANN≠HON, unfair (central to the afterword).** The aikido `\cfact`, and the afterword's closing paragraph ("Some schools reject competition as contrary to their spirit, and flourish anyway. The analogy ... shows how a discipline can grow without the testing the essay calls essential"), confuse growing in popularity with "get[ting] somewhere" in skill, which is the post's claim. The lack of realistic contests in aikido is the standard reason critics doubt its combat effectiveness, so the example supports the post. The skeptic pass cut aikido from the honest rewrite for this reason. The afterword's "leans on an analogy that does not hold" rests on this example.
+- **ANN, not re-verified.** The Nisbett chapter quotations ("in laboratory sessions lasting less than an hour"; "over a period of at least several weeks") were not rechecked. Lehman and Nisbett's "reasoning is taught and generalizable" was checked in pass 2 against the ERIC abstract.
+- **ANN, OK.** The rising bar that makes the opening objection untestable, the change of question from happiness to formidability, and the alternative that there may be little general skill to train all check out. All three are in the honest rewrite.
+- **HON, OK.**
+
+## 51. Strong Evidence Is Common
+
+- **ANN, OK (and a point for HON).** The `\cfact` arithmetic is right. From prior odds of 1:99, evidence of 200:1 gives 200:99, about 67%, and 99:1 would give 50%. So the post's "To be 50% sure you're in the top 1%, you only need 200:1 evidence" is off, in the safe direction. The honest rewrite repeats the post's figure without noting this. One clause would fix it, if you want it.
+- **ANN≠HON, weak.** The EMH `\clogic` ("hard to beat the market, not hard to make money") is technically right, but the post's next sentence ("only the top 1% of traders will be profitable") shows it means active trading against the market. The skeptic pass cut this from the honest rewrite as a nitpick.
+- **ANN, OK.** The unstated mechanism (narrow claims, and people rarely lie about their names), the move from one's name to one's own merit, noisy returns and survivorship, and Sagan's sense of "extraordinary" all check out. These are in both editions.
+- **HON, see above.**
+
+## 52. "PR" is corrosive; "reputation" is not
+
+- **ANN, style (pronouns).** The afterword says "*Her* advice" of the author. The honest rewrite avoids third-person pronouns for her. See the general note at the end.
+- **ANN, weak.** "The whole post is a prediction ... with no cases offered" is fair. But the post calls itself "a small detail" and asks for critique, which the afterword itself acknowledges. The duel point is shared with the honest note ("Men died this way ...") and is defensible, though a defender may say the example illustrates the concept rather than endorses duelling.
+- **ANN, OK.** The definition deciding the comparison, the consultant observation credited as the real point, and the timing (14 February 2021, the day after the *New York Times* article; the Rhinehart quotation verified in pass 2 from the archive) all check out. The inference is labelled.
+- **HON, OK.**
+
+---
+
+## Summary of findings
+
+### What was read
+
+All 52 posts, in book order: each original, then every note in the annotated edition (`\cpara`, `\clogic`, `\cfact`, `\cstyle`, `\cauthor`) with the afterword's summary and response, then the honest section. At first my extraction script read only `\cpara` and `\clogic`. I found this at post 14, fixed it, and re-read the missed notes for posts 1 to 13 (see the addendum after §13).
+
+### The honest rewrite
+
+The honest rewrite is in good shape. Only five items remain, all small, and all are for you to decide:
+
+1. §28: "does not screen off the expert" could read "does not *fully* screen off," because the post keeps a small weight for authority.
+2. §31: the mortgage note could add that the post misdescribes the model (Li's Gaussian copula modelled dependence, not independence).
+3. §32: the Alabama note implies a contradiction with "Republican voters" that is not there. It could say that the party had backed the candidate, so the policing came from voters only.
+4. §40: the nanotechnology note invites an inference ("the rule is for everyone else") without supporting it. Say what follows, or cut it.
+5. §51: "you need only 200 to 1" is the post's arithmetic. It actually gives about 67%; 99 to 1 gives 50%.
+
+There are also two author-voice lines in §1 that read as editor judgments ("That is a joke, and it is the whole defense"; "The ones who said yes were not asked to explain anything"), and "admit" / "So 'rational' means good thinking" in §2. They are accurate. They are the kind of line you flagged, so I list them for you to rule on.
+
+The honest rewrite also has two points it could borrow from the annotated edition: §46, that the daughter framing removes the certainty; and §30, that the Jaynes quotation is now found.
+
+### The annotated edition
+
+The annotated edition has many problems. Counts (a finding may carry more than one label):
+
+| Label | Count |
+|---|---|
+| error, in the annotated edition only | 9 |
+| error, already fixed in the honest rewrite | 5 |
+| unfair, in the annotated edition only | 30 |
+| unfair, already fixed in the honest rewrite | 11 |
+| contestable | 7 |
+| weak (nitpick, jab, or unlabelled inference) | 77 |
+
+**Errors** (wrong about the post or the facts):
+- §4: "Yoda immediately lifts the ship."
+- §6: the "(on average)" sentence is called wrong.
+- §8: two notes contradict each other on whether the essay answers its "awkward" objection. Statistics is said to have been taught "for as long as there have been schools."
+- §9: "most people's" for "many whose ... abysmal."
+- §10: "The essay's content ends here" against "the first new idea" later.
+- §19: "the commenter's argument is not given."
+- §29: 46% said to describe "students" when the 1998 study found it among doctors.
+- §36: "the essay offers no correction."
+- §45: Hitler's reply is cut to "I take note of this statement."
+- §46: "change the numbers so that they disagree."
+- §47: deception is said to be "known only in orchids."
+- §48: Daniel "gives nothing."
+
+**Unfair, and central to the afterword** (a defender wins):
+- §2: the juror misread in the present tense, and "settles by definition" on Newcomb.
+- §5: the Popper principle "misapplied."
+- §6: the socks argument (cures of will).
+- §7: "preaches confession and does not confess."
+- §11: backward flow "misclassifies the approved case."
+- §13: "renames rationalization."
+- §23: private reasons against failure to persuade.
+- §33: the title misread as "science fails."
+- §50: aikido as a counterexample.
+
+### Patterns behind the problems
+
+1. **Dropped hedges.** "Probably," "perhaps," "I have heard of," "seems," "(on average)" are left out, and the claim is then attacked as absolute (§14, §19, §21, §39, §6).
+2. **Overclaiming.** "False," "refutes the title," "never," "cannot fail" are used where "overstated" or "weak" is what the evidence shows (§3, §10, §14, §15, §28).
+3. **Readings of motive,** labelled or not, that the text does not support (§4, §15, §18, §40, §49).
+4. **The annotated edition was not updated** after corrections made in the honest rewrite (the 16 ANN≠HON errors and unfair findings above, plus 18 weak ones).
+5. **Notes contradicting each other** within one post (§8, §10, §29, §38).
+6. **Uncharitable definitions.** Terms are read against their sense in the post: "novel prediction" (§33); "Bayes" as a claim about discovery (§34); "can't help" (§33).
+
+### New facts found in this pass
+
+The Jaynes sentence the annotated edition could not find is in *Probability Theory: The Logic of Science* (§30).
+
+### Pronouns
+
+The afterwords use "he," "his" and "her" for post authors (Salamon, Soares, Xu, Alexander, Yudkowsky). I did not verify anyone's pronouns, and the rule I work under is not to infer them from a name. The honest rewrite mostly avoids the issue through its first-person voice, but its n.b. notes use "he" for Yudkowsky in several places. You may want these checked or rephrased ("the author").
+
+### Not re-verified in this pass
+
+About 35 outside quotations or figures in the annotated edition were not rechecked here. Each is marked "not re-verified" under its section. None of them appears in the honest rewrite unless it was verified in pass 2.
+
+### Decisions for you
+
+1. Should the annotated edition be corrected to match the honest rewrite? If so, the list above is the worklist, errors and central unfair points first.
+2. Which of the five small honest-rewrite items above do you want applied?
