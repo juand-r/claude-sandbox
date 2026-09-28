@@ -2778,3 +2778,78 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: ``count the lines of code.''} The warning is for your beliefs, not mine.
 - After: ``count the lines of code.'' The warning is for the reader's beliefs, not the author's.}
 
+
+## taboo-your-words
+
+- Before: The definition I used already contained ``mortal.'' I do not consider a definition that leaves it out. \nb{John Stuart Mill made the same charge against the syllogism in 1843.}
+- After: \nb{The definition used already contains ``mortal,'' and the post does not consider one that leaves it out. John Stuart Mill made the same charge against the syllogism in 1843.}
+
+- Before: Banning the word would show the difference. This is the case where the method would find a real disagreement, and I give no real example of it.
+- After: Banning the word would show the difference. My example is two people who both call Socrates ``human,'' one expecting him to die after drinking hemlock and the other not. \nb{This is the case where the method would find a real disagreement, and the post gives no real example of it.}
+
+- Before: ``mostly they won't be able to answer at all.'' Nobody has been asked.
+- After: ``mostly they won't be able to answer at all.'' \nb{The post reports no one being asked.}
+
+- Before: I do not do the exercise myself. A disagreement over whether people are morally responsible for what they do is where a real dispute about free will would show up. I ban ``responsible'' too, and I do not show how that dispute would be stated without it.
+- After: \nb{The post does not do the exercise itself. A disagreement over whether people are morally responsible for what they do is where a real dispute about free will would show up, and the post does not show how that dispute would be stated without the word ``responsible.''}
+
+- Before: it works way way better than the standard one.'' I have not shown it working on any open question.
+- After: it works way way better than the standard one.'' \nb{The post has not shown it working on any open question.}
+
+
+## dissolving-the-question
+
+- Before: Human neurobiology is surely far more complex.)'' I give no evidence that brains contain such a unit.
+- After: Human neurobiology is surely far more complex.)''
+
+- Before: I call my example of such a story ``a completely bogus explanation.'' My central unit is a story about mechanism, and I give no more evidence for it than for the bogus story.
+- After: I call my example of such a story ``a completely bogus explanation.'' \nb{The central unit is also a story, about mechanism instead of origin, and the post gives no more evidence for it than for the bogus one.}
+
+- Before: My other test is being able to walk through the algorithm ``step by step,'' and I do not say who decides when that has been done.
+- After: My other test is being able to walk through the algorithm ``step by step.''
+
+
+## diseased-thinking-dissolving-questions-about-disease
+
+- Before: The test in my rule is whether a condition responds to social pressure. My second criterion for disease was that it is ``completely immune to the operations of free will.'' I had promised to decide sympathy ``independently of the central node `disease' or of the criteria that feed into it.'' So the question I set out to dissolve comes back, with one of its own criteria doing the work.
+- After: \nb{The test in the rule is whether a condition responds to social pressure. That is close to the second criterion for disease, being ``completely immune to the operations of free will,'' restated without free will. The post had promised to decide sympathy ``independently of the central node `disease' or of the criteria that feed into it.''}
+
+- Before: \nb{Whether condemnation reduces a condition is a question of fact.} For laziness I say that it ``very well might''; for obesity, the case I began with, I leave it open. My rule speaks of the ``incidence'' of a condition, and I endorse condemnation that deters others. So it allows condemning a person who cannot change, as long as others are deterred. I do not discuss that case.
+- After: For laziness I say that condemnation ``very well might'' work; for obesity, the case I began with, I say the answer may depend on the person. \nb{Whether condemnation reduces a condition is a question of fact. The rule speaks of the ``incidence'' of a condition, and the post endorses condemnation that deters others, so the rule allows condemning a person who cannot change, as long as others are deterred. The post does not discuss that case.}
+
+- Before: \nb{Grace's pattern was about sacrifices for problems ``that don't threaten them personally.'' Obesity does threaten them personally.}
+- After: \nb{Grace's pattern was about sacrifices for problems ``that don't threaten them personally.'' Obesity does threaten them personally.} I grant that drugs raise reasonable objections, such as side effects and cost, and say that these apply to cancer drugs too.
+
+- Before: where blame and stigma are the most useful methods for curing or preventing the condition.'' I have not shown, for any condition, that they are.
+- After: where blame and stigma are the most useful methods for curing or preventing the condition.'' \nb{The post has not shown, for any condition, that they are.}
+
+
+## hug-the-query
+
+- Before: my own post defending molecular nanotechnology. \nb{No experiment had yet tested it.}
+- After: my own post defending molecular nanotechnology. \nb{Molecular nanotechnology was a position Yudkowsky held, and no experiment had yet tested it.}
+
+
+## say-not-complexity
+
+- Before: complexity should never be a goal in itself. Marcello had not said it was a goal. I was thinking,
+- After: complexity should never be a goal in itself. \nb{Marcello had not said it was a goal.} I was thinking,
+
+- Before: with the line ``then a miracle occurs'' in the middle.}
+- After: with the line ``then a miracle occurs'' in the middle. The post quotes that line later.}
+
+- Before: ``left and right, over and over again,'' and in academia and AI startups. I name no one making it.
+- After: ``left and right, over and over again.'' I name no one making it, and say it is how human beings think by default.
+
+
+## mind-projection-fallacy
+
+- Before: like her height. I do not consider that the woman was on the cover to sell the magazine to human buyers, which would explain the cover without any error about minds.
+- After: like her height. \nb{The post does not consider that the woman was on the cover to sell the magazine to human buyers, which would explain the cover without any error about minds on the artist's part.}
+
+- Before: and in Hume's definition of a priori ideas. \nb{
+- After: and in Hume's definition of a priori ideas as those ``discoverable by the mere operation of thought.'' \nb{
+
+- Before: he described this very error.} I list his sentence on ideas discoverable ``by the mere operation of thought'' as a case of it.
+- After: he described this very error.}
+
