@@ -1,0 +1,77 @@
+{
+ "slug": "what-evidence-filtered-evidence",
+ "header": "\\post{What Evidence Filtered Evidence?}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/kJiPnaQPiy4p9Eqki/what-evidence-filtered-evidence}\n",
+ "skeleton_sha": "ccb4033c0d8fc9a1042833f38d393fc598a2b014196d22aad19fe3086e75a0df",
+ "post_sha": "88afb2a8ea34ee36de61544c3f6b26d632da47a766a9b523a13a02fc619ad7e8",
+ "edits": [],
+ "notes": [
+  [
+   149,
+   "\\cpara{Returns to the clever arguer of ``The Bottom Line,'' posted the day before (28 September 2007), and asks what that post left open: what the arguer's true statements are worth. This post gives the answer that the note on that post's key step asks for: discount a one-sided list for what it leaves out; do not discard it.}"
+  ],
+  [
+   585,
+   "\\cpara{States the dilemma: each true statement is evidence, yet an arguer who picks among many signs could then make you believe anything. The rule attributed to Jaynes is in Jaynes's book: a reasoner ``always takes into account all of the evidence it has relevant to a question'' (\\textsc{Probability Theory: The Logic of Science}, desideratum IIIb).}"
+  ],
+  [
+   1130,
+   "\\clogic{The parallel worlds again, as in ``The Bottom Line'' (see the note there). A proportion over many similar boxes says the same thing.}"
+  ],
+  [
+   1402,
+   "\\cpara{Sets up the coin: two equally likely hypotheses, heads two-thirds or one-third of the time, and a speaker who reports that three of ten flips came up heads.}"
+  ],
+  [
+   1684,
+   "\\clogic{The footnote defines bits as logarithms of probabilities, which measures the information in an outcome. The ``1 bit'' in the text is something else: the base-2 logarithm of the likelihood ratio, here 2 to 1 (2/3 against 1/3). ``How Much Evidence Does It Take?'' makes the same switch between the two measures; see the note there.}"
+  ],
+  [
+   2646,
+   "\\cpara{The thesis: what the report shows depends on the rule by which the speaker chose what to report.}"
+  ],
+  [
+   2855,
+   "\\cpara{The figures are right. Three reported heads under a fixed rule give odds of $2^3 = 8$ to 1; three heads and seven tails give $2^3/2^7 = 1/16$. Under the third rule the post stops at ``And so on''; the report would mean that at least 8 of the 10 flips were heads, odds of 64 to 1 or more.}"
+  ],
+  [
+   3554,
+   "\\cpara{States the problem, without saying how the host chooses which door to open. That omission is the point of the example.}"
+  ],
+  [
+   3899,
+   "\\cpara{Gives three rules for the host and the right answer under each: switch (a two-thirds chance) if the host always opens an empty door you did not pick; even odds if the host always opens door 2 and it happens to be empty; stay if the host opens a door only when your first pick holds the money. All three are correct.}"
+  ],
+  [
+   4336,
+   "\\cpara{Explains the common confusion: conditioning only on door 2 being empty gives even odds, and the host's choice to open it is left out.}"
+  ],
+  [
+   4749,
+   "\\cpara{States the general lesson: condition on the event that a speaker with some rule of selection said the words, not only on the fact the words report.}"
+  ],
+  [
+   5214,
+   "\\clogic{The coin and the doors are cases in which the listener knows the speaker's rule and the number of flips or doors. The post does not work through its opening case: an arguer who reports every sign favouring B to a listener who does not know how many signs there are. The author worked it out in a comment the next day: ``Your actual probability starts out at 0.5, rises steadily as the clever arguer talks \\ldots\\ and then suddenly drops precipitously as soon as he says `Therefore\\ldots'.''}"
+  ],
+  [
+   5228,
+   "\\cpara{Applies the lesson to courts: two opposed advocates bring out between them the evidence each would hide. For a question with two sides this is ``almost as good'' as one curious inquirer; for questions with many sides, the post says, it is not.}"
+  ],
+  [
+   5384,
+   "\\cfact{``Most'' is overstated. This is the theory of the adversarial systems of common-law countries. In the inquisitorial system the court itself investigates the facts, and it ``is the prevalent legal system in Continental Europe, Latin America, African countries not formerly under British rule, East Asia (except Hong Kong)'' and elsewhere (Wikipedia, ``Inquisitorial system''). That system is closer to the post's ``one curious inquirer.''}"
+  ],
+  [
+   5876,
+   "\\cpara{Limits the idea: filtering is no excuse to ignore evidence you dislike. If you already know your own side's best arguments, a contrary argument gives no reason to suspect hidden evidence in your favour, and ``a blue stamp on box B is still evidence.''}"
+  ],
+  [
+   6175,
+   "\\clogic{Assumed, not argued. Annoyance shows that you care about a question, not that you know its strongest arguments. The listener of the next paragraph, who hears one side ``for the first time,'' may be annoyed too.}"
+  ],
+  [
+   6484,
+   "\\cpara{Names the case where caution is due, one side heard for the first time, and ends with a joke: five minutes of creationists show how solid natural selection is.}"
+  ]
+ ]
+}

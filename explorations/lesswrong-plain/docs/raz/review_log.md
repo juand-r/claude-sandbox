@@ -72,9 +72,25 @@ Faster Than Science note can become a pointer; The Futility of Emergence and Say
 Complexity both make the "unnamed crowds" point; the density of \cpara notes on the
 dialogue lines of The Simple Truth (149) is high.
 
-## Batch 2a (in progress)
+## Batch 2a: first half of Book II (33 posts)
 
 For the whole-book pass: The Proper Use of Humility (order 52) now carries the full
 dictionary point on humility; the Twelve Virtues note (order 297) should become a pointer
 back, and its biographical and "AGI Ruin" material should be reviewed against STANDARDS 2.2
 test 9 (motive readings).
+
+Nine agents. Edits in `docs/raz/changes/batch02a.md`: about 25, of the usual kinds
+(nitpicks cut: a missing sequence in a list, a misdated footnote, an unexplained example
+ranking, "Trained by whom?"; slips moved out of verdicts: a citation, an arithmetic slip;
+claims made conditional where a fair reading exists: "lie", the axioms "rule out"). One
+correction of my own cut: the Persepolis point in No, Really, I've Deceived Myself is a
+factual correction and was restored.
+
+Tooling: md2tex now keeps multi-paragraph footnotes together (2+2=3, What Evidence
+Filtered Evidence?); preamble gained U+2215 and U+2661. All earlier backups unchanged.
+
+For the whole-book pass: The Fallacy of Gray's note on the lottery man can become a
+pointer to But There's Still A Chance, Right? (earlier in book order, now carries the full
+point); Belief as Attire's hijacker note could mention the bin Laden evidence given in Are
+Your Enemies Innately Evil?; Twelve Virtues' humility note (see above). Layout: overfull
+boxes of 45pt (URL in the Book II introduction's footnote) and 8pt, both post text.

@@ -1,0 +1,65 @@
+{
+ "slug": "update-yourself-incrementally",
+ "header": "\\post{Update Yourself Incrementally}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/627DZcvme7nLDrbZu/update-yourself-incrementally}\n",
+ "skeleton_sha": "a4a651387d277f6fac6f8812a066a8a3a471545f8f87fa34776e36e675f26bed",
+ "post_sha": "63d517d896b6291052205cd12db44015376822dba29ec66101843eac1f47dfe8",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Opens with two slogans from earlier posts and states the thesis negatively: no belief can be defended against every possible result. ``Mathematically impossible'' refers to the rule of the linked post, ``Conservation of Expected Evidence''; the notes there discuss what that rule does and does not forbid.}"
+  ],
+  [
+   842,
+   "\\cpara{The positive thesis, with a worked case. A coin that lands heads 95\\% of the time lands tails one time in twenty, so a tail does not refute it. The case is apt: nineteen heads for each tail is the very rate the hypothesis predicts, and at that rate it does better than any rival hypothesis about the coin.}"
+  ],
+  [
+   1376,
+   "\\cpara{States the view the post opposes. That it is ``widely believed'' is asserted without an example, and the next two paragraphs describe the view without naming anyone who holds it.}"
+  ],
+  [
+   1546,
+   "\\cpara{The first half of that view: one confirming case is treated as enough, as if a false theory could fit no event at all. The last two sentences spell out, sarcastically, what such people would have to believe.}"
+  ],
+  [
+   1952,
+   "\\cpara{The second half: one piece of probabilistic counterevidence is treated as disproof. People want debates in which their side has ``not one iota of antisupport.''}"
+  ],
+  [
+   2560,
+   "\\cpara{Raises an objection from debating: concede any point and the other side will use it against you.}"
+  ],
+  [
+   2935,
+   "\\cpara{Answers by changing the goal: rationality is for deciding which side to join, and that decision needs all the evidence. The objector's claim, that concessions lose debates, is not disputed.}"
+  ],
+  [
+   3366,
+   "\\cpara{Restates the rule as an image: each step lands where the evidence puts it, down as well as up, even for a correct model that is not exact.}"
+  ],
+  [
+   3797,
+   "\\cpara{Says that some contrary evidence is normal for an inexact theory: shift down a little and wait for more evidence.}"
+  ],
+  [
+   4268,
+   "\\clogic{``A little'' fits weak evidence, which is what ``iota'' means. One contrary observation need not be weak, and how strong it is depends on the rival hypothesis, which the post never names. In its own coin case, against a fair coin, a tail is ten times likelier under the rival (0.5 against 0.05): one tail divides the odds for the 95\\% hypothesis by ten, while a head multiplies them by only 1.9. Two paragraphs later the post says as much itself: an unlikely contrary result must bring a shift ``large enough to precisely balance the anticipated gain.''}"
+  ],
+  [
+   4442,
+   "\\cpara{Blames yes-or-no reasoning, in which every contrary observation must be argued away. The claim that ``on average, a correct theory will generate a greater weight of support than countersupport'' is right: on average, evidence favours the true hypothesis over any rival.}"
+  ],
+  [
+   5240,
+   "\\cpara{Restates ``Conservation of Expected Evidence'' (13 August 2007, the day before). This version is exact: the average of the possible later probabilities, weighted by how likely each is, equals the present one. It avoids the slip of that post's ``you must expect to be exactly as confident as when you started out'' (see the note there).}"
+  ],
+  [
+   6043,
+   "\\cpara{Draws the conclusion: if you investigate at all, you must expect downward shifts as much as upward ones, so fearing them makes no sense.}"
+  ],
+  [
+   6370,
+   "\\cpara{Ends with the case where the contrary evidence keeps coming: by the time you notice, you have already given the belief up, and that is a reason to celebrate.}"
+  ]
+ ]
+}

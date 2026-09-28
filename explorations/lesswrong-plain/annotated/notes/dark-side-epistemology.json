@@ -1,0 +1,145 @@
+{
+ "slug": "dark-side-epistemology",
+ "header": "\\post{Dark Side Epistemology}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/XTWkjCJScy2GFAgDt/dark-side-epistemology}\n",
+ "skeleton_sha": "07e259b2ef3013c470de5a7d9ef46c5a8b83a1f1564cade51c71ecd0d2572059",
+ "post_sha": "ece0f52398878dcd3eb92d7a142de5a598624ab30c0209f3c96bd6a3d6af1ba0",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{States the thesis in one sentence.}"
+  ],
+  [
+   203,
+   "\\cpara{Recalls ``Entangled Truths, Contagious Lies'' (two days earlier) with a new version of its pebble example: a driveway pebble passed off as a beach pebble. The author's footnote reports a geologist's reply that most driveway pebbles are taken from beaches, so this lie would pass, and calls it a ``Case in point.'' The reply is plausible: Wikipedia's article on pebbles notes that beach pebbles are often used to cover driveways.}"
+  ],
+  [
+   1076,
+   "\\cpara{Moves from pebbles to creationism: a biologist would see that a claim of design requires lies about many linked facts.}"
+  ],
+  [
+   1790,
+   "\\clogic{The retina, whose nerves and blood vessels lie on its surface instead of behind it, is a standard item in arguments that organisms show poor design (Wikipedia, ``Argument from poor design''). The protein item is not explained. The post does not say why weak bonds would count against design. A protein's chain is itself held together by covalent bonds; weaker forces hold its folded shape, and Wikipedia's ``Protein structure'' notes that a protein ``usually undergoes reversible structural changes in performing its biological function.''}"
+  ],
+  [
+   1804,
+   "\\cpara{Says most creationists lie about the general laws, evolutionary theory, rather than about each organism.}"
+  ],
+  [
+   1898,
+   "\\clogic{If ``lie'' has its ordinary sense here (the post turns to self-deception only afterwards), no evidence is given that most creationists know their claims about evolution to be false, and the sentence sits uneasily with the later ``more duped than duplicitous.'' Read loosely, as asserting what is false, it fits the later sentence.}"
+  ],
+  [
+   2031,
+   "\\cpara{Adds a third level, the rules of science, with two examples: what ``theory'' means, and what it means for a scientist to admit uncertainty.}"
+  ],
+  [
+   2241,
+   "\\cpara{Summarizes the three levels: specific facts, general laws, rules of reasoning. This is the post's model of how a lie spreads.}"
+  ],
+  [
+   2520,
+   "\\clogic{The logical point behind this model is W. V. Quine's, in ``Two Dogmas of Empiricism'' (1951): ``Any statement can be held true come what may, if we make drastic enough adjustments elsewhere in the system,'' even ``by amending certain statements of the kind called logical laws.'' The post does not mention Quine. What it adds is a claim about what people in fact do to protect a belief.}"
+  ],
+  [
+   2534,
+   "\\cpara{Argues by analogy: creationist beliefs are as out of place in a well-ordered mind as palm trees on a glacier, so the rules that would exclude them must be broken down.}"
+  ],
+  [
+   2986,
+   "\\cpara{Turns from lying to others to lying to oneself.}"
+  ],
+  [
+   3046,
+   "\\cpara{Begins a made-up exchange: a self-deceived believer is asked for evidence.}"
+  ],
+  [
+   3609,
+   "\\cpara{The believer exempts dragons from the rule that beliefs require evidence. The dragon in the garage is Carl Sagan's, from ``Belief in Belief''; arguments as soldiers are from ``Politics is the Mind-Killer.''}"
+  ],
+  [
+   3969,
+   "\\cpara{The questioner explains why the rule exists, with the image of drawing a map of a city by walking its streets.}"
+  ],
+  [
+   4470,
+   "\\cpara{The believer seizes on ``extremely high probability'' as leaving ``still a chance,'' the reply the author examined in ``But There's Still A Chance, Right?''}"
+  ],
+  [
+   4740,
+   "\\cpara{A second path: the believer suspects the rule applies and suppresses the suspicion.}"
+  ],
+  [
+   4948,
+   "\\cpara{A third path: a believer who endorsed the rule in public now places the dragon in ``a separate magisterium,'' which echoes Stephen Jay Gould's ``non-overlapping magisteria'' (see the notes on ``Religion's Claim to be Non-Disprovable'').}"
+  ],
+  [
+   5332,
+   "\\cpara{Distinguishes a false belief, which can be dropped when the mistake is found, from a belief held to need protection, and links the latter to ``belief-in-belief.''}"
+  ],
+  [
+   5654,
+   "\\cpara{A claim of possibility (``can''), with no example: the post names no one whose progress was blocked this way. Its support is the made-up exchange above.}"
+  ],
+  [
+   5786,
+   "\\cpara{Draws the parallel: rational beliefs, like the world, are governed by general laws, and more tightly than the untrained would suspect.}"
+  ],
+  [
+   6084,
+   "\\cpara{Asks the reader to imagine all that a denier of evolution or heliocentrism may not know, and names the result: rules of ``anti-thought'' that justify believing the untrue.}"
+  ],
+  [
+   6612,
+   "\\cpara{Quotes Steven Kaas and extends the line: giving someone a belief that must be protected is worse, comparable to a lobotomy. I could find the Kaas quotation only in copies of this post.}"
+  ],
+  [
+   7015,
+   "\\cpara{Restates the opening sentence, now for lies to oneself as well as to others.}"
+  ],
+  [
+   7249,
+   "\\cpara{Lists the denials in order, ending with the denial that truth is good.}"
+  ],
+  [
+   7433,
+   "\\cpara{Names the result.}"
+  ],
+  [
+   7483,
+   "\\cpara{States the practical worry: we should expect to meet systematically bad epistemology.}"
+  ],
+  [
+   7674,
+   "\\cpara{Divides the ``Deep Wisdom'' of popular advice into advice devised by rationalists and notions ``invented to protect a lie or self-deception.'' The one example follows.}"
+  ],
+  [
+   7916,
+   "\\cpara{The post's only example of a Dark Side proverb. It asks where the proverb came from and does not look. In its political sense it is a right against interference: ``Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference'' (Universal Declaration of Human Rights, 1948, Article 19). That is a claim about coercion, not about evidence. The post may mean the proverb's use in argument, to end a discussion; it does not separate the two uses.}"
+  ],
+  [
+   8149,
+   "\\clogic{The question judges the proverb by the purpose of whoever first said it. Three paragraphs later the post states the rule that ``you have to refute the proposition for itself, not by accusing its inventor of bad intentions.'' The proverb is not refuted for itself here, so the treatment sits uneasily with the post's own rule.}"
+  ],
+  [
+   8323,
+   "\\cpara{The general argument, again in the form ``But how else?'': where good epistemology exists and lies are protected, bad epistemology will arise to counter it. The argument is from the model alone. The one case offered, creationism, is described in general terms, with no creationist quoted.}"
+  ],
+  [
+   8985,
+   "\\cpara{Qualifies: most who repeat bad epistemology are ``more duped than duplicitous,'' with ``I think.''}"
+  ],
+  [
+   9188,
+   "\\cpara{Warns against using the idea to dismiss any disliked epistemology, and states the rule that an idea must be refuted for itself. The rule is sound. It leaves the label ``Dark Side'' a limited use: a warning that bad rules of thinking exist, not a reason to reject any one of them.}"
+  ],
+  [
+   9541,
+   "\\cpara{Closes the argument with \\textsc{Star Wars} imagery: fear, betrayal, Jedi and Sith.}"
+  ],
+  [
+   9787,
+   "\\cpara{Asks readers to list the ``Generic Defenses of Fail'': not false beliefs, but bad rules of thinking attributed to the Dark Side.}"
+  ]
+ ]
+}

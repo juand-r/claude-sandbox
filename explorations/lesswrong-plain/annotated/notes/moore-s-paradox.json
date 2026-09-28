@@ -1,0 +1,69 @@
+{
+ "slug": "moore-s-paradox",
+ "header": "\\post{Moore's Paradox}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/ERRk4thxxYNcScqR4/moore-s-paradox}\n",
+ "skeleton_sha": "9087bbbb756fcde7460e6b95cdf6dc20e81d616b0a97118a252a7dcfbc1c4294",
+ "post_sha": "5847100b676dbac991728b8637423d1dbfa764daeddb33fcc571d783ce92e9c6",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{The post never states Moore's paradox. It concerns sentences like ``It is raining, but I do not believe that it is raining'' or ``It is raining, but I believe that it is not raining,'' which are consistent and can be true, yet seem absurd to assert (Wikipedia, ``Moore's paradox''). Moore's own example (1942) was ``I went to the pictures last Tuesday, but I don't believe that I did,'' and the problem, in the \\textsc{Stanford Encyclopedia of Philosophy}'s words, ``is to explain what is odd about'' such utterances. The next day's post gives an example in a parenthesis.}"
+  ],
+  [
+   319,
+   "\\cpara{Quotes the commenter jimrandomh accurately. The comment's next sentence, not quoted, offers this as an alternative to the author's diagnosis: ``I think this, rather than any sort of deliberate self deception, is what you have observed.''}"
+  ],
+  [
+   546,
+   "\\cpara{Rejects the comment with a finding that is well supported. In a meta-analysis of 178 studies, children's performance on false-belief tasks went ``from below-chance performance to above-chance performance'' in the preschool years (Wellman, Cross and Watson, 2001). The idea the post puts in its place, in the next paragraph, is close to the comment read as a claim about what people do rather than what they can do.}"
+  ],
+  [
+   789,
+   "\\cpara{The thesis, hedged (``may''): people may not tell believing from endorsing.}"
+  ],
+  [
+   906,
+   "\\cpara{Supports the thesis from ordinary usage, and the dictionary agrees. Merriam-Webster lists ``to have a firm conviction as to the goodness, efficacy, or ability of someone or something'' (``believe in exercise'') beside ``to accept something as true, genuine, or real.''}"
+  ],
+  [
+   1299,
+   "\\cpara{Applies the idea to the woman: she felt warmly toward believing that people are nice, and took the warmth for belief. The mechanism is stated as fact (``That is, she mistook''). Three days earlier the same sentence of hers was explained by her belief that she had deceived herself; the post later calls this ``another mechanism.''}"
+  ],
+  [
+   1940,
+   "\\cpara{Partly excuses her, since no one is taught how to tell when they believe something, and compares the dragon claimant of ``Belief in Belief.''}"
+  ],
+  [
+   2407,
+   "\\cpara{Gives, as the lesson no school teaches, the author's test for belief: a believed statement ``just seems like the way the world is,'' while an endorsed one comes with good feelings about something in quotation marks.}"
+  ],
+  [
+   2907,
+   "\\cpara{The post claims only to understand the paradox ``a bit better'' and to make ``this real-life case'' less alien. If its explanation is right, her sentence is not a case of Moore's paradox as philosophers pose it: ``I endorse believing that people are nice, but they are not'' is neither inconsistent nor odd. The explanation shows how such a sentence gets said; the paradox, why it is absurd when ``believe'' means believe, is left where it was.}"
+  ],
+  [
+   3183,
+   "\\cpara{Turns to a second case, the commenter Kurige.}"
+  ],
+  [
+   3286,
+   "\\cpara{The quotation matches Kurige's comment on ``No, Really, I've Deceived Myself.''}"
+  ],
+  [
+   3768,
+   "\\cpara{Diagnoses Kurige, hedged (``I suspect''), in the terms just given. The questions that follow supply reasons Kurige did not give: good communities to join, benefits, good feelings. Kurige's comment mentions none of these.}"
+  ],
+  [
+   4203,
+   "\\cpara{The author's rewording of Kurige's two claims without ``I believe.''}"
+  ],
+  [
+   4436,
+   "\\cpara{The test: say the flat version and notice that it is harder to swallow. The test does not by itself separate endorsing from believing. Dropping ``I believe'' also drops a hedge; Merriam-Webster gives ``to hold as an opinion : suppose'' (``I believe it will rain soon'') as one sense. Kurige answered on this post with an explanation of this kind: it is harder to say ``God exists'' than ``I believe God exists'' ``for the same reason it is harder for a scientist to say `the higgs-boson exists' than it is to say `according to our model, the higgs-boson should exist.'\\,''}"
+  ],
+  [
+   4686,
+   "\\cpara{States what the felt difference is supposed to show: endorsing two beliefs, as against having one model of a single world.}"
+  ]
+ ]
+}

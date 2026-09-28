@@ -1,0 +1,89 @@
+{
+ "slug": "doublethink-choosing-to-be-biased",
+ "header": "\\post{Doublethink (Choosing to be Biased)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Hs3ymqypvhgFMkgLb/doublethink-choosing-to-be-biased}\n",
+ "skeleton_sha": "b00dda969e22ea241962686ba30b13fe5675554c1c500cacf7aa5a0e85b7a5af",
+ "post_sha": "d29ccac0645faab0f633eea4a5dca7affdb6bbd297aa2ee0d648866464574c79",
+ "edits": [],
+ "notes": [
+  [
+   168,
+   "\\cpara{The scene in Part Three of \\textsc{Nineteen Eighty-Four} in which O'Brien burns the photograph and denies remembering it. The text matches the novel. The post takes its key phrase from the last sentence: Winston's fear that ``that lunatic dislocation in the mind could really happen.''}"
+  ],
+  [
+   2129,
+   "\\cpara{States the view to be attacked, in a mocking voice (``gasp!''), and names no one who holds it. The question has a research literature that the post does not mention. Taylor and Brown (\\textsc{Psychological Bulletin}, 1988) argued that ``overly positive self-evaluations, exaggerated perceptions of control or mastery, and unrealistic optimism'' are normal and ``appear to promote'' mental health, including ``the ability to be happy or contented.'' One of their examples is people's belief that their driving is better than others'. Their thesis was contested, and they defended it against critics in 1994.}"
+  ],
+  [
+   2460,
+   "\\cpara{States the thesis, hedged (``I doubt''), in Orwell's words: deliberately choosing to deceive yourself cannot work. The moral question is set aside.}"
+  ],
+  [
+   2569,
+   "\\cpara{First argument: beliefs cannot be chosen at will. The post answers only direct control. An old proposal for acquiring a belief on purpose is indirect. In Pascal's \\textsc{Pens\\'ees} (233, Gutenberg's English translation) the unbeliever says ``I am so made that I cannot believe,'' and Pascal replies: do what believers did at first, acting ``as if they believed, taking the holy water, having masses said, etc. Even this will naturally make you believe.'' The woman in ``No, Really, I've Deceived Myself'' (2009) says she took this route. The post does not discuss it.}"
+  ],
+  [
+   2876,
+   "\\clogic{Offered here as a plain fact, with no evidence. The author later described the sentence differently, in ``Don't Believe You'll Self-Deceive'' (2009): ``I wasn't just a dispassionate reporter of the existing facts. I was also trying to instill a self-fulfilling prophecy.''}"
+  ],
+  [
+   3198,
+   "\\cpara{Second argument: a rational choice to be biased needs an accurate model first, which must then be forgotten, and the forgetting forgotten. This is Orwell's own account of doublethink in Part One of the novel: ``consciously to induce unconsciousness, and then, once again, to become unconscious of the act of hypnosis you had just performed.'' The post credits Orwell in general terms (``where this path leads'').}"
+  ],
+  [
+   3677,
+   "\\cpara{Overstated. Knowledge of a bias's consequences need not come from debiasing oneself. It can come from studies of other people, like those Taylor and Brown reviewed, or from general facts, like the crashes in the post's own next example. Such knowledge is partial, but so is the knowledge behind every decision. The post allows two cases only: knowing the consequences after debiasing, or choosing ``without any clear idea of the consequences.''}"
+  ],
+  [
+   3826,
+   "\\cpara{Calls the remaining option, staying biased without a clear idea of the consequences, ``willful stupidity.''}"
+  ],
+  [
+   4009,
+   "\\cpara{The example: optimism about driving lets you skip the seatbelt, until a crash. The post grants that the crash is ``not inevitable'' and asks how probable it is. The case is one where a bias leads to a dangerous act. Taylor and Brown suggested that positive illusions ``may be especially useful'' in another kind of case, when a person ``receives negative feedback or is otherwise threatened.'' The post does not consider cases of that kind.}"
+  ],
+  [
+   4794,
+   "\\cpara{Generalizes the driving case: one mistake can outweigh the gains of many days of ignorance.}"
+  ],
+  [
+   4990,
+   "\\cpara{Gives two maxims, ``Don't try to be clever'' and ``Listen to those quiet, nagging doubts,'' and a sentence on not knowing how much you do not know.}"
+  ],
+  [
+   5305,
+   "\\cpara{Restates the thesis, now without the hedge of the second paragraph (``I doubt''), and pictures the choice as a blind leap into what may be a lava pit.}"
+  ],
+  [
+   5490,
+   "\\cpara{Explains why people leap anyway: dangers they do not know of are not ``available'' to memory, so they read a blank area of the map as an empty territory.}"
+  ],
+  [
+   5884,
+   "\\cpara{Appeals to the author's own experience, with no detail of what was tried or how it went.}"
+  ],
+  [
+   5960,
+   "\\cpara{Reports a friend's disagreement: the happiness of stupidity is ``really not'' overrated. The next paragraph grants her the point and changes the question.}"
+  ],
+  [
+   6142,
+   "\\cpara{Grants that stupid people may be happier, then argues that the reader could not get there anyway. The claim is hedged in one sentence (``I suspect the vast majority'') and absolute in the next (``You can never achieve that degree of ignorance, you cannot forget what you know''). No evidence is given for either.}"
+  ],
+  [
+   6597,
+   "\\cpara{Repeats the claim of the paragraph before, adds that only brain damage could open that way, and sets aside whether the happiness of stupidity is the most a human can have (``it matters not'').}"
+  ],
+  [
+   6947,
+   "\\cpara{Offers the alternative, the happiness a rationalist can achieve, which ``may prove greater.'' The hedge is kept; the support is an image of plateaus and mountains.}"
+  ],
+  [
+   7269,
+   "\\cpara{Adds in one sentence that happiness is not the only value and that other people's happiness may be at stake. This is the moral question set aside in the second paragraph. The next paragraph sets it aside again (``But that is moot'').}"
+  ],
+  [
+   7396,
+   "\\cpara{Ends by restating that the choice disappears once you see it.}"
+  ]
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "slug": "a-rational-argument",
+ "header": "\\post{A Rational Argument}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/9f5EXt8KNNxTAihtZ/a-rational-argument}\n",
+ "skeleton_sha": "7430daf19c2c6431246a30066289509f1a63e406f20f07f8bac62f1c9983c22e",
+ "post_sha": "50ba73f9da15314654b7f4b3cd19df8f1f6b3e303e5450d935546c1da1822678",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Sets up the case: a campaign manager wants ``an impeccable rational argument'' for the candidate who hired them. Hadleyburg is the town of Mark Twain's ``The Man That Corrupted Hadleyburg'' (1899), which is proud of an honesty that fails its first real test.}"
+  ],
+  [
+   501,
+   "\\cpara{The verdict, given before any argument.}"
+  ],
+  [
+   539,
+   "\\cpara{Raises the obvious objection: what if every fact cited is true and relevant?}"
+  ],
+  [
+   875,
+   "\\cpara{The thesis: fixing the conclusion in advance defeats the argument, whatever facts it uses.}"
+  ],
+  [
+   992,
+   "\\clogic{True in the sense the post gives ``rational argument'' at the end: one ``whose bottom line was written flowing forward from the lines above it.'' In the sense the manager means, an argument from true and relevant premises, it holds only for arguments that pick among evidence, where what is left out changes what the rest shows. It does not hold for deduction. A proof is often written toward a conclusion fixed in advance, and it is valid or not whatever the order of writing. Asked in the comments whether two identical arguments could differ because one was written starting from its conclusion, the author replied the next day that \\textsc{Hamlet} ``might be just as good if it had been written by monkeys on typewriters instead of Shakespeare, but there's a reason why it wasn't.''}"
+  ],
+  [
+   1006,
+   "\\cpara{The example: the candidate compares well on 15 of 16 questions, and the exception, question 11, asks whether he is a supervillain. It fits the thesis: every published answer would be true, and the picture would still mislead.}"
+  ],
+  [
+   1510,
+   "\\cpara{The temptation: publish the questionnaire without question 11.}"
+  ],
+  [
+   1660,
+   "\\cpara{Applies ``What Evidence Filtered Evidence?'' (29 September 2007): voters must condition on the fact of the presentation and infer that evidence is hidden.}"
+  ],
+  [
+   1934,
+   "\\cpara{Moves the line earlier: weighing whether the questionnaire helps, before deciding to publish it, is already the fault. The test offered is the voter's view: a voter still choosing a candidate would not censor useful information.}"
+  ],
+  [
+   2544,
+   "\\cpara{Turns to deductive logic. The syllogism below is invalid, since both premises say only that each kind of figure is a quadrilateral, though all three statements in it are true.}"
+  ],
+  [
+   2840,
+   "\\cpara{Gives two reasons to reject invalid arguments with true conclusions: the difference may matter when new evidence comes in, and sloppiness becomes a habit.}"
+  ],
+  [
+   3242,
+   "\\cpara{Calls the syllogism ``hypocritical'': its stated reasons are not the real reasons.}"
+  ],
+  [
+   3513,
+   "\\clogic{The syllogism's stated reasons do not support its conclusion at all; its fault is invalidity. The campaign's facts, on the post's own terms, are true and relevant evidence; its fault is what was left out. The two gaps are of different kinds, so the syllogism does not show the post's thesis at work. It shows a different error.}"
+  ],
+  [
+   3527,
+   "\\cpara{The only honest method: choose your candidate from the evidence before anyone hires you, then offer your services and print your checklist. No one already hired can follow it, which is the point.}"
+  ],
+  [
+   4103,
+   "\\cpara{The conclusion: an honest arguer can write above the bottom line only what actually decided it. This concerns the honesty of the arguer, not the value of the facts. In a comment the same day the author kept the two apart: ``Valid evidence is valid, whatever the motives of the one who cites it.''}"
+  ]
+ ]
+}

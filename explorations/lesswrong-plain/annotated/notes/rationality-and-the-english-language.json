@@ -1,0 +1,93 @@
+{
+ "slug": "rationality-and-the-english-language",
+ "header": "\\post{Rationality and the English Language}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Lz64L3yJEtYGkzMzu/rationality-and-the-english-language}\n",
+ "skeleton_sha": "1d355e14844c008af62172d0275bd21ff6ec14324e444bde1963f26884860247",
+ "post_sha": "fc31fc1a700f4d2ec5a91378549ac5cfc6e8214b2e569171dbd1b1a8f7a678cb",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Says a commenter compared the author's writing to Orwell's ``Politics and the English Language,'' and that today's topic was already planned. The comment was on ``Applause Lights,'' posted the day before.}"
+  ],
+  [
+   434,
+   "\\cpara{Calls Orwell mandatory reading and gives his kind of example: a euphemism for imprisonment without trial. The example is Orwell's, adapted. In the essay the plain facts are ``People are imprisoned for years without trial, or shot in the back of the neck or sent to die of scurvy in Arctic lumber camps,'' and the euphemism is ``elimination of unreliable elements.''}"
+  ],
+  [
+   1054,
+   "\\cpara{Ranks Orwell's writings on language with Feynman, Sagan and Dawkins as ``classic rationalist documents.''}"
+  ],
+  [
+   1299,
+   "\\cpara{Shows the fault in a sentence of its own: ``Writers are told'' does not say who tells them. One of them is Orwell, whose fourth rule in the essay is ``Never use the passive where you can use the active.''}"
+  ],
+  [
+   1713,
+   "\\clogic{Loosely stated. A passive can name the actor: the OED's examples, quoted by Mark Liberman on Language Log, are ``the food was eaten'' and ``the food was eaten by them.'' And Orwell's plain version of this very example, ``People are imprisoned for years without trial,'' is itself a passive with no actor, and Orwell offers it as the version that calls up ``mental pictures.'' In his example what hides the facts is the noun phrase. The post's next sentences, on ``static noun phrases,'' come closer to this than its rule about voice.}"
+  ],
+  [
+   1976,
+   "\\cpara{Applies the point to scientific papers: the passive ``sounds more authoritative'' and removes the scientist.}"
+  ],
+  [
+   2190,
+   "\\clogic{The post's explanation is that the passive sounds authoritative. It does not mention that some scientific bodies asked for it. The Acoustical Society of America's instructions for meeting abstracts, quoted on Language Log in 2006, told authors to ``Use passives instead of pronouns,'' writing ``It was noted'' instead of ``We noted.''}"
+  ],
+  [
+   2709,
+   "\\cpara{Anticipates the objection that a reader can work out that the scientist is there, and says this is why rationalists need Orwell. The answer comes in the following paragraphs.}"
+  ],
+  [
+   3043,
+   "\\cpara{A slogan: nonfiction conveys knowledge, fiction experience.}"
+  ],
+  [
+   3252,
+   "\\cpara{Contrasts readers who look charitably for a sensible meaning in a misleading phrase with authors, who do not give themselves that benefit.}"
+  ],
+  [
+   3777,
+   "\\clogic{Taken literally, this makes misreading impossible, and a commenter said so. The author replied that misreading is ``always the author's fault, at least if you happen to be an author.'' That is a rule for one's own words. The next paragraph applies it to judging other people's statements.}"
+  ],
+  [
+   3791,
+   "\\cpara{Turns to judging statements: to evaluate a statement's ``public rationality,'' attend to its first impression, not to meanings found by analysis. In the comments the author said the target was readers who defend a misleading phrase by reinterpreting it, and that the passage had been edited to make this clearer.}"
+  ],
+  [
+   4319,
+   "\\cpara{Says what a novelist would see in ``The subjects were administered Progenitorivox'': a feeling of authority, and no picture of what happened.}"
+  ],
+  [
+   4618,
+   "\\clogic{This is the post's evidence of ``impact,'' and it is the author's own impression, reported as the only experience any reader has. No reader's response is cited.}"
+  ],
+  [
+   4811,
+   "\\cpara{States the thesis: a rationalist must be aware of the experience words create, including in one's own stream of thought, ``beyond their mere propositional semantics.''}"
+  ],
+  [
+   5376,
+   "\\cpara{The thesis as a slogan.}"
+  ],
+  [
+   5455,
+   "\\cpara{Applies the slogan to the example of ``Applause Lights,'' posted the day before. The notes on that post discuss the example; the speaker, Jamais Cascio, disputed the post's account in the comments there.}"
+  ],
+  [
+   5736,
+   "\\cstyle{Orwell's phrase, from a passage the next post quotes: ``euphemism, question-begging and sheer cloudy vagueness.''}"
+  ],
+  [
+   5750,
+   "\\cpara{Introduces the Orwell passages as being about the ``impact'' of cliches on thinking.}"
+  ],
+  [
+   5883,
+   "\\cpara{Two passages from the essay, the first on the speaker who repeats stock phrases, the second on letting the meaning choose the word. Orwell's next sentence, which the post leaves out, states the post's point about the audience: ``Afterward one can choose \\ldots\\ the phrases that will best cover the meaning, and then switch round and decide what impressions one's words are likely to make on another person.''}"
+  ],
+  [
+   7243,
+   "\\cpara{Says Peirce ``might have written'' Orwell's last paragraph, without saying what in Peirce it has in mind, and ends with ``the Way.''}"
+  ]
+ ]
+}

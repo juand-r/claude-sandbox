@@ -1,0 +1,53 @@
+{
+ "slug": "one-argument-against-an-army",
+ "header": "\\post{One Argument Against An Army}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/WN73eiLQkuDtSC8Ag/one-argument-against-an-army}\n",
+ "skeleton_sha": "5bfcf8f4aeb164cd154ad6b90bb02aba19f225df1b51e18c8783456ac0fe8d32",
+ "post_sha": "6cdbbd5faed71c812c91f234feff97900663eff9b1ae7b7819861e9fc8df5c6f",
+ "edits": [],
+ "notes": [
+  [
+   142,
+   "\\cpara{Links to the previous day's post, ``Update Yourself Incrementally,'' and states the thesis at once, as a suggestion: people meeting a contrary argument keep their confidence by rehearsing support they already knew.}"
+  ],
+  [
+   486,
+   "\\cpara{Sets up a hypothetical case with three pieces of evidence against Sylvania. The names come from the Marx Brothers film \\textsc{Duck Soup} (1933), in which Freedonia goes to war with Sylvania, whose ambassador is Trentino.}"
+  ],
+  [
+   924,
+   "\\cpara{The first counterargument, answered by repeating the three known points; since three outweigh one, the belief stays.}"
+  ],
+  [
+   1481,
+   "\\cpara{The second counterargument, answered by the same three points. The ``three arguments against one argument'' shows that the arguments are counted, not weighed.}"
+  ],
+  [
+   1970,
+   "\\cpara{The consequence: each ``3 to 1'' verdict is felt as fresh support, so confidence rises.}"
+  ],
+  [
+   2185,
+   "\\cpara{Extends the case to a hundred counterarguments, each ``handily defeated,'' each raising confidence.}"
+  ],
+  [
+   2531,
+   "\\cpara{The diagnosis: rehearsing known arguments counts the same evidence twice. The scientist example fits: counting every subject twice makes the data look larger than they are and can turn a weak result into a significant one.}"
+  ],
+  [
+   2909,
+   "\\cpara{Adds that counting only the supporting evidence twice is worse, with a cartoon villain's way of dividing loot as the picture.}"
+  ],
+  [
+   3195,
+   "\\cpara{Restates the rule from ``Update Yourself Incrementally'': even when the balance still favours the belief, new contrary evidence must lower its probability, and old support cannot offset it because it was already counted.}"
+  ],
+  [
+   3700,
+   "\\cpara{Returns to the post's claim about how real people reason, first put as ``Here I suggest'' and now as ``it does appear to me.'' No evidence is given beyond the hypothetical Freedonia case and the author's report of guarding against it. The rest of the post shows why the practice is an error; only this claim says that the error is common, and it rests on the author's impression.}"
+  ],
+  [
+   4070,
+   "\\cpara{Closes with the image of the title: one argument, wrongly reused, can hold off any number of objections.}"
+  ]
+ ]
+}

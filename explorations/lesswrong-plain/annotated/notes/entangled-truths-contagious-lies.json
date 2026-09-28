@@ -1,0 +1,81 @@
+{
+ "slug": "entangled-truths-contagious-lies",
+ "header": "\\post{Entangled Truths, Contagious Lies}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/wyyfFfaRar2jEdeQK/entangled-truths-contagious-lies}\n",
+ "skeleton_sha": "8e0a0cfb3b052b98262490cb099d3cb5ff356ad8d69b181b2f5ed7cfb28b1ba1",
+ "post_sha": "ab376181f624a99b3fd87b42bc2c297285aabd5b471e027c2602342ffee77e6d",
+ "edits": [],
+ "notes": [
+  [
+   165,
+   "\\cpara{An epigraph from E. E. Smith's novel \\textsc{First Lensman}. In the novel an Arisian puts this as a question and answers it at once: ``It is not possible simply because no fully competent mind ever has existed or ever will exist.'' The first paragraph after the epigraphs also rejects the strong version.}"
+  ],
+  [
+   488,
+   "\\cpara{A second epigraph, from \\textsc{Gray Lensman}. I could check the wording only against a quotation site (Goodreads), not against the novel.}"
+  ],
+  [
+   766,
+   "\\cpara{Sets a limit: a pebble does not fix the facts of human history, since other planets and ``other Everett branches'' would produce the same pebble. The Everett branches here and in the next paragraph assume the many-worlds interpretation of quantum mechanics, which the post takes for granted; see the notes on ``Making Beliefs Pay Rent (in Anticipated Experiences).''}"
+  ],
+  [
+   1030,
+   "\\cpara{Claims that the pebble would imply our laws of physics and so, with the footnote's assumption of ``no truly free variables,'' the whole universe. Both steps are hedged (``would seem,'' ``as seems likely'') and neither is argued.}"
+  ],
+  [
+   1315,
+   "\\cpara{Sketches what the pebble would show. The two geological inferences are real in outline. Minerals record the pressure they formed under (geobarometry), and pressure depends on the planet's gravity as well as on depth, so ``something about the planet's mass'' is the right strength of claim. Element and isotope ratios are how some meteorites were traced to Mars (Wikipedia, ``Martian meteorite'').}"
+  ],
+  [
+   1773,
+   "\\cpara{Imagines a geologist catching a lie about where a pebble came from. The example is hypothetical, and the author says so: not knowing how one would be caught ``is the point.''}"
+  ],
+  [
+   2269,
+   "\\cpara{Offers a proverb, with a guess, marked as a guess, that no religion developed it. Contrasts it with the religious view that all things are connected through God, which does not help anyone assign a pebble to a beach.}"
+  ],
+  [
+   2757,
+   "\\cpara{Uses a penny's pull on the Moon to show that everything is physically connected but mostly beyond detection. The figure fits a coin of one gram. A United States cent weighs 2.5 grams, which at the Moon's mean distance of 384,399 km gives about $1.1 \\times 10^{-30}$ m/s$^2$. The difference does not affect the point. The paragraph also shows that physical connection alone exposes nothing; the post turns next to the shorter list of connections that can be noticed.}"
+  ],
+  [
+   3331,
+   "\\cpara{Offers two modest statements of the point as the ``really wise'' version, as against sounding ``Deeply Wise.''}"
+  ],
+  [
+   3556,
+   "\\cpara{Separates physical connection, which is total, from noticeable connections, which are fewer and form a network, and names that network the ``Great Web of Causality.''}"
+  ],
+  [
+   3878,
+   "\\cpara{Grants that the capital letters are partly a joke.}"
+  ],
+  [
+   4061,
+   "\\cpara{Quotes Walter Scott's \\textsc{Marmion} correctly, and hedges the claim: not all lies spin out of control, but some do.}"
+  ],
+  [
+   4418,
+   "\\cpara{A made-up dialogue in which one lie forces the next, until the liar faces a fact the listener can check.}"
+  ],
+  [
+   4759,
+   "\\cpara{Gives general examples of lies exposed by facts the liar had not thought of: genetics and claims about paternity, later evidence against rapists and false accusers, and the signs of natural selection in animals.}"
+  ],
+  [
+   5545,
+   "\\cpara{Hedges again, then speculates about a superintelligence scanning the Earth and a future lie detector based on brain imaging.}"
+  ],
+  [
+   6217,
+   "\\clogic{Offered with ``probably'' and no evidence. A meta-analysis of 206 studies put people's accuracy at telling lies from truths at 54\\%, and a second found that differences between judges ``are minute'' (Bond and DePaulo, 2006 and July 2008). In Ekman and O'Sullivan's own 1991 test of 509 people, ``Only the Secret Service performed better than chance.'' O'Sullivan disputed the 2008 finding, citing professional groups and rare ``truth wizards'' who do better. The question was open, and the post gives nothing to settle it.}"
+  ],
+  [
+   6231,
+   "\\cpara{Repeats the hedge, then says the web is ``very commonly underestimated.'' No evidence is given of how often lies are uncovered or of what liars expect, so the claim rests on the examples above.}"
+  ],
+  [
+   6584,
+   "\\cpara{Concludes modestly: not that honesty is always best, but that honesty or silence carries less unforeseen risk than lying. The conclusion claims no more than the post has argued.}"
+  ]
+ ]
+}

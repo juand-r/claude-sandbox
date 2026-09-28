@@ -1,0 +1,65 @@
+{
+ "slug": "motivated-stopping-and-motivated-continuation",
+ "header": "\\post{Motivated Stopping and Motivated Continuation}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/L32LHWzy9FzSDazEg/motivated-stopping-and-motivated-continuation}\n",
+ "skeleton_sha": "7afb7c2356c900c420a8b91409b3902176d4d9a248ffe3e615bb88d16b6053e9",
+ "post_sha": "2c6bd42f0b6eff7388d35f51f3ae94d480ba6ba175088d42e6075bfc783b5318",
+ "edits": [],
+ "notes": [
+  [
+   176,
+   "\\cpara{Credits the ``Fast and Frugal'' school with studying how people generate their options, where most experiments hand the options to the subject.}"
+  ],
+  [
+   702,
+   "\\cpara{Applies the same point to evidence: in real life it must be gathered at a cost, and at some point one stops and chooses. The house-hunting picture, in which one adjusts one's aspirations and stops when an option is good enough, is Herbert Simon's ``satisficing'' (1956; Wikipedia, ``Satisficing'').}"
+  ],
+  [
+   1415,
+   "\\cpara{Borrows Gilovich's contrast: for a welcome conclusion one asks whether the evidence allows it, for an unwelcome one whether the evidence compels it.}"
+  ],
+  [
+   1828,
+   "\\cpara{Offered as a suggestion, the idea had already been proposed and tested. Kruglanski argued, in Ditto and Lopez's summary, that motives ``can affect judgment outcomes by delaying or hastening the `freezing' of the epistemic search.'' Ditto and Lopez, in a 1992 paper titled ``Motivated Skepticism,'' found that ``less information is required to reach'' a preferred conclusion, and that subjects given an unfavorable medical test result ``took longer to decide their test result was complete'' and ``were more likely to retest'': stopping and continuation, measured. The post cites none of this work.}"
+  ],
+  [
+   2127,
+   "\\clogic{The stopping half is also in the author's ``The Third Alternative'' (6 May 2007), with the same house example: when a search turns up a policy that is ``personally convenient,'' ``Then we stop the search at once!''}"
+  ],
+  [
+   2380,
+   "\\cpara{The example. Fisher's position is documented: in 1958 he wrote in \\textsc{Nature} that ``an error has been made of an old kind, in arguing from correlation to causation,'' and proposed that inherited differences might explain both the smoking and the cancer.}"
+  ],
+  [
+   2620,
+   "\\cfact{I could not confirm this. Fisher, a British statistician, made his case in print: letters to the \\textsc{British Medical Journal} (1957) and \\textsc{Nature} (1958) and articles in the \\textsc{Centennial Review} (1958), collected in his pamphlet \\textsc{Smoking: The Cancer Controversy}. A study of tobacco-industry documents reports that a paid industry consultant, George Saiger, testified at the congressional hearings of 1965 and 1969 and presented ``Fisher's constitutional hypothesis'' as a plausible alternative (Gundle, Dingel and Koenig, \\textsc{Addiction}, 2010). Fisher died in 1962.}"
+  ],
+  [
+   2735,
+   "\\cpara{Offers a motive, marked ``maybe.'' The facts behind it are documented, and a historian has made the same suggestion: Fisher's views ``may also have been influenced by personal and professional conflicts, by his work as a consultant to the tobacco industry, and by the fact that he was himself a smoker'' (Stolley, \\textsc{American Journal of Epidemiology}, 1991).}"
+  ],
+  [
+   3204,
+   "\\clogic{Pearl does not divide the question this way. In ``Bayesianism and Causality, or, Why I Am Only a Half-Bayesian'' (2001), Pearl counts as statistical any concept defined by ``a distribution (be it personal or frequency-based),'' and writes that the slogan ``correlation does not imply causation'' ``can be translated into a useful principle: one cannot substantiate causal claims from associations alone.'' On that view causal conclusions need causal assumptions, for Bayesians and frequentists alike, and Fisher's slogan was sound. His error, in Stolley's account, lay in ``an unwillingness to examine the entire body of data available.''}"
+  ],
+  [
+   3218,
+   "\\cpara{Says that motivated continuation can pass for virtue, since no one objects to more evidence.}"
+  ],
+  [
+   3572,
+   "\\cpara{Answers that evidence costs money and time, and that refusing to use the evidence already in hand is no virtue; you can change your mind later.}"
+  ],
+  [
+   3981,
+   "\\clogic{The footnote does not say which contradiction it resolves. I infer it is with ``Hold Off On Proposing Solutions'' (17 October 2007), which quotes Norman Maier's rule: ``Do not propose solutions until the problem has been discussed as thoroughly as possible without suggesting any.''}"
+  ],
+  [
+   3995,
+   "\\cpara{Lists where motivated stopping appears: a feared third alternative, an unwelcome counterargument, a warm glow one would rather not test, beliefs out of step with expectations. The last two have footnotes to earlier posts. The post's one case, Fisher, is of continuation; stopping gets this list and no case.}"
+  ],
+  [
+   4806,
+   "\\cpara{The moral, with a test a reader can apply. Suspect stopping when cheap, fast evidence is left ungathered after a comfortable conclusion; suspect continuation when the evidence demanded is expensive and slow and delays something uncomfortable. The sign is outside one's head, in the cost of the evidence skipped or demanded, which ``The Bottom Line'' did not offer.}"
+  ]
+ ]
+}

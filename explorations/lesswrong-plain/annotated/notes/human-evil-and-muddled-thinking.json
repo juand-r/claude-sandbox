@@ -1,0 +1,93 @@
+{
+ "slug": "human-evil-and-muddled-thinking",
+ "header": "\\post{Human Evil and Muddled Thinking}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/i8q4vXestDkGTFwsc/human-evil-and-muddled-thinking}\n",
+ "skeleton_sha": "28564f6319a65208fd87abb5e301aaacdc087b0875fa08f780a6e54b6296bf4c",
+ "post_sha": "32b0b5db170ebe17dd9a664a672dddac00e1ff73f017bd984c429f01ebc56794",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{Opens with Orwell's time, when totalitarianism spread from country to country, a time the reader is said to be too young to remember. The professors who ``hailed the Soviet Union's purges as progress'' recall the essay's ``comfortable English professor defending Russian totalitarianism.''}"
+  ],
+  [
+   851,
+   "\\cpara{Credits Orwell with seeing that human evil and muddled thinking go together, and introduces the essay's passage on political language.}"
+  ],
+  [
+   1049,
+   "\\clogic{Orwell's own claim is causal and weaker: ``the slovenliness of our language makes it easier for us to have foolish thoughts.''}"
+  ],
+  [
+   1247,
+   "\\cpara{Orwell on political language as ``the defence of the indefensible,'' carried out by euphemism. The quotation matches the essay.}"
+  ],
+  [
+   2040,
+   "\\cpara{Orwell's reason for plain English: it makes one's own stupid remarks obvious.}"
+  ],
+  [
+   2277,
+   "\\cpara{Names this the heart of \\textsc{Overcoming Bias}, the blog where the post first appeared.}"
+  ],
+  [
+   2384,
+   "\\cpara{Argues that evil must keep people's revulsion latent, and so sets out to muddle thinking. The examples are ``the planned famines of Stalin and Mao.''}"
+  ],
+  [
+   2576,
+   "\\cfact{``Planned,'' and in the next sentence ``deliberate human intent to inflict pain and death,'' go beyond the record as it is usually summarized. Wikipedia's article on the Soviet famine of 1930--1933 gives its cause as ``Disputed; theories range from deliberate engineering to economic mismanagement.'' For the Chinese famine of 1959--1961, the causes it lists include the Great Leap Forward, ``Extreme state requisitioning of grain'' and ``systemic misinformation,'' such as inflated harvest reports; a plan to starve people is not among them. ``Tens of millions'' is within the estimates.}"
+  ],
+  [
+   3077,
+   "\\clogic{Orwell's claim, quoted above, was about political language ``In our time.'' The post makes it a law of all evil, ``wherever it exists,'' and adds no evidence for the wider claim.}"
+  ],
+  [
+   3091,
+   "\\cpara{Turns to \\textsc{1984}, whose villains falsify records and photographs, and to the scene in which O'Brien tortures Winston over two plus two.}"
+  ],
+  [
+   3470,
+   "\\cpara{The torture scene from \\textsc{1984}. The quotation matches the novel's text.}"
+  ],
+  [
+   4248,
+   "\\cpara{Turns on the economist Tyler Cowen, with rhetorical questions about the importance of the mind.}"
+  ],
+  [
+   4588,
+   "\\cfact{Cowen's post does not say that overcoming bias is unimportant. It questions ``a strong preference for overcoming bias, relative to other ends,'' on the ground that ``Biased estimators are one problem but not the only problem.''}"
+  ],
+  [
+   4932,
+   "\\cpara{Quotes one sentence of Cowen's and offers, with ``I hope,'' a guess at why Cowen wrote it.}"
+  ],
+  [
+   5101,
+   "\\cfact{The sentence goes on: ``especially if embedded in a broader discovery process with checks and balances.'' Cowen's point was that a blog pushing one research method ``as far as it can go'' is useful inside a larger process.}"
+  ],
+  [
+   5380,
+   "\\clogic{Cowen's ``bias'' is partly the statistician's word, as the comparison with ``biased estimators'' shows, and for the blog it means a single-minded method. Cowen's post says nothing about scope insensitivity. The question answers a view the post does not show Cowen holding.}"
+  ],
+  [
+   5394,
+   "\\cpara{Likens Cowen's view to one Orwell rejected.}"
+  ],
+  [
+   5493,
+   "\\clogic{The likeness is asserted. Chase, as Orwell reports, came ``near to claiming that all abstract words are meaningless.'' Cowen drew distinctions, between bias and ``insufficient data, lazy researchers, inefficient estimators.'' Neither is quoted saying that to admit a distinction is ``youthful naiveté''; the phrase is the post's.}"
+  ],
+  [
+   5791,
+   "\\cpara{States why the post brings in evil: overcoming bias may not look ``exciting enough'' without ``some clear evil to oppose.'' The paragraph then supplies one, and imagines the blog's readers sent to labor camps.}"
+  ],
+  [
+   6449,
+   "\\cpara{Ends with two claims about all of human history, given without evidence, and a call to arms.}"
+  ],
+  [
+   6696,
+   "\\clogic{The image sits uneasily with the author's earlier warnings, in the same sequence of the book. ``Politics Is the Mind-Killer'' (February 2007): ``Politics is an extension of war by other means. Arguments are soldiers.'' ``Are Your Enemies Innately Evil?'' (June 2007): ``Debate is war; arguments are soldiers.'' Here the enemy is ``ourselves,'' not a party, but the paragraph before has given the truth ``enemies,'' and the post has set a named critic beside Orwell's opponents.}"
+  ]
+ ]
+}

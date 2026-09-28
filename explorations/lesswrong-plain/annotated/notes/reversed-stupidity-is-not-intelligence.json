@@ -1,0 +1,77 @@
+{
+ "slug": "reversed-stupidity-is-not-intelligence",
+ "header": "\\post{Reversed Stupidity Is Not Intelligence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/qNZM3EGoE5ZeMdCRt/reversed-stupidity-is-not-intelligence}\n",
+ "skeleton_sha": "963c22b0eb78760bd953f8d74cae3ed02b1d1fa5d3d71594c0b08286ddf4f70d",
+ "post_sha": "5bc3ec668a0648fb95e8f0874a8de366ac2451668a6ee78a4b250dfbec92f26d",
+ "edits": [],
+ "notes": [
+  [
+   176,
+   "\\cpara{An epigraph from H. Beam Piper's story ``Police Operation'' (\\textsc{Astounding Science Fiction}, July 1948). In the story the saucers are real, antigravity landing disks from a spaceship, and the Paratime Police bury the true sightings under false reports.}"
+  ],
+  [
+   810,
+   "\\cpara{Says that the author's disbelief in hidden aliens does not rest on the silliness of saucer cults, and hedges it: ``at least, I hope not.''}"
+  ],
+  [
+   1050,
+   "\\cpara{Applies the definition of evidence. Cults would arise whether or not there were aliens, so their existence is ``not much evidence one way or the other.'' The reasoning is correct, and the post names the one case, aliens suppressing cults, that would change it.}"
+  ],
+  [
+   2062,
+   "\\cpara{States the general principle in Pirsig's words. In the copy of \\textsc{Zen and the Art of Motorcycle Maintenance} I could check, the line reads ``The world's biggest fool can say the sun is shining, but that doesn't make it dark out.'' It illustrates what Pirsig calls ``an old rule of logic that the competence of a speaker has no relevance to the truth of what he says.''}"
+  ],
+  [
+   2381,
+   "\\cpara{Argues that being reliably wrong would take knowledge of the truth, so fools are not reliably wrong. The arithmetic holds: reversing answers that are wrong 99.99\\% of the time gives 99.99\\% accuracy.}"
+  ],
+  [
+   2768,
+   "\\cpara{Restates the point as a joke about a broken engine.}"
+  ],
+  [
+   2893,
+   "\\cpara{Extends the principle from stupidity to evil, through the ``horns effect,'' which the post calls the converse of the halo effect.}"
+  ],
+  [
+   3007,
+   "\\clogic{The post gives no reason for ``how much less.'' By the paragraph before, reliable anticorrelation takes someone who knows the truth, and a deliberate liar does. The Stalin example that follows supports a narrower claim: an evil person is not wrong about everything.}"
+  ],
+  [
+   3236,
+   "\\cpara{The example: Stalin believed that 2 + 2 = 4, yet defending even that is read as taking his side.}"
+  ],
+  [
+   3534,
+   "\\cpara{The first corollary: argue against an idea's strongest advocates. The rule is old. John Stuart Mill, in \\textsc{On Liberty} (1859), says one must hear the other side's arguments ``from persons who actually believe them; who defend them in earnest, and do their very utmost for them.''}"
+  ],
+  [
+   4164,
+   "\\cpara{People driven mad by an idea are no evidence against it; the example is New Agers and quantum mechanics.}"
+  ],
+  [
+   4366,
+   "\\cpara{The saying is John Stuart Mill's, in the House of Commons on 31 May 1866, in this form: ``I did not mean that Conservatives are generally stupid; I meant, that stupid persons are generally Conservative'' (Hansard).}"
+  ],
+  [
+   4690,
+   "\\clogic{True in the logician's sense: an attack on the speaker does not show the claim false. It does not make the speaker's record irrelevant. When a claim rests on the speaker's word, their reliability counts, as ``Argument Screens Off Authority,'' posted two days later, allows: there Arthur gives a delinquent's flat assertion 10\\% and a geologist's 90\\%, and the post calls this taking ``the speaker's authority into account.''}"
+  ],
+  [
+   4742,
+   "\\cpara{An argument against genocide should not depend on who advocated it.}"
+  ],
+  [
+   4897,
+   "\\cpara{Credits Robin Hanson with the idea that willingness to believe follows willingness to affiliate with believers; the example is reluctance to side with ``strident'' atheists.}"
+  ],
+  [
+   5440,
+   "\\cpara{A failed system does not show that each of its parts is at fault.}"
+  ],
+  [
+   5766,
+   "\\cpara{The last corollary turns the title on methods: reversing a failed approach is unlikely to find the one that works.}"
+  ]
+ ]
+}
