@@ -2253,3 +2253,9 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: I describe every step of this, to show that the process ``is not magic.''
 - After: I describe every step of this, because it sounds like physics and makes what follows sound like physics too.
 
+
+## use-the-try-harder-luke
+
+- Before: In the film, right after Luke gives up, Yoda lifts the ship out of the swamp himself. Luke says ``I don't believe it,'' and Yoda answers, ``That is why you fail.'' The film shows Luke's surrender and calls it failure.} I leave that part out. \nb{Yoda's lesson is also about belief.} I have turned it into a lesson about effort.
+- After: In the film, right after Luke walks away, Yoda lifts the ship out of the swamp himself. Luke says ``I don't believe it,'' and Yoda answers, ``That is why you fail.'' In the film, Luke fails because he does not believe. The post leaves this out and makes the scene a lesson about effort.}
+
