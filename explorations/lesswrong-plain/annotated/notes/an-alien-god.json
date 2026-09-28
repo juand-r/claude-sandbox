@@ -2,7 +2,180 @@
  "slug": "an-alien-god",
  "header": "\\post{An Alien God}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/pLRogvJLPPg6Mrvg4/an-alien-god}\n",
  "skeleton_sha": "6251bbefc12b4d762f38a2f58b3fbeec2b5286d5c33b594739acffc4bc26a5cc",
- "post_sha": "6251bbefc12b4d762f38a2f58b3fbeec2b5286d5c33b594739acffc4bc26a5cc",
+ "post_sha": "ac1a7aff9c6777e295f39a34ab005f6a8c331192becb2069f24be617a4660316",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   110,
+   "\\cpara{Quotes Jacques Monod. In the source, a 1975 essay as quoted by the philosopher John Wilkins, the sentence begins ``Another curious aspect'' and continues: ``I mean philosophers, social scientists, and so on.''}"
+  ],
+  [
+   236,
+   "\\cpara{States the theme: nature looks full of purpose, but what we see is not exactly what is there.}"
+  ],
+  [
+   482,
+   "\\cpara{Mocks pre-Darwinian believers with a joke (``50 bonus points''), then takes it back: before Darwin, design ``seemed like a much more reasonable hypothesis.'' Introduces Paley's watch.}"
+  ],
+  [
+   1130,
+   "\\cpara{The first argument against one benevolent designer: predators and prey are each well designed against the other.}"
+  ],
+  [
+   1565,
+   "\\cpara{Supports it by analogy: a designer does not build one part to defeat another. The cactus's spines are a second example.}"
+  ],
+  [
+   2009,
+   "\\cpara{Suggests that conflicting design fits many competing gods better than one.}"
+  ],
+  [
+   2524,
+   "\\clogic{Something close had been said. In Hume's \\textsc{Dialogues Concerning Natural Religion} (1779), Philo asks, against the design argument, ``why may not several deities combine in contriving and framing a world?'' Philo argues from shared labour, as in building a ship, not from conflict between the gods' works.}"
+  ],
+  [
+   2538,
+   "\\cpara{The second argument: much of nature's design is cruel. The Darwin quotation matches his letter to Asa Gray of 22 May 1860. In the same letter Darwin inclines ``to look at everything as resulting from designed laws, with the details, whether good or bad, left to the working out of what we may call chance,'' which fits the post's ``non-standard Creator.''}"
+  ],
+  [
+   3211,
+   "\\clogic{One had, about eighty years earlier. In Hume's \\textsc{Dialogues}, Philo looks at living things (``How hostile and destructive to each other!'') and says that the Manichaean system ``has more probability than the common hypothesis, by giving a plausible account of the strange mixture of good and ill.'' He then rejects it for first causes with ``neither goodness nor malice,'' which ``seems by far the most probable.'' That is close to this post's own conclusion.}"
+  ],
+  [
+   3429,
+   "\\cpara{Worries, as in ``Science as Attire,'' that people treat evolution as a ``magical purposefulness factory,'' and returns to Storm of the \\textsc{X-Men}.}"
+  ],
+  [
+   4173,
+   "\\cpara{States that a theory's strength lies in what it forbids: evolution explains trees and could not explain a toaster. The principle is Karl Popper's, uncredited here as in ``Your Strength as a Rationalist'' (see the notes there).}"
+  ],
+  [
+   4798,
+   "\\cpara{Quotes George Williams on the rattlesnake's rattle, and states the rule it illustrates: evolution does not reshape one species for another's benefit. I could not see Williams's book to check this quotation or the one below.}"
+  ],
+  [
+   5219,
+   "\\cpara{Gives the mechanism: a gene becomes more common when its effects on the organism cause more copies of it to reach the next generation. This is the standard account, and the parenthesis admits that it is simplified.}"
+  ],
+  [
+   5723,
+   "\\cpara{Names the error the post keeps returning to: an ``Evolution Fairy'' that decides what would be a good idea.}"
+  ],
+  [
+   5917,
+   "\\cpara{Offered with ``I suspect'': people who reject the Fairy still ask which genes are ``helpful,'' as if a gene could help other species.}"
+  ],
+  [
+   6255,
+   "\\cpara{Restates the point: no outside force decides; what happens is caused by the genes themselves.}"
+  ],
+  [
+   6473,
+   "\\cpara{Applies the point to the rattle, with a hedge (``probably'') on whether survival rather than mating is the cause.}"
+  ],
+  [
+   6832,
+   "\\cpara{Offers two possible uses of the rattle, the second credited to Williams.}"
+  ],
+  [
+   7237,
+   "\\cpara{Adds kin selection. The arithmetic is right: a sibling shares half one's genes on average, so a gene that gives three units to a sibling at a cost of one gains 1.5 units for every unit it spends. ``Shares half your genes'' is the usual shorthand for that average.}"
+  ],
+  [
+   7749,
+   "\\cpara{Restates the main point, for the third time in a few paragraphs: no Fairy decides, only cause and effect starting from the genes.}"
+  ],
+  [
+   8130,
+   "\\cpara{Claims the account explains conflict and cruelty better than the horde of deities did.}"
+  ],
+  [
+   8289,
+   "\\cpara{Explains conflict: there are as many ``evolutions'' as reproducing populations, each raising the frequency of its own genes.}"
+  ],
+  [
+   8897,
+   "\\cpara{Explains cruelty. Anesthetizing the wasp's prey, or giving an old elephant past breeding a painless death, would cost little or nothing, and nothing in the process favors it either.}"
+  ],
+  [
+   9681,
+   "\\cpara{Makes the point by contrast with a negotiation: a human could be persuaded to spare the elephant, but ``There's no one to argue with.''}"
+  ],
+  [
+   10032,
+   "\\cpara{Contrasts human decisions, where a preferred option is chosen by one method and justified by another, with evolution, where no advocate proposes kindness and no overseer approves it.}"
+  ],
+  [
+   10652,
+   "\\cpara{Says evolution does not select genes that can plausibly be argued to help fitness; genes that replicate more simply become more frequent, ``Like water flowing downhill.''}"
+  ],
+  [
+   11135,
+   "\\cpara{Diagnoses the amateur's error: imagining how we would design an organism, then rationalizing why the design would raise fitness.}"
+  ],
+  [
+   11582,
+   "\\cpara{Says amateurs therefore make ``completely mistaken'' predictions, because they reach their conclusions by a different method from the one evolution uses. The rattle belief quoted from Williams is the post's example of the kind.}"
+  ],
+  [
+   12110,
+   "\\cpara{Gives an example: an engineer would make taste track the body's needs; evolution, where calories were reliably scarce, made us love calories.}"
+  ],
+  [
+   12721,
+   "\\cpara{States the lesson: organisms record which ancestors did survive and reproduce, not which ought to have.}"
+  ],
+  [
+   12909,
+   "\\cpara{Gives the backward retina: light passes through the nerve layer, whose exit leaves a blind spot, and other animals evolved retinas the other way round.}"
+  ],
+  [
+   13272,
+   "\\cpara{Explains why evolution cannot fix it: no single mutation reroutes the whole retina, and a mutation that breaks a vital part kills the organism.}"
+  ],
+  [
+   13673,
+   "\\cpara{Repeats the point with the half-turned retina, and ends: ``Evolution is as blind as a halfway-redesigned retina.''}"
+  ],
+  [
+   14107,
+   "\\cpara{Returns to Paley, and to those who thought life ``just happened,'' with mice generated from straw and dirty shirts.}"
+  ],
+  [
+   14382,
+   "\\cpara{Judges the theologians closer to the truth than the believers in spontaneous generation: mutation is random but selection is not, so evolution is ``closer to God than it is to pure random entropy.'' The point is correct, and it is the post's best reason for calling evolution godlike.}"
+  ],
+  [
+   15120,
+   "\\cpara{Lists ways evolution resembles the Judeo-Christian God: bodiless, omnipresent, billions of years old, unmade. The post gives no source for the Broderick quotation, and I could not find one.}"
+  ],
+  [
+   15678,
+   "\\cpara{Lists how it differs: no mind, poor design by human standards, internally divided, and not nice.}"
+  ],
+  [
+   15877,
+   "\\cpara{Says Darwin discovered a god that did not match what theology expected, so no one hailed it as God.}"
+  ],
+  [
+   16220,
+   "\\cpara{Names it: not Jehovah but H. P. Lovecraft's Azathoth, ``the blind idiot God.''}"
+  ],
+  [
+   16719,
+   "\\cpara{Turns the result on religionists who say they believe in a vague deity: had they meant it, they would have recognized evolution as their creator. No one who holds the view is named or quoted.}"
+  ],
+  [
+   17028,
+   "\\clogic{The charge needs a notion of deity that a mindless process can satisfy. The post itself says that ``Evolution is not a God'' and that ``the Maker has no mind.'' A believer in a vague deity who declined to call evolution a god was agreeing with the post.}"
+  ],
+  [
+   17042,
+   "\\cpara{Makes the same charge against those who say they await science's discovery of God: it has happened, and ``the winner is Azathoth.'' The difficulty in the previous note applies here too.}"
+  ],
+  [
+   17639,
+   "\\cpara{Ends with a joke: better a Creator one can outwit than being a pet.}"
+  ]
+ ]
 }
