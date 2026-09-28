@@ -118,3 +118,22 @@ Why: Fair-defender: Carnot's theory was not a mysterious answer, so Kelvin's cas
 - Before: \nb{Kelvin did live through a scientific revolution in his own field.
 - After: \nb{Kelvin did live through a scientific revolution in his own field, though not the dissolving of a mystery.
 
+
+## annotated/afterwords/belief-in-belief.tex
+
+Why: Accuracy of framing: the post mocks unnamed philosophers and offers an advance on Dennett; it does not present Audi's or Dennett's ideas as its own corrections. The evidence for Dennett is secondhand.
+
+- Before: The rest of the post presents as corrections to earlier thinkers ideas that those thinkers had already reached, as far as I could check.
+- After: The rest of the post sets itself against earlier thinkers who, as far as I could check, had reached similar ideas.
+
+- Before: offered as a correction to philosophers and to Dennett, who, as far as I could check, had reached much the same distinctions earlier.
+- After: set against unnamed philosophers and against Dennett, some of whom, as far as I could check, had drawn similar distinctions earlier.
+
+
+## annotated/afterwords/religion-s-claim-to-be-non-disprovable.tex
+
+Why: Proportion: a slip inside a footnote joke is noted in the margin, not in the verdict.
+
+- Before: , with claims about all religions drawn from the Bible alone and a footnote that misstates the Bible.
+- After: , with claims about all religions drawn from the Bible alone.
+

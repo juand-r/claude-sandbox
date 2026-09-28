@@ -2,7 +2,108 @@
  "slug": "religion-s-claim-to-be-non-disprovable",
  "header": "\\post{Religion's Claim to be Non-Disprovable}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/fAuWLS7RKWD2npBFR/religion-s-claim-to-be-non-disprovable}\n",
  "skeleton_sha": "3cafde9e6c416faa79fc572d68317e162577f715d897e34e79cc29d5a7a6c930",
- "post_sha": "3cafde9e6c416faa79fc572d68317e162577f715d897e34e79cc29d5a7a6c930",
+ "post_sha": "8dea23b607ba40f7a13ffb825879771edbff71622101201f01c0db12c377a6b8",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   162,
+   "\\cpara{Opens with a joke, hedged (``The earliest account I know''): the story of Elijah and the priests of Baal, from 1 Kings 18, as the first recorded experiment.}"
+  ],
+  [
+   395,
+   "\\cpara{Retells the contest in the terms of a modern experiment: control group, significance level, peer review. The details match 1 Kings 18, where water is poured on Elijah's altar three times and the people cry that the Lord is God. The point under the joke holds: the story presents a public test of a factual claim.}"
+  ],
+  [
+   1288,
+   "\\cpara{Turns the killing of the priests into a joke about discarding a falsified hypothesis, and introduces the post's target: the idea that religion is a ``separate magisterium.''}"
+  ],
+  [
+   1694,
+   "\\cfact{The term in this sense is Stephen Jay Gould's. In ``Nonoverlapping Magisteria'' (\\textsc{Natural History}, March 1997) he proposed that science and religion each have ``a legitimate magisterium, or domain of teaching authority,'' and that ``these magisteria do not overlap.'' The post does not name Gould, here or at the end, where it calls the idea a ``Big Lie.''}"
+  ],
+  [
+   1708,
+   "\\cpara{Claims that believers once expected evidence, as the searchers for Noah's Ark did, and fell back on faith only after the evidence went against them.}"
+  ],
+  [
+   2180,
+   "\\clogic{Bartley's phrase names an argument, not only a refusal. In the \\textsc{Internet Encyclopedia of Philosophy}'s summary, defenders of religion claimed ``that commitment to some religion is just as rational as commitment to rationality: each individual has to choose some starting point, and each starting point must be arbitrary.'' Bartley's own book was an attempt to answer that argument. The post gives the conclusion without the argument. I did not find the words ``I believe because I believe'' in the sources on Bartley I could read.}"
+  ],
+  [
+   2194,
+   "\\cpara{Calls the Old Testament a ``culture dump'' that included models of the universe, with two jokes: the six days as ``a metaphor for the Big Bang,'' and rabbits chewing the cud. The second is from Leviticus 11:6, which in the King James Version says that the hare ``cheweth the cud.''}"
+  ],
+  [
+   2630,
+   "\\cpara{The post's widest claims: that ``The vast majority of religions in human history'' tell of events that would be unmistakable evidence, and that separating religion from fact is ``a recent and strictly Western concept.'' Every religious example in the post comes from the Hebrew Bible or the New Testament. The claims about other religions, and about what is Western, rest on no example from outside them.}"
+  ],
+  [
+   3519,
+   "\\cpara{Explains the New Testament's ``traces of modernity'' by Roman record-keeping: a story of God destroying Rome would have been caught by Roman historians. This is the author's conjecture, stated as fact (``You couldn't invent''), with no source.}"
+  ],
+  [
+   3999,
+   "\\cpara{The historical claim holds in substance. Wikipedia's article on the Exodus reports the consensus of modern scholars that the Pentateuch ``does not give an accurate account of the origins of the Israelites,'' and discusses ``Egyptian rule of Canaan during the late second millennium BCE.'' That early Egyptologists were ``genuinely shocked'' is given without a source.}"
+  ],
+  [
+   4571,
+   "\\cpara{Says the New Testament claims only small miracles, and treats the healing of a boy who ``froths at the mouth'' (Mark 9) as ``perfectly ordinary Bayesian reasoning'' from the premise that demons cause epilepsy.}"
+  ],
+  [
+   4836,
+   "\\clogic{The New Testament also reports large public wonders. At the crucifixion, in the King James Version, ``there was a darkness over all the earth until the ninth hour'' (Luke 23:44), and ``many bodies of the saints which slept arose'' and ``appeared unto many'' in Jerusalem (Matthew 27:52--53). These are not geopolitical, but they are big, showy and public, set in a Roman province: the kind of claim the paragraph before says Roman record-keeping ruled out.}"
+  ],
+  [
+   5299,
+   "\\cpara{Claims that religion once made claims about everything, from law to the formation of stars, and that the modern idea of religion as purely ethical is what remained after better institutions took over the rest.}"
+  ],
+  [
+   5954,
+   "\\cpara{Turns to ethics: the Bible's moral code, like its science, has become obsolete, as its approval of slavery shows.}"
+  ],
+  [
+   6359,
+   "\\clogic{This changes the question. The post's thesis is that religion's claims can be proven or disproven by evidence. The slavery example is a moral judgment, not an observation. It shows that the Bible's ethics can be criticized; it does not show that they can be disproved by evidence.}"
+  ],
+  [
+   6373,
+   "\\cpara{Sets the killing of Egypt's first-born beside the ``comparatively trivial scientific error'' about grasshoppers, and explains why people still endorse Bible ethics. The grasshopper point is sound: Leviticus 11:20--23 lists the grasshopper among the ``flying creeping'' things ``that goeth upon all four.''}"
+  ],
+  [
+   6989,
+   "\\clogic{A claim about the minds of ``Most people,'' stated as fact with no evidence. So is the ``manageable effort of self-deception'' that follows.}"
+  ],
+  [
+   7296,
+   "\\cpara{Predicts that endorsing Bible ethics will one day be treated like Trent Lott's praise, in 2002, of Strom Thurmond's segregationist presidential campaign of 1948, which cost Lott the Senate Republican leadership.}"
+  ],
+  [
+   7597,
+   "\\cpara{The conclusion calls the idea a ``Big Lie'' and ``simply false,'' and lists four things it distorts: history, scripture, what children are told, and what most believers hold.}"
+  ],
+  [
+   8064,
+   "\\clogic{The first three items answer a claim about what religions have taught. Gould's proposal was about how the two domains should be related: ``No such conflict should exist because each subject has a legitimate magisterium.'' He also claimed that this was ``the standard attitude of all major Western religions (and of Western science) today,'' and cited papal statements. Only the fourth item, what most believers hold, meets a claim of that kind, and the post gives no evidence for it. A reader of the post cannot tell that the idea it calls a lie had an argued, published form.}"
+  ],
+  [
+   8362,
+   "\\clogic{The analogy assumes the evidence is already in hand. It fits a religious claim that has been checked and has failed, such as the Exodus. It does not fit Gould's own example of a matter outside science, the soul, of which he wrote: ``My world cannot prove or disprove such a notion.''}"
+  ],
+  [
+   8376,
+   "\\cpara{Closes with a joke.}"
+  ],
+  [
+   8488,
+   "\\cpara{A footnote joke that makes two claims about the Old Testament. The text bears out neither.}"
+  ],
+  [
+   8586,
+   "\\cfact{Several passages express it. Psalm 8:3--4: ``When I consider thy heavens, the work of thy fingers, the moon and the stars \\ldots\\ What is man, that thou art mindful of him?'' Psalm 19:1: ``The heavens declare the glory of God.'' In Job 38 and 39 God asks Job, ``Where wast thou when I laid the foundations of the earth?'' and goes on through the stars, the snow and hail, the lion, the raven and the horse.}"
+  ],
+  [
+   8682,
+   "\\cfact{The verse that forbids it, Deuteronomy 22:5, says that ``all that do so are abomination unto the LORD thy God.'' It states no penalty.}"
+  ]
+ ]
 }

@@ -2,7 +2,7 @@
  "slug": "belief-in-belief",
  "header": "\\post{Belief in Belief}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/CqyJzDZWvGhhFJ7dY/belief-in-belief}\n",
  "skeleton_sha": "1c7b3f848a9631f91e75b75e706398ec33f6b3863f03e1641e061d3bb17cccea",
- "post_sha": "c08d2350d10eab5089140b85cc5a7d02ec76adacadabdd2d1f30ee540d62434d",
+ "post_sha": "8db1dd090ab01b62bd0aef68e250017b5af8775b686db3d0b182a022765c7ad5",
  "edits": [],
  "notes": [
   [
@@ -19,11 +19,11 @@
   ],
   [
    1266,
-   "\\cpara{The post's own contribution, and it goes beyond Sagan. Sagan draws from the excuses only that ``something funny is going on inside my head'' and asks ``what convinced me.'' The post draws a sharper inference: to excuse the right tests in advance, the claimant must already expect them to come out empty.}"
+   "\\cpara{The post's own contribution, and it goes beyond Sagan. Sagan draws from the excuses that ``something funny is going on inside my head,'' and asks ``what convinced me,'' but does not ask what the claimant expects. The post draws a sharper inference: to excuse the right tests in advance, the claimant must already expect them to come out empty.}"
   ],
   [
    1658,
-   "\\cpara{The philosophers are not named, and their question is misdescribed. It is not an assumption that the brain can hold one belief at a time. It is the ``static paradox'' of self-deception, which the \\textsc{Stanford Encyclopedia of Philosophy} states as ``How can a person simultaneously hold contradictory beliefs?'' Among the answers it lists from before 2007 are Robert Audi's (1982, 1988), that the self-deceived person sincerely avows what they do not believe, and Eric Funkhouser's (2005), which it summarizes as: ``they believe that they believe that p.'' These are close to the answer this post goes on to give.}"
+   "\\cpara{The philosophers are not named, and the assumption the post gives them is not theirs. Their question is the ``static paradox'' of self-deception, which the \\textsc{Stanford Encyclopedia of Philosophy} states as ``How can a person simultaneously hold contradictory beliefs?'' It asks how contradictory beliefs can coexist, not whether the brain has room for more than one. Among the answers it lists from before 2007 are Robert Audi's (1982, 1988), that the self-deceived person sincerely avows what they do not believe, and Eric Funkhouser's (2005), which it summarizes as: ``they believe that they believe that p.'' These are close to the answer this post goes on to give.}"
   ],
   [
    2567,
@@ -31,7 +31,7 @@
   ],
   [
    3327,
-   "\\cpara{Introduces Dennett's term with two examples: a child who doubts Santa Claus but thinks they are supposed to believe, and a contradictory statement, a sky both ``perfectly blue and perfectly green,'' which is easier to think good to believe than to believe. The post credits Dennett for the term. I could not check the paraphrase of Dennett against the book.}"
+   "\\cpara{Introduces Dennett's term with two examples: a child who doubts Santa Claus but thinks they are supposed to believe, and a contradictory statement, a sky both ``perfectly blue and perfectly green,'' which, the post says, is easier to think it good to believe than to believe. The post credits Dennett for the term. I could not check the paraphrase of Dennett against the book.}"
   ],
   [
    4214,
@@ -51,7 +51,7 @@
   ],
   [
    6390,
-   "\\cpara{Presents the wider concept of belief as the post's addition to Dennett (``But we need a wider concept of belief''). Dennett had drawn a similar line himself. In \\textsc{Brainstorms} (1978) he separated beliefs, dispositions to act that animals also have, from ``opinions,'' commitments to sentences, and suggested that self-deception arises when the two diverge. I have this from Keith Frankish's account (\\textsc{Philosophical Psychology}, 1998); I could not read Dennett's chapter, or check whether \\textsc{Breaking the Spell} uses the distinction.}"
+   "\\cpara{Sets the post's wider concept of belief against Dennett (``While I disagree with Dennett \\ldots\\ But we need a wider concept of belief''). Dennett had drawn a similar line himself. In \\textsc{Brainstorms} (1978) he separated beliefs, dispositions to act that animals also have, from ``opinions,'' commitments to sentences, and suggested that self-deception arises when the two diverge. I have this from Keith Frankish's account (\\textsc{Philosophical Psychology}, 1998); I could not read Dennett's chapter, or check whether \\textsc{Breaking the Spell} uses the distinction.}"
   ],
   [
    7166,
