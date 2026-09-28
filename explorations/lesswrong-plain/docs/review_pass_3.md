@@ -385,3 +385,38 @@ My extraction script at first read only `\cpara` and `\clogic`. The annotated ed
 - **ANN, weak.** "No source is given for Kelvin ever judging the Wrights" (margin and afterword). The post's Kelvin is hypothetical ("compare their authority to, *say*, Lord Kelvin"). It does not claim he judged them. The 1896 "not the smallest molecule of faith" letter is useful background, not a correction. "The top step ... is trivial as stated" is a quip.
 - **ANN, OK.** "Screens off" is never defined (despite "Expecting Short Inferential Distances," 22 October 2007, two months earlier). The Wrights' failed calculations (Smeaton's coefficient, one third of the lift, fixed with a wind tunnel) check out. So do the data-processing inequality overstated as "closer is more powerful," noisy readings, the concession given four sentences and a feeling, and a conclusion that drops the concession.
 - **HON, see above.**
+
+## 41. Say Not "Complexity"
+
+- **ANN, unfair.** The afterword's "The pressure to sweep gaps under the rug is named only in others" ignores the post's own last paragraph. There the author says he and Marcello "ran into something we didn't understand, which was often," and adopted "magic" to mark it. That is the author applying the point to himself.
+- **ANN, unfair.** The remedy note and the afterword ("no outside check is offered: no test a reader could run") leave out two checks the post gives. One is the test Marcello is taught: does the word "concentrate your probability mass"? The other is the convention of writing "magic" wherever a gap is. "Circular as stated" fits the sentence about feeling the blank parts of the map, but not the post as a whole.
+- **ANN≠HON, weak.** The afterword cites the Sidney Harris cartoon ("then a miracle occurs") as prior art but does not mention that the post itself quotes that line. The honest note says so.
+- **ANN, weak.** "The reader is placed beside the examiner" (on "Maybe *this* one is teachable") is labelled as a reading, but it is a jab.
+- **ANN, OK.** Answering a claim Marcello did not make, the unnamed crowds ("left and right"), and the cost of the method conceded only in a footnote all check out.
+- **HON, OK.**
+
+## 42. Mind Projection Fallacy
+
+- **ANN, contestable.** On Kant, the `\cfact` and the afterword ("He located space in the mind; the post files him under projecting the mind onto the world") set up a contradiction that is not clear-cut. Kant held that all space we can experience *must* obey Euclid, because that is the form of our intuition. Yudkowsky's charge is that this takes a fact about human cognition as a necessary truth about space. Relativity showed physical space need not be flat. That is a defensible reading of Kant as projecting. The honest note gives both halves ("what he claimed about the world was that all space we can experience must obey Euclid's geometry"). The annotated edition treats the charge as simply wrong.
+- **ANN, weak.** The Hume `\cfact` ("misquoted": "anywhere" for "any where"; "the passage does not use 'a priori'") is mostly nitpicking. Hume calls such propositions *a priori* elsewhere in the same section, so "a priori ideas" is a fair gloss. The strong point is the Treatise sentence ("a great propensity to spread itself on external objects"), and both editions make it. "Anything is metaphorically similar to a data structure, so the claim now forbids nothing" overstates a hedge. "The post has no conclusion" is a nitpick: the post promises its argument about probability "shortly," and delivers it the next day.
+- **ANN, OK.** The cover explained by selling magazines, the one-case generalization, and Kant's A26/B42 quotation all check out. The A26/B42 quotation was not re-verified here.
+- **HON, OK.**
+
+## 43. How An Algorithm Feels From Inside
+
+- **ANN, OK.** No problems found. The untested guess about brain design (with its hedges noted), the reasons being engineering virtues, the theory of perception settled in a dash (direct realism, SEP), and the Allais Malaise link read as aimed at critics (labelled as inference) are all fair. The afterword also credits the post for claiming nothing about the standard analysis of the tree.
+- **ANN, weak.** "The people it describes include his critics" is labelled as inference. It is defensible from the link, and it is the least-supported sentence in an otherwise clean set of notes.
+- **HON, OK.**
+
+## 44. Expecting Short Inferential Distances
+
+- **ANN and HON, contestable.** The children objection is the lead argument of the annotated edition and the first note in the honest rewrite. A defender can reply that the post is about explanations between adults, and that teaching children takes years of routine, not one conversation that expects a short gap. The objection still has force, because a mind shaped by teaching the young would know that some listeners are far behind. But it is weaker than the afterword's "a premise its own subject contradicts." Nothing needs to change; this is noted as the point most open to challenge.
+- **ANN, OK.** The ancestral story adding nothing that self-anchoring and the illusion of transparency do not already explain, "the curse of knowledge" (Camerer, Loewenstein and Weber, 1989), and the afterword's statement that the advice is sound whatever its origin all check out.
+- **HON, OK.**
+
+## 45. Illusion of Transparency: Why No One Understands You
+
+- **ANN, error (misquotation).** The `\cfact` on Hitler's reply and the afterword both quote "I take note of this statement." The Blue Book text (checked in pass 2 on the Avalon Project) reads "I take note of this statement *of yours* and assure you that it can make no change in the determination of the Reich Government." The annotated quotation cuts the sentence and puts a full stop where there is none. The honest rewrite was corrected in pass 2.
+- **ANN≠HON, weak.** The "Jane" `\cstyle` and the afterword ("the post twice calls her 'Jane'"). Pass 2 cut this from the honest rewrite as a nitpick. The "Griffin Gilovich" editor slip in the afterword is similar: true, but trivial.
+- **ANN, OK.** The overhearers narrowing the mechanism (the abstract's "informed about the speakers' intention" and "monitor their own utterances," verified in pass 2 via Crossref), ambiguous sentences chosen by design, the Chamberlain date (22 August against 1 September), and the letter's wording all check out. So does the careful hedge on what Hitler privately expected.
+- **HON, OK.**
