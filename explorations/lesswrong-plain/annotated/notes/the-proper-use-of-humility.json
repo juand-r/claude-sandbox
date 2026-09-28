@@ -1,0 +1,77 @@
+{
+ "slug": "the-proper-use-of-humility",
+ "header": "\\post{The Proper Use of Humility}{Eliezer Yudkowsky}{2006}{https://www.lesswrong.com/posts/GrDqnMjhqoxiqpQPw/the-proper-use-of-humility}\n",
+ "skeleton_sha": "402ae122c207ffaa2c6e0b6d6b8908684c87ea0a7b7273e7b87f696b7e62da47",
+ "post_sha": "3c8cdaf46471006ed3fee8e39648a9db937dc2a1e43e720b5f518c63355a6cfd",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{States the question: good science needs humility, but of what sort?}"
+  ],
+  [
+   277,
+   "\\cpara{First case: the creationist's appeal to humility is ``a very selective underconfidence,'' doubt applied only to an unwelcome conclusion. The post leaves aside whether to call it humility.}"
+  ],
+  [
+   716,
+   "\\cpara{Second case, good humility: an engineer who is ``damn sure'' still builds fail-safes, because sure engineers have been wrong before.}"
+  ],
+  [
+   1030,
+   "\\cpara{Third case, also good: the student who double-checks ``wants to become stronger.'' In the book this post follows ``Tsuyoku Naritai! (I Want To Become Stronger),'' which was written almost four months after it.}"
+  ],
+  [
+   1323,
+   "\\cpara{Fourth case: the student who never checks because checking cannot bring certainty. The post calls this ``less wise,'' allowing that the feeling behind it may be the same.}"
+  ],
+  [
+   1620,
+   "\\cpara{Separates ``social modesty,'' which regulates status, from ``scientific humility,'' which you would practice alone in space. The post is open that it uses the word in a narrower sense than the everyday one (``by default they'll associate the words to social modesty''). That social modesty is ``ancestrally relevant'' and scientific humility ``a more recent and rarefied invention'' is asserted without support.}"
+  ],
+  [
+   1838,
+   "\\clogic{The everyday sense is closer to the student's words than to double-checking. Merriam-Webster defines humility as ``freedom from pride or arrogance,'' and humble as ``not proud or haughty: not arrogant or assertive'' and ``ranking low in a hierarchy or scale.'' What the post calls scientific humility, taking precautions against your own errors, is nearer to what the same dictionary calls prudence: ``caution or circumspection as to danger or risk.'' A proud person can practice it; the post's own engineer is ``damn sure.'' The post keeps the word and leaves out freedom from pride. It closes on the same definition, taken from ``Twelve Virtues of Rationality,'' where our notes make this point again.}"
+  ],
+  [
+   2523,
+   "\\cpara{The student now cites the problem of induction, and the first reply is about motive (``go home and play video games''). The reasoned reply, the bridge test, comes four paragraphs later.}"
+  ],
+  [
+   2927,
+   "\\cpara{Argues from physics: because physicists expect their models to work all the time, they follow up small flaws, and rarely a flaw overturns a theory. The closing words, introduced by ``Therefore it is written,'' come from the ninth virtue of the author's own ``Twelve Virtues of Rationality.'' The post does not say whose words they are.}"
+  ],
+  [
+   3494,
+   "\\cpara{Satire in the voice of an imagined critic: scientists would be better liked if they granted that evolution holds only most of the time, and they ``ought to be more humble, and compromise a little.'' The point is that the demand for this kind of humility is about status, not about getting things right.}"
+  ],
+  [
+   4649,
+   "\\cpara{Warns that a vaguely understood principle ``can adapt to justify almost any deed.'' The further claim, that people with vague models ``usually end up believing whatever they started out wanting to believe,'' is stated as a general fact without evidence; the study cited two paragraphs later is the nearest support.}"
+  ],
+  [
+   5212,
+   "\\cpara{Offers the post's test: ask whether the actions a ``humble'' line of thinking recommends make you stronger or weaker. The bridge shows it on a case where extra cables are plainly better than a shrug.}"
+  ],
+  [
+   5862,
+   "\\cpara{Reports, as the author's own observation (``that I witness''), that most appeals to humility are excuses to shrug, and gives three. The term and its gloss match the cited paper, where Taber and Lodge define disconfirmation bias as spending ``more time and cognitive resources denigrating and counterarguing attitudinally incongruent than congruent arguments.''}"
+  ],
+  [
+   6748,
+   "\\cpara{Turns to profession: humility, like much religious belief, is easy to profess. It credits Daniel Dennett with ``belief in belief'' and with the proposal to study religious ``profession.'' As in our notes on ``Belief in Belief,'' I could not check these against Dennett's book.}"
+  ],
+  [
+   7496,
+   "\\cpara{Applies this to humility: ``Well, of course I could be wrong'' acknowledges doubt and changes nothing.}"
+  ],
+  [
+   7760,
+   "\\cpara{Names the temptation to change beliefs and actions as little as possible, and quotes John Kenneth Galbraith on getting ``busy on the proof.''}"
+  ],
+  [
+   8367,
+   "\\cpara{Concludes that thinking should shape plans, and that humility, ``properly misunderstood,'' lets new information disappear. It ends by quoting, again as scripture and again without saying whose words they are, the definition of humility from ``Twelve Virtues of Rationality.'' On that definition, see the note on social modesty above.}"
+  ]
+ ]
+}

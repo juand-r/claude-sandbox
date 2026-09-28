@@ -71,3 +71,10 @@ For the whole-book pass: Einstein's Arrogance now carries the full Peirce point,
 Faster Than Science note can become a pointer; The Futility of Emergence and Say Not
 Complexity both make the "unnamed crowds" point; the density of \cpara notes on the
 dialogue lines of The Simple Truth (149) is high.
+
+## Batch 2a (in progress)
+
+For the whole-book pass: The Proper Use of Humility (order 52) now carries the full
+dictionary point on humility; the Twelve Virtues note (order 297) should become a pointer
+back, and its biographical and "AGI Ruin" material should be reviewed against STANDARDS 2.2
+test 9 (motive readings).
