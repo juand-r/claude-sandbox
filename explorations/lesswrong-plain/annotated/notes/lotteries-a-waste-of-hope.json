@@ -1,0 +1,53 @@
+{
+ "slug": "lotteries-a-waste-of-hope",
+ "header": "\\post{Lotteries: A Waste of Hope}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/vYsuM8cpuRgZS5rYB/lotteries-a-waste-of-hope}\n",
+ "skeleton_sha": "388301f589018c5151e4b8adbf614329ede99826ea8427846ba03ce5aeb6b026",
+ "post_sha": "11cd76e40022c3db63f25ed69ea1c18c66caad6338fe1c36cc6175434c166468",
+ "edits": [],
+ "notes": [
+  [
+   137,
+   "\\cpara{Sets out the classic criticism, that the people who play can least afford it, and the defense the post will attack: a ticket as a ``rational purchase of fantasy,'' a dollar for a day of pleasant anticipation.}"
+  ],
+  [
+   597,
+   "\\cpara{The first argument: the fantasy has a probability ``nearly zero,'' and the buyer can do nothing to bring it about. The fantasy is of wealth without effort.}"
+  ],
+  [
+   1104,
+   "\\cfact{The cited article reports Carol Dweck's experiments on praise. Of fifth-graders praised for effort, ``90 percent chose the harder set of puzzles''; most of those praised for intelligence chose the easy test. The post uses it for the value of effort; the article is about praise, not about fantasies of wealth.}"
+  ],
+  [
+   1118,
+   "\\cpara{The main argument: lottery hopes crowd out hopes a person could act on, such as technical school, a business or a promotion, and a daydream repeated often enough might show the way to its goal. It is offered with ``maybe'' and ``might,'' and no evidence.}"
+  ],
+  [
+   1661,
+   "\\clogic{The research nearest to this claim does not support it. Oettingen and Mayer (2002) separated positive expectations, judging a desired future likely, from positive fantasies, enjoying thoughts and images of it. Expectations predicted effort and success; for fantasies ``the reverse was true,'' in studies that included graduates looking for a job. On that finding, a pleasant daydream about a promotion is not clearly the productive alternative the post suggests.}"
+  ],
+  [
+   1898,
+   "\\cpara{Proposes the plain verdict: buying lottery tickets is ``stupid,'' as human beings sometimes are.}"
+  ],
+  [
+   2077,
+   "\\cpara{Explains the lottery's popularity by two limits: the brain cannot scale a feeling down by a factor of 0.00000001, and people treat the expected-utility calculation as one argument among others. The factor is close to the real odds. In 2007 a Powerball ticket had about one chance in 146 million of the jackpot, and a Mega Millions ticket about one in 176 million, against the post's one in 100 million.}"
+  ],
+  [
+   2296,
+   "\\cfact{Stated as fact, with no source. Kahneman and Tversky said much the same in 1979: ``there is a limit to how small a decision weight can be attached to an event, if it is given any weight at all,'' and ``highly unlikely events are either ignored or overweighted.'' They wrote that ``the overweighting of small probabilities favors both gambling and insurance.''}"
+  ],
+  [
+   2699,
+   "\\clogic{The calculation is not shown. The defense the post answers says that a ticket buys a day of pleasant anticipation. An expected-utility calculation would have to put a value on that anticipation, and its size is the point in dispute. The post's case against the anticipation is the argument two paragraphs earlier, that it displaces better hopes, not arithmetic.}"
+  ],
+  [
+   2713,
+   "\\cpara{Takes the explanation as ``sufficient'' and asks why so many defend ``this classic form of self-destruction.'' The footnote points to the author's ``Debiasing as Non-Self-Destruction'' (7 April 2007), which counts ``the lottery tickets we didn't buy'' among the ``great victories of debiasing.''}"
+  ],
+  [
+   2990,
+   "\\cpara{Lists five steps for overcoming a bias and says that many people ``bog down in step 3,'' deciding that the bias is bad. Coming right after the question about the lottery's defenders, this treats their position as a failure to take an easy step. Their position is that there is no bias to reject: the anticipation is what they pay for.}"
+  ]
+ ]
+}

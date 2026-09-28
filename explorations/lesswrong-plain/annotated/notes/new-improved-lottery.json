@@ -1,0 +1,49 @@
+{
+ "slug": "new-improved-lottery",
+ "header": "\\post{New Improved Lottery}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/QawvGzYWhqdyPWgBL/new-improved-lottery}\n",
+ "skeleton_sha": "ab57d093b6beb2ad92ee748c1be0b3d2989f4e96bdf00550326d8545442b4146",
+ "post_sha": "a5911ae4787571d6f885b86be25e549b913fa51c80f79a51c90677a96c685717",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{Quotes two defenses of the lottery as bought fantasy: an Economist blog post, and a comment on ``Lotteries: A Waste of Hope.''}"
+  ],
+  [
+   744,
+   "\\clogic{The post quotes the comment's first two sentences. It goes on: ``I don't understand how you can apply the rubric `bias' to their value, since nobody can measure the value of entertainment or distant hope for another. Just measuring the expected cash value is ridiculously reductive.'' The post does not quote this part, and its satire answers the price of hope, not whether its value can be judged by someone else.}"
+  ],
+  [
+   758,
+   "\\cpara{The reply: between zero and epsilon the difference is of order epsilon. As arithmetic this is true by definition. The commenter's claim was about the dream, that any real chance lets it ``bridge that gap.'' Whether the worth of a daydream should shrink with its probability is the question in dispute, and the reply assumes that it should.}"
+  ],
+  [
+   988,
+   "\\cpara{Proposes the New Improved Lottery: one dollar buys years of chances at a prize paid about once every five years, at a random time set by radioactive decay, so that a win is equally likely at any minute.}"
+  ],
+  [
+   1548,
+   "\\cpara{Satire: the buyer stares at the phone instead of working, since the prize could come at any minute.}"
+  ],
+  [
+   2152,
+   "\\cpara{Satire: the buyer fills a shopping cart and puts the items back if the phone does not ring.}"
+  ],
+  [
+   2415,
+   "\\cpara{Satire: a live display of changing odds, so absorbing that it would crowd out even ``hopes of getting home from work early.'' The harm shown, daydreams displacing effort, is the claim of the previous post, enlarged; the satire adds no evidence for it.}"
+  ],
+  [
+   3509,
+   "\\cpara{Answers, with sarcasm, the argument that people's willingness to pay shows that the product has value.}"
+  ],
+  [
+   3776,
+   "\\cpara{Concludes that if the lottery is a service, it is ``enormously overpriced.'' On the post's own premise, that hope is the product, the arithmetic supports this. In 2007 Powerball and Mega Millions each cost \\$1 a play and each drew twice a week, so a player of one game who bought a ticket for every draw would spend about \\$520 over five years, against \\$1 for the New Improved Lottery.}"
+  ],
+  [
+   3888,
+   "\\cfact{One government sells something close. Since 1956 the United Kingdom has sold Premium Bonds: each bond is entered in every monthly prize draw until it is cashed, and the government buys it back at its price on request (Wikipedia, ``Premium Bonds''). They differ from the post's design in their fixed monthly draws and in returning the stake.}"
+  ]
+ ]
+}

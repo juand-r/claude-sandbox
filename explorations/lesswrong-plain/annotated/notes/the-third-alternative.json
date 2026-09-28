@@ -1,0 +1,69 @@
+{
+ "slug": "the-third-alternative",
+ "header": "\\post{The Third Alternative}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/erGipespbbzdG5zYb/the-third-alternative}\n",
+ "skeleton_sha": "0ac95a889f886664c005507685bf9b67d0fb460c43e78308bf1529dcb4aba407",
+ "post_sha": "002048476dc552590239ff4c854dd819c3472d6ebd906e7aca49e7857adcc40a",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Opens with an argument for keeping children's belief in Santa Claus, in quotation marks with no speaker. It is the only Noble Lie the post examines.}"
+  ],
+  [
+   512,
+   "\\cpara{The post's central point, and it is correct: showing that a policy beats doing nothing does not show that it beats every alternative. The post names the error with its standard names; Wikipedia's ``False dilemma'' lists ``fallacy of the excluded middle'' among them. The paragraph then gives two alternatives, one for each benefit claimed for Santa.}"
+  ],
+  [
+   1306,
+   "\\cfact{Stated as fact, with no source. The research nearest to it supports its direction. A meta-analysis of 128 experiments (Deci, Koestner and Ryan, 1999) found that tangible rewards reduced later free-choice interest in a task and that positive feedback increased it, although ``verbal rewards tended to be less enhancing for children than college students.'' It measured interest in tasks, not good behavior, and it reports average effects, not the ``unconditional'' good behavior the post describes.}"
+  ],
+  [
+   1320,
+   "\\cpara{Generalizes from the one example: Noble Lies are ``generally'' package deals, and if the gain is needed ``we can construct'' an alternative. No other Noble Lie is examined, and that one can be built is asserted, not argued.}"
+  ],
+  [
+   1523,
+   "\\cpara{Says the hard steps are deciding to look and deciding to accept, not the search itself. ``Most people fail on these two steps'' is given without evidence.}"
+  ],
+  [
+   1804,
+   "\\cpara{Separates honest false dilemmas from a second kind: a policy defended by its benefit over doing nothing. Its defender, the post says, ``does not want'' a better option, since finding one would end the justification.}"
+  ],
+  [
+   2311,
+   "\\cpara{Gives the proverb a new sense: a better option is the enemy of the argument for a merely good one. In its usual sense, commonly credited to Voltaire, the proverb says that ``insistence on perfection often prevents implementation of good improvements'' (Wikipedia, ``Perfect is the enemy of good''), which is advice against holding out for the best.}"
+  ],
+  [
+   2678,
+   "\\cpara{Background: options must be generated, and a search needs a rule for when to stop. ``Modern cognitive psychology views'' is broader than the author's own later account. In ``Motivated Stopping and Motivated Continuation'' (28 October 2007) the author credits this view to one school, ``the Fast and Frugal crowd,'' and writes that ``Most experiments present the subjects with options'' rather than asking them to generate options.}"
+  ],
+  [
+   3107,
+   "\\cpara{The post's main psychological claim: a search stops as soon as it finds an option that is defensible and convenient, and goes on when the options found are costly to the searcher. The post gives no evidence here, but research supports something close. Ditto and Lopez (1992) found that ``less information is required'' to reach a conclusion people prefer than one they do not. The author's later post ``Motivated Stopping and Motivated Continuation'' names the pattern and ties it to Gilovich's ``motivated skepticism.''}"
+  ],
+  [
+   3965,
+   "\\cpara{The practical warning. It sits uneasily with the house example two paragraphs earlier, where stopping short of the best option is necessary, and with the usual sense of the proverb quoted above. The warning fits the case the post describes, a search that stops the moment a convenient option appears. The post gives no way to tell that case from an ordinary stop until the five-minute rule below.}"
+  ],
+  [
+   4180,
+   "\\cpara{Says false dilemmas often defend convenient unethical policies, and that Noble Lies are popular because they defend a belief already held. No Noble Liar is named here or in the last paragraph (``It's amazing how many Noble Liars''), so the claims about them rest on the Santa example alone.}"
+  ],
+  [
+   4703,
+   "\\cpara{The first self-test: would you be glad to find a better option, or feel ``a tiny flash of reluctance''? It asks the reader to introspect about motives that the post, three paragraphs earlier, called ``subconscious influences.'' The post does not say why a direct question would reach them.}"
+  ],
+  [
+   5034,
+   "\\cpara{The second test is external: five minutes by a physical clock, so that a moment's thought cannot pass for a search. Unlike the first test, it does not depend on introspection.}"
+  ],
+  [
+   5535,
+   "\\cpara{Adds a warning: the brainstorm itself may be set up to fail, with every option chosen to be obviously bad.}"
+  ],
+  [
+   5747,
+   "\\cpara{Closes on Noble Liars who lament their ethical violations without having searched five minutes for an alternative, and on searches ``we secretly wish would fail.''}"
+  ]
+ ]
+}

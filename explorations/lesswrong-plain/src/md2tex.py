@@ -88,10 +88,15 @@ def split_footnotes(body: str):
     """Pull out '[n](#fnNxK-bk)text' definitions and replace in-text markers with \\cauthor."""
     defs = {}
     kept = []
+    last = None  # the footnote whose definition was seen last, for multi-paragraph footnotes
     for line in body.split("\n"):
         m = re.match(r"^\[(\d+)\]\(#(fn[^)]*)-bk\)\s*(.*)$", line)
         if m:
-            defs[m.group(2)] = m.group(3)
+            last = m.group(2)
+            defs[last] = m.group(3)
+        elif last is not None and line.strip():
+            # A paragraph after a footnote definition continues that footnote.
+            defs[last] += "\n\n" + line
         else:
             kept.append(line)
     body = "\n".join(kept)

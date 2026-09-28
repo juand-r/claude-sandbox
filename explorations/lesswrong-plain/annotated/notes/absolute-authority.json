@@ -1,0 +1,125 @@
+{
+ "slug": "absolute-authority",
+ "header": "\\post{Absolute Authority}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/PmQkensvTGg7nGtJE/absolute-authority}\n",
+ "skeleton_sha": "29b4aa72a25478434c2667aa6be03e651960bbbe70d6cfefb7e16cc935c6ddb4",
+ "post_sha": "6a5090558f01c4cb0bdfc9c101e2216b0928428f1cc275887dbf154fcb9a41d7",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Opens with an unnamed opponent. The challenge holds two things: a demand for certainty (``you can't know for certain'') and an argument from history: science changed its mind about gravity, so it may change it about evolution. Philosophers of science call the general form of that argument the pessimistic induction and treat it seriously (Stanford Encyclopedia of Philosophy, ``Scientific Realism'', section 3.3). The post takes up the demand for certainty. It does not take up the argument from history, and gravity is not mentioned again.}"
+  ],
+  [
+   423,
+   "\\clogic{A standard answer was at hand. The previous day's post, ``The Fallacy of Gray'', ends by quoting Asimov's ``The Relativity of Wrong''. That essay answers a correspondent who held that in every century people ``were proved to be wrong'': scientists refine good theories, which are ``not so much wrong as incomplete.'' The post does not use it.}"
+  ],
+  [
+   437,
+   "\\cpara{Announces that the gap cannot be crossed in a few sentences.}"
+  ],
+  [
+   574,
+   "\\cpara{Sets out the opponent's view as the post reconstructs it: a source is trusted wholly or not at all, so one admitted error ends all trust. The view is described, not quoted.}"
+  ],
+  [
+   1051,
+   "\\cpara{Adds a second assumption credited to the opponent: a proponent is expected to confess nothing, so any flaw a proponent admits counts heavily.}"
+  ],
+  [
+   1369,
+   "\\cpara{Explains why ``Science is probabilistic, just like all other knowledge'' fails with such a listener: the first half sounds like a confession, the second like an excuse.}"
+  ],
+  [
+   1696,
+   "\\cpara{The opponent's conclusion, in a voice the post gives them.}"
+  ],
+  [
+   1795,
+   "\\cpara{Offers religion as ``one obvious source'': if scripture comes from God, an admitted flaw destroys it, so doubt is a sin and certainty is required. The chain is given as the logic of religion in general; no religion, text or believer is named.}"
+  ],
+  [
+   2403,
+   "\\cpara{A second source, offered with ``I suspect'' and no evidence: at school the teacher's statements must be believed, while a student's suggestions may be taken or left.}"
+  ],
+  [
+   2769,
+   "\\cpara{Develops the school guess, again hedged (``I fear''): beliefs get sorted like social rules into commands and suggestions, and science, which admits it may err, lands among the suggestions. Nothing in the post tests the explanation.}"
+  ],
+  [
+   3430,
+   "\\cpara{Extends the guess to people who think uncertainty without an ``Authoritative probability'' is not a matter for Bayesian probability. The worry mocked here, that others ``might \\ldots\\ argue with your estimate of the prior probability,'' is a standing question in the field. The Stanford Encyclopedia of Philosophy calls it ``the problem of the priors'' and says it ``divides Bayesians'' (``Bayesian Epistemology'', section 1.5). The parenthesis, written ``in passing'', explains the worry by a resemblance to classroom habits and does not engage it.}"
+  ],
+  [
+   4205,
+   "\\cpara{Sets science's tested predictions, such as the Moon's next rising, against ``some musty old scroll'' that ``never admits to error.'' The paragraph says it is written from annoyance (``rather annoying''). The scroll is hedged (``probably''), and the closing ``I'm perfect'' is the post's caricature of its opponents, not something anyone is reported to have said.}"
+  ],
+  [
+   5497,
+   "\\cpara{Says there is no quick rebuttal, only careful argument before an audience, because the difference is one of ``life-gestalt'' that is hard to put into words.}"
+  ],
+  [
+   5997,
+   "\\cpara{Introduces four lines for a public debate, offered tentatively (``Hard to say . . . maybe''): science's strength is changing its mind; scientists withhold ``absolutely certain'' because their standards are higher; in science ``not absolutely certain'' means a tiny chance, not a specific doubt; and a belief one would give up for enough evidence cannot have probability one.}"
+  ],
+  [
+   8206,
+   "\\clogic{Correct for belief revised by Bayes' theorem: a prior of 1 stays at 1 whatever the evidence. Statisticians call the advice that follows Cromwell's rule, a name given by Dennis Lindley, who also used a cheese example: leave a little probability for ``the moon being made of green cheese,'' since ``otherwise an army of astronauts returning with samples of the said cheese will leave you unmoved'' (as quoted by Wikipedia, ``Cromwell's rule'').}"
+  ],
+  [
+   8507,
+   "\\cpara{Turns from public debate to private teaching, and asks how to begin.}"
+  ],
+  [
+   8723,
+   "\\cpara{Answers: the first step is seeing that without certainty one can still make moral and factual distinctions. The Bujold line is marked as a paraphrase.}"
+  ],
+  [
+   9071,
+   "\\cpara{Names the ``Argument from the Argument from Gray'' and calls it common, without giving an instance. The relativists' chain in its first line is the post's own parody (it ends ``bwahahaha''), and it is the chain of the Sophisticate quoted in the previous day's post: all is gray, ``Therefore, no one is better than anyone else.''}"
+  ],
+  [
+   9662,
+   "\\cpara{Locates the fault correctly, at the step from ``Everything is gray'' to ``No one is better than anyone else'', the Fallacy of Gray of the previous day's post. ``Reversing every single line'' describes the defender's move loosely. The defender keeps the relativist's steps and rejects only the first premise, a move that is valid when every step holds, as the post's next sentence says. Here one step does not hold.}"
+  ],
+  [
+   10306,
+   "\\cpara{The post's main answer: to choose, one needs only uncertain knowledge of better and worse, not certain knowledge of good and evil. It is correct, and it is the point the rest of the post serves.}"
+  ],
+  [
+   10696,
+   "\\cpara{Restates the answer in logical terms: certainty that A is good and B evil is sufficient for choosing A, not necessary.}"
+  ],
+  [
+   11075,
+   "\\cpara{Names the defense's second fault: it infers that certainty must exist from the bad consequences of its absence. The label fits.}"
+  ],
+  [
+   11148,
+   "\\cpara{Begins a list of what the learner needs, starting with a culture in which doubt and admitting error are not shameful.}"
+  ],
+  [
+   11343,
+   "\\cpara{Second item: learning by looking rather than by being preached at; finding that things differ from a first glance does not mean Nature lied.}"
+  ],
+  [
+   11675,
+   "\\cpara{Third item: probability as calibration, how often people in a given state of belief turn out right. ``Not one hundred'' is given without a source, but there is one. In a 1977 study by Fischhoff, Slovic and Lichtenstein, answers given odds of a million to one or more were right 90\\% of the time, as quoted in Yudkowsky's own chapter on global risks (2008). The next day's post, ``Infinite Certainty'', explains why the author avoids citing these experiments: people use them to discount opinions they dislike.}"
+  ],
+  [
+   12185,
+   "\\cpara{Argues that fanatical beliefs are less often right than obvious ones, since fanaticism arises only where there is opposition. The premises are hedged (``If anything'', ``probably'') and no data are given.}"
+  ],
+  [
+   12807,
+   "\\clogic{Stated flatly, on the hedged sentences before it. In the study cited in the previous note, accuracy barely changed between odds of 3 to 1 and 100 to 1, and then rose (73\\% at 100 to 1, 90\\% at a million to one). Stated odds are not the ``emotional commitment'' the post means, so the study does not settle the point; but it is the nearest evidence, and it does not support the claim.}"
+  ],
+  [
+   12821,
+   "\\cpara{Explains 99.9999\\% as about one error in a million equally strong statements, and calls probability 1.0 ``infinite certainty'', which it is ``absolutely ridiculous'' to think a human brain could reach. That goes beyond Cromwell's rule in its usual form, which exempts logical truths such as 2 + 2 = 4 (Wikipedia, ``Cromwell's rule''). The author defends the stronger version two days later, in ``0 And 1 Are Not Probabilities.''}"
+  ],
+  [
+   13559,
+   "\\cpara{Ends with a proposal, hedged (``it seems to me'', ``maybe''): scientists should say ``We are not infinitely certain.'' The reason, that ``not certain'' suggests a specific doubt, restates the second and third debating lines.}"
+  ]
+ ]
+}

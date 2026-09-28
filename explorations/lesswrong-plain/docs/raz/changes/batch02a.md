@@ -38,3 +38,27 @@ Why: Proportion: a slip that understates the post's own point stays in the margi
 - Before: largely repeated from the previous day's post, with one illustration off by a factor of a hundred and no mention that standard probability theory gives logical truths probability 1.
 - After: largely repeated from the previous day's post, with no mention that standard probability theory gives logical truths probability 1.
 
+
+## annotated/posts/absolute-authority.tex
+
+Why: Jab: the note grants the irony and makes the point anyway (STANDARDS 2.2 test 9).
+
+- Before: \cstyle{The post's name for the people it later sets out to teach: ``the unenlightened ones'' (twice) and ``the not-fully-enlightened ones.'' The irony is plain; it is still the name the post gives them.}
+- After: 
+
+
+## annotated/posts/how-to-convince-me-that-2-2-3.tex
+
+Why: Make each point once: the second Quine note carries the stronger version.
+
+- Before: \clogic{The situation imagined is small: a night table, a calculator, a search engine, a book. Quine, who held that even arithmetic could in principle be revised, also held that giving up arithmetic ``would mean abandoning our whole system of knowledge,'' and is ``certainly not something we can imagine in any detail'' (Stanford Encyclopedia of Philosophy, ``Willard Van Orman Quine'', section 3.2).}
+- After: 
+
+
+## annotated/afterwords/policy-debates-should-not-appear-one-sided.tex
+
+Why: Proportion: a footnote citation error stays in the margin, not the verdict.
+
+- Before: an example that partly answers its own question, and a wrong citation.
+- After: and an example that partly answers its own question.
+

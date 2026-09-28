@@ -1,0 +1,49 @@
+{
+ "slug": "the-scales-of-justice-the-notebook-of-rationality",
+ "header": "\\post{The Scales of Justice, the Notebook of Rationality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/XYCEB9roxEBfgjfxs/the-scales-of-justice-the-notebook-of-rationality}\n",
+ "skeleton_sha": "51cf849fd72579d50a23f6f2b7350389ef372f4d9303c14443aadc19ddd4979b",
+ "post_sha": "13eed463c1b2751b86fc15e4e5563b93d673617fda812f2c69d6538725cd931c",
+ "edits": [],
+ "notes": [
+  [
+   185,
+   "\\cpara{Introduces the image: on a set of scales, whatever pulls one side down pushes the other up. The post calls this ``usually a gross distortion,'' and later names the case where it is not.}"
+  ],
+  [
+   434,
+   "\\cpara{Describes debate as a sport scored in points, ending in the ironic conclusion that the winner's every claim is true. It is a caricature, marked as one by ``obviously.'' The evidence comes in the next paragraph.}"
+  ],
+  [
+   1052,
+   "\\cpara{Introduces the study and describes its question correctly: Finucane and colleagues proposed that people derive both a technology's risk and its benefit ``from a common source,'' their overall feeling about it. Then a hypothetical reactor, with one fact for it and one against.}"
+  ],
+  [
+   1816,
+   "\\cpara{States the post's central distinction: two facts can be cited by opposite sides and still be logically independent. ``The facts don't know whose side they're on.''}"
+  ],
+  [
+   2309,
+   "\\cpara{Spells out the distinction: safety, waste and cost are separate properties of a design. The paragraph grants that some design features affect more than one of them, and says each question must still be answered on its own.}"
+  ],
+  [
+   3073,
+   "\\cpara{Draws the conclusion: people judge by overall feeling, and so get physical questions wrong. The paper supports calling this an error. It notes that in the world ``risks and benefits generally tend to be positively correlated,'' while studies find them ``negatively related in people's minds.''}"
+  ],
+  [
+   3310,
+   "\\cfact{The paper did not test this. In its Study 2, people rated the risk and the benefit of nuclear power (and of two other technologies) on 10-point scales, read a paragraph about its risks or about its benefits (for example, that it ``does not depend on a diminishing supply of fossil fuels''), and rated both again. The attribute the paragraph did not mention generally moved the other way. Waste appears in the high-risk paragraph, as a risk. The finding runs in the same direction as the post's example, but the example is the post's own.}"
+  ],
+  [
+   3628,
+   "\\cpara{Says when scales are right: a single factual question with two possible answers, such as guilt. The appeal to Jaynes checks out. In \\textsc{Probability Theory: The Logic of Science} (2003), section 5.5.1: ``Unless the observed facts are absolutely impossible on hypothesis $H_0$, it is meaningless to ask how much those facts tend `in themselves' to confirm or refute $H_0$.'' With only two hypotheses, each piece of evidence moves the odds between them, so one balance is the right picture.}"
+  ],
+  [
+   4346,
+   "\\clogic{Broader than the post supports. The notebook is for getting the facts right; a decision still has to weigh them. Ten days earlier, in ``Policy Debates Should Not Appear One-Sided,'' the author's example of real tough-mindedness was to keep the shops open ``because we did this cost-benefit calculation,'' which puts costs and benefits on one balance.}"
+  ],
+  [
+   4360,
+   "\\cpara{Closes with the second image: Lady Rationality's notebook of facts that are on no one's side.}"
+  ]
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "slug": "but-there-s-still-a-chance-right",
+ "header": "\\post{But There's Still A Chance, Right?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/q7Me34xvSG3Wm97As/but-there-s-still-a-chance-right}\n",
+ "skeleton_sha": "98043fe00317e6d79ffecef0173d67dfab284e5d90ba403a2b44bb2d07b82b50",
+ "post_sha": "2f9607e17f5e61b9ceb138ceb1641d9227a19f70f767683c7a5f13f90878a2fa",
+ "edits": [],
+ "notes": [
+  [
+   152,
+   "\\cpara{Recalls a conversation, years earlier, with a man who did not believe in evolution. The author's case is that humans and chimpanzees share 98\\% of their DNA. The man suggests the similarity may be coincidence, is told the odds against that are ``two to the power of seven hundred and fifty million to one,'' and replies with the post's title.}"
+  ],
+  [
+   821,
+   "\\cpara{The post concedes two faults on its own side of the exchange: the author does not remember where the figure came from, and odds that extreme ignore the chance that the calculation itself is mistaken. Both are real faults, and the post names them itself.}"
+  ],
+  [
+   1004,
+   "\\cstyle{Read ``2750,000,000'' as two to the power 750,000,000, as in the dialogue; the superscript is lost in this copy of the text.}"
+  ],
+  [
+   1549,
+   "\\cfact{The case in the conditional does not arise. The 95\\% figure (Britten, 2002) came from about 779,000 bases of chimpanzee DNA compared with the human genome, repeated and non-repeated sequence alike, not from genes. The 2005 comparison of the two whole genomes found differences of the same two kinds across the genome: 1.23\\% of single bases, and insertions and deletions that leave about 1.5\\% of each genome without a counterpart in the other.}"
+  ],
+  [
+   1633,
+   "\\cpara{Says the exchange brought ``several insights into the laws of thought as seen by the unenlightened ones.''}"
+  ],
+  [
+   1866,
+   "\\cpara{The first insight: intuition treats ``No chance'' and ``A very tiny chance'' as different in kind. This has support beyond the anecdote. Kahneman and Tversky described something close in 1979: the weight people give a probability ``changes abruptly near the end-points,'' so that a very small chance can get much more weight than its size, and no chance gets none (see the note on the factor of 0.00000001 in ``Lotteries: A Waste of Hope'').}"
+  ],
+  [
+   2100,
+   "\\cpara{Explains the first insight: a symbol for a tiny probability feels like ``a chance worth keeping track of,'' because no feeling is small enough to match the number. The post gives this as the reason people buy lottery tickets.}"
+  ],
+  [
+   2762,
+   "\\clogic{A claim about neurons, with no source. It restates that very small probabilities cannot be felt; it adds no evidence for it.}"
+  ],
+  [
+   2881,
+   "\\cpara{The second insight: an argument that is not certain may, on this view, be ignored. That rule is the author's reading of one reply. The man is not reported saying anything beyond ``But there's still a chance, right?''}"
+  ],
+  [
+   3215,
+   "\\cpara{Answers the rule: if evidence may be ignored at a likelihood of one in a googol, nothing justifies treating a likelihood of zero differently. The reply follows from the rule as the post states it.}"
+  ],
+  [
+   3594,
+   "\\cpara{Generalizes: if a likelihood of one in a googol cannot be ignored at will, neither can one of 0.9. The post says openly that its method is to take a ``blatant'' bad example and apply the lesson to subtler cases.}"
+  ],
+  [
+   3948,
+   "\\cpara{Ends by applying the lesson to ``But you can't prove me wrong'': ignoring a probabilistic counterargument is no better than ignoring a proof.}"
+  ]
+ ]
+}

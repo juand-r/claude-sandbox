@@ -1,0 +1,85 @@
+{
+ "slug": "policy-debates-should-not-appear-one-sided",
+ "header": "\\post{Policy Debates Should Not Appear One-Sided}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/PeSzc9JTBxhaYRp9b/policy-debates-should-not-appear-one-sided}\n",
+ "skeleton_sha": "57c669896f3d8bdce188616f899d535bc89b17a0ecc532d46b1a1b1b058c3aa5",
+ "post_sha": "005b0fc29defcadae214e32984ebe2b8fa6fc19629c1137f97d401977a340355",
+ "edits": [],
+ "notes": [
+  [
+   170,
+   "\\cpara{Sets up the example. The post lists three arguments for Hanson's proposal, then gives the author's reply: somewhere, a poor mother of five will buy a poison and die.}"
+  ],
+  [
+   393,
+   "\\cfact{The footnote cites the wrong source. It is a debate about Hanson's 1994 paper on a future economy of uploaded minds, published in June 2007, three months after this post, and I found no such stores in it. The proposal is in Hanson's Overcoming Bias post ``Paternalism Is About Bias'' (2 March 2007, the day before this post). There the goods would be ``sold only at special `would have banned' stores, whose customers pass a test showing they understand that regulators disapprove.'' The post does not mention the test.}"
+  ],
+  [
+   886,
+   "\\cpara{Asks why readers took the observation as an argument for regulation. The post does not mention that its own reply was worded as a rebuttal. It began ``But even so,'' right after three arguments for the shops.}"
+  ],
+  [
+   1009,
+   "\\cpara{Contrasts questions of fact, where the evidence should end up on one side. The Bayesian gloss is right in substance: strong evidence is evidence much likelier to turn up under one answer than under the other.}"
+  ],
+  [
+   1463,
+   "\\cpara{States the thesis as a claim and a question. The claim needs no study: a policy with many separate consequences has no reason to have all its costs on one side.}"
+  ],
+  [
+   1653,
+   "\\cpara{Answers the question with three sentences taken almost word for word from ``Politics is the Mind-Killer'' (18 February 2007), where they were also given without evidence (see the notes there). The new sentence applies them: a favoured policy's costs become enemy soldiers.}"
+  ],
+  [
+   2107,
+   "\\cpara{Guards against the reverse mistake, splitting the difference between the two loudest positions. A policy may really have lopsided costs and benefits, so the thesis is not that every debate is balanced.}"
+  ],
+  [
+   2597,
+   "\\clogic{No evidence is given here. The nearest is the study the author cites ten days later, in ``The Scales of Justice, the Notebook of Rationality'': Finucane and colleagues (2000) report that people judge a technology's risks as lower when they judge its benefits as higher. That shows a lean in judgment, a weaker thing than denying ``all costs.''}"
+  ],
+  [
+   2716,
+   "\\cpara{Restates the example as a factual prediction that both sides should grant, then lists reasons a person might still favour the shops. The paragraph keeps the prediction apart from the verdict, which is the post's thesis applied.}"
+  ],
+  [
+   3362,
+   "\\cpara{Turns to a second subject: people cope with unfairness either by denying the facts or by denying that they are unfair. Footnote 2 ties this to the affect heuristic and the just-world fallacy.}"
+  ],
+  [
+   3883,
+   "\\cpara{Gives the second way, as some libertarians might put it: the buyer who was warned deserves her fate, so the shops have no downside.}"
+  ],
+  [
+   4213,
+   "\\clogic{This does not follow from the post's own example. Its first paragraph named a second cost, ``her orphans.'' Even if the mother deserved her death, her children did not deserve to lose her.}"
+  ],
+  [
+   4328,
+   "\\cpara{Gives the same move on the other side: if regulators always chose well, regulation would cost nothing. The post applies its charge to both camps.}"
+  ],
+  [
+   4560,
+   "\\cpara{Brings in intelligence as a case of the birth lottery: nobody chooses their genes, their upbringing or their schools.}"
+  ],
+  [
+   4822,
+   "\\cfact{Stated more firmly than the literature allows. Summaries of twin and family studies give a heritability of about 0.4 to 0.8, lower in children. Wikipedia's ``Heritability of IQ'' quotes one: ``Most studies estimate that the heritability of IQ is somewhere between .4 and .8 (and generally less for children).'' Heritability is also a share of the variation in a population, not a ``purely genetic component'' of anyone's intelligence. The post's point does not rest on the figure, as the rest of the sentence says.}"
+  ],
+  [
+   4944,
+   "\\cpara{Argues that upbringing is luck too. Someone taught by a witch doctor that faith is right follows the advice in good faith and dies; being raised to value skepticism is part of the lottery.}"
+  ],
+  [
+   5805,
+   "\\cpara{States the position the post recommends: admit that the mother did not deserve her death, and keep the shops open if the cost-benefit calculation says so. The post does no calculation. Its claim is about how the result should be stated, so it does not need one.}"
+  ],
+  [
+   6483,
+   "\\cpara{States the author's own moral view: such a death is a tragedy, and death is too large a penalty for a mistake, because the dead cannot learn from it.}"
+  ],
+  [
+   6807,
+   "\\cpara{Closes with a joke: the universe does not share the author's moral line.}"
+  ]
+ ]
+}

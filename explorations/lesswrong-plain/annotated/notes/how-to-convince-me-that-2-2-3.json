@@ -1,0 +1,69 @@
+{
+ "slug": "how-to-convince-me-that-2-2-3",
+ "header": "\\post{How to Convince Me That 2 + 2 = 3}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/6FmqiAgS8h4EJm86s/how-to-convince-me-that-2-2-3}\n",
+ "skeleton_sha": "1a2035b769114872f2eef3d287256503301984a50b626c9befb8b24ad9717f43",
+ "post_sha": "9bbe883f29183ef12f49c6275e1251319ae9f927d2b06319036d94e0aee14999",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{Introduces a quotation from ``What Is Evidence?'', posted five days earlier.}"
+  ],
+  [
+   356,
+   "\\cpara{The principle under challenge: a belief is worth holding only if one could be persuaded otherwise. The notes on ``What Is Evidence?'' discuss it. The ellipsis drops the sentence about ``some belief systems'' that the commenter was answering.}"
+  ],
+  [
+   951,
+   "\\cpara{The last two sentences of Cihan Baran's comment, quoted accurately. Another objection in the same comment is not quoted: that mathematical evidence is not an event, and a theorem ``doesn't cause anything,'' so evidence cannot be defined by cause and effect. The post's implicit reply is discussed at the paragraph on ``only two possibilities.''}"
+  ],
+  [
+   1109,
+   "\\cpara{The post's central distinction, and it is sound: what could make a fact false and what could change one's belief in it are different questions. The commenter's ``Perhaps for that reason'' runs them together.}"
+  ],
+  [
+   1458,
+   "\\cpara{The first two strands of evidence. The earplugs would show directly how objects behave when put together. The Stanford Encyclopedia's entry on the a priori pairs ``2 + 2 = 4'', its example of a claim that can be known a priori, with ``2 quarts of any liquid added to 2 more quarts of any liquid = 4 quarts of liquid'', its example of an empirical one. It adds that the second is false for water and carbon tetrachloride. The failure counts against the claim about liquids, not against arithmetic. The scenario forestalls the ordinary explanation by stipulating that no earplug ``appeared or disappeared.''}"
+  ],
+  [
+   1801,
+   "\\clogic{This strand is Kant's. To show how 7 + 5 = 12 is known, Kant counted units one after another, ``one's five fingers, say \\ldots\\ and thus see the number 12 arise'' (\\textsc{Critique of Pure Reason}, B15, as quoted in the Stanford Encyclopedia, ``Kant's Philosophy of Mathematics''). Kant used it to explain how arithmetic is known a priori, independently of experience. The post puts it in one ``evidential crossfire'' with the earplugs.}"
+  ],
+  [
+   2207,
+   "\\cpara{The third strand, social agreement. The line from \\textsc{1984} is altered as part of the joke, since in the imagined world every source agrees on three. In the novel Winston writes: ``Freedom is the freedom to say that two plus two make four.''}"
+  ],
+  [
+   2526,
+   "\\cpara{Both explanations the author would reach for are about the author's own mind: a memory fault, or tampering. Evidence of that kind can defeat a belief even on the view that arithmetic is known a priori. The Stanford Encyclopedia (``A Priori Justification and Knowledge'', section 3) reports Hawthorne's point that even ``someone's carefully working through a mathematical proof'' can be undercut by ``empirical evidence that he is mad or that his proof is probably mistaken.'' So the scenario shows that the belief could be changed. It does not by itself show that the belief rests on experience.}"
+  ],
+  [
+   3287,
+   "\\cpara{The post's thesis about arithmetic: the evidence for 2 + 2 = 4 is observation, visualization and agreement, the same kind that would convince the author of 2 + 2 = 3. This is an empiricist position close to John Stuart Mill's, for whom, in the Stanford Encyclopedia's summary, we learn that two plus one is three ``by generalization from specific instances: that two pebbles and one pebble together make three pebbles.'' The post states it as plain fact and does not mention that it is disputed.}"
+  ],
+  [
+   3516,
+   "\\clogic{Even Quine, who held that no belief is immune to revision, rejected this account. In the Stanford Encyclopedia's summary, ``No particular experience confirms `2 + 2 = 4','' and Quine was ``not advancing what Frege derided as a `gingerbread and pebble' account of arithmetic.'' On Quine's view arithmetic answers to experience only through the success of our theory of the world as a whole.}"
+  ],
+  [
+   3530,
+   "\\cpara{Argues from how the belief was acquired. That the author once did not know 2 + 2 = 4 and then learned it does not show that experience is what justifies it. The distinction between a priori and empirical knowledge concerns justification, as Frege put it: the distinctions ``concern \\ldots\\ the justification for making the judgement'' (\\textsc{Foundations of Arithmetic}, section 3, as quoted in the Stanford Encyclopedia, ``Logicism and Neologicism''). Those who hold arithmetic a priori allow that experience may be needed ``to acquire the concepts,'' though not as evidence (``A Priori Justification and Knowledge'').}"
+  ],
+  [
+   4004,
+   "\\cpara{A dichotomy: a belief is either produced by a process entangled with reality or right only by coincidence. Applied to mathematics this is Benacerraf's problem (1973): if knowledge needs causal contact with its object, it is hard to see how anyone knows about numbers, which on the platonist view are not in space or time (Stanford Encyclopedia, ``Philosophy of Mathematics'', section 3.4). The notes on ``What Is Evidence?'' raise the same difficulty. The post's answer, left implicit, is that arithmetic beliefs are entangled with physical things such as earplugs.}"
+  ],
+  [
+   4798,
+   "\\cpara{Restates the distinction, and adds that entangled evidence could show a fact to be ``unconditional.'' The post does not say how. Kant held arithmetic a priori on the ground that necessary truths cannot be derived from experience (B14, as the Stanford Encyclopedia reports it). Mill, holding arithmetic empirical, gave up the necessity: in the Stanford Encyclopedia's words, ``Mill does not shy away from this implication.'' The post keeps both, a fact true in every situation and evidence from experience, without addressing the tension.}"
+  ],
+  [
+   5023,
+   "\\cpara{The conclusion. Its first half, that the belief could be changed, is shown by the scenario. Its second half, ``the same sort of situation that currently convinces me,'' rests on the empiricist thesis discussed above.}"
+  ],
+  [
+   6027,
+   "\\clogic{The footnote answers its own question for the Christian reader (``Presumably''): being born and raised Muslim. In the main text, ``what would convince me'' meant evidence; here it means a cause of belief. The questions that follow allow that there may be ``more to it than that,'' but the expected answer has already been given.}"
+  ]
+ ]
+}
