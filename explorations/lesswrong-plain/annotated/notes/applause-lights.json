@@ -2,7 +2,64 @@
  "slug": "applause-lights",
  "header": "\\post{Applause Lights}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/dLbkrPu5STNCBLRjr/applause-lights}\n",
  "skeleton_sha": "8e37045a568b5a5b0bea04d1a0376769cb03055621cb33b532253f63928beae2",
- "post_sha": "8e37045a568b5a5b0bea04d1a0376769cb03055621cb33b532253f63928beae2",
+ "post_sha": "a8546d5e8634bc0dd6e5d66d7262636b6c0702eb754ab3b24eaddcc4d87c2d02",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   116,
+   "\\cpara{Opens the post's one example, an exchange at the 2007 Singularity Summit, told from memory. The post does not name the speaker. Jamais Cascio, commenting on the post, wrote as the speaker (``my replies'').}"
+  ],
+  [
+   317,
+   "\\cpara{The author's question: which is more ``democratic,'' a consortium of democracies with ordinary politicking, or rebel nerds whose AI polls the world and does what the majority says, and would either be safe?}"
+  ],
+  [
+   928,
+   "\\cpara{States the aim of the question: to learn whether the speaker valued democracy for its results or for the rightness of voting.}"
+  ],
+  [
+   1136,
+   "\\cpara{Cascio's comment gives the rest of this reply, which the post leaves out: ``That is, they're both caricatures, and neither one is terribly plausible or complete. There would be some critical benefits to the messy process of the first scenario, and some important drawbacks to the second.'' This is Cascio's account; the author's reply in the thread does not dispute it.}"
+  ],
+  [
+   1468,
+   "\\cpara{Pointing readers to the recording, the author wrote in the comments that ``the actual event did not occur the exact way I remembered it,'' and that ``Cascio spontaneously provided the Genome Project example, rather than needing to be asked for it.'' The text as published today still shows the example as an answer to the author's question.}"
+  ],
+  [
+   1805,
+   "\\cpara{Cascio's comment gives the continuation: ``this is not a solved problem, but it's an important problem, and we need to figure out how to address it.'' On that account the answer names an open problem.}"
+  ],
+  [
+   1844,
+   "\\cpara{The ``dictator'' is Roberto Eduardo Viola, president of Argentina and formerly its army commander in chief, in a \\textsc{Time} interview of 20 July 1981. Asked ``How soon do you expect Argentina to be returned to democratic government?'', Viola answered as quoted and went on: ``We say so because we believe these two fundamental values of democracy, freedom and justice, are in force in our country.'' The continuation fits the post's point: democracy defined by two values, with no mechanism.}"
+  ],
+  [
+   2249,
+   "\\cpara{The paragraph's point about ``democracy'' is Orwell's, from ``Politics and the English Language'' (1946): ``In the case of a word like democracy, not only is there no agreed definition, but the attempt to make one is resisted from all sides.'' In the comments the author wrote: ``I was thinking of Orwell's `Politics and the English Language' while writing this post.'' The post does not mention Orwell.}"
+  ],
+  [
+   2769,
+   "\\cpara{The diagnosis, hedged with ``I think'': the word was said so that the audience would cheer. Cascio denied it in the comments (``I certainly did not talk about democracy with any intent of it serving as `applause lights' for my talk''), saying the audience was expected to respond in a ``semi-hostile'' way. The post's evidence is one answer to one question.}"
+  ],
+  [
+   3017,
+   "\\cpara{Treats the diagnosis as settled, and introduces a test for the ``much more blatant'' cases: reverse the sentence.}"
+  ],
+  [
+   3527,
+   "\\cpara{The reasoning behind the test: if the reversal sounds abnormal, the original says what everyone already assumes, so it ``probably'' conveys nothing new.}"
+  ],
+  [
+   3673,
+   "\\cpara{Lists legitimate uses of such sentences (introducing a topic, stressing a proposal, criticizing an unbalanced one) and states the working rule. The list keeps the test from condemning every platitude.}"
+  ],
+  [
+   4174,
+   "\\clogic{By this rule the post's own lead example is a borderline case. A specific did follow, the Human Genome Project, though not the kind the author asked for, a way of resolving conflicts. In the comments the author allowed as much: ``Now I do not accuse you too much of this, because you did say `Genome Project' when challenged.''}"
+  ],
+  [
+   4188,
+   "\\cpara{Ends with a sample talk built entirely from sentences whose reversals sound abnormal.}"
+  ]
+ ]
 }

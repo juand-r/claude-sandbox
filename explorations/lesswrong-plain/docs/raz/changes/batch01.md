@@ -137,3 +137,11 @@ Why: Proportion: a slip inside a footnote joke is noted in the margin, not in th
 - Before: , with claims about all religions drawn from the Bible alone and a footnote that misstates the Bible.
 - After: , with claims about all religions drawn from the Bible alone.
 
+
+## annotated/posts/hindsight-devalues-science.tex
+
+Why: Test 3: 'is all hindsight' is an emphatic idiom; keep the substance without hinging on the word.
+
+- Before: \cpara{Answers the critics with one word, ``all.'' The evidence that follows shows that the feeling of having expected a finding is unreliable, since people report it for a finding and for its opposite. That does not show that no finding could have been expected, which is what ``all'' claims.}
+- After: \cpara{Answers the critics: their sense of having expected the findings is hindsight. The evidence that follows shows that this feeling is unreliable, since people report it for a finding and for its opposite. It does not show that none of the findings could have been expected.}
+

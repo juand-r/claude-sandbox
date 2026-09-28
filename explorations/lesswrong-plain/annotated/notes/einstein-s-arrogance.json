@@ -2,7 +2,7 @@
  "slug": "einstein-s-arrogance",
  "header": "\\post{Einstein's Arrogance}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/MwQRucYo6BZZwjKE7/einstein-s-arrogance}\n",
  "skeleton_sha": "45509101dbe6b1a62b7c29826907c3c9a12179ff45199d0c981a447abfa548c7",
- "post_sha": "c717d8a854634898ff5745dc4b56554126bd543bc77279ad73e1dcb05c4bc2ef",
+ "post_sha": "78ad2efe5b67839e85558fed368a4eae0dc760f11faefc7e8ea456eafcf5e6e0",
  "edits": [],
  "notes": [
   [
@@ -15,7 +15,7 @@
   ],
   [
    914,
-   "\\cpara{Sets aside, with a joke, the fact that Einstein was right: the author saves criticism for people who are wrong. The post returns to the outcome in its last sentence.}"
+   "\\cpara{Sets aside, with a joke, the fact that Einstein was right: the author tries to save criticism for people who are wrong. The post returns to the outcome in its last sentence.}"
   ],
   [
    1132,
@@ -51,7 +51,7 @@
   ],
   [
    3736,
-   "\\cfact{The post names none of this evidence. The best-known piece is Mercury's orbit: in November 1915 Einstein showed that the finished theory accounts for all 43 missing seconds of arc (Janssen and Renn). Lemos calls it ``an a posteriori confirmation, not an apriori prediction.'' It is an ordinary reason for confidence before 1919, and the post does not use it.}"
+   "\\cfact{The post names none of this evidence. The best-known piece is Mercury's orbit: in November 1915 Einstein showed that the new theory accounts for all 43 missing seconds of arc (Janssen and Renn). Lemos calls it ``an a posteriori confirmation, not an apriori prediction.'' It is an ordinary reason for confidence before 1919, and the post does not use it.}"
   ],
   [
    3866,

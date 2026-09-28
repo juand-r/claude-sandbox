@@ -2,7 +2,80 @@
  "slug": "hindsight-devalues-science",
  "header": "\\post{Hindsight Devalues Science}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/WnheMGAka4fL99eae/hindsight-devalues-science}\n",
  "skeleton_sha": "89a250477ca21d6168376d7eceb277bc0d23e0e52a94dbe986323929761240eb",
- "post_sha": "89a250477ca21d6168376d7eceb277bc0d23e0e52a94dbe986323929761240eb",
+ "post_sha": "010e598e93a9774a6643a4d73f911b05848260549d2d5005a73d433d589a613f",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   138,
+   "\\cpara{Credits the source, a textbook excerpt. I could not reach the archived copy (web.archive.org is blocked from here), so the quotations below that come from it are unchecked.}"
+  ],
+  [
+   404,
+   "\\cpara{Quotes a magazine editor's dismissal of social science: it finds only what anyone would expect.}"
+  ],
+  [
+   729,
+   "\\cpara{Answers the critics: their sense of having expected the findings is hindsight. The evidence that follows shows that this feeling is unreliable, since people report it for a finding and for its opposite. It does not show that none of the findings could have been expected.}"
+  ],
+  [
+   1048,
+   "\\cpara{Adds a second dismissal, by Arthur Schlesinger, Jr., and introduces a list of findings about soldiers.}"
+  ],
+  [
+   1250,
+   "\\cpara{The list is from Lazarsfeld's 1949 review of \\textsc{The American Soldier}. His version has six items, each with an explanation in parentheses; this one has five, reworded. Lazarsfeld offered them as statements ``typical of many survey findings,'' so that the reader ``carefully observes his own reaction.''}"
+  ],
+  [
+   2082,
+   "\\cpara{Asks the reader to count how many findings they could have predicted, before reading on.}"
+  ],
+  [
+   2376,
+   "\\cpara{Reveals that every finding was reversed, and draws the lesson: a reader who did not notice has learned how good their model really was.}"
+  ],
+  [
+   2517,
+   "\\cfact{Lazarsfeld wrote that ``Every one of these statements is the direct opposite of what actually was found.'' His own summary of the climate item is weaker: ``Southerners showed no greater ability than Northerners to adjust to a tropical climate.'' That describes no difference, not a reversal.}"
+  ],
+  [
+   2774,
+   "\\clogic{The thesis of ``Your Strength as a Rationalist,'' posted six days earlier; see the notes there on why confusion cannot tell a fiction from a true report that clashes with a wrong model. Here the post's own source adds a limit. Lazarsfeld's lesson was that ``Since every kind of human reaction is conceivable, it is of great importance to know which reactions actually occur \\ldots'' A reader without the data has no ground to be more confused by the reversed list than by the true one.}"
+  ],
+  [
+   2788,
+   "\\cpara{Asks the reader to allow that the results may have been reversed twice, so that each direction has to be weighed.}"
+  ],
+  [
+   2869,
+   "\\cpara{Asks whether not knowing feels different from rationalizing a known answer, and leaves the question with the reader.}"
+  ],
+  [
+   3071,
+   "\\cpara{Reports the study that bears most directly on the claim: students rated a finding and its opposite alike as what they ``would have predicted.'' The source is a 1983 Stanford work I could not check.}"
+  ],
+  [
+   3423,
+   "\\cpara{States the consequence: people think they do not need science. The opening quotations are the examples.}"
+  ],
+  [
+   3537,
+   "\\cpara{A joke: the claim itself sounds obvious.}"
+  ],
+  [
+   3585,
+   "\\cpara{Extends the claim to findings we understand, and, with ``probably,'' to readers who know neurology or physics. No evidence is given for either extension. The research on expertise is mixed: an early meta-analysis found experts less prone to hindsight bias, and a later, larger one found no relation (Roese and Vohs, \\textsc{Perspectives on Psychological Science}, 2012).}"
+  ],
+  [
+   4171,
+   "\\cpara{The remedy is an effort of will, and the research points elsewhere. People still show hindsight bias when they know of it and intend to avoid it (Wikipedia, ``Hindsight bias''). The method that has reduced it, though not removed it, is to explain how the outcome that did not occur could have occurred (Roese and Vohs 2012, reviewing work back to Slovic and Fischhoff, 1977). The post's earlier question, whether rationalizing either side feels different, comes close to that method; the last line asks for a feeling of shock instead.}"
+  ],
+  [
+   4248,
+   "\\cpara{Cites Lazarsfeld's review, the source of the list.}"
+  ],
+  [
+   4395,
+   "\\cpara{Cites Baratz's study.}"
+  ]
+ ]
 }

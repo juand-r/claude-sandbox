@@ -2,7 +2,68 @@
  "slug": "focus-your-uncertainty",
  "header": "\\post{Focus Your Uncertainty}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/GJ4ZQm7crTzTM6xDW/focus-your-uncertainty}\n",
  "skeleton_sha": "6b10cebef902023dec9de790026c7e2de60c55308f703118ee21f57f71bf165e",
- "post_sha": "6b10cebef902023dec9de790026c7e2de60c55308f703118ee21f57f71bf165e",
+ "post_sha": "1fb4d92708f5ae2930a02c1295a71d98ea2d238f13bc224a36bd3377822ab7f9",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   130,
+   "\\cpara{Sets up the problem with a TV pundit who can explain any outcome after the fact, so the three outcomes need not be treated as competing.}"
+  ],
+  [
+   643,
+   "\\cpara{Changes the case: a novice who must prepare excuses in advance, and so needs to know which outcome will happen.}"
+  ],
+  [
+   1103,
+   "\\cpara{Irony, in the voice of someone who thinks probabilities are ``little numbers'' that belong to school word problems. The link on ``transfer thinking skills'' goes to Daniel Willingham's ``Critical Thinking: Why Is It So Hard to Teach?'' (\\textsc{American Educator}, Summer 2007), which reports that people often fail to apply what they know to a problem that looks different on the surface. It fits the post's picture of why people do not use probability outside the classroom.}"
+  ],
+  [
+   1930,
+   "\\cpara{The constraint that drives the post: 100 minutes cannot be spent three times over.}"
+  ],
+  [
+   2173,
+   "\\cpara{Imagines a review committee that would accept only an equal split, since nothing written down would justify any other.}"
+  ],
+  [
+   2650,
+   "\\cpara{Gives the pundit a reason to expect a change: a Federal Reserve announcement makes ``remain the same'' unlikely.}"
+  ],
+  [
+   2977,
+   "\\cpara{The key contrast: time is conserved, but the ability to explain outcomes is unlimited, so plausibility cannot say how to divide the time.}"
+  ],
+  [
+   3456,
+   "\\cpara{Notices that anticipation behaves like a fixed quantity: making one outcome likelier makes the others less likely. This ``fascinating part'' is the rule that probabilities add up to one.}"
+  ],
+  [
+   3878,
+   "\\cpara{Says, ironically, that the relation between anticipation and time ``can't actually be quantified,'' and then, in a parenthesis, supplies what quantifies it.}"
+  ],
+  [
+   4361,
+   "\\clogic{The post's one precise step, as an aside. If the value of an excuse grows with the logarithm of the time spent on it, the expected value $\\sum_i p_i \\log t_i$, with $\\sum_i t_i = 100$, is largest when $t_i = 100\\,p_i$: minutes in exact proportion to anticipation. With other assumptions the match fails. If value grows in proportion to time, all 100 minutes go to the likeliest outcome. The step that ties dividing time to dividing anticipation rests on this assumption.}"
+  ],
+  [
+   4375,
+   "\\cpara{The proposal: treat anticipation as a conserved resource, like money, to be allocated.}"
+  ],
+  [
+   4880,
+   "\\cpara{Returns to the irony about statistics courses, then jabs at a rival way of using numbers.}"
+  ],
+  [
+   5425,
+   "\\clogic{``Pairs of numbers'' called ``DS'' is presumably Dempster--Shafer theory (Dempster 1967, Shafer 1976), which gives each hypothesis a lower and an upper number, ``belief'' and ``plausibility''; a commenter on the post reads it this way. The parenthesis that follows suggests the fixed 100 minutes rule it out. By themselves they do not: the theory also divides a fixed total of 1, among sets of outcomes rather than single outcomes (Wikipedia, ``Dempster--Shafer theory''). The post offers the pun and no other argument.}"
+  ],
+  [
+   5505,
+   "\\cpara{States the goal: an art of ``squeezing'' as much anticipation as possible into the outcome that will actually happen.}"
+  ],
+  [
+   5685,
+   "\\cpara{Ends with a question instead of an answer. The answer implied is probability theory applied to degrees of belief, which has a long literature. The Stanford Encyclopedia of Philosophy credits Ramsey (1926), and later Savage (1954), with deriving degrees of belief from a person's choices and showing that they obey the probability calculus. The post names neither the theory nor its authors.}"
+  ]
+ ]
 }

@@ -2,7 +2,96 @@
  "slug": "occam-s-razor",
  "header": "\\post{Occam's Razor}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/f4txACqDWithRi7hs/occam-s-razor}\n",
  "skeleton_sha": "90b33940f63b321a7debcc622b475d168745b3932484fe4e990e0475eaeeba05",
- "post_sha": "90b33940f63b321a7debcc622b475d168745b3932484fe4e990e0475eaeeba05",
+ "post_sha": "855b44e34004e68702995a43f3f5161491ceee961ff32271bab91e7b6b7fec6e",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   112,
+   "\\cpara{Picks up the previous day's post (``Einstein's Arrogance''): a complex explanation needs more evidence just to be found. Asks how to measure complexity and the evidence required.}"
+  ],
+  [
+   478,
+   "\\cpara{Gives the common phrasing of the razor and a reply attributed to Heinlein, which shows the phrasing fails: a short sentence can carry a complex claim.}"
+  ],
+  [
+   681,
+   "\\cpara{Draws two lessons from the witch: sentence length is a poor measure of complexity, and fitting the facts takes more than not forbidding them.}"
+  ],
+  [
+   872,
+   "\\cpara{Explains the first lesson. Words are labels whose content the listener already stores, so a short label (``Fnord!'') does not make a claim simple. The post does not bring the point back when it chooses a programming language (see the note on the Solomonoff paragraph).}"
+  ],
+  [
+   1625,
+   "\\cpara{Applies the point to Thor: anger seems simple only because we do not see the brain's machinery for it.}"
+  ],
+  [
+   2308,
+   "\\cpara{Grants that, to a human, Maxwell's equations take longer to explain than Thor, because we have built-in words for anger and none for calculus.}"
+  ],
+  [
+   2650,
+   "\\cpara{Asks in what sense Maxwell's equations are simpler.}"
+  ],
+  [
+   2807,
+   "\\cpara{Answers: a program simulating Maxwell's equations is far shorter than one simulating a mind. The support is ``as it turns out.'' Whether the ranking holds whatever programming language is used is the question the next paragraph takes up.}"
+  ],
+  [
+   3029,
+   "\\cpara{Defines complexity as the length of the shortest program that produces the description, and says the choice of language costs only a constant. Both statements are standard (Wikipedia, ``Kolmogorov complexity'', invariance theorem).}"
+  ],
+  [
+   3848,
+   "\\clogic{True, but the constant can be as large as the hypotheses being compared. Take a universal machine $U$ and a program $T$ for $U$ that simulates Thor. Let a machine $V$ read the input ``0'' as $T$, and the input ``1'' followed by $p$ as $p$ run on $U$. Then $V$ is universal, Thor is one bit long on $V$, and every other program is one bit longer than on $U$. So the invariance result does not by itself make Maxwell simpler than Thor; that needs a reason to prefer $U$ to $V$, which is the ``Fnord'' problem moved from English to machines. Leike and Hutter (arXiv:1510.04931, 2015): ``A big open question of algorithmic information theory is the choice of the universal Turing machine.''}"
+  ],
+  [
+   3862,
+   "\\cpara{Describes the version the author prefers, in which a program assigns probabilities to strings, so that fitting the data means giving it high probability. On LessWrong ``2N'' is printed as 2 to the power N.}"
+  ],
+  [
+   4667,
+   "\\cpara{Poses the trade-off. The figure checks: a program fixed to show HTTHHT gives it probability 1, a fair coin $(1/2)^6 = 1/64$.}"
+  ],
+  [
+   5332,
+   "\\cpara{Shows the other extreme: judged by complexity alone, the fair coin always wins, even on a string with an obvious pattern.}"
+  ],
+  [
+   5576,
+   "\\cpara{Gives the exchange rate: each bit of program must buy at least a doubling of fit, since one stored bit halves the possibilities. With the prior of 2 to the minus the program's length that the post adopts below, the six stored bits of HTTHHT cost a factor of 64, exactly what they gain. The argument is correct.}"
+  ],
+  [
+   6183,
+   "\\cpara{Concludes that moving bits from the data into the program gains nothing unless the program compresses the data.}"
+  ],
+  [
+   6351,
+   "\\cpara{Describes Solomonoff's predictor: a mixture of all programs, each weighted by 2 to the minus its length and by its fit. This matches the standard definition (Scholarpedia, ``Algorithmic probability''). It is also the post's answer to its opening question, ``How can we measure the complexity of an explanation?'', and the post says it is uncomputable. Apart from the comparison of Maxwell and Thor, it gives no way to estimate the measure for a real explanation.}"
+  ],
+  [
+   6790,
+   "\\cpara{Describes Minimum Message Length, the method of Wallace and Boulton (1968): send a code, then the data in that code, and prefer the shortest total. The footnote gives the difference from Solomonoff induction.}"
+  ],
+  [
+   7270,
+   "\\cpara{Applies message length to the witch. Naming her does not shorten the description of 0101010101, so the data must still be sent in full. This answers Heinlein's joke, and the answer holds.}"
+  ],
+  [
+   7797,
+   "\\cpara{Ties this to the second lesson: witchcraft, like phlogiston, forbids no outcome, so it compresses nothing and only lengthens the message.}"
+  ],
+  [
+   8291,
+   "\\cpara{Locates the trick in the word ``it'', which stands for data the hypothesis does not predict.}"
+  ],
+  [
+   8401,
+   "\\cpara{Lists biases that make the witch seem to explain the data, and promises a later post on them.}"
+  ],
+  [
+   9113,
+   "\\cpara{Gives the difference between the two methods: the shortest program against a sum over all programs.}"
+  ]
+ ]
 }
