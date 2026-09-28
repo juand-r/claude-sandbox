@@ -1,0 +1,145 @@
+{
+ "slug": "what-do-we-mean-by-rationality-1",
+ "header": "\\post{What Do We Mean By \"Rationality\"?}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/RcZCwxFiZzE6X7nsv/what-do-we-mean-by-rationality-1}\n",
+ "skeleton_sha": "3eb02d947331dabd380ccf646191fb71afe071cd4934bbe5f7ebd2a33a04cf0c",
+ "post_sha": "8ef111e65679416083c608dddea2c687e5c0b84cde31ec0ec769b17eb57d23f2",
+ "edits": [],
+ "notes": [
+  [
+   151,
+   "\\cpara{The definitions come first, stated as the author's own. The pair is the standard one in philosophy, epistemic against instrumental rationality, and no source is named. By 2003 philosophers were arguing over whether the first can be reduced to the second (Thomas Kelly, ``Epistemic Rationality as Instrumental Rationality: A Critique,'' \\textsc{Philosophy and Phenomenological Research}). That is the obvious question about the pair: what happens when a false belief serves your values? The essay never asks it.}"
+  ],
+  [
+   449,
+   "\\cpara{Illustrates accurate belief with seeing a room: faulty eyes or brain could make you believe in a bookcase that is not there, and you would find out when you reached for it.}"
+  ],
+  [
+   854,
+   "\\cpara{Defines a false belief as a map that does not match the territory, and epistemic rationality as building accurate maps, which the author is happy to call truth.}"
+  ],
+  [
+   1145,
+   "\\cpara{Defines instrumental rationality as choosing actions that lead to the outcomes you prefer, which the author sometimes calls ``winning.''}"
+  ],
+  [
+   1501,
+   "\\cpara{Clarifies that truth does not require certainty, only higher probability of being right, and that winning includes everything you value, including other people.}"
+  ],
+  [
+   1808,
+   "\\cpara{Raises an objection: calling something rational usually just means it is true or good, so why have a separate word?}"
+  ],
+  [
+   2022,
+   "\\cpara{Answers by analogy with ``true'': the word is unnecessary in single claims but needed to state general facts, such as that true models predict better.}"
+  ],
+  [
+   2503,
+   "\\cpara{The paragraph's example of a general fact that needs the word ``rational'' is not a fact. In decision theory, agents who maximize expected utility are called rational because they do so. The sentence is a definition presented as a generalization. Nothing could be observed that would make it false.}"
+  ],
+  [
+   3069,
+   "\\cpara{Introduces a puzzle: people rate a man more likely to be a jazz-playing accountant than a jazz player, and the author asks by what standard this is wrong.}"
+  ],
+  [
+   3333,
+   "\\cfact{Shortened past accuracy. In the experiment, as the author had reported it in ``Conjunction Fallacy'' (2007), Bill came with a description: ``intelligent, but unimaginative, compulsive, and generally lifeless,'' strong in mathematics. The options were ``Bill plays jazz for a hobby'' and ``Bill is an accountant who plays jazz for a hobby.'' The description is what pulls subjects toward ``accountant.'' Without it the judgment looks senseless, and the subjects look stranger than they were.}"
+  ],
+  [
+   3545,
+   "\\cpara{A one-line paragraph that answers the question before it by appeal to what a profession does. Whether these are the right standards for human judgment was disputed well before 2009. Hertwig and Gigerenzer, ``The `Conjunction Fallacy' Revisited: How Intelligent Inferences Look Like Reasoning Errors'' (\\textsc{Journal of Behavioral Decision Making}, 1999), argued that the ``error'' may come from people inferring extra meaning from the social situation of the question, not from a flaw in reasoning (as summarized in a 2015 commentary in \\textsc{Frontiers in Psychology}). The reader is not told there is a debate.}"
+  ],
+  [
+   3664,
+   "\\cpara{Explains that probability theory governs rational belief and decision theory governs rational action, whatever the subject or the goals.}"
+  ],
+  [
+   4323,
+   "\\cpara{Applies the rule that both of two things happening can never be more likely than one of them, so the jazz judgment counts as wrong.}"
+  ],
+  [
+   4660,
+   "\\cpara{House vocabulary. P(A) ≥ P(A,B) follows from the axioms of probability, which frequentist statisticians accept as fully as Bayesians do. The next sentence defines ``Bayesian'' as conforming to a coherent probability distribution, so the label is stipulated openly, but it gives one school's name to a rule every school holds. The same sentence then stretches ``Bayesian'' to cover expected-utility decisions, which is a theory of choice, not of statistics. From here on, ``Bayesian'' is the house word for ``correct.''}"
+  ],
+  [
+   4938,
+   "\\cpara{Distinguishes this meaning from the popular one: acting like Mr. Spock is a different thing and does not help with either kind of rationality.}"
+  ],
+  [
+   5298,
+   "\\cpara{Announces two reasons why the formal standards do not settle what rationality means in practice.}"
+  ],
+  [
+   5428,
+   "\\cpara{A concession that should have changed the essay. If no one can calculate and obey the math, the ``gold standard'' cannot be what a person follows. Something else must guide them, and the essay never says what.}"
+  ],
+  [
+   5694,
+   "\\cpara{The practical content of the essay is a list of aims (learn flaws, overcome biases, get into good emotional shape) that ends ``et cetera, et cetera.'' The ``art'' that the formal standard cannot supply is named, and its content is waved at.}"
+  ],
+  [
+   6152,
+   "\\cpara{Newcomb's problem is listed among the puzzles that call decision theory into question. Keep this in mind: the essay will shortly take one side of that dispute without saying that the side is contested.}"
+  ],
+  [
+   6610,
+   "\\cpara{Argues that where formal theories fall short, we can fall back on plain ideas like truth and winning, since things can be real and matter before we can define them.}"
+  ],
+  [
+   7372,
+   "\\cpara{The rule stated here, that a dispute cannot be settled by defining the word so that your answer wins, is a good one. The essay's Newcomb example comes close to the line (see that note).}"
+  ],
+  [
+   8012,
+   "\\cpara{Extends rationality to ``how to feel about the truth.'' No argument is given for putting feelings under the word. The paragraph says that defining rationality one way ``merely presumes'' an answer. The essay's own definition, which is normative, presumes answers throughout.}"
+  ],
+  [
+   8327,
+   "\\cpara{Said after more than twenty paragraphs spent on the meaning of a word. ``You cannot change reality ... by manipulating which meanings go with which words'' is true. Hold the essay to it in the next four paragraphs.}"
+  ],
+  [
+   8687,
+   "\\cpara{Declares the definitional work finished once the reader ``generally'' gets the idea. A vague definition is thereby made sufficient by fiat. Everything left over is renamed ``what is a good way to think,'' which is the question the definitions were supposed to help answer.}"
+  ],
+  [
+   9162,
+   "\\cpara{Sound as far as it goes. The sentence is in the present tense and the first person: to hold at one moment that X is rational to believe and that the truth is Y is incoherent, and the parenthesis gives the reason. What the paragraph leaves out is the backward-looking case. The essay's own parenthesis grants that truth ``doesn't mean `certainty,'\\,'' so a belief can have been rational and turned out false, as a juror's verdict can on well-framed misleading evidence. The essay never says so, and a reader could take the paragraph to rule that case out too.}"
+  ],
+  [
+   9575,
+   "\\cpara{The same move for action, and here it goes further. A gap between the rational and the right is ``almost certainly'' a confusion of words, with no reason given. Then the author describes using ``rationality'' ``normatively, to pick out desirable patterns of thought.'' That fits the essay's answer to its opening objection, that the word is needed for general statements about good thinking. But in any single case the word now adds nothing to ``good.''}"
+  ],
+  [
+   9916,
+   "\\cpara{The Newcomb example takes a side without saying so. ``I'd rather have a million dollars'' presents the one-boxer's slogan as neutral, plain language. It states a preference openly and does not claim to settle anything by definition; the problem is that the reader is not told the preference is contested. The essay's own source, Holt in \\textsc{Slate}, quotes Nozick: people ``seem to divide almost evenly on the problem, with large numbers thinking that the opposing half is just being silly.'' In the 2020 PhilPapers survey, professional philosophers chose two boxes over one, 39.0\\% to 31.2\\% (as reported by Wikipedia). The essay does not tell the reader that the side it presents as common sense is the minority view among the people who study it.}"
+  ],
+  [
+   10334,
+   "\\cpara{A good test. The essay recommends it for this essay only.}"
+  ],
+  [
+   10584,
+   "\\cpara{Says the word ``rational'' works well in clear cases and the author will use it there.}"
+  ],
+  [
+   10821,
+   "\\cpara{Warns against using the word too often, since saying it earns nothing.}"
+  ],
+  [
+   11007,
+   "\\cpara{A footnote pointing to a longer essay on truth.}"
+  ],
+  [
+   11174,
+   "\\cpara{The footnote makes one of the essay's largest claims, that ``Bayesian rationality'' applies to ``urges, hunches, perceptions, and wordless intuitions.'' It gives no example of a hunch being updated by Bayes's rule, and no account of what that would mean.}"
+  ],
+  [
+   11406,
+   "\\cpara{Continues the footnote: rationality in this sense covers perception, instincts and emotions, not only explicit reasoning.}"
+  ],
+  [
+   11748,
+   "\\cpara{The source the essay cites is subtitled ``\\,`Newcomb's Problem' still flummoxes the great philosophers.'' The essay's body treats one answer as obvious.}"
+  ]
+ ]
+}

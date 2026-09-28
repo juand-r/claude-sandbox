@@ -1,0 +1,77 @@
+{
+ "slug": "expecting-short-inferential-distances",
+ "header": "\\post{Expecting Short Inferential Distances}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/HLqWn5LASfhhArZ7w/expecting-short-inferential-distances}\n",
+ "skeleton_sha": "456005c2cb21360252b0ada53fd5ca210e4ea850e13354140f00bc45fc9796fc",
+ "post_sha": "e5177b0fc41415b5993f63341529e01f70f937c7d826eddd72718d54f40f4f60",
+ "edits": [],
+ "notes": [
+  [
+   160,
+   "\\cpara{Describes the ancestral human setting: bands of at most 200 people, no writing, all knowledge passed on by speech and memory.}"
+  ],
+  [
+   469,
+   "\\cpara{The step the whole argument rests on, asserted in two sentences with ``period'' in place of a reason. A small group does not make all knowledge shared. Every band contains children, who begin many steps from what adults know and must be taught all of it. Teaching the young is the one long explanation every human group has always had to give, and the post's model of the ancestral world leaves it out.}"
+  ],
+  [
+   609,
+   "\\cpara{Argues that in such a band you were rarely more than one step of reasoning from anyone else, so explanations seldom needed new concepts.}"
+  ],
+  [
+   1304,
+   "\\cpara{Notes that the ancestral world had no disciplines whose conclusions sit a hundred reasoning steps from shared knowledge.}"
+  ],
+  [
+   1602,
+   "\\cpara{Claims that in that world, anyone asserting something without obvious support was a liar or a fool, since hidden expert knowledge did not exist.}"
+  ],
+  [
+   1943,
+   "\\cpara{Adds the reverse: if you state something obvious and the listener misses it, they seem stupid or stubborn.}"
+  ],
+  [
+   2124,
+   "\\cpara{Adds that someone who demands belief in an unsupported claim seems crazy.}"
+  ],
+  [
+   2311,
+   "\\cpara{Suggests this, with the tendency to model others on oneself, explains why scientists struggle to explain things: both sides expect explanations to take only one step.}"
+  ],
+  [
+   2640,
+   "\\cfact{The effect described here had a name before this post. ``The curse of knowledge,'' the difficulty better-informed people have in imagining what the less informed do not know, was named in 1989 by the economists Colin Camerer, George Loewenstein and Martin Weber. What the post adds is the evolutionary origin.}"
+  ],
+  [
+   3067,
+   "\\clogic{Nothing here connects the observed failures to hunter-gatherer bands. The same failures would follow from the self-anchoring and illusion of transparency named at the start of the sentence. The six paragraphs of prehistory add a story, not an explanation, and no observation in the post could tell the two apart.}"
+  ],
+  [
+   3081,
+   "\\cpara{Gives an example: a biologist cites ``simplest explanation'' for evolution, which moves a physicist but sounds weak and arrogant to someone without that scientific background.}"
+  ],
+  [
+   3912,
+   "\\cpara{Shows the biologist's side: when the simplicity argument fails, they conclude nonscientists are idiots and not worth talking to.}"
+  ],
+  [
+   4229,
+   "\\cpara{States that a clear argument must build a path of steps from what the audience already accepts.}"
+  ],
+  [
+   4436,
+   "\\cpara{Warns that any claim not backed by earlier steps makes the audience think you are crazy.}"
+  ],
+  [
+   4597,
+   "\\cpara{Adds that the same happens if you visibly weight an argument more than the audience can yet see is justified, as with simplicity and evolution.}"
+  ],
+  [
+   5016,
+   "\\cpara{Warns against hinting that you are many steps ahead of the audience or hold special knowledge; they will just find you condescending.}"
+  ],
+  [
+   5476,
+   "\\cpara{Ends with a joke: this very idea cannot be explained briefly either.}"
+  ]
+ ]
+}

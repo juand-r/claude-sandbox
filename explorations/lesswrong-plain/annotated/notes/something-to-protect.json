@@ -1,0 +1,190 @@
+{
+ "slug": "something-to-protect",
+ "header": "\\post{Something to Protect}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/SGR4GxFK7KmW7ckCB/something-to-protect}\n",
+ "skeleton_sha": "463234d95b0e23848a9c6a79c2e10073495d728c1ae669af929d820fca5ad89b",
+ "post_sha": "8550c9f3ea48bcf613e437065d951525f14de4963cadfa15fc9ef39b0c483502",
+ "edits": [
+  {
+   "at": 2952,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 11218,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   126,
+   "\\cpara{Introduces a theme from Japanese fiction: power comes from having something to protect.}"
+  ],
+  [
+   370,
+   "\\cpara{Says this goes deeper than Western heroes who grow stronger when a friend is in danger.}"
+  ],
+  [
+   553,
+   "\\cpara{Gives an example from the X saga: each hero's power comes from one person they protect, and losing that person ends the hero's power for good.}"
+  ],
+  [
+   1206,
+   "\\cpara{Contrasts Western comics: the hero gets powers by accident, fights crime to keep busy, and complains about the time it takes.}"
+  ],
+  [
+   1407,
+   "\\cfact{The radioactive spider is Spider-Man, \\textsc{Amazing Fantasy} \\#15 (1962). He does not fight crime to keep busy. He lets a burglar escape; the same burglar kills his Uncle Ben; Peter ``considered himself morally responsible for Ben's death and resolved to fight crime as a superhero'' (Wikipedia, ``Uncle Ben''). The motive is guilt over a loved one's death. The essay's sentence about his motive is false.}"
+  ],
+  [
+   1603,
+   "\\cpara{Compares Western advice to unhappy people: choose a cause that suits you, like choosing curtains, and do not pick one that costs too much.}"
+  ],
+  [
+   1991,
+   "\\cpara{Sums up the contrast: in Western comics the power comes first and the purpose after; in Japanese fiction often the reverse.}"
+  ],
+  [
+   2181,
+   "\\cpara{Says the fiction is not offered as evidence, only to separate the author's idea from a similar Western one.}"
+  ],
+  [
+   2366,
+   "\\cpara{Recalls that rationality needs a purpose beyond itself, denies this means picking a cause as a pastime, and asks where rationalists get their abilities.}"
+  ],
+  [
+   2953,
+   "\\cpara{Quotes the author's Twelve Virtues: telling yourself it is your duty to be rational only fixes your current, possibly wrong, idea of rationality in place.}"
+  ],
+  [
+   3497,
+   "\\cpara{Claims humanity left belief based on authority because beliefs based on experiment proved more useful, since stories satisfy curiosity just as well.}"
+  ],
+  [
+   3936,
+   "\\cpara{Claims science won through its technology, not by sounding reasonable, since magic and scripture still sound more reasonable to untrained people.}"
+  ],
+  [
+   4091,
+   "\\cfact{Asserted without evidence, and the evidence I checked does not fit it easily. B. Zorina Khan's study of Britain's major inventors from 1750 to 1930 finds that ``scientists, engineers or technicians were not well-represented among the British great inventors until very late in the nineteenth century'' (NBER Working Paper 20853, 2015). If much of the technology of industrialization was made by people who were not scientists, the claim that science won by displaying that technology needs an argument.}"
+  ],
+  [
+   4422,
+   "\\cpara{Voices an objection: should a rationalist not love truth more than usefulness?}"
+  ],
+  [
+   4598,
+   "\\cpara{``Forget for a moment'' introduces the charge it says to set aside: people who put truth above usefulness are likened to those who defended the Bible. No case is named, and the comparison is left standing.}"
+  ],
+  [
+   4920,
+   "\\cpara{Answers that a rationalist's love of truth is a more complicated relationship.}"
+  ],
+  [
+   5072,
+   "\\cpara{Grants that mastering rationality requires caring about truth, both morally and for enjoyment.}"
+  ],
+  [
+   5286,
+   "\\cpara{Explains what the author likes about rationality: demanding predictions brings you closer to truth, and valuing usefulness over beauty has its own beauty.}"
+  ],
+  [
+   5898,
+   "\\cpara{Warns that valuing usefulness never justifies deliberately believing something false because it is useful.}"
+  ],
+  [
+   6126,
+   "\\cpara{Concludes that loving truth and loving usefulness are not an either-or choice; the relationship is complicated.}"
+  ],
+  [
+   6405,
+   "\\cpara{Claims that believing you ought to be rational, or that some thinking is beautiful, is not enough, and would not have freed humanity from authority.}"
+  ],
+  [
+   6944,
+   "\\cpara{Says people may refuse to gamble with lives and cling to the comfort of certainty, even if they are among the 500, since people often value a good intuition above their own lives.}"
+  ],
+  [
+   7312,
+   "\\cpara{The central example, and its framing matters. From the daughter's side, option 1 is no longer certain: it saves her with probability 80\\%. The essay itself blames the preference for option 1 on ``the comforting feeling of certainty'', and this reframing deletes the certainty. If a parent then picks option 2, the example cannot tell whether love made them multiply or whether there was simply no certain option left to cling to.}"
+  ],
+  [
+   7463,
+   "\\clogic{No evidence is offered that caring makes people calculate better. The study I checked points the other way. Rottenstreich and Hsee (\\textsc{Psychological Science}, 2001) predict, and report evidence, that for emotionally charged outcomes people are ``less sensitive to intermediate probability variations''. 80\\% against 90\\% is such a variation.}"
+  ],
+  [
+   7596,
+   "\\cpara{The parent's 80 against 90 and the altruist's 400 against 450 are the same ratio. While the parent does not know which of the 500 is the daughter, the two must agree, as the post says: her chance is always the expected number saved divided by 500. So the example cannot show that love leads to correct reasoning, only that here it coincides with it by arithmetic.}"
+  ],
+  [
+   7779,
+   "\\cpara{Clarifies that the point is not that one life outweighs 499, but that more than your own life must be at stake before you turn to math.}"
+  ],
+  [
+   8020,
+   "\\cpara{Suggests that if you think rationality means choosing only sure things, caring about your daughter should matter more to you than that idea.}"
+  ],
+  [
+   8325,
+   "\\cpara{Claims pride in being rational will not help if you think certainty is virtuous; you learn only if your daughter's life matters more than that pride.}"
+  ],
+  [
+   8594,
+   "\\cpara{Adds that you may learn about rationality from this, if you can conclude your idea of rationality was wrong, not that rationality failed you.}"
+  ],
+  [
+   8847,
+   "\\cpara{An aside: you need a good deal of rationality before you can learn more of it.}"
+  ],
+  [
+   8999,
+   "\\cpara{Claims that standing apart from the crowd scares people more than risking their lives, citing teenagers who drive drunk, so leaving the crowd takes something very important.}"
+  ],
+  [
+   9432,
+   "\\clogic{A teenager who drives home drunk accepts a small chance of death, not death. The choice reveals at most that they rank the social cost above that small perceived chance. It does not show that being looked at funny is ``much scarier than a mere threat to your life.''}"
+  ],
+  [
+   9568,
+   "\\cpara{Asks whether pride can drive rationality: a self-image as someone who faces hard truths helps, but may block admitting you were doing it wrong.}"
+  ],
+  [
+   10147,
+   "\\cpara{Gives an example: someone proud of trusting the Great Teacher will find it bitter to admit the teacher is a fraud.}"
+  ],
+  [
+   10493,
+   "\\cpara{The evidence for the claim that follows (``No one masters the Way until more than their life is at stake'') is this paragraph: one person's history, self-reported and self-graded (``above-average \\ldots\\ and nothing more''), with the ``something terribly important'' left unnamed.}"
+  ],
+  [
+   10942,
+   "\\clogic{The essay does not name the cause. In ``The Magnitude of His Own Folly'' (2008) the author writes of having been ``raised in technophilia to treasure that one most precious thing, far more important than my own life.'' Inference, not stated here: the cause is the author's work on the future of artificial intelligence, and the ``drastically important cause'' a reader is told they may recognize, a few paragraphs on, is the same one.}"
+  ],
+  [
+   11034,
+   "\\cpara{Introduces a quote from Musashi, which you appreciate only once you care about succeeding more than about your favorite methods.}"
+  ],
+  [
+   11220,
+   "\\cpara{Quotes Musashi's Book of Five Rings: you can win with a long or a short weapon; his school's way is the spirit of winning, whatever the weapon.}"
+  ],
+  [
+   11492,
+   "\\cpara{Says the quote describes how you learn the Way, from a desperate need to succeed, and that no one masters it until more than their life is at stake.}"
+  ],
+  [
+   11770,
+   "\\cpara{Warns that you cannot choose a great cause as a hobby; learning to calculate may help you recognize a truly important one.}"
+  ],
+  [
+   12186,
+   "\\cpara{Says that if you have such a cause, it is right to use rationality to serve it.}"
+  ],
+  [
+   12306,
+   "\\cpara{Concludes that putting rationality's beauty beneath a higher cause is itself part of that beauty, which you must also value for its own sake.}"
+  ]
+ ]
+}

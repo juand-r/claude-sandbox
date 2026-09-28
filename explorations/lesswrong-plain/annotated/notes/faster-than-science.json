@@ -1,0 +1,132 @@
+{
+ "slug": "faster-than-science",
+ "header": "\\post{Faster Than Science}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/xTyuQ3cgsPjifr7oj/faster-than-science}\n",
+ "skeleton_sha": "c02acfc5ed2c5fb873675c71638ca61678056f5ab46065ec0bdeba5ff78621cd",
+ "post_sha": "ac818ed15b17c04a5bec4b2472f89151076e9a23e52e73fec8c7578bc68c2fc1",
+ "edits": [
+  {
+   "at": 438,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   124,
+   "\\cpara{The essay opens by quoting its author, and the premise of the whole post arrives as a remembered quip: science works only by overwhelming its own practitioners. No evidence is given. Five days earlier, in ``When Science Can't Help,'' the same line appeared as ``a mountain of evidence so huge that not even fallible human scientists can misread it.''}"
+  ],
+  [
+   375,
+   "\\cpara{Planck's remark is an anecdote, and it has been tested. Hull, Tessner and Diamond (``Planck's Principle,'' \\textsc{Science}, 1978) found that age was a minor factor in whether British naturalists accepted Darwin. Azoulay, Fons-Rosen and Graff Zivin (\\textsc{American Economic Review}, 2019) found that after star life scientists died young, outsiders entered their fields more. The evidence is mixed. The essay gives the quotation no source and does not mention the tests.}"
+  ],
+  [
+   439,
+   "\\cpara{Quotes Max Planck: new scientific truths win because their opponents die out, not because they are persuaded.}"
+  ],
+  [
+   671,
+   "\\cpara{Jokes that Planck's view makes science's ability to tell truth from falsehood depend on the taste of graduate students.}"
+  ],
+  [
+   852,
+   "\\cpara{An empirical claim about physicists with no data. There is no survey, no count and no date, only ``gradual increase'' and ``suggests.'' Seventeen years later, a \\textsc{Nature} survey of more than 1,100 physicists (2025) found 15\\% favoring many worlds and 36\\% the Copenhagen interpretation; one survey shows a share, not a trend, so it neither confirms nor refutes the ``gradual increase.'' The explanation offered, a herd that needs a ``pack'' to feel comfortable, is a diagnosis of the people who disagree with the author. It assumes the conclusion in dispute: that the evidence favors many-worlds and only comfort holds physicists back.}"
+  ],
+  [
+   1381,
+   "\\cpara{Conceded and dropped. The essay never squares this with ``a highly inefficient processor of evidence.''}"
+  ],
+  [
+   1552,
+   "\\cpara{A list of flaws with no example of any of them. The mechanism in the second sentence, that each bad shift needs extra evidence to undo, is asserted, not shown.}"
+  ],
+  [
+   1838,
+   "\\cpara{The author's contested position, stated as fact, against the interpretation most favored in the survey cited above. ``Undermined'' refers to the author's earlier posts; the reader is not told what undermined it. ``Should never have been assigned non-negligible probability'' dismisses the most popular view in the field in a link.}"
+  ],
+  [
+   2054,
+   "\\cfact{Stated as settled. It was not. Roderich Tumulka had published ``A Relativistic Version of the Ghirardi--Rimini--Weber Model,'' a collapse model built to be consistent with relativity (\\textsc{Journal of Statistical Physics}, 2006), two years before this post.}"
+  ],
+  [
+   2250,
+   "\\cpara{``Highly inefficient'' compared with what? No measure and no benchmark, except an ideal reasoner that does not exist. The essay does not consider the standard argument on the other side. Philip Kitcher (``The Division of Cognitive Labor,'' \\textsc{Journal of Philosophy}, 1990) showed that a community in which every scientist moves at once to the better-supported theory is ``a badly-run community.'' Slow, divided conversion keeps rival lines of research alive. Some of what the essay calls noise is how a community hedges its bets.}"
+  ],
+  [
+   2566,
+   "\\cpara{Restates the point more kindly: scientists take less extreme positions than an ideal reasoner who could trust its own reasoning would.}"
+  ],
+  [
+   2903,
+   "\\cpara{An accusation with no names. ``One side keeps throwing up more and more ridiculous objections \\ldots\\ from an entrenched position of academic power'': no debate, person, objection, paper or date is identified, and the author is a partisan in the dispute described.}"
+  ],
+  [
+   3675,
+   "\\cpara{The thesis, as a question, twelve paragraphs in. The title answers it. The body answers a narrower question, about where hypotheses come from. It never shows an individual or group reaching a correct conclusion faster than science, and never shows anyone knowing in advance that they had.}"
+  ],
+  [
+   3845,
+   "\\cpara{Quotes the slogan that experiment is the core of science, with a joke about trusting a cartoon version of Feynman.}"
+  ],
+  [
+   4098,
+   "\\cpara{The distinction between where a hypothesis comes from and how it is tested is Hans Reichenbach's distinction between the contexts of discovery and justification (1938). It has been a named problem in philosophy of science for seventy years.}"
+  ],
+  [
+   4320,
+   "\\cpara{Argues that without new ideas science would have nothing to test, so inventing them is an essential part of the process.}"
+  ],
+  [
+   4543,
+   "\\cpara{The essay's one substantive idea, that in a large space finding the right hypothesis takes more evidence than confirming it, is presented as a Bayesian insight. Charles Peirce made the same argument in 1903 (\\textsc{Collected Papers} 5.172): ``Think of what trillions of trillions of hypotheses might be made of which one only is true; and yet after two or three or at the very most a dozen guesses, the physicist hits pretty nearly on the correct hypothesis.'' He is not credited. ``Bayesian goggles'' is house jargon.}"
+  ],
+  [
+   4961,
+   "\\cpara{The arithmetic assumes a uniform prior over $2^{32}$ equations, and the uniform prior is the problem. (Recomputed: going from one in 4.3 billion to 10\\% takes about 28.8 bits; going from 10\\% to 90\\% takes about 6.3.) No scientist starts there. They start from the equations their training makes plausible, and that training is the accumulated output of the slow public process the essay says the individual outruns. Most of the ``work'' credited to the individual was done by science.}"
+  ],
+  [
+   5320,
+   "\\cpara{The comparison mixes two scales. A p-value is not a quantity of Bayesian evidence, so ``much more work'' than a result ``with p<0.0001'' has no definite meaning. Read loosely as a likelihood ratio of 10,000, it is about 13 bits.}"
+  ],
+  [
+   5784,
+   "\\cpara{The thought experiment gets Bayes wrong. A Bayesian who watches a source keep producing hypotheses that pass tests updates toward that source being reliable, whatever its mechanism. That is ordinary conditioning on evidence. Nothing bursts into flames. What would be refuted is the reasoner's prior belief that Ouija boards are useless, not Bayes.}"
+  ],
+  [
+   6285,
+   "\\cpara{``Bayes'' here stands for a claim about discovery, that finding the right hypothesis takes evidence, which a working Ouija board would refute. Read that way the parenthesis holds, but the essay does not say which sense of ``Bayes'' it means.}"
+  ],
+  [
+   6421,
+   "\\cpara{Clarifies that choosing which ideas to test matters to science, but science gives no rules for it.}"
+  ],
+  [
+   6585,
+   "\\cpara{Admits that random idea generation does not work in practice: in large answer spaces, testing models at random would take practically forever.}"
+  ],
+  [
+   6904,
+   "\\cpara{The word that carries the conclusion is ``seeing.'' Scientists at the frontier are described as ``seeing things that are not yet confirmed by Science.'' A guess that later proves right has been renamed perception. The next four paragraphs build on the renaming.}"
+  ],
+  [
+   7237,
+   "\\cpara{The essay draws the wrong lesson from its own numbers (on a uniform prior, about 28.8 bits for 10\\% and about 34 for 80\\%). A scientist at 10\\% expects to be wrong nine times in ten. Two paragraphs later the essay will say this scientist ``rationally knew.''}"
+  ],
+  [
+   7618,
+   "\\cpara{Survivorship. The essay reasons only from the scientist who guessed right: he ``must'' have done the work, ``otherwise he will not even think of the correct hypothesis.'' Most guesses at the frontier are wrong, and the scientists who made them reasoned in the same way. A community of many guessers can find the right hypothesis without any one of them holding the evidence the essay credits to the winner. Each failed test also supplies evidence. The essay counts the winner and ignores the field.}"
+  ],
+  [
+   7891,
+   "\\cpara{The example ends by relying on the method it set out to outrun. The scientist's belief becomes knowledge only after ``performs the experiment, publishes the result.'' That is the slow public process.}"
+  ],
+  [
+   8199,
+   "\\cpara{``Knew'' is the essay's conclusion and its error. By its own numbers, the scientist may hold the hypothesis at 10\\%. By the previous paragraph, the scientist ``may not \\emph{know} he has done this epistemic work successfully.'' Knowledge that its holder cannot tell apart from a lucky guess is exactly what Science's distrust is for. The essay answers its title's question yes on the strength of an interval no one can identify until after the test. The post names no scientist who ever knew something in advance in this way.}"
+  ],
+  [
+   8485,
+   "\\cpara{The essay ends by narrowing its claim to non-routine science and to the generation of ideas. That is not ``faster than science.'' It describes one stage inside science, a stage philosophers since Peirce have written about. The title promises what the body does not deliver.}"
+  ]
+ ]
+}

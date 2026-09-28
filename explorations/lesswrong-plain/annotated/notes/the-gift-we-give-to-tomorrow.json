@@ -1,0 +1,201 @@
+{
+ "slug": "the-gift-we-give-to-tomorrow",
+ "header": "\\post{The Gift We Give To Tomorrow}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/pGvyqAQw6yqTjpKf4/the-gift-we-give-to-tomorrow}\n",
+ "skeleton_sha": "e8e1023c234895254912e881e2f1da114574779ed4fe6ebd569bc225bae50b87",
+ "post_sha": "da647944b2ecca92fbf6e288bccce2fbfdd08f163df44f7e4cb9b31b4948812d",
+ "edits": [],
+ "notes": [
+  [
+   142,
+   "\\cpara{Asks the opening question: how a universe without love or minds produced minds that can love.}"
+  ],
+  [
+   248,
+   "\\cpara{The answers belong to ``you,'' and the questions to ``I.'' The reader is placed in the voice that knows the science and has the last word; the questioner is the one who must be talked out of wonder. Inference: the second person is chosen to put the reader on the explainer's side before any argument is made.}"
+  ],
+  [
+   364,
+   "\\cpara{Objects that natural selection is cruel and wasteful: genes compete for relative share, and a species can even evolve itself to extinction.}"
+  ],
+  [
+   1146,
+   "\\cpara{The explainer answers that mystery lies in questions, not in the world, and that mothers love children because the children share their genes.}"
+  ],
+  [
+   1405,
+   "\\cpara{Objects that mothers love adopted children too, and love children for themselves, not for their genes.}"
+  ],
+  [
+   1547,
+   "\\cpara{The explainer replies that organisms carry out evolved drives without calculating genetic fitness, even unconsciously.}"
+  ],
+  [
+   2075,
+   "\\cpara{Explains friendship with non-relatives as reciprocal help in repeated dealings, noting that the most dangerous person in a tribe may be the one with most allies.}"
+  ],
+  [
+   2355,
+   "\\cpara{Asks about true friendship and self-sacrifice for friends, which would seem to remove themselves from the gene pool.}"
+  ],
+  [
+   2582,
+   "\\cpara{Answers that people can tell true friends from allies of convenience, so being a true friend earns true friends, who are worth more.}"
+  ],
+  [
+   3024,
+   "\\cpara{Asks about Gandhi and others who serve all humanity without expecting anything back.}"
+  ],
+  [
+   3182,
+   "\\cpara{Admits the story is more complicated: humans argue about policy, and the most formidable person may be the best persuader.}"
+  ],
+  [
+   3609,
+   "\\cpara{Clarifies that the point is our ability to argue about what should be done as a proposition, which politics requires.}"
+  ],
+  [
+   3967,
+   "\\cpara{The narrator's objection, and it is not answered. The next reply lists possible causes with three hedges (``something like'', ``probably'', ``plus perhaps''), and when pressed retreats to ``it has to fit into the lawful causal development of the universe somehow.'' The narrator never denied that. The question was whether this particular story explains Gandhi, and the dialogue drops it.}"
+  ],
+  [
+   4090,
+   "\\cpara{Sketches, with hedges, the causes behind Gandhi: a capacity for abstract moral argument, built-in intuitions, a taste for simple rules, perhaps selection among ideas, yielding ``You should not hurt people''.}"
+  ],
+  [
+   4684,
+   "\\cpara{Insists that unless one believes in magic, Gandhi must fit into the ordinary causal history of the universe.}"
+  ],
+  [
+   4939,
+   "\\cpara{Presses that it still seems amazing that evolution's brutal contest produced so many kinds of love, aimed at things other than genes.}"
+  ],
+  [
+   5566,
+   "\\cpara{Replies that feeling surprised by how things are means your model is wrong, since nothing unusual has ever happened.}"
+  ],
+  [
+   5876,
+   "\\cpara{Asks whether the questioner is suggesting that a hidden designer guided evolution.}"
+  ],
+  [
+   6025,
+   "\\cpara{Argues that a hidden designer would itself need its love of love explained, while evolutionary psychology shows where these specific values came from, so the designer would also have evolved.}"
+  ],
+  [
+   6846,
+   "\\clogic{``When you really do understand'' makes disagreement a failure to understand. The claim itself is contested. The Stanford Encyclopedia's entry ``Morality and Evolutionary Biology'' says of the strongest such claims that ``it seems doubtful that the scientific evidence itself supports such strong claims about the etiology of `our' moral beliefs.'' The post shows no design signature for any of the traits it lists.}"
+  ],
+  [
+   6977,
+   "\\cpara{Denies proposing a designer and restates the question: how humans came to be so kind.}"
+  ],
+  [
+   7087,
+   "\\cpara{Retorts that humans are often not kind, and that our other evolved emotions show plainly that we evolved.}"
+  ],
+  [
+   7325,
+   "\\cpara{Insists humans are far kinder than evolution, which lets animals suffer, and asks how an uncaring process made minds morally above it.}"
+  ],
+  [
+   7983,
+   "\\cpara{Answers that beauty is not written into sound waves or nature: judgments of beauty exist only in minds.}"
+  ],
+  [
+   8463,
+   "\\cpara{Repeats the question: how evolution came to give us the ability to admire a flower's beauty.}"
+  ],
+  [
+   8627,
+   "\\cpara{The post's argument arrives here: we marvel at human values because they are our values, so there is no coincidence to explain. That follows only if there is no standard of value outside human minds. The paragraph assumes this, and the post tries to argue it only later, with ``too much coincidence''.}"
+  ],
+  [
+   9609,
+   "\\cpara{Objects that it is still amazing the loop happened to land on things as important as beauty and altruism.}"
+  ],
+  [
+   9757,
+   "\\cpara{Explains that beauty and altruism seem special only because we value them; the sense of coincidence comes from assuming that a mind with no values would share ours.}"
+  ],
+  [
+   10264,
+   "\\cpara{Offers first-principles arguments for beauty and altruism: beauty drives new complexity, altruism gives life meaning beyond selfishness.}"
+  ],
+  [
+   10612,
+   "\\cpara{Replies that those arguments rest on other values, not first principles, and that no argument would persuade a mind with no values at all.}"
+  ],
+  [
+   11188,
+   "\\cpara{Argues that positing something beyond humans adds nothing, shifts responsibility without removing it, only moves the question back a step, and would be too much coincidence.}"
+  ],
+  [
+   11697,
+   "\\clogic{This is, in substance, the evolutionary debunking argument in moral philosophy. Sharon Street published a version two years earlier (``A Darwinian Dilemma for Realist Theories of Value'', \\textsc{Philosophical Studies}, 2006), and Richard Joyce made a related case the same year. The Stanford Encyclopedia summarizes Street's version: ``it would be a sheer coincidence if our evolutionarily shaped moral beliefs happened to align with the moral truths''. The same entry lists a literature of replies (Copp 2008, Enoch 2011, FitzPatrick and others). The post treats a live dispute as settled by a rhetorical question.}"
+  ],
+  [
+   11747,
+   "\\cpara{Tells the evolutionary story of flowers attracting bees and humans being drawn to flowers as signs of fertile land, and says it would be too much coincidence if the stars also declared flowers beautiful.}"
+  ],
+  [
+   12026,
+   "\\cfact{False as a general account of flowers. Pollination by imitating insect mating signals, ``sexual deception'', is known almost only among orchids; Streinzer and others (2010, a study of the orchid genus \\textsc{Ophrys}) wrote that it ``has so far only been discovered in the orchid family,'' and the known cases outside it are a South African daisy, \\textsc{Gorteria diffusa} (reported in 2010), and an Asian iris, \\textsc{Iris paradoxa}. Nor are all flowers pollinated by bees. Ollerton, Winfree and Tarrant (\\textsc{Oikos}, 2011) estimate that 87.5\\% of flowering plant species are pollinated by animals; the rest mostly use wind.}"
+  ],
+  [
+   12307,
+   "\\clogic{The post has just asked whether the reader thinks ``science does not know the story''. The part about humans is not a story science knows. It is a guess, posed as a rhetorical question, with no evidence.}"
+  ],
+  [
+   12642,
+   "\\cpara{Denies explaining beauty away: ordered things have stories behind them, and knowing the story adds to the joy of a flower.}"
+  ],
+  [
+   13161,
+   "\\cpara{Concedes there is no physical surprise but proposes calling the origin of human love a moral miracle.}"
+  ],
+  [
+   13502,
+   "\\cpara{Restates the term: a miracle only from the viewpoint of the morality that evolution produced.}"
+  ],
+  [
+   13701,
+   "\\cpara{Agrees with that reading, meaning something surprising and wonderful morally though not physically.}"
+  ],
+  [
+   13955,
+   "\\cpara{Objects that the explainer's view still drains away some of the wonder.}"
+  ],
+  [
+   14060,
+   "\\cpara{Replies that love, like life, must begin somewhere, and tracing it back ends at an accident, as life ends at the first replicator.}"
+  ],
+  [
+   14555,
+   "\\cpara{Stated as a law, with no argument: a complex pattern ``must'' come from something that is not that pattern. This premise rules out any answer in which love comes from a source that already loves. It is the point in dispute with the theist or the moral realist, assumed rather than shown.}"
+  ],
+  [
+   14853,
+   "\\cpara{Continues the comparison: life began with an accidental but caused replicator in a tidal pool 3.85 billion years ago.}"
+  ],
+  [
+   15076,
+   "\\cpara{Begins a story of the future: descendants ask why they can love.}"
+  ],
+  [
+   15354,
+   "\\cpara{Continues the story: each generation says its own loving parents made it to love.}"
+  ],
+  [
+   15468,
+   "\\cpara{Continues the story: the descendants ask where the chain of loving parents began.}"
+  ],
+  [
+   15582,
+   "\\cpara{The story's future contains two things the post does not argue for: beings designed by their parents (the first beings ``not themselves intelligently designed'' are the exception) and a civilization that has outgrown ``a single galaxy''. They are the author's hopes, told as settled backstory. Inference: the ``gift'' of the title is love passed on by design, and the fairy tale is where the post places its vision of the future.}"
+  ],
+  [
+   15839,
+   "\\cpara{Continues the story: the beginning was when civilization was a single planet called Earth.}"
+  ]
+ ]
+}

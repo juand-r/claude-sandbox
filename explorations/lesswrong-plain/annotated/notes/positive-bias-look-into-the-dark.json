@@ -1,0 +1,77 @@
+{
+ "slug": "positive-bias-look-into-the-dark",
+ "header": "\\post{Positive Bias: Look Into the Dark}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/rmAbiEKQDpDnZzcRf/positive-bias-look-into-the-dark}\n",
+ "skeleton_sha": "06448d43b2d14790e459a3b36e60bbdab14ac4824d75b8a505f7e4987ff36bcb",
+ "post_sha": "d57e08a0d839afeff853c69de8aed7249bf696c103859ff4602b4f3e55754448",
+ "edits": [],
+ "notes": [
+  [
+   151,
+   "\\cpara{Sets up a classroom game: the teacher has a rule for number triplets, 2-4-6 fits it, and students test triplets of their own until confident of the rule.}"
+  ],
+  [
+   846,
+   "\\cpara{The record undercuts the essay. The student's first test, 4-6-2, is a triplet that ``numbers increasing by two'' forbids, and it was marked No. The student did look into the dark. What they did not do was test a triplet that their hypothesis forbade and the true rule allowed. The essay later says subjects ``usually try to generate positive examples, rather than negative examples''; its own example shows a negative example that taught nothing. The problem is which negative example, and the essay never says how to choose one.}"
+  ],
+  [
+   930,
+   "\\cpara{Asks the reader to guess the rule, and to consider what further triplet they would have tested, before reading on.}"
+  ],
+  [
+   1161,
+   "\\cpara{The paragraph reports the failure rate and leaves out the finding that changes its meaning. The rate itself checks: six of Wason's 29 subjects announced the correct rule without an earlier wrong one, 21 per cent, and later work gives about 20 per cent for the standard version (Gale and Ball, \\textsc{Quarterly Journal of Experimental Psychology}, 2006). The same abstract reports that a reworded version of the task, in which subjects look for two complementary rules, ``elevates success to over 60\\%.''}"
+  ],
+  [
+   1336,
+   "\\clogic{Wason's instructions required it. Subjects were to write the rule down ``When you feel highly confident that you have discovered it, and not before.'' The instruction explains why they announced a rule; the confidence they reported was still their own.}"
+  ],
+  [
+   1509,
+   "\\cpara{The task is rigged, and Wason said so in his abstract: ``The experiment is designed so that use of confirming evidence alone will almost certainly lead to erroneous conclusions because (i) the correct concept is entailed by many more obvious ones.'' The true rule was chosen to be broader than any natural guess. Only in that arrangement can positive tests never fail. The essay presents the result as a fact about human testing. It is a fact about testing when the truth is much broader than your hypothesis.}"
+  ],
+  [
+   1833,
+   "\\cpara{Explains that people test triplets their own guess predicts will fit, such as 8-10-12 for ``increasing by two'', and announce the guess when those fit.}"
+  ],
+  [
+   2120,
+   "\\cpara{Reveals the actual rule: any three numbers in ascending order.}"
+  ],
+  [
+   2222,
+   "\\cpara{The prescription, stated without its limits. Klayman and Ha (\\textsc{Psychological Review}, 1987) showed that the positive test strategy ``can be a very good heuristic for determining the truth or falsity of a hypothesis under realistic conditions,'' and fails in tasks like 2-4-6, where the true rule is broader than the hypothesis. Where the thing sought is rare, they write, ``you are probably better off testing where you do expect the phenomenon to occur,'' and ``This situation characterizes many real-world problems.'' The essay turns advice for one kind of task into advice for all thinking. The paper was twenty years old when the essay appeared, and the essay does not mention it.}"
+  ],
+  [
+   2525,
+   "\\cpara{The essay's one original-sounding claim: that testing positive cases should be distinguished from defending the belief you started with. Klayman and Ha drew this distinction in 1987. They wrote that the positive test strategy ``is not equivalent to confirmation bias in the first sense.'' The essay offers it as ``it seems to me.'' The claim that ``positive bias'' is in use as a synonym comes with no source; Klayman and Ha's term is ``positive test strategy.''}"
+  ],
+  [
+   2939,
+   "\\cpara{Changes the subject. The 2-4-6 error concerns which tests a person chooses. The phlogiston point concerns a theory that can explain any outcome, which is a different failure: with such a theory there is no test to choose.}"
+  ],
+  [
+   3387,
+   "\\clogic{One task, whose rule was chosen to defeat positive testing, and its replications have become ``human instinct.''}"
+  ],
+  [
+   3476,
+   "\\cpara{Claims that the error is ``sub-verbal, on the level of imagery,'' and so cannot be fixed by knowing a rule. No evidence is given. Changing the words of the task, from one rule to find to two complementary rules, raised success from about 20 to over 60 per cent. That does not show that teaching the rule works, but it shows the error depends on how the task is framed.}"
+  ],
+  [
+   4219,
+   "\\cpara{Recalls the author's point that a hypothesis is strong by the outcomes it rules out, so judging an explanation means searching for results it could not explain.}"
+  ],
+  [
+   4670,
+   "\\cpara{A dispute from the author's comment section two days earlier (``The Futility of Emergence,'' 26 August 2007), told from the author's side; the commenter's reply to the author is not given. The confession that follows is the essay's only evidence that the error is instinctive, and it is one anecdote about the author.}"
+  ],
+  [
+   5241,
+   "\\cpara{Says much of rationality is wordless skill and hard to teach in words: people agree, then act the opposite way, and the author writes partly to see what failed to get across.}"
+  ],
+  [
+   5626,
+   "\\cpara{The closing question turns the lesson on the reader and never on the essay. See the Response.}"
+  ]
+ ]
+}

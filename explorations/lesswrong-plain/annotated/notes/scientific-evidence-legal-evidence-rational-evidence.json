@@ -1,0 +1,85 @@
+{
+ "slug": "scientific-evidence-legal-evidence-rational-evidence",
+ "header": "\\post{Scientific Evidence, Legal Evidence, Rational Evidence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/fhojYBGGiYAFcryHZ/scientific-evidence-legal-evidence-rational-evidence}\n",
+ "skeleton_sha": "1b0e7a05d9ad447f00809c70f5fcfbaa5a604bf3d6e310f112bd42097d86278e",
+ "post_sha": "648d5d2c3fc07c2e05277827096a84db132d705bc03f46cea0bf4f8985fe13f1",
+ "edits": [],
+ "notes": [
+  [
+   192,
+   "\\cpara{Sets up the first category, rational evidence, with a verdict drawn from the wrong premise (see the note on the last sentence).}"
+  ],
+  [
+   665,
+   "\\clogic{Does not follow. Prudence depends on stakes as well as probability. Insulting someone with a small chance of being a crime boss is already foolhardy, because the cost if you are wrong is large and the gain from the insult is nothing. The paragraph infers strong evidence from a decision that weak evidence would justify.}"
+  ],
+  [
+   679,
+   "\\cpara{Explains that courts would not jail Wulky on the commissioner's word, since unchecked power to accuse would come to catch fewer bosses and more innocent people.}"
+  ],
+  [
+   819,
+   "\\cfact{The law gives its own reasons, and they are about reliability. Federal Rule of Evidence 602: ``A witness may testify to a matter only if evidence is introduced sufficient to support a finding that the witness has personal knowledge of the matter.'' The Advisory Committee's note on hearsay rests the rule on oath, presence in court and above all cross-examination, which exposes ``imperfections of perception, memory, and narration.'' The commissioner's private assurance is excluded because it cannot be tested. That undercuts the essay's frame, which sets legal standards apart from rational ones as merely ``social.''}"
+  ],
+  [
+   1256,
+   "\\cpara{States the first relation: legal evidence is a subset of rational evidence. The ``lopsided likelihood ratio'' is asserted, never estimated, and it rests on the invalid inference of the first paragraph. The subset claim is the essay's structure, and its only support here is the essay's own account of why courts exclude hearsay, which is not the law's stated reason (see the Response).}"
+  ],
+  [
+   1853,
+   "\\cpara{The second relation: scientific knowledge is a subset of rational knowledge, defined by generalization and personal verification. The definition is given as fact (``Science is \\ldots''), and five paragraphs later the essay says asking whether it is true is ``not a well-formed question.''}"
+  ],
+  [
+   2450,
+   "\\clogic{A description of almost no one's relation to science, scientists included. John Hardwig's ``Epistemic Dependence'' (\\textsc{Journal of Philosophy}, 1985) argued that research itself depends on trusting other researchers' results. A definition under which nearly all actual scientific knowledge is held on trust needs to say so.}"
+  ],
+  [
+   2532,
+   "\\cpara{The paragraph repeats the third paragraph's formula (``special, strong, additional standards'') and then excludes history. The exclusion takes more than the essay notices (see the logic note). The example is also oddly chosen (see the note on Plutarch).}"
+  ],
+  [
+   3216,
+   "\\cfact{Plutarch was born about AD 46, more than three and a half centuries after Alexander died, and says at the start of his \\textsc{Life of Alexander}: ``my design is not to write histories, but lives'' (Dryden translation). The essay's example authority for history is an ancient writer who said he was not writing it. The essay's larger point stands: the other sources, such as coins and a Babylonian astronomical diary, also reach us through specialists we must trust.}"
+  ],
+  [
+   3266,
+   "\\clogic{This rule takes whole sciences with it. The Chicxulub impact that ended the Cretaceous (Schulte and others, \\textsc{Science}, 2010) happened once and cannot be rerun. So did every other event in the Earth's history. Under the essay's definition, geology's and cosmology's central findings are not scientific knowledge. The essay does not mention them.}"
+  ],
+  [
+   3280,
+   "\\cpara{Asks whether believing the Sun will rise on a given date, a month ahead, is a scientific belief, though it is a rational one.}"
+  ],
+  [
+   3530,
+   "\\cpara{The objection, and then a concession. The paragraph grants that the prediction is derived from generalizations ``you could test for yourself by experiment.'' The essay's definition counts only the generalizations as science, not what follows from them. That line is thin. A prediction about one date is exactly what a test of the generalization checks, and the essay does not say why the consequence of a scientific claim is not itself scientific.}"
+  ],
+  [
+   4046,
+   "\\cpara{The case for denying ``scientific'' to predictions. It rests on a confusion, and it proves too much (see notes).}"
+  ],
+  [
+   4562,
+   "\\clogic{This confuses knowing a prediction with knowing the result. The paragraph has already answered its own question: you run the experiment ``to test it in a new context.'' And the argument proves too much. A generalization is also untested in each new context, so by the same reasoning no generalization would count as scientific knowledge before every test of it.}"
+  ],
+  [
+   4576,
+   "\\cpara{Explains that science means generalizations because they apply to many events and can be reproduced, while a historical event happens once.}"
+  ],
+  [
+   4848,
+   "\\cpara{Retreats from the definition. The fourth paragraph said what science ``is''; here, asking whether that is true is ``not a well-formed question.'' The essay keeps the authority of a definition and the immunity of a convention.}"
+  ],
+  [
+   5242,
+   "\\cpara{Speculation that leans on the ``public'' half of ``publicly reproducible.'' A paywalled result about a repeatable experiment can still be reproduced by anyone with a laboratory. The two rhetorical questions do the arguing and receive no answer.}"
+  ],
+  [
+   5615,
+   "\\cpara{The conclusion: a policy preference, given without argument, and a return to the commissioner. The essay ends where its third paragraph was, and in between it has defined science in a way that excludes history, the historical sciences and, by its own reasoning, predictions.}"
+  ],
+  [
+   5964,
+   "\\cpara{A footnote: the sunrise claim means the Earth keeps rotating and orbiting roughly as before.}"
+  ]
+ ]
+}

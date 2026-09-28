@@ -1,0 +1,300 @@
+{
+ "slug": "toolbox-thinking-and-law-thinking",
+ "header": "\\post{Toolbox-thinking and Law-thinking}{Eliezer Yudkowsky}{2018}{https://www.lesswrong.com/posts/CPP2uLcaywEokFKQG/toolbox-thinking-and-law-thinking}\n",
+ "skeleton_sha": "2dd470342c672182d65f73fc778fd68bfb71d8ad360c675adac555d65adbbe29",
+ "post_sha": "f18888122d25dd70ced0dda7357306aeef139a25c4193574df2994be115402da",
+ "edits": [
+  {
+   "at": 2213,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 2908,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 3538,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 4046,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 4688,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   266,
+   "\\cpara{Toolbox thinking is defined partly by a suspicion of others: toolbox thinkers ``tend to suspect that anyone ... is just ignorant''. Lawful thinking, in the next paragraph, is defined ``done correctly''. One style is introduced with its failing, the other at its best, before any argument.}"
+  ],
+  [
+   554,
+   "\\cpara{Defines the lawful style: it separates what is true, what would be ideal, and what to actually do, and it accepts ideals no practical procedure can reach.}"
+  ],
+  [
+   684,
+   "\\cfact{This three-way distinction is standard in decision research. Jonathan Baron dates it: ``The three-way distinction emerged clearly in the 1980s (Freeling, 1984; Baron, 1985; Bell et al., 1988 ...)'' (\\textsc{Frontiers in Psychology}, 2012). The post names none of these. The only name attached to it is Baron's, and that comes from a quoted tweet in which Chapman says he has not seen the distinction before.}"
+  ],
+  [
+   867,
+   "\\cpara{Gives a maze example: the triangle inequality always holds, but it tells you which way to walk only if you know the paths and care only about distance.}"
+  ],
+  [
+   1571,
+   "\\cpara{Explains why toolbox thinkers distrust such claims: a poor explanation sounds like ``throw away all the other tools'' because one rule always finds the best path.}"
+  ],
+  [
+   1931,
+   "\\cpara{A transition: promises that this misunderstanding really happens.}"
+  ],
+  [
+   2061,
+   "\\cpara{The post's only evidence. Read closely, the exchange does not show the misunderstanding the post diagnoses (see the notes on the tweets).}"
+  ],
+  [
+   2214,
+   "\\cpara{Quotes Chapman defining rationalism as belief in one ultimate criterion of correct thinking, ``one weird trick'', which everyone ought to follow, even if the trick is unknown.}"
+  ],
+  [
+   2778,
+   "\\clogic{Chapman's definition already includes the lawful position as the post describes it: optimal paths exist ``even if there's no executable-in-practice algorithm''. He is not mistaking an ideal for a recipe. He describes the ideal-without-recipe view and rejects it.}"
+  ],
+  [
+   2910,
+   "\\cpara{Quotes Graham Rowe asking whether meta-rationalists treat rationality as one tool among many, while rationalists see everything through it.}"
+  ],
+  [
+   3541,
+   "\\cpara{Quotes Julia Galef: there is one correct ideal model, no single practical rule can match it, so rationalists collect tricks that bring them closer.}"
+  ],
+  [
+   4010,
+   "\\clogic{Galef states the Law position the post defends, in two sentences, in the thread. What the post adds to her tweet is the maze.}"
+  ],
+  [
+   4050,
+   "\\cpara{Quotes Chapman: the meta-rational insight is that rationality is a bag of tricks suited to different situations, not one thing.}"
+  ],
+  [
+   4349,
+   "\\cpara{Reports that Galef cited a paper saying the ideal model need not always govern real reasoning, and introduces Chapman's reply.}"
+  ],
+  [
+   4693,
+   "\\cpara{Quotes Chapman calling the normative versus prescriptive distinction new to him and possibly key, and naming the crux: whether an unreachable ideal is worth having.}"
+  ],
+  [
+   4964,
+   "\\clogic{The toolboxer the post quotes calls the normative--prescriptive distinction ``useful and maybe key'' and names the real disagreement: whether ``a normative theory that can't be achieved, even in principle, is a good thing.'' That is a question about what ideals are worth. The post never answers it (see the maze notes).}"
+  ],
+  [
+   4990,
+   "\\cpara{The post announces that it will argue against a stereotype instead of the exchange it has just quoted, and then does. The cases it has ``seen many times'' are not cited; ``the discussion of p-values'' names a topic, not an instance.}"
+  ],
+  [
+   5316,
+   "\\cpara{Gives the stereotyped toolbox speaker: statistics offers many tools suited to different contexts, so calling likelihood ratios best everywhere looks like naive idealism.}"
+  ],
+  [
+   6234,
+   "\\cpara{The coherence theorems are cited by link, and their premises are never stated anywhere in the post.}"
+  ],
+  [
+   7163,
+   "\\cpara{The diagnosis, offered as a suspicion and treated from here on as established. The one toolboxer quoted did not hear a recipe; he asked whether the ideal was worth having.}"
+  ],
+  [
+   7391,
+   "\\cpara{``Durable'' and ``frequently'' have no support. In the only exchange quoted, the toolboxer accepted the distinction within one reply.}"
+  ],
+  [
+   7650,
+   "\\cpara{The symmetry is offered in a hedge (``It would not surprise me''), and, unlike the toolbox error, it gets no example of a real conversation.}"
+  ],
+  [
+   8503,
+   "\\cpara{Grants that the naive people the toolbox side lectures do exist: many think they have one true recipe without any ideal to show it is best.}"
+  ],
+  [
+   8845,
+   "\\cpara{The thesis, stated twice, once in each camp's words, both as what someone ``might put it''. The post does not say which it holds. Its middle section ends on the second; its closing section returns to the first.}"
+  ],
+  [
+   9140,
+   "\\cpara{Says readers may not need the explanation, but the author will give it anyway out of caution.}"
+  ],
+  [
+   9322,
+   "\\cpara{The analogy is chosen so that the disputed points cannot arise. A maze comes with an agreed measure, distance, and its shortest path can be walked by anyone who has a map; the post says so (``If the maze-owner gave you a map ... you could walk the true shortest path''). What counts as the measure for thinking, and whether its ideal can be reached even in principle, is what Chapman asked. The maze assumes the answer to both questions.}"
+  ],
+  [
+   9533,
+   "\\cpara{Concedes that ``best'' needs the premise that distance is the only merit. For thinking, the post never says what plays the part of distance. It asserts the Bayesian answer only in its closing section.}"
+  ],
+  [
+   9777,
+   "\\cpara{Argues that a shortest path existing does not mean you can pick it at each fork of the maze.}"
+  ],
+  [
+   10006,
+   "\\cpara{Adds that being unable to pick it does not make the idea of distance useless.}"
+  ],
+  [
+   10188,
+   "\\cpara{Suggests you may be wiser to ignore a true hint about the shortest turn if you follow the left-hand rule, which suits walkers with poor memory.}"
+  ],
+  [
+   10722,
+   "\\cpara{Warns that breaking the left-hand rule even once can strand you circling an island of walls inside the maze.}"
+  ],
+  [
+   11027,
+   "\\cpara{Concludes that, given your other rules, the rule-following turn gives the shortest expected walk, while the tempting turn could leave you walking forever.}"
+  ],
+  [
+   11286,
+   "\\cpara{Admits the best available rule may still miss the shortest path; knowing this shows room for improvement, such as a mapping app that finds the exit faster.}"
+  ],
+  [
+   11691,
+   "\\cpara{Anticipates the objection ``no recipe is perfect''. The rebuttal depends on the map. For reasoning, the post has already said the map is not available: ``On complex problems we may not be able to compute exact Bayesian updates''.}"
+  ],
+  [
+   12014,
+   "\\cpara{The distinction the post needs: a merit of outcomes versus a tendency of recipes. It depends on shortness being ``defined independently of the app's algorithms''. For thinking, the post never says what the independently defined measure is. The link goes to an Arbital page, not to an argument.}"
+  ],
+  [
+   12401,
+   "\\cpara{From ``shorter'' to ``shortest'' needs a minimum to exist. A finite maze has one. The post does not argue that the space of ways to reason has one.}"
+  ],
+  [
+   12643,
+   "\\cpara{A caricature: a toolboxer who keeps ``ideological purity'' by never imagining a shortest path. No one quoted in the post holds this view.}"
+  ],
+  [
+   13245,
+   "\\cpara{Argues that refusing to think about ideals throws away a useful tool, and makes slower the problems best solved by comparing solutions with the ideal.}"
+  ],
+  [
+   13560,
+   "\\clogic{The claim that thinking about ideals reaches some destinations ``the fastest'' is the post's positive case for Law. It gets no example. The maze section's one improvement, the app, was justified by giving shorter paths, which the caricatured toolboxer is allowed to ask about.}"
+  ],
+  [
+   13611,
+   "\\cpara{The author admits to possibly being unable to state the other side fairly, and then states it in the post's own words. Chapman had stated his crux in the tweets above; the post does not use it.}"
+  ],
+  [
+   13836,
+   "\\cpara{The objection is written as a universal claim: ``will surely'', then ``inevitable'', ``will inevitably'', ``will be unable'' and ``will also never'' in the paragraphs that follow. A claim written that way is refuted by ``not always'', which is the reply the post gives. The opponent's case is shaped to fit the answer.}"
+  ],
+  [
+   14268,
+   "\\cpara{The one objection with a mechanism: an ideal no one can see invites people to pass off their current recipe as the ideal. The post concedes that this happens and offers, as its remedy, ``be careful to understand the context and the caveats''.}"
+  ],
+  [
+   14498,
+   "\\cpara{The wheelchair objection is the serious one, the premise between ``shortest'' and ``best''. The post later forgets that kind of premise itself (see the note on likelihood ratios).}"
+  ],
+  [
+   14927,
+   "\\cpara{Continues the objection: Law thinkers cannot cope with a helicopter that breaks the terms their shortest path assumed.}"
+  ],
+  [
+   15103,
+   "\\cpara{Continues the objection: Law thinkers will never think of riding a bicycle around the maze.}"
+  ],
+  [
+   15272,
+   "\\cpara{The only real-world case in the post, and it is a failure of Law thinking. The post places it in the opponent's mouth, as a sentence that trails off, and never discusses it.}"
+  ],
+  [
+   15414,
+   "\\cfact{Misdescribed. The model usually blamed, David Li's Gaussian copula (2000), was a model of dependence between defaults; the paper is titled ``On Default Correlation: A Copula Function Approach''. Wikipedia's account of its failure is that it gives ``a poor representation of extreme events'', not that it assumed independence (``Gaussian copula function'' and ``David X. Li'').}"
+  ],
+  [
+   15566,
+   "\\cpara{The reply concedes every objection (``that happens some of the time'') and answers only the universal form the post itself wrote into them. How often Law thinking fails the way the mortgage model did is the question, and the post gives no estimate.}"
+  ],
+  [
+   15948,
+   "\\cpara{Grants that some Law thinkers do treat their general law as the only thing worth knowing and would benefit from the toolbox lecture.}"
+  ],
+  [
+   16205,
+   "\\cpara{Adds that some extreme toolbox thinkers would benefit from a lecture on thinking about unreachable ideals and how to approach them.}"
+  ],
+  [
+   16436,
+   "\\cpara{The thesis at last, 70 percent of the way through: both are ``metatools'', to be used ``in ways that depend on context and circumstance''. The post itself earlier labeled this resolution the toolbox one: ``being able to deploy both kinds of thinking, depending on context -- as a more Toolbox-inclined person might put it.'' It defeats the toolbox by adopting its answer one level up.}"
+  ],
+  [
+   16913,
+   "\\cpara{Lists the questions that matter (when to think in Law, how, for which problems) and answers none of them.}"
+  ],
+  [
+   17152,
+   "\\cpara{Anticipates the objection ``every Law has exceptions'', and ends by charging whoever said it with ``thinking in toolbox terms at a time when it wasn't useful''.}"
+  ],
+  [
+   17584,
+   "\\cpara{The post endorses the view Chapman's parenthesis described: rationalisms that ``insist there must be one, but that it is not currently knowable''. The post softens ``insist'' to ``suspect''. It confirms the description it set out to correct.}"
+  ],
+  [
+   18199,
+   "\\cpara{Adds that it can help to consider Laws you do not yet know, but calls this a more advanced tool with narrower uses.}"
+  ],
+  [
+   18553,
+   "\\cpara{The closing prescription is for the toolbox side only. After arguing that both camps misunderstand, the post ends with a remedy for one.}"
+  ],
+  [
+   18756,
+   "\\cpara{Drops the three-way distinction the post opened with. The ideal is now a plain descriptive truth. ``Once you define distance'' is exactly the premise at issue for thinking (see the note on the maze).}"
+  ],
+  [
+   18977,
+   "\\cpara{Separates the triangle inequality from the advice to take the shorter route: the advice depends on your goals and knowledge, while the inequality stays true regardless.}"
+  ],
+  [
+   19750,
+   "\\cpara{Uses the Carnot limit as a parallel: it is a fact of physics, it can point to ways to improve an engine, and it holds even when not useful to think about.}"
+  ],
+  [
+   20454,
+   "\\cpara{The central example of a ``law'' about reasoning, and it omits its premise.}"
+  ],
+  [
+   20853,
+   "\\clogic{Only when the expectation is taken under the same prior and likelihoods that the update uses. The Bayes rule is optimal relative to a prior (Wikipedia, ``Bayes estimator''). When the model is wrong, as in the post's own mortgage example, a different update can score higher. The post faulted Msr. Law for forgetting ``the extra premise'' between ``shortest'' and ``best''. Here it forgets the premise between ``optimal under the model'' and ``optimal''.}"
+  ],
+  [
+   21217,
+   "\\cpara{Contrasts two readings of the coherence theorems. The shallow one: incoherence is bad, so avoid it. The deeper one: each kind of incoherence amounts to a strategy that can be beaten, whatever tool you use.}"
+  ],
+  [
+   21730,
+   "\\clogic{A dominated strategy is a set of choices. Many statistical tools, the p-value among them, make no choice until someone attaches a decision rule. The post does not say how its ``universal generalization'' applies to a tool that makes no choices.}"
+  ],
+  [
+   21944,
+   "\\cpara{The concession that matters, in a subordinate clause near the end. For values (``a eudaimonic universe'') ``there isn't any deeper fact of nature''. Chapman's definition covered a criterion for ``thinking and acting''. Acting needs values. The post concedes that half without noticing. ``Almost always'' is a count the post does not make.}"
+  ],
+  [
+   22649,
+   "\\cpara{Allows that seeing ideals as plain facts is more advanced, so it is fine first to learn why Bayesian updating is an often unreachable ideal.}"
+  ]
+ ]
+}

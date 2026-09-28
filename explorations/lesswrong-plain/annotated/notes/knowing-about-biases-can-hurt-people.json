@@ -1,0 +1,76 @@
+{
+ "slug": "knowing-about-biases-can-hurt-people",
+ "header": "\\post{Knowing About Biases Can Hurt People}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/AdYdLP2sRqPMoe8fb/knowing-about-biases-can-hurt-people}\n",
+ "skeleton_sha": "7e8387fc266b4be61983012c42da134143afdb3ab89af076411a126528f3a9ec",
+ "post_sha": "57c126cfa7c561ee9a079e460fe12d2990804e371ed3797b2da794db01b6851e",
+ "edits": [
+  {
+   "at": 2804,
+   "del_len": 1,
+   "del_sha": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1",
+   "ins": "\\slash{}"
+  }
+ ],
+ "notes": [
+  [
+   158,
+   "\\cpara{An anecdote in which the author's mother is handed a weapon and then warned not to use it. The weapon is misdescribed. The post cites no source. The numbers match the best-known calibration result, Fischhoff, Slovic and Lichtenstein (1977): ``Only 73\\% of the answers assigned odds of 100:1 were correct.'' Their subjects were ``paid volunteers who responded to an ad in the University of Oregon student newspaper,'' answering general-knowledge questions. They were not experts. Some experts are well calibrated: Murphy and Winkler (1977) reported that weather forecasters' probability forecasts of rain and temperature were reliable. I cannot rule out that the author had another source in mind. As written, ``when an expert says they're 99\\% confident, it only happens about 70\\% of the time'' overstates a bias finding in the direction the post goes on to warn against, and it is the post's first sentence.}"
+  ],
+  [
+   619,
+   "\\cpara{Tells the mother's reply: she is delighted and plans to use the idea constantly.}"
+  ],
+  [
+   720,
+   "\\cpara{The post's only study. Taber and Lodge (\\textsc{American Journal of Political Science}, 2006) ran two experiments on students from introductory political science courses at Stony Brook University, with 126 and 136 participants, on affirmative action and gun control. The post calls all six predictions ``confirmed'' and gives no sample, size of effect or caveat.}"
+  ],
+  [
+   884,
+   "\\cpara{Lists the six findings: people favor, seek and defend views they already hold, balanced evidence drives them further apart, and stronger or better-informed partisans do this more.}"
+  ],
+  [
+   1485,
+   "\\cfact{Weaker than presented. Taber and Lodge themselves note that ``numerous attempts to replicate polarization using direct t1 and t2 measures of social and political attitudes have failed.'' Later, three large survey experiments by Guess and Coppock (\\textsc{British Journal of Political Science}, 2020) found ``no evidence of backlash, even under theoretically favorable conditions.''}"
+  ],
+  [
+   1808,
+   "\\clogic{This item carries the post's title, and it is about something else. ``Politically knowledgeable'' means knowing more about politics. It does not mean knowing about biases. The study says nothing about people who have learned the bias literature.}"
+  ],
+  [
+   1838,
+   "\\cpara{The thesis, stated as a broad conditional: if you are irrational, more knowledge can hurt. The second sentence is I. J. Good's theorem (1967), not named, and it holds for information that is free.}"
+  ],
+  [
+   2100,
+   "\\cpara{Evidence by testimony: ``I've seen.'' No case is described here. Stanovich's term is borrowed and redirected. He defined dysrationalia as ``the inability to think and behave rationally despite adequate intelligence'' (Wikipedia, ``Dysrationalia''). The definition names no mechanism of argument. ``Too much ready ammunition'' is the post's mechanism, attached to his term. ``One of the primary ways'' is a ranking with nothing behind it.}"
+  ],
+  [
+   2443,
+   "\\cpara{A tension. The post asks the reader to think of other people, clever ones, who argue too well. That is close to the use the post warns against: a reader is given a concept (``too sophisticated as arguers'') and invited to apply it to people they already have in mind, though here to their skill rather than to their arguments. ``Right?'' assumes the answer. ``High g-factor'' is psychometric jargon for ``clever.''}"
+  ],
+  [
+   2754,
+   "\\cpara{An unnamed person, a paraphrased quotation, and a verdict (``complex, error-prone, highly questionable'') on an extrapolation the reader never sees.}"
+  ],
+  [
+   3362,
+   "\\cpara{Tells how a man, taught about sophisticated arguers, then used the label against the author without naming any flaw: a rebuttal that fits anything.}"
+  ],
+  [
+   3825,
+   "\\cpara{Warns that even the idea of a sophisticated arguer can do harm if it springs to mind whenever a clever person disagrees.}"
+  ],
+  [
+   4018,
+   "\\cpara{The cure is more of the disease. The previous paragraph says the notion of a ``sophisticated arguer'' can be deadly. The talk spent thirty minutes on ``sophisticated argument, motivated skepticism, and other attitude effects.'' These are more names for other people's errors, the same kind of ammunition. No evidence is given that the audience argued better afterward, or even that they applied the warnings to themselves.}"
+  ],
+  [
+   4507,
+   "\\cpara{Dismisses the field in one sentence: ``The literature on bias is mostly cognitive psychology for cognitive psychology's sake.'' No support is given, in a post whose only evidence comes from that literature.}"
+  ],
+  [
+   4922,
+   "\\cpara{The rule is about the order of topics, and the anecdotes have just shown listeners who heard the warning and used it as a weapon. Order does not address that, and the post offers no way to find out whether harm was done.}"
+  ]
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "slug": "your-strength-as-a-rationalist",
+ "header": "\\post{Your Strength as a Rationalist}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/5JDkW4MYXit2CquLs/your-strength-as-a-rationalist}\n",
+ "skeleton_sha": "eacba4f78357652ef34d477a931d44fcb20bd4956b507948fb45efd9593a29c2",
+ "post_sha": "ed49e7aa12b703be6d3656758f7d7aa58f5a2e8036cbaa43c9b3f6050b2b2631",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Introduces a story from an online chatroom, and warns that memory may have blurred it.}"
+  ],
+  [
+   333,
+   "\\cpara{Tells the story: a man's friend has worsening chest pains after paramedics called them nothing and left. What should he do?}"
+  ],
+  [
+   684,
+   "\\cpara{The model the author trusted is built from half-remembered reading, with no source. It is also wrong on the point that matters. A competent adult may refuse ambulance transport, and paramedics generally cannot take them against their will (Wikipedia, ``Refusal of medical assistance'': ``In general, ambulance squads are unable to contravene the wishes of a mentally competent patient,'' with refusal rates ``as high as 26\\%'' reported in some US systems). A patient told by paramedics that it was nothing, who then stays home, is an ordinary event. The story the author found impossible was not.}"
+  ],
+  [
+   1109,
+   "\\cfact{Close enough, for emergencies. The federal law, EMTALA (1986), requires hospitals to provide a ``medical screening examination'' to anyone who asks and ``stabilizing treatment'' for emergency conditions, regardless of ability to pay (CMS summary). It says nothing about ambulances, which is where the model goes wrong (see the next note).}"
+  ],
+  [
+   1282,
+   "\\clogic{The italic ``Anyone'' is the error. The rule the author held had no place for a patient who declines.}"
+  ],
+  [
+   1296,
+   "\\cpara{The paragraph that matters most is the one the essay treats least seriously. A stranger's friend has chest pains that ``are getting worse,'' and the author tells him it ``must really be nothing.'' If the story had been true, that advice could have delayed care for a heart attack. The essay counts this as a lapse in modeling and an embarrassment. It never mentions that the advice itself was dangerous, or that the right answer to ``What should his friend do?'' was to call again.}"
+  ],
+  [
+   1908,
+   "\\cpara{Admits the explanation fit the story, though it felt a little forced.}"
+  ],
+  [
+   2031,
+   "\\cpara{The resolution: the friend made it up. The essay takes this as proof that the confusion was a signal of fiction. One case, resolved by the word of the same unreliable chain (a stranger reporting on a friend), cannot show that. If the friend had in fact been reassured and declined transport, the author's confusion would have been identical.}"
+  ],
+  [
+   2200,
+   "\\cpara{The contrast is looser than it sounds, though the author hedges it (``perhaps''). As far as the post says, the model did not come from a published journal article either. It came from something the author remembered reading about homeless people in New York and from visits to a doctor: anecdote against anecdote.}"
+  ],
+  [
+   2464,
+   "\\clogic{Stated as settled. The cited study (Gilbert, Tafarodi and Malone, 1993) found false information accepted when subjects were under cognitive load or time pressure. It had been challenged two years before this essay: Hasson, Simmons and Todorov, ``Believe It or Not'' (\\textsc{Psychological Science}, 2005), concluded that ``comprehending a statement may not require believing it.'' The reader is not told there is a dispute.}"
+  ],
+  [
+   2478,
+   "\\cpara{The principle fits, though the essay leaves the link implicit. By forcing the model to explain the anomaly (``by dint of mighty straining''), the author made it a model that permits anything, which is what the principle warns against. The principle is Karl Popper's, uncredited.}"
+  ],
+  [
+   2857,
+   "\\cpara{The thesis, in the ninth paragraph. As a rule it cannot be used. You do not know in advance which story is fiction; that is the problem. Real anomalies also produce confusion, and a person trained to read confusion as a sign of fiction will dismiss true reports that clash with a wrong model, as this author's model was wrong. The second sentence is true and standard. It does not follow from the first.}"
+  ],
+  [
+   3041,
+   "\\cpara{Admits the author had enough information and even noticed the problem, but ignored the confusion, which was a clue.}"
+  ],
+  [
+   3334,
+   "\\cpara{The practical advice: attend to the feeling that a fit is forced. It is the only advice, and no method comes with it: no way to tell a forced fit from an unfamiliar truth, and no check on the feeling itself. ``A design flaw in human cognition'' asserts a fact about the mind with nothing behind it.}"
+  ],
+  [
+   3723,
+   "\\cpara{The neon sign. In the author's own case both halves were true: the story was false, and so was the model (see the note on refusal of transport). The sign names both; the essay's lesson attends only to the second, and the feeling of confusion does not say which half is true.}"
+  ],
+  [
+   3796,
+   "\\cpara{A political claim in a footnote with no source: that hospitals are closing emergency rooms because of unpaid care, and that economists predicted it. It has no bearing on the argument.}"
+  ],
+  [
+   4014,
+   "\\cpara{``McCluskey (2007)'' is formatted like a journal citation. It is a post on the group blog \\textsc{Overcoming Bias}, where the author was then writing, dated 10 August 2007, the day before the essay, summarizing a book on lie detection. The finding it reports concerns judging whether a speaker is lying, not the general claim in the text that ``we believe instinctively.''}"
+  ],
+  [
+   4457,
+   "\\cpara{Quotes a second source, Gilbert and colleagues (1993), whose experiments support the idea that understanding a statement at first includes believing it.}"
+  ]
+ ]
+}

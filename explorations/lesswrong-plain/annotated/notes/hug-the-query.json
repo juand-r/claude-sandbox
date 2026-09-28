@@ -1,0 +1,65 @@
+{
+ "slug": "hug-the-query",
+ "header": "\\post{Hug the Query}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/2jp98zdLo898qExrr/hug-the-query}\n",
+ "skeleton_sha": "ac54e75ee72907151134ad1590b175e62a0b8c8fe106e602a7dec3bbbfd0dda5",
+ "post_sha": "cb01a57a2a4be163d742bf5afddc8b03090a92a952114ebd654444b2567ab1df",
+ "edits": [],
+ "notes": [
+  [
+   112,
+   "\\cpara{The thesis, stated in the first sentence, where it belongs. But it depends on ``screens off,'' a technical term from probability that the post never defines. A reader who does not already know it cannot follow the thesis. The rule this breaks, start from what the reader knows, is the subject of the author's ``Expecting Short Inferential Distances,'' posted two months earlier.}"
+  ],
+  [
+   347,
+   "\\cpara{The post's Kelvin is hypothetical (``say, Lord Kelvin''). For background, the documented Kelvin remark on flight that I could find is general: a letter of 1896 saying he had ``not the smallest molecule of faith in aerial navigation other than ballooning.'' The line usually quoted, ``heavier-than-air flying machines are impossible,'' circulates without citation to any primary source.}"
+  ],
+  [
+   624,
+   "\\cpara{The middle step of the post's ranking of evidence, and the history undercuts it. The Wrights' calculations were the thing that failed. Their 1901 glider produced ``only about one-third the lift calculated,'' because the calculations used the Smeaton coefficient, a value ``in use for over 100 years'' that was wrong. A reader in 1901 who checked those calculations, and could follow them, would have been checking arithmetic built on a wrong constant. Calculations carry the authority of their inputs. The Wrights fixed theirs with a wind tunnel, that is, by experiment. The post's ranking puts calculations above authority as though they were independent of it.}"
+  ],
+  [
+   873,
+   "\\cpara{The top step. Once the plane flies, the question ``will it fly?'' is answered. The hard cases are the ones before the flight, which the post handles in its penultimate paragraph with a feeling.}"
+  ],
+  [
+   1040,
+   "\\cpara{The post's one piece of theory, and it overstates what the theorem gives. The first sentence claims that closer evidence is more powerful. The second states the theorem, which is narrower: a closer node carries at least as much information only when it screens off the distant one. Nothing in the first sentence requires screening off, and in the Kelvin case it does not hold (see the note).}"
+  ],
+  [
+   1248,
+   "\\clogic{Not true in general. A close observation made badly can tell you less than a distant one made well. What you observe is never the node itself but your reading of it: your check of a calculation you may have followed wrongly. The theorem in the next sentence says nothing about noisy readings.}"
+  ],
+  [
+   1419,
+   "\\cfact{Uncredited and unnamed. This is the data-processing inequality of information theory, which holds when the variables form a Markov chain: the distant variable depends on the question only through the closer one.}"
+  ],
+  [
+   1433,
+   "\\cpara{Quotes Jerry Cleaver: people fail by overlooking the basics, not by missing advanced techniques.}"
+  ],
+  [
+   1718,
+   "\\cpara{The one new idea in the post: judging the speaker's rationality is also an argument from authority, one level removed. It is stated in three short sentences and not developed.}"
+  ],
+  [
+   2035,
+   "\\cpara{Warns that learning more biases can hurt if it replaces direct evidence: accusing someone of bias cannot settle a factual question.}"
+  ],
+  [
+   2446,
+   "\\cpara{The paragraph that matters, and the post gives it four sentences. It concedes that in many cases the reader cannot check (``a sadly large number of times''). That describes the usual position of a non-expert on medicine, climate or economics. For all of them the post offers no method, only ``a hollow feeling in your heart.'' The principle applies where it is least needed.}"
+  ],
+  [
+   2670,
+   "\\clogic{The footnote sends the reader to the author's own post defending a claim that no one could check: that diamondoid nanomachines are possible. That post says the author's ``sympathies, I confess, are with Drexler,'' in part because the same objection could be made against ``my own field of Artificial Intelligence.'' Nanotechnology is a natural example of a claim that cannot yet be tested, which is the point of the sentence the footnote is attached to; it is also a cause the author supports.}"
+  ],
+  [
+   2993,
+   "\\clogic{A feeling is not a procedure. The reader is not told how to judge a speaker's rationality, how much weight to give it, or what would change the judgment.}"
+  ],
+  [
+   3007,
+   "\\cpara{The conclusion repeats the first sentence as a slogan and three verbs (``dance,'' ``press,'' ``hug''). It adds nothing, and it leaves out the concession of the previous paragraph, so the reader carries away the rule without the exception.}"
+  ]
+ ]
+}

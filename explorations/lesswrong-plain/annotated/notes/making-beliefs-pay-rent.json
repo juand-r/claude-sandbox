@@ -1,0 +1,98 @@
+{
+ "slug": "making-beliefs-pay-rent",
+ "header": "\\post{Making Beliefs Pay Rent (in Anticipated Experiences)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/a7n8GdKiAZRX86T5A/making-beliefs-pay-rent-in-anticipated-experiences}\n",
+ "skeleton_sha": "e95437d3f9b3d2c5667a3d825ffdbdc7315a8deb0b8397a76cd4132c6c9d6e70",
+ "post_sha": "f5a99dc8bb18c0859764736b43b3131db0c90d403fd20a2c5ffbc6d465366c38",
+ "edits": [
+  {
+   "at": 3240,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6572,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   234,
+   "\\cpara{Quotes the old riddle of the unheard falling tree, with one side citing air vibrations and the other the absence of hearing.}"
+  ],
+  [
+   468,
+   "\\cpara{This is the thesis, and it is announced rather than stated. It names a skill, spotting signs that you have a map, but does not say what the signs are. The actual test (what does the belief lead you to expect?) arrives only in the paragraph on empiricism, three-quarters of the way through. A plain thesis here would have been: a belief is real only if it tells you what to expect, and here is how to check.}"
+  ],
+  [
+   752,
+   "\\cpara{Asks whether the two arguers would expect anything different: where the tree lies, what a recorder plays back, what a brain scan shows.}"
+  ],
+  [
+   1260,
+   "\\cpara{The conclusion of the tree example, with a hidden jump: ``no different expectations'' is taken to mean ``no real disagreement.'' They do disagree, about the meaning of a word. The essay never separates disputes about words from beliefs with no content, and the confusion enters here.}"
+  ],
+  [
+   1596,
+   "\\cpara{The essay heads off the obvious overcorrection, that only sense data count, and then leaves the hole it has just opened unfilled. It shows that beliefs about unseen things can be legitimate, but not how to tell a legitimate one from a floating one. The next paragraphs give one example, not a criterion.}"
+  ],
+  [
+   2295,
+   "\\cpara{This paragraph and the next are one example split in two. Look at what it shows: the prediction comes only from two beliefs together, neither of which predicts anything alone. That is Quine's point against testing beliefs one at a time. The essay makes it here, and its rule at the end does not say how it applies to beliefs that predict only together.}"
+  ],
+  [
+   2573,
+   "\\cpara{Continues the example: predicting the crash needs worded beliefs about gravity and height, which together yield a sensory prediction, so predictions need beliefs that are not predictions.}"
+  ],
+  [
+   3341,
+   "\\cpara{Claims that the human ability to model unseen things is a great strength and also a weakness, since people believe in unreal things.}"
+  ],
+  [
+   3593,
+   "\\cpara{Introduces the failure case. The claim is general, that brains build causes disconnected from experience, and the evidence is one historical example that is shaky (see notes). The real criterion finally appears in the last clause: a link drawn after the fact, ``rather than constraining the experience in advance.'' That criterion deserved to be a topic sentence. Here it is buried at the end of a long sentence.}"
+  ],
+  [
+   3823,
+   "\\cfact{Phlogiston was a theory of 17th- and 18th-century chemists (Becher, Stahl), overturned by Lavoisier. Calling them alchemists makes the example easier to mock than it should be.}"
+  ],
+  [
+   4189,
+   "\\cpara{Gives a made-up example: a professor labels a writer with terms defined only by each other, and asks what that predicts about his books.}"
+  ],
+  [
+   4705,
+   "\\clogic{The example is a parody of literary criticism, and parody shows only that empty terms can exist. Real critical terms, such as ``unreliable narrator,'' do tell you what to expect in a book. The essay gives no real floating belief to set beside the invented one. The beliefs that do pay rent came from physics: gravity at 9.8 meters per second per second, a building 120 meters tall.}"
+  ],
+  [
+   4719,
+   "\\cpara{Answers that it predicts nothing; the terms connect only to each other, and are kept just to repeat on a quiz.}"
+  ],
+  [
+   5146,
+   "\\cpara{The key term, ``floating beliefs,'' is named here, two-thirds of the way through. The paragraph then spends its second sentence on an unsupported claim about animals. The term needed a clean definition and a contrast case. It got a flourish.}"
+  ],
+  [
+   5418,
+   "\\cpara{Defines empiricism as constantly asking what experiences a belief predicts or rules out, and applies the question to phlogiston, the writer, and the falling tree.}"
+  ],
+  [
+   6012,
+   "\\cpara{The essay's strongest idea, asking what a belief forbids, gets one paragraph and one example: élan vital, a theory nobody holds. The reader never sees the test applied to a belief anyone holds today, let alone one the reader holds. A test shown only on dead theories costs the reader nothing.}"
+  ],
+  [
+   6084,
+   "\\clogic{This is Popper's falsifiability criterion, uncredited. Naming it would tell the reader there is a long debate here. The standard objection is Quine's: beliefs meet experience as a group, not one at a time. The post half-concedes this with the floor and the atoms, then drops it.}"
+  ],
+  [
+   6416,
+   "\\cpara{Practical advice that returns to the tree. It names two diagnoses, arguing about labels (the tree) and floating beliefs (Wilkinsen), and offers one test for both.}"
+  ],
+  [
+   6849,
+   "\\cpara{The conclusion widens the claim to ``every question of belief,'' which the body never argued for. Read strictly, that would rule out mathematics and ethics, whose claims do not predict sense experience.}"
+  ]
+ ]
+}

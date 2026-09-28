@@ -1,0 +1,57 @@
+{
+ "slug": "the-martial-art-of-rationality",
+ "header": "\\post{The Martial Art of Rationality}{Eliezer Yudkowsky}{2006}{https://www.lesswrong.com/posts/teaxCFgtmCQ3E9fy8/the-martial-art-of-rationality}\n",
+ "skeleton_sha": "7bae9cc3e65fcddaa24d11c168f24b1ae3761ac111d1c413d8f97a84d56e66fb",
+ "post_sha": "774b1ee0be5f9bb6273b3edf6e156af2f7ebb5e3d8cce499e90249b84e7c0882",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{The essay opens with its metaphor and never argues for it. The first move is to remove the obvious objection to the analogy: if athletic people do better at martial arts, perhaps able people do better at reasoning, and the ``art'' is mostly talent. The objection is dismissed with a guess (``that may be a matter of enjoyment as much as anything else'').}"
+  ],
+  [
+   671,
+   "\\cpara{Argues by analogy that anyone with a normal brain may be able to learn to use it well, since rationality trains shared machinery and corrects its common errors.}"
+  ],
+  [
+   1143,
+   "\\cpara{An evolutionary story offered as an explanation, with no evidence. The essay gives no source for reflection being ``a much more recent innovation'' than muscle control, and ``We shouldn't be surprised, then'' draws a conclusion from it as if it had been shown. The last sentence is a flourish that changes the subject from individuals to the species.}"
+  ],
+  [
+   1612,
+   "\\cpara{The essay's question assumes a gap that did not exist. Reasoning has been taught for as long as there have been schools (logic, mathematics, rhetoric), and statistics for about a century. In 1980 the California State University system required formal instruction in critical thinking on all its campuses, about 300,000 students, by Executive Order 338 (Lazere, 1987, ERIC ED284275). The essay does not mention any of this. The question works only for a reader who does not know it.}"
+  ],
+  [
+   1772,
+   "\\cpara{The most important admission in the essay, and it is treated as a side remark (``One reason, perhaps''). If skill in rationality cannot be verified, the analogy fails at the point that matters. A martial art without a board to break, a sparring partner, or a visible fist is a set of claims about invisible progress. The essay never returns to the problem. It proposes the dojo anyway.}"
+  ],
+  [
+   2166,
+   "\\clogic{The teacher corrects the student by showing a fist. The essay gives no counterpart for thought: nothing a teacher of reasoning could hold up for a student to copy. That is the gap the analogy needed to close.}"
+  ],
+  [
+   2180,
+   "\\cpara{Two sentences, the second asserted with no support. Techniques of reasoning have also been ``refined and elaborated over generations'': that is what the history of logic and mathematics is. The essay compares martial arts with nothing and finds the nothing lacking.}"
+  ],
+  [
+   2377,
+   "\\cpara{A list of fields offered as a new foundation. Evolutionary and social psychology are named with no finding from either; the one finding the essay names, ``an insensitivity to scope'' (two paragraphs earlier), comes from heuristics and biases. Social psychology later had a replication problem: when 100 studies from social and cognitive psychology journals were repeated in 2015, 36 percent of the replications had statistically significant results (Open Science Collaboration, \\textsc{Science}). The paragraph ends by announcing that humanity ``may finally be ready'' to found a discipline, which the essay then proposes.}"
+  ],
+  [
+   3490,
+   "\\cpara{Explains that the author learned rationality through work on artificial intelligence, and that training a human mind is harder in one way: we must work around built-in flaws we cannot rewire.}"
+  ],
+  [
+   4622,
+   "\\cpara{The essay states its own strongest objection: building a practice from abstract science is like inventing a martial art from physics and anatomy. It calls this ``awkward.'' The objection is correct, and the next paragraph's answer is thin.}"
+  ],
+  [
+   4853,
+   "\\cpara{The answer to the objection is a claim about introspection that the evidence available in 2006 did not support. Nisbett and Wilson's ``Telling More Than We Can Know'' (1977) argued that people's reports on their own mental processes are often wrong. Johansson and colleagues (\\textsc{Science}, 2005) found that people ``fail to notice mismatches between their intended choice and the outcome they are presented with, while nevertheless offering introspectively derived reasons'' for the choice (as summarized in their 2006 follow-up). The essay concedes that the inner eye ``sees blurrily, with systematic distortions,'' but it still needs introspection to be a usable instrument, and it cites nothing.}"
+  ],
+  [
+   5211,
+   "\\cpara{The ending is three sentences of ``must'': move our own limbs, connect theory to practice, see what the science means. The practice is left to later posts.}"
+  ]
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "slug": "politics-is-the-mind-killer",
+ "header": "\\post{Politics is the Mind-Killer}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/9weLK2AJ9JEt2Tt8f/politics-is-the-mind-killer}\n",
+ "skeleton_sha": "336a29091c040c12d091310be9ed04972f63ff96035bb752b58248f4f0610937",
+ "post_sha": "640d3326fb261b4b0113eaf7937654f1c3df6099c6d77590c35f506bb2334847",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{Opens with a causal story and calls it obvious. ``So obvious as to be worth belaboring'' is followed by no belaboring: three sentences, no evidence that ancestral arguments got people killed, and none that today's arguments run on that machinery.}"
+  ],
+  [
+   718,
+   "\\cpara{The actual advice, and the only part of the essay that is argued at all. It carries two escape clauses: ``if you can possibly avoid it'' and ``unless all the discussants are already rational.'' The second undoes the rule, because any group that wants to discuss politics can count itself rational.}"
+  ],
+  [
+   1219,
+   "\\cpara{Three claims, none supported: politics is war, arguments are soldiers, and scientists turn into ``slogan-chanting zombies.'' The paragraph describes other people's tribalism in the voice of someone outside it.}"
+  ],
+  [
+   1839,
+   "\\cpara{The example is misstated. With ``All Quakers are pacifists'' and ``All Republicans are not pacifists,'' the premises contradict each other as soon as Nixon belongs to both classes. That is a contradiction in ordinary logic, not a problem in nonmonotonic reasoning. The standard version uses defaults: ``usually, Quakers are pacifist; usually, Republicans are not pacifist'' (Wikipedia, ``Nixon diamond''). The essay's version removes the feature the example exists to illustrate.}"
+  ],
+  [
+   2087,
+   "\\cpara{Accuses an unnamed author of choosing the example to make Republicans feel unwelcome. No author is named, and none is identified: according to Wikipedia, the first version, by Reiter and Criscuolo (1981), used a man named John. The plain reason for using Nixon, that he was a well-known real person who was both a Quaker and a Republican, is not considered. The questions are rhetorical, and the next paragraph supplies the answer without evidence.}"
+  ],
+  [
+   2422,
+   "\\cpara{Attributes a motive, hedged with ``probably'' (``couldn't resist getting in a good, solid dig''), to a person the essay cannot name. The essay does to the example's author what it tells readers not to do: it takes a dig at an imagined opponent, and the dig is about motives.}"
+  ],
+  [
+   2830,
+   "\\cpara{The advice at last, and its stated reason is the community's comfort, not accuracy (see the Response). ``Spiritual growth of the community'' is the goal, and it is never defined.}"
+  ]
+ ]
+}

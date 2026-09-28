@@ -1,0 +1,73 @@
+{
+ "slug": "rationalization",
+ "header": "\\post{Rationalization}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/SFZoEBpLo9frSJGkc/rationalization}\n",
+ "skeleton_sha": "34feb90b68ac01671ea258c00cce63aafdab93577ec2b7a417659c6eff806154",
+ "post_sha": "48c8b24cf4f3fb0142c706874da411dfe906eacd76dad64dc78b40e010595634",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{A recap of ``The Bottom Line,'' posted two days earlier (28 September 2007). It restates the two procedures and does not mention the qualification posted in between: ``What Evidence Filtered Evidence?'' (29 September 2007) says ``Each statement that the clever arguer makes is valid evidence.'' This post, one day later, sorts the two procedures into rationality and its opposite, with nothing between them.}"
+  ],
+  [
+   714,
+   "\\cpara{A definition by fiat, and everything after depends on it. Rationality is equated with one procedure, evidence first and conclusion after, and no argument is given for the equation.}"
+  ],
+  [
+   825,
+   "\\cpara{The post's first argument is about a word, and it gets the word wrong. Two of its twelve paragraphs, and part of a third, go to vocabulary.}"
+  ],
+  [
+   956,
+   "\\cfact{False as a claim about English. The suffix ``-ize'' means ``to make'': to modernize something is to make it modern, which presumes it was not. Merriam-Webster's first sense of ``rationalize'' is ``to bring into accord with reason or cause something to seem reasonable,'' and one subsense is ``to attribute (one's actions) to rational and creditable motives without analysis of true and especially unconscious motives.'' Making something seem reasonable that is not is the process this post describes. The word names it exactly.}"
+  ],
+  [
+   1132,
+   "\\cpara{Contrasts two procedures: start from the evidence and work forward to a probable conclusion, or start from the conclusion and work backward to pick evidence that seems to support it.}"
+  ],
+  [
+   1673,
+   "\\cpara{Ridicule in place of history. The post never asks who chose the word, or why. Etymonline dates the psychological sense of ``rationalization'' to ``by 1908,'' usually credited to Ernest Jones's paper ``Rationalization in Every-Day Life.'' The word was chosen because it means ``make seem rational'' (see the note two paragraphs up), and the ``fool'' used it correctly.}"
+  ],
+  [
+   1965,
+   "\\cpara{The argument turns on a false equation: rationality changes beliefs, rationalization fixes them in place. An honest check often ends where it began, and then it too leaves the belief in place. What separates inquiry from rationalization is whether the belief could have moved, not whether it did. The paragraph states the second test and needs the first. It also proposes a third name, ``anti-rationality,'' in a paragraph that was meant to be about beliefs.}"
+  ],
+  [
+   2528,
+   "\\cpara{Describes rationality as a forward process: the inquirer gathers and weighs evidence first, and is curious because the answer is not yet known.}"
+  ],
+  [
+   3201,
+   "\\clogic{The theorem is correct and does no work here. It says you cannot expect in advance which way honest evidence will move you. The paragraph needed only the plain fact that the inquirer did not know the answer yet.}"
+  ],
+  [
+   3215,
+   "\\cpara{Describes rationalization as a backward process: the conclusion is fixed first, and the only open question is which arguments to list in its support.}"
+  ],
+  [
+   3553,
+   "\\cpara{The post's one substantive paragraph, and it argues against the post. It names a rival school, puts words in its mouth, and then concedes the rival's case in the last sentence.}"
+  ],
+  [
+   3684,
+   "\\clogic{``Traditional Rationality'' is capitalized like a school, but no member is named and no text is quoted. The approving line ``This pride is the engine that drives Science forward'' is spoken by an imagined person. The best-known twentieth-century account of scientific method says the opposite. Karl Popper, \\textsc{Conjectures and Refutations} (1963): ``Every genuine test of a theory is an attempt to falsify it, or to refute it,'' and ``Confirmations should count only if they are the result of risky predictions.'' The author's own ``An Intuitive Explanation of Bayes's Theorem'' says that ``the most popular philosophy of science was probably Karl Popper's falsificationism.'' The tradition the post claims to improve on already contains the post's remedy, and states it more exactly.}"
+  ],
+  [
+   4140,
+   "\\clogic{Here the post grants the case for the practice it condemns: biased advocates on opposite sides check each other, and that works better than waiting for an unbiased person. The next paragraph does not answer this.}"
+  ],
+  [
+   4154,
+   "\\cpara{A non sequitur. The defense in the previous paragraph was that the practice works, not that everyone does it. The post rebuts an argument from popularity that nobody made and leaves the argument from results standing. The remedy it then prescribes, a test whose outcome is unknown, is sound.}"
+  ],
+  [
+   4455,
+   "\\cpara{A claim about feelings, hedged with ``probably'' but unsupported. People are ignorant of many things they do not care about, and curious people rationalize.}"
+  ],
+  [
+   4681,
+   "\\cpara{The reader is told to make sure the flow ``isn't flowing backwards'' and given no way to check. The one usable instruction in the post, test your hypothesis, is not repeated here, and the image of a felt ``flow'' points away from it, toward introspection.}"
+  ]
+ ]
+}

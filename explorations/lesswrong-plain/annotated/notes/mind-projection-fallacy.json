@@ -1,0 +1,53 @@
+{
+ "slug": "mind-projection-fallacy",
+ "header": "\\post{Mind Projection Fallacy}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ZTRiSNmeGQK8AkdN2/mind-projection-fallacy}\n",
+ "skeleton_sha": "3f3ea83c6d49504c8945813acdfa0f5b92f742f5f1924582122aab6da1212798",
+ "post_sha": "ed2d9a066f80479a25f7341725db54224763b7085ff2c036f2ccae30be5c1755",
+ "edits": [],
+ "notes": [
+  [
+   460,
+   "\\cpara{Asks whether an alien with a different evolutionary history would desire a human woman, and answers that it seems very unlikely.}"
+  ],
+  [
+   686,
+   "\\cpara{The diagnosis, and it is a guess (``Probably'') about the minds of unnamed illustrators. The post does not consider the obvious alternative. A cover is there to sell the magazine, so the woman in the torn dress may be there for the buyer, not for the monster. On that reading the artist made no error about aliens at all. The post's one example has an explanation that needs no fallacy, and the post does not rule it out.}"
+  ],
+  [
+   1106,
+   "\\cpara{Says the artists thought about the torn dress, which makes the woman sexier, and not about the alien's history.}"
+  ],
+  [
+   1334,
+   "\\cpara{A claim about human cognition (``we instinctively represent'') resting on nothing but the covers. ``Apparently'' concedes that it is an inference, and the inference is from pictures made by a few people for sale to a general conclusion about everyone.}"
+  ],
+  [
+   1488,
+   "\\cpara{The paragraph hedges its own model heavily: ``that data structure, or something metaphorically similar to it.'' The hedge leaves little that the model rules out. The link sends the reader to another post for the missing argument.}"
+  ],
+  [
+   1876,
+   "\\cpara{Introduces E. T. Jaynes's term, the Mind Projection Fallacy, for treating features of your own mind as features of the world; Jaynes applied it mainly to probabilities.}"
+  ],
+  [
+   2323,
+   "\\cpara{The generalization: four cases in a list, no argument for any of them, trailing off in an ellipsis. One is the author's own earlier post and one is this post's own example. The two philosophers are the wrong examples, and one of them is the source of the idea (see the notes).}"
+  ],
+  [
+   2624,
+   "\\cfact{No quotation is given, and ``flat'' is not Kant's word. Kant's thesis was that space belongs to the mind: ``Space represents no property at all of any things in themselves'' (\\textsc{Critique of Pure Reason}, A26/B42). He held that space is a form of our intuition. Kant's error, if it is one, was to hold that all space we can experience must be Euclidean. A defender can call that projection, a fact about human cognition taken as a necessary truth about space, which relativity showed need not be flat. The post does not make that argument; it gives the charge in a clause.}"
+  ],
+  [
+   2814,
+   "\\cfact{Hume's sentence (\\textsc{Enquiry}, section 4) is about ``Propositions'' of the kind he calls relations of ideas, such as geometry and arithmetic; ``a priori'' is a fair gloss. The sentence says these truths do not depend on what exists, so it attributes nothing to the world. The post does not say where the projection is.}"
+  ],
+  [
+   2814,
+   "\\clogic{Hume is the philosopher of projection. In the \\textsc{Treatise} (1.3.14) he wrote that ``the mind has a great propensity to spread itself on external objects,'' and used this to explain why we think necessity and power lie in objects rather than in our minds. The post lists as an offender the writer who first described the error, and does not mention that he did.}"
+  ],
+  [
+   2828,
+   "\\cpara{An aside on two science fiction stories that play with human-alien attraction: a man with a male alien plant, and aliens' movie ad of a human carrying off an insect.}"
+  ]
+ ]
+}

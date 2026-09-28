@@ -1,0 +1,458 @@
+{
+ "slug": "dissolving-the-question",
+ "header": "\\post{Dissolving the Question}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/Mc6QcrsbH5NRXbCRX/dissolving-the-question}\n",
+ "skeleton_sha": "e97099c522225373f0b3847419c5de30851b1e8654c10d655ba0238aa520c0d9",
+ "post_sha": "96df45bf97ab1e379ff3d79e3f45042da4fbb69e6f706586e7b453b22eb63b85",
+ "edits": [
+  {
+   "at": 296,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 355,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 588,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 791,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1116,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1477,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1589,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1724,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1776,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1962,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2155,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2346,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2425,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2552,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2647,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2771,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2888,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3260,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3453,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3802,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4149,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4300,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4658,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4808,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4835,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5096,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5230,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5759,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6041,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6151,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6482,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": ""
+  },
+  {
+   "at": 6484,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": "  "
+  },
+  {
+   "at": 6820,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 7317,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 7447,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 7589,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8026,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8099,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8195,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8310,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8528,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8570,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 8705,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 9059,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 9133,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 10164,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 10300,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 10450,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 10597,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 11283,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 11682,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 11734,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   132,
+   "\\cpara{Recalls the old riddle about a tree falling unheard in a forest.}"
+  ],
+  [
+   259,
+   "\\cpara{Says the earlier posts did not answer the riddle but took apart how the mind handles words, hoping to leave no question behind.}"
+  ],
+  [
+   686,
+   "\\cpara{The opening charge against philosophy, and it is a caricature: arguments marshalled and weighed, then published ``in a prestigious journal of philosophy,'' a phrase repeated two paragraphs later. No philosopher is named anywhere in the post, and nothing a philosopher wrote is quoted.}"
+  ],
+  [
+   906,
+   "\\cpara{Describes the usual philosophical approach: weigh arguments for and against free will, publish, and declare yes or no.}"
+  ],
+  [
+   1206,
+   "\\cpara{Describes a better approach: suspect a dispute over word meanings, define ``free will'' precisely, then ask the yes-or-no question again.}"
+  ],
+  [
+   1616,
+   "\\cpara{Describes a still better approach: argue that ``free will'' is self-contradictory or meaningless because it has no testable consequences.}"
+  ],
+  [
+   2067,
+   "\\cpara{Warns that proving a question confused or meaningless may not remove the feeling of confusion.}"
+  ],
+  [
+   2254,
+   "\\cpara{The thesis: the belief in free will is itself a psychological fact that needs a cognitive explanation. This is the post's one substantial idea. It was not new in 2008. Daniel Wegner's \\textsc{The Illusion of Conscious Will} (MIT Press, 2002) is a book-length cognitive account of how the feeling of willing an action arises: a thought comes just before the action, fits it, and has no rival cause in view. The post does not mention it, or any work in the field it says the question belongs to.}"
+  ],
+  [
+   2697,
+   "\\cpara{Argues that rejecting the idea of free will does not explain the psychological fact that people believe they have it.}"
+  ],
+  [
+   3050,
+   "\\cpara{Concedes that the mocked verdict was right (``That happens to be correct in this particular case''). The complaint against the ``Traditional Rationalist'' is therefore not that the answer is wrong but that it is incomplete, and the scorn of the earlier paragraphs was aimed at a position the post now grants.}"
+  ],
+  [
+   3626,
+   "\\cpara{Explains that mistakes reveal more about how the mind works than correct answers, and asks what kind of mind argues about the unheard tree.}"
+  ],
+  [
+   4030,
+   "\\cpara{A slogan that the paragraph does not unpack. ``The cognitive algorithms we use, are the way the world feels'' is either a claim about the identity of experience and computation, which is a contested philosophical thesis, or a figure of speech. The post does not say which.}"
+  ],
+  [
+   4375,
+   "\\cpara{The mechanism on which the whole post rests, and the post withdraws it in a parenthesis: ``Metaphorically speaking.'' So the ``dangling unit'' is offered as a metaphor, not as a finding about brains. No evidence is offered that brains contain anything like it. Hold this against the standard the post sets later: an explanation must go ``in detail,'' as a ``stack trace,'' ``step by step.'' The post's own explanation is a metaphor with no evidence behind it. That is the fault it will charge to evolutionary just-so stories.}"
+  ],
+  [
+   4955,
+   "\\cpara{The one place where the mechanism is tied to experience: the unit ``feels like'' an open question. The link between a node in a diagram and a feeling in a person is asserted, not shown.}"
+  ],
+  [
+   5309,
+   "\\cpara{The success criterion is a feeling: ``no lingering feeling of confusion, no vague sense of dissatisfaction.'' The post has just argued that feelings are produced by algorithms that ``cut skew to the world.'' A feeling of being done is produced the same way. The post gives no reason to trust this one feeling when it distrusts the other.}"
+  ],
+  [
+   5857,
+   "\\cpara{The same criterion from the other side: any leftover doubt means failure. It offers the reader no way to tell a leftover doubt that marks an unfinished explanation from one that marks a wrong explanation. Both are read as signs that the question is not yet dissolved, and neither can count against the method.}"
+  ],
+  [
+   6235,
+   "\\cpara{The warning against satisfying refutations is not applied to the post itself. A diagram with a central node that explains everything is also satisfying. The metaphor-level ``dangling unit'' is exactly the sort of explanation that feels complete and has not been checked.}"
+  ],
+  [
+   6682,
+   "\\cpara{Warns that admitting what you cannot yet explain may feel like conceding a point to the other side.}"
+  ],
+  [
+   6997,
+   "\\cpara{The post's central distinction, ``arguing that'' against ``explaining how,'' first appears here, in the twentieth of thirty-five paragraphs. The distinction is leakier than the post admits. An evolutionary story says why a mechanism exists; it does not compete with an account of how it works, and a full explanation needs both.}"
+  ],
+  [
+   7671,
+   "\\cpara{The example of ``explaining how'' chosen here is not in the post. The reader is told to ``look at'' a diagram in another post and then asked ``See the difference?'' The post's own example, the dangling unit, is a sketch the post calls metaphorical.}"
+  ],
+  [
+   8345,
+   "\\cpara{Says forming good hypotheses about the mind's workings is harder than refuting a confusion, so one should be willing to say the work is not done.}"
+  ],
+  [
+   8856,
+   "\\cpara{Suggests at least 20\\% of a good reasoner's effectiveness comes from not stopping too early, since stopping early prevents reaching the answer.}"
+  ],
+  [
+   9198,
+   "\\clogic{``If you keep asking questions, you'll get to your destination eventually'' is a promise with no support. Questions asked for centuries without an answer, free will among them, are the obvious test of it, and the post does not consider them.}"
+  ],
+  [
+   9212,
+   "\\cpara{Says the main challenge is noticing even slight confusion, even when an opponent's position seems plainly foolish.}"
+  ],
+  [
+   9623,
+   "\\cpara{States when you are finished: when you can walk step by step through how each intuition arises, with no confusing pieces left.}"
+  ],
+  [
+   9911,
+   "\\cpara{Warns that you may think you are finished when you have only refuted a mistake.}"
+  ],
+  [
+   10097,
+   "\\cpara{``Dissolving the question is an unmistakable feeling,'' and the next paragraph grants that you can feel done when you are not. The criterion works in one direction only, and it fails in the direction a reader needs: telling whether they are really done.}"
+  ],
+  [
+   10434,
+   "\\cpara{Clarifies that real completion is recognizable, but feeling complete does not prove you are.}"
+  ],
+  [
+   10565,
+   "\\cpara{The homework question. It presupposes its own answer: the debate is ``generated'' by an algorithm ``as felt from the inside,'' so the debate is a malfunction to be explained, not a question to be answered. A reader who thinks the question has an answer is ruled out before they begin.}"
+  ],
+  [
+   10815,
+   "\\cpara{The author does not keep this rule. The solution came three months later, in ``Thou Art Physics'' (6 June 2008). That post names a position, ``Requiredism'': agency, choice and moral responsibility, ``cashed out in a sensible way,'' ``require determinism.'' That is a thesis about whether free will is compatible with determinism. It is also old. R.~E. Hobart's paper in \\textsc{Mind} in 1934 carries it in its title, ``Free Will as Involving Determination and Inconceivable Without It.'' Hobart also locates the confusion in our thinking: the two doctrines ``have been opposed only because of our natural want of the analytical imagination.''}"
+  ],
+  [
+   10915,
+   "\\cpara{Continues the rules: do not argue that the question is ill-posed, contradictory or untestable.}"
+  ],
+  [
+   11076,
+   "\\cpara{Four paragraphs of prohibition. Together they fence off every approach except the author's. The last two repeat earlier paragraphs: the ban on ``ill-posed'' and ``no testable consequences'' repeats the third philosopher's position, and the ban on evolutionary stories repeats the just-so paragraph.}"
+  ],
+  [
+   11398,
+   "\\cpara{States the assignment: trace step by step the mental processes that produce the intuitions behind the free will debate.}"
+  ],
+  [
+   11588,
+   "\\cpara{Says this was one of the author's first real challenges as a rationalist, and a relatively easy one.}"
+  ]
+ ]
+}

@@ -133,6 +133,9 @@ annotated/
   skeletons/<slug>.tex  verbatim text from md2tex.py, no notes (NOT committed)
   posts/<name>.tex      verbatim post text + notes (NOT committed: authors' copyright)
   afterwords/<name>.tex Summary and Response (committed: our own writing)
+  notes/<name>.json     our notes only, with their positions (committed). Made by
+                        ../src/notes_backup.py export; restore post files with
+                        ../src/notes_backup.py restore after fetching the originals.
   build/                LaTeX output (not committed)
 ../data/originals/      fetched originals in Markdown (not committed)
 ../src/fetch.py         fetch a post:  ../.venv/bin/python ../src/fetch.py post <id>

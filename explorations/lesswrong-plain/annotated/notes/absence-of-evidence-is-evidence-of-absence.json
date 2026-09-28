@@ -1,0 +1,64 @@
+{
+ "slug": "absence-of-evidence-is-evidence-of-absence",
+ "header": "\\post{Absence of Evidence Is Evidence of Absence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/mnS2WYLCGJP2kQkRn/absence-of-evidence-is-evidence-of-absence}\n",
+ "skeleton_sha": "8672fc976983c1fb44f3434b3980c278a57b6b05a9b47fcda8386dfd730c20a9",
+ "post_sha": "62a1a1dd38c67ea423ea6e36b4fb9d654ba2d1448a4389713492a83c793235b9",
+ "edits": [
+  {
+   "at": 261,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   170,
+   "\\cpara{The post opens with its one real case, borrowed whole from a 1988 textbook, and does not check it (see the fact note in the quotation). After two paragraphs the case is dropped, and the internment itself, ``a most grievous chapter,'' receives no comment of the author's own.}"
+  ],
+  [
+   262,
+   "\\cpara{Quotes Dawes on Earl Warren's 1942 testimony that the absence of sabotage by Japanese-Americans was the most ominous sign, as an example of fitting evidence to a conclusion.}"
+  ],
+  [
+   511,
+   "\\cfact{Warren was not governor. He was California's Attorney General from 1939 to 1943; he was elected governor on 3 November 1942 and sworn in on 4 January 1943 (California State Library, Governors of California). The post passes the error on without comment. I could not check Dawes's printed text.}"
+  ],
+  [
+   1103,
+   "\\cpara{Explains the Bayesian rule: evidence shifts probability toward the hypotheses that made it more likely, so what matters is how the likelihoods compare.}"
+  ],
+  [
+   1628,
+   "\\cpara{Applies it to Warren: a hidden group might delay sabotage, but no sabotage is still more likely if no such group exists.}"
+  ],
+  [
+   1938,
+   "\\cpara{Defines the symbols: sabotage seen or not seen, a hidden group or none, and the chance of the evidence given each hypothesis.}"
+  ],
+  [
+   2327,
+   "\\cpara{The formal step against Warren. ``Won't be as large'' follows directly, since without a Fifth Column there is no Fifth Column sabotage. But it concedes less than the post thinks. On Warren's own hypothesis, a Fifth Column holding everything for one coordinated day, the two likelihoods are, by my inference, nearly equal. The absence of sabotage is then almost no evidence either way, the ``very weak'' case of the post's later paragraph. The post does not apply its later paragraph to its opening case.}"
+  ],
+  [
+   2656,
+   "\\cpara{This paragraph concedes what the slogan in the title's target actually says. The post never quotes or attributes the slogan ``absence of evidence is not evidence of absence.'' Carl Sagan, in \\textsc{The Demon-Haunted World}, uses it against the ``appeal to ignorance: the claim that whatever has not been proved false must be true.'' That is a point about proof, which is this paragraph's point. The title fights the slogan by reading ``evidence'' in a sense its users did not intend.}"
+  ],
+  [
+   2894,
+   "\\cpara{The theorem. ``Always'' is correct but carries a condition, given in the next sentence: ``If \\ldots\\ P(H | E) > P(H).'' The rule covers only observations that would have raised the probability of H.}"
+  ],
+  [
+   3280,
+   "\\cpara{The qualification that undoes the title: absence may be ``strong evidence of absence or very weak evidence of absence.'' The title states the rule without it. Here it comes in the second-to-last paragraph.}"
+  ],
+  [
+   4138,
+   "\\cpara{Argues that a model's strength lies in what it rules out; one that explains every outcome equally well gives no knowledge.}"
+  ],
+  [
+   4617,
+   "\\cpara{A footnote pointing confused readers to the author's longer explanation of Bayesian updating in a book volume.}"
+  ]
+ ]
+}

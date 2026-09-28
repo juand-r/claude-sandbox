@@ -1,0 +1,102 @@
+{
+ "slug": "the-meditation-on-curiosity",
+ "header": "\\post{The Meditation on Curiosity}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/3nZMgRTfFEfHp34Gb/the-meditation-on-curiosity}\n",
+ "skeleton_sha": "57705774990044e6e118b0214f64c253422d41c088ba236231d89c90fdcbf696",
+ "post_sha": "7e9ebeb9a66c05e1a4f34f1e18ee4fc3cf4d4ebdaa2bb404ca08979cf227e6d9",
+ "edits": [
+  {
+   "at": 3779,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 6813,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   324,
+   "\\cpara{Asks whether rationalists are obliged to criticize and question their own beliefs.}"
+  ],
+  [
+   437,
+   "\\cpara{The central distinction, wanting to have investigated against wanting to investigate, rests on two borrowed sayings, one misattributed and one I could not trace (see notes). The paragraph asserts a psychological effect of duty (``Consider what happens to you'') and gives no evidence that it happens.}"
+  ],
+  [
+   655,
+   "\\cfact{I could not find a source for this remark by Zelazny, and the post gives none. It is unverified.}"
+  ],
+  [
+   756,
+   "\\cfact{Misattributed. Twain, speaking in 1900, credited the definition to Professor Caleb Winchester: ``something that everybody wants to have read and nobody wants to read'' (Quote Investigator, 2024). The post drops Winchester.}"
+  ],
+  [
+   985,
+   "\\cpara{A description of a failure mode with no example and no evidence. It tells the reader what goes on in their mind (``your underlying psychological objective'') and names it twice, as ``motivated stopping'' and ``purchase of rationalist satisfaction.'' Naming is offered in place of showing.}"
+  ],
+  [
+   1745,
+   "\\cpara{Describes the outcome: you end with a confidence high enough to keep your old plans, but not so high that it looks suspicious.}"
+  ],
+  [
+   1960,
+   "\\cpara{The contrast case, curiosity, is defined by a feeling (``either direction is equally fine to you'') and by where a curious person looks. No example is given in the post; for one, the reader is sent to an earlier fable.}"
+  ],
+  [
+   2377,
+   "\\cpara{Contrasts this with the hidden aim of staying on familiar ground so you can finish quickly and keep your old beliefs.}"
+  ],
+  [
+   2664,
+   "\\cpara{Refers the reader to an earlier fable whose last character shows real curiosity as lightness and eagerness for evidence.}"
+  ],
+  [
+   3238,
+   "\\cpara{Quotes Le Guin on innocence, and argues that rationalist training risks losing innocent curiosity but should try to keep its eagerness.}"
+  ],
+  [
+   3780,
+   "\\cpara{Quotes the author's ``Twelve Virtues'': questioning is aimless if you think you already know or do not want to know, and curiosity wants an answer.}"
+  ],
+  [
+   4065,
+   "\\cpara{The paragraph concedes the essay's problem: curiosity cannot be willed, so a reader who lacks it has only duty. That concession should have been the essay's starting point. It arrives two-thirds of the way through, after five paragraphs describing the failures of duty.}"
+  ],
+  [
+   4376,
+   "\\cpara{The first remedy: watch for ``sparks of genuine intrigue.''}"
+  ],
+  [
+   4754,
+   "\\cpara{The essay's one technical claim. It starts correctly (``the expected posterior probability should equal your prior probability'') and then glosses the law wrongly. Conservation of expected evidence says that the probability-weighted average of your possible future beliefs equals your present belief. It does not say that a shift up and a shift down are equally likely, or equally large, or that you cannot know which way the evidence will probably go. A worked case: at 70\\%, a test that comes out in your favor 90\\% of the time, moving you to 72\\%, and against you 10\\% of the time, moving you to 52\\%, conserves expected evidence exactly: 0.9 × 72 + 0.1 × 52 = 70. You know which way it will probably go: up. The author said as much two months earlier, in ``Conservation of Expected Evidence'' (August 2007): ``If you expect a strong probability of seeing weak evidence in one direction, it must be balanced by a weak expectation of seeing strong evidence in the other direction.'' This post's glosses (``evenly poised,'' ``equal potential,'' as ready to drop to 69\\% as rise to 71\\%) contradict its own source.}"
+  ],
+  [
+   5800,
+   "\\cpara{Asks whether, when an argument is not new, you are looking at your belief's strong points instead of its weak ones and repeating old evidence.}"
+  ],
+  [
+   6098,
+   "\\cpara{``One tiny bite at a time'' sits uneasily with the author's own ``The Importance of Saying Oops,'' which calls ``grudgingly conceding each millimeter of ground'' the error and says it is ``better by far to see it all at once.'' The two can be reconciled (small updates on new evidence are not the same as refusing to admit a known mistake), but the post does not say how.}"
+  ],
+  [
+   6394,
+   "\\cpara{Introduces a second remedy, the Litany of Tarski, a formula adapted to each case, using the example of wondering whether a box holds a diamond.}"
+  ],
+  [
+   6815,
+   "\\cpara{Quotes the litany: I want to believe there is a diamond if and only if there is one, and not to cling to beliefs I may not want.}"
+  ],
+  [
+   7122,
+   "\\cpara{Recommends imagining the advantages of believing the unwelcome answer, and refers to the Litany of Gendlin.}"
+  ],
+  [
+   7393,
+   "\\cpara{Concludes that any real uncertainty should be protected and grown, since curiosity makes inquiry eager and gives it direction.}"
+  ]
+ ]
+}

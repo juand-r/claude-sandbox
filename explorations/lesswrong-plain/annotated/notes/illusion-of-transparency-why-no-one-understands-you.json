@@ -1,0 +1,92 @@
+{
+ "slug": "illusion-of-transparency-why-no-one-understands-you",
+ "header": "\\post{Illusion of Transparency:  Why No One Understands You}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/sSqoEw9eRP2kPKLCz/illusion-of-transparency-why-no-one-understands-you}\n",
+ "skeleton_sha": "f8fcf1332faa5bc43ca97ddd0209af47d2bcaae94785f214c46556141f8bf374",
+ "post_sha": "dab63b4a3647ddd834e0ffb1ab101fde39280396aa241f2c7653e724cf36bfab",
+ "edits": [
+  {
+   "at": 1829,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   190,
+   "\\cpara{Recalls hindsight bias: once we know an outcome, we think it was predictable, and we cannot set that knowledge aside even when warned.}"
+  ],
+  [
+   503,
+   "\\cpara{Introduces a related bias: because we know what we mean, we expect others to understand our words the same way, and forget they have only the words.}"
+  ],
+  [
+   878,
+   "\\cpara{Describes studies in which subjects who knew a meal was bad expected a friend to hear sarcasm in a message calling it ``marvelous,'' and a variant in which the speaker hides his opinion.}"
+  ],
+  [
+   1830,
+   "\\cpara{Quotes the researchers' conclusion that subjects assumed the listener would grasp whatever the speaker intended.}"
+  ],
+  [
+   2212,
+   "\\cpara{Gives a second experiment: subjects taught opposite meanings of an obscure idiom each thought an uninformed listener would take their meaning as the standard one.}"
+  ],
+  [
+   2746,
+   "\\cpara{Reports a third: speakers of ambiguous sentences thought they were understood 72\\% of the time but were understood 61\\%, and often missed when listeners failed.}"
+  ],
+  [
+   2949,
+   "\\clogic{The sentences were chosen for ambiguity. The abstract: participants ``were asked to say ambiguous sentences.'' The study shows that speakers overestimate how well ambiguous sentences come across. It does not show how often ordinary speech is misread, and the closing advice about ``your perfectly clear sentences'' goes beyond it.}"
+  ],
+  [
+   3490,
+   "\\cpara{The overhearers knew the intended meaning too; the abstract describes them as ``informed about the speakers intention.'' They did not systematically overestimate. So knowing what you mean is not enough to produce the bias, as the second paragraph's mechanism (``We always know what we mean by our words, and so we expect others to know it too'') would suggest. The authors' own conclusion is narrower: ``when speakers monitor their own utterances, they do not act as unbiased observers.'' The post reports the result without drawing this out.}"
+  ],
+  [
+   3638,
+   "\\cpara{Tells a historical case: Chamberlain's letter warning that Britain would fight was read by Hitler as conciliatory, and Germany invaded.}"
+  ],
+  [
+   3706,
+   "\\cfact{The story is relayed from Keysar and Barr, and the date is wrong. Chamberlain's letter to Hitler saying Britain would fight is dated 22 August 1939 (British Blue Book, No. 56). The invasion began on 1 September, ten days later.}"
+  ],
+  [
+   3852,
+   "\\cfact{The letter is not vague. It says ``No greater mistake could be made'' than to think Britain would not intervene, and that the government is ``resolved, and prepared, to employ without delay all the forces at their command.''}"
+  ],
+  [
+   3910,
+   "\\cfact{Hitler's written reply of 23 August restates the commitment: ``you will be obliged to render assistance to Poland in any such case of intervention on the part of Germany. I take note of this statement of yours \\ldots'' He calls the British measures ``a contemplated act of menace.'' That is not a reader who heard conciliation. The attack had also been scheduled for 26 August before any reply, and was postponed after Britain signed its pact with Poland on 25 August. What Hitler privately expected Britain to do is another question. On the documents, he read the words correctly, and the case is a threat understood and disregarded, not one misread.}"
+  ],
+  [
+   3924,
+   "\\cpara{Concludes with advice: do not blame people who misunderstand you, since your words are probably more ambiguous than you think.}"
+  ],
+  [
+   4097,
+   "\\cpara{Cites Keysar's 1994 paper, the source of the restaurant study.}"
+  ],
+  [
+   4256,
+   "\\cpara{Cites Keysar and Barr's 2002 book chapter, the source of the voice-message detail.}"
+  ],
+  [
+   4551,
+   "\\cpara{Cites Keysar's 1998 chapter, the source of the study where the speaker tried to hide his opinion.}"
+  ],
+  [
+   4889,
+   "\\cpara{Cites Keysar and Bly's 1995 paper, the source of the idiom study.}"
+  ],
+  [
+   5082,
+   "\\cpara{Lists other obscure idioms from the study, with a joke about English.}"
+  ],
+  [
+   5246,
+   "\\cpara{Cites Keysar and Henly's 2002 paper, the source of the speaker study.}"
+  ]
+ ]
+}

@@ -1,0 +1,258 @@
+{
+ "slug": "humans-are-not-automatically-strategic",
+ "header": "\\post{Humans are not automatically strategic}{Anna Salamon}{2010}{https://www.lesswrong.com/posts/PBRWb2Em5SNeWYwwB/humans-are-not-automatically-strategic}\n",
+ "skeleton_sha": "e3e7885dd7830538a917dc1b88769b304582d5c0ad36ea84384c2060a9e5980c",
+ "post_sha": "4b61b5c6cbc63f0802fa6e9f25e0b6b21a355516a5f94e1d3e5645047feabe74",
+ "edits": [
+  {
+   "at": 166,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 173,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "https://www.lesswrong.com"
+  },
+  {
+   "at": 333,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 935,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1036,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1392,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "cauthor{For example, why do many people go through long training programs “to make money” without spending a "
+  },
+  {
+   "at": 1393,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "ew hours doi"
+  },
+  {
+   "at": 1394,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "g salary comparisons ahead of time?  Why do many who type for hours a day remain two-finger typists, without bothering with a typing tutor program?  Why do people spend their Saturdays “enjoying themselves” without bothering to track which of their habitual leisure activities are *actually* enjoyable?  Why do even unusually "
+  },
+  {
+   "at": 1397,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "erate people fear illness, car accidents, and bogeymen, and take safety measures, but not bother to look up statistics on the relative risks? Why do most of us settle into a single, stereotyped mode of studying, writing, social interaction, or the like, without trying alternatives to see if they work better -"
+  },
+  {
+   "at": 1398,
+   "del_len": 1,
+   "del_sha": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+   "ins": "}- even when such experiments as we have tried have sometimes given great boosts?"
+  },
+  {
+   "at": 1401,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1798,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2354,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3779,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3815,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4002,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4031,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4192,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4275,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4460,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4556,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4688,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5015,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5346,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5565,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5700,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5988,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6102,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6122,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6156,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6198,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6285,
+   "del_len": 860,
+   "del_sha": "a3d6a82064006cfffa0ea1baedb27bb07cbfc1594b8bd4a6bac81e6d61654a63",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   359,
+   "\\cpara{Quotes Lionhearted asking why smart people waste time on half-useful activities, such as a would-be comedian who studies by watching old Garfield cartoons.}"
+  ],
+  [
+   897,
+   "\\cpara{Answers by analogy: a child fails a calculus test because most answers are wrong and nothing guides him to the right one, so failure is the default.}"
+  ],
+  [
+   1266,
+   "\\cpara{States the thesis: most actions are ineffective, and nothing selects for the effective ones. The evidence sits in a footnote, and the claim about evolution and culture stands unsupported.}"
+  ],
+  [
+   2555,
+   "\\clogic{The analogy leaves out a difference. The child cannot do calculus. The adult could look up salaries, but chooses not to. The post touches on this only in passing, in item (g)'s ``uncertainty as to whether it is worth the effort,'' and never asks when the choice is sensible. Planning and searching take time and effort, and Herbert Simon called the habit of stopping at ``good enough'' satisficing. For a two-finger typist near retirement, not learning to type may be the strategic choice. The argument needs to say when the cost of optimizing is worth paying.}"
+  ],
+  [
+   2569,
+   "\\cpara{Grants that people have goals in limited senses: they tell stories about them, pick activities that fit the role, and feel glad or disappointed at the outcome.}"
+  ],
+  [
+   3027,
+   "\\cpara{The list is the practical core. Its items mix kinds: actions (a, b, d, e, f), a feeling (c), and several states bundled together (g). A checklist is useful only if each item is something you can check.}"
+  ],
+  [
+   3285,
+   "\\cpara{Lists eight things people do not do automatically: ask what they want and how to measure it, gather information, test methods, focus on what works, and sustain motivation.}"
+  ],
+  [
+   3585,
+   "\\clogic{The one item that is a feeling rather than an action. The heading allows it (the list includes what would be ``part of what it means to `have goals' at all''), but as a checklist item it cannot be carried out by deciding to.}"
+  ],
+  [
+   4585,
+   "\\cpara{Says that instead we act from habit, impulse, or a loose association with the goal, and do not choose the few actions that would actually achieve it.}"
+  ],
+  [
+   5050,
+   "\\cpara{The explanation. It opens with a sweeping claim, then gives the explanation that does the work: the gap between verbal reasoning and motivation, shown with the glass floor.}"
+  ],
+  [
+   5137,
+   "\\clogic{A large claim, stated as fact, and not argued. On the cusp compared to what? It also does no work: the next sentences explain the gap between knowing and doing, which does not depend on it.}"
+  ],
+  [
+   6402,
+   "\\cpara{A personal statement, plus a claim about what ``rational'' should mean. That claim matters: it redefines rationality to include pursuing goals. It gets half a sentence.}"
+  ],
+  [
+   6562,
+   "\\clogic{Beyond the list above and the exercises for retraining motivation (the glass floor, the ice cream), no avenue is named.}"
+  ],
+  [
+   6781,
+   "\\cpara{Ends by asking readers whether the analysis is right, whether they have made themselves more strategic, and what heuristics and training methods they would add.}"
+  ]
+ ]
+}

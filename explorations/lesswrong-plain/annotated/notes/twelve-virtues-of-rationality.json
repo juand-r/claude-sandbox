@@ -1,0 +1,242 @@
+{
+ "slug": "twelve-virtues-of-rationality",
+ "header": "\\post{Twelve Virtues of Rationality}{Eliezer Yudkowsky}{2006}{https://www.lesswrong.com/posts/7ZqGiPHTpiDMwqMN2/twelve-virtues-of-rationality}\n",
+ "skeleton_sha": "cec5ce571cc3b7c85cc956a4ca04279a4cd356f3c2f211ca107aa8035c128a1c",
+ "post_sha": "e8511646008a071e361c93ea021e5e217a15a587ef26eb81ba7da0c25ad21ec5",
+ "edits": [
+  {
+   "at": 1003,
+   "del_len": 1,
+   "del_sha": "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111",
+   "ins": "cauthor{Patricia C. Hodgell, \\emph{Seeker’s Mask} (Meisha Merli"
+  },
+  {
+   "at": 1005,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " Publishi"
+  },
+  {
+   "at": 1006,
+   "del_len": 3,
+   "del_sha": "6f91b76eaccff24ce63333be841630eacf235f3744cecf4c7633f7ddcadad161",
+   "ins": "g, Inc., 200"
+  },
+  {
+   "at": 1010,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": ")."
+  },
+  {
+   "at": 5835,
+   "del_len": 1,
+   "del_sha": "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111",
+   "ins": "cauthor{Cleaver, \\emph{Immediate Fictio"
+  },
+  {
+   "at": 5837,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": ": A Complete Writi"
+  },
+  {
+   "at": 5838,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "g Co"
+  },
+  {
+   "at": 5839,
+   "del_len": 3,
+   "del_sha": "e95305dd25d9f97de7295a0ed4ae6b3379e84e532ba5bb6e4542586e3a252e89",
+   "ins": "rse}."
+  },
+  {
+   "at": 6108,
+   "del_len": 1,
+   "del_sha": "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111",
+   "ins": "cauthor{A"
+  },
+  {
+   "at": 6110,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "toi"
+  },
+  {
+   "at": 6111,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "e de Saint-Ex"
+  },
+  {
+   "at": 6112,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "péry, \\e"
+  },
+  {
+   "at": 6113,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "ph"
+  },
+  {
+   "at": 6114,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "Terre des Hommes} (Paris: Gallimard, 19"
+  },
+  {
+   "at": 6115,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "9)."
+  },
+  {
+   "at": 10367,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "cauthor{Musashi, \\emph{Book o"
+  },
+  {
+   "at": 10368,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " Five Ri"
+  },
+  {
+   "at": 10369,
+   "del_len": 5,
+   "del_sha": "885bd212991af99f117cfd2aae367fc73160ce93b2fb8c5ff35e346b5c3f5d7a",
+   "ins": "gs}."
+  },
+  {
+   "at": 10402,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 12921,
+   "del_len": 344,
+   "del_sha": "eebb54e065e12cad68a48012c55903a5d31c8961402758c90af64bf9522ea56b",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   144,
+   "\\cpara{Names curiosity as the first virtue: a real wish to know, which needs both ignorance and the desire to end it, and which aims at its own answer.}"
+  ],
+  [
+   174,
+   "\\clogic{A note on form before the details. This is a manifesto in the style of scripture and of Musashi, written in commands and aphorisms. The form buys memorability. The price is that almost nothing is argued; it is pronounced. Many of the notes below come back to that price. The text addresses ``you'' throughout and never turns its commands on its author (see the Response).}"
+  ],
+  [
+   892,
+   "\\cpara{Names relinquishment: give up any belief the truth would destroy, face tests of your beliefs, and let your emotions follow from what is actually true.}"
+  ],
+  [
+   1873,
+   "\\cpara{Names lightness: change your mind as soon as the evidence turns against you. Like a map drawn from walking the city, beliefs must follow what you see, not whim.}"
+  ],
+  [
+   2931,
+   "\\cpara{Names evenness: hold claims you like and dislike to the same standard of proof. Selective scrutiny, or a conclusion written first, means more data and skill can leave you knowing less.}"
+  ],
+  [
+   3799,
+   "\\clogic{A compressed version of ``The Bottom Line,'' with the same overstatement. See the notes on that post. The arguments written above can still contain true evidence.}"
+  ],
+  [
+   4202,
+   "\\cpara{Names argument: refusing to argue cuts you off from help, honesty with others keeps your own thinking honest, and factual disputes should be settled by a test of reality.}"
+  ],
+  [
+   4989,
+   "\\cpara{Names empiricism: knowledge starts in observation and ends in prediction. The falling-tree dispute shows two people can disagree in words while expecting the same experience.}"
+  ],
+  [
+   6078,
+   "\\cpara{Names simplicity: every added detail in a belief or plan is another chance to be wrong, and one bad step in a long chain of reasoning can ruin the conclusion.}"
+  ],
+  [
+   6336,
+   "\\cfact{The French begins ``Il semble que la perfection soit atteinte\\ldots'': ``It seems that perfection is attained.'' The quotation drops the author's hedge. Saint-Exupéry was also writing about the design of aircraft, not about beliefs.}"
+  ],
+  [
+   6613,
+   "\\clogic{Two different ideas share the word ``simplicity.'' One is about beliefs: every added detail lowers the probability that the whole is true. The other, later in the paragraph, is about reasoning: every step must be correct. The first is Occam's razor, and the second is care. The section treats them as one virtue.}"
+  ],
+  [
+   7064,
+   "\\cpara{It redefines humility (see notes), then turns to other people, those whose rationality is abysmal, but only to warn against comparing yourself with them.}"
+  ],
+  [
+   7275,
+   "\\clogic{This is not what humility means. Merriam-Webster: ``freedom from pride or arrogance''; humble: ``not proud or haughty: not arrogant or assertive.'' The Latin root, humilis, means ``low.'' Taking precautions against your own errors is prudence. A proud person can do it too. The redefinition removes modesty from humility. The author's own record fits this definition. An autobiography posted online around 2000, at about twenty, says: ``I think that I can save the world, not just because I'm the one who happens to be making the effort, but because I'm the only one who can make the effort. And that is why I get up in the morning.'' (\\href{https://web.archive.org/web/20010205221413/http://sysopmind.com/eliezer.html\\#timeline_birth}{sysopmind.com/eliezer.html}, archived 5 February 2001.) The author has since \\href{https://www.yudkowsky.net/singularity}{disowned} that early writing: ``A good deal of the material I have ever produced -- specifically, everything dated 2002 or earlier -- I now consider completely obsolete.'' But the self-image outlasted the disclaimer. In \\href{https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities}{``AGI Ruin: A List of Lethalities''} (2022), Yudkowsky says that being able to write that document ``is what makes somebody a peer of its author.'' That the list was still the author's to write, twenty-one years on, ``says that humanity still has only one gamepiece that can do that.'' Organizations have no plans ``because I haven't taken the time to personally yell at them.'' The same passage puts ``modest'' in scare quotes and links it to the author's book \\textsc{Inadequate Equilibria} (2017), which has a chapter titled ``Against Modest Epistemology.'' The document does grant that ``some of my analysis is mistaken.'' That is humility in the essay's sense, precaution against error, and it shows how little that sense restrains pride.}"
+  ],
+  [
+   8057,
+   "\\cpara{Names perfectionism: correcting errors sharpens your eye for new ones, so tolerating an error stalls progress. Aim for the answer that is exactly right.}"
+  ],
+  [
+   8799,
+   "\\cpara{A worked example. Then it drifts into metaphor (blade, dance) and claims more for probability theory than it can deliver.}"
+  ],
+  [
+   9794,
+   "\\clogic{``Knowing that the math exists'' does not tell you the step, only that there is one. The math also needs prior probabilities, which are not given by the math. That leaves room for judgment, if not for whim. The text claims more precision than Bayes's rule gives in practice.}"
+  ],
+  [
+   9808,
+   "\\cpara{Names scholarship: study many sciences, especially those bearing on reasoning, so they merge into one body of knowledge, but do not study only rationality itself.}"
+  ],
+  [
+   10308,
+   "\\cfact{A list from 2006, and it has not aged evenly. Evolutionary psychology is contested, and social psychology has since had a replication crisis. Several well-known findings in both fields have failed to replicate. A virtue of scholarship should warn about the reliability of what is swallowed.}"
+  ],
+  [
+   10529,
+   "\\cpara{A long quotation about cutting down an enemy, offered as the model for reasoning. It makes explicit the frame the essay has used throughout: thinking as combat. The reader should ask whether that frame suits inquiry, where there is no enemy.}"
+  ],
+  [
+   10659,
+   "\\cpara{Quotes Musashi: every move with the sword, parry or strike, must be carried through with the single intention of cutting the enemy.}"
+  ],
+  [
+   11154,
+   "\\cpara{Applies Musashi to reasoning: every step should aim straight at a map that matches the territory.}"
+  ],
+  [
+   11350,
+   "\\cpara{One sentence stating a hard rule, results over process. See the note: it is too strong.}"
+  ],
+  [
+   11445,
+   "\\clogic{Judging a method only by whether it produced the right answer ignores luck. A sound method can give a wrong answer, and a bad one a right answer, by chance. The eighth virtue asks you to prepare for your own errors, which assumes that process matters. The point needs a limit: over many decisions, a method is judged by its results.}"
+  ],
+  [
+   11459,
+   "\\cpara{Argues that treating rationality as a duty only protects a wrong idea of it; if your idea says to trust a teacher over your eyes, you cannot find the mistake.}"
+  ],
+  [
+   11971,
+   "\\clogic{The text condemns deference to a Great Teacher while speaking throughout in the voice of one: commands, maxims, and a promise of hidden wisdom for those who practice long enough.}"
+  ],
+  [
+   11985,
+   "\\cpara{Warns against debating what counts as the Way. Any name for the highest principle may be wrong, and it can only be checked against the reality it tries to name.}"
+  ],
+  [
+   12508,
+   "\\cpara{Suggests that long, strict practice may let you see all techniques as one and act correctly without effort, and closes with a matching line from Musashi.}"
+  ],
+  [
+   12753,
+   "\\clogic{Apply the sixth virtue to this paragraph. What experience does ``glimpse the center'' lead you to expect? What would show it had not happened? The text gives no test. By its own standard, this is a floating belief.}"
+  ]
+ ]
+}

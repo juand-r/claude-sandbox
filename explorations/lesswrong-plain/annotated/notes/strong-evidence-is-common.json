@@ -1,0 +1,49 @@
+{
+ "slug": "strong-evidence-is-common",
+ "header": "\\post{Strong Evidence is Common}{Mark Xu}{2021}{https://www.lesswrong.com/posts/JD7fwtRQ27yc8NoqS/strong-evidence-is-common}\n",
+ "skeleton_sha": "07c82f5744153a0435124f60a15bc0b7e5c57efbf4c54e617c1be8c8ace1817b",
+ "post_sha": "b77f8f9f3a4d76559a1e4105e34c8722ec4e2f151e4e99299561e47dada9c21e",
+ "edits": [],
+ "notes": [
+  [
+   281,
+   "\\cpara{Tells how a stranger, hearing the author's name, would believe it enough to bet on it at 20 to 1.}"
+  ],
+  [
+   532,
+   "\\cpara{Works out the numbers: saying the name multiplied the odds about twenty million times, some 24 bits of evidence.}"
+  ],
+  [
+   779,
+   "\\cpara{Gives more everyday cases of very strong evidence: an encyclopedia entry, a person's claim to a skill, a computer's output.}"
+  ],
+  [
+   1114,
+   "\\clogic{Why is the evidence strong in each case? Because the hypothesis is narrow. Most names are not ``Mark Xu,'' so a low prior leaves lots of room for a large likelihood ratio, and people seldom lie about their names. The post never states this mechanism, and it is the real lesson: strong evidence is common for specific claims about ordinary facts. It is not common for broad or contested claims, and the conclusion below forgets this.}"
+  ],
+  [
+   1128,
+   "\\cpara{Applies the idea to trading: evidence of 200 to 1 would make you 50\\% sure you are in the top 1\\% of traders, and such evidence may be easy to get.}"
+  ],
+  [
+   1434,
+   "\\cfact{The question and the answer do not match. The question is how hard it is to get into the top 1\\%. The answer is about how much evidence you need to believe you are there. (The figure is enough, though more than needed: from prior odds of 1:99, 200:1 evidence gives about 67\\%, and 99:1 would give 50\\%.)}"
+  ],
+  [
+   1488,
+   "\\clogic{No example of such evidence is given. With trading, it is hard to get: returns are noisy, a good year is weak evidence of skill, and the traders who failed have mostly stopped trading, so the survivors look better than they are. This is the place the argument most needed a concrete case and it has none.}"
+  ],
+  [
+   1502,
+   "\\cpara{Applies it to calibration: evidence of 50 to 1 would show you are much less overconfident than average, and an hour of training might supply it.}"
+  ],
+  [
+   1973,
+   "\\cpara{Concludes that working Bayes's rule by hand may push estimates toward the middle, and that extraordinary evidence may be common.}"
+  ],
+  [
+   2057,
+   "\\clogic{The post's boldest claim, in its last paragraph, with no argument and no evidence. It is also the claim the two examples above were meant to support: that the reader may be more justified in thinking themselves exceptional than they suppose.}"
+  ]
+ ]
+}

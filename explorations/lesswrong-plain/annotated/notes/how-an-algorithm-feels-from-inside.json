@@ -1,0 +1,117 @@
+{
+ "slug": "how-an-algorithm-feels-from-inside",
+ "header": "\\post{How An Algorithm Feels From Inside}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/yA4gF5KrboK2m2Xu7/how-an-algorithm-feels-from-inside}\n",
+ "skeleton_sha": "8d82a184a411422db3c83bb6b567dca07888d14508d8f567036df6f08e5550a3",
+ "post_sha": "14cdeff53eda6292e9793a269f69d72008e04c4afa68661d6ff57660c810204c",
+ "edits": [],
+ "notes": [
+  [
+   154,
+   "\\cpara{Recalls a real, naive argument over whether a tree falling unheard in a forest makes a sound.}"
+  ],
+  [
+   532,
+   "\\cpara{Gives the standard analysis: one side means air vibrations, the other means a heard experience, so the dispute is only about the word ``sound''.}"
+  ],
+  [
+   942,
+   "\\cpara{Accepts that analysis and asks what psychology leads people into such arguments.}"
+  ],
+  [
+   1131,
+   "\\cpara{Explains that mistakes reveal how the mind works, and that arguing about the unheard tree is usually treated as a mistake.}"
+  ],
+  [
+   1478,
+   "\\cpara{Recalls the sorting task from an earlier post: blue eggs contain vanadium and go in one bin, red cubes contain palladium and go in another.}"
+  ],
+  [
+   1956,
+   "\\cpara{Adds a complication: about 2\\% of blue eggs contain palladium, so should they be called red cubes, since they share that bin?}"
+  ],
+  [
+   2214,
+   "\\cpara{Adds that nearly all blue eggs glow in the dark, including the ones with palladium.}"
+  ],
+  [
+   2434,
+   "\\cpara{Argues that whether the odd object ``is'' a blue egg depends on the practical question behind it: which bin it goes in, or whether it will glow.}"
+  ],
+  [
+   3080,
+   "\\cpara{Supposes an odd object whose every property has already been observed.}"
+  ],
+  [
+   3271,
+   "\\cpara{Argues that once everything is observed, no hidden practical question remains.}"
+  ],
+  [
+   3420,
+   "\\cpara{Asks why anyone would still want to argue whether it is really a blue egg.}"
+  ],
+  [
+   3532,
+   "\\cpara{The diagram (I viewed the image file). Network 1: five units for color, shape, luminance, texture and interior, each connected to every other. Network 2: the same five units, each connected only to a central unit labelled ``Category: +BLEGG / -RUBE.'' The explanation that follows rests on the claim that brains are built like the second picture.}"
+  ],
+  [
+   3592,
+   "\\cpara{Introduces two network designs from an earlier post; the first, though inefficient, has a unit for every observable property and nothing left over.}"
+  ],
+  [
+   4129,
+   "\\cpara{The claim the explanation depends on, and the post offers it as a guess: Network 2 is ``a far better candidate for being something vaguely like how the human brain works.'' The reasons given are engineering virtues (``fast, cheap, scalable''). No neuroscience is cited. Everything after this paragraph is conditional on the guess.}"
+  ],
+  [
+   4424,
+   "\\cpara{Explains that in the second design, even after every property is known, it still feels like a question remains: is it really a blue egg?}"
+  ],
+  [
+   4702,
+   "\\cpara{Applies this to the tree: once we know there were vibrations but no hearer, it still feels as if ``did it make a sound?'' is unanswered.}"
+  ],
+  [
+   5065,
+   "\\cpara{Gives Pluto as another case: every fact is known, yet ``is it a planet?'' feels open.}"
+  ],
+  [
+   5184,
+   "\\cpara{Reminds the reader that the diagram shows the algorithm from outside; nobody consciously decides whether a unit fires.}"
+  ],
+  [
+   5478,
+   "\\cpara{Argues that introspection gives no view of the brain's structure; picturing it from outside takes effort and science.}"
+  ],
+  [
+   5852,
+   "\\cpara{Explains that running the second design feels, from inside, like still wondering whether it is a blue egg after knowing everything.}"
+  ],
+  [
+   6193,
+   "\\cpara{Claims people see their intuitions as the world itself, as one sees a green cup and not a picture of it in the brain.}"
+  ],
+  [
+   6526,
+   "\\clogic{Stated as fact, and it is one side of an old dispute. Direct realists hold that ``we can directly perceive ordinary objects''; the view that we see an inner picture is the rival, indirect or sense-datum, view (\\textsc{Stanford Encyclopedia of Philosophy}, ``The Problem of Perception''). The post settles the question in a dash.}"
+  ],
+  [
+   6671,
+   "\\cpara{Applies this: people arguing about the tree or Pluto do not see themselves as arguing over a mental category; the question seems real.}"
+  ],
+  [
+   6962,
+   "\\cpara{Argues that even calling the Pluto debate a matter of definition reflects the second design; a mind built like the first would feel no question left.}"
+  ],
+  [
+   7662,
+   "\\cpara{Claims that to question an intuition you must first recognize it as an intuition, not as direct perception of reality.}"
+  ],
+  [
+   7911,
+   "\\cpara{Suggests people cling to intuitions not from trust in their reliability but because they cannot see them as the inner view of an algorithm.}"
+  ],
+  [
+   8203,
+   "\\cpara{The link on ``cling to their intuitions'' goes to ``Allais Malaise,'' the author's reply to dissenting commenters (``Judging by the comments on Zut Allais, I failed to emphasize the points that needed emphasis''). My inference from the link: the general claim in this paragraph and the next was drawn at least partly from the author's own arguments. The post gives no way to tell someone clinging to an intuition from someone who has a good objection.}"
+  ]
+ ]
+}

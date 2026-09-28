@@ -1,0 +1,73 @@
+{
+ "slug": "say-not-complexity",
+ "header": "\\post{Say Not \"Complexity\"}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/kpRSCH7ALLcb6ucWM/say-not-complexity}\n",
+ "skeleton_sha": "bf39a66f4b64a4b2b4d883ee7ace58c567534173906d1bce07a28607a259605c",
+ "post_sha": "38fab590de14bdb4d05efec7a7ff2311bc7703a4326b5162a1c92ab94c641c67",
+ "edits": [],
+ "notes": [
+  [
+   160,
+   "\\cpara{Introduces the story: the author's first meeting with Marcello, a young olympiad competitor whose ability to think about AI the author wanted to test.}"
+  ],
+  [
+   542,
+   "\\cpara{Sets the problem: how could an AI work out for itself the rules of a Rubik's Cube and invent the move sequences needed to solve it?}"
+  ],
+  [
+   936,
+   "\\cpara{Reports Marcello saying the AI would need ``complexity'' to do various things.}"
+  ],
+  [
+   1169,
+   "\\cpara{The author answers a claim Marcello did not make. Marcello said the AI ``needs complexity to do X.'' The reply attacks complexity as ``a goal in itself.'' The parenthesis then shows who the reply was really for: unnamed people who said the Internet would ``wake up.'' The first answer in the post's lesson is aimed at an absent target.}"
+  ],
+  [
+   1538,
+   "\\cpara{Marcello objects that some amount of complexity must be what does it.}"
+  ],
+  [
+   1641,
+   "\\cpara{Describes the author searching for words: the objection felt wrong by instinct, since thinking is steered by trained habits below the level of words.}"
+  ],
+  [
+   2348,
+   "\\cpara{Tells how Marcello saw the point, likened it to ``emergence'', and realized he must work out how the step actually happens.}"
+  ],
+  [
+   2478,
+   "\\cpara{The climax of the story is the author's verdict on the student, with ``this'' in bold. The story opened by saying Marcello had not yet been accepted ``as my apprentice.''}"
+  ],
+  [
+   2573,
+   "\\cpara{Concedes that complexity is a useful concept, with mathematical definitions, and worth weighing when judging a hypothesis or simplifying a design.}"
+  ],
+  [
+   2971,
+   "\\cpara{The diagnosis, and its evidence is one unnamed crowd. ``Extremely common,'' ``left and right, over and over again'' and not a single quoted instance. The post condemns skipping over what one does not understand, and skips over the evidence for its own empirical claim.}"
+  ],
+  [
+   3502,
+   "\\cpara{The general claim. It rests on a term, ``non-controlling causal node,'' that is never defined, and on a history (``since the ancient times'') that is never given. It says the mistake ``takes place below the level of words,'' which matters for the remedy two paragraphs on.}"
+  ],
+  [
+   3842,
+   "\\cpara{The remedy, and this sentence of it is circular. The mistake was defined as something that ``feels like an explanation but isn't.'' The cure is to ``feel which parts of your map are still blank.'' The faculty that fails is the one asked to detect the failure. The post's other checks, asking whether a word ``concentrate[s] your probability mass'' and writing ``magic'' at each gap, do not depend on that feeling.}"
+  ],
+  [
+   4541,
+   "\\cpara{A suspicion about academia offered in place of evidence. No paper, journal or field is named.}"
+  ],
+  [
+   5063,
+   "\\cpara{Suggests an AI startup faces even more pressure to hide gaps, and that skipping over them is ordinary human behavior, seen in talk of religion or unfamiliar sciences.}"
+  ],
+  [
+   5674,
+   "\\cpara{Describes the author's convention of saying ``magic'' for anything not understood, as an honest placeholder, since ``complexity'' and ``emergence'' give a false sense of understanding.}"
+  ],
+  [
+   6268,
+   "\\cpara{The one real cost of the method is conceded in a footnote: the parts you can explain may turn out not to matter. That is the objection a careful reader would raise, and it belongs in the body. The footnote's last sentence then turns the concession into a compliment to those who take the risk, with no evidence that ``mostly, people don't dare.''}"
+  ]
+ ]
+}

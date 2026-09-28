@@ -1,0 +1,476 @@
+{
+ "slug": "an-intuitive-explanation-of-bayes-s-theorem",
+ "header": "\\post{An Intuitive Explanation of Bayes's Theorem}{Eliezer Yudkowsky}{2003}{https://www.lesswrong.com/posts/XTXWPQSEgoMkAupKt/an-intuitive-explanation-of-bayes-s-theorem}\n",
+ "skeleton_sha": "29ba0670dacc711854aa8d3fd2a36e774beb42134e96e09f1606f5a717429e59",
+ "post_sha": "da0d5fdab5199bb357e25c1641caee57b1ef2c98a36fc858481c6aec604cd824",
+ "edits": [
+  {
+   "at": 2749,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 4031,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 4598,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 16324,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 30599,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   172,
+   "\\cpara{The author's own verdict comes first: the essay is obsolete. It is still the version LessWrong serves under this title, abridged, and it is the version annotated here. Every note below is about the text readers actually meet.}"
+  ],
+  [
+   319,
+   "\\cpara{An editor's note: this text is an abridgement of an essay that was once interactive.}"
+  ],
+  [
+   455,
+   "\\cpara{Opens with a scene: the reader hears friends praise Bayes's Theorem and looks it up online.}"
+  ],
+  [
+   720,
+   "\\cpara{Continues the scene: the web page gives only an equation, with no account of what it means or why it matters.}"
+  ],
+  [
+   971,
+   "\\cpara{Asks why one equation stirs such enthusiasm, and what the promised revolution in the sciences is about.}"
+  ],
+  [
+   1375,
+   "\\cpara{Explains why the essay exists: existing explanations are too abstract, and the author claims people find this reasoning hard to learn and quick to forget, experts included.}"
+  ],
+  [
+   2086,
+   "\\clogic{The essay's own evidence complicates this. It reports below that rewording the same problem in natural frequencies raises correct answers from about 15\\% to 46\\%. Gigerenzer reads that result as showing that our built-in faculties handle frequencies and not probabilities, a narrower claim than the essay's. The next paragraph's ``Or so they claim'' half withdraws the claim. Later the essay reinstates it (``our built-in inadequacies'').}"
+  ],
+  [
+   2100,
+   "\\cpara{The essay's contract, and it can be checked. ``Intuitive'': the longest stretch is an abstract count of degrees of freedom. ``Excruciatingly gentle'': a key result is ``left as an exercise for the reader.'' ``Cannot possibly be anything else'': the essay shows that the rules give right answers, never that they are the only rules.}"
+  ],
+  [
+   2750,
+   "\\cpara{States the mammography problem in percentages: 1\\% have cancer, 80\\% of them test positive, 9.6\\% of healthy women do too. What is the chance of cancer after a positive test?}"
+  ],
+  [
+   3130,
+   "\\cpara{Asks the reader to try the problem before reading on.}"
+  ],
+  [
+   3304,
+   "\\cpara{The paragraph's central number is roughly what the literature shows, but none of the cited sources reports it for doctors on this problem. The reader is then told to stop asking.}"
+  ],
+  [
+   3439,
+   "\\cfact{Check the three sources. Casscells et al.\\ (1978) asked 60 people at Harvard teaching hospitals (20 students, 20 house officers, 20 attending physicians) a different problem: prevalence 1/1000, false positive rate 5\\%. As reported by the NEJM CardioExchange blog, 11 of 60 (18\\%) gave the right answer, about 2\\%. Eddy (1982), as Gigerenzer and Hoffrage report him, found that 95 of 100 physicians put the answer between 70\\% and 80\\%. Gigerenzer and Hoffrage (1995) tested 60 students at the University of Salzburg, not doctors. In their standard probability format 16\\% of solutions were Bayesian, pooled over 15 problems. The nearest figure for doctors is in a study the essay does not cite: Hoffrage and Gigerenzer (1998), 48 physicians, 10\\% correct with probabilities. None of the cited sources gives ``around 15\\% of doctors'' on this problem.}"
+  ],
+  [
+   3775,
+   "\\clogic{``Easy to replicate, so it's been extensively replicated'' infers that something was done from the fact that it could be. The ``many other studies'' are not named, at the one point where the reader's doubt was justified.}"
+  ],
+  [
+   3789,
+   "\\cpara{Reports that most doctors answer 70\\% to 80\\%, far from correct.}"
+  ],
+  [
+   4005,
+   "\\cfact{No source for doctors doing ``somewhat better'' on this version, and neither Gigerenzer and Hoffrage nor Casscells et al.\\ used it.}"
+  ],
+  [
+   4033,
+   "\\cpara{Gives the same problem as counts out of 1,000 women, the version on which doctors are said to do somewhat better.}"
+  ],
+  [
+   4452,
+   "\\cpara{Introduces a third version, on which the author says 46\\% of doctors answer correctly.}"
+  ],
+  [
+   4573,
+   "\\cfact{46\\% is Gigerenzer and Hoffrage's figure for Salzburg students in their standard frequency format, pooled over 15 problems. The same number appears for 48 physicians over four diagnostic problems in Hoffrage and Gigerenzer (1998), which the essay does not cite. The 1995 study did not use this wording. I could not see the 1998 problems.}"
+  ],
+  [
+   4601,
+   "\\cpara{States the problem as counts out of 10,000 women, with the false positives given as 950 of 9,900.}"
+  ],
+  [
+   5025,
+   "\\cpara{The worked answer, and the arithmetic is right: 80/1,030 = 7.77\\%, and with the stated 9.6\\% exactly it is 7.76\\%. The method is counting women instead of multiplying probabilities: Gigerenzer and Hoffrage's natural-frequency method.}"
+  ],
+  [
+   5516,
+   "\\cpara{Sorts the 10,000 women into two groups before the test.}"
+  ],
+  [
+   5777,
+   "\\cpara{Checks that the two groups add up to 10,000, then splits the women into four groups by test result.}"
+  ],
+  [
+   5986,
+   "\\cpara{Lists the four groups, cancer or not crossed with a positive or negative mammogram, with the count in each.}"
+  ],
+  [
+   6349,
+   "\\cpara{Concludes that 80 of the 1,030 women with positive results have cancer, so about one in thirteen such patients is ill.}"
+  ],
+  [
+   6928,
+   "\\cpara{Names the most common mistake: ignoring how rare cancer is and how often healthy women test positive, and taking the 80\\% detection rate as the answer.}"
+  ],
+  [
+   7236,
+   "\\clogic{Not in all of ``these studies.'' In Casscells et al.\\ the most common answer, 95\\%, came from 27 of 60 respondents (45\\%, as the NEJM blog reports it). That problem gave no hit rate to be confused with the answer. The 95\\% is one minus the false positive rate, a different error.}"
+  ],
+  [
+   7445,
+   "\\cpara{Insists that the answer always needs all three numbers: how common cancer is, the false positive rate, and the detection rate.}"
+  ],
+  [
+   7742,
+   "\\cpara{Defines the terms: the starting rate is the prior probability, the two test rates are conditional probabilities, and the answer is the posterior probability, which depends on the prior.}"
+  ],
+  [
+   8114,
+   "\\clogic{Not in standard usage. The prior is the base rate alone; the two conditional probabilities are the likelihoods. The essay never uses ``likelihood'' for them, then introduces a ``likelihood ratio.'' A beginner who learns ``the priors'' here will misread every other text on the subject.}"
+  ],
+  [
+   8444,
+   "\\cpara{Shows the prior matters with an extreme case: if one woman in a million has cancer, a positive test raises the odds only to one in 100,000.}"
+  ],
+  [
+   9207,
+   "\\cpara{Concludes that a test result does not replace the starting probability but moves it, up for a positive result and down for a negative one.}"
+  ],
+  [
+   9820,
+   "\\cpara{Warns against swapping the 1\\% for the 80\\%: the chance of cancer given a positive test differs from the chance of a positive test given cancer.}"
+  ],
+  [
+   10475,
+   "\\cpara{The second example is the first with new nouns and easier numbers.}"
+  ],
+  [
+   11231,
+   "\\cpara{Introduces the notation with a misreading the essay builds on: premise and conclusion. Conditional probability is not a relation between premise and conclusion (see the note on ``the degree to which P implies Q'').}"
+  ],
+  [
+   11941,
+   "\\cpara{Solves the egg problem: 12\\% of eggs are blue with pearls and 18\\% are blue in all, so a blue egg holds a pearl two times in three.}"
+  ],
+  [
+   12457,
+   "\\cpara{Shows again why the starting rate matters: when pearls are very rare or very common, blueness moves the probability only a little.}"
+  ],
+  [
+   13003,
+   "\\cpara{Describes the typical wrong answers, 30\\% or 20\\%, and compares them to children who add bus passengers to get the driver's age: a familiar procedure used where it makes no sense.}"
+  ],
+  [
+   13586,
+   "\\cfact{No source is given, and I found none for a bus version. The studied problem is the ``age of the captain'' (Verschaffel, Greer and de Corte, 2000).}"
+  ],
+  [
+   14241,
+   "\\cpara{Reports a result the cited study does not contain, then explains it.}"
+  ],
+  [
+   14530,
+   "\\cfact{Not in Gigerenzer and Hoffrage (1995). Their Study 2 found no gain for relative frequencies over probabilities (60 Bayesian algorithms against 66), and this essay's opening problem is their relative-frequency version. The middle step of the essay's three-step progression is not in the paper.}"
+  ],
+  [
+   15043,
+   "\\cpara{Introduces natural frequencies, counts that carry the starting rate with them, as the most effective way found so far to present such problems.}"
+  ],
+  [
+   15976,
+   "\\cpara{Concedes that the essay's own method will not be enough ``when you're talking about real doctors and real patients,'' then offers nothing else. The essay never returns to real doctors. ``Around half'' is the same 46\\% to 50\\%, which the cited 1995 study found in students; the figure for doctors matches a 1998 study the essay does not cite (see the Response).}"
+  ],
+  [
+   16328,
+   "\\cpara{A joke in question-and-answer form about where priors come from: handbooks, a yearly vote, file-sharing, an antique shop.}"
+  ],
+  [
+   17345,
+   "\\cpara{Where do priors come from? The essay answers with jokes (``Never ask that question''), then seriously, but only for a prevalence that can be counted. The prior probability of a scientific theory has no population to count, and that is the case the essay needs when it claims that ``science itself is a special case of Bayes's Theorem.''}"
+  ],
+  [
+   18028,
+   "\\cpara{Warns that the chance of A and B together, of A given B, and of B given A are different quantities that people often confuse.}"
+  ],
+  [
+   18255,
+   "\\cpara{Introduces counting degrees of freedom, the numbers that can be set independently, starting with the chances of cancer and of no cancer, which must add to one.}"
+  ],
+  [
+   18607,
+   "\\cpara{Continues: a sick woman's chances of testing positive or negative share one degree of freedom, but the test's rates for sick and for healthy women are two.}"
+  ],
+  [
+   19345,
+   "\\clogic{``Independent'' here means that one number can be chosen freely whatever the other is. Two paragraphs later the same word means statistical independence. In the section on two tests it means a third thing (see there). Three senses of one word, none flagged, in a tutorial.}"
+  ],
+  [
+   19463,
+   "\\cpara{Asks how many degrees of freedom link the joint chance of cancer and a positive test, the detection rate, and the cancer rate.}"
+  ],
+  [
+   19727,
+   "\\cpara{Explains that this equation removes one degree of freedom: multiplying the cancer rate by the detection rate gives the share with both.}"
+  ],
+  [
+   20015,
+   "\\cpara{Runs the same equation backwards by division, as when a test is calibrated from study counts, warns about dividing the wrong way round, and concludes any two of the three give the third.}"
+  ],
+  [
+   21224,
+   "\\cpara{Asks the same of the overall positive rate and the two joint rates, and says they also have only two degrees of freedom.}"
+  ],
+  [
+   21512,
+   "\\cpara{Explains that the overall positive rate is the sum of positives with and without cancer, and states the general rule behind it.}"
+  ],
+  [
+   22386,
+   "\\cpara{Argues that the four groups have three degrees of freedom, not two: joint rates come from multiplying only if test and disease are unrelated, and the four shares must sum to one.}"
+  ],
+  [
+   24238,
+   "\\cpara{Says that every other probability follows from the four groups.}"
+  ],
+  [
+   24443,
+   "\\cpara{Concludes that the whole problem has three degrees of freedom, matching the three facts every problem needed, so any three quantities with three degrees of freedom should settle it.}"
+  ],
+  [
+   24997,
+   "\\cpara{Defines the likelihood ratio, the true positive rate over the false positive rate, as how far a positive result moves the prior, and asks whether it says everything about a test.}"
+  ],
+  [
+   25423,
+   "\\cpara{Raises the meaning of a negative result (the negative ratios are 0.22 and 0.93) and then drops it; every later calculation assumes positive results.}"
+  ],
+  [
+   26132,
+   "\\cpara{Poses a problem with two unrelated tests, a mammogram and an invented second test, and asks the chance of cancer after both come back positive.}"
+  ],
+  [
+   26298,
+   "\\clogic{The calculation needs conditional independence: among women with cancer, and separately among women without, the two results are unrelated. Two tests that both detect cancer cannot be independent in the plain sense, because both are positive more often when cancer is present. The essay never says ``given the disease.'' The one assumption that licenses multiplying likelihood ratios is stated in a form that no pair of useful tests can satisfy.}"
+  ],
+  [
+   26909,
+   "\\cpara{The 60\\% is right. The method, using the last posterior as the next prior, is the most important procedure in the essay, and it gets one sentence and no worked arithmetic.}"
+  ],
+  [
+   27186,
+   "\\cpara{Poses a problem with three independent tests, with likelihood ratios 8.33, 18 and 3.5, and asks the chance of cancer after three positive results.}"
+  ],
+  [
+   27678,
+   "\\clogic{It makes no difference only for a positive result. Two paragraphs earlier the essay said that the likelihood ratio leaves out the meaning of a negative result and how often the test is useful. The tests with 70\\% and 35\\% hit rates differ on both.}"
+  ],
+  [
+   27809,
+   "\\cpara{The odds form is Bayes's rule at its simplest: posterior odds equal prior odds times the likelihood ratio. The essay presents it as a bookkeeping ``trick,'' before it has stated the theorem, and states the rule in that form only in words.}"
+  ],
+  [
+   28113,
+   "\\cstyle{Wrong term. 1:99 is odds; an odds ratio is a ratio of two odds. The error appears three times, here in the sentence that teaches the word.}"
+  ],
+  [
+   28295,
+   "\\cpara{Sets up the odds of cancer against no cancer after three positive tests.}"
+  ],
+  [
+   28478,
+   "\\cpara{Multiplies the prior odds by the three ratios to get 3150 to 594.}"
+  ],
+  [
+   28648,
+   "\\cpara{Claims the method works however the ratios are written and in whatever order, and leaves the proof to the reader.}"
+  ],
+  [
+   28911,
+   "\\clogic{The one claim in the essay that needs a proof gets none, in an ``excruciatingly gentle introduction.'' The proof is also where the conditional-independence assumption would have had to be stated.}"
+  ],
+  [
+   28925,
+   "\\cpara{Introduces Jaynes's proposal to measure belief and evidence in decibels.}"
+  ],
+  [
+   29130,
+   "\\cpara{Explains decibels as ten times the base-ten logarithm of a ratio of intensities, with examples from a car horn and birdsong.}"
+  ],
+  [
+   29710,
+   "\\cpara{Restates the problem as 1 to 99 prior odds and three test ratios, and proposes adding logarithms instead of multiplying.}"
+  ],
+  [
+   30144,
+   "\\cpara{Works out the decibel version: starting at minus 20, three results add 27 decibels, ending at plus 7, about 5 to 1 odds or 83\\%.}"
+  ],
+  [
+   30604,
+   "\\cpara{States a practice problem about a gizmo mechanic, with a 30\\% prior and spark rates of 45\\% and 5\\%, asking the chance of a blocked hose.}"
+  ],
+  [
+   31271,
+   "\\cpara{Shows that the mammogram answer used the same arithmetic.}"
+  ],
+  [
+   31758,
+   "\\cpara{Names the general form of this calculation Bayes's Theorem.}"
+  ],
+  [
+   31978,
+   "\\cpara{Explains what the theorem does: it says how to update the probability of something after seeing evidence about it.}"
+  ],
+  [
+   32293,
+   "\\cpara{The essay declares that it has ``entirely succeeded'' at 68\\% of its length. The test cannot tell a reader who has understood from one who has been told the thing is simple. The remaining third makes claims about statistics, science and philosophy that are neither obvious nor shown.}"
+  ],
+  [
+   32487,
+   "\\cpara{Four large claims, none supported, turning a theorem about conditional probability into a doctrine about all of statistics and all of rational thought.}"
+  ],
+  [
+   33151,
+   "\\cpara{Moves on to lessons about human reasoning drawn from the theorem.}"
+  ],
+  [
+   33284,
+   "\\cpara{Explains the finding that people neglect how common a condition is and judge only by how well the evidence fits, as in the 70\\% to 80\\% answers.}"
+  ],
+  [
+   34200,
+   "\\cpara{Warns of a related error: evidence is strong only if it would rarely appear were the claim false, so wet grass, which sprinklers also cause, says little about rain.}"
+  ],
+  [
+   35553,
+   "\\cpara{The ``Bayesian revolution'' at last, and every claim is about unnamed people: ``more and more cognitive scientists,'' ``scientists in every field.'' No scientist, paper or field is named.}"
+  ],
+  [
+   36368,
+   "\\cpara{The case against Popper rests on a Popper who did not hold the view attributed to him, and on a history of Newton that is wrong.}"
+  ],
+  [
+   36644,
+   "\\clogic{Half of Popper. He held that a refutation is decisive in logic, and he also wrote, in \\textsc{The Logic of Scientific Discovery} (1934), that in practice ``no conclusive disproof of a theory can ever be produced,'' because a theory's defenders can always adjust it. The essay reports the first half as his whole view.}"
+  ],
+  [
+   37434,
+   "\\cfact{Loose. Newtonian gravity is a limiting case of general relativity, but its predictions are not a subset of Einstein's. They disagree measurably on Mercury's perihelion, 43 arcseconds per century, a gap Le Verrier found in 1859. That disagreement is how the theory fell.}"
+  ],
+  [
+   37448,
+   "\\cpara{Argues that because other theories can always predict the same result, a successful prediction can confirm a theory only so far, as happened with Newton's gravity.}"
+  ],
+  [
+   38150,
+   "\\clogic{The evidence was not hidden and did not topple the theory. The Mercury anomaly was known from 1859; Le Verrier proposed an unseen planet, Vulcan, rather than give up Newton. The theory fell only when Einstein explained the anomaly in 1915, which is Popper's point that no disproof is conclusive.}"
+  ],
+  [
+   38332,
+   "\\cpara{``Falsification is much stronger than confirmation'' rests on a likelihood set to 0.0001\\% by hand. A failed prediction is that strong only if the theory and its auxiliary assumptions truly forbid the result, and the Mercury case shows they rarely do.}"
+  ],
+  [
+   39307,
+   "\\cpara{Recasts falsifiability as a rule of probability: if a result would support a theory, its opposite must count against it. Argues that Popper was wrong to deny confirmation altogether.}"
+  ],
+  [
+   40087,
+   "\\clogic{Popper had a word for passed tests. A theory that ``withstands detailed and severe tests'' is ``corroborated'' (\\textsc{Logic of Scientific Discovery}). What he denied was that passed tests establish a theory as ``true,'' ``or even as merely `probable'\\,''. And he did not argue that falsification is certain in practice (see above). The essay has Popper wrong on both sides of the asymmetry it claims to correct.}"
+  ],
+  [
+   40340,
+   "\\cpara{Concludes that cognitive science, statistics and the scientific method are all turning out to be special cases of the theorem, hence the revolution.}"
+  ],
+  [
+   40687,
+   "\\cpara{Restates Bayes's Theorem as an equation.}"
+  ],
+  [
+   40763,
+   "\\cpara{Explains how to read the left side: A is what we want to know and X is the evidence; the author wishes the notation showed X leading to A.}"
+  ],
+  [
+   41233,
+   "\\clogic{Conditional probability is not a degree of implication. Take the essay's eggs. The implication ``if blue then pearl'' is true of every egg that is not blue or contains a pearl: 1 $-$ 0.06 = 94\\% of eggs. P(pearl$|$blue) is 67\\%. Reading the bar as ``implies'' gives a different number from the essay's own example.}"
+  ],
+  [
+   41329,
+   "\\cpara{Explains the joint probability: the share of all women who both have cancer and test positive, with worked numbers.}"
+  ],
+  [
+   42296,
+   "\\cpara{Contrasts the conditional probability: the same women counted as a share of those who tested positive, not of all women.}"
+  ],
+  [
+   42957,
+   "\\cpara{Explains that taking P as given means working only inside the group that has P, which changes the other probabilities.}"
+  ],
+  [
+   43632,
+   "\\clogic{Read as an equation this is false; P(Q, P) = P(Q) only when P is certain. The intended statement is P(Q$|$P) = P(Q, P)/P(P). A beginner who copies the sentence copies an error.}"
+  ],
+  [
+   44011,
+   "\\cpara{Continues with the blue eggs: the given condition becomes the whole world, with probability 1, so in the theorem X is always the evidence and A the question.}"
+  ],
+  [
+   45274,
+   "\\cpara{Introduces the derivation of the right side from the left.}"
+  ],
+  [
+   45489,
+   "\\cpara{Gives the last line of the derivation, the full theorem.}"
+  ],
+  [
+   45567,
+   "\\cpara{Argues that the right side runs from cause to observation and the left side from observation to conclusion, which explains the theorem's shape.}"
+  ],
+  [
+   45861,
+   "\\clogic{Bayes's theorem follows from the definition of conditional probability and holds whatever causes what. The same algebra gives P(X$|$A) from P(A$|$X). And the essay itself computed P(positive$|$cancer) by dividing counts (6,816 of 8,520), which is inference from data, not ``physical causality.''}"
+  ],
+  [
+   46609,
+   "\\cpara{``Mind on one side and reality on the other'' rests on the false reading in the previous note, and ``the scientific method turned out to be a special case'' points back to a section that asserted it. The essay's last substantive sentence is a metaphor.}"
+  ],
+  [
+   47135,
+   "\\cpara{A joke, and it closes a frame the essay opened in its third paragraph: ``What is the secret that the adherents of Bayes know? What is the light that they have seen?'' Between the two, a result taught in any first course in probability is presented as the secret of a group, and the reader who finishes is told they have joined it. The joke is harmless on its own.}"
+  ],
+  [
+   47200,
+   "\\cpara{Gives the first reference: Casscells, Schoenberger and Graboys (1978) on how doctors read lab results.}"
+  ],
+  [
+   47401,
+   "\\cpara{Gives the second reference: Eddy (1982) on probability reasoning in medicine.}"
+  ],
+  [
+   47663,
+   "\\cpara{Gives the third reference: Gigerenzer and Hoffrage (1995) on frequency formats.}"
+  ]
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "slug": "is-that-your-true-rejection",
+ "header": "\\post{Is That Your True Rejection?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/TGux5Fhcd7GmTfNGC/is-that-your-true-rejection}\n",
+ "skeleton_sha": "1f321f4572147813a12bd67e917808c81e1d050b93221f4ea412ef550763d6c0",
+ "post_sha": "3819a9e9a0910186aa519f43c1e7107c687127aaabd13b7329876f933bea8431",
+ "edits": [],
+ "notes": [
+  [
+   141,
+   "\\cpara{The occasion is a personal grievance: people reject the author's views on superintelligence and Friendly AI. The concept the post introduces is built on that grievance, and its first use is to explain away the author's critics.}"
+  ],
+  [
+   402,
+   "\\cpara{Gives the reason critics often state: the author has no PhD, so why believe the author?}"
+  ],
+  [
+   553,
+   "\\cfact{One real remark about the author's credentials is on record from these days. In the Hanson--Yudkowsky ``AI-Foom'' debate on \\textsc{Overcoming Bias}, Robin Hanson commented, in the thread of his post of 5 December 2008: ``Note that your social strategy, of avoiding standard credentials, is about the worst case for convincing a wide audience'' (as reprinted in MIRI's 2013 collection of the debate). That is advice about persuasion, not the dismissal quoted here. Whether this post answers Hanson is my inference from the dates; the post names no one.}"
+  ],
+  [
+   567,
+   "\\cpara{Adds the advice that often follows: get a PhD so people will listen.}"
+  ],
+  [
+   806,
+   "\\cpara{A verdict whose reason comes only later (a PhD would not change the reaction). The obvious reason for credentials, that experts check a person's work before strangers are asked to trust it, is not mentioned. And the post never asks of the author the question it is named for. Is ``this is one of the bad ones'' the author's true rejection of the PhD, or a justification found afterwards? The post's method is aimed only outward.}"
+  ],
+  [
+   898,
+   "\\cpara{The diagnosis of the critics. Their rejection is said to be perception, not thought: the idea reminds them of ``science fiction'' or an ``end-of-the-world cult'' and dies ``at the speed of perception.'' No evidence is offered that any critic reasoned this way. The author tells the reader what happens in the heads of people who disagree. The post later warns that attempts to ``publicly psychoanalyze the other'' make conversations ``degenerate \\emph{very} fast.'' This paragraph is that psychoanalysis, done in public.}"
+  ],
+  [
+   1424,
+   "\\cpara{The key definition, and it undermines the title's question. The ``true reason'' is whatever was decisive ``at the \\emph{very first} moment,'' and the previous paragraph placed that moment in perception, below verbal thought. People cannot reliably report causes of that kind. That is the finding of Nisbett and Wilson's ``Telling More Than We Can Know'' (\\textsc{Psychological Review}, 1977), which the post does not cite. So ``Is that your true rejection?'' asks the other person for exactly the report that, on the post's own definition, they cannot give.}"
+  ],
+  [
+   1786,
+   "\\cpara{A rhetorical question with an answer the post does not give. A reader can test claims about reasoning against their own experience. No reader can test claims about superintelligence. The author's own ``Argument Screens Off Authority'' (December 2007) states the rule: when a listener cannot evaluate the argument, the speaker ``is simply uttering mystical syllables, and whether we `believe' these syllables depends a great deal on his authority.'' By the author's own account, credentials matter in exactly the domain where this post calls the objection a pretext.}"
+  ],
+  [
+   2023,
+   "\\cpara{A counterfactual about strangers' behavior, stated as fact, with no evidence. It also shifts the claim. The objection was that credentials are evidence; the reply is that credentials would not make people ``believe everything I say.'' The critic's line (``Why should I believe anything Yudkowsky says?'') invites that reply, but the objection it answers is the weaker one.}"
+  ],
+  [
+   2345,
+   "\\cpara{Imagines the same critics after a PhD: they would ask for fame and tenure instead.}"
+  ],
+  [
+   2549,
+   "\\cpara{Asks whether people believe odd claims from Harvard professors, and answers no.}"
+  ],
+  [
+   2669,
+   "\\cpara{A threshold invented for the occasion: credentials start to count ``somewhere around the Nobel Laureate level. If that.'' The only support is ``I suspect.''}"
+  ],
+  [
+   3291,
+   "\\cpara{The post's only real case, reported ``as far as I can tell,'' and closed with the author's ignorance offered as evidence: ``Not so far as I ever heard.'' Drexler's dates check out: \\textsc{Engines of Creation} (1986), an MIT doctorate under Marvin Minsky (1991), \\textsc{Nanosystems} (1992). What the post leaves out is what happened next (see the notes).}"
+  ],
+  [
+   3809,
+   "\\clogic{The record the author did not report. After the PhD and \\textsc{Nanosystems}, the best-known critic was Richard Smalley, Nobel laureate in chemistry (1996). In \\textsc{Scientific American} (2001) and in a four-part exchange in \\textsc{Chemical \\& Engineering News} (December 2003), he argued that Drexler's assemblers could not work: the ``fat fingers'' and ``sticky fingers'' objections. Those are technical objections, not ``Come back when you have a PhD.'' And when a laureate did weigh in, it was against Drexler, on the merits. On the post's theory, a new objection after the old one is met shows only that the old one was not the ``true rejection.'' No reply a critic could make would count against the theory. By the author's own rent test, it floats.}"
+  ],
+  [
+   3823,
+   "\\cpara{Applies the idea to business: the reason a failed prospect gives may not be the real one, so fixing it may or may not change anything.}"
+  ],
+  [
+   4369,
+   "\\cpara{Applies it to disagreements, noting the author and Robin Hanson believe two rationalists should not knowingly agree to disagree.}"
+  ],
+  [
+   4619,
+   "\\cfact{This is Aumann's agreement theorem (Robert Aumann, ``Agreeing to Disagree,'' \\textsc{The Annals of Statistics}, 1976), credited only indirectly: the footnote cites Finney's blog post about it. The theorem concerns Bayesian agents who share a prior and whose posteriors are common knowledge. People satisfy neither condition. The post turns a theorem about idealized agents into a rule for how people ``should'' behave.}"
+  ],
+  [
+   4782,
+   "\\cpara{The list puts respectable sources of disagreement (mathematics, experience, professional training) beside discreditable ones (fear, self-deception, pride) with no way to tell which applies in a given case. Its practical use is as a menu of diagnoses for the other side. Every item on it is hard for the accused to disprove.}"
+  ],
+  [
+   5065,
+   "\\cpara{Lists hidden sources of disagreement, from rare but sound knowledge and hard-to-state intuitions to habit, emotional stakes, fear of past error, and self-deception.}"
+  ],
+  [
+   5630,
+   "\\cpara{True by construction. Disagreements that last are the ones whose sources are hard to expose, because easy ones would already be settled. That gives no reason to think any particular disagreement has a hidden source, and it lets the author treat every lasting objection as one.}"
+  ],
+  [
+   5869,
+   "\\cpara{The post's usable advice, ask it of yourself, arrives in the third-to-last paragraph, after most of the post has asked it of other people. The author does not turn it inward anywhere in the post (see the note on the PhD). The warning against psychoanalyzing the other comes after the post has done it at length.}"
+  ],
+  [
+   6175,
+   "\\cpara{One word, ``Still,'' reverses the previous paragraph, and asking the other person becomes ``fair game.'' Asked humbly or not, the question implies that the reason the other person gave may not be their real one. The proposed etiquette, name ``intuition-X or professional-zeitgeist-Y'' aloud and leave ``the more embarrassing possibilities'' unspoken, still sends them: the listener has just read the list. Two days later, in ``True Sources of Disagreement'' (8 December 2008), the author put the question to Hanson in public: ``I ask in all humility if Robin's true rejection is a strictly evenhandedly applied rule that rejects unvetted abstractions.''}"
+  ]
+ ]
+}

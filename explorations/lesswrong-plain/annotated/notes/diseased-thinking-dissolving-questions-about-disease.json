@@ -1,0 +1,222 @@
+{
+ "slug": "diseased-thinking-dissolving-questions-about-disease",
+ "header": "\\post{Diseased thinking: dissolving questions about disease}{Scott Alexander}{2010}{https://www.lesswrong.com/posts/895quRDaK6gR2rM82/diseased-thinking-dissolving-questions-about-disease}\n",
+ "skeleton_sha": "a5c813e84ac69cdb63e6a1ee4a265f8939f9abe8652f426c2640b54915ed4481",
+ "post_sha": "50123ebb056c6a8ea556b658b7044b0c6c5631e3f9e4f2ba511a82fb774dd904",
+ "edits": [
+  {
+   "at": 604,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 16725,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   189,
+   "\\cpara{Lists earlier posts on words and categories that this one builds on.}"
+  ],
+  [
+   605,
+   "\\cpara{Quotes George Will's charge that treating bad behavior as caused, not chosen, removes responsibility and strips people of dignity.}"
+  ],
+  [
+   963,
+   "\\cpara{The epigraph is the post's only voice from outside the forum, and the post never answers it. The column it comes from (``A Cure for Character,'' Townhall, 28 February 2010) raises points the post leaves alone or brushes aside. Under federal disability law, Will writes, a condition classed as a disorder brings ``legal accommodations.'' And children may be given ``powerful antipsychotic drugs'' when ``behavioral modification treatment can mitigate the problem.'' The quoted charge is that the therapeutic view ``strips the individual of personhood.'' The post's implicit answer (an inference) is to treat condemnation as one more ``treatment,'' applied when it works. That does not rebut the charge. It accepts the view of the person the charge describes.}"
+  ],
+  [
+   1166,
+   "\\cpara{Gives the husband's view: Sandy should stop overeating and exercise.}"
+  ],
+  [
+   1333,
+   "\\cpara{Gives the doctor's view: obesity is mostly genetic, to be treated with a diet pill and possibly surgery.}"
+  ],
+  [
+   1496,
+   "\\cpara{Gives the sister's view: obesity is a valid choice, and prejudice against fat people is like racism.}"
+  ],
+  [
+   1660,
+   "\\cpara{Says the argument heats up once each adviser hears the others' opinions.}"
+  ],
+  [
+   1774,
+   "\\cpara{The husband's charge contains the only empirical claim in the dispute: that sympathy and pills will ``prevent her from getting the willpower she needs.'' The post's own rule later turns on exactly this kind of claim, whether condemnation reduces a condition. The post never tests it.}"
+  ],
+  [
+   1996,
+   "\\cpara{Gives the doctor's reply: the husband ignores the causes and best treatments, and the sister excuses a dangerous health risk.}"
+  ],
+  [
+   2236,
+   "\\cpara{Gives the sister's reply: the husband is a jerk, and the doctor turns her behavior into a lifelong, profitable medical condition.}"
+  ],
+  [
+   2464,
+   "\\cpara{Says such arguments are common and lists many conditions that people variously call character flaws, diseases or normal variation.}"
+  ],
+  [
+   3140,
+   "\\cpara{The sister's position, that the condition is ``normal variation,'' is set aside ``with the understanding that the same techniques will apply,'' and the post never comes back to it. It is the position the post's final rule cannot reach. That rule asks only whether condemnation reduces a condition, which assumes the condition should be reduced. Whether it should be is the sister's question. ``Most people default to the doctor's point of view'' is a claim about public opinion with no evidence.}"
+  ],
+  [
+   3629,
+   "\\cpara{Announces a method and waves away the existing debate: ``the usual surface level arguments trotted out'' are ``generally inconclusive.'' None of them is named. The reader is asked to accept that the literature on medicalization has failed without seeing any of it.}"
+  ],
+  [
+   4012,
+   "\\cpara{Explains the earlier idea that a useful word names a cluster of traits that tend to occur together, and becomes useless if they do not.}"
+  ],
+  [
+   5226,
+   "\\cpara{Says the word ``disease'' likewise implies a bundle of traits that go together, and introduces a list of them.}"
+  ],
+  [
+   5662,
+   "\\clogic{Criterion 2 is written in the vocabulary of the model the post will reject: ``free will'' as ``a spiritual entity.'' It is also the criterion the post's final rule restates (see the note on ``social influences'').}"
+  ],
+  [
+   6255,
+   "\\cpara{The type specimens fit the criteria less well than the post says. The post fails obesity on (2), (3) and (5). By that reasoning, diabetes, one of its named examples, fails at least two of them (see notes).}"
+  ],
+  [
+   6577,
+   "\\clogic{Not for diabetes. The CDC says 90 to 95\\% of people with diabetes have type 2, and that it can be prevented or delayed by ``losing weight,'' ``eating a healthy diet, and getting regular physical activity.'' If obesity fails (2) because behavior affects it, so does type 2 diabetes. It also fails (5). The diagnosis is a cutoff on a continuous blood test (A1C of 6.5\\% or above), with an intermediate band called prediabetes (5.7 to 6.4\\%). Two widely separated populations would not need a middle band.}"
+  ],
+  [
+   6591,
+   "\\cpara{Gives examples of conditions that meet only some criteria: dwarfism, aging and homosexuality, each failing a different one.}"
+  ],
+  [
+   6680,
+   "\\cfact{Achondroplasia is ``the most common form of short-limbed dwarfism'' (MedlinePlus, US National Library of Medicine). It is caused by variants in a single gene, FGFR3. It is a discrete condition, not the tail of normal height variation. The post suggests, with ``seems'' and ``might,'' that dwarfism is the tail of a normal curve. For its most common form, (5) is met.}"
+  ],
+  [
+   7093,
+   "\\cpara{Places obesity among these partial cases: it roughly meets three criteria and clearly fails the other three.}"
+  ],
+  [
+   7302,
+   "\\cpara{Argues that once we know which criteria obesity meets, asking whether it is ``really'' a disease adds nothing, like asking whether Pluto is really a planet.}"
+  ],
+  [
+   7760,
+   "\\cpara{Explains that calling something a disease, though empty in itself, drives value judgments about the person.}"
+  ],
+  [
+   7985,
+   "\\cpara{Says that a real disease earns the patient sympathy while a non-disease earns blame, as with shyness versus social anxiety disorder.}"
+  ],
+  [
+   8627,
+   "\\clogic{No evidence is given, and there is evidence against the general premise that a psychiatric diagnosis brings sympathy. Corrigan and Watson (\\textsc{World Psychiatry}, 2002) open their review: people with serious mental illness ``are challenged by the stereotypes and prejudice that result from misconceptions about mental illness.'' ``Special privileges'' is not explained.}"
+  ],
+  [
+   8641,
+   "\\cpara{Adds that seeking medical treatment is accepted for real diseases but called a quick fix otherwise, and some doctors avoid recommending surgery on moral grounds.}"
+  ],
+  [
+   9120,
+   "\\cpara{The figure (checked at the link) shows six nodes, Rare, Discrete, Involuntary, Biological, Medicable and Unpleasant, each with an arrow into a central node, Disease. From Disease two arrows lead out to ``Okay to treat?'' and ``Deserves sympathy?''.}"
+  ],
+  [
+   9231,
+   "\\cpara{Argues that the disease label should be empty once the traits are known, but matters because it decides sympathy and permission to treat.}"
+  ],
+  [
+   9577,
+   "\\cpara{The post's promise: settle sympathy and treatment ``independently of the central node `disease' or of the criteria that feed into it.'' Hold the post to this sentence. Its rule for sympathy turns out to be criterion 2 in new words (see the notes below).}"
+  ],
+  [
+   9963,
+   "\\cpara{The opposing view is built to be rejected. No evidence is given that ordinary attitudes ``mainly reflect'' this model. The model is also loaded: it makes free will ``a spiritual entity,'' so that anyone who blames people is committed to spirits. The brain-tumor case is hypothetical, and nearly every view of blame, not only this one, would excuse the patient.}"
+  ],
+  [
+   11051,
+   "\\cpara{Explains that under this view one must tell biological from spiritual causes to avoid blaming wrongly or excusing sin, and nobody can reliably do that.}"
+  ],
+  [
+   11667,
+   "\\cpara{``We believe it's biology all the way down.'' The first person plural offers the reader a side to join, the determinist consequentialists who ``can do better,'' before the pairing is argued. Determinism does not imply consequentialism, and consequentialism does not need determinism. The post pairs the two because the pair gives its answer, and it never argues for the pairing.}"
+  ],
+  [
+   12022,
+   "\\cpara{The paragraph on which the whole solution rests, and it carries its central distinction by two extreme examples, music taste and brain tumors. Every condition the post is about lies between them, and the paragraph does not say where.}"
+  ],
+  [
+   12426,
+   "\\clogic{Compare criterion 2: ``Something involuntary and completely immune to the operations of free will.'' ``Completely immune to such influences'' is the same test with ``social influences'' put where ``free will'' was. The post promised to decide sympathy ``independently of \\ldots\\ the criteria that feed into'' the disease node. Its new test is one of those criteria, renamed.}"
+  ],
+  [
+   12496,
+   "\\cpara{Presented as the determinist's new model, and it is old. Moritz Schlick, \\textsc{Problems of Ethics} (1931), chapter 7, held that punishment is ``an educative measure'' and that the question of who is responsible is ``a matter only of knowing who is to be punished or rewarded, in order that punishment and reward function as such'' (quoted by C. A. Campbell, \\textsc{Mind}, 1951). Campbell's answer is the standard objection, and the post never meets it. Punishing a dog that steals its master's chops changes the dog's future behavior, so on this view the dog is responsible, which nobody believes. The one empirical premise here, that condemnation reduces alcoholism, enters as ``one might infer.''}"
+  ],
+  [
+   13447,
+   "\\cpara{The rule, and the post supplies none of the evidence it needs. Whether condemnation ``decreases the incidence'' of a condition is an empirical question. The rule is tested on two cases chosen for obvious answers, cancer and laziness, and the laziness answer is asserted (``very well might cure''). For obesity, the post's lead case, a review of the evidence published in June 2010 proposed ``that weight stigma is not a beneficial public health tool for reducing obesity.'' It reported that stigma increases ``unhealthy eating behaviors and lower levels of physical activity'' (Puhl and Heuer, \\textsc{American Journal of Public Health}).}"
+  ],
+  [
+   13697,
+   "\\clogic{``Incidence'' is a rate across a population. Condemning Sandy could lower the rate in other people, by deterring them, even if it does nothing for Sandy. As written, the rule permits condemning someone who cannot change, as long as others are deterred.}"
+  ],
+  [
+   13833,
+   "\\clogic{A theory that ``the majority of the human race would disavow'' is justified by an appeal to the intuitions of that majority. If intuition is the test, the rule has to face the cases where intuition turns against it, such as Campbell's dog (previous note) and the deterrence case (note above). The post tests it only on cases picked to agree with it.}"
+  ],
+  [
+   14402,
+   "\\cpara{The case that opened the post gets no answer. The rule is applied to obesity and yields ``different answers depending on'' three unknowns. The only cost of condemnation counted is ``hurting obese people's feelings.'' The review cited in the previous note finds a cost to health as well.}"
+  ],
+  [
+   14927,
+   "\\cpara{Asks whether using a drug is acceptable when a social remedy also works, and says the author's answer is yes though many disagree.}"
+  ],
+  [
+   15267,
+   "\\cpara{Dismissal by assertion. The objection (medication as a ``band-aid that doesn't affect the deeper problem'') is an empirical worry about whether the underlying problem is solved. It does not depend on deontology, and ``biology all the way down'' does not answer it.}"
+  ],
+  [
+   15552,
+   "\\cpara{A misapplied reversal test. Bostrom and Ord's test (\\textsc{Ethics}, 2006) says: when a change to ``a certain parameter'' is thought bad, ``consider a change to the same parameter in the opposite direction.'' The objection is that an easy medical solution prevents people from learning responsibility. The parameter is the availability of an easy solution. Its reverse is making solutions harder to get, not addicting schoolchildren to heroin, which changes a different parameter. The test, when it applies, also only puts ``the onus'' on the objector to explain their view. It does not show that the objector ``must believe'' anything.}"
+  ],
+  [
+   15925,
+   "\\clogic{The objection has shifted. The stated complaint was that an easy medical solution ``prevents people from learning personal responsibility.'' The claim now refuted is that responsibility ``is more important than being not addicted to heroin.'' Nobody in the post holds the second.}"
+  ],
+  [
+   16380,
+   "\\cpara{The explanation introduced here is psychological: objectors are protecting their moral status. That is ``deconstructing its motives,'' the move that ``Dissolving the Question,'' listed under ``Related to,'' describes as trying ``to dismiss the opposition by deconstructing its motives.''}"
+  ],
+  [
+   16727,
+   "\\cpara{Quotes Katja Grace: people who made sacrifices for a cause oppose easier solutions, because the sacrifice itself has come to signal virtue.}"
+  ],
+  [
+   17605,
+   "\\cpara{The quoted pattern does not fit the case. Grace's pattern is about people who make sacrifices ``toward solving problems that don't threaten them personally'': recycling, fair trade. A person who diets to avoid obesity is solving a problem that threatens them personally.}"
+  ],
+  [
+   17822,
+   "\\cpara{Lists five objections and dismisses them in one sentence. One of them, ``children,'' is the concrete harm raised in the epigraph's source column: antipsychotics given where behavioral treatment might work. The post answers it with ``the same good-enough solutions,'' and hands its own exception to a reader's comment (``but see here'') without saying what the exception is.}"
+  ],
+  [
+   18715,
+   "\\cpara{Concludes that people seeking effective treatment should not be denied it or stigmatized, whether or not the condition counts as medical.}"
+  ],
+  [
+   18938,
+   "\\cpara{Summarizes: the ``real disease'' debate looks medical but is really about who gets sympathy, blame and treatment.}"
+  ],
+  [
+   19221,
+   "\\cpara{The summary changes the rule. The body's rule was to condemn if condemnation reduces the condition ``enough to be worth the hurt feelings.'' The summary says to blame and stigmatize where they are ``the most useful methods for curing or preventing the condition.'' A method can be the most useful available and still not be worth its costs. ``Stigmatize'' appears here for the first time, in the last paragraph. ``Allows us to do so more effectively'' claims a comparison that was never made: no case is worked through under both models.}"
+  ]
+ ]
+}

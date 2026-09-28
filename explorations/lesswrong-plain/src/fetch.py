@@ -20,6 +20,7 @@ from markdownify import markdownify
 API_URL = "https://www.lesswrong.com/graphql"
 SITE_URL = "https://www.lesswrong.com"
 HIGHLIGHTS_COLLECTION_ID = "62bf5f5dc581cd211cc67d49"  # "Highlights from the Sequences"
+RAZ_COLLECTION_ID = "oneQyj4pw77ynzwAF"  # "Rationality: A-Z" (slug "rationality")
 REQUEST_TIMEOUT_S = 120
 PAUSE_BETWEEN_POSTS_S = 1.0  # be polite to the server
 
@@ -69,6 +70,20 @@ def highlights_manifest() -> list[dict]:
     return entries
 
 
+def rationality_az_manifest() -> list[dict]:
+    """All posts of "Rationality: A-Z", in reading order, with book and sequence titles."""
+    q = f"""{{ collection(input:{{selector:{{_id:"{RAZ_COLLECTION_ID}"}}}}) {{
+        result {{ books {{ title sequences {{ title chapters {{ posts {{ {POST_FIELDS} }} }} }} }} }} }} }}"""
+    entries = []
+    for book in graphql(q)["collection"]["result"]["books"]:
+        for seq in book["sequences"]:
+            for chapter in seq["chapters"]:
+                for p in chapter["posts"]:
+                    entries.append(post_record(p, book=book["title"], section=seq["title"],
+                                               order=len(entries) + 1))
+    return entries
+
+
 def review_winners_manifest() -> list[dict]:
     """All Annual Review winners, sorted by year then by rank (rank 0 = top)."""
     q = f"""{{ GetAllReviewWinners {{ {POST_FIELDS}
@@ -88,7 +103,8 @@ def review_winners_manifest() -> list[dict]:
 
 def write_manifests() -> None:
     MANIFEST_DIR.mkdir(parents=True, exist_ok=True)
-    for name, build in [("highlights", highlights_manifest), ("review_winners", review_winners_manifest)]:
+    for name, build in [("highlights", highlights_manifest), ("review_winners", review_winners_manifest),
+                        ("rationality_az", rationality_az_manifest)]:
         entries = build()
         path = MANIFEST_DIR / f"{name}.json"
         path.write_text(json.dumps(entries, indent=2, ensure_ascii=False))

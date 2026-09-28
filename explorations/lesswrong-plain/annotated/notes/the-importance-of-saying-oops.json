@@ -1,0 +1,61 @@
+{
+ "slug": "the-importance-of-saying-oops",
+ "header": "\\post{The Importance of Saying \"Oops\"}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/wCqfCLs8z5Qw4GbKS/the-importance-of-saying-oops}\n",
+ "skeleton_sha": "a808414c6438a2b42c2f4ecc05baaa9f53170b43cff8b2f71459dc85ad9d195d",
+ "post_sha": "2ce6bbfe6c8edad0c8f82d160f6c64cad1ddcbdb3d2b0b358ed464823797aa54",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Introduces a history of Enron's collapse and jokes that its title, The Smartest Guys in the Room, fits the book worst.}"
+  ],
+  [
+   315,
+   "\\cpara{The essay's only case, and it is the wrong kind of case. Enron's executives were not people who failed to realize a mistake; several were convicted of fraud. Skilling was convicted in May 2006, more than a year before this essay, on 19 counts: ``conspiracy, 12 counts of securities fraud, one count of insider trading, and five counts of making false statements to auditors'' (US Department of Justice). The essay's own invented line gives this away: ``how are we going to hide the problem on our balance sheet?'' People who plan to hide a problem have seen it. Enron illustrates concealment, not the slow self-deception the essay is about. The conviction is not mentioned.}"
+  ],
+  [
+   1138,
+   "\\cfact{At the House hearing of 7 February 2002, Skilling, speaking of the late Cliff Baxter, said: ``He believed, as I believed, that we had created a great company.'' He also said that on the day he left, ``I believed the company was in strong financial condition.'' The essay reads these as a failure to say ``oops.'' On the record they are denials of knowledge, by a man later convicted of fraud.}"
+  ],
+  [
+   1152,
+   "\\cpara{The thesis, in three sentences. The first is a truism. The second, that admitting only small errors yields only small changes, is asserted without evidence. The third turns it into a rule about motivation, also without evidence. Whether many small corrections can add up to a large change, the essay does not ask.}"
+  ],
+  [
+   1410,
+   "\\cpara{Sets up ``Traditional Rationality,'' capitalized, as the foil. It is a position the author names, summarizes in a list, and dismisses as ``fuzzy verbalisms.'' No one who holds it is quoted. The first item on the list, bold theories exposed to falsification, is Karl Popper's, and Popper is not named; the sources given are a novelist and a physicist the author learned from.}"
+  ],
+  [
+   1827,
+   "\\cpara{The one distinction the essay adds, speed of concession, is asserted to be missing from the tradition. No evidence is offered that scientists or philosophers ignored it.}"
+  ],
+  [
+   2321,
+   "\\cpara{The essay's evidence for its own method is withheld. The author made ``a large mistake,'' switched methods, and does not say what the mistake was: ``well, it's a long story.'' An essay about the importance of confessing large mistakes openly declines to state its author's. The story came a year later, in ``The Magnitude of His Own Folly'' (30 September 2008): in late 2002 came the realization of what the author's AI proposals of 1997 ``really would have done.'' That this is the mistake meant here is my inference from the dates; the essay itself gives the reader nothing to check.}"
+  ],
+  [
+   2688,
+   "\\cpara{Tells how, looking back after admitting the mistake, the author saw that it had been conceded in small grudging steps and that admitting it all at once would have been faster.}"
+  ],
+  [
+   3219,
+   "\\cpara{Claims that admitting a large mistake, though painful, brings a strong advantage and can change your life.}"
+  ],
+  [
+   3370,
+   "\\cpara{Urges having a single moment of humbling realization that faces the fundamental problem, instead of splitting it into small mistakes.}"
+  ],
+  [
+   3566,
+   "\\cpara{The practical advice, with its one hedge in the wrong place. ``It is surely superior to get it right the first time'' hedges a truism. ``Even hedonically, it is better to take one large loss than many small ones'' is an empirical claim about how losses feel, stated flatly with no source. (Prospect theory's convex curve for losses predicts it, but the post does not say so, and the experimental record is mixed.) ``The alternative is Enron'' repeats the misdiagnosis: Enron's alternative was fraud.}"
+  ],
+  [
+   3934,
+   "\\cpara{After a confession it does not detail, the author turns to ``others,'' unnamed, and lists their excuses in italics for the reader to recognize (``I was right in principle,'' ``It could have worked''). The middle of the essay addresses the reader directly (``It is important to have the watershed moment''), but it gives no method for finding one's own large mistake; the one concrete tool it hands over is a list of phrases to recognize in others.}"
+  ],
+  [
+   4723,
+   "\\cpara{The ending restates the thesis as a metaphor. Two months later ``The Meditation on Curiosity'' (October 2007) advised readers to ``drop down your belief by one tiny bite at a time.'' The two can be reconciled, since small updates on new evidence differ from refusing to admit a known mistake, but neither post says so.}"
+  ]
+ ]
+}

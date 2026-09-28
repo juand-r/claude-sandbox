@@ -1,0 +1,85 @@
+{
+ "slug": "how-much-evidence-does-it-take",
+ "header": "\\post{How Much Evidence Does It Take?}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/nj8JKFoLSMEmD3RGp/how-much-evidence-does-it-take}\n",
+ "skeleton_sha": "f45b033601e63bfb247ce255155fe9326ceb5b554b1ce6e1c7b50cc14fded532",
+ "post_sha": "8d69c00bc76444af3eeb8ed70420c567d4cffcac9b4bdac702ba5a4697e26328",
+ "edits": [],
+ "notes": [
+  [
+   147,
+   "\\cpara{Recalls the earlier definition of evidence as an event that happens differently depending on the truth, and asks how much of it a belief needs.}"
+  ],
+  [
+   469,
+   "\\cpara{The choice of example decides what the post can show. A lottery is a finite set of possibilities, all equally likely, whose size is known exactly. That is the one situation in which ``how much evidence'' has an exact answer. Real questions have no known number of alternatives and no agreed starting probability. The post calls this ``start[ing]'' and never moves on.}"
+  ],
+  [
+   1009,
+   "\\cpara{Introduces a test: a box that always beeps for the winning combination and beeps a quarter of the time for a losing one, a likelihood ratio of 4 to 1.}"
+  ],
+  [
+   1571,
+   "\\cpara{Shows the box's limits: tried on every combination, it would also beep for about 33 million losers.}"
+  ],
+  [
+   1935,
+   "\\cpara{Says the box still helps: it improves your chance from 1 in 131 million to 1 in about 33 million.}"
+  ],
+  [
+   2221,
+   "\\cpara{Adds a second box and multiplies (checked: 131,115,984 divided by 16 is 8,194,749). Everything after this depends on the boxes being independent, and the post simply stipulates it, three times, in italics. It never says that real pieces of evidence are rarely independent. The author's own ``Argument Screens Off Authority'' is about exactly that problem.}"
+  ],
+  [
+   2759,
+   "\\cpara{Explains that evidence 131 million times likelier for the winner gives only an even chance, since about one loser also passes, leaving two tickets.}"
+  ],
+  [
+   3483,
+   "\\cstyle{``Fifty percent odds'' confuses odds with probability: fifty percent is a probability, and the odds are 1 to 1. The next paragraph speaks of ``the odds of it beeping'' being 1 and 0.25, which are probabilities; a later one says ``the chance of winning'' is 128:1, which is odds. The post that teaches the difference (``Odds of 2 to 1 mean \\ldots\\ the probability \\ldots\\ is 2/3'') blurs it three times.}"
+  ],
+  [
+   3497,
+   "\\cpara{Recasts the problem in odds: start at 1 winner to 131,115,984 losers and multiply by 1 to 0.25 for each box.}"
+  ],
+  [
+   3966,
+   "\\cpara{Introduces measuring evidence in mathematician's bits, the logarithm base 1/2 of a probability: learning that an outcome of probability 1/8 happened gives three bits.}"
+  ],
+  [
+   4449,
+   "\\clogic{This defines the information in an outcome: minus the base-2 logarithm of its probability. The next paragraph counts something else. Each box there adds 2 bits because its likelihood ratio is 4, and 2 is the base-2 logarithm of 4. The two agree in the lottery only by accident, because almost every ticket loses, so a beep happens about a quarter of the time. Test the same box on a shortlist where half the tickets win: a beep then carries under 0.7 bits of information in the post's sense, and still 2 bits of evidence. The reader is taught one measure and then asked to add up another.}"
+  ],
+  [
+   4449,
+   "\\cfact{Measuring evidence by the logarithm of the likelihood ratio is Alan Turing's and I. J. Good's ``weight of evidence.'' Turing's unit, the deciban, ``measured the smallest weight of evidence perceptible to the intuition'' (IEEE Computer Society, Computer Pioneers: Good). Good published the idea in \\textsc{Probability and the Weighing of Evidence} (1950). Neither is named.}"
+  ],
+  [
+   4463,
+   "\\cpara{Works out the numbers: 14 boxes, or 28 bits, bring the odds to 2 to 1, a two-thirds chance; each further box, 2 bits, multiplies the odds by 4.}"
+  ],
+  [
+   5061,
+   "\\cpara{Concludes that about 34 bits of evidence would justify a strong belief, defined as under 1\\% chance of being wrong, that a ticket wins.}"
+  ],
+  [
+   5290,
+   "\\cpara{The generalization, drawn from a single example. Three factors are listed as if they were equal. The second, how unlikely the hypothesis ``seems a priori,'' is where every real disagreement lies, and it gets one clause. In the lottery the starting probability was given. Everywhere else, choosing it is the problem, and ``seems'' is all the post says about it. The title question, answered honestly, is: it depends on a number you usually do not have.}"
+  ],
+  [
+   5612,
+   "\\cpara{Warns that you cannot accept the first combination passing ten boxes: about 131 losers pass for each winner, so the conclusion would outrun the evidence.}"
+  ],
+  [
+   5701,
+   "\\clogic{Loosely worded. A lucky guess is accurate. What thin evidence cannot give is confidence that is warranted, or accuracy that is reliable, which is probably what the post means by ``accurately'' in the next paragraph.}"
+  ],
+  [
+   6313,
+   "\\cpara{The analogy fits the reliable reading only. A car without fuel cannot move at all; a belief without enough evidence can still be right.}"
+  ],
+  [
+   6740,
+   "\\cpara{Ends the analogy: you can pretend, but accurate beliefs need evidence as a car needs fuel, and more for going further.}"
+  ]
+ ]
+}

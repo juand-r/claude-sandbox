@@ -1,0 +1,73 @@
+{
+ "slug": "what-is-evidence",
+ "header": "\\post{What is Evidence?}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/6s3xABaXKPdFwA3FS/what-is-evidence}\n",
+ "skeleton_sha": "87c304dbc0ec204eb2e26c703c403c2cd02988ae119fd6faef4628651e9be0af",
+ "post_sha": "26f658ec7de59e03d1b8b63f30f5c489bb32e2276ed3d1b9fe418977e634eb5f",
+ "edits": [],
+ "notes": [
+  [
+   133,
+   "\\cpara{Two epigraphs about truth, for a post about evidence. Tarski wrote, in the 1944 paper this sentence comes from, that ``the semantic definition of truth implies nothing regarding the conditions under which a sentence like (1) \\ldots\\ can be asserted,'' sentence (1) being ``snow is white.'' He called his conception ``completely neutral'' between empiricists, realists and idealists. The post borrows his sentence to open an argument about when beliefs are warranted, the one question Tarski said his definition does not touch.}"
+  ],
+  [
+   404,
+   "\\cpara{Traces the chain of causes, from sunlight to retina to brain, by which you come to believe your shoelaces are untied, so your mind mirrors the shoelaces.}"
+  ],
+  [
+   1211,
+   "\\cpara{The definition, and the essay's only direct answer to its title, in its second paragraph. It is then reworded twice (see the note on the fourth paragraph), and the rest of the essay is about something else: whether private beliefs should be given up.}"
+  ],
+  [
+   1329,
+   "\\clogic{The causal requirement fits mathematics awkwardly. A calculator's display is evidence that a number is prime, but what causes the display is a computation, not primality itself. The essay does not say how its definition covers mathematics, where most of its own later examples (probabilities, bits) live.}"
+  ],
+  [
+   1729,
+   "\\cpara{Explains that an influence counts as evidence only if it differs with the facts: a machine that beeps for every lottery number tells you nothing.}"
+  ],
+  [
+   2163,
+   "\\cpara{The third wording of the definition in three paragraphs: ``links of cause and effect,'' then ``happen differently,'' then Shannon mutual information ``relative to your current state of uncertainty.'' These are not one definition at three levels of formality. The first is a fact about the world. The last depends on what the reader currently believes, so the same event can be evidence for one person and not for another. The essay moves from physics into the reader's head without noticing, and the precise version sits in a parenthesis.}"
+  ],
+  [
+   2569,
+   "\\cpara{Argues that correlation with a fact can pass along a causal chain if processed well: a rock keeps no trace of the shoelaces, but a photo or a working eye and brain do.}"
+  ],
+  [
+   3188,
+   "\\cpara{The turn to the essay's real target. ``This is why'' claims a derivation, but nothing in the rock paragraph leads here. The principle, that a belief is worth holding only if evidence could change it, is fallibilism. The Internet Encyclopedia of Philosophy: ``The term `fallibilism' comes from the nineteenth century American philosopher Charles Sanders Peirce, although the basic idea behind the term long predates him.'' The essay calls it ``paradoxical-seeming'' and credits it to ``rationalists,'' the in-group, and states the rule without applying it to any belief it holds.}"
+  ],
+  [
+   3544,
+   "\\clogic{A motive (``a rather obvious trick'') assigned with no evidence. The target is religion, never named, so no believer's actual position is stated or answered.}"
+  ],
+  [
+   3918,
+   "\\cpara{The italic sentence is true by definition. The essay never defines ``rational thought'' except as whatever produces beliefs entangled with the facts, so ``rational thought produces beliefs which are themselves evidence'' restates the definition. The condition ``if your eyes and brain work correctly'' does all the work and is never examined.}"
+  ],
+  [
+   4093,
+   "\\cpara{Extends entanglement to testimony. ``If your tongue speaks truly'' assumes away the problem of testimony: the listener cannot see whether the tongue speaks truly. The cellphone example is again chosen so the problem cannot arise. Nobody lies about shoelaces.}"
+  ],
+  [
+   4486,
+   "\\cpara{The essay's central inference. ``Among honest folk who believe each other to be honest'' makes transmission depend on the listener's trust. The next sentence aims at something narrower, a claim that one's reasons are inherently ``not transmissible,'' and calls that ``suspicious.'' Against such a claim the point is fair. What the essay does not give is a way to tell a reason that is hard to share from one that tracks nothing.}"
+  ],
+  [
+   4841,
+   "\\cpara{The conclusion: if your own model says your beliefs should not persuade others, stop believing them. The target, by inference from the ``blind faith'' paragraph, is the religious believer. ``Stop believing'' is issued in one clause, with nothing on how to tell a private reason that tracks the truth from one that does not.}"
+  ],
+  [
+   5149,
+   "\\cpara{Two claims, both unsupported. First, grasping the argument ``on a gut level'' makes belief stop ``automatically.'' That is a claim about psychology, with no evidence. Second, ``not entangled'' means ``not accurate.'' That does not follow (see the next note).}"
+  ],
+  [
+   5365,
+   "\\clogic{A stopped clock is not entangled with the time, and it is right twice a day. A belief that is not entangled is unreliable, not false. The essay equates the two, then uses the Tarski equivalence, which is about truth, to finish an argument about reliability.}"
+  ],
+  [
+   5525,
+   "\\cpara{The closing demand: explain why your thought processes track reality. The explanation would have to come from the same thought processes, a circle the essay does not mention. The essay also does not meet its own demand. It describes what reliable reasoning would do and never explains why its author's reasoning is reliable. The last clause, ``or it should be,'' hedges the conclusion it has just insisted on.}"
+  ]
+ ]
+}

@@ -1,0 +1,272 @@
+{
+ "slug": "local-validity-as-a-key-to-sanity-and-civilization",
+ "header": "\\post{Local Validity as a Key to Sanity and Civilization}{Eliezer Yudkowsky}{2018}{https://www.lesswrong.com/posts/WQFioaudEH8R7fyhm/local-validity-as-a-key-to-sanity-and-civilization}\n",
+ "skeleton_sha": "4267a2a6afc7047e3eb2be0c540ce35658a353d622d44a38eaea331e9334eae1",
+ "post_sha": "c54186b498f88ca2f045afaff1da63a5decc8776a5dd798384d1793edfc3f575",
+ "edits": [
+  {
+   "at": 20199,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   323,
+   "\\cpara{The thesis, and it is smaller than the title. The title promises a ``key to sanity and civilization.'' The summary claims only ``a similarity.'' Nothing in the essay argues that the similarity is a cause, so the title is never earned.}"
+  ],
+  [
+   416,
+   "\\cpara{Lists the three ideas: a proof step is valid on its own terms; arguments should be judged apart from their conclusions; and cooperation needs rules applied fairly even to allies.}"
+  ],
+  [
+   874,
+   "\\clogic{The first item is about validity: a step that cannot turn a truth into a falsehood. This item is about whether arguments are ``good or bad,'' which includes weak evidence, where no step is invalid at all. The essay never says how the first becomes the second. The word ``similarity'' covers the gap.}"
+  ],
+  [
+   1398,
+   "\\cpara{Defines local validity with one example. The wording of the definition is loose on the one point that matters (see the next note).}"
+  ],
+  [
+   1771,
+   "\\cfact{Loosely put. In model theory an argument is valid ``if in any model in which the premises are true, the conclusion is true too'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Logical Consequence''). Validity is a claim about every model. That is what makes it local: you can check the step without knowing which model you are in. ``Relative to a given model'' can be read as ``in any given model,'' but read the other way it gives away the property the essay is named for. The summary's ``in general'' is clearer.}"
+  ],
+  [
+   2119,
+   "\\cpara{The counterexample is correct: 0 times 4 and 0 times 17 are both 0. It is also the essay's last piece of mathematics. From here on, ``local validity'' travels by analogy only, and the analogy is never tested on a case where it might fail.}"
+  ],
+  [
+   2571,
+   "\\cpara{A claim about psychology with no evidence: that nobody grasps proof without an intuitive sense of approving each step. ``Approval'' turns a logical property into an attitude a person gives, which is what later lets the essay treat validity and fairness as one ``mental motion.''}"
+  ],
+  [
+   3051,
+   "\\cpara{Trust in steps over conclusions has a cost the paragraph leaves out: the reader who trusts steps is the one fooled by an invalid step they failed to spot, such as the previous paragraph's xy = xz. It never says when a surprising conclusion should send you back to the steps.}"
+  ],
+  [
+   3442,
+   "\\cpara{The bridge from mathematics to everything else is one sentence and the word ``generally.'' In mathematics a bad step is an invalid one; here a ``bad argument'' will turn out to mean weak evidence (the hot day), where no step is invalid. The key term changes meaning at this sentence.}"
+  ],
+  [
+   3569,
+   "\\cpara{Asserts that good arguments for false conclusions are ``much rarer'' than bad arguments for true ones. No evidence is given. The support is a definition and one historical example, and the example is wrong (see notes).}"
+  ],
+  [
+   4092,
+   "\\cfact{This is the popular story, and for Kelvin's cooling-Earth argument it is wrong. England, Molnar and Richter (\\textsc{GSA Today}, 2007) show that adding radioactivity to Kelvin's calculation ``does not invalidate its conclusion.'' The flaw was the assumption of a rigid Earth losing heat only by conduction, and John Perry pointed it out in 1895, before radioactivity was known. The authors call the nuclear version a ``myth.''}"
+  ],
+  [
+   4149,
+   "\\cpara{Jokes that bad arguments for true conclusions are easy to come by: a true conclusion does not make an argument any harder to botch.}"
+  ],
+  [
+   4459,
+   "\\cpara{Claims that a strong mind takes an interest in whether an argument is good or bad regardless of whether it agrees with the conclusion.}"
+  ],
+  [
+   4716,
+   "\\cpara{Gives examples: such a person rejects a bad argument against the intelligence explosion even while doubting it, and winces at one hot day offered as proof of global warming.}"
+  ],
+  [
+   5123,
+   "\\cfact{The link goes to the author's own reply to François Chollet on the MIRI blog, intelligence.org (6 December 2017). That reply quotes Chollet: ``there is no such thing as `general' intelligence.'' The essay drops ``general,'' and the argument it calls terrible becomes one Chollet did not make. An essay about judging arguments fairly misstates the one opposing argument it links to.}"
+  ],
+  [
+   5487,
+   "\\cpara{Contrasts two versions of the attitude: one person finds a reason why the hot day still counts; another reasons that if a cold day proves nothing, a hot day cannot either.}"
+  ],
+  [
+   6099,
+   "\\cpara{Says the author would trust the second person more, and would pay at least 5\\% more for a used car from them.}"
+  ],
+  [
+   6235,
+   "\\cpara{Describes the first person as still loyal to their side: they will reject an allied argument if forced, but still count movement toward the right answer as progress.}"
+  ],
+  [
+   6576,
+   "\\cpara{Describes the second person as judging each step by the rules, like a mathematician, without feeling that doing so betrays their side.}"
+  ],
+  [
+   6901,
+   "\\cpara{The founding anecdote. Juror No. 70, asked ``You have negative feelings?'', answered ``Very'' and said ``I can be fair to one side but not the other'' (transcript excerpts, August 2017). The essay's worry is the attitude voiced, that fairness is something one can give to one side, not the jury selection, which worked. One prospective juror is thin evidence for a ``harbinger of the collapse of civilization.''}"
+  ],
+  [
+   7450,
+   "\\cpara{Tells how the idea returned during the debate over removing Al Franken, when some Democrats feared that policing only their own side would hand the Senate to Republicans.}"
+  ],
+  [
+   8096,
+   "\\cpara{The post credits voters, and the context bears that out. On 4 December 2017 President Trump endorsed Roy Moore and the Republican National Committee re-engaged in the race; Moore still took 48.34\\% to Jones's 49.97\\%. The party itself backed the candidate, so the policing came from voters only.}"
+  ],
+  [
+   8248,
+   "\\cpara{Gives the two replies: one side called it cynical to punish misconduct only when Republicans do it; the other said strict self-policing would give Republicans the Senate.}"
+  ],
+  [
+   8629,
+   "\\cpara{The diagnosis, hedged (``I'm guessing''), and never tested. The essay later calls one position ``coherent'' but never says which of the two replies was right. The knot is named and left tied.}"
+  ],
+  [
+   8758,
+   "\\cpara{A detour into what law is for, stating contested opinions as settled (marijuana laws are ``in fact evil''). Nothing here advances the argument about local validity.}"
+  ],
+  [
+   9640,
+   "\\cpara{Explains that, if law is meant to enforce goodness, openly declining to enforce the rules against one's own senators looks like giving up, perhaps a sign of civilizational decline.}"
+  ],
+  [
+   9918,
+   "\\cpara{Introduces a second view: legal codes serve more than one function, just as money is both a store of value and a medium of exchange.}"
+  ],
+  [
+   10095,
+   "\\cpara{This undercuts the third thesis. If enforcement is ``simply not effective enough to count for the vast majority of human cooperation,'' and civilization ``is free-riding a whole lot on innate altruism,'' unfair enforcement cannot by itself make ``civilization fall.'' The essay states both and reconciles neither.}"
+  ],
+  [
+   10937,
+   "\\cpara{Sums up: law both expresses part of a shared idea of the good and manages a game among parties with different interests.}"
+  ],
+  [
+   11091,
+   "\\cpara{The essay's one piece of formal game theory, and it is loose. Mutual cooperation is not an equilibrium of the Prisoner's Dilemma; it becomes one only after the penalty changes the payoffs, which ``enforced'' implies but the paragraph does not spell out. The figure (2.9, 2.9) assumes a cooperation payoff of 3 that the reader is not given until section v.}"
+  ],
+  [
+   11443,
+   "\\cpara{The essay's real claim about law, in two sentences, with no case of it happening. ``It is in your interest to blow up the current equilibrium'' is a prediction. The essay never shows any group, anywhere, doing so for this reason.}"
+  ],
+  [
+   11831,
+   "\\cpara{The paragraph calls ``coherent'' a policy of not punishing your own side unless the other side punishes theirs. That is conditional enforcement: fairness offered on terms. The essay condemns ``be fair to one side but not the other'' and calls this coherent, and it never says how to tell the two apart. On the Doug Jones lesson, see the note above.}"
+  ],
+  [
+   12252,
+   "\\cpara{Claims that human law depends on rules that feel simple and general enough to apply to every case.}"
+  ],
+  [
+   12387,
+   "\\cpara{Explains that this reliance on simple rules comes from human cognitive limits: superintelligences could agree on far more detailed arrangements.}"
+  ],
+  [
+   12816,
+   "\\cpara{Four examples of ``simple'' law, none described. ``These are the kinds of laws that must be simple in order to exist'' is asserted.}"
+  ],
+  [
+   13420,
+   "\\cpara{Argues that hunter-gatherers lack long legal codes because they lack the time and resources to write them, not because they understand the costs of complex rules.}"
+  ],
+  [
+   14024,
+   "\\cpara{Claims that when people put the unwritten law into words, it comes out as short universal rules, such as exile for anyone who kills without being attacked first.}"
+  ],
+  [
+   14410,
+   "\\cpara{Tells how writing down the law let everyone know it and know they were safe if they obeyed it, and cites Heinlein calling this the key moment in political history.}"
+  ],
+  [
+   14784,
+   "\\cfact{No source is given for the Heinlein claim, and I could not find one. The reader cannot check it.}"
+  ],
+  [
+   14798,
+   "\\cpara{Three hedged guesses in a row (``I for one rather doubt,'' ``I expect,'' ``I suspect''). The first has evidence the author does not cite: ``No Mesopotamian legal document explicitly references the Code or any other law collection'' (Wikipedia, ``Code of Hammurabi''). If the most famous early code may not have been applied law, the story of written law creating ``common knowledge'' and then being abused has no example.}"
+  ],
+  [
+   15183,
+   "\\cpara{Adds that once the law was written down, people kept adding more rules to it.}"
+  ],
+  [
+   15360,
+   "\\cpara{Claims that written law has become too costly, slow and unreliable to serve its purpose, so real enforcement now happens through media, reputation and informal networks.}"
+  ],
+  [
+   16301,
+   "\\cpara{Concludes, resigned, that written law was a privilege that was abused and has been lost.}"
+  ],
+  [
+   16451,
+   "\\cpara{Argues that what remains of the law must be simple enough for a community to know and apply without writing or judges, or the group will not hold together.}"
+  ],
+  [
+   17123,
+   "\\cpara{Warns that this unwritten law breaks down once people believe the deciders will ignore the rules and rule according to whose interests are at stake.}"
+  ],
+  [
+   17362,
+   "\\cpara{The link to local validity, at last: rules ``that can be locally checked.'' The next sentence takes it back: the rules are ``not actually algorithmically simple.'' Human law, then, is not locally checkable; it only feels so. From here the analogy with proof rests on a feeling.}"
+  ],
+  [
+   17915,
+   "\\clogic{The essay's only real-world case of unequal enforcement, the thing its thesis is about, sits in a subordinate clause with no source. The ``regardless of whether'' makes it irrelevant to the sentence's own point. A novel and a half-remembered story get paragraphs.}"
+  ],
+  [
+   17956,
+   "\\cpara{Explains that following the rules can feel like a real loss, such as giving up a gain or seeing an ally punished, and that this is coherent once law is seen as serving cooperation.}"
+  ],
+  [
+   18809,
+   "\\cpara{Claims that people can accept such losses when the rules lead to a better outcome for all and are enforced about equally on everyone.}"
+  ],
+  [
+   19185,
+   "\\cpara{The one historical case of impartial law is misremembered in the detail that gives it force. The looting ban, the hat, the tears and the execution match the story of Lü Meng at Jiangling (about 219) in the \\textsc{Records of the Three Kingdoms}, which I take to be the story meant. The man executed was a soldier from Lü Meng's home region, not his son. The essay does flag that it could not find the story.}"
+  ],
+  [
+   19546,
+   "\\cpara{One novel read in childhood stands for ``thought as it was'' in a whole era. The passage tells the reader it formed the author, which is biography, not evidence.}"
+  ],
+  [
+   20200,
+   "\\cpara{Quotes the novel's answer: the judge is neither for nor against the Company, only for the law, which he will apply wherever it leads.}"
+  ],
+  [
+   20757,
+   "\\cpara{Points out that the novel presents such a judge as ordinary, not naive or heroic, a normal part of the world as its author imagined it.}"
+  ],
+  [
+   20966,
+   "\\cfact{The novel also meets the essay's opening problem. Pendarvis, judging an impartial jury ``next to impossible,'' moves the case to three judges. A court that expected bias fixed it by procedure, as the Shkreli court did.}"
+  ],
+  [
+   21117,
+   "\\cpara{Warns that a group without such impartial people, and without respect for them when they rule against it, will eventually collapse.}"
+  ],
+  [
+   21293,
+   "\\cpara{The prediction of the previous paragraph is withdrawn in the next sentence. The withdrawal carries its own premise, an ``AGI timeline'' that ``runs out,'' which the reader is expected to share. Then the claim is moved down to ``bargains between three people or two,'' where there is no law to enforce and no argument is given that the same mechanism applies.}"
+  ],
+  [
+   21564,
+   "\\cpara{A causal claim about social media with no evidence. The only support in the essay for a lost ``ability to appreciate the kind of anecdotes they used to tell in ancient China'' is one such anecdote, which the author could not find and got wrong.}"
+  ],
+  [
+   22175,
+   "\\cpara{An aside suggesting another possible cause, chemicals from plastic containers, and recalling that a wave of violence once blamed on psychology was traced to lead.}"
+  ],
+  [
+   22371,
+   "\\cfact{Stated as settled. A 2022 meta-analysis of 24 studies found publication bias and implies that the fall in lead ``may be responsible for a 10\\% fall in homicide'' and ``does not explain the majority of the fall in crime'' (Higney, Hanley and Moro). It postdates the essay, but ``turned out to be'' was already stronger than the evidence.}"
+  ],
+  [
+   22461,
+   "\\cpara{The evidence for what ``human beings appreciate intuitively'' is summed up as ``ancient China and mid-20th-century science fiction'': one misremembered story and one novel. ``Go figure'' closes a claim, that law is more native to us than proof, that the essay never supports.}"
+  ],
+  [
+   22878,
+   "\\cpara{Concludes that many people first learn reasoning by treating valid argument as law and fallacies as crimes, with the healthiest rejecting bad arguments from their own side like an impartial judge.}"
+  ],
+  [
+   23176,
+   "\\cpara{The essay's central problem, conceded in two sentences and called ``ironic.'' If truth-seeking has ``no game theory and no morality,'' then valid inference and fair enforcement work by different mechanisms: one preserves truth, the other sustains cooperation. What they share is a feeling of rule-following. The title's ``key'' reduces to that feeling, and the essay moves on.}"
+  ],
+  [
+   23422,
+   "\\cpara{Apply the essay's own test. The ``reasoning'' is that mathematicians' ``sense of Law was strong enough to be appropriated for proofs.'' That assumes the thesis, that proof-sense and law-sense are one faculty, in order to support it. The author invites a study and rules out self-reports, with a reason (they measure ``honesty times criminality'').}"
+  ],
+  [
+   24167,
+   "\\cpara{Closes by saying the author has no larger agenda and only wishes more of the basic rules of thinking were written down.}"
+  ]
+ ]
+}

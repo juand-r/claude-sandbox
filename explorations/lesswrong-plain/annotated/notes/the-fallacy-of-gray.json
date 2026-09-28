@@ -1,0 +1,132 @@
+{
+ "slug": "the-fallacy-of-gray",
+ "header": "\\post{The Fallacy of Gray}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/dLJv2CoRCgeC2mPgj/the-fallacy-of-gray}\n",
+ "skeleton_sha": "d9d78282b5fd397a50149c917f3e8406d1dae0b8708b8d13e8a7342ed2565179",
+ "post_sha": "9e62af05d5eee01ff37f0149687c3f427fc93624b13a04059b4a3abee621b6ad",
+ "edits": [
+  {
+   "at": 137,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 4226,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 8766,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   138,
+   "\\cpara{Quotes a novel's exchange: one speaker says all is gray so no one is better than anyone; the other replies that this treats all grays as one shade.}"
+  ],
+  [
+   526,
+   "\\cpara{Names the fallacy and gives the essay's one concrete case. The case does not survive a look at its source. In the previous post, ``But There's Still A Chance, Right?'' (6 January 2008), the author writes of those odds: ``I have no memory of whence I pulled that $2^{750{,}000{,}000}$ figure.'' The same post adds that people quoting such odds ``have undoubtedly been wrong more often than once'' in that many times. The man was answering a number the author could not source. His reply is one sentence. That ``all probabilities, to him, were simply `uncertain''' is the author's reading of that sentence, not something the man said.}"
+  ],
+  [
+   625,
+   "\\clogic{It has names. Rejecting an improvement because some of the problem would remain is the nirvana fallacy, after the economist Harold Demsetz (1969); Wikipedia's entry describes arguing that ``a solution should be rejected because some part of the problem would still exist after it were implemented.'' Treating unequal things as equal is false equivalence. The essay's own last paragraph points to a third source (see the note there). Not knowing a name is no reason to coin one.}"
+  ],
+  [
+   931,
+   "\\cpara{Gives an example: a green-cheese Moon and a hydrogen-and-helium Sun are both uncertain, but not equally so.}"
+  ],
+  [
+   1094,
+   "\\cpara{The thesis, for the second time in three paragraphs. The second sentence retreats from the first. ``Or even if not'' concedes that no shade may be near white or black, and falls back to the weaker claim that shades can be ranked. The essay never says which of the two it defends.}"
+  ],
+  [
+   1346,
+   "\\cpara{Introduces a passage from Iain M. Banks's Player of Games that shaped the author's thinking, with one sentence in bold.}"
+  ],
+  [
+   1564,
+   "\\cpara{Read whole, the passage makes two claims: that some imposition of values is unavoidable (``neutrality is probably impossible''), and that societies differ in how much they impose. The essay uses the second and does not deny the first (``That which I cannot eliminate may be well worth reducing'').}"
+  ],
+  [
+   2470,
+   "\\cpara{Heads off an objection about societies passing on fewer values, saying that is not what the author took from the passage.}"
+  ],
+  [
+   2689,
+   "\\cpara{The author concedes that the idea is ``so obvious in retrospect that I could have conceivably picked it up in a hundred places.'' The rest of the essay presents the obvious idea under a new name, as if it were a finding.}"
+  ],
+  [
+   2910,
+   "\\cpara{The idea in its plainest form: what cannot be switched off can still be turned down. It arrives in the eighth paragraph, after a novel, a quotation and a complaint about commenters. It should have been the first sentence.}"
+  ],
+  [
+   3174,
+   "\\cpara{The evidence that the idea needs saying is a quotation from ``many bloggers,'' with no names, links or dates. The one hint, ``a professional economist,'' points to a person the reader cannot identify or check. ``It is clear'' introduces a diagnosis of people the reader never meets.}"
+  ],
+  [
+   3637,
+   "\\cpara{The essay's only named opponent, and he is misread. Cowen's post (``Can Theory Override Intuition?'', 19 December 2007) does not say that every application of theory is equally biased. He says: ``we often need to apply personal and cultural judgment to offset the sometimes-erroneous judgments and biases built into the economic way of thinking.'' For Cowen, the theory has biases of its own, so less judgment does not mean less bias. The essay answers a claim Cowen did not make.}"
+  ],
+  [
+   4228,
+   "\\cpara{Quotes Cowen's reply: economic theory is always applied through personal and cultural filters, so no application is straightforward.}"
+  ],
+  [
+   4423,
+   "\\cfact{Misquoted. Cowen wrote ``Theories are always applied and interpreted through our personal and cultural filters.'' Two words are dropped without an ellipsis. The marked ellipsis drops Cowen's qualifying clause: no straightforward application exists ``unless your prescriptions are limited to `we cannot prove that Giffen goods do not exist.'\\,''}"
+  ],
+  [
+   4449,
+   "\\cpara{The reply concedes Cowen's claim and then relabels the result. If theory always passes through filters, output with small filters is still filtered. Calling it ``straightforward'' changes the word, not the fact. The reply also assumes the point Cowen denied, that one can tell which choices shrink the effect. It says nothing about how.}"
+  ],
+  [
+   4705,
+   "\\cpara{Nobody who says ``everyone is imperfect'' means that Gandhi and Stalin are equal, and the essay quotes no one who does. The extreme pair makes the verdict easy and says nothing about the cases where the claim is actually used, such as two candidates, two studies or two drugs, where the shades are close and ranking them is the whole difficulty.}"
+  ],
+  [
+   5184,
+   "\\cpara{A joke: it is fine to be imperfect, just not so imperfect that others notice.}"
+  ],
+  [
+   5353,
+   "\\cpara{Another unnamed opponent. ``Paradigm'' is Thomas Kuhn's word, from \\textsc{The Structure of Scientific Revolutions} (1962), but no one is named, and no one is quoted putting science ``on the same level with witchdoctoring.'' The second sentence repeats the Banks clause almost word for word, with ``worldview'' for ``society.'' The third states the thesis for the third time.}"
+  ],
+  [
+   5917,
+   "\\cpara{The essay's answer to ``science is faith too'' is induction: the Moon will be there because it always has been. That is the point in dispute. Hume's problem of induction is that any argument for expecting the future to resemble the past assumes it; the Stanford Encyclopedia of Philosophy renders the charge as ``taking that for granted, which is the very point in question.'' The essay treats as obvious the one step the ``faith'' charge is about. Six months later the author conceded the point in ``Where Recursive Justification Hits Bottom'' (8 July 2008): ``the rules of Bayesian updating, do not of themselves solve the problem of induction,'' and justifications ``will go around in reflective loops.'' Readers of this essay meet the dismissal, not the concession.}"
+  ],
+  [
+   6565,
+   "\\cpara{An argument against a tone of voice. The opponent is imagined, given an ``angry-triumphal'' voice, and addressed as ``oh faithist.'' The paragraph never engages the claim. It asks why the opponent would want to make it, which is a question about motive, and motive does not bear on truth.}"
+  ],
+  [
+   7139,
+   "\\clogic{Medicine and rocketry heal and fly. The essay credits their results to ``science'' to win the exchange. The ``faith'' claim was about how science justifies its starting assumptions. Walking on the Moon does not answer that. It presupposes the same induction.}"
+  ],
+  [
+   7488,
+   "\\cpara{The paragraph sets a standard: criticism should name ``specific problems X, Y, and Z.'' The essay does not meet it. It has named one opponent, Cowen, and misquoted him; every other opponent is anonymous or fictional. The framing also assigns roles. ``You try to purify your shade of gray'' casts the author and the reader as the ones improving, and the critics as the ones offended.}"
+  ],
+  [
+   7956,
+   "\\cpara{The essay ends its argument by diagnosing its critics. People who say ``it's gray'' have made ``a devil's bargain with their own mistakes'' and treat improvement as ``their enemy.'' No evidence is offered, no person is named, and the diagnosis cannot be checked. This is the move the author condemned in ``Knowing About Biases Can Hurt People'' (April 2007), where a critic ``didn't try to point out any particular sophisticated argument, any particular flaw.'' By the previous paragraph's own rule, the diagnosis points out no specific dark spots.}"
+  ],
+  [
+   8566,
+   "\\cpara{Sums up: without black and white, some grays are still lighter than others.}"
+  ],
+  [
+   8676,
+   "\\cpara{The essay's real source, credited last and secondhand. Asimov's ``The Relativity of Wrong'' (\\textsc{Skeptical Inquirer}, Fall 1989) states the thesis in its opening paragraphs: people think ``that everything that isn't perfectly and completely right is totally and equally wrong.'' That is the Fallacy of Gray, named and answered nearly twenty years earlier, with worked examples (spellings of ``sugar,'' answers to 2 + 2, the shape of the Earth). The essay's first paragraph says the author did not know an official name for the error. The fullest prior treatment reached the author through the post's own comment section, and it was placed at the end.}"
+  ],
+  [
+   8769,
+   "\\cpara{Quotes Asimov: thinking a round Earth as wrong as a flat Earth is more wrong than either.}"
+  ]
+ ]
+}

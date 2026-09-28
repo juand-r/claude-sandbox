@@ -1,0 +1,133 @@
+{
+ "slug": "argument-screens-off-authority",
+ "header": "\\post{Argument Screens Off Authority}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/5yFRd3cjLpm3Nd6Di/argument-screens-off-authority}\n",
+ "skeleton_sha": "5419376e7796086d6d9e9cbeb750d6affb4556f60557028857336bb41a196f17",
+ "post_sha": "42363c5cee359fae888aa665e24df7d84ccfa524aefe000f27ee031d83c7c738",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Gives the first scenario: the same kind of odd claim about rocks is believed at 90\\% from a famous geologist and 10\\% from a troubled teenager, because of authority.}"
+  ],
+  [
+   662,
+   "\\cpara{Gives the second scenario: two equally odd physics claims get 90\\% and 10\\% depending on whether the argument offered was careful or full of leaps.}"
+  ],
+  [
+   1194,
+   "\\cpara{Suggests the two scenarios look alike: each weighs useful evidence, strong or weak authority, strong or weak argument.}"
+  ],
+  [
+   1391,
+   "\\cpara{Swaps the information: the two authorities give equally good, checked arguments, and the two arguers turn out to have equal credentials.}"
+  ],
+  [
+   1798,
+   "\\cpara{The condition that decides the question is in a subordinate clause. People rely on authority when they cannot judge the argument. The essay's principle applies only to a listener who can, which is the case where authority mattered least to begin with. The reader, invited to identify with Arthur, is told what to do in a position most readers are not in. (``Impressive noises'' concedes this: for a listener who cannot follow, authority is what is left.)}"
+  ],
+  [
+   2090,
+   "\\cpara{Adds that a good enough technical argument may make the speaker's authority not worth tracking, since it removes the need to trust the speaker.}"
+  ],
+  [
+   2320,
+   "\\cpara{States the stipulation outright: the argument ``includes all of the inferential steps \\ldots\\ and all of the support'' the speaker used. No real argument meets it, and the essay says so near its end (``intuitions you can't duplicate without the same thirty years of experience''). The parenthesis concedes that a listener without the technical ability depends on authority. That listener is most readers, most of the time.}"
+  ],
+  [
+   2968,
+   "\\cpara{Concludes that argument and authority are asymmetric: knowing authority, we still want the argument; knowing the full argument, authority adds little.}"
+  ],
+  [
+   3203,
+   "\\cpara{Voices a novice's view that this asymmetry shows authority and argument are different kinds of evidence that probability theory cannot handle.}"
+  ],
+  [
+   3601,
+   "\\clogic{90\\% and 10\\% are Arthur's final probabilities, not the strength of the evidence. They depend on what Arthur believed before. The author's own ``How Much Evidence Does It Take?'' measures strength by the likelihood ratio. The measure is the novice's, but the post lets it stand.}"
+  ],
+  [
+   3689,
+   "\\cpara{Offers half of a technical demonstration of how probability theory captures the difference, leaving the rest to authority or references.}"
+  ],
+  [
+   3879,
+   "\\cpara{The only step in the essay shown rather than asserted. It is about sprinklers. Whether authority behaves like the night in this example is the question, and the example cannot answer it.}"
+  ],
+  [
+   4386,
+   "\\cpara{The numbers check (10\\% of the night times 90\\% gives 9\\%). The example is built so that night affects the sidewalk only through the sprinkler: no rain, no dew, nothing else. The matching assumption for authority, that an expert's belief depends on the truth only through the argument, is the one the essay later concedes is false (see the notes on the last four paragraphs).}"
+  ],
+  [
+   5092,
+   "\\cpara{The figure, rendered from the linked file: three boxes in a row, Night $\\rightarrow$ Sprinkler $\\rightarrow$ Slippery.}"
+  ],
+  [
+   5271,
+   "\\cpara{Explains the diagram: night causes the sprinkler to run, and the sprinkler causes the sidewalk to be slippery.}"
+  ],
+  [
+   5512,
+   "\\cpara{The figure, rendered from the linked file: Night $\\rightarrow$ Sprinkler $\\leftarrow$ Slippery, a hypothetical graph used to explain two causes of one effect.}"
+  ],
+  [
+   5691,
+   "\\cpara{Explains that with the arrows reversed, night and slipperiness would be independent until the sprinkler is known, and introduces a dice example.}"
+  ],
+  [
+   6142,
+   "\\cpara{Uses dice to show that two independent causes become linked once their joint effect is known: a 6 and a sum of 7 fix the other die at 1.}"
+  ],
+  [
+   6389,
+   "\\cpara{Says working out which facts depend on which is a technical subject, and recommends two books by Judea Pearl.}"
+  ],
+  [
+   6816,
+   "\\cpara{Says a reader of causal graphs sees these facts in the dice graph at once.}"
+  ],
+  [
+   7315,
+   "\\cpara{Explains the result: once the sprinkler's state is known, knowing whether it is night adds nothing about the sidewalk.}"
+  ],
+  [
+   7617,
+   "\\cpara{Names the idea: one fact blocking another's relevance is ``screening off'', and the rule for reading it off graphs is D-separation.}"
+  ],
+  [
+   7876,
+   "\\cpara{The figure, rendered from the linked file: Truth $\\rightarrow$ Argument Goodness $\\rightarrow$ Expert Belief. The whole essay rests on this picture, and the picture is drawn, not argued. It says an expert believes things only because of the arguments that exist. There is no arrow from the truth to the expert by any other route: experience, unstated counterevidence, tacit skill. The essay's own closing paragraphs name exactly those routes. Add any one of them and the argument no longer fully screens off the expert. The title is true of this diagram and, by the essay's own admission, only partly true of experts.}"
+  ],
+  [
+   8055,
+   "\\cpara{``(In theory!)'' admits in two words that experts' opinions have other causes, and moves on. Each of those causes is a missing arrow in the figure.}"
+  ],
+  [
+   8238,
+   "\\cpara{Explains the backward inference: an expert's belief suggests there is evidence, and that evidence suggests the claim is true.}"
+  ],
+  [
+   8511,
+   "\\cpara{The formal step, with the criterion withheld: ``certain technical criteria for `path blocking' that seem pretty obvious in this case.'' They seem obvious because the graph is a straight chain, drawn that way. ``If we know the value of the Argument node'' assumes we know all the evidence behind the expert's view, which listeners never do.}"
+  ],
+  [
+   8935,
+   "\\cpara{Says this does not contradict ordinary probability theory, only expresses it more compactly, so authority and argument need no separate kinds of probability.}"
+  ],
+  [
+   9390,
+   "\\cpara{This paragraph weakens the title. An expert who knows counterevidence not in their argument has a route from the truth to their belief that bypasses the argument. That is the missing arrow in the essay's figure. With it, hearing the argument does not fully screen off the expert, which is what this paragraph says in words. The essay calls this a matter of ``practice'' and keeps the title.}"
+  ],
+  [
+   9789,
+   "\\cpara{The second concession, and a larger one. Outside pure mathematics, judging a step ``may rely on intuitions you can't duplicate without the same thirty years of experience.'' That describes nearly every argument a reader will meet from an expert. On the essay's own terms, the title holds for proofs and fails for almost everything else.}"
+  ],
+  [
+   10010,
+   "\\cpara{Admits that E. T. Jaynes, with fifty more years of experience, still deserves slightly more credence than the author saying the same thing.}"
+  ],
+  [
+   10327,
+   "\\cpara{Adds that this small weight of authority is easily outweighed by a stronger argument, as when the author found an algebra error in Jaynes.}"
+  ]
+ ]
+}

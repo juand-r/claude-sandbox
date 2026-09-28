@@ -1,0 +1,246 @@
+{
+ "slug": "taboo-your-words",
+ "header": "\\post{Taboo Your Words}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/WBdvyyHLdxZSAMmoz/taboo-your-words}\n",
+ "skeleton_sha": "a51d9fd017e5d939208bc843dee46cc6984a05c2767166696ddd42cb54b0183c",
+ "post_sha": "aaf87e9643320509b19fe79431f45be262a6f0a300e7e475ce40484f248bbc3d",
+ "edits": [
+  {
+   "at": 301,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 666,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 874,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1130,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1246,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1648,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1712,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1894,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1993,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  },
+  {
+   "at": 2001,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2119,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2648,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2951,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3057,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3320,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3953,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4047,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4307,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4415,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5155,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5188,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5258,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5424,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5472,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5530,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5708,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5852,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 6147,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   118,
+   "\\cpara{The analogy carries an assumption the post never states. In the game both players want the word to be guessed, and the card, not either player, decides which words are banned. In a real dispute the parties may not share a goal, and someone has to choose the banned words. The post later chooses them itself, for the free will case, and its choice removes the likeliest place for a real disagreement to show (see the note there).}"
+  ],
+  [
+   470,
+   "\\cpara{Tells how the author would describe baseball without the banned words, and says the real skill is blanking a word out of one's mind, a skill the author had long practiced.}"
+  ],
+  [
+   954,
+   "\\cpara{A recap of an earlier post, which a reader of this one has not seen. The demonstration is rigged. The ``apparent definition'' of human contains ``mortal'' because the author put it there, so the syllogism comes out circular by construction. With a definition that does not mention death (say, a biological species), the premise ``all humans are mortal'' is an empirical claim and the syllogism is not empty. The charge itself is old and uncredited: John Stuart Mill, \\textsc{A System of Logic} (1843), Book II, chapter 3: ``in every syllogism, considered as an argument to prove the conclusion, there is a petitio principii.''}"
+  ],
+  [
+   1800,
+   "\\cpara{Asks whether ``sound'' versus ``not sound'' is a contradiction, and proposes that both speakers replace the word with what they mean.}"
+  ],
+  [
+   1994,
+   "\\cpara{Restates the tree dispute with the word replaced: Albert means the fall makes air vibrations, Barry means it produces no heard experience.}"
+  ],
+  [
+   2262,
+   "\\cpara{The only full demonstration in the post. Follow the regress it describes: ``acoustic vibrations'' becomes ``pressure waves in a material medium,'' and ``wave'' becomes ``the wave equation.'' No stopping rule is given, so the reader cannot tell when to stop tabooing.}"
+  ],
+  [
+   2837,
+   "\\cpara{Introduces a second version of the argument, about Socrates.}"
+  ],
+  [
+   3184,
+   "\\cpara{The second case is the one that matters: tabooing finds a real disagreement hidden by agreement on a word. It is the case that would justify the method, and the post has no real instance of it anywhere; its three real-world cases below are predictions, not findings.}"
+  ],
+  [
+   3444,
+   "\\cpara{Concludes that looking at the words people use and looking at the tests behind those words give very different pictures of what they disagree about.}"
+  ],
+  [
+   3764,
+   "\\cpara{The first real-world case, and it contains no data. ``I would guess that at least half'' and ``you might find'' describe an experiment the author did not run. The one citation does not support it (see the note).}"
+  ],
+  [
+   4531,
+   "\\cfact{The paper has two authors, Shane Legg and Marcus Hutter. The count is right: its three lists hold 18, 35 and 18 numbered definitions. But the paper cuts against the use made of it here. Its authors write that ``many of the definitions listed above are strongly related to each other and share many common features,'' and they end by proposing a single definition. A source that finds agreement under the word is cited as evidence of conflict under the word.}"
+  ],
+  [
+   4545,
+   "\\cpara{The second real-world case gives its result before the test. ``Mostly they won't be able to answer at all'' is a claim about millions of believers, supported only by a link to the author's own post. No one who asserts an ``illusion of unity across religions'' is named. The paragraph hands the reader a verdict on religious people and a technique for extracting it.}"
+  ],
+  [
+   4962,
+   "\\cpara{The thesis, in italics, in the twelfth of fourteen prose paragraphs. The only positive instruction, ``Describe outward observables and interior mechanisms,'' gets one sentence and no example.}"
+  ],
+  [
+   5384,
+   "\\cpara{The one open problem in the post, and the method is prescribed, not performed. The author does not describe what people have or lack without the banned words. The post that says tabooing ``works way way better'' never shows it working on a question that was not already settled.}"
+  ],
+  [
+   5709,
+   "\\clogic{No philosopher is named and no evidence is given for ``most.'' The best-known philosophical treatment of a verbal dispute, William James's squirrel in \\textsc{Pragmatism} (1907), settles it by distinguishing two senses of ``go round'': the defining the post calls inferior. ``Make the distinction,'' James says, ``and there is no occasion for any farther dispute'' (as quoted by Chalmers, below). The jibe that philosophers ``discourse at great length'' replaces an argument.}"
+  ],
+  [
+   6003,
+   "\\clogic{The list decides the outcome. David Chalmers applies the same method, barring ``free will,'' to the compatibilist dispute (``Verbal Disputes,'' 2011). One possible residue he names is a disagreement over ``Moral responsibility is incompatible with determinism.'' If it appears, he says, that is ``a prima facie indication that the dispute is non-verbal.'' The post bans ``responsible'' and its synonyms in advance. A method that forbids the words in which the real disagreement is stated will report that there was no real disagreement.}"
+  ],
+  [
+   6017,
+   "\\cpara{The conclusion claims a comparison the post never made. No case shows the ``standard'' tool failing, and none shows this one succeeding on an open question. ``In my humble opinion'' hedges a boast. The post ends on self-description: ``the nonstandard tools in my toolbox.''}"
+  ]
+ ]
+}

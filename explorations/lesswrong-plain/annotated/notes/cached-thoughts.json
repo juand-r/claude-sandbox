@@ -1,0 +1,81 @@
+{
+ "slug": "cached-thoughts",
+ "header": "\\post{Cached Thoughts}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/2MD3NMLBPCqPfnfre/cached-thoughts}\n",
+ "skeleton_sha": "c30c6096af8be4c0b0fa579e1e0bf2998384ab706689176fbc8f8bbe2a247cdc",
+ "post_sha": "858011d17b619d1848dc9c3fa976e6c2b352a8f3f921a3f0e57e2a4fc86964b4",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{The opening borrows the authority of neuroscience. Nothing later in the post uses the neuroscience except the word ``cache.''}"
+  ],
+  [
+   314,
+   "\\cfact{Its usual source is Jerome Feldman and Dana Ballard, ``Connectionist Models and Their Properties,'' \\textsc{Cognitive Science} (1982). There it was used to argue that cognition must run on massively parallel networks. The post draws ``caching'' from the same premise without argument and without citing anyone.}"
+  ],
+  [
+   544,
+   "\\cpara{Compares the brain to programming with very slow processors: you would need a hundred billion of them to do anything in real time.}"
+  ],
+  [
+   736,
+   "\\cpara{The key move, and it is an assertion. That a programmer would use caching does not show that the brain does. ``Recognition, association, completing the pattern'' names three different processes and calls them one ``idiom.''}"
+  ],
+  [
+   1100,
+   "\\cpara{Guesses that most human thinking consists of looking up stored answers.}"
+  ],
+  [
+   1285,
+   "\\cpara{The post's main example is a story the author cannot find or source. The reader cannot tell whether it happened, or happened as told.}"
+  ],
+  [
+   1788,
+   "\\cpara{The paragraph where ``cache'' changes meaning. The story shows a man who trusted a bad source. That is a failure of trust in testimony, not a neural pattern completing itself. From here on ``cache'' means two unrelated things: fast recognition in neurons, and believing what someone told you. The neuroscience of the opening supports, at most, the first. Every example in the post is the second.}"
+  ],
+  [
+   2241,
+   "\\cpara{The post's central psychological claim: people scrutinize their own ideas harder than borrowed ones. It is offered on ``I suspect,'' and the evidence runs the other way. In an experiment by Trouche, Johansson, Hall and Mercier (``The Selective Laziness of Reasoning,'' \\textsc{Cognitive Science}, 2016), participants were shown their own earlier arguments as if someone else had written them. Of those who did not notice the switch, more than half rejected arguments that were in fact their own. The authors conclude that ``people are more critical of other people's arguments than of their own.'' The author's own ``The Bottom Line'' and ``Rationalization,'' two weeks earlier, rest on the same observation: people defend the conclusions they already hold.}"
+  ],
+  [
+   2578,
+   "\\cpara{The concession that dissolves the thesis. If no one can recompute civilization's knowledge, then relying on other people's conclusions is how knowledge works, and the only real question is which conclusions to trust. The post never answers it. The point is also old. Alfred North Whitehead, \\textsc{An Introduction to Mathematics} (1911): ``Civilization advances by extending the number of important operations which we can perform without thinking about them.'' Whitehead drew the opposite lesson from the same fact.}"
+  ],
+  [
+   2993,
+   "\\cpara{A new criterion slips in: a cached thought is suspect if it was ``not invented by critical thinkers.'' The post gives no way to tell who counts as one, and the next paragraph's example fails its own test.}"
+  ],
+  [
+   3175,
+   "\\cpara{The showcase example of an unexamined cache. The most prominent argued version of the idea is Stephen Jay Gould's ``Nonoverlapping Magisteria'' (\\textsc{Natural History}, March 1997), which holds that science and religion govern separate domains. Whatever its merits, it was a scientist's argued position, not a thought ``not invented by critical thinkers.'' The post does not mention it. It refutes the slogan and skips the argument.}"
+  ],
+  [
+   4032,
+   "\\clogic{The post makes two claims. The first, that the slogan is ``simply false as probability theory,'' it refers to an earlier post. The second changes the question. The skeptic's claim is about what evidence can establish. The praying mother shows what believers expect, which nobody disputed. Her imagined prayer, which puts the skeptic's philosophy in a believer's mouth, is a straw figure.}"
+  ],
+  [
+   4046,
+   "\\cpara{Argues that people who absorb the slogan that religion cannot be disproved let it answer automatically when contrary evidence appears, and would doubt it more had they thought of it themselves.}"
+  ],
+  [
+   4503,
+   "\\cpara{Gives another example: decent people, told about threats to humanity's survival, reply that perhaps humanity does not deserve to survive, a stock phrase they would never act on.}"
+  ],
+  [
+   4922,
+   "\\cpara{Asks readers which automatic responses in their own minds they never chose.}"
+  ],
+  [
+   5022,
+   "\\cpara{The third fill-in-the-blank, and again the ``cached'' answer is one the author argues against elsewhere. Every sample of a cached thought in the post, from religion to death to existential risk to love, is an opinion the author rejects. None is one the author holds.}"
+  ],
+  [
+   5093,
+   "\\cpara{The exercise asks the reader to think freshly, and in the same breath hands over the author's answer as a link (``I know what \\emph{I} would say''). The concession that ``there is no better answer than the standard one'' is the only place the post allows that a cached thought can be right. It gives no way to tell which ones are.}"
+  ],
+  [
+   5662,
+   "\\cpara{The ending says what the post is for. The reader will think ``Cached thoughts'' when ``someone'' repeats ``a meme you think is silly or false.'' The label fires on other people, and on views the reader already rejects. It confirms a verdict the reader has already reached. The author then asks of the post's own idea, ``But is it true?'' The post has not shown that it is. ``Think!'' is its last word and its only method.}"
+  ]
+ ]
+}

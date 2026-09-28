@@ -1,0 +1,77 @@
+{
+ "slug": "tsuyoku-naritai-i-want-to-become-stronger",
+ "header": "\\post{Tsuyoku Naritai! (I Want To Become Stronger)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/DoLQN5ryZ9XkZjq5h/tsuyoku-naritai-i-want-to-become-stronger}\n",
+ "skeleton_sha": "979dd4914effedf3e99f760298cb5a3789a41944ffe2b5852d3163ac3fa88542",
+ "post_sha": "7f533593db6ff9890045c505006ceb2ea1fa0e9471d9f3d1be2a629ebca85819",
+ "edits": [],
+ "notes": [
+  [
+   171,
+   "\\cpara{Quotes an Orthodox Jewish saying that each generation is lesser than the last, and explains it: if all law came from Sinai, knowledge can only degrade in transmission.}"
+  ],
+  [
+   342,
+   "\\cfact{The saying is in the Babylonian Talmud, Shabbat 112b, and it is conditional: ``If the early generations are characterized as sons of angels, we are the sons of men. And if the early generations are characterized as the sons of men, we are akin to donkeys'' (Sefaria translation). The idea of a decline across generations is real in the tradition; the essay's version drops the conditional form and states it as a law.}"
+  ],
+  [
+   771,
+   "\\cpara{Gives the consequence: modern rabbis cannot overrule ancient ones, even on a ruling based on outdated biology, because knowledge is thought only ever to be lost.}"
+  ],
+  [
+   1435,
+   "\\cpara{Recalls the author's childhood reasoning: since Torah loses knowledge each generation and science gains it, science must eventually surpass Torah.}"
+  ],
+  [
+   1791,
+   "\\cpara{States the moral: what matters most is making progress, because you arrive only if you keep moving.}"
+  ],
+  [
+   1979,
+   "\\cpara{Introduces the Japanese phrase ``tsuyoku naritai'', I want to become stronger, as the wish to keep improving whether you have lost, won, or are already the best.}"
+  ],
+  [
+   2675,
+   "\\cpara{Describes the Yom Kippur confession, a list of sins recited in alphabetical order.}"
+  ],
+  [
+   2946,
+   "\\cpara{Explains that everyone confesses every sin, whether or not they committed it, because the day is about confessing sins rather than avoiding them.}"
+  ],
+  [
+   3328,
+   "\\clogic{Maimonides, in his code of Jewish law, defines repentance as the reverse of what this paragraph describes: the sinner must ``abandon his sins \\ldots\\ resolving in his heart, never to commit them again.'' Confession without that resolve ``can be compared to [a person] who immerses himself [in a mikvah] while [holding the carcass of] a lizard in his hand'' (\\textsc{Mishneh Torah}, Repentance 2:2--3, Sefaria). The essay's thesis, that confession is worthless without the resolve to do better, is Maimonides' rule. The essay presents it as a correction of the tradition.}"
+  ],
+  [
+   3342,
+   "\\cpara{Adds that the confession includes no promise to do better next year.}"
+  ],
+  [
+   3451,
+   "\\clogic{The Talmud gives as a Yom Kippur confession the text of Rav Hamnuna, which asks: ``May it be Your will that I may sin no more'' (Yoma 87b, Sefaria). The Schechter Institute reports that this confession ``is found in most versions of the mahzor until today.'' The rite includes the resolution the essay says is missing. The essay quotes the part that fits and leaves out the part that does not.}"
+  ],
+  [
+   3465,
+   "\\cpara{Compares the confession to a style of rationality that consists of declaring that we are all biased, overconfident and poorly informed.}"
+  ],
+  [
+   3743,
+   "\\cpara{Asks what the confessor plans to do to improve.}"
+  ],
+  [
+   3916,
+   "\\cpara{Tells a joke in which a rabbi, himself declaring he is nothing, scoffs at the janitor who says the same: ``Look who thinks he's nothing.''}"
+  ],
+  [
+   4367,
+   "\\cpara{Warns against taking pride in admitting your biases, since pride in a flaw makes you reluctant to give it up; the reason to rejoice is having less to confess.}"
+  ],
+  [
+   4861,
+   "\\cpara{Warns that otherwise, people proud of confessing will scorn anyone who offers a plan to fix a bias as lacking self-awareness.}"
+  ],
+  [
+   5084,
+   "\\cpara{The essay's thesis as a rule: confession without a plan is empty. It does not deny anyone equality in flaws, so it does not repeat the rabbi's move in the joke above.}"
+  ]
+ ]
+}

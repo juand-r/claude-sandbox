@@ -1,0 +1,221 @@
+{
+ "slug": "the-second-law-of-thermodynamics-and-engines-of-cognition",
+ "header": "\\post{The Second Law of Thermodynamics, and Engines of Cognition}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/QkX2bAkwG2EpGvNug/the-second-law-of-thermodynamics-and-engines-of-cognition}\n",
+ "skeleton_sha": "ea11ef79249c269b5963d851aebe7603e75160e3fc68ddb00d5f704a1eacb583",
+ "post_sha": "b1da8c37fbd3714423f359e156eb8409064a65b7f7967e8dbe0e81147309c6f9",
+ "edits": [],
+ "notes": [
+  [
+   201,
+   "\\cpara{The post opens with the law it is not about and spends three paragraphs on it, making one point three times (particles, wheels, momentum): a whole cannot do what none of its parts can. The argument returns as the post's last sentence; inference: these paragraphs are there to set up that move.}"
+  ],
+  [
+   794,
+   "\\cpara{Applies this to inventions: a machine of wheels that runs forever must have some single wheel breaking physics, so without naming that wheel, the whole machine is rejected.}"
+  ],
+  [
+   1331,
+   "\\cpara{Makes the same argument for momentum: since each collision of particles conserves it, no machine built from them, however large, can push itself without pushing something back.}"
+  ],
+  [
+   1978,
+   "\\cpara{The turn to the Second Law blurs what the law forbids. Every car engine converts heat into work. The Kelvin--Planck statement forbids a cyclic device whose ``sole effect'' is to take heat ``from a single thermal reservoir'' and turn it all into work. The post states the case the law forbids (warm water into electricity and ice), but not the general conditions.}"
+  ],
+  [
+   2433,
+   "\\cpara{States that machines turning warm water into electricity and ice are forbidden by a different law, the Second Law.}"
+  ],
+  [
+   2615,
+   "\\cpara{The thesis, in one line. The view that thermodynamic entropy measures an observer's information is E.~T. Jaynes's program (\\textsc{Physical Review}, 1957), and it is contested: the Stanford Encyclopedia describes a line of argument whose ``goal is to reject the idea that statistical mechanical entropy is a subjective quantity.'' The post credits Jaynes only for a proverb, later, and never says the view is disputed.}"
+  ],
+  [
+   2741,
+   "\\cpara{Names the physical rule behind the Second Law: as any closed system changes over time, the volume it occupies in phase space stays the same.}"
+  ],
+  [
+   2995,
+   "\\cpara{Explains phase space with a falling ball: the whole system is one point in a space with a position and a momentum dimension for each particle.}"
+  ],
+  [
+   3643,
+   "\\cpara{Extends the picture to a big machine: the machine is one point in a huge space, and the laws of physics trace that point's path.}"
+  ],
+  [
+   4174,
+   "\\cpara{Restates the rule: take a region of phase space, run it forward in time under standard physics, and its total volume does not change.}"
+  ],
+  [
+   4473,
+   "\\cpara{Sets up a toy example: a system X with 8 states and a system Y with 4, giving 32 joint states.}"
+  ],
+  [
+   4628,
+   "\\cpara{Explains that physics here is a rule sending each starting joint state to a later one, with an example of one such move.}"
+  ],
+  [
+   5050,
+   "\\cpara{Picks out a region S of starting states: X in state 1, Y in any of its 4 states, 4 states in all.}"
+  ],
+  [
+   5245,
+   "\\cpara{Introduces the rule for how the states in S change.}"
+  ],
+  [
+   5529,
+   "\\cpara{Reads the table: X spreads out from one state to four while Y narrows to one, and four starting states still lead to four ending states.}"
+  ],
+  [
+   5888,
+   "\\cpara{Generalizes from one four-state example to ``every subsystem''. The rule needs a condition that the post never states (see the note on the ``corollary'' paragraph below).}"
+  ],
+  [
+   6182,
+   "\\cpara{Treats S as our uncertainty: after a minute we expect Y in state 1 and X somewhere in 2 to 8, since tracking exactly which states is too costly.}"
+  ],
+  [
+   6718,
+   "\\clogic{The increase to $\\log_2 7 \\approx 2.81$ bits comes from ignoring four lines of a table the reader can still see; used, the table gives X one of four equally likely states. That is the post's own picture of coarse graining. It shows what coarse graining is, not why it is legitimate, which is the open question (SEP: ``one of the major problems for the Gibbs approach'').}"
+  ],
+  [
+   6732,
+   "\\cpara{Counts the entropy: Y drops from 2 bits to 0 and X rises from 0 to about 2.8, so because we skipped some bookkeeping, total entropy seems to rise.}"
+  ],
+  [
+   7517,
+   "\\cpara{Imagines a different rule for how states change.}"
+  ],
+  [
+   7721,
+   "\\cpara{Explains that such a rule, sending every start to one end, would shrink phase space and lower entropy.}"
+  ],
+  [
+   7971,
+   "\\cpara{Says Liouville's Theorem, provable in our physics, rules out any such shrinking: phase space volume is kept.}"
+  ],
+  [
+   8202,
+   "\\cpara{Overstated. What follows from Liouville's theorem is that fine-grained entropy stays constant (SEP). Increase needs coarse graining as a further step, which the next paragraph concedes by calling it an ``appearance.''}"
+  ],
+  [
+   8570,
+   "\\clogic{Not in general. It holds only for subsystems that start uncorrelated. The post's own demon table, eighteen paragraphs on, is a counterexample: Y narrows from four states to one while M stays at four. What is used up there is the correlation between them, which belongs to no subsystem.}"
+  ],
+  [
+   8584,
+   "\\cpara{Takes back the previous paragraph. Entropy increase is now an ``appearance'' produced by drawing a simple boundary around a complicated region. The reader is not told why the simple boundary is the right one.}"
+  ],
+  [
+   9038,
+   "\\cpara{Explains that the Second Law is about probabilities: if you do not know exactly where the system is, you can give a tiny chance to hot water turning into ice and electricity.}"
+  ],
+  [
+   9823,
+   "\\cpara{Concludes that the Second Law is Bayesian: a lawful statement about your beliefs regarding a system, but only a probabilistic one about the system itself.}"
+  ],
+  [
+   9878,
+   "\\clogic{Does not follow. Probabilities appearing in a law do not make the law a statement of beliefs. The same numbers are read as fractions of phase-space volume in the Boltzmann approach (SEP), with no observer. The post asserts its reading, adds ``really'' and italics, and gives no reason to prefer it.}"
+  ],
+  [
+   10075,
+   "\\cpara{Voices a reader's objection: temperature is an objective property of water, while uncertainty is in the mind, so what does heat have to do with probability?}"
+  ],
+  [
+   10487,
+   "\\cpara{Begins the answer: if you know only a glass of water's temperature, you are more uncertain about it when it is hot than when it is cold.}"
+  ],
+  [
+   10751,
+   "\\cpara{Explains why: hotter molecules can move faster, so each one's velocity is less certain, and the uncertainties multiply to exponential uncertainty about the glass.}"
+  ],
+  [
+   11491,
+   "\\cpara{Defines entropy as the logarithm of that exponential amount of uncertainty.}"
+  ],
+  [
+   11627,
+   "\\cpara{Asks the harder reverse question: if you were told the exact state of every molecule in a glass of water, would its thermodynamic entropy be zero and the water colder?}"
+  ],
+  [
+   12221,
+   "\\clogic{The key claim, answered by exclamation. Learning where the molecules are does not slow any of them, and a thermometer reads what it read before. What changes is how much work the knower could extract. ``Colder'' is true only if temperature is redefined as extractable work, and the post never announces the redefinition.}"
+  ],
+  [
+   12235,
+   "\\cpara{Recounts Maxwell's question: why not sort a gas so fast molecules gather on one side and slow ones on the other, making a cheap refrigerator?}"
+  ],
+  [
+   12634,
+   "\\cpara{Names the sorter Maxwell's Demon and says it fails because inspecting and choosing molecules produces entropy.}"
+  ],
+  [
+   12902,
+   "\\cfact{This is Szilard's (1929) and Brillouin's account. Bennett replaced it in 1982. SEP: ``In (Bennett 1982) he argued that measurement could also be represented by a logically reversible process, avoiding any need to generate heat.'' On Bennett's account the cost lies in resetting the demon's memory, and it ``rapidly became accepted as the fundamental principle of the thermodynamics of computation.'' The post, written in 2008, gives the older account as fact and names neither.}"
+  ],
+  [
+   13128,
+   "\\cpara{Restates the ``colder'' claim as ``cold in a genuinely thermodynamic sense'' and defines the sense as ``you can take electricity out of it''. The redefinition noted above is now explicit, and the post presents it as a result.}"
+  ],
+  [
+   13381,
+   "\\cpara{Introduces a table showing that the knowing demon does not break Liouville's Theorem.}"
+  ],
+  [
+   13649,
+   "\\cpara{The one calculation about knowledge starts with the knowledge already in M. The measurement is not shown. Written in the post's notation, (M0,Yi) to (Mi,Yi) is one-to-one, which Liouville permits. What the table does show is that M ends in one of four states and must be reset: the erasure account the post later calls ``a matter of words.''}"
+  ],
+  [
+   14251,
+   "\\cpara{Answers a different objection from the one raised. The student said temperature is a property of the water. The reply shows that knowledge is physical. Both can be true: a knower's memory can be physical while an entropy defined over the knower's uncertainty is still not a property of the water.}"
+  ],
+  [
+   14610,
+   "\\cpara{Quotes E. T. Jaynes: ``knowledge is power'' holds both among people and in thermodynamics.}"
+  ],
+  [
+   14743,
+   "\\cfact{No source is given. The sentence is a slight rewording of Jaynes, \\textsc{Probability Theory: The Logic of Science} (Cambridge, 2003), section 1.8.1, p.~21: ``Another amusing example is the old adage `knowledge is power', which is a very cogent truth, both in human relations and in thermodynamics.'' It is the only credit Jaynes receives. The post's thesis is his: K.~Knuth summarizes the Jaynes--Cox line as the view that ``Probability and entropy describe states of knowledge about systems---not the systems themselves'' (arXiv:1009.5161).}"
+  ],
+  [
+   14757,
+   "\\cpara{The claim the conclusion rests on, in italics and with no argument. Clause (b) is the measurement-costs-work account that Bennett replaced (see the note on the demon ``inspecting'').}"
+  ],
+  [
+   14935,
+   "\\cpara{Explains the stakes: if this were not so, a Maxwell's Demon could break the Second Law and so the laws of physics.}"
+  ],
+  [
+   15143,
+   "\\cpara{The conclusion, in bold, about 2,430 words into 2,750: to form accurate beliefs about something you must observe it. That needs no thermodynamics. The physics adds only the claim that observing costs work, which is the contested half.}"
+  ],
+  [
+   15403,
+   "\\cpara{An aside on the view that erasing memory, not observing, is what costs work: the author calls the difference a matter of words.}"
+  ],
+  [
+   15619,
+   "\\clogic{It decides the question the post has just answered, whether observing costs work. Bennett's answer (SEP) is that measurement need not and resetting must. ``The math is unambiguous'' refers to math the post never shows.}"
+  ],
+  [
+   15633,
+   "\\cpara{Relies on reversible computation (Bennett, 1973, per SEP) one paragraph after dismissing the erasure distinction that comes from the same work.}"
+  ],
+  [
+   16110,
+   "\\cpara{Recycles the Jaynes sentence as a template. The blind-faith demon fails because its record is not correlated with the molecules, not because it did no work. The example supports the uncontested half of the post (you need correlation) and not the contested half (correlation costs work).}"
+  ],
+  [
+   16458,
+   "\\cpara{Compares thinking machines to heat engines: an imperfect engine of cognition must also give off waste heat.}"
+  ],
+  [
+   16760,
+   "\\cpara{A play on the phrase ``cold rationality'': true in a physical sense, false in the movie sense.}"
+  ],
+  [
+   16900,
+   "\\cpara{The payload, in the form built by the opening paragraphs: name the part that breaks physics or be disbelieved. The physics now serves as a debating rule against ``a big, elaborate clever argument''.}"
+  ]
+ ]
+}

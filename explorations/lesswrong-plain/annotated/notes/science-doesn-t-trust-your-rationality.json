@@ -1,0 +1,128 @@
+{
+ "slug": "science-doesn-t-trust-your-rationality",
+ "header": "\\post{Science Doesn't Trust Your Rationality}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/5bJyRMZzwMov5u3hW/science-doesn-t-trust-your-rationality}\n",
+ "skeleton_sha": "a76122879ec1de17b318cb78e2eccf42d1e90dd147c6f316ec9665465aae9592",
+ "post_sha": "37e0cbed34be9344699fd95473bb2f7fafea7f242f24dd86ce2eb1916d1de838",
+ "edits": [
+  {
+   "at": 383,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   162,
+   "\\cpara{The essay opens on a borrowed analogy and reports it as the reverse of what it was. Aaronson's post, published the day before (13 May 2008), was a warning about bullet-swallowers. After listing cases where they were right, he lists cases where ``extremely smart people'' reasoned their way to false conclusions, and says: ``even if you couldn't spot any flaws in the arguments, you still would've been wise to doubt their conclusions.'' The essay keeps his setup and drops his point. The point it drops is the one its own last paragraph mocks.}"
+  ],
+  [
+   384,
+   "\\cpara{Quotes Aaronson: many-worlds and libertarianism both start from widely accepted premises and reach conclusions most educated people reject, like parallel universes or no fire departments.}"
+  ],
+  [
+   755,
+   "\\cfact{Cut from its context: a few lines later in Aaronson's post, the bullet-swallower's stance is ``Those who accept this are intellectual heroes; those who don't are cowards.''}"
+  ],
+  [
+   862,
+   "\\cpara{The essay's key term is defined here, and defined so that nothing can contradict it. ``Science'' is an ideal the author describes, not the practice of any scientist or institution. No scientist, journal or textbook can then show that Science does not say what the author says it says. The essay also leans on an earlier post for its main claim, that Science rejects many-worlds, and gives the reader no summary of it.}"
+  ],
+  [
+   1139,
+   "\\cpara{Three claims, each asserted and none argued. ``It furthermore seems to me'' and ``deep'' do the work that evidence should do. The first claim, a distrust of reasonable-sounding arguments, is the one the essay abandons in its last three paragraphs. The third is old: Michael Polanyi's ``The Republic of Science'' (\\textsc{Minerva}, 1962) compared the community of scientists to a market, whose ``co-ordination is guided as by `an invisible hand' towards the joint discovery of a hidden system of things.'' The essay presents the comparison as its own.}"
+  ],
+  [
+   1287,
+   "\\cpara{Lists three shared traits: both distrust plausible arguments, both build systems more reliable than their members, and both use human flaws to drive the system.}"
+  ],
+  [
+   1566,
+   "\\cpara{A contested political program presented as settled history, in an essay about physics. No source, no data, no counter-case. ``History says'' makes history the speaker so that no historian has to be cited. The reader who does not share the politics is asked to accept it as background before the argument about Science begins.}"
+  ],
+  [
+   1897,
+   "\\clogic{A non sequitur. If some rules improve outcomes, it does not follow that more rules correlate with more growth. It follows only that the right rules help. The sentence refutes a position nobody holds.}"
+  ],
+  [
+   2097,
+   "\\clogic{Two extreme cases chosen to stand for all regulation. The step from some regulation to a person or group ``doing everything they think is a good idea'' is the whole argument, and it is not made.}"
+  ],
+  [
+   2111,
+   "\\cpara{Adds that plans that sound good do not deliver what was predicted, and that power corrupts.}"
+  ],
+  [
+   2314,
+   "\\cpara{The conclusion of the libertarian argument. Its defense comes two paragraphs later (see the note there).}"
+  ],
+  [
+   2461,
+   "\\cpara{The textbook case for markets, in four sentences, with the state's minimal jobs (``violence restrained and contracts enforced'') kept in the last one.}"
+  ],
+  [
+   2891,
+   "\\cpara{The evidence against the theory is named and set aside in one clause (``I'm not going to go into market failures''). The claim that replaces it, that libertarianism degrades less awkwardly than ``any other known economic principle,'' is a comparison with every alternative, made with no comparison.}"
+  ],
+  [
+   3452,
+   "\\cpara{Turns to science, which began by rejecting Aristotle's authority; had it only swapped trust in Aristotle for self-trust, it would have faded quickly.}"
+  ],
+  [
+   3707,
+   "\\cpara{Says the Scientific Revolution lasted because it trusted no one, not even its own members.}"
+  ],
+  [
+   3888,
+   "\\cpara{Explains the first step: armchair reasoning cannot simply replace armchair reasoning; one must ask nature through experiment and heed the answer.}"
+  ],
+  [
+   4168,
+   "\\cpara{Raises the practical problem: people are stubborn and may reject experimental results, and scolding them will not help.}"
+  ],
+  [
+   4369,
+   "\\cpara{The factual claim here is false. Science does appoint judges who are supposed to be impartial: journal editors, referees, grant panels, prize committees. The essay's model of Science leaves out peer review, the institution that most resembles what it says Science does not do.}"
+  ],
+  [
+   4628,
+   "\\cpara{The essay's central mechanism: harness each scientist's wish to be right. It is presented as the author's observation. It is Polanyi's argument (1962), and Philip Kitcher's in ``The Division of Cognitive Labor'' (\\textsc{Journal of Philosophy}, 1990), who asked: ``Might those with baser motives actually do more to advance their community's epistemic endeavors?''}"
+  ],
+  [
+   4996,
+   "\\clogic{The incentive runs the other way. A scientist who wants to prove a theory is motivated to design experiments the theory will pass, not ones that could sink it. The essay admits this two paragraphs later (``game the statistical methods''), without noticing that it undoes this sentence.}"
+  ],
+  [
+   5202,
+   "\\cpara{``The System,'' capitalized, is ``somewhat'' more trustworthy than its parts. That is the essay's own verdict on Science, and it is modest. The last paragraphs ask the reader to overrule this system with a single person's reasoning, which on the essay's account is the less trustworthy part.}"
+  ],
+  [
+   5401,
+   "\\cpara{This concession undoes the third item of the opening list. If both systems depend on most people being better than selfish, then neither is powered by harnessed flaws alone. The essay states the concession and moves on as if nothing had changed.}"
+  ],
+  [
+   5758,
+   "\\cpara{``Degrades gracefully'' is asserted a second time, now for science, and again with no measure. The failures the paragraph names (gaming statistics, nobody replicating) later turned out to be common. When the Open Science Collaboration (\\textsc{Science}, 2015) repeated 100 psychology studies, 97\\% of the originals had significant results and 36\\% of the replications did. The essay gives the reader no way to say whether that is graceful.}"
+  ],
+  [
+   6088,
+   "\\cpara{The rule stated here decides the essay's case against its author. Many-worlds came after the standard theory, and the author wrote the day before that it ``doesn't seem to make any new predictions relative to the old theory'' (``The Dilemma: Science or Bayes?''). By this rule, which the paragraph calls ``an important feature,'' Science is right to withhold credit. The essay praises the rule and then asks the reader to override it.}"
+  ],
+  [
+   6360,
+   "\\cpara{The thesis, in the fourth paragraph from the end. The whole question is whether any person's calculation is correct, and on that the paragraph is silent.}"
+  ],
+  [
+   6746,
+   "\\cpara{The essay's one caution against its own conclusion, and the last. By its own first principle, an ``extremely reasonable-sounding argument'' is what Science is right to distrust. The paragraph says the step is ``not a trivial step,'' gives no reason to take it, and the next two paragraphs take it.}"
+  ],
+  [
+   7258,
+   "\\cpara{Says science assumes people are too foolish and self-deceiving to apply an ideal reasoning method directly, or no social process would be needed.}"
+  ],
+  [
+   7483,
+   "\\cpara{The conclusion is a dare, not an argument. After arguing that Science is right to distrust individual reasoning, the essay asks the reader whether they ``think you're smarter than that.'' The answer it wants is yes, and the argument it has made says no. Calling collapse a matter of ``fairies'' is ridicule in place of a case. The paragraph ends in the register Aaronson described in the post the essay began with: accept the conclusion and be a hero, or refuse and be a coward.}"
+  ]
+ ]
+}

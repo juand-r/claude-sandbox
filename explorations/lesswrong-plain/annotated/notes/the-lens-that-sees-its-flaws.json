@@ -1,0 +1,80 @@
+{
+ "slug": "the-lens-that-sees-its-flaws",
+ "header": "\\post{The Lens That Sees Its Flaws}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/46qnWRSR7L2eyNbMA/the-lens-that-sees-its-flaws}\n",
+ "skeleton_sha": "2f8e03b81440a85247c0aa510dd983e7e7d9f9e0f08fa2efca4ddb47f54fc007",
+ "post_sha": "2d3ae997aec118745fda6d70f1321986667bf88fbb35056a11926928bcbec25b",
+ "edits": [
+  {
+   "at": 2553,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   142,
+   "\\cpara{Traces the physical chain from sunlight to your belief that your shoelaces are untied.}"
+  ],
+  [
+   594,
+   "\\cpara{Claims the key to deliberate reasoning is that this process is understandable, so you can ask which ways of thinking produce accurate beliefs.}"
+  ],
+  [
+   1005,
+   "\\cpara{Contrasts mice, which see without understanding seeing, with humans, who can, and invites the reader to marvel at it.}"
+  ],
+  [
+   1290,
+   "\\cpara{Explains that humans, unlike mice, can recognize flaws in their own perception, such as optical illusions, by keeping the senses distinct from reality.}"
+  ],
+  [
+   2045,
+   "\\cpara{Describes science as reasoning about which process makes beliefs match the world, understandable and useful outside the laboratory.}"
+  ],
+  [
+   2801,
+   "\\cpara{Repeats the two paragraphs before it: the mice again, the wonder again. The one new claim, that the power belongs to ``individuals, not just scientific societies,'' is the essay's real thesis. It sits in a trailing clause, with no argument, after a dash.}"
+  ],
+  [
+   3072,
+   "\\cpara{The premise the whole essay needs, that a mind can be understood and corrected as a machine can, stated in one sentence and defended with a joke. The italics do the arguing. ``A little more complicated'' is irony, and irony is not a reason.}"
+  ],
+  [
+   3260,
+   "\\cpara{The essay's only case, and it is thin. One anonymous person, in an undated chat, as the author recalls it. The question itself is lopsided: ``If no, why not?'' demands reasons only from people who expect no war. The author's survey applies scrutiny to one answer only, which is the fault the essay goes on to describe.}"
+  ],
+  [
+   3688,
+   "\\cpara{The diagnosis is mind-reading. From two words the author infers the man's unhappiness and a causal story about his brain. Then the parallel worlds arrive to say something ordinary probability says without them: optimism does not predict peace. The rest is decoration.}"
+  ],
+  [
+   4101,
+   "\\clogic{The same device as in ``The Bottom Line,'' with the same Tegmark footnote. A frequency over many similar cases does all the work. Contested physics is brought in to make an everyday point sound like a technical result.}"
+  ],
+  [
+   4115,
+   "\\cpara{The principle, in two sentences: what you would like to be true is not evidence. It is correct and entirely familiar; ``wishful thinking'' names it. The paragraph adds jargon (``entangled'') and one more metaphor for the mind.}"
+  ],
+  [
+   4428,
+   "\\cpara{The conclusion promises a ``reflective correction'' and never says what it is, how large it should be, or how to know it worked. ``In practice'' claims results; the essay reports none. The author had already written the opposite warning. In ``Knowing About Biases Can Hurt People,'' posted in April 2007, five months earlier: ``If you're irrational to start with, having more knowledge can hurt you.'' The conclusion drops that warning and sells the knowledge as power.}"
+  ],
+  [
+   4966,
+   "\\clogic{``Far more powerful'' is the essay's largest claim, and it comes with no evidence.}"
+  ],
+  [
+   5016,
+   "\\cpara{Cites Max Tegmark's essay on parallel universes, the source of the ``Tegmark duplicates'' in the text.}"
+  ],
+  [
+   5321,
+   "\\cpara{The footnote holds the essay's only quantitative idea: a small effect should shift belief by a small amount. That idea is the whole answer to the question of how large a correction should be, and it is in a footnote.}"
+  ],
+  [
+   5706,
+   "\\clogic{The essay says it must now measure, and then measures nothing. No number enters Bayes's theorem.}"
+  ]
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "slug": "you-can-face-reality",
+ "header": "\\post{You Can Face Reality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/HYWhKXRsMAyvRKRYz/you-can-face-reality}\n",
+ "skeleton_sha": "4d280117a67cbeebb39f04f3be7db9d173cd6870791d166038ef6218b9bf6fcf",
+ "post_sha": "5e9ac03db482c09c3a24fff20f82fcf792118b66c0a9f21dc9bbc98d99c548ef",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{The whole post is someone else's paragraph. The author contributes the title and the line breaks. There is no argument to judge, only a quotation presented as a finding, under a title that turns it into a promise to the reader. As a set of claims, it fails exactly where a reader would need it (see the notes below).}"
+  ],
+  [
+   433,
+   "\\clogic{The inference fails. People endure a fact's effects, not their knowledge of it. A parent whose child has died but who has not yet been told is not yet enduring the grief; hearing the truth is what begins it. In exactly the cases where facing reality is hard, the knowing is a new cost. The line promises that the cost has already been paid.}"
+  ],
+  [
+   459,
+   "\\cpara{The attribution gives no book and no page, so the reader cannot check the context. The source is Gendlin's \\textsc{Focusing} (the author cites the 1982 Bantam edition in ``Avoiding Your Belief's Real Weak Points''). Gendlin was a philosopher and psychologist, and \\textsc{Focusing} is a self-help book on attending to bodily feeling. In the scanned 1982 edition, which I could search but not read in full, the lines come in Part Three, ``People Helping Each Other'' (running head on page 140). The sentence just before them is ``It is not harmful to the other person if you look stupid or imperfect.'' They are advice about showing a listening partner your own feelings, and they are printed as prose. The line breaks, which make them look like a creed, are the post's. So is the jump from ``your feelings, told to a friend'' to ``any truth whatever.'' (That the passage is about a listening exchange is my inference from the sentence before it and the part title.)}"
+  ]
+ ]
+}

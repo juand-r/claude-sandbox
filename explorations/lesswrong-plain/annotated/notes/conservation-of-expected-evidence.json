@@ -1,0 +1,73 @@
+{
+ "slug": "conservation-of-expected-evidence",
+ "header": "\\post{Conservation of Expected Evidence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/jiBFC7DcCrZjGmZnJ/conservation-of-expected-evidence}\n",
+ "skeleton_sha": "a4869f3c4323d5a210db62eb53bc873058f4410e7a0423ba0b674c8cd0d3faba",
+ "post_sha": "df6a686a286f156e51b2245cef184e1a7e0d15f89e93c133881880f83b867e0a",
+ "edits": [],
+ "notes": [
+  [
+   152,
+   "\\cpara{The three dilemmas match Spee's text (checked against Marcus Hellyer's translation, points 10, 11 and 41). The case undercuts the post. Spee saw that the judges counted both outcomes as proof, in 1631, without probability theory. The post will claim the rule holds ``as a matter of probability theory, not mere fairness,'' and has to show what the theory adds to what Spee already saw. It does not.}"
+  ],
+  [
+   988,
+   "\\cpara{Explains that Spee, as confessor to many accused witches, saw every branch: whatever they did counted as guilt. One case shows only one branch, hence scientists state predictions in advance.}"
+  ],
+  [
+   1364,
+   "\\cfact{In 2007 most did not. Registered Reports, the journal format that makes researchers submit predictions and methods before collecting data, began at \\textsc{Cortex} in 2013 (Chambers, \\textsc{Cortex} 49:609). Advance registration was then routine mainly for clinical trials. The sentence describes an ideal as a practice.}"
+  ],
+  [
+   1378,
+   "\\cpara{The post names a law. The law is the law of total probability, which the next block states, with its terms rearranged. Calling it ``Conservation of Expected Evidence,'' after the conservation laws of physics, gives a textbook identity the look of a discovery, and ``which I would name'' puts the author's name on the naming.}"
+  ],
+  [
+   1775,
+   "\\cpara{The second and third lines are the law of total probability. The claim the post needs, that the expected change in P(H) is zero, is stated in words just before, but never written as an equation: P(E) times the rise when E is seen, plus P(\\textasciitilde E) times the fall when it is not, equals zero. The reader has to supply the step the post is named for.}"
+  ],
+  [
+   1911,
+   "\\cpara{Restates the rule: expecting evidence one way requires expecting counterevidence the other way.}"
+  ],
+  [
+   2040,
+   "\\cpara{The law in words: a confident theory gains little from success and loses much from failure. This paragraph is what the slogan should have been, and it comes after the slogan. The paragraph then ends on a sentence that is false as worded (see the logic note).}"
+  ],
+  [
+   2601,
+   "\\clogic{False if ``confident'' means sure. The expected probability of H stays the same. Expected uncertainty falls: conditioning never increases entropy on average, and it lowers it unless the evidence is irrelevant. After evidence you expect to be more sure, one way or the other. The sentence uses ``confidence'' for ``the probability of H,'' and the later advice to ``sit back and relax'' depends on the reader not noticing.}"
+  ],
+  [
+   2750,
+   "\\cpara{Three applications. The first two are valid: sabotage and no sabotage, good life and evil life, are the two outcomes of one observation. The third is not, and it is the one aimed at the reader's opponents (see the note).}"
+  ],
+  [
+   3264,
+   "\\clogic{The post offers this, with the other two, as a reductio (``Doesn't quite sound right, does it?''). Whether it fits the law depends on treating the Bible's miracles and today's silence as the two outcomes of one observation, revelation or none, which a defender can grant. But the believer's argument, as the post itself states it, does not claim that silence is evidence for God. It explains silence: it says the likelihood of silence, given God, is not low. The post attacks a claim the believer did not make.}"
+  ],
+  [
+   3278,
+   "\\cpara{Asks whether that sounds right, and tells the reader to notice the feeling that the argument is forced.}"
+  ],
+  [
+   3455,
+   "\\cpara{Claims that an ideal reasoner cannot seek evidence expected to confirm a theory, since no plan can raise expected confidence on average; evidence can only test a theory.}"
+  ],
+  [
+   3509,
+   "\\clogic{In plain English you can seek evidence that will probably confirm your theory: pick a test your theory passes with high probability. The post described exactly that two paragraphs earlier (``a strong probability of seeing weak evidence''). What is impossible is to expect the probability to rise on average. The post blurs ``expect'' in the ordinary sense with ``expect'' as a mathematical average, then lays down a rule that is true only in the second sense. ``A true Bayesian'' defines away the counterexamples.}"
+  ],
+  [
+   3833,
+   "\\cpara{Advice to an ideal reasoner, delivered to humans, who are the only readers. The law says a coherent reasoner cannot expect to be confirmed. It does not stop a human from reinterpreting results to suit a theory, which is what the paragraph tells them they ``needn't bother'' doing. Three ``no matter how'' clauses at the end repeat one point.}"
+  ],
+  [
+   4627,
+   "\\cpara{Concludes that you may as well relax and wait for the evidence.}"
+  ],
+  [
+   4721,
+   "\\cpara{The post never says what a judge should have done, and gives a reader who is not a ``true Bayesian'' no way to use the law.}"
+  ]
+ ]
+}

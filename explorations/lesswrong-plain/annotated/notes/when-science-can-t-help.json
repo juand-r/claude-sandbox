@@ -1,0 +1,125 @@
+{
+ "slug": "when-science-can-t-help",
+ "header": "\\post{When Science Can't Help}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/wzxneh7wxkdNYNbtB/when-science-can-t-help}\n",
+ "skeleton_sha": "ce8402873eaf2ef36990ec0518d9e9d0e405856d01bd933e40efba6d03eabb84",
+ "post_sha": "268411f99f9252f71b400d379c8754bc0c2df324e473d302fa5c47da8adf96c5",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{The essay rests on an example the reader sees only in outline. The theory is stated in one line with ``Let's say'' and then disowned: it ``isn't the whole story, not even close.'' In the post linked here (``My Wild and Reckless Youth,'' 2007) the author refused to describe it at all: ``This I will not describe, for it would be a long tale and complicated.'' An argument that Science failed its author is hard to check when the case is only sketched.}"
+  ],
+  [
+   447,
+   "\\cpara{By the author's own 2007 account, the tradition now blamed was a help in getting out of this theory: ``Beyond a doubt, my allegiance to Traditional Rationality helped me get out of the hole I dug myself into.''}"
+  ],
+  [
+   542,
+   "\\cpara{Lists the realization: the author had followed the traditional rules, requiring the theory to make new predictions, and Science would have accepted ten wasted years given an admission of error afterward.}"
+  ],
+  [
+   842,
+   "\\cfact{Not the author's own prediction. Quantum coherence in microtubules is the Penrose--Hameroff proposal of the 1990s; the 2007 post says ``a la Sir Roger Penrose.'' And science did not wait ten years for an experiment to dispose of it. In 2000 Max Tegmark calculated decoherence times of about $10^{-13}$ to $10^{-20}$ seconds, against 0.001 to 0.1 seconds for the relevant brain processes (\\textsc{Physical Review E} 61, 4194). A calculation, not an experiment, did the work, which is the kind of reasoning the essay says Science does not do.}"
+  ],
+  [
+   1056,
+   "\\clogic{Science is ``fine'' with it only because ``Science'' here is the author's idealization, defined in the previous post. Actual science screens ideas before anyone spends ten years on them: through advisors, referees and funding panels, all of which judge plausibility before the test.}"
+  ],
+  [
+   1086,
+   "\\cpara{Says, with irony, that from Science's view this is how things should go: you admitted your error.}"
+  ],
+  [
+   1337,
+   "\\cpara{The one substantive claim in the opening: Science says nothing about where theories come from. It is presented as a discovery. It is the standard distinction between the context of discovery and the context of justification (Hans Reichenbach, 1938), and Popper held that the act of inventing a theory is not open to logical analysis. Seventy years of philosophy of science have argued about exactly this. The essay cites none of it.}"
+  ],
+  [
+   1660,
+   "\\cpara{The question is about untestable questions. The answer changes the subject to questions that are testable but not ``easily immediately.'' Every example that follows is of the second kind, so the reader's actual question is never answered.}"
+  ],
+  [
+   1952,
+   "\\cpara{Grants that when clear experimental evidence exists, you should follow it.}"
+  ],
+  [
+   2095,
+   "\\cpara{The thesis. ``There is a strong rational argument'' is the premise the essay needs and never establishes for any of its cases. Who judges that the argument is strong, before the test, is the question the whole essay avoids.}"
+  ],
+  [
+   2330,
+   "\\cpara{Gives an example: large-scale quantum superpositions could be tested in principle, though not with today's technology.}"
+  ],
+  [
+   2992,
+   "\\cpara{Admits this example has little practical bearing, but says it shows some future consequences are not cheap to test now.}"
+  ],
+  [
+   3195,
+   "\\cpara{The ``new kind of verdict'' this paragraph calls for already exists. Imre Lakatos (``Falsification and the Methodology of Scientific Research Programmes,'' 1970) made the research programme, not the single hypothesis, the unit that science appraises. A programme is ``progressive'' if it keeps producing corroborated novel predictions. Untested helper hypotheses inside a progressive programme are judged with it. The essay reinvents this in one paragraph, less precisely, and calls it rationality taking over from science.}"
+  ],
+  [
+   3906,
+   "\\clogic{``Experimentally productive as a whole'' is asserted of evolutionary psychology with no example of a confirmed prediction. The claim the paragraph needs is the one it does not support.}"
+  ],
+  [
+   3957,
+   "\\cpara{The case the essay was built to reach. The death toll checks out for 2008 (World Bank figures give about 149,000 a day), but it counts every death on Earth, almost none of which could be cryopreserved. My reading: the figure's work is rhetorical. Set beside doubt about cryonics, it makes doubt feel like indifference to death.}"
+  ],
+  [
+   4221,
+   "\\cpara{Asks whether you should reject cryonics because it has not been proven by experiment.}"
+  ],
+  [
+   4402,
+   "\\cpara{The rule proves less than the essay needs. It shows that the lack of revivals is weak evidence against cryonics. It gives no evidence for it. A claim with weak evidence against it and none for it stays near its prior probability, and the essay never says what the prior is or why it should be high. The fossil analogy also cuts the other way: evolution has abundant positive evidence besides the fossils that are missing. Cryonics has no counterpart.}"
+  ],
+  [
+   5286,
+   "\\cpara{Argues that we could not expect to revive a frozen mammal today even if future technology could, so the lack of revivals says little.}"
+  ],
+  [
+   5530,
+   "\\cpara{The positive case for cryonics is declined (``I'm not going to go into those''), and then its key premise is slipped in. The premise is that freezing preserves ``the pattern of synapses.'' That is an empirical claim about what freezing does to brain tissue, and it is exactly what cannot be settled by reading ``the physics and anti-Zombie sequences.'' The essay replaces the missing evidence with a pointer to its author's earlier posts.}"
+  ],
+  [
+   5930,
+   "\\cpara{A fair concession. On the case it chose, science's verdict, ``not proven,'' is correct; the essay's complaint is that the verdict comes too late to act on. The error it describes belongs to people who misread science.}"
+  ],
+  [
+   6381,
+   "\\cpara{Insinuation. A line with no context (the essay admits it) is used to hint at an opponent the essay does not name, with an argument it does not state. The quotation is not on the current Wikiquote page for McCarthy, and I found no source for it; it is unverified.}"
+  ],
+  [
+   6679,
+   "\\cpara{The explanation for the ``general mistake'' is offered with ``probably'' and no evidence. The parenthesis asks why no one is testing a diet theory; it calls for a test.}"
+  ],
+  [
+   7201,
+   "\\cpara{A digression on clinical trials, and the author's own verdict overreaches in it.}"
+  ],
+  [
+   7514,
+   "\\cfact{Recomputed. With 500 subjects per arm, the difference is 1 point with a standard error of about 3.1 points. The 95\\% confidence interval runs from about $-5$ to $+7$ percentage points. The trial rules out a large effect. It does not rule out a 7-point gain in recovery, one extra recovery for every 14 patients treated, which for many conditions would be a useful drug. ``If at all'' claims more than the numbers show.}"
+  ],
+  [
+   7640,
+   "\\cpara{The opponents are characterized, not quoted: ``people dismissing cryonics out of hand.'' No one is named. The ambulance line is credited to ``Mike Li'' with no source, and the analogy assumes its conclusion. An ambulance is known to reach hospitals. Whether cryonics leads anywhere is the question.}"
+  ],
+  [
+   8330,
+   "\\cpara{A ``calculated bet'' with no calculation. The essay has given no probability that cryonics works, no cost, and no comparison. What it calls rational is the author's conclusion, unargued.}"
+  ],
+  [
+   8400,
+   "\\cpara{Says Science seeks evidence too large to misread, but this can fail through confusion or hard-to-test parts, and sometimes clear evidence is unavailable.}"
+  ],
+  [
+   8791,
+   "\\cpara{The conclusion. ``Figure out the answer before you get clubbed over the head with it'' is advice with no method attached. The previous post argued that Science distrusts exactly this. This post has not shown why the distrust is wrong. It has only shown that it is inconvenient for three positions the author holds.}"
+  ],
+  [
+   9039,
+   "\\cpara{The link goes to \\textsc{Global Catastrophic Risks} (Oxford, 2008), a book that contains two chapters by the author, including ``Cognitive Biases Potentially Affecting Judgment of Global Risks.'' The essay does not say so. Inference: the joke points at the stake the author cared most about, and at the author's own work on it, in a parenthesis at the end of an essay ostensibly about cryonics.}"
+  ]
+ ]
+}

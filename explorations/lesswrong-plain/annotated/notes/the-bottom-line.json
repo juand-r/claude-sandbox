@@ -1,0 +1,69 @@
+{
+ "slug": "the-bottom-line",
+ "header": "\\post{The Bottom Line}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/34XxbRFe54FycoCDw/the-bottom-line}\n",
+ "skeleton_sha": "13ce016a5705fd395dde2141b0f2e6490962156fcf61c4b9aad01813d461e539",
+ "post_sha": "515f61a18257cf74d3e36c55998e5e55c80aab8a6b23a4b54884cfca6969b383",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{The setup defines, quietly, the kind of evidence at stake: clues that shift the odds without settling anything. Keep that in mind. The essay later says the arguer's page is evidence ``only of which owner paid,'' which understates what this paragraph's clues are worth.}"
+  ],
+  [
+   665,
+   "\\cpara{The framing makes the case too easy. The arguer is paid, so the reader knows the argument was bought. The case that matters is one where no one is paid and the motive sits inside your own head. The essay reaches that case only in its last two paragraphs.}"
+  ],
+  [
+   1035,
+   "\\cpara{The central image, shown rather than told. Much of what follows explains an image the reader already understands, and the explanations are harder to follow than the image.}"
+  ],
+  [
+   1705,
+   "\\cpara{Argues that once the arguer wrote the conclusion, how that ink relates to the boxes' contents was already fixed.}"
+  ],
+  [
+   1937,
+   "\\cpara{Suggests picturing many copies of the world, in which the diamond is in box A or B at some real frequency.}"
+  ],
+  [
+   2406,
+   "\\clogic{The many-worlds picture is not needed. All the argument uses is a frequency: across many auctions like this one, how often is the diamond in B when the arguer's page says B? Ordinary probability says this without the contested physics. The footnote to Tegmark makes the physics look like support for the argument. It is only decoration. The essay offers the worlds only as something to ``visualize,'' and ``Tegmark duplicates'' are Tegmark's Level I multiverse (distant copies of our region of space), not Everett's branches.}"
+  ],
+  [
+   2420,
+   "\\cpara{Warns that readers may take the written words as meaning box B holds the diamond, as people read a color word instead of naming its ink color.}"
+  ],
+  [
+   2845,
+   "\\clogic{This is the Stroop effect (Stroop, 1935). It shows that reading is automatic and hard to suppress. It does not show that people believe what they read, which is the point being made. The analogy is loose, and the passage would be clearer without it.}"
+  ],
+  [
+   2940,
+   "\\cpara{Argues that what the ink tells you is its link to the boxes; among worlds where it says B, the share with the diamond in A is fixed whatever is written above it.}"
+  ],
+  [
+   3631,
+   "\\clogic{This is the key step, and it is overstated. The lines above the bottom line are not blank; they list true facts about the boxes. Box B does have a blue stamp. Those facts are evidence whoever writes them down. What the arguer's process destroys is the other half: you only see clues for B, and cannot tell how many clues for A were left out. The right conclusion is ``discount for selection,'' not ``ignore.'' Yudkowsky makes this very point the next day, in ``What Evidence Filtered Evidence?'' (29 September 2007): ``Each statement that the clever arguer makes is valid evidence.''}"
+  ],
+  [
+   3645,
+   "\\cpara{The first new idea since the story: what the arguer's conclusion is evidence of depends on how owners choose to hire arguers. That is a real point about selection. It gets two sentences, is left to the reader (``I leave to you''), and is dropped. It deserved the space the parallel worlds took.}"
+  ],
+  [
+   4144,
+   "\\cpara{Contrasts a curious person who first lists the signs on both boxes, then writes a probability; what they write depends on the signs.}"
+  ],
+  [
+   4837,
+   "\\cpara{Concludes that the curious person's writing is evidence about the boxes, while the arguer's shows only who paid more, though the words sound alike.}"
+  ],
+  [
+   5216,
+   "\\cpara{The turn from parable to self-application, the essay's reason for existing, arrives in the second-to-last paragraph. The paragraph mixes the car example with a parallel-worlds definition of effectiveness and ends with a shrug (``oh well''). The practical lesson, how to notice that you are the clever arguer, is never given.}"
+  ],
+  [
+   6059,
+   "\\cpara{The only place the essay limits its own claim. A limit without a method is only a disclaimer. Without one, the warning will be heeded only by people already inclined to heed it.}"
+  ]
+ ]
+}

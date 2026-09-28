@@ -1,0 +1,117 @@
+{
+ "slug": "a-sense-that-more-is-possible",
+ "header": "\\post{A Sense That More Is Possible}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/Nu3wa6npK4Ry66vFp/a-sense-that-more-is-possible}\n",
+ "skeleton_sha": "34fa1a9d27f90275cf468bf126690952851ea5e2c386449a0cb4f951af496466",
+ "post_sha": "4c52796d46c148fde02eab8b8c6ae66e1fff6533cabd2e83bf53f9bf8c323392",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Explains that the author's teaching method is direct, so it helps if students are interested in rationality itself.}"
+  ],
+  [
+   540,
+   "\\cpara{Introduces a common reason people give for not caring about rationality: rational people they have known were no happier.}"
+  ],
+  [
+   768,
+   "\\cpara{The objection is answered by guessing who the objectors know and saying those people have ``not a whole lot of rationality.'' The essay never says how much would be enough, and over the next paragraphs the bar rises past Bayes's Theorem and past the most senior researchers the author admires. Whatever rational people an objector names, the answer is the same, so the objection can never be tested.}"
+  ],
+  [
+   1190,
+   "\\cpara{Adds that even people who can derive Bayes's Theorem, a basic result, do not have much rationality.}"
+  ],
+  [
+   1425,
+   "\\cpara{States the author's long-held sense that an art of thinking should exist whose students become visibly more capable.}"
+  ],
+  [
+   1752,
+   "\\cpara{Says the author sees only hints of this art, in a few senior psychologists who care intensely about rationality.}"
+  ],
+  [
+   2384,
+   "\\cpara{Argues that even these researchers fall far short of the mastery, knowledge and training found in top mathematicians, engineers and athletes.}"
+  ],
+  [
+   3141,
+   "\\cpara{The diagnosis, hedged (``I do suspect''). It assumes that there is one general skill waiting to be systematized. It does not consider the alternative: that beyond intelligence, knowledge and practice in particular fields, there may be little general skill to train. The essay's evidence, the absence of formidable rationalists, fits that alternative at least as well.}"
+  ],
+  [
+   3445,
+   "\\cpara{Names the main obstacle: it is hard to test whether rationality training works, and the author calls this the blocking problem.}"
+  ],
+  [
+   3819,
+   "\\cpara{Contrasts short debiasing experiments with the long, randomized, followed-up training programs the author thinks serious rationality would need.}"
+  ],
+  [
+   4023,
+   "\\cfact{Richard Nisbett's group measured the effect of years of training on reasoning. Lehman and Nisbett's ``longitudinal study of the effects of undergraduate training on reasoning'' (\\textsc{Developmental Psychology}, 1990) concluded: ``Results indicate that reasoning is taught and generalizable.'' Short sessions also had lasting measured effects: statistical reasoning taught ``in laboratory sessions lasting less than an hour,'' with effects lasting ``over a period of at least several weeks'' (Nisbett, ``Can Reasoning Be Taught?'', American Academy of Arts and Sciences). None of these was a randomized comparison of two training programs, which is what the essay asks for. They do show that long training had been studied, and that the hour-long interventions it mocks had results.}"
+  ],
+  [
+   4442,
+   "\\cpara{Reports a reader's suggestion that intelligence matters so much in rationality because, without systematic training, it is the main thing left.}"
+  ],
+  [
+   4814,
+   "\\cpara{Asks why rationalists do not look formidable or rise to the top of thinking professions, and instead seem like ordinary people with a hobby.}"
+  ],
+  [
+   5159,
+   "\\cpara{Answers, in part, that they have had less systematic training in rationality than a beginning black belt has had in fighting.}"
+  ],
+  [
+   5380,
+   "\\cpara{Admits the author is no master either, with one skill built, clearing up confusing thoughts, and no time to build others alone.}"
+  ],
+  [
+   6305,
+   "\\cpara{Offers a self-portrait: a fighter who can punch very hard but has only a street fighter's grasp of other techniques.}"
+  ],
+  [
+   6559,
+   "\\cpara{Asks why martial arts have schools and rationality does not.}"
+  ],
+  [
+   6885,
+   "\\cpara{Answers that it is easier to verify that you have hit someone.}"
+  ],
+  [
+   7005,
+   "\\cpara{Adds that martial arts schools exist because people wanted to be formidable fighters and worked together to build and practice a systematic art.}"
+  ],
+  [
+   7730,
+   "\\cpara{Claims these schools succeeded because they could tell when a hit landed and competed in realistic contests with clear winners.}"
+  ],
+  [
+   8009,
+   "\\cfact{No history is given for the claim that contests made the schools good. It is plausible. Aikido, whose schools mostly avoid competition, is criticized for the realism of its training, and some of its styles answer that they are ``not training for self-defense or combat effectiveness'' (Wikipedia, ``Aikido''). But the post offers the claim as fact, with no source.}"
+  ],
+  [
+   8023,
+   "\\cpara{Says the ambition came first: the belief that much more skill was possible drove people to train, systematize and test.}"
+  ],
+  [
+   8480,
+   "\\cpara{Gives the third reason: rationalists have trouble working in groups.}"
+  ],
+  [
+   8591,
+   "\\cpara{Gives the second reason: success in training is hard to verify.}"
+  ],
+  [
+   8703,
+   "\\cpara{Gives the first reason: people do not feel that rationality should be trained and tested as seriously as a martial art or engineering.}"
+  ],
+  [
+   9081,
+   "\\cpara{Adds that people do not see the lack of visibly stronger rationalists as a sign that something is wrong.}"
+  ],
+  [
+   9223,
+   "\\cpara{Concludes that rationality is treated as a hobby or a way of talking with few consequences, and that nobody sees a problem with this.}"
+  ]
+ ]
+}

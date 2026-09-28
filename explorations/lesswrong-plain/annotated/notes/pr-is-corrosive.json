@@ -1,0 +1,45 @@
+{
+ "slug": "pr-is-corrosive",
+ "header": "\\post{“PR” is corrosive; “reputation” is not.}{Anna Salamon}{2021}{https://www.lesswrong.com/posts/SWxnP5LZeJzuT3ccd/pr-is-corrosive-reputation-is-not}\n",
+ "skeleton_sha": "834cd7244ea899288016b2ff1ace37752ea3bcaddc88c9eb3bb2f211fe3e69e4",
+ "post_sha": "e21bbde47576634dcb524f5eb04f8775ada50cdc100b89d73451d74310af45ba",
+ "edits": [],
+ "notes": [
+  [
+   153,
+   "\\cpara{States the thesis: trying to manage ``PR'' leads to harmful, confused actions, while protecting one's reputation or honor, the author predicts, goes fine.}"
+  ],
+  [
+   724,
+   "\\cpara{Explains that guarding honor or reputation means being known to keep fixed standards, as with the Lannisters paying their debts or a gentleman's duel.}"
+  ],
+  [
+   1410,
+   "\\clogic{Dueling is the author's own example of honor, and it counts against the claim that safeguarding honor ``will basically go fine.'' Men were killed defending a fixed societal standard of exactly this kind. The post needs to say why honor goes fine in modern settings despite this history, and it does not.}"
+  ],
+  [
+   1424,
+   "\\cpara{The contrasting definition of PR. PR is defined as having no standards. The comparison is decided here, by definition, not later by argument.}"
+  ],
+  [
+   1668,
+   "\\cpara{Lists the two steps of managing PR: predict what will upset people, then speak so as not to set it off.}"
+  ],
+  [
+   1871,
+   "\\cpara{Claims this process is loopier, feeds on imagined fears, and, the author thinks, pushes people toward saying nothing at all.}"
+  ],
+  [
+   2292,
+   "\\cpara{Gives a sign of the difference: PR seems to need outside experts to obey nervously, while honor is something people can know and choose for themselves.}"
+  ],
+  [
+   2695,
+   "\\cpara{Suggests replacing talk of navigating PR with talk of defending honor or reputation, and predicts this will make people feel clearer and freer.}"
+  ],
+  [
+   3095,
+   "\\clogic{The whole post is a prediction, marked ``I predict'' in the first paragraph, with no cases offered. One real example of an organization that switched from ``PR'' to ``reputation'' thinking, and what changed, would do more than any argument here.}"
+  ]
+ ]
+}
