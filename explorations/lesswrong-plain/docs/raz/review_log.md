@@ -131,9 +131,10 @@ Unverified, as the agents report: Maier's and Dawes's results (Hold Off), Yamagi
 summaries only (Affect Heuristic), the Unarius date and the unnamed member of Congress (When
 None Dare, Evaporative Cooling), von Sydow (No One Can Exempt You).
 
-Tooling: do-we-believe-everything-we-re-told needed a hand fix of the skeleton (an in-text
-footnote marker linked to `#footnote2` left footnote 3 as a stray paragraph). md2tex should
-be checked for this pattern before Book III.
+Tooling: do-we-believe-everything-we-re-told needed a hand fix of the skeleton. The source
+text itself marks footnote 3 as `[2](#footnote2)`, so md2tex left footnote 3 as a stray
+paragraph. No other original has this pattern, and the verbatim check caught it, so md2tex
+is unchanged.
 
 Layout, for the whole-book pass: new bare-URL overfull boxes, all in the posts' own
 footnotes: Stranger Than History (144pt), Every Cause (119pt, 116pt), Crisis of Faith
