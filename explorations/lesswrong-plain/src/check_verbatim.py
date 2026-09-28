@@ -95,8 +95,11 @@ def md_to_text(md: str, move_notes: bool = True) -> str:
     md = md.replace(r"\*", "\x00")  # escaped literal asterisks survive
     md = md.replace("**", "").replace("*", "").replace("\x00", "*")
     md = re.sub(r"^\s*> ?", "", md, flags=re.M)  # blockquote markers
-    md = re.sub(r"^\s*[*-] ", "", md, flags=re.M)  # bullet markers
-    md = re.sub(r"^\s*\d+\. ", "", md, flags=re.M)  # numbered-list markers
+    # List markers, only in blocks that start as a list (as md2tex decides): a hard-wrapped
+    # line that happens to begin with "- " inside a paragraph is text, not a bullet.
+    md = "\n\n".join(
+        re.sub(r"^\s*([*-]|\d+\.) ", "", b, flags=re.M) if re.match(r"^\s*([*-]|\d+\.) ", b) else b
+        for b in re.split(r"\n\s*\n", md))
     # Footnote list written as "###### 1. text" headings: move it to the end, where
     # the annotated file's author footnotes end up, and drop the numbering.
     # (Only when the annotated file moved them into \cauthor notes; when it keeps them in
