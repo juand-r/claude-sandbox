@@ -2247,3 +2247,9 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: My last line recommends ``The New York Times,'' a blog post by Rob Rhinehart.
 - After: My last line lists as related ``The New York Times,'' a blog post by Rob Rhinehart.
 
+
+## the-lens-that-sees-its-flaws
+
+- Before: I describe every step of this, to show that the process ``is not magic.''
+- After: I describe every step of this, because it sounds like physics and makes what follows sound like physics too.
+
