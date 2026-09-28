@@ -1,0 +1,19 @@
+\begin{afterword}
+\summaryhead
+
+Phlogiston, the post says, was the eighteenth century's one-word answer to what fire is and why wood turns to ash. The theory explained everything after the fact and predicted nothing, yet for a long time no one saw a problem, because fake explanations do not feel fake.
+
+The author explains why with Bayesian networks. People seem to reason about causes with something like their graphs: rain makes the sidewalk wet, and a wet sidewalk is slippery. A network must count each piece of evidence once. Judea Pearl's example is soldiers counting their line: each passes on separate counts of those ahead and those behind, and adds them only at the end. In a network, evidence about an effect flows back to its cause but does not bounce forward again. Phlogiston theorists let the backward inference from hot fire to phlogiston count as a forward prediction. People do not keep these messages apart, which is what ``hindsight bias'' means; a properly designed AI would. Since fake explanations are not labeled, the post concludes, the only guaranteed test is to predict tomorrow rather than yesterday.
+
+\responsehead
+
+The post's technical material is mostly accurate. Screening off is stated correctly for its three-node chain. The claim that double counting was a motive for Bayesian networks is borne out by Pearl's 1982 paper, which asks how to ``avoid an infinite updating loop'' between a hypothesis and its evidence. The problems lie in the history the post starts from, and in the step from the technical material back to phlogiston.
+
+The history is given without a source, and historians describe it differently. Phlogiston theory did forbid outcomes: burned metals should have lost phlogiston, and the weight some of them gained counted against the theory. It also made a successful advance prediction, Priestley's reduction of lead calx in inflammable air in 1783. The post's charge fits the theory's later years, when its defenders adjusted it to each new finding. As a description of the theory as a whole, ``it could explain everything'' is overstated.
+
+The Bayesian analogy explains a different fault from the one the post found. Pearl's bookkeeping stops one observation being counted twice while evidence moves through a network whose links are already given. The phlogiston fault, in the post's own words, was that ``You looked at the result first'': the link from phlogiston to fire was set to fit the fire. Message-passing keeps no record of when or how a link was set. So the claim that a properly designed AI ``would notice the problem instantly,'' with ``just correct bookkeeping,'' is not shown. It would need a different record, of which observations were used to build the network. The rule is also stated without its condition: Pearl's guarantee that no message bounces holds only in networks without loops, and with loops, he wrote, messages ``may circulate indefinitely.''
+
+The closing rule, predict tomorrow and not yesterday, is offered as ``the only way.'' Old facts have counted as strong evidence when a theory was not fitted to them. Mercury's perihelion, known for decades, weighed at least as much for general relativity as the new prediction of light bending, and the author later said that Einstein used Mercury ``for verification.'' What the post's own diagnosis condemns is fitting, and the date of a fact is only a rough guide to whether a theory was fitted to it.
+
+In short: an accurate account of message-passing, attached to an overstated history of phlogiston and to a promise, that bookkeeping would catch a cause fitted to its effect, which the bookkeeping described cannot keep.
+\end{afterword}

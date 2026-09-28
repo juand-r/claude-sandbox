@@ -2,7 +2,80 @@
  "slug": "the-futility-of-emergence",
  "header": "\\post{The Futility of Emergence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/8QzZKw9WHRxjR4948/the-futility-of-emergence}\n",
  "skeleton_sha": "70b6853262f3e53aeed9ff435d2dcafee0eef920f523f014d9f62e0255b15c6a",
- "post_sha": "70b6853262f3e53aeed9ff435d2dcafee0eef920f523f014d9f62e0255b15c6a",
+ "post_sha": "c838dd60ca172139cdbbd025994f432e85a36730a8bde34a031addc57c25ffa1",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   136,
+   "\\cpara{Announces that the post will name a current theory flawed in the same way as phlogiston and vitalism, the examples of ``Fake Causality'' and ``Mysterious Answers to Mysterious Questions.''}"
+  ],
+  [
+   310,
+   "\\cpara{Names emergence and gives a definition. The quotation matches the first sentence of Wikipedia's article as it stood on 25 August 2007, the day before the post. The same article's next section, ``Definitions,'' gives narrower senses: the coinage of G.~H. Lewes (1875), who set ``emergents'' against ``resultants,'' which are ``a sum or a difference of the co-operant forces,'' and a distinction between ``weak'' and ``strong'' emergence.}"
+  ],
+  [
+   671,
+   "\\cpara{Argues that the definition fits everything above quarks, so that ``It's an emergent phenomenon!'' explains no more than ``It's not a quark!''}"
+  ],
+  [
+   810,
+   "\\clogic{True of the one-line summary the post quotes, not of the narrower definitions. For C.~D. Broad (1925), a property of a whole is emergent only if it ``cannot, even in theory, be deduced from the most complete knowledge of the properties'' of its parts. In that sense, calling something emergent is a claim that can turn out false. The \\textsc{Stanford Encyclopedia of Philosophy} (``Emergent Properties'') reports that the view waned as later science, above all quantum chemistry and molecular biochemistry, eroded the boundaries between levels.}"
+  ],
+  [
+   988,
+   "\\cpara{Narrows the target to the noun used as an explanation; the verb ``emerges from'' is acceptable before a specific model. The narrowing is fair. The first paragraph, which named emergence as a flawed ``theory,'' is not narrowed to match.}"
+  ],
+  [
+   1507,
+   "\\cpara{A joke: ``arisence'' offered as the explanation of gravity.}"
+  ],
+  [
+   1660,
+   "\\cpara{Restates when ``emerges from'' is acceptable: before a specific model.}"
+  ],
+  [
+   1847,
+   "\\cpara{Claims that ``emergence'' is commonly used as an explanation in its own right. The evidence is in the next paragraph.}"
+  ],
+  [
+   1990,
+   "\\cpara{The evidence is what the author has ``heard people say,'' with no speaker named and no text quoted. Such writers have existed: Samuel Alexander wrote in 1920 that life, an emergent quality, must ``be accepted with the `natural piety' of the investigator. It admits no explanation'' (quoted in the \\textsc{Stanford Encyclopedia of Philosophy}). But the post's targets are present-day speakers about intelligence, and none is quoted. The same pattern recurs three days later in ``Say Not `Complexity'{}.''}"
+  ],
+  [
+   2841,
+   "\\cpara{Applies the fourth sign of a mysterious answer: after ``Emergence'' the phenomenon is still a mystery.}"
+  ],
+  [
+   3025,
+   "\\cpara{Proposes deleting ``emergent'' from a sentence to see whether its meaning changes.}"
+  ],
+  [
+   3859,
+   "\\clogic{This ``Even better'' sentence is close to what some defenders of the term mean by it. In the words of the \\textsc{Stanford Encyclopedia of Philosophy}, Mark Bedau (1997) counts a feature as weakly emergent when it is ``derivable from the prior micro-facts leading up to it, but only in an informationally incompressible way,'' that is, by running the parts forward, as a model of individual ants does. The Wikipedia article the post links describes its ant colony the same way: ``each ant is an autonomous unit that reacts depending only on its local environment.''}"
+  ],
+  [
+   3887,
+   "\\cpara{Proposes replacing ``emergent'' with ``magical,'' the word used ``before emergence was invented.''}"
+  ],
+  [
+   4160,
+   "\\clogic{In C.~D. Broad's usage (1925), ``Life is an emergent phenomenon'' says something that ``Life is a magical phenomenon'' does not: that life needs no special substance. Broad set ``Emergent Vitalism'' against ``Substantial Vitalism,'' which posits ``a peculiar component, often called an `Entelechy','' and rejected the entelechy for reasons much like the post's against ``Élan vital.'' The substitution erases what the word ruled out, a life-substance, which is the error the previous post charged vitalism with.}"
+  ],
+  [
+   4347,
+   "\\cpara{Asks whether each pair of sentences does not fit ``exactly the same set of outcomes.''}"
+  ],
+  [
+   4583,
+   "\\clogic{The Wikipedia article the post links had already made the comparison, for one sense of the word. It quotes Bedau (1997): ``Although strong emergence is logically possible, it is uncomfortably like magic.'' Bedau defended weak emergence. The post applies to the word in general a comparison that its own source made for one sense.}"
+  ],
+  [
+   4597,
+   "\\cpara{Explains the word's popularity: it is ``the junk food of curiosity'' and ``gives you a sacred mystery to worship.'' No evidence is given for this cause. The \\textsc{Stanford Encyclopedia of Philosophy} gives another: attention to emergence ``was substantially reinvigorated starting in the 1970s with the discovery and creation of non-linear complex systems.''}"
+  ],
+  [
+   5081,
+   "\\cpara{Ends on the people who use the word, not on the word. The phrase ``literary genre'' repeats ``Science as Attire'' (23 August 2007).}"
+  ]
+ ]
 }

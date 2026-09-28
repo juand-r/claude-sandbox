@@ -145,3 +145,19 @@ Why: Test 3: 'is all hindsight' is an emphatic idiom; keep the substance without
 - Before: \cpara{Answers the critics with one word, ``all.'' The evidence that follows shows that the feeling of having expected a finding is unreliable, since people report it for a finding and for its opposite. That does not show that no finding could have been expected, which is what ``all'' claims.}
 - After: \cpara{Answers the critics: their sense of having expected the findings is hindsight. The evidence that follows shows that this feeling is unreliable, since people report it for a finding and for its opposite. It does not show that none of the findings could have been expected.}
 
+
+## annotated/afterwords/mysterious-answers-to-mysterious-questions.tex
+
+Why: Proportion: a naming point stays in the margin only (STANDARDS 2.4(2)).
+
+- Before:  The name the post gives the theory, ``Élan vital,'' is Bergson's, from 1907.
+- After: 
+
+
+## honest/sections/mysterious-answers-to-mysterious-questions.tex
+
+Why: Proportion: a naming point stays in the margin only (STANDARDS 2.4(2)).
+
+- Before: \nb{``Élan vital'' is Henri Bergson's term, from 1907. The historian
+- After: \nb{The historian
+

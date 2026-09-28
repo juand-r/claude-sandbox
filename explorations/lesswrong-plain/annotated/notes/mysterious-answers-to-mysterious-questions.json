@@ -2,7 +2,108 @@
  "slug": "mysterious-answers-to-mysterious-questions",
  "header": "\\post{Mysterious Answers to Mysterious Questions}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/6i3zToomS86oj9bS6/mysterious-answers-to-mysterious-questions}\n",
  "skeleton_sha": "7b0412922b012a387b804bfa1de11ed95cef8ceec2bb03e913ee11cb97316007",
- "post_sha": "7b0412922b012a387b804bfa1de11ed95cef8ceec2bb03e913ee11cb97316007",
+ "post_sha": "cc91358dd248d829b3707d6b4d3962f9fbab2829063643ac0e4a70dfda7f44c5",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   170,
+   "\\cpara{Asks the reader to imagine knowing nothing of cells or biochemistry, so that the hand's movement under the will seems like magic.}"
+  ],
+  [
+   559,
+   "\\cpara{Three passages by Kelvin: from a magazine article of 1892, a paper of 1852 and a speech of 1903. I checked each against its source. The words match, apart from the cuts noted below.}"
+  ],
+  [
+   1100,
+   "\\cfact{The ellipsis cuts a sentence in half. It goes on: ``but that it acts in a manner more nearly analogous to that of an electric motor working in virtue of energy supplied to it by a voltaic battery.'' The omitted lines add that the work an animal does is ``a part equivalent for the oxidation of the food.'' Cut, the sentence can read as a denial that the body works like a machine; whole, it compares the body to one.}"
+  ],
+  [
+   1457,
+   "\\cfact{The post drops the start of this sentence: ``Whatever be the nature of these means.'' The means are those by which ``chemical forces'' in the body produce motion, so what the will directs, in Kelvin's sentence, is the body's chemistry. The same paper answers ``in the negative'' the question whether animals move matter ``in virtue of an inherent power,'' and ascribes animal heat and motion to ``the chemical action \\ldots\\ experienced by the food.'' It even infers that ``an animal would be sensibly less warm in going up-hill than in going down-hill, were the breathing not greater in the former case.''}"
+  ],
+  [
+   1635,
+   "\\cfact{Kelvin said this on 1 May 1903, moving a vote of thanks after a lecture in a course on ``Christian Apologetics'' at University College, London. In the letters that followed in \\textsc{The Times}, Thompson reports, Sir E. Ray Lankester ``denied the statement that any modern biologist showed signs of coming to a belief in the existence of a vital principle.''}"
+  ],
+  [
+   1675,
+   "\\cpara{Defines vitalism as the theory the three passages illustrate. By the account of the post's own third source, it was not Kelvin's theory. Thompson writes that Kelvin's doctrine ``had little in common with the old crude vitalism which postulated a vital force'': ``No supposed vital force could maintain the animal heat,'' and a vital principle could only ``direct or organize those transformations of energy.''}"
+  ],
+  [
+   1851,
+   "\\cfact{``Élan vital'' is Henri Bergson's term, from \\textsc{Creative Evolution} (1907), for an impetus behind evolution and development (Wikipedia, ``Élan vital''). It is 79 years later than Wöhler's synthesis and later than all three Kelvin passages. Kelvin's term is ``vital principle.''}"
+  ],
+  [
+   2227,
+   "\\cfact{Historians dispute this. Douglas McKie called it ``a chemical legend'' (\\textsc{Nature}, 1944): after 1828 ``chemists continued to assert the existence of vital force and to describe its role in the formation of organic substances.'' Kelvin's 1892 article has an example in a footnote to the first passage. About 25 years earlier he had asked Liebig, Wöhler's collaborator, whether a leaf could grow by chemical forces; Liebig said he ``would more readily believe that a book on chemistry or on botany could grow out of dead matter by chemical processes.''}"
+  ],
+  [
+   2241,
+   "\\cpara{Says, with ``probably,'' that ``Élan vital'' was less an explanation than a ``curiosity-stopper.''}"
+  ],
+  [
+   2468,
+   "\\cpara{Says the phrase gives the feeling of knowing why the hand moves, and introduces a diagram of that feeling. I could not view the image; the text calls it ``a little causal diagram in your head.''}"
+  ],
+  [
+   2763,
+   "\\cpara{Argues that ``Élan vital'' predicts nothing, for instance whether the hand will make or absorb heat, and so fits every outcome.}"
+  ],
+  [
+   3150,
+   "\\clogic{The post's own account of vitalism, a few paragraphs up, has it forbidding something: chemical transformations ``which no mere non-living particles could undergo.'' That is why a synthesis could be ``a major blow.'' A theory that a laboratory result can count against does not explain all outcomes equally. Wikipedia's article on vitalism states it as a prediction: vitalist chemists ``predicted that organic materials could not be synthesized from inorganic components.''}"
+  ],
+  [
+   3218,
+   "\\cpara{Charges ``the vitalists'' as a group with taking ``pride in their ignorance'' and refusing to give it up ``when evidence came knocking.'' The only vitalist quoted is Kelvin, and the evidence that came knocking is not named.}"
+  ],
+  [
+   3740,
+   "\\cpara{Mocks Kelvin's ``infinitely beyond.'' The phrase is fair to him: a page after the first passage he wrote that ``the real phenomena of life infinitely transcend human science.''}"
+  ],
+  [
+   3986,
+   "\\cpara{States the principle the post rests on: ignorance and mystery are facts about a mind, not about what it is puzzled by. The author later credited the idea to E. T. Jaynes. In ``Probability is in the Mind'' (12 March 2008) the author wrote that Jaynes held that ``if I am ignorant of a phenomenon, that is a fact about my state of mind, not a fact about the phenomenon,'' nearly the sentence this paragraph gives without a source.}"
+  ],
+  [
+   4401,
+   "\\cpara{Groups vitalism with phlogiston: both put a mystery into a substance, and ``Neither answer helped concentrate the model's probability density.'' For vitalism, see the note on ``equally good at explaining all outcomes.''}"
+  ],
+  [
+   4953,
+   "\\cpara{Cites Molière. The scene is the mock graduation that ends \\textsc{Le Malade imaginaire}: a candidate for the medical degree says opium makes one sleep because ``est in eo / Vertus dormitiva,'' and the chorus of doctors approves.}"
+  ],
+  [
+   5266,
+   "\\clogic{Stated as a fact about human psychology, with no evidence beyond the post's examples.}"
+  ],
+  [
+   5280,
+   "\\cpara{Repeats the principle of the paragraph on the map and the territory, three paragraphs earlier, and applies it to the vitalists.}"
+  ],
+  [
+   5737,
+   "\\cpara{Offers the principle as ``the ultimate and fully general explanation'' of why people, ``again and again in humanity's history,'' are ``shocked'' to find non-mysterious answers. The post describes no case of such a shock.}"
+  ],
+  [
+   5997,
+   "\\cpara{Names the pattern.}"
+  ],
+  [
+   6104,
+   "\\cpara{Lists four signs. The first, second and fourth restate earlier paragraphs. The third concerns the people who give the answer, not the answer, and the post's evidence for it is Kelvin alone.}"
+  ],
+  [
+   6993,
+   "\\cpara{Cites Kelvin's article, first printed in \\textsc{The Fortnightly Review}, March 1892. The passage is on pp.~462 to 464 of the reprint I read.}"
+  ],
+  [
+   7166,
+   "\\cpara{Cites the 1852 paper. I read it as reprinted in Kelvin's \\textsc{Mathematical and Physical Papers}, vol.~1 (1882), pp.~505 to 510.}"
+  ],
+  [
+   7439,
+   "\\cpara{Cites a reprint of Thompson's biography (1910). The speech is in vol.~2, p.~1098, as reported in \\textsc{The Times} and corrected by Kelvin.}"
+  ]
+ ]
 }
