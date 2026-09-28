@@ -2670,3 +2670,111 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: don't expect me to believe that a big, elaborate clever argument can do it either.'' The physics has become a rule for debates.
 - After: don't expect me to believe that a big, elaborate clever argument can do it either.'' \nb{The physics has become a rule for debates.}
 
+
+## toolbox-thinking-and-law-thinking
+
+- Before: Law thinkers hold that some truths govern every case. I introduce the toolbox style by its suspicion of other people, and the law style as it works ``done correctly.''
+- After: Law thinkers hold that some truths govern every case. \nb{The post introduces the toolbox style by its suspicion of other people, and the law style as it works ``done correctly.''}
+
+- Before: Julia Galef replied that rationalists hold an ideal which no single rule can match in practice. Chapman answered that this distinction was new to him,
+- After: Julia Galef replied that rationalists hold an ideal which no single rule can match in practice, and quoted a paper that separates the ideal from practical advice. Chapman answered that this distinction, which he credited to Jonathan Baron, was new to him,
+
+- Before: My stereotyped toolbox thinker hears an ideal as if it were a recipe. Chapman, in his last reply, did not; he asked whether the ideal was worth having. I answer his question only through a maze. I allow
+- After: My stereotyped toolbox thinker hears an ideal as if it were a recipe. \nb{Chapman, in his last reply, did not; he asked whether an ideal that cannot be reached is worth having. The post answers that only through a maze.} I allow
+
+- Before: Next, the objections to law thinking. I write them myself, as sweeping claims:
+- After: Next, the objections to law thinking. I write them myself, saying I am not sure I could state the toolbox side's view to its satisfaction, and I write them as sweeping claims:
+
+- Before: My reply is, ``Well, yes, that happens some of the time.'' Since I wrote the objections as if these failures always happen, ``some of the time'' defeats them. I never discuss the mortgages.
+- After: My reply is, ``Well, yes, that happens some of the time.'' \nb{The post wrote the objections as if these failures always happen, so ``some of the time'' defeats them. It never discusses the mortgages.}
+
+- Before: I close with a remedy for toolbox thinkers only.
+- After: I close with a remedy for toolbox thinkers.
+
+
+## local-validity-as-a-key-to-sanity-and-civilization
+
+- Before: only while people believe it is applied fairly. My title calls this a key to sanity and civilization. My summary calls it a similarity.
+- After: only while people believe it is applied fairly. \nb{The title calls this a key to sanity and civilization; the post's own summary calls it a similarity.}
+
+- Before: \nb{Chollet wrote that there is no such thing as ``general'' intelligence.} I drop the word ``general.''
+- After: \nb{Chollet wrote that there is no such thing as ``general'' intelligence. The post drops the word ``general.''}
+
+- Before: who use marijuana, appears in a clause beginning ``regardless of whether.''
+- After: who use marijuana, appears in a clause beginning ``regardless of whether.''} 
+
+- Before: today almost nothing that serves the true function of law can be written down. So human law, I say, is what people at least ``believe to be a set of simple rules that can be locally checked to test okay behavior.'' The one case
+- After: today almost nothing that serves the true function of law can be written down. So human law, I say, is what people at least ``believe to be a set of simple rules that can be locally checked to test okay behavior.'' \nb{The one case
+
+- Before: My other model is a judge in a 1962 science fiction novel,
+- After: My other model is a judge in H. Beam Piper's 1962 science fiction novel \textsc{Little Fuzzy},
+
+- Before: I call this ``a guess and hypothesis'' and say I would like to see a study. I cite none.
+- After: I call this ``a guess and hypothesis'' and say I would like to see a study.
+
+
+## when-science-can-t-help
+
+- Before: it was that consciousness came from quantum gravity;
+- After: it was that consciousness came from closed timelike curves hiding in quantum gravity;
+
+- Before: ``a calculated bet you could only make rationally.'' I give no probability and no cost, so there is no calculation.
+- After: ``a calculated bet you could only make rationally.'' \nb{The post gives no probability and no cost, so there is no calculation.}
+
+- Before: and sometimes you must. Every example I give of such an answer is a position of mine: the many-worlds view of quantum mechanics, evolutionary psychology, cryonics, and, in a closing joke about an experiment that wipes out the human species, the risks I write about.
+- After: and sometimes you must. \nb{Every example the post gives of such an answer is a position its author holds: the many-worlds view of quantum mechanics, evolutionary psychology, cryonics, and, in a closing joke about an experiment that wipes out the human species, the risks he writes about.}
+
+
+## faster-than-science
+
+- Before: ``a highly inefficient processor of evidence.'' Inefficient compared with nothing that exists: my standard is an ideal reasoner.
+- After: ``a highly inefficient processor of evidence.'' \nb{The standard of comparison, as the post's ``more charitable'' version says, is an ideal reasoner, not any institution that exists.}
+
+- Before: My one real idea follows. When the possible answers
+- After: Next, I say that when the possible answers
+
+- Before: \nb{At 10\%, he expects to be wrong nine times in ten.} Many scientists reason the same way and guess wrong, and I count only the one who guessed right.
+- After: \nb{At 10\%, he expects to be wrong nine times in ten. Many scientists reason the same way and guess wrong; the post counts only the one who guessed right.}
+
+
+## science-doesn-t-trust-your-rationality
+
+- Before: even without spotting a flaw.} I leave that out.
+- After: even without spotting a flaw. The post leaves that out.}
+
+- Before: ``the idealized form of Science, not just the actual social process of science.'' I describe that ideal myself, so no scientist's practice can easily contradict what I say Science says.
+- After: ``the idealized form of Science, not just the actual social process of science.'' \nb{The post describes that ideal itself, so no scientist's practice can easily contradict what it says Science says.}
+
+- Before: because you cannot trust lovely theories. \nb{``Regulate as little as possible'' is itself a lovely theory about how much better society would be under one rule.} Markets,
+- After: because you cannot trust lovely theories. Markets,
+
+- Before: As for market failures, ``I'm not going to go into'' them.
+- After: As for market failures, ``I'm not going to go into'' them. The argument, I say, is not that libertarianism works in a perfect world, but that it ``degrades gracefully into real life.''
+
+- Before: Philip Kitcher had argued in 1990 that scientists' baser motives can serve their community.} And a scientist who wants to prove a theory is also motivated to design experiments that the theory will pass, as I admit two paragraphs later.
+- After: Philip Kitcher had argued in 1990 that scientists' baser motives can serve their community. A scientist who wants to prove a theory is also motivated to design experiments that the theory will pass, as the post admits a few paragraphs later.}
+
+- Before: ``doesn't seem to make any new predictions relative to the old theory.''} By this rule, Science is right to withhold its credit.
+- After: ``doesn't seem to make any new predictions relative to the old theory.'' By this rule, Science is right to withhold its credit.}
+
+- Before: gives ``the rational answer.'' I do not say what else it could give. Letting
+- After: gives ``the rational answer.'' Letting
+
+- Before: Or do you think you're smarter than that?'' The whole essay has argued that Science is right not to trust how smart you think you are.
+- After: Or do you think you're smarter than that?'' \nb{The essay has just explained why Science is right not to trust how smart you think you are.}
+
+
+## no-safe-defense-not-even-science
+
+- Before: and I offer two maybes. My sample is the people who chose to tell me dramatic stories.
+- After: and I offer two maybes. \nb{The sample is the people who chose to tell him dramatic stories.}
+
+- Before: they see it and wonder why nobody around them agrees. I do not consider that they might see the logic and think it wrong. Their unease
+- After: they see it and wonder why nobody around them agrees. \nb{The post does not consider that they might see the logic and think it wrong.} Their unease
+
+- Before: For anyone worried that this sounds like a cult, I link to my own post on cults.
+- After: I link here to my post on the fear of joining a cult, ``Cultish Countercultishness.''
+
+- Before: ``count the lines of code.''} The warning is for your beliefs, not mine.
+- After: ``count the lines of code.'' The warning is for the reader's beliefs, not the author's.}
+
