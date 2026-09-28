@@ -1,0 +1,101 @@
+{
+ "slug": "leaky-generalizations",
+ "header": "\\post{Leaky Generalizations}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Tc2H9KbKRjuDJ3WSS/leaky-generalizations}\n",
+ "skeleton_sha": "c873c5aff89021cbf8b2886e8b70913c68325e64d2340cad29a9d2af969b1c23",
+ "post_sha": "f363788a42b8d8a9abbf9a8052e8b0cd133ad8eadf2d3e8be4e3f3d66433cd7d",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Opens with a generalization that has exceptions: apples are usually good to eat.}"
+  ],
+  [
+   203,
+   "\\cpara{A second: most humans have ten fingers, and people who have lost one are still human.}"
+  ],
+  [
+   336,
+   "\\cpara{States the thesis: above the level of fundamental physics, ``practically every generalization'' has exceptions. The next line is a joke about exceptions to this rule itself.}"
+  ],
+  [
+   782,
+   "\\cpara{Says that one simply has to cope with exceptions. The example is a shop whose closing time changes on Thanksgiving, which the post calls by a satirical name.}"
+  ],
+  [
+   1100,
+   "\\cpara{Names what gets in the way: ``need for closure'', the wish to settle a question once and for all. The term comes from the social psychologist Arie Kruglanski.}"
+  ],
+  [
+   1392,
+   "\\clogic{Offered with ``can'' and no source. In Kruglanski's theory stakes work in two directions. A cost of staying undecided, such as a deadline, raises the need for closure; a cost of deciding wrongly, ``envisioned penalties for an erroneous closure'', can raise a need to avoid closure (Webster and Kruglanski, 1994). In the experiments they report, time pressure increased first-impression effects and fear of being evaluated reduced them. The post's claim fits stakes of the first kind.}"
+  ],
+  [
+   1488,
+   "\\cpara{Moves from facts to values: even simple goals would need complicated rules of action, because the world is complicated. The two links say that goals are not simple either.}"
+  ],
+  [
+   1818,
+   "\\cpara{The thesis in one line. ``Compact'' means short; ``local'' means stated only in terms of the actions themselves.}"
+  ],
+  [
+   1968,
+   "\\cpara{The example: a box that a machine opens, or whose money it burns, depending on which of a dozen keys are pressed. Without knowing the machine, no simple rule about key presses works.}"
+  ],
+  [
+   2609,
+   "\\cpara{A short description of the good sequences exists if it may describe the machine.}"
+  ],
+  [
+   2947,
+   "\\cpara{A description in terms of the keys alone exists if it may be long: a table of every sequence and its result.}"
+  ],
+  [
+   3199,
+   "\\cpara{No description is both. That is true of the example because it is built so: the post stipulates that there are no simple rules. The example shows what the thesis means. The claim that real instrumental values are ``often'' like this rests on the analogy drawn two paragraphs later.}"
+  ],
+  [
+   3375,
+   "\\cpara{Adds a worse case: a simple rule that almost always works, with one exception that burns the money.}"
+  ],
+  [
+   3893,
+   "\\cpara{Maps the example onto the world: the machine is the world, the open box and the fire stand for our values, and the keys for our actions.}"
+  ],
+  [
+   4282,
+   "\\cpara{Wonders that helpful ethical advice exists at all, and names the strangest: ``The end does not justify the means.'' The post does not say here why it helps. The author gave a reason later, in ``Ends Don't Justify Means (Among Humans)'' (October 2008): it is ``a principle to guide humans running on corrupted hardware''.}"
+  ],
+  [
+   4611,
+   "\\cpara{Turns to the reverse mistake: inferring complicated goals from complicated actions. The speaker is a composite and unnamed.}"
+  ],
+  [
+   4867,
+   "\\clogic{This clause can be read two ways. If it means that circumcision has different consequences in different cultures, the post's reply covers it. If it means that cultures hold different terminal values, which is how the author, with ``I do not think'', described the circumcision dispute in ``Terminal Values and Instrumental Values'', the reply about Hitler that follows does not address it.}"
+  ],
+  [
+   5022,
+   "\\cpara{The reply: killing anyone has a large negative terminal utility, and shooting Hitler is still right because the lives saved outweigh it.}"
+  ],
+  [
+   5448,
+   "\\cpara{Names the error: inferring from the positive expected utility of Hitler's death that the death itself has positive utility, so that ``Death is always a bad thing'' has exceptions. The link for ``double counting'' is to ``Fake Causality'', which describes ``double-counting evidence if inference resonates between an effect and a cause.''}"
+  ],
+  [
+   5917,
+   "\\clogic{``Many'' are said to reason this way; none is named. The best-known philosophers who deny that a feature such as causing a death always counts the same way, the moral particularists, argue from a general claim about reasons, not from the consequences of particular cases. They hold that any reason can change its force, or its direction, with context: the ``holism of reasons'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Moral Particularism''). The post's last paragraph leaves room for such a view.}"
+  ],
+  [
+   6169,
+   "\\cpara{Offers a second explanation, hedged with ``maybe'': the wish for a policy with no drawbacks. The link is to ``Policy Debates Should Not Appear One-Sided''.}"
+  ],
+  [
+   6349,
+   "\\cpara{States the author's own view: the terminal disvalue of a death stays fixed, whatever its consequences. It has a classic statement in W. D. Ross's prima facie duties (1930). As the \\textsc{Stanford Encyclopedia} puts it, such a principle means only that a feature of an action ``counts in its favour'' (or against it), and an action can have the feature and still be wrong overall. In the terms of ``Terminal Values and Instrumental Values'', the view treats each death as a separate, fixed term added into the utility of the whole outcome. That model does not require it: a utility function over whole outcomes need not be a sum of parts, and then what one death subtracts can depend on the rest of the outcome. The post's closing ``They might be!'' leaves this open.}"
+  ],
+  [
+   6543,
+   "\\cpara{Allows that punishing the evil might be argued to be good in itself, but not from the lives it saves. The last sentences limit the post's claim: complicated expected utilities do not show that utilities are complicated, but utilities ``might be'', and that ``would be a separate argument.''}"
+  ]
+ ]
+}

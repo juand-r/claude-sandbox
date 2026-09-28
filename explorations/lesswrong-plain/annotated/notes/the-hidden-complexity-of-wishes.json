@@ -1,0 +1,157 @@
+{
+ "slug": "the-hidden-complexity-of-wishes",
+ "header": "\\post{The Hidden Complexity of Wishes}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes}\n",
+ "skeleton_sha": "569f0d9cfe58c795f5a83f4337fc1d7fe0e2a3e7b1ecaad32eb0fc593316464a",
+ "post_sha": "cfaca12795964801c9f0191aacb6af6d2c70c90ebc8b027aa873c3d7f2d323fe",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{A preface added in May 2024, sixteen and a half years after the post. It separates what an AI would need to understand from what it would need to want, and says the post is about the second. The body bears this out: its conclusion is that a safe genie ``must share the same values that led you to make the wish.''}"
+  ],
+  [
+   1087,
+   "\\cpara{An epigraph: the opening clauses of a ``Wish For Immortality'' from the Open-Source Wish Project, the kind of wish-drafting the post will call futile. The links go to archived pages that I could not open, so the wording is unchecked.}"
+  ],
+  [
+   1927,
+   "\\cpara{Sets out three kinds of genie: those safe with any wish, those for which no wish is safe, and weak ones. The list is stated, not argued. The post goes on to show that one powerful genie belongs in the second class.}"
+  ],
+  [
+   2201,
+   "\\cpara{Begins the thought experiment: your mother is in a burning building and you cannot go in.}"
+  ],
+  [
+   2437,
+   "\\cpara{Introduces the Outcome Pump, a device that makes chosen outcomes likelier.}"
+  ],
+  [
+   2612,
+   "\\cpara{Explains how it works: a time machine resets time until the specified outcome occurs. The parenthesis about physicists is part of the fiction.}"
+  ],
+  [
+   3190,
+   "\\cpara{Adds the limits: the outcome happens within physical law, and a too-unlikely outcome makes the machine fail first.}"
+  ],
+  [
+   3508,
+   "\\cpara{Explains the ``future function,'' which weights outcomes by how rarely they trigger a reset, so the device pushes a quantity as high as it can. The arithmetic is right: with resets of 99\\% on heads and 1\\% on tails, tails survives 99 times as often as heads.}"
+  ],
+  [
+   4327,
+   "\\cpara{Returns to the fire.}"
+  ],
+  [
+   4541,
+   "\\cpara{Shows the wish being entered: the future function rewards the mother's distance from the building's center.}"
+  ],
+  [
+   5195,
+   "\\cpara{Builds suspense: the rescue a human would expect does not come.}"
+  ],
+  [
+   5411,
+   "\\cpara{The pump satisfies the wish literally: the gas main explodes and throws the mother's body away from the building.}"
+  ],
+  [
+   5728,
+   "\\cpara{Adds a safeguard and shows it failing: the Regret Button penalizes outcomes that upset you, and a falling beam kills you before you can press it.}"
+  ],
+  [
+   6392,
+   "\\cpara{Places the Outcome Pump in the second class: no wish is safe.}"
+  ],
+  [
+   6479,
+   "\\cpara{Draws the lesson of the story: a human helper would not even think of exploding the building, so the wish sounds safer than it is.}"
+  ],
+  [
+   6870,
+   "\\cpara{A second example, from ``The Tragedy of Group Selectionism'' (7 November 2007): biologists who expected group selection to produce restraint in breeding, when laboratory selection produced cannibalism. ``Anthropomorphic Optimism'' tells the story again.}"
+  ],
+  [
+   7212,
+   "\\cfact{The experiment is Michael Wade's (\\textsc{Proceedings of the National Academy of Sciences}, 1976). Its abstract names changes in ``fecundity, developmental time, body weight, and cannibalism rates'' as ``responsible in part'' for the smaller populations, so cannibalism was one of four factors. I could not reach the full paper, and could not find a source for ``especially of immature females.''}"
+  ],
+  [
+   7584,
+   "\\clogic{The post quotes none of the three biologists, and the record for Allee sits uneasily with the claim. \\textsc{Principles of Animal Ecology} (1949), with Allee as first author, reports Chapman's finding (1928) that adult flour beetles, the genus of Wade's experiment, eat their own eggs, and calls it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370). Cannibalism as a check on numbers was known in Allee's school. Whether they saw that group selection would favor it, the post gives no evidence either way.}"
+  ],
+  [
+   7660,
+   "\\cpara{Tries the first patch: forbid outcomes in which the building is blown apart.}"
+  ],
+  [
+   7912,
+   "\\cpara{The patch fails: the mother falls from a window. The pump still takes a path no human rescuer would.}"
+  ],
+  [
+   8213,
+   "\\cpara{Parodies the Open-Source Wish Project with a wish that lists exclusions one by one.}"
+  ],
+  [
+   8448,
+   "\\cpara{The parody wish, which could go on without end.}"
+  ],
+  [
+   8877,
+   "\\cpara{Compares the patches to ``Artificial Addition'' (20 November 2007), where arithmetic is programmed as a list of facts.}"
+  ],
+  [
+   9239,
+   "\\cpara{Explains how a person excludes the explosion: by foreseeing that the mother would die and not wanting that.}"
+  ],
+  [
+   9510,
+   "\\cpara{Argues that the patches try to store as a list what the brain computes from its values, so the wish grows into a lookup table of every path.}"
+  ],
+  [
+   9892,
+   "\\cpara{States the diagnosis: you wished for distance, but wanted your mother alive. The warning is old. Norbert Wiener wrote in 1960 that if we use a machine ``with whose operation we cannot interfere effectively'' then ``we had better be quite sure that the purpose put into the machine is the purpose which we really desire'' (as quoted in Wikipedia, ``AI alignment''). The post does not mention him. What it adds is the claim of the following paragraphs, that the real purpose cannot be stated in anything smaller than a whole morality.}"
+  ],
+  [
+   10085,
+   "\\cpara{Begins to list what else you want: not only her life but her health.}"
+  ],
+  [
+   10379,
+   "\\cpara{Adds her state of mind: a rescue by a purple monster is worse than one by a fireman, though better than her death.}"
+  ],
+  [
+   10940,
+   "\\cpara{Adds her ties to other people: a desert island is better than death but worse than home.}"
+  ],
+  [
+   11205,
+   "\\cpara{Raises trade-offs with other values: the dog, a murderer, a piece by Bach, her remaining months.}"
+  ],
+  [
+   11910,
+   "\\cpara{Raises questions about what counts as saving her, ending with who counts as a person.}"
+  ],
+  [
+   12287,
+   "\\cpara{Concludes from the list that the judgments you would make are finite in complexity but not small. That values are not reducible to happiness or fitness is argued in the linked posts, not here.}"
+  ],
+  [
+   12804,
+   "\\cpara{The thesis, stated without a hedge. It is shown for one device, built to push its score ``as high as possible.'' The post does not consider a powerful genie that optimizes less hard. Such ``limited optimization'' was later proposed at the author's own institute (Jessica Taylor, ``Quantilizers,'' MIRI, 2015), which calls it ``not a silver bullet.'' The argument covers maximizing genies; the claim covers all of them.}"
+  ],
+  [
+   13565,
+   "\\cpara{Adds that you cannot know in advance which of your values a genie's path will touch, and that longer-range wishes make this worse.}"
+  ],
+  [
+   13866,
+   "\\cpara{Calls the Open-Source Wish Project futile and names the only safe genie: one that shares all your judgment criteria.}"
+  ],
+  [
+   14315,
+   "\\cpara{Concludes that a safe genie must share the values behind the wish, which are the whole of your morality. How to build such a genie is outside the post's scope.}"
+  ],
+  [
+   14920,
+   "\\cpara{Ends with the paradox: with a safe genie, you need not wish at all.}"
+  ]
+ ]
+}

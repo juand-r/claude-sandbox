@@ -1,0 +1,141 @@
+{
+ "slug": "thou-art-godshatter",
+ "header": "\\post{Thou Art Godshatter}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/cSXZpvqpa9vbGGLtG/thou-art-godshatter}\n",
+ "skeleton_sha": "6dc9f88d8fa37e5395eacecbbec7d0186e3aa1e9ca2324d307fbfba1da69608d",
+ "post_sha": "b035ce441be1d7929e7b5e03f6fec998028725d58597b7f64e1f85e0ebef11b1",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Opens with the puzzle the post answers. Inclusive genetic fitness is the one thing natural selection favours, yet no one had the concept before the twentieth century, and sexual pleasure does not depend on whether sex can lead to children.}"
+  ],
+  [
+   606,
+   "\\cpara{Asks why evolution built brains that would invent condoms, when a human designer would think the fix easy.}"
+  ],
+  [
+   888,
+   "\\cpara{Personifies natural selection as the ``Evolution Fairy,'' who counts only copies of genes. The fairy is an ironic figure, as in ``Evolutionary Psychology,'' three posts earlier in the book.}"
+  ],
+  [
+   1153,
+   "\\cpara{Describes the design that would serve the fairy: agents that want only fitness, have sex only to reproduce, eat by explicit reasoning, and, as grandmothers, kill themselves once they cost more than they help.}"
+  ],
+  [
+   1892,
+   "\\cpara{Calls this an obvious improvement, from the fairy's point of view.}"
+  ],
+  [
+   1996,
+   "\\cpara{``As was discussed yesterday'' refers to ``Protein Reinforcement and DNA Consequentialism'' (November 2007), which is not in the book. Its argument, that brains which learn from rewards are easier to evolve than brains which foresee consequences, is summarized later in this post, so the reader loses little.}"
+  ],
+  [
+   2472,
+   "\\cpara{Sharpens the question: human brains can imagine the links between acts and reproduction, so why give them any motive except fitness?}"
+  ],
+  [
+   2673,
+   "\\cpara{Explains why the concept is hard: it concerns shared variation within a population, not the number of shared genes. The chimpanzee figure matches the estimate Britten (2002) gave for shared DNA sequence, counting insertions and deletions.}"
+  ],
+  [
+   3216,
+   "\\cpara{Adds that a fitness maximizer would need knowledge that biologists gained only recently. The two examples fit ``arguably only in the last fifty years'': reciprocal altruism goes back to Trivers (1971), and costly signalling to Zahavi's handicap principle (1975).}"
+  ],
+  [
+   3595,
+   "\\cpara{Proposes the alternative: build in the concept of fitness and a library of explicit strategies, so that the organism would stop eating fatty food once it learned that fat no longer helped.}"
+  ],
+  [
+   4116,
+   "\\cpara{Answers one objection: an organism with no separate drive to eat would still eat if it knew that eating is needed to reproduce. The claim is offered with ``looks like.''}"
+  ],
+  [
+   4632,
+   "\\cpara{Answers a second objection, about curiosity, in the same way: knowing that such inquiry paid off would be enough to make a consequentialist inquire.}"
+  ],
+  [
+   5318,
+   "\\cpara{Concludes that a pure reproductive consequentialist is possible ``in principle.'' The support is the two objections answered above.}"
+  ],
+  [
+   5592,
+   "\\cpara{Gives the short answer: evolution is not a programmer and cannot rewrite a whole design at once.}"
+  ],
+  [
+   5847,
+   "\\cpara{Restates the argument of ``Protein Reinforcement'': before foresight, brains learned from rewards attached to events that went with reproduction, such as eating fatty food.}"
+  ],
+  [
+   6379,
+   "\\cpara{The post's key distinction: rewards that correlate with fitness only at long range, but with behaviour at short range. The apple makes it concrete.}"
+  ],
+  [
+   6886,
+   "\\cpara{Lists the rewards evolution installed, from eating to sex.}"
+  ],
+  [
+   7132,
+   "\\cpara{The explanation proper: reasoning, when it appeared, was used to get the rewards that already existed, ``a relatively simple hack.'' It is an inference from what selection could easily find, stated as history without a hedge. The post gives no evidence about hominid evolution beyond that inference.}"
+  ],
+  [
+   7552,
+   "\\cpara{Has an imagined engineer describe the redesign that evolution did not make: replace the learned rewards with one explicit statement, and let reasoning do the rest.}"
+  ],
+  [
+   8080,
+   "\\cpara{A second example in one line, set out in full in ``An Alien God,'' earlier in the book: the nerves of the vertebrate retina run in front of the light-sensitive cells. Whether this is only a relic of history is disputed. Wikipedia's article on the retina gives two readings, ``an advantageous `good' compromise between competing functional limitations'' or ``a historical maladaptive relic.''}"
+  ],
+  [
+   8168,
+   "\\cpara{Says selection works separately in each species, and that within a species it counts nothing, not even survival, except through reproduction.}"
+  ],
+  [
+   8783,
+   "\\cpara{States the thesis: evolution's single criterion did not pass into the minds it built. ``One pure utility function splintered into a thousand shards of desire.''}"
+  ],
+  [
+   8977,
+   "\\cstyle{``Quine'' is programmers' jargon for a program that prints its own code. The post does not explain it.}"
+  ],
+  [
+   9149,
+   "\\cpara{Gives two reasons: evolution is ``stupid,'' the subject of ``Evolutions Are Stupid (But Work Anyway)'' earlier in the book, and the first brains could use only short-term desires.}"
+  ],
+  [
+   9466,
+   "\\cpara{Compares the question to asking why evolution did not let humans design their own biochemistry. Adds, with ``maybe,'' that a billion more years of selection might yet produce true fitness maximizers.}"
+  ],
+  [
+   9927,
+   "\\cpara{Cites a novel as a picture of that future, and links ``depicts'' to the author's own warning, ``The Logical Fallacy of Generalization from Fictional Evidence.'' In Wikipedia's summary of the novel, Moties other than Mediators ``must become pregnant periodically or die,'' which brings overpopulation and ``civilization-ending wars.'' That is a compulsion to breed. I could not check whether the novel presents it as evolution turning the Moties into ``true fitness maximizers,'' as the post says.}"
+  ],
+  [
+   10360,
+   "\\cpara{Lists what humans value instead: tastes, children, status, sex, play and learning.}"
+  ],
+  [
+   10547,
+   "\\cpara{Restates the thesis with examples: pleasures that once went with reproduction are now sought for themselves.}"
+  ],
+  [
+   10794,
+   "\\cpara{A joke: having learned about evolution, we find its goal no fun.}"
+  ],
+  [
+   10955,
+   "\\cpara{The value judgment, hedged (``I think'') and marked as a human's (``though I'm a human who says so''). The alternative set against it is descendants who pursue fitness alone and fill the galaxies with replicators.}"
+  ],
+  [
+   11411,
+   "\\cpara{Says that our tastes for novelty, complexity, elegance and challenge find evolution's single aim unsatisfying.}"
+  ],
+  [
+   11708,
+   "\\cpara{Raises the objection that these tastes come from evolution too, and answers ``So what?'' That states a position, that where a value came from does not settle whether to keep it. The post gives no argument for it here.}"
+  ],
+  [
+   11781,
+   "\\cfact{The title's word comes from Vernor Vinge's novel \\textsc{A Fire Upon the Deep} (1992), where, as one review describes it, ``godshatter'' is the knowledge a dying superhuman mind crams into a human one. The post does not name the source.}"
+  ]
+ ]
+}

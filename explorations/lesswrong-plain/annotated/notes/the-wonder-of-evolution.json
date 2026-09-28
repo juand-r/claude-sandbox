@@ -1,0 +1,105 @@
+{
+ "slug": "the-wonder-of-evolution",
+ "header": "\\post{The Wonder of Evolution}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/ZyNak8F6WXjuEbWWc/the-wonder-of-evolution}\n",
+ "skeleton_sha": "d012702c74a1053349922edc0e65940ec1e0ec9fa1eca24ce7797f0b25bce43d",
+ "post_sha": "6ab01c7342b16b841233b50eee39245ab6975ac0fa4b91ebc2300c4885429308",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{States the thesis in one sentence: what deserves wonder is that evolution works at all, not how well it works.}"
+  ],
+  [
+   194,
+   "\\cpara{Says the first sentence is meant literally.}"
+  ],
+  [
+   295,
+   "\\cpara{Poses the problem the thesis answers: if every design needs a designer, where does the first design come from?}"
+  ],
+  [
+   634,
+   "\\cpara{Answers it: evolution ends the regress because it needs no cleverness. Later the post says evolution does not explain the first replicator, which was an accident. The two claims fit: the regress ends at an accident, and evolution builds from there.}"
+  ],
+  [
+   821,
+   "\\cpara{Reports an objection the author often hears: calling evolution slow, random and blind sounds like the creationist argument that shaking parts in a box will not make a watch.}"
+  ],
+  [
+   1222,
+   "\\cpara{Replies that the box of parts misdescribes evolution. The 747 image is the astronomer Fred Hoyle's, from the early 1980s. Wikipedia (``Junkyard tornado'') says it ``has since become a mainstay in the rejection of evolution by religious groups.''}"
+  ],
+  [
+   1572,
+   "\\cpara{Gives the real answer: complex machinery evolves in small steps, or by putting old machinery to a new use. The squirrel example is a flagged hypothetical (``might reoccupy''), and each stage, from jumping to gliding to flying, is useful on its own, which is what the argument needs.}"
+  ],
+  [
+   2274,
+   "\\cpara{Names the two routes: reuse of an existing adaptation, and slow accretion from a single mutation.}"
+  ],
+  [
+   2438,
+   "\\cpara{Shows how parts that are each useful alone can become mutually dependent, until the machine breaks if any piece is removed. The post offers this as the standard reply to ``irreducible complexity,'' Michael Behe's term, and it is an old one. According to Wikipedia (``Irreducible complexity''), Hermann Muller described such ``interlocking'' in 1918 as ``a consequence to be expected of evolution,'' and Graham Cairns-Smith described the ``scaffolding'' version in 1985.}"
+  ],
+  [
+   3036,
+   "\\cpara{Runs the process backward to show that a path of single useful steps exists, from a watch back to a sundial.}"
+  ],
+  [
+   3389,
+   "\\cpara{Sets up the example: DNA and the ribosome each seem useless without the other.}"
+  ],
+  [
+   3891,
+   "\\cpara{Answers with the RNA world: RNA can carry information and can also fold into chemically active shapes, so it could have done both jobs before DNA and proteins divided them. The ribosome supports this. Its catalytic core is RNA; Wikipedia (``RNA world'') says ``The rRNA molecules are thought responsible for its enzymatic activity.''}"
+  ],
+  [
+   4061,
+   "\\clogic{Stronger than the paragraph's own last sentence, which says ``Almost certainly.'' It also claims more than the paragraph shows. The paragraph gives the first step, RNA before DNA and protein. How an RNA system became one based on DNA and proteins is still counted as open. Wikipedia: ``One of the challenges posed by the RNA world hypothesis is to discover the pathway by which an RNA-based system transitioned to one based on DNA.''}"
+  ],
+  [
+   4461,
+   "\\cpara{Applies the post's theme to the example: RNA does both jobs badly, and the wonder is that it does them at all.}"
+  ],
+  [
+   4787,
+   "\\cpara{Says the first replicator may have been RNA, and that evolution does not claim to explain the origin of life, since the first replicator did not descend from another. The second point is correct.}"
+  ],
+  [
+   5043,
+   "\\cfact{Stated without a hedge, though it was an open problem when the post was written. In 2009 Powner, Gerland and Sutherland, who found a prebiotic route to two of RNA's four nucleotides, wrote that ``it is far from obvious how such ribonucleotides could have formed from their constituent parts (ribose and nucleobases). Ribose is difficult to form selectively'' (\\textsc{Nature} 459). A route to all four was reported in 2019 (Becker and colleagues, \\textsc{Science} 366).}"
+  ],
+  [
+   5526,
+   "\\cpara{Describes the first replicator as crude, and argues that, however improbable, it only had to happen once somewhere. Every claim here carries a ``probably.''}"
+  ],
+  [
+   6345,
+   "\\cpara{Applies the theme to the first replicator: praising its abilities misses that it only had to exist.}"
+  ],
+  [
+   6599,
+   "\\cpara{Warns that praising evolution beyond the evidence is inaccuracy, not loyalty to science. The error is shown through an imagined speaker; the post quotes no one who makes it. The claim that ``Science has a very exact idea of the capabilities of evolution'' is given its support the next day, in ``Evolutions Are Stupid (But Work Anyway),'' which quotes this passage; see the notes there on how exact the formulas are.}"
+  ],
+  [
+   7416,
+   "\\cpara{Restates the opening thesis.}"
+  ],
+  [
+   7633,
+   "\\cpara{Concludes that evolution is neither a good designer nor a guide to conduct, and should not be imitated. Huxley's sentence, which follows, supports the second half, about ethics. The first half, about design, rests on the bacterium analogy alone.}"
+  ],
+  [
+   7951,
+   "\\clogic{Engineers were by then imitating evolution as a designer, with some success. Evolutionary algorithms, which copy mutation and selection on a computer, produced the antennas that flew on NASA's Space Technology 5 mission in 2006. Their designers wrote that such algorithms ``automatically find novel antenna designs that are more effective than would otherwise be developed'' (Hornby and colleagues, 2006). The analogy fits evolution as it runs in nature; it does not fit these imitations.}"
+  ],
+  [
+   8024,
+   "\\cpara{Quotes T. H. Huxley's Romanes Lecture, ``Evolution and Ethics'' (1893). There ``the cosmic process'' is evolution, and the claim is about ethics: human morality should work against it.}"
+  ],
+  [
+   8226,
+   "\\cpara{Says Huxley's view came from understanding evolution, not from doubting it.}"
+  ]
+ ]
+}

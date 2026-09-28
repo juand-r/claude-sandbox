@@ -1,0 +1,77 @@
+{
+ "slug": "belief-in-intelligence",
+ "header": "\\post{Belief in Intelligence}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/HktFCy6dgsqJ9WPpX/belief-in-intelligence}\n",
+ "skeleton_sha": "3729327ee4dcca04adaa9fa20e6b7d1b92b2f51618fb747d3e3a38a15ad1bb8e",
+ "post_sha": "d05ca6521820fb3eb0522b998491a3066cdd1029162fc30baa54986a56f047a6",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Opens in the middle of an argument. ``Since I am so uncertain of Kasparov's moves'' continues ``Expected Creative Surprises,'' posted the day before (24 October 2008) and not in the book. That post argued that a weak player cannot predict a stronger one's exact moves, but ``can predict the end result of my smarter opponent's moves, which is a win for the other player.''}"
+  ],
+  [
+   468,
+   "\\cpara{Sharpens the puzzle: the author's guesses would be the same for Kasparov's moves and for those of a lesser grandmaster, so what does ``better'' predict?}"
+  ],
+  [
+   956,
+   "\\clogic{If my probability for each next move is the same for both players in every position, then multiplying these probabilities move by move gives the probability of every whole game, and so of every result. Those results cannot favour Kasparov, apart from the colour each side plays. The outcome prediction of the next paragraph must therefore come from knowledge that the move guesses leave out. The day before, the author said so: ``This situation is possible because I am not logically omniscient; I do not explicitly represent a joint probability distribution over all entire games.'' This post leaves the caveat out.}"
+  ],
+  [
+   1077,
+   "\\cpara{Gives the answer: the belief predicts the class of final positions, wins for Kasparov, and its strength is the probability placed on that class.}"
+  ],
+  [
+   1617,
+   "\\cfact{Chess ratings already work this way. Under the Elo system a rating difference predicts only an expected score: 100 points gives the stronger player 64 per cent, 200 points gives 76 per cent (Wikipedia, ``Elo rating system''). It predicts no moves.}"
+  ],
+  [
+   1926,
+   "\\cpara{Grounds the prediction in two things known about Kasparov: his goal, which is to win, and his power to reach it.}"
+  ],
+  [
+   2408,
+   "\\cpara{A second example: a friend drives the author to the airport through unknown streets, and no single turn can be predicted.}"
+  ],
+  [
+   2838,
+   "\\cpara{Says the destination can be predicted from any starting point, before the trip begins, with enough confidence to get into the car.}"
+  ],
+  [
+   3427,
+   "\\cpara{The observation has a long history, which the post does not mention. William James (1890) contrasted iron filings drawn to a magnet with Romeo seeking Juliet: ``With the filings the path is fixed; whether it reaches the end depends on accidents. With the lover it is the end which is fixed, the path may be modified indefinitely.'' Daniel Dennett's ``intentional stance,'' which Dennett began to set out in 1971, predicts a system by treating it as a rational agent with goals; of chess programs Dennett writes, ``just think of them as rational agents who want to win.''}"
+  ],
+  [
+   3646,
+   "\\cpara{Contrasts ordinary prediction, which runs a model forward step by step, as for the planets.}"
+  ],
+  [
+   3997,
+   "\\cpara{Gives a second contrast, a closed-form solution, which predicts the end and every step between.}"
+  ],
+  [
+   4532,
+   "\\cpara{Sets the airport case apart from both: its model predicts the end, predicts no step, and needs no starting point.}"
+  ],
+  [
+   4837,
+   "\\cpara{Names what the model does need: the friend's goal and the friend's skill as a planner, both properties of the friend at the start.}"
+  ],
+  [
+   5214,
+   "\\cpara{Adds that the friend must know the city, a relation between friend and city, and a very abstract one.}"
+  ],
+  [
+   5638,
+   "\\cpara{Describes the author's life's work as working out the form of this abstract knowledge. The paragraph states an aim.}"
+  ],
+  [
+   6010,
+   "\\cpara{Widens the term to ``optimization process,'' which includes natural selection. The example gives only the half that cannot be predicted, ``the exact form of the next organism''; the post does not say what outcome of selection can be predicted.}"
+  ],
+  [
+   6315,
+   "\\cpara{Names the author's specialty, Friendly Artificial Intelligence, and hopes (``I hope'') for ``especially precise abstract knowledge'' of it. The post ends on this aim.}"
+  ]
+ ]
+}

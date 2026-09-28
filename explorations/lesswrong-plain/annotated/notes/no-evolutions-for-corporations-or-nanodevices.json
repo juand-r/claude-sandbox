@@ -1,0 +1,121 @@
+{
+ "slug": "no-evolutions-for-corporations-or-nanodevices",
+ "header": "\\post{No Evolutions for Corporations or Nanodevices}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/XC7Kry5q6CD9TyG4K/no-evolutions-for-corporations-or-nanodevices}\n",
+ "skeleton_sha": "670d2cbcb415bb10a6ef61015a4ee03c4e73054c5da0686121d813f7a66b389f",
+ "post_sha": "0af9e93548e192b5e0c0845237c55c22c25494df6072b4c15d25e786ea282c85",
+ "edits": [],
+ "notes": [
+  [
+   190,
+   "\\cpara{The first epigraph. No source is given, and I could not find one.}"
+  ],
+  [
+   486,
+   "\\cpara{The second epigraph, with an insertion in brackets. Its second sentence is the claim the post answers.}"
+  ],
+  [
+   743,
+   "\\cpara{Attributes both lines to Perry Metzger.}"
+  ],
+  [
+   874,
+   "\\cpara{Argues for quantitative thinking, using the fixation probability from ``Evolutions Are Stupid,'' now given as ``roughly'' twice the advantage. A trait that is rarely useful has a small average advantage and so rarely spreads. The psychic-powers example assumes that such powers would have to be an evolved adaptation.}"
+  ],
+  [
+   2118,
+   "\\cpara{Applies this to Metzger's claim: it says selection pressure exists, and the post asks how much.}"
+  ],
+  [
+   2337,
+   "\\cpara{Introduces Price's equation in its simple form.}"
+  ],
+  [
+   2566,
+   "\\cpara{The subscripts are lost in the current text. The equation is $\\Delta z = \\mbox{cov}(v_i, z_i)$, with $v_i$ the relative fitness and $z_i$ the characteristic of individual $i$.}"
+  ],
+  [
+   2688,
+   "\\cpara{Gives two readings: the characteristic can be a single gene or a trait such as height.}"
+  ],
+  [
+   3248,
+   "\\cpara{States the condition the rest of the post turns on: the simple form holds only when offspring have their parents' characteristic. The full equation has a second term, $E(v_i \\Delta z_i)$, for any difference between parent and offspring, whatever its cause, not only the two causes named here. Wikipedia (``Price equation'') gives the simple form for the case ``When the characteristic values $z_i$ do not change from the parent to the child generation.''}"
+  ],
+  [
+   3642,
+   "\\cpara{Draws one lesson: change follows relative fitness, not absolute fitness, so a gene that saves the whole species does not spread. The Frodo gene comes from ``Evolving to Extinction,'' posted the day before but placed after this post in the book, so a reader of the book meets it here first.}"
+  ],
+  [
+   4238,
+   "\\cpara{Mentions George Price's suicide, with two hedges (``It is said,'' ``may have had other issues''). Wikipedia's account supports both: Price ``grew increasingly depressed by the implications of his equation,'' and after giving away his possessions he was ``Struggling with a thyroid condition in conditions of great poverty.''}"
+  ],
+  [
+   4503,
+   "\\cpara{States the thesis: limited resources and competing replicators are not enough to give ``an evolution.''}"
+  ],
+  [
+   4869,
+   "\\clogic{``An evolution'' here means cumulative selection strong enough to build complex adaptations, as the closing list makes clear. For evolution in the ordinary sense, less is needed. Lewontin (1970) lists three conditions, variation, differential fitness and heritable fitness, and writes: ``While they hold, a population will undergo evolutionary change.'' So the quoted claim that there will be ``selection pressure'' is true on the standard account; the dispute is over how much, the question the post asked above.}"
+  ],
+  [
+   4883,
+   "\\cpara{Grants that corporations compete, have offspring, face limited resources and die.}"
+  ],
+  [
+   5030,
+   "\\cpara{Argues that corporations inherit little: a spinoff resembles its parent only weakly, so selection cannot add up over many generations.}"
+  ],
+  [
+   5210,
+   "\\clogic{The post measures heredity from parent firm to spinoff. Evolutionary economics measures it within a firm over time. Nelson and Winter (1982) treat a firm's routines as its genes, ``heritable in the sense that tomorrow's organisms generated from today's (for example, by building a new plant) have many of the same characteristics''; routines gain ground as the firms that have them grow. The post does not discuss this line of work.}"
+  ],
+  [
+   5782,
+   "\\cpara{Contrasts DNA, which keeps a gene intact for the hundreds of generations it needs to spread, so that dependent genes can follow.}"
+  ],
+  [
+   6288,
+   "\\cpara{Separates one-off selection (failed firms disappear, as short-lived stars vanish from view) from cumulative selection, which builds complex features. This is the post's central distinction, and the star example makes it clearly.}"
+  ],
+  [
+   7118,
+   "\\cpara{Argues that the complex features of corporations come from human design, with bankruptcy adding only a few bits. The summary of ``Einstein's Arrogance'' fits that post, which says ``you need an amount of evidence roughly equivalent to the complexity of the hypothesis just to locate the hypothesis in theory-space.'' The bit counts here (``hundreds,'' ``thousands,'' ``a handful'') are not calculated.}"
+  ],
+  [
+   8110,
+   "\\cpara{Turns to nanodevices, which could copy themselves exactly for thousands of generations.}"
+  ],
+  [
+   8324,
+   "\\cpara{Argues that what drives change is covariance, which shrinks when the characteristic barely varies.}"
+  ],
+  [
+   8370,
+   "\\cfact{Misstated. Correlation is covariance divided by the product of the two standard deviations (Wikipedia, ``Pearson correlation coefficient''); covariance divided by the variance of A is the slope of B on A. With the post's definition its own example would give a tiny value. With the correct one the paragraph's point holds: shrink the spread of a characteristic and its covariance with fitness shrinks, while its correlation need not.}"
+  ],
+  [
+   8799,
+   "\\cpara{Reports the Foresight Institute's proposal accurately. Its 2006 guidelines say the information for building a replicator is ``stored and copied in encoded form, and the encoding is such that any error in copying randomizes and thus destroys the decoded information.''}"
+  ],
+  [
+   9429,
+   "\\cpara{Allows for heritable errors outside the instructions, but argues their effect on reproduction would be tiny. The size is stipulated (``Let's say''): one part in $10^{8}$, since $1000/999.99999 \\approx 1 + 10^{-8}$. The example shows that a tiny effect spreads slowly; the post does not argue that beneficial errors would all be this small.}"
+  ],
+  [
+   10311,
+   "\\cpara{Argues that replicators exhaust their resources within few generations, and that evolution needs repeated turnover. The first point holds: starting from one device, fewer than 270 doublings would use every one of the roughly $10^{80}$ atoms in the observable universe.}"
+  ],
+  [
+   10888,
+   "\\cpara{Offers the author's own fear (``to me''): grey goo would eat the Earth and then stop changing. The claim that less than one generation ``might'' pass before the Sun dies is hedged and not calculated.}"
+  ],
+  [
+   11469,
+   "\\cpara{Introduces the list of conditions.}"
+  ],
+  [
+   12002,
+   "\\cpara{Concludes. The first items restate Lewontin's three conditions, cited above. The post's addition is the quantitative part: faithful heredity over long runs, frequent turnover, and many iterations. That addition is what separates cumulative selection from the one-off winnowing of corporations and stars.}"
+  ]
+ ]
+}

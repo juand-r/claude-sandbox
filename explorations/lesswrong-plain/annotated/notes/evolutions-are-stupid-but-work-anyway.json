@@ -1,0 +1,117 @@
+{
+ "slug": "evolutions-are-stupid-but-work-anyway",
+ "header": "\\post{Evolutions Are Stupid (But Work Anyway)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/jAToJHtg39AMTAuJo/evolutions-are-stupid-but-work-anyway}\n",
+ "skeleton_sha": "15b7fdb04095d0c9310c74ec4c6c7a9514664e6e90de323ba7f7a6fac2dcc3d5",
+ "post_sha": "2b71a2f4ec7c9e7baab341803be2bdf682f76970e62dc1351e11bb9ddc2b63ad",
+ "edits": [],
+ "notes": [
+  [
+   162,
+   "\\cpara{Quotes the previous day's post, ``The Wonder of Evolution.''}"
+  ],
+  [
+   274,
+   "\\cpara{The claim this post sets out to support with numbers.}"
+  ],
+  [
+   534,
+   "\\cpara{Announces the topic and explains the plural ``evolutions'': each population evolves on its own. The plural and the fox and rabbit example come from ``An Alien God,'' posted the day before: ``There's as many different `evolutions' as reproducing populations.''}"
+  ],
+  [
+   806,
+   "\\cpara{Says these limits are textbook material, and that they help explain observed biology rather than threaten evolution. The link for the equations is to a University of Tennessee course page.}"
+  ],
+  [
+   1391,
+   "\\cpara{Claims that natural selection is simpler than a brain, and so slower, and that its slowness can be calculated ``exactly.''}"
+  ],
+  [
+   1830,
+   "\\clogic{The figures that follow agree, to within about 5 per cent, with the standard results: Kimura and Ohta's time to fixation and Haldane's 2s. Both are approximations for an idealized population. A review of the 2s result lists its assumptions: ``The population size is large and constant, generations are discrete and the number of offspring that each individual contributes to the next generation is Poisson distributed.'' With an effective population smaller than the census, the chance becomes $2sN_e/N$ (Patwa and Wahl, 2008). The formulas give orders of magnitude, which is all the argument needs, not exact values.}"
+  ],
+  [
+   1844,
+   "\\cpara{Gives the first calculation: how long a gene with a 3 per cent advantage takes to spread, if it spreads. The arithmetic is right: $2\\ln(100{,}000)/0.03 \\approx 768$ and $2\\ln(500{,}000)/0.03 \\approx 875$.}"
+  ],
+  [
+   2544,
+   "\\cpara{Defines the terms.}"
+  ],
+  [
+   2732,
+   "\\cpara{Applies the formula to a hunter-gatherer population of a million: $2\\ln(10^6)/0.01 \\approx 2763$ generations for a 1 per cent advantage.}"
+  ],
+  [
+   2949,
+   "\\cpara{Explains the slowness: a gene spreads only through its bearers having more children, while a profitable business attracts capital and imitators. The ``Evolution Fairy'' comes from ``An Alien God.''}"
+  ],
+  [
+   3670,
+   "\\cpara{Gives the chance that a new beneficial gene spreads at all: about twice its advantage.}"
+  ],
+  [
+   3911,
+   "\\cpara{Works the example: a 6 per cent chance for a 3 per cent advantage, and a wait of about a hundred generations for the same mutation to recur, which is a million genomes times $10^{-8}$ per base. The mutation rate fits humans; Wikipedia (``Mutation rate'') gives ``$\\sim$1.1 $\\times$ 10$^{-8}$ per site per generation.''}"
+  ],
+  [
+   4323,
+   "\\cpara{Grants that an evolution gets there in the long run.}"
+  ],
+  [
+   4464,
+   "\\cpara{Argues that a complex adaptation is built one dependent part at a time, each waiting for the one before to become common.}"
+  ],
+  [
+   4734,
+   "\\clogic{This assumes that B arises as a new mutation after A has spread. B may already be present at low frequency and start rising as soon as A is common, so the steps can overlap. Barrett and Schluter (2008) review this case: ``Compared with new mutations, adaptation from standing genetic variation is likely to lead to faster evolution.'' The post's timetable is the slower case.}"
+  ],
+  [
+   5062,
+   "\\cpara{Puts numbers on the dependence: a part that helps only when another is present spreads slowly while that other part is rare. The arithmetic is right: 5 per cent times 1 per cent is 0.05 per cent, and twice that is 0.1 per cent.}"
+  ],
+  [
+   5638,
+   "\\cpara{Adds that one species' invention does not pass to another.}"
+  ],
+  [
+   5776,
+   "\\clogic{True of snakes, foxes and lions, the post's examples, but not of evolution in general. Among bacteria, genes pass between species. Wikipedia (``Horizontal gene transfer''): ``Genes responsible for antibiotic resistance in one species of bacteria can be transferred to another species of bacteria.'' Such transfer was first reported in 1959.}"
+  ],
+  [
+   5790,
+   "\\cpara{Contrasts a programmer, who can design a hundred interdependent parts in an afternoon, and lists what humans can do that selection cannot: plan ahead, change parts together, learn from one case, and choose which changes to try. Part of the list repeats ``An Alien God'' (``A human engineer can redesign multiple parts simultaneously, or plan ahead for future changes''). The author says the full explanation is not known.}"
+  ],
+  [
+   6920,
+   "\\cpara{Supports the comparison with a remark by the biologist Cynthia Kenyon at a dinner, which cannot be checked, and with the count of rotating wheels. The post does not name the three or give a source. Wikipedia (``Rotating locomotion in living systems'') describes the bacterial flagellum and the archaeal flagellum as separately evolved rotary motors, and gives no count.}"
+  ],
+  [
+   7373,
+   "\\cpara{A joke with a point: humans share an invention at once.}"
+  ],
+  [
+   7473,
+   "\\cpara{Grants that biology still beats technology in places (no self-replicating machine the size of a butterfly), and says the balance tips further toward technology every decade. The ``four hundred years'' is hedged (``what,'').}"
+  ],
+  [
+   8116,
+   "\\cpara{Repeats the bacterium analogy from ``The Wonder of Evolution''; see the note there on evolutionary algorithms. The new image, a planner who needs 768 rounds of testing to adopt a 3 per cent gain, uses the post's own figure.}"
+  ],
+  [
+   8595,
+   "\\cpara{Restates the warning from the day before.}"
+  ],
+  [
+   8671,
+   "\\cpara{The promised post, ``Natural Selection's Speed Limit and Complexity Bound'' (4 November 2007), is not in the book. It now opens with a warning: ``A simulation I wrote to verify the following arguments did not return the expected results.''}"
+  ],
+  [
+   8756,
+   "\\cpara{Cites a textbook for the time to fixation. I could not consult it.}"
+  ],
+  [
+   8893,
+   "\\cpara{Cites Haldane for the 2s result. The result is in Part V of the series, ``Selection and Mutation,'' pages 838--844 of the same volume; pages 607--615 are Part IV.}"
+  ]
+ ]
+}

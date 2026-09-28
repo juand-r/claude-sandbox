@@ -1,0 +1,165 @@
+{
+ "slug": "optimization-and-the-intelligence-explosion",
+ "header": "\\post{Optimization and the Intelligence Explosion}{Eliezer Yudkowsky}{2015}{https://www.lesswrong.com/posts/8vpf46nLMDYPC6wA4/optimization-and-the-intelligence-explosion}\n",
+ "skeleton_sha": "de7f4daf91a5e00f036b4618d3dc8b303d5188622e061436f3fdec9dd58741dd",
+ "post_sha": "0ce4d1632b5d33e59d1b43ea4cddd45696ad4d656c38981178c5853241f5c91c",
+ "edits": [],
+ "notes": [
+  [
+   172,
+   "\\cpara{Defines an optimization process: a mind's power is its ability to hit small targets in a large space of possible futures or possible designs.}"
+  ],
+  [
+   490,
+   "\\cpara{Gives the example of a car: judged by its owner's preferences, a working car is very improbable among random arrangements of its parts, and an optimizer is what produces such improbability.}"
+  ],
+  [
+   1064,
+   "\\cpara{Treats intelligence and natural selection as two kinds of optimization, and says in advance that this is an approximation, since neither has a consistent utility function.}"
+  ],
+  [
+   1645,
+   "\\cpara{Makes precise what ``improbable'' means: improbable under random selection from the space of designs. Where an optimizer is at work, good designs become probable.}"
+  ],
+  [
+   2082,
+   "\\cpara{Introduces the distinction the rest of the post depends on: the structure that does the optimizing (the meta level) against the things it produces (the object level).}"
+  ],
+  [
+   2322,
+   "\\cpara{Applies the distinction to biology. Cats and butterflies are the object level; sexual recombination and natural selection are the meta level, which is far simpler.}"
+  ],
+  [
+   2859,
+   "\\cpara{Explains why: natural selection began by accident, while a cat is the product of a very long process.}"
+  ],
+  [
+   3118,
+   "\\cpara{Says a cat's learning dies with the cat, so cat brains add little as optimizers.}"
+  ],
+  [
+   3398,
+   "\\cpara{Adds that bees and beavers build what they inherited the ability to build, and cannot work out new designs.}"
+  ],
+  [
+   3650,
+   "\\cpara{Concludes that animal brains, compared with evolution, lacked both general and cumulative optimization power.}"
+  ],
+  [
+   4211,
+   "\\cpara{Says human brains have recently gained both, through language and writing.}"
+  ],
+  [
+   4588,
+   "\\cpara{Contrasts speeds. Natural selection needs very long times for new complex designs; human programmers, themselves products of natural selection, design complex machines in an afternoon.}"
+  ],
+  [
+   5068,
+   "\\cpara{Says the wonder of evolution is that it works at all, and that the first optimizer was the first process of natural selection, not the first replicator.}"
+  ],
+  [
+   5505,
+   "\\cpara{Announces a structure common to the two histories.}"
+  ],
+  [
+   5667,
+   "\\cpara{Names the rare cases in which evolution changed its own workings: sex, cells and DNA. The post names no biologist. The best-known history built this way is Maynard Smith and Szathm\\'ary's \\textsc{The Major Transitions in Evolution} (1995). Its transitions include the origin of chromosomes, of DNA as genes with proteins as enzymes, of sex, and of human language. That book supports the post's claim.}"
+  ],
+  [
+   6085,
+   "\\cpara{Says that, seen by a programmer, these changes (bundling genes, separating storage from machinery, recombining genes) are simple ideas.}"
+  ],
+  [
+   6579,
+   "\\cpara{Concludes that a handful of simple meta-level changes marks out the epochs of life on Earth.}"
+  ],
+  [
+   6871,
+   "\\cpara{Adds that natural selection stays blind even after these changes: gene pools can evolve to extinction.}"
+  ],
+  [
+   7033,
+   "\\cpara{Separates two kinds of feedback. Adaptations open the way to further adaptations, but only at the object level; natural selection itself, the ``protected interpreter,'' is not changed.}"
+  ],
+  [
+   7422,
+   "\\cpara{Applies the same structure to humans: science builds on science, but the brain that does the work has not changed since the first farmers.}"
+  ],
+  [
+   7968,
+   "\\cpara{Says inventions such as writing and science instruct the brain but do not rebuild it, and are far simpler than it.}"
+  ],
+  [
+   8478,
+   "\\cpara{Uses the limits of rationality training to show how much the brain itself contributes.}"
+  ],
+  [
+   8784,
+   "\\clogic{The inference needs a premise it does not state: that what separates Einstein from ``an arbitrarily selected mortal'' is ``a few minor genetic quirks of brain design.'' The failure of rationality training shows that training does not close the gap. It does not show what the gap consists of.}"
+  ],
+  [
+   8798,
+   "\\cpara{Says people take the brain's contribution for granted and treat rules such as ``Test ideas by experiment'' as if they contributed as much as a brain.}"
+  ],
+  [
+   9183,
+   "\\cpara{Introduces the aim of building an intelligence that can redesign itself. The idea is I.~J. Good's. In 1965 Good wrote that an ultraintelligent machine ``could design even better machines; there would then unquestionably be an `intelligence explosion'\\,''. The post's title uses Good's term, and the book's introduction to this part credits the term to Good; the post does not mention Good. Its own addition is the account in terms of a protected meta level.}"
+  ],
+  [
+   9369,
+   "\\cpara{Says machine code and physics would still be fixed, but would not do the optimizing. In a ``fully wraparound recursive optimizer'' everything that optimizes could itself be optimized.}"
+  ],
+  [
+   9928,
+   "\\cpara{Claims a break with the whole past. The claim fits the exceptions the post has listed (sex, cells and DNA, science): those reached the meta level rarely, and the new case would reach it all the time.}"
+  ],
+  [
+   10083,
+   "\\cpara{Describes history so far: optimizers working at a constant rate, and products accumulating faster and faster because each innovation opens the way to others.}"
+  ],
+  [
+   10236,
+   "\\clogic{The post explains the acceleration by innovations that open the way to others, and by rare changes to the meta level. That leaves out a third source: the number of optimizers has grown. Robin Hanson wrote in 2008 that ``acceleration also ensues as the economy, by getting larger, enables its members to explore an ever-increasing number of innovations.'' The brain has not changed, but the total optimization put in has not been constant.}"
+  ],
+  [
+   10907,
+   "\\cpara{Illustrates the protected meta level: an economy without investment, in which someone invents a hammer once in a very long while.}"
+  ],
+  [
+   11198,
+   "\\cpara{Restates the thesis: history as optimization power in and optimized products out, divided into epochs within which the meta level stays fixed.}"
+  ],
+  [
+   11736,
+   "\\cpara{Says a recursively self-improving AI would fold this graph onto itself, and marks this as a metaphor.}"
+  ],
+  [
+   11948,
+   "\\cpara{Says a weak AI could not improve itself at all.}"
+  ],
+  [
+   12115,
+   "\\cpara{States the conditional: if the AI can improve its own ability to improve, down to its design as an optimizer, its progress over time will look nothing like Earth's history.}"
+  ],
+  [
+   12586,
+   "\\cpara{Answers the objection that each gain might need exponentially more self-rewriting, by pointing to the evolution of the hominid line.}"
+  ],
+  [
+   12980,
+   "\\clogic{The reply is offered with ``doesn't seem'' and no measurement. Neither the ``roughly constant optimization power'' on the hominid line nor a ``linear increment of improvement'' is measured or sourced. The hominid case also covers only the climb from ape to human. The objection is about an AI improving beyond that level, and there the post gives no evidence either way.}"
+  ],
+  [
+   12994,
+   "\\cpara{Grants that the argument is analogy, ``at best'' good for qualitative predictions, and that it rests on other beliefs not yet explained. The last paragraph keeps this limit: it gives a reason ``why I might be reluctant,'' not a proof.}"
+  ],
+  [
+   13518,
+   "\\cpara{The opponent is not named. In the first version (June 2008) the author named ``Robin,'' the co-blogger Robin Hanson, and argued against a forecast of one-month economic doubling times. Hanson's article that month (``Economics of the Singularity,'' \\textsc{IEEE Spectrum}) projects past eras of growth forward: if a new transition followed the pattern of the last two, the world economy ``would soon double in somewhere from a week to a month.'' This version drops the names, so a reader cannot tell which forecast is being answered.}"
+  ],
+  [
+   13987,
+   "\\cpara{The first version was posted on 23 June 2008 as ``Optimization and the Singularity.''}"
+  ]
+ ]
+}

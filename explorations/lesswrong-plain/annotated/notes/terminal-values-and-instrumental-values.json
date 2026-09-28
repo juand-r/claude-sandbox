@@ -1,0 +1,185 @@
+{
+ "slug": "terminal-values-and-instrumental-values",
+ "header": "\\post{Terminal Values and Instrumental Values}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/n5ucT5ZbPdhfGNLtP/terminal-values-and-instrumental-values}\n",
+ "skeleton_sha": "be10556a9a02d8091e9597e4b6e8313ab9b843d9b51d9036fda04b31d55f99a6",
+ "post_sha": "71cb4df485797ced655bb14b65f108941df1353851a4b369a5a9bc440425a61b",
+ "edits": [],
+ "notes": [
+  [
+   164,
+   "\\cpara{Opens with an everyday plan, traced backward from the goal, chocolate, to the first step, car keys.}"
+  ],
+  [
+   641,
+   "\\cpara{The radio news removes the goal, and every step that served it loses its point at once. This is the post's picture of instrumental value.}"
+  ],
+  [
+   1126,
+   "\\cpara{States the problem on the author's own observation (``I've noticed''): people plan well but become confused when they talk about goals explicitly. The phrase ``experts at planning, not experts on planning'' comes from a post by Robin Hanson (April 2007), in which an expert at plumbing is a successful plumber and an expert on plumbing is ``a good source for accurate information'' about it.}"
+  ],
+  [
+   1682,
+   "\\cpara{Names the distinction. The post does not claim it is new. Philosophers call it instrumental versus final (or intrinsic) value. The \\textsc{Stanford Encyclopedia of Philosophy} (``Intrinsic vs.\\ Extrinsic Value'') traces the idea of a chain of derived goods that ends in something ``good for its own sake'' to Aristotle (\\textsc{Nicomachean Ethics} 1094a).}"
+  ],
+  [
+   1996,
+   "\\cpara{Offers a diagnosis, hedged with ``it seems to me'': the mind tracks its goals in an ad hoc way, and English uses the one word ``want'' for ends and means alike.}"
+  ],
+  [
+   2447,
+   "\\cpara{First definition of instrumental value: wanted only for its expected consequences. In the penicillin example, if penicillin would harm the sister, you would want her kept from it.}"
+  ],
+  [
+   2911,
+   "\\cpara{First definition of terminal value: wanted without regard to further consequences.}"
+  ],
+  [
+   3132,
+   "\\cpara{Tests the first definition and shows that it fails: if saving the sister would destroy the Earth, the author would not save her, so her life looks conditional on consequences too. The post answers this case in the paragraph that begins ``So now let's look at some complications''.}"
+  ],
+  [
+   3675,
+   "\\cpara{Proposes a formal model in which the two kinds of value are separate types, as integers and floating-point numbers are in a strictly typed language.}"
+  ],
+  [
+   3968,
+   "\\cpara{Sets out the model's four parts: outcomes, actions, a utility for each outcome, and a probability of each outcome given each action. It is the standard expected-utility model. The example's probabilities are consistent: for each action they sum to 1.}"
+  ],
+  [
+   4924,
+   "\\cpara{Tells readers who do not program that the types will be translated into English.}"
+  ],
+  [
+   5132,
+   "\\cpara{Gives the decision rule: compute each action's expected utility and choose one with the largest. The worked numbers are right. With utilities 1 and 0, an action's expected utility is the sister's chance of living: 0.9 with penicillin and 0.3 without.}"
+  ],
+  [
+   5711,
+   "\\cpara{Restates the rule in words.}"
+  ],
+  [
+   5936,
+   "\\cpara{Grants that the rule defines the best choice without being an efficient way to find it.}"
+  ],
+  [
+   6078,
+   "\\cpara{The first complication: plans of several steps. Treating each whole sequence as one action multiplies the options and hides structure that a human planner uses, such as ruling out every plan that begins by shooting off one's own foot.}"
+  ],
+  [
+   6252,
+   "\\clogic{This works only when nothing learned along the way could change the later steps. In the post's own opening, news on the radio arrives halfway through the plan, and a fixed sequence cannot respond to it. The standard remedy is to let each Action be a strategy: a rule that gives the next act for ``any information they may have'' (Wikipedia, ``Strategy (game theory)''). There are more strategies than sequences, so the space is larger still.}"
+  ],
+  [
+   6707,
+   "\\cpara{Calls the complications ``minor'' as irony, and compares the model with Bayesian probability theory: both are simple in principle and cannot be run as they stand.}"
+  ],
+  [
+   6913,
+   "\\cpara{States the method of the rest of the post: understand the simple version before adding complications.}"
+  ],
+  [
+   7089,
+   "\\cpara{Introduces a hypothetical philosopher who holds that everyone cares only about their own states of mind, the view philosophers call psychological egoism. The mother who dies to save her son is a version of the standard counterexample; the \\textsc{Stanford Encyclopedia of Philosophy} (``Egoism'') uses a soldier who throws himself on a grenade.}"
+  ],
+  [
+   7946,
+   "\\cpara{Explains the reply: expected utility belongs to actions and utility to outcomes. Both are numbers, as wind speed and temperature are, but they measure different things.}"
+  ],
+  [
+   8365,
+   "\\cpara{Draws out the philosopher's first claim: a mind that valued only its own states would be indifferent between any two futures that left those states the same.}"
+  ],
+  [
+   8774,
+   "\\cpara{Concludes, hedged with ``rather unlikely'', that such a mind would seldom give its life for another.}"
+  ],
+  [
+   8873,
+   "\\cpara{Calls the philosopher's second answer a jump from utilities of outcomes to expected utilities of actions, which a typed language would reject.}"
+  ],
+  [
+   9094,
+   "\\clogic{The type error fits one reading of these words. On another, the feeling of importance is a state of her mind at the moment of choosing, and so part of an outcome; the \\textsc{Stanford Encyclopedia}'s entry on decision theory notes that ``the character of an act may feature as a property of all its possible outcomes.'' Read so, she preferred dying with that feeling to living without it, which is the egoist's usual reply (in the entry on egoism, the soldier ``could not bear to live with himself''). The model allows that view; what counts against it is evidence about motives, such as Daniel Batson's experiments, which that entry reports.}"
+  ],
+  [
+   9352,
+   "\\cpara{The point that answers the philosopher: that a decider chose what it rated highest is true whatever it values, so it says nothing about where the decider steers the future. This is a standard objection to psychological egoism. The \\textsc{Stanford Encyclopedia} notes that if self-interest means the satisfaction of all one's preferences, egoism ``turns out to be trivially true.''}"
+  ],
+  [
+   9724,
+   "\\cpara{Answers the philosopher's first claim, that the mother wants only to believe her son is well. The decider evaluates an imagined outcome, but what it imagines is the son alive, not its own belief. To value the belief, its utility function would have to take an imagining of an imagining as input. The cake line is a joke.}"
+  ],
+  [
+   10841,
+   "\\cpara{Draws the lesson for method: added complications hide distinctions that the simple model shows.}"
+  ],
+  [
+   11026,
+   "\\cpara{Answers the black-hole problem raised by the first definitions. In the model a whole history, the sister's recovery followed by the Earth's destruction, is one outcome. Her life can then be valued for itself and still be outweighed.}"
+  ],
+  [
+   11635,
+   "\\cpara{Observes that the flat model has no instrumental values at all, since actions lead straight to outcomes.}"
+  ],
+  [
+   12206,
+   "\\cpara{Says that instrumental values come back when the model represents how events cause other events.}"
+  ],
+  [
+   12506,
+   "\\cpara{Defines instrumental value in the richer model: B has it because B reliably leads to C, however B was produced. C may be valued for itself or only as a step further on.}"
+  ],
+  [
+   13165,
+   "\\cpara{Concludes that instrumental value is only a shortcut for computing plans, to be dropped where the regularity behind it fails. Within the model this follows from the way instrumental value was defined.}"
+  ],
+  [
+   13354,
+   "\\cpara{Illustrates with the car door: nobody who wants to get into the car rips the door off with a steam shovel.}"
+  ],
+  [
+   13808,
+   "\\cfact{The phrase is Joel Spolsky's, from ``The Law of Leaky Abstractions'' (2002): ``All non-trivial abstractions, to some degree, are leaky.''}"
+  ],
+  [
+   14199,
+   "\\cpara{Names two mistakes that the simple model prevents: holding to B when it no longer leads to C, and thinking that a pure fitness maximizer needs a terminal value for food. The post gives no instance of the first from philosophy. The second repeats ``Thou Art Godshatter'', posted two days earlier: ``So long as the organism knows this very fact, and has a utility function that values reproduction, it will automatically eat.''}"
+  ],
+  [
+   15135,
+   "\\cpara{States the consequence: with the utility function fixed, instrumental values change only when beliefs of fact change, as in the reversed penicillin example.}"
+  ],
+  [
+   15695,
+   "\\cpara{Applies the distinction to moral disputes: some are about consequences, some about terminal values. The idea has a well-known precedent. Charles Stevenson (\\textsc{Ethics and Language}, 1944) separated ``disagreement in belief'' from ``disagreement in attitude'', and held that a typical ethical argument ``involves both''.}"
+  ],
+  [
+   16257,
+   "\\clogic{Offered with ``I do not think'' and no evidence. The reasons for the practice that the World Health Organization reports are of both kinds. Some are values its opponents do not share, such as ``premarital virginity''. Some are beliefs of fact: some people believe the practice ``has religious support'', and WHO answers that ``no religious scripts prescribe the practice.''}"
+  ],
+  [
+   16271,
+   "\\cpara{Warns that angry arguers take opponents who share their values for people who want harm. The gun debate is the example; the link is to ``Are Your Enemies Innately Evil?''.}"
+  ],
+  [
+   16683,
+   "\\cpara{The post's claim about human minds: moral beliefs about means and about ends do not feel different. It is offered with ``I fear'', and its only support is how the two beliefs feel.}"
+  ],
+  [
+   17153,
+   "\\cpara{Describes the work of sorting values, with the gun example: ``reducing crime'' serves further values, and ``freedom'' may be terminal for some. So the gun debate, given in the paragraph that begins ``In moral arguments'' as a dispute about means, may also involve a difference in terminal values, as the post says here.}"
+  ],
+  [
+   17831,
+   "\\cpara{Concludes that we cannot list our values or where they came from, and can reconstruct them only through dilemmas (``Would you do X if Y'') in error-prone ``cognitive archaeology''. The simple model, the post says, shows how easy the distinction ``ought to be, in principle.''}"
+  ],
+  [
+   18624,
+   "\\cpara{Names further complications, such as the different pleasures of eating and of anticipating, and leaves them undeveloped.}"
+  ],
+  [
+   18971,
+   "\\cpara{Ends with a joke in the form of the last lines of ``Thou Art Godshatter'': ``Being a thousand shards of desire isn't always fun, but at least it's not boring.''}"
+  ]
+ ]
+}

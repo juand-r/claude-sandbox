@@ -1,0 +1,93 @@
+{
+ "slug": "the-power-of-intelligence",
+ "header": "\\post{The Power of Intelligence}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/aiQabnugDhcrFtr9n/the-power-of-intelligence}\n",
+ "skeleton_sha": "3e34faa35e8552d1ea1c84f27783edb96ce7a3ec174ece61a8b268bbfbd2f2a1",
+ "post_sha": "12e5326cb935cdc45f64ada9932d62b42297da4cf97ce66a17c760ae7d1daa68",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Opens with the brain as it looks: about three pounds of wrinkled grey tissue.}"
+  ],
+  [
+   262,
+   "\\cpara{Says the brain does not look powerful. The aside on Aristotle is accurate: in \\textsc{Parts of Animals} the brain ``tempers the heat and seething of the heart.''}"
+  ],
+  [
+   638,
+   "\\cpara{Describes the arms races of predators and prey before humans: every weapon met a defense, and no species had an ultimate weapon or held more than its own niche.}"
+  ],
+  [
+   1598,
+   "\\cpara{Begins the parable's joke: judged by claws and venom, the creatures that made nuclear weapons look harmless.}"
+  ],
+  [
+   1855,
+   "\\cpara{Lists what humans lacked at the start. To an observer who knows only bodies and what they grow, cutting stone and smelting metal would look absurd for creatures with weak fingers.}"
+  ],
+  [
+   2446,
+   "\\cpara{Extends the joke to genetic engineering, which would look out of reach from the ``Squishy level'' altogether.}"
+  ],
+  [
+   2926,
+   "\\cpara{Mocks the timescale of evolution, by which a year is nothing. The arithmetic is right: a year is about $5.9\\times10^{50}$ Planck times, ``six hundred trillion trillion trillion trillion'' to one figure.}"
+  ],
+  [
+   3601,
+   "\\cpara{The parable's conclusion, as a question to an unnamed objector. The Squishy Things had fingers, weak ones, and every feat in the story began with them. The AI in the question has no body. The parable shows how far intelligence took creatures that could handle things; the post does not say how an AI without a body would act on the world.}"
+  ],
+  [
+   3767,
+   "\\cpara{Reports the author's observation, with ``often,'' that people hear ``intelligence'' as book smarts, and that this first reaction shapes their view of an intelligence explosion.}"
+  ],
+  [
+   4247,
+   "\\cpara{Answers three sayings of unnamed people: about charisma, guns and money. The human species made all three, and money exists only because people keep believing in it.}"
+  ],
+  [
+   4381,
+   "\\clogic{The reply answers by widening the word. The speakers use ``intelligence'' in the narrow sense the previous paragraph calls book smarts; the reply counts everything a brain does, charisma included, as intelligence, as the next paragraph says openly. Whether an AI built for the narrow kind would have the rest is the question the saying raises, and the wider definition settles it without argument.}"
+  ],
+  [
+   4460,
+   "\\clogic{This reply, and the one about money after it, show that intelligence can produce guns and money. Both took many people and long periods to make. The sayings ask what one new intelligence could do in a world where guns and money already belong to others; the replies answer with what the species did.}"
+  ],
+  [
+   4948,
+   "\\cpara{States the post's sense of intelligence: not the savant of \\textsc{Rain Man} but a human being, with the power to find ``a road to the seemingly impossible.''}"
+  ],
+  [
+   5357,
+   "\\cpara{Reports that investors ask how a true AI would be commercialized, and calls this a framing problem.}"
+  ],
+  [
+   5463,
+   "\\cfact{The post is dated 2007, and the copy on the author's website says ``\\copyright2007.'' The institute took the name ``Machine Intelligence Research Institute'' in January 2013, as ``Minds: An Introduction'' says; before that it was the Singularity Institute. This sentence has been revised since the post was first published.}"
+  ],
+  [
+   5591,
+   "\\cpara{Suggests a deeper cause: people can imagine how each feat might be done, but not one power that does them all.}"
+  ],
+  [
+   6063,
+   "\\cpara{Lists what a strong enough intelligence might be promised, from a visit to Mars to a proof of the Riemann Hypothesis and cures for cancer, aging and stupidity, and grants that the list ``just sounds wrong.''}"
+  ],
+  [
+   6557,
+   "\\cpara{Answers that the list sounds wrong because it is too small, and supports this with a question: ``Who could have imagined, ever so long ago, what minds would someday do?'' Past surprises are a reason not to rule the list out.}"
+  ],
+  [
+   6806,
+   "\\cpara{Repeats the diagnosis: because one process with such varied powers is hard to picture, a single stroke that solves obesity, cancer and aging is hard to picture too.}"
+  ],
+  [
+   7020,
+   "\\cpara{The closing argument. One power did all these things; not knowing how it works ``is a fact about your current state of mind, not a fact about the phenomenon''; and understood deeply enough, the power could be built. The point about ignorance is correct.}"
+  ],
+  [
+   7903,
+   "\\cpara{Points to the post's first publication, on the author's website.}"
+  ]
+ ]
+}

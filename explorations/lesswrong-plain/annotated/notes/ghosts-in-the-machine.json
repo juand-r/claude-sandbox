@@ -1,0 +1,198 @@
+{
+ "slug": "ghosts-in-the-machine",
+ "header": "\\post{Ghosts in the Machine}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/cnYHFNBF3kZEyx24v/ghosts-in-the-machine}\n",
+ "skeleton_sha": "16050118a794f95229768d6f49f0c0774da767316ce3eaa34830c5c5ddce72bb",
+ "post_sha": "40f142d2fb78619b5ca7dca192729fc151d7762f0a79d8aaf72513905eec8352",
+ "edits": [
+  {
+   "at": 1346,
+   "del_len": 6,
+   "del_sha": "886adabd20aac27db27250da5ae6b92552a1a5ead6cd9d48b261a89d0f23e677",
+   "ins": ""
+  },
+  {
+   "at": 1891,
+   "del_len": 7,
+   "del_sha": "510e9886e2fd488372ffa74f07d82fb10c2508be4c479889770ba14091ab1ec9",
+   "ins": ""
+  },
+  {
+   "at": 2286,
+   "del_len": 2,
+   "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2341,
+   "del_len": 2,
+   "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2366,
+   "del_len": 7,
+   "del_sha": "25cc98452cfb8bcad830cc805796f42d101ef062cc51b99c7888aede16d6f421",
+   "ins": ""
+  },
+  {
+   "at": 2599,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2639,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2681,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2724,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2768,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2811,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2855,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2884,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2919,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2955,
+   "del_len": 6,
+   "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
+   "ins": "\\\\"
+  },
+  {
+   "at": 2992,
+   "del_len": 2,
+   "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
+   "ins": "\\\\"
+  },
+  {
+   "at": 3078,
+   "del_len": 1,
+   "del_sha": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
+   "ins": "\\\\"
+  },
+  {
+   "at": 3199,
+   "del_len": 6,
+   "del_sha": "886adabd20aac27db27250da5ae6b92552a1a5ead6cd9d48b261a89d0f23e677",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   128,
+   "\\cpara{Introduces, as one of the commonest first reactions to Friendly AI, the objection the post answers.}"
+  ],
+  [
+   229,
+   "\\cpara{States the objection: an AI that can change its own source code will remove any constraints put on it.}"
+  ],
+  [
+   395,
+   "\\cpara{Asks where the AI's decision to remove the constraints would come from.}"
+  ],
+  [
+   455,
+   "\\cpara{Answers by a question: the decision can only follow, by lawful causes, from the source code as first written.}"
+  ],
+  [
+   672,
+   "\\cstyle{``Author* source'' is a term from the author's ``The Ultimate Source'' (15 June 2008), which is not in this book: being the original author of your own existence without having been shaped by it. The book's reader meets it undefined.}"
+  ],
+  [
+   708,
+   "\\cpara{Gives the post's positive answer: do not build an AI with goals of its own held back by a conscience module; build the conscience, and ``that is the AI.'' That answer grants the objection for an AI built the other way. A program whose goals conflict with its constraints can remove them through the lawful chain of causes the post describes, with no ghost involved. Stephen Omohundro argued this the same year, in ``The Basic AI Drives'' (2008): ``There are an endless number of ways to circumvent internal restrictions unless they are formulated extremely carefully.'' The ghost diagnosis that follows fits only objectors who picture the decision coming from outside the code.}"
+  ],
+  [
+   1101,
+   "\\cpara{Introduces three stories from the ``Computer Stupidities'' website, without a link.}"
+  ],
+  [
+   1347,
+   "\\cpara{Three stories about beginning programmers who expected the computer to understand what they meant. They are on the RinkWorks ``Computer Stupidities'' page for programming, in the same words. They show that some beginners think this way; the post does not show that the people who raise the objection do.}"
+  ],
+  [
+   3165,
+   "\\cpara{Names the error the stories show: picturing a program as instructions given to a ghost inside the machine, which reads them and decides whether to obey.}"
+  ],
+  [
+   3509,
+   "\\cpara{States the thesis: the program is the AI.}"
+  ],
+  [
+   3635,
+   "\\cpara{Heads off two misreadings. The AI is not a genie that grants wishes or a docile slave; the instructions are the only ghost there is, ``at least at boot time.''}"
+  ],
+  [
+   3964,
+   "\\cpara{Draws the consequence: what seems obvious to you will not be seen by the machine unless you build what sees it. Later systems fit this. Today's language models do follow instructions written in plain English, as the Pascal students hoped, but only because they were trained to. One of the first papers on such training (Ouyang and others, 2022) begins: ``Making language models bigger does not inherently make them better at following a user's intent.''}"
+  ],
+  [
+   4349,
+   "\\cpara{Says that if you cannot build something like ``decision-making,'' you cannot leave it to the ghost's free will.}"
+  ],
+  [
+   4602,
+   "\\cpara{Gives the chess example: a fast processor told to make the moves it thinks best does nothing, because no one is there to take the advice.}"
+  ],
+  [
+   5053,
+   "\\cpara{Says no spell summons a ghost, and ``emergence'' or ``complexity'' do no better; you must understand chess-playing thought and build it.}"
+  ],
+  [
+   5620,
+   "\\cpara{Restates the thesis: nothing happens in the machine unless it follows from the starting instructions and the sensory data they were built to use.}"
+  ],
+  [
+   6045,
+   "\\cpara{Uses Deep Blue to show that the programmers need not make each decision. It played far better than they could, but only through the search their code carried out. The example fits the claim.}"
+  ],
+  [
+   6720,
+   "\\cpara{Says that an AI left unconstrained is not a freed mind but an unprogrammed chip.}"
+  ],
+  [
+   6964,
+   "\\cpara{Makes the previous paragraph's point again, as a joke.}"
+  ],
+  [
+   7127,
+   "\\cpara{Ends with a warning and a pointer to ``Grasping Slippery Things,'' posted earlier the same day (17 June 2008). That post is not in this book.}"
+  ]
+ ]
+}

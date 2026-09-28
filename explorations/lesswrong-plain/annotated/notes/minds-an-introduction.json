@@ -1,0 +1,145 @@
+{
+ "slug": "minds-an-introduction",
+ "header": "\\post{Minds: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/8GhSZzsQmusCN9is7/minds-an-introduction}\n",
+ "skeleton_sha": "f179ce9084b05afe7c4cb443adf8153cb61a0b0e5a2f1ceefcaaf660e430d81b",
+ "post_sha": "80959c7524c83911c822d190bff991dcedb317689bed7f8f6d39bab7832b5180",
+ "edits": [],
+ "notes": [
+  [
+   204,
+   "\\cpara{Opens by listing what minds can do, and ends with the capacity the book depends on: a mind can reason about its own reasoning and bring it closer to its goals.}"
+  ],
+  [
+   617,
+   "\\cpara{Says the brain is lawful and runs routines a person may never notice, and gives a working definition: a mental pattern that serves you well is called ``rationality.''}"
+  ],
+  [
+   1008,
+   "\\cpara{Explains where the routines come from. Life descends from self-replicating molecules whose copying produced heritable differences; evolution is the change in those differences over time.}"
+  ],
+  [
+   1447,
+   "\\cpara{Defines selection and draws the conclusion the sequence will need: organisms are suited to reproduction in environments like their ancestors', not necessarily to the present one.}"
+  ],
+  [
+   1758,
+   "\\cpara{States the book's aim: to understand the mind in order to improve it for your own goals rather than those of ``your designer, evolution.'' The sequence that follows explains in what sense a process without a mind can be called a designer.}"
+  ],
+  [
+   2134,
+   "\\cpara{Observes that the categories we use for minds (belief, decision, feeling) do not resemble the categories we use for physical things.}"
+  ],
+  [
+   2490,
+   "\\cpara{Names dualism with Ryle's phrase, then makes the section's main claim: rejecting dualism has not by itself produced a better predictive model of the mind, so talk of ``rationality'' and ``bias'' can stay as unconstrained as talk of spirits. The claim is hedged (``haven't necessarily'') and put as a conditional (``if those ideas are still imprecise''); no one who makes the mistake is named.}"
+  ],
+  [
+   2736,
+   "\\cfact{Ryle's words, in \\textsc{The Concept of Mind} (1949): ``I shall often speak of it, with deliberate abusiveness, as `the dogma of the Ghost in the Machine'.'' ``It'' is what Ryle calls the official doctrine about minds, which he traces chiefly to Descartes.}"
+  ],
+  [
+   3378,
+   "\\cpara{Proposes the method of this book: if we cannot see what we are by looking at ourselves, study processes that look purposeful but are plainly not human, evolution and artificial intelligence, as a mirror. Offered with ``Perhaps.''}"
+  ],
+  [
+   3771,
+   "\\cpara{States the book's premise that the appearance of a ghost in the machine is itself the work of a machine. It is stated here as a thesis; the argument for it comes in later books.}"
+  ],
+  [
+   4071,
+   "\\cpara{Previews ``The Simple Math of Evolution,'' which promises more depth than introductions to evolution written for non-biologists.}"
+  ],
+  [
+   4491,
+   "\\cpara{Previews ``A Human's Guide to Words'' and the essay on Bayes's theorem that closes the book. The sequences are taken out of order: the third here, the second in the next paragraph.}"
+  ],
+  [
+   4693,
+   "\\cpara{Previews ``Fragile Purposes,'' the second sequence, which treats minds and goal-directed systems in general and, the introduction says, explains an approach to philosophy shaped by the author's work in AI.}"
+  ],
+  [
+   5104,
+   "\\cpara{Introduces Yudkowsky as a decision theorist and mathematician working on artificial general intelligence, and says that this work drove the author's interest in human rationality.}"
+  ],
+  [
+   5605,
+   "\\cpara{Quotes ``The Martial Art of Rationality'' (22 November 2006) with small changes of wording that do not alter the meaning. The omission marked [...] cuts two sentences: we cannot rewire our neural circuitry, and martial artists may not plate titanium over their bones.}"
+  ],
+  [
+   7355,
+   "\\cpara{Draws the conclusion, hedged with ``I gather'': for Yudkowsky, rationality and AI cannot usefully be discussed apart.}"
+  ],
+  [
+   7582,
+   "\\cpara{Describes the ``intelligence explosion,'' a self-improving AI redesigning itself in rapid succession, and why Yudkowsky prefers I. J. Good's 1965 term to ``technological singularity.''}"
+  ],
+  [
+   7960,
+   "\\cfact{MIRI is not introduced. It is the Machine Intelligence Research Institute, where Yudkowsky was a senior researcher. MIRI released this book in March 2015, and Bensinger announced the release on MIRI's blog (``we are releasing'').}"
+  ],
+  [
+   8309,
+   "\\cpara{Introduces ``Friendly AI'' and describes the field with its uncertainty stated: little is known about when general AI might come or which safety approaches would work, and the problem is ``closer to a menagerie of basic mathematical and philosophical questions'' than to a programming task.}"
+  ],
+  [
+   9108,
+   "\\cpara{Says Yudkowsky's views are debated and that forecasters and researchers have not reached a consensus, and points to Bostrom's \\textsc{Superintelligence}. The introduction does not present the author's forecast as settled. It cites no one on the other side of the debate.}"
+  ],
+  [
+   9475,
+   "\\cpara{Cites Russell and Norvig's textbook on the difficulty of specifying good behavior in AI that learns and changes.}"
+  ],
+  [
+   9841,
+   "\\cpara{In the textbook the passage opens ``Yudkowsky (2008) goes into more detail about how to design a Friendly AI. He asserts \\ldots'' (as quoted in Wikipedia's article on friendly AI; I could not see the textbook). So the quotation begins as the textbook's report of Yudkowsky's own work, not as a separate judgment by its authors.}"
+  ],
+  [
+   10476,
+   "\\cpara{Introduces Bostrom and Ćirković's anthology \\textsc{Global Catastrophic Risks} and defines existential risks as those that could permanently stagnate or end humanity.}"
+  ],
+  [
+   10895,
+   "\\cpara{Connects the book's subject to the AI work: part of the aim is to find which biases hinder forecasting of large upheavals, and Yudkowsky's two chapters in the anthology join the two topics.}"
+  ],
+  [
+   11022,
+   "\\cfact{Stated without a source. The best-known study supports it for political forecasting: in Philip Tetlock's tournaments, experts were ``often only slightly more accurate than chance, and usually worse than basic extrapolation algorithms, especially on longer--range forecasts three to five years out'' (Wikipedia's summary).}"
+  ],
+  [
+   11869,
+   "\\cpara{Gives two reasons for AI's place in a book on human rationality: it supplies simple illustrations of cognition, and long-term technology forecasting is an important use of Bayesian reasoning.}"
+  ],
+  [
+   12214,
+   "\\clogic{True in the sense that Bayes's rule says how to revise any starting estimate on whatever evidence there is. Where data are scarce, the result depends mostly on the starting probabilities, which consistency does not fix; the notes on ``Rationality: An Introduction'' make this point.}"
+  ],
+  [
+   12228,
+   "\\cpara{Closes with the plan for the sequence: learn about ourselves from our ``designer,'' evolution.}"
+  ],
+  [
+   12461,
+   "\\cpara{Cites Ryle.}"
+  ],
+  [
+   12561,
+   "\\cpara{Cites Good's 1965 paper, the source of ``intelligence explosion.''}"
+  ],
+  [
+   12875,
+   "\\cpara{Cites Bostrom's \\textsc{Superintelligence}.}"
+  ],
+  [
+   12997,
+   "\\cpara{Cites the third edition of Russell and Norvig.}"
+  ],
+  [
+   13239,
+   "\\cpara{Gives the ``grey goo'' scenario, runaway self-replicating molecular robots, as an example of a possible existential risk.}"
+  ],
+  [
+   13503,
+   "\\cpara{Cites Bostrom and Yudkowsky's handbook chapter on the ethics of AI.}"
+  ]
+ ]
+}
