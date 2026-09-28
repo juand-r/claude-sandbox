@@ -2934,3 +2934,87 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: ``If I look at the mass I will never act. If I look at the one, I will.''} That is the opposite of my method.
 - After: ``If I look at the mass I will never act. If I look at the one, I will.'' That is the opposite of the post's method.}
 
+
+## tsuyoku-naritai-i-want-to-become-stronger
+
+- Before: ``May it be Your will that I may sin no more.''} I present my point as a correction of Judaism.
+- After: ``May it be Your will that I may sin no more.'' The post presents its point as a correction of Judaism.}
+
+
+## a-sense-that-more-is-possible
+
+- Before: and that no one has it yet, me included. So no rational person the objector could name would count. Later in the post, the question is no longer whether rational people are happier. It is why rationalists are not ``surrounded by a visible aura of formidability.''
+- After: and that no one has it yet, me included. \nb{So no rational person the objector could name would count. Later in the post the question changes from whether rational people are happier to why rationalists are not ``surrounded by a visible aura of formidability.''}
+
+- Before: My answer is that rationalists get less systematic training
+- After: One answer, I say, is that rationalists get less systematic training
+
+- Before: and I blame the lack of training. I do not consider that apart from intelligence, knowledge and practice in particular fields, there may be little general skill of thinking to train. \nb{The lack of visibly formidable rationalists fits that explanation too.}
+- After: and I blame the lack of training. \nb{The post does not consider that, apart from intelligence and knowledge and practice in particular fields, there may be little general skill of thinking to train. The lack of visibly formidable rationalists fits that explanation too.}
+
+
+## strong-evidence-is-common
+
+- Before: \nb{This is true, and worth knowing.} I do not say why. \nb{The reason is that the claim is very specific, and people rarely lie about their names.} Later I apply the idea to claims where that reason does not hold, and I do not mention the difference.
+- After: \nb{This is true, and worth knowing. The post does not say why: the claim is very specific, and people rarely lie about their names. Later the post applies the idea to claims where that reason does not hold, without mentioning the difference.}
+
+- Before: \nb{All are reliable testimony or reliable tools.} I do not point that out either.
+- After: \nb{All are reliable testimony or reliable tools, and the post does not point that out either.}
+
+- Before: So I have moved from my own name to your own excellence, a subject on which people tend to flatter themselves. I made the move without comment.
+- After: \nb{The post has moved from the author's name to the reader's own excellence, a subject on which people tend to flatter themselves, and it makes the move without comment.}
+
+- Before: \nb{Sagan meant claims that contradict what we know, such as alien visits.} My name is not one of those.
+- After: \nb{Sagan meant claims that contradict what we know, such as alien visits. A person's name is not one of those.}
+
+
+## pr-is-corrosive
+
+- Before: so as not to set them off. Once honor is defined as having standards and PR as having none, the definitions do most of the work.
+- After: so as not to set them off. \nb{Once honor is defined as having standards and PR as having none, the definitions do most of the work.}
+
+- Before: \nb{Men died this way.} I do not explain why honor would ``basically go fine'' today.
+- After: \nb{Men died this way, and the post does not explain why protecting one's honor would ``basically go fine'' today.}
+
+- Before: For the main claim, that thinking about PR leads to harmful actions, I offer ``I predict'' and ``(I think?),''
+- After: For the main claim, that thinking about PR leads to harmful actions, I offer ``AFAICT,'' ``I predict'' and ``(I think?),''
+
+- Before: \nb{The post appeared on 14 February 2021. The day before, the New York Times had published a critical article about the blog Slate Star Codex and the rationalist community around it.} My last line lists as related ``The New York Times,'' a blog post by Rob Rhinehart. \nb{Rhinehart, the founder of Soylent, says in it that we are all ``controlled and oppressed and enslaved by the evil octopus of the New York Times.''} I do not mention the Times article, or say whether my post replies to it.
+- After: My last line lists as related C. S. Lewis's ``The Inner Ring'' and ``The New York Times,'' a blog post by Rob Rhinehart. \nb{The post appeared on 14 February 2021. The day before, the New York Times had published a critical article about the blog Slate Star Codex and the rationalist community around it. Rhinehart, the founder of Soylent, says in his post that we are all ``controlled and oppressed and enslaved by the evil octopus of the New York Times.'' The post does not mention the Times article, or say whether it replies to it.}
+
+
+## avoiding-your-belief-s-real-weak-points
+
+- Before: Three paragraphs later I grant that there are ``probably a dozen'' replies. \nb{A dozen replies means that someone asked.} I do not discuss any of them.
+- After: Three paragraphs later I grant that there are ``probably a dozen'' replies, and I do not discuss any of them. \nb{A dozen replies means that someone asked.}
+
+
+## rationalization
+
+- Before: ``giant sucking cognitive black hole'' instead. The word gets two paragraphs.
+- After: ``giant sucking cognitive black hole'' instead.
+
+
+## the-gift-we-give-to-tomorrow
+
+- Before: I promise not to, and the question about Gandhi is dropped.
+- After: I promise not to, and I do not ask about Gandhi again.
+
+
+## illusion-of-transparency-why-no-one-understands-you
+
+- Before: and says, ``I take note of this statement.''
+- After: and says, ``I take note of this statement of yours.''
+
+
+## the-fallacy-of-gray
+
+- Before: the objection ``science is faith too'' is about,
+- After: the objection ``Science is based on faith too'' is about,
+
+
+## politics-is-the-mind-killer
+
+- Before: and the real version says ``usually''.}
+- After: and the usual versions state both rules as defaults that allow exceptions.}
+
