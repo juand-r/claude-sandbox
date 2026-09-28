@@ -94,3 +94,48 @@ pointer to But There's Still A Chance, Right? (earlier in book order, now carrie
 point); Belief as Attire's hijacker note could mention the bin Laden evidence given in Are
 Your Enemies Innately Evil?; Twelve Virtues' humility note (see above). Layout: overfull
 boxes of 45pt (URL in the Book II introduction's footnote) and 8pt, both post text.
+
+## Batch 2b: rest of Book II (33 posts)
+
+Nine agents (Seeing with Fresh Eyes, Death Spirals, Letting Go). Edits in
+`docs/raz/changes/batch02b.md`. The kinds were the usual ones, with more fair-defender
+failures than in earlier batches:
+
+- Critiques that a fair reading answers, cut or recast as scope or credit:
+  - Leave a Line of Retreat: the metaethical reading of "without God, morality is impossible".
+  - Hold Off: "determined only by" (a revision is a new decision).
+  - On Expressing: Asch "could not show" pluralistic ignorance (the post says "possibility raised"); the Prince note (the book does advise dissembling).
+  - Unbounded Scales: "completely unpredictable" (6 per cent explained in dollars).
+  - When None Dare: "can only rise" (the law is conditional).
+  - Resist: Bacon's conditional timetable, and a speculative argument against Armstrong's advice.
+  - Crackpot Offer: the hindsight rule (the post's scope is after the mistake).
+  - Halo Effect: Thorndike now credited as support, not held against the post.
+  - Evaporative Cooling: the selection arithmetic is the post's idea, not a flaw.
+- Source check that reversed a note: the Epley and Gilovich abstract describes "a consensus
+  that none [adjustment] takes place seems to be emerging", so Priming's "most anchoring is
+  contamination" matches its source.
+- Guilt by association cut: Wansink's later misconduct (other work) in Priming.
+- Nitpicks cut: isshokenmei gloss (Crisis of Faith), opposite temperature metaphors (Every
+  Cause), ten-of-twelve quadrants (Affect Heuristic, under the number threshold), dictionary
+  significance (Evaluability), the author's memory of 9/11 (When None Dare), the Finney
+  revision in the Response (Genetic Fallacy).
+- Point made once: the half second (We Change, with a pointer from Hold Off); the Eagly
+  point (Halo Effect, with a pointer from Superhero Bias); the Aumann common prior (stated in
+  Asch, applied in On Expressing); the desertion effect (Asch, pointer from On Expressing).
+
+Considered and left: Lonely Dissent and Asch's Conformity Experiment both give Asch's
+independence figures. In Asch they are context; in Lonely Dissent they answer the post's
+"experiment shows", so both keep them.
+
+Unverified, as the agents report: Maier's and Dawes's results (Hold Off), Yamagishi from
+summaries only (Affect Heuristic), the Unarius date and the unnamed member of Congress (When
+None Dare, Evaporative Cooling), von Sydow (No One Can Exempt You).
+
+Tooling: do-we-believe-everything-we-re-told needed a hand fix of the skeleton (an in-text
+footnote marker linked to `#footnote2` left footnote 3 as a stray paragraph). md2tex should
+be checked for this pattern before Book III.
+
+Layout, for the whole-book pass: new bare-URL overfull boxes, all in the posts' own
+footnotes: Stranger Than History (144pt), Every Cause (119pt, 116pt), Crisis of Faith
+(132pt, 41pt), Generalization from Fictional Evidence (35pt), On Expressing (24pt). Same fix
+as above (md2tex wrapping URLs in \url{}).

@@ -2,7 +2,7 @@
  "slug": "the-crackpot-offer",
  "header": "\\post{The Crackpot Offer}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/qRWfvgJG75ESLRNu9/the-crackpot-offer}\n",
  "skeleton_sha": "4a6fcbbd60e55712df426f92b8f17ae506aa168a27194d5426ac9f8a4031f22f",
- "post_sha": "6a48f51e0ec865fccc32583386b0ad05a2ff4fb7aded4f105e369bcfe25164e3",
+ "post_sha": "f174f956d8fc5c7187ca0b18e275ae8ca4e423ec53a461c138a376b31de794a8",
  "edits": [],
  "notes": [
   [
@@ -71,7 +71,7 @@
   ],
   [
    4042,
-   "\\clogic{The rule names its target in hindsight: a thought is one ``you would never have thought if you had been wiser'' only once the mistake is known. The post's own case was settled by a proof within a week. It does not say how to tell, before that point, whether one is holding a mistaken thought or a correct unpopular one.}"
+   "\\clogic{The rule applies once a thought is known to be a mistake, as in the author's case, settled by a proof within a week. Telling a mistaken thought from a correct unpopular one beforehand is a different problem, which the post does not take up.}"
   ],
   [
    4296,

@@ -2,7 +2,7 @@
  "slug": "when-none-dare-urge-restraint",
  "header": "\\post{When None Dare Urge Restraint}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Tw9cLvzSKrkGjNHW3/when-none-dare-urge-restraint}\n",
  "skeleton_sha": "44ce614c6dda8b6a27863177755eb11a41bc639a7a13ec3560e33e0fceba458e",
- "post_sha": "2e1853f6b43507e7c85d732316980e8280a91bce76d0e8e5db04b0258e3471bf",
+ "post_sha": "b54a4fd84a5e5edcd9127dbab31f158328f37ebb5f712d6a80d47251be2703c0",
  "edits": [],
  "notes": [
   [
@@ -11,7 +11,7 @@
   ],
   [
    393,
-   "\\cpara{Gives the author's first three thoughts. The third is the prediction the post goes on to judge. It is recalled six years later, and the reader has only the author's memory for it.}"
+   "\\cpara{Gives the author's first three thoughts. The third is the prediction the post goes on to judge. }"
   ],
   [
    674,
@@ -67,7 +67,7 @@
   ],
   [
    4351,
-   "\\cpara{The conclusion, as a general law: once restraint is unspeakable, fury and folly ``can only rise with time.'' No evidence is given for the law, and the post gives no way for a spiral to end. The case it describes did not keep rising: in Gallup's poll of 30 November to 2 December 2007, a week before the post, 57\\% of Americans said the United States had made ``a mistake in sending troops to Iraq,'' against 23\\% in March 2003.}"
+   "\\cpara{The conclusion, as a general law: once restraint is unspeakable, fury and folly ``can only rise with time.'' No evidence is given for the law. It is conditional, and by the time of the post the condition no longer held in the case it describes; the post says nothing of how that came about. Opinion had turned: in Gallup's poll of 30 November to 2 December 2007, a week before the post, 57\\% of Americans said the United States had made ``a mistake in sending troops to Iraq,'' against 23\\% in March 2003.}"
   ]
  ]
 }

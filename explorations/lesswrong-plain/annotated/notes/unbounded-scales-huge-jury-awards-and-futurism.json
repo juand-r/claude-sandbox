@@ -2,7 +2,7 @@
  "slug": "unbounded-scales-huge-jury-awards-and-futurism",
  "header": "\\post{Unbounded Scales, Huge Jury Awards, \\& Futurism}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/5u5THLyRkTpPHiaG5/unbounded-scales-huge-jury-awards-and-futurism}\n",
  "skeleton_sha": "7d0f8b3a0bcb3e18501ee8d3150b2e910c548934623f333469e1e9a7bf36055c",
- "post_sha": "c902d0d8b97970dc4a8e6921989dfbf32fed88e7bcdc32eac4424d9c4dcaff36",
+ "post_sha": "7f8fce9fa9faae7e02cb4768336223bf3104a9db4877efdc40f1bbe7b2198324",
  "edits": [],
  "notes": [
   [
@@ -43,7 +43,7 @@
   ],
   [
    4480,
-   "\\cfact{Overstated. The case explained 6 per cent of the variance in dollar awards, not none, and 42 per cent of the variance in their logarithms, close to the 51 per cent for ranks. The authors agree with a study of real awards (Eisenberg et al., 1997) that ``log awards are reasonably predictable,'' and reply that ``Defendants and plaintiffs, however, live in a world of dollars, not log dollars.''}"
+   "\\cfact{Close to the paper for raw dollars: the case explained 6 per cent of their variance. In logarithms it explained 42 per cent, near the 51 per cent for ranks. The authors agree with a study of real awards (Eisenberg et al., 1997) that ``log awards are reasonably predictable,'' and reply that ``Defendants and plaintiffs, however, live in a world of dollars, not log dollars.''}"
   ],
   [
    4494,

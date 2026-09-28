@@ -2,7 +2,7 @@
  "slug": "priming-and-contamination",
  "header": "\\post{Priming and Contamination}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/BaCWFCxBQYjJXSsah/priming-and-contamination}\n",
  "skeleton_sha": "15d7f8b5a3a5b7fd67230b7a320b288a14d0d8ce9abec98f088e2772a611d0a7",
- "post_sha": "32ad148b6354d8f8e061a9bdb25b655b0f11863f32cf67d8cc14c3a776da1937",
+ "post_sha": "874888fb2f272efe81cf30dbf5e68d20eec1d0c174819dce0d5761cf7fc9417c",
  "edits": [],
  "notes": [
   [
@@ -43,11 +43,11 @@
   ],
   [
    3905,
-   "\\clogic{Offered with ``seems,'' and the cited paper does not support ``most.'' Epley and Gilovich separate anchors people produce themselves from anchors an experimenter supplies, and do not say which kind is more common. Their abstract argues against the view that no adjustment takes place, calling it ``premature.''}"
+   "\\cfact{Offered with ``seems,'' and in line with the cited paper. Epley and Gilovich (2001) report that ``a consensus that none takes place seems to be emerging'' about adjustment, and argue that adjustment does occur when people produce the anchor themselves.}"
   ],
   [
    3919,
-   "\\cpara{Rests ``shown to work'' on one paper, Wansink, Kent and Hoch (1998). I found no retraction or correction of it (none is listed by Crossref). Its first author was found by Cornell in 2018 to have committed scientific misconduct in other work, and many of Wansink's papers were retracted (Wikipedia, ``Brian Wansink'').}"
+   "\\cpara{Rests ``shown to work'' on one paper, Wansink, Kent and Hoch (1998).}"
   ],
   [
    4547,
@@ -63,7 +63,7 @@
   ],
   [
    5768,
-   "\\cfact{Later research on that second step, in which brief primes were said to change later judgments and behavior, ran into replication failures after the post. Doyen and colleagues (\\textsc{PLoS ONE}, 2012) could not reproduce slower walking after primes about old age. In the Many Labs project (2014), two priming effects, ``flag priming influencing conservatism and currency priming influencing system justification,'' ``did not replicate.'' The post could not have known this.}"
+   "\\cfact{After the post, several findings that brief primes change later judgments and behavior failed to replicate. Doyen and colleagues (\\textsc{PLoS ONE}, 2012) could not reproduce slower walking after primes about old age. In the Many Labs project (2014), ``flag priming influencing conservatism and currency priming influencing system justification'' ``did not replicate.'' The post could not have known of these failures. The word-recognition priming it opens with has held up.}"
   ]
  ]
 }

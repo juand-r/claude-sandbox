@@ -2,7 +2,7 @@
  "slug": "resist-the-happy-death-spiral",
  "header": "\\post{Resist the Happy Death Spiral}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/hwi8JQjspnMWyWs4g/resist-the-happy-death-spiral}\n",
  "skeleton_sha": "99a01a13f1c0c629a15e5d0c0d68d7aa5081b73c53916c091f10b1a17f2e6f9b",
- "post_sha": "4bef770e285161dce0e3fe0722c8baa7835da24a620b785dc3f29075186b2cfb",
+ "post_sha": "f712b6f278a5f9a624adf992d00e12900336be6208e4cea9ac9c621c4acb942f",
  "edits": [],
  "notes": [
   [
@@ -12,10 +12,6 @@
   [
    661,
    "\\cpara{Names the man: Francis Bacon, the one ``crackpot'' whose claims of benefit came true. The footnote grants that Bacon did not invent science alone.}"
-  ],
-  [
-   990,
-   "\\cfact{``Completely right'' holds for the benefits. Bacon's package also held a timetable. In the \\textsc{Novum Organum} (1620, book I, aphorism 112) he wrote: ``If we had but any one who could actually answer our interrogations of nature, the invention of all causes and sciences would be the labor of but a few years.'' Four centuries of answered questions have not completed that work. The post's own later advice, to split a Great Idea into parts and judge each, applies to its first example.}"
   ],
   [
    1004,
@@ -111,7 +107,7 @@
   ],
   [
    10038,
-   "\\clogic{Asserted without evidence. The halo effect, as ``Affective Death Spirals'' defines it, acts between separate traits of one person: attractiveness raises perceived honesty. Splitting an idea into parts produces the same kind of setting: separate parts of one admired thing. Armstrong's condition, that you ``treat them as independent,'' is what the halo makes hard, and splitting alone does not supply it.}"
+   "\\clogic{Asserted without evidence; the post reports no test.}"
   ],
   [
    10580,
