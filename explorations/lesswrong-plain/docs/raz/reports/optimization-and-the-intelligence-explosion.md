@@ -47,9 +47,8 @@ growth over time: the right graph is optimization power in against optimized pro
 
 ## 3. Arithmetic
 
-None in the notes. (Hanson's "60- and 250-fold" and the 15-year doubling are quoted as
-context, not recomputed: 15 years / 250 is about 22 days, 15 / 60 is 3 months, so "a week to a
-month" is Hanson's own rounding; not used in any note.)
+None of the notes relies on a computation. Hanson's figures are quoted as his forecast and
+not recomputed.
 
 ## 4. Claims about other posts
 
