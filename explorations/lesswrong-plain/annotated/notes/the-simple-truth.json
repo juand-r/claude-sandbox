@@ -1,0 +1,649 @@
+{
+ "slug": "the-simple-truth",
+ "header": "\\post{The Simple Truth}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/X3HpE8tMXz4m4w6Rz/the-simple-truth}\n",
+ "skeleton_sha": "33158abb41afe503caa00e01737dd39ce6f9067b85040d40287cdab5cf431d1d",
+ "post_sha": "02a83dd382f93d54592f329e8bb64803d6c778f7a8107aee491d27c16c6ab3b3",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{Epigraph from an interview in \\textsc{3:AM Magazine}: a teacher failed a paper on existentialism for using ``true'' and ``truth'' without saying what they meant. I could not reach the page to check the words.}"
+  ],
+  [
+   528,
+   "\\cpara{States the aim in one sentence: to restore ``a naive view of truth.'' The view is not named here; the dialogue shows it to be a correspondence view, on which a belief is true when it matches the world.}"
+  ],
+  [
+   595,
+   "\\cpara{The motivating case: the question ``what do you mean by `true'?'' is asked by a seller of snake oil to dodge a clinical study. In this case the question is plainly an evasion. The epigraph's teacher asked the same question in earnest.}"
+  ],
+  [
+   853,
+   "\\cpara{Argues that not being able to define truth rigorously is no reason to drop the concept, by analogy with falling off a cliff before anyone knew the equations of gravity. The cliff returns at the end of the dialogue.}"
+  ],
+  [
+   1159,
+   "\\cpara{Limits the aim. The essay is ``not meant as an encyclopedic reference'' for the argument about truth; it is meant to let arguers on mailing lists get back to their subject. This limit should be kept in mind when judging the dialogue, though the dialogue later uses names from the philosophical literature (``coherentist,'' ``reflexivity problem'').}"
+  ],
+  [
+   1575,
+   "\\cpara{Says the obvious answer is probably the intended one, with two plus two as the model of an obvious truth that stays obvious however solemnly the question is asked.}"
+  ],
+  [
+   2354,
+   "\\cpara{Asks the reader to accept that the answer may be simple.}"
+  ],
+  [
+   2510,
+   "\\cpara{States the method: a system you could build from buckets and pebbles should not be a mystery. The post will explain truth by building a device that has it.}"
+  ],
+  [
+   2866,
+   "\\cpara{Advises taking the metaphors literally if confused.}"
+  ],
+  [
+   2998,
+   "\\cpara{Begins the parable. A shepherd who stops searching early loses a sheep ``around a tenth of the time.'' The setup fixes what a belief is for in this story: deciding when to stop searching.}"
+  ],
+  [
+   3761,
+   "\\cpara{Lists the methods that fail: divination sticks, clairvoyance, and searching for reasons to believe the sheep are in. The arithmetic is consistent: a dead sheep on about one early night in ten is ``on the average, one-tenth of a sheep'' per night.}"
+  ],
+  [
+   4510,
+   "\\cpara{The failure that forces the invention: every method says the sheep are in, and two die. None of the methods counts the sheep; the one look into the fold only ``seems like there are a lot of sheep.''}"
+  ],
+  [
+   5068,
+   "\\cpara{Transition.}"
+  ],
+  [
+   5162,
+   "\\cpara{The invention: a pebble into the bucket for each sheep that leaves, one out for each that returns. An empty bucket means an empty pasture.}"
+  ],
+  [
+   5602,
+   "\\cpara{The method needed refinement. Starting with pebbles already in the bucket broke it, and so did tossing pebbles in for fun. The two errors show what the match depends on: the bucket starts empty and changes only with the sheep.}"
+  ],
+  [
+   6355,
+   "\\cpara{Introduces Mark, dressed in a mixture of ancient and modern clothes.}"
+  ],
+  [
+   6564,
+   "\\cpara{The badge joke. ``Markos Sophisticus Maximus'' is marked as a sophist before he speaks.}"
+  ],
+  [
+   6941,
+   "\\cpara{Mark comes to confiscate the ``magic pebbles'' for the Senate.}"
+  ],
+  [
+   7115,
+   "\\cpara{The shepherd says the pebbles are ordinary stones, and then that the bucket once held dirty socks. The question of the dialogue is set: if neither pebbles nor bucket is special, where does the working come from?}"
+  ],
+  [
+   7728,
+   "\\cpara{Autrey's first answer: the magic is a level, ``about one-third full.'' The level matters only because it matches the sheep still outside, and Autrey does not say so.}"
+  ],
+  [
+   8180,
+   "\\cpara{Mark copies what he saw: he fills his own bucket to a level of his choosing and calls it magic. He copies the looking, not the counting.}"
+  ],
+  [
+   8524,
+   "\\cpara{Autrey insists on one-third and on the right bucket without saying why, which gives Mark his opening.}"
+  ],
+  [
+   8799,
+   "\\cpara{The shepherd keeps working, and each sheep that leaves changes the level, so the ``magic level'' is not a fixed number. A running joke: the sheep keep moving while the others argue.}"
+  ],
+  [
+   8962,
+   "\\cpara{Mark claims the freedom to put any pebbles in any bucket.}"
+  ],
+  [
+   9378,
+   "\\cpara{Mark's argument: he did what Autrey did, looking at a bucket and naming its level.}"
+  ],
+  [
+   9620,
+   "\\cpara{Mark asks what makes Autrey's bucket better than his.}"
+  ],
+  [
+   9850,
+   "\\cpara{Autrey answers with copying and a ``bucket compare operation.'' Both answers check buckets against buckets, and neither mentions sheep.}"
+  ],
+  [
+   10261,
+   "\\cpara{Mark turns the comparison round: agreement between buckets can be produced by adding pebbles, so it proves nothing. Against Autrey's answer this is a fair point, and the dialogue lets it stand until the shepherd asks what the pebbles do.}"
+  ],
+  [
+   10773,
+   "\\cpara{Mark concludes that ``magic'' means something different for each person and should carry the person's name. It is relativism about the word, in comic form, and it follows from Autrey's answer, which left out the sheep.}"
+  ],
+  [
+   11320,
+   "\\cpara{Mark's conclusion: since buckets differ, magic is ``completely arbitrary and subjective.'' The inference runs from disagreement to arbitrariness.}"
+  ],
+  [
+   11494,
+   "\\cpara{The shepherd's turn: ask what the pebbles do. This question settles the exchange before it, because a bucket is judged by what it lets you do about the sheep.}"
+  ],
+  [
+   11645,
+   "\\cpara{Autrey says the procedure has survived an efficiency auditor. The auditor is ``Darwin'': natural selection as the judge of methods, a theme the ending returns to.}"
+  ],
+  [
+   11880,
+   "\\cpara{Mark asks whether the pebbles make the sheep multiply.}"
+  ],
+  [
+   12033,
+   "\\cpara{States what the pebbles are for: an empty bucket tells you the pasture is empty, so you can stop searching and lose no sheep. This is the post's account of why a true belief matters: it lets you act without loss.}"
+  ],
+  [
+   12533,
+   "\\cpara{Mark proposes divination sticks, held infallible because doubters are burned. A method protected by punishment instead of tested by results.}"
+  ],
+  [
+   12948,
+   "\\cpara{Mark uses the sticks only where no result could show them mistaken, so they are not tested at all.}"
+  ],
+  [
+   13327,
+   "\\cpara{The shepherd's first account, from the two ways of going astray (searching an empty pasture, sleeping while sheep are out): an empty bucket is ``magical if and only if the pastures are empty.''}"
+  ],
+  [
+   13766,
+   "\\clogic{The post's whole account of truth is built on this one kind of case: a count of visible objects, checked the next morning. The Stanford Encyclopedia of Philosophy (SEP) entry on the correspondence theory gives as its first objection that such definitions ``apply to truths from some domains of discourse, e.g., the domain of science,'' but ``fail for others, e.g. the domain of morality''; it names logic as another. The post promises ``a naive view of truth'' without restriction, and does not take up those other domains.}"
+  ],
+  [
+   13781,
+   "\\cpara{Autrey objects that this is a ``vacuous tautology,'' because he takes the empty bucket and the empty pastures to be the same thing.}"
+  ],
+  [
+   13932,
+   "\\cpara{The shepherd answers with Tarski's sentence about snow.}"
+  ],
+  [
+   14222,
+   "\\clogic{The analogy does its job here: it separates the bucket from the pastures. It does not favour the correspondence view over its rivals, which accept Tarski's sentences alike; the SEP entry on deflationism says that theories which go beyond them ``don't disagree that (ES) tells us something about truth.'' On Tarski's own neutrality, see the note on the epigraph of ``What Is Evidence?''}"
+  ],
+  [
+   14236,
+   "\\cpara{Mark: buckets and sheep are different things, and ``There's no way the sheep can ever interact with the bucket.'' This is a comic form of what the SEP entry on the correspondence theory calls the ``No independent access to reality''-objection, ``one of the, if not the, main source and motivation for idealist and anti-realist stances in philosophy.''}"
+  ],
+  [
+   14463,
+   "\\cpara{Autrey asks where Mark thinks the magic comes from.}"
+  ],
+  [
+   14548,
+   "\\cpara{Mark's coherentist theory: magic comes from many buckets agreeing with one another.}"
+  ],
+  [
+   14889,
+   "\\cpara{Autrey calls his master's plan for several buckets (``redundancy'' and ``error correction'') coherentism. The shepherd's ``They're not quite the same'' is cut off, and the post does not come back to the difference.}"
+  ],
+  [
+   15171,
+   "\\cpara{Autrey proposes a test: fill Mark's buckets from the one in use.}"
+  ],
+  [
+   15406,
+   "\\cpara{Mark refuses, to keep his family's buckets in agreement.}"
+  ],
+  [
+   15643,
+   "\\clogic{Mark's family buckets illustrate the standard objection to coherence theories of truth, which the SEP entry on the coherence theory traces to Russell (1907): a false proposition can cohere with some set of propositions. But Mark's version, one family's buckets closed to any new bucket, is not one the entry describes. There the relevant set is, at one extreme, ``the largest consistent set of propositions currently believed by actual people,'' or what people like us would believe ``at some limit of inquiry'' (Putnam). On either, the shepherd's bucket would count.}"
+  ],
+  [
+   15657,
+   "\\cpara{Autrey: Mark's buckets have nothing to do with the sheep.}"
+  ],
+  [
+   15763,
+   "\\cpara{Mark repeats that buckets interact only with buckets.}"
+  ],
+  [
+   16203,
+   "\\cpara{Mark moves the magic to the shepherd: a person, not a sheep, tosses the pebble. Against a hand-tossed pebble this is a fair reply, and the next paragraph takes the person out of the chain.}"
+  ],
+  [
+   16464,
+   "\\cpara{The automatic gate: a cloth moved by each passing sheep drops a pebble from a reservoir. No person is needed.}"
+  ],
+  [
+   16967,
+   "\\cpara{The cloth comes from ``Natural Selections'' and is called ``Sensory Modality'': the device stands for the senses, shaped by evolution. Then the point is stated plainly: a passing sheep starts ``a chain of cause and effect that ends with a pebble in the bucket.''}"
+  ],
+  [
+   17379,
+   "\\cpara{Mark repeats that only pebbles interact with pebbles.}"
+  ],
+  [
+   17558,
+   "\\cpara{The shoelace analogy, the same chain from Sun to photon, retina and neurons that opens ``The Lens That Sees Its Flaws'' (posted 23 September 2007).}"
+  ],
+  [
+   18278,
+   "\\cpara{Mark's question, at which point the pebble ``become[s] magic,'' is the question of what makes a state be about something. The SEP entry on the correspondence theory says that the theory ``will stand, or fall, with the general theory of reference and intentionality.''}"
+  ],
+  [
+   18379,
+   "\\cpara{The shepherd, confused for once, answers that ``the point of the system is to keep track of sheep.''}"
+  ],
+  [
+   18733,
+   "\\cfact{This answer, that a state is about what it has the job of tracking, has a name in philosophy: teleological theories of content (for example Millikan, 1984). The SEP entry on them says they try to explain ``how mental states can be about things'' in natural terms, often by functions grounded in natural selection. The dialogue gives the answer through the story and names none of this work.}"
+  ],
+  [
+   18747,
+   "\\cpara{Mark proposes ``panpebblism'': all pebbles are magic from the start. A play on panpsychism.}"
+  ],
+  [
+   18947,
+   "\\cpara{Autrey says Mark's pebbles are only lumps of stone.}"
+  ],
+  [
+   19151,
+   "\\cpara{Mark's political objection: to call some pebbles magic and others not leads to pride, and people ``have tortured and murdered because they thought their own pebbles supreme''; magic implies a ``Supreme Bucket'' that ``Nobody believes in.''}"
+  ],
+  [
+   19719,
+   "\\cpara{The shepherd's three replies: sheep are not ``absolute pebbles''; the bucket does not contain the sheep; the level gets adjusted, because what matters is the sheep. The third reply separates truth from certainty: the shepherd holds that there is a fact about the sheep and that the count can be mistaken.}"
+  ],
+  [
+   19963,
+   "\\cpara{Autrey: whoever thinks true beliefs would license murder has made a mistake that ``has nothing to do with buckets.''}"
+  ],
+  [
+   20192,
+   "\\cpara{Mark returns to snow; the next lines are a joke on guilt by association (Stalin believed it too).}"
+  ],
+  [
+   20516,
+   "\\cpara{Mark grants the magic for argument's sake and asks what the difference is.}"
+  ],
+  [
+   20722,
+   "\\cpara{Autrey answers with ``represent'' and the absence of an ``aura of semantic content'' in Mark's pebbles.}"
+  ],
+  [
+   21042,
+   "\\cpara{Mark renames it: ``Special causal powers, instead of magic.''}"
+  ],
+  [
+   21115,
+   "\\cpara{Autrey's comic confession: he postulates ``special causal powers,'' or calls something ``an emergent phenomenon,'' when he wants ``a model with no internal detail that makes no predictions.'' The target is a word used in place of an explanation, the subject of ``The Futility of Emergence.''}"
+  ],
+  [
+   21558,
+   "\\cfact{``Causal powers'' is also a phrase from the debate over Searle's Chinese Room: the SEP entry on it reports ``Searle's appeal to the `causal powers of the brain.''\\,'' The post names no one.}"
+  ],
+  [
+   21703,
+   "\\cpara{Autrey tries ``about-ness'': the empty bucket ``means'' the pastures are empty.}"
+  ],
+  [
+   21916,
+   "\\cpara{Mark asks how the bucket's about-ness was found.}"
+  ],
+  [
+   22047,
+   "\\cpara{The shepherd: ``It's an ordinary bucket.'' Nothing in the bucket explains its working.}"
+  ],
+  [
+   22246,
+   "\\cpara{Autrey calls the procedure a ritual discovered by his master, correcting himself to ``an emergent process with special causal powers.'' The right answer, the procedure, told in the vocabulary of magic.}"
+  ],
+  [
+   22461,
+   "\\cpara{Autrey describes the ritual.}"
+  ],
+  [
+   22566,
+   "\\cpara{Mark restates it: a pebble in for every sheep out, a pebble out for every sheep in.}"
+  ],
+  [
+   22830,
+   "\\cpara{Autrey says the procedure is hard on the emotions, because one grows attached to a level that has held for a while.}"
+  ],
+  [
+   23064,
+   "\\cpara{Autrey makes a drama of adding a pebble and misses the next sheep while doing it.}"
+  ],
+  [
+   23688,
+   "\\cpara{The moral of the scene: ``shut up and throw in the pebble. No fuss. No drama.'' Changing the count when a sheep passes should be routine.}"
+  ],
+  [
+   23837,
+   "\\cpara{Mark calls the ritual sympathetic magic, like a voodoo doll.}"
+  ],
+  [
+   23983,
+   "\\cpara{Autrey asks for the word ``intentionality'' instead.}"
+  ],
+  [
+   24176,
+   "\\cpara{Mark asks to see a pebble.}"
+  ],
+  [
+   24226,
+   "\\cpara{The shepherd gives away a pebble and drops in one from the ground. The pebbles are interchangeable; only the count matters.}"
+  ],
+  [
+   24473,
+   "\\cpara{The test of whether the swap broke anything is the result: a dead sheep, or a search that finds none. That is the shepherd's criterion of error throughout.}"
+  ],
+  [
+   24670,
+   "\\cpara{The shepherd has not taught Autrey everything.}"
+  ],
+  [
+   24784,
+   "\\cpara{Mark senses no ``intentionality'' in the pebble.}"
+  ],
+  [
+   25023,
+   "\\cpara{Autrey: a pebble has intentionality only inside the bucket.}"
+  ],
+  [
+   25161,
+   "\\cpara{The shepherd throws a pebble away and declares Mark's hand part of the bucket, so the total is unchanged. The joke makes the point of the dialogue: what a pebble stands for depends on its place in the counting, not on anything in the pebble.}"
+  ],
+  [
+   25420,
+   "\\cpara{Autrey laughs.}"
+  ],
+  [
+   25606,
+   "\\cpara{The shepherd expects the trick to work, having done it with two buckets. The aside on élan vital mocks vitalism.}"
+  ],
+  [
+   25946,
+   "\\cpara{Mark asks if the pebble has intentionality again.}"
+  ],
+  [
+   26057,
+   "\\cpara{The shepherd tells Mark not to add or lose pebbles.}"
+  ],
+  [
+   26187,
+   "\\cpara{Mark's plan: add pebbles and more sheep will come home. Changing the belief to change the world.}"
+  ],
+  [
+   26952,
+   "\\cpara{The shepherd: a pebble added without a sheep breaks the match at once.}"
+  ],
+  [
+   27338,
+   "\\cpara{Mark mourns the loss of ``math.''}"
+  ],
+  [
+   27490,
+   "\\cpara{Autrey proposes other buckets and pebbles: stones carved like sheep, or the word ``sheep'' written on a stone. Representation by resemblance and by labels, dismissed with ``Not going to work.''}"
+  ],
+  [
+   28164,
+   "\\cpara{More proposals: organic pebbles instead of silicon ones, and gemstones whose price doubles every eighteen months. Jokes on the debate about whether silicon can think, and on the doubling rule for computer chips.}"
+  ],
+  [
+   28469,
+   "\\cpara{Mark asks what the shepherd did to try to make more sheep.}"
+  ],
+  [
+   28592,
+   "\\cpara{The paperclip experiment: a clip for each hidden dollar bill, one extra clip, and one clip left over at the end. This is the nearest the post comes to treating arithmetic, and it treats it as a fact about counting objects.}"
+  ],
+  [
+   29297,
+   "\\cpara{Explains the result: after one extra clip, the heap and the bills no longer run out together.}"
+  ],
+  [
+   29587,
+   "\\cpara{The shepherd says the experiment was really performed, out of ``a sentimental fondness for the scientific method.''}"
+  ],
+  [
+   29832,
+   "\\cpara{Mark objects that success would have been counterfeiting and would wreck the economy.}"
+  ],
+  [
+   30087,
+   "\\cpara{The reply follows Mark's premise: extra bills made that way would come with extra goods.}"
+  ],
+  [
+   30312,
+   "\\cpara{Mark: counterfeiting is still a crime.}"
+  ],
+  [
+   30477,
+   "\\cpara{Mark: the shepherd expected to fail.}"
+  ],
+  [
+   30673,
+   "\\cpara{Mark's thesis: ``Magic is fueled by belief and willpower'', so to change the result one must change the belief. This is the view the rest of the dialogue answers.}"
+  ],
+  [
+   30924,
+   "\\cpara{Autrey, too, first thought the method too ridiculous to work.}"
+  ],
+  [
+   31177,
+   "\\cpara{Autrey followed instructions, the method worked, and then Autrey believed.}"
+  ],
+  [
+   31308,
+   "\\cpara{Mark calls this a chicken-and-egg problem.}"
+  ],
+  [
+   31424,
+   "\\cpara{The thesis in one line: ``The bucket method works whether or not you believe in it.''}"
+  ],
+  [
+   31511,
+   "\\cpara{Mark does not believe in magic that works regardless of belief.}"
+  ],
+  [
+   31711,
+   "\\cpara{Mark tangles himself in belief about belief; a joke on the confusion.}"
+  ],
+  [
+   32146,
+   "\\cpara{Mark gives up on ``metamagic.''}"
+  ],
+  [
+   32517,
+   "\\cpara{The lesson: the art is ``making sheep control pebbles,'' and belief follows the art's working, not the reverse.}"
+  ],
+  [
+   32877,
+   "\\cpara{States the central thesis: ``The correspondence between reality and my beliefs comes from reality controlling my beliefs, not the other way around.''}"
+  ],
+  [
+   33062,
+   "\\clogic{This is a claim about the world (it exists apart from belief and causes belief), which philosophers call realism. It is not the same claim as the correspondence theory of truth. The SEP entry on that theory: ``deflationists and identity theorists can be, and typically are, metaphysical realists while rejecting the correspondence theory.'' The dialogue argues against people who deny reality, not against those rivals.}"
+  ],
+  [
+   33076,
+   "\\cpara{A sheep passes.}"
+  ],
+  [
+   33149,
+   "\\cpara{Mark asks what ``reality'' adds. He accepts that a hypothesis can be ``elegant, or falsifiable, or compatible with the evidence,'' and suggests that calling it ``true'' only says one ``really really'' believes it.}"
+  ],
+  [
+   33535,
+   "\\cfact{This resembles a real view. The SEP entry on relativism quotes Richard Rorty, a pragmatist, on truth as a compliment ``paid to beliefs which we think so well justified that, for the moment, further justification is not needed.'' The same entry says Rorty ``rejects the label `relativist''' because he does not hold that all beliefs are equally true or good. The dialogue gives both views to one man.}"
+  ],
+  [
+   33549,
+   "\\cpara{The shepherd's answer, hedged (``I'm not entirely sure myself''): ``reality'' is the name for whatever determines experimental results, and it is known to be separate from belief because even the best hypotheses are sometimes surprised. This is the post's best argument, and it answers the view as Mark states it.}"
+  ],
+  [
+   34337,
+   "\\cfact{The founder of pragmatism gave a closely similar definition in 1878. Peirce, ``How to Make Our Ideas Clear'': ``we may define the real as that whose characters are independent of what anybody may think them to be.'' The shepherd's view here is nearer to pragmatism than Mark's is.}"
+  ],
+  [
+   34351,
+   "\\cpara{Mark: whatever is said about reality is another belief, so ``reality does not exist; only beliefs exist.''}"
+  ],
+  [
+   34678,
+   "\\cpara{Autrey asks Mark to repeat the ``sharp swerve.''}"
+  ],
+  [
+   34806,
+   "\\cpara{Mark repeats the argument.}"
+  ],
+  [
+   34977,
+   "\\cpara{The shepherd's parody: whatever you eat is in your mouth, so there is no food, only mouths.}"
+  ],
+  [
+   35119,
+   "\\cfact{The parody has a precedent. David Stove, in 1985, gave his prize for the worst argument in the world to ``We can know things only as they are related to us \\ldots\\ So, we cannot know things as they are in themselves,'' and parodied it with ``We cannot eat oysters as they are in themselves'' (as quoted by James Franklin, \\textsc{Philosophy}, 2002). The shepherd's parody has the same shape, and targets an inference Mark says follows ``as a logical inevitability.''}"
+  ],
+  [
+   35133,
+   "\\cpara{Mark accepts the parody as his own conclusion.}"
+  ],
+  [
+   35489,
+   "\\cpara{Mark counts Autrey's objection as evidence, since Autrey spoke it with his mouth.}"
+  ],
+  [
+   35709,
+   "\\cpara{Inspector Darwin arrives: the metaphor of natural selection as an auditor becomes a character.}"
+  ],
+  [
+   35937,
+   "\\cpara{Darwin ticks his clipboard.}"
+  ],
+  [
+   36055,
+   "\\cpara{Mark calls the food argument ``Just a metaphor.''}"
+  ],
+  [
+   36169,
+   "\\cpara{Darwin: ``Why do you need a mouth if there is no food?'' Organs exist because of what they deal with.}"
+  ],
+  [
+   36461,
+   "\\cpara{Darwin awards ``0.12 units of fitness'' and asks whether Mark is necessary to the operation.}"
+  ],
+  [
+   36628,
+   "\\cpara{The shepherd suggests Mark would be more use as ballast.}"
+  ],
+  [
+   36799,
+   "\\cpara{Darwin cares only about individuals, not the species.}"
+  ],
+  [
+   36901,
+   "\\cpara{Mark's second set of theses, all at once: there is no truth; truth is a way to impose one's beliefs; each culture has its own truth, none superior; and this ``holds at all times in all places, and I insist that you agree.'' The last sentence builds the self-refutation into Mark's own words.}"
+  ],
+  [
+   37409,
+   "\\cpara{Autrey: ``If nothing is true, why should I believe you when you say that nothing is true?'' This is the self-refutation argument. The SEP entry on relativism traces it to ``Plato's criticism of Protagoras in the \\textsc{Theaetetus}'' and calls it ``The strongest and most persistent charge'' against relativism.}"
+  ],
+  [
+   37537,
+   "\\cpara{Mark denies saying that nothing is true.}"
+  ],
+  [
+   37661,
+   "\\cpara{Mark's revised claim: to call something true means ``only that it would be advantageous to your own social group to have it believed.''}"
+  ],
+  [
+   37895,
+   "\\cpara{The shepherd asks if that claim is true.}"
+  ],
+  [
+   37960,
+   "\\cpara{Mark: ``Absolutely, positively true!'' and ``People create their own realities.''}"
+  ],
+  [
+   38065,
+   "\\cpara{Autrey separates the claims: people creating their own realities is ``a completely separate issue'' from there being no truth. The dialogue itself marks Mark's views as distinct claims.}"
+  ],
+  [
+   38387,
+   "\\cpara{Mark dismisses logic and consistency as ``Western concepts.''}"
+  ],
+  [
+   38551,
+   "\\cpara{Autrey starts a third heading for the third claim.}"
+  ],
+  [
+   38701,
+   "\\cpara{Mark states his method: his statements are ``fully general excuses,'' applied ``selectively,'' and ``not so much a model of how the universe works'' as a ``Get Out of Jail Free card.''}"
+  ],
+  [
+   39336,
+   "\\clogic{Here the dialogue has its opponent admit that he holds no position, only excuses. As satire this is clear. It also means the dialogue's replies answer a man who says he is arguing in bad faith, and do not engage anyone who holds these views as a position.}"
+  ],
+  [
+   39400,
+   "\\cpara{Mark: the question is old, and the view ``has many adherents and an extensive literature.''}"
+  ],
+  [
+   39797,
+   "\\cpara{Mark has a name for the problem, the ``reflexivity problem.''}"
+  ],
+  [
+   39929,
+   "\\cpara{Mark will not give an answer.}"
+  ],
+  [
+   40111,
+   "\\clogic{The literature Mark invokes does offer answers, whatever their merit. The SEP entry on relativism: ``The relativist can avoid the standard charge of self-refutation by accepting that relativism cannot be proven true in any non-relative sense,'' and Hales proposes replacing ``everything is relative,'' a thesis Hales concedes to be inconsistent, with ``everything that is true is relatively true.'' The entry adds that the charge falls on global relativism, and that ``local rather than global relativism is much more common within contemporary debates.'' The joke is on Mark, not on that literature.}"
+  ],
+  [
+   40177,
+   "\\cpara{Mark wants to move on to ``how logic kills cute baby seals.''}"
+  ],
+  [
+   40266,
+   "\\cpara{Darwin: they are wasting time.}"
+  ],
+  [
+   40341,
+   "\\cpara{The shepherd tosses in another pebble.}"
+  ],
+  [
+   40429,
+   "\\cpara{Darwin's test: Mark believes he can fly and steps off the cliff, and ``Mark shall see himself fly away like a bird, and Autrey shall see him plummet down and go splat, and you shall both be happy.'' As Darwin states it, each will see what he expects, so the test is not meant to persuade Mark. Its point is what happens to Mark.}"
+  ],
+  [
+   41105,
+   "\\cpara{Mark: ``It sounds reasonable.''}"
+  ],
+  [
+   41173,
+   "\\cpara{Darwin points to the cliff.}"
+  ],
+  [
+   41244,
+   "\\cpara{Autrey's last argument, cut off: if beliefs made private realities, ``we would all have long since departed into our own private universes,'' and there would be no point proving anything to anyone.}"
+  ],
+  [
+   41550,
+   "\\cpara{Mark falls; Darwin lowers the frequency of Mark's alleles. The cliff from the introduction returns: ``if you walked off a cliff, you would fall.'' The ending shows the world overruling a belief. It is a joke, and it is the post's last word on Mark.}"
+  ],
+  [
+   41797,
+   "\\cpara{Autrey asks whether it was necessary.}"
+  ],
+  [
+   41867,
+   "\\cpara{Darwin: ``It just happened.'' Selection has no intentions.}"
+  ],
+  [
+   42012,
+   "\\cpara{Ends with the sheep. The point of the whole system is to bring them in.}"
+  ]
+ ]
+}

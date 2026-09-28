@@ -48,6 +48,13 @@ class Inline:
             text = re.sub(r"\x00(\d+)\x00", lambda m: self.store[int(m.group(1))], text)
         return text
 
+    def nested(self, md: str) -> str:
+        """Convert link text. It shares this converter's placeholders, because escapes in
+        the text were already replaced by placeholders before links are matched."""
+        inner = Inline()
+        inner.store = self.store
+        return inner.convert(md)
+
     def convert(self, md: str) -> str:
         # Markdown escapes such as \* \_ \[ become literal characters.
         # Plain footnote markers like [1] (not links) become small superscript numbers.
@@ -62,7 +69,7 @@ class Inline:
         md = re.sub(r"<(https?://[^>]+)>", lambda m: self.protect(r"\url{" + escape_url(m.group(1)) + "}"), md)
         # Links [text](url); the text is converted recursively.
         md = re.sub(r"\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)\s]*)(?:\s+\"[^\"]*\")?\)",
-                    lambda m: self.protect(r"\href{" + escape_url(m.group(2)) + "}{" + Inline().convert(m.group(1)) + "}"), md)
+                    lambda m: self.protect(r"\href{" + escape_url(m.group(2)) + "}{" + self.nested(m.group(1)) + "}"), md)
         md = escape_tex(md)
         # Emphasis, strongest first. Asterisks only; underscores were escaped above.
         md = re.sub(r"\*\*\*(.+?)\*\*\*", r"\\textbf{\\emph{\1}}", md, flags=re.S)

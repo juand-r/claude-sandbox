@@ -1,0 +1,105 @@
+{
+ "slug": "truly-part-of-you",
+ "header": "\\post{Truly Part Of You}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/fg9fXrHpeaDD6pEPL/truly-part-of-you}\n",
+ "skeleton_sha": "ac36fd686a3718d3f9b2d94d96dbf7ee374ce6d73773bb501eda6ec275f260a9",
+ "post_sha": "8d9c023557cc2a4cdf991a14c020a99a42a9c17091dc12fd31fd59e24c81bd63",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Introduces Drew McDermott's paper (\\textsc{SIGART Newsletter} 57, April 1976), which mocked what it called ``wishful mnemonics'': names like UNDERSTAND or IS-A that make a program look as if it knows more than it does.}"
+  ],
+  [
+   345,
+   "\\cpara{The figure shows two nodes, STATE-OF-MIND above HAPPINESS, joined by an arrow labelled IS-A. It reproduces part of a larger network in McDermott's paper.}"
+  ],
+  [
+   480,
+   "\\cpara{Says the HAPPINESS node contains nothing: it is a token with a suggestive name.}"
+  ],
+  [
+   618,
+   "\\cpara{Quotes McDermott's test: rename the key nodes with meaningless symbols and see whether you still admire the system. The quotations match the paper (p.~5).}"
+  ],
+  [
+   901,
+   "\\cpara{Restates the test: with every name replaced by a random symbol, no one could tell what the program was meant to represent. The names do not ``grow back.''}"
+  ],
+  [
+   1276,
+   "\\cpara{Applies the test to people: a belief taken on a physicist's word, ``Light is waves,'' is like such a node.}"
+  ],
+  [
+   1466,
+   "\\cpara{The McDermott sentence is about something else. In the paper it concerns computer programs passing data to each other. McDermott sets that case against human speech (``Communication between computer programs is under completely different constraints''), and the hearer that must ``notice what it has been told'' is a receiving program. The post applies the sentence to a person hearing a physicist, the case McDermott set aside.}"
+  ],
+  [
+   1758,
+   "\\cpara{States the post's test: could you regenerate this knowledge if it were deleted from your mind?}"
+  ],
+  [
+   1981,
+   "\\cpara{Compares the test to McDermott's renaming and to the ``Artificial Arithmetician'' of ``Artificial Addition,'' posted the day before (20 November 2007), a calculator that can only play back sums someone typed in.}"
+  ],
+  [
+   2387,
+   "\\cpara{Says that someone who forgot ``light is waves'' could only get it back by asking a physicist again, not by generating it as physicists did.}"
+  ],
+  [
+   2770,
+   "\\cpara{Gives the reason the test matters: the experiences that produce a belief also connect it to other knowledge, to perception and to action. Someone who has only been told facts about ``beavers,'' the post says, ``may not'' recognize one.}"
+  ],
+  [
+   3270,
+   "\\cpara{Draws the lesson for AI and for teaching physics, and adds that a physicist's ``wave'' is a mathematical concept, not a ``little squiggly thing.''}"
+  ],
+  [
+   3624,
+   "\\cpara{The Davidson example fits the post's case only loosely, and its reason is not the post's. The example is of beliefs that are mostly false; the post's case is true beliefs taken on someone's word. In the article the post cites, Rorty explains the example: ``you are using the word `beaver' in a way that has no connection with its ordinary use.'' The view behind it, as Rorty sums it up, is that words acquire their meanings ``by being used in roughly similar ways by most speakers, not by being paired off with particular experiences or objects.'' On that account, what gives a belief its subject is shared use, not the believer's own experience.}"
+  ],
+  [
+   4090,
+   "\\clogic{In \\textsc{Philosophical Investigations} \\S271, the idle wheel is the private meaning a word has for one person. Wittgenstein imagines a man who cannot retain what ``pain'' means but ``uses it as we all do''; what goes on in his head does no work. The line makes a point close to the one in the previous note: use connects a word to the world, private experience does not. The post uses it for beliefs that lack the believer's own experience.}"
+  ],
+  [
+   4170,
+   "\\cpara{Says the author adopted the test early in reading about AI. It reports the habit, not what the habit achieved: the post describes no case in which the test was run and found a belief wanting.}"
+  ],
+  [
+   4401,
+   "\\cpara{Grades the test by depth. Both answers are guesses (``I think so,'' ``I think I would''), and the author says the second is ``harder to boast, without putting it to the test.'' The fallback is much weaker than the question: someone else notices the problem and says it has an answer, which was the part to be tested.}"
+  ],
+  [
+   4954,
+   "\\cpara{Asks, without answering, whether the author could have invented the idea of mathematical proof.}"
+  ],
+  [
+   5378,
+   "\\cpara{Says the test does more than weed out poorly connected beliefs: it absorbs ``a fountain of knowledge, not just one fact.''}"
+  ],
+  [
+   5608,
+   "\\cpara{Gives the shepherd's pebble-and-bucket system, from the author's ``The Simple Truth,'' the next essay in this book (posted to LessWrong on 1 January 2008). An apprentice who does not understand it cannot fix an extra pebble, just as someone told ``two plus four equals six'' cannot work out two plus five.}"
+  ],
+  [
+   6419,
+   "\\cpara{Adds that only someone who understands the system could see how to improve it, here with a plant that drops a seed when a bird passes.}"
+  ],
+  [
+   6740,
+   "\\cpara{Says a thought whose source you hold grows with you.}"
+  ],
+  [
+   6978,
+   "\\cpara{The advice has no limit and no rule for choosing. Six weeks earlier, in ``Cached Thoughts'' (11 October 2007), the author had written that ``no one can think fast enough to think their own thoughts,'' and that no one can ``recapitulate the wisdom of a hunter-gatherer tribe in one lifetime, starting from scratch.'' ``Strive'' allows for that, but the post does not say which thoughts to regenerate and which to take on trust.}"
+  ],
+  [
+   7362,
+   "\\cpara{Says the ``little curvy things'' version is not true.}"
+  ],
+  [
+   7399,
+   "\\cpara{The source is Rorty's newspaper essay on Davidson, not Davidson. The beaver example's wording follows Rorty's; I could not check whether the example is Davidson's own. ``Not right enough to be wrong'' is the post's phrase.}"
+  ]
+ ]
+}
