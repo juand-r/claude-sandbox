@@ -1,0 +1,101 @@
+{
+ "slug": "lawful-uncertainty",
+ "header": "\\post{Lawful Uncertainty}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/msJA6B9ZjiiZxT6EZ/lawful-uncertainty}\n",
+ "skeleton_sha": "c8f0e09c73150dc3b068d613d9148a834051ae2c70b2ffdd9be3615e8337b665",
+ "post_sha": "e5fb2883d7656f9e750dd0b9f73fa8347d9ecf6bcd7d452db08bef69aae6b879",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Introduces a passage from Robyn Dawes's textbook. The quotation first describes a whole class of experiments from ``the late 1950s and early 1960s,'' then one result; the footnote names that study as Tversky and Edwards (1966).}"
+  ],
+  [
+   247,
+   "\\cpara{The arithmetic is right: $0.70 \\times 0.70 + 0.30 \\times 0.30 = 0.58$. At the reported 76\\%, the expected success rate is about 60\\%, against 70\\% for always predicting blue. I could read neither the 1966 paper nor Dawes's book, so the 76\\%, the nickel and the thousand trials are unchecked.}"
+  ],
+  [
+   1929,
+   "\\cpara{The post's largest claim, that the task ``compactly illustrates the most important idea in all of rationality,'' is asserted, not argued. Which idea is meant becomes clear only later, in three sentences that each begin ``It is a counterintuitive idea.''}"
+  ],
+  [
+   2094,
+   "\\cpara{Restates the result and quotes Dawes's explanation: the subjects cannot believe that they are unable to predict.}"
+  ],
+  [
+   2391,
+   "\\cfact{I could not check Dawes's wording or read the 1966 paper. One later summary of that study describes a design without this feedback: subjects ``received no feedback following each guess,'' and could see the outcome of a trial only by giving up that trial's reward to observe it (Juni, Gureckis and Maloney, in the journal \\textsc{Decision}). If that summary is right, the private testing proposed in the next paragraph was not open to these subjects, and their guesses were not shown to be wrong as they went.}"
+  ],
+  [
+   2405,
+   "\\cpara{Proposes that subjects bet blue every time and test their pattern hypotheses privately. The reasoning is sound for a task that shows the outcome of every trial.}"
+  ],
+  [
+   2986,
+   "\\cpara{Draws the line: inventing hypotheses is fine; betting on them after hundreds of failures is not.}"
+  ],
+  [
+   3382,
+   "\\cpara{Offered as a suspicion, and later work supports it. Koehler and James (\\textsc{Memory \\& Cognition}, 2010) found that ``the majority of participants endorse maximizing as superior to matching in a direct comparison when both strategies are described,'' and that more of them maximize once the strategy ``is brought to their attention.''}"
+  ],
+  [
+   3515,
+   "\\cpara{Gives the mechanism behind the suspicion: people expect the best strategy to look like the sequence of cards.}"
+  ],
+  [
+   3677,
+   "\\cpara{The first of three sentences beginning ``It is a counterintuitive idea.'' This one states the lesson of the card task.}"
+  ],
+  [
+   3846,
+   "\\cpara{The second, which widens the lesson from betting to behaviour in any environment with random elements.}"
+  ],
+  [
+   3994,
+   "\\cpara{Illustrates with an image: a random key does not open a random lock.}"
+  ],
+  [
+   4181,
+   "\\cpara{Says the right strategy is not the first idea to come to mind because it needs a concept the problem does not suggest.}"
+  ],
+  [
+   4408,
+   "\\cpara{Explains that partial knowledge gives the same advice every round, so each bet on red goes against what one knows.}"
+  ],
+  [
+   4822,
+   "\\cpara{The arithmetic holds. Accuracy falls in a straight line from 70\\% (never red) to 30\\% (always red); betting red 30\\% of the time gives 58\\%, which is 30\\% of the way down.}"
+  ],
+  [
+   5045,
+   "\\cpara{Turns the card task into a rule for all incomplete knowledge: randomizing your actions only makes things worse.}"
+  ],
+  [
+   5275,
+   "\\clogic{The rule has an exception, which the author gave two days later in ``The Weighted Majority Algorithm'' (12 November 2008). Against a rock-paper-scissors opponent who is smarter than you and knows your method, ``it is wise to choose randomly, because any method your opponent can predict will do worse-than-average.'' That post is not in this book. This one turns to opponents three paragraphs later and does not mention the exception.}"
+  ],
+  [
+   5372,
+   "\\cpara{The third ``counterintuitive idea,'' now about thinking rather than betting.}"
+  ],
+  [
+   5519,
+   "\\cpara{A claim about why rationalists are few, resting on the card task alone. The behaviour it generalizes from gives way to practice and pay. In Edwards's 1961 study of 1000 trials, subjects' ``asymptotic choice probability for a response that had a payoff probability of 0.7 was 0.83.'' With large payments, regular feedback and long training, ``large proportions of participants (71\\% $\\pm$ 18\\% \\ldots) can maximize their payoffs'' (Shanks, Tunney and McCarthy, 2002, who report the 1961 figure).}"
+  ],
+  [
+   5814,
+   "\\cpara{Extends the point to opponents: decision theory still gives the best response to an opponent who breaks its laws. The opponent considered is ``irrational''; the case of an opponent who can predict you is not raised (see the note above on randomizing).}"
+  ],
+  [
+   6306,
+   "\\cpara{Draws the moral by analogy: ``every departure from the Way'' in thinking is an expected loss, like a bet on red. A bet has known odds; the post does not say how a departure in thinking is to be recognized.}"
+  ],
+  [
+   6550,
+   "\\cpara{Closes with a joke at \\textsc{Star Trek} and at unnamed theories of AI.}"
+  ],
+  [
+   6641,
+   "\\cpara{Cites the 1966 study and a 2003 paper on the same difficulty. I could not read either.}"
+  ]
+ ]
+}

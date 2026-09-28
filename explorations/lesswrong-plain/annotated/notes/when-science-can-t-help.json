@@ -2,12 +2,12 @@
  "slug": "when-science-can-t-help",
  "header": "\\post{When Science Can't Help}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/wzxneh7wxkdNYNbtB/when-science-can-t-help}\n",
  "skeleton_sha": "ce8402873eaf2ef36990ec0518d9e9d0e405856d01bd933e40efba6d03eabb84",
- "post_sha": "268411f99f9252f71b400d379c8754bc0c2df324e473d302fa5c47da8adf96c5",
+ "post_sha": "8682884cf1e2ef71e97b827d581b46440a3ce93cb5ad53e641e4f2f3b2cd0dd4",
  "edits": [],
  "notes": [
   [
    132,
-   "\\cpara{The essay rests on an example the reader sees only in outline. The theory is stated in one line with ``Let's say'' and then disowned: it ``isn't the whole story, not even close.'' In the post linked here (``My Wild and Reckless Youth,'' 2007) the author refused to describe it at all: ``This I will not describe, for it would be a long tale and complicated.'' An argument that Science failed its author is hard to check when the case is only sketched.}"
+   "\\cpara{The essay rests on an example the reader sees only in outline. The theory is stated in one line with ``Let's say'' and then disowned: it ``isn't the whole story, not even close.'' In the post linked here (``My Wild and Reckless Youth,'' 2007) the author declined to describe the theory (``This I will not describe, for it would be a long tale and complicated'') and gave only its prediction, that neurons exploit quantum gravity. An argument that Science failed its author is hard to check when the case is only sketched.}"
   ],
   [
    447,
@@ -19,7 +19,7 @@
   ],
   [
    842,
-   "\\cfact{Not the author's own prediction. Quantum coherence in microtubules is the Penrose--Hameroff proposal of the 1990s; the 2007 post says ``a la Sir Roger Penrose.'' And science did not wait ten years for an experiment to dispose of it. In 2000 Max Tegmark calculated decoherence times of about $10^{-13}$ to $10^{-20}$ seconds, against 0.001 to 0.1 seconds for the relevant brain processes (\\textsc{Physical Review E} 61, 4194). A calculation, not an experiment, did the work, which is the kind of reasoning the essay says Science does not do.}"
+   "\\cfact{Not the author's own prediction. Quantum coherence in microtubules is the Penrose--Hameroff proposal of the 1990s; the 2007 post says ``a la Sir Roger Penrose.'' And science did not wait ten years for an experiment to dispose of it. In 2000 Max Tegmark calculated decoherence times of about $10^{-13}$ to $10^{-20}$ seconds, against 0.001 to 0.1 seconds for the relevant brain processes (\\textsc{Physical Review E} 61, 4194). A calculation, not an experiment, was the main published answer, which is the kind of reasoning the essay says Science does not do. (Hagan, Hameroff and Tuszy\\'nski disputed the calculation in 2000, arXiv quant-ph/0005025.)}"
   ],
   [
    1056,

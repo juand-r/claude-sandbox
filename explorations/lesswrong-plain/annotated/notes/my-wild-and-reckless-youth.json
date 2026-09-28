@@ -1,0 +1,77 @@
+{
+ "slug": "my-wild-and-reckless-youth",
+ "header": "\\post{My Wild and Reckless Youth}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/DwtYPRuCxpXTrzG9m/my-wild-and-reckless-youth}\n",
+ "skeleton_sha": "906a01dae445519f7291dc83420ae5775553825d810d22b4e9758bd99b716a07",
+ "post_sha": "b6af507933f4d42c486351481264066d17b09e583f9343a3dea38bbb3cee5746",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{Opens with a saying that sets up the post: the author made the mistake, and so can warn against it.}"
+  ],
+  [
+   268,
+   "\\cpara{Introduces the episode: a ``Mysterious Answer'' given as a young ``Traditional Rationalist,'' which the author calls the most embarrassing mistake of a lifetime.}"
+  ],
+  [
+   712,
+   "\\cpara{The diagnosis comes before the case, and the case is withheld (``This I will not describe''). The error is said to be complicated thought without every step ``pinned down,'' but the reader has no theory to check that against. The prediction given four paragraphs later is the only part of the answer the post shows.}"
+  ],
+  [
+   1406,
+   "\\cpara{Names the symptom: the answer left the phenomenon as mysterious as before. The companion post of the same day, ``Failing to Learn from History,'' makes this the most critical mistake.}"
+  ],
+  [
+   1620,
+   "\\cpara{Says the same errors are ``still being made today by respected scientists in respected journals.'' No scientist, journal or paper is named; the nearest thing to an example is ``a la Sir Roger Penrose,'' two paragraphs later.}"
+  ],
+  [
+   1919,
+   "\\cpara{States the post's thesis: the young author went astray while following the traditional rules.}"
+  ],
+  [
+   2070,
+   "\\cpara{The prediction is credited to Penrose. The question it answered, which the post leaves unnamed, is consciousness: Tegmark's paper on the proposal describes it as the suggestion ``that quantum coherence is related to consciousness in a fundamental way.'' The later retelling in ``When Science Can't Help'' (2008) names consciousness.}"
+  ],
+  [
+   2526,
+   "\\cpara{Gives the Bayesian test the young author did not apply: does the hypothesis have a favorable likelihood ratio over ``I don't know''? The post does not apply the test to the theory either.}"
+  ],
+  [
+   2657,
+   "\\cfact{The contrast is drawn loosely. Science has counted old data. Einstein's 1915 account of Mercury's perihelion, an anomaly known for decades, is the standard case: in the words of the Stanford Encyclopedia of Philosophy (``Bayesian Epistemology''), the old data ``confirmed Einstein's new theory.'' Explaining why such old evidence counts is a known difficulty for Bayesian theories of confirmation, the ``problem of old evidence'' (Glymour, 1980).}"
+  ],
+  [
+   3098,
+   "\\cpara{Says that calling the idea physics did not stop it having the structure of magic, since probability theory takes no account of allegiances.}"
+  ],
+  [
+   3773,
+   "\\cpara{Grants that Traditional Rationality helped the author out of the error, though it was not enough to get things right. The later retellings in ``When Science Can't Help'' and ``No Safe Defense, Not Even Science'' (both 2008) leave this help out; see the notes there.}"
+  ],
+  [
+   4135,
+   "\\cpara{A general law from one case: from the author's own error to why people who call themselves rationalists ``do not rule the world,'' and to how much rationality anyone needs. No other case is given.}"
+  ],
+  [
+   4528,
+   "\\cpara{``Traditional Rationality'' is the author's own category, and the post describes it only from the author's reading: biographies of famous physicists. No text, teacher or course is quoted, so the claims about how it is ``taught,'' and in the next paragraph how it is ``designed,'' cannot be checked.}"
+  ],
+  [
+   4865,
+   "\\cpara{Science as practised did not leave the young author's borrowed idea to wait decades for an experiment. In a paper published in 2000, Max Tegmark calculated that quantum states in the brain would decay in about $10^{-13}$ to $10^{-20}$ seconds, far faster than neurons work (\\textsc{Physical Review E} 61); Hameroff and colleagues disputed the calculation the same year. The idea was argued over by calculation. The notes on ``When Science Can't Help'' take this further.}"
+  ],
+  [
+   5475,
+   "\\cpara{Contrasts the traditions: Traditional Rationality allows guessing and agreeing to disagree, and the author's experience is that guessing when you do not know ends in error.}"
+  ],
+  [
+   5682,
+   "\\cfact{That ideal belongs to one school of Bayesians. According to the Stanford Encyclopedia of Philosophy (``Bayesian Epistemology''), the question of priors ``divides Bayesians'': subjective Bayesians such as de Finetti and Savage ``hold that every prior is permitted unless it fails to be coherent,'' so two of them can reach different estimates from the same evidence. The post presents the ideal as Bayesian without saying that it is disputed.}"
+  ],
+  [
+   5877,
+   "\\cpara{Admits that the Bayesian alternative is also imprecise, and offers it with ``Maybe.'' The post gives no case in which the Bayesian method caught an error the traditional one missed; its support is ``underlying math'' and experimental psychology, named but not cited.}"
+  ]
+ ]
+}

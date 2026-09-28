@@ -62,3 +62,59 @@ Why: Fair-defender: the post itself says the best Explain can return is 'sky spi
 - Before:  \nb{``Semantic Stopsigns'' had already traced this chain to the Big Bang and the laws of physics.}
 - After: 
 
+
+## annotated/posts/when-science-can-t-help.tex
+
+Why: Found by batch 1 (My Wild and Reckless Youth gives the prediction); Tegmark's estimate was disputed (checked on arXiv).
+
+- Before: the author refused to describe it at all: ``This I will not describe, for it would be a long tale and complicated.''
+- After: the author declined to describe the theory (``This I will not describe, for it would be a long tale and complicated'') and gave only its prediction, that neurons exploit quantum gravity.
+
+- Before: A calculation, not an experiment, did the work, which is the kind of reasoning the essay says Science does not do.}
+- After: A calculation, not an experiment, was the main published answer, which is the kind of reasoning the essay says Science does not do. (Hagan, Hameroff and Tuszy\'nski disputed the calculation in 2000, arXiv quant-ph/0005025.)}
+
+
+## honest/sections/when-science-can-t-help.tex
+
+Why: Same; pronoun rule (STANDARDS 2.6).
+
+- Before: that such states would vanish far too fast to matter.}
+- After: that such states would vanish far too fast to matter. Hameroff and colleagues disputed the calculation the same year.}
+
+- Before: the risks he writes about.}
+- After: the risks the author writes about.}
+
+
+## annotated/afterwords/lawful-uncertainty.tex
+
+Why: A doubt resting on one secondary summary stays in one hedged note (STANDARDS 3.7); not repeated in the Response and the honest edition.
+
+- Before: The account of the experiment could not be checked, and one detail matters. The post's proposal, that subjects test their hunches privately while betting blue, assumes that they saw the outcome of every trial. One later summary of Tversky and Edwards's study says that subjects received no feedback after each guess, and could see an outcome only by giving up that trial's reward. If the summary is right, the private test was not open to them. I could read neither the paper nor Dawes's book.
+
+
+- After: 
+
+
+## honest/sections/lawful-uncertainty.tex
+
+Why: A doubt resting on one secondary summary stays in one hedged note (STANDARDS 3.7); not repeated in the Response and the honest edition.
+
+- Before:  \nb{A later summary of the study the post cites, by Tversky and Edwards, says its subjects ``received no feedback following each guess.'' If that is right, they could not have tested hunches this way. The paper could not be read here.}
+- After: 
+
+
+## annotated/posts/failing-to-learn-from-history.tex
+
+Why: Fair-defender: Carnot's theory was not a mysterious answer, so Kelvin's case only bears on the claim; 'does not fit' is too strong.
+
+- Before: The author's own example of a vitalist does not fit it.
+- After: The author's own example of a vitalist sits uneasily with it, though the theory Kelvin gave up was not a mysterious answer.
+
+
+## honest/sections/failing-to-learn-from-history.tex
+
+Why: Fair-defender: Carnot's theory was not a mysterious answer, so Kelvin's case only bears on the claim; 'does not fit' is too strong.
+
+- Before: \nb{Kelvin did live through a scientific revolution in his own field.
+- After: \nb{Kelvin did live through a scientific revolution in his own field, though not the dissolving of a mystery.
+
