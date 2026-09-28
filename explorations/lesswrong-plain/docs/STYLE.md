@@ -107,3 +107,12 @@ These came out of one round of review. Apply them by hand, sentence by sentence.
 6. **Plain language in our own voice.** Drop jargon in the editor's voice and in the retelling. The exception is the community's overused terms ("epistemics", "update your priors", "Bayesian", "rationalist", "the Way"). Keep those in the author's words, in quotation marks, where mocking them is the point.
 7. **Do only what was asked.** Make the smallest edit that does the job. Show every change (before and after). Never widen an edit on your own.
 8. **Opening note stays true.** If a rule changes what the document does, check that the opening note still describes it.
+
+## Final review checklist (September 2026, after the Yoda notes)
+
+Read each section against its original and check:
+
+1. Voices. Every sentence outside an n.b. is something the author says, or an ironic line the author could plausibly say about himself. A sentence that reads as an outsider describing or judging the post ("X had not said...", "the post leaves out...") belongs in an n.b.
+2. Placement. Each n.b. sits next to what it comments on. No n.b. / author line / n.b. sequences that depend on each other; merge them into one note.
+3. Accuracy. Every paraphrase matches the original; every fact in an n.b. is checked.
+4. Clarity. Each note says one clear thing a reader can follow without the original.

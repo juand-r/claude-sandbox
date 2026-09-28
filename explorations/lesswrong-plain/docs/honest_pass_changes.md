@@ -2259,3 +2259,147 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: In the film, right after Luke gives up, Yoda lifts the ship out of the swamp himself. Luke says ``I don't believe it,'' and Yoda answers, ``That is why you fail.'' The film shows Luke's surrender and calls it failure.} I leave that part out. \nb{Yoda's lesson is also about belief.} I have turned it into a lesson about effort.
 - After: In the film, right after Luke walks away, Yoda lifts the ship out of the swamp himself. Luke says ``I don't believe it,'' and Yoda answers, ``That is why you fail.'' In the film, Luke fails because he does not believe. The post leaves this out and makes the scene a lesson about effort.}
 
+
+## the-lens-that-sees-its-flaws
+
+- Before: are not interested right now.'' \nb{That is a reason about the world.} I asked why
+- After: are not interested right now.'' I asked why
+
+- Before: Yudkowsky had written that knowing about biases can make people reason worse.} I leave that out.
+- After: Yudkowsky had written that knowing about biases can make people reason worse. This post does not mention that.}
+
+- Before: Then I measure nothing. That footnote was the most useful part of the essay.
+- After: Then I measure nothing. \nb{The footnote's point, that a small effect should move your beliefs only a little, is the most useful thing in the essay.}
+
+
+## what-do-we-mean-by-rationality-1
+
+- Before: \nb{It is standard in philosophy.} The obvious question is what to do when a false belief would get you what you value. I do not ask it.
+- After: \nb{It is standard in philosophy. The post does not ask the obvious question about it: what to do when a false belief would get you what you value.}
+
+- Before: so that your answer wins. Four paragraphs later I come close to it. If you say
+- After: so that your answer wins. If you say
+
+- Before: ``but I'd rather have a million dollars.'' That presents taking one box as plain common sense. It is one side of a dispute that my own cited source, an article by Jim Holt, calls unsettled. \nb{In the 2020 PhilPapers survey, more philosophers chose two boxes than one.} I define rationality as winning, and then I say which choice wins.
+- After: ``but I'd rather have a million dollars.'' \nb{The example takes a side. A few paragraphs earlier the post listed Newcomb's problem among the puzzles where the mathematics itself is disputed, and in the 2020 PhilPapers survey more philosophers chose two boxes than one.}
+
+
+## humans-are-not-automatically-strategic
+
+- Before: I come close to a simpler explanation of the comedian: perhaps he likes cartoons more than he wants the hard work, and ``becoming a comedian'' is partly a story he tells. I say we have
+- After: \nb{A simpler explanation of the comedian is that he likes cartoons more than he wants the hard work, and that ``becoming a comedian'' is partly a story he tells. Two items in the post come near this: goals as stories we tell, and making sure the goal ``is really our goal.''} I say we have
+
+- Before: I give nothing to support this, and the rest of the argument does not need it. Perhaps
+- After: I give nothing to support this. \nb{The rest of the argument does not need it.} Perhaps
+
+- Before: I give no source for the figure. Then comes the real explanation. Knowing
+- After: I give no source for the figure. Then I say that knowing
+
+
+## use-the-try-harder-luke
+
+- Before: \nb{Yudkowsky's argument about trying is in the previous day's post, ``Trying to Try.''} This post is the joke that goes with it. \nb{Of the two, this is the one that ended up in the Highlights collection.}
+- After: \nb{Yudkowsky's argument about trying is in the previous day's post, ``Trying to Try''; this post is the joke that goes with it. Of the two, only this one is in the Highlights collection.}
+
+- Before: \nb{It is a good answer. Films leave out the boring parts. A year earlier, in ``The Logical Fallacy of Generalization from Fictional Evidence,'' Yudkowsky had warned against treating stories as evidence about the world, because what a story needs is not what a forecast needs.}
+- After: \nb{It is a good answer. Films leave out the boring parts.}
+
+- Before: That is a claim about real people. My only evidence for it in this post is the pacing of a film, which is the mistake I warned against a year ago. The scene was about one man's spaceship. I raise the stakes to the fate of humanity only in the last line.
+- After: The scene was about one man's spaceship; I raise the stakes to the fate of humanity only in the last line. \nb{That line is a claim about real people, and the post supports it only with a scene it made up. A year earlier, in ``The Logical Fallacy of Generalization from Fictional Evidence,'' Yudkowsky had warned against treating stories as evidence about the world.}
+
+
+## your-strength-as-a-rationalist
+
+- Before: \nb{What he concluded from it is wrong. A competent adult can refuse to go to hospital, and many do. The federal law, EMTALA, requires hospitals to examine and stabilize patients, not to treat anyone for anything.}
+- After: \nb{The conclusion is wrong. A competent adult can refuse to be taken to hospital, and many do.}
+
+- Before: \nb{If the story had been true, this advice could have delayed treatment for a heart attack.} I do not mention this again.
+- After: \nb{If the story had been true, this advice could have delayed treatment for a heart attack. The post does not mention this.}
+
+- Before: and that I threw the clue away. The only evidence that the story was false is the word of the same stranger who told it.
+- After: and that I threw the clue away. \nb{The only evidence that the story was false is the word of the same stranger who told it.}
+
+- Before: I say I should have known that
+- After: I say I should perhaps have realized that
+
+- Before: ``Either Your Model Is False Or This Story Is Wrong.'' In my case both were true. The story was made up, and my model of ambulances was too strong. My sign does not say which to pick.
+- After: ``Either Your Model Is False Or This Story Is Wrong.'' \nb{In this case both were true: the story was made up, and the model of ambulances was wrong.}
+
+- Before: I give no source, and it has nothing to do with my argument. In the second
+- After: I give no source. \nb{The footnote has nothing to do with the argument.} In the second
+
+
+## the-meditation-on-curiosity
+
+- Before: Imagine the advantages of believing the answer you fear. Each of these is something done by will, in the hope that the feeling follows.
+- After: Imagine the advantages of believing the answer you fear.
+
+- Before: For the second remedy, I say your belief should always be
+- After: For the second remedy, I state the law correctly: your expected belief after seeing new evidence should equal your belief now. Then I go further, and say your belief should always be
+
+- Before: \nb{This gets the mathematics wrong. The law says only that
+- After: \nb{These two phrasings get the mathematics wrong. The law says only that
+
+
+## the-importance-of-saying-oops
+
+- Before: I put that line in their mouths. \nb{What it shows is people who knew about the problem and hid it.} I note that after the bankruptcy Jeff Skilling told Congress that Enron had been a great company. \nb{Skilling had been convicted of fraud more than a year before the post.} I do not mention this.
+- After: I put that line in their mouths. I note that after the bankruptcy Jeff Skilling told Congress that Enron had been a great company. \nb{The invented line shows people who knew about the problem and hid it. Skilling had been convicted of fraud more than a year before the post, which does not mention it.}
+
+- Before: My evidence is Enron and my own case. In my own case small corrections did add up to a big one; my complaint is that they were slow.
+- After: My evidence is Enron and my own case. \nb{In the post's own case, small concessions did add up to a full admission; the complaint is that they were slow.}
+
+- Before: And I warn: ``The alternative is Enron.'' \nb{What Enron actually did was commit fraud.}
+- After: And I warn: ``The alternative is Enron.''
+
+
+## the-martial-art-of-rationality
+
+- Before: ``may be a matter of enjoyment as much as anything else.'' So the obvious objection, that good reasoning may be mostly talent, is settled with a guess about athletes, and then set aside: fast learners learn faster, ``but the art of rationality isn't about that.''
+- After: ``may be a matter of enjoyment as much as anything else.'' Fast learners learn faster, I grant, ``but the art of rationality isn't about that.'' \nb{That is all the post says about the obvious objection, that good reasoning may be mostly talent.}
+
+- Before: \nb{Schools have taught logic, mathematics and statistics for centuries. In 1980 California's state universities began requiring every student to take a course in critical thinking.} I do not mention any of this.
+- After: \nb{Schools have taught logic for centuries, and statistics for about a century. In 1980 California's state universities began requiring every student to take a course in critical thinking. The post does not mention any of this.}
+
+- Before: the teacher makes a correct one for the student to copy. I offer nothing that a teacher of reasoning could hold up for a student to copy. This is where the analogy fails, and I say so.
+- After: the teacher makes a correct one for the student to copy. \nb{The post does not say what a teacher of reasoning could hold up for a student to copy.}
+
+- Before: like inventing a martial art from physics and anatomy. \nb{That is a strong objection.} My answer
+- After: like inventing a martial art from physics and anatomy. My answer
+
+- Before: introspection works, though it sees blurrily. I give
+- After: introspection works, though it sees blurrily, with systematic distortions. I give
+
+- Before: what the science means for our daily inner life. No practice follows.
+- After: what the science means for our daily inner life.
+
+
+## twelve-virtues-of-rationality
+
+- Before: The tenth is precision, with the essay's one worked example. Saying
+- After: The tenth is precision. Saying
+
+
+## the-bottom-line
+
+- Before: Along the way I raise a real question:
+- After: Along the way I raise a question:
+
+- Before: That page does depend on the clues. This is correct, and I say it twice.
+- After: That page, I say twice, does depend on the clues.
+
+- Before: \nb{That is true.} It sits uneasily with what I said earlier, that the arguer's handwriting is evidence only of who paid. I do not say how the two fit together.
+- After: \nb{That is true. It concedes the point of the earlier note: what the arguer lists can still be evidence.}
+
+
+## rationalization
+
+- Before: \nb{In between, in ``What Evidence Filtered Evidence?'', Yudkowsky had said that each of the clever arguer's statements is valid evidence.} Here I do not say whether the arguer's statements still count as evidence.
+- After: \nb{In between, in ``What Evidence Filtered Evidence?'', Yudkowsky had said that each of the clever arguer's statements is valid evidence. This post does not mention that.}
+
+- Before: Then I blame ``Traditional Rationality,'' which, I say, approves of a scientist who picks a pet hypothesis and sets out to prove it.
+- After: Then I say I fear that ``Traditional Rationality'' does not teach this difference: it sees nothing wrong with a scientist who picks a pet hypothesis and sets out to prove it.
+
+- Before: He also said that the dogmatic attitude of sticking to a theory as long as possible is ``of considerable significance.''}
+- After: He also said that ``a critical attitude needs for its raw material, as it were, theories or beliefs which are held more or less dogmatically.''}
+
