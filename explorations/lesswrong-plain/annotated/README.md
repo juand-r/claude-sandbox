@@ -6,6 +6,11 @@ and a Response. Read this whole file before touching anything, and section 1 twi
 corrected earlier work several times; the corrections are folded in below, so that you
 do not repeat them.
 
+> **Superseded in part (28 September 2026).** The critical standard is now
+> `../docs/STANDARDS.md`, section 2. Where section 1 below ("harshest reading", the
+> calibration table, "give no benefit of the doubt") conflicts with it, STANDARDS.md wins.
+> Sections 2 to 4 of this file (files, layout, verbatim rule) still apply.
+
 ## 1. The standard: read this first
 
 The user has sent this work back four times for being too gentle: "too nice",
