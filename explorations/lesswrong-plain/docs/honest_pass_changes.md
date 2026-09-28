@@ -3018,3 +3018,114 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: and the real version says ``usually''.}
 - After: and the usual versions state both rules as defaults that allow exceptions.}
 
+
+## argument-screens-off-authority
+
+- Before: Hearing it then does not screen off the expert.
+- After: Hearing it then does not fully screen off the expert.
+
+
+## toolbox-thinking-and-law-thinking
+
+- Before: so ``some of the time'' defeats them. It never discusses the mortgages.}
+- After: so ``some of the time'' defeats them. It never discusses the mortgages. The model usually blamed, David Li's Gaussian copula, described how defaults depend on each other; it did not assume they were independent.}
+
+
+## local-validity-as-a-key-to-sanity-and-civilization
+
+- Before: and the party had rejoined his campaign.}
+- After: and the party had rejoined his campaign. So the policing I credit came from voters only, not from the party.}
+
+
+## hug-the-query
+
+- Before: \nb{Molecular nanotechnology was a position Yudkowsky held, and no experiment had yet tested it.}
+- After: \nb{It is a fair example: no experiment had yet tested molecular nanotechnology. It was also a position Yudkowsky held, so part of the author's own program sits where the post offers only a feeling.}
+
+
+## strong-evidence-is-common
+
+- Before: I do not say what the evidence would be. \nb{A good year
+- After: I do not say what the evidence would be. \nb{From prior odds of 1 to 99, evidence of 200 to 1 gives about 67\%; 99 to 1 would give 50\%. A good year
+
+
+## something-to-protect
+
+- Before: \nb{Her chances, 80 and 90, are
+- After: \nb{Framed this way, neither option is certain for her, so the ``comforting feeling of certainty'' the post says love must overcome is gone before love does anything. Her chances, 80 and 90, are
+
+
+## dissolving-the-question
+
+- Before: \nb{Three months later, in ``Timeless Control,'' Yudkowsky gave
+- After: \nb{Three months later, in ``Thou Art Physics'' and ``Timeless Control,'' Yudkowsky gave
+
+
+## the-lens-that-sees-its-flaws
+
+- Before: I defend it by saying that the mind may be ``a little more complicated'' than a steam engine. That is a joke, and it is the whole defense.
+- After: I defend it by saying that the mind may be ``a little more complicated'' than a steam engine. \nb{That is a joke, and it is the whole defense.}
+
+- Before: and asked the ones who said no to explain themselves. The ones who said yes were not asked to explain anything.
+- After: and asked the ones who said no to explain themselves. \nb{The ones who said yes were not asked to explain anything.}
+
+
+## what-do-we-mean-by-rationality-1
+
+- Before: Then I admit that I use the word ``normatively, to pick out desirable patterns of thought.'' So ``rational'' means good thinking.
+- After: Then I say that I use the word ``normatively, to pick out desirable patterns of thought''; that is, ``rational'' means good thinking.
+
+
+## dissolving-the-question
+
+- Before: Yudkowsky gave his own answer, and it argued that determinism is compatible with real control: one of the answers his homework had told readers not to give.
+- After: Yudkowsky gave an answer, and it argued that determinism is compatible with real control: one of the answers the homework had told readers not to give.
+
+
+## no-safe-defense-not-even-science
+
+- Before: The sample is the people who chose to tell him dramatic stories.
+- After: The sample is the people who chose to tell Yudkowsky dramatic stories.
+
+- Before: Yudkowsky had written that his allegiance to those rules
+- After: Yudkowsky had written that allegiance to those rules
+
+- Before: whether it is the one he left in or another.
+- After: whether it is the one the author left in or another.
+
+
+## politics-is-the-mind-killer
+
+- Before: Yudkowsky said that he had meant ``national politics as seen on TV.''
+- After: Yudkowsky said the post had meant ``national politics as seen on TV.''
+
+
+## the-bottom-line
+
+- Before: Yudkowsky made this point himself the next day
+- After: Yudkowsky made this point the next day
+
+
+## the-fallacy-of-gray
+
+- Before: Yudkowsky wrote that his own defense of induction goes ``around in a loop'': he expects the future
+- After: Yudkowsky wrote that the defense of induction goes ``around in a loop'': one expects the future
+
+
+## the-meditation-on-curiosity
+
+- Before: in ``The Importance of Saying Oops,'' he had called
+- After: in ``The Importance of Saying Oops,'' Yudkowsky had called
+
+
+## twelve-virtues-of-rationality
+
+- Before: He later declared everything he wrote in 2002 or earlier obsolete.
+- After: Yudkowsky later declared all of that writing, everything from 2002 or earlier, obsolete.
+
+
+## the-fallacy-of-gray
+
+- Before: Yudkowsky wrote that the defense of induction goes ``around in a loop'': one expects the future
+- After: Yudkowsky wrote that a defense of induction, pressed far enough, goes ``around in a loop'': one expects the future
+

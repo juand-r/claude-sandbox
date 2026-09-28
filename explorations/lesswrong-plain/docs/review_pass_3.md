@@ -557,3 +557,34 @@ About 35 outside quotations or figures in the annotated edition were not recheck
 
 1. Should the annotated edition be corrected to match the honest rewrite? If so, the list above is the worklist, errors and central unfair points first.
 2. Which of the five small honest-rewrite items above do you want applied?
+
+---
+
+## Fixes applied (28 September 2026)
+
+Every item above was acted on. The exact before and after text is logged in
+`docs/annotated_fix_changes.md` (annotated notes and afterwords),
+`docs/annotated_pronoun_changes.md` (pronouns for post authors in the annotated edition), and
+`docs/honest_pass_changes.md` (honest rewrite; entries dated after this review).
+
+The general rule for the annotated fixes: a finding labelled error or unfair was corrected or cut; a contestable one was
+softened to say what a defender can reply; a weak one (nitpick, jab, or unlabelled guess at motive) was cut, unless it
+carried a fair point, which was kept in plain form.
+
+### Items verified in this round that were marked "not re-verified" above
+
+- §9: the "AGI Ruin" quotations ("is what makes somebody a peer of its author"; "says that humanity still has only one gamepiece that can do that"; "because I haven't taken the time to personally yell at them"; "modest"), checked on the LessWrong page.
+- §12: Hodgell's gloss ("the academic equivalent of a berserker fit ... at the worst possible time"), checked on Quote Investigator, where it is Hodgell's own comment, not the novel's text.
+- §16: Trouche, Johansson, Hall and Mercier (2016): 56% and 58% rejected their own arguments, checked against the abstract.
+- §17: Cowen's post (the dropped "and interpreted", the Giffen clause) checked on Marginal Revolution; "Where Recursive Justification Hits Bottom" (8 July 2008) quotations checked on LessWrong. Asimov's essay is in *Skeptical Inquirer* 14:1, Fall 1989, and in a 1988 collection of the same title; both editions now say "about/nearly twenty years".
+- §19: Klayman and Ha (1987) quotations checked against the paper's PDF.
+- §22: "an obvious fact, if you have all your marbles lined up correctly" and "wins outright" checked in the original of "Many Worlds, One Best Guess"; the "in theory, sure!" passage checked in "When Science Can't Help".
+- §26: Warren's regret, checked on the Wikipedia page's quotation of his memoir.
+- §30: the Jaynes sentence is in *Probability Theory: The Logic of Science* (2003), section 1.8.1, p. 21.
+- §35: Aaronson's "Those who accept this are intellectual heroes; those who don't are cowards" checked on his blog; it comes a few lines after the passage the post quotes, not in the next paragraph.
+- §36: "still wasn't enough to get it *right*" checked in "My Wild and Reckless Youth".
+- §38: "Thou Art Physics" (6 June 2008): "Requiredism", "cashed out in a sensible way", "require determinism" checked on LessWrong. The honest note now cites both "Thou Art Physics" and "Timeless Control".
+- §40: "My own sympathies, I confess, are with Drexler" and "merely a best guess" checked on the LessWrong page.
+- §50: Wikipedia's "Aikido" wording ("not training for self-defense or combat effectiveness") checked.
+
+Still not re-verified: §12 the location in Gendlin's *Focusing*; §20 Fischhoff and others (1977), Taber and Lodge, Guess and Coppock; §21 Reiter and Criscuolo and the Bensinger thread; §29 Gigerenzer and Hoffrage's Study 2 figures; §32 Pendarvis, the juror transcript, England and others, Higney and others; §33 McCarthy, the World Bank figure, the *Global Catastrophic Risks* chapters; §37 Chalmers and James; §39 Will, Schlick, Corrigan and Watson, Puhl and Heuer, Bostrom and Ord; §42 Kant A26/B42; §46 "Magnitude of His Own Folly" and Khan; §47 the SEP and Ollerton figures; §48 Slovic and Soares; §49 Shabbat 112b and the Schechter statement; §50 the Nisbett chapter.
