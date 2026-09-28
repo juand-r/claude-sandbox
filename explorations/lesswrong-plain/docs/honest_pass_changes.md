@@ -2556,3 +2556,117 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: My title says that politics kills minds. My essay says that politics is a poor place to practice. Readers will remember the title, and use it to end conversations. \nb{Seven years later,
 - After: \nb{The title says that politics kills minds; the essay says that politics is a poor place to practice. The title is the part that gets quoted. Seven years later,
 
+
+## making-beliefs-pay-rent
+
+- Before: So, I say, their maps of the world do not differ. They do disagree about something: what the word ``sound'' means. I treat an argument about a word as the same failure as a belief with no content, until near the end.
+- After: So, I say, their maps of the world do not differ. \nb{They do disagree about something: what the word ``sound'' means. The post treats an argument about a word as the same failure as a belief with no content, until near the end, where it separates the two.}
+
+- Before: This stronger version of the test, asking what a belief forbids, arrives three-quarters of the way through. My example of a belief that forbids nothing is élan vital, a life force that nobody believes in any more. I do not apply the forbidding test to any belief that anyone holds today.
+- After: My example of a belief that forbids nothing is élan vital, a life force that nobody believes in any more. \nb{The post's examples are phlogiston, élan vital, a made-up author and the tree. It does not apply the test to any belief that anyone holds today.}
+
+- Before: you are arguing either about labels or about floating beliefs. These are different problems with different cures, and I give one cure.
+- After: you are ``probably'' arguing either about labels or, worse, about floating beliefs.
+
+- Before: \nb{Not every claim in mathematics, ethics or history predicts a sensation,
+- After: \nb{Not every claim in mathematics or ethics predicts a sensation,
+
+
+## what-is-evidence
+
+- Before: Then my real subject. Rationalists, I say,
+- After: Next, rationalists, I say,
+
+- Before: produces true beliefs. The explanation would have to come from that same way of thinking, and I do not say so.
+- After: produces true beliefs. \nb{The explanation would have to come from that same way of thinking. The post does not say so.}
+
+
+## scientific-evidence-legal-evidence-rational-evidence
+
+- Before: These are rules about reliability.} I present them as a social convention laid on top of rationality.
+- After: These are rules about reliability. The post presents them as a social convention laid on top of rationality.}
+
+- Before: depends on authorities such as Plutarch. My rule also excludes the findings of geology and cosmology about events that happened only once. On my definition, the extinction of the dinosaurs is not scientific knowledge.
+- After: depends on authorities such as Plutarch. \nb{By this rule, what geology and cosmology say about events that happened only once, such as the extinction of the dinosaurs, is not scientific knowledge either.}
+
+- Before: It may seem perverse to deny it, I admit, since it follows from generalizations you can test. I deny it anyway. If you already knew the scientific belief about an experiment's result, ``why bother to run the experiment?'' By the same reasoning, no prediction would count as scientific before it had been tested.
+- After: It may seem perverse to deny it, I admit, since it follows from generalizations you can test. Then I suggest that it is not: if you already knew the scientific belief about an experiment's result, ``why bother to run the experiment?'' \nb{By the same reasoning, no prediction would count as scientific before it had been tested.}
+
+- Before: the standards are pragmatic choices. So my definition is stated as a fact until it is questioned, and then it becomes a convention.
+- After: the standards are pragmatic choices. \nb{So the definition is stated as a fact until it is questioned, and then it becomes a convention.}
+
+- Before: only papers published in open-access journals. Here the test for science has changed from whether anyone can rerun the experiment to whether anyone can read the paper for free.
+- After: only papers published in open-access journals, and I say I think that would serve science better.
+
+- Before: both still count as Bayesian evidence. Courts and journals get special, strong standards. The individual reasoner is told that everything counts.
+- After: both still count as Bayesian evidence.
+
+
+## how-much-evidence-does-it-take
+
+- Before: In any real question, setting it is the hard part.} ``Seems'' is all I say about it.
+- After: In any real question, setting it is the hard part, and the post's only word on it is ``seems.''}
+
+
+## absence-of-evidence-is-evidence-of-absence
+
+- Before: he was California's attorney general.} I pass the error on.
+- After: he was California's attorney general. The post passes the error on.}
+
+- Before: ``absence of evidence is not evidence of absence.''} I never quote anyone who uses it. My title defeats the slogan by reading ``evidence'' in the technical sense of probability theory, not the sense its users intend.
+- After: ``absence of evidence is not evidence of absence.'' The post quotes no one who uses the slogan, and the title defeats it by reading ``evidence'' in the technical sense of probability theory, not the sense its users intend.}
+
+- Before: Then comes the part that matters most. Absence may be
+- After: Then I say that absence may be
+
+- Before: because fossils rarely form. It arrives in the second-to-last paragraph, packed together with the Fermi Paradox. I do not apply it to Warren.
+- After: because fossils rarely form. \nb{The post does not apply this to Warren.}
+
+- Before: The case I chose is the imprisonment of a whole population. I say nothing about it beyond the direction of the evidence.
+- After: \nb{The case is the imprisonment of a whole population. Apart from the quoted words of Dawes, who calls it ``a most grievous chapter,'' the post says nothing about it except which way the evidence points.}
+
+
+## conservation-of-expected-evidence
+
+- Before: I write out three lines, the third of which is the law of total probability from any first course in the subject. Then comes
+- After: I write out three lines. \nb{The third is the law of total probability, taught in any first course in the subject.} Then comes
+
+- Before: ``then the miracles described in the Bible must argue against the existence of God.'' \nb{That follows
+- After: ``then the miracles described in the Bible must argue against the existence of God.'' ``Doesn't quite sound right, does it?'' I ask, and tell you to pay attention to that feeling. \nb{The last one follows
+
+- Before: confirms a theory.'' In plain English you can: two paragraphs earlier I described a test a theory will probably pass. My next sentence narrows the claim to raising your confidence on average.
+- After: confirms a theory.'' \nb{In plain English you can: a few paragraphs earlier the post described a test a theory will probably pass. The next sentence narrows the claim to raising your confidence on average.}
+
+- Before: ``Human psychology is so screwed up.'' I end there, without returning to Spee.
+- After: ``Human psychology is so screwed up.''
+
+
+## argument-screens-off-authority
+
+- Before: Hearing it then does not screen off the expert.} I call this a matter of practice, and keep my title.
+- After: Hearing it then does not screen off the expert. The post calls this a matter of practice, and keeps its title.}
+
+
+## an-intuitive-explanation-of-bayes-s-theorem
+
+- Before: Most doctors, I say, simply take the 80\% as the answer and ignore how rare cancer is.
+- After: Most doctors, I say, answer between 70\% and 80\%, which is ``wildly incorrect.''
+
+- Before: About two-thirds of the way through, I announce
+- After: Late in the essay, I announce
+
+- Before: \nb{The evidence was not hidden. The anomaly in Mercury's orbit was known from 1859, and Newton's theory fell only when Einstein's theory explained it in 1915.}
+- After: \nb{That evidence had been in plain view for decades: the anomaly in Mercury's orbit was known from 1859. Newton's theory fell only in 1915, when Einstein's theory explained it.}
+
+
+## the-second-law-of-thermodynamics-and-engines-of-cognition
+
+- Before: you can take electricity out of it and leave behind an ice cube.'' I present this as the standard meaning of colder, and it is a new one.
+- After: you can take electricity out of it and leave behind an ice cube.'' \nb{That is a new meaning of ``cold,'' not the one a thermometer measures.}
+
+- Before: ``just a matter of words and perspective; the math is unambiguous.'' I show no math that separates the two. My own table for the demon ends with its memory in one of four states, which is Bennett's account.
+- After: ``just a matter of words and perspective; the math is unambiguous.'' \nb{The post's own table for the demon ends with the demon's memory in one of four states, still to be erased. That is Bennett's account.}
+
+- Before: don't expect me to believe that a big, elaborate clever argument can do it either.'' The physics has become a rule for debates.
+- After: don't expect me to believe that a big, elaborate clever argument can do it either.'' \nb{The physics has become a rule for debates.}
+
