@@ -2853,3 +2853,84 @@ Each entry is one hand-made edit, in book order. Rules are in STYLE.md, "Rules o
 - Before: he described this very error.} I list his sentence on ideas discoverable ``by the mere operation of thought'' as a case of it.
 - After: he described this very error.}
 
+
+## how-an-algorithm-feels-from-inside
+
+- Before: They are not evidence that brains use it.} I cite no study of how brains or people sort things into categories.
+- After: They are not evidence that brains use it, and the post cites no study of how brains or people sort things into categories.}
+
+- Before: and that the picture is how you see it.} I settle the question in a dash.
+- After: and that the picture is how you see it. The post settles the question in a dash.}
+
+- Before: a puzzle in decision theory. I give no way to tell a person clinging to an intuition from a person with a good objection.
+- After: a puzzle in decision theory. \nb{The post gives no way to tell a person clinging to an intuition from a person with a good objection.}
+
+
+## expecting-short-inferential-distances
+
+- Before: and had to be taught it over years.} I leave the children out.
+- After: and had to be taught it over years. The post leaves the children out.}
+
+- Before: ``the curse of knowledge'' in 1989.} I do not mention them.
+- After: ``the curse of knowledge'' in 1989. The post does not mention them.}
+
+
+## illusion-of-transparency-why-no-one-understands-you
+
+- Before: thought June would not hear sarcasm in the same message. I call June ``Jane'' twice.
+- After: thought June would not hear sarcasm in the same message.
+
+- Before: in speakers judging ``their own utterances.''} I report the overhearers in one sentence and move on.
+- After: in speakers judging ``their own utterances.'' The post reports the overhearers in one sentence and moves on.}
+
+- Before: Then history. ``Two days before Germany's attack on Poland,'' I say,
+- After: Then history. Following Keysar and Barr, I say that ``two days before Germany's attack on Poland,''
+
+- Before: On the documents, he understood the letter and attacked anyway.} My one example from outside the laboratory is of a message that was understood.
+- After: On the documents, he understood the letter and attacked anyway. So the post's one example from outside the laboratory is of a message that was understood.}
+
+
+## something-to-protect
+
+- Before: and the burglar killed his uncle.} His motive is guilt over his uncle's death, not a need for something to do.
+- After: and the burglar killed his uncle. His motive is guilt, not a need for something to do.}
+
+- Before: ``in pretty much that frame of mind defended the Bible.'' I ask you to forget the comparison, and I do not take it back. Then
+- After: ``in pretty much that frame of mind defended the Bible.'' \nb{The post asks the reader to forget the comparison, and does not take it back.} Then
+
+- Before: The example cannot show that love leads anywhere that counting does not.} Nor do I give evidence that love makes people better with probabilities. \nb{Experiments
+- After: The example cannot show that love leads anywhere that counting does not. Nor does the post give evidence that love makes people better with probabilities. Experiments
+
+- Before: A few paragraphs later I state, with this one case as evidence: ``No one masters the Way until more than their life is at stake.''
+- After: A few paragraphs later I state: ``No one masters the Way until more than their life is at stake.'' \nb{The only evidence given is this one case.}
+
+
+## the-gift-we-give-to-tomorrow
+
+- Before: I will call you the answerer. The answerer knows the science and gets the last word, and the reader is addressed as the answerer. So the reader is on the winning side before any argument starts.
+- After: I will call you the answerer. \nb{The answerer knows the science and gets the last word, and the reader is addressed as the answerer. So the reader is on the winning side before any argument starts.}
+
+- Before: ``Unless you think it was magic, it has to fit into the lawful causal development of the universe somehow.'' I had not suggested magic. I promise not to,
+- After: ``Unless you think it was magic, it has to fit into the lawful causal development of the universe somehow.'' \nb{The questioner had not suggested magic.} I promise not to,
+
+- Before: and philosophers have been replying to it since.} In my dialogue it wins by rhetorical question. \nb{Realists reply that tracking such a standard could itself have helped our ancestors survive, so the agreement need not be a coincidence. The dialogue does not consider this.}
+- After: and philosophers have been replying to it since. Realists reply that tracking such a standard could itself have helped our ancestors survive, so the agreement need not be a coincidence. In the dialogue the argument wins by rhetorical question, and this reply is not considered.}
+
+- Before: So in this story, which begins with a ``perhaps,'' the future contains people designed by other people, and a civilization bigger than a galaxy. I do not argue for either. They appear as background in a bedtime story.
+- After: \nb{The story, which begins with a ``perhaps,'' assumes a future of people designed by other people and a civilization spread beyond one galaxy. The post does not argue for either; they appear as background in a bedtime story.}
+
+
+## on-caring
+
+- Before: Daniel is my hero.
+- After: Daniel is my example of the shift.
+
+- Before: \nb{Multiplying assumes that each bird is worth the same however many birds there are.} I do not state this. My only defense is that my feelings misreport large numbers, and I do not consider that the value of each bird might itself fall as their number grows.
+- After: \nb{Multiplying assumes that each bird is worth the same however many birds there are. The post does not state this assumption. Its only defense is that feelings misreport large numbers; it does not consider that the value of each bird might itself fall as their number grows.}
+
+- Before: \nb{The author was then a research fellow at MIRI.} I do not mention this.
+- After: \nb{The author was then a research fellow at MIRI. The post does not mention this.}
+
+- Before: ``If I look at the mass I will never act. If I look at the one, I will.''} That is the opposite of my method.
+- After: ``If I look at the mass I will never act. If I look at the one, I will.'' That is the opposite of the post's method.}
+
