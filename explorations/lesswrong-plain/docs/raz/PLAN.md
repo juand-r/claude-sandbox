@@ -46,4 +46,4 @@ posts are merged in.
 | Batch | Sequence | Posts | Drafted | Final pass | Committed |
 |---|---|---|---|---|---|
 | pilot | Predictably Wrong | 9 | yes | yes | 43b43b5 |
-| 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | running | | |
+| 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | yes | yes | see log |

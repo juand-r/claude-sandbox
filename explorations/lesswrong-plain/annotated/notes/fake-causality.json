@@ -1,0 +1,113 @@
+{
+ "slug": "fake-causality",
+ "header": "\\post{Fake Causality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/RgkqLqkg8vLhsYpfh/fake-causality}\n",
+ "skeleton_sha": "21d639dfe9a47f6f4f94cb0faa2e40c11509e0abcd7805a34e41e5ec48457fff",
+ "post_sha": "2811e9a8c6d6c395a6e48adaa1b2700b1eb947e1c7cf5efd1a7bd3fff9bd2941",
+ "edits": [],
+ "notes": [
+  [
+   114,
+   "\\cpara{Introduces phlogiston as the eighteenth-century chemists' one-word answer to what fire is and why wood becomes ash.}"
+  ],
+  [
+   405,
+   "\\cpara{Stresses that the one word was the whole answer.}"
+  ],
+  [
+   487,
+   "\\cpara{Summarizes what the theory explained: flame, ash, flames going out in closed containers, charcoal's small residue. This matches standard accounts; Stahl held soot and charcoal to be rich in phlogiston (Wikipedia, ``Phlogiston theory'').}"
+  ],
+  [
+   868,
+   "\\cpara{The post's historical charge, given without a source: phlogiston theory only explained results already seen, and forbade nothing.}"
+  ],
+  [
+   1388,
+   "\\cfact{The historical record is more mixed. The theory forbade outcomes: burned metals should have lost phlogiston, and the finding that some gain weight counted against it (Wikipedia, ``Phlogiston theory''). In 1783 it also made a successful advance prediction: Priestley predicted that a metal calx heated in ``inflammable air'' (hydrogen), which he took for phlogiston, would turn back into metal, and his experiment with lead calx bore it out (Hasok Chang, \\textsc{HYLE}, 2010, summarizing Alan Musgrave, 1976). The post's charge fits the theory's later years, which Chang, again after Musgrave, describes as ``adjusting itself this way and that way to accommodate inconvenient new findings.''}"
+  ],
+  [
+   1402,
+   "\\cpara{Says no one saw the problem for a long time, because fake explanations do not feel fake.}"
+  ],
+  [
+   1581,
+   "\\cpara{Introduces the idea that people reason about causes with something like the graphs of Bayes nets. The figure shows a chain of three nodes: Rain, then Sidewalk Wet, then Sidewalk Slippery.}"
+  ],
+  [
+   1717,
+   "\\cfact{Hedged (``suggests,'' ``something like'') and uncited. Such research existed: Gopnik and colleagues (\\textsc{Psychological Review}, 2004) proposed that children's causal learning ``may involve computations similar to those for learning causal Bayes nets and for predicting with them.''}"
+  ],
+  [
+   1947,
+   "\\cpara{Explains screening off: once the sidewalk is known to be wet, learning that it is slippery says nothing more about rain. For the chain in the figure this is correct.}"
+  ],
+  [
+   2232,
+   "\\cpara{Asks why fire is hot and bright, and answers with a figure: a single arrow from Phlogiston to Fire Hot and Bright.}"
+  ],
+  [
+   2418,
+   "\\cpara{Says the fake cause is stored in the same format as a real one, and that hindsight makes a cause fitted to its effect feel as if it constrained it.}"
+  ],
+  [
+   2839,
+   "\\cpara{Says double counting between cause and effect was one of the main problems behind Bayesian networks. Pearl's 1982 paper, an early form of the method, poses it: ``how can one avoid an infinite updating loop when the two processors begin to communicate with one another?''}"
+  ],
+  [
+   3613,
+   "\\cpara{Gives Pearl's soldier-counting example, done wrongly first: adding a neighbor's count to your own counts the same soldiers twice.}"
+  ],
+  [
+   4028,
+   "\\cpara{Gives the right way: each soldier passes on a count of those ahead and a count of those behind, adding one, and the total is the two counts plus one. The arithmetic is correct. I could not check Pearl's book; David MacKay's textbook (2003, chapter 16) gives the same scheme.}"
+  ],
+  [
+   4836,
+   "\\cpara{States the principle: the two counts are kept separate and added only at the end.}"
+  ],
+  [
+   5208,
+   "\\cpara{Applies the principle to the rain network: evidence about rain from elsewhere goes forward to the sidewalk, and evidence from the wet sidewalk goes back to rain and on to every neighbor except the sidewalk.}"
+  ],
+  [
+   5830,
+   "\\clogic{True for networks without loops (undirected cycles), which Pearl calls singly connected; the rain chain is one. For networks with loops, Pearl wrote that ``messages may circulate indefinitely around the loops'' and that the resulting equilibrium ``does not represent the posterior probabilities of all nodes'' (1988, p.~195, as quoted by Murphy, Weiss and Jordan, 1999). The post states the rule without the condition.}"
+  ],
+  [
+   5990,
+   "\\cpara{Applies the rule to phlogiston: observing hot fire may send evidence back to Phlogiston, but that cannot then count as a successful forward prediction.}"
+  ],
+  [
+   6378,
+   "\\cpara{Says humans do not keep the two messages apart, so phlogiston seems to predict that fire is hot.}"
+  ],
+  [
+   6877,
+   "\\cpara{Says a cause that constrains nothing is stored like any other fact until one notices that it makes no advance predictions.}"
+  ],
+  [
+   7181,
+   "\\cpara{Claims that a well-designed AI would catch the problem at once, by bookkeeping alone.}"
+  ],
+  [
+   7336,
+   "\\clogic{Asserted, not shown. Pearl's message passing does keep an observation from being counted twice, which covers the bouncing the post has just described. Whether it would also flag the phlogiston node as fake is a separate question. The links' probabilities are supplied from outside (Pearl's 1982 paper calls them ``judgmental probability''), and a link fitted after the fact, the fault the post found (``You looked at the result first''), looks like any other. The post does not say how the AI would tell them apart.}"
+  ],
+  [
+   7435,
+   "\\cpara{Identifies hindsight bias, in technical terms, with forward messages contaminated by backward ones.}"
+  ],
+  [
+   7649,
+   "\\cpara{Says the phlogiston theorists were not fools, and warns that the reader's own fake explanations will not be labeled.}"
+  ],
+  [
+   7996,
+   "\\cpara{The conclusion: test a theory on tomorrow's facts, not yesterday's, as ``the only way'' to guarantee a pure forward message.}"
+  ],
+  [
+   8248,
+   "\\clogic{Stated without exception. Scientists have counted old facts as strong evidence when a theory was not built to fit them. The advance of Mercury's perihelion was ``known for several decades'' when general relativity accounted for it, and most scientists gave the new prediction of light bending no more weight than that old fact (Brush, \\textsc{Science}, 1989). The author later made the same allowance: Einstein ``didn't even use the perihelion precession of Mercury, except for verification of his answer produced by other means'' (``Einstein's Speed,'' 2008).}"
+  ]
+ ]
+}

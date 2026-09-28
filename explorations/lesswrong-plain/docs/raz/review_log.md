@@ -41,3 +41,33 @@ and superscript digits used as footnote markers.
 None blocking. For the whole-book pass: the original 52 posts are harsher in places than
 the new standard (for example "mind-reading", "only decoration" in The Lens That Sees Its
 Flaws). Bringing them in line is planned for the last step.
+
+## Batch 1: rest of Book I (25 posts), 28 September 2026
+
+Eight agents. Every edit in `docs/raz/changes/batch01.md`. About 20 edits across the
+25 posts, of the same kinds as in the pilot: claims stronger than the evidence ("reaches
+none of them", "does not fit", "a different fault"), a doubt from one secondary source
+repeated in three places, a naming point promoted to the verdict, one fable faulted for its
+example. No factual error was found in what remained.
+
+Corrections to earlier posts found by the batch (all checked, all logged):
+- When Science Can't Help: "refused to describe it at all" (My Wild and Reckless Youth gives
+  the prediction); Tegmark's 2000 calculation was disputed the same year (arXiv
+  quant-ph/0005025); a "he" for the author.
+- Say Not Complexity: "never defined" was wrong (the term is glossed in the sentence and
+  introduced in Fake Causality).
+- Making Beliefs Pay Rent: a pointer to a cut note now points to the phlogiston history in
+  Fake Causality.
+
+Tooling: md2tex link-text crash fixed (all earlier skeletons unchanged). Honest title line
+broken in two (it was the old overfull box on the title page).
+
+Known layout issue, not fixed: two bare URLs in the posts' own footnotes (Pretending to be
+Wise, Truly Part of You) run about 100pt into the margin. They are verbatim post text;
+a fix would be to have md2tex wrap bare URLs in \url{}, which changes skeletons and needs a
+notes re-export. Left for the whole-book pass.
+
+For the whole-book pass: Einstein's Arrogance now carries the full Peirce point, so the
+Faster Than Science note can become a pointer; The Futility of Emergence and Say Not
+Complexity both make the "unnamed crowds" point; the density of \cpara notes on the
+dialogue lines of The Simple Truth (149) is high.

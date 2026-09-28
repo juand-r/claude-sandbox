@@ -161,3 +161,46 @@ Why: Proportion: a naming point stays in the margin only (STANDARDS 2.4(2)).
 - Before: \nb{``Élan vital'' is Henri Bergson's term, from 1907. The historian
 - After: \nb{The historian
 
+
+## annotated/posts/fake-causality.tex
+
+Why: Fair-defender: message passing does handle double counting; the gap is only in detecting post-hoc links.
+
+- Before: \clogic{Not shown. The bookkeeping the post describes, separate forward and backward messages, works inside a network whose links are already given; Pearl's 1982 paper takes the probability of data given a hypothesis as a ``judgmental probability'' supplied from outside. The fault the post found in phlogiston theory was in how that link was set: ``You looked at the result first.'' Catching it would need a record of which observations were used to build the network, and the post does not describe one.}
+- After: \clogic{Asserted, not shown. Pearl's message passing does keep an observation from being counted twice, which covers the bouncing the post has just described. Whether it would also flag the phlogiston node as fake is a separate question. The links' probabilities are supplied from outside (Pearl's 1982 paper calls them ``judgmental probability''), and a link fitted after the fact, the fault the post found (``You looked at the result first''), looks like any other. The post does not say how the AI would tell them apart.}
+
+
+## annotated/afterwords/fake-causality.tex
+
+Why: Same correction as the note: the post names both faults; bookkeeping covers double counting, not post-hoc links.
+
+- Before: The Bayesian analogy explains a different fault from the one the post found. Pearl's bookkeeping stops one observation being counted twice while evidence moves through a network whose links are already given. The phlogiston fault, in the post's own words, was that ``You looked at the result first'': the link from phlogiston to fire was set to fit the fire.
+- After: The Bayesian analogy explains one of the two faults the post names. Pearl's bookkeeping stops one observation being counted twice while evidence moves through a network whose links are already given, and that covers the bouncing the post describes. The other fault, in the post's own words, was that ``You looked at the result first'': the link from phlogiston to fire was set to fit the fire.
+
+- Before: and to a promise, that bookkeeping would catch a cause fitted to its effect, which the bookkeeping described cannot keep.
+- After: and to a promise that bookkeeping would catch a cause fitted to its effect, which the bookkeeping described does not do.
+
+
+## honest/sections/fake-causality.tex
+
+Why: Same correction as the note: the post names both faults; bookkeeping covers double counting, not post-hoc links.
+
+- Before: \nb{That bookkeeping keeps one observation from being counted twice inside a network whose links are given. The fault the post found in phlogiston was in how a link was set, after looking at the result, and the bookkeeping keeps no record of that.}
+- After: \nb{That bookkeeping keeps one observation from being counted twice, which covers the bouncing. The post's other fault, a link set after looking at the result, it does not catch: the bookkeeping keeps no record of how a link was set.}
+
+
+## annotated/posts/say-not-complexity.tex
+
+Why: Found by batch 1: the term is glossed in the same sentence and introduced in Fake Causality; 'never defined' was wrong.
+
+- Before: It rests on a term, ``non-controlling causal node,'' that is never defined, and on a history
+- After: It rests on a term, ``non-controlling causal node,'' glossed only as ``a causal node that feels like an explanation but isn't'' (``Fake Causality'' introduced the idea as a ``non-constraining causal node''), and on a history
+
+
+## annotated/posts/making-beliefs-pay-rent.tex
+
+Why: Consistency: the phlogiston history is now given in full in Fake Causality; this pointer replaced a reference to a note cut earlier.
+
+- Before: the evidence is one historical example that is shaky (see notes).
+- After: the evidence is one historical example, loosely told (see the note, and the history in the notes on ``Fake Causality'').
+

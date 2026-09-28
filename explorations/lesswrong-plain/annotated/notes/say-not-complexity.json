@@ -2,7 +2,7 @@
  "slug": "say-not-complexity",
  "header": "\\post{Say Not \"Complexity\"}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/kpRSCH7ALLcb6ucWM/say-not-complexity}\n",
  "skeleton_sha": "bf39a66f4b64a4b2b4d883ee7ace58c567534173906d1bce07a28607a259605c",
- "post_sha": "38fab590de14bdb4d05efec7a7ff2311bc7703a4326b5162a1c92ab94c641c67",
+ "post_sha": "d434a6a17cd8ab29c60ca70fb95f1de9c676bda9c4b47383a0cc5297b6e14f5f",
  "edits": [],
  "notes": [
   [
@@ -47,7 +47,7 @@
   ],
   [
    3502,
-   "\\cpara{The general claim. It rests on a term, ``non-controlling causal node,'' that is never defined, and on a history (``since the ancient times'') that is never given. It says the mistake ``takes place below the level of words,'' which matters for the remedy two paragraphs on.}"
+   "\\cpara{The general claim. It rests on a term, ``non-controlling causal node,'' glossed only as ``a causal node that feels like an explanation but isn't'' (``Fake Causality'' introduced the idea as a ``non-constraining causal node''), and on a history (``since the ancient times'') that is never given. It says the mistake ``takes place below the level of words,'' which matters for the remedy two paragraphs on.}"
   ],
   [
    3842,

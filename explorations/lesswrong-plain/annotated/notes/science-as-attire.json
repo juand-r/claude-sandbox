@@ -1,0 +1,49 @@
+{
+ "slug": "science-as-attire",
+ "header": "\\post{Science as Attire}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/4Bwr6s9dofvqPWakn/science-as-attire}\n",
+ "skeleton_sha": "f46b2277bd5faf878c1073b685e0229310b3206068e21bbd2d4e6d66b0f6ac2e",
+ "post_sha": "1d57da3792240a12265a6c1bf81ece6e879ac74d5593fede4c6ff3c098aa147e",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Quotes a voice-over from an \\textsc{X-Men} trailer, which I could not find a source for, and introduces the mutant Storm, who throws lightning bolts.}"
+  ],
+  [
+   506,
+   "\\cpara{The post's example, and the argument holds. Making electricity, surviving it and controlling it are several complex adaptations, and evolutionary theory forbids their arising together from one mutation in one generation. A theory stretched to cover Storm would forbid nothing.}"
+  ],
+  [
+   1180,
+   "\\cpara{Says the comics use scientific words ``purely'' to place themselves in the genre of science. No evidence is given about the writers' purpose. The worry about the media is offered as ``wondering.''}"
+  ],
+  [
+   1501,
+   "\\cpara{Describes believers in evolution who do not know what it forbids: they speak of a next step, as if selection had a plan, or call computer chips, corporations and uploading ``evolution.''}"
+  ],
+  [
+   2071,
+   "\\clogic{The second complaint reads the ordinary meaning of the word as a claim of biology. Merriam-Webster's second sense of ``evolution'' is ``a process of continuous change from a lower, simpler, or worse to a higher, more complex, or better state,'' and its example sentences include ``an important step in the evolution of computers.'' Someone who calls a better chip design ``evolution'' is using that sense and claims nothing about evolutionary biology.}"
+  ],
+  [
+   2152,
+   "\\cpara{The diagnosis, offered with ``Probably'' and no evidence: most people who believe in evolution say ``because of evolution'' to belong to the scientific in-crowd.}"
+  ],
+  [
+   2740,
+   "\\clogic{The test the post ends with, asking what a belief forbids, can show that someone's belief in evolution forbids nothing. It cannot show why they hold it; the motive is the post's addition. The same gap, no way to tell attire from conviction, is noted at ``Belief as Attire.''}"
+  ],
+  [
+   2754,
+   "\\cpara{Turns to critics of strongly superhuman AI, who, the post says, call it pseudoscience because it resembles apocalyptic literature. No critic is named or quoted.}"
+  ],
+  [
+   3782,
+   "\\clogic{The post asks the critics for a model and gives none for the outcome they doubt. The post it links to, ``Is Molecular Nanotechnology `Scientific'?'' (20 August 2007), grounds its case in Drexler's reasoning ``from known science,'' and still calls the conclusion ``merely a best guess.'' No comparable reasoning for strongly superhuman AI is cited here.}"
+  ],
+  [
+   3979,
+   "\\cpara{Closes with a test for the reader: ask which experiences a scientific belief you are proud of forbids. ``Anything else is probably passwords or attire.''}"
+  ]
+ ]
+}

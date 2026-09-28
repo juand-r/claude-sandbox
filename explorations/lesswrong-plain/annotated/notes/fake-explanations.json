@@ -1,0 +1,73 @@
+{
+ "slug": "fake-explanations",
+ "header": "\\post{Fake Explanations}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/fysgqk4CjAwhBgNYT/fake-explanations}\n",
+ "skeleton_sha": "5db1b54c35888e7476fe88e7950eb1d2605b3fe2b09bb2fbbd8958b4494c98a6",
+ "post_sha": "31496cc0478e4b9255e71fab24f4f06da154c67b733fd38a1671975aff8fbf56",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Tells a joke from a collection of science jokes (footnote 1). Students asked why the near side of the plate is cool offer explanations; none says ``I don't know.''}"
+  ],
+  [
+   724,
+   "\\cpara{Gives the punch line: the instructor had turned the plate around.}"
+  ],
+  [
+   840,
+   "\\cpara{Asks whether a stammered ``heat conduction'' is a proper belief, which in the author's earlier posts means one that controls what you anticipate.}"
+  ],
+  [
+   1108,
+   "\\cpara{Sets ``because of heat conduction'' beside ``because of phlogiston'' and ``because of magic.''}"
+  ],
+  [
+   1332,
+   "\\cfact{Richard Feynman made the same comparison in ``Judging Books by Their Covers'' (\\textsc{Surely You're Joking, Mr. Feynman!}, 1985). Of a textbook that answered ``Energy makes it go'' for every picture, he wrote: ``Now that doesn't mean anything. Suppose it's `Wakalixes.' That's the general principle: `Wakalixes makes it go.' There's no knowledge coming in.'' The post does not mention him.}"
+  ],
+  [
+   1346,
+   "\\cpara{Grants that the two phrases differ, but says the difference is one of literary genre: Spock would say one, and Giles in \\textsc{Buffy the Vampire Slayer} the other.}"
+  ],
+  [
+   1716,
+   "\\cpara{States the test: a model's substance is what it leads you to expect. ``Heat conduction'' normally predicts a warmer near side.}"
+  ],
+  [
+   2263,
+   "\\clogic{Loosely stated. Heat conduction, with the right starting condition, does explain a cooler near side. That is the physicist's answer three paragraphs later: a plate that was turned around and is ``approaching equilibrium again.'' What the student's answer lacks is a starting condition that would produce the observation. The next paragraph's ``used in such fashion'' comes closer to this.}"
+  ],
+  [
+   2277,
+   "\\cpara{Concludes that an answer which fits any outcome carries no knowledge, so the student's ``heat conduction'' is no better than ``magic.''}"
+  ],
+  [
+   2398,
+   "\\clogic{The principle is Karl Popper's, uncredited here as in ``Your Strength as a Rationalist.''}"
+  ],
+  [
+   2545,
+   "\\cstyle{Two technical terms, ``maximum entropy'' and ``anticipation-isomorphic,'' neither defined here, for a plain claim: the answer gives every outcome the same probability.}"
+  ],
+  [
+   2603,
+   "\\cpara{Describes the alternative: measure temperatures and use the diffusion equation, so that a few measurements predict the rest. The author does not say how many would be needed (``I'm not physicist enough to know'').}"
+  ],
+  [
+   3154,
+   "\\cpara{Gives the answer a physicist would reach by measuring: the plate was in equilibrium two and a half minutes ago, was turned around, and is returning to equilibrium.}"
+  ],
+  [
+   3451,
+   "\\cpara{Names the students' deeper error: they thought that saying ``because of'' followed by words from \\textsc{Star Trek} was doing physics.}"
+  ],
+  [
+   3783,
+   "\\cpara{The verdict: the students moved their magic from one literary genre to another.}"
+  ],
+  [
+   3870,
+   "\\cpara{Cites the joke collection. I could not open the archived link, and I did not find the joke on Verhagen's current site.}"
+  ]
+ ]
+}
