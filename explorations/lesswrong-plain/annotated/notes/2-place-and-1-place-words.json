@@ -1,0 +1,129 @@
+{
+ "slug": "2-place-and-1-place-words",
+ "header": "\\post{2-Place and 1-Place Words}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/eDpPnT7wdBwWPGvo5/2-place-and-1-place-words}\n",
+ "skeleton_sha": "e4ee41cbc208d8a306b44f92503fdc8c35fae863e41a3358c61bb0e9a5d3e001",
+ "post_sha": "a6d640edf0d352269bcb553b239964884dd2dd8d949b5933a090cb2651ec15ee",
+ "edits": [],
+ "notes": [
+  [
+   207,
+   "\\cpara{Recalls ``Mind Projection Fallacy'' (11 March 2008, earlier in this book), where the same magazine covers illustrate the claim that people perceive sexiness as a property of the woman rather than of the admirer.}"
+  ],
+  [
+   473,
+   "\\cpara{Gives the artist, now called Fred, an explicit argument: the monster can see that human skin is pleasanter than scales. The speech is a hypothetical, and it states the assumption the earlier post attributed to the artists.}"
+  ],
+  [
+   808,
+   "\\cpara{States the diagnosis in function notation: sexiness takes an admirer and an entity, and Fred treats it as taking the entity alone. Philosophers call analyses of this form response-dependent: the property is defined by a response in a subject, and the subject is one of the arguments. The Stanford Encyclopedia (``Moral Sentimentalism'') describes a simple version for moral words that works by ``indexing moral properties to subjects.''}"
+  ],
+  [
+   1124,
+   "\\cpara{Explains why the one-place form hides the admirer. The same analysis is one standard way of stating relativism. The Stanford Encyclopedia (``Relativism'') describes a ``hidden parameter'' account on which predicates such as ``beautiful'' and ``right'' ``have the apparent logical form of one-place predicates'' but ``prove to be elliptical for two-place predicates.''}"
+  ],
+  [
+   1320,
+   "\\cpara{Names the error after two earlier posts and reuses the example of the left side of the road from ``Variable Question Fallacies.'' The notes on those posts give the older names for the two errors: equivocation, and Hume's account of the mind's tendency to project its feelings onto objects.}"
+  ],
+  [
+   1777,
+   "\\cpara{Offers a second analysis: each speaker's ``sexy'' names a different one-place function. For moral words this is what the Stanford Encyclopedia (``Moral Relativism'') calls moral contextualism, attributed to Harman and to Dreier (1990): the content of a moral sentence depends on the context of use, ``similar to the way the content of indexical sentences'' does. The post calls the two analyses ``equally valid'' and does not choose between them.}"
+  ],
+  [
+   2135,
+   "\\cpara{Draws the consequence: on this view a woman's Fred::Sexiness is a fact any onlooker can check, since the function is specified by features of the woman and need not mention Fred.}"
+  ],
+  [
+   2498,
+   "\\cpara{Separates using a function from being mentioned in it, and proposes a neutral name for Fred's function so that the name does not refer to Fred.}"
+  ],
+  [
+   2984,
+   "\\cpara{Adds that which function Fred uses is an empirical fact about Fred, and that another person might use the same one.}"
+  ],
+  [
+   3205,
+   "\\cpara{Gives the monster's function, Sexiness\\_72546, on which a slime mold scores higher than the woman.}"
+  ],
+  [
+   3557,
+   "\\cpara{Concludes that once both functions are named, all observers agree on every value. On this view Fred and Bloogah do not disagree about the woman; they apply different functions.}"
+  ],
+  [
+   3712,
+   "\\cpara{Introduces currying, with an example from programming: a two-argument function given one argument becomes a one-argument function.}"
+  ],
+  [
+   4232,
+   "\\cpara{Explains the example: plus, given 2, becomes a function that adds 2 to any input.}"
+  ],
+  [
+   4532,
+   "\\cpara{Adds the strict view, on which every function takes one argument and may return a function, and gives the type notation for plus.}"
+  ],
+  [
+   5166,
+   "\\cpara{Applies currying to the word: ``sexiness'' takes an admirer and returns a fixed function describing how that admirer judges. In the philosophy of language this two-step structure is David Kaplan's distinction between character and content, which the Stanford Encyclopedia (``Two-Dimensional Semantics'') states in the same terms: ``a character is a function that takes as input a context and yields as output a function from possible worlds to extensions.'' Kaplan's contexts are made of a speaker, a time and a world; the post's are admirers.}"
+  ],
+  [
+   5401,
+   "\\clogic{Because the returned function is fixed, it would not change if Fred's tastes later changed. Dispositional theories of value make a similar move, called rigidification (Wiggins 1987), to answer the objection that if we came to approve of slavery, slavery would become right (Stanford Encyclopedia, ``Moral Sentimentalism'').}"
+  ],
+  [
+   5582,
+   "\\cpara{Completes the example: Sexiness(Fred) returns Sexiness\\_20934, and that its value for the woman is 5 is a fact about the woman.}"
+  ],
+  [
+   5900,
+   "\\cpara{Introduces Putnam's Twin Earth, which the book has discussed before, in ``Heat vs. Motion'' and ``Reductive Reference.''}"
+  ],
+  [
+   6471,
+   "\\cpara{Gives the first answer, which ties the meaning of ``water'' to the test in the speaker's mind.}"
+  ],
+  [
+   6620,
+   "\\cpara{Gives the second answer, which ties the meaning to the substance. This is close to Putnam's own conclusion; see the notes on ``Reductive Reference.''}"
+  ],
+  [
+   6730,
+   "\\cpara{Gives the post's resolution: read as a world-eating concept, ``water'' is the same on both planets and returns different substances. The notes on ``Heat vs. Motion'' explain that this reading and the next correspond to the two ways of evaluating a world in two-dimensional semantics.}"
+  ],
+  [
+   7078,
+   "\\cpara{Gives the other reading, on which ``water'' means H20 on both planets, so Twin Earth has none.}"
+  ],
+  [
+   7243,
+   "\\cpara{Treats the question of what ``water'' really means as verbal, with a link to ``Disputing Definitions.''}"
+  ],
+  [
+   7426,
+   "\\cpara{Says that choosing one definition is not enough; one must learn to notice both forms.}"
+  ],
+  [
+   7687,
+   "\\cpara{Restates the world-eating reading, now called uncurried.}"
+  ],
+  [
+   8058,
+   "\\cpara{Restates the fixed reading, the result of applying ``water'' to our Earth.}"
+  ],
+  [
+   8263,
+   "\\cpara{A claim about a large debate, stated without argument. The two-level answer had been developed as two-dimensional semantics, and it did not end the debate. The Stanford Encyclopedia reports that its general version ``has attracted a wide variety of criticisms,'' aimed at its reliance on a priori conceptual analysis and at its claim that the world-eating function, which the entry calls the 1-intension, captures a kind of meaning. Those are disputes about knowledge and meaning, not only about which form one uses by instinct, so the sentence claims more than the post shows.}"
+  ],
+  [
+   8438,
+   "\\cpara{Returns to Fred: by instinct his brain evaluates his own function and labels the result as a property of the woman, so he must deliberately think of sexiness as two-place. The model of what the brain does is the one from ``Mind Projection Fallacy''; see the notes there.}"
+  ],
+  [
+   8869,
+   "\\cpara{Explains why Fred's mistake is natural: the function he uses mentions only women. The monster would compute Sexiness\\_20934 the same way if it cared to; it simply uses another function to choose.}"
+  ],
+  [
+   9348,
+   "\\cpara{States the purpose: the analysis will be used later to taboo ``objective'', ``subjective'' and ``arbitrary''. The post does not apply it to moral words here. When philosophers apply the speaker-indexed form to moral words, its best-known difficulty is what the Stanford Encyclopedia (``Moral Sentimentalism'') calls the Missing Disagreement Problem (Moore 1912): if Ann says eating people is wrong and Beth says it is not, and each speaks of their own standard, their utterances ``don't contradict each other,'' though they seem to disagree.}"
+  ]
+ ]
+}

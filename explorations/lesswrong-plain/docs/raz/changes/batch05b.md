@@ -70,3 +70,22 @@ Why: The extension is the post's proposal; describing it as "made by a question"
 - Before: with precedents in Davidson and Rawls, extended by a question to a view close to
 - After: with precedents in Davidson and Rawls, extended to a view close to
 
+
+## annotated/afterwords/sorting-pebbles-into-correct-heaps.tex
+
+Why: A fable illustrates; the post claims no more against relativism than the story shows. Neither is a fault, so both leave the In short line.
+
+- Before: In short: a well-made fable that shows two things clearly, that disagreement and change are compatible with a fixed criterion, and that a criterion a species shares need not be shared by other minds; the second is stipulated by the story and argued elsewhere, and the relativists it answers are those who deny progress.
+- After: In short: a well-made fable that shows two things clearly: that disagreement and change are compatible with a fixed criterion, and that a criterion a species shares need not be shared by other minds, a point argued in ``No Universally Compelling Arguments.''
+
+
+## annotated/afterwords/2-place-and-1-place-words.tex
+
+Why: Scope: this post does not apply the analysis to morality, so the moral-language difficulties are reduced to a pointer; "does not engage" was a scope sentence.
+
+- Before:  The post, which treats what ``water'' really means as a verbal question, does not engage those criticisms.
+- After: 
+
+- Before: The post says the analysis is meant for later use on words like ``objective'' and ``subjective'', and the book goes on to apply it to morality. For sexiness the post calls its two views ``equally valid''. For moral words, philosophers have found that the choice has costs. If each speaker's ``wrong'' names a different function, two speakers who seem to disagree do not contradict each other. If the function tracks the speaker's tastes as they change, slavery would become right if we came to approve of it, which is why some theories fix the function, as the post's curried form does. Whether the later posts meet these difficulties is a question for those posts.
+- After: The post says the analysis is meant for later use on words like ``objective'' and ``subjective'', and the book goes on to apply it to morality. For moral words each form has a known difficulty, lost disagreement for the first and changing tastes for the second; the notes record them, and the later posts are where they bear.
+

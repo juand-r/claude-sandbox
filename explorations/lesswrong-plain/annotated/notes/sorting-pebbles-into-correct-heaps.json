@@ -1,0 +1,85 @@
+{
+ "slug": "sorting-pebbles-into-correct-heaps",
+ "header": "\\post{Sorting Pebbles Into Correct Heaps}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/mMBTPTjRbsrqbSkZE/sorting-pebbles-into-correct-heaps}\n",
+ "skeleton_sha": "92e5d54c922403c368c349b136efcd47d95ee5b66809c251052c5f666dbbb3d6",
+ "post_sha": "9ea75c9a9ed2a4f0fa9f7e0f20e4145226a807195f41c4e08ef55c3c6f24eb86",
+ "edits": [],
+ "notes": [
+  [
+   154,
+   "\\cpara{Opens the fable: a species, of uncertain nature, whose passion is sorting pebbles into correct heaps.}"
+  ],
+  [
+   366,
+   "\\cpara{Sets the premise the story depends on: the Pebblesorters cannot say why a heap is correct, yet all agree that making correct heaps matters more than anything.}"
+  ],
+  [
+   582,
+   "\\cpara{Offers two guesses at the origin of the passion, and both make it an accident of history. In Fisherian runaway, a mating preference and the trait it favours reinforce each other; the peacock's tail is the classic example (Wikipedia, ``Fisherian runaway''). The other guess is an abandoned work of art.}"
+  ],
+  [
+   897,
+   "\\cpara{Has the philosophers declare heap-sorting the meaning of life, and the only justified reason to eat, mate or trade.}"
+  ],
+  [
+   1312,
+   "\\cpara{Introduces the disagreement that drives the rest of the story.}"
+  ],
+  [
+   1441,
+   "\\cpara{The rule the story never states is primality. The early heaps (23, 29) are prime; Biko's 91 is not, since $91 = 7 \\times 13$. The Pebblesorters come to reject 91 by an ``intuition'' among ``the smartest and most educated,'' without being able to say why, as the premise requires. The author confirmed the reading twelve days later, in ``Invisible Frameworks'' (22 August 2008, not in this book): Pebblesorters moved by the argument about 91 ``are asking whether 91 is prime or composite.''}"
+  ],
+  [
+   2274,
+   "\\cpara{Closes the episode: the correction is permanent, as a correction of arithmetic would be.}"
+  ],
+  [
+   2367,
+   "\\cpara{The war over 1957 ends with a proof. The two heaps exhibited are its factors, $19 \\times 103 = 1957$, so 1957 is not prime. The joke is that a decisive argument wins only a reluctant concession, ``at least for the time being.''}"
+  ],
+  [
+   2769,
+   "\\cfact{Y'ha-nthlei is the undersea city in H. P. Lovecraft's story ``The Shadow over Innsmouth'' (Wikipedia).}"
+  ],
+  [
+   3217,
+   "\\cpara{Introduces the Heap Relativists. The one reading of motive (``who seem to take a tangible delight in shocking others'') belongs to the fable's narrator and is hedged. Their argument is the argument from disagreement and change: opinions on large heaps differ and have shifted, so nothing makes a heap of 91 ``really'' incorrect. The story has already answered it, because the reader knows that 91 is composite. Disagreement over hard cases, and change over time, are compatible with a fixed criterion that the disputants cannot state. This is the standard objectivist reply, which the Stanford Encyclopedia (``Moral Relativism'') puts as the claim that in a disagreement at least one party typically errs through ``some factual or logical mistake.''}"
+  ],
+  [
+   4327,
+   "\\clogic{The objection that relativism cannot account for progress is also standard: the same entry says relativism ``conflicts with widely accepted views about moral progress.'' It also gives a reply on behalf of relativism, that progress can be made ``by people coming to accept the implications of values already held.'' That is the kind of progress the story shows. So the story tells against the Heap Relativists' denial of progress, which a relativist need not share, more than against relativism in general.}"
+  ],
+  [
+   4341,
+   "\\cpara{Turns to AI. The Heap Relativists give the warning that the story's ending supports, that AIs may not share the Pebblesorters' idea of correct heaps. Their reason is the relativism just mocked (``no righter or wronger than us''), and their remedy is a bomb strapped to every computer. The satire falls on both camps.}"
+  ],
+  [
+   5214,
+   "\\cpara{States the majority view: a superintelligence would ``see at a glance'' which heaps are correct. The joke turns on two senses of seeing. An AI could tell at a glance which heaps are prime; the story's point is that telling is not caring.}"
+  ],
+  [
+   5616,
+   "\\cpara{The central thought experiment: Biko's AI, built to maximize heaps of 91, is expected to see that its utility function is incorrect and rewrite it. The story leaves the answer to the reader. It is the claim of ``No Universally Compelling Arguments'' (whose notes give Bostrom's later name for it, the orthogonality thesis): nothing in intelligence itself supplies the Pebblesorters' criterion.}"
+  ],
+  [
+   6254,
+   "\\cfact{Stephen Omohundro had argued, earlier the same year, that a rational agent will protect its utility function from change: ``AIs will try to preserve their utility functions'' (``The Basic AI Drives,'' AGI-08 conference, March 2008). The paper also lists exceptions, situations in which such systems ``will try to change them.''}"
+  ],
+  [
+   6268,
+   "\\cpara{Has the majority call an AI that values heaps of 8 ``stupid,'' and therefore harmless: a goal unlike theirs is taken for a lack of intelligence. This is the confusion the story is built to expose.}"
+  ],
+  [
+   6401,
+   "\\cpara{Satirizes a way of building AI (random algorithms on big computers until intelligence ``emerges'') and an argument from history: richer, better educated civilizations agree on heaps their ancestors disputed. Within the story the trend is real; what the story disputes is its extension to other minds.}"
+  ],
+  [
+   6929,
+   "\\cpara{Extends the trend across species. The Pebpanzees make heaps of 2 or 3, both prime, and ``occasionally stupid heaps like 9'' ($3 \\times 3$); fish make none. The story implies the reason for the correlation: the cousins share the Pebblesorters' criterion and compute it worse.}"
+  ],
+  [
+   7237,
+   "\\cpara{Ends on a question the story has answered for the reader: the trend holds because every mind in it shares one criterion, and an AI built another way need not share it. The post does not apply the parable to human values; it leaves that to the reader. It was posted two days after ``Morality as Fixed Computation'' (8 August 2008), where the author says that what we name by ``right'' is ``a fixed question''; the book places that post later (order 279).}"
+  ]
+ ]
+}
