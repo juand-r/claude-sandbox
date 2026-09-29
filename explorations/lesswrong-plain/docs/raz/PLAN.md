@@ -54,4 +54,4 @@ posts are merged in.
 | 4a | Lawful Truth, Reductionism 101, Joy in the Merely Real (Book IV) | 31 | yes | yes | db86c92 |
 | 4b | Physicalism 201 (Book IV) | 15 | yes | yes | 827d4ec |
 | 4c | Quantum Physics and Many Worlds (Book IV) | 14 | yes | yes | 31385e8 |
-| 4d | Science and Rationality (rest of Book IV) | 11 | yes | yes | (this commit) |
+| 4d | Science and Rationality (rest of Book IV) | 11 | yes | yes | 9a5f4ab |
