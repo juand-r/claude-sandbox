@@ -113,6 +113,19 @@ Use `.venv/bin/python` for every script.
 - Never put the user's email address or any personal data in a request (User-Agent
   headers included). Use a generic User-Agent such as "raz-annotation-research".
 
+## Lessons from Book V, first batch
+
+- If the post itself qualifies or concedes a point ("a good many of them break the loop",
+  "might", the author's reply in the comments), do not criticize the unqualified version.
+- A note that ends "the point holds on either side" is information; keep it out of the
+  Response.
+- Do not write "the post does not name" or "names none of the earlier work" about prior work
+  that supports the post. Give the credit plainly.
+- Read a prescription as a prescription: "a philosophy that would keep X had better not call
+  X unjustified" is not refuted by a philosopher who did both; that is the case it rules out.
+- Before naming a philosophical distinction (ethical versus psychological egoism, internalism
+  versus externalism), check that the post's claim is the kind the distinction applies to.
+
 ## Do not
 
 - Do not edit any file other than the ones for your assigned slugs, and your reports.

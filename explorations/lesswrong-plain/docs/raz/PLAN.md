@@ -56,7 +56,7 @@ posts are merged in.
 | 4c | Quantum Physics and Many Worlds (Book IV) | 14 | yes | yes | 31385e8 |
 | 4d | Science and Rationality (rest of Book IV) | 11 | yes | yes | 9a5f4ab |
 | 5a | Fake Preferences, Value Theory 270 to 273 (Book V) | 12 | yes | yes | d3a6a4e |
-| 5b | Value Theory 274 to 285 (Book V) | 12 | running | | |
+| 5b | Value Theory 274 to 285 (Book V) | 12 | running (6 agents) | | |
 | 5c | Quantified Humanism (rest of Book V) | 9 | | | |
 | 6a | Yudkowsky's Coming of Age (Book VI) | 13 | | | |
 | 6b | Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI) | 11 | | | |
