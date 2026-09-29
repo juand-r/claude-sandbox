@@ -1,0 +1,133 @@
+{
+ "slug": "morality-as-fixed-computation",
+ "header": "\\post{Morality as Fixed Computation}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/FnJPa8E9ZG5xiLLp5/morality-as-fixed-computation}\n",
+ "skeleton_sha": "81d0da5f34e31a78bd551fa3ea632cc3a419ad2cef456ae9b75007524e1f4d5a",
+ "post_sha": "99831f7ae1ee7811cc88aeab2c070a3340c20487a28188b522a724fa31c08e4c",
+ "edits": [],
+ "notes": [
+  [
+   231,
+   "\\cpara{Ord's one-sentence summary, posted as a comment on ``The Meaning of Right'' (29 July 2008). It is close to the full-information accounts of Brandt and Railton, on which what is good for a person is what a fully informed counterpart of that person would want (SEP, ``Moral Naturalism,'' section 6).}"
+  ],
+  [
+   467,
+   "\\cpara{Credits Ord and announces a new explanation, following the route by which the author reached the view: the design of an AI.}"
+  ],
+  [
+   708,
+   "\\cpara{Sets up the thought experiment: an AI governed by ``Do what I want.'' A parenthesis sets aside, with a link to ``The Hidden Complexity of Wishes,'' the point that goal systems cannot be built from English sentences.}"
+  ],
+  [
+   1000,
+   "\\cpara{Specifies the AI's values: what it scores depends both on what the programmer wants and on how much of the wanted thing exists.}"
+  ],
+  [
+   1320,
+   "\\cpara{The table checks. Each utility is the strength of the want (weak 1, strong 2) times the quantity of the thing wanted, and zero when the thing that exists is not the thing wanted. A strong want for 30 of Y scores 60; the original weak want for 20 of X scores 20.}"
+  ],
+  [
+   1607,
+   "\\cpara{Gives the verdict; the reason follows.}"
+  ],
+  [
+   1675,
+   "\\cpara{The reason: making the programmer strongly want something cheap scores higher than meeting the want the programmer had.}"
+  ],
+  [
+   1934,
+   "\\cpara{Answers with a general rule, linked to ``The Hidden Complexity of Wishes.'' The next three paragraphs give the cases.}"
+  ],
+  [
+   2104,
+   "\\cpara{First patch, a bounded utility: the AI still gains by making the programmer want something it is certain to obtain. The reply depends on the AI maximizing expected utility, as the paragraph says.}"
+  ],
+  [
+   2399,
+   "\\cpara{Second patch, forbidding any change to the programmer: this would forbid talking, since talking to someone changes them.}"
+  ],
+  [
+   2555,
+   "\\cpara{Third patch, forbidding some kinds of change: the AI would look for the kinds not forbidden.}"
+  ],
+  [
+   2759,
+   "\\cpara{The rule again, supported here by the three patches. The linked post makes its case for a device that pushes its score as high as it can; see the note there on genies that optimize less hard.}"
+  ],
+  [
+   2839,
+   "\\cpara{The observation the post rests on: people do not judge a future good just because the wants in it are met, so they would refuse to be changed into wanting something cheap. The point is old in moral philosophy, and the post's case is a new illustration of it. The SEP entry ``Moral Sentimentalism'' (by Antti Kauppinen) states it, citing C. D. Broad (1944--45): if we came to approve of slavery, the correct description would be not that slavery had become right ``but that we have become worse people.'' The entry calls this the ``Missing Rigidity Problem'' of simple subjectivism.}"
+  ],
+  [
+   3508,
+   "\\cpara{Restates the AI problem as a problem in moral philosophy: wanting something does not make it right.}"
+  ],
+  [
+   3950,
+   "\\cpara{Introduces the calculator analogy.}"
+  ],
+  [
+   4069,
+   "\\cpara{The two calculators. The second asks what it will itself output, so any output answers its question correctly.}"
+  ],
+  [
+   4343,
+   "\\cpara{The first calculator has a right answer to aim at.}"
+  ],
+  [
+   4417,
+   "\\cpara{The second has none: whatever it returns becomes correct.}"
+  ],
+  [
+   4600,
+   "\\cpara{Applies the analogy: people are like the first calculator, and the ``Do what I want'' AI is built like the second. The claim about people rests on the observation made above about how we judge futures.}"
+  ],
+  [
+   4751,
+   "\\cpara{Adds the difficulty: the calculator cannot read out its own question, which the post, linking to ``Thou Art Godshatter'' and ``Fake Utility Functions,'' calls ``extremely complicated'' with ``no simple approximation.''}"
+  ],
+  [
+   5316,
+   "\\cpara{Explains why the obvious shortcut fails: rewarding the AI for answering whatever question the calculator asks rewards it for changing the question, which is the second calculator again.}"
+  ],
+  [
+   5968,
+   "\\cpara{Leaves the design problem aside, parts of it unsolved (``some of which I'm still working out myself'').}"
+  ],
+  [
+   6081,
+   "\\cpara{Turns back to moral philosophy: the AI's flaw corresponds to the objection that if what is right is a preference, anything anyone wants is right.}"
+  ],
+  [
+   6373,
+   "\\cpara{``The Meaning of Right'' (29 July 2008) is not in this book. It gives the same view in the terms of ``2-Place and 1-Place Words'': `right' names a ``1-place function,'' so that if someone slipped the author a pill causing a wish to kill, then ``in this subjunctive world, it is not right to kill people.''}"
+  ],
+  [
+   6552,
+   "\\cpara{The post's central claim: `right' names a fixed question, which moral arguments may refine but which ``grows out of a particular starting point.'' Two standard positions are close to it. Frank Jackson's moral functionalism (\\textsc{From Metaphysics to Ethics}, 1998) takes moral terms to pick out whatever satisfies our moral platitudes once reflection and discussion have refined them into a ``mature folk morality,'' which we do not yet have (SEP, ``Moral Naturalism,'' section 7). Ideal-observer and idealized-desire theories, when the result of idealizing depends on where one starts, can fix the starting point in actual human sentiments; the SEP entry ``Moral Sentimentalism'' calls this ``a rigidification move'' (citing Wiggins, 1987).}"
+  ],
+  [
+   7279,
+   "\\cpara{The answer to Ord. The AI example tells against a view on which rightness follows whatever is wanted, however the want arose; Ord's formula idealizes (``were I fully informed''), and idealized views are usually taken to escape that problem (SEP, ``Moral Sentimentalism,'' section 4.2). In the comments the difference narrowed. When Robin Hanson observed that the author would not describe the view by an ideal counterfactual such as ``having heard and understood all relevant arguments,'' the author replied: ``Oh, I'd be perfectly willing to describe it in those terms, if I thought I could get away with it. But you can't get away with that in FAI work,'' because ``how to construe that counterfactual is itself a moral judgment.''}"
+  ],
+  [
+   7371,
+   "\\cpara{The positive answer. The question is given by examples and an ellipsis; the next paragraph grants that the author may not know what it is.}"
+  ],
+  [
+   7584,
+   "\\cpara{Grants that the question cannot be written out, and says the author knows, ``as all non-moral-relativists instinctively know,'' that it is not just ``How can I do whatever I want?'' The post's examples of the question have moved between ``my friends,'' ``my people'' and ``we.'' Ord asked in the comments where ``the particular question is supposed to come from'' and proposed that each person P has a question, Q\\_P; the author's replies use that notation.}"
+  ],
+  [
+   7856,
+   "\\clogic{The best-known objection to naturalist views of this kind is Horgan and Timmons's Moral Twin Earth argument, made against Cornell realism in 1991 and in 2009 against Jackson's view (a chapter I could see only in listings). On such views, if a people's use of `right' were governed by different standards, their word would mean something else; Horgan and Timmons argue that we would judge instead that they disagree with us (SEP, ``Moral Naturalism,'' section 6). The previous post in the book, ``Could Anything Be Right?'', says that such a mind may be ``asking a different question.''}"
+  ],
+  [
+   7870,
+   "\\cpara{Ends with the distinction between a word and what it names, from ``The Quotation is not the Referent'': here, between the word `right' and the question it refers to.}"
+  ],
+  [
+   8138,
+   "\\cpara{A note about a display error when the post first appeared.}"
+  ]
+ ]
+}

@@ -140,3 +140,63 @@ Why: Same as the Response.
 - Before:  Earlier the post had named another way to care about others, an abstract desire for them to get what they want, and set it aside only for humans, because mirroring was already there. It does not say why an alien without mirroring could not care that way.}
 - After: }
 
+
+## annotated/afterwords/morality-as-fixed-computation.tex
+
+Why: Fair reading: the post's claim is about what the question means; the author's comment says an idealized counterfactual is acceptable as a description but cannot be specified without a moral judgment. Given as information, not as overstatement. The patch point is a nitpick in a post about maximizing AIs.
+
+- Before: The contrast with Ord's summary is drawn more sharply than it holds. The AI example
+- After: The contrast with Ord's summary is narrower than it first appears. The AI example
+
+- Before:  That is a real point, but it is not in the post. A reader of the post alone is told that Ord's sentence is not the meaning, and is not told that the remaining difference is how the idealization is specified.
+- After:  The remaining difference is how the idealization is specified.
+
+- Before: One claim goes beyond what the post shows. ``It is not possible to patch flawed FAI designs'' is stated twice as a general rule; the three patches tried are each answered in a sentence, and two of the answers depend on the AI's maximizing. And one question is left open:
+- After: One question is left open:
+
+- Before: which draws its contrast with Ord's summary more sharply than the author's own comments support.
+- After: whose difference from Ord's idealized summary, as the author's comments show, lies in how the idealization is specified.
+
+
+## honest/sections/morality-as-fixed-computation.tex
+
+Why: Fair reading: the post's claim is about what the question means; the author's comment says an idealized counterfactual is acceptable as a description but cannot be specified without a moral judgment. Given as information, not as overstatement. The patch point is a nitpick in a post about maximizing AIs.
+
+- Before:  \nb{Two of the three dismissals rely on the AI's being a maximizer.}
+- After: 
+
+
+## annotated/posts/magical-categories.tex
+
+Why: The prize note sits beside the post's remark on Hibbard's fitness and reads as a rejoinder; not about this post. The "wannabes" remark is one the post itself sets aside.
+
+- Before: \cfact{Hibbard later worked on unintended AI behavior. According to Hibbard's own page, the paper ``Avoiding Unintended AI Behaviors'' won the Singularity Institute's prize for the best AGI safety paper at the AGI-12 conference, in 2012.}
+- After: 
+
+
+## honest/sections/magical-categories.tex
+
+Why: The prize note sits beside the post's remark on Hibbard's fitness and reads as a rejoinder; not about this post. The "wannabes" remark is one the post itself sets aside.
+
+- Before:  \nb{In 2012 Hibbard's paper ``Avoiding Unintended AI Behaviors'' won the Singularity Institute's prize for the best AGI safety paper.}
+- After: 
+
+
+## annotated/afterwords/magical-categories.tex
+
+Why: The prize note sits beside the post's remark on Hibbard's fitness and reads as a rejoinder; not about this post. The "wannabes" remark is one the post itself sets aside.
+
+- Before: Two smaller points. The post says
+- After: One smaller point. The post says
+
+- Before:  And the remark that ``most AGI/FAI wannabes'' are unsuited to the task rests on a link to a mailing-list archive; the post itself sets it aside.
+- After: 
+
+
+## annotated/posts/morality-as-fixed-computation.tex
+
+Why: Same as the Response: the post is about maximizing AIs.
+
+- Before: The rule again. Its support here is the three patches, each answered in a sentence; the first and third answers rely on the AI's being a maximizer (``as an expected utility maximizer,'' ``superintelligently seek out loopholes''). The linked post
+- After: The rule again, supported here by the three patches. The linked post
+

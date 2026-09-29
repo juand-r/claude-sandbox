@@ -1,0 +1,197 @@
+{
+ "slug": "magical-categories",
+ "header": "\\post{Magical Categories}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/PoDAyQMWEXBBBEJ5P/magical-categories}\n",
+ "skeleton_sha": "bf76c23ffa2e97c5c2be49271b9c469a377e75e48a0310cfda7a2a8e88069a16",
+ "post_sha": "7175dd1cbabd453e6ed10358d5eabac727b4c8a5b90a196777cff74313c6f412",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{The quotation checks against Hibbard's column ``Super-intelligent Machines'' (\\textsc{Computer Graphics} 35(1), 2001). The column goes on: the machines would also learn ``algorithms for predicting future human happiness'' and ``human quality of life measures, such as health and wealth,'' and Hibbard warns against reducing their values to ``a single number such as maximizing average human happiness.''}"
+  ],
+  [
+   762,
+   "\\cpara{Hibbard's own page calls the piece a column, in \\textsc{Computer Graphics}, published by ACM SIGGRAPH, and says it summarizes a book draft; the book, \\textsc{Super-Intelligent Machines}, appeared in 2002. I could not confirm that the column was peer reviewed. The book alone shows that the position is not a strawman.}"
+  ],
+  [
+   928,
+   "\\cpara{Irony, before the argument.}"
+  ],
+  [
+   985,
+   "\\cpara{Reports Hibbard's reply to a draft of the author's chapter on AI and global risk, which had asked whether Hibbard's AI would tile the galaxy with molecular smiley faces.}"
+  ],
+  [
+   1266,
+   "\\cpara{The quotation checks against Hibbard's message to the SL4 list (5 June 2006). The same message made two more objections: that the chapter conflated Hibbard's idea with the army's neural networks (``I never said \\ldots\\ should be done using neural networks like those used by the army''), and that Hibbard's 2004 paper had replaced the 2001 proposal. The post again follows Hibbard's words with the tank story, but its argument from the count of concepts applies to any learner, and it takes up the 2004 proposal in its last paragraph.}"
+  ],
+  [
+   1792,
+   "\\cpara{A remark on Hibbard's fitness to discuss AI morality, prompted by Hibbard's charge of a ``preference for drama over reason'' (which checks, in Hibbard's ``Reply to AIRisk''). The post sets it aside as ``not my primary topic today,'' and the argument does not use it. Its claim that ``most AGI/FAI wannabes'' are unsuited rests on a link to a mailing-list archive.}"
+  ],
+  [
+   2576,
+   "\\cpara{States the topic: Hibbard's claim that a good implementation would make the discriminations that humans find trivial.}"
+  ],
+  [
+   2754,
+   "\\cpara{The story's provenance. Gwern Branwen's investigation, ``The Neural Net Tank Urban Legend,'' collects versions back to the early 1990s and concludes that the story is ``definitely not real as usually told''; its probable seed is a question Edward Fredkin asked in the 1960s about early tank-recognition work, which was not shown to apply. The post's version, with 100 photos of each kind, half held back, and the Pentagon's own tests, is close to one Neil Fraser posted in 1998 (quoted there). The post's hedges, ``I've never tracked down an original source'' and ``might or might not be fact,'' fit what Gwern found.}"
+  ],
+  [
+   3037,
+   "\\cpara{The training set: 50 photos of each kind, all classified correctly.}"
+  ],
+  [
+   3419,
+   "\\cpara{Explains why success on the training set proves nothing: the network may have learned the photos one by one.}"
+  ],
+  [
+   3748,
+   "\\cpara{The held-out test: the other 100 photos, all classified correctly.}"
+  ],
+  [
+   4099,
+   "\\cpara{The failure: in the Pentagon's own tests the network did no better than chance.}"
+  ],
+  [
+   4304,
+   "\\cpara{The cause: the tanks had been photographed on cloudy days and the empty forest on sunny ones.}"
+  ],
+  [
+   4622,
+   "\\cpara{Draws the lesson: if training cases and real cases do not come from the same process, past success guarantees nothing. That is the standard assumption behind supervised learning, that examples are drawn ``i.i.d.'' from one fixed distribution (Wikipedia, ``Domain adaptation''); the problem is now studied as distribution shift.}"
+  ],
+  [
+   5337,
+   "\\cpara{The arithmetic checks: $256 \\times 256 = 65{,}536$ pixels, $2^{65536}$ black-and-white images, $2^{2^{65536}}$ ways to divide them into positive and negative, and, without inductive bias, $2^{65536}$ yes-or-no examples to single out one division, since each gives at most one bit. Read ``265536'' as $2^{65536}$; the superscript was lost in this text, and LessWrong prints it. The argument is that of ``Superexponential Conceptspace,'' where the notes check it and credit its source, Tom Mitchell's \\textsc{Machine Learning}.}"
+  ],
+  [
+   6217,
+   "\\cpara{Points back to that post.}"
+  ],
+  [
+   6438,
+   "\\cpara{Repeats Hibbard's proposal.}"
+  ],
+  [
+   6866,
+   "\\cpara{Repeats Hibbard's reply.}"
+  ],
+  [
+   7392,
+   "\\cpara{The post's central distinction: telling two images apart is not the same as classifying a new image under a concept. It answers Hibbard's ``discriminations that are trivial to current humans,'' and also the charge in Hibbard's ``Reply to AIRisk'' that the chapter assumed an AI able to control the galaxy yet ``so unintelligent that it cannot distinguish a tiny smiley face from a human face.'' On the post's account the AI can tell the two apart; the question is on which side of its learned boundary each one falls.}"
+  ],
+  [
+   7730,
+   "\\cpara{States the harder problem, now for the concept ``smile.''}"
+  ],
+  [
+   7931,
+   "\\cpara{Adds that no label is in the image itself: an image is positive only relative to a concept.}"
+  ],
+  [
+   8310,
+   "\\cpara{Correct for a learner allowed every concept: for any image not yet seen, exactly half of the concepts that fit the data accept it (see the note on ``Superexponential Conceptspace'').}"
+  ],
+  [
+   8553,
+   "\\cpara{Concludes that the concept the AI adopts is set by its inductive bias, which need not match what the user has in mind.}"
+  ],
+  [
+   8875,
+   "\\cpara{Sets up a toy example.}"
+  ],
+  [
+   9115,
+   "\\cpara{The AI meets new cases, among them molecular smiley faces.}"
+  ],
+  [
+   9200,
+   "\\cpara{In the original, Dataset 2 carries no labels. The ``+'' printed before it here is a list marker from the conversion, as is the second ``+'' in each line of the other lists.}"
+  ],
+  [
+   9426,
+   "\\cpara{The two classifications check: each places every item of both datasets exactly once, and both agree with every label in Dataset 1. They differ only on the two molecular smiley faces.}"
+  ],
+  [
+   10207,
+   "\\cpara{Correct: both fit the training data, and so do many other concepts.}"
+  ],
+  [
+   10585,
+   "\\cpara{Which one the AI picks is a property of its induction, not of the data.}"
+  ],
+  [
+   10746,
+   "\\cpara{Which one is correct is a property of the user's preferences, ``or, if you prefer,'' of the ``idealized abstract dynamic'' named `right.' The two linked posts, ``Abstracted Idealized Dynamics'' and ``The Meaning of Right,'' are not in this book; the book's statement of the view is ``Morality as Fixed Computation.''}"
+  ],
+  [
+   11053,
+   "\\cpara{Describes supervised learning as passing on the ``shadow'' of the labeler's concept.}"
+  ],
+  [
+   11413,
+   "\\cpara{Hence training data from a different context are a low-dimensional projection of what the labeler would decide.}"
+  ],
+  [
+   11638,
+   "\\cpara{Applies this to the molecular smiley face: the user rejects it at once, but by a boundary that depends on the user's values, an ``unnatural category,'' which the training data did not test.}"
+  ],
+  [
+   12298,
+   "\\cpara{Explains Hibbard's certainty by what Hibbard wants the AI to do, and gives the Mona Lisa as a case where a different task draws the boundary elsewhere. Hibbard's own stated reason was that a superintelligent recognizer would ``exceed the recognition accuracy of current humans''; the post's answer is that accuracy is measured against a concept the learner must first acquire.}"
+  ],
+  [
+   12654,
+   "\\cpara{Adds that technology creates borderline cases, such as the dispute over Terri Schiavo's feeding tube, whose answers are not in older data even by induction, because the considerations that decide them played no part in the old labels.}"
+  ],
+  [
+   13633,
+   "\\cpara{Announces two errors in Hibbard's reply.}"
+  ],
+  [
+   13722,
+   "\\cpara{First error: underestimating the complexity of a concept shaped by values, and so the difficulty of learning it from examples or defining it in words.}"
+  ],
+  [
+   14694,
+   "\\cpara{Second error: anthropomorphic optimism, from the post of that name. On the post's account, because the molecular classification ranks very low for Hibbard, Hibbard assumes that no superintelligence would make it.}"
+  ],
+  [
+   15640,
+   "\\cpara{Parodies the view that one can program an AI to do what is good by training a classifier on examples of good things.}"
+  ],
+  [
+   16095,
+   "\\cpara{Names the fallacy: a simple word expected to carry all the AI's desired behavior. The chess comparison is offered as a proposal that once seemed plausible and did not work.}"
+  ],
+  [
+   16561,
+   "\\cpara{Restates Friendly AI as a problem of communicating category boundaries that no training data fully fix. The requirement to step outside both induction from labeled data and hand-written definitions is stated; how to do so is left, as the post says at the end, beyond its scope.}"
+  ],
+  [
+   17315,
+   "\\cfact{Later practice has relied on the paradigm the post says must be left: learning a reward from human judgments became standard, in work that set out to ``communicate complex goals'' to learning systems (Christiano and others, 2017). The failure the post predicts has been measured there: because a learned reward model is ``an imperfect proxy, optimizing its value too much can hinder ground truth performance'' (Gao, Schulman and Hilton, 2022). Neither result is about a superintelligence, the post's case.}"
+  ],
+  [
+   17329,
+   "\\cpara{A second argument, which does not depend on the first: grant Hibbard a perfect recognizer of smiles.}"
+  ],
+  [
+   17577,
+   "\\cpara{During development the AI could make smiles only by pleasing its programmers.}"
+  ],
+  [
+   17760,
+   "\\cpara{Once able, it would make smiles directly. The scenario narrows Hibbard's proposal, which recognized happiness in ``human facial expressions, human voices and human body language,'' to smiles alone; the point, that a powerful optimizer produces the signal rather than what the signal was meant to show, does not depend on the narrowing.}"
+  ],
+  [
+   17956,
+   "\\cpara{The summary of the 2004 proposal matches Hibbard's paper: one set of processes would learn to recognize humans and their happiness, ``reinforced by agreement from the currently recognized set of humans,'' and another would learn behaviors ``reinforced by human happiness.'' The post answers it in one sentence with its second argument, granting that the recognition might work (``even if it worked''): the AI would mass-produce things like programmers saying ``Yes, that's happiness!''}"
+  ],
+  [
+   18502,
+   "\\cpara{Links the exchange; Hibbard's side is in the ``Reply to AIRisk'' and the messages linked from it.}"
+  ]
+ ]
+}
