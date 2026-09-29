@@ -30,11 +30,28 @@ Models to imitate (read them before writing): annotated and honest versions of
 `the-lens-that-sees-its-flaws`, `use-the-try-harder-luke`, `the-bottom-line`,
 `positive-bias-look-into-the-dark`, `something-to-protect`, and from the pilot
 `planning-fallacy`, `scope-insensitivity`, `burdensome-details`. Use the models for format,
-density and voice. Where a model's tone is harsher than section 2 allows (some of the
-original 52 still say "mind-reading" or "only decoration"), section 2 wins; the original
-52 will be brought in line in the whole-book pass.
+density and voice. The user's decision of 29 September 2026: the tone of the original 52
+is the target for every post (section 2.0). Their substance still has to pass section 2.2.
 
 ## 2. The critical standard
+
+### 2.0 Tone (user's decision, 29 September 2026)
+
+The original 52 set the tone: sharp, dry, and sarcastic where the text earns it. "The essay
+delivers an account of one stage inside science." "Peirce's 1903 remark ... is the essay's
+central idea, uncredited." "Then an accusation." "I name no one, no paper and no
+objection." Write like that.
+
+- Harshness is in the wording, not in new claims. Every sharp sentence must still pass the
+  fair-defender test (2.2) and the verification rules (section 3). Sarcasm about something
+  false or unsourced is not allowed. "Stay fair, don't make things up."
+- Say plainly what the post does: "delivers", "turns on one word", "the evidence is the
+  author's own disputes", "names no one". Say "uncredited" when a close prior source exists
+  and the post presents the idea as its own.
+- The honest edition may use the author's "I" ironically to state what the post omits or
+  does ("I give no survey and no numbers"), as the originals do.
+- Hedges still carry, motives are still not read without textual support, and the reserved
+  words (2.3) still need their evidence. What changed is the voice, not the evidence.
 
 ### 2.1 Stance
 
@@ -117,8 +134,9 @@ the reader would be misled. Smaller discrepancies go in the report.
   must match that post's original in `data/originals/` (fetch it with
   `src/fetch.py post <id>` if it is outside the collection), and must agree with what our
   notes on that post say. A recurring criticism (for example, many-worlds held on
-  simplicity; Popper uncredited) is made in full once, at its first occurrence in book
-  order, and elsewhere at most briefly with a pointer back.
+  simplicity; Popper uncredited) may be made again wherever it applies (user's decision,
+  29 September 2026: do not cut redundancy across posts). Where a similar or the same point
+  is made in another post's notes, say so ("the same point is made in the notes on ...").
 - Text version: annotate the text as LessWrong publishes it now. Do not use earlier
   revisions as grounds for criticism. If the printed text is a later revision that refers
   to things written after the post's date, one neutral note may say so.
