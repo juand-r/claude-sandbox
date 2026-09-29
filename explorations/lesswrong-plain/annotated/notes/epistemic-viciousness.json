@@ -1,11 +1,11 @@
 {
  "slug": "epistemic-viciousness",
  "header": "\\post{Epistemic Viciousness}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/T8ddXNtmNSHexhQh8/epistemic-viciousness}\n",
- "skeleton_sha": "02aadb59362efe7ba7331be46553c75f852b961cf10c18d7f64527ea0af4afef",
- "post_sha": "09e1812081586d607edbe40301df6eed2f08e771f491d12f6bf4303d5075dc7a",
+ "skeleton_sha": "3075e61105f935c61ba95c0b39eba6718483a8ec01bcc5cf15748f9546ed11b1",
+ "post_sha": "1f63b48d31e350263e1516af5a6ffef3faf488c555132f99da852b8fa617080b",
  "edits": [
   {
-   "at": 521,
+   "at": 524,
    "del_len": 0,
    "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "ins": " "
@@ -17,35 +17,35 @@
    "\\cpara{Credits Gillian Russell's essay, later published in \\textsc{Martial Arts and Philosophy: Beating and Nothingness} (Open Court, 2010). I checked the quotations below against the penultimate draft on Russell's website, which runs to twelve numbered pages.}"
   ],
   [
-   522,
+   525,
    "\\cpara{Quotes Russell's opening: a teacher told the class that three years of punching the air would let them kill a bull with one blow, and the eleven-year-old Russell believed it. ``Viciousness'' is used in the old sense, ``possessing of vices''.}"
   ],
   [
-   1342,
+   1345,
    "\\cpara{Says the essay's observations generalize ``amazingly'', and summarizes them in seven points. The summary follows the essay's sections in order, and its quotations match the draft closely.}"
   ],
   [
-   3477,
+   3480,
    "\\cpara{Corrects the author's own memory of the essay, openly. The essay does make a nearby point. In judo, Russell writes, ``either you manage to throw your opponent, or you don't'', so it leaves ``relatively little room for pretence''; odd beliefs do better in arts ``such as aikido, where there is usually less competitive randori''.}"
   ],
   [
-   3770,
+   3773,
    "\\cpara{A history of the martial arts from memory, with no source: when real fights decided things, people knew who the masters were. ``A Sense That More Is Possible'', posted the same day, relies on the same history; see the note there.}"
   ],
   [
-   3884,
+   3887,
    "\\cpara{The decline, with YouTube videos as the evidence. Videos of black belts losing today show that some lose; with no comparison to the past, they do not show that things ``went downhill''.}"
   ],
   [
-   4116,
+   4119,
    "\\cpara{The ki master, from memory. A commenter linked a video two days later, ``Kiai Master vs MMA''. That is probably the case of Yanagi Ryuken (``Kiai Master Ryukerin'' in some accounts, says Wikipedia's ``Touchless knockout''). In Skeptoid's account (episode 189, 2010), he ``offered \\$5000 to any modern Mixed Martial Arts athlete who could beat him'', and was beaten in front of Japanese television cameras.}"
   ],
   [
-   4620,
+   4623,
    "\\cpara{The conclusion: every risk factor carries over to a ``rationality dojo''. The post asserts this without going through the factors. Data poverty is the one the author argues for at length elsewhere (``A Sense That More Is Possible'' calls verifying training ``the essential, blocking obstacle'').}"
   ],
   [
-   4883,
+   4886,
    "\\cfact{The essay the post summarizes offers partial answers that the summary leaves out. Where a technique cannot be tested whole, ``we can test and practice aspects of our techniques without testing all aspects of the technique at once''. And deference to a teacher becomes a vice, Russell argues, when the line between ``justified epistemic deference'' and ``unjustified epistemic deference'' blurs.}"
   ]
  ]

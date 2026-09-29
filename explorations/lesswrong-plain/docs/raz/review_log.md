@@ -556,3 +556,25 @@ except that the tool does not follow the one file alias (making-beliefs-pay-rent
 passes check_verbatim directly (1,130 words). Whole-book pass: make raz_check follow the
 alias in make_books.py. Annotated 1602 pages, honest 400; 183 overfull boxes in the log
 (most small; bare-URL ones listed above).
+
+## Whole-book pass, part 1: tooling (29 September 2026)
+
+User's decisions: (1) keep the original 52's harshness and sarcasm and bring the rest up to
+it, staying fair and inventing nothing (STANDARDS 2.0); (2) do not cut redundancy across
+posts, mention that a similar point is made elsewhere (STANDARDS 2.5); (3) fix the tooling;
+(4) update the honest edition's opening note.
+
+Tooling, done:
+- md2tex: bare URLs in running text are set with \url{}; link text that is itself a URL
+  (including one broken by a space after a hyphen) with \nolinkurl{}; long runs of words
+  joined by slashes with \slash{}; an unnumbered "######" line is a plain paragraph; a quote
+  that follows a text line with no blank line is its own block; emphasis is paired by the
+  CommonMark delimiter algorithm with lenient flanking (fixes bold-italic runs), and the
+  "*x**.*" pattern is one italic run. check_verbatim reads \nolinkurl.
+- src/migrate_skeletons.py carried the annotated posts over: 20 posts changed, notes and
+  hand edits kept; the four posts that had been repaired by hand (Bayesians vs.
+  Barbarians, Ends: An Introduction, On Doing the Impossible, Your Price for Joining) now
+  take the converter's output. All posts pass check_verbatim; 345/345 backups exact.
+- raz_check follows the one file alias (making-beliefs-pay-rent).
+- Overfull boxes: 183 to 165; over 10pt: 18 to 5 (the rest are code identifiers and
+  formulas in the post text).

@@ -1,8 +1,8 @@
 {
  "slug": "fake-justification",
  "header": "\\post{Fake Justification}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/bfbiyTogEKWEGP96S/fake-justification}\n",
- "skeleton_sha": "021e74eb3813f248c5f8c0072d4880a88a69606cf1357b3030ce7d61b97b66fc",
- "post_sha": "5698d966fb8eefcef6f3332bc31fee1abc76f60424778d1f33202bdd3c9a4d5f",
+ "skeleton_sha": "536c9530b9f0a35616b08ed628a98cab6c71bc7e066a39cbcdd69f6363aa6d43",
+ "post_sha": "8d2abd4ed3862f9480bcd31d07a6d33c267c8063ab9a94465db186bab04fc753",
  "edits": [],
  "notes": [
   [
@@ -10,55 +10,55 @@
    "\\cpara{Opens with two defenses of reverence for the Bible on new grounds, as a guide to ethics and as literature. The Harris quotation is exact; the exchange with Andrew Sullivan is now at samharris.org under the title ``Is Religion Built Upon Lies?'', since the footnote's address no longer works. The opening claim, that ``Many Christians who've stopped really believing'' hold this view, is a claim about what those Christians believe, and no example or evidence is given for it.}"
   ],
   [
-   1211,
+   1216,
    "\\cpara{The second example, a hypothetical one: a friend defends a \\$1 million laptop by its effect on the economy, and the post answers with a better way to serve the same goal, 5,000 One Laptop Per Child machines.}"
   ],
   [
-   1791,
+   1796,
    "\\cpara{Refers back, without naming them, to ``The Third Alternative'' (May 2007) and ``Motivated Stopping and Motivated Continuation'' (four days earlier), and separates the laptop case from motivated stopping: here no search took place at all.}"
   ],
   [
-   2014,
+   2019,
    "\\cpara{States the post's test, drawn from ``The Bottom Line'': a justification counts only if it is a new search that could change the conclusion. The recap matches that post's claim that effectiveness is set by ``whichever algorithm actually writes the bottom line.'' A justification of this kind is what the dictionary calls rationalizing; see the notes on ``Rationalization.''}"
   ],
   [
-   2668,
+   2673,
    "\\clogic{A claim about most criticism, given with no evidence.}"
   ],
   [
-   2721,
+   2726,
    "\\cpara{Says what a real justification of the Bible's literary standing would take: a neutral reading of candidate books, with renown as a fair way to choose the candidates.}"
   ],
   [
-   3336,
+   3341,
    "\\clogic{The neutrality requirement is applied to one side only. The post's own verdicts in its first paragraph, that \\textsc{The Lord of the Rings} is ``a vastly superior literary work'' and that even \\textsc{Harry Potter} is superior ``as moral philosophy,'' come with no reading shown. A reader who has already rejected the Bible also has a bottom line, and the post does not ask where it came from.}"
   ],
   [
-   3350,
+   3355,
    "\\cpara{Asserts that ``No search ever occurred'' for these believers, and gives no case. What the setup establishes is that the reverence came first. The next paragraph grants that a later check does count if it could change the conclusion, so whether one took place is a question of fact about each person.}"
   ],
   [
-   3756,
+   3761,
    "\\cpara{Grants that a real check changes ``the real algorithm'' behind a conclusion, then says people greatly overestimate their readiness to change their minds.}"
   ],
   [
-   4122,
+   4127,
    "\\clogic{No evidence is given here, but the author had given evidence four weeks earlier, in ``We Change Our Minds Less Often Than We Think'' (3 October 2007). There the author quotes Griffin and Tversky: colleagues choosing between job offers gave the option they expected to choose an average probability of 66\\%, and 23 of the 24 chose it. It is one small study, and it points the way this sentence says.}"
   ],
   [
-   4136,
+   4141,
    "\\cpara{A one-line joke on the same point.}"
   ],
   [
-   4231,
+   4236,
    "\\cpara{Returns to the laptop buyer, now imagined as having adopted an altruistic goal afterwards and found that the original purchase still comes out best under it.}"
   ],
   [
-   4833,
+   4838,
    "\\cpara{The post's central argument, and it is sound as stated. When the process that produced a choice has nothing to do with the criterion now used to defend it, it would be a coincidence for the choice to be the criterion's best answer. The laptop case also shows how to test for it: look for an option that does better under the new criterion.}"
   ],
   [
-   5264,
+   5269,
    "\\cpara{Closes with a maxim, hedged with ``improbable,'' which the previous paragraph supports.}"
   ]
  ]

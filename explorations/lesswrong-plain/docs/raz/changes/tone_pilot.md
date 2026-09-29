@@ -149,3 +149,4 @@ Why: Do not infer who the supporters were.
 - Before: The crowd can coordinate, at least sometimes.
 - After: Such crowds can coordinate, at least sometimes.
 
+- Tooling: "atheist/libertarian/technophile" in our notes set with \slash{} so it can break (why-our-kind-can-t-cooperate).

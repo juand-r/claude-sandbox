@@ -1,34 +1,9 @@
 {
  "slug": "bayesians-vs-barbarians",
  "header": "\\post{Bayesians vs. Barbarians}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/KsHmn6iJAEr9bACQW/bayesians-vs-barbarians}\n",
- "skeleton_sha": "331a728aecd7e6673492fdaa5d3ab5bc8946447b9c9e8ca772ff7eae9688856f",
- "post_sha": "241ec1d305d7cd866e7168ba321d16a64ee3af83f2067d2d19e375a895e26d09",
- "edits": [
-  {
-   "at": 188,
-   "del_len": 2,
-   "del_sha": "ec4f8e3d1f7cafbdb86e908b6ad83e407ac36a9b3efabd8e24b56d80228be429",
-   "ins": "\\flushnotes\n\n\\begin{quote}\n"
-  },
-  {
-   "at": 468,
-   "del_len": 5,
-   "del_sha": "f412abde89f532ea251095979da7b065d90ad891ae0c9607ec9e2f0e9ef4aa15",
-   "ins": "\n\n"
-  },
-  {
-   "at": 650,
-   "del_len": 5,
-   "del_sha": "f412abde89f532ea251095979da7b065d90ad891ae0c9607ec9e2f0e9ef4aa15",
-   "ins": "\n\n"
-  },
-  {
-   "at": 836,
-   "del_len": 0,
-   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "ins": "\n\\end{quote}"
-  }
- ],
+ "skeleton_sha": "4f560300867645cf983b304e54c972baa3fb6d4d03179de5ac8ed0bd32678f79",
+ "post_sha": "73a45fc42becf1d5f7bd60e4555869c5bea5453ef1c0e133fc411ec11d87d872",
+ "edits": [],
  "notes": [
   [
    133,
@@ -172,7 +147,7 @@
   ],
   [
    10931,
-   "\\cpara{Gives marching as the picture of coordination, hedged (``perhaps''). The link is to ``Your Price for Joining'' (26 March 2009, earlier in this book), which argues, with ``It seems to me,'' that people in the ``atheist/libertarian/technophile/sf-fan/etcetera cluster'' set their price for joining a group too high.}"
+   "\\cpara{Gives marching as the picture of coordination, hedged (``perhaps''). The link is to ``Your Price for Joining'' (26 March 2009, earlier in this book), which argues, with ``It seems to me,'' that people in the ``atheist\\slash{}libertarian\\slash{}technophile/sf-fan/etcetera cluster'' set their price for joining a group too high.}"
   ],
   [
    11215,

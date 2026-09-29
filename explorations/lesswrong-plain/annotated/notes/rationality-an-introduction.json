@@ -1,8 +1,8 @@
 {
  "slug": "rationality-an-introduction",
  "header": "\\post{Rationality: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/8qccXytpkEhEAkjjM/rationality-an-introduction}\n",
- "skeleton_sha": "ff968c15f7172f2b82694201d4e8057309e17da5f5ee1dd2066a432f19525eb3",
- "post_sha": "b6cd894b74eae179853e24e6112e506ef027141741c7b920289a26cf4709fac3",
+ "skeleton_sha": "0df6f105eb19d01eeacf39c37c41108476d9ac31593e7dc9f1d6ecfaae0eff1d",
+ "post_sha": "f23fc49fa3ba11817a7d0f0502ab7d6dafac7790d07c5732c19d1f1792016415",
  "edits": [],
  "notes": [
   [
@@ -106,55 +106,55 @@
    "\\cpara{Places this book second of six.}"
   ],
   [
-   10160,
+   10166,
    "\\cpara{Quotes Scott Alexander's 2014 post; the words match it.}"
   ],
   [
-   10479,
+   10485,
    "\\cpara{Says rationality helps most where evidence is limited or read through biases.}"
   ],
   [
-   10673,
+   10679,
    "\\cpara{Says the same rules apply to personal life, politics and debates about technology, so the book ranges widely.}"
   ],
   [
-   11145,
+   11151,
    "\\cpara{Introduces the first sequence, on questions where the odds are extreme. The paragraph ends in an ellipsis in the LessWrong text.}"
   ],
   [
-   11452,
+   11458,
    "\\cpara{Introduces Politics and Rationality with two questions: why political disputes feel so personal, and why importance does not make us more careful.}"
   ],
   [
-   12095,
+   12101,
    "\\cpara{Answers, hedged with ``hints,'' that much reasoning is rationalization, and names two more sequences.}"
   ],
   [
-   12640,
+   12646,
    "\\cpara{Introduces Death Spirals, on hazards for groups built around shared ideas, and the last sequence, Letting Go.}"
   ],
   [
-   13273,
+   13279,
    "\\cpara{Grants that we do not naturally reason like Bayesians, and that reciting the axioms would not change what the students saw.}"
   ],
   [
-   13615,
+   13621,
    "\\cpara{Quotes Luke Muehlhauser's 2011 post; the words match it.}"
   ],
   [
-   13765,
+   13771,
    "\\cpara{Says biases are the substance of our reasoning, not an addition to it. The quotation is the only support.}"
   ],
   [
-   13913,
+   13919,
    "\\cpara{Answers that debiasing is still possible, by analogy with arithmetic, which can be trained. As in ``Biases: An Introduction'' (see the notes there), the claim that debiasing is possible is supported by an analogy, with no evidence that teaching of the book's kind achieves it.}"
   ],
   [
-   15904,
+   15918,
    "\\cpara{Names two assumptions of the example that are unrealistic.}"
   ],
   [
-   16317,
+   16331,
    "\\cpara{Says that even an ideal reasoner in the real world must use approximations.}"
   ]
  ]

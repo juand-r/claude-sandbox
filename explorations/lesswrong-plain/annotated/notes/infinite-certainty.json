@@ -1,8 +1,8 @@
 {
  "slug": "infinite-certainty",
  "header": "\\post{Infinite Certainty}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ooypcn7qFzsMcy53R/infinite-certainty}\n",
- "skeleton_sha": "64ed0ef5988c16243b6612d9178dba21540f9fb7c80e1dd40c1ce8e5a52efbee",
- "post_sha": "61c98bd22b23e5f3d262bb50cf132b22840504f84a502e266c0ebbb997de8a8a",
+ "skeleton_sha": "fbc52202460f74181fb329c8938f40df98125c25d581079a027690fff02e4426",
+ "post_sha": "9909f558317a44f2ea4a1ba27c3d2a6b20c504b06a8c81fb93f262dc7500c585",
  "edits": [],
  "notes": [
   [
@@ -58,31 +58,31 @@
    "\\cpara{Offered as opinion (``I don't think''). The support is the difficulty of setting up 10,000 independent protocols, and an anecdote in footnote 2 that I could not check: the archived page would not load.}"
   ],
   [
-   5780,
+   5792,
    "\\cpara{Heads off a misreading: 99\\% confidence in ``2 + 2 = 4'' is confidence that it is always true, not a belief that it is true 99\\% of the time.}"
   ],
   [
-   6173,
+   6185,
    "\\cpara{The arithmetic holds: one statement every 20 seconds for 16 hours is 2,880 a day, so a million take about 347 days. The illustration repeats ``Absolute Authority'' of the day before: ``one million equally strong independent statements, one after the other, over the course of a solid year or so.''}"
   ],
   [
-   6596,
+   6608,
    "\\cpara{Raises the count to a trillion. The time is understated by a factor of about a hundred. At the pace just given, a trillion statements take about 950,000 years, some twelve thousand lifetimes of eighty years. The slip makes the post's point look weaker than it is.}"
   ],
   [
-   6767,
+   6779,
    "\\cpara{A joke. A googolplex is $10^{10^{100}}$.}"
   ],
   [
-   6894,
+   6906,
    "\\cpara{In Knuth's arrow notation, 3 ↑↑↑ 3 is a tower of 3s whose height is $3^{27}$, about 7.6 trillion. The claim that such a confidence is not much closer to probability 1 than 90\\% depends on a measure of distance the post does not give here. It comes the next day, in ``0 And 1 Are Not Probabilities'': on the log-odds scale every confidence short of 1 is infinitely far from 1.}"
   ],
   [
-   7138,
+   7150,
    "\\cpara{A joke that applies the thesis to the sentence stating it. The next two lines say the author is not absolutely sure of it either.}"
   ],
   [
-   7525,
+   7537,
    "\\cpara{The closing quotation gives a second argument against probability 1, and it is correct for updating by Bayes's rule. If $P(A)=1$, then $P(E)=P(E \\mid A)$ for any evidence $E$, so $P(A \\mid E) = P(E \\mid A)P(A)/P(E) = 1$ whenever $P(E)>0$. No evidence can lower it. ``Absolute Authority'' had made the same point the day before: ``if it's theoretically possible for you to change your mind about something, it can't have a probability exactly equal to one.''}"
   ]
  ]

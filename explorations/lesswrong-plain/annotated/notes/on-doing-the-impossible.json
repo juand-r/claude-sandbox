@@ -1,40 +1,9 @@
 {
  "slug": "on-doing-the-impossible",
  "header": "\\post{On Doing the Impossible}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fpecAJLG9czABgCe9/on-doing-the-impossible}\n",
- "skeleton_sha": "68e1b9e326e1b5044b40165d67841f52888a36d9dd85cc4cdfb073725fb76617",
- "post_sha": "6ce778cf9c756e6c19b57232db067c6484ce92bf4c8866041aef545de00e74e7",
- "edits": [
-  {
-   "at": 8201,
-   "del_len": 14,
-   "del_sha": "93bbe06fbcc437a73a25d3309d032d9c04cfee01d45670d2ab547b20b56f07ae",
-   "ins": "}"
-  },
-  {
-   "at": 8216,
-   "del_len": 1,
-   "del_sha": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
-   "ins": ""
-  },
-  {
-   "at": 8240,
-   "del_len": 1,
-   "del_sha": "d10b36aa74a59bcf4a88185837f658afaf3646eff2bb16c3928d0e9335e945d2",
-   "ins": ""
-  },
-  {
-   "at": 8242,
-   "del_len": 2,
-   "del_sha": "2f86e39b0fe2be69df9cee8beb44e5893fc0d8bdb7963f621ce7a1053cf5dca1",
-   "ins": "\\textbf{"
-  },
-  {
-   "at": 8258,
-   "del_len": 1,
-   "del_sha": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
-   "ins": "}"
-  }
- ],
+ "skeleton_sha": "69b3d87202676747b3a056f2bacbccfdfb6abe9b26335ad5cef0b569c7a3296b",
+ "post_sha": "b218a28fd877b085449df02c4b1434f5cd93420cab1fe3f9d2f3855db7580976",
+ "edits": [],
  "notes": [
   [
    132,
@@ -137,95 +106,95 @@
    "\\cpara{Asserts that the effect is strongest on confusing problems. The reason comes two paragraphs later.}"
   ],
   [
-   8264,
+   8278,
    "\\cpara{Sets aside problems whose impossibility follows from understanding, such as a perpetual motion machine made of gears. The link goes to the author's post on the second law of thermodynamics, which makes that argument.}"
   ],
   [
-   8666,
+   8680,
    "\\cpara{Gives the reason: a count of zero solutions measures confusion, and ``Confusion exists in the map, not in the territory.'' The paragraph grants that the remaining work is unknown. That is its case against the word ``impossible''; it does not promise that the work will be small.}"
   ],
   [
-   9129,
+   9143,
    "\\cpara{Repeats the conditions and the conclusion of the paragraph beginning ``Any time you don't understand a domain,'' again with ``may'' and ``seem.''}"
   ],
   [
-   9397,
+   9411,
    "\\cpara{Adds the step that closes the cycle: a problem that seems impossible is not tried, so the work that would change how it looks is not done.}"
   ],
   [
-   9508,
+   9522,
    "\\cpara{Applies the cycle to the author: only a ``driven frame of mind'' kept the author at the problem long enough to become less intimidated.}"
   ],
   [
-   9789,
+   9803,
    "\\cpara{Grants that the author also underestimated the whole task at the start, and calls the combination luck. It is the same distinction as before between single problems and the whole.}"
   ],
   [
-   10174,
+   10188,
    "\\cpara{Contrasts the author with most AGI researchers, who are said not to be driven in this way.}"
   ],
   [
-   10606,
+   10620,
    "\\clogic{A claim about why most people in a field are in it, offered with ``By and large'' and no evidence here. The linked post, ``Above-Average AI Scientists,'' gives the author's impressions of AGI conferences and concludes that ``AGI attracts people who fail to comprehend the difficulty of AGI.''}"
   ],
   [
-   10620,
+   10634,
    "\\cpara{Credits Richard Hamming, with a link to his talk ``You and Your Research'' (1986). In the talk Hamming asked colleagues at lunch, over several weeks, ``What are the important problems of your field?'', then ``What important problems are you working on?'', and later why, if their work was not important, they were ``at Bell Labs working on it.'' The post's two questions are a fair summary.}"
   ],
   [
-   10848,
+   10862,
    "\\cpara{Describes important problems: they look intimidating and promise neither publications nor progress.}"
   ],
   [
-   11110,
+   11124,
    "\\cpara{Says the most important problems are often ``impossible,'' and gives one example: this, it says, is why more philosophers do not work on reductionist decompositions of consciousness. No evidence is offered for that explanation.}"
   ],
   [
-   11187,
+   11201,
    "\\clogic{Hamming, whom the post has just cited, drew the line elsewhere: ``It's not the consequence that makes a problem important, it is that you have a reasonable attack.'' A problem with no visible attack, the post's second sense of ``impossible,'' is on Hamming's account not an important problem. The same difference is noted at ``Einstein's Superpowers.''}"
   ],
   [
-   11302,
+   11316,
    "\\cpara{The first warning: talent only buys a seat, the stake is years of your life, and ``you can lose.''}"
   ],
   [
-   11627,
+   11641,
    "\\cpara{Declines to recommend the impossible to everyone: most people, most of the time, should ``stick to the possible.''}"
   ],
   [
-   11899,
+   11913,
    "\\cpara{Rejects ``Never give up'' and points back to ``Just Lose Hope Already'' (2007), which argues for knowing when to quit. The two posts agree.}"
   ],
   [
-   12116,
+   12130,
    "\\cpara{States when there may be cause for the attempt: when something is worse than a wasted life, or is wanted more than ``thirty chips'' of years.}"
   ],
   [
-   12409,
+   12423,
    "\\cpara{Adds that perseverance keeps things difficult, and warns readers not to ``needlessly plunge headlong'' into such a life.}"
   ],
   [
-   12776,
+   12790,
    "\\cpara{Returns to the opening: perseverance has a part beyond working 14 hours a day.}"
   ],
   [
-   12920,
+   12934,
    "\\cpara{Explains why the author missed this: what we notice about ourselves follows salience, not only self-image.}"
   ],
   [
-   13121,
+   13135,
    "\\cpara{Gives what showed the author the other timescales: the researchers described earlier in the post.}"
   ],
   [
-   13612,
+   13626,
    "\\cpara{Defines perseverance at the timescale of seconds and at the timescale of years.}"
   ],
   [
-   14002,
+   14016,
    "\\cpara{Sets out three steps with their timescales: not running away (seconds), working (hours), sticking at it (years).}"
   ],
   [
-   14252,
+   14266,
    "\\cpara{Ends with the author's record on the three steps. It agrees with the opening: the hours are the struggle, and the years come naturally.}"
   ]
  ]

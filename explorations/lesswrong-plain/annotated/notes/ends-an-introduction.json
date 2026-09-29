@@ -1,16 +1,9 @@
 {
  "slug": "ends-an-introduction",
  "header": "\\post{Ends: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/KfEyHB6WXFW6q2D5S/ends-an-introduction}\n",
- "skeleton_sha": "af5fe0de785abd01bc8a087867903e8cb9143d53d02da354284e02a6de801386",
- "post_sha": "9f41a4e04eed403e39d716762bdf84e4493636624182d065753a759f17a41d0d",
- "edits": [
-  {
-   "at": 7969,
-   "del_len": 13,
-   "del_sha": "c36a06d4f6a93dc6af3279be56abea20af642872f31c655dd23b18b6e0ff2410",
-   "ins": ""
-  }
- ],
+ "skeleton_sha": "7ef606feb79c518be21c77a3b93a165cfdee9db2207ef72784936616595850ef",
+ "post_sha": "da51e198427dc3d4a68cc1932912afad6bda283b9cbfc60402f6030c77cb1d52",
+ "edits": [],
  "notes": [
   [
    123,
@@ -125,11 +118,11 @@
    "\\cpara{Cites Bostrom's history of transhumanist thought.}"
   ],
   [
-   8705,
+   8717,
    "\\cpara{Cites Sandel's paper.}"
   ],
   [
-   8846,
+   8858,
    "\\cpara{Cites Bostrom and Savulescu's survey.}"
   ]
  ]

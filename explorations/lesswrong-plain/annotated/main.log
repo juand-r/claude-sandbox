@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 05:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 13:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1204,13 +1204,8 @@ Overfull \hbox (0.10063pt too wide) in paragraph at lines 29--29
 ]) (./afterwords/belief-as-attire.tex)
 (./posts/pretending-to-be-wise.tex [79] [80
 
-] [81]
-Overfull \hbox (102.42418pt too wide) in paragraph at lines 57--57
-[]$[]$\T1/ppl/m/n/10 (-20) 3 See Han-son, ^^PPol-icy Tug-O-War^^Q (http://www.o
-vercomingbias.com/2007/05/policy_
- []
-
-) (./afterwords/pretending-to-be-wise.tex [82]) (./posts/applause-lights.tex
+] [81])
+(./afterwords/pretending-to-be-wise.tex [82]) (./posts/applause-lights.tex
 [83] [84
 
 ]) [85] (./afterwords/applause-lights.tex [86]) [87]
@@ -1350,13 +1345,8 @@ Underfull \hbox (badness 2181) in paragraph at lines 10--11
 (./afterwords/science-as-curiosity-stopper.tex [181])
 (./posts/truly-part-of-you.tex [182] [183
 
-] [184]
-Overfull \hbox (111.60498pt too wide) in paragraph at lines 51--51
-\T1/ppl/m/it/10 (-20) Boston Globe\T1/ppl/m/n/10 (-20) , 2003, http://archive.b
-oston.com/news/globe/ideas/articles/2003/10/05/out_
- []
-
-) (./afterwords/truly-part-of-you.tex [185]
+] [184])
+(./afterwords/truly-part-of-you.tex [185]
 Overfull \hbox (0.5044pt too wide) in paragraph at lines 16--17
 \T1/ppl/m/n/10 (-20) ery thought worth think-ing'' comes six weeks af-ter ``Cac
 hed Thoughts,''
@@ -1378,13 +1368,11 @@ Overfull \hbox (0.10922pt too wide) in paragraph at lines 313--313
 
 ] [205
 
-] [206] [207] [208]
-Overfull \hbox (45.75511pt too wide) in paragraph at lines 99--99
-\T1/ppl/m/it/10 (-20) view \T1/ppl/m/n/10 (-20) 84 (1977): 231^^U259, http://pe
-ople.virginia.edu/^^Ctdw/nisbett&wilson.pdf. 
- []
-
-[209]) (./afterwords/rationality-an-introduction.tex [210])
+] [206] [207]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 59.
+ [208] [209])
+(./afterwords/rationality-an-introduction.tex [210])
 (./posts/tsuyoku-naritai-i-want-to-become-stronger.tex [211] [212
 
 ])
@@ -1431,22 +1419,12 @@ lso true; the author
 (./afterwords/how-to-convince-me-that-2-2-3.tex [247])
 (./posts/infinite-certainty.tex [248] [249
 
-]
-Underfull \hbox (badness 1231) in paragraph at lines 29--29
-[]$[]$\T1/ppl/m/sc/8 (+20) author's foot-note\T1/ppl/m/n/8 (+20) . Pe-ter de Bl
-anc 
- []
-
-
-Underfull \hbox (badness 1968) in paragraph at lines 29--29
-\T1/ppl/m/n/8 (+20) has an amus-ing anec-dote on this point: 
- []
-
-[250]
+] [250]
 Package textcomp Info: Symbol \textuparrow not provided by
 (textcomp)             font family ppl in TS1 encoding.
 (textcomp)             Default family used instead on input line 39.
- (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
@@ -1698,31 +1676,10 @@ ni-tive
 
 ] [382])
 (./afterwords/the-virtue-of-narrowness.tex) (./posts/stranger-than-history.tex
-[383]
-Overfull \hbox (143.55708pt too wide) in paragraph at lines 21--21
-[]$[]$\T1/ppl/m/sc/8 (-20) author's foot-note\T1/ppl/m/n/8 (-20) . Source: http
-://lesswrong.com/lw/j0/making_history_available/ewg.  
- []
-
-) (./afterwords/stranger-than-history.tex [384
+[383]) (./afterwords/stranger-than-history.tex [384
 
 ])
 (./posts/the-logical-fallacy-of-generalization-from-fictional.tex [385]
-Underfull \hbox (badness 3108) in paragraph at lines 21--21
-[]$[]$\T1/ppl/m/sc/8 (+20) author's foot-note\T1/ppl/m/n/8 (+20) . E.g., Han- 
- []
-
-
-Underfull \hbox (badness 1968) in paragraph at lines 21--21
-\T1/ppl/m/n/8 (+20) son's (2006) ^^PBi-ases of Sci-ence Fic-tion.^^Q 
- []
-
-
-Overfull \hbox (34.71457pt too wide) in paragraph at lines 21--21
-\T1/ppl/m/n/8 (-20) http://www.overcomingbias.com/2006/12/biases_of_scien.html.
-  
- []
-
 [386
 
 ] [387] [388] [389])
@@ -1785,18 +1742,6 @@ sics,
 ])
 (./afterwords/when-none-dare-urge-restraint.tex [436])
 (./posts/every-cause-wants-to-be-a-cult.tex [437]
-Overfull \hbox (118.70137pt too wide) in paragraph at lines 3--3
-\T1/ppl/m/n/8 (-20) Rocks Wikipedia^^Q (http://www.theregister.co.uk/2007/12/04
-/wikipedia_secret_mailing) 
- []
-
-
-Overfull \hbox (116.44652pt too wide) in paragraph at lines 3--3
-\T1/ppl/m/n/8 (-20) verse Moun-tain^^Q (http://www.theregister.co.uk/2007/12/06
-/wikipedia_and_overstock).  
- []
-
-
 Overfull \hbox (0.15802pt too wide) in paragraph at lines 11--11
 \T1/ppl/m/n/8 (+5) groups have one. ``High-entropy state'' and ``attractor'' 
  []
@@ -1823,15 +1768,10 @@ Pra-tio-nal-ity^^Q won't
 
 ] [445])
 (./afterwords/asch-s-conformity-experiment.tex [446])
-(./posts/on-expressing-your-concerns.tex [447]
-Overfull \hbox (23.6178pt too wide) in paragraph at lines 13--13
-\T1/ppl/m/n/8 (-20) ment.^^Q http://lesswrong.com/lw/gr/the_modesty_argument.  
+(./posts/on-expressing-your-concerns.tex [447] [448
 
- []
-
-[448
-
-]) (./afterwords/on-expressing-your-concerns.tex [449])
+])
+(./afterwords/on-expressing-your-concerns.tex [449])
 (./posts/lonely-dissent.tex [450] [451
 
 ] [452]) (./afterwords/lonely-dissent.tex [453]) (./posts/cultish-countercultis
@@ -1887,30 +1827,19 @@ Overfull \hbox (0.10364pt too wide) in paragraph at lines 33--33
 [487]) (./afterwords/leave-a-line-of-retreat.tex [488])
 (./posts/crisis-of-faith.tex [489] [490
 
+] [491] [492] [493] [494]) [495]
+(./afterwords/crisis-of-faith.tex [496]) (./posts/the-ritual.tex [497] [498
+
 ]
-Overfull \hbox (40.90923pt too wide) in paragraph at lines 33--33
-\T1/ppl/m/n/8 (-20) phone^^Q (http://lesswrong.com/lw/h5/archimedess_chronophon
-e) 
- []
+[499]) (./afterwords/the-ritual.tex [500]) [501] [502
 
-
-Overfull \hbox (132.4739pt too wide) in paragraph at lines 33--33
-\T1/ppl/m/n/8 (-20) and ^^PChro-mo-phone Mo-ti-va-tions^^Q (http://lesswrong.co
-m/lw/h6/chronophone_motivations).  
- []
-
-[491] [492] [493] [494]) (./afterwords/crisis-of-faith.tex [495] [496])
-(./posts/the-ritual.tex [497] [498
-
-] [499]) (./afterwords/the-ritual.tex
-[500]) [501] [502
-
-] (./posts/minds-an-introduction.tex [503
+]
+(./posts/minds-an-introduction.tex [503
 
 ] [504
 
-] [505]
-[506] [507]) (./afterwords/minds-an-introduction.tex [508])
+] [505] [506] [507])
+(./afterwords/minds-an-introduction.tex [508])
 (./posts/the-power-of-intelligence.tex [509] [510
 
 ] [511])
@@ -2348,12 +2277,6 @@ nd
 ] [753
 
 ] [754] [755]
-Overfull \hbox (42.31357pt too wide) in paragraph at lines 54--55
-\T1/ppl/m/n/10 (-20) Re-view 83, no. 4 (1974): 435^^U450, http://www.jstor.org/
-stable/2183914. 
- []
-
-
 Underfull \hbox (badness 4779) in paragraph at lines 55--56
 []$[]$\T1/ppl/m/n/10 (+20) In a sur-vey of An-glo-phone pro-fes-sional philoso-
 
@@ -2368,12 +2291,6 @@ Underfull \hbox (badness 5637) in paragraph at lines 55--56
 Underfull \hbox (badness 1038) in paragraph at lines 55--56
 \T1/ppl/m/n/10 (+20) fails. []$[]$Kirk sum-ma-rizes con-tem-po-rary po-si-tions
  on
- []
-
-
-Overfull \hbox (147.14233pt too wide) in paragraph at lines 59--60
-\T1/ppl/m/n/10 (-20) tum Me-chan-ics, ed. Ed-ward N. Zalta, http://plato.stanfo
-rd.edu/archives/fall2008/entries/qm-
  []
 
 ) (./afterwords/the-world-an-introduction.tex [756])
@@ -2979,25 +2896,8 @@ Overfull \hbox (0.10182pt too wide) in paragraph at lines 404--404
 \T1/ppl/m/n/8 (+18) that, considered now, would make you worry that the 
  []
 
-[1174] [1175] [1176]
-Overfull \hbox (3.2661pt too wide) in paragraph at lines 456--456
-\T1/ppl/m/n/10 (-20) ation-ism and Evo-lu-tion,^^Q http://www.talkorigins.org/o
-rigins/faqs-
- []
-
-
-Overfull \hbox (23.96368pt too wide) in paragraph at lines 462--462
-\T1/ppl/m/n/10 (-20) line.org.uk/content/frameset?viewtype=text&itemID=F373&pag
-eseq=1;
- []
-
-
-Overfull \hbox (23.46368pt too wide) in paragraph at lines 462--462
-\T1/ppl/m/n/10 (-20) line.org.uk/content/frameset?itemID=F944&viewtype=text&pag
-eseq=1. 
- []
-
-) (./afterwords/a-technical-explanation-of-technical-explanation.tex [1177]
+[1174] [1175] [1176])
+(./afterwords/a-technical-explanation-of-technical-explanation.tex [1177]
 [1178]) [1179] [1180
 
 ] (./posts/ends-an-introduction.tex [1181
@@ -3005,17 +2905,6 @@ eseq=1.
 ] [1182
 
 ] [1183]
-Underfull \hbox (badness 1668) in paragraph at lines 57--57
-[]$[]$$[]$\T1/ppl/m/n/10 (+20) Nick Bostrom, ^^PA His-tory of Tran-shu-man-ist 
-Thought,^^Q
- []
-
-
-Underfull \hbox (badness 1281) in paragraph at lines 57--57
-\T1/ppl/m/it/10 (+20) Jour-nal of Evo-lu-tion and Tech-nol-ogy \T1/ppl/m/n/10 (
-+20) 14, no. 1 (2005): 1^^U25,
- []
-
 [1184]) (./afterwords/ends-an-introduction.tex [1185])
 (./posts/not-for-the-sake-of-happiness-alone.tex [1186] [1187
 
@@ -3505,37 +3394,10 @@ hat
 
 ] [1471])
 (./afterwords/a-sense-that-more-is-possible.tex [1472])
-(./posts/epistemic-viciousness.tex [1473]
-Underfull \hbox (badness 1642) in paragraph at lines 3--3
-[]$[]$\T1/ppl/m/n/10 (+20) Someone de-serves a large hat-tip for this, but I'm 
-hav-
- []
+(./posts/epistemic-viciousness.tex [1473] [1474
 
-
-Underfull \hbox (badness 7522) in paragraph at lines 3--3
-\T1/ppl/m/n/10 (+20) ing trou-ble re-mem-ber-ing who; my records don't seem
- []
-
-
-Underfull \hbox (badness 5036) in paragraph at lines 3--3
-\T1/ppl/m/n/10 (+20) to show any email or OB com-ment which told me of
- []
-
-
-Underfull \hbox (badness 3189) in paragraph at lines 3--3
-\T1/ppl/m/n/10 (+20) this 12-page es-say, "[Epis-temic Vi-cious-ness in the Mar
--tial
- []
-
-
-Overfull \hbox (204.38216pt too wide) in paragraph at lines 3--3
-\T1/ppl/m/n/10 (-20) Arts](https://web.archive.org/web/20120502203055/http://ar
-tsci.wustl.edu/^^Cgrussell/epistemicviciousness.pdf
- []
-
-[1474
-
-]) (./afterwords/epistemic-viciousness.tex [1475])
+])
+(./afterwords/epistemic-viciousness.tex [1475])
 (./posts/schools-proliferating-without-evidence.tex [1476] [1477
 
 ] [1478])
@@ -3545,45 +3407,16 @@ tsci.wustl.edu/^^Cgrussell/epistemicviciousness.pdf
 ] [1482])
 (./afterwords/3-levels-of-rationality-verification.tex [1483])
 (./posts/why-our-kind-can-t-cooperate.tex [1484]
-Underfull \hbox (badness 3792) in paragraph at lines 7--7
-[]$[]$\T1/ppl/m/n/10 (+20) Let me tell you about a dif-fer-ent an-nual fundrais
--ing
- []
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 7--7
-\T1/ppl/m/n/10 (+20) a non-profit or-ga-ni-za-tion that may not be named.[]$[]$
-  One
- []
-
-
-Underfull \hbox (badness 2088) in paragraph at lines 7--7
-\T1/ppl/m/n/10 (+20) drawn from the atheist/libertarian/technophile/sf-fan/earl
-y-
+Underfull \hbox (badness 10000) in paragraph at lines 7--7
+\T1/ppl/m/n/10 (+20) libertarian/technophile/sf-fan/early-adopter/programmer/et
+c
  []
 
 [1485
 
 ] [1486] [1487] [1488]
-Underfull \hbox (badness 2922) in paragraph at lines 105--105
-[]$[]$\T1/ppl/m/n/10 (+20) Our cul-ture puts all the em-pha-sis on heroic dis-a
-gree-
- []
-
-
-Underfull \hbox (badness 2334) in paragraph at lines 105--105
-\T1/ppl/m/n/10 (+20) ment and heroic de-fi-ance, and none on heroic agree-ment
- []
-
-
-Underfull \hbox (badness 1048) in paragraph at lines 105--105
-\T1/ppl/m/n/10 (+20) in-vent-ing clever ob-jec-tions to oth-ers' ar-gu-ments.  
-Per-haps
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 105--105
-\T1/ppl/m/n/10 (+20) Valley/programmer/early-adopter crowd stays marginal-ized,
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+\T1/ppl/m/n/10 (+20) technophile/sf-fan/Silicon-Valley/programmer/early-adopter
 
  []
 
@@ -3600,15 +3433,15 @@ n's
 (./posts/your-price-for-joining.tex [1494] [1495
 
 ]
-Overfull \hbox (23.7211pt too wide) in paragraph at lines 17--17
-[]$[]$\T1/ppl/m/n/10 (-20) ...It seems to me that peo-ple in the atheist/libert
-arian/technophile/sf-
+Underfull \hbox (badness 1622) in paragraph at lines 17--17
+[]$[]$\T1/ppl/m/n/10 (+20) ...It seems to me that peo-ple in the athe-ist/liber
+tarian/
  []
 
 [1496]) (./afterwords/your-price-for-joining.tex
-Overfull \hbox (22.17778pt too wide) in paragraph at lines 6--7
-[]\T1/ppl/m/n/10 (-20) It seems to the au-thor that peo-ple in the ``atheist/li
-bertarian/technophile/sf-
+Underfull \hbox (badness 1127) in paragraph at lines 6--7
+[]\T1/ppl/m/n/10 (+20) It seems to the au-thor that peo-ple in the ``athe-ist/l
+ibertarian/
  []
 
 [1497]) (./posts/can-humanism-match-religion-s-output.tex [1498]
@@ -3749,11 +3582,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 42D20C6E3914A7E6C4192444FF54814C;73831.
  ) 
 Here is how much of TeX's memory you used:
- 30823 strings out of 476182
- 550240 string characters out of 5795595
+ 30827 strings out of 476182
+ 550297 string characters out of 5795595
  1968975 words of memory out of 5000000
- 38618 multiletter control sequences out of 15000+600000
- 657244 words of font info for 788 fonts, out of 8000000 for 9000
+ 38620 multiletter control sequences out of 15000+600000
+ 657325 words of font info for 789 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,6n,82p,3175b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk> </
@@ -3769,9 +3602,9 @@ hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (1602 pages, 6749089 bytes).
+Output written on main.pdf (1602 pages, 6753927 bytes).
 PDF statistics:
- 20875 PDF objects out of 22161 (max. 8388607)
+ 20883 PDF objects out of 22161 (max. 8388607)
  18967 compressed objects within 190 object streams
  11274 named destinations out of 12825 (max. 500000)
  102865 words of extra memory for PDF output out of 106986 (max. 10000000)

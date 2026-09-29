@@ -104,12 +104,22 @@ def flags(label: str, text: str) -> list[str]:
     return [f"  [{label}] {f}".replace("\n", " ") for f in out]
 
 
+# The manifest slug of a post whose files use a shorter name (see make_books.py).
+FILE_FOR_SLUG = {"making-beliefs-pay-rent-in-anticipated-experiences": "making-beliefs-pay-rent"}
+
+
 def check(slug: str) -> bool:
     ok = True
+    orig_f = ROOT / "data/originals" / f"{slug}.md"
+    slug = FILE_FOR_SLUG.get(slug, slug)
+    if slug != orig_f.stem:
+        print(f"(files for {orig_f.stem} are named {slug})")
     post_f = ROOT / "annotated/posts" / f"{slug}.tex"
     aft_f = ROOT / "annotated/afterwords" / f"{slug}.tex"
     hon_f = ROOT / "honest/sections" / f"{slug}.tex"
-    orig_f = ROOT / "data/originals" / f"{slug}.md"
+    if not orig_f.exists():
+        from audit import SLUG_FOR_FILE
+        orig_f = ROOT / "data/originals" / f"{SLUG_FOR_FILE.get(slug, slug)}.md"
     print(f"== {slug}")
     for f in (post_f, aft_f, hon_f, orig_f):
         if not f.exists():

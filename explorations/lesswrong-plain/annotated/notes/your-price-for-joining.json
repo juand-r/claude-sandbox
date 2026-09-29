@@ -1,16 +1,9 @@
 {
  "slug": "your-price-for-joining",
  "header": "\\post{Your Price for Joining}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/Q8evewZW5SeidLdbA/your-price-for-joining}\n",
- "skeleton_sha": "d3e97883e3bc689d24220d49e85eca6fd6abfa89f166208265afc0acf040f27e",
- "post_sha": "b23a15487992b771a23afa88e24470f949ab7eeefcadc9ff47a36af97cdefc66",
- "edits": [
-  {
-   "at": 2065,
-   "del_len": 2,
-   "del_sha": "983987033f0e117011e531dc33ad9bb15290bba41a414d830fb5cbdbcda2ff17",
-   "ins": ""
-  }
- ],
+ "skeleton_sha": "5a17a82562e4654c73f6bd00ff9a842de323d3e7df245272984233087dbab4c1",
+ "post_sha": "e71a179140372c5a5702081b8773083169cadb2bfb6bf43186546e90012c567b",
+ "edits": [],
  "notes": [
   [
    130,
@@ -53,75 +46,75 @@
    "\\cpara{The post's thesis about the community, offered as the author's observation (``It seems to me''). The 50-player image makes the arithmetic plain: fifty demands of at least 20\\% add up to ten times the pot.}"
   ],
   [
-   3537,
+   3565,
    "\\cpara{Explains the high prices by instincts formed in bands of about 40 people who all knew each other.}"
   ],
   [
-   3759,
+   3787,
    "\\clogic{``Almost certainly'' rests on one premise, that such situations would often have arisen among hunter-gatherers. No evidence is given that intuitions about joining work as described, or that they are set for groups of about 40.}"
   ],
   [
-   4055,
+   4083,
    "\\cpara{The first of three mismatches that follow from that account: instincts set for a small band underestimate a large group's inertia, and so demand too much.}"
   ],
   [
-   4429,
+   4457,
    "\\cpara{The second mismatch: a strategy that takes a week of paperwork costs more to change than one agreed around a campfire.}"
   ],
   [
-   4751,
+   4779,
    "\\cpara{The third mismatch: meeting one representative, and not the hundred earlier negotiations, makes an even split feel fair. This ties the account back to the Ultimatum Game's even split.}"
   ],
   [
-   5232,
+   5260,
    "\\cpara{Adds causes of another kind, hedged (``may perhaps''): weakness of will, and a wish for status and control that one does not admit.}"
   ],
   [
-   5560,
+   5588,
    "\\cpara{Discloses the author's side, that of the organizer who ``goes around trying to herd cats,'' and grants a possible bias. The reader is told where the observations come from.}"
   ],
   [
-   5967,
+   5995,
    "\\cpara{The rule's first condition: joining still does net good by your own values.}"
   ],
   [
-   6120,
+   6148,
    "\\cpara{Mentions the stricter test, comparison with the best other use of the same resources, and sets it aside as ``little-used and humanly-unrealistic,'' with reasons deferred to a later post.}"
   ],
   [
-   6367,
+   6395,
    "\\cpara{The second condition: the issue is not worth the effort of fixing it yourself.}"
   ],
   [
-   6580,
+   6608,
    "\\cpara{The rule's conclusion: then do not withhold support, whether by instinct or as deliberate pressure.}"
   ],
   [
-   6833,
+   6861,
    "\\cpara{The other branch: if the issue is worth it, join and fix it.}"
   ],
   [
-   6982,
+   7010,
    "\\cpara{The exception, with three conditions: the group refuses to let you fix it, a neutral observer would think you competent, and no one else is harmed. Only then ``a little blackmail'' may be in order.}"
   ],
   [
-   7413,
+   7441,
    "\\cpara{States the main objection to the rule: a project's leaders need some reason to answer to their supporters. The post raises it itself and does not claim to settle it.}"
   ],
   [
-   7639,
+   7667,
    "\\cpara{Restates the thesis as the author's observation (``I observe'') and turns it into a call: join groups and stay in them ``at least a little more easily.''}"
   ],
   [
-   8116,
+   8144,
    "\\cpara{A joke that exaggerates the observation (``the 451st public email'' about a font).}"
   ],
   [
-   8366,
+   8394,
    "\\cpara{Grants that such complaints may hide other reasons (the link is to ``Is That Your True Rejection?'') and proposes a group norm, hedged (``probably'').}"
   ],
   [
-   8734,
+   8762,
    "\\cpara{The norm in one sentence. It keeps the rule's main condition and excepts cases of ``outright bad faith.''}"
   ]
  ]

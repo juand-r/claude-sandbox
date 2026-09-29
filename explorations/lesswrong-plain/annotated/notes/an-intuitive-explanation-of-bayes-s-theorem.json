@@ -1,8 +1,8 @@
 {
  "slug": "an-intuitive-explanation-of-bayes-s-theorem",
  "header": "\\post{An Intuitive Explanation of Bayes's Theorem}{Eliezer Yudkowsky}{2003}{https://www.lesswrong.com/posts/XTXWPQSEgoMkAupKt/an-intuitive-explanation-of-bayes-s-theorem}\n",
- "skeleton_sha": "29ba0670dacc711854aa8d3fd2a36e774beb42134e96e09f1606f5a717429e59",
- "post_sha": "da0d5fdab5199bb357e25c1641caee57b1ef2c98a36fc858481c6aec604cd824",
+ "skeleton_sha": "714e702cf85b318925d36b4bad5598c4df37d0151ae4477edcdea05705ab4e88",
+ "post_sha": "14feb4d90a565eb246d7a10a950a4f607402aa3915634b56263cbb0074867982",
  "edits": [
   {
    "at": 2749,
@@ -461,15 +461,15 @@
    "\\cpara{A joke, and it closes a frame the essay opened in its third paragraph: ``What is the secret that the adherents of Bayes know? What is the light that they have seen?'' Between the two, a result taught in any first course in probability is presented as the secret of a group, and the reader who finishes is told they have joined it. The joke is harmless on its own.}"
   ],
   [
-   47200,
+   47214,
    "\\cpara{Gives the first reference: Casscells, Schoenberger and Graboys (1978) on how doctors read lab results.}"
   ],
   [
-   47401,
+   47415,
    "\\cpara{Gives the second reference: Eddy (1982) on probability reasoning in medicine.}"
   ],
   [
-   47663,
+   47677,
    "\\cpara{Gives the third reference: Gigerenzer and Hoffrage (1995) on frequency formats.}"
   ]
  ]

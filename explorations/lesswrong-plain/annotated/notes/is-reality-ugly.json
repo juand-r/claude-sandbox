@@ -1,8 +1,8 @@
 {
  "slug": "is-reality-ugly",
  "header": "\\post{Is Reality Ugly?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/oKiy7YwGToaYXdvnj/is-reality-ugly}\n",
- "skeleton_sha": "c5302e54509c617d1e383c893251bfde1c8421e905090289b774ae80a1de8173",
- "post_sha": "92e1d0d163da5947ae9daabf3f7efdae4dedfe6da77493ca0788190d2e3fb5a3",
+ "skeleton_sha": "c331e76d1062ef838b1ee24546c58c8feaeac0d52af2d1a839fca0343f6a32a0",
+ "post_sha": "d0b60597e1643ab86ce8e5b7e7331ef0f48208874287b1053402f0b4b753b3e3",
  "edits": [],
  "notes": [
   [
@@ -46,99 +46,99 @@
    "\\cpara{First source: not knowing the fundamental laws. Humans lived under gravity long before anyone described it.}"
   ],
   [
-   2898,
+   2912,
    "\\cpara{Grants that there is no final theory yet, and argues that our best theories are probably surface forms of deeper mathematics.}"
   ],
   [
-   3281,
+   3295,
    "\\clogic{The paragraph shows that physics is described by mathematics, and probably will be at the deepest level. ``Made of math'' is a stronger claim: that the world is a mathematical structure. That is Max Tegmark's mathematical universe hypothesis (proposed in 1998), which Wikipedia's article calls ``speculative'' and notes ``has proven controversial.'' The post argues only for the weaker claim, and the rest of its argument needs only that.}"
   ],
   [
-   3295,
+   3309,
    "\\cpara{Argues that ignorance of fundamental law cannot explain everyday uncertainty, since physicists need particle accelerators to make it show at all.}"
   ],
   [
-   3597,
+   3611,
    "\\cpara{Second source: too little computing power to work out what known laws imply. Protein folding is the example.}"
   ],
   [
-   3948,
+   3962,
    "\\cfact{True in 2008. Since 2020 DeepMind's AlphaFold has predicted protein structures from sequence with ``accuracy competitive with experimental structures in a majority of cases'' (Jumper and colleagues, \\textsc{Nature}, 2021). It does so by learning from known structures, not by computing the physics, so the post's point, that working from the physics is too costly, still stands.}"
   ],
   [
-   4382,
+   4396,
    "\\cpara{Concludes that we are not logically omniscient: we cannot see all the consequences of what we know.}"
   ],
   [
-   4683,
+   4697,
    "\\cpara{Third source, credited to Nick Bostrom's book (\\textsc{Anthropic Bias}, 2002): not knowing where you are. The example is a sequence of cubes with one little person on each.}"
   ],
   [
-   5016,
+   5030,
    "\\cpara{From outside, the two facts, the cubes and the people, say everything.}"
   ],
   [
-   5265,
+   5279,
    "\\cpara{From inside, a person who knows both facts still needs a third: which cube they are standing on.}"
   ],
   [
-   5468,
+   5482,
    "\\cfact{The same point is David Lewis's case of the two gods (1979), as quoted in the \\textsc{Stanford Encyclopedia of Philosophy} (``Self-Locating Beliefs''): they ``know every proposition that is true at their world,'' yet neither knows which of the two gods they are.}"
   ],
   [
-   5482,
+   5496,
    "\\cpara{Adds that knowledge of the laws still constrains what you expect. The arithmetic is right: 1728 ($12^3$) is the only four-digit cube beginning with 17, and $5177717 = 173^3$.}"
   ],
   [
-   6113,
+   6127,
    "\\cpara{Applies the point to cosmology: predicting the night sky requires knowing where Earth is in the whole universe, which the post takes to include other inflationary universes and Everett branches.}"
   ],
   [
-   6772,
+   6786,
    "\\cpara{Offers, as ``a good bet,'' that uncertainty about initial conditions is really indexical, and covers the other case: if not, it is uncertainty about the world, like uncertainty about fundamental laws.}"
   ],
   [
-   7078,
+   7092,
    "\\cpara{Concludes that lasting messiness comes from the second and third sources, logical and indexical uncertainty.}"
   ],
   [
-   7295,
+   7309,
    "\\cpara{Adds that ignorance of the laws is no evidence of real messiness: the order may be unfound.}"
   ],
   [
-   7464,
+   7478,
    "\\cpara{Applies this to biology: the underlying order is already known, and it is too deep to help, because protein chemistry cannot be computed from physics and evolution may have gone differently elsewhere. New basic physics will not make biology easy.}"
   ],
   [
-   7783,
+   7797,
    "\\clogic{Offered as a guess, and the ``Because'' does not carry it. Knowing the lowest level, and being unable to compute from it, does not rule out simple regularities at a higher level: thermodynamics gives simple laws, such as the ideal gas law, for systems whose molecular detail no one can compute. The reasons in the next sentences show only that biology will not be derived from physics.}"
   ],
   [
-   8135,
+   8149,
    "\\cpara{Contrasts the Greek position, when looking for hidden elegance was wise, with ours, when we know where the elegance lies.}"
   ],
   [
-   8520,
+   8534,
    "\\cpara{Treats quantum randomness as indexical uncertainty: the little people on the cubes cannot tell which cube they are on except by looking.}"
   ],
   [
-   8755,
+   8769,
    "\\clogic{``Different versions of us'' is the many-worlds reading of quantum mechanics, which the introduction to this book says a number of physicists reject; for the author's case for it, see the notes on ``Many Worlds, One Best Guess''. The conclusion does not need it. On any standard reading the theory gives only probabilities for these results, so no one can predict them.}"
   ],
   [
-   9134,
+   9148,
    "\\cpara{Sums up: the world is a regular, very large mathematical object, too costly to simulate, and our position is that of a little person who does not know which cube they are on and is bad at arithmetic. ``Deterministic'' holds on the many-worlds reading noted above; on readings with collapse it does not.}"
   ],
   [
-   9803,
+   9817,
    "\\cpara{Draws the moral: uncertainty is a fact about our minds, not about the world, and ``The messiness is only in the eye of the beholder.'' It repeats that the world ``is math'' (see the note above).}"
   ],
   [
-   10303,
+   10317,
    "\\cpara{Extends the conclusion, with a joke, to the blogosphere.}"
   ],
   [
-   10455,
+   10469,
    "\\cpara{A joke on Senator Ted Stevens's description of the Internet, in 2006, as ``a series of tubes.''}"
   ]
  ]
