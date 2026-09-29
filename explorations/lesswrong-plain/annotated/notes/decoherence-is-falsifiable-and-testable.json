@@ -1,0 +1,249 @@
+{
+ "slug": "decoherence-is-falsifiable-and-testable",
+ "header": "\\post{Decoherence is Falsifiable and Testable}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/DFxoaWGEh9ndwtZhk/decoherence-is-falsifiable-and-testable}\n",
+ "skeleton_sha": "f80c322d4c52d554c0a68a07279f3c44b4323db1d831766f001aabe251c2de66",
+ "post_sha": "ca34b687c57ea75044e626d2fa7a40381e68853893464251cd863af855c8557b",
+ "edits": [],
+ "notes": [
+  [
+   164,
+   "\\cpara{Stipulates two senses for two words often used as one. The split is the post's own, as it says. Popper used the words as synonyms: ``Testability is falsifiability,'' and his criterion is ``falsifiability, or refutability, or testability'' (``Science: Conjectures and Refutations,'' printed in \\textsc{Conjectures and Refutations}, 1963).}"
+  ],
+  [
+   561,
+   "\\cpara{Bayes's theorem. This copy flattens the fraction: $P(A_i \\mid B)$ equals $P(B \\mid A_i)P(A_i)$ divided by the sum of $P(B \\mid A_j)P(A_j)$ over all the hypotheses $A_j$.}"
+  ],
+  [
+   610,
+   "\\cpara{Names the theorem, with a joke about the author's clothing.}"
+  ],
+  [
+   746,
+   "\\cpara{Defines the terms of the formula.}"
+  ],
+  [
+   1094,
+   "\\cpara{Defines ``falsifiability'' in terms of probability: a good hypothesis concentrates its probability, so some outcomes would nearly refute it. This is Popper's rule restated (``The more a theory forbids, the better it is''); the post names Popper later.}"
+  ],
+  [
+   1825,
+   "\\cpara{Repeats Bayes's theorem.}"
+  ],
+  [
+   1874,
+   "\\cpara{Says a tiny likelihood drives the posterior near zero. That holds only if some rival hypothesis gives the observation a higher probability; otherwise the denominator is tiny too. The post grants this later, in its paragraph on Popper (``the sum in the denominator has got to contain some other hypothesis'').}"
+  ],
+  [
+   2584,
+   "\\cpara{The Bayesian reading of falsification, which the book gave earlier in ``An Intuitive Explanation of Bayes's Theorem.'' Popper, whose rule it is, rejected probabilistic support for theories. In Barnes's summary (\\textsc{Stanford Encyclopedia of Philosophy}, ``Prediction versus Accommodation''), he ``held that it was impossible to show that a theory was even probable based on the evidence.''}"
+  ],
+  [
+   2656,
+   "\\cpara{Sums up: falsifiability, so defined, is judged one hypothesis at a time.}"
+  ],
+  [
+   2975,
+   "\\cpara{Asks whether ``the decoherence interpretation'' is falsifiable. Here, as in ``Decoherence is Simple'' (``decoherence (a.k.a. many-worlds)''), the word names the many-worlds view. In physics it usually names a process, the suppression of interference by interaction with the environment, whose ``experimental observation'' Schlosshauer reviews (\\textsc{Physics Reports}, 2019). Experiments on that process do not by themselves decide between many-worlds and collapse; Bacciagaluppi's \\textsc{Stanford Encyclopedia} entry stresses ``the interplay between decoherence and the various approaches to the foundations of quantum mechanics.''}"
+  ],
+  [
+   3153,
+   "\\cpara{The first observation that would falsify decoherence. It would falsify any version of quantum mechanics, as the objector says two paragraphs later and the post grants.}"
+  ],
+  [
+   3334,
+   "\\cpara{More such observations. They would falsify most of physics, not only this theory.}"
+  ],
+  [
+   3730,
+   "\\cpara{Concludes that decoherence is falsifiable in the post's sense.}"
+  ],
+  [
+   3901,
+   "\\cpara{An imagined objector: these observations test quantum mechanics, not decoherence as against collapse.}"
+  ],
+  [
+   4079,
+   "\\cpara{Grants the point and defers it: comparing two hypotheses needs a different test.}"
+  ],
+  [
+   4364,
+   "\\cpara{The account of Popper is accurate. In ``Science: Conjectures and Refutations'' he called the two psychoanalytic theories, Freud's and Adler's, ``simply non-testable, irrefutable'': ``There was no conceivable human behaviour which could contradict them.''}"
+  ],
+  [
+   4821,
+   "\\cpara{Says a being who knew only decoherent quantum mechanics would still have sharp expectations. The theory is described as the wave equation ``plus the Born probability rule'': the rule that gives probabilities is listed as a separate item.}"
+  ],
+  [
+   5294,
+   "\\cpara{The objector: the same holds for quantum mechanics with collapse.}"
+  ],
+  [
+   5425,
+   "\\cpara{Grants it. Both theories pass the single-hypothesis test, so that test cannot choose between them.}"
+  ],
+  [
+   5742,
+   "\\cpara{The objector asks for a new prediction.}"
+  ],
+  [
+   5857,
+   "\\cpara{Asks ``new'' relative to what, and first answers with the ancient Greeks. The next paragraph gives the reading the objector meant: new relative to collapse.}"
+  ],
+  [
+   6130,
+   "\\cpara{Defines ``testability'': a prediction is new only relative to another hypothesis, so a test compares at least two.}"
+  ],
+  [
+   6511,
+   "\\cpara{States what a test needs: an outcome $B$ more probable under one hypothesis than under the other.}"
+  ],
+  [
+   6840,
+   "\\cpara{Says such an outcome changes the odds between the hypotheses.}"
+  ],
+  [
+   7150,
+   "\\cpara{The odds form of Bayes's theorem, flattened in this copy: posterior odds equal the likelihood ratio times the prior odds, so a ratio other than 1 changes the odds. The algebra is correct.}"
+  ],
+  [
+   7242,
+   "\\cpara{``/frac'' is a markup slip in the online text. The line says that the posterior odds differ from the prior odds.}"
+  ],
+  [
+   7287,
+   "\\cpara{Points out that the formula treats the two hypotheses alike; nothing in it marks one as old. That is correct.}"
+  ],
+  [
+   7553,
+   "\\cpara{Calls a reasoner whose beliefs depend on the order of the evidence a case of ``hysteresis,'' and jokes that science frowns on it too.}"
+  ],
+  [
+   7864,
+   "\\clogic{The demand for new predictions that the post answers has a name, predictivism, and a history. Its best-known proponent is Popper, for whom a confirmation counts only if, ``unenlightened by the theory in question, we should have expected an event which was incompatible with the theory.'' It is still argued, by Bayesians among others: Barnes's \\textsc{Stanford Encyclopedia} entry describes Patrick Maher's ``Bayesian analysis of its predictivist implications,'' in which a successful prediction is also evidence that the method that produced the theory is reliable. The order theorems the post cites are correct, but they do not settle this dispute, which the post does not mention.}"
+  ],
+  [
+   7878,
+   "\\cpara{Correct: updating on $X$ and then $Y$ gives the same result as $Y$ and then $X$.}"
+  ],
+  [
+   8184,
+   "\\cpara{Draws the consequence: if decoherence is untestable relative to collapse, collapse is untestable relative to decoherence. An imagined history, with Everett and Wheeler in the place of Bohr and Heisenberg, asks whether the order of invention should then decide.}"
+  ],
+  [
+   8635,
+   "\\cpara{Asks the same question of aliens who found decoherence first.}"
+  ],
+  [
+   8916,
+   "\\cpara{The objector: without a demand for new predictions, anyone could add untestable parts to a theory, such as a property called ``scent.''}"
+  ],
+  [
+   9345,
+   "\\cpara{Agrees that a theory in which angels push charged particles should be rejected.}"
+  ],
+  [
+   9808,
+   "\\cpara{Says the fault is not newness.}"
+  ],
+  [
+   9938,
+   "\\cpara{Begins a hypothetical history in which Maxwell's laws were first read as the laws that direct angels.}"
+  ],
+  [
+   10678,
+   "\\cpara{The newcomer proposes to keep the equations and drop the angels.}"
+  ],
+  [
+   10999,
+   "\\cpara{The establishment asks the newcomer for new predictions.}"
+  ],
+  [
+   11211,
+   "\\cpara{The moral of the parable, offered with ``it seems to me'': if the new angels should be rejected without an experiment, so should the old ones.}"
+  ],
+  [
+   11573,
+   "\\cpara{States the principle: a complication is at fault for being useless, whether it is new or old.}"
+  ],
+  [
+   11833,
+   "\\cpara{Gives the Bayesian version: extra complications lower a theory's prior, measured by the length of its description, and then the order of hearing does not matter. The case for this measure of simplicity is made in the previous post, ``Decoherence is Simple.''}"
+  ],
+  [
+   12389,
+   "\\cpara{Grants that formal probability rarely applies in real life, and offers the rule as a guide to practice.}"
+  ],
+  [
+   12750,
+   "\\cpara{The objector: the many worlds are themselves a useless complication.}"
+  ],
+  [
+   13002,
+   "\\cpara{Answers that what decoherence asks you to believe is the general law, and that the law is testable.}"
+  ],
+  [
+   13178,
+   "\\cpara{Recalls ``Scientific Evidence, Legal Evidence, Rational Evidence'' (August 2007), accurately: that post says ``Science is made up of generalizations which apply to many particular instances,'' and uses the same white socks.}"
+  ],
+  [
+   14122,
+   "\\cpara{Anyone can check a general law on a case of their own; that is what makes it reliable.}"
+  ],
+  [
+   14321,
+   "\\cpara{Says the wave equation can be tested on any case, such as the hydrogen atom. By the post's own description, the collapse view keeps the same equation and adds a collapse (``the differential equation for the wavefunction's evolution, plus a collapse postulate''). So these tests confirm what the two views share. They differ on whether the equation still holds during measurement and at large scales, and a test between them would have to look there.}"
+  ],
+  [
+   14549,
+   "\\cpara{Argues that the separate worlds are a deduction from the law, not an extra claim. The probability rule is correct: $X$ together with $X \\rightarrow Y$ entails $Y$, so $P(Y)$ is at least $P(X \\mbox{ and } (X \\rightarrow Y))$.}"
+  ],
+  [
+   15016,
+   "\\cpara{Also correct: if $Y$ is nearly certain given $X$, adding $Y$ to $X$ costs almost no probability.}"
+  ],
+  [
+   15094,
+   "\\cpara{Draws the moral: logical consequences of beliefs you already hold cost nothing extra.}"
+  ],
+  [
+   15344,
+   "\\cpara{Applies the spaceship case from ``Belief in the Implied Invisible,'' whose argument our notes there judge sound.}"
+  ],
+  [
+   16136,
+   "\\cpara{Says the tested part is the law, and the worlds follow from it. It names the main critique, where the Born probabilities come from, and leaves it open. The author had called that question ``One serious mystery of decoherence'' six days earlier, in ``The Born Probabilities'' (not in the book), and returns to it in ``Many Worlds, One Best Guess.''}"
+  ],
+  [
+   16815,
+   "\\cpara{Turns the implication around: to deny the worlds is to deny that the quantum laws hold everywhere.}"
+  ],
+  [
+   17005,
+   "\\clogic{``Necessarily'' claims more than the logic gives. Bohmian mechanics keeps the wave equation for the whole universe with no collapse, holds that the wave function ``provides only a partial description,'' and has one world, fixed by the particles' positions (Goldstein, \\textsc{Stanford Encyclopedia}, ``Bohmian Mechanics''). Whether its unoccupied branches are worlds anyway is disputed: Deutsch says they must be physically real, and Goldstein writes that this claim should be compelling to those who accept a functionalist account of worlds and ``not merely wrong, but silly'' to those who reject it. The step from the law to many worlds needs the further premise that the wave function is the whole of what exists, which Bohmian mechanics denies.}"
+  ],
+  [
+   17215,
+   "\\cpara{Offered with ``may be'': the claim that this is the first time scientists have said a successful theory contains a part that can be dropped. The ether is a close precedent. Einstein wrote in 1905 that ``The introduction of a `luminiferous ether' will prove to be superfluous'' (the sentence continues). Lorentz's ether theory had by then become, in Wikipedia's summary, ``both empirically and deductively equivalent to special relativity,'' and lost out ``due to the superfluous assumption of an undetectable aether.'' The precedent supports the post's rule about useless parts.}"
+  ],
+  [
+   17630,
+   "\\clogic{``Strictly simpler'' leaves out the Born rule. The angels of the parable do no work, but in the textbook theory the collapse postulate delivers the probabilities (``a collapse postulate that obeys the Born probabilities''), and the post's own decoherence hypothesis adds them back as a separate item (``plus the Born probability rule''). Whether many-worlds is then simpler is disputed. Vaidman, a defender, grants that the probability rule ``involves adding a postulate'' but says it leaves the mathematical part of the theory unchanged; Hemmo and Shenker, as Vaidman reports them, grant the economy but call it irrelevant, since the many-worlds postulates alone ``are not enough to explain our experience.''}"
+  ],
+  [
+   17644,
+   "\\cpara{The conclusion. Of its three claims, ``nor is it untestable'' is the one the post has not shown in its own sense. A test needs an outcome $B$ with different probabilities under decoherence and collapse, and the post names none; its argument is that untestability would count against both.}"
+  ],
+  [
+   17873,
+   "\\cfact{Such outcomes exist, and they support the title. Vaidman (\\textsc{Stanford Encyclopedia}, ``Many-Worlds Interpretation'') says the common claim that many-worlds cannot in principle be told apart from an ideal collapse theory ``is not the case,'' though the test needs interference between macroscopic states, ``far beyond the reach of current or foreseeable technology.'' Collapse models that make collapse a physical process predict effects that experiments have tested, ``ruling out some, though not all.'' ``Collapse Postulates,'' written two days later and placed before this post in the book, says experiments ``are steadily ruling out'' collapse in ever larger systems.}"
+  ],
+  [
+   17887,
+   "\\cpara{Lists critiques that remain open on each side, the 50/50 question for decoherence and influence at a distance for collapse, and proposes comparing the theories on their fit with experience and the character of physical law.}"
+  ],
+  [
+   18333,
+   "\\cpara{Restates, with ``I would argue,'' that the three arguments for excluding decoherence are errors of probability theory. The closing claim is limited: drop those three arguments and keep decoherence ``in the game.''}"
+  ]
+ ]
+}
