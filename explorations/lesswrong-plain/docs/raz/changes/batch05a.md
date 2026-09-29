@@ -225,3 +225,65 @@ Why: Same as the note.
 - Before: \nb{A 1987 review found that belief's ``unqualified acceptance is unfounded.''
 - After: \nb{The evidence is mixed. A 1987 review found that the unqualified belief is unfounded.
 
+
+## annotated/afterwords/the-design-space-of-minds-in-general.tex
+
+Why: Fair reading: the post's answer is a hedged caution ("might"; the question "implies" a natural class), not a claim that built AIs will be varied. Kept as scope, one sentence. The count and diagram points were answered by the post's own "almost any" and by the diagram's role as illustration.
+
+- Before: The weakness is the step that turns this into an answer to the opening question. ``What will they do?'' asks about the AIs that will be built, not about every design that could exist. The post answers it by saying that talk of ``AIs'' is ``really'' talk of ``minds-in-general''. That shows the possibilities are wide. It does not show that the minds actually built will be spread across them. The post's own explanation of why humans form a natural class is a shared architecture, and AIs made by shared methods might share one too. The post does not consider this; Quintin Pope pressed the objection in 2023.
+
+The count of two to the trillionth power is right, and it tells against claims about behavior that varies with a mind's design. Those are the claims the post cares about. It does not tell against claims that follow from what all such minds share, and the post's ``almost any kind of logically consistent property'' leaves room for these.
+
+The diagram illustrates the claim and adds no evidence for it: the sizes of its regions are drawn, not measured, and the AIs in it are placeholders.
+- After: The post uses this to answer the opening question, and its answer is a caution: asking what ``AIs'' will do assumes that they form a natural class, and any two designs ``might'' be less alike than a human and a petunia. Whether the AIs actually built would cluster, as humans do by sharing an architecture, for example because they are made by shared methods, the post does not take up. Quintin Pope later raised this against using the size of mind space as an intuition pump.
+
+- Before: In short: a correct warning against generalizing over all possible minds, used to answer what the AIs that get built will be like, without showing that those AIs will be as varied as the possibilities.
+- After: In short: a correct warning against generalizing over all possible minds, applied to the question of what AIs will do, without taking up whether the AIs actually built would share a design.
+
+
+## annotated/posts/the-design-space-of-minds-in-general.tex
+
+Why: Fair reading: the post's answer is a hedged caution ("might"; the question "implies" a natural class), not a claim that built AIs will be varied. Kept as scope, one sentence. The count and diagram points were answered by the post's own "almost any" and by the diagram's role as illustration.
+
+- Before: The central step moves from what is possible to what will be built. The space of possible designs is vast, but ``What will they do?'' asks about the designs people will make, and the post's own reason why humans form a natural class is a shared architecture. Whether AIs made by shared methods would also cluster, the post does not consider. Quintin Pope pressed this objection in 2023:
+- After: The answer to the opening question, and it is hedged (``might''): nothing guarantees that AIs form a natural class. The post's own reason why humans form one is a shared architecture; whether AIs made by shared methods would also cluster, the post does not take up. Quintin Pope later raised this, against a spoken version of the same picture (2023):
+
+- Before:  It tells against claims about behavior that varies with design, which are the claims the post goes on to discuss. It does not threaten claims that follow from what all these minds share, for example that each is a finite program of at most a trillion bits; the post's later ``almost any'' leaves room for such claims.
+- After: 
+
+
+## annotated/afterwords/where-recursive-justification-hits-bottom.tex
+
+Why: Prior work that supports the post is credit, not a fault (brief, Book II lessons); kept as information, out of the In short line. The skeptic point is one the post grants, so it is not a limit.
+
+- Before: The problem and much of the answer are old, and the post names none of the earlier work.
+- After: The problem and much of the answer are old.
+
+- Before: Two limits of scope. The post's dilemma,
+- After: One limit of scope. The post's dilemma,
+
+- Before:  And the usual objection to naturalist replies, that they do not answer the skeptic, the post grants: persuading the skeptic is not its aim.
+- After: 
+
+- Before: a coherent naturalist answer with a long pedigree it does not name,
+- After: a coherent naturalist answer with a long pedigree (Hume, Neurath, Quine, Goodman),
+
+
+## annotated/posts/where-recursive-justification-hits-bottom.tex
+
+Why: Prior work that supports the post is credit, not a fault (brief, Book II lessons); kept as information, out of the In short line. The skeptic point is one the post grants, so it is not a limit.
+
+- Before: \clogic{The view that such loops can justify has precedents the post does not name.
+- After: \clogic{The view that such loops can justify has precedents.
+
+
+## honest/sections/the-design-space-of-minds-in-general.tex
+
+Why: Same as the Response.
+
+- Before: \nb{The question was what AIs will be like, and so about the ones that will be built. That the possible designs are many does not show that the built ones will differ much. The post's own reason why humans form a class is a shared architecture, and AIs made by shared methods might share one too. The post does not consider this. Quintin Pope made this objection in 2023.}
+- After: \nb{The post's own reason why humans form a class is a shared architecture. Whether AIs made by shared methods would share one too, the post does not take up; Quintin Pope later raised this.}
+
+- Before:  \nb{The count is right, and it counts against claims about behavior that varies with design. It does not count against claims that follow from what all such minds share.}
+- After: 
+

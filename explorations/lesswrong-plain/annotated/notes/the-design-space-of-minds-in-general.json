@@ -1,0 +1,89 @@
+{
+ "slug": "the-design-space-of-minds-in-general",
+ "header": "\\post{The Design Space of Minds-In-General}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/tnWRXkcDi5Tw9rzXw/the-design-space-of-minds-in-general}\n",
+ "skeleton_sha": "d13f3a8adc64a084e043439a80c6e1b5c6f2610b7ea3b46975014f2109433c79",
+ "post_sha": "563c8feec3e0a47fb83392dd8d32ab39e863a4112a1d7d95e2c214b1b7feb4b0",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Opens with the question people put to the author, what AIs will be like and do, and in the next line calls it a trick question.}"
+  ],
+  [
+   374,
+   "\\cpara{Sets up the comparison in the next line. Humans share even molecular machines such as ATP synthase with plants and bacteria; the post explains this by the conservation of genes that many other genes depend on. ATP synthase is found ``in all known organisms'' (Wikipedia, ``Rotating locomotion in living systems'').}"
+  ],
+  [
+   962,
+   "\\cpara{The thesis in its sharpest form, offered with ``might'': two AI designs could have less in common than a human and a petunia, which share machinery like ATP synthase.}"
+  ],
+  [
+   1057,
+   "\\cpara{The answer to the opening question, and it is hedged (``might''): nothing guarantees that AIs form a natural class. The post's own reason why humans form one is a shared architecture; whether AIs made by shared methods would also cluster, the post does not take up. Quintin Pope later raised this, against a spoken version of the same picture (2023): ``it's a bad idea to use `the size of mind space' as an intuition pump for `how similar are things from two different parts of mind space'.''}"
+  ],
+  [
+   1627,
+   "\\cpara{Introduces the diagram. It shows a sphere labelled ``Minds-in-general''; inside it a tall ellipse, ``Posthuman mindspace''; at the ellipse's base a smaller oval, ``Transhuman mindspace'', holding a dot, ``Human minds''. Three made-up kinds, ``Bipping AIs'', ``Freepy AIs'' and ``Gloopy AIs'', sit at scattered places. The sizes illustrate the claim; nothing in the post measures them.}"
+  ],
+  [
+   1802,
+   "\\cpara{Puts humans in a small dot, since a sexually reproducing species cannot vary much. The argument is in ``The Psychological Unity of Humankind,'' posted the day before and not in the book: ``In a sexually reproducing species, complex adaptations are necessarily universal.''}"
+  ],
+  [
+   1999,
+   "\\cpara{Describes the transhuman region: minds smarter than us that would ``in some sense'' still be people.}"
+  ],
+  [
+   2227,
+   "\\cpara{Describes the posthuman region: whatever a transhuman might grow into.}"
+  ],
+  [
+   2384,
+   "\\cpara{Describes the rest of the sphere: possible AIs too odd to count even as posthuman.}"
+  ],
+  [
+   2554,
+   "\\cpara{Asks where natural selection, which also designs things, belongs on the map.}"
+  ],
+  [
+   2704,
+   "\\cpara{Answers: the map sits inside a larger space of optimization processes, with the first natural selection at the bottom, below humans.}"
+  ],
+  [
+   2973,
+   "\\cpara{Asks whether some powerful optimizers would not count as minds, offers Hutter's AIXI with ``Arguably'', and defers the question. AIXI is a formal agent that cannot be computed, and it does not model itself as part of the environment it acts on (Wikipedia, ``AIXI''). I take that to be what ``can't even recognize itself in a mirror'' refers to.}"
+  ],
+  [
+   3386,
+   "\\cpara{States the moral: do not generalize over all of mind design space. The picture of a space of possible minds, in place of one line between minds and non-minds, has a precedent in Aaron Sloman's ``The structure of the space of possible minds'' (1984): ``Clearly there is not just one sort of mind.''}"
+  ],
+  [
+   3495,
+   "\\cpara{The post's one argument for the moral, a count. The count is right: there are about $2^{10^{12}+1}$ bit strings of at most a trillion bits.}"
+  ],
+  [
+   3761,
+   "\\cpara{Gives the mirror case: an existential claim has as many chances to be true.}"
+  ],
+  [
+   3927,
+   "\\cpara{Restates the moral as the conclusion of the count.}"
+  ],
+  [
+   4065,
+   "\\cpara{Names two sources of mistaken generalizations: imagining yourself in the mind's place, and imagining that a mind would reject its own code as you would. The second is the error described in ``Ghosts in the Machine,'' earlier in the book. The parenthesis concedes that the first method is right about one mind, your own.}"
+  ],
+  [
+   4709,
+   "\\cpara{States the existential side as the post's conclusion, hedged with ``almost''.}"
+  ],
+  [
+   4849,
+   "\\cpara{Draws the practical rule: explain what a mind does from its particular makeup, since another mind may do it differently.}"
+  ],
+  [
+   5104,
+   "\\cpara{Closes on the move of defining minds that behave differently as not minds, the error treated in ``Arguing `By Definition','' earlier in the book.}"
+  ]
+ ]
+}

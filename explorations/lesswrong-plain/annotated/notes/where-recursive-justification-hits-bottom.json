@@ -1,0 +1,245 @@
+{
+ "slug": "where-recursive-justification-hits-bottom",
+ "header": "\\post{Where Recursive Justification Hits Bottom}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/C8nEXTcjZb9oauTCW/where-recursive-justification-hits-bottom}\n",
+ "skeleton_sha": "ae06385fd2f088a36833cf763e9712486bf5430463a6d2940717262e7b260fae",
+ "post_sha": "d351506266eed63258a63472b2b7a30557b591be6b3ff87471c47268f3a74ce2",
+ "edits": [],
+ "notes": [
+  [
+   168,
+   "\\cpara{Opens with the problem of induction in three lines. The sunrise is Hume's example: ``That the sun will not rise to-morrow is no less intelligible a proposition, and implies no more contradiction than the affirmation, that it will rise'' (\\textsc{Enquiry}, section 4). Hume's circularity argument is set out in the notes on ``A Priori.''}"
+  ],
+  [
+   380,
+   "\\cpara{Carries the question from the sunrise to the laws of physics: why expect them to hold tomorrow?}"
+  ],
+  [
+   669,
+   "\\cpara{Carries it to Occam's razor: its past success supports it only if the past predicts the future. This is the argument of ``A Priori,'' earlier in the book.}"
+  ],
+  [
+   956,
+   "\\cpara{Introduces an unnamed speaker who argues that science, too, rests on faith, so their own belief should be spared criticism.}"
+  ],
+  [
+   1005,
+   "\\cpara{The argument has a history. W. W. Bartley answered it in \\textsc{The Retreat to Commitment} (1962); in the Internet Encyclopedia's summary, ``defenders of religion claim that commitment to some religion is just as rational as commitment to rationality: each individual has to choose some starting point, and each starting point must be arbitrary.'' The author mentions Bartley two days later, in ``My Kind of Reflection,'' as a comparison a reader had made.}"
+  ],
+  [
+   1292,
+   "\\cpara{Quotes ``The Fallacy of Gray'' (7 January 2008), which met the ``faith'' charge by asking why people who praise faith make it in an ``angry-triumphal tone.''}"
+  ],
+  [
+   1602,
+   "\\cpara{States the lesson drawn from the speaker. The post ends on the same point turned on itself: loops give no ``immunity from questioning.''}"
+  ],
+  [
+   1685,
+   "\\cpara{Grants that the quoted reply does not answer the real problem, and states it: if every belief must be justified, how does the chain end? The notes on ``The Fallacy of Gray'' fault that post for treating induction as obvious and point to this post's concession.}"
+  ],
+  [
+   1927,
+   "\\cpara{This is the regress problem; the Stanford Encyclopedia traces an early version to Aristotle (\\textsc{Posterior Analytics}, I.3). Its classic answer, foundationalism, does not end in something ``assumed-without-justification'': it holds that some beliefs are justified without depending on other beliefs. For the principle of induction, such a foundation would be an a priori justification, the kind the author argued against in ``A Priori.'' The post does not take up that option here.}"
+  ],
+  [
+   2090,
+   "\\cpara{Mentions, naming no one, critics who treat the need for a prior as a problem peculiar to Bayesianism, and defers the topic (``later, perhaps'').}"
+  ],
+  [
+   2397,
+   "\\cpara{Grants that Bayesian updating does not by itself solve the problem of induction. The Stanford Encyclopedia agrees: the Bayes--Laplace argument relies on a choice of prior, and ``The quest for an a priori argument for the assignment of the prior has been largely abandoned.''}"
+  ],
+  [
+   2545,
+   "\\cpara{Sets up the urn: 3 red and 6 white in the first nine draws. What is the chance the next is red?}"
+  ],
+  [
+   2792,
+   "\\cpara{Shows that the answer depends on the prior. Both figures check. Laplace's rule of succession gives $(3+1)/(9+2) = 4/11$. If the urn began with 10 red and 10 white and draws are not replaced, 7 red and 4 white remain, so the chance is $7/11$.}"
+  ],
+  [
+   3163,
+   "\\cpara{Shows that a strange enough prior makes each sunrise lower the chance of the next: a barrel with a fixed number of ``Yes'' slips, drawn without replacement.}"
+  ],
+  [
+   3655,
+   "\\cpara{Points to ``The Design Space of Minds-In-General,'' the previous post in the book, for minds with anti-Occamian and anti-Laplacian priors.}"
+  ],
+  [
+   3963,
+   "\\cpara{The anti-Laplacian mind defends its prior by its own rule. This is the standard objection to justifying induction by induction: ``less sane inference rules such as counterinduction can support themselves in a similar fashion'' (Stanford Encyclopedia, ``The Problem of Induction,'' citing Salmon 1963). The post states the objection against its own view before giving the view.}"
+  ],
+  [
+   4136,
+   "\\cpara{A joke lesson, ``Don't be born with a stupid prior,'' which the post grants will not satisfy philosophers.}"
+  ],
+  [
+   4344,
+   "\\cpara{The author's approach: treat ``Should I trust my brain?'' and ``Should I trust Occam's Razor?'' as ordinary deep questions. This is the program of naturalized epistemology. In the Stanford Encyclopedia's words, Quine ``would have epistemologists make `free use' of the results of science from the start.''}"
+  ],
+  [
+   4588,
+   "\\cpara{Applies it to Occam's razor: ask how well it works, what probability theory says for it, and whether the universe looks like one where it would work.}"
+  ],
+  [
+   4937,
+   "\\cpara{Applies it to the brain: it does not always work, but it is more powerful than any program one could trust instead.}"
+  ],
+  [
+   5227,
+   "\\cpara{Uses the brain's origin both ways. Evolution gives reasons for doubt (built for the savanna, not for math) and a reason to think the brain can work, since selection would have removed priors so ``anti-helpful.'' The second argument is Quine's: ``creatures inveterately wrong in their inductions have a pathetic but praiseworthy tendency to die out before reproducing more of their kind'' (``Natural Kinds,'' 1969, quoted in the Stanford Encyclopedia, ``Naturalism in Epistemology'').}"
+  ],
+  [
+   5804,
+   "\\cpara{Says this is not a halt to questioning. The examination goes on, with the current brain and methods, because there is nothing else to use.}"
+  ],
+  [
+   6271,
+   "\\cpara{Adds that trusting anything else, even a computer program, would still be the author's own decision.}"
+  ],
+  [
+   6468,
+   "\\cpara{Explains the author's reluctance to allow any exception to the rule that everything needs justification.}"
+  ],
+  [
+   6844,
+   "\\cpara{Grants that this reluctance is itself a risky motive, and that reversing a silly argument does not give a right one.}"
+  ],
+  [
+   7132,
+   "\\cpara{Draws the post's central distinction: an assumption taken and not examined, against an assumption examined with the full force of the mind that rests on it.}"
+  ],
+  [
+   7700,
+   "\\cpara{Asks whether one could examine one's mind without using it, and in the next line suggests the answer is no.}"
+  ],
+  [
+   8076,
+   "\\cpara{The rule is Jaynes's desideratum (IIIb): the reasoner ``always takes into account all of the evidence it has relevant to a question. It does not arbitrarily ignore some of the information'' (\\textsc{Probability Theory: The Logic of Science}, chapter 1). Jaynes states it for the evidence in a calculation. The post extends it to the choice of reasoning methods, and offers it as having ``at least as much appeal'' as avoiding circles, not as a proof.}"
+  ],
+  [
+   8606,
+   "\\cpara{Restates the wish for a justification of induction and the razor that does not assume them.}"
+  ],
+  [
+   8925,
+   "\\cpara{Names the three options as the post sees them: stop at an unexaminable assumption, examine the rules by themselves, or explain everything from scratch to ``an ideal philosophy student of perfect emptiness.''}"
+  ],
+  [
+   9274,
+   "\\cpara{Doubts that the third option can be had, citing the author's arguments that no argument can be explained to a rock.}"
+  ],
+  [
+   9634,
+   "\\cpara{Adds that even an explanation of why the universe is simple could be understood only by a mind already using modus ponens. The point is Lewis Carroll's; see the notes on ``A Priori.'' The link goes to ``Created Already In Motion,'' later in the book.}"
+  ],
+  [
+   10096,
+   "\\cpara{Asks what happens when someone keeps asking ``Why do you believe what you believe?''}"
+  ],
+  [
+   10217,
+   "\\cpara{The author's answer, and it loops: the rule of predicting from the simplest stable level has usually worked; simplicity explains why it works; evolution explains how the brain could observe accurately, ``if my observations are correct.'' The post states the loop openly.}"
+  ],
+  [
+   10829,
+   "\\cpara{Answers that it licenses reflecting on the mind with the mind. Philosophers have a name for the distinction the post needs: an argument that uses a rule to show that rule reliable is ``rule-circular,'' not ``premise-circular,'' and some hold that only premise-circularity is vicious (Stanford Encyclopedia, ``The Problem of Induction,'' citing Van Cleve 1984 and Papineau 1992). The post's loop is of the first kind and the helium sheet below of the second, so the distinction supports the post. The externalist view behind it is described in the notes on ``A Priori.''}"
+  ],
+  [
+   10985,
+   "\\cpara{Gives the post's test: a way of forming beliefs is trustworthy if there is a coherent causal story of how it comes to match the world.}"
+  ],
+  [
+   11436,
+   "\\cpara{The example of circular logic that fails the test: a sheet saying that everything on it is true and that a helium atom weighs 20 grams. The step to the second law of thermodynamics rests on the author's ``The Second Law of Thermodynamics, and Engines of Cognition''; see the notes there. The next paragraph makes the point without the physics.}"
+  ],
+  [
+   12121,
+   "\\cpara{Makes the point directly: even if believed, the sheet gives no reason to think it matches reality, so any agreement would be a ``miraculous coincidence.''}"
+  ],
+  [
+   12451,
+   "\\cpara{Generalizes: self-validating sets of statements should not map reality, judged, as the post says, by our current minds.}"
+  ],
+  [
+   12689,
+   "\\cpara{Contrasts evolved priors for simplicity and past success, which as a causal story ``could plausibly work.''}"
+  ],
+  [
+   13009,
+   "\\cpara{Raises the chief objection to coherence as a test and answers it with the mind's origin. The objection is the standard one against coherence theories, the isolation objection: ``how can the mere fact that a system is coherent \\ldots\\ provide any guidance whatsoever to truth and reality?'' (Stanford Encyclopedia, ``Coherentist Theories of Epistemic Justification''). Coherence theorists usually answer it by giving beliefs close to experience a special role (same entry); the post answers it with a fact about how the mind was made.}"
+  ],
+  [
+   13284,
+   "\\cpara{Tells a worried reader to set justification aside and ask whether the argument is true, using, as the next line says, their own mind.}"
+  ],
+  [
+   13523,
+   "\\cpara{Raises the obvious parallel: the believer who trusts the Bible because the Bible says so, and who could add that faith itself was put in them by God.}"
+  ],
+  [
+   13777,
+   "\\cpara{Answers first with how people leave religion: not by jumping to a state of pure emptiness and judging from there.}"
+  ],
+  [
+   14110,
+   "\\cpara{Describes how doubt comes from inside a religious mind: unanswered prayers, a God who cannot give the hundredth digit of pi, a creation story that makes no sense on its own premises.}"
+  ],
+  [
+   14759,
+   "\\cpara{Draws the lesson: people repair their errors by questioning their current beliefs with their current minds, not by resetting to ``an ideal philosopher of pure emptiness.'' This is Otto Neurath's image of 1932: ``We are like sailors who have to rebuild their ship on the open sea, without ever being able to dismantle it in dry-dock and reconstruct it from its best components'' (Stanford Encyclopedia, ``Otto Neurath'').}"
+  ],
+  [
+   15336,
+   "\\cpara{Restates the distinction drawn earlier, between reflecting on the mind with the mind and holding an assumption that cannot be examined.}"
+  ],
+  [
+   15562,
+   "\\cpara{Gives the test that separates the cases: a self-certifying source is judged by its record on other matters. A Bible that had been right about everything else would make its claim of divine origin worth taking seriously. The ``four legs'' matches Leviticus 11:21--22, where the ``flying creeping thing that goeth upon all four'' includes ``the grasshopper after his kind'' (King James Version).}"
+  ],
+  [
+   16276,
+   "\\cpara{Applies the same test to priests' claim that faith is a trustworthy source.}"
+  ],
+  [
+   16581,
+   "\\cpara{Concludes that whatever calls the Bible's trustworthiness into question also calls into question its assurance of its own trustworthiness. On this account, the loop itself is not what condemns the believer; the record is.}"
+  ],
+  [
+   17001,
+   "\\cpara{Applies the test to induction: if the future stopped resembling the past, the author would mostly be dead, and if not, would have to question the principle.}"
+  ],
+  [
+   17428,
+   "\\cpara{Asks what the alternative to induction would be, and offers counterinduction. Hume's own position was not an alternative rule. Hume went on reasoning from experience, as the post does, but held that ``All inferences from experience, therefore, are effects of custom, not of reasoning'' (\\textsc{Enquiry}, section 5). The post agrees with Hume in practice and differs in counting the loop as a justification.}"
+  ],
+  [
+   17848,
+   "\\cpara{Changes the aim from winning arguments with ``ideal philosophers of perfect emptiness'' to winning, and states the principle: question everything with the full current force of the mind. Critics of this kind of reply, Fumerton and BonJour among them, object that it does not answer the skeptic (Stanford Encyclopedia, ``Naturalism in Epistemology''). The post grants as much: persuading a philosopher who grants nothing is not its aim.}"
+  ],
+  [
+   18389,
+   "\\cpara{Says to change a principle that fails the mind's own examination, then look again with the improved one.}"
+  ],
+  [
+   18669,
+   "\\cpara{Says that reflective consistency is a side effect of playing to win while looking at oneself, not the goal.}"
+  ],
+  [
+   18925,
+   "\\cpara{The thesis, with its hedge: ``I do think'' reflective loops can be told from circular logic ``by common sense.'' The earlier sections suggest tests, a causal story of how the mind tracks the world and a record on other matters, but the post does not state a criterion. Two days later, in ``My Kind of Reflection,'' the author wrote: ``I haven't yet sat down and formalized the exact difference.''}"
+  ],
+  [
+   19078,
+   "\\clogic{The view that such loops can justify has precedents. Nelson Goodman (\\textsc{Fact, Fiction, and Forecast}, 1955) held that rules of inductive inference are justified by bringing them into agreement with the particular inferences we accept, each revised against the other (Stanford Encyclopedia, ``Reflective Equilibrium''). Two days later the author wrote: ``Now I am far from the first person to consider reflective application of reasoning principles.''}"
+  ],
+  [
+   19654,
+   "\\cpara{Adds that loops grant no ``immunity from questioning,'' which answers the opening speaker. Bartley's answer to the same argument was similar: ``the theory that rational practice means holding all theories open to criticism, may itself be held open to criticism'' (Internet Encyclopedia, ``Critical Rationalism''). Bartley differed on one point: Bartley's view works ``by decoupling criticism and justification'' (Wikipedia, ``Pancritical rationalism''), where this post keeps the demand for justification.}"
+  ],
+  [
+   19873,
+   "\\cpara{Ends by repeating the advice: full force, loop or not, and play to win.}"
+  ]
+ ]
+}
