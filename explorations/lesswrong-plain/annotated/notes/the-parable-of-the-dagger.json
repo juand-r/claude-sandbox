@@ -1,0 +1,61 @@
+{
+ "slug": "the-parable-of-the-dagger",
+ "header": "\\post{The Parable of the Dagger}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/hQxYBfu2LPc9Ydo6w/the-parable-of-the-dagger}\n",
+ "skeleton_sha": "dad4de63bdd5d42e5ecd2594b22afd81e4c3aebd56ed098b3e70f3882da7a697",
+ "post_sha": "c4fded98b3650a441b56805279860b27fc937da62854bd122aef3104dfe89d5f",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Opens the sequence ``A Human's Guide to Words'' with a short story. The last line credits Raymond Smullyan, and the credit is accurate (see the note there).}"
+  ],
+  [
+   214,
+   "\\cpara{Sets the first puzzle: two boxes whose inscriptions refer to each other's truth.}"
+  ],
+  [
+   727,
+   "\\cpara{The jester adds the rule that makes the puzzle solvable: exactly one inscription is true. This promise about the inscriptions is what the king will not give in the second half.}"
+  ],
+  [
+   880,
+   "\\cpara{The king chooses wrong. The puzzle has one answer, which I checked case by case: if the first inscription is the true one, the second is false only when the gold is in the second box; if the first is false, the second is true only when the gold is in the second box. Either way the frog is in the first box.}"
+  ],
+  [
+   958,
+   "\\cpara{The jester's explanation is correct as far as it goes: with the first inscription true and gold in the first box, the second inscription comes out true as well, which breaks the rule. The king cuts him off.}"
+  ],
+  [
+   1394,
+   "\\cpara{Ends the first half: the king punishes the jester instead of hearing the solution.}"
+  ],
+  [
+   1556,
+   "\\cpara{The second half reverses the roles. The king states what is in the boxes and what is at stake, and says nothing about whether the inscriptions are true. The story does not point out this omission; the reader must notice it.}"
+  ],
+  [
+   1799,
+   "\\cpara{This inscription speaks about its own truth, as the jester's first inscription did.}"
+  ],
+  [
+   2008,
+   "\\cpara{The jester's reasoning is valid. It assumes that each inscription is either true or false. Smullyan's solution to his own version names this as the error: ``the suitor's error was to assume that each of the statements was either true or false.''}"
+  ],
+  [
+   2410,
+   "\\cpara{The outcome. With the dagger in the second box, the second inscription is false, and the first can be neither true nor false. If it is true, both inscriptions are true, but the second is false. If it is false, exactly one inscription is true; that cannot be the first, and the second is false.}"
+  ],
+  [
+   2477,
+   "\\cpara{The jester is right that something is impossible, but it is only his assumption about the inscriptions, not the dagger's place.}"
+  ],
+  [
+   2580,
+   "\\cpara{The moral, given in the king's words: writing on a box does not decide what is in it. The story states it and does not explain it. Smullyan's solution says the same thing: ``I can take any number of caskets that I please and put an object in one of them and then write any inscriptions at all on the lids; these sentences won't convey any information whatsoever.''}"
+  ],
+  [
+   2734,
+   "\\cpara{The source is problem 70 of Smullyan's \\textsc{What Is the Name of This Book?} (1978). There, Portia's two caskets read ``The portrait is not in here'' and a sentence saying that exactly one of the two statements is true; the suitor reasons that the portrait is in the gold casket, and finds it in the silver. The post changes the setting, puts the dagger (from Smullyan's next test) in place of the portrait, and adds the first half. That half dramatizes Smullyan's own contrast: with a promise about the inscriptions, a misplaced object would mean ``one of the old Portias would have had to have made a false statement.''}"
+  ]
+ ]
+}

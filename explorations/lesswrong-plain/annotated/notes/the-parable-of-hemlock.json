@@ -1,0 +1,81 @@
+{
+ "slug": "the-parable-of-hemlock",
+ "header": "\\post{The Parable of Hemlock}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/bcM5ft8jvsffsZZ4Y/the-parable-of-hemlock}\n",
+ "skeleton_sha": "2835e3b3942365d9ad01dd2735c75d8f9653e0491c894d80c8fa154486f73997",
+ "post_sha": "628bc7e1812526e6800d29339e06e6c3390a8199ad7d828dff2139716d61423a",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{The question mark is warranted. David Wheeler, who looked for the source of this example, writes that ``Aristotle did not say anything like this example''; the earliest printing found there is John Stuart Mill's \\textsc{A System of Logic} (1843), in the chapter that makes this post's objection (see the note on ``You could reason, perhaps'').}"
+  ],
+  [
+   267,
+   "\\cpara{The parable. The student's last move is valid under the student's own definition: if mortality is part of ``man,'' a Socrates who does not die is not a man. The joke is that the certainty costs nothing because it predicts nothing.}"
+  ],
+  [
+   1458,
+   "\\cpara{States the thesis in one sentence. The linked page is a webcomic whose content I could not see.}"
+  ],
+  [
+   1683,
+   "\\cpara{The first horn: treat ``all humans are mortal'' as a record of observed cases, and predict from them. This is John Stuart Mill's account of the syllogism, with the same example. Mill granted that ``in every syllogism, considered as an argument to prove the conclusion, there is a petitio principii,'' and answered that ``All inference is from particulars to particulars'' (\\textsc{A System of Logic}, Book II, chapter 3). The post does not mention Mill; his account supports it.}"
+  ],
+  [
+   2186,
+   "\\cpara{Sarcasm, preparing the second horn.}"
+  ],
+  [
+   2425,
+   "\\cpara{The second horn: mortality is part of the definition. The attribution has a basis. Porphyry, a Neoplatonist of the third century AD who wrote in Greek, made ``rational and mortal'' the differences ``constitutive of man,'' and his definition, \\mbox{``animal rationale mortale,''} was adopted by medieval logicians (Owen's translation of the \\textsc{Isagoge}, text and note 17).}"
+  ],
+  [
+   3034,
+   "\\cpara{The dilemma's conclusion: on the definitional view, you must see Socrates die before you can call him human. Mill made the same reply to the definitional view in 1843: ``If the word man connoted mortality \\ldots\\ we might, undoubtedly, evolve the conclusion from the minor alone, because the minor would have already asserted it.'' Mill held that the word ``does not connote mortality.''}"
+  ],
+  [
+   3450,
+   "\\cpara{An aside that extends the point from this definition to any observation: even seeing him die gives no certainty.}"
+  ],
+  [
+   4059,
+   "\\cpara{The point here is the textbook distinction between a valid argument and a sound one: an argument is sound only if it is valid ``and has no false premises'' (Wikipedia, ``Soundness''). Validity alone holds in every world, including those without Socrates.}"
+  ],
+  [
+   4590,
+   "\\cpara{The step from validity to evidence, and it is correct. Evidence favors a hypothesis when it is likelier if the hypothesis is true than if it is false; a fact that holds either way favors neither.}"
+  ],
+  [
+   4992,
+   "\\cpara{Restates the previous paragraph in terms of possible worlds.}"
+  ],
+  [
+   5169,
+   "\\cpara{Limits the claim: logic can tell us what we do not yet know follows from what we already accept.}"
+  ],
+  [
+   5367,
+   "\\cfact{It is not: $29384209 = 1667 \\times 17627$.}"
+  ],
+  [
+   5587,
+   "\\cpara{Applies this to Socrates: logic shows what two uncertain guesses predict together.}"
+  ],
+  [
+   5854,
+   "\\cpara{The suggestion is not credited. The phrase comes from the title of a 1975 paper by Jaakko Hintikka, ``Impossible Possible Worlds Vindicated'' (\\textsc{Journal of Philosophical Logic}); the \\textsc{Stanford Encyclopedia of Philosophy} (``Impossible Worlds'') describes admitting impossible worlds into models of knowledge, so that a person need not know every logical truth, as a popular method, ``beginning with Cresswell 1973 and Hintikka 1975.''}"
+  ],
+  [
+   6204,
+   "\\cpara{Keeps empirical predictions apart from that kind of logical learning.}"
+  ],
+  [
+   6484,
+   "\\cpara{The conclusion, consistent with the concessions before it: logic connects hypotheses to observations and predictions, and settles no empirical question by itself.}"
+  ],
+  [
+   6992,
+   "\\cpara{Closes with a two-line verse that restates the thesis.}"
+  ]
+ ]
+}

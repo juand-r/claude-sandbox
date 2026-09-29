@@ -1,0 +1,89 @@
+{
+ "slug": "words-as-hidden-inferences",
+ "header": "\\post{Words as Hidden Inferences}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/3nxs2WYDGzJbzcLMp/words-as-hidden-inferences}\n",
+ "skeleton_sha": "5707e036d904a0a44542e3b60f0813f76523a1a6edee3b0db3f9d0a5fddd24cc",
+ "post_sha": "be25ec4fe45f4306d589dd43c79f26ad3f47a96bbc7b800728ed4c91da9a977c",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{Sets up the barrel: 11 blue eggs and 8 red cubes, drawn one at a time.}"
+  ],
+  [
+   526,
+   "\\cpara{Poses the question: what color is the next egg-shaped object?}"
+  ],
+  [
+   666,
+   "\\cpara{Answers with a guess and states its limits: 19 objects is a small sample, and the guess ``blue'' wins only because every other color splits the rest of the probability.}"
+  ],
+  [
+   1140,
+   "\\cpara{Self-irony about the careful reasoner, setting up the contrast that follows.}"
+  ],
+  [
+   1359,
+   "\\cpara{The contrast: faced with a tiger, nobody reasons step by step, and the joke shows why one should not.}"
+  ],
+  [
+   1789,
+   "\\cpara{The general claim behind the example, offered with ``seems'' and no source.}"
+  ],
+  [
+   1969,
+   "\\cpara{Coins ``bleggs'' and ``rubes,'' used through the rest of the sequence, and makes the post's point in small: once there is a name, the inference stops feeling like one.}"
+  ],
+  [
+   2229,
+   "\\cpara{The thesis, stated against a view the post attributes to no one in particular. The next paragraph gives the condition under which that view would be true.}"
+  ],
+  [
+   2316,
+   "\\cpara{The condition: the view would hold only if words were logical classes from which nothing new is inferred, the case of ``The Parable of Hemlock.''}"
+  ],
+  [
+   2534,
+   "\\cpara{Argues that the brain categorizes whatever our stated rules say, with Aristotle as the example.}"
+  ],
+  [
+   2747,
+   "\\cfact{The example is not ancient; see the note on the epigraph of ``The Parable of Hemlock.''}"
+  ],
+  [
+   3018,
+   "\\cfact{Socrates died in 399 BC and Aristotle was born in 384 BC, so Aristotle never saw him and did not classify him by sight. The next paragraph turns to living people, where the point holds.}"
+  ],
+  [
+   3244,
+   "\\cpara{The rule follows from the premise of the previous paragraph, ``if mortality is part of your logical definition of `human','' and that premise does not fit Aristotle's own examples. His \\textsc{Topics} treats ``a walking, biped animal'' as signifying man's essence, and lists ``a mortal living being capable of receiving knowledge'' as a property, which ``does not indicate the essence of a thing''; the \\textsc{Metaphysics} uses ``two-footed animal.'' The definition with ``mortal'' in it is Porphyry's, adopted by later logicians (see the note in ``The Parable of Hemlock''). The rule fits those later Aristotelians better than Aristotle.}"
+  ],
+  [
+   3618,
+   "\\cpara{A joke that makes the point: a wrong theory of the mind does not stop the mind working.}"
+  ],
+  [
+   3883,
+   "\\cpara{The historical claim at the center: Aristotelians classified as everyone does but had a wrong picture of what they did. No Aristotelian text is quoted. Aristotle's own account of how a kind becomes known is close to the post's: ``though the act of sense-perception is of the particular, its content is universal,'' for example ``man \\ldots\\ not the man Callias,'' and first premises are known ``by induction'' (\\textsc{Posterior Analytics} II.19). He also held that ``scientific knowing and intuition are always true,'' which fits the post's point about certainty.}"
+  ],
+  [
+   4174,
+   "\\cpara{An imagined interview. The last answer, that human mortality is ``established by definition,'' fits the Porphyrian definition used in the schools.}"
+  ],
+  [
+   4648,
+   "\\cpara{Restates the claim as a failure of self-knowledge, linking to ``The Lens That Sees Its Flaws.''}"
+  ],
+  [
+   4979,
+   "\\cpara{The practical claim: creating a word can make the mind form a category and infer similarity. The post cites no study. Research on infants supports it: Waxman and Markow (1995) found that new nouns and adjectives ``focused infants' attention on object categories'' at 12 to 13 months.}"
+  ],
+  [
+   5460,
+   "\\cpara{Returns to the point that a mistaken theory does not change what it is about. The aside on Aristotle and the brain is accurate (see the note in ``The Power of Intelligence'').}"
+  ],
+  [
+   5743,
+   "\\cpara{The conclusion, which sets the task of the sequence. The post's one historical case is of a mistaken theory that did no harm; a case where such a mistake spoiled deliberate thinking is not given here. Later posts in the sequence, such as ``Arguing `By Definition','' offer them.}"
+  ]
+ ]
+}

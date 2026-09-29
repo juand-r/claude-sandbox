@@ -313,3 +313,90 @@ Why: Scope stated once and kept out of the In short line, since the post's conte
 - Before: , and whose rule for empirical questions needs one exception: questions about what a speaker or a law meant by a word.
 - After: .
 
+
+## annotated/posts/the-parable-of-hemlock.tex
+
+Why: Nitpicks: a loose generalization about Greek philosophers in a parable, and ``syllogisms are valid'' whose sense (valid forms) is clear.
+
+- Before: \clogic{Offered without support, and not true of every school. Under Arcesilaus, ``Plato's Academy turns skeptical,'' and Carneades, who continued the discussion Arcesilaus began, took as his criterion ``the persuasive (pithanon),'' ``the convincing, or perhaps even the plausible'' (\textsc{Stanford Encyclopedia of Philosophy}, ``Ancient Skepticism'').}
+- After: 
+
+- Before: \clogic{Loosely worded. In logic a syllogism is a form, and most forms are invalid: of 256 forms, 24 are valid (Wikipedia, ``Syllogism''). The sentence means valid syllogisms, and for them the point holds.}
+- After: 
+
+
+## annotated/afterwords/the-parable-of-hemlock.tex
+
+Why: Same.
+
+- Before: The historical foil is drawn loosely. The claim that Greek philosophers put mortality into the definition of man has a basis: Porphyry's definition of man as a rational mortal animal was adopted by medieval logicians. The claim that they were ``rather fond of certainty'' is given without support and does not fit every school; Plato's own Academy turned skeptical under Arcesilaus and Carneades.
+- After: The claim that Greek philosophers put mortality into the definition of man has a basis: Porphyry's definition of man as a rational mortal animal was adopted by medieval logicians.
+
+- Before:  The wording ``syllogisms \ldots\ are always valid'' is loose, since most syllogistic forms are invalid, but the sense is clear.
+- After: 
+
+
+## honest/sections/the-parable-of-hemlock.tex
+
+Why: Same.
+
+- Before:  \nb{Not all of them. Plato's own Academy turned skeptical under Arcesilaus, and Carneades took the persuasive, not the certain, as his guide.}
+- After: 
+
+- Before:  \nb{Most syllogistic forms are invalid; the sentence means the valid ones, and for them the point holds.}
+- After: 
+
+
+## annotated/afterwords/extensions-and-intensions.tex
+
+Why: Nitpick: the sequence's next posts give the examples.
+
+- Before:  The last paragraph explains why arguments ``by definition'' are popular, but gives no example of one; later posts in the sequence do.
+- After: 
+
+- Before: , and ending on an explanation it does not illustrate.
+- After: .
+
+
+## honest/sections/extensions-and-intensions.tex
+
+Why: Same.
+
+- Before:  \nb{The post gives no example of such an argument; later posts in the sequence do.}
+- After: 
+
+
+## annotated/posts/empty-labels.tex
+
+Why: STANDARDS 2.5: the Mill point is made in full in The Parable of Hemlock (order 156).
+
+- Before: \cfact{The point is old. John Stuart Mill reported in 1843 that ``it is unanswerably urged by the adversaries of the syllogistic theory, that the proposition, Socrates is mortal, is presupposed in the more general assumption, All men are mortal'' (\textsc{A System of Logic}, Book II, chapter 3).}
+- After: \cfact{The point is Mill's (1843); see the notes on ``The Parable of Hemlock.''}
+
+
+## annotated/afterwords/empty-labels.tex
+
+Why: Same.
+
+- Before: That point about the syllogism is old. John Stuart Mill reported in 1843 that the ``adversaries of the syllogistic theory'' urged exactly this, with the same example: ``Socrates is mortal'' is presupposed in ``All men are mortal.'' The post does not claim the point as new, and ``The Parable of Hemlock,'' earlier in the book, made it at length.
+- After: That point about the syllogism is Mill's, as the notes on ``The Parable of Hemlock,'' earlier in the book, record; the post does not claim it as new.
+
+- Before: making an objection to the syllogism that Mill reported in 1843,
+- After: making Mill's old objection to the syllogism,
+
+
+## honest/sections/empty-labels.tex
+
+Why: Same.
+
+- Before: \nb{John Stuart Mill reported this objection to the same syllogism in 1843, as one ``unanswerably urged by the adversaries of the syllogistic theory.''}
+- After: \nb{The objection is Mill's, from 1843; see ``The Parable of Hemlock.''}
+
+
+## honest/sections/arguing-by-definition.tex
+
+Why: STANDARDS 2.5: the Diogenes story first appears in Similarity Clusters (order 159).
+
+- Before: \nb{The joke is old. Diogenes Laertius tells how Diogenes answered Plato's definition of man as a featherless biped by bringing a plucked fowl into the lecture room.}
+- After: \nb{The joke is Diogenes' plucked chicken; see ``Similarity Clusters.''}
+

@@ -55,7 +55,8 @@ exactly one true; not I1, so I2, contradiction. I1 has no consistent truth value
 ## 5. Not verified
 
 - Whether the first (frog) puzzle is also Smullyan's. I searched the Portia chapters only;
-  the notes say "adds the first half", which is true relative to problem 70 but I did not
+  the notes say "adds the first half", which is true relative to problem 70 (the words "frog"
+  and "jester" do not occur anywhere in that book's text), but I did not
   search all of Smullyan's books. If the editor wants, soften to "adds a first half, not in
   problem 70".
 - The inscription images in problem 70 (OCR shows blank); wording taken from the solutions.

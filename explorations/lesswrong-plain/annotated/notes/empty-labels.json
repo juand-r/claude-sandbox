@@ -2,7 +2,7 @@
  "slug": "empty-labels",
  "header": "\\post{Empty Labels}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/i2dfY65JciebF3CAo/empty-labels}\n",
  "skeleton_sha": "f28d312936cc1fe89a84040713c40a96b77279e4fad747b4866f4d339b946c98",
- "post_sha": "8d890b8db0bac304b6e8b5cf001012ab9999ab3d2e281defef9b142bf73b8a0a",
+ "post_sha": "a1b839c379c7a9cd2731cbc90fc1500a49bc08a81ef925a1f31072eb82d4e0c3",
  "edits": [],
  "notes": [
   [
@@ -43,7 +43,7 @@
   ],
   [
    3312,
-   "\\cfact{The point is old. John Stuart Mill reported in 1843 that ``it is unanswerably urged by the adversaries of the syllogistic theory, that the proposition, Socrates is mortal, is presupposed in the more general assumption, All men are mortal'' (\\textsc{A System of Logic}, Book II, chapter 3).}"
+   "\\cfact{The point is Mill's (1843); see the notes on ``The Parable of Hemlock.''}"
   ],
   [
    3326,

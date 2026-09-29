@@ -1,0 +1,45 @@
+{
+ "slug": "similarity-clusters",
+ "header": "\\post{Similarity Clusters}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/jMTbQj9XB5ah2maup/similarity-clusters}\n",
+ "skeleton_sha": "50c3d3dec55a3001ece401215dbdad562e74c1332ca7350dc11e64663f29b716",
+ "post_sha": "64067d90ba67ed8a0f018778eba39c01ea905083ca1511f1a8b068f1c197b663",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{The anecdote is from Diogenes Laertius (\\textsc{Lives} VI.40), and the post's ``is said to have'' suits it: ``Plato had defined Man as an animal, biped and featherless, and was applauded. Diogenes plucked a fowl and brought it into the lecture-room with the words, `Here is Plato's man.' In consequence of which there was added to the definition, `having broad nails.'\\,'' The division itself is in Plato's \\textsc{Statesman}, where bipeds are divided ``into those which have feathers and those which have not.''}"
+  ],
+  [
+   495,
+   "\\cpara{Argues that no list of shared traits fits all humans and only humans and also captures what they have in common: some traits are shared with other species, others belong to only some humans.}"
+  ],
+  [
+   1212,
+   "\\cpara{Credits the rough definition with a use: it picks out real examples.}"
+  ],
+  [
+   1481,
+   "\\cpara{The mechanism: from the examples, learn the other traits they share.}"
+  ],
+  [
+   1971,
+   "\\cpara{The result: the enriched category rejects the plucked chicken, whatever the definition says.}"
+  ],
+  [
+   2221,
+   "\\cpara{The foil describes Aristotle's logic of definition narrowly. Aristotle's rules reject a definition that fits something other than the thing defined: a definition ``ought to be peculiar'' to its object (\\textsc{Topics} VI.1). By those rules the plucked chicken refutes ``featherless biped,'' as the Platonists in the story concluded. The rule also presupposes that one already knows the chicken is not a man, which is the post's point about recognition.}"
+  ],
+  [
+   2405,
+   "\\cpara{Adds pointing to the verbal clue, as in ``Extensions and Intensions.''}"
+  ],
+  [
+   2825,
+   "\\cpara{The thesis, and the post's term for it: a ``similarity cluster'' is ``the group of things that have many characteristics in common.'' The idea has a well-known predecessor that the post does not mention: Wittgenstein's ``family resemblances,'' ``a complicated network of similarities overlapping and criss-crossing'' (\\textsc{Philosophical Investigations} \\S\\S 66--67). The next post cites the psychological research on ``prototype effects'' (Rosch and Lloyd, 1978).}"
+  ],
+  [
+   3160,
+   "\\cpara{The conclusion, applied to dictionaries.}"
+  ]
+ ]
+}

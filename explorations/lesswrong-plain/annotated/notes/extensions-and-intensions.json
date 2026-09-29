@@ -1,0 +1,93 @@
+{
+ "slug": "extensions-and-intensions",
+ "header": "\\post{Extensions and Intensions}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/HsznWM9A7NiuGsp28/extensions-and-intensions}\n",
+ "skeleton_sha": "c857d9ee39f4c7ef552e0d8a22489557246640e0e06240d651b31154fb866aa9",
+ "post_sha": "c64a75945f1793f3897012a0db05d5b144dac1c8fcfb5a1061d2c47d2ec885e1",
+ "edits": [],
+ "notes": [
+  [
+   150,
+   "\\cpara{Opens with a regress: each word is defined by a vaguer one.}"
+  ],
+  [
+   268,
+   "\\cpara{Names the problem, with a reference that checks: the abstract of Stevan Harnad's ``The Symbol Grounding Problem'' (1990) says the problem ``is analogous to trying to learn Chinese from a Chinese/Chinese dictionary alone.''}"
+  ],
+  [
+   584,
+   "\\cpara{The other answer: point to red things. The link on ``truly strict'' recalls, as a joke, the need for a negative example from ``Positive Bias.''}"
+  ],
+  [
+   1116,
+   "\\cpara{The memory is right. S. I. Hayakawa's \\textsc{Language in Thought and Action} has the same regress (``It's a color.'' \\ldots\\ ``Why, it's a quality things have.''), warns that such answers get us ``lost in verbal mazes,'' and gives the same remedy: to learn what ``red'' means, ``look at the traffic light facing them.''}"
+  ],
+  [
+   1391,
+   "\\cpara{Defines the two terms. The definitions follow Hayakawa more than logic textbooks. Hayakawa: ``whenever we express the meaning of words by uttering more words, we are giving intensional meaning''; for extensional meaning, ``put your hand over your mouth and point.'' In logic, an extensional definition lists every member of a class, and pointing to some examples is called an ostensive definition (Wikipedia, ``Extensional and intensional definitions'' and ``Ostensive definition'').}"
+  ],
+  [
+   1879,
+   "\\cpara{A transition: sets the popular image of ``rationalists'' lost in words against Peirce.}"
+  ],
+  [
+   2054,
+   "\\cpara{Introduces Peirce as a ``Traditional Rationalist'' who tied words to experience.}"
+  ],
+  [
+   2189,
+   "\\cpara{Quoted exactly from Peirce, \\textsc{Collected Papers} 2.330.}"
+  ],
+  [
+   3147,
+   "\\cpara{Draws the contrast with the Hollywood picture.}"
+  ],
+  [
+   3285,
+   "\\cpara{Reads Peirce's recipe as a ``treasure map'' to an example. Peirce's next sentence says the same: it is ``a precept that is more serviceable than a definition,'' which tells you ``what you are to do in order to gain a perceptual acquaintance with the object of the word.'' The aside on ``3 protons'' is right: lithium's atomic number is 3.}"
+  ],
+  [
+   3810,
+   "\\cpara{Separates definitions, ways of communicating a concept, from the concepts themselves.}"
+  ],
+  [
+   4183,
+   "\\cpara{A stipulated sense, and the post marks the shift (``Now let's talk about the actual concepts themselves''). In logic an intension is the property a word connotes (Wikipedia, ``Intension''), not a pattern in one person's cortex. The post's sense is close to the ``categorical representations'' in the Harnad paper it cited above: ``learned and innate feature-detectors that pick out the invariant features of object and event categories.''}"
+  ],
+  [
+   4390,
+   "\\cpara{Defines the extension to match: whatever the person's own test accepts, mistakes included, and not the class of tigers.}"
+  ],
+  [
+   4476,
+   "\\cpara{Argues that neither kind of definition conveys the whole concept. The tiger example makes Wittgenstein's point about pointing, in \\textsc{Philosophical Investigations} \\S 28 (1953): ``an ostensive definition can be variously interpreted in every case.''}"
+  ],
+  [
+   4895,
+   "\\cpara{Gives the reason: the concept is too large to state, and its extension too large to show.}"
+  ],
+  [
+   5183,
+   "\\cpara{Recommends combining words and examples, and introduces the ``treasure map'' summary.}"
+  ],
+  [
+   5496,
+   "\\cpara{Grants an exception, a concept whose whole extension can be shown, and names mathematics as the other.}"
+  ],
+  [
+   5818,
+   "\\cpara{The second reason, after ``Words as Hidden Inferences'': concepts cannot be passed directly from mind to mind.}"
+  ],
+  [
+   5964,
+   "\\cpara{The third point: you cannot choose both a definition and what it picks out, since whether they match is a separate question. The figures for Mars check: about a tenth of Earth's mass (0.107) and 1.52 times Earth's distance from the Sun (NASA planetary fact sheet).}"
+  ],
+  [
+   6726,
+   "\\cpara{Says the matching is done below awareness, so the name ``Mars'' stays tied to the planet whatever definition one writes.}"
+  ],
+  [
+   7209,
+   "\\cpara{The conclusion. ``This is why arguing that XYZ is true `by definition' is so popular'' is an explanation given without an example of such an argument; later posts in the sequence, such as ``Arguing `By Definition','' supply them.}"
+  ]
+ ]
+}
