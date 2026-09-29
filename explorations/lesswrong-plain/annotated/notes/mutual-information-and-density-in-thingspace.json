@@ -1,0 +1,181 @@
+{
+ "slug": "mutual-information-and-density-in-thingspace",
+ "header": "\\post{Mutual Information, and Density in Thingspace}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/yLcuygFfMfrfK8KjF/mutual-information-and-density-in-thingspace}\n",
+ "skeleton_sha": "44bf52bd91bf94f870250e4fb0f1d213e0d5d5d0e4046026bbc2416f6fb53595",
+ "post_sha": "25d5826a89b8bc0d2bb701ee2a45dbc6f8e8d1915d4f7fbf2bdd30ab61212a52",
+ "edits": [],
+ "notes": [
+  [
+   175,
+   "\\cpara{Sets up two systems: X with eight equally likely states, Y with four.}"
+  ],
+  [
+   395,
+   "\\cpara{Recalls their entropies, 3 and 2 bits. On LessWrong ``23 = 8'' and ``22 = 4'' are printed as 2 to the power 3 and 2 to the power 2.}"
+  ],
+  [
+   1110,
+   "\\cpara{Asks the question the first half of the post answers.}"
+  ],
+  [
+   1173,
+   "\\cpara{Gives the naive answer, 5 questions, which holds only if the two systems are unrelated.}"
+  ],
+  [
+   1356,
+   "\\cpara{Raises the case in which they are related.}"
+  ],
+  [
+   1487,
+   "\\cpara{Gives the relation: both odd or both even. The post does not say that the 16 allowed pairs are equally likely, but the counts that follow assume it, and ``Conditional Independence, and Naive Bayes'' later states it: ``16 possible states, all equally probable.''}"
+  ],
+  [
+   1577,
+   "\\cpara{Shows that four questions suffice when X is learned first. Correct: X5 leaves Y1 or Y3.}"
+  ],
+  [
+   1912,
+   "\\cpara{And when Y is learned first. Correct: Y4 leaves X2, X4, X6 or X8.}"
+  ],
+  [
+   2149,
+   "\\cpara{Defines mutual information as $H(X) + H(Y) - H(X,Y)$. Correct; here $3 + 2 - 4 = 1$ bit.}"
+  ],
+  [
+   2354,
+   "\\cpara{Correct: each value of X halves the possibilities for Y, and each value of Y halves those for X.}"
+  ],
+  [
+   2679,
+   "\\cpara{Moves to unequal probabilities: Y as in the previous post, and a new variable Z with probabilities 3/8 and 5/8.}"
+  ],
+  [
+   3135,
+   "\\cpara{Correct: with these marginals, the mutual information is zero exactly when every cell is the product of its marginals, as in the table that follows.}"
+  ],
+  [
+   3462,
+   "\\cpara{Names the condition.}"
+  ],
+  [
+   3565,
+   "\\cpara{Correct: $3/8 \\times 1/4 = 3/32$.}"
+  ],
+  [
+   3632,
+   "\\cpara{Shows that the marginals can be read off the joint table. Correct.}"
+  ],
+  [
+   3924,
+   "\\cpara{Concludes that independence can be checked from the joint table alone.}"
+  ],
+  [
+   4198,
+   "\\cpara{Derives that independence means learning Z leaves the probability of Y unchanged. The derivation divides both sides by $P(Z_j)$ and is correct.}"
+  ],
+  [
+   4413,
+   "\\cpara{Restates the result in words.}"
+  ],
+  [
+   4509,
+   "\\cpara{States the equivalence: the table factorizes exactly when neither variable tells us anything about the other.}"
+  ],
+  [
+   4680,
+   "\\cpara{Links zero mutual information to the absence of Bayesian evidence. Correct in both directions.}"
+  ],
+  [
+   4873,
+   "\\cpara{Asks the reader to compute the entropy of the joint table, treating each cell as one event.}"
+  ],
+  [
+   5305,
+   "\\cfact{The minus sign is missing. As written, the sum comes to $-2.704$; the entropy is its negative, 2.704 bits. The previous post's formula has the sign.}"
+  ],
+  [
+   5331,
+   "\\cpara{Correct: $H(Y) = 1.75$ and $H(Z) = 0.954$ bits, and the joint table gives their sum, 2.704 bits. The general result, that joint entropy equals the sum exactly when the variables are independent, is standard.}"
+  ],
+  [
+   5855,
+   "\\cpara{Gives a second table, whose cells are not all products of the marginals.}"
+  ],
+  [
+   6129,
+   "\\cpara{Correct: the marginals are again 1/2, 1/4, 1/8, 1/8 and 3/8, 5/8.}"
+  ],
+  [
+   6321,
+   "\\cpara{Correct: 8/64 against $3/8 \\times 1/4 = 6/64$.}"
+  ],
+  [
+   6673,
+   "\\cpara{Derives that observing Y2 raises the probability of Z1.}"
+  ],
+  [
+   6812,
+   "\\cpara{Correct: $P(Z_1 \\mid Y_2) = 1/2$ against $P(Z_1) = 3/8$, and the argument runs the same way from Z1 to Y2.}"
+  ],
+  [
+   7117,
+   "\\cpara{The claim the author says was not checked is correct. The joint entropy is 2.664 bits, against 2.704 for the two parts, so the mutual information is 0.040 bits. The dependence in this example is small.}"
+  ],
+  [
+   7547,
+   "\\cpara{A digression: mutual information is symmetric, logical implication is not. The symmetry is standard. The exercise has a short answer: what is symmetric is the average information, not the conditional probabilities. $P(\\mbox{black} \\mid \\mbox{raven})$ can be 1 while $P(\\mbox{raven} \\mid \\mbox{black})$ is small.}"
+  ],
+  [
+   8156,
+   "\\cpara{Turns to words.}"
+  ],
+  [
+   8241,
+   "\\cpara{Recalls the syllogism from ``Empty Labels,'' in which ``human'' is replaced by its definition.}"
+  ],
+  [
+   8658,
+   "\\cpara{Asks why a word for ``human'' is worth having.}"
+  ],
+  [
+   8790,
+   "\\cpara{The central claim: if single properties already have efficient words, a word for a conjunction saves length only if the conjunction occurs more often than the marginal probabilities predict. Correct within the model the post has built.}"
+  ],
+  [
+   9238,
+   "\\cpara{Correct, and the second table shows the size of the saving. Z1 and Y2 take 1.415 and 2 bits separately, 3.415 together; Z1Y2 as one event takes 3 bits. The same code lengthens the pairs that are rarer than independence predicts: Z1Y3 takes 1.585 bits more than its parts. On average the saving is the mutual information, 0.040 bits.}"
+  ],
+  [
+   9503,
+   "\\cpara{Correct: $P(Z_1 Y_2) > P(Z_1)P(Y_2)$ is the same condition as $P(Z_1 \\mid Y_2) > P(Z_1)$, as shown above.}"
+  ],
+  [
+   9749,
+   "\\cpara{Adds that ``human'' stands for many more properties, and that the word saves time only because they go together. The list ends with a joke (``be overconfident'').}"
+  ],
+  [
+   10302,
+   "\\cpara{Generalizes: a word is a more compact code exactly when some of the properties can be inferred from others, with a hedged exception for primitive words such as ``red.'' Rosch and colleagues stated the psychological version in 1976: ``The world is structured because real-world attributes do not occur independently of each other.''}"
+  ],
+  [
+   10797,
+   "\\cpara{Applies the result to ``wiggin,'' the word coined in ``Sneaking in Connotations'': it is worth having if eye and hair colour go together, or if wiggins share further properties.}"
+  ],
+  [
+   11537,
+   "\\cpara{Proposes, as something ``One may even consider,'' that defining a word implies a promise that it will help inference or shorten messages.}"
+  ],
+  [
+   11842,
+   "\\cpara{Concludes that a word whose properties are independent, and predict nothing else, is ``a lie.'' The charge rests on the implied promise of the previous paragraph, and the next paragraph softens it to ``an error.''}"
+  ],
+  [
+   12158,
+   "\\cpara{Restates the condition three ways: no compression, no role in the simplest explanation, no help in inference. In the post's model these are one condition.}"
+  ],
+  [
+   12506,
+   "\\cpara{The conclusion, in the vocabulary of Thingspace: ``unusually high'' density means higher than the product of the marginals. The next post, ``Superexponential Conceptspace, and Simple Words,'' says the author ``deliberately left out a key qualification'': the boundaries must be simple. It also grants that the rule ``is a bit chicken-and-eggish,'' since density cannot be assessed until some carving has been done.}"
+  ]
+ ]
+}

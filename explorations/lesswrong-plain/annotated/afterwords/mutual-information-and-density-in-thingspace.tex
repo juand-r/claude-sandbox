@@ -1,0 +1,23 @@
+\begin{afterword}
+\summaryhead
+
+The post defines mutual information. X has eight equally likely states and Y four, and they are either both odd or both even. Learning X then takes three questions and Y one more, so the pair needs four questions, not five. The mutual information, $H(X) + H(Y) - H(X,Y)$, is one bit.
+
+With unequal probabilities, two variables have zero mutual information exactly when their joint distribution is the product of the marginals, which is exactly when learning one tells you nothing about the other. A second table, in which Z1 and Y2 occur together more often than their marginals predict, shows Y2 to be evidence for Z1.
+
+The post applies this to words. If single properties already have efficient codes, a word for a conjunction such as ``human'' saves length only when the properties go together more often than chance. A word like ``wiggin'' is worth having only if green eyes and black hair go together, or predict further properties; otherwise it is ``a lie,'' or at least an error. Reality should be carved around concentrations of unusually high probability density in Thingspace.
+
+\responsehead
+
+The post is a correct introduction to mutual information and a correct application of it. Every figure checks. The parity example gives one bit. The first table's entropy equals $H(Y) + H(Z)$, 2.704 bits. The second table keeps the marginals, and $P(Z_1 \mid Y_2) = 1/2$ against $P(Z_1) = 3/8$. The claim the author says was not checked is also true: the joint entropy is 2.664 bits, so the mutual information is 0.040 bits.
+
+One formula has a slip. The displayed sum for the joint entropy lacks its minus sign, so a reader who accepts the invitation to do the calculation gets $-2.704$. The previous post's formula has the sign, so the slip is easy to catch.
+
+The central idea is sound and ties the last two posts together. In an efficient code, a word for a conjunction is shorter than the words for its parts exactly when the conjunction is more probable than independence predicts, and that is exactly when one property is evidence for another. The psychological version of the idea is older: Rosch and colleagues wrote in 1976 that ``The world is structured because real-world attributes do not occur independently of each other.''
+
+The worked example shows something the post does not say. The saving is made on the pairs that occur more often than independence predicts; the pairs that occur less often get longer codes. In the second table, Z1Y2 saves 0.415 bits while Z1Y3 costs 1.585 bits more, and the average saving is the mutual information, 0.040 bits.
+
+The last paragraph states the rule for carving reality in one line. The book's next post adds the qualification the author says was ``deliberately left out,'' that the boundaries be simple, and grants that the rule is ``a bit chicken-and-eggish.'' Read together, the two posts state the rule with its qualification.
+
+In short: an accurate account of mutual information and of when a word for a combination of properties pays for itself, whose one-line closing rule the next post qualifies.
+\end{afterword}

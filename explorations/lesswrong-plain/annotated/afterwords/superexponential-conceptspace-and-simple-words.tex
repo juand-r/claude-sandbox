@@ -1,0 +1,19 @@
+\begin{afterword}
+\summaryhead
+
+The post argues that the space of concepts is far larger than Thingspace, the space of all possible things. In machine learning a concept is a rule that includes or excludes examples. Its example, adapted from Tom Mitchell's textbook, has days described by four attributes, a format in which each attribute is fixed or left open, and an algorithm that keeps the most general and most specific concepts that fit the data. The format allows 109 concepts over 24 possible days, while the set of all concepts, every set of days, has $2^{24}$ members. A learner allowed every concept cannot classify a day it has not seen; a restricted learner narrows its space with few examples. With forty yes-or-no attributes the full space has $2^{2^{40}}$ members, so learning is ``nearly all inductive bias.''
+
+The author then applies this to words. The rule from the previous post becomes: draw simple boundaries around regions of high probability density, or you merely list what you have seen. The post grants that the rule is chicken-and-egg. It ends by saying that singling out one concept, such as ``wiggin,'' without a reason is audacious, like a detective naming a suspect at random.
+
+\responsehead
+
+The technical half is correct. Every count checks, from the 24 days and 109 concepts to the $2^{40}$ examples. The most general and most specific hypotheses are the right ones. The central claim, that a learner allowed every concept can say nothing about a case it has not seen, is right. The material is standard textbook machine learning, and the post names its source.
+
+One figure is optimistic. Nine examples for the five-attribute case assumes that each example splits the remaining concepts in half, and this concept space does not allow that at the start: any one day is accepted by about a tenth of the concepts. In my simulation, with each example chosen to split the remaining concepts as evenly as possible, it took about 15 on average. The point the argument needs, that the number of examples grows only with the logarithm of the number of concepts, is supported by the standard bounds.
+
+The move to words is looser. The rule ``draw simple boundaries around concentrations of unusually high probability density'' is, the post admits, ``a bit chicken-and-eggish'': density can be judged only after some carving. The post names the problem and moves on. It then asks why anyone who already had the probability distribution would bother drawing boundaries, as a reason to think the probabilities come from the boundaries and not the reverse. The author answered that question a week later, in ``Conditional Independence, and Naive Bayes'': a central class variable simplifies the calculation. With that answer, the inference from the question is weaker.
+
+The closing example does not depend on the post's large number. ``Wiggin,'' black-haired and green-eyed, is a conjunction of two attribute values, the kind of simple concept the restricted format contains. The point that a concept needs a reason to be singled out holds in that smaller space; the superexponential count is not what makes the choice audacious.
+
+In short: a correct summary of textbook concept learning, credited to its source, joined to words by a rule the post itself calls chicken-and-egg and by an example that the superexponential count does not bear on.
+\end{afterword}

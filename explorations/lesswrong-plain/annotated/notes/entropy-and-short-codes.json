@@ -1,0 +1,121 @@
+{
+ "slug": "entropy-and-short-codes",
+ "header": "\\post{Entropy, and Short Codes}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/soQX8yXLbKy7cFvy8/entropy-and-short-codes}\n",
+ "skeleton_sha": "63fcae1a581b8574b11b77cd5c84ce1da436156f455d4977d8c97bf57fd548ff",
+ "post_sha": "94fdc0930f6c1af4df46b37faeadfd2a56342474b8eff423191a8afd4d054d5d",
+ "edits": [],
+ "notes": [
+  [
+   133,
+   "\\cpara{Sets up the first example: a system with eight equally likely states.}"
+  ],
+  [
+   306,
+   "\\cpara{Introduces entropy and says that 3 bits means 3 yes-or-no questions on average. Correct for eight equally likely states, since three questions distinguish $2 \\times 2 \\times 2 = 8$ possibilities.}"
+  ],
+  [
+   790,
+   "\\cpara{Works one case through the code: the answers yes, no, no spell 100, which is X4. Correct.}"
+  ],
+  [
+   1000,
+   "\\cpara{Sets up the second example: four states with probabilities 1/2, 1/4, 1/8 and 1/8.}"
+  ],
+  [
+   1263,
+   "\\cpara{Gives the entropy of Y as 1.75 bits. Correct. The next paragraphs explain what a fraction of a question means.}"
+  ],
+  [
+   1393,
+   "\\cpara{Answers with a code that gives shorter words to likelier states.}"
+  ],
+  [
+   1677,
+   "\\cpara{Half the time, one question is enough.}"
+  ],
+  [
+   1889,
+   "\\cpara{A quarter of the time, two questions.}"
+  ],
+  [
+   2226,
+   "\\cpara{An eighth of the time each, three questions. Each state gets a word of $\\log_2(1/p)$ symbols: 1, 2, 3 and 3.}"
+  ],
+  [
+   2662,
+   "\\cpara{States the general formula, $H = -\\sum p \\log_2 p$. Correct; it is the measure defined in Claude Shannon's 1948 paper.}"
+  ],
+  [
+   2773,
+   "\\cpara{Works one term: $\\log_2(1/8) = -3$, so a state of probability 1/8 contributes 0.375. Correct.}"
+  ],
+  [
+   2954,
+   "\\cpara{Correct. A perfect code exists only when every probability is a power of 1/2, as in both of the post's examples. Otherwise the best code for a single draw averages between $H$ and $H + 1$ questions: for three equally likely states, $H = 1.585$ and the best code averages 1.667. Coding many copies together closes the gap, as the post says (Shannon's source coding theorem).}"
+  ],
+  [
+   3215,
+   "\\cpara{Raises the obvious question: why not give Y4 the shorter word 10?}"
+  ],
+  [
+   3353,
+   "\\cpara{Answers it. Correct: with 10 for Y4, ``1001'' reads both as 10 then 01 and as 1 then 001.}"
+  ],
+  [
+   3714,
+   "\\cpara{The moral has an exact form, the Kraft--McMillan inequality: a binary code can be decoded without ambiguity only if the sum of $2^{-\\ell}$ over its words, $\\ell$ being each word's length, is at most 1. The post's code spends the whole budget, $1/2 + 1/4 + 1/8 + 1/8 = 1$. Giving Y4 the word 10 would need $9/8$. So no word can be shortened unless another is lengthened.}"
+  ],
+  [
+   3790,
+   "\\cpara{States the rule that follows: short words for what you need to say often, long words for what you say rarely.}"
+  ],
+  [
+   4033,
+   "\\cpara{Links ideal codes to Occam's razor. The link is standard: Wikipedia (``Minimum message length'') calls that method ``a formal information theory restatement of Occam's Razor.'' The author described it in ``Occam's Razor.''}"
+  ],
+  [
+   4326,
+   "\\cpara{The step from codes to words. What sets a word's length in an efficient language is how often the word is used, not how probable the thing it names is, which is what Minimum Message Length measures when it serves as Occam's razor. The post does not equate the two; ``Occam's Razor'' made the distinction explicit: ``witch'' is short, but it is ``a label for some extraordinary assertions.''}"
+  ],
+  [
+   4402,
+   "\\cfact{The claim concerns length. In the post's own code, which word goes with which state is arbitrary: swapping 0 and 1 throughout gives an equally good code. The arbitrariness linguists assert, after Saussure, is that there is ``no necessary connection'' between a word's sound and its meaning (Wikipedia, ``Arbitrariness''), and frequent words being short is compatible with it.}"
+  ],
+  [
+   4602,
+   "\\cpara{Gives the reason for the post: the idea that ``You can X any way you like'' gets in the way of doing X well. For definitions, the argument was made in the preceding posts, to which the link points. For labels, the paragraph adds a second property besides length: the sound of words.}"
+  ],
+  [
+   5230,
+   "\\cfact{Tolkien did say this, in the 1955 lecture ``English and Welsh'': ``Most English-speaking people \\ldots\\ will admit that cellar door is `beautiful', especially if dissociated from its sense (and from its spelling),'' as quoted by Wikipedia (``Phonaesthetics'').}"
+  ],
+  [
+   5313,
+   "\\cpara{Turns from codes to the psychology of language.}"
+  ],
+  [
+   5413,
+   "\\cpara{Describes three levels, recliner, chair and furniture, and says that chairs share one use and one set of motions. This matches the definition given by Rosch and colleagues (\\textsc{Cognitive Psychology}, 1976): basic objects are categories whose members, among other things, ``have motor programs which are similar to one another.''}"
+  ],
+  [
+   6018,
+   "\\cpara{Names the term, from the work of Eleanor Rosch and colleagues.}"
+  ],
+  [
+   6117,
+   "\\cpara{Agrees with Rosch's findings. Asked to name pictured objects, their subjects ``overwhelmingly used the basic level name.''}"
+  ],
+  [
+   6490,
+   "\\cpara{The general claim is well supported. It is Zipf's law of abbreviation: the more often a word is used, the shorter it tends to be, a pattern confirmed in almost a thousand languages (Wikipedia, ``Brevity law''). Piantadosi, Tily and Gibson (\\textsc{PNAS}, 2011) found across ten languages that ``average information content is a much better predictor of word length than frequency,'' which fits the post's coding view even more closely.}"
+  ],
+  [
+   6875,
+   "\\cfact{The link through basic-level categories is less direct than this suggests. Rosch and colleagues found basic names preferred when people name objects, not that they are the more frequent words: ``In nine of the 15 cases of superordinate-basic level comparison, the superordinate name actually had a higher word frequency than the basic level name.'' The study does not test the claim about length, beyond noting that subordinate names ``are generally phrases, not single words.''}"
+  ],
+  [
+   6889,
+   "\\cpara{Closes with a joke, attributed to Douglas Hofstadter, that makes the same point.}"
+  ]
+ ]
+}
