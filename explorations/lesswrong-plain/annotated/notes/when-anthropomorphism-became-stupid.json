@@ -1,0 +1,101 @@
+{
+ "slug": "when-anthropomorphism-became-stupid",
+ "header": "\\post{When Anthropomorphism Became Stupid}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/f4RJtHBPvDRJcCTva/when-anthropomorphism-became-stupid}\n",
+ "skeleton_sha": "c57b5034042a3b059c4021f75d8036a8f4e9823c327e7e5a294cbf162758e463",
+ "post_sha": "05d486174edadb461e58125ad288f4d56b7a54acbe54b64e7318745e975811c1",
+ "edits": [],
+ "notes": [
+  [
+   156,
+   "\\cpara{States the thesis in one sentence. The rest of the post explains when, and on what evidence, it became something one could know.}"
+  ],
+  [
+   233,
+   "\\cpara{Names animism: earlier cultures held that trees, rocks, streams and hills had spirits. ``Because, hey, why not?'' is a joke; the next two paragraphs give the reason, analogy with oneself.}"
+  ],
+  [
+   488,
+   "\\cpara{The first analogy: human bodies think, so why not trees.}"
+  ],
+  [
+   619,
+   "\\cpara{The second analogy, from one's own will: a flood that hurts the tribe reads as anger, as a punch does. This is David Hume's account of popular religion. In \\textsc{The Natural History of Religion} (1757, section 3) Hume wrote that ``There is an universal tendency among mankind to conceive all beings like themselves,'' so that people ``ascribe malice or good-will to every thing, that hurts or pleases us.'' Hume also said what would correct it: people who could ``anatomize nature'' would find the causes to be ``the particular fabric and structure of the minute parts of their own bodies and of external objects.'' The post reaches a similar cure below. (The notes on ``Mind Projection Fallacy'' quote Hume's \\textsc{Treatise} on the same tendency.)}"
+  ],
+  [
+   969,
+   "\\cpara{Argues that animism was not an obviously stupid mistake for a hunter-gatherer, and that it seems stupid to us only because it is not our tribe's belief.}"
+  ],
+  [
+   1493,
+   "\\cpara{Says that no one believes an obviously stupid idea, and adds, as irony, that the Earth's motion long seemed obviously stupid.}"
+  ],
+  [
+   1705,
+   "\\cpara{Asks whether it is obvious that trees cannot think, and recalls that trees are our distant relatives.}"
+  ],
+  [
+   1944,
+   "\\cpara{The claim that only microscopes made it obvious sits uneasily with Aristotle, whom the post cites twice. Without microscopes, Aristotle held that plants lack the power of thinking: of the soul's powers, ``the nutritive, the appetitive, the sensory, the locomotive, and the power of thinking,'' ``Plants have none but the first, the nutritive'' (\\textsc{De Anima} II.3, tr.\\ J.~A. Smith). His grounds were what plants are ``observed'' to do, grow and take in nourishment, together with his theory of perception; the post's own tree test also counts behavior (``Nor do I see it in the behavior''). How obvious this was is a matter of degree the post does not measure, but microscopes were not needed to reach the view.}"
+  ],
+  [
+   2130,
+   "\\cpara{Aristotle's view of the brain as a cooler of the blood, with a joke about how little our beliefs about brains affect them.}"
+  ],
+  [
+   2315,
+   "\\cpara{The Egyptian practice, as usually described: the brain was removed through the nose and ``the gray matter was discarded'' (Wikipedia, ``Mummy'').}"
+  ],
+  [
+   2396,
+   "\\cpara{Alcmaeon as the first to place intelligence in the brain. The Stanford Encyclopedia agrees that he ``was the first to identify the brain as the seat of understanding,'' and is more cautious about the reason: he ``may have discovered'' the channels from the eyes to the brain ``by excising the eyeball of an animal.'' The post's ``only a guess'' fits the evidence as the entry describes it.}"
+  ],
+  [
+   2652,
+   "\\cpara{Asks when the brain's role stopped being a guess, says ``I do not know enough history,'' and proposes, with ``Maybe'', the experiment of cutting nerves. Both steps it names are ancient. Herophilus, in the third century BCE, placed intelligence in the brain ``and connected the nervous system to motion and sensation'' (Wikipedia, ``Aristotle's biology''). Galen, in the second century CE, was ``the first physician to study what happens when the spinal cord is transected on multiple different levels,'' and cut nerves in pigs ``to see how it affected the body'' (Wikipedia, ``Galen''; see also the note on ``Universal Law'').}"
+  ],
+  [
+   3083,
+   "\\cpara{Answers its own proposal: nerves show only a spirit moving through them, which wood and water might carry by other means. Galen's account fits this: he placed a ``psychic pneuma'' in the brain and nervous system (Wikipedia, ``Galen'').}"
+  ],
+  [
+   3391,
+   "\\cpara{Reports, with ``I haven't had much luck,'' a search for the moment the brain's tangle of neurons was first taken as information processing. The post does not claim to have found it.}"
+  ],
+  [
+   3807,
+   "\\cpara{The post's answer to its title, offered as ``where I would put'' it: the tangle of neurons, Darwin's theory and the idea of cognition as computation began, gradually, to make anthropomorphism obviously wrong.}"
+  ],
+  [
+   4062,
+   "\\cpara{The first test, for a tree: no complex information processing in its biology or behavior, and no selection pressure that could produce a hidden kind. Behind the test is the post's criterion that a mind needs complex information processing, which the post takes as given.}"
+  ],
+  [
+   4401,
+   "\\cpara{The test for a river, from natural selection: water has no replicators, so it has no route to anything as complex as a brain.}"
+  ],
+  [
+   4757,
+   "\\cpara{The test for an atom, from ``Angry Atoms'': anger is complex, an atom is simple, and anger hidden inside quarks would have no visible effect.}"
+  ],
+  [
+   5195,
+   "\\cpara{The test for a puppy is about moral reasoning, not about having a mind. It rests on what ``Our current theories of evolutionary psychology'' hold, and no source is given for them.}"
+  ],
+  [
+   5685,
+   "\\cpara{The test for a rock, by comparison with the search in a chess program.}"
+  ],
+  [
+   5918,
+   "\\cfact{Aristotle denied that falling bodies move themselves: ``It is impossible to say that their motion is derived from themselves: this is a characteristic of life and peculiar to living things'' (\\textsc{Physics} VIII.4, tr.\\ Hardie and Gaye). His account is teleological, each element moving to its natural place, but it does not give rocks the intentions the post assigns him.}"
+  ],
+  [
+   5961,
+   "\\cpara{The story of the happy fish from the \\textsc{Zhuangzi} (chapter 17), adapted from Burton Watson's translation, with the names in pinyin (Watson's text as given by Wikiquote). The post stops after three lines. In the original the exchange goes on, and Zhuangzi has the last word: ``I know it by standing here beside the Hao.''}"
+  ],
+  [
+   6354,
+   "\\cpara{Ends with a three-word reply to the story, left for the reader to interpret.}"
+  ]
+ ]
+}

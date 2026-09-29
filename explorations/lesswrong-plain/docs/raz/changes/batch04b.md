@@ -127,3 +127,22 @@ Why: One Tegmark sentence does not show the post's central point was prior; cred
 - Before: its distinction refines the simplicity answer rather than replacing it, and its central point had been made before.
 - After: its distinction refines the simplicity answer rather than replacing it.
 
+
+## annotated/afterwords/when-anthropomorphism-became-stupid.tex
+
+Why: The history is hedged by the post itself (``I do not know enough history''), so the Aristotle points stay in the Response but are not the verdict.
+
+- Before: In short: a careful, hedged account of why animism was reasonable and what made it look wrong, which is close to Hume's, with an Aristotle who in fact denied thought to plants and self-motion to rocks.
+- After: In short: a careful, hedged account of why animism was reasonable and what made it look wrong, close to Hume's, whose asides on history, openly offered as guesses, fit Aristotle poorly.
+
+
+## annotated/afterwords/reductive-reference.tex
+
+Why: Fair reading: citing Twin Earth and the debate that followed is credit; the closeness to Putnam is information.
+
+- Before: The post credits Putnam's Twin Earth and ``the subsequent philosophical debate,'' but does not say that its own view is the conclusion Putnam drew from it.
+- After: The post credits Putnam's Twin Earth and ``the subsequent philosophical debate''; a reader should know that its own view is close to the conclusion Putnam drew.
+
+- Before: in which the first is credited only through Twin Earth and the defence of its circularity is left to a later post.
+- After: with the defence of its circularity left to a later post.
+

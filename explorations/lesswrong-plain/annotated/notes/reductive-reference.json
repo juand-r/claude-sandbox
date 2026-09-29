@@ -1,0 +1,133 @@
+{
+ "slug": "reductive-reference",
+ "header": "\\post{Reductive Reference}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/gRa5cWWBsZqdFvmqu/reductive-reference}\n",
+ "skeleton_sha": "2bdc5fe756ad704ba3209fcebf0a62deb93964706729f3cd96ed24c7bc597c28",
+ "post_sha": "a2fb6cf0f52df941c5e4beb3e48cacaa08cb61854eff81ca7af214469bde1035",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Restates the thesis of ``Reductionism'' (see the notes there), with its hedges: ``as I formulate it'' and ``does not seem to contain''. The map has many levels; reality has one.}"
+  ],
+  [
+   578,
+   "\\cpara{Carnot's work on engines, done within the caloric theory, shows that a higher-level description of heat can be studied on its own and is far cheaper to compute. The same example is the subject of ``Heat vs. Motion'', two days earlier.}"
+  ],
+  [
+   1246,
+   "\\cpara{Says reality ``does seem to'' compute everything at the bottom level, and recalls the gunner of ``Reductionism'', who thought relativity would give the wrong answer for an artillery shell.}"
+  ],
+  [
+   2120,
+   "\\cpara{Poses the post's question: if reality contains only quarks, in what sense is ``I am wearing socks'' true?}"
+  ],
+  [
+   2427,
+   "\\cpara{Calls Tarski's sentence ``the classic definition'' of truth. The notes on ``The Quotation Is Not the Referent'' explain that in Tarski's work such sentences are the test a definition must pass, and those on ``The Simple Truth'' that rival theories of truth all accept them. So the sentence does not by itself support the view the post goes on to state, that truth is ``an ideal comparison between a belief and reality''.}"
+  ],
+  [
+   2558,
+   "\\cpara{Tarski's sentence.}"
+  ],
+  [
+   2658,
+   "\\cpara{Separates believing from being true, and says truth cannot be checked by looking inside one's head: to know whether ``the morning star = the evening star'' you need a telescope. The example is Frege's (see the notes on ``The Quotation Is Not the Referent'').}"
+  ],
+  [
+   3078,
+   "\\cpara{No postmodernist is named or quoted. The reply, that an experiment's outcome is caused by the thing studied and not only by one's beliefs, answers the question as the post phrases it. The harder form of the question, that interpreting the outcome depends on one's prior beliefs, is granted two paragraphs later and set aside.}"
+  ],
+  [
+   3533,
+   "\\cpara{Quotes the author's own ``The Simple Truth''; the words match that essay.}"
+  ],
+  [
+   3874,
+   "\\cpara{Grants that interpreting an experiment depends on prior beliefs, and defers ``Where Priors Come From''. Truth, the post says, is ``an ideal comparison between a belief and reality,'' tested with instruments whose behavior depends on the external fact.}"
+  ],
+  [
+   4664,
+   "\\cpara{Grants that trusting the telescope rests on prior beliefs about telescopes, and calls this ``reflective coherence'' rather than circular logic: every systematic way of reaching truth should have an explanation of why it works. The author developed this view in ``Where Recursive Justification Hits Bottom'' (July 2008), later in the book.}"
+  ],
+  [
+   5358,
+   "\\cpara{Restates the question.}"
+  ],
+  [
+   5501,
+   "\\cpara{Makes the question concrete: a pattern of neurons and a pattern of ice crystals look nothing alike.}"
+  ],
+  [
+   6106,
+   "\\cpara{Grants that no one can compare the two patterns at the level of quarks, and that the fundamental level may not be particle fields.}"
+  ],
+  [
+   6513,
+   "\\cpara{Rejects throwing out every belief not written in terms of quarks, as bad for one's goals.}"
+  ],
+  [
+   6789,
+   "\\cpara{The post's answer, offered with ``It seems to me'': a word such as ``snow'' is a promissory note, a pointer to whatever simple boundary an ideal interpreter would draw around the things we call snow. It draws on the author's earlier posts on categories and boundaries.}"
+  ],
+  [
+   7465,
+   "\\cpara{Restates the promissory note for a universe whose bottom level is unknown, with the hedge ``perhaps in a fully general sense''.}"
+  ],
+  [
+   8171,
+   "\\cpara{Gives the note's origin: the same white stuff seen on several occasions suggests a stable cause, which gets the name ``snow''.}"
+  ],
+  [
+   8473,
+   "\\cpara{Credits Putnam's Twin Earth and ``the subsequent philosophical debate''. The promissory note is close to Putnam's own conclusion. In Putnam's story the liquid that Twin Earthers call ``water'' is XYZ, and ``intuitively XYZ is not water''; the view that ``the reference of a speaker's term can depend on facts external to the speaker'' is semantic externalism, from Putnam (1975) and Kripke (1980) (Stanford Encyclopedia, ``Natural Kinds''). Another entry sets the story in 1750, ``before people had any idea of the underlying molecular structure of substances such as water'' (``Externalism About the Mind''): a word that refers before anyone knows what it refers to.}"
+  ],
+  [
+   9137,
+   "\\cpara{Applies the promissory note to the post's own beliefs about beliefs.}"
+  ],
+  [
+   9616,
+   "\\cpara{Calls the resulting circle ``self-consistent'' rather than circular, as the telescope paragraph called its circle ``reflective coherence''. Philosophers have defended circles of this kind for the most basic forms of reasoning. Lange (2011), as quoted in the Stanford Encyclopedia: ``all that we can reasonably demand of a fundamental form of reasoning is that it endorse itself.'' A similar defence of Occam's razor is noted at ``A Priori''.}"
+  ],
+  [
+   9803,
+   "\\cpara{Admits that the position feels precarious.}"
+  ],
+  [
+   10021,
+   "\\cpara{Says it is hard to see how things could be otherwise.}"
+  ],
+  [
+   10109,
+   "\\cpara{Draws the conclusion for hands: ``no fundamental hands'' is not ``no hands''.}"
+  ],
+  [
+   10597,
+   "\\cpara{Lists what the view does not say: that ``hands'' is an empty word, a self-contradictory one, or a sensible description that reality fails to meet.}"
+  ],
+  [
+   11056,
+   "\\cpara{States the positive view: hands are real patterns in reality, but not fundamental ones.}"
+  ],
+  [
+   11221,
+   "\\cpara{A joke with a point: if the hands were gone, reality would soon be in a very different state, so ``I have hands'' says something about reality.}"
+  ],
+  [
+   11498,
+   "\\cpara{Says the last paragraph is true although it names no quark positions.}"
+  ],
+  [
+   11606,
+   "\\cpara{A joke: the claim about truth is itself ``meta-true''.}"
+  ],
+  [
+   11664,
+   "\\cpara{The distinction the post ends on, between reducing a thing and eliminating it, is the standard one in philosophy of science. The Stanford Encyclopedia's entry on scientific reduction: ``If thoughts reduce to brain states and if these brain states are real, then so too are thoughts''; ``most reductive views are realist''. Its example of the other kind is phlogiston, which the oxygen theory replaced, so that ``phlogiston was eliminated.''}"
+  ],
+  [
+   12652,
+   "\\cpara{Ends on the unease of having every concept far above the fundamental level.}"
+  ]
+ ]
+}

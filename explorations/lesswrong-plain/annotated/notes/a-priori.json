@@ -1,0 +1,85 @@
+{
+ "slug": "a-priori",
+ "header": "\\post{A Priori}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/qmqLxvtsPzZ2s6mpY/a-priori}\n",
+ "skeleton_sha": "8b1dba2ad39a382f57a62fa50b11c5b05dd298fffa65294690e50ae01f1d6222",
+ "post_sha": "ee0be8d43f670d9cd7a16072653b2598331387686bf2b2f67bb57dca1e6b450d",
+ "edits": [],
+ "notes": [
+  [
+   102,
+   "\\cpara{Sets up the contrast the post ends on: Traditional Rationality treats its rules as social rules that one can be blamed for breaking, while for ``Bayesians'' the brain is an engine that fails if the rules are broken, whatever others do.}"
+  ],
+  [
+   567,
+   "\\cpara{States the problem: why believe the simpler of two hypotheses that fit the observations equally well.}"
+  ],
+  [
+   834,
+   "\\cpara{Rejects the first answer because it assumes what it defends. The rival hypothesis, that the razor stops working on a given date, has the form of Nelson Goodman's ``new riddle of induction'' (1955): an object is ``grue'' when it ``is green if observed before time t and blue otherwise'' (Stanford Encyclopedia, ``The Problem of Induction''). The date the post chooses is the day it was posted.}"
+  ],
+  [
+   1174,
+   "\\cpara{Rejects the second answer the same way: nothing but the razor says which prior is ``reasonable''.}"
+  ],
+  [
+   1487,
+   "\\cpara{The conclusion, offered with ``it seems'': the razor can be justified only by the razor. This is Hume's circularity argument about induction, applied to simplicity; in the Stanford Encyclopedia's summary, for Hume ``a probable argument would be circular.''}"
+  ],
+  [
+   1781,
+   "\\cpara{A portrait, offered with ``may'' and naming no philosopher. The standard reference shares part of the complaint. The Stanford Encyclopedia's entry on simplicity says that with a priori justifications of simplicity ``it can be difficult to distinguish between an a priori defense and no defense(!)''. The same entry says that such justifications were ``probably the predominant approach'' only ``Until the second half of the 20th Century,'' after which ``many philosophers'' argued against them and turned to approaches that ``engage to a greater degree with the details of actual practice, both scientific and statistical.'' By the time of the post, the position described here was one view among several.}"
+  ],
+  [
+   2393,
+   "\\cpara{The first sentence makes a fair demand: say why the process that yields a priori beliefs makes them accurate. The two examples that follow do not engage the views they target. The standard examples of a priori knowledge are propositions such as ``seven plus five equals twelve'' or ``if today is Tuesday then today is not Thursday,'' and ``ordinary perceptual'' beliefs are the standard examples of a posteriori ones (Internet Encyclopedia of Philosophy, ``A Priori and A Posteriori''). On those views, where water is cannot be known by thought alone, so a hunter-gatherer's need for eyes is what they predict.}"
+  ],
+  [
+   2954,
+   "\\cpara{Gives three statements of the view: Newman on apples, the Internet Encyclopedia's definition, and Hume. The post's gloss, that you can see 1 + 1 = 2 ``just by thinking about it,'' is fair to them.}"
+  ],
+  [
+   3665,
+   "\\cpara{Answers the definitions by noting that thoughts are brain events. Neither definition denies that. Hume's next sentence shows what his independence from ``what is any where existent'' refers to: ``Though there never were a circle or triangle in nature, the truths, demonstrated by Euclid, would for ever retain their certainty and evidence'' (\\textsc{Enquiry}, section 4). The independence is from the things the propositions are about, not from the thinker's brain. The Internet Encyclopedia's definition concerns justification, which it names as the component of knowledge to which the distinction ``is immediately relevant.''}"
+  ],
+  [
+   4000,
+   "\\cpara{The central step. ``In effect'' moves from the process that produces a belief to what justifies it. On the account the post quotes, the a priori is defined by the reasons a person has, and a person adding 1 and 1 has no observations of neurons among them; beliefs that do rest on observing one's own mind, ``introspective beliefs,'' are classed as a posteriori (Internet Encyclopedia). The step needs the view that justification lies in the producing process. That is a position in epistemology (see the next note), not a consequence of thoughts being physical. The difference between how a belief came about and what justifies it is discussed, with Frege, in the notes on ``How to Convince Me That 2 + 2 = 3''.}"
+  ],
+  [
+   4673,
+   "\\clogic{The equivalence can be granted and run the other way. Learning a result from another mind is the case the literature on testimony discusses. On its ``Inheritance View'' (Burge 1993, among others), in an example from Owens, if you prove a theorem by a priori reasoning and tell me, ``my belief is also based on your impeccable a priori reasoning'' (Stanford Encyclopedia, ``Epistemological Problems of Testimony''). The equivalence alone does not show which way the classification goes.}"
+  ],
+  [
+   4842,
+   "\\cpara{Judging a way of knowing by whether the process that produces the belief works, rather than by the reasons the believer can give, is the reliabilist view in epistemology. The Internet Encyclopedia describes reliabilist accounts of the a priori itself: ``a person is a priori justified in believing a given claim if this belief was formed by a reliable, nonempirical or nonexperiential belief-forming process or faculty.'' So seeing minds as engines does not by itself settle that nothing is known a priori.}"
+  ],
+  [
+   5654,
+   "\\cpara{The conclusion, stated without a hedge. It is one side of a debate within philosophy: Michael Devitt's ``There is No a Priori'' and Laurence BonJour's ``In Defense of the A Priori'' appeared together in \\textsc{Contemporary Debates in Epistemology} (2005; Stanford Encyclopedia bibliography).}"
+  ],
+  [
+   5884,
+   "\\cpara{Explains why imagining apples, or using a calculator, predicts real apples: mind, calculator and apples are parts of one physical process.}"
+  ],
+  [
+   6244,
+   "\\cpara{Argues that the brain's bias toward simplicity is not arbitrary, by analogy with regularization in machine learning, which makes many algorithms work better at the cost of extra code. ``The human brain is biased toward simplicity'' is given without a source. It has support in cognitive science: Chater and Vit\\'anyi (2003) review ``research exploring the idea that simplicity drives a wide range of cognitive processes.''}"
+  ],
+  [
+   7060,
+   "\\cpara{Rejects the excuse that other philosophers cannot justify their beliefs either: until you understand why the engine works, there is no truce.}"
+  ],
+  [
+   7517,
+   "\\cpara{Changes the question, and says so: from how to justify the razor to why it works. The answer, that we live in a simple, low-entropy world, leaves open why the world is orderly (``This I do not know''). The author returned to the question of justification in ``Where Recursive Justification Hits Bottom'' (July 2008), later in the book.}"
+  ],
+  [
+   8053,
+   "\\cpara{The point that a mind which does not already use modus ponens cannot be argued into it is Lewis Carroll's, in ``What the Tortoise Said to Achilles'' (\\textsc{Mind}, 1895; Wikipedia). The author discussed Carroll's dialogue in ``Created Already In Motion'' (July 2008), later in the book.}"
+  ],
+  [
+   8522,
+   "\\cpara{The conclusion: rationality should be seen as engines that work, not arguments that convince. This is the externalist reply to Hume's circularity. In the Stanford Encyclopedia's summary of it (citing Van Cleve 1984), ``as long as R is in fact reliable, one can form a justified belief in the conclusion of an argument relying on R, as long as one has justified belief in the premises.''}"
+  ]
+ ]
+}
