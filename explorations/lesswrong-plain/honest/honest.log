@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 01:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 02:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1100,67 +1100,119 @@ iscover'' that cults hit by a failed prophecy
 ]) [260
 
 ]
-(./sections/science-doesn-t-trust-your-rationality.tex)
-(./sections/when-science-can-t-help.tex [261
+(./sections/quantum-explanations.tex)
+(./sections/configurations-and-amplitude.tex [261
 
-] [262])
-(./sections/no-safe-defense-not-even-science.tex [263
+])
+(./sections/joint-configurations.tex [262
 
-] [264]
+])
+(./sections/distinct-configurations.tex [263
+
+])
+(./sections/collapse-postulates.tex [264
+
+])
+(./sections/decoherence-is-simple.tex
+Overfull \hbox (15.45338pt too wide) in paragraph at lines 13--1
+[]\T1/ppl/m/n/10.95 (-20) Then my list: col-lapse would be the only non-linear,
+ non-unitary, dis-con-tin-u-ous, configuration-
+ []
+
+[265
+
+] [266
+
+]) (./sections/decoherence-is-falsifiable-and-testable.tex [267]
+[268
+
+]) (./sections/privileging-the-hypothesis.tex [269])
+(./sections/living-in-many-worlds.tex [270
+
+])
+(./sections/quantum-non-realism.tex [271
+
+] [272
+
+])
+(./sections/if-many-worlds-had-come-first.tex [273] [274
+
+])
+(./sections/where-philosophy-meets-science.tex [275])
+(./sections/thou-art-physics.tex [276
+
+])
+(./sections/many-worlds-one-best-guess.tex [277
+
+] [278
+
+])
+Overfull \hbox (0.5602pt too wide) in paragraph at lines 17--327
+\T1/ppl/m/n/10.95 (-20) ``There is no rational controversy to teach.'' [][n.b. 
+No evidence is given for these explanations
+ []
+
+[279] (./sections/science-doesn-t-trust-your-rationality.tex)
+(./sections/when-science-can-t-help.tex [280
+
+] [281])
+(./sections/no-safe-defense-not-even-science.tex [282
+
+] [283]
 Overfull \hbox (0.15195pt too wide) in paragraph at lines 5--6
 []\T1/ppl/m/n/10.95 (-20) I declare: ``Until this core emotional trust is broke
 n, you don't start growing as a rationalist.''
  []
 
-[265
+[284
 
-]) (./sections/faster-than-science.tex [266]) [267
+]) (./sections/faster-than-science.tex [285]) [286
 
-] [268] [269
+] [287] [288
 
 ]
-(./sections/the-gift-we-give-to-tomorrow.tex) [270
+(./sections/the-gift-we-give-to-tomorrow.tex) [289
 
-] [271]
+] [290]
 (./sections/something-to-protect.tex)
-(./sections/twelve-virtues-of-rationality.tex [272
+(./sections/twelve-virtues-of-rationality.tex [291
 
-] [273] [274
+] [292] [293
 
-]) [275] [276
-
-]
-(./sections/use-the-try-harder-luke.tex) [277
+]) [294] [295
 
 ]
-(./sections/a-sense-that-more-is-possible.tex) [278
+(./sections/use-the-try-harder-luke.tex) [296
 
 ]
-(./sections/humans-are-not-automatically-strategic.tex [279
+(./sections/a-sense-that-more-is-possible.tex) [297
+
+]
+(./sections/humans-are-not-automatically-strategic.tex [298
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-) (./sections/toolbox-thinking-and-law-thinking.tex [280
+) (./sections/toolbox-thinking-and-law-thinking.tex [299
 
-] [281
+] [300
 
 ])
-(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [282]
-[283
+(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [301]
+[302
 
 ]) (./sections/diseased-thinking-dissolving-questions-about-disease.tex
-[284]) (./sections/on-caring.tex [285
+[303]) (./sections/on-caring.tex [304
 
-] [286])
-(./sections/strong-evidence-is-common.tex [287
+] [305])
+(./sections/strong-evidence-is-common.tex [306
 
 ])
-(./sections/pr-is-corrosive.tex [288
+(./sections/pr-is-corrosive.tex [307
 
-]) [289
+]) [308
 
 ] (./honest.aux)
  ***********
@@ -1168,16 +1220,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `honest.out' has not changed.
-(rerunfilecheck)             Checksum: C7582B07C33DF6DF003393D28F82F6E2;54078.
+(rerunfilecheck)             Checksum: 84F21DF73E90C3C8AEAC2F0B9BD27151;56928.
  ) 
 Here is how much of TeX's memory you used:
- 14564 strings out of 476182
- 275282 string characters out of 5795595
+ 14729 strings out of 476182
+ 280448 string characters out of 5795595
  1934975 words of memory out of 5000000
- 34721 multiletter control sequences out of 15000+600000
- 611095 words of font info for 359 fonts, out of 8000000 for 9000
+ 34806 multiletter control sequences out of 15000+600000
+ 611342 words of font info for 362 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,1413b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,1599b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
@@ -1185,10 +1237,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on honest.pdf (289 pages, 838226 bytes).
+Output written on honest.pdf (308 pages, 894598 bytes).
 PDF statistics:
- 2792 PDF objects out of 2984 (max. 8388607)
- 2463 compressed objects within 25 object streams
- 570 named destinations out of 1000 (max. 500000)
- 67761 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 2955 PDF objects out of 2984 (max. 8388607)
+ 2605 compressed objects within 27 object streams
+ 604 named destinations out of 1000 (max. 500000)
+ 67881 words of extra memory for PDF output out of 74296 (max. 10000000)
 

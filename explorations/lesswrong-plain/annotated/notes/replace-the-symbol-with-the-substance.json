@@ -1,9 +1,16 @@
 {
  "slug": "replace-the-symbol-with-the-substance",
  "header": "\\post{Replace the Symbol with the Substance}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/GKfPL6LQFgB49FEnv/replace-the-symbol-with-the-substance}\n",
- "skeleton_sha": "bad4cedfaab5f27508f3e0f0ae6e847e5dc88fa74dd4256e1bb3a8dc4a7e74cc",
+ "skeleton_sha": "f275e0310225173ab46063fada8f442df8f302630b74bd10f6d4076ec06cbea2",
  "post_sha": "d88df1104ff414515ccf3e601f3fa20d25c4c0492b7542c4771f4f496bb79e02",
- "edits": [],
+ "edits": [
+  {
+   "at": 2745,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  }
+ ],
  "notes": [
   [
    160,

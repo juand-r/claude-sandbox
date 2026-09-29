@@ -152,3 +152,43 @@ Why: Same; a satire's closing joke is not a fault.
 - Before: , and Everett did not invent the use of Lagrange multipliers in optimization.
 - After: .
 
+
+## annotated/afterwords/joint-configurations.tex
+
+Why: STANDARDS 2.5: the QBism and Pusey--Barrett--Rudolph points are made in full in Configurations and Amplitude (order 234).
+
+- Before: The post's one step beyond the physics comes near the end: ``If configurations were just states of knowledge, you could reorganize them however you liked.'' The experiment rules out a classical model, in which photons carry labels and we are merely uncertain which went where. It does not decide between the author's view, that amplitudes are physical, and views on which the quantum state represents knowledge but combines by non-classical rules. QBism is such a view, and it predicts the same result. Which reading is right is a question of interpretation. A 2012 theorem by Pusey, Barrett and Rudolph gave the author's side an argument, under assumptions about underlying physical states; the experiment in this post is not that argument.
+- After: The post's one step beyond the physics comes near the end: ``If configurations were just states of knowledge, you could reorganize them however you liked.'' The experiment rules out photons with labels and ordinary probabilities; whether amplitudes are physical is a question of interpretation, discussed in the notes on ``Configurations and Amplitude.''
+
+
+## honest/sections/joint-configurations.tex
+
+Why: Same.
+
+- Before: \nb{The experiment rules out photons with labels and ordinary probabilities. It does not rule out views, such as QBism, on which the quantum state is knowledge combined by non-classical rules; they predict the same result. Whether amplitudes are physical is a question of interpretation.}
+- After: \nb{The experiment rules out photons with labels and ordinary probabilities. Whether amplitudes are physical is a question of interpretation; see ``Configurations and Amplitude.''}
+
+
+## annotated/afterwords/distinct-configurations.tex
+
+Why: Same.
+
+- Before: It does not decide whether amplitudes are physical, which is the question interpretations dispute, since collapse theories and epistemic views predict the same outcome.
+- After: It does not decide whether amplitudes are physical, the question discussed in the notes on ``Configurations and Amplitude.''
+
+
+## annotated/afterwords/collapse-postulates.tex
+
+Why: ``Leaves it standing'' reads a motive into the post's own disclaimer.
+
+- Before: The post instead offers a cynic's reading of motives, calls it ad hominem, and leaves it standing.
+- After: The post instead offers a cynic's reading of motives, and itself calls it ad hominem.
+
+
+## annotated/posts/joint-configurations.tex
+
+Why: STANDARDS 2.5: pointer to the full point in Configurations and Amplitude.
+
+- Before: \cpara{The first sentence is right. The second goes beyond what the experiment shows. The experiment rules out classical probabilities over photons that carry labels. It does not rule out every view on which the quantum state is knowledge: QBism, for one, predicts the same result, because it replaces the classical law of total probability with a quantum rule (\textsc{Stanford Encyclopedia}, ``Quantum-Bayesian and Pragmatist Views of Quantum Theory''). A 2012 theorem by Pusey, Barrett and Rudolph supports the author's side, under assumptions about an underlying physical state.}
+- After: \cpara{The first sentence is right. The second goes beyond what the experiment shows: it rules out photons with labels and ordinary probabilities, not every view on which the quantum state is knowledge. See the notes on ``Configurations and Amplitude.''}
+

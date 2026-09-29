@@ -1,0 +1,169 @@
+{
+ "slug": "distinct-configurations",
+ "header": "\\post{Distinct Configurations}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/KbeHkLNY5ETJ3TN3W/distinct-configurations}\n",
+ "skeleton_sha": "e9df38ead0bd766f71c23c5581a7b73977ede899c2cddf8a3889020fa3d7cf18",
+ "post_sha": "f56d4512a44207716ed1055da69cd93fb9c9f38efcd968a3645792089cc75d14",
+ "edits": [],
+ "notes": [
+  [
+   207,
+   "\\cpara{Restates the first lesson of ``Joint Configurations'': whether two configurations are the same has observable consequences.}"
+  ],
+  [
+   582,
+   "\\cpara{Restates the second lesson, then extends it: a full configuration lists every particle in the universe.}"
+  ],
+  [
+   1076,
+   "\\clogic{Stated as fact, but it is an interpretive choice: that a single quantum state describes the whole universe, as in Everett's 1957 formulation. Bohr, by contrast, ``rejected the attempt to apply the notion of quantum state to a description of the whole universe'' (\\textsc{Stanford Encyclopedia}, ``The Role of Decoherence in Quantum Mechanics'').}"
+  ],
+  [
+   1090,
+   "\\cpara{Defines distinctness: two configurations differ if at least one particle anywhere is in a different state.}"
+  ],
+  [
+   1495,
+   "\\cpara{Figure 1, which I viewed as an image, is the interferometer of the previous post with a green dot, S, on the path from A to C. The figure still draws the path from D to Detector 1 as a dashed line, the previous post's sign for ``no photons''; with S in place, photons do reach Detector 1, as the text goes on to say.}"
+  ],
+  [
+   1885,
+   "\\cpara{Gives S two states, No before a photon passes and Yes after.}"
+  ],
+  [
+   2249,
+   "\\cpara{Starts the calculation. The values carried over from the previous post, $-i$ toward B and $-1$ toward C, are right; now S's state is part of each configuration.}"
+  ],
+  [
+   3281,
+   "\\cpara{The amplitudes are right at every step, and the routes match the figure. The four final amplitudes are $i$, $1$, $-i$ and $1$ (recomputed in the report).}"
+  ],
+  [
+   3907,
+   "\\cpara{Recalls the previous result: flows (1) and (3) cancelled, so no photon reached Detector 1.}"
+  ],
+  [
+   4245,
+   "\\cpara{The central step: S is in a different state in (1) and (3), so they are different configurations and do not cancel.}"
+  ],
+  [
+   4457,
+   "\\cpara{Right: four amplitudes of equal size give a quarter each, so each detector fires half the time.}"
+  ],
+  [
+   4757,
+   "\\cpara{The first of four paragraphs beginning ``All the above is true'': the result does not depend on whether the researchers care about S. This is correct and standard. The \\textsc{Stanford Encyclopedia}'s entry on decoherence says that the pattern of detections ``cannot distinguish mere entanglement with some other systems from the actual use of those systems for detection.''}"
+  ],
+  [
+   5072,
+   "\\cpara{Second: nor on whether anyone looks at S.}"
+  ],
+  [
+   5261,
+   "\\cpara{Third: nor on whether anyone knows that S exists.}"
+  ],
+  [
+   5469,
+   "\\cpara{Fourth: nor on whether S's state could ever be learned. The link is to ``Belief in the Implied Invisible,'' a few posts earlier in the book.}"
+  ],
+  [
+   6081,
+   "\\cpara{States the condition the four paragraphs need: S must be moved by more than its original spread. This is right, and the effect comes in degrees. With pure states, the interference that survives equals the overlap of S's two states (derivation in the report); in general, the visibility V of the interference and the distinguishability D of the paths obey $V^2 + D^2 \\le 1$ (Englert, 1996, as given by Wikipedia).}"
+  ],
+  [
+   6496,
+   "\\cpara{Concludes that distinctness is a physical fact, not a belief. What the experiment shows is that the result does not depend on anyone's knowledge, and every interpretation, collapse theories included, predicts that. It does not settle whether amplitudes are physical or a device for prediction (see the note on ``Joint Configurations'').}"
+  ],
+  [
+   6871,
+   "\\clogic{As a claim about what experiment shows, this needs the condition the parenthesis just gave. A particle moved by less than its own spread leaves part of the interference in place: what matters is how far the two lumps of amplitude overlap, which is a matter of degree.}"
+  ],
+  [
+   6922,
+   "\\cpara{Turns to history, told as the reasoning of an imagined early scientist.}"
+  ],
+  [
+   7142,
+   "\\cpara{Starts the imagined history with the plain interferometer (Figure 2): no photons at Detector 1.}"
+  ],
+  [
+   7304,
+   "\\cpara{Adds the blocked versions: the photons that get through split evenly between the detectors, one at a time. This matches the previous post's calculation.}"
+  ],
+  [
+   7584,
+   "\\cpara{Draws the particle picture from single clicks.}"
+  ],
+  [
+   7744,
+   "\\cpara{States the puzzle: the effect needs both paths to be open, though each photon is seen in one place.}"
+  ],
+  [
+   8223,
+   "\\cpara{Restates the puzzle with Figure 3, which shows a block between B and D.}"
+  ],
+  [
+   8643,
+   "\\cpara{Describes the puzzle as if the photon ``can tell'' about a block on a path it did not take.}"
+  ],
+  [
+   8960,
+   "\\cpara{Names the tempting conclusion, that possibilities have effects, which ``Configurations and Amplitude'' rejected.}"
+  ],
+  [
+   9371,
+   "\\cpara{Adds a sensor on one path (Figure 4, which repeats Figure 1 with the sensor as the green dot).}"
+  ],
+  [
+   9705,
+   "\\cpara{Gives the author's account: to know a photon's path, a brain must be physically correlated with it, and a sensor or a brain moves vast numbers of particles, which is more than enough to stop the cancellation.}"
+  ],
+  [
+   10487,
+   "\\cpara{Voices the imagined scientist: the effect is not a wave on an open path, since the path is still open.}"
+  ],
+  [
+   10903,
+   "\\cpara{The imagined scientist concludes that what can be known decides the result.}"
+  ],
+  [
+   11234,
+   "\\cpara{Continues the imagined reasoning to its end: knowledge is ``the determining factor.''}"
+  ],
+  [
+   11555,
+   "\\cpara{Mocks the conclusion in capitals.}"
+  ],
+  [
+   11674,
+   "\\cpara{Two claims without sources. No textbook is named. The second fits the one survey I found, of 33 participants at a conference on quantum foundations in 2011: 6 per cent said the observer plays a distinguished physical role ``(e.g., wave-function collapse by consciousness)'' (Schlosshauer, Kofler and Zeilinger, 2013). The sample is small, and of foundations researchers rather than theoretical physicists in general.}"
+  ],
+  [
+   11871,
+   "\\cpara{Grants that hindsight makes this easy, then lists clues that were available.}"
+  ],
+  [
+   12066,
+   "\\cpara{First clue: an unread sensor also removes the interference. Correct.}"
+  ],
+  [
+   12340,
+   "\\cpara{Second clue: a single particle nudged far enough, or a photon lost in space, does the same. Correct, given the condition in the parenthesis above.}"
+  ],
+  [
+   12667,
+   "\\cpara{Asks those who give consciousness a role to show that a rock cannot do what a researcher does.}"
+  ],
+  [
+   12905,
+   "\\cpara{Names John von Neumann as the scientist the reader should not expect to have outdone. The association is supported: in the \\textsc{Stanford Encyclopedia}'s account of von Neumann's 1932 analysis, collapse ``takes place only in the presence of the observer's consciousness,'' and Eugene Wigner later made the mind its cause (``Copenhagen Interpretation of Quantum Mechanics'').}"
+  ],
+  [
+   13413,
+   "\\cpara{Von Neumann's own analysis contained this prediction. The \\textsc{Stanford Encyclopedia} says he left it ``as an exercise for the reader to show that predictions are independent of where one places the boundary'' between the observed system and the observer (``The Role of Decoherence in Quantum Mechanics''). So on his account, too, an unread sensor or a stray particle removes the interference; what he tied to consciousness was the appearance of a single outcome, which these experiments do not test. The clues above tell against the imagined scientist's view, that what can be known decides the result, not against von Neumann's or Wigner's.}"
+  ],
+  [
+   13695,
+   "\\cpara{The ``Common Wisdom'' combines views that different founders held. The consciousness part was von Neumann's and Wigner's (see the notes on ``The World: An Introduction''). Bohr, according to the \\textsc{Stanford Encyclopedia}, ``never had in mind the observer-induced collapse of the wave packet,'' and treated the interaction with the apparatus as ``completely objective.'' For Heisenberg, see the notes on ``Collapse Postulates.''}"
+  ]
+ ]
+}

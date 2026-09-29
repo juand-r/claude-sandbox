@@ -298,3 +298,35 @@ arithmetic in GAZP.
 Process: one agent's retry against the Wikipedia API sent a User-Agent string containing
 the user's email address; the request was refused. The address is in no file in the
 repository. The brief now forbids putting personal data in request headers.
+
+## Batch 4c: Quantum Physics and Many Worlds (14 posts)
+
+Eight agents. Edits in `docs/raz/changes/batch04c.md`.
+
+- The full assessment of the many-worlds case is in Many Worlds, One Best Guess: two
+  premises (other worlds as a "logical consequence" of the laws, which needs the wavefunction
+  to be all there is, with Bohm as the counterexample; a single world "would violate
+  relativity", where nonlocality is granted and violation is disputed), the Born rule, and
+  the post's closing account of dissent as sentiment, ignorance and fear. The decoherence
+  posts, Privileging, Living in Many Worlds, and earlier notes (Making Beliefs Pay Rent,
+  Think Like Reality, Is Reality Ugly, Joy in Discovery) point there.
+- Points made once: amplitudes and QBism or Pusey--Barrett--Rudolph (Configurations and
+  Amplitude; Joint and Distinct Configurations point back); "decoherence" used as a name for
+  many-worlds (Decoherence is Simple); von Neumann and the founders' treatment of measurement
+  (Collapse Postulates and Distinct Configurations; If Many Worlds Had Come First points
+  back).
+- Critiques a fair reading answers, softened or cut: Quantum Non-Realism's certainty "breaks
+  its own rule" (now "sits uneasily", since the rule is the strict calculator's); a
+  credentials jab in Where Philosophy Meets Science; the Lagrange-multiplier note and a line
+  about the closing joke in If Many Worlds Had Come First; "leaves it standing" about the
+  post's own ad hominem disclaimer in Collapse Postulates; a von Neumann line the post hedges.
+- Physics checked by script: every amplitude in Configurations and Amplitude, Joint and
+  Distinct Configurations; the 107 of 1,000 against 1/9 in Collapse Postulates; the Bell
+  figures in Many Worlds, One Best Guess.
+
+Tooling: preamble gained U+03A3, U+2192, U+2264, U+2009 and U+221A. md2tex now guards list
+items that begin with "[" (the editor's note in Configurations and Amplitude ran off the left
+margin as an \item label); check_verbatim ignores the guard. All posts pass.
+
+Layout, for the whole-book pass: two overfull boxes (25pt, 67pt) in Joint Configurations
+from long unbroken formulas in the post's own text.

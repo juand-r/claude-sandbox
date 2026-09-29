@@ -252,27 +252,42 @@
 \contentsline {subsection}{Zombies: The Movie}{258}{section*.254}%
 \contentsline {subsection}{Excluding the Supernatural}{259}{section*.255}%
 \contentsline {subsection}{Psychic Powers}{260}{section*.256}%
-\contentsline {section}{Science and Rationality}{261}{section*.257}%
-\contentsline {subsection}{Science Doesn't Trust Your Rationality}{261}{section*.258}%
-\contentsline {subsection}{When Science Can't Help}{263}{section*.259}%
-\contentsline {subsection}{No Safe Defense, Not Even Science}{265}{section*.260}%
-\contentsline {subsection}{Faster Than Science}{267}{section*.261}%
-\contentsline {part}{Mere Goodness}{269}{section*.262}%
-\contentsline {section}{Value Theory}{270}{section*.263}%
-\contentsline {subsection}{The Gift We Give To Tomorrow}{270}{section*.264}%
-\contentsline {section}{Quantified Humanism}{272}{section*.265}%
-\contentsline {subsection}{Something to Protect}{272}{section*.266}%
-\contentsline {subsection}{Twelve Virtues of Rationality}{274}{section*.267}%
-\contentsline {part}{Becoming Stronger}{276}{section*.268}%
-\contentsline {section}{Challenging the Difficult}{277}{section*.269}%
-\contentsline {subsection}{Use the Try Harder, Luke}{277}{section*.270}%
-\contentsline {section}{The Craft and the Community}{278}{section*.271}%
-\contentsline {subsection}{A Sense That More Is Possible}{278}{section*.272}%
-\contentsline {part}{Beyond the Sequences}{279}{section*.273}%
-\contentsline {subsection}{Humans Are Not Automatically Strategic}{280}{section*.274}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{281}{section*.275}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{283}{section*.276}%
-\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{285}{section*.277}%
-\contentsline {subsection}{On Caring}{287}{section*.278}%
-\contentsline {subsection}{Strong Evidence Is Common}{288}{section*.279}%
-\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{289}{section*.280}%
+\contentsline {section}{Quantum Physics and Many Worlds}{261}{section*.257}%
+\contentsline {subsection}{Quantum Explanations}{261}{section*.258}%
+\contentsline {subsection}{Configurations and Amplitude}{262}{section*.259}%
+\contentsline {subsection}{Joint Configurations}{263}{section*.260}%
+\contentsline {subsection}{Distinct Configurations}{264}{section*.261}%
+\contentsline {subsection}{Collapse Postulates}{265}{section*.262}%
+\contentsline {subsection}{Decoherence is Simple}{266}{section*.263}%
+\contentsline {subsection}{Decoherence is Falsifiable and Testable}{268}{section*.264}%
+\contentsline {subsection}{Privileging the Hypothesis}{270}{section*.265}%
+\contentsline {subsection}{Living in Many Worlds}{271}{section*.266}%
+\contentsline {subsection}{Quantum Non-Realism}{272}{section*.267}%
+\contentsline {subsection}{If Many-Worlds Had Come First}{274}{section*.268}%
+\contentsline {subsection}{Where Philosophy Meets Science}{276}{section*.269}%
+\contentsline {subsection}{Thou Art Physics}{277}{section*.270}%
+\contentsline {subsection}{Many Worlds, One Best Guess}{278}{section*.271}%
+\contentsline {section}{Science and Rationality}{280}{section*.272}%
+\contentsline {subsection}{Science Doesn't Trust Your Rationality}{280}{section*.273}%
+\contentsline {subsection}{When Science Can't Help}{282}{section*.274}%
+\contentsline {subsection}{No Safe Defense, Not Even Science}{284}{section*.275}%
+\contentsline {subsection}{Faster Than Science}{286}{section*.276}%
+\contentsline {part}{Mere Goodness}{288}{section*.277}%
+\contentsline {section}{Value Theory}{289}{section*.278}%
+\contentsline {subsection}{The Gift We Give To Tomorrow}{289}{section*.279}%
+\contentsline {section}{Quantified Humanism}{291}{section*.280}%
+\contentsline {subsection}{Something to Protect}{291}{section*.281}%
+\contentsline {subsection}{Twelve Virtues of Rationality}{293}{section*.282}%
+\contentsline {part}{Becoming Stronger}{295}{section*.283}%
+\contentsline {section}{Challenging the Difficult}{296}{section*.284}%
+\contentsline {subsection}{Use the Try Harder, Luke}{296}{section*.285}%
+\contentsline {section}{The Craft and the Community}{297}{section*.286}%
+\contentsline {subsection}{A Sense That More Is Possible}{297}{section*.287}%
+\contentsline {part}{Beyond the Sequences}{298}{section*.288}%
+\contentsline {subsection}{Humans Are Not Automatically Strategic}{299}{section*.289}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{300}{section*.290}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{302}{section*.291}%
+\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{304}{section*.292}%
+\contentsline {subsection}{On Caring}{306}{section*.293}%
+\contentsline {subsection}{Strong Evidence Is Common}{307}{section*.294}%
+\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{308}{section*.295}%

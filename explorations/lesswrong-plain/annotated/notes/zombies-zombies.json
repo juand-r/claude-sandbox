@@ -1,9 +1,16 @@
 {
  "slug": "zombies-zombies",
  "header": "\\post{Zombies! Zombies?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fdEWWr8St59bXLbQr/zombies-zombies}\n",
- "skeleton_sha": "23770265063a11a4e70438e83d5a32dbd8b02eefdc50484250b2733555db73d4",
+ "skeleton_sha": "857d3acbd2e2385e0fdea2a479f4175c1d8fd210c9936eb2b571d9c23ca49a66",
  "post_sha": "e3c7165ccbc2a0456e25daa6c028ad6fe89827f89044d950a53121dd1577f804",
- "edits": [],
+ "edits": [
+  {
+   "at": 41601,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  }
+ ],
  "notes": [
   [
    118,

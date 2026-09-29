@@ -1,0 +1,97 @@
+{
+ "slug": "collapse-postulates",
+ "header": "\\post{Collapse Postulates}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/xsZnufn3cQw7tJeQ3/collapse-postulates}\n",
+ "skeleton_sha": "81acf240d5ec612528bf423f41a2ce5f8127e12644474b1443046ddfbd6475af",
+ "post_sha": "faf25e07fadac32f1c4d646c6bb7d8afbc8052b92bbb20f36e7d8c1566b2fe92",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Opens with a history: before decoherence, it had not occurred to anyone that the microscopic laws might apply universally. Loosely stated. Applying the linear laws to the measuring apparatus was considered early, in von Neumann's 1932 analysis, and its result is what the collapse postulate was added to avoid. The \\textsc{Stanford Encyclopedia}'s entry on collapse theories derives, from ``the hypothesis that the superposition principle governs all natural processes,'' a superposition of ``two macroscopically different states of the apparatus.''}"
+  ],
+  [
+   253,
+   "\\clogic{The author's usage. In the literature, decoherence is a process that every interpretation accepts, and many-worlds is one interpretation. The \\textsc{Stanford Encyclopedia}'s entry on decoherence says that ``decoherence as such does not provide a solution to the measurement problem'' unless it is combined with an approach ``such as Bohm, Everett or GRW,'' or a version of Copenhagen.}"
+  ],
+  [
+   595,
+   "\\cpara{Offers, with ``seems,'' a reconstruction in three steps of how collapse was first thought of.}"
+  ],
+  [
+   679,
+   "\\cpara{The fractions are lost in this copy: the amplitude is $-\\frac{1}{3}i$, and its squared modulus is $\\frac{1}{9}$, about 111 in 1,000. A count of 107 is well within the expected scatter; one standard deviation is about 10.}"
+  ],
+  [
+   1215,
+   "\\cpara{Overstated. Heisenberg did tie the jump in what he called the probability function to knowledge: it ``takes place with the act of registration'' because it reflects ``the discontinuous change of our knowledge.'' But in the same passage he denied the part about conscious awareness. The transition from possible to actual, he wrote, ``is not connected with the act of registration of the result by the mind of the observer'' (\\textsc{Physics and Philosophy}, 1958, chapter 3). The \\textsc{Stanford Encyclopedia} places Heisenberg between Bohr and the consciousness view of von Neumann and Wigner.}"
+  ],
+  [
+   1402,
+   "\\cpara{Describes the move to objective collapse theories, in which collapse is a physical process that happens before superpositions reach human size. The best known is Ghirardi, Rimini and Weber's (1986). The \\textsc{Stanford Encyclopedia} describes the approach as modifying the Schrödinger equation ``by the addition of stochastic and nonlinear terms.''}"
+  ],
+  [
+   1776,
+   "\\cpara{Raises the alternative of many surviving worlds, each surviving in proportion to its squared modulus.}"
+  ],
+  [
+   2172,
+   "\\cpara{Asks why collapse theories keep only one survivor.}"
+  ],
+  [
+   2285,
+   "\\cpara{Answers that collapse theories were devised to explain single outcomes, not the Born statistics. The second half agrees with the \\textsc{Stanford Encyclopedia}: the collapse postulate is assumed ``just in order to guarantee that measurements have outcomes.''}"
+  ],
+  [
+   2423,
+   "\\cfact{True of the textbook postulate (von Neumann, 1932), not of the collapse theories ``considered in modern academia'' that the previous paragraph asks about. Everett's relative-state paper, the origin of many-worlds, appeared in 1957 (\\textsc{Stanford Encyclopedia}, ``Everettian Quantum Mechanics''). Pearle's collapse models date from 1976, and Ghirardi, Rimini and Weber's from 1986 (``Collapse Theories'').}"
+  ],
+  [
+   2771,
+   "\\cpara{The trend is real, but it has not yet reached the original collapse theory. The \\textsc{Stanford Encyclopedia} reports that Adler's proposed faster collapse rate ``is incompatible with the experimental data'' in the standard model, and that the Diósi--Penrose model ``has been falsified experimentally,'' in its simpler form. It also says that interference experiments with the largest molecules, over 10,000 nucleons, cannot yet test Adler's rate, ``therefore even less the weaker proposal of GRW.'' I could not identify the 50-micrometre experiment: the link now goes to ``Decoherence is Falsifiable and Testable,'' which does not mention it.}"
+  ],
+  [
+   3329,
+   "\\cpara{Proposes a hypothetical collapse theory in which Earth's wavefunction collapses about once a minute, so that most branches see non-Born results and then vanish.}"
+  ],
+  [
+   3978,
+   "\\cpara{The post gave the answer a few paragraphs earlier: collapse theories were devised ``to explain why measurements had single outcomes.'' A theory in which observers stay superposed for a minute does not give single outcomes during that minute. The \\textsc{Stanford Encyclopedia} states the same aim: the theories are to account for ``the classical behavior of macroscopic systems.''}"
+  ],
+  [
+   4259,
+   "\\cpara{Puts a motive reading in the mouth of ``a cynic'': collapse is kept to preserve the intuition of a single self. The next paragraph calls this ad hominem and ``too early,'' but does not withdraw it, so the reading stays in the post. No collapse theorist is quoted.}"
+  ],
+  [
+   4931,
+   "\\cpara{Turns to the physical case.}"
+  ],
+  [
+   5123,
+   "\\cpara{Correct: no experiment has detected collapse. No experiment distinguishes many-worlds from standard quantum mechanics either. The difference is that collapse theories predict departures that can be looked for; the \\textsc{Stanford Encyclopedia} says they ``qualify themselves as rival theories of quantum mechanics,'' open to ``crucial tests.''}"
+  ],
+  [
+   5248,
+   "\\cpara{Introduces the list of eight. As a description of objective collapse, most items are accurate, and proponents state them openly: the \\textsc{Stanford Encyclopedia}'s entry, written by Giancarlo Ghirardi, one of the theory's authors, and Angelo Bassi, calls the reduction postulate ``nonlinear and stochastic.'' Some items overlap. Item 2 follows from item 1, since a unitary evolution is linear.}"
+  ],
+  [
+   5786,
+   "\\clogic{True of the jumps in the original GRW model. In the continuous version (CSL, Pearle 1989), the jumps are replaced by ``a continuous stochastic evolution'' (\\textsc{Stanford Encyclopedia}), a kind of Brownian motion: continuous, but not differentiable.}"
+  ],
+  [
+   6006,
+   "\\clogic{Given without argument here. The usual basis is that collapse acts only toward the future. Bedingham and Maroney (2015) argue that collapse models whose physical content is the collapse events themselves ``in fact have time reversal symmetry.''}"
+  ],
+  [
+   6645,
+   "\\clogic{This holds only if many-worlds, or some other way around Bell's theorem, is assumed. Bell's theorem, with the experiments that confirm quantum predictions, rules out local theories in which each measurement has a single outcome; the analysis, the \\textsc{Stanford Encyclopedia} notes, assumes that ``one and only one'' outcome occurs, which many-worlds denies. De Broglie--Bohm theory is nonlocal too. And collapse models belong to the class of modifications that allow no signals faster than light (``Collapse Theories'').}"
+  ],
+  [
+   6675,
+   "\\cpara{Many physicists share the complaint about the textbook postulate, collapse theorists among them. Ghirardi and Bassi's entry says that ``there is a general consensus that this solution is absolutely unacceptable''; their theories replace the postulate with a stated dynamics, whose features are what items 1 to 8 describe.}"
+  ],
+  [
+   6792,
+   "\\clogic{The list counts the costs of collapse only. The comparison with the costs of many-worlds comes two days later, in ``Many Worlds, One Best Guess,'' where the author grants that ``There is no known reason for the Born probabilities.''}"
+  ]
+ ]
+}

@@ -1,9 +1,70 @@
 {
  "slug": "crisis-of-faith",
  "header": "\\post{Crisis of Faith}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/BcYBfG8KomcpcxkEg/crisis-of-faith}\n",
- "skeleton_sha": "edb30f3e667fb000082d954b00e9f5d2ade1fa08e481158cda2e023c1f87efb3",
+ "skeleton_sha": "220b26b2ac6b5500277a6069da71b981eca6ed9a47e7f82287d72f2f6b42f0c6",
  "post_sha": "88323419c6d1af1243cc48603a6e879f474f4c746ebdb73f1b444daf03e0a288",
- "edits": [],
+ "edits": [
+  {
+   "at": 12628,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 13073,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 14027,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 15303,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 15453,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 15738,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 15936,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 16240,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 16949,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  },
+  {
+   "at": 17808,
+   "del_len": 2,
+   "del_sha": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "ins": ""
+  }
+ ],
  "notes": [
   [
    130,

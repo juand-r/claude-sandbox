@@ -1,0 +1,121 @@
+{
+ "slug": "joint-configurations",
+ "header": "\\post{Joint Configurations}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ybusFwDqiZgQa6NCq/joint-configurations}\n",
+ "skeleton_sha": "279b66cea60d43951930a3c73dc81197e184dccd2dbc8f42a2b46d169237de9f",
+ "post_sha": "5ee60a039ce8e8ae2e829d22cedcc9047f5706f76450f8455fc51e9c6cc78369",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{States the lesson in advance: a configuration describes several particles at once. That this is ``the key to understanding quantum mechanics'' is the author's framing; what the post goes on to show is one consequence of it.}"
+  ],
+  [
+   441,
+   "\\cpara{Figure 1, which I viewed as an image, shows a photon from B (left) and one from C (below) meeting at the half-silvered mirror D, with Detector 1 at E and Detector 2 at F. Going straight, B's photon heads to F and C's to E. The link names the real experiment: the Hong--Ou--Mandel effect.}"
+  ],
+  [
+   1194,
+   "\\cfact{Multiplying by $i$ on deflection is one convention. Another, used in Wikipedia's article on this experiment, multiplies by $-1$ for reflection from one side of the mirror and by $+1$ from the other. The result below is the same under either (checked in the report); the article says ``the quantum result is independent of these phases.''}"
+  ],
+  [
+   1377,
+   "\\cpara{Lists the four routes. The products are right, and the routes match the figure: a deflected B photon and a straight C photon both end at E, and so on.}"
+  ],
+  [
+   2445,
+   "\\cpara{The step the post is built on: cases 1 and 4 end in the same configuration, one photon at E and one at F.}"
+  ],
+  [
+   2806,
+   "\\cpara{Adds them: $1 + (-1) = 0$.}"
+  ],
+  [
+   2936,
+   "\\cpara{Reads off the result: equal weight for two photons at either detector, none for one at each. The ratio 1:1:0 is right.}"
+  ],
+  [
+   3225,
+   "\\cfact{One simplification is hidden in the bookkeeping. In the standard calculation, two photons in the same output carry an extra factor of $\\sqrt{2}$ in amplitude (Wikipedia's article shows two photons put into one mode giving $\\sqrt{2}\\,|2,0\\rangle$). Here the factor is the same for both detectors, so the ratio stands and the probabilities are one half, one half and zero. For a mirror that reflected a third of the light, the post's bookkeeping would give the ratios 2:2:1 where the correct ones are 4:4:1.}"
+  ],
+  [
+   3227,
+   "\\cpara{The prediction is right, and the experiment that the author ``didn't actually perform'' had been done: Hong, Ou and Mandel reported it in 1987, and the post's own link leads to it. Wikipedia's summary: when the two photons overlap perfectly, ``the two photons will always be detected in the same output mode.''}"
+  ],
+  [
+   3516,
+   "\\cpara{Sets up the alternative: if configurations kept track of which photon is which, cases 1 and 4 would be two different configurations.}"
+  ],
+  [
+   3995,
+   "\\cpara{Works out the alternative: four equal amplitudes in four configurations, so one photon at each detector half the time. The arithmetic is right.}"
+  ],
+  [
+   4371,
+   "\\cpara{States the rule: a configuration records which kinds of particles are where, not where each came from. This is the standard treatment of identical particles; Wikipedia's article on them concludes that ``the particle labels have no physical meaning.''}"
+  ],
+  [
+   4538,
+   "\\cfact{Right for electrons too, with a difference the post does not state. For electrons the two routes into the configuration with one particle at each detector combine with opposite signs, because their joint states are antisymmetric (Wikipedia, ``Indistinguishable particles''). In this experiment two electrons would therefore always leave by different sides, the reverse of photons. Bocquillon and colleagues observed this in 2013 (\\textsc{Science}): the two electrons ``exit in different outputs.''}"
+  ],
+  [
+   4701,
+   "\\clogic{Kind and place are not quite enough. The effect needs photons that also match in polarization, frequency and timing; if they differ in any of these, one-each outcomes come back (Wikipedia). The next post's wording covers this: configurations differ if ``at least one particle'' is ``in a different state.''}"
+  ],
+  [
+   4703,
+   "\\cpara{Repeats the point of the last few paragraphs: which configurations count as the same is settled by experiment.}"
+  ],
+  [
+   4953,
+   "\\cpara{The contrast: if photons were billiard balls and configurations were beliefs, tracking where each photon came from would change no prediction.}"
+  ],
+  [
+   5359,
+   "\\cpara{Works the classical case. The numbers are right: each photon goes either way with probability one half, so each of the four outcomes has a quarter, and the two one-each outcomes together have a half.}"
+  ],
+  [
+   5981,
+   "\\cpara{Explains why regrouping is harmless for probabilities: the probability that one of two exclusive events happens is the sum of their probabilities.}"
+  ],
+  [
+   6379,
+   "\\cpara{The difference for amplitudes: predictions come from squared moduli, and squared moduli do not add.}"
+  ],
+  [
+   6701,
+   "\\clogic{More exactly, the rule is $|C_1+C_2|^2 = |C_1|^2 + |C_2|^2 + 2\\,\\mbox{Re}(C_1\\overline{C_2})$. The last term is the interference; when it is zero, as for 1 and $i$, the squared moduli do add.}"
+  ],
+  [
+   6795,
+   "\\cpara{The exponents are lost in this copy. Read $3^2+0^2=9$ here and $(2^2+1^2)+(1^2+(-1)^2)=7$ in the next line. Both are right, and the difference, 2, is the interference term.}"
+  ],
+  [
+   6951,
+   "\\cpara{Applies this to the experiment: the parts have squared moduli 1 and 1, their sum has 0.}"
+  ],
+  [
+   7162,
+   "\\cpara{Claims that a linear rule in place of the squared modulus would turn quantum physics into a classical one. No argument is given, but a known result points the same way. Scott Aaronson (2004) asked which evolutions preserve other measures of a state's size; for the plain sum of the entries of a state with no negative entries, ``we obtain the set of stochastic matrices,'' which is ordinary classical probability.}"
+  ],
+  [
+   7540,
+   "\\cpara{The first sentence is right. The second goes beyond what the experiment shows: it rules out photons with labels and ordinary probabilities, not every view on which the quantum state is knowledge. See the notes on ``Configurations and Amplitude.''}"
+  ],
+  [
+   7732,
+   "\\cpara{Restates the conclusion of the previous paragraph.}"
+  ],
+  [
+   7855,
+   "\\cpara{Applies it to several particles: swapping which photon is where gives the same configuration.}"
+  ],
+  [
+   8208,
+   "\\cpara{States the general conclusion: physics cannot be written in terms of particles that each have their own identity. As physics this is standard (see the note on identical particles above).}"
+  ],
+  [
+   8370,
+   "\\cpara{Offers, as ``part of the reason,'' a diagnosis of why quantum physics seems hard: people picture reality as separate billiard balls. ``Think Like Reality'' (2007) made the same point.}"
+  ]
+ ]
+}

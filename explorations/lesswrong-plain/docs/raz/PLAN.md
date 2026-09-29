@@ -53,4 +53,4 @@ posts are merged in.
 | 3b | A Human's Guide to Words (rest of Book III) | 26 | yes | yes | b4b7634 |
 | 4a | Lawful Truth, Reductionism 101, Joy in the Merely Real (Book IV) | 31 | yes | yes | db86c92 |
 | 4b | Physicalism 201 (Book IV) | 15 | yes | yes | 827d4ec |
-| 4c | Quantum Physics and Many Worlds (Book IV) | 14 | running | | |
+| 4c | Quantum Physics and Many Worlds (Book IV) | 14 | yes | yes | see git log |
