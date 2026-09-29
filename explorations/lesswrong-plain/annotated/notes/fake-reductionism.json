@@ -1,0 +1,81 @@
+{
+ "slug": "fake-reductionism",
+ "header": "\\post{Fake Reductionism}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/mTf8MkpAigm3HP6x2/fake-reductionism}\n",
+ "skeleton_sha": "58c22c193000d902fceec4a7f9e3c8ba308baac99a462b2a639d1b759e2c5c24",
+ "post_sha": "6fa961a08c8214f01e4da37645090b8788f59913e63af0b273d815b9d9a55ff2",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Three lines of the passage quoted in ``Explaining vs.\\ Explaining Away'': \\textsc{Lamia}, Part II, lines 231 to 233.}"
+  ],
+  [
+   329,
+   "\\cpara{A guess, marked as one twice: Keats did not understand the rainbow, and may have read only that Newton explained it as ``light reflected from raindrops.''}"
+  ],
+  [
+   640,
+   "\\cpara{Gives the history and the toast, and draws from the toast ``one reason to suspect'' that Keats's understanding was shallow.}"
+  ],
+  [
+   813,
+   "\\cfact{This agrees in substance with the standard history, as Wikipedia's ``Rainbow'' gives it. Qutb al-Din al-Shirazi (1236 to 1311) gave ``a fairly accurate explanation''; Theodoric of Freiberg, in 1307, and Kamal al-Din al-Farisi gave the full account by refraction and reflection inside single drops; Descartes calculated the angles in 1637. Newton showed that white light is made of the colours, ``rejecting the theory that the colours were produced by a modification of white light.''}"
+  ],
+  [
+   1059,
+   "\\cfact{The words match a letter Benjamin Haydon wrote to Wordsworth on 16 October 1842, nearly twenty-five years after the dinner of 28 December 1817: ``don't you remember Keats proposing `Confusion to the memory of Newton,' and upon your insisting on an explanation before you drank it, his saying: `Because he destroyed the poetry of the rainbow by reducing it to a prism.'\\,'' Haydon's autobiography tells it differently. There Lamb, ``exceedingly merry,'' mocks Newton, ``he and Keats agreed he had destroyed all the poetry of the rainbow by reducing it to the prismatic colours,'' and the toast is ``Newton's health, and confusion to mathematics.''}"
+  ],
+  [
+   1136,
+   "\\clogic{Offered as ``one reason to suspect,'' and weak as a reason. In both of Haydon's accounts the toast is a joke at a merry dinner; in the autobiography ``It was impossible to resist'' Lamb, and Wordsworth is praised for ``giving in to all our frolics.'' A joke about Newton at dinner says little about what Keats knew of optics.}"
+  ],
+  [
+   1150,
+   "\\cpara{A second guess, again marked as one: Keats could not have explained why the Sun must be behind you, or why the bow is an arc of a circle.}"
+  ],
+  [
+   1361,
+   "\\cpara{The diagnosis, conditional on the two guesses (``If so''): Keats had been told that the rainbow was reduced without seeing the reduction. The post gives no other evidence about what Keats knew.}"
+  ],
+  [
+   1614,
+   "\\cpara{Generalizes to anti-reductionists: they fail to distinguish professing that something is reducible from seeing it. As in the previous post, none is named; see the note there.}"
+  ],
+  [
+   1833,
+   "\\cpara{Excuses them in part: the failure is a general one.}"
+  ],
+  [
+   1949,
+   "\\cpara{Lists the earlier posts on knowledge that is only professed: ``Fake Explanations,'' ``Guessing the Teacher's Password,'' ``Semantic Stopsigns'' and ``Science as Attire.''}"
+  ],
+  [
+   2447,
+   "\\cpara{Contrasts seeing where the rainbow comes from, with prisms and a spray of water, with being told by a ``dour-faced philosopher'' that scientists have explained it and it is nothing to be excited about.}"
+  ],
+  [
+   2923,
+   "\\cpara{The post's general claim, offered with ``I think'' and ``probably.''}"
+  ],
+  [
+   3088,
+   "\\cpara{Describes how anti-reductionists experience reductionism: as being told that the password is ``Science,'' which moves rainbows into a genre they were taught to find boring.}"
+  ],
+  [
+   3647,
+   "\\cpara{Puts the same point as a joke: a sign reading ``BORING by order of the Council of Sophisticated Literary Critics.''}"
+  ],
+  [
+   3955,
+   "\\cpara{Says the critics lose their gnomes by order, not by insight, and get no understanding in exchange.}"
+  ],
+  [
+   4408,
+   "\\cpara{The conclusion about anti-reductionists in general. Its support in the post is the pair of guesses about one poet; no anti-reductionist or literary critic is quoted describing the experience.}"
+  ],
+  [
+   4627,
+   "\\cpara{Ends with a counter-toast. The toast it answers is the later of Haydon's two versions; see the note on it above.}"
+  ]
+ ]
+}

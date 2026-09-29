@@ -226,3 +226,42 @@ For the whole-book pass (already-annotated posts from the original edition):
 - How an Algorithm Feels From Inside: its "no evidence about brains" point and its
   "oscillating or chaotic" remark should point to Neural Categories.
 - Layout: new overfull box of 39pt in Feel the Meaning (the post's own pseudo-code line).
+
+## Batch 4a: Lawful Truth, Reductionism 101, Joy in the Merely Real (31 posts)
+
+Eight agents. Edits in `docs/raz/changes/batch04a.md`. Kinds, with examples:
+
+- Critiques a fair reading answers, cut or recast:
+  - The World: An Introduction: Nagel "declined that conclusion" (the introduction never
+    says Nagel drew it); "popular" versus minority polls (not a contradiction).
+  - Explaining vs. Explaining Away: the reading of Keats's "unweave a rainbow" (the poem
+    supports it; its second complaint, commonness, is answered in the next post).
+  - Bind Yourself to Reality: "emotional energy" undefined (a metaphor offered as advice).
+  - Amazing Breakthrough Day: readers will disbelieve April 1st stories (the annotator's own
+    reading of how the proposal would work).
+  - Universal Fire: "sole credit" to Lavoisier (the post names no one else, denies no one).
+  - Perpetual Motion Beliefs: a pointer added to the author's case for simplicity priors.
+- Nitpicks cut: a joke about one-eyed depth taken literally, a wording note on protein
+  folding, provably equivalent statements called "distinct", the inverted-map point on
+  mutual information, a reader-test note, trivia about the book's contents and the origin of
+  a verse, the book's placement of a post.
+- Scope kept to one sentence and out of the verdict: organized humanism (Is Humanism a
+  Religion-Substitute?), multiple realizability (Reductionism).
+- Points made once, with pointers: the Dumas-Mallet evidence on science news (The Beauty of
+  Settled Science); the positions called anti-reductionist (Reductionism); Jaynes on
+  thermodynamics (The Second Law post, from the original edition).
+
+Checked and kept: the stopping-rule numbers in Beautiful Probability (by script); the
+two-elevenths puzzle in Initiation Ceremony (by script); Haydon's two versions of the Keats
+toast; Tegmark's levels in Joy in Discovery; Cialdini's own account against Scarcity's
+"malfunction".
+
+Tooling: preamble gained U+2208 (element of) and U+221E (infinity) for Qualitatively
+Confused.
+
+Layout, for the whole-book pass: the Book IV introduction adds two bare-URL overfull boxes
+(42pt and 147pt) from its own footnotes. There are now thirteen such boxes, all verbatim
+post text; the md2tex \url{} fix is due in the whole-book pass.
+
+For the whole-book pass: The Second Law of Thermodynamics (original edition) is the target
+of two new pointers (Jaynes's view of heat; Bennett on the cost of observing).

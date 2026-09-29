@@ -1,0 +1,117 @@
+{
+ "slug": "explaining-vs-explaining-away",
+ "header": "\\post{Explaining vs. Explaining Away}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/cphoF8naigLhRf3tu/explaining-vs-explaining-away}\n",
+ "skeleton_sha": "c9ad7ac83c33e3813b0f7b3d78cbf77fd7538b053a392a6718224b8654d92288",
+ "post_sha": "aa0da4f37bc7efa62a1cc9947e007a1d3ef9ab1ec732c06bb0abd5f624e0e2c3",
+ "edits": [],
+ "notes": [
+  [
+   145,
+   "\\cpara{Introduces the passage from Keats, with a joke about its fame. The poem was written in 1819 and published in 1820.}"
+  ],
+  [
+   339,
+   "\\cpara{The lines are \\textsc{Lamia}, Part II, lines 229 to 237, as in the 1820 text (Margaret Robertson's edition, Oxford, 1909). The sentence goes on: ``Unweave a rainbow, as it erewhile made / The tender-person'd Lamia melt into a shade.'' The ``cold philosophy'' is the sage Apollonius, whose gaze at the end of the poem exposes Lamia as a serpent, and she vanishes. Robertson's note reads the lines as the characters' view: ``Not to be taken as a serious expression of Keats's view of life.''}"
+  ],
+  [
+   718,
+   "\\cpara{Promises to expand ``tomorrow'' on the author's usual reply. The expansion is ``Joy in the Merely Real,'' posted on 20 March 2008, three days later and three posts on in this book.}"
+  ],
+  [
+   1071,
+   "\\cpara{Reads the passage as a list of three things that truth destroyed: haunts, gnomes and rainbows.}"
+  ],
+  [
+   1150,
+   "\\cfact{The passage supports this reading: the line the post leaves out compares unweaving the rainbow to Lamia melting ``into a shade,'' and the list puts the rainbow beside haunts and gnomes. The quoted lines also say the rainbow survives as one of ``common things''; the author answers that complaint in ``Joy in the Merely Real.''}"
+  ],
+  [
+   1271,
+   "\\cpara{Quotes the \\textsc{Sesame Street} song ``One of These Things'' to say that one item on the list differs from the others.}"
+  ],
+  [
+   1511,
+   "\\cpara{States the thesis in one line: the haunts and gnomes are gone, the rainbow is not. The post later says this sentence was worded fallaciously on purpose.}"
+  ],
+  [
+   1754,
+   "\\cpara{Quotes the author's ``Righting a Wrong Question'' (9 March 2008) for the distinction: a belief whose cause includes the thing believed is explained; a belief whose cause does not, like a mirage, is explained away. The ellipsis skips that post's step-by-step chain from socks to belief.}"
+  ],
+  [
+   2197,
+   "\\cpara{Applies the distinction: the rainbow was explained, the haunts and gnomes explained away.}"
+  ],
+  [
+   2320,
+   "\\cpara{Offered with ``I think.'' No anti-reductionist is named or quoted apart from Keats; on the positions the word covers, see the notes on ``Reductionism.''}"
+  ],
+  [
+   2423,
+   "\\cpara{Introduces an objection to reductionism as ``the classic'' one.}"
+  ],
+  [
+   2540,
+   "\\cpara{The objection is given in quotation marks without a source. An early form, quoted by C.~S. Lewis in \\textsc{Miracles}, is J.~B.~S. Haldane's, in \\textsc{Possible Worlds} (1927, p.~209): ``It seems to me immensely unlikely that mind is a mere by-product of matter. For if my mental processes are determined wholly by the motions of atoms in my brain I have no reason to suppose that my beliefs are true.'' Haldane's own ``mere'' supports the post's choice of that word as the one to examine.}"
+  ],
+  [
+   2723,
+   "\\cpara{Locates the error in ``mere'': the word treats a causal account of reasoning as if it explained the reasoning away, like an optical illusion.}"
+  ],
+  [
+   2987,
+   "\\cpara{The reply, and it works against the objection as stated: one case in which the causal chain runs through the fact believed shows that a causal account need not debunk a belief. The case shown is a perceptual belief. For a belief reached by argument, such as belief in reductionism, the post does not trace the chain.}"
+  ],
+  [
+   3386,
+   "\\cpara{Asks why anti-reductionists would class rainbows and belief in reductionism with haunts and gnomes.}"
+  ],
+  [
+   3627,
+   "\\cpara{Names one cause, the Mind Projection Fallacy applied to a ``multi-level map'' and a ``mono-level territory.'' The idea was introduced the day before in ``Reductionism'' (16 March 2008); the link goes to the earlier post ``Mind Projection Fallacy.''}"
+  ],
+  [
+   3899,
+   "\\cpara{Restates ``Reductionism'': we must model a 747 with wings and airflow, but that does not make the world multi-level. The claim about physics carries its hedge, ``to the best of our knowledge.''}"
+  ],
+  [
+   4238,
+   "\\cpara{The diagnosis, with ``I think'': anti-reductionists hear that rainbows are not fundamental as meaning that there are no rainbows.}"
+  ],
+  [
+   4382,
+   "\\cpara{Explains the mechanism: removing the rainbow from the list of fundamental things feels like removing it from the map, and so from the world.}"
+  ],
+  [
+   4718,
+   "\\cpara{A second example: ``made of quarks'' heard as the same dismissal as the empty garage in the dragon story of ``Belief in Belief.''}"
+  ],
+  [
+   4956,
+   "\\cpara{Applies the diagnosis to Keats, with ``seemingly.'' The earlier note on ``has destroyed'' bears on it.}"
+  ],
+  [
+   5073,
+   "\\cpara{Reports a test on the reader: phrasings that commit the fallacy were used on purpose, and not noticing them ``would seem to argue'' that the fallacy is customary.}"
+  ],
+  [
+   5499,
+   "\\cpara{Gives the corrected wording: science emptied the map, not the air or the mine, of gnomes; there never were any.}"
+  ],
+  [
+   6054,
+   "\\cpara{Refers to ``The Quotation is not the Referent'' (13 March 2008).}"
+  ],
+  [
+   6176,
+   "\\cpara{Shows how the fallacy turns a change of belief into a story in time: gnomes at T=0, a scientist at T=1, no gnomes at T=2, so the scientist killed them.}"
+  ],
+  [
+   6594,
+   "\\cpara{Lists what a rationalist should say on losing a belief such as gnomes: P.~C. Hodgell's ``That which can be destroyed by the truth should be'' (see the notes on ``Feeling Rational''), the author's Litany of Tarski, and others.}"
+  ],
+  [
+   7363,
+   "\\cpara{Ends on the thesis: the rainbow needs none of these consolations, because it still exists.}"
+  ]
+ ]
+}

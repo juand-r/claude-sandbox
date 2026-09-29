@@ -306,3 +306,62 @@ Why: Scope, stated once and out of the verdict; the physics slip shortened, sinc
 - Before: called obviously correct and argued against a mistaken gunner and a one-line imagined opponent rather than its serious critics.
 - After: called obviously correct and argued against a mistaken gunner and a one-line imagined opponent.
 
+
+## annotated/posts/explaining-vs-explaining-away.tex
+
+Why: Fair reading: the poem's list pairs the rainbow with haunts and gnomes that vanish, and the omitted line supports the post, so the reading of ``unweave'' stands; the survives-as-common point is information that leads to the next post. The reader-test note is a nitpick. The anti-reductionist positions are discussed in Reductionism (order 202).
+
+- Before: \clogic{The reading has some support in the poem: the line the post leaves out compares unweaving the rainbow to Lamia melting ``into a shade.'' But the lines quoted above also say that the rainbow is still there. ``We know her woof, her texture; she is given / In the dull catalogue of common things.'' What ``fly'' are its ``charms.'' In those lines the rainbow is not gone; it has become common. The author answers that complaint in ``Joy in the Merely Real,'' not here.}
+- After: \cfact{The passage supports this reading: the line the post leaves out compares unweaving the rainbow to Lamia melting ``into a shade,'' and the list puts the rainbow beside haunts and gnomes. The quoted lines also say the rainbow survives as one of ``common things''; the author answers that complaint in ``Joy in the Merely Real.''}
+
+- Before: \clogic{The test cannot tell a reader who commits the fallacy from one who reads ``the mine de-gnomed'' as ordinary shorthand for dropping the belief. What it can show is that the shorthand is customary.}
+- After: 
+
+- Before: \cpara{Offered with ``I think.'' No anti-reductionist is named or quoted in the post, apart from Keats, a poet. The word covers several positions: the \textsc{Stanford Encyclopedia of Philosophy} (``Physicalism'') notes that one can hold that everything is physical and still reject reductionism in Ernest Nagel's sense, the derivation of one science's laws from another's. Anti-reductionists of that kind hold that rainbows, like everything else, are physical; the post does not say which anti-reductionists it means.}
+- After: \cpara{Offered with ``I think.'' No anti-reductionist is named or quoted apart from Keats; on the positions the word covers, see the notes on ``Reductionism.''}
+
+
+## annotated/afterwords/explaining-vs-explaining-away.tex
+
+Why: Same.
+
+- Before: The trouble is the application to Keats, which opens the post. The author reads the lines as saying that truth destroyed haunts, gnomes and rainbows alike. The poem gives partial support: the sentence the post cuts off compares unweaving the rainbow to Lamia melting ``into a shade.'' But the lines the post quotes also say that the rainbow survives. ``We know her woof, her texture; she is given / In the dull catalogue of common things.'' What ``fly'' are its ``charms.'' In those lines Keats's complaint is that the rainbow became common, not that it ceased to exist. That complaint is the one the author answers three days later in ``Joy in the Merely Real.'' Here, the reply that the rainbow ``is still there'' answers a position the quoted lines do not take. The poem's 1909 editor, Margaret Robertson, also cautions that the passage is ``Not to be taken as a serious expression of Keats's view of life,'' which is one editor's reading.
+
+
+- After: The reading of Keats that opens the post is supported by the poem, which sets the unwoven rainbow beside haunts and gnomes and compares it to Lamia melting ``into a shade.'' The lines the post quotes also make a second complaint, that the rainbow became one of ``common things''; the author answers that one in ``Joy in the Merely Real.''
+
+
+
+- Before: The other opponents are not identified. ``Anti-reductionists'' are said, with ``I think,'' to miss the distinction, but none is quoted. The word also covers philosophers who hold that everything, rainbows included, is physical, and who reject reduction in the sense of deriving one science's laws from another's.
+- After: The other opponents are not identified. ``Anti-reductionists'' are said, with ``I think,'' to miss the distinction, but none is quoted; on the positions the word covers, see the notes on ``Reductionism.''
+
+- Before: 
+
+Finally, the post's test on its reader, phrasings that commit the fallacy on purpose, cannot tell a reader who commits the fallacy from one who reads ``the mine de-gnomed'' as shorthand. It shows only that the shorthand is common.
+- After: 
+
+- Before: applied to a poem whose quoted lines say the rainbow became common, not that it vanished, and to anti-reductionists the post does not identify.
+- After: applied to Keats with support from the poem and to anti-reductionists the post does not identify.
+
+
+## honest/sections/explaining-vs-explaining-away.tex
+
+Why: Same.
+
+- Before:  \nb{The quoted passage also says the rainbow is still there: ``We know her woof, her texture; she is given / In the dull catalogue of common things.'' In those lines what goes are its ``charms''; the rainbow has become common. The line the post leaves out does compare unweaving it to Lamia melting ``into a shade.''}
+- After:  \nb{The poem supports this reading; its quoted lines also complain that the rainbow became one of ``common things,'' which Yudkowsky answers in ``Joy in the Merely Real.''}
+
+- Before:  \nb{A reader who took ``de-gnomed'' as shorthand for dropping a belief committed no fallacy. The test shows that the shorthand is common.}
+- After: 
+
+- Before: \nb{No anti-reductionist other than Keats is named. Philosophers who reject reductionism in the sense of deriving one science's laws from another's can still hold that everything, rainbows included, is physical.}
+- After: \nb{No anti-reductionist other than Keats is named; see the notes on ``Reductionism.''}
+
+
+## annotated/afterwords/joy-in-the-merely-real.tex
+
+Why: Aligned with the revised Explaining vs. Explaining Away notes.
+
+- Before: This is the complaint the lines make, and here the post answers it directly; the notes on ``Explaining vs.\ Explaining Away'' observe that the earlier post had answered a different one.
+- After: This is the second complaint the lines make, and here the post answers it directly.
+

@@ -1,0 +1,141 @@
+{
+ "slug": "savanna-poets",
+ "header": "\\post{Savanna Poets}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/kQzs8MFbBxdYhe3hK/savanna-poets}\n",
+ "skeleton_sha": "a9bbe6642edb661eb799596f112abf062e4512abd9ace9e1f61d4ecea011d47f",
+ "post_sha": "049698feae2a8867a91f3bac4ad31c50dae1da85bc1e1a2ee2880acb6c19ab84",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{The quotation matches the footnote in \\textsc{The Feynman Lectures on Physics}, Vol.~I, section 3-4, p.~3-6, checked against two scans of the printed text. The footnote starts a few sentences earlier (``How I'm rushing through this!''); the post begins at ``Poets say.''}"
+  ],
+  [
+   1237,
+   "\\cpara{Takes Feynman's question, whatever Feynman intended, as one with a real answer.}"
+  ],
+  [
+   1463,
+   "\\cpara{The answer: a Jupiter like us can love, strive and weep, so a poet can make us feel for him.}"
+  ],
+  [
+   1672,
+   "\\cpara{The other half of the answer: a sphere of gas is harder to make us feel for.}"
+  ],
+  [
+   1801,
+   "\\cpara{Reports, without naming anyone, the view that the Great Stories are timeless: Shakespeare and Sophocles could have swapped centuries.}"
+  ],
+  [
+   2115,
+   "\\cpara{Cites Donald Brown's list of human universals. The page the post links gives it as printed in Steven Pinker's \\textsc{The Blank Slate} (2002). Most of the items the post names are on it, among them ``healing the sick (or attempting to)'' and ``poetic lines demarcated by pauses.''}"
+  ],
+  [
+   2622,
+   "\\cpara{Draws the conclusion that the strongest emotions are ``deeply engraved, blood and bone, brain and DNA,'' and answers doubt in advance by saying that no one informed would doubt it.}"
+  ],
+  [
+   2831,
+   "\\clogic{Brown's list records what is found in every culture, not why; the same list includes ``weapons'' and ``units of time.'' The step from universal to ``brain and DNA'' is asserted here, not argued.}"
+  ],
+  [
+   2845,
+   "\\cpara{A hedged illustration (``probably''): \\textsc{Hamlet} could be told around a campfire on the savanna.}"
+  ],
+  [
+   2987,
+   "\\cpara{Applies this to Keats: raindrops cannot carry the emotions that stories need.}"
+  ],
+  [
+   3180,
+   "\\cpara{Retells the flood story with sarcasm. The summary matches Genesis 9:11 to 16, where the bow in the cloud is the token of the covenant that the waters ``shall no more become a flood to destroy all flesh.''}"
+  ],
+  [
+   3593,
+   "\\cpara{Imagines Keats shocked that science contradicted the Noah story. The rainbow lines in \\textsc{Lamia} do not mention Noah.}"
+  ],
+  [
+   3930,
+   "\\cpara{Builds the other side's case: even with the mathematics, raindrops cannot replace a story of murder and madness.}"
+  ],
+  [
+   4233,
+   "\\cpara{States that case in the Romantic poet's voice: the equations are not about strong emotions.}"
+  ],
+  [
+   4570,
+   "\\cpara{Calls this the strongest reply a Romantic poet could have made to Feynman, and admits never having heard it made. The post answers the strongest version of the other side it can construct, and says that it constructed it.}"
+  ],
+  [
+   4727,
+   "\\cpara{Announces the author's own position.}"
+  ],
+  [
+   4825,
+   "\\cpara{The answer: love and hate are not gone from the universe, because humans still have them. Jupiter need not be a person for the stories to have persons.}"
+  ],
+  [
+   5147,
+   "\\cpara{Puts the same point as a question about the number of available protagonists.}"
+  ],
+  [
+   5282,
+   "\\cpara{The stories happen every day among humans, and fiction can be written about humans rather than about Jupiter.}"
+  ],
+  [
+   5654,
+   "\\cpara{Hopes that some Great Stories will change. The link on ``Goodbye'' goes to the author's page on the death of the author's younger brother, Yehuda, in November 2004.}"
+  ],
+  [
+   5930,
+   "\\cpara{Argues that the stories are not timeless: go back far enough in hominid evolution, and no one will understand \\textsc{Hamlet}.}"
+  ],
+  [
+   6152,
+   "\\clogic{True of ``timeless'' taken literally. The claim the post reported was about Sophocles and Shakespeare, some two thousand years, and for that span the post agrees with it: it has just said that \\textsc{Hamlet} could be told on the ancestral savanna. The real disagreement is about the future, which the next paragraphs take up.}"
+  ],
+  [
+   6166,
+   "\\cpara{Says the species is not eternal, and that the author ``most sincerely'' doubts we have another thousand years in our current form. The forecast is stated as the author's view, with a link to ``Tsuyoku Naritai! (I Want To Become Stronger)'' and no argument here.}"
+  ],
+  [
+   6488,
+   "\\cpara{Does not want the stories lost entirely, and compares that outcome, as a joke, to the Sun falling into a black hole.}"
+  ],
+  [
+   6670,
+   "\\cpara{Wants them to change form or diversify their endings.}"
+  ],
+  [
+   6951,
+   "\\cpara{States the ethic: when we find something strange, we should tell its story truly, even if the poetry is harder to write.}"
+  ],
+  [
+   7205,
+   "\\cpara{Says an ode to the real Jupiter would be original, while writing of Jupiter as a human forces it into stories already told.}"
+  ],
+  [
+   7753,
+   "\\cpara{Offers James Thomson's poem on Newton as a poem about the real rainbow, and argues that the true story of the rainbow could not be told until the rainbow was understood.}"
+  ],
+  [
+   7962,
+   "\\cfact{The poem (1727) does this. Newton ``Untwisted all the shining robe of day,'' and the separated colours ``when the clouds distil the rosy shower, / Shine out distinct adown the watery bow''; then Thomson asks, ``Did ever poet image aught so fair''? It was written about ninety years before \\textsc{Lamia}, so it supports the post: the true rainbow had been put into poetry before Keats complained.}"
+  ],
+  [
+   8209,
+   "\\cfact{\\textsc{Lamia} is itself one of these Greek tales. Keats printed his source at the end of the poem: Robert Burton's retelling, from Philostratus's life of Apollonius, of a young man who married a lamia, whom Apollonius ``found \\ldots\\ out to be a serpent.''}"
+  ],
+  [
+   8406,
+   "\\cpara{Recalls an old test: if a story can be moved to the Old West without loss, it is not real science fiction. The idea has a well-known illustration: the back cover of the first issue of \\textsc{Galaxy Science Fiction} (1950) parodied Westerns translated into space.}"
+  ],
+  [
+   8806,
+   "\\cpara{Repeats Feynman's question.}"
+  ],
+  [
+   8991,
+   "\\cpara{Answers it with a name: savanna poets can tell only the stories that would have made sense around a campfire, in their classic forms.}"
+  ]
+ ]
+}
