@@ -232,3 +232,19 @@ Why: Trivia.
 The closing lines are offered as ``the Tao'' with no attribution. I could not find them before this post, so they appear to be the author's own.
 - After: 
 
+
+## annotated/posts/perpetual-motion-beliefs.tex
+
+Why: Fair defender: the author argues for a simplicity prior elsewhere; the note now points to it.
+
+- Before: not one of the laws the post calls ``harder than steel.''}
+- After: not one of the laws the post calls ``harder than steel.'' The author's case for priors of this kind, weighted toward simple hypotheses, is in ``Occam's Razor.''}
+
+
+## annotated/afterwords/perpetual-motion-beliefs.tex
+
+Why: Same.
+
+- Before: without saying that it is of a different kind.
+- After: without saying that it is of a different kind; the author's case for such priors is made elsewhere, in ``Occam's Razor.''
+

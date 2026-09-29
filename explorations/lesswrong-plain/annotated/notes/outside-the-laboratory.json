@@ -1,0 +1,89 @@
+{
+ "slug": "outside-the-laboratory",
+ "header": "\\post{Outside the Laboratory}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/N2pENnTPB75sfc9kb/outside-the-laboratory}\n",
+ "skeleton_sha": "14889e071a77eb004868b48fa8199dc3ce2c91efa724f31fbc4edb5236a50198",
+ "post_sha": "22de00605981998fc0f7efd365c0c7b98c2175716e138238f8b514f2b2a62d97",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Introduces the proverb, and grants that it is ``Probably not'' true in an absolute sense.}"
+  ],
+  [
+   632,
+   "\\cpara{The post's premise, offered with ``does appear'' and no evidence, followed by the shepherd who can count sheep but not apples. On the post's main example, religious belief, a later survey fits both the premise and its hedge. In 2009 the Pew Research Center found American scientists (members of the AAAS) ``roughly half as likely as the general public to believe in God or a higher power'': 51\\% against 95\\%.}"
+  ],
+  [
+   1319,
+   "\\cpara{The second analogy, as a question. It assumes that a weekly ticket fails the test of expected utility. That depends on what value the ticket's anticipation has, as the notes on ``Lotteries: A Waste of Hope'' discuss.}"
+  ],
+  [
+   1584,
+   "\\cpara{Introduces Feynman's account of physics students in Brazil.}"
+  ],
+  [
+   1691,
+   "\\cpara{The quotation matches Feynman's text in \\textsc{Surely You're Joking, Mr.~Feynman!} apart from punctuation (see the notes on ``Guessing the Teacher's Password'').}"
+  ],
+  [
+   2370,
+   "\\cpara{Describes a randomized, blinded experiment tested for significance, and asks why one should test hypotheses by experiment at all: because journals demand it, because of training, or because everyone says so?}"
+  ],
+  [
+   3223,
+   "\\cpara{The answer: to map a territory you must interact with it causally, as light from your shoelaces reaches your eye. Reasoning is a physical process, and to find things out ``you've got to go look.''}"
+  ],
+  [
+   4346,
+   "\\cpara{The central case: a scientist who believes in a spirit world and says that observation cannot settle the question. The post concludes that this person has learned the ritual of experiment without its reason.}"
+  ],
+  [
+   5353,
+   "\\cpara{Answers the appeal to inner experience. If spirits speak, that is a causal interaction and counts as an observation, to be weighed by its likelihood ratio against other causes and against the prior. The paragraph treats the believer's report as evidence and weighs it, instead of dismissing it.}"
+  ],
+  [
+   6214,
+   "\\cpara{A joke about lab coats and jewelry, and a dismissal of Stephen Jay Gould's ``separate magisteria'' as a ``blunder.'' Gould's essay ``Nonoverlapping Magisteria'' (1997) assigned science ``the empirical universe'' and religion ``questions of moral meaning and value''; the notes on ``Religion's Claim to be Non-Disprovable'' discuss it.}"
+  ],
+  [
+   6757,
+   "\\cpara{The diagnosis, marked as the author's view (``to me''): a scientist who accepts that spiritual matters cannot be settled by observation understands experiment only as a social convention.}"
+  ],
+  [
+   7408,
+   "\\cpara{Returns to the shepherd: a rule learned only as convention gives no reason why sheep and apples should add the same way.}"
+  ],
+  [
+   7966,
+   "\\cpara{Credits Newton with showing that the planets obey the same laws as falling apples, and says a universe under the same laws everywhere runs against human intuition. ``It is only scientists who really believe it'' is stated without evidence.}"
+  ],
+  [
+   8706,
+   "\\cpara{Introduces a passage from \\textsc{The Feynman Lectures on Physics}, volume I, section 3-7 (as cited by Wikiquote).}"
+  ],
+  [
+   8760,
+   "\\cpara{Feynman on a glass of wine: nature does not know our division of it into sciences. The post's wording differs slightly from the text given by Wikiquote, without change of meaning.}"
+  ],
+  [
+   9940,
+   "\\cpara{A joke about ``everything is connected to everything else'': a graph with every edge tells you no more than a graph with none. Then the claim that religions make up their rules as they go, with examples of rules that differ by age, sex and day.}"
+  ],
+  [
+   10614,
+   "\\cpara{States the view behind the post: one universe under simple low-level laws, with no separate domains for mind and matter, and the same Bayes's theorem everywhere.}"
+  ],
+  [
+   11133,
+   "\\cpara{The conclusion about such scientists, offered with ``probably.'' The diagnosis rests on the imagined scientist of the earlier paragraphs. No evidence is given about how real scientists who hold such beliefs reason, in their fields or outside them. The doubt about their opinions ``even in their own field'' is hedged (``that does make me wonder'') and equally unsupported.}"
+  ],
+  [
+   12005,
+   "\\cpara{The call to action: learn enough probability theory and experimental psychology to know why the rules work, and apply them in everyday life. The Voltaire line is from \\textsc{Le d\\^{\\i}ner du comte de Boulainvilliers} (1767): ``Un bon mot ne prouve rien.''}"
+  ],
+  [
+   12786,
+   "\\cpara{Points to ``Why Truth?'' and ``Twelve Virtues of Rationality'' for readers who think science opposes emotion or that truth does not matter in everyday life.}"
+  ]
+ ]
+}

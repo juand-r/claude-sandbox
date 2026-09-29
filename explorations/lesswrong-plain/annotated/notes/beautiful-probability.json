@@ -1,0 +1,165 @@
+{
+ "slug": "beautiful-probability",
+ "header": "\\post{Beautiful Probability}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/bkSkRwo9SRYxJMiSY/beautiful-probability}\n",
+ "skeleton_sha": "4798d945f63c175d36eb2154e6e91f2324b8bde0a0e75e11ce09938c05b50942",
+ "post_sha": "f27bb9f14de6c268e1eb2031029ba3c1538662d6b3beb9679ed2a48be8fdffb0",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Asks the post's question: should the methods of belief and choice turn out to be simple at some deeper level?}"
+  ],
+  [
+   297,
+   "\\cpara{Introduces an example from E.~T. Jaynes's 1990 paper, listed at the end of the post.}"
+  ],
+  [
+   433,
+   "\\cpara{The quotation matches Jaynes's paper, with small changes (``n = 100'' becomes ``N=100''; the bracketed words are added). In the paper the example illustrates Jaynes's charge that orthodox theory makes conclusions depend on ``the private thoughts that went through the experimenter's mind.'' The post's Bayesian reply below repeats that charge.}"
+  ],
+  [
+   1194,
+   "\\cpara{States the frequentist position fairly, and the figures bear it out (calculation in the report). With 100 patients fixed in advance, 70 or more cures would occur with probability 0.025 if the true rate were 60\\%, which counts as significant. Suppose the second researcher tests at the 2.5\\% level after every patient and stops the first time the test is passed. Counting every earlier point at which that rule could have stopped, the probability of stopping by patient 100 at a true rate of 60\\% is about 0.11, which does not count as significant. ``Still being taught'' is right: trials that analyse data as it arrives adjust their tests for the repeated looks (Wikipedia, ``Interim analysis'').}"
+  ],
+  [
+   1669,
+   "\\cpara{Says that the reader's reaction to the example shows their attitude to probability and to rationality.}"
+  ],
+  [
+   1819,
+   "\\cpara{The reply the post writes for its opponents is about tools. It leaves out the reason the post gave for their position two paragraphs earlier, that the experiments ``could have terminated with different data.'' On the frequentist view, a significance level describes a procedure: how often it would give such a result if the null hypothesis were true. At a true cure rate of exactly 60\\%, the second researcher's rule ends with a rate ``definitely greater than 60\\%'' about 11\\% of the time by patient 100, 20\\% by patient 1,000 and 29\\% by patient 10,000 (report). Analysed as if the number of patients had been fixed, each of those stops would be reported at the 2.5\\% level.}"
+  ],
+  [
+   2244,
+   "\\cpara{The Bayesian reply, in Jaynes's terms (``private thoughts''). A frequentist would answer that the stopping rule is part of the declared design, like a fixed number of patients, and settles which data the experiment could have produced. Wikipedia's article on the likelihood principle, discussing a similar pair of experiments, places the difference ``not in the actual data collected, nor in the conduct of the experimenter, but in the two different designs of the experiment.''}"
+  ],
+  [
+   2513,
+   "\\cpara{The Bayesian argument, and its calculation is right. The two designs give likelihoods that differ only by a constant factor, so every likelihood ratio is the same: for a cure rate of 70\\% against 60\\%, about 8.7 in both. With a uniform prior, both researchers end with a probability of 0.98 that the rate exceeds 60\\% (report). Jaynes's paper also answers the frequentist worry, citing Savage: it is ``for all practical purposes impossible to sample deliberately to a foregone conclusion that is appreciably false.'' The calculation agrees: at a true rate of 50\\%, the second rule reaches its goal about 1\\% of the time, and the figure does not grow between 100 and 10,000 patients.}"
+  ],
+  [
+   3207,
+   "\\clogic{This follows only if one grants the likelihood principle, that all the evidence in the data is in the likelihood, and that principle is what the dispute is about. Wikipedia: it ``is controversial because it is inconsistent with the mainstream frequentist approach to inference.'' Birnbaum derived it in 1962 from two more basic principles, later rejected it, and the proof is still argued over (Mayo, 2014, against; Dawid and Gandenberger for). On the frequentist view the two analyses answer different questions about two procedures, so neither need be a wrong calculation.}"
+  ],
+  [
+   3221,
+   "\\cpara{Declines to recount the history of the dispute.}"
+  ],
+  [
+   3408,
+   "\\cpara{Says the central conflict is over what Bayesians expect probability theory to be, and holds back the word.}"
+  ],
+  [
+   3579,
+   "\\cpara{Credits Jaynes, correctly. The consistency requirement is Jaynes's desideratum (IIIa) in \\textsc{Probability Theory: The Logic of Science}: ``If a conclusion can be reasoned out in more than one way, then every possible way must lead to the same result.'' In Jaynes it is a requirement laid down before the rules are derived.}"
+  ],
+  [
+   3880,
+   "\\cpara{Illustrates consistency with arithmetic; the sums are right. The rule in the parenthesis, that paradoxes in probability usually come from an infinity not reached as a limit, is also Jaynes's. The rules in Jaynes's book ``admit only finite sets and infinite sets that arise as well-defined and well-behaved limits of finite sets'' (\\textsc{Probability Theory}, preface).}"
+  ],
+  [
+   4430,
+   "\\cpara{Draws the moral: an apparent contradiction means an error was made, since a real one would bring down probability theory and, the author adds with ``I'm pretty sure,'' set theory with it.}"
+  ],
+  [
+   4928,
+   "\\cpara{Gives the word: Bayesians expect probability to be math, and value Cox's theorem because it makes the math unique. ``Certain constraints'' is the right hedge. The uniqueness holds given Cox's assumptions, and Wikipedia notes that ``It has been debated to what degree the theorem excludes alternative models for reasoning about uncertainty.''}"
+  ],
+  [
+   5282,
+   "\\cpara{Puts the opposing case: the world is messy, and a larger toolbox of methods might be ``strictly more competent.''}"
+  ],
+  [
+   5773,
+   "\\cpara{Continues the opposing case: exact Bayesian calculation is often intractable. The link is to the author's ``Is Reality Ugly?'' of two days before, which says that even with the laws known, ``you may not have enough computing power to extrapolate them.''}"
+  ],
+  [
+   6056,
+   "\\cpara{The thesis: frequentists think in tools, Bayesians in laws. The Bayesian half is hedged (``at least this Bayesian'').}"
+  ],
+  [
+   6345,
+   "\\cpara{Separates a law from a tool with a joke: the second law of thermodynamics is not a refrigerator.}"
+  ],
+  [
+   6523,
+   "\\cpara{States Carnot's theorem correctly: no engine working between two reservoirs is more efficient than a Carnot engine, and all reversible engines between the same reservoirs are equally efficient.}"
+  ],
+  [
+   6818,
+   "\\cpara{Grants that no real engine is a Carnot engine.}"
+  ],
+  [
+   7021,
+   "\\cpara{Parodies the toolbox view by applying it to engines: since no real engine reaches the ideal, ignore thermodynamics.}"
+  ],
+  [
+   7308,
+   "\\cpara{Attributes this confusion to those who ``still cling to the Old Ways,'' marked as the author's view (``I think''). No statistician is quoted, here or elsewhere in the post, arguing that probability theory does not apply because exact calculation is hard.}"
+  ],
+  [
+   7414,
+   "\\cpara{Grants that exact calculation is often impossible, and claims that any approximation ``works to the extent that it approximates the ideal Bayesian calculation.'' The 747 makes the point that a law still holds where it cannot be computed.}"
+  ],
+  [
+   7910,
+   "\\cpara{Argues that the proofs cut both ways: whatever is not Bayesian fails a coherence test, and so can be caught by a Dutch book.}"
+  ],
+  [
+   8360,
+   "\\clogic{Not shown for the methods the post has in mind. Cox's theorem and the Dutch-book argument concern degrees of belief given to propositions. The Dutch-book conclusion is about ``the degrees of belief, or credences, that an agent attaches to the members of a set $X$ of propositions'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Dutch Book Arguments''). A significance test gives its hypothesis no degree of belief. The post does not say which test such a method fails, or what bets it would lose.}"
+  ],
+  [
+   8374,
+   "\\cpara{Claims that every method's successes and failures can be explained in Bayesian terms. The post cites no result, but one supports part of the claim. By the complete class theorems, ``under mild conditions every admissible rule is a (generalized) Bayes rule'' for some prior (Wikipedia, ``Admissible decision rule''). A method that no other method beats everywhere is, in that sense, Bayesian for some prior.}"
+  ],
+  [
+   8652,
+   "\\cpara{Correct: least squares gives the most probable parameters under a Gaussian likelihood and a flat prior.}"
+  ],
+  [
+   8949,
+   "\\cpara{Correct for ridge regression, the usual form. The lasso corresponds in the same way to a Laplace prior (Wikipedia, ``Lasso (statistics)'').}"
+  ],
+  [
+   9139,
+   "\\cpara{The post's strongest claim: when the exact calculation uses all available knowledge, no method gives a ``better'' answer.}"
+  ],
+  [
+   9410,
+   "\\clogic{True in the sense decision theory gives it: a Bayes rule has the lowest expected loss averaged over its own prior (Wikipedia, ``Admissible decision rule''). Frequentists judge a method by its risk at each possible true value, and by that standard no rule is best everywhere; at a given true value, another rule can do better than the Bayes rule. The post does not say which standard ``better'' refers to. Its clause about ``disguised prior information'' concerns knowledge left out of the prior, not this difference of standard.}"
+  ],
+  [
+   9850,
+   "\\cpara{Restates the claim with the Carnot image: once the Bayesian calculation can be done, the search for a better method is over.}"
+  ],
+  [
+   10263,
+   "\\cpara{Compares the two sides with the cubes, marked as the author's view (``It seems to me''). The differences are right: first differences 7, 19, 37, 61; second differences 12, 18, 24; third differences 6, 6, 6.}"
+  ],
+  [
+   10809,
+   "\\cpara{Restates: the stable level lies below the surface.}"
+  ],
+  [
+   10931,
+   "\\cpara{Restates the thesis with the aeroplane and the car engine: an approximation belongs to the map, and the law still holds.}"
+  ],
+  [
+   11483,
+   "\\cpara{Concludes that the beauty of Bayesian theorems is a side effect of their being laws.}"
+  ],
+  [
+   11708,
+   "\\cpara{Points to MacKay's chapter 37, which takes the same side. MacKay writes that the dependence of p-values on the stopping rule ``seems to me a compelling argument for having nothing to do with p-values at all.''}"
+  ],
+  [
+   12058,
+   "\\cpara{Cites Jaynes's paper, the source of the opening quotation.}"
+  ],
+  [
+   12266,
+   "\\cpara{Cites MacKay's book, the source of the addendum's chapter.}"
+  ]
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "slug": "perpetual-motion-beliefs",
+ "header": "\\post{Perpetual Motion Beliefs}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/zFuCxbY9E2E8HTbfZ/perpetual-motion-beliefs}\n",
+ "skeleton_sha": "23ea83a357b64714d9191351a4bb9dc30e570337e2e2364638c195e410124436",
+ "post_sha": "b50e9203968c41546d0636b1b18fe38cc58470e82a5ed2b71195787313fb1d91",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Quotes the end of ``The Second Law of Thermodynamics, and Engines of Cognition,'' posted the day before.}"
+  ],
+  [
+   189,
+   "\\cpara{The quotation matches the earlier post; the ellipsis covers the paragraphs between the bold sentence and the post's last paragraph. The notes on that post discuss the claim that observing costs thermodynamic work, which Bennett's 1982 account of measurement disputes.}"
+  ],
+  [
+   671,
+   "\\cpara{States the moral: probability may be a state of belief, but its laws are ``harder than steel.''}"
+  ],
+  [
+   931,
+   "\\cpara{Explains why people treat probabilities as optional: school teaches that certain beliefs are orders and probable ones are suggestions. The explanation is stated as fact, with no evidence.}"
+  ],
+  [
+   1463,
+   "\\cpara{Gives the lottery buyer's version: a probability is ``just a suggestion,'' so ``I am allowed to believe what I want.''}"
+  ],
+  [
+   1791,
+   "\\cpara{The egg. The rule that it will not reassemble is probabilistic, and the post asks, with irony, whether that makes it a mere suggestion. The second law does hold with overwhelming probability rather than with certainty, as the previous post said.}"
+  ],
+  [
+   2381,
+   "\\cpara{The main point: a tiny probability is a belief you must hold, not a permission to believe otherwise. ``Probabilities are not certainties, but the laws of probability are theorems,'' with a link to ``Beautiful Probability.''}"
+  ],
+  [
+   2769,
+   "\\cpara{A joke: drop the egg a few decillion times and see. It restates that the laws governing probabilities are ``stronger by far than steel.''}"
+  ],
+  [
+   3074,
+   "\\cpara{The anecdote behind the title. The physics is right: in classical mechanics momentum is conserved in every interaction, so a correct calculation cannot show reactionless thrust, and a spreadsheet that shows it contains an error. The previous post made the same argument about momentum.}"
+  ],
+  [
+   3679,
+   "\\cpara{Applies the anecdote to reasoners who ``try to believe without evidence just this once'': they ``often'' build elaborate justifications that hide the ``magical steps.''}"
+  ],
+  [
+   3937,
+   "\\cpara{Claims there is ``always'' a step where a tiny probability turns into a large one. No argument of this kind is analysed, here or later. The post's one real case, the reactionless-drive spreadsheet, is offered as an analogy for such arguments (``One must learn to see this as analogous''), not as one of them; the rest are imagined dialogues about eggs, lotteries and boiling water.}"
+  ],
+  [
+   4293,
+   "\\cpara{Says why such beliefs start with a tiny probability: possibility has ``far more thin air than ground.''}"
+  ],
+  [
+   4405,
+   "\\clogic{This is where the post's case goes beyond the laws of probability. Those laws fix how probabilities combine and change, not where they start: a subjective Bayesian holds that ``every prior is permitted unless it fails to be coherent'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Bayesian Epistemology''). In the egg, boiling-water and lottery cases, both sides agree that the probability is tiny. For a belief held without evidence, the tiny start is this sentence's claim about priors, not one of the laws the post calls ``harder than steel.'' The author's case for priors of this kind, weighted toward simple hypotheses, is in ``Occam's Razor.''}"
+  ],
+  [
+   4721,
+   "\\cpara{The second physical case. The account of heat as energy that cannot be extracted because you do not know the molecules' state is the view of the previous post, which is E.~T. Jaynes's and is disputed; see the notes on that post.}"
+  ],
+  [
+   5581,
+   "\\cpara{Correct: guessing the one exact state is no more likely than landing by chance in any of the many states that would cool the hand.}"
+  ],
+  [
+   6208,
+   "\\cpara{Turns the machine on the argument: each added step, like each added gear, makes the machine less efficient.}"
+  ],
+  [
+   6414,
+   "\\cpara{The conjunction rule from ``Burdensome Details'': an added detail cannot make a claim more probable. The comparison that follows is right. Not being burned because one guessed the water's exact state is a special case of not being burned, so it is at most as probable.}"
+  ],
+  [
+   6920,
+   "\\cpara{Closes by returning to the reactionless drive: elaborate arguments for beliefs held without evidence are like the added gears, which multiply the chances of an error.}"
+  ]
+ ]
+}
