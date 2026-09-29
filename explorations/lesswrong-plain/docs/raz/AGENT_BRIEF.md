@@ -96,6 +96,21 @@ Use `.venv/bin/python` for every script.
 - Two metaphors in two posts running in opposite directions, a word's dictionary gloss, and
   whether a result was significant when the post reports the means correctly are nitpicks.
 
+## Lessons from Book III, first half
+
+- The book's selection and order are the editors' choice. Do not fault a post because a
+  term it uses is defined in a post the book leaves out, or because the book places it
+  before a post it depends on. A neutral note is fine.
+- Do not import a general dispute about a field (evolutionary psychology, group selection)
+  unless the post takes a side in it.
+- Read the post's criterion as the post defines it before calling it loose ("inclusive
+  genetic fitness" is gene-level).
+- A hedge carries into the sentence or paragraph that continues the same thought.
+- "I could not find" supports "could not be traced", not "misdescribed".
+- Slips whose point survives the correction stay in the notes, not in the "In short" line.
+- Put your scratch files and helper scripts in `data/sources/<batch>_<your first slug>/`.
+  Never use a shared folder name, and never the main session's scratchpad.
+
 ## Do not
 
 - Do not edit any file other than the ones for your assigned slugs, and your reports.
