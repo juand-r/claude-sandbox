@@ -1,0 +1,85 @@
+{
+ "slug": "practical-advice-backed-by-deep-theories",
+ "header": "\\post{Practical Advice Backed By Deep Theories}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/LqjKP255fPRY7aMzw/practical-advice-backed-by-deep-theories}\n",
+ "skeleton_sha": "76aa0b5d78dd973eec2597ad4bd2c7bd844d19edc563bc05b650a32290a34abe",
+ "post_sha": "db0aacabb12fbe3f783c81d4c11c8d4e1be6bb469b4708e315c782ea65ec7ceb",
+ "edits": [],
+ "notes": [
+  [
+   166,
+   "\\cpara{Opens with the post's model case: Seth Roberts, the psychologist who devised the Shangri-La Diet, noticing that he lost weight on holiday in Europe while drinking unfamiliar-tasting drinks with calories.}"
+  ],
+  [
+   392,
+   "\\cpara{Sets up a counterfactual: the same discovery by a Roberts who knew none of the research on set points and flavor-calorie learning.}"
+  ],
+  [
+   635,
+   "\\cpara{Says what that Roberts would have done: one enthusiastic blog post, a trick that worked briefly for some, and no diet.}"
+  ],
+  [
+   1021,
+   "\\cpara{States the lesson of the case: the diet helped as many people as it did because Roberts could read his experience through ``deep factors that actually did exist.'' The post grants that the diet does not work for some people, the author among them.}"
+  ],
+  [
+   1254,
+   "\\clogic{How many people benefited was not measured. Fifteen days earlier, in ``The Unfinished Mystery of the Shangri-La Diet,'' the author had complained that ``this theory has never been analyzed by controlled experiment,'' and cited reports from ``Many people'' on the diet's forums and from bloggers. A pilot study registered in 2008 (ClinicalTrials.gov NCT00726271) was terminated, with the reason given as ``Record owner left institution,'' and no results were posted. The benefit in the post's lead example rests on self-reports.}"
+  ],
+  [
+   1559,
+   "\\cpara{Offers the author's own posts as a second case: readers named ``the bottom line'' and ``engines of cognition'' as the most important things they had learned. In the 99 comments of the thread the post links, three name each. That shows which ideas readers valued. It does not show that the theory made the advice work better.}"
+  ],
+  [
+   2257,
+   "\\cpara{Gives the reason the theory helps: it makes the ``actual operations'' of the old advice clear, for example by saying what counts as evidence. This is an argument about clarity, not a report of anyone's results.}"
+  ],
+  [
+   3038,
+   "\\cpara{Adds a caution: causal theories from science textbooks are likelier to be true than ones made up on the spot, which may not even predict anything.}"
+  ],
+  [
+   3425,
+   "\\cpara{States the thesis in general form and names its use for the site: theory-backed advice is ``the brand that can distinguish LW'' from other advice blogs.}"
+  ],
+  [
+   3937,
+   "\\cpara{Gives the post's example that can be checked against research: what findings about memory imply for portion size and dessert.}"
+  ],
+  [
+   4658,
+   "\\cfact{The one study of meals I found supports this. Rode, Rozin and Durlach (\\textsc{Appetite}, 2007) found ``consistent evidence for duration neglect'' across three studies and concluded that ``small portions of a highly favored dish will have roughly the same memorial effect as large portions.'' The paper the post links for duration neglect (Ariely and Loewenstein, 2000) adds a condition: response modes that reduce reliance on conversational norms or a standard of comparison ``also increase the attention that participants pay to duration.''}"
+  ],
+  [
+   4828,
+   "\\cfact{The same meal study, which tested for effects ``seen in memories of pain,'' found ``no evidence for peak, primacy or recency effects'' in any of its three studies. So the dessert tip, derived from the peak-end rule, was not borne out for meals in the one test I found that predates the post. Later work found an end effect of another kind: memory for the end of eating a food, ``when people are most satiated,'' decides how soon people want it again (Garbinsky, Morewedge and Shiv, 2014).}"
+  ],
+  [
+   4842,
+   "\\cpara{Turns to what the author wants: advice on akrasia, acting against one's own better judgment, grounded in theory. Most such advice, the post says, ``for the most part'' reports mental levers the adviser cannot point to. The paragraph takes up a point from ``Beware of Other-Optimizing'' (10 April 2009), the previous post in the book, where the author wrote of lacking ``the deep keys that would tell me when and why and for who a technique works or doesn't work.''}"
+  ],
+  [
+   5938,
+   "\\cpara{Describes the adviser the author wants: someone who reads the experimental psychology of willpower, overcomes their own akrasia, and can explain what worked in the terms of replicable experiments.}"
+  ],
+  [
+   6102,
+   "\\cfact{Information, later than the post. Of the topics listed, ego depletion did not hold up. A 2016 replication across 23 laboratories (Hagger and colleagues, N = 2,141) found an effect of d = 0.04, with a 95\\% interval that includes zero, after an earlier meta-analysis had found ``a medium-sized effect.'' The post's own caution in the next list, that ``p < 0.05 may fail to replicate,'' points the same way.}"
+  ],
+  [
+   6324,
+   "\\cfact{Information: work of this kind already existed. Piers Steel's meta-analysis of procrastination (\\textsc{Psychological Bulletin}, 2007) combined 691 correlations and found the results ``consistent with temporal motivation theory, an integrative hybrid of expectancy theory and hyperbolic discounting.'' In 2011 a LessWrong post by Luke Muehlhauser, ``How to Beat Procrastination,'' built its advice on Steel's work. It is the kind of advice this paragraph asks for.}"
+  ],
+  [
+   6745,
+   "\\cpara{Ranks three kinds of backing by how hard they are to cite well: experimental results, true causal accounts, and valid mathematics.}"
+  ],
+  [
+   7380,
+   "\\cpara{Advises readers unsure whom to trust to start with experimental results, move on to theories widely used in a science, and treat mathematics and epistemology with care.}"
+  ],
+  [
+   7670,
+   "\\cpara{Restates the thesis, with ``really, really.'' Its support in the post is a counterfactual about Roberts, readers' favorite posts, and an imagined reader at a dinner plate. The post reports no comparison of advice given with and without theory.}"
+  ]
+ ]
+}
