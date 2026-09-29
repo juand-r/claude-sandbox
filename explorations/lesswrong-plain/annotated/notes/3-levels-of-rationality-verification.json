@@ -1,0 +1,85 @@
+{
+ "slug": "3-levels-of-rationality-verification",
+ "header": "\\post{3 Levels of Rationality Verification}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/5K7CMa6dEL7TN7sae/3-levels-of-rationality-verification}\n",
+ "skeleton_sha": "d229ff190db0fca649dab9b65ba0d0db44acf56eff581ee2398792d317335284",
+ "post_sha": "ac4128f94047f1e15c7c271d3b54afd26ea702c9c02ebff5c66ce6d15abae125",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Opens with the premise, offered as a strong suspicion: an art of rationality beyond the standard skills is possible. The link is to ``A Sense That More Is Possible,'' posted two days earlier, which promised this post: ``I will write more about this, because I think that recognizing successful training and distinguishing it from failure is the essential, blocking obstacle.''}"
+  ],
+  [
+   549,
+   "\\cpara{States the thesis: what a group can do depends ``overwhelmingly'' on ways to verify its ideas. The examples that follow show that verification matters. They do not weigh it against other obstacles, so ``overwhelmingly'' rests on assertion.}"
+  ],
+  [
+   752,
+   "\\cpara{Names the three levels, ordered by usefulness.}"
+  ],
+  [
+   939,
+   "\\cpara{The first level, reputational: masters show their worth in realistic contests with other schools.}"
+  ],
+  [
+   1371,
+   "\\cpara{Gives the failures: schools that compete unrealistically, or not at all. Psychoanalysis is the subject of ``Schools Proliferating Without Evidence,'' posted the same day.}"
+  ],
+  [
+   1791,
+   "\\cpara{Draws the moral of the martial-arts case: realistic trials help a whole field.}"
+  ],
+  [
+   1995,
+   "\\cpara{The second level, experimental: standard measurements, randomly assigned teaching methods, statistics and replication. This is the usual design for testing whether one training method works better than another.}"
+  ],
+  [
+   2573,
+   "\\cpara{Uses happiness research as the model of a simple measure that works on averages. The claim about validation, offered with ``more or less'' and ``looks like,'' has support. Sandvik, Diener and Seidlitz (1993) found that ``Conventional single-item and multi-item self-report measures correlated highly with alternative measures,'' among them reports by family and friends, and concluded that ``conventional self-report instruments validly measure'' subjective well-being.}"
+  ],
+  [
+   2973,
+   "\\cpara{The third level, organizational: a test used to reward individuals must be harder to game than asking them.}"
+  ],
+  [
+   3259,
+   "\\cpara{Gives three organizational tests that may be gamed: the SAT, colleges that grant their own degrees, and hedge-fund returns.}"
+  ],
+  [
+   3603,
+   "\\cfact{For information: studies of the question exist. A 2009 review for the National Association for College Admission Counseling found that coaching ``has a positive effect on SAT performance, but the magnitude of the effect is small'': 10 to 20 points on the math section and 5 to 10 on critical reading, sections scored from 200 to 800.}"
+  ],
+  [
+   4060,
+   "\\cfact{A known case. Andrew Lo's hypothetical fund ``Capital Decimation Partners'' sold out-of-the-money S\\&P 500 put options every month. On 1992 to 1999 prices it showed a total return of 2,721.3 per cent against 367.1 per cent for the index, a record that did not reveal its exposure to a large fall (Chan, Getmansky, Haas and Lo, 2007, summarizing Lo, 2001).}"
+  ],
+  [
+   4074,
+   "\\cpara{States the cost of a test that can be gamed: the field adapts to the test and loses its purpose. The point has a well-known earlier statement, Campbell's law. Donald Campbell wrote in 1976 that when test scores ``become the goal of the teaching process, they both lose their value as indicators of educational status and distort the educational process in undesirable ways'' (as quoted in Wikipedia, ``Campbell's law'').}"
+  ],
+  [
+   4433,
+   "\\cpara{Grants that imperfect tests still work, since engineers get trained, and asks for tests of rationality that resist gaming at least a little.}"
+  ],
+  [
+   4714,
+   "\\cpara{A later addition, and correct: noise in a measure averages out over many randomly assigned subjects, but a test used to judge one person must itself be precise.}"
+  ],
+  [
+   5011,
+   "\\cpara{The call for ideas, including stupid ones. The post proposes no measure of its own; it is a request.}"
+  ],
+  [
+   5229,
+   "\\cfact{For information: measures of this kind existed when the post was written. Bruine de Bruin, Parker and Fischhoff (2007) combined seven decision-making tasks into an index of ``Adult Decision-Making Competence.'' Participants who scored higher ``were less likely to report negative life events indicative of poor decision making,'' and the relation held after controls for cognitive ability.}"
+  ],
+  [
+   5876,
+   "\\cpara{Says the answers decide how much the field can accomplish, and ends with a command to think.}"
+  ],
+  [
+   6062,
+   "\\cfact{Later work, for information. Stanovich, West and Toplak built the Comprehensive Assessment of Rational Thinking, described in 2016 as ``the first prototype of a comprehensive test of rational thought.'' The Center for Applied Rationality, founded in 2012, reported in 2015 on 135 workshop participants surveyed before and about a year after: gains in self-reported well-being and habits, with no control group, and ``no sign of a change in cognitive biases,'' though the study, its author wrote, ``appears to have been underpowered'' for those measures.}"
+  ]
+ ]
+}

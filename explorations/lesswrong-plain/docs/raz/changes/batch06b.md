@@ -123,3 +123,53 @@ Why: Hedges carry: the Japan comparison is hedged ("this would seem to count") a
 - Before:  \nb{In ``Crisis of Faith,'' written three days later but placed earlier in the book, Yudkowsky glosses isshokenmei as ``the desperate, extraordinary, convulsive effort to be rational,'' using together the two words this post separates.}
 - After: 
 
+
+## annotated/afterwords/3-levels-of-rationality-verification.tex
+
+Why: A call for ideas judged as one: proposing no test is its nature; the "overwhelmingly" point is mild and stays in the Response and note.
+
+- Before: In short: a clear frame for testing rationality training, with correct points on noise and gaming that match earlier work such as Campbell's law; its thesis that verification matters ``overwhelmingly'' is asserted, and, as a call for ideas, the post proposes no test of its own.
+- After: In short: a clear frame for testing rationality training, with correct points on noise and gaming that match earlier work such as Campbell's law.
+
+
+## annotated/afterwords/why-our-kind-can-t-cooperate.tex
+
+Why: A sequence building on earlier posts is not a fault (Book VI rule); the title/body contrast is answered by the body's hedge; a hedged aside is a nitpick.
+
+- Before:  Much of the rest restates earlier posts: pluralistic ignorance, evaporative cooling, ``Knowing About Biases Can Hurt People'' and ``Feeling Rational.'' The title says the group ``Can't'' cooperate. The body is more careful (``Perhaps that is why''), and the outside record is mixed.
+- After:  The body is hedged (``Perhaps that is why''). For information, the outside record is mixed.
+
+- Before: 
+
+The aside on ``Clash of Civilizations'' writers names none of them, and puts their resignation down, with ``I suppose,'' to a wish to signal sophistication.
+- After: 
+
+
+## annotated/afterwords/tolerate-tolerance.tex
+
+Why: Fair reading: the post draws the line itself ("subtract points off someone's reputation for mistakes they make themselves, directly") and treats the compliment as tolerance; the objection is ours. The Popper point is one word in an aside; kept in the note only.
+
+- Before: Its main example is less clean than the rule. Refusing to condemn someone is the non-punishment the post defends. Praising someone's ideas is a judgment of one's own, and by the post's later standard, if the ideas are hopeless, the praise is the praiser's ``own un-borrowed'' mistake. A listener can give Goertzel's praise less weight as evidence without punishing him. The post does not separate these two responses. The FAQ it links adds that Goertzel later conceded critics' points about the ideas he had praised, and said he had no definite opinion of them.
+
+One sentence dismisses a position without argument. The author does not believe in being ``intolerant of intolerance,'' ``as some inconsistently hold.'' The best-known version of that position, Popper's paradox of tolerance, argues that unlimited tolerance destroys itself, and so treats intolerance of intolerance as a limit tolerance needs, not a contradiction.
+- After: The FAQ the post links for its main example adds that Goertzel later conceded critics' points about the ideas he had praised. The notes give Popper's version of the ``intolerant of intolerance'' view the post dismisses in an aside.
+
+- Before: In short: a sound warning against punishing those who will not punish, supported by a model of cooperation, with a main example that mixes refusing to condemn with praising, and a dismissal of being ``intolerant of intolerance'' as inconsistent that the post does not argue.
+- After: In short: a sound warning against punishing those who will not punish, supported by a model of cooperation and offered as the author's own discipline.
+
+
+## annotated/posts/tolerate-tolerance.tex
+
+Why: Fair reading: the post draws the line itself ("subtract points off someone's reputation for mistakes they make themselves, directly") and treats the compliment as tolerance; the objection is ours. The Popper point is one word in an aside; kept in the note only.
+
+- Before: \clogic{The example mixes two things. Refusing to condemn someone is the non-punishment the post defends. Complimenting an idea is a judgment Goertzel makes himself, and if the idea is hopeless it is his own mistake in the post's later sense (``un-borrowed''). A listener can give less weight to Goertzel's praise as evidence without punishing him; the post does not separate the two.}
+- After: 
+
+
+## honest/sections/tolerate-tolerance.tex
+
+Why: Fair reading: the post draws the line itself ("subtract points off someone's reputation for mistakes they make themselves, directly") and treats the compliment as tolerance; the objection is ours. The Popper point is one word in an aside; kept in the note only.
+
+- Before:  \nb{Praising an idea is also a judgment of Goertzel's own, which by the post's later standard would count as his own mistake if the idea is hopeless. A listener can give less weight to his praise without punishing him; the post does not separate the two.}
+- After: 
+

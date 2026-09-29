@@ -1,0 +1,237 @@
+{
+ "slug": "why-our-kind-can-t-cooperate",
+ "header": "\\post{Why Our Kind Can't Cooperate}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/7FzD7pNm9X68Gp5ZC/why-our-kind-can-t-cooperate}\n",
+ "skeleton_sha": "8524ecf4a5269ad056453d5cfcd7569ed30ad087ff6ddf7dff5ec19501494244",
+ "post_sha": "275c10339eb1ad09b1996e003ed687a77b32b7b075b835e9ea358b526eb211f6",
+ "edits": [],
+ "notes": [
+  [
+   142,
+   "\\cpara{Opens with a childhood memory, marked ``if I recall correctly'': a synagogue's annual appeal, where members called out their pledges from their seats. The post returns to it at the end.}"
+  ],
+  [
+   518,
+   "\\cpara{Introduces the author's own appeal, made online to an audience from the ``atheist/libertarian/technophile'' cluster.}"
+  ],
+  [
+   746,
+   "\\cfact{The link is to a LessWrong wiki page on a rule of the site's first months: no discussion of the Singularity or artificial general intelligence until the end of April 2009. The page says the ``Institute that Must Not be Named'' is the Machine Intelligence Research Institute, then called the Singularity Institute.}"
+  ],
+  [
+   1154,
+   "\\cpara{Says the appeal was written with care and sent to the mailing lists of the likely supporters.}"
+  ],
+  [
+   1545,
+   "\\cpara{The central anecdote, told from memory by the person who ran the appeal: critics posted their reasons for not giving, and suggested other sources of money.}"
+  ],
+  [
+   2012,
+   "\\cpara{Raises the obvious objection, that the criticisms might have been right, and defers it. The answer comes in the last two paragraphs: objections belong at another time, or should be voiced alongside support.}"
+  ],
+  [
+   2218,
+   "\\cpara{Donations were arriving, some with notes of thanks; the post quotes one.}"
+  ],
+  [
+   2672,
+   "\\cpara{The contrast the post turns on: no donor said so on the lists.}"
+  ],
+  [
+   2764,
+   "\\cpara{Draws the consequence: each donor saw only the objections.}"
+  ],
+  [
+   3061,
+   "\\cpara{Restates the scene in the synagogue's terms.}"
+  ],
+  [
+   3310,
+   "\\cpara{Introduces the comparison with the Raelians. Many Raelians call their creed an ``atheistic religion'' (Wikipedia, ``Raëlism,'' citing scholars of religion). So the contrast is not between believers and unbelievers, which fits the post's later diagnosis, about group culture.}"
+  ],
+  [
+   3559,
+   "\\cfact{The figures appear to be the movement's own. Wikipedia says it ``claims tens of thousands of members.'' I could not reach the interview the post links, so the 40,000 is unchecked.}"
+  ],
+  [
+   3664,
+   "\\cpara{Rejects imitating the cult, on ethical grounds and because, the post suggests with ``may,'' famous cults are the survivors of many that failed.}"
+  ],
+  [
+   4430,
+   "\\cpara{Warns against resenting a group one thinks inferior.}"
+  ],
+  [
+   4703,
+   "\\cpara{Turns the comparison into a question for the post's own readers.}"
+  ],
+  [
+   4996,
+   "\\cpara{Describes the first force that binds such groups: members who see only agreement grow more confident.}"
+  ],
+  [
+   5393,
+   "\\cpara{Names it pluralistic ignorance; the link is to ``On Expressing Your Concerns'' (2007).}"
+  ],
+  [
+   5531,
+   "\\cpara{The second force: doubters leave, and those who remain agree more.}"
+  ],
+  [
+   5732,
+   "\\cpara{Names it; the link is to ``Evaporative Cooling of Group Beliefs'' (2007).}"
+  ],
+  [
+   5859,
+   "\\cpara{The third force: praise feeds on itself. The preservative finding is from Finucane and colleagues, reported in ``The Affect Heuristic''; ``The Halo Effect'' treats the halo effect as the affect heuristic's form in social psychology.}"
+  ],
+  [
+   6481,
+   "\\cpara{Names it; the link is to ``Affective Death Spirals'' (2007).}"
+  ],
+  [
+   6606,
+   "\\cpara{Sums up the three forces.}"
+  ],
+  [
+   6796,
+   "\\cpara{States, in order to reject it, the view that the ``Light Side'' must always lose to the better coordinated ``Dark.'' The absolutes (``always,'' ``never,'' ``inevitably'') belong to the view under attack; the next paragraphs answer it.}"
+  ],
+  [
+   7299,
+   "\\cpara{Says that one's reaction to that prospect shows one's attitude to rationality.}"
+  ],
+  [
+   7412,
+   "\\cpara{No writer is named, and the motive given for them is a guess (``I suppose they're trying to signal their cynical sophistication or something'').}"
+  ],
+  [
+   7751,
+   "\\cpara{The author's answer: a true rationalist ought to be effective in the real world.}"
+  ],
+  [
+   7886,
+   "\\cpara{Applies it: the better coordinated side should not be the one that reasons worse.}"
+  ],
+  [
+   8095,
+   "\\cpara{Asks whether unreason must not have its disadvantages.}"
+  ],
+  [
+   8307,
+   "\\cpara{Leaves the reader to finish the syllogism: groups that cannot coordinate are not yet rational.}"
+  ],
+  [
+   8531,
+   "\\cpara{Introduces the post's diagnosis: half a rationalist is dangerous.}"
+  ],
+  [
+   8623,
+   "\\cpara{Restates the warning of ``Knowing About Biases Can Hurt People'' (2007), which the paragraph links, and marks its claim about smart people with ``I suspect.''}"
+  ],
+  [
+   9647,
+   "\\cpara{Extends the point to groups: teaching only individual rationality leaves a group unable to act together.}"
+  ],
+  [
+   9929,
+   "\\cpara{Names the first of two forces that keep the crowd from coordinating, the ``culture of objections''; the second comes later. The next day's post, ``Tolerate Tolerance,'' is also about working together: ``if we want to get anything done together.''}"
+  ],
+  [
+   10278,
+   "\\cpara{Begins an imagined contrast. The first version is the ordinary question line, full of objections.}"
+  ],
+  [
+   10743,
+   "\\cpara{The second version: a question line of praise. The evidence offered is the reader's imagined discomfort, and the next paragraphs play it for comedy.}"
+  ],
+  [
+   11182,
+   "\\cpara{The punch line: the listener flees in terror.}"
+  ],
+  [
+   11489,
+   "\\cpara{Draws the lesson: tolerating disagreement but not agreement is also irrational.}"
+  ],
+  [
+   11806,
+   "\\cpara{Restates it with the flying-saucer cult, and points to ``Reversed Stupidity Is Not Intelligence'' (2007).}"
+  ],
+  [
+   12058,
+   "\\cpara{Sets up a second example: an army in which only officers know strategy, against one in which everyone does.}"
+  ],
+  [
+   12350,
+   "\\cpara{Asks whether the ignorant, obedient army should win.}"
+  ],
+  [
+   12541,
+   "\\cpara{Answers that a group that truly understood military theory would know an uncoordinated mob loses.}"
+  ],
+  [
+   12736,
+   "\\cpara{States the principle: more knowledge should not make you do worse. For one decision maker this is the standard result that information cannot have negative value, because the decision maker ``can always ignore the additional information'' (Wikipedia, ``Value of information''). The post applies it to an army.}"
+  ],
+  [
+   13180,
+   "\\cpara{The ``lovely experiment'' is Taber and Lodge (2006), the one study in ``Knowing About Biases Can Hurt People.'' The notes on that post describe its samples and its predictions.}"
+  ],
+  [
+   13608,
+   "\\cpara{Sums up, with ``would seem,'' and concedes that the group's smaller efforts may be better aimed.}"
+  ],
+  [
+   13982,
+   "\\cpara{The remedy: train agreement as well as dissent, conformity as well as nonconformity.}"
+  ],
+  [
+   14421,
+   "\\cpara{Anticipates the reader's horror at practising agreement, and asks why practising disagreement is acceptable.}"
+  ],
+  [
+   15013,
+   "\\cpara{Offers, with ``Perhaps,'' the culture of objections as the reason the crowd stays marginalized. The description of the community is the author's own observation.}"
+  ],
+  [
+   15709,
+   "\\cfact{For information, two cases from the year before the post. Supporters of Ron Paul, the Libertarian Party's 1988 presidential nominee, organized a one-day online drive on 5 November 2007 that raised over \\$4.2 million. In Britain an atheist bus-advertising drive gathered 877 of the 4,679 pledges it needed by July 2008; relaunched in October with Richard Dawkins matching gifts, it raised over \\pounds100,000 in four days against a target of \\pounds5,500. Such groups have coordinated giving at times, and have also failed to.}"
+  ],
+  [
+   15723,
+   "\\cpara{The second force, ``being ashamed of strong feelings.'' It restates ``Feeling Rational'' (2007), which the paragraph links.}"
+  ],
+  [
+   16339,
+   "\\cpara{Tests the reader's discomfort with a speaker willing to die for a cause.}"
+  ],
+  [
+   16554,
+   "\\cpara{Says that probability theory and decision theory do not forbid caring. Decision theory takes what an agent values as given, so the point is correct.}"
+  ],
+  [
+   16743,
+   "\\cpara{The quoted line is P.~C. Hodgell's; the author credits it to Hodgell in ``Twelve Virtues of Rationality'' and ``Feeling Rational.'' The paragraph restates the rule of ``Feeling Rational'': feel the emotions that fit the facts.}"
+  ],
+  [
+   17188,
+   "\\cpara{Pairs Hodgell's line with the author's own, from ``Feeling Rational'': ``That which the truth nourishes should thrive.''}"
+  ],
+  [
+   17610,
+   "\\cpara{Grants that science papers may need to avoid emotional language, but not everywhere else.}"
+  ],
+  [
+   18163,
+   "\\cpara{Restates the double rule: turn away from bad causes, and praise good ones.}"
+  ],
+  [
+   18561,
+   "\\cpara{Returns to the synagogue as the model: plain public pledges encourage others. The claim, offered with ``probably,'' has experimental support. In a field experiment on charitable giving, Shang and Croson (2009) found that telling donors what someone else had given raised the gifts of new members, though not of renewing ones; in the best condition, ``social information increases contributions by 12\\% (\\$13).''}"
+  ],
+  [
+   19306,
+   "\\cpara{Answers the objection deferred at the start: supporting and opposing opinions should both be voiced. Ends by calling a wall of objections the ``mirror image'' of what ``Dark Side groups'' do.}"
+  ]
+ ]
+}

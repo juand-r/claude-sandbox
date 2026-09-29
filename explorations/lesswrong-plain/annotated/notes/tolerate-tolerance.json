@@ -1,0 +1,69 @@
+{
+ "slug": "tolerate-tolerance",
+ "header": "\\post{Tolerate Tolerance}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/JKxxFseBWz8SHkTgt/tolerate-tolerance}\n",
+ "skeleton_sha": "ac04c1e8f20cfa4082ec41eb96c824719b6a7a1ffb60d0c8c1e33c3556429dc7",
+ "post_sha": "2117059c144df2256a45e81c568559e7c6495d163ec1cd135402431ee5964b1e",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{The premise: would-be rationalists are ``probably'' more annoyed than average by flaws in reasoning. The post qualifies it at once (``This doesn't strictly follow''), and it rests on the author's impression of the community.}"
+  ],
+  [
+   657,
+   "\\cpara{Draws the rule from the premise: people easily annoyed must tolerate others' tolerance if they are to work together.}"
+  ],
+  [
+   778,
+   "\\cpara{The example: Ben Goertzel, who has something nice to say about everyone, even about the person the post calls ``the most legendary of all AI crackpots.''}"
+  ],
+  [
+   1354,
+   "\\cfact{The linked FAQ confirms the signature link and quotes the compliment: the ideas were ``significantly better than most of what passes for cognitive science and AI.'' It adds that Goertzel later conceded critics' points, and in 2004 wrote that he had not studied the theories ``carefully enough to have a definite opinion on them.''}"
+  ],
+  [
+   1455,
+   "\\cpara{Recasts the trait as a strength: Goertzel's niceness to people others ignore, the author included, sometimes pays off for him.}"
+  ],
+  [
+   1656,
+   "\\cpara{The argument: to mark Goertzel down for praising people the author thinks hopeless is to demand that he dislike everyone the author dislikes.}"
+  ],
+  [
+   1926,
+   "\\cpara{Asks whether that standard is realistic when people are annoyed by different things.}"
+  ],
+  [
+   2055,
+   "\\cpara{A joke at the author's own expense: the rule is hard to keep.}"
+  ],
+  [
+   2148,
+   "\\cpara{The theoretical core: punishing defectors can sustain cooperation, but punishing those who fail to punish can lock an equilibrium in place, even one harmful to everyone. Boyd and Richerson's model (1992) supports the point: strategies that punish ``those who do not punish noncooperators'' can be stable, and ``can cause any individually costly behavior to be evolutionarily stable, whether or not it creates a group benefit.''}"
+  ],
+  [
+   2657,
+   "\\cpara{Two more cases from the author's circle, Robin Hanson and Michael Vassar, and the slogan ``Tolerate tolerance!''}"
+  ],
+  [
+   3191,
+   "\\cpara{Admits the annoyance and guesses, with ``I suspect'' and ``I wouldn't be surprised,'' that it is common and perhaps universal. The ``obvious evolutionary rationale'' is left unstated; presumably it is the enforcement of cooperation described two paragraphs earlier.}"
+  ],
+  [
+   3599,
+   "\\cpara{States the author's resolution: tolerate the more tolerant, and judge people only for their own mistakes.}"
+  ],
+  [
+   3733,
+   "\\cfact{``Inconsistently'' is asserted without argument. The best-known statement of the view is Karl Popper's ``paradox of tolerance'' (1945), which presents it as a limit tolerance needs in order to survive: ``Unlimited tolerance must lead to the disappearance of tolerance'' (as quoted in Wikipedia, ``Paradox of tolerance'').}"
+  ],
+  [
+   3895,
+   "\\cpara{Adds that a group that demands you hate the right enemies may be the wrong group.}"
+  ],
+  [
+   4179,
+   "\\cpara{Applies the rule once more: do not demand that friends be equally hostile to such a group.}"
+  ]
+ ]
+}
