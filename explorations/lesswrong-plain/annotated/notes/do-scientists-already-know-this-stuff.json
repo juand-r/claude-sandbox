@@ -1,0 +1,117 @@
+{
+ "slug": "do-scientists-already-know-this-stuff",
+ "header": "\\post{Do Scientists Already Know This Stuff?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/WijMw9WkcafmCFgj4/do-scientists-already-know-this-stuff}\n",
+ "skeleton_sha": "cb4796c712f2e2079d1e21d96fe892c74708138de3e2294c6fdf582fab00190e",
+ "post_sha": "6ea398dc5d521e7d5c7e72a97db43c9d26368c2622e155e05a93230f103f2496",
+ "edits": [],
+ "notes": [
+  [
+   161,
+   "\\cpara{Quotes the commenter poke, whose comment on the previous post is quoted accurately. The comment goes on to say that the apprenticeship ``can't be encapsulated into a set of neat rules,'' and that this ``isn't a failure of science but a failure of descriptions of science.'' The post takes up that point in its paragraph on great mentors.}"
+  ],
+  [
+   713,
+   "\\cpara{Explains that ``stupid'' was a figure of speech for high intelligence used without skill.}"
+  ],
+  [
+   982,
+   "\\cpara{States the post's method. The author compares modern scientists' mistakes with the young author's and sees no sign that they were better warned. What follows is a set of cases the author judges to be such mistakes; the post offers no survey of what scientists are actually taught.}"
+  ],
+  [
+   1244,
+   "\\cpara{The first case, offered with ``I expect.'' Penrose reached the view by an argument the post does not mention. From Gödel's incompleteness theorem, Penrose argued that human mathematical understanding is not algorithmic, and proposed non-computable physics, a collapse of the wave function tied to quantum gravity, to account for it (Wikipedia's summary of \\textsc{Shadows of the Mind}, 1994; the notes on ``Artificial Addition'' and ``The Generalized Anti-Zombie Principle'' describe the same view).}"
+  ],
+  [
+   1617,
+   "\\cpara{Grants that the view has testable implications: quantum superpositions in neurons, and no computable simulation of a neuron's behaviour.}"
+  ],
+  [
+   1987,
+   "\\cpara{Applies the fourth danger sign: after the answer, consciousness is as mysterious as before. What Penrose's thesis advisor and Bohr were or were not told is offered as doubt (``I doubt''), with no evidence either way.}"
+  ],
+  [
+   2595,
+   "\\cpara{Draws the conclusion, with ``As far as I can tell'': the three were not warned because no standard warning exists.}"
+  ],
+  [
+   2741,
+   "\\cpara{Says the author first stated the idea in general form while writing the essay linked here, ``A Technical Explanation of Technical Explanation,'' and lists four danger signs. The list is, almost word for word, the one in ``Mysterious Answers to Mysterious Questions'' (2007).}"
+  ],
+  [
+   3886,
+   "\\cpara{Grants that the four signs could have been stated long ago, and says that no one warned the author of them in those terms; the nearest warning was that hypotheses should be testable.}"
+  ],
+  [
+   4487,
+   "\\cpara{Says, with ``I simply have no reason to believe,'' that apprenticeships do not pass these warnings on, and gives a reason: the advice is for scientific confusion, which the average scientist rarely meets.}"
+  ],
+  [
+   4863,
+   "\\cpara{Relies on the verdict of ``Many Worlds, One Best Guess.'' The notes on that post assess the case in full. They find its two main premises disputed, and its account of physicists' dissent, including their grasp of Occam's razor, given without evidence. ``Clearly'' here adds no evidence to that account.}"
+  ],
+  [
+   5100,
+   "\\cpara{The ``known effect'' has been studied. Harriet Zuckerman's \\textsc{Scientific Elite} (1977), on American Nobel laureates, has a chapter on ``Masters and Apprentices in Science.'' The laureates in the study said the main benefit of apprenticeship was ``a wider orientation that included standards of work and modes of thought,'' and the study found that the masters taught ``less by precept than by example'' (as quoted in Columbia University's course on the responsible conduct of research). That supports the post's guess that mentors pass on skills they do not describe.}"
+  ],
+  [
+   5492,
+   "\\clogic{Michael Polanyi agreed that the art of research is not in the standard teaching: ``the articulate contents of science are successfully taught all over the world \\ldots\\ the unspecifiable art of scientific research has not yet penetrated to many of these.'' But Polanyi held that such an art ``cannot be transmitted by prescription, since no prescription for it exists. It can be passed on only by example from master to apprentice'' (\\textsc{Personal Knowledge}, 1958, as quoted by Cristina Frade). On Polanyi's view, which is close to poke's, mentors cannot put the art into words because of the kind of knowledge it is, not because it is poorly understood.}"
+  ],
+  [
+   5506,
+   "\\cpara{Says reasoning without definite evidence is very hard: in school a missed point is corrected by the next fifty, but in new territory one missed point can lead far astray.}"
+  ],
+  [
+   5936,
+   "\\cpara{Says, with ``I am pretty sure'' and ``I suspect,'' that scientists who believe nonsense outside their fields were not taught that minds are engines, or that there is one exact probability for any state of evidence. The second is the objective Bayesian view, which other Bayesians dispute (see the note on the previous post).}"
+  ],
+  [
+   6558,
+   "\\cpara{Doubts that scientists who describe the future in detail were ever taught about the conjunction fallacy. The dates fit the claim that the finding is recent: its main paper, Tversky and Kahneman's, appeared in 1983, twenty-five years before the post (see the notes on ``Burdensome Details'').}"
+  ],
+  [
+   7419,
+   "\\cpara{The ``whole academic subfields'' built on such mistakes are not named. The notes on ``The Futility of Emergence'' and ``Say Not Complexity'' make the same point about those posts' unnamed targets.}"
+  ],
+  [
+   7869,
+   "\\cpara{Repeats the author's saying that science piles up evidence until even scientists cannot ignore it; it appeared two days earlier in ``When Science Can't Help.''}"
+  ],
+  [
+   8112,
+   "\\cpara{Says that this willingness to give up in the face of crushing evidence is all science needs to advance, unlike religion.}"
+  ],
+  [
+   8443,
+   "\\cpara{Says books by Carl Sagan, Martin Gardner and other traditional rationalists turn non-scientists into potential scientists.}"
+  ],
+  [
+   8707,
+   "\\cpara{The post's account of professional training, given without a source. Research supports its drift on statistics. Tversky and Kahneman's ``Belief in the Law of Small Numbers'' (1971) reported ``erroneous intuitions about the laws of chance'' in ``the responses of professional psychologists to a questionnaire concerning research decisions.''}"
+  ],
+  [
+   8963,
+   "\\cpara{Argues that asking more of the average scientist would stop science. Thomas Kuhn had argued something close in ``The Essential Tension'' (1959): normal research rests on a ``dogmatic initiation in a pre-established tradition,'' and, in the Stanford Encyclopedia's summary, instilling that commitment ``is a key element in scientific training.'' Kuhn held that this narrow training is part of why normal science works.}"
+  ],
+  [
+   9193,
+   "\\cpara{Restates Nick Tarleton's comment from the previous post in the author's words. The restatement matches the comment, including its approval of the lax social standard.}"
+  ],
+  [
+   9979,
+   "\\cpara{Asks whether readers were ever warned against this mistake, and says few people will be stricter with themselves unprompted.}"
+  ],
+  [
+   10250,
+   "\\cpara{Offered with ``as far as I can tell.'' Richard Feynman said much the same in ``Cargo Cult Science,'' the 1974 Caltech commencement address: the ``long history of learning how to not fool ourselves'' ``is, I'm sorry to say, something that we haven't specifically included in any particular course that I know of. We just hope you've caught on by osmosis.''}"
+  ],
+  [
+   10666,
+   "\\cpara{Both ``rare personal secrets'' had been published, the second in similar words. The first is Richard Hamming's advice in the lecture ``You and Your Research,'' given at Bell Communications Research in 1986 and published as a transcript: ``If you do not work on an important problem, it's unlikely you'll do important work.'' The second is close to Feynman's 1974 address, which asks for ``a kind of leaning over backwards'' and describes how later measurers of the electron's charge were pulled toward Millikan's value. The post's paragraph on great mentors had suggested that they have not put such guidance into words and published it generally.}"
+  ],
+  [
+   11080,
+   "\\cpara{The closing evidence. The figure is roughly that of American surveys: 40 per cent of scientists said they believed in a personal God in Edward Larson's 1996 poll, and in a 2009 Pew poll 33 per cent believed in God and 18 per cent in a higher power (see also the note on ``Outside the Laboratory''). ``Believe they believe'' is a claim, from ``Belief in Belief,'' about how scientists hold the belief; the post gives no evidence about scientists for it.}"
+  ]
+ ]
+}

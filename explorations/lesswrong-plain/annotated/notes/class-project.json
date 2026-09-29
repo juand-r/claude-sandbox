@@ -1,0 +1,157 @@
+{
+ "slug": "class-project",
+ "header": "\\post{Class Project}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/xAXrEpF5FYjwqKMfZ/class-project}\n",
+ "skeleton_sha": "6fe2bee68226210a79dc6f8108ddfff2e4dff020aa105fd4670cb1b6aa40c5cd",
+ "post_sha": "b6adba65c65e55fcbbb8f7cf12cc07e1836609de12652cca8ef9f3c2af862604",
+ "edits": [],
+ "notes": [
+  [
+   112,
+   "\\cpara{Jeffreyssai's charges against Einstein. Two repeat the author's own. The ``nonsense of an impersonal God'' is from ``My Childhood Role Model'' (see the note there). The cosmological constant is from ``Einstein's Speed,'' which said Jeffreyssai ``would still ding Einstein a point or two'' for it, while the author would not, since it ``later turned out to be real.''}"
+  ],
+  [
+   786,
+   "\\cfact{The path was less clean than Jeffreyssai grants. From 1913 to 1915 Einstein held the Entwurf theory, written with Marcel Grossmann, which was wrong; see the notes on ``Einstein's Arrogance.''}"
+  ],
+  [
+   950,
+   "\\cpara{The lesson: aspire to do better than Einstein. It is the thesis of ``Einstein's Superpowers,'' posted the day before, put in a teacher's mouth.}"
+  ],
+  [
+   1218,
+   "\\cpara{Announces a test, prefaced by what the other beisutsukai think of his projects.}"
+  ],
+  [
+   1453,
+   "\\cpara{Brennan recognizes a teacher's familiar line from the other Conspiracies he has studied in.}"
+  ],
+  [
+   1718,
+   "\\cpara{The projects' reputation, told in jokes (``Laplace himself would catch on fire'').}"
+  ],
+  [
+   2007,
+   "\\cpara{Jeffreyssai's reason: students of whom much is expected come to expect much of themselves. It restates the closing advice of ``My Childhood Role Model'': ``If you only try to do what seems humanly possible, you will ask too little of yourself.''}"
+  ],
+  [
+   2258,
+   "\\cpara{The assignment: the correct theory of quantum gravity, by five students, in one month. The month comes from ``The Failures of Eld Science,'' where Jeffreyssai asked whether a problem could be solved in a month, ``In a case, let us stipulate, where in principle you already have enough experimental evidence to determine an answer.'' Whether quantum gravity is such a case the story does not say. As Wikipedia's ``Quantum gravity'' puts it, ``as yet, there is no way to put quantum gravity predictions to experimental tests.''}"
+  ],
+  [
+   2742,
+   "\\cpara{The reward, and the aim of the test: ``We will see if you have learned speed.''}"
+  ],
+  [
+   3083,
+   "\\cpara{Hiriwa: without the solution, one cannot know how hard the problem is.}"
+  ],
+  [
+   3202,
+   "\\cpara{Taji: Eld scientists worked on it for far longer than a month.}"
+  ],
+  [
+   3353,
+   "\\cpara{Hiriwa's reply draws on the book's quantum sequence. For the assessment of the many-worlds case, see the notes on ``Many Worlds, One Best Guess.''}"
+  ],
+  [
+   3495,
+   "\\cpara{Styrlyn becomes leader, by reputation, in a moment.}"
+  ],
+  [
+   3712,
+   "\\cpara{Styrlyn's method: each student writes angles alone before the group combines them, and criticism waits (``No criticisms yet!'' below).}"
+  ],
+  [
+   3894,
+   "\\clogic{Research on brainstorming supports this order. In Wikipedia's summary of Diehl and Stroebe's review of 22 studies (1987), ``groups brainstorming together produce fewer ideas than individuals working separately.''}"
+  ],
+  [
+   4007,
+   "\\cpara{Brennan cannot think of anything clever to say.}"
+  ],
+  [
+   4428,
+   "\\cpara{He writes down ``the obvious''; the story keeps it back until his turn.}"
+  ],
+  [
+   4606,
+   "\\cpara{Styrlyn asks each student for one idea.}"
+  ],
+  [
+   4763,
+   "\\cpara{Taji's angle: assume Eld science's avenues were blind alleys, expect an elegant answer, avoid extra dimensions and string theory, and ask how a failure to understand decoherence may have misled the quantizing of gravity. The last point applies the author's view of decoherence from the quantum sequence.}"
+  ],
+  [
+   5272,
+   "\\cpara{Hiriwa's objection is the point of ``Reversed Stupidity Is Not Intelligence,'' earlier in the book.}"
+  ],
+  [
+   5382,
+   "\\cpara{Styrlyn holds to the rule: no criticism during the round.}"
+  ],
+  [
+   5458,
+   "\\cpara{Hiriwa's angle: a representation that allows infinities must be false. Infinities are a real obstacle; Wikipedia's ``Quantum gravity'' notes that gravity is ``perturbatively nonrenormalizable,'' needing ``infinitely many independent parameters.'' The linked paper, on CiteSeer, could not be reached, so I could not identify it.}"
+  ],
+  [
+   5766,
+   "\\cpara{Yin's angle: physics may be timeless in a deeper sense, on the evidence of an inscription in an abandoned city. The role of time is a recognized difficulty in joining quantum mechanics and general relativity (Wikipedia, ``Quantum gravity'').}"
+  ],
+  [
+   6257,
+   "\\cpara{The Lojban parses as Brennan translates it. In the Lojban dictionary (jbovlaste), .ua marks discovery, sai the intensity of the feeling, .ei obligation; vimcu is ``x1 removes x2 from x3''; ty is the letter t; and mekso is ``a mathematical expression.''}"
+  ],
+  [
+   6453,
+   "\\cpara{``Timeless physics'' links a post on Julian Barbour's theory that the book does not include. The book's reader has met Barbour only in ``Einstein's Superpowers,'' the day before.}"
+  ],
+  [
+   6610,
+   "\\cpara{Styrlyn's angle: rewrite quantum physics, which the students learned over joint configurations, in a spatially local form, to fit the local curvature of general relativity. The link is to a post on the no-communication theorem that the book does not include.}"
+  ],
+  [
+   7042,
+   "\\cpara{Taji's jab at Styrlyn's Conspiracy.}"
+  ],
+  [
+   7159,
+   "\\cpara{Styrlyn's reply, cut short: ``groups are made of people.''}"
+  ],
+  [
+   7336,
+   "\\cpara{Brennan's angle, ``the obvious'': why is the energy of the quantum Hamiltonian, which sets how fast the ``little arrows'' rotate, necessarily the energy that curves spacetime? It is modeled on Einstein's step, described in ``Einstein's Speed,'' that made inertial and gravitational mass ``necessarily equivalent, not just coincidentally equivalent.''}"
+  ],
+  [
+   7837,
+   "\\cpara{Yin: the question seems too obvious for Eld science to have missed.}"
+  ],
+  [
+   7948,
+   "\\cpara{Hiriwa: the answer is needed whether or not it was known.}"
+  ],
+  [
+   8137,
+   "\\cpara{Taji proposes a proof that an exception to the equality would break a conservation law.}"
+  ],
+  [
+   8278,
+   "\\cfact{Physics had a result of this kind before the story was written. In 1964 Steven Weinberg derived, from the Lorentz invariance of quantum scattering, the ``Equality of Gravitational and Inertial Mass'' (his title): a massless spin-two particle must interact with all particles ``with equal strength,'' and the same condition also ``enforces energy-momentum conservation'' (Porrati's summary, arXiv:0804.4672). It bears on Brennan's question. It is also the kind of proof, from ``some appealing principle,'' that Hiriwa sets aside in the next line.}"
+  ],
+  [
+   8292,
+   "\\cpara{Hiriwa restates the question: not a proof from a principle, but a view in which the two energies are one and cannot be separated even in thought.}"
+  ],
+  [
+   8746,
+   "\\cpara{Brennan accepts the rephrasing.}"
+  ],
+  [
+   8795,
+   "\\cpara{The students weigh the five suggestions.}"
+  ],
+  [
+   8893,
+   "\\cpara{The story ends as someone has an idea. It does not say whose, or what. Like ``The Ritual,'' it shows the method and the stakes and stops before any result.}"
+  ]
+ ]
+}

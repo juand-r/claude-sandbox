@@ -1,0 +1,697 @@
+{
+ "slug": "a-technical-explanation-of-technical-explanation",
+ "header": "\\post{A Technical Explanation of Technical Explanation}{Eliezer Yudkowsky}{2005}{https://www.lesswrong.com/posts/afmj8TKAqH6F2QMfZ/a-technical-explanation-of-technical-explanation}\n",
+ "skeleton_sha": "3e1834063fa22c6ee9b1e26c0716f82197ab491b424c914483972110fd64ec45",
+ "post_sha": "f4a7aeab530cfd3c2934b35eb5f56886869cb336472716173ca192ee85ec101d",
+ "edits": [],
+ "notes": [
+  [
+   182,
+   "\\cpara{Places the essay after ``An Intuitive Explanation'' and warns that its theses are not the consensus of Bayesian researchers. The post is dated 2005, when it first appeared on the author's website. The text here is the later book revision: it refers to posts from 2007 and 2008 (``Conservation of Expected Evidence'', ``Fake Explanations'', ``Lawful Uncertainty'') and cites sources dated 2008 and 2011.}"
+  ],
+  [
+   843,
+   "\\cpara{Names the essay's question: what separates a technical understanding from a verbal one.}"
+  ],
+  [
+   1284,
+   "\\cpara{The childhood example: popular physics gave the words ``sound is waves'' without the understanding that working through the wave equation later gave.}"
+  ],
+  [
+   1909,
+   "\\cpara{Turns the example on the reader. A verbal account of the difference is itself only verbal, so the essay owes a technical one.}"
+  ],
+  [
+   2082,
+   "\\cpara{Introduces the picture that governs the essay: probability as a fixed lump of clay spread over outcomes.}"
+  ],
+  [
+   2238,
+   "\\cpara{The three-colour light. Probabilities of exclusive outcomes cannot sum to more than one.}"
+  ],
+  [
+   3392,
+   "\\cpara{Moves from clay to money. The payment depends only on the amount bet on the colour that won; the rule the essay later derives rests on this restriction.}"
+  ],
+  [
+   3957,
+   "\\cpara{Shows the flaw of paying out the bet itself: with red winning 60 per cent of the time, putting the whole dollar on red earns 60 cents on average, against 44 cents for bets that match the frequencies. Both figures check.}"
+  ],
+  [
+   4939,
+   "\\cpara{Writes the linear rule and its expected payoff as formulas.}"
+  ],
+  [
+   5402,
+   "\\cpara{A second example, with frequencies of 30, 20 and 50 per cent and arbitrary bets. The 27 cents checks.}"
+  ],
+  [
+   6094,
+   "\\cpara{Explains the average as each colour's payoff weighted by how often it wins.}"
+  ],
+  [
+   6367,
+   "\\cpara{Names this kind of weighted average an expectation.}"
+  ],
+  [
+   7131,
+   "\\cpara{Shows that the linear rule rewards putting everything on the likeliest colour. Five non-red flashes in a row have probability $0.5^5 \\approx 3\\%$, as stated.}"
+  ],
+  [
+   7742,
+   "\\cpara{Defines a proper scoring rule: one under which your best bet is your actual probability. It adds that a plausible rule chosen at random is probably not proper.}"
+  ],
+  [
+   8506,
+   "\\cpara{Not proper for the three-colour light it is applied to. Paying a dollar minus the squared error on the winning bet, with frequencies of 30, 20 and 50 per cent, bets of about 35, 3 and 61 cents earn 61.3 cents on average against 60 for honest bets (my calculation, shown in the report); footnote 3 checks only a two-colour light, where the rule is proper. Brier's rule (1950) is proper for any number of colours because it charges the squared error on every colour, losing ones included (Wikipedia, ``Brier score''). Once the payment may depend only on the bet on the winner, as the essay set it up, only the logarithm, up to scale, is strictly proper for more than two outcomes (Wikipedia, ``Scoring rule''; see the note on ``Qualitatively Confused'').}"
+  ],
+  [
+   8950,
+   "\\cpara{Sets the squared-error rule aside, with a joke about ``ordinary statisticians.''}"
+  ],
+  [
+   9113,
+   "\\cpara{Adds the requirement that will fix the rule: the total score must not depend on whether rounds are scored one at a time or together.}"
+  ],
+  [
+   9407,
+   "\\cpara{Two presses of the button. Explains why the second prediction is conditional on the first result.}"
+  ],
+  [
+   11032,
+   "\\cpara{Works the example: 60 per cent on green, then 25 per cent on blue given green, make a joint probability of 15 per cent. The product checks.}"
+  ],
+  [
+   11912,
+   "\\cpara{The nine joint outcomes of two presses share one unit of probability.}"
+  ],
+  [
+   12227,
+   "\\cpara{Restates the invariance: however the experiments are sliced, the total score is the same.}"
+  ],
+  [
+   13241,
+   "\\cpara{The derivation holds. A score that adds when probabilities multiply must satisfy $f(xy) = f(x) + f(y)$, and the only continuous solutions are constant multiples of the logarithm; the arbitrary base in the next paragraph is that multiple. The logarithmic rule was proposed by I. J. Good in ``Rational Decisions'' (1952), who is not named here.}"
+  ],
+  [
+   13365,
+   "\\cpara{The base only sets the unit: decibels, as in ``An Intuitive Explanation'', or bits.}"
+  ],
+  [
+   13813,
+   "\\cpara{States that the log rule is proper and additive, and turns the negative scores into a payout. Both claims hold; the calculus left to the reader is a one-line maximization.}"
+  ],
+  [
+   15015,
+   "\\cpara{Gives the units. The conversions check: 0.01 is $-20$ dB, 0.03 about $-15$ dB, 0.25 is $-2$ bits and 0.03 about $-5$ bits.}"
+  ],
+  [
+   15504,
+   "\\cpara{Defines the expected score of your own forecast. It is Shannon's entropy with the sign reversed.}"
+  ],
+  [
+   15744,
+   "\\cpara{Works the expected score for 25, 50 and 25 per cent: $-1.5$ bits. Correct.}"
+  ],
+  [
+   16141,
+   "\\cpara{Contrasts a colloquial ``98\\% certain'', a feeling, with calibrated confidence, defined by how often such statements come true.}"
+  ],
+  [
+   17348,
+   "\\cpara{Shows that the rule punishes underconfidence too: 995 right answers in 1,000 call for 99.5 per cent. Correct.}"
+  ],
+  [
+   17722,
+   "\\cpara{Answering 50 per cent to everything is perfectly calibrated, so the score needs a second component, discrimination. The split matches the standard decomposition of proper scores into reliability (calibration), resolution and uncertainty, due to Murphy (1973) (Wikipedia, ``Scoring rule''), which the post does not cite.}"
+  ],
+  [
+   18118,
+   "\\cpara{The forecaster who knows nothing says 50 per cent to every answer and is perfectly calibrated.}"
+  ],
+  [
+   18806,
+   "\\cpara{A forecaster who says 90 per cent and is wrong twice beats the ignorant one. The figures check: $(1/2)^{10} \\approx 0.001$, $0.9^8 \\times 0.1^2 \\approx 0.0043$, and $0.8^8 \\times 0.2^2 \\approx 0.0067$, which the post gives as 0.6\\%.}"
+  ],
+  [
+   19982,
+   "\\cpara{The best case: 99 per cent on ten right answers gives about 90 per cent for the whole.}"
+  ],
+  [
+   20248,
+   "\\cpara{Gives the score, $-0.45$ dB or $-0.15$ bits (both correct to rounding), and restates the reasons for the logarithm.}"
+  ],
+  [
+   20585,
+   "\\clogic{True of the linear rule, not of every other rule. Under the squared-error rule the best bets are spread out, and under Brier's full rule they equal your probabilities.}"
+  ],
+  [
+   20759,
+   "\\cpara{Calibration can be repaired by a transformation, discrimination cannot. The million-to-one example matches a real finding: answers given odds of a million to one or more were right 90\\% of the time, where ``the appropriate degree of confidence would have been odds of 9:1'' (Fischhoff, Slovic and Lichtenstein, 1977, as quoted in Yudkowsky's 2008 chapter on global risks; see the note on ``Absolute Authority''). I could not reach the Yates chapter to check its quotation.}"
+  ],
+  [
+   22014,
+   "\\cpara{Draws the moral: the rule rewards earned confidence as well as admitted ignorance.}"
+  ],
+  [
+   22583,
+   "\\cpara{The fair coin: every sequence of twenty flips gets $2^{-20}$, about $-60$ dB. The figures check.}"
+  ],
+  [
+   23141,
+   "\\cpara{Argues that a low score is no evidence against a theory unless a rival does better; the sealed envelope shows what doing better would look like.}"
+  ],
+  [
+   23970,
+   "\\cpara{Promises to derive the common-sense answer from Bayes's rule.}"
+  ],
+  [
+   24406,
+   "\\cpara{Sets up an experiment with results from 0 to 99: a particle counter, or the last two digits of a price.}"
+  ],
+  [
+   24783,
+   "\\cpara{Each hypothesis is a distribution over the hundred results.}"
+  ],
+  [
+   25217,
+   "\\cpara{The precise hypothesis: 90 per cent on 51 and the rest spread evenly, $1/990$ each. Correct.}"
+  ],
+  [
+   25884,
+   "\\cpara{Names the distribution the likelihood.}"
+  ],
+  [
+   26367,
+   "\\cpara{Introduces the vague theory: 90 per cent on the fifties.}"
+  ],
+  [
+   26546,
+   "\\cpara{Both theories ``fit'' 51, but the vague one gave it 9 per cent against the precise theory's 90.}"
+  ],
+  [
+   27042,
+   "\\cpara{Likelihood ratio 10, posterior odds 10:1, about 91 per cent. Correct, and the conditions (only these hypotheses, only this evidence) are stated.}"
+  ],
+  [
+   28094,
+   "\\cpara{Connects precision with the philosophers' demand for bold, falsifiable theories; footnote 6 credits Popper. The advantage holds, as the paragraph says, only when the bold prediction is right.}"
+  ],
+  [
+   28792,
+   "\\cpara{Probability cannot be cheated if predictions are recorded in advance; how humans keep to that is a separate matter. The distinction carries the later argument about advance prediction.}"
+  ],
+  [
+   29756,
+   "\\cpara{From calibrated priors and correct likelihoods, Bayesian updating gives calibrated posteriors. True under the conditions stated (``and I know this is so''); ten-elevenths is 91 per cent.}"
+  ],
+  [
+   31064,
+   "\\cpara{Gives the precise theory a tenth of the vague theory's prior, since there are a hundred precise hypotheses and ten vague ones. After 51 the odds are 1:1, as stated.}"
+  ],
+  [
+   32087,
+   "\\cpara{Says the result is what common sense expects.}"
+  ],
+  [
+   32916,
+   "\\cpara{One result leaves the prior on the two classes unchanged and picks out one survivor in each.}"
+  ],
+  [
+   33207,
+   "\\cpara{Corrects the wording with Jaynes's Mind Projection Fallacy, credited: precision belongs to the map, not to the price.}"
+  ],
+  [
+   33650,
+   "\\cpara{The fixed coin. The arithmetic checks: a prior of 1 per cent spread over 1,024 sequences gives about 0.001 per cent to each, and seeing one of them raises it to exactly 1 per cent.}"
+  ],
+  [
+   34783,
+   "\\cpara{The target is loosely described. The Stanford Encyclopedia (``Philosophy of Statistics'') lists as a standard problem of classical statistics ``the fact that it violates the so-called likelihood principle'', the principle that likelihoods alone fix what data show; attending only to likelihoods is likelihoodism (Hacking, Edwards, Royall). Classical methods also penalize fitted hypotheses; Akaike's criterion, for example, charges a model for each adjustable parameter. The $2^{30}$, about a billion, checks.}"
+  ],
+  [
+   35573,
+   "\\cpara{A second identical run raises the odds of the fixed coin to about 10:1 (10.3:1 exactly). Correct.}"
+  ],
+  [
+   35859,
+   "\\cpara{Applies the same to the counter: two results of 51 give the precise theory 10:1.}"
+  ],
+  [
+   36072,
+   "\\cpara{Adds the hypothesis of ignorance, which the vague theory beats. The odds here round the vague theory's 9 per cent up to 10; the exact figures (9:20, then about 80 per cent) leave the conclusion unchanged.}"
+  ],
+  [
+   37127,
+   "\\cpara{Sets priors of 1:10:200 from class weights of 25, 25 and 50 per cent. The derivation checks, and so do 0.5, 4.7 and 94.8 per cent.}"
+  ],
+  [
+   38192,
+   "\\cpara{After two results of 51: 89, 9 and 2 per cent. Correct.}"
+  ],
+  [
+   38536,
+   "\\cpara{Adds a theory that bets on the wrong range and calls it ``falsified'' at a posterior of about 0.2 per cent. Here falsification means a posterior near zero, the essay's quantitative reading of the word.}"
+  ],
+  [
+   38958,
+   "\\cpara{A model can do worse than ignorance by concentrating probability away from the truth.}"
+  ],
+  [
+   39293,
+   "\\cpara{A side note against AI researchers who praise noise: if randomness reliably helps, some part of the algorithm must be doing worse than random. The one example is a company's sales literature.}"
+  ],
+  [
+   40452,
+   "\\cpara{Scores three results. The rough powers of ten check: $-30$, $-60$, $-60$ and $-90$ dB (exactly $-31$, $-61$, $-60$ and $-89$), priors of $-23$, $-13$, $0$ and $-13$ dB, and a highest total of about $-43$ dB for the vague theory.}"
+  ],
+  [
+   41924,
+   "\\cpara{Even the best theory scores low; theories are approximations.}"
+  ],
+  [
+   42461,
+   "\\cpara{Sums up: with conserved probability, no outcome can count as confirmation of everything.}"
+  ],
+  [
+   42799,
+   "\\cpara{States that defending a hypothesis ``has no analogue'' in probability or decision theory and is a human flaw. The main rival account is Imre Lakatos's. On it, scientists rightly protect a theory's core with auxiliary hypotheses, a belt that ``gets adjusted and re-adjusted, or even completely replaced, to defend the thus-hardened core.'' The Stanford Encyclopedia's example is the Newtonian response to an erring planet: ``look for another heavenly body.'' That is the Uranus story this essay later tells as a triumph.}"
+  ],
+  [
+   43826,
+   "\\cpara{States conservation of expected evidence: if A is evidence for B, not-A is evidence against B. Correct; ``Conservation of Expected Evidence'' gives it in full.}"
+  ],
+  [
+   44320,
+   "\\cpara{Spee's witch trials, from ``Conservation of Expected Evidence''. I could not check this sentence of Spee's against the Hellyer translation the footnote cites.}"
+  ],
+  [
+   44682,
+   "\\cpara{Describes human judgment, with ``seems'', as a feeling of fit that is not conserved. Psychoanalysis is the example, as it was Popper's.}"
+  ],
+  [
+   45331,
+   "\\cpara{Returns to the radiator of ``Fake Explanations'' and says what a technical answer would give: a sharp joint prediction for the measured temperatures.}"
+  ],
+  [
+   46455,
+   "\\cpara{``Enables you to calculate exactly how technical an explanation is'' is qualified in the same paragraph: for vague hypotheses the calculation is possible only in principle, by a ``superhuman intelligence.'' For verbal explanations, the case the essay is about, it gives a criterion, not a number.}"
+  ],
+  [
+   47337,
+   "\\cpara{The author's view that everyone should learn one technical subject, and that Bayesian probability, ``the sole piece of math I know'' that is both accessible and technical about belief, belongs in high school.}"
+  ],
+  [
+   48198,
+   "\\cpara{Announces a ``technical'' explanation in dense words, to show that dense words are not the point.}"
+  ],
+  [
+   48356,
+   "\\cpara{The summary in jargon. It is an accurate summary of the argument so far.}"
+  ],
+  [
+   48984,
+   "\\cpara{Rejects its own summary: a listener can calculate nothing from it.}"
+  ],
+  [
+   49605,
+   "\\cpara{A joke about the word ``Bayesian.''}"
+  ],
+  [
+   49760,
+   "\\cpara{The word means something only to someone who knows the math.}"
+  ],
+  [
+   50016,
+   "\\cpara{A third moral: rigour does not require solemnity.}"
+  ],
+  [
+   50692,
+   "\\cpara{Separates a true theory from a useful model: a cheaper approximation can predict better in practice.}"
+  ],
+  [
+   51641,
+   "\\cpara{Finer data decide between models, and the log score combines all experiments.}"
+  ],
+  [
+   52363,
+   "\\cpara{A deep theory can endorse cheaper approximations for its domains.}"
+  ],
+  [
+   52957,
+   "\\cpara{Applies this to physics: liquids and gases are models, not fundamental kinds.}"
+  ],
+  [
+   53547,
+   "\\cpara{Concedes that the strict definition of ``technical'' sets a very high standard.}"
+  ],
+  [
+   53940,
+   "\\cpara{Gives quantitative models inside evolutionary theory. The codon arithmetic ($4^3 = 64$ codons for 20 amino acids and a stop) is correct. The drift model described is the neutral theory of Motoo Kimura (1968), not named.}"
+  ],
+  [
+   55102,
+   "\\cpara{Defends evolution against creationist claims and points to the TalkOrigins FAQ.}"
+  ],
+  [
+   55933,
+   "\\cpara{Scientists accepted natural selection before DNA or quantitative models.}"
+  ],
+  [
+   56670,
+   "\\cpara{Revises the standard: vague theories have told true from false. It names them ``semitechnical''.}"
+  ],
+  [
+   57209,
+   "\\cpara{Raises the counter-question: is precise physics better confirmed than evolution?}"
+  ],
+  [
+   57832,
+   "\\cfact{The figure matches one Roger Penrose gave for twenty years of timing the binary pulsar PSR 1913+16 (Penrose, 1997, as cited in arXiv astro-ph/0003192). I could not find which quantity it measures. The best-known test from that pulsar, the rate at which its orbit decays, agrees with the relativistic prediction to about 0.2 per cent (observed over predicted, 0.997 $\\pm$ 0.002; Wikipedia, ``Hulse--Taylor pulsar'').}"
+  ],
+  [
+   57896,
+   "\\cpara{Dennett's stated reason, in the cited book, is unification: the idea ``unifies the realm of life, meaning, and purpose with the realm of space and time, cause and effect, mechanism and physical law.'' The measure by simplicity and complexity explained is the post's paraphrase.}"
+  ],
+  [
+   58093,
+   "\\cpara{Sets up the conflict: Kelvin's physics limited the Sun's age to tens of millions of years, while evolution seemed to need hundreds of millions or more.}"
+  ],
+  [
+   58892,
+   "\\clogic{Overstated, though the contrast with physics stands. The first edition of \\textsc{On the Origin of Species} has quantitative estimates: the descendants of one pair of elephants (``fifteen million elephants'' after five centuries), and the time to erode the Weald, ``306,662,400 years; or say three hundred million years.'' The second bears on the very question of this paragraph, how long the Earth has existed.}"
+  ],
+  [
+   59445,
+   "\\cpara{Kelvin, ``Of Geological Dynamics'' (1869). The words match the quotation page the footnote cites.}"
+  ],
+  [
+   59864,
+   "\\cpara{The moral: a correct vague theory can build a large lead. The claim checks: against a 50 per cent guesser, a calibrated 80 per cent predictor gains about 0.28 bits per question on average. The reason nineteenth-century physics could be wrong is called hindsight in the next paragraph.}"
+  ],
+  [
+   61153,
+   "\\cpara{The lesson: precise physics did not automatically beat semitechnical evolution; one theory was being misapplied. The argument was made at the time. In Wikipedia's summary (``Age of Earth''), Huxley in 1869 ``attacked Thomson's calculations, suggesting they appeared precise in themselves but were based on faulty assumptions.''}"
+  ],
+  [
+   62190,
+   "\\cpara{Semitechnical theories deserve respect; technical theories fall too, as Newton's did to Einstein's.}"
+  ],
+  [
+   62672,
+   "\\cpara{Judging semitechnical theories takes skill that humans lack by instinct, ``which is why we have Science.''}"
+  ],
+  [
+   63130,
+   "\\cpara{Lists the scientific ``sins'' of early evolutionary theory, and states that probability theory does not distinguish prediction from explanation after the fact, since a hypothesis's likelihoods are fixed.}"
+  ],
+  [
+   64181,
+   "\\cpara{The advance-prediction rule as a custom against tinkering after the fact. The view has precedents: Mill (1843) and Keynes (1921) denied that prediction carries special weight (Keynes: ``The peculiar virtue of prediction or predesignation is altogether imaginary''), and Lipton's ``fudging explanation'' defends the rule for the post's reason (Stanford Encyclopedia, ``Prediction versus Accommodation'').}"
+  ],
+  [
+   64291,
+   "\\clogic{Stronger forms of predictivism are the rival view. Whewell held that a successful prediction carries special weight, and Maher gave a Bayesian argument that it is also evidence that the predictor's method is reliable (see the note on ``Decoherence is Falsifiable and Testable'').}"
+  ],
+  [
+   64739,
+   "\\clogic{Standard Bayesian confirmation theory has difficulty saying so. Evidence already known has probability 1, so updating on it changes nothing; this is Glymour's ``problem of old evidence'', whose standard example is Einstein's use of Mercury (see the note on ``My Wild and Reckless Youth''). The essay does not raise it.}"
+  ],
+  [
+   64883,
+   "\\cpara{Praises the reasoning in Darwin's books above that of his successors. ``It is incredible how few errors'' is the author's judgment; no comparison is given.}"
+  ],
+  [
+   65517,
+   "\\cpara{Average scientists misapply a semitechnical theory. The 1960s ``good of the species'' reasoning is the group-selection episode of ``The Tragedy of Group Selectionism''; footnote 15 credits Williams.}"
+  ],
+  [
+   66019,
+   "\\cpara{Technical theories are better, when nature allows them.}"
+  ],
+  [
+   66665,
+   "\\cpara{Scientific controversy is usually over semitechnical theories or nonsense, and no checklist separates them.}"
+  ],
+  [
+   67408,
+   "\\cpara{Advises reading textbooks rather than news of controversies.}"
+  ],
+  [
+   68084,
+   "\\cpara{Two reasons to follow a controversy: expertise, or need. The bathing suit is a joke.}"
+  ],
+  [
+   68693,
+   "\\cpara{Announces warning signs, and warns against applying them only to theories one dislikes.}"
+  ],
+  [
+   69664,
+   "\\cpara{Sagan's invisible dragon, credited in footnote 16.}"
+  ],
+  [
+   70149,
+   "\\cpara{The claimant's excuses show that they anticipate the same experiences as the skeptic. ``Belief in Belief'' makes the same argument at length.}"
+  ],
+  [
+   71088,
+   "\\cpara{The friend's argument from punctuated equilibrium, told from the author's side; the friend's thesis is the author's reconstruction (``his thesis had to be'').}"
+  ],
+  [
+   72005,
+   "\\cpara{The author's first reply, \\textsc{Homo heidelbergensis}, and the friend's charge of excuses made in advance.}"
+  ],
+  [
+   72770,
+   "\\cpara{Turns the charge around: claiming after the fact that a rival predicts the data badly is as much a sin as claiming that your own theory predicts it.}"
+  ],
+  [
+   73202,
+   "\\cpara{Critics of a confirmed semitechnical theory must say exactly what it predicts badly, and how they know.}"
+  ],
+  [
+   74181,
+   "\\cpara{The author concedes having no model either way, and that the verdict came after seeing the data. A model of that kind existed. Punctuated equilibrium was proposed by Eldredge and Gould (1972) from standard theory; in Wikipedia's words it ``originated as a logical consequence of Ernst Mayr's concept of genetic revolutions by allopatric and especially peripatric speciation.'' That supports the author's side.}"
+  ],
+  [
+   74834,
+   "\\cpara{Get a theory's predictions from its advocates, in advance, then let the critics cross-examine.}"
+  ],
+  [
+   75306,
+   "\\cpara{Error terms: a model that predicts 51 nine times in ten is not refuted by one 82.}"
+  ],
+  [
+   76390,
+   "\\cpara{Any theory can be beaten by a sharper rival, and showing that an accepted theory is ``stupid'' on the data is harder than replacing it.}"
+  ],
+  [
+   77059,
+   "\\cpara{Mercury. The figures match the cited source (Brown, \\textsc{Reflections on Relativity}, online text): ``this accounts for 5557 arc seconds per century, which is close to the observed value of 5600, but still short by 43 arc seconds per century.'' The account, an anomaly known for decades while Newton's theory was kept, agrees with the history given in the notes on ``An Intuitive Explanation.''}"
+  ],
+  [
+   77747,
+   "\\cpara{Uranus: the anomaly ended by confirming Newton's theory instead of refuting it. Galle found Neptune ``less than 1 degree from the position Le Verrier had predicted'' (Wikipedia, ``Discovery of Neptune''). The same move, an unseen planet, failed for Mercury; Le Verrier's Vulcan was never found (see the notes on ``An Intuitive Explanation'').}"
+  ],
+  [
+   78257,
+   "\\cpara{Only a better theory showed that Newton's would never explain Mercury.}"
+  ],
+  [
+   78425,
+   "\\cpara{Popper, credited by name. He did hold that the two differ in kind: in the entry quoted below, a theory ``can be tested and falsified, but never logically verified.'' The notes on ``An Intuitive Explanation'' add that he also wrote that in practice no disproof is conclusive.}"
+  ],
+  [
+   78876,
+   "\\cpara{A quotation from Thornton's Stanford Encyclopedia entry (winter 2002), cited in footnote 19. I checked it and the next two paragraphs against the archived entry; they match, with the cuts marked by ellipses.}"
+  ],
+  [
+   80237,
+   "\\cpara{Continues the quotation: Popper puts falsifiability in place of induction.}"
+  ],
+  [
+   81093,
+   "\\cpara{Restates Popper in the author's words: a theory's virtue lies in what it prohibits.}"
+  ],
+  [
+   81447,
+   "\\cpara{Popper drew the opposite lesson from boldness. In the entry just quoted, he held that ``the more improbable a theory is the better it is scientifically, because the probability and informative content of a theory vary inversely.'' The essay's numbers agree on the inverse relation, since its precise theory started with a tenth of the vague theory's prior. They differ on what follows: Popper preferred the improbable theory as such; the essay prefers whichever ends with the higher posterior.}"
+  ],
+  [
+   81858,
+   "\\cpara{A theory that explains any outcome, once its ``fit'' is made into a distribution, is the uniform distribution.}"
+  ],
+  [
+   82060,
+   "\\cpara{Phlogiston and vitalism as disguised hypotheses of ignorance. For phlogiston the record is more mixed: the theory forbade some outcomes and made at least one successful prediction (see the note on ``Fake Causality'').}"
+  ],
+  [
+   82652,
+   "\\cpara{Separates fundamental elements, governed by exact rules, from mysterious ones.}"
+  ],
+  [
+   83032,
+   "\\cpara{The Crackpot Index has the entry: ``10 points for arguing that while a current well-established theory predicts phenomena correctly, it doesn't explain `why' they occur, or fails to provide a `mechanism'.''}"
+  ],
+  [
+   83543,
+   "\\cpara{The electromagnetic field as a fundamental with no properties beyond its equations.}"
+  ],
+  [
+   84136,
+   "\\cpara{Fundamentals should be mathematically simple, not psychologically simple; vitalism took the second for the first.}"
+  ],
+  [
+   85382,
+   "\\cpara{Begins a parable: St.~Peter keeps a moral score whose rule believers cannot compute.}"
+  ],
+  [
+   85810,
+   "\\cpara{``Bayesianity'', a mock religion whose final score is computable.}"
+  ],
+  [
+   86076,
+   "\\cpara{Restates the log score's properties: additive over experiments, equal to the log of the joint probability, and honest.}"
+  ],
+  [
+   86802,
+   "\\cpara{Laplace as judge. Where no number was given, he reconstructs one from surprise.}"
+  ],
+  [
+   87499,
+   "\\cpara{The Final Judgment is the product of all the probabilities.}"
+  ],
+  [
+   87887,
+   "\\cpara{Applies the score to sunrise, setting modesty aside.}"
+  ],
+  [
+   88598,
+   "\\cpara{The figures check: $0.999^{365} \\approx 0.69$, about $-0.53$ bits; $0.9999^{365} \\approx 0.964$; 7.8 per cent over 70 years; and $0.99999^{25550} \\approx 77.4$ per cent.}"
+  ],
+  [
+   89352,
+   "\\cpara{Never assign probability 1, since one miss makes the whole product zero. Dennis Lindley named this ``Cromwell's rule'' (Wikipedia, ``Cromwell's rule''); ``0 And 1 Are Not Probabilities'' makes the argument at length.}"
+  ],
+  [
+   90345,
+   "\\cpara{An AI takes the Sun apart: 99.999 per cent on the last night costs a factor of 100,000, $-50$ dB. Correct.}"
+  ],
+  [
+   90982,
+   "\\cpara{Works the strategy: a 50 per cent chance over ten years, spread evenly, gives a nightly sunrise probability of about 99.986 per cent, rounded here to 99.98.}"
+  ],
+  [
+   91602,
+   "\\cpara{The rule cannot be gamed; only better anticipation raises the score.}"
+  ],
+  [
+   92322,
+   "\\cpara{Concedes two ways to game a lifetime score: stop early, or avoid every uncertain situation. The mock religion is dropped with a joke.}"
+  ],
+  [
+   92683,
+   "\\cpara{Darwin saw the facts before the theory, so evolution began as explanation after the fact.}"
+  ],
+  [
+   93407,
+   "\\cpara{Newton's theory too was accepted on phenomena already known.}"
+  ],
+  [
+   93769,
+   "\\cfact{Overstated. The usual earlier case is Halley's comet. Using Newton's laws, Halley predicted in 1705 that the comet of 1682 would return; it was seen on 25 December 1758, and Clairaut, Lalande and Lepaute had computed the delay caused by Jupiter and Saturn to within a month. Wikipedia (``Halley's Comet'') calls it ``one of the earliest successful tests of Newtonian physics.''}"
+  ],
+  [
+   94687,
+   "\\cpara{Advance prediction is a moral rule of science that makes over-claiming easier to see.}"
+  ],
+  [
+   95503,
+   "\\cpara{The numerologist: a lucky number must be given more than 1/52 in advance, and two lucky numbers cannot both get 90 per cent.}"
+  ],
+  [
+   96543,
+   "\\cpara{Even an untrained listener notices when every number is said to fit.}"
+  ],
+  [
+   97330,
+   "\\cpara{After the fact, the seven looks inevitable.}"
+  ],
+  [
+   97633,
+   "\\cpara{The blue tentacle puzzle.}"
+  ],
+  [
+   97976,
+   "\\cpara{The author's answer: it will not happen, so there is nothing to explain.}"
+  ],
+  [
+   98126,
+   "\\cpara{All-purpose explanations fit every outcome equally and so amount to ignorance.}"
+  ],
+  [
+   98659,
+   "\\cpara{A real explanation must concentrate probability on this outcome, argued in advance.}"
+  ],
+  [
+   99601,
+   "\\cpara{A model that predicts nothing further gives no reason to care whether it is true.}"
+  ],
+  [
+   100466,
+   "\\cpara{Defines a good explanation as one that, considered now, would make you worry that the event will happen.}"
+  ],
+  [
+   100901,
+   "\\cpara{Those who would ``explain'' the tentacle should, if their explanation were good, expect the tentacle.}"
+  ],
+  [
+   101058,
+   "\\clogic{Stated too strongly. Asking what would best explain an event you do not expect is asking for $P(H \\mid E)$, which probability theory answers however small $P(E)$ is; the essay's own two-million-beings paragraph below computes it. What the laws forbid is holding probable a hypothesis that makes the event likely while not expecting the event. The sentence is true only in that second sense.}"
+  ],
+  [
+   101690,
+   "\\cpara{The witchcraft hypothesis: a high likelihood but a negligible prior, so it adds no anticipation.}"
+  ],
+  [
+   102869,
+   "\\cpara{``To explain is to anticipate'': a theory that made you slightly nervous would be a good explanation if the event came.}"
+  ],
+  [
+   103491,
+   "\\cpara{Restates the criterion.}"
+  ],
+  [
+   103831,
+   "\\cpara{Across two million beings, tentacles come mostly from hypotheses rated probable. The counts check: $10^6 \\times 10^{-3} \\times 10^{-2} = 10$ and $10^6 \\times 10^{-2} \\times 10^{-1} = 1{,}000$.}"
+  ],
+  [
+   105328,
+   "\\cpara{The webcomic hypothesis explains nothing because of its low prior.}"
+  ],
+  [
+   105661,
+   "\\cpara{$10^{15} \\times 10^{-9} = 10^6$. Correct.}"
+  ],
+  [
+   106059,
+   "\\cpara{A real tentacle would come from some ordinary cause not foreseen, which the author declines to guess.}"
+  ],
+  [
+   106686,
+   "\\cpara{Reality deals in probability, not plausibility.}"
+  ],
+  [
+   107152,
+   "\\cpara{Introduces the closing verse with mock solemnity.}"
+  ],
+  [
+   107510,
+   "\\cpara{Ends with ``joy in the merely real'', the title of a post from 2008, another sign of the book revision.}"
+  ],
+  [
+   108010,
+   "\\cpara{Checks the squared-error rule for two colours only. The calculus is right: the expected payoff is largest at $p = f$.}"
+  ]
+ ]
+}

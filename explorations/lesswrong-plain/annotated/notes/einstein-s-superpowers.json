@@ -1,0 +1,173 @@
+{
+ "slug": "einstein-s-superpowers",
+ "header": "\\post{Einstein's Superpowers}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/5o4EZJyqmHY4XgRCY/einstein-s-superpowers}\n",
+ "skeleton_sha": "4eb2a28ab5714f4037d36e74c33314e3d48e120d0ce32b000f514045286fe41a",
+ "post_sha": "51bea748cbcc007355cada1966e7e63c284d3f0d47b6d413d935f59a34539d2f",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Names the target: talking and thinking as if Einstein, Newton and the like had superpowers. ``Widespread'' gets no evidence here; the post's later evidence is John Baez's Crackpot Index and the author's own encounters.}"
+  ],
+  [
+   466,
+   "\\cpara{The author's own case: Julian Barbour's \\textsc{The End of Time} (1999) cured it.}"
+  ],
+  [
+   631,
+   "\\cpara{Says Barbour set out the history of Mach's principle and its forerunners, all known to Einstein when he began. ``Anti-epiphenomenal'' is the author's word for physics that drops quantities with no observable effect; ``Einstein's Speed'' called Mach's principle ``the physicist's version of the Generalized Anti-Zombie Principle.''}"
+  ],
+  [
+   886,
+   "\\cpara{Introduces the quotation as the author's own reading ``between the polite lines,'' flagged with ``maybe I'm just imagining things.''}"
+  ],
+  [
+   1088,
+   "\\cpara{The words are the author's, as the paragraph before says and the 2013 edit repeats.}"
+  ],
+  [
+   1309,
+   "\\cpara{Added in March 2013, five years after the post, to stop the words being quoted as Barbour's.}"
+  ],
+  [
+   1505,
+   "\\cpara{A guess about how people treated Barbour, offered with ``Maybe I'm mistaken'' and ``I kinda suspect.'' No evidence is given.}"
+  ],
+  [
+   1790,
+   "\\cpara{Introduces John Baez's Crackpot Index (1998), a satirical points list for rating would-be revolutionary contributions to physics. The item numbers and wording match the list as Baez publishes it now.}"
+  ],
+  [
+   2218,
+   "\\cpara{Uses the two items to show ``how many people compare themselves to Einstein, and what society generally thinks of them.'' The Index is one physicist's joke list. It is evidence of Baez's experience, not of what society generally thinks. The claim that Barbour ``never'' compares himself to Einstein I could not check against the book.}"
+  ],
+  [
+   2518,
+   "\\cpara{One side of the coin: the crackpot thinks Einstein had superpowers, and claims them too.}"
+  ],
+  [
+   2757,
+   "\\cpara{The other side: treating a comparison with Einstein as blasphemy.}"
+  ],
+  [
+   2968,
+   "\\cpara{The example that carries the thesis: a young physicist who hopes to do better than Einstein, and a critic who is shocked, placed on the crackpot's coin.}"
+  ],
+  [
+   3293,
+   "\\cpara{States the diagnosis: social status is confused with research potential.}"
+  ],
+  [
+   3381,
+   "\\cpara{Gives three sources of Einstein's status: his record, the way he did it, and his fame.}"
+  ],
+  [
+   3626,
+   "\\cpara{Brings in two earlier posts, ``Superhero Bias'' (fame mixed up with other qualities) and ``Correspondence Bias'' (behavior put down to disposition rather than situation).}"
+  ],
+  [
+   3839,
+   "\\cpara{Applies them: Einstein's potential is imagined as rare as his fame, so claiming the potential sounds like claiming his rank.}"
+  ],
+  [
+   4238,
+   "\\cpara{Restates the confusion as a ``sacred magisterium'' open only to those born to it. The author flags the phrasing as poor.}"
+  ],
+  [
+   4897,
+   "\\cpara{An imagined objection: not everyone can become Einstein.}"
+  ],
+  [
+   5111,
+   "\\cpara{Concedes the objection ``in the modern world,'' and says the author's transhumanism colors the answer.}"
+  ],
+  [
+   5441,
+   "\\cpara{Restates the concession.}"
+  ],
+  [
+   5575,
+   "\\cpara{Introduces ``Just another Jewish genius,'' a phrase the author cannot source, for a brilliant person who did nothing of lasting importance.}"
+  ],
+  [
+   5906,
+   "\\cpara{A counterfactual: a wrong problem, a wrong angle, less persistence, or a rival who got there first would have left Einstein ``just another Jewish genius.''}"
+  ],
+  [
+   6236,
+   "\\cpara{Says geniuses are not all that rare, so claiming a genius's intellect should be ``an ordinarily evaluable claim.'' No figure is given here. ``Einstein's Speed,'' nine days earlier, put ``a random number on it'': a one-in-a-million g-factor, ``implying at least six thousand potential Einsteins running around today.''}"
+  ],
+  [
+   6634,
+   "\\cpara{The central claim, offered with ``I suspect'': what separates such people from Einstein is not a lack of brilliance but a failure to choose an important problem. Tell people to choose one, the author adds, and they take the first cache hit''.}"
+  ],
+  [
+   6871,
+   "\\clogic{The account was well known before the post. Richard Hamming's talk ``You and Your Research'' (1986) said that great work ``is something else than mere brains,'' and ``If you do not work on an important problem, it's unlikely you'll do important work.'' Hamming differs on one point: for him ``it is that you have a reasonable attack'' that makes a problem important, where the post's next paragraph counts impossible-looking problems among the truly important ones. The post does not mention Hamming.}"
+  ],
+  [
+   7168,
+   "\\cpara{Says the truly important problems often look impossible or unclear, and that ``naive realism'' takes the look at face value.}"
+  ],
+  [
+   7606,
+   "\\cpara{The second requirement: a worthwhile angle of attack, without falling into an ``affective death spiral.''}"
+  ],
+  [
+   7861,
+   "\\cpara{The third: years of persistence, at a cost to one's other plans.}"
+  ],
+  [
+   8170,
+   "\\cpara{The fourth: no support from society.}"
+  ],
+  [
+   8244,
+   "\\cpara{Concludes that no aura of destiny is needed, and that the young Einstein would have shown none.}"
+  ],
+  [
+   8536,
+   "\\cfact{The record fits this. After graduating in 1900, Einstein spent almost two years applying for teaching posts without success, then took a post as an assistant examiner at the Swiss Patent Office in Bern. His employers would not promote him until he had ``fully mastered machine technology'' (Wikipedia, ``Albert Einstein'').}"
+  ],
+  [
+   8550,
+   "\\cpara{Restates: the birthright is not hidden but absent, and there is no separate magisterium for people who do important things.}"
+  ],
+  [
+   8774,
+   "\\cpara{States the author's stake: a ``genuinely important problem,'' an angle of attack, years of work, a support structure, and frequent meetings with people who want to see the author's ``aura of destiny.'' The problem is not named.}"
+  ],
+  [
+   9121,
+   "\\clogic{The challenge is the author's paraphrase (``in one way or another, say''). Read as a request for evidence of ability, it is what the post asked for a few paragraphs earlier, when it said such a claim ``should seem like an ordinarily evaluable claim.'' An ordinary evaluation asks for a record.}"
+  ],
+  [
+   9135,
+   "\\cpara{Credits Barbour with having ``seen through'' Einstein, a quality the author thinks could not be faked.}"
+  ],
+  [
+   9446,
+   "\\cpara{Reports, as ``something along the lines of,'' Barbour saying where Einstein missed the key insight; I could not check it against the book. Then states ``the Law'': ``No gods, no magic, and ancient heroes are milestones to tick off in your rearview mirror.''}"
+  ],
+  [
+   9805,
+   "\\cpara{Says that seeing through Einstein has to be achieved by understanding his work, not declared, as declaring that consciousness reduces to neurons does not explain how.}"
+  ],
+  [
+   10191,
+   "\\cpara{Guards against the opposite error: Einstein was no ordinary bloke. Doing what people call ``humanly impossible'' is the author's joy.}"
+  ],
+  [
+   10589,
+   "\\cfact{The link is to the author's page on the AI-Box Experiment: two games in 2002 in which the author, playing an AI, won release from the human ``gatekeeper.'' By the rules only the outcome is revealed, and the page calls the results ``strictly anecdotal evidence.'' In ``Shut Up and Do the Impossible!'' (October 2008, later in the book) the author reports three further games: ``I won the first, and then lost the next two.''}"
+  ],
+  [
+   10642,
+   "\\cpara{The conclusion: such powers come from seeing, with a shock, that they are normal. The link is to ``Something to Protect,'' which the book places later.}"
+  ],
+  [
+   10850,
+   "\\cpara{Extends the lesson to life in general.}"
+  ]
+ ]
+}

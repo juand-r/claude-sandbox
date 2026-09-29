@@ -1,0 +1,189 @@
+{
+ "slug": "my-childhood-role-model",
+ "header": "\\post{My Childhood Role Model}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/3Jpchgy53D2gB5qdk/my-childhood-role-model}\n",
+ "skeleton_sha": "e129639b37f48a9fa776cf909f2b0c8754c740f004db57feb87e1d1271f3a17e",
+ "post_sha": "34fc2b757f2ad845a205eec29b3e181a5278bfa988f932c76c39e0582b19502b",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{Introduces the first graph, the scale of intelligence as everyday life shows it.}"
+  ],
+  [
+   264,
+   "\\cpara{The first graph, which I could view: a horizontal line with ``Village idiot'' at the left end and ``Einstein'' at the right end.}"
+  ],
+  [
+   336,
+   "\\cpara{Calls that scale parochial: it covers only the minds we meet socially, which are human. Talk of artificial intelligence needs a wider one.}"
+  ],
+  [
+   753,
+   "\\cpara{The second graph: a line that runs off to the right as a dashed arrow. ``Mouse'', ``Chimp'', ``Village idiot'' and ``Einstein'' are all marked near the left end, and the last two almost touch.}"
+  ],
+  [
+   820,
+   "\\cpara{States the thesis: in the space of brain designs, the two humans are close together.}"
+  ],
+  [
+   1133,
+   "\\clogic{The list does not separate the two distances the post compares. Chimpanzee brains have the same parts; a comparative study that maps the two brains region to region finds the human prefrontal cortex ``significantly larger,'' not new (Amano, Tanabe and Ogihara, 2025). Shared parts cannot show that the chimpanzee is far away and Einstein near.}"
+  ],
+  [
+   1147,
+   "\\cpara{The comparison the thesis rests on, offered here without evidence. One measure fits it: Wikipedia's ``Brain size'' gives chimpanzee cranial capacity as 275 to 500 cm$^3$ and a modern human average of 1,473, so the human brain is about three to five times larger.}"
+  ],
+  [
+   1553,
+   "\\cpara{Attributes to Carl Shulman, with no source, the observation that some academics use the third scale.}"
+  ],
+  [
+   1691,
+   "\\cpara{The third graph: ``Mouse'', ``Chimp'', ``Village idiot'', ``Average Human'', ``College Professor'', ``Transhuman'' and ``Einstein'' spread along the line in that order, so that Einstein stands beyond the transhuman, nearest the dashed extension.}"
+  ],
+  [
+   1762,
+   "\\cpara{Reports Hofstadter's reaction at the 2006 Singularity Summit at Stanford, where both spoke (Wikipedia, ``Singularity Summit''). The words are given as ``something like this''; I found no transcript to check them against.}"
+  ],
+  [
+   2019,
+   "\\cpara{Reads the remark as a ``cultural gap.'' The post gives Hofstadter's one sentence but not his reasons, so the reading is the author's, and the reader cannot check it against Hofstadter's own view.}"
+  ],
+  [
+   2264,
+   "\\cpara{Places a Jupiter Brain, a computer the size of a planet, on the right of the scale; the joke about Einstein's brain makes the point that the scale runs far beyond humans.}"
+  ],
+  [
+   2437,
+   "\\cpara{Adds Deep Thought, the computer in Douglas Adams's \\textsc{The Hitchhiker's Guide to the Galaxy}, not the chess computer later named after it (Wikipedia, ``Deep Thought (chess computer)'').}"
+  ],
+  [
+   2864,
+   "\\cpara{Adds more minds from fiction and speculation: the Arisians of E.~E. Smith's Lensman novels; Robert Bradbury's Matrioshka brain, a computer powered by a whole star; and the Old One and the Blight, superintelligences in Vernor Vinge's \\textsc{A Fire Upon the Deep} (1992).}"
+  ],
+  [
+   3125,
+   "\\cpara{A General Systems Vehicle is a starship run by a Mind in Iain M. Banks's Culture novels. Grants that Einstein was very smart ``for a human.''}"
+  ],
+  [
+   3259,
+   "\\cpara{The evidence for the ``cultural gap'' is the author's own reading at twelve.}"
+  ],
+  [
+   3382,
+   "\\cpara{Concedes that the fictional minds of the last few paragraphs are no evidence, naming the fallacy the author had written about.}"
+  ],
+  [
+   3556,
+   "\\cpara{Offered with ``I suspect'': science fiction helps futurism by showing worlds outside one's own era. It sits uneasily with the post it links. ``The Logical Fallacy of Generalization from Fictional Evidence,'' earlier in the book, held that ``in my estimation, the most damaging aspect of using other authors' imaginations is that it stops people from using their own.'' Here other authors' imaginations are said to widen the reader's. The post does not reconcile the two.}"
+  ],
+  [
+   4117,
+   "\\cfact{The figure for our species is low, and was already low in 2008. The Omo fossils from Ethiopia were dated in 2005 to about 195,000 years (McDougall, Brown and Fleagle, \\textsc{Nature}); the Jebel Irhoud fossils from Morocco were dated in 2017 to about 315,000 (Wikipedia, ``Omo remains'' and ``Jebel Irhoud''). The point survives: every one of these figures is tiny beside 13.7 billion years (13.8 in current estimates).}"
+  ],
+  [
+   4131,
+   "\\cpara{Qualifies the claim both ways: some who never read science fiction can imagine other worlds, and some fans cannot.}"
+  ],
+  [
+   4374,
+   "\\cpara{``Yesterday'' is ``That Alien Message'' (22 May 2008), whose moral was ``That even Einstein did not come within a million light-years of making efficient use of sensory data.'' The Department of Defense is a joke added here.}"
+  ],
+  [
+   4580,
+   "\\cpara{Explains why that story showed a civilization of many Einsteins instead of one machine: readers would not credit a machine with inferences they had not worked out themselves.}"
+  ],
+  [
+   5176,
+   "\\cpara{Restates the point: readers would picture the machine as a ``ghost in a box'' that knows only what it has been told.}"
+  ],
+  [
+   5418,
+   "\\cpara{Raises the question whether one superintelligence could do what the story's civilization did.}"
+  ],
+  [
+   5644,
+   "\\cpara{Answers indirectly, with the arithmetic of ``The Failures of Eld Science'': 16 waking hours for 30 days is 28,800 minutes, or 5,760 five-minute insights. The figure is right. In that story, asked whether this is ``truly a realistic level of productivity,'' Jeffreyssai answers ``No''; the post's ``theoretically'' allows for that.}"
+  ],
+  [
+   6029,
+   "\\cpara{Explains the inefficiency: human brains were shaped for hunting and for arguing over shares, not for science.}"
+  ],
+  [
+   6370,
+   "\\clogic{The aside, offered with ``probably,'' has support in primatology. The Machiavellian intelligence or social brain hypothesis (Humphrey, 1976; Byrne and Whiten, 1988) holds that the demands of social life are ``a major driving force in the evolution of human intelligence'' (Wikipedia, ``Machiavellian intelligence hypothesis'').}"
+  ],
+  [
+   6384,
+   "\\cpara{Praises Einstein's physics as the repurposing of an ill-suited brain, with a joke about a car made of Jello.}"
+  ],
+  [
+   6695,
+   "\\cpara{Asks how badly evolution designed the human brain.}"
+  ],
+  [
+   6857,
+   "\\cpara{Says the answer comes from study of cognitive science; the next two paragraphs give hints.}"
+  ],
+  [
+   7001,
+   "\\cpara{First hint: the biases discussed on the blog.}"
+  ],
+  [
+   7079,
+   "\\cpara{Second hint: multiplying two three-digit numbers in one's head takes full concentration.}"
+  ],
+  [
+   7277,
+   "\\cpara{Concludes that Einstein's brain used its neurons as inefficiently as it used its data.}"
+  ],
+  [
+   7394,
+   "\\clogic{This ends the answer to the question raised above, whether one superintelligence could ``do all that.'' The hints show that human brains are slow at some tasks, so there is room above human performance. They do not show how far above, which was the question.}"
+  ],
+  [
+   7408,
+   "\\cpara{Mentions ``certain ulterior motives'' without naming them, and says the author's ideal was never Einstein. Two paragraphs later the ideal is named: a ``dream of an AI.''}"
+  ],
+  [
+   7700,
+   "\\cpara{From Schurz's address at Faneuil Hall, Boston, 18 April 1859. The wording matches Wikiquote's apart from punctuation.}"
+  ],
+  [
+   7937,
+   "\\cpara{Names the childhood role model: not a person but a dream of an AI.}"
+  ],
+  [
+   8149,
+   "\\cpara{Says the dream both helped and harmed, and does not say how. A later post in the book, ``My Childhood Death Spiral'' (September 2008), tells of an early admiration of intelligence that ``led to the adoption even of false happy beliefs about intelligence,'' the ``real wrong turn'' being the belief that a superintelligence would be moral. That post does not say it is the harm meant here.}"
+  ],
+  [
+   8227,
+   "\\cpara{States the objection to the post's own advice: an imagined ideal is ``only your own mind talking,'' and a wrong guess leads astray.}"
+  ],
+  [
+   8636,
+   "\\cpara{The case against human role models. It rests on the image of stars and on a hypothetical Einstein asking permission to surpass Newton; no case of someone held back by a human model is given.}"
+  ],
+  [
+   9501,
+   "\\clogic{Einstein's own record sits uneasily with this. He revered Newton and went beyond him. In his Autobiographical Notes (1949, in Schilpp's \\textsc{Albert Einstein: Philosopher-Scientist}) he wrote: ``Newton, forgive me; you found the only way which, in your age, was just about possible for a man of highest thought- and creative power.''}"
+  ],
+  [
+   9515,
+   "\\cpara{Two claims: an era's tools of thought support its thinkers, and Einstein's talk of an impersonal God shows how poorly he thought outside physics.}"
+  ],
+  [
+   9713,
+   "\\cfact{The post quotes nothing Einstein said. His best-known statements reject a personal God and use the word for the order of nature: ``I believe in Spinoza's God who reveals himself in the orderly harmony of what exists, not in a God who concerns himself with fates and actions of human beings''; and, in 1954, ``I do not believe in a personal God \\ldots\\ If something is in me which can be called religious then it is the unbounded admiration for the structure of the world so far as our science can reveal it'' (both as given in Wikipedia, ``Religious and philosophical views of Albert Einstein''). One may find this vocabulary misleading. The post calls it nonsense without saying which part, and judges his thinking outside physics by this one topic.}"
+  ],
+  [
+   10169,
+   "\\cpara{States the practical claim: aim only at what seems humanly possible and you ask too little, because reasons for impossibility come easily.}"
+  ],
+  [
+   10412,
+   "\\cpara{Concludes that the most important role models are imagined, and that only a dream of perfection draws on the full power of the part of oneself that dreams.}"
+  ]
+ ]
+}

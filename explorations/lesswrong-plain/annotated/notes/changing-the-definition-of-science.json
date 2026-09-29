@@ -1,0 +1,49 @@
+{
+ "slug": "changing-the-definition-of-science",
+ "header": "\\post{Changing the Definition of Science}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/SoDsr8GEZmRKMZNkj/changing-the-definition-of-science}\n",
+ "skeleton_sha": "3c519a512335aadaaec159661ee2cd9e324ddff9c8a3a6c4b3f30eef32d6dcaf",
+ "post_sha": "d3f7f85038b05556420be305c1d7629964affd1b101efb6a1da655c17b39fb62",
+ "edits": [],
+ "notes": [
+  [
+   154,
+   "\\cpara{Cites a New Scientist feature, Robert Matthews's ``Do we need to change the definition of science?'' (7 May 2008). The quoted passages match the article, apart from the style of dashes. The ``ungated'' copy could not be loaded in 2026.}"
+  ],
+  [
+   376,
+   "\\cpara{The first passage gives Max Tegmark's view that the multiverse stands or falls with the tested theories it follows from. After the cut comes the philosopher Colin Howson's proposal to replace Popper's deductive account of science with the weighing of evidence for rival theories.}"
+  ],
+  [
+   1305,
+   "\\cpara{Describes Howson's alternative: degrees of belief, tied to the mathematics of probability.}"
+  ],
+  [
+   1622,
+   "\\cpara{Says the author is less isolated than the author's manner suggests. The article bears this out. A Bayesian philosophy of science was an established position: Howson and Peter Urbach's \\textsc{Scientific Reasoning: The Bayesian Approach} first appeared in 1989, and John Earman's \\textsc{Bayes or Bust?} in 1992. This is the first post in the sequence to mention that literature.}"
+  ],
+  [
+   1725,
+   "\\cpara{Announces the differences between the author and the ``mainstream'' Bayesian account. The list that follows leaves out one that the quoted passage names: Howson's view rests on ``the subjective concept of belief.'' The Stanford Encyclopedia cites Howson (2000) for the view that Bayesian epistemology ``need not say what prior credences we should have except that they be coherent,'' and the article says Bayesian methods ``say nothing about what those initial beliefs should be.'' Two days earlier, ``Science Isn't Strict Enough'' denied that freedom: ``that doesn't mean you get a free, personal choice of making the priors whatever you want.''}"
+  ],
+  [
+   1849,
+   "\\cpara{The first difference: outside academia, the author can say ``extreme'' things that others ``might well already be thinking.'' That academics privately hold such views is offered as a possibility, with no example.}"
+  ],
+  [
+   2012,
+   "\\cpara{The main difference, which the author has not ``seen suggested elsewhere'': teaching probability theory must be joined with research on biases and social psychology before reasoning improves. The claim of novelty is about the author's reading. The field of judgment and decision making had given the idea a framework by the 1980s: normative models such as probability theory, descriptive models of how people actually reason, and prescriptive models, ``designs for improvement.'' In Jonathan Baron's 2012 summary, those designs include ``educational interventions \\ldots\\ to counteract heuristics that lead to biases.''}"
+  ],
+  [
+   2565,
+   "\\clogic{The example assumes that Aumann's religion is a failure of the reasoning that probability theory governs, and does not say so. Aumann has described it differently: the main part of religion ``is not about the way that we model the real world''; it is ``an experience,'' ``mainly an emotional and aesthetic one''; and ``It doesn't contradict; it is orthogonal'' (interview with Sergiu Hart, 2005). The same example appeared five days earlier in ``The Dilemma: Science or Bayes?''}"
+  ],
+  [
+   2772,
+   "\\cpara{The third difference: much better reasoning than science's is possible. The extreme case, a superintelligence that infers Newton's laws and thinks of general relativity from the first falling apple it sees, is asserted with no argument here. ``That Alien Message,'' four days later, makes the case at length.}"
+  ],
+  [
+   3562,
+   "\\clogic{``Orders of magnitude'' comes with no measure. The notes on ``Faster Than Science,'' two days later, take up the claim that human and academic science process evidence inefficiently.}"
+  ]
+ ]
+}

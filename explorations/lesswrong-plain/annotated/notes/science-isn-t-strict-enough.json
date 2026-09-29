@@ -1,0 +1,113 @@
+{
+ "slug": "science-isn-t-strict-enough",
+ "header": "\\post{Science Isn't Strict Enough}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/PGfJdgemDJSwWBZSX/science-isn-t-strict-enough}\n",
+ "skeleton_sha": "62ed39eaf47857faaef779468c3ee556bb0feeead460d99e12847776a08c93e7",
+ "post_sha": "5dde08e9c1552a36658d7faabef90c5f6094cd931b4b5d299ce6b988d924a35c",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{Retells the story of the author's teenage theory, first told in ``My Wild and Reckless Youth'' (2007) and again the day before in ``When Science Can't Help'' (see the notes there). The theory itself is still not described; this post needs only that it had experimental consequences and was professed testable.}"
+  ],
+  [
+   543,
+   "\\cpara{Says that this was all the virtue the young author had been taught to require.}"
+  ],
+  [
+   682,
+   "\\cpara{Says it was nowhere near the effort needed to get the theory right.}"
+  ],
+  [
+   801,
+   "\\cpara{The charge against the traditional ideal: anyone who tests a theory and accepts the result has played by the rules, and even a negative result counts as knowledge.}"
+  ],
+  [
+   1167,
+   "\\cpara{Adds that playing by the rules is not the same as getting it right.}"
+  ],
+  [
+   1333,
+   "\\cpara{Limits the claim to the ideal ``as it is traditionally preached,'' not the practice of science, and gives two reasons. The post quotes no text that states the ideal. A commenter, poke, objected in the comments that this ideal is ``a second-hand imprecise (idealized) description of science,'' a ``philosophical model'' that is not ``used (or aimed for) within science.'' The next post answers another part of the same comment.}"
+  ],
+  [
+   1846,
+   "\\cpara{Explains why the ideal leaves the choice of hypothesis to the scientist: a rule for choosing would need the armchair reasoning that Science rebelled against. The split between how a hypothesis is found and how it is tested is the one philosophers discuss as Reichenbach's contexts of discovery and justification (see the note on ``When Science Can't Help'').}"
+  ],
+  [
+   2406,
+   "\\cpara{Grants that this minimal demand is enough for science to progress, slowly, perhaps only as a generation of elders dies out.}"
+  ],
+  [
+   2843,
+   "\\cpara{Sums up: Science asks only that you accept reality when it hits you.}"
+  ],
+  [
+   3037,
+   "\\cpara{The contrast: probability theory gives one exact answer. The arithmetic checks. True positives are $0.01 \\times 0.8 = 0.008$ and false positives $0.99 \\times 0.1 = 0.099$, so the answer is $0.008/0.107 \\approx 7.48\\%$, which is 7.5\\% to one decimal. In this example the prior, 1\\%, is given; the harder case, where no one gives it, comes later in the post.}"
+  ],
+  [
+   3836,
+   "\\cpara{Quotes the third virtue, lightness, from the author's own ``Twelve Virtues of Rationality'' (2006). The quotation matches that text.}"
+  ],
+  [
+   4489,
+   "\\cpara{Restates the ideal: you may believe and test any hypothesis that experiment has not ruled out, and Science gives no official verdict on which is best to test.}"
+  ],
+  [
+   4851,
+   "\\clogic{Karl Popper, the tradition's best-known modern voice, did rank hypotheses before testing, but by content, not probability. In the Stanford Encyclopedia's summary, for Popper ``the more improbable a theory is the better it is scientifically, because the probability and informative content of a theory vary inversely.'' So the tradition does contain a criterion applied before the test; it favours bold theories rather than probable ones.}"
+  ],
+  [
+   4928,
+   "\\cpara{Says that within the bounds of the evidence, Science lets you wander as you please.}"
+  ],
+  [
+   5211,
+   "\\cpara{Says this does not fit Bayesianism's single ``exactly right'' estimate, nor Science's founding distrust of individual reasoning; perfect Bayesians would need no social process of science.}"
+  ],
+  [
+   5734,
+   "\\cpara{Tells how, around the time of the mistake, the author found a stricter standard in Kahneman, Tversky and Jaynes, one that could have said in advance that the hypothesis was a poor choice. The author's 2007 account of the switch names the same sources, with Laplace (``The Importance of Saying Oops'').}"
+  ],
+  [
+   6126,
+   "\\cpara{Grants that Bayes is much harder to use: it needs you to hear ``tiny false notes'' where Science needs you only to notice an anvil.}"
+  ],
+  [
+   6353,
+   "\\cpara{Says that under Science a later experiment corrects your mistakes, at worst after a couple of decades.}"
+  ],
+  [
+   6501,
+   "\\cpara{Says that reasoning without overwhelming evidence is like mathematics: one error in a hundred steps can lead anywhere.}"
+  ],
+  [
+   6830,
+   "\\cpara{Grants that Science has good reason not to trust individuals with this, and to ask for experimental proof even after someone says they have reasoned out the answer.}"
+  ],
+  [
+   7063,
+   "\\cpara{Concludes that someone who does not want to waste ten years must attempt the harder task anyway.}"
+  ],
+  [
+   7271,
+   "\\cpara{Here the post takes one side of a dispute among Bayesians and does not mention the other. In the Stanford Encyclopedia's account (``Bayesian Epistemology''), subjective Bayesians such as de Finetti and Savage hold ``that every prior is permitted unless it fails to be coherent,'' while objective Bayesians, Jaynes among them, add a further norm for priors. The point is made in full in the note on ``My Wild and Reckless Youth.''}"
+  ],
+  [
+   7669,
+   "\\cpara{Argues that if priors chosen by whim gave correct estimates, a mind could know things without looking. That is true of accuracy. The subjective school's claim, as the Encyclopedia states it, is about what is ``permitted,'' not about what is accurate, and the paragraph does not address it.}"
+  ],
+  [
+   8110,
+   "\\cpara{Says that a Bayesian answer exists even when it is hard to compute, because Bayes is ``the law'' behind every method. This is the thesis of ``Beautiful Probability,'' whose notes find its claims of coherence and optimality stated more broadly than the results behind them.}"
+  ],
+  [
+   8512,
+   "\\cpara{Grants that no one knows how to do Bayesian inference over all possible theories in practice, but says that human guesses do not therefore break the laws of probability.}"
+  ],
+  [
+   9077,
+   "\\cpara{Credits the commenter Nick Tarleton with the clearest statement of the point. The quotation matches the comment, which also defends the lax social standard: ``Surely this is a good thing, else fear of being thought stupid would overly discourage people from raising novel hypotheses.''}"
+  ]
+ ]
+}
