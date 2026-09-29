@@ -25,3 +25,25 @@ Why: Trivia, based on today's scores.
 - Before:  The most-voted comments on that post were indeed critical of it.}
 - After: }
 
+
+## annotated/afterwords/bayesians-vs-barbarians.tex
+
+Why: The drafts point is minor and stays in the Response and notes; the In short line keeps the main assessment.
+
+- Before: In short: an argument in principle that rests on the author's then unpublished decision theory and takes one side of a live dispute, and a practical fallback, a lottery enforced by punishment, that is the standard remedy for free riding and that real armies have used; the post separates its scheme from actual drafts by the prior agreement of those drafted, and says without evidence that present-day drafts lack it.
+- After: In short: an argument in principle that takes one side of a live dispute and rests on the author's decision theory, unpublished at the time, and a practical fallback, a lottery enforced by punishment, that is the standard remedy for free riding.
+
+
+## annotated/posts/bayesians-vs-barbarians.tex
+
+Why: Our own unsourced objection (the lottery and free riding); a scope sentence; a style nitpick.
+
+- Before:  The lottery does not by itself remove the temptation to free ride: for the reason given about the sausage, each AI taken alone could still do better by leaving its own code unchanged. Here the decision theory of the paragraphs before is what makes all of them change it; for humans, the post later adds enforcement.}
+- After: }
+
+- Before:  The post does not say whether killing an officer is right on other grounds.
+- After: 
+
+- Before: \cstyle{One sentence of 178 words, with six ``because'' clauses. Its last clause, the post's one claim about fighting spirit, is the most hedged (``just maybe,'' ``perhaps'').}
+- After: 
+

@@ -1,0 +1,206 @@
+{
+ "slug": "bayesians-vs-barbarians",
+ "header": "\\post{Bayesians vs. Barbarians}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/KsHmn6iJAEr9bACQW/bayesians-vs-barbarians}\n",
+ "skeleton_sha": "331a728aecd7e6673492fdaa5d3ab5bc8946447b9c9e8ca772ff7eae9688856f",
+ "post_sha": "241ec1d305d7cd866e7168ba321d16a64ee3af83f2067d2d19e375a895e26d09",
+ "edits": [
+  {
+   "at": 188,
+   "del_len": 2,
+   "del_sha": "ec4f8e3d1f7cafbdb86e908b6ad83e407ac36a9b3efabd8e24b56d80228be429",
+   "ins": "\\flushnotes\n\n\\begin{quote}\n"
+  },
+  {
+   "at": 468,
+   "del_len": 5,
+   "del_sha": "f412abde89f532ea251095979da7b065d90ad891ae0c9607ec9e2f0e9ef4aa15",
+   "ins": "\n\n"
+  },
+  {
+   "at": 650,
+   "del_len": 5,
+   "del_sha": "f412abde89f532ea251095979da7b065d90ad891ae0c9607ec9e2f0e9ef4aa15",
+   "ins": "\n\n"
+  },
+  {
+   "at": 836,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "\n\\end{quote}"
+  }
+ ],
+ "notes": [
+  [
+   133,
+   "\\cpara{Quotes three paragraphs of ``Why Our Kind Can't Cooperate'' (20 March 2009, earlier in this book), word for word. The post comes back to the quoted conclusion, that ``an uncoordinated mob gets slaughtered,'' near its end.}"
+  ],
+  [
+   215,
+   "\\cpara{The quoted passage: an army in which everyone knows strategy should not lose to one that only obeys, because a group that understood military theory would know that an uncoordinated mob loses.}"
+  ],
+  [
+   881,
+   "\\cpara{Sets up the thought experiment. The link on ``Evil'' is to ``Are Your Enemies Innately Evil?'' (2007, earlier in this book), which argues that enemies are seldom evil by nature. The Barbarians are a stipulated case.}"
+  ],
+  [
+   1103,
+   "\\cpara{Introduces the opposing view. No one is cited as holding it.}"
+  ],
+  [
+   1219,
+   "\\cpara{States the opposing view at length. Most of it describes the Barbarians. Its core is the sentence about the sausage, and that sentence is a standard result of economics, the free-rider problem. Mancur Olson put it in 1965: ``unless the number of individuals in a group is quite small, or unless there is coercion or some other special device to make individuals act in their common interest, rational, self-interested individuals will not act to achieve their common or group interests'' (\\textsc{The Logic of Collective Action}; quoted here from secondary sources, as I could not open the book). The view the post answers therefore has serious backing.}"
+  ],
+  [
+   2869,
+   "\\cpara{Begins the answer with a reminder that war is miserable, in the past and now.}"
+  ],
+  [
+   3183,
+   "\\cpara{Adds that losing is worse, and that deterrence needs only a credible promise to fight hard.}"
+  ],
+  [
+   3325,
+   "\\cfact{``Since the ancient times'' is right. The maxim is from the preface to book 3 of Vegetius's \\textsc{Epitoma rei militaris}, a Roman military handbook written between 383 and 450: ``Igitur qui desiderat pacem, praeparet bellum'' (so let him who wants peace prepare for war).}"
+  ],
+  [
+   3513,
+   "\\cpara{States what is at stake for the author: if rationalists always lost wars, the author could not advocate rationality for everyone. The post gives a second reason, self-image, at the end.}"
+  ],
+  [
+   3715,
+   "\\cpara{Grants that war is dirty. The remark about the US military's concern for enemy and civilian casualties is an aside, and no evidence is given for it.}"
+  ],
+  [
+   4082,
+   "\\cpara{Limits the claim: winning a war does not require dropping all morality, such as using torture or treating dissent as unpatriotic. The paragraph grants that war has been used as an excuse in recent US history.}"
+  ],
+  [
+   4458,
+   "\\cpara{States the thesis: real wars are not won by politeness, and a society that cannot face this fails. ``Reversed Stupidity Is Not Intelligence'' is the title of the author's post of December 2007, earlier in this book.}"
+  ],
+  [
+   4870,
+   "\\cpara{Announces the first argument, about ideal agents in principle. The human case comes later.}"
+  ],
+  [
+   5056,
+   "\\cpara{Bases the argument on the author's position on Newcomb's problem. That position is one side of a live dispute. The notes on ``Newcomb's Problem and Regret of Rationality'' (earlier in this book) state both sides.}"
+  ],
+  [
+   5214,
+   "\\cpara{Applies the same reasoning to voting. The arithmetic in the parenthesis is right. At 100,000 to 99,998 no single winning voter decides the result: without any one of them it is still 99,999 to 99,998. At 100,000 to 99,999 each of them does, since without any one of them it is a tie.}"
+  ],
+  [
+   5686,
+   "\\cfact{Information: whether voting is rational is an open question. The standard difficulty is the ``paradox of voting'' (Downs 1957): the expected costs of voting ``appear to exceed the expected benefits.'' The post's view has published company. Causal theories of voting (Goldman 1999; Tuck 2008) hold that voting is rational for a voter who cares enough about being ``among the joint causes of the outcome'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Voting'').}"
+  ],
+  [
+   6047,
+   "\\cfact{Earlier work supports this for programs. When players submit programs that can read each other's code, mutual cooperation in the one-shot dilemma can be an equilibrium of standard game theory: each program cooperates only with an exact copy of itself (McAfee 1984, J.~V. Howard 1988, Tennenholtz 2004, as reported by Wikipedia, ``Program equilibrium''). That result needs identical code. For programs that differ, a 2014 paper that Yudkowsky co-wrote (B\\'ar\\'asz and others) built agents whose cooperation ``does not require exact equality of the agents' source code.''}"
+  ],
+  [
+   6141,
+   "\\clogic{Here the post takes a side in a live dispute, and leaves ``the appropriate sense'' unspecified. The \\textsc{Stanford Encyclopedia}'s entry on the dilemma calls the argument for cooperating with a partner who reasons as you do ``controversial.'' The other side: ``my action is causally independent of my replica's,'' and since defecting pays more whatever the other does, ``I should defect.'' The entry cites Binmore (1994) ``for a reformulation and extended rebuttal.''}"
+  ],
+  [
+   6155,
+   "\\cpara{States the general claim, as the author's belief: agents with the author's decision theory, and common knowledge of it, ``will end up at Pareto optima instead of Nash equilibria.'' The claim rests on that theory, which the post does not give; it was unpublished at the time (``Timeless Decision Theory'' appeared in 2010; see the notes on ``Newcomb's Problem and Regret of Rationality''). A reader cannot check the claim from the post.}"
+  ],
+  [
+   6651,
+   "\\cpara{The lottery works as described. Before the draw every AI has the same chance of being chosen, so each can prefer a war fought by the chosen to surrender. After the draw the chosen would rather not fight, and the code changed in advance removes that choice.}"
+  ],
+  [
+   7118,
+   "\\cpara{Says that the author's decision theory reaches the same result without changing code. The theory is not given (see the note on Pareto optima above).}"
+  ],
+  [
+   7231,
+   "\\cpara{States the objection fairly: humans are not perfectly rational and cannot read each other's code.}"
+  ],
+  [
+   7581,
+   "\\cpara{Answers that the pure one-shot dilemma is rare in life, for three reasons: reputation, concern for others, and incentives. These are the ordinary routes to cooperation in game theory and economics, and this answer, unlike the argument before it, does not depend on the author's decision theory. The notes on ``The True Prisoner's Dilemma'' give evidence on how far people care about others.}"
+  ],
+  [
+   7971,
+   "\\cpara{The human case, hedged (``I do think''). It asks that children not be told that ideal rationalists defect in the dilemma. That is what the standard theory teaches, since defection dominates in the one-shot game (the notes on ``The True Prisoner's Dilemma'' check this). The post's reason for rejecting it is again its position on Newcomb's problem, the side of the dispute described in the note on the AIs above.}"
+  ],
+  [
+   8599,
+   "\\cstyle{``Lottery'' here means the election of the earlier paragraph. Elsewhere the post uses the word for the draw that picks soldiers.}"
+  ],
+  [
+   8949,
+   "\\cpara{Predicts, with ``I think'' and ``seems,'' that people in such a culture would volunteer. For information, Britain in the First World War fits both this and the fallback that follows. In the first weeks of the war, by 12 September 1914, ``almost half a million men had enlisted.'' ``By the beginning of 1916, enthusiasm for volunteering had waned,'' and Parliament passed conscription in January 1916 (Wikipedia, ``Kitchener's Army'' and ``Military Service Act 1916'').}"
+  ],
+  [
+   9262,
+   "\\cpara{Asks what happens if too few volunteer.}"
+  ],
+  [
+   9337,
+   "\\cpara{The fallback: incentive mechanisms. This is the remedy in Olson's sentence quoted above, ``coercion or some other special device.''}"
+  ],
+  [
+   9520,
+   "\\cpara{Applies the lottery to humans, and allows that people may not keep a precommitment without enforcement.}"
+  ],
+  [
+   9812,
+   "\\cpara{Proposes enforcement, hedged (``perhaps''): courage drugs, and shooting selectees who run. The reasoning before the draw is the one checked above for the AIs. Hobbes drew a similar line in \\textsc{Leviathan} (1651, chapter 21). A man commanded to fight who runs from fear is ``not esteemed to do it unjustly, but dishonourably''; but ``he that inrowleth himselfe a Souldier'' is obliged ``not to run from it, without his Captaines leave,'' and when the commonwealth's defence ``requireth at once the help of all that are able to bear Arms, every one is obliged.''}"
+  ],
+  [
+   10005,
+   "\\cfact{For information, real armies have used this measure. A British memorial commemorates ``the 309 British Army and Commonwealth soldiers executed after courts-martial for desertion and other capital offences'' in the First World War. The Soviet Order No.~227 (1942) set up detachments behind unstable divisions ``to shoot in place panic-mongers and cowards'' (both as reported by Wikipedia). What the post adds is an agreement by everyone before the lottery, not the measure.}"
+  ],
+  [
+   10217,
+   "\\cpara{Repeats the refrain.}"
+  ],
+  [
+   10292,
+   "\\cpara{Separates the scheme from real drafts. The difference claimed is in who sets the draft up and why, not in the mechanism. The Vietnam draft that the paragraph mentions was itself run by lottery from December 1969, introduced because the earlier selection was seen as ``biased against the poor and the uneducated'' (Wikipedia, ``Vietnam War draft''). The claim that current drafts are not ``collective attempts by a populace'' is given without evidence.}"
+  ],
+  [
+   10551,
+   "\\cfact{A figure of speech. For information on the dispute over conscription, one result from after the post: in September 2013 Swiss voters rejected the abolition of compulsory military service, 73.2 per cent to 26.8 (Wikipedia, ``2013 Swiss referendums'').}"
+  ],
+  [
+   10833,
+   "\\cpara{Raises the question of obedience.}"
+  ],
+  [
+   10931,
+   "\\cpara{Gives marching as the picture of coordination, hedged (``perhaps''). The link is to ``Your Price for Joining'' (26 March 2009, earlier in this book), which argues, with ``It seems to me,'' that people in the ``atheist/libertarian/technophile/sf-fan/etcetera cluster'' set their price for joining a group too high.}"
+  ],
+  [
+   11215,
+   "\\cpara{Applies the same reasoning to obedience in three conditional steps: use a better group method if there is one; otherwise commit to obey the captain; and if humans cannot keep that commitment, agree in advance to shoot soldiers who disobey.}"
+  ],
+  [
+   11966,
+   "\\clogic{Read narrowly, the sentence is consistent: an argument from prior agreement does not bind people who never agreed. For information: from 1969 to 1972 there were 904 known and suspected fragging incidents using explosives, with 99 deaths, most of the victims or intended victims officers or non-commissioned officers (George Lepre, as reported by Wikipedia, ``Fragging'').}"
+  ],
+  [
+   11980,
+   "\\cpara{Returns to the quoted opening: an uncoordinated mob gets slaughtered, so unified orders must come from somewhere. Explains why the post says ``clever'' here rather than ``rational.''}"
+  ],
+  [
+   12630,
+   "\\cpara{Leaves open, as ``an important question,'' whether a group method can work better than a leader.}"
+  ],
+  [
+   13063,
+   "\\cpara{Gives the post's purpose: what we believe about a society of people like us reflects how we see ourselves. The post says plainly that it does not expect rationalists to run a country.}"
+  ],
+  [
+   14543,
+   "\\cpara{Draws the conclusion about self-image.}"
+  ],
+  [
+   14714,
+   "\\cpara{Ends with the author's fictional teacher Jeffreyssai and the beisutsukai, the Bayes-users of the author's stories (see the notes on ``The Ritual'' and ``Final Words''). The link on ``this way'' is to ``The Logical Fallacy of Generalization from Fictional Evidence'' (2007). The post offers the image as a ``motivating vision,'' not as evidence, and says that how it would work remains an open question.}"
+  ]
+ ]
+}

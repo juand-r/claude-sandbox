@@ -522,3 +522,4 @@ Six agents. Edits in `docs/raz/changes/batch06b.md`.
   the "We now know" diagnosis of religious scientists (Waterline); the unhedged history of
   martial-arts decline (Epistemic Viciousness); the diagnosis from one fundraiser (Why Our
   Kind Can't Cooperate), with outside cases as information.
+- Tooling, whole-book pass: md2tex merges an opening blockquote into a preceding link line ("Previously:" then ">"), leaving literal ">" markers; Bayesians vs. Barbarians was repaired by hand (markup only). Check other posts with that opening.
