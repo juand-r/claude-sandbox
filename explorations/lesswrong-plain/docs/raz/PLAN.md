@@ -52,4 +52,4 @@ posts are merged in.
 | 3a | The Simple Math of Evolution, Fragile Purposes (Book III) | 24 | yes | yes | 4bf32c7 |
 | 3b | A Human's Guide to Words (rest of Book III) | 26 | yes | yes | b4b7634 |
 | 4a | Lawful Truth, Reductionism 101, Joy in the Merely Real (Book IV) | 31 | yes | yes | db86c92 |
-| 4b | Physicalism 201 (Book IV) | 15 | yes | yes | see git log |
+| 4b | Physicalism 201 (Book IV) | 15 | yes | yes | 827d4ec |
