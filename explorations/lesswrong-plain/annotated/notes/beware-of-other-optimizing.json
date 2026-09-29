@@ -1,0 +1,105 @@
+{
+ "slug": "beware-of-other-optimizing",
+ "header": "\\post{Beware of Other-Optimizing}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/6NvbSwuSAooQxxf7f/beware-of-other-optimizing}\n",
+ "skeleton_sha": "0dc75d19c7f7e37f14e1adb91def44baa9cb99249cdf9c8ed1883eb68eaf02ce",
+ "post_sha": "f729ebf884633bddfc381d6ba62295b9eab9f26cb55fd8f55fd03a44da05321b",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{States the problem as the author's observation, and offers the explanation that follows with a hedge: ``I think I have some idea of how the problem arises.''}"
+  ],
+  [
+   338,
+   "\\cpara{Begins an imagined scenario addressed to the reader: nineteen webpages of advice on productivity, dieting and saving money.}"
+  ],
+  [
+   616,
+   "\\cpara{Most of the advice seems silly, and the two methods tried fail. The paragraph allows two causes, ``The advice was wrong, or you couldn't do it,'' a distinction the post returns to with willpower.}"
+  ],
+  [
+   1061,
+   "\\cpara{The twentieth method works.}"
+  ],
+  [
+   1245,
+   "\\cpara{Success makes the reader sure of having found ``the real way,'' and ready to press it on a trusted friend.}"
+  ],
+  [
+   1824,
+   "\\cpara{Ends the scenario with the advice delivered in person.}"
+  ],
+  [
+   1948,
+   "\\cpara{A joke at the author's expense: people who have learned not to preach to their families still try it on the author. It sets up the post's source of evidence, the author's experience as a frequent target of advice.}"
+  ],
+  [
+   2293,
+   "\\cpara{The anecdote, reported as the author's experience. The adviser, a board member of the author's institute, gave the tip as a reason why the author did not need a salary increase. So the first example is also, it seems, advice from someone with leverage over the author, the subject of the post's second half.}"
+  ],
+  [
+   2822,
+   "\\cpara{The lesson of the anecdote: the same tip on a blog would have been read and forgotten, but delivered in person by a friend it felt like ``the secret.''}"
+  ],
+  [
+   3641,
+   "\\cpara{Generalizes from the author's many advisers. Each found a method that worked for them, and the methods differ, which the author reads as people differing in what works. Others read the same variety as mostly bad advice.}"
+  ],
+  [
+   4199,
+   "\\cpara{A concession: some advice helps. ``Stuck In The Middle With Bruce'' was posted on LessWrong by CronoDAS on 9 April 2009, the day before this post. It introduced an essay by John F. Rizzo, a writer on the card game Magic: the Gathering, about ``people's need to lose.''}"
+  ],
+  [
+   4520,
+   "\\cpara{The thesis in one sentence. It is a claim about advice given to the author (``for me''), and its support is the experience the post has just described. It is stated as an exact equality, but nothing in the post measures it; it is best read as a rule of thumb.}"
+  ],
+  [
+   4787,
+   "\\cpara{Raises the obvious objection itself: ``Different things work for different people'' is also a phrase used to shield claims from criticism. ``Dark Side Epistemology'' (October 2008) is earlier in the book.}"
+  ],
+  [
+   5179,
+   "\\cpara{The answer to the objection: until the general laws of what works for whom are known, some methods will work for one person and not another, and the adviser should accept ``No.''}"
+  ],
+  [
+   5557,
+   "\\cpara{Turns to power. An adviser with power over the other person must be readier still to take ``No.'' The paragraph combines a maxim, a finding the author cannot locate, and an anecdote.}"
+  ],
+  [
+   6105,
+   "\\cfact{The research is less settled than ``has been shown'' suggests. Galinsky, Magee, Inesi and Gruenfeld (\\textsc{Psychological Science}, 2006) found that ``power was associated with a reduced tendency to comprehend how other people see, think, and feel.'' Schmid Mast, Jonas and Hall (\\textsc{Journal of Personality and Social Psychology}, 2009) found in four studies that ``high power resulted in more interpersonal sensitivity than low power.'' The post's advice does not depend on either result.}"
+  ],
+  [
+   6276,
+   "\\cpara{Adds the case of methods that need willpower. When one fails for someone else, the adviser concludes that the other person is lazy and applies pressure.}"
+  ],
+  [
+   6629,
+   "\\cpara{Grants that people are sometimes lazy (``I suppose''), and warns against assuming you can tell when. That the ability is ``extremely rare'' is the author's judgment, applied first to the author (``I surely don't have it'').}"
+  ],
+  [
+   7698,
+   "\\cpara{Extends the warning from power to leverage: holding something the other person needs. In a comment the same day, the author placed the post in a sequence on ``Rationalist Communities,'' since other-optimizing ``is a mode by which managers sabotage the managed.''}"
+  ],
+  [
+   7935,
+   "\\cpara{Offers Ayn Rand's rule over her followers as an example, with a hedge (``can be seen in just this light''). The link is to the author's ``Guardians of Ayn Rand'' (December 2007), which the book does not include. That post gave the same reading: ``She found herself with the power to crush those of whom she disapproved, and she didn't resist the temptation of power.''}"
+  ],
+  [
+   8216,
+   "\\cpara{The general claim, stated without a hedge or a source. ``Inferential distance'' links to ``Expecting Short Inferential Distances,'' earlier in the book.}"
+  ],
+  [
+   8549,
+   "\\cfact{Research supports the claim. Ross, Greene and House (1977) named the false consensus effect: people ``see their own behavioral choices and judgments as relatively common and appropriate to existing circumstances.'' Their raters also made more ``extreme predictions'' about the personalities of people who did not share their own preference (both as reported in Wikipedia, ``False consensus effect''). That fits the adviser who reads a failure as laziness.}"
+  ],
+  [
+   8563,
+   "\\cpara{Admits that the author makes the same mistake, and says that being a frequent target of advice has taught the author to notice it.}"
+  ],
+  [
+   8802,
+   "\\cpara{Ends with the author's own rule: accept ``No'' and keep looking for deeper laws. The next post in the book, ``Practical Advice Backed By Deep Theories'' (25 April 2009), takes up that search. Its main example is the Shangri-La Diet, of which the author writes: ``for some people, like me, it doesn't seem to work.''}"
+  ]
+ ]
+}

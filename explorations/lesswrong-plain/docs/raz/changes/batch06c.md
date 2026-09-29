@@ -47,3 +47,14 @@ Why: Our own unsourced objection (the lottery and free riding); a scope sentence
 - Before: \cstyle{One sentence of 178 words, with six ``because'' clauses. Its last clause, the post's one claim about fighting spirit, is the most hedged (``just maybe,'' ``perhaps'').}
 - After: 
 
+
+## annotated/afterwords/the-sin-of-underconfidence.tex
+
+Why: The author's observation of the community is hedged and judged as an observation (Book VI rule).
+
+- Before: Two points go beyond the evidence given. The ranking of underconfidence among the sins rests on the author's impression of the aspiring rationalists the author meets.
+- After: Two points rest on the author's own view. The ranking of underconfidence among the sins is the author's impression, hedged (``does seem''), of the aspiring rationalists the author meets.
+
+- Before: ; the claim that underconfidence is common among aspiring rationalists rests on the author's impression.
+- After: , with its ranking of underconfidence offered as the author's impression.
+

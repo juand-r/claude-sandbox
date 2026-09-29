@@ -1,0 +1,145 @@
+{
+ "slug": "the-sin-of-underconfidence",
+ "header": "\\post{The Sin of Underconfidence}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/pkFazhcTErMw7TFtT/the-sin-of-underconfidence}\n",
+ "skeleton_sha": "33dabbfd1b009da1404dfec247314f3981f958b6c901b522f1d1f33fb49b355d",
+ "post_sha": "78203da6377a4d9cc91d0d4b9dc9b2362a6c40a56667062e80222156bdab09b2",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{Names underconfidence as the third of ``three great besetting sins of rationalists''; the post does not name the other two. ``Final Words'' (27 April 2009), placed earlier in the book, has Jeffreyssai warn of three flaws, the third of which is underconfidence; the notes there discuss the link. The line about Michael Vassar is a joke at the author's expense.}"
+  ],
+  [
+   377,
+   "\\cpara{Gives the reason for worry: people who know about a bias may correct too far, and cannot tell how far is enough. The claim is hedged (``not unheard of'').}"
+  ],
+  [
+   647,
+   "\\cfact{Research supports it. Wegener and Petty, who study how people correct for bias, write that ``corrections often result in `overcorrections' wherein biases opposite to the suspected bias are created'' (\\textsc{Advances in Consumer Research} 28, 2001).}"
+  ],
+  [
+   1048,
+   "\\cpara{Describes the sense of futility that follows.}"
+  ],
+  [
+   1187,
+   "\\cpara{Argues that overconfidence is easily cast as the sin of pride, from ``that other list,'' the seven deadly sins, which has no warning against too much humility. The links are to the author's ``The Proper Use of Humility'' (2006) and ``The Proper Use of Doubt'' (2007), both earlier in the book.}"
+  ],
+  [
+   2004,
+   "\\cpara{Why modesty feels like the safer error: being caught at it costs little, and it looks kind.}"
+  ],
+  [
+   2368,
+   "\\cpara{The diagnosis: someone who has read many studies of overconfidence, and does not know how overconfident they are, may correct too far. ``Knowing About Biases Can Hurt People'' (April 2007, earlier in the book) described another way the same knowledge can harm: people gain ``more ammunition with which to argue against anything they don't like.'' Here the knowledge is turned against one's own abilities.}"
+  ],
+  [
+   2748,
+   "\\cpara{Promises advice, not a formula.}"
+  ],
+  [
+   2923,
+   "\\cpara{The danger: passing up what you could have done. The link is to ``Use the Try Harder, Luke,'' earlier in the book.}"
+  ],
+  [
+   3098,
+   "\\cpara{The first advice: test hypotheses about your own abilities. The example is the AI-Box Experiment, and the record matches ``Shut Up and Do the Impossible!'' (October 2008), which reports three games for large stakes after two earlier wins: ``I won the first, and then lost the next two.'' The notes on ``Einstein's Superpowers'' give the rules of the experiment and what can be known of its results.}"
+  ],
+  [
+   3827,
+   "\\cpara{Claims that smart people often stop stretching because they are used to winning. The link goes to a bookseller's page for \\textsc{Why Smart People Can Be So Stupid} (Yale University Press, 2002), edited by Robert J. Sternberg.}"
+  ],
+  [
+   4153,
+   "\\cpara{Reports an explanation, with ``It is said'': people who define themselves by ``intelligence'' rather than ``effort'' avoid hard problems.}"
+  ],
+  [
+   4414,
+   "\\cfact{This is Carol Dweck's line of research. Mueller and Dweck (1998) found that fifth graders praised for intelligence ``care more about performance goals relative to learning goals than children praised for effort.'' A later study (Li and Bates, 2019), whose ``Study 1 closely replicated Mueller and Dweck (1998),'' found no effect on ``any of the 8 motivation and attribution measures used by Mueller and Dweck (1998),'' though it found one on a test taken after failure. The post's ``It is said'' commits it to neither result.}"
+  ],
+  [
+   4428,
+   "\\cpara{Declines the ``effort'' framing, since ``trying to try'' ``seems like a path to failure,'' and restates the advice as testing your level. Consolation is allowed for keeping the habit of challenge, and for the information gained, provided you resolve not to need the same information again.}"
+  ],
+  [
+   5638,
+   "\\cpara{Balances the advice: never losing means the challenges are too easy, yet each should be played to win.}"
+  ],
+  [
+   5935,
+   "\\cfact{The link is to David Sirlin's ``Playing to Win.'' Sirlin's scrub is a player ``so shackled by self-imposed handicaps as to never have any hope of being truly good at a game,'' and one of the handicaps Sirlin describes is defining skill as ``whatever subset of the game they're good at.'' The post's use fits.}"
+  ],
+  [
+   5951,
+   "\\cpara{An imagined speech by a master of the ``Competitive Conspiracy,'' an order from the author's fiction (it appears in ``Class Project'' and ``Final Words''): losing should hurt, but not so much that you flee challenges.}"
+  ],
+  [
+   6541,
+   "\\cpara{The second advice, seek challenges that can humiliate but not kill, and the author's own case: a proposed debate, without preparation, against a theist said to have beaten Christopher Hitchens.}"
+  ],
+  [
+   6826,
+   "\\cfact{The theist was William Lane Craig, as the author confirmed in a comment in 2013. Craig debated Hitchens at Biola University on 4 April 2009, sixteen days before this post. In the same comment the author wrote: ``Craig declined to debate me.''}"
+  ],
+  [
+   7653,
+   "\\cfact{Commenters urged the author to prepare, and one asked whether this was self-handicapping after all. The next day the author replied that ``the main thing that moved me was the comment about Richard Carrier also losing,'' and that ``it might still be a test of my ability even if I prepare.''}"
+  ],
+  [
+   7667,
+   "\\cpara{Limits the advice: when you must win, make winning as easy as possible.}"
+  ],
+  [
+   8034,
+   "\\cpara{A subtler form: lost momentum, in which you raise doubts about yourself and never test them. The next five paragraphs describe it.}"
+  ],
+  [
+   8452,
+   "\\cpara{The slowdown is gradual, with no moment of decision.}"
+  ],
+  [
+   8878,
+   "\\cpara{Names the missing step: the doubts could be answered by testing.}"
+  ],
+  [
+   9098,
+   "\\cpara{The end state: doubt never resolved, ``the humility of refusal,'' and cynicism.}"
+  ],
+  [
+   9507,
+   "\\cpara{Introduces the last advice, a question to ask of any habit of thought.}"
+  ],
+  [
+   9780,
+   "\\cpara{Applies the question to arguments the author has rejected before, and to habits of doubt, each posed as ``stronger, or weaker?''}"
+  ],
+  [
+   10366,
+   "\\clogic{Each of the three is argued in an earlier post. The first is an open dispute: the notes on ``Newcomb's Problem and Regret of Rationality'' give survey figures showing that in 2009 and 2020 more philosophers chose two boxes than one.}"
+  ],
+  [
+   10894,
+   "\\cfact{The link is to the author's ``Crisis of Faith'' (October 2008), which set its own limit: ``Not every doubt calls for staging an all-out Crisis of Faith.''}"
+  ],
+  [
+   11070,
+   "\\cpara{Gives signs you can observe: more precautions, more self-testing and fewer failures mean stronger; never failing, avoiding challenges and feeling hopeless mean weaker. With them the question can be checked, not only felt.}"
+  ],
+  [
+   11576,
+   "\\cpara{The author's childhood case: practice scores fell while the author erased correct answers, and rose on trusting instinct. The lesson is hedged (``does not always''), and the author adds that the test was needed to learn it.}"
+  ],
+  [
+   12311,
+   "\\cfact{The general finding runs the other way. Kruger, Wirtz and Miller (2005) report: ``Most answer changes are from incorrect to correct, and people who change their answers usually improve their test scores.'' The author's case was an exception found by testing, which is the post's point.}"
+  ],
+  [
+   12325,
+   "\\cpara{Concludes that the attempt to be rational leads to this error, and that it is a ``stopping mistake'': it prevents the experience that would correct it. That is a reason, not only an impression, for ranking it among the sins.}"
+  ],
+  [
+   12620,
+   "\\cpara{Returns to the opening ranking, on the author's impression (``does seem'') of the aspiring rationalists the author meets.}"
+  ]
+ ]
+}
