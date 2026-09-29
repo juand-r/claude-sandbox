@@ -1,0 +1,265 @@
+{
+ "slug": "final-words",
+ "header": "\\post{Final Words}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/yffPyiu7hRLyc7r23/final-words}\n",
+ "skeleton_sha": "f9119a85216102ec3e89925c01522fd0278b4dcd3ef9fa7455631a14ee2767ef",
+ "post_sha": "54caee961d1c4388f4bc0b7cf99a2aba2de05ba96e1a9126b58d102140dd6163",
+ "edits": [],
+ "notes": [
+  [
+   108,
+   "\\cpara{Opens at dawn on Brennan and his fellow students, summoned by their teacher, Jeffreyssai. It is the last of the book's five stories in this setting.}"
+  ],
+  [
+   274,
+   "\\cpara{Sets the scene: the five students wait on Mount Mirror, a peak said to overlook all the lands and seas.}"
+  ],
+  [
+   538,
+   "\\cpara{The narrator corrects the sentence before: no one place, and no kind of vision, shows the whole world, although there is only one world. The aside fits the book's distinction between map and territory: every view is partial, and the world is one.}"
+  ],
+  [
+   975,
+   "\\cpara{Hiriwa asks what the next lesson will be.}"
+  ],
+  [
+   1103,
+   "\\cpara{Taji thinks they have learned nearly everything the masters know.}"
+  ],
+  [
+   1337,
+   "\\cfact{``Beisutsukai'' is a coined Japanese form of ``Bayes-user'': ``beisu'' for Bayes and ``tsukai'' for user, as the LessWrong wiki explains. The book's stories do not translate it; they also call the society the Bayesian Conspiracy.}"
+  ],
+  [
+   1387,
+   "\\cpara{Yin names what they hope remains: the ``real'' secrets. Jeffreyssai's answer will be that what remains cannot be taught.}"
+  ],
+  [
+   1528,
+   "\\cpara{Styrlyn does not share the excitement. Brennan suspects he is older than he admits; ``The Failures of Eld Science'' calls him ``one of the older-looking students''.}"
+  ],
+  [
+   1645,
+   "\\cpara{Brennan, who ``kept high company,'' expects any secret to have a price and thinks he can guess it. The story leaves the guess unstated.}"
+  ],
+  [
+   2500,
+   "\\cpara{The turn: there is no next lesson. The training is over.}"
+  ],
+  [
+   2743,
+   "\\cpara{Jeffreyssai concedes the limits of his teaching: it is incomplete, it was not heard as he meant it, it leaves out ``the one most important thing,'' and it will harm the students. He does not say what the missing thing is.}"
+  ],
+  [
+   3470,
+   "\\cpara{The story's central claim: mastery cannot be passed on in a classroom. It comes from using what one was taught until it fails (``until they shatter in your hands''). Jeffreyssai gives this as what he knows of his own art and of other masters (``There is no master here whose art is entirely inherited''), not as a proven law.}"
+  ],
+  [
+   4141,
+   "\\clogic{The author had made a related point earlier in the book, in ``Positive Bias: Look Into the Dark'': ``So much of a rationalist's skill is below the level of words.''}"
+  ],
+  [
+   4478,
+   "\\cpara{The speech ends in its paradox: the teacher sends his students out to fail, since on his account failure is the road left to them.}"
+  ],
+  [
+   4824,
+   "\\cpara{Yin asks the question the speech raises: if teaching cannot make masters, why teach?}"
+  ],
+  [
+   4966,
+   "\\cpara{Jeffreyssai reads a flicker of Brennan's eyelids as a sign that he has an answer.}"
+  ],
+  [
+   5057,
+   "\\cpara{Brennan's answer: without teaching there would be ``no chance at all.''}"
+  ],
+  [
+   5177,
+   "\\cpara{Jeffreyssai's reason for teaching: an untaught student who fails may take the failure for ``the limits of Reason itself,'' while a taught one may recover, ``determined to remake your Art.'' ``Even so'' accepts Brennan's answer, and the end of his reply softens it: untaught, the chances would be ``less,'' not nil.}"
+  ],
+  [
+   5814,
+   "\\clogic{The crisis meant here is the failure of the Art in use. It is a different thing from the deliberate crisis of ``Crisis of Faith,'' which tells the reader to ``stage a Crisis of Faith,'' and which Jeffreyssai begins in ``The Ritual.'' That one reviews a single belief.}"
+  ],
+  [
+   6075,
+   "\\clogic{Put as fact (``the reality will be''), this assigns every failure to the student and none to the Art, and the story gives no way to tell which is at fault in a given case. Read as advice on how to take a failure, it is the attitude of ``Something to Protect'': say ``I must have had the wrong conception of rationality,'' not ``Look at how rationality gave me the wrong answer!''}"
+  ],
+  [
+   6284,
+   "\\cpara{Jeffreyssai does not know whether failure is the only road to mastery, and the narrator treats the admission as evidence (``from which the overall state of the evidence was obvious enough''). So the ``can only'' of his speech is hedged; what he doubts is a road that ``goes only through the monastery.'' He then turns to the ``old failure modes.''}"
+  ],
+  [
+   6760,
+   "\\cpara{The first flaw: looking ``just the slightest bit harder'' for flaws in arguments whose conclusions one dislikes. The warning that follows restates, as a conditional, the thesis of ``Knowing About Biases Can Hurt People'': ``If you're irrational to start with, having more knowledge can hurt you.'' The notes on that post assess its evidence.}"
+  ],
+  [
+   7283,
+   "\\cpara{The second flaw: cleverness, and ideas ``commended too much by their elegance and too little by their realism'' (offered with ``perhaps''). The paragraph also says why a known weakness stays a weakness: the clever value cleverness for itself (``would my life even be worth living?''), as a Competitor values a fair challenge and a Bard values drama.}"
+  ],
+  [
+   8119,
+   "\\cpara{The third flaw: underconfidence that feels like humility, with doubts left untested and decisions put off, ending in lost ``momentum.'' The paragraph condenses ``The Sin of Underconfidence,'' posted a week earlier and placed later in the book. That post calls underconfidence the third of ``three great besetting sins of rationalists'' without naming the first two; this story names all three.}"
+  ],
+  [
+   8877,
+   "\\cpara{Gives the title: these are his last words as their teacher.}"
+  ],
+  [
+   9324,
+   "\\cpara{Hiriwa has had no chance to say her own final words.}"
+  ],
+  [
+   9413,
+   "\\cpara{Jeffreyssai passes on his own teacher's answer, and adds the line the ending turns on: ``One of you at least seems likely to come back.''}"
+  ],
+  [
+   9904,
+   "\\cpara{Taji's joke names the Bardic Conspiracy, whose taste for drama the second flaw mentioned.}"
+  ],
+  [
+   10016,
+   "\\cpara{Yin jokes about her own send-off from ``Diamond Sea University.''}"
+  ],
+  [
+   10300,
+   "\\cpara{Brennan had expected the training to end, and has packed.}"
+  ],
+  [
+   10480,
+   "\\cpara{Brennan answers with a proverb, as a pose of mystery: ``it is futile to inquire how a beisutsukai master knows a thing.''}"
+  ],
+  [
+   10727,
+   "\\cpara{Brennan states as fact a guess that Styrlyn has packed too. The narrator makes plain that the ``inscrutable foreknowledge'' is an image, and the statement a bet.}"
+  ],
+  [
+   10931,
+   "\\cpara{Styrlyn confirms it, and proposes talks on ``mutual interests.''}"
+  ],
+  [
+   11184,
+   "\\cpara{Brennan puts him off, out of loyalty to his Mistress, whose name opened doors for him in ``The Failures of Eld Science.''}"
+  ],
+  [
+   11713,
+   "\\cpara{Brennan acts out purpose, ``just in case someone was watching.''}"
+  ],
+  [
+   12000,
+   "\\cpara{Out of sight, he drops the act. He turns his back on a red-tinted stream flowing from a dark cave, an image the story leaves unexplained.}"
+  ],
+  [
+   12416,
+   "\\cpara{Brennan had hoped the training would tell him what to do with his life.}"
+  ],
+  [
+   12614,
+   "\\cpara{His history in brief: he sought power, ``Strength to prevent a repetition of the past,'' first in the Competitive Conspiracy, then here. The past is not described.}"
+  ],
+  [
+   12925,
+   "\\cpara{The problem: he has pleasures, but nothing he wants.}"
+  ],
+  [
+   13026,
+   "\\cpara{Beside the passion of the powerful people he has met, a life of small pleasures seems too little.}"
+  ],
+  [
+   13258,
+   "\\cpara{Going back to his Mistress only to drift is not enough.}"
+  ],
+  [
+   13569,
+   "\\cpara{A habit from his first teacher: looking for something interesting in a blade of grass.}"
+  ],
+  [
+   13897,
+   "\\cpara{Brennan's half-thought is accurate. In decision theory, preferences that meet four axioms, among them transitivity, which ``assumes that preferences are consistent across any three options,'' can be represented by a utility function; the theorem ``assumes nothing about the nature of the possible outcomes'' (Wikipedia, ``Von Neumann--Morgenstern utility theorem''). It asks for consistency and says nothing about what to want, which is his ``but.''}"
+  ],
+  [
+   14077,
+   "\\cpara{Brennan diagnoses himself with the third flaw: the doubt he was taught has turned on his picture of himself. The harm Jeffreyssai foretold arrives the same day.}"
+  ],
+  [
+   14391,
+   "\\cpara{The question: does he seek power because he wants it, or because it is what someone playing ``an ambitious young man'' would do? His stride for any watcher, a few paragraphs back, was that role.}"
+  ],
+  [
+   14576,
+   "\\cpara{He concludes, with ``probably,'' that nearly all he has done, going to Mount Mirror included, was the role.}"
+  ],
+  [
+   14689,
+   "\\cpara{He tries to see the problem fresh, the method ``Crisis of Faith'' prescribes (``Clear your mind of all standard arguments; try to see from scratch''), and nothing comes.}"
+  ],
+  [
+   14883,
+   "\\cpara{He asks whether his training gave him any way to answer.}"
+  ],
+  [
+   15098,
+   "\\cpara{The method: suppose a strong desire exists, and ask why it would be unknown. He finds two reasons: he has not met it, or he will not admit it.}"
+  ],
+  [
+   15445,
+   "\\cpara{Brennan credits the training: without it the question would not have occurred to him. This is Jeffreyssai's reason for teaching at work: ``you may remember much that will help you.''}"
+  ],
+  [
+   15571,
+   "\\cfact{The phrase alludes to L. Frank Baum's \\textsc{The Wonderful Wizard of Oz} (1900). Glinda tells Dorothy that her silver shoes could have taken her home all along: ``If you had known their power you could have gone back to your Aunt Em the very first day you came to this country.''}"
+  ],
+  [
+   15669,
+   "\\cpara{He knows what he wants. The story does not say what it is.}"
+  ],
+  [
+   15846,
+   "\\cpara{Why he hid the desire from himself: to admit it was to see that it looked impossible. The phrase ``not, of course, physically impossible'' gives the word the sense it has in ``Shut up and do the impossible!'', the post before this one in the book: ``the word `impossible' does not usually refer to a strict mathematical proof of impossibility in a domain that seems well-understood.''}"
+  ],
+  [
+   16151,
+   "\\cpara{He settles it by asking whether he would rather drift. His verdict is a maxim for himself: pursuing the unattainable ``would make for a hard life, but not a sad one.''}"
+  ],
+  [
+   16472,
+   "\\cpara{He heads for Shir L'or, ``the city that lies in the center of the world,'' with a plot to hatch. The goal stays unnamed, as the question does in ``The Ritual'' and the result in ``Class Project.''}"
+  ],
+  [
+   16683,
+   "\\cpara{He concludes that Jeffreyssai had known before he did.}"
+  ],
+  [
+   16852,
+   "\\cpara{Brennan sees why the line may have meant him and not Taji: what Taji said he wanted is weak evidence of what he wants. It is Brennan's own discovery, applied to Taji.}"
+  ],
+  [
+   17052,
+   "\\cpara{A second proverb: whoever leaves Mount Mirror seeking the impossible ``will surely return.''}"
+  ],
+  [
+   17211,
+   "\\cpara{Read, as Brennan reads it, with Jeffreyssai's last warning, the proverb promises a return, not a success.}"
+  ],
+  [
+   17409,
+   "\\cpara{He asks how Jeffreyssai could have known.}"
+  ],
+  [
+   17530,
+   "\\cpara{The proverb of his earlier pose comes back, now as his own thought.}"
+  ],
+  [
+   17706,
+   "\\cpara{He rejects the proverb, because a would-be master must understand how masters know. This is the point of ``Science as Curiosity-Stopper,'' early in the book: ``consider the consequences if you permit `Someone else knows the answer' to function as a curiosity-stopper.''}"
+  ],
+  [
+   17826,
+   "\\cpara{The story has already shown how such knowledge might be had: from small signs, such as the flicker of Brennan's eyelids that Jeffreyssai read. Brennan himself used the proverb as a pose.}"
+  ],
+  [
+   17890,
+   "\\cpara{He walks on, thinking it through, as the day ends. The failure through which, on Jeffreyssai's account, mastery comes lies beyond the story's end; the reader sees only the teaching helping on the first day.}"
+  ]
+ ]
+}

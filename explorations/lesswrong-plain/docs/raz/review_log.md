@@ -493,3 +493,4 @@ the notes quote them with dates.
   diagnosis in Beyond the Reach of God.
 - Added by me: the 2 December 1996 gray-goo message beside Raised in Technophilia's hedged
   "1997 or 1998" (checked in the saved archive page).
+- Whole-book pass: move the "beisutsukai" gloss to its first occurrence (The Ritual, order 130); Final Words then points back.
