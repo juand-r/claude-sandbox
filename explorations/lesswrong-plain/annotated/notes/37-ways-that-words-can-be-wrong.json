@@ -1,0 +1,73 @@
+{
+ "slug": "37-ways-that-words-can-be-wrong",
+ "header": "\\post{37 Ways That Words Can Be Wrong}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/FaJaCgqBKphrDzDSj/37-ways-that-words-can-be-wrong}\n",
+ "skeleton_sha": "187916de49675df5a7efdbae68c998afe6971392efb45bc31d61ef6be8ee918c",
+ "post_sha": "63c509f93b04c2b6d7f6b8b09457f4513f64565786f2f8539c284aae53470bb1",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{Anticipates the objection that ``wrong'' is the wrong word for a poor choice of definition.}"
+  ],
+  [
+   376,
+   "\\cpara{States the list's main lesson: saying that a choice of definition cannot be ``wrong'' is ``nearly always an error in practice.''}"
+  ],
+  [
+   747,
+   "\\cpara{A joke: if words cannot be wrong, the author may define ``wrong'' at will.}"
+  ],
+  [
+   867,
+   "\\cpara{Introduces the list. Its sense of ``wrong'' is broad: the items include false beliefs, invalid arguments, needless costs to communication, and inferences a reader fails to notice. The last paragraph calls them ``optimality criteria.''}"
+  ],
+  [
+   973,
+   "\\cpara{Each item names an error, gives an example, and names in parentheses the post it comes from. The first 36 items cover all 27 earlier posts of the sequence as the book prints them, in order; some posts get two to four items. Criticisms of those posts are in the notes on each post. The notes here concern only the summary.}"
+  ],
+  [
+   3647,
+   "\\cfact{Item 7. The compression changes the claim. ``Extensions and Intensions'' says we are not aware that our identification of a red light as ``Mars'' ``is a separate matter from our verbal definition.'' The item says we are not aware of the identification.}"
+  ],
+  [
+   5837,
+   "\\clogic{Item 12. Stated more firmly than in its source. ``Neural Categories'' called it ``a fair guess'' that the brain ``is in some sense closer to Network 2''; the item says flatly that the brain does not use the other kinds of inference. For the evidence behind the guess, see the notes on ``How An Algorithm Feels From Inside.''}"
+  ],
+  [
+   9472,
+   "\\clogic{Item 19. The headline is broader than the item's own gloss (``any substantive issue'') and than its source. ``The Argument from Common Usage'' limits the point to cases where ``any empirical proposition is at stake, or any moral proposition,'' and treats shared usage as a public good; the next item counts defying common usage as an error. In a dispute about usage itself, a dictionary is a record of usage.}"
+  ],
+  [
+   10394,
+   "\\clogic{Item 21. On this demonstration and its history, see the notes on ``Taboo Your Words.''}"
+  ],
+  [
+   10875,
+   "\\clogic{Item 22. On who chooses the banned words, see the notes on ``Taboo Your Words.''}"
+  ],
+  [
+   15807,
+   "\\cfact{Item 31. The second sentence is not from the cited post, which mentions Occam's Razor only in its formal version, where the length of a message tracks its probability. The warning about short English sentences comes from the earlier post ``Occam's Razor'' (2007): ``the length of an English sentence is not a good way to measure `complexity.'\\,''}"
+  ],
+  [
+   17781,
+   "\\clogic{Item 35. On the imagery debate behind this item, and on people who report no mental images, see the notes on ``Words as Mental Paintbrush Handles.''}"
+  ],
+  [
+   18275,
+   "\\clogic{Item 36. On the old name for this error, equivocation, see the notes on ``Variable Question Fallacies.''}"
+  ],
+  [
+   18786,
+   "\\cpara{Restates the premise that runs through the sequence: the brain categorizes and infers without supervision.}"
+  ],
+  [
+   18911,
+   "\\cpara{The sequence itself separated the two claims in this quotation. ``The Argument from Common Usage'' grants that ``we have no obvious mutual interest in using any particular word for a concept''; ``Entropy, and Short Codes'' qualifies this, chiefly by word length, so that labels are ``not quite arbitrary.'' Which sound names a concept is partly arbitrary on the sequence's own account. Where a concept's boundary falls is not. The steering wheel fits the second claim only.}"
+  ],
+  [
+   19217,
+   "\\cpara{Ends by calling the items ``optimality criteria,'' the broad sense of ``wrong'' that the opening chose.}"
+  ]
+ ]
+}

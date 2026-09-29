@@ -1,0 +1,264 @@
+{
+ "slug": "variable-question-fallacies",
+ "header": "\\post{Variable Question Fallacies}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/shoMpaoZypfkXv84Y/variable-question-fallacies}\n",
+ "skeleton_sha": "196a56d8b9db80fbc1d26a9a41acd16dbd65a0391ea1d25824587b9669734f94",
+ "post_sha": "2f49eb49b17921b795c5b4fe1244f740fef5446768a8c646a071d6aa4552263a",
+ "edits": [
+  {
+   "at": 161,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 278,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 352,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 369,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 665,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1069,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1143,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1566,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1763,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1852,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2118,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2408,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2536,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2687,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2903,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3067,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3120,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3268,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3653,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3658,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3782,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4412,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4523,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5051,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5186,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5213,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5465,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5535,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5575,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   154,
+   "\\cpara{Quotes the opening exchange of the dialogue in ``Disputing Definitions.''}"
+  ],
+  [
+   440,
+   "\\cpara{Recalls losing the feel for why anyone would argue like Albert and Barry, while writing their dialogue.}"
+  ],
+  [
+   807,
+   "\\cpara{Gives the sentence that restored the feel: ``Either the falling tree makes a sound, or it does not!''}"
+  ],
+  [
+   968,
+   "\\cpara{Shows that ``P or not-P'' can fail for English sentences, with two stock cases: the liar sentence, and a question that presupposes something false.}"
+  ],
+  [
+   1230,
+   "\\cpara{Grants that a classical logician can keep ``P or not-P'' as a theorem, for example by denying that the liar is a sentence.}"
+  ],
+  [
+   1483,
+   "\\cpara{Concludes that such rescues take subtlety, so ``Either it does or it doesn't!'' cannot be applied blindly.}"
+  ],
+  [
+   1730,
+   "\\cpara{Introduces the arithmetic analogy: ``2 + 2 = X'' is not simply true or false if X changes.}"
+  ],
+  [
+   1958,
+   "\\cpara{The thesis: ``P or not-P'' requires that P mean the same thing in both halves. The error described has an old name that the post does not use. The fallacy of equivocation is ``an argument which exploits the ambiguity of a term or phrase which has occurred at least twice in an argument, such that on the first occurrence it has one meaning and on the second another meaning'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Fallacies''). Aristotle listed it among the fallacies that depend on language. The post gives the error a new name and extends it to words, like ``left'' below, whose meaning is set by context.}"
+  ],
+  [
+   2320,
+   "\\cpara{Explains the notation: C++'s ``::'' names which package's Sound is meant.}"
+  ],
+  [
+   2657,
+   "\\cpara{Notes that two people may check that they mean the same event and forget to check that they mean the same concept.}"
+  ],
+  [
+   3011,
+   "\\cpara{The clearest case in the post: which side of the street is ``the left'' depends on the direction of travel, a variable no one states.}"
+  ],
+  [
+   3372,
+   "\\cpara{Says that such context-dependent words are hard to handle in programs that parse language.}"
+  ],
+  [
+   3606,
+   "\\cpara{The example shows a different ambiguity from the one it is given for. The question ``Bob's or Martin's?'' is the question of whom ``his'' refers to, and the sentence states that variable openly with ``his.'' The same question arises in ``Martin told Bob the building was near his house,'' where no word like ``left'' occurs. The grocery-store example above does show a hidden variable in ``left'' itself.}"
+  ],
+  [
+   3839,
+   "\\cpara{Warns that the hidden variables are rarely marked, as the Z in ``Z + 2 = 6'' is.}"
+  ],
+  [
+   3983,
+   "\\cpara{Collects three sources of a shifting question: two concepts under one name, two events in one mental file, one word read in different contexts. The claim that this makes reality feel changeable rests on the account in ``How An Algorithm Feels From Inside''; see the notes there on the evidence for it.}"
+  ],
+  [
+   4596,
+   "\\cpara{Restates the previous paragraph: a hidden variable makes reality feel unstable.}"
+  ],
+  [
+   4837,
+   "\\cpara{Attributes this confusion to ``undergraduates (and postmodernist professors)'' and names or quotes none of them.}"
+  ],
+  [
+   5039,
+   "\\cpara{The quoted speech is the author's own composition, and its analysis is ``left as an exercise to the reader.'' So the post does not show which hidden variable the example contains, or how naming it would settle the matter.}"
+  ],
+  [
+   5315,
+   "\\cpara{Corrects a sentence of the author's own draft, correctly: a formula with a free variable, like ``2 + 2 = X,'' has no truth value at all, not a variable one.}"
+  ],
+  [
+   5773,
+   "\\cpara{Ends by saying the error returns even for those who know better, because of how the algorithm feels from inside.}"
+  ]
+ ]
+}

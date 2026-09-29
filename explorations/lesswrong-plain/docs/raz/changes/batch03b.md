@@ -172,3 +172,42 @@ The post names exceptions of its own, a correct use by Feynman and others since,
 - Before: , and a rule that does not fit fields such as law, where definitions are rules.
 - After: .
 
+
+## annotated/afterwords/words-as-mental-paintbrush-handles.tex
+
+Why: Scope: aphantasia limits the title's image, not the post's claim; it stays as information in the margin note.
+
+- Before: 
+
+The thesis about words rests on the lightbulb, reported by introspection and hedged as such, and on the arithmetic of five bytes. It needs a limit that the post does not state. Some people report no mental imagery at all, and they use words normally. For them the title's image does not apply, while the post's own list of what a concept does, which includes recognizing and tasting, still does.
+- After: 
+
+
+## honest/sections/words-as-mental-paintbrush-handles.tex
+
+Why: Same.
+
+- Before:  \nb{Some people report no mental imagery at all, and they use words normally. The other abilities in the list do not depend on pictures.}
+- After: 
+
+
+## annotated/afterwords/variable-question-fallacies.tex
+
+Why: Fair reading: ``left'' needs a person as its parameter, and the pronoun leaves that parameter open, so the example can be read as the post's point. The observation that the same ambiguity arises without ``left'' stays in the margin note.
+
+- Before: 
+
+The post's second example does not show that extension. In ``Martin told Bob the building was on his left,'' the question ``Whose left?'' is the question of whom ``his'' refers to. The variable is stated in the sentence; only the pronoun is ambiguous, and the same ambiguity arises with ``near his house.''
+- After: 
+
+- Before: correctly stated, with one example that shows pronoun ambiguity instead, and an opposing view
+- After: correctly stated and usefully extended, with an opposing view
+
+
+## annotated/posts/37-ways-that-words-can-be-wrong.tex
+
+Why: Pointer matched to the revised notes.
+
+- Before: Item 36. On this example, which turns on the pronoun ``his,'' and on the old name for this error, equivocation, see the notes on ``Variable Question Fallacies.''
+- After: Item 36. On the old name for this error, equivocation, see the notes on ``Variable Question Fallacies.''
+
