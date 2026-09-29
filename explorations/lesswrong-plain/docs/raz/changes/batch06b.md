@@ -67,3 +67,59 @@ Why: Fair reading: the post's next sentence asks only for suspicion of easy prop
 - Before:  The post asks for strong commitment to a problem that looks impossible, and supports that only by Yudkowsky's experience.}
 - After: }
 
+
+## annotated/afterwords/trying-to-try.tex
+
+Why: Advice is judged as advice: an exhortation's "only when ... above all else" is not a claim needing evidence; the undefined aside is a nitpick; the research limit on outcome goals is information, kept in the Response and notes, out of the In short line.
+
+- Before: 
+
+One sentence claims more than the rest: only when you want the outcome ``above all else'' will you actually try to maximize its chance. It is stated without a hedge and without evidence.
+- After: 
+
+- Before:  The post states this without evidence. Its core,
+- After:  Its core,
+
+- Before: In short: a clear argument that aiming to ``try'' lowers the bar, offered without evidence but supported in its core by research on goal setting, whose closing advice, to aim at the outcome itself, has a limit the same research names: tasks people have not yet learned how to do.
+- After: In short: a clear argument that aiming to ``try'' lowers the bar, supported in its core by research on goal setting.
+
+
+## annotated/posts/trying-to-try.tex
+
+Why: Advice is judged as advice: an exhortation's "only when ... above all else" is not a claim needing evidence; the undefined aside is a nitpick; the research limit on outcome goals is information, kept in the Response and notes, out of the In short line.
+
+- Before:  The term is not defined, and the aside is not used again. Its job is to set up the contrast with humans in the next paragraph.}
+- After:  It sets up the contrast with humans in the next paragraph.}
+
+- Before:  It is stated without a hedge (``only when'') and without evidence.}
+- After: }
+
+
+## annotated/afterwords/make-an-extraordinary-effort.tex
+
+Why: Hedges carry: the Japan comparison is hedged ("this would seem to count") and said to be unoriginal; the method point stays in the Response and notes, out of the In short line. The premise the post sets aside explicitly is scope. The Crisis of Faith gloss is a terminology nitpick (as in batch 2b); the Aumann point is a pointer.
+
+- Before: 
+
+Two smaller points are in the notes. The Aumann example repeats earlier posts; the notes on ``Crisis of Faith'' give Aumann's own account of his religion. And ``Crisis of Faith,'' placed earlier in the book but written three days later, glosses isshokenmei as ``the desperate, extraordinary, convulsive effort to be rational,'' using together the two words this post separates.
+- After: 
+
+- Before: In short: a clear distinction between desperate and extraordinary effort, with its own warnings attached, supported by one comparison between Japan and the United States and illustrated mainly by the author's own plans, whose premise the post sets aside.
+- After: In short: a clear distinction between desperate and extraordinary effort, with its own warnings attached, argued from a hedged comparison between Japan and the United States.
+
+
+## annotated/posts/make-an-extraordinary-effort.tex
+
+Why: Hedges carry: the Japan comparison is hedged ("this would seem to count") and said to be unoriginal; the method point stays in the Response and notes, out of the In short line. The premise the post sets aside explicitly is scope. The Crisis of Faith gloss is a terminology nitpick (as in batch 2b); the Aumann point is a pointer.
+
+- Before: \cpara{Names the two virtues. ``Crisis of Faith,'' posted three days later but placed earlier in the book, glosses isshokenmei as ``the desperate, extraordinary, convulsive effort to be rational,'' using together the two words this post separates.}
+- After: \cpara{Names the two virtues.}
+
+
+## honest/sections/make-an-extraordinary-effort.tex
+
+Why: Hedges carry: the Japan comparison is hedged ("this would seem to count") and said to be unoriginal; the method point stays in the Response and notes, out of the In short line. The premise the post sets aside explicitly is scope. The Crisis of Faith gloss is a terminology nitpick (as in batch 2b); the Aumann point is a pointer.
+
+- Before:  \nb{In ``Crisis of Faith,'' written three days later but placed earlier in the book, Yudkowsky glosses isshokenmei as ``the desperate, extraordinary, convulsive effort to be rational,'' using together the two words this post separates.}
+- After: 
+

@@ -1,0 +1,109 @@
+{
+ "slug": "trying-to-try",
+ "header": "\\post{Trying to Try}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/WLJwTJ7uGPA5Qphbp/trying-to-try}\n",
+ "skeleton_sha": "af9840fa8b6417a323edd215a36be490abd272929b3ef1d979799100ea3b6d69",
+ "post_sha": "415913b4b1d08d38ab23e317e08a58ca7ffb82acbed9acdb6d510993ab9b7b94",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{Yoda's line from \\textsc{The Empire Strikes Back}, spoken after Luke says ``All right, I'll give it a try'' about raising his ship from the swamp. The next post, ``Use the Try Harder, Luke,'' returns to the scene; its notes give how the scene ends, with Yoda tying Luke's failure to his disbelief.}"
+  ],
+  [
+   268,
+   "\\cpara{States the author's first objection to the line: success cannot simply be chosen, and no plan is certain. The post does not withdraw the objection; it later agrees that ``No plan succeeds with infinite certainty.''}"
+  ],
+  [
+   604,
+   "\\cpara{Announces the turn. The word ``was'' links to ``The Logical Fallacy of Generalization from Fictional Evidence,'' which reads as the author's own acknowledgement that Yoda is a character in a film.}"
+  ],
+  [
+   718,
+   "\\cpara{Introduces the tool the argument uses: talk about a thing is different from talk about the words or beliefs about it. The post calls it elementary and claims nothing new for it. The notes on ``The Quotation is not the Referent'' give its history (Frege, McCarthy).}"
+  ],
+  [
+   1251,
+   "\\cpara{Sets the default: saying you will do something means making, and carrying out, a plan aimed at it.}"
+  ],
+  [
+   1539,
+   "\\cpara{Adds that the plan need not be certain. The goal is the flipped switch, not a probability of flipping it. This sets up the contrast the post draws next.}"
+  ],
+  [
+   1926,
+   "\\cpara{Asks the post's question.}"
+  ],
+  [
+   2026,
+   "\\cpara{Concedes the ordinary meaning: ``try'' marks the possibility of failure. The post does not deny this. Its argument is about what taking ``trying'' as one's goal does to effort.}"
+  ],
+  [
+   2342,
+   "\\cpara{States the principle behind the argument, with a hedge (``many-but-not-all''), and gives no evidence for it. Research on goal setting supports a version of it. Locke and Latham (2002), summarizing their studies, report ``a positive, linear function in that the highest or most difficult goals produced the highest levels of effort and performance''; performance leveled off only ``when the limits of ability were reached or when commitment to a highly difficult goal lapsed.''}"
+  ],
+  [
+   2622,
+   "\\cpara{Draws the corollary: be wary of goals that are too easy to fulfil.}"
+  ],
+  [
+   2817,
+   "\\cpara{States the premise the rest depends on: trying to do a thing is often much easier than doing it.}"
+  ],
+  [
+   2928,
+   "\\cpara{Illustrates the premise with two rhetorical questions.}"
+  ],
+  [
+   3094,
+   "\\cpara{Restates the default meaning in full, as the first half of a sentence that the next paragraph completes.}"
+  ],
+  [
+   3370,
+   "\\cpara{The central step. If ``flip the switch'' already means trying to flip it, then ``try to flip'' it means trying to have a plan that might work. The goal has moved from the switch to the plan.}"
+  ],
+  [
+   3591,
+   "\\cpara{An aside: for a self-modifying AI, the post says, the step from trying to trying-to-try should end at ``a reflective equilibrium.'' It sets up the contrast with humans in the next paragraph.}"
+  ],
+  [
+   3787,
+   "\\cpara{The psychological claim the argument rests on: people who aim at having a plan stop checking that the plan gives the best chance of success, and it is easier to believe one is ``maximizing'' than that one will succeed. The post gives no evidence for it here; the next note gives research that bears on it. The link on ``lost'' goes to ``Lost Purposes,'' on means that outlive their ends.}"
+  ],
+  [
+   4206,
+   "\\cpara{The conclusion of the first half, with its condition: ``if trying our hardest is all we are trying to do.'' Research on goal setting supports it. Locke and Latham (2002) report meta-analyses in which ``specific, difficult goals consistently led to higher performance than urging people to do their best,'' and explain: ``when people are asked to do their best, they do not do so. This is because do-your-best goals have no external referent and thus are defined idiosyncratically.'' That is close to the post's own account.}"
+  ],
+  [
+   4361,
+   "\\cpara{An epigraph from Steven Brust's novel \\textsc{The Paths of the Dead}: ask what needs to be done, not what you can do. I could not check the wording against the book.}"
+  ],
+  [
+   4749,
+   "\\cpara{Applies the quotation. Asking what you can do sets the bar at what is convenient: ``the money in your pocket, minus whatever you need for your accustomed lunch.'' The tone is satirical; the target is the excuse that it was the ``best you can do.''}"
+  ],
+  [
+   5173,
+   "\\cpara{Gives the other question: what needs to be done may exceed your resources, and then you ``must produce it or fail.''}"
+  ],
+  [
+   5329,
+   "\\cpara{Restates the conclusion in the terms of the switch argument: aiming at having ``maximized your probability of success'' is a lower bar than aiming at success.}"
+  ],
+  [
+   5601,
+   "\\cpara{A satirical example: a one-dollar lottery ticket as the ``best'' try at a million dollars. The closing question is ironic. The post's objection is to treating what is ``available'' as fixed.}"
+  ],
+  [
+   5998,
+   "\\cpara{The positive claim: only wanting the real outcome ``above all else'' produces real effort to maximize the chance of it.}"
+  ],
+  [
+   6245,
+   "\\cpara{Describes how the lower goal is met by self-deception: the first plan counts as optimal, an inferior alternative can be made up to prove it, and whatever you put in counts as all that was ``available''.}"
+  ],
+  [
+   6718,
+   "\\cpara{The moral, in Yoda's form. As advice it has the support noted above: a definite, hard target does better than ``do your best.'' The same research names a limit. On complex tasks people have not yet learned, a goal set on the outcome can hurt. In an air-traffic-control simulation (Kanfer and Ackerman, 1989), ``having a performance-outcome goal actually interfered with acquiring the knowledge necessary to perform the task. People performed better when they were asked to do their best.'' A specific, difficult learning goal did better than ``do your best'' (Winters and Latham, 1996). Both are reported by Locke and Latham (2002). ``Win, or fail'' is an outcome goal.}"
+  ]
+ ]
+}
