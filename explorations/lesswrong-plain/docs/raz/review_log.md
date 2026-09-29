@@ -394,3 +394,39 @@ removed a bare "######" (a heading marker with no number) that md2tex printed li
 Ends: An Introduction; the verbatim check passes. md2tex should drop such lines: whole-book
 pass item. Agents saved "Fake Fake Utility Functions" (not in the book) to data/originals for
 reference.
+
+## Batch 5b: Value Theory 274 to 285 (Book V, 12 posts)
+
+Six agents. Edits in `docs/raz/changes/batch05b.md`.
+
+- Critiques a fair reading answers, cut or recast:
+  - Value is Fragile: "the rule that valuable things need a valuer sits uneasily with
+    evolution" (the post names evolution's case as "morally miraculous" and links The Gift We
+    Give to Tomorrow).
+  - Changing Your Metaethics: "explain the difference" called firmer than its sources (the
+    earlier posts do explain it; they did not formalize it).
+  - Sympathetic Minds: "the aliens conclusion has a gap" (the post defines how an
+    unsympathetic mind sees us by the woodsaw exercise).
+  - High Challenge: "a race is a game, so games are not a wasted step" (the annotator's own
+    argument; the post's "wasted step" is about computer games as a substitute for work, and
+    it wants "games that are fun to play").
+  - Morality as Fixed Computation: "draws its contrast with Ord more sharply than it holds"
+    became information (the author's comment locates the difference in how the idealization
+    is specified); a patch nitpick in a post about maximizing AIs.
+  - Serious Stories: "the verdict rests on guesses" (the post says "So far as I know or can
+    guess"; hedges carry); a loss-aversion nitpick.
+  - The True Prisoner's Dilemma: In short line now reports the author's concession that the
+    complaint is about illustration.
+- Not about the post: Hibbard's 2012 prize (Magical Categories), placed beside the post's
+  remark on Hibbard's fitness, read as a rejoinder; cut.
+- Hindsight kept out of the Response: the 2015 empathy review (Sympathetic Minds).
+- Scope, reduced to pointers: 2-Place and 1-Place Words on moral language (the post does not
+  apply its analysis to morality); the book's selection in Changing Your Metaethics.
+- Points made once: Trivers and reciprocal altruism in The True Prisoner's Dilemma
+  (Sympathetic Minds points there); simulation theory in Humans in Funny Suits; Nozick,
+  Moore and Sidgwick in Not for the Sake of Happiness (Alone); Jackson's moral functionalism
+  placed in both Could Anything Be Right? and Morality as Fixed Computation (whole-book pass:
+  make one point to the other).
+
+Agents fetched several posts not in the book to data/originals for reference (The Moral
+Void, Is Morality Given?, The Meaning of Right, In Praise of Boredom and others).

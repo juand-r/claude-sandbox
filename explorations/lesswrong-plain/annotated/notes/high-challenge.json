@@ -1,0 +1,133 @@
+{
+ "slug": "high-challenge",
+ "header": "\\post{High Challenge}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/29vqqmGNxNRGzffEj/high-challenge}\n",
+ "skeleton_sha": "5aab8e84149ae393b765d318c39b333e432f65dbc2ec0068223708127056d036",
+ "post_sha": "834a8751c234dc023c0ca8426407ddac615475f46dd6194e18d9bd0d2a403cfb",
+ "edits": [],
+ "notes": [
+  [
+   114,
+   "\\cpara{Sets out the prophecy the post examines: machines will do all work, engineering included, and people will own the capital and never work again.}"
+  ],
+  [
+   433,
+   "\\cpara{Raises the first objection, boredom.}"
+  ],
+  [
+   478,
+   "\\cpara{Gives the usual reply: better computer games.}"
+  ],
+  [
+   603,
+   "\\cpara{Observes that games contain effortful tasks, difficult on the scale of ten minutes.}"
+  ],
+  [
+   887,
+   "\\cpara{Imagines programs that play the hard parts for you.}"
+  ],
+  [
+   1106,
+   "\\cpara{Carries the logic on by irony: if the point is gold per unit time, make the game easier from the start and it becomes ``more fun.'' The irony assumes that less challenge means less fun, and research on ``flow'' supports that. Nakamura and Csikszentmihalyi (2002) tie enjoyment to challenges that ``stretch (neither overmatching nor underutilizing) existing skills''; when challenge is low relative to skill, that ``allows attention to drift,'' into boredom or apathy.}"
+  ],
+  [
+   1491,
+   "\\cpara{Reaches the end of the reduction: a screen that says ``YOU WIN'', forever.}"
+  ],
+  [
+   1724,
+   "\\cpara{Compares eternal laziness to the Christian Heaven, limiting the comparison to how it ``sounds like good news'' to someone who still has to work. The comparison, and the worry, have a precedent. Keynes, in ``Economic Possibilities for our Grandchildren'' (1930), quotes an old charwoman's epitaph, ``For I'm going to do nothing for ever and ever,'' remarks ``This was her heaven,'' and expects a world of abundance to face the problem of ``how to occupy the leisure.''}"
+  ],
+  [
+   2282,
+   "\\cpara{Calls a computer game ``synthetic work'' and asks whether it is a wasted step, granting in a parenthesis that games have merits as well as costs. Game playing in a world without necessary work is the subject of Bernard Suits's \\textsc{The Grasshopper} (1978). Suits defined playing a game as ``the voluntary attempt to overcome unnecessary obstacles'' and pictured a Utopia, an ideal state in which no instrumental activity is needed, where games would be the only activity left. (I could not read Suits's book; the definition is as Wikipedia quotes it, the Utopia argument as two published summaries give it.)}"
+  ],
+  [
+   2624,
+   "\\cpara{Proposes the post's first positive idea, offered as ``I sometimes think'': replace ``getting rid of work'' with ``removing low-quality work to make way for high-quality work.'' The evidence fits it. Csikszentmihalyi and LeFevre (1989) sampled 78 workers through a week and found that ``the great majority of flow experiences are reported when working, not when in leisure,'' although respondents were ``more motivated in leisure than in work.''}"
+  ],
+  [
+   2815,
+   "\\cpara{States the criterion: a goal that can be achieved, after which you are done, cannot be a long-term meaning of life.}"
+  ],
+  [
+   2975,
+   "\\cpara{Restates it: goals ``good to pursue'' and not only ``good to satisfy.'' Psychologists have a word for such activity. Flow research began from ``autotelic'' activity, ``rewarding in and of itself \\ldots\\ quite apart from its end product'' (Nakamura and Csikszentmihalyi, 2002).}"
+  ],
+  [
+   3166,
+   "\\cpara{Restates it in the author's terms: value ``ongoing processes'' (``4D states''), not a property of the universe reached once.}"
+  ],
+  [
+   3404,
+   "\\cpara{Quotes Timothy Ferriss, \\textsc{The 4-Hour Workweek} (2007): ask what would excite you, not what you want. The words match the book as Goodreads quotes it.}"
+  ],
+  [
+   3588,
+   "\\cpara{Restates the criterion once more: games fun to play, not only to win.}"
+  ],
+  [
+   3722,
+   "\\cpara{Grants an exception: where the result is everything, as with curing cancer, you take an alien's cure for thirty bucks even after twenty years of your own work.}"
+  ],
+  [
+   4347,
+   "\\cpara{Classes such goals as ``3D-predicate'' goals: worth pursuing now, but not ``long-run fun'' for galactic civilizations.}"
+  ],
+  [
+   4873,
+   "\\cpara{Raises the next objection: why not passive experiencing, ``like the Buddhist Heaven''?}"
+  ],
+  [
+   5041,
+   "\\cpara{Answers first that the author does not know how to build a passive mind, since even an idle human brain runs machinery built to solve problems.}"
+  ],
+  [
+   5452,
+   "\\cpara{Asks how much of the brain could be removed while keeping the experience of pleasure, and sets the question aside.}"
+  ],
+  [
+   5608,
+   "\\cpara{Gives the answer the post relies on: the author would not prefer to be a passive experiencer, and that, without the Buddha's say-so, Nirvana seems more like ``sounds like good news in the moment of first being told'' or ``ideological belief in desire'' than something the author would want. It is offered as the author's preference.}"
+  ],
+  [
+   6118,
+   "\\cpara{Adds that natural selection built the author's mind to do things.}"
+  ],
+  [
+   6255,
+   "\\cpara{Blocks the inference just suggested: that something is human nature justifies nothing. It separates ``human nature'' (what we are) from ``humane nature'' (what, being human, we wish we were).}"
+  ],
+  [
+   6520,
+   "\\cpara{Gives the justification: the author does not want to become ``a happy blob.'' The justification is the author's own want. It supports the post's earlier ``we should look for'' only for readers who share the want, and the post does not ask how many do. (The notes on ``Not for the Sake of Happiness (Alone)'' give survey evidence that most philosophers would not enter the related experience machine.)}"
+  ],
+  [
+   6690,
+   "\\clogic{The image has a precedent. Robert Nozick, on his experience machine, said we want ``to be a certain sort of person'' and not an ``indeterminate blob'' floating in a tank; the racing conditions below echo his first reason, that we want ``to do certain things, and not just have the experience [as if] of doing them'' (\\textsc{Anarchy, State, and Utopia}, 1974, as quoted in the \\textsc{Stanford Encyclopedia}, ``Hedonism'').}"
+  ],
+  [
+   6704,
+   "\\cpara{Points back to ``Not for the Sake of Happiness (Alone)'': one can value the real lover, not only the experience of love.}"
+  ],
+  [
+   7243,
+   "\\cpara{Extends the point from love to activities: they can require real challenge and real effort.}"
+  ],
+  [
+   7349,
+   "\\cpara{First condition: the other racers are real, and no outside optimizer chose the winner.}"
+  ],
+  [
+   7651,
+   "\\cpara{Second condition: your own skill and will, not a ``Win'' button. The parenthesis grants that muscles you did not design are not wholly yours, and says the human condition can be improved.}"
+  ],
+  [
+   8036,
+   "\\cpara{Third condition: a sentient being experiences the race, not a nonsentient imitation run trillions of times per second.}"
+  ],
+  [
+   8231,
+   "\\cpara{Sums up the three conditions: real effort, real victory, real experience.}"
+  ]
+ ]
+}

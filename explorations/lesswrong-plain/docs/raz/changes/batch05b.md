@@ -200,3 +200,65 @@ Why: Same as the Response: the post is about maximizing AIs.
 - Before: The rule again. Its support here is the three patches, each answered in a sentence; the first and third answers rely on the AI's being a maximizer (``as an expected utility maximizer,'' ``superintelligently seek out loopholes''). The linked post
 - After: The rule again, supported here by the three patches. The linked post
 
+
+## annotated/afterwords/high-challenge.tex
+
+Why: Fair reading: the "wasted step" is about computer games as a substitute for work, with the costs the post names ("artificiality and isolation"); the post itself wants "games that are fun to play". The race-is-a-game argument is the annotator's own. The "we" point is a scope remark on a stated preference; the note keeps it.
+
+- Before: Two steps go further than the rest. The first is from the author's wants to ``we.'' The post says ``we should look for goals that are good to pursue,'' and its support is the author's preference. That supports the recommendation for readers who share the preference; the post does not ask how many do, though other evidence suggests that many share a related view.
+
+The second is the treatment of games. The post asks ``what is a computer game except synthetic work?'' and suggests it is a wasted step. Its closing example of a valuable activity, a race on a track, is itself a game, and a game against real opponents meets all three of the conditions the post ends with. What those conditions exclude is a rigged or solitary contest. The post's own parenthesis on the costs of games, ``artificiality and isolation,'' draws that line; the question about a wasted step draws it more broadly.
+- After: The post's ``we should look for goals that are good to pursue'' rests on the author's preference, so it speaks for readers who share it; the notes on ``Not for the Sake of Happiness (Alone)'' give evidence that many do.
+
+- Before: In short: a statement of preferences about a future without necessary work, consistent with research on flow and anticipated by Keynes, Suits and Nozick; its suggestion that games are ``a wasted step'' is broader than the conditions it ends with.
+- After: In short: a statement of preferences about a future without necessary work, consistent with research on flow and anticipated by Keynes, Suits and Nozick.
+
+
+## annotated/posts/high-challenge.tex
+
+Why: Fair reading: the "wasted step" is about computer games as a substitute for work, with the costs the post names ("artificiality and isolation"); the post itself wants "games that are fun to play". The race-is-a-game argument is the annotator's own. The "we" point is a scope remark on a stated preference; the note keeps it.
+
+- Before: \clogic{A race on a track is itself a game: nothing requires running round the track, and its rules exist for the sake of the contest. A game against real opponents meets this condition and the next two. So the conditions do not show a game to be ``a wasted step''; what they rule out is a rigged or solitary contest, the ``artificiality and isolation'' the post's parenthesis on games names.}
+- After: 
+
+
+## honest/sections/high-challenge.tex
+
+Why: Fair reading: the "wasted step" is about computer games as a substitute for work, with the costs the post names ("artificiality and isolation"); the post itself wants "games that are fun to play". The race-is-a-game argument is the annotator's own. The "we" point is a scope remark on a stated preference; the note keeps it.
+
+- Before:  \nb{A race on a track is itself a game, and a game against real opponents meets all three conditions. What they rule out is a rigged or solitary contest, not play.}
+- After: 
+
+- Before: \nb{The justification speaks for the author, and for readers who share the want; the post does not ask how many do. Robert Nozick
+- After: \nb{Robert Nozick
+
+
+## annotated/afterwords/serious-stories.tex
+
+Why: Hedges carry: the verdict is given "So far as I know or can guess", so saying it rests on guesses repeats the post's own qualification; out of the In short line. The loss-aversion note is a nitpick.
+
+- Before: The post's firmest verdict rests on guesses. On whether pain and adaptation could be removed, the author guesses three times, then calls Pearce ``very probably right.'' ``So far as I know or can guess'' keeps a hedge on it, but the verdict is stronger than the guesses before it, and no evidence about brains is given.
+- After: On whether pain and adaptation could be removed, the author guesses three times, then calls Pearce ``very probably right,'' ``So far as I know or can guess.'' No evidence about brains is given.
+
+- Before: whose firmest verdict, that abolishing suffering is ``very probably'' feasible, rests on the author's guesses.
+- After: which ends, undecided, with a stated preference for ``the path of courage.''
+
+
+## annotated/posts/serious-stories.tex
+
+Why: Hedges carry: the verdict is given "So far as I know or can guess", so saying it rests on guesses repeats the post's own qualification; out of the In short line. The loss-aversion note is a nitpick.
+
+- Before: \clogic{Stated as fact, without evidence or argument. The post does not say how loss aversion would offset optimism in planning.}
+- After: 
+
+- Before: ; nothing is added between them and this verdict.}
+- After: .}
+
+
+## honest/sections/serious-stories.tex
+
+Why: Hedges carry: the verdict is given "So far as I know or can guess", so saying it rests on guesses repeats the post's own qualification; out of the In short line. The loss-aversion note is a nitpick.
+
+- Before:  \nb{The ``very probably'' rests on those three guesses.}
+- After: 
+

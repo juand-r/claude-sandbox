@@ -1,0 +1,265 @@
+{
+ "slug": "serious-stories",
+ "header": "\\post{Serious Stories}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/6qS9q5zHafFXsB6hf/serious-stories}\n",
+ "skeleton_sha": "547e1897a4ae95cc6af3626e87706c583058146a05b92c7ba8db263ab70347af",
+ "post_sha": "aabe4a4baa8f95a9e3eee7759550109404a53d8178da317369a64a359ab44b2a",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{Opens with a sweeping claim, softened by ``to one degree or another,'' and credits Orwell. Orwell's essay (\\textsc{Tribune}, 1943, under the name John Freeman; the Orwell Foundation titles it ``Can Socialists Be Happy?'') does say much the same: ``All `favourable' Utopias seem to be alike in postulating perfection while being unable to suggest happiness.''}"
+  ],
+  [
+   563,
+   "\\cpara{Reports the manuals' rule that stories need conflict; the aside about manual writers is a joke. The rule is standard. Bickham's manual, quoted two lines below, says ``Readers generally find nothing as enthralling as conflict.''}"
+  ],
+  [
+   817,
+   "\\cpara{Says some writers on writing put it more bluntly than ``conflict.''}"
+  ],
+  [
+   976,
+   "\\cpara{I could not find these exact words. In \\textsc{How to Write Science Fiction and Fantasy} (1990), Card tells writers to look for the main character among those in pain: ``your eye should be drawn toward pain. Stories about contented people are miserably dull.'' The paraphrase is close.}"
+  ],
+  [
+   1043,
+   "\\cpara{A close paraphrase of \\textsc{Scene and Structure} (1993). Bickham's scene is a goal, a conflict, and ``Failure of the character to reach his goal, a tactical disaster''; readers, Bickham writes, ``don't know that every scene ends with a disaster.'' The word is a term of art: it ``does not often denote an earthquake, a flood, a plane crash,'' but a setback to the scene's goal.}"
+  ],
+  [
+   1107,
+   "\\cpara{Recalls the author's early view that authors were excused from depicting a true Eutopia, since a flawless one would leave no stories to tell.}"
+  ],
+  [
+   1610,
+   "\\cpara{Reports a nagging doubt about that conclusion.}"
+  ],
+  [
+   1790,
+   "\\cpara{Explains the early view by the author's picture of AI at the time: a safe wish-granting genie, so that any problem could be wished away.}"
+  ],
+  [
+   2083,
+   "\\cpara{Says that in hindsight ``no stories'' might have been a useful sign that the author would not want to live there. The claim is hedged (``might indeed,'' ``On this particular occasion''). The author had warned in 2007, in ``The Logical Fallacy of Generalization from Fictional Evidence,'' that ``the requirements of storytelling are not the same as the requirements of forecasting''; this post keeps that distinction below (``You simply don't optimize a story the way you optimize a real life'').}"
+  ],
+  [
+   2508,
+   "\\cpara{Presents the argument that follows as one the author ``tried to contemplate,'' not as a view the author holds.}"
+  ],
+  [
+   2797,
+   "\\cpara{The argument in three lines. The second premise carries it: without it, a world with no stories worth reading could still be a world worth living in. The post rejects that premise in general a few paragraphs on, and then asks the narrower question whether the discomfort of stories where everything goes right would carry over to life.}"
+  ],
+  [
+   3125,
+   "\\cpara{Offers a list of great stories and asks whether any is not tragic. The list is the author's choice, so it illustrates the claim rather than tests it. Aristotle gives older support and an older qualification. He held the unhappy ending to be ``the right ending'' for tragedy, but reported that plots with a happy outcome for the good, ``Like the Odyssey,'' were ``accounted the best because of the weakness of the spectators'' (\\textsc{Poetics} 13, Butcher's translation).}"
+  ],
+  [
+   3664,
+   "\\cpara{States the puzzle: in life we prefer pleasure to pain, yet we prize stories about suffering. The puzzle is old. Hume's essay ``Of Tragedy'' (1757) asks how ``a well-written tragedy'' pleases when the pleasure seems to depend on ``sorrow, terror, anxiety'' (as summarized in the \\textsc{Stanford Encyclopedia}, ``Hume's Aesthetics'').}"
+  ],
+  [
+   4089,
+   "\\cpara{Tells how Card's advice (make the characters hurt) and Bickham's (end every scene in disaster) cured the author's childhood habit of letting things go well, down to the level of the scene.}"
+  ],
+  [
+   4651,
+   "\\cpara{Draws the distinction that answers the second premise: a story and a life are optimized by different criteria.}"
+  ],
+  [
+   4827,
+   "\\cpara{Supports it from ordinary life: people live well for long stretches without being shot at by assassins.}"
+  ],
+  [
+   5117,
+   "\\cpara{Claims that older or very successful authors stop hurting their characters, and names four. It is the author's judgment as a reader; no book is named, and no cause is offered (``I don't know why'').}"
+  ],
+  [
+   5619,
+   "\\cpara{Describes such stories: everything goes right, and the villain may even give up and apologize.}"
+  ],
+  [
+   5965,
+   "\\cpara{Describes the reader's reaction: a fingernail on a blackboard.}"
+  ],
+  [
+   6153,
+   "\\cpara{Asks the post's question: would that discomfort carry over from stories to a life without any pain?}"
+  ],
+  [
+   6312,
+   "\\cpara{First answer, hedged (``might, perhaps, be tested''): stories need striving, not pain. The manuals quoted at the start point the same way. Card's reason for choosing a character in pain is that ``a character in pain is a character who wants things to change. He's likely to act.'' Bickham's scene begins with a goal, and the ``disaster'' is a setback to it.}"
+  ],
+  [
+   6648,
+   "\\cpara{Second answer: this is transhumanist Fun Theory, so the discomfort itself could be removed from brains unless there is a reason to keep it.}"
+  ],
+  [
+   7007,
+   "\\cpara{Begins an explanation of why the great stories are tragedies.}"
+  ],
+  [
+   7106,
+   "\\cpara{Argues that pain is easier to produce than pleasure, from something the author ``once read'' and an expectation offered ``somewhat outside my experience.'' Published evidence supports the general claim. Reviewing studies across many areas, Baumeister and colleagues (\\textsc{Review of General Psychology}, 2001) wrote that their findings ``suggest that bad is stronger than good, as a general principle across a broad range of psychological phenomena.''}"
+  ],
+  [
+   7614,
+   "\\cpara{Adds, from the author's reading about the instruments used to extract confessions from accused witches, that nothing ordinary makes a person feel as good as those made people hurt.}"
+  ],
+  [
+   8171,
+   "\\cpara{Grants the known asymmetry of loss aversion. The figure is close to the evidence: a 2024 meta-analysis of 607 estimates found a mean loss-aversion coefficient of 1.955 (Brown, Imai, Vieider and Camerer, \\textsc{Journal of Economic Literature}), just under the post's range.}"
+  ],
+  [
+   8474,
+   "\\cpara{Separates this from loss aversion: the claim is about how much intensity a given effort can produce, and the post puts the gap between sex and torture well beyond a factor of two.}"
+  ],
+  [
+   8620,
+   "\\cpara{Infers that people who seek intensity will mix pain into pleasure.}"
+  ],
+  [
+   8874,
+   "\\cpara{Wishes that pleasure could be made as intense, and as varied, as pain.}"
+  ],
+  [
+   9223,
+   "\\cpara{Questions the wish: the equal of skilled torture would be a pleasure that overrides everything with the demand to repeat it.}"
+  ],
+  [
+   9604,
+   "\\cpara{Cites another rule of writing, attributed to no one: stories must ``shout,'' exaggerating events and feelings to register on the page.}"
+  ],
+  [
+   10095,
+   "\\cpara{Offers, with ``Maybe,'' the post's explanation: happiness cannot shout loud enough to a human reader.}"
+  ],
+  [
+   10256,
+   "\\cpara{Asks whether, once that were fixed, pain or even the memory of sadness would have any use left.}"
+  ],
+  [
+   10477,
+   "\\cpara{Raises the worry that removing the old floor of pain would only create a new one. Research on adaptation bears on it. Diener, Lucas and Scollon (\\textsc{American Psychologist}, 2006) reviewed the evidence on the ``hedonic treadmill'' model and concluded that ``individuals' set points are not hedonically neutral'' and that ``well-being set points can change under some conditions.'' People do not simply adapt back to zero.}"
+  ],
+  [
+   10688,
+   "\\cpara{Offers the contrast effect, hedged (``do seem''), and credits Orwell. The best-known study fits the post's example. Lottery winners, Brickman, Coates and Janoff-Bulman (1978) found, ``took significantly less pleasure from a series of mundane events'' than controls, as the authors had predicted: ``Contrast with the peak experience of winning should lessen the impact of ordinary pleasures.''}"
+  ],
+  [
+   11054,
+   "\\cpara{The quotation matches Orwell's text; the ellipsis skips a paragraph on how pictures of Heaven change with the age. Orwell's own conclusion was that ``the real objective of Socialism is not happiness'' but ``human brotherhood.''}"
+  ],
+  [
+   11592,
+   "\\cpara{Notes that adding a constant to every outcome changes nothing for an expected utility maximizer. That is correct: every comparison between options comes out the same.}"
+  ],
+  [
+   11910,
+   "\\cpara{Answers that brains are not such maximizers: they have separate circuits for positive and negative feedback. It adds a case, people born unable to feel pain, of whom the author ``never heard'' that too little pleasure becomes intolerable.}"
+  ],
+  [
+   12062,
+   "\\cfact{Given without a source, and the neuroscience is mixed. A review of the same year stressed the overlap: ``extensive similarities in the anatomical substrates of painful and pleasant sensations'' (Leknes and Tracey, \\textsc{Nature Reviews Neuroscience}, 2008). The post's next example bears on its point more directly.}"
+  ],
+  [
+   12242,
+   "\\cpara{Grants that pain has a purpose. The cost of its absence is larger than self-inspection suggests. In the families studied by Cox and colleagues (\\textsc{Nature}, 2006), all had injured their lips or tongues in early childhood, and ``All had frequent bruises and cuts, and most had suffered fractures or osteomyelitis''; the index case ``died before being seen on his fourteenth birthday, after jumping off a house roof.''}"
+  ],
+  [
+   12436,
+   "\\cpara{Guesses, and says so (``I'd have to guess that yes''), that pain could be replaced by an urge without its intolerable quality, making that side of a person ``more akin to an expected utility maximizer.''}"
+  ],
+  [
+   12896,
+   "\\cpara{Guesses the same for adaptation, and separates it from deleting boredom: an old pleasure could stay pleasurable without ending the urge to seek new ones.}"
+  ],
+  [
+   13332,
+   "\\cpara{Asks whether a roast goose could please as it does after starvation, without the starving.}"
+  ],
+  [
+   13462,
+   "\\cpara{Asks the same of pain: could a dust speck stay minor for someone who has known nothing worse?}"
+  ],
+  [
+   13670,
+   "\\cpara{Answers these questions with a guess, ``yes, it can be done,'' supported by the author's ``experience in such matters'' that once you learn ``the Law'' you can see how to do weird-seeming things. No evidence about brains is given.}"
+  ],
+  [
+   13915,
+   "\\cpara{Endorses Pearce's feasibility claim as ``very probably right,'' within ``So far as I know or can guess.'' The ``very probably'' rests on the three guesses just made (``I'd have to guess,'' ``I would guess,'' ``I would guess'').}"
+  ],
+  [
+   14079,
+   "\\cpara{Quotes Pearce. The text now on Pearce's site, hedweb.com, begins ``The Hedonistic Imperative outlines how genetic engineering will abolish suffering in all sentient life''; the rest matches word for word. I could not check the wording of 2009.}"
+  ],
+  [
+   14868,
+   "\\cpara{Asks whether anything but status quo bias and ``worn rationalizations'' argues against abolition.}"
+  ],
+  [
+   15052,
+   "\\cpara{Rejects leaving things as they are: a world no God designed is unlikely to hold exactly the right amount of pain, and too little is the less likely error.}"
+  ],
+  [
+   15456,
+   "\\cpara{Proposes an alternative: remove torture, keep bearable and useful pain, such as the pain of burning a finger or of a breakup.}"
+  ],
+  [
+   15708,
+   "\\cpara{Adds: remove the pain that destroys a mind, or make minds harder to damage.}"
+  ],
+  [
+   15845,
+   "\\cpara{Gives examples: broken legs and broken hearts, but no broken people; no starvation, AIDS or suicidal drudgery.}"
+  ],
+  [
+   16254,
+   "\\cpara{Suggests that stronger people would fear pain less.}"
+  ],
+  [
+   16393,
+   "\\cpara{Calls this one alternative to Pearce's world, and says others have not been thought through.}"
+  ],
+  [
+   16544,
+   "\\cpara{Names it ``the path of courage.''}"
+  ],
+  [
+   16737,
+   "\\cpara{Describes that world: sorrow, but not pointless sorrow, and pain that does not outweigh pleasure. Its people could write stories and read ours.}"
+  ],
+  [
+   17035,
+   "\\cpara{Gives the author's reason: conservatism about deleting large parts of human nature, lest it collapse ``into something simpler, like an expected pleasure maximizer.''}"
+  ],
+  [
+   17317,
+   "\\cpara{States the preference.}"
+  ],
+  [
+   17454,
+   "\\cpara{Names two possible biases behind the preference: fear of a very different world, and trouble empathizing across a larger gap.}"
+  ],
+  [
+   17782,
+   "\\cpara{Argues that change is a moving target: a child who never knew AIDS or slavery would not feel the world already changed enough.}"
+  ],
+  [
+   18103,
+   "\\cpara{Such a child might go on to remove the pain of broken hearts.}"
+  ],
+  [
+   18246,
+   "\\cpara{Asks whether \\textsc{Romeo and Juliet} would come to seem a relic, and pain a hangover to wake up from.}"
+  ],
+  [
+   18611,
+   "\\cpara{Asks whether the last step is worth delaying at all.}"
+  ],
+  [
+   18758,
+   "\\cpara{Ends without an answer.}"
+  ]
+ ]
+}

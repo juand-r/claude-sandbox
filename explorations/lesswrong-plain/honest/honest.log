@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 03:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 03:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1235,50 +1235,90 @@ n, you don't start growing as a rationalist.''
 (./sections/created-already-in-motion.tex [313
 
 ])
-(./sections/the-gift-we-give-to-tomorrow.tex [314
+(./sections/sorting-pebbles-into-correct-heaps.tex [314
 
-]) [315
+])
+(./sections/2-place-and-1-place-words.tex [315
+
+])
+(./sections/what-would-you-do-without-morality.tex [316
+
+])
+(./sections/changing-your-metaethics.tex [317
+
+])
+(./sections/could-anything-be-right.tex [318
+
+])
+(./sections/morality-as-fixed-computation.tex [319
+
+])
+(./sections/magical-categories.tex [320
+
+])
+(./sections/the-true-prisoner-s-dilemma.tex [321
+
+])
+(./sections/sympathetic-minds.tex [322
+
+]
+Overfull \hbox (1.53287pt too wide) in paragraph at lines 9--10
+[]\T1/ppl/m/n/10.95 (-20) So sympathy works ``by the simpler and yet far more c
+onsequential path of mirror neurons.''
+ []
+
+) (./sections/high-challenge.tex [323
+
+]) (./sections/serious-stories.tex
+[324
+
+]) (./sections/value-is-fragile.tex [325
+
+] [326])
+(./sections/the-gift-we-give-to-tomorrow.tex [327
+
+]) [328
 
 ]
 (./sections/something-to-protect.tex)
-(./sections/twelve-virtues-of-rationality.tex [316
+(./sections/twelve-virtues-of-rationality.tex [329
 
-] [317] [318
+] [330] [331
 
-]) [319] [320
-
-]
-(./sections/use-the-try-harder-luke.tex) [321
+]) [332] [333
 
 ]
-(./sections/a-sense-that-more-is-possible.tex) [322
+(./sections/use-the-try-harder-luke.tex) [334
 
 ]
-(./sections/humans-are-not-automatically-strategic.tex [323
+(./sections/a-sense-that-more-is-possible.tex) [335
+
+]
+(./sections/humans-are-not-automatically-strategic.tex [336
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-) (./sections/toolbox-thinking-and-law-thinking.tex [324
+) (./sections/toolbox-thinking-and-law-thinking.tex [337
 
-] [325
+] [338
 
 ])
-(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [326]
-[327
+(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [339]
+[340
 
 ]) (./sections/diseased-thinking-dissolving-questions-about-disease.tex
-[328]) (./sections/on-caring.tex [329
+[341]) (./sections/on-caring.tex [342
 
-] [330])
-(./sections/strong-evidence-is-common.tex [331
+] [343])
+(./sections/strong-evidence-is-common.tex [344
 
 ])
-(./sections/pr-is-corrosive.tex [332
+(./sections/pr-is-corrosive.tex [345
 
-]) [333
+]) [346
 
 ] (./honest.aux)
  ***********
@@ -1286,14 +1326,14 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `honest.out' has not changed.
-(rerunfilecheck)             Checksum: B093FD43B0F6A35050A6397754E7BAE1;61678.
+(rerunfilecheck)             Checksum: 092E78C280FB521137384DFD921F7CD4;63875.
  ) 
 Here is how much of TeX's memory you used:
- 14990 strings out of 476182
- 289199 string characters out of 5795595
+ 15130 strings out of 476182
+ 293501 string characters out of 5795595
  1934975 words of memory out of 5000000
- 34945 multiletter control sequences out of 15000+600000
- 611589 words of font info for 365 fonts, out of 8000000 for 9000
+ 35017 multiletter control sequences out of 15000+600000
+ 611985 words of font info for 370 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,6n,79p,1599b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></u
@@ -1303,10 +1343,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on honest.pdf (333 pages, 974712 bytes).
+Output written on honest.pdf (346 pages, 1011939 bytes).
 PDF statistics:
- 3193 PDF objects out of 3580 (max. 8388607)
- 2816 compressed objects within 29 object streams
- 653 named destinations out of 1000 (max. 500000)
- 68073 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 3312 PDF objects out of 3580 (max. 8388607)
+ 2921 compressed objects within 30 object streams
+ 678 named destinations out of 1000 (max. 500000)
+ 68169 words of extra memory for PDF output out of 74296 (max. 10000000)
 

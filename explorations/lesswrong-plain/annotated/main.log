@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 03:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 03:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -742,58 +742,118 @@ Overfull \hbox (4.49997pt too wide) detected at line 301
  []
 
 
+Overfull \hbox (4.49997pt too wide) detected at line 302
+ []\T1/ppl/m/n/10 1239
+ []
+
+
 Overfull \hbox (4.49997pt too wide) detected at line 303
- []\T1/ppl/m/n/10 1243
+ []\T1/ppl/m/n/10 1244
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 304
- []\T1/ppl/m/n/10 1249
+ []\T1/ppl/m/n/10 1246
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 305
+ []\T1/ppl/m/n/10 1250
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 306
+ []\T1/ppl/m/n/10 1255
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 307
- []\T1/ppl/m/n/10 1257
+ []\T1/ppl/m/n/10 1260
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 308
+ []\T1/ppl/m/n/10 1267
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 309
- []\T1/ppl/m/n/10 1261
+ []\T1/ppl/m/n/10 1272
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 310
+ []\T1/ppl/m/n/10 1277
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 311
- []\T1/ppl/m/n/10 1266
+ []\T1/ppl/m/n/10 1281
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 312
- []\T1/ppl/m/n/10 1270
+ []\T1/ppl/m/n/10 1289
  []
 
-[10]
+
 Overfull \hbox (4.49997pt too wide) detected at line 313
- []\T1/ppl/m/n/10 1279
- []
-
-
-Overfull \hbox (4.49997pt too wide) detected at line 314
- []\T1/ppl/m/n/10 1288
+ []\T1/ppl/m/n/10 1295
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 315
- []\T1/ppl/m/n/10 1296
+ []\T1/ppl/m/n/10 1303
  []
 
-
+[10]
 Overfull \hbox (4.49997pt too wide) detected at line 316
- []\T1/ppl/m/n/10 1304
+ []\T1/ppl/m/n/10 1309
  []
 
 
-Overfull \hbox (4.49997pt too wide) detected at line 317
- []\T1/ppl/m/n/10 1306
+Overfull \hbox (4.49997pt too wide) detected at line 319
+ []\T1/ppl/m/n/10 1317
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 321
+ []\T1/ppl/m/n/10 1321
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 323
+ []\T1/ppl/m/n/10 1326
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 324
+ []\T1/ppl/m/n/10 1330
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 325
+ []\T1/ppl/m/n/10 1339
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 326
+ []\T1/ppl/m/n/10 1348
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 327
+ []\T1/ppl/m/n/10 1356
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 328
+ []\T1/ppl/m/n/10 1364
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 329
+ []\T1/ppl/m/n/10 1366
  []
 
 )
@@ -2818,7 +2878,142 @@ Overfull \hbox (0.32935pt too wide) in paragraph at lines 23--23
 
 ] [1232])
 (./afterwords/created-already-in-motion.tex [1233])
-(./posts/the-gift-we-give-to-tomorrow.tex [1234]
+(./posts/sorting-pebbles-into-correct-heaps.tex [1234] [1235
+
+] [1236])
+(./afterwords/sorting-pebbles-into-correct-heaps.tex [1237])
+(./posts/2-place-and-1-place-words.tex [1238] [1239
+
+] [1240]
+Underfull \hbox (badness 1097) in paragraph at lines 63--63
+[]$[]$\T1/ppl/m/n/10 (+20) Then the math-e-mat-i-cal ob-ject spit out by cur-ry
+-ing Sex-i-
+ []
+
+
+Overfull \hbox (0.15575pt too wide) in paragraph at lines 73--73
+\T1/ppl/m/n/8 (+4) ``water'' means H20 on both planets, so Twin Earth has 
+ []
+
+[1241]
+Underfull \hbox (badness 1354) in paragraph at lines 85--85
+[]$[]$\T1/ppl/m/n/10 (+20) Similarly it takes an ex-tra step for Fred to re-al-
+ize that
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 85--85
+\T1/ppl/m/n/10 (+20) other agents, like the Bug-Eyed-Monster agent, will choose
+
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 85--85
+\T1/ppl/m/n/10 (+20) Sex-i-ness-Fred(Woman).  To do this, Fred must con-sciousl
+y
+ []
+
+) (./afterwords/2-place-and-1-place-words.tex [1242])
+(./posts/what-would-you-do-without-morality.tex [1243]) [1244
+
+]
+(./afterwords/what-would-you-do-without-morality.tex)
+(./posts/changing-your-metaethics.tex [1245] [1246
+
+] [1247]
+Underfull \hbox (badness 1515) in paragraph at lines 41--41
+[]$[]$\T1/ppl/m/n/10 (+20) And if you're won-der-ing why I deem this busi-ness 
+of
+ []
+
+[1248]) (./afterwords/changing-your-metaethics.tex
+Underfull \hbox (badness 1546) in paragraph at lines 4--5
+[]\T1/ppl/m/n/10 (+20) The post sep-a-rates moral-ity (``Killing peo-ple is wro
+ng'') from
+ []
+
+) (./posts/could-anything-be-right.tex [1249] [1250
+
+]
+Underfull \hbox (badness 1521) in paragraph at lines 33--33
+\T1/ppl/m/n/10 (+20) point and the de-ter-mi-na-tion pro-ce-dure^^Vthen what is
+ their
+ []
+
+[1251] [1252]) (./afterwords/could-anything-be-right.tex [1253])
+(./posts/morality-as-fixed-computation.tex [1254]
+Overfull \hbox (0.10306pt too wide) in paragraph at lines 9--9
+\T1/ppl/m/n/8 (+14) per-son would want (SEP, ``Moral Nat-u-ral-ism,'' sec-tion 
+
+ []
+
+[1255
+
+] [1256] [1257]) (./afterwords/morality-as-fixed-computation.tex [1258])
+(./posts/magical-categories.tex [1259] [1260
+
+] [1261] [1262]
+Overfull \hbox (13.10413pt too wide) in paragraph at lines 75--76
+\T1/ppl/m/n/10 (-20) tory_1, Molec-u-lar_Smileyface_1, Cat_4, Molec-u-lar_Smile
+yface_2,
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 82--83
+\T1/ppl/m/n/10 (+20) Car_1, Frown_5, Frown_6, Cat_3, Galaxy_1, Frown_7,
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 89--90
+\T1/ppl/m/n/10 (+20) Car_1, Frown_5, Frown_6, Cat_3, Galaxy_1, Frown_7,
+ []
+
+[1263] [1264]) [1265] (./afterwords/magical-categories.tex)
+(./posts/the-true-prisoner-s-dilemma.tex [1266]
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
+[1267
+
+] [1268]
+Underfull \hbox (badness 10000) in paragraph at lines 62--65
+
+ []
+
+[1269]) (./afterwords/the-true-prisoner-s-dilemma.tex [1270])
+(./posts/sympathetic-minds.tex [1271] [1272
+
+] [1273] [1274])
+(./afterwords/sympathetic-minds.tex [1275]) (./posts/high-challenge.tex
+[1276] [1277
+
+] [1278]) (./afterwords/high-challenge.tex [1279])
+(./posts/serious-stories.tex [1280] [1281
+
+] [1282]
+Underfull \hbox (badness 2111) in paragraph at lines 59--59
+[]$[]$\T1/ppl/m/n/10 (+20) Investigating the life of the priest and proto-ratio
+nalist
+ []
+
+[1283] [1284]
+Underfull \hbox (badness 4217) in paragraph at lines 95--95
+[]$[]$\T1/ppl/m/n/10 (+20) Could you delete the hu-man ten-dency to scale plea-
+
+ []
+
+[1285]
+Underfull \hbox (badness 6016) in paragraph at lines 145--145
+[]\T1/ppl/m/n/10 (+20) Maybe the path of courage just seems like the \T1/ppl/m/
+it/10 (+20) smaller
+ []
+
+[1286]) (./afterwords/serious-stories.tex [1287]) (./posts/value-is-fragile.tex
+[1288] [1289
+
+] [1290] [1291] [1292]) (./afterwords/value-is-fragile.tex [1293])
+(./posts/the-gift-we-give-to-tomorrow.tex [1294]
 Underfull \hbox (badness 3590) in paragraph at lines 13--13
 []$[]$\T1/ppl/m/n/10 (+20) But some-times moth-ers adopt chil-dren, and still l
 ove
@@ -2830,87 +3025,87 @@ Underfull \hbox (badness 1603) in paragraph at lines 25--25
 r
  []
 
-[1235
+[1295
 
-] [1236] [1237] [1238] [1239])
-(./afterwords/the-gift-we-give-to-tomorrow.tex [1240]) [1241]
-(./posts/something-to-protect.tex [1242
+] [1296] [1297] [1298] [1299])
+(./afterwords/the-gift-we-give-to-tomorrow.tex [1300]) [1301]
+(./posts/something-to-protect.tex [1302
 
-] [1243
+] [1303
 
-] [1244] [1245] [1246])
-(./afterwords/something-to-protect.tex [1247])
-(./posts/twelve-virtues-of-rationality.tex [1248] [1249
+] [1304] [1305] [1306])
+(./afterwords/something-to-protect.tex [1307])
+(./posts/twelve-virtues-of-rationality.tex [1308] [1309
 
-] [1250] [1251] [1252])
-(./afterwords/twelve-virtues-of-rationality.tex [1253]) [1254] [1255
+] [1310] [1311] [1312])
+(./afterwords/twelve-virtues-of-rationality.tex [1313]) [1314] [1315
 
 ]
-(./posts/use-the-try-harder-luke.tex [1256
+(./posts/use-the-try-harder-luke.tex [1316
 
 ]
 Underfull \hbox (badness 4569) in paragraph at lines 4--5
 []\T1/ppl/m/n/10 (+20) "When there's a will to fail, ob-sta-cles can be
  []
 
-[1257
+[1317
 
-]) (./afterwords/use-the-try-harder-luke.tex [1258]) [1259]
-(./posts/a-sense-that-more-is-possible.tex [1260
+]) (./afterwords/use-the-try-harder-luke.tex [1318]) [1319]
+(./posts/a-sense-that-more-is-possible.tex [1320
 
-] [1261
+] [1321
 
-] [1262])
-(./afterwords/a-sense-that-more-is-possible.tex [1263]) [1264]
-(./posts/humans-are-not-automatically-strategic.tex [1265
+] [1322])
+(./afterwords/a-sense-that-more-is-possible.tex [1323]) [1324]
+(./posts/humans-are-not-automatically-strategic.tex [1325
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-[1266
+[1326
 
-] [1267]) (./afterwords/humans-are-not-automatically-strategic.tex
-[1268]) (./posts/toolbox-thinking-and-law-thinking.tex [1269] [1270
+] [1327]) (./afterwords/humans-are-not-automatically-strategic.tex
+[1328]) (./posts/toolbox-thinking-and-law-thinking.tex [1329] [1330
 
-] [1271]
-[1272] [1273] [1274] [1275] [1276])
-(./afterwords/toolbox-thinking-and-law-thinking.tex [1277])
-(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1278] [1279
+] [1331]
+[1332] [1333] [1334] [1335] [1336])
+(./afterwords/toolbox-thinking-and-law-thinking.tex [1337])
+(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1338] [1339
 
 ]
-[1280] [1281] [1282] [1283] [1284] [1285])
-(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1286])
-(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1287]
-[1288
+[1340] [1341] [1342] [1343] [1344] [1345])
+(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1346])
+(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1347]
+[1348
 
-] [1289] [1290] [1291] [1292] [1293])
-(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1294])
-(./posts/on-caring.tex [1295] [1296
+] [1349] [1350] [1351] [1352] [1353])
+(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1354])
+(./posts/on-caring.tex [1355] [1356
 
-] [1297] [1298] [1299] [1300])
-(./afterwords/on-caring.tex [1301] [1302])
-(./posts/strong-evidence-is-common.tex [1303])
-(./afterwords/strong-evidence-is-common.tex [1304
+] [1357] [1358] [1359] [1360])
+(./afterwords/on-caring.tex [1361] [1362])
+(./posts/strong-evidence-is-common.tex [1363])
+(./afterwords/strong-evidence-is-common.tex [1364
 
 ])
-(./posts/pr-is-corrosive.tex [1305]) [1306
+(./posts/pr-is-corrosive.tex [1365]) [1366
 
 ] (./afterwords/pr-is-corrosive.tex)
-[1307] (./main.aux)
+[1367] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7AC1F5A044CB862AE25F478910FD8B31;61623.
+(rerunfilecheck)             Checksum: 0FBCF78A284167570E828D47DCB48383;63820.
  ) 
 Here is how much of TeX's memory you used:
- 27579 strings out of 476182
- 487684 string characters out of 5795595
+ 28243 strings out of 476182
+ 499832 string characters out of 5795595
  1968975 words of memory out of 5000000
- 37957 multiletter control sequences out of 15000+600000
+ 38089 multiletter control sequences out of 15000+600000
  656438 words of font info for 777 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,6n,82p,3175b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2927,10 +3122,10 @@ hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (1307 pages, 5462890 bytes).
+Output written on main.pdf (1367 pages, 5727572 bytes).
 PDF statistics:
- 16869 PDF objects out of 18468 (max. 8388607)
- 15293 compressed objects within 153 object streams
- 9006 named destinations out of 10688 (max. 500000)
- 102377 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 17695 PDF objects out of 18468 (max. 8388607)
+ 16051 compressed objects within 161 object streams
+ 9478 named destinations out of 10688 (max. 500000)
+ 102473 words of extra memory for PDF output out of 106986 (max. 10000000)
 
