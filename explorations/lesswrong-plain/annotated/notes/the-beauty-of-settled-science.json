@@ -1,0 +1,77 @@
+{
+ "slug": "the-beauty-of-settled-science",
+ "header": "\\post{The Beauty of Settled Science}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ndGYn7ZFiZyernp9f/the-beauty-of-settled-science}\n",
+ "skeleton_sha": "0677258d2742fbe1a79b8c5a1dbedff61b97a15d8580635c1dacd03d4d49c708",
+ "post_sha": "5d5c8549e994b5e7f66706fb8af4f8bcc72a0ea4e2fa2f72b7a63905a741cbf0",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Sums up the three posts before it, one per clause, through its links.}"
+  ],
+  [
+   473,
+   "\\cpara{States the thesis as a warning: caring only about controversial science leaves ``a head stuffed full of garbage.''}"
+  ],
+  [
+   609,
+   "\\cpara{Argues that the news covers only the frontier of science, where the evidence is thinnest.}"
+  ],
+  [
+   982,
+   "\\cfact{Offered with ``often'' and no source. Later evidence fits it. Dumas-Mallet and colleagues (2017) traced 156 biomedical association studies that newspapers had reported: ``Only 48.7\\% of the 156 studies reported by newspapers were confirmed by the corresponding meta-analyses.''}"
+  ],
+  [
+   1095,
+   "\\cpara{Describes controversies as problems hard enough that experts can still fool themselves, which is why they draw heated argument and attention.}"
+  ],
+  [
+   1337,
+   "\\cpara{Adds that, for outsiders, controversies are not even fun.}"
+  ],
+  [
+   1444,
+   "\\cpara{Compares taking sides in a scientific controversy to supporting a team; the link goes to ``The Two-Party Swindle.''}"
+  ],
+  [
+   1647,
+   "\\cpara{Lists what a good textbook gives, ending, with a hedge, in ``a reasonably good guarantee'' that what one learns is true.}"
+  ],
+  [
+   1994,
+   "\\cpara{Sets press releases against textbooks: fake explanations of results the writer did not understand and that ``probably'' will not replicate.}"
+  ],
+  [
+   2323,
+   "\\cfact{Part of this has later support. In 462 press releases from British universities, Sumner and colleagues (2014) found exaggerated advice in 40\\%, exaggerated causal claims in 33\\%, and exaggerated inference from animals to humans in 36\\%. Whether the writers understood the results was not measured.}"
+  ],
+  [
+   2337,
+   "\\cpara{Describes science as discoveries built on discoveries, back to Archimedes, whose account of floating needs no later knowledge, and advises starting at the beginning. Archimedes' \\textsc{On Floating Bodies} contains the first known statement of what is now called Archimedes' principle.}"
+  ],
+  [
+   2663,
+   "\\cpara{Urges reading elementary textbooks for fun, since ``simplicity is at the core of scientific beauty.''}"
+  ],
+  [
+   2921,
+   "\\cpara{Begins a comparison for starting at the frontier.}"
+  ],
+  [
+   3040,
+   "\\cpara{Completes it: starting at the frontier is like trying to jump over the lower half of Everest.}"
+  ],
+  [
+   3294,
+   "\\cpara{Grants, with a hypothetical about oncologists, that some controversies are important to know about.}"
+  ],
+  [
+   3525,
+   "\\cpara{Restates the thesis: science need not be controversial to be interesting.}"
+  ],
+  [
+   3624,
+   "\\cpara{Adds that science need not be recent either, and ends with a joke about a diet of science news.}"
+  ]
+ ]
+}

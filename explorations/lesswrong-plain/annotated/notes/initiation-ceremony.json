@@ -1,0 +1,113 @@
+{
+ "slug": "initiation-ceremony",
+ "header": "\\post{Initiation Ceremony}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fnEWQAYxcRnaYBqaZ/initiation-ceremony}\n",
+ "skeleton_sha": "76fcd91bfed81fbf216e680c5b98da9ad4f3cbb7b2e5bb78ab86362e64e29ba3",
+ "post_sha": "0e4cb1605177cf35a0a6c36b90caab40d8d810a25f1c319dd4707732964e3592",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Opens on a climb lit by torches of an unnatural color, counted step by step in the lines that follow.}"
+  ],
+  [
+   297,
+   "\\cpara{Introduces Brennan. In the book's order this is his first appearance; he returns as a student of Jeffreyssai in ``The Failures of Eld Science.''}"
+  ],
+  [
+   453,
+   "\\cpara{A robed guide leads, kept out of sight by the turn of the spiral stair.}"
+  ],
+  [
+   733,
+   "\\cpara{Sixteen times sixteen is 256, so at step 240 Brennan had sixteen to go and his ``Not much longer'' was right.}"
+  ],
+  [
+   833,
+   "\\cpara{A gate of glass that distorts light and can be seen through only with its ``counter-door.'' The optics are sound in principle: two plates of the same glass whose thicknesses add to a constant act together as one flat plate, which does not distort.}"
+  ],
+  [
+   1280,
+   "\\cpara{The guide opens the gate with mirrored gloves, which hide the color of the skin.}"
+  ],
+  [
+   1574,
+   "\\cpara{The whisper hides the guide's sex, as the gloves hide the skin. The puzzle later in the story depends on this.}"
+  ],
+  [
+   1726,
+   "\\cpara{Brennan suspects a trap in a question with an obvious answer.}"
+  ],
+  [
+   2060,
+   "\\cpara{Asked what he wants to know, Brennan falls back on the truth: he wants to know, whatever it is. The answer states the attitude the Conspiracy asks for, a wish to know that does not depend on what the answer turns out to be.}"
+  ],
+  [
+   2351,
+   "\\cpara{The gate opens on that answer.}"
+  ],
+  [
+   2479,
+   "\\cpara{A square room of hooded members with mirrored walls. The optics are right again: facing mirrors repeat an image without end, and four mirrored walls repeat it in a square grid.}"
+  ],
+  [
+   2948,
+   "\\cpara{The whole assembly turns to look at Brennan.}"
+  ],
+  [
+   3405,
+   "\\cpara{The members answer in one voice, so that no one can be singled out.}"
+  ],
+  [
+   3634,
+   "\\cpara{The litany names four mathematicians of probability: Jakob Bernoulli (died 1705), Abraham de Moivre (1754), Pierre-Simon Laplace (1827) and Edwin Thompson Jaynes (1998). ``To Spread Science, Keep It Secret,'' posted the same day, speaks of ``Darwin Who Is Not Forgotten''.}"
+  ],
+  [
+   4013,
+   "\\cpara{States the Conspiracy's creed: the dead are lost, and the project continues.}"
+  ],
+  [
+   4139,
+   "\\cpara{The ring is offered, then withheld.}"
+  ],
+  [
+   4390,
+   "\\cpara{The test is a question about base rates. Men in the Heresy make up $1/4 \\times 1/2 = 2/16$ of the room and women in the Heresy $3/4 \\times 3/4 = 9/16$, so the odds that a member of the Heresy is a man are 2 to 9, a probability of two-elevenths. Brennan's answer is right.}"
+  ],
+  [
+   4780,
+   "\\cpara{The guide's one-sixth is wrong, and the story shows it to be part of the test.}"
+  ],
+  [
+   4897,
+   "\\cpara{The cost of the test is shame before the whole room, told at length.}"
+  ],
+  [
+   5156,
+   "\\cpara{The guide asks Brennan to show his honesty by giving up his answer. Since the answer is right, giving it up would be conformity, not honesty.}"
+  ],
+  [
+   5456,
+   "\\cpara{Authority and the laughing crowd press together. The situation recalls Asch's experiments, described in ``Asch's Conformity Experiment,'' in which a unanimous group gave a wrong answer before the subject spoke.}"
+  ],
+  [
+   5624,
+   "\\cpara{Brennan works the problem aloud, keeps two-elevenths as the answer on the information given, and doubts the information. His last point holds: for three-fourths, nine-sixteenths and one-eighth of the room all to be whole numbers of people, the room must hold a multiple of 16, so an odd number of people cannot fit the stated fractions.}"
+  ],
+  [
+   6290,
+   "\\cpara{The ring is given for keeping the answer. The question is one Brennan can check in his head; when to defer to someone who may know more, the question of ``The Ritual'' earlier in the book, is not tested here.}"
+  ],
+  [
+   6345,
+   "\\cpara{The ring is made of a material whose refractive index is close to that of air, so it is almost invisible.}"
+  ],
+  [
+   6756,
+   "\\cpara{The last line echoes the end of the author's ``An Intuitive Explanation of Bayes's Theorem,'' which the book places earlier: ``You are now an initiate of the Bayesian Conspiracy.''}"
+  ],
+  [
+   6820,
+   "\\cpara{The image, which I could view, shows a bearded man in a hooded brown robe in a stone tunnel, one hand raised, holding open a book whose cover reads ``Causality''.}"
+  ]
+ ]
+}
