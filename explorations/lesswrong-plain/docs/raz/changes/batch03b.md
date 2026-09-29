@@ -211,3 +211,55 @@ Why: Pointer matched to the revised notes.
 - Before: Item 36. On this example, which turns on the pronoun ``his,'' and on the old name for this error, equivocation, see the notes on ``Variable Question Fallacies.''
 - After: Item 36. On the old name for this error, equivocation, see the notes on ``Variable Question Fallacies.''
 
+
+## annotated/afterwords/superexponential-conceptspace-and-simple-words.tex
+
+Why: Fair reading: the post's point, that singling out one concept needs a reason, holds in any large space, and the count dramatizes it; the observation stays as a margin note.
+
+- Before: 
+
+The closing example does not depend on the post's large number. ``Wiggin,'' black-haired and green-eyed, is a conjunction of two attribute values, the kind of simple concept the restricted format contains. The point that a concept needs a reason to be singled out holds in that smaller space; the superexponential count is not what makes the choice audacious.
+- After: 
+
+- Before: joined to words by a rule the post itself calls chicken-and-egg and by an example whose audacity does not come from the superexponential count.
+- After: and joined to words by a rule the post itself calls chicken-and-egg.
+
+
+## honest/sections/superexponential-conceptspace-and-simple-words.tex
+
+Why: Same.
+
+- Before:  \nb{``Wiggin'' is a conjunction of two attribute values, one of the simple concepts of the restricted format, so the superexponential count is not what makes it audacious. The detective's point holds in the smaller space as well.}
+- After: 
+
+
+## annotated/posts/conditional-independence-and-naive-bayes.tex
+
+Why: Nitpick.
+
+- Before: \cpara{Claims that ``without conditional independence, the universe would have no structure.'' The post does not say what ``structure'' means here or why the claim holds, and does not return to it.}
+- After: \cpara{Claims that ``without conditional independence, the universe would have no structure.''}
+
+
+## annotated/afterwords/conditional-independence-and-naive-bayes.tex
+
+Why: Structural judgment and an unexplained aside are nitpicks; the first half explains the concept the second half uses.
+
+- Before: 
+
+The two halves of the post are loosely joined. The first half teaches how to compute conditional entropies. The second uses only conditional independence in its probability form, $p(u|v,w,x,y,z) = p(u|z)$, and the entropy formulas do not appear again.
+- After: 
+
+- Before: 
+
+Along the way, the claim that ``without conditional independence, the universe would have no structure'' is left unexplained.
+- After: 
+
+
+## honest/sections/conditional-independence-and-naive-bayes.tex
+
+Why: Same.
+
+- Before: \nb{Both theorems are correct. The post does not use the entropy formulas again.}
+- After: \nb{Both theorems are correct.}
+

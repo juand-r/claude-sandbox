@@ -1,0 +1,173 @@
+{
+ "slug": "conditional-independence-and-naive-bayes",
+ "header": "\\post{Conditional Independence, and Naive Bayes}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/gDWvLicHhcMfGmwaK/conditional-independence-and-naive-bayes}\n",
+ "skeleton_sha": "754f2241d3b86b023dbc3b821685f2b64b32f25a70ea8a5bace16129dcadf472",
+ "post_sha": "1ace68656d19de72ec609421c3f7accbb54b7666ee76fe1182195d670b56dace",
+ "edits": [],
+ "notes": [
+  [
+   167,
+   "\\cpara{Recalls the definition from ``Mutual Information, and Density in Thingspace'' (23 February 2008): $I(X;Y) = H(X) + H(Y) - H(X,Y)$.}"
+  ],
+  [
+   499,
+   "\\cpara{Recalls the example from that post. The entropies are right: $\\log_2 8 = 3$ bits and $\\log_2 4 = 2$ bits.}"
+  ],
+  [
+   882,
+   "\\cpara{Checks: four even values of X with two of Y, and four odd with two, make 16 equally likely states, 4 bits, one bit less than the 5 of independent variables.}"
+  ],
+  [
+   1410,
+   "\\cpara{Adds a third variable, Z, the shared parity of X and Y.}"
+  ],
+  [
+   1653,
+   "\\cpara{Gives the pairwise figures, each 1 bit and each correct, and the formula a reader might expect.}"
+  ],
+  [
+   2183,
+   "\\cpara{Correct: Z is fixed by X, so adding it adds no states.}"
+  ],
+  [
+   2330,
+   "\\cpara{The expected formula gives 3 bits, one short of the true 4.}"
+  ],
+  [
+   2532,
+   "\\cpara{Explains the shortfall as double counting: what X tells about Y is the same information that passes through Z.}"
+  ],
+  [
+   3064,
+   "\\cpara{Offers the corrected formula, with ``I believe''.}"
+  ],
+  [
+   3187,
+   "\\clogic{The hedge is not needed: the formula holds for any three variables. By the chain rule, $H(X,Y,Z) = H(Z) + H(X|Z) + H(Y|X,Z)$, with $H(X|Z) = H(X) - I(X;Z)$ and $H(Y|X,Z) = H(Y) - I(Y;Z) - I(X;Y|Z)$. I also checked it numerically on random distributions.}"
+  ],
+  [
+   3213,
+   "\\cpara{Explains the new term and says it is zero here. That checks: once Z is known, X is spread evenly over four values and Y over two, independently.}"
+  ],
+  [
+   3519,
+   "\\cpara{Has the reader object that a verbal argument is not a calculation.}"
+  ],
+  [
+   3727,
+   "\\cpara{Gives the conditional form of the definition. Correct; here it gives $2 + 1 - 3 = 0$ bits.}"
+  ],
+  [
+   3906,
+   "\\cpara{Gives Shannon's formula for entropy.}"
+  ],
+  [
+   4125,
+   "\\cpara{The entropy left after learning one value of Z.}"
+  ],
+  [
+   4297,
+   "\\cpara{Conditional entropy as the average over the values of Z. Correct.}"
+  ],
+  [
+   4551,
+   "\\cpara{Ends the calculation. The formulas for conditional entropy are not used again in the post; the part on naive Bayes uses conditional independence in its probability form.}"
+  ],
+  [
+   4685,
+   "\\cpara{Lists two further results, both correct. The second follows from the chain rule: $I(X;Y,Z) = I(X;Z) + I(X;Y|Z) = 0$, and $I(X;Y)$ cannot exceed $I(X;Y,Z)$.}"
+  ],
+  [
+   5104,
+   "\\cpara{A joke, and a promise of more preliminaries.}"
+  ],
+  [
+   5298,
+   "\\cpara{Recalls, from ``Mutual Information, and Density in Thingspace,'' that mutual information is positive exactly when some joint probability differs from the product of the separate ones, that is, when one variable is evidence about the other. Correct; that post put it as ``Where there is no mutual information, there is no Bayesian evidence, and vice versa.''}"
+  ],
+  [
+   5838,
+   "\\cpara{The same derivation given Z. Each step is correct.}"
+  ],
+  [
+   6246,
+   "\\cpara{Defines screening off with the parity example. Both cases check.}"
+  ],
+  [
+   6700,
+   "\\cpara{Claims that ``without conditional independence, the universe would have no structure.''}"
+  ],
+  [
+   6888,
+   "\\cpara{Narrows the topic to one case: a central variable that screens off the variables around it.}"
+  ],
+  [
+   7108,
+   "\\cpara{Sets up five variables such that, in every pair, each variable is evidence about the other.}"
+  ],
+  [
+   7485,
+   "\\cpara{Names the five as properties of humans, and shows one being evidence for another about a thing that ``might be an apple and might be a rock.''}"
+  ],
+  [
+   7974,
+   "\\cpara{Gives exceptions (Fred, Barney, Irving) and draws the point: knowing that a thing is unclothed does not screen off what its speech tells about its blood.}"
+  ],
+  [
+   8482,
+   "\\cpara{Correct: when five variables share only their parity, knowing any one of them fixes the parity, and nothing else links the rest.}"
+  ],
+  [
+   8776,
+   "\\cpara{Restates the difficulty: here no single observed variable screens off the others.}"
+  ],
+  [
+   8965,
+   "\\cpara{Introduces a sixth variable that would screen off all five, possibly constructed rather than observed. The equations say that each observable is independent of the others once Z is known, which is the naive Bayes assumption.}"
+  ],
+  [
+   9367,
+   "\\cpara{Offers, with ``Perhaps,'' the class ``human'' as that variable, and tries it on Fred, Nellie and Barney.}"
+  ],
+  [
+   9804,
+   "\\cpara{Names the method and gives its merit, simpler calculation. Mitchell's draft chapter on the method, for a second edition of \\textsc{Machine Learning}, puts a number on it: for $n$ yes-or-no attributes and a two-valued class, the assumption cuts the parameters needed for the attributes given the class ``from our original $2(2^n - 1)$ to just $2n$.''}"
+  ],
+  [
+   9978,
+   "\\clogic{The pretence has a known cost. When two observations tend to go together within the class, naive Bayes counts the evidence they share twice, the error the post described in the entropy formula above, and its probability for the class can come out too extreme. Domingos and Pazzani (1997) found that its classifications can still be optimal when the assumption is ``violated by a wide margin,'' while its probability estimates are optimal (under quadratic loss) only if the assumption holds.}"
+  ],
+  [
+   10390,
+   "\\cpara{Summarizes the method: observations update the class, and the class predicts the rest.}"
+  ],
+  [
+   10675,
+   "\\cpara{The picture (I viewed the image file) is Network 2 from ``Neural Categories'' (10 February 2008): five units, for color, shape, luminance, texture and interior, each connected only to a central unit labelled ``Category: +BLEGG / -RUBE.''}"
+  ],
+  [
+   10735,
+   "\\cpara{Claims that a central logistic unit with the right weights computes exactly the naive Bayes answer, then guesses why logistic units work well.}"
+  ],
+  [
+   11064,
+   "\\clogic{Correct, and standard. With yes-or-no inputs, the naive Bayes log-odds of the class is a constant plus a weighted sum of the inputs, and the logistic curve turns log-odds into a probability. I checked this numerically.}"
+  ],
+  [
+   11280,
+   "\\clogic{Offered as ``a good guess,'' with no evidence. A trained logistic unit has the form of naive Bayes but not always its weights: on data that break the independence assumption, Mitchell's chapter notes, training adjusts the weights ``even if the resulting parameters are inconsistent with the Naive Bayes parameter estimates.''}"
+  ],
+  [
+   11294,
+   "\\cpara{Warns against an unnamed presenter of a ``neural network'' who calls it ``scruffy'' and ``emergent'' and cannot say how it works. The general claim follows: any method that works ``will turn out to have Bayesian structure.''}"
+  ],
+  [
+   11752,
+   "\\clogic{Stated without a hedge; the support in this post is the one logistic unit. The linked post, ``Searching for Bayes-Structure'' (28 February 2008; this collection places it later, in \\textsc{Mere Reality}), argues only that any part of a process that ``contributes usefully to truth-finding must have at least a little Bayesian structure.'' Its stronger claim, that the search always ends with ``the same Holy Grail,'' is supported there by the author's account of repeated discoveries, not by that argument.}"
+  ],
+  [
+   11918,
+   "\\cpara{Ends with a joke: the Bayesians will explain how the network works, what it assumes, and what its weights mean.}"
+  ]
+ ]
+}

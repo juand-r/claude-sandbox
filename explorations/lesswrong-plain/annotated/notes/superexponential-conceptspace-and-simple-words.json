@@ -1,0 +1,165 @@
+{
+ "slug": "superexponential-conceptspace-and-simple-words",
+ "header": "\\post{Superexponential Conceptspace, and Simple Words}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/82eMd5KLiJ5Z6rTrr/superexponential-conceptspace-and-simple-words}\n",
+ "skeleton_sha": "1da78f570970ad03cc4c5a55c7d97a158a60cea29efdb039d2e525bba7c118ff",
+ "post_sha": "c782baafe0c6d43f204ae64d345438350e1f25229fa1f922754e4c84267e4990",
+ "edits": [],
+ "notes": [
+  [
+   179,
+   "\\cpara{Recalls Thingspace, from ``The Cluster Structure of Thingspace,'' as a space that holds everything that could exist.}"
+  ],
+  [
+   440,
+   "\\cpara{Concedes that Thingspace, with a dimension for every attribute, may have no size worth the name, and says it should be pictured anyway.}"
+  ],
+  [
+   926,
+   "\\cpara{Claims that the space of concepts is larger still. This holds whatever size Thingspace has: the post will treat a concept as a set of things, and there are always more sets of things than things (Cantor's theorem).}"
+  ],
+  [
+   1027,
+   "\\cpara{Defines a concept as a rule that includes or excludes examples. The number example checks: the numbers marked + are exactly the even ones.}"
+  ],
+  [
+   1482,
+   "\\cpara{Sets up the example. It is adapted, as the post says below, from Tom Mitchell's textbook \\textsc{Machine Learning}, whose version (``EnjoySport'') has six attributes: Sky, AirTemp, Humidity, Wind, Water and Forecast.}"
+  ],
+  [
+   2415,
+   "\\cpara{Explains the notation: ``?'' accepts any value, a named value accepts only itself.}"
+  ],
+  [
+   2616,
+   "\\cpara{Checks: the negative example has AirTemp Cold and is rejected, and both positive examples are accepted.}"
+  ],
+  [
+   2984,
+   "\\cpara{Summarizes, ``without going into details,'' the candidate-elimination algorithm of Mitchell's second chapter: keep the most general and the most specific hypotheses that fit the data, and move the two sets toward each other as examples arrive.}"
+  ],
+  [
+   3969,
+   "\\cpara{Checks. I listed all 109 concepts of this format: six fit the three examples, and the most general and most specific of the six are the ones given. Mitchell's six-attribute version of the example has the same two most general hypotheses.}"
+  ],
+  [
+   4177,
+   "\\cpara{True of concepts in this format: the other three that fit, \\{Sunny, Warm, ?, ?\\}, \\{Sunny, ?, High, ?\\} and \\{?, Warm, High, ?\\}, lie between the two sets. The next paragraph turns to concepts outside the format.}"
+  ],
+  [
+   4373,
+   "\\cpara{Credits the source. The argument that follows, that a learner allowed every concept cannot generalize, is in the same chapter; Mitchell's lecture slides for it list among their summary points ``Inductive leaps possible only if learner is biased.''}"
+  ],
+  [
+   4495,
+   "\\cpara{Gives a concept outside the format: play when the sky is sunny or the air is warm. Checked: it fits the three examples, and no quadruplet expresses it.}"
+  ],
+  [
+   4792,
+   "\\cpara{Asks the question the technical part answers: why not allow every concept?}"
+  ],
+  [
+   4976,
+   "\\cpara{Counts the days: $3 \\times 2 \\times 2 \\times 2 = 24$. Correct.}"
+  ],
+  [
+   5160,
+   "\\cpara{Counts the concepts in the format: each attribute takes one of its values or ``?'', so $4 \\times 3 \\times 3 \\times 3 = 108$, plus the concept that accepts nothing, 109. Correct, and the 109 pick out 109 different sets of days. Mitchell's slides give 973 for the six-attribute version, the same count ($1 + 4 \\times 3^5$).}"
+  ],
+  [
+   5563,
+   "\\cpara{Explains why concepts can outnumber days: a concept is a set of days.}"
+  ],
+  [
+   5873,
+   "\\cpara{Read ``224'' as $2^{24}$: the exponent is a superscript on LessWrong and is lost in this copy. $2^{24} = 16{,}777{,}216$ is correct.}"
+  ],
+  [
+   6023,
+   "\\cpara{Gives two concepts from the full space that are only lists of exceptions.}"
+  ],
+  [
+   6474,
+   "\\cpara{The central technical claim, and it is right. If every set of days is a possible concept, then for any day not yet seen, the concepts that fit the data so far split exactly in half, one half accepting it and the other rejecting it. The data say nothing about that day.}"
+  ],
+  [
+   6656,
+   "\\cpara{Claims that a restricted space can be narrowed with a number of examples that grows with the logarithm of its size. The standard result supports this for learning to a stated accuracy. In Mitchell's chapter 7 slides, $m \\geq \\frac{1}{\\epsilon}(\\ln|H| + \\ln(1/\\delta))$ random examples are enough, with probability $1-\\delta$, to leave only concepts with error below $\\epsilon$; $|H|$ is the number of concepts.}"
+  ],
+  [
+   6992,
+   "\\cpara{Counts correctly: 48 days and $4 \\times 3^4 + 1 = 325$ concepts. ``29'' is $2^9$ (a superscript in the original), and $\\log_2 325 \\approx 8.3$, so nine halvings would do.}"
+  ],
+  [
+   7277,
+   "\\clogic{In this concept space the assumption fails at the start: any one day is accepted by exactly 32 of the 325 concepts, about one in ten, so no first example splits them evenly. Mitchell's slides state the halving rule with that proviso: ``when not possible, need even more.'' In my simulation, choosing each day to split the remaining concepts as evenly as possible took 15 days on average to single out one concept, and random days took a median of 46. The growth with the logarithm, which the argument needs, is not affected.}"
+  ],
+  [
+   7497,
+   "\\cpara{The same count for forty yes-or-no attributes: $\\log_2(3^{40}+1) \\approx 63.4$, so 64 halvings, under the same even-split assumption. The proviso that the true rule must be in the space is stated.}"
+  ],
+  [
+   7825,
+   "\\cpara{Correct: over $n$ yes-or-no attributes there are $2^{2^n}$ concepts, a number that grows faster than any exponential in $n$.}"
+  ],
+  [
+   8016,
+   "\\cpara{Checks: $2^{40} = 1{,}099{,}511{,}627{,}776$, past a trillion. By the argument above, a learner allowed every concept must see every example before it can classify them all.}"
+  ],
+  [
+   8435,
+   "\\cpara{Restates the figures; 40 bits is 5 bytes.}"
+  ],
+  [
+   8691,
+   "\\cpara{Concludes that real minds consider only highly regular concepts. The comparison with the universe holds by any measure: $2^{2^{40}}$, written out, has about 331 billion decimal digits.}"
+  ],
+  [
+   9054,
+   "\\cpara{The claim checks in the post's own example. The four-attribute format rules out 16,777,107 of the 16,777,216 concepts before any data; the three examples then rule out 103 of the remaining 109. In bits, about 17.2 against 4.2.}"
+  ],
+  [
+   9405,
+   "\\cpara{Announces the link to words. ``The whole reason'' is a strong claim; the argument for it comes in the next paragraphs: without simple boundaries there is no inference from cases seen to cases unseen.}"
+  ],
+  [
+   9532,
+   "\\cpara{The quotation is edited, as the post says. ``Mutual Information, and Density in Thingspace'' (23 February 2008) ends: ``And the way to carve reality at its joints, is to draw your boundaries around concentrations of unusually high probability density in Thingspace.''}"
+  ],
+  [
+   9802,
+   "\\cpara{Adds ``simple'' to the rule, and says it was left out on purpose because it needed today's argument.}"
+  ],
+  [
+   10159,
+   "\\cpara{Explains what ``simple'' excludes: a boundary that only lists the cases seen, which no message shorter than the observations could describe. Such a boundary is one of the list-like concepts of the counting argument above, and a learner that allows those cannot generalize.}"
+  ],
+  [
+   10538,
+   "\\cpara{Applies this to Socrates: no two humans are exactly alike, so calling him human needs a simple boundary, not a list of exact shapes.}"
+  ],
+  [
+   11127,
+   "\\cpara{Concludes that inference needs simple boundaries. The definition of art comes from ``Where to Draw the Boundary?'', where it is offered as a reader's possible reply.}"
+  ],
+  [
+   11511,
+   "\\cpara{Concedes that the rule is circular: density can be judged only after some carving, and the probabilities come from the boundaries. The post names the problem and moves to its next point without resolving it.}"
+  ],
+  [
+   11966,
+   "\\clogic{The author gives a reason a week later. In ``Conditional Independence, and Naive Bayes'' (1 March 2008), pretending that one central class variable screens off all the others ``can simplify the living daylights out of your calculations,'' though the pretence ``usually isn't quite true.'' Having every probability in principle is not the same as being able to compute with them.}"
+  ],
+  [
+   11980,
+   "\\cpara{Gives a further reason to doubt that ``you can define a word any way you like'': picking one concept out of so many needs a reason. The linked post, ``Einstein's Arrogance,'' made the same counting argument about hypotheses; see the note there on Peirce.}"
+  ],
+  [
+   12387,
+   "\\cpara{The example: defining ``wiggin'' with no reason to attend to it is like a detective naming a suspect with no evidence.}"
+  ],
+  [
+   12470,
+   "\\clogic{The superexponential count is not what makes this case audacious. ``Black-haired green-eyed'' is a conjunction of two attribute values, the kind of simple concept the post's restricted format contains, and there are far fewer of those. The detective's point, that a concept needs a reason to be singled out, holds in the small space as well.}"
+  ]
+ ]
+}
