@@ -1,0 +1,209 @@
+{
+ "slug": "the-intuitions-behind-utilitarianism",
+ "header": "\\post{The \"Intuitions\" Behind \"Utilitarianism\"}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/r5MSQ83gtbjWRBDWJ/the-intuitions-behind-utilitarianism}\n",
+ "skeleton_sha": "a70b2eac02cc96a8efd4ab39d3eaddb6944873f35719f134997817d47d4b34a6",
+ "post_sha": "d1b25458b4eabe543fdeb7e3c377ce754c13b2feb60b10439d7b847473ed36b8",
+ "edits": [],
+ "notes": [
+  [
+   162,
+   "\\cpara{An aside: the author was writing without Internet access.}"
+  ],
+  [
+   258,
+   "\\cpara{Explains why the author keeps moral discussion at the object level: metaethics depends on the Mind Projection Fallacy, not yet discussed, and the author's own meta-level reasoning had been ``worse than useless''. That this ``appears to be a general syndrome'' is hedged and rests on the author's own case.}"
+  ],
+  [
+   436,
+   "\\clogic{In the book the order is reversed. ``Mind Projection Fallacy'' (posted March 2008) is in Book IV, and the metaethics posts of summer 2008 come earlier in this book, under Value Theory, so the book's reader has met both.}"
+  ],
+  [
+   973,
+   "\\cpara{Describes how the author answers people who say morality does not exist: by asking what they do anyway.}"
+  ],
+  [
+   1298,
+   "\\cpara{States the charge being answered, fairly. Paul Gowder's Overcoming Bias post of the day before (27 January 2008) argued that the author's arguments ``establish an inconsistency between two propositions'' at most, and that utilitarian and dust-speck intuitions are ``on equal footing''. So the argument alone does not say which to give up.}"
+  ],
+  [
+   1663,
+   "\\cpara{Defines ``intuition'' as a term of art: not the opposite of reason, but the material from which both long arguments and quick perceptions are built.}"
+  ],
+  [
+   2165,
+   "\\cpara{Describes morality as ``renormalizing intuition'': adjusting particular intuitions and general principles against each other. This is close to what moral philosophers call reflective equilibrium, which the Stanford Encyclopedia calls ``the dominant method in moral and political philosophy'', developed by Rawls.}"
+  ],
+  [
+   2505,
+   "\\cpara{Argues that without intuitions nothing is left to reason with.}"
+  ],
+  [
+   2638,
+   "\\cpara{Argues that keeping every specific intuition, and refusing the reflective ones, leads to cyclical preferences.}"
+  ],
+  [
+   2933,
+   "\\cpara{Concludes that there is nothing else to argue from; even modus ponens is an intuition that has survived reflection. This grants Gowder's premise, and the question becomes which intuitions survive.}"
+  ],
+  [
+   3321,
+   "\\cpara{Asks what Gowder means by ``utilitarianism'' and lists seven candidate claims. Gowder's post gave no definition, but it described the dust-speck intuitions at issue as those that prefer small harms to many when ``the aggregate pain from the first is higher than the aggregate pain from the second'', which points to items 5 and 6.}"
+  ],
+  [
+   4298,
+   "\\cpara{Accepts items 3, 5, 6 and 7, rejects 4, and qualifies 1 and 2. Item 6, that two separate occurrences of a harm are exactly twice as bad as one, is the premise the dust-speck conclusion needs; much of the rest of the post argues for it.}"
+  ],
+  [
+   4829,
+   "\\cpara{First argument: violating ``utilitarianism'' leads to ``paradoxes, contradictions, circular preferences''. None is shown here. The circular-preference argument was in ``Circular Altruism'', and the book's version of that post, ``Feeling Moral'', leaves it out.}"
+  ],
+  [
+   5182,
+   "\\clogic{The difficulty is recognized on the other side. The Stanford Encyclopedia's entry on contractualism gives, as a hard case for views that refuse to aggregate, a choice between one person in agony for a hundred years and a million people in agony ``for a hundred years minus a day''.}"
+  ],
+  [
+   5196,
+   "\\cpara{Says that reflection and new facts change moral opinions; this is how moral progress is experienced, though it does not define it.}"
+  ],
+  [
+   5579,
+   "\\cpara{Separates two kinds of question: where to go, and how to get there.}"
+  ],
+  [
+   5840,
+   "\\cpara{Says that a false belief about where a road leads can be corrected directly by the truth.}"
+  ],
+  [
+   6137,
+   "\\cpara{Says that wanting a destination is less exposed to correction, though later regret is how we experience a mistake.}"
+  ],
+  [
+   6408,
+   "\\cpara{Keeps the distinction.}"
+  ],
+  [
+   6560,
+   "\\cpara{Claims that our intuitions about means are ``frankly messed up''. The ``two hundred and eighty-seventh research study'' is a joke; the evidence follows.}"
+  ],
+  [
+   6879,
+   "\\cpara{Recalls the findings reported in ``Scope Insensitivity''.}"
+  ],
+  [
+   7171,
+   "\\cpara{Quotes Paul Slovic (``Numbed by Numbers'', \\textsc{Foreign Policy}, 2007); the quotation matches. The study is Kogut and Ritov (2005). Its abstract reports that ``the identified single victim elicited considerably more contributions than the non-identified single victim, while the identification of the individual group members had essentially no effect'': the extra giving came with identifying details, chiefly a picture.}"
+  ],
+  [
+   7816,
+   "\\cpara{A joke: one example, because eight would move the reader less.}"
+  ],
+  [
+   7974,
+   "\\cpara{Explains the result by attention: one child arouses more emotion than eight. Kogut and Ritov reach the same explanation: ``the emotional reaction to the victims appears to be a major source of the effect.''}"
+  ],
+  [
+   8313,
+   "\\cpara{Sets out the reading the post rejects: that one child's good fortune is worth less when other children also fare well.}"
+  ],
+  [
+   8533,
+   "\\cpara{Answers with a reduction to absurdity: on that reading, helping one child would lower the value of every other child in the world. The three totals are consistent (410 plus 7 is 417).}"
+  ],
+  [
+   8874,
+   "\\cpara{Gives the post's reading: the intuition is an error, because the brain cannot multiply by eight. A second paper by Kogut and Ritov (\\textsc{Organizational Behavior and Human Decision Processes}, 2005) supports it: when people had to choose between the one child and the group, the ``preference reverses'', and 43 of 62 chose the group.}"
+  ],
+  [
+   9091,
+   "\\cpara{Extends the verdict from this case to all scope neglect: such results reveal no truth about ``nonagglomerative utilities''.}"
+  ],
+  [
+   9540,
+   "\\cpara{Argues from repeated choices: five efforts that each save 5,000 lives save 25,000 in all, fewer than one effort that saves 50,000, whether one person chooses or ten. The arithmetic checks.}"
+  ],
+  [
+   10058,
+   "\\cpara{A parenthesis: Bayesian reasoning gives the same answer for the long run and the short run; the long run is used only as an ``intuition pump''.}"
+  ],
+  [
+   10393,
+   "\\cpara{States the first source of aggregation: the plain preference to save as many lives as possible, applied to many choices.}"
+  ],
+  [
+   10694,
+   "\\cpara{States the second source: the value of saving a life does not depend on how many other lives exist.}"
+  ],
+  [
+   11171,
+   "\\clogic{Views that reject the dust-speck conclusion can accept this. Scanlon's contractualism ``does not allow a number of lesser complaints to outweigh one person's weightier complaint'', yet many contractualists argue that a rescuer should save five people rather than one (Stanford Encyclopedia, ``Contractualism''). What they deny is that small harms add up against a grave one. Parfit, quoted there: ``We might even believe that we ought to save Blue from her 100 days of pain rather than saving any number of such other people from their much smaller burden of 10 days of pain.'' The arguments so far, from counting lives, do not reach that disagreement; the argument against two tiers, below, is aimed at it.}"
+  ],
+  [
+   11185,
+   "\\cpara{Gives the same verdict on the Allais preferences, citing the Dutch-book and money-pump arguments. The author's case is in ``The Allais Paradox'' and ``Zut Allais!'', just before this in the book; see the notes there.}"
+  ],
+  [
+   11715,
+   "\\cpara{Says that quick intuitions handle probabilities badly, especially stated ones, so we reason in words instead.}"
+  ],
+  [
+   12049,
+   "\\cpara{Turns to people who say no money is worth a life, and then trade small risks to life for money, as in driving an extra mile to save \\$10.}"
+  ],
+  [
+   12452,
+   "\\cpara{First explanation: small quantities still feel like ``an amount worth considering''. It is offered with ``clearly''; the link is to the author's ``But There's Still A Chance, Right?'', and no study is cited.}"
+  ],
+  [
+   12721,
+   "\\cpara{Second explanation: people prefer unconditional rules because conditional ones invite abuse, as a legal exception for torture would.}"
+  ],
+  [
+   13020,
+   "\\clogic{Later in the book the author gives such rules a further role. In ``Ends Don't Justify Means (Among Humans)'' (October 2008) the author endorses ``the end doesn't justify the means'' ``as a principle to guide humans running on corrupted hardware''.}"
+  ],
+  [
+   13034,
+   "\\cpara{Concludes that there should be an unconditional rule against preferring money to life, though, the post adds, not calling a doctor for every sneeze trades a tiny chance of death for money.}"
+  ],
+  [
+   13367,
+   "\\cpara{Third explanation: sacred rhetoric signals trustworthiness, and a stated trade-off ``would sound like you were plotting to defect''. No source is given. Tetlock's work, cited in the notes on ``Feeling Moral'', fits it: people treat ``the mere thought of trading off sacred values against secular ones (such as money) as transparently outrageous''.}"
+  ],
+  [
+   13728,
+   "\\cpara{Says that people therefore want quantities kept out of such rules.}"
+  ],
+  [
+   13954,
+   "\\cpara{The argument against two tiers of value: if one tier had strict priority, the lower tier would decide nothing, since some upper-tier consideration is always present.}"
+  ],
+  [
+   14623,
+   "\\clogic{A real objection, later developed at length. Michael Huemer (``Lexical Priority and the Problem of Risk'', 2010) argues that such theories ``are in danger of becoming irrelevant to decision-making, becoming absurdly demanding'', or paradoxical. The Stanford Encyclopedia's entry on contractualism reports the same problem for views that refuse to aggregate: applied to risk, they seem to ``prohibit all socially useful activities that carry any risk of harm''. The entry also discusses replies.}"
+  ],
+  [
+   14637,
+   "\\cpara{Illustrates with Asimov's robots: with strict priority for the First Law, their behaviour would show no sign of the other two. I could not trace Norvig's remark. In Asimov's own ``Runaround'' (1942) two of the Laws are weighed against each other: the robot circles ``the point where the two compulsions are of equal strength'' (Wikipedia's summary).}"
+  ],
+  [
+   15033,
+   "\\cpara{Argues that any value worth thinking about must trade off against every other, since thinking itself costs time: ``When you reveal a value, you reveal a utility.''}"
+  ],
+  [
+   15284,
+   "\\cpara{Grants that the value of a single event, such as music, may be complex, and that there the author cares about the journey.}"
+  ],
+  [
+   15911,
+   "\\cpara{Limits the demand for simplicity to multiplying by quantities and probabilities, ``at least if you care more about the destination than the journey'', and names the meta-principle ``Shut up and multiply.''}"
+  ],
+  [
+   16439,
+   "\\cpara{Puts saving lives above any ``ritual'' of saving them, and says the best path is governed by laws ``that are simple, because they are math''.}"
+  ],
+  [
+   16703,
+   "\\cpara{Concludes that this is why the author is a utilitarian, at least when the task matters more than the author's feelings, which is ``most of the time''.}"
+  ]
+ ]
+}

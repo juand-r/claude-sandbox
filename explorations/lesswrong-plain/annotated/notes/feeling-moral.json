@@ -1,0 +1,89 @@
+{
+ "slug": "feeling-moral",
+ "header": "\\post{Feeling Moral}{Eliezer Yudkowsky}{2015}{https://www.lesswrong.com/posts/Nx2WxEuPSvNBGuYpo/feeling-moral}\n",
+ "skeleton_sha": "6c43d54c8cb3174800707ba6c52352046f439a61235ed1c8058bbf3d56b5279f",
+ "post_sha": "5be264178c31c17677ebae0fd226781576e9f0951a4f4c96f8d10c1bc11a42a2",
+ "edits": [],
+ "notes": [
+  [
+   112,
+   "\\cpara{Sets up the dilemma: save 400 lives for certain, or 500 with probability 90\\%. The numbers are the post's own; see the next note.}"
+  ],
+  [
+   459,
+   "\\cpara{What ``Most people'' choose with these numbers is stated without a source. The standard result is Tversky and Kahneman's ``Asian disease'' problem (\\textsc{Science}, 1981): 72 per cent chose to save 200 of 600 people for certain over a one-in-three chance of saving all 600. There the two options had the same expected value, 200 lives, so the majority was not choosing the option that is worse on average; the numbers that make the sure option ``foolish'' are the post's own, and I found no study that used them.}"
+  ],
+  [
+   745,
+   "\\clogic{Asserted here. The argument for it, that each life counts the same however many others are saved, is given in the next post in the book (``Three lives are one and one and one'').}"
+  ],
+  [
+   759,
+   "\\cpara{Gives the objection in the objector's voice: to gamble with lives is heartless.}"
+  ],
+  [
+   1032,
+   "\\cpara{Describes the same two options as deaths out of 500. The arithmetic checks: 400 saved is 100 dead, and the gamble is unchanged.}"
+  ],
+  [
+   1264,
+   "\\cpara{The post's strongest point, and it is Tversky and Kahneman's. In their version described as deaths, 78 per cent chose the gamble, and they sum up: ``choices involving gains are often risk averse and choices involving losses are often risk taking.'' A reversal produced by wording alone shows that at least one of the two choices follows the description rather than the lives, whichever option is in fact better.}"
+  ],
+  [
+   1539,
+   "\\cpara{Gives the grandstander on the other side. The aside about a 75\\% chance shows where that feeling leads: 375 lives saved on average, fewer than the 400 of the sure option.}"
+  ],
+  [
+   1873,
+   "\\cpara{Two moves. The first example ends in the post's rule, ``Just shut up and multiply''; then a new case begins, a googolplex hiccups against one shark attack.}"
+  ],
+  [
+   2770,
+   "\\clogic{This is the question of the author's ``Torture vs.\\ Dust Specks'' (2007), with a hiccup for the dust speck and a shark attack for fifty years of torture. That post is not in the book. The case against adding up small harms is set out in the notes on the next post.}"
+  ],
+  [
+   2973,
+   "\\clogic{Coherence in the decision-theoretic sense does not by itself give this. A ranking in which each extra hiccup is worse, but the total approaches a limit short of the shark attack (as $\\frac12 + \\frac14 + \\frac18 + \\cdots$ never reaches 1), ranks every gamble consistently. The step needs a further premise: each hiccup adds the same amount, however many others there are. A well-known argument for such sums is Harsanyi's theorem (1955): if society and each person maximize expected utility, and society is indifferent whenever everyone is, social value is a weighted sum of individual utilities.}"
+  ],
+  [
+   3161,
+   "\\cpara{Argues that such dilemmas are everyday choices, with two examples. The second implies \\$3,500 per child's death prevented. That is within GiveWell's current estimate (December 2023) of \\$3,000 to \\$8,000 to save a life with the charity's bed nets; I could not reach the 2015 page the post links.}"
+  ],
+  [
+   3792,
+   "\\cpara{The research is Philip Tetlock's. People ``responded to taboo trade-offs that monetized sacred values with moral outrage and cleansing'' (Tetlock and others, 2000). Tetlock's 2003 review adds that they ``often acquiesce when secular violations of sacred values are rhetorically reframed as routine or tragic trade-offs'', another effect of wording, and calls such boundaries ``alternately punitively rigid and forgivingly flexible''.}"
+  ],
+  [
+   4232,
+   "\\cpara{The anecdote has no source. The first version of the post said, ``my books are packed at the moment, so no citation for now''; I could not trace it.}"
+  ],
+  [
+   4700,
+   "\\cpara{Restates the moral: altruism is measured by the help it gives, not by how it feels.}"
+  ],
+  [
+   4886,
+   "\\clogic{The dots mark a cut. Here ``Circular Altruism'', the first version, gave its argument: a chain of choices, each trading a slightly smaller harm to vastly more people, leading from fifty years of torture down to dust specks, so that anyone who accepts each step and still prefers the dust specks has circular preferences. The book's version keeps the conclusion and leaves out the chain.}"
+  ],
+  [
+   5134,
+   "\\cpara{Grants, in a run of images, that the maximizing may seem fierce and cold.}"
+  ],
+  [
+   5364,
+   "\\cpara{Answers in two sentences. ``Wouldn't work'' means, by the post's standard, that the other way saves fewer lives on average.}"
+  ],
+  [
+   5449,
+   "\\cpara{Closes with an exhortation: rationality ``gives to you in return'' to those who give themselves over to it.}"
+  ],
+  [
+   5786,
+   "\\cpara{Ends by calling the chance to help a gift, not a burden.}"
+  ],
+  [
+   6089,
+   "\\cpara{Links the first version, ``Circular Altruism'' (22 January 2008). This version replaces its dust-speck question with the hiccup case, adds the paragraph on everyday dilemmas, and drops the chain argument noted above.}"
+  ]
+ ]
+}

@@ -121,3 +121,41 @@ Why: The Response grants that the argument is complete before the last third, so
 - Before: followed by a closing third that dismisses its opponents instead of answering them.
 - After: followed by a closing third drawn from the author's experience of those who argue otherwise.
 
+
+## annotated/afterwords/feeling-moral.tex
+
+Why: The book's shortening of Circular Altruism is the editors' choice, and the next post argues the additivity premise, so "stands on assertion" is not a fault of the post as read in the book; kept as a pointer. The closing exhortation is a rhetorical close, not a claim needing evidence.
+
+- Before:  The book's version keeps the conclusion and drops the chain, so here the claim stands on assertion.
+- After:  The book's version keeps the conclusion and drops the chain.
+
+- Before:  The closing promise that rationality ``gives to you in return'' is exhortation, with no evidence offered.
+- After: 
+
+- Before: followed by a claim about hiccups and shark attacks that coherence alone does not establish and that this version asserts without the argument its first version gave.
+- After: followed by the hiccup case, whose conclusion needs the premise that small harms add up, argued in the next post.
+
+
+## annotated/posts/feeling-moral.tex
+
+Why: The book's shortening of Circular Altruism is the editors' choice, and the next post argues the additivity premise, so "stands on assertion" is not a fault of the post as read in the book; kept as a pointer. The closing exhortation is a rhetorical close, not a claim needing evidence.
+
+- Before: Promises that rationality ``gives to you in return'' to those who give themselves over to it. No evidence or example is offered; the paragraph is exhortation, in the cadence of scripture (``And I say also this to you'').
+- After: Closes with an exhortation: rationality ``gives to you in return'' to those who give themselves over to it.
+
+
+## honest/sections/feeling-moral.tex
+
+Why: The book's shortening of Circular Altruism is the editors' choice, and the next post argues the additivity premise, so "stands on assertion" is not a fault of the post as read in the book; kept as a pointer. The closing exhortation is a rhetorical close, not a claim needing evidence.
+
+- Before:  \nb{The post offers no evidence for this promise.}
+- After: 
+
+
+## annotated/afterwords/the-intuitions-behind-utilitarianism.tex
+
+Why: Editors' choice; neutral pointer.
+
+- Before: The post's claim that violating ``utilitarianism'' leads to ``paradoxes, contradictions, circular preferences'' is not shown here; the argument was in ``Circular Altruism'', whose book version, ``Feeling Moral'', leaves that section out.
+- After: The argument for the claim that violating ``utilitarianism'' leads to ``paradoxes, contradictions, circular preferences'' was in ``Circular Altruism'', which the book gives in shorter form as ``Feeling Moral''.
+
