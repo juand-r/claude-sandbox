@@ -126,6 +126,18 @@ Use `.venv/bin/python` for every script.
 - Before naming a philosophical distinction (ethical versus psychological egoism, internalism
   versus externalism), check that the post's claim is the kind the distinction applies to.
 
+## Lessons from Book VI, first batch
+
+- A lesson the author draws from their own case is a maxim, not a universal claim needing
+  more cases. A lesson that recurs across a sequence, or a reason given in the next post, is
+  not a fault.
+- "I could not check" and "I could not trace" are limits of our research. Say so in the note;
+  keep them out of the "In short" line.
+- No notes about the author's organizations, funding or interests unless the post raises
+  them. "The post names no agency" reads as insinuation.
+- The Extropians list archive (http://extropians.weidai.com) and textfiles.com have many of
+  the author's 1996 to 2000 writings; web.archive.org is often unreachable from here.
+
 ## Do not
 
 - Do not edit any file other than the ones for your assigned slugs, and your reports.
