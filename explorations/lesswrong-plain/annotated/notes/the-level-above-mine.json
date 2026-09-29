@@ -1,0 +1,113 @@
+{
+ "slug": "the-level-above-mine",
+ "header": "\\post{The Level Above Mine}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/kXSETKZ3X9oidMozA/the-level-above-mine}\n",
+ "skeleton_sha": "5bc6a056d84c7cf7d199f7e3d8f255968b598cc59cb3cee3f81394fcbb139adf",
+ "post_sha": "85b1ace61e8e39a5e42b0df339d6f8b9b0626ca22ad9f67355623d0aab7642a3",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{Announces a short detour from the story of the author's mistakes.}"
+  ],
+  [
+   263,
+   "\\cpara{Begins an anecdote: the author lent E.~T. Jaynes's \\textsc{Probability Theory: The Logic of Science} to Mike Li.}"
+  ],
+  [
+   432,
+   "\\cpara{Mike Li's verdict on Jaynes.}"
+  ],
+  [
+   515,
+   "\\cpara{Explains the joke by a convention of fantasy fiction: vampires grow stronger with age.}"
+  ],
+  [
+   728,
+   "\\cpara{Says Jaynes was the first to give the author a sense of formidability from mathematics, and offers two guesses why, both hedged (``Maybe'', ``Or maybe'').}"
+  ],
+  [
+   1080,
+   "\\cfact{The book does line up paradoxes; its chapter 15 is ``Paradoxes of probability theory''. Not all of them stayed in pieces. The authors of the marginalization paradox (Dawid, Stone and Zidek) replied in 1996 with a ``Critique of E. T. Jaynes's `Paradoxes of Probability Theory' ''. Wallstrom (2003) judges Jaynes's critique ``fundamentally correct'' at the conceptual level, but at the technical level ``this analysis was not entirely successful''.}"
+  ],
+  [
+   1320,
+   "\\cpara{Describes the impression of ``terrifying swift perfection'', and qualifies it at once: a book shows its author's best side.}"
+  ],
+  [
+   1630,
+   "\\cfact{Jaynes did not finish this one. It was ``published posthumously in 2003 (from an incomplete manuscript that was edited by Larry Bretthorst)'' (Wikipedia, ``Edwin Thompson Jaynes'').}"
+  ],
+  [
+   1656,
+   "\\cpara{States a rule from observation: people cannot tell apart levels far above their own. The example given is one anecdote, and the one-standard-deviation figure is flagged as ``a cool-sounding wild guess''.}"
+  ],
+  [
+   2087,
+   "\\cfact{The rule has support in Kruger and Dunning (1999). In their Study 3, participants who scored in the bottom quartile ``were less able to recognize competence in others'' than top scorers. The paper also quotes Richard Nisbett on Amos Tversky: ``The quicker you realize that Amos is smarter than you, the smarter you yourself must be.'' The study compares the weakest with the strongest, not people with those far above them.}"
+  ],
+  [
+   2101,
+   "\\cpara{Leads to the author's question.}"
+  ],
+  [
+   2290,
+   "\\cpara{Mike Li says no.}"
+  ],
+  [
+   2400,
+   "\\cpara{The author says the answer was expected; the question was curiosity about how the author comes across.}"
+  ],
+  [
+   2544,
+   "\\cpara{Gives the author's self-assessment: an aspiration to Jaynes's level in AI and reflectivity, and no art yet mastered as Jaynes mastered probability. The plea that the author's art is harder is raised and set aside.}"
+  ],
+  [
+   2978,
+   "\\cpara{Denies that this places the author beneath Jaynes as a person. The ``magical aura of destiny'' points to ``Einstein's Superpowers'' (May 2008), which argued that no such aura marks great researchers in advance.}"
+  ],
+  [
+   3161,
+   "\\cpara{Locates the difference in expertise: forceful argument is not writing out the equations and saying ``DONE''.}"
+  ],
+  [
+   3413,
+   "\\cpara{Admits that native talent may not suffice, and tells how Marcello Herreshoff, asked for someone more natively intelligent than the author, named John Conway.}"
+  ],
+  [
+   4209,
+   "\\cpara{First possibility, with ``Perhaps'': the author has had no chance to show a subject mastered as Conway mastered his. Conway (1937--2020) worked in finite groups, knot theory, number theory, combinatorial game theory and coding theory (Wikipedia), which fits ``his many fields of mathematics''.}"
+  ],
+  [
+   4439,
+   "\\cpara{Second possibility: the two minds are specialized in different directions.}"
+  ],
+  [
+   4664,
+   "\\cpara{Third possibility: the author is ``strictly dumber'' than Conway, and a young ``proto-Conway'' could overtake the author.}"
+  ],
+  [
+   4950,
+   "\\cpara{Admits that the third possibility hurts.}"
+  ],
+  [
+   5062,
+   "\\cpara{Says the possibility has been accepted, and gives the reason: specific effort made because of it, such as blogging so that a younger mind may overtake the author.}"
+  ],
+  [
+   5514,
+   "\\cpara{Adds a sadder possibility, that time spent on other things cannot be recovered, and draws the practical conclusion: leave a trail to the successes and warnings on the mistakes.}"
+  ],
+  [
+   6033,
+   "\\cpara{Defines the only humility the author credits: specific efforts predicated on an ego-damaging possibility. It is the definition of ``The Proper Use of Humility'' (2006): ``To be humble is to take specific actions in anticipation of your own errors.'' Our notes there compare it with the dictionary sense.}"
+  ],
+  [
+   6686,
+   "\\cpara{Refuses the consolation that someone less brilliant than Jaynes or Conway can still do important work in the field.}"
+  ],
+  [
+   6884,
+   "\\cpara{Gives the reason in five words, without explanation. The explanation comes nine days later in ``My Bayesian Enlightenment'': ``It seemed to me that it would take something like the Jaynes-level \\ldots\\ to tackle an adult problem and survive.'' The later post ties the claim to the problem the author had chosen, Friendly AI.}"
+  ]
+ ]
+}

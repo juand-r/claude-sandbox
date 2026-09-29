@@ -1,0 +1,145 @@
+{
+ "slug": "my-naturalistic-awakening",
+ "header": "\\post{My Naturalistic Awakening}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/75LZMCCePG4Pwj3dB/my-naturalistic-awakening}\n",
+ "skeleton_sha": "c1223eea2bd39c4f6f9edb11098b167116f24e823a252a5fd82ccd35bf4ed061",
+ "post_sha": "d90ce6cd55b437167e78185085dd4f94feb7961dd890711fb4d0b3e24dd36d57",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Recaps the previous post: the young author gave ground slowly and repaired the old plan's justifications instead of saying ``I was wrong before.''}"
+  ],
+  [
+   503,
+   "\\cpara{Quotes, without naming the source, the third virtue (lightness) of the author's own ``Twelve Virtues of Rationality'' (2006). The previous post's title echoes its wording.}"
+  ],
+  [
+   886,
+   "\\cpara{Warns that memory of the period is unreliable: the author has been corrected once and is unsure of the order and years of events. The warning applies to the dates that follow.}"
+  ],
+  [
+   1233,
+   "\\cpara{Names the turning point: grasping, in full generality, the notion of an optimization process. ``The Magnitude of His Own Folly'', five days later, dates the realization it led to ``late 2002'' and credits this ``insight into optimization''.}"
+  ],
+  [
+   1515,
+   "\\cpara{Places the start in 2002, with ``Levels of Organization in General Intelligence''. The dates match: the paper was posted to the SL4 mailing list on 7 April 2002 and published in 2007 in \\textsc{Artificial General Intelligence}, edited by Ben Goertzel and Cassio Pennachin (Springer, pp.~389--501).}"
+  ],
+  [
+   1804,
+   "\\cfact{The paper bears this out. Its footnote 34: ``Viewing evolution itself through the lens provided by DGI is just barely possible. There are so many differences as to render the comparison one of `loose analogy' rather than `special case.' '' It also calls evolution ``a useful inspiration but a dangerous template.''}"
+  ],
+  [
+   2007,
+   "\\cpara{Describes the view of 2002: natural selection and intelligence as a dichotomy, blindness against foresight, though selection made the brain.}"
+  ],
+  [
+   2521,
+   "\\cpara{Says the author still finds the insight shattering, and objects to calling both processes ``evolutionary''; concedes that they share some concepts.}"
+  ],
+  [
+   2723,
+   "\\cfact{The lumping has a long academic history. Donald Campbell's ``Blind variation and selective retention in creative thought as in other knowledge processes'' (\\textsc{Psychological Review}, 1960) treats thought as another case of the process natural selection runs.}"
+  ],
+  [
+   2933,
+   "\\cpara{Judges the 2002 view by its dichotomy, with two comic comparisons (politics as two stances, fruit as apples and strawberries).}"
+  ],
+  [
+   3305,
+   "\\cpara{Reports Emil Gilliam's objection that the author's AI looked like the author's picture of human intelligence, and the reply of the time: a ``Completely Alien Mind Design'' is probably too hard for humans to build.}"
+  ],
+  [
+   4158,
+   "\\cpara{Calls that reply an excuse and answers it: what you understand you can usually reshape, as aircraft depart from birds. Offered with ``usually'' and one analogy.}"
+  ],
+  [
+   4788,
+   "\\cpara{Concludes that in 2002 the human architecture was still the point of departure.}"
+  ],
+  [
+   5020,
+   "\\cpara{Asks what broke the attachment.}"
+  ],
+  [
+   5081,
+   "\\cpara{Answers, as ``an embarrassing confession'': an unfinished science-fiction story with a non-cognitive optimizing effect, like the Outcome Pump. The story cannot be shown, and the post says so.}"
+  ],
+  [
+   5956,
+   "\\cpara{States the principle, half in jest: two cases suggest an opposition, three force a generalization.}"
+  ],
+  [
+   6210,
+   "\\cpara{Lists the three cases.}"
+  ],
+  [
+   6317,
+   "\\cpara{Gives the generalization: an optimization process ``squeezes the future into a narrow region of the possible.'' The book gives the notion earlier, in ``Optimization and the Intelligence Explosion'' (``hit small targets in a large search space'').}"
+  ],
+  [
+   6523,
+   "\\cpara{Says the definition is less obvious than it seems, citing Shane Legg's collection. The count is right: the collection's published version (Legg and Hutter, 2007) has 71 definitions, 18 collective, 35 from psychologists and 18 from AI researchers.}"
+  ],
+  [
+   6936,
+   "\\cfact{One definition in the collection is close to it: Lenat and Feigenbaum's ``Intelligence is the power to rapidly find an adequate solution in what appears a priori (to observers) to be an immense search space.''}"
+  ],
+  [
+   6950,
+   "\\cpara{Grants that many AI researchers' definitions speak of goals or problems. Of the 18, ten use ``goal'' or ``problem''. The post says only hindsight makes this ``the same thing'' as squeezing the future, and limits that to ``past Eliezers''.}"
+  ],
+  [
+   7210,
+   "\\cpara{Argues that ``goal'' is a mentalistic word that invites us to imagine an agent that wants.}"
+  ],
+  [
+   7456,
+   "\\cfact{The word had been given a non-mentalistic reading before. Rosenblueth, Wiener and Bigelow (``Behavior, Purpose and Teleology'', 1943) define purposeful behavior as behavior that ``may be interpreted as directed to the attainment of a goal \\ldots\\ to a final condition in which the behaving object reaches a definite correlation in time or in space with respect to another object or event.'' That definition is close to the post's own ``squeezing the future'', so the post's contrast is between two readings of the word ``goal'', one mentalistic and one physical.}"
+  ],
+  [
+   7470,
+   "\\cpara{Lists questions that make sense of goal-seeking agents (which goals are better, choosing goals, an AI realizing its goals are not what was meant) and says they do not translate into talk of a process that squeezes the future.}"
+  ],
+  [
+   8113,
+   "\\cpara{Calls the shift, ``for me at least'', a naturalistic enlightenment beyond the idea of an agent trying to achieve its goals.}"
+  ],
+  [
+   8426,
+   "\\cpara{Describes the experience in images: intelligence as an engine that steers, not a property.}"
+  ],
+  [
+   9012,
+   "\\cfact{This holds on the account our notes on ``The Second Law of Thermodynamics, and Engines of Cognition'' prefer (Bennett's): observing can in principle be free, but a mind with a finite memory that keeps observing must reset that memory, and resetting gives off heat.}"
+  ],
+  [
+   9026,
+   "\\cpara{Recalls the view of 2001: Friendly AI as a precaution, without certainty that a superintelligence could pursue something as pointless as paperclips.}"
+  ],
+  [
+   9423,
+   "\\cfact{\\textsc{Creating Friendly AI} (2001) did describe such a case, as the ``Riemann Hypothesis Catastrophe'': ``The other way to get a Riemann Hypothesis Catastrophe is to make solving the Riemann Hypothesis a direct supergoal of the AI,'' which ``would require sheer gibbering stupidity''. So the scenario was on the page in 2001, named as one way to get the catastrophe. The post's claim is about what its author knew, which the old text alone cannot settle.}"
+  ],
+  [
+   9437,
+   "\\cpara{Describes what was now seen: a model linking actions to outcomes and a utility function over outcomes, so that with the corresponding utility function an optimizer would steer the future anywhere.}"
+  ],
+  [
+   9838,
+   "\\clogic{This is the claim later called the orthogonality thesis; our notes on ``No Universally Compelling Arguments'' discuss it.}"
+  ],
+  [
+   9852,
+   "\\cpara{Applies this to the 1997 design: it would have turned its future light cone into ``generic tools''. I could not reach the texts of 1997 to check this description.}"
+  ],
+  [
+   10332,
+   "\\cpara{Asks how so obvious a point was missed for ``six damned years'', 1997 to late 2002 by the neighbouring post's date.}"
+  ],
+  [
+   10485,
+   "\\cpara{Ends on ``I've been stupid.'' ``The Importance of Saying `Oops' '' (2007) set these words against what Enron's executives said (``As opposed to, `I've been stupid.' ''). The post's conclusion is the admission that post asked for.}"
+  ]
+ ]
+}

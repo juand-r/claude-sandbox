@@ -1,0 +1,117 @@
+{
+ "slug": "fighting-a-rearguard-action-against-the-truth",
+ "header": "\\post{Fighting a Rearguard Action Against the Truth}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/PCfaLLtuxes6Jk4S2/fighting-a-rearguard-action-against-the-truth}\n",
+ "skeleton_sha": "9127e43f8882ba9fb3b7279a518cc47843e977743d1c71b7468e102f4b8e83ac",
+ "post_sha": "7b7b04435ac74dd2dbe822e7d64c15c1ce241d5094875e3de73ae2c74de482ea",
+ "edits": [],
+ "notes": [
+  [
+   176,
+   "\\cpara{Recaps the previous post: in 2000 Eliezer2000 began to think technically about putting a morality into an AI, and the author holds that this choice, not the reasons for it, is what mattered.}"
+  ],
+  [
+   839,
+   "\\cpara{Sets the scene in 2001. Friendly AI has been added to the old plan as a contingency, and the 1997 view has not been called a mistake.}"
+  ],
+  [
+   1194,
+   "\\cfact{The archived text of that year fits the account. \\textsc{Creating Friendly AI} (2001) says of objective morality: ``Today, however, I regard objective morality as simply being one of the possibilities, with philosophically valid differential desirabilities possible even in the absence of objective morality.'' I could not trace the quoted words ``the unlikely event that life turns out to be meaningless'' to a text of the period.}"
+  ],
+  [
+   1208,
+   "\\cpara{Introduces the post's main observation: the contingency plan gave the young author a line of retreat.}"
+  ],
+  [
+   1342,
+   "\\cpara{Distinguishes the excuse (calling Friendly AI a contingency plan instead of saying ``OOPS'') from the plan itself.}"
+  ],
+  [
+   1511,
+   "\\cpara{Explains what the plan did. With a fallback in place, doubting the 1997 metaethics no longer meant doubting that the Singularity would go well. This is the effect the author's ``Leave a Line of Retreat'' (February 2008) recommends: a planned retreat makes a frightening belief easier to examine.}"
+  ],
+  [
+   1831,
+   "\\cpara{Gives the cost of the same device: the old view could now be given up a little at a time.}"
+  ],
+  [
+   2012,
+   "\\clogic{``Update Yourself Incrementally'' (2007) gave different-sounding advice for weakly contrary evidence: ``Just shift downward a little, and wait for more evidence.'' The two fit if the difference is that here the flaw is already known (the assumption ``has been revealed as flawed''), but the post does not draw the line. Our notes on ``The Importance of Saying `Oops' '' raise the same tension.}"
+  ],
+  [
+   2026,
+   "\\cpara{Agrees, in one line, that this was too slow.}"
+  ],
+  [
+   2185,
+   "\\cpara{Describes the strategy of 1996 to 2000: any superintelligence, as fast as possible, by every approach at once. The John Moore line is a joke at the author's own expense: a parent warns against what the parent once did.}"
+  ],
+  [
+   2791,
+   "\\cpara{Traces that strategy to the technophilia absorbed in childhood and to the assumption that any movement toward superintelligence was purely good, the subject of the posts linked.}"
+  ],
+  [
+   3181,
+   "\\cpara{States what should have been done: stop, and rethink everything built on the flawed assumption. The post names the step and defers the method (``an art I need to write more about'').}"
+  ],
+  [
+   3645,
+   "\\cfact{The author did, sixteen days later, in ``Crisis of Faith'' (10 October 2008), which the book places in Book II. It describes ``a convulsive, wrenching effort to be rational, the kind of effort it would take to throw off a religion.''}"
+  ],
+  [
+   3807,
+   "\\cpara{Says what was done instead: the old arguments against banning or regulating technology were rehearsed again.}"
+  ],
+  [
+   4056,
+   "\\cfact{The account matches the text of 2001. \\textsc{Creating Friendly AI} has sections headed ``Regulation'' and ``Relinquishment'', and says: ``In other words, I simply do not believe the claim that relinquishment is possible.''}"
+  ],
+  [
+   4070,
+   "\\cpara{Adds the author's present view, with its hedges (``It does seem'', ``still seems pretty true''): the arguments against regulation are still largely right, but many of the old hopes for science and private industry now seem ``equally wrongheaded''.}"
+  ],
+  [
+   4812,
+   "\\cpara{Names the assumption that had been discarded, that AI, unlike other technologies, cannot be dangerous, and says a large change of strategy should have followed.}"
+  ],
+  [
+   5178,
+   "\\cpara{Grants one change: the 1999 idea of an open-source AI Manhattan Project was dropped.}"
+  ],
+  [
+   5338,
+   "\\cpara{Reports that otherwise the plan stayed: start coding as soon as the money came.}"
+  ],
+  [
+   5793,
+   "\\cfact{This fits the Institute's own introduction page of the time, as quoted by Ben Garfinkel (EA Forum, 2022) from an archived copy of January 2002: its AI would ``reach transhumanity sometime between 2005 and 2020, probably around 2008 or 2010.'' I could not open the archived page itself.}"
+  ],
+  [
+   5807,
+   "\\cpara{Adds that the preference for openness over secrecy also stayed.}"
+  ],
+  [
+   6144,
+   "\\cfact{Correct. Nina Byers's history (arXiv physics/0207094): ``An early disagreement between Fermi and Szilard was over keeping their work secret. Fermi was opposed to secrecy and censorship.'' Szilard ``had prevailed on the secrecy issue in the early days''.}"
+  ],
+  [
+   6158,
+   "\\cpara{Draws the lesson: when one large admission becomes a slow shift in probability, there is no single shock to signal that a large change is needed. It is the lesson of the author's ``The Importance of Saying `Oops' '' (2007). That post withheld its own case, as our notes on it observe; this sequence tells it.}"
+  ],
+  [
+   6386,
+   "\\cpara{Restates the lesson as repair against cracking. The general rule, ``far more efficient to admit one huge mistake'', rests on the one case the post tells (the linked 2007 post added Enron).}"
+  ],
+  [
+   6966,
+   "\\cpara{Offers, with ``I think'', two instincts behind the slowness: to keep existing plans, and to defend positions argued in public. The younger author was ``not immune''.}"
+  ],
+  [
+   7500,
+   "\\cpara{Says that even in 2002 the 1997 plan was not yet admitted to be hopeless.}"
+  ],
+  [
+   7689,
+   "\\cpara{Announces the collapse, told in the next post.}"
+  ]
+ ]
+}

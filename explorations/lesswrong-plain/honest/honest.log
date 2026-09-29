@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1310,37 +1310,81 @@ onsequential path of mirror neurons.''
 ]) [343] [344
 
 ]
-(./sections/use-the-try-harder-luke.tex) [345
+(./sections/beginnings-an-introduction.tex)
+(./sections/my-childhood-death-spiral.tex [345
+
+])
+(./sections/my-best-and-worst-mistake.tex [346
+
+])
+(./sections/raised-in-technophilia.tex
+Overfull \hbox (0.99557pt too wide) in paragraph at lines 9--1
+[]\T1/ppl/m/n/10.95 (-20) It was also one of my worst mistakes, because ``infor
+mal'' can mean ``held to low standards.''
+ []
+
+[347
+
+]) (./sections/a-prodigy-of-refutation.tex [348
+
+])
+(./sections/the-sheer-folly-of-callow-youth.tex [349
+
+])
+(./sections/that-tiny-note-of-discord.tex [350
+
+])
+(./sections/fighting-a-rearguard-action-against-the-truth.tex [351
+
+])
+(./sections/my-naturalistic-awakening.tex [352
+
+])
+(./sections/the-level-above-mine.tex [353
+
+])
+(./sections/the-magnitude-of-his-own-folly.tex [354
+
+])
+(./sections/beyond-the-reach-of-god.tex [355
+
+] [356
+
+])
+(./sections/my-bayesian-enlightenment.tex [357]) [358
 
 ]
-(./sections/a-sense-that-more-is-possible.tex) [346
+(./sections/use-the-try-harder-luke.tex) [359
 
 ]
-(./sections/humans-are-not-automatically-strategic.tex [347
+(./sections/a-sense-that-more-is-possible.tex) [360
+
+]
+(./sections/humans-are-not-automatically-strategic.tex [361
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-) (./sections/toolbox-thinking-and-law-thinking.tex [348
+) (./sections/toolbox-thinking-and-law-thinking.tex [362
 
-] [349
+] [363
 
 ])
-(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [350]
-[351
+(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [364]
+[365
 
 ]) (./sections/diseased-thinking-dissolving-questions-about-disease.tex
-[352]) (./sections/on-caring.tex [353
+[366]) (./sections/on-caring.tex [367
 
-] [354])
-(./sections/strong-evidence-is-common.tex [355
+] [368])
+(./sections/strong-evidence-is-common.tex [369
 
 ])
-(./sections/pr-is-corrosive.tex [356
+(./sections/pr-is-corrosive.tex [370
 
-]) [357
+]) [371
 
 ] (./honest.aux)
  ***********
@@ -1348,14 +1392,14 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `honest.out' has not changed.
-(rerunfilecheck)             Checksum: 320F9E2760B43FED80C2DA3AA4980850;65725.
+(rerunfilecheck)             Checksum: C37162C942D10D1F769F781E9039F9FD;68564.
  ) 
 Here is how much of TeX's memory you used:
- 15231 strings out of 476182
- 296886 string characters out of 5795595
+ 15381 strings out of 476182
+ 301915 string characters out of 5795595
  1934975 words of memory out of 5000000
- 35071 multiletter control sequences out of 15000+600000
- 611985 words of font info for 370 fonts, out of 8000000 for 9000
+ 35150 multiletter control sequences out of 15000+600000
+ 612232 words of font info for 373 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,6n,79p,1599b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></u
@@ -1365,10 +1409,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on honest.pdf (357 pages, 1042243 bytes).
+Output written on honest.pdf (371 pages, 1084935 bytes).
 PDF statistics:
- 3409 PDF objects out of 3580 (max. 8388607)
- 3006 compressed objects within 31 object streams
- 698 named destinations out of 1000 (max. 500000)
- 68241 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 3544 PDF objects out of 3580 (max. 8388607)
+ 3126 compressed objects within 32 object streams
+ 726 named destinations out of 1000 (max. 500000)
+ 68353 words of extra memory for PDF output out of 74296 (max. 10000000)
 

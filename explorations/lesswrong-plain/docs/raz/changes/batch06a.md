@@ -245,3 +245,33 @@ Why: Speculative: the "full solution" is not named, and our identification of it
 - Before:  \nb{The post does not say what that full reduction is. It is presumably the author's own metaethics, posted in the summer of 2008; the next sentences call the nature of morality ``still an open question in philosophy.''}
 - After: 
 
+
+## annotated/afterwords/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Memoir (Book VI rule): a lesson drawn from one's own case and repeated across a sequence is not a fault; the incremental-updating tension stays in the note as a pointer.
+
+- Before: The lesson is not new to the reader of this book. It is the lesson of ``The Importance of Saying `Oops' '' (2007), whose own case was withheld; this sequence supplies that case. The general rule, that one large admission is ``far more efficient'' than many small ones, rests on that case, and the post adds no other evidence for it. It also sits beside ``Update Yourself Incrementally'' (2007), which advised shifting belief ``a little'' on weakly contrary evidence. The two fit if the difference is that the flaw here was already known, as the post says it was, but the post does not draw the line.
+- After: The lesson is the one of ``The Importance of Saying `Oops' '' (2007), whose own case was withheld; this sequence supplies that case. The notes discuss how it fits with ``Update Yourself Incrementally.''
+
+- Before: and whose lesson repeats ``The Importance of Saying `Oops' '' with the case that post withheld, without saying how it squares with updating incrementally.
+- After: and which supplies the case that ``The Importance of Saying `Oops' '' withheld.
+
+
+## annotated/afterwords/my-naturalistic-awakening.tex
+
+Why: The 2001 text cannot settle what the memoir's author knew (the note says so); information, kept in the Response and note, out of the In short line.
+
+- Before: whose central idea has predecessors in cybernetics and in the collection it cites, and whose picture of 2001 should be read beside the author's text of that year, which already described a paperclip-like case.
+- After: and whose central idea has predecessors in cybernetics and in the collection it cites.
+
+
+## annotated/afterwords/the-level-above-mine.tex
+
+Why: A sequence giving its reason in the next post is not a fault; pointer kept. Pronoun for Jaynes replaced by the name for consistency.
+
+- Before: The last line is asserted without explanation: ``that's not how it works.'' The reader of this post alone cannot tell why lesser brilliance should rule out important work. The reason comes nine days later,
+- After: The reason behind the last line, ``that's not how it works,'' comes nine days later,
+
+- Before: whose picture of Jaynes should be read beside the disputes over his treatment of the paradoxes, and whose closing claim depends on a reason given only in a later post.
+- After: and whose picture of Jaynes should be read beside the disputes over Jaynes's treatment of the paradoxes.
+

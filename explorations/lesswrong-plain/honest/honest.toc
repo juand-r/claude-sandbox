@@ -324,15 +324,29 @@
 \contentsline {subsection}{Newcomb's Problem and Regret of Rationality}{341}{section*.326}%
 \contentsline {subsection}{Twelve Virtues of Rationality}{342}{section*.327}%
 \contentsline {part}{Becoming Stronger}{344}{section*.328}%
-\contentsline {section}{Challenging the Difficult}{345}{section*.329}%
-\contentsline {subsection}{Use the Try Harder, Luke}{345}{section*.330}%
-\contentsline {section}{The Craft and the Community}{346}{section*.331}%
-\contentsline {subsection}{A Sense That More Is Possible}{346}{section*.332}%
-\contentsline {part}{Beyond the Sequences}{347}{section*.333}%
-\contentsline {subsection}{Humans Are Not Automatically Strategic}{348}{section*.334}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{349}{section*.335}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{351}{section*.336}%
-\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{353}{section*.337}%
-\contentsline {subsection}{On Caring}{355}{section*.338}%
-\contentsline {subsection}{Strong Evidence Is Common}{356}{section*.339}%
-\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{357}{section*.340}%
+\contentsline {section}{Yudkowsky's Coming of Age}{345}{section*.329}%
+\contentsline {subsection}{Beginnings: An Introduction}{345}{section*.330}%
+\contentsline {subsection}{My Childhood Death Spiral}{346}{section*.331}%
+\contentsline {subsection}{My Best and Worst Mistake}{347}{section*.332}%
+\contentsline {subsection}{Raised in Technophilia}{348}{section*.333}%
+\contentsline {subsection}{A Prodigy of Refutation}{349}{section*.334}%
+\contentsline {subsection}{The Sheer Folly of Callow Youth}{350}{section*.335}%
+\contentsline {subsection}{That Tiny Note of Discord}{351}{section*.336}%
+\contentsline {subsection}{Fighting a Rearguard Action Against the Truth}{352}{section*.337}%
+\contentsline {subsection}{My Naturalistic Awakening}{353}{section*.338}%
+\contentsline {subsection}{The Level Above Mine}{354}{section*.339}%
+\contentsline {subsection}{The Magnitude of His Own Folly}{355}{section*.340}%
+\contentsline {subsection}{Beyond the Reach of God}{356}{section*.341}%
+\contentsline {subsection}{My Bayesian Enlightenment}{358}{section*.342}%
+\contentsline {section}{Challenging the Difficult}{359}{section*.343}%
+\contentsline {subsection}{Use the Try Harder, Luke}{359}{section*.344}%
+\contentsline {section}{The Craft and the Community}{360}{section*.345}%
+\contentsline {subsection}{A Sense That More Is Possible}{360}{section*.346}%
+\contentsline {part}{Beyond the Sequences}{361}{section*.347}%
+\contentsline {subsection}{Humans Are Not Automatically Strategic}{362}{section*.348}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{363}{section*.349}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{365}{section*.350}%
+\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{367}{section*.351}%
+\contentsline {subsection}{On Caring}{369}{section*.352}%
+\contentsline {subsection}{Strong Evidence Is Common}{370}{section*.353}%
+\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{371}{section*.354}%

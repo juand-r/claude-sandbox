@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -553,368 +553,433 @@ Package microtype Info: Loading generic protrusion settings for font family
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
 st/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] [6] [7] [8]
 Overfull \hbox (4.49997pt too wide) detected at line 260
- []\T1/ppl/m/n/10 1002
+ []\T1/ppl/m/n/10 1003
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 261
- []\T1/ppl/m/n/10 1007
+ []\T1/ppl/m/n/10 1008
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 262
- []\T1/ppl/m/n/10 1016
+ []\T1/ppl/m/n/10 1017
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 263
- []\T1/ppl/m/n/10 1024
+ []\T1/ppl/m/n/10 1025
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 264
- []\T1/ppl/m/n/10 1028
+ []\T1/ppl/m/n/10 1029
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 265
- []\T1/ppl/m/n/10 1033
+ []\T1/ppl/m/n/10 1034
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 266
- []\T1/ppl/m/n/10 1042
+ []\T1/ppl/m/n/10 1043
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 267
- []\T1/ppl/m/n/10 1049
+ []\T1/ppl/m/n/10 1050
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 268
- []\T1/ppl/m/n/10 1054
+ []\T1/ppl/m/n/10 1055
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 269
- []\T1/ppl/m/n/10 1058
+ []\T1/ppl/m/n/10 1059
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 271
- []\T1/ppl/m/n/10 1069
+ []\T1/ppl/m/n/10 1070
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 272
- []\T1/ppl/m/n/10 1077
+ []\T1/ppl/m/n/10 1078
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 273
- []\T1/ppl/m/n/10 1082
+ []\T1/ppl/m/n/10 1083
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 274
- []\T1/ppl/m/n/10 1087
+ []\T1/ppl/m/n/10 1088
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 275
- []\T1/ppl/m/n/10 1092
+ []\T1/ppl/m/n/10 1093
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 276
- []\T1/ppl/m/n/10 1096
+ []\T1/ppl/m/n/10 1097
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 277
- []\T1/ppl/m/n/10 1101
+ []\T1/ppl/m/n/10 1102
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 278
- []\T1/ppl/m/n/10 1107
+ []\T1/ppl/m/n/10 1108
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 279
- []\T1/ppl/m/n/10 1110
+ []\T1/ppl/m/n/10 1111
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 280
- []\T1/ppl/m/n/10 1115
+ []\T1/ppl/m/n/10 1116
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 281
- []\T1/ppl/m/n/10 1122
+ []\T1/ppl/m/n/10 1123
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 282
- []\T1/ppl/m/n/10 1130
+ []\T1/ppl/m/n/10 1131
  []
 
 [9]
 Overfull \hbox (4.49997pt too wide) detected at line 283
- []\T1/ppl/m/n/10 1135
+ []\T1/ppl/m/n/10 1136
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 284
- []\T1/ppl/m/n/10 1140
+ []\T1/ppl/m/n/10 1141
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 285
- []\T1/ppl/m/n/10 1145
+ []\T1/ppl/m/n/10 1146
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 288
- []\T1/ppl/m/n/10 1181
+ []\T1/ppl/m/n/10 1182
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 289
- []\T1/ppl/m/n/10 1186
+ []\T1/ppl/m/n/10 1187
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 290
- []\T1/ppl/m/n/10 1191
+ []\T1/ppl/m/n/10 1192
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 291
- []\T1/ppl/m/n/10 1193
+ []\T1/ppl/m/n/10 1194
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 292
- []\T1/ppl/m/n/10 1196
+ []\T1/ppl/m/n/10 1197
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 293
- []\T1/ppl/m/n/10 1200
+ []\T1/ppl/m/n/10 1201
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 294
- []\T1/ppl/m/n/10 1206
+ []\T1/ppl/m/n/10 1207
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 295
- []\T1/ppl/m/n/10 1210
+ []\T1/ppl/m/n/10 1211
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 297
- []\T1/ppl/m/n/10 1214
+ []\T1/ppl/m/n/10 1215
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 298
- []\T1/ppl/m/n/10 1222
+ []\T1/ppl/m/n/10 1223
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 299
- []\T1/ppl/m/n/10 1226
+ []\T1/ppl/m/n/10 1227
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 300
- []\T1/ppl/m/n/10 1231
+ []\T1/ppl/m/n/10 1232
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 301
- []\T1/ppl/m/n/10 1235
+ []\T1/ppl/m/n/10 1236
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 302
- []\T1/ppl/m/n/10 1239
+ []\T1/ppl/m/n/10 1240
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 303
- []\T1/ppl/m/n/10 1244
+ []\T1/ppl/m/n/10 1245
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 304
- []\T1/ppl/m/n/10 1246
+ []\T1/ppl/m/n/10 1247
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 305
- []\T1/ppl/m/n/10 1250
+ []\T1/ppl/m/n/10 1251
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 306
- []\T1/ppl/m/n/10 1255
+ []\T1/ppl/m/n/10 1256
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 307
- []\T1/ppl/m/n/10 1260
+ []\T1/ppl/m/n/10 1261
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 308
- []\T1/ppl/m/n/10 1267
+ []\T1/ppl/m/n/10 1268
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 309
- []\T1/ppl/m/n/10 1272
+ []\T1/ppl/m/n/10 1273
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 310
- []\T1/ppl/m/n/10 1277
+ []\T1/ppl/m/n/10 1278
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 311
- []\T1/ppl/m/n/10 1281
+ []\T1/ppl/m/n/10 1282
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 312
- []\T1/ppl/m/n/10 1289
+ []\T1/ppl/m/n/10 1290
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 313
- []\T1/ppl/m/n/10 1295
+ []\T1/ppl/m/n/10 1296
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 315
- []\T1/ppl/m/n/10 1303
+ []\T1/ppl/m/n/10 1304
  []
 
 [10]
 Overfull \hbox (4.49997pt too wide) detected at line 316
- []\T1/ppl/m/n/10 1306
+ []\T1/ppl/m/n/10 1307
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 317
- []\T1/ppl/m/n/10 1310
+ []\T1/ppl/m/n/10 1311
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 318
- []\T1/ppl/m/n/10 1316
+ []\T1/ppl/m/n/10 1317
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 319
- []\T1/ppl/m/n/10 1320
+ []\T1/ppl/m/n/10 1321
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 320
- []\T1/ppl/m/n/10 1327
+ []\T1/ppl/m/n/10 1328
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 321
- []\T1/ppl/m/n/10 1331
+ []\T1/ppl/m/n/10 1332
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 322
- []\T1/ppl/m/n/10 1338
+ []\T1/ppl/m/n/10 1339
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 323
- []\T1/ppl/m/n/10 1344
+ []\T1/ppl/m/n/10 1345
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 324
- []\T1/ppl/m/n/10 1350
+ []\T1/ppl/m/n/10 1351
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 325
- []\T1/ppl/m/n/10 1358
+ []\T1/ppl/m/n/10 1359
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 328
- []\T1/ppl/m/n/10 1366
+ []\T1/ppl/m/n/10 1367
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 329
+ []\T1/ppl/m/n/10 1371
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 330
- []\T1/ppl/m/n/10 1370
- []
-
-
-Overfull \hbox (4.49997pt too wide) detected at line 332
  []\T1/ppl/m/n/10 1375
  []
 
 
-Overfull \hbox (4.49997pt too wide) detected at line 333
+Overfull \hbox (4.49997pt too wide) detected at line 331
  []\T1/ppl/m/n/10 1379
  []
 
 
+Overfull \hbox (4.49997pt too wide) detected at line 332
+ []\T1/ppl/m/n/10 1384
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 333
+ []\T1/ppl/m/n/10 1387
+ []
+
+
 Overfull \hbox (4.49997pt too wide) detected at line 334
- []\T1/ppl/m/n/10 1388
+ []\T1/ppl/m/n/10 1393
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 335
- []\T1/ppl/m/n/10 1397
+ []\T1/ppl/m/n/10 1399
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 336
- []\T1/ppl/m/n/10 1405
+ []\T1/ppl/m/n/10 1403
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 337
- []\T1/ppl/m/n/10 1413
+ []\T1/ppl/m/n/10 1408
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 338
- []\T1/ppl/m/n/10 1415
+ []\T1/ppl/m/n/10 1412
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 339
+ []\T1/ppl/m/n/10 1417
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 340
+ []\T1/ppl/m/n/10 1425
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 342
+ []\T1/ppl/m/n/10 1432
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 344
+ []\T1/ppl/m/n/10 1436
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 346
+ []\T1/ppl/m/n/10 1441
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 347
+ []\T1/ppl/m/n/10 1445
+ []
+
+[11]
+Overfull \hbox (4.49997pt too wide) detected at line 348
+ []\T1/ppl/m/n/10 1454
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 349
+ []\T1/ppl/m/n/10 1463
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 350
+ []\T1/ppl/m/n/10 1471
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 351
+ []\T1/ppl/m/n/10 1479
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 352
+ []\T1/ppl/m/n/10 1481
  []
 
 )
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [11] [12
+ [12] [13
 
-] (./posts/preface.tex [13
+] (./posts/preface.tex [14
 
-] [14
+] [15
 
-]) [15] (./afterwords/preface.tex)
-(./posts/biases-an-introduction.tex [16] [17
+]) [16] (./afterwords/preface.tex)
+(./posts/biases-an-introduction.tex [17] [18
 
-] [18] [19]
+] [19] [20]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
 3.
 
@@ -926,66 +991,66 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 )
-(./afterwords/biases-an-introduction.tex [20]) (./posts/scope-insensitivity.tex
-[21] [22
+(./afterwords/biases-an-introduction.tex [21]) (./posts/scope-insensitivity.tex
+[22] [23
 
-]) (./afterwords/scope-insensitivity.tex [23])
-(./posts/the-martial-art-of-rationality.tex [24] [25
+]) (./afterwords/scope-insensitivity.tex [24])
+(./posts/the-martial-art-of-rationality.tex [25] [26
 
 ])
-(./afterwords/the-martial-art-of-rationality.tex [26])
-(./posts/availability.tex [27] [28
+(./afterwords/the-martial-art-of-rationality.tex [27])
+(./posts/availability.tex [28] [29
 
-]) (./afterwords/availability.tex [29])
-(./posts/what-s-a-bias.tex [30]
+]) (./afterwords/availability.tex [30])
+(./posts/what-s-a-bias.tex [31]
 Overfull \hbox (0.44722pt too wide) in paragraph at lines 5--5
 \T1/ppl/m/n/8 (+15) com-put-ing power'' do not. The post does not say how 
  []
 
-[31
+[32
 
-]) (./afterwords/what-s-a-bias.tex) (./posts/burdensome-details.tex [32]
+]) (./afterwords/what-s-a-bias.tex) (./posts/burdensome-details.tex [33]
 Underfull \hbox (badness 1038) in paragraph at lines 19--19
 []$[]$\T1/ppl/m/n/10 (+20) In the 1982 ex-per-i-ment where pro-fes-sional fore-
 cast-ers as-
  []
 
-[33
+[34
 
-] [34]) (./afterwords/burdensome-details.tex [35])
-(./posts/what-do-we-mean-by-rationality-1.tex [36] [37
+] [35]) (./afterwords/burdensome-details.tex [36])
+(./posts/what-do-we-mean-by-rationality-1.tex [37] [38
 
-] [38] [39] [40])
-(./afterwords/what-do-we-mean-by-rationality-1.tex [41])
-(./posts/planning-fallacy.tex [42] [43
+] [39] [40] [41])
+(./afterwords/what-do-we-mean-by-rationality-1.tex [42])
+(./posts/planning-fallacy.tex [43] [44
 
-] [44])
-(./afterwords/planning-fallacy.tex [45]) (./posts/why-truth.tex [46] [47
-
-])
-(./afterwords/why-truth.tex [48]) (./posts/feeling-rational.tex [49] [50
+] [45])
+(./afterwords/planning-fallacy.tex [46]) (./posts/why-truth.tex [47] [48
 
 ])
-(./afterwords/feeling-rational.tex [51])
-(./posts/the-lens-that-sees-its-flaws.tex [52] [53
+(./afterwords/why-truth.tex [49]) (./posts/feeling-rational.tex [50] [51
 
 ])
-(./afterwords/the-lens-that-sees-its-flaws.tex [54]) [55]
-(./posts/making-beliefs-pay-rent.tex [56
+(./afterwords/feeling-rational.tex [52])
+(./posts/the-lens-that-sees-its-flaws.tex [53] [54
 
-] [57
+])
+(./afterwords/the-lens-that-sees-its-flaws.tex [55]) [56]
+(./posts/making-beliefs-pay-rent.tex [57
 
-] [58])
-(./afterwords/making-beliefs-pay-rent.tex [59])
-(./posts/a-fable-of-science-and-politics.tex [60] [61
+] [58
 
-] [62] [63])
-(./afterwords/a-fable-of-science-and-politics.tex [64])
-(./posts/belief-in-belief.tex [65] [66
+] [59])
+(./afterwords/making-beliefs-pay-rent.tex [60])
+(./posts/a-fable-of-science-and-politics.tex [61] [62
 
-] [67])
-(./afterwords/belief-in-belief.tex [68])
-(./posts/religion-s-claim-to-be-non-disprovable.tex [69] [70
+] [63] [64])
+(./afterwords/a-fable-of-science-and-politics.tex [65])
+(./posts/belief-in-belief.tex [66] [67
+
+] [68])
+(./afterwords/belief-in-belief.tex [69])
+(./posts/religion-s-claim-to-be-non-disprovable.tex [70] [71
 
 ]
 Underfull \hbox (badness 1325) in paragraph at lines 15--15
@@ -993,95 +1058,95 @@ Underfull \hbox (badness 1325) in paragraph at lines 15--15
 
  []
 
-[71]
+[72]
 Overfull \hbox (0.10063pt too wide) in paragraph at lines 29--29
 \T1/ppl/m/n/8 (+14) gions (and of West-ern sci-ence) to-day,'' and cited pa-pal
  
  []
 
-) (./afterwords/religion-s-claim-to-be-non-disprovable.tex [72])
-(./posts/professing-and-cheering.tex [73] [74
+) (./afterwords/religion-s-claim-to-be-non-disprovable.tex [73])
+(./posts/professing-and-cheering.tex [74] [75
 
 ])
-(./afterwords/professing-and-cheering.tex [75]) (./posts/belief-as-attire.tex
-[76] [77
+(./afterwords/professing-and-cheering.tex [76]) (./posts/belief-as-attire.tex
+[77] [78
 
 ]) (./afterwords/belief-as-attire.tex)
-(./posts/pretending-to-be-wise.tex [78] [79
+(./posts/pretending-to-be-wise.tex [79] [80
 
-] [80]
+] [81]
 Overfull \hbox (102.42418pt too wide) in paragraph at lines 57--57
 []$[]$\T1/ppl/m/n/10 (-20) 3 See Han-son, ^^PPol-icy Tug-O-War^^Q (http://www.o
 vercomingbias.com/2007/05/policy_
  []
 
-) (./afterwords/pretending-to-be-wise.tex [81]) (./posts/applause-lights.tex
-[82] [83
+) (./afterwords/pretending-to-be-wise.tex [82]) (./posts/applause-lights.tex
+[83] [84
 
-]) [84] (./afterwords/applause-lights.tex [85]) [86]
-(./posts/focus-your-uncertainty.tex [87
+]) [85] (./afterwords/applause-lights.tex [86]) [87]
+(./posts/focus-your-uncertainty.tex [88
 
-] [88
-
-])
-(./afterwords/focus-your-uncertainty.tex [89]) (./posts/what-is-evidence.tex
-[90] [91
-
-] [92]) (./afterwords/what-is-evidence.tex)
-(./posts/scientific-evidence-legal-evidence-rational-evidence.tex [93] [94
+] [89
 
 ])
-(./afterwords/scientific-evidence-legal-evidence-rational-evidence.tex [95]
-[96]) (./posts/how-much-evidence-does-it-take.tex [97] [98
+(./afterwords/focus-your-uncertainty.tex [90]) (./posts/what-is-evidence.tex
+[91] [92
 
-] [99])
-(./afterwords/how-much-evidence-does-it-take.tex [100])
-(./posts/einstein-s-arrogance.tex [101] [102
+] [93]) (./afterwords/what-is-evidence.tex)
+(./posts/scientific-evidence-legal-evidence-rational-evidence.tex [94] [95
 
-] [103])
-(./afterwords/einstein-s-arrogance.tex [104]) (./posts/occam-s-razor.tex
-[105] [106
+])
+(./afterwords/scientific-evidence-legal-evidence-rational-evidence.tex [96]
+[97]) (./posts/how-much-evidence-does-it-take.tex [98] [99
 
-] [107]) (./afterwords/occam-s-razor.tex
+] [100])
+(./afterwords/how-much-evidence-does-it-take.tex [101])
+(./posts/einstein-s-arrogance.tex [102] [103
+
+] [104])
+(./afterwords/einstein-s-arrogance.tex [105]) (./posts/occam-s-razor.tex
+[106] [107
+
+] [108]) (./afterwords/occam-s-razor.tex
 Overfull \hbox (1.6259pt too wide) in paragraph at lines 4--5
 \T1/ppl/m/n/10 (-20) ``anger'' are labels whose content the listener already st
 ores. That is why
  []
 
-[108]) (./posts/your-strength-as-a-rationalist.tex [109] [110
+[109]) (./posts/your-strength-as-a-rationalist.tex [110] [111
 
 ])
-(./afterwords/your-strength-as-a-rationalist.tex [111])
-(./posts/absence-of-evidence-is-evidence-of-absence.tex [112] [113
+(./afterwords/your-strength-as-a-rationalist.tex [112])
+(./posts/absence-of-evidence-is-evidence-of-absence.tex [113] [114
 
 ])
-(./afterwords/absence-of-evidence-is-evidence-of-absence.tex [114])
-(./posts/conservation-of-expected-evidence.tex [115]
+(./afterwords/absence-of-evidence-is-evidence-of-absence.tex [115])
+(./posts/conservation-of-expected-evidence.tex [116]
 Underfull \hbox (badness 1142) in paragraph at lines 10--11
 []$[]$\T1/ppl/b/n/10 (+20) P(H) = P(H) P(H) = P(H,E) + P(H,^^CE) P(H) =
  []
 
-[116
+[117
 
-]) (./afterwords/conservation-of-expected-evidence.tex [117])
-(./posts/hindsight-devalues-science.tex [118] [119
+]) (./afterwords/conservation-of-expected-evidence.tex [118])
+(./posts/hindsight-devalues-science.tex [119] [120
 
 ])
-(./afterwords/hindsight-devalues-science.tex [120])
-(./posts/illusion-of-transparency-why-no-one-understands-you.tex [121] [122
+(./afterwords/hindsight-devalues-science.tex [121])
+(./posts/illusion-of-transparency-why-no-one-understands-you.tex [122] [123
 
 ]
-[123]) (./afterwords/illusion-of-transparency-why-no-one-understands-you.tex
-[124]) (./posts/expecting-short-inferential-distances.tex [125] [126
+[124]) (./afterwords/illusion-of-transparency-why-no-one-understands-you.tex
+[125]) (./posts/expecting-short-inferential-distances.tex [126] [127
 
 ])
-(./afterwords/expecting-short-inferential-distances.tex [127]) [128]
-(./posts/fake-explanations.tex [129
+(./afterwords/expecting-short-inferential-distances.tex [128]) [129]
+(./posts/fake-explanations.tex [130
 
-] [130
+] [131
 
-]) (./afterwords/fake-explanations.tex [131]) (./posts/guessing-the-teacher-s-p
-assword.tex [132] [133
+]) (./afterwords/fake-explanations.tex [132]) (./posts/guessing-the-teacher-s-p
+assword.tex [133] [134
 
 ]
 Underfull \hbox (badness 1661) in paragraph at lines 23--23
@@ -1089,22 +1154,22 @@ Underfull \hbox (badness 1661) in paragraph at lines 23--23
 20) words don't count, only
  []
 
-[134]) (./afterwords/guessing-the-teacher-s-password.tex [135])
-(./posts/science-as-attire.tex [136] [137
+[135]) (./afterwords/guessing-the-teacher-s-password.tex [136])
+(./posts/science-as-attire.tex [137] [138
 
-]) (./afterwords/science-as-attire.tex [138]) (./posts/fake-causality.tex [139]
- [140
+]) (./afterwords/science-as-attire.tex [139]) (./posts/fake-causality.tex [140]
+ [141
 
-] [141])
-(./afterwords/fake-causality.tex [142]) (./posts/semantic-stopsigns.tex
-[143] [144
+] [142])
+(./afterwords/fake-causality.tex [143]) (./posts/semantic-stopsigns.tex
+[144] [145
 
-] [145]) (./afterwords/semantic-stopsigns.tex [146])
-(./posts/mysterious-answers-to-mysterious-questions.tex [147] [148
+] [146]) (./afterwords/semantic-stopsigns.tex [147])
+(./posts/mysterious-answers-to-mysterious-questions.tex [148] [149
 
-] [149])
-(./afterwords/mysterious-answers-to-mysterious-questions.tex [150])
-(./posts/the-futility-of-emergence.tex [151] [152
+] [150])
+(./afterwords/mysterious-answers-to-mysterious-questions.tex [151])
+(./posts/the-futility-of-emergence.tex [152] [153
 
 ]
 Overfull \hbox (0.50601pt too wide) in paragraph at lines 29--29
@@ -1112,129 +1177,129 @@ Overfull \hbox (0.50601pt too wide) in paragraph at lines 29--29
 -tence is close to what 
  []
 
-) [153] (./afterwords/the-futility-of-emergence.tex)
-(./posts/say-not-complexity.tex [154] [155
+) [154] (./afterwords/the-futility-of-emergence.tex)
+(./posts/say-not-complexity.tex [155] [156
 
-] [156])
-(./afterwords/say-not-complexity.tex [157])
-(./posts/positive-bias-look-into-the-dark.tex [158]
+] [157])
+(./afterwords/say-not-complexity.tex [158])
+(./posts/positive-bias-look-into-the-dark.tex [159]
 Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
  []
 
-[159
+[160
 
-] [160]) (./afterwords/positive-bias-look-into-the-dark.tex [161])
-(./posts/lawful-uncertainty.tex [162]
+] [161]) (./afterwords/positive-bias-look-into-the-dark.tex [162])
+(./posts/lawful-uncertainty.tex [163]
 Underfull \hbox (badness 2181) in paragraph at lines 10--11
 \T1/ppl/m/n/10 (+20) event with the rel-a-tive fre-quency with which it
  []
 
-[163
+[164
 
-] [164]) (./afterwords/lawful-uncertainty.tex [165])
-(./posts/my-wild-and-reckless-youth.tex [166] [167
-
-])
-(./afterwords/my-wild-and-reckless-youth.tex [168])
-(./posts/failing-to-learn-from-history.tex [169])
-(./afterwords/failing-to-learn-from-history.tex [170
+] [165]) (./afterwords/lawful-uncertainty.tex [166])
+(./posts/my-wild-and-reckless-youth.tex [167] [168
 
 ])
-(./posts/making-history-available.tex [171] [172
+(./afterwords/my-wild-and-reckless-youth.tex [169])
+(./posts/failing-to-learn-from-history.tex [170])
+(./afterwords/failing-to-learn-from-history.tex [171
 
 ])
-(./afterwords/making-history-available.tex [173])
-(./posts/explain-worship-ignore.tex [174] [175
+(./posts/making-history-available.tex [172] [173
 
 ])
-(./afterwords/explain-worship-ignore.tex [176])
-(./posts/science-as-curiosity-stopper.tex [177] [178
+(./afterwords/making-history-available.tex [174])
+(./posts/explain-worship-ignore.tex [175] [176
 
-] [179])
-(./afterwords/science-as-curiosity-stopper.tex [180])
-(./posts/truly-part-of-you.tex [181] [182
+])
+(./afterwords/explain-worship-ignore.tex [177])
+(./posts/science-as-curiosity-stopper.tex [178] [179
 
-] [183]
+] [180])
+(./afterwords/science-as-curiosity-stopper.tex [181])
+(./posts/truly-part-of-you.tex [182] [183
+
+] [184]
 Overfull \hbox (111.60498pt too wide) in paragraph at lines 51--51
 \T1/ppl/m/it/10 (-20) Boston Globe\T1/ppl/m/n/10 (-20) , 2003, http://archive.b
 oston.com/news/globe/ideas/articles/2003/10/05/out_
  []
 
-) (./afterwords/truly-part-of-you.tex [184]
+) (./afterwords/truly-part-of-you.tex [185]
 Overfull \hbox (0.5044pt too wide) in paragraph at lines 16--17
 \T1/ppl/m/n/10 (-20) ery thought worth think-ing'' comes six weeks af-ter ``Cac
 hed Thoughts,''
  []
 
-) (./posts/the-simple-truth.tex [185] [186
+) (./posts/the-simple-truth.tex [186] [187
 
-] [187] [188] [189] [190] [191]
-[192] [193] [194] [195] [196]
+] [188] [189] [190] [191] [192]
+[193] [194] [195] [196] [197]
 Overfull \hbox (0.10922pt too wide) in paragraph at lines 313--313
 []$[]$\T1/ppl/m/sc/8 (+19) paragraph\T1/ppl/m/n/8 (+19) . The shepherd's answer
 , hedged (``I'm 
  []
 
-[197] [198] [199]) (./afterwords/the-simple-truth.tex [200]) [201] [202
+[198] [199] [200]) (./afterwords/the-simple-truth.tex [201]) [202] [203
 
 ]
-(./posts/rationality-an-introduction.tex [203
+(./posts/rationality-an-introduction.tex [204
 
-] [204
+] [205
 
-] [205] [206] [207]
+] [206] [207] [208]
 Overfull \hbox (45.75511pt too wide) in paragraph at lines 99--99
 \T1/ppl/m/it/10 (-20) view \T1/ppl/m/n/10 (-20) 84 (1977): 231^^U259, http://pe
 ople.virginia.edu/^^Ctdw/nisbett&wilson.pdf. 
  []
 
-[208]) (./afterwords/rationality-an-introduction.tex [209])
-(./posts/tsuyoku-naritai-i-want-to-become-stronger.tex [210] [211
+[209]) (./afterwords/rationality-an-introduction.tex [210])
+(./posts/tsuyoku-naritai-i-want-to-become-stronger.tex [211] [212
 
 ])
-(./afterwords/tsuyoku-naritai-i-want-to-become-stronger.tex [212])
-(./posts/the-proper-use-of-humility.tex [213] [214
+(./afterwords/tsuyoku-naritai-i-want-to-become-stronger.tex [213])
+(./posts/the-proper-use-of-humility.tex [214] [215
 
-] [215])
-(./afterwords/the-proper-use-of-humility.tex [216])
-(./posts/tsuyoku-vs-the-egalitarian-instinct.tex [217] [218
-
-])
-(./afterwords/tsuyoku-vs-the-egalitarian-instinct.tex [219])
-(./posts/the-third-alternative.tex [220] [221
+] [216])
+(./afterwords/the-proper-use-of-humility.tex [217])
+(./posts/tsuyoku-vs-the-egalitarian-instinct.tex [218] [219
 
 ])
-(./afterwords/the-third-alternative.tex [222])
-(./posts/lotteries-a-waste-of-hope.tex [223] [224
+(./afterwords/tsuyoku-vs-the-egalitarian-instinct.tex [220])
+(./posts/the-third-alternative.tex [221] [222
 
 ])
-(./afterwords/lotteries-a-waste-of-hope.tex [225])
-(./posts/new-improved-lottery.tex [226] [227
+(./afterwords/the-third-alternative.tex [223])
+(./posts/lotteries-a-waste-of-hope.tex [224] [225
 
 ])
-(./afterwords/new-improved-lottery.tex [228])
-(./posts/but-there-s-still-a-chance-right.tex [229] [230
+(./afterwords/lotteries-a-waste-of-hope.tex [226])
+(./posts/new-improved-lottery.tex [227] [228
 
 ])
-(./afterwords/but-there-s-still-a-chance-right.tex [231])
-(./posts/the-fallacy-of-gray.tex [232] [233
+(./afterwords/new-improved-lottery.tex [229])
+(./posts/but-there-s-still-a-chance-right.tex [230] [231
 
-] [234] [235])
-(./afterwords/the-fallacy-of-gray.tex [236]) (./posts/absolute-authority.tex
-[237] [238
+])
+(./afterwords/but-there-s-still-a-chance-right.tex [232])
+(./posts/the-fallacy-of-gray.tex [233] [234
 
-] [239] [240] [241]) (./afterwords/absolute-authority.tex
+] [235] [236])
+(./afterwords/the-fallacy-of-gray.tex [237]) (./posts/absolute-authority.tex
+[238] [239
+
+] [240] [241] [242]) (./afterwords/absolute-authority.tex
 Overfull \hbox (0.66937pt too wide) in paragraph at lines 10--11
 \T1/ppl/m/n/10 (-20) ``absolutely certain'' statements are not all correct is a
 lso true; the author
  []
 
-[242]) (./posts/how-to-convince-me-that-2-2-3.tex [243] [244
+[243]) (./posts/how-to-convince-me-that-2-2-3.tex [244] [245
 
-] [245])
-(./afterwords/how-to-convince-me-that-2-2-3.tex [246])
-(./posts/infinite-certainty.tex [247] [248
+] [246])
+(./afterwords/how-to-convince-me-that-2-2-3.tex [247])
+(./posts/infinite-certainty.tex [248] [249
 
 ]
 Underfull \hbox (badness 1231) in paragraph at lines 29--29
@@ -1247,7 +1312,7 @@ Underfull \hbox (badness 1968) in paragraph at lines 29--29
 \T1/ppl/m/n/8 (+20) has an amus-ing anec-dote on this point: 
  []
 
-[249]
+[250]
 Package textcomp Info: Symbol \textuparrow not provided by
 (textcomp)             font family ppl in TS1 encoding.
 (textcomp)             Default family used instead on input line 39.
@@ -1280,68 +1345,68 @@ Package textcomp Info: Symbol \textuparrow not provided by
 (textcomp)             font family ppl in TS1 encoding.
 (textcomp)             Default family used instead on input line 39.
 )
-(./afterwords/infinite-certainty.tex [250])
-(./posts/0-and-1-are-not-probabilities.tex [251] [252
+(./afterwords/infinite-certainty.tex [251])
+(./posts/0-and-1-are-not-probabilities.tex [252] [253
 
-] [253])
-(./afterwords/0-and-1-are-not-probabilities.tex [254])
-(./posts/your-rationality-is-my-business.tex [255] [256
+] [254])
+(./afterwords/0-and-1-are-not-probabilities.tex [255])
+(./posts/your-rationality-is-my-business.tex [256] [257
 
 ])
-(./afterwords/your-rationality-is-my-business.tex [257]) [258]
-(./posts/politics-is-the-mind-killer.tex [259
+(./afterwords/your-rationality-is-my-business.tex [258]) [259]
+(./posts/politics-is-the-mind-killer.tex [260
 
-]) [260
+]) [261
 
 ]
-(./afterwords/politics-is-the-mind-killer.tex [261])
-(./posts/policy-debates-should-not-appear-one-sided.tex [262] [263
+(./afterwords/politics-is-the-mind-killer.tex [262])
+(./posts/policy-debates-should-not-appear-one-sided.tex [263] [264
 
-] [264])
-(./afterwords/policy-debates-should-not-appear-one-sided.tex [265])
-(./posts/the-scales-of-justice-the-notebook-of-rationality.tex [266] [267
-
-])
-(./afterwords/the-scales-of-justice-the-notebook-of-rationality.tex [268])
-(./posts/correspondence-bias.tex [269] [270
+] [265])
+(./afterwords/policy-debates-should-not-appear-one-sided.tex [266])
+(./posts/the-scales-of-justice-the-notebook-of-rationality.tex [267] [268
 
 ])
-(./afterwords/correspondence-bias.tex [271])
-(./posts/are-your-enemies-innately-evil.tex [272] [273
+(./afterwords/the-scales-of-justice-the-notebook-of-rationality.tex [269])
+(./posts/correspondence-bias.tex [270] [271
 
 ])
-(./afterwords/are-your-enemies-innately-evil.tex [274])
-(./posts/reversed-stupidity-is-not-intelligence.tex [275] [276
+(./afterwords/correspondence-bias.tex [272])
+(./posts/are-your-enemies-innately-evil.tex [273] [274
 
-]) [277]
+])
+(./afterwords/are-your-enemies-innately-evil.tex [275])
+(./posts/reversed-stupidity-is-not-intelligence.tex [276] [277
+
+]) [278]
 (./afterwords/reversed-stupidity-is-not-intelligence.tex)
-(./posts/argument-screens-off-authority.tex [278] [279
+(./posts/argument-screens-off-authority.tex [279] [280
 
-] [280]
+] [281]
 Overfull \hbox (0.37479pt too wide) in paragraph at lines 61--61
 \T1/ppl/m/n/8 (+15) another's relevance is ``screening off'', and the rule for 
 
  []
 
-[281]) (./afterwords/argument-screens-off-authority.tex [282])
-(./posts/hug-the-query.tex [283] [284
+[282]) (./afterwords/argument-screens-off-authority.tex [283])
+(./posts/hug-the-query.tex [284] [285
 
 ]) (./afterwords/hug-the-query.tex
-[285]) (./posts/rationality-and-the-english-language.tex [286] [287
+[286]) (./posts/rationality-and-the-english-language.tex [287] [288
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 32--33
 \T1/ppl/m/n/10 (+20) ATROC-I-TIES, IRON HEEL, BLOOD-STAINED
  []
 
-[288]) (./afterwords/rationality-and-the-english-language.tex [289])
-(./posts/human-evil-and-muddled-thinking.tex [290] [291
+[289]) (./afterwords/rationality-and-the-english-language.tex [290])
+(./posts/human-evil-and-muddled-thinking.tex [291] [292
 
-] [292])
-(./afterwords/human-evil-and-muddled-thinking.tex [293]) [294]
-(./posts/knowing-about-biases-can-hurt-people.tex [295
+] [293])
+(./afterwords/human-evil-and-muddled-thinking.tex [294]) [295]
+(./posts/knowing-about-biases-can-hurt-people.tex [296
 
-] [296
+] [297
 
 ]
 Underfull \hbox (badness 6493) in paragraph at lines 24--24
@@ -1355,45 +1420,45 @@ Underfull \hbox (badness 2012) in paragraph at lines 24--24
 
  []
 
-) (./afterwords/knowing-about-biases-can-hurt-people.tex [297])
-(./posts/update-yourself-incrementally.tex [298] [299
+) (./afterwords/knowing-about-biases-can-hurt-people.tex [298])
+(./posts/update-yourself-incrementally.tex [299] [300
 
 ])
-(./afterwords/update-yourself-incrementally.tex [300])
-(./posts/one-argument-against-an-army.tex [301]
+(./afterwords/update-yourself-incrementally.tex [301])
+(./posts/one-argument-against-an-army.tex [302]
 Underfull \hbox (badness 4913) in paragraph at lines 13--13
 []$[]$\T1/ppl/m/n/10 (+20) You en-counter fur-ther ar-gu-ments by the pro-Sylva
 nia
  []
 
-[302
+[303
 
-]) (./afterwords/one-argument-against-an-army.tex [303])
-(./posts/the-bottom-line.tex [304] [305
+]) (./afterwords/one-argument-against-an-army.tex [304])
+(./posts/the-bottom-line.tex [305] [306
 
-]) [306]
+]) [307]
 (./afterwords/the-bottom-line.tex
 Underfull \hbox (badness 1783) in paragraph at lines 14--15
 \T1/ppl/m/n/10 (+20) Tegmark du-pli-cates, en-tan-gle-ment, al-go-rithms: none 
 of them
  []
 
-) (./posts/what-evidence-filtered-evidence.tex [307] [308
+) (./posts/what-evidence-filtered-evidence.tex [308] [309
 
-] [309])
-(./afterwords/what-evidence-filtered-evidence.tex [310])
-(./posts/rationalization.tex [311] [312
+] [310])
+(./afterwords/what-evidence-filtered-evidence.tex [311])
+(./posts/rationalization.tex [312] [313
 
 ]) (./afterwords/rationalization.tex
-[313]) (./posts/a-rational-argument.tex [314] [315
+[314]) (./posts/a-rational-argument.tex [315] [316
 
 ])
-(./afterwords/a-rational-argument.tex [316])
-(./posts/avoiding-your-belief-s-real-weak-points.tex [317] [318
+(./afterwords/a-rational-argument.tex [317])
+(./posts/avoiding-your-belief-s-real-weak-points.tex [318] [319
 
-] [319])
-[320] (./afterwords/avoiding-your-belief-s-real-weak-points.tex [321])
-(./posts/motivated-stopping-and-motivated-continuation.tex [322] [323
+] [320])
+[321] (./afterwords/avoiding-your-belief-s-real-weak-points.tex [322])
+(./posts/motivated-stopping-and-motivated-continuation.tex [323] [324
 
 ]
 Overfull \hbox (0.56358pt too wide) in paragraph at lines 13--13
@@ -1401,118 +1466,118 @@ Overfull \hbox (0.56358pt too wide) in paragraph at lines 13--13
 nal of Epi-demi- 
  []
 
-) [324] (./afterwords/motivated-stopping-and-motivated-continuation.tex
-[325]) (./posts/fake-justification.tex [326] [327
+) [325] (./afterwords/motivated-stopping-and-motivated-continuation.tex
+[326]) (./posts/fake-justification.tex [327] [328
 
 ])
-(./afterwords/fake-justification.tex [328])
-(./posts/is-that-your-true-rejection.tex [329] [330
+(./afterwords/fake-justification.tex [329])
+(./posts/is-that-your-true-rejection.tex [330] [331
 
-] [331]
+] [332]
 Overfull \hbox (0.11157pt too wide) in paragraph at lines 45--45
 []$[]$\T1/ppl/m/sc/8 (+18) paragraph\T1/ppl/m/n/8 (+18) . True by construction.
  Disagreements 
  []
 
-) (./afterwords/is-that-your-true-rejection.tex [332])
-(./posts/entangled-truths-contagious-lies.tex [333] [334
+) (./afterwords/is-that-your-true-rejection.tex [333])
+(./posts/entangled-truths-contagious-lies.tex [334] [335
 
-] [335])
-(./afterwords/entangled-truths-contagious-lies.tex [336])
-(./posts/of-lies-and-black-swan-blowups.tex [337])
-(./afterwords/of-lies-and-black-swan-blowups.tex [338
+] [336])
+(./afterwords/entangled-truths-contagious-lies.tex [337])
+(./posts/of-lies-and-black-swan-blowups.tex [338])
+(./afterwords/of-lies-and-black-swan-blowups.tex [339
 
 ])
-(./posts/dark-side-epistemology.tex [339] [340
+(./posts/dark-side-epistemology.tex [340] [341
 
-] [341] [342])
-(./afterwords/dark-side-epistemology.tex [343]) [344]
-(./posts/doublethink-choosing-to-be-biased.tex [345
+] [342] [343])
+(./afterwords/dark-side-epistemology.tex [344]) [345]
+(./posts/doublethink-choosing-to-be-biased.tex [346
 
 ]
 Underfull \hbox (badness 3209) in paragraph at lines 4--5
 []$[]$\T1/ppl/m/n/10 (+20) An ob-long slip of news-pa-per had ap-peared
  []
 
-[346
+[347
 
 ]
 Overfull \hbox (0.33797pt too wide) in paragraph at lines 29--29
 \T1/ppl/m/n/8 (+13) Really, I've Deceived Myself'' (2009) says she took this 
  []
 
-[347]) (./afterwords/doublethink-choosing-to-be-biased.tex [348]
+[348]) (./afterwords/doublethink-choosing-to-be-biased.tex [349]
 Overfull \hbox (0.40901pt too wide) in paragraph at lines 14--15
 \T1/ppl/m/n/10 (-20) act-of-will sentence as partly ``trying to instill a self-
 fulfilling prophecy,''
  []
 
-) (./posts/no-really-i-ve-deceived-myself.tex [349] [350
+) (./posts/no-really-i-ve-deceived-myself.tex [350] [351
 
 ])
-(./afterwords/no-really-i-ve-deceived-myself.tex [351])
-(./posts/belief-in-self-deception.tex [352] [353
+(./afterwords/no-really-i-ve-deceived-myself.tex [352])
+(./posts/belief-in-self-deception.tex [353] [354
 
-] [354])
-(./afterwords/belief-in-self-deception.tex [355]) (./posts/moore-s-paradox.tex
-[356]
+] [355])
+(./afterwords/belief-in-self-deception.tex [356]) (./posts/moore-s-paradox.tex
+[357]
 Underfull \hbox (badness 1142) in paragraph at lines 21--21
 []$[]$\T1/ppl/m/n/10 (+20) This goes a long way to-ward mak-ing this real-life 
 case
  []
 
-[357
+[358
 
-]) (./afterwords/moore-s-paradox.tex [358])
-(./posts/don-t-believe-you-ll-self-deceive.tex [359]
+]) (./afterwords/moore-s-paradox.tex [359])
+(./posts/don-t-believe-you-ll-self-deceive.tex [360]
 Overfull \hbox (8.17511pt too wide) in paragraph at lines 16--17
 []$[]$\T1/ppl/m/n/10 (-20) I chose to be-lieve in the ex-is-tence of God^^Vdeli
 berately
  []
 
-[360
+[361
 
-]) (./afterwords/don-t-believe-you-ll-self-deceive.tex [361]) [362]
-(./posts/anchoring-and-adjustment.tex [363
+]) (./afterwords/don-t-believe-you-ll-self-deceive.tex [362]) [363]
+(./posts/anchoring-and-adjustment.tex [364
 
-] [364
-
-])
-(./afterwords/anchoring-and-adjustment.tex [365])
-(./posts/priming-and-contamination.tex [366] [367
+] [365
 
 ])
-(./afterwords/priming-and-contamination.tex [368])
-(./posts/do-we-believe-everything-we-re-told.tex [369]
+(./afterwords/anchoring-and-adjustment.tex [366])
+(./posts/priming-and-contamination.tex [367] [368
+
+])
+(./afterwords/priming-and-contamination.tex [369])
+(./posts/do-we-believe-everything-we-re-told.tex [370]
 Overfull \hbox (0.26645pt too wide) in paragraph at lines 3--3
 \T1/ppl/m/n/8 (+9) ate be-lief'' are, ``in gen-eral,'' ``ex-ac-er-bated by cog-
 ni-tive 
  []
 
-[370
+[371
 
-]) (./afterwords/do-we-believe-everything-we-re-told.tex [371])
-(./posts/cached-thoughts.tex [372] [373
+]) (./afterwords/do-we-believe-everything-we-re-told.tex [372])
+(./posts/cached-thoughts.tex [373] [374
 
-] [374])
-(./afterwords/cached-thoughts.tex [375]) (./posts/original-seeing.tex [376])
-[377
+] [375])
+(./afterwords/cached-thoughts.tex [376]) (./posts/original-seeing.tex [377])
+[378
 
-] (./afterwords/original-seeing.tex [378])
-(./posts/the-virtue-of-narrowness.tex [379] [380
+] (./afterwords/original-seeing.tex [379])
+(./posts/the-virtue-of-narrowness.tex [380] [381
 
-] [381])
+] [382])
 (./afterwords/the-virtue-of-narrowness.tex) (./posts/stranger-than-history.tex
-[382]
+[383]
 Overfull \hbox (143.55708pt too wide) in paragraph at lines 21--21
 []$[]$\T1/ppl/m/sc/8 (-20) author's foot-note\T1/ppl/m/n/8 (-20) . Source: http
 ://lesswrong.com/lw/j0/making_history_available/ewg.  
  []
 
-) (./afterwords/stranger-than-history.tex [383
+) (./afterwords/stranger-than-history.tex [384
 
 ])
-(./posts/the-logical-fallacy-of-generalization-from-fictional.tex [384]
+(./posts/the-logical-fallacy-of-generalization-from-fictional.tex [385]
 Underfull \hbox (badness 3108) in paragraph at lines 21--21
 []$[]$\T1/ppl/m/sc/8 (+20) author's foot-note\T1/ppl/m/n/8 (+20) . E.g., Han- 
  []
@@ -1528,15 +1593,15 @@ Overfull \hbox (34.71457pt too wide) in paragraph at lines 21--21
   
  []
 
-[385
+[386
 
-] [386] [387] [388])
-(./afterwords/the-logical-fallacy-of-generalization-from-fictional.tex [389])
-(./posts/we-change-our-minds-less-often-than-we-think.tex [390] [391
+] [387] [388] [389])
+(./afterwords/the-logical-fallacy-of-generalization-from-fictional.tex [390])
+(./posts/we-change-our-minds-less-often-than-we-think.tex [391] [392
 
 ])
-(./afterwords/we-change-our-minds-less-often-than-we-think.tex [392])
-(./posts/hold-off-on-proposing-solutions.tex [393] [394
+(./afterwords/we-change-our-minds-less-often-than-we-think.tex [393])
+(./posts/hold-off-on-proposing-solutions.tex [394] [395
 
 ]
 Underfull \hbox (badness 1371) in paragraph at lines 15--15
@@ -1544,52 +1609,52 @@ Underfull \hbox (badness 1371) in paragraph at lines 15--15
 sics,
  []
 
-) (./afterwords/hold-off-on-proposing-solutions.tex [395])
-(./posts/the-genetic-fallacy.tex [396] [397
+) (./afterwords/hold-off-on-proposing-solutions.tex [396])
+(./posts/the-genetic-fallacy.tex [397] [398
 
-]) [398]
-(./afterwords/the-genetic-fallacy.tex [399]) [400]
-(./posts/the-affect-heuristic.tex [401
+]) [399]
+(./afterwords/the-genetic-fallacy.tex [400]) [401]
+(./posts/the-affect-heuristic.tex [402
 
-] [402
+] [403
 
 ])
-(./afterwords/the-affect-heuristic.tex [403])
-(./posts/evaluability-and-cheap-holiday-shopping.tex [404] [405
+(./afterwords/the-affect-heuristic.tex [404])
+(./posts/evaluability-and-cheap-holiday-shopping.tex [405] [406
 
-] [406])
-(./afterwords/evaluability-and-cheap-holiday-shopping.tex [407])
-(./posts/unbounded-scales-huge-jury-awards-and-futurism.tex [408] [409
+] [407])
+(./afterwords/evaluability-and-cheap-holiday-shopping.tex [408])
+(./posts/unbounded-scales-huge-jury-awards-and-futurism.tex [409] [410
 
 ]
-[410]) (./afterwords/unbounded-scales-huge-jury-awards-and-futurism.tex)
-(./posts/the-halo-effect.tex [411] [412
+[411]) (./afterwords/unbounded-scales-huge-jury-awards-and-futurism.tex)
+(./posts/the-halo-effect.tex [412] [413
 
 ]) (./afterwords/the-halo-effect.tex
-[413]) (./posts/superhero-bias.tex [414] [415
+[414]) (./posts/superhero-bias.tex [415] [416
 
-] [416])
-(./afterwords/superhero-bias.tex) (./posts/affective-death-spirals.tex [417]
-[418
+] [417])
+(./afterwords/superhero-bias.tex) (./posts/affective-death-spirals.tex [418]
+[419
 
-]) (./afterwords/affective-death-spirals.tex [419])
-(./posts/resist-the-happy-death-spiral.tex [420] [421
+]) (./afterwords/affective-death-spirals.tex [420])
+(./posts/resist-the-happy-death-spiral.tex [421] [422
 
-] [422] [423])
-(./afterwords/resist-the-happy-death-spiral.tex [424])
-(./posts/uncritical-supercriticality.tex [425] [426
+] [423] [424])
+(./afterwords/resist-the-happy-death-spiral.tex [425])
+(./posts/uncritical-supercriticality.tex [426] [427
 
-] [427])
-(./afterwords/uncritical-supercriticality.tex [428])
-(./posts/evaporative-cooling-of-group-beliefs.tex [429] [430
+] [428])
+(./afterwords/uncritical-supercriticality.tex [429])
+(./posts/evaporative-cooling-of-group-beliefs.tex [430] [431
 
-] [431])
-(./afterwords/evaporative-cooling-of-group-beliefs.tex [432])
-(./posts/when-none-dare-urge-restraint.tex [433] [434
+] [432])
+(./afterwords/evaporative-cooling-of-group-beliefs.tex [433])
+(./posts/when-none-dare-urge-restraint.tex [434] [435
 
 ])
-(./afterwords/when-none-dare-urge-restraint.tex [435])
-(./posts/every-cause-wants-to-be-a-cult.tex [436]
+(./afterwords/when-none-dare-urge-restraint.tex [436])
+(./posts/every-cause-wants-to-be-a-cult.tex [437]
 Overfull \hbox (118.70137pt too wide) in paragraph at lines 3--3
 \T1/ppl/m/n/8 (-20) Rocks Wikipedia^^Q (http://www.theregister.co.uk/2007/12/04
 /wikipedia_secret_mailing) 
@@ -1618,33 +1683,33 @@ Underfull \hbox (badness 1365) in paragraph at lines 15--15
 Pra-tio-nal-ity^^Q won't
  []
 
-[437
+[438
 
-]) (./afterwords/every-cause-wants-to-be-a-cult.tex [438])
-(./posts/two-cult-koans.tex [439] [440
+]) (./afterwords/every-cause-wants-to-be-a-cult.tex [439])
+(./posts/two-cult-koans.tex [440] [441
 
 ]) (./afterwords/two-cult-koans.tex
-[441]) (./posts/asch-s-conformity-experiment.tex [442] [443
+[442]) (./posts/asch-s-conformity-experiment.tex [443] [444
 
-] [444])
-(./afterwords/asch-s-conformity-experiment.tex [445])
-(./posts/on-expressing-your-concerns.tex [446]
+] [445])
+(./afterwords/asch-s-conformity-experiment.tex [446])
+(./posts/on-expressing-your-concerns.tex [447]
 Overfull \hbox (23.6178pt too wide) in paragraph at lines 13--13
 \T1/ppl/m/n/8 (-20) ment.^^Q http://lesswrong.com/lw/gr/the_modesty_argument.  
 
  []
 
-[447
+[448
 
-]) (./afterwords/on-expressing-your-concerns.tex [448])
-(./posts/lonely-dissent.tex [449] [450
+]) (./afterwords/on-expressing-your-concerns.tex [449])
+(./posts/lonely-dissent.tex [450] [451
 
-] [451]) (./afterwords/lonely-dissent.tex [452]) (./posts/cultish-countercultis
-hness.tex [453] [454
+] [452]) (./afterwords/lonely-dissent.tex [453]) (./posts/cultish-countercultis
+hness.tex [454] [455
 
-] [455] [456]
-[457]) [458] (./afterwords/cultish-countercultishness.tex [459]) [460]
-(./posts/singlethink.tex [461
+] [456] [457]
+[458]) [459] (./afterwords/cultish-countercultishness.tex [460]) [461]
+(./posts/singlethink.tex [462
 
 ]
 Underfull \hbox (badness 1924) in paragraph at lines 17--17
@@ -1652,36 +1717,36 @@ Underfull \hbox (badness 1924) in paragraph at lines 17--17
  (+20) I caught the feel-
  []
 
-[462
+[463
 
-]) (./afterwords/singlethink.tex [463])
-(./posts/the-importance-of-saying-oops.tex [464] [465
-
-])
-(./afterwords/the-importance-of-saying-oops.tex [466])
-(./posts/the-crackpot-offer.tex [467] [468
+]) (./afterwords/singlethink.tex [464])
+(./posts/the-importance-of-saying-oops.tex [465] [466
 
 ])
-(./afterwords/the-crackpot-offer.tex [469]) (./posts/just-lose-hope-already.tex
-[470]) [471
+(./afterwords/the-importance-of-saying-oops.tex [467])
+(./posts/the-crackpot-offer.tex [468] [469
+
+])
+(./afterwords/the-crackpot-offer.tex [470]) (./posts/just-lose-hope-already.tex
+[471]) [472
 
 ] (./afterwords/just-lose-hope-already.tex)
-(./posts/the-proper-use-of-doubt.tex [472] [473
+(./posts/the-proper-use-of-doubt.tex [473] [474
 
 ])
-(./afterwords/the-proper-use-of-doubt.tex [474])
-(./posts/you-can-face-reality.tex [475]) (./afterwords/you-can-face-reality.tex
-[476
+(./afterwords/the-proper-use-of-doubt.tex [475])
+(./posts/you-can-face-reality.tex [476]) (./afterwords/you-can-face-reality.tex
+[477
 
-]) (./posts/the-meditation-on-curiosity.tex [477] [478
+]) (./posts/the-meditation-on-curiosity.tex [478] [479
 
-] [479])
-(./afterwords/the-meditation-on-curiosity.tex [480])
-(./posts/no-one-can-exempt-you-from-rationality-s-laws.tex [481] [482
+] [480])
+(./afterwords/the-meditation-on-curiosity.tex [481])
+(./posts/no-one-can-exempt-you-from-rationality-s-laws.tex [482] [483
 
 ])
-(./afterwords/no-one-can-exempt-you-from-rationality-s-laws.tex [483])
-(./posts/leave-a-line-of-retreat.tex [484] [485
+(./afterwords/no-one-can-exempt-you-from-rationality-s-laws.tex [484])
+(./posts/leave-a-line-of-retreat.tex [485] [486
 
 ]
 Overfull \hbox (0.10364pt too wide) in paragraph at lines 33--33
@@ -1689,8 +1754,8 @@ Overfull \hbox (0.10364pt too wide) in paragraph at lines 33--33
 
  []
 
-[486]) (./afterwords/leave-a-line-of-retreat.tex [487])
-(./posts/crisis-of-faith.tex [488] [489
+[487]) (./afterwords/leave-a-line-of-retreat.tex [488])
+(./posts/crisis-of-faith.tex [489] [490
 
 ]
 Overfull \hbox (40.90923pt too wide) in paragraph at lines 33--33
@@ -1704,54 +1769,54 @@ Overfull \hbox (132.4739pt too wide) in paragraph at lines 33--33
 m/lw/h6/chronophone_motivations).  
  []
 
-[490] [491] [492] [493]) (./afterwords/crisis-of-faith.tex [494] [495])
-(./posts/the-ritual.tex [496] [497
+[491] [492] [493] [494]) (./afterwords/crisis-of-faith.tex [495] [496])
+(./posts/the-ritual.tex [497] [498
 
-] [498]) (./afterwords/the-ritual.tex
-[499]) [500] [501
+] [499]) (./afterwords/the-ritual.tex
+[500]) [501] [502
 
-] (./posts/minds-an-introduction.tex [502
+] (./posts/minds-an-introduction.tex [503
 
-] [503
+] [504
 
-] [504]
-[505] [506]) (./afterwords/minds-an-introduction.tex [507])
-(./posts/the-power-of-intelligence.tex [508] [509
+] [505]
+[506] [507]) (./afterwords/minds-an-introduction.tex [508])
+(./posts/the-power-of-intelligence.tex [509] [510
 
-] [510])
-(./afterwords/the-power-of-intelligence.tex [511]) (./posts/an-alien-god.tex
-[512] [513
+] [511])
+(./afterwords/the-power-of-intelligence.tex [512]) (./posts/an-alien-god.tex
+[513] [514
 
-] [514] [515] [516]) (./afterwords/an-alien-god.tex [517])
-(./posts/the-wonder-of-evolution.tex [518] [519
+] [515] [516] [517]) (./afterwords/an-alien-god.tex [518])
+(./posts/the-wonder-of-evolution.tex [519] [520
 
-] [520])
-(./afterwords/the-wonder-of-evolution.tex [521])
-(./posts/evolutions-are-stupid-but-work-anyway.tex [522]
+] [521])
+(./afterwords/the-wonder-of-evolution.tex [522])
+(./posts/evolutions-are-stupid-but-work-anyway.tex [523]
 Underfull \hbox (badness 2027) in paragraph at lines 15--15
 \T1/ppl/m/n/8 (+20) takes to spread, if it spreads. The arith- 
  []
 
-[523
+[524
 
-] [524]) (./afterwords/evolutions-are-stupid-but-work-anyway.tex [525])
-(./posts/no-evolutions-for-corporations-or-nanodevices.tex [526] [527
+] [525]) (./afterwords/evolutions-are-stupid-but-work-anyway.tex [526])
+(./posts/no-evolutions-for-corporations-or-nanodevices.tex [527] [528
 
-] [528]
-[529]) (./afterwords/no-evolutions-for-corporations-or-nanodevices.tex [530])
-(./posts/evolving-to-extinction.tex [531] [532
+] [529]
+[530]) (./afterwords/no-evolutions-for-corporations-or-nanodevices.tex [531])
+(./posts/evolving-to-extinction.tex [532] [533
 
-] [533] [534])
-(./afterwords/evolving-to-extinction.tex [535])
-(./posts/the-tragedy-of-group-selectionism.tex [536] [537
+] [534] [535])
+(./afterwords/evolving-to-extinction.tex [536])
+(./posts/the-tragedy-of-group-selectionism.tex [537] [538
 
-] [538] [539])
-(./afterwords/the-tragedy-of-group-selectionism.tex [540])
-(./posts/fake-optimization-criteria.tex [541] [542
+] [539] [540])
+(./afterwords/the-tragedy-of-group-selectionism.tex [541])
+(./posts/fake-optimization-criteria.tex [542] [543
 
 ])
-(./afterwords/fake-optimization-criteria.tex [543])
-(./posts/adaptation-executers-not-fitness-maximizers.tex [544]
+(./afterwords/fake-optimization-criteria.tex [544])
+(./posts/adaptation-executers-not-fitness-maximizers.tex [545]
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 []$[]$\T1/ppl/m/n/10 (+20) "Individual or-gan-isms are best thought of
  []
@@ -1761,16 +1826,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 \T1/ppl/m/n/10 (+20) as adaptation-executers rather than as fitness-
  []
 
-[545
+[546
 
-]) (./afterwords/adaptation-executers-not-fitness-maximizers.tex [546])
-(./posts/evolutionary-psychology.tex [547]
+]) (./afterwords/adaptation-executers-not-fitness-maximizers.tex [547])
+(./posts/evolutionary-psychology.tex [548]
 Underfull \hbox (badness 1325) in paragraph at lines 13--13
 []$[]$\T1/ppl/m/n/10 (+20) Individual or-gan-isms are best thought of as adapta
 tion-
  []
 
-[548
+[549
 
 ]
 Underfull \hbox (badness 1028) in paragraph at lines 27--27
@@ -1778,27 +1843,27 @@ Underfull \hbox (badness 1028) in paragraph at lines 27--27
  wings
  []
 
-[549]) (./afterwords/evolutionary-psychology.tex [550])
-(./posts/an-especially-elegant-evpsych-experiment.tex [551] [552
+[550]) (./afterwords/evolutionary-psychology.tex [551])
+(./posts/an-especially-elegant-evpsych-experiment.tex [552] [553
 
-] [553])
-(./afterwords/an-especially-elegant-evpsych-experiment.tex [554])
-(./posts/superstimuli-and-the-collapse-of-western-civilization.tex [555]
-[556
+] [554])
+(./afterwords/an-especially-elegant-evpsych-experiment.tex [555])
+(./posts/superstimuli-and-the-collapse-of-western-civilization.tex [556]
+[557
 
-] [557])
+] [558])
 (./afterwords/superstimuli-and-the-collapse-of-western-civilization.tex
-[558]) (./posts/thou-art-godshatter.tex [559] [560
+[559]) (./posts/thou-art-godshatter.tex [560] [561
 
-] [561] [562])
-(./afterwords/thou-art-godshatter.tex [563]) [564]
-(./posts/belief-in-intelligence.tex [565
+] [562] [563])
+(./afterwords/thou-art-godshatter.tex [564]) [565]
+(./posts/belief-in-intelligence.tex [566
 
-] [566
+] [567
 
-] [567])
-(./afterwords/belief-in-intelligence.tex [568])
-(./posts/humans-in-funny-suits.tex [569]
+] [568])
+(./afterwords/belief-in-intelligence.tex [569])
+(./posts/humans-in-funny-suits.tex [570]
 Overfull \hbox (3.24039pt too wide) in paragraph at lines 9--9
 []$[]$\T1/ppl/m/n/10 (-20) What could pos-si-bly ex-plain this fas-ci-nat-ing p
 he-nomenon?  Con-
@@ -1810,65 +1875,65 @@ Underfull \hbox (badness 2293) in paragraph at lines 17--17
 y two
  []
 
-[570
+[571
 
-] [571] [572]) (./afterwords/humans-in-funny-suits.tex [573])
-(./posts/optimization-and-the-intelligence-explosion.tex [574] [575
+] [572] [573]) (./afterwords/humans-in-funny-suits.tex [574])
+(./posts/optimization-and-the-intelligence-explosion.tex [575] [576
 
-] [576]
-[577]
+] [577]
+[578]
 Overfull \hbox (0.17984pt too wide) in paragraph at lines 69--69
 \T1/ppl/m/n/8 (+5) optimization power'' on the hominid line nor a ``linear 
  []
 
-[578]) (./afterwords/optimization-and-the-intelligence-explosion.tex [579])
-(./posts/ghosts-in-the-machine.tex [580] [581
+[579]) (./afterwords/optimization-and-the-intelligence-explosion.tex [580])
+(./posts/ghosts-in-the-machine.tex [581] [582
 
-] [582])
-(./afterwords/ghosts-in-the-machine.tex [583]) (./posts/artificial-addition.tex
-[584] [585
+] [583])
+(./afterwords/ghosts-in-the-machine.tex [584]) (./posts/artificial-addition.tex
+[585] [586
 
-] [586] [587]) (./afterwords/artificial-addition.tex [588])
-(./posts/terminal-values-and-instrumental-values.tex [589] [590
+] [587] [588]) (./afterwords/artificial-addition.tex [589])
+(./posts/terminal-values-and-instrumental-values.tex [590] [591
 
-] [591]
+] [592]
 Underfull \hbox (badness 1990) in paragraph at lines 57--57
 []\T1/ppl/m/n/10 (+20) So you say, "TYPE ER-ROR: No con-struc-tor found for Ex-
 
  []
 
-[592] [593] [594]) [595]
-(./afterwords/terminal-values-and-instrumental-values.tex [596])
-(./posts/leaky-generalizations.tex [597] [598
+[593] [594] [595]) [596]
+(./afterwords/terminal-values-and-instrumental-values.tex [597])
+(./posts/leaky-generalizations.tex [598] [599
 
-] [599])
-(./afterwords/leaky-generalizations.tex [600])
-(./posts/the-hidden-complexity-of-wishes.tex [601] [602
+] [600])
+(./afterwords/leaky-generalizations.tex [601])
+(./posts/the-hidden-complexity-of-wishes.tex [602] [603
 
-] [603] [604] [605])
-(./afterwords/the-hidden-complexity-of-wishes.tex [606])
-(./posts/anthropomorphic-optimism.tex [607] [608
+] [604] [605] [606])
+(./afterwords/the-hidden-complexity-of-wishes.tex [607])
+(./posts/anthropomorphic-optimism.tex [608] [609
 
-] [609] [610])
-(./afterwords/anthropomorphic-optimism.tex) (./posts/lost-purposes.tex [611]
-[612
+] [610] [611])
+(./afterwords/anthropomorphic-optimism.tex) (./posts/lost-purposes.tex [612]
+[613
 
-] [613] [614] [615]) (./afterwords/lost-purposes.tex [616]) [617]
-(./posts/the-parable-of-the-dagger.tex [618
+] [614] [615] [616]) (./afterwords/lost-purposes.tex [617]) [618]
+(./posts/the-parable-of-the-dagger.tex [619
 
-] [619
-
-])
-(./afterwords/the-parable-of-the-dagger.tex [620])
-(./posts/the-parable-of-hemlock.tex [621] [622
-
-] [623])
-(./afterwords/the-parable-of-hemlock.tex [624])
-(./posts/words-as-hidden-inferences.tex [625] [626
+] [620
 
 ])
-(./afterwords/words-as-hidden-inferences.tex [627])
-(./posts/extensions-and-intensions.tex [628] [629
+(./afterwords/the-parable-of-the-dagger.tex [621])
+(./posts/the-parable-of-hemlock.tex [622] [623
+
+] [624])
+(./afterwords/the-parable-of-hemlock.tex [625])
+(./posts/words-as-hidden-inferences.tex [626] [627
+
+])
+(./afterwords/words-as-hidden-inferences.tex [628])
+(./posts/extensions-and-intensions.tex [629] [630
 
 ]
 Underfull \hbox (badness 1092) in paragraph at lines 25--25
@@ -1882,17 +1947,17 @@ Underfull \hbox (badness 1184) in paragraph at lines 25--25
 
  []
 
-[630]) (./afterwords/extensions-and-intensions.tex [631])
-(./posts/similarity-clusters.tex [632]
+[631]) (./afterwords/extensions-and-intensions.tex [632])
+(./posts/similarity-clusters.tex [633]
 Overfull \hbox (0.51599pt too wide) in paragraph at lines 17--17
 \T1/ppl/m/n/8 (+20) a ``similarity cluster'' is ``the group of things that have
  
  []
 
-[633
+[634
 
 ]) (./afterwords/similarity-clusters.tex)
-(./posts/typicality-and-asymmetrical-similarity.tex [634] [635
+(./posts/typicality-and-asymmetrical-similarity.tex [635] [636
 
 ]
 Underfull \hbox (badness 3713) in paragraph at lines 19--19
@@ -1906,14 +1971,14 @@ Underfull \hbox (badness 4072) in paragraph at lines 19--19
  a
  []
 
-) (./afterwords/typicality-and-asymmetrical-similarity.tex [636])
-(./posts/the-cluster-structure-of-thingspace.tex [637]
+) (./afterwords/typicality-and-asymmetrical-similarity.tex [637])
+(./posts/the-cluster-structure-of-thingspace.tex [638]
 Underfull \hbox (badness 3168) in paragraph at lines 11--11
 []$[]$\T1/ppl/m/n/10 (+20) A robin's DNA is a highly mul-ti-di-men-sional vari-
 able,
  []
 
-[638
+[639
 
 ]
 Overfull \hbox (0.48013pt too wide) in paragraph at lines 21--21
@@ -1927,30 +1992,30 @@ Overfull \hbox (0.2895pt too wide) in paragraph at lines 23--23
 n of ``mother'' as 
  []
 
-[639]) (./afterwords/the-cluster-structure-of-thingspace.tex [640]
+[640]) (./afterwords/the-cluster-structure-of-thingspace.tex [641]
 Overfull \hbox (0.19786pt too wide) in paragraph at lines 14--15
 \T1/ppl/m/n/10 (-20) stating the same principle, said that it concerned ``the p
 erceived world,''
  []
 
-) (./posts/disguised-queries.tex [641] [642
+) (./posts/disguised-queries.tex [642] [643
 
-] [643])
-(./afterwords/disguised-queries.tex [644]) (./posts/neural-categories.tex
-[645]
+] [644])
+(./afterwords/disguised-queries.tex [645]) (./posts/neural-categories.tex
+[646]
 Underfull \hbox (badness 1014) in paragraph at lines 15--15
 []$[]$\T1/ppl/m/n/10 (+20) Thus, if you of-ten saw things that were both blue a
 nd
  []
 
-[646
+[647
 
-] [647] [648]) (./afterwords/neural-categories.tex [649])
-(./posts/how-an-algorithm-feels-from-inside.tex [650] [651
+] [648] [649]) (./afterwords/neural-categories.tex [650])
+(./posts/how-an-algorithm-feels-from-inside.tex [651] [652
 
-] [652])
-(./afterwords/how-an-algorithm-feels-from-inside.tex [653])
-(./posts/disputing-definitions.tex [654] [655
+] [653])
+(./afterwords/how-an-algorithm-feels-from-inside.tex [654])
+(./posts/disputing-definitions.tex [655] [656
 
 ]
 Underfull \hbox (badness 2662) in paragraph at lines 28--29
@@ -1962,44 +2027,44 @@ Underfull \hbox (badness 2181) in paragraph at lines 56--57
 []$[]$\T1/ppl/m/n/10 (+20) Albert:  "Hah!  Def-i-ni-tion 2c in Merriam-
  []
 
-[656]
+[657]
 Underfull \hbox (badness 1917) in paragraph at lines 116--117
 []\T1/ppl/m/n/10 (+20) Barry:  "It makes an al-ber-zle but not a bar-gu-
  []
 
-[657]) (./afterwords/disputing-definitions.tex [658])
-(./posts/feel-the-meaning.tex [659]
+[658]) (./afterwords/disputing-definitions.tex [659])
+(./posts/feel-the-meaning.tex [660]
 Overfull \hbox (0.44954pt too wide) in paragraph at lines 19--19
 []$[]$\T1/ppl/m/sc/8 (+13) paragraph\T1/ppl/m/n/8 (+13) . Extends the tiger to 
 the word ``tiger'': 
  []
 
-[660
+[661
 
-] [661]
+] [662]
 Overfull \hbox (38.81844pt too wide) in paragraph at lines 52--53
 []\T1/ppl/m/n/10 (-20) myBrain.FindConcept("sound") == con-cept_AuditoryExperie
 nce
  []
 
-) (./afterwords/feel-the-meaning.tex [662])
-(./posts/the-argument-from-common-usage.tex [663]
+) (./afterwords/feel-the-meaning.tex [663])
+(./posts/the-argument-from-common-usage.tex [664]
 Overfull \hbox (0.24486pt too wide) in paragraph at lines 11--11
 \T1/ppl/m/n/8 (+13) same be-lief, call-ing it ``an al-most uni-ver-sal be-lief'
 ' that 
  []
 
-[664
+[665
 
-] [665] [666]) (./afterwords/the-argument-from-common-usage.tex)
-(./posts/empty-labels.tex [667] [668
+] [666] [667]) (./afterwords/the-argument-from-common-usage.tex)
+(./posts/empty-labels.tex [668] [669
 
-]) (./afterwords/empty-labels.tex [669])
-(./posts/taboo-your-words.tex [670] [671
+]) (./afterwords/empty-labels.tex [670])
+(./posts/taboo-your-words.tex [671] [672
 
-] [672])
-(./afterwords/taboo-your-words.tex [673])
-(./posts/replace-the-symbol-with-the-substance.tex [674] [675
+] [673])
+(./afterwords/taboo-your-words.tex [674])
+(./posts/replace-the-symbol-with-the-substance.tex [675] [676
 
 ]
 Underfull \hbox (badness 1466) in paragraph at lines 38--38
@@ -2007,13 +2072,13 @@ Underfull \hbox (badness 1466) in paragraph at lines 38--38
 cat-e-go-riza-
  []
 
-[676]) [677] (./afterwords/replace-the-symbol-with-the-substance.tex)
-(./posts/fallacies-of-compression.tex [678]
+[677]) [678] (./afterwords/replace-the-symbol-with-the-substance.tex)
+(./posts/fallacies-of-compression.tex [679]
 Overfull \hbox (0.2282pt too wide) in paragraph at lines 13--13
 \T1/ppl/m/n/8 (+20) sound is what sets ``in move-ment a sin-gle mass of air'' 
  []
 
-[679
+[680
 
 ]
 Underfull \hbox (badness 1092) in paragraph at lines 25--25
@@ -2021,17 +2086,17 @@ Underfull \hbox (badness 1092) in paragraph at lines 25--25
 , like
  []
 
-[680]) (./afterwords/fallacies-of-compression.tex [681])
-(./posts/categorizing-has-consequences.tex [682]
+[681]) (./afterwords/fallacies-of-compression.tex [682])
+(./posts/categorizing-has-consequences.tex [683]
 Underfull \hbox (badness 1281) in paragraph at lines 3--3
 []$[]$\T1/ppl/m/n/10 (+20) Among the many ge-netic vari-a-tions and mu-ta-tions
  you
  []
 
-[683
+[684
 
-]) (./afterwords/categorizing-has-consequences.tex [684])
-(./posts/sneaking-in-connotations.tex [685] [686
+]) (./afterwords/categorizing-has-consequences.tex [685])
+(./posts/sneaking-in-connotations.tex [686] [687
 
 ]
 Underfull \hbox (badness 1270) in paragraph at lines 31--31
@@ -2039,34 +2104,34 @@ Underfull \hbox (badness 1270) in paragraph at lines 31--31
 d
  []
 
-[687]) (./afterwords/sneaking-in-connotations.tex [688])
-(./posts/arguing-by-definition.tex [689] [690
+[688]) (./afterwords/sneaking-in-connotations.tex [689])
+(./posts/arguing-by-definition.tex [690] [691
 
 ]
 Overfull \hbox (0.40886pt too wide) in paragraph at lines 35--35
 \T1/ppl/m/n/8 (+20) methods, or its record of violence, are ``on a par'' with 
  []
 
-[691]) (./afterwords/arguing-by-definition.tex [692])
-(./posts/where-to-draw-the-boundary.tex [693] [694
+[692]) (./afterwords/arguing-by-definition.tex [693])
+(./posts/where-to-draw-the-boundary.tex [694] [695
 
-] [695])
-(./afterwords/where-to-draw-the-boundary.tex [696])
-(./posts/entropy-and-short-codes.tex [697] [698
+] [696])
+(./afterwords/where-to-draw-the-boundary.tex [697])
+(./posts/entropy-and-short-codes.tex [698] [699
 
-] [699])
-(./afterwords/entropy-and-short-codes.tex [700])
-(./posts/mutual-information-and-density-in-thingspace.tex [701]
+] [700])
+(./afterwords/entropy-and-short-codes.tex [701])
+(./posts/mutual-information-and-density-in-thingspace.tex [702]
 Underfull \hbox (badness 3168) in paragraph at lines 23--23
 []$[]$\T1/ppl/m/n/10 (+20) What about when prob-a-bil-ity mass is not evenly di
 s-
  []
 
-[702
+[703
 
-] [703] [704] [705])
-(./afterwords/mutual-information-and-density-in-thingspace.tex [706])
-(./posts/superexponential-conceptspace-and-simple-words.tex [707]
+] [704] [705] [706])
+(./afterwords/mutual-information-and-density-in-thingspace.tex [707])
+(./posts/superexponential-conceptspace-and-simple-words.tex [708]
 Underfull \hbox (badness 1275) in paragraph at lines 20--21
 []\T1/ppl/m/n/10 (+20) +   Sky: Sunny;  AirTemp: Warm;  Hu-mid-ity:
  []
@@ -2077,31 +2142,31 @@ Overfull \hbox (3.30391pt too wide) in paragraph at lines 33--33
 rTemp=Warm
  []
 
-[708
+[709
 
-] [709]
+] [710]
 Underfull \hbox (badness 1009) in paragraph at lines 71--71
 []$[]$\T1/ppl/m/n/10 (+20) Let's say we add the Wa-ter: {Warm, Cold} at-tribute
  to
  []
 
-[710] [711]) (./afterwords/superexponential-conceptspace-and-simple-words.tex
-[712]) (./posts/conditional-independence-and-naive-bayes.tex [713] [714
+[711] [712]) (./afterwords/superexponential-conceptspace-and-simple-words.tex
+[713]) (./posts/conditional-independence-and-naive-bayes.tex [714] [715
 
 ]
-[715] [716]
+[716] [717]
 Underfull \hbox (badness 6380) in paragraph at lines 118--119
 []\T1/ppl/m/n/10 (+20) p(u|v,w,x,y,z) = p(u|z) p(v|u,w,x,y,z) = p(v|z)
  []
 
-[717]) (./afterwords/conditional-independence-and-naive-bayes.tex [718])
-(./posts/words-as-mental-paintbrush-handles.tex [719]
+[718]) (./afterwords/conditional-independence-and-naive-bayes.tex [719])
+(./posts/words-as-mental-paintbrush-handles.tex [720]
 Underfull \hbox (badness 1303) in paragraph at lines 11--11
 []$[]$\T1/ppl/m/n/10 (+20) When the phrase "tri-an-gu-lar light-bulb" first cro
 ssed my
  []
 
-[720
+[721
 
 ]
 Underfull \hbox (badness 2119) in paragraph at lines 33--33
@@ -2109,12 +2174,12 @@ Underfull \hbox (badness 2119) in paragraph at lines 33--33
 nt-
  []
 
-[721]) (./afterwords/words-as-mental-paintbrush-handles.tex)
-(./posts/variable-question-fallacies.tex [722] [723
+[722]) (./afterwords/words-as-mental-paintbrush-handles.tex)
+(./posts/variable-question-fallacies.tex [723] [724
 
 ])
-(./afterwords/variable-question-fallacies.tex [724])
-(./posts/37-ways-that-words-can-be-wrong.tex [725]
+(./afterwords/variable-question-fallacies.tex [725])
+(./posts/37-ways-that-words-can-be-wrong.tex [726]
 Underfull \hbox (badness 1292) in paragraph at lines 25--26
 \T1/ppl/m/it/10 (+20) off all ques-tions that could pos-si-bly de-pend on a cat
 egory-
@@ -2126,33 +2191,33 @@ Underfull \hbox (badness 1067) in paragraph at lines 25--26
 d
  []
 
-[726
+[727
 
-] [727] [728] [729] [730])
-(./afterwords/37-ways-that-words-can-be-wrong.tex [731])
-(./posts/an-intuitive-explanation-of-bayes-s-theorem.tex [732] [733
+] [728] [729] [730] [731])
+(./afterwords/37-ways-that-words-can-be-wrong.tex [732])
+(./posts/an-intuitive-explanation-of-bayes-s-theorem.tex [733] [734
 
-] [734]
-[735] [736] [737]
+] [735]
+[736] [737] [738]
 Overfull \hbox (0.1151pt too wide) in paragraph at lines 107--107
 \T1/ppl/m/n/8 (+6) ``Around half'' is the same 46% to 50%, which the cited 
  []
 
-[738]
+[739]
 Underfull \hbox (badness 6016) in paragraph at lines 139--139
 []$[]$\T1/ppl/m/n/10 (+20) What about P(positive,cancer), P(positive|cancer), a
 nd
  []
 
-[739] [740] [741] [742] [743] [744] [745] [746] [747])
-(./afterwords/an-intuitive-explanation-of-bayes-s-theorem.tex [748]) [749]
-[750
+[740] [741] [742] [743] [744] [745] [746] [747] [748])
+(./afterwords/an-intuitive-explanation-of-bayes-s-theorem.tex [749]) [750]
+[751
 
-] (./posts/the-world-an-introduction.tex [751
+] (./posts/the-world-an-introduction.tex [752
 
-] [752
+] [753
 
-] [753] [754]
+] [754] [755]
 Overfull \hbox (42.31357pt too wide) in paragraph at lines 54--55
 \T1/ppl/m/n/10 (-20) Re-view 83, no. 4 (1974): 435^^U450, http://www.jstor.org/
 stable/2183914. 
@@ -2181,8 +2246,8 @@ Overfull \hbox (147.14233pt too wide) in paragraph at lines 59--60
 rd.edu/archives/fall2008/entries/qm-
  []
 
-) (./afterwords/the-world-an-introduction.tex [755])
-(./posts/universal-fire.tex [756] [757
+) (./afterwords/the-world-an-introduction.tex [756])
+(./posts/universal-fire.tex [757] [758
 
 ]
 Underfull \hbox (badness 2027) in paragraph at lines 19--19
@@ -2190,26 +2255,26 @@ Underfull \hbox (badness 2027) in paragraph at lines 19--19
 
  []
 
-) [758] (./afterwords/universal-fire.tex) (./posts/universal-law.tex [759]
-[760
+) [759] (./afterwords/universal-fire.tex) (./posts/universal-law.tex [760]
+[761
 
-]) (./afterwords/universal-law.tex [761]) (./posts/is-reality-ugly.tex
-[762]
+]) (./afterwords/universal-law.tex [762]) (./posts/is-reality-ugly.tex
+[763]
 Underfull \hbox (badness 1292) in paragraph at lines 15--15
 []$[]$\T1/ppl/m/n/10 (+20) Back when the Greek philoso-phers were de-bat-ing wh
 at
  []
 
-[763
+[764
 
-] [764] [765]) (./afterwords/is-reality-ugly.tex [766])
-(./posts/beautiful-probability.tex [767]
+] [765] [766]) (./afterwords/is-reality-ugly.tex [767])
+(./posts/beautiful-probability.tex [768]
 Underfull \hbox (badness 1859) in paragraph at lines 3--3
 []$[]$\T1/ppl/m/n/10 (+20) Should we ex-pect ra-tio-nal-ity to be, \T1/ppl/m/it
 /10 (+20) on some level, \T1/ppl/m/n/10 (+20) sim-
  []
 
-[768
+[769
 
 ]
 Underfull \hbox (badness 1019) in paragraph at lines 23--23
@@ -2223,57 +2288,57 @@ Underfull \hbox (badness 2809) in paragraph at lines 23--23
 ng
  []
 
-[769] [770]
+[770] [771]
 Overfull \hbox (0.40279pt too wide) in paragraph at lines 59--59
 \T1/ppl/m/n/8 (+20) say which standard ``better'' refers to. Its clause about 
  []
 
-[771]) (./afterwords/beautiful-probability.tex [772])
-(./posts/outside-the-laboratory.tex [773] [774
+[772]) (./afterwords/beautiful-probability.tex [773])
+(./posts/outside-the-laboratory.tex [774] [775
 
-] [775] [776])
-(./afterwords/outside-the-laboratory.tex [777])
-(./posts/the-second-law-of-thermodynamics-and-engines-of-cognition.tex [778]
-[779
+] [776] [777])
+(./afterwords/outside-the-laboratory.tex [778])
+(./posts/the-second-law-of-thermodynamics-and-engines-of-cognition.tex [779]
+[780
 
-] [780] [781]
+] [781] [782]
 Overfull \hbox (0.52167pt too wide) in paragraph at lines 79--79
 \T1/ppl/m/n/8 (+16) tract. ``Colder'' is true only if tem-per-a-ture is re-de-f
 ined 
  []
 
-[782] [783])
+[783] [784])
 (./afterwords/the-second-law-of-thermodynamics-and-engines-of-cognition.tex
-[784]) (./posts/perpetual-motion-beliefs.tex [785] [786
+[785]) (./posts/perpetual-motion-beliefs.tex [786] [787
 
-] [787])
-(./afterwords/perpetual-motion-beliefs.tex [788])
-(./posts/searching-for-bayes-structure.tex [789] [790
+] [788])
+(./afterwords/perpetual-motion-beliefs.tex [789])
+(./posts/searching-for-bayes-structure.tex [790] [791
 
-] [791])
-(./afterwords/searching-for-bayes-structure.tex [792]) [793]
-(./posts/dissolving-the-question.tex [794
+] [792])
+(./afterwords/searching-for-bayes-structure.tex [793]) [794]
+(./posts/dissolving-the-question.tex [795
 
-] [795
+] [796
 
-] [796] [797])
-(./afterwords/dissolving-the-question.tex [798]) (./posts/wrong-questions.tex
-[799] [800
+] [797] [798])
+(./afterwords/dissolving-the-question.tex [799]) (./posts/wrong-questions.tex
+[800] [801
 
-]) (./afterwords/wrong-questions.tex [801])
-(./posts/righting-a-wrong-question.tex [802] [803
+]) (./afterwords/wrong-questions.tex [802])
+(./posts/righting-a-wrong-question.tex [803] [804
 
-] [804])
-(./afterwords/righting-a-wrong-question.tex [805])
-(./posts/mind-projection-fallacy.tex [806] [807
+] [805])
+(./afterwords/righting-a-wrong-question.tex [806])
+(./posts/mind-projection-fallacy.tex [807] [808
 
 ])
-(./afterwords/mind-projection-fallacy.tex [808])
-(./posts/probability-is-in-the-mind.tex [809] [810
+(./afterwords/mind-projection-fallacy.tex [809])
+(./posts/probability-is-in-the-mind.tex [810] [811
 
-] [811] [812])
-(./afterwords/probability-is-in-the-mind.tex [813])
-(./posts/the-quotation-is-not-the-referent.tex [814] [815
+] [812] [813])
+(./afterwords/probability-is-in-the-mind.tex [814])
+(./posts/the-quotation-is-not-the-referent.tex [815] [816
 
 ]
 Overfull \hbox (4.62456pt too wide) in paragraph at lines 28--29
@@ -2281,41 +2346,41 @@ Overfull \hbox (4.62456pt too wide) in paragraph at lines 28--29
 .18
  []
 
-) (./afterwords/the-quotation-is-not-the-referent.tex [816])
-(./posts/qualitatively-confused.tex [817] [818
+) (./afterwords/the-quotation-is-not-the-referent.tex [817])
+(./posts/qualitatively-confused.tex [818] [819
 
-] [819])
-(./afterwords/qualitatively-confused.tex [820]) (./posts/think-like-reality.tex
-[821]
+] [820])
+(./afterwords/qualitatively-confused.tex [821]) (./posts/think-like-reality.tex
+[822]
 Underfull \hbox (badness 1348) in paragraph at lines 5--5
 []$[]$\T1/ppl/m/n/10 (+20) Reality has been around since long be-fore you showe
 d
  []
 
-[822
+[823
 
-]) (./afterwords/think-like-reality.tex [823])
-(./posts/chaotic-inversion.tex [824] [825
+]) (./afterwords/think-like-reality.tex [824])
+(./posts/chaotic-inversion.tex [825] [826
 
-]) (./afterwords/chaotic-inversion.tex) (./posts/reductionism.tex [826] [827
+]) (./afterwords/chaotic-inversion.tex) (./posts/reductionism.tex [827] [828
 
-] [828] [829])
-(./afterwords/reductionism.tex [830])
-(./posts/explaining-vs-explaining-away.tex [831]
+] [829] [830])
+(./afterwords/reductionism.tex [831])
+(./posts/explaining-vs-explaining-away.tex [832]
 Underfull \hbox (badness 1540) in paragraph at lines 31--31
 []$[]$\T1/ppl/m/n/10 (+20) The air has been emp-tied of its haunts, and the min
 e
  []
 
-[832
+[833
 
-] [833]) (./afterwords/explaining-vs-explaining-away.tex [834])
-(./posts/fake-reductionism.tex [835] [836
+] [834]) (./afterwords/explaining-vs-explaining-away.tex [835])
+(./posts/fake-reductionism.tex [836] [837
 
-]) (./afterwords/fake-reductionism.tex [837]) (./posts/savanna-poets.tex [838] 
-[839
+]) (./afterwords/fake-reductionism.tex [838]) (./posts/savanna-poets.tex [839] 
+[840
 
-] [840]
+] [841]
 Underfull \hbox (badness 2269) in paragraph at lines 57--57
 \T1/ppl/m/n/10 (+20) strangeness, we should re-spect it enough to tell its stor
 y
@@ -2327,17 +2392,17 @@ Overfull \hbox (0.1036pt too wide) in paragraph at lines 57--57
 
  []
 
-[841]) (./afterwords/savanna-poets.tex [842]) [843]
-(./posts/joy-in-the-merely-real.tex [844
+[842]) (./afterwords/savanna-poets.tex [843]) [844]
+(./posts/joy-in-the-merely-real.tex [845
 
-] [845
+] [846
 
 ])
 (./afterwords/joy-in-the-merely-real.tex) (./posts/joy-in-discovery.tex
-[846] [847
+[847] [848
 
-] [848]) (./afterwords/joy-in-discovery.tex [849])
-(./posts/bind-yourself-to-reality.tex [850] [851
+] [849]) (./afterwords/joy-in-discovery.tex [850])
+(./posts/bind-yourself-to-reality.tex [851] [852
 
 ]
 Underfull \hbox (badness 2150) in paragraph at lines 31--31
@@ -2345,92 +2410,92 @@ Underfull \hbox (badness 2150) in paragraph at lines 31--31
  real
  []
 
-) (./afterwords/bind-yourself-to-reality.tex [852])
-(./posts/if-you-demand-magic-magic-won-t-help.tex [853] [854
+) (./afterwords/bind-yourself-to-reality.tex [853])
+(./posts/if-you-demand-magic-magic-won-t-help.tex [854] [855
 
-] [855])
-(./afterwords/if-you-demand-magic-magic-won-t-help.tex [856])
-(./posts/mundane-magic.tex [857] [858
+] [856])
+(./afterwords/if-you-demand-magic-magic-won-t-help.tex [857])
+(./posts/mundane-magic.tex [858] [859
 
-] [859]) (./afterwords/mundane-magic.tex)
-(./posts/the-beauty-of-settled-science.tex [860] [861
-
-])
-(./afterwords/the-beauty-of-settled-science.tex [862])
-(./posts/amazing-breakthrough-day-april-1st.tex [863] [864
+] [860]) (./afterwords/mundane-magic.tex)
+(./posts/the-beauty-of-settled-science.tex [861] [862
 
 ])
-(./afterwords/amazing-breakthrough-day-april-1st.tex [865])
-(./posts/is-humanism-a-religion-substitute.tex [866] [867
+(./afterwords/the-beauty-of-settled-science.tex [863])
+(./posts/amazing-breakthrough-day-april-1st.tex [864] [865
 
-] [868])
+])
+(./afterwords/amazing-breakthrough-day-april-1st.tex [866])
+(./posts/is-humanism-a-religion-substitute.tex [867] [868
+
+] [869])
 (./afterwords/is-humanism-a-religion-substitute.tex) (./posts/scarcity.tex
-[869] [870
+[870] [871
 
-] [871]) (./afterwords/scarcity.tex [872])
-(./posts/the-sacred-mundane.tex [873] [874
+] [872]) (./afterwords/scarcity.tex [873])
+(./posts/the-sacred-mundane.tex [874] [875
 
-] [875])
-(./afterwords/the-sacred-mundane.tex [876])
-(./posts/to-spread-science-keep-it-secret.tex [877] [878
+] [876])
+(./afterwords/the-sacred-mundane.tex [877])
+(./posts/to-spread-science-keep-it-secret.tex [878] [879
 
-] [879])
-(./afterwords/to-spread-science-keep-it-secret.tex [880])
-(./posts/initiation-ceremony.tex [881] [882
+] [880])
+(./afterwords/to-spread-science-keep-it-secret.tex [881])
+(./posts/initiation-ceremony.tex [882] [883
 
-] [883])
-(./afterwords/initiation-ceremony.tex [884]) [885] (./posts/hand-vs-fingers.tex
-[886
+] [884])
+(./afterwords/initiation-ceremony.tex [885]) [886] (./posts/hand-vs-fingers.tex
+[887
 
-] [887
+] [888
 
-] [888]) (./afterwords/hand-vs-fingers.tex [889])
-(./posts/angry-atoms.tex [890] [891
+] [889]) (./afterwords/hand-vs-fingers.tex [890])
+(./posts/angry-atoms.tex [891] [892
 
-] [892]
+] [893]
 Overfull \hbox (0.28117pt too wide) in paragraph at lines 59--59
 \T1/ppl/m/n/8 (+11) hav-ior'' an ``easy prob-lem'', with ``no ob-vi-ous ob-sta-
 cle 
  []
 
-) (./afterwords/angry-atoms.tex [893]) (./posts/heat-vs-motion.tex [894]
+) (./afterwords/angry-atoms.tex [894]) (./posts/heat-vs-motion.tex [895]
 Underfull \hbox (badness 1931) in paragraph at lines 19--19
 \T1/ppl/m/n/10 (+20) a-rately^^Vthat the caloric the-ory is cor-rect^^Vbut that
  among
  []
 
-[895
+[896
 
-] [896]
+] [897]
 Overfull \hbox (0.3543pt too wide) in paragraph at lines 47--47
 \T1/ppl/m/n/8 (+13) Putnam's account ``water'' named H2O before anyone 
  []
 
-[897]) (./afterwords/heat-vs-motion.tex [898])
-(./posts/brain-breakthrough-it-s-made-of-neurons.tex [899] [900
+[898]) (./afterwords/heat-vs-motion.tex [899])
+(./posts/brain-breakthrough-it-s-made-of-neurons.tex [900] [901
 
 ])
-(./afterwords/brain-breakthrough-it-s-made-of-neurons.tex [901])
-(./posts/when-anthropomorphism-became-stupid.tex [902] [903
+(./afterwords/brain-breakthrough-it-s-made-of-neurons.tex [902])
+(./posts/when-anthropomorphism-became-stupid.tex [903] [904
 
-] [904])
-(./afterwords/when-anthropomorphism-became-stupid.tex [905])
-(./posts/a-priori.tex [906] [907
+] [905])
+(./afterwords/when-anthropomorphism-became-stupid.tex [906])
+(./posts/a-priori.tex [907] [908
 
-] [908]) (./afterwords/a-priori.tex [909])
-(./posts/reductive-reference.tex [910] [911
+] [909]) (./afterwords/a-priori.tex [910])
+(./posts/reductive-reference.tex [911] [912
 
-] [912] [913])
-(./afterwords/reductive-reference.tex [914]) (./posts/zombies-zombies.tex
-[915] [916
+] [913] [914])
+(./afterwords/reductive-reference.tex [915]) (./posts/zombies-zombies.tex
+[916] [917
 
-] [917] [918] [919] [920]
+] [918] [919] [920] [921]
 Underfull \hbox (badness 1205) in paragraph at lines 91--91
 []$[]$\T1/ppl/m/n/10 (+20) As the most formidable ad-vo-cate of zombie-ism, Dav
 id
  []
 
-[921] [922] [923] [924]
+[922] [923] [924] [925]
 Underfull \hbox (badness 1810) in paragraph at lines 179--179
 \T1/ppl/m/n/10 (+20) falsification-fear, I'll point out that if epiphe-nom-e-na
 l-ism is
@@ -2442,7 +2507,7 @@ Underfull \hbox (badness 1688) in paragraph at lines 181--181
 ers I
  []
 
-[925] [926] [927] [928]
+[926] [927] [928] [929]
 Underfull \hbox (badness 3428) in paragraph at lines 251--252
 []\T1/ppl/m/n/10 (+20) Epiphenomenal prop-erty du-al-ism: + Mat-ter has ad-
  []
@@ -2452,22 +2517,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 251--252
 \T1/ppl/m/n/10 (+20) di-tional consciousness-properties which are not yet
  []
 
-[929]) (./afterwords/zombies-zombies.tex [930] [931])
-(./posts/zombie-responses.tex [932] [933
+[930]) (./afterwords/zombies-zombies.tex [931] [932])
+(./posts/zombie-responses.tex [933] [934
 
-] [934] [935] [936] [937])
-(./afterwords/zombie-responses.tex [938])
-(./posts/the-generalized-anti-zombie-principle.tex [939] [940
+] [935] [936] [937] [938])
+(./afterwords/zombie-responses.tex [939])
+(./posts/the-generalized-anti-zombie-principle.tex [940] [941
 
-] [941]
+] [942]
 Underfull \hbox (badness 2065) in paragraph at lines 65--65
 []$[]$\T1/ppl/m/n/10 (+20) This doesn't nec-es-sar-ily de-stroy the Anti-Zombie
  Ar-gu-
  []
 
-[942] [943] [944] [945])
-(./afterwords/the-generalized-anti-zombie-principle.tex [946])
-(./posts/gazp-vs-glut.tex [947] [948
+[943] [944] [945] [946])
+(./afterwords/the-generalized-anti-zombie-principle.tex [947])
+(./posts/gazp-vs-glut.tex [948] [949
 
 ]
 Overfull \hbox (0.57327pt too wide) in paragraph at lines 29--29
@@ -2475,57 +2540,57 @@ Overfull \hbox (0.57327pt too wide) in paragraph at lines 29--29
  
  []
 
-[949] [950] [951]
+[950] [951] [952]
 Underfull \hbox (badness 1038) in paragraph at lines 83--83
 []$[]$\T1/ppl/m/n/10 (+20) You can see why I in-tro-duced the game of Follow-Th
 e-
  []
 
-[952]
+[953]
 Underfull \hbox (badness 2772) in paragraph at lines 109--109
 \T1/ppl/m/n/10 (+20) Follow-The-Decision-Information, or some-thing along those
 
  []
 
-) (./afterwords/gazp-vs-glut.tex [953])
-(./posts/belief-in-the-implied-invisible.tex [954] [955
+) (./afterwords/gazp-vs-glut.tex [954])
+(./posts/belief-in-the-implied-invisible.tex [955] [956
 
-] [956] [957])
+] [957] [958])
 (./afterwords/belief-in-the-implied-invisible.tex
 Underfull \hbox (badness 1194) in paragraph at lines 6--7
 []\T1/ppl/m/n/10 (+20) The first an-swer is that Oc-cam's ra-zor, in its Bayesi
 an forms,
  []
 
-[958]) (./posts/zombies-the-movie.tex [959] [960
+[959]) (./posts/zombies-the-movie.tex [960] [961
 
-] [961] [962]) [963]
+] [962] [963]) [964]
 (./afterwords/zombies-the-movie.tex) (./posts/excluding-the-supernatural.tex
-[964]
+[965]
 Underfull \hbox (badness 1184) in paragraph at lines 3--3
 \T1/ppl/m/n/10 (+20) hy-poth-e-sis to evo-lu-tion, be-cause cre-ation-ism is \T
 1/ppl/m/it/10 (+20) a pri-ori and
  []
 
-[965
+[966
 
-] [966] [967] [968]) (./afterwords/excluding-the-supernatural.tex [969]
-[970]) (./posts/psychic-powers.tex [971] [972
+] [967] [968] [969]) (./afterwords/excluding-the-supernatural.tex [970]
+[971]) (./posts/psychic-powers.tex [972] [973
 
-]) [973]
-(./afterwords/psychic-powers.tex [974]) [975] (./posts/quantum-explanations.tex
-[976
+]) [974]
+(./afterwords/psychic-powers.tex [975]) [976] (./posts/quantum-explanations.tex
+[977
 
-] [977
+] [978
 
-] [978] [979]) (./afterwords/quantum-explanations.tex [980])
-(./posts/configurations-and-amplitude.tex [981] [982
+] [979] [980]) (./afterwords/quantum-explanations.tex [981])
+(./posts/configurations-and-amplitude.tex [982] [983
 
-] [983] [984] [985]
-[986] [987] [988]) (./afterwords/configurations-and-amplitude.tex [989])
-(./posts/joint-configurations.tex [990] [991
+] [984] [985] [986]
+[987] [988] [989]) (./afterwords/configurations-and-amplitude.tex [990])
+(./posts/joint-configurations.tex [991] [992
 
-] [992]
+] [993]
 Overfull \hbox (25.24232pt too wide) in paragraph at lines 56--56
 []\T1/ppl/m/n/10 (-20) SquaredModulus(C1+C2)$\OMS/zplm/m/n/10 6\OT1/zplm/m/n/10
  =$\T1/ppl/m/n/10 (-20) SquaredModulus(C1)+SquaredModulus(C2)) 
@@ -2544,23 +2609,23 @@ Overfull \hbox (66.94499pt too wide) in paragraph at lines 62--62
 0) 1)2)=(4+1)+(1+1)=7 
  []
 
-[993]) (./afterwords/joint-configurations.tex [994])
-(./posts/distinct-configurations.tex [995] [996
+[994]) (./afterwords/joint-configurations.tex [995])
+(./posts/distinct-configurations.tex [996] [997
 
-] [997] [998] [999])
-(./afterwords/distinct-configurations.tex [1000])
-(./posts/collapse-postulates.tex [1001]
+] [998] [999] [1000])
+(./afterwords/distinct-configurations.tex [1001])
+(./posts/collapse-postulates.tex [1002]
 Overfull \hbox (10.28566pt too wide) in paragraph at lines 3--3
 []$[]$\T1/ppl/m/n/10 (-20) Macroscopic de-co-her-ence^^Valso known as ^^Pmany-w
 orlds^^Q[]$[]$^^Vis
  []
 
-[1002
+[1003
 
-] [1003]) [1004] (./afterwords/collapse-postulates.tex [1005])
-(./posts/decoherence-is-simple.tex [1006] [1007
+] [1004]) [1005] (./afterwords/collapse-postulates.tex [1006])
+(./posts/decoherence-is-simple.tex [1007] [1008
 
-] [1008] [1009]
+] [1009] [1010]
 Underfull \hbox (badness 3601) in paragraph at lines 95--95
 []$[]$\T1/ppl/m/n/10 (+20) On the other hand^^Vreturning to the case of the lot
 -
@@ -2572,19 +2637,19 @@ Underfull \hbox (badness 1158) in paragraph at lines 95--95
 t
  []
 
-[1010] [1011]
+[1011] [1012]
 Underfull \hbox (badness 1067) in paragraph at lines 115--115
 []$[]$\T1/ppl/m/n/10 (+20) Why doesn't the prior prob-a-bil-ity of a pro-gram, 
 in the
  []
 
-[1012] [1013]) (./afterwords/decoherence-is-simple.tex [1014])
-(./posts/decoherence-is-falsifiable-and-testable.tex [1015] [1016
+[1013] [1014]) (./afterwords/decoherence-is-simple.tex [1015])
+(./posts/decoherence-is-falsifiable-and-testable.tex [1016] [1017
 
-] [1017]
-[1018] [1019] [1020] [1021])
-(./afterwords/decoherence-is-falsifiable-and-testable.tex [1022])
-(./posts/privileging-the-hypothesis.tex [1023] [1024
+] [1018]
+[1019] [1020] [1021] [1022])
+(./afterwords/decoherence-is-falsifiable-and-testable.tex [1023])
+(./posts/privileging-the-hypothesis.tex [1024] [1025
 
 ]
 Underfull \hbox (badness 2809) in paragraph at lines 31--31
@@ -2598,29 +2663,29 @@ Underfull \hbox (badness 1708) in paragraph at lines 31--31
  and how
  []
 
-[1025]) (./afterwords/privileging-the-hypothesis.tex [1026])
-(./posts/living-in-many-worlds.tex [1027] [1028
+[1026]) (./afterwords/privileging-the-hypothesis.tex [1027])
+(./posts/living-in-many-worlds.tex [1028] [1029
 
-] [1029] [1030])
-(./afterwords/living-in-many-worlds.tex [1031])
-(./posts/quantum-non-realism.tex [1032] [1033
+] [1030] [1031])
+(./afterwords/living-in-many-worlds.tex [1032])
+(./posts/quantum-non-realism.tex [1033] [1034
 
-] [1034] [1035] [1036] [1037]
-[1038] [1039]) (./afterwords/quantum-non-realism.tex [1040])
-(./posts/if-many-worlds-had-come-first.tex [1041] [1042
+] [1035] [1036] [1037] [1038]
+[1039] [1040]) (./afterwords/quantum-non-realism.tex [1041])
+(./posts/if-many-worlds-had-come-first.tex [1042] [1043
 
-] [1043] [1044] [1045]
-[1046]) (./afterwords/if-many-worlds-had-come-first.tex [1047])
-(./posts/where-philosophy-meets-science.tex [1048] [1049
+] [1044] [1045] [1046]
+[1047]) (./afterwords/if-many-worlds-had-come-first.tex [1048])
+(./posts/where-philosophy-meets-science.tex [1049] [1050
 
-] [1050]
+] [1051]
 Overfull \hbox (0.86357pt too wide) in paragraph at lines 49--49
 []$[]$\T1/ppl/m/n/10 (-20) Once upon a time, the no-tion of the sci-en-tific me
 thod^^Vupdating
  []
 
-[1051]) (./afterwords/where-philosophy-meets-science.tex [1052])
-(./posts/thou-art-physics.tex [1053] [1054
+[1052]) (./afterwords/where-philosophy-meets-science.tex [1053])
+(./posts/thou-art-physics.tex [1054] [1055
 
 ]
 Overfull \hbox (0.28976pt too wide) in paragraph at lines 37--37
@@ -2628,18 +2693,18 @@ Overfull \hbox (0.28976pt too wide) in paragraph at lines 37--37
 ayer'' of the mind, 
  []
 
-[1055]) (./afterwords/thou-art-physics.tex [1056])
-(./posts/many-worlds-one-best-guess.tex [1057] [1058
+[1056]) (./afterwords/thou-art-physics.tex [1057])
+(./posts/many-worlds-one-best-guess.tex [1058] [1059
 
-] [1059]
+] [1060]
 Underfull \hbox (badness 1609) in paragraph at lines 35--35
 []$[]$\T1/ppl/m/n/10 (+20) Robin Han-son sug-gests that if ex-po-nen-tially tin
 ier-than-
  []
 
-[1060] [1061] [1062] [1063] [1064]) [1065]
-(./afterwords/many-worlds-one-best-guess.tex [1066]) [1067]
-(./posts/the-failures-of-eld-science.tex [1068
+[1061] [1062] [1063] [1064] [1065]) [1066]
+(./afterwords/many-worlds-one-best-guess.tex [1067]) [1068]
+(./posts/the-failures-of-eld-science.tex [1069
 
 ]
 Underfull \hbox (badness 2626) in paragraph at lines 13--13
@@ -2647,60 +2712,60 @@ Underfull \hbox (badness 2626) in paragraph at lines 13--13
 -gling
  []
 
-[1069
+[1070
 
-] [1070] [1071] [1072] [1073] [1074])
-(./afterwords/the-failures-of-eld-science.tex [1075])
-(./posts/the-dilemma-science-or-bayes.tex [1076]
+] [1071] [1072] [1073] [1074] [1075])
+(./afterwords/the-failures-of-eld-science.tex [1076])
+(./posts/the-dilemma-science-or-bayes.tex [1077]
 Underfull \hbox (badness 1412) in paragraph at lines 4--5
 []$[]$\T1/ppl/m/n/10 (+20) "Eli: You are writ-ing a lot about physics re-
  []
 
-[1077
+[1078
 
-] [1078] [1079]) (./afterwords/the-dilemma-science-or-bayes.tex [1080])
-(./posts/science-doesn-t-trust-your-rationality.tex [1081] [1082
+] [1079] [1080]) (./afterwords/the-dilemma-science-or-bayes.tex [1081])
+(./posts/science-doesn-t-trust-your-rationality.tex [1082] [1083
 
-] [1083]
+] [1084]
 Underfull \hbox (badness 1762) in paragraph at lines 45--45
 []$[]$\T1/ppl/m/n/10 (+20) Libertarianism se-cretly re-lies on most in-di-vid-u
 -als be-ing
  []
 
-) (./afterwords/science-doesn-t-trust-your-rationality.tex [1084] [1085])
-(./posts/when-science-can-t-help.tex [1086] [1087
+) (./afterwords/science-doesn-t-trust-your-rationality.tex [1085] [1086])
+(./posts/when-science-can-t-help.tex [1087] [1088
 
-] [1088] [1089])
-(./afterwords/when-science-can-t-help.tex [1090])
-(./posts/science-isn-t-strict-enough.tex [1091] [1092
+] [1089] [1090])
+(./afterwords/when-science-can-t-help.tex [1091])
+(./posts/science-isn-t-strict-enough.tex [1092] [1093
 
-] [1093] [1094])
+] [1094] [1095])
 (./afterwords/science-isn-t-strict-enough.tex)
-(./posts/do-scientists-already-know-this-stuff.tex [1095] [1096
+(./posts/do-scientists-already-know-this-stuff.tex [1096] [1097
 
-] [1097]
-[1098]
+] [1098]
+[1099]
 Underfull \hbox (badness 4036) in paragraph at lines 56--56
 []$[]$\T1/ppl/m/n/10 (+20) Nick Tar-leton sum-ma-rized the re-sult-ing prob-lem
  very
  []
 
-) (./afterwords/do-scientists-already-know-this-stuff.tex [1099])
-(./posts/no-safe-defense-not-even-science.tex [1100] [1101
+) (./afterwords/do-scientists-already-know-this-stuff.tex [1100])
+(./posts/no-safe-defense-not-even-science.tex [1101] [1102
 
-] [1102]
+] [1103]
 Overfull \hbox (0.23643pt too wide) in paragraph at lines 71--71
 \T1/ppl/m/n/8 (+7) the author. ``John Q. Unbeliever'' is a strawman with a 
  []
 
-[1103] [1104]) (./afterwords/no-safe-defense-not-even-science.tex [1105])
-(./posts/changing-the-definition-of-science.tex [1106] [1107
+[1104] [1105]) (./afterwords/no-safe-defense-not-even-science.tex [1106])
+(./posts/changing-the-definition-of-science.tex [1107] [1108
 
 ])
-(./afterwords/changing-the-definition-of-science.tex [1108])
-(./posts/faster-than-science.tex [1109] [1110
+(./afterwords/changing-the-definition-of-science.tex [1109])
+(./posts/faster-than-science.tex [1110] [1111
 
-] [1111]
+] [1112]
 Underfull \hbox (badness 1062) in paragraph at lines 41--41
 \T1/ppl/m/n/10 (+20) thy of test-ing, in-volves much more work^^Vin the Bayesia
 n-
@@ -2712,16 +2777,16 @@ Underfull \hbox (badness 2435) in paragraph at lines 41--41
  merely \T1/ppl/m/n/10 (+20) ob-tain-ing an
  []
 
-[1112]) (./afterwords/faster-than-science.tex [1113])
-(./posts/einstein-s-speed.tex [1114] [1115
+[1113]) (./afterwords/faster-than-science.tex [1114])
+(./posts/einstein-s-speed.tex [1115] [1116
 
-] [1116]
+] [1117]
 Overfull \hbox (0.10329pt too wide) in paragraph at lines 43--43
 \T1/ppl/m/n/8 (+18) terms. In 1919 he called rel-a-tiv-ity a ``principle-theory
 ,'' 
  []
 
-[1117]
+[1118]
 Underfull \hbox (badness 1371) in paragraph at lines 53--53
 []$[]$\T1/ppl/m/n/10 (+20) So from a probability-theoretic stand-point, Ein-ste
 in was
@@ -2733,28 +2798,28 @@ Underfull \hbox (badness 1281) in paragraph at lines 59--59
  is ar-ro-
  []
 
-[1118] [1119]) (./afterwords/einstein-s-speed.tex [1120])
-(./posts/that-alien-message.tex [1121] [1122
+[1119] [1120]) (./afterwords/einstein-s-speed.tex [1121])
+(./posts/that-alien-message.tex [1122] [1123
 
-] [1123] [1124] [1125] [1126]
-[1127]) (./afterwords/that-alien-message.tex [1128])
-(./posts/my-childhood-role-model.tex [1129]
+] [1124] [1125] [1126] [1127]
+[1128]) (./afterwords/that-alien-message.tex [1129])
+(./posts/my-childhood-role-model.tex [1130]
 Underfull \hbox (badness 2359) in paragraph at lines 25--25
 []$[]$\T1/ppl/m/n/10 (+20) On the right side of the scale, you would find Deep
  []
 
-[1130
+[1131
 
-] [1131] [1132]) (./afterwords/my-childhood-role-model.tex [1133])
-(./posts/einstein-s-superpowers.tex [1134] [1135
+] [1132] [1133]) (./afterwords/my-childhood-role-model.tex [1134])
+(./posts/einstein-s-superpowers.tex [1135] [1136
 
-] [1136]
+] [1137]
 Overfull \hbox (0.10027pt too wide) in paragraph at lines 77--77
 \T1/ppl/m/n/8 (+18) had ``fully mastered machine technology'' (Wikipedia, 
  []
 
-[1137]) (./afterwords/einstein-s-superpowers.tex [1138])
-(./posts/class-project.tex [1139] [1140
+[1138]) (./afterwords/einstein-s-superpowers.tex [1139])
+(./posts/class-project.tex [1140] [1141
 
 ]
 Underfull \hbox (badness 1983) in paragraph at lines 39--39
@@ -2767,24 +2832,24 @@ Overfull \hbox (0.11272pt too wide) in paragraph at lines 39--39
 \T1/ppl/m/n/8 (+18) or-der. In Wikipedia's sum-mary of Diehl and Stroebe's 
  []
 
-[1141] [1142]) (./afterwords/class-project.tex [1143])
-(./posts/a-technical-explanation-of-technical-explanation.tex [1144] [1145
+[1142] [1143]) (./afterwords/class-project.tex [1144])
+(./posts/a-technical-explanation-of-technical-explanation.tex [1145] [1146
 
 ]
-[1146] [1147] [1148] [1149] [1150] [1151] [1152] [1153] [1154] [1155] [1156]
-[1157]
+[1147] [1148] [1149] [1150] [1151] [1152] [1153] [1154] [1155] [1156] [1157]
+[1158]
 Underfull \hbox (badness 2096) in paragraph at lines 218--218
 \T1/ppl/m/n/10 (+20) con-cen-trate their prob-a-bil-ity den-sity into pre-cise 
 out-comes,
  []
 
-[1158] [1159] [1160] [1161] [1162] [1163] [1164] [1165] [1166] [1167] [1168]
-[1169] [1170] [1171] [1172]
+[1159] [1160] [1161] [1162] [1163] [1164] [1165] [1166] [1167] [1168] [1169]
+[1170] [1171] [1172] [1173]
 Overfull \hbox (0.10182pt too wide) in paragraph at lines 404--404
 \T1/ppl/m/n/8 (+18) that, considered now, would make you worry that the 
  []
 
-[1173] [1174] [1175]
+[1174] [1175] [1176]
 Overfull \hbox (3.2661pt too wide) in paragraph at lines 456--456
 \T1/ppl/m/n/10 (-20) ation-ism and Evo-lu-tion,^^Q http://www.talkorigins.org/o
 rigins/faqs-
@@ -2802,14 +2867,14 @@ Overfull \hbox (23.46368pt too wide) in paragraph at lines 462--462
 eseq=1. 
  []
 
-) (./afterwords/a-technical-explanation-of-technical-explanation.tex [1176]
-[1177]) [1178] [1179
+) (./afterwords/a-technical-explanation-of-technical-explanation.tex [1177]
+[1178]) [1179] [1180
 
-] (./posts/ends-an-introduction.tex [1180
+] (./posts/ends-an-introduction.tex [1181
 
-] [1181
+] [1182
 
-] [1182]
+] [1183]
 Underfull \hbox (badness 1668) in paragraph at lines 57--57
 []$[]$$[]$\T1/ppl/m/n/10 (+20) Nick Bostrom, ^^PA His-tory of Tran-shu-man-ist 
 Thought,^^Q
@@ -2821,32 +2886,32 @@ Underfull \hbox (badness 1281) in paragraph at lines 57--57
 +20) 14, no. 1 (2005): 1^^U25,
  []
 
-[1183]) (./afterwords/ends-an-introduction.tex [1184])
-(./posts/not-for-the-sake-of-happiness-alone.tex [1185] [1186
+[1184]) (./afterwords/ends-an-introduction.tex [1185])
+(./posts/not-for-the-sake-of-happiness-alone.tex [1186] [1187
 
-] [1187]) [1188]
-(./afterwords/not-for-the-sake-of-happiness-alone.tex [1189])
-(./posts/fake-selfishness.tex [1190]
+] [1188]) [1189]
+(./afterwords/not-for-the-sake-of-happiness-alone.tex [1190])
+(./posts/fake-selfishness.tex [1191]
 Overfull \hbox (0.2607pt too wide) in paragraph at lines 15--15
 \T1/ppl/m/n/8 (+13) ``could not bear to live with him-self'' oth-er-wise. It al
 so 
  []
 
-[1191
+[1192
 
-]) (./afterwords/fake-selfishness.tex) (./posts/fake-morality.tex [1192]
-[1193
+]) (./afterwords/fake-selfishness.tex) (./posts/fake-morality.tex [1193]
+[1194
 
-]) (./afterwords/fake-morality.tex [1194])
-(./posts/fake-utility-functions.tex [1195] [1196
+]) (./afterwords/fake-morality.tex [1195])
+(./posts/fake-utility-functions.tex [1196] [1197
 
-] [1197])
-(./afterwords/fake-utility-functions.tex [1198])
-(./posts/detached-lever-fallacy.tex [1199] [1200
+] [1198])
+(./afterwords/fake-utility-functions.tex [1199])
+(./posts/detached-lever-fallacy.tex [1200] [1201
 
-] [1201] [1202] [1203])
-(./afterwords/detached-lever-fallacy.tex [1204])
-(./posts/dreams-of-ai-design.tex [1205] [1206
+] [1202] [1203] [1204])
+(./afterwords/detached-lever-fallacy.tex [1205])
+(./posts/dreams-of-ai-design.tex [1206] [1207
 
 ]
 Underfull \hbox (badness 2495) in paragraph at lines 27--27
@@ -2867,12 +2932,12 @@ H)P(E|$\OMS/zplm/m/n/10 :$\T1/ppl/m/n/10 (+20) H)$\OMS/zplm/m/n/10 ^^B$\T1/ppl/
 m/n/10 (+20) P(H)P($\OMS/zplm/m/n/10 :$\T1/ppl/m/n/10 (+20) H)[]$[]$ count as
  []
 
-[1207]) (./afterwords/dreams-of-ai-design.tex [1208])
-(./posts/the-design-space-of-minds-in-general.tex [1209] [1210
+[1208]) (./afterwords/dreams-of-ai-design.tex [1209])
+(./posts/the-design-space-of-minds-in-general.tex [1210] [1211
 
 ])
-(./afterwords/the-design-space-of-minds-in-general.tex [1211]) [1212]
-(./posts/where-recursive-justification-hits-bottom.tex [1213
+(./afterwords/the-design-space-of-minds-in-general.tex [1212]) [1213]
+(./posts/where-recursive-justification-hits-bottom.tex [1214
 
 ]
 Underfull \hbox (badness 2173) in paragraph at lines 16--17
@@ -2885,7 +2950,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--27
 h-i-cal
  []
 
-[1214
+[1215
 
 ]
 Underfull \hbox (badness 1122) in paragraph at lines 31--31
@@ -2893,20 +2958,20 @@ Underfull \hbox (badness 1122) in paragraph at lines 31--31
  who
  []
 
-[1215] [1216] [1217]
+[1216] [1217] [1218]
 Underfull \hbox (badness 4872) in paragraph at lines 107--107
 []$[]$\T1/ppl/m/n/10 (+20) And what about trust-ing re-flec-tive co-her-ence in
  gen-
  []
 
-[1218] [1219]
+[1219] [1220]
 Underfull \hbox (badness 2253) in paragraph at lines 139--139
 []$[]$\T1/ppl/m/n/10 (+20) If one of your cur-rent prin-ci-ples does come up wa
 nt-
  []
 
-) (./afterwords/where-recursive-justification-hits-bottom.tex [1220])
-(./posts/my-kind-of-reflection.tex [1221] [1222
+) (./afterwords/where-recursive-justification-hits-bottom.tex [1221])
+(./posts/my-kind-of-reflection.tex [1222] [1223
 
 ]
 Overfull \hbox (0.32935pt too wide) in paragraph at lines 23--23
@@ -2914,22 +2979,22 @@ Overfull \hbox (0.32935pt too wide) in paragraph at lines 23--23
  one 
  []
 
-) [1223] (./afterwords/my-kind-of-reflection.tex [1224])
-(./posts/no-universally-compelling-arguments.tex [1225] [1226
+) [1224] (./afterwords/my-kind-of-reflection.tex [1225])
+(./posts/no-universally-compelling-arguments.tex [1226] [1227
 
-] [1227] [1228])
-(./afterwords/no-universally-compelling-arguments.tex [1229])
-(./posts/created-already-in-motion.tex [1230] [1231
+] [1228] [1229])
+(./afterwords/no-universally-compelling-arguments.tex [1230])
+(./posts/created-already-in-motion.tex [1231] [1232
 
-] [1232])
-(./afterwords/created-already-in-motion.tex [1233])
-(./posts/sorting-pebbles-into-correct-heaps.tex [1234] [1235
+] [1233])
+(./afterwords/created-already-in-motion.tex [1234])
+(./posts/sorting-pebbles-into-correct-heaps.tex [1235] [1236
 
-] [1236])
-(./afterwords/sorting-pebbles-into-correct-heaps.tex [1237])
-(./posts/2-place-and-1-place-words.tex [1238] [1239
+] [1237])
+(./afterwords/sorting-pebbles-into-correct-heaps.tex [1238])
+(./posts/2-place-and-1-place-words.tex [1239] [1240
 
-] [1240]
+] [1241]
 Underfull \hbox (badness 1097) in paragraph at lines 63--63
 []$[]$\T1/ppl/m/n/10 (+20) Then the math-e-mat-i-cal ob-ject spit out by cur-ry
 -ing Sex-i-
@@ -2940,7 +3005,7 @@ Overfull \hbox (0.15575pt too wide) in paragraph at lines 73--73
 \T1/ppl/m/n/8 (+4) ``water'' means H20 on both planets, so Twin Earth has 
  []
 
-[1241]
+[1242]
 Underfull \hbox (badness 1354) in paragraph at lines 85--85
 []$[]$\T1/ppl/m/n/10 (+20) Similarly it takes an ex-tra step for Fred to re-al-
 ize that
@@ -2958,26 +3023,26 @@ Underfull \hbox (badness 1210) in paragraph at lines 85--85
 y
  []
 
-) (./afterwords/2-place-and-1-place-words.tex [1242])
-(./posts/what-would-you-do-without-morality.tex [1243]) [1244
+) (./afterwords/2-place-and-1-place-words.tex [1243])
+(./posts/what-would-you-do-without-morality.tex [1244]) [1245
 
 ]
 (./afterwords/what-would-you-do-without-morality.tex)
-(./posts/changing-your-metaethics.tex [1245] [1246
+(./posts/changing-your-metaethics.tex [1246] [1247
 
-] [1247]
+] [1248]
 Underfull \hbox (badness 1515) in paragraph at lines 41--41
 []$[]$\T1/ppl/m/n/10 (+20) And if you're won-der-ing why I deem this busi-ness 
 of
  []
 
-[1248]) (./afterwords/changing-your-metaethics.tex
+[1249]) (./afterwords/changing-your-metaethics.tex
 Underfull \hbox (badness 1546) in paragraph at lines 4--5
 []\T1/ppl/m/n/10 (+20) The post sep-a-rates moral-ity (``Killing peo-ple is wro
 ng'') from
  []
 
-) (./posts/could-anything-be-right.tex [1249] [1250
+) (./posts/could-anything-be-right.tex [1250] [1251
 
 ]
 Underfull \hbox (badness 1521) in paragraph at lines 33--33
@@ -2985,19 +3050,19 @@ Underfull \hbox (badness 1521) in paragraph at lines 33--33
  their
  []
 
-[1251] [1252]) (./afterwords/could-anything-be-right.tex [1253])
-(./posts/morality-as-fixed-computation.tex [1254]
+[1252] [1253]) (./afterwords/could-anything-be-right.tex [1254])
+(./posts/morality-as-fixed-computation.tex [1255]
 Overfull \hbox (0.10306pt too wide) in paragraph at lines 9--9
 \T1/ppl/m/n/8 (+14) per-son would want (SEP, ``Moral Nat-u-ral-ism,'' sec-tion 
 
  []
 
-[1255
+[1256
 
-] [1256] [1257]) (./afterwords/morality-as-fixed-computation.tex [1258])
-(./posts/magical-categories.tex [1259] [1260
+] [1257] [1258]) (./afterwords/morality-as-fixed-computation.tex [1259])
+(./posts/magical-categories.tex [1260] [1261
 
-] [1261] [1262]
+] [1262] [1263]
 Overfull \hbox (13.10413pt too wide) in paragraph at lines 75--76
 \T1/ppl/m/n/10 (-20) tory_1, Molec-u-lar_Smileyface_1, Cat_4, Molec-u-lar_Smile
 yface_2,
@@ -3013,52 +3078,52 @@ Underfull \hbox (badness 1888) in paragraph at lines 89--90
 \T1/ppl/m/n/10 (+20) Car_1, Frown_5, Frown_6, Cat_3, Galaxy_1, Frown_7,
  []
 
-[1263] [1264]) [1265] (./afterwords/magical-categories.tex)
-(./posts/the-true-prisoner-s-dilemma.tex [1266]
+[1264] [1265]) [1266] (./afterwords/magical-categories.tex)
+(./posts/the-true-prisoner-s-dilemma.tex [1267]
 Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
  []
 
-[1267
+[1268
 
-] [1268]
+] [1269]
 Underfull \hbox (badness 10000) in paragraph at lines 62--65
 
  []
 
-[1269]) (./afterwords/the-true-prisoner-s-dilemma.tex [1270])
-(./posts/sympathetic-minds.tex [1271] [1272
+[1270]) (./afterwords/the-true-prisoner-s-dilemma.tex [1271])
+(./posts/sympathetic-minds.tex [1272] [1273
 
-] [1273] [1274])
-(./afterwords/sympathetic-minds.tex [1275]) (./posts/high-challenge.tex
-[1276] [1277
+] [1274] [1275])
+(./afterwords/sympathetic-minds.tex [1276]) (./posts/high-challenge.tex
+[1277] [1278
 
-] [1278]) (./afterwords/high-challenge.tex [1279])
-(./posts/serious-stories.tex [1280] [1281
+] [1279]) (./afterwords/high-challenge.tex [1280])
+(./posts/serious-stories.tex [1281] [1282
 
-] [1282]
+] [1283]
 Underfull \hbox (badness 2111) in paragraph at lines 59--59
 []$[]$\T1/ppl/m/n/10 (+20) Investigating the life of the priest and proto-ratio
 nalist
  []
 
-[1283] [1284]
+[1284] [1285]
 Underfull \hbox (badness 4217) in paragraph at lines 95--95
 []$[]$\T1/ppl/m/n/10 (+20) Could you delete the hu-man ten-dency to scale plea-
 
  []
 
-[1285]
+[1286]
 Underfull \hbox (badness 6016) in paragraph at lines 145--145
 []\T1/ppl/m/n/10 (+20) Maybe the path of courage just seems like the \T1/ppl/m/
 it/10 (+20) smaller
  []
 
-[1286]) (./afterwords/serious-stories.tex [1287]) (./posts/value-is-fragile.tex
-[1288] [1289
+[1287]) (./afterwords/serious-stories.tex [1288]) (./posts/value-is-fragile.tex
+[1289] [1290
 
-] [1290] [1291] [1292]) (./afterwords/value-is-fragile.tex [1293])
-(./posts/the-gift-we-give-to-tomorrow.tex [1294]
+] [1291] [1292] [1293]) (./afterwords/value-is-fragile.tex [1294])
+(./posts/the-gift-we-give-to-tomorrow.tex [1295]
 Underfull \hbox (badness 3590) in paragraph at lines 13--13
 []$[]$\T1/ppl/m/n/10 (+20) But some-times moth-ers adopt chil-dren, and still l
 ove
@@ -3070,32 +3135,32 @@ Underfull \hbox (badness 1603) in paragraph at lines 25--25
 r
  []
 
-[1295
+[1296
 
-] [1296] [1297] [1298] [1299])
-(./afterwords/the-gift-we-give-to-tomorrow.tex [1300]) [1301]
-(./posts/one-life-against-the-world.tex [1302
+] [1297] [1298] [1299] [1300])
+(./afterwords/the-gift-we-give-to-tomorrow.tex [1301]) [1302]
+(./posts/one-life-against-the-world.tex [1303
 
-] [1303
+] [1304
 
 ])
-(./afterwords/one-life-against-the-world.tex [1304])
-(./posts/the-allais-paradox.tex [1305] [1306
+(./afterwords/one-life-against-the-world.tex [1305])
+(./posts/the-allais-paradox.tex [1306] [1307
 
-] [1307])
-(./afterwords/the-allais-paradox.tex [1308]) (./posts/zut-allais.tex [1309]
-[1310
+] [1308])
+(./afterwords/the-allais-paradox.tex [1309]) (./posts/zut-allais.tex [1310]
+[1311
 
-] [1311] [1312] [1313]) (./afterwords/zut-allais.tex [1314])
-(./posts/feeling-moral.tex [1315] [1316
+] [1312] [1313] [1314]) (./afterwords/zut-allais.tex [1315])
+(./posts/feeling-moral.tex [1316] [1317
 
-] [1317])
-(./afterwords/feeling-moral.tex [1318])
-(./posts/the-intuitions-behind-utilitarianism.tex [1319] [1320
+] [1318])
+(./afterwords/feeling-moral.tex [1319])
+(./posts/the-intuitions-behind-utilitarianism.tex [1320] [1321
 
-] [1321] [1322]
-[1323] [1324]) (./afterwords/the-intuitions-behind-utilitarianism.tex [1325])
-(./posts/ends-don-t-justify-means-among-humans.tex [1326] [1327
+] [1322] [1323]
+[1324] [1325]) (./afterwords/the-intuitions-behind-utilitarianism.tex [1326])
+(./posts/ends-don-t-justify-means-among-humans.tex [1327] [1328
 
 ]
 Overfull \hbox (0.29742pt too wide) in paragraph at lines 45--45
@@ -3103,105 +3168,213 @@ Overfull \hbox (0.29742pt too wide) in paragraph at lines 45--45
  
  []
 
-[1328]) (./afterwords/ends-don-t-justify-means-among-humans.tex [1329])
-(./posts/ethical-injunctions.tex [1330]
+[1329]) (./afterwords/ends-don-t-justify-means-among-humans.tex [1330])
+(./posts/ethical-injunctions.tex [1331]
 Underfull \hbox (badness 2245) in paragraph at lines 21--21
 \T1/ppl/m/n/10 (+20) modifying AI's re-vi-sions of its own code, be-cause, in i
 ts
  []
 
-[1331
+[1332
 
-] [1332] [1333] [1334] [1335]) (./afterwords/ethical-injunctions.tex
-[1336]) (./posts/something-to-protect.tex [1337] [1338
+] [1333] [1334] [1335] [1336]) (./afterwords/ethical-injunctions.tex
+[1337]) (./posts/something-to-protect.tex [1338] [1339
 
-] [1339] [1340] [1341])
-(./afterwords/something-to-protect.tex [1342])
-(./posts/when-not-to-use-probabilities.tex [1343] [1344
+] [1340] [1341] [1342])
+(./afterwords/something-to-protect.tex [1343])
+(./posts/when-not-to-use-probabilities.tex [1344] [1345
 
 ]
 Overfull \hbox (0.58797pt too wide) in paragraph at lines 35--35
 \T1/ppl/m/n/8 (+20) danger'', and Giddings and Mangano conclude ``from 
  []
 
-[1345] [1346] [1347]) (./afterwords/when-not-to-use-probabilities.tex [1348])
-(./posts/newcomb-s-problem-and-regret-of-rationality.tex [1349] [1350
+[1346] [1347] [1348]) (./afterwords/when-not-to-use-probabilities.tex [1349])
+(./posts/newcomb-s-problem-and-regret-of-rationality.tex [1350] [1351
 
-] [1351]
-[1352] [1353] [1354] [1355])
-(./afterwords/newcomb-s-problem-and-regret-of-rationality.tex [1356])
-(./posts/twelve-virtues-of-rationality.tex [1357] [1358
+] [1352]
+[1353] [1354] [1355] [1356])
+(./afterwords/newcomb-s-problem-and-regret-of-rationality.tex [1357])
+(./posts/twelve-virtues-of-rationality.tex [1358] [1359
 
-] [1359] [1360] [1361])
-(./afterwords/twelve-virtues-of-rationality.tex [1362]) [1363] [1364
+] [1360] [1361] [1362])
+(./afterwords/twelve-virtues-of-rationality.tex [1363]) [1364] [1365
 
 ]
-(./posts/use-the-try-harder-luke.tex [1365
+(./posts/beginnings-an-introduction.tex [1366
+
+] [1367
+
+] [1368])
+(./afterwords/beginnings-an-introduction.tex
+Underfull \hbox (badness 2495) in paragraph at lines 6--7
+[]\T1/ppl/m/n/10 (+20) The in-tro-duc-tion sep-a-rates the philo-soph-i-cal dis
+-pute be-tween
+ []
+
+[1369]) (./posts/my-childhood-death-spiral.tex [1370] [1371
+
+] [1372])
+(./afterwords/my-childhood-death-spiral.tex [1373])
+(./posts/my-best-and-worst-mistake.tex [1374]
+Underfull \hbox (badness 4416) in paragraph at lines 11--11
+[]$[]$\T1/ppl/m/n/10 (+20) If you're won-der-ing why Eliezer2000 thought such a
+
+ []
+
+[1375
+
+] [1376]) (./afterwords/my-best-and-worst-mistake.tex [1377])
+(./posts/raised-in-technophilia.tex [1378] [1379
+
+] [1380]
+Underfull \hbox (badness 2065) in paragraph at lines 37--37
+\T1/ppl/m/n/10 (+20) that would be a com-fort-able out, in a way; the truth is
+ []
+
+[1381]) (./afterwords/raised-in-technophilia.tex [1382])
+(./posts/a-prodigy-of-refutation.tex [1383]
+Underfull \hbox (badness 4726) in paragraph at lines 16--17
+[]\T1/ppl/m/n/10 (+20) Everyone ul-ti-mately looks af-ter their own self-
+ []
+
+[1384
+
+] [1385]) (./afterwords/a-prodigy-of-refutation.tex)
+(./posts/the-sheer-folly-of-callow-youth.tex [1386] [1387
+
+]
+Underfull \hbox (badness 4699) in paragraph at lines 29--29
+\T1/ppl/m/n/10 (+20) of com-pelling-ness, that-which-makes-you-do-something; so
+
+ []
+
+[1388] [1389] [1390]) (./afterwords/the-sheer-folly-of-callow-youth.tex
+[1391]) (./posts/that-tiny-note-of-discord.tex [1392] [1393
+
+] [1394] [1395]
+Underfull \hbox (badness 1038) in paragraph at lines 75--75
+[]$[]$\T1/ppl/m/n/10 (+20) But in the end, the chain of cause and ef-fect goes 
+like
+ []
+
+[1396]) (./afterwords/that-tiny-note-of-discord.tex
+Overfull \hbox (0.16234pt too wide) in paragraph at lines 16--17
+\T1/ppl/m/n/10 (-20) ``maybe.'' The line about smart people ``skilled at defend
+ing beliefs they
+ []
+
+[1397]) (./posts/fighting-a-rearguard-action-against-the-truth.tex [1398]
+Underfull \hbox (badness 3386) in paragraph at lines 19--19
+[]$[]$\T1/ppl/m/n/10 (+20) His at-ti-tudes to-ward tech-no-log-i-cal progress h
+ave been
+ []
+
+[1399
+
+] [1400]) (./afterwords/fighting-a-rearguard-action-against-the-truth.tex
+[1401]) (./posts/my-naturalistic-awakening.tex [1402] [1403
+
+] [1404] [1405])
+(./afterwords/my-naturalistic-awakening.tex [1406])
+(./posts/the-level-above-mine.tex [1407] [1408
+
+] [1409])
+(./afterwords/the-level-above-mine.tex [1410])
+(./posts/the-magnitude-of-his-own-folly.tex [1411] [1412
+
+] [1413] [1414])
+(./afterwords/the-magnitude-of-his-own-folly.tex [1415])
+(./posts/beyond-the-reach-of-god.tex [1416] [1417
+
+] [1418] [1419] [1420]
+[1421]
+Underfull \hbox (badness 1163) in paragraph at lines 91--91
+[]$[]$\T1/ppl/m/n/10 (+20) Someday, maybe, im-ma-ture minds will re-li-ably be 
+shel-
+ []
+
+[1422]) (./afterwords/beyond-the-reach-of-god.tex [1423])
+(./posts/my-bayesian-enlightenment.tex [1424]
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]$[]$\T1/ppl/m/n/10 (+20) I re-sponded^^Vnote that this was com-pletely spon-t
+a-
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 21--21
+\T1/ppl/m/n/10 (+20) neous^^V"What on Earth do you mean?  You can't avoid
+ []
+
+[1425
+
+] [1426] [1427] [1428]) (./afterwords/my-bayesian-enlightenment.tex
+[1429]) [1430] (./posts/use-the-try-harder-luke.tex [1431
 
 ]
 Underfull \hbox (badness 4569) in paragraph at lines 4--5
 []\T1/ppl/m/n/10 (+20) "When there's a will to fail, ob-sta-cles can be
  []
 
-[1366
+[1432
 
-]) (./afterwords/use-the-try-harder-luke.tex [1367]) [1368]
-(./posts/a-sense-that-more-is-possible.tex [1369
+]) (./afterwords/use-the-try-harder-luke.tex [1433]) [1434]
+(./posts/a-sense-that-more-is-possible.tex [1435
 
-] [1370
+] [1436
 
-] [1371])
-(./afterwords/a-sense-that-more-is-possible.tex [1372]) [1373]
-(./posts/humans-are-not-automatically-strategic.tex [1374
+] [1437])
+(./afterwords/a-sense-that-more-is-possible.tex [1438]) [1439]
+(./posts/humans-are-not-automatically-strategic.tex [1440
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-[1375
+[1441
 
-] [1376]) (./afterwords/humans-are-not-automatically-strategic.tex
-[1377]) (./posts/toolbox-thinking-and-law-thinking.tex [1378] [1379
+] [1442]) (./afterwords/humans-are-not-automatically-strategic.tex
+[1443]) (./posts/toolbox-thinking-and-law-thinking.tex [1444] [1445
 
-] [1380]
-[1381] [1382] [1383] [1384] [1385])
-(./afterwords/toolbox-thinking-and-law-thinking.tex [1386])
-(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1387] [1388
+] [1446]
+[1447] [1448] [1449] [1450] [1451])
+(./afterwords/toolbox-thinking-and-law-thinking.tex [1452])
+(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1453] [1454
 
 ]
-[1389] [1390] [1391] [1392] [1393] [1394])
-(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1395])
-(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1396]
-[1397
+[1455] [1456] [1457] [1458] [1459] [1460])
+(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1461])
+(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1462]
+[1463
 
-] [1398] [1399] [1400] [1401] [1402])
-(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1403])
-(./posts/on-caring.tex [1404] [1405
+] [1464] [1465] [1466] [1467] [1468])
+(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1469])
+(./posts/on-caring.tex [1470] [1471
 
-] [1406] [1407] [1408] [1409])
-(./afterwords/on-caring.tex [1410] [1411])
-(./posts/strong-evidence-is-common.tex [1412])
-(./afterwords/strong-evidence-is-common.tex [1413
+] [1472] [1473] [1474] [1475])
+(./afterwords/on-caring.tex [1476] [1477])
+(./posts/strong-evidence-is-common.tex [1478])
+(./afterwords/strong-evidence-is-common.tex [1479
 
 ])
-(./posts/pr-is-corrosive.tex [1414]) [1415
+(./posts/pr-is-corrosive.tex [1480]) [1481
 
 ] (./afterwords/pr-is-corrosive.tex)
-[1416] (./main.aux)
+[1482] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 130F7996647658176220E1CDDD9018B7;65650.
+(rerunfilecheck)             Checksum: A8E1902285A556C085970AAAEB9669C0;68489.
  ) 
 Here is how much of TeX's memory you used:
- 28782 strings out of 476182
- 509675 string characters out of 5795595
+ 29518 strings out of 476182
+ 523686 string characters out of 5795595
  1968975 words of memory out of 5000000
- 38188 multiletter control sequences out of 15000+600000
- 656665 words of font info for 780 fonts, out of 8000000 for 9000
+ 38332 multiletter control sequences out of 15000+600000
+ 657244 words of font info for 788 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,6n,82p,3175b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk> </
@@ -3217,10 +3390,10 @@ hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (1416 pages, 5941180 bytes).
+Output written on main.pdf (1482 pages, 6224141 bytes).
 PDF statistics:
- 18372 PDF objects out of 18468 (max. 8388607)
- 16673 compressed objects within 167 object streams
- 9869 named destinations out of 10688 (max. 500000)
- 102545 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 19281 PDF objects out of 22161 (max. 8388607)
+ 17507 compressed objects within 176 object streams
+ 10385 named destinations out of 10688 (max. 500000)
+ 102657 words of extra memory for PDF output out of 106986 (max. 10000000)
 

@@ -462,3 +462,34 @@ Five agents. Edits in `docs/raz/changes/batch05c.md`. Book V is complete.
 
 Note: one change-log entry (When (Not) To Use Probabilities, Kent n.b.) records an edit whose
 before and after are identical; harmless.
+
+## Batch 6a: Yudkowsky's Coming of Age (Book VI, 13 posts)
+
+Six agents. Edits in `docs/raz/changes/batch06a.md`.
+
+Sources: web.archive.org was unreachable, but agents found the Extropians list archive
+(extropians.weidai.com, 1996 to 1999), textfiles.com copies of "Staring into the
+Singularity", "The Plan to Singularity" and "The Singularitarian Principles", and a copy of
+the 1999 FAQ on the Meaning of Life. On the main points the memoirs match these texts, and
+the notes quote them with dates.
+
+- Rule applied throughout: memoir is judged as memoir. Cut as asking more of a memoir than it
+  claims: lessons drawn from the author's own case called "stated for every case" (Callow
+  Youth, Raised in Technophilia); a lesson "repeating" one from earlier in the sequence (That
+  Tiny Note of Discord, Raised in Technophilia, Fighting a Rearguard Action); a reason given
+  in the next post called missing (The Level Above Mine); a later self-description set
+  against a 1995 report (My Childhood Death Spiral).
+- Our research limits kept out of In short lines ("could not check", "could not trace"):
+  Beginnings, My Childhood Death Spiral.
+- Cut as insinuation: a note that the author founded the Singularity Institute and "the post
+  names no agency" (Beyond the Reach of God). Cut as speculative: our identification of the
+  unnamed "full solution" (A Prodigy of Refutation).
+- Hedges carry: Beyond the Reach of God's World War II claim ("that I happen to have heard
+  of"), so A. J. P. Taylor is information.
+- Kept: My Best and Worst Mistake's "refused to define" intelligence against the early texts'
+  informal definitions (notes and Response; the In short line reports it neutrally); That
+  Tiny Note of Discord's 2001 account of a different first step; Raised in Technophilia's
+  FDA figures (per decade, not per year; ratio unchanged); the unhedged "clever arguments"
+  diagnosis in Beyond the Reach of God.
+- Added by me: the 2 December 1996 gray-goo message beside Raised in Technophilia's hedged
+  "1997 or 1998" (checked in the saved archive page).
