@@ -1,0 +1,177 @@
+{
+ "slug": "zombie-responses",
+ "header": "\\post{Zombie Responses}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/4moMTeCy9EqYxAher/zombie-responses}\n",
+ "skeleton_sha": "492365035374f4926b945948baf32e590604eeaf9ae6d286b730ed9226b7d92f",
+ "post_sha": "86d68745e78be0b46ac56641520b71ea29d2b9312de20f306dca2dd34e6bb493",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Announces a short post: a reply to Richard Chappell's comment on ``Zombies! Zombies?'', published the day before, and a correction to that post.}"
+  ],
+  [
+   345,
+   "\\cpara{Gives a practical reason for a new post: the blog software split comment threads into pages of 50.}"
+  ],
+  [
+   579,
+   "\\cpara{Introduces the replies to Chappell. The quotations below come from one comment of 4 April 2008 on ``Zombies! Zombies?''. I checked them against that comment as LessWrong now shows it; they match, apart from a typo in the comment (``you view''). The post quotes the terminological note and parts of the first three of its four numbered points.}"
+  ],
+  [
+   726,
+   "\\cpara{Chappell's first remark: what the author calls conceivable, others would call only apparently conceivable.}"
+  ],
+  [
+   900,
+   "\\cpara{Accepts the distinction and asks for two words for it. The professional literature has them. Chalmers (``Does Conceivability Entail Possibility?'', 2002) calls a statement prima facie conceivable when a subject ``cannot (after consideration) detect any contradiction'' in it, and ideally conceivable when ``ideal rational reflection detects no contradiction.'' In ``Consciousness and its Place in Nature'' (2003) the zombie argument's first premise uses the stricter notion: a statement is conceivable when ``the truth of S is not ruled out a priori.'' So Chalmers's own statement of the argument does not blur the gap; the dispute is whether the zombie world passes the stricter test.}"
+  ],
+  [
+   1519,
+   "\\cpara{Proposes the two terms, and says that imagining zombies gives far less than the argument needs.}"
+  ],
+  [
+   1943,
+   "\\cfact{Chalmers disputed this link three days later, in a comment on ``Zombies! Zombies?'': ``I endorse Z, but I don't endorse E,'' where Z is that zombies are logically possible and E is epiphenomenalism. On that comment's account, the conclusion of zombie arguments is a disjunction of interactionism (type-D), epiphenomenalism (type-E) and Russellian monism (type-F). Chappell's comment had said in a postscript that Chalmers ``doesn't actually commit to the view.'' Yudkowsky replied to Chalmers that there is ``a direct, two-way logical entailment'' between the two theses.}"
+  ],
+  [
+   1971,
+   "\\cpara{Chappell classes the author's view as type-A materialism, a term from Chalmers's classification.}"
+  ],
+  [
+   2166,
+   "\\cpara{Declines the label as a whole. In Chalmers's definition (2003), type-A materialism holds that ``there is no epistemic gap between physical and phenomenal truths; or at least, any apparent epistemic gap is easily closed,'' so that on reflection no hard problem remains once the functions are explained. The author's expectation, that the answer may show the question was asked the wrong way, is close to that; the description of the problem in the next paragraph, as one that seems to have no possible solution, is not ``easily closed.'' The label fits in part, which is what the post says.}"
+  ],
+  [
+   2724,
+   "\\cpara{Separates the view from eliminativism, and gives three reasons to expect an answer that changes the question. In Chalmers's scheme eliminativism is one form of type-A materialism; analytic functionalism, on which consciousness exists and is defined by its functions, is another.}"
+  ],
+  [
+   3172,
+   "\\cpara{Chappell's first numbered point: the post has shown the zombie world to be strange, not self-contradictory.}"
+  ],
+  [
+   3663,
+   "\\cpara{The answer, in seven steps. Steps 1, 2 and 6 restate the set-up. The work is done by step 3, an intuition about causes, and step 4, a claim about what the word refers to. As step 7 says, the conclusion is a probability resting on an empirical premise, not the logical contradiction Chappell asked for.}"
+  ],
+  [
+   4525,
+   "\\clogic{This is the premise the epiphenomenalist denies. Chappell answered in the comments later that day that a premise of this kind, which ties the word to the cause of what one says, is ``a false premise, or at least question-begging'': on Chappell's view, phenomenal properties partly constitute one's thoughts about consciousness, so the word can refer to them although they do not cause speech. Yudkowsky replied that such a view ``introduces problems of reference, problems of epistemic justification''.}"
+  ],
+  [
+   4985,
+   "\\clogic{In Chalmers's terms this is not the type-A view the post declined. There, a statement is conceivable when its truth is ``not ruled out a priori''; a denial that rests on an empirical premise grants that the zombie world is conceivable in that sense and denies only that it is possible. Chalmers calls that position type-B materialism: ``zombies and the like are conceivable, but they are not metaphysically possible.''}"
+  ],
+  [
+   5015,
+   "\\cpara{Names the only way to keep the zombie world, a separate physical cause of the talk, and calls that, together with belief in consciousness, ``deranged,'' the word the previous post used.}"
+  ],
+  [
+   5392,
+   "\\cpara{Answers with Putnam's Twin Earth: a world with a different referent for the word is not a world without the thing.}"
+  ],
+  [
+   5392,
+   "\\clogic{This is the standard type-B reply, and Chalmers's two-dimensional argument was built to answer it (\\textsc{The Conscious Mind}, 1996, pp.~131--36, restated in 2003). The world with XYZ, Chalmers argues, is still a possible world, misdescribed as a world without water. For consciousness there is no counterpart of watery stuff that is not water: ``if something feels conscious, it is conscious.'' The post does not address that argument.}"
+  ],
+  [
+   6235,
+   "\\cpara{States the thesis in one sentence: an empirical fact about what the word refers to makes the zombie world logically impossible.}"
+  ],
+  [
+   6480,
+   "\\clogic{Chappell's reply in the comments (7 April) was that ``it can't be an empirical question what's logically possible.'' The only account the post gives of how an empirical fact yields a logical impossibility is the Twin Earth analogy discussed in the previous note.}"
+  ],
+  [
+   6620,
+   "\\cpara{Chappell's second point. The quotation stops before its comparison: the fit is ``\\,`miraculous' in the same sense that it's `miraculous' that our universe is fit to support life,'' and natural laws are ``primitive facts, not explained by anything else, but that doesn't make them chancy.''}"
+  ],
+  [
+   6958,
+   "\\cpara{Replies that the law which aligns experience with talk is itself an extra, improbable postulate. Chalmers grants the worry. On epiphenomenalism, in Chalmers's words, the match between experience and reports ``seems to be something of a lucky coincidence,'' and an epiphenomenalist who claims the laws are the most natural ones carries ``at least a significant burden of proof'' (2003).}"
+  ],
+  [
+   7161,
+   "\\clogic{Chappell had granted that the law is not explained by anything else. The comparison with a universe fit for life, which was Chappell's reason for calling that harmless, is not taken up.}"
+  ],
+  [
+   7405,
+   "\\cpara{Concedes that ``miraculous'' was the wrong word in its philosophical sense, keeps it in the sense of improbability with no source, and compares the view to a cracker that becomes flesh while looking like a cracker.}"
+  ],
+  [
+   8236,
+   "\\cpara{Part of Chappell's third point: a zombie's utterances are meaningless, so they cannot be unwarranted. The reason, left out of the quotation, is that on Chappell's view ``beliefs are partly constituted by the phenomenal properties instantiated by their neural underpinnings.''}"
+  ],
+  [
+   8544,
+   "\\cpara{Replies that a physical AI can hold an inner model correlated with its environment, including numbers that behave as probabilities.}"
+  ],
+  [
+   9027,
+   "\\cpara{States the expected reply: without the dual aspect, the AI has no beliefs.}"
+  ],
+  [
+   9156,
+   "\\cpara{Points to ``The Simple Truth,'' earlier in this book.}"
+  ],
+  [
+   9293,
+   "\\cpara{Describes truth as a physical check: one AI draws a map, another compares it with Texas.}"
+  ],
+  [
+   9948,
+   "\\clogic{The check described compares a map with a territory the checking AI can observe. By hypothesis an epiphenomenal inner core cannot be observed, so this check has nothing to compare the belief with. The verdict ``False'' has to come from the argument about reliability in part (B), not from a mismatch the AI detects.}"
+  ],
+  [
+   9962,
+   "\\cpara{Concludes that all map-making is done by the physical ``outer'' Chalmers, so accuracy can be judged from it alone.}"
+  ],
+  [
+   10694,
+   "\\clogic{Chappell's fourth point, which the post does not quote, was that reflective coherence does not count against Chappell's view ``unless you illicitly assume a causal theory of knowledge (which I obviously don't).'' Chalmers (2003) states the alternative: an epiphenomenalist ``can deny that knowledge always requires a causal connection,'' since experience ``plays a role in constituting'' beliefs about it. This paragraph assumes the causal view and does not argue against that alternative.}"
+  ],
+  [
+   10708,
+   "\\cpara{Turns to a premise missing from the previous day's argument about self-inspecting AI.}"
+  ],
+  [
+   10809,
+   "\\cpara{The passage from ``Zombies! Zombies?'' being corrected.}"
+  ],
+  [
+   11815,
+   "\\cpara{Supplies the missing premise openly: the AI checks each part for local reliability and treats a locally unreliable part as a bug. It is offered as ``a way'' to make the problem tractable, not the only one.}"
+  ],
+  [
+   12580,
+   "\\cfact{This bracketed edit and the one two paragraphs below were added in 2013, five years after the post. The paper is Yudkowsky and Herreshoff's draft of October 2013 on agents that approve successor agents; I did not check which part of it matches this description.}"
+  ],
+  [
+   12790,
+   "\\cpara{The corrected argument. If every part were locally reliable the whole would be reliable; a system that believes in an epiphenomenal self is unreliable, because it would believe the same in a zombie world; so inspection must find an unreliable step.}"
+  ],
+  [
+   13646,
+   "\\cpara{Invites philosophers to specify another way for a mind to be reflectively coherent.}"
+  ],
+  [
+   13819,
+   "\\cpara{Explains why the check must be local: a mind that compares only its conclusions with its beliefs would keep a part that computes 2 + 2 = 5 because it also believes 2 + 2 = 5.}"
+  ],
+  [
+   14570,
+   "\\cpara{Draws the general lesson: show an argument reliable step by step, not by comparing its conclusion with intuition.}"
+  ],
+  [
+   14948,
+   "\\cpara{The commenter is right. Wiktionary gives the root of neshamah as n-sh-m, with ``breath'' as its biblical sense; the verb for ``hear'' has the root sh-m-', whose last letter is ayin.}"
+  ],
+  [
+   15159,
+   "\\cpara{Concedes the error with a joke that turns the post's own word ``miraculous'' on itself.}"
+  ],
+  [
+   15390,
+   "\\cpara{The concession is prompt. The correction was not carried back: the current text of ``Zombies! Zombies?'' still glosses N'Shama as ``the hearer.''}"
+  ]
+ ]
+}

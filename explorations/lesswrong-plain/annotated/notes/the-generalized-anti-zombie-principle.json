@@ -1,0 +1,257 @@
+{
+ "slug": "the-generalized-anti-zombie-principle",
+ "header": "\\post{The Generalized Anti-Zombie Principle}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/kYAuNJX2ecH2uFqZ9/the-generalized-anti-zombie-principle}\n",
+ "skeleton_sha": "be22ae18cc790634215b704c61d4e85e121b7e7e814904961bbc095e4618b841",
+ "post_sha": "8a1a827a85bb6278c965c1306d8811970ecc824c9b173946006e8351d0e7b2bb",
+ "edits": [],
+ "notes": [
+  [
+   174,
+   "\\cpara{The epigraph is a free English rendering of Descartes's \\textsc{Discourse on Method}, Part II, on work in geometry and algebra: ``chaque v\\'erit\\'e que je trouvois \\'etant une r\\`egle qui me servoit apr\\`es \\`a en trouver d'autres'' (each truth I found being a rule that served me afterwards to find others). The sense fits the post: a result becomes a tool for further results.}"
+  ],
+  [
+   348,
+   "\\cpara{Defines zombies as in the previous posts: physical duplicates without consciousness.}"
+  ],
+  [
+   560,
+   "\\cpara{Restates the core argument of ``Zombies! Zombies?'' in one sentence: attending to your awareness leads, by a physical chain, to a blog post.}"
+  ],
+  [
+   1004,
+   "\\cpara{Draws the conclusion that consciousness is not epiphenomenal, hedged (``would at least seem''). The argument against zombies is stated here as an argument against epiphenomenalism. Chalmers's reply, that the two theses come apart, is given in the notes on ``Zombie Responses.''}"
+  ],
+  [
+   1367,
+   "\\cpara{Sets the question aside, and says so openly. The reason given is that ``a considerable majority'' of the blog's commenters accept the argument; no count is given, and the post itself calls the question ``philosophically controversial.'' Everything that follows is conditional on the anti-zombie argument.}"
+  ],
+  [
+   1771,
+   "\\cpara{Asks what the proper generalization of the argument is.}"
+  ],
+  [
+   1929,
+   "\\cpara{Poses the first test case: a switch that does not affect your brain, but is said to switch off your consciousness.}"
+  ],
+  [
+   2217,
+   "\\cpara{Answers, hedged (``It appears to me''), that the argument rules this out: you would go on talking about consciousness for the same reasons.}"
+  ],
+  [
+   2528,
+   "\\cpara{Raises the objection that this equates consciousness with talk about it, using the chatbot ``Zombie Master'' of the previous post.}"
+  ],
+  [
+   2763,
+   "\\cpara{Replies that consciousness is, among other things, the cause of that talk in humans; it is not defined as the talk. This agrees with step 4 of ``Zombie Responses.''}"
+  ],
+  [
+   3045,
+   "\\cpara{Explains, from ``A Human's Guide to Words,'' that a word can be tied to its referent by a description that picks it out without defining it.}"
+  ],
+  [
+   3678,
+   "\\cpara{Concedes that this is ``not a knockdown argument against zombies,'' and claims only that denying the premise makes talk about consciousness hard to give a meaning.}"
+  ],
+  [
+   4043,
+   "\\cpara{Considers defining ``consciousness'' as whatever makes us talk about it, and notes the limit of doing so: a definition guarantees a referent but settles no empirical question. The distinction is careful, and it limits the argument's own premise.}"
+  ],
+  [
+   4681,
+   "\\cpara{Notes that the flip is detectable, so the principle cannot be only about undetectable changes.}"
+  ],
+  [
+   5067,
+   "\\cpara{Tries a second wording: changes that do not affect you in any detectable way.}"
+  ],
+  [
+   5208,
+   "\\cpara{Answers that the switch does affect you, through gravity, and gives a figure.}"
+  ],
+  [
+   5788,
+   "\\cfact{The figures check. $G \\times 1\\,\\mbox{g} / (10\\,\\mbox{m})^2 \\approx 6.7 \\times 10^{-16}$ m/s$^2$. A neutron's radius is about 0.8 femtometres, so this is about 0.4 of a neutron diameter per second per second, close enough to ``around half.''}"
+  ],
+  [
+   5802,
+   "\\cpara{Notes that a distant switch would have no immediate effect, then declines to change the example that way.}"
+  ],
+  [
+   6015,
+   "\\cpara{States the intended claim: a disconnected switch across the room should not be expected to end your consciousness, because it does not change the true cause of your talk.}"
+  ],
+  [
+   6500,
+   "\\cpara{Calls this a large step, with a joke about switches.}"
+  ],
+  [
+   6631,
+   "\\cpara{Recalls the claim of ``Reductionism'': our maps have many levels, physics ``seems'' to have one.}"
+  ],
+  [
+   6975,
+   "\\cpara{Says the flip moves your particles, by whole neutron diameters.}"
+  ],
+  [
+   7166,
+   "\\cpara{Explains why we still say the switch ``doesn't affect you'': only the high-level description stays the same, because many physical states map to one description.}"
+  ],
+  [
+   7707,
+   "\\cpara{Says that no description of the brain at the level of neurons or molecules would register the pull.}"
+  ],
+  [
+   8221,
+   "\\cpara{Grants that small effects add up, so a small effect is not no effect.}"
+  ],
+  [
+   8434,
+   "\\cpara{Grants, with an example, that a tiny effect could in principle be amplified by chaos into a seizure and death.}"
+  ],
+  [
+   9003,
+   "\\cpara{Concludes that claiming a literally zero effect goes too far.}"
+  ],
+  [
+   9269,
+   "\\cpara{Gives the reply that carries the argument: the pull is far smaller than thermal noise, and thermal noise does not switch consciousness off.}"
+  ],
+  [
+   9646,
+   "\\cpara{Concedes that the argument is now about expectations, not certainty.}"
+  ],
+  [
+   9858,
+   "\\cpara{Holds that an argument about probabilities still binds belief.}"
+  ],
+  [
+   10171,
+   "\\cpara{Contrasts the weaker version with the ``clear-cut'' one for exact physical duplicates.}"
+  ],
+  [
+   10566,
+   "\\cpara{States the weaker argument in the first person, with its uncertainties named: whatever causes my talk about consciousness is inside my skull, and the switch disturbs it far less than thermal noise does.}"
+  ],
+  [
+   11804,
+   "\\cpara{Calls the weaker principle more general and, ``in terms of sheer common sense, correct.''}"
+  ],
+  [
+   11955,
+   "\\cpara{Gives the reductionist's version: consciousness depends on a functional level far above atomic nuclei.}"
+  ],
+  [
+   12681,
+   "\\cpara{Gives the substance dualist's version: whatever the stuff of awareness is, thermal noise does not disturb it, or we would notice.}"
+  ],
+  [
+   13332,
+   "\\cpara{Extends the point to a word spoken nearby.}"
+  ],
+  [
+   13534,
+   "\\cpara{Raises a harder case: a word you hear changes your brain noticeably.}"
+  ],
+  [
+   13805,
+   "\\cpara{Answers that you still talk about consciousness for the same reasons.}"
+  ],
+  [
+   13968,
+   "\\cpara{Repeats that consciousness is not equated with the talk, only among its causes.}"
+  ],
+  [
+   14306,
+   "\\cpara{States the generalized principle: a change that cannot alter your internal narrative should not make you cease to be conscious.}"
+  ],
+  [
+   14604,
+   "\\cpara{Extends the principle to changes that leave the narrative and its causes ``pretty much the same.''}"
+  ],
+  [
+   14824,
+   "\\clogic{As stated, the principle covers changes after which the causes of the narrative are ``pretty much the same.'' In the robot case below the narrative stays the same while its causes are replaced. Whether that case falls under the principle is what Charles disputes, and the post defers the answer.}"
+  ],
+  [
+   14838,
+   "\\cpara{Introduces the case the principle is for.}"
+  ],
+  [
+   15057,
+   "\\cpara{The neuron-replacement case is older than the post. Chalmers (``Absent Qualia, Fading Qualia, Dancing Qualia,'' 1995) lists earlier versions by Pylyshyn (1980), Cuda (1985) and Searle (1992).}"
+  ],
+  [
+   15284,
+   "\\cpara{Bernice's view has a published defender. Searle (1992) described a replacement in which ``your conscious experience slowly shrinks to nothing, while your externally observable behavior remains the same,'' as Chalmers quotes and discusses it.}"
+  ],
+  [
+   15380,
+   "\\cpara{Charles separates consciousness from personal identity.}"
+  ],
+  [
+   15483,
+   "\\cpara{The line gives Penrose's view in substance. Penrose argues in \\textsc{Shadows of the Mind} (1994) that consciousness depends on non-computable physics, a proposed collapse of the wave function tied to quantum gravity, so that it is ``not capable of being modelled by a conventional Turing machine'' (Wikipedia's summary). The exit is the post's joke.}"
+  ],
+  [
+   15765,
+   "\\cpara{Albert makes the replacement gradual and fast.}"
+  ],
+  [
+   16003,
+   "\\cpara{Albert describes the replacement, with an effect on behaviour smaller than thermal noise.}"
+  ],
+  [
+   16468,
+   "\\cpara{Albert applies the principle: the narrative did not change.}"
+  ],
+  [
+   16713,
+   "\\cpara{Bernice calls the robots a Zombie Master, which is detectable and so allowed by the earlier argument.}"
+  ],
+  [
+   16995,
+   "\\cpara{Charles answers that the robots do what neurons do, and so are not a Zombie Master.}"
+  ],
+  [
+   17413,
+   "\\cpara{Albert extends the principle from consciousness to the self.}"
+  ],
+  [
+   17594,
+   "\\cpara{Charles replies that the operation replaced the cause of Charles's talk with a different cause, which is also conscious but is not the same cause.}"
+  ],
+  [
+   17983,
+   "\\cpara{Albert's reply that you would not notice is the argument Chalmers used for Albert's side on consciousness (``Facing Up to the Problem of Consciousness,'' 1995). Chalmers imagines replacing neural circuits by silicon ones with a switch between them, and argues that since the system cannot notice any change, and ``whenever experiences change significantly and we are paying attention, we can notice the change,'' functional duplicates must have the same experiences. The main advocate of the zombie argument holds Albert's view on this question.}"
+  ],
+  [
+   18646,
+   "\\cpara{Bernice: after the replacement there is no one left to notice.}"
+  ],
+  [
+   18760,
+   "\\cpara{Charles: much goes on in the brain that we do not notice.}"
+  ],
+  [
+   18874,
+   "\\cpara{Albert charges both with positing undetectable facts.}"
+  ],
+  [
+   19202,
+   "\\cpara{Albert answers that detecting the replacement is like detecting the switch: it does not change the cause of the talk.}"
+  ],
+  [
+   19694,
+   "\\cpara{Sides with Albert and defers the reasons. They came in ``Identity Isn't In Specific Atoms'' (19 April 2008), which applies the principle to identity (``if alleged gigantic changes are occurring in your consciousness, you really ought to notice something happening''), and in ``Timeless Identity'' (3 June 2008). Neither post is in this book.}"
+  ],
+  [
+   19907,
+   "\\cpara{Restates the question the post opened with.}"
+  ],
+  [
+   20078,
+   "\\cpara{States the stakes in one hedged sentence, without saying here what they are. ``Timeless Identity'' later applies the same reasoning to cryonic suspension.}"
+  ]
+ ]
+}

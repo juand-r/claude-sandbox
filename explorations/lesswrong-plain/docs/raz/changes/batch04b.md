@@ -57,3 +57,35 @@ Why: Same.
 - Before:  \nb{``A priori'' also shifts meaning. The previous post rejected excluding a hypothesis a priori, before looking; here the words mean improbable before the evidence, which that post allowed. The post does not mark the change.}
 - After: 
 
+
+## annotated/posts/zombie-responses.tex
+
+Why: The annotator's own objection (which set of worlds to judge reliability over), unsourced; AGENT_BRIEF lessons.
+
+- Before: \clogic{This premise measures reliability against a set of worlds that includes the zombie world. On the view under attack, as the previous post reports it, the zombie world is logically possible but not physically possible, since the bridging laws hold in ours. The post does not say why reliability should be judged across logically possible worlds rather than across worlds with our laws.}
+- After: 
+
+
+## annotated/afterwords/zombie-responses.tex
+
+Why: Same.
+
+- Before:  The repaired argument in part (B) measures reliability across a set of worlds that includes the zombie world, without saying why that is the right set.
+- After: 
+
+
+## annotated/afterwords/the-generalized-anti-zombie-principle.tex
+
+Why: Nitpick: moving on because most readers agree is a practical choice the post marks as such.
+
+- Before: Two smaller points. The post describes the anti-zombie argument as an argument against epiphenomenalism; Chalmers held that the zombie argument does not require epiphenomenalism, as the notes on ``Zombie Responses'' explain. And the reason given for moving on is that most of the blog's commenters agree, which the post itself does not treat as settling a ``philosophically controversial'' question.
+- After: One smaller point. The post describes the anti-zombie argument as an argument against epiphenomenalism; Chalmers held that the zombie argument does not require epiphenomenalism, as the notes on ``Zombie Responses'' explain.
+
+
+## honest/sections/zombie-responses.tex
+
+Why: Same as the note.
+
+- Before:  \nb{This judges reliability against a set of worlds that includes the zombie world, which on the view under attack is not physically possible. The post does not say why that set is the right one.}
+- After: 
+
