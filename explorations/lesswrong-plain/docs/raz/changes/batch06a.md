@@ -170,3 +170,11 @@ Why: A sequence applying one lesson to a second case is not a fault; the reasons
 - Before: though the author's 2001 account names a different first step; its lesson repeats one given a week earlier, and its closing advice is aimed at AI builders it does not name.
 - After: though the author's 2001 account names a different first step.
 
+
+## annotated/posts/that-tiny-note-of-discord.tex
+
+Why: Credit, not fault (Book V lesson).
+
+- Before: adapts a line by Michael Shermer, whom the post does not name:
+- After: adapts a line by Michael Shermer:
+

@@ -2,7 +2,7 @@
  "slug": "that-tiny-note-of-discord",
  "header": "\\post{That Tiny Note of Discord}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/SwCwG9wZcAzQtckwx/that-tiny-note-of-discord}\n",
  "skeleton_sha": "78082f821dbae4f0eea1d44bc2e66e615c8fddbd90415b1661031b11807fc105",
- "post_sha": "53c4f8e59e5a55ad3a46c3a88912b7fb3bdff24c49e14ff58b0ba69a3577e4a5",
+ "post_sha": "d792f54c15008e084cbc5c5b675e55f5b45cf8605857caa77eb3a1fdbf062e41",
  "edits": [],
  "notes": [
   [
@@ -15,7 +15,7 @@
   ],
   [
    1017,
-   "\\clogic{The quoted phrase adapts a line by Michael Shermer, whom the post does not name: ``Smart people believe weird things because they are skilled at defending beliefs they arrived at for non-smart reasons'' (\\textsc{Scientific American} column, September 2002).}"
+   "\\clogic{The quoted phrase adapts a line by Michael Shermer: ``Smart people believe weird things because they are skilled at defending beliefs they arrived at for non-smart reasons'' (\\textsc{Scientific American} column, September 2002).}"
   ],
   [
    1188,
