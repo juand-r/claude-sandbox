@@ -1,0 +1,185 @@
+{
+ "slug": "if-many-worlds-had-come-first",
+ "header": "\\post{If Many-Worlds Had Come First}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/WqGCaRhib42dhKWRL/if-many-worlds-had-come-first}\n",
+ "skeleton_sha": "85fc0c9944d7303016d1cad6335321dbb2b63ceb3184743549e1798335087226",
+ "post_sha": "9187b3412cf50b9b44997c60a24f06b89cdd8d4631e64e066c4aeb0ce26fb23d",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Disclaims hindsight: the author does not claim to have done better in that era.}"
+  ],
+  [
+   266,
+   "\\cpara{The history checks out in outline. Everett's paper appeared in 1957. Peter Byrne (\\textsc{Scientific American}, 2007) calls it a ``once ignored theory,'' though Bryce DeWitt objected to it in a letter that year. In 1959, at Wheeler's request, Everett met Bohr in Copenhagen, and Bohr did not accept his approach.}"
+  ],
+  [
+   480,
+   "\\cpara{Says that Everett, crushed, left physics and did well in business.}"
+  ],
+  [
+   519,
+   "\\cfact{The order is not the post's. Everett had taken a job as a Pentagon defense analyst in the spring of 1956, before the 1957 paper and three years before the meeting with Bohr; Byrne says he was ``in danger of losing his student draft deferment.'' Wheeler later said Everett was ``disappointed, perhaps bitter, at the nonreaction to his theory.''}"
+  ],
+  [
+   639,
+   "\\cpara{DeWitt's \\textsc{Physics Today} article did appear in 1970, and the term ``many-worlds'' is his. The hedge ``(or not)'' is apt: in the polls noted on ``The World: An Introduction,'' many-worlds was the view of a minority.}"
+  ],
+  [
+   944,
+   "\\cpara{The post's question: would the order of discovery change which view is popular? It is a fair test for a bias toward whichever view came first. The rest of the post answers it with a satire.}"
+  ],
+  [
+   1276,
+   "\\cpara{Sets up the alternate Earth, where the first physicist to find entanglement concludes that there are many Earths.}"
+  ],
+  [
+   1463,
+   "\\cpara{In that world the puzzle is the Born probabilities, and no one has proposed a collapse.}"
+  ],
+  [
+   1816,
+   "\\cpara{Huve Erett (Hugh Everett) asks Biels Nohr (Niels Bohr) why no physicist is interested in his hypothesis.}"
+  ],
+  [
+   2142,
+   "\\cpara{Nohr explains that would-be solutions of the Born puzzle are common, so a new one has to be very good.}"
+  ],
+  [
+   2687,
+   "\\cpara{Huve's paper is the textbook collapse postulate, in one sentence.}"
+  ],
+  [
+   3095,
+   "\\cpara{Nohr restates it: the whole wavefunction but one part goes to zero, everywhere at once, when ``we `measure' something.''}"
+  ],
+  [
+   3521,
+   "\\cpara{Asks what counts as a measurement, and what happened before there were measurers: John Bell's question, quoted in ``The World: An Introduction.''}"
+  ],
+  [
+   3719,
+   "\\cpara{Huve moves the collapse to superpositions that are ``too large,'' and, when the 50-micron result comes in, to ``whichever level'' fits: a theory adjusted after each result.}"
+  ],
+  [
+   4602,
+   "\\cpara{Nohr's list of collapse's anomalies follows, nearly item for item, the author's own list in ``Collapse Postulates,'' posted the day before, with a preferred basis and the mental version added; see the notes there. On special relativity: a collapse model consistent with it had been published in 2006 (Tumulka), though only for particles that do not interact.}"
+  ],
+  [
+   5423,
+   "\\cpara{Huve offers the exceptions as a virtue; Nohr counts them against the theory.}"
+  ],
+  [
+   5836,
+   "\\cpara{Nohr's verdict: collapse ``isn't physics. It's magic.''}"
+  ],
+  [
+   6175,
+   "\\cpara{The angels analogy: a collapse that follows the Born statistics explains no more than the Born statistics stated alone, and adds a part.}"
+  ],
+  [
+   6970,
+   "\\cpara{Nohr has granted that his side does not know why the Born statistics hold either. For many-worlds the matching question, ``How can probability exist if all possible outcomes occur?'', is ``arguably the most serious difficulty,'' according to the \\textsc{Stanford Encyclopedia}'s entry on many-worlds. The same entry reports Papineau's view that on deriving the Born rule many-worlds is ``at no disadvantage'' against its rivals. Huve does not raise the difficulty.}"
+  ],
+  [
+   7288,
+   "\\cpara{Asks why only one world survives, and compares collapse advocates to religious campaigners (``One Christ,'' ``teach the controversy''). The comparison is rhetoric, not argument.}"
+  ],
+  [
+   7828,
+   "\\cpara{Asks which part of the wavefunction vanishes, and in which basis; a collapse to a single point would wreck quantum computers and chemistry.}"
+  ],
+  [
+   8285,
+   "\\cpara{Huve patches the theory again: one whole world survives, ``because that's what fits our experiments.''}"
+  ],
+  [
+   8558,
+   "\\cpara{Nohr: why would a collapse leave one tidy world, rather than removing any part of the wavefunction?}"
+  ],
+  [
+   8877,
+   "\\cpara{Calls the patch post hoc, and argues that decoherence is continuous, so no line drawn around ``one world'' can avoid arbitrary choices.}"
+  ],
+  [
+   9395,
+   "\\cpara{The charge fits Huve's postulate and the textbook one. It does not fit the collapse theories physicists had published by 2008, which the post does not mention. The GRW theory (Ghirardi, Rimini and Weber, 1986) fixes the basis (position), a rate (for a single particle, about one collapse in a hundred million years) and a width. In the \\textsc{Stanford Encyclopedia}'s words, ``Contrary to standard quantum mechanics, the GRW theory allows to locate precisely the `split' between micro and macro.''}"
+  ],
+  [
+   9961,
+   "\\cpara{Huve points out that ``one world'' is itself informal.}"
+  ],
+  [
+   10143,
+   "\\cpara{Nohr's answer: worlds are not fundamental; the fundamental equation is well tested, and decoherence follows from it.}"
+  ],
+  [
+   10358,
+   "\\cfact{A slip, though the point survives it. The Wheeler--DeWitt equation (DeWitt, 1967) is a proposed equation of quantum gravity, which Wikipedia describes as ``a step towards a theory of quantum gravity'' and ``ill-defined in the general case.'' The massive evidence Nohr cites is for the Schrödinger equation and its relativistic successors.}"
+  ],
+  [
+   11129,
+   "\\cpara{Huve asks only for a test.}"
+  ],
+  [
+   11316,
+   "\\cpara{Nohr: an unspecified collapse cannot be tested; physicists look for macroscopic deviations anyway, but would not favor collapse as the explanation.}"
+  ],
+  [
+   11418,
+   "\\cfact{True of Huve's version. Collapse theories that fix a rate can be tested, and are being tested. The \\textsc{Stanford Encyclopedia} reports that the simplest form of the Diósi--Penrose model ``has been falsified experimentally'' (Donadi and others, 2021), and that experiments keep narrowing the parameters of GRW-type models. None has found a collapse, which fits Nohr's ``we haven't found any such evidence.''}"
+  ],
+  [
+   12463,
+   "\\cpara{Nohr: with a collapse, measuring one entangled photon would affect its partner a light-year away.}"
+  ],
+  [
+   12866,
+   "\\cpara{Huve: the collapse is arranged so that the influence can never be detected. Nohr: that is no point in its favor.}"
+  ],
+  [
+   13195,
+   "\\cpara{Huve's next answer, that the relevant properties ``don't exist'' until the collapse, is the move the author attacked in ``Quantum Non-Realism,'' posted two days earlier.}"
+  ],
+  [
+   13409,
+   "\\cpara{Nohr: correct theories do not generate this much confusion, and there is no evidence; ``Just say `oops'.''}"
+  ],
+  [
+   14016,
+   "\\cpara{Nohr: evidence that might arrive someday is not evidence now.}"
+  ],
+  [
+   14931,
+   "\\cpara{Huve turns many-worlds against Nohr: somewhere there is a world where Huve is the famous one.}"
+  ],
+  [
+   15269,
+   "\\cpara{And a world where collapse is the majority view and no one has suggested macroscopic decoherence for thirty years. That world is ours.}"
+  ],
+  [
+   15582,
+   "\\cpara{Nohr laughs at the idea that physicists could know quantum physics for thirty years and never think of more than one world.}"
+  ],
+  [
+   15886,
+   "\\cpara{His reductio: equations that hold in every case tested, and no one asks whether they hold everywhere.}"
+  ],
+  [
+   16322,
+   "\\cpara{Compares this to a law of gravity that stops at Jupiter and to a comedy routine, and appeals to von Neumann's intelligence.}"
+  ],
+  [
+   17051,
+   "\\cfact{In our world he took the question up. In 1932 von Neumann let the measuring instrument evolve by the Schrödinger equation and kept the collapse at the observer; see the notes on ``Collapse Postulates,'' which make this point about the author's claim there.}"
+  ],
+  [
+   17079,
+   "\\cpara{The retelling of Schrödinger's cat. In the 1935 paper Schrödinger did carry the superposition up to the cat: the psi-function of the whole system would have ``the living and dead cat (pardon the expression) mixed or smeared out in equal parts.'' He presented it as one of the ``quite ridiculous cases,'' and concluded: ``That prevents us from so naively accepting as valid a `blurred model' for representing reality.'' He did not stop short of the macroscopic level; he found the result there absurd.}"
+  ],
+  [
+   18231,
+   "\\cpara{The punch line: the world where collapse came first, ours, is one where people are ``too dumb to sign up for cryonics'' and George W. Bush is president. Neither bears on the physics; the joke equates declining cryonics with stupidity.}"
+  ]
+ ]
+}

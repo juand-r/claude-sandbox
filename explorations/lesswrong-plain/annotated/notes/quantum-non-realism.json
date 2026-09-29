@@ -1,0 +1,197 @@
+{
+ "slug": "quantum-non-realism",
+ "header": "\\post{Quantum Non-Realism}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/k3823vuarnmL5Pqin/quantum-non-realism}\n",
+ "skeleton_sha": "0d88a0e8141251aa4c057320995c2255750de5be68ce0a790d11be8b0daba9df",
+ "post_sha": "83552849e382f5d7d3d2aca1201f49111d686fcd5aa6f43691f3b635df0dd567",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{The epigraph. The documented source has Einstein putting the question to Abraham Pais, not to Bohr. Pais recalled (\\textsc{Reviews of Modern Physics}, 1979, as quoted by David Mermin in \\textsc{Physics Today}, 1985): ``I recall that during one walk Einstein suddenly stopped, turned to me and asked whether I really believed that the moon exists only when I look at it.'' I found no source for a question put to Bohr.}"
+  ],
+  [
+   379,
+   "\\cpara{Sets the scene: a theory that gives only frequencies, is written in complex numbers, and shows particles one day and waves the next.}"
+  ],
+  [
+   751,
+   "\\cpara{States as fact that many-worlds is ``the correct answer'' (thirty years after the 1920s is Everett's 1957 paper). It was, and is, one interpretation among several, held by a minority in the polls noted on ``The World: An Introduction.'' The author's case for it is made in ``Many Worlds, One Best Guess.''}"
+  ],
+  [
+   953,
+   "\\cpara{Proposes a strict ``shut up and calculate'' as the best anyone could have done without the right theory. The slogan is David Mermin's, from 1989, not the founders' (see the notes on ``The World: An Introduction'').}"
+  ],
+  [
+   1452,
+   "\\cpara{Says that even ``The wavefunction only gives us probabilities'' went beyond the data, and gives the reason: the wavefunction in fact gives many worlds.}"
+  ],
+  [
+   1712,
+   "\\clogic{The next paragraph states the post's rule: ``refuse to affirm, as positive knowledge, any proposition which was not forced by the data and the calculations.'' It says of decoherence only that it ``is not ruled out by the data,'' and allows that the correct theory may be something else. By that rule, applied today, ``a certainty of many worlds'' is a claim a strict calculator would not make.}"
+  ],
+  [
+   1847,
+   "\\cpara{States the rule and its payoff: a strict calculator says nothing that a later correct theory could contradict. This is a recognized anti-realist stance. Bas van Fraassen's constructive empiricism (1980) holds that ``acceptance of a theory involves as belief only that it is empirically adequate'' (as quoted in the \\textsc{Stanford Encyclopedia}). The post's target, as it says later, is not this agnostic view but the claim that the equations are ``definitely not real.''}"
+  ],
+  [
+   2473,
+   "\\cpara{States the claim the dialogues will illustrate: people treat their ignorance as positive knowledge.}"
+  ],
+  [
+   2671,
+   "\\cpara{Says the dialogues may never have taken place. They show how the slide could happen, not that it did; the post names no physicist who made it.}"
+  ],
+  [
+   2811,
+   "\\cpara{The first dialogue: ``I don't know what these equations mean'' becomes, at second hand, ``these equations don't mean anything.''}"
+  ],
+  [
+   3573,
+   "\\cpara{The second: Gallant reports that the squared modulus of the amplitude, 1/9, matches the frequency observed (107 absorptions in 1,000 against about 111 expected, well within chance). Goofus turns the match into a probability and declares reality ``inherently nondeterministic.''}"
+  ],
+  [
+   4279,
+   "\\cpara{The third: Gallant's rule for continuing a calculation after a measurement becomes Goofus's claim that knowing the result makes every other probability zero.}"
+  ],
+  [
+   5238,
+   "\\cpara{A strong verdict. Without the step that something physical then vanishes, the chain it mocks is close to QBism, developed from 2002 by Carlton Caves, Christopher Fuchs and Rüdiger Schack. On that view a change of quantum state at measurement ``represents no physical discontinuity associated with measurement, but merely reflects the agent's updated epistemic state'' (\\textsc{Stanford Encyclopedia}). That is a reading of probability of the kind the post itself uses: ``partial knowledge is the meaning of probability.'' The dialogue on entangled photons below is the post's argument against such readings.}"
+  ],
+  [
+   5333,
+   "\\cpara{Says the chain, read literally, is the view that consciousness causes collapse, which ``just about nobody'' will admit to holding. A later poll bears this out: at a 2011 conference on the foundations of quantum mechanics, 6\\% of 33 respondents chose ``wave-function collapse by consciousness'' (Schlosshauer, Kofler and Zeilinger, 2013).}"
+  ],
+  [
+   5613,
+   "\\cpara{Says textbooks still ``talk as if'' knowledge removes amplitudes. No textbook or passage is cited.}"
+  ],
+  [
+   5818,
+   "\\cpara{Lists that view's faults: it is informal, it makes mental properties basic, and no one can calculate when an observation happens.}"
+  ],
+  [
+   6283,
+   "\\cpara{Credits it all the same with a picture of reality: the amplitudes, the collapse and the consciousness are all real.}"
+  ],
+  [
+   6519,
+   "\\cpara{The fourth dialogue: the anti-realist denies that amplitudes vanish, says the equations only predict, and, pressed with entanglement and Bell's theorem, says it is meaningless to speak of a photon's polarization before it is measured.}"
+  ],
+  [
+   8101,
+   "\\cpara{Asks what state of reality would make Goofus's words true.}"
+  ],
+  [
+   8269,
+   "\\cpara{The post does not consider an answer that was on offer. QBists say the change is in the near observer's expectations, not at the far photon; on their account Alice and Bob ``can use quantum theory successfully to account for her or his experiences with no appeal to any physical states (hidden or otherwise) or non-local physical influences'' (\\textsc{Stanford Encyclopedia}). Whether that account succeeds is disputed, and the same entry reports objections.}"
+  ],
+  [
+   8606,
+   "\\cpara{Asks where the anti-realist's claims come from. Some came with stated reasons. Wolfgang Pauli, writing to Max Born in 1954, gave the one behind Goofus's last line: ``One should no more rack one's brain about the problem of whether something one cannot know anything about exists all the same, than about the ancient question of how many angels are able to sit on the point of a needle'' (as quoted by Mermin, 1985). That is an empiricist rule about meaning. The post may reject the rule, but it is a reason, not ``Gallant told me.''}"
+  ],
+  [
+   8666,
+   "\\cpara{Recasts the anti-realist claim as a positive assertion: the equation predicts well ``but it doesn't mean anything!''}"
+  ],
+  [
+   9055,
+   "\\cpara{Calls that assertion ignorance misread as knowledge.}"
+  ],
+  [
+   9252,
+   "\\cpara{Asks for the experiment that showed the equation meaningless. The best-known anti-realist reading rests on arguments, not an experiment. Bohr's were about the formalism: the wave function lives in a many-dimensional configuration space, not in ordinary space, and involves imaginary numbers, so he treated it as ``a tool for deriving predictions'' (as quoted in the \\textsc{Stanford Encyclopedia}, which reports that scholars dispute how far Bohr was an instrumentalist). The post does not discuss these arguments.}"
+  ],
+  [
+   9715,
+   "\\cpara{The fifth dialogue: from data close to an even split, Goofus concludes that the two polarizations cannot both exist.}"
+  ],
+  [
+   10382,
+   "\\cpara{Introduces an exchange in the comments on a 2007 Overcoming Bias post about whether the universe is finite. I could not reach the archived comments, so the two quotations are unchecked.}"
+  ],
+  [
+   11268,
+   "\\cpara{The point of the joke: doubt about whether the universe exists does not stop the author from asking about it.}"
+  ],
+  [
+   11385,
+   "\\cpara{Says curiosity survives even the possibility that nothing exists.}"
+  ],
+  [
+   11757,
+   "\\cpara{Admits confusion about the nature of reality, and invokes ``Egan's Law'': whatever reality turns out to be, it must reproduce what we already observe.}"
+  ],
+  [
+   12046,
+   "\\cpara{Illustrates with nonexistent apples that still fall at the same rate.}"
+  ],
+  [
+   12283,
+   "\\cpara{Asks what believing ``the universe doesn't exist'' would change in practice.}"
+  ],
+  [
+   12735,
+   "\\cpara{Quotes ``The Simple Truth'' (1 January 2008) accurately, with one cut marked by the ellipsis: ``reality'' is the name for whatever determines experimental results.}"
+  ],
+  [
+   13226,
+   "\\cpara{Offers to read ``not real'' charitably.}"
+  ],
+  [
+   13383,
+   "\\cpara{If the equations are not what determines results, asks what does, and why that ``nothing'' is so regular.}"
+  ],
+  [
+   13808,
+   "\\cpara{Asks anyone who calls something meaningless to say what they mean and how they know.}"
+  ],
+  [
+   14188,
+   "\\cpara{Recounts ``The Simple Truth'': a shepherd counts sheep with pebbles, while an apprentice and an official argue about how the magic gets into the pebbles.}"
+  ],
+  [
+   14677,
+   "\\cpara{Asks whether ``meaningless'' equations are like pebbles that count sheep without any magic.}"
+  ],
+  [
+   14937,
+   "\\cpara{Grants that before Bell's theorem, quantum probabilities could have been partial knowledge of a fuller description, as in statistical mechanics, which would still give them a meaning.}"
+  ],
+  [
+   15602,
+   "\\cpara{Says Bell's theorem makes that ``much less plausible,'' and that even then the equations would be statistical or wrong, not meaningless.}"
+  ],
+  [
+   15734,
+   "\\cfact{Bell's theorem rules out local hidden variables, not deterministic ones. In David Bohm's deterministic theory of 1952, the wave function gives ``only a partial description'' of a system, completed by the particles' positions; Bell's theorem makes such a theory nonlocal. Bell himself, the \\textsc{Stanford Encyclopedia} says, was ``the prime proponent'' of Bohm's theory until his death in 1990.}"
+  ],
+  [
+   16030,
+   "\\cpara{The post's central argument: the equations' success is best explained by their being ``meaningful.'' This is the ``no miracles'' argument for scientific realism. In Hilary Putnam's 1975 words, realism ``is the only philosophy that doesn't make the success of science a miracle.'' It is standard and contested; the \\textsc{Stanford Encyclopedia} gives replies, among them van Fraassen's, that successful theories are selected for success as organisms are for fitness, so their success needs no further explanation.}"
+  ],
+  [
+   16379,
+   "\\cpara{Demands, before a question is closed as meaningless, a theory of how it is meaningless.}"
+  ],
+  [
+   16793,
+   "\\cpara{Applies the author's ``Semantic Stopsigns'' (2007): some words stop questions instead of answering them.}"
+  ],
+  [
+   17211,
+   "\\cpara{Predicts that ``shut up and calculate'' turns into a positive theory ``inside of five years.'' No case is given, and the history cannot illustrate it, since the order there was reversed: Bohr's reading dates from his Como lecture of 1927, and the slogan is Mermin's summary of such readings from 1989.}"
+  ],
+  [
+   17415,
+   "\\cpara{Limits the scorn to those who took ``We don't know why it works'' as knowledge that the equations were ``definitely not real,'' and praises those who stayed agnostic. It names no one in either group.}"
+  ],
+  [
+   17910,
+   "\\cpara{Mocks the ``not real'' move by imagining it used to excuse other theories.}"
+  ],
+  [
+   18592,
+   "\\cpara{The moral: it is hard to stay openly confused without inventing a story that gives closure. The note on ``a certainty of many worlds,'' near the start, asks whether the post meets this standard itself.}"
+  ]
+ ]
+}

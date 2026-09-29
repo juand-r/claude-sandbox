@@ -119,3 +119,36 @@ Why: Same: the rule turned on the author's credentials reads as a jab.
 - Before:  The post does not say what ``within'' requires. The book's introduction to this part says that Yudkowsky is not a physicist. If ``within'' means working in the science, this sequence's own case for many-worlds is philosophy of physics done from outside it; if it means close study, the rule asks of philosophers what the next paragraph asks.}
 - After: }
 
+
+## annotated/afterwords/quantum-non-realism.tex
+
+Why: Softened: the rule is set for the strict calculator, and the author's certainty rests on arguments made elsewhere.
+
+- Before: The post's rule applies to the post. It asks the strict calculator
+- After: The post's certainty sits uneasily with its own rule. It asks the strict calculator
+
+- Before: By the rule, that is a claim a strict calculator would not make. The full case
+- After: A strict calculator would not make that claim, and the post's grounds for it are not in this post. The full case
+
+- Before: by a post that calls many-worlds ``a certainty'' while stating a rule against affirming what the data do not force.
+- After: by a post that calls many-worlds ``a certainty'' beside a rule against affirming what the data do not force.
+
+
+## annotated/posts/if-many-worlds-had-come-first.tex
+
+Why: Nitpick: the note's own source calls Everett's method ``the generalized Lagrange multiplier method'', which is close to the post's ``general use''.
+
+- Before: \cfact{Overstated. The method of Lagrange multipliers, named after Joseph-Louis Lagrange, was in use long before Everett. His 1963 paper gave a ``Generalized Lagrange multiplier method'' for problems of allocating resources; Byrne calls it ``the generalized Lagrange multiplier method, also known as the Everett algorithm.''}
+- After: 
+
+
+## annotated/afterwords/if-many-worlds-had-come-first.tex
+
+Why: Same; a satire's closing joke is not a fault.
+
+- Before:  The last line replaces argument with a jab about cryonics and a president.
+- After: 
+
+- Before: , and Everett did not invent the use of Lagrange multipliers in optimization.
+- After: .
+
