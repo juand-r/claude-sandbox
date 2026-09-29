@@ -1,0 +1,229 @@
+{
+ "slug": "beyond-the-reach-of-god",
+ "header": "\\post{Beyond the Reach of God}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/sYgv4eYH82JEsTD34/beyond-the-reach-of-god}\n",
+ "skeleton_sha": "062ee1790559752857c533b7bd19c9085d8391f0f8dfb175f4dd8224bc92bd04",
+ "post_sha": "7dff3974d1833443e14c8d1137a3b09230a3ac94b8437eb9a1b66878a84de36a",
+ "edits": [],
+ "notes": [
+  [
+   132,
+   "\\cpara{Introduces a thought experiment the author made up to break the author's own optimism, and warns off readers who think biases worth keeping for the sake of happiness. The exception, readers with ``something to protect'', refers to the Book V post of that name.}"
+  ],
+  [
+   679,
+   "\\cpara{Names the root of the folly described in the previous post, ``The Magnitude of His Own Folly'': not an explicit belief, but a felt conviction that everything would be all right. That post says the same: ``I once thought that the Future was indestructible.''}"
+  ],
+  [
+   1099,
+   "\\cpara{Notes that some call this attitude a virtue and others a need of mental health. The Japanese phrase means roughly ``it will definitely be all right''.}"
+  ],
+  [
+   1244,
+   "\\cpara{States the thesis in two sentences, before the thought experiment that argues for it.}"
+  ],
+  [
+   1337,
+   "\\cpara{Autobiography: an Orthodox Jewish upbringing, and the last prayer the author remembers making, for the boy next door.}"
+  ],
+  [
+   1757,
+   "\\cpara{Recalls having a higher authority to appeal to, taken for granted rather than felt as warm.}"
+  ],
+  [
+   2000,
+   "\\cpara{Sets up the first half of the thought experiment: the world in which God ``Really exists'', as a child believes. The link on ``conceptually impossible'' is to ``Excluding the Supernatural'' (Book IV), where the author calls non-reductionism, and so an ontologically basic God, ``a confusion''.}"
+  ],
+  [
+   2389,
+   "\\cpara{Says that a God taken seriously does not do everything asked (no lemonade from the refrigerator), and that the author did not believe so even as a child.}"
+  ],
+  [
+   2836,
+   "\\cpara{Argues that a benevolent power may rightly refuse some requests, as parents do, and gives the author's own reason: a good life is not having every goal fulfilled at once. The book gives these ``fun-theoretic arguments'' in ``High Challenge'' (Book V, posted later): ``A happy blob is not what, being human, I wish to become.''}"
+  ],
+  [
+   3583,
+   "\\cpara{Concludes that unanswered prayers need not be an evasion: ``Even a Friendly AI might not respond to every request.''}"
+  ],
+  [
+   3755,
+   "\\cpara{Claims that there is some threshold of horror at which God would intervene, and recalls believing this as a child.}"
+  ],
+  [
+   3939,
+   "\\cpara{Argues that a God who never intervenes, however bad things get, is a belief-in-belief protected from falsification, and that a loving God, like a loving parent, would draw the line somewhere.}"
+  ],
+  [
+   4754,
+   "\\clogic{Here the post takes a side in the problem of evil. The other side, as the Stanford Encyclopedia of Philosophy reports it (Tooley, ``The Problem of Evil''): William Rowe inferred from ``no good that we know of'' justifying God in permitting an evil that probably ``no good'' does. Alvin Plantinga objected, in Rowe's restatement, that such a good might not be ``within our ken''. On that reply, God's not intervening in the horrors we know of need not mean a God who never intervenes, or a belief built to avoid falsification. Rowe answered that the objection, if it worked, would support ``radical skepticism concerning inductive reasoning in general.''}"
+  ],
+  [
+   4768,
+   "\\cpara{Takes death, ``true death, mind-annihilation'', as the plainest horror a classic God would prevent: in that world no soul need fear annihilation.}"
+  ],
+  [
+   5206,
+   "\\cpara{Introduces Conway's Game of Life as a simulated universe with its own physical law.}"
+  ],
+  [
+   5676,
+   "\\cfact{Turing-completeness is correct: Life can compute whatever a universal computer can (Berlekamp, Conway and Guy, \\textsc{Winning Ways}, as Wikipedia reports).}"
+  ],
+  [
+   5738,
+   "\\cpara{Argues that in the God-universe even a simulated torture would be stopped: God would alter the computer's transistors. ``Life is fair'' puns on the game's name.}"
+  ],
+  [
+   6390,
+   "\\cpara{Poses the question the thought experiment turns on: what the rules would produce, as a matter of mathematics.}"
+  ],
+  [
+   6553,
+   "\\cpara{Argues that not even God can change that answer, short of doing the logically impossible, so the what-if world is out of God's reach.}"
+  ],
+  [
+   6845,
+   "\\cpara{Asks what the what-if world looks like: each step follows only from the last, and no God checks any state.}"
+  ],
+  [
+   7233,
+   "\\cpara{Answers: life might or might not evolve, and sentient beings might suffer, like conscious cows eaten by conscious wolves who do not think it wrong.}"
+  ],
+  [
+   7766,
+   "\\cpara{Adds disease, which in such a world teaches no lesson.}"
+  ],
+  [
+   8000,
+   "\\cpara{Argues that in the what-if world happiness need not follow from choices: a Genghis Khan can murder a million people and live happily, because there is no God in the axioms.}"
+  ],
+  [
+   8904,
+   "\\cpara{Extends the case to torture: the physical laws contain no prohibition of it, so the victims are saved only ``if the right cells happen to be 0 or 1.''}"
+  ],
+  [
+   9817,
+   "\\cpara{States Life's rules to show that they say nothing about innocence.}"
+  ],
+  [
+   10172,
+   "\\cfact{These clauses give the standard rule, B3/S23, if ``stay alive'' includes a dead cell coming alive: a dead cell with exactly three live neighbours is born, a live cell with two or three survives, and every other cell is dead at the next step (Wikipedia, ``Conway's Game of Life'').}"
+  ],
+  [
+   10296,
+   "\\cpara{Turns the thought experiment on our own world. Published philosophy makes the same comparison. Paul Draper's evidential argument from evil (1989) sets theism against a ``Hypothesis of Indifference'': ``neither the nature nor the condition of sentient beings on earth is the result of benevolent or malevolent actions performed by nonhuman persons.'' Draper argued that the facts of pain and pleasure are more probable on it than on theism (SEP, ``The Problem of Evil'').}"
+  ],
+  [
+   10351,
+   "\\cpara{Moves from horrors to history: would the twentieth century have gone differently if Hitler had been conceived an hour earlier, from a different sperm?}"
+  ],
+  [
+   10688,
+   "\\cpara{Voices, in the believer's words, the feeling that such dependence is ``too disproportionate'', and the conclusion that someone else would have taken Hitler's role. The architect detail is accurate: Hitler was told to apply to the School of Architecture, ``but he lacked the necessary academic credentials because he had not finished secondary school'' (Wikipedia, ``Adolf Hitler'', citing Bullock).}"
+  ],
+  [
+   10921,
+   "\\cfact{The reading has published support. Karl L\\\"owith's \\textsc{Meaning in History} (1949) argued that philosophies of history from Vico to Marx were secularised versions of Christian eschatology (Wikipedia's summary, ``Karl L\\\"owith'').}"
+  ],
+  [
+   11321,
+   "\\cpara{Answers that no physical law says ``big effects need big causes'', and no God imposes proportion on history.}"
+  ],
+  [
+   11711,
+   "\\cpara{States the aim: to recognize God-universe thinking in atheists. The example is the view that World War II would have happened much the same without Hitler, which the post calls ``an unreasonable belief'', on the ground that ``from my reading, it seems that events were mostly driven by Hitler's personality''.}"
+  ],
+  [
+   12468,
+   "\\cfact{The author's reading agrees with the long-standing general view, the ``Nuremberg Thesis'' that ``Hitler had wanted war, planned in detail for war and had launched the war'' (Wikipedia, ``The Origins of the Second World War''). The overriding of the generals is also documented: in 1940 Hitler launched the western offensives ``against the advice of the military'' (Wikipedia, ``Adolf Hitler'', citing Overy).}"
+  ],
+  [
+   12670,
+   "\\clogic{The post's hedge, ``that I happen to have heard of,'' matters here. The best-known dissent from the general view, A.~J.~P. Taylor's \\textsc{The Origins of the Second World War} (1961), held that Hitler's goals ``were the same as those of other German politicians such as Gustav Stresemann'' (Wikipedia's summary). Taylor built it on memoirs and ``German and British diplomatic documents''. Its critics rejected it, Hugh Trevor-Roper as ``demonstrably false''. So dissent from the general view has been argued from documents, though its critics judged the argument poor.}"
+  ],
+  [
+   12730,
+   "\\cpara{Concludes that we live in the what-if universe, where ``Whatever physics says will happen, will happen'', with no exception for extreme cases.}"
+  ],
+  [
+   13233,
+   "\\cpara{Reports the author's reaction to Shirer's history: horror without disbelief, since the author already knew there was no protection. Shirer does write that the record would be beyond belief without the documents: ``This incredible story of horror would be unbelievable were it not fully documented and testified to by the perpetrators themselves'' (chapter 27, ``The New Order'').}"
+  ],
+  [
+   13715,
+   "\\cpara{Moves from the author's own former belief to other people: self-described rationalists ``may yet have things they trust'', such as positive-sum games, democracy or technology, held as sacred.}"
+  ],
+  [
+   14263,
+   "\\cpara{Voices three such beliefs in their holders' words: the positive-sum trend cannot reverse, liberal democracies will not legalize torture, technology cannot do more harm than good.}"
+  ],
+  [
+   14800,
+   "\\cpara{Says where such arguments come from, then limits what the post itself claims: one must be able to picture such a world before one is ``ready to argue probabilities''. Whether the trends will in fact hold is left to that later argument.}"
+  ],
+  [
+   14978,
+   "\\clogic{The post's central charge against others, stated without a hedge. No one is named and no argument is quoted. The only case given is the author's own former belief, two paragraphs earlier.}"
+  ],
+  [
+   15278,
+   "\\cpara{Asks whether cryonics could save those who choose it while others, Einstein among them, are lost, and answers that God would not allow anything so ``ridiculous and disproportionate''. The question form makes this a claim about what is possible.}"
+  ],
+  [
+   15870,
+   "\\cfact{The link for cryonics is to ``Timeless Identity'', which the book does not include. The book's own discussion of cryonics is ``When Science Can't Help'' (Book IV); see the notes there on the evidence.}"
+  ],
+  [
+   16282,
+   "\\cpara{Gives the exercise in full: imagine a benevolent God who enforces a minimum of fairness, and then imagine that you live in a what-if world where ``anything at all can happen.''}"
+  ],
+  [
+   16965,
+   "\\cpara{Tells readers who value happiness above all to think about this only long enough to sign up for cryonics, give to ``an existential-risk-mitigation agency'', and take ordinary precautions.}"
+  ],
+  [
+   17607,
+   "\\cpara{Names the intended reader, pointing again to ``Something to Protect''.}"
+  ],
+  [
+   17754,
+   "\\cpara{Argues that nature's challenges are not matched to our abilities: a twelfth-century peasant could do nothing against annihilation, and the same holds for planets. What one faces is ``Absolute, utter, exceptionless neutrality.''}"
+  ],
+  [
+   18244,
+   "\\cpara{Concedes that knowing this may not save you, and calls the belief that a rationalist must find a way out a form of trust, linking ``No Safe Defense, Not Even Science'' (Book IV).}"
+  ],
+  [
+   18582,
+   "\\cpara{Anticipates critics who will list the good sides of a neutral universe, and describes their view as allowing life to be dark only down to a certain point.}"
+  ],
+  [
+   19021,
+   "\\cpara{The hopeful part, hedged throughout (``might'', ``may help'', ``prospect''): humanity might build guardrails against catastrophe within its future light cone, and treat everything outside it as a ``generalized past''.}"
+  ],
+  [
+   19725,
+   "\\cpara{Hopes that children may one day be protected from fatal harm while still meeting small ones.}"
+  ],
+  [
+   19931,
+   "\\cpara{Adds that a superintelligence, ``a mind that could think a trillion thoughts without a misstep'', would find the raw universe only another problem.}"
+  ],
+  [
+   20245,
+   "\\cpara{States the difficulty: building such a mind is itself a challenge where one failure may be fatal. In this sequence the ``adult'' is the superintelligence of the paragraph before.}"
+  ],
+  [
+   20370,
+   "\\cpara{Restates that any fairer world must be built starting from this unprotected one.}"
+  ],
+  [
+   20594,
+   "\\cpara{Limits the advice: not every rationalist needs these thoughts, only those who plan to face a ``challenge of instant death''.}"
+  ],
+  [
+   20983,
+   "\\cpara{Ends with a question that the post leaves open: what rules a ``child'' should follow ``to solve an adult problem''.}"
+  ]
+ ]
+}
