@@ -2,16 +2,12 @@
  "slug": "the-tragedy-of-group-selectionism",
  "header": "\\post{The Tragedy of Group Selectionism}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/QsMJQSFj7WfoTMNgW/the-tragedy-of-group-selectionism}\n",
  "skeleton_sha": "be2c02581393a2658b7a523babc7b1600266c0a58b0a100f736d1cc445bc321a",
- "post_sha": "6c21c59125cb897b336780bf86d2b1b1d8514e6a58ce87b7aaea00fe2cc4474e",
+ "post_sha": "7b7509c85c759971c59b2380b9447d2134c12dba9d5f609c2eb0b5294424ca6e",
  "edits": [],
  "notes": [
   [
    152,
    "\\cpara{Sets the date and the verdict. 1966 is the year of George C.~Williams's \\textsc{Adaptation and Natural Selection}; Wikipedia's history names it, with papers by John Maynard Smith and C.~M.~Perrins from 1964, as the works that ``cast serious doubt on group selection as a major mechanism of evolution.'' The post names none of them.}"
-  ],
-  [
-   290,
-   "\\clogic{The label sits uneasily with the post's own account below: the mechanism was ``possible but very difficult,'' and group selection later revived ``somewhat.'' A hypothesis that is possible but needs unlikely conditions is a quantitative mistake, not magic.}"
   ],
   [
    546,
@@ -59,7 +55,7 @@
   ],
   [
    6021,
-   "\\clogic{Offered from memory (``I forget the exact species''). I found no source for the claim that observation, not argument, decided the matter. Wikipedia's history names a theoretical paper (Maynard Smith, 1964), a field study of the broods of swifts (Perrins, 1964) and a theoretical book (Williams, 1966). Wynne-Edwards himself wrote in 1980 that his red grouse studies had ``amply confirmed my predictions.''}"
+   "\\clogic{Offered from memory (``I forget the exact species''). I found no source that singles out observation as what decided the matter. Wikipedia's history names argument and observation together: a theoretical paper (Maynard Smith, 1964), a field study of the broods of swifts (Perrins, 1964) and a theoretical book (Williams, 1966). Wynne-Edwards himself wrote in 1980 that his red grouse studies had ``amply confirmed my predictions.''}"
   ],
   [
    6377,
@@ -75,7 +71,7 @@
   ],
   [
    7216,
-   "\\cpara{Information that supports the post's ``Of course'': cannibalism was a known regulator of flour beetle numbers before the experiment. A 1999 paper says its study ``in Tribolium has a long history'' (from Park, 1948), and that ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965).}"
+   "\\cpara{Information that supports the post's ``Of course'': cannibalism was a known regulator of flour beetle numbers before the experiment. A 1999 paper says its study ``in Tribolium has a long history'' (from Park, 1948), and that ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965). The textbook with Allee as first author, \\textsc{Principles of Animal Ecology} (1949), already reported Chapman's finding (1928) that adult flour beetles eat their own eggs, and called it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370).}"
   ],
   [
    7459,
@@ -91,11 +87,11 @@
   ],
   [
    8579,
-   "\\clogic{Wynne-Edwards's picture was not one of harmony. In his summary, animals denied a territory or rank ``emigrate, or get killed by predators, disease, or starvation,'' and in red grouse ``60\\% of their number become social outcasts and die in an average year.''}"
+   "\\clogic{Wynne-Edwards's own picture included a great deal of death. In his summary, animals denied a territory or rank ``emigrate, or get killed by predators, disease, or starvation,'' and in red grouse ``60\\% of their number become social outcasts and die in an average year.''}"
   ],
   [
    9266,
-   "\\cpara{Links the case to ``Einstein's Arrogance'': with many possible answers, most of the work lies in singling one out, and an answer singled out by aesthetics starts wrong.}"
+   "\\cpara{Links the case to ``Einstein's Arrogance'': with many possible answers, most of the work lies in singling one out, and an answer singled out by aesthetics has no reason to be the right one.}"
   ],
   [
    9951,

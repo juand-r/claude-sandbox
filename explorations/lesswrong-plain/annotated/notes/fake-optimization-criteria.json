@@ -2,7 +2,60 @@
  "slug": "fake-optimization-criteria",
  "header": "\\post{Fake Optimization Criteria}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/i6fKszWY6gLZSX2Ey/fake-optimization-criteria}\n",
  "skeleton_sha": "e6257df2b5c851fb6cc4b4606437b68d1d807c7172f959e43df78e9f76184a57",
- "post_sha": "e6257df2b5c851fb6cc4b4606437b68d1d807c7172f959e43df78e9f76184a57",
+ "post_sha": "647962e6b64d41ef564c422f8fc23eb4c7d38effd20f183ff1aa1574803be62d",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   138,
+   "\\cpara{Sums up the author's earlier posts on rationalization, with a link on each word. The claim that beating this ``metabias'' would let us ``recover from almost any other error of fact'' is given without argument.}"
+  ],
+  [
+   2225,
+   "\\cpara{States the problem for decisions: seeing what a criterion really endorses. The figures agree: \\$1 million buys 5,000 laptops at \\$200 each.}"
+  ],
+  [
+   2619,
+   "\\cpara{Says, with ``seem,'' that people can argue any goal into any action, and gives two rhetorical examples.}"
+  ],
+  [
+   2935,
+   "\\cpara{Explains the knack by ancestral politics.}"
+  ],
+  [
+   3249,
+   "\\clogic{The knack was hedged with ``seem'' a sentence earlier; its evolutionary explanation is not hedged at all (``There's no mystery about this''), and no evidence is given for it. The Uglak line is a joke.}"
+  ],
+  [
+   3263,
+   "\\cpara{Asks how anyone could prove what a goal implies, using Mugabe as the example; the post itself calls the obvious answer ``a good guess.''}"
+  ],
+  [
+   3687,
+   "\\cpara{Asks whether rationalization can even be proved without a known criterion, and answers yes in a parenthesis: people's views on office politics track their interests. So what the post needs a pure optimizer for is not proof that rationalization happens, but knowing exactly what a criterion implies. The next paragraph asks for that.}"
+  ],
+  [
+   4401,
+   "\\cpara{Asks for an optimizer with a known goal and no other desires, whose output can be compared with human rationalizations of that goal.}"
+  ],
+  [
+   4999,
+   "\\cpara{Answers: natural selection, which has no human sympathies and optimizes only inclusive genetic fitness, though it does not maximize it.}"
+  ],
+  [
+   5838,
+   "\\cpara{Gives the comparison: the group selectionists predicted restraint; the laboratory produced cannibalism. On the four traits Wade reported, see the notes on the previous post.}"
+  ],
+  [
+   6294,
+   "\\cfact{I found no prediction by Wynne-Edwards about selection for small population size; Wade's experiment came fourteen years after his book. His hypothesis concerned social conventions that keep numbers below what the food will bear, with surplus animals dying (see the notes on ``The Tragedy of Group Selectionism'').}"
+  ],
+  [
+   6360,
+   "\\cpara{Raises the objection that human morality does not care about genetic fitness.}"
+  ],
+  [
+   6728,
+   "\\cpara{Answers by analogy: learn to hear a single note before an orchestra. No evidence is given that practice on evolutionary cases improves the judgement of moral principles. In the post's own example the answer came from a laboratory result, and the post's premise is that for human criteria no such check exists.}"
+  ]
+ ]
 }

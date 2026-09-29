@@ -2,7 +2,7 @@
  "slug": "the-hidden-complexity-of-wishes",
  "header": "\\post{The Hidden Complexity of Wishes}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes}\n",
  "skeleton_sha": "569f0d9cfe58c795f5a83f4337fc1d7fe0e2a3e7b1ecaad32eb0fc593316464a",
- "post_sha": "e27639ef9ddcfda8f68f18dc824837609a2d7514dd4c245b912f185585bc58cc",
+ "post_sha": "716846ebcab7ef85f10b78c6fe2ecc495a192b81a36153a15240e4eea4ad6e39",
  "edits": [],
  "notes": [
   [
@@ -71,11 +71,11 @@
   ],
   [
    7212,
-   "\\cfact{The experiment is Michael Wade's (\\textsc{Proceedings of the National Academy of Sciences}, 1976). Its abstract names changes in ``fecundity, developmental time, body weight, and cannibalism rates'' as ``responsible in part'' for the smaller populations, so cannibalism was one of four factors. I could not reach the full paper, and could not find a source for ``especially of immature females.''}"
+   "\\cfact{The experiment is Michael Wade's (\\textsc{Proceedings of the National Academy of Sciences}, 1976). Cannibalism was one of four traits that changed, and no source was found for ``especially of immature females''; see the notes on ``The Tragedy of Group Selectionism,'' where the post's account of Wade's experiment and of the group selectionists is discussed.}"
   ],
   [
    7584,
-   "\\clogic{The post quotes none of the three biologists, and the record for Allee sits uneasily with the claim. \\textsc{Principles of Animal Ecology} (1949), with Allee as first author, reports Chapman's finding (1928) that adult flour beetles, the genus of Wade's experiment, eat their own eggs, and calls it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370). Cannibalism as a check on numbers was known in Allee's school. Whether they saw that group selection would favor it, the post gives no evidence either way.}"
+   "\\clogic{The post quotes none of the three biologists. The record does not support the claim well: cannibalism was a known check on flour-beetle numbers in Allee's school. See the notes on ``The Tragedy of Group Selectionism.''}"
   ],
   [
    7660,

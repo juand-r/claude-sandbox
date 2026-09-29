@@ -2,7 +2,7 @@
  "slug": "evolving-to-extinction",
  "header": "\\post{Evolving to Extinction}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/gDNrpuwahdRrDJ9iY/evolving-to-extinction}\n",
  "skeleton_sha": "0bd3875f4b327a1a82db8d2f6ff6362cefd3b1bf2e57221e045d0b6d49f8247c",
- "post_sha": "1cf6ea7456eb95ccd63668917324e614dea3a2426b40c9dc1cd31f4f7b8c5e4e",
+ "post_sha": "aaf463be1cc637a87b1313c9ac390530d24c337fcf6b858969c85fd6d5c47dd6",
  "edits": [],
  "notes": [
   [
@@ -27,7 +27,7 @@
   ],
   [
    2940,
-   "\\cpara{Concludes that in humans individual selection outweighs group selection, since births are near equal; the next paragraph qualifies ``at a glance.'' This is the book's first use of ``group selection,'' and it is not defined here. The post that explains it, ``The Tragedy of Group Selectionism,'' comes next in the book but was posted nine days earlier.}"
+   "\\cpara{Concludes that in humans individual selection outweighs group selection, since births are near equal; the next paragraph qualifies ``at a glance.'' Here the book first discusses group selection, and the term is not defined. The post that explains it, ``The Tragedy of Group Selectionism,'' comes next in the book but was posted nine days earlier.}"
   ],
   [
    2990,
@@ -95,7 +95,7 @@
   ],
   [
    11359,
-   "\\cpara{Generalizes: multicellular bodies exist only because they suppress evolution among their cells. Stated without a source.}"
+   "\\cpara{Generalizes: multicellular bodies exist only because they suppress evolution among their cells.}"
   ],
   [
    11575,

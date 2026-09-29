@@ -324,3 +324,146 @@ Why: Same.
 - Before:  The book's reader meets it undefined.}
 - After: }
 
+
+## annotated/afterwords/evolving-to-extinction.tex
+
+Why: Absence of a source is not proof of a misdescription; the book's order is the editors' choice.
+
+- Before: The mouse example is misdescribed. The post describes a mouse gene on the male sex chromosome that yields only sons. I could find no such gene.
+- After: The mouse example could not be traced. The post describes a mouse gene on the male sex chromosome that yields only sons, and no such gene was found.
+
+- Before: 
+
+Finally, a point about the book rather than the post. Here the book first discusses group selection, without defining it; the post that explains it comes next in the book, though it was written nine days earlier.
+- After: 
+
+- Before: a misdescribed mouse gene,
+- After: a mouse gene that could not be traced,
+
+
+## annotated/posts/the-tragedy-of-group-selectionism.tex
+
+Why: Fair reading: the post says ``would now regard as magical thinking'', a judgement about expecting nature to be kind, which its own ``possible but very difficult'' does not contradict.
+
+- Before: \clogic{The label sits uneasily with the post's own account below: the mechanism was ``possible but very difficult,'' and group selection later revived ``somewhat.'' A hypothesis that is possible but needs unlikely conditions is a quantitative mistake, not magic.}
+- After: 
+
+
+## annotated/afterwords/the-tragedy-of-group-selectionism.tex
+
+Why: Same.
+
+- Before:  And the post calls such views ``magical thinking'' while granting, a few paragraphs later, that the mechanism was ``possible but very difficult.''
+- After: 
+
+
+## honest/sections/the-tragedy-of-group-selectionism.tex
+
+Why: Same.
+
+- Before:  \nb{So by the post's own account it was not magic but a question of numbers.}
+- After: 
+
+
+## annotated/posts/fake-optimization-criteria.tex
+
+Why: Fair reading: ``inclusive genetic fitness'' is a gene's-eye criterion, and the transposons maximize exactly that, so they do not show the wording loose. Individual selection within groups is present in any evolution; the experimenter's group criterion is the post's single criterion.
+
+- Before: \clogic{Loosely worded. ``Evolving to Extinction,'' just before in the book, describes transposons, which it calls ``extremely fit'' although they cause more mutations in the organisms that carry them. There selection on the gene works against the organism, so what natural selection optimizes depends on the level at which one looks.}
+- After: 
+
+- Before: \clogic{Wade's populations were under two selections at once: the experimenter's group selection for small numbers, and ``strong individual selection'' within each population, which on its own cut the control populations ``from over 200 adults to near 50'' (Wade's 1976 abstract). The result came from both together, which sits uneasily with the post's later description of the case as ``a single monotone optimization criterion.''}
+- After: 
+
+
+## annotated/afterwords/fake-optimization-criteria.tex
+
+Why: Same; the Wade details are made once, in The Tragedy of Group Selectionism.
+
+- Before: The case it offers does not meet that need as well as the post says. The claim that selection's output is optimized ``only for inclusive genetic fitness'' is loosely worded; the preceding post in the book describes transposons that spread while harming the organisms that carry them, so what selection favours depends on the level. The example itself, Wade's flour beetles, was shaped by two selections at once, the experimenter's selection of groups for small numbers and strong individual selection within each group. And the cannibalism was one of four traits that changed.
+
+The comparison with Wynne-Edwards is also loose.
+- After: The comparison with Wynne-Edwards is loose.
+
+- Before: and the experiment came fourteen years after his book.
+- After: and the experiment came fourteen years after his book. On Wade's results, see the notes on ``The Tragedy of Group Selectionism.''
+
+- Before: answered with an example that had more than one criterion at work, a prediction attributed to Wynne-Edwards that I could not find,
+- After: answered with a prediction attributed to Wynne-Edwards that could not be found,
+
+
+## honest/sections/fake-optimization-criteria.tex
+
+Why: Same.
+
+- Before:  \nb{In ``Evolving to Extinction,'' just before this post in the book, Yudkowsky describes transposons that spread while harming the organisms that carry them. What selection favours depends on the level at which one looks.}
+- After: 
+
+- Before:  Wade's beetles were also under strong individual selection within each population, and cannibalism was one of four traits that changed; see ``The Tragedy of Group Selectionism.''}
+- After:  See ``The Tragedy of Group Selectionism.''}
+
+
+## annotated/posts/the-hidden-complexity-of-wishes.tex
+
+Why: STANDARDS 2.5: the group-selection points are made in full in The Tragedy of Group Selectionism (order 138); here short notes with pointers.
+
+- Before: \cfact{The experiment is Michael Wade's (\textsc{Proceedings of the National Academy of Sciences}, 1976). Its abstract names changes in ``fecundity, developmental time, body weight, and cannibalism rates'' as ``responsible in part'' for the smaller populations, so cannibalism was one of four factors. I could not reach the full paper, and could not find a source for ``especially of immature females.''}
+- After: \cfact{The experiment is Michael Wade's (\textsc{Proceedings of the National Academy of Sciences}, 1976). Cannibalism was one of four traits that changed, and no source was found for ``especially of immature females''; see the notes on ``The Tragedy of Group Selectionism,'' where the post's account of Wade's experiment and of the group selectionists is discussed.}
+
+- Before: \clogic{The post quotes none of the three biologists, and the record for Allee sits uneasily with the claim. \textsc{Principles of Animal Ecology} (1949), with Allee as first author, reports Chapman's finding (1928) that adult flour beetles, the genus of Wade's experiment, eat their own eggs, and calls it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370). Cannibalism as a check on numbers was known in Allee's school. Whether they saw that group selection would favor it, the post gives no evidence either way.}
+- After: \clogic{The post quotes none of the three biologists. The record does not support the claim well: cannibalism was a known check on flour-beetle numbers in Allee's school. See the notes on ``The Tragedy of Group Selectionism.''}
+
+
+## annotated/afterwords/the-hidden-complexity-of-wishes.tex
+
+Why: Same.
+
+- Before: The second example is less secure than the first. Wade's experiment is real, but its abstract lists cannibalism as one of four changes ``responsible in part'' for the smaller populations, and I could not find a source for ``especially of immature females.'' The claim that the group selectionists ``simply didn't think of it'' is about what three named scientists thought, and none of them is quoted. The textbook with Allee as first author described egg-eating in flour beetles as a check on population growth.
+- After: The second example, Wade's flour beetles, repeats the account in ``The Tragedy of Group Selectionism,'' and the notes there apply: cannibalism was one of four traits that changed, and the claim that the group selectionists ``simply didn't think of it'' quotes none of them.
+
+
+## honest/sections/the-hidden-complexity-of-wishes.tex
+
+Why: Same.
+
+- Before: \nb{In Michael Wade's experiment, cannibalism was one of four changes the paper's abstract calls ``responsible in part'' for the smaller populations. No source was found for ``especially of immature females.'' The post quotes none of the three biologists. A 1949 textbook with Allee as first author described egg-eating in flour beetles as a check on population growth.}
+- After: \nb{Cannibalism was one of four traits that changed, and the post quotes none of the three biologists; see ``The Tragedy of Group Selectionism.''}
+
+
+## annotated/afterwords/anthropomorphic-optimism.tex
+
+Why: Same.
+
+- Before: The record that is easy to find does not fit the picture well. The post has the group selectionists envision animals that restrain their breeding and live ``in quiet peace with enough food for all.'' Wynne-Edwards described his own theory as one in which individuals ``compete for the right to feed'' and the losers ``emigrate, or get killed by predators, disease, or starvation.'' The post says they did not think of cannibalism. A textbook with Allee as first author described egg-eating in flour beetles as a check on population growth. Wade's abstract lists cannibalism as one of four changes behind the smaller populations, and I could not source ``especially female larvae.''
+- After: The record that is easy to find does not fit the picture well, as the notes on ``The Tragedy of Group Selectionism'' show: Wynne-Edwards described competition and death, not ``quiet peace,'' and cannibalism was a known check on flour-beetle numbers.
+
+
+## honest/sections/anthropomorphic-optimism.tex
+
+Why: Same.
+
+- Before: \nb{Wynne-Edwards described his theory differently: individuals ``compete for the right to feed,'' and those who lose ``emigrate, or get killed by predators, disease, or starvation.'' Wade's abstract lists cannibalism as one of four changes behind the smaller populations; no source was found for ``especially female larvae.''}
+- After: \nb{Wynne-Edwards described competition and death, not quiet peace; see ``The Tragedy of Group Selectionism.''}
+
+- Before:  \nb{A 1949 textbook with Allee as first author described adult flour beetles eating their own eggs as a check on population growth. See ``The Hidden Complexity of Wishes.''}
+- After: 
+
+
+## annotated/posts/anthropomorphic-optimism.tex
+
+Why: Pointers now go to the first full statement, in book order.
+
+- Before: As noted on ``The Hidden Complexity of Wishes,'' Wade's abstract lists cannibalism as one of four changes, and I could not find the source of ``especially female larvae.''}
+- After: As noted on ``The Tragedy of Group Selectionism,'' cannibalism was one of four traits that changed, and no source was found for ``especially female larvae.''}
+
+- Before: on the evidence about Allee's school, see the note on ``The Hidden Complexity of Wishes.''}
+- After: on the evidence about Allee's school, see the notes on ``The Tragedy of Group Selectionism.''}
+
+
+## annotated/posts/the-tragedy-of-group-selectionism.tex
+
+Why: The Allee textbook fact (checked by the Wishes agent) moves to the first full statement, so later pointers to ``Allee's school'' land on it.
+
+- Before: ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965).}
+- After: ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965). The textbook with Allee as first author, \textsc{Principles of Animal Ecology} (1949), already reported Chapman's finding (1928) that adult flour beetles eat their own eggs, and called it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370).}
+
