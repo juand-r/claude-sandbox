@@ -1,0 +1,21 @@
+\begin{afterword}
+\summaryhead
+
+The post extends the previous post's account of mutual information to three variables. With X and Y of the same parity, and Z their parity, subtracting the three pairwise mutual informations from the sum of the entropies gives 3 bits instead of the true 4, because the information X gives about Y passes through Z and is counted twice. The author gives the correct formula, which uses the conditional mutual information $I(X;Y|Z)$, and shows how to compute conditional entropies. A variable Z screens off X from Y when, once Z is known, learning Y no longer changes beliefs about X.
+
+The post then takes five properties, such as speaking, wearing clothes and having red blood, each of which is evidence about the others. A sixth, central variable such as ``human'' may screen them all off. Pretending that it does is the Naive Bayes method: observations update the class, and the class predicts the rest. The blegg network from an earlier post has this shape, and with a logistic central unit it is exactly Naive Bayes. The author concludes that neural-network methods that work will turn out to have Bayesian structure.
+
+\responsehead
+
+The mathematics is correct throughout. The pairwise figures, the failed formula and the corrected one all check. The corrected formula, offered with ``I believe,'' holds for any three variables, and so does the second of the ``ancillary theorems.'' The claim that a logistic unit with log-likelihood-ratio weights computes the naive Bayes answer is right and standard.
+
+The two halves of the post are loosely joined. The first half teaches how to compute conditional entropies. The second uses only conditional independence in its probability form, $p(u|v,w,x,y,z) = p(u|z)$, and the entropy formulas do not appear again.
+
+The method's weakness is named only in passing: the independence ``usually isn't quite true.'' What that costs is not said. When observations tend to go together within a class, naive Bayes counts their shared evidence twice, the error the post itself diagnosed in the three-variable formula, and its probabilities can come out too extreme. Research on the method finds that its classifications can survive this while its probability estimates are optimal only when the assumption holds. That matters here, because the post proposes using those probabilities ``to make any predictions that need making.''
+
+The last step claims more than the example shows. From one exact equivalence, the post moves to a rule for every ad hoc method: ``if it works, will turn out to have Bayesian structure.'' The argument for it is in ``Searching for Bayes-Structure,'' posted two days earlier. That argument shows only that a useful process must have Bayesian structure ``at least a little''; the stronger belief, that the full structure always turns up, rests there on the author's experience. One exact equivalence is a single case of the strong version, not evidence for it in general. The guess that logistic units work well because they ``sneak in a little Bayesian reasoning'' comes with no evidence, and a trained logistic unit need not end up with naive Bayes weights.
+
+Along the way, the claim that ``without conditional independence, the universe would have no structure'' is left unexplained.
+
+In short: correct mathematics and a correct, standard link between naive Bayes and a logistic unit, followed by a claim about every working method that rests on one example and on an argument for a much weaker claim.
+\end{afterword}

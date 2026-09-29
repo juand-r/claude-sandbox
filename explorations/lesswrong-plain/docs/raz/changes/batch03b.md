@@ -43,3 +43,97 @@ Why: Same.
 - Before: \nb{Only the lengths are fixed: in the post's own code, swapping 0 and 1 gives an equally good code. The arbitrariness linguists assert, after Saussure, concerns sound and meaning.}
 - After: \nb{The arbitrariness linguists assert, after Saussure, concerns sound and meaning, and is compatible with this point about length.}
 
+
+## annotated/posts/replace-the-symbol-with-the-substance.tex
+
+Why: Nitpicks cut (mixed metaphors; ``rationalist'' in the method's name). The school picture is hyperbole illustrating what tabooing reveals, hedged, so not a verdict to hold against the post. ``Overstated'' dropped as a label; the counts stay.
+
+- Before: \cstyle{One instruction in three metaphors in one sentence: maps and cities, pointers, and clich\'es.}
+- After: 
+
+- Before: \clogic{In this post the method's own name uses the word: ``the rationalist version'' of Taboo. ``Rationalist'' or ``rationalists'' appears six times.}
+- After: 
+
+- Before: \cpara{Applies the method to school. What the reader is ``much more likely to notice'' is supplied by the post, and part of it is a verdict, not a detail: ``education'' is ``forgetting the material as soon as you're tested on it,'' offered with ``currently seems.'' It fits the student in the quotation, who intends to forget. The post addresses it to any reader in school.}
+- After: \cpara{Applies the method to school, with a deliberately bleak picture of what one would notice, hedged with ``currently seems.''}
+
+- Before: \cfact{Overstated. The published text
+- After: \cfact{The published text
+
+
+## annotated/afterwords/replace-the-symbol-with-the-substance.tex
+
+Why: Same.
+
+- Before: The post's one application to a live subject, school, gives the reader a result rather than the method. Among the details one is ``much more likely to notice'' is that ``education'' is ``forgetting the material as soon as you're tested on it.'' That is a verdict, not a detail. It fits the student in the quotation from ``Lost Purposes,'' who means to forget; the post addresses it to any reader in school.
+
+
+- After: 
+
+- Before: 
+
+The post ends with the most important word to taboo, left unnamed; the linked posts make it ``rationality.'' The method's own name in this post, ``the rationalist version'' of Taboo, uses a form of the word.
+- After: 
+
+- Before: but the example is said to avoid words it uses, and the one application to a live subject hands the reader a verdict.
+- After: but the example is said to avoid words it uses.
+
+
+## honest/sections/replace-the-symbol-with-the-substance.tex
+
+Why: Same.
+
+- Before:  \nb{The last is a verdict, not a detail. It fits the quoted student, who intends to forget.}
+- After: 
+
+- Before:  \nb{The posts linked here make the word ``rationality.'' This post calls its own method ``the rationalist version'' of Taboo, and uses ``rationalist'' or ``rationalists'' six times.}
+- After: 
+
+
+## annotated/posts/fallacies-of-compression.tex
+
+Why: Style nitpick.
+
+- Before: \cstyle{Within five paragraphs the same thing is a point on a map, a folder in a filing system, a bucket, a file, and an atom split in two.}
+- After: 
+
+
+## annotated/afterwords/fallacies-of-compression.tex
+
+Why: Credit kept as information without implying the author took the analysis as his own; style points cut.
+
+- Before:  The post names Chalmers only for the hard problem, so a reader could take the rest for the author's own observations.
+- After:  The post names Chalmers for the hard problem, and a reader who wants the fuller analysis will find it in that paper.
+
+- Before: 
+
+A smaller point of style: the claim that splitting a concept is a scientific challenge is made three times, and the image for a concept changes from paragraph to paragraph: a point on a map, a folder, a bucket, a file, an atom.
+- After: 
+
+- Before: In short: a clear distinction, well illustrated by the detective's twin, whose two main examples come with less history than they have: Aristotle had already split ``sound,'' and the analysis of ``consciousness,'' down to the name bait-and-switch, is in a paper by Chalmers, whom the post names only for the hard problem.
+- After: In short: a clear distinction, well illustrated by the detective's twin, whose two main examples have more history than the post gives: Aristotle had already split ``sound,'' and Chalmers's 1995 paper, which the post cites for the hard problem, already analysed ``consciousness'' this way.
+
+
+## annotated/posts/categorizing-has-consequences.tex
+
+Why: Nitpick: a side remark about when people learn their blood types.
+
+- Before: \cfact{Given without a source, and the danger just described does not require it. Prevention happens during pregnancy. MedlinePlus: ``If the father of the infant is Rh-positive or if his blood type is not known, the mother is given an injection of RhoGAM during the second trimester.''}
+- After: 
+
+
+## annotated/afterwords/categorizing-has-consequences.tex
+
+Why: Same.
+
+- Before:  One sentence has no support: that ``people learn their blood types before they marry.'' The danger it follows from is handled during pregnancy.
+- After: 
+
+
+## honest/sections/categorizing-has-consequences.tex
+
+Why: Same.
+
+- Before:  \nb{No source is given. The standard prevention happens during pregnancy: if the father's type is not known, the mother is given the protective injection anyway.}
+- After: 
+

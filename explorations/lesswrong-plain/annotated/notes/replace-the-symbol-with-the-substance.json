@@ -1,0 +1,101 @@
+{
+ "slug": "replace-the-symbol-with-the-substance",
+ "header": "\\post{Replace the Symbol with the Substance}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/GKfPL6LQFgB49FEnv/replace-the-symbol-with-the-substance}\n",
+ "skeleton_sha": "bad4cedfaab5f27508f3e0f0ae6e847e5dc88fa74dd4256e1bb3a8dc4a7e74cc",
+ "post_sha": "d88df1104ff414515ccf3e601f3fa20d25c4c0492b7542c4771f4f496bb79e02",
+ "edits": [],
+ "notes": [
+  [
+   160,
+   "\\cpara{Picks up the baseball example from the previous day's post, ``Taboo Your Words'' (15 February 2008), and states the goal: to describe a thing without its usual word, not to find a synonym the card happens to allow.}"
+  ],
+  [
+   583,
+   "\\cpara{The answer: visualize, as in the earlier post ``Original Seeing'' (October 2007). That post quotes Robert Pirsig's story of a student who could write only after she was told to start with one brick of one building.}"
+  ],
+  [
+   781,
+   "\\cpara{The first of three worked examples: the bat, described by its shape, material and use.}"
+  ],
+  [
+   919,
+   "\\cpara{The second example: the ball.}"
+  ],
+  [
+   1126,
+   "\\cpara{The third example: the bases, described by their role in the game's rules.}"
+  ],
+  [
+   1314,
+   "\\cpara{Names the obstacle: a familiar word stands in for the details and hides them. Links the point to two earlier posts, on clich\\'es and on cached thoughts.}"
+  ],
+  [
+   1931,
+   "\\cpara{Ranks Taboo among the ``fundamental'' capacities, on the same level as asking ``Why?'' The ranking is asserted; no reason is given for it.}"
+  ],
+  [
+   2258,
+   "\\cpara{Lists six related ideas, each with a one-clause reason: pragmatism, reductionism, hugging the query, avoiding cached thoughts, ``Show, don't tell!'', and keeping one's purpose.}"
+  ],
+  [
+   3362,
+   "\\cpara{Quotes the author's ``Lost Purposes'' (25 November 2007) word for word: a student studies ``12th-century knitting patterns'' only because the degree, and then the job, require it.}"
+  ],
+  [
+   4079,
+   "\\cpara{Applies the method to school, with a deliberately bleak picture of what one would notice, hedged with ``currently seems.''}"
+  ],
+  [
+   4556,
+   "\\cpara{Connects lost purposes to categories: anyone who attends college matches ``getting an education,'' whether or not they learn.}"
+  ],
+  [
+   4931,
+   "\\cpara{The post's new step: a mental category that only partly matches a goal can fail inside one head the way a proxy measure fails in an institution. The institutional half, teaching to the test, is Campbell's law; see the note on ``Lost Purposes.'' The step is illustrated by the one example of education and is not otherwise supported.}"
+  ],
+  [
+   5593,
+   "\\cpara{States the general principle: a category discards information, sometimes relevant information, and Taboo is the first remedy. The falling tree and the blegg come from earlier posts in the sequence.}"
+  ],
+  [
+   6247,
+   "\\cpara{Applies the point to the method's own name. The board game bans five words, which is not enough to force original seeing, so what matches the label ``play Taboo'' need not serve the purpose.}"
+  ],
+  [
+   6842,
+   "\\cpara{Specifies the method more fully than ``Taboo Your Words'' did. The player bans, by choice, the synonyms the card leaves out, and any newly coined word or phrase that would serve as the same handle.}"
+  ],
+  [
+   7415,
+   "\\cpara{Asks the reader to turn the method on the method: what is each part of playing Taboo for?}"
+  ],
+  [
+   7595,
+   "\\cpara{Generalizes: seeing one's activities afresh shows one's goals, and habits one would otherwise not keep.}"
+  ],
+  [
+   7876,
+   "\\cpara{Summarizes: purpose is lost when a symbol (a degree, a test score, medical care) displaces the substance (learning, knowledge, health), and the cure is the reverse.}"
+  ],
+  [
+   8102,
+   "\\cpara{The title's instruction, given in eleven phrasings in one sentence. The phrasings borrow terms from linguistics, programming and maps.}"
+  ],
+  [
+   8542,
+   "\\cpara{Points to a finished application of the method, ``The Simple Truth.'' That dialogue does describe reality in lower-level terms, as ``whatever-it-is that determines my experimental results.'' The parenthesis also gives a partial answer to the stopping question raised in the notes on ``Taboo Your Words'': the test is whether the result ``fulfilled its purpose.''}"
+  ],
+  [
+   8837,
+   "\\cfact{The published text of ``The Simple Truth'' uses several of the listed words: forms of ``believe'' and ``belief'' 54 times, ``reality'' 15 times, ``semantic'' once. They occur in the narrator's own account, not only in the opponents' lines: ``The correspondence between reality and my beliefs comes from reality controlling my beliefs, not the other way around.'' The parenthesis that follows names only ``true'' as an exception.}"
+  ],
+  [
+   9168,
+   "\\cpara{A second example: Bayes's rule states what evidence does in mathematics. The claim that trying to define such terms in words means you ``just go in circles'' is given without argument.}"
+  ],
+  [
+   9402,
+   "\\cpara{The word is not named; the posts linked here make it ``rational'' or ``rationality.'' The earlier warnings gave a reason close to this one. In ``Twelve Virtues of Rationality,'' telling yourself ``It is my duty to be rational'' is said to ``only enshrine your mistaken conception.''}"
+  ]
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "slug": "categorizing-has-consequences",
+ "header": "\\post{Categorizing Has Consequences}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/veN86cBhoe7mBxXLk/categorizing-has-consequences}\n",
+ "skeleton_sha": "4320111d678cd8e5743f81d6987fba7f37ba17479e51e7e81ed9691f404b9776",
+ "post_sha": "17cef11725b34e537b4ece648c50cacee72765938c2a709802601cac398841bc",
+ "edits": [],
+ "notes": [
+  [
+   144,
+   "\\cpara{Sets up blood types as real categories with medical uses. The history checks: Landsteiner's 1930 Nobel Prize was ``for his discovery of human blood groups,'' and he also identified the Rh factor, the post's ``+'' antigen, with Alexander Wiener in 1937.}"
+  ],
+  [
+   1029,
+   "\\cpara{Gives the Japanese stereotypes. Wikipedia's article on the theory confirms that blood type horoscopes ``are featured in morning television shows and daily newspapers.''}"
+  ],
+  [
+   1675,
+   "\\cpara{Argues that the fad is odd because blood types are a modern discovery, with no mystical past, and lay people know of them only on authority.}"
+  ],
+  [
+   2252,
+   "\\cpara{The main inference, that the stereotypes ``must have arisen strictly from the mere existence of the labels,'' is stronger than the history allows. As Wikipedia summarizes it, the stereotypes have authors: Takeji Furukawa's 1927 paper ``The Study of Temperament Through Blood Type''; a later study by Furukawa that explained Taiwanese resistance to Japanese rule by the share of type O blood; and Masahiko Nomi, since ``The popular belief originates with publications by Masahiko Nomi in the 1970s.'' So the case shows people believing claims that someone wrote about a category, the post's fourth explanation below. It does not show stereotypes arising from labels alone.}"
+  ],
+  [
+   2474,
+   "\\cpara{Such experiments had been done, and they fit the prediction. Carmichael, Hogan and Walter (1932) showed people simple drawings, each with one of two names, and concluded that ``naming a form immediately before it is visually presented may in many cases change the manner in which it will be reproduced.'' Tajfel and Wilkes (1963) labeled lines of different lengths: when the labels went with length, lines in different classes were ``judged as farther apart'' than in an unlabeled series.}"
+  ],
+  [
+   3224,
+   "\\clogic{The Tajfel and Wilkes study also sets a limit on ``mere'' labeling. Tajfel and Wilkes: ``A classification which is not coherently related to the physical scale does not affect judgement in this manner.'' A 2002 replication (Corneille and colleagues) found the effect larger when lines were ``systematically categorized'' than when they were not. In these studies labels mattered most when they went with what was being judged.}"
+  ],
+  [
+   3238,
+   "\\cpara{The first of four explanations: a boundary makes the mind look for similarities inside it. The second sentence is hedged (``seem'') and unsourced. The effect it describes has a name, illusory correlation, a term Wikipedia says was ``coined by Chapman (1967)'' and calls ``one way stereotypes form and endure.''}"
+  ],
+  [
+   3677,
+   "\\cpara{The second explanation, from the network model of ``Neural Categories.''}"
+  ],
+  [
+   3866,
+   "\\cpara{The third, from ``Fallacies of Compression,'' posted two days earlier.}"
+  ],
+  [
+   4097,
+   "\\cpara{The fourth: once a category is named, people can make up claims about it and believe them. Of the four, this is the one the history of the blood-type theory fits (see the note on the fourth paragraph).}"
+  ],
+  [
+   4495,
+   "\\cpara{Adds a Western case. The bestseller claim checks: the publisher says the book ``became a New York Times bestseller.'' The diet rests on another made-up claim about the categories, that each blood type reflects a different ancestral diet (Wikipedia, ``Blood type diet'').}"
+  ],
+  [
+   4685,
+   "\\cpara{Concludes that drawing a category is not a neutral act for a human mind, and ties this to the sequence's theme that you cannot define a word any way you like. The conclusion is stated for all categories; the post's evidence is one category of people and a prediction for others.}"
+  ]
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "slug": "fallacies-of-compression",
+ "header": "\\post{Fallacies of Compression}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/y5MxoeacRKKM3KQth/fallacies-of-compression}\n",
+ "skeleton_sha": "42a6548df0ef06409ba3a94258b0674255944d5a39791ebae914604ca0142962",
+ "post_sha": "c9d2ed9d6a728986342ec84b7bce84285903b0a41ae390935c09dc61541aaefe",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Opens with ``the map is not the territory,'' a saying the book's introduction credits to Alfred Korzybski, and adds a second: the territory will not fold into a glove compartment. A map is useful because it leaves things out.}"
+  ],
+  [
+   679,
+   "\\cpara{The arithmetic is right. At a million to one, one centimetre on the ground becomes $10^{-8}$ metres, or 10 nanometres, on the map.}"
+  ],
+  [
+   1140,
+   "\\cpara{Contrasts the size of the visible universe with the size of a skull, with a joke.}"
+  ],
+  [
+   1413,
+   "\\cpara{Concludes that some things distinct in reality must share one point on the mental map.}"
+  ],
+  [
+   1541,
+   "\\cpara{The key claim: compression does not feel like compression, but like seeing one thing. The link is to ``How an Algorithm Feels From Inside'' (11 February 2008).}"
+  ],
+  [
+   1830,
+   "\\cpara{``Sufficiently ancient'' fits some Greek thinkers, but not Aristotle, who made this split. In \\textsc{On the Soul} (about 350 BC) he says that what produces sound is what sets ``in movement a single mass of air'' reaching the ear, and that ``'sound' and 'hearing' are both ambiguous.'' He faults earlier students of nature who held that there is no white or black without sight: ``This ambiguity they wholly failed to notice.'' (Translation by J. A. Smith.)}"
+  ],
+  [
+   2110,
+   "\\cpara{Calls seeing the split an ``essentially scientific'' challenge, and a big and difficult one.}"
+  ],
+  [
+   2303,
+   "\\cpara{Distinguishes two cases: two known things filed under one label, and the ``more dangerous'' case of not knowing that there are two things at all.}"
+  ],
+  [
+   3021,
+   "\\cpara{The post's clearest example. Doubting a fact about Carol is easy; wondering whether there are two Carols is harder, because the file itself must be split.}"
+  ],
+  [
+   3834,
+   "\\cpara{Draws the lesson in one line: it is easier to question one's facts than one's list of what exists.}"
+  ],
+  [
+   4008,
+   "\\cpara{Adds that splitting a concept feels less like zooming in on a map than like splitting an atom.}"
+  ],
+  [
+   4371,
+   "\\cpara{Suggests, with ``seems,'' that coining a new name is what creates the new category, as when the detective starts saying ``Carol-2.''}"
+  ],
+  [
+   4738,
+   "\\cpara{Repeats the point made after the Greek philosopher: the hard part is discovering that the second thing exists.}"
+  ],
+  [
+   4960,
+   "\\cpara{The analysis of ``consciousness'' here closely matches David Chalmers's ``Facing Up to the Problem of Consciousness'' (1995). Chalmers writes that ``Consciousness'' is ``an ambiguous term, referring to many different phenomena,'' lists among them ``the difference between wakefulness and sleep,'' and takes as the paper's example of a theory that explains only the easier phenomena Crick and Koch's ``35-75 hertz neural oscillations,'' proposed as a mechanism for binding. The post names Chalmers only for the hard problem.}"
+  ],
+  [
+   6032,
+   "\\cpara{Chalmers gave the same move the same name in the same paper: a paper that opens with the mystery of experience and ends with a theory of reportability leaves the reader ``feeling like the victim of a bait-and-switch.'' The post adds that if two senses turn out to be one thing, understanding that needs a split first and a reunion after.}"
+  ],
+  [
+   6526,
+   "\\cpara{Restates, for the third time, that expanding the map is a scientific challenge (``I say again''). Gives one rule of thumb, as ``a good guess'': a thing with ``protean and self-contradictory attributes'' may be several things under one name.}"
+  ],
+  [
+   7236,
+   "\\cpara{Ties the skill to the rationalist version of Taboo: words label the points of the map, so avoiding a word, or coining new ones, is often part of expanding it.}"
+  ]
+ ]
+}
