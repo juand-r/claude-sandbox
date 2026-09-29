@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 05:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -927,43 +927,98 @@ Overfull \hbox (4.49997pt too wide) detected at line 342
  []
 
 
-Overfull \hbox (4.49997pt too wide) detected at line 344
+Overfull \hbox (4.49997pt too wide) detected at line 343
  []\T1/ppl/m/n/10 1436
  []
 
 
+Overfull \hbox (4.49997pt too wide) detected at line 344
+ []\T1/ppl/m/n/10 1439
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 345
+ []\T1/ppl/m/n/10 1445
+ []
+
+
 Overfull \hbox (4.49997pt too wide) detected at line 346
- []\T1/ppl/m/n/10 1441
+ []\T1/ppl/m/n/10 1449
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 347
- []\T1/ppl/m/n/10 1445
+ []\T1/ppl/m/n/10 1457
  []
 
 [11]
-Overfull \hbox (4.49997pt too wide) detected at line 348
- []\T1/ppl/m/n/10 1454
- []
-
-
 Overfull \hbox (4.49997pt too wide) detected at line 349
- []\T1/ppl/m/n/10 1463
+ []\T1/ppl/m/n/10 1466
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 350
- []\T1/ppl/m/n/10 1471
+ []\T1/ppl/m/n/10 1470
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 351
- []\T1/ppl/m/n/10 1479
+ []\T1/ppl/m/n/10 1474
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 352
+ []\T1/ppl/m/n/10 1477
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 353
  []\T1/ppl/m/n/10 1481
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 354
+ []\T1/ppl/m/n/10 1485
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 355
+ []\T1/ppl/m/n/10 1492
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 357
+ []\T1/ppl/m/n/10 1496
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 358
+ []\T1/ppl/m/n/10 1500
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 359
+ []\T1/ppl/m/n/10 1509
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 360
+ []\T1/ppl/m/n/10 1518
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 361
+ []\T1/ppl/m/n/10 1526
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 362
+ []\T1/ppl/m/n/10 1534
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 363
+ []\T1/ppl/m/n/10 1536
  []
 
 )
@@ -3309,71 +3364,213 @@ Underfull \hbox (badness 1642) in paragraph at lines 21--21
 [1425
 
 ] [1426] [1427] [1428]) (./afterwords/my-bayesian-enlightenment.tex
-[1429]) [1430] (./posts/use-the-try-harder-luke.tex [1431
+[1429]) [1430] (./posts/trying-to-try.tex [1431
 
 ]
-Underfull \hbox (badness 4569) in paragraph at lines 4--5
-[]\T1/ppl/m/n/10 (+20) "When there's a will to fail, ob-sta-cles can be
+Underfull \hbox (badness 1152) in paragraph at lines 11--11
+[]$[]$\T1/ppl/m/n/10 (+20) The first el-e-men-tary tech-nique of epis-te-mol-og
+y^^Vit's not
  []
 
 [1432
 
-]) (./afterwords/use-the-try-harder-luke.tex [1433]) [1434]
-(./posts/a-sense-that-more-is-possible.tex [1435
+] [1433]) (./afterwords/trying-to-try.tex [1434])
+(./posts/use-the-try-harder-luke.tex [1435]
+Underfull \hbox (badness 4569) in paragraph at lines 4--5
+[]\T1/ppl/m/n/10 (+20) "When there's a will to fail, ob-sta-cles can be
+ []
 
-] [1436
+[1436
 
-] [1437])
-(./afterwords/a-sense-that-more-is-possible.tex [1438]) [1439]
-(./posts/humans-are-not-automatically-strategic.tex [1440
+]) (./afterwords/use-the-try-harder-luke.tex [1437])
+(./posts/on-doing-the-impossible.tex [1438] [1439
+
+] [1440] [1441] [1442])
+(./afterwords/on-doing-the-impossible.tex [1443])
+(./posts/make-an-extraordinary-effort.tex [1444] [1445
+
+] [1446]
+Underfull \hbox (badness 1365) in paragraph at lines 49--49
+[]$[]$\T1/ppl/m/n/10 (+20) Many peo-ple imag-ine some fu-ture that won't be muc
+h
+ []
+
+) (./afterwords/make-an-extraordinary-effort.tex [1447])
+(./posts/shut-up-and-do-the-impossible.tex [1448] [1449
+
+] [1450]
+Underfull \hbox (badness 2302) in paragraph at lines 69--69
+\T1/ppl/m/n/10 (+20) non-default ways of do-ing things^^Veven, try to think cre
+-
+ []
+
+[1451] [1452] [1453] [1454]) (./afterwords/shut-up-and-do-the-impossible.tex
+[1455]) (./posts/final-words.tex [1456] [1457
+
+] [1458] [1459] [1460] [1461]
+[1462]) (./afterwords/final-words.tex [1463]) [1464]
+(./posts/raising-the-sanity-waterline.tex [1465
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+[]\T1/ppl/m/n/10 (+20) Non-existence of on-to-log-i-cally fun-da-men-tal men-ta
+l
+ []
+
+[1466
+
+] [1467]
+Underfull \hbox (badness 2865) in paragraph at lines 49--49
+[]$[]$\T1/ppl/m/n/10 (+20) But there are No-bel lau-re-ates who haven't taken t
+hat
+ []
+
+) (./afterwords/raising-the-sanity-waterline.tex [1468])
+(./posts/a-sense-that-more-is-possible.tex [1469] [1470
+
+] [1471])
+(./afterwords/a-sense-that-more-is-possible.tex [1472])
+(./posts/epistemic-viciousness.tex [1473]
+Underfull \hbox (badness 1642) in paragraph at lines 3--3
+[]$[]$\T1/ppl/m/n/10 (+20) Someone de-serves a large hat-tip for this, but I'm 
+hav-
+ []
+
+
+Underfull \hbox (badness 7522) in paragraph at lines 3--3
+\T1/ppl/m/n/10 (+20) ing trou-ble re-mem-ber-ing who; my records don't seem
+ []
+
+
+Underfull \hbox (badness 5036) in paragraph at lines 3--3
+\T1/ppl/m/n/10 (+20) to show any email or OB com-ment which told me of
+ []
+
+
+Underfull \hbox (badness 3189) in paragraph at lines 3--3
+\T1/ppl/m/n/10 (+20) this 12-page es-say, "[Epis-temic Vi-cious-ness in the Mar
+-tial
+ []
+
+
+Overfull \hbox (204.38216pt too wide) in paragraph at lines 3--3
+\T1/ppl/m/n/10 (-20) Arts](https://web.archive.org/web/20120502203055/http://ar
+tsci.wustl.edu/^^Cgrussell/epistemicviciousness.pdf
+ []
+
+[1474
+
+]) (./afterwords/epistemic-viciousness.tex [1475])
+(./posts/schools-proliferating-without-evidence.tex [1476] [1477
+
+] [1478])
+(./afterwords/schools-proliferating-without-evidence.tex [1479])
+(./posts/3-levels-of-rationality-verification.tex [1480] [1481
+
+] [1482])
+(./afterwords/3-levels-of-rationality-verification.tex [1483])
+(./posts/why-our-kind-can-t-cooperate.tex [1484]
+Underfull \hbox (badness 3792) in paragraph at lines 7--7
+[]$[]$\T1/ppl/m/n/10 (+20) Let me tell you about a dif-fer-ent an-nual fundrais
+-ing
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 7--7
+\T1/ppl/m/n/10 (+20) a non-profit or-ga-ni-za-tion that may not be named.[]$[]$
+  One
+ []
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 7--7
+\T1/ppl/m/n/10 (+20) drawn from the atheist/libertarian/technophile/sf-fan/earl
+y-
+ []
+
+[1485
+
+] [1486] [1487] [1488]
+Underfull \hbox (badness 2922) in paragraph at lines 105--105
+[]$[]$\T1/ppl/m/n/10 (+20) Our cul-ture puts all the em-pha-sis on heroic dis-a
+gree-
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 105--105
+\T1/ppl/m/n/10 (+20) ment and heroic de-fi-ance, and none on heroic agree-ment
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 105--105
+\T1/ppl/m/n/10 (+20) in-vent-ing clever ob-jec-tions to oth-ers' ar-gu-ments.  
+Per-haps
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 105--105
+\T1/ppl/m/n/10 (+20) Valley/programmer/early-adopter crowd stays marginal-ized,
+
+ []
+
+[1489]) (./afterwords/why-our-kind-can-t-cooperate.tex [1490])
+(./posts/tolerate-tolerance.tex [1491]
+Underfull \hbox (badness 1881) in paragraph at lines 9--9
+[]$[]$\T1/ppl/m/n/10 (+20) But I've come to un-der-stand that this is one of Be
+n's
+ []
+
+[1492
+
+]) (./afterwords/tolerate-tolerance.tex [1493]) [1494]
+(./posts/humans-are-not-automatically-strategic.tex [1495
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-[1441
+[1496
 
-] [1442]) (./afterwords/humans-are-not-automatically-strategic.tex
-[1443]) (./posts/toolbox-thinking-and-law-thinking.tex [1444] [1445
+] [1497]) (./afterwords/humans-are-not-automatically-strategic.tex
+[1498]) (./posts/toolbox-thinking-and-law-thinking.tex [1499] [1500
 
-] [1446]
-[1447] [1448] [1449] [1450] [1451])
-(./afterwords/toolbox-thinking-and-law-thinking.tex [1452])
-(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1453] [1454
+] [1501]
+[1502] [1503] [1504] [1505] [1506])
+(./afterwords/toolbox-thinking-and-law-thinking.tex [1507])
+(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1508] [1509
 
 ]
-[1455] [1456] [1457] [1458] [1459] [1460])
-(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1461])
-(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1462]
-[1463
+[1510] [1511] [1512] [1513] [1514] [1515])
+(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1516])
+(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1517]
+[1518
 
-] [1464] [1465] [1466] [1467] [1468])
-(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1469])
-(./posts/on-caring.tex [1470] [1471
+] [1519] [1520] [1521] [1522] [1523])
+(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1524])
+(./posts/on-caring.tex [1525] [1526
 
-] [1472] [1473] [1474] [1475])
-(./afterwords/on-caring.tex [1476] [1477])
-(./posts/strong-evidence-is-common.tex [1478])
-(./afterwords/strong-evidence-is-common.tex [1479
+] [1527] [1528] [1529] [1530])
+(./afterwords/on-caring.tex [1531] [1532])
+(./posts/strong-evidence-is-common.tex [1533])
+(./afterwords/strong-evidence-is-common.tex [1534
 
 ])
-(./posts/pr-is-corrosive.tex [1480]) [1481
+(./posts/pr-is-corrosive.tex [1535]) [1536
 
 ] (./afterwords/pr-is-corrosive.tex)
-[1482] (./main.aux)
+[1537] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A8E1902285A556C085970AAAEB9669C0;68489.
+(rerunfilecheck)             Checksum: 0A2987573C036986133FE8AD45B8F4DB;70609.
  ) 
 Here is how much of TeX's memory you used:
- 29518 strings out of 476182
- 523686 string characters out of 5795595
+ 30125 strings out of 476182
+ 535105 string characters out of 5795595
  1968975 words of memory out of 5000000
- 38332 multiletter control sequences out of 15000+600000
+ 38453 multiletter control sequences out of 15000+600000
  657244 words of font info for 788 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,6n,82p,3175b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3390,10 +3587,10 @@ hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (1482 pages, 6224141 bytes).
+Output written on main.pdf (1537 pages, 6458888 bytes).
 PDF statistics:
- 19281 PDF objects out of 22161 (max. 8388607)
- 17507 compressed objects within 176 object streams
- 10385 named destinations out of 10688 (max. 500000)
- 102657 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 20037 PDF objects out of 22161 (max. 8388607)
+ 18201 compressed objects within 183 object streams
+ 10816 named destinations out of 12825 (max. 500000)
+ 102745 words of extra memory for PDF output out of 106986 (max. 10000000)
 

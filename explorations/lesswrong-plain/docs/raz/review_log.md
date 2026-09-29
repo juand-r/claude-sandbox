@@ -495,3 +495,30 @@ the notes quote them with dates.
   "1997 or 1998" (checked in the saved archive page).
 - Whole-book pass: move the "beisutsukai" gloss to its first occurrence (The Ritual, order 130); Final Words then points back.
 - Tooling, whole-book pass: md2tex leaves stray asterisks on bold-italic sentences (***...***); On Doing the Impossible's skeleton was repaired by hand (markup only; verbatim OK).
+
+## Batch 6b: Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI, 11 posts)
+
+Six agents. Edits in `docs/raz/changes/batch06b.md`.
+
+- Critiques a fair reading answers, cut:
+  - Shut Up and Do the Impossible!: the rule against easy proposals "sits uneasily" with the
+    post's account of "impossible" (the next sentence asks only for suspicion).
+  - Tolerate Tolerance: the Goertzel example "mixes condemning and praising" (the post draws
+    that line itself: "mistakes they make themselves, directly").
+  - Schools Proliferating Without Evidence: "the lesson covers testing, not acting on it"
+    (the post's diagnosis is a field that "unbinds itself from the experimental evidence").
+  - Raising the Sanity Waterline: "takes for granted what the test would show" (the post
+    proposes the test); the Smalley half of a disjunction (kept in a note).
+- Advice and memoir judged as such: exhortations ("only when ... above all else"), a call
+  for ideas that proposes no test, lessons repeated across the sequence, a teacher's creed
+  in fiction (Final Words). Research limits (outcome goals on new tasks, Oettingen's
+  commitment finding) kept as information, out of In short lines.
+- Hedges carry: the Japan comparison in Make an Extraordinary Effort; the opening claim of
+  On Doing the Impossible, qualified later in the post.
+- Points made once: Hamming's "reasonable attack" (Einstein's Superpowers; On Doing the
+  Impossible points there); the AI-Box record (Einstein's Superpowers; Shut Up and Do the
+  Impossible points there). A terminology note on isshokenmei cut, as in batch 2b.
+- Kept: the Rorschach "No" and "randomly selected" professors as overstatements (Schools);
+  the "We now know" diagnosis of religious scientists (Waterline); the unhedged history of
+  martial-arts decline (Epistemic Viciousness); the diagnosis from one fundraiser (Why Our
+  Kind Can't Cooperate), with outside cases as information.

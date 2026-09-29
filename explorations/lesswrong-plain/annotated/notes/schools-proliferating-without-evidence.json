@@ -1,0 +1,93 @@
+{
+ "slug": "schools-proliferating-without-evidence",
+ "header": "\\post{Schools Proliferating Without Evidence}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/JnKCaGcgZL4Rsep8m/schools-proliferating-without-evidence}\n",
+ "skeleton_sha": "9a5a48ce8030f00dc558c4b9772e24bff0f9efaafc50aaa3d02d3bbee9225f9e",
+ "post_sha": "8b131afc553b29743e20b0394f2456d6dd0084677645fab082e794bf409809f2",
+ "edits": [],
+ "notes": [
+  [
+   162,
+   "\\cpara{Introduces Robyn Dawes. Dawes's chapter in \\textsc{Judgment Under Uncertainty} (1982) is ``The robust beauty of improper linear models in decision making'', a reprint of a 1979 paper. \\textsc{House of Cards} was published in 1994.}"
+  ],
+  [
+   552,
+   "\\cpara{Dawes's summary of the book. I could not reach the book, so the quotation is unchecked. What Dawes calls ``simply invalid'' is therapists' claim to superior insight and skill, not the claim that therapy helps; the post keeps that distinction a few paragraphs on, when it grants that patients who see therapists get better faster.}"
+  ],
+  [
+   1149,
+   "\\cpara{The Rorschach as the first example: hundreds of experiments, no evidence that it works, still in use. No study is cited.}"
+  ],
+  [
+   1504,
+   "\\cfact{Overstated. The most critical review before the post, by Lilienfeld, Wood and Garb (\\textsc{Psychological Science in the Public Interest}, 2000), concluded ``that there is empirical support for the validity of a small number of indexes derived from the Rorschach and TAT'' (the Thematic Apperception Test, another projective test), while ``the substantial majority of Rorschach and TAT indexes are not empirically supported.''}"
+  ],
+  [
+   1716,
+   "\\cpara{A verdict on the whole field, drawn from the survival of one test. The evidence on therapy itself follows.}"
+  ],
+  [
+   1790,
+   "\\cpara{Three findings in four sentences, none sourced in the post: therapy beats doing nothing, schools do not differ, and experience brings no gain.}"
+  ],
+  [
+   2071,
+   "\\cfact{This is the ``dodo bird verdict'', named by Saul Rosenzweig in 1936 (Wikipedia, ``Dodo bird verdict''). Major reviews before the post supported it. Luborsky, Singer and Luborsky (1975): ``most studies found insignificant differences in proportions of patients who improved (though most patients benefited).'' Wampold and colleagues' meta-analysis (1997) ``yielded consistent evidence of treatment equivalence'', as a later meta-analysis summarizes it (Marcus and colleagues, 2014).}"
+  ],
+  [
+   2126,
+   "\\cfact{Also supported. Christensen and Jacobson (\\textsc{Psychological Science}, 1994) found that paraprofessional therapists ``usually produce effects that are greater than effects for control conditions and comparable to those for professional therapist treatment''. A later longitudinal study found that therapists' results, on the whole, tended to diminish slightly as their experience grew (Goldberg and colleagues, \\textsc{Journal of Counseling Psychology}, 2016).}"
+  ],
+  [
+   2140,
+   "\\cpara{The most striking claim. The post cites no study; the claim matches Strupp and Hadley's (1979), whose design the note below gives.}"
+  ],
+  [
+   2321,
+   "\\cfact{The professors were not randomly selected. In Strupp and Hadley's study (\\textsc{Archives of General Psychiatry}, 1979), a group of male college students was ``treated by college professors chosen for their ability to form understanding relationships.'' They improved as much as 15 comparable patients treated by experienced therapists.}"
+  ],
+  [
+   2396,
+   "\\clogic{Offered with ``apparently'', on the strength of one study of one kind of patient, helped by people chosen for warmth. Such a study cannot speak for ``anyone''. Its abstract adds that ``Treated groups slightly exceeded the controls'' and that ``Group means, however, obscured considerable individual variability.''}"
+  ],
+  [
+   2410,
+   "\\cpara{``In the entire absence of the slightest experimental evidence for their effectiveness'' sits uneasily with the post's own concession two paragraphs up, that patients who see psychotherapists get better faster than those who do nothing. The sentence fits only a time before such trials, and the post gives no dates for the licensing, court testimony and insurance it lists.}"
+  ],
+  [
+   2672,
+   "\\cpara{The proliferation of schools, with a hedged cause: schools multiplied despite, ``or perhaps because of'', the lack of experiments showing one better than another.}"
+  ],
+  [
+   2900,
+   "\\cpara{A claim about medicine in general, that its essence as society and the courts see it is ``the right air of authority'', deferred to another post and given no evidence here.}"
+  ],
+  [
+   3221,
+   "\\cpara{The post's explanation of the proliferation, offered with ``So far as I can discern'': prestige came from founding a school on charisma and good stories, not from techniques that could be verified. No evidence is given.}"
+  ],
+  [
+   3684,
+   "\\cpara{Goes further, with ``probably'' and ``to no small extent'': the hope of becoming a master like Freud accounts for the existence of psychotherapy itself. No evidence is given for this either.}"
+  ],
+  [
+   4191,
+   "\\cpara{Names other factors that put psychotherapists at risk: patients' deference, society's wish to believe in mental healing, and the dangers of telling people how to think.}"
+  ],
+  [
+   4616,
+   "\\cpara{The contrast case, hedged (``to some extent''): happiness research began with measures that agree with each other. The claim holds up. Sandvik, Diener and Seidlitz (\\textsc{Journal of Personality}, 1993) found that ``Conventional single-item and multi-item self-report measures correlated highly with alternative measures'' of well-being.}"
+  ],
+  [
+   4853,
+   "\\cpara{The general lesson from that case: a new measurement makes new science, and a good one makes good science.}"
+  ],
+  [
+   4982,
+   "\\cpara{The conclusion: an organized practice needs a way to tell how well it is doing, and controlled testing of its techniques. The research the post cites was such testing; the post's diagnosis, a field that ``unbinds itself from the experimental evidence,'' is that the practice was not bound to it.}"
+  ],
+  [
+   5311,
+   "\\cpara{A later addition. ``Dawes wrote in the 80s'' is a slip: \\textsc{House of Cards} appeared in 1994, and the 2000 review cited above still found that projective techniques ``continue to be widely used in clinical and forensic settings.'' The remembered evidence for cognitive-behavioral therapy existed, and it qualifies the dodo bird verdict above: a meta-analysis of trials found through September 2007 found it superior to psychodynamic therapy for anxiety and depressive disorders, though not to interpersonal or supportive therapies (Tolin, \\textsc{Clinical Psychology Review}, 2010).}"
+  ]
+ ]
+}

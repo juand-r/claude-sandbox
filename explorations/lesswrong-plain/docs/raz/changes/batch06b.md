@@ -173,3 +173,82 @@ Why: Fair reading: the post draws the line itself ("subtract points off someone'
 - Before:  \nb{Praising an idea is also a judgment of Goertzel's own, which by the post's later standard would count as his own mistake if the idea is hopeless. A listener can give less weight to his praise without punishing him; the post does not separate the two.}
 - After: 
 
+
+## annotated/afterwords/raising-the-sanity-waterline.tex
+
+Why: Fair reading: the post proposes a test of its premise, so the premise is a hypothesis, not something taken for granted; the Smalley branch is one half of a disjunction whose other half applies (nitpick, kept in the note); "ongoing disaster" is rhetoric.
+
+- Before: But the post takes for granted what the test would show. Its question, what to teach so that ``religion goes underwater'', assumes that general methods taught without mentioning religion would lower religious belief. No evidence is offered for this.
+- After: The premise the test would check, that general methods taught without mentioning religion would lower religious belief, is offered as a hope; no evidence is given for it yet.
+
+- Before: 
+
+The two laureates carry the claim about ``the highest halls of science''. The post says colleagues who had taken the course would have corrected Smalley and Aumann, or pitied them too much to give them a Nobel Prize. The second branch does not apply to Smalley. His prize came in 1996; the creationist statements quoted in the comment the post links are from 2004 and 2005. For Aumann, whose own account of his religion differs from the post's picture, the notes on ``Crisis of Faith'' give the details.
+
+Finally, the post calls the harm done by religion ``current and ongoing disaster'', and asserts this without argument.
+- After: 
+
+For Aumann, one of the two laureates the post names, whose own account of his religion differs from the post's picture, the notes on ``Crisis of Faith'' give the details.
+
+- Before: In short: a testable proposal resting on an untested premise, that general methods would dissolve religion, and a diagnosis of religious scientists drawn from the bare fact of their belief and from two laureates, one of whom made the statements the post points to years after his prize.
+- After: In short: a testable proposal whose premise, that general methods would dissolve religion, is what the test would check, joined to a diagnosis of religious scientists drawn from the bare fact of their belief.
+
+
+## annotated/afterwords/epistemic-viciousness.tex
+
+Why: The dojo is in-person practice, so the book-learning point may not bear (the agent's own doubt); the videos point is a nitpick.
+
+- Before:  The history of decline after real fights ended has no source, and the videos offered for it show black belts losing today, not that things were once better.
+- After:  The history of decline after real fights ended has no source.
+
+- Before:  For the need to trust a teacher, Russell's reason is that a martial art ``can't be learned from a book'', and the post does not say whether that holds for an art the author has so far taught in writing.
+- After: 
+
+- Before: and a claim that every risk factor carries over to rationality training that the post asserts without examining.
+- After: and a closing claim that every risk factor carries over to a rationality dojo, asserted rather than worked through.
+
+
+## annotated/posts/epistemic-viciousness.tex
+
+Why: The dojo is in-person practice, so the book-learning point may not bear (the agent's own doubt); the videos point is a nitpick.
+
+- Before: \clogic{Russell gives a reason for the need to trust a teacher: ``A martial art can't be learned from a book.'' The post does not say whether that reason holds for rationality, which the author has so far taught in writing.}
+- After: 
+
+
+## annotated/afterwords/schools-proliferating-without-evidence.tex
+
+Why: Fair reading: the post's diagnosis is a field that "unbinds itself from the experimental evidence", and its prescription is testing within an organized practice; the "gap" is answered by the post's own words.
+
+- Before: 
+
+The lesson has a gap that the post's own material shows. The post ends by saying that an organized practice needs controlled testing, with ``a control group, an experimental group, and statistics''. But the post itself calls its findings ``the experimental results on the field'': psychotherapy research had such testing. By the post's own account, what failed was that practitioners and institutions did not act on the results. The prescription covers the testing and says nothing about acting on it.
+- After: 
+
+- Before: weakened by overstatements (a flat ``No'' for the Rorschach, ``randomly selected'' professors, ``the entire absence'' of evidence), and a lesson, controlled testing, that the post's own evidence shows the field's research already had.
+- After: with some claims stated more strongly than the studies allow (a flat ``No'' for the Rorschach, ``randomly selected'' professors, ``the entire absence'' of evidence).
+
+
+## annotated/posts/schools-proliferating-without-evidence.tex
+
+Why: Fair reading: the post's diagnosis is a field that "unbinds itself from the experimental evidence", and its prescription is testing within an organized practice; the "gap" is answered by the post's own words.
+
+- Before: The post's own evidence shows that psychotherapy research had such testing. The comparisons of schools, of experience and of professors were controlled studies, and the Rorschach, by the post's account, failed ``hundreds of experiments.'' By the post's own account, what failed was acting on the results, by practitioners and institutions. The prescription covers the testing, not the acting on it.}
+- After: The research the post cites was such testing; the post's diagnosis, a field that ``unbinds itself from the experimental evidence,'' is that the practice was not bound to it.}
+
+
+## honest/sections/epistemic-viciousness.tex
+
+Why: Same as the Response.
+
+- Before:  \nb{Russell's reason for the need to trust a teacher is that a martial art ``can't be learned from a book''. Yudkowsky has so far taught rationality in writing.}
+- After: 
+
+
+## honest/sections/schools-proliferating-without-evidence.tex
+
+Why: Same as the Response.
+
+- Before: \nb{By the post's own account, psychotherapy research had these; its findings are ``the experimental results on the field''. What failed was acting on them, and the prescription does not cover that.}
+- After: \nb{Psychotherapy research had such testing; the post's diagnosis is that the field ``unbinds itself from the experimental evidence.''}
+
