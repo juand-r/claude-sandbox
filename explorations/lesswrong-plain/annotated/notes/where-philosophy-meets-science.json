@@ -1,0 +1,137 @@
+{
+ "slug": "where-philosophy-meets-science",
+ "header": "\\post{Where Philosophy Meets Science}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/Bh9cdfMjATrTdLrGH/where-philosophy-meets-science}\n",
+ "skeleton_sha": "6a51ff4365ea90f9ad709f69769fbf29a1f658fb502bfa6f14f025b6c2c10091",
+ "post_sha": "5b89ae1b1ffba224df2fafc6acccf83c4b506126c1075f0088d1c0beb6de8947",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Opens by nominating the ``most basic'' error of early quantum physics, offered as a lesson for next time and not as blame. ``The dark ages'' is the post's name for the period.}"
+  ],
+  [
+   495,
+   "\\cpara{Sets aside one candidate: bringing mind into fundamental physics reversed a long trend in science, but science allows revolutions.}"
+  ],
+  [
+   973,
+   "\\cpara{The diagnosis. The post names none of the physicists it means. The views that gave the observer's mind a role are usually traced to John von Neumann (1932), Fritz London and Edmond Bauer (1939), and Eugene Wigner (1961). Von Neumann did not leave the instruments out of the physics. In the \\textsc{Stanford Encyclopedia}'s account, he held that ``the measuring instrument may sometime be part of a type 2-process,'' that is, of ordinary evolution by Schr\\\"odinger's equation, and that where the division falls ``is partly arbitrary.'' The diagnosis does not fit him.}"
+  ],
+  [
+   1137,
+   "\\cpara{Grants that most of them knew it ``in theory.''}"
+  ],
+  [
+   1204,
+   "\\cpara{Refers to the sensor experiment of ``Distinct Configurations,'' posted earlier the same day. The physics was studied early: the \\textsc{Stanford Encyclopedia} notes that ``Suppression of interference has featured in many papers since the beginning of quantum mechanics, such as Mott's (1929) analysis of $\\alpha$-particle tracks.''}"
+  ],
+  [
+   1542,
+   "\\clogic{Of the founders, Bohr did not invoke consciousness. The \\textsc{Stanford Encyclopedia} says that the views of von Neumann and Wigner, though often called Copenhagen views, ``were definitely not Bohr's'' (see the notes on ``The World: An Introduction'').}"
+  ],
+  [
+   1556,
+   "\\cpara{Offers an evolutionary explanation, without evidence: our ancestors predicted other people by what they knew, so ``knowing'' still feels simpler than brain states. The remark about hunter-gatherers and particles is a joke.}"
+  ],
+  [
+   2384,
+   "\\cpara{Compares Thor with Maxwell's equations, the example of the author's ``Occam's Razor'': an agent feels simple but takes a far larger program to describe.}"
+  ],
+  [
+   2655,
+   "\\cpara{Applies this to the physicists: ``I know where the photon was'' came to mind, not a correlation between brain states and the photon's history. ``Ancient physicists'' means the founders of the 1920s.}"
+  ],
+  [
+   2911,
+   "\\cpara{Says the same intuition made a rule that configurations have amplitude only ``if you didn't know better'' seem simple.}"
+  ],
+  [
+   3304,
+   "\\cpara{Asks for a formal theory, one a computer could run without a scientist deciding when an ``observation'' occurred. The physicist John Bell made the same complaint: ``What exactly qualifies some physical systems to play the role of `measurer'?'' (``Against `measurement','' 1990).}"
+  ],
+  [
+   3629,
+   "\\cpara{Asks how a theory could compute the brain's particles if it must first decide whether they ``know'' something. This regress is the chain of instruments von Neumann had considered; he ended it with ``an abstract ego'' (\\textsc{Stanford Encyclopedia}).}"
+  ],
+  [
+   3959,
+   "\\cpara{Says that in practice scientists decided when an observation occurred, placing it wherever the predictions required: ``a subtle form of constant tweaking.''}"
+  ],
+  [
+   4267,
+   "\\cpara{Excuses the founders: before Turing, the line between a formal theory and one that needs human interpretation was less clear. Warns that problems are rarely this obvious in foresight.}"
+  ],
+  [
+   4717,
+   "\\cpara{Raises, with ``may seem,'' the lesson that philosophy matters in science.}"
+  ],
+  [
+   4909,
+   "\\cpara{Supports it: the experiments and the statistics were right; the interpretation was not.}"
+  ],
+  [
+   5136,
+   "\\cpara{Calls the errors ``philosophical,'' with ``it seems.''}"
+  ],
+  [
+   5284,
+   "\\cpara{Says the insights the founders needed were philosophical ones.}"
+  ],
+  [
+   5566,
+   "\\cpara{The turn: physicists, not philosophers, cleared it up. For the view the post means, the origin fits. Hugh Everett developed his theory ``while a graduate student in physics at Princeton University,'' and the \\textsc{Stanford Encyclopedia} traces decoherence theory to H.-D. Zeh in the early 1970s and W. Zurek in the early 1980s. Later work on the questions still open includes philosophers of physics: the Encyclopedia's entry on Everett discusses David Wallace (who took a physics doctorate before moving to philosophy), Hilary Greaves and Simon Saunders.}"
+  ],
+  [
+   5708,
+   "\\clogic{``Solved'' goes further than the author went a month later. ``Many Worlds, One Best Guess'' (11 May 2008) says: ``There is no known reason for the Born probabilities,'' the rule that gives quantum outcomes their frequencies, and names ``Wallace, Deutsch, and others'' among those trying to derive it. Whether many-worlds is right is also still disputed among physicists; the case for it is assessed in the notes on ``Many Worlds, One Best Guess.''}"
+  ],
+  [
+   5748,
+   "\\cpara{Grants, with ``Arguably,'' that Leibniz foresaw quantum physics as Democritus was once thought to foresee atoms, and calls this hindsight. The post does not say which of Leibniz's ideas it means.}"
+  ],
+  [
+   6040,
+   "\\cpara{The general claim, offered with ``usually'': science, not the consensus of philosophers, tells us which philosopher was right. The post's own case sits uneasily with it. A month later, in ``The Dilemma: Science or Bayes?'' (13 May 2008), the author rests many-worlds on simplicity (``Nor is the evidence itself in dispute'') and says that physicists who reject it ``aren't disobeying the rules of Science.'' By that account, no experiment has yet told the world which view won.}"
+  ],
+  [
+   6248,
+   "\\cpara{Announces a general point about philosophy and science.}"
+  ],
+  [
+   6389,
+   "\\cpara{A version of the saying is in Bertrand Russell's \\textsc{The Problems of Philosophy} (1912): ``as soon as definite knowledge concerning any subject becomes possible, this subject ceases to be called philosophy, and becomes a separate science.'' Russell adds that ``Newton's great work was called `the mathematical principles of natural philosophy'.''}"
+  ],
+  [
+   6597,
+   "\\cpara{Restates the saying in the post's terms: an insight looks philosophical while it is not yet taught in courses or reduced to calculation.}"
+  ],
+  [
+   6909,
+   "\\cpara{Says the scientific method was a philosophical notion, shown good by the power of science, not by philosophers' agreement. In the period the post means, physics itself was still called natural philosophy, as the Russell passage above notes.}"
+  ],
+  [
+   7250,
+   "\\cpara{Says belief-updating is ``beginning'' to be reduced to calculation, in statistics and Bayesian probability.}"
+  ],
+  [
+   7395,
+   "\\cpara{Says that in Galileo's time only ``vague verbal arguments'' recommended numerical predictions over the Bible or Aristotle.}"
+  ],
+  [
+   7609,
+   "\\cpara{The thesis in full, hedged (``I'm afraid,'' ``usually''): the thinking needed at the frontier looks philosophical, but it takes close involvement with the science, and experiments decide which philosopher won. The evidence is one history told in detail, quantum physics, and one sketched, the scientific method.}"
+  ],
+  [
+   8479,
+   "\\cpara{The recommendation, offered with ``I suggest'': the philosophy of a frontier science is done well only from within that science.}"
+  ],
+  [
+   8994,
+   "\\cpara{Leaves professional philosophers the problems science has no place for yet, and advises them to learn the relevant science, expect experiment to settle their arguments, and run experiments of their own.}"
+  ],
+  [
+   9559,
+   "\\cpara{Draws ``the lesson of history'' from the one history the post examines.}"
+  ]
+ ]
+}

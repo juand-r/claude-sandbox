@@ -167,7 +167,8 @@ def convert_block(block: str, defs: dict) -> str:
                 cur.append(l.strip())
         items.append(" ".join(cur))
         env = "enumerate" if ordered else "itemize"
-        body = "\n".join(r"\item " + with_notes(inline(i)) for i in items)
+        # "{}" keeps an item that begins with "[" from being read as \item's optional label.
+        body = "\n".join(r"\item " + ("{}" if i.startswith("[") else "") + with_notes(inline(i)) for i in items)
         return f"\\begin{{{env}}}\n{body}\n\\end{{{env}}} \\flushnotes"
     return with_notes(inline(" ".join(l.strip() for l in lines))) + r" \flushnotes"
 

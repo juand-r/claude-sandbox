@@ -69,6 +69,7 @@ def tex_to_text(tex: str) -> str:
     tex = unwrap(tex, "href", keep_arg=2, nargs=2)
     for name in ["emph", "textbf", "url", "posthead"]:
         tex = unwrap(tex, name, keep_arg=1, nargs=1)
+    tex = re.sub(r"\\item \{\}", " ", tex)  # \item {} guards an item that begins with "["
     tex = re.sub(r"\\(flushnotes|item|quad)\b", " ", tex)
     tex = re.sub(r"\\(begin|end)\{\w+\}", " ", tex)
     tex = tex.replace("\\\\", " ")  # table row ends

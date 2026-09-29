@@ -1,0 +1,157 @@
+{
+ "slug": "quantum-explanations",
+ "header": "\\post{Quantum Explanations}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/7FSwbFpDsca7uXpQ2/quantum-explanations}\n",
+ "skeleton_sha": "bd58eae20d20e7ae65be96edeb0125769eee01c62bb3be1285e2bbd7158c34d6",
+ "post_sha": "2e9db81d5a71200fe47802d3bd4868bac26a7fb082f5d4f8265bc341beceba75",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{States the post's starting point: the belief that quantum mechanics is ``supposed'' to be confusing is a bad frame of mind for a teacher or a student.}"
+  ],
+  [
+   294,
+   "\\cpara{Adds, as the author's own experience (``I find''), that subjects known as confusing are often not complicated as mathematics, at least at a basic level.}"
+  ],
+  [
+   514,
+   "\\cpara{Says plainly that the author is not a physicist, and offers experience in explaining mathematics instead.}"
+  ],
+  [
+   744,
+   "\\cpara{Gives the author's essay on Bayes's theorem as that experience. The evidence of its success is the author's report of ``frequent grateful emails,'' about another subject.}"
+  ],
+  [
+   1408,
+   "\\cpara{States the principle behind the approach: confusion is in our models, not in the world, so a teacher should not be content to leave students confused.}"
+  ],
+  [
+   1854,
+   "\\cpara{Announces the first departure from the standard introduction: the post will not say that quantum mechanics is supposed to be confusing.}"
+  ],
+  [
+   2085,
+   "\\cpara{The words are Feynman's, from his 1964 Messenger Lectures (\\textsc{The Character of Physical Law}, 1965, ch.~6): ``I think I can safely say that nobody understands quantum mechanics.'' He meant that no one can picture the behavior in familiar terms (``Nobody knows how it can be like that''), and he told his audience to ``relax and enjoy it.'' The post reports his attitude accurately.}"
+  ],
+  [
+   2333,
+   "\\clogic{Stated as settled. The sequence argues for its answer later, but the question is still open. The Stanford Encyclopedia's survey (``Philosophical Issues in Quantum Theory'') opens: ``there is no consensus among physicists or philosophers of physics on the question of what, if anything, the empirical success of quantum theory is telling us about the physical world.'' Near its end the post itself says that ``a sizable community of scientists'' disputes the realist view it takes.}"
+  ],
+  [
+   2347,
+   "\\cpara{As usually reported, von Neumann's line was about mathematics, not quantum mechanics: ``Young man, in mathematics you don't understand things. You just get used to them.'' Wikiquote gives it as told by Felix T. Smith in Gary Zukav's \\textsc{The Dancing Wu Li Masters} (1979), a reply to a friend who did not understand ``the method of characteristics.'' The post's ``is reputed'' allows for doubt, but the remark is no evidence about the ``dark decades'' of quantum mechanics.}"
+  ],
+  [
+   2585,
+   "\\cpara{States a rule for learners: feeling that you do not understand means there is a problem, with you or with the teacher, to be resolved.}"
+  ],
+  [
+   2850,
+   "\\cpara{Restates ``Think Like Reality'' (2007), which said ``Surprise exists in the map, not in the territory'': quantum mechanics is counterintuitive, and the fault lies in the intuitions.}"
+  ],
+  [
+   3532,
+   "\\cpara{Puts the rule as a slogan: think of reality as normal.}"
+  ],
+  [
+   3666,
+   "\\cpara{States the goal: to feel at home in a quantum universe.}"
+  ],
+  [
+   3807,
+   "\\cpara{Announces the method: speak of quantum mechanics as normal and make fun of intuitions that depart from it. The post says openly that this is a device to change the reader's point of view.}"
+  ],
+  [
+   4188,
+   "\\cpara{Announces the second departure: the standard introduction follows the order of discovery.}"
+  ],
+  [
+   4335,
+   "\\cpara{Describes the standard introduction: examples of matter acting like billiard balls, then examples of it acting like waves.}"
+  ],
+  [
+   4696,
+   "\\cpara{Gives the history in outline and dates its end to ``the second half of the twentieth century,'' naming no one. Later posts show that the author means many-worlds, ``first proposed in a 1957 paper by Hugh Everett III'' (``If Many Worlds Had Come First''), together with decoherence, whose modern foundation the Stanford Encyclopedia credits to H.-D. Zeh (1970) and W. Zurek (early 1980s). Feynman dated the end of the ``waves or particles'' confusion earlier, to ``the advent of the correct equations'' in 1925 or 1926.}"
+  ],
+  [
+   5222,
+   "\\cpara{Says the historical approach ensures ``total bewilderment,'' and compares teaching ``wave/particle duality'' to teaching chemistry through the Four Elements.}"
+  ],
+  [
+   5563,
+   "\\cpara{States the post's teaching stance: an electron is neither a billiard ball nor a wave, and must be taken on its own terms. Feynman took the same stance in the lecture cited above: electrons and light ``behave in their own inimitable way,'' and ``I will not describe it in terms of an analogy with something familiar; I will simply describe it.'' The post presents the stance as a departure from the standard introduction and does not credit him for it.}"
+  ],
+  [
+   5841,
+   "\\cpara{Restates the point: it is human intuitions, not the universe, that switch between particles and waves.}"
+  ],
+  [
+   6331,
+   "\\cpara{Warns that switching between the two pictures will confuse the reader.}"
+  ],
+  [
+   6628,
+   "\\cpara{Argues that the order of discovery need not be the order of teaching. Animals, organs, cells, molecules and atoms were found in that order, though the later-found parts are simpler.}"
+  ],
+  [
+   7320,
+   "\\cpara{Asks why physics teaching should start from experimental results, which it counts as a high-level, complicated phenomenon, like biology.}"
+  ],
+  [
+   7508,
+   "\\cpara{Grants that stressing experiments fits the book's own rule, linked here, that a belief should pay rent in expected experience.}"
+  ],
+  [
+   7818,
+   "\\cpara{Gives the objection, with ``it seems to me'': starting from experiments brings in heavy mathematics before the student understands the simplest cases.}"
+  ],
+  [
+   8052,
+   "\\cpara{An analogy from programming: teaching concurrent programs before addition.}"
+  ],
+  [
+   8365,
+   "\\cpara{Allows, with ``Maybe'', that the focus on experiment made sense when no one understood what was going on, and proposes a different approach now.}"
+  ],
+  [
+   8826,
+   "\\clogic{Asserted without evidence. The post reports no comparison of students taught one way with students taught the other.}"
+  ],
+  [
+   8840,
+   "\\cpara{States as fact that the classical world is ``strictly implicit'' in the quantum world. How a world of single outcomes arises is the measurement problem. The Stanford Encyclopedia's entry on decoherence concludes that ``decoherence as such does not provide a solution to the measurement problem, at least not unless it is combined with an appropriate foundational approach to the theory.'' The claim holds on the many-worlds reading the sequence goes on to defend.}"
+  ],
+  [
+   9002,
+   "\\cpara{Compares everyday life to molecules and the quantum level to quarks, and proposes, with ``I think'', to teach the quantum level first.}"
+  ],
+  [
+   9279,
+   "\\cpara{Says the quantum world ``is the scene'' and defines what is normal.}"
+  ],
+  [
+   9485,
+   "\\cpara{Rejects the picture of a classical world that queries a quantum ``server,'' and says the quantum world is ``the really real'' because, ``at a core level, it's the truth.'' The next two paragraphs label this the author's view and say that others dispute it.}"
+  ],
+  [
+   10017,
+   "\\cpara{Declares a ``strictly realist perspective'' and asks non-realists to hold their comments until a later essay. The promise is kept: ``Quantum Non-Realism'' followed a month later.}"
+  ],
+  [
+   10267,
+   "\\clogic{Realism does not by itself give this picture. Pilot-wave theory is realist too: in it ``there are particles with definite trajectories, that are guided by the quantum wave function''; collapse theories, also realist, modify the quantum dynamics (Stanford Encyclopedia, as above). The post sets its view against non-realism only, and no post in the book discusses pilot-wave theory.}"
+  ],
+  [
+   10903,
+   "\\cpara{Warns that ``a sizable community of scientists'' disputes realism, and that the reader is getting the author's view.}"
+  ],
+  [
+   11444,
+   "\\clogic{Offered with ``probably'' and no evidence. The polls since then are of other groups, and neither found a majority for a purely realist view. In a 2011 poll of 33 participants at a conference on quantum foundations, 24 per cent called the quantum state ontic, 27 per cent epistemic or informational, and 33 per cent a mix (Schlosshauer, Kofler and Zeilinger, 2013). In a 2025 \\textsc{Nature} survey of more than 1,100 researchers, as reported by The Quantum Insider, about 36 per cent said the wavefunction is real and 47 per cent that it is not.}"
+  ],
+  [
+   11753,
+   "\\cpara{Sums up the aim: to think like a ``native of a quantum universe,'' not a ``reluctant tourist.''}"
+  ]
+ ]
+}

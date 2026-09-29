@@ -68,3 +68,54 @@ Why: STANDARDS 2.5: the full assessment is in Many Worlds, One Best Guess.
 - Before: Two steps are stated as settled that are in dispute. The post says that to deny the worlds is ``necessarily'' to deny that the quantum laws hold everywhere. Bohmian mechanics keeps the wave equation everywhere, with no collapse, and has one world; whether its empty branches are worlds anyway is argued both ways. And ``strictly simpler'' leaves out the Born rule. In the textbook theory the collapse postulate supplies the probabilities, and the post's own description of decoherence adds them back as a separate item, ``plus the Born probability rule.'' Whether many-worlds is then simpler is contested among philosophers of physics. The post names the Born question as the main critique and leaves it open; the book returns to it in ``Many Worlds, One Best Guess.''
 - After: Two steps are stated as settled that are in dispute: that to deny the worlds is ``necessarily'' to deny that the quantum laws hold everywhere, which Bohmian mechanics contests, and that decoherence is ``strictly simpler,'' although the post's own version adds back ``the Born probability rule.'' Both are assessed in the notes on ``Many Worlds, One Best Guess.''
 
+
+## annotated/afterwords/quantum-explanations.tex
+
+Why: Nitpick on a line the post hedges (``is reputed''); it stays as a margin note.
+
+- Before:  And the line attributed to von Neumann was, as usually reported, about mathematics.
+- After: 
+
+
+## annotated/afterwords/where-philosophy-meets-science.tex
+
+Why: Turning the post's rule on the author's credentials reads as a jab; the Born-rule point is softened, since it may be read as a separate problem.
+
+- Before:  The rule that philosophy of a frontier science is done well only ``from within'' leaves ``within'' undefined. If it means working in the science, then this sequence's own philosophy of physics is done from outside: the book's introduction says Yudkowsky is not a physicist.
+- After: 
+
+- Before: But ``solved the problem and cleared up the mystery'' goes further than the author went a month later,
+- After: But ``solved the problem and cleared up the mystery'' sits uneasily with what the author wrote a month later,
+
+
+## annotated/afterwords/thou-art-physics.tex
+
+Why: Pointer to the full point in Neural Categories; the determinism remark is a nitpick, since the argument needs only patches of lawfulness.
+
+- Before: The post's explanation of the confusion, an implicit causal network in the brain, is its answer to the homework. It is stated as fact, with no evidence about brains. ``The future is determined by physics'' is stated flat as well. It holds on the many-worlds view of this sequence, not on the Copenhagen view, which is usually regarded as indeterministic, though the post's argument needs only patches of lawfulness.
+- After: The post's explanation of the confusion, an implicit causal network in the brain, is its answer to the homework; like the network in ``Neural Categories,'' it is a guess about design, not evidence about brains.
+
+
+## honest/sections/where-philosophy-meets-science.tex
+
+Why: Same as the Response.
+
+- Before:  \nb{The post does not say what ``within'' requires. The book's introduction to this part says that Yudkowsky is not a physicist.}
+- After: 
+
+
+## honest/sections/thou-art-physics.tex
+
+Why: Same as the Response.
+
+- Before:  \nb{That holds on the many-worlds view of this sequence; the Copenhagen view is usually regarded as indeterministic.}
+- After: 
+
+
+## annotated/posts/where-philosophy-meets-science.tex
+
+Why: Same: the rule turned on the author's credentials reads as a jab.
+
+- Before:  The post does not say what ``within'' requires. The book's introduction to this part says that Yudkowsky is not a physicist. If ``within'' means working in the science, this sequence's own case for many-worlds is philosophy of physics done from outside it; if it means close study, the rule asks of philosophers what the next paragraph asks.}
+- After: }
+

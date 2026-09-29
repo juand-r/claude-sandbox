@@ -1,0 +1,229 @@
+{
+ "slug": "configurations-and-amplitude",
+ "header": "\\post{Configurations and Amplitude}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/5vZD32EynD9n94dhr/configurations-and-amplitude}\n",
+ "skeleton_sha": "92183c1c6d3760cd2d8b935d26d1bb32cef67d32588084072a5ca1c87e77f6f9",
+ "post_sha": "65c4c96160dd6ff52aabae649b9a77458221d963f1227d89b4d79a791d55c58d",
+ "edits": [],
+ "notes": [
+  [
+   142,
+   "\\cpara{Picks up from ``Quantum Explanations'' two days earlier and asks what the world is made of, if not particles or waves.}"
+  ],
+  [
+   425,
+   "\\cpara{Describes the first set-up: a half-silvered mirror at A and two detectors. I could not view the figures; my notes follow the text's descriptions of them.}"
+  ],
+  [
+   549,
+   "\\cpara{Reports the observation correctly: with a half-silvered mirror, each photon is detected at one detector, about half the time at each.}"
+  ],
+  [
+   836,
+   "\\cpara{Gives the ``early scientists''' reading of that result: the mirror reflects the photon half the time. The scientists are not named.}"
+  ],
+  [
+   1001,
+   "\\cpara{Mocks the reading before giving any evidence against it. For Figure 1 alone, the reading that the mirror deflects the photon half the time predicts exactly what is observed; the post shows where it fails only with Figure 2. The mockery is the method announced in ``Quantum Explanations.''}"
+  ],
+  [
+   1281,
+   "\\cpara{Introduces the post's device: a program that is the experiment, not one that predicts it. This puts the realism declared in the previous post into a picture.}"
+  ],
+  [
+   1542,
+   "\\cpara{Defines a configuration, here ``a photon heading toward A.''}"
+  ],
+  [
+   1888,
+   "\\cpara{Gives the configuration a complex value, $-1$. The choice is free, as the post says (``The exact value doesn't matter so long as it's not zero''), since only ratios will be observed.}"
+  ],
+  [
+   2288,
+   "\\cpara{Asserts that configurations and their values are in the territory, not in anyone's knowledge. The argument for this comes at the end of the post.}"
+  ],
+  [
+   2638,
+   "\\cpara{Names the complex values amplitudes, and notes that they cannot be probabilities, since probabilities are real numbers between 0 and 1. That is correct.}"
+  ],
+  [
+   3050,
+   "\\cpara{Adds the two outgoing configurations.}"
+  ],
+  [
+   3555,
+   "\\cpara{Gives the rule, flagged ``Roughly speaking'': multiply by 1 going straight, by $i$ when turned. This is the standard ``symmetric'' beam splitter (Wikipedia, ``Beam splitter,'' citing Loudon), except that there both factors are also divided by $\\sqrt{2}$. Without that factor the total of the squared moduli is not kept at 1: in Figure 2 it is 1 before A, 2 after A and 4 after D. The post compares only configurations that have passed the same number of half-mirrors, so every result it reports comes out right.}"
+  ],
+  [
+   3953,
+   "\\cpara{Applies the rule. The arithmetic is right: $(-1)\\times i = -i$ and $(-1)\\times 1 = -1$.}"
+  ],
+  [
+   4299,
+   "\\cpara{Notes, correctly, that travel adds a complex factor that depends on distance, and sets it to 1 for simplicity.}"
+  ],
+  [
+   4929,
+   "\\cpara{Lists the final state. The values match the computation above.}"
+  ],
+  [
+   5468,
+   "\\cpara{Stresses that the amplitudes come out the same on every run. What differs between runs, which detector clicks, the post leaves for later.}"
+  ],
+  [
+   5626,
+   "\\cpara{Says amplitudes cannot be read off directly, and puts the reason at a ``higher level of organization.''}"
+  ],
+  [
+   6087,
+   "\\cpara{Introduces the squared modulus, $a^2 + b^2$ (printed here as ``(a2+b2)''), with the picture of an arrow in the plane. Feynman used the same picture for a general audience in \\textsc{QED} (1985): ``All we do is draw little arrows on a piece of paper'' (as quoted on Wikiquote).}"
+  ],
+  [
+   6583,
+   "\\cpara{Refines the claim: only ratios of squared moduli are observed. This is what lets the post leave out the factor $1/\\sqrt{2}$ noted above.}"
+  ],
+  [
+   7027,
+   "\\cpara{Reports that the two detectors' configurations have equal squared moduli, and promises that further experiments fix the ratio of the amplitudes.}"
+  ],
+  [
+   7397,
+   "\\clogic{Loosely worded. An interferometer shows only the total phase difference between two paths, mirrors and distances together. The editor's note at the end gives a different rule, $-1$ for a turn, which also makes one detector dark; so the experiments shown do not single out $i$.}"
+  ],
+  [
+   7465,
+   "\\cpara{Identifies the tool: counts of detector clicks are in the ratio of the squared moduli. This is the Born rule, whose reason the post says it will not ``consider yet.'' Later in the book, ``Many Worlds, One Best Guess'' says: ``There is no known reason for the Born probabilities.''}"
+  ],
+  [
+   8124,
+   "\\cpara{Restates the one fact the tool gives for Figure 1: equal squared moduli.}"
+  ],
+  [
+   8397,
+   "\\cpara{Raises the obvious objection: for Figure 1, why not say the mirror reflects the photon half the time?}"
+  ],
+  [
+   8603,
+   "\\cpara{The first answer restates the view (``That's not how reality works''). The evidence comes with the next experiment.}"
+  ],
+  [
+   9280,
+   "\\cpara{Describes the second set-up: two half-mirrors and two full mirrors. It is a Mach--Zehnder interferometer, as the editor's note at the end says.}"
+  ],
+  [
+   10129,
+   "\\cpara{Sets the full-mirror factor to $i$ as well. Each path meets one full mirror, so whatever factor a real mirror gives cancels out of every result.}"
+  ],
+  [
+   10802,
+   "\\cpara{Explains why the two arrivals at D are separate configurations: they come from different directions, and the mirror treats them differently.}"
+  ],
+  [
+   11103,
+   "\\cpara{Restates the mirror rule.}"
+  ],
+  [
+   12263,
+   "\\cpara{The totals. The arithmetic is right: at E, $i + (-i) = 0$; at F, $1 + 1 = 2$ (recomputed in a short script).}"
+  ],
+  [
+   12685,
+   "\\cpara{Draws the observable result: no photon reaches E. This is the standard Mach--Zehnder result. With the factor $1/\\sqrt{2}$ the amplitudes are 0 and 1, and every photon reaches F.}"
+  ],
+  [
+   13068,
+   "\\cpara{States the lesson: the result requires amplitude flows.}"
+  ],
+  [
+   13279,
+   "\\cpara{Works out the rival prediction. A ball deflected at random at each half-mirror would reach each detector half the time. That is correct.}"
+  ],
+  [
+   13520,
+   "\\cpara{Raises a second rival: each mirror marks the photon so that it takes the other turn at the next one.}"
+  ],
+  [
+   13880,
+   "\\cpara{Answers first with Occam's razor, then, in the next paragraph, with an experiment. The experiment is what settles it.}"
+  ],
+  [
+   14291,
+   "\\cpara{Describes the third set-up: a block between B and D.}"
+  ],
+  [
+   14513,
+   "\\cpara{The arithmetic is right: E receives $-i$ and F receives 1.}"
+  ],
+  [
+   14736,
+   "\\cpara{Draws the prediction: blocking one path lights the dark detector again. This is the standard result.}"
+  ],
+  [
+   15002,
+   "\\cfact{True of the photons that reach a detector. Half of all photons now stop at the block, and each detector fires for a quarter of those sent. The post's rule without the factor $1/\\sqrt{2}$ would give the block a third instead (squared moduli 1, 1 and 1).}"
+  ],
+  [
+   15016,
+   "\\cpara{The arithmetic checks: with the other path blocked, E receives $i$ and F receives 1, and the ratio is again 1.}"
+  ],
+  [
+   15257,
+   "\\cpara{Correct for a particle that simply goes one way or the other under fixed rules: no such rule gives a dark detector in Figure 2 and a lit one in Figure 3. It does not cover pilot-wave theory, in which a particle takes one path but is guided by a wave that takes both. For a particle in a two-slit apparatus, ``the slit through which it passes and its location upon arrival on the photographic plate are completely determined by its initial position and wave function'' (Stanford Encyclopedia, ``Bohmian Mechanics''). That theory needs the amplitudes too, and the same entry calls it ``empirically equivalent to orthodox quantum theory.''}"
+  ],
+  [
+   15405,
+   "\\cpara{Names the mechanism: amplitudes from two configurations can cancel. This is the center of the post, and it is correct.}"
+  ],
+  [
+   15808,
+   "\\cpara{Argues that probabilities cannot cancel, because none is negative. The fractions printed here as ``12,'' ``13'' and ``16'' are $1/2$, $1/3$ and $1/6$, and the arithmetic is right: $1/2 \\times 1/3 = 1/6$.}"
+  ],
+  [
+   16428,
+   "\\cpara{Adds the author's view, from ``Probability is in the Mind,'' that probabilities describe states of knowledge, while amplitudes are in the territory.}"
+  ],
+  [
+   16737,
+   "\\cpara{Concludes that configurations are not propositions or possible worlds: they are ``simply real.''}"
+  ],
+  [
+   17101,
+   "\\cpara{Warns against the phrasing on which the path not taken ``interferes'' with the photon.}"
+  ],
+  [
+   17350,
+   "\\cpara{Argues, with a car that nearly hits you, that only real events have effects: what affects you is your real act of imagining, not the accident that did not happen.}"
+  ],
+  [
+   17897,
+   "\\cpara{Says that crediting the accident that did not happen with a causal effect confuses map and territory.}"
+  ],
+  [
+   18218,
+   "\\cpara{The argument for realism, in one step: amplitudes have visible effects, so they are real. Later work supports the post against one kind of rival. Pusey, Barrett and Rudolph (2012) showed that, under a ``seemingly natural independence assumption,'' the quantum state cannot be mere knowledge about an underlying physical state. The Stanford Encyclopedia adds that the theorem ``does not close off all options for anti-realism about quantum states.''}"
+  ],
+  [
+   18602,
+   "\\clogic{Correct as stated. It does not reach epistemic views such as QBism, which do not say that amplitudes are degrees of belief. On QBism, a quantum state ``represents the epistemic state of the one who assigns it'' by ``specifying the agent's coherent degree of belief (credence)'' in the outcomes of possible measurements (Stanford Encyclopedia, ``Quantum-Bayesian and Pragmatist Views'').}"
+  ],
+  [
+   18871,
+   "\\cpara{Grants that the post's configurations were simplified: real ones involve many particles, and the next post will show this.}"
+  ],
+  [
+   19150,
+   "\\cpara{Says that each configuration should have included the particles of the mirrors and detectors.}"
+  ],
+  [
+   19509,
+   "\\clogic{This is the picture of quantum mechanics with a fixed number of particles. The post's own photons belong to quantum field theory, where the electromagnetic field is, in the Stanford Encyclopedia's words, ``impossible to deal with in the frame of QM,'' and where ``the lack of position operators'' troubles a particle reading. The sequence does not discuss field theory.}"
+  ],
+  [
+   19610,
+   "\\cpara{Grants that the post's discrete configurations were a simplification of a continuous space.}"
+  ],
+  [
+   20687,
+   "\\cpara{The note is the book editors'. Both rules are in standard sources. The $-1$ rule is for a dielectric coating; Wikipedia's ``Beam splitter'' says it ``does not apply to partial reflection by conductive (metallic) coatings,'' which is what half-silvered'' literally describes. The post's $i$ rule is Loudon's ``symmetric'' beam splitter, given in the same article. Either rule gives a dark detector in Figure 2; with $-1$, which detector is dark depends on which side of D is coated.}"
+  ]
+ ]
+}

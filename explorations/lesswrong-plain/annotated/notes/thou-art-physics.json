@@ -1,0 +1,125 @@
+{
+ "slug": "thou-art-physics",
+ "header": "\\post{Thou Art Physics}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/NEeW7eSXThPz7o4Ne/thou-art-physics}\n",
+ "skeleton_sha": "15bd76187acdd2bfd48b5580b6c9e5960dc3914ca7091b30a51b7497e97811ad",
+ "post_sha": "ff12fdefb924df150045c475be83fcdcdf96ca9b8daba953aaa82d5875442afa",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Recalls the homework set in ``Dissolving the Question'' (8 March 2008). The notes on that post discuss how this answer fits the homework's rule against arguing whether free will is compatible with determinism.}"
+  ],
+  [
+   551,
+   "\\cpara{States the question readers asked: if the future is determined, how can our choices control it? ``It all adds up to normality'' links to the previous day's post, ``Living in Many Worlds.''}"
+  ],
+  [
+   848,
+   "\\cpara{Says what people hear: physics is deterministic and the future is fixed.}"
+  ],
+  [
+   1070,
+   "\\cpara{The figure, rendered from the linked file: two ovals, ``Me'' and ``Physics,'' each with an arrow to a third, ``Future.''}"
+  ],
+  [
+   1185,
+   "\\cpara{Reads the diagram: the two causes compete, so if physics fixes the future, ``Me'' has no room.}"
+  ],
+  [
+   1411,
+   "\\cpara{Says this network is an implicit representation in the brain that decides which arguments seem reasonable. This is the post's answer to its homework, a claim about how brains represent the question. It is stated as fact, with no evidence.}"
+  ],
+  [
+   1649,
+   "\\cpara{The press releases are not named. One had appeared two months earlier. The Max Planck Society's release of 14 April 2008, on a brain-scanner study by John-Dylan Haynes's group, described the view that ``it is the brain that makes the decision, not a person's conscious mind.''}"
+  ],
+  [
+   1894,
+   "\\cpara{The ``old chestnut'' is the argument from reason, best known from C.~S. Lewis's \\textsc{Miracles} (1947); Lewis himself called it a ``venerable philosophical chestnut.'' Lewis quotes J.~B.~S. Haldane (1927): ``If my mental processes are determined wholly by the motions of atoms in my brain, I have no reason to suppose that my beliefs are true'' (both as given in Wikipedia, ``Argument from reason'').}"
+  ],
+  [
+   2186,
+   "\\cpara{The figure: an oval ``Me'' inside a circle ``Physics,'' with an arrow from ``Me'' to ``Future,'' which lies outside the circle.}"
+  ],
+  [
+   2329,
+   "\\cpara{The figure: one large oval ``Physics'' that contains both ``Me'' and ``Future,'' with an arrow from ``Me'' to ``Future.''}"
+  ],
+  [
+   2444,
+   "\\cpara{Explains why the right picture is not obvious: many levels of organization separate our models of thought from our models of quarks.}"
+  ],
+  [
+   2757,
+   "\\cpara{Compares a hand and its fingers: asking which of them really picks something up is a ``wrong question.''}"
+  ],
+  [
+   3083,
+   "\\cpara{Says no one can see atoms making up a person the way one sees fingers making up a hand.}"
+  ],
+  [
+   3352,
+   "\\cpara{Concludes that seeing oneself as part of physics takes ``constant vigilance.''}"
+  ],
+  [
+   3486,
+   "\\cpara{Points back to ``Where Philosophy Meets Science'' (12 April 2008), which blamed this failure for the founders' errors. The notes there record that von Neumann did treat measuring instruments as part of the quantum description.}"
+  ],
+  [
+   3965,
+   "\\cpara{Lists the ``surface layer'' of the mind, whose part-whole relations are easy to see, and says the relations further down, to physics, are not.}"
+  ],
+  [
+   4563,
+   "\\cpara{Defines the two standard positions. The \\textsc{Stanford Encyclopedia} gives compatibilism as ``the thesis that free will is compatible with determinism''; the post's version is about whether free will can be satisfyingly defined that way. Incompatibilists have traditionally been divided into libertarians, who hold that we have free will and so determinism is false, and hard determinists, who hold that determinism is true and we lack free will. In a 2009 survey of philosophers, 59.1\\% accepted or leaned toward compatibilism, 13.7\\% libertarianism and 12.2\\% no free will (PhilPapers).}"
+  ],
+  [
+   4828,
+   "\\cpara{``Requiredism'' is a form of compatibilism: if free will requires determinism, it is compatible with it. The view is old. Hume argued that actions that do not come from ``some cause in the character and disposition'' of the agent ``can neither redound to his honour, if good; nor infamy, if evil'' (\\textsc{Enquiry}, 1748), and R.~E. Hobart's 1934 paper states the thesis in its title (see the notes on ``Wrong Questions'' and ``Dissolving the Question''). The post offers the name with ``might perhaps'' and does not claim that the view is new.}"
+  ],
+  [
+   5497,
+   "\\cpara{Weakens the claim to ``determined by something.'' That is not determinism in the usual sense, on which ``only one future is possible holding fixed the actual past and the laws of nature'' (\\textsc{Stanford Encyclopedia}). Agent-causal libertarians also hold that a free decision is determined by something: it ``must be caused by the agent,'' though not ``causally determined by prior events.'' What rules their view out is the paragraph's last clause, ``some law, some order,'' and that is asserted, not argued.}"
+  ],
+  [
+   6101,
+   "\\cpara{States the objection: if the laws of physics control us, how do we control ourselves?}"
+  ],
+  [
+   6199,
+   "\\cpara{Turns it around: without laws, how could we control ourselves?}"
+  ],
+  [
+   6319,
+   "\\cpara{Puts the alternative to determinism as ``utter chaos.'' The libertarian views in the literature do not posit chaos. Event-causal accounts such as Robert Kane's require only ``that at least some free actions be nondeterministically caused by their immediate causal antecedents,'' such as the agent's reasons (\\textsc{Stanford Encyclopedia}). The objection the post gestures at is what that literature calls the problem of luck, to which such accounts ``are often thought to be vulnerable.'' The post does not address these views.}"
+  ],
+  [
+   6560,
+   "\\cpara{Asks where we could be, if not in reality.}"
+  ],
+  [
+   6619,
+   "\\cpara{``The future is determined by physics'' is stated flat. It holds on the many-worlds view this sequence argues for; the Copenhagen interpretation, by contrast, ``is mostly regarded as synonymous with indeterminism'' (\\textsc{Stanford Encyclopedia}). The post's own argument needs less: ``at least some patches of determinism.''}"
+  ],
+  [
+   6754,
+   "\\cpara{Says choices are determined by a physics that includes weighing decisions, temptation and trying to do better.}"
+  ],
+  [
+   7016,
+   "\\cpara{A joke: no quark ``swoops in from Pluto'' to override the process.}"
+  ],
+  [
+   7106,
+   "\\cpara{Says thoughts are real, too big to be atoms, and so made of smaller things, which we call physics.}"
+  ],
+  [
+   7439,
+   "\\cpara{The post's answer to the ``old chestnut'' above. Elizabeth Anscombe, criticizing Lewis, made the same reply: ``if a man has reasons, and they are good reasons, and they are genuinely his reasons, for thinking something,'' then ``his thought is rational, whatever causal statements we make about him'' (her collected papers, 1981, as quoted in Wikipedia).}"
+  ],
+  [
+   7631,
+   "\\cpara{Closes: physics adds up to normality, and the confusion comes from our cognitive algorithms.}"
+  ]
+ ]
+}
