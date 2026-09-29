@@ -1,0 +1,541 @@
+{
+ "slug": "zombies-zombies",
+ "header": "\\post{Zombies! Zombies?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fdEWWr8St59bXLbQr/zombies-zombies}\n",
+ "skeleton_sha": "23770265063a11a4e70438e83d5a32dbd8b02eefdc50484250b2733555db73d4",
+ "post_sha": "e3c7165ccbc2a0456e25daa6c028ad6fe89827f89044d950a53121dd1577f804",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Defines the zombie as a physical duplicate without consciousness. This matches the \\textsc{Stanford Encyclopedia of Philosophy} entry the post cites: zombies are ``exactly like us in all physical respects but without conscious experiences.''}"
+  ],
+  [
+   521,
+   "\\cpara{States the zombie argument and names the position it is said to establish.}"
+  ],
+  [
+   838,
+   "\\clogic{The zombie argument's conclusion is only that physicalism is false. Epiphenomenalism about our world needs a further premise, that the physical world is causally closed; Chalmers sets out the step this way (\\textsc{The Conscious Mind}, p.~150). The \\textsc{Stanford Encyclopedia} entry the post cites adds that ``the friends of zombies do not seem compelled to be epiphenomenalists or parallelists about the actual world'': they may be interactionists, or hold that phenomenal properties are fundamental.}"
+  ],
+  [
+   852,
+   "\\cpara{Says the possibility of zombies is accepted by ``a substantial fraction, possibly a majority'' of philosophers of consciousness. The PhilPapers survey came a year later. In the 2009 PhilPapers survey, of 191 faculty specializing in philosophy of mind, 18.3 per cent accepted or leaned toward ``metaphysically possible,'' 47.6 per cent ``conceivable but not metaphysically possible,'' and 24.6 per cent ``inconceivable.'' So the hedged claim holds if ``possibility'' means conceivability (66 per cent) and not if it means metaphysical possibility. Figures for all respondents are in the notes on ``The World: An Introduction.''}"
+  ],
+  [
+   1179,
+   "\\cpara{Opens with an unsourced saying, that you are the one who hears your thoughts, and a Hebrew word for the soul.}"
+  ],
+  [
+   1413,
+   "\\cpara{Draws the first intuition: if consciousness is passive listening, a zombie is easy to imagine.}"
+  ],
+  [
+   1602,
+   "\\cpara{Warns of the length, and presents the post as an answer to Richard Chappell's charge that the author does not engage the arguments of real philosophers. A later edit (December 2019) points to a shorter version.}"
+  ],
+  [
+   2143,
+   "\\cpara{Gives the orange-juice example of inner speech. The claim that it sits in the auditory cortex is offered with ``probably'' and ``There appears to be,'' on the evidence that Chinese digit names are single syllables and Chinese speakers remember more digits.}"
+  ],
+  [
+   2821,
+   "\\cpara{Takes inner speech only as a postulate, and predicts, as ``quite possible,'' that within a couple of decades surgeons may read a person's inner narrative from the auditory cortex. The cat study is real: Stanley, Li and Dan (1999) reconstructed ``natural scenes with recognizable moving objects'' from 177 cells in a cat's lateral geniculate nucleus. In 2025 a team decoded imagined sentences in real time from implanted electrodes, in motor cortex rather than auditory cortex (Kunz et al., \\textsc{Cell} 188).}"
+  ],
+  [
+   3437,
+   "\\cpara{Says the zombie, being physically identical, forms the same inner speech, and that epiphenomenalists would agree.}"
+  ],
+  [
+   3691,
+   "\\cpara{States the epiphenomenalist's reply: in the zombie the inner listener is missing.}"
+  ],
+  [
+   3947,
+   "\\cpara{Adds, in the opponents' voice, that an AI that prints a narrative is easier to build than to show that anyone hears it.}"
+  ],
+  [
+   4122,
+   "\\cpara{Restates the zombie argument: if the zombie world is possible, knowing every atom's position would leave consciousness as a further fact. Chalmers gives Kripke's version of the same thought: after creating the physical stuff, God ``had to do more work'' to make it felt (\\textsc{The Conscious Mind}, p.~148).}"
+  ],
+  [
+   4684,
+   "\\cpara{Separates the zombie view from Descartes's dualism, in which the mind moves the body. ``Dualism'' here means substance dualism: the post later calls zombie advocates ``property dualists,'' and Chalmers calls his own view ``naturalistic dualism'' (p.~162).}"
+  ],
+  [
+   5121,
+   "\\cpara{A joke, offered with ``probably'': rabbis would not accept a divine soul that does nothing.}"
+  ],
+  [
+   5422,
+   "\\cpara{Defines epiphenomenalism: consciousness exists but has no effect on the physical world.}"
+  ],
+  [
+   5567,
+   "\\cpara{Says, with ``I think,'' that the passive-listener intuition is what first draws people, especially lay readers, to the zombie view.}"
+  ],
+  [
+   5908,
+   "\\cpara{The quotation is the post's own wording; no philosopher is named. Chalmers's words are close: ``it certainly seems that a coherent situation is described; I can discern no contradiction in the description,'' which he says ``comes down to a brute intuition'' (\\textsc{The Conscious Mind}, p.~96).}"
+  ],
+  [
+   6087,
+   "\\cpara{Says the 1970s zombie advocates took possibility to be obvious. The \\textsc{Stanford Encyclopedia} agrees: they ``typically assumed without argument that zombies are not just conceivable but possible,'' naming Campbell and Nagel (both 1970).}"
+  ],
+  [
+   6380,
+   "\\cpara{Defines logical possibility as having a model, with an example. The example is right: the three assignments listed are exactly the ones that make all three statements true.}"
+  ],
+  [
+   6860,
+   "\\cpara{Says that seeing no contradiction is not the same as there being none, and cites 3-SAT. The fact is right: satisfiability was the first problem proved NP-complete (Cook, 1971), and 3-SAT is one of Karp's 21 NP-complete problems (Wikipedia, ``Boolean satisfiability problem'').}"
+  ],
+  [
+   7453,
+   "\\cpara{Concludes that the zombie argument needs logical possibility, which a first glance cannot establish.}"
+  ],
+  [
+   7583,
+   "\\clogic{Chalmers draws the same distinction in the book the post quotes. His ``conceivable'' does not mean ``for all we know it is true'' (his example is Goldbach's conjecture, p.~66), and he grants that ``if we are insufficiently reflective we can overlook an incoherence in a purported possibility'' (pp.~98--99). His case that zombies pass the test rests on a burden-of-proof argument and on indirect arguments, such as a population of people simulating a brain (pp.~96--98). The post does not take these up.}"
+  ],
+  [
+   8258,
+   "\\cpara{A joke proof that all odd numbers are prime, to show that a pattern checked so far can still fail.}"
+  ],
+  [
+   8477,
+   "\\cpara{Asks for a counterexample to ``Consciousness has no third-party-detectable causal impact on the world.''}"
+  ],
+  [
+   8676,
+   "\\cpara{The counterexample begins: attend to your awareness, and your inner speech says ``I am aware.''}"
+  ],
+  [
+   9151,
+   "\\cpara{Saying the sentences aloud makes the effect physically observable.}"
+  ],
+  [
+   9452,
+   "\\cpara{Names the argument: the listener is ``caught in the act of listening.'' Offered with ``seems.''}"
+  ],
+  [
+   9634,
+   "\\cpara{A parable: aliens leave a black box that seems to do nothing.}"
+  ],
+  [
+   10314,
+   "\\cpara{The parable's point: the box absorbs light and has weight, so it is not wholly outside causality, or you could not know it was there.}"
+  ],
+  [
+   10787,
+   "\\cpara{A joke: a second, wholly epiphenomenal box that no one knows about.}"
+  ],
+  [
+   10990,
+   "\\cpara{Applies the parable: if you can think and say ``I am aware that I am aware,'' your consciousness affects your inner speech and your lips.}"
+  ],
+  [
+   11411,
+   "\\cpara{Allows that the argument ``may well have been said before.'' It had. G.~F. Stout wrote in 1931 that on epiphenomenalism human bodies would still have gone through the motions ``of writing and reading books, of speaking in Parliament, of arguing about materialism,'' which he found ``prima facie incredible'' (quoted in the \\textsc{Stanford Encyclopedia}, ``Zombies''). Chalmers credits the argument from our talk about consciousness to the physicist Avshalom Elitzur (1989), who used it, as the post does, against views that take consciousness to be ``passive'' and in favor of interactionist dualism (\\textsc{The Conscious Mind}, p.~177).}"
+  ],
+  [
+   11579,
+   "\\cpara{Notes that zombie advocates accept that zombie philosophers write the same papers. Chalmers says so in the passage quoted below.}"
+  ],
+  [
+   11979,
+   "\\cpara{Says papers about consciousness ``seem'' to be an effect of consciousness, and that denying this takes cleverness.}"
+  ],
+  [
+   12194,
+   "\\cpara{The same point from the inside: the narrative says ``I am aware of my awareness'' right after we attend to it.}"
+  ],
+  [
+   12768,
+   "\\cpara{Says the belief ``Consciousness is without effect'' looks consistent only until one sees that it covers talk about consciousness.}"
+  ],
+  [
+   13349,
+   "\\cpara{Introduces a possible way out: a Zombie Master that makes zombies talk about consciousness.}"
+  ],
+  [
+   13571,
+   "\\cpara{Grants that a Zombie Master could fake amateur talk about consciousness, for example an AI fed a corpus of human discussion.}"
+  ],
+  [
+   14121,
+   "\\cfact{Language models trained on human text now produce such talk. Chalmers wrote in 2023 that LaMDA ``has actually been trained on a giant corpus of people talking about consciousness. The fact that it has learned to imitate those claims doesn't carry a whole lot of weight'' (arXiv 2303.07103). That is close to the post's point in the next paragraph.}"
+  ],
+  [
+   14135,
+   "\\cpara{Answers that such speech would be a recorded imitation, not produced within the speaker, so it is not the zombie world.}"
+  ],
+  [
+   14577,
+   "\\cpara{Restates the setup: same atoms, same physical laws; only the bridging laws that produce consciousness are absent, and the difference cannot be detected.}"
+  ],
+  [
+   15167,
+   "\\cpara{Concludes there is no room for a Zombie Master, since moving lips would be detectable, unless it were a pattern of quarks present in both worlds.}"
+  ],
+  [
+   15751,
+   "\\cpara{Traces the causes of a philosopher's typing back to the inner narrative.}"
+  ],
+  [
+   16210,
+   "\\cpara{Says the zombie twin types the same keys for the same physical reasons.}"
+  ],
+  [
+   16762,
+   "\\cpara{Concludes that the physical explanation of writing about consciousness is the same in both worlds.}"
+  ],
+  [
+   17220,
+   "\\cpara{Introduces Chalmers, with a link to page 180 of \\textsc{The Conscious Mind}.}"
+  ],
+  [
+   17577,
+   "\\cpara{Quoted accurately from \\textsc{The Conscious Mind} (1996), p.~180, with the omission marked. The omitted sentences include Chalmers's caveat that ``one might plausibly argue that a zombie does not refer to consciousness in the full sense'' with its word ``consciousness.'' He later built a reply on this (see the note on the author's admission near the end).}"
+  ],
+  [
+   18952,
+   "\\cpara{Stresses that the passage states Chalmers's own view, not an objection to it. That is accurate.}"
+  ],
+  [
+   19057,
+   "\\cpara{Quoted accurately (p.~181). The book's next sentence goes further: the paradox ``is certainly the greatest tension that a nonreductive theory is faced with.''}"
+  ],
+  [
+   19273,
+   "\\cpara{Calls this ``the largest bullet ever bitten'' and credits Chalmers with facing the implication instead of avoiding it.}"
+  ],
+  [
+   19554,
+   "\\cpara{Asks why anyone would accept zombies who write about consciousness for the same reasons we do.}"
+  ],
+  [
+   19780,
+   "\\cpara{Answers: not because of the passive-listener intuition, which does not cover zombies writing philosophy.}"
+  ],
+  [
+   20054,
+   "\\cpara{Says, with ``I think,'' that the zombie argument would be dead if it rested on that intuition alone.}"
+  ],
+  [
+   20448,
+   "\\cpara{Names the second intuition: no arrangement of atoms necessarily produces the redness of red. Chalmers's view is given in paraphrase.}"
+  ],
+  [
+   21060,
+   "\\cpara{Argues that this intuition alone does not lead to zombies: it fits as well with a soul that acts.}"
+  ],
+  [
+   21617,
+   "\\cpara{Identifies that view with Descartes's substance dualism, in which the soul interacts with the body.}"
+  ],
+  [
+   21996,
+   "\\cpara{Says zombie advocates are property dualists: matter has properties beyond the physical. That is Chalmers's view.}"
+  ],
+  [
+   22191,
+   "\\cpara{Explains ``beyond the physical'' as properties that do not move atoms and cannot be detected by others. This equates the zombie view with epiphenomenalism again; see the note on the post's second paragraph.}"
+  ],
+  [
+   22617,
+   "\\cpara{Restates: the extra properties exist but are not causally active.}"
+  ],
+  [
+   22797,
+   "\\cpara{Draws the consequence: this is why we can imagine the zombie universe.}"
+  ],
+  [
+   23028,
+   "\\cpara{States the modal claim: the zombie world is not physically possible, since our bridging laws hold, but it is logically possible. This matches what Chalmers calls ``natural supervenience.''}"
+  ],
+  [
+   23348,
+   "\\cpara{Asks why, given the gap between conceivability and logical possibility, anyone would hold the zombie world logically possible. Chalmers's use of the same gap is in the note on the paragraph that begins ``So just because you don't see a contradiction.''}"
+  ],
+  [
+   23645,
+   "\\cpara{Puts the dilemma: Chalmers holds that consciousness is real and beyond the physical, so why add that it does nothing?}"
+  ],
+  [
+   24097,
+   "\\cfact{This overstates Chalmers's position in the book the post quotes. \\textsc{The Conscious Mind} says: ``I do not describe my view as epiphenomenalism. The question of the causal relevance of experience remains open'' (p.~160), though the view ``implies at least a weak form of epiphenomenalism, and it may end up leading to a stronger sort.'' Chalmers also says the paradox of phenomenal judgment arises ``almost as strongly'' if phenomenal properties are the intrinsic nature of the physical (p.~181), and that interactionism is ``of little help'' against it (p.~183), so the post's main argument does not depend on the label. By 2003 he gave ``some credence'' to interactionism, epiphenomenalism and panprotopsychism, and wrote that ``in some ways the type-F view is the most appealing'' (type-F is his name for panprotopsychism; ``Consciousness and its Place in Nature'').}"
+  ],
+  [
+   24136,
+   "\\cpara{Spells out the cost: a separate physical explanation of why Chalmers talks about ``the mysterious redness of red.''}"
+  ],
+  [
+   24619,
+   "\\cpara{Says Chalmers ``does confess'' that the two seem related. He does: ``One would surely be inclined to think that the fact that I am conscious will be part of the explanation of why I say that I am conscious \\ldots\\ and yet it seems that this is not so'' (p.~182).}"
+  ],
+  [
+   24783,
+   "\\cpara{Proposes the alternative: let the redness of red cause the inner narrative.}"
+  ],
+  [
+   25087,
+   "\\cpara{Lists the three postulates it attributes to the zombie view: a soul beyond matter, its lack of effect, and a separate material cause of talk.}"
+  ],
+  [
+   25357,
+   "\\cpara{Asks why the extra stuff should not cause talk about consciousness.}"
+  ],
+  [
+   25631,
+   "\\cpara{Disowns Descartes's view but calls it understandable: a mysterious phenomenon gets a mysterious stuff.}"
+  ],
+  [
+   25905,
+   "\\cpara{Says the zombie view then needs a whole new explanation of why we say we are conscious.}"
+  ],
+  [
+   26091,
+   "\\cpara{Compares the view to a phlogiston with no detectable effect. The comparison treats consciousness as something posited to explain observations; Chalmers treats it as a datum known directly (see the note on the comparison of theories below).}"
+  ],
+  [
+   26505,
+   "\\cpara{Asks whether property dualists avoid a causally active property for fear of sticking their necks out.}"
+  ],
+  [
+   26695,
+   "\\clogic{Chalmers's stated reason is evidence against gaps in physics. He wrote that interactionism ``requires a hefty bet on the future of physics, one that does not currently seem at all promising; physical events seem inexorably to be explained in terms of other physical events,'' and that a quantum version is ``testable in principle'' but ``a bet at long odds'' (\\textsc{The Conscious Mind}, pp.~156--57). In 2003 he called this argument from physics ``much too glib'' (``Consciousness and its Place in Nature'').}"
+  ],
+  [
+   26709,
+   "\\cpara{Answers its own question: positing a mental property is already the boldest step, so why then make it idle?}"
+  ],
+  [
+   27113,
+   "\\cpara{A joke about career motives, which the post itself says is not a valid argument.}"
+  ],
+  [
+   27563,
+   "\\cpara{Reports Chalmers's objection to substance dualism, and replies that property dualism has the same problem.}"
+  ],
+  [
+   27749,
+   "\\clogic{This runs two of Chalmers's objections together. ``Nobody has an idea of how any physics could do this'' is aimed at new-physics materialism (p.~163). Against interactionism, besides the evidence from physics, his ``deepest reason'' is that ``the phenomenal component can be coherently subtracted from the causal component'': even if immaterial ``psychons'' push the brain around, ``A zombie story can therefore still be told'' (pp.~158, 163).}"
+  ],
+  [
+   27898,
+   "\\clogic{Chalmers agrees that the problem is the same; that is his point. He concludes that interactionist views ``can be seen as more complicated versions of the same sort of view'' (p.~163), so letting consciousness be causal gains nothing.}"
+  ],
+  [
+   27912,
+   "\\cpara{Repeats the question: having made the leap, why not let the property be causal? Chalmers's answer is in the notes on the previous paragraph.}"
+  ],
+  [
+   28176,
+   "\\cpara{Brings in Sagan's invisible dragon, framed as what an ``unkind'' critic would do.}"
+  ],
+  [
+   28744,
+   "\\cpara{Says fear of testing is one motive for unfalsifiable theories, and contrasts Penrose and Hameroff, who made a testable prediction.}"
+  ],
+  [
+   28939,
+   "\\cfact{Penrose and Hameroff do not describe their view this way. In their 2014 review of the theory they set it apart from ``Dualism/Spirituality'' and place it under ``Science, with consciousness as an essential ingredient of physical laws not yet fully understood'': conscious moments are physical events of quantum state reduction (\\textsc{Physics of Life Reviews} 11, p.~40). The post's point, that they said how to test their idea, stands.}"
+  ],
+  [
+   29381,
+   "\\cpara{Says the prediction is being tested and ``prospects are not looking good.'' The main published answer by then was a calculation of decoherence times by Tegmark (2000), which Hameroff's group disputed; see the notes on ``My Wild and Reckless Youth.''}"
+  ],
+  [
+   29490,
+   "\\cpara{Praises Penrose's conduct: a strange hypothesis, a stated test, an attempt to run it. The link is to the author's own account of once holding the Penrose view.}"
+  ],
+  [
+   29791,
+   "\\cpara{An anecdote: the author told Hameroff the hypothesis was hopeless but the experiments should be funded.}"
+  ],
+  [
+   30115,
+   "\\cpara{States the ``nasty dismissal'': zombie advocates fear their extra properties would not be found.}"
+  ],
+  [
+   30359,
+   "\\cpara{Declines that dismissal for Chalmers. The post raises the motive reading and sets it aside itself.}"
+  ],
+  [
+   30516,
+   "\\cpara{Adds, half joking, that a false epiphenomenalism would leave Chalmers's theory in ruins, so he has no motive to hold it unless he thinks it true.}"
+  ],
+  [
+   30997,
+   "\\cpara{Calls Chalmers frustrating: he states the objections sharply and then accepts the zombie argument. That is the post's judgment. Chalmers presents the objections as ones he answers: the paradox is ``not obviously fatal'' (p.~181), and of the arguments from self-knowledge ``none of them appear to stand up to scrutiny'' (p.~199).}"
+  ],
+  [
+   31447,
+   "\\cpara{Turns to the second problem: our zombie twins say what we say, for the same reasons, and are wrong.}"
+  ],
+  [
+   31693,
+   "\\cpara{First version: on Chalmers's view the belief in consciousness is not caused by consciousness. Chalmers states this version himself, as the argument from a causal theory of knowledge (pp.~192--93).}"
+  ],
+  [
+   32020,
+   "\\cpara{Second version: a reliable process cannot be what justifies the belief, since the zombie's identical process yields false beliefs.}"
+  ],
+  [
+   32289,
+   "\\cpara{Introduces Chalmers's answer.}"
+  ],
+  [
+   32310,
+   "\\clogic{Only in part. Chalmers grants that experience does not cause the belief, and rejects a causal theory of knowledge for this case. On reliability he says ``It is entirely compatible with a nonreductive theory of experience that in the actual world, our phenomenal judgments are reliable'' (p.~194). He sets reliabilism aside because a reliable connection could not make us ``certain that we are conscious,'' not because the process is unreliable in our world.}"
+  ],
+  [
+   32547,
+   "\\cpara{Quoted from \\textsc{The Conscious Mind}, pp.~196 and 198, with the gap marked. Chalmers's answer is that experience itself, through what he calls ``acquaintance,'' justifies beliefs about it.}"
+  ],
+  [
+   33800,
+   "\\cpara{Restates the thesis, with ``if I've got this thesis right'': a core self beyond the brain directly experiences not being a zombie.}"
+  ],
+  [
+   34008,
+   "\\cpara{Replies that Chalmers wrote this down in a physical book, and so did his zombie twin.}"
+  ],
+  [
+   34125,
+   "\\clogic{Chalmers answers this reply two paragraphs after the passage quoted. He calls ``But your zombie twin would say the same thing!'' a ``persistent refrain'' and answers: ``So what?'' From the first-person point of view, ``I have experiences, and he does not'' (pp.~198--99). The post's next paragraphs press a further point, about the part of Chalmers that does the writing.}"
+  ],
+  [
+   34139,
+   "\\cpara{Infers that the zombie wrote the book for some reason within physics.}"
+  ],
+  [
+   34332,
+   "\\cpara{Concludes that there is a causally closed ``outer Chalmers'' that speaks and writes.}"
+  ],
+  [
+   34734,
+   "\\cpara{The charge: on Chalmers's own theory, the outer Chalmers writes about consciousness ``for no valid reason.'' Offered as ``I do not see any way to evade the charge.''}"
+  ],
+  [
+   35266,
+   "\\cpara{Adds that the outer Chalmers is right only by ``a separate and additional miracle,'' contingent on our world's laws.}"
+  ],
+  [
+   35490,
+   "\\clogic{On Chalmers's view the match is due to psychophysical laws, and ``a contingent nomic connection between consciousness and the physical is no more miraculous than any contingent law'' (\\textsc{The Conscious Mind}, p.~379, n.~42). He had also granted the worry before the post: on epiphenomenalism the match between reports and experience ``seems to be something of a lucky coincidence,'' and a defender who says the laws are ``natural'' carries ``a significant burden of proof'' (``Consciousness and its Place in Nature'', 2003).}"
+  ],
+  [
+   35766,
+   "\\cpara{A rhetorical turn: the outer Chalmers is ``self-confessedly deranged'' because Chalmers grants that his brain's belief, taken alone, is not justified.}"
+  ],
+  [
+   35965,
+   "\\cpara{An analogy: epicycles that do nothing, with a separate unexplained cause moving the planets. Chalmers expects that cause to be found: explaining our claims about consciousness is ``a reasonable and interesting project for cognitive science'' (p.~184).}"
+  ],
+  [
+   36302,
+   "\\cpara{Explains the author's perspective: philosophy viewed for designing a self-improving AI.}"
+  ],
+  [
+   36589,
+   "\\cpara{Lists the principles used: probability, evidence, and above all reflective coherence.}"
+  ],
+  [
+   37132,
+   "\\cpara{Describes how a self-inspecting AI would remove a part of itself that writes false beliefs.}"
+  ],
+  [
+   37625,
+   "\\cpara{Calls reflective coherence decisive for the author's purpose, building AI, and says openly that the verdict is from that perspective.}"
+  ],
+  [
+   38208,
+   "\\cpara{Applies the AI view: the outer Chalmers produces beliefs about an inner Chalmers that are ``correct for no logical reason.''}"
+  ],
+  [
+   38642,
+   "\\cpara{Says no reflectively coherent system could be warranted in trusting such correctness.}"
+  ],
+  [
+   39194,
+   "\\cpara{Concludes that an AI would see Chalmers's narrative as nonsense.}"
+  ],
+  [
+   39322,
+   "\\clogic{Chalmers grants the third-person point. An outside inspector, like the AI, finds only what the zombie twin also has: ``from the third-person point of view, my zombie twin and I are identical, so that you cannot be certain that I am conscious; but we knew this all along'' (pp.~198--99). His claim concerns first-person justification, which such an inspection does not test. The disagreement is over whether that justification counts; the post's argument concerns only the inspectable part.}"
+  ],
+  [
+   39458,
+   "\\cpara{Says the problem arises only for epiphenomenalists: for reductionists and substance dualists an AI can trace talk of consciousness to something real. Chalmers argues that interactionism does not escape, since the phenomenal can be subtracted from the causal story (see the notes on the paragraph that begins ``Chalmers critiques substance dualism'').}"
+  ],
+  [
+   39988,
+   "\\cpara{Restates the charge: the malfunctioning narrative ``miraculously happens to be correct,'' including when it says so.}"
+  ],
+  [
+   40540,
+   "\\cpara{Asks whether there comes a point where one should give up an idea on intuition.}"
+  ],
+  [
+   40705,
+   "\\cpara{Appeals to experience of what correct theories look like.}"
+  ],
+  [
+   40870,
+   "\\cpara{Answers the charge of ``argument from incredulity'': the theory posits more unexplained miracles, so the conjunction rule and Occam's razor give it a lower prior than two rivals.}"
+  ],
+  [
+   41340,
+   "\\clogic{The comparison assumes that the rivals account for the same data. Chalmers holds that they do not: the extra properties are posited because experience is itself known directly. He grants that if our evidence did not rule out our being zombies, we should conclude that we are, since ``it leads to a much simpler view of the world''; but ``our immediate evidence does rule out that possibility'' (pp.~195--96). The post and Chalmers disagree on that premise; the conjunction rule does not decide it.}"
+  ],
+  [
+   41702,
+   "\\clogic{Chalmers names an option close to this one: ``Don't-have-a-clue materialism,'' held by those who find consciousness mysterious but say ``it must be physical, as materialism must be true.'' He has ``a certain amount of sympathy'' with it, but holds that ``it presumably must eventually reduce to some more specific view, and none of these seem to work'' (p.~162).}"
+  ],
+  [
+   43301,
+   "\\cpara{Calls the zombie argument, with ``limited experience'' and ``may be a candidate,'' possibly ``the most deranged idea in all of philosophy.'' Chalmers quoted this sentence in 2018 (see the note on the author's admission near the end).}"
+  ],
+  [
+   43497,
+   "\\cpara{Grants that true theories can seem weird: relativity, quantum mechanics, natural selection.}"
+  ],
+  [
+   43819,
+   "\\cpara{Distinguishes weird beliefs backed by massive evidence from the case that follows.}"
+  ],
+  [
+   43996,
+   "\\cpara{That case: a conclusion that seems deranged, reached by a complicated argument with parts not claimed to be understood.}"
+  ],
+  [
+   44231,
+   "\\cpara{Adds that even if accepted, the argument leaves consciousness as mysterious as before. Chalmers disagrees: an account of the laws connecting consciousness to the physical ``might provide an enlightening theory of consciousness even on a nonreductive view'' (\\textsc{The Conscious Mind}, p.~379, n.~42).}"
+  ],
+  [
+   44541,
+   "\\cpara{Gives what a rationalist should say if Chalmers's arguments seem plausible, and says they do not seem so to the author.}"
+  ],
+  [
+   44709,
+   "\\cpara{The recommended reply: admit ignorance, but hold that the zombie view ``can't possibly be right.''}"
+  ],
+  [
+   45167,
+   "\\cpara{Qualifies: intuition is not a substitute for careful refutation, but can point the way.}"
+  ],
+  [
+   45498,
+   "\\cpara{Admits that the author has not read all of Chalmers's book, and claims to answer only his last defense.}"
+  ],
+  [
+   45842,
+   "\\cfact{Chalmers has replied since, and one reply came before the post. In 2003 he argued that a zombie does not share our phenomenal beliefs, since their content ``is partly constituted by underlying phenomenal qualities'' (``The Content and Epistemology of Phenomenal Belief''). In 2018 he quoted this post, cited it among ``coincidence arguments,'' and replied to arguments of this kind. He also conceded that ``it is hard to avoid a sense of coincidence entirely,'' that ``More needs to be said,'' and that most non-epiphenomenalist forms of realism face ``a weaker form of the same critique'' (``The Meta-Problem of Consciousness,'' \\textsc{Journal of Consciousness Studies} 25, pp.~45--49, 55--56).}"
+  ],
+  [
+   45903,
+   "\\cpara{Ends: the sane response to the zombie argument is to say it cannot be right and look for the flaw.}"
+  ]
+ ]
+}

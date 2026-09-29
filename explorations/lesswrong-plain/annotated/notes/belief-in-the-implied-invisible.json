@@ -1,0 +1,133 @@
+{
+ "slug": "belief-in-the-implied-invisible",
+ "header": "\\post{Belief in the Implied Invisible}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/3XMwPNMSbaPm2suGz/belief-in-the-implied-invisible}\n",
+ "skeleton_sha": "954126da7c2c133cbfe89a332dfd31b827f9e6ff4a43e8d24338e2d74bf946d2",
+ "post_sha": "0fb67daba9cc7b02b3df4572f49403943503f3a382ca7ab66e4611c852e52751",
+ "edits": [],
+ "notes": [
+  [
+   148,
+   "\\cpara{States the thesis in negative form: the anti-zombie argument of the previous posts does not license ``Anything you can't see doesn't exist.''}"
+  ],
+  [
+   278,
+   "\\cpara{Grants that the rule would be convenient, and rejects it as ``not Bayesian''; the reasons come later.}"
+  ],
+  [
+   491,
+   "\\cpara{Sets up the case: a photon sent into a void between superclusters, which will meet nothing.}"
+  ],
+  [
+   854,
+   "\\cpara{The physics is right. In the standard cosmological model the universe has an event horizon: Davis and Lineweaver (2004) write that galaxies at redshift about 1.8 ``are currently crossing our event horizon. These are the most distant objects from which we will ever be able to receive information about the present day.'' A photon sent out now passes beyond that horizon after a finite time (the working is in the report), and nothing from it can reach us afterwards.}"
+  ],
+  [
+   1469,
+   "\\cpara{Answers no: a vanishing photon would break the conservation laws, and would have to know when to vanish.}"
+  ],
+  [
+   1773,
+   "\\cpara{States the problem the post sets out to solve: why belief in this unseen photon is not a licence to believe in any unseen thing.}"
+  ],
+  [
+   2064,
+   "\\cpara{Offered from memory, and the post says it could not find a source; I could not find one either. The debate itself is real: whether the spiral nebulae were other galaxies stayed open until Hubble measured Cepheid distances in the mid-1920s.}"
+  ],
+  [
+   2721,
+   "\\cpara{Glosses the Latin as the law of parsimony.}"
+  ],
+  [
+   2758,
+   "\\cfact{Not Ockham's words. Wikipedia (``Occam's razor,'' citing Flew and Crombie) reports that this phrasing is absent from Ockham's surviving works and comes from John Punch in 1639; Ockham wrote, for example, ``Numquam ponenda est pluralitas sine necessitate'' (``Plurality must never be posited without necessity''). The sense is close, so the argument is unaffected.}"
+  ],
+  [
+   2848,
+   "\\cpara{Puts the objection in the razor's own terms: more stars are more entities.}"
+  ],
+  [
+   2978,
+   "\\cpara{Answers with the two formalizations described in ``Occam's Razor'' (see the notes there on the choice of programming language): neither counts the size of what a model describes.}"
+  ],
+  [
+   3175,
+   "\\cpara{Argues from history: reality kept turning out larger, so a razor that counted objects would have been wrong each time. Tegmark (2003) gives the same history: ``island universe'' models were popular, ``originally with the island being Earth and the celestial objects visible to the naked eye, and in the early 20th century with the island being the known part of the Milky Way Galaxy.''}"
+  ],
+  [
+   3633,
+   "\\cpara{Explains Solomonoff's measure: the length of a model's code, not the memory or running time it needs. This matches the standard definition, as in the notes on ``Occam's Razor.''}"
+  ],
+  [
+   4489,
+   "\\cfact{True of the two formalizations the post names, not of every one proposed. Schmidhuber's ``speed prior'' (2002) is ``based on the fastest way of describing objects, not the shortest,'' because, in the words of Schmidhuber's page on it, Solomonoff's measure ``assigns high probability to certain data x that are extremely hard to compute. This does not match our intuitive notion of simplicity.'' Under it, running time does count.}"
+  ],
+  [
+   4503,
+   "\\cpara{Gives the Minimum Message Length version: the message states the equations, not the position of each quark, so a model of 100 bits pays a prior penalty of about $2^{-100}$ however many galaxies it contains. LessWrong prints the powers as superscripts; the plain text reads ``2100'' and ``2-100''.}"
+  ],
+  [
+   5485,
+   "\\cpara{Adds the needed limit: if a model predicts well only given the exact positions of the extra quarks, they do cost bits.}"
+  ],
+  [
+   5992,
+   "\\cpara{Applies this to the photon: making it vanish takes an extra law, and laws, not quarks, are what the razor counts.}"
+  ],
+  [
+   6245,
+   "\\cpara{Asks whether the answer is simply that a persisting photon is the simpler hypothesis.}"
+  ],
+  [
+   6430,
+   "\\cpara{Calls that answer ``not quite right.'' The account that follows keeps the simplicity answer but moves it from the photon to the laws: the same equations with a vanishing clause fit the evidence equally well, and are rejected because the extra law costs prior probability, as the post said two paragraphs earlier. What the new account adds is that probability goes to laws, and to unseen things only through what the laws imply.}"
+  ],
+  [
+   6578,
+   "\\cpara{Introduces the post's distinction: the implied invisible and the additional invisible.}"
+  ],
+  [
+   6724,
+   "\\cpara{Says the persisting photon is not believed as a separate fact.}"
+  ],
+  [
+   6872,
+   "\\cpara{Gives the core of the account: one assigns probability to simple equations that are well tested against past and future observations.}"
+  ],
+  [
+   7297,
+   "\\cpara{Concludes that belief in the photon follows from belief in the equations.}"
+  ],
+  [
+   7487,
+   "\\cpara{Restates the point: the probability given to the laws passes to the photon through what the laws imply.}"
+  ],
+  [
+   7903,
+   "\\cpara{Names this belief in the implied invisible. Tegmark (2003), in the essay the author has cited on parallel universes, makes the same point: ``Containing unobservable entities does clearly not per se make a theory non-testable.''}"
+  ],
+  [
+   8227,
+   "\\cpara{Defines the additional invisible: a specific unseen event, or a law, believed with no evidence of its own.}"
+  ],
+  [
+   8710,
+   "\\cpara{Rejects again the rule that the universe stops at the edge of our telescopes.}"
+  ],
+  [
+   8972,
+   "\\cpara{States the rule, with ``does seem'': believe only unseen things implied by testable general laws, and nothing further about them.}"
+  ],
+  [
+   9413,
+   "\\cpara{Refines the rule: additional invisibles keep their prior probability rather than being disbelieved.}"
+  ],
+  [
+   9836,
+   "\\cpara{Grants exceptions in theory, such as unseen demons threatening an enormous number of victims (the case of ``Pascal's Mugging''), and says none arises ``in human practice.''}"
+  ],
+  [
+   10215,
+   "\\cpara{An addition: a colony ship sent at nearly light speed toward a supercluster that will be out of contact by the time it arrives. The physics holds. The event horizon, measured in comoving distance, shrinks towards zero with time (Davis and Lineweaver), so a target that a ship can reach may lie beyond the reach of any message sent back after arrival.}"
+  ]
+ ]
+}

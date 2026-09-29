@@ -89,3 +89,41 @@ Why: Same as the note.
 - Before:  \nb{This judges reliability against a set of worlds that includes the zombie world, which on the view under attack is not physically possible. The post does not say why that set is the right one.}
 - After: 
 
+
+## annotated/posts/zombies-zombies.tex
+
+Why: Nitpick: a word's gloss (AGENT_BRIEF); the image does not depend on it, as the note said.
+
+- Before: \cfact{The word does not mean ``the hearer.'' Neshamah comes from the root nun-shin-mem, ``breathe,'' and its biblical sense is ``breath'' (Wiktionary, which cites Strong's concordance, H5397). ``Hear'' has a different root, shin-mem-ayin, as in the prayer Shema. The post's own gloss, ``that which God breathed into Adam,'' fits the real meaning. The image of the listener does not depend on the word.}
+- After: 
+
+
+## annotated/posts/zombie-responses.tex
+
+Why: Cross-reference to the first full statement (order 225).
+
+- Before: Yudkowsky replied to Chalmers that there is ``a direct, two-way logical entailment'' between the two theses.}
+- After: Yudkowsky replied to Chalmers that there is ``a direct, two-way logical entailment'' between the two theses. On what \textsc{The Conscious Mind} itself says, see the notes on ``Zombies! Zombies?''}
+
+
+## honest/sections/zombies-zombies.tex
+
+Why: Same as the note.
+
+- Before:  \nb{Neshamah means breath; the root for ``hear'' is a different one.}
+- After: 
+
+
+## annotated/afterwords/belief-in-the-implied-invisible.tex
+
+Why: One Tegmark sentence does not show the post's central point was prior; credit kept as a similar point, out of the verdict. Not returning to the opening case is scope.
+
+- Before: Its central point had been made before; Tegmark,
+- After: A similar point had been made before; Tegmark,
+
+- Before:  The post does not return to its opening case, to say whether epiphenomenal consciousness is an implied or an additional invisible.
+- After: 
+
+- Before: its distinction refines the simplicity answer rather than replacing it, and its central point had been made before.
+- After: its distinction refines the simplicity answer rather than replacing it.
+

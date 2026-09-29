@@ -1,0 +1,189 @@
+{
+ "slug": "gazp-vs-glut",
+ "header": "\\post{GAZP vs. GLUT}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/k6EPphHiBH4WWYFCj/gazp-vs-glut}\n",
+ "skeleton_sha": "e1dfaaca9ef998734207b203f7c3c5233f93446283ad0b086867af39be217f89",
+ "post_sha": "f91d1f2cad669b46680d57452cd4344953231d088356d639cd23873964e8317d",
+ "edits": [],
+ "notes": [
+  [
+   111,
+   "\\cpara{Quotes Daniel Dennett's essay (\\textsc{Journal of Consciousness Studies}, 1995) on the one defence of zombies Dennett had seen: a descendant of Ned Block's lookup table. I could not reach a full text of the essay, so the quoted sentence is unchecked.}"
+  ],
+  [
+   526,
+   "\\cpara{Explains a lookup table as programmers use the term. The example checks: two inputs from 1 to 100 give $100 \\times 100 = 10{,}000$ entries.}"
+  ],
+  [
+   1225,
+   "\\cpara{Shows how fast such tables grow. The figure checks: 200 words, each one of 850, give $850^{200} \\approx 7.6 \\times 10^{585}$ conversations. LessWrong prints the exponent as a superscript; the plain text reads ``10585''.}"
+  ],
+  [
+   1431,
+   "\\cpara{Supposes a table for all of a brain's inputs and outputs: unreasonably large, but possible ``in principle''.}"
+  ],
+  [
+   1737,
+   "\\cpara{Grants that the table is not a zombie in the classic sense, since it is physically unlike a brain, and that it could not fit in our universe; the second point is set aside for the argument.}"
+  ],
+  [
+   2064,
+   "\\cpara{Asks the post's question, and defines the sense of ``zombie'' it uses: something that behaves exactly like a human without being conscious. See the note on the cellphone paragraph.}"
+  ],
+  [
+   2188,
+   "\\cpara{Gives the case for calling the table a zombie: from outside it behaves like a human.}"
+  ],
+  [
+   2587,
+   "\\cpara{Reports, with a hedge about the author's reading, that no one claims a lookup table is conscious, not even functionalists.}"
+  ],
+  [
+   2871,
+   "\\cpara{This is the use Ned Block made of the machine in ``Psychologism and Behaviorism'' (1981), against behaviorism about intelligence: ``the machine has the intelligence of a toaster'' (p.~21, as quoted by Drew McDermott, \\textsc{Minds and Machines}, 2014). Shannon and McCarthy had raised the objection to Turing's test in 1956: a machine could look answers up in ``a suitable dictionary'' (as quoted by Gon\\c{c}alves, 2024). The post credits Block only through Dennett's quotation.}"
+  ],
+  [
+   3261,
+   "\\cpara{States the apparent problem: the table looks like a ``Zombie Master'' (the term of ``Zombies! Zombies?''), an unconscious system that makes a body talk about consciousness.}"
+  ],
+  [
+   3506,
+   "\\cpara{Describes how little happens inside the table: a lookup, like balls rolling from a stored stack into a trough.}"
+  ],
+  [
+   3956,
+   "\\cpara{Gives the objection that brains are mechanical too: if ion channels can be conscious, why not levers?}"
+  ],
+  [
+   4278,
+   "\\cpara{Gives the functionalist's answer: the table has the wrong pattern of levers, with no beliefs about beliefs, no self-model and no memory. Haskell is a purely functional programming language, whose functions do not change stored values; the joke is that a conscious program must write to memory.}"
+  ],
+  [
+   4700,
+   "\\cpara{Poses the question the rest of the post answers: where do the table's papers about consciousness come from?}"
+  ],
+  [
+   4986,
+   "\\cpara{Introduces ``Follow-The-Energy'' through Feynman's father. The quotation matches Feynman's ``Judging Books by Their Covers,'' in \\textsc{Surely You're Joking, Mr. Feynman!}.}"
+  ],
+  [
+   5801,
+   "\\cpara{Notes that energy is conserved, so ``using up'' energy needs another account.}"
+  ],
+  [
+   6064,
+   "\\cpara{Names the grown-up version, following negentropy, and links the author's post on the second law.}"
+  ],
+  [
+   6407,
+   "\\cpara{Introduces the post's method, ``Follow-The-Improbability'': every improbable belief needs a matching amount of evidence. The rule is the one argued in the posts the paragraph links, such as ``How Much Evidence Does It Take?''}"
+  ],
+  [
+   6859,
+   "\\cpara{Compares an argument in which improbability appears from nowhere to a perpetual motion machine.}"
+  ],
+  [
+   7232,
+   "\\cpara{Gives an example: a belief in a cake in the asteroid belt, formed without evidence, is very unlikely to be true, though it cannot be proved impossible.}"
+  ],
+  [
+   8008,
+   "\\cpara{Adds that even naming one specific hypothesis needs evidence, because there are countless others (the point of ``Einstein's Arrogance'').}"
+  ],
+  [
+   8741,
+   "\\cpara{Restates the previous paragraph's rule in one sentence.}"
+  ],
+  [
+   9070,
+   "\\cpara{Applies the method: a table that matches a human is enormously improbable, so ask where it came from.}"
+  ],
+  [
+   9336,
+   "\\cpara{Concedes that this departs from standard practice, in which thought experiments ignore physical possibility, and says that here the table's origin matters.}"
+  ],
+  [
+   9783,
+   "\\cpara{First answer: the table was computed from a specification of a human brain.}"
+  ],
+  [
+   10175,
+   "\\cpara{Concludes that such a table is a relay, like a cellphone. Block made the same comparison in 1981, with a two-way radio: ``The two-way radio is like my machine in being a conduit for intelligence,'' and ``All the intelligence it exhibits is that of its programmers'' (pp.~21--22, as quoted by McDermott).}"
+  ],
+  [
+   10276,
+   "\\clogic{``A conscious algorithm'' assumes that a brain's specification, run on other hardware, is conscious. The previous post left that open (``the reasons shall have to wait for future posts''). The argument does not need it: the specification came from a human brain, so the talk traces back to a conscious human either way.}"
+  ],
+  [
+   10429,
+   "\\clogic{Here ``zombie'' changes sense. The post's question was: ``does it behave exactly like a human without being conscious?'' The post does not say the table is conscious: the cellphone it is compared to is not, and a few paragraphs later the post says ``The consciousness isn't in the lookup table.'' So in that sense the table is still a zombie. The cellphone answer is about where the table's talk comes from, which is the sense the anti-zombie principle needs.}"
+  ],
+  [
+   10644,
+   "\\cpara{Second answer considered: the table was generated at random.}"
+  ],
+  [
+   10945,
+   "\\cpara{States the many-worlds reading of quantum randomness as fact (``the deterministic result''); the book argues for that reading in its next sequence. The argument here does not need it. Under any interpretation, a table drawn at random matches a given human's with a probability of about 2 to the minus its length in bits, and ``where did the improbability come from?'' arises in the same way.}"
+  ],
+  [
+   11276,
+   "\\cpara{Recasts random generation as drawing one table from a bin of all possible tables, and asks again where the improbability came from.}"
+  ],
+  [
+   11621,
+   "\\cpara{If the table was picked by design, the picker is ``probably conscious'' and the table is again a relay, at two removes.}"
+  ],
+  [
+   12067,
+   "\\cpara{Draws the lesson: the consciousness is in whatever picked the table, not in the table or in the machine that made all possible tables.}"
+  ],
+  [
+   12483,
+   "\\cpara{Says the real source of a conversation is whatever accounts for its improbability, however far away, as the Sun drives the toy in Feynman's story.}"
+  ],
+  [
+   12964,
+   "\\cpara{The philosopher's last move: stipulate that the table was drawn by pure chance.}"
+  ],
+  [
+   13468,
+   "\\cpara{Answers that the improbability now comes from the philosopher's stipulation, outside the thought experiment.}"
+  ],
+  [
+   13698,
+   "\\cpara{Locates the consciousness in the philosopher, and in the readers' brains, which supply what the imagined table would say.}"
+  ],
+  [
+   14036,
+   "\\cpara{States the moral, with ``generally'': trace talk about consciousness back and you find consciousness. This is how the post connects the table to the Generalized Anti-Zombie Principle.}"
+  ],
+  [
+   14310,
+   "\\cpara{Applies the moral to the chatbot ``Zombie Master'' of ``Zombies! Zombies?'': the humans who wrote its source texts are conscious.}"
+  ],
+  [
+   14515,
+   "\\cpara{Extends it to a future program that talks like a confused philosopher without being conscious: its likeness to humans traces back to its conscious author. The post grants that such a program need not itself be conscious.}"
+  ],
+  [
+   15201,
+   "\\cpara{Returns to the case the thought experiment was built for: a table drawn by genuinely pure chance.}"
+  ],
+  [
+   15360,
+   "\\cpara{The answer is offered as opinion, and the two lines that follow give as its reason the reductio stated earlier. So the post allows that, if such a table were drawn, something would talk as we do without being conscious. What it disputes is that such talk ever arises without a conscious source, which is a claim about probability; the post flagged this move (``not standard philosophical procedure'').}"
+  ],
+  [
+   15650,
+   "\\cpara{Applies the same reasoning to AI: an AI that does improbably nice things needs an account of how its design was chosen, or the improbability is ``pulled out of nowhere.'' The people described are not named; they are reported from the author's experience.}"
+  ],
+  [
+   16908,
+   "\\cpara{Says that earlier posts on AI and morality were produced by the same method, before its rules were spelled out.}"
+  ],
+  [
+   17343,
+   "\\cpara{States the connection to the author's work on Friendly AI openly, as a joke about coincidence.}"
+  ]
+ ]
+}
