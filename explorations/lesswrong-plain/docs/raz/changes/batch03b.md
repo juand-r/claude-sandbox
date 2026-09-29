@@ -400,3 +400,19 @@ Why: STANDARDS 2.5: the Diogenes story first appears in Similarity Clusters (ord
 - Before: \nb{The joke is old. Diogenes Laertius tells how Diogenes answered Plato's definition of man as a featherless biped by bringing a plucked fowl into the lecture room.}
 - After: \nb{The joke is Diogenes' plucked chicken; see ``Similarity Clusters.''}
 
+
+## annotated/afterwords/neural-categories.tex
+
+Why: Nitpick; the credit notes name both designs.
+
+- Before:  A reader of this post would not learn that either design has a literature.
+- After: 
+
+
+## annotated/afterwords/disputing-definitions.tex
+
+Why: Cross-reference: Disguised Queries (order 162) quotes James's rule; this post keeps the story, which fits it better.
+
+- Before: William James told the same story in 1907, about a squirrel on a tree trunk.
+- After: William James told the same story in 1907, about a squirrel on a tree trunk (his general rule is quoted in the notes on ``Disguised Queries'').
+

@@ -1,0 +1,141 @@
+{
+ "slug": "neural-categories",
+ "header": "\\post{Neural Categories}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/yFDKvfN6D87Tf5J9f/neural-categories}\n",
+ "skeleton_sha": "9a82bc6f8475a437ce96c62014102228276f0d481b9ab8f159b56a9ac330422f",
+ "post_sha": "0d0cd7b61302eb39b06ea797137f194b2c7ce63d98acbbb16b83362d9342e20b",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Recalls the bleggs and rubes of ``Disguised Queries'' and keeps five features: colour, shape, texture, luminance and interior.}"
+  ],
+  [
+   721,
+   "\\cpara{Casts the author as a naive designer, who knows neural networks from excited popular books and cannot derive the training rule for a standard layered network.}"
+  ],
+  [
+   1232,
+   "\\cpara{Introduces the first design.}"
+  ],
+  [
+   1314,
+   "\\cpara{The figure (I viewed the image file). Network 1 has five units, for colour ($+$blue/$-$red), shape ($+$egg/$-$cube), luminance ($+$glow/$-$dark), texture ($+$furred/$-$smooth) and interior ($+$vanadium/$-$palladium), each connected to every other: ten connections. Network 1b has the same shape, with units for lifespan, feathers, blood, legs and nails.}"
+  ],
+  [
+   1376,
+   "\\cpara{Explains Network 1b, for telling humans from Space Monsters, with features taken from Aristotle's and Plato's definitions.}"
+  ],
+  [
+   1693,
+   "\\cpara{Gives Hebb's rule: strengthen the connection between units that are often active together. Donald Hebb proposed it in 1949 as an account of learning in the brain.}"
+  ],
+  [
+   1969,
+   "\\cpara{Shows the rule at work: things that are blue and furred strengthen the connection between colour and texture, and so on for the other pairs.}"
+  ],
+  [
+   2420,
+   "\\cpara{Poses a test case: an object that is furred, egg-shaped and reddish purple (colour $-2/3$), with luminance and interior unknown.}"
+  ],
+  [
+   2747,
+   "\\cpara{Describes activation passing among the units, and mocks ``parallel'' and ``asynchronously'' as popular-science buzzwords.}"
+  ],
+  [
+   3116,
+   "\\cpara{Reports that the network settles on glowing and vanadium. That follows: of the three observed units, two push strongly toward the blegg values and one weakly away.}"
+  ],
+  [
+   3379,
+   "\\cpara{Mocks the vocabulary of ``emergent'' and ``distributed'' computation: the category exists only as an attractor of the whole network.}"
+  ],
+  [
+   3698,
+   "\\cfact{The design described here has a name in the literature: the Hopfield network. John Hopfield's 1982 model has a unit per feature, every pair of units connected, Hebbian learning and asynchronous updates, and it ``correctly yields an entire memory from any subpart of sufficient size,'' which is the post's prediction of unobserved features. Its abstract uses the vocabulary the post parodies: properties that ``emerge as collective properties,'' ``asynchronous parallel processing,'' and ``categorization'' among the ``emergent collective properties.'' The post does not name it.}"
+  ],
+  [
+   3712,
+   "\\cpara{Lists the first problem: recurrent networks may oscillate, behave chaotically or take long to settle, which matters when a tiger is in view.}"
+  ],
+  [
+   4290,
+   "\\clogic{True of recurrent networks in general, but oscillation and chaos are not problems of the design just described. With symmetric connections, which Hebb's rule produces, and asynchronous updates, which the post specifies, Hopfield showed that such a network always settles: ``under repeated updating the network will eventually converge to a state which is a local minimum in the energy function'' (Wikipedia, ``Hopfield network,'' citing Hopfield 1982).}"
+  ],
+  [
+   4304,
+   "\\cpara{Lists double counting: a suspicion that the object glows raises belief in vanadium, which raises the suspicion again. The link is to ``Fake Causality,'' where the author describes Bayesian networks as a response to this problem.}"
+  ],
+  [
+   4640,
+   "\\cpara{Lists the cost of scaling. The count is right: $N$ fully connected units need $N(N-1)/2$ connections, ten for five units, which grows as $N^2$.}"
+  ],
+  [
+   4778,
+   "\\cpara{Asks for a more realistic design.}"
+  ],
+  [
+   4848,
+   "\\cpara{The second design (I viewed the image file): the same five units, each connected only to a central unit labelled ``Category: +BLEGG / $-$RUBE.'' One pass in and out, and $N$ connections, are both right for this shape. The speed argument uses the figure the author gave in ``Cached Thoughts'': ``most neurons fire 10--20 times per second, or 200Hz tops.''}"
+  ],
+  [
+   5299,
+   "\\cfact{The design has standard names, and the author gives one of them about three weeks later. A star around a central class variable is the Naive Bayes model: in ``Conditional Independence, and Naive Bayes'' (1 March 2008) the author writes that with the right units such a network ``ends up exactly, mathematically equivalent to Naive Bayes.'' The pass inward and back out is also Pearl's belief propagation on a tree, which gives exact answers after ``two full passes'' (Wikipedia, ``Belief propagation''). Run that way, the star also avoids the double counting charged to Network 1, an advantage the post does not claim.}"
+  ],
+  [
+   5313,
+   "\\cpara{Grants that Network 1 can store a correlation Network 2 cannot: red objects never glow, though red furred objects are otherwise bleggs.}"
+  ],
+  [
+   5839,
+   "\\clogic{Read as the sign of a weight, ``negative'' is the wrong way round. On the figure's coding red is $-1$ and dark is $-1$, so a positive weight makes red objects dark: $(-1) \\times (+w) = -w$. A negative weight would make red objects glow and blue ones dark. The case needs a strong positive connection from colour to luminance. The point, that Network 1 can store the exception directly, survives.}"
+  ],
+  [
+   5853,
+   "\\cpara{Adds that in Network 1 the pattern is no exception, since no unit stands for the category.}"
+  ],
+  [
+   6069,
+   "\\cpara{Judges that the extra connections buy little, since real cases rarely fall halfway between two categories.}"
+  ],
+  [
+   6300,
+   "\\cpara{Gives a pattern neither design can hold without extra units: two features that each predict vanadium alone, but palladium together.}"
+  ],
+  [
+   6667,
+   "\\cfact{This is the exclusive-or pattern, the standard example of what a network without hidden units cannot compute. Minsky and Papert's \\textsc{Perceptrons} (1969) made it famous, and networks with an extra layer of units can compute it (Wikipedia, ``Perceptrons (book)''). The post's ``without extra nodes'' agrees.}"
+  ],
+  [
+   6898,
+   "\\cpara{States the guess on which ``How An Algorithm Feels From Inside'' will rest, with three hedges: it ``seems like a fair guess'' that the brain is ``in some sense'' closer to Network 2. The reasons are design virtues (``Fast, cheap, scalable'') and the expectation that natural selection favours them. No study of brains, or of how people categorize, is cited.}"
+  ],
+  [
+   7271,
+   "\\clogic{The evidence available in 2008 was mixed. Murphy and Ross (1994) tested a Bayesian rule under which ``features are treated as independent of one another'' within categories, the assumption built into Network 2. They found evidence against it: ``feature relations had reliable effects on these predictions.'' The same study supports another claim of the post; see the last note.}"
+  ],
+  [
+   7285,
+   "\\cpara{Asks whether you would notice that sea-blue objects never glow.}"
+  ],
+  [
+   7490,
+   "\\cpara{Answers with hedged guesses (``Maybe,'' ``Perhaps,'' ``probably''): you would notice if the objects were shown together, not if they were scattered among others.}"
+  ],
+  [
+   8133,
+   "\\cpara{Applies the idea to the Socrates syllogism: the brain decides once that Socrates is human and infers mortality from the category, without asking which features go with mortality.}"
+  ],
+  [
+   8793,
+   "\\cpara{Answers ``Of course'' and points to the author's ``Cultish Countercultishness,'' which argues that the mind, ``as it thinks about categories, seems to prefer essences to attractors.''}"
+  ],
+  [
+   8907,
+   "\\cfact{A study the post does not cite supports the answer. In Murphy and Ross's experiments (1994), when an object's category was uncertain, ``Subjects did not generally alter their predictions as a function of information outside the most likely `target' category.''}"
+  ],
+  [
+   9002,
+   "\\cpara{The sequel is ``How An Algorithm Feels From Inside,'' posted the next day.}"
+  ]
+ ]
+}

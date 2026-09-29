@@ -1,0 +1,85 @@
+{
+ "slug": "typicality-and-asymmetrical-similarity",
+ "header": "\\post{Typicality and Asymmetrical Similarity}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/4mEsPHqcbRWxnaE5b/typicality-and-asymmetrical-similarity}\n",
+ "skeleton_sha": "ae56dabf392a93e4733a30f10d111ae3a8de564cf5204337a2efedbd6ed10143",
+ "post_sha": "a55cce57296599efeec54e5472dc26c04dc1811f7e0f04b9a15a93aa0c32a987",
+ "edits": [],
+ "notes": [
+  [
+   162,
+   "\\cpara{Opens with a question: is a robin or an ostrich the more typical bird?}"
+  ],
+  [
+   275,
+   "\\cpara{Asks the same question about three kinds of chair.}"
+  ],
+  [
+   371,
+   "\\cpara{Introduces typicality effects. The verification-time finding is reported as the cited volume reports it: in such tasks, responses of ``true'' ``are invariably faster for the items that have been rated more prototypical'' (Rosch, ``Principles of Categorization,'' 1978). The post is unsure of its own source (``reasonably sure''), but the finding does not depend on it.}"
+  ],
+  [
+   1203,
+   "\\cpara{Asks whether typicality, which may work as a heuristic, has a matching bias that would show it at work.}"
+  ],
+  [
+   1365,
+   "\\cpara{Gives two asymmetries. The country result matches Tversky and Gati's table: Mexico was rated 7.65 in similarity to the United States, and the United States 6.46 in similarity to Mexico, on a scale of 1 to 20. Across their 21 pairs of countries the average difference was 0.42 points, statistically significant, and six pairs went the other way. The asymmetry is real and small.}"
+  ],
+  [
+   1574,
+   "\\cfact{The comparison is not in the cited paper, which I read in full (pp.~430--439). Sadock gives a theory of when an approximation counts as true, and reports no test of what most people prefer here. The paper's nearest point supports the post: a round figure sets a coarser scale, so ``approximately one million'' can be a better approximation than ``approximately 990,000.'' The experimental evidence is Rosch's (1975): given frames such as ``X is virtually Y,'' subjects ``reliably placed the more prototypical member of a pair of items into the referent slot'' (Rosch 1978), and the items included round and non-round numbers.}"
+  ],
+  [
+   1804,
+   "\\cpara{Reports Rips's study of induction and argues that the asymmetry has no practical basis. I could not read the paper. Heit's review (2000) confirms the design, a ``new type of contagious disease'' found on ``a small island,'' and the direction of the effect, with other birds: a bluejay premise ``led to stronger inferences overall than did having goose.'' I could not check whether robins and ducks were among the species.}"
+  ],
+  [
+   2312,
+   "\\clogic{Stated as a fact about what is reasonable, and disputed. Heit's Bayesian model (1998), offered as an analysis of ``what, given certain assumptions, would be normative,'' predicts this asymmetry. It assumes that atypical species are believed to have many features of their own, so that a new property of one ``would suggest that this property is likewise idiosyncratic and not to be widely projected'' (Heit 2000). Whether Rips's subjects reasoned this way is a separate question, which the next paragraph raises.}"
+  ],
+  [
+   2326,
+   "\\cpara{Warns against rationalizing the subjects' answers, and offers the simpler explanation: people use similarity, which is asymmetric, as a stand-in for the probability of spread.}"
+  ],
+  [
+   2997,
+   "\\clogic{This is the post's interpretation, not the study's. Rips measured similarity as distance in a scaling solution, which is symmetric, and found a separate effect of the premise species' typicality: ``Rips (1975) found distinct contributions of premise--conclusion similarity and premise typicality'' (Heit 2000). Of the same asymmetry in later experiments, Heit writes that it ``follows from the premise typicality effect.'' An asymmetric similarity, in the manner of Tversky, is a possible alternative, but the study does not show it. Both accounts give typicality the central role.}"
+  ],
+  [
+   3011,
+   "\\cpara{Gives a spatial version: people seem to treat closeness as a property of Kansas and distance as a property of Alaska. The post offers it with ``seem'' and no study. There is one: Sadalla, Burroughs and Staplin (1980) found that ``The subjective distance between reference points and nonreference points was found to be asymmetrical.''}"
+  ],
+  [
+   3571,
+   "\\cpara{Draws the conclusion: the Aristotelian model of categories fails, and people treat membership as a matter of degree.}"
+  ],
+  [
+   4044,
+   "\\clogic{The evidence in the post is typicality, and typicality does not show graded membership. Armstrong, Gleitman and Gleitman (1983) found typicality gradients for categories with exact definitions: ``some odd numbers (e.g., 3) are judged as being more typical than other odd numbers (e.g., 4,284,647).'' Rips, whose study the post cites, concludes with a coauthor that ``typicality gradients are not diagnostic of a category's lack of precise definition'' (Rips and Thompson, 2014). Membership may still be graded for some categories; this post does not show it.}"
+  ],
+  [
+   4134,
+   "\\cpara{Closes with a link back to ``Words as Hidden Inferences'': one more reason not to pretend that anyone treats words as Aristotelian classes.}"
+  ],
+  [
+   4318,
+   "\\cpara{Cites Lakoff's book, which was published in 1987 as \\textsc{Women, Fire, and Dangerous Things: What Categories Reveal about the Mind}.}"
+  ],
+  [
+   4487,
+   "\\cpara{Cites Rips's study of induction.}"
+  ],
+  [
+   4640,
+   "\\cpara{Cites the volume that contains Rosch's ``Principles of Categorization'' and Tversky and Gati's chapter.}"
+  ],
+  [
+   4776,
+   "\\cpara{Cites Sadock's paper on the truth of approximations; see the note on the text.}"
+  ],
+  [
+   4974,
+   "\\cpara{Cites Tversky and Gati's chapter, the source of the country ratings.}"
+  ]
+ ]
+}

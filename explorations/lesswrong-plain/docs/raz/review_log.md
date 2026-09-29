@@ -184,3 +184,45 @@ Tooling:
   in the Machine has them).
 - Process: my mid-batch notes export caught agents' half-written files. From now on I
   export only finished slugs until the batch ends.
+
+## Batch 3b: A Human's Guide to Words (26 posts)
+
+Eight agents. Edits in `docs/raz/changes/batch03b.md`. Kinds, with examples:
+
+- Critiques a fair reading answers, cut or recast:
+  - Entropy and Short Codes: "probability" in two senses (the post juxtaposes MML and word
+    length but does not equate them); "not quite arbitrary" (the post means length).
+  - Variable Question Fallacies: Martin/Bob as mere pronoun ambiguity ("left" needs a person
+    as parameter, and the pronoun leaves it open).
+  - Superexponential Conceptspace: "wiggin" not needing the superexponential count.
+  - Disputing Definitions: the "expert botanists" question (the post's objection is that the
+    dictionary records both senses and cannot choose).
+  - Replace the Symbol: the school picture (hedged illustration, not a verdict).
+  - Sneaking in Connotations: the In short line had dropped the thesis's "generally".
+  - Common Usage and Arguing by Definition: law as scope, stated once, out of the verdict.
+- Nitpicks cut: loose wording notes, style notes (metaphors, repetition), an unexplained
+  aside, "shows no example" where the next posts do, a blood-type side remark, the
+  "rationalist" name of the method, a loose generalization about Greek philosophers, and
+  "syllogisms are valid".
+- Points made once, with pointers:
+  - Mill on the syllogism: The Parable of Hemlock; Empty Labels points back.
+  - Diogenes' plucked chicken: Similarity Clusters; Arguing by Definition points back.
+  - Wittgenstein's family resemblance: Similarity Clusters; Cluster Structure points back.
+  - Design argument without evidence about brains: Neural Categories (first in book order).
+  - William James: the rule in Disguised Queries, the squirrel story in Disputing
+    Definitions, cross-referenced.
+  - Law and definitions: Arguing by Definition.
+
+Checked and kept: the "nine examples" in Superexponential Conceptspace (about 15 by
+simulation; the growth claim survives); the sign of a weight in Neural Categories (by
+simulation; the point survives); Hopfield's convergence proof against "oscillating or
+chaotic"; The Simple Truth's use of "believe" (54 times) against "without invoking";
+the reworded opening quotation in Where to Draw the Boundary; 29384209 = 1667 x 17627.
+
+For the whole-book pass (already-annotated posts from the original edition):
+- Taboo Your Words: its Mill note should point to The Parable of Hemlock, and its word
+  "rigged" for Empty Labels' demonstration should be reviewed (Empty Labels states its
+  definition openly).
+- How an Algorithm Feels From Inside: its "no evidence about brains" point and its
+  "oscillating or chaotic" remark should point to Neural Categories.
+- Layout: new overfull box of 39pt in Feel the Meaning (the post's own pseudo-code line).

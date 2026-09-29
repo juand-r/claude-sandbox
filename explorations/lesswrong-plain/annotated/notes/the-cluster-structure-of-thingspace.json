@@ -1,0 +1,101 @@
+{
+ "slug": "the-cluster-structure-of-thingspace",
+ "header": "\\post{The Cluster Structure of Thingspace}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/WBw8dDkAWohFjWQSk/the-cluster-structure-of-thingspace}\n",
+ "skeleton_sha": "a3c4b14b99f389069657ff40e89e174e8a71e1f1b4d2753e7a4aa5bd3a8f6f3e",
+ "post_sha": "b1543a0ae2525fe471bac57e57041809c9e95cbd663250d7c9345f6af92462bd",
+ "edits": [],
+ "notes": [
+  [
+   156,
+   "\\cpara{Introduces configuration space with colours. The arithmetic works: on the post's coordinates, blue (0:0:5) is about 4.2 units from blue-green (0:3:2) and about 7.1 from red (5:0:0).}"
+  ],
+  [
+   588,
+   "\\cpara{Proposes seeing a robin as one point in a space whose dimensions describe everything that is or could be known about it.}"
+  ],
+  [
+   926,
+   "\\cpara{Gives volume and mass as two dimensions. Across robins they are strongly but not perfectly correlated, so both are needed.}"
+  ],
+  [
+   1398,
+   "\\cpara{Names the benefit of the picture: the correlation is easier to see among points than among imagined birds.}"
+  ],
+  [
+   1593,
+   "\\cpara{Treats DNA, shape and colour as parts of a robin's position with many dimensions each. The phrase ``or maybe a more sophisticated view that .'' breaks off in the published text.}"
+  ],
+  [
+   2029,
+   "\\cpara{Says nothing is lost in the translation: a weight of 0.07 kilograms and a mass coordinate of +70 (in grams) state the same fact.}"
+  ],
+  [
+   2403,
+   "\\cpara{Allows a dimension for every characteristic, and admits the redundancy: mass, volume and density are all included.}"
+  ],
+  [
+   2767,
+   "\\cpara{Defends the size of this space by comparison with the one quantum physicists use for the whole universe.}"
+  ],
+  [
+   3147,
+   "\\cpara{Represents uncertainty as a cloud of probability in thingspace. The geometry is right: if density is known, mass is proportional to volume, which gives the ``slanting line'' in the mass--volume plane.}"
+  ],
+  [
+   3742,
+   "\\cpara{Introduces radial categories with ``mother'' and its variants, and contrasts the Aristotelian syllogism about nine-fingered Fred with how people reason.}"
+  ],
+  [
+   4212,
+   "\\cfact{The term ``radial categories'' and the ``mother'' example are George Lakoff's, from \\textsc{Women, Fire, and Dangerous Things} (1987), where the conditions for ``mother'' include giving birth, supplying half the child's genes and being a caregiver (Wikipedia, ``Cognitive semantics''). The previous post cites the book; this one names no source.}"
+  ],
+  [
+   4465,
+   "\\cpara{Pictures the intension of ``mother'' as a glow in thingspace, brightest where genetics, birth and child-raising coincide.}"
+  ],
+  [
+   4986,
+   "\\cpara{Pictures the extension instead: every bird mapped into thingspace, with distances that match human judgments of similarity.}"
+  ],
+  [
+   5401,
+   "\\cpara{Describes the result: dense central clusters of robins, sparrows, canaries and pigeons, birds of prey nearby, and penguins, chickens and ostriches farther out.}"
+  ],
+  [
+   5744,
+   "\\cpara{Compares the picture to an astronomical cluster.}"
+  ],
+  [
+   5883,
+   "\\cpara{Combines the two pictures: brightly glowing central clusters, dimmer outliers, and Abraham Lincoln far away and dark.}"
+  ],
+  [
+   6274,
+   "\\cpara{The post's one claim about where categories come from: the intension was learned from the clusters in the world. It is offered as the author's view (``as I see it'').}"
+  ],
+  [
+   6629,
+   "\\clogic{The picture cannot show which came first. The birds were mapped with ``a distance metric that corresponds as well as possible to perceived similarity in humans,'' so the clusters are clusters in human judgment. Rosch, who stated the same principle in 1978, limited it in just this way: ``we are talking about the perceived world and not a metaphysical world without a knower,'' and an attribute such as ``wings'' may be picked out partly because ``we already have a cultural and linguistic category called `birds.'\\,'' On Rosch's account the influence runs both ways.}"
+  ],
+  [
+   6643,
+   "\\cpara{Draws the lesson that a natural cluster may have no set of necessary and sufficient properties.}"
+  ],
+  [
+   7011,
+   "\\cfact{This is Wittgenstein's ``family resemblance''; see the note on ``Similarity Clusters.''}"
+  ],
+  [
+   7025,
+   "\\cpara{Accepts rough definitions: ``feathered flying things'' will do despite penguins, because a definition only has to lead the listener to the cluster.}"
+  ],
+  [
+   7666,
+   "\\cpara{Generalizes: a simple rule will usually meet at least one exception inside an empirical cluster.}"
+  ],
+  [
+   7870,
+   "\\cpara{Concludes that objecting to a definition that does its job is nitpicking.}"
+  ]
+ ]
+}

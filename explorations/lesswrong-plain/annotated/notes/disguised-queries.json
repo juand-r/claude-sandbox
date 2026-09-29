@@ -1,0 +1,93 @@
+{
+ "slug": "disguised-queries",
+ "header": "\\post{Disguised Queries}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/4FcxgdvdQP45D6Skg/disguised-queries}\n",
+ "skeleton_sha": "2582feb3d9826bc51c54b4c8be2b0883ce6fd5fe1fc2bc6e6749f6fb0cd4c5bc",
+ "post_sha": "0d13c55ed31d788a33e13a9d7fa07fb01de00e5a8826d8477c700093ee02bcc1",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Sets up the imaginary factory: blue eggs, called ``bleggs,'' and red cubes, called ``rubes,'' go into two bins.}"
+  ],
+  [
+   493,
+   "\\cpara{Adds the correlated features: bleggs are also furred, flexible and opaque; rubes smooth, hard and translucent.}"
+  ],
+  [
+   775,
+   "\\cpara{Introduces the first odd case, a purple egg.}"
+  ],
+  [
+   963,
+   "\\cpara{States the objection from definitions: a blegg was defined as blue, so a purple object is not one.}"
+  ],
+  [
+   1301,
+   "\\cpara{Answers it from the other features: the object is furred, flexible and opaque, so it seems ``a strangely colored blegg.''}"
+  ],
+  [
+   1543,
+   "\\cpara{Calls in Susan the Senior Sorter.}"
+  ],
+  [
+   1663,
+   "\\cpara{The dialogue. Asked why the two bins exist, Susan gives no reason beyond the definitions (``otherwise they'd be all mixed up'') until she mentions that bleggs contain vanadium and rubes palladium. The joke carries the point: the category matters because of something it predicts.}"
+  ],
+  [
+   4321,
+   "\\cpara{Proposes a new essence, vanadium, and says the surface features matter only as clues to it.}"
+  ],
+  [
+   4724,
+   "\\cpara{States that definition, ``vanadium-containing object,'' in order to knock it down.}"
+  ],
+  [
+   4957,
+   "\\cpara{Knocks it down with made-up figures: about 98 per cent of ordinary bleggs contain vanadium, fewer of the unusual ones.}"
+  ],
+  [
+   5322,
+   "\\cpara{Gives the decisive case: an ordinary-looking blegg that contains palladium.}"
+  ],
+  [
+   5578,
+   "\\cpara{Shows the two uses of the category pulling apart: the object goes in the rube bin, but it should be expected to glow like a blegg.}"
+  ],
+  [
+   6185,
+   "\\cpara{Asks whether it is ``really'' a blegg.}"
+  ],
+  [
+   6248,
+   "\\cpara{Answers with both uses: for sorting it counts as a rube; for inferring unknown properties it belongs with the bleggs.}"
+  ],
+  [
+   6668,
+   "\\cpara{States the thesis: the same category question stands for different practical questions on different occasions.}"
+  ],
+  [
+   6779,
+   "\\cpara{Adds the corollary: a category question that stands for no practical question does not matter.}"
+  ],
+  [
+   6857,
+   "\\cfact{The same test is what William James called the pragmatic method.'' In \\textsc{Pragmatism} (1907) a camping party argues whether a man circling a tree goes round the squirrel on it. James answers that it ``depends on what you practically mean by `going round' the squirrel,'' and gives the rule: ``If no practical difference whatever can be traced, then the alternatives mean practically the same thing, and all dispute is idle.'' For the earlier statement by Peirce, see the notes on ``Making Beliefs Pay Rent.''}"
+  ],
+  [
+   6871,
+   "\\cpara{Applies the idea to two disputes: whether atheism is a ``religion'' and whether transhumanism is a ``cult.'' The account of what the other side is ``really'' arguing is offered with ``(I think)'' and quotes no one; the exchange it draws on is the hypothetical one in the linked post, ``Uncritical Supercriticality.''}"
+  ],
+  [
+   7570,
+   "\\cpara{Locates the error: using a dictionary to settle whether two empirical clusters differ. The claim is limited to that use. The author returns to dictionaries in ``Disputing Definitions'' and ``The Argument from Common Usage.''}"
+  ],
+  [
+   8145,
+   "\\cpara{Says that people often do not see that a dispute about a boundary is a dispute about which characteristics to infer.}"
+  ],
+  [
+   8373,
+   "\\cpara{Names the idea.}"
+  ]
+ ]
+}
