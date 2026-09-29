@@ -1,0 +1,149 @@
+{
+ "slug": "that-tiny-note-of-discord",
+ "header": "\\post{That Tiny Note of Discord}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/SwCwG9wZcAzQtckwx/that-tiny-note-of-discord}\n",
+ "skeleton_sha": "78082f821dbae4f0eea1d44bc2e66e615c8fddbd90415b1661031b11807fc105",
+ "post_sha": "53c4f8e59e5a55ad3a46c3a88912b7fb3bdff24c49e14ff58b0ba69a3577e4a5",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Recaps the previous post. Two details match the author's 1999 ``Frequently Asked Questions about the Meaning of Life'': the confession of ignorance, ``I believe that humanity has a purpose, although I don't know what it is,'' and the claim to formality: the author wrote of having ``realized that it counted as a formal solution to the Meaning of Life.'' The flaw named in the parenthesis is discussed in the notes on the previous post.}"
+  ],
+  [
+   840,
+   "\\cpara{Places the young author among ``smart people who are stupid because they're skilled at defending beliefs they arrived at for unskilled reasons,'' and raises the thought that striving for rationality is then useless.}"
+  ],
+  [
+   1017,
+   "\\clogic{The quoted phrase adapts a line by Michael Shermer, whom the post does not name: ``Smart people believe weird things because they are skilled at defending beliefs they arrived at for non-smart reasons'' (\\textsc{Scientific American} column, September 2002).}"
+  ],
+  [
+   1188,
+   "\\cpara{Answers that thought: not everyone who digs a hole climbs out, and this story is about how the author did.}"
+  ],
+  [
+   1302,
+   "\\cpara{Announces the lesson, which the last paragraph completes: it began with ``one tiny lonely thought.''}"
+  ],
+  [
+   1465,
+   "\\cpara{Moves to 2000. Eliezer2000 still thinks it proven that building a superintelligence is right ``if there is any right thing at all,'' and concludes that no one has a justifiable conflict of interest over the Singularity.}"
+  ],
+  [
+   1857,
+   "\\cpara{Explains why that conclusion mattered: a fight over the Singularity was ``unbearably stupid'' to Eliezer2000, and ``my side got here first'' was too painful a thought.}"
+  ],
+  [
+   2392,
+   "\\cpara{The discordant note: people might want an AI not to kill them even if life is meaningless.}"
+  ],
+  [
+   2594,
+   "\\cpara{The first answer, the ``obvious dodge'': if life is meaningless nothing is right, so respecting people's preferences is not right either.}"
+  ],
+  [
+   2886,
+   "\\cpara{Explains why Eliezer2000 did not take the dodge: the self-concept of ``a dutiful rationalist who tenaciously follows lines of inquiry.''}"
+  ],
+  [
+   3312,
+   "\\cpara{The thought continues: people who want protection in the meaningless case have a motive to oppose the project, which creates a present conflict of interest.}"
+  ],
+  [
+   3821,
+   "\\cpara{Lists excuses Eliezer2000 could have used, as the author now hears them from ``AGI wannabes.'' No one is named, and those who give the second excuse are described as people who ``just basically aren't interested in the problem.''}"
+  ],
+  [
+   4519,
+   "\\cpara{Gives the first reason Eliezer2000 went on: perfectionism. The metaethics seemed to wrap all problems of justice ``in an airtight wrapper.''}"
+  ],
+  [
+   4955,
+   "\\cpara{The objection is a small hole in something perfect, and so worth patching.}"
+  ],
+  [
+   5168,
+   "\\cpara{Gives the second reason: not to taint the cooperation with the institute's funder.}"
+  ],
+  [
+   5470,
+   "\\cfact{Wikipedia (``Machine Intelligence Research Institute''): ``In 2000, Eliezer Yudkowsky founded the Singularity Institute for Artificial Intelligence with funding from Brian and Sabine Atkins.''}"
+  ],
+  [
+   5672,
+   "\\cpara{Explains the sentiment: someone who helps you out of altruism should be doing what they think they are doing. The verse offered, with ``Maybe,'' is Exodus 23:19 (repeated at 34:26 and Deuteronomy 14:21). Among traditional readings, the post's is closest to the ethical one: Rashbam ``argued that using the milk of an animal to cook its offspring was inhumane'' (Wikipedia, ``Milk and meat in Jewish law''), while Maimonides connected the law with idolatry.}"
+  ],
+  [
+   6103,
+   "\\cpara{Gives the third reason, honesty, justified by expected utility: a deceiver is likely to be found out, perhaps by lie detectors invented ``sometime over the next thirty years.''}"
+  ],
+  [
+   6805,
+   "\\cpara{States the rule Eliezer2000 lived by: be ready to have your thoughts broadcast at any time without embarrassment.}"
+  ],
+  [
+   7139,
+   "\\cpara{Qualifies the rule for the author of 2008: a self, secrets and ``maybe even conspiracies'' may be allowed, for reasons of Fun Theory, while the lie-detector principle is kept for professional topics. Fun Theory, in the author's words ``the field of knowledge that deals in questions such as `How much fun is there in the universe?','' got its own sequence from December 2008; ``High Challenge'' in Book V is from it.}"
+  ],
+  [
+   7603,
+   "\\cfact{The line is on John McCarthy's page of sayings, dated ``jmc before 1983.''}"
+  ],
+  [
+   7991,
+   "\\cpara{Notes that other excuses remained (``The world doesn't have the time'' or ``It's unsolvable''), but that Eliezer2000 did not yet know the ``backup'' morality problem would be hard.}"
+  ],
+  [
+   8384,
+   "\\cpara{The turn: Eliezer2000 begins to ask how to specify a fallback morality for the case in which superintelligences do not produce their own motivations from pure logic.}"
+  ],
+  [
+   8685,
+   "\\cfact{In May 2001 the author described this change on the SL4 mailing list and named a different first step: ``The argument that pried me loose of pure objective morality was the possibility that an objective morality would have to be built rather than discovered, requiring initial information to specify what to build.'' Later came the decision that ``since whether morality is ultimately arbitrary is a hidden variable, it makes sense to plan for both cases.'' \\textsc{Creating Friendly AI} (2001) gives a similar first step. The accounts may describe different steps of one change; neither mentions the other's.}"
+  ],
+  [
+   8699,
+   "\\cpara{Lists the safeguards Eliezer2000 already had, all taught in earlier posts: no ``One Great Moral Principle'' (``Fake Utility Functions''), thinking in code, and distrust of ``suggestively named LISP tokens,'' Drew McDermott's point as taken up in ``Truly Part of You.''}"
+  ],
+  [
+   9940,
+   "\\cpara{Names what mattered: for the first time Eliezer2000 tried to think technically about putting a morality into an AI, without ``the escape-hatch of the mysterious essence of rightness.''}"
+  ],
+  [
+   10169,
+   "\\cpara{Says the new standard forced work on details, so that morality began to seem less mysterious.}"
+  ],
+  [
+   10492,
+   "\\cpara{Declares that the reasons ``don't matter at all.''}"
+  ],
+  [
+   10586,
+   "\\cpara{Grants lessons in the perfectionism and in how small the first doubt seemed. The post keeps both claims: the reasons do not matter to the result, and one of them teaches something. The next post puts them together: the reasons ``don't matter at all, except insofar as they happen to historically demonstrate the importance of perfectionism.''}"
+  ],
+  [
+   10812,
+   "\\cpara{States the lesson, ``Actions screen off justifications'': given what you did, your reasons tell nothing more about what you learned. It is the moral of ``My Best and Worst Mistake,'' a week earlier, ``What you actually end up doing, screens off the clever reason why you're doing it,'' applied to a second case.}"
+  ],
+  [
+   11279,
+   "\\cpara{Repeats that the choice, not the reasons, mattered.}"
+  ],
+  [
+   11386,
+   "\\cpara{Gives the occasion: AI builders the author meets who have clever reasons not to think about Friendly AI. The test offered, with ``maybe,'' is to look at one's actions stripped of their justifications.}"
+  ],
+  [
+   11849,
+   "\\cpara{Grants that effort does not guarantee success, and adds that without it you get no chance.}"
+  ],
+  [
+   12128,
+   "\\cpara{Returns to perfectionism and to the title: a world-changing truth may first appear as a small question that is easy to dismiss.}"
+  ],
+  [
+   12482,
+   "\\cpara{Closes the episode: understanding came slowly, and ``That sun rose slower than it could have risen.''}"
+  ]
+ ]
+}

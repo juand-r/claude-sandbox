@@ -1,0 +1,181 @@
+{
+ "slug": "the-sheer-folly-of-callow-youth",
+ "header": "\\post{The Sheer Folly of Callow Youth}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/Yicjw6wSSaPdb83w9/the-sheer-folly-of-callow-youth}\n",
+ "skeleton_sha": "5e9d38f5d825e4eae2e57be333383162ad307511703817029b0d984ae15b6e49",
+ "post_sha": "96249a7016e25b3481effaa4255cf02ab71342b2a8a844272f4d5f5a4e36a939",
+ "edits": [],
+ "notes": [
+  [
+   162,
+   "\\cpara{The epigraph is from E.~E. Smith's novel \\textsc{Second Stage Lensmen}. Gharlane of Eddore, in the guise of Fossten, says it to Kinnison; the words match the text of the novel.}"
+  ],
+  [
+   439,
+   "\\cpara{Names the mistake the author had hinted at. ``My Wild and Reckless Youth'' (August 2007) would not describe the ``mysterious answer'' and gave only its prediction, that neurons exploit quantum gravity ``a la Sir Roger Penrose.'' This post supplies part of what that one withheld: the answer covered morality as well as consciousness, and the morality part is now ``the more embarrassing error.''}"
+  ],
+  [
+   892,
+   "\\cpara{Explains the order of the posts: the author waited until after the posts on metaethics, which this book places in the Value Theory sequence of Book V, so that it would be clear the 1997 view was wrong.}"
+  ],
+  [
+   1055,
+   "\\cpara{Picks up where ``A Prodigy of Refutation,'' posted the day before, stopped: Eliezer1997 setting out to argue ``inescapably'' that creating superintelligence is right.}"
+  ],
+  [
+   1295,
+   "\\cpara{Begins the reconstruction of the 1997 argument with its question.}"
+  ],
+  [
+   1713,
+   "\\cpara{The 1997 argument, as the author reconstructs it. It matches closely the author's own ``Frequently Asked Questions about the Meaning of Life'' (1999; the unofficial copy I read was last updated in 2001). There, if every goal has zero desirability, ``the value of all alternatives equals zero''; so ``When it comes to making choices, you can assume that life has meaning and work from there,'' and the Singularity is ``the interim meaning of life.'' The last sentence has its counterpart too: ``If there is any morality in the Universe, then I have no fear that a superintelligent Mind will make a dumb mistake and wrongfully exterminate humanity.''}"
+  ],
+  [
+   2915,
+   "\\cpara{Says how hard the paragraph was to write, and repeats the saying that parents do what they tell their children not to do. The saying also opens ``My Wild and Reckless Youth''; ``Fighting a Rearguard Action Against the Truth,'' five days later, names its source, John Moore's novel \\textsc{Slay and Rescue}.}"
+  ],
+  [
+   3345,
+   "\\cpara{Declines to count the flaws, warns that memory is ``reconstructed each time we recall,'' and declines to reread the old writings. On the points I could check, the 1999 text bears out the reconstruction (see the note on the argument above).}"
+  ],
+  [
+   3628,
+   "\\cpara{The first diagnosis: in 1997 utility was an absolute quantity, so ``life is meaningless'' meant utility zero. The 1999 text does define that case as every goal having zero desirability.}"
+  ],
+  [
+   4041,
+   "\\clogic{Later work on moral uncertainty makes the same point. MacAskill, Bykvist and Ord (\\textsc{Moral Uncertainty}, 2020, p.~91) write that a theory on which all options are equally choiceworthy ``has no `say' at all: it never affects what it's appropriate to do,'' and that one could give all options ``0, though we could have just as well said it gives all options 17, or any other number.'' In that treatment the cancelling step is valid. What the post faults, further on, is using it on an undefined ``meaning.''}"
+  ],
+  [
+   4124,
+   "\\cpara{The second diagnosis: ``should'' was taken to be whatever compels any mind, and this was silently equated with what people mean by ``right.'' The 1999 text shows the assumption at work: asked whether ``an AI, starting from a blank-slate goal system,'' can ``reason to any nonzero goals,'' it answers ``Yes.'' The book argued against the equation in ``No Universally Compelling Arguments''; see the notes there on Kant, for whom the moral law is valid for every rational being without moving every will, and on the orthogonality thesis. The author's later account of ``right'' is in ``Morality as Fixed Computation.''}"
+  ],
+  [
+   4579,
+   "\\cpara{Leaves the rest of the count to readers who have followed the posts on morality.}"
+  ],
+  [
+   4758,
+   "\\cpara{Links the error to ``My Best and Worst Mistake'': having ``proved'' the meaningless case not worth considering, the young author saw no need to define ``intelligence'' or ``meaning,'' and already had a reason not to, the bait-and-switch definitions of others.}"
+  ],
+  [
+   5309,
+   "\\cpara{The first lesson, drawn from the author's own case.}"
+  ],
+  [
+   5500,
+   "\\cpara{The second lesson: turn on your own position the scrutiny you use on opponents. It restates ``A Prodigy of Refutation'': ``you and only you are obligated to find the flaws in your positions.''}"
+  ],
+  [
+   5935,
+   "\\cpara{Lists what the young author had not yet learned, and describes the Traditional Rationalist's picture of science as a referee between sides.}"
+  ],
+  [
+   6282,
+   "\\clogic{The two questions are Thomas Gilovich's distinction, which the book credited to Gilovich earlier, in ``Motivated Stopping and Motivated Continuation'': ``A motivated skeptic asks if the evidence compels them to accept the conclusion; a motivated credulist asks if the evidence allows them to accept the conclusion.''}"
+  ],
+  [
+   6462,
+   "\\cpara{Locates the ultimate flaw in the standard of rigor, not in the subjects of ``My Childhood Death Spiral,'' ``Raised in Technophilia'' and ``A Prodigy of Refutation'': a liking for intelligence, technophilia, and skill at spotting flaws.}"
+  ],
+  [
+   7060,
+   "\\cpara{Adds that the young author did not try to refute the belief that life had meaning, since the reasoning ``would always be dominated'' by the cases where it did.}"
+  ],
+  [
+   7238,
+   "\\cpara{Gives the young author's reason for haste: with the Singularity at stake, use the best concepts available rather than wait for a perfect definition.}"
+  ],
+  [
+   7512,
+   "\\cpara{The reply, stated flatly. A few paragraphs on it is narrowed: vague concepts may be used in ``interim thought processes,'' but not built on.}"
+  ],
+  [
+   7586,
+   "\\cpara{Grounds the reply: Nature accepts no excuses, and ``If you don't meet the standard, you fail.'' The same figure of Nature appears in ``A Prodigy of Refutation.''}"
+  ],
+  [
+   7961,
+   "\\cpara{Rumsfeld said ``you go to war with the army you have -- not the army you might want or wish to have at a later time'' on 8 December 2004 in Kuwait, answering a soldier who asked why troops had to armour their vehicles with scrap (Wikipedia, ``Improvised vehicle armour''). Rumsfeld's resignation as Secretary of Defense was announced on 8 November 2006, the day after the midterm elections (Wikipedia, ``Donald Rumsfeld'').}"
+  ],
+  [
+   8093,
+   "\\cpara{Concedes that the correct model might not have been reachable then, and that it would not have been prudent to stop thinking entirely.}"
+  ],
+  [
+   8366,
+   "\\cpara{States the rule exactly: vague concepts may guide the search, but one is ``unwilling to put your weight down on them,'' and one does not build a superintelligence on an interim understanding. ``My Best and Worst Mistake,'' three days earlier, ended on the same rule: ``you don't put your weight down on it.''}"
+  ],
+  [
+   8880,
+   "\\clogic{The 1999 text makes that claim for its conclusion. The Interim Meaning of Life ``doesn't claim to be a certainty, just an informed guess that's better than the available alternatives.''}"
+  ],
+  [
+   8945,
+   "\\cpara{Gives the young author's reason for speed: lives at stake, and the risk that nanoweapons would come before superintelligence. ``Raised in Technophilia'' tells how that reason arose.}"
+  ],
+  [
+   9199,
+   "\\cpara{Answers that reason with the same standard: ``Either you match it, or you fail.''}"
+  ],
+  [
+   9363,
+   "\\clogic{The answer to the case for speed rests on the premise that a best guess fails as surely as no attempt. The post asserts it here (``There's just the astronomically high standard needed for success''). The book argues it in ``Value is Fragile'' (Book V), written four months later.}"
+  ],
+  [
+   9391,
+   "\\cpara{An unattributed verse (I could not trace it) restating that the difficulty ``is not matched to your skills.'' ``A Prodigy of Refutation'' said the same of Nature, ``who does not match Her problems to your skill.''}"
+  ],
+  [
+   9951,
+   "\\cpara{Turns to the young author's answer to the objection that no ``ought'' follows from pure logic. The objection is Hume's: an ``ought'' ``expresses some new relation,'' and a reason must be given for ``how this new relation can be a deduction from others, which are entirely different from it'' (\\textsc{Treatise of Human Nature}, 3.1.1).}"
+  ],
+  [
+   10157,
+   "\\cpara{The reply: the same form of argument, that a cause can only come from a cause, would prove that nothing exists.}"
+  ],
+  [
+   10399,
+   "\\cpara{Names three ``hard problems'': consciousness, existence and morality. ``Hard problem'' for consciousness is David Chalmers's term, from 1994 (Wikipedia, ``Hard problem of consciousness''). I could not find the three together in the 1999 text.}"
+  ],
+  [
+   10737,
+   "\\cpara{Links the three, with ``probably'': the qualia of pleasure as a candidate for the intrinsically desirable, and 2500 years without a solution as the sign that the problems are too hard for humans.}"
+  ],
+  [
+   11179,
+   "\\cpara{Concludes that consciousness needs new, non-computable physics, perhaps quantum mechanics or closed timelike curves, which only a superintelligence could understand. The central claim is Roger Penrose's: in \\textsc{Shadows of the Mind} (1994) Penrose argued that consciousness cannot be modelled by a Turing machine and depends on non-computable quantum physics (Wikipedia). ``My Wild and Reckless Youth'' named Penrose as the source of the young author's prediction. The 1999 text, asked whether a fast enough computer could ``Precisely simulate the human brain to arbitrary precision,'' still answers no.}"
+  ],
+  [
+   11793,
+   "\\cpara{Presents the author's \\textsc{Overcoming Bias} posts as the letter the author wishes could have been sent to the younger self. ``My Best and Worst Mistake'' gave a similar purpose: ``to leave a trail to where I ended up by accident.''}"
+  ],
+  [
+   11954,
+   "\\cpara{The lesson of the example: confusion cannot be worked around, and ``best guesses'' about what confuses you will not be right ``until your confusion dissolves.'' ``Confusion exists in the mind, not in the reality'' repeats ``Wrong Questions'' (March 2008): ``Confusion exists in the map, not in the territory.''}"
+  ],
+  [
+   12472,
+   "\\cpara{Applies the lesson to the 1997 argument: making the meaningless case ``cancel out'' was a way to use the mystery without understanding it.}"
+  ],
+  [
+   12866,
+   "\\cpara{Restates the rule as a figure: a blank spot on the map may hide a land mine, and a righteous reason for rushing does not stop it going off.}"
+  ],
+  [
+   13307,
+   "\\cpara{A second unattributed verse: only knowledge shows how much knowledge was needed.}"
+  ],
+  [
+   13494,
+   "\\cpara{Ends the lesson with the alchemists.}"
+  ],
+  [
+   13704,
+   "\\cfact{Loosely put. The deaths on record that I found came from elixirs meant to prolong life, not from attempts to make gold: China's official histories ``record numerous Chinese emperors, nobles, and officials who died from taking elixirs to prolong their lifespans'' (Wikipedia, ``Chinese alchemical elixir poisoning'').}"
+  ],
+  [
+   13740,
+   "\\cpara{Announces the next part, ``That Tiny Note of Discord.''}"
+  ]
+ ]
+}

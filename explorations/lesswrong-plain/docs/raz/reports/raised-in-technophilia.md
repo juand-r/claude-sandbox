@@ -154,7 +154,9 @@ work, but "A Step Farther Out" is a restricted lending item (no full text).
   1996 AI-danger post as leaving an Earth-born intelligence alive. That reading is mine.
 - Response paragraph three ("The post's own story shows where the drug evidence stops") is a
   structural observation tied to the post's own words ("Lives could be lost, but not the
-  Future"); it is not in a note as such. The notes support its parts (FDA note; the
-  "Some teenagers" cpara).
+  Future"). The "Some teenagers" cpara carries it: "The FDA estimate earlier in the post weighs
+  lives lost on each side; it does not bear on this kind of case." A fair defender might answer
+  that the post never applied the FDA estimate to nanotechnology; the post does, however,
+  defend the allergy to "technology has risks as well as benefits" in general.
 - No pronouns for the author or for Gieringer and Sandberg; Pournelle and Ehrlich are not given
   pronouns in my text either.

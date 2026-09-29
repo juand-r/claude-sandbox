@@ -127,3 +127,46 @@ Why: Same as the Response.
 - Before:  It also calls its author ``an actual enhanced human such as myself.''}
 - After: }
 
+
+## annotated/afterwords/the-sheer-folly-of-callow-youth.tex
+
+Why: Memoir: lessons drawn from one's own case are maxims, and the post itself narrows the second rule a few paragraphs later (Book V lesson: do not criticize the unqualified version).
+
+- Before: The first lesson claims more than the case can show. ``No matter how clever the justification for relaxing your standards \ldots\ it will blow your foot off just the same'' is a rule for every case, drawn from one case, which shows that relaxing rigor can fail, not that it always does. The second rule ends narrower than it begins. The flat ``No, you don't use the best concepts you can use at the time'' becomes, a few paragraphs later: vague concepts may guide the search, but one does not build on them.
+
+
+- After: 
+
+- Before: with a sound diagnosis; its lessons are stated for every case on the strength of one, and its answer to the case for haste rests on a premise the post asserts and the book argues later.
+- After: with a sound diagnosis; its answer to the case for haste rests on a premise that the book argues later, in ``Value is Fragile.''
+
+
+## annotated/posts/the-sheer-folly-of-callow-youth.tex
+
+Why: Same: a memoir's maxim.
+
+- Before: \cpara{The first lesson, stated for every case (``No matter how clever the justification''). Its support is the author's one case, which shows that relaxing rigor can fail, not that it always does.}
+- After: \cpara{The first lesson, drawn from the author's own case.}
+
+
+## honest/sections/the-sheer-folly-of-callow-youth.tex
+
+Why: Same: a memoir's maxim.
+
+- Before:  \nb{The rule is stated for every case. The evidence offered is this one.}
+- After: 
+
+
+## annotated/afterwords/that-tiny-note-of-discord.tex
+
+Why: A sequence applying one lesson to a second case is not a fault; the reasons/perfectionism pair is reconciled in the next post; "without credit" recast as credit (Book V lesson). Unnamed builders stated once in the Response.
+
+- Before: The lesson is not new in the sequence. ``Actions screen off justifications'' is the moral of ``My Best and Worst Mistake'' a week earlier; this post applies it to a second case from the same history. The post says both that the reasons ``don't matter at all'' and that ``perfectionism really matters''; the next post says how the two fit together.
+- After: The lesson, ``Actions screen off justifications,'' is also the moral of ``My Best and Worst Mistake'' a week earlier; this post applies it to a second case from the same history.
+
+- Before: One phrase is borrowed without credit: the line about smart people ``skilled at defending beliefs they arrived at for unskilled reasons'' adapts Michael Shermer.
+- After: The line about smart people ``skilled at defending beliefs they arrived at for unskilled reasons'' adapts one of Michael Shermer's.
+
+- Before: though the author's 2001 account names a different first step; its lesson repeats one given a week earlier, and its closing advice is aimed at AI builders it does not name.
+- After: though the author's 2001 account names a different first step.
+
