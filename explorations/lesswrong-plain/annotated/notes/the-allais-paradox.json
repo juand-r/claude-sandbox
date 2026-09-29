@@ -1,0 +1,129 @@
+{
+ "slug": "the-allais-paradox",
+ "header": "\\post{The Allais Paradox}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/zJZvoiwydJ5zvzTHK/the-allais-paradox}\n",
+ "skeleton_sha": "c4225381bb90e7c81d10e10d1fe630562dd24d539a78f9ab576932ebc28be6f9",
+ "post_sha": "0b0c4c5c2424016b0a2083ffd9f83fb13ab0ef527b14add89d9dbd4a8529f847",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Poses the first choice.}"
+  ],
+  [
+   191,
+   "\\cpara{A sure \\$24,000 against a 33/34 chance of \\$27,000. The gamble has the higher expected value, about \\$26,206.}"
+  ],
+  [
+   342,
+   "\\cpara{Asks for two answers, the intuitive one and the one the reader would act on.}"
+  ],
+  [
+   441,
+   "\\cpara{Poses the second choice.}"
+  ],
+  [
+   570,
+   "\\cpara{The same two prizes at lower chances: expected values \\$8,160 and \\$8,910.}"
+  ],
+  [
+   761,
+   "\\cpara{States the finding. The within-subject claim matches the paper the post lists: in Kahneman and Tversky's (1979) version of Allais's problem, ``a majority of respondents (61 per cent) made the modal choice in both problems.''}"
+  ],
+  [
+   1087,
+   "\\cfact{The modification changes the problem's form. Allais's best-known example (as given in the Stanford Encyclopedia) turns a shared 89\\% chance of the same prize into a shared chance of nothing; the post's version instead scales both gambles by 0.34, like Kahneman and Tversky's Problems 3 and 4, which they call ``also based on Allais.'' Both break the same axiom, so the essential problem is the same. With the 1979 numbers, 80\\% preferred a sure 3,000 to an 80\\% chance of 4,000, and 65\\% preferred 20\\% of 4,000 to 25\\% of 3,000.}"
+  ],
+  [
+   1266,
+   "\\cpara{Gives the reason, correctly: each second gamble is the first played with probability 0.34, since $0.34 \\times 33/34 = 0.33$. ``One-third'' is a round figure; the next sentence gives the exact 34\\%.}"
+  ],
+  [
+   1492,
+   "\\cpara{States the independence axiom, the one the pattern breaks.}"
+  ],
+  [
+   1859,
+   "\\cpara{Argues that since expected utility implies the axioms, the subjects cannot be expected-utility maximizers.}"
+  ],
+  [
+   2082,
+   "\\clogic{True of expected utility. Theories that drop independence but keep a complete and transitive ranking of gambles, such as rank-dependent utility (Quiggin) or risk-weighted expected utility (Buchak), can represent both choices. Whether such preferences count as ``consistent'' is the point in dispute; the post puts the word in quotation marks in the previous paragraph.}"
+  ],
+  [
+   2313,
+   "\\cpara{Correct. Multiplying the first inequality by 0.34 and adding 0.66 U(\\$0) to both sides gives the reverse of the second (report). The Stanford Encyclopedia says the same of Allais's original numbers: ``This incompatibility does not require any assumptions about the relative utilities'' of the three prizes.}"
+  ],
+  [
+   2483,
+   "\\cpara{Reports Allais's position: the result shows a flaw in the theory, not in the subjects.}"
+  ],
+  [
+   2700,
+   "\\cfact{``Initially'' may suggest that Allais later gave up this view. In 1979 he published a 245-page rejoinder, ``The So-Called Allais Paradox and Rational Decisions under Uncertainty,'' which he described as ``an extension of my 1952 study'' written ``in the light of the criticisms addressed to it.''}"
+  ],
+  [
+   2948,
+   "\\cpara{Sarcasm at the expense of Allais's view.}"
+  ],
+  [
+   3100,
+   "\\cpara{Voices the opposing view as a feeling of reassurance. Its published defenders also give a theory. The Stanford Encyclopedia describes Buchak's (2013) view that the Allais preferences are ``rationally permissible'': an extra parameter represents the agent's attitude to risk, and ``other, `risk-averse' settings rationalise the Allais preferences.''}"
+  ],
+  [
+   3264,
+   "\\cpara{The post's reply: intuitions are evidence about cognition, and only indirectly about which strategy is wise. The conclusion, that the Allais preferences are a mistake to be corrected on reflection, was Savage's. Savage argued that the Allais preferences are irrational, and reported that he had first held them himself and changed his mind (\\textsc{The Foundations of Statistics}, pp.~101 to 103, as cited by the Stanford Encyclopedia and by Cailloux and Destercke, 2018).}"
+  ],
+  [
+   3822,
+   "\\cpara{Voices the objector: why must preferences be neat?}"
+  ],
+  [
+   4181,
+   "\\cpara{Continues the objection: why not use rules that feel better?}"
+  ],
+  [
+   4582,
+   "\\cpara{The answer, stated as a general law. The next paragraphs give the price in this case.}"
+  ],
+  [
+   4711,
+   "\\cpara{Names the price: a reversal of preference over time that makes the agent a ``money pump.''}"
+  ],
+  [
+   4922,
+   "\\cpara{Sets up a two-stage game. The arithmetic is right: before the roll, setting A is a 34\\% chance of \\$24,000 (gamble 2A) and setting B a 33\\% chance of \\$27,000 (2B); after a roll of 34 or less they are 1A and 1B.}"
+  ],
+  [
+   5275,
+   "\\cfact{Kahneman and Tversky (1979, Problem 10) tested a game of this shape, with the choice made before the first stage. 78\\% chose the sure option, as most had in the one-stage version; ``Evidently, people ignored the first stage of the game.'' Described in two stages, most subjects did not show the preference for B before the roll that the pump assumes; their inconsistency showed instead as a dependence on the description.}"
+  ],
+  [
+   5289,
+   "\\cpara{Runs the pump. It takes two pennies from an agent who does not look ahead.}"
+  ],
+  [
+   5593,
+   "\\clogic{The Stanford Encyclopedia (``Decision Theory'') describes the dispute this enters. Hammond's argument, which supports the post, assumes an agent who plans ahead by working back from later choices; such an agent would foresee switching back, keep A, and so end with 2A, which it ranks below 2B. Defenders of theories that break independence, among them McClennen (1990) and Machina (1989), reply that an agent may adopt a plan and keep to it (``resolute choice''), here keeping B after the roll. Either way the agent pays at most one penny.}"
+  ],
+  [
+   5607,
+   "\\cpara{A pun to close the example.}"
+  ],
+  [
+   5664,
+   "\\cpara{Restates the moral as a warning.}"
+  ],
+  [
+   5839,
+   "\\cpara{Offered with ``I think.'' The paper the post lists agrees: Kahneman and Tversky's abstract says that overweighting of low probabilities ``may contribute to the attractiveness of both insurance and gambling.'' The notes on ``But There's Still A Chance, Right?'' make the same point.}"
+  ],
+  [
+   6114,
+   "\\cpara{Allais's paper, the source of the problem.}"
+  ],
+  [
+   6301,
+   "\\cpara{The source of the 61\\% figure and of the two-stage experiment noted above.}"
+  ]
+ ]
+}

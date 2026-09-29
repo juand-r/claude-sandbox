@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 03:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  29 SEP 2026 04:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -808,52 +808,97 @@ Overfull \hbox (4.49997pt too wide) detected at line 315
 
 [10]
 Overfull \hbox (4.49997pt too wide) detected at line 316
- []\T1/ppl/m/n/10 1309
+ []\T1/ppl/m/n/10 1306
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 317
+ []\T1/ppl/m/n/10 1310
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 318
+ []\T1/ppl/m/n/10 1316
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 319
- []\T1/ppl/m/n/10 1317
+ []\T1/ppl/m/n/10 1320
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 320
+ []\T1/ppl/m/n/10 1327
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 321
- []\T1/ppl/m/n/10 1321
+ []\T1/ppl/m/n/10 1331
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 322
+ []\T1/ppl/m/n/10 1338
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 323
- []\T1/ppl/m/n/10 1326
+ []\T1/ppl/m/n/10 1344
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 324
- []\T1/ppl/m/n/10 1330
+ []\T1/ppl/m/n/10 1350
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 325
- []\T1/ppl/m/n/10 1339
- []
-
-
-Overfull \hbox (4.49997pt too wide) detected at line 326
- []\T1/ppl/m/n/10 1348
- []
-
-
-Overfull \hbox (4.49997pt too wide) detected at line 327
- []\T1/ppl/m/n/10 1356
+ []\T1/ppl/m/n/10 1358
  []
 
 
 Overfull \hbox (4.49997pt too wide) detected at line 328
- []\T1/ppl/m/n/10 1364
+ []\T1/ppl/m/n/10 1366
  []
 
 
-Overfull \hbox (4.49997pt too wide) detected at line 329
- []\T1/ppl/m/n/10 1366
+Overfull \hbox (4.49997pt too wide) detected at line 330
+ []\T1/ppl/m/n/10 1370
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 332
+ []\T1/ppl/m/n/10 1375
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 333
+ []\T1/ppl/m/n/10 1379
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 334
+ []\T1/ppl/m/n/10 1388
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 335
+ []\T1/ppl/m/n/10 1397
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 336
+ []\T1/ppl/m/n/10 1405
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 337
+ []\T1/ppl/m/n/10 1413
+ []
+
+
+Overfull \hbox (4.49997pt too wide) detected at line 338
+ []\T1/ppl/m/n/10 1415
  []
 
 )
@@ -3029,84 +3074,134 @@ r
 
 ] [1296] [1297] [1298] [1299])
 (./afterwords/the-gift-we-give-to-tomorrow.tex [1300]) [1301]
-(./posts/something-to-protect.tex [1302
+(./posts/one-life-against-the-world.tex [1302
 
 ] [1303
 
-] [1304] [1305] [1306])
-(./afterwords/something-to-protect.tex [1307])
-(./posts/twelve-virtues-of-rationality.tex [1308] [1309
+])
+(./afterwords/one-life-against-the-world.tex [1304])
+(./posts/the-allais-paradox.tex [1305] [1306
 
-] [1310] [1311] [1312])
-(./afterwords/twelve-virtues-of-rationality.tex [1313]) [1314] [1315
+] [1307])
+(./afterwords/the-allais-paradox.tex [1308]) (./posts/zut-allais.tex [1309]
+[1310
+
+] [1311] [1312] [1313]) (./afterwords/zut-allais.tex [1314])
+(./posts/feeling-moral.tex [1315] [1316
+
+] [1317])
+(./afterwords/feeling-moral.tex [1318])
+(./posts/the-intuitions-behind-utilitarianism.tex [1319] [1320
+
+] [1321] [1322]
+[1323] [1324]) (./afterwords/the-intuitions-behind-utilitarianism.tex [1325])
+(./posts/ends-don-t-justify-means-among-humans.tex [1326] [1327
 
 ]
-(./posts/use-the-try-harder-luke.tex [1316
+Overfull \hbox (0.29742pt too wide) in paragraph at lines 45--45
+\T1/ppl/m/n/8 (+12) hear''. A close relative is in the literature. R. M. Hare's
+ 
+ []
+
+[1328]) (./afterwords/ends-don-t-justify-means-among-humans.tex [1329])
+(./posts/ethical-injunctions.tex [1330]
+Underfull \hbox (badness 2245) in paragraph at lines 21--21
+\T1/ppl/m/n/10 (+20) modifying AI's re-vi-sions of its own code, be-cause, in i
+ts
+ []
+
+[1331
+
+] [1332] [1333] [1334] [1335]) (./afterwords/ethical-injunctions.tex
+[1336]) (./posts/something-to-protect.tex [1337] [1338
+
+] [1339] [1340] [1341])
+(./afterwords/something-to-protect.tex [1342])
+(./posts/when-not-to-use-probabilities.tex [1343] [1344
+
+]
+Overfull \hbox (0.58797pt too wide) in paragraph at lines 35--35
+\T1/ppl/m/n/8 (+20) danger'', and Giddings and Mangano conclude ``from 
+ []
+
+[1345] [1346] [1347]) (./afterwords/when-not-to-use-probabilities.tex [1348])
+(./posts/newcomb-s-problem-and-regret-of-rationality.tex [1349] [1350
+
+] [1351]
+[1352] [1353] [1354] [1355])
+(./afterwords/newcomb-s-problem-and-regret-of-rationality.tex [1356])
+(./posts/twelve-virtues-of-rationality.tex [1357] [1358
+
+] [1359] [1360] [1361])
+(./afterwords/twelve-virtues-of-rationality.tex [1362]) [1363] [1364
+
+]
+(./posts/use-the-try-harder-luke.tex [1365
 
 ]
 Underfull \hbox (badness 4569) in paragraph at lines 4--5
 []\T1/ppl/m/n/10 (+20) "When there's a will to fail, ob-sta-cles can be
  []
 
-[1317
+[1366
 
-]) (./afterwords/use-the-try-harder-luke.tex [1318]) [1319]
-(./posts/a-sense-that-more-is-possible.tex [1320
+]) (./afterwords/use-the-try-harder-luke.tex [1367]) [1368]
+(./posts/a-sense-that-more-is-possible.tex [1369
 
-] [1321
+] [1370
 
-] [1322])
-(./afterwords/a-sense-that-more-is-possible.tex [1323]) [1324]
-(./posts/humans-are-not-automatically-strategic.tex [1325
+] [1371])
+(./afterwords/a-sense-that-more-is-possible.tex [1372]) [1373]
+(./posts/humans-are-not-automatically-strategic.tex [1374
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-[1326
+[1375
 
-] [1327]) (./afterwords/humans-are-not-automatically-strategic.tex
-[1328]) (./posts/toolbox-thinking-and-law-thinking.tex [1329] [1330
+] [1376]) (./afterwords/humans-are-not-automatically-strategic.tex
+[1377]) (./posts/toolbox-thinking-and-law-thinking.tex [1378] [1379
 
-] [1331]
-[1332] [1333] [1334] [1335] [1336])
-(./afterwords/toolbox-thinking-and-law-thinking.tex [1337])
-(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1338] [1339
+] [1380]
+[1381] [1382] [1383] [1384] [1385])
+(./afterwords/toolbox-thinking-and-law-thinking.tex [1386])
+(./posts/local-validity-as-a-key-to-sanity-and-civilization.tex [1387] [1388
 
 ]
-[1340] [1341] [1342] [1343] [1344] [1345])
-(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1346])
-(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1347]
-[1348
+[1389] [1390] [1391] [1392] [1393] [1394])
+(./afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex [1395])
+(./posts/diseased-thinking-dissolving-questions-about-disease.tex [1396]
+[1397
 
-] [1349] [1350] [1351] [1352] [1353])
-(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1354])
-(./posts/on-caring.tex [1355] [1356
+] [1398] [1399] [1400] [1401] [1402])
+(./afterwords/diseased-thinking-dissolving-questions-about-disease.tex [1403])
+(./posts/on-caring.tex [1404] [1405
 
-] [1357] [1358] [1359] [1360])
-(./afterwords/on-caring.tex [1361] [1362])
-(./posts/strong-evidence-is-common.tex [1363])
-(./afterwords/strong-evidence-is-common.tex [1364
+] [1406] [1407] [1408] [1409])
+(./afterwords/on-caring.tex [1410] [1411])
+(./posts/strong-evidence-is-common.tex [1412])
+(./afterwords/strong-evidence-is-common.tex [1413
 
 ])
-(./posts/pr-is-corrosive.tex [1365]) [1366
+(./posts/pr-is-corrosive.tex [1414]) [1415
 
 ] (./afterwords/pr-is-corrosive.tex)
-[1367] (./main.aux)
+[1416] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0FBCF78A284167570E828D47DCB48383;63820.
+(rerunfilecheck)             Checksum: 130F7996647658176220E1CDDD9018B7;65650.
  ) 
 Here is how much of TeX's memory you used:
- 28243 strings out of 476182
- 499832 string characters out of 5795595
+ 28782 strings out of 476182
+ 509675 string characters out of 5795595
  1968975 words of memory out of 5000000
- 38089 multiletter control sequences out of 15000+600000
- 656438 words of font info for 777 fonts, out of 8000000 for 9000
+ 38188 multiletter control sequences out of 15000+600000
+ 656665 words of font info for 780 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,6n,82p,3175b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk> </
@@ -3122,10 +3217,10 @@ hpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (1367 pages, 5727572 bytes).
+Output written on main.pdf (1416 pages, 5941180 bytes).
 PDF statistics:
- 17695 PDF objects out of 18468 (max. 8388607)
- 16051 compressed objects within 161 object streams
- 9478 named destinations out of 10688 (max. 500000)
- 102473 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 18372 PDF objects out of 18468 (max. 8388607)
+ 16673 compressed objects within 167 object streams
+ 9869 named destinations out of 10688 (max. 500000)
+ 102545 words of extra memory for PDF output out of 106986 (max. 10000000)
 

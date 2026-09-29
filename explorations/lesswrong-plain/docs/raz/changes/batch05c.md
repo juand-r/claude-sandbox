@@ -159,3 +159,19 @@ Why: Editors' choice; neutral pointer.
 - Before: The post's claim that violating ``utilitarianism'' leads to ``paradoxes, contradictions, circular preferences'' is not shown here; the argument was in ``Circular Altruism'', whose book version, ``Feeling Moral'', leaves that section out.
 - After: The argument for the claim that violating ``utilitarianism'' leads to ``paradoxes, contradictions, circular preferences'' was in ``Circular Altruism'', which the book gives in shorter form as ``Feeling Moral''.
 
+
+## annotated/afterwords/one-life-against-the-world.tex
+
+Why: Nitpick on a side remark in the addendum; the note keeps the information.
+
+- Before:  The addendum's claim that obvious methods backfire rests on a blog post about one experiment on medical care and one interview.
+- After: 
+
+
+## annotated/afterwords/zut-allais.tex
+
+Why: Hedges carry: the post says "IIRC" and "I believe"; the In short line now reports the recall as the post does.
+
+- Before: In short: a restatement of the case against the Allais choices whose main experiments are recalled rather than cited, one of them much stronger than any finding I could trace, and whose answer
+- After: In short: a restatement of the case against the Allais choices, whose recalled experiments are marked as recalled and could be traced only in part, and whose answer
+

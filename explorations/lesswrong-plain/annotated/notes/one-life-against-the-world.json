@@ -1,0 +1,73 @@
+{
+ "slug": "one-life-against-the-world",
+ "header": "\\post{One Life Against the World}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/xiHy3kFni8nsxfdcP/one-life-against-the-world}\n",
+ "skeleton_sha": "08d31a553692591488fa526f8b5ddf7e60e058fbf524e1a0b8349cc1f21971b5",
+ "post_sha": "43e6ca06218c6f33723de0136558eb2f11dc76efef62de145bbd047b55f2fa7b",
+ "edits": [],
+ "notes": [
+  [
+   152,
+   "\\cpara{The line is from the Mishnah, Sanhedrin 4:5, which the Talmud contains. In context it is part of the court's warning to witnesses in capital cases. Adam was created alone, so whoever destroys one soul is counted as having destroyed a whole world, and a false witness answers for the victim's blood and ``the blood of his descendants [that should have been born to him] to the end of the world'' (Kulp's translation, Sefaria).}"
+  ],
+  [
+   224,
+   "\\cfact{The post's reading, ``a single life'' with no qualifier, is an attested one. The Jerusalem Talmud and the Kaufmann manuscript read ``one soul''; the printed Mishnah and the Babylonian Talmud (Sanhedrin 37a) read ``one soul from Israel'' (texts on Sefaria). The German edition of the Mishnah (Berlin, 1887 to 1933) notes that manuscripts lack ``from Israel'' and that the word makes little sense, since the first man was not an Israelite.}"
+  ],
+  [
+   280,
+   "\\cpara{Asks the reader to feel the ``warm glow,'' linking the phrase to ``Scope Insensitivity.'' There it names the second of two explanations offered for why people's stated payments barely change with the number of birds saved.}"
+  ],
+  [
+   386,
+   "\\cpara{The author's evidence: an anonymous blog comment that turned someone's life around gave a high like that of a major scientific insight.}"
+  ],
+  [
+   477,
+   "\\clogic{``I can testify'' covers one side of the comparison. The anecdote compares helping one person with a scientific insight. No one can report how saving the world feels, and the next paragraph offers that comparison with ``probably.''}"
+  ],
+  [
+   1125,
+   "\\cpara{States, with ``probably'' twice, that the feeling does not grow with the good done. No study is cited. The book's evidence for scope insensitivity is in ``Scope Insensitivity,'' and those studies recorded what people said they would pay or how they judged proposed programs, not how helping felt (see the notes there).}"
+  ],
+  [
+   1328,
+   "\\cpara{States the thesis: whatever the feeling, the difference in what is achieved is ``gigantic.'' The argument follows.}"
+  ],
+  [
+   1554,
+   "\\cpara{Sets out three views on which saving the world need not be proportionally better than saving one life: a qualitative duty to save what lives you can, the Greek ethics of personal virtue, and a value of one life too great to comprehend. Each is stated briefly and without caricature.}"
+  ],
+  [
+   2088,
+   "\\cfact{The first view has a published defender. John Taurek (``Should the Numbers Count?'', 1977, p.~303) denied that a third party would be ``morally required to save the five persons and let David die,'' and proposed instead: ``Perhaps I could flip a coin.''}"
+  ],
+  [
+   2548,
+   "\\cpara{Answers the third view with the author's own: value adds up across lives. This is stated (``I also hold''), not argued; the railroad case that follows is the argument.}"
+  ],
+  [
+   3004,
+   "\\cfact{Prior work supports this: Nick Bostrom's ``Astronomical Waste'' (2003) estimated that ``the potential for approximately $10^{38}$ human lives is lost every century that colonization of our local supercluster is delayed.''}"
+  ],
+  [
+   3018,
+   "\\cpara{The argument: a rescuer who saves one child and stops, being already ``unimaginably'' ahead, cannot be right. This works against the third view read literally, on which a second life adds nothing to a value already beyond measure. The first two views also condemn the rescuer, since the second child can be saved at no cost to the first, so the case does not separate them from the post.}"
+  ],
+  [
+   3689,
+   "\\cpara{Carries the conclusion to a choice between a cure for 100 people and one for 10,000 (10\\% of 100,000), and asks why it should be different. There is a difference the question passes over. On the tracks the rescuer could save both children; the philanthropist must choose. The exclusive choice is where the first view, as Taurek held it, parts from the post, and the railroad case did not test it.}"
+  ],
+  [
+   4179,
+   "\\cfact{That one should save the greater number is not only a consequentialist view. The Stanford Encyclopedia's entry on contractualism, discussing Taurek's case, reports that ``Many contractualists, however, wish to capture the intuition that you ought to save the five.''}"
+  ],
+  [
+   4364,
+   "\\clogic{The post's strongest claim, given without argument, as is ``the same strength'' in the sentence before. It equates knowingly letting one person die, while saving another, with killing. The Stanford Encyclopedia (``Doing vs. Allowing Harm'') describes this as disputed: consequentialists hold that doing harm is no worse than allowing it, ``while anti-consequentialists, almost universally, disagree.''}"
+  ],
+  [
+   4378,
+   "\\cpara{Adds that spending money to save lives is hard, and reports Stuart Armstrong's point that inaction deserves more disdain than inefficiency. The support for ``don't work'' and ``counterproductive'' is two links: Robin Hanson's blog post on the RAND Health Insurance Experiment, in which people randomly given free medical care were, in Hanson's words, ``not noticeably healthier''; and a Spiegel interview in which the Kenyan economist James Shikwati argues that aid to Africa does more harm than good. The second is one side of a contested debate; Wikipedia's article on Shikwati quotes Jeffrey Sachs calling Shikwati's criticisms ``shockingly misguided.''}"
+  ]
+ ]
+}

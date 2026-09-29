@@ -312,18 +312,27 @@
 \contentsline {subsection}{Value is Fragile}{1289}{section*.313}%
 \contentsline {subsection}{The Gift We Give To Tomorrow}{1295}{section*.314}%
 \contentsline {section}{Quantified Humanism}{1302}{section*.315}%
-\contentsline {subsection}{Something to Protect}{1303}{section*.316}%
-\contentsline {subsection}{Twelve Virtues of Rationality}{1309}{section*.317}%
-\contentsline {part}{Becoming Stronger}{1315}{section*.318}%
-\contentsline {section}{Challenging the Difficult}{1316}{section*.319}%
-\contentsline {subsection}{Use the Try Harder, Luke}{1317}{section*.320}%
-\contentsline {section}{The Craft and the Community}{1320}{section*.321}%
-\contentsline {subsection}{A Sense That More Is Possible}{1321}{section*.322}%
-\contentsline {part}{Beyond the Sequences}{1325}{section*.323}%
-\contentsline {subsection}{Humans are not automatically strategic}{1326}{section*.324}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{1330}{section*.325}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{1339}{section*.326}%
-\contentsline {subsection}{Diseased thinking: dissolving questions about disease}{1348}{section*.327}%
-\contentsline {subsection}{On Caring}{1356}{section*.328}%
-\contentsline {subsection}{Strong Evidence is Common}{1364}{section*.329}%
-\contentsline {subsection}{“PR” is corrosive; “reputation” is not.}{1366}{section*.330}%
+\contentsline {subsection}{One Life Against the World}{1303}{section*.316}%
+\contentsline {subsection}{The Allais Paradox}{1306}{section*.317}%
+\contentsline {subsection}{Zut Allais!}{1310}{section*.318}%
+\contentsline {subsection}{Feeling Moral}{1316}{section*.319}%
+\contentsline {subsection}{The "Intuitions" Behind "Utilitarianism"}{1320}{section*.320}%
+\contentsline {subsection}{Ends Don't Justify Means (Among Humans)}{1327}{section*.321}%
+\contentsline {subsection}{Ethical Injunctions}{1331}{section*.322}%
+\contentsline {subsection}{Something to Protect}{1338}{section*.323}%
+\contentsline {subsection}{When (Not) To Use Probabilities}{1344}{section*.324}%
+\contentsline {subsection}{Newcomb's Problem and Regret of Rationality}{1350}{section*.325}%
+\contentsline {subsection}{Twelve Virtues of Rationality}{1358}{section*.326}%
+\contentsline {part}{Becoming Stronger}{1364}{section*.327}%
+\contentsline {section}{Challenging the Difficult}{1365}{section*.328}%
+\contentsline {subsection}{Use the Try Harder, Luke}{1366}{section*.329}%
+\contentsline {section}{The Craft and the Community}{1369}{section*.330}%
+\contentsline {subsection}{A Sense That More Is Possible}{1370}{section*.331}%
+\contentsline {part}{Beyond the Sequences}{1374}{section*.332}%
+\contentsline {subsection}{Humans are not automatically strategic}{1375}{section*.333}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{1379}{section*.334}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{1388}{section*.335}%
+\contentsline {subsection}{Diseased thinking: dissolving questions about disease}{1397}{section*.336}%
+\contentsline {subsection}{On Caring}{1405}{section*.337}%
+\contentsline {subsection}{Strong Evidence is Common}{1413}{section*.338}%
+\contentsline {subsection}{“PR” is corrosive; “reputation” is not.}{1415}{section*.339}%

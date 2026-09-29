@@ -430,3 +430,35 @@ Six agents. Edits in `docs/raz/changes/batch05b.md`.
 
 Agents fetched several posts not in the book to data/originals for reference (The Moral
 Void, Is Morality Given?, The Meaning of Right, In Praise of Boredom and others).
+
+## Batch 5c: Quantified Humanism (rest of Book V, 9 posts)
+
+Five agents. Edits in `docs/raz/changes/batch05c.md`. Book V is complete.
+
+- Critiques a fair reading answers, cut or recast:
+  - Newcomb's Problem: "restates the one-boxer's side rather than meeting the causal reply"
+    (the post presents "motivations", not its theory). The Response now states the dispute
+    and Lewis's "it's a standoff"; the causal replies stay in the notes.
+  - When (Not) To Use Probabilities: the author's frequency test giving a risk near the
+    speaker's (the post reports the inconsistency itself) left the In short line; the
+    sourced point on "disingenuous" stays.
+  - Ends Don't Justify Means: "rejects less than it seems" (the post rejects the reply's
+    refusal to consider forced cases); the AI exemption does not depend on the evolutionary
+    sentence (it needs only that an AI lack the bias).
+  - Ethical Injunctions: "dismisses its opponents instead of answering them" (the Response
+    itself said the argument was complete before that section).
+  - Feeling Moral: "stands on assertion" (the book's shortening of Circular Altruism is the
+    editors' choice, and the next post argues the additivity premise); a note faulting the
+    closing exhortation.
+  - Zut Allais!: In short line reports the recalled experiments as the post does ("IIRC").
+- Kept: One Life Against the World argues from a case with no trade-off (Taurek 1977 as the
+  other side); the "murderer" line is asserted. The Allais Paradox takes Savage's side of an
+  open dispute. Zut Allais!'s log-utility rule is a slip (checked: at assets of 24,000, 1B
+  scores 10.817 against 10.779; the switch is near 546 dollars), kept in the notes only.
+- Points made once: the case against aggregation (Scanlon, Parfit) is stated in The
+  Intuitions Behind Utilitarianism; Feeling Moral points forward to it (whole-book pass:
+  consider moving it to the first occurrence). Hare and Mill in Ends Don't Justify Means;
+  Ethical Injunctions points back.
+
+Note: one change-log entry (When (Not) To Use Probabilities, Kent n.b.) records an edit whose
+before and after are identical; harmless.

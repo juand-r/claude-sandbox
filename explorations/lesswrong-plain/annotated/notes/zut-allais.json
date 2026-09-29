@@ -1,0 +1,177 @@
+{
+ "slug": "zut-allais",
+ "header": "\\post{Zut Allais!}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/zNcLnqHF5rvrTsQJx/zut-allais}\n",
+ "skeleton_sha": "a0cf07d5823ca50ea08056eb72e157b8694699e665a0b49fb1814d0379c77278",
+ "post_sha": "8c3833363be8b4f12e9f058c627073ad9a20645a201e3e681a176f64315cfb26",
+ "edits": [],
+ "notes": [
+  [
+   107,
+   "\\cpara{Answers the comments on the previous day's post, ``The Allais Paradox.''}"
+  ],
+  [
+   263,
+   "\\cpara{Names two lessons from the heuristics-and-biases field that the post will use.}"
+  ],
+  [
+   576,
+   "\\cfact{For the Allais pattern itself the evidence is mixed. Slovic and Tversky (1974) found that after subjects read arguments favouring the choice they had not made, ``Violations of the axiom persisted as the modal pattern''; Nielsen and Rehbeck (2022) found ``a systematic tendency'' to correct violations; Humphrey and Kruse (2023), with 147 subjects and real incentives, found violations ``robust to its normative justification'' (quotations from Humphrey and Kruse).}"
+  ],
+  [
+   576,
+   "\\clogic{The post reads persistence as a failure to see an error. The same finding is also read the other way: Humphrey and Kruse write that Slovic and Tversky's result ``provides putative support for Allais' view that violating the axiom is reasonable.''}"
+  ],
+  [
+   710,
+   "\\cpara{Turns to incoherent preferences.}"
+  ],
+  [
+   856,
+   "\\cpara{Describes the reversal between choosing and pricing, and explains it by what each question makes salient.}"
+  ],
+  [
+   1105,
+   "\\cfact{The cases come from Lichtenstein and Slovic rather than from prospect theory. Kahneman and Tversky (1979) write that their theory treats choice, not bidding, and credit Lichtenstein and Slovic with ``pairs of prospects A and B, such that people generally prefer A over B, but bid more for B than for A,'' a result ``confirmed in several studies, with both hypothetical and real gambles.''}"
+  ],
+  [
+   1290,
+   "\\cpara{Warns that the example is recalled from memory.}"
+  ],
+  [
+   1559,
+   "\\cpara{Gives the reversal, hedged twice with ``IIRC'' and with a fallback (``If I'm wrong about this exact example''). I could not trace these two bets. They fit the usual design: bet 1 is a long shot with a large prize (expected value \\$5.00), bet 2 a near-certain small win (about \\$3.79).}"
+  ],
+  [
+   1982,
+   "\\cpara{Describes the pump correctly. If bet 1 is priced above bet 2 and bet 2 is chosen over bet 1, then selling 1, swapping it for 2 and buying 2 back leaves the person with no bet and poorer by the difference in prices.}"
+  ],
+  [
+   2208,
+   "\\cfact{Whether real stakes remove the reversals is disputed. A 2010 reanalysis (Berg, Dickhaut and Rietz) summarizes the earlier view, that with incentives ``aggregate reversal rates change little,'' and reports the contrary finding that ``incentives can generate more economically consistent behavior.''}"
+  ],
+  [
+   2222,
+   "\\cpara{The intransitive version, as a taxi loop.}"
+  ],
+  [
+   2489,
+   "\\cpara{Reports, with its own qualification (``Some subjects abandon them''), that some people keep the pattern after the pump is explained.}"
+  ],
+  [
+   2713,
+   "\\cpara{Introduces the transcript. The Las Vegas study is Lichtenstein and Slovic (1973), in which subjects at a casino played with chips bought with their own money. I could not open the linked book page, so the transcript and its source are unchecked.}"
+  ],
+  [
+   3180,
+   "\\cpara{The transcript is mixed evidence for ``defend.'' The subject grants that ``It shows my reasoning process isn't so good'' but has ``no qualms'' and doubts being persuaded. The experimenter's arithmetic is right: 550 less 401 is 149.}"
+  ],
+  [
+   4620,
+   "\\cpara{The author's reaction.}"
+  ],
+  [
+   4722,
+   "\\cpara{Offered with ``I believe'' and no source. The nearest finding I found is in Kahneman and Tversky (1979): ``reducing the probability of winning from 1.0 to .25 has a greater effect than the reduction from .8 to .2,'' two cuts by the same factor, four. They also report Zeckhauser's example, in which most people feel they would pay ``much more'' to cut a chance of death from 1/6 to zero than from 4/6 to 3/6. A drop from 100 to 99\\% outweighing one from 80 to 20\\% is a far stronger claim, and I could not find a study that reports it.}"
+  ],
+  [
+   5036,
+   "\\cpara{States the post's main argument against a premium for certainty.}"
+  ],
+  [
+   5182,
+   "\\cpara{Repeats the four gambles.}"
+  ],
+  [
+   5630,
+   "\\cpara{Restates the pump from the previous post. The notes there cover its arithmetic, Kahneman and Tversky's two-stage experiment, and the replies for an agent who plans ahead.}"
+  ],
+  [
+   6231,
+   "\\cpara{Takes up the agent who knows the plan, and asks it to reconsider its preferences. The resolute-choice reply noted on the previous post gives another answer: keep to the plan made before the roll.}"
+  ],
+  [
+   6428,
+   "\\cpara{Generalizes: any extra weight near the ends of the probability scale can be exploited by a chain of events that removes probability a step at a time. The construction is the one already given, and the replies noted on the previous post apply to it in the same way.}"
+  ],
+  [
+   7092,
+   "\\cpara{Borrows the experimenter's question from the transcript.}"
+  ],
+  [
+   7170,
+   "\\cpara{Points back to ``The Lens That Sees Its Flaws'': intuitions do not give direct information about good choices.}"
+  ],
+  [
+   7574,
+   "\\cpara{A framing example. The two descriptions do give the same outcomes: \\$400 for certain, or \\$500 with 80\\% and \\$300 with 20\\%.}"
+  ],
+  [
+   8083,
+   "\\cfact{I could not find these numbers in a study. Kahneman and Tversky (1979, Problems 11 and 12) tested the same design: given 1,000, 84\\% took a sure 500 over an even chance of 1,000 more; given 2,000, 69\\% took an even chance of losing 1,000 over a sure loss of 500. The final outcomes were identical.}"
+  ],
+  [
+   8097,
+   "\\cpara{States the prescription: multiply the utility of outcomes by their probability.}"
+  ],
+  [
+   8273,
+   "\\cpara{Turns the prescription into a rule for the Allais problem. The first part is right: 1A beats 1B exactly when one unit of the difference between \\$24,000 and nothing outweighs 33 units of the difference between \\$24,000 and \\$27,000.}"
+  ],
+  [
+   8803,
+   "\\cfact{This does not follow from the logarithmic utility the post has just recommended. With utility equal to the logarithm of total assets, 1A beats 1B only if existing assets are below about \\$550. With assets of \\$24,000, 1B has the higher expected utility (10.817 against 10.779), so the rule gives B (calculation in the report).}"
+  ],
+  [
+   9038,
+   "\\cpara{Reports the commenters' objection, ``the utility of certainty.''}"
+  ],
+  [
+   9315,
+   "\\cpara{Answers that utilities attach to outcomes, not to probabilities, following ``Terminal Values and Instrumental Values.'' That answers the commenter's U(Certainty) term.}"
+  ],
+  [
+   9695,
+   "\\clogic{Published defenders of the Allais choices put the value of certainty into the outcomes instead. The Stanford Encyclopedia reports that Loomes and Sugden count disappointment as part of the outcome, and that for Weirich ``\\$100 million as the result of a sure bet is more than \\$100 million from a gamble that might have paid nothing.'' Broome's reply is that such redescriptions are allowed only where a real difference justifies them. The post takes up the feeling of reassurance two paragraphs later; the version that does not rest on feelings it does not discuss.}"
+  ],
+  [
+   9709,
+   "\\cpara{Restates the price as the switch thrown and thrown back.}"
+  ],
+  [
+   9928,
+   "\\cpara{Raises the feeling of certainty as a possible utility.}"
+  ],
+  [
+   10062,
+   "\\cpara{Grants that a feeling can be paid for, and says the choice depends on whether one cares more about the feeling or about ``actually achieving the goal.''}"
+  ],
+  [
+   10338,
+   "\\cpara{Exempts gambling for fun.}"
+  ],
+  [
+   10487,
+   "\\cpara{Raises the stakes to lives.}"
+  ],
+  [
+   10643,
+   "\\cfact{Stated without a source. The best-known study with lives, Tversky and Kahneman's (1981), found a preference for the sure option when outcomes were described as lives saved (72\\%) and for the gamble when the same outcomes were described as deaths (78\\%).}"
+  ],
+  [
+   10738,
+   "\\cpara{Compares preference reversals to driving in a circle: no destination can be read from the choices.}"
+  ],
+  [
+   11069,
+   "\\cpara{States the conclusion: at least one choice in a reversal is not optimizing anything coherent. Kahneman and Tversky, whose paper the previous post lists, take the same normative view: departures of the kind their theory describes ``must lead to normatively unacceptable consequences, such as inconsistencies, intransitivities, and violations of dominance.''}"
+  ],
+  [
+   11472,
+   "\\cpara{Repeats the lens image from ``The Lens That Sees Its Flaws.''}"
+  ],
+  [
+   11960,
+   "\\cpara{Closes: when something important is at stake, follow the mathematics.}"
+  ]
+ ]
+}
