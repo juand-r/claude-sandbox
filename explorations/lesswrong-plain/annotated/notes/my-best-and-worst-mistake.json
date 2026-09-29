@@ -1,0 +1,109 @@
+{
+ "slug": "my-best-and-worst-mistake",
+ "header": "\\post{My Best and Worst Mistake}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/BA7dRRrzMLyvfJr9J/my-best-and-worst-mistake}\n",
+ "skeleton_sha": "0255f45e40de8529e584c89d7c908528a008537d7ffe12935d8e1fa886fb0c19",
+ "post_sha": "bae55dd75f25e110e1e114e8d30fc9c883d9fc36a052a7c27b8d380be45c0046",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Links to the previous post and states the young author's refusal to define intelligence: not mathematically, and, the post adds, hardly at all.}"
+  ],
+  [
+   474,
+   "\\cfact{The archived early texts do define intelligence, informally. ``Staring into the Singularity'' (text dated 1996 and 1999) has a section headed ``The Definition of Smartness'': ``Smartness is the measure of what you see as obvious, what you can see as obvious in retrospect, what you can invent, and what you can comprehend.'' ``The Plan to Singularity'' (1999--2000) says: ``Intelligence is whatever lets you model, predict, and manipulate reality.'' Neither is mathematical, so the first sentence stands. ``Any definition \\ldots\\ at all,'' and ``I refused to define it at all'' in the third paragraph, are stronger than the record; the post's later wording, ``not to precisely define,'' fits it.}"
+  ],
+  [
+   488,
+   "\\cpara{Gives the young author's reason: in AI, a loose definition of intelligence invites a cheap program that meets the definition and is then announced as intelligence. The examples are types of system, not named projects.}"
+  ],
+  [
+   1309,
+   "\\cpara{Diagnoses the refusal as an overreaction to other people's mistakes, the pattern of ``Reversed Stupidity Is Not Intelligence'' in Book II, and names the young author's real target: something ``powerful enough to take stars apart for raw material.''}"
+  ],
+  [
+   1912,
+   "\\cpara{Gives a second overreaction: because neat math had kept AI projects on toy problems, the young author doubted any neat math of intelligence, ``Except for Bayes's Theorem.'' I could not reach ``Coding a Transhuman AI,'' the likeliest place for that exception, so it is unchecked; the other early texts I read do not mention Bayes.}"
+  ],
+  [
+   2484,
+   "\\cpara{Offers, with ``it's hard for me to remember,'' a root cause: too few AI books, too popular, and the wrong ones.}"
+  ],
+  [
+   2814,
+   "\\cpara{Adds that the young author had written AI off as a ``sick, dead field'' that had not delivered on its promises. ``The Plan to Singularity'' (1999--2000) bears this out: ``The research talent we need is more likely to reside in the field now called `cognitive science' than in the field called AI. AI remains crippled by the ideologies formed back when it was necessary to believe that a 50's-era computer program was exhibiting `intelligence'.''}"
+  ],
+  [
+   3332,
+   "\\cpara{States the thesis: the same belief was one of the author's best and one of the worst mistakes.}"
+  ],
+  [
+   3500,
+   "\\cpara{Explains the ``best'' half: expecting no simple answer, the young author read widely and did not stop at the first bright idea.}"
+  ],
+  [
+   4365,
+   "\\cpara{Grants both errors, and credits neuroanatomy with the idea that a mind divides into parts like ``visual cortex,'' not ``commonsense reasoning module.'' ``The Plan to Singularity'' shows the idea in use: it calls a module for source code a ``codic cortex,'' ``by analogy to the human `visual cortex'.''}"
+  ],
+  [
+   4537,
+   "\\cfact{The post does not say here which mathematics it means; ``My Bayesian Enlightenment,'' later in this sequence, takes that up. Formal work of this kind had appeared the year before the post: Legg and Hutter's ``Universal Intelligence: A Definition of Machine Intelligence'' (arXiv, 2007) gives a formal definition, starting from the remark that ``nobody really knows what intelligence is.'' Hutter's 2005 book is cited in the introduction to this book.}"
+  ],
+  [
+   4988,
+   "\\cpara{Restates the point of the last paragraph in general form.}"
+  ],
+  [
+   5199,
+   "\\cpara{Turns from the reasons to what the belief led the young author to do.}"
+  ],
+  [
+   5360,
+   "\\cpara{First consequence: study of the cognitive sciences.}"
+  ],
+  [
+   5547,
+   "\\cpara{Second consequence: not stopping at one brilliant idea.}"
+  ],
+  [
+   5703,
+   "\\cpara{Third consequence: long study before proposing any system, the practice recommended in ``Hold Off On Proposing Solutions.''}"
+  ],
+  [
+   5948,
+   "\\cpara{Sums up the ``best'' half.}"
+  ],
+  [
+   6043,
+   "\\cpara{Introduces the moral.}"
+  ],
+  [
+   6131,
+   "\\cpara{The moral, in the book's term ``screens off'': once you know what someone did, the reason they had adds nothing to what you can predict about the result.}"
+  ],
+  [
+   6227,
+   "\\cpara{Applies the moral: of two clever arguments that may both prove wrong, the one that leads you to study more leaves you better placed.}"
+  ],
+  [
+   6573,
+   "\\cpara{Admits luck: many successes were right actions for wrong reasons. The ``anthropic principle'' remark is a selection effect turned against the author's own record: readers hear only from the author who did not reach a dead end. The stated purpose of the writing, to leave a trail to where the author ended up by accident, matches what the introduction to this book says about why the essays were written.}"
+  ],
+  [
+   7590,
+   "\\cpara{Gives the ``worst'' half: informality meant low standards, and the clever reason for not defining intelligence precisely let sloppy reasoning in.}"
+  ],
+  [
+   7989,
+   "\\cpara{Answers that defining intelligence at once would also have been wrong, since a right definition needs knowledge the young author lacked. This keeps the refusal to define; the mistake, as the next paragraph says, lay elsewhere.}"
+  ],
+  [
+   8251,
+   "\\cpara{The rule, by analogy with fire before atoms were known: informal talk is needed to investigate, but conclusions drawn at that level must not be trusted.}"
+  ],
+  [
+   8870,
+   "\\cpara{Ends with a metaphor for trusting such a conclusion, and a promise to continue. Which conclusion is not said here. ``A Prodigy of Refutation,'' two posts on, returns to the young author's belief that a superintelligence ``will also know what's right far better than a human being could.''}"
+  ]
+ ]
+}

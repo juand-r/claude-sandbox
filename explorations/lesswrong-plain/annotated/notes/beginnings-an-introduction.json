@@ -1,0 +1,113 @@
+{
+ "slug": "beginnings-an-introduction",
+ "header": "\\post{Beginnings: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/tPWZfmNpstRMCBjFM/beginnings-an-introduction}\n",
+ "skeleton_sha": "350a7f2458a85012d80d41150153f894a91306c8f556ebdc696a284c76462296",
+ "post_sha": "8e4bf1e80bacf18d995dd7f562e65699fb3d4724efb93977f9aeaaa1949cb58d",
+ "edits": [],
+ "notes": [
+  [
+   135,
+   "\\cpara{Presents the last book as a call to action, and says this introduction will point to further reading on Bayesianism.}"
+  ],
+  [
+   494,
+   "\\cpara{Says the book's definition of normative rationality, by probability theory and decision theory, is standard in cognitive science, and names two general introductions: Baron's textbook and the \\textsc{Oxford Handbook of Thinking and Reasoning}.}"
+  ],
+  [
+   867,
+   "\\cpara{Marks the book's philosophy as more contested than its definition of rationality, and gives an example that checks. In the 2009 PhilPapers survey, the source of footnote 3, 21.3 per cent of respondents accepted or leaned toward one box and 31.4 per cent two boxes, with 47.4 per cent ``Other.'' In the 2020 survey, one-boxing drew 22.7 per cent of decision theorists' answers other than ``Other'' (Bourget and Chalmers, 2023, Table 26). The notes on ``Newcomb's Problem and Regret of Rationality'' give the figures in full.}"
+  ],
+  [
+   1445,
+   "\\cfact{Drescher's book (2006) defends the many-worlds interpretation of quantum mechanics and treats Newcomb's problem and the Prisoner's Dilemma (Wikipedia, ``Gary Drescher''), as this book does in Books IV and V.}"
+  ],
+  [
+   1593,
+   "\\cpara{Places Yudkowsky among Bayesians who want rules for choosing priors. The description of Talbott's entry checks: it names Jaynes among the ``Objective Bayesians,'' who ``emphasize the extent to which prior probabilities are rationally constrained,'' and says Jaynes ``identifies four general principles that constrain prior probabilities.''}"
+  ],
+  [
+   2351,
+   "\\cpara{Reports the frequentist charge that Bayesian probability is subjective, and a reply from Kruschke and Yudkowsky. The reply is the stopping-rule argument: the same data give different p-values depending on what the experimenter planned to do. Yudkowsky's post takes its coin example from Steven Goodman. The frequentist answer, that the stopping rule is part of the declared design, and the dispute over the likelihood principle behind it, are in the notes on ``Beautiful Probability.''}"
+  ],
+  [
+   2919,
+   "\\cpara{Separates the dispute about what probability is from the choice of methods for analysing data, and gives each kind of method its uses: Bayesian tools have become cheaper and more widely used, while frequentist methods remain more popular and in some contexts better.}"
+  ],
+  [
+   3599,
+   "\\cpara{Says that training in statistics, and in some other fields such as psychology, improves reasoning outside the classroom, and that classes in logic and fallacies do not. The two studies cited are, by their titles and the summaries I could read, about statistical training: Fong, Krantz and Nisbett taught subjects the law of large numbers, and Schoemaker compared the gambling decisions of people with and without statistical training. I could not read either paper in full, so the claims about psychology training and about logic classes are unchecked.}"
+  ],
+  [
+   3965,
+   "\\cpara{Previews the book's three sequences. The names and their order match the book, and the first, the one that follows, is described accurately as Yudkowsky's own intellectual history.}"
+  ],
+  [
+   4975,
+   "\\cpara{Asks what the next generation of primers should do, and lists testing this book's prescriptions among the tasks still to be done.}"
+  ],
+  [
+   5224,
+   "\\cpara{Says why the essays were written and what they led to. The first clause matches Yudkowsky's own statement two posts on, in ``My Best and Worst Mistake'': ``One of my primary purposes in writing on Overcoming Bias is to leave a trail to where I ended up by accident.'' The rest credits the posts with inspiring \\textsc{Less Wrong}, helping to seed effective altruism, and sparking the Center for Applied Rationality.}"
+  ],
+  [
+   6042,
+   "\\cpara{Closes: the art of applied rationality is new and half-formed, and much is left undone.}"
+  ],
+  [
+   6356,
+   "\\cpara{A closing wish for the reader.}"
+  ],
+  [
+   6442,
+   "\\cpara{Cites Baron's textbook.}"
+  ],
+  [
+   6545,
+   "\\cpara{Cites the Oxford handbook.}"
+  ],
+  [
+   6694,
+   "\\cpara{Cites the paper on the 2009 PhilPapers survey (published 2014).}"
+  ],
+  [
+   6770,
+   "\\cpara{Cites Jim Holt's article in \\textsc{Slate} (2002).}"
+  ],
+  [
+   6827,
+   "\\cpara{Cites Drescher's book.}"
+  ],
+  [
+   6969,
+   "\\cpara{Cites Talbott's encyclopedia entry.}"
+  ],
+  [
+   7116,
+   "\\cpara{Cites Jaynes's \\textsc{Probability Theory}.}"
+  ],
+  [
+   7173,
+   "\\cpara{Cites Hutter's book, whose subtitle names its basis, algorithmic probability.}"
+  ],
+  [
+   7395,
+   "\\cpara{Cites Feldman's encyclopedia entry.}"
+  ],
+  [
+   7547,
+   "\\cpara{Cites Kruschke's review of Bayesian data analysis. Only its abstract was available to me.}"
+  ],
+  [
+   7706,
+   "\\cpara{Cites Kruschke's textbook.}"
+  ],
+  [
+   7858,
+   "\\cpara{Cites Fong, Krantz and Nisbett (1986).}"
+  ],
+  [
+   8159,
+   "\\cpara{Cites Schoemaker (1979).}"
+  ]
+ ]
+}

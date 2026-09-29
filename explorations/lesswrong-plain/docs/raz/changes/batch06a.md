@@ -74,3 +74,56 @@ Why: Memoir: the labels are the other person's, reported as such; the point is i
 - Before: The post takes its label from the other person's claim, but the anecdote does not show a difference between the two schools.
 - After: The labels are the other person's, and the anecdote does not show a difference between the two schools.
 
+
+## annotated/afterwords/beginnings-an-introduction.tex
+
+Why: "I could not check" is a limit of our research, not a fault of the introduction; it stays in the Response and the note.
+
+- Before: In short: a reading list and preview whose descriptions of positions and sources check out where I could check them, with one claim, about psychology training and logic classes, resting on studies I could read only in summary.
+- After: In short: a reading list and preview whose descriptions of positions and sources check out where I could check them.
+
+
+## annotated/afterwords/my-childhood-death-spiral.tex
+
+Why: Memoir: the essay is later than the 1995 self described, and a self-description as an "enhanced human" does not bear on the post's report; a reach. The ambiguous-paragraph point is a nitpick. "Could not trace" is our limit, out of the In short line.
+
+- Before: The same essay bears on the young author's modesty. It does call its author dumb, as the post says the young author was careful to do. It also calls its author ``an actual enhanced human such as myself,'' which sits beside the post's ``No line drawn between himself and others.'' The essay is later than the 1995 the post describes, and neither passage claims moral superiority.
+
+
+- After: 
+
+- Before: 
+
+One paragraph is ambiguous. It calls intelligence ``the unfairest'' card in the present tense, without saying whose view that is, and the postscript later puts death and old age first.
+- After: 
+
+- Before: In short: a memoir whose central report, that the young author expected superintelligence to be moral, is borne out by the archived writings; its example of the spiral's earlier false beliefs, about the speed of light, I could not trace.
+- After: In short: a memoir whose central report, that the young author expected superintelligence to be moral, is borne out by the archived writings, and a real case of the spiral that Book II described.
+
+
+## annotated/posts/my-childhood-death-spiral.tex
+
+Why: Memoir: the essay is later than the 1995 self described, and a self-description as an "enhanced human" does not bear on the post's report; a reach. The ambiguous-paragraph point is a nitpick. "Could not trace" is our limit, out of the In short line.
+
+- Before: \cfact{The earliest text of the author's I could read, the archived ``Staring into the Singularity'' (dated 1996 and 1999, later than the 1995 described here), shows both sides. It does call its author dumb: ``I know, in a dim way, just how dumb I am.'' It also draws a line, calling its author ``an actual enhanced human such as myself,'' a ``Specialist'' whose resources are ``over-allocated to a few favored abilities, including causal analysis and combinatorial design,'' with ``blind spots'' of its own. Neither passage claims moral superiority.}
+- After: \cfact{The archived ``Staring into the Singularity'' (dated 1996 and 1999) bears this out: ``I know, in a dim way, just how dumb I am.''}
+
+
+## annotated/afterwords/my-best-and-worst-mistake.tex
+
+Why: The overstatement is a slip whose point survives (no mathematical definition, which the post's later wording states); the In short line reports it without the charge.
+
+- Before: In short: a memoir whose account of the young author's views on AI is borne out by the archived writings, except that those writings did define intelligence informally: the post's opening overstates the refusal, and its later phrase ``not to precisely define'' fits the record.
+- After: In short: a memoir, candid about luck, whose account of the young author's views on AI is borne out by the archived writings, though those writings did define intelligence informally.
+
+
+## honest/sections/my-childhood-death-spiral.tex
+
+Why: Same as the Response.
+
+- Before:  I do not say here whether this is my view then or now. \nb{The postscript says that the author now thinks first of death and old age as the poor hands dealt to humans.}
+- After:  \nb{The postscript says that the author now thinks first of death and old age as the poor hands dealt to humans.}
+
+- Before:  It also calls its author ``an actual enhanced human such as myself.''}
+- After: }
+
