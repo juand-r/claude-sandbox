@@ -1,0 +1,189 @@
+{
+ "slug": "newcomb-s-problem-and-regret-of-rationality",
+ "header": "\\post{Newcomb's Problem and Regret of Rationality}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/6ddcsdA2c2XpNpE5x/newcomb-s-problem-and-regret-of-rationality}\n",
+ "skeleton_sha": "d338f981b05f355570e8bcc0e633842d792b1c09f04f1f4e1283130839c3665e",
+ "post_sha": "d4db2ed9a6b3aa2fe34f7875622d38f420de8eaf8119af22d63c34d02f999a0c",
+ "edits": [],
+ "notes": [
+  [
+   172,
+   "\\cpara{Introduces the dilemma, with a hedge (``may well be''). The claim is fair. The \\textsc{Stanford Encyclopedia of Philosophy} entry ``Causal Decision Theory'' (Weirich, SEP below) says: ``The most common objection to causal decision theory is that it yields the wrong choice in Newcomb's problem.''}"
+  ],
+  [
+   291,
+   "\\cpara{States the problem in its standard form. Robert Nozick first published it in 1969 and named it after the physicist William Newcomb, who devised it (SEP). The post's version gives the predictor a record of 100 correct predictions out of 100.}"
+  ],
+  [
+   1487,
+   "\\cpara{States the two-boxer's case fairly, and the figures check: whatever box B holds, two boxes pay \\$1,000 more. The two-boxer's last line matches the literature. David Lewis, in ``Why Ain'cha Rich?'' (1981), whose title is the one-boxer's taunt, writes: ``The reason why we are not rich is that the riches were reserved for the irrational.''}"
+  ],
+  [
+   2253,
+   "\\cpara{Points to the literature. The 1985 volume edited by Richmond Campbell and Lanning Sowden reprints Nozick's 1969 paper, the problem's first published treatment.}"
+  ],
+  [
+   2429,
+   "\\cfact{The identification is argued in David Lewis's ``Prisoners' Dilemma Is a Newcomb Problem'' (1979); Allan Gibbard and William Harper made the same observation in 1978 (SEP). The SEP entry states it for a dilemma between ``psychological twins,'' where each player's act is ``a sign, but not a cause,'' of the other's.}"
+  ],
+  [
+   2737,
+   "\\cpara{Says openly that the other side is the majority view, and the surveys agree. In the 2009 PhilPapers survey, 31.4\\% of 931 philosophers accepted or leaned toward two boxes and 21.3\\% one box; in 2020 the figures were 39.0\\% and 31.2\\% (see the notes on ``What Do We Mean By `Rationality'?'' for the 2020 survey). Among decision theorists in 2020, only 22.7\\% of those who chose either answer chose one box, against 46.1\\% of other philosophers.}"
+  ],
+  [
+   2995,
+   "\\cfact{Information: one-boxing already had a formal theory. Evidential decision theory (Richard Jeffrey, 1965) weighs each outcome by its probability given the act, and recommends one box (SEP). Lewis writes of the one-boxers, ``Their decision theory is that of Jeffrey.''}"
+  ],
+  [
+   3009,
+   "\\cpara{Declines to give the author's own analysis, on grounds of slow writing.}"
+  ],
+  [
+   3281,
+   "\\cpara{Accurate. The SEP entry: causal decision theory ``may conclude that cultivating a disposition to one-box is rational although one-boxing itself is irrational.'' The disagreement is about the choice made after the prediction, not about preparing for it.}"
+  ],
+  [
+   3567,
+   "\\cpara{Applies the concession to an AI that can rewrite its own code: it would make itself a one-boxer in advance.}"
+  ],
+  [
+   3961,
+   "\\cpara{Generalizes: an agent that does not know which such problem it will face should become the kind of agent that does well on all of them.}"
+  ],
+  [
+   4399,
+   "\\cpara{Answers ``Yes'' to the question of the previous line, but gives no specification: the theory was shelved. That it ``seems, to me, to have many nice properties'' is hedged, and cannot be checked from the post.}"
+  ],
+  [
+   4828,
+   "\\cfact{Information from after the post: the author published ``Timeless Decision Theory'' through the Singularity Institute in 2010, and, with Nate Soares, ``Functional Decision Theory'' (arXiv, 2017). Both one-box in Newcomb's problem.}"
+  ],
+  [
+   5009,
+   "\\cpara{Grants the standard objection: verbal arguments for one-boxing are ``easy to come by,'' and the hard part is a theory that one-boxes ``without producing absurd results elsewhere.'' The author says such a theory exists but cannot be published.}"
+  ],
+  [
+   5465,
+   "\\cpara{Says plainly that what follows is motivation, not the theory. The closing paragraphs say it again.}"
+  ],
+  [
+   5815,
+   "\\cpara{The thesis. Taken as an aim, it is common ground: causal decision theorists also want the money, and argue that two boxes get more of it given what box B already holds. The dispute, which the post reaches below, is over which agent counts as winning.}"
+  ],
+  [
+   5856,
+   "\\cpara{Says that winning means getting whatever one's utility function values, including other people's happiness and the far future.}"
+  ],
+  [
+   6266,
+   "\\cpara{Separates two causal positions: two-boxers do their best and are ``cursed by a Predictor,'' and the reasonable move ``just happens to predictably lose.'' Both exist in the literature. The first is Lewis's ``riches were reserved for the irrational''; the second is how the SEP entry sums up the causal reply: ``One-boxing is irrational even if one-boxers prosper.''}"
+  ],
+  [
+   7056,
+   "\\cpara{The post's reply to the charge: Omega rewards the predicted choice whatever reasoning produced it, so it rewards no way of reasoning. The charge, as Gibbard and Harper put it, is about the choice itself: a predictor who ``rewards predicted irrationality richly'' richly rewards irrationality, and for them one-boxing is the irrational choice. Lewis concluded that this is two-boxer doctrine ``that one-boxers may consistently deny'': ``So it's a standoff.'' The post takes the one-boxers' side of that standoff; its reply does not settle it.}"
+  ],
+  [
+   7885,
+   "\\cpara{Restates the point: the reward depends only on where the reasoning ends, not on how it got there.}"
+  ],
+  [
+   8106,
+   "\\cpara{Draws the general rule: every method of reasoning may be given up, except the aim of winning.}"
+  ],
+  [
+   8404,
+   "\\cpara{The same passage from Musashi's \\textsc{The Book of Five Rings} closed ``Something to Protect'' the day before; the post says it is repeating it.}"
+  ],
+  [
+   8699,
+   "\\cpara{A second case of the rule: the author will not bound the utility function to escape Vann McGee's Dutch book over infinitely many bets. The account of McGee matches the author's longer summary in ``Trust in Bayes'' (29 January 2008, not in this book).}"
+  ],
+  [
+   9295,
+   "\\clogic{Sufficient only with a further premise: that living forever is worth no more than the limit of ever longer finite lives. A bounded utility that ranks ``forever'' above every finite life has the stated preference. For example, $1 - 1/(N+1)$ for $N$ years and 2 for forever: $0.8 \\times 2 = 1.6$ exceeds $0.800001 \\times u(N)$ for every $N$. With that premise, the inference holds.}"
+  ],
+  [
+   9782,
+   "\\cpara{The objection is put in the causal decision theorist's mouth without a source, and differs from the charge in the sources checked here. Lewis does not say that one-boxers must believe in an effect on the box; Lewis says the evidential rule ``commends an irrational policy of managing the news so as to get good news about matters which you have no control over.'' The reply that follows, that no such belief is needed, answers the post's version, not Lewis's.}"
+  ],
+  [
+   10033,
+   "\\cpara{Answers by setting ``reasonable'' aside: the author need not believe that the choice affects the box, and can ``just\\ldots\\ take only box B.''}"
+  ],
+  [
+   10337,
+   "\\cpara{The margin joke echoes Fermat's marginal note on the Last Theorem. The post now says the theory need not be shown. Earlier it granted the ``common attitude'' that verbal arguments for one-boxing ``are easy to come by'' and that a coherent theory is the hard part. What follows is presented as motivations, not as that theory.}"
+  ],
+  [
+   10623,
+   "\\cpara{Proposes a method: see which agents leave with the most money, and define ``reasonable'' from that. This is the ``Why ain'cha rich?'' argument made into a method. The causal reply is that the two groups faced different boxes. Lewis: ``When we made our choices, there were no millions to be had.'' The post quotes a version of this reply next.}"
+  ],
+  [
+   11169,
+   "\\cpara{Introduces the reply from James M. Joyce's \\textsc{The Foundations of Causal Decision Theory} (1999).}"
+  ],
+  [
+   11274,
+   "\\cpara{Quotes the causal reply at length and in its own words, from a standard statement of the theory. Rachel admits she wishes she were the refusing type, and says the wish is for ``Irene's options,'' not an endorsement of her choice. I could not check the quotation against Joyce's book.}"
+  ],
+  [
+   12857,
+   "\\cpara{The post's answer: rationality should never leave you envying ``someone else's mere choices,'' and Rachel envies ``only'' Irene's choice. The passage just quoted denies this in its last sentence: Rachel is ``wishing for Irene's options, not sanctioning her choice.'' The post rests its reading on the earlier point that Omega rewards only the predicted decision; Joyce's passage rests on the fact that, once the prediction is made, Rachel's choice cannot change her options. Each reading assumes its own side's answer.}"
+  ],
+  [
+   13366,
+   "\\cpara{States the prescription: ``Just do the act you envy.''}"
+  ],
+  [
+   13536,
+   "\\cpara{Describes the causal position accurately; Joyce's Rachel says ``The \\$1,000 was the most I was going to get no matter what I did.'' The post's answer is to point to the result: one-boxers leave richer.}"
+  ],
+  [
+   14025,
+   "\\cpara{The post grants that some thought experiments give agents an advantage at the start, and the cliff is a case where calling an advantage unfair would be absurd. It does not show which kind of case Newcomb's problem is. On the causal view it is the first kind: not jumping causes survival, but taking one box does not cause the million, which was placed or withheld before the choice.}"
+  ],
+  [
+   14515,
+   "\\cpara{Argues that a two-boxer would want to find a convincing argument for one-boxing, since believing it would pay, and calls this ``a rather odd position.'' Causal decision theorists accept the point for anything done before the prediction (see the note on precommitment above).}"
+  ],
+  [
+   15203,
+   "\\cpara{Raises the stakes to a daughter's life and to the Earth. The structure is unchanged: whatever box B holds, taking both boxes is at least as good.}"
+  ],
+  [
+   15934,
+   "\\cpara{Links to ``Something to Protect'' (posted the day before): the stake is something that matters more than being reasonable.}"
+  ],
+  [
+   16326,
+   "\\cpara{The conclusion goes from wishing that one-boxing were reasonable to revising what ``reasonable'' means. That step is the one Joyce's passage disputes: Rachel ``can and should admit'' the wish, and holds that it ``is not inconsistent with'' thinking one should take the \\$1,000. Higher stakes make the wish stronger; they do not answer her.}"
+  ],
+  [
+   16405,
+   "\\cpara{Restates the rule about envy, now as a sign that one has ``got the Way wrong.''}"
+  ],
+  [
+   16757,
+   "\\cpara{Extends the rule from choices to beliefs. ``What Do We Mean By `Rationality'?'' (2009), early in the book, makes the same claim; see the notes there.}"
+  ],
+  [
+   17007,
+   "\\cpara{Grants that ``rationality'' cannot be defined both as winning and as Bayesian decision theory, and says Bayes must go if it systematically loses. Information: causal and evidential decision theory both maximize expected utility with Bayesian probabilities; they differ over which probabilities weigh the outcomes (SEP). So ``Bayescraft'' does not by itself decide Newcomb's problem, and the post does not say it does.}"
+  ],
+  [
+   17818,
+   "\\cpara{Concedes plainly that the post is ``not a knockdown criticism of causal decision theory,'' only an illustration of the author's attitude.}"
+  ],
+  [
+   18054,
+   "\\cpara{Restates the two rules: no gap between the winning and the reasonable choice, or between the reasonable and the most probable belief.}"
+  ],
+  [
+   18272,
+   "\\cpara{States how the author uses ``rational'': for beliefs about accuracy and winning, not for verbal reasoning, certainty, proof, public demonstration or reasonableness. The earlier sentence calls it ``just the label''; it is offered as a usage, not as an argument.}"
+  ],
+  [
+   18712,
+   "\\cpara{Closes with a second passage from Musashi's \\textsc{The Book of Five Rings} (the Water Book): whatever the technique, the aim is to cut.}"
+  ]
+ ]
+}
