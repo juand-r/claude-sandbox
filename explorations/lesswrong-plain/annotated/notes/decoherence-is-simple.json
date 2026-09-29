@@ -1,0 +1,245 @@
+{
+ "slug": "decoherence-is-simple",
+ "header": "\\post{Decoherence is Simple}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/Atu4teGvob5vKvEAF/decoherence-is-simple}\n",
+ "skeleton_sha": "c75082db886ed566da8c537c7288d9d1fdbe6de01656007237d8f54e62671523",
+ "post_sha": "940142ca59e8b5e1dc1f3fd11efeacf422d624c806e467272c1117e526e58b1f",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Addresses the post to physicists.}"
+  ],
+  [
+   171,
+   "\\cpara{An anecdote: the author's father said physics cannot be understood without its mathematics, and the young author believed Feynman instead.}"
+  ],
+  [
+   655,
+   "\\cpara{Concedes the father's point: ``No math = no physics.''}"
+  ],
+  [
+   843,
+   "\\cpara{Names three terms that physicists are said to misuse: simple, falsifiable and testable. This post treats only the first. The next day's post, ``Decoherence is Falsifiable and Testable'' (7 May 2008), treats the other two.}"
+  ],
+  [
+   1099,
+   "\\cpara{Calls the post a restatement of ``Belief in the Implied Invisible'' (8 April 2008). Much of what follows repeats that post: the two formalizations, code rather than memory, the ever larger universe, and the object that passes beyond the cosmological horizon. The new parts are the conjunction rule, the lottery, billiards and thermometer cases, and the application to quantum mechanics.}"
+  ],
+  [
+   1447,
+   "\\cpara{Introduces the objection, quoted in the author's paraphrase with no source. The objection is real. The Stanford Encyclopedia's entry on many-worlds (Vaidman) reports: ``Much of the opposition to the MWI stems from its introduction of a vast number of unobservable worlds. Critics argue this constitutes an extreme violation of Ockham's principle.''}"
+  ],
+  [
+   1831,
+   "\\cpara{Adds that those who make the objection usually mention the reply, which is close to the post's own view: the razor counts laws, not objects.}"
+  ],
+  [
+   2159,
+   "\\cpara{Mocks the even-handed presentation and breaks off. The post holds that the two sides are not equal.}"
+  ],
+  [
+   2277,
+   "\\cpara{Turns to the question of how simplicity could be calculated.}"
+  ],
+  [
+   2358,
+   "\\cpara{As the notes on ``Belief in the Implied Invisible'' say, this phrasing is not found in Ockham's surviving works; Wikipedia traces it to John Punch in 1639. Ockham's own versions say much the same, so the argument is unaffected.}"
+  ],
+  [
+   2628,
+   "\\cpara{Asks for a number that measures simplicity, not an impression.}"
+  ],
+  [
+   3027,
+   "\\cpara{Proposes word count as a measure, to reject it.}"
+  ],
+  [
+   3120,
+   "\\cpara{Rejects word count with the witch example, also used in ``Occam's Razor.'' The count of eleven words is right.}"
+  ],
+  [
+   3335,
+   "\\cpara{Announces two ways to improve on word count.}"
+  ],
+  [
+   3419,
+   "\\cpara{The first way: measure a hypothesis by the size of a program that computes its predictions. A witch subroutine does not help predict where a rock rolls. This matches the account in ``Occam's Razor.''}"
+  ],
+  [
+   4296,
+   "\\cpara{The second way: measure a hypothesis by how far it shortens a message describing the data. ``Witch'' shortens nothing; Galileo's law shortens a great deal.}"
+  ],
+  [
+   5248,
+   "\\cpara{Names the two ways: Kolmogorov complexity and Solomonoff induction, and Minimum Message Length.}"
+  ],
+  [
+   5559,
+   "\\cpara{Says the two formalisms were ``proven equivalent.'' That is stronger than the sources and than the author's own earlier posts. ``Occam's Razor'' said Minimum Message Length is ``nearly equivalent,'' and gave the difference in a footnote: ``it chooses the shortest program, rather than summing up over all programs.'' Wallace and Dowe (1999), the main paper on the relation, ``attempt to establish a parallel'' between a two-part version of Kolmogorov's model and Minimum Message Length, and say that Solomonoff's model ``is tailored to prediction rather than inference.'' The post's argument needs only that both count description length, and that holds.}"
+  ],
+  [
+   5843,
+   "\\cpara{Answers, with ``More or less,'' that both formalisms count the length of the description, not the memory or effort needed to run it. This is correct for both as defined.}"
+  ],
+  [
+   6301,
+   "\\cpara{Raises the objection that anyone could invent another formalism.}"
+  ],
+  [
+   6720,
+   "\\cpara{Promises experimental evidence for the choice of formalism, and first goes back to the conjunction rule.}"
+  ],
+  [
+   6802,
+   "\\cpara{States the conjunction rule, which is correct.}"
+  ],
+  [
+   7330,
+   "\\cpara{Grants two limits of the rule: it compares a story with a less detailed version of itself, not rival hypotheses, and it gives only an inequality.}"
+  ],
+  [
+   7694,
+   "\\cpara{Draws the lesson: each added detail splits a story's probability between the versions where the detail is true and where it is false.}"
+  ],
+  [
+   8388,
+   "\\cpara{Gives the count. LessWrong prints the powers as superscripts; the plain text reads ``210'' for $2^{10}$. The arithmetic is right: ten binary details give $2^{10} = 1024$ stories, so a fully detailed one competes with 1023 others.}"
+  ],
+  [
+   8794,
+   "\\cpara{Defines the razor's ``entities'' as details that each cost probability. The rest of the post depends on this definition: an object costs something only if it must be stated separately.}"
+  ],
+  [
+   8944,
+   "\\cpara{Gives the lottery case: ``I will win'' mentions fewer people than ``someone will win'' but is far less probable, because it is one of a million specific outcomes.}"
+  ],
+  [
+   9616,
+   "\\cpara{Refines the thesis: what counts against a theory is not only its laws but every entity it must mention explicitly, such as the specific balls that had to be in a particular state.}"
+  ],
+  [
+   10481,
+   "\\cpara{Shows the other side: the exact state of the air need not be specified, because almost every state at 22 degrees predicts the same reading. The physics is right: a warmer room has more possible states.}"
+  ],
+  [
+   11304,
+   "\\cpara{Adds that a more specific hypothesis can win if it predicts the data more precisely, as when a friend wins ten lotteries in a row.}"
+  ],
+  [
+   11672,
+   "\\cpara{Puts the ten wins in message-length terms: naming the winner once shortens the message.}"
+  ],
+  [
+   12081,
+   "\\cpara{Puts the same case in Solomonoff's terms: the extra code costs prior probability, and the sharper prediction repays it.}"
+  ],
+  [
+   12655,
+   "\\cpara{Asks for a formal meaning of ``necessity'' as well.}"
+  ],
+  [
+   12896,
+   "\\cpara{Describes the prior: programs in a prefix-free code, each given probability 2 to the minus its length. This matches the standard definition (see the notes on ``Occam's Razor'').}"
+  ],
+  [
+   13387,
+   "\\cpara{Describes the version with programs that output probabilities, and prediction by a weighted mixture of them. Also standard.}"
+  ],
+  [
+   13890,
+   "\\cpara{Draws the practical rule: complex hypotheses need more evidence, but can earn it, as a coin that keeps coming up heads or repeats a pattern eventually does.}"
+  ],
+  [
+   14513,
+   "\\cpara{The figure is right: a gram of hydrogen holds about $6.0 \\times 10^{23}$ atoms, six hundred billion trillion. The point is that we accept an enormous number of objects on modest evidence.}"
+  ],
+  [
+   14806,
+   "\\cpara{Contrasts that with the evidence an equal number of separate laws would need.}"
+  ],
+  [
+   14966,
+   "\\cpara{Asks why memory and running time are not counted.}"
+  ],
+  [
+   15135,
+   "\\cpara{Gives a formal reason: programs are mutually exclusive, resources are not. A normalized prior can still count resources. Schmidhuber's speed prior (2002, see the notes on ``Belief in the Implied Invisible'') counts computing time. Schmidhuber draws from it that ``large scale quantum computation will not work well (essentially because it would require too many computational resources in interfering `parallel universes').'' So this answer does not show that resources cannot count. The post's second answer, from history, carries its case.}"
+  ],
+  [
+   15360,
+   "\\cpara{Gives the historical reason: counting resources does not work.}"
+  ],
+  [
+   15468,
+   "\\cpara{Stated here as fact. In ``Belief in the Implied Invisible'' the same story was offered from memory (``Though I failed to Google a source, I remember reading''), with the Milky Way as an alternative. Neither that post's annotator nor I could find a source.}"
+  ],
+  [
+   15677,
+   "\\cpara{Argues that a razor penalizing a larger universe would have been wrong each time the universe grew. The point was made in ``Belief in the Implied Invisible,'' with the same credit to Tegmark noted there.}"
+  ],
+  [
+   15930,
+   "\\cpara{This is the ``experimental evidence'' promised earlier. It consists of the historical record above, whose one specific case has no source, and a parenthesis about researchers' programs that names no study. ``Probably the Minimum Message Length paradigm has proven most productive'' is hedged and unsupported.}"
+  ],
+  [
+   16573,
+   "\\cpara{Returns to the case of ``Belief in the Implied Invisible,'' with a spaceship for the photon.}"
+  ],
+  [
+   16780,
+   "\\cfact{Continued expansion is not enough. A universe that expands forever but slows down has no event horizon: with scale factor proportional to $t^{2/3}$, the horizon integral $\\int dt/a$ diverges, so a signal from the ship would reach us eventually. The expansion must accelerate, as ``Belief in the Implied Invisible'' said. Davis and Lineweaver (2004) place event horizons in ``accelerating universes.'' Current cosmology holds that the expansion accelerates, so the example stands.}"
+  ],
+  [
+   17088,
+   "\\cpara{Asks whether the ship vanishes at the horizon.}"
+  ],
+  [
+   17354,
+   "\\cpara{Shows that a razor counting objects would say yes: after the horizon, the vanishing model predicts the same and contains fewer objects. The argument is sound.}"
+  ],
+  [
+   17906,
+   "\\cpara{Gives the post's answer: the ship obeys the laws that hold everywhere else, and making it vanish would need a new law.}"
+  ],
+  [
+   18470,
+   "\\clogic{The post leaves the parallel with collapse implicit. The next day's post draws it, calling the collapse postulate ``an entire law \\ldots\\ that can simply be thrown away.'' The parallel fits a collapse rule that predicts nothing of its own. Objective-collapse theories such as GRW and CSL change the dynamics, and the Stanford Encyclopedia's entry on them notes that they make ``predictions, which slightly differ from the standard quantum mechanical ones,'' now bounded by experiment.}"
+  ],
+  [
+   18484,
+   "\\cpara{States the many-worlds view: measurement follows the same rules as everything else, so observers end up in superpositions.}"
+  ],
+  [
+   18520,
+   "\\cfact{Physicists use ``decoherence'' for a process that every interpretation accepts: interference is suppressed when a system becomes entangled with its environment. The Stanford Encyclopedia's entry on it says ``decoherence as such does not provide a solution to the measurement problem,'' unless combined with an approach such as Bohm, Everett or GRW. It adds that some leading workers, such as Zeh, suggest that decoherence is ``most naturally understood in terms of Everett-like interpretations.'' The post uses the word for the Everett view, as it says here, so the title's claim is about many-worlds, not about the physical process.}"
+  ],
+  [
+   18863,
+   "\\cpara{Names the Born-rule question and sets it aside. It bears on simplicity. Vaidman's entry on many-worlds says that obtaining the right probabilities ``involves adding a postulate,'' though not a change to the wave function, and that attempts to derive the rule ``have faced strong opposition.'' It also reports Papineau's view that many-worlds is ``at no disadvantage'' on this point. The next day the author described the decoherent theory as ``the differential equation for the wavefunction's evolution plus the Born probability rule.''}"
+  ],
+  [
+   19013,
+   "\\cpara{States the verdict: the objection from multiplying objects is ``simply wrong.'' The support is the formal account above.}"
+  ],
+  [
+   19153,
+   "\\cpara{Argues that many-worlds generates its worlds from compact laws, and that simulating any version of quantum mechanics is exponentially costly, many-worlds only ``more so.''}"
+  ],
+  [
+   19364,
+   "\\clogic{The laws are compact; whether they alone produce our observations is disputed. Vaidman's entry reports the view of Hemmo and Shenker (2020, 2022) that ``the MWI postulates alone are not enough to explain our experience,'' and that what must be added is ``the reason why Ockham's razor does not cut in favor of the MWI.'' In the formal terms the post uses, Hutter (2010, after the post) argues that a theory judged by program length must also include the ``localization of observer'' and, for a quantum world, ``the noise.''}"
+  ],
+  [
+   19838,
+   "\\cpara{Compares the worlds to atoms: neither adds complexity by number. This follows from the formal account.}"
+  ],
+  [
+   20094,
+   "\\cpara{Suggests, with ``it may be,'' that critics mistake their shock at a large universe for a probability penalty. No evidence is given for this account of the critics.}"
+  ],
+  [
+   20456,
+   "\\cpara{Ends with the post's strongest claim: the objection ``is entirely defective as probability theory. It is not fixable. It is bad math.'' What the post has shown is that the objection conflicts with Solomonoff induction and Minimum Message Length, and with the historical record. Probability theory itself does not fix the prior. The case for measuring by code rather than by objects rests on that choice, which the post defended from history. The post's side has wide support: Lewis wrote that he recognized ``no presumption whatever in favour of quantitative parsimony,'' which the Stanford Encyclopedia calls ``the attitude of many philosophers.'' Calling the other side a mathematical error overstates the case.}"
+  ]
+ ]
+}
