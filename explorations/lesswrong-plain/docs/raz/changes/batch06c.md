@@ -58,3 +58,19 @@ Why: The author's observation of the community is hedged and judged as an observ
 - Before: ; the claim that underconfidence is common among aspiring rationalists rests on the author's impression.
 - After: , with its ranking of underconfidence offered as the author's impression.
 
+
+## annotated/afterwords/your-price-for-joining.tex
+
+Why: The Response itself says the rule stands without the explanation; the explanation's weak support stays in the Response and note.
+
+- Before: In short: a candid exhortation to join groups more easily, resting on the author's observations and on an evolutionary explanation asserted as ``almost certainly'' so with one premise for support, whose rule of thumb names its own main objection.
+- After: In short: a candid exhortation to join groups more easily, whose rule of thumb names its own main objection and does not depend on the evolutionary explanation offered for it.
+
+
+## annotated/afterwords/can-humanism-match-religion-s-output.tex
+
+Why: Passing slips whose point survives stay out of the In short line (Book III lesson); the line now gives the evidence of the post's own time, not later work.
+
+- Before: In short: a careful, mostly hedged question about whether believers do more good than unbelievers, candid about its own speculation, with a few passing claims, about theologians and about meditation, stated more firmly than their support.
+- After: In short: a careful, mostly hedged question about whether believers do more good than unbelievers, candid about its own speculation, whose premise the survey evidence of its day supported.
+

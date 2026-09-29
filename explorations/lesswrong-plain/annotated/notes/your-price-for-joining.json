@@ -1,0 +1,128 @@
+{
+ "slug": "your-price-for-joining",
+ "header": "\\post{Your Price for Joining}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/Q8evewZW5SeidLdbA/your-price-for-joining}\n",
+ "skeleton_sha": "d3e97883e3bc689d24220d49e85eca6fd6abfa89f166208265afc0acf040f27e",
+ "post_sha": "b23a15487992b771a23afa88e24470f949ab7eeefcadc9ff47a36af97cdefc66",
+ "edits": [
+  {
+   "at": 2065,
+   "del_len": 2,
+   "del_sha": "983987033f0e117011e531dc33ad9bb15290bba41a414d830fb5cbdbcda2ff17",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   130,
+   "\\cpara{Sets out the Ultimatum Game and the textbook answer: a responder who wants only money accepts any positive offer, so a proposer who expects this offers a penny. The author's own reasons for refusing a penny (repeated play, a taste for fairness, a different decision theory) are given as the author's position, with links to earlier posts.}"
+  ],
+  [
+   1277,
+   "\\cpara{Gives the evidence that real responders refuse low offers. The Indonesian figures, including ``670 USD'' and ``two week's wages,'' match the Wikipedia article the post links, as it stood in March 2009; the article credits studies by Cameron and by Hoffman and colleagues.}"
+  ],
+  [
+   1400,
+   "\\cfact{Loosely stated. The linked article said at the time that people offer ``fair'' (50:50) splits ``and offers of less than 20\\% are often rejected''; ``often'' has become ``most.'' A meta-analysis of 37 papers found that ``on average the proposer offers 40\\% of the pie'' and that ``On average 16\\% of the offers is rejected'' (Oosterbeek and colleagues, 2004). The post's point, that many responders refuse low offers at a cost to themselves, holds.}"
+  ],
+  [
+   1789,
+   "\\cfact{The fifteen-society study bears on this. It found that the self-interest model ``fails in all of the societies studied,'' which supports the post. It also found ``substantially more behavioral variability across social groups than has been found in previous research,'' with prosocial play rising with market integration (Henrich and colleagues, 2005). No society studied played as the textbook predicts, but how people played varied. The note on ``Sympathetic Minds'' gives a later study by the same group.}"
+  ],
+  [
+   1803,
+   "\\cpara{States the analogy: joining a group project is like accepting an offer, and holding out for changes is like rejecting one. The project is a hypothetical, flagged as such (``or something'').}"
+  ],
+  [
+   1907,
+   "\\cfact{A nearby question had been. Albert Hirschman's \\textsc{Exit, Voice, and Loyalty} (1970) analysed the choice of members disappointed by an organization: ``exit (withdraw from the relationship)'' or ``voice (attempt to repair or improve the relationship \\ldots)'' (Wikipedia's summary), with loyalty keeping members in. It concerns members, not would-be joiners. The note on ``Evaporative Cooling of Group Beliefs'' cites the same book.}"
+  ],
+  [
+   2231,
+   "\\cpara{Voices the would-be member's complaint, with irony carried into the next line (``Clearly, this project is run by morons'').}"
+  ],
+  [
+   2564,
+   "\\cpara{States the dilemma: joining is still better for you, but joining too easily removes the group's reason to change. The post takes the second half seriously and returns to it near the end (``unconditional support would create its own problems'').}"
+  ],
+  [
+   2958,
+   "\\cpara{Offers two causes, each with ``possibly'': life outside the small groups where everyone knows everyone, and a crowd that rejects conformity and leader-worship, the theme of ``Why Our Kind Can't Cooperate.''}"
+  ],
+  [
+   3268,
+   "\\cpara{The post's thesis about the community, offered as the author's observation (``It seems to me''). The 50-player image makes the arithmetic plain: fifty demands of at least 20\\% add up to ten times the pot.}"
+  ],
+  [
+   3537,
+   "\\cpara{Explains the high prices by instincts formed in bands of about 40 people who all knew each other.}"
+  ],
+  [
+   3759,
+   "\\clogic{``Almost certainly'' rests on one premise, that such situations would often have arisen among hunter-gatherers. No evidence is given that intuitions about joining work as described, or that they are set for groups of about 40.}"
+  ],
+  [
+   4055,
+   "\\cpara{The first of three mismatches that follow from that account: instincts set for a small band underestimate a large group's inertia, and so demand too much.}"
+  ],
+  [
+   4429,
+   "\\cpara{The second mismatch: a strategy that takes a week of paperwork costs more to change than one agreed around a campfire.}"
+  ],
+  [
+   4751,
+   "\\cpara{The third mismatch: meeting one representative, and not the hundred earlier negotiations, makes an even split feel fair. This ties the account back to the Ultimatum Game's even split.}"
+  ],
+  [
+   5232,
+   "\\cpara{Adds causes of another kind, hedged (``may perhaps''): weakness of will, and a wish for status and control that one does not admit.}"
+  ],
+  [
+   5560,
+   "\\cpara{Discloses the author's side, that of the organizer who ``goes around trying to herd cats,'' and grants a possible bias. The reader is told where the observations come from.}"
+  ],
+  [
+   5967,
+   "\\cpara{The rule's first condition: joining still does net good by your own values.}"
+  ],
+  [
+   6120,
+   "\\cpara{Mentions the stricter test, comparison with the best other use of the same resources, and sets it aside as ``little-used and humanly-unrealistic,'' with reasons deferred to a later post.}"
+  ],
+  [
+   6367,
+   "\\cpara{The second condition: the issue is not worth the effort of fixing it yourself.}"
+  ],
+  [
+   6580,
+   "\\cpara{The rule's conclusion: then do not withhold support, whether by instinct or as deliberate pressure.}"
+  ],
+  [
+   6833,
+   "\\cpara{The other branch: if the issue is worth it, join and fix it.}"
+  ],
+  [
+   6982,
+   "\\cpara{The exception, with three conditions: the group refuses to let you fix it, a neutral observer would think you competent, and no one else is harmed. Only then ``a little blackmail'' may be in order.}"
+  ],
+  [
+   7413,
+   "\\cpara{States the main objection to the rule: a project's leaders need some reason to answer to their supporters. The post raises it itself and does not claim to settle it.}"
+  ],
+  [
+   7639,
+   "\\cpara{Restates the thesis as the author's observation (``I observe'') and turns it into a call: join groups and stay in them ``at least a little more easily.''}"
+  ],
+  [
+   8116,
+   "\\cpara{A joke that exaggerates the observation (``the 451st public email'' about a font).}"
+  ],
+  [
+   8366,
+   "\\cpara{Grants that such complaints may hide other reasons (the link is to ``Is That Your True Rejection?'') and proposes a group norm, hedged (``probably'').}"
+  ],
+  [
+   8734,
+   "\\cpara{The norm in one sentence. It keeps the rule's main condition and excepts cases of ``outright bad faith.''}"
+  ]
+ ]
+}
