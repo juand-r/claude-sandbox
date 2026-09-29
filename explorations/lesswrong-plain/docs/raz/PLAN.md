@@ -59,5 +59,5 @@ posts are merged in.
 | 5b | Value Theory 274 to 285 (Book V) | 12 | yes | yes | 29bcd5e |
 | 5c | Quantified Humanism (rest of Book V) | 9 | yes | yes | 388e60e |
 | 6a | Yudkowsky's Coming of Age (Book VI) | 13 | yes | yes | e33141a |
-| 6b | Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI) | 11 | yes | yes | (this commit) |
-| 6c | The Craft and the Community 324 to 338 (rest of Book VI) | 15 | | | |
+| 6b | Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI) | 11 | yes | yes | 8b68e8c |
+| 6c | The Craft and the Community 324 to 338 (rest of Book VI) | 15 | running | | |
