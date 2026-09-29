@@ -1,0 +1,205 @@
+{
+ "slug": "that-alien-message",
+ "header": "\\post{That Alien Message}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/5wMcKNAwB6X4mp9og/that-alien-message}\n",
+ "skeleton_sha": "181eb48ce32af35fdd99536ffa396f13c88161c59b32de739e04290c796895cc",
+ "post_sha": "033c28b1c108a74336726fdb6bf68b27a30fdd9bd81041ed35d74a75d01e47e6",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Sets up the story's world: people much like us but brighter on average, with potential Einsteins one in a thousand. The figure picks up the previous day's post, ``Einstein's Speed,'' which put potential Einsteins at one in a million in our world.}"
+  ],
+  [
+   714,
+   "\\cpara{Brennan is the novice of the Bayesian Conspiracy in ``Initiation Ceremony'' and ``The Failures of Eld Science.''}"
+  ],
+  [
+   875,
+   "\\cpara{Describes the signal: one star each second brightens or dims, timed so that the changes arrive in sequence at Earth.}"
+  ],
+  [
+   1192,
+   "\\cpara{Establishes that the display is aimed at Earth: the timing works only from Earth's position, not from telescopes in high orbit.}"
+  ],
+  [
+   1820,
+   "\\cpara{Reduces the signal to a sequence of two values, bright and dim, and so to bits.}"
+  ],
+  [
+   2190,
+   "\\cpara{Gives the story's skeptics their case: to call the signal a message assumes a great deal about its cause. The story later shows that it is a message.}"
+  ],
+  [
+   3107,
+   "\\cpara{Has the data posted publicly despite warnings, on the reasoning that anything this powerful could destroy Earth anyway.}"
+  ],
+  [
+   3404,
+   "\\cpara{Lists the other features of the signal that researchers examine, and turns attention to the bits.}"
+  ],
+  [
+   3824,
+   "\\cpara{The first piece of analysis, and it is sound. Two random 32-bit blocks differ in 7 or fewer places about once in a thousand trials, and in 9 or fewer about once in a hundred (binomial arithmetic), so the matches show that the sequence is not compressed.}"
+  ],
+  [
+   4447,
+   "\\cpara{Repeats the skeptics' point about efficiency, as a joke about a flashlight and a DVD.}"
+  ],
+  [
+   4651,
+   "\\cpara{Finds structure at 8-bit boundaries within each 32-bit group.}"
+  ],
+  [
+   4868,
+   "\\cpara{Finds the row length. The figures agree: 16,384 bits at about one per second take about four and a half hours, and 16,384 bits are 512 groups of 32, which is why the 513th group resembles the first.}"
+  ],
+  [
+   5354,
+   "\\cpara{Finds that neighbors along a row differ less than neighbors down a column, which a picture of a symmetric scene on a square grid would not show.}"
+  ],
+  [
+   5736,
+   "\\cpara{Infers a number code for the 8-bit groups by asking which code makes neighboring cells most alike. The range $-64$ to 191 holds exactly 256 values.}"
+  ],
+  [
+   6048,
+   "\\cpara{Describes the search for simple laws that would predict or compress the message, including new physics for a universe ``beyond the Matrix.''}"
+  ],
+  [
+   6802,
+   "\\cpara{The arithmetic checks: $32 \\times 512 \\times 256 = 4{,}194{,}304$, and at one bit every 1.005 seconds that takes about 49 days.}"
+  ],
+  [
+   6921,
+   "\\cpara{Notes that physicists and cryptographers have succeeded with less data before.}"
+  ],
+  [
+   7289,
+   "\\cpara{Two models survive years of scrutiny: a projection from a space of 3+2 dimensions, and a cellular automaton.}"
+  ],
+  [
+   7952,
+   "\\cpara{Shows the civilization guarding against overfitting: models are built from the first 32 rows and scored on the rest, and complex models fitted to the whole sequence are distrusted. This is a sound method, described accurately.}"
+  ],
+  [
+   8586,
+   "\\cpara{The second frame decides between the two models, in favor of the 3+2 dimensional one, and shows that some objects move.}"
+  ],
+  [
+   9335,
+   "\\cpara{Repeats the held-out test with the second frame: an isolated group's elegant equations predict the unseen rows, and become the leading guess.}"
+  ],
+  [
+   9888,
+   "\\cpara{Notes that the leading equations are incomplete.}"
+  ],
+  [
+   10098,
+   "\\cpara{The third frame gives second derivatives and forces a revision; the theory survives it.}"
+  ],
+  [
+   10360,
+   "\\cpara{The fourth frame adds little.}"
+  ],
+  [
+   10639,
+   "\\cpara{Admits a plot device that keeps human beings as the reasoners. The next day, in ``My Childhood Role Model,'' the author explained the choice: shown ``a Bayesian superintelligence in a box, looking at a webcam,'' readers ``wouldn't put themselves in the shoes of the mere machine''.}"
+  ],
+  [
+   10958,
+   "\\cpara{As the moral of the story, this rests on outcomes the author chose: the civilization's models are right because the plot says so (``The Fifth Grid looks almost exactly like it is expected to look''). The author's own rule from ``The Logical Fallacy of Generalization from Fictional Evidence'' applies: such an issue has to ``be argued in its own right.'' The post does go on to argue it, in the paragraphs that follow, and the moral stands or falls with them.}"
+  ],
+  [
+   11080,
+   "\\cpara{Makes the post's strongest concrete claim, about a real superintelligence. The first clause is true: Riemann gave his lecture on the foundations of geometry in 1854 (Wikipedia, ``Bernhard Riemann'').}"
+  ],
+  [
+   11510,
+   "\\clogic{Hedged (``perhaps not the dominant hypothesis''), and a claim about which theories would be considered, not about which the frames support. The frames cannot favor General Relativity over Newton. At the Earth's surface its corrections are of order $GM/Rc^2 \\approx 7 \\times 10^{-10}$, far below anything a webcam resolves. So the theory's standing would come from the prior alone, and the post gives no reason to think it would rank high among the many laws that fit three positions of a falling object. A 2023 LessWrong post by a computational physicist writing as titotal argues that such frames do not even single out Newtonian gravity, since two falling apples accelerate together ``and not towards each other.''}"
+  ],
+  [
+   11613,
+   "\\cpara{Says our civilization, given ten years per frame, would think of the theory. This is the story's own premise, restated.}"
+  ],
+  [
+   11796,
+   "\\cpara{Argues that the needed mathematics, vector spaces and projections, would exist even in a different physics.}"
+  ],
+  [
+   12068,
+   "\\cpara{Adds calculus, which mathematicians would invent for other purposes such as optimization.}"
+  ],
+  [
+   12316,
+   "\\cpara{States the objection the post answers: there is a theoretical limit on what can be deduced from finite data.}"
+  ],
+  [
+   12505,
+   "\\cpara{Grants the limit and states it correctly, once ``hypotheses'' is corrected to probability mass, as the post does. If a bit comes out 1 with probability p, the mass it is expected to eliminate is $2p(1-p)$, at most one half.}"
+  ],
+  [
+   12975,
+   "\\cpara{Names the ideal against which the civilization falls short: Solomonoff induction, which weighs every computable hypothesis by its simplicity.}"
+  ],
+  [
+   13340,
+   "\\cpara{Illustrates the ideal with infinite computing power: simulate all simple universes and keep those that produce the observed flicker.}"
+  ],
+  [
+   13940,
+   "\\cpara{A joke with a real premise: simulating every computable universe would simulate its inhabitants.}"
+  ],
+  [
+   14208,
+   "\\cpara{States the section's conclusion: the ideal limit is far above what the story's civilization achieved. The ideal needs infinite computing power.}"
+  ],
+  [
+   14570,
+   "\\cpara{Names the error being answered, reading ``bounded'' as ``small,'' with the supernova as an example. The logical point is correct.}"
+  ],
+  [
+   15001,
+   "\\cpara{Declines to set limits on superintelligences, while betting, not at extreme odds, that none will come ``remotely close'' to efficient use of its data. On the post's own bet, the distance between humans and the ideal does not say how much a real superintelligence could infer. That is what the webcam claim needed, and the post gives no estimate of it.}"
+  ],
+  [
+   15295,
+   "\\cpara{Resumes the story: the senders are trying to teach humanity to say ``rock.''}"
+  ],
+  [
+   15571,
+   "\\cpara{Infers from the teaching that the senders are powerful and not very bright, a dangerous combination.}"
+  ],
+  [
+   15888,
+   "\\cpara{Speculates, within the story, on how such slow minds could have built a civilization.}"
+  ],
+  [
+   16433,
+   "\\cpara{Humanity concludes that it lives in a simulation run in the senders' universe, and decides not to probe it for bugs.}"
+  ],
+  [
+   16813,
+   "\\cpara{Humanity plans to persuade the senders to let it ``out of the box.'' The link is to the author's page on the AI-box experiment, which makes the analogy explicit: humanity is the AI.}"
+  ],
+  [
+   17334,
+   "\\cpara{Humanity waits in cryonic suspension, run by a small crew of clones, for a million years.}"
+  ],
+  [
+   17735,
+   "\\cpara{Marks the length of the wait in generations.}"
+  ],
+  [
+   17941,
+   "\\cpara{Tells the escape in the senders' time: learning their psychology, getting network access, reading their physics. The time scales are consistent with the ending: at three of their days to half a billion of our years, one of their minutes is about 116,000 of our years.}"
+  ],
+  [
+   18519,
+   "\\cpara{Completes the escape: designed proteins, mixed by an unsuspecting helper, assemble into machines that build further machines.}"
+  ],
+  [
+   19384,
+   "\\cpara{The moral of the second half: a mind that thinks faster and better than its makers can escape them before they notice. As with the first half, the outcome follows from the author's choices, the ratio of speeds and the senders' dullness. The story shows how such an escape could go; how realistic those choices are is not argued here.}"
+  ]
+ ]
+}

@@ -1,0 +1,193 @@
+{
+ "slug": "einstein-s-speed",
+ "header": "\\post{Einstein's Speed}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/mpaqTWGiLT7GA3w76/einstein-s-speed}\n",
+ "skeleton_sha": "b75cb9dad7484a588e0fcd44be0fd116a711e94d2b3eb0f33d34fbe67a52c337",
+ "post_sha": "e63848394c69cfa9b05d0cd6074788f40832fbf3a0585e70aef29f04b20f1d3b",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Restates the previous day's post, ``Faster Than Science'': choosing which ideas to test is a necessary part of science, and Science gives no rules for it. The notes on that post and on ``Einstein's Arrogance'' give the older sources of the idea (Reichenbach, Peirce).}"
+  ],
+  [
+   742,
+   "\\cpara{Gives the easy case: a scientist who finds a strong regularity in existing data has rational grounds to believe a hypothesis before it has passed a novel test.}"
+  ],
+  [
+   1286,
+   "\\cpara{Grants that the easy case is still driven by data, which is why it is easy.}"
+  ],
+  [
+   1435,
+   "\\cpara{Introduces the hard case. The claim that Einstein had ``almost no experimental data'' sits uneasily with a premise the post uses three paragraphs later, that ``inertial mass and gravitational mass were always exactly equivalent.'' That is a measured fact about gravity. In Weinstein's summary of the 1913 Entwurf paper, Einstein's equivalence principle ``was founded upon a fact of experience, that of the equality of inertial and gravitational masses'' (arXiv:1202.2791), and Eötvös had measured it in 1889 to a claimed accuracy of 1 in 20 million (Wikipedia, ``Eötvös experiment''). The post later grants that Einstein ``used the data he already had.''}"
+  ],
+  [
+   1721,
+   "\\cpara{Sketches special relativity as the result of one principle: a quantity that cannot be observed from inside a closed room, your absolute speed, should not exist. The closed-room image goes back to Galileo's cabin below decks on a moving ship.}"
+  ],
+  [
+   1938,
+   "\\cfact{The name belongs to the next step. ``Mach's principle'' is Einstein's own name, first used in 1918, for the idea that inertia is determined by the distribution of matter (Wikipedia, ``Mach's principle,'' quoting Pais, \\textsc{Subtle is the Lord}). That is the idea of the next paragraph, about acceleration. The principle described here, for uniform motion, is the principle of relativity, the first postulate of special relativity.}"
+  ],
+  [
+   2752,
+   "\\cpara{Describes Einstein's next aim: that nothing in a closed room should tell whether the room accelerates or the rest of the universe does. This is an accurate account of what Einstein set out to do.}"
+  ],
+  [
+   3405,
+   "\\cpara{Gives the second principle: since inertial and gravitational mass are always equal, gravity should be a kind of inertia, and an orbit a ``straight line'' in curved spacetime. The contrast with electric charge is correct: the electron and the muon have the same charge and different masses.}"
+  ],
+  [
+   4312,
+   "\\cpara{Summarizes the construction: years of mathematics, then the simplest theory with the desired properties, then Mercury's orbit as a result.}"
+  ],
+  [
+   4642,
+   "\\clogic{Not every such property is in the finished theory. The relativity of acceleration, the aim of two paragraphs earlier, is what Einstein in 1918 called Mach's principle, and whether general relativity satisfies it is disputed. At a 1993 meeting of experts, asked ``Is general relativity perfectly Machian?'', 3 answered yes and 22 no (Wikipedia, ``Mach's principle,'' citing Barbour and Pfister, 1995). So one of the principles that guided the search did not survive into the result, which complicates the lesson that the principles picked out the right law.}"
+  ],
+  [
+   4797,
+   "\\cpara{Opens a counterfactual history in which relativity is reached the slow way. The ``great fiasco'' is the author's view of quantum physics, from the posts on many worlds.}"
+  ],
+  [
+   5141,
+   "\\cpara{Fills in the counterfactual: Lorentz's ether reading survives, and each new measurement adds an unexplained correction to Newton. The aside on clocks is correct: clocks run faster higher up, where gravity is weaker.}"
+  ],
+  [
+   6117,
+   "\\cpara{Has the counterfactual physicists say that no one, not even a perfect reasoner, could reach the theory from Mercury alone. This is the view the post answers.}"
+  ],
+  [
+   6760,
+   "\\cpara{Restates, without the earlier ``AFAIK,'' that Einstein used Mercury only to check an answer reached by other means, and describes the method as designing the universe from the armchair.}"
+  ],
+  [
+   6906,
+   "\\cfact{Mercury also served as evidence against a wrong answer. In June 1913 Einstein and Michele Besso computed Mercury's orbit in the Entwurf theory, the wrong precursor of general relativity, and got less than half of the missing motion; Einstein ``kept quiet about'' the result and went on with the theory (Janssen and Renn, arXiv:2111.11238). In November 1915 he gave the failure as one of three reasons for concluding ``that my existing field equations of gravitation were entirely untenable'' (letter to Sommerfeld, 28 November 1915, translated in Weinstein, arXiv:1201.5352). The narrower claim of a later paragraph, that he did not get the theory ``by backward inference'' from Mercury, holds.}"
+  ],
+  [
+   7243,
+   "\\cpara{The qualifier carries the claim. The chain did include a two-year wrong turn, the Entwurf theory (see the notes on ``Einstein's Arrogance''). But the reasons he gave for dropping it were theoretical, plus the old Mercury data, not a new observation. Read with its qualifier, the sentence holds.}"
+  ],
+  [
+   7446,
+   "\\cpara{A joke about the teacher of ``The Failures of Eld Science,'' then the author's reason not to fault Einstein for the cosmological constant.}"
+  ],
+  [
+   7733,
+   "\\cfact{Einstein introduced the constant in 1917 to hold the universe static; it was abandoned after the universe was found to be expanding, and the static solution is unstable in any case. The constant returned after 1998 in a different role, to describe accelerating expansion (Wikipedia, ``Cosmological constant''). By the post's own rule, the 1917 use is an occasion on which Einstein was wrong.}"
+  ],
+  [
+   7970,
+   "\\cpara{States the thesis: Einstein inferred a pattern common to known laws and used it to predict a new one.}"
+  ],
+  [
+   8418,
+   "\\cfact{Einstein described his method in similar terms. In 1919 he called relativity a ``principle-theory,'' whose starting points ``are not hypothetically constructed but empirically discovered ones, general characteristics of natural processes, principles that give rise to mathematically formulated criteria'' that particular laws must satisfy (``What Is the Theory of Relativity?'', \\textsc{The Times}, 1919, reprinted in \\textsc{Ideas and Opinions}). He counted the principles as found by observation.}"
+  ],
+  [
+   8432,
+   "\\cpara{Draws the general claim: the common character of physical laws can be strong enough to predict one law from others. Put as a claim that this can happen, one success is enough to show it.}"
+  ],
+  [
+   8803,
+   "\\cpara{Narrows the claim: Einstein relied on observation in general, but did not work backward from Mercury's exact figure. The narrowed claim is accurate.}"
+  ],
+  [
+   8990,
+   "\\cpara{Restates the feat as ordinary induction with a simplicity prior over ``possible characters of physical law.'' The prior is not specified, so this describes the case in Bayesian terms; it does not derive anything that could be checked against the history.}"
+  ],
+  [
+   9419,
+   "\\cpara{Explains why the feat looks like magic without that concept: the other laws narrow the space in which the next one is sought.}"
+  ],
+  [
+   10012,
+   "\\cpara{Concludes that Einstein was driven by data after all: he used data he already had, more effectively than a civilization that needed new measurements.}"
+  ],
+  [
+   10438,
+   "\\cpara{Returns to the eclipse remark of ``Einstein's Arrogance.'' As the notes on that post report, in its usual source the remark came after Einstein had a first report that Eddington had found the effect, and was about what he would have said otherwise.}"
+  ],
+  [
+   10609,
+   "\\cfact{Einstein's later words support this reading of him. In 1952 he wrote to Max Born: ``Even if there had been no deflection of light, no perihelion motion and no redshift, the gravitational equations would still be convincing because they avoid the inertial system'' (quoted in Janssen and Renn, arXiv:2111.11238).}"
+  ],
+  [
+   10825,
+   "\\cpara{States the charge the post will answer: by the rules of Science, the remark is arrogant.}"
+  ],
+  [
+   10981,
+   "\\cpara{Summarizes ``Einstein's Arrogance.'' The notes on that post give its limits: the argument starts from the theory being right, and it treats a range of amounts of evidence as a point (``exactly enough''). The same limits apply here.}"
+  ],
+  [
+   11669,
+   "\\cpara{Turns the earlier joke into a rule: ``Do not criticize people when they turn out to be right! Wait for an occasion where they are wrong!'' For this kind of confidence the occasion exists. In March 1914 Einstein wrote that he no longer doubted ``the correctness of the whole system, regardless of whether the observation of the solar eclipse will be successful or not,'' of the Entwurf theory, which was wrong (Weinstein, arXiv:1204.3386; see the notes on ``Einstein's Arrogance'').}"
+  ],
+  [
+   12175,
+   "\\cpara{Introduces a second case of Einstein resisting a well-confirmed theory. ``Single-world'' and ``deranged'' carry the author's many-worlds view; the case for it is assessed in the notes on ``Many Worlds, One Best Guess.''}"
+  ],
+  [
+   12664,
+   "\\cfact{The exchange is the popular version. Einstein's words are from a letter to Max Born of 4 December 1926: ``I, at any rate, am convinced that He does not throw dice.'' Bohr's reply is reported in several forms, and Wikiquote lists ``Einstein, don't tell God what to do'' as a variant of a disputed quotation.}"
+  ],
+  [
+   12779,
+   "\\cpara{Compares Einstein, judged by what he did all day, with Aristotle: the same armchair activity, done successfully.}"
+  ],
+  [
+   13344,
+   "\\cpara{Says that Science made the theory wait for a novel prediction, the bending of starlight in the 1919 eclipse, because it does not trust scientists to reason as Einstein did.}"
+  ],
+  [
+   13667,
+   "\\clogic{How physicists weighed the evidence fits this less neatly. Stephen Brush, studying the theory's reception, found that the light-bending prediction ``gained favorable publicity for the theory,'' but ``most scientists did not give it any more weight than the deduction of the advance of Mercury's perihelion'' (\\textsc{Science} 246, 1989, abstract). On that account the rule the post assigns to Science fits the publicity better than the physicists.}"
+  ],
+  [
+   13801,
+   "\\cfact{Contested. The charge goes back to Earman and Glymour (1980) and was popularized by Hawking's \\textsc{A Brief History of Time} (``Their measurement had been sheer luck, or a case of knowing the result they wanted to get''). A 1979 remeasurement of the surviving Sobral plates gave 1.90 $\\pm$ 0.11 and 1.55 $\\pm$ 0.34 seconds of arc, against Einstein's 1.75 and a ``Newtonian'' 0.87 (Harvey, as reported by Kennefick, arXiv:0709.0685). Kennefick concludes that the 1919 team ``probably were justified in concluding that they had at least falsified the lower Newtonian prediction''; Gilmore and Tausch-Pebody (2020) reach a similar verdict. Precise confirmation did come only later.}"
+  ],
+  [
+   13940,
+   "\\cpara{Gives the post's own caution: history records those who got there first, so famous armchair successes make such reasoning look more reliable than it is. This is the selection effect that ``Faster Than Science,'' the day before, left out.}"
+  ],
+  [
+   14436,
+   "\\cfact{He also lost. ``Encouraged by his success with general relativity,'' Einstein spent much of his later career on a unified field theory, which ``won him praise but not success'' (Wikipedia, ``Albert Einstein''). The case fits the post's caution.}"
+  ],
+  [
+   14779,
+   "\\cpara{Draws the practical rule: use every scrap of evidence, and rely on armchair reasoning only when experiment is too costly or dangerous.}"
+  ],
+  [
+   15013,
+   "\\cpara{Suggests training on scanty evidence where the answer will later be known, with prediction markets offered as ``only speculation.''}"
+  ],
+  [
+   15400,
+   "\\cpara{Claims that science cannot train scientists to reason from scanty evidence ``at all,'' and suggests, with ``may perhaps,'' that it does not try. No evidence is given for either. The link is to ``The Failures of Eld Science,'' a story.}"
+  ],
+  [
+   15715,
+   "\\cpara{Makes an exception for one field, evolutionary psychology, and recommends it as a model of careful reasoning.}"
+  ],
+  [
+   16031,
+   "\\clogic{Offered with ``perhaps,'' and with no example of a hypothesis in the field that was later found right or wrong. Whether such hypotheses get tested is the main criticism of the field: the Stanford Encyclopedia of Philosophy reports that ``Many philosophers object to evolutionary psychologists' over attribution of adaptations,'' and that common cross-cultural tests do ``not speak to the evolutionary hypothesis that the preferences are adaptations'' (``Evolutionary Psychology,'' citing Lloyd 1999 and Buller 2005).}"
+  ],
+  [
+   16272,
+   "\\cpara{Estimates, with ``a random number,'' that a one-in-a-million level of g is enough for a potential world-class genius. The arithmetic holds for a world population above six billion, as in 2008. The estimate itself is a guess and is presented as one.}"
+  ],
+  [
+   17083,
+   "\\cpara{States the final moral: an individual can get ahead of Science by high-minded reasoning, not only by spotting regularities in data.}"
+  ],
+  [
+   17592,
+   "\\cpara{Closes with a warning: the post concerns one kind of professional effort beating another, not casual opinion beating science, and armchair reasoning has often lost.}"
+  ]
+ ]
+}
