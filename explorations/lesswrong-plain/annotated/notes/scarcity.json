@@ -1,0 +1,262 @@
+{
+ "slug": "scarcity",
+ "header": "\\post{Scarcity}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/MCYp8g9EMAiTCTawk/scarcity}\n",
+ "skeleton_sha": "744d35b06ff9ca4bcf40c0eabea30bca1bdc66126f69c77a154154c07f88eca7",
+ "post_sha": "84a605028e7b98a3573c279f815d240caf389f1eb53dadbc25c1c2eca9d483ed",
+ "edits": [
+  {
+   "at": 204,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 689,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 806,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1011,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1231,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1599,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 1814,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2026,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2201,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2393,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2497,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2724,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2825,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 2900,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3291,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": ""
+  },
+  {
+   "at": 3293,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": "  "
+  },
+  {
+   "at": 3576,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 3775,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4102,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4481,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4691,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 4925,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5033,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5161,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5179,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5228,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5241,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5295,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5434,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  },
+  {
+   "at": 5806,
+   "del_len": 1,
+   "del_sha": "abfbd10daf8965c8860b3582af942d7a7cac972b31d1c50f382b67d9b6c07365",
+   "ins": " "
+  }
+ ],
+ "notes": [
+  [
+   102,
+   "\\cpara{Names the source. Every example below comes from the scarcity chapter of Cialdini's \\textsc{Influence}. I checked them against a later printing of the same book (HarperCollins, copyright 1984, 1994, 2007); except where a note says otherwise, the post reports Cialdini's account accurately.}"
+  ],
+  [
+   300,
+   "\\cpara{Defines the term. Cialdini's ``scarcity principle'' is ``that opportunities seem more valuable to us when their availability is limited.''}"
+  ],
+  [
+   478,
+   "\\cpara{The toddler study, as Cialdini reports it. The measure was speed: behind the tall barrier, the boys touched the obstructed toy ``three times faster'' than the open one. The post's ``boy'' is accurate and matters. Cialdini's endnote says that ``two-year-old girls in the study did not show the same resistant response to the large barrier as did the boys.''}"
+  ],
+  [
+   842,
+   "\\cpara{The phosphate ban in Dade County (Miami), compared with Tampa, as Cialdini reports it. The post gives the ratings accurately.}"
+  ],
+  [
+   1294,
+   "\\cpara{Extends the claim from goods to information: what is banned or secret seems ``more important and trustworthy.''}"
+  ],
+  [
+   1424,
+   "\\cpara{The censored speech, as Cialdini reports it. One of the studies Cialdini cites for it found a limit. In Worchel, Arnold and Baker (1975), censorship raised interest in a speech and moved attitudes toward it in every condition but one: ``when an attractive expert censor forbade a communication with which the audience disagreed, the subjects decreased their desire to hear the speech and did not change their attitudes on the topic of the communication.'' Who does the banning matters.}"
+  ],
+  [
+   1636,
+   "\\cfact{The guess is hedged, and it is probably not the right study. Cialdini's endnote for the passage on censorship cites five sources, Ashmore et al. first. The one description of Ashmore's study I found, in a 1971 draft of a paper by Worchel and Arnold of the University of North Carolina (published 1973), says its speech was on whether police should be allowed on college campuses, and that ``the dean had censored the speech.'' The coed-dorm study is more likely another of the five.}"
+  ],
+  [
+   1643,
+   "\\cpara{The jury study, as Cialdini reports it: awards of \\$33,000 with no insurance, \\$37,000 with insurance, and \\$46,000 when the jury was told to disregard the insurance. The jurors were people then serving on real juries. I could not open Broeder's article. Later work supports a weaker version of the finding. A 2006 meta-analysis of 48 studies (Steblay and colleagues) found that an instruction to ignore inadmissible evidence ``does not effectively eliminate'' its effect; its abstract does not report that the instruction generally increases it, as it did here.}"
+  ],
+  [
+   2050,
+   "\\cpara{The beef study. Cialdini calls it ``a small experiment done by a student of mine,'' a beef importer who ran it with the company's own sales staff; the source is an unpublished dissertation. The multiples match Cialdini (``more than twice as much,'' ``six times the amount'').}"
+  ],
+  [
+   2201,
+   "\\cfact{Cialdini describes the comparison group differently. Those customers ``heard a standard sales presentation''; nothing in Cialdini's account says they were told beef was readily available. So the doubling compares news of a shortage with the usual pitch, not with news of plenty.}"
+  ],
+  [
+   2497,
+   "\\clogic{The parenthesis is right; Cialdini's endnote says ``the information provided to the customers was always true. There was an impending beef shortage \\ldots'' That changes what the example shows. These buyers ordered more on correct news of a real shortage, and on news their competitors lacked. The study shows that the news moved their orders. It does not show that the orders were a mistake, which the post's later word ``malfunction'' assumes. Cialdini's chapter separates ``naturally occurring, honest scarcity'' from ``the fabricated variety.''}"
+  ],
+  [
+   2545,
+   "\\cpara{Gives one explanation, reactance, and adds the post's own gloss, hedged with ``appear to be.'' Cialdini's chapter gives two sources of scarcity's power, and reactance is the second. The first is a shortcut: ``because we know that the things that are difficult to possess are typically better than those that are easy to possess, we can often use an item's availability to help us quickly and correctly decide on its quality.'' Cialdini adds that ``by following it, we are usually and efficiently right.'' The post leaves out the explanation under which the response is often correct.}"
+  ],
+  [
+   3043,
+   "\\cpara{Offers, with ``may,'' an origin among hunter-gatherers, without evidence, then gives the cost in a money economy: Cialdini's appliance-store trick, reported accurately. The salesperson's words are a close paraphrase of Cialdini's, printed as a quotation. The example fits the claim, since this scarcity is faked: in Cialdini's account the salesperson ``(invariably) returns with the news that an additional supply of the appliance has been found.''}"
+  ],
+  [
+   3970,
+   "\\cpara{Gives the remedy, from Cialdini, and adds Ferriss's similar advice. Cialdini's advice rests on a cookie study: scarce cookies were rated more desirable, but ``not rated as any better-tasting.'' Cialdini's test is what you want the thing for, and it does not treat wanting to possess as the fault: ``If the answer is that we want the thing for the social, economic, or psychological benefits of possessing something rare, then, fine; scarcity pressures will give us a good indication of how much we would want to pay for it.'' The warning is for things wanted for their use. ``A chief sign of this malfunction'' turns the test into a symptom.}"
+  ],
+  [
+   4288,
+   "\\cpara{The moral, tied to ``If You Demand Magic, Magic Won't Help'' (linked): whatever you obtain stops being unattainable. Cialdini's appliance story gives it some support. When the model turns up after all, ``The information that the desired model is in good supply may actually make some customers find it less attractive again.''}"
+  ],
+  [
+   4589,
+   "\\cpara{A paper read at a conference, cited from Cialdini's notes.}"
+  ],
+  [
+   5138,
+   "\\cpara{The post's source for all the examples.}"
+  ],
+  [
+   5273,
+   "\\cpara{Unpublished; known here only through Cialdini.}"
+  ]
+ ]
+}

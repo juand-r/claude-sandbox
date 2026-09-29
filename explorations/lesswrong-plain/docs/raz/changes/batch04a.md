@@ -119,3 +119,65 @@ Why: Same.
 - Before:  And mutual information measures correlation, not correctness: a mind with exactly inverted beliefs would carry as much.}
 - After: }
 
+
+## annotated/posts/amazing-breakthrough-day-april-1st.tex
+
+Why: The claim that the date invites readers to disbelieve the stories is the annotator's own reading of how the proposal would work, not a sourced point.
+
+- Before: \cpara{The proposal: journalists report old, neglected science ``under the protective cover of April 1st.'' The cover protects the journalist. On that day readers expect headlines to be hoaxes, and the post does not say how they are to learn that these ones are true, or whether they are meant to take them as jokes at first.}
+- After: \cpara{The proposal: journalists report old, neglected science ``under the protective cover of April 1st.''}
+
+
+## annotated/afterwords/amazing-breakthrough-day-april-1st.tex
+
+Why: Same; the Dumas-Mallet evidence is given in full in The Beauty of Settled Science (order 211), and ``no journalist took it up'' is trivia.
+
+- Before: Judged as a proposal, the post has a sound diagnosis, a weak plan, and a better idea that it sets aside.
+
+The diagnosis holds up. The post says, with ``often,'' that science news favors new findings that are later shown wrong. A 2017 study of newspaper coverage of biomedical findings found just that: fewer than half of the covered studies were confirmed by later meta-analyses, and journalists favored first findings over later ones.
+
+The plan is to report true old stories on the one day when readers expect headlines to be false. The post says the date gives journalists ``protective cover.'' It does not say what readers are meant to make of a story like ``BOATS EXPLAINED'' on April 1st: whether they are to take it as a joke and later learn it is true, or to learn it from the article. A holiday whose stories may be read as hoaxes is an odd way to teach readers that these stories are true. I found no report that any journalist took the idea up.
+
+The better idea comes near the end, in three sentences: a good new explanation of old science is itself news, and newspapers could treat it that way. That idea needs no holiday. Its only support is the observation that readers of Reddit and Digg vote up such explanations, given without an example, and the post then calls it ``too visionary for a first step.''
+
+
+- After: Judged as a proposal, the post has a sound diagnosis, a light-hearted plan, and a broader idea stated briefly.
+
+The diagnosis holds up. The post says, with ``often,'' that science news favors new findings that are later shown wrong; the later evidence for this is given in the notes on ``The Beauty of Settled Science.''
+
+The plan is to report true old stories on the one day when readers expect surprising headlines, which the post says gives journalists ``protective cover.'' It is offered as a first step.
+
+The broader idea comes near the end, in three sentences: a good new explanation of old science is itself news, and newspapers could treat it that way. That idea needs no holiday. Its support is the observation that readers of Reddit and Digg vote up such explanations, given without an example, and the post calls it ``too visionary for a first step.''
+
+
+
+- Before: In short: a fair complaint about science news, answered with a holiday whose cover is also a reason to disbelieve its stories, while the better proposal, that explanation is news, gets three sentences.
+- After: In short: a fair complaint about science news, answered with a light-hearted holiday as a first step, and a broader proposal, that explanation is news, stated in three sentences.
+
+
+## honest/sections/amazing-breakthrough-day-april-1st.tex
+
+Why: Same.
+
+- Before: \nb{A 2017 study of newspaper coverage found that fewer than half of the biomedical studies covered were confirmed by later meta-analyses.}
+- After: \nb{Later evidence supports this; see ``The Beauty of Settled Science.''}
+
+
+## annotated/afterwords/is-humanism-a-religion-substitute.tex
+
+Why: Scope, stated once and kept out of the verdict: the post's sense of the word is broad.
+
+- Before: Finally, the post answers a narrower question than its title asks. ``Humanism'' appears only in the title. The body discusses atheist hymns, weddings and the author's awe at rockets. The title's question has a well-known target, organized humanism, whose first manifesto, in 1933, presented humanism as a new religion. The post does not discuss it.
+- After: The post uses ``humanism'' in a broad sense, for secular awe at what humans do. It does not discuss organized humanism, whose first manifesto, in 1933, presented humanism as a new religion.
+
+- Before: , unsupported claims about believers' inner lives, and no discussion of the humanism named in the title.
+- After: , and unsupported claims about believers' inner lives.
+
+
+## annotated/posts/amazing-breakthrough-day-april-1st.tex
+
+Why: STANDARDS 2.5: the Dumas-Mallet evidence is given in full in The Beauty of Settled Science.
+
+- Before: \cpara{The diagnosis, from the previous day's post, ``The Beauty of Settled Science'' (24 March 2008), which said that ``Newsworthy'' science ``is often based on the thinnest of evidence and wrong half the time.'' Later evidence supports the point. In a 2017 study of 156 biomedical association studies covered by newspapers, ``Only 48.7\%'' were confirmed by later meta-analyses, and the authors conclude that ``Journalists preferentially cover initial findings although they are often contradicted by meta-analyses'' (Dumas-Mallet and colleagues, \textsc{PLoS ONE}).}
+- After: \cpara{The diagnosis, from the previous day's post, ``The Beauty of Settled Science'' (24 March 2008), which said that ``Newsworthy'' science ``is often based on the thinnest of evidence and wrong half the time.'' Later evidence supports the point; see the notes on that post.}
+
