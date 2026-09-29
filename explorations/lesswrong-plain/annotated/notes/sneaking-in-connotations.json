@@ -1,0 +1,77 @@
+{
+ "slug": "sneaking-in-connotations",
+ "header": "\\post{Sneaking in Connotations}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/yuKaWPRTxZoov4z8K/sneaking-in-connotations}\n",
+ "skeleton_sha": "01eec7c317997978a7f9880c35f3dbbfff83e69a1957ab2abd2c64583af5346d",
+ "post_sha": "0dfad05d99cb3a9ab4fe11ac6bec62e35cfebe560cdb6def7dc176ef2ce6fffa",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Points back to ``Categorizing Has Consequences'', posted the day before, which reported Japan's blood-type theory of personality. The question it sets up is how a label comes to carry traits that nothing in its definition implies.}"
+  ],
+  [
+   310,
+   "\\cpara{Introduces an invented word, ``wiggin'', defined by two visible features only. Because the word is new, any further properties it carries in the story cannot have come from its definition.}"
+  ],
+  [
+   475,
+   "\\cpara{The story. Danny calls a stranger a wiggin, cites the dictionary for the two visible features, and expects crimes and ketchup. Erda points out that he has no evidence for the rest. The example is invented and built so that the extra properties are plainly unfounded. That suits an illustration; how often real arguments from a dictionary work this way is the claim the post has to argue later.}"
+  ],
+  [
+   1648,
+   "\\cpara{States the mechanism: words carry us from features we see to features we infer. The Socrates example comes from ``The Parable of Hemlock''.}"
+  ],
+  [
+   2071,
+   "\\cpara{Qualifies the mechanism: inference can run either way between seen and unseen features. The qualification keeps the next paragraph's claim to a tendency (``tend to be'').}"
+  ],
+  [
+   2364,
+   "\\cpara{Gives the tendency that matters for the argument: some properties, such as burning in a flame, are usually inferred from the category, not the other way round.}"
+  ],
+  [
+   2601,
+   "\\cpara{Claims that dictionaries list quick identifying features rather than inferred ones, and offers two explanations, each with ``perhaps''. A current dictionary fits the claim: Merriam-Webster's online entry defines the noun ``human'' as ``a bipedal primate mammal (Homo sapiens)'', with nothing about hemlock or overconfidence.}"
+  ],
+  [
+   3347,
+   "\\cpara{Applies this to the story: the entry for ``wiggin'' gives only the identifying features, and the connotations are not in it.}"
+  ],
+  [
+   3735,
+   "\\cpara{Offers, each with ``maybe'', three ways connotations could arise, among them bestselling books that make things up. The previous post's real case fits that guess. Wikipedia (``Blood type personality theory'') says the popular belief in Japan ``originates with publications by Masahiko Nomi in the 1970s'', a journalist ``with no medical background''.}"
+  ],
+  [
+   4213,
+   "\\cpara{Two moves. The first recalls ``The Parable of Hemlock'': if the definition includes the inferred property, it cannot be applied until that property has been observed. Joined to the paragraphs before, this makes a two-sided argument, which the post leaves the reader to assemble: a definition that includes the property cannot be applied in advance, and one that leaves it out cannot deliver it. The second sentence states the thesis, hedged with ``generally''. Its support is the test at the end of the post.}"
+  ],
+  [
+   4582,
+   "\\cpara{Two rhetorical questions. The second, why not ask ``Is he a ketchup-reacher?'' directly, makes the post's point.}"
+  ],
+  [
+   4747,
+   "\\clogic{The first question has an answer that involves no connotation: one short word replaces four. The author had written six days earlier that ``words we use frequently should be short'' (``The Argument from Common Usage''). So the existence of the word does not show that it carries more than its definition.}"
+  ],
+  [
+   5076,
+   "\\cpara{Explains the habit by effort: checking the claim takes observation or statistics, ``And people are lazy.'' This is a general claim about why people argue as they do, stated without evidence. The phrase ``you can define a word any way you like'' is the view the previous post ended by rejecting.}"
+  ],
+  [
+   5567,
+   "\\cpara{Adds the second reason: what people care about is the connotation, a feeling attached to the word and absent from the definition they claim to use.}"
+  ],
+  [
+   5770,
+   "\\cpara{The post's central test. An argument that stays inside the definition can conclude only what it assumed, and in Danny's mouth it sounds absurd.}"
+  ],
+  [
+   5977,
+   "\\cpara{Generalizes the test: a valid argument from the definition would ``either say nothing new, or beg the question.'' That holds for one-step arguments like Danny's. A long chain of deductions from definitions, as in mathematics, can tell a hearer something they did not know; the next post exempts mathematics (``anywhere outside of math'').}"
+  ],
+  [
+   6289,
+   "\\cpara{The conclusion: only a smuggled connotation makes an argument by definition feel like a point scored. It follows from the test for arguments of Danny's kind. For a case where the consequences are attached to the definition by a rule, see the note on atheism in the next post.}"
+  ]
+ ]
+}

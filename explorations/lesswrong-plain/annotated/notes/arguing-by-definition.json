@@ -1,0 +1,105 @@
+{
+ "slug": "arguing-by-definition",
+ "header": "\\post{Arguing \"By Definition\"}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/cFzC996D7Jjds3vS9/arguing-by-definition}\n",
+ "skeleton_sha": "eb2cc56075425d7a97acea0cac21240690c787421becdb4075bc4557d9d71226",
+ "post_sha": "ed73d73b490aa29adb7a1ae60de27f5574b514bb517512ed0db32c55ef81c986",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Opens with an old joke. Diogenes Laertius reports that when Plato defined man as ``an animal, biped and featherless,'' Diogenes plucked a fowl and brought it in, saying ``Here is Plato's man.'' In the story the definition was then patched: ``there was added to the definition, `having broad nails.''' That is the kind of definition the previous post describes, a list of features for recognizing members.}"
+  ],
+  [
+   243,
+   "\\cpara{Describes the usual form of an argument by definition, with ``usually'': visible features, a dictionary, a conclusion. The atheism conclusion is introduced here and taken up near the end.}"
+  ],
+  [
+   559,
+   "\\cpara{Argues that a premise both sides accept cannot be what the dispute is about: if the listener doubted Socrates's two legs, the premise would be useless. The inference is hedged (``probably'') and it is sound.}"
+  ],
+  [
+   1098,
+   "\\cpara{Grants the legitimate move from visible to hidden properties, and grounds it in clusters of similar things in the world, not in definitions or common usage.}"
+  ],
+  [
+   1592,
+   "\\cpara{Adds that no definition changes the clusters. The definition ``all featherless bipeds except Socrates'' is a joke that makes the point.}"
+  ],
+  [
+   1922,
+   "\\cpara{Models the correct form: observed features, then a guess (``I'm going to guess''), then a prediction. The inference is stated as probable, as the post says it should be.}"
+  ],
+  [
+   2439,
+   "\\cpara{Adds a new piece of evidence that bears directly on the prediction: an antidote.}"
+  ],
+  [
+   2786,
+   "\\cpara{Draws the consequence: once the evidence is specific, the dispute has to move to biochemistry, and the label settles nothing.}"
+  ],
+  [
+   3144,
+   "\\cpara{Diagnoses ``by definition'' in this case as a refusal to use everything else one knows about Socrates.}"
+  ],
+  [
+   3510,
+   "\\cpara{Two analogies for refusing to condition on evidence already seen. Both fit the case.}"
+  ],
+  [
+   3979,
+   "\\cpara{Restates the rule for categories.}"
+  ],
+  [
+   4127,
+   "\\cpara{Limits the rule: new evidence counts only as far as it bears on the prediction, and that judgment rests on biology, not on the dictionary.}"
+  ],
+  [
+   4540,
+   "\\cstyle{``Legal'' here means allowed by probability theory, as in ``illegal under Bayesian probability theory'' two paragraphs earlier. It has nothing to do with law.}"
+  ],
+  [
+   4740,
+   "\\cpara{Shows the legitimate form, a statement about causes. The toxicology is right: Wikipedia (``Coniine'') gives death by ``respiratory paralysis.''}"
+  ],
+  [
+   5077,
+   "\\cpara{Answers its own question: people add ``by definition'' when the default inference has been doubted, as in the herbologist case.}"
+  ],
+  [
+   5441,
+   "\\cpara{Restates the answer for this use of the phrase, with ``usually''.}"
+  ],
+  [
+   5629,
+   "\\cpara{States the rule in general form, ``on exactly those occasions''. It is a claim about when people use the phrase; the evidence the post offers for it is the author's informal tally in the last two paragraphs.}"
+  ],
+  [
+   5928,
+   "\\cpara{The second use, ``X, by definition, is a Y!'' The atheism argument is the author's own wording of a common claim; no one is quoted. The post does not say here which connotation of ``religion'' is being sneaked in. ``The Argument from Common Usage'' had named two: that atheism's reasoning methods, or its record of violence, are ``on a par'' with those of religions.}"
+  ],
+  [
+   6255,
+   "\\cpara{Contrasts a central member of the category, for which no one needs the phrase.}"
+  ],
+  [
+   6483,
+   "\\cpara{Concludes that the phrase is needed only for a member unlike the category's central cases.}"
+  ],
+  [
+   6874,
+   "\\cpara{The general conclusion, joining this post to the previous one.}"
+  ],
+  [
+   7165,
+   "\\clogic{This covers the debater's argument above. It does not cover a definition that is itself a rule assigning consequences, as in law. American courts have classed atheism as a religion for First Amendment purposes, although it does not resemble the central members. In Kaufman v. McCaughtry (7th Cir. 2005) the court wrote: ``Atheism is Kaufman's religion, and the group that he wanted to start was religious in nature even though it expressly rejects a belief in a supreme being.'' The classification applied the court's definition of religion, and the court found that refusing an atheist prisoner's request to form a study group had violated his rights; no connotation was needed. I quote the ruling from the First Amendment Encyclopedia and could not open the opinion itself.}"
+  ],
+  [
+   7179,
+   "\\cpara{The evidence for the rule: the author's tally over thirteen years, kept ``not with literal statistics,'' as the post says, and read by ``eyeballing''. The other alarm signals listed come without support; the link on ``Hitler'' goes to Godwin's Law.}"
+  ],
+  [
+   7664,
+   "\\cpara{Admits exceptions, the first by Feynman, without showing any of them, and advises dropping the phrase anyway. The closing joke uses the phrase in the way just warned against; that is the joke.}"
+  ]
+ ]
+}

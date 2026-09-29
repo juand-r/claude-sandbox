@@ -1,0 +1,113 @@
+{
+ "slug": "where-to-draw-the-boundary",
+ "header": "\\post{Where to Draw the Boundary?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/d5NyJ2Lf6N22AD9PB/where-to-draw-the-boundary}\n",
+ "skeleton_sha": "38dce7ecaedd3bfe5fce6687ffb964c73b0722acd83225836e7acc0b3c46370b",
+ "post_sha": "eab0b6fada49ad02a0040bea01248ab4450295f28588934d6bad993b903d447c",
+ "edits": [],
+ "notes": [
+  [
+   139,
+   "\\cpara{Opens with a reader's definition of art, from the comments on ``Fallacies of Compression''.}"
+  ],
+  [
+   446,
+   "\\cfact{The quotation is reworded. The linked comment, by Doug\\_S. on 19 February 2008, reads: ``I've come up with what is, to me, a satisfactory definition of `art': Art is that which is designed for the purpose of creating a reaction in an audience.'' The definition itself is quoted exactly. The opening, ``Long have I pondered the meaning of the word,'' is the post's, and it describes the task in the way the post goes on to criticize. The commenter did not describe it that way.}"
+  ],
+  [
+   472,
+   "\\cpara{The thesis, in italics: a word does not have a meaning waiting to be discovered by finding the right definition.}"
+  ],
+  [
+   668,
+   "\\cpara{Points back to ``Feel the Meaning''.}"
+  ],
+  [
+   751,
+   "\\cpara{Restates the thesis: to ask how to define a word is to look for an essence in what is only a signal people use to communicate.}"
+  ],
+  [
+   981,
+   "\\cpara{States the positive task, the post's main claim: find which things cluster together, and sometimes which share a common cause.}"
+  ],
+  [
+   1385,
+   "\\cpara{The example of a wrong word. It puts animal magnetism, which has a different cause, with lightning and compasses, and leaves out light, which shares their cause. The historical aside is right: Mesmer (1734--1815) published on animal magnetism in 1779, and Faraday (1791--1867) discovered electromagnetic induction in 1831.}"
+  ],
+  [
+   1823,
+   "\\cpara{Names the fault: a boundary that fails to carve reality at its joints.}"
+  ],
+  [
+   2084,
+   "\\cpara{Calls this the problem worthy of a rationalist, and says it is what people should be doing when they look for the essence of a word.}"
+  ],
+  [
+   2327,
+   "\\cpara{A second example: seeing that breathing and fire are one process, the subject of ``Universal Fire'', took science, and the post says it is not the job of dictionary editors.}"
+  ],
+  [
+   2578,
+   "\\cpara{Returns to art.}"
+  ],
+  [
+   2666,
+   "\\cpara{Introduces a list of things called art and not art.}"
+  ],
+  [
+   2782,
+   "\\cpara{The list mixes famous works, a programming language and jokes. ``A cross floating in urine'' presumably refers to Andres Serrano's 1987 photograph \\textsc{Piss Christ}, a crucifix in a tank of the artist's urine.}"
+  ],
+  [
+   3087,
+   "\\cpara{The listener asks for an intension, a rule stated in words, that matches the list.}"
+  ],
+  [
+   3312,
+   "\\cpara{The author's answer: deliberate effort meant to produce aesthetic emotion. Philosophers call definitions of this kind aesthetic definitions. Monroe Beardsley's (1982), as the Stanford Encyclopedia of Philosophy gives it, is close: an artwork is ``an arrangement of conditions intended to be capable of affording an experience with marked aesthetic character.'' The post does not claim that its definition is new.}"
+  ],
+  [
+   3609,
+   "\\clogic{This is the same kind of answer as the commenter's at the top of the post: a statement of what the things called art have in common, in terms of intent and the audience's response. The post treats its own guess as a legitimate attempt to describe a cluster. It gives no reason to read the commenter's guess differently, apart from the opening words it added (see the note there).}"
+  ],
+  [
+   3623,
+   "\\cpara{Asks whether the answer only swaps one word for another, and answers that the list of aesthetic emotions is far shorter than the list of artworks. That is the test ``Replace the Symbol with the Substance'' gives: ask whether a description ``fulfilled its purpose, not whether it followed the rules.'' The fMRI remark is hedged (``might'') and says only that emotions are physical.}"
+  ],
+  [
+   4059,
+   "\\cpara{Sets the definition aside: the point is that both the rule and the list can be disputed.}"
+  ],
+  [
+   4275,
+   "\\cpara{The first dispute, over the rule, described as curve fitting: a rival rule may fit the points and still not be ``the true generating distribution.''}"
+  ],
+  [
+   4678,
+   "\\cpara{The second dispute, over the list, on ``the presumption'' that some underlying pattern generates it. For art the post names no finding that would settle whether Modern Art belongs, and closes the question with a joke (``gullible philistine''). The cases that follow, animal magnetism and dolphins, show what can settle such a dispute: a later finding about what the members share. So the art case shows that a list can be disputed; the finding that a list can be wrong rests on the scientific cases.}"
+  ],
+  [
+   5285,
+   "\\cpara{Says a list can be doubted before its common cause is known. The history bears this out: animal magnetism was set aside decades before Oersted connected electricity and magnetism in 1820. In 1784 a French royal commission that included Benjamin Franklin and Antoine Lavoisier concluded, in Wikipedia's summary, that there was ``no evidence of the existence of his `magnetic fluid''' and that its effects came from imagination or charlatanry.}"
+  ],
+  [
+   5490,
+   "\\cpara{The second case: an extensional definition, a bare list, can be wrong. Science made this correction. Wikipedia says Linnaeus classed whales as fish in the first edition of \\textsc{Systema Naturae} (1735) and moved them to the mammals in the tenth (1758), where the dolphin genus Delphinus is among them.}"
+  ],
+  [
+   5909,
+   "\\cpara{Gives the answer as obvious. The reason comes in the next paragraph: a list can prove wrong once we find what its members really share.}"
+  ],
+  [
+   6016,
+   "\\cpara{The general lesson: both the guess about the rule and the list itself can turn out wrong once we learn what the members share.}"
+  ],
+  [
+   6287,
+   "\\cpara{Restates the lesson: neither kind of definition is protected by being a definition.}"
+  ],
+  [
+   6482,
+   "\\cpara{Closes with the practical upshot: treat definitions as guesses that can be mistaken.}"
+  ]
+ ]
+}

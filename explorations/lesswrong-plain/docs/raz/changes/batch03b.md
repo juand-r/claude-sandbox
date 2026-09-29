@@ -137,3 +137,38 @@ Why: Same.
 - Before:  \nb{No source is given. The standard prevention happens during pregnancy: if the father's type is not known, the mother is given the protective injection anyway.}
 - After: 
 
+
+## annotated/afterwords/sneaking-in-connotations.tex
+
+Why: The law point is made once, in Arguing by Definition. The In short line had called a hedged (``generally'') thesis a claim about all arguments, and listed a minor rhetorical-question point.
+
+- Before:  Where a rule attaches consequences to a definition, as in law, an argument from the definition can settle something real with no connotation involved.
+- After: 
+
+- Before: In this post its support is that test and one invented story.
+- After: In this post its support is that test and one hypothetical story.
+
+- Before: In short: a sound test for arguments from a dictionary, with a rhetorical question that brevity answers, an unsupported claim that people are lazy, and a conclusion stated for all arguments from definitions that the test supports for one-step arguments like Danny's.
+- After: In short: a sound test for arguments from a dictionary, whose hedged thesis the test makes plausible for one-step arguments like Danny's, with an unsupported claim that people are lazy.
+
+
+## honest/sections/sneaking-in-connotations.tex
+
+Why: Same.
+
+- Before: \nb{That holds for one-step arguments like Danny's. A long deduction from definitions, as in mathematics, can tell a hearer something new, and the next post exempts mathematics. Where a rule, such as a law, attaches consequences to a definition, an argument from the definition can settle something with no connotation involved.}
+- After: \nb{That holds for one-step arguments like Danny's. A long deduction from definitions, as in mathematics, can tell a hearer something new, and the next post exempts mathematics.}
+
+
+## annotated/afterwords/arguing-by-definition.tex
+
+Why: Scope, stated once and briefly (AGENT_BRIEF, lessons from Book II); the unshown Feynman example is a nitpick.
+
+- Before: The rule also has a limit the post does not state. Outside mathematics, a definition can be the rule that decides a question, as in law. An American court has classed atheism as a religion for First Amendment purposes, although atheism does not resemble the central members of the category, as the post says. The court applied its definition of religion, and found that refusing an atheist prisoner's request to form a study group had violated his rights. That is an argument from a definition to an unlikely member, made for a purpose the post does not consider, with no connotation sneaked in. The advice to drop the phrase fits everyday argument; it does not fit fields where definitions are rules.
+
+The post names exceptions of its own, a correct use by Feynman and others since, but shows none of them.
+- After: The advice has a scope the post leaves implicit. It fits everyday argument, where a category is used to predict. Where a definition is itself a rule that assigns consequences, as in law, arguing from it is legitimate; an American appeals court classed atheism as a religion for First Amendment purposes in 2005.
+
+- Before: , and a rule that does not fit fields such as law, where definitions are rules.
+- After: .
+
