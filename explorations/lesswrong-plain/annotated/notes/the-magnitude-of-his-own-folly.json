@@ -1,0 +1,197 @@
+{
+ "slug": "the-magnitude-of-his-own-folly",
+ "header": "\\post{The Magnitude of His Own Folly}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fLRPeXihRaiRo5dyX/the-magnitude-of-his-own-folly}\n",
+ "skeleton_sha": "57b6f31e57cf1a24b7db1f7025db34f7eb4e91fec0dd7d8b9eb1000176413447",
+ "post_sha": "bfdd72760584dd83b2b8bbbfd5f342c3477d34a2905bcababa7e80fd9685a3e8",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Opens with the author's earlier habit of arguing with individual AGI hopefuls. The link is to ``Above-Average AI Scientists'' (28 September 2008), which the book does not include. There the author tells of meeting a creationist who was ``heading up a funded research project specifically declaring AGI as a goal.''}"
+  ],
+  [
+   400,
+   "\\cpara{Recalls half-persuading one such researcher that Friendly AI had to be taken into account, and could not be reduced to choosing a fitness metric.}"
+  ],
+  [
+   689,
+   "\\cpara{Gives the man's reaction: a lament that he had almost destroyed the world.}"
+  ],
+  [
+   856,
+   "\\cpara{Calls that reaction a trap, and turns in mid-sentence to the author's own case.}"
+  ],
+  [
+   931,
+   "\\cpara{Dates the author's own moment to late 2002. The qualifier ``insofar as they were coherent enough'' limits the charge the author brings against the 1997 proposals. ``My Naturalistic Awakening'' (order 306) tells the same moment from the side of the idea that caused it.}"
+  ],
+  [
+   1157,
+   "\\cpara{Describes the realization as sudden and complete, with no period of wondering how the mistake was made.}"
+  ],
+  [
+   1528,
+   "\\cpara{Names the first trap: to say ``I almost destroyed the world!'' would have been too proud.}"
+  ],
+  [
+   1687,
+   "\\cpara{Gives the reason: that reaction inflates one's own importance at a moment that called for a blow to the ego.}"
+  ],
+  [
+   2022,
+   "\\cpara{Names the other trap, ``It wasn't really loaded?'', and rejects it because the author had intended to build and run the design.}"
+  ],
+  [
+   2360,
+   "\\cfact{The archived record bears out the intention. In January 1999 the author wrote on the Extropians list that ``Humanity's primary hope of survival lies in a quick kill via AI,'' through ``an Open Source effort on the scale of Linux, which I intend to oversee at some point.''}"
+  ],
+  [
+   2540,
+   "\\cpara{Adds that the author did not turn the moment into an emotional drama either.}"
+  ],
+  [
+   2678,
+   "\\cpara{States the diagnosis: six years without updating.}"
+  ],
+  [
+   2804,
+   "\\cpara{Says that updating meant changing both the plan and the present work.}"
+  ],
+  [
+   3004,
+   "\\cpara{``Halt and Catch Fire'' is an old joke name for a computer instruction that stops the machine (Wikipedia, ``Halt and Catch Fire (computing)''). ``Fighting a Rearguard Action Against the Truth'' (order 305) used the phrase for ``a mental brake to a full stop'' when a foundational assumption fails.}"
+  ],
+  [
+   3045,
+   "\\cpara{Gives the words that stopping requires.}"
+  ],
+  [
+   3121,
+   "\\cpara{A claim about how AGI researchers and the public assign status, drawn from the author's experience of the field. No case or source is given, here or in the paragraphs that restate it.}"
+  ],
+  [
+   3422,
+   "\\cpara{Restates the loss of status as a joke.}"
+  ],
+  [
+   3526,
+   "\\cpara{Voices the question the field would put to a researcher with no code.}"
+  ],
+  [
+   3926,
+   "\\cpara{Promises, hedged (``Maybe later''), to explain the attitude, and names the concept the field lacks: a recognized state of working from an incomplete map of Friendly AI toward a complete one.}"
+  ],
+  [
+   4231,
+   "\\cpara{Restates the claim and challenges the reader to name anyone who says three things at once: that they intend to build AGI, cannot yet, and are working out what is missing.}"
+  ],
+  [
+   4601,
+   "\\cpara{Adds researchers bound by promises to investors.}"
+  ],
+  [
+   4711,
+   "\\cpara{Concludes that the field offers no respectable way to stop.}"
+  ],
+  [
+   4864,
+   "\\cpara{Turns to the author's own case, hedged (``might also have flinched'').}"
+  ],
+  [
+   5097,
+   "\\cpara{Gives the author's main reason, hedged (``I think''): the author shared the field's attitude.}"
+  ],
+  [
+   5307,
+   "\\cpara{States the deeper reason: the author did not believe, at gut level, that ``Nature was allowed to kill me.''}"
+  ],
+  [
+   5494,
+   "\\cpara{Explains the phrase by the proverb about teenagers, read with a hedge (``perhaps'') as a failure to feel a risk as real.}"
+  ],
+  [
+   5973,
+   "\\cpara{Separates the author's case: the author did feel personal mortality.}"
+  ],
+  [
+   6076,
+   "\\cpara{Locates the blind spot in the Future, which the author was raised to treasure above the author's own life. The notes on ``Something to Protect'' (order 294) quote this line.}"
+  ],
+  [
+   6298,
+   "\\cpara{The archived record bears this out. In December 1996 the author wrote on the Extropians mailing list that ``nanotechnology will turn the Earth into gray goo,'' and listed ``whether the Powers will be ethical'' among the ``post-Singularity'' problems for which ``All we need to know'' is ``Almost certainly'', ``of course'', and ``consider the alternative.''}"
+  ],
+  [
+   6535,
+   "\\cpara{Says that even after taking up Friendly AI, the author did not emotionally believe that failure was possible.}"
+  ],
+  [
+   6846,
+   "\\cpara{Ties the change to the insight told in ``My Naturalistic Awakening''.}"
+  ],
+  [
+   7051,
+   "\\cpara{The quoted sentence is the author's own, from the second virtue, relinquishment, in ``Twelve Virtues of Rationality''. The post does not say so.}"
+  ],
+  [
+   7207,
+   "\\cpara{A generalization about AGI researchers: being scooped and running out of money are real to them.}"
+  ],
+  [
+   7669,
+   "\\cpara{Contrasts, hedged (``I don't think''), the prospect of destroying humanity by their own mistake.}"
+  ],
+  [
+   7828,
+   "\\cpara{The post marks this as a guess about other people's minds (``It is unsafe to say'', ``it seems rather likely''). The support given is the next line: the author once said the same.}"
+  ],
+  [
+   8306,
+   "\\cpara{The author's 2001 document \\textsc{Creating Friendly AI} bears this out. It argues that a controlled ascent should be ``fast enough not to give a significant speed advantage to a non-Friendliness-aware AI project.''}"
+  ],
+  [
+   8413,
+   "\\cpara{Says the author's childhood technophilia broke at that moment.}"
+  ],
+  [
+   8498,
+   "\\cpara{States the first lesson: following the rules of science, being a nice person, or being the best project available does not stop Nature from killing you.}"
+  ],
+  [
+   8815,
+   "\\cpara{The post's answer to the argument quoted above: rivals do not matter, since being the best project does not make a project safe. The post does not weigh whether stopping lowers the total risk while less careful projects go on, which is what that argument claims.}"
+  ],
+  [
+   8944,
+   "\\cpara{The archived writings bear this out. In January 1999 the author wrote that once nanotechnology could supply the hardware, ``a Singularity must be attempted immediately, before anything can go wrong.'' \\textsc{Creating Friendly AI} (2001) argues: ``Thus, delaying FAI research will not make it any easier to develop Friendliness.''}"
+  ],
+  [
+   9298,
+   "\\cpara{\\textsc{Creating Friendly AI} gives such reasons. It argues that mistakes would appear in order, many harmless ones before a catastrophic one, so that ``if no non-malicious mistake has ever been observed to cause catastrophic failure of Friendliness, the watchers can probably be fairly confident that none has ever occurred.''}"
+  ],
+  [
+   9503,
+   "\\cpara{Draws the lesson: good arguments for a risk do not stop the risk from killing you.}"
+  ],
+  [
+   9817,
+   "\\cpara{Restates the lesson with the gun image from earlier in the post.}"
+  ],
+  [
+   10077,
+   "\\cpara{Gives the reason as a general rule: without knowing the rules, you cannot model the penalty for not knowing them.}"
+  ],
+  [
+   10294,
+   "\\cpara{Applies the rule to other researchers, whose reply ``I do not know it cannot work'' the author calls wielding ignorance ``as a bludgeon.''}"
+  ],
+  [
+   10736,
+   "\\cpara{The post's rule: do not proceed until you ``know positively that the ground is safe.'' What would count as knowing positively is given two posts later, in ``My Bayesian Enlightenment'': doing ``only that which I understood on a sufficiently deep level to see that I could not do it in any other way.''}"
+  ],
+  [
+   11194,
+   "\\cpara{Dates the start of the author's training as a rationalist to this moment. In ``Something to Protect'' the author wrote: ``I only began to grow further as a rationalist once I had something terribly important that I needed to do.'' Here the start is the moment the author saw that the important thing could be lost.}"
+  ]
+ ]
+}

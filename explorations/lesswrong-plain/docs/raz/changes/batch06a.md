@@ -34,3 +34,43 @@ Why: Same.
 - Before: \nb{Life can compute whatever a universal computer can, as the post says. That it could therefore hold ``a sentient being'' assumes that a mind is a computation any universal computer could run. The post does not argue this, and its conclusion about our own world does not need it.}
 - After: \nb{Life can compute whatever a universal computer can, as the post says.}
 
+
+## annotated/afterwords/the-magnitude-of-his-own-folly.tex
+
+Why: Scope point kept in the note only (the agent's own suggestion; a fair defender can say the post's answer to other projects is to argue with them).
+
+- Before: 
+
+The post quotes the argument that a project which delays for safety will be beaten by projects that do not care, and answers it by setting rivals aside: even the best project can be killed. It does not weigh whether stopping lowers the total risk while less careful projects go on, which is what that argument claims, and which the author had used in 2001 as a reason for speed.
+- After: 
+
+
+## honest/sections/the-magnitude-of-his-own-folly.tex
+
+Why: Same.
+
+- Before:  \nb{The post does not weigh whether stopping lowers the total risk while less careful projects go on, which is what the argument it quotes claims.}
+- After: 
+
+
+## annotated/afterwords/my-bayesian-enlightenment.tex
+
+Why: Memoir: the labels are the other person's, reported as such; the point is information, kept out of the In short line.
+
+- Before: The frame of the anecdote does not hold. The difference between 1/3 and 1/2
+- After: The anecdote's labels are the other person's, and they do not fit. The difference between 1/3 and 1/2
+
+- Before:  The post takes its label from a person who tied the difference to the schools.
+- After: 
+
+- Before: In short: a memoir whose account of Jaynes matches Jaynes's own claims and whose puzzle is solved correctly, but whose puzzle does not separate Bayesians from frequentists, and whose remarks on frequentist methods repeat Jaynes's side of a dispute treated earlier in the book.
+- After: In short: a memoir whose account of Jaynes matches Jaynes's own claims and whose puzzle is solved correctly; its remarks on frequentist methods take Jaynes's side of a dispute treated earlier in the book.
+
+
+## annotated/posts/my-bayesian-enlightenment.tex
+
+Why: Memoir: the labels are the other person's, reported as such; the point is information, kept out of the In short line.
+
+- Before: The post takes its label from the other person's claim, but the anecdote does not show a difference between the two schools.
+- After: The labels are the other person's, and the anecdote does not show a difference between the two schools.
+

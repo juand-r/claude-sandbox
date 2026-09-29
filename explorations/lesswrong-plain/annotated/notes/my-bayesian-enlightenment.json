@@ -1,0 +1,181 @@
+{
+ "slug": "my-bayesian-enlightenment",
+ "header": "\\post{My Bayesian Enlightenment}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/Ti3Z7eZtud32LhGZT/my-bayesian-enlightenment}\n",
+ "skeleton_sha": "5c27b70eb3d5fda0ce618e576b60cce8047a34da12ca8a0386efa148aac01bd9",
+ "post_sha": "efb85136fcd531af0b4e0713f1f2f71836423973641dec5e7d9c2faf69dc461f",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Opens with the first time the author took the label ``Bayesian'', remembered ``dimly''.}"
+  ],
+  [
+   336,
+   "\\cpara{The puzzle as it was put. It is a version of Martin Gardner's 1959 ``Mr. Smith'' problem. Wikipedia (``Boy or girl paradox'') reports that Gardner later granted the question was ambiguous: its answer could be 1/2, ``depending on the procedure by which the information `at least one of them is a boy' was obtained.''}"
+  ],
+  [
+   523,
+   "\\cpara{Gives the well-posed version: you ask, so ``Yes'' is certain whenever there is a boy, and the answer is 1/3. This is correct, and ``Probability is in the Mind'' (order 197) states the same version and answer.}"
+  ],
+  [
+   750,
+   "\\cpara{Introduces the author's objection.}"
+  ],
+  [
+   872,
+   "\\cpara{The objection: a mother of one boy and one girl is as likely to mention a girl as a boy.}"
+  ],
+  [
+   1231,
+   "\\cpara{The answer checks. The statement has probability 1 with two boys and 1/2 with one of each, so the chance of two boys is $(1/4)/(1/4 + 1/4) = 1/2$.}"
+  ],
+  [
+   1485,
+   "\\cpara{Reports another person's claim: that 1/2 is the Bayesian answer and ``orthodox statistics'' gives 1/3.}"
+  ],
+  [
+   1875,
+   "\\cpara{The author's reply is the standard point. Wikipedia's article, following Bar-Hillel and Falk (1982), says that for the answer to be 1/3 ``It must be further assumed that Mr. Smith would always report this fact if it were true.''}"
+  ],
+  [
+   2141,
+   "\\cpara{The other person ties the assumption to frequentism.}"
+  ],
+  [
+   2256,
+   "\\cpara{Gives the author's astonished reply.}"
+  ],
+  [
+   2361,
+   "\\cpara{The labels are the other person's, and the anecdote does not show a difference between the two schools. Once the way the statement came to be made is fixed, both answers come from counting cases. Gardner's two readings, as Wikipedia gives them, both draw from ``all families with two children,'' and give 1/3 and 1/2. A frequentist who counts the families in which a parent would say this sentence also gets 1/2, if parents of one of each mention either sex equally often. The notes on ``Probability is in the Mind'' make the same point about puzzles of this kind.}"
+  ],
+  [
+   2845,
+   "\\cpara{Separates this from the enlightenment proper, and places Eliezer2001 among those who looked for tools. The contrast of tools and laws is drawn in ``Beautiful Probability'', and the notes there discuss it.}"
+  ],
+  [
+   3579,
+   "\\cpara{Recounts finding heuristics and biases through a web page and a scan of a 1973 paper by Tversky and Kahneman.}"
+  ],
+  [
+   4032,
+   "\\cpara{The doubled tildes mark words struck through in the text as published. They record a correction, linked to Gilliam's comment, of why Gilliam bought the author the book.}"
+  ],
+  [
+   4762,
+   "\\cpara{Credits Gilliam, with a joke about points.}"
+  ],
+  [
+   4855,
+   "\\cpara{Says that heuristics and biases showed the limits of Traditional Rationality and held up Bayes as the standard, but was not the enlightenment either.}"
+  ],
+  [
+   5292,
+   "\\cpara{A hedged aside on the author's memory (``seems'', ``My guess''): good for causal structure, poor for the order of events.}"
+  ],
+  [
+   5851,
+   "\\cpara{Continues the aside: the author remembers why things happened better than when.}"
+  ],
+  [
+   6073,
+   "\\cpara{The dates do not settle the order. The printed book appeared in 2003, after Jaynes's death in 1998 (Wikipedia, ``Edwin Thompson Jaynes''), but drafts existed earlier: the draft used for these notes carries a 1995 copyright.}"
+  ],
+  [
+   6418,
+   "\\cpara{The description matches Jaynes's own claims. Jaynes's preface says that orthodox statistics uses ``intuitive ad hoc devices to do, arbitrarily and imperfectly, what the rules of probability theory would have done for them uniquely and optimally.'' Chapter 3 of the book works one quantity ``in three different ways, with the same result,'' and adds that otherwise ``we would have found an inconsistency in our rules.'' How far the rules are unique depends on the assumptions of Cox's theorem; see the notes on ``Beautiful Probability''.}"
+  ],
+  [
+   6778,
+   "\\clogic{Which standard ``optimal'' refers to is discussed in the notes on ``Beautiful Probability''.}"
+  ],
+  [
+   7117,
+   "\\cpara{Names Jaynes's standard ``the level above mine'', the title of the post of 26 September.}"
+  ],
+  [
+   7333,
+   "\\cpara{Draws the consequence for AI: a design built on vague answers would not survive.}"
+  ],
+  [
+   7494,
+   "\\cpara{The two comparisons with frequentist methods repeat Jaynes's picture of orthodox statistics as ad hoc devices. Frequentist theory also derives methods from stated criteria and proves results about them. The Neyman--Pearson lemma (1933) gives ``the existence and uniqueness of the likelihood ratio as a uniformly most powerful test in certain contexts'' (Wikipedia). The notes on ``Beautiful Probability'' give the frequentist rationale in full.}"
+  ],
+  [
+   8352,
+   "\\cpara{Asks what is left if seeming good is not enough.}"
+  ],
+  [
+   8488,
+   "\\cpara{Answers: the level of Jaynes, the only correct way and why. The hope is hedged: with that mastery it was ``at least imaginable'' to build a Friendly AI and survive.}"
+  ],
+  [
+   9033,
+   "\\cpara{The passage is not attributed. Goodreads, whose quotations are added by users, gives it as Ursula K. Le Guin's, from \\textsc{The Farthest Shore} (1972), with lighter punctuation. I could not check the novel.}"
+  ],
+  [
+   9255,
+   "\\cpara{Applies the passage to the author's past.}"
+  ],
+  [
+   9325,
+   "\\cpara{In ``The Magnitude of His Own Folly'' the stop follows from seeing what the 1997 design would have done; here it follows from Jaynes's standard. The post has said it cannot place the reading of Jaynes before or after that day, so the two accounts need not conflict.}"
+  ],
+  [
+   9410,
+   "\\cpara{States the new standard for Friendly AI designs: only what the author understood deeply enough to see that it could be done no other way.}"
+  ],
+  [
+   9745,
+   "\\cpara{The author's website says the same of the old work: ``everything dated 2002 or earlier \\ldots\\ I now consider completely obsolete'' (yudkowsky.net, ``Singularity'').}"
+  ],
+  [
+   9964,
+   "\\cpara{Says what replaced them: probability theory and decision theory, extended to reflection and self-modification.}"
+  ],
+  [
+   10125,
+   "\\cpara{Adds, hedged (``If I recall correctly''), two earlier steps told in other posts, and the view that Traditional Rationality is not strict enough.}"
+  ],
+  [
+   10761,
+   "\\cpara{Concludes that the enlightenment is the sum of these steps.}"
+  ],
+  [
+   10887,
+   "\\cpara{Says the story goes on.}"
+  ],
+  [
+   10962,
+   "\\cpara{Adds a later lesson: Pearl's book showed the author how much time ad hoc systems, such as the author's earlier work on nonmonotonic logics, would have wasted.}"
+  ],
+  [
+   11619,
+   "\\cpara{Argues that the high standard of precision is what made the author think about many issues at all, and that without it ``you'll let yourself get away with anything.''}"
+  ],
+  [
+   12067,
+   "\\clogic{A cause stated as fact, with no evidence. The support is two links, to ``Trying to Try'' and ``Use the Try Harder, Luke'', posted a few days earlier. The notes on the second (order 312) discuss its ``five minutes'', which comes from a made-up outtake of a film scene.}"
+  ],
+  [
+   12826,
+   "\\cpara{Adds that precision saves time and is the price of thinking about a problem at all.}"
+  ],
+  [
+   13088,
+   "\\cpara{Counts that realization as part of the enlightenment.}"
+  ],
+  [
+   13235,
+   "\\cpara{Says again that the story goes on.}"
+  ],
+  [
+   13342,
+   "\\cpara{The moral: saying ``Oops'' is something to look forward to, since it means the future self will be stronger.}"
+  ],
+  [
+   14221,
+   "\\cpara{Ends with a joke: slower progress may mean mastery, or dying neurons.}"
+  ]
+ ]
+}
