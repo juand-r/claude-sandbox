@@ -1,0 +1,105 @@
+{
+ "slug": "fake-utility-functions",
+ "header": "\\post{Fake Utility Functions}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/NnohDYHNnKDtbiMyp/fake-utility-functions}\n",
+ "skeleton_sha": "01861c2c6b9b0ab91cf2bc9840ddca173b78c30cb7d64d76047f5c90bfbaf0ee",
+ "post_sha": "bed93a8100636f5758e40a09edfcd6d9313706cbd2b604b713bae94bd55a0181",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Introduces the target: a type of person who has found one moral principle from which all other values follow.}"
+  ],
+  [
+   297,
+   "\\cpara{Narrows the target to people who propose one simple utility function for a superintelligence, whom the author reports meeting often. No proposal is cited here. In the previous post, ``Fake Fake Utility Functions,'' the author names ``happiness'' as one of the fake utility functions ``I run into more often,'' and ``genetic fitness'' as another.}"
+  ],
+  [
+   550,
+   "\\cpara{``Yesterday's post'' is ``Fake Fake Utility Functions,'' which the book leaves out. It lists the posts the author wrote as groundwork for this one, among them ``Fake Selfishness,'' ``Fake Morality,'' ``Fake Optimization Criteria'' and ``Thou Art Godshatter.''}"
+  ],
+  [
+   850,
+   "\\cpara{Repeats two quotations from ``Hold Off on Proposing Solutions''; the notes there discuss them. The last sentence is a joke: the harder the problem, the faster people solve it.}"
+  ],
+  [
+   1454,
+   "\\cpara{Names one class of fast wrong solution.}"
+  ],
+  [
+   1671,
+   "\\cpara{Suggests, with ``I may have'' and ``it seems,'' that the author's own old term ``supergoal'' led some people to imagine one goal from which all ethics follows.}"
+  ],
+  [
+   2174,
+   "\\cfact{The account matches the author's \\textsc{Creating Friendly AI} (2001), whose glossary defines ``supergoal content'' as ``The root of a directional goal network. A goal which is treated as having intrinsic value, rather than having derivative value as a facilitator of some parent goal.'' The same document speaks of supergoals in the plural.}"
+  ],
+  [
+   2469,
+   "\\cpara{The premise of the post: a utility function can have many terms, and human values are many, of ``high Kolmogorov complexity.'' The support is by reference to earlier posts, above all ``Thou Art Godshatter,'' whose ``thousand shards of desire'' this repeats; see the notes on that post and on ``Adaptation-Executers, not Fitness-Maximizers.''}"
+  ],
+  [
+   3228,
+   "\\cpara{Calls the plurality of human values a descriptive ``known fact.'' The post itself gives no evidence for it beyond the evolutionary account of the earlier posts; the one link, on ``descriptive,'' goes to an About.com page on ethics that is no longer online. The claim that the loves listed ``have not been cognitively derived from each other or from any other value'' is stated, not shown.}"
+  ],
+  [
+   3903,
+   "\\cfact{Philosophers call the corresponding view about what is valuable value pluralism. The \\textsc{Stanford Encyclopedia of Philosophy} (``Value Pluralism'') puts it as the claim ``that there really are several different values, and that these values are not reducible to each other or to a supervalue,'' and gives W. D. Ross (1930) as a pluralist. The post's claim is the descriptive counterpart, about what people value.}"
+  ],
+  [
+   3917,
+   "\\cpara{Claims that leaving out even one value ``could'' produce a fate worse than death, and gives one example, from fiction. The link on ``book'' goes to the author's own post on the fallacy of generalizing from fictional evidence, so the example is offered as an illustration.}"
+  ],
+  [
+   4184,
+   "\\cfact{The link goes to Nick Bostrom's ``Existential Risks'' (2002). The word ``hyperexistential'' does not occur in it. Its nearest case is ``Flawed superintelligence'': ``a badly programmed superintelligence takes over and implements the faulty goals it has erroneously been given.''}"
+  ],
+  [
+   4535,
+   "\\cfact{Williamson's novelette appeared in \\textsc{Astounding Science Fiction} in July 1947. Its robots follow a Prime Directive ``to serve and obey and guard men from harm'' and take over every task, as the post describes (Wikipedia, ``With Folded Hands'').}"
+  ],
+  [
+   4549,
+   "\\cpara{Asks how the proposers answer this objection.}"
+  ],
+  [
+   4659,
+   "\\cpara{Answers for them: they do not look for objections, do not know the problem is hard, and ``went off in a happy death spiral.'' These are claims about what unnamed people know and think; the only evidence given is the unsourced reply in the next paragraph. The notes on ``Fake Justification'' make the same point about that post's unnamed Christians.}"
+  ],
+  [
+   5373,
+   "\\cpara{Gives the proposers' reply on a mother's love, quoted without a source. It serves as the author's example of the pattern.}"
+  ],
+  [
+   5681,
+   "\\cpara{The first answer, and it is sound. A process that maximized complexity would look for whatever is most complex, not stop at the first complex thing that humans also like. It is the move of the million-dollar laptop in ``Fake Justification'': find an option that does better under the stated goal.}"
+  ],
+  [
+   6300,
+   "\\cpara{The second answer, from ``Fake Morality'': a principle defended by its good consequences shows that the consequences are what is valued.}"
+  ],
+  [
+   6731,
+   "\\cpara{Explains why proposers argue from consequences: in an affective death spiral, listing the idea's good consequences makes it seem nicer, and reducing other goods to it would not.}"
+  ],
+  [
+   7219,
+   "\\cpara{States what a real argument for one great idea would need: that other goods are good only when they serve it. The \\textsc{Stanford Encyclopedia} (``Value Pluralism'') states the same requirement for utilitarian monists, who ``must claim that all other putative values, such as friendship, knowledge and so on, are only instrumental values.'' Some monists argue in that direction; J. S. Mill held that people ``desire nothing which is not either a part of happiness or a means of happiness'' (\\textsc{Utilitarianism}, ch.~4). The post's target is the proposer who argues the other way.}"
+  ],
+  [
+   7695,
+   "\\cpara{A joke that restates the point: arguing from what people already want sells an idea better than reducing their wants to it.}"
+  ],
+  [
+   7966,
+   "\\cpara{Adds that a proposer who does reduce everything to the idea will persuade no one.}"
+  ],
+  [
+   8188,
+   "\\cpara{The conclusion. Its first sentence is close to true by definition: only your morality is sure to reproduce your morality's decisions. The conclusion rests on the premise of the seventh and eighth paragraphs, that human values are many and complex. Given that premise, the comparison with compressing a large file into 10 bits holds.}"
+  ],
+  [
+   8881,
+   "\\cpara{Limits the post to ``why simple utility functions fail to compress our values,'' and leaves Friendly AI for later.}"
+  ]
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "fake-selfishness",
+ "header": "\\post{Fake Selfishness}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Masoq4NdmmGSiq2xw/fake-selfishness}\n",
+ "skeleton_sha": "e3284035efa9df50870773b650a556665b1a853e0ddffae3496466675769c286",
+ "post_sha": "3579269b5a30f57ae09a8f5b7736e096077cdf215c3fbf1492dc8d633c4eafc2",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Opens with a conversation. The man says two things: that he is ``purely selfish,'' and that the author ``should'' be selfish too. The second is ethical egoism, a claim about what one ought to do (\\textsc{Stanford Encyclopedia of Philosophy}, ``Egoism'').}"
+  ],
+  [
+   839,
+   "\\clogic{The thesis is offered with ``It looks to me like,'' and its comparison rests on the religious people ``I meet.'' The one case that follows concerns a single act, urging selfishness on the author, and the man's reasons for it.}"
+  ],
+  [
+   853,
+   "\\cpara{The man denies the author's thesis.}"
+  ],
+  [
+   913,
+   "\\cpara{Asks why a selfish man would want others to be selfish. The author had made a related point in ``Your Rationality Is My Business'' (April 2007): a truly selfish person ``would get on with making money instead of arguing.'' The note there gives the \\textsc{Stanford Encyclopedia}'s view that an egoist who recommends egoism does something unusual, not something inconsistent. Here the man answers in his next line.}"
+  ],
+  [
+   1157,
+   "\\cpara{The man's reason is self-interested, and it is the reason Ayn Rand's ethics gives. The \\textsc{Stanford Encyclopedia} (``Ayn Rand'') glosses her ethical egoism as ``rational self-interest'' and reports her view ``that there is no conflict between one person's rational interests and another's.'' On that view, wanting others to be rationally selfish fits egoism. The post does not say whether the man held Rand's view.}"
+  ],
+  [
+   1398,
+   "\\cpara{Answers with four questions: would the man gain if the author became selfish, since the author is already libertarian and works for others' benefit; is persuading people the most selfish use of his time; and did the egoism or the wish to convert come first.}"
+  ],
+  [
+   2224,
+   "\\cpara{The man concedes the last question: the wish to convert may have come first. That fits the opening suspicion, that a philosophy of selfishness rationalizes what its holder already wants.}"
+  ],
+  [
+   2333,
+   "\\cpara{Adds three test questions for professed egoists, each with a clause that closes the obvious way out: dying now to save the Earth rather than dying with it a year later, not knowing about the torture, and a theft no one will ever discover.}"
+  ],
+  [
+   3201,
+   "\\clogic{The clause meets the usual egoist reply, that helping others relieves one's own distress. The \\textsc{Stanford Encyclopedia}'s example is a soldier who ``could not bear to live with himself'' otherwise. It also reports that Daniel Batson's experiments tested such replies, and calls them ``very bad news for psychological egoism.''}"
+  ],
+  [
+   3344,
+   "\\cfact{This is the test of Gyges' ring in Plato's \\textsc{Republic}, Book II. Glaucon puts the case for Socrates to answer: ``wherever any one thinks that he can safely be unjust, there he is unjust'' (Jowett's translation).}"
+  ]
+ ]
+}

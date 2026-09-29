@@ -1,0 +1,57 @@
+{
+ "slug": "fake-morality",
+ "header": "\\post{Fake Morality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/fATPBv4pnHC33EmJ2/fake-morality}\n",
+ "skeleton_sha": "ef2887dd0a9cdcf72a6575faf563794f3f9d53345f92bc0cd0e1ccd19c1eb54b",
+ "post_sha": "b856f378e75e92ef42369f8553c758479f981b04474c22ac17a546052d4c4923",
+ "edits": [],
+ "notes": [
+  [
+   112,
+   "\\cpara{States the view to be answered, in its sanction form: without a Judge who rewards and punishes, nothing would stop people from murdering. No holder is named, but the view has a long history. The \\textsc{Stanford Encyclopedia of Philosophy} (``Religion and Morality'') reports that William Paley held that ``we need to believe that God is the final granter of happiness if we are to sustain motivation to do what we know we ought to do.'' In that form the worry is about motivation, and it assumes that we already know what we ought to do.}"
+  ],
+  [
+   182,
+   "\\clogic{Read alone, these words could also mean that without God nothing would be objectively right or wrong. That form is discussed in the notes on ``Leave a Line of Retreat.'' This post answers the sanction form, which the rest of the sentence states.}"
+  ],
+  [
+   380,
+   "\\cpara{The analogy: if Omega threatened to kill you for using a bathroom in the morning, you would be relieved, not frightened, to see the threat withdrawn.}"
+  ],
+  [
+   824,
+   "\\cpara{The central step, and it has an old relative. In Plato's \\textsc{Euthyphro} (10a) Socrates asks ``whether the pious or holy is beloved by the gods because it is holy, or holy because it is beloved of the gods'' (Jowett's translation). Socrates asks what makes an act right. The post asks what moves the believer, and answers from the believer's own fear.}"
+  ],
+  [
+   1286,
+   "\\clogic{The opening question asked what would stop ``people from murdering each other''; this paragraph asks about God's threat ``to punish them.'' The argument shows that a frightened believer has a motive against murder that does not depend on God. It does not answer the question as first asked, whether people in general would keep such a motive, which is Paley's worry. The advice that follows is addressed to the believer, and there the argument fits.}"
+  ],
+  [
+   1300,
+   "\\cpara{Turns the argument into advice for religious readers: the fear of losing a moral compass is itself a compass, and a believer who loses faith can steer by it. The claim that believers have always steered by it is marked ``I suspect.''}"
+  ],
+  [
+   2043,
+   "\\cstyle{``s/soul/morality/'' is the substitution command of Unix text editors: replace ``soul'' with ``morality.'' The post does not explain it.}"
+  ],
+  [
+   2057,
+   "\\cpara{The pork test. The distinction it relies on is drawn in the religious tradition itself. The Talmud (Yoma 67b), commenting on Leviticus 18:4, separates ``matters that, even had they not been written, it would have been logical that they be written,'' among them bloodshed and theft, from statutes whose reasons ``are not known,'' among them the ban on pork (William Davidson translation, Sefaria). The tradition supports the post's point. It also shows that the assumption the post ascribes to fundamentalists, ``that we have no moral compass but divine reward and retribution,'' is not a religious view as such.}"
+  ],
+  [
+   2385,
+   "\\cpara{Two moves in one paragraph. The first completes the argument: a threat of hellfire works only because people already dislike hellfire, so a sanction presupposes a value. The second introduces two philosophers and asks which is really the altruist.}"
+  ],
+  [
+   2671,
+   "\\cpara{The two philosophers, both the author's inventions. The first argues for selfishness from its benefit to society, through the market. The second argues for altruism from its benefit to the altruist, through reciprocity and happiness.}"
+  ],
+  [
+   3543,
+   "\\cpara{Applies the test of the religious argument to the philosophers: the criteria a person uses to justify a recommendation show what counts for that person. By their criteria the advocate of selfishness cares about everyone, and the advocate of altruism about himself.}"
+  ],
+  [
+   4084,
+   "\\cpara{The answer turns on conduct, not on the criteria the previous paragraph analysed. The post offers those criteria as a sign of what each philosopher values, and leaves the verdict to what each one does.}"
+  ]
+ ]
+}
