@@ -28,3 +28,42 @@ Why: Unnecessary detail.
 - Before: gives the author's impressions of AGI conferences and one encounter with a creationist researcher, and concludes
 - After: gives the author's impressions of AGI conferences and concludes
 
+
+## annotated/afterwords/shut-up-and-do-the-impossible.tex
+
+Why: Fair reading: the post's next sentence asks only for suspicion of easy proposals, which the note itself grants; the "sits uneasily" charge is answered. Advice drawn from the author's experience is judged as such (Book VI rule); the Oettingen findings stay as information.
+
+- Before:  That the second can be done, the post supports only by the author's experience.
+- After: 
+
+- Before:  And the post offers ``Friendly AI is impossible'' as the general reason that others' proposals cannot work. In the post's own sense, ``impossible'' means that no one yet sees a way, and the post says of the gatekeepers that such a failure only shows a search that ``hasn't yet turned up a path.'' The next sentence asks only for suspicion, which the author's record can support.
+- After: 
+
+- Before: Two passages apply the advice to AI. Researchers who call Friendly AI impossible
+- After: The advice is applied to AI once: researchers who call Friendly AI impossible
+
+- Before: In short: advice to set out to win at problems that look impossible, resting on the author's experience and illustrated by games whose outcomes are on record but whose content is secret, with a rule against easy proposals that sits uneasily with the post's own account of ``impossible.''
+- After: In short: advice to set out to win at problems that look impossible, carrying its own warnings, resting on the author's experience and illustrated by games whose outcomes are on record but whose content is secret.
+
+
+## annotated/posts/shut-up-and-do-the-impossible.tex
+
+Why: Fair reading: the post's next sentence asks only for suspicion of easy proposals, which the note itself grants; the "sits uneasily" charge is answered. Advice drawn from the author's experience is judged as such (Book VI rule); the Oettingen findings stay as information.
+
+- Before: \clogic{In this post ``impossible'' means that no one yet sees a way. Offered as the reason others' proposals fail (``you can't do it''), it sits uneasily with what the post says of the gatekeepers: failing to think of a winning argument ``just means their brain is running a search that hasn't yet turned up a path.'' The next sentence asks only for suspicion, which the author's record, ``I have yet to find a cheap way out,'' can support.}
+- After: 
+
+- Before:  The post asks for full commitment to a problem that looks impossible, and gives only the author's experience that this can be done. I read the abstracts only.}
+- After:  I read the abstracts only.}
+
+
+## honest/sections/shut-up-and-do-the-impossible.tex
+
+Why: Fair reading: the post's next sentence asks only for suspicion of easy proposals, which the note itself grants; the "sits uneasily" charge is answered. Advice drawn from the author's experience is judged as such (Book VI rule); the Oettingen findings stay as information.
+
+- Before:  \nb{A few paragraphs later the post says that when someone cannot think of an argument that would convince them, ``that just means their brain is running a search that hasn't yet turned up a path.'' The same could be said of a search for an easy solution. The post's next sentence asks only that such proposals be met with suspicion.}
+- After: 
+
+- Before:  The post asks for strong commitment to a problem that looks impossible, and supports that only by Yudkowsky's experience.}
+- After: }
+
