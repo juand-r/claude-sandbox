@@ -1,0 +1,229 @@
+{
+ "slug": "the-failures-of-eld-science",
+ "header": "\\post{The Failures of Eld Science}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ZxR8P8hBFQ9kC8wMy/the-failures-of-eld-science}\n",
+ "skeleton_sha": "017677ef4cd405c3bad4d7232a7bf3e81389721522563f17c11e6c6608229286",
+ "post_sha": "c6b01106ed619353b1b9fb911803ead7fd73d3424eabb0dfca18187bf360c8dc",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{Sets the scene against the robes and hoods of ``Initiation Ceremony,'' placed earlier in the book. This is a class of the beisutsukai, not a rite.}"
+  ],
+  [
+   381,
+   "\\cpara{Introduces the teacher, Jeffreyssai, whom the reader of the book has met in ``The Ritual'' (written five months after this story), and his students: the most promising, or those chosen for political advantage.}"
+  ],
+  [
+   612,
+   "\\cpara{Brennan, the initiate of ``Initiation Ceremony,'' is one of the political choices, sponsored by an unnamed Mistress.}"
+  ],
+  [
+   829,
+   "\\cpara{Poses the story's question: how did the physicists of our era fail, ``for over thirty years,'' to see something about quantum physics? The story never names it. The talk of a ``universal law'' and the thirty years point to many-worlds, which ``Many Worlds, One Best Guess,'' posted the day before, argued follows from applying the same laws at every scale. The story takes that post's verdict as settled history; the notes on that post assess it.}"
+  ],
+  [
+   951,
+   "\\cfact{Of the three, Schrödinger came nearest. In a Dublin lecture in 1952 he warned that what he was about to say might ``seem lunatic,'' and said that the histories his equation seems to describe are ``not alternatives but all really happen simultaneously'' (Wikipedia, ``Many-worlds interpretation,'' which reports Deutsch's view that this is the earliest known reference to many-worlds). Sudbery (arXiv:2309.06387) quotes him in 1955: ``I really do believe that the wave function (of the universe) is all that there is.'' Everett's paper followed in 1957.}"
+  ],
+  [
+   1081,
+   "\\cpara{The students weigh the risk of answering a teacher known to set traps.}"
+  ],
+  [
+   1237,
+   "\\cpara{Hiriwa's first answer: two hundred and fifty years after Newton, the idea of a universal law must have been understood. Counted from Newton's \\textsc{Principia} (1687), her date is 1937, inside the thirty years between Schrödinger's equation (1926) and Everett's paper (1957).}"
+  ],
+  [
+   1548,
+   "\\cpara{Taji separates knowing a universal law from understanding the idea of one.}"
+  ],
+  [
+   1767,
+   "\\cpara{Hiriwa guesses at religious reasons. Her ignorance of how the past worked is played for comedy.}"
+  ],
+  [
+   2308,
+   "\\cpara{The teacher rules out the easy excuses and asks for errors of thinking, which sets the terms of the lesson.}"
+  ],
+  [
+   2797,
+   "\\cpara{Taji predicts several mistakes, not one. The class goes on to find several.}"
+  ],
+  [
+   3034,
+   "\\cpara{Styrlyn's answer: too few people could work on the problem, a ``failure to concentrate their forces.''}"
+  ],
+  [
+   3375,
+   "\\cpara{The teacher rejects it as propaganda for Styrlyn's Cooperative Conspiracy: calling in everyone would not have helped.}"
+  ],
+  [
+   3952,
+   "\\cpara{He dismisses the point as true but not relevant: the puzzle ``should not have required a billion physicists to solve.''}"
+  ],
+  [
+   4222,
+   "\\cpara{Taji lists the burdens of academic life: grant proposals, teaching, publishing for tenure.}"
+  ],
+  [
+   4464,
+   "\\cpara{Yin answers that senior scientists could have focused anyway, and gives Schrödinger's retreat, introduced with ``It was said.''}"
+  ],
+  [
+   4722,
+   "\\cfact{The usual account agrees in outline. In December 1925 Schrödinger ``secluded himself with a mistress in a mountain cabin'' (Wikipedia, ``Schrödinger equation''), at Arosa, where, in the words of Wikipedia's article on him, ``he formulated his wave equation.'' The length of the stay, ``a month,'' I could not check.}"
+  ],
+  [
+   4940,
+   "\\cpara{Taji sets aside administrative burdens, and the lack of training in probability, as generic obstacles.}"
+  ],
+  [
+   5205,
+   "\\cpara{The teacher redirects: what kind of system burdens its own people?}"
+  ],
+  [
+   5421,
+   "\\cpara{Styrlyn: a system that did not value its people's work.}"
+  ],
+  [
+   5649,
+   "\\cpara{Brennan's answer: ``Lack of pragmatic motivation.''}"
+  ],
+  [
+   5857,
+   "\\cpara{Shows Brennan's method: as the beginner, he has attention to spare for the teacher's hints.}"
+  ],
+  [
+   6285,
+   "\\cpara{Brennan's case: the Manhattan Project had a weapon to build in wartime, while the confusion over quantum physics cost no technology, so no one cleared the way to solve it. This is the thesis of ``Something to Protect'' (January 2008), which the book places later: the Way is learned ``beginning with a desperate need to succeed.''}"
+  ],
+  [
+   6807,
+   "\\cpara{Taji supports the point, hedged (``I'm pretty sure'').}"
+  ],
+  [
+   6956,
+   "\\cpara{The teacher tests Brennan: is the claim only that the scientists did not try hard enough?}"
+  ],
+  [
+   7234,
+   "\\cpara{Brennan adds that a desired use would have told the scientists what counted as success.}"
+  ],
+  [
+   7562,
+   "\\cpara{The teacher's own answer, the story's thesis: Eld science thought it ``acceptable'' to take thirty years, since its process aimed at the truth ``eventually.'' Speed is the subject of the posts that follow in this sequence, among them ``Faster Than Science'' and ``Einstein's Speed.'' Then the drill begins.}"
+  ],
+  [
+   8109,
+   "\\clogic{This is Max Planck's account of how theories change, unnamed. ``Faster Than Science'' quotes Planck, and the notes there report that tests of his claim give mixed results.}"
+  ],
+  [
+   8840,
+   "\\cpara{The drill's point: after three questions where ``less than a second'' is right, the fourth has the same form and a different answer.}"
+  ],
+  [
+   9006,
+   "\\cpara{The teacher punishes the answer that fits the pattern. As in ``Initiation Ceremony,'' the test is whether the student gives the answer he has thought through or the one the teacher seems to want.}"
+  ],
+  [
+   9314,
+   "\\cpara{Brennan refuses to answer before he has thought, and is praised for it.}"
+  ],
+  [
+   9496,
+   "\\cpara{Brennan's considered answer: five minutes to an hour, using suspended judgment, a review of the evidence, and a ``crisis-of-belief technique.'' The book has described such a procedure in ``Crisis of Faith,'' written five months after this story but placed earlier.}"
+  ],
+  [
+   9968,
+   "\\cpara{The lesson: speed is what is graded. A grant agency's six months is the example of an era that allowed itself time.}"
+  ],
+  [
+   10187,
+   "\\cfact{Accurate for the time. The US National Science Foundation's goal for 2007 was to tell at least 70 per cent of applicants its decision ``within six months of receipt''; 77 per cent were told within six months that year (National Science Board, NSB-08-47).}"
+  ],
+  [
+   10631,
+   "\\cpara{Brennan learned the lesson in under a minute, which the teacher turns into a question about how fast science could go.}"
+  ],
+  [
+   10927,
+   "\\cpara{Brennan sees a trap and gives his real estimate: ``One year.''}"
+  ],
+  [
+   11304,
+   "\\cpara{The teacher proposes one month, for a stipulated case where the evidence already suffices but leaves no room for error in reading it.}"
+  ],
+  [
+   11847,
+   "\\cpara{The arithmetic is correct: $30 \\times 24 \\times 60 = 43{,}200$ minutes, and with sixteen waking hours a day $30 \\times 16 \\times 60 = 28{,}800$.}"
+  ],
+  [
+   11973,
+   "\\cpara{At five minutes an insight, $28{,}800 / 5 = 5{,}760$ insights, as the teacher says.}"
+  ],
+  [
+   12371,
+   "\\cpara{The teacher grants that 5,760 insights a month is not realistic, and says a problem does not need so many. ``And yes, it has been done'' comes without an example; Yin's Schrödinger is the nearest the story offers.}"
+  ],
+  [
+   12521,
+   "\\cpara{The teacher rates every answer but Styrlyn's as reasonable, gives Hiriwa's a partial point, and decides to test Brennan's theory of motivation on Brennan.}"
+  ],
+  [
+   13364,
+   "\\cpara{The test: five minutes to say something brilliant before the class, so that Brennan has a pressing need.}"
+  ],
+  [
+   13700,
+   "\\cpara{The class's reactions, and Brennan's unspoken anger.}"
+  ],
+  [
+   14278,
+   "\\cpara{Brennan answers at four and a half minutes, and makes it look easy on purpose.}"
+  ],
+  [
+   14452,
+   "\\cpara{Brennan's method: treat the past as fools, so as to stop excusing it. The advice comes from an unnamed ``woman of wisdom,'' and he does not fully endorse it.}"
+  ],
+  [
+   15097,
+   "\\cpara{He grants that the Eld scientists were more intelligent than he is, and says the insight came from respecting the famous names less.}"
+  ],
+  [
+   15513,
+   "\\cpara{The insight: Eld scientists were trained for the wrong task. Since every solution was published at once, there were no open problems to train on. This gives a new reason for the secrecy proposed in ``To Spread Science, Keep It Secret.'' That post's reason was that people value what is hidden; here, hidden answers leave problems for students to practise on.}"
+  ],
+  [
+   16144,
+   "\\cpara{Taji: Eld teaching aimed only at using existing knowledge.}"
+  ],
+  [
+   16446,
+   "\\cpara{Brennan, with ``might'': the founders may never have faced ``the dismay of not knowing,'' and so seized on unsatisfactory answers.}"
+  ],
+  [
+   16919,
+   "\\cpara{The central claim: resolving a major confusion was something done ``once per lifetime if you were lucky,'' so the founders were ``amateurs'' at ``paradigm shift.'' ``Paradigm shift'' is Thomas Kuhn's phrase (1962).}"
+  ],
+  [
+   17150,
+   "\\cfact{The founders the story names had more practice than this allows. Einstein had resolved major confusions before, with special relativity (1905) and general relativity (1915). And quantum mechanics grew out of a quarter century of confusion, the ``old quantum theory'' of 1900 to 1925, which ``was never complete or self-consistent, but was instead a set of heuristic corrections to classical mechanics'' (Wikipedia, ``Old quantum theory''). The same article dates its real start to Einstein's work on specific heats in 1907.}"
+  ],
+  [
+   17406,
+   "\\cpara{Hiriwa adds that without probability theory a success could not be explained to others.}"
+  ],
+  [
+   17433,
+   "\\cfact{The period had probability theory, Bayesian versions included. Harold Jeffreys's \\textsc{Theory of Probability} (1939), which Wikipedia says ``played an important role in the revival of the objective Bayesian view of probability,'' appeared within the thirty years. The Conspiracy of ``Initiation Ceremony'' honours Laplace and Jaynes, both of the Eld era.}"
+  ],
+  [
+   17628,
+   "\\cpara{Styrlyn: only a handful could work on the problem, too few to sustain a community that passes on the rules.}"
+  ],
+  [
+   18050,
+   "\\cpara{The teacher accepts the answer and sets the class to list further flaws within 480 waking minutes. The numbers fit: five students at five minutes an insight make $5 \\times 480 / 5 = 480$ insights, and one student alone $480 / 5 = 96$ in series. The story does not say what the other flaw is.}"
+  ]
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "slug": "the-dilemma-science-or-bayes",
+ "header": "\\post{The Dilemma: Science or Bayes?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/viPPjojmChxLGPE2v/the-dilemma-science-or-bayes}\n",
+ "skeleton_sha": "fa1802b0d9dd5d25237c365e74ca10fb32fde87de57ae3d03c58dd75aa3cb78c",
+ "post_sha": "a6e30b00e81cfba4a1028e40938763cbbe4d2194416bf54e6a939d1efd56a5fe",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Two epigraphs from readers' comments: why so much physics, and a reader who finds many-worlds convincing but distrusts the ease of it. The second is quoted with an ellipsis. The omitted middle gives the commenter's reason: ``The ones that now dominate my thinking about QM are learned from one who believes overwhelmingly in MWI. The commenters who already had non-MWI-supporting mental representations that made sense to them seem less convinced by your arguments.''}"
+  ],
+  [
+   922,
+   "\\cpara{Welcomes the comment. The post goes on to treat the commenter's doubt as the pull of Science's rules (the ``Necker Cube'' paragraph below). The reason the commenter gave, having learned the subject from one advocate, is not taken up in this post.}"
+  ],
+  [
+   1003,
+   "\\cpara{Says the quantum posts had several purposes, with a joke about hidden motives.}"
+  ],
+  [
+   1224,
+   "\\cpara{Introduces one purpose that only quantum physics could serve.}"
+  ],
+  [
+   1337,
+   "\\cpara{The premise the dilemma needs: in physics, unlike healthcare or economics, simplicity can be compared formally, and the comparison is ``strict.''}"
+  ],
+  [
+   1815,
+   "\\clogic{No count is given, here or in ``Decoherence is Simple,'' and what the many-worlds program must contain is disputed. It needs a rule for probabilities, which Vaidman's \\textsc{Stanford Encyclopedia} entry, though it argues for many-worlds, grants ``involves adding a postulate.'' And Hutter argued later (2010) that a theory judged by program length must also locate the observer. See the notes on ``Decoherence is Simple'' and ``Many Worlds, One Best Guess.'' So the comparison is an argument about what to count, not a count.}"
+  ],
+  [
+   1868,
+   "\\cpara{States the purpose: a clear case where probability theory and Science disagree, for ``when it came time to break your allegiance to Science.''}"
+  ],
+  [
+   2005,
+   "\\cpara{Voices the objection that the physicists simply made a human mistake.}"
+  ],
+  [
+   2229,
+   "\\cpara{The thesis: physicists who reject many-worlds are following the rules of Science, not breaking them.}"
+  ],
+  [
+   2379,
+   "\\cpara{The rules: a new theory must make new predictions and win a test, and the loser recants. The details (Nobel Prizes ``for everyone'') are satire.}"
+  ],
+  [
+   2922,
+   "\\cpara{Says openly that this is the ideal of Science, not how science works. The dilemma is posed against this ideal.}"
+  ],
+  [
+   3102,
+   "\\cpara{Applies the ideal: many-worlds does not seem to make new predictions, and posits worlds no one can see.}"
+  ],
+  [
+   3369,
+   "\\cpara{Asks readers who were persuaded, and who began as traditional rationalists, to switch between the two views ``like a Necker Cube.''}"
+  ],
+  [
+   3656,
+   "\\cpara{Asks the reader to set aside the formal measures of simplicity and judge as traditional training does: simplicity by eye, testability as a laboratory experiment.}"
+  ],
+  [
+   4215,
+   "\\cpara{The Science view, in a skeptic's voice: no new predictions, so do without the other worlds and wait for a test.}"
+  ],
+  [
+   4878,
+   "\\cpara{The Bayes view: the simplest equations make no exception for large masses, so the question does not arise.}"
+  ],
+  [
+   5233,
+   "\\cpara{Asks why teaching scientists Solomonoff induction and Bayes's rule would not fix the problem. The answer follows.}"
+  ],
+  [
+   5353,
+   "\\cpara{A history in one paragraph: before science, thought was trusted over observation.}"
+  ],
+  [
+   5686,
+   "\\cpara{Science as a rebellion against armchair wisdom, with the rule that only experiment, and advance prediction, decides.}"
+  ],
+  [
+   6062,
+   "\\cfact{The demand for novel predictions has a long history, and so has the dispute over it. According to the \\textsc{Stanford Encyclopedia} (``Prediction versus Accommodation''), the thesis that a theory gains nothing from evidence it was built to fit ``has been attributed to Bacon and Descartes,'' and Whewell and Herschel defended confirmed ``novel'' predictions. Mill replied that such predictions are ``well calculated to impress the ignorant vulgar,'' and Keynes (1921) also rejected the view. The ``Science'' of the post is one side of that debate; see also the notes on ``Decoherence is Falsifiable and Testable.''}"
+  ],
+  [
+   6764,
+   "\\cpara{The rule applied: to prefer many-worlds for elegance, without an experimental win, would license putting angels into theories.}"
+  ],
+  [
+   7272,
+   "\\cpara{Argues that the experimental rule protects even an able Bayesian, so teaching Solomonoff induction would not help. The Aumann example is accurate: Aumann wrote that ``Research conducted under my own supervision failed to confirm the existence of the codes'' (quoted in Wikipedia, ``Robert Aumann''). The notes on ``Crisis of Faith'' give the details.}"
+  ],
+  [
+   7923,
+   "\\cpara{Back to the Bayes view: collapse is a unique, informally specified law, believed only because it was proposed first.}"
+  ],
+  [
+   8233,
+   "\\clogic{The list fits the textbook collapse postulate. It does not fit the collapse theories published by 2008, such as GRW, which state a precise law; see the notes on ``If Many Worlds Had Come First.''}"
+  ],
+  [
+   8348,
+   "\\cpara{The Science horn of the dilemma: no major change to a model without ``a defining moment of experimental triumph over the old model.''}"
+  ],
+  [
+   8538,
+   "\\clogic{Physicists have preferred one theory to an empirically equivalent rival without such a moment. It is widely held that no experiment can distinguish Lorentz's ether theory from special relativity, and ``SR is widely preferred over LET, due to the superfluous assumption of an undetectable aether'' (Wikipedia, ``Lorentz ether theory''). The case supports the author's view that simplicity can decide. It also shows that working physicists have not applied the post's ideal of Science strictly, so preferring the simpler theory need not mean rejecting the scientific method.}"
+  ],
+  [
+   8552,
+   "\\cpara{The Bayes horn: to reject many-worlds is to reject probability theory.}"
+  ],
+  [
+   8598,
+   "\\clogic{The dilemma leaves out positions between its horns. Bohm's theory has one world and no collapse, so no part of the wavefunction disappears. And probability theory does not choose the prior on which the simplicity comparison rests. A Bayesian can doubt many-worlds without rejecting probability theory. See the notes on ``Many Worlds, One Best Guess'' and ``Decoherence is Simple.''}"
+  ],
+  [
+   8612,
+   "\\cpara{States the dilemma.}"
+  ],
+  [
+   8680,
+   "\\cpara{Tells Michael Vassar's joke, flagged ``tongue-in-cheek'': the arguments for majoritarianism are strong, but must be rejected because the majority believes in God, which is ``simply unbelievable.''}"
+  ],
+  [
+   9132,
+   "\\cpara{Gives one reason for the long quantum sequence: so that readers can grasp ``the insanity of a global single world'' at gut level.}"
+  ],
+  [
+   9511,
+   "\\clogic{Stronger than the author's own hedge two days earlier: ``It is not quite safe to say that the existence of multiple Earths is as well-established as any other truth of science'' (``Many Worlds, One Best Guess''). That post's account of those who disagree is assessed in its notes.}"
+  ],
+  [
+   9525,
+   "\\cpara{Restates the dilemma in its sharpest form: reject the scientific method, or embrace ``insanity.''}"
+  ],
+  [
+   9653,
+   "\\cpara{Declines to give the motive and invites guesses. This post does not state it.}"
+  ],
+  [
+   9803,
+   "\\cpara{Warns that attempts to ``wriggle out of the dilemma'' will be answered in later posts. Objections are labelled wriggling before any is heard.}"
+  ]
+ ]
+}
