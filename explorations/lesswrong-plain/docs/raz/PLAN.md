@@ -55,7 +55,7 @@ posts are merged in.
 | 4b | Physicalism 201 (Book IV) | 15 | yes | yes | 827d4ec |
 | 4c | Quantum Physics and Many Worlds (Book IV) | 14 | yes | yes | 31385e8 |
 | 4d | Science and Rationality (rest of Book IV) | 11 | yes | yes | 9a5f4ab |
-| 5a | Fake Preferences, Value Theory 270 to 273 (Book V) | 12 | running | | |
+| 5a | Fake Preferences, Value Theory 270 to 273 (Book V) | 12 | yes | yes | (this commit) |
 | 5b | Value Theory 274 to 285 (Book V) | 12 | | | |
 | 5c | Quantified Humanism (rest of Book V) | 9 | | | |
 | 6a | Yudkowsky's Coming of Age (Book VI) | 13 | | | |

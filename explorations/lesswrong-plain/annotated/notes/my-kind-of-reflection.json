@@ -1,0 +1,77 @@
+{
+ "slug": "my-kind-of-reflection",
+ "header": "\\post{My Kind of Reflection}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/TynBiYt6zg42StRbb/my-kind-of-reflection}\n",
+ "skeleton_sha": "c082fee78bd066e6a2a188e606f834b3d7cd3759e988e898649000d1a325a933",
+ "post_sha": "30931075ccb767cb11969f9e73556d377eb40629cd5c37e067ede0f1feb6a4e5",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Restates the conclusion of ``Where Recursive Justification Hits Bottom,'' posted two days earlier and placed just before this post in the book: induction and Occam's razor may be used to assess induction and Occam's razor. The rest of the post lists features of that view.}"
+  ],
+  [
+   555,
+   "\\cpara{Credits prior work in general terms and reports one comparison, with W. W. Bartley's pancritical rationalism. The features that follow ``may or may not'' be shared by other philosophers; the post does not compare them with Bartley's or anyone's.}"
+  ],
+  [
+   719,
+   "\\clogic{Hibbert's comment on the earlier post began ``Hurrah! Eliezer says that Bayesian reasoning bottoms out in Pan-Critical Rationalism,'' and named the point where the views part, preferring ``the emphasis on process'' to the author's ``focus on justification.'' The difference is set out in the notes on ``Where Recursive Justification Hits Bottom.''}"
+  ],
+  [
+   967,
+   "\\cpara{Gives the source of the view: the design of a self-modifying AI that applies its reasoning principles to itself. It ends with a test for any philosophy of induction.}"
+  ],
+  [
+   1501,
+   "\\clogic{The test rules out the classic case, in which the two came apart. Hume concluded that ``All inferences from experience, therefore, are effects of custom, not of reasoning'' (\\textsc{Enquiry} 5.5), and also wrote that ``none but a fool or madman will ever pretend to dispute the authority of experience, or to reject that great guide of human life'' (4.20).}"
+  ],
+  [
+   1515,
+   "\\cpara{Names the principle behind the earlier post's method: an AI should treat its own parts as it treats anything in the environment. The claim about a correctly built AI is hedged: ``I strongly suspect.''}"
+  ],
+  [
+   1821,
+   "\\clogic{This is the program of naturalized epistemology; see the notes on ``Where Recursive Justification Hits Bottom.'' Quine (1969) put epistemology in ``a chapter of psychology and hence of natural science,'' and answered the charge of circularity: ``such scruples against circularity have little point once we have stopped dreaming of deducing science from observations'' (both quoted in the Stanford Encyclopedia, ``Naturalism in Epistemology'').}"
+  ],
+  [
+   2357,
+   "\\cpara{Argues that reflective consistency is not a goal but a side effect of trying to win: five accurate maps of a city agree, and so do five copies of one map drawn from fantasy. The earlier post said the same in two sentences (``The point is not to be reflectively consistent. The point is to win.''). ``The Simple Truth'' makes the point about agreement without accuracy with Mark's family buckets.}"
+  ],
+  [
+   3630,
+   "\\cpara{Gives one license for using induction on induction: E. T. Jaynes's rule to use all the information available. The earlier post made the same appeal: ``E. T. Jaynes used to say that you must always use all the information available to you.''}"
+  ],
+  [
+   4041,
+   "\\cpara{Contrasts justifying one's philosophy to a questioner with trying to get as close to the truth as possible. The second sentence is hard to parse; the third gives the point: inspect Occam's razor to improve it, or because it might be wrong, not to look fair.}"
+  ],
+  [
+   4846,
+   "\\cpara{Gives an example of an improved foundation: intuition makes Thor seem simpler than Maxwell's equations, while an information-theoretic measure ranks the equations simpler. The example and the measure come from ``Occam's Razor'' (2007), and the notes on that post discuss them.}"
+  ],
+  [
+   5572,
+   "\\cpara{Sets a limit on improvement: better foundations should leave ordinary results standing, so 2 + 2 is still 4. ``Living in Many Worlds'' calls this ``Egan's Law.''}"
+  ],
+  [
+   5826,
+   "\\cpara{Separates ``Does induction work?'', which an AI may answer by induction, from ``Why does induction work?'', which the post calls still open, and warns against answering the first with ``No!'' No one is named as giving that answer.}"
+  ],
+  [
+   6567,
+   "\\clogic{Hume's circularity charge concerns this question, not the ``why'' question: proving that ``the future will be conformable to the past'' by arguments from experience is ``going in a circle, and taking that for granted, which is the very point in question'' (\\textsc{Enquiry} 4.19). Answering it by induction is the rule-circular reply that the earlier post defends; see the next note.}"
+  ],
+  [
+   6758,
+   "\\cpara{Holds that a loop of justification through the meta-level is not circular logic, which is bad ``on the object level,'' and says the difference is not yet formalized: the theory is ``something I'm trying to work out, not something I have in hand.''}"
+  ],
+  [
+   7164,
+   "\\clogic{Philosophers had drawn a close version of this difference. An argument that uses a rule to conclude that the rule is reliable is ``rule-circular''; one that assumes its conclusion as a premise is ``premise-circular''; Van Cleve (1984) and Papineau (1992) argued that the first kind need not be vicious. The standard objection is that ``less sane inference rules such as counterinduction can support themselves in a similar fashion'' (Stanford Encyclopedia, ``The Problem of Induction''). The earlier post answers it with its minds that keep anti-Laplacian priors ``Because it's never worked for us before!''}"
+  ],
+  [
+   7252,
+   "\\clogic{The formal theory was later attempted. Yudkowsky and Herreshoff (``Tiling Agents for Self-Modifying AI, and the L\\\"obian Obstacle,'' draft of 2013) found that the most straightforward formalism of an agent that approves successors like itself meets ``the L\\\"obian obstacle,'' which follows from L\\\"ob's theorem: a consistent theory cannot verify that its own proofs imply truth. Technical methods avoid it, but ``the underlying puzzles of rational coherence are thus only partially addressed.'' This bears on the second feature's suspicion that a correctly built AI ``will not have to do anything special'' when it reasons about its own reasoning.}"
+  ]
+ ]
+}

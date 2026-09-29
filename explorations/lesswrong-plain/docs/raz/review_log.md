@@ -357,3 +357,40 @@ Explanation's text.
 
 Whole-book pass: the original-edition notes on 249, 250, 253 and 255 (Faster than Science's
 ``In short'' among them) are harsher in tone than STANDARDS; already listed above.
+
+## Batch 5a: Fake Preferences, Value Theory 270 to 273 (Book V, 12 posts)
+
+Five agents. Edits in `docs/raz/changes/batch05a.md`.
+
+- Critiques a fair reading answers, cut or recast:
+  - Fake Selfishness: the ethical/psychological egoism split applied to a man who called
+    himself selfish (psychological egoism is a thesis about everyone); "does not show the wish
+    was kindness", which the post never claims.
+  - Fake Utility Functions: "it means" called stronger than the post's next paragraphs (they
+    explain why the argument persuades, not what the proposer values).
+  - Not for the Sake of Happiness (Alone): "the arguments do not reach the evaluative
+    question" became a scope sentence with a pointer to the book's later account of "should".
+  - The Design Space of Minds-in-General: the post's answer is a hedged caution, not a claim
+    that built AIs will be varied; the count and diagram points were answered by the post.
+  - My Kind of Reflection: the induction-label test is a prescription about labels; Hume's
+    position is what it rules out (information, not a missing premise).
+  - No Universally Compelling Arguments: Kant's view agrees with the post's conclusion; now
+    information, not a weakness.
+  - Dreams of AI Design: Hanson's emulation objection was accepted by the author, so it is a
+    disagreement; the AlexNet history stays in a note only.
+  - Detached Lever Fallacy: the child-abuse aside is qualified by the post ("a good many of
+    them break the loop") and the evidence is mixed; out of the Response.
+- Prior work as credit, not fault: "names none of the earlier work" and "does not name" cut
+  from Where Recursive Justification Hits Bottom, My Kind of Reflection and Created Already
+  in Motion. Preface convention for Ends: An Introduction (premises reported, not charged).
+- Imported dispute cut from the Response: motivational internalism in Created Already in
+  Motion (the note itself says the practical point holds on either side).
+- Points made once: Quine, rule-circularity and Bartley are stated in Where Recursive
+  Justification Hits Bottom; My Kind of Reflection points there. The orthogonality thesis is
+  stated in No Universally Compelling Arguments; Created Already in Motion points there.
+
+Tooling: preamble gained U+22C0 (n-ary logical and, in Created Already in Motion). One agent
+removed a bare "######" (a heading marker with no number) that md2tex printed literally in
+Ends: An Introduction; the verbatim check passes. md2tex should drop such lines: whole-book
+pass item. Agents saved "Fake Fake Utility Functions" (not in the book) to data/originals for
+reference.

@@ -1,0 +1,133 @@
+{
+ "slug": "no-universally-compelling-arguments",
+ "header": "\\post{No Universally Compelling Arguments}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/PtoQdG7E8MxYJrigu/no-universally-compelling-arguments}\n",
+ "skeleton_sha": "e5ce32eae34a1f1541f217a9d0034382e72d68318852c525ae88ec6f76505399",
+ "post_sha": "98ddd55721c6b44521ccc6a5193f7ffe0f0331f6d5a552c971202049433fe892",
+ "edits": [],
+ "notes": [
+  [
+   156,
+   "\\cpara{Asks the question the post answers: why some people find it frightening that not every possible mind would agree with us.}"
+  ],
+  [
+   282,
+   "\\cpara{Describes the first group, who are untroubled because they treat claims like ``murder is wrong'' as personal opinion.}"
+  ],
+  [
+   704,
+   "\\cpara{Describes the second group, the one the post argues against: for them, disagreement that persists ``even in principle'' would make a claim ``merely an arbitrary personal opinion.'' No holder of this view is named here; see the note on the post's conclusion for how Kant, the classic case, put a view of this kind.}"
+  ],
+  [
+   1112,
+   "\\cpara{Restates the counting argument of ``The Design Space of Minds-In-General,'' posted the day before and placed three posts earlier in this book: among minds of up to a trillion bits, a claim about all of them has two to the trillionth chances to be false.}"
+  ],
+  [
+   1578,
+   "\\cpara{Draws the conclusion from the count, with a hedge (``would seem to argue''). A firmer argument for it comes later, with the transistor and the little grey man, and does not depend on counting.}"
+  ],
+  [
+   1744,
+   "\\cpara{Traces the horror, as the author thinks (``I think''), to the intuition of a ghost in the machine that any truly valid argument will convince.}"
+  ],
+  [
+   2021,
+   "\\cpara{Recalls ``Ghosts in the Machine'': people picture programming a computer as instructing a servant, who might look over the code and hand it back.}"
+  ],
+  [
+   2383,
+   "\\cpara{Grants the conditional: if a ghost with ``an irreducible core of reasonableness'' stood above the code, there might be universal arguments that would override its code.}"
+  ],
+  [
+   2907,
+   "\\cpara{Answers with a student's remark that the computer skips the comments: there is no reader above the code, because the code is the AI.}"
+  ],
+  [
+   3094,
+   "\\cpara{The core argument. Every belief or decision is carried out by some physical system, and for any lawful system that ``zigs'' at some points one can specify another that ``zags'' at the same points. This supports the claim that for any argument some possible mind is not moved by it.}"
+  ],
+  [
+   3705,
+   "\\cpara{Illustrates the core argument: a built-in ``little grey man'' can reset a transistor to non-assent, while a universal argument would need a ``little blue woman'' who comes from nowhere. The case is constructive and needs no count of minds.}"
+  ],
+  [
+   4514,
+   "\\cpara{States the thesis in one sentence, with a link to ``Mind Projection Fallacy'': compelling is something minds do, not something arguments have.}"
+  ],
+  [
+   4664,
+   "\\cpara{States the author's practical interest: Friendly AI must be programmed explicitly, and physics does not forbid it.}"
+  ],
+  [
+   4933,
+   "\\cpara{States the wider aim: a mind is a causal, lawful, physical system with no central ghost that judges its code.}"
+  ],
+  [
+   5172,
+   "\\cpara{Allows that an AI can be built to review its own code, but only in the way it was designed to. In this sense ``skyhook'' is Daniel Dennett's word, from \\textsc{Darwin's Dangerous Idea} (1995), for a source of design that does not build on anything below it (Wikipedia).}"
+  ],
+  [
+   5578,
+   "\\cpara{Links the argument to Bayesian priors, discussed in ``A Priori.'' After four red balls and one white, Laplace's rule gives $(4+1)/(5+2) = 5/7$ for red. A different prior gives 2/7: for example, a barrel known to have held six red and six white balls has two red among the seven left.}"
+  ],
+  [
+   6227,
+   "\\cpara{Reports, with no name or quotation, a charge made by ``many philosophers'': since some prior can reach any conclusion, Bayesianism is ``arbitrary,'' because no argument can force every possible journal editor to agree.}"
+  ],
+  [
+   6629,
+   "\\clogic{The standard form of this worry is different. In the Stanford Encyclopedia's account (``Bayesian Epistemology''), the ``most common worry'' about subjective Bayesianism is that it ``seems to permit too much'': it allows a prior that follows induction and also one ``defying enumerative induction.'' That is a demand for norms that rule some priors out, a question the post itself raises when it calls the second prior perhaps less reasonable. It is not a demand that every possible mind be persuaded.}"
+  ],
+  [
+   6643,
+   "\\cpara{Recalls the reply given in ``A Priori'': the charge assumes an ``ideal philosophy student of perfect emptiness'' who could be convinced from no assumptions.}"
+  ],
+  [
+   6934,
+   "\\cpara{Identifies that student with the ghost of the earlier paragraphs.}"
+  ],
+  [
+   7055,
+   "\\cpara{Recalls the conclusion of ``A Priori'': a mind with every assumption removed is not an empty philosopher but a rock.}"
+  ],
+  [
+   7402,
+   "\\cpara{The conclusion, with a promise to return to the theme: validity, worth, rationality, justification and even objectivity cannot rest on an argument that compels all physically possible minds.}"
+  ],
+  [
+   7698,
+   "\\clogic{The classic view that some laws bind every rational mind is consistent with this conclusion, because its claim is about what minds ought to accept, not what moves them. Kant held that a moral law ``is not valid for men alone, as if other rational beings had no need to observe it,'' and called it an ``ought'' because it applies to a will ``which from its subjective constitution is not necessarily determined by it'' (\\textsc{Groundwork}, Abbott's translation). On a view like Kant's the grey-man mind is possible and irrational, not a counterexample. Whether anything binds all rational minds in this sense is the question the post leaves for later.}"
+  ],
+  [
+   7712,
+   "\\cpara{Adds that validity cannot rest on a chain of justifications that persuades ``a perfect emptiness.''}"
+  ],
+  [
+   7846,
+   "\\cpara{Allows that some arguments might compel every intact human, and jokes, with a footnote saying ``Just kidding,'' that the argument the author used in the AI-box experiments is one of them.}"
+  ],
+  [
+   8137,
+   "\\cpara{Recalls the first failure in thinking about Friendly AI, one principle that is all an AI needs, discussed in ``Fake Utility Functions.''}"
+  ],
+  [
+   8384,
+   "\\cpara{Names the worse failure: expecting any AI to conclude the one true morality on its own. The post names two people who hold it (John C. Wright, Marc Geddes) without quoting either, so the attribution cannot be checked from the post.}"
+  ],
+  [
+   8811,
+   "\\cpara{Names a milder version: hoping that an AI created ``perfectly free'' will reach virtue on its own. The author lists their own younger self among those who held it, and promises to show later why it fails.}"
+  ],
+  [
+   9597,
+   "\\clogic{The post's denial that intelligence brings a particular morality with it was later stated as a thesis by Nick Bostrom: ``Intelligence and final goals are orthogonal axes along which possible agents can freely vary'' (``The Superintelligent Will,'' \\textsc{Minds and Machines}, 2012). Bostrom calls it the orthogonality thesis and says it can draw support from Hume's view that beliefs alone cannot motivate action.}"
+  ],
+  [
+   9648,
+   "\\cpara{Gives John C. Wright as the example: a filibuster in the third book of his trilogy set out a morality that must persuade any AI. The order of events fits the record, since the third book appeared in 2003 and Wright converted from atheism at 42 (Wikipedia). The last line offers the conversion as a warning; the post does not say how it bears on the argument in the novel.}"
+  ],
+  [
+   10119,
+   "\\cpara{The footnote to the AI-box remark.}"
+  ]
+ ]
+}

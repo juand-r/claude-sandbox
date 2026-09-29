@@ -1,0 +1,101 @@
+{
+ "slug": "created-already-in-motion",
+ "header": "\\post{Created Already In Motion}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/CuSTqHgeK4CMpWYTe/created-already-in-motion}\n",
+ "skeleton_sha": "4a2e8d9f39a6ca716a84eb26fabcb9360a7495b27a6b73773a4934ac6179374c",
+ "post_sha": "fb9d0b7b01c1de87719fff55ff70c74f83783d2d1c9fd2ea1c428fcaf49ed1a9",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Names the two posts this one follows. ``No Universally Compelling Arguments'' is the previous post in this book; ``Passing the Recursive Buck'' is not in the book.}"
+  ],
+  [
+   368,
+   "\\cpara{Introduces and credits Carroll's dialogue (\\textsc{Mind}, 1895). The author had made the post's main point without Carroll's name in ``A Priori'' (2007): a mind that does not implement modus ponens can accept A and A->B ``all day long without ever producing'' B. The notes on that post credit Carroll.}"
+  ],
+  [
+   620,
+   "\\cpara{Sets out Carroll's example from Euclid's first proposition. The three propositions below match Carroll's text (Wikisource transcription of the 1895 printing).}"
+  ],
+  [
+   964,
+   "\\cpara{Quotes the Tortoise's first question: a reader may accept the sequence as valid without accepting its premises. The words match Carroll's.}"
+  ],
+  [
+   1130,
+   "\\cpara{Quotes Achilles's answer, which matches Carroll's.}"
+  ],
+  [
+   1426,
+   "\\cpara{Quotes the Tortoise's second question: might a reader accept A and B but not the hypothetical?}"
+  ],
+  [
+   1586,
+   "\\cpara{Summarizes. In Carroll, Achilles answers ``Certainly there might,'' and then says ``Then I must ask you to accept C.''}"
+  ],
+  [
+   1771,
+   "\\cpara{Summarizes the next step. In Carroll the Tortoise accepts C, has Achilles write A, B, C and Z in his notebook, and asks why Z must follow.}"
+  ],
+  [
+   1859,
+   "\\cpara{Summarizes the step to D. In Carroll the regress goes on to E, and when the narrator returns months later the Tortoise counts ``a thousand and one'' steps, with ``several millions more to come.''}"
+  ],
+  [
+   2039,
+   "\\cpara{The lines are from chapter VII of \\textsc{G\\\"odel, Escher, Bach} (1979), which reprints Carroll's dialogue earlier in the book. There they open an exercise: code the stages of Carroll's dialogue in the book's notation for propositional logic.}"
+  ],
+  [
+   2298,
+   "\\cpara{Quotes the hint to that exercise; the words match the book. Each rule of inference Achilles appeals to becomes one more string for the Tortoise to accept.}"
+  ],
+  [
+   2555,
+   "\\cpara{Names the pattern ``Passing the Recursive Buck'' and its usual remedy, ``The Buck Stops Immediately.'' The two linked posts are not in this book, so the reader meets the names without the posts that explain them.}"
+  ],
+  [
+   2897,
+   "\\cpara{Draws the lesson: what the Tortoise lacks is not another belief but a process that adds Y when X and X$\\to$Y are present, which a rock lacks too. Gilbert Ryle drew the same lesson from Carroll's regress in 1946: ``Knowing a rule of inference is not possessing a bit of extra information but being able to perform an intelligent operation'' (quoted in the Stanford Encyclopedia, ``Knowledge How'').}"
+  ],
+  [
+   3211,
+   "\\cpara{Coins the title phrase: a mind must be ``created already in motion,'' since no argument gives dynamics to a static thing, as no program runs on a rock.}"
+  ],
+  [
+   3514,
+   "\\cpara{Extends the point from inference to action with a made-up word, ``fuzzle,'' for what a mind should do. The beliefs that pulling a toddler off the tracks is fuzzle, and that a toddler is on the tracks, do nothing without a dynamic that sends fuzzle plans to action.}"
+  ],
+  [
+   3846,
+   "\\clogic{This is Hume's view of motivation: ``reason alone can never be a motive to any action of the will'' (\\textsc{Treatise} 2.3.3). Nick Bostrom cites the same view in support of the orthogonality thesis (see the notes on ``No Universally Compelling Arguments''): ``belief and motive are separate.'' Simon Blackburn's ``Practical Tortoise Raising'' (\\textsc{Mind}, 1995) retold Carroll's dialogue about action; I could read only summaries of it.}"
+  ],
+  [
+   3990,
+   "\\cpara{A later addition defines ``dynamic'': something that happens in a physical system over time, not data it stores. A dynamic cannot be written on paper, ``because the paper will just lie there.''}"
+  ],
+  [
+   4794,
+   "\\cpara{Adds that a belief about the dynamic does not help either: Carroll's regress again, now for action.}"
+  ],
+  [
+   4942,
+   "\\clogic{The post is part of a sequence on metaethics, and ``fuzzle'' stands in for moral words. Read that way, the example touches a live dispute. Motivational internalists hold that there is ``a necessary connection between moral judgment and motivation,'' so a mind that seems to judge an act right and has no tendency to do it is not making a sincere and competent moral judgment, and may call the act right only in an ``inverted commas'' sense (Hare); externalists hold that such a mind is possible (Stanford Encyclopedia, ``Moral Motivation''). For building an AI the practical point holds on either side: the mind must be built to act on its verdicts.}"
+  ],
+  [
+   4956,
+   "\\cpara{Supposes a proof that minds with the fuzzle dynamic are more fuzzle than minds without it.}"
+  ],
+  [
+   5228,
+   "\\cpara{Answers that such a proof would move only a mind that already had the dynamic of replacing its code with code it believes more fuzzle.}"
+  ],
+  [
+   5455,
+   "\\cpara{The conclusion, in one line.}"
+  ],
+  [
+   5520,
+   "\\cpara{The links give the order of the original sequence. This book places the post after ``No Universally Compelling Arguments'' and before ``Sorting Pebbles Into Correct Heaps.''}"
+  ]
+ ]
+}

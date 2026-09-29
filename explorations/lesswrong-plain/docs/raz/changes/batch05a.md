@@ -287,3 +287,121 @@ Why: Same as the Response.
 - Before:  \nb{The count is right, and it counts against claims about behavior that varies with design. It does not count against claims that follow from what all such minds share.}
 - After: 
 
+
+## annotated/afterwords/my-kind-of-reflection.tex
+
+Why: STANDARDS 2.5: Quine, rule-circularity and Bartley are set out in the notes on Where Recursive Justification Hits Bottom; pointers here. Prior work that supports the post is credit (the post itself says it is "far from the first").
+
+- Before: The features have established names in philosophy, which the post does not give. Treating the study of one's own reasoning as one more natural inquiry is Quine's naturalized epistemology, which answered the charge of circularity in 1969. The difference between reflective loops and circular logic is close to the difference between rule-circular and premise-circular arguments, and Van Cleve and Papineau had argued that rule-circularity need not be vicious. The standard objection, that counterinduction can support itself in the same way, is the one the previous post answers with its anti-Laplacian minds. These precedents support the post, and the Stanford Encyclopedia entries cited in the notes give the arguments on both sides.
+
+The comparison the post was prompted by turns on justification. Bartley gave up the demand that beliefs be justified; the previous post says that everything needs justification. The commenter pointed to this difference, and the post does not discuss it.
+- After: Several features have established names in philosophy: Quine's naturalized epistemology, and the distinction between rule-circular and premise-circular arguments. They, and the difference from Bartley that the commenter pointed to, are set out in the notes on ``Where Recursive Justification Hits Bottom.'' These precedents support the post.
+
+
+## annotated/afterwords/my-kind-of-reflection.tex
+
+Why: Fair reading: the test is a prescription about labels (a philosophy that would keep induction should not call it unjustifiable); Hume's combination is what it rules out, so this is information, not a missing premise.
+
+- Before: One step needs a premise the post does not state. The test for philosophies, that one which would not want an AI to stop using induction ``had better not label induction as unjustifiable,'' assumes that the label is advice to stop. Hume, the classic source of the label, held that inferences from experience come from custom, not reasoning, and that only ``a fool or madman'' would reject experience as a guide. The post does not say why a philosophy like his could not want the AI to keep induction.
+- After: The test for philosophies, that one which would not want an AI to stop using induction ``had better not label induction as unjustifiable,'' rules out a classic position. Hume held that inferences from experience come from custom, not reasoning, and that only ``a fool or madman'' would reject experience as a guide.
+
+- Before: In short: a candid list of features, several repeated from the previous post and others known in epistemology under other names, with one test for philosophies that assumes, without saying why, that calling induction unjustified is advice to stop using it.
+- After: In short: a candid list of the features of the author's view of reflection, several repeated from the previous post and others known in epistemology under other names, with the formal theory still to come.
+
+
+## annotated/posts/my-kind-of-reflection.tex
+
+Why: STANDARDS 2.5: Quine, rule-circularity and Bartley are set out in the notes on Where Recursive Justification Hits Bottom; pointers here. Prior work that supports the post is credit (the post itself says it is "far from the first"). Fair reading: the test is a prescription about labels (a philosophy that would keep induction should not call it unjustifiable); Hume's combination is what it rules out, so this is information, not a missing premise.
+
+- Before: The test assumes that calling induction unjustifiable means advising against its use. The two came apart in the classic case. Hume concluded
+- After: The test rules out the classic case, in which the two came apart. Hume concluded
+
+- Before:  The post does not say why a philosophy that calls induction unjustified in this sense could not still want the AI to keep it.}
+- After: }
+
+- Before: This is the program of naturalized epistemology, which the post does not name. Quine (1969) put epistemology
+- After: This is the program of naturalized epistemology; see the notes on ``Where Recursive Justification Hits Bottom.'' Quine (1969) put epistemology
+
+- Before:  The post claims no novelty for its features, so this is credit to a precedent, not a fault.}
+- After: }
+
+- Before:  Bartley's view drops the demand that beliefs be justified and keeps the demand that all of them, the commitment to criticism included, stay open to criticism (Hauptli, \textsc{Philosophy of the Social Sciences}, 1991). The earlier post keeps the demand: ``Everything, without exception, needs justification.'' The post does not take up this difference.}
+- After:  The difference is set out in the notes on ``Where Recursive Justification Hits Bottom.''}
+
+
+## honest/sections/my-kind-of-reflection.tex
+
+Why: Same as the Response.
+
+- Before:  This post does not discuss the difference.}
+- After: }
+
+- Before: \nb{Hume, the classic source of that label, held that
+- After: \nb{The test rules out the classic position. Hume held that
+
+- Before:  Calling induction unjustified was not, for him, advice to stop using it.}
+- After: }
+
+- Before:  The post does not mention him.}
+- After: }
+
+
+## annotated/afterwords/no-universally-compelling-arguments.tex
+
+Why: Fair reading: the post's conclusion is consistent with Kant, so this is information about the classic view, not a weakness; opponents' being unnamed is stated once. The motive words are the post's own; noted without a charge.
+
+- Before: The weakness is in the views the post answers. It describes its opponents as people for whom disagreement that persists in principle would make a claim ``arbitrary,'' and it names no philosopher who says so. The classic view that some laws bind every rational mind does not claim that every mind is in fact moved.
+- After: The post answers people for whom disagreement that persists in principle would make a claim ``arbitrary.'' Its conclusion leaves untouched the classic view that some laws bind every rational mind, which does not claim that every mind is in fact moved.
+
+- Before:  On a view like his a mind that is not moved is irrational, not a counterexample, and the post's conclusion, that validity ``cannot rely on'' universal compulsion, is consistent with it.
+- After:  On a view like his a mind that is not moved is irrational, not a counterexample, and the post's conclusion, that validity ``cannot rely on'' universal compulsion, agrees with it.
+
+- Before: The people the post does name are not quoted. Two are said to ``dream of commands that no sufficiently advanced mind can disobey,'' a motive for which the post gives no evidence, and the last paragraph offers John C. Wright's conversion as a warning without saying how it bears on his argument. The post does include the author's own younger self among those who made the milder error.
+- After: The two people the post names, John C. Wright and Marc Geddes, are not quoted, and the last paragraph offers Wright's conversion as a warning without saying how it bears on his argument. The post includes the author's own younger self among those who made the milder error.
+
+- Before: In short: a correct and well-illustrated point about possible minds, aimed at opponents who go unnamed or unquoted, while the classic view it bears on, Kant's, does not claim that every rational being is in fact moved by the moral law.
+- After: In short: a correct and well-illustrated point about possible minds, which leaves open, as the post says, whether anything binds all rational minds; its named opponents are not quoted.
+
+
+## annotated/posts/no-universally-compelling-arguments.tex
+
+Why: Fair reading: the post's conclusion is consistent with Kant, so this is information about the classic view, not a weakness; opponents' being unnamed is stated once. The motive words are the post's own; noted without a charge.
+
+- Before: The post assigns a motive to those who hold it, a dream of ``commands that no sufficiently advanced mind can disobey,'' and names two people (John C. Wright, Marc Geddes) without quoting either, so the attribution cannot be checked from the post.
+- After: The post names two people who hold it (John C. Wright, Marc Geddes) without quoting either, so the attribution cannot be checked from the post.
+
+
+## annotated/afterwords/created-already-in-motion.tex
+
+Why: The note concludes that the practical point holds on either side of the internalism dispute, so it does not belong in the Response (brief: do not import a field dispute the post does not take up). Credit is not a fault.
+
+- Before: What it adds to Carroll is a reading and an extension, and both have precedents the post does not mention.
+- After: What it adds to Carroll is a reading and an extension, and both have precedents.
+
+- Before: 
+
+The fuzzle example sides with one party to a dispute it does not mention. The post belongs to a sequence on metaethics, and ``fuzzle'' stands in for moral words. Motivational internalists hold that a sincere judgment that an act is right carries some motivation to do it, so the post's mind, which believes rescue is fuzzle and does nothing, does not really judge it right. Externalists deny this, and the example assumes they are right. The nonsense word keeps the dispute out of view, and for the design of an AI the result is the same on either side: the mind must be built to act on its verdicts.
+- After: 
+
+
+## annotated/posts/created-already-in-motion.tex
+
+Why: The note concludes that the practical point holds on either side of the internalism dispute, so it does not belong in the Response (brief: do not import a field dispute the post does not take up). Credit is not a fault.
+
+- Before: Read that way, the example sides with one party to a live dispute.
+- After: Read that way, the example touches a live dispute.
+
+- Before: externalists, whose side the example takes, hold that such a mind is possible
+- After: externalists hold that such a mind is possible
+
+- Before: The nonsense word keeps the dispute out of view, and for building an AI the practical point holds on either side
+- After: For building an AI the practical point holds on either side
+
+
+## honest/sections/created-already-in-motion.tex
+
+Why: Same as the note.
+
+- Before: Others deny it, and the example assumes they are right. Either way,
+- After: Others deny it. Either way,
+
