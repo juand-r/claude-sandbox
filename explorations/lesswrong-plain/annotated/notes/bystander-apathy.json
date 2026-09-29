@@ -1,0 +1,89 @@
+{
+ "slug": "bystander-apathy",
+ "header": "\\post{Bystander Apathy}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/K5nq3KcDXaGm7QQWR/bystander-apathy}\n",
+ "skeleton_sha": "1921f656369b6e9057a5ad27f362ce1f9d397cbb96321c547b6390706235da94",
+ "post_sha": "684e6aabae34ad7efc1356ef92068289a6687adfb4f9a1640f07a5daca9ec749",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Reports the smoke experiment. The figures match the cited article: three-quarters of the 24 subjects tested alone reported the smoke, one of the ten tested with two passive confederates did, and in ``only 38\\% of the eight groups'' of three did anyone report it, where three independent lone subjects would give ``over 98\\%.'' Each session ended six minutes after the subject first noticed the smoke, by which time ``vision was obscured in the room.'' The samples are small.}"
+  ],
+  [
+   274,
+   "\\clogic{Supported by the cited article for its experiments. Groups of three reported the smoke less often than lone subjects did (38 against 75 per cent), and pairs of strangers who heard a woman fall helped less often than lone subjects (40 against 70 per cent). Later field research found otherwise in one setting. In CCTV footage of real public conflicts in three countries, Philpot and colleagues (2020) found that someone intervened in nine of ten cases, and that ``increased bystander presence is related to a greater likelihood that someone will intervene.''}"
+  ],
+  [
+   762,
+   "\\cfact{The cited article opens with the 1964 murder of Kitty Genovese: ``Thirty-eight of her Kew Gardens neighbors came to their windows when she cried out in terror,'' and ``none came to her assistance.'' The post does not mention the case, and the experiments do not depend on it. Later research found the story unsupported. Manning, Levine and Collins (2007) found ``no evidence for the presence of 38 witnesses, or that witnesses observed the murder, or that witnesses remained inactive.'' In 2016 the New York Times wrote that its 1964 article ``grossly exaggerated the number of witnesses and what they had perceived'' (as quoted by Wikipedia; the Times page could not be reached from here).}"
+  ],
+  [
+   776,
+   "\\cpara{Names the two standard explanations. Both are in the cited article, including the first item's point about blame: ``Potential blame may also be diffused.''}"
+  ],
+  [
+   1400,
+   "\\cpara{Quotes Cialdini on pluralistic ignorance. The passage matches the text of Cialdini's \\textsc{Influence} as I could check it, in a later edition, where it follows Cialdini's retelling of the Genovese case.}"
+  ],
+  [
+   2167,
+   "\\cpara{Reports Cialdini's advice correctly. Cialdini's words: ``isolate one individual from the crowd: Stare, speak, and point directly at that person and no one else.''}"
+  ],
+  [
+   2459,
+   "\\cpara{Raises an evolutionary explanation: an arms race to be the last to help. It is the author's own earlier guess. In ``Evolving to Extinction'' (November 2007) the author wrote that ``a genetic arms race might occur to be the last one to step forward.'' The next two paragraphs reject it, so the post corrects that guess.}"
+  ],
+  [
+   2981,
+   "\\cpara{Rejects the arms race, with hedges (``I would think''). Its factual premise, that the result is a failure to help and not a long delay, fits the cited article's seizure study: ``No subject who had not reported within three minutes after the fit ever did so.''}"
+  ],
+  [
+   3517,
+   "\\cpara{Proposes, hedged (``More likely, I think''), that the effect arises because modern emergencies involve strangers, which the ancestral band rarely did. Both findings offered in support are in the cited article; see the next two notes.}"
+  ],
+  [
+   3857,
+   "\\cfact{In the seizure study, subjects who had met the victim ``for less than a minute'' in the hall reported significantly faster than others in the six-person groups. A one-minute chat about other things was enough.}"
+  ],
+  [
+   3968,
+   "\\cfact{The recollection matches the cited article. Friends acted faster than strangers in two of its studies; in the seizure study, a subject whose friend was also listening responded about as fast as one who was alone. Pairs of friends who heard the woman fall still helped less often than two independent lone subjects would have (70 per cent of pairs, against an expected 91). A 2011 meta-analysis by Fischer and colleagues found the bystander effect reduced ``when the bystanders were not strangers.''}"
+  ],
+  [
+   3982,
+   "\\cpara{Adds, on condition that Robin Hanson is right about ``choking,'' that the first person to act may seem to make a bid for status. Hanson's post calls that account ``all just a guess.''}"
+  ],
+  [
+   4492,
+   "\\cfact{The cited article discusses it. A bystander ``is also aware that others are watching him. They are an audience to his own reactions,'' and being exposed to public view ``may constrain the actions and expressions of emotion of any individual as he tries to avoid possible ridicule and embarrassment.'' The authors suggest that friends inhibit each other less because ``people are less likely to fear possible embarrassment in front of friends than before strangers.'' The post's guess has support in its own source.}"
+  ],
+  [
+   4506,
+   "\\cpara{Argues from two observations that the effect is not mainly a wish to escape blame. Observation (a) agrees with the cited authors, whose subjects who did not report the smoke said they ``had decided that there was no fire at all.''}"
+  ],
+  [
+   5226,
+   "\\cfact{Given without a source. One study supports it. Beaman and colleagues (1978) report that undergraduates ``previously informed as to how social-psychological factors operate to inhibit helping behavior'' were ``more likely to help a victim at a later date than was an uninformed group.'' I could read only the abstract.}"
+  ],
+  [
+   5240,
+   "\\cpara{Offers the bystander effect, hedged (``I recall offhand,'' ``seems''), as a bias that teaching reduces. It is a counterweight to the author's warning in ``Knowing About Biases Can Hurt People'' (2007): ``If you're irrational to start with, having more knowledge can hurt you.''}"
+  ],
+  [
+   5952,
+   "\\clogic{This agrees with the cited article. Its authors found that seizure-study subjects who did not respond had not ``decided not to respond'': they ``were still in a state of indecision and conflict,'' and seemed, if anything, ``more emotionally aroused'' than those who reported.}"
+  ],
+  [
+   5966,
+   "\\cpara{Ends with an open question.}"
+  ],
+  [
+   6114,
+   "\\cpara{The source of the quotation and the advice.}"
+  ],
+  [
+   6219,
+   "\\cpara{The source of the experiments. The quotation marks around ``Apathy'' in its title are the authors' point: they argue that ``apathy,'' ``indifference'' and ``unconcern'' ``are not entirely accurate descriptions'' of how bystanders react. The post's last two paragraphs agree with them.}"
+  ]
+ ]
+}

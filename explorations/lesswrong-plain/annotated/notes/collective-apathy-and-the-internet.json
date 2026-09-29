@@ -1,0 +1,53 @@
+{
+ "slug": "collective-apathy-and-the-internet",
+ "header": "\\post{Collective Apathy and the Internet}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/NnQbfLo868wgnHF4n/collective-apathy-and-the-internet}\n",
+ "skeleton_sha": "e8c81f5c6378563fb7bf1fe8700331deb8746e7ff09e3618e821417f48d8666f",
+ "post_sha": "457d334698e1cdaddf848155fbdc4e8422fbab623c241278ca71d84a6c5aa2e9",
+ "edits": [],
+ "notes": [
+  [
+   154,
+   "\\cpara{Restates the previous day's post, ``Bystander Apathy'': a group is less likely to act than one person, because of pluralistic ignorance and diffusion of responsibility. For the evidence behind ``less likely,'' and a later field study of public conflicts that found otherwise, see the notes on that post.}"
+  ],
+  [
+   843,
+   "\\cpara{Offers, with ``may,'' the hypothesis from the previous post: our coordination instincts were tuned to groups of people who knew each other. The supporting finding is now stated without the previous day's ``If I recall correctly.'' ``Diminishes'' matches that post's source: friends inhibited each other less than strangers did, and in one study a subject with a friend listening responded as fast as one alone.}"
+  ],
+  [
+   1271,
+   "\\cpara{States the post's premise, that people react poorly to problems met on the Internet, with ``seem'' and sarcasm about how obvious it is. No example is given.}"
+  ],
+  [
+   1524,
+   "\\cpara{Introduces the list, with ``Perhaps.''}"
+  ],
+  [
+   1628,
+   "\\cpara{Eight features of online groups that might weaken the urge to help. They are offered as hypotheses. The online bystander effect had been tested nine years earlier. Markey (2000) watched chat groups and found that ``as the number of people present in a computer-mediated chat group increased, it took longer for an individual to receive help,'' and that ``the bystander effect was virtually eliminated'' when the request named one person. That supports the list's items about anonymity and being singled out, and it is Cialdini's advice from the previous post, tested online.}"
+  ],
+  [
+   2441,
+   "\\cpara{Admits there is no solution in hand and urges entrepreneurs to work on the problem, with a joke at Hacker News.}"
+  ],
+  [
+   2835,
+   "\\cfact{Hedged (``tend to''). One site built for this problem existed. PledgeBank, launched by mySociety in June 2005, let anyone say ``I'll do X if other people also do X.'' mySociety described its purpose as getting people past ``the fear of acting alone.''}"
+  ],
+  [
+   3002,
+   "\\cpara{Introduces the author's own design ideas.}"
+  ],
+  [
+   3075,
+   "\\cpara{Five ideas, offered as ideas, and a remark on their scope. Several of them (names and photos of the first helpers, a video thank-you for a ``people I've helped'' page, a count of the people a helper brought in) reward only those who help. These apply an older idea. Mancur Olson's \\textsc{The Logic of Collective Action} (1965) called rewards that go only to contributors selective incentives, and argued that without them, in Wikipedia's summary, ``collective action is unlikely to occur even when large groups of people with common interests exist.''}"
+  ],
+  [
+   4275,
+   "\\clogic{Here the post carries the bystander research, which concerns emergencies, over to donations and code. Those are continuing contributions to a shared good, the case of Olson's account in the previous note, where people decide whether to pay a cost rather than whether something is wrong.}"
+  ],
+  [
+   4407,
+   "\\cpara{Hands the reader the problem. Shirky's comparison is with one year of television: ``Two hundred billion hours, in the U.S. alone, every year,'' or ``2,000 Wikipedia projects a year spent watching television.'' The post's 1/2,000 is right on that basis.}"
+  ]
+ ]
+}

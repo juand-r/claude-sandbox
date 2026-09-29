@@ -153,3 +153,22 @@ Why: Hedges carry: the premise is marked "probably"; the missing figures stay in
 - Before: resting on the author's own experience of willpower, offered as such, and on a premise, marked ``probably'' and given no figures, that the best sources of warm feelings and of good outcomes lie far apart.
 - After: resting on the author's own experience of willpower, offered as such, and on a hedged premise that the best sources of warm feelings and of good outcomes lie far apart.
 
+
+## annotated/afterwords/collective-apathy-and-the-internet.tex
+
+Why: Tone ("sarcasm"); the Olson comparison is information and ends in agreement on remedies, so it is not framed as a fault.
+
+- Before: is delivered with sarcasm about how obvious it is and without an example.
+- After: is stated as obvious, without an example.
+
+- Before: The framing is narrower than the problem. The bystander research
+- After: Olson's account is a close relative. The bystander research
+
+
+## annotated/afterwords/incremental-progress-and-the-valley.tex
+
+Why: Not engaging prior work is not a fault (Book V lesson); the uncited surveys stay.
+
+- Before: The post engages none of this, and refers to ``the surveys'' without citing one.
+- After: The post refers to ``the surveys'' without citing one.
+

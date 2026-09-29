@@ -29,7 +29,7 @@ posts are merged in.
        pass on all 9. Revise the standards and brief from what the pilot shows.
 5. [x] Book generators (`src/make_books.py`): `annotated/main.tex` and `honest/honest.tex` in collection order
        with book and sequence headings.
-6. [ ] Batches: one sequence (or half of a long one) per wave, about 3 posts per agent.
+6. [x] Batches: one sequence (or half of a long one) per wave, about 3 posts per agent.
        After each batch: editor's final pass, raz_check on every post, notes export,
        both builds, commit, push.
 7. [ ] Last: a whole-book consistency pass (repeated criticisms, cross-references between
@@ -60,4 +60,4 @@ posts are merged in.
 | 5c | Quantified Humanism (rest of Book V) | 9 | yes | yes | 388e60e |
 | 6a | Yudkowsky's Coming of Age (Book VI) | 13 | yes | yes | e33141a |
 | 6b | Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI) | 11 | yes | yes | 8b68e8c |
-| 6c | The Craft and the Community 324 to 338 (rest of Book VI) | 15 | running | | |
+| 6c | The Craft and the Community 324 to 338 (rest of Book VI) | 15 | yes | yes | (this commit) |

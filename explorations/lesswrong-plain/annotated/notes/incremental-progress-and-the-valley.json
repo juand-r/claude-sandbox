@@ -1,0 +1,133 @@
+{
+ "slug": "incremental-progress-and-the-valley",
+ "header": "\\post{Incremental Progress and the Valley}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/oZNXmHcdhb4m7vwsv/incremental-progress-and-the-valley}\n",
+ "skeleton_sha": "923458fb5735f9ae752908649ac16ce2bebb8748d91b8376ecf0ca82cdca4590",
+ "post_sha": "047b7da160264eee87101a2c0b99d4f5bf9cd9c19a08efe1eff7adb8f163e13b",
+ "edits": [],
+ "notes": [
+  [
+   156,
+   "\\cpara{``Yesterday'' is ``Rationality is Systematized Winning,'' posted 3 April 2009. The book does not include it, and places this post, of 4 April, after posts of 13 and 14 April.}"
+  ],
+  [
+   404,
+   "\\cpara{Answers the first form of the objection: a lottery winner is a loss you only hear about through selective reporting, not a systematic one.}"
+  ],
+  [
+   894,
+   "\\cpara{Restates the previous post's definition: a rational agent can lose, but cannot expect to do worse than a strategy it could have followed.}"
+  ],
+  [
+   1130,
+   "\\cpara{Voices the stronger objection: overconfident founders and religious believers seem to do better.}"
+  ],
+  [
+   1347,
+   "\\cpara{The thesis, stated early: a step toward rationality need not bring a step toward winning. The book made a related point in ``Knowing About Biases Can Hurt People'' (2007): ``If you're irrational to start with, having more knowledge can hurt you.''}"
+  ],
+  [
+   1556,
+   "\\cpara{Gives the reason: the theorems hold for the ideal, and nothing guarantees that each step toward it helps.}"
+  ],
+  [
+   2014,
+   "\\clogic{No counterexample is given, but the claim is right, and economists had proved a close relative of it. Lipsey and Lancaster's theory of the second best (1956) showed that ``if one optimality condition in an economic model cannot be satisfied, it is possible that the next-best solution involves changing other variables away from the values that would otherwise be optimal'' (Wikipedia's summary).}"
+  ],
+  [
+   2028,
+   "\\cpara{Voices the next objection: if we will not reach the ideal, no step is guaranteed to help.}"
+  ],
+  [
+   2212,
+   "\\cpara{Replies that a step backward carries no guarantee either, and that rationality is judgment under uncertainty.}"
+  ],
+  [
+   2521,
+   "\\cpara{States the objection in its strongest form: reasoning and survey data suggest a particular step will make us worse off.}"
+  ],
+  [
+   3056,
+   "\\cpara{The first of three personal reasons: the author's work punishes small errors. It is offered as the author's own reason, after ``I can't necessarily answer for everyone.''}"
+  ],
+  [
+   3582,
+   "\\cpara{The second reason: refusing one step forfeits all the later ones.}"
+  ],
+  [
+   4060,
+   "\\cfact{Hanson's saying is in Hanson's chapter ``Catastrophe, Social Collapse, and Human Extinction'' (2007 draft): ``The main reason to be careful when you walk up a flight of stairs is not that you might slip and have to retrace one step, but rather that the first slip might cause a second slip.'' The post paraphrases it fairly and turns it to climbing.}"
+  ],
+  [
+   4302,
+   "\\cpara{The third reason: a deception once seen cannot be unseen, so self-deception is no longer on offer. This is the argument of the book's posts on doublethink, linked here.}"
+  ],
+  [
+   4855,
+   "\\cpara{Voices the objection that the author's writing may make other people unhappier by spoiling their doublethink.}"
+  ],
+  [
+   5382,
+   "\\cpara{The answer to the whole objection. It rests on the author's experience, hedged (``does seem to indicate''), and the experience is not described.}"
+  ],
+  [
+   5779,
+   "\\cpara{Limits the claim to the field the author knows, answering confusing questions, where a person who stayed optimistic would be ``stomped into the ground'' by ``a casual student.'' This is stated with ``seems'' and given no example. Motivation, coordination and happiness are set aside, and the next paragraph makes no such claim for them.}"
+  ],
+  [
+   6419,
+   "\\cpara{Concedes that for motivation and happiness the author cannot guarantee that losing illusions helps.}"
+  ],
+  [
+   6765,
+   "\\cfact{Hedged (``If''). Eight days earlier, in ``Can Humanism Match Religion's Output?'', the author had written: ``Cognitive-behavioral therapy and Zen meditation are two mental disciplines experimentally shown to yield real improvements.'' CBT is a systematic method of this kind: it aims to replace ``cognitive distortions'' with ``more realistic and effective thoughts, thus decreasing emotional distress'' (Wikipedia). Its targets are beliefs that cause distress, so it bears more on whether accurate belief can serve happiness than on giving up comforting beliefs. The second comment quoted below credits a CBT-trained sister.}"
+  ],
+  [
+   7349,
+   "\\cpara{States a hope, marked as one (``as I hope,'' ``I do fully expect''), and admits that the author has put little effort into happiness.}"
+  ],
+  [
+   7771,
+   "\\cpara{Hedged belief (``I find it hard to believe,'' ``probably''). The question is an old dispute in psychology. Taylor and Brown (1988) argued that positive illusions foster mental health; Colvin and Block (1994) concluded that ``it remains unproven''; a 2019 meta-analysis of 299 samples found self-enhancement ``positively related to personal adjustment,'' with a positive effect over time, though ``a mixed blessing for interpersonal adjustment.'' These studies measure ordinary people, while the post's belief is about the best a person could do; they show that the belief is contested, not that it is mistaken.}"
+  ],
+  [
+   8376,
+   "\\cpara{Grants that the problem is real and quotes two comments on ``3 Levels of Rationality Verification'' (15 March 2009), by MBlume and PaulWright. The quotations match the comments; the second omits its last sentence, which changes nothing.}"
+  ],
+  [
+   8584,
+   "\\cpara{A reader's account of losing a girlfriend after deconverting, and of preferring the truth anyway.}"
+  ],
+  [
+   9245,
+   "\\cpara{A second reader's account of the same loss, and of recovery with advice from a sister trained in CBT.}"
+  ],
+  [
+   9772,
+   "\\cpara{Draws the moral with care: the first steps can hurt, things can get better, and nothing guarantees that a given person ends higher than before.}"
+  ],
+  [
+   10191,
+   "\\cpara{Begins, half in jest, a list of conditions under which the steps toward rationality are not guaranteed to leave a person better off.}"
+  ],
+  [
+   10323,
+   "\\clogic{The clause assumes that signing up for cryonics is what rationality recommends. The linked post, ``You Only Live Twice'' (December 2008, from its address), argues it; the book does not include that post, so its reader meets the conclusion here without the argument.}"
+  ],
+  [
+   10608,
+   "\\cpara{Grants the absence of a guarantee, then claims that arguments against losing illusions ``generally'' consider one step only. No such argument is quoted.}"
+  ],
+  [
+   11151,
+   "\\clogic{No survey is cited. Some studies that separate weak from strong belief suggest a dip in the middle, like the post's valley. A 2022 study sums up earlier work: ``compared to people who have intermediate levels of R/S, those with higher levels and those with insignificant levels are mentally healthier.'' In its own Brazilian sample, atheists matched religious people on anxiety and depression, but religious people ``presented more happiness and meaning in life.''}"
+  ],
+  [
+   11165,
+   "\\cpara{Sets up the closing joke with a list of conditions.}"
+  ],
+  [
+   11501,
+   "\\cpara{The joke: anyone meeting every condition should sign up for cryonics and stop reading.}"
+  ]
+ ]
+}

@@ -353,11 +353,26 @@
 \contentsline {subsection}{3 Levels of Rationality Verification}{371}{section*.355}%
 \contentsline {subsection}{Why Our Kind Can't Cooperate}{372}{section*.356}%
 \contentsline {subsection}{Tolerate Tolerance}{374}{section*.357}%
-\contentsline {part}{Beyond the Sequences}{375}{section*.358}%
-\contentsline {subsection}{Humans Are Not Automatically Strategic}{376}{section*.359}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{377}{section*.360}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{379}{section*.361}%
-\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{381}{section*.362}%
-\contentsline {subsection}{On Caring}{383}{section*.363}%
-\contentsline {subsection}{Strong Evidence Is Common}{384}{section*.364}%
-\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{385}{section*.365}%
+\contentsline {subsection}{Your Price for Joining}{375}{section*.358}%
+\contentsline {subsection}{Can Humanism Match Religion's Output?}{376}{section*.359}%
+\contentsline {subsection}{Church vs. Taskforce}{377}{section*.360}%
+\contentsline {subsection}{Rationality: Common Interest of Many Causes}{378}{section*.361}%
+\contentsline {subsection}{Helpless Individuals}{379}{section*.362}%
+\contentsline {subsection}{Money: The Unit of Caring}{380}{section*.363}%
+\contentsline {subsection}{Purchase Fuzzies and Utilons Separately}{381}{section*.364}%
+\contentsline {subsection}{Bystander Apathy}{382}{section*.365}%
+\contentsline {subsection}{Collective Apathy and the Internet}{383}{section*.366}%
+\contentsline {subsection}{Incremental Progress and the Valley}{384}{section*.367}%
+\contentsline {subsection}{Bayesians vs. Barbarians}{385}{section*.368}%
+\contentsline {subsection}{Beware of Other-Optimizing}{386}{section*.369}%
+\contentsline {subsection}{Practical Advice Backed By Deep Theories}{387}{section*.370}%
+\contentsline {subsection}{The Sin of Underconfidence}{388}{section*.371}%
+\contentsline {subsection}{Go Forth and Create the Art!}{389}{section*.372}%
+\contentsline {part}{Beyond the Sequences}{390}{section*.373}%
+\contentsline {subsection}{Humans Are Not Automatically Strategic}{391}{section*.374}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{392}{section*.375}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{394}{section*.376}%
+\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{396}{section*.377}%
+\contentsline {subsection}{On Caring}{398}{section*.378}%
+\contentsline {subsection}{Strong Evidence Is Common}{399}{section*.379}%
+\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{400}{section*.380}%

@@ -523,3 +523,36 @@ Six agents. Edits in `docs/raz/changes/batch06b.md`.
   martial-arts decline (Epistemic Viciousness); the diagnosis from one fundraiser (Why Our
   Kind Can't Cooperate), with outside cases as information.
 - Tooling, whole-book pass: md2tex merges an opening blockquote into a preceding link line ("Previously:" then ">"), leaving literal ">" markers; Bayesians vs. Barbarians was repaired by hand (markup only). Check other posts with that opening.
+
+## Batch 6c: The Craft and the Community 324 to 338 (rest of Book VI, 15 posts)
+
+Seven agents. Edits in `docs/raz/changes/batch06c.md`. All 345 posts are now in both books.
+
+- Critiques a fair reading answers, cut or recast:
+  - Helpless Individuals: "two explanations the post does not tie together" (features of the
+    task are why it fits badly with small-band intuitions; the link is implicit).
+  - Money: The Unit of Caring: the title claim and "the only way anything gets done" (the post
+    narrows the first itself; the second is hyperbole whose example stands); now information.
+  - Church vs. Taskforce: "nearly all" (inside the post's own "to the extent that").
+  - Rationality: Common Interest of Many Causes: a charge against a hedged, likely joking
+    remark about stray-puppy organizers.
+  - Practical Advice Backed by Deep Theories: the dessert aside taken literally; the
+    favourites-thread nitpick.
+  - Bayesians vs. Barbarians: our own unsourced objection on the lottery; a style nitpick.
+  - The Sin of Underconfidence, Your Price for Joining, Purchase Fuzzies: In short lines now
+    report hedged premises and observations as hedged.
+- Hindsight kept out of In short lines: later field studies on giving (Common Interest),
+  Putnam and Campbell (Can Humanism), the 2020 CCTV study (kept in Bystander Apathy's Response
+  with its date, as information).
+- Tone: "sarcasm" (Collective Apathy); "engages none of this" about prior work (Incremental
+  Progress).
+- Kept: the diet's benefits resting on self-reports (Practical Advice); the Genovese record
+  (Bystander Apathy, attached to the cited article); the unhedged "almost certainly" of the
+  evolutionary explanation (Your Price for Joining, in the Response); the missing figures for
+  the fuzzies premise (in the Response).
+
+Checks at the end of the book: 345/345 notes backups exact; every R:AZ post passes raz_check
+except that the tool does not follow the one file alias (making-beliefs-pay-rent), which
+passes check_verbatim directly (1,130 words). Whole-book pass: make raz_check follow the
+alias in make_books.py. Annotated 1602 pages, honest 400; 183 overfull boxes in the log
+(most small; bare-URL ones listed above).
