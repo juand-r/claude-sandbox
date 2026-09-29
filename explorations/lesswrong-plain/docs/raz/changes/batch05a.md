@@ -113,3 +113,61 @@ Why: Nitpick (the others not listed); wording; the last sentence restated the ad
 - Before:  Within that limit the argument concerns human values as they are; whether a superintelligence should serve those values, rather than some simpler standard, is not argued here.
 - After: 
 
+
+## annotated/afterwords/ends-an-introduction.tex
+
+Why: Preface convention (STANDARDS 2.4 item 7): an introduction states its framing; the premises are reported, not charged. Popper kept as information. The Sandel gloss is loose, not wrong; it stays in the note only.
+
+- Before: That is close to the pragmatist view of theories, and uses the phrase William James used for it; it is given no argument.
+- After: It is close to the pragmatist view of theories, and uses the phrase William James used for it.
+
+- Before: The paragraph that follows argues, with a hedge, against giving up on utopia. It does not name a well-known case on the other side, Popper's preference for piecemeal reform over a plan for the good society. An introduction need not argue the other side, but the reader should know there is one.
+- After: The paragraph that follows argues, with a hedge, against giving up on utopia. A well-known case on the other side is Popper's preference for piecemeal reform over a plan for the good society.
+
+- Before:  Sandel's objection to enhancement, glossed as making life feel less of a ``gift,'' is in Sandel's words ``the hubris objection,'' about the disposition that enhancement expresses.
+- After: 
+
+- Before: In short: an introduction whose descriptions of positions mostly check out, whose ranking of practice above theory rests on a pragmatist premise it does not argue, and whose claim that utopia-planning is neglected has no source.
+- After: In short: an introduction whose descriptions of positions mostly check out, and which states two of its judgments as premises: that practice ranks above theory, and that utopia-planning is neglected.
+
+
+## annotated/posts/ends-an-introduction.tex
+
+Why: Same: an introduction need not name the other side.
+
+- Before: The opposing view has a well-known defender whom the introduction does not name. Karl Popper
+- After: The opposing view has a well-known defender. Karl Popper
+
+
+## annotated/afterwords/not-for-the-sake-of-happiness-alone.tex
+
+Why: Fair reading: the author's account of "should" (later in the book) ties it to what we value; the motives point is stated as scope with a pointer, and kept out of the In short line.
+
+- Before: The arguments in the middle do not reach the question the post poses. That question is evaluative: whether we should care about more than happiness. The first argument shows that caring about others is hard to explain if one's own happiness is the only reason. That tells against egoism, not against the view the post set out to examine, which counts others' happiness as well. The second, that a result of an action need not be its aim, is Butler's old objection to psychological egoism. The third sets a bar for the claim that happiness is the only thing that counts in our decisions. All three concern motives. An evaluative hedonist can accept them and still hold that only happiness is worth caring about.
+- After: The arguments in the middle concern motives: what we act for, and what counts in our decisions. The first tells against egoism rather than against the view the post set out to examine, which counts others' happiness as well. The second, that a result of an action need not be its aim, is Butler's old objection to psychological egoism. The question the post poses is what we should care about. How what we value bears on what we should value is the subject of the book's later account, in the Value Theory sequence; here the cases carry the argument.
+
+- Before: In short: a clear statement of the standard case against hedonism, made earlier by Moore and Nozick; its arguments about motives do not reach the evaluative question it poses, which it answers with the author's own intuitions.
+- After: In short: a clear statement of the standard case against hedonism about value, made earlier by Moore and Nozick, resting on the author's intuitions about cases, which most philosophers share.
+
+
+## honest/sections/ends-an-introduction.tex
+
+Why: Same as the Response (preface convention).
+
+- Before:  I do not argue for this. \nb{
+- After:  \nb{
+
+- Before:  I give no source. But if
+- After:  But if
+
+- Before: \nb{The introduction does not name a well-known case for the other side: Karl Popper's
+- After: \nb{A well-known case for the other side is Karl Popper's
+
+
+## honest/sections/not-for-the-sake-of-happiness-alone.tex
+
+Why: Same as the Response.
+
+- Before: \nb{All three arguments are about what moves us. An evaluative hedonist can accept them and still hold that only happiness is worth caring about. The second is Joseph Butler's old objection to psychological egoism.}
+- After: \nb{All three arguments are about what moves us; the book's account of how that bears on what we should care about comes later. The second is Joseph Butler's old objection to psychological egoism.}
+

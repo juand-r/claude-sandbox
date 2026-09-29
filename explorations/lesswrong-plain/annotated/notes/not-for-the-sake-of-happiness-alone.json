@@ -1,0 +1,101 @@
+{
+ "slug": "not-for-the-sake-of-happiness-alone",
+ "header": "\\post{Not for the Sake of Happiness (Alone)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/synsRtBKDeAFuo7e3/not-for-the-sake-of-happiness-alone}\n",
+ "skeleton_sha": "037e7736f3ed4316e91ebe7942c2bcec6244352b0f83388f2375378ae19fe5dc",
+ "post_sha": "41a5b6fe78799ac281a2ea2c8b7f4bfeb9c019874a6bd7e3f8dcbbdb6b5a9c65",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{Opens with a conversation reported from memory, which cannot be checked. Gregory Stock is a biophysicist and author on human enhancement (Wikipedia). Stock's prediction: pills will simulate the joy of scientific discovery. The author would not take them.}"
+  ],
+  [
+   491,
+   "\\cpara{Stock's reply: the pills will be much more fun than doing the science.}"
+  ],
+  [
+   754,
+   "\\cpara{The author's answer: since that is possible, the author will make sure not to take them. The post's position is here in one line.}"
+  ],
+  [
+   851,
+   "\\cpara{Each is surprised by the other, which sets up the question.}"
+  ],
+  [
+   950,
+   "\\cpara{Names the target, hedged (``as if''), with one example. Two theses that the literature keeps apart are run together here. ``Psychological or motivational hedonism claims that only pleasure or pain motivates us. Ethical or evaluative hedonism claims that only pleasure has worth or value'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Hedonism''). That all desires are ``reducible'' to a desire for happiness is a claim about motives, like the first. The question the post goes on to ask is the second. Ethicists have held both: Bentham, the same entry says, ``asserted both psychological and ethical hedonism.''}"
+  ],
+  [
+   1278,
+   "\\cfact{The passage of this kind that I could find in \\textsc{The End of Faith} is about morality, not about desire: ``A rational approach to ethics becomes possible once we realize that questions of right and wrong are really questions about the happiness and suffering of sentient creatures'' (pp.~170--71, as quoted on a reading list; I could not see the book). That is a claim of the second, evaluative kind. Its example is the kind the post uses below: people who worry about ``the private pleasures of other consenting adults.''}"
+  ],
+  [
+   1292,
+   "\\cpara{Sets aside two other questions: whether all happiness is on one scale, and whether one can value only one's own mental states. The post allows that one can care whether other people are happy.}"
+  ],
+  [
+   1792,
+   "\\cpara{States the question, and it is the evaluative one: whether we should care about things apart from the happiness they bring. The \\textsc{Stanford Encyclopedia} (``Value Theory'') calls this ``a traditional question of axiology'': ``whether the objects of value are subjective psychological states, or objective states of the world.''}"
+  ],
+  [
+   1941,
+   "\\cpara{Grants that moralists who cared about things besides happiness have gone astray, with laws against oral sex as the example, and says that such a case does not show that all values reduce to happiness.}"
+  ],
+  [
+   2410,
+   "\\cpara{The first argument answers an inference: from ``we tend to do things that make us happy'' to happiness being the only reason. If the happiness meant is one's own, the inference leads to egoism, in which other people are means to ``a warm glow of satisfaction.'' Against that the argument works. But the view the post set out to examine counts others' happiness too, as the post itself says (``it's still permissible to care whether other people are happy''). This argument does not bear on that view.}"
+  ],
+  [
+   2808,
+   "\\cpara{The second argument: a result of an action need not be its only reason, and one can value a thing both for itself and as a means. The point is old. It is Joseph Butler's objection to psychological egoism, which the \\textsc{Stanford Encyclopedia} (``Egoism'') sums up: ``Welfare results from my action, but cannot be the only aim of my action.''}"
+  ],
+  [
+   3327,
+   "\\cpara{Sets the bar a reduction must clear: happiness must be not the main thing but the only thing that counts in every decision. The author credits ``a Sober and Wilson paper, not sure which one.'' Their joint book on the subject is \\textsc{Unto Others} (1998), which argues that evolution favoured altruistic motives (\\textsc{Stanford Encyclopedia}, ``Egoism''). I could not check where they make this point.}"
+  ],
+  [
+   3604,
+   "\\clogic{This bar, like the two arguments before it, concerns what decides our choices: the psychological thesis. The question the post posed was the evaluative one. An evaluative hedonist can grant that happiness is not the only consequent in our decisions and still hold that only happiness is worth caring about. The post does not say here how what we choose bears on what we should care about. The book gives its account of ``should'' later, in the ``Value Theory'' sequence (for example ``Morality as Fixed Computation'').}"
+  ],
+  [
+   3734,
+   "\\cpara{Tests the author's values with an unseen screensaver, and finds that everything the author values involves people's experiences somewhere. This test has a history, and philosophers have answered it both ways. Sidgwick wrote, in Moore's quotation, that ``No one would consider it rational to aim at the production of beauty in external nature, apart from any possible contemplation of it by human beings.'' G. E. Moore replied with a beautiful world that no one would ever see, set against ``one heap of filth,'' and asked whether it would not be well to produce the first: ``Certainly I cannot help thinking that it would'' (\\textsc{Principia Ethica}, 1903, section 50). The author sides with Sidgwick.}"
+  ],
+  [
+   4245,
+   "\\cpara{States the author's view, hedged (``appears to require''): full value needs both an objective and a subjective component. Moore held a view of this shape about aesthetic enjoyment and affection. Emotions ``had little or no value apart from the cognition of appropriate objects,'' and the cognition ``little or no value apart from the appropriate emotion'' (\\textsc{Principia Ethica}, section 120). Philosophers now call theories of well-being with this structure ``hybrid'' accounts (\\textsc{Stanford Encyclopedia}, ``Well-Being,'' citing Parfit, 1984).}"
+  ],
+  [
+   4403,
+   "\\cpara{Applies the view to discovery: it needs a real discovery and a person's joy in it. The pills separate the two.}"
+  ],
+  [
+   4630,
+   "\\cpara{The holodeck, with a pill to forget it, is the post's version of an old case, which the post does not mention. Robert Nozick's ``experience machine'' (\\textsc{Anarchy, State, and Utopia}, 1974) gives any experiences you choose, and, as the \\textsc{Stanford Encyclopedia} describes it, ``You would not know you were on the machine.'' Nozick concluded that ``something matters to us in addition to experience'' (as quoted in ``Hedonism''). Moore had put the case in 1903, judging a universe of one person enjoying beautiful scenery and admirable company, ``while yet the whole of the objects of his cognition are absolutely unreal,'' to be ``greatly inferior in value'' to one where they exist (section 119).}"
+  ],
+  [
+   5232,
+   "\\cfact{Most philosophers share the intuition. In the 2020 PhilPapers survey, 76.9 per cent would not enter Nozick's machine and 13.3 per cent would; on well-being, 12.7 per cent accepted or leaned toward hedonism, 18.6 toward desire theories and 53.2 toward objective-list theories (Bourget and Chalmers, 2023). Experiments suggest the answer depends on where one starts. De Brigard (\\textsc{Philosophical Psychology}, 2010) told students they were already in such a machine and could stay, with their memory of the offer erased, or return to real life. Of those told nothing about that life, 54 per cent chose to return; of those told it was in prison, 13 per cent did. De Brigard reads this as status quo bias.}"
+  ],
+  [
+   5246,
+   "\\cpara{Adds a second value, freedom: the author would rate an outcome lower if people reached it through an unseen ``puppet master,'' even if no one knew. Like the holodeck paragraph, it names the stakes for powerful agents, here ones able ``to helpfully tweak people's futures without their knowledge.''}"
+  ],
+  [
+   5852,
+   "\\cpara{Draws the conclusion. It is about the author's values, while the question posed was whether we should care about more than happiness. A hedonist about value can accept the report and deny that the preference is correct. The \\textsc{Stanford Encyclopedia} (``Well-Being'') calls this ``The strongest tack for hedonists'': to grant the force of the experience machine but ``insist that it rests on `common sense' intuitions,'' whose place in our lives hedonism may itself justify. The post does not consider this reply.}"
+  ],
+  [
+   6128,
+   "\\cpara{Concludes that the author has many terminal values: art, science, love, lust, freedom, friendship. Of the standard theories of well-being, the post's cases, if the intuitions are accepted, count against hedonism; they do not choose among the others. The \\textsc{Stanford Encyclopedia} (``Well-Being'') notes that the experience machine is also ``one motivation for the adoption of a desire theory,'' since on the machine your desire to write a great novel goes unfulfilled. The post does not claim to choose, and its list fits a desire theory as well as an objective-list or hybrid one.}"
+  ],
+  [
+   6342,
+   "\\clogic{``Which means'' claims more than the post has shown. It has argued against one reduction, to happiness or to subjective states. That none of these values reduces to anything else rests on the linked post, ``Thou Art Godshatter.''}"
+  ],
+  [
+   6406,
+   "\\cpara{Ends with the author's preference for a life that is really complicated, not one that only feels so, over ``a pleasure center in a vat.'' This is close to Nozick's first reason for not plugging in: ``We want to do certain things'' (as quoted in the \\textsc{Stanford Encyclopedia}, ``Well-Being'').}"
+  ]
+ ]
+}

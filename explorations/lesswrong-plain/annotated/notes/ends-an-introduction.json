@@ -1,0 +1,136 @@
+{
+ "slug": "ends-an-introduction",
+ "header": "\\post{Ends: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/KfEyHB6WXFW6q2D5S/ends-an-introduction}\n",
+ "skeleton_sha": "af5fe0de785abd01bc8a087867903e8cb9143d53d02da354284e02a6de801386",
+ "post_sha": "9f41a4e04eed403e39d716762bdf84e4493636624182d065753a759f17a41d0d",
+ "edits": [
+  {
+   "at": 7969,
+   "del_len": 13,
+   "del_sha": "c36a06d4f6a93dc6af3279be56abea20af642872f31c655dd23b18b6e0ff2410",
+   "ins": ""
+  }
+ ],
+ "notes": [
+  [
+   123,
+   "\\cpara{Defines the book's subject in the book's own way. Philosophers use the term differently. The \\textsc{Stanford Encyclopedia of Philosophy} (``Value Theory'') gives three senses, from a label for every evaluative branch of philosophy to a narrow sense ``roughly synonymous with `axiology','' which is ``primarily concerned with classifying what things are good, and how good they are.'' None of them defines the field by what people care about. The definition here is a stipulation for this book, and the next paragraph widens it.}"
+  ],
+  [
+   284,
+   "\\cpara{Widens the definition to morality, and to what we would care about ``if we were wiser and better people.''}"
+  ],
+  [
+   491,
+   "\\cpara{Adds everyday values that are not moral: art, food, sex, friendship, a film with a friend.}"
+  ],
+  [
+   751,
+   "\\cpara{Gives the reason to study values: we do not always act as we wish. Preferences conflict, we can want different desires, and we can lack the will or attention to act on the ones we have.}"
+  ],
+  [
+   1059,
+   "\\cpara{States that humans are not consistent enough to have utility functions, and equates not acting as we wish with not being ``instrumentally rational.'' No evidence is given here. The book gives it later: ``The Allais Paradox'' argues that the subjects of those experiments ``can't have a consistent utility function over outcomes.''}"
+  ],
+  [
+   1368,
+   "\\cpara{Asserts a second gap, between what we think we wish and what we actually wish. No example is given here. The cases are left to the sequence that follows, which the introduction describes as being ``on failed attempts at theories of value.''}"
+  ],
+  [
+   1515,
+   "\\cpara{Says philosophers disagree about what we want, what we ought to want, and what ``ought'' means (the last is the subject of metaethics). The surveys bear this out for moral theory. In the 2009 PhilPapers survey of 931 philosophers, 25.9, 23.6 and 18.2 per cent accepted or leaned toward deontology, consequentialism and virtue ethics, and 32.3 per cent chose ``Other.'' On metaethics there was more agreement: 56.4 per cent accepted or leaned toward moral realism, 27.7 per cent anti-realism. The ``corpses'' of failed principles is a joke; its literal content, that no single principle has won general assent, fits these figures.}"
+  ],
+  [
+   1927,
+   "\\cpara{Draws the practical consequence. For anyone who needs a usable statement of goals, from AI design to choosing a charity, the field's record ``does not bode well.''}"
+  ],
+  [
+   2395,
+   "\\cpara{Previews the book's three sequences. The names match the book's contents.}"
+  ],
+  [
+   2813,
+   "\\cpara{Ranks application above theory, on the premise that ``The cash value of a normative theory is how well it translates into normative practice.'' The premise is stated, not argued. It is close to the pragmatist view of theories. William James used ``cash-value'' in this sense and wrote, in \\textsc{Pragmatism} (1907): ``Theories thus become instruments, not answers to enigmas.''}"
+  ],
+  [
+   3204,
+   "\\cpara{Reduces the problem of application to one question: when to trust snap judgments, and when to override them.}"
+  ],
+  [
+   3478,
+   "\\cpara{Answers that it depends on the case, and promises examples. This matches the book's last sequence, which has arguments on both sides: for calculation over feeling (``When lives are at stake, I shut up and multiply,'' in ``The `Intuitions' Behind `Utilitarianism'\\,''), and for keeping ethical rules even against one's own calculation (``Ethical Injunctions'').}"
+  ],
+  [
+   3979,
+   "\\cpara{Poses the first of the book's two questions: which outcomes are valuable.}"
+  ],
+  [
+   4116,
+   "\\cpara{Introduces fun theory. The attribution checks: Yudkowsky used the term in January 2002, in a mailing-list post titled ``Singularity Fun Theory'' (SL4 archive). Two later posts in this book, ``Serious Stories'' and ``Value is Fragile,'' draw on it.}"
+  ],
+  [
+   4501,
+   "\\cpara{Links fun theory to transhumanism, names one debate it raises, and lists futurist ideas that appear elsewhere in the book (cryonics, mind uploading, space colonization).}"
+  ],
+  [
+   4710,
+   "\\cfact{Close to the standard definition. The Transhumanist FAQ (version 2.1, 2003, by Nick Bostrom) has ``The intellectual and cultural movement that affirms the possibility and desirability of fundamentally improving the human condition through applied reason, especially by developing and making widely available technologies to eliminate aging and to greatly enhance human intellectual, physical, and psychological capacities.'' The FAQ adds desirability, and names as the means technologies that change human beings themselves.}"
+  ],
+  [
+   4976,
+   "\\cfact{Where these sit in the literature. The view that only pleasure is good in itself is ``Ethical or evaluative hedonism,'' distinct from the psychological thesis that ``only pleasure or pain motivates us'' (\\textsc{Stanford Encyclopedia}, ``Hedonism''). Eudaimonia is ``the Greek word commonly translated `happiness','' and eudaimonist accounts are ``a version of the `objective list' theory of well-being,'' one of the three standard kinds, with hedonist and desire theories (\\textsc{Stanford Encyclopedia}, ``Well-Being''). The next post argues against hedonism in the first sense.}"
+  ],
+  [
+   5325,
+   "\\cpara{Says, without a source, that utopia-planning is neglected, and gives two reasons: it seems naive, and utopias have gone badly in practice. The etymology checks: the word is Thomas More's coinage (1516), from the Greek ou, ``not,'' and topos, ``place'' (etymonline).}"
+  ],
+  [
+   5697,
+   "\\cpara{Argues, hedged (``it's not obvious''), that without aiming at a good long-term future, short-term pursuits may not add up to one. The opposing view has a well-known defender. Karl Popper favoured ``piecemeal social engineering,'' aimed at ``generally-acknowledged social ills'' ``rather than attempts to impose some preconceived idea of the `good' upon society as a whole'' (the \\textsc{Stanford Encyclopedia}'s words, in ``Karl Popper'').}"
+  ],
+  [
+   6036,
+   "\\cpara{Poses the second question: how good ends relate to good means.}"
+  ],
+  [
+   6171,
+   "\\cpara{Gives cases where the process matters most. In a game we want to play, not to be declared the winner.}"
+  ],
+  [
+   6417,
+   "\\cpara{Gives a case of the reverse kind, saving a family member's life, where the outcome outweighs the process. The same contrast appears in the book's last sequence: ``The `Intuitions' Behind `Utilitarianism'\\,'' says that in multiplying, complication is to be avoided ``at least if you care more about the destination than the journey.''}"
+  ],
+  [
+   6809,
+   "\\cpara{Says that often what we care about is how the world turns out, above all for the beings in it that can feel.}"
+  ],
+  [
+   7038,
+   "\\cpara{Asks how theory fares against feeling in such cases, and how actions relate to consequences morally. The second question divides consequentialism, ``the view that normative properties depend only on consequences'' (\\textsc{Stanford Encyclopedia}, ``Consequentialism''), from deontology.}"
+  ],
+  [
+   7229,
+   "\\cpara{Ends by narrowing the task to what we mean by these questions, and what we build into ``valuable'' at the start of the inquiry.}"
+  ],
+  [
+   7447,
+   "\\cpara{Gives an example of a transhumanist argument, from ending aging. It is offered as an example of the view, not as the introduction's own claim.}"
+  ],
+  [
+   7969,
+   "\\cpara{Points to surveys of the enhancement debate. Sandel describes the objection as ``the hubris objection.'' The problem, in Sandel's words, ``lies less in the perfection it seeks than in the human disposition it expresses and promotes,'' a ``drive to mastery'' that ``may even destroy'' an ``appreciation of the gifted character of human powers and achievements.'' The introduction's gloss gives the last part.}"
+  ],
+  [
+   8466,
+   "\\cpara{Cites Bostrom's history of transhumanist thought.}"
+  ],
+  [
+   8705,
+   "\\cpara{Cites Sandel's paper.}"
+  ],
+  [
+   8846,
+   "\\cpara{Cites Bostrom and Savulescu's survey.}"
+  ]
+ ]
+}
