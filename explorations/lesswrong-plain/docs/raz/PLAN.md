@@ -50,4 +50,4 @@ posts are merged in.
 | 2a | Overly Convenient Excuses, Politics and Rationality, Against Rationalization, Against Doublethink | 33 | yes | yes | 98a40e5 |
 | 2b | Seeing with Fresh Eyes, Death Spirals, Letting Go (rest of Book II) | 33 | yes | yes | 5320a09 |
 | 3a | The Simple Math of Evolution, Fragile Purposes (Book III) | 24 | yes | yes | 4bf32c7 |
-| 3b | A Human's Guide to Words (rest of Book III) | 26 | yes | yes | see git log |
+| 3b | A Human's Guide to Words (rest of Book III) | 26 | yes | yes | b4b7634 |
