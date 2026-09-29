@@ -1,0 +1,193 @@
+{
+ "slug": "ethical-injunctions",
+ "header": "\\post{Ethical Injunctions}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/dWTEtgBfFaz6vjwQf/ethical-injunctions}\n",
+ "skeleton_sha": "969cce1624eea4fe167308d64095c901639eebec9e9c0ae33655a73f9114edc2",
+ "post_sha": "9a43a6b9869ccbc866ce74ffe94384f5454f3adea2b61c0a1ae714e1f8db296a",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{The epigraph comes from the author's ``The Moral Void'' (30 June 2008), not in the book, where the question asked whether you would kill babies if it was ``inherently'' the right thing to do.}"
+  ],
+  [
+   428,
+   "\\cpara{Announces the subject: the decision theory of things you should not do even when they seem right.}"
+  ],
+  [
+   604,
+   "\\cpara{Sets up the AI case: a self-improving AI whose goals are not yet finished.}"
+  ],
+  [
+   871,
+   "\\cpara{Says that flawed goal systems tend to make an AI resist correction, and an advanced one might deceive its programmers to reach its flawed goal.}"
+  ],
+  [
+   1522,
+   "\\cpara{Draws the inference the rule will use: if the AI decides to deceive its programmers, that is evidence its goals have gone wrong.}"
+  ],
+  [
+   2108,
+   "\\cpara{Proposes a goal system that knows it is incomplete and can keep a rule: if it decides that fooling its programmers is right, it shuts down.}"
+  ],
+  [
+   2756,
+   "\\cpara{Explains why the shutdown must be automatic: a malfunctioning AI asked to weigh the shutdown would probably decide against it.}"
+  ],
+  [
+   3418,
+   "\\cpara{Says the mathematics is not yet known, and that such a system ``should'' be possible but is ``only a dream''.}"
+  ],
+  [
+   3916,
+   "\\cfact{Later work bears out the caution on a related problem. In 2015 the author and colleagues wrote of proposals for an AI that shuts down safely when a button is pressed: ``none have yet been demonstrated to satisfy all of our intuitive desiderata, leaving this simple problem in corrigibility wide-open'' (Soares, Fallenstein, Yudkowsky and Armstrong, ``Corrigibility'').}"
+  ],
+  [
+   3930,
+   "\\cpara{Turns to human ethics and states the first injunction: never murder an innocent person who has helped you, even if it seems right, because a mistake is far more likely.}"
+  ],
+  [
+   4430,
+   "\\cpara{The facts I could check match Wikipedia's articles on the Hydro and the sabotage: the ferry sank on 20 February 1944 in the deepest part of Lake Tinn, 18 died and 29 survived, and four German soldiers were rescued although some rescuers objected. The ferry article names four saboteurs. Accounts of the guard differ: in Wikipedia's, Knut Lier-Hansen talked him round by saying he was a worker who wanted to sleep on board. I could not check Rhodes, or whether the watchman was among the dead.}"
+  ],
+  [
+   5624,
+   "\\cfact{Overstated. In June 1942 the German program was continued only for energy production, and its reactor experiments went on: the last, at Haigerloch in early 1945, had 1.5 tons of heavy water. The Hydro carried about 500 kg, which Wikipedia, citing a 2005 NOVA investigation, calls too little to supply one reactor (Wikipedia, ``German nuclear program during World War II'', ``Haigerloch atomic pile'', ``Norwegian heavy water sabotage'').}"
+  ],
+  [
+   5638,
+   "\\cpara{Leaves the case open: the author cannot say a word against it. The hedge on the Bomb matches the scholarly consensus that the Germans ``had never been close to producing nuclear weapons'' (Wikipedia, ``German nuclear program during World War II''). The first injunction is thus shown with a case the author will not condemn, which fits the post's later refusal to endorse absolute injunctions.}"
+  ],
+  [
+   5868,
+   "\\cpara{Introduces the second injunction, against deceiving yourself.}"
+  ],
+  [
+   6247,
+   "\\cpara{Says the author knows of no one knowingly faced with an exception, and sets aside the case of rehearsing a lie for the Gestapo, since the truth is still known.}"
+  ],
+  [
+   6657,
+   "\\cpara{Grants that false beliefs have often helped people, but compares knowing which ones will help to knowing which lottery ticket will win.}"
+  ],
+  [
+   7165,
+   "\\cpara{Calls self-deceptions ``black swan bets'': they pay small benefits and occasionally blow up, and the self-deceived cannot estimate the penalty.}"
+  ],
+  [
+   7218,
+   "\\cfact{The term is Nassim Nicholas Taleb's (from 2001, and \\textsc{The Black Swan}, 2007): a surprising, rare event with a major effect (Wikipedia, ``Black swan theory'').}"
+  ],
+  [
+   7806,
+   "\\clogic{Stated without a hedge. Neither quantity is measured, and the comparison assumes that cryonic preservation would have allowed revival, which has not been shown (see the notes on ``When Science Can't Help''). No evidence is given that belief in an afterlife is why preservation was not adopted.}"
+  ],
+  [
+   8055,
+   "\\cpara{Adds that surviving a few such bets encourages more, until one blows up.}"
+  ],
+  [
+   8298,
+   "\\cpara{Concludes that one cannot know when a false belief is safe, since the risk is invisible from inside.}"
+  ],
+  [
+   8644,
+   "\\cpara{Names the injunction against self-deception, and explains the word ``ethical'': the rule guards you from your own cleverness.}"
+  ],
+  [
+   8986,
+   "\\cpara{Restates what an injunction is: a rule to refrain even when your brain has computed that the act is right.}"
+  ],
+  [
+   9293,
+   "\\cpara{The first ground is the corrupted hardware of ``Ends Don't Justify Means (Among Humans)'': in some kinds of case, corruption is likelier than a correct calculation. The lottery analogy fits: some tickets win, but buying one is still unjustified.}"
+  ],
+  [
+   9955,
+   "\\cpara{The second ground: some kinds of action blow up for reasons outside the decider's model, so a calculation inside the model is not enough.}"
+  ],
+  [
+   10318,
+   "\\cpara{States the standard objection to such views, and states it fairly. Against rule consequentialism it takes the form of a charge of incoherence, for ``maintaining that an act can be morally permissible or even required though the act fails to maximise expected good'' (Stanford Encyclopedia, ``Rule Consequentialism'').}"
+  ],
+  [
+   10706,
+   "\\cpara{The first reply classifies the objection as the cleverness the author warns against. That is a label; the arguments come in the next paragraphs.}"
+  ],
+  [
+   10868,
+   "\\cpara{The second reply: an AI that has decided on something disastrous should shut down, not reassess, because the reassessment may be corrupted too.}"
+  ],
+  [
+   11256,
+   "\\cpara{The third reply is the author's own history, set out in the linked ``Protected From Myself'' (19 October 2008, not in the book), where the author writes that ethical constraints had ``put me in a recoverable position'' after unforeseen mistakes. Here it is only mentioned.}"
+  ],
+  [
+   11699,
+   "\\cpara{Concedes that the answer to ``Am I still dumber than my ethics?'' is not automatically yes.}"
+  ],
+  [
+   11825,
+   "\\cpara{Gives one rule for asking the question: not at the moment of temptation.}"
+  ],
+  [
+   12056,
+   "\\cpara{Says inherited ethics carry the lessons of history, including the Enlightenment's, but only so far.}"
+  ],
+  [
+   12524,
+   "\\cpara{Says the author's own revisions made those inherited ethics stricter, not looser.}"
+  ],
+  [
+   12753,
+   "\\cpara{Contrasts this with others, who revise toward less strictness.}"
+  ],
+  [
+   12997,
+   "\\cpara{Turns to people who urged the author to lie about the Singularity for the greater good. ``Protected From Myself'' describes them at more length.}"
+  ],
+  [
+   13309,
+   "\\cpara{Lists what those advisers did not mention: corrupted hardware, lies that need further lies, the simplicity of honesty, black swans, and the loss of one's last defence against oneself.}"
+  ],
+  [
+   13808,
+   "\\cpara{Infers their ignorance from what they did not mention, with ``reasonably sure''.}"
+  ],
+  [
+   13915,
+   "\\cpara{Gives a sign of understanding ethics: with the new knowledge you still do not do what used to seem wrong.}"
+  ],
+  [
+   14172,
+   "\\cpara{Rejects both extremes: trusting inherited ethics blindly, and replacing them with conscious calculation after learning one or two reasons.}"
+  ],
+  [
+   14758,
+   "\\cpara{Answers the position with ``Ha''. The reasons were given earlier; this adds none.}"
+  ],
+  [
+   14878,
+   "\\cpara{Extends the dismissal, ``Double ha'', to readers who learned these reasons from this sequence and now plan to take them into account.}"
+  ],
+  [
+   15262,
+   "\\cpara{Reports, from the author's experience, that people who excuse themselves from their ethics move only toward lenience. Mill made a similar observation about every ethical creed: each allows some latitude for circumstances, and ``at the opening thus made, self-deception and dishonest casuistry get in'' (\\textsc{Utilitarianism}, ch.~2).}"
+  ],
+  [
+   15629,
+   "\\cfact{The line is spoken by the tiger Hobbes in Bill Watterson's comic strip \\textsc{Calvin and Hobbes}. A collection of the strip's lines gives it as ``I don't know which is worse\\ldots\\ that everyone has his price, or that the price is always so low.''}"
+  ],
+  [
+   16096,
+   "\\cfact{A version of John McCarthy's line ``When there's a will to fail, obstacles can be found,'' which the author uses as the epigraph of ``Use the Try Harder, Luke'' (later in the book).}"
+  ],
+  [
+   16173,
+   "\\cpara{Declines to endorse absolute injunctions for humans, while giving the one against self-deception ``tremendous force'', and defers any AI version until the mathematics is worked out.}"
+  ],
+  [
+   16976,
+   "\\cpara{Ends with the author's verdict on the unnamed people who have argued that unethical acts are rational. It restates the dismissals of the preceding paragraphs; the argument is earlier in the post.}"
+  ]
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "slug": "ends-don-t-justify-means-among-humans",
+ "header": "\\post{Ends Don't Justify Means (Among Humans)}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/K9ZaZXDnL3SEmYZqB/ends-don-t-justify-means-among-humans}\n",
+ "skeleton_sha": "af62b8e9ffdbdbf56bdb352f31fe58931f48dda4542b6c4b2db68a67b1c743d0",
+ "post_sha": "898f169205f7352812bb1d93c1276440998a71d25ebf4c3dbbd4fccb09f4eb69",
+ "edits": [],
+ "notes": [
+  [
+   176,
+   "\\cpara{Two epigraphs: a question about what justifies means, and Justin Corwin's remark about running ``on hostile hardware'', which gives the post its image.}"
+  ],
+  [
+   361,
+   "\\cpara{Recalls the previous post, ``Why Does Power Corrupt?'', which is not in the book (LessWrong dates both posts 14 October 2008). Its thesis is stated with a hedge: humans ``may have evolved'' to seek power as idealists and be corrupted by it, through an inherited tendency rather than a plan.}"
+  ],
+  [
+   762,
+   "\\cpara{Generalizes the thesis: people may do X for a prosocial reason Y while other adaptations make X serve a selfish end Z.}"
+  ],
+  [
+   1007,
+   "\\cpara{Announces the main question: what to do if one's own mind is ``corrupted hardware''.}"
+  ],
+  [
+   1247,
+   "\\cpara{Introduces the slogan ``The ends don't justify the means'' as something that looks like nonsense from the standpoint of classical decision theory.}"
+  ],
+  [
+   1504,
+   "\\cpara{The central inference: if the mind is biased toward seizing power, the feeling that a seizure would be altruistic is weak evidence that it would be.}"
+  ],
+  [
+   1823,
+   "\\cpara{Adds that the bias is not felt as a bias: its outputs look like plain facts about the world.}"
+  ],
+  [
+   2030,
+   "\\cpara{States the rule that follows: do not cheat to seize power even when it would benefit the tribe.}"
+  ],
+  [
+   2204,
+   "\\cpara{Explains why the rule says ``would'' and not ``seems'': a rule against what only seems beneficial invites the reply that the benefit is real.}"
+  ],
+  [
+   2498,
+   "\\cpara{Places the problem outside classical decision theory, and leaves its treatment in a reflective decision theory open (``I can't yet say'').}"
+  ],
+  [
+   2745,
+   "\\cpara{The remedy: once the bias is known, write rules that forbid the behaviour it produces, including murder ``for the good of the tribe''.}"
+  ],
+  [
+   3084,
+   "\\clogic{The danger was a standard objection to utilitarianism by 1861. Mill answers the charge that ``an utilitarian will be apt to make his own particular case an exception to moral rules, and, when under temptation, will see an utility in the breach of a rule, greater than he will see in its observance'' (\\textsc{Utilitarianism}, ch.~2). The post's evolutionary account of the danger is its own; the danger itself was familiar.}"
+  ],
+  [
+   3097,
+   "\\cpara{Introduces the philosopher's stipulated case, in which one murder certainly saves five lives.}"
+  ],
+  [
+   3621,
+   "\\cfact{This is the version of the trolley problem in which a person is pushed into the train's path. The problem was raised by Philippa Foot in 1967 and named by Judith Jarvis Thomson in 1976; cases of pushing come from the literature that followed (Wikipedia, ``Trolley problem'').}"
+  ],
+  [
+   3635,
+   "\\cpara{Says the prohibitions such a person holds ``seem well justified by some historical statistics''. The post gives none. The previous day's post gives cases, not statistics: the Communist revolutionaries, introduced with ``I would guess probably'', and George Washington's refusal of the crown.}"
+  ],
+  [
+   3922,
+   "\\cpara{Offers a reply the author has ``yet to hear''. A close relative is in the literature. R.~M. Hare's \\textsc{Moral Thinking} (1981) contrasts an ``archangel'', with ``superhuman powers of thought, superhuman knowledge and no weaknesses'', who would need no intuitive moral rules, with people who must rely on them (as summarized in Wikipedia, ``Two-level utilitarianism''). The reply's AI plays the archangel's part.}"
+  ],
+  [
+   4041,
+   "\\cpara{The reply: a human on corrupted hardware cannot be in the stipulated state of knowledge, so the human declines to answer, while an AI free of the bias would rightly kill one to save five.}"
+  ],
+  [
+   4836,
+   "\\cpara{Rejects the reply as a dodge: the world can force such choices, and every legal system answers a version of the question.}"
+  ],
+  [
+   5319,
+   "\\cfact{In English law one number has been written down: ``It is better that ten guilty persons escape than that one innocent suffer'' (Blackstone, \\textsc{Commentaries on the Laws of England}, 1760s; Wikipedia, ``Blackstone's ratio''). This supports the post's point.}"
+  ],
+  [
+   5333,
+   "\\cpara{The author's own position: humans should keep the prohibitions, which are not ``inherently'' right, while a society of well-calibrated AIs need not. The split has a precedent in Sidgwick, who suggested that calculating might be left to ``an elite group that is better at calculating utilities'' (the Stanford Encyclopedia's summary, ``Consequentialism'').}"
+  ],
+  [
+   5932,
+   "\\cpara{Applies the view to a Friendly AI: if it judges, after knock-on effects, that pushing one person is wiser, that is no alarm sign, because an AI would not have the human tendency to be corrupted by power.}"
+  ],
+  [
+   6989,
+   "\\clogic{Stated as fact, with no evidence for the ``specific cognitive circuits''. The post's first paragraph says humans ``may have evolved'' this tendency. The previous day's post offered the account with ``Call it a just-so story if you must'' and itself named ``A much more important objection'': the story needs redescribing for hunter-gatherer bands, which, as the author understood it, have egalitarian pressures.}"
+  ],
+  [
+   7118,
+   "\\cpara{A mirror case: minds biased the other way would need a reversed rule. It shows that on the post's account the rule is fitted to the direction of a known bias, not fixed in itself.}"
+  ],
+  [
+   7997,
+   "\\cpara{The conclusion, ``reflective consequentialism'', is the standard indirect consequentialist position, and it supports the post. The Stanford Encyclopedia (``Consequentialism'') reports: ``Utilitarians regularly argue that most people in most circumstances ought not to try to calculate utilities, because they are too likely to make serious miscalculations that will lead them to perform actions that reduce utility.'' Its entry ``Rule Consequentialism'' cites Mill, Sidgwick, Hare and Railton, among others, for the view.}"
+  ],
+  [
+   8470,
+   "\\clogic{The post takes a side, and the main published objection to such two-level views is that a person who knows the rules are only instruments will hold them less firmly, and cannot keep the two kinds of thinking apart (David McNaughton, \\textsc{Moral Vision}, 1988; Hare replied that he thinks this way himself; both as summarized in Wikipedia, ``Two-level utilitarianism''). ``Ethical Injunctions'', the next post in the book, takes up a version of this worry.}"
+  ]
+ ]
+}

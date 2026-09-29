@@ -52,8 +52,7 @@ slug). Helper scripts `scripts/insert.py`, `scripts/notes_ei.py`; untouched skel
   post's rule; the note says "a related problem".
 - Wikipedia, "Black swan theory" (`wp_Black_swan_theory.txt`). Matched: "an event that comes as
   a surprise, has a major effect"; "articulated by Nassim Nicholas Taleb, starting in 2001".
-  *The Black Swan* (2007) date is from general knowledge of the book, consistent with the
-  article's references; not separately fetched.
+  Also: "His 2007 book The Black Swan extended the metaphor".
 - SEP, "Rule Consequentialism" (`sep_consequentialism-rule.txt`). Matched: "Rule-consequentialism
   is accused of incoherence for maintaining that an act can be morally permissible or even
   required though the act fails to maximise expected good."

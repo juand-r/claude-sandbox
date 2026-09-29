@@ -78,3 +78,46 @@ Why: Same.
 - Before: ; colleagues who had agreed on ``serious possibility'' turned out to mean odds from 20 to 80 to 80 to 20.}
 - After: ; colleagues who had agreed on ``serious possibility'' turned out to mean odds from 20 to 80 to 80 to 20.}
 
+
+## annotated/afterwords/ends-don-t-justify-means-among-humans.tex
+
+Why: Fair reading: the post rejects the reply's refusal to consider forced cases, as the note itself grants, so "rejects less than it seems" is a point about rhetoric. The AI exemption needs only that an AI lack the bias, whatever its origin, so it does not depend on the evolutionary sentence; that sentence's firmness is a slip, kept in the notes.
+
+- Before: That account is the weakest step. The post's first paragraph says humans ``may have evolved'' the tendency, and the previous day's post offered it with ``Call it a just-so story if you must'' and raised an objection from egalitarian hunter-gatherer bands. By the Friendly AI paragraph it has become ``a specific biological adaptation, supported by specific cognitive circuits''. The case for exempting an AI from the rule depends on that sentence, and no evidence for it is given. Nor does the post give the ``historical statistics'' said to justify the human prohibitions.
+
+The trolley passage rejects less than it seems to. The post calls a reply a dodge, then reaches the same verdicts on the same ground: humans keep the prohibition because their judgment cannot be trusted, and an AI without the bias may push. What it rejects, as far as the text shows, is the reply's refusal to consider such cases. It grants that the world can force them, and notes that legal systems already weigh innocent against guilty.
+- After: The account is hedged at the start (humans ``may have evolved'' the tendency), and the previous day's post offered it with ``Call it a just-so story if you must.'' By the Friendly AI paragraph it is stated as fact, ``a specific biological adaptation, supported by specific cognitive circuits,'' with no evidence for the circuits. The exemption for an AI needs less than this: only that the AI lack the bias.
+
+- Before: In short: a sound and long-established idea, indirect consequentialism, given an evolutionary rationale that the post states as fact though its own opening and the previous day's post hedge it, and on which its exemption for AI depends.
+- After: In short: a sound and long-established idea, indirect consequentialism, given an evolutionary rationale and applied to AI much as Hare applied it to his archangel.
+
+
+## annotated/posts/ends-don-t-justify-means-among-humans.tex
+
+Why: Fair reading: the post rejects the reply's refusal to consider forced cases, as the note itself grants, so "rejects less than it seems" is a point about rhetoric. The AI exemption needs only that an AI lack the bias, whatever its origin, so it does not depend on the evolutionary sentence; that sentence's firmness is a slip, kept in the notes.
+
+- Before: \clogic{These are the verdicts of the reply the post has just called a dodge: prohibitions for humans, and killing one to save five allowed to an AI without the bias. The ground is also the same, untrustworthy human judgment. As far as the text shows, what the post rejects is the reply's refusal to consider the case, not its conclusions.}
+- After: 
+
+- Before:  The paragraph's case for exempting a Friendly AI rests on this sentence.}
+- After: }
+
+
+## honest/sections/ends-don-t-justify-means-among-humans.tex
+
+Why: Fair reading: the post rejects the reply's refusal to consider forced cases, as the note itself grants, so "rejects less than it seems" is a point about rhetoric. The AI exemption needs only that an AI lack the bias, whatever its origin, so it does not depend on the evolutionary sentence; that sentence's firmness is a slip, kept in the notes.
+
+- Before:  \nb{These are the verdicts of the reply the post called a dodge, reached on the same ground.}
+- After: 
+
+
+## annotated/afterwords/ethical-injunctions.tex
+
+Why: The Response grants that the argument is complete before the last third, so "dismisses instead of answering" overstates; recast as a description of the change of method.
+
+- Before: The argument is complete before this section, which adds characterization, not reasons.
+- After: The reasons were given earlier; this section adds the author's experience of those who argue otherwise.
+
+- Before: followed by a closing third that dismisses its opponents instead of answering them.
+- After: followed by a closing third drawn from the author's experience of those who argue otherwise.
+
