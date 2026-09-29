@@ -1,0 +1,101 @@
+{
+ "slug": "qualitatively-confused",
+ "header": "\\post{Qualitatively Confused}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/BwtBhqvTPGG2n2GuJ/qualitatively-confused}\n",
+ "skeleton_sha": "e90215be4c3b4fa5a5b02cc047b7249c79207fae7a44fcfbcc9f21ea81fdf55d",
+ "post_sha": "2b9ffeb6e6ffb2234bbca973f0385def284595bdcda4efb14b141179b31b37b3",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{States the thesis, with ``I suggest'': thinking of beliefs as all-or-nothing is a primary cause of confusing belief, truth and reality. This is a claim about what causes a confusion in people. The post goes on to show that probabilities keep the types apart; it gives no evidence about what causes the confusion.}"
+  ],
+  [
+   353,
+   "\\cpara{The ``archetypal postmodernist'' is the author's construction; no postmodernist is named or quoted, so the reader cannot check that anyone holds the view in this form. The replies that follow answer this version.}"
+  ],
+  [
+   440,
+   "\\cpara{The opponent's first claim: truth is relative to societies.}"
+  ],
+  [
+   641,
+   "\\cpara{Answers that what differs between societies is belief, and that belief and truth are of different types.}"
+  ],
+  [
+   812,
+   "\\cpara{The opponent's second claim: ``I believe `snow is white''' and ``\\,`Snow is white' is true'' express the same opinion.}"
+  ],
+  [
+   1077,
+   "\\cpara{Replies that the two differ, since the author can conceive that a belief of theirs is false.}"
+  ],
+  [
+   1234,
+   "\\cpara{The Wittgenstein line matches the Anscombe translation of \\textsc{Philosophical Investigations}, Part II, section x, apart from an added comma. The same section states Moore's paradox and holds something like both sides of this exchange: ``the expression `I believe that this is the case' is used like the assertion `This is the case'; and yet the hypothesis that I believe this is the case is not used like the hypothesis that this is the case.'' See the note on the same line in ``Belief in Self-Deception''.}"
+  ],
+  [
+   1473,
+   "\\cpara{The diagnosis: the two-valued contrast of belief and disbelief looks like the two-valued contrast of true and false, so they are easily confused.}"
+  ],
+  [
+   1711,
+   "\\cpara{Turns to probabilities: a 70\\% belief is ``more true'' than a 60\\% one if snow is white, and less than an 80\\% one.}"
+  ],
+  [
+   2206,
+   "\\cpara{Proposes ``accuracy'' instead of ``truth'' for how well a probability matches reality.}"
+  ],
+  [
+   2501,
+   "\\cpara{Introduces the logarithmic score. ``A very natural way'' is fair. The log score is strictly proper: you get the best expected score by reporting the probability you actually hold. For more than two outcomes, it and its linear rescalings are the only strictly proper rules that depend only on the probability given to what happened; for two outcomes, as here, others such as the Brier score (1950) are proper too (Wikipedia, ``Scoring rule'').}"
+  ],
+  [
+   2796,
+   "\\cpara{Computes the score if snow is white. The arithmetic checks: $\\log_2 0.7 \\approx -0.51$.}"
+  ],
+  [
+   2957,
+   "\\cpara{Computes the score if snow is not white, and notes that it is worse.}"
+  ],
+  [
+   3203,
+   "\\cpara{Computes the expected score, $0.7 \\times (-0.51) + 0.3 \\times (-1.73) \\approx -0.88$ bits, and observes that the actual score will be either better or worse than expected, never equal to it. Correct.}"
+  ],
+  [
+   3589,
+   "\\cpara{Distinguishes the belief about snow from the belief about that belief, which can be near-certain and score near zero.}"
+  ],
+  [
+   3967,
+   "\\cpara{Restates the distinction, with the author's own caveat that beliefs about beliefs ``are not always accurate''.}"
+  ],
+  [
+   4372,
+   "\\cpara{Says that in all-or-nothing reasoning every level has the value 1, which makes the levels easy to mix up.}"
+  ],
+  [
+   4714,
+   "\\cpara{Calls it a type error to say that a probability assignment is ``true'': the fact that you hold it is true, but the assignment itself is scored for accuracy.}"
+  ],
+  [
+   5191,
+   "\\cpara{Links the error to ``Probability is in the Mind'', posted two days earlier.}"
+  ],
+  [
+   5433,
+   "\\cpara{Claims that distinct inner representations for belief and belief-about-belief make the Mind Projection Fallacy less likely. The claim is offered as a hope (``I hope''), and the post gives no evidence for it.}"
+  ],
+  [
+   6121,
+   "\\cpara{Assigns each level its range: probabilities in $(0,1)$, truth values in \\{true, false\\}, accuracy in $(-\\infty,0)$. The ranges are right: the logarithm of a number between 0 and 1 is negative.}"
+  ],
+  [
+   6894,
+   "\\cpara{Restates the coin example of ``Probability is in the Mind'': the coin has no partial information about itself, so uncertainty is not a property of the coin.}"
+  ],
+  [
+   7481,
+   "\\cpara{Says that calling the coin itself true or false would be a type error: ``The territory is not the map.''}"
+  ]
+ ]
+}

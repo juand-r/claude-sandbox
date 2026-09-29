@@ -1,0 +1,41 @@
+{
+ "slug": "think-like-reality",
+ "header": "\\post{Think Like Reality}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/tWLFWAndSZSYN6rPB/think-like-reality}\n",
+ "skeleton_sha": "b2b8e3da1ae832c6b9b81ff4b444e68589276444167d34643ec510225fab260b",
+ "post_sha": "c6170122cb99c3ee061f76a802e9c41751a9a25dad7ac596b02b33746454a5c3",
+ "edits": [],
+ "notes": [
+  [
+   122,
+   "\\cpara{Opens with an unhedged verdict: whoever calls quantum physics weird ``will never understand physics no matter how many books they read.'' Feynman is a counterexample. In \\textsc{QED} (1985) he wrote that quantum electrodynamics ``describes Nature as absurd from the point of view of common sense'' and hoped his readers could ``accept Nature as She is''. In the same passage he makes this post's own point: if you do not like how nature is, ``that's going to get in the way of your understanding it.'' Calling nature strange did not stop him from understanding it; what he warned against was refusing to accept it.}"
+  ],
+  [
+   531,
+   "\\cpara{States as fact (``in fact'') that reality is ``a perfectly normal cloud of complex amplitude in configuration space''. That is one reading of quantum mechanics, which takes the wave function to be the physical reality. It is not settled: Wikipedia's survey (``Interpretations of quantum mechanics'') reports that ``no consensus has been reached among physicists and philosophers of physics'', and on epistemic readings such as QBism ``a quantum state is not an element of reality''. The post dates from May 2007; the book argues for its view of quantum mechanics only in the later sequence ``Quantum Physics and Many Worlds'' (on many-worlds, see the notes on ``Making Beliefs Pay Rent'').}"
+  ],
+  [
+   1159,
+   "\\cpara{Explains the intuition of solid objects as an evolutionary adaptation, and says that at the fundamental level there are no ``persistent objects bouncing around in 3 spatial dimensions.'' That, too, depends on the interpretation. In the de Broglie--Bohm theory, ``Particles, which always have positions, are guided by the wavefunction'' and the theory ``takes place in a single spacetime'' (Wikipedia).}"
+  ],
+  [
+   1953,
+   "\\cpara{The argument: surprise measures a poor model, intuition is a model, so good intuitions make reality look normal. The probabilistic step is stated with care (``consistently'' hits events the model thought unlikely).}"
+  ],
+  [
+   2682,
+   "\\cpara{Grants that quantum physics may feel strange and that pretending otherwise is ``denying your confusion''. The claims that thinking ``How bizarre!'' wastes time, throws you back into the old frame and ``feeds your sense of righteous indignation'' are stated as facts about the mind without evidence.}"
+  ],
+  [
+   3205,
+   "\\cpara{Extends the point to people: ``I just don't understand how a PhD physicist can believe in astrology'' shows a poor model of human psychology, and compartmentalization explains the case.}"
+  ],
+  [
+   3858,
+   "\\cpara{The author's own practice: avoid ``I just don't understand how\\ldots'' as an expression of indignation.}"
+  ],
+  [
+   4112,
+   "\\cpara{Concludes that surprise is a property of models, not facts. The paragraph keeps a needed caveat: first ``check if the alleged fact is really factual.''}"
+  ]
+ ]
+}

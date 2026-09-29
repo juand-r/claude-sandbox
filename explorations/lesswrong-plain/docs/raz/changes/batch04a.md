@@ -248,3 +248,61 @@ Why: Same.
 - Before: without saying that it is of a different kind.
 - After: without saying that it is of a different kind; the author's case for such priors is made elsewhere, in ``Occam's Razor.''
 
+
+## annotated/posts/the-quotation-is-not-the-referent.tex
+
+Why: Nitpick: provably equivalent statements are still distinct propositions, as the note itself granted.
+
+- Before: \clogic{They are different statements, but when the encoded system is the system itself, as for Peano arithmetic, one is a theorem exactly when the other is. If P is provable, so is []'P' (the first of Löb's conditions). If []'P' is provable, it is true, since Peano arithmetic proves only truths about the numbers, so P is provable. The pair that comes apart is P and []'P' as sentences inside the system: by Löb's theorem, the system proves that []'P' implies P only when it already proves P (SEP, ``Provability Logic''). The post's point about levels of quotation stands; the example does not show two statements that can differ in truth.}
+- After: 
+
+
+## annotated/afterwords/the-quotation-is-not-the-referent.tex
+
+Why: Same; the Tarski detail stays as information in the margin.
+
+- Before: 
+
+Two illustrations are looser than the text suggests, though the point survives both. For Peano arithmetic, the two statements the post calls ``very distinct propositions'' are theorems together or not at all. Tarski's family of sentences was his test of a definition of truth, not the definition itself.
+- After: 
+
+
+## honest/sections/the-quotation-is-not-the-referent.tex
+
+Why: Same.
+
+- Before:  \nb{They are different statements, but for Peano arithmetic each is a theorem exactly when the other is. The two that can differ in truth are P itself and the sentence, inside the system, saying that P is provable.}
+- After: 
+
+
+## annotated/afterwords/chaotic-inversion.tex
+
+Why: Trivia about the book's contents.
+
+- Before: 
+
+The phrase ``inverted stupidity'' is used as if the reader knew it, with a reference to its use for ``high abstract things like Artificial Intelligence''. It appears nowhere else in the book.
+- After: 
+
+
+## honest/sections/chaotic-inversion.tex
+
+Why: Same.
+
+- Before:  \nb{The phrase ``inverted stupidity'' appears nowhere else in the book.}
+- After: 
+
+
+## annotated/afterwords/reductionism.tex
+
+Why: Scope, stated once and out of the verdict; the physics slip shortened, since its point survives.
+
+- Before: The opposition the post answers is weak. It consists of a gunner who makes an error in physics and an imagined antireductionist who speaks one line. The post does not take up the philosophers who argue, from multiple realizability, that higher-level properties are distinct from physical ones even though every particular thing is physical.
+- After: The opposition the post answers is a gunner who makes an error in physics and an imagined antireductionist who speaks one line. Philosophers who argue, from multiple realizability, that higher-level properties are distinct from physical ones are outside its scope.
+
+- Before: One slip in the physics recurs. The post says the airplane obeys ``chromodynamics'' and uses ``chromodynamic'' three more times for the fundamental model. Chromodynamics is the theory of the strong force; the airplane's aerodynamics, like ordinary matter generally, is governed by electromagnetism, and the airplane contains electrons as well as quarks. The argument survives with the Standard Model in place of chromodynamics.
+- After: One slip recurs: ``chromodynamics'' is the theory of the strong force, while the airplane's aerodynamics is governed by electromagnetism. The argument survives with the Standard Model in its place.
+
+- Before: called obviously correct and argued against a mistaken gunner and a one-line imagined opponent rather than its serious critics.
+- After: called obviously correct and argued against a mistaken gunner and a one-line imagined opponent.
+

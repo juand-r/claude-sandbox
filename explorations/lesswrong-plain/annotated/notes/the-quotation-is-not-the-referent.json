@@ -1,0 +1,65 @@
+{
+ "slug": "the-quotation-is-not-the-referent",
+ "header": "\\post{The Quotation is not the Referent}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/np3tP49caG4uFLRbS/the-quotation-is-not-the-referent}\n",
+ "skeleton_sha": "0184feeac9f1ad52ced5a12913076bc78201ef70d727647a3a58be88bda3e7cd",
+ "post_sha": "aeb1362a92597ff13b0575d472f328580a50aed72d1be118a402356b8850cf0b",
+ "edits": [],
+ "notes": [
+  [
+   152,
+   "\\cpara{States the rule that equals may be substituted for equals, with an arithmetic example. The example is correct.}"
+  ],
+  [
+   434,
+   "\\cpara{The puzzle is Frege's. His paper ``On Sense and Reference'' (1892) used the morning star and the evening star, and the \\textsc{Stanford Encyclopedia of Philosophy} (``Gottlob Frege'') says that ``Frege is generally credited with identifying'' this puzzle about belief reports. The post says only that the problem is ``usually phrased'' this way and names no one.}"
+  ],
+  [
+   955,
+   "\\cpara{The second version also has a history. Frege held that a sentence stands for its truth value, ``The True'' or ``The False'', so on his account this substitution threatens in exactly this form. His answer was that after ``believes'' a sentence stands instead for the thought it expresses (SEP, ``Gottlob Frege'').}"
+  ],
+  [
+   1200,
+   "\\cpara{Offered as something to ``imagine'', but it happened. John McCarthy, in ``First Order Theories of Individual Concepts and Propositions'' (1979), wrote that ``The problem identified by Frege\\ldots arises in artificial intelligence as well as in philosophy and linguistics for any system that must represent information about beliefs, knowledge, desires''.}"
+  ],
+  [
+   1572,
+   "\\cpara{The diagnosis, offered as the author's own view (``P'rsnally''). It is close to Frege's answer: after ``believes'', he held, ``the morning star'' stands not for Venus but for a way of conceiving Venus, its sense. The post puts a quoted item where Frege put the sense.}"
+  ],
+  [
+   1916,
+   "\\cpara{McCarthy's remedy in 1979 was this type distinction. His system keeps a separate term for the concept of a thing: ``Mike is the concept of Mike; i.e. it is the sense of the expression `Mike'. mike is Mike himself.'' (In his notation a capital marks a concept. Quoted from the revised version on McCarthy's website.)}"
+  ],
+  [
+   2217,
+   "\\cpara{``The whole paradox stems from the failure to use quote marks'' is stated as settling the matter. Quotation marks were already one of the rival remedies in the argument the post mentions. McCarthy presents his approach as working ``without modal operators or quotation marks and without the restrictions on substituting equals for equals that either device makes necessary.'' The post does not say which proposals it disagrees with, or why quotation succeeds where they fail.}"
+  ],
+  [
+   2466,
+   "\\cpara{Links the point to an earlier post and to units in physics. The link is accurate: ``Terminal Values and Instrumental Values'' (November 2007) treats terminal and instrumental values as ``separate and incompatible types'' and calls converting expected utility into utility a ``TYPE ERROR''.}"
+  ],
+  [
+   3034,
+   "\\cpara{A light paragraph listing ways in which beliefs differ from planets. The ``few micrograms'' is a joke, not a measurement.}"
+  ],
+  [
+   3321,
+   "\\cpara{Proposes a visibly different encoding. The numbers check: each letter is its place in the alphabet and the space is 0, so ``morning star'' is 13.15.18.14.9.14.7.0.19.20.1.18 and ``evening star'' is 5.22.5.14.9.14.7.0.19.20.1.18.}"
+  ],
+  [
+   3732,
+   "\\cpara{Offers mathematical logic as training in keeping quotation levels apart. The gloss of the second statement is right.}"
+  ],
+  [
+   4236,
+   "\\cpara{Introduces Tarski's sentences. In Tarski's work they are the test that a definition of truth must pass (his ``Convention T''); the definition itself is a single formula from which all of them can be derived, given for formal languages (SEP, ``Tarski's Truth Definitions''). ``Tried to define \\ldots\\ using'' the family is loosely put, but the post uses the sentences only for the quotation point, which does not depend on the difference.}"
+  ],
+  [
+   4512,
+   "\\cpara{Says that the sentences seem meaningful once one separates encoded sentences from states of the world.}"
+  ],
+  [
+   4683,
+   "\\cpara{Distinguishes truth from reality. ``Saying `true' compares a belief to reality'' states a correspondence view without argument; rival views of truth accept Tarski's sentences too (see the notes on ``The Simple Truth'' and ``What Is Evidence?''). The distinction the paragraph needs, between a belief and what it is about, holds on any of these views.}"
+  ]
+ ]
+}

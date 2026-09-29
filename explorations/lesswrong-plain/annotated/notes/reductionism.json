@@ -1,0 +1,149 @@
+{
+ "slug": "reductionism",
+ "header": "\\post{Reductionism}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/tPqQdLCuxanjhoaNs/reductionism}\n",
+ "skeleton_sha": "ce3bd96467cf4092d2a4e4e38c2f5a26255b9f47b0ef9b586479143554f7d3dc",
+ "post_sha": "16eaead2fef0f1f6373d0b2fc5a346d6132f252128d2859dda9259601d04d633",
+ "edits": [],
+ "notes": [
+  [
+   110,
+   "\\cpara{Introduces the topic through a reader's suggestion. The date checks: the comment was posted on 9 April 2007 under the author's Overcoming Bias post ``Suggested Posts''.}"
+  ],
+  [
+   248,
+   "\\cpara{The quotation is cut in the middle and at the end, and the cuts remove the tone. The full comment says the current view is ``obviously correct, unbiased, rational, and factual,'' calls past views ``based solely on superstitious nonsense and irrational dogma,'' and ends: ``A nice coda would be some well-placed rocks thrown at anyone who would challenge the current paradigm, since they are obviously just fools or liars,'' with a link to a book on extrasensory perception. Read whole, it reads as a sarcastic challenge, not a request. The post's ``[\\ldots]'' and final dash mark the cuts, but a reader of the excerpt cannot tell the tone.}"
+  ],
+  [
+   494,
+   "\\cpara{Says the request was judged legitimate but had to wait for the Mind Projection Fallacy posts.}"
+  ],
+  [
+   750,
+   "\\cpara{Sets aside materialism for later and takes up reductionism.}"
+  ],
+  [
+   910,
+   "\\cpara{The strong claim, qualified by ``according to the meaning I will give''. On the consensus the post may have support: P.~W. Anderson wrote in ``More Is Different'' (1972) that the reductionist hypothesis may be controversial ``among philosophers, but among the great majority of active scientists I think it is accepted without question.''}"
+  ],
+  [
+   1209,
+   "\\cpara{Raises the obvious objection: even well-supported theories such as general relativity may be overturned.}"
+  ],
+  [
+   1393,
+   "\\cpara{Answers that science does not go back to theories as thoroughly refuted as Newtonian mechanics, while granting that some wounded theories have recovered.}"
+  ],
+  [
+   1756,
+   "\\cpara{The claim is conditional: dismissing past civilizations is safe ``when'' what they believed has been falsified. The post does not say which past view about reduction was falsified, or how. The next paragraph turns to a different reason.}"
+  ],
+  [
+   1935,
+   "\\cpara{Frames reductionism as the absence of a belief. The post later states the same thesis positively: ``the way physics really works, as far as we can tell, is that there is only the most basic level.'' Disbelieving that higher levels are in the territory and believing that only the base level is there are one claim, stated two ways.}"
+  ],
+  [
+   2102,
+   "\\cpara{The gunner anecdote. The gunner is wrong and the author's reply is right: relativity's corrections to a shell's path are of order a billionth or less (at a kilometre per second, $v^2/c^2 \\approx 10^{-11}$): too small to matter, but not zero.}"
+  ],
+  [
+   2381,
+   "\\cpara{The author's reply: relativity may be slower to compute, but its answer is always more accurate.}"
+  ],
+  [
+   2667,
+   "\\cpara{The gunner restates his claim: different laws govern slow objects.}"
+  ],
+  [
+   2867,
+   "\\cpara{Ends the anecdote with a joke.}"
+  ],
+  [
+   2993,
+   "\\cpara{States that one fundamental theory covers both the airplane and the gold nuclei.}"
+  ],
+  [
+   3285,
+   "\\cfact{Loosely stated. Chromodynamics is the theory of the strong force between quarks and gluons (Wikipedia, ``Quantum chromodynamics''). What governs an airplane's aerodynamics, and ordinary matter generally, is electromagnetism: Anderson (1972) writes that ``all ordinary matter obeys simple electrodynamics and quantum theory.'' A 747 is also made of electrons, which are not quarks. The fundamental theory is the Standard Model, which covers the electromagnetic, weak and strong forces, with gravity outside it. The post's later ``chromodynamic model'' (three more times) has the same slip; the argument works with the Standard Model in its place.}"
+  ],
+  [
+   3299,
+   "\\cpara{The distinction the post turns on: one fundamental theory, many models.}"
+  ],
+  [
+   3570,
+   "\\cpara{Applies the map and territory distinction: the aerodynamic model's parts need not correspond one-to-one to the airplane's parts.}"
+  ],
+  [
+   3812,
+   "\\cpara{Gives cost as the reason for simpler models. The storage claim is right by a wide margin. A 747-400 weighs over 160 tonnes empty, about $10^{32}$ nucleons; the world could store about $2.9 \\times 10^{20}$ bytes in 2007 (Hilbert and L\\'opez, \\textsc{Science}, 2011). Anderson made the same distinction in 1972: the reductionist hypothesis ``does not by any means imply a `constructionist' one'', since reducing everything to fundamental laws ``does not imply the ability to start from those laws and reconstruct the universe.''}"
+  ],
+  [
+   4074,
+   "\\cpara{The glove-compartment saying: the scale of a map is a fact about the map.}"
+  ],
+  [
+   4412,
+   "\\cpara{Claims that a fundamental model, if it could be run, would predict better than the aerodynamic one.}"
+  ],
+  [
+   4597,
+   "\\cpara{Adds that such a model needs no explicit wings or airflow, only particle fields and forces, in principle.}"
+  ],
+  [
+   5048,
+   "\\cpara{The antireductionist is imagined, and speaks one line. With the gunner, this voice is the post's only opposition. The post does not take up the philosophers who hold that higher-level properties are distinct from physical ones although every particular thing is physical, a view built on arguments from multiple realizability (SEP, ``Scientific Reduction'', citing Putnam 1967 and Fodor 1974).}"
+  ],
+  [
+   5195,
+   "\\cpara{Says the claim is more than that one object can have descriptions at many levels.}"
+  ],
+  [
+   5342,
+   "\\cpara{The thesis. Philosophers draw this line as one between ``representational'' reduction, a relation between theories or models, and ``ontological'' reduction, a relation between the things they are about (SEP, ``Scientific Reduction'', following Van Gulick 2001). The post's thesis is ontological.}"
+  ],
+  [
+   5554,
+   "\\cpara{Contrasts the view with the gunner's: the laws do not change with scale; we change models for convenience.}"
+  ],
+  [
+   5824,
+   "\\cpara{Says the facts about wings and lift would be in the fundamental model implicitly.}"
+  ],
+  [
+   6105,
+   "\\cpara{Places the explicit representation of the wings in the mind of whoever studies the model.}"
+  ],
+  [
+   6421,
+   "\\cpara{Allows that the observer could derive many levels of description, and rules linking them.}"
+  ],
+  [
+   6655,
+   "\\cpara{Says that such a multi-level model feels, from inside, like an airplane made of many levels.}"
+  ],
+  [
+   6871,
+   "\\cpara{Links to ``Qualitatively Confused'' (two days earlier): a belief feels like looking at reality.}"
+  ],
+  [
+   7142,
+   "\\cpara{Concludes that the sense of a many-levelled system comes from the combined model in the mind.}"
+  ],
+  [
+   7474,
+   "\\cpara{Says the brain compresses because it cannot model even a hydrogen atom at the fundamental level.}"
+  ],
+  [
+   7782,
+   "\\cpara{The thesis stated positively, with ``as far as we can tell'': there is only the most basic level.}"
+  ],
+  [
+   8117,
+   "\\cpara{Contrasts the laws of physics with the mind of an engineer, which does contain separate entities for lift and wings.}"
+  ],
+  [
+   8386,
+   "\\cpara{Restates the thesis and says it dissolves the question ``How can you say the airplane doesn't really have wings'', naming ``really'' and ``see'' as the critical words. The answer itself is left to the reader. The next day's post, ``Explaining vs. Explaining Away'', answers the parallel question for the rainbow: it was ``explained'', while the haunts and gnomes of Keats's poem were ``explained away''.}"
+  ]
+ ]
+}
