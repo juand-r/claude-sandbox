@@ -1,0 +1,105 @@
+{
+ "slug": "privileging-the-hypothesis",
+ "header": "\\post{Privileging the Hypothesis}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/X2AD2LgtKgkRNPj2a/privileging-the-hypothesis}\n",
+ "skeleton_sha": "45c6e2493b59c9d002b9d7769d30f1619fed64226617f454d8882cdada93d772",
+ "post_sha": "67852f1d7334a2907e1db6f54c74098acb007904a9860851a0fcb1029a2fdd01",
+ "edits": [],
+ "notes": [
+  [
+   138,
+   "\\cpara{Sets up the example: a murder with no clues in a town of a million people. The post dates from September 2009, more than a year after the quantum sequence in which the book places it; its quantum example refers to a conversation from 2009.}"
+  ],
+  [
+   380,
+   "\\cpara{The example: a detective names one resident while granting there is ``no particular evidence singling out any of the million people''. The detective's own words fix the case the post needs, a hypothesis raised with no evidence at all.}"
+  ],
+  [
+   709,
+   "\\cpara{Names the fallacy and asks readers to say if it already has a name.}"
+  ],
+  [
+   876,
+   "\\cpara{Allows evidence short of what a court would admit, such as an informant's hearsay. Without some justification ``already in hand'', the post says, naming Mortimer violates Mortimer's rights. The rule asks for some evidence at the moment of naming, not for proof.}"
+  ],
+  [
+   1328,
+   "\\cpara{Extends the charge to merely asking the police to consider Mortimer, and gives a second case. Three detectives name their enemies, a witness saw a brown-haired person, and the police conclude it was Mortimer. The case shows what the privilege costs: a brown-haired witness would fit many people in a city of a million, but the police weigh the report only among the three names they started with.}"
+  ],
+  [
+   1728,
+   "\\clogic{The link is to ``Positive Bias: Look Into the Dark'', which rests on Wason's 2-4-6 task; the notes there discuss how far that task generalizes.}"
+  ],
+  [
+   2136,
+   "\\cpara{Gives the arithmetic behind the rule. The figures check. Narrowing a billion boxes to ten is a factor of $10^8$, and $\\log_2 10^8 \\approx 26.6$, so 27 bits. Among ten equal candidates the right one starts at odds of 1 to 9; 4 bits multiply the odds by 16, giving 16 to 9, a probability of about 64\\%. The same counting is in the author's ``Einstein's Arrogance'' (2007), where the notes cite an older version by Peirce.}"
+  ],
+  [
+   2878,
+   "\\cpara{Applies the arithmetic: out of a million people, naming one with no reason skips most of the evidence needed against that person. In the post's units, singling out one person in a million takes about 20 bits ($\\log_2 10^6 \\approx 19.9$).}"
+  ],
+  [
+   3108,
+   "\\cpara{Restates, as a duty, the rule of the fourth paragraph: the evidence must be in hand when the name is first raised, or the naming is harassment.}"
+  ],
+  [
+   3432,
+   "\\cpara{Turns to quantum mechanics. The post reports that Scott Aaronson admitted there was no concrete evidence for a collapse postulate or a single world, but pointed to possible future evidence and to the Born probabilities, the rule that gives the chances of measurement outcomes. A transcript of the conversation, published by MIRI in 2013, fits the first part: Aaronson says there that the interpretations ``all yield the same experimental predictions, at least for any experiments that we can do currently.''}"
+  ],
+  [
+   4107,
+   "\\cfact{The author had called it that too. In ``The Born Probabilities'' (2008) the author asked what the Born probabilities are probabilities of, and answered: ``I don't know. It's an open problem.''}"
+  ],
+  [
+   4121,
+   "\\cpara{The charge, with a list of properties taken from the author's ``Collapse Postulates''. The comparison with Mortimer holds only with a further premise. Nothing picks Mortimer out of the million. Here the evidence that picked out quantum mechanics picked out the collapse and no-collapse readings together, since they predict the same results in every experiment done so far. So the charge depends on the premise, stated two paragraphs later, that the alternatives are ``no more complicated or unlikely''. That is the simplicity argument for many-worlds; see the notes on ``Making Beliefs Pay Rent (in Anticipated Experiences)'' and ``Many Worlds, One Best Guess''.}"
+  ],
+  [
+   4596,
+   "\\clogic{Offered with ``must'' and no example. The one candidate the author had discussed, in ``The Born Probabilities'', was Robin Hanson's ``mangled worlds'', which the author put ``under fifty percent''.}"
+  ],
+  [
+   4807,
+   "\\cpara{Explains the prominence of collapse by ``a historical accident'', and says the Born question is offered as a reason to keep single-world theories ``in the running''. In the transcript Aaronson gives a reason for this that the post does not report. Asked why a successor theory should bring back a single world rather than ``giant pink dragons'', Aaronson answered: ``All of those seem to be adding a lot more Kolmogorov complexity to your description, than just saying there's just one world.'' This disputes the premise that the alternatives are no more complicated.}"
+  ],
+  [
+   5248,
+   "\\cpara{A claim about how people reason, given without evidence. Research supports it. Koehler (\\textsc{Psychological Bulletin}, 1991) reviewed studies in which people who explain or imagine a possibility ``then express greater confidence in the truth of that possibility'', and argued that ``any task that requires that a hypothesis be treated as if it were true is sufficient to increase confidence'' in it.}"
+  ],
+  [
+   5701,
+   "\\cpara{The theist example. Its first half is the argument long criticized as ``God of the gaps''. Wikipedia traces the idea to the evangelist Henry Drummond in 1893 and reports that the phrase is credited to Charles Coulson (1955). The post's addition is the second half: even granting a gap, nothing picks out Jehovah from other gods.}"
+  ],
+  [
+   6119,
+   "\\cpara{Applies the rule to intelligent design. Critics of intelligent design have made the gap charge before; the post adds the demand for evidence that points to design in particular, rather than to ``a thousand others''.}"
+  ],
+  [
+   6481,
+   "\\cpara{Lists the habits of what the post calls ``anti-epistemology''. The first, leaning on the claim that one ``can't disprove'' an idea, is close to the old argument from ignorance, a term Wikipedia says John Locke probably coined. The others (hoping for future confirmation, dwelling on possibilities, calling each piece of negative evidence ``not conclusive'') keep a hypothesis in view without evidence.}"
+  ],
+  [
+   7086,
+   "\\cpara{Extends two earlier rules from belief to attention: Occam's razor, and the rule of ``Burdensome Details'' that ``each part of a belief be separately justified''.}"
+  ],
+  [
+   7563,
+   "\\cpara{Links the point to ``Perpetual Motion Beliefs'': faith, like a machine that turns water into ice cubes and electricity, claims to produce improbability from nothing. The conclusion, that in large spaces ``attention without evidence is more than halfway to belief without evidence'', follows from the post's own arithmetic: in the billion-box example, narrowing to ten takes 27 of the 31 bits. The notes on ``Perpetual Motion Beliefs'' discuss the analogy itself.}"
+  ],
+  [
+   8259,
+   "\\cpara{Applies the point to someone who dwells on the Trinity rather than on other gods. In the post's terms, that person has done the locating step, the part that needs most of the evidence, without any.}"
+  ],
+  [
+   8553,
+   "\\cpara{Names a common form of the error: uncertainty within one space of theories is moved onto a target outside it. The creationist example is hedged (``(allegedly) debated''), and the point holds either way: doubt about which naturalistic account is right is not evidence for design.}"
+  ],
+  [
+   9482,
+   "\\cpara{Applies the same point to quantum mechanics: doubt about the Born rule should stay among theories with ``the usual character of physical law''. It allows that the answer may break one of these properties.}"
+  ],
+  [
+   10019,
+   "\\clogic{Overstated. Bell's theorem does make every single-world account nonlocal: the \\textsc{Stanford Encyclopedia} entry on Bohmian mechanics says ``any (single-world) account of quantum phenomena must be nonlocal''. But Bohmian mechanics, a single-world theory without collapse, keeps the wave function ``evolving, as usual, according to Schrödinger's equation'', which is linear and unitary, and moves particles deterministically and continuously. Some defenders of many-worlds, such as David Deutsch, argue that Bohm's theory contains the other worlds anyway; Bohmians reject this.}"
+  ]
+ ]
+}

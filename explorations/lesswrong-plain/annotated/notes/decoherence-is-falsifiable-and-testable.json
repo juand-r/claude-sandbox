@@ -2,7 +2,7 @@
  "slug": "decoherence-is-falsifiable-and-testable",
  "header": "\\post{Decoherence is Falsifiable and Testable}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/DFxoaWGEh9ndwtZhk/decoherence-is-falsifiable-and-testable}\n",
  "skeleton_sha": "f80c322d4c52d554c0a68a07279f3c44b4323db1d831766f001aabe251c2de66",
- "post_sha": "ca34b687c57ea75044e626d2fa7a40381e68853893464251cd863af855c8557b",
+ "post_sha": "2d35925440e5ad04970ba2bf77a89beb28713430024983af1c61a31dbab347e4",
  "edits": [],
  "notes": [
   [
@@ -43,7 +43,7 @@
   ],
   [
    2975,
-   "\\cpara{Asks whether ``the decoherence interpretation'' is falsifiable. Here, as in ``Decoherence is Simple'' (``decoherence (a.k.a. many-worlds)''), the word names the many-worlds view. In physics it usually names a process, the suppression of interference by interaction with the environment, whose ``experimental observation'' Schlosshauer reviews (\\textsc{Physics Reports}, 2019). Experiments on that process do not by themselves decide between many-worlds and collapse; Bacciagaluppi's \\textsc{Stanford Encyclopedia} entry stresses ``the interplay between decoherence and the various approaches to the foundations of quantum mechanics.''}"
+   "\\cpara{Asks whether ``the decoherence interpretation'' is falsifiable. As in ``Decoherence is Simple,'' the word names the many-worlds view; see the note there on its usual meaning in physics.}"
   ],
   [
    3153,
@@ -219,7 +219,7 @@
   ],
   [
    17005,
-   "\\clogic{``Necessarily'' claims more than the logic gives. Bohmian mechanics keeps the wave equation for the whole universe with no collapse, holds that the wave function ``provides only a partial description,'' and has one world, fixed by the particles' positions (Goldstein, \\textsc{Stanford Encyclopedia}, ``Bohmian Mechanics''). Whether its unoccupied branches are worlds anyway is disputed: Deutsch says they must be physically real, and Goldstein writes that this claim should be compelling to those who accept a functionalist account of worlds and ``not merely wrong, but silly'' to those who reject it. The step from the law to many worlds needs the further premise that the wave function is the whole of what exists, which Bohmian mechanics denies.}"
+   "\\clogic{``Necessarily'' claims more than the logic gives: Bohmian mechanics keeps the wave equation everywhere, with no collapse, and has one world. The step needs the premise that the wave function is all there is; see the notes on ``Many Worlds, One Best Guess''.}"
   ],
   [
    17215,
@@ -227,7 +227,7 @@
   ],
   [
    17630,
-   "\\clogic{``Strictly simpler'' leaves out the Born rule. The angels of the parable do no work, but in the textbook theory the collapse postulate delivers the probabilities (``a collapse postulate that obeys the Born probabilities''), and the post's own decoherence hypothesis adds them back as a separate item (``plus the Born probability rule''). Whether many-worlds is then simpler is disputed. Vaidman, a defender, grants that the probability rule ``involves adding a postulate'' but says it leaves the mathematical part of the theory unchanged; Hemmo and Shenker, as Vaidman reports them, grant the economy but call it irrelevant, since the many-worlds postulates alone ``are not enough to explain our experience.''}"
+   "\\clogic{``Strictly simpler'' leaves out the Born rule: the post's own decoherence hypothesis adds it back (``plus the Born probability rule''). Whether many-worlds is then simpler is disputed; see the notes on ``Many Worlds, One Best Guess''.}"
   ],
   [
    17644,

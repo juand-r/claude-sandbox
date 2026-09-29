@@ -1,0 +1,281 @@
+{
+ "slug": "many-worlds-one-best-guess",
+ "header": "\\post{Many Worlds, One Best Guess}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/S8ysHqeRGuySPttrS/many-worlds-one-best-guess}\n",
+ "skeleton_sha": "7989b261ea27bfbdf0ec0bc1f6093a88ab27d610132b2a9c1ead070a5a5296db",
+ "post_sha": "c054ac94f4faac84f234142b277eb6498352877ee3ab926594026a86c4404fad",
+ "edits": [],
+ "notes": [
+  [
+   139,
+   "\\cpara{States the starting point: simple laws, found from a vast range of microscopic experiments, govern the ``wavefunction'' (the author's ``amplitude distribution''). Gravity is set aside, as the post says.}"
+  ],
+  [
+   609,
+   "\\cpara{Introduces the ``grue'' puzzle about which generalization the evidence supports. It is Nelson Goodman's ``new riddle of induction'' (\\textsc{Fact, Fiction, and Forecast}); the post does not name Goodman.}"
+  ],
+  [
+   943,
+   "\\cpara{Asserts that ``Emeralds are green'' is the right generalization and defers the argument. The whole post depends on this kind of choice, that the simplest generalization is the one to believe. The book argues for it in ``Decoherence is Simple'', not here.}"
+  ],
+  [
+   1494,
+   "\\cpara{Applies the same choice to microscopic physics: the simplest laws carry no date and no mass limit. (``Spin 12'' is spin 1/2; the fraction is lost in the text as reproduced here.)}"
+  ],
+  [
+   1836,
+   "\\cpara{Grants that for large objects such as a human, the quantum equations cannot be checked in precise detail.}"
+  ],
+  [
+   2365,
+   "\\cpara{Gives evidence that quantum behaviour survives aggregation: lasers, and atoms that bond into stable molecules as the theory says.}"
+  ],
+  [
+   2752,
+   "\\cpara{Draws the modest conclusion: the laws aggregate ``without too much difference.''}"
+  ],
+  [
+   2931,
+   "\\cpara{Grants again that exact behaviour at human scale is unverified, and notes that every tested prediction of the same-laws assumption has held.}"
+  ],
+  [
+   3461,
+   "\\cpara{The first of the post's two main premises. It grants that a rival differing ``in some as-yet-untestable detail'' cannot be proved wrong, and answers with Occam's razor: out of countless possible new laws, why think about this one? The hedge is explicit, and the post returns to it before its conclusion.}"
+  ],
+  [
+   4131,
+   "\\cpara{Applies the laws to Schrödinger's cat: atom, sensor, explosive, cat and observer each end in superposition. This chain is the standard setting of the measurement problem (SEP, ``Everettian Quantum Mechanics'', section 2). The post's step is to take the result at face value at every level.}"
+  ],
+  [
+   5149,
+   "\\cpara{Argues that the two versions of the observer differ in so many particles that they barely interact, so no mind sees a blurred cat. (``1030th'' is the $10^{30}$th decimal place.)}"
+  ],
+  [
+   5689,
+   "\\clogic{This is the many-worlds answer to the ``preferred basis'' objection, that the wavefunction can be split into worlds in infinitely many ways: decoherence picks out the split in which brains and cats have definite states. The SEP entry on many-worlds, which argues for the view, says that owing to decoherence research the problem ``is no longer considered a serious objection.''}"
+  ],
+  [
+   5703,
+   "\\cpara{Concludes that seeing a single outcome is what the simplest laws predict, so experience gives no reason to think the laws change at large scale.}"
+  ],
+  [
+   6004,
+   "\\cpara{Hedged (``Apparently''). The source is Jess Riedel's comment of 7 May 2008, which the post quotes later: Dirk Bouwmeester was trying to superpose a cantilever about 50 microns across. The trend the post describes has continued. In 2023 a group at ETH Zürich put a 16-microgram mechanical resonator, about $10^{17}$ atoms, into a superposition of two opposite oscillations (Bild et al., \\textsc{Science} 380).}"
+  ],
+  [
+   6201,
+   "\\cpara{The post's central claim: other worlds are not an added assumption but follow from applying the same laws everywhere.}"
+  ],
+  [
+   6596,
+   "\\clogic{A consequence only with a further premise the post does not state: that the wavefunction is all there is. Bohm's theory keeps the same wave equation at every level, with no collapse, and adds particle positions; it has one world and is ``empirically equivalent to orthodox quantum theory'' (SEP, ``Bohmian Mechanics''). Deutsch replies that its unoccupied branches are worlds too, and Bohmians reject that reading (same entry). The post's case against Bohm-type theories comes later, from relativity.}"
+  ],
+  [
+   6864,
+   "\\clogic{On this point the post has support. The SEP entry on many-worlds says that if laws rather than entities are counted, ``the MWI emerges as the most economical theory.'' The same entry reports the reply that this economy is ``irrelevant, since the MWI postulates alone are not enough to explain our experience'' (Hemmo and Shenker, 2022). The formal argument is in ``Decoherence is Simple''.}"
+  ],
+  [
+   6878,
+   "\\cpara{Introduces the one puzzle the post grants.}"
+  ],
+  [
+   7023,
+   "\\cpara{States the Born-rule problem plainly: counting observers would give 50/50 for any two-outcome experiment, not the squared amplitudes. The SEP entry on many-worlds agrees that probability is the weak point. It calls the question of how there can be probability when every outcome occurs ``arguably the most serious difficulty.''}"
+  ],
+  [
+   7532,
+   "\\cpara{Reports Robin Hanson's ``mangled worlds'' proposal. Ten days earlier, in ``The Born Probabilities'' (1 May 2008), the author put its chance ``under fifty percent'' and named ``A major problem'' with it.}"
+  ],
+  [
+   7891,
+   "\\cpara{The author's own puzzle: counting observers the obvious way would let a mind that splits into many copies and remerges make itself win a lottery.}"
+  ],
+  [
+   8645,
+   "\\cpara{Claims that, given unitary physics, the Born rule is the unique rule with no split-remerge problem. No derivation or source is given; the post offers it as an ``interesting fact'', not an explanation.}"
+  ],
+  [
+   9128,
+   "\\cpara{Admits that this line of thought has not led anywhere yet.}"
+  ],
+  [
+   9336,
+   "\\cpara{Explains the author's suspicion of the decision-theoretic derivations of Deutsch and Wallace. The worry has company in the literature. The SEP entry on many-worlds lists critics of that program (Lewis, Albert, Kent and Price, all 2010) and says its analysis ``continues in a flurry of mostly critical papers.'' The same entry reports Papineau's reply that on the Born rule many-worlds ``is at no disadvantage either'' compared with its rivals.}"
+  ],
+  [
+   9829,
+   "\\cpara{Says many Born hypotheses exist, fewer than there should be because the mystery was long treated as solved. No example is given of who treated it so.}"
+  ],
+  [
+   10152,
+   "\\cpara{Hopes for an answer without new fundamental laws. The standard many-worlds answer, in the SEP entry, makes probability proportional to a world's ``measure of existence''. The entry grants that this ``involves adding a postulate'', though not a change to the wave equation.}"
+  ],
+  [
+   10902,
+   "\\cpara{Concedes that a new fundamental law might be involved in the Born statistics.}"
+  ],
+  [
+   11152,
+   "\\cpara{The quotation matches Riedel's comment on ``Decoherence is Falsifiable and Testable'' (7 May 2008), apart from capital letters. Riedel used the point against the post's view: the next sentence finds it ``likely that the peculiar implications of uncollapsed hermitian evolution are simply the artifacts of using quantum mechanics outside its regime of applicability.'' In a follow-up the same day Riedel named ``serious conceptual problems with defining individual worlds, even emergently.''}"
+  ],
+  [
+   11523,
+   "\\cpara{Answers Riedel that ``Every time'' is too strong, then grants the substance: a new law might show only at the macroscopic scale.}"
+  ],
+  [
+   11954,
+   "\\cpara{Raises the one-world question directly.}"
+  ],
+  [
+   12059,
+   "\\cpara{Describes what one world would mean: no other versions of us, and perhaps, if the universe is small, no other Earth anywhere.}"
+  ],
+  [
+   12779,
+   "\\cpara{The analogy treats single-world physics as one arbitrary pick among ``a zillion other possible explanations.'' The main single-world theories are specific, worked-out rivals. Bohm's theory reproduces every prediction of standard quantum mechanics (see the note on ``logical consequence'' above), and collapse theories such as GRW state a precise new law (next note). The post's reasons against them come later, in the argument from relativity.}"
+  ],
+  [
+   13464,
+   "\\cpara{Advises not even to ask the question until evidence demands it. Collapse theories are precise enough to test: according to the SEP entry on many-worlds they predict ``minute violations of energy conservation'', and experiments have ruled out ``some, though not all, of these models.''}"
+  ],
+  [
+   13655,
+   "\\cpara{A second analogy: a law that makes Earth the centre of the universe.}"
+  ],
+  [
+   13873,
+   "\\cpara{Says that asking that question reveals a hidden agenda, and that such a law would be hard to write simply.}"
+  ],
+  [
+   14355,
+   "\\cpara{``It betrays a sentimental attachment'' ascribes a motive to everyone who asks whether there is one world, with no evidence. Defenders of single-world theories give arguments. One, reported in the SEP entry on many-worlds (section 7.3) and traced to Bell and Maudlin, is that a wavefunction on a many-dimensional configuration space is ``the wrong type of object'' to describe things in space and time.}"
+  ],
+  [
+   14569,
+   "\\cpara{Gives the first ``specific reason'': one world is a high-level notion, and at the quantum level there are no firm boundaries between worlds.}"
+  ],
+  [
+   14966,
+   "\\clogic{The worked-out single-world theories do not need to. In GRW each elementary constituent ``is subjected, at random times, to random and spontaneous localization processes'' (SEP, ``Collapse Theories''). In Bohm's theory every particle simply has a position. In both, the one world is whatever the particles make up; no law picks out a world at a higher level.}"
+  ],
+  [
+   14980,
+   "\\cpara{Gives the second reason, the post's strongest: a single world would violate special relativity.}"
+  ],
+  [
+   15248,
+   "\\clogic{The literature separates two claims here. That a single-world theory must be nonlocal is standard: Bell's analysis ``shows that any (single-world) account of quantum phenomena must be nonlocal'' (SEP, ``Bohmian Mechanics''). That it must violate relativity is disputed. The SEP entry on Bell's theorem says ``it is possible to formulate a fully relativistic dynamical collapse theory,'' citing versions of GRW by Dove (1996) and Tumulka (2006), both before this post.}"
+  ],
+  [
+   15262,
+   "\\cpara{Works the example on many-worlds: each observer sees 50/50, and when they meet, their results agree 11.6 per cent of the time. The figure is $\\sin^2 20^\\circ \\approx 0.117$, for photon pairs of opposite polarization as in ``Spooky Action at a Distance''.}"
+  ],
+  [
+   16082,
+   "\\cpara{On one world, the post says, the distant observer's probability ``actually changes'' from 50/50 to 11.6 per cent.}"
+  ],
+  [
+   16430,
+   "\\cpara{Invokes Bell's theorem: the correlations cannot come from properties fixed in advance and carried along locally. This is the standard reading of the theorem.}"
+  ],
+  [
+   16911,
+   "\\cpara{Extends the objection from collapse theories to ``any possible theory that gives us one global world''.}"
+  ],
+  [
+   17312,
+   "\\clogic{This holds for deterministic single-world theories: Bohm-type theories ``must invoke a distinguished foliation'', a preferred way of slicing spacetime into moments (SEP, ``Bell's Theorem'', 8.2). For stochastic theories the same entry sees no need for a time order: the correlation between the two results ``is symmetric, and does not require that one of the events be in the past of the other.''}"
+  ],
+  [
+   17326,
+   "\\cpara{Rejects the retrocausal escape, in which the influence runs back to the source and forward again. The view the post says ``has been seriously put forth'' goes back to Costa de Beauregard and was later taken up by Price and in Cramer's transactional interpretation (SEP, ``Bell's Theorem'', 8.1.1). Bell's theorem leaves one more option the post does not mention, superdeterminism, which gives the settings and the results a common cause in the past (same entry).}"
+  ],
+  [
+   17998,
+   "\\cpara{Both claims check. Scarani, Tittel, Zbinden and Gisin (2000) give a lower bound of about $\\frac{2}{3}\\times 10^{7}$ times the speed of light in the frame of their Geneva laboratory. Stefanov and colleagues (2002) moved the analyzers so that each measured first in its own frame, and ``did not observe any disappearance of the correlations''.}"
+  ],
+  [
+   18398,
+   "\\cpara{Describes the intuition that relativity is a speed limit one could evade by going back in time.}"
+  ],
+  [
+   18681,
+   "\\cpara{Restates the relativity argument as a diagnosis: whoever can picture a single global world has not absorbed relativity. It adds no argument to the paragraphs above and stands or falls with them.}"
+  ],
+  [
+   19249,
+   "\\cpara{The post's main hedge on the argument: it may contain ``some hidden assumption''. The post returns to this possibility twice below.}"
+  ],
+  [
+   19465,
+   "\\cpara{Puts the burden of proof on single-world theories and calls the single world an intuition that physics has disproved.}"
+  ],
+  [
+   19756,
+   "\\clogic{Overstated by the post's own account. The ``disproof'' is the relativity argument, which the paragraph before allows may contain ``some hidden assumption''. The experiments said to be ``verifying the disproof'' show superposition at larger scales, which Bohm's single-world theory also predicts.}"
+  ],
+  [
+   20141,
+   "\\cpara{Grants that there is no experimental evidence on the question at the macroscopic level, and argues that a single world must then break relativity or break ``seemingly impeccable logic''. The second is judged more plausible, but not by much.}"
+  ],
+  [
+   20679,
+   "\\cpara{Dismisses quantum non-realism as ``a Get Out of Jail Free card''.}"
+  ],
+  [
+   20933,
+   "\\clogic{The slogan is the post's wording, not a non-realist's. QBists, for example, ``reject any such non-local influences'' (SEP, ``Quantum-Bayesian and Pragmatist Views of Quantum Theory''); they do not claim a licence to violate relativity. Whether their account holds up is disputed; see the notes on ``Quantum Non-Realism''.}"
+  ],
+  [
+   21201,
+   "\\cpara{Argues that non-realism is unnecessary, since decoherence gives a realist account on which the equations work because they mirror reality.}"
+  ],
+  [
+   21780,
+   "\\cpara{The post's strongest hedge: other Earths are not as well established as ``any other truth'' of science, or as the existence of trees.}"
+  ],
+  [
+   22157,
+   "\\cpara{Lists three ways the conclusion could fail: an effect in the ``20th decimal place'', a loophole in the relativity argument, and the Flying Spaghetti Monster. The first two are the hedges given earlier; the third is a joke.}"
+  ],
+  [
+   22588,
+   "\\cpara{The post's verdict, given as a comparison rather than a number: one Earth is about as likely as spinning black holes violating conservation of angular momentum. The comparison is only as strong as the two premises it rests on, discussed in the notes above.}"
+  ],
+  [
+   23110,
+   "\\cpara{Grants, ``so far as I know'', that the black-hole case has not been checked, and jokes that the author's toilet has not been checked either.}"
+  ],
+  [
+   23690,
+   "\\cpara{Warns that dwelling on one possibility makes it seem more plausible than it is.}"
+  ],
+  [
+   24381,
+   "\\cpara{Explains the author's habit of calling many-worlds ``an obvious fact''. The condition, ``if you have all your marbles lined up correctly'', makes disagreement a sign of not understanding quantum physics, Occam's razor or relativity. The next paragraph says so directly.}"
+  ],
+  [
+   24840,
+   "\\cpara{Gives two causes for the view not being universal: a historical accident that entrenched collapse, and physicists' poor grasp of Occam's razor. Others have made the first argument too: Nature's report on its 2025 survey notes the view that Copenhagen's default status ``comes from historical accident, rather than its strengths.''}"
+  ],
+  [
+   25424,
+   "\\clogic{Offered without evidence, and ``The only reason'' leaves no room for informed dissent. Such dissent exists among specialists who know these arguments: the SEP entry on many-worlds lists published objections on probability (Albert, Kent and Price) and on whether the wavefunction alone can describe the world (Maudlin).}"
+  ],
+  [
+   25768,
+   "\\cpara{No evidence is given that physicists hold the view but fear to say so. Everett's view had open academic defenders long before 2008. Bryce DeWitt presented it in 1970 and ``became an ardent proponent'' (SEP, ``Everettian Quantum Mechanics''), and the SEP entry that argues for many-worlds was first published in 2002.}"
+  ],
+  [
+   26123,
+   "\\cpara{The conclusion: many-worlds ``wins outright''. The comparison with energy conservation carries the relativity premise: a single world ``takes magic'' only if it must break relativity.}"
+  ],
+  [
+   26552,
+   "\\cpara{A normative claim (``should'', ``no rational controversy''). The field has not moved toward it. Everett's interpretation was the favourite of 17 per cent in Tegmark's informal conference poll (published 1998), of 18 per cent of 33 participants at a 2011 foundations conference, and of about 15 per cent of more than 1,100 respondents to Nature's 2025 survey, where Copenhagen had 36 per cent. Numbers do not settle the question. But the post's claim that it is settled rests on the premises discussed in the notes above.}"
+  ],
+  [
+   27155,
+   "\\cpara{Ends by calling many-worlds an ``established fact''. The earlier qualification, that it is ``not quite safe'' to rank it with any other truth of science, is not repeated.}"
+  ]
+ ]
+}

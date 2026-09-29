@@ -1,0 +1,173 @@
+{
+ "slug": "living-in-many-worlds",
+ "header": "\\post{Living in Many Worlds}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/qcYCAxYZT4Xp9iMZY/living-in-many-worlds}\n",
+ "skeleton_sha": "afa9a99a69979a504f7de70e358142972d1090210a0ba010e2dbb11cbd2f65f3",
+ "post_sha": "5527f374f9d05ca042643dc0e6aba4f23846baa40d582f7a575d9faa899c6a95",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Opens with readers' unease at ``constantly splitting into zillions of other people''.}"
+  ],
+  [
+   398,
+   "\\clogic{Splitting is what the many-worlds reading says quantum mechanics describes. Readings with a single world make the same predictions for every experiment done so far, and physicists and philosophers have reached no consensus among them (see the notes on ``Think Like Reality''). The link goes to ``Many Worlds, One Best Guess'', where the book makes its case for many-worlds.}"
+  ],
+  [
+   412,
+   "\\cpara{The second worry, about planning: does buckling your seat belt make another self unbuckle theirs?}"
+  ],
+  [
+   686,
+   "\\cpara{The post's thesis in one line. I could not check the line against Egan's novel; Goodreads attributes it to Egan.}"
+  ],
+  [
+   954,
+   "\\cpara{Sulloway's contrast: psychoanalysis sells because it is surprising, Darwinism suffers because it seems obvious. I could not reach the \\textsc{New Yorker} profile the footnote cites, so the quotation is unchecked.}"
+  ],
+  [
+   1368,
+   "\\cpara{States that a new theory must reproduce the successes of the theory it replaces. Physicists know a version of this as the correspondence principle; Wikipedia describes a ``generalized'' form as ``the requirement for a broad set of connections between any old and new theory''.}"
+  ],
+  [
+   1674,
+   "\\cpara{Applies the point: many-worlds is not there to make strange predictions.}"
+  ],
+  [
+   1847,
+   "\\cpara{Says the interest lies in the question of what it is that adds up to normality.}"
+  ],
+  [
+   2054,
+   "\\cpara{Answers: quantum mechanics. This holds on every reading of the theory, since all of them reproduce ordinary experience.}"
+  ],
+  [
+   2332,
+   "\\cpara{Concludes the first part: the reader has ``always been'' in this universe, so ordinary life has not changed.}"
+  ],
+  [
+   2478,
+   "\\cpara{Contrasts physics with religion. ``Minimal counterintuitiveness'' is the anthropologist Pascal Boyer's idea, from \\textsc{The Naturalness of Religious Ideas} (1994): concepts that break one or two expectations are easy to remember, and, in Wikipedia's summary, Boyer ``argues that many religious entities fit into this category''.}"
+  ],
+  [
+   2922,
+   "\\cpara{Says the surface of the world stays ordinary: you will ``never'' glimpse another world or hear another self.}"
+  ],
+  [
+   3369,
+   "\\clogic{Stronger than the author's own earlier statement, in ``The Born Probabilities'' (2008), that ``the interaction between LEFT and RIGHT blobs may never actually become zero''. On the standard account, decoherence suppresses interference rather than forbidding it: it ``can produce interference only in a suitable experiment including the larger system'' (\\textsc{Stanford Encyclopedia}, ``The Role of Decoherence in Quantum Mechanics''). For worlds that contain people, only a ``gedanken superpower'' could run such an experiment (Vaidman, ``Many-Worlds Interpretation of Quantum Mechanics'', in the same encyclopedia). The practical conclusion, that you will not glimpse another world, stands.}"
+  ],
+  [
+   3417,
+   "\\cpara{Argues that decisions have no special link to branching: people imagined alternative outcomes long before quantum mechanics, and would do so in a single world.}"
+  ],
+  [
+   3933,
+   "\\cpara{Restates the point with two cases: a brain that never decohered would still weigh choices, and a rock that makes none still splits. On the many-worlds reading this is correct, since branching comes from decoherence, which happens everywhere.}"
+  ],
+  [
+   4321,
+   "\\cpara{Restates it a third time: splitting is constant and has nothing to do with choices.}"
+  ],
+  [
+   4564,
+   "\\cpara{Says that in each world people choose what seems best. It allows (``Maybe'') that a line of thought differs between worlds, but denies that one version of you picks the worst option as another picks the best.}"
+  ],
+  [
+   5115,
+   "\\cpara{Grants exceptions and calls them ``normal''.}"
+  ],
+  [
+   5260,
+   "\\cpara{Says choices determine outcomes in each world as they would in one.}"
+  ],
+  [
+   5427,
+   "\\cpara{Answers the seat-belt worry: there is ``no causal communication between decoherent worlds'', so buckling up here unbuckles no one elsewhere. On the many-worlds reading this is the standard answer, with the qualification in the note on ``prohibited outright'' above; on single-world readings the worry does not arise.}"
+  ],
+  [
+   5685,
+   "\\cpara{Sums up: decisions in many worlds work as in one world that keeps splitting.}"
+  ],
+  [
+   5879,
+   "\\cpara{Says every world obeys the same laws, and that the other worlds' existence ``is asserted in the first place by our laws of physics''. That second claim is the many-worlds reading (see the note on the first paragraph).}"
+  ],
+  [
+   6218,
+   "\\cpara{Proposes treating every world outside your future as a ``generalized past'': like the twelfth century, beyond your influence and so not your responsibility. It is offered as a suggestion (``I would suggest''), and it tracks responsibility by influence, as people already do for the past. The question arises only on the many-worlds reading.}"
+  ],
+  [
+   6652,
+   "\\cpara{Draws the practical rule: do not try to live in a world you cannot communicate with.}"
+  ],
+  [
+   6939,
+   "\\cpara{Says a 90\\% chance and ``9 out of 10 worlds'' should (``almost always'') call for the same decision, and that picturing worlds may help people handle probabilities.}"
+  ],
+  [
+   7116,
+   "\\clogic{This takes for granted an answer to a question the author elsewhere calls open: why a world's weight should count as a probability in decisions. In ``The Born Probabilities'' (2008) the author asked what those probabilities are ``probabilities of'' and answered: ``I don't know. It's an open problem.'' Vaidman's \\textsc{Stanford Encyclopedia} entry reports that the derivation by Deutsch and Wallace faces ``a flurry of mostly critical papers''. On single-world readings a 90\\% chance needs no such derivation.}"
+  ],
+  [
+   7313,
+   "\\cpara{Recommends ``shut up and multiply'' and quotes two of the author's posts on lotteries.}"
+  ],
+  [
+   7626,
+   "\\cpara{From ``Lotteries: A Waste of Hope'' (2007): feelings cannot be scaled down by a factor of a hundred million.}"
+  ],
+  [
+   7990,
+   "\\cpara{From ``New Improved Lottery'' (2007): a tiny chance differs from no chance only by a tiny amount.}"
+  ],
+  [
+   8175,
+   "\\cpara{Applies this to very improbable worlds: such a world ``does probably exist, if it is lawful'', but deserves feeling in proportion to its weight, or no thought at all. The advice is ordinary expected-value reasoning and holds on any reading; only the claim that the world exists depends on many-worlds.}"
+  ],
+  [
+   8694,
+   "\\cpara{A joke: a lottery ticket bought with a quantum random number is ``guaranteed'' to win in a tiny share of worlds.}"
+  ],
+  [
+   8870,
+   "\\cpara{A way to feel a trillion to one: think about the world only after a ten-sided die shows 9 twelve times running. The arithmetic checks: $(1/10)^{12}$ is one in a trillion.}"
+  ],
+  [
+   9354,
+   "\\cpara{Continues the game.}"
+  ],
+  [
+   9690,
+   "\\cpara{Advises stopping at any thought that quantum physics has an ``abnormal'' implication for everyday life.}"
+  ],
+  [
+   9890,
+   "\\cpara{The first of two ethical exceptions: since there are already ``plenty of people exploring person-space'', average utilitarianism looks better than trying to create as many people as possible.}"
+  ],
+  [
+   10150,
+   "\\clogic{The step needs a premise the post does not state: that adding a person is worth less when many people already exist. On total utilitarianism it is not. In Wikipedia's summary, on that view ``it is a moral good to breed more people on the world for as long as total happiness rises'', however many exist elsewhere. So other worlds favor the average view only for someone who already doubts the total one.}"
+  ],
+  [
+   10284,
+   "\\cpara{The second exception: since everything knowable is known in some other world, being ``first'' to know means nothing, and discovery is a joy whenever you personally do not know. ``Joy in Discovery'' (March 2008) made the same argument; the notes there observe that it needs only a large universe, not many worlds.}"
+  ],
+  [
+   10687,
+   "\\cpara{Closes the advice: with a shaky grasp of many-worlds, adopt no strange belief, emotion or strategy because of it. The advice holds whichever reading of quantum mechanics is right.}"
+  ],
+  [
+   10997,
+   "\\cpara{Ends by restating the thesis.}"
+  ],
+  [
+   11150,
+   "\\cpara{Cites Egan's novel.}"
+  ],
+  [
+   11262,
+   "\\cpara{Cites the profile of Sulloway, which I could not reach.}"
+  ]
+ ]
+}
