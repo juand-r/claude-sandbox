@@ -1,0 +1,73 @@
+{
+ "slug": "hand-vs-fingers",
+ "header": "\\post{Hand vs. Fingers}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/KmghfjH6RgXvoKruJ/hand-vs-fingers}\n",
+ "skeleton_sha": "dba1937e101b0277acacce03ad992f4326b3494702ca7adce67fd680dfec9c2b",
+ "post_sha": "5ae2d1d5d0deb29e4ea4fbdc10a293b5b866159bf1e4a1277c1fed9cf353e785",
+ "edits": [],
+ "notes": [
+  [
+   117,
+   "\\cpara{Returns to reductionism after the posts on joy in the merely real, and sets aside one objection to it: that only fundamental things can be enjoyed.}"
+  ],
+  [
+   610,
+   "\\cpara{Restates the thesis of ``Reductionism'' in one sentence, as that post stated it: many levels in our models, one level in reality.}"
+  ],
+  [
+   857,
+   "\\cpara{Poses the question the post will treat as a confusion.}"
+  ],
+  [
+   1072,
+   "\\cpara{The joke: a mock science headline. The author used the same form two days later for ``Brain Breakthrough! It's Made of Neurons!''}"
+  ],
+  [
+   1239,
+   "\\cpara{The joke's reasoning has the form of a real argument in philosophy of mind, the exclusion problem (Kim 1989, 1998). If a mental property is realized by a physical one that does the causal work, ``what causal work is left for M to do?'' The post's answer, that the hand and its parts are one thing, is one of the standard replies: ``If M = P, there's no question of one's excluding the other'' (\\textsc{Stanford Encyclopedia of Philosophy}, ``Mental Causation'').}"
+  ],
+  [
+   1507,
+   "\\cpara{States the thesis: once you can see how a higher level reduces to a lower one, the two stop seeming like separate things. It carries forward the distinction of ``Fake Reductionism'' between being told that something has been explained and seeing the explanation.}"
+  ],
+  [
+   1942,
+   "\\cpara{Explains ``see'' as concrete visualization: picturing the hand brings up the fingers, and the reverse, so the two levels of the map are bound together in the mind.}"
+  ],
+  [
+   2320,
+   "\\cpara{The claim that ``hand'' and ``fingers and thumb and palm'' name one thing from two points of view has a name in metaphysics, composition as identity. David Lewis called a whole and its parts ``the same portion of Reality'' (1991). The \\textsc{Stanford Encyclopedia} (``Mereology'') says that it ``is by no means an uncontroversial view.'' The post treats it as obvious (``of course''). Its argument needs less: that the hand is made of those parts, so that no force is left over for a separate hand.}"
+  ],
+  [
+   2663,
+   "\\cpara{Gives a reasoner who knows the fact of reduction without seeing it: separate scanners show a hand-dot and finger-dots, and the hand-dot can be imagined moving off alone.}"
+  ],
+  [
+   3669,
+   "\\cpara{Gives a weaker case still: a reasoner who has only been told, like an old AI program whose symbols have suggestive names and no content (the point of ``Truly Part of You'', taken from Drew McDermott). Such a reasoner sees no contradiction in a hand in the room and fingers outside it.}"
+  ],
+  [
+   4245,
+   "\\cpara{Makes clear that the argument concerns what a reasoner can know, not what a hand can do.}"
+  ],
+  [
+   4520,
+   "\\cpara{Draws the lesson: what seems possible to a particular person is not what is logically or physically possible. The distinction is standard. Two days later, in ``Heat vs. Motion'', the author quotes Hilary Putnam drawing it with water and H2O.}"
+  ],
+  [
+   4844,
+   "\\cpara{The number is composite, as the post says: $235757 = 431 \\times 547$. ``Impossible possible worlds'' is the title phrase of a 1975 paper by Jaakko Hintikka; see the note on ``The Parable of Hemlock''.}"
+  ],
+  [
+   5356,
+   "\\cpara{Parodies two positions from philosophy of mind by moving them to hands. The first is eliminative materialism, and the parody changes what it claims. Eliminativists such as Paul and Patricia Churchland deny that beliefs and desires exist because they expect those states not to reduce to brain states; the \\textsc{Stanford Encyclopedia} (``Eliminative Materialism'') says that ``Like dualists, eliminative materialists insist that ordinary mental states cannot be reduced to or identified with neurological events or processes.'' The ``eliminative fingerist'' denies hands while their reduction to fingers is plain, which is not the eliminativist position.}"
+  ],
+  [
+   5981,
+   "\\clogic{The second parody has a real counterpart for consciousness only. Dualists such as David Chalmers hold that fundamental laws of nature link experience to physical states (\\textsc{Stanford Encyclopedia}, ``Zombies''). For other things Chalmers agrees with the post: ``it seems that we cannot coherently conceive of a world physically identical to our own, in which there is no water, or in which there are no genes'' (``Consciousness and its Place in Nature'', 2003). The dispute is whether the mind is like the hand in this respect. This post does not argue that it is; the book takes the question up in the zombie posts.}"
+  ],
+  [
+   5995,
+   "\\cpara{The verdict, reached on the hand versions of the two positions. No philosopher is named or quoted; see also the notes on ``Reductionism''. The last two sentences restate the lesson of the prime-number paragraph.}"
+  ]
+ ]
+}

@@ -1,0 +1,141 @@
+{
+ "slug": "angry-atoms",
+ "header": "\\post{Angry Atoms}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ddwk9veF8efn3Nzbu/angry-atoms}\n",
+ "skeleton_sha": "84bfc3891b1d0c89cc18479bf835a35cd2aed8711512af50d111d68c9faa0d8d",
+ "post_sha": "43d2118a4ff024e35dcf69782f011690508551f3954e607af6120d82f32af31f",
+ "edits": [],
+ "notes": [
+  [
+   108,
+   "\\cpara{Grants that no one can see the identity between quarks and a hand. At best one can repeat the experiments and derive a few equations.}"
+  ],
+  [
+   495,
+   "\\cpara{At worst one has only been told, which the post doubts is knowledge at all; the link is to ``Guessing the Teacher's Password''.}"
+  ],
+  [
+   847,
+   "\\cpara{Concludes that in either case the identity can be known but not seen.}"
+  ],
+  [
+   1040,
+   "\\cpara{Says that hands and the billiard-ball picture of atoms do the same kind of thing, push, so that atoms making up a hand is easy to imagine.}"
+  ],
+  [
+   1324,
+   "\\cpara{Grants that the billiard-ball picture is not quite right and dates the time science held it. The link is to Wikipedia's ``Atom''. Its version of 30 March 2008 starts the story with Dalton in 1803 and says that Thomson's discovery of the electron in 1897 ``destroyed the concept of atoms as being indivisible units.'' The dates are offered as ``roughly'', and nothing in the argument depends on them.}"
+  ],
+  [
+   1741,
+   "\\cpara{Poses the question of the post.}"
+  ],
+  [
+   1782,
+   "\\cpara{The ancient atomists did try to answer this. Lucretius gave the mind an element of heat, the heat it ``gets / When seething in rage,'' and wrote that lions have ``more of hot'' than stags (\\textsc{De Rerum Natura}, book 3, trans. W. E. Leonard). That answer explains anger by a kind of particle rather than by an arrangement of particles.}"
+  ],
+  [
+   1879,
+   "\\cpara{Asks the reader to take the view of someone with no idea of computation or of neurons, for whom the gap between billiard balls and anger ``might'' have seemed wide.}"
+  ],
+  [
+   2254,
+   "\\cpara{Restricts the question to behaviour, setting experience aside. The post keeps to this restriction and says so near the end.}"
+  ],
+  [
+   2674,
+   "\\cpara{Asks for the hunter-gatherer's view without hindsight. The phrase ``explanatory gap'' is Joseph Levine's (1983). Levine coined it for the gap between physical facts and how an experience feels (Wikipedia, ``Explanatory gap''), the case the post has just set aside.}"
+  ],
+  [
+   2981,
+   "\\cpara{States the question in its restricted form.}"
+  ],
+  [
+   3057,
+   "\\cpara{Gives the first materialist answer: the particles push the arm and the tongue.}"
+  ],
+  [
+   3244,
+   "\\cpara{Raises the objection that matters for the rest of the post: pushing does not explain plans.}"
+  ],
+  [
+   3411,
+   "\\cpara{Voices, in parody, an objector who trusts a first-person conviction that atoms cannot make you want anything.}"
+  ],
+  [
+   3640,
+   "\\cpara{Continues the parody. The ``potency of angerness'' echoes the ``dormitive potency'' of Moli\\`ere's physician, which the author used in ``Mysterious Answers to Mysterious Questions''.}"
+  ],
+  [
+   3834,
+   "\\cpara{Ends the parody with its conclusion.}"
+  ],
+  [
+   3894,
+   "\\cpara{An aphorism, applied to the objector: a failure to explain is blamed on the method instead of on the one using it.}"
+  ],
+  [
+   4013,
+   "\\cpara{Rules out a vague answer: ``neurons'' that ``process information'' name the crossing without explaining it, the point of ``Fake Reductionism''.}"
+  ],
+  [
+   4283,
+   "\\cpara{Says that knowing how to build a chess program out of matter is a real step across the gap, because it shows a causal system computing plans.}"
+  ],
+  [
+   4732,
+   "\\cpara{Describes game-tree search with minimax correctly. The method goes back to Claude Shannon's ``Programming a Computer for Playing Chess'' (1950), which proposed searching a tree of moves with minimax (Wikipedia, ``Computer chess'').}"
+  ],
+  [
+   5155,
+   "\\cpara{Generalizes: a mind whose inner causal chains mirror the world can try out actions in imagination and pick the best. This is Kenneth Craik's idea (\\textsc{The Nature of Explanation}, 1943): an organism that carries ``a `small-scale model' of external reality and of its own possible actions within its head, \\ldots\\ is able to try out various alternatives, conclude which is the best of them''.}"
+  ],
+  [
+   5840,
+   "\\cpara{Applies the sketch to anger, with the hedge ``tremendously oversimplified''. The sketch explains how matter can plan. What makes a plan an angry one is left to the utility function, which the post does not describe, so the step from planning to anger is asserted in one sentence about alcohol.}"
+  ],
+  [
+   6203,
+   "\\cpara{Grants that no one can visualize the crossing from transistors to chess.}"
+  ],
+  [
+   6400,
+   "\\cpara{Grants the same for neurons and anger. So the ``see how'' of ``Hand vs. Fingers'' is out of reach here. What the post offers instead is an understanding of the principle on a small case.}"
+  ],
+  [
+   6687,
+   "\\cpara{Says that repeating ``Anger is hormones'' is not understanding, with links to ``Fake Reductionism'' and ``Belief in Belief''.}"
+  ],
+  [
+   7061,
+   "\\cpara{Gives the first misreading that follows from words without understanding: anger is ``mere'' hormones, so it cannot be justified.}"
+  ],
+  [
+   7287,
+   "\\cpara{Gives the second: anger does not exist.}"
+  ],
+  [
+   7494,
+   "\\cpara{Says both are easier to profess than to believe.}"
+  ],
+  [
+   7686,
+   "\\cpara{Offered with ``I think'', and no non-materialist is named or quoted; on the positions, see the notes on ``Reductionism''. A leading non-materialist grants the post's case: David Chalmers (2003) calls explaining how a system can ``control behavior'' an ``easy problem'', with ``no obvious obstacle to an eventual explanation of these phenomena in neurobiological or computational terms''. Chalmers's objection concerns experience, which this post sets aside.}"
+  ],
+  [
+   7825,
+   "\\cpara{Restates the requirement: the specific ideas of computation and search, not the bare claim that anger is made of atoms.}"
+  ],
+  [
+   8151,
+   "\\cpara{Says plainly that the example is easy because it concerns behaviour, and names the harder problems it does not take on, with links to earlier posts.}"
+  ],
+  [
+   8620,
+   "\\cpara{Calls the example a practice problem that was hard before writing and now looks easy in hindsight.}"
+  ],
+  [
+   9156,
+   "\\cpara{The conclusion speaks of explanatory gaps in general on the strength of one crossing. ``Can be crossed'' needs only one, so it holds as stated. It does not bear on the gap the phrase was coined for, which the post set aside.}"
+  ]
+ ]
+}

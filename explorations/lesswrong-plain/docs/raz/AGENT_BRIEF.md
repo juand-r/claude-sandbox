@@ -110,6 +110,8 @@ Use `.venv/bin/python` for every script.
 - Slips whose point survives the correction stay in the notes, not in the "In short" line.
 - Put your scratch files and helper scripts in `data/sources/<batch>_<your first slug>/`.
   Never use a shared folder name, and never the main session's scratchpad.
+- Never put the user's email address or any personal data in a request (User-Agent
+  headers included). Use a generic User-Agent such as "raz-annotation-research".
 
 ## Do not
 

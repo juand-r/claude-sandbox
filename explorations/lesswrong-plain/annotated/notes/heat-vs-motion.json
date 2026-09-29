@@ -1,0 +1,117 @@
+{
+ "slug": "heat-vs-motion",
+ "header": "\\post{Heat vs. Motion}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/ne6Ra62FB9ACHGSuh/heat-vs-motion}\n",
+ "skeleton_sha": "4f35b3139d8e41bf5ef1c87945a0651d1cba81967dab230cbbdab0d4d8cd4d26",
+ "post_sha": "dd5df46f3ef48a213279a8fd9622610465855479d4180c6cfbc534042a02489e",
+ "edits": [],
+ "notes": [
+  [
+   115,
+   "\\cpara{Introduces a simpler example than the anger of ``Angry Atoms'', the previous day's post: heat, which involves no minds.}"
+  ],
+  [
+   301,
+   "\\cpara{Warns that hindsight and repetition make ``heat is motion'' seem obvious.}"
+  ],
+  [
+   736,
+   "\\cpara{The history is right in outline. The kinetic theory did meet resistance: John Herapath's version (1820) and John James Waterston's (1843) both failed peer review (Wikipedia, ``History of thermodynamics''). The phlogiston sentence has support too: Wikipedia's ``Caloric theory'' says that phlogiston ``was thought to be the substance of heat.''}"
+  ],
+  [
+   1160,
+   "\\cpara{Sets up a reasoner who knows kinetics and heat as two separate subjects.}"
+  ],
+  [
+   1507,
+   "\\cpara{The facts about Carnot check. Carnot's \\textsc{Reflections on the Motive Power of Fire} (1824) treated heat as caloric, a fluid that flows from hot bodies to cold, and gave the greatest efficiency a heat engine can have; Wikipedia calls the book ``the preliminary outline of the second law of thermodynamics.''}"
+  ],
+  [
+   1957,
+   "\\cpara{Says that two separate bodies of knowledge feel, from inside, like two separate properties of the world.}"
+  ],
+  [
+   2477,
+   "\\cpara{The physicist's example is the historical one. In 1798 Count Rumford reported that boring a cannon kept producing heat without limit, which ``suggested that caloric could not be a conserved `substance''' (Wikipedia, ``Caloric theory'').}"
+  ],
+  [
+   2675,
+   "\\cpara{Announces two readings of the physicist's statement.}"
+  ],
+  [
+   2830,
+   "\\cpara{The first reading is offered as a possibility, not as history. The caloric theorists did not take it. For them caloric could be neither created nor destroyed, and its conservation was ``a central assumption'' (Wikipedia, ``Caloric theory''), so a law by which motion creates caloric would have given up the theory's core. That is why Rumford's result told against them.}"
+  ],
+  [
+   3316,
+   "\\cpara{The second reading, identity, has a long history. Francis Bacon drew the post's distinction between the two readings in 1620: ``it must not be thought that heat generates motion, or motion heat (though in some respects this be true), but that the very essence of heat \\ldots\\ is motion and nothing else'' (\\textsc{Novum Organum}, book 2, trans. Devey).}"
+  ],
+  [
+   3437,
+   "\\cpara{Thinker 1 argues from meaning: two words with two sets of criteria must name two things.}"
+  ],
+  [
+   4024,
+   "\\cpara{Thinker 2 argues from what can be imagined: a world where heat and motion come apart shows they are different properties. The argument has the form of Descartes's conceivability argument about disembodiment, which Chalmers (2003) lists among the ``important predecessors'' of modern conceivability arguments.}"
+  ],
+  [
+   4522,
+   "\\cpara{Answers Thinker 1: different expressions can have one referent. The count is right: ``2 + 2'' has five characters with its spaces.}"
+  ],
+  [
+   5074,
+   "\\cpara{Loosely stated, in a post about what words refer to. Heat is not kinetic energy in general: a thrown ball has kinetic energy and is not hot. What heat reduces to is the disordered motion of molecules, and not only their kinetic energy; Joule in 1847 already treated latent heat as a matter of the particles' separation, which Wikipedia (``Heat'') glosses as ``a form of potential energy''. The argument works with ``the random motion of molecules'' in place of ``kinetic energy''.}"
+  ],
+  [
+   5483,
+   "\\cpara{Says that finding what a word refers to means looking outside one's mind; one can only talk about the comparison between a belief and its referent, not perform it in one's head.}"
+  ],
+  [
+   6313,
+   "\\cpara{The morning star and the evening star are Frege's example (1892); see the note on ``The Quotation is not the Referent''.}"
+  ],
+  [
+   6718,
+   "\\cpara{Answers Thinker 2: ``where there is heat, there is motion'' is a rule of inference between two descriptions, not a causal law between two things.}"
+  ],
+  [
+   7103,
+   "\\cpara{Saul Kripke analysed this error on this very example (\\textsc{Naming and Necessity}, 1972): ``When someone says, inaccurately, that heat might have turned out not to be molecular motion, what is true in what he says is that someone could have sensed a phenomenon in the same way we sense heat \\ldots\\ even though that phenomenon was not molecular motion.'' The post credits Putnam in the next paragraph and does not mention Kripke.}"
+  ],
+  [
+   7608,
+   "\\cfact{Carnot himself came to see heat as motion. Notes published in 1878 show that by the spring of 1832 Carnot had rejected caloric: ``Heat is simply motive power, or rather motion that has changed form. It is a movement among the particles of bodies'' (Wikipedia, ``Nicolas L\\'eonard Sadi Carnot''). Carnot did not publish it. The case fits the post's thesis: new knowledge changed what Carnot could conceive.}"
+  ],
+  [
+   7622,
+   "\\cpara{Credits Hilary Putnam with the distinction. The passage is from ``The Meaning of `Meaning''' (1975). Stephen Yablo quotes the second paragraph, with one phrase omitted, from p.~233 of the reprint in Putnam's \\textsc{Mind, Language and Reality}.}"
+  ],
+  [
+   7987,
+   "\\cpara{Putnam's two claims: once water is known to be H2O, no possible world counts as one where water is not H2O; yet it stays conceivable that water is not H2O.}"
+  ],
+  [
+   8634,
+   "\\cpara{Offered with ``It appears to me'' and ``seems'', and at odds with Putnam's paper. On Putnam's account ``water'' named H2O before anyone knew it: ``the extension of the term `water' was just as much H2O on Earth in 1750 as in 1950.'' A change in what speakers would call water ``does not mean that the `meaning' of `water' changed''. The alternative the post mentions is close to Putnam's own account: pointing at a glass and saying ``this liquid is called water'' makes water whatever bears ``the relation sameL to the stuff in the glass,'' much as the post's ``whatever is really in that bottle next to me.''}"
+  ],
+  [
+   9327,
+   "\\cpara{The post asks, and the answer is yes. The two readings of ``water'' it finds in Putnam's two paragraphs correspond to the two ways of evaluating a world in two-dimensional semantics. A world ``considered as actual'' may turn out to contain XYZ as the watery stuff; ``considered as counterfactual'', XYZ ``is not water but merely watery stuff'' (Chalmers 2003).}"
+  ],
+  [
+   9402,
+   "\\cpara{Restates the thesis: one thing, in different forms, can feel like two when the reduction is unknown, and may be taught by two departments.}"
+  ],
+  [
+   9886,
+   "\\cpara{Asks whether the reader could prove heat is motion if physicists retracted it, to show how much of the belief rests on what the post calls ``the pressure of conventionality''.}"
+  ],
+  [
+   10569,
+   "\\cpara{The history bears this out. Bacon's ``motion and nothing else'' (see the note above) came more than two centuries before the kinetic theory could derive the behaviour of heat from molecular motion; Clausius's paper ``On the nature of the motion called heat'' dates from 1857.}"
+  ],
+  [
+   10914,
+   "\\cpara{Ends with a slogan, and a hedged claim (``I think'') that holding reductionism helps in finding reductions.}"
+  ]
+ ]
+}

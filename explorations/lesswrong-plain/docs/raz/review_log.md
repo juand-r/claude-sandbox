@@ -265,3 +265,36 @@ post text; the md2tex \url{} fix is due in the whole-book pass.
 
 For the whole-book pass: The Second Law of Thermodynamics (original edition) is the target
 of two new pointers (Jaynes's view of heat; Bennett on the cost of observing).
+
+## Batch 4b: Physicalism 201 (15 posts)
+
+Six agents. Edits in `docs/raz/changes/batch04b.md`. Kinds, with examples:
+
+- Critiques a fair reading answers, cut or recast:
+  - Excluding the Supernatural: "the corollary does not follow as stated" ("respectful
+    tones" is defined by its link); the real weakness, a verdict on unnamed designers with
+    no case, replaces it.
+  - Reductive Reference: "credited only through Twin Earth" (the post cites Twin Earth and
+    the debate).
+  - Belief in the Implied Invisible: "central point made before" softened to "a similar
+    point", on one Tegmark sentence.
+  - When Anthropomorphism Became Stupid: the Aristotle corrections kept in the Response but
+    out of the verdict, since the post hedges its history.
+- The annotator's own unsourced arguments cut: which worlds reliability is measured over
+  (Zombie Responses); a later (2018) reply the post could not answer (Excluding the
+  Supernatural).
+- Nitpicks cut: the gloss of neshamah, "a priori" in two consistent senses, a practical
+  reason for moving on, an unused irony about Golgi.
+- Points made once: Chalmers does not call his view epiphenomenalism (Zombies! Zombies?,
+  with a pointer from Zombie Responses, which adds Chalmers's 2008 comment); Carrier's
+  definition (Uncritical Supercriticality); Putnam and Kripke on heat (Heat vs. Motion).
+
+Checked and kept: the Chalmers quotations throughout (against The Conscious Mind and his
+papers); Chalmers's 2018 citation of Zombies! Zombies? and his concession on coincidence;
+Block's lookup table (via McDermott, since Block's PDF was blocked); the ganzfeld
+meta-analyses in Psychic Powers; the horizon physics in Implied Invisible; the switch
+arithmetic in GAZP.
+
+Process: one agent's retry against the Wikipedia API sent a User-Agent string containing
+the user's email address; the request was refused. The address is in no file in the
+repository. The brief now forbids putting personal data in request headers.

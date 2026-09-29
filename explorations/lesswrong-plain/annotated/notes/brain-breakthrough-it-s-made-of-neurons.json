@@ -1,0 +1,53 @@
+{
+ "slug": "brain-breakthrough-it-s-made-of-neurons",
+ "header": "\\post{Brain Breakthrough! It's Made of Neurons!}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/nzzNFcrSk7akQ9bwD/brain-breakthrough-it-s-made-of-neurons}\n",
+ "skeleton_sha": "991923ed1454ecb15763023a5f2bf0bc1decaa1d23001c9993d2c9faa15dfefb",
+ "post_sha": "ac85fb39a59694543959e9073df5df3802a916e85eb247420151bee77b14ec19",
+ "edits": [],
+ "notes": [
+  [
+   166,
+   "\\cpara{The satire, posted on 1 April 2008, carries out the ``Amazing Breakthrough Day'' the author proposed on 25 March: report an old, understandable discovery as if it were news. Cajal shared the 1906 Nobel Prize with Golgi (Wikipedia, ``Santiago Ram\\'on y Cajal'').}"
+  ],
+  [
+   513,
+   "\\cpara{Adds figures from the whole history of the subject to the team. ``Possibly Imhotep'' fits the record. The Edwin Smith Papyrus contains the first known descriptions of the surface of the brain, and James Breasted's suggestion that Imhotep wrote its original is, in Wikipedia's words, ``pure conjecture based on no evidence''.}"
+  ],
+  [
+   702,
+   "\\cpara{The joke has a second layer that the post does not point out. The stain that showed the brain is not a continuous network was Golgi's, and Golgi used it to argue that the brain is one. Golgi held this reticular theory to the end, including in the Nobel lecture; the dispute was settled only by electron microscopy in the 1950s (Wikipedia, ``Camillo Golgi'', ``Neuron doctrine'').}"
+  ],
+  [
+   1169,
+   "\\cpara{Cites the evidence that the brain is the seat of reason, from Alcmaeon of Croton in the fifth century BC, who in Wikipedia's summary held ``that the brain is the organ of the mind,'' to Broca's work on speech.}"
+  ],
+  [
+   1371,
+   "\\cpara{The history checks. Nemesius placed the mental faculties in the brain's ventricles, and a review of the history of ventricular anatomy reports that the early church authorities held ``the brain tissue was too earthy, too dirty to act as an intermediary between the body and soul'' (Tascioglu and Tascioglu, \\textsc{Neuroanatomy}, 2005). The inference that follows is fair against that view: if the faculties sit in empty cavities, nothing predicts an intricate tissue around them.}"
+  ],
+  [
+   1731,
+   "\\cpara{Adds the mechanical and electrical evidence. Galvani studied ``animal electricity'', and Helmholtz measured the speed of the nerve signal in 1849 (Wikipedia). The step from Babbage's engine to thinking neurons is offered as an analogy that ``suggests''.}"
+  ],
+  [
+   2323,
+   "\\cpara{``Of one substance'' is Spinoza's thesis, but Spinoza's view is not the materialism the release goes on to state. On the reading the \\textsc{Stanford Encyclopedia} (``Baruch Spinoza'') adopts, thought and extension are ``two distinct essences or natures that have absolutely nothing in common,'' with ``no causal interaction between bodies and ideas''; thought is an attribute of the one substance, as basic as extension. Spinoza does fit the finding in one respect: the human body's complexity ``is reflected in its corresponding idea.''}"
+  ],
+  [
+   2647,
+   "\\clogic{Not everyone who knew the evidence best drew this conclusion. John Eccles, who shared the 1963 Nobel Prize for work on the synapse, remained a dualist: ``Sir Karl Popper and I are interactionists'' (\\textsc{The Understanding of the Brain}, 1973, as quoted by Wikipedia).}"
+  ],
+  [
+   2661,
+   "\\cpara{Draws the conclusion the satire is for, with hedges (``seems to indicate'', ``strongly weighs against''). One clause goes further than the rest: the evidence weighs against ``all religions ever invented''. That assumes every religion makes the mind fundamental, and no religion is discussed.}"
+  ],
+  [
+   3151,
+   "\\cpara{Ends the release with a limited claim: the ``promise, though not yet the realization'' of a scientific account of thought.}"
+  ],
+  [
+   3498,
+   "\\cpara{The punch line: Cajal reported in May 1888 that nerve cells are not continuous (Wikipedia, ``Neuron doctrine''), and died in 1934.}"
+  ]
+ ]
+}

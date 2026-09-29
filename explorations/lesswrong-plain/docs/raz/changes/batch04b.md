@@ -146,3 +146,14 @@ Why: Fair reading: citing Twin Earth and the debate that followed is credit; the
 - Before: in which the first is credited only through Twin Earth and the defence of its circularity is left to a later post.
 - After: with the defence of its circularity left to a later post.
 
+
+## annotated/afterwords/brain-breakthrough-it-s-made-of-neurons.tex
+
+Why: An unused irony is not a fault; a sweeping clause in a satirical press release stays in the Response, not the verdict.
+
+- Before:  The one irony the post leaves unused is that Golgi, whose stain it credits, argued to the end for the continuous network it says the stain disproved.
+- After: 
+
+- Before: , and one sweeping clause, about all religions, that the release does not argue.
+- After: .
+
