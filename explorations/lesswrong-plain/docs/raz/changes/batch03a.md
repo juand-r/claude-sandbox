@@ -120,3 +120,67 @@ Why: Make the point once: the credit to James and Dennett is already stated in t
 - Before:  The post presents the situation as ``remarkable'' from a scientific point of view and names no one who had described it.
 - After: 
 
+
+## annotated/posts/minds-an-introduction.tex
+
+Why: Neutral information, not a fault.
+
+- Before: \cfact{MIRI is not introduced. It is
+- After: \cfact{MIRI is
+
+
+## annotated/afterwords/minds-an-introduction.tex
+
+Why: STANDARDS 2.4 preface conventions: an introduction may present the author's views without the opposing side. The In short line had stated the Bayesian point more strongly than the Response, which grants that the introduction does not claim reliability.
+
+- Before: The context of the second half is left for the reader to supply. MIRI appears without explanation; it is the institute where Yudkowsky worked, and it released this book. The Russell and Norvig passage, in the textbook, opens as a report of Yudkowsky's own work. The introduction says the views are debated but cites no one who disputes them.
+- After: Some context helps with the second half. MIRI is the institute where Yudkowsky worked, and it released this book. The Russell and Norvig passage, in the textbook, opens as a report of Yudkowsky's own work. The introduction says the views are debated and, as introductions do, leaves the other side to the reader.
+
+- Before: In short: an introduction that states its author's views on AI with their uncertainty, cites no one on the other side of the debate it mentions, and justifies AI's place in the book with a claim about Bayesian forecasting that holds only in a limited sense.
+- After: In short: an introduction that states its author's views on AI with their uncertainty, and gives two reasons for AI's place in the book, the second of which shows that a consistent method of forecasting exists, not that long-range forecasts can be made reliable.
+
+
+## honest/sections/minds-an-introduction.tex
+
+Why: Same.
+
+- Before:  The introduction says the views are debated, and cites no one who disputes them.}
+- After: }
+
+
+## annotated/afterwords/the-power-of-intelligence.tex
+
+Why: Trivia in the Response; the neutral note stays in the margin.
+
+- Before: One sentence has been revised since the post was first published: it names the Machine Intelligence Research Institute, a name the institute took in 2013.
+
+
+- After: 
+
+
+## honest/sections/the-power-of-intelligence.tex
+
+Why: Same.
+
+- Before:  \nb{The institute took that name in 2013; the sentence has been revised since the post was first published in 2007.}
+- After: 
+
+
+## annotated/afterwords/an-alien-god.tex
+
+Why: The post's ``Probably not'' may be sardonic; the credit to Hume stands without holding the guess against the post.
+
+- Before: The theological argument is older than the post allows.
+- After: The theological argument is older than the post suggests.
+
+- Before: set inside a theological argument whose main moves Hume had made in 1779, where the post guesses that no one had, and closed
+- After: set inside a theological argument whose main moves Hume had made in 1779, and closed
+
+
+## honest/sections/an-alien-god.tex
+
+Why: STANDARDS 2.5 pointer.
+
+- Before: \nb{The principle is Karl Popper's, uncredited.}
+- After: \nb{The principle is Karl Popper's; see ``Your Strength as a Rationalist.''}
+
