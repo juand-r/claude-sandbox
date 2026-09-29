@@ -137,6 +137,8 @@ def convert_block(block: str, defs: dict) -> str:
         paras, cur = [], []
         for l in lines:
             l = re.sub(r"^>\s?", "", l)
+            if re.match(r"^-{3,}\s*$", l):
+                l = ""  # horizontal rule inside a quote: layout only, as at top level
             if l.strip():
                 cur.append(l)
             elif cur:

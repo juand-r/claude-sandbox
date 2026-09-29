@@ -2,7 +2,7 @@
  "slug": "the-hidden-complexity-of-wishes",
  "header": "\\post{The Hidden Complexity of Wishes}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes}\n",
  "skeleton_sha": "569f0d9cfe58c795f5a83f4337fc1d7fe0e2a3e7b1ecaad32eb0fc593316464a",
- "post_sha": "cfaca12795964801c9f0191aacb6af6d2c70c90ebc8b027aa873c3d7f2d323fe",
+ "post_sha": "e27639ef9ddcfda8f68f18dc824837609a2d7514dd4c245b912f185585bc58cc",
  "edits": [],
  "notes": [
   [
@@ -135,7 +135,7 @@
   ],
   [
    12804,
-   "\\cpara{The thesis, stated without a hedge. It is shown for one device, built to push its score ``as high as possible.'' The post does not consider a powerful genie that optimizes less hard. Such ``limited optimization'' was later proposed at the author's own institute (Jessica Taylor, ``Quantilizers,'' MIRI, 2015), which calls it ``not a silver bullet.'' The argument covers maximizing genies; the claim covers all of them.}"
+   "\\cpara{The thesis, stated without a hedge. It is shown for one device, built to push its score ``as high as possible.'' The post does not consider a powerful genie that optimizes less hard. Such ``limited optimization'' was later proposed at the author's own institute (Jessica Taylor, ``Quantilizers,'' MIRI, 2015); the paper calls it ``not a silver bullet.'' The argument covers maximizing genies; the claim covers all of them.}"
   ],
   [
    13565,

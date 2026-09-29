@@ -2,7 +2,7 @@
  "slug": "no-evolutions-for-corporations-or-nanodevices",
  "header": "\\post{No Evolutions for Corporations or Nanodevices}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/XC7Kry5q6CD9TyG4K/no-evolutions-for-corporations-or-nanodevices}\n",
  "skeleton_sha": "670d2cbcb415bb10a6ef61015a4ee03c4e73054c5da0686121d813f7a66b389f",
- "post_sha": "0af9e93548e192b5e0c0845237c55c22c25494df6072b4c15d25e786ea282c85",
+ "post_sha": "f549293216c13640129dafac6efa6aacd2388098c6bb7517fb9c97609abf96cf",
  "edits": [],
  "notes": [
   [
@@ -47,7 +47,7 @@
   ],
   [
    4238,
-   "\\cpara{Mentions George Price's suicide, with two hedges (``It is said,'' ``may have had other issues''). Wikipedia's account supports both: Price ``grew increasingly depressed by the implications of his equation,'' and after giving away his possessions he was ``Struggling with a thyroid condition in conditions of great poverty.''}"
+   "\\cpara{Mentions George Price's suicide, with two hedges (``It is said,'' ``may have had other issues''). Wikipedia's account supports both. It says Price ``grew increasingly depressed by the implications of his equation,'' and also that, after giving away his possessions, he was ``Struggling with a thyroid condition in conditions of great poverty.''}"
   ],
   [
    4503,
@@ -55,7 +55,7 @@
   ],
   [
    4869,
-   "\\clogic{``An evolution'' here means cumulative selection strong enough to build complex adaptations, as the closing list makes clear. For evolution in the ordinary sense, less is needed. Lewontin (1970) lists three conditions, variation, differential fitness and heritable fitness, and writes: ``While they hold, a population will undergo evolutionary change.'' So the quoted claim that there will be ``selection pressure'' is true on the standard account; the dispute is over how much, the question the post asked above.}"
+   "\\clogic{``An evolution'' here means cumulative selection strong enough to build complex adaptations, as the closing list makes clear. For evolution in the ordinary sense, less is needed. Lewontin (1970) lists three conditions, variation, differential fitness and heritable fitness, and writes: ``While they hold, a population will undergo evolutionary change.'' So, given variation among the competitors, the quoted claim that there is ``selection pressure'' is true on the standard account; the dispute is over how much, the question the post asked above.}"
   ],
   [
    4883,
@@ -75,7 +75,7 @@
   ],
   [
    6288,
-   "\\cpara{Separates one-off selection (failed firms disappear, as short-lived stars vanish from view) from cumulative selection, which builds complex features. This is the post's central distinction, and the star example makes it clearly.}"
+   "\\cpara{Separates one-off selection (failed firms disappear, as short-lived stars vanish from view) from cumulative selection, which builds complex features. This is the post's central distinction, and the star example makes it clear.}"
   ],
   [
    7118,
@@ -91,7 +91,7 @@
   ],
   [
    8370,
-   "\\cfact{Misstated. Correlation is covariance divided by the product of the two standard deviations (Wikipedia, ``Pearson correlation coefficient''); covariance divided by the variance of A is the slope of B on A. With the post's definition its own example would give a tiny value. With the correct one the paragraph's point holds: shrink the spread of a characteristic and its covariance with fitness shrinks, while its correlation need not.}"
+   "\\cfact{Misstated. Correlation is covariance divided by the product of the two standard deviations (Wikipedia, ``Pearson correlation coefficient''); covariance divided by a variance is a regression slope, which does depend on the spread, so the post's definition lacks the property its example needs. With the correct definition the paragraph's point holds: shrink the spread of a characteristic and its covariance with fitness shrinks, while its correlation need not.}"
   ],
   [
    8799,

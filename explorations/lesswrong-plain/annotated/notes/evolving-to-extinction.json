@@ -2,7 +2,104 @@
  "slug": "evolving-to-extinction",
  "header": "\\post{Evolving to Extinction}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/gDNrpuwahdRrDJ9iY/evolving-to-extinction}\n",
  "skeleton_sha": "0bd3875f4b327a1a82db8d2f6ff6362cefd3b1bf2e57221e045d0b6d49f8247c",
- "post_sha": "0bd3875f4b327a1a82db8d2f6ff6362cefd3b1bf2e57221e045d0b6d49f8247c",
+ "post_sha": "1cf6ea7456eb95ccd63668917324e614dea3a2426b40c9dc1cd31f4f7b8c5e4e",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   130,
+   "\\cpara{States the thesis: evolution does not work for the good of the species. The thesis is the one George C.~Williams made central in \\textsc{Adaptation and Natural Selection} (1966). In Wikipedia's summary of the book: ``Survival of the population is beside the point, e.g. populations don't take any measures to avoid impending extinction.'' The post does not name the book.}"
+  ],
+  [
+   474,
+   "\\cpara{Separates what evolution operates on, a population over time, from what it optimizes for. Gene frequencies change according to the gene's own effect, not the species' benefit.}"
+  ],
+  [
+   1167,
+   "\\cpara{Poses the puzzle: one male can father many offspring, so a species would seem to need fewer males, yet births are near equal even where males give no care.}"
+  ],
+  [
+   1846,
+   "\\cpara{The figures are right. Per mother, group A has 8 grandchildren and 16 great-grandchildren; group B has 12 and 36, which is 50\\% and 125\\% more.}"
+  ],
+  [
+   2245,
+   "\\cpara{Gives the standard explanation: every child has one father and one mother, so when males are rare each son is worth more to the parent. This is usually called Fisher's principle, after R.~A.~Fisher (1930); Wikipedia notes that Darwin and Carl D\\\"using gave similar arguments earlier. The post gives it without a name.}"
+  ],
+  [
+   2940,
+   "\\cpara{Concludes that in humans individual selection outweighs group selection, since births are near equal; the next paragraph qualifies ``at a glance.'' This is the book's first use of ``group selection,'' and it is not defined here. The post that explains it, ``The Tragedy of Group Selectionism,'' comes next in the book but was posted nine days earlier.}"
+  ],
+  [
+   2990,
+   "\\clogic{Information, not a fault: in species where the offspring of a few mothers mate among themselves, strongly female-biased sex ratios are common. They are explained by W.~D.~Hamilton's theory of ``local mate competition'' between brothers, and R.~K.~Colwell titled a 1981 paper ``Group Selection Is Implicated in the Evolution of Female-Biased Sex Ratios.'' The same cases are read both ways. The post's claim is about humans.}"
+  ],
+  [
+   3326,
+   "\\cpara{Refines the claim correctly: selection equalizes investment, not numbers, so if sons cost half as much, two sons are born per daughter. It then judges the human case with a hedge (``kinda suspicious'').}"
+  ],
+  [
+   4197,
+   "\\cpara{Argues that selection cannot act on individuals, since each individual's set of genes is not repeated. This is the gene-centred view of Williams's 1966 book, popularized by Richard Dawkins in \\textsc{The Selfish Gene} (1976).}"
+  ],
+  [
+   4750,
+   "\\cpara{Gives the mark of selection: a gene rising from rare to nearly universal, which complex adaptations need because each part depends on the others being present.}"
+  ],
+  [
+   5347,
+   "\\cpara{Restates the point as an image: the lasting contest is between alleles, not organisms.}"
+  ],
+  [
+   5751,
+   "\\cpara{A thought experiment: a sex ratio made optimal for the species would decay back to equal investment.}"
+  ],
+  [
+   6306,
+   "\\cpara{The Frodo gene: a gene that sacrifices its carrier to save the species loses frequency, because the benefit goes to every genotype alike. ``No Evolutions for Corporations or Nanodevices,'' just before this post in the book, derives the same result from Price's equation.}"
+  ],
+  [
+   6503,
+   "\\cpara{Draws the consequence: in a world of repeated extinction threats, the species dies out. The post calls it hypothetical (``A hypothetical example? Maybe.''); the Gandhi line is a joke.}"
+  ],
+  [
+   6869,
+   "\\cpara{Calls virulence a real case of group selection, and guesses that diseases have ``probably'' evolved to extinction many times. The idea has a name in the literature, evolutionary suicide. A review published at the end of 2007 (Rankin, Bargum and Kokko, \\textsc{Trends in Ecology and Evolution}) cites a laboratory case in which cheating bacteria drove whole populations extinct (Fiegna and Velicer, 2003). It notes that such collapses ``can be difficult to observe because they often destroy the study object,'' and calls how often they happen ``a central open question.''}"
+  ],
+  [
+   7422,
+   "\\cpara{The reasoning holds for a driving Y chromosome: it doubles its copies, stays twice as fit as females grow scarce, and can take the population extinct. This is Hamilton's result (1967); a 2010 paper summarizes that Y drive ``easily leads to population extinction.'' The mouse example is another matter; see the next note.}"
+  ],
+  [
+   7693,
+   "\\cfact{I could not find such a mouse gene. The mouse distorter to which group selection was applied (Lewontin and Dunn, 1960; Lewontin, 1962) is the t haplotype. It lies on chromosome 17, not a sex chromosome; males carrying it pass it to most of their offspring, and many variants cause ``male sterility or \\ldots\\ embryonic lethality when homozygous.'' In Lewontin's account groups died out when all their males were sterile, not when females ran out. A conflict between mouse X and Y genes that biases the sex ratio was first demonstrated in 2012 (Cocquet et al., \\textsc{PLoS Genetics}).}"
+  ],
+  [
+   8580,
+   "\\cpara{Gives transposons as genes that spread while harming their carriers, and grants that this ``may not extinguish a species.'' The maize figure matches the estimate of the time (``at least 50 percent,'' SanMiguel et al., 1996); the 2009 maize genome puts transposable elements at ``Nearly 85\\%,'' which strengthens the point.}"
+  ],
+  [
+   9324,
+   "\\cpara{A thought experiment: a perfect copying mechanism spreads, because its carriers avoid harmful mutations and still gain good ones from others by sex; then the species cannot adapt and dies out.}"
+  ],
+  [
+   10181,
+   "\\cpara{The figures match Darley and Latan\\'e (1968): 85\\% of subjects who thought they alone heard the seizure, over an intercom, reported it before the victim's voice was cut off, against 31\\% of those who thought four others heard it. Within the six minutes allowed, all of the first group and 62\\% of the second reported it. The evolutionary story is marked ``I speculate.''}"
+  ],
+  [
+   10994,
+   "\\clogic{No evidence is given for this, or that any shortfall comes from the arms race speculated just before. The step from an intercom experiment to humanity's response to extinction threats is an analogy.}"
+  ],
+  [
+   11198,
+   "\\cpara{Gives cancer: cells that outcompete their neighbours until the body dies. The Rankin review cited above uses the same example.}"
+  ],
+  [
+   11359,
+   "\\cpara{Generalizes: multicellular bodies exist only because they suppress evolution among their cells. Stated without a source.}"
+  ],
+  [
+   11575,
+   "\\cpara{The conclusion, with its hedges: the mathematics ``would seem to indicate'' that species-preserving adaptations are ``virtually impossible,'' and humanity ``may be'' evolving to extinction now. Of the post's cases of extinction, only cancer is an observed one, and it concerns cells in a body. The Frodo gene and the perfect copier are thought experiments, the virus and humanity cases are guesses, the mouse case is conditional on mice learning to fly, and the transposons ``may not extinguish a species.''}"
+  ]
+ ]
 }

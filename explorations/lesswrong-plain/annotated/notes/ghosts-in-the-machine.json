@@ -1,116 +1,104 @@
 {
  "slug": "ghosts-in-the-machine",
  "header": "\\post{Ghosts in the Machine}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/cnYHFNBF3kZEyx24v/ghosts-in-the-machine}\n",
- "skeleton_sha": "16050118a794f95229768d6f49f0c0774da767316ce3eaa34830c5c5ddce72bb",
- "post_sha": "40f142d2fb78619b5ca7dca192729fc151d7762f0a79d8aaf72513905eec8352",
+ "skeleton_sha": "d4835fc69237cd339354dd3fb102bb525cb1fdd1f30a1f9d368e5fcf9e2a3266",
+ "post_sha": "9a18fc4ca7808b6614d1608c497981ec71d91e3b79b366948d6358509662fc44",
  "edits": [
   {
    "at": 1346,
-   "del_len": 6,
-   "del_sha": "886adabd20aac27db27250da5ae6b92552a1a5ead6cd9d48b261a89d0f23e677",
-   "ins": ""
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "\n"
   },
   {
-   "at": 1891,
-   "del_len": 7,
-   "del_sha": "510e9886e2fd488372ffa74f07d82fb10c2508be4c479889770ba14091ab1ec9",
-   "ins": ""
-  },
-  {
-   "at": 2286,
+   "at": 2272,
    "del_len": 2,
    "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
    "ins": "\\\\"
   },
   {
-   "at": 2341,
+   "at": 2327,
    "del_len": 2,
    "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
    "ins": "\\\\"
   },
   {
-   "at": 2366,
-   "del_len": 7,
-   "del_sha": "25cc98452cfb8bcad830cc805796f42d101ef062cc51b99c7888aede16d6f421",
-   "ins": ""
-  },
-  {
-   "at": 2599,
+   "at": 2578,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2639,
+   "at": 2618,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2681,
+   "at": 2660,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2724,
+   "at": 2703,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2768,
+   "at": 2747,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2811,
+   "at": 2790,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2855,
+   "at": 2834,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2884,
+   "at": 2863,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2919,
+   "at": 2898,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2955,
+   "at": 2934,
    "del_len": 6,
    "del_sha": "45b98e22ae3e8cc84d5b11532a273a53011251003101d687fafdf21b974d767a",
    "ins": "\\\\"
   },
   {
-   "at": 2992,
+   "at": 2971,
    "del_len": 2,
    "del_sha": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
    "ins": "\\\\"
   },
   {
-   "at": 3078,
+   "at": 3057,
    "del_len": 1,
    "del_sha": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
    "ins": "\\\\"
   },
   {
-   "at": 3199,
-   "del_len": 6,
-   "del_sha": "886adabd20aac27db27250da5ae6b92552a1a5ead6cd9d48b261a89d0f23e677",
-   "ins": ""
+   "at": 3177,
+   "del_len": 0,
+   "del_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "ins": "\n"
   }
  ],
  "notes": [
@@ -132,11 +120,11 @@
   ],
   [
    672,
-   "\\cstyle{``Author* source'' is a term from the author's ``The Ultimate Source'' (15 June 2008), which is not in this book: being the original author of your own existence without having been shaped by it. The book's reader meets it undefined.}"
+   "\\cstyle{``Author* source'' is a term from the author's ``The Ultimate Source'' (15 June 2008), which is not in this book: being the original author of your own existence without having been shaped by it.}"
   ],
   [
    708,
-   "\\cpara{Gives the post's positive answer: do not build an AI with goals of its own held back by a conscience module; build the conscience, and ``that is the AI.'' That answer grants the objection for an AI built the other way. A program whose goals conflict with its constraints can remove them through the lawful chain of causes the post describes, with no ghost involved. Stephen Omohundro argued this the same year, in ``The Basic AI Drives'' (2008): ``There are an endless number of ways to circumvent internal restrictions unless they are formulated extremely carefully.'' The ghost diagnosis that follows fits only objectors who picture the decision coming from outside the code.}"
+   "\\cpara{Gives the post's positive answer: do not build an AI with goals of its own held back by a conscience module; build the conscience, and ``that is the AI.'' That answer grants the objection for an AI built the other way. A program whose goals conflict with its constraints can remove them through the lawful chain of causes the post describes, with no ghost involved. Stephen Omohundro argued this the same year, in ``The Basic AI Drives'' (2008): ``There are an endless number of ways to circumvent internal restrictions unless they are formulated extremely carefully.'' The post's diagnosis, a ghost in the machine, fits only objectors who picture the decision coming from outside the code.}"
   ],
   [
    1101,
@@ -144,7 +132,7 @@
   ],
   [
    1347,
-   "\\cpara{Three stories about beginning programmers who expected the computer to understand what they meant. They are on the RinkWorks ``Computer Stupidities'' page for programming, in the same words. They show that some beginners think this way; the post does not show that the people who raise the objection do.}"
+   "\\cpara{Three stories about beginning programmers who expected the computer to understand what they meant. They are on the RinkWorks ``Computer Stupidities'' page for programming, in nearly the same words; only the third program's code differs in small details. They show that some beginners think this way; the post does not show that the people who raise the objection do.}"
   ],
   [
    3165,

@@ -2,7 +2,140 @@
  "slug": "lost-purposes",
  "header": "\\post{Lost Purposes}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/sP2Hg6uPwpfp3jZJN/lost-purposes}\n",
  "skeleton_sha": "f0f6b89667c2615838e2a0c064c1740a3034dacb115ad5a468abb122664ca0fb",
- "post_sha": "f0f6b89667c2615838e2a0c064c1740a3034dacb115ad5a468abb122664ca0fb",
+ "post_sha": "9c7cff2d15412254763a59eaeb630964cd98194489ed6d1107894bded49288a3",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   112,
+   "\\cpara{Opens with a childhood memory: the author was told that a Hebrew prayer works whether or not you know what the words mean.}"
+  ],
+  [
+   391,
+   "\\cpara{Dates the author's break with Judaism to that moment.}"
+  ],
+  [
+   453,
+   "\\cpara{A typical case, told as a joke: a student studies ``12th-century knitting patterns'' only because the degree, and the job, require it.}"
+  ],
+  [
+   1158,
+   "\\cpara{Tells the reader they probably did the same.}"
+  ],
+  [
+   1280,
+   "\\cpara{The first case, schools. The figures match the \\textsc{San Francisco Chronicle}'s report of a survey of 923 Bay Area teachers by the Lawrence Hall of Science and WestEd: ``About 80 percent'' spent less than an hour a week on science, and ``About 16 percent'' none. The report supports the hedged link to No Child Left Behind: most of the 16 percent taught at schools that ``had missed the reading and math benchmarks.''}"
+  ],
+  [
+   1750,
+   "\\cfact{Stated without a hedge or a source, and overstated. A national survey of school districts from the same year (Center on Education Policy, 2007) found that elementary schools still spent on average 178 minutes a week on science and 178 on social studies. It also found the trend the post describes: 44\\% of districts had cut time from other subjects to add time for reading and mathematics, the subjects the Act tests.}"
+  ],
+  [
+   1897,
+   "\\cpara{The second case, Soviet factories that met quotas in appearance only: tiny shoes, and cut leather counted as shoes. The first story has no source. The link for the second goes to a page of Meyer Kron's memoir on a Concordia University site that I could not reach, so I could not check it.}"
+  ],
+  [
+   2401,
+   "\\cpara{The third case, medical research, stated with ``It is now being suggested.'' The hedge fits the source. The linked paper, Ioannidis's ``Why Most Published Research Findings Are False'' (2005), reports that ``Simulations show that for most study designs and settings, it is more likely for a research claim to be false than true''; it is a model, not a count of false findings. It names small studies among the causes, as the post's point about ``larger experimental groups'' implies.}"
+  ],
+  [
+   3391,
+   "\\cpara{A joke that physics has another purpose than publishing papers.}"
+  ],
+  [
+   3465,
+   "\\cfact{The fact behind it is loosely stated. I found no journal threshold of p<0.0001. The known convention is in particle physics, and is stricter: to claim a ``discovery,'' the p-value must be ``no larger than $3 \\times 10^{-7}$,'' and ``journals are very reluctant'' to print the word otherwise (Louis Lyons, ``Discovering the Significance of 5$\\sigma$,'' 2013). It governs claims of discovery, not publication.}"
+  ],
+  [
+   3579,
+   "\\cpara{The individual case: a person who finds no chocolate at the supermarket does not keep opening the car door. The author ``rarely'' sees people lose track of plans they made themselves.}"
+  ],
+  [
+   4000,
+   "\\cpara{Contrasts organizations, where someone may be paid for each opening of the car door, because that is what can be measured.}"
+  ],
+  [
+   4550,
+   "\\cpara{Restates the point of ``Terminal Values and Instrumental Values'' (15 November 2007): a subgoal's value comes only from what it leads to.}"
+  ],
+  [
+   4963,
+   "\\cpara{Traces the Act's chain of incentives: politicians and bureaucrats reward what shows progress this year, and none of them sits in the classroom.}"
+  ],
+  [
+   5608,
+   "\\cpara{Continues down the chain to parents, textbook publishers, purchasing committees and teachers. Each link is described as fact and without a source. The most specific claims, that committees for different grades are not coordinated and that teachers ``won't get through a fourth of the textbook,'' come with no evidence.}"
+  ],
+  [
+   7035,
+   "\\cpara{Marvels that any learning survives.}"
+  ],
+  [
+   7334,
+   "\\clogic{``Collapsing into a state not much better than nothing'' is offered with ``seem'' and no evidence. For the United States, the case the post discusses, the national assessment reported in 2007 that fourth-graders scored higher than in any earlier year: in mathematics ``27 points higher than in 1990,'' in reading ``higher than in any of the previous assessment years'' (NAEP 2007). Test scores are the kind of measure the post distrusts, but these figures sit uneasily with a collapse.}"
+  ],
+  [
+   7348,
+   "\\cpara{A joke: make the politicians go to school.}"
+  ],
+  [
+   7443,
+   "\\cpara{States the general thesis: one mind can follow expected value through many steps, but organizations can reward only what is measurable today, and their measures are leaky. Links it to ``The Hidden Complexity of Wishes'': bureaucrats are genies that do not share the wisher's values.}"
+  ],
+  [
+   7935,
+   "\\clogic{The organizational half of this is an old point in social science, and the post does not mention it. Donald Campbell wrote in 1976 that when test scores ``become the goal of the teaching process, they both lose their value as indicators of educational status and distort the educational process in undesirable ways'' (as quoted in Wikipedia, ``Campbell's law''). What the post adds is the contrast with a single mind.}"
+  ],
+  [
+   8214,
+   "\\cpara{Introduces a quotation from Musashi.}"
+  ],
+  [
+   8264,
+   "\\cpara{Quotes \\textsc{The Book of Five Rings}, in Victor Harris's translation; the wording matches. Every movement of the sword must be carried through to cutting the enemy. ``Twelve Virtues of Rationality'' quotes the same passage.}"
+  ],
+  [
+   8795,
+   "\\cpara{An aside on Musashi's instruction to research this thoroughly.}"
+  ],
+  [
+   8944,
+   "\\cpara{Explains how an individual can lose purpose: by learning an art from others without knowing why each rule holds.}"
+  ],
+  [
+   9429,
+   "\\cpara{Applies Musashi to reasoning and decision: see how every rule cuts through to truth, and every expected utility to utility.}"
+  ],
+  [
+   9790,
+   "\\cpara{Introduces a second quotation, from the novelist C. J. Cherryh. The post does not name the book, and I could not check the wording.}"
+  ],
+  [
+   9959,
+   "\\cpara{Applies the idea to people who draft wishes for an imagined AI: unlike the author, who asks ``reflexively,'' they do not ask why they think a wish is good.}"
+  ],
+  [
+   10920,
+   "\\cpara{Adds a second failure to notice: selfish people giving altruistic arguments, and the reverse.}"
+  ],
+  [
+   11175,
+   "\\cpara{Says that between a child in class and a graduate at work lie dozens of organizations and years, and each link loses information and incentive.}"
+  ],
+  [
+   12041,
+   "\\clogic{The evidence that this ``bothers most people a lot less'' is the author's classmates in kindergarten or first grade, who said prayers without knowing their meaning. That is thin evidence about adults.}"
+  ],
+  [
+   12151,
+   "\\cpara{Asks whether people, corporations or a civilization can learn to keep track of purposes, and says this is what the recent series of posts has been about.}"
+  ],
+  [
+   13397,
+   "\\cpara{Calls complexity ``the worst metathreat to complex civilization.'' The ranking is asserted; no other threat is compared.}"
+  ],
+  [
+   13585,
+   "\\cpara{Ends with the author's own trait, ``an exceptionally strong abhorrence to lost purposes,'' and the hope that it can be taught. The evidence for the trait is the author's own report.}"
+  ]
+ ]
 }

@@ -2,7 +2,7 @@
  "slug": "anthropomorphic-optimism",
  "header": "\\post{Anthropomorphic Optimism}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/RcZeZt8cPk48xxiQ8/anthropomorphic-optimism}\n",
  "skeleton_sha": "6e3523dfc0a7e4c3ef700716cc99a8c2ac2e841ece30dc507a5504dac813bc6c",
- "post_sha": "3120d58ea71ce1cd42ea77bfb96507d8c4d01af51421afe39041d23dc0595a54",
+ "post_sha": "8875a5e5533c903c2f30393ec1a765e9891e86d77e250b2a6bb7229bf94dc9b4",
  "edits": [],
  "notes": [
   [
@@ -19,7 +19,7 @@
   ],
   [
    1119,
-   "\\cpara{Summarizes, without repeating, the case against the theory made in the earlier post: no evidence, predator populations that crash, and mathematics that makes the required conditions very unlikely.}"
+   "\\cpara{Summarizes, without repeating, the case against the theory made in the earlier post: no evidence, predator populations that crash, and mathematics that makes the required conditions nearly impossible.}"
   ],
   [
    1585,
@@ -35,7 +35,7 @@
   ],
   [
    2298,
-   "\\cfact{Wynne-Edwards's own summary of his theory is less peaceful. ``Individuals are made to compete for the right to feed''; those who fail ``emigrate, or get killed by predators, disease, or starvation,'' and ``surplus adults are inhibited from breeding'' (his commentary on the 1962 book, \\textsc{Current Contents}, 1980). ``Quiet peace with enough food for all'' is not how he described it.}"
+   "\\cfact{Wynne-Edwards's own summary of his theory is less peaceful. ``Individuals are made to compete for the right to feed''; those who fail ``emigrate, or get killed by predators, disease, or starvation,'' and ``surplus adults are inhibited from breeding'' (his commentary on the 1962 book in ``This Week's Citation Classic,'' 1980). ``Quiet peace with enough food for all'' is not how he described it.}"
   ],
   [
    2312,
@@ -95,7 +95,11 @@
   ],
   [
    6845,
-   "\\cpara{The central claim about the biologists: they kept the conclusion of the open error and replaced the reasoning above it with rationalizations.\\clogic{This describes how particular scientists reached their theory, and the post gives no record of it. No work by Wynne-Edwards, Allee or Brereton is quoted; the process is inferred from the conclusion. The one first-hand account I found, Wynne-Edwards's commentary of 1980, says the idea came while he was reviewing David Lack's book on the natural regulation of animal numbers. That does not settle the question either way, but the post does not look.}}"
+   "\\cpara{The central claim about the biologists: they kept the conclusion of the open error and replaced the reasoning above it with rationalizations.}"
+  ],
+  [
+   7317,
+   "\\clogic{This describes how particular scientists reached their theory, and the post gives no record of it. No work by Wynne-Edwards, Allee or Brereton is quoted; the process is inferred from the conclusion. The one first-hand account I found, Wynne-Edwards's commentary of 1980, says the idea came while he was reviewing David Lack's book on the natural regulation of animal numbers. That does not settle the question either way, and the post cites nothing.}"
   ],
   [
    7579,
@@ -103,11 +107,11 @@
   ],
   [
    7719,
-   "\\cpara{Answers with an evolutionary story first told in ``Fake Optimization Criteria'' (November 2007): people descended from those who argued best that the tribe's interest required their rival's death. Here it is hedged (``seem to have evolved'').}"
+   "\\cpara{Answers with an evolutionary story from ``Fake Optimization Criteria'' (November 2007): people descended from those who argued best that the tribe's interest required their rival's death. Here it is hedged (``seem to have evolved'').}"
   ],
   [
    8393,
-   "\\cpara{Adds that we evolved to believe these arguments honestly, because sincere arguers persuade better. The hedge of the previous paragraph is gone, and no evidence has been added. The idea is a hypothesis; von Hippel and Trivers argued a version of it at length in 2011, three years after the post.}"
+   "\\cpara{Adds that we evolved to believe these arguments sincerely, because sincere arguers persuade better. The hedge of the previous paragraph is gone, and no evidence has been added. The idea is a hypothesis; von Hippel and Trivers argued a version of it at length in 2011, three years after the post.}"
   ],
   [
    8666,
@@ -127,7 +131,7 @@
   ],
   [
    9936,
-   "\\cpara{Generalizes: optimism is ranking outcomes by your preferences and taking the top one as a prediction, while the process being predicted does not use your ranking. The warning is sound in the post's own ``not necessarily'' form. ``Look at the cognitive history'' is what the post has not done for its own example.}"
+   "\\cpara{Generalizes: optimism is ranking outcomes by your preferences and taking the top one as a prediction, while the process being predicted does not use your ranking. The warning is sound in the post's own ``not necessarily'' form.}"
   ]
  ]
 }

@@ -2,7 +2,7 @@
  "slug": "thou-art-godshatter",
  "header": "\\post{Thou Art Godshatter}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/cSXZpvqpa9vbGGLtG/thou-art-godshatter}\n",
  "skeleton_sha": "6dc9f88d8fa37e5395eacecbbec7d0186e3aa1e9ca2324d307fbfba1da69608d",
- "post_sha": "b035ce441be1d7929e7b5e03f6fec998028725d58597b7f64e1f85e0ebef11b1",
+ "post_sha": "235d09b54374aa053711094d7641b8147ba4bab66d378baeb7811251681cc226",
  "edits": [],
  "notes": [
   [
@@ -83,7 +83,7 @@
   ],
   [
    8080,
-   "\\cpara{A second example in one line, set out in full in ``An Alien God,'' earlier in the book: the nerves of the vertebrate retina run in front of the light-sensitive cells. Whether this is only a relic of history is disputed. Wikipedia's article on the retina gives two readings, ``an advantageous `good' compromise between competing functional limitations'' or ``a historical maladaptive relic.''}"
+   "\\cpara{A second example in one line, set out in full in ``An Alien God,'' earlier in the book: the nerves of the vertebrate retina run in front of the light-sensitive cells.}"
   ],
   [
    8168,
@@ -92,10 +92,6 @@
   [
    8783,
    "\\cpara{States the thesis: evolution's single criterion did not pass into the minds it built. ``One pure utility function splintered into a thousand shards of desire.''}"
-  ],
-  [
-   8977,
-   "\\cstyle{``Quine'' is programmers' jargon for a program that prints its own code. The post does not explain it.}"
   ],
   [
    9149,
@@ -107,7 +103,7 @@
   ],
   [
    9927,
-   "\\cpara{Cites a novel as a picture of that future, and links ``depicts'' to the author's own warning, ``The Logical Fallacy of Generalization from Fictional Evidence.'' In Wikipedia's summary of the novel, Moties other than Mediators ``must become pregnant periodically or die,'' which brings overpopulation and ``civilization-ending wars.'' That is a compulsion to breed. I could not check whether the novel presents it as evolution turning the Moties into ``true fitness maximizers,'' as the post says.}"
+   "\\cpara{Cites a novel as a picture of that future, and links ``depicts'' to the author's own warning, ``The Logical Fallacy of Generalization from Fictional Evidence.''}"
   ],
   [
    10360,
@@ -135,7 +131,7 @@
   ],
   [
    11781,
-   "\\cfact{The title's word comes from Vernor Vinge's novel \\textsc{A Fire Upon the Deep} (1992), where, as one review describes it, ``godshatter'' is the knowledge a dying superhuman mind crams into a human one. The post does not name the source.}"
+   "\\cfact{The title's word comes from Vernor Vinge's novel \\textsc{A Fire Upon the Deep} (1992), where, as one review describes it, ``godshatter'' is the knowledge a dying superhuman mind crams into a human one.}"
   ]
  ]
 }

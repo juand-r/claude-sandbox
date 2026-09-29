@@ -2,7 +2,7 @@
  "slug": "evolutions-are-stupid-but-work-anyway",
  "header": "\\post{Evolutions Are Stupid (But Work Anyway)}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/jAToJHtg39AMTAuJo/evolutions-are-stupid-but-work-anyway}\n",
  "skeleton_sha": "15b7fdb04095d0c9310c74ec4c6c7a9514664e6e90de323ba7f7a6fac2dcc3d5",
- "post_sha": "2b71a2f4ec7c9e7baab341803be2bdf682f76970e62dc1351e11bb9ddc2b63ad",
+ "post_sha": "df66cb208aaf290dbe69c26b71a34c49aaf8d945bac6d2ec117f205502780028",
  "edits": [],
  "notes": [
   [
@@ -103,7 +103,7 @@
   ],
   [
    8671,
-   "\\cpara{The promised post, ``Natural Selection's Speed Limit and Complexity Bound'' (4 November 2007), is not in the book. It now opens with a warning: ``A simulation I wrote to verify the following arguments did not return the expected results.''}"
+   "\\cpara{The promised post, ``Natural Selection's Speed Limit and Complexity Bound'' (4 November 2007), is not in the book. It now carries a warning near the top: ``A simulation I wrote to verify the following arguments did not return the expected results.''}"
   ],
   [
    8756,

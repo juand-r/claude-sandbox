@@ -2,7 +2,7 @@
  "slug": "the-wonder-of-evolution",
  "header": "\\post{The Wonder of Evolution}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/ZyNak8F6WXjuEbWWc/the-wonder-of-evolution}\n",
  "skeleton_sha": "d012702c74a1053349922edc0e65940ec1e0ec9fa1eca24ce7797f0b25bce43d",
- "post_sha": "6ab01c7342b16b841233b50eee39245ab6975ac0fa4b91ebc2300c4885429308",
+ "post_sha": "fa4bf2fb46642a2b5aa2af84ddb1e838d529cde04e9939b69b2649b7650b4306",
  "edits": [],
  "notes": [
   [
@@ -39,7 +39,7 @@
   ],
   [
    2438,
-   "\\cpara{Shows how parts that are each useful alone can become mutually dependent, until the machine breaks if any piece is removed. The post offers this as the standard reply to ``irreducible complexity,'' Michael Behe's term, and it is an old one. According to Wikipedia (``Irreducible complexity''), Hermann Muller described such ``interlocking'' in 1918 as ``a consequence to be expected of evolution,'' and Graham Cairns-Smith described the ``scaffolding'' version in 1985.}"
+   "\\cpara{Shows how parts that are each useful alone can become mutually dependent, until the machine breaks if any piece is removed. This is the post's answer to ``irreducible complexity,'' Michael Behe's term, and the answer is an old one. According to Wikipedia (``Irreducible complexity''), Hermann Muller described such ``interlocking'' in 1918 as ``a consequence to be expected of evolution,'' and Graham Cairns-Smith described the ``scaffolding'' version in 1985.}"
   ],
   [
    3036,
@@ -55,7 +55,7 @@
   ],
   [
    4061,
-   "\\clogic{Stronger than the paragraph's own last sentence, which says ``Almost certainly.'' It also claims more than the paragraph shows. The paragraph gives the first step, RNA before DNA and protein. How an RNA system became one based on DNA and proteins is still counted as open. Wikipedia: ``One of the challenges posed by the RNA world hypothesis is to discover the pathway by which an RNA-based system transitioned to one based on DNA.''}"
+   "\\clogic{The paragraph ends with ``Almost certainly,'' the accurate hedge, and it gives the first step, RNA before DNA and protein. How an RNA system became one based on DNA and proteins is still counted as open. Wikipedia: ``One of the challenges posed by the RNA world hypothesis is to discover the pathway by which an RNA-based system transitioned to one based on DNA.''}"
   ],
   [
    4461,
@@ -79,7 +79,7 @@
   ],
   [
    6599,
-   "\\cpara{Warns that praising evolution beyond the evidence is inaccuracy, not loyalty to science. The error is shown through an imagined speaker; the post quotes no one who makes it. The claim that ``Science has a very exact idea of the capabilities of evolution'' is given its support the next day, in ``Evolutions Are Stupid (But Work Anyway),'' which quotes this passage; see the notes there on how exact the formulas are.}"
+   "\\cpara{Warns that praising evolution beyond the evidence is inaccuracy, not loyalty to science. The claim that ``Science has a very exact idea of the capabilities of evolution'' is given its support the next day, in ``Evolutions Are Stupid (But Work Anyway),'' which quotes this passage; see the notes there on how exact the formulas are.}"
   ],
   [
    7416,
@@ -91,7 +91,7 @@
   ],
   [
    7951,
-   "\\clogic{Engineers were by then imitating evolution as a designer, with some success. Evolutionary algorithms, which copy mutation and selection on a computer, produced the antennas that flew on NASA's Space Technology 5 mission in 2006. Their designers wrote that such algorithms ``automatically find novel antenna designs that are more effective than would otherwise be developed'' (Hornby and colleagues, 2006). The analogy fits evolution as it runs in nature; it does not fit these imitations.}"
+   "\\clogic{Engineers do use computer imitations of evolution as a design tool. Evolutionary algorithms, which copy mutation and selection, produced the antennas that flew on NASA's Space Technology 5 mission in 2006; their designers wrote that such algorithms ``automatically find novel antenna designs that are more effective than would otherwise be developed'' (Hornby and colleagues, 2006). These tools run inside a search set up by people. The post's comparison is of evolution against intelligence as designers, and it does not address this use.}"
   ],
   [
    8024,

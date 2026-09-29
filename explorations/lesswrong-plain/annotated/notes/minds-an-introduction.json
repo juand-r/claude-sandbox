@@ -2,7 +2,7 @@
  "slug": "minds-an-introduction",
  "header": "\\post{Minds: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/8GhSZzsQmusCN9is7/minds-an-introduction}\n",
  "skeleton_sha": "f179ce9084b05afe7c4cb443adf8153cb61a0b0e5a2f1ceefcaaf660e430d81b",
- "post_sha": "d3edbb6ed1d1755f74196bab3927c9d8169300dc533b1b0c1082123199eaf957",
+ "post_sha": "31a535280f4916b6ad8ed5978c2a95f7367bfd829333c9d905f1ac81ec0feb0f",
  "edits": [],
  "notes": [
   [
@@ -75,7 +75,7 @@
   ],
   [
    7960,
-   "\\cfact{MIRI is not introduced. It is the Machine Intelligence Research Institute, where Yudkowsky was a senior researcher. MIRI released this book in March 2015, and Bensinger announced the release on MIRI's blog (``we are releasing'').}"
+   "\\cfact{MIRI is the Machine Intelligence Research Institute, where Yudkowsky was a senior researcher. MIRI released this book in March 2015, and Bensinger announced the release on MIRI's blog (``we are releasing'').}"
   ],
   [
    8309,

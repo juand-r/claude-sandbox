@@ -2,7 +2,80 @@
  "slug": "adaptation-executers-not-fitness-maximizers",
  "header": "\\post{Adaptation-Executers, not Fitness-Maximizers}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/XPErvb8m9FapXCjhA/adaptation-executers-not-fitness-maximizers}\n",
  "skeleton_sha": "37c7cea589f82384177bd042dc7fcb9dbcae23616186de50a3668c304017f4d6",
- "post_sha": "37c7cea589f82384177bd042dc7fcb9dbcae23616186de50a3668c304017f4d6",
+ "post_sha": "3ae6d342354bc693bd916c08760c796485295dc4241557998b2afce30356d82d",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   187,
+   "\\cpara{The epigraph is quoted exactly, from Tooby and Cosmides's chapter in \\textsc{The Adapted Mind} (1992), p.~54. The post's title and thesis are this sentence, and the post credits it.}"
+  ],
+  [
+   433,
+   "\\cpara{Sets out the example: taste buds tuned to scarce sugar and fat now steer people toward cheap calories. Biologists call a case like this an evolutionary mismatch, a trait that was advantageous and became harmful when the environment changed. The post does not use the term.}"
+  ],
+  [
+   1119,
+   "\\cpara{States the thesis after one example, in the epigraph's words. The cookie sentence gives the contrast: someone deliberately maximizing fitness would not eat like people do.}"
+  ],
+  [
+   1380,
+   "\\cpara{Begins an analogy with tools: a toaster or a screwdriver does not carry its designer's intentions, so it does not adapt when used against them.}"
+  ],
+  [
+   1778,
+   "\\cpara{Argues that a tool's purpose is a fact about the designer's mind, not about the tool, and that forgetting this leads one to expect the tool to act on its purpose.}"
+  ],
+  [
+   2444,
+   "\\cpara{Separates the cause of the screwdriver, the designer's imagining, from its actual use, on the ground that the future cannot cause the past.}"
+  ],
+  [
+   2921,
+   "\\cpara{Adds consequence: what the tool actually does can differ from what the designer imagined.}"
+  ],
+  [
+   3120,
+   "\\cpara{Adds meaning: what a user takes the tool to be for, which can differ again.}"
+  ],
+  [
+   3449,
+   "\\cpara{Sums up the four headings, cause, shape, consequence and meaning, and says only the shape is in the object. The next four paragraphs apply the same headings to the taste bud, which makes the structure easy to follow.}"
+  ],
+  [
+   3682,
+   "\\cpara{Applies ``cause'' to the taste bud: a long history of ancestors who liked sugar and reproduced, which we compress into ``Evolution did it.''}"
+  ],
+  [
+   4078,
+   "\\cfact{The figure comes from the linked post, ``Evolutions Are Stupid (But Work Anyway)'': the number of generations for a gene with a 1\\% advantage to spread through a population of a million, $2\\ln N/s = 2 \\times 13.8/0.01 \\approx 2763$.}"
+  ],
+  [
+   4354,
+   "\\cfact{The distinction drawn here and in the next paragraph, between the evolutionary history that explains a trait and the mechanism by which it works, is what biologists call ultimate and proximate causation. Ernst Mayr popularized the terms in ``Cause and Effect in Biology'' (\\textsc{Science}, 1961). The post does not use them.}"
+  ],
+  [
+   4368,
+   "\\cpara{Applies ``shape'': a sensor tied to reinforcement, which works by making the organism want more of what it just ate.}"
+  ],
+  [
+   4717,
+   "\\cpara{Applies ``consequence'': in a rich country the chain can run from wanting chocolate to having fewer children, the reverse of the regularity that shaped the taste bud, and overeating is too recent for selection to have changed it.}"
+  ],
+  [
+   5339,
+   "\\cpara{Applies ``meaning'': whether eating chocolate is good is a question for the eater's values. The author would accept a change to the chocolate or to human biochemistry.}"
+  ],
+  [
+   5615,
+   "\\cpara{Rejects a looser formula, that people do today what would have spread their genes among hunter-gatherers, because no one asks that question and many modern things, like chocolate, have no ancestral counterpart. This is the post's one refinement of its thesis.}"
+  ],
+  [
+   6125,
+   "\\cpara{Restates the conclusion for taste buds: an adaptation fitted to ancestral conditions, now executed in a new one.}"
+  ],
+  [
+   6416,
+   "\\cpara{Repeats the epigraph as the conclusion, as settled. It is a position within a wider debate on how to study the evolution of human behaviour. A 2001 review of that debate found ``considerable complementarity'' between approaches that study ``psychological mechanisms'' and those that study ``adaptive fit to environments,'' along with ``substantial theoretical and methodological differences'' (Smith, Borgerhoff Mulder and Hill, \\textsc{Trends in Ecology and Evolution}).}"
+  ]
+ ]
 }

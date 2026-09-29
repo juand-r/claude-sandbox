@@ -2,7 +2,96 @@
  "slug": "artificial-addition",
  "header": "\\post{Artificial Addition}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/YhgjmCxcQXixStWMC/artificial-addition}\n",
  "skeleton_sha": "a2fe2c3fa1aad949c70625055d5ea9d20651e0440eb6d9bfbd3c649c935e184d",
- "post_sha": "a2fe2c3fa1aad949c70625055d5ea9d20651e0440eb6d9bfbd3c649c935e184d",
+ "post_sha": "58bef76c922ccf7250d1fce559aa94a577f33b343cbcdd5b19d31d4226954c9b",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   124,
+   "\\cpara{Sets up the parable: people have an evolved ability to add, do not know how it works, and formalize it in notations like ``Plus-Of(Seven, Six) = Thirteen.''}"
+  ],
+  [
+   850,
+   "\\cpara{Describes the parable's calculators, lookup tables for numbers up to a hundred, and the philosophers who say they only simulate addition.}"
+  ],
+  [
+   1678,
+   "\\cpara{Parodies the view that a number's meaning comes from reference and from its relations to other numbers, with a meaningless LISP token as the example.}"
+  ],
+  [
+   2335,
+   "\\cpara{Parodies narrow systems, slow progress and experts' long forecasts.}"
+  ],
+  [
+   2884,
+   "\\cpara{Introduces a list of dissenting views, each in its holder's words.}"
+  ],
+  [
+   3150,
+   "\\cpara{Several voices echo real positions, though only Searle is named. Douglas Lenat's Cyc project, begun in 1984, entered common-sense knowledge largely by hand. Lucas and Penrose argued from G\\\"odel's incompleteness theorem that human mathematicians can do what no formal system can, and Penrose proposed a quantum explanation. Searle's Chinese Room argument dates from 1980.}"
+  ],
+  [
+   5683,
+   "\\cpara{Later history bears on this voice. Language models, neural networks trained on large amounts of text with no addition algorithm built in, did learn to add. How they do it was worked out afterwards: in 2025 Kantamneni and Tegmark reported that three such models represent numbers on a helix and add by manipulating it, ``the first representation-level explanation of an LLM's mathematical capability.''}"
+  ],
+  [
+   6752,
+   "\\cpara{Mentions another moral of the parable: a CPU can add large numbers because it treats them as ordered strings of bits, not as opaque labels.}"
+  ],
+  [
+   7161,
+   "\\cpara{States the two morals: beware assertions you cannot regenerate yourself, and beware dancing around basic confusions.}"
+  ],
+  [
+   7345,
+   "\\cpara{Says both morals can also be drawn from the real history of AI.}"
+  ],
+  [
+   7558,
+   "\\clogic{The parable makes the missing insight one the reader already has: we know that arithmetic is a simple formal system, so every voice in the list looks foolish by construction. Whether intelligence has a key of that kind is the question the real history would have to settle.}"
+  ],
+  [
+   7572,
+   "\\cpara{Explains the first danger: the parable's devices play back knowledge produced outside them and cannot produce it themselves.}"
+  ],
+  [
+   8097,
+   "\\cpara{Compares this to repeating ``Light is waves'' on a physicist's word. ``Tomorrow'' is ``Truly Part of You'' (21 November 2007), which gives a real case from AI, Drew McDermott's critique of AI programs built on semantic networks. This book places that post in its first part, so the book's reader has already met it.}"
+  ],
+  [
+   8451,
+   "\\cpara{States the second danger: dancing around gaps in your knowledge instead of filling them.}"
+  ],
+  [
+   8762,
+   "\\cpara{Says that calling something ``emergent'' and calling it ``unknowable'' both avoid admitting that an insight is missing and could be had.}"
+  ],
+  [
+   9109,
+   "\\cpara{Says a basic insight comes only from years of work on the problem, which neither academia nor venture capital supports.}"
+  ],
+  [
+   9455,
+   "\\clogic{The post's own real case came from academia. Pearl worked at the University of California, Los Angeles, and Pearl's 1982 paper on propagating beliefs through networks of inference was ``Supported in part by the National Science Foundation.'' That sits uneasily with the claim, for which no evidence is given.}"
+  ],
+  [
+   9639,
+   "\\cpara{Judges the voices in the list: none sets out to find the missing insight, and none sees that the difficulty lies in its own confusion rather than in arithmetic.}"
+  ],
+  [
+   10159,
+   "\\cpara{Gives the post's real case: before Pearl's graphical models, non-monotonic logics patched logic case by case; with the insight, one can explain why ``first-order logic has the wrong properties for the job'' and give a compact solution.}"
+  ],
+  [
+   11438,
+   "\\cpara{Says that without the key you cannot even know that the problem is unsolvable, so clever ideas seem as if they might work.}"
+  ],
+  [
+   11866,
+   "\\cpara{Generalizes: clever ideas look promising only because their authors cannot see the obstacles, and until you know an idea will work, it won't.}"
+  ],
+  [
+   12606,
+   "\\cpara{States the lesson as drawn from ``the history of previous key insights in Artificial Intelligence.'' The post has described one such insight, Pearl's.}"
+  ]
+ ]
 }

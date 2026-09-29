@@ -2,7 +2,7 @@
  "slug": "optimization-and-the-intelligence-explosion",
  "header": "\\post{Optimization and the Intelligence Explosion}{Eliezer Yudkowsky}{2015}{https://www.lesswrong.com/posts/8vpf46nLMDYPC6wA4/optimization-and-the-intelligence-explosion}\n",
  "skeleton_sha": "de7f4daf91a5e00f036b4618d3dc8b303d5188622e061436f3fdec9dd58741dd",
- "post_sha": "0ce4d1632b5d33e59d1b43ea4cddd45696ad4d656c38981178c5853241f5c91c",
+ "post_sha": "75be534b786048065447eb428342ebbc79c4d28d00994b9f35180ee3fbbde8c5",
  "edits": [],
  "notes": [
   [
@@ -147,7 +147,7 @@
   ],
   [
    12980,
-   "\\clogic{The reply is offered with ``doesn't seem'' and no measurement. Neither the ``roughly constant optimization power'' on the hominid line nor a ``linear increment of improvement'' is measured or sourced. The hominid case also covers only the climb from ape to human. The objection is about an AI improving beyond that level, and there the post gives no evidence either way.}"
+   "\\clogic{The reply is offered with ``doesn't seem'' and no measurement. Neither the ``roughly constant optimization power'' on the hominid line nor a ``linear increment of improvement'' is measured or sourced. The hominid case also covers only the climb from ape to human. The objection concerns an AI improving itself far beyond human level, as the last paragraph pictures, and there the post gives no evidence either way.}"
   ],
   [
    12994,
@@ -155,7 +155,7 @@
   ],
   [
    13518,
-   "\\cpara{The opponent is not named. In the first version (June 2008) the author named ``Robin,'' the co-blogger Robin Hanson, and argued against a forecast of one-month economic doubling times. Hanson's article that month (``Economics of the Singularity,'' \\textsc{IEEE Spectrum}) projects past eras of growth forward: if a new transition followed the pattern of the last two, the world economy ``would soon double in somewhere from a week to a month.'' This version drops the names, so a reader cannot tell which forecast is being answered.}"
+   "\\cpara{The last paragraph answers a specific forecast. In the first version (June 2008) the author named ``Robin,'' the co-blogger Robin Hanson, and argued against a forecast of one-month economic doubling times. Hanson's article that month (``Economics of the Singularity,'' \\textsc{IEEE Spectrum}) projects past eras of growth forward: if a new transition followed the pattern of the last two, the world economy ``would soon double in somewhere from a week to a month.''}"
   ],
   [
    13987,

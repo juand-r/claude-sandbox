@@ -2,7 +2,116 @@
  "slug": "the-tragedy-of-group-selectionism",
  "header": "\\post{The Tragedy of Group Selectionism}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/QsMJQSFj7WfoTMNgW/the-tragedy-of-group-selectionism}\n",
  "skeleton_sha": "be2c02581393a2658b7a523babc7b1600266c0a58b0a100f736d1cc445bc321a",
- "post_sha": "be2c02581393a2658b7a523babc7b1600266c0a58b0a100f736d1cc445bc321a",
+ "post_sha": "6c21c59125cb897b336780bf86d2b1b1d8514e6a58ce87b7aaea00fe2cc4474e",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   152,
+   "\\cpara{Sets the date and the verdict. 1966 is the year of George C.~Williams's \\textsc{Adaptation and Natural Selection}; Wikipedia's history names it, with papers by John Maynard Smith and C.~M.~Perrins from 1964, as the works that ``cast serious doubt on group selection as a major mechanism of evolution.'' The post names none of them.}"
+  ],
+  [
+   290,
+   "\\clogic{The label sits uneasily with the post's own account below: the mechanism was ``possible but very difficult,'' and group selection later revived ``somewhat.'' A hypothesis that is possible but needs unlikely conditions is a quantitative mistake, not magic.}"
+  ],
+  [
+   546,
+   "\\cpara{Names three proponents. For Wynne-Edwards the description is close but not exact. In his own summary of his 1962 book (a 1980 note), numbers are limited ``by conventions that generally involve territories or peck-orders or both'': ``Individuals are made to compete for the right to feed,'' and ``surplus adults are inhibited from breeding.'' The restraint is imposed by those conventions; ``voluntarily'' is the post's word. I could not check what Allee and Brereton held.}"
+  ],
+  [
+   793,
+   "\\cpara{States the principle, from ``An Alien God'': a gene becomes common only if its own effects make it more common. Then asks how a gene for restraint could do that.}"
+  ],
+  [
+   1537,
+   "\\cpara{Sketches, as a hypothetical designer's wish, the aesthetic reasoning that the post later ascribes to the group selectionists.}"
+  ],
+  [
+   2253,
+   "\\cpara{Grants the obvious: selection among individuals does not favour restraint.}"
+  ],
+  [
+   2489,
+   "\\cpara{Adds that individual selection can favour fewer, larger eggs for the parent's own benefit. This is David Lack's principle (1954), on clutch size in birds; Wikipedia (``Lack's principle'') notes that Williams tied it to the dispute between Lack and Wynne-Edwards.}"
+  ],
+  [
+   2970,
+   "\\cpara{States the group-selection mechanism fairly. Wynne-Edwards wrote (1962, p.~20, as quoted by a history-of-ecology blog) that better-adapted groups ``tend to outlive them, and sooner or later to spread and multiply by colonising the ground vacated by less successful neighbouring communities.''}"
+  ],
+  [
+   3328,
+   "\\cpara{The post's key concession: the mechanism is possible, only hard.}"
+  ],
+  [
+   3489,
+   "\\cpara{States the free-rider problem correctly: restraint can spread only if its benefits go mainly to restrainers.}"
+  ],
+  [
+   4001,
+   "\\cpara{Gives the condition, a form of Hamilton's rule with $F_{ST}$ standing for relatedness. The linked paper is D.~S.~Wilson's ``A theory of group selection'' (1975), whose abstract says the extent of group selection ``depends mainly on the variation in the composition of genotypes between trait-groups.'' I read only the abstract, so I could not check the formula against the paper. Wilson later argued, with Elliott Sober, for the revival the post mentions below.}"
+  ],
+  [
+   4830,
+   "\\cpara{Rests ``the math'' on one simulation, in a blog post I could not reach (the link is dead and the archived copy was blocked from here), so its figures are unchecked. The conclusion is hedged: ``pretty unlikely,'' ``doesn't seem plausibly true.''}"
+  ],
+  [
+   5680,
+   "\\cpara{Tells how the dispute ended and how group selection revived.}"
+  ],
+  [
+   6021,
+   "\\clogic{Offered from memory (``I forget the exact species''). I found no source for the claim that observation, not argument, decided the matter. Wikipedia's history names a theoretical paper (Maynard Smith, 1964), a field study of the broods of swifts (Perrins, 1964) and a theoretical book (Williams, 1966). Wynne-Edwards himself wrote in 1980 that his red grouse studies had ``amply confirmed my predictions.''}"
+  ],
+  [
+   6377,
+   "\\cfact{The revival is usually called multilevel selection (D.~S.~Wilson and Sober, 1994). The debate is live. In 2010 Nowak, Tarnita and E.~O.~Wilson argued in \\textsc{Nature} that inclusive fitness theory has explained little; 137 biologists replied that their arguments ``are based upon a misunderstanding of evolutionary theory and a misrepresentation of the empirical literature.'' Many theorists treat kin-selection and multilevel models as two accountings of the same process; the current Stanford Encyclopedia entry calls claims that multilevel and gene-level models are equivalent ``very controversial.'' The post's own sentence is compatible with both sides.}"
+  ],
+  [
+   6566,
+   "\\cpara{Describes Wade's experiment. The 1976 abstract confirms the design: group selection ``for both increased and decreased adult population size'' in the flour beetle \\textsc{Tribolium castaneum}. For the reader: the experiment is also known for a result the post does not report. The response was fast and ``large in magnitude, at times differing from the controls by over 200\\%,'' and in a 1978 model Slatkin and Wade concluded that ``group selection can be much more effective in natural populations than is commonly supposed.''}"
+  ],
+  [
+   7122,
+   "\\cpara{Wade's abstract names four traits: ``selective changes in fecundity, developmental time, body weight, and cannibalism rates were responsible in part.'' So cannibalism was one cause among four, and fecundity, the trait closest to restrained breeding, is another. I read only the abstract, so I could not check the direction of each change, or ``especially female larvae.''}"
+  ],
+  [
+   7216,
+   "\\cpara{Information that supports the post's ``Of course'': cannibalism was a known regulator of flour beetle numbers before the experiment. A 1999 paper says its study ``in Tribolium has a long history'' (from Park, 1948), and that ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965).}"
+  ],
+  [
+   7459,
+   "\\cpara{Moves from the laboratory result to a claim about how the 1960s authors thought.}"
+  ],
+  [
+   7546,
+   "\\clogic{The author's ``Hindsight Devalues Science'' warns against this judgement: ``Hindsight will lead us to systematically undervalue the surprisingness of scientific findings.'' The post gives no evidence that the result was foreseeable other than how it looks in retrospect. The flour beetle literature in the previous note is better support, and the post does not use it.}"
+  ],
+  [
+   7716,
+   "\\cpara{The post's central claim, stated as fact: the group selectionists began with a wish for harmony, looked for a mechanism, and stopped looking. No evidence is given for how any of them reasoned: no quotation and no source. The one first-hand account I found, Wynne-Edwards's 1980 note, says ``The idea came as I was writing a review of Lack's book'' on animal numbers, and that the theory ``still rings so true and explains so much that it seems almost bound to be correct.'' That account neither confirms nor rules out the post's story.}"
+  ],
+  [
+   8579,
+   "\\clogic{Wynne-Edwards's picture was not one of harmony. In his summary, animals denied a territory or rank ``emigrate, or get killed by predators, disease, or starvation,'' and in red grouse ``60\\% of their number become social outcasts and die in an average year.''}"
+  ],
+  [
+   9266,
+   "\\cpara{Links the case to ``Einstein's Arrogance'': with many possible answers, most of the work lies in singling one out, and an answer singled out by aesthetics starts wrong.}"
+  ],
+  [
+   9951,
+   "\\cpara{Grants that a hypothesis with a bad origin can still be judged fairly on the evidence.}"
+  ],
+  [
+   10291,
+   "\\cpara{Restates the diagnosis above as the cause of the failure.}"
+  ],
+  [
+   10717,
+   "\\cpara{Makes the point that nature does not yield to persuasion, and ends with a quotation from J.~R.~Molloy.}"
+  ],
+  [
+   11493,
+   "\\cpara{Recommends evolutionary biology as training against rationalization and against reading human purposes into nature.}"
+  ]
+ ]
 }

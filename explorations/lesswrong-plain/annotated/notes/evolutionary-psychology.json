@@ -2,7 +2,108 @@
  "slug": "evolutionary-psychology",
  "header": "\\post{Evolutionary Psychology}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/epZLSoNvjW53tqNj9/evolutionary-psychology}\n",
  "skeleton_sha": "d19b6801d4d6df3f4f4cd806f630bebc2be8f3f4e0584e0755b86a972dc335fd",
- "post_sha": "d19b6801d4d6df3f4f4cd806f630bebc2be8f3f4e0584e0755b86a972dc335fd",
+ "post_sha": "2af1a067c2c0547d3daf7d54aa5021df5f12622f901cc3c403594f249441d226",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   132,
+   "\\cpara{Opens with the thesis by analogy: every organ is a reproductive organ, because it is there through its contribution to ancestors' reproduction. The ``Evolution-of-Birds Fairy'' mocks the alternative. The paragraph allows a distinction between directly and indirectly reproductive organs.}"
+  ],
+  [
+   705,
+   "\\cpara{Extends the claim to the brain: lust is a directly reproductive brain organ, anger an indirectly reproductive one.}"
+  ],
+  [
+   917,
+   "\\cpara{Gives the historical origin of anger: ``angry ancestors had more kids.''}"
+  ],
+  [
+   1253,
+   "\\clogic{Stated as certain, and no evidence is given here that anger was selected for itself. A trait can also exist as a by-product of selection for something else, which Gould and Lewontin (1979) called a spandrel; the author's own ``An Especially Elegant Evpsych Experiment'' (2009) allows that the pain of sunk costs may be ``an unfortunate spandrel.'' That anger in particular is an adaptation has since found support, for example in Sell, Tooby and Cosmides (\\textsc{PNAS}, 2009).}"
+  ],
+  [
+   1267,
+   "\\cpara{Introduces the confusion the post is about: hearing a claim about history as a claim about one's present motives. The confused are ``all too many people''; no one is named or cited, and the quoted objection is the author's wording.}"
+  ],
+  [
+   1529,
+   "\\cpara{Rejects the confusion, with rising emphasis.}"
+  ],
+  [
+   1678,
+   "\\cpara{Restates, with a link, the thesis and the toaster of ``Adaptation-Executers, not Fitness-Maximizers,'' posted the same day.}"
+  ],
+  [
+   2197,
+   "\\cpara{Marks where the toaster analogy stops: a toaster is not a mind, so no one is tempted to credit it with goals. The post names the limit of its own analogy.}"
+  ],
+  [
+   2470,
+   "\\cpara{Uses the Stroop test as an analogy: naming the ink color of the word ``blue'' is slow because the word's meaning interferes, while a neutral word like ``wind'' causes no such trouble. That is the standard finding (Stroop, 1935).}"
+  ],
+  [
+   2779,
+   "\\cpara{Applies the analogy: a human, unlike a bee, is both a product of evolution and a designer with purposes of its own, so its evolutionary ``purpose'' is easily confused with its mental purposes.}"
+  ],
+  [
+   3079,
+   "\\cpara{States the post's central distinction: cognitive causes are made of neurons, evolutionary causes of ancestors. It is the distinction biologists call proximate and ultimate causation (see the note on Mayr under ``Adaptation-Executers, not Fitness-Maximizers'').}"
+  ],
+  [
+   3298,
+   "\\cpara{Argues that emotions, instincts and passing thoughts are cognitive causes too, because they exist physically in the brain.}"
+  ],
+  [
+   3759,
+   "\\cpara{Uses Lord Acton's ``Power tends to corrupt'' (a letter of 1887; the sentence goes on ``and absolute power corrupts absolutely'') and a hedged guess about Stalin (``it seems likely'') to argue that even unconscious motives must have something in the brain that corresponds to them.}"
+  ],
+  [
+   4431,
+   "\\cpara{Describes the other side of the distinction: the evolutionary cause of wings is a statistical fact about millions of ancestors, compressed into ``evolution did it.''}"
+  ],
+  [
+   4886,
+   "\\cpara{Repeats the point in two sentences: evolution is a statistical regularity, not a creature.}"
+  ],
+  [
+   5120,
+   "\\cpara{Applies it to the brain: wings do not understand flight, and until the twentieth century no brain represented inclusive genetic fitness.}"
+  ],
+  [
+   5720,
+   "\\cfact{The date holds: W.~D. Hamilton defined inclusive fitness in 1964.}"
+  ],
+  [
+   5734,
+   "\\cpara{Names the slide the post warns against, from the evolutionary purpose of anger to its cognitive purpose.}"
+  ],
+  [
+   6143,
+   "\\cpara{Compares the mistake to thinking that a hand embodies a desire to pick things up.}"
+  ],
+  [
+   6317,
+   "\\cpara{Qualifies the comparison: the will can move the hand, but it did not grow it.}"
+  ],
+  [
+   6632,
+   "\\cpara{Separates single episodes of anger, which can be cognitive causes, from the circuitry that produces them, which no one willed.}"
+  ],
+  [
+   6930,
+   "\\cpara{Lists four things to keep apart: the anger event, the circuitry, the genes that lay it down, and the ancestral history that explains the genes. This list is the post's most exact statement of its distinction.}"
+  ],
+  [
+   7151,
+   "\\cpara{Says evolutionary psychology needs extreme care over distinctions, linking the author's ``The Virtue of Narrowness.''}"
+  ],
+  [
+   7344,
+   "\\cpara{Tells a story in which each person responds to cues that once signalled fertility or status, while neither wants children. The claims about which cues signalled fertility or resources are given without sources, but the story's point, that the detecting circuits do not know their purpose, holds whichever cues are right.}"
+  ],
+  [
+   9174,
+   "\\cpara{Ends with the standard the post has argued for: hold many related but distinct facts in mind ``without a single mixup or conflation.''}"
+  ]
+ ]
 }
