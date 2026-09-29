@@ -1,0 +1,85 @@
+{
+ "slug": "psychic-powers",
+ "header": "\\post{Psychic Powers}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/7Au7kvRAPREm3ADcK/psychic-powers}\n",
+ "skeleton_sha": "e850c6ad41249673c864cc29de7e44ddd331ddddbbdc8a5ff6c1ec6f863e6e13",
+ "post_sha": "e5b8a834c7554ca7e7ace859313802b41e65da0f4f5c6c3684e937d46e076206",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Quotes, exactly, the passage of ``Excluding the Supernatural'' that the post corrects.}"
+  ],
+  [
+   501,
+   "\\cpara{Introduces the objection and names the commenter.}"
+  ],
+  [
+   643,
+   "\\cpara{Quotes Benja Fallenstein's comment on the previous post, dated 16:05 UTC on 12 September 2008 in LessWrong's archive. The words match, and ``...'' marks a cut. The part cut makes the point conceded below: a Turing machine could pass every test we devise, but might have to be so complex that ``the universe allows for hypercomputation'' becomes the simpler hypothesis, ``unless we are willing to completely exclude that possibility a priori.''}"
+  ],
+  [
+   1363,
+   "\\cpara{Promises a crushing reply, as the setup for a joke.}"
+  ],
+  [
+   1588,
+   "\\cpara{The reply is a concession, in two words.}"
+  ],
+  [
+   1615,
+   "\\cpara{Says the author found a similar flaw after publishing ``yesterday's post.'' LessWrong dates both posts 12 September 2008 (00:12 and 19:28 UTC); in United States time the first went up the evening before.}"
+  ],
+  [
+   1806,
+   "\\cpara{States the new point: if minds had a basic component, a law linking minds directly would be ``far more likely.'' The reason, simplicity, comes three paragraphs later.}"
+  ],
+  [
+   2206,
+   "\\cpara{Keeps the previous post's claim: for any concrete prediction about telepathy, a reductionist model makes the same one.}"
+  ],
+  [
+   2412,
+   "\\cpara{Explains why beliefs can seem fundamental: our minds show us the ``belief'' class and hide the neurons, the argument of ``Detached Lever Fallacy.''}"
+  ],
+  [
+   2777,
+   "\\cpara{The key step: psychic powers are ``probabilistically'' a privileged prediction of supernatural models, because a new law relating beliefs is much simpler if beliefs are basic. It applies Fallenstein's point to minds.}"
+  ],
+  [
+   3248,
+   "\\cpara{Explains why reductionists expect no psychic powers: known inputs and outputs seem to account for all known mental powers.}"
+  ],
+  [
+   3980,
+   "\\cfact{Carrier's article treats extrasensory perception as open to either kind of explanation: it ``could be a natural phenomenon of human brains producing and transceiving radio waves, or it could be a supernatural power that doesn't involve any such mechanism.'' The post's claim concerns which kind a discovery would favour, and is compatible with this.}"
+  ],
+  [
+   3994,
+   "\\cpara{Applies the point of ``Occam's Razor'': a word like ``belief'' looks simple because the brain hides what it stands for, so a naive count of basic entities favours psychic powers.}"
+  ],
+  [
+   4616,
+   "\\cpara{Draws the consequence: a discovery of psychic powers would show the naive Occam rule better calibrated, and the naive dualists right.}"
+  ],
+  [
+   5108,
+   "\\cpara{Sums up: telepathy, wishing and precognition would be strong Bayesian evidence that beliefs are fundamental, ``Not logical proof.''}"
+  ],
+  [
+   5389,
+   "\\cpara{Separates imagining psychic powers, which a reducible brain can do, from discovering them.}"
+  ],
+  [
+   5752,
+   "\\cpara{Says non-reductionist worldviews ``own'' the prediction of psychic powers because they put it forward. The history supports this. F.~W.~H. Myers, a founder of the Society for Psychical Research (1882), held, as John Grant reports, that telepathy might show ``that mind could communicate with mind apart from recognised channels'' and so support survival after death (Wikipedia, ``Society for Psychical Research'').}"
+  ],
+  [
+   6095,
+   "\\cpara{Concludes that psychic powers are implausible a priori, despite the claimed evidence. That evidence existed and was disputed when the post was written. Bem and Honorton (1994) reported ganzfeld experiments that, in Milton and Wiseman's words, ``appeared to support the existence of a communication anomaly''; Milton and Wiseman (1999) found no effect in 30 further studies and concluded that the ganzfeld technique ``does not at present offer a replicable method for producing ESP in the laboratory''; Storm and Ertel (2001) pooled 79 studies and reported an effect.}"
+  ],
+  [
+   6151,
+   "\\clogic{The link goes to ``I Defy the Data!'', whose addendum sets a limit: ``You can defy the data on one experiment. You can't defy the data on multiple experiments.'' After that one must give up the theory or dismiss the data, for example by pointing to a design flaw or to ``an even larger body of experiments that failed to replicate the result.'' The claimed evidence for psychic powers is many experiments, and the post gives neither kind of reason.}"
+  ]
+ ]
+}
