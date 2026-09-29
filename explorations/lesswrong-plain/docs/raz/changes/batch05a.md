@@ -171,3 +171,57 @@ Why: Same as the Response.
 - Before: \nb{All three arguments are about what moves us. An evaluative hedonist can accept them and still hold that only happiness is worth caring about. The second is Joseph Butler's old objection to psychological egoism.}
 - After: \nb{All three arguments are about what moves us; the book's account of how that bears on what we should care about comes later. The second is Joseph Butler's old objection to psychological egoism.}
 
+
+## annotated/afterwords/detached-lever-fallacy.tex
+
+Why: The abuse aside is qualified by the post itself ("a good many of them break the loop"), and the evidence is mixed rather than against it; kept as information in the note. Fairness: the author's reply to Hanson added.
+
+- Before: The examples offered for the principle are stated more firmly than the evidence allows. The creole case, Bickerton's bioprogram hypothesis, is given without a hedge. It is disputed: Siegel argued that the Hawaiian creole grew over two generations, from an expanded pidgin, with grammar from its speakers' other languages. Nicaraguan Sign Language, created by deaf children, supports the post's point better. That abused children have ``a much higher probability'' of abusing their own was called into question by a review in 1987, and a 30-year prospective study later found that such parents did not report abusing their children more often than others, though their children reported more neglect and sexual abuse.
+- After: One example is stated more firmly than the evidence allows. The creole case, Bickerton's bioprogram hypothesis, is given without a hedge, and it is disputed: Siegel argued that the Hawaiian creole grew over two generations, from an expanded pidgin, with grammar from its speakers' other languages. Nicaraguan Sign Language, created by deaf children, supports the post's point better.
+
+- Before: The history of the proposal the post attacks goes unnamed. ``As I've often heard proposed'' points to no one. Turing suggested
+- After: ``As I've often heard proposed'' points to no one, but the proposal has a long history. Turing suggested
+
+- Before: citing McDermott's own verdict that most of them did good work.
+- After: citing McDermott's own verdict that most of them did good work. The author replied that ``a very substantial fraction did so, including leaders of the field.''
+
+- Before: but supported by examples from language and child abuse that are stated more firmly than the evidence allows, and ending in a charge against AI researchers that names no case.
+- After: with a disputed example from creole languages, and ending in a claim about AI researchers that names no case.
+
+
+## annotated/posts/detached-lever-fallacy.tex
+
+Why: Same: the review rejects the unqualified belief, which the post also qualifies.
+
+- Before: \cfact{Stated without a source, and the evidence is less settled than ``much higher.'' A 1987 review found that the belief's ``unqualified acceptance is unfounded'' (Kaufman and Zigler).
+- After: \cfact{Stated without a source. The evidence is mixed. A 1987 review found that the belief's ``unqualified acceptance is unfounded'' and estimated the true rate of transmission (Kaufman and Zigler).
+
+
+## annotated/afterwords/dreams-of-ai-design.tex
+
+Why: The Aristotle paragraph concluded that nothing needed correcting (notes keep the context); Hanson's objection was accepted by the author, so it is a disagreement; the AlexNet history does not bear on the post's claim and stays as a note.
+
+- Before: The aside on Aristotle needs context rather than correction. The post guesses, with ``I rather doubt it,'' that Aristotle did not see that his final causes asked what an object would do if it could plan. Aristotle did ask whether natural purposes need a planner, and answered that they do not: ``Art does not deliberate.'' He also modelled them on craft. His text shows that he considered the question. It cannot settle the post's guess, which is about what his brain was doing when he made predictions.
+
+
+- After: 
+
+- Before: The rule for investors has a counterexample that was raised at the time. Robin Hanson replied that whole brain emulation would copy a brain rather than argue from analogy to it, yet the rule would refuse it. The author answered that emulation ``might be physically possible'' but was not worth funding.
+- After: Robin Hanson objected at the time that the rule for investors would also refuse whole brain emulation, which copies a brain rather than arguing from analogy to it. The author accepted that: emulation ``might be physically possible'' but was not worth funding. That is a disagreement about emulation, not an oversight.
+
+- Before: 
+
+The post is from 2008. Four years later a deep neural network trained on graphics processors won a major image-recognition contest, and deep learning followed. The post mocks only nets justified by their likeness to the brain, so its claim is not refuted; the later history is information a reader of the list of dreams should have.
+- After: 
+
+- Before: set against opponents who go unnamed, and a rule for funding that would also turn away brain emulation, as a contemporary objected.
+- After: set against opponents who go unnamed, and a rule for funding that its author, when challenged, applied to brain emulation too.
+
+
+## honest/sections/detached-lever-fallacy.tex
+
+Why: Same as the note.
+
+- Before: \nb{A 1987 review found that belief's ``unqualified acceptance is unfounded.''
+- After: \nb{The evidence is mixed. A 1987 review found that the unqualified belief is unfounded.
+

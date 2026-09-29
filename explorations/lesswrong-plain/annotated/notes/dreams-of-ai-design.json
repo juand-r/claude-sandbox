@@ -1,0 +1,97 @@
+{
+ "slug": "dreams-of-ai-design",
+ "header": "\\post{Dreams of AI Design}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/p7ftQ6acRkgo6hqHb/dreams-of-ai-design}\n",
+ "skeleton_sha": "3c26892b62098f2a7eaebed5dc5bd85181c561fd3c8d165a6e163586937f6647",
+ "post_sha": "e6add5b479b967d6ced333b9f6da90d8344ba5d9e61becc83c3b9352f85c11ca",
+ "edits": [],
+ "notes": [
+  [
+   124,
+   "\\cpara{Opens against ``AGI wannabes'' who think that living inside a mind teaches how minds work. The link goes to the archive of an AGI mailing list; no one is quoted. The attribution is hedged (``seem to have concluded'').}"
+  ],
+  [
+   489,
+   "\\cpara{The thesis, in one sentence. It had been stated before. Dennett put it in terms of little men in the head: ``If one can get a team or committee of relatively ignorant, narrow-minded, blind homunculi to produce the intelligent behavior of the whole, this is progress'' (\\textsc{Brainstorms}, 1978, as quoted in Dennett's dictionary entry ``homunculus'').}"
+  ],
+  [
+   674,
+   "\\cpara{Gives the reason introspection does not teach reduction: the brain's work is hidden, and nothing in experience marks that it has been handed off.}"
+  ],
+  [
+   1093,
+   "\\cpara{Gives Aristotle as a case. Aristotle took up the reading of purpose as planning and rejected it: ``It is absurd to suppose that purpose is not present because we do not observe the agent deliberating. Art does not deliberate'' (\\textsc{Physics} II.8). He did model nature's ends on craft (``If the ship-building art were in the wood''), which is close to the post's reading. The post's claim concerns what his brain was doing, and it is hedged (``I rather doubt it'').}"
+  ],
+  [
+   1609,
+   "\\cfact{Roughly so; see the note in ``The Power of Intelligence.'' In \\textsc{Parts of Animals} II.7 man has ``the largest brain in proportion to his size,'' as a ``counterpoise to his excessive heat.'' In II.2 the animals ``whose blood is thin and cold'' are ``the most intelligent.''}"
+  ],
+  [
+   1623,
+   "\\cpara{Makes the joke: cool the computer to make it contemplative. The point, that ``cold blood'' leaves ``contemplative'' unexplained, applies the author's earlier posts on fake explanation to a new case. The only way left to predict a contemplative thing, the post says, is to imagine being one.}"
+  ],
+  [
+   2487,
+   "\\cpara{Claims that the only way to reason about ``contemplative-ness'' is empathic inference, running one's own brain as the model. As in ``Humans in Funny Suits'' (see the note there), this is simulation theory stated as fact. Its rival holds that people use a tacit theory of other minds.}"
+  ],
+  [
+   2802,
+   "\\cpara{Adds that empathy may be efficient but does not let you build such a mind from scratch.}"
+  ],
+  [
+   3168,
+   "\\cpara{Calls ``cold blood causes contemplativeness'' fake causality: an arrow between two labelled boxes, with the predictions still made by empathy.}"
+  ],
+  [
+   3547,
+   "\\cpara{Applies the same charge to ``lots of little neurons'' plus ``emergence,'' restating ``The Futility of Emergence'' (see the notes there). The sentence attacked is one the post writes for its opponent.}"
+  ],
+  [
+   4438,
+   "\\cpara{Gives the first real reduction: from the feeling of evidence to Bayes's theorem, credited to Jaynes.}"
+  ],
+  [
+   5032,
+   "\\cpara{Says that learning AI takes the ability to tell a circular definition from a reduction, and grants that Bayes's theorem is only the first step, since hypotheses remain unexplained.}"
+  ],
+  [
+   5467,
+   "\\cfact{The fraction bars are lost in this text. On LessWrong the formula reads $\\frac{P(H|E)}{P(\\neg H|E)} = \\frac{P(E|H)}{P(E|\\neg H)} \\times \\frac{P(H)}{P(\\neg H)}$, the odds form of Bayes's theorem, which is correct.}"
+  ],
+  [
+   5760,
+   "\\cpara{Gives Pearl's book as a second reduction. The burglar-alarm case is Pearl's own example of ``explaining away'' (1988, pp.~8--9, as quoted by Wolff, 2003): after news of an earthquake, ``your certainty of a burglary will diminish.''}"
+  ],
+  [
+   6566,
+   "\\cpara{Gives a third reduction, the minimax search tree for chess, which goes back to Claude Shannon in 1950 (see the note on ``Angry Atoms'').}"
+  ],
+  [
+   7118,
+   "\\cpara{Says that until one knows these reductions, one may think one understands good moves and evidence, and trace them to cooling the blood.}"
+  ],
+  [
+   7508,
+   "\\cpara{Lists beliefs about what intelligence is ``the product of'' and calls them dreams. Their holders are not named (``many people''). Two of the beliefs match well-known programmes: Cyc, built on hand-entered common-sense knowledge (see the note on ``Artificial Addition''), and connectionism, set out in \\textsc{Parallel Distributed Processing} (Rumelhart, McClelland and the PDP Research Group, 1986).}"
+  ],
+  [
+   8284,
+   "\\cfact{Written in 2008. Four years later a deep neural network trained on two graphics processors, AlexNet, won the ImageNet image-recognition contest by more than ten points, and deep learning followed (Wikipedia, ``AlexNet''). The sentence mocks nets justified by their likeness to the brain; it does not say that neural networks cannot work.}"
+  ],
+  [
+   8298,
+   "\\cpara{Limits the charge to designs drawn as labelled boxes and arrows, the complaint McDermott made in 1976 about ``wishful mnemonics'' (see ``Truly Part of You''). ``Mentifex'' is the online name of Arthur T. Murray, author of \\textsc{AI4U}. The linked page, ``Diagrams of a Theory of Cognitivity,'' draws the program Mind.Forth as text diagrams with boxes such as ``The Senses'' and ``Cerebellum (Motor Habituation).''}"
+  ],
+  [
+   8675,
+   "\\cpara{States the rule: a design that will work ``just like humans'' gets no money until its builder can say what it does and why without pointing to humans. Robin Hanson objected in the comments that the rule would turn away whole brain emulation, which ``hardly relys on vague analogies to human brains - it would be directly making use of their abilities.'' The author answered that emulation ``might be physically possible,'' but ``I wouldn't advise putting venture capital into a project to build a flying machine by emulating a bird.''}"
+  ],
+  [
+   9417,
+   "\\cpara{Explains why the author has gone on ``for some length'' about reductionism, Taboo and anthropomorphism: they are what fundamental work on AI needs. ``Demonstrably'' has no demonstration behind it; the post gives no evidence about what students taught existing reductions go on to learn.}"
+  ],
+  [
+   10641,
+   "\\cpara{Cites Pearl's book.}"
+  ]
+ ]
+}

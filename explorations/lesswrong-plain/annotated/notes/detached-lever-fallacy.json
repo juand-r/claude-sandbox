@@ -1,0 +1,133 @@
+{
+ "slug": "detached-lever-fallacy",
+ "header": "\\post{Detached Lever Fallacy}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/zY4pic7cwQpa9dnyk/detached-lever-fallacy}\n",
+ "skeleton_sha": "b65b0c8015368323c4ebd3eb86abab97d49852ddbec0259ea01c13cb23655fa1",
+ "post_sha": "a9f2652090c984969f9d1f43add3349f8652950cd6fa91dec74679e32812ead0",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Names the fallacy after a science-fiction show that the author never saw and knows only from a report, and asks readers for the reference. The show could not be traced. In 2019 a commenter proposed the \\textsc{Star Trek: The Next Generation} episode ``The Pegasus'' (1994), in which the crew take an experimental phasing cloaking device from a derelict Federation ship and use it to pass through an asteroid (Wikipedia). There the device works and the ship is not alien, so the match is loose. Nothing in the argument rests on the source; the story is used as a parable.}"
+  ],
+  [
+   360,
+   "\\cpara{Sets up the parable: the aliens' ships can pass through asteroids and the heroes' ships cannot.}"
+  ],
+  [
+   798,
+   "\\cpara{Gives the parable's point in one image: the captain takes the visible control for the mechanism it operates.}"
+  ],
+  [
+   1181,
+   "\\cpara{Applies the parable to AI. The semantic network is the kind of structure Drew McDermott mocked in a 1976 paper, which the post names below and which ``Truly Part of You'' introduced earlier in the book. McDermott's list of notions to give up included ``The notion that a semantic network is semantic.'' ``Still quite popular'' fits 2008. Cyc, begun in 1984, aimed to capture common-sense knowledge in a hand-built knowledge base, and ConceptNet, a semantic network of common-sense assertions, was reorganized in 2007 (Wikipedia, ``Cyc'' and ``Open Mind Common Sense'').}"
+  ],
+  [
+   1423,
+   "\\cpara{Lists what a person's experience attaches to the word: seeing, handling, buying and tasting apples, stored in visual, temporal and motor areas of the brain. The one claim about the state of neuroscience is hedged (``last time I checked'').}"
+  ],
+  [
+   1977,
+   "\\cpara{Says the written word works between people because it pulls a lever on the reader's similar machinery. This is the point of ``Words as Mental Paintbrush Handles,'' which the post cites.}"
+  ],
+  [
+   2148,
+   "\\cpara{The thesis. The same problem has a standard name, Stevan Harnad's ``symbol grounding problem'' (1990). Harnad's abstract asks how a symbol system's meaning can be made ``intrinsic to the system, rather than just parasitic on the meanings in our heads.'' The book's reader met Harnad in ``Extensions and Intensions.''}"
+  ],
+  [
+   2305,
+   "\\cpara{Limits the claim. Silicon could in principle have the machinery, as carbon does (``reasonably confident''); what fails is copying the lever. The parable's derelict ship makes the same point.}"
+  ],
+  [
+   2847,
+   "\\cpara{Names the post's sources: two earlier posts and McDermott's paper (see the notes on ``Truly Part of You'').}"
+  ],
+  [
+   3081,
+   "\\cpara{Explains why the fallacy is tempting: the lever is visible and varies, while the machinery is hidden and constant.}"
+  ],
+  [
+   3274,
+   "\\cpara{The lever can be heard and seen. The aside grants that hearing it is itself a hard problem.}"
+  ],
+  [
+   3459,
+   "\\cpara{The machinery is unknown to most people and, the post says with two hedges (``probably'', ``as far as I know''), to science.}"
+  ],
+  [
+   3679,
+   "\\cpara{Gives the mechanism: perception registers change, so the word stands out and the always-present machinery does not. The principle is hedged (``To a large extent'').}"
+  ],
+  [
+   4071,
+   "\\cpara{Turns to the post's practical target: making an AI kind by raising it well. ``As I've often heard proposed'' names no one. Proposals to raise an AI like a child, though not specifically to make it kind, go back a long way. Turing (1950) suggested programming a ``child machine'' and giving it ``an appropriate course of education,'' noting that ``We normally associate punishments and rewards with the teaching process.'' MIT's Cog robot (1990s to 2003) was built on ``the hypothesis that human-level intelligence requires gaining experience from interacting with humans, as human infants do'' (Wikipedia, ``Cog (project)'').}"
+  ],
+  [
+   4307,
+   "\\cpara{States the principle the argument rests on: a response that depends on the environment needs more genetic machinery than the same response made always, because it also needs sensors and wiring. The literature on plasticity says the same in its own terms. For DeWitt, Sih and Wilson (1998), ``The most commonly discussed cost is that of maintaining the sensory and regulatory machinery needed for plasticity.''}"
+  ],
+  [
+   4718,
+   "\\cpara{Describes the error the principle guards against: crediting the environment with a response that inherited machinery makes possible.}"
+  ],
+  [
+   4918,
+   "\\cpara{``Various slap-fights'' names no case. A close match to the post's cold-weather example is Trofim Lysenko, who chilled the seed of winter cereals to make them ``behave like spring cereals'' and, rejecting Mendelian genetics, claimed inheritance of acquired characteristics (Wikipedia, ``Vernalization'' and ``Lysenkoism''). The post may have other cases in mind.}"
+  ],
+  [
+   5378,
+   "\\cpara{Extends the principle to culture: absorbing a culture takes inherited machinery, as the joke about raising a fish as a Mormon shows.}"
+  ],
+  [
+   5878,
+   "\\cpara{Gives two examples of inherited responses shaping culture: creole languages and the Soviet failure to raise selfless workers. The creole example is Derek Bickerton's ``language bioprogram'' hypothesis, and the post states it without a hedge. It is disputed. Siegel (2007) argued that the Hawaiian children learned from an expanded pidgin, not a rudimentary one, that languages such as Cantonese and Portuguese supplied grammar, and that the creole emerged over two generations, not one (as summarized by Wikipedia, ``Language bioprogram theory''). Nicaraguan Sign Language gives firmer support to the post's general point: Senghas and Coppola found that younger deaf children ``changed the language as they learned it'' (as quoted by Wikipedia).}"
+  ],
+  [
+   6837,
+   "\\cpara{Offers, with ``might'', a game-theoretic reason for returning kindness for kindness, and qualifies it twice: kindness that looks unconditional can spoil a child, and an abused child need not become an abuser.}"
+  ],
+  [
+   7381,
+   "\\cfact{Stated without a source. The evidence is mixed. A 1987 review found that the belief's ``unqualified acceptance is unfounded'' and estimated the true rate of transmission (Kaufman and Zigler). A 30-year prospective study found that people maltreated as children were later reported to child protective services more often, but ``do not self-report more physical and sexual abuse than matched comparisons,'' and that ``detection or surveillance bias'' may account for the reports; their children did report more neglect and sexual abuse (Widom, Czaja and DuMont, \\textsc{Science}, 2015). The rest of the sentence, that many break the loop, agrees with both.}"
+  ],
+  [
+   7466,
+   "\\cpara{Refers the reader to Tooby and Cosmides and to Pinker. The chapter supports the post, and its target is wider than ``Marxist academics'': a ``Standard Social Science Model'' whose schools it lists as ``materialist, structural-functionalist, symbolic, Marxist, postmodernist, etc.'' Its ``evoked culture,'' mechanisms ``triggered by local circumstances,'' is the post's conditional response.}"
+  ],
+  [
+   7769,
+   "\\cpara{Draws the conclusion for AI: loving parents pull levers on machinery that a human baby has and an AI need not have. The claim that humans raised in an alien culture would make it more human is offered with ``probably'' and no evidence.}"
+  ],
+  [
+   8472,
+   "\\cpara{Puts the question to the reader in terms of the author's own project, Friendly AI.}"
+  ],
+  [
+   8676,
+   "\\cpara{Argues that copying the human mechanisms would be a mistake: they are noisy products of selection under particular conditions, and an AI that learned its limits by misbehaving would be dangerous. It could simply ask.}"
+  ],
+  [
+   9210,
+   "\\cpara{Argues that resentment at low status is an evolved human response, which an AI would have only if someone built it in.}"
+  ],
+  [
+   9946,
+   "\\cpara{The conclusion. Niceness conditional on upbringing is harder to program than niceness outright, so whoever cannot do the second cannot do the first. This is the fur-coat principle applied to design. The paperclip maximizer, the author's example of an AI with a goal alien to ours, illustrates it: without the child's conditional responses, being raised like a child changes nothing.}"
+  ],
+  [
+   10849,
+   "\\cpara{Grants that an AI must get information from its environment, and places the difficulty in the structure that turns that information into the right state. The ``blank slate'' has a well-known statement in AI. Turing (1950) wrote: ``Presumably the child brain is something like a notebook as one buys it from the stationer's. Rather little mechanism, and lots of blank sheets.'' Turing also treated the ``child programme'' as a design problem, which agrees with the post: ``We cannot expect to find a good child machine at the first attempt.''}"
+  ],
+  [
+   11666,
+   "\\cpara{Generalizes: everything printed or taught is a lever on hidden machinery, and only the levers vary, so only they are seen.}"
+  ],
+  [
+   12131,
+   "\\cpara{Says that people working near AI ``usually'' imitate the levers, and gives no case. Robin Hanson objected in the comments: ``you unfairly slander a generation of AI researchers.'' Hanson quoted McDermott's own conclusion, ``Most AI workers are responsible people who are aware of the pitfalls of a difficult field and produce good work in spite of them,'' though McDermott's next sentence is a joke (``to say anything good about anyone is beyond the scope of this paper''). The author replied that ``a very substantial fraction did so, including leaders of the field.''}"
+  ],
+  [
+   12516,
+   "\\cpara{Ends on the parable's image, applied to two proposals: raising an AI in a loving family, or among ``liberal democratic values.''}"
+  ]
+ ]
+}
