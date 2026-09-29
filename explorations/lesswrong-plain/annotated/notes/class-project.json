@@ -2,7 +2,7 @@
  "slug": "class-project",
  "header": "\\post{Class Project}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/xAXrEpF5FYjwqKMfZ/class-project}\n",
  "skeleton_sha": "6fe2bee68226210a79dc6f8108ddfff2e4dff020aa105fd4670cb1b6aa40c5cd",
- "post_sha": "b6adba65c65e55fcbbb8f7cf12cc07e1836609de12652cca8ef9f3c2af862604",
+ "post_sha": "36713095c7527860cc6f4bb0b2a66582e6a6f3717a0826cd253ea9f96497dba9",
  "edits": [],
  "notes": [
   [
@@ -135,7 +135,7 @@
   ],
   [
    8278,
-   "\\cfact{Physics had a result of this kind before the story was written. In 1964 Steven Weinberg derived, from the Lorentz invariance of quantum scattering, the ``Equality of Gravitational and Inertial Mass'' (his title): a massless spin-two particle must interact with all particles ``with equal strength,'' and the same condition also ``enforces energy-momentum conservation'' (Porrati's summary, arXiv:0804.4672). It bears on Brennan's question. It is also the kind of proof, from ``some appealing principle,'' that Hiriwa sets aside in the next line.}"
+   "\\cfact{Physics had a result of this kind before the story was written. In 1964 Steven Weinberg derived, from general properties of quantum scattering (the S-matrix), the ``Equality of Gravitational and Inertial Mass'' (his title): a massless spin-two particle must interact with all particles ``with equal strength,'' and the same condition also ``enforces energy-momentum conservation'' (Porrati's summary, arXiv:0804.4672). It bears on Brennan's question. It is also the kind of proof, from ``some appealing principle,'' that Hiriwa sets aside in the next line.}"
   ],
   [
    8292,

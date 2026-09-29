@@ -2,7 +2,7 @@
  "slug": "my-childhood-role-model",
  "header": "\\post{My Childhood Role Model}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/3Jpchgy53D2gB5qdk/my-childhood-role-model}\n",
  "skeleton_sha": "e129639b37f48a9fa776cf909f2b0c8754c740f004db57feb87e1d1271f3a17e",
- "post_sha": "34fc2b757f2ad845a205eec29b3e181a5278bfa988f932c76c39e0582b19502b",
+ "post_sha": "8a441a04c59ed9effeb0ac2736c3821d13685976e6d959d439745b375b1bb3db",
  "edits": [],
  "notes": [
   [
@@ -26,10 +26,6 @@
    "\\cpara{States the thesis: in the space of brain designs, the two humans are close together.}"
   ],
   [
-   1133,
-   "\\clogic{The list does not separate the two distances the post compares. Chimpanzee brains have the same parts; a comparative study that maps the two brains region to region finds the human prefrontal cortex ``significantly larger,'' not new (Amano, Tanabe and Ogihara, 2025). Shared parts cannot show that the chimpanzee is far away and Einstein near.}"
-  ],
-  [
    1147,
    "\\cpara{The comparison the thesis rests on, offered here without evidence. One measure fits it: Wikipedia's ``Brain size'' gives chimpanzee cranial capacity as 275 to 500 cm$^3$ and a modern human average of 1,473, so the human brain is about three to five times larger.}"
   ],
@@ -43,11 +39,11 @@
   ],
   [
    1762,
-   "\\cpara{Reports Hofstadter's reaction at the 2006 Singularity Summit at Stanford, where both spoke (Wikipedia, ``Singularity Summit''). The words are given as ``something like this''; I found no transcript to check them against.}"
+   "\\cpara{Offers Hofstadter as a case of the third scale: at the 2006 Singularity Summit at Stanford, where both spoke (Wikipedia, ``Singularity Summit''), Hofstadter objected to the author's diagram. I found no transcript to check the quoted words against.}"
   ],
   [
    2019,
-   "\\cpara{Reads the remark as a ``cultural gap.'' The post gives Hofstadter's one sentence but not his reasons, so the reading is the author's, and the reader cannot check it against Hofstadter's own view.}"
+   "\\cpara{Reads the remark as a ``cultural gap.'' The post gives Hofstadter's one sentence but not Hofstadter's reasons, so the reading is the author's, and the reader cannot check it against Hofstadter's own view.}"
   ],
   [
    2264,

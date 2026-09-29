@@ -2,7 +2,7 @@
  "slug": "einstein-s-superpowers",
  "header": "\\post{Einstein's Superpowers}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/5o4EZJyqmHY4XgRCY/einstein-s-superpowers}\n",
  "skeleton_sha": "4eb2a28ab5714f4037d36e74c33314e3d48e120d0ce32b000f514045286fe41a",
- "post_sha": "51bea748cbcc007355cada1966e7e63c284d3f0d47b6d413d935f59a34539d2f",
+ "post_sha": "54ec6131454242ffd1530182d398b66ed89c6ad934bf8a1feb4c6fc08455a7e9",
  "edits": [],
  "notes": [
   [
@@ -99,7 +99,7 @@
   ],
   [
    6634,
-   "\\cpara{The central claim, offered with ``I suspect'': what separates such people from Einstein is not a lack of brilliance but a failure to choose an important problem. Tell people to choose one, the author adds, and they take the first cache hit''.}"
+   "\\cpara{The central claim, offered with ``I suspect'': what separates such people from Einstein is not a lack of brilliance but a failure to choose an important problem. Tell people to choose one, the author adds, and they take the first ``cache hit.''}"
   ],
   [
    6871,
@@ -138,10 +138,6 @@
    "\\cpara{States the author's stake: a ``genuinely important problem,'' an angle of attack, years of work, a support structure, and frequent meetings with people who want to see the author's ``aura of destiny.'' The problem is not named.}"
   ],
   [
-   9121,
-   "\\clogic{The challenge is the author's paraphrase (``in one way or another, say''). Read as a request for evidence of ability, it is what the post asked for a few paragraphs earlier, when it said such a claim ``should seem like an ordinarily evaluable claim.'' An ordinary evaluation asks for a record.}"
-  ],
-  [
    9135,
    "\\cpara{Credits Barbour with having ``seen through'' Einstein, a quality the author thinks could not be faked.}"
   ],
@@ -155,7 +151,7 @@
   ],
   [
    10191,
-   "\\cpara{Guards against the opposite error: Einstein was no ordinary bloke. Doing what people call ``humanly impossible'' is the author's joy.}"
+   "\\cpara{Guards against going too far the other way: Einstein was no ordinary bloke. Doing what people call ``humanly impossible'' is the author's joy.}"
   ],
   [
    10589,

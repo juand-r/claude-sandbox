@@ -128,7 +128,7 @@ by `insert_notes.py` (re-runnable).
   reading and no alternative explanation offered.
 - The scope clogic after "neurons firing": the paragraph's answer establishes human
   inefficiency, not the size of the gap the question asked about.
-- Honest section is 520 words, slightly over 500.
+- Honest section is 516 words, slightly over 500.
 - Pronouns: Einstein and Hofstadter only (historical/public figures); I restructured two
   sentences about Hofstadter to use the name.
 - Process slip: I first rendered a preview PNG into the main session's scratchpad by mistake;

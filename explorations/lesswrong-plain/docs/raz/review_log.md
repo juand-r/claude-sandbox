@@ -330,3 +330,30 @@ margin as an \item label); check_verbatim ignores the guard. All posts pass.
 
 Layout, for the whole-book pass: two overfull boxes (25pt, 67pt) in Joint Configurations
 from long unbroken formulas in the post's own text.
+
+## Batch 4d: Science and Rationality (rest of Book IV, 11 posts)
+
+Five agents. Edits in `docs/raz/changes/batch04d.md`. The four posts of this sequence from
+the original edition (249, 250, 253, 255) were not reannotated.
+
+- Cut as the annotator's own reading or argument: how the joke in The Dilemma applies; in
+  My Childhood Role Model, that a chimpanzee shares the brain parts the post lists (the list
+  illustrates the claim; the brain-size point stays, as information), and a line on the
+  unexplained ``harmed me''.
+- Cut as arguing with the author's reported experience: in Einstein's Superpowers, reading
+  the paraphrased ``Let's see your aura of destiny'' as a fair request for a record (note,
+  Response and honest n.b.). The sourced point about the AI-Box Experiment stays.
+- Cut as nitpick: ``almost no data'' in Einstein's Speed, which the post itself qualifies.
+- Cut as the editors' choice: Class Project's links to posts the book leaves out.
+- Points made once: Popper's improbability criterion is stated in Science Isn't Strict
+  Enough; A Technical Explanation points there.
+- Checked by script: the squared-error rule in A Technical Explanation that pays only on
+  the outcome that happens is not proper for three outcomes (with true frequencies
+  (.3, .2, .5), honest play scores 0.600 and the bets (.35, .03, .62) score 0.613). The
+  afterword's ``one rule called proper that is not'' rests on this.
+
+Tooling: preamble gained U+2211 and a private-use character (U+10FC09) found in A Technical
+Explanation's text.
+
+Whole-book pass: the original-edition notes on 249, 250, 253 and 255 (Faster than Science's
+``In short'' among them) are harsher in tone than STANDARDS; already listed above.
