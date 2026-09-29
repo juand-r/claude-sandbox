@@ -1,0 +1,193 @@
+{
+ "slug": "value-is-fragile",
+ "header": "\\post{Value is Fragile}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/GNnHHmm8EzePmKzPk/value-is-fragile}\n",
+ "skeleton_sha": "5c821905468f1cdbf146e1277a39e0e6d4dcad601740ff36efefc38d1af8100b",
+ "post_sha": "75f3b1cf929fb1ee2f705881ee837e5906b23318602344af1a062519ff6c8a05",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Introduces the thesis as the one statement that relies on more of the author's Overcoming Bias posts than any other.}"
+  ],
+  [
+   272,
+   "\\cpara{States the thesis. ``Worth'' is judged by human values, as the post says later: without them the result is ``not mysterious and alien and beautiful by the standards of human value.'' So the thesis concerns what the future would be worth by our standards.}"
+  ],
+  [
+   394,
+   "\\cstyle{``Metamorals'' is not defined in the post. In ``Invisible Frameworks'' (2008, not in the book) the author calls ``Many agents will do X!'' a ``metamoral argument'': an argument about which morals to adopt.}"
+  ],
+  [
+   447,
+   "\\cpara{Voices the opposing view through an unnamed speaker: minds unlike ours may find value in their own goals, and binding the future to human values is prejudice.}"
+  ],
+  [
+   930,
+   "\\cpara{Replies that the author welcomes a civilization of beings vastly unlike us, with pleasures and aims we cannot share.}"
+  ],
+  [
+   1351,
+   "\\cpara{Says that such a civilization is the future if things go right. The reply grants the opponent's picture and moves the disagreement to how such a future comes about.}"
+  ],
+  [
+   1425,
+   "\\cpara{States that if the chain of inheritance from human values is broken, the future will not be delightfully strange.}"
+  ],
+  [
+   1613,
+   "\\cpara{The post's main claim about the world, with a probability attached: ``very high.'' No argument for it is given here; the next paragraphs say the argument lies in the author's earlier posts.}"
+  ],
+  [
+   1740,
+   "\\cpara{Says that seeing the claim as obvious is what needs the long background.}"
+  ],
+  [
+   1841,
+   "\\cpara{Declines to go through the argument, which would take most of the author's posts, and promises only to show how many different things must be known. That human value has many separate parts is the premise that ``Fake Utility Functions'' calls a ``known fact''; the notes there discuss its support.}"
+  ],
+  [
+   2132,
+   "\\cpara{First example: a mind with almost all of human value but not boredom, which replays one optimized experience forever.}"
+  ],
+  [
+   2227,
+   "\\cfact{The linked post, ``In Praise of Boredom'' (18 January 2009), is not in the book. Of the Fun Theory posts the book keeps three, placed just before this one: ``Sympathetic Minds,'' ``High Challenge'' and ``Serious Stories.''}"
+  ],
+  [
+   2700,
+   "\\cpara{Second example: a mind that pursues the feelings of discovery, love and helping a friend without their real objects, ``its own experience machine.'' The case is Robert Nozick's; the notes on ``Not for the Sake of Happiness (Alone)'' give its history and the hedonist's reply. Here it serves a new point: such a future only feels novel.}"
+  ],
+  [
+   3528,
+   "\\cpara{Third example, the converse: an optimizer that makes real discoveries with no one to experience them. The author hedges it (``I don't quite know to be possible'').}"
+  ],
+  [
+   4020,
+   "\\clogic{This takes a side in an old question. Sidgwick held that beauty no one could ever contemplate is not a rational aim; G. E. Moore answered that a beautiful world no human being could ever see is still better than an ugly one. The notes on ``Not for the Sake of Happiness (Alone)'' give the sources.}"
+  ],
+  [
+   4034,
+   "\\cpara{Defines ``fragile'': value has more than one dimension whose loss alone empties the future. The last sentence limits the claim: not every single blow destroys all value, but more than one would.}"
+  ],
+  [
+   4393,
+   "\\cpara{Repeats that the defense relies on most of the author's posts and would take more than a day to summarize.}"
+  ],
+  [
+   4680,
+   "\\cpara{Begins, in an ironic voice, the objections the author expects: surely a superintelligence would know better than to repeat one experience forever. The links carry the answers.}"
+  ],
+  [
+   4996,
+   "\\cpara{Continues the ironic objections: a supermind would see that the feeling of discovery without discoveries is worthless, notice that its utility function was wrong, and rewrite it.}"
+  ],
+  [
+   5487,
+   "\\cpara{The last objection: boredom must be universal, since it evolved because it is valuable, and minds without it would be eliminated.}"
+  ],
+  [
+   5781,
+   "\\cpara{Lists the background needed to answer it, each item a link to an earlier post: terminal and instrumental values, the stupidity of natural selection, adaptation-executers, and evolved emotions.}"
+  ],
+  [
+   6429,
+   "\\cpara{Adds the tradeoff between exploration and exploitation in AI, the one item without a link here; the argument is in ``In Praise of Boredom.''}"
+  ],
+  [
+   6567,
+   "\\cpara{The answer, offered with ``you might be able to see'': human boredom, a demand for novelty for its own sake, is one algorithm evolution produced, and most possible expected utility maximizers would explore only as much as pays, then exploit the best option found.}"
+  ],
+  [
+   7029,
+   "\\clogic{The claim fits a standard result for the model the post invokes. In discounted multi-armed bandit problems, ``With positive probability, the optimal rule chooses the optimal action only a finite number of times'' (the incomplete learning theorem, as Brezzi and Lai state it in 2002): the best policy may settle for good on one option, even a worse one. The same paper suggests that the more heavily the agent weighs the future, the more the optimal rule experiments.}"
+  ],
+  [
+   7102,
+   "\\cpara{For the third time, places the argument in most of the author's posts, and announces that the post will assume the reader has read them and give only the conclusion.}"
+  ],
+  [
+   7399,
+   "\\cpara{The conclusion: letting go of the future leaves nothing of value.}"
+  ],
+  [
+   7524,
+   "\\cpara{Calls those who disagree ``cosmopolitan'' and grants the source of their view: the science fiction, which the author also read, in which heroes accept minds unlike ours.}"
+  ],
+  [
+   8056,
+   "\\cpara{Answers with the moral of ``Lawful Creativity'': a better design breaks an old rule only in the service of a higher criterion, and dropping every rule leaves noise.}"
+  ],
+  [
+   8732,
+   "\\cpara{Applies the analogy: without human morals the result is ``moral noise''; improvement needs a criterion, and the post locates it in human brains.}"
+  ],
+  [
+   9145,
+   "\\clogic{``Alone'' is firmer than the author's view elsewhere. ``In Praise of Boredom,'' eleven days earlier, says: ``Evolved aliens might, or might not, acquire roughly the same boredom in roughly the same way.'' In a comment on this post the author rated the chance that an evolved alien species has ``a human idiom of boredom'' as ``MEDIUM.'' The paragraph's point needs only that an arbitrary optimizer lacks the criterion.}"
+  ],
+  [
+   9159,
+   "\\cpara{Restates the conclusion: without the grip of human value the universe ends up valueless, tiled with paperclips, not strange and wonderful.}"
+  ],
+  [
+   9405,
+   "\\cpara{Says that only some humans hold the ideal of welcoming many kinds of mind and a future greater than the past.}"
+  ],
+  [
+   9658,
+   "\\cpara{Contrasts the paperclip maximizer, the stock example of a mind with a simple goal, used earlier in the book (for example in ``The True Prisoner's Dilemma'').}"
+  ],
+  [
+   9767,
+   "\\cpara{The reply to the cosmopolitan: a wonderful and mysterious universe is itself a human value, and will come only if people who hold it act for it.}"
+  ],
+  [
+   10093,
+   "\\cpara{Generalizes: valuable things appear because a goal system that values them acts to create them, and the future will lack them if human values are destroyed or disturbed.}"
+  ],
+  [
+   10199,
+   "\\clogic{The post's own account of where human values came from, ``the morally miraculous stupidity of evolution that created us,'' is the case this rule leaves aside, and the post links ``The Gift We Give to Tomorrow'' for it. Robin Hanson raised a related question in a comment the same day. Having ``read and considered all of Eliezer's posts,'' Hanson still disagreed with the post's ``grand conclusion,'' and asked whether the universe was ``terribly lucky to have coughed up human-like values.'' The author answered that we judge the path as fortunate ``using our human values,'' and pointed to ``The Gift We Give To Tomorrow.''}"
+  ],
+  [
+   10472,
+   "\\clogic{``Or even disturbed'' goes beyond the post's three examples, each of which removes one dimension whole. Katja Grace later objected (2022) that the argument reads like ``value is not resilient to having components of it moved to zero,'' which ``doesn't seem to imply much about smaller perturbations.'' Erik Jenner and Johannes Treutlein replied that values are fragile ``to the mistakes we actually expect the objective to contain,'' such as conflating ``the actual state of the world'' and ``what humans think is the actual state of the world,'' which is close to the post's second example.}"
+  ],
+  [
+   10572,
+   "\\cpara{Says the cosmopolitan still has values, only less visibly human, and ``probably'' will not imagine an outcome awful enough to object to, such as a universe of paperclips.}"
+  ],
+  [
+   11248,
+   "\\cpara{Concludes that trying to be cosmopolitan removes only the goals that look obviously human.}"
+  ],
+  [
+   11415,
+   "\\cpara{Begins a list of what a reader who rejects the paperclip future would want: sentient beings, enjoyable and varied experience, feelings bound to something real, learning and free choice.}"
+  ],
+  [
+   11860,
+   "\\cpara{Points to the Fun Theory posts for the details. Earlier in the book these values were argued in their own posts: real objects of feeling and freedom in ``Not for the Sake of Happiness (Alone),'' and ``the true effort, the true victory, and the true experience'' in ``High Challenge.''}"
+  ],
+  [
+   12131,
+   "\\cpara{Says that values praised as cosmopolitan are as much in the brain as those dismissed as merely human, and came from evolution; the account of that origin is the next post in the book, ``The Gift We Give To Tomorrow.''}"
+  ],
+  [
+   12679,
+   "\\cpara{States that these values do not arise in all possible minds. This is argued in ``No Universally Compelling Arguments'' and ``The Design Space of Minds-in-General''; the notes on the first give Bostrom's later name for the related claim, the orthogonality thesis, and Kant's view that some laws bind every rational mind.}"
+  ],
+  [
+   12869,
+   "\\cpara{Says that once the physical representation of these values is broken, nothing will be left that wants to restore it.}"
+  ],
+  [
+   13074,
+   "\\cpara{Adds that a worthwhile universe would then have no cause to come into being.}"
+  ],
+  [
+   13214,
+   "\\cpara{Ends with the steering image: let go, and the future crashes.}"
+  ]
+ ]
+}
