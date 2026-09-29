@@ -1,0 +1,193 @@
+{
+ "slug": "when-not-to-use-probabilities",
+ "header": "\\post{When (Not) To Use Probabilities}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/AJ9dX59QXokZb35fk/when-not-to-use-probabilities}\n",
+ "skeleton_sha": "3687284050a920f2ca7c8782280584e7aa084ab4d4bff1357d88c8380aa59f9d",
+ "post_sha": "a284f6496553afe908472c9fcccd6d2aad96503fb55535cba813c41c0afc3764",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{States the thesis as a correction of what readers may expect: the author does not always advocate using probabilities.}"
+  ],
+  [
+   266,
+   "\\cpara{Narrows the thesis at once. The target is making up verbal probabilities and treating a calculation on them as a final belief or decision, not probability theory itself.}"
+  ],
+  [
+   578,
+   "\\cpara{Holds that the laws of probability always apply but often cannot be computed. This is the view of ``Beautiful Probability'' (order 188), which the link points to: ``Needing to calculate approximations to a law doesn't change the law.''}"
+  ],
+  [
+   994,
+   "\\cfact{The complexity claim is stated with its conditions, and it is supported. Cooper (\\textsc{Artificial Intelligence}, 1990) showed that ``probabilistic inference using belief networks is NP-hard.'' A result about the hardest cases is all that ``there are evidential updates'' needs.}"
+  ],
+  [
+   1008,
+   "\\cpara{Draws the conclusion for people: sometimes one should not apply probability theory explicitly, because the brain has other methods for uncertain reasoning that use no verbal probabilities.}"
+  ],
+  [
+   1245,
+   "\\cpara{Gives the example: to catch a ball, do not write down a distribution over landing spots and update it deliberately.}"
+  ],
+  [
+   1553,
+   "\\cpara{Recommends the brain's built-in mechanisms, with ``probably''. The claim has good support, which also fits the post's next point, that the laws still govern. Körding and Wolpert (\\textsc{Nature}, 2004), in a new sensorimotor task, found that subjects ``internally represent both the statistical distribution of the task and their sensory uncertainty, combining them in a manner consistent with a performance-optimizing bayesian process.''}"
+  ],
+  [
+   1743,
+   "\\cpara{Adds that this is not going beyond or above probability theory.}"
+  ],
+  [
+   1860,
+   "\\cpara{Says the Dutch book arguments still apply: if someone's choices between gambles fit no consistent set of probabilities, the gambles can be combined into sure losses, or sure gains refused. This is the standard use of the argument, for choices between bets.}"
+  ],
+  [
+   2242,
+   "\\cpara{Offers, as an expectation (``I would expect''), that for a ballplayer catching matters more than consistency, and that verbal probabilities may be worse than a wordless feeling.}"
+  ],
+  [
+   2704,
+   "\\cpara{States the principle behind the example: words have no special standing unless the verbal parts of the brain do better on the problem.}"
+  ],
+  [
+   2887,
+   "\\cpara{Consistency is needed for accuracy but does not produce it, as the post says. How a score can reward accuracy, through calibration and discrimination, is set out in ``A Technical Explanation of Technical Explanation'' (order 261); the notes there cover it.}"
+  ],
+  [
+   3153,
+   "\\cpara{Gives the rule, with its own hedges (``generally'', ``unless it seems like you have some decent basis''). The reason, that made-up numbers ``only'' fool you into feeling more Bayesian than you are, is asserted without evidence.}"
+  ],
+  [
+   3378,
+   "\\cpara{States the rule precisely and then as a slogan, ``Numbers should come from numbers.'' The rest of the post keeps to this reading: the target is a number produced by a non-numerical procedure.}"
+  ],
+  [
+   3565,
+   "\\cpara{Grants two benefits of putting feelings into numbers: spotting the conjunction fallacy and spotting internal inconsistencies.}"
+  ],
+  [
+   3890,
+   "\\cpara{Warns that a feeling translated into ``one in a thousand'' will not come true one time in a thousand.}"
+  ],
+  [
+   4152,
+   "\\cfact{Supported by a study that the author's own chapter on global risks quotes (Fischhoff, Slovic and Lichtenstein, 1977): answers given odds of 100 to 1 were right 73\\% of the time, and ``Accuracy `jumped' to 81\\%'' at odds of 1000 to 1. The notes on ``Infinite Certainty'' (order 61) discuss this study.}"
+  ],
+  [
+   4355,
+   "\\cpara{Turns to the example. The talk was almost certainly ``Probing the Improbable'' by Rafaela Hillerbrand, Anders Sandberg and Toby Ord, given on 20 July 2008, three days before the post. Its abstract names the LHC as its test case, and a journalist's report of it gives the figure of one in a thousand. CERN's Michelangelo Mangano spoke on the safety of such experiments two days before. Its written version appeared on arXiv in October 2008 and in the \\textsc{Journal of Risk Research} in 2010.}"
+  ],
+  [
+   4517,
+   "\\cpara{Summarizes the argument. The safety papers are the LHC Safety Assessment Group's review and Giddings and Mangano's paper on stable black holes, both posted on 20 June 2008. The review updated a 2003 report of the LHC Safety Study Group. Their words are close to the post's paraphrase: the review finds that black holes ``present no conceivable danger'', and Giddings and Mangano conclude ``from multiple perspectives'' that there is ``no risk of any significance whatsoever''. A suit to stop the LHC had been filed in a US court in Hawaii in March 2008.}"
+  ],
+  [
+   4856,
+   "\\cfact{A journalist at the talk reported the same conclusion: ``Thus Ord concluded that the LHC should not be switched on'' (Ronald Bailey, \\textsc{Reason}, 2 September 2008). The written paper is milder: the safety report ``should not be the final word'', and ``further analysis is critical.'' The post reports the milder view too, later on.}"
+  ],
+  [
+   4870,
+   "\\cpara{Makes the objection precise: the author accepts the argument's reasoning and objects only to the numbers.}"
+  ],
+  [
+   4990,
+   "\\cpara{Reports the speaker's two figures. The written paper has the same pair, first as an illustration: it supposes a one in a thousand chance that the argument is flawed and a one in a thousand chance of catastrophe if it is, which gives ``just over one in a million.''}"
+  ],
+  [
+   5283,
+   "\\cpara{Gives the speaker's reasons in the post's words: theories get overturned, and after that ``who knows''. By Bailey's report, the talk supported the first figure with cases (Kelvin's age of the Sun, the Castle Bravo bomb test, errors in drug doses) and with survey evidence that ``1-in-1,000 to 1-in-100 articles are retracted from high-impact scientific journals.'' The written paper gives the same kinds of evidence.}"
+  ],
+  [
+   5521,
+   "\\clogic{The premise, that an expert's calculated tiny probability is less reliable than it looks, is one the author had put in writing. The draft of the author's chapter for the book \\textsc{Global Catastrophic Risks}, dated 31 August 2006, says: ``Of all the times an expert has ever stated, even from strict calculation, that an event has a probability of 10$^{-6}$, they have undoubtedly been wrong more often than one time in a million.''}"
+  ],
+  [
+   5535,
+   "\\cpara{Asks whether numbers should be put on such an argument.}"
+  ],
+  [
+   5609,
+   "\\cpara{The objection. For the second figure it is fair: the written paper says the chance of catastrophe given a flaw is ``generally even more difficult to evaluate'', and that ``few would dispute that we really have very little idea of what value to put on'' it.}"
+  ],
+  [
+   5685,
+   "\\clogic{Overstated for the first figure. A bound drawn from retraction rates is a number that comes from numbers, as the post's own rule asks. How well it fits is another matter: the rates are for biomedical journals, and the paper itself grants that ``the hard sciences may be less prone to error.''}"
+  ],
+  [
+   5859,
+   "\\cpara{Proposes debating the general rule of banning physics experiments that cannot be proved safe, and links the author's post of two days earlier. That post reports that the proposer ``disagreed that their policy cashed out to a blanket ban on physics experiments.'' By Bailey's report, Ord answered an objection from CERN's Michelangelo Mangano by limiting the analysis to experiments that pose an existential risk to humanity. The rule the post proposes to debate is broader than the one the speakers defended.}"
+  ],
+  [
+   6111,
+   "\\cpara{Claims, with ``I hold'' and ``is likely'', that a general rule brings in frequencies, consequences and past cases. The idea is close to the ``outside view'' of ``Planning Fallacy'' (order 9): judge a case by the class it belongs to.}"
+  ],
+  [
+   6305,
+   "\\cfact{The speakers' written paper does argue from past cases, most of them confident calculations that failed: the RHIC collider, which ran ``for five years on the strength of a flawed safety report'' before Tegmark and Bostrom found a gap in it; Castle Bravo; and Kelvin.}"
+  ],
+  [
+   6319,
+   "\\cpara{Lists three costs of debating the one case with numbers.}"
+  ],
+  [
+   6680,
+   "\\clogic{The third cost is asserted, not argued. In the speaker's framework, a new argument that is independent of the old ones lowers the chance that all of them are flawed. The written paper says so (``if a new argument (A2) is independent of the previous argument (A1) then the grey area will shrink'') and credits Giddings and Mangano's three separate arguments with doing this. They are the ``multiple angles'' of the post's own summary.}"
+  ],
+  [
+   6694,
+   "\\cpara{``Disingenuous'' charges bad faith. The post's reason, that no paper can remove the doubt, would show at most a mistake. The written paper holds the position openly: the doubt ``can never be completely removed'', but it can shrink, and ``A small remaining grey area can be acceptable'' if it is small against the stakes. So the speakers granted the post's point, and the dispute is whether shrinking the doubt is enough. The paper came three months after the post and may differ from the talk.}"
+  ],
+  [
+   7095,
+   "\\cpara{A joke: the post puts a made-up 75\\% on its own guess about the authors, and marks it as uncertain. For the first figure the guess has support, since a bound drawn from retraction rates across journals would be the same whatever physics papers had appeared.}"
+  ],
+  [
+   7399,
+   "\\cpara{Restates the position: sometimes talk in verbal probabilities and sometimes not, but the laws of probability always govern.}"
+  ],
+  [
+   7660,
+   "\\cpara{Repeats the advice, with ``probably'' and ``may'': with only a gut feeling, use the methods built for gut feelings.}"
+  ],
+  [
+   7920,
+   "\\cpara{Raises an inconsistency against itself: the author would be more alarmed by a lottery device with a known one-in-a-million chance of destroying the world than by the LHC.}"
+  ],
+  [
+   8211,
+   "\\cpara{The other half: the author could not make a million statements as reliable as ``The Large Hadron Collider will not destroy the world'' and be wrong about once. This is the test of ``Infinite Certainty'' (order 61).}"
+  ],
+  [
+   8435,
+   "\\clogic{By this test the author's chance of being wrong about the LHC is above about one in a million. The speaker's two figures multiply to at least one in a million. Put in the frequencies the post recommends, the author's judgment of the size of the risk comes out close to the speaker's. The post raises the inconsistency itself.}"
+  ],
+  [
+   8449,
+   "\\cpara{Declines to force the two judgments into agreement, comparing that to scribbling on one of two maps that disagree.}"
+  ],
+  [
+   8727,
+   "\\cpara{A second case of the same kind: more worry about a one-in-a-billion lottery device than about a device that destroys the world if the Judeo-Christian God exists, yet no confidence of being wrong only once in a billion independent statements as fraught as ``There is no God''.}"
+  ],
+  [
+   9138,
+   "\\cpara{Explains why the inconsistency stays: the author will change it only toward greater accuracy and effectiveness, since ``maybe'' made-up numbers would defeat the built-in methods. ``The goal is to win'' links ``Something to Protect'' (order 294), the previous post in the book.}"
+  ],
+  [
+   9745,
+   "\\cpara{Limits the advice: well-founded probabilities should not be ignored, and ``any numerical founding at all'' is likely better than a vague feeling. Only a number produced entirely by a non-numerical procedure is rejected.}"
+  ],
+  [
+   10207,
+   "\\cpara{Applies the rule to the author's writing: ``maybe'' and ``probably'' rather than made-up percentages. The question is old. Sherman Kent's CIA paper ``Words of Estimative Probability'' (1964) reports that members of a board who had agreed on ``serious possibility'' had in mind odds from ``20 to 80'' to ``80 to 20''. Kent expected opponents, whom Kent called ``poets'', to argue that terms for particular odds ``would make the writer look silly.'' The post takes the poets' side, with their argument. Its reason is the writer's accuracy; Kent's problem was the reader's understanding, which the post does not discuss.}"
+  ],
+  [
+   10508,
+   "\\cfact{Offered with ``I think'', about the author. Later evidence on forecasters in general runs the other way. In 888,328 forecasts from a tournament begun in 2011, ``coarsening numeric probability assessments in a manner consistent with common qualitative expressions \\ldots\\ consistently sacrifices predictive accuracy'' (Friedman and colleagues, \\textsc{International Studies Quarterly}, 2018).}"
+  ],
+  [
+   10522,
+   "\\cpara{Closes by placing the author between two positions: not a ``straw Bayesian'' who makes up numbers to avoid Dutch books, but one who holds that the mathematics governs and is too expensive to compute, and that a ritual imitating its surface forms is a ``lost purpose'', linking the post of that name (order 154).}"
+  ]
+ ]
+}

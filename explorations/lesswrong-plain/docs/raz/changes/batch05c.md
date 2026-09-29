@@ -34,3 +34,47 @@ Why: A technical premise; stays in the annotated note.
 - Before:  \nb{The post's argument that its utility function is unbounded also needs the premise that living forever is worth no more than the limit of ever longer finite lives.}
 - After: 
 
+
+## annotated/afterwords/when-not-to-use-probabilities.tex
+
+Why: The post reports the frequency-test inconsistency itself, so it leaves the In short line; the illusion point stays in the note; Kent's reader-side point was scope. "Handled with less care" and "goes beyond the evidence" dropped as verdict words; the sourced point about "disingenuous" stays.
+
+- Before: The example is handled with less care. The speaker's two figures were not equally baseless. The second, the chance of catastrophe if the safety argument fails, was a guess, as the speakers' written paper admits. The first, the chance that such an argument is flawed, was supported at the talk, by a journalist's report, with rates of retraction of journal articles. That is a number from numbers in the post's own sense, though the rates come from biomedicine. And the post's own test, put in the frequencies it recommends, places the author's chance of being wrong about the LHC above one in a million, while the speaker's figures multiply to at least one in a million. On the size of the risk the two are close.
+
+The treatment of the speakers goes beyond the evidence. The post calls their call for more analysis ``disingenuous'' because no paper can remove the doubt; that reason would show at most a mistake, not bad faith. In their written paper, three months later, the speakers grant that the doubt cannot be removed and argue that independent arguments shrink it. The post's claim that a paper lowering the probabilities could only create ``the illusion'' of a different decision is asserted without argument. The general rule it proposes to debate is also broader than the one the speakers defended, as the author's own post of two days earlier indicates.
+
+The closing preference for ``maybe'' and ``probably'' takes a side in an old debate. Sherman Kent of the CIA reported in 1964 that a board agreeing on ``serious possibility'' had meant odds from 20 to 80 to 80 to 20, and expected opponents to argue that numbers would make a writer look silly. The post argues from the writer's accuracy and leaves aside the reader.
+
+In short: a sound caution against treating numbers made up from feelings as calibrated, applied to the LHC debate with less care: one of the speaker's two figures had a numerical basis, the author's own frequency test gives a risk of the same size, and the charge of disingenuousness is not supported.
+
+- After: On the example, the speaker's two figures were not equally baseless. The second, the chance of catastrophe if the safety argument fails, was a guess, as the speakers' written paper admits. The first, the chance that such an argument is flawed, was supported at the talk, by a journalist's report, with rates of retraction of journal articles: a number from numbers in the post's own sense, though the rates come from biomedicine. The post's own frequency test, which it reports openly as an inconsistency, puts the author's chance of being wrong about the LHC above about one in a million, the size of the speaker's estimate.
+
+The post calls the call for more analysis ``disingenuous'' because no paper can remove the doubt. That reason would show at most a mistake, not bad faith. In their written paper, three months later, the speakers grant that the doubt cannot be removed and argue that independent arguments shrink it, which is a consistent position.
+
+The closing preference for ``maybe'' and ``probably'' takes a side in an old debate. Sherman Kent of the CIA reported in 1964 that a board agreeing on ``serious possibility'' had meant odds from 20 to 80 to 80 to 20.
+
+In short: a sound caution against treating numbers made up from feelings as calibrated, candid about its own inconsistency, whose charge that the call for more analysis was ``disingenuous'' is not supported.
+
+
+
+## annotated/posts/when-not-to-use-probabilities.tex
+
+Why: Nitpick (a hedged "may"); the post states the inconsistency itself.
+
+- Before: \clogic{Offered with ``may'' and no evidence. The post does not say how one would tell whether the nonverbal use does better.}
+- After: 
+
+- Before: the author's judgment of the size of the risk comes out close to the speaker's.}
+- After: the author's judgment of the size of the risk comes out close to the speaker's. The post raises the inconsistency itself.}
+
+
+## honest/sections/when-not-to-use-probabilities.tex
+
+Why: Same.
+
+- Before: \nb{By that test the author's chance of error is above about one in a million, close to the speaker's figures.}
+- After: \nb{By that test the author's chance of error is above about one in a million, close to the speaker's figures, as the post goes on to admit.}
+
+- Before: ; colleagues who had agreed on ``serious possibility'' turned out to mean odds from 20 to 80 to 80 to 20.}
+- After: ; colleagues who had agreed on ``serious possibility'' turned out to mean odds from 20 to 80 to 80 to 20.}
+
