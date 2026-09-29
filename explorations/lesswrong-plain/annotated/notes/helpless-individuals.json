@@ -1,0 +1,97 @@
+{
+ "slug": "helpless-individuals",
+ "header": "\\post{Helpless Individuals}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/f42BHX7rMw2dyFJfT/helpless-individuals}\n",
+ "skeleton_sha": "beb888bca25ee57df813def1ea815fb0a26dd3934b643b15fcccf1cad2601bf1",
+ "post_sha": "dd7d3d65cb2e42f084d554aa4505ba583261c950d05ed899ece696817394d234",
+ "edits": [],
+ "notes": [
+  [
+   126,
+   "\\cpara{States the premise: human grouping instincts fit bands of about 50 people. It is asserted here. The links go to ``Your Price for Joining'' and to the author's ``Dunbar's Function'' (2008), which gives ``30-50'' as ``a typical size for a cohesive hunter-gatherer band.''}"
+  ],
+  [
+   458,
+   "\\cpara{Names the first kind of large institution that survives: governments that can tax, an arrangement dating from agriculture and storable surpluses.}"
+  ],
+  [
+   725,
+   "\\cpara{The second kind: corporations, in which central management controls the money.}"
+  ],
+  [
+   934,
+   "\\cpara{The third kind: religions, described as memes that grow more virulent in large, connected populations, as ``Can Humanism Match Religion's Output?'' had put it three days earlier.}"
+  ],
+  [
+   1196,
+   "\\cpara{The thesis: most large institutions that would serve people ``simply fail to exist in the first place.'' Institutions that do not exist cannot be counted, so the claim rests on the case the post goes on to examine, science funding.}"
+  ],
+  [
+   1470,
+   "\\cfact{The thesis is close to Mancur Olson's in \\textsc{The Logic of Collective Action} (1965): ``unless the number of individuals in a group is quite small, or unless there is coercion or some other special device to make individuals act in their common interest, rational, self-interested individuals will not act to achieve their common or group interests.'' Olson's reason is free riding by self-interested people. The post's reason is different: it grants that people are ``prosocial'' and blames the poor emotional fit of such tasks.}"
+  ],
+  [
+   1484,
+   "\\cpara{Introduces the evidence: how science is funded.}"
+  ],
+  [
+   1612,
+   "\\cpara{Reports the author's firsthand finding that raising money for science from individuals is ``amazingly difficult,'' except perhaps for diseases with ``gruesome victims.''}"
+  ],
+  [
+   1917,
+   "\\cfact{For information, the exception can be large. The March of Dimes, founded in 1938 to fight polio, raised its money in small gifts and funded Jonas Salk's vaccine. The \\textsc{New York Times}, quoted by Wikipedia (``March of Dimes''), wrote that its leader ``collected and spent more than seven billion dimes.''}"
+  ],
+  [
+   1931,
+   "\\cpara{Poses the puzzle: people give to puppy pounds, and know that science matters, so why do they not give to science?}"
+  ],
+  [
+   2132,
+   "\\cpara{The answer: a science project is a poor emotional fit for personal giving. It needs support over a long time, its news is not stirring, only specialists can do the work, and donors get no immediate feedback.}"
+  ],
+  [
+   2500,
+   "\\cfact{The link is to ``Money: The Unit of Caring,'' posted the day after this post, so the text as published now is a later revision.}"
+  ],
+  [
+   2897,
+   "\\cpara{The two cases that prompted the idea: tests of Seth Roberts's hypothesis about obesity, and of Robert Bussard's polywell fusion device. The author calls them ``obviously ridiculously underfunded,'' with applications ``(if true)'' to many people.}"
+  ],
+  [
+   3254,
+   "\\cfact{For information, the polywell work was then paid for by the government, as the post's account would predict. Wikipedia (``Polywell'') reports that from 1999 Bussard's company ``was primarily funded by the US Navy,'' that it received a Navy contract in 2007, and that in April 2009 the Defense Department planned to give it a further \\$2 million.}"
+  ],
+  [
+   3552,
+   "\\cpara{Generalizes, with ``It seems to me'': very few things suit individual giving, and this explains why ``200 million adult Americans'' have trouble supervising ``the 535 members of Congress.''}"
+  ],
+  [
+   3890,
+   "\\cpara{Lists who does fund science: governments, large corporations, large ``grassroots organizations,'' and private foundations. Scientists then compete for the money before grant committees.}"
+  ],
+  [
+   4545,
+   "\\clogic{The motive given for foundations, money ``block-allocated by wealthy individuals to their reputations'' and spent on science that ``promises to sound very charitable,'' is asserted without evidence.}"
+  ],
+  [
+   4812,
+   "\\cpara{States the pattern: money is first allocated to science, then divided among scientists. Even the exceptions, the moon program and the Manhattan Project, came from politicians and the military rather than from scientists' appeals to the public.}"
+  ],
+  [
+   5208,
+   "\\cpara{Concedes that if the public funded particular research by donation, much money would be wasted, for example on ``quantum gibberish.''}"
+  ],
+  [
+   5541,
+   "\\cpara{The conclusion: science survives as a ``parasite'' on the few kinds of large organization that can exist.}"
+  ],
+  [
+   5903,
+   "\\cfact{Olson made a similar point about large lobbies: they are ``the by-products of organizations that obtain their strength and support because they perform some function in addition to lobbying for collective goods'' (\\textsc{The Logic of Collective Action}, chapter 6).}"
+  ],
+  [
+   5917,
+   "\\cpara{Restates the thesis, with ``It seems to me,'' and names the cause: coordination beyond 50 people is ``too non-ancestral a problem.''}"
+  ]
+ ]
+}

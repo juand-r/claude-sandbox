@@ -74,3 +74,53 @@ Why: Passing slips whose point survives stay out of the In short line (Book III 
 - Before: In short: a careful, mostly hedged question about whether believers do more good than unbelievers, candid about its own speculation, with a few passing claims, about theologians and about meditation, stated more firmly than their support.
 - After: In short: a careful, mostly hedged question about whether believers do more good than unbelievers, candid about its own speculation, whose premise the survey evidence of its day supported.
 
+
+## annotated/afterwords/church-vs-taskforce.tex
+
+Why: "Nearly all" sits inside the post's conditional ("to the extent that"); a slip whose point survives, and the Pew survey is later; kept in the Response.
+
+- Before: whose premise, that community is what churches chiefly give, has support in research on religion and life satisfaction, though not in the strong form of ``nearly all.''
+- After: whose premise, that community is what churches chiefly give, has support in research on religion and life satisfaction.
+
+
+## annotated/afterwords/rationality-common-interest-of-many-causes.tex
+
+Why: Hindsight (the later field studies) out of the In short line; the hedged, likely tongue-in-cheek puppy remark stays in the note only.
+
+- Before: 
+
+The one limit the post sets is drawn with a charge it does not support. Organizers of a project for stray puppies are ``probably'' best seen as exploiting ``bugs in human psychology for their personal gain,'' with no evidence for the motive. The test the limit rests on, whether a project is a task ``you would wish to see done on behalf of humanity,'' is stated in the next paragraph and does not need the charge.
+- After: 
+
+- Before: whose premise that giving is not a fixed pie later field studies largely support, and whose rule against claiming to be ``the best'' starts from one secondhand comparison and has only indirect support.
+- After: whose rule against claiming to be ``the best'' rests on one secondhand comparison and the reasons that follow it.
+
+
+## annotated/afterwords/helpless-individuals.tex
+
+Why: Fair reading: the features of the task (long horizons, no feedback) are why it fits badly with intuitions formed in small bands; the link is implicit, not missing.
+
+- Before: 
+
+Two explanations sit side by side. The science case turns on features of the task: long horizons, no volunteering, no feedback. The first and last paragraphs explain the failure by group size, ``too non-ancestral a problem when you scale to more than 50 people,'' and the post does not show how the one follows from the other.
+- After: 
+
+- Before: , argued from one case and closed with an explanation by ancestral group size that the post does not tie to that case.
+- After: , argued from one case.
+
+
+## annotated/posts/helpless-individuals.tex
+
+Why: Same: the link is implicit, not missing.
+
+- Before: \clogic{The science case was explained by features of the task: long horizons, no volunteering, no immediate feedback. The closing explanation is group size. The post does not spell out how the one follows from the other.}
+- After: 
+
+
+## honest/sections/helpless-individuals.tex
+
+Why: Same: the link is implicit, not missing.
+
+- Before:  \nb{The science case was explained by features of the task, such as long horizons and no feedback. The post does not show how these follow from group size.}
+- After: 
+

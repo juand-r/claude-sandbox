@@ -1,0 +1,77 @@
+{
+ "slug": "rationality-common-interest-of-many-causes",
+ "header": "\\post{Rationality: Common Interest of Many Causes}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/4PPE6D635iBcGPGRy/rationality-common-interest-of-many-causes}\n",
+ "skeleton_sha": "016b12a69a0d05727ce2259701574ce0bbe6d87b7f8e49318db4952a80f4fc2a",
+ "post_sha": "359f33a1037255515b2ca8fd68fc5444ffcfa778551db85dc2fceff58d439cc1",
+ "edits": [],
+ "notes": [
+  [
+   171,
+   "\\cpara{States the premise: many causes gain when rationality spreads, because seeing their case takes ``a little more rationality than usual.'' The premise covers causes whose case survives closer scrutiny; the post takes this as given for its two examples, atheism and marijuana legalization.}"
+  ],
+  [
+   701,
+   "\\cfact{The Singularity Institute, now the Machine Intelligence Research Institute; the notes on ``Why Our Kind Can't Cooperate'' give the source.}"
+  ],
+  [
+   903,
+   "\\cpara{Accepts that rationalists the author creates may not join the author's project: ``You can't capture all the value you create.''}"
+  ],
+  [
+   1223,
+   "\\cpara{The proposal, offered with ``perhaps'': shared, standard material on rationality that many causes can point their supporters to. Each cause captures some of what the others create; atheists and anti-Prohibitionists both gain if both talk about ``confronting a discomforting truth.''}"
+  ],
+  [
+   1999,
+   "\\cpara{States what the proposal requires: not trying to capture all the value one creates, being able to ``shut up'' about one's own cause, and not treating supporters as a fixed supply.}"
+  ],
+  [
+   2366,
+   "\\cfact{The link is to a comment exchange under Kaj Sotala's ``The Tragedy of the Anticommons'' (15 March 2009). A commenter asked why the author was not interested in more discussion of libertarian policy, and the author replied: ``Not every conversation on the Internet has to be about libertarianism.''}"
+  ],
+  [
+   2721,
+   "\\cpara{Extends the rule to disagreements over priorities, with an exception for specialized venues.}"
+  ],
+  [
+   3010,
+   "\\cpara{Reports, without names, an observation: the organization's message ``This is the best thing you can do'' had fared worse than the X Prize Foundation's ``Here is a cool thing you can do.'' The evidence is one comparison, reported secondhand, between two different kinds of organization. The X Prize Foundation offers prizes for set goals; its first, \\$10 million for the first private crewed craft to reach space twice within two weeks, was won in 2004 (Wikipedia, ``Ansari X Prize''). The next paragraph gives the reasons the author finds convincing.}"
+  ],
+  [
+   3371,
+   "\\cpara{Gives the reasons: people cannot grasp large stakes (the links go to ``Scope Insensitivity'' and ``One Life Against the World''), are not expected-utility maximizers, and are ``altruistic akrasics''; calling a cause the best raises the burden of proof and invites comparisons that sap motivation.}"
+  ],
+  [
+   3859,
+   "\\cfact{The nearest test I found agrees in part. In a direct-mail experiment for the charity Freedom from Hunger, Karlan and Wood (NBER Working Paper 20047, 2014) found that adding evidence of the program's impact from scientific research ``has no effect on whether someone donates, or how much, in the full sample''; among recent donors, large past donors gave more and small past donors gave less. Evidence of effectiveness is not a claim to be the best, so the support is indirect.}"
+  ],
+  [
+   4151,
+   "\\cpara{Names its working assumption openly (``If we're operating under the assumption'') and draws a hedged conclusion: arguing over which cause is best ``may'' reduce the total supply of altruism.}"
+  ],
+  [
+   4516,
+   "\\cpara{Answers the objection that dollars are fungible: people are not expected-utility maximizers, and money given to causes comes from different ``mental accounts,'' a model of spending developed by Richard Thaler (Wikipedia, ``Mental accounting'').}"
+  ],
+  [
+   5112,
+   "\\cfact{Field studies published since mostly support this hedged claim. Deryugina and Marx (\\textsc{American Economic Review: Insights}, 2021), using tax data, found that after deadly tornadoes households gave more, with ``no negative effects'' on giving to local charities: ``giving in response to new needs need not come at the expense of other causes.'' Meer (\\textsc{Journal of Public Economics}, 2017) found that matching grants on one charity website did not ``crowd out giving'' to similar requests. Scharf, Smith and Ottoni-Wilhelm (2017) found that major appeals ``lift total donations'' but also ``shift donations to other charities across time.''}"
+  ],
+  [
+   5126,
+   "\\cpara{Sets a limit, using a project to find homes for stray puppies. Its organizers, the post says, are ``probably'' best regarded as ``trying to exploit bugs in human psychology for their personal gain.'' No evidence is offered for that motive. The test the limit rests on comes in the next paragraph: whether the project is a task ``you would wish to see done on behalf of humanity.''}"
+  ],
+  [
+   5476,
+   "\\cpara{The practical rule: in nearly all forums say ``Here is a cool rationalist project,'' and send anyone who explicitly asks which project is best to a specialized subforum. The last sentence makes a correct economic point: money that flows to the most underserved project lowers its marginal return, so the ranking changes.}"
+  ],
+  [
+   6435,
+   "\\cpara{Anticipates free riders, groups that use shared resources but will not mention other projects, and proposes dropping them from those resources.}"
+  ],
+  [
+   7008,
+   "\\cpara{Closes with the benefit: identifying with a common ``Neo-Enlightenment'' would make it likelier to find ``ten of us in any given city,'' linking the previous day's ``Church vs. Taskforce.'' The post then applies its own rule to rationality itself, calling it not ``the most important thing in the world'' but ``a cool thing.''}"
+  ]
+ ]
+}
