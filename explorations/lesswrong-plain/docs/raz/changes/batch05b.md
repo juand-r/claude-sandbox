@@ -89,3 +89,54 @@ Why: Scope: this post does not apply the analysis to morality, so the moral-lang
 - Before: The post says the analysis is meant for later use on words like ``objective'' and ``subjective'', and the book goes on to apply it to morality. For sexiness the post calls its two views ``equally valid''. For moral words, philosophers have found that the choice has costs. If each speaker's ``wrong'' names a different function, two speakers who seem to disagree do not contradict each other. If the function tracks the speaker's tastes as they change, slavery would become right if we came to approve of it, which is why some theories fix the function, as the post's curried form does. Whether the later posts meet these difficulties is a question for those posts.
 - After: The post says the analysis is meant for later use on words like ``objective'' and ``subjective'', and the book goes on to apply it to morality. For moral words each form has a known difficulty, lost disagreement for the first and changing tastes for the second; the notes record them, and the later posts are where they bear.
 
+
+## annotated/posts/the-true-prisoner-s-dilemma.tex
+
+Why: Nitpick: the two posts give compatible origins (Sympathetic Minds adds reciprocity to kin).
+
+- Before:  The post states the origin without a hedge; ``Sympathetic Minds'', next in this book, suggests with ``maybe'' that sympathy began with love of kin.}
+- After: }
+
+
+## annotated/afterwords/the-true-prisoner-s-dilemma.tex
+
+Why: The jury-instruction line faulted an analogy for being an analogy. In short: the author conceded the theory point in the comments (Book V lesson: read concessions), and the hedges carry.
+
+- Before:  In the study the linked post reports, instructions did not reduce hindsight bias, but the post gives no evidence that they fail in the same way here.
+- After: 
+
+- Before: In short: a correct statement of the dilemma and a vivid example whose payoffs a human really holds; the point that payoffs must include everything a player cares about is standard game theory, and the claims about human instinct that motivate the example are offered without evidence.
+- After: In short: a correct statement of the dilemma and a vivid example whose payoffs a human really holds, aimed, as the author said, at how the game is usually illustrated; its claims about human instinct are hedged and cite no study.
+
+
+## annotated/afterwords/sympathetic-minds.tex
+
+Why: Fair reading: the post defines how an unsympathetic mind sees us by the woodsaw exercise, so the conclusion about aliens follows; the 2015 review is hindsight and stays in the note.
+
+- Before:  A 2015 review of empathy research still lists that link among the issues that ``might obscure our understanding'' of empathy.
+- After: 
+
+- Before: 
+
+The conclusion about aliens has a gap that the post's own text opens. Early on, the post names a second way a mind could care about others: an abstract desire for them to get what they want, without feeling what they feel. It sets this aside for humans because the mirroring machinery was already there. That reason says nothing about an alien lineage that never had mirroring. So ``they would never see us as anything but means to an end'' follows if ``unsympathetic'' means seeing others only as tools, as in the post's woodsaw exercise, and not if it means only lacking the mirroring route.
+- After: 
+
+- Before: which states as fact a disputed link to mirror neurons and concludes that unsympathetic aliens would never be friends without ruling out the other route to caring that it names itself.
+- After: which states as fact a disputed link to mirror neurons.
+
+
+## annotated/posts/sympathetic-minds.tex
+
+Why: Fair reading: the post defines how an unsympathetic mind sees us by the woodsaw exercise, so the conclusion about aliens follows; the 2015 review is hindsight and stays in the note.
+
+- Before: \clogic{This follows if ``unsympathetic'' means seeing others only as tools, as in the woodsaw exercise. If it means only lacking the mirroring route, the post has itself named another way to care about others: ``a more abstract desire to see certain people tagged as `relatives' get what they want, without actually feeling yourself what they feel''. Its reason that human evolution did not take that way, that mirroring was already there, does not say whether an alien lineage without mirroring might.}
+- After: 
+
+
+## honest/sections/sympathetic-minds.tex
+
+Why: Same as the Response.
+
+- Before:  Earlier the post had named another way to care about others, an abstract desire for them to get what they want, and set it aside only for humans, because mirroring was already there. It does not say why an alien without mirroring could not care that way.}
+- After: }
+

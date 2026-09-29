@@ -1,0 +1,133 @@
+{
+ "slug": "the-true-prisoner-s-dilemma",
+ "header": "\\post{The True Prisoner's Dilemma}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/HFyWNBnDNEDsDNLrZ/the-true-prisoner-s-dilemma}\n",
+ "skeleton_sha": "4e30a042fa9fefab7d8e0a57ef65df96925a5958438cd73053a7cf3ff197230b",
+ "post_sha": "b0285fc25785dda7b53a7966712b1eea92253458f153a2773b6530d57e353ac2",
+ "edits": [],
+ "notes": [
+  [
+   140,
+   "\\cpara{States the thesis: the usual way of picturing the Prisoner's Dilemma is ``fake''. The reason comes after the game is set out.}"
+  ],
+  [
+   427,
+   "\\cpara{The matrix has the defining order of the dilemma for both players, which I checked by script: 5 for defecting against a cooperator, 3 for mutual cooperation, 2 for mutual defection, 0 for cooperating against a defector. The columns are player 1's moves and the rows player 2's, so (5, 0) is player 1 defecting while player 2 cooperates.}"
+  ],
+  [
+   520,
+   "\\cpara{Explains the notation and the names ``cooperate'' and ``defect''.}"
+  ],
+  [
+   769,
+   "\\cpara{Gives each player's order of preference. It matches the table: 5, 3, 2, 0.}"
+  ],
+  [
+   940,
+   "\\cpara{The dominance argument: whatever the other player does, defecting pays more, so both defect. It is correct for this table.}"
+  ],
+  [
+   1209,
+   "\\cpara{States the dilemma: both prefer mutual cooperation to the mutual defection their reasoning leads to.}"
+  ],
+  [
+   1365,
+   "\\cpara{Announces the claim and limits it. The flaw is in how the dilemma is usually pictured, ``at least if you happen to be human'', not in its analysis.}"
+  ],
+  [
+   1689,
+   "\\cpara{Begins the standard story of two captured criminals.}"
+  ],
+  [
+   1871,
+   "\\cpara{Gives the rules: each decides alone, without talking to the other, once and for all.}"
+  ],
+  [
+   2072,
+   "\\cpara{The sentences are the standard ones. They match the ``typical contemporary version'' from William Poundstone's \\textsc{Prisoner's Dilemma} (1993), as Wikipedia quotes it: a year each if both stay silent, freedom against three years if one testifies, two years each if both do. The post's rule gives the same four outcomes.}"
+  ],
+  [
+   2254,
+   "\\cpara{Gives the other standard version: a one-time game with a stranger, for money.}"
+  ],
+  [
+   2493,
+   "\\cpara{Describes the standard story correctly. Poundstone's version, as quoted by Wikipedia, says: ``Each prisoner is concerned only with his own welfare.''}"
+  ],
+  [
+   2699,
+   "\\cpara{The thesis, hedged (``in my view''). The charge is against the story. The theory already takes the numbers in the matrix to include everything a player cares about. Robin Hanson said so in the comments: ``Most every game theory text and lecture I know gets this right.'' The author replied that the complaint was about the illustration: ``you can tell people all day long that the entries are in utilons, but until you give them a visualization where those really are the utilons, it's around as effective as telling juries to ignore hindsight bias.''}"
+  ],
+  [
+   2797,
+   "\\cpara{The support is an analogy. The linked post, ``Hindsight Bias'' (not in this book), reports Kamin and Rachlinski's finding that telling mock jurors to avoid hindsight bias made no difference (56 against 57 per cent). The post gives no evidence that instructions fail in the same way when people are asked to imagine a player who cares only about their own payoff. Hanson, writing as a teacher of game theory, agreed that students ``mostly still hear it the wrong way''.}"
+  ],
+  [
+   3108,
+   "\\cpara{The explanation is Robert Trivers's theory of reciprocal altruism (1971). The paper calls repeated exchange ``exactly analogous to what game theorists call the Prisoner's Dilemma'', and proposes that ``friendship, dislike, moralistic aggression, gratitude, sympathy, trust'' and other traits are adaptations that regulate it.}"
+  ],
+  [
+   3589,
+   "\\cpara{Describes laboratory games, hedged (``not entirely and absolutely''), with no study cited. Experiments find more than one kind of player. In a well-known public-goods game, a many-player relative of the dilemma, Fischbacher, G\\\"achter and Fehr (2001) found ``a majority of 50 percent'' who gave more when others gave more, and ``about a third'' whose choices showed ``complete free-riding''. The paragraph's ``we'' describes the first group.}"
+  ],
+  [
+   3924,
+   "\\cpara{Says the instinctive question is how to secure mutual cooperation, not how to exploit the other player. No evidence is given.}"
+  ],
+  [
+   4214,
+   "\\cpara{The central point, and social psychology had formalized it. Harold Kelley and John Thibaut (1978) distinguished the ``given'' matrix of outcomes from the ``effective'' matrix a person acts on. A review describes the step as ``formalizing interaction goals broader than immediate self-interest'', informed by research of the 1960s and 1970s that included experimental games (Van Lange and Balliet, 2015).}"
+  ],
+  [
+   4502,
+   "\\clogic{With (C, C) above (D, C) the game is no longer a Prisoner's Dilemma. Game theorists call it a stag hunt, and the Stanford Encyclopedia's entry on the dilemma notes that such games are ``sometimes called games of `assurance' or `trust.'\\,'' Cooperating is best when you are sure the other will cooperate, which is the post's ``key question''.}"
+  ],
+  [
+   4516,
+   "\\cpara{Repeats the hindsight analogy and adds a second: people new to anthropomorphism cannot be told to picture themselves as paperclip maximizers. The link is to ``Anthropomorphic Optimism'', earlier in this book.}"
+  ],
+  [
+   4917,
+   "\\cpara{Names the players: a mind with human values against one that cares for none of them. The link is to ``Sorting Pebbles Into Correct Heaps'', earlier in this book.}"
+  ],
+  [
+   5139,
+   "\\cpara{Sets the stakes: four billion people with a fatal disease that only substance S cures.}"
+  ],
+  [
+   5348,
+   "\\cpara{Removes every outside reason to cooperate. The paperclip maximizer cares only about paperclips in its own universe, so nothing here can reward or threaten it, and the two sides have never met and will never meet again. With no future dealings, reciprocity and reputation play no part.}"
+  ],
+  [
+   5790,
+   "\\cpara{Gives the moves: each side can seize extra substance S once, and seizing destroys some of it.}"
+  ],
+  [
+   6117,
+   "\\cpara{The payoffs have the same order as the standard matrix for both sides, which I checked by script: the humans get 3, 2, 1 or 0 billion lives, the paperclip maximizer 3, 2, 1 or 0 paperclips. As before, columns are the humans' moves and rows the paperclip maximizer's.}"
+  ],
+  [
+   6326,
+   "\\cpara{Says the numbers were chosen to make cooperation feel outrageous: billions of lives traded for a couple of paperclips.}"
+  ],
+  [
+   6704,
+   "\\cpara{The arithmetic is right: cooperating when the paperclip maximizer cooperates saves 2 billion lives instead of 3, a billion lives for 2 paperclips. The stipulation that the paperclip agent feels nothing removes the last object of sympathy, so the human preference for (D, C) over (C, C) is real, as it was not in the prison story.}"
+  ],
+  [
+   7525,
+   "\\cpara{Asks what the reader would do when they want only the highest reward and do not care about the other player.}"
+  ],
+  [
+   7826,
+   "\\cpara{Defines the true dilemma as one where (D, C) seems ``righter'' than (C, C).}"
+  ],
+  [
+   7980,
+   "\\cpara{Says the rest of the logic is unchanged: each side still prefers mutual cooperation to mutual defection, as the table confirms.}"
+  ],
+  [
+   8301,
+   "\\cpara{Ends with a question and gives no answer. In the comments the author wrote ``I didn't say I would defect'', and the next day posted ``The Truly Iterated Prisoner's Dilemma'' (not in this book), which repeats the game 100 times. The link on ``rational'' is to ``Newcomb's Problem and Regret of Rationality'', later in this book.}"
+  ]
+ ]
+}

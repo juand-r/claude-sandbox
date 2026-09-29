@@ -1,0 +1,129 @@
+{
+ "slug": "sympathetic-minds",
+ "header": "\\post{Sympathetic Minds}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/NLMo5FZWFFq652MNe/sympathetic-minds}\n",
+ "skeleton_sha": "270a9fec573556164cacb4b6195129f6e9088318118244c540512e8b5e8fa67c",
+ "post_sha": "f452f6e6783e7a9592d39805053f01f9b9a2f44b9fff34c26c2b8874efc82a67",
+ "edits": [],
+ "notes": [
+  [
+   120,
+   "\\cpara{Defines mirror neurons and states the evidence as it stood in 2009 accurately. Such neurons had been recorded one by one in macaque monkeys: Gallese and colleagues (\\textsc{Brain}, 1996) describe premotor neurons that fire ``both when the monkey performed a given action and when it observed a similar action''. In humans the evidence was from imaging, and the finger example matches a 1999 study in which people watched and imitated ``a finger movement'' (Iacoboni and colleagues, \\textsc{Science}). Recordings from single human neurons followed in 2010 (Mukamel and colleagues).}"
+  ],
+  [
+   458,
+   "\\cpara{Recalls ``empathic inference'' from ``Humans in Funny Suits'', earlier in this book: brains are too complex to model except by running one's own. The note there gives the rival account, that people predict others with a tacit theory of mind. This post itself grants, further on, that empathy ``is not the only possible way''.}"
+  ],
+  [
+   1322,
+   "\\cpara{Names this capacity ``empathy'', in the author's own sense (``what I would call'').}"
+  ],
+  [
+   1375,
+   "\\cpara{Names a second capacity, ``sympathy'': feeling what another feels, which rewards and punishes rather than predicts. The terms differ from the usual ones in psychology. In the Stanford Encyclopedia's account, sympathy ``is not an emotion that is congruent with the other's emotion'' but ``feeling sorrow or concern for the distressed or needy other''; sharing the other's feeling is what that entry calls empathy.}"
+  ],
+  [
+   1596,
+   "\\cpara{Asks why natural selection would produce anything so kind.}"
+  ],
+  [
+   1804,
+   "\\cpara{Offers, with ``might'' and ``maybe'', care for kin as the start of sympathy. The primatologist Frans de Waal had argued along these lines. A 2008 review by de Waal proposes empathy, in which perceiving another's state ``automatically activates shared representations causing a matching emotional state in the observer'', as ``an ideal candidate mechanism'' for altruism toward others in distress. It calls the mechanism ``probably as old as mammals and birds'' and says it fits ``predictions from kin selection and reciprocal altruism theory''.}"
+  ],
+  [
+   2419,
+   "\\cpara{Answers, with a shrug and no evidence, why evolution did not build an abstract desire for kin to get what they want: the mirroring machinery already existed, so sympathy was a short step. Preston and de Waal's ``Perception-Action Model'' (2002) rests on the same machinery: ``the perception of an object's state activates the subject's corresponding representations''.}"
+  ],
+  [
+   2950,
+   "\\cpara{Adds reciprocity to kin, the two standard evolutionary sources of help to others (see the note on Trivers in ``The True Prisoner's Dilemma''). The ``elaboration'' for reputations is what biologists call indirect reciprocity, modelled by Nowak and Sigmund (\\textsc{Nature}, 1998), in which cooperation pays because it earns ``the image of a valuable community member''.}"
+  ],
+  [
+   3139,
+   "\\cpara{Suggests, with ``I think'', that the most formidable human is more often the one with the most friends than the strongest or the smartest. ``The Gift We Give to Tomorrow'', later in this book, makes the same point.}"
+  ],
+  [
+   3375,
+   "\\cpara{Argues that a general urge, smiling when friends smile, stores up more favors than a specific one such as the vampire bat's. The bat example has support. Several authors had argued that the bats' food sharing was kept up by kinship alone; a 2013 experiment found that food received predicted food given and was ``8.5 times more important than relatedness'' (Carter and Wilkinson, \\textsc{Proceedings of the Royal Society B}).}"
+  ],
+  [
+   3703,
+   "\\cpara{Adds that wincing when friends wince keeps one from angering them.}"
+  ],
+  [
+   3839,
+   "\\cpara{A joke with a serious point: sympathy must be able to switch off for designated enemies.}"
+  ],
+  [
+   3975,
+   "\\cpara{Hedged three times (``I'm not sure of this'', ``it does look to me'', ``my admittedly limited knowledge of anthropology''): sympathy is on by default, and it is eating strangers that needs an explicit rule. Later evidence bears on the question without settling it. In games played in 15 small-scale societies, fairness toward anonymous others rose with market integration, and the authors concluded that ``modern prosociality is not solely the product of an innate psychology, but also reflects norms and institutions'' (Henrich and colleagues, \\textsc{Science}, 2010). Fair offers in a game are not the same thing as the post's sympathy.}"
+  ],
+  [
+   4460,
+   "\\cpara{Describes the pain of a bystander whose sympathy stays on for both sides of a war.}"
+  ],
+  [
+   4784,
+   "\\cpara{Sums up the human case: sympathy ties minds together by feeling what the other feels, not by a term in the utility function for the other's desires.}"
+  ],
+  [
+   5069,
+   "\\clogic{Stated as fact, and in 2009 it was a disputed hypothesis. Jacob and Jeannerod had questioned ``the motor theory of social cognition'' in 2005 (\\textsc{Trends in Cognitive Sciences}). Even the narrower claim, that mirror neurons underlie the understanding of actions, was challenged in 2009: a review found ``no evidence from monkey data that directly tests'' it (Hickok, \\textsc{Journal of Cognitive Neuroscience}). A 2015 review of empathy research still lists ``the causal link of empathy to our presumed mirror neuron system'' among the issues that ``might obscure our understanding'' of empathy (Lamm and Majdand\\v{z}i\\'c).}"
+  ],
+  [
+   5261,
+   "\\cpara{Turns to minds built differently: empathy is one way of predicting others, not the only one.}"
+  ],
+  [
+   5365,
+   "\\cpara{Says a brain cannot quickly reassign cortex, for example visual cortex to hearing while in a dark room. The evidence fits the hedge ``quickly''. Sighted adults blindfolded for five days showed visual-cortex responses to touch that were ``no longer present 24 hours after blindfold removal'' (Merabet and colleagues, \\textsc{PLoS One}, 2008). Such reassignment happens, but over days.}"
+  ],
+  [
+   5647,
+   "\\cpara{Contrasts an AI, which can move computing resources between tasks at once.}"
+  ],
+  [
+   5991,
+   "\\cpara{Recommends that an AI predict another mind with a separate instance, perhaps running different algorithms, rather than by putting its own mind in a similar state. This is advice about design (``don't use mirror neurons''), not a report on any existing system.}"
+  ],
+  [
+   6372,
+   "\\cpara{Restates the alternative to empathy: a mind that understands intelligence abstractly can model another mind directly, as ``A hypothesis like any other hypothesis, just a little bigger.''}"
+  ],
+  [
+   6813,
+   "\\cpara{Applies this to sympathy: a paperclip maximizer that needs humans would model their reactions and act to make them favorable, without feeling anything for them.}"
+  ],
+  [
+   7246,
+   "\\cpara{Says a paperclip maximizer would see humans as machines with buttons, and could not ``feel happy'' at a human smile, because ``happiness'' belongs to reinforcement learning and not to expected utility maximization. That last claim is asserted without argument. The paragraph ends with the maximizer displaying a smile to manipulate humans.}"
+  ],
+  [
+   7970,
+   "\\cpara{Grants that such a mind is hard to imagine, since it works like no mode of a human brain. The link is to ``The Design Space of Minds-in-General'', earlier in this book.}"
+  ],
+  [
+   8244,
+   "\\cpara{Offers an exercise: to see a human as an unsympathetic mind does, picture yourself as a useful machine with levers, such as a woodsaw, and not a human-shaped one.}"
+  ],
+  [
+   8900,
+   "\\cpara{Offers natural selection as an unsympathetic optimization process. The anesthetic example is the one in ``An Alien God'', earlier in this book.}"
+  ],
+  [
+   9251,
+   "\\cpara{Refers to ``In Praise of Boredom'', posted the day before and not in this book, which names ``sympathy, boredom and consciousness'' as its top three. Adds, hedged (``not impossible'', ``could''), that other evolved species may have sympathy, since mirror neurons, having happened once, could happen again.}"
+  ],
+  [
+   9685,
+   "\\cfact{Neurons with the mirror property were already known outside the primates. In swamp sparrows, a 2008 study found neurons that respond to a note sequence the bird hears and show ``nearly identical patterns of activity when the bird sings the same sequence'' (Prather and colleagues, \\textsc{Nature}). That fits the post's guess, though the birds' mirroring concerns song, not feeling.}"
+  ],
+  [
+   9699,
+   "\\cpara{The conclusion: aliens without sympathy might trade, keep treaties from fear of reprisal, and even cooperate in the Prisoner's Dilemma (the link is to the previous post in this book), but would never be friends.}"
+  ],
+  [
+   10345,
+   "\\cpara{The terms are from Orson Scott Card's \\textsc{Speaker for the Dead} (1986). There, raman are strangers ``we recognize as human, but of another species'', and varelse are those with whom ``no conversation is possible'': ``They live, but we cannot guess what purposes or causes make them act.'' The post draws the line at sympathy instead; its unsympathetic aliens can negotiate treaties, which takes conversation.}"
+  ]
+ ]
+}
