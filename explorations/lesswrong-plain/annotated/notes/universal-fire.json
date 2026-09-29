@@ -1,0 +1,89 @@
+{
+ "slug": "universal-fire",
+ "header": "\\post{Universal Fire}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/LaM5aTcXvXzwQSC2Q/universal-fire}\n",
+ "skeleton_sha": "3b786d55a63d05d945a75dc320ffda9441733b2891d6583dfaf6ac8cff072344",
+ "post_sha": "783b812cc18b2ad6cb78f4e42ada57d6dbb0d48b4c3982bdc46362d62411a498",
+ "edits": [],
+ "notes": [
+  [
+   114,
+   "\\cpara{Opens with the premise the post will reject: in a fantasy story, a match brought from Earth will not strike in a world run by magic. The story, written by de Camp with Fletcher Pratt, is ``The Roaring Trumpet'' (1940), collected in \\textsc{The Incomplete Enchanter} (1941). In Wikipedia's summary, the Norse world has its beliefs ``encoded in its basic physics: his matches won't light.''}"
+  ],
+  [
+   525,
+   "\\cpara{Grants that it is fiction and rejects the premise anyway. The story serves as a foil for a point about real laws.}"
+  ],
+  [
+   629,
+   "\\cpara{Frames Lavoisier's work, with a joke, as the discovery of how fire works, and presents phlogiston as the view it replaced.}"
+  ],
+  [
+   1317,
+   "\\cfact{By Lavoisier's time phlogiston was a chemists' theory (Stahl's, later Priestley's), not alchemy; see the note on ``Making Beliefs Pay Rent.'' For what the theory explained and what it forbade, see the notes on ``Fake Causality.''}"
+  ],
+  [
+   1331,
+   "\\cpara{Describes Lavoisier's method: weigh everything before and after, including the air, and the weight gained by the ashes turns out to be weight lost by the air.}"
+  ],
+  [
+   1862,
+   "\\cfact{The antimony case, and its explanation by the air, are older than Lavoisier. John Mayow reported in 1674 that antimony heated with a burning glass gains weight, and attributed the gain to particles taken from the air (Ramsay, \\textsc{The Gases of the Atmosphere}, 1896; Wikipedia, ``John Mayow''). I could not find the post's figures (one hour, one tenth).}"
+  ],
+  [
+   2040,
+   "\\cfact{The principle was older than Lavoisier's proof of it. Wikipedia's article on conservation of mass says that by the 18th century it ``was widely used and was an important assumption during experiments,'' and that Mikhail Lomonosov formulated it in 1756. What Lavoisier added, as the post says, was weighing everything, gases included.}"
+  ],
+  [
+   2156,
+   "\\cpara{Reports that a burning candle uses up ``vital air'' (oxygen) and produces ``fixed air'' (carbon dioxide), and that the fire goes out when the vital air is gone. The two gases were known before Lavoisier's work on combustion: Joseph Black had described fixed air, and in 1774 Priestley told Lavoisier of the gas made by heating mercury calx, which Lavoisier later named oxygen.}"
+  ],
+  [
+   2705,
+   "\\cpara{A transition that holds back the second discovery.}"
+  ],
+  [
+   2867,
+   "\\cpara{Asks the reader to forget modern biology and imagine the body as ``mysterious, incomprehensible gloop,'' to feel the surprise of what follows.}"
+  ],
+  [
+   3019,
+   "\\cfact{DNA was first isolated in 1869, by Friedrich Miescher, who called it nuclein; 1953 is the year its double-helix structure was published. The point, that the eighteenth century knew nothing of either, stands.}"
+  ],
+  [
+   3493,
+   "\\cpara{The second discovery: breathing is slow combustion. Lavoisier and Laplace compared the heat given off by a guinea pig with the heat from burning enough charcoal to make the same carbon dioxide, and concluded ``la respiration est donc une combustion''; later experiments (1789--90) used Seguin as the subject.}"
+  ],
+  [
+   3628,
+   "\\cfact{The link itself was old; what Lavoisier supplied was the chemistry and the measurements. Wikipedia's article on Lavoisier says: ``The relationship between combustion and respiration had long been recognized from the essential role which air played in both processes.'' In 1674 Mayow concluded that a candle and a small animal use up the same part of the air: shut in a vessel together, the candle went out first and the animal soon died. Joseph Black showed that animals breathe out fixed air.}"
+  ],
+  [
+   4097,
+   "\\cpara{Joins matches to life through phosphorus: matches use it, and so does ATP, the body's main carrier of chemical energy.}"
+  ],
+  [
+   4454,
+   "\\clogic{The ``thus'' joins two different properties. Phosphorus glows and ignites because it reacts with oxygen; burning it gives phosphorus pentoxide, the anhydride of phosphoric acid. ATP is built from phosphate, whose phosphorus is already fully oxidized, and the standard explanation of why life uses phosphate points to its stability: its negative charge makes phosphate compounds resist breakdown in water unless an enzyme acts (Westheimer, ``Why Nature Chose Phosphates,'' \\textsc{Science}, 1987). A 2013 review calls phosphate esters ``among the most inert compounds known.''}"
+  ],
+  [
+   4831,
+   "\\cpara{States the lesson. It needs only that matches and ATP both depend on the chemistry of phosphorus, which is true, whatever the link in the paragraph above.}"
+  ],
+  [
+   4915,
+   "\\cpara{Generalizes: rules that seem unconnected, and that we can imagine holding separately, are joined in nature. Our minds store them in separate compartments; the laws are not divided that way. This is the map-and-territory distinction applied to beliefs held apart.}"
+  ],
+  [
+   5672,
+   "\\cpara{Takes the chain one level down: phosphorus behaves as it does because of the laws governing electrons and quarks, so its chemistry cannot change unless they do.}"
+  ],
+  [
+   6013,
+   "\\cpara{Restates the opening objection as a conclusion.}"
+  ],
+  [
+   6132,
+   "\\cpara{Closes with the moral.}"
+  ]
+ ]
+}

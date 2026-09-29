@@ -1,0 +1,57 @@
+{
+ "slug": "universal-law",
+ "header": "\\post{Universal Law}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/7iTwGquBFZKttpEdE/universal-law}\n",
+ "skeleton_sha": "29d27b8dd80ff8345c2563d80471b372f1af2512236c8f8004b8ae9984ba34af",
+ "post_sha": "194e6fbcc83d8d7ce40615716ef59e0796fb3e9cb64160731ba95d0ecd4147b6",
+ "edits": [],
+ "notes": [
+  [
+   112,
+   "\\cpara{Recalls the previous post's unification of breathing and burning, and calls it startling because it joined the realm of matter with ``the sacred realm of life.'' The link was older than Lavoisier; see the notes on ``Universal Fire.''}"
+  ],
+  [
+   455,
+   "\\cpara{Calls Newton's unification of the planets and the falling apple a greater shock than Lavoisier's, and credits it with the idea of a law that holds everywhere, always, with no exceptions.}"
+  ],
+  [
+   836,
+   "\\cfact{The idea is older than Newton's discovery. In \\textsc{The World}, written between 1629 and 1633, Descartes wrote: ``The rules according to which these changes take place I call the `laws of nature'.'' Wikipedia's article on scientific law traces Newton's own belief in ``absolute, universal and immutable physical laws'' to a religious view stemming from medieval ideas of divine law. Newton's gravitation gave the idea its most striking example.}"
+  ],
+  [
+   1005,
+   "\\cpara{Explains why universal laws seem implausible: everyday categories are leaky, and a buffalo may have three legs.}"
+  ],
+  [
+   1353,
+   "\\cpara{Says that the one place people want rules without exceptions is morality, and that even there they accept exceptions under threat; so a rule with no exceptions seems fanatical. Offered with ``it seems.''}"
+  ],
+  [
+   2285,
+   "\\cpara{Answers the charge of rigidity: the universe itself is rigid. ``As far as we know,'' conservation of momentum has never been violated.}"
+  ],
+  [
+   2711,
+   "\\cpara{Separates models from laws. When a model fails, its replacement is again exceptionless, and turns out to have governed events all along, as general relativity governed Mercury's orbit before anyone knew it. The paragraph ends by conceding that this too is what ``our new model tells us.''}"
+  ],
+  [
+   3789,
+   "\\cpara{Distinguishes 80 per cent confidence that a law is exceptionless from a law that holds 80 per cent of the time. The distinction is correct.}"
+  ],
+  [
+   4177,
+   "\\cpara{Claims that one reason the Greeks did not discover science is that they did not think experiments could be generalized: a contrived setup would give a ``monstrous'' result that said nothing about how things really work.}"
+  ],
+  [
+   4511,
+   "\\cfact{Given without a source, and some Greek work sits uneasily with it. Galen, a Greek physician of the second century, tied off the nerve of a squealing pig to show that it controlled the voice, and tied off ureters to test theories of kidney and bladder function. Galen took the anatomy of animals as a guide to the human body (Wikipedia, ``Galen'').}"
+  ],
+  [
+   4525,
+   "\\cpara{Closes by offering, as ``the Tao,'' three lines on the universe's point of view: since the beginning, nothing unusual has happened.}"
+  ],
+  [
+   4855,
+   "\\cfact{The lines carry no attribution. I could not find them in any source earlier than this post, so they appear to be the author's own.}"
+  ]
+ ]
+}

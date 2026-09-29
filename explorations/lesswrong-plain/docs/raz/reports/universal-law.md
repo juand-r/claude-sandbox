@@ -72,3 +72,6 @@ None.
   named): judged "any essay does that" (STANDARDS 2.4(4)).
 - Reserved-word flags: "never" appears only in paraphrase of the post's hedged "not one
   single violation" with the post's "As far as we know" kept.
+- raz_check flags the honest section's quotation of the verse ("Since the beginning / not
+  one unusual thing / has ever happened."): the slashes mark the original's line breaks;
+  the words match the original.

@@ -181,3 +181,54 @@ Why: STANDARDS 2.5: the Dumas-Mallet evidence is given in full in The Beauty of 
 - Before: \cpara{The diagnosis, from the previous day's post, ``The Beauty of Settled Science'' (24 March 2008), which said that ``Newsworthy'' science ``is often based on the thinnest of evidence and wrong half the time.'' Later evidence supports the point. In a 2017 study of 156 biomedical association studies covered by newspapers, ``Only 48.7\%'' were confirmed by later meta-analyses, and the authors conclude that ``Journalists preferentially cover initial findings although they are often contradicted by meta-analyses'' (Dumas-Mallet and colleagues, \textsc{PLoS ONE}).}
 - After: \cpara{The diagnosis, from the previous day's post, ``The Beauty of Settled Science'' (24 March 2008), which said that ``Newsworthy'' science ``is often based on the thinnest of evidence and wrong half the time.'' Later evidence supports the point; see the notes on that post.}
 
+
+## annotated/posts/the-world-an-introduction.tex
+
+Why: Fair reading: the introduction attributes the argument about third-person models to Nagel and Chalmers and poses ``ditch physicalism'' as a question; Nagel's view is information, not an error.
+
+- Before: \cfact{Nagel, one of the two philosophers named, declined that conclusion.
+- After: \cfact{The introduction does not say Nagel drew this conclusion, and Nagel did not.
+
+
+## annotated/afterwords/the-world-an-introduction.tex
+
+Why: Same; ``popular'' is not contradicted by a minority share, so that point stays as information only.
+
+- Before: More important, the question it then asks, whether to ``ditch physicalism,'' is not the conclusion of one of the two philosophers it names. Nagel wrote that ``It would be a mistake to conclude that physicalism must be false''; the argument against physicalism is Chalmers's.
+- After: The question it then asks, whether to ``ditch physicalism,'' is posed as a question; a reader should know that Nagel himself did not draw that conclusion (``It would be a mistake to conclude that physicalism must be false''), and that the argument against physicalism is Chalmers's.
+
+- Before: A few statements about who held which view need adjusting.
+- After: A few statements about who held which view need adding to.
+
+- Before: In short: an introduction that sets out two debates fairly and gives readers the means to check the physics sequences, with three attributions to adjust: Nagel did not conclude against physicalism, consciousness-caused collapse was von Neumann's and Wigner's view rather than Bohr's, and many-worlds, though popular, was a minority view in the polls available.
+- After: In short: an introduction that sets out two debates fairly and gives readers the means to check the physics sequences; the view that consciousness causes collapse was von Neumann's and Wigner's rather than Bohr's.
+
+
+## honest/sections/the-world-an-introduction.tex
+
+Why: Same.
+
+- Before: \nb{Nagel's own paper says: ``It would be a mistake to conclude that physicalism must be false.'' The argument against physicalism is Chalmers's.}
+- After: \nb{Nagel himself did not draw this conclusion: ``It would be a mistake to conclude that physicalism must be false.'' The argument against physicalism is Chalmers's.}
+
+
+## annotated/afterwords/universal-fire.tex
+
+Why: The post does not deny earlier work, it names no one else; the phosphorus slip's point survives, so it stays out of the verdict.
+
+- Before: The history gives Lavoisier sole credit for findings that had older roots.
+- After: The history is told through Lavoisier alone, although the findings had older roots.
+
+- Before: told through a history that gives Lavoisier sole credit for findings with older roots, and joined to the body through a property of phosphorus other than the one that suits it to ATP.
+- After: told through a history that names Lavoisier alone for findings with older roots.
+
+
+## annotated/afterwords/universal-law.tex
+
+Why: Trivia.
+
+- Before: 
+
+The closing lines are offered as ``the Tao'' with no attribution. I could not find them before this post, so they appear to be the author's own.
+- After: 
+

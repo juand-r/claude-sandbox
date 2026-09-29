@@ -109,3 +109,5 @@ the structure, not of DNA).
   should check: the post never says no one had the idea before; it simply mentions no one
   else.
 - The DNA date note: a slip whose point survives; kept out of the In short line.
+- raz_check flags "his" in the first cpara: it is inside Wikipedia's quoted summary and
+  refers to the character Harold Shea.

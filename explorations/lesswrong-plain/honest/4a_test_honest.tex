@@ -1,0 +1,43 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage[left=30mm,right=30mm,top=25mm,bottom=28mm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+% \nb{...}: the editor's corrections, outside facts and judgments.
+% Change this one definition to restyle every note.
+\definecolor{nbcolor}{HTML}{8B1A1A}
+\newcommand{\nb}[1]{{\color{nbcolor}[n.b.\ #1]}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6\baselineskip}
+
+% \honest{title}{author}{year}: one section per post.
+\newif\ifjustheaded
+\newcommand{\honest}[3]{%
+  \ifjustheaded\global\justheadedfalse\else\clearpage\fi
+  \phantomsection\addcontentsline{toc}{subsection}{#1}%
+  {\noindent\Large #1\par}\vspace{0.3ex}
+  {\noindent\small #2, #3. Retold plainly.\par}\vspace{1.5ex}}
+
+% Book and sequence headings, with contents entries: book = part, sequence = section.
+\newcommand{\bookhead}[1]{%
+  \clearpage\phantomsection\addcontentsline{toc}{part}{#1}%
+  \vspace*{0.3\textheight}{\noindent\huge #1\par}}
+\newcommand{\sequencehead}[1]{%
+  \clearpage\phantomsection\addcontentsline{toc}{section}{#1}%
+  {\noindent\LARGE #1\par}\bigskip\global\justheadedtrue}
+
+\title{LessWrong, Honestly}
+\author{The posts of Rationality: A--Z, and seven later posts,\\ retold by their authors as if they had to say exactly what each part does}
+\date{}
+
+\begin{document}
+\input{sections/the-quotation-is-not-the-referent}
+\input{sections/qualitatively-confused}
+\input{sections/think-like-reality}
+\input{sections/chaotic-inversion}
+\input{sections/reductionism}
+\end{document}

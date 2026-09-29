@@ -1,0 +1,117 @@
+{
+ "slug": "the-world-an-introduction",
+ "header": "\\post{The World: An Introduction}{Rob Bensinger}{2015}{https://www.lesswrong.com/posts/ujoJSat3ypzp3tmpj/the-world-an-introduction}\n",
+ "skeleton_sha": "68309e997ae0b28e7fdb26613d4d4df0bb7e4c9a65ebaf6db7d7338ae120667b",
+ "post_sha": "53acc8ea20c59f6d431aa61de88d7b974790dcbc6b2f7e34c0ce4b98aa00f3f1",
+ "edits": [],
+ "notes": [
+  [
+   133,
+   "\\cpara{Opens the fourth book by marking a change of subject: earlier books cited science to explain human behavior, and this one turns to nature itself and humanity's place in it.}"
+  ],
+  [
+   420,
+   "\\cpara{Gives the book's method by analogy with the third book. There, humans as goal-seeking systems were compared with evolution and artificial intelligence; here, humans as physical systems are compared with processes that are not mind-like.}"
+  ],
+  [
+   733,
+   "\\cpara{States the book's starting point, that we are made of parts that are not human, and puts it in a line from an interview with Daniel Dennett, cited to Dennett's \\textsc{Freedom Evolves}.}"
+  ],
+  [
+   1114,
+   "\\cpara{Previews the book: three sequences on how the human world relates to physics, two on particular debates (consciousness and the measurement problem), and a closing sequence and essay on scientific practice.}"
+  ],
+  [
+   1951,
+   "\\cpara{Announces background on the two debates, and lets the reader skip it.}"
+  ],
+  [
+   2372,
+   "\\cpara{Opens the consciousness debate with Nagel's question: better models of bat behavior or neurology may not tell us what echolocation feels like to the bat. Offered as ``it isn't obvious.''}"
+  ],
+  [
+   2661,
+   "\\cpara{Adds the zombie question: could an unconscious automaton match all of a conscious agent's behavior?}"
+  ],
+  [
+   2889,
+   "\\cfact{The zombies of the philosophical argument are defined more strictly. The \\textsc{Stanford Encyclopedia of Philosophy} (``Zombies'') describes them as ``exactly like us in all physical respects,'' and adds that for the argument against physicalism ``it is not enough for them to be behaviorally and functionally like normal human beings: plenty of physicalists accept that merely behavioral or functional duplicates of ourselves might lack qualia.'' The paragraph after next states the stronger version (``No matter how much we know about a physical system'').}"
+  ],
+  [
+   3072,
+   "\\cpara{Turns the bat case on humans: aliens with a perfect predictive model of our behavior might still not know what redness feels like to us.}"
+  ],
+  [
+   3387,
+   "\\cpara{Names Nagel and Chalmers as holding that third-person models can never fully capture first-person experience, and gives Chalmers's weaker thesis: consciousness is a ``further fact'' beyond the physical facts, without immaterial souls breaking physical law.}"
+  ],
+  [
+   3981,
+   "\\cpara{Reports that many find the argument persuasive (footnote 4 gives survey figures) and asks whether we should give up physicalism.}"
+  ],
+  [
+   4173,
+   "\\cfact{The introduction does not say Nagel drew this conclusion, and Nagel did not. Nagel's paper says ``it seems that such a result is impossible,'' but also: ``It would be a mistake to conclude that physicalism must be false.'' It would be ``truer to say that physicalism is a position we cannot understand because we do not at present have any conception of how it might be true.'' The argument against physicalism is Chalmers's; the \\textsc{Stanford Encyclopedia} describes Chalmers's 1996 book as ``The most systematic use of the zombie idea against physicalism.''}"
+  ],
+  [
+   4187,
+   "\\cpara{Leaves the question open, as an introduction may: the argument should not be dismissed for sounding strange, and ``Physicalism 201'' will test it against a technical account of explanation and evidence.}"
+  ],
+  [
+   4636,
+   "\\cpara{Summarizes the standard theory: complex amplitudes, the Born rule for probabilities, deterministic evolution under the Schrödinger equation, and superpositions.}"
+  ],
+  [
+   5159,
+   "\\cpara{States the measurement problem: the Schrödinger equation seems to govern everything until someone looks, and then the Born rule takes over, as though the laws were suspended for ``observations.''}"
+  ],
+  [
+   5643,
+   "\\cpara{The passage is from John Bell's ``Against `measurement','' \\textsc{Physics World}, August 1990, which the introduction does not cite. The wording matches apart from two small differences that do not change the meaning.}"
+  ],
+  [
+   6104,
+   "\\cpara{Says the combined rules predict well and that the open question, when the Born rule applies and what it means, has produced many interpretations.}"
+  ],
+  [
+   6399,
+   "\\cpara{Describes three strands attributed to the Copenhagen school: consciousness causes collapse; physics is about our knowledge (Heisenberg); and ``shut up and calculate.''}"
+  ],
+  [
+   6833,
+   "\\cfact{This view is usually traced to John von Neumann and Eugene Wigner. The \\textsc{Stanford Encyclopedia}'s entry on the Copenhagen interpretation says that their positions ``are usually associated with the Copenhagen Interpretation,'' but ``such views were definitely not Bohr's.''}"
+  ],
+  [
+   7082,
+   "\\cfact{The slogan is David Mermin's, from a \\textsc{Physics Today} column of April 1989: ``If I were forced to sum up in one sentence what the Copenhagen interpretation says to me, it would be `Shut up and calculate!'\\,'' In 2004 Mermin put forward ``the hypothesis that I was the first to use `shut up and calculate' in the context of quantum foundations''; the phrase is often credited to Feynman. Either way it is a later summary, not a motto of the founders.}"
+  ],
+  [
+   7150,
+   "\\cpara{Says the quantum sequence uses the controversy to test earlier ideas (map and territory, mysterious answers, Bayesianism, Occam's razor). It also says plainly that neither Yudkowsky nor the introduction's author is a physicist, and offers outside sources so that readers can check the arguments.}"
+  ],
+  [
+   7522,
+   "\\cpara{Recommends Tegmark's book, and separates Tegmark's claim that all consistent mathematical structures exist from the more mainstream multiverses of eternal inflation and Everett's interpretation.}"
+  ],
+  [
+   8076,
+   "\\cpara{Says that many-worlds is popular among physicists but that a number reject it or stay agnostic, and recommends introductions to the debate.}"
+  ],
+  [
+   8388,
+   "\\cfact{Given without a source. The polls I found are small. In Max Tegmark's informal poll at a 1997 conference, many-worlds came second to Copenhagen. In a 2011 poll of 33 participants at a conference on quantum foundations, 18 per cent named Everett's interpretation their favorite and 42 per cent Copenhagen (Schlosshauer, Kofler and Zeilinger, 2013). In both, many-worlds was popular and held by a minority; in the second, an information-based view (24 per cent) also ranked above it.}"
+  ],
+  [
+   9049,
+   "\\cpara{Recommends a book for physical intuition, and ends with a reassurance: most of physics, like most of cognitive science, can be understood without settling its deepest questions.}"
+  ],
+  [
+   9802,
+   "\\cpara{The figures match the 2009 PhilPapers survey: 56.5, 27.1 and 16.4 per cent of 931 respondents. On zombies, 35.6 per cent chose ``conceivable but not metaphysically possible'' and 16.0 per cent ``inconceivable,'' together 51.6 per cent, so ``Most philosophers reject'' holds by a narrow margin.}"
+  ],
+  [
+   10143,
+   "\\cfact{Robert Kirk put zombies forward in 1974 as a counterexample to physicalism, and later argued that they are not even conceivable (\\textsc{Stanford Encyclopedia}, ``Zombies'': ``Kirk 1974a, 1974b''; ``Kirk 2005, 2008, 2013'').}"
+  ]
+ ]
+}
