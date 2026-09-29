@@ -1,0 +1,93 @@
+{
+ "slug": "purchase-fuzzies-and-utilons-separately",
+ "header": "\\post{Purchase Fuzzies and Utilons Separately}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/3p3CYauiX8oLjmwRF/purchase-fuzzies-and-utilons-separately}\n",
+ "skeleton_sha": "346989cee96435890947cf758a8b0397ff94b426cef269abe38ae23a4ed82da0",
+ "post_sha": "a15427ebeb7605776574c76ced1c4b7d27960b0975677a672e6cf847288fa90b",
+ "edits": [],
+ "notes": [
+  [
+   202,
+   "\\cpara{Quotes two passages of the previous day's post, ``Money: The Unit of Caring'' (31 March 2009): the lawyer at the soup kitchen, and the permission to volunteer for motivation if money is given too. Our notes on that post discuss the example.}"
+  ],
+  [
+   914,
+   "\\cpara{The example: a small good deed from the author's own life, telling a household that their car's trunk was open.}"
+  ],
+  [
+   1541,
+   "\\cpara{Lists four motives for such an act and accepts them all, ``Just so long as people get helped.''}"
+  ],
+  [
+   1787,
+   "\\cfact{The last motive has a name in economics. James Andreoni's models of giving (1989, 1990) assume that people get a ``warm glow'' from giving, and Andreoni's 1990 paper argued that this ``impure altruism'' is ``more consistent with observed patterns of giving'' than pure altruism.}"
+  ],
+  [
+   2005,
+   "\\cpara{Applies the previous post's question to the author, who works for a nonprofit: was this minute the best use of the author's time?}"
+  ],
+  [
+   2361,
+   "\\cpara{Gives two defenses, each flagged by the post itself: the deed may restore willpower (``or perhaps, obvious rationalization''), and it may keep the author altruistic (``I suspect,'' untested).}"
+  ],
+  [
+   2538,
+   "\\cfact{For information, with hindsight. The link is to ego depletion, the theory that self-control uses up a limited resource. In 2016 a preregistered replication in 23 laboratories (2,141 people) found an ego-depletion effect of $d = 0.04$, with a confidence interval that included zero (Hagger and colleagues). A study published the year after this post bears on the author's claim more directly: people held a 5 lb.\\ weight longer ``after donating to charity'' (Gray, 2010). I did not check whether that study has been replicated.}"
+  ],
+  [
+   2733,
+   "\\cfact{For information: research on ``moral licensing'' has found a short-term pattern in the other direction. A meta-analysis of 91 studies estimated that after acting morally people are more likely to behave in ways that are ``immoral, unethical, or otherwise problematic'' ($d = 0.31$), while noting that published studies showed larger effects than unpublished ones (Blanken and colleagues, 2015). The post's suspicion concerns a habit over time, and it is hedged.}"
+  ],
+  [
+   2826,
+   "\\cpara{Raises the objection: benefits to oneself do not make an act a good deed.}"
+  ],
+  [
+   2971,
+   "\\cpara{Answers by calling the act a ``selfish good deed,'' whose benefits to others are indirect (``or so I believe''), and turns the charge of ulterior motive back on itself. The label agrees with ``Circular Altruism'' (22 January 2008), linked at the end of this post: ``If you're doing it for the spiritual benefit, that is nothing but selfishness.''}"
+  ],
+  [
+   3533,
+   "\\cpara{Reports that the label does not spoil the effect, for the author: the brain still ``feels like it's done its wonderful good deed for the day.'' This is one person's report, and the next paragraph says so. It bears on a criticism of warm-glow theory, that the glow requires believing one's motive is altruistic (Wikipedia, ``Warm-glow giving,'' citing Jon Elster, 2011).}"
+  ],
+  [
+   3977,
+   "\\cpara{Hedges the report: different things restore willpower for different people. The link is to the author's ``Chaotic Inversion'' (29 November 2008), on the author's own trouble with ``hour-by-hour productivity and willpower maintenance.''}"
+  ],
+  [
+   4367,
+   "\\cpara{The thesis, offered to readers for whom ``selfish good deeds still work.'' Steven Landsburg had drawn the same line in \\textsc{Slate} in 1997: ``You give to charity because you care about the recipients, or you give to charity because it makes you feel good to give.'' Landsburg concluded that a donor who cares about recipients should concentrate on the worthiest charity; the post adds that the feeling can be bought separately, and cheaply. The reason given here, that doing both at once does neither well, is argued in the paragraph beginning ``But the main lesson.''}"
+  ],
+  [
+   4707,
+   "\\cpara{Introduces the advice, addressed to a billionaire.}"
+  ],
+  [
+   5867,
+   "\\clogic{This bullet takes a side in a live question about giving: how far to trust explicit expected-value estimates. For the other side: GiveWell's Holden Karnofsky argued in 2011 against deciding by ``fully explicit expected-value formulas'' that have ``significant room for error,'' and preferred to give ``where we have strong evidence that donations can do a lot of good rather than where we have weak evidence that donations can do far more good.'' That preference is close to the ambiguity aversion the bullet rules out. The link on ``scope insensitivity'' is to the Book I post; our notes there discuss its evidence.}"
+  ],
+  [
+   6041,
+   "\\cpara{Sets a ratio: spend at least 20 times as much on utilons as on fuzzies. The number is offered as the author's judgment (``say,'' ``seems reasonable''), and the arithmetic holds: 1 part in 21 is about 5 percent. It adds one condition, that the fuzzy act should help and not harm.}"
+  ],
+  [
+   6470,
+   "\\cpara{Sets status apart from altruism: a showy donation is to be booked under ``impressing friends.''}"
+  ],
+  [
+   6828,
+   "\\cpara{The argument for buying separately. It holds if the best source of each good yields little of the others, and the paragraph asserts that with two estimates marked ``probably'': a \\$10 million check to a breast-cancer charity gives far less glow than helping one person in person, and ``at least a thousand'' charities could do ``orders of magnitude'' more good with the money. No figures are given.}"
+  ],
+  [
+   7710,
+   "\\cfact{For information: GiveWell had been founded in 2007 to assess the effectiveness of charities, the comparison this sentence calls for (Wikipedia, ``GiveWell'').}"
+  ],
+  [
+   7881,
+   "\\cpara{Scales the advice down for ordinary donors: cheap fuzzies from a charity with vivid, direct beneficiaries, a soup kitchen or holding doors, validated by money given for utilons, and status from clothes. The soup kitchen of the previous post returns, now as a source of fuzzies.}"
+  ],
+  [
+   8489,
+   "\\cpara{Ends with the rule from ``Circular Altruism'' (2008), which the book prints in shortened form as ``Feeling Moral.''}"
+  ]
+ ]
+}

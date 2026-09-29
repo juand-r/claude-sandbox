@@ -124,3 +124,32 @@ Why: Same: the link is implicit, not missing.
 - Before:  \nb{The science case was explained by features of the task, such as long horizons and no feedback. The post does not show how these follow from group size.}
 - After: 
 
+
+## annotated/afterwords/money-the-unit-of-caring.tex
+
+Why: The post qualifies its title claim itself ("up to a positive scalar factor"; society is "not sane"), and "the only way that anything ever gets done" is essay hyperbole whose point, the lawyer example, stands; both stay in the notes as information.
+
+- Before: The title claim is stated more broadly than the argument supports. Omohundro's rule is about one agent's budget. Applied to a society, money measures caring weighted by how much money each person has, as economists who measure benefits in money acknowledge. The post concedes that society is not sane, and later narrows the claim to relative caring within one person's spending, but the opening sentence, that money ``is the measure of how much society cares about something,'' stands as written.
+
+The claim that specialization and trade are ``the only way that anything ever gets done in this world'' is also broader than its support. Benkler documented large projects built from unpaid contributions of a few minutes each, such as NASA's Clickworkers. Benkler's condition, that the work can be split into small pieces, leaves the lawyer example standing, but not the general claim.
+- After: The post narrows its title claim itself, to caring measured ``up to a positive scalar factor'' in a society it calls not sane; the notes add how economists handle the same weighting by wealth, and Benkler's cases of unpaid work split into small pieces.
+
+- Before: along lines Singer and Unger had drawn before, set inside larger claims, that money measures society's caring and that specialization is the only way anything gets done, which are stated more broadly than the argument supports.
+- After: along lines Singer and Unger had drawn before.
+
+
+## annotated/posts/money-the-unit-of-caring.tex
+
+Why: The post qualifies its title claim itself ("up to a positive scalar factor"; society is "not sane"), and "the only way that anything ever gets done" is essay hyperbole whose point, the lawyer example, stands; both stay in the notes as information.
+
+- Before: \clogic{Loosely stated for a society. The post later says
+- After: \clogic{The post later says
+
+
+## annotated/afterwords/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Hedges carry: the premise is marked "probably"; the missing figures stay in the Response.
+
+- Before: resting on the author's own experience of willpower, offered as such, and on a premise, marked ``probably'' and given no figures, that the best sources of warm feelings and of good outcomes lie far apart.
+- After: resting on the author's own experience of willpower, offered as such, and on a hedged premise that the best sources of warm feelings and of good outcomes lie far apart.
+

@@ -1,0 +1,113 @@
+{
+ "slug": "money-the-unit-of-caring",
+ "header": "\\post{Money: The Unit of Caring}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/ZpDnRCeef2CLEFeKM/money-the-unit-of-caring}\n",
+ "skeleton_sha": "9026f16b43f15bb0d4a9024a6ae8a6f38a6725671d19a6582db2378e1cef5cbd",
+ "post_sha": "25b7176fef3ba7ba3e0f71fa2c3f93032ca0a558fb257f4a661fa13a0b3a7471",
+ "edits": [],
+ "notes": [
+  [
+   135,
+   "\\cpara{Credits Steve Omohundro with the rule that a rational agent's resources should bring equal marginal benefit in every use. Omohundro's paper ``The Nature of Self-Improving Artificial Intelligence'' (2007, revised 2008) calls it ``The Resource Balance Principle'' and describes it as ``a generalization of related principles in economics.'' The link goes to the author's own post ``Economic Definition of Intelligence?'' (29 October 2008), which reports Omohundro's point.}"
+  ],
+  [
+   680,
+   "\\cpara{Draws the conclusion: in any such system there is a common currency, ``expected utilons,'' by which everything worth doing can be measured.}"
+  ],
+  [
+   957,
+   "\\cpara{Moves from a single agent to a whole society, and names the society's currency: money.}"
+  ],
+  [
+   1094,
+   "\\clogic{The post later says that money measures caring only ``up to a positive scalar factor,'' and that some people spend less on everything. When spending is added up across people, each person's caring counts in proportion to their money. Economists who measure benefits in money make the same point: without correction, ``people with greater ability to pay receive a higher weight'' (Wikipedia, ``Cost--benefit analysis,'' summarizing Boardman and colleagues).}"
+  ],
+  [
+   1108,
+   "\\cpara{Calls the point ``brutal yet obvious'' and says that many are ``motivated to deny'' it. No one who denies it is named.}"
+  ],
+  [
+   1191,
+   "\\cpara{Concedes that society is not ``intelligent, benevolent, and sane.'' So money measures what a society does care about, not what it ought to care about.}"
+  ],
+  [
+   1371,
+   "\\cpara{Links the point to ``Rationality: Common Interest of Many Causes'' (29 March 2009) and says that charities in general wish donors understood it. The support offered is the author's conversations with ``others in the nonprofit world.''}"
+  ],
+  [
+   1801,
+   "\\cpara{Names the behaviour the post addresses: people who would rather give time or goods than money. It is offered as common observation, without figures.}"
+  ],
+  [
+   2068,
+   "\\cpara{Grants the feeling from the author's own case: spending money feels like ``losing hit points.'' Behavioural economists had described this. Prelec and Loewenstein (1998) wrote that people ``often experience an immediate pain of paying.''}"
+  ],
+  [
+   2541,
+   "\\cpara{The central example. For one extra hour of the lawyer's pay to buy five hours of kitchen work, the lawyer must earn about five times the hired worker's wage. The post calls the puzzle ``very, very old''; I could not trace it in economics before this post. The nearest earlier statement I found is Peter Unger's in \\textsc{Living High and Letting Die} (1996): a law professor who could ``earn far more at a top corporate firm and, while being less fulfilled, also donate the lion's share'' of the income. I read Unger's words as quoted by Jeff Kaufman (``History of `Earning to Give','' 2012), not in the book.}"
+  ],
+  [
+   2808,
+   "\\cpara{Names the principles behind the example. The example needs only the simplest: an hour of the lawyer's pay buys more kitchen work than an hour of the lawyer's own labour. Comparative advantage, from Ricardo's \\textsc{On the Principles of Political Economy and Taxation} (1817), adds that this can hold even if the lawyer would also be the better kitchen worker.}"
+  ],
+  [
+   3170,
+   "\\cpara{Restates the rule: to get something done, pay full-time specialists. The word ``grownups'' adds no reason.}"
+  ],
+  [
+   3345,
+   "\\cpara{States two exceptions: people who cannot sell more of their time, and a specialist's own skill given in a large block. In the second case the lawyer does legal work for the kitchen, not kitchen work.}"
+  ],
+  [
+   3812,
+   "\\clogic{For information, with hindsight: an argument like this one became known in effective altruism as ``earning to give.'' In 2015 the career adviser 80,000 Hours, which had promoted it, wrote that ``only a small proportion of people should earn to give long term,'' because effective altruism organizations were reporting that they were ``more talent-constrained than money-constrained.'' That is this exception, a charity that needs the specialist rather than the specialist's money, reported as common.}"
+  ],
+  [
+   4109,
+   "\\cpara{Suggests, with ``may,'' that this failure of understanding could be enough ``by itself'' to prevent collective action in groups larger than 40 people. No evidence is given. The link is to the previous day's post, ``Helpless Individuals,'' which gives several reasons why individuals do not fund science, among them ``You can't volunteer; it's a job for specialists.''}"
+  ],
+  [
+   4615,
+   "\\cpara{States the thesis in its strongest form: specialization and trade are the only way anything gets done, and money is ``the common currency of caring.''}"
+  ],
+  [
+   4794,
+   "\\clogic{Overstated. Yochai Benkler's ``Coase's Penguin'' (\\textsc{Yale Law Journal}, 2002) describes large projects done by unpaid volunteers outside markets and firms. In one, NASA's Clickworkers, volunteers ``each working for a few minutes here and there'' marked craters on Mars; the project reported their combined marks ``virtually indistinguishable from the inputs of a geologist with years of experience in identifying Mars craters.'' Benkler's condition is that the work can be split into small pieces, which a block of legal work may not be. The point bears on the general claim, not on the lawyer example.}"
+  ],
+  [
+   4883,
+   "\\cpara{The author had quoted this line in ``Rationality Quotes 19'' (12 October 2008), attributed to ``Unknown.''}"
+  ],
+  [
+   4992,
+   "\\cpara{Grants that spending money hurts more than volunteering, because money is counted and our remaining hours are not. Answers with an analogy: no one raises cattle to avoid the pain of paying for beef, and the people paid feel the same pain at having less money.}"
+  ],
+  [
+   5741,
+   "\\cpara{Proposes to make giving money feel more like doing good, and attacks the view that a donor who gives ``mere money'' does not care enough to get involved. The link goes to a post by Stuart Armstrong on \\textsc{Overcoming Bias} (6 March 2009), which quotes Ezra Pound: a patron who pays an artist ``makes himself equal to the artist.''}"
+  ],
+  [
+   6398,
+   "\\clogic{Asserted without evidence. The linked post by Armstrong explains the same attitude differently, as status-seeking.}"
+  ],
+  [
+   6680,
+   "\\cpara{Allows volunteering as a way to stay motivated, provided money is given too, and suggests treating the check as ``buying the right'' to volunteer. The next day's post, ``Purchase Fuzzies and Utilons Separately,'' develops this.}"
+  ],
+  [
+   7201,
+   "\\cpara{Narrows the thesis: money measures relative caring within one person's spending, ``up to a positive scalar factor.'' If you would pay \\$5 for a burrito, then what you will not pay \\$5 for you care about less.}"
+  ],
+  [
+   7678,
+   "\\cfact{The joke answers De Beers's advertising, which introduced the slogan ``a diamond is forever'' in 1947 and in the 1980s suggested spending two months' income on an engagement ring (Wikipedia, ``Engagement ring'').}"
+  ],
+  [
+   7921,
+   "\\clogic{Peter Singer made a comparison of this kind about charity in ``Famine, Affluence, and Morality'' (1972): people ``do not feel in any way ashamed or guilty about spending money on new clothes or a new car instead of giving it to famine relief.'' Singer drew a stronger conclusion than the post does: ``we ought to give the money away, and it is wrong not to do so.''}"
+  ],
+  [
+   7935,
+   "\\cpara{Ends with the thesis as a test: someone never willing to spend any ``units of caring'' on a thing does not care about it. Read with the previous paragraph, the test compares a person's spending with their own other spending.}"
+  ]
+ ]
+}
