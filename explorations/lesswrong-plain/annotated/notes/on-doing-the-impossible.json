@@ -1,0 +1,232 @@
+{
+ "slug": "on-doing-the-impossible",
+ "header": "\\post{On Doing the Impossible}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/fpecAJLG9czABgCe9/on-doing-the-impossible}\n",
+ "skeleton_sha": "68e1b9e326e1b5044b40165d67841f52888a36d9dd85cc4cdfb073725fb76617",
+ "post_sha": "6ce778cf9c756e6c19b57232db067c6484ce92bf4c8866041aef545de00e74e7",
+ "edits": [
+  {
+   "at": 8201,
+   "del_len": 14,
+   "del_sha": "93bbe06fbcc437a73a25d3309d032d9c04cfee01d45670d2ab547b20b56f07ae",
+   "ins": "}"
+  },
+  {
+   "at": 8216,
+   "del_len": 1,
+   "del_sha": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+   "ins": ""
+  },
+  {
+   "at": 8240,
+   "del_len": 1,
+   "del_sha": "d10b36aa74a59bcf4a88185837f658afaf3646eff2bb16c3928d0e9335e945d2",
+   "ins": ""
+  },
+  {
+   "at": 8242,
+   "del_len": 2,
+   "del_sha": "2f86e39b0fe2be69df9cee8beb44e5893fc0d8bdb7963f621ce7a1053cf5dca1",
+   "ins": "\\textbf{"
+  },
+  {
+   "at": 8258,
+   "del_len": 1,
+   "del_sha": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+   "ins": "}"
+  }
+ ],
+ "notes": [
+  [
+   132,
+   "\\cpara{Opens with the advice ``Persevere,'' which the author says high achievers give, and admits to not understanding it at first.}"
+  ],
+  [
+   301,
+   "\\cpara{Reports that the author cannot work 14-hour days, and for years took this to mean a lack of perseverance.}"
+  ],
+  [
+   953,
+   "\\cpara{Lists what the author's 1998 self said in reply, ending with a guess marked ``Perhaps'': that famous scientists praise hard work because it would be ``too awful'' if it counted for less than intelligence.}"
+  ],
+  [
+   1613,
+   "\\cpara{States the turn of the post as memoir: the author understood perseverance on finding that the important problems had been overestimated.}"
+  ],
+  [
+   1800,
+   "\\clogic{Stated without a hedge. The evidence the post gives is that the problems came to seem easier: they ``have seemed to become less intimidating,'' and ``The apparent difficulty of problems may go way down.'' The post reports no problem solved, and grants that ``you don't know how much work will be left when the confusion clears.'' That supports the claim that the problems came to look less difficult. ``Overestimated the difficulty'' claims more.}"
+  ],
+  [
+   1872,
+   "\\cpara{Lists the author's first picture of the task. The early writing bears out the timescale. ``Staring into the Singularity'' (first written in 1996; the archived text has later revisions) says: ``The generally accepted estimate has been and remains 2035 - less than forty years!'' It adds that ``many, including I, think that the Singularity may occur substantially sooner.''}"
+  ],
+  [
+   2076,
+   "\\cpara{Names the failure mode: meeting a problem one does not understand by imagining an enormous resource thrown at it, big enough to feel equal to the problem. The quadrillion-dollar example is an unnamed member of ``the AI list,'' given in the author's paraphrase.}"
+  ],
+  [
+   2879,
+   "\\cpara{Applies the failure mode to the author's own start.}"
+  ],
+  [
+   3033,
+   "\\cpara{The two figures agree (55 million divided by 365 is about 150,700). They are close to UN estimates for the late 1990s, about 52 million deaths a year (Our World in Data). On these figures an hour is about 6,250 deaths.}"
+  ],
+  [
+   3566,
+   "\\cpara{Repeats, nearly word for word, the first sentence of the paragraph before.}"
+  ],
+  [
+   3705,
+   "\\cpara{The dates check. The author announced ``Coding a Transhuman AI'' on the Extropians mailing list on 7 September 1998, as ``A fairly massive tome, about halfway complete at 210K,'' with the alternative title ``The Art of Seed AIs.'' Go2Net's purchase of Hypermart was reported in August 1998 (Telecompaper).}"
+  ],
+  [
+   3868,
+   "\\cfact{Nick Bostrom's \\textsc{Superintelligence} (2014) agrees: ``This term was introduced by Eliezer Yudkowsky'' (as quoted in Wikipedia, ``Recursive self-improvement'').}"
+  ],
+  [
+   4346,
+   "\\cpara{``The Plan to Singularity'' (1999, revised 2000) matches this account: an open-source AI architecture, a line of programming languages called Flare, and a proposed Singularity Institute, which the document's later note says was created ``in July 2000.''}"
+  ],
+  [
+   4625,
+   "\\cpara{Judges the strategy in one line without saying why. The post's point does not depend on the reason.}"
+  ],
+  [
+   4684,
+   "\\cpara{Gives the change in outlook: from nothing to be done to a possible incremental path.}"
+  ],
+  [
+   4893,
+   "\\cpara{States the lesson in careful form: the ``apparent pathway'' shortened, and the problem ``looked'' less impossible. The record bears out the shortening. The 1996 essay gives 2035; the 1999 plan says ``we should plan to develop a seed AI by 2010.''}"
+  ],
+  [
+   5210,
+   "\\cpara{The second example, Friendly AI. It agrees with the book's earlier account in ``That Tiny Note of Discord,'' where the author of 1997 ``believed that any superintelligence would automatically do what was `right'\\,''.}"
+  ],
+  [
+   5523,
+   "\\cpara{Sums up the change: Friendly AI went from ignored as impossible to taken on as extremely difficult.}"
+  ],
+  [
+   5750,
+   "\\cpara{The third example: understanding intelligence precisely, once written off as impossible, then taken on, as told in ``My Bayesian Enlightenment.'' The aside about ``AIfolk'' links to ``Above-Average AI Scientists,'' which the book does not include.}"
+  ],
+  [
+   6458,
+   "\\cpara{Reconciles two trends: single problems came to seem smaller while the whole task grew, as problems moved from the ``impossible'' list to the ``to do'' list.}"
+  ],
+  [
+   6758,
+   "\\cpara{Reports seeing other AI researchers call ``Impossible!'' problems that seemed to the author ``eminently solvable.'' No problem or researcher is named, and the link goes to the Star Wars parody of four days earlier, ``Use the Try Harder, Luke.'' The reader has the author's report and the author's judgment of the problems.}"
+  ],
+  [
+   7196,
+   "\\cpara{Introduces two senses of ``impossible.''}"
+  ],
+  [
+   7404,
+   "\\cpara{Places all the author's own uses in the second sense, ``I can't see any way to do that.'' The first sense covers impossibility proved from accepted laws, as the gears example below shows.}"
+  ],
+  [
+   7504,
+   "\\cpara{The central argument, stated with its conditions: the gain comes only ``if'' you avoid blind alleys and ``if'' you have the needed ability, and what falls is the ``apparent'' difficulty.}"
+  ],
+  [
+   8141,
+   "\\cpara{Asserts that the effect is strongest on confusing problems. The reason comes two paragraphs later.}"
+  ],
+  [
+   8264,
+   "\\cpara{Sets aside problems whose impossibility follows from understanding, such as a perpetual motion machine made of gears. The link goes to the author's post on the second law of thermodynamics, which makes that argument.}"
+  ],
+  [
+   8666,
+   "\\cpara{Gives the reason: a count of zero solutions measures confusion, and ``Confusion exists in the map, not in the territory.'' The paragraph grants that the remaining work is unknown. That is its case against the word ``impossible''; it does not promise that the work will be small.}"
+  ],
+  [
+   9129,
+   "\\cpara{Repeats the conditions and the conclusion of the paragraph beginning ``Any time you don't understand a domain,'' again with ``may'' and ``seem.''}"
+  ],
+  [
+   9397,
+   "\\cpara{Adds the step that closes the cycle: a problem that seems impossible is not tried, so the work that would change how it looks is not done.}"
+  ],
+  [
+   9508,
+   "\\cpara{Applies the cycle to the author: only a ``driven frame of mind'' kept the author at the problem long enough to become less intimidated.}"
+  ],
+  [
+   9789,
+   "\\cpara{Grants that the author also underestimated the whole task at the start, and calls the combination luck. It is the same distinction as before between single problems and the whole.}"
+  ],
+  [
+   10174,
+   "\\cpara{Contrasts the author with most AGI researchers, who are said not to be driven in this way.}"
+  ],
+  [
+   10606,
+   "\\clogic{A claim about why most people in a field are in it, offered with ``By and large'' and no evidence here. The linked post, ``Above-Average AI Scientists,'' gives the author's impressions of AGI conferences and concludes that ``AGI attracts people who fail to comprehend the difficulty of AGI.''}"
+  ],
+  [
+   10620,
+   "\\cpara{Credits Richard Hamming, with a link to his talk ``You and Your Research'' (1986). In the talk Hamming asked colleagues at lunch, over several weeks, ``What are the important problems of your field?'', then ``What important problems are you working on?'', and later why, if their work was not important, they were ``at Bell Labs working on it.'' The post's two questions are a fair summary.}"
+  ],
+  [
+   10848,
+   "\\cpara{Describes important problems: they look intimidating and promise neither publications nor progress.}"
+  ],
+  [
+   11110,
+   "\\cpara{Says the most important problems are often ``impossible,'' and gives one example: this, it says, is why more philosophers do not work on reductionist decompositions of consciousness. No evidence is offered for that explanation.}"
+  ],
+  [
+   11187,
+   "\\clogic{Hamming, whom the post has just cited, drew the line elsewhere: ``It's not the consequence that makes a problem important, it is that you have a reasonable attack.'' A problem with no visible attack, the post's second sense of ``impossible,'' is on Hamming's account not an important problem. The same difference is noted at ``Einstein's Superpowers.''}"
+  ],
+  [
+   11302,
+   "\\cpara{The first warning: talent only buys a seat, the stake is years of your life, and ``you can lose.''}"
+  ],
+  [
+   11627,
+   "\\cpara{Declines to recommend the impossible to everyone: most people, most of the time, should ``stick to the possible.''}"
+  ],
+  [
+   11899,
+   "\\cpara{Rejects ``Never give up'' and points back to ``Just Lose Hope Already'' (2007), which argues for knowing when to quit. The two posts agree.}"
+  ],
+  [
+   12116,
+   "\\cpara{States when there may be cause for the attempt: when something is worse than a wasted life, or is wanted more than ``thirty chips'' of years.}"
+  ],
+  [
+   12409,
+   "\\cpara{Adds that perseverance keeps things difficult, and warns readers not to ``needlessly plunge headlong'' into such a life.}"
+  ],
+  [
+   12776,
+   "\\cpara{Returns to the opening: perseverance has a part beyond working 14 hours a day.}"
+  ],
+  [
+   12920,
+   "\\cpara{Explains why the author missed this: what we notice about ourselves follows salience, not only self-image.}"
+  ],
+  [
+   13121,
+   "\\cpara{Gives what showed the author the other timescales: the researchers described earlier in the post.}"
+  ],
+  [
+   13612,
+   "\\cpara{Defines perseverance at the timescale of seconds and at the timescale of years.}"
+  ],
+  [
+   14002,
+   "\\cpara{Sets out three steps with their timescales: not running away (seconds), working (hours), sticking at it (years).}"
+  ],
+  [
+   14252,
+   "\\cpara{Ends with the author's record on the three steps. It agrees with the opening: the hours are the struggle, and the years come naturally.}"
+  ]
+ ]
+}

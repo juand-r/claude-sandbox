@@ -494,3 +494,4 @@ the notes quote them with dates.
 - Added by me: the 2 December 1996 gray-goo message beside Raised in Technophilia's hedged
   "1997 or 1998" (checked in the saved archive page).
 - Whole-book pass: move the "beisutsukai" gloss to its first occurrence (The Ritual, order 130); Final Words then points back.
+- Tooling, whole-book pass: md2tex leaves stray asterisks on bold-italic sentences (***...***); On Doing the Impossible's skeleton was repaired by hand (markup only; verbatim OK).
