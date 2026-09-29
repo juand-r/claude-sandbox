@@ -1,0 +1,89 @@
+{
+ "slug": "disputing-definitions",
+ "header": "\\post{Disputing Definitions}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/7X2j8HAkWdmMoS8PE/disputing-definitions}\n",
+ "skeleton_sha": "e49ad45d37d175ad6d0d962b3344c7e95c00f9a07f38b95e6818c3dd843dccc0",
+ "post_sha": "44c15702903b0a8afb954ae158cc5da288c6f2116f9bff540afe6f0cd9a85fbe",
+ "edits": [],
+ "notes": [
+  [
+   128,
+   "\\cpara{Introduces the falling-tree riddle as the classic case of a dispute over definitions, drawn from conversations the author has watched. The riddle was answered by a definition in its earliest known printing. In June 1883 \\textsc{The Chautauquan} asked it and replied: ``No. Sound is the sensation excited in the ear when the air or other medium is set in motion'' (as quoted by Wikipedia). The post claims nothing new for the two-meanings analysis (see the Response to ``How an Algorithm Feels From Inside'').}"
+  ],
+  [
+   913,
+   "\\cpara{Gives three ways the dispute can start: a real difference of intuition, a motive, or a skeptic who finds one counterargument and stops looking. The third applies the author's earlier posts on motivated stopping, which the links cite.}"
+  ],
+  [
+   1760,
+   "\\cpara{A one-line joke: whatever Barry believed before, arguing has now given him the intuition.}"
+  ],
+  [
+   2436,
+   "\\cpara{The diagnosis the rest of the post depends on: each side describes what set off its ``sound''-detector, and they disagree about nothing that happens in the forest. The dialogue bears this out; neither disputes the other's physics.}"
+  ],
+  [
+   3117,
+   "\\cpara{Adds the social step, loss of face, as part of the dispute though not of the argument. The remedy at the end is built to answer it: with new words, ``neither side has to back down or lose face.''}"
+  ],
+  [
+   3593,
+   "\\cpara{Warns against ``by definition'' outside pure mathematics: a truth by definition holds in all possible worlds, so it cannot tell you which world you are in. The reasoning is given in ``The Parable of Hemlock,'' which the link cites.}"
+  ],
+  [
+   4363,
+   "\\cpara{Names the shift the post is about: from what happens in the forest to what the word means.}"
+  ],
+  [
+   4734,
+   "\\cpara{Contrasts what one could learn about the fall (trees, the wave equation, the ear) with consulting a dictionary, which records both uses and cannot choose between them.}"
+  ],
+  [
+   5298,
+   "\\cpara{The dictionary gives both senses, which is the post's own analysis: the word has two uses. It ``doesn't help at all'' only in the sense that it cannot make either side the winner.}"
+  ],
+  [
+   5467,
+   "\\cfact{Merriam-Webster's sense continues ``and is the objective cause of hearing,'' so even the physical sense is defined by its relation to hearing. Today Albert's and Barry's senses are numbered 1c and 1b. I could not check the 2008 edition's wording or numbering.}"
+  ],
+  [
+   5682,
+   "\\cpara{States the post's view of dictionaries, and Merriam-Webster describes its own work the same way. Asked how a word gets into its dictionary, it answers: ``The answer is simple: usage.''}"
+  ],
+  [
+   5754,
+   "\\cfact{The same view, in similar words, is in S.~I. Hayakawa's \\textsc{Language in Thought and Action} (1949): ``The writer of a dictionary is a historian, not a lawgiver.'' The author credits Hayakawa, with some doubt, for an example in ``Extensions and Intensions.''}"
+  ],
+  [
+   6549,
+   "\\cpara{A transition that leaves the other errors in the dispute, and their remedies, to earlier and later posts.}"
+  ],
+  [
+   6724,
+   "\\cpara{The post's central observation: the two agree on ``virtually every question'' about the forest, and the agreement brings no feeling of agreement.}"
+  ],
+  [
+   6988,
+   "\\cpara{Explains why the dispute goes on: each side thinks it is defending the standard definition against the other's private one. The reply is imagined (``he'd probably say''), and the post offers it as such.}"
+  ],
+  [
+   7379,
+   "\\cpara{Introduces the time-travel scene, which carries the remedy.}"
+  ],
+  [
+   7475,
+   "\\cpara{The remedy, staged as comedy: describe the event in ``unambiguous lower-level constituents,'' or give each meaning its own new word, and keep track of ``some testable proposition'' the argument is about.}"
+  ],
+  [
+   9086,
+   "\\cfact{William James told the same story in \\textsc{Pragmatism} (1907), Lecture II. A camping party argues whether a man circling a tree goes ``round'' a squirrel that keeps the trunk between them. James distinguishes two senses of ``going round'' and says: ``Make the distinction, and there is no occasion for any farther dispute.'' One or two disputants, he reports, called this ``a shuffling evasion'' and said they ``meant just plain honest English `round,'\\,'' which is Albert's appeal to common usage.}"
+  ],
+  [
+   9086,
+   "\\cfact{David Chalmers later named the renaming step the ``subscript gambit'': bar the disputed term and introduce two new terms ``stipulated to be equivalent to the two right-hand-sides'' (``Verbal Disputes,'' 2011).}"
+  ],
+  [
+   9573,
+   "\\cpara{Limits the remedy's reach. ``A substantial fraction'' is given without evidence. The next day's post, ``The Argument from Common Usage,'' names the cases the remedy leaves: categories that carry hidden inferences, and moral stakes.}"
+  ]
+ ]
+}

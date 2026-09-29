@@ -1,0 +1,69 @@
+{
+ "slug": "empty-labels",
+ "header": "\\post{Empty Labels}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/i2dfY65JciebF3CAo/empty-labels}\n",
+ "skeleton_sha": "f28d312936cc1fe89a84040713c40a96b77279e4fad747b4866f4d339b946c98",
+ "post_sha": "8d890b8db0bac304b6e8b5cf001012ab9999ab3d2e281defef9b142bf73b8a0a",
+ "edits": [],
+ "notes": [
+  [
+   110,
+   "\\cpara{Sets up the exercise with properties lettered A to E. ``Aristotelian'' categories are used in this sequence's sense: a category defined by a list of properties that are each necessary and together sufficient.}"
+  ],
+  [
+   543,
+   "\\cpara{Defines ``zawa'' as exactly the objects with A, C and D, and shows Fred asking to have what the label implies spelled out.}"
+  ],
+  [
+   981,
+   "\\cpara{Adds ``yokie'' (B and E) and ``xippo'' (E but not D). The worked dialogue is consistent: an object that is zawa, B and E is yokie, and, having D, is not xippo. Fred's ``You can tell all that just by looking?'' states the post's point as a joke: the labels make a restatement look like a discovery.}"
+  ],
+  [
+   1551,
+   "\\cpara{Stacks more labels: ``bolo,'' ``mun'' and ``merlacdonian.''}"
+  ],
+  [
+   1711,
+   "\\cpara{Replaces the labels by their definitions. The expansions are correct: bolo is [A, C, [B, E]], mun is [A, C, [E, \\textasciitilde D]], and merlacdonian is both.}"
+  ],
+  [
+   1993,
+   "\\cpara{States the main claim: in this system a label carries no information beyond its definition, and the rules work on the definitions alone. Attaching a label is ``a human convenience (or inconvenience).''}"
+  ],
+  [
+   2499,
+   "\\cpara{Applies the claim to the classic syllogism, with ``human'' defined as a mortal featherless biped. The featherless biped comes from Plato's Academy, as the author told in ``Similarity Clusters.''}"
+  ],
+  [
+   2840,
+   "\\cpara{A one-line verdict on the expanded syllogism.}"
+  ],
+  [
+   2920,
+   "\\cpara{The diagnosis: the label hides the premise, so the conclusion looks new; you cannot call Socrates a mortal featherless biped until you have seen him die. The syllogism is empty here because the definition contains ``mortal''; ``The Parable of Hemlock'' treats the other case, where the general premise is an empirical generalization.}"
+  ],
+  [
+   3312,
+   "\\cfact{The point is old. John Stuart Mill reported in 1843 that ``it is unanswerably urged by the adversaries of the syllogistic theory, that the proposition, Socrates is mortal, is presupposed in the more general assumption, All men are mortal'' (\\textsc{A System of Logic}, Book II, chapter 3).}"
+  ],
+  [
+   3326,
+   "\\cpara{Turns to the idea the post attacks, that ``you can define a word any way you like.'' The author traces it to Aristotelian categories: an agent that followed those rules exactly would never reach a contradiction, or much of anything else. The last sentence repeats the one that ends the paragraph before.}"
+  ],
+  [
+   3484,
+   "\\clogic{Given as history, without a source. The idea is older than Aristotle. In Plato's \\textsc{Cratylus}, Hermogenes says that ``any name which you give, in my opinion, is the right one, and if you change that and give another, the new name is as correct as the old'' (Jowett's translation). The ``since'' clause that follows gives a reason the Aristotelian rules allow the idea, not evidence of where it came from.}"
+  ],
+  [
+   4024,
+   "\\cpara{Refines the claim: labels in this system are not so much arbitrary as unnecessary, since without them it produces ``exactly the same stream of tautologies.''}"
+  ],
+  [
+   4344,
+   "\\clogic{``Only'' goes further than the post went earlier, where a label is ``a human convenience (or inconvenience).'' A label can mislead and still save work: ``merlacdonian'' is one word, and its definition is two nested lists.}"
+  ],
+  [
+   4358,
+   "\\cpara{Ends with the proverb ``Definitions don't need words.'' It separates two claims that ``you can define a word any way you like'' runs together: that labels are dispensable, which the post accepts, and that defining a word has no consequences, which it rejects.}"
+  ]
+ ]
+}

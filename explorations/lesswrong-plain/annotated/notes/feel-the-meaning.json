@@ -1,0 +1,101 @@
+{
+ "slug": "feel-the-meaning",
+ "header": "\\post{Feel the Meaning}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/dMCFk2n2ur8n62hqB/feel-the-meaning}\n",
+ "skeleton_sha": "2c97d1abe841269317609849629e3217cd09f68546f99e9d45574a2e048d3b7c",
+ "post_sha": "0b5c4e051be894db4bc6500584fb248ecab87eeb0c865bc96209d4be63075f6c",
+ "edits": [],
+ "notes": [
+  [
+   118,
+   "\\cpara{Traces the path of a friend's spoken ``butterfly'' through the ear, cochlea and auditory nerve to the auditory cortex, where word recognition and syntax begin.}"
+  ],
+  [
+   535,
+   "\\cpara{Gives the result, within a second: the listener expects to see a butterfly and would be surprised by a wolf.}"
+  ],
+  [
+   777,
+   "\\cpara{Calls the transfer marvelous: to someone who did not know about pressure waves, it would look like telepathy.}"
+  ],
+  [
+   1242,
+   "\\cpara{A joke with a point: we are telepathic, but ``magic isn't exciting when it's merely real.'' The link is to the author's ``\\,`Science' as Curiosity-Stopper.''}"
+  ],
+  [
+   1431,
+   "\\cpara{Claims that language, ``our partial thought transfer ability,'' is more complicated than it looks. The test offered is to build a computer that does it.}"
+  ],
+  [
+   1659,
+   "\\cpara{Notes that thinking through the whole mechanism in every conversation would be impractical.}"
+  ],
+  [
+   1895,
+   "\\cpara{States the thesis of the first half: the brain hides the complexity, or never represents it, and this leads people to think ``peculiar thoughts about words.''}"
+  ],
+  [
+   2056,
+   "\\cpara{Recalls the tiger from ``Words as Hidden Inferences'': we recognize a tiger at once, not by reasoning from its stripes to its danger.}"
+  ],
+  [
+   2456,
+   "\\cpara{Extends the tiger to the word ``tiger'': an organism that reasoned about what others mean by the word would be eaten. The argument is from design, what selection ``would not favor,'' told as a joke.}"
+  ],
+  [
+   2890,
+   "\\cpara{The diagram (I viewed the image file), labelled Network 3, is the central-unit network of ``Neural Categories'' with one addition: a speech bubble, ``Blegg!,'' joined to the central unit by a two-way arrow. The paragraph argues that, by design, no step should come between recognizing a word and activating its concept. As in ``How an Algorithm Feels From Inside,'' this is an argument about what a good design would do, not evidence about brains (see the notes there).}"
+  ],
+  [
+   3232,
+   "\\cpara{Applies the network: a direct link runs from the unit that hears ``blegg'' to the central unit, so the concept fires as soon as the word is heard. ``You might visualize'' offers this as a picture, not a finding.}"
+  ],
+  [
+   3691,
+   "\\cpara{Adds the reverse link, for speaking: seeing a blegg fires the central unit, and the word comes out.}"
+  ],
+  [
+   3870,
+   "\\cpara{The thesis: from the inside, label and concept feel ``very nearly identified,'' so the meaning feels like a property of the word itself. What the post adds to the old observation below is an account of why the belief feels natural.}"
+  ],
+  [
+   4110,
+   "\\cfact{The observation is old. C.~K. Ogden and I.~A. Richards, \\textsc{The Meaning of Meaning} (1923): ``Words, as every one now knows, `mean' nothing by themselves, although the belief that they did \\ldots\\ was once equally universal.''}"
+  ],
+  [
+   4124,
+   "\\cpara{Names the pattern as E.~T. Jaynes's Mind Projection Fallacy, and Jaynes's definition fits it: to read a statement of ``the speaker's personal perception'' as a statement about the world ``is to assert that one's own private thoughts and sensations are realities existing externally in Nature'' (\\textsc{Probability Theory: The Logic of Science}, chapter 1). This is the term's first appearance in the book. The post ``Mind Projection Fallacy,'' which explains it, comes later (posted 11 March 2008).}"
+  ],
+  [
+   4487,
+   "\\cpara{Claims the brain rarely separates word and meaning, ``perhaps'' only when learning a new language, and that even a learner thinks of the word as having a meaning.}"
+  ],
+  [
+   4659,
+   "\\clogic{Offered with ``perhaps'' and no evidence. A common experience outside language learning separates the two: the tip-of-the-tongue state, in which a person has the meaning and cannot find the word. Brown and McNeill (1966) produced it by reading out definitions of rare words and asking for the word (as summarized by Wikipedia, ``Tip of the tongue'').}"
+  ],
+  [
+   4911,
+   "\\cpara{Returns to ``Disputing Definitions'': the parties argue about what ``sound'' really means, as they might argue whether an apple is really red.}"
+  ],
+  [
+   5616,
+   "\\cpara{Applies the thesis to Albert: he feels that the word has a meaning, vibrations, just as he feels that the tree ``makes a sound'' rather than causing an event that matches his category.}"
+  ],
+  [
+   5897,
+   "\\cpara{Shows Barry's feeling as two lines of pseudo-code: the word's meaning is auditory experience, so the forest has no sound. The version below it has Barry's brain look up the concept it attaches to ``sound'' and find that the forest does not match it.}"
+  ],
+  [
+   6223,
+   "\\cpara{Says the second version is ``closer'' to what happens, and that humans do not know it by instinct, any more than they know by instinct that the brain is made of neurons.}"
+  ],
+  [
+   6397,
+   "\\cpara{Concludes that the feeling keeps the argument going, because arguing over a meaning feels like arguing over a fact.}"
+  ],
+  [
+   6671,
+   "\\cpara{Ends with the test from ``Making Beliefs Pay Rent'': the error shows when you try to state an experiment whose result depends on the dispute.}"
+  ]
+ ]
+}

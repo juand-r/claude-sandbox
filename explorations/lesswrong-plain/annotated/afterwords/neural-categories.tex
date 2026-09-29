@@ -1,0 +1,17 @@
+\begin{afterword}
+\summaryhead
+
+The post returns to bleggs and rubes, keeps five of their features, and asks how a neural network could predict the ones not yet observed. A naive design, Network 1, connects every feature to every other and learns by Hebb's rule, strengthening the connection between features that occur together. Shown a furred, egg-shaped, reddish-purple object, it settles into a state that predicts glowing and vanadium, although no unit stands for the category.
+
+The author lists its problems. Recurrent networks can oscillate or settle slowly, evidence is counted twice as activation passes back and forth, and the number of connections grows as the square of the number of features. Network 2 connects each feature only to a central category unit, so it answers in one pass and grows linearly, though it cannot store some correlations, such as red objects that never glow. Neither design is realistic, but the author guesses that the brain is closer to Network 2. Such a brain would find it hard to notice a correlation inside a category, and would tend to classify things once and for all.
+
+\responsehead
+
+The technical descriptions are accurate in outline, and where they slip, the point survives. The connection counts are right, the reddish-purple case settles as described, and the pattern that neither network can store is the exclusive-or problem, whose remedy is the ``extra nodes'' the post mentions. Read as the sign of a weight, one connection is the wrong way round: on the figure's coding, a negative connection from colour to luminance would make red objects glow. And oscillation and chaos, which the post lists as problems of this kind of network, are problems of recurrent networks in general but not of the design described. With the symmetric connections that Hebb's rule produces and asynchronous updates, Hopfield proved in 1982 that such a network always settles.
+
+The two designs have names that the post does not give. Network 1 is in essence Hopfield's network, a standard model whose abstract uses the words the post treats as buzzwords, ``emergent'' and ``asynchronous parallel processing'' among them. Network 2 is the Naive Bayes model, as the author wrote three weeks later, and its pass inward and back out is Pearl's belief propagation on a tree. A reader of this post would not learn that either design has a literature.
+
+The central claim is a guess, and the post says so: it ``still seems like a fair guess that however the brain really works, it is in some sense closer to Network 2 than Network 1.'' The reasons offered are that Network 2 is ``Fast, cheap, scalable,'' and that natural selection favours such things. Those are reasons an engineer might choose it. They are not evidence that brains use it, and the post cites no study of brains or of categorization. The evidence available in 2008 pointed both ways. Murphy and Ross found that people unsure of an object's category generally ignore information outside the most likely one, which fits the post's closing claim about classifying once and for all. They also found evidence against the assumption, built into Network 2, that features are independent within a category. The guess matters because the next post, ``How An Algorithm Feels From Inside,'' builds its explanation of disputes about the falling tree and Pluto on it.
+
+In short: two network designs described accurately in outline, and a hedged guess that the brain resembles the second, supported only by design virtues, on which the next post's explanation depends.
+\end{afterword}

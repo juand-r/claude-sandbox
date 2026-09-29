@@ -263,3 +263,53 @@ Why: Same.
 - Before: \nb{Both theorems are correct. The post does not use the entropy formulas again.}
 - After: \nb{Both theorems are correct.}
 
+
+## annotated/posts/disputing-definitions.tex
+
+Why: Fair reading: the post's objection to the dictionary, which the note itself granted, is that it cannot choose; the botanists question is rhetoric leading there, not an error.
+
+- Before: \cpara{Contrasts what one could learn about the fall (trees, the wave equation, the ear) with consulting a dictionary. The questions about botanists and physicists fit the forest. The question now in dispute, as the post has just said, is what the word means, and for that a dictionary is the record to consult. The post's real objection follows the dictionary quotation: the record lists both uses and cannot choose between them.}
+- After: \cpara{Contrasts what one could learn about the fall (trees, the wave equation, the ear) with consulting a dictionary, which records both uses and cannot choose between them.}
+
+
+## annotated/afterwords/disputing-definitions.tex
+
+Why: Same.
+
+- Before: The passage on the dictionary is weaker than the rest. The post asks whether dictionary editors are ``expert botanists, expert physicists, expert neuroscientists.'' That would matter if the question were about the forest. By then the question is what the word means, and a dictionary is the record to consult for that. It gives the right answer: ``sound'' has both senses. What it cannot do is choose between them, which is the point of the post's next paragraph.
+
+
+- After: 
+
+
+## honest/sections/disputing-definitions.tex
+
+Why: Same.
+
+- Before:  \nb{By this point the dispute is about what the word means, which is what a dictionary records. It gives the right answer, that ``sound'' has both senses.}
+- After: 
+
+
+## annotated/afterwords/feel-the-meaning.tex
+
+Why: STANDARDS 2.5: the design-argument point is made in full in How an Algorithm Feels From Inside; here a pointer.
+
+- Before: The explanation is an argument from design. There should be no step between hearing a word and activating its concept, because an organism that deliberated would be eaten. The post draws this as a direct link in its blegg network. That is a picture of what a good design would do. It is not evidence that brains are built this way. The post offers it with ``you might visualize,'' and the same kind of reasoning carried the network of ``How an Algorithm Feels From Inside'' two days before.
+- After: The explanation is an argument from design: an organism that deliberated between hearing a word and activating its concept would be eaten. It is offered with ``you might visualize,'' and it is the same kind of reasoning as the network of ``How an Algorithm Feels From Inside,'' whose notes discuss it.
+
+
+## annotated/afterwords/the-argument-from-common-usage.tex
+
+Why: Scope stated once and kept out of the In short line, since the post's context makes it plain; the OED ``authority'' point is neutral information and stays in the margin.
+
+- Before: ``The Oxford English Dictionary may be comprehensive, but never authoritative'' depends on the post's sense of the word. The OED calls itself ``the accepted authority on the English language,'' meaning a reliable record, not a lawgiver. This is a difference between two uses of one word, of the kind the post teaches readers to notice.
+
+
+- After: 
+
+- Before: The rule that ``once any empirical proposition is at stake \ldots\ you can no longer appeal to common usage'' needs one qualification. It holds for questions about the things named. It does not hold for questions about what a speaker or a law meant by a word, and those are empirical questions too.
+- After: The rule that ``once any empirical proposition is at stake \ldots\ you can no longer appeal to common usage'' is meant, in context, for questions about the things named. Questions about what a speaker or a law meant by a word are empirical too, and there common usage is evidence.
+
+- Before: , and whose rule for empirical questions needs one exception: questions about what a speaker or a law meant by a word.
+- After: .
+

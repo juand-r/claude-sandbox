@@ -1,0 +1,121 @@
+{
+ "slug": "the-argument-from-common-usage",
+ "header": "\\post{The Argument from Common Usage}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/9ZooAqfh2TC9SBDvq/the-argument-from-common-usage}\n",
+ "skeleton_sha": "bd02657cb667736a6fbdc1497c45ccfc61abf5ac046171b99576f299f1d023bf",
+ "post_sha": "76dd9fad1f47a00b17cdd097c315b17bcd9ed2837c7903098925b61551f8d5c1",
+ "edits": [],
+ "notes": [
+  [
+   146,
+   "\\cpara{Quotes the exchange from ``Disputing Definitions'' in which Albert appeals to common usage and Barry replies with three points.}"
+  ],
+  [
+   779,
+   "\\cpara{Suggests (``I think'') that disputes reach for a dictionary more often than for common usage, because people believe words have meanings that the dictionary records, and that some believe the dictionary sets them. S.~I. Hayakawa described the same belief, calling it ``an almost universal belief'' that every word has a correct meaning and that dictionaries are ``the supreme authority in matters of meaning and usage'' (\\textsc{Language in Thought and Action}, 1949).}"
+  ],
+  [
+   1420,
+   "\\cpara{Repeats the view of dictionaries given in ``Disputing Definitions'' (see the notes there). It describes the major English dictionaries. Some dictionaries are made to legislate. The statutes of the Acad\\'emie fran\\c{c}aise, of 1635 and still in force, give it the mission ``de travailler \\ldots\\ \\`a donner des r\\`egles certaines \\`a notre langue'' (to give fixed rules to our language).}"
+  ],
+  [
+   1529,
+   "\\cfact{Earlier lexicographers mixed the two roles. Samuel Johnson, in the preface to his \\textsc{Dictionary} (1755), saw a duty ``to correct or proscribe'' improprieties, and also mocked the hope that a dictionary could ``fix our language.''}"
+  ],
+  [
+   1621,
+   "\\cfact{The OED calls itself ``widely regarded as the accepted authority on the English language,'' and two sentences later ``a historical dictionary.'' It means authority as a reliable record; the post uses ``authoritative'' only in the sense of a lawgiver. The two uses of the word differ, which is the kind of difference the post teaches readers to spot.}"
+  ],
+  [
+   1635,
+   "\\cpara{Raises the strongest objection to the post's view: speech depends on coordination, so perhaps everyone should treat dictionaries as arbiters, whatever their editors think.}"
+  ],
+  [
+   2043,
+   "\\cpara{Gives the IEEE's standards dictionary as an example of the proper use of ``authoritative'': a body with a professional need for exact terms negotiates them. The French Academy, noted above, is an older and better-known case.}"
+  ],
+  [
+   2478,
+   "\\cpara{Says that everyday language spreads by imitation, not by agreement, with an aside on Dawkins's ``meme.''}"
+  ],
+  [
+   2871,
+   "\\cpara{Grants the objection its core: shared words are a public good, because we gain from using the same word for similar concepts, whichever word it is.}"
+  ],
+  [
+   3366,
+   "\\cpara{Illustrates with ``oto'' and ``sound'': the choice of word does not matter, only that we share it. The aside on short words for frequent use anticipates ``Entropy, and Short Codes,'' later in the book.}"
+  ],
+  [
+   3679,
+   "\\cpara{Adds that shared labels are convenient, not necessary: if I know how you use a word, I can translate.}"
+  ],
+  [
+   4089,
+   "\\cpara{A second example of translating another person's usage, at the cost of a pause.}"
+  ],
+  [
+   4462,
+   "\\cpara{Says that people who want to communicate find a way, even with pictures in the sand.}"
+  ],
+  [
+   4668,
+   "\\cpara{Reads the dialogue: Albert invokes the public good only to accuse Barry of breaking it, and Barry answers by contesting Albert's authority. Both are the author's invented characters, so the reading of Albert's purpose is the author's to make.}"
+  ],
+  [
+   5119,
+   "\\cpara{Says a rationalist would notice that the conversation has strayed. The link on ``hugging the query'' cites the author's earlier post ``Hug the Query.''}"
+  ],
+  [
+   5289,
+   "\\cpara{The core of the argument: each knows what the other means by ``sound,'' and both have words that describe the forest without ambiguity. For communication, nothing more is needed.}"
+  ],
+  [
+   5762,
+   "\\cpara{Concludes that their appeal to common usage cannot be about communication, the one benefit common usage gives. That follows in the case as set up, where each side knows what the other means.}"
+  ],
+  [
+   6104,
+   "\\cpara{Returns to the remedy of ``Disputing Definitions'' for a mere naming conflict: two new words.}"
+  ],
+  [
+   6436,
+   "\\cpara{Names the case the remedy does not cover: a category that carries hidden inferences. In the atheism example, someone has an argumentative stake in lumping atheism with religion.}"
+  ],
+  [
+   7027,
+   "\\cpara{Gives a moral case: whether to class people together is a question of whether to draw a moral distinction, so two words would defeat the point.}"
+  ],
+  [
+   7240,
+   "\\cpara{States the post's rule: when an empirical or a moral proposition is at stake, common usage cannot decide.}"
+  ],
+  [
+   7362,
+   "\\clogic{The rule holds for questions about the things named. One kind of empirical question is answered by common usage: what a speaker, or a law, meant by a word. In \\textsc{Nix v. Hedden} (1893) the Supreme Court held tomatoes to be vegetables under a tariff act: ``Botanically speaking, tomatoes are the fruit of a vine \\ldots\\ But in the common language of the people \\ldots\\ all these are vegetables.'' The court also said dictionaries are admitted ``not as evidence, but only as aids to the memory and understanding of the court,'' which is close to the post's view of them.}"
+  ],
+  [
+   7376,
+   "\\cpara{Gives the reason: if categories are for inference, a definition makes predictions and can be wrong, and ``A conflict of predictions cannot be settled by an opinion poll.''}"
+  ],
+  [
+   7674,
+   "\\cpara{Applies the rule to the atheism example.}"
+  ],
+  [
+   7860,
+   "\\cpara{Applies it to the moral example.}"
+  ],
+  [
+   7953,
+   "\\cpara{Shows the limit of a dictionary with two hypotheticals: it records what people believe, so it would define ``Mars'' as the god of war, and ``fire'' as the release of phlogiston, if everyone believed those things.}"
+  ],
+  [
+   8262,
+   "\\cpara{Concludes that definitions can be wiser or more foolish, and that treating the dictionary as the arbiter binds you to the wisdom of the past. David Chalmers's later account of verbal disputes allows for this kind of question: a dispute over Pluto may turn on whether ``Astronomical terms should be used in the way that is most useful for science'' (``Verbal Disputes,'' 2011).}"
+  ],
+  [
+   8658,
+   "\\cpara{A closing joke that makes its point: ``swim'' for ``say'' is understood, as the post's ``oto'' was.}"
+  ]
+ ]
+}

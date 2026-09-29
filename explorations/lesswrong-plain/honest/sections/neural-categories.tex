@@ -1,0 +1,13 @@
+\honest{Neural Categories}{Eliezer Yudkowsky}{2008}
+
+Back to bleggs and rubes, with five features: colour, shape, texture, luminance and interior. Suppose I am a naive designer, who has read excited popular books saying that neural networks are ``distributed, emergent, and parallel just like the human brain!!''
+
+My first design, Network 1, connects every feature to every other. It learns by Hebb's rule: features seen together get a stronger connection. Shown something furred, egg-shaped and reddish purple, it settles on ``glows'' and ``vanadium,'' though no unit stands for the category. I mock this as ``emergent behavior!!'' \nb{The design is the Hopfield network (1982), a standard model of memory, whose abstract speaks of properties that ``emerge as collective properties'' and of ``asynchronous parallel processing.''}
+
+Its problems: recurrent networks can oscillate, go chaotic or settle slowly; evidence is counted twice as activation bounces back and forth; and the connections grow as the square of the number of features. \nb{With the symmetric connections Hebb's rule gives and one-at-a-time updates, Hopfield proved that such a network always settles.}
+
+Network 2 connects each feature only to a central category unit. It answers in one pass, which matters when neurons run at 20Hz, and its connections grow in proportion to the features. \nb{This is the Naive Bayes model, as Yudkowsky wrote three weeks later.} Network 1 can store a pattern Network 2 cannot, such as red objects that never glow, by ``a very strong direct negative connection from color to luminance.'' \nb{On the figure's coding the connection needs to be positive; a negative one would make red objects glow.} But I judge that the extra connections buy little.
+
+Neither design is realistic. ``But it still seems like a fair guess'' that the brain ``is in some sense closer to Network 2,'' because it is ``Fast, cheap, scalable,'' and natural selection likes that. \nb{These are design virtues, not evidence about brains, and the post cites none. In 1994 Murphy and Ross found evidence against the assumption, built into Network 2, that features are independent within a category.}
+
+A brain like that, I suggest, would probably not notice that sea-blue objects never glow, unless they were shown together. It would decide once that Socrates is human, and infer the rest. Are there biases in classifying things once and for all? ``Of course there are.'' \nb{Murphy and Ross also found that when people are unsure of an object's category, they generally ignore information outside the most likely one.}
