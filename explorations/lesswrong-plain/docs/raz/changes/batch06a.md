@@ -178,3 +178,70 @@ Why: Credit, not fault (Book V lesson).
 - Before: adapts a line by Michael Shermer, whom the post does not name:
 - After: adapts a line by Michael Shermer:
 
+
+## annotated/afterwords/raised-in-technophilia.tex
+
+Why: Nitpicks on a memoir: the "neither good nor evil" point, a rule the post hedges with "usually", and a lesson repeated across a sequence (the Book VI rule on memoir). The In short line now names both parts of the record the post offers.
+
+- Before: 
+
+Three smaller points. ``In defiance of brute historical fact'' overstates the case against those who call science ``neither good nor evil'' of itself, since a record of good uses is consistent with that view. The rule that seeking a middle way ``is usually wrong'' rests on the one case of the ``pretenders.'' And the lesson that even ``a lot of rationality'' falls short repeats the lesson of ``My Wild and Reckless Youth,'' drawn again from the author's own history.
+- After: 
+
+- Before: joined to a defence of the childhood allergy to talk of risk that rests on one estimate about one regulator.
+- After: joined to a defence of the childhood allergy to talk of risk whose record is one estimate about one regulator and a list of old controversies.
+
+
+## annotated/posts/raised-in-technophilia.tex
+
+Why: Nitpicks on a memoir: the "neither good nor evil" point, a rule the post hedges with "usually", and a lesson repeated across a sequence (the Book VI rule on memoir). The In short line now names both parts of the record the post offers. Added: the 2 December 1996 gray-goo message (checked in the saved archive page), as information beside the post's hedged date.
+
+- Before:  ``In defiance of brute historical fact'' overstates the case against them. That science is ``neither good nor evil'' of itself is a claim that its worth depends on its uses, and a record of good uses is consistent with it.}
+- After: }
+
+- Before:  The general rule is offered with ``usually'' and rests on the one case.}
+- After:  The rule is offered with ``usually.''}
+
+- Before:  This is the lesson of ``My Wild and Reckless Youth,'' again drawn from one case; see the note there.}
+- After:  ``My Wild and Reckless Youth'' draws the same lesson.}
+
+- Before: \cpara{Dates the first doubt, with ``I think,'' to 1997 or 1998: fellow technophiles said nanotechnology would be easy to manage.}
+- After: \cpara{Dates the first doubt, with ``I think,'' to 1997 or 1998: fellow technophiles said nanotechnology would be easy to manage. The archive has an earlier mention of the danger: on 2 December 1996 the young author ranked nanotechnology below intelligence enhancement partly because it ``will turn the Earth into gray goo.''}
+
+
+## honest/sections/raised-in-technophilia.tex
+
+Why: Nitpicks on a memoir: the "neither good nor evil" point, a rule the post hedges with "usually", and a lesson repeated across a sequence (the Book VI rule on memoir). The In short line now names both parts of the record the post offers.
+
+- Before: \nb{Yudkowsky drew the same lesson, again from the author's own history, in ``My Wild and Reckless Youth.''}
+- After: \nb{Yudkowsky drew the same lesson in ``My Wild and Reckless Youth.''}
+
+
+## annotated/afterwords/a-prodigy-of-refutation.tex
+
+Why: Speculative: the "full solution" is not named, and our identification of it is inference; the post itself calls the question open, so it does not claim to have the solution.
+
+- Before: 
+
+One sentence rests on more than the post shows. Eliezer1996, it says, would have needed ``the full solution,'' the full reduction of morality, before meeting an argument that could not be refuted. The solution is not named. My reading is that it is the author's own metaethics, posted in the summer of 2008. The next paragraph calls the nature of morality ``still an open question in philosophy.'' So the post measures its younger self against a solution that, by its own account of the field, is one position in a continuing debate.
+- After: 
+
+- Before: , illustrating a lesson from the author's own ``Twelve Virtues of Rationality,'' and measuring its younger self against a ``full solution'' to morality in a field it calls open.
+- After: , illustrating a lesson from the author's own ``Twelve Virtues of Rationality.''
+
+
+## annotated/posts/a-prodigy-of-refutation.tex
+
+Why: Speculative: the "full solution" is not named, and our identification of it is inference; the post itself calls the question open, so it does not claim to have the solution.
+
+- Before: \clogic{The ``full solution'' is not named. My reading: the author's own metaethics, posted in July and August 2008 and collected in Book V. The next paragraph calls the nature of morality ``still an open question in philosophy,'' so the solution the sentence presupposes is one side of that debate.}
+- After: 
+
+
+## honest/sections/a-prodigy-of-refutation.tex
+
+Why: Speculative: the "full solution" is not named, and our identification of it is inference; the post itself calls the question open, so it does not claim to have the solution.
+
+- Before:  \nb{The post does not say what that full reduction is. It is presumably the author's own metaethics, posted in the summer of 2008; the next sentences call the nature of morality ``still an open question in philosophy.''}
+- After: 
+

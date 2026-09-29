@@ -1,0 +1,141 @@
+{
+ "slug": "raised-in-technophilia",
+ "header": "\\post{Raised in Technophilia}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/uNWRXtdwL33ELgWjD/raised-in-technophilia}\n",
+ "skeleton_sha": "c70791b886a88e795086e111b090beef2d5aac5a62318aa94fc75afe3c25ce89",
+ "post_sha": "8aa0e670c5162182175c339c0bb7dd64e5b37a8505060cc50a618065d893712d",
+ "edits": [],
+ "notes": [
+  [
+   130,
+   "\\cpara{Opens with the author's father's saying: under today's rules, cars would have been banned to protect the saddle industry.}"
+  ],
+  [
+   300,
+   "\\cpara{Names the book that shaped the author at nine, Pournelle's \\textsc{A Step Farther Out}, and the pessimists it answered.}"
+  ],
+  [
+   604,
+   "\\cfact{The famine forecast fits Ehrlich: \\textsc{The Population Bomb} (1968) said ``In the 1970s hundreds of millions of people will starve to death.'' The Club of Rome's \\textsc{The Limits to Growth} (1972) set a longer horizon: the limits ``will be reached sometime within the next one hundred years'' (both as quoted by Wikipedia).}"
+  ],
+  [
+   791,
+   "\\cpara{Describes the childhood picture: a battle between Good Guys and Bad Guys, fought again and again since the Industrial Revolution, whose outcomes could be checked against history.}"
+  ],
+  [
+   1175,
+   "\\cpara{The Good Guys of the childhood picture: scientists and engineers, credited with all the rises in the standard of living since the Dark Ages and with democracy and the end of slavery.}"
+  ],
+  [
+   1415,
+   "\\cpara{The Bad Guys of the childhood picture: those who once opposed vaccination, anaesthesia in childbirth, steam engines and heliocentrism, from theologians to people who feared what they did not understand.}"
+  ],
+  [
+   1825,
+   "\\cpara{The third party of the childhood picture, the ``pretenders to Deep Wisdom'' who call for regulation and committees.}"
+  ],
+  [
+   2579,
+   "\\cpara{Describes the young author's allergy: whoever said that technology has risks as well as benefits was presumed to want applause or to want the technology regulated out of existence.}"
+  ],
+  [
+   3028,
+   "\\cpara{Brings in a current example: Robin Hanson's post ``Deafening Silence'' (dated 16 September 2008) and a commenter's thalidomide figures. The figures are close to Wikipedia's: 46 countries, over 10,000 affected children worldwide and 17 in the United States.}"
+  ],
+  [
+   3532,
+   "\\cpara{Asks the question the thalidomide story leaves out: how many died because good drugs were approved slowly. Gives the post's one piece of quantitative evidence.}"
+  ],
+  [
+   4254,
+   "\\cfact{The figures appear to be Dale Gieringer's (1985), which are per decade, not per year. As quoted by FEE: ``some 5,000 casualties per decade or 10,000 per decade for worst-case scenarios. In comparison \\ldots\\ the cost of FDA delay can be estimated at anywhere from 21,000 to 120,000 lives per decade.'' I could not open the page the post links or Gieringer's paper. The ratio, and so the post's comparison, is unchanged.}"
+  ],
+  [
+   4268,
+   "\\cpara{Concludes that there is ``a historical record showing over-conservativeness.'' The evidence offered is one estimate for one regulator, drug approval, and the list of old controversies above. The step from drugs to technology in general is not argued.}"
+  ],
+  [
+   4674,
+   "\\cpara{The adult verdict: the childhood view was not ``too wrong'' about who the Bad Guys were. The flaw was believing that avoiding everything they did made one a Good Guy. The parenthesis grants that the other side are ordinary people with a different worldview.}"
+  ],
+  [
+   5473,
+   "\\cpara{Blames the middle-way ``pretenders'' for the worst of it, and generalizes: seeking a middle way ``is usually wrong.'' The rule is offered with ``usually.''}"
+  ],
+  [
+   5929,
+   "\\cpara{Explains the harm: any departure from full speed ahead felt like joining the pretenders.}"
+  ],
+  [
+   6124,
+   "\\cpara{Dates the first doubt, with ``I think,'' to 1997 or 1998: fellow technophiles said nanotechnology would be easy to manage. The archive has an earlier mention of the danger: on 2 December 1996 the young author ranked nanotechnology below intelligence enhancement partly because it ``will turn the Earth into gray goo.''}"
+  ],
+  [
+   6543,
+   "\\cfact{The philosophy is on record. On 2 December 1996 the young author wrote to the Extropians mailing list: ``A single flaw found in a linear logical structure suffices for its destruction.''}"
+  ],
+  [
+   6557,
+   "\\cpara{Recalls the debate on whether nanotechnology would favour offense over defense, and the young author's argument from nuclear weapons.}"
+  ],
+  [
+   6781,
+   "\\cfact{The Extropians archive bears this out. In an August 1997 thread with Anders Sandberg, the young author wrote that nanotechnology ``cannot be widely and freely distributed or it will end in holocaust,'' and: ``I am darn well entitled to demand that your immune system stand up against nuclear weapons.'' In January 1999 the young author described a ``generalized thesis that nanowar tilts the attack/defense balance even farther towards attack than the existing nuclear weapons standoff.''}"
+  ],
+  [
+   7104,
+   "\\cfact{In the one thread I read, the opponent's stated aim was more modest. Sandberg replied that the aim had not been an invulnerable system, ``just a sufficiently strong system.'' I did not search the whole archive, so others may have claimed more.}"
+  ],
+  [
+   7272,
+   "\\cpara{Says, with ``it seems,'' that by the end of the debate the young author had noticed, for the first time, that the survival of ``Earth-originating intelligent life'' was at risk. The wording is exact. In December 1996 the young author had already warned that a superintelligence given fixed values ``may well turn on humanity and squash us like bugs,'' but in that case an intelligence of Earth origin survives.}"
+  ],
+  [
+   7503,
+   "\\cpara{Reflects that the young author did not see the possibility until the topic came up, and that the adult does not really remember how.}"
+  ],
+  [
+   8028,
+   "\\cpara{Describes the young author of 1998 as a sharp Traditional Rationalist without Bayes or Kahneman, and states that one departure from the Way ``can repeal all other protections.''}"
+  ],
+  [
+   8914,
+   "\\cpara{A general lesson from the author's own history: even ``a lot of rationality'' does not pass ``the astronomically high barrier'' for things to work. ``My Wild and Reckless Youth'' draws the same lesson.}"
+  ],
+  [
+   9323,
+   "\\cpara{Absolves Pournelle, the author's father and science fiction: the young author filtered their teaching and passed over the warnings, such as Pournelle's that one careless seal of a pressure suit kills.}"
+  ],
+  [
+   9966,
+   "\\cpara{Names the filter: hope, set against ``the Sierra Club's doom-and-gloom.''}"
+  ],
+  [
+   10321,
+   "\\cpara{Explains the blind spot: the young author feared for personal safety but treated the Future as immortal. ``Lives could be lost, but not the Future.'' The FDA estimate earlier in the post weighs lives lost on each side; it does not bear on this kind of case.}"
+  ],
+  [
+   10812,
+   "\\cpara{Reports the young author's explicit thought on noticing the danger: attachment to the benefits of technology had caused a flinch from the thought of extinction.}"
+  ],
+  [
+   11127,
+   "\\cpara{Says the young author absorbed the insight with as few changes as possible; the old plans found new reasons.}"
+  ],
+  [
+   11500,
+   "\\cpara{The chief example: the old plan, full speed to AI, kept with a new reason, to get there before nanotechnology.}"
+  ],
+  [
+   11704,
+   "\\cfact{The young author's writings bear this out. In November 1996 the ``Interim Meaning Of Life'' was ``Get to the Singularity as fast as possible!'' In March 1999: ``the reason I'm in a rush has nothing whatsoever to do with the meaning of life \\ldots\\ But the longer it takes to get to the Singularity, the higher the chance of humanity wiping itself out.''}"
+  ],
+  [
+   11718,
+   "\\cpara{Generalizes, with ``I guess,'' to most people: Traditional Rationality was not enough to prevent this.}"
+  ],
+  [
+   11844,
+   "\\cpara{Promises a later post on when the author fully saw the mistake.}"
+  ]
+ ]
+}
