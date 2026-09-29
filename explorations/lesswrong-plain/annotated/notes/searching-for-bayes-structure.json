@@ -1,0 +1,101 @@
+{
+ "slug": "searching-for-bayes-structure",
+ "header": "\\post{Searching for Bayes-Structure}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/QrhAeKBkm2WsdRYao/searching-for-bayes-structure}\n",
+ "skeleton_sha": "41a8975a8b368600356d20f727f3857e016f48eea42c422825241c607e19bdaa",
+ "post_sha": "37962ad72046b2fc6a6234dd3a975ee1fbcb455dffe85fb41ecacb20e4e6832e",
+ "edits": [],
+ "notes": [
+  [
+   158,
+   "\\cpara{The epigraph states the thesis as fiction: gnomish helms that work usually have a minor helm hidden inside. I could not check the quotation against the Spelljammer books.}"
+  ],
+  [
+   628,
+   "\\cpara{Recalls two earlier posts: knowing about something means sharing mutual information with it, and such information is physical, since knowing where molecules are lets a device turn heat into work.}"
+  ],
+  [
+   1073,
+   "\\cpara{Recalls the previous day's post, ``Perpetual Motion Beliefs'': forming true beliefs without evidence is ``the same sort of improbability'' as a hot glass of water turning into ice cubes and electricity. Then adds that thinking takes work in the physical sense and is governed by probability theory.}"
+  ],
+  [
+   1596,
+   "\\clogic{This is E.~T. Jaynes's view (\\textsc{Physical Review}, 1957). Jaynes is not named here, and the view is contested; the point is made in full in the note on ``The Second Law of Thermodynamics, and Engines of Cognition.''}"
+  ],
+  [
+   1610,
+   "\\cpara{The analogy: a wheel that keeps turning with no visible power source makes you look for a hidden one.}"
+  ],
+  [
+   1916,
+   "\\cpara{Applies the analogy to minds. The conclusion is hedged in the post's own words: ``at least vaguely Bayesian,'' ``at least one process,'' ``sort-of,'' ``somewhere.'' This weak claim is what the thermodynamic argument can deliver.}"
+  ],
+  [
+   2290,
+   "\\cpara{The argument in detail: gaining mutual information with S requires evidence, and processing it. The equivalence it states holds for variables: two variables share mutual information exactly when one is evidence about the other.}"
+  ],
+  [
+   3077,
+   "\\cpara{Extends the weak claim from the whole mind to each useful part, with more qualifiers: ``at least a little,'' ``however noisily,'' ``even if this Bayesian structure is only apparent in the context of surrounding processes.'' The post does not define ``Bayesian structure.'' So qualified, the claim comes close to restating its premise: a part that helps find truth helps make the mind's states carry information about the world.}"
+  ],
+  [
+   3533,
+   "\\cpara{Claims that the whole philosophical debate about words, definitions and meaning was ``all along'' a disguised form of Bayesian inference. The support is the earlier posts' account of categories as tools for inference. No philosopher and no position is named, so the reader cannot tell which of the philosophers' questions the author holds to be answered.}"
+  ],
+  [
+   4108,
+   "\\cpara{Reports the author's disappointment that no reader greeted the result with enthusiasm.}"
+  ],
+  [
+   4279,
+   "\\cpara{Gives two reasons: reading about a discovery is less exciting than making it, and readers do not yet see that the search for hidden Bayesian structure is one great quest, ``like searching for the Holy Grail.''}"
+  ],
+  [
+   4752,
+   "\\cpara{The strong claim: every quest ends with ``the same Holy Grail,'' the ``entire'' Grail. The support for ``always'' is the author's report of repeated finds, given a few paragraphs on (``Once this happens to you a few times''). The post itself points to two cases, both by link: the earlier posts on words, and regularized regression.}"
+  ],
+  [
+   5226,
+   "\\cpara{Answers a complaint that the long essays did not say where they were going: it is hard to say where you are going ``when you're going somewhere like that.''}"
+  ],
+  [
+   5570,
+   "\\cpara{The post grants that knowing that a process is Bayesian, without knowing how, is ``a hint at the form an answer would take; but certainly not an answer.'' By this standard, the thermodynamic argument above gives a hint: it shows that some Bayesian structure must exist, not what it is.}"
+  ],
+  [
+   6186,
+   "\\cpara{Describes how the quest starts: a useful cognitive phenomenon about which philosophers and AI researchers still disagree.}"
+  ],
+  [
+   6576,
+   "\\cpara{Describes, as a comic monologue, finding Bayesian structure in one process after another, and then asking whether the parts that still look non-Bayesian do anything.}"
+  ],
+  [
+   7375,
+   "\\clogic{Both answers confirm the thesis. A useful part turns out to be Bayesian, and a part that is not Bayesian is judged useless. As described, the search has no outcome that would count against the thesis: a useful part with no Bayesian structure. The monologue is comic, but the next paragraph presents it as how one learns ``the rhythm.''}"
+  ],
+  [
+   7403,
+   "\\cpara{Says that after a few such discoveries one picks up ``the rhythm,'' and that the rhythm is hard to put into words.}"
+  ],
+  [
+   7622,
+   "\\cpara{Explains why the author did not simply announce ``Bayes is the secret of the universe'': some would cheer, and others would point to useful ad hoc methods such as regularized linear regression. The linked page supports the post. Ridge (Tikhonov) regression gives the most probable solution under a normal prior, ``according to Bayes' theorem'' (Wikipedia, ``Ridge regression,'' section ``Bayesian interpretation''). The post leaves this answer in a link.}"
+  ],
+  [
+   8274,
+   "\\cpara{Says the author hoped that one worked example, plus the earlier posts on passwords and on tools and laws, would convey the rhythm to readers who had not made the search themselves.}"
+  ],
+  [
+   8845,
+   "\\cpara{A joke about a secret ``Bayes Council.''}"
+  ],
+  [
+   9084,
+   "\\cpara{Names the goal ``Bayes-Sight'': seeing how each cognitive process is Bayesian. The strong claim returns as a necessity: ``as it always is - as it always must be.'' The thermodynamic argument backs a ``must'' only for ``at least a little'' Bayesian structure; for the full structure the post has only the reported experience.}"
+  ],
+  [
+   9469,
+   "\\cpara{Closes with a passage from Roger Zelazny's \\textsc{Prince of Chaos} about seeing ``The clear, cold lines of eternity.'' I did not check it against the novel.}"
+  ]
+ ]
+}

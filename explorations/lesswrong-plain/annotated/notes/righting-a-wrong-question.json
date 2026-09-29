@@ -1,0 +1,89 @@
+{
+ "slug": "righting-a-wrong-question",
+ "header": "\\post{Righting a Wrong Question}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/rQEwySCcLtdKHkrHp/righting-a-wrong-question}\n",
+ "skeleton_sha": "b822be8ac9576fd25aca3cd1b55330e02ef13a089410c014a5ce59c73b7adcfd",
+ "post_sha": "8f208d9f72dfd9ce90e8ed272b326a4f078cfda1d18a0ac6a9b3d17dc1d4d31a",
+ "edits": [],
+ "notes": [
+  [
+   136,
+   "\\cpara{Promises a simple trick that makes an unanswerable question solvable.}"
+  ],
+  [
+   479,
+   "\\cpara{The trick: ask why you believe X instead of why X is so. The second question is ``guaranteed to have a real answer,'' even if X is false or incoherent. A similar method is old. Hume, for a philosophical term suspected of having no meaning: ``we need but enquire, from what impression is that supposed idea derived? And if it be impossible to assign any, this will serve to confirm our suspicion'' (\\textsc{Enquiry Concerning Human Understanding}, 1748, section 2).}"
+  ],
+  [
+   965,
+   "\\cpara{Explains why the second question is answerable: the belief exists, and some chain of causes leads to it. For free will, a book-length cognitive account of how the feeling of willing arises already existed (Daniel Wegner, 2002; see the note on ``Dissolving the Question'').}"
+  ],
+  [
+   1300,
+   "\\cpara{Offers four more pairs of questions: time, being born as oneself, consciousness, the existence of reality.}"
+  ],
+  [
+   1716,
+   "\\clogic{This pair is close to what David Chalmers later named ``the meta-problem of consciousness'': ``the problem of explaining why we think that there is a problem of consciousness'' (\\textsc{Journal of Consciousness Studies}, 2018). Chalmers finds versions of the strategy in Hobbes, Hume, Spinoza and Kant. Whether answering the second question settles the first is the disputed point. Illusionists typically hold that it does; Chalmers holds that ``explaining our judgments about consciousness does not suffice to solve or dissolve the problem of consciousness.''}"
+  ],
+  [
+   1816,
+   "\\cpara{Says the method works whether or not the question is confused, and traces the author's belief about socks back through vision to the socks and why they were put on.}"
+  ],
+  [
+   2727,
+   "\\cpara{Concludes that the belief about socks is fully explained by the socks, as it should be, since information requires interaction.}"
+  ],
+  [
+   3039,
+   "\\cpara{The contrasting case: a mirage of a lake is explained without any lake, so the belief is ``explained away.''}"
+  ],
+  [
+   3310,
+   "\\cpara{Draws the common point: either way the belief is a real event with a causal history.}"
+  ],
+  [
+   3494,
+   "\\cpara{Restates the point with the lake: the question about the lake may fail, the question about the perception cannot.}"
+  ],
+  [
+   3727,
+   "\\cpara{Raises the objection: ``I believe in free will because I have free will.'' That, the post says, is not so easy.}"
+  ],
+  [
+   3911,
+   "\\cpara{Begins the answer: the perception of socks is an event in the visual cortex, open to cognitive science.}"
+  ],
+  [
+   4096,
+   "\\cpara{Continues: each step in the sock chain is explained by ordinary science, from biology and optics to thermodynamics.}"
+  ],
+  [
+   4557,
+   "\\cpara{States the requirement: break the causal chain into small steps, each explained in terms that are ``not themselves confusing,'' the standard of ``Dissolving the Question.''}"
+  ],
+  [
+   4801,
+   "\\cpara{Applies the requirement to free will: the sock detector is clear, so where is the free-will sensor, and how does it work? The questions are left to the reader.}"
+  ],
+  [
+   5185,
+   "\\cpara{Says that if the belief comes from observing something real, tracing back will ``eventually'' reach it.}"
+  ],
+  [
+   5370,
+   "\\cpara{Otherwise the tracing finds an algorithm that runs skew to reality.}"
+  ],
+  [
+   5562,
+   "\\cpara{Repeats that the question about the belief always has an answer, with the belief as the starting point.}"
+  ],
+  [
+   5737,
+   "\\cpara{Contrasts cognitive science, whose questions are ``solvable,'' with metaphysics.}"
+  ],
+  [
+   5966,
+   "\\cpara{Adds that the idea that cognitive science is less lofty than metaphysics ``is simply wrong.'' No reason is given.}"
+  ]
+ ]
+}

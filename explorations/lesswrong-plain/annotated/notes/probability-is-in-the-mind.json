@@ -1,0 +1,141 @@
+{
+ "slug": "probability-is-in-the-mind",
+ "header": "\\post{Probability is in the Mind}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/f6ZLxEWaankRZ2Crv/probability-is-in-the-mind}\n",
+ "skeleton_sha": "2a93132df0bc3bb88f867427d9212d033e8ed3511f8a5f31fe79f7c2b10caf77",
+ "post_sha": "1f32f70bff8a26eb018518283ec5552547e37dae4c0d99c54b54b17371931b6a",
+ "edits": [],
+ "notes": [
+  [
+   209,
+   "\\cpara{Recalls the previous day's post: pulp covers show aliens desiring human women because the artists took sexiness to be a property of the woman, not of the observer.}"
+  ],
+  [
+   618,
+   "\\cpara{Credits the term to E.~T. Jaynes and states his view: probabilities express partial information, a fact about a mind, not about the phenomenon. Jaynes does use the term as his own: ``we call it the Mind Projection Fallacy'' (``Clearing up Mysteries,'' 1989). The ``accursèd frequentists'' are a joke.}"
+  ],
+  [
+   1070,
+   "\\cpara{Warns that what follows simplifies a long dispute.}"
+  ],
+  [
+   1189,
+   "\\cpara{Sets up the example: a coin known to be biased, in an unknown direction and by an unknown amount.}"
+  ],
+  [
+   1510,
+   "\\cpara{Asks whether, before looking, you would assign probability 0.5 to heads.}"
+  ],
+  [
+   1669,
+   "\\cpara{The frequentist's answer, which the post has warned is simplified. It joins two views that philosophers of probability keep apart (Stanford Encyclopedia of Philosophy, ``Interpretations of Probability''). Frequentists (Venn, von Mises, Reichenbach) identify probability with a relative frequency in a class of repeated trials; von Mises called the probability of a single case meaningless. Propensity theorists (Peirce, Popper) take it to be a disposition of a physical set-up, and Popper attributes the propensity ``to the entire chance set-up,'' not to the coin alone. On either view the speaker's factual claim is true: this coin's long-run frequency of heads is not 0.5.}"
+  ],
+  [
+   2028,
+   "\\cpara{The Bayesian's answer: the coin has already landed, so a probability describes what you know, and theorems show that weights for planning must obey the laws of probability. With nothing to favor heads over tails, the weight is 0.5 (for any bias, a symmetric mixture gives exactly 0.5).}"
+  ],
+  [
+   2921,
+   "\\clogic{As staged, the two speakers do not disagree about any fact. The frequentist speaks of the coin's long-run frequency, which the Bayesian does not dispute. The Bayesian speaks of how to weigh this one flip, for which the frequentist, on von Mises's view, offers no number at all. The Bayesian grants that the name is optional: ``You can call that number whatever you like.'' What the example shows is a difference over the word ``probability.''}"
+  ],
+  [
+   2935,
+   "\\cpara{States the author's side.}"
+  ],
+  [
+   3012,
+   "\\cpara{Hedged (``may be just plain wrong''), and supported by work published the year before. Diaconis, Holmes and Montgomery describe a coin-tossing machine that, ``With careful adjustment,'' lands a coin started heads up heads up ``one hundred percent of the time,'' and find that natural flips come up as they started with chance ``about .51'' (\\textsc{SIAM Review}, 2007).}"
+  ],
+  [
+   3423,
+   "\\cpara{Offered with ``I believe'' and no source. The best-known case fits. Men sued to void the 1970 draft lottery, drawn in December 1969, on the ground that it was not properly randomized (Fienberg, \\textsc{Science}, 1971). I could not find the judge's remark. The complaint was borne out by the results: the date capsules had been put in a box month by month and not mixed enough, and men born late in the year drew more than their share of low numbers, so they were more likely to be drafted (Starr, \\textsc{Journal of Statistics Education}, 1997).}"
+  ],
+  [
+   3647,
+   "\\cpara{The robot that predicts the flip with 90\\% accuracy is a version of what philosophers call the reference class problem: a frequency depends on the class of trials chosen, and different classes give different numbers. It is a recognized difficulty for frequentists. Von Mises accepted it, ``insisting that the notion of probability only makes sense relative to a collective,'' and on a propensity view the robot and you describe different set-ups (Stanford Encyclopedia, as above). The post's question has force; those schools have an answer to it, which the post does not give.}"
+  ],
+  [
+   4091,
+   "\\cpara{The Bayesian answer: there is no real probability, only the robot's partial information and yours.}"
+  ],
+  [
+   4427,
+   "\\cpara{Introduces two brainteasers whose puzzle, the post says, comes from thinking of probabilities as ``inherent properties of objects.'' The word ``inherent'' was used for the frequentist above.}"
+  ],
+  [
+   4673,
+   "\\cpara{The first puzzle, stated with care. You ask the question, so ``Yes'' is certain whenever there is a boy, and that is what makes the answer 1/3. If the mother had instead chosen what to mention, naming a boy or a girl at random when she has one of each, the same words would give 1/2. The post's wording avoids that ambiguity.}"
+  ],
+  [
+   4942,
+   "\\cpara{Works the answer: 1/3. The arithmetic is correct (checked by enumeration).}"
+  ],
+  [
+   5458,
+   "\\cpara{Gives the contrast: if the eldest is a boy, the chance of two boys is 1/2. Correct.}"
+  ],
+  [
+   5740,
+   "\\cpara{The same for the youngest: 1/2.}"
+  ],
+  [
+   5873,
+   "\\cpara{States the apparent paradox: the boy is either the eldest or the youngest, and either way the answer is 1/2, yet the combined answer is 1/3.}"
+  ],
+  [
+   6097,
+   "\\cpara{The card version: of six equally likely pairs from four cards, five contain an ace and one of those is the pair of aces, so 1/5. Correct.}"
+  ],
+  [
+   6668,
+   "\\cpara{Asking about the ace of spades gives 1/3, and the ace of hearts likewise. Correct.}"
+  ],
+  [
+   7110,
+   "\\cpara{States the card paradox: the ace held is hearts or spades, and either way the answer is 1/3, yet the combined answer is 1/5.}"
+  ],
+  [
+   7649,
+   "\\cpara{The resolution is right. The arithmetic reason the case split fails: ``holding the ace of spades'' and ``holding the ace of hearts'' overlap in one hand, the pair of aces, which is counted in both. Conditioning on either of two overlapping events does not give the answer for their union.}"
+  ],
+  [
+   8158,
+   "\\cpara{Explains the division by P(E) as throwing out eliminated possibilities and renormalizing.}"
+  ],
+  [
+   8348,
+   "\\cpara{Before the answer, ``Yes'' to ``at least one ace'' has probability 5/6. Correct.}"
+  ],
+  [
+   8502,
+   "\\cpara{And ``Yes'' to ``the ace of spades'' has probability 1/2. Correct.}"
+  ],
+  [
+   8624,
+   "\\cpara{Concludes that different questions give different evidence, and so different states of knowledge.}"
+  ],
+  [
+   8973,
+   "\\cpara{The same for the children: 3/4 against 1/2. Correct.}"
+  ],
+  [
+   9339,
+   "\\cpara{Diagnoses the paradox as treating the pair-probability as a property of sets of cards.}"
+  ],
+  [
+   9882,
+   "\\cpara{Applies the diagnosis to the children, with an analogy about apples.}"
+  ],
+  [
+   10406,
+   "\\clogic{The analogy fits a property that each member has, as each apple has a weight. The view it defeats is that each set of cards carries its own pair-probability. That is not the frequentist's view. For them 1/5 and 1/3 are shares of three overlapping groups of hands, and shares of overlapping groups can differ this way without contradiction; repeated draws give the same numbers (a simulation gives 0.200 for the first). So the puzzles show the need to condition on exactly what was learned. They do not decide between the Bayesian and the frequentist of the coin example.}"
+  ],
+  [
+   10420,
+   "\\cpara{Draws the moral: probabilities are states of partial information about things, not properties in them.}"
+  ],
+  [
+   10602,
+   "\\cpara{The conclusion, stated for all probabilities. Every example in the post is a classical system in which the uncertainty is plainly ignorance: a coin, cards, children. The case that led Popper to propensities is quantum, claims such as ``the probability that this radium atom decays in 1600 years is 1/2'' (Stanford Encyclopedia, as above). Jaynes held that ``The current literature of quantum theory is saturated with the Mind Projection Fallacy'' (1989). The post does not take up the case.}"
+  ]
+ ]
+}

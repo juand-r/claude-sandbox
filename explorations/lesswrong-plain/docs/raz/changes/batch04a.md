@@ -95,3 +95,27 @@ Why: Same.
 - Before:  \nb{One eye also judges depth, from size, overlap, perspective and motion. The second eye adds stereopsis.}
 - After: 
 
+
+## annotated/posts/searching-for-bayes-structure.tex
+
+Why: Nitpick: the post states the premise that the beliefs are true, so ``right direction'' is not smuggled in.
+
+- Before: \clogic{Mutual information measures correlation, not correctness. A mind whose beliefs about S were exactly inverted would also hold the full 10 bits. ``In the right direction'' comes from the previous paragraph's premise that the beliefs are true, not from the mutual information.}
+- After: 
+
+
+## annotated/afterwords/searching-for-bayes-structure.tex
+
+Why: Same.
+
+- Before:  Even the ``right direction'' in the argument comes from assuming that the beliefs are true, since mutual information measures correlation and an inverted map would carry as much.
+- After: 
+
+
+## honest/sections/searching-for-bayes-structure.tex
+
+Why: Same.
+
+- Before:  And mutual information measures correlation, not correctness: a mind with exactly inverted beliefs would carry as much.}
+- After: }
+

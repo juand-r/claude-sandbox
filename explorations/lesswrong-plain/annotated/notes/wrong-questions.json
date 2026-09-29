@@ -1,0 +1,65 @@
+{
+ "slug": "wrong-questions",
+ "header": "\\post{Wrong Questions}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/XzrqkhfwtiSDgKoAF/wrong-questions}\n",
+ "skeleton_sha": "f9a85ef789ddad2d26aca092dbadd4049da5b35fde9472cd1125fa25c3cb2a14",
+ "post_sha": "63828e544f0c98c97ee179dcb666c9c7bb80cdacea62c7a72f8cfacd8957b9f8",
+ "edits": [],
+ "notes": [
+  [
+   116,
+   "\\cpara{Defines ``wrong questions'': questions that cannot be answered on their own terms, only dissolved by understanding the mental algorithm that makes them feel like questions. The idea is the one set out in ``Dissolving the Question,'' posted the same day; the note there gives its history.}"
+  ],
+  [
+   432,
+   "\\cpara{Gives a test, offered as ``One good cue'': you cannot imagine any concrete state of the world that would answer the question. Wittgenstein stated a close relative: ``For an answer which cannot be expressed the question too cannot be expressed. The riddle does not exist. If a question can be put at all, then it can also be answered'' (\\textsc{Tractatus Logico-Philosophicus}, 6.5, Ogden's translation, 1922).}"
+  ],
+  [
+   689,
+   "\\cpara{First example: the falling tree. No state of affairs makes ``sound'' really mean one thing rather than the other, which is the earlier posts' point about definitions.}"
+  ],
+  [
+   1040,
+   "\\cpara{Blocks the reply that the state of affairs is simply that ``\\,`sound' means acoustic vibrations'': taboo ``means'' and similar words, and ask again what would make one side right.}"
+  ],
+  [
+   1396,
+   "\\cpara{Second example, free will, as a question no concrete state of affairs could answer. There is a long-standing answer that names one. Hume: ``By liberty, then, we can only mean a power of acting or not acting, according to the determinations of the will,'' which belongs ``to every one who is not a prisoner and in chains'' (\\textsc{Enquiry Concerning Human Understanding}, 1748, section 8). That state of affairs exists in deterministic physics. The example works against a notion of free will that the post does not specify. The author's own later answer is compatibilist, like Hume's: in ``Thou Art Physics'' (6 June 2008), choice and control ``require determinism'' (see the notes on ``Dissolving the Question'').}"
+  ],
+  [
+   1614,
+   "\\cpara{Third example: ``Why does anything exist at all?'' The reader is asked what a satisfactory answer would even look like.}"
+  ],
+  [
+   1796,
+   "\\cpara{Admits not knowing, and predicts from ``previous experience with unanswerable questions'' the form the answer will take: no First Cause, but an insight showing the question was wrong.}"
+  ],
+  [
+   2276,
+   "\\cpara{Restates the principle of ``Mysterious Answers to Mysterious Questions'' (the note there records that the author later credited it to E.~T. Jaynes) and extends it from ignorance to confusion: ``Confusion exists in the map, not in the territory.''}"
+  ],
+  [
+   2706,
+   "\\cpara{Says that trying to answer such questions ``inevitably'' produces a mysterious answer that predicts nothing. ``Inevitably'' comes without evidence; the one attempted answer in the post is the author's own hypothetical, in the next paragraph.}"
+  ],
+  [
+   3212,
+   "\\cpara{Gives that hypothetical: perhaps nothing exists. Believing it would leave you as confused as before.}"
+  ],
+  [
+   3466,
+   "\\cpara{The central claim, offered with ``at least in my experience'': unanswerable questions are ``always'' solvable. The experience is not described. Of the post's three examples, the falling tree was treated in earlier posts; free will was set as homework the same day, and the author's answer appeared three months later; and for existence the author says ``I don't know the answer.'' The contrast with Queen Elizabeth's morning thoughts is clear: there an answer is easy to imagine, but the information is lost.}"
+  ],
+  [
+   3899,
+   "\\cpara{Infers from the question's seeming impossibility that the author is confused, and that the truth ``probably isn't all that complicated.''}"
+  ],
+  [
+   4194,
+   "\\cpara{Assures readers who have never solved an unanswerable question that this is how such questions work.}"
+  ],
+  [
+   4345,
+   "\\cpara{Announces the next post, ``Righting a Wrong Question.''}"
+  ]
+ ]
+}
