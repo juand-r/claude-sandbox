@@ -49,4 +49,4 @@ posts are merged in.
 | 1 | Fake Beliefs, Noticing Confusion, Mysterious Answers (rest of Book I) | 25 | yes | yes | fa1c1ba |
 | 2a | Overly Convenient Excuses, Politics and Rationality, Against Rationalization, Against Doublethink | 33 | yes | yes | 98a40e5 |
 | 2b | Seeing with Fresh Eyes, Death Spirals, Letting Go (rest of Book II) | 33 | yes | yes | 5320a09 |
-| 3a | The Simple Math of Evolution, Fragile Purposes (Book III) | 24 | running | | |
+| 3a | The Simple Math of Evolution, Fragile Purposes (Book III) | 24 | yes | yes | see git log |

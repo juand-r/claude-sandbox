@@ -142,37 +142,63 @@
 \contentsline {subsection}{Crisis of Faith}{143}{section*.144}%
 \contentsline {subsection}{The Ritual}{145}{section*.145}%
 \contentsline {part}{The Machine in the Ghost}{146}{section*.146}%
-\contentsline {section}{A Human's Guide to Words}{147}{section*.147}%
-\contentsline {subsection}{How An Algorithm Feels From Inside}{147}{section*.148}%
-\contentsline {subsection}{Taboo Your Words}{148}{section*.149}%
-\contentsline {subsection}{An Intuitive Explanation of Bayes's Theorem}{149}{section*.150}%
-\contentsline {part}{Mere Reality}{151}{section*.151}%
-\contentsline {section}{Lawful Truth}{152}{section*.152}%
-\contentsline {subsection}{The Second Law of Thermodynamics, and Engines of Cognition}{152}{section*.153}%
-\contentsline {section}{Reductionism 101}{154}{section*.154}%
-\contentsline {subsection}{Dissolving the Question}{154}{section*.155}%
-\contentsline {subsection}{Mind Projection Fallacy}{155}{section*.156}%
-\contentsline {section}{Science and Rationality}{156}{section*.157}%
-\contentsline {subsection}{Science Doesn't Trust Your Rationality}{156}{section*.158}%
-\contentsline {subsection}{When Science Can't Help}{158}{section*.159}%
-\contentsline {subsection}{No Safe Defense, Not Even Science}{160}{section*.160}%
-\contentsline {subsection}{Faster Than Science}{162}{section*.161}%
-\contentsline {part}{Mere Goodness}{164}{section*.162}%
-\contentsline {section}{Value Theory}{165}{section*.163}%
-\contentsline {subsection}{The Gift We Give To Tomorrow}{165}{section*.164}%
-\contentsline {section}{Quantified Humanism}{167}{section*.165}%
-\contentsline {subsection}{Something to Protect}{167}{section*.166}%
-\contentsline {subsection}{Twelve Virtues of Rationality}{169}{section*.167}%
-\contentsline {part}{Becoming Stronger}{171}{section*.168}%
-\contentsline {section}{Challenging the Difficult}{172}{section*.169}%
-\contentsline {subsection}{Use the Try Harder, Luke}{172}{section*.170}%
-\contentsline {section}{The Craft and the Community}{173}{section*.171}%
-\contentsline {subsection}{A Sense That More Is Possible}{173}{section*.172}%
-\contentsline {part}{Beyond the Sequences}{174}{section*.173}%
-\contentsline {subsection}{Humans Are Not Automatically Strategic}{175}{section*.174}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{176}{section*.175}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{178}{section*.176}%
-\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{180}{section*.177}%
-\contentsline {subsection}{On Caring}{182}{section*.178}%
-\contentsline {subsection}{Strong Evidence Is Common}{183}{section*.179}%
-\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{184}{section*.180}%
+\contentsline {section}{The Simple Math of Evolution}{147}{section*.147}%
+\contentsline {subsection}{Minds: An Introduction}{147}{section*.148}%
+\contentsline {subsection}{The Power of Intelligence}{148}{section*.149}%
+\contentsline {subsection}{An Alien God}{149}{section*.150}%
+\contentsline {subsection}{The Wonder of Evolution}{150}{section*.151}%
+\contentsline {subsection}{Evolutions Are Stupid (But Work Anyway)}{151}{section*.152}%
+\contentsline {subsection}{No Evolutions for Corporations or Nanodevices}{152}{section*.153}%
+\contentsline {subsection}{Evolving to Extinction}{153}{section*.154}%
+\contentsline {subsection}{The Tragedy of Group Selectionism}{154}{section*.155}%
+\contentsline {subsection}{Fake Optimization Criteria}{155}{section*.156}%
+\contentsline {subsection}{Adaptation-Executers, not Fitness-Maximizers}{156}{section*.157}%
+\contentsline {subsection}{Evolutionary Psychology}{157}{section*.158}%
+\contentsline {subsection}{An Especially Elegant Evpsych Experiment}{158}{section*.159}%
+\contentsline {subsection}{Superstimuli and the Collapse of Western Civilization}{159}{section*.160}%
+\contentsline {subsection}{Thou Art Godshatter}{160}{section*.161}%
+\contentsline {section}{Fragile Purposes}{161}{section*.162}%
+\contentsline {subsection}{Belief in Intelligence}{161}{section*.163}%
+\contentsline {subsection}{Humans in Funny Suits}{162}{section*.164}%
+\contentsline {subsection}{Optimization and the Intelligence Explosion}{163}{section*.165}%
+\contentsline {subsection}{Ghosts in the Machine}{164}{section*.166}%
+\contentsline {subsection}{Artificial Addition}{165}{section*.167}%
+\contentsline {subsection}{Terminal Values and Instrumental Values}{166}{section*.168}%
+\contentsline {subsection}{Leaky Generalizations}{168}{section*.169}%
+\contentsline {subsection}{The Hidden Complexity of Wishes}{169}{section*.170}%
+\contentsline {subsection}{Anthropomorphic Optimism}{170}{section*.171}%
+\contentsline {subsection}{Lost Purposes}{171}{section*.172}%
+\contentsline {section}{A Human's Guide to Words}{172}{section*.173}%
+\contentsline {subsection}{How An Algorithm Feels From Inside}{172}{section*.174}%
+\contentsline {subsection}{Taboo Your Words}{173}{section*.175}%
+\contentsline {subsection}{An Intuitive Explanation of Bayes's Theorem}{174}{section*.176}%
+\contentsline {part}{Mere Reality}{176}{section*.177}%
+\contentsline {section}{Lawful Truth}{177}{section*.178}%
+\contentsline {subsection}{The Second Law of Thermodynamics, and Engines of Cognition}{177}{section*.179}%
+\contentsline {section}{Reductionism 101}{179}{section*.180}%
+\contentsline {subsection}{Dissolving the Question}{179}{section*.181}%
+\contentsline {subsection}{Mind Projection Fallacy}{180}{section*.182}%
+\contentsline {section}{Science and Rationality}{181}{section*.183}%
+\contentsline {subsection}{Science Doesn't Trust Your Rationality}{181}{section*.184}%
+\contentsline {subsection}{When Science Can't Help}{183}{section*.185}%
+\contentsline {subsection}{No Safe Defense, Not Even Science}{185}{section*.186}%
+\contentsline {subsection}{Faster Than Science}{187}{section*.187}%
+\contentsline {part}{Mere Goodness}{189}{section*.188}%
+\contentsline {section}{Value Theory}{190}{section*.189}%
+\contentsline {subsection}{The Gift We Give To Tomorrow}{190}{section*.190}%
+\contentsline {section}{Quantified Humanism}{192}{section*.191}%
+\contentsline {subsection}{Something to Protect}{192}{section*.192}%
+\contentsline {subsection}{Twelve Virtues of Rationality}{194}{section*.193}%
+\contentsline {part}{Becoming Stronger}{196}{section*.194}%
+\contentsline {section}{Challenging the Difficult}{197}{section*.195}%
+\contentsline {subsection}{Use the Try Harder, Luke}{197}{section*.196}%
+\contentsline {section}{The Craft and the Community}{198}{section*.197}%
+\contentsline {subsection}{A Sense That More Is Possible}{198}{section*.198}%
+\contentsline {part}{Beyond the Sequences}{199}{section*.199}%
+\contentsline {subsection}{Humans Are Not Automatically Strategic}{200}{section*.200}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{201}{section*.201}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{203}{section*.202}%
+\contentsline {subsection}{Diseased Thinking: Dissolving Questions about Disease}{205}{section*.203}%
+\contentsline {subsection}{On Caring}{207}{section*.204}%
+\contentsline {subsection}{Strong Evidence Is Common}{208}{section*.205}%
+\contentsline {subsection}{``PR'' is corrosive; ``reputation'' is not}{209}{section*.206}%

@@ -2,7 +2,80 @@
  "slug": "superstimuli-and-the-collapse-of-western-civilization",
  "header": "\\post{Superstimuli and the Collapse of Western Civilization}{Eliezer Yudkowsky}{2007}{https://www.lesswrong.com/posts/Jq73GozjsuhdwMLEG/superstimuli-and-the-collapse-of-western-civilization}\n",
  "skeleton_sha": "294321b1cac9da3c35ca3e95c5b73e4d6fc7da62b73656148e1aaeb2600b04df",
- "post_sha": "294321b1cac9da3c35ca3e95c5b73e4d6fc7da62b73656148e1aaeb2600b04df",
+ "post_sha": "472f3edff7a43975fc9a51325032621af6f6c0b4ef1213d1f6271776eff8df5e",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   192,
+   "\\cpara{Opens with deaths from marathon gaming. The three links match three reported cases: a Chinese player of World of Warcraft who died in 2005 after playing ``for several continuous days'' (Xinhua, as quoted on Joi Ito's blog), a South Korean who died in 2005 after about fifty hours of StarCraft, and a Chinese man who died in 2007 after a seven-day session (Wikipedia, ``Video game addiction''). The market claim that follows is the post's thesis in brief.}"
+  ],
+  [
+   879,
+   "\\cpara{Asks how a product can be so engaging that a player prefers another hour of it to food or sleep, and sets aside, as a joke, the reading that this is a rational choice.}"
+  ],
+  [
+   1271,
+   "\\cpara{Defines a superstimulus with the candy bar: it matches taste buds more strongly than anything in the ancestral environment, and the market has no equal incentive to make it healthy.}"
+  ],
+  [
+   1416,
+   "\\cfact{The idea comes from ethology. Niko Tinbergen called such things supernormal stimuli, after experiments in which birds preferred oversized, brightly marked dummy eggs to their own (\\textsc{The Study of Instinct}, 1951). The post does not mention the origin.}"
+  ],
+  [
+   2185,
+   "\\cpara{Gives a second superstimulus: the retouched billboard model of Dove's ``Evolution'' advertisement (2006). The one example of women ``killing themselves'' to compete, supermodels using cocaine, is given without a source.}"
+  ],
+  [
+   2701,
+   "\\cpara{Applies the idea to games, with the author's guesses (``I can guess'') at the techniques: challenges set between easy and impossible, intermittent reinforcement, rising scores, social play.}"
+  ],
+  [
+   3185,
+   "\\cpara{Asks whether competition will stop at games that leave players able to keep their jobs, and argues that it will not. The figures, 5\\% more addictive and 50\\% of a competitor's customers, are an illustration (``may''), not data.}"
+  ],
+  [
+   4001,
+   "\\cpara{Generalizes: if people have the right to be tempted, the market will supply as much temptation as sells, past the point of anomaly and past the point of harm. The change in advertised beauty since the 1950s is left for the reader to consider.}"
+  ],
+  [
+   4686,
+   "\\cpara{Asks why people do not simply refuse, and names the free-market assumption that, without force or fraud, they always can.}"
+  ],
+  [
+   5076,
+   "\\cpara{Says humans can use abstract thought to see when a normally good act is harmful, but also imagine harms that do not exist, like ancestor spirits forbidding rabbit.}"
+  ],
+  [
+   5600,
+   "\\cpara{Offers an evolutionary account of limited willpower, hedged (``seems'', ``perhaps'', ``probably'') and without evidence: ancestors with too much willpower starved themselves for the gods. The adultery clause is a joke.}"
+  ],
+  [
+   6190,
+   "\\cpara{States, without a hedge, that resisting temptation always costs something, because it spends a limited store of mental energy.}"
+  ],
+  [
+   6386,
+   "\\cfact{The link is to an economic model (Ozdenoren, Salant and Silverman, 2006) that takes depletion as its premise: ``Common intuition and experimental psychology suggest that the ability to self-regulate, willpower, is a depletable resource.'' The psychology behind it, ego depletion, later failed two large preregistered replications: 23 laboratories found an effect of $d = 0.04$, with a confidence interval that includes zero (Hagger et al., 2016), and 36 laboratories found $d = 0.06$, not significant (Vohs et al., 2021).}"
+  ],
+  [
+   6659,
+   "\\cpara{Adds, hedged (``may not'', ``it seems plausible''), that resisting a superstimulus may use up willpower faster than resisting ancestral temptations. The suggestion rests on the depletion model of the previous paragraph.}"
+  ],
+  [
+   6995,
+   "\\cpara{Asks whether displaying superstimuli harms even those who resist, and whether such ads should be banned. The questions are left open.}"
+  ],
+  [
+   7178,
+   "\\cpara{Argues both ways on regulation: a problem does not show that government can fix it, and government's inability does not show that nothing is wrong. What regulators' careers reward is stated as fact, without evidence.}"
+  ],
+  [
+   7715,
+   "\\cpara{Ends with what the author calls ``a final argument from fictional evidence,'' Simon Funk's novel \\textsc{After Life} (2006). The suggestion that falling birth rates in rich countries come from ever more tempting alternatives to children is offered with ``Perhaps'' and no evidence. The label is given openly. Seven months later by date, the author wrote ``The Logical Fallacy of Generalization from Fictional Evidence'' (placed earlier in this book) against this kind of argument.}"
+  ],
+  [
+   8504,
+   "\\cpara{The closing quotation. I could not find this sentence in the novel. The text Funk offers for download, dated February 2006, has one character ask, ``So, we simply marketed the humans out of existence?'' and another answer, ``Yup.'' The post's wording may come from another version or another text by Funk.}"
+  ]
+ ]
 }

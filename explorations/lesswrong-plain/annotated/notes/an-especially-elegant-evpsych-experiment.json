@@ -2,7 +2,112 @@
  "slug": "an-especially-elegant-evpsych-experiment",
  "header": "\\post{An Especially Elegant Evpsych Experiment}{Eliezer Yudkowsky}{2009}{https://www.lesswrong.com/posts/J4vdsSKB7LzAvaAMB/an-especially-elegant-evpsych-experiment}\n",
  "skeleton_sha": "4161c47f5859672a2c1947e8da330435901abb9598702e09ba67cf7595de853c",
- "post_sha": "4161c47f5859672a2c1947e8da330435901abb9598702e09ba67cf7595de853c",
+ "post_sha": "6f7b1539f20f4aa55e9c61f8f7cbd7d75700964eaec3cf3303552465c49ae464",
  "edits": [],
- "notes": []
+ "notes": [
+  [
+   180,
+   "\\cpara{Robert Wright's summary, from \\textsc{The Moral Animal} (1994). The wording checks against the book wherever I could search it (Open Library's full-text search). The last sentence, with the two correlations, is from a footnote in the book, where it ends ``(out of 1.0).''}"
+  ],
+  [
+   1107,
+   "\\cpara{The citation. The paper's third author is K.~L. Jang, not ``Lang'' (the journal's record of the article).}"
+  ],
+  [
+   1325,
+   "\\cpara{The author first says the paper has not been read, then adds that a gated copy turned up and ``seems to check out on the basics,'' with N=221. I could not reach the paper or its abstract. Figures in these notes that are not in Wright's summary come from the post, its comment thread or later reviews, and are marked as such.}"
+  ],
+  [
+   1797,
+   "\\cpara{Names the study's main weakness: adults imagined a parent's grief, and no parents were asked about their own. For the reassurance that follows, the post gives only ``my understanding'' and names no study.}"
+  ],
+  [
+   2287,
+   "\\cfact{Such studies exist. A 2020 review (Reynolds et al., \\textsc{New Ideas in Psychology}) reports that in one sample of bereaved parents grief was highest for a child lost at 17 (Wijngaards-de Meij et al., 2005), and that bereaved mothers grieved most for adolescents (Youngblut et al., 2017).}"
+  ],
+  [
+   2301,
+   "\\cpara{Turns to the study's merits, in a list.}"
+  ],
+  [
+   2422,
+   "\\cpara{Answers the worry that .92 is suspiciously high by the strength of selection: pressure great enough to create grief could also fine-tune it.}"
+  ],
+  [
+   2748,
+   "\\cpara{Offers the study against the charge that evolutionary psychology makes no advance predictions: no one would have thought of the experiment without the theory.}"
+  ],
+  [
+   3091,
+   "\\cpara{Says the study separates a hidden motive from an adaptation that runs with no sensitivity to the pressure that made it.}"
+  ],
+  [
+   3417,
+   "\\cpara{Draws the conclusion: grief is not even unconsciously about reproductive value, since it follows the !Kung curve, not the Canadian one.}"
+  ],
+  [
+   3591,
+   "\\clogic{The ratings also correlated .64 with the Canadian curve. The argument rests on the gap between .64 and .92, two correlations computed on the same few ages (see the note on N=221), and the post does not say whether the gap is larger than chance would produce. I could not read the paper to see whether it was tested.}"
+  ],
+  [
+   3707,
+   "\\cpara{Moves from grief to what parents care about: children for their own sake, with genes as the historical reason such minds exist.}"
+  ],
+  [
+   3845,
+   "\\clogic{The experiment does not test what parents care about. It tests whether imagined grief follows one demographic curve more closely than another. In the comments Robin Hanson objected that the result ``rejects one of those poles, but that does not imply the other pole''; the author replied, ``I wasn't arguing for the other pole.''}"
+  ],
+  [
+   4089,
+   "\\cpara{Explains why the author draws a sharp line between evolutionary and cognitive explanations, linking two posts from the same month. The supermarket joke makes the point.}"
+  ],
+  [
+   4695,
+   "\\cpara{The author's impression (``I think'') that .92 is among the highest correlations in psychology, with an aside about a 0.98 correlation between similarity and probability judgments. I could not find the source of the 0.98 or of its example; the linked post, ``Burdensome Details,'' does not contain them.}"
+  ],
+  [
+   4865,
+   "\\clogic{Both figures are correlations between averages over many people, not between individuals' answers. Averaging over hundreds of raters removes most of the scatter in single answers, so a correlation of averages can come out near 1 even when individuals disagree a great deal. It is not comparable with correlations between individuals.}"
+  ],
+  [
+   5318,
+   "\\cpara{Asks how much of the .92 might be luck and names two doubts: whether adults can judge parents' grief, and whether the !Kung are typical of ancestral hunter-gatherers. The post raises the second doubt itself.}"
+  ],
+  [
+   6016,
+   "\\cpara{Concludes that the evidence is strong despite these doubts.}"
+  ],
+  [
+   6124,
+   "\\clogic{The 221 (by the post's count) are raters. By Wright's description the correlation is between two curves, so each data point is an age, not a person. A commenter who read the paper, Benja Fallenstein, reported ten ages, from one day to fifty years, and wrote that if the correlations were tested ``the degrees of freedom would be (the number of ages) - 2 = 8.'' On ten points .92 is still very unlikely by chance ($p \\approx 0.0002$), but the evidence is ten averaged points, not 221 observations.}"
+  ],
+  [
+   6204,
+   "\\cpara{Argues that imagined grief is the right measure, since grief anticipated before a loss is what steers a parent to protect the child. The subjects, though, were not anticipating their own loss; in Wright's words they estimated ``the greatest sense of loss in a parent.'' The argument applies to the study only if those estimates match what parents anticipate, which the post rested earlier on its ``understanding'' of other studies.}"
+  ],
+  [
+   6794,
+   "\\cpara{Argues that the curve that fits is future reproductive potential, not past investment, and asks whether allowing for the cost of raising the child to maturity would fit better still. The question is left open.}"
+  ],
+  [
+   7267,
+   "\\cpara{Offers two explanations, with ``presumably'' and no evidence, for why humans notice sunk costs: an adaptation against switching strategies too often, or a by-product of the pain of waste.}"
+  ],
+  [
+   7523,
+   "\\cpara{Says evolution neither cares nor fails to care about sunk costs, since it is only a fact about past reproduction.}"
+  ],
+  [
+   7768,
+   "\\cpara{Concludes that grief is tuned to the future reproductive cost of a loss, not to past investment.}"
+  ],
+  [
+   8055,
+   "\\cpara{Adds the other half: the adaptation runs as if the parent lived among the !Kung, a difference most people would notice.}"
+  ],
+  [
+   8243,
+   "\\cpara{Closes with a line that sums up the contrast between the two.}"
+  ]
+ ]
 }

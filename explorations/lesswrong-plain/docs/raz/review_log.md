@@ -140,3 +140,47 @@ Layout, for the whole-book pass: new bare-URL overfull boxes, all in the posts' 
 footnotes: Stranger Than History (144pt), Every Cause (119pt, 116pt), Crisis of Faith
 (132pt, 41pt), Generalization from Fictional Evidence (35pt), On Expressing (24pt). Same fix
 as above (md2tex wrapping URLs in \url{}).
+
+## Batch 3a: The Simple Math of Evolution, Fragile Purposes (24 posts)
+
+Eight agents. Edits in `docs/raz/changes/batch03a.md`. Kinds, with examples:
+
+- Critiques a fair reading answers, cut or recast:
+  - Artificial Addition: the parable's evolved arithmetic against "Until you know your idea
+    will work, it won't" (the rule is for designers in a human lifetime).
+  - Fake Optimization Criteria: "inclusive genetic fitness" called loose (it is gene-level,
+    and transposons maximize it); "two selections at once" in Wade's beetles.
+  - Tragedy of Group Selectionism: "magical thinking" against "possible but very difficult".
+  - Anthropomorphic Optimism: a hedge carried into the next paragraph; AI as "subtext".
+  - Adaptation-Executers: the slogan placed in a methods debate the post does not enter.
+  - Wonder of Evolution: evolutionary algorithms recast as tools inside human design, not a
+    counterexample; the paragraph's own "Almost certainly" governs its first sentence.
+  - Humans in Funny Suits: the natural-selection example now described by what it shows.
+  - Minds: An Introduction: preface convention (no charge of citing no opponents).
+- Nitpicks cut: quine jargon, Vinge not named, a novel's plot, a dropped hedge between two
+  posts, a correlation slip and a stipulated number removed from a verdict, a physics joke's
+  threshold (kept as a margin note), a citation typo in a Response, revision trivia, and
+  complaints about the book's selection or order (the editors' choice, not the author's).
+- Points made once, with pointers:
+  - Group selection (Wade's four traits, Wynne-Edwards's own account, cannibalism known in
+    Allee's and Park's work, no biologist quoted): The Tragedy of Group Selectionism.
+  - Mayr's ultimate and proximate causes: Adaptation-Executers.
+  - Utilities as a sum of parts: moved from Terminal Values to Leaky Generalizations, where
+    the author's stated view depends on it.
+  - The retina: An Alien God.
+- Two Responses are short (Adaptation-Executers 185 words, Evolutionary Psychology 203)
+  because little criticism survived; that is intended.
+
+Unverified, as the agents report: Crawford, Salter and Jang (1989) itself (Wright's summary
+and a commenter only; the post's N=221 against the commenter's 436); Wade (1976) beyond the
+abstract; George Williams quotations; the gnxp simulation; the Soviet shoe stories; the
+Perry Metzger epigraph; Cynthia Kenyon's dinner remark; Funk's closing line (not in the
+downloadable text).
+
+Tooling:
+- check_verbatim now strips list markers only in blocks that start as a list, as md2tex
+  does (a hard-wrapped "- " inside a paragraph is text). All posts pass.
+- md2tex drops horizontal rules inside quotes, as it already did at top level (only Ghosts
+  in the Machine has them).
+- Process: my mid-batch notes export caught agents' half-written files. From now on I
+  export only finished slugs until the batch ends.

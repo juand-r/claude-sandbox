@@ -467,3 +467,70 @@ Why: The Allee textbook fact (checked by the Wishes agent) moves to the first fu
 - Before: ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965).}
 - After: ``the most cannibalistic strains maintain a much lower population size than do less cannibalistic strains'' (Park and colleagues, 1965). The textbook with Allee as first author, \textsc{Principles of Animal Ecology} (1949), already reported Chapman's finding (1928) that adult flour beetles eat their own eggs, and called it ``a coaction of some importance in regulating the upper limits of population growth of the colony'' (p.~370).}
 
+
+## annotated/posts/adaptation-executers-not-fitness-maximizers.tex
+
+Why: Fair-defender test: the slogan is a descriptive claim about organisms that the post supports; the debate cited concerns research methods (whether to measure current fitness), which the post does not address. Importing it is a general dispute about the field.
+
+- Before: \cpara{Repeats the epigraph as the conclusion, as settled. The slogan states a position of evolutionary psychology, the school Tooby and Cosmides helped found. Other evolutionary approaches to human behaviour differ with it on, among other things, ``the relevance of measures of current fitness'' (Wikipedia, ``Evolutionary psychology''). A 2001 review of these debates found ``considerable complementarity'' between approaches that study ``psychological mechanisms'' and those that study ``adaptive fit to environments,'' along with ``substantial theoretical and methodological differences'' (Smith, Borgerhoff Mulder and Hill, \textsc{Trends in Ecology and Evolution}).}
+- After: \cpara{Repeats the epigraph as the conclusion.}
+
+
+## annotated/afterwords/adaptation-executers-not-fitness-maximizers.tex
+
+Why: Same.
+
+- Before: The conclusion is also given as settled: ``Therefore it is said.'' The slogan states a position of evolutionary psychology, in a longer debate among evolutionary approaches to human behaviour, one point of which is whether measures of current fitness matter. A 2001 review of that debate found much complementarity between the study of psychological mechanisms and the study of ``adaptive fit to environments,'' and also ``substantial theoretical and methodological differences.'' The post's examples, sugar and chocolate in rich countries, suit its thesis well; the post does not mention that the thesis was argued over.
+
+
+- After: 
+
+- Before: but without the biologists' names for the idea or any sign that the slogan was one side of a debate.
+- After: but without the biologists' names for the idea.
+
+
+## honest/sections/adaptation-executers-not-fitness-maximizers.tex
+
+Why: Same.
+
+- Before:  \nb{The slogan states a position of evolutionary psychology, in a longer debate among evolutionary approaches to human behaviour. A 2001 review of that debate by Smith, Borgerhoff Mulder and Hill found ``considerable complementarity'' between the approaches, and ``substantial theoretical and methodological differences.''}
+- After: 
+
+
+## annotated/afterwords/evolutionary-psychology.tex
+
+Why: STANDARDS 2.5: the Mayr point is made in full in Adaptation-Executers; here a pointer. The straw-man line reads as a jab; the unsourced cues do not bear on the point.
+
+- Before: The post's central distinction is correct, and it is old. The difference between the history that explains a trait and the causes at work in a living animal is what biologists call ultimate and proximate causation, terms Ernst Mayr popularized in 1961. The post explains it at length and without the terms,
+- After: The post's central distinction is correct, and it is old: it is Mayr's ultimate and proximate causation, discussed under ``Adaptation-Executers, not Fitness-Maximizers.'' The post explains it at length,
+
+- Before:  The objection it answers is written by the author. A reader cannot tell whether the target is a common error or a straw man.
+- After: 
+
+- Before: 
+
+The bar story states which cues signalled fertility or resources without sources. That does not matter to its point, which holds whichever cues are right.
+- After: 
+
+- Before: explained at length without its standard name,
+- After: explained at length,
+
+
+## honest/sections/evolutionary-psychology.tex
+
+Why: Same.
+
+- Before: \nb{No one who makes this mistake is named; the question is the author's wording.}
+- After: \nb{No one who makes this mistake is named.}
+
+- Before:  \nb{The cue claims have no sources, but the story's point does not depend on them.}
+- After: 
+
+
+## annotated/afterwords/an-especially-elegant-evpsych-experiment.tex
+
+Why: A citation typo; it stays in the margin note.
+
+- Before:  The third author's name is Jang, not Lang.
+- After: 
+
