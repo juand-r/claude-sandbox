@@ -1,0 +1,149 @@
+{
+ "slug": "could-anything-be-right",
+ "header": "\\post{Could Anything Be Right?}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/vy9nnPdwTjSmt5qdb/could-anything-be-right}\n",
+ "skeleton_sha": "4a93a288ae8503b8eca48803d59e4181e37351da592cee3a0e554652166d082d",
+ "post_sha": "0b27da726bcca92efd5d2ca1ded77524fcb8c17165aa8fb68df11847afdb6c43",
+ "edits": [],
+ "notes": [
+  [
+   133,
+   "\\cpara{Introduces the author's past self, ``Eliezer1999,'' who was sure of knowing nothing about morality. The link goes to ``My Wild and Reckless Youth'' (order 43).}"
+  ],
+  [
+   270,
+   "\\cpara{States what that view implied: if morality required human extinction, Eliezer1999 saw no virtue in opposing it, since what ``should'' be done would then be extinction by definition.}"
+  ],
+  [
+   625,
+   "\\cpara{Adds the rest of the old view: what is right might be worked out with enough time and facts, the evolution that built the brain could not be trusted, and so there was no foundation to stand on.}"
+  ],
+  [
+   993,
+   "\\cpara{The verdict on the old view: ``massively mistaken'' about the nature of morality, ``so far as his explicitly represented philosophy went.'' The qualification prepares the post's point that the implicit view was better than the explicit one.}"
+  ],
+  [
+   1138,
+   "\\cpara{The beaver example, in this wording, is from Richard Rorty's 2003 newspaper essay on Davidson; see the notes on ``Truly Part Of You'' (order 48), which quote it. Davidson's own statement is stronger: ``Before some object in, or aspect of, the world can become part of the subject matter of a belief (true or false) there must be endless true beliefs about the subject matter'' (``Thought and Talk,'' 1975, as quoted by Jonathan Bennett, \\textsc{Mind}, 1985). The post needs only ``at least some'' true beliefs.}"
+  ],
+  [
+   1470,
+   "\\cpara{Applies the principle: a belief that one had no information about morality undercuts itself, since without some correct beliefs one would not be thinking about morality at all.}"
+  ],
+  [
+   1579,
+   "\\cpara{Says that confessing total ignorance felt virtuous, and sets against the familiar ``The only thing I know is that I know nothing'' an inverted saying that the post calls ``admittedly exaggerated.'' The link goes to ``The Proper Use of Humility'' (order 52).}"
+  ],
+  [
+   2068,
+   "\\cpara{Gives the old view on one question: killing was probably wrong, though not certainly. This is the inconsistency the post points to. A judgment that killing is probably wrong is already information about morality.}"
+  ],
+  [
+   2217,
+   "\\cpara{The old plan: build a generic superintelligence and let it reason about right and wrong. The label ``ghost of perfect emptiness'' links to ``No Universally Compelling Arguments'' (order 272), which argued that a mind with every assumption removed is a rock.}"
+  ],
+  [
+   2674,
+   "\\cpara{States the flaw in the plan: a program can find morality only if something in its start state points it there, and Eliezer1999 had nothing to write in.}"
+  ],
+  [
+   3048,
+   "\\cpara{Quotes Marcello Herreshoff, later the author's coauthor, on why programs are run: we know an important fact about the output. I could not find the remark outside this post.}"
+  ],
+  [
+   3488,
+   "\\cpara{Invokes the no-free-lunch theorems. The summary is fair: Wolpert and Macready later glossed their first theorem as saying that ``any two optimization algorithms are equivalent when their performance is averaged across all possible problems'' (2005, as quoted by Wikipedia, ``No free lunch theorem''). ``Maxentropy universe'' is the post's name for the case where all problems are equally likely. The step to morality is an analogy: with no knowledge of the target, no procedure is favoured.}"
+  ],
+  [
+   3880,
+   "\\cpara{Gives Eliezer1999's reply: even an empty mind would see a duty to think about morality.}"
+  ],
+  [
+   4053,
+   "\\cpara{Answers it: thinking is a specific computation, so an AI that decides to think must already believe that some computation is more likely than a Ouija board to tell it what it wants to know.}"
+  ],
+  [
+   4544,
+   "\\cpara{Moves from procedure to meaning: if nothing is known about right and wrong, not even how to find out, what do the words mean?}"
+  ],
+  [
+   4940,
+   "\\cpara{Presses the point with a made-up word, ``wakalixes'': a word with nothing ``baked into'' it has no meaning. The question is about what fixes the meaning of moral words, the semantic part of metaethics.}"
+  ],
+  [
+   5304,
+   "\\cpara{Turns to science: a scientist who says any theory may fall still knows what would count as evidence.}"
+  ],
+  [
+   5599,
+   "\\cpara{Grants that even the notion of evidence can change, as when a reader of Popper meets ``the coherence and uniqueness proofs underlying Bayesian probability'' (Cox's theorem and the Dutch-book arguments; see the notes on ``Beautiful Probability''). The change is possible, the post argues, because the scientist's brain already contained what the new argument appeals to.}"
+  ],
+  [
+   6243,
+   "\\cpara{Draws the moral parallel: ``I'll know it when I see it'' makes sense.}"
+  ],
+  [
+   6369,
+   "\\cpara{Raises the objection: to rely on that recognition is to trust moral intuitions that came from evolution. The link on ``mere evolution'' goes to ``The Gift We Give To Tomorrow,'' later in the book (order 286).}"
+  ],
+  [
+   6867,
+   "\\cpara{Answers that discarding everything evolution gave means discarding the whole brain, including the intuitions that make evolution look like a poor source of morality. This is the argument of ``Where Recursive Justification Hits Bottom'' about induction, applied to morality; for its history (Neurath's boat, Quine), see the notes there.}"
+  ],
+  [
+   7539,
+   "\\cpara{Gives the parallel from science: science and probability theory were built on an instinctive notion of truth, and had that core been flawed, science would have ``sounded completely unappealing and pointless.''}"
+  ],
+  [
+   8049,
+   "\\cpara{Introduces the argument the author would put to the teenage self.}"
+  ],
+  [
+   8213,
+   "\\cpara{The argument: a morality that humans would never be moved to adopt, by any argument or any procedure, would be no more morality than a stone tablet reading ``Thou shalt murder.'' It is put as questions, and aimed at Eliezer1999's view that morality might lie wholly outside our reach.}"
+  ],
+  [
+   8756,
+   "\\cpara{The conclusion, introduced as what ``all this suggests'': you might know ``a little'' about morality, and what your brain would recognize as right is what you are talking about. Treating one's starting judgments as open to later revision is the method of reflective equilibrium; Rawls called such judgments ``provisional fixed points'' (Stanford Encyclopedia, ``Reflective Equilibrium''). For Goodman's earlier version, see the notes on ``Where Recursive Justification Hits Bottom.''}"
+  ],
+  [
+   9371,
+   "\\cpara{Transition: the step is large.}"
+  ],
+  [
+   9416,
+   "\\cpara{The first consequence: one's own mind identifies the moral frame of reference, and one keeps responsibility even for recognizing a ``light'' from outside. The alternative set against it is a light ``that in principle you might not be able to perceive at all.'' That is a stronger view than moral realism as the Stanford Encyclopedia defines it: moral claims purport to report facts, and ``at least some moral claims actually are true'' (``Moral Realism''). Realism in that sense does not require that moral truth lie wholly beyond our perception.}"
+  ],
+  [
+   9898,
+   "\\cpara{The second consequence: a ghost of perfect emptiness need not agree with you, since it may be ``asking a different question.'' The post thus accepts that a mind with a different starting point would mean something else by its moral words.}"
+  ],
+  [
+   10168,
+   "\\clogic{This is where the view meets its main objection. If what our moral words mean is fixed by our starting points, people whose starting points differ seem to talk past each other rather than disagree. The \\textsc{Stanford Encyclopedia} reports the objection against Frank Jackson's version of such a view: ``Someone might disagree with a mature consensus not as a result of conceptual confusion but as a matter of genuine moral disagreement (Zangwill 2000)'' (``Moral Naturalism''). The post draws the consequence only for a ghost; it does not take up humans whose starting points differ.}"
+  ],
+  [
+   10182,
+   "\\cpara{Extends the step: if some things are built into the meaning of ``morality,'' why not other intuitions? The extension is made by a question. The argument so far showed that some content must be built in for the words to mean anything; it did not show which intuitions belong to the meaning of the question rather than to its answers.}"
+  ],
+  [
+   10590,
+   "\\cpara{The example: other things equal, joy is preferable to sorrow.}"
+  ],
+  [
+   10677,
+   "\\cpara{Says to accept this for now, open to later criticism, and not as a personal preference but as part of the question ``What is truly right''.}"
+  ],
+  [
+   10946,
+   "\\clogic{Building intuitions into the meaning of the question resembles the method of Frank Jackson's moral functionalism, which the \\textsc{Stanford Encyclopedia} presents as the most influential form of analytic descriptivism: moral properties are ``whatever satisfies the network analysis of the platitudes that make up mature folk morality,'' a folk morality ``revised by hunting out inconsistencies'' and by discussion (``Moral Naturalism''). The post, like Jackson, allows the starting points to be revised. Unlike Jackson, it does not say here that moral properties are natural properties.}"
+  ],
+  [
+   10960,
+   "\\cpara{Concludes that you may know a good deal about morality, though nothing certain, and asks the reader to give up ``Socratean ignorance.''}"
+  ],
+  [
+   11195,
+   "\\cpara{Denies arguing by definitions and restates the claim as one about the meaning of the words. The first link goes to ``The Parable of Hemlock'' (order 156), the second to ``The Generalized Anti-Zombie Principle'' (order 227).}"
+  ]
+ ]
+}

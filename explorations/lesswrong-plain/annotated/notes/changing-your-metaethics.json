@@ -1,0 +1,109 @@
+{
+ "slug": "changing-your-metaethics",
+ "header": "\\post{Changing Your Metaethics}{Eliezer Yudkowsky}{2008}{https://www.lesswrong.com/posts/LhP2zGBWR5AdssrdJ/changing-your-metaethics}\n",
+ "skeleton_sha": "58b24c8223f722d91b893abe913c897938e17499d5cd1c052f6b767cc3c79b1c",
+ "post_sha": "cf186bdfce8261067f2dc288789f3f1751000ebf9eabf925640ca954bf80a883",
+ "edits": [],
+ "notes": [
+  [
+   134,
+   "\\cpara{Defines metaethics by example: a moral claim says that killing is wrong; a metaethical claim says what makes it wrong. The \\textsc{Stanford Encyclopedia of Philosophy} defines the field more broadly, as the attempt to understand ``the metaphysical, epistemological, semantic, and psychological, presuppositions and commitments of moral thought, talk, and practice'' (``Metaethics''). The next paragraph adds the semantic question, what it ``means'' for something to be bad.}"
+  ],
+  [
+   372,
+   "\\cpara{Compares the two levels: people agree more on Special Relativity than on what science is, and more on ``Murder is bad'' than on what makes it bad. The comparison prepares the post's claim that agreement on the first level can survive a change on the second.}"
+  ],
+  [
+   693,
+   "\\cpara{States the attachment the post addresses: people ``frequently insist'' that if their metaethic is wrong, morality falls apart. The panel is a hypothetical. For the theistic form of the claim, and the non-believers who have accepted a version of it, see the notes on ``Leave a Line of Retreat.''}"
+  ],
+  [
+   1184,
+   "\\cpara{Draws the consequence. The panel's views conflict, so most of their holders are wrong, and many people will have to change their metaethics. This follows from the previous paragraph.}"
+  ],
+  [
+   1364,
+   "\\cpara{Applies ``Leave a Line of Retreat'' (order 128): the retreat is from a metaethic, not from morality. The parenthesis restates the attachment ironically.}"
+  ],
+  [
+   1650,
+   "\\cpara{Presents the post as a summary of earlier posts, and gives the reason: the author has ``learned'' that metaethical beliefs hardly change while an attachment is unanswered. The support is the author's experience.}"
+  ],
+  [
+   1746,
+   "\\clogic{Several of the posts summarized or linked below are not in this book: ``The Moral Void,'' ``Is Morality Given?'', ``Rebelling Within Nature,'' ``Does Your Morality Care What You Think?'', ``Math is Subjunctively Objective,'' ``Probability is Subjectively Objective'' and ``Existential Angst Factory.'' The book's reader meets them only in this summary.}"
+  ],
+  [
+   1879,
+   "\\cpara{The first line of retreat, for a theist: whoever obeys God's orders still decides to obey them, and could be moral without them. The post offers it ``as opposed to immediately attacking the plausibility of God,'' so it is meant to reassure, not to refute the view that God is the source of morality.}"
+  ],
+  [
+   2361,
+   "\\clogic{The link goes to ``Is Morality Given?'' (6 July 2008, not in this book), a dialogue in which this argument is Subhan's. There Obert grants that no one evades responsibility and replies: ``it doesn't follow that the morality I follow consists merely of my preferences.'' The argument settles who decides, not what makes a decision right. This post uses it only for the first.}"
+  ],
+  [
+   2375,
+   "\\cpara{Generalizes the argument to any source of moral authority: the person chose to follow it. Kant made a closely related point: ``Even the Holy One of the Gospels must first be compared with our ideal of moral perfection before we can recognise Him as such'' (\\textsc{Fundamental Principles of the Metaphysic of Morals}, second section, Abbott's translation). The precedent supports the post.}"
+  ],
+  [
+   2842,
+   "\\cpara{Names ``The Moral Void'' (30 June 2008, not in this book) as the most important line of retreat: if a metaethic stops telling you to save lives, you can save them anyway. The closing suggestion, marked ``Maybe,'' is the question of ``What Would You Do Without Morality?'', placed just before this post in the book.}"
+  ],
+  [
+   3368,
+   "\\cpara{Says the aim is to keep one's will steady while one's view of the nature of morality changes, ``not that no morality exists.'' So the post does not take the side of error theorists, who hold that no moral claim is true. Even on their view, the \\textsc{Stanford Encyclopedia} notes, rejecting moral thought ``is of course compatible with thinking that we should use the same language meaning something different by it, or replacing it altogether with some other way of thinking and speaking'' (``Metaethics''). The precedent fits the post's point.}"
+  ],
+  [
+   3631,
+   "\\cpara{Turns to lines of retreat for naturalistic metaethics, set up, the author says, before the author's own metaethic is presented.}"
+  ],
+  [
+   3925,
+   "\\cpara{Summarizes ``Joy in the Merely Real'' and ``Explaining vs.\\ Explaining Away'' (Book IV): a thing is not less worth caring about because it has been explained.}"
+  ],
+  [
+   4366,
+   "\\cpara{Summarizes ``No Universally Compelling Arguments'' (order 272): a moral argument moves only a mind that contains something it can move. The link on modus ponens goes to ``Created Already In Motion'' (273). What that conclusion leaves open is discussed in the notes on the first of these.}"
+  ],
+  [
+   5126,
+   "\\cpara{Summarizes ``Where Recursive Justification Hits Bottom'' and ``My Kind of Reflection'' (270 and 271) and applies them to morality: examine ``Is murder wrong?'' with one's own brain, since there is nowhere outside it to stand. The history of this approach (Neurath's boat, Quine, rule-circularity) is set out in the notes on the first of these.}"
+  ],
+  [
+   6118,
+   "\\cpara{Summarizes ``The Gift We Give To Tomorrow'' (later in the book, order 286) and ``The Genetic Fallacy'' (order 103): evolution may explain how love came about, and that does not make love unjustified, since causation is not justification.}"
+  ],
+  [
+   7057,
+   "\\cpara{Summarizes the evolutionary psychology posts of Book III: people do not reckon their reproductive fitness when they decide, and fitness does not define morality.}"
+  ],
+  [
+   7474,
+   "\\cpara{Answers the worry that if morality is computed in our minds, whatever we think is right must be right. The worry is a standard objection to simple subjectivism, which the \\textsc{Stanford Encyclopedia} calls the ``Missing Fallibility Problem'': ``If what's right is determined by what I approve, I can only be mistaken about what's right if I'm mistaken about what I in fact approve'' (``Moral Sentimentalism''). The calculator reappears in ``Morality as Fixed Computation'' (order 279); the three posts named here are not in this book.}"
+  ],
+  [
+   8299,
+   "\\cpara{Summarizes ``Existential Angst Factory'' (not in this book): if a world of particles seems unbearable, the trouble may be one's life, not reductionism. It is put as a question.}"
+  ],
+  [
+   8605,
+   "\\cpara{Announces the next posts: ``Setting Up Metaethics'' (28 July 2008) and ``The Meaning of Right'' (29 July 2008). Neither is in this book. The book places this post before ``Could Anything Be Right?'', which was posted nine days earlier, on 18 July.}"
+  ],
+  [
+   8752,
+   "\\cpara{Anticipates the question why metaethics matters if it all ends up ``adding up to moral normality.'' The phrase links to ``Living in Many Worlds,'' which gives it as Egan's Law. The second link goes to the author's essay ``Transhumanism as Simplified Humanism,'' which asks what one ought to do on finding ``an unconscious six-year-old girl lying on the train tracks.''}"
+  ],
+  [
+   9106,
+   "\\cpara{The first reason: some people oppose rationality because they think it drains meaning from the universe. The book's example is Keats's \\textsc{Lamia}, discussed in ``Explaining vs.\\ Explaining Away.''}"
+  ],
+  [
+   9226,
+   "\\cpara{The wider reason: many people are harmed by misunderstanding where their morality comes from. ``Poor metaethics forms part of the teachings of many a cult, including the big ones'' is asserted without an example of such a teaching. The link on ``big ones'' goes to ``Religion's Claim to be Non-Disprovable,'' so I infer that the big cults are the major religions. The last two targets, fitness as the whole of morality and selfishness as its only source, are discussed in earlier posts of the book, such as ``Fake Selfishness.''}"
+  ],
+  [
+   9926,
+   "\\cpara{Ends on an unfinished sentence, a joke that withholds ``the real reason.'' The post as LessWrong publishes it ends here.}"
+  ]
+ ]
+}

@@ -25,3 +25,48 @@ Why: Fair reading: the post names evolution's production of human values as the 
 - Before: \nb{By the post's own account, human values came from ``the morally miraculous stupidity of evolution,'' which valued none of them. Robin Hanson
 - After: \nb{Robin Hanson
 
+
+## annotated/afterwords/changing-your-metaethics.tex
+
+Why: Fair reading: Where Recursive Justification Hits Bottom does explain the difference (a causal story, a track record), as our notes there say; "not formalized" is not "not explained". Nitpick. The book's selection is the editors' choice (notes keep the list). The cult claim stays in the notes and Response, out of the In short line as a minor point.
+
+- Before: One summary is firmer than its sources. ``Where Recursive Justification Hits Bottom'' and ``My Kind of Reflection'' are said to ``explain the difference'' between a reflective loop and circular logic. The first left the difference to ``common sense''; the second said the author had not yet formalized it.
+
+
+- After: 
+
+- Before: 
+
+The reader of the book should also know that seven of the posts summarized or linked here are not in it, nor are the two posts it announces. And the book places this post before ``Could Anything Be Right?'', which was written nine days earlier.
+- After: 
+
+- Before: In short: an index of reassurances, offered openly as such, whose central argument is old and used within its limits, with one summary firmer than the posts it summarizes and one claim about cults given no example.
+- After: In short: an index of reassurances, offered openly as such, whose central argument is old and used within its limits.
+
+
+## annotated/posts/changing-your-metaethics.tex
+
+Why: Fair reading: Where Recursive Justification Hits Bottom does explain the difference (a causal story, a track record), as our notes there say; "not formalized" is not "not explained". Nitpick.
+
+- Before: \clogic{``Explain the difference'' is firmer than the two posts. The first says reflective loops can be told from circular logic ``by common sense''; the second says, ``I haven't yet sat down and formalized the exact difference.'' See the notes on both.}
+- After: 
+
+
+## honest/sections/changing-your-metaethics.tex
+
+Why: Fair reading: Where Recursive Justification Hits Bottom does explain the difference (a causal story, a track record), as our notes there say; "not formalized" is not "not explained". Nitpick.
+
+- Before:  \nb{The first of them left that difference to ``common sense''; the second said the author had not yet formalized it.}
+- After: 
+
+
+## annotated/afterwords/could-anything-be-right.tex
+
+Why: The extension is the post's proposal; describing it as "made by a question" stays in the note, not as a gap in the Response.
+
+- Before:  The step from the minimum needed for meaning to these further intuitions is made by a question (``why not accept other intuitions''), not by an argument.
+- After: 
+
+- Before: with precedents in Davidson and Rawls, extended by a question to a view close to
+- After: with precedents in Davidson and Rawls, extended to a view close to
+
