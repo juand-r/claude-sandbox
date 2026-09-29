@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790688300.04756 "honest.tex" "honest.pdf" "honest" 1790688302.35352 0
+["pdflatex"] 1790688336.37113 "honest.tex" "honest.pdf" "honest" 1790688339.00816 0
   "/etc/texmf/web2c/texmf.cnf" 1790484455.44242 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1790636576.41741 12644 224f16f797f659debd63304264b6cb29 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -94,10 +94,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1790484458.45241 36924 0d49b21755741cfeb69caec967b1b39d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790484464 6800791 799b279cd0f0f38733540bece0319a00 ""
-  "honest.aux" 1790688302.20622 43554 15e64f936e14db05c774418a8ceec8ba "pdflatex"
-  "honest.out" 1790688302.21022 73906 fb3c1b4b8f702c9641d99d581e71b570 "pdflatex"
-  "honest.tex" 1790688272.29755 18806 2f3f1d4c8320e01b9109045ad1338e8f ""
-  "honest.toc" 1790688302.21022 27892 f8f4c5bf49930e589f025593106f1ee2 "pdflatex"
+  "honest.aux" 1790688338.85422 43554 15e64f936e14db05c774418a8ceec8ba "pdflatex"
+  "honest.out" 1790688338.85822 73906 fb3c1b4b8f702c9641d99d581e71b570 "pdflatex"
+  "honest.tex" 1790688336.21144 19136 6d69e66012eaca1742afd93805e513fb ""
+  "honest.toc" 1790688338.85822 27892 f8f4c5bf49930e589f025593106f1ee2 "pdflatex"
   "sections/0-and-1-are-not-probabilities.tex" 1790635966.31483 3001 3b78fe57752b8b61879ff4cfb57ce826 ""
   "sections/2-place-and-1-place-words.tex" 1790652804.08907 2486 8dc87c7d16a0bf727755c0b654902a07 ""
   "sections/3-levels-of-rationality-verification.tex" 1790657829.18496 2959 2f5040b377661065150c6ddef4457a3a ""
