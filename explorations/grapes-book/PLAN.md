@@ -8,9 +8,13 @@
 - [x] Specimen 3: sidenotes whose own notes stay in the margin.
 - [x] Specimen 4: Talmud-style page, commentaries wrapped around main text.
 - [x] Specimen 5: notes keyed to line numbers (reledmac).
-- [ ] Show specimens to the author; choose one layout, or a mix
-      (for example, 1 for the chapters and 4 for a few set pieces).
-- [ ] Choose trim size, typeface, chapter opening.
+- [x] Show specimens to the author. Decision (2026-09-30): stacked footnotes,
+      two levels with a rule between them (specimen 1, `[ruled]`), plus
+      margin notes that can be switched off in one line.
+- [x] Set up `book/` with `grapes.sty` (\note, \subnote, \aside), a build
+      script for both modes, and tests.
+- [ ] Later, tinker: trim size, typeface, chapter opening, margin notes on
+      verso pages (currently ragged-right on both sides).
 
 ## Phase 2: structure (next, with the author)
 

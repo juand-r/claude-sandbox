@@ -6,9 +6,11 @@ layout experiments and, later, the book itself.
 
 ## Current state
 
-Layout specimens only. `grapes-specimens.pdf` shows the same passage set five
-ways (see `NOTES.md` for what each one does and what it costs). The prose in
-the specimens is placeholder and its facts are unchecked.
+- `book/`: the book's working setup. Two levels of footnotes stacked at the
+  foot, plus optional margin notes. See `book/README.md` for how to write in
+  it. Chapter 1 holds placeholder prose with unchecked facts.
+- `specimens/` and `grapes-specimens.pdf`: the five layouts we compared
+  before choosing (see `NOTES.md`).
 
 ## How to build
 

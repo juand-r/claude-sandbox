@@ -76,3 +76,27 @@ book, the layout can change late without touching the prose. Specimens 4 and
   Another: levels by subject (botany, history, words).
 - Trim size. Specimens use 5.5 x 8.5 in (1, 5), 7.5 x 9.5 in (2, 3),
   7 x 9 in (4). A mixed book would need one size.
+
+## Decision and setup (2026-09-30)
+
+The author chose stacked footnotes, two levels, separated by a rule, plus
+margin notes that can be removed. This is in `book/grapes.sty`.
+
+Findings while setting it up:
+
+- The rule between levels is bigfoot's `ruled` option (passed to
+  manyfoot). My first attempt with `\SelectFootnoteRule` in the specimens
+  was wrong: that command picks a rule by name for the next series declared,
+  it does not take a rule drawing.
+- Long margin notes: plain `\marginpar` lets a long note run off the bottom
+  of the page. `marginfix` moves notes up or down to fit, which can take them
+  far from their line, and it cannot place a note taller than the page. It
+  drops such a note and reports `lost some margin notes` at the end of the
+  log. I first told the author the drop was silent; that was wrong, my log
+  check had been cut short by `head`. `\aside` now refuses such notes itself,
+  naming the line.
+- KOMA's `scrlayer-notecolumn` can break margin notes across pages, but in
+  a test it moved a long note past the end of the text, and its log calls
+  itself a test release. Not used.
+- In nomargin mode, an `\aside` right next to a `\note` gives two marks side
+  by side (for example 2 and 3 run together). Tolerable for now.
