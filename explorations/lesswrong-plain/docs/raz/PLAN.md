@@ -84,3 +84,10 @@ posts are merged in.
       made-up phrases (`docs/raz/PHRASE_PASS.md`, 345/345); edits logged in
       `docs/raz/changes/phrase_pass.md`.
 - [x] Checks and both books rebuilt.
+
+## Reporting-tag pass (user request, 30 September)
+
+- [x] All 464 sentences with reporting tags ("the post says", ", the author argues,",
+      "is said to") read in context (`docs/raz/SAYS_PASS.md`); 236 afterwords edited, logged in
+      `docs/raz/changes/says_pass.md`.
+- [x] Checks and both books rebuilt.

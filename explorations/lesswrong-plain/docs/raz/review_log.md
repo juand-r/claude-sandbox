@@ -658,3 +658,24 @@ time and find them yourself."
 - Checks: raz_check exit 0 on the edited files; 345/345 notes backups exact; both books
   build with no LaTeX errors (annotated 1603 pages, honest 400). The one em dash in the
   edited files is inside a quotation from Hodgell.
+
+## Reporting-tag pass (30 September)
+
+User request: "I noticed you use a lot of `I say,'... followed by what is said. This is
+cumbersome. Find this and similar cases to fix it."
+
+- A search for reporting tags ("the post says", ", the author says,", ", it argues,", "It says
+  that", "is said to", "says that") found 464 sentences in 255 afterwords. Each was read in
+  context (checklist and rules in `docs/raz/SAYS_PASS.md`).
+- Summaries: tags removed where the Summary already reports the post ("Emotions, the post
+  says, arise from beliefs" became "Emotions arise from beliefs"); kept as a leading clause
+  only where a claim could be read as ours.
+- Responses: interrupting tags removed; attribution put first with a verb that says what the
+  post does ("claims", "asserts", "grants", "admits", "calls"), or the sentence rebuilt
+  around the quotation.
+- About 400 sentences rewritten in 236 afterwords (every edit logged with before and after in
+  `docs/raz/changes/says_pass.md`). No interrupting tag of the form ", the post says," is left.
+  The roughly 60 matches left are sources or characters speaking ("Wittgenstein says",
+  "the defendant says"), the idiom "says nothing about", or short trailing "as the post says".
+- Checks: raz_check exit 0 on the edited files; 345/345 notes backups exact; both books build
+  with no LaTeX errors.
