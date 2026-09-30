@@ -182,11 +182,12 @@ class StreamRun:
         x0 = placed[0].gspan(0)[0]
         lo = c_lo - self.MARGIN
         hi = c_hi + self.MARGIN
+        self.split = (lo + hi) // 2
         self._set_window(lo, np.asarray(bits[lo - x0:hi - x0], dtype=np.uint8))
 
     # Pickling keeps only the constructor arguments and the live window;
     # the (possibly huge) assembly is rebuilt on load.
-    _STATE = ("t", "since", "lo", "width", "words")
+    _STATE = ("t", "since", "lo", "width", "words", "split")
 
     def __getstate__(self):
         return {"args": self._args, **{k: getattr(self, k) for k in self._STATE}}
@@ -198,6 +199,7 @@ class StreamRun:
             setattr(self, k, d[k])
 
     def _set_window(self, lo, cells):
+        self.split = lo + len(cells) // 2
         w = -(-len(cells) // 64) * 64
         if w > len(cells):
             cells = np.concatenate([cells, self.free_cells(self.t, lo + len(cells), lo + w)])
@@ -206,11 +208,26 @@ class StreamRun:
 
     def free_cells(self, g, lo, hi, strict=True):
         """Free-evolution cells [lo, hi) at row g. strict: raise where
-        undefined; else mark those cells UNDEFINED."""
+        undefined; else mark those cells UNDEFINED.
+
+        The two free rows overlap after a while (the left side moves right,
+        the right side left), and only one of them can be true at a given
+        place: the left side's to the left of the active region, the right
+        side's to its right. So left of self.split (the window centre,
+        always inside the active region) the left row takes precedence, and
+        right of it the right row. (Before v0.1.1's fix the right row simply
+        overwrote the left one, which let the window grow without bound.)
+        There is no fallback from one side's row to the other: beyond the
+        right side's end, for example, the left side's row (an A-train) is
+        not the truth, so such cells stay UNDEFINED and fail loudly."""
         out = np.full(hi - lo, UNDEFINED, dtype=np.uint8)
-        for fr in self.free:
+        left, right = self.free
+        for fr, a0, b0 in ((left, lo, self.split), (right, self.split, hi)):
+            a0, b0 = max(lo, a0), min(hi, b0)
+            if a0 >= b0:
+                continue
             start, arr = fr.row(g)
-            a, b = max(lo, start), min(hi, start + len(arr))
+            a, b = max(a0, start), min(b0, start + len(arr))
             if a < b:
                 out[a - lo:b - lo] = arr[a - start:b - start]
         if strict and (out == UNDEFINED).any():
