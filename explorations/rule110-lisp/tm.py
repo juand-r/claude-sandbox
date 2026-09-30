@@ -1,6 +1,7 @@
-"""Layer 2: Turing machines and the TM -> tag-system compiler (Cook 2009,
-following Cocke-Minsky; exponential runtime, used for correctness tests
-and small programs).
+"""Layer 2: two-way Turing machines, and the TM -> tag-system compiler
+of Cook 2009 (following Cocke-Minsky). The tag tape encodes the TM tape
+in unary, so runtime is exponential in the tape length; this path is used
+for correctness tests. The polynomial route is cw.py + nw.py.
 
 TM model (as in the paper): m states psi_1..psi_m, t symbols sigma_1..
 sigma_t, two-way infinite tape with periodic backgrounds on both sides.
@@ -97,17 +98,3 @@ def tm_to_ts(tm, state, left_bg, left, cur, right, right_bg):
         + [f"R_{state}"] * sum((s - d[k]) * s ** (k + 1) for k in range(y)))
     return rules, tape, s
 
-
-def ts_run_list(rules, tape, s, max_ts_steps):
-    """Tag-system runner over list-of-strings tapes.
-    Yields (n, tape_list) before each step."""
-    tape = list(tape)
-    for n in range(max_ts_steps):
-        yield n, tape
-        if len(tape) < s:
-            return
-        head = tape[0]
-        app = rules[head]
-        del tape[:s]
-        tape.extend(app)
-    yield max_ts_steps, tape

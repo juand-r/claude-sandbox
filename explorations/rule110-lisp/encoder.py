@@ -14,7 +14,7 @@ single aperiodic patch whose row 48 carries the t=0 marker. Row order in
 blocks.json is time order (increasing row = increasing time).
 
 Block semantics (paper, "Some comments on this algorithm"):
-  A ether        B ether+A^4 (ossifier part)      C initial "V"
+  A ether        B ether + one A^4                C initial "V"
   D glue between moving data                      E moving data N
   F moving data Y                                 G prepared leader
   H primary component    I,J standard components (II = table Y, IJ = table N)
@@ -38,7 +38,13 @@ _DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 PERIODS = {"A": (3, 2), "B": (3, 2), "D": (30, -8), "E": (30, -8),
            "F": (30, -8), "G": (30, -8), "H": (30, -8), "I": (30, -8),
            "J": (30, -8), "K": (30, -8), "L": (30, -8)}
-_BASE_LO = {3: 48, 30: 35}  # first row of the canonical band per period
+# The figures are 100 rows tall; near the top and bottom edges the zig-zag
+# boundary cuts rows short. For each period we take one period of rows
+# from the middle of the figure as the canonical band (all rows complete)
+# and generate every other row from it by the lattice shift.
+BAND_START = {3: 48, 30: 35}
+# rows on each side of the t=0 line over which seam fits are checked
+SEAM_CHECK_ROWS = 40
 
 
 class Block:
@@ -63,7 +69,7 @@ class Block:
             if not 0 <= r < len(self._rows):
                 raise IndexError(f"row {r} outside aperiodic block {self.name}")
             return r, 0
-        lo = _BASE_LO[self.period]
+        lo = BAND_START[self.period]
         rb = lo + (r - lo) % self.period
         return rb, (r - rb) // self.period * self.drift
 
@@ -105,30 +111,27 @@ class Placed:
     def rows_defined(self, lo, hi):
         """Global rows in [lo, hi) where this instance is defined."""
         if self.block.period is None:
-            return range(max(lo, self.dy), min(hi, self.dy + 100))
+            n = len(self.block._rows)
+            return range(max(lo, self.dy), min(hi, self.dy + n))
         return range(lo, hi)
 
 
-# rows around the t=0 line used to verify seam fits
-_CHECK = 40
-
-
 def _attach(prev, block, side):
-    """Place `block` against `prev` on the given side ('R' or 'L').
+    """Place periodic `block` against `prev` on the given side ('R'/'L').
 
-    The seam must fit exactly: on 'R', prev's right edge + 1 == block's left
-    edge at every checked global row; mirrored for 'L'. Returns the unique
-    Placed instance; raises if the fit is not unique.
+    The seam must fit exactly: on 'R', prev's right edge == block's left
+    edge at every checked global row; mirrored for 'L'. Vertical offsets
+    are tried over one period (others are lattice-equivalent). Returns the
+    unique Placed instance; raises if the fit is not unique.
     """
-    period = block.period or 1
+    if block.period is None:
+        raise ValueError(f"block {block.name} is aperiodic; only C is, and "
+                         "C is the anchor, never attached")
     solutions = []
-    for dy in range(-_CHECK, -_CHECK + (100 - 2 * _CHECK if block.period is None
-                                        else period)):
+    for dy in range(-SEAM_CHECK_ROWS, -SEAM_CHECK_ROWS + block.period):
         cand = Placed(block, dy, 0)
-        rows = [g for g in prev.rows_defined(-_CHECK, _CHECK)
-                if g in cand.rows_defined(-_CHECK, _CHECK)]
-        if len(rows) < 2 * period:
-            continue
+        rows = [g for g in prev.rows_defined(-SEAM_CHECK_ROWS, SEAM_CHECK_ROWS)
+                if g in cand.rows_defined(-SEAM_CHECK_ROWS, SEAM_CHECK_ROWS)]
         g0 = rows[0]
         if side == "R":
             dx = prev.gspan(g0)[1] - cand.gspan(g0)[0]

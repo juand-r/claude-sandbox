@@ -1,17 +1,28 @@
-"""Layer 1 (part): read a cyclic tag system tape off an evolved Rule 110 row.
+"""Layer 1 (part): find moving-data symbols in an evolved Rule 110 row.
 
-Moving data N and Y are Cook's blocks E and F: three small gliders whose
-spacings encode the symbol. Between collisions a tape symbol's row content
-is exactly the block's row at one of its 30 vertical phases, so we scan the
-row for each phase's "core" -- the block row stripped of leading/trailing
-ether but keeping interior ether gaps (content plus spacing, position-free).
-Matches ordered by position spell the tape.
+Moving data N and Y are Cook's blocks E and F. Between collisions a
+moving-data symbol's row content is exactly the block's row at one of its
+30 vertical phases, so we scan the row for each phase's "core" -- the
+block row stripped of leading/trailing ether but keeping interior ether
+gaps. Matches ordered by position spell the moving data in flight.
+
+Limits (see REVIEW.md B3): this sees only *moving* data, not the
+stationary tape data that the machinery actually reads, and freshly
+appended symbols can alias the other symbol before they settle. It is a
+diagnostic, not a verified tape reader.
 """
 
-from encoder import load_blocks
+from encoder import BAND_START, load_blocks
 
-# ether-tile rotations, used to strip a core's leading/trailing background
-_ETHER = "11111000100110"
+# D..L blocks repeat every 30 rows; one period of rows gives every phase.
+PHASES = 30
+# Every E/F row core is well over this long; a shorter one means the
+# ether stripping went wrong, so fail loudly.
+MIN_CORE = 60
+# Consecutive moving-data symbols start >= 260 cells apart (block widths
+# 310-340 minus up to ~80 cells of phase-dependent core offset), while the
+# partial-core aliases seen inside a single block sit <= 226 apart.
+MIN_PITCH = 245
 
 
 def _strip_ether(bits):
@@ -35,10 +46,10 @@ class Decoder:
         seen = set()
         for sym, name in (("N", "E"), ("Y", "F")):
             blk = blocks[name]
-            for r in range(35, 65):
+            for r in range(BAND_START[PHASES], BAND_START[PHASES] + PHASES):
                 bits = blk.bits(r)
                 core, lead = _strip_ether(bits)
-                if len(core) < 60:
+                if len(core) < MIN_CORE:
                     raise AssertionError(f"suspiciously short core {name}@{r}")
                 if core in seen:
                     continue
@@ -72,10 +83,7 @@ class Decoder:
                 continue
             accepted.append((p, ln, a, b, sym))
         accepted = sorted((p, p + ln, sym) for p, ln, a, b, sym in accepted)
-        # Adjacent symbols sit ~340+ cells apart, but core start offsets
-        # vary with phase by up to ~80 cells, so true gaps reach down to
-        # ~260. Known aliases (partial cores inside a block) sit at <= 226.
         for (a1, b1, s1), (a2, b2, s2) in zip(accepted, accepted[1:]):
-            if a2 - a1 < 245:
+            if a2 - a1 < MIN_PITCH:
                 raise ValueError(f"implausible symbol pitch at {a1},{a2}")
         return [(a, sym) for a, b, sym in accepted]

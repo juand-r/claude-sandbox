@@ -2,10 +2,8 @@
 system emulating a clockwise binary Turing machine (Cook 2009, section
 "A Polynomial Time Simulation"; original method Neary & Woods 2006).
 
-Clockwise binary TM: circular tape over {A, B}; each step reads the symbol
-at the head, replaces it with 1 or 2 written symbols appended at the tape
-end, and the head advances to the next symbol. delta: (state, sym) ->
-(writes, newstate), writes a tuple of 1 or 2 symbols; missing entry halts.
+Input: a binary clockwise TM (cw.CWTM). Run the result with
+tag.run(rules, tape, 2, ...).
 
 Tag symbols are tuples (letter, stage, tmstate); '-' and '0' are
 unsubscripted ('-' is never read, '0' has an empty appendant). Stages 1-6
@@ -19,23 +17,6 @@ transition writes two symbols.
 """
 
 DASH, ZERO = "-", "0"
-
-
-class CWTM:
-    def __init__(self, delta):
-        self.delta = delta   # (state, 'A'|'B') -> (writes tuple, newstate)
-
-    def run(self, state, tape, max_steps):
-        """tape: list of 'A'/'B' with the head at index 0. Yields
-        (state, tape tuple) before each step."""
-        tape = list(tape)
-        for _ in range(max_steps):
-            yield state, tuple(tape)
-            key = (state, tape[0])
-            if key not in self.delta:
-                return
-            writes, state = self.delta[key]
-            tape = tape[1:] + list(writes)
 
 
 def sym(letter, stage, q):
@@ -165,23 +146,6 @@ def initial_tape(state, tm_tape, counter):
     for c in tm_tape:
         out += [sym(c, 2, state), sym(c, 2, state)]
     return out
-
-
-def tag_run(rules, tape, max_steps):
-    """2-deletion tag run; yields (n, tape list) before each step."""
-    from collections import deque
-    tape = deque(tape)
-    for n in range(max_steps):
-        yield n, tape
-        if len(tape) < 2:
-            return
-        head = tape.popleft()
-        tape.popleft()
-        app = rules[head]
-        if app is None:
-            raise RuntimeError("read a '-' symbol: parity broken")
-        tape.extend(app)
-    yield max_steps, tape
 
 
 def decode_stage2(tape):

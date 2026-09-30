@@ -10,8 +10,6 @@ Graph: a node is ['app', f, x] (mutable for in-place update) or a string
 shared subterms reduce once.
 """
 
-import sys
-
 
 def parse(term):
     pos = 0

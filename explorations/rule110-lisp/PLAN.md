@@ -9,7 +9,7 @@ Findings and their status live in REVIEW.md (ids referenced below).
 Order of work (each step committed separately):
 - [x] 1. Repo hygiene: untrack pyc/out (E1); trash `consumed.py` (E4)
 - [x] 2. Semantic bugs A1-A3 with new edge-case tests
-- [ ] 3. Refactor: single tag runner (E3), CWTM into cw.py (E9), dead code
+- [x] 3. Refactor: single tag runner (E3), CWTM into cw.py (E9), dead code
       and docstrings (E5, E6), magic numbers (E7), shared test machine (E8)
 - [ ] 4. Experiments: shared CA-run helper, scripts to experiments/,
       superseded diagnostics to trash/ (E2)

@@ -146,7 +146,6 @@ def build_env():
     env["N0"] = Raw(to_ski(church(0)))
     env["N1"] = Raw(to_ski(church(1)))
     env["N2"] = Raw(to_ski(church(2)))
-    defn("SUCC", "^n.^f.^x.f (n f x)")
     defn("ISZERO", "^n.n (^z.FALSE) TRUE")
     defn("PRED", "^n.^f.^x.n (^g.^h.h (g f)) (^u.x) (^u.u)")
     defn("SUB", "^m.^n.n PRED m")
@@ -166,9 +165,6 @@ def build_env():
 
 # ------------------------------------------------------------- compiler
 
-PRIMS = ("car", "cdr", "cons", "atom?", "eq?")
-
-
 class Compiler:
     def __init__(self):
         self.env = build_env()
@@ -178,9 +174,6 @@ class Compiler:
         if s not in self.symtab:
             self.symtab[s] = len(self.symtab)
         return self.symtab[s]
-
-    def lam(self, src):
-        return parse_lambda(src, self.env)
 
     def quote(self, x):
         if isinstance(x, str):
@@ -260,7 +253,7 @@ class Compiler:
                 if isinstance(form[1], list):
                     name, params = form[1][0], form[1][1:]
                     body = form[2]
-                    inner = self.compile_expr(body, set(params), 
+                    inner = self.compile_expr(body, set(params),
                                               {**defs, name: V(name)})
                     for p in reversed(params):
                         inner = L(p, inner)
@@ -290,17 +283,15 @@ def decode_value(term, symtab, max_steps=2_000_000):
     inv = {v: k for k, v in symtab.items()}
     def probe(t):
         return ski.normalize(t, max_steps)
-    tag = _count_apps(probe("``" + "`" + term + "K" + "fx"))
+    tag = _count_apps(probe("```" + term + "Kfx"))    # (v TRUE) f x
     if tag == 2:
         return []
     payload = "`" + term + "`KI"       # v FALSE
     if tag == 0:
         return inv[_count_apps(probe("``" + payload + "fx"))]
     if tag == 1:
-        car = "``" + payload + "K" + ""
-        cdr = "``" + payload + "`KI"
-        # payload is PAIR car cdr: payload K = car? PAIR x y f = f x y:
-        # payload TRUE = car, payload FALSE = cdr
+        # payload is PAIR car cdr, and PAIR x y f = f x y:
+        # payload TRUE (K) selects car, payload FALSE (K I) selects cdr
         h = decode_value("`" + payload + "K", symtab, max_steps)
         t = decode_value("`" + payload + "`KI", symtab, max_steps)
         return [h] + t

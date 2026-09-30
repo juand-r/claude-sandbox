@@ -1,8 +1,6 @@
 """The SKI Turing machine vs the specification engine (ski.py)."""
 
 import random
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ski import reduce_once
 from ski_tm import build_machine, normalize_tm
 

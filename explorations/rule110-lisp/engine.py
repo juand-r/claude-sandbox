@@ -16,9 +16,8 @@ RULE = 110
 # TABLE[n] = output bit for neighborhood value n = 4*left + 2*center + right
 TABLE = np.array([(RULE >> n) & 1 for n in range(8)], dtype=np.uint8)
 
-# One spatial period of the ether (the regular background lattice of
-# Rule 110), spatial period 14, temporal period 7. Verified empirically in
-# tests/test_engine.py, which also measures its horizontal drift per period.
+# One spatial period of the ether, Rule 110's regular background: spatial
+# period 14, temporal period 7 (verified in tests/test_engine.py).
 ETHER = "11111000100110"
 
 

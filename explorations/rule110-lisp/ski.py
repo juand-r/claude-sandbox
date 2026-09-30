@@ -10,8 +10,8 @@ The TM implementation (ski_tm.py) must reproduce reduce_once exactly.
 
 
 def parse_spine(term, pos=0):
-    """Return (end, subterm_spans) minimal helper: span of the term starting
-    at pos. A term is a combinator char or ` followed by two terms."""
+    """End index (exclusive) of the complete term starting at pos. A term
+    is a single symbol or ` followed by two terms."""
     if term[pos] == "`":
         mid = parse_spine(term, pos + 1)
         return parse_spine(term, mid)
@@ -26,10 +26,11 @@ def subterm(term, pos):
 def reduce_once(term):
     """One leftmost-outermost reduction; None if in normal form.
 
-    The head of the leftmost spine is at the end of the leading backtick
-    run... more precisely we walk the spine: at position p on ```, the head
-    is found by following first-children; redex applicability depends on
-    how many arguments the spine provides.
+    In prefix notation the leftmost spine is the leading run of backticks
+    and the head is the symbol after it; the number of backticks is the
+    number of arguments available to the head. If the head has enough
+    arguments it is the redex. Otherwise the head is stuck and the first
+    argument (left to right) that is not in normal form is reduced.
     """
     # walk the spine from the root, remembering application nodes
     apps = []          # positions of ` nodes on the leftmost spine

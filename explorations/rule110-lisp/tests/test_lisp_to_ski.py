@@ -6,8 +6,6 @@ other, and compiled programs are checked on both (string engine only on
 the small ones -- it is O(n^2) per step by design)."""
 
 import random
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import lisp_to_ski
 import ski
 import ski_graph

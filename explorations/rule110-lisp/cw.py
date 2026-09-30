@@ -22,11 +22,36 @@ output cells bit by bit (two-bit writes carry insertions).
 Both stages are built by BFS over reachable states; the two-way reference
 is tm.TM. Machines must use symbol 1 as the blank background on both
 sides (left_bg = right_bg = [1]).
+
+CWTM is the reference interpreter for the binary clockwise model, the
+input format of nw.py.
 """
 
-from tm import TM
+from collections import deque
 
 E = "E"
+
+
+class CWTM:
+    """Binary clockwise Turing machine: circular tape over {'A', 'B'}; each
+    step reads the symbol at the head (tape front), removes it, appends the
+    1 or 2 written symbols at the tape end, and changes state.
+    delta: (state, sym) -> (writes tuple, newstate); a missing key halts."""
+
+    def __init__(self, delta):
+        self.delta = delta
+
+    def run(self, state, tape, max_steps):
+        """tape: sequence with the head at index 0. Yields (state, tape
+        tuple) before each step; stops on halt or after max_steps."""
+        tape = list(tape)
+        for _ in range(max_steps):
+            yield state, tuple(tape)
+            key = (state, tape[0])
+            if key not in self.delta:
+                return
+            writes, state = self.delta[key]
+            tape = tape[1:] + list(writes)
 
 
 def cell(v):
@@ -99,8 +124,8 @@ def _step(tm2, q, b, mn, sym):
 
 
 def run_cw(delta, word, state, max_steps):
-    """Yields (n, word, state); stops on halt."""
-    from collections import deque
+    """Run a symbolic clockwise machine. Yields (n, word, state) before each
+    step, word being the live deque; stops on halt."""
     w = deque(word)
     for n in range(max_steps):
         yield n, w, state
@@ -133,7 +158,7 @@ def decode_cw(word, state):
     return q, cur, right, left
 
 
-def binarize(delta, word, state0, t):
+def binarize(delta, word, state0):
     """Symbolic clockwise machine -> binary (A/B) clockwise machine.
 
     Each symbolic cell is a fixed-width binary code. The binary machine
@@ -142,7 +167,8 @@ def binarize(delta, word, state0, t):
     surplus that insertions create; the queue is preloaded with the last
     cell's code so a write is always available).
 
-    Returns (bdelta, bword, bstate0) with bdelta in CWTM form over 'A'/'B'.
+    Returns (bdelta, bword, bstate0, width): bdelta in CWTM form over
+    'A'/'B', the initial binary tape, the initial state, and the code width.
     """
     syms = sorted({s for (_, s) in delta} |
                   {w for (ws, _) in delta.values() for w in ws} | {E},
@@ -169,7 +195,7 @@ def binarize(delta, word, state0, t):
             if len(ib) == w:
                 s = dec.get(ib)
                 if s is None:
-                    continue          # unused code: unreachable in practice
+                    continue          # code of no symbol: never on the tape
                 key = (sym_state, s)
                 if key not in delta:
                     continue          # halt

@@ -42,13 +42,13 @@ has a disposition; the "Status" column is updated as work proceeds.
 |---|---|---|---|
 | E1 | 15 `__pycache__/*.pyc` files and 5 `*.out` files are tracked despite `.gitignore` (the earlier `git rm --cached` ran from the wrong directory). | untrack | done |
 | E2 | Eleven `run_*.py` scripts each re-implement the same ~20 lines: ether-rotation lookup, right-edge trim to an ether cut, phase-matched padding, co-moving windows. | one helper module; scripts to `experiments/`; superseded diagnostics to `trash/` | |
-| E3 | Three tag-system runners (`tag.ts_run` on char strings, `tm.ts_run_list` on lists, `nw.tag_run` deque/2-deletion). | one runner in `tag.py` | |
+| E3 | Three tag-system runners (`tag.ts_run` on char strings, `tm.ts_run_list` on lists, `nw.tag_run` deque/2-deletion). | one runner in `tag.py` | done |
 | E4 | `consumed.py` is unused (its method found one event and was abandoned). | trash | done |
-| E5 | Dead code: unused locals in `lisp_to_ski.decode_value`, unused `PRIMS`, `Compiler.lam`; `import sys` in `ski_graph`; unused `_ETHER` in `decoder`; unused `TM` import and unused `t` parameter in `cw`; unreachable aperiodic branch in `encoder._attach`; a garbage `print` in `run_canonical.py`. | remove | |
-| E6 | Wrong or garbled docstrings: `tag.py` module doc (halting sentence), `ski.parse_spine` (claims to return a tuple), `ski.reduce_once` (stream of consciousness), `cw.binarize` (claims 3-tuple, returns 4), `engine.ETHER` comment (claims a drift test that does not exist). | fix | |
-| E7 | Magic numbers: decoder thresholds (60, 245, rows 35..65), encoder `_BASE_LO`, `_CHECK`. | name and explain | |
-| E8 | The 3-state test TM is copy-pasted into four test files. | shared test helper | |
-| E9 | `CWTM` (the clockwise machine model) lives in `nw.py` although `cw.py` produces it. | move to `cw.py` | |
+| E5 | Dead code: unused locals in `lisp_to_ski.decode_value`, unused `PRIMS`, `Compiler.lam`; `import sys` in `ski_graph`; unused `_ETHER` in `decoder`; unused `TM` import and unused `t` parameter in `cw`; unreachable aperiodic branch in `encoder._attach`; a garbage `print` in `run_canonical.py`. | remove | done |
+| E6 | Wrong or garbled docstrings: `tag.py` module doc (halting sentence), `ski.parse_spine` (claims to return a tuple), `ski.reduce_once` (stream of consciousness), `cw.binarize` (claims 3-tuple, returns 4), `engine.ETHER` comment (claims a drift test that does not exist). | fix | done |
+| E7 | Magic numbers: decoder thresholds (60, 245, rows 35..65), encoder `_BASE_LO`, `_CHECK`. | name and explain | done |
+| E8 | The 3-state test TM is copy-pasted into four test files. | shared test helper | done |
+| E9 | `CWTM` (the clockwise machine model) lives in `nw.py` although `cw.py` produces it. | move to `cw.py` | done |
 
 ## F. Things that are good and stay as they are
 
