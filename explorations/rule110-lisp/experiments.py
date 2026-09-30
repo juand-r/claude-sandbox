@@ -1,14 +1,14 @@
 """Long automaton runs whose results are cited in NOTES.md / REPORT.md.
 
-    python experiments.py lblock VARIANT     # one row of the L-block table
+    python experiments.py lblock VARIANT [N] # one row of the L-block table
     python experiments.py demol [T]           # De Mol 3x+1, x=3
     python experiments.py reads [N]           # outcomes of the first N reads
 
-lblock and demol print decoder reads of the moving data in flight at
-intervals: liveness only (the moving-data decoder misreads depending on
-glider phase; NOTES.md). reads is the dynamic check of REPORT.md 3.3: it
-observes each read's outcome directly (see read_outcomes) and compares
-the sequence with the reference CTS.
+reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
+observe each read's outcome directly (see read_outcomes) and compare the
+sequence with the reference CTS. demol prints decoder reads of the
+moving data in flight at intervals: liveness only (the moving-data
+decoder misreads depending on glider phase; NOTES.md).
 """
 
 import sys
@@ -30,8 +30,11 @@ LBLOCK_VARIANTS = {
     3: ("YN", ["YNNNNN", ""]),
     4: ("YN", ["YNNNNN", "YNNNNN"]),
 }
-LBLOCK_T = 250_000
-LBLOCK_EVERY = 12_500
+# Generation budget per read, in ossifier periods (~30v). Measured reads
+# come one period apart for {YYYYNN} and two apart for LBLOCK_VARIANTS[4];
+# read_outcomes stops as soon as every read has settled, so a generous
+# budget only costs padding width.
+READ_BUDGET_PERIODS = 2
 
 # De Mol's tag system {A->CY, C->A, Y->AAA} on tape A^3, compiled to a CTS
 # by tag.ts_to_cts (alphabet A, C, Y + 3 dummies; 6-bit unary words).
@@ -49,18 +52,9 @@ def read_moving_data(decoder, run, lo_off, hi_off):
         return "?"
 
 
-def lblock(variant):
+def lblock(variant, n_reads=8):
     tape, apps = LBLOCK_VARIANTS[variant]
-    v = 3 * _left_v(apps)
-    row, origin = padded_row(tape, apps, left_periods=LBLOCK_T // (30 * v) + 3,
-                             right_periods=14, left_pad=300_000,
-                             right_pad=350_000, v_override=v)
-    run, dec = Run(row, origin), Decoder()
-    print(f"variant {variant}: tape={tape} apps={apps} v={v} width={run.width}")
-    while run.t <= LBLOCK_T:
-        print(f"t={run.t}: {read_moving_data(dec, run, -5_000, 40_000)}",
-              flush=True)
-        run.step(LBLOCK_EVERY)
+    check(tape, apps, 3 * _left_v(apps), n_reads)
 
 
 def demol(T):
@@ -144,21 +138,28 @@ def read_outcomes(tape, apps, v, n_reads, T, row_origin=None):
     return "".join(s if s in "YN" else "." for s in state)
 
 
-def reads(n_reads):
-    v = 3 * _left_v(READS_APPS)
-    T = (n_reads + 2) * 60_000
-    got = read_outcomes(READS_TAPE, READS_APPS, v, n_reads, T)
-    ref = "".join(t[0] for _, t, _ in cts_run(READS_TAPE, READS_APPS, n_reads)
+def check(tape, apps, v, n_reads):
+    """Observed read outcomes vs the reference CTS. Reads of empty
+    appendants have no component region and show as '.' in both."""
+    T = (n_reads + 2) * READ_BUDGET_PERIODS * 30 * v
+    got = read_outcomes(tape, apps, v, n_reads, T)
+    ref = "".join(t[0] if apps[i % len(apps)] else "."
+                  for i, (_, t, _) in enumerate(cts_run(tape, apps, n_reads))
                   if t)[:n_reads]
+    same = sum(g == r for g, r in zip(got, ref))
     print(f"observed : {got}\nreference: {ref}\n"
-          f"{'MATCH' if got == ref else 'DIFFER'} ({sum(g == r for g, r in zip(got, ref))}/{n_reads})")
+          f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads})")
+
+
+def reads(n_reads):
+    check(READS_TAPE, READS_APPS, 3 * _left_v(READS_APPS), n_reads)
 
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["reads"]:
         reads(int(sys.argv[2]) if len(sys.argv) > 2 else 12)
     elif sys.argv[1:2] == ["lblock"]:
-        lblock(int(sys.argv[2]))
+        lblock(int(sys.argv[2]), int(sys.argv[3]) if len(sys.argv) > 3 else 8)
     elif sys.argv[1:2] == ["demol"]:
         demol(int(sys.argv[2]) if len(sys.argv) > 2 else 1_350_000)
     else:

@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.1.1 (unreleased)
+
+Corrections to v0.1.0
+- Withdrawn: "each ossifier converts four characters" and the `fronts`
+  table with its 4-of-6 mismatches. Both came from the moving-data
+  decoder, which is phase-dependent (its output changes with t mod 30
+  on static data). Measured instead: one ossifier = one burst of four C
+  gliders = one tape character; one read per ossifier period.
+- Cost estimate back to ~30v generations per read (capstone ~3.6e20);
+  the 7.5v-30v range is withdrawn.
+
+Verified
+- Dynamic correctness on gliders for `{YYYYNN}`: a decoder-free check
+  (experiments.py reads) matches the reference CTS 12/12 at 3x Cook's
+  ossifier spacing and 10/10 at the default spacing, including reads of
+  characters appended during the run.
+- Uniform ossifier spacing: v = 523-528 correct, v <= 262 fails.
+
+Changes
+- encoder.assemble(left_gaps=...): explicit ossifier schedule.
+- experiments.py: `reads`, and `lblock` now decoder-free.
+
 ## v0.1.0 (2026-09-30)
 
 Tag: `rule110-lisp-v0.1.0`

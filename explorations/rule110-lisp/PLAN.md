@@ -8,6 +8,12 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 - [x] 1. Close the dynamic-verification gap: decoder was phase-dependent; decoder-free read check matches 12/12 (NOTES)
 
 - [ ] 2. L-block (short leader) defect
+  - [x] decoder-free L table (experiments.py lblock uses read_outcomes)
+  - [x] family A: shift only the first L cluster by ether-lattice vectors
+        (51 shifts): none reads correctly
+  - [ ] family B: shift L and everything right of it, cumulatively
+  - [ ] if B fails: census render of the short-leader read (debris source)
+- [x] 2b. Correct v0.1.0 docs to 1 char per ossifier / 30v (REPORT, REVIEW, DIRECTIONS, CHANGELOG)
 - [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
 - [ ] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
 - [ ] 5. 1-D HashLife engine, measured on the above
@@ -31,8 +37,7 @@ Order of work (each step committed separately):
 - [x] 7. Glider census (C1): census.py + tests; measured the mechanism; dynamic check partial (REPORT 3.3)
 - [x] 8. Rewrite REPORT.md claims per B1-B4 with the new measurements
 - [x] 9. Tag `rule110-lisp-v0.1.0` with release notes
-- [ ] 10. Extension proposal (faster / more direct): write it up, ask
-      before starting
+- [x] 10. Extension proposal (faster / more direct): DIRECTIONS.md
 
 ---
 

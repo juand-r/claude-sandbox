@@ -1,7 +1,7 @@
 # Directions for v0.2: faster and more direct
 
-Status: proposal, written at the v0.1.0 release. Nothing here is
-implemented yet. The request was "more clever/faster/more efficient ways
+Status: proposal, written at the v0.1.0 release; numbers corrected in
+v0.1.1. Nothing here is implemented yet. The request was "more clever/faster/more efficient ways
 of implementing this ... it should be possible to build an interpreter on
 Rule 110 more directly". This document says where the cost actually is,
 then ranks the ways to cut it by expected gain and risk.
@@ -14,17 +14,16 @@ relation dominates. Write |Phi| for the tag-system alphabet (8,586 here)
 and R for the total length of all tag rules (16,554, about 2|Phi|).
 
 - The unary TS -> CTS encoding needs 2|Phi| CTS reads per tag step.
-- In Cook's construction reads are gated by ossification: an A^4
-  converts one moving-data character into tape data, an ossifier holds
-  four A^4, and ossifiers are about 30v generations apart. A read costs
-  7.5v to 30v generations (how many characters later ossifiers convert
-  is still open), with v ~ 80 x (total CTS appendant length) =
-  80 |Phi| R.
-- Generations per tag step ~ 2|Phi| x (7.5 to 30) x 80 |Phi| R, i.e.
-  ~2,400 to ~9,600 |Phi|^3.
+- In Cook's construction reads are gated by ossification: each
+  ossifier (four A^4) converts one moving-data character into one tape
+  character, and ossifiers are about 30v generations apart. A read
+  costs about 30v generations (measured, REPORT.md 3.3), with
+  v ~ 80 x (total CTS appendant length) = 80 |Phi| R.
+- Generations per tag step ~ 2|Phi| x 30 x 80 |Phi| R, i.e.
+  ~9,600 |Phi|^3.
 
-For the capstone: 1.5e15 to 6e15 generations per tag step, times 61,188
-tag steps = 9e19 to 3.7e20.
+For the capstone: about 6e15 generations per tag step, times 61,188
+tag steps = 3.7e20.
 
 So the bottom of the tower is **cubic in the tag alphabet**. Every layer
 above only matters through |Phi| and the number of tag steps.
@@ -33,8 +32,9 @@ above only matters through |Phi| and the number of tag steps.
 
 ### 2.1 Demand-timed ossifiers (cubic -> quadratic)
 
-Observation (glider census, v0.1.0): reads are gated by ossifications.
-Each A^4 converts one moving-data character into tape data; that
+Observation (glider census and decoder-free reads, v0.1.1): reads are
+gated by ossifications. Each ossifier converts one moving-data character
+into one tape character; that
 character travels into the static Ebar stream until it meets the next
 unread leader. Cook sizes v for the worst case (the paper: "a
 conservatively large rough estimate of twice the total vertical height
@@ -51,9 +51,15 @@ of a whole table's.
 
 - Expected gain: a read then costs about one appendant's traversal
   (3.75 generations per cell of table), so a tag step costs one table
-  cycle, ~3,000 |Phi|^2 instead of 2,400-9,600 |Phi|^3: a factor of
-  0.8-3.2 |Phi|. For the capstone about 7,000-27,000x (to ~1.4e16). For
-  De Mol's small CTS 4-17x (26k-104k -> ~6k generations per read).
+  cycle, ~3,000 |Phi|^2 instead of ~9,600 |Phi|^3: a factor of about
+  3.2 |Phi|. For the capstone about 27,000x (to ~1.4e16). For De Mol's
+  small CTS about 17x (~104k -> ~6k generations per read).
+- Measured caveat (v0.1.1): uniformly shrinking v does not work. For
+  `{YYYYNN}` v = 523-528 read correctly, v <= 262 fails at read 3 or 4.
+  The likely constraint (hypothesis, not yet measured): the next
+  character must not arrive while the previous read's sweep is still
+  running. If so, a demand schedule has a floor near one appendant
+  traversal plus one sweep, and it must be non-uniform.
 - Risk: moderate. Needs the alignment rules between consecutive A^4s
   (the paper's "up 5" condition) to hold for arbitrary gaps; the
   existing runs with v = 790, 1572, 3423 suggest any v works, but that

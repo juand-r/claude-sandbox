@@ -1,6 +1,7 @@
 # A Lisp on Rule 110: what runs, what is verified, and what it costs
 
-Version 0.1.0 (2026-09-30). This report supersedes the phase-1 report of
+Version 0.1.1 (2026-09-30; corrects v0.1.0, see CHANGELOG.md). This
+report supersedes the phase-1 report of
 2026-08-18; REVIEW.md lists every claim that changed and why.
 
 ## Summary
@@ -28,19 +29,18 @@ The main claims, in decreasing order of the strength of their evidence:
    conditions.** The paper's glider blocks were extracted from its
    figures; assembled rows reproduce 1,152,891 spacetime cells of the
    paper's patches exactly over 45 generations.
-4. **The glider machinery runs, and its mechanism is now measured.** A
-   new glider census types every defect in a row by lattice invariance.
-   It shows that ossifiers convert moving data into C gliders of tape
-   data (four per ossifier at the start of a run), and that reads happen
-   only when such tape data exists. For the first three ossifier arrivals
-   of a test program, the moving data each ossifier meets is exactly what
-   the reference CTS predicts (9 of 9 symbols); from the fourth arrival
-   on, 4 of 6 arrivals disagree with that simple accounting. Long-run
-   dynamic correctness is therefore unverified.
-5. **Running the whole tower on gliders is out of reach by 14 to 15
-   orders of magnitude** (roughly 1e20 to 4e20 generations for the
-   capstone program). The dominant cost grows with the cube of the tag
-   alphabet.
+4. **The glider machinery computes correctly for programs without empty
+   appendants.** A glider census types every defect by lattice
+   invariance, and a decoder-free check reads each CTS read's outcome
+   off the glider field. For the program `{YYYYNN}` the observed reads
+   equal the reference CTS for 12 of 12 reads at 3x Cook's ossifier
+   spacing and 10 of 10 at his default spacing; the later reads consume
+   characters appended during the run. Each ossifier converts one
+   moving-data character into one tape character (four C gliders), so a
+   read costs about 30v generations.
+5. **Running the whole tower on gliders is out of reach by about 15
+   orders of magnitude** (about 3.6e20 generations for the capstone
+   program). The dominant cost grows with the cube of the tag alphabet.
 6. **One construction defect is unresolved:** initial conditions with
    empty appendants (Cook's "short leader" block L) stop producing moving
    data. Every program compiled from a tag system has empty appendants,
@@ -153,93 +153,105 @@ This establishes the initial condition, not the long-run dynamics.
 
 ### 3.2 How the machinery runs, measured
 
-Until this release, every statement about the dynamics came from
+Until v0.1.0 every statement about the dynamics came from
 substring-matching rows against the moving-data blocks E and F. That
-decoder sees only moving data, not the tape data the machinery reads.
-The glider census (`census.py`) replaces it for this purpose.
+decoder turned out to be unreliable (section 3.3). Two instruments
+replace it.
 
-*Method.* A 14-cell window that equals a rotation of the ether fixes the
-ether's phase. Defects lie wherever matching is interrupted or the phase
-changes; the phase test matters because an A glider can be a pure phase
-slip with no non-ether cell. Each defect is then typed by the spacetime
-shift that leaves it unchanged. The ether is invariant under (7, 0) and
-(3, 2) and all their combinations; C gliders are invariant only under
-(7, 0), A gliders only under (3, 2), Ebars only under (30, -8).
+*The glider census* (`census.py`). A 14-cell window that equals a
+rotation of the ether fixes the ether's phase. Defects lie wherever
+matching is interrupted or the phase changes; the phase test matters
+because an A glider can be a pure phase slip with no non-ether cell.
+Each defect is then typed by the spacetime shift that leaves it
+unchanged. The ether is invariant under (7, 0) and (3, 2) and all their
+combinations; C gliders are invariant only under (7, 0), A gliders only
+under (3, 2), Ebars only under (30, -8).
+
+*C-glider births.* Counting where and when C gliders appear gives a
+direct view of ossification.
 
 *Observations* (program `{YYYYNN}` from tape `YYYYNN`, ossifier spacing
-v = 3 x the paper's default):
+v = 3 x the paper's default, 490,000 generations):
 
-- The first ossifier's four A^4 packets produce four C gliders, one per
-  packet, about 45 cells apart, within 2,000 generations.
-- Across that ossifier, the moving data in flight advances by four
-  characters: the next ossifier meets `N N Y`, which are tape characters
-  4-6 (`Y Y Y Y | N N Y ...`).
-- Each C glider disappears within about 6,000 to 16,000 generations of
-  its creation. Reads show up as A material heading right from inside
-  the Ebar stream (acceptors and rejectors) and, in a typed spacetime
-  render of De Mol's program, as wedges of deleted components after
-  rejected reads.
-- Between ossifiers there is no tape data at all.
-- The C gliders drift right slowly as Ebars cross them, as the paper's
-  crossing diagrams predict.
+- Every ossifier produces exactly one burst of four C gliders, one per
+  A^4, about 45 cells apart. No other C gliders appear.
+- Each burst's C gliders disappear within about 6,000 to 16,000
+  generations. Their disappearance coincides with A material leaving the
+  Ebar stream to the right (acceptors and rejectors).
+- Between bursts there is no tape data at all.
 
-*Interpretation.* At least at the start of a run, each A^4 converts one
-moving-data character into one C glider of tape data. That character
-travels into the Ebar stream (static in its own frame) until it meets
-the next unread leader, which reads it and emits an acceptor or
-rejector. Reads are therefore gated by ossification: a burst of reads
-per ossifier, then none until the next ossifier, about 30v generations
-later. Whether every ossifier converts four characters is not settled
-(section 3.3), so the cost of a read lies between 7.5v generations (four
-per ossifier) and 30v (one per ossifier), whatever the size of the
-appendant table.
+*Interpretation.* One ossifier converts one moving-data character into
+one tape character, and that character is four C gliders, one per A^4.
+The character then moves into the Ebar stream until it meets the next
+unread leader, which reads it and emits an acceptor or rejector. Reads
+are therefore gated by ossification: one read per ossifier, about 30v
+generations apart, plus a travel term described in 3.3. This is what the
+phase-1 report said ("one read per left period"). The v0.1.0 report
+claimed four characters per ossifier; that claim came from the
+unreliable decoder and is withdrawn (NOTES.md tells the full story).
 
-This corrects two earlier models. The phase-1 report said one read per
-left period; the first draft of the review said reads follow the table
-at a fixed rate. Both were wrong (REVIEW.md B1, NOTES.md).
+### 3.3 Dynamic correctness: verified for programs without empty appendants
 
-### 3.3 Dynamic correctness: partial evidence, one open gap
+*Method* (`python experiments.py reads`). The check avoids decoding
+moving data altogether. Each CTS read is carried out by a leader, whose
+acceptor or rejector then sweeps that appendant's table data: an accept
+turns the components into moving data (Ebar material remains in the
+region), a reject deletes them (the region becomes ether). So the
+outcome of read j can be read off the region that held appendant j's
+components, tracked in the Ebar frame where the table is static:
 
-If each A^4 converts one character, ossifier k meets tape characters
-4k, 4k+1, 4k+2, ... of the CTS's read sequence. For `{YYYYNN}` that
-sequence is `YYYYNN` repeated. `python experiments.py fronts` checks
-this at each ossifier arrival by decoding the first three moving-data
-symbols the ossifier will meet:
+- The region is sampled every 600 generations, a multiple of the Ebar
+  period of 30, so that samples of a static region compare equal.
+- The first change in a region marks the read.
+- The region is classified once it is settled: no C, A or untyped
+  material inside, and unchanged since the previous sample. Settled
+  with Ebar clusters left is Y; empty is N.
 
-| arrival | generation | meets | predicted | |
+The settling rule matters. A reject sweep takes about 5,000 generations,
+and the sweeping rejector is not always typed A. A first version without
+the "unchanged" condition fired mid-sweep and misclassified two rejects
+as accepts.
+
+*Observations.*
+
+| program | v | reads checked | observed = reference | generations per read |
 |---|---|---|---|---|
-| 0 | 250 | `YYY` | `YYY` | match |
-| 1 | 45,250 | `NNY` | `NNY` | match |
-| 2 | 93,750 | `YYN` | `YYN` | match |
-| 3 | 142,000 | `YNN` | `YYY` | differs |
-| 4 | 190,500 | `NNY` | `NNY` | match |
-| 5 | 238,750 | `NYY` | `YYN` | differs |
-| 6 | 287,250 | `YYY` | `YYY` | match |
-| 7 | 335,500 | `YYY` | `NNY` | differs |
-| 8 | 384,000 | `YYY` | `YYN` | differs |
+| `{YYYYNN}`, tape `YYYYNN` | 1,572 (3x default) | 12 | 12 of 12 | ~58,000 |
+| `{YYYYNN}`, tape `YYYYNN` | 524 (default) | 10 | 10 of 10 | ~26,400 |
 
-The first three arrivals match (9 of 9 symbols), and they already
-exercise appended data (characters 6 and 8-10 were appended during the
-run). From arrival 3 on, the simple accounting fails: arrival 3 meets
-what look like characters 15-17 instead of 12-14. Arrivals 4 and 6
-match again, but the later mismatches show that "four characters per
-ossifier" is not the whole story.
+Reads 6 onward consume characters that were appended during the run, so
+reading, accepting, rejecting, appending and ossifying are all exercised.
+A Y read leaves about 24 Ebar clusters (four per symbol of the six-symbol
+appendant); an N read leaves none.
 
-Two explanations remain open, and nothing yet distinguishes them:
+*The read cadence.* At v = 1,572 reads happen at t ≈ 9.0k, 67.2k,
+124.8k, 183.0k, 240.6k, 299.4k and 356.4k. The interval, about 58k, is
+one ossifier period (48.8k) plus about 9.2k. The interpretation most
+consistent with this: each tape character is delivered at about the
+same place in the Ebar frame, and the next unread leader is one
+appendant further along each time, so each read adds one appendant
+traversal. For cost estimates the ossifier period, about 30v, dominates.
 
-- *The machinery goes wrong* between arrivals 2 and 3, for example by
-  losing or skipping three characters.
-- *The accounting is too simple.* The moving-data decoder was built from
-  the E and F blocks as drawn for the initial tape; appended characters
-  are produced by acceptors and may not be recognized until they settle.
-  If some of characters 12-14 were not visible to the decoder, the front
-  would appear shifted.
+*What went wrong in v0.1.0.* The moving-data decoder is
+phase-dependent. After the first cycle's reads the moving data is static
+in the Ebar frame, yet its decoded string changes with the sampling time
+modulo 30 (t = 0 gives `YYYNN YYYYNN`, t = 10 gives `NNYNN YYYYN`,
+t = 20 decodes nothing). The E and F cores are distinct; the aliasing
+comes from context, since cores overlap neighbouring characters and
+acceptor-made moving data sits in different surroundings than the
+initial tape. The v0.1.0 "fronts" table and its mismatches from arrival
+3 on were artifacts of this. The decoder (`decoder.py`) is kept only as
+a diagnostic.
 
-Until this is resolved, the defensible claim is: the machinery performs
-reads and appends, and the 9 characters checked (0-2, 4-6 and 8-10, of
-which 6 and 8-10 were appended during the run) follow the reference.
-Characters 3, 7 and 11 were not observed, and long-run correctness is
-unverified.
+*Scope.* The evidence covers one program without empty appendants, for
+10 to 12 reads, at two ossifier spacings. It does not cover programs
+with empty appendants (section 3.4), long runs, or other spacings.
+
+*Spacing below the default.* A sweep of uniform v with the same check
+(`{YYYYNN}`, 10 reads): v = 523 and 524 match; v = 262, 196, 160, 131
+and 30 do not, failing at read 3 or 4. So Cook's estimate is not
+grossly conservative for this program under a uniform schedule; where
+the threshold lies between 262 and 523 is being measured (section 5).
 
 ### 3.4 The short-leader defect
 
@@ -286,10 +298,10 @@ For the capstone machine (6 two-way TM steps, then halt):
 | binary clockwise TM | 130 states (45 entered) | 101 |
 | Neary-Woods 2-tag | 8,582 rules | 61,188 |
 | CTS | 17,172 appendants, 1.4e8 appendant symbols | 1.05e9 reads |
-| Rule 110 | v = 1.14e10 | 7.5v-30v per read: 1e20-4e20 generations (estimate) |
+| Rule 110 | v = 1.14e10 | ~30v per read: ~3.6e20 generations (estimate) |
 
-The bottom row is an estimate from the measured read cadence, not a run;
-the range reflects the open question in section 3.3.
+The bottom row is an estimate from the measured read cadence (one read
+per ossifier, section 3.3), not a run.
 At the packed engine's 1.1e10 cell-updates per second it would take far
 longer than the age of the universe.
 
@@ -298,11 +310,11 @@ here). The unary tag -> CTS encoding costs 2|Phi| reads per tag step,
 and v grows with the total CTS appendant length, about 80·|Phi|·R where
 R ≈ 2|Phi| is the total tag rule length. Together:
 
-    generations per tag step ≈ 2|Phi| × (7.5 to 30) × 80·|Phi|·R
-                             ≈ 2,400 to 9,600 |Phi|^3
+    generations per tag step ≈ 2|Phi| × 30 × 80·|Phi|·R
+                             ≈ 9,600 |Phi|^3
 
-For the capstone this gives 1.5e15 to 6e15 per tag step and 9e19 to
-3.7e20 in total.
+For the capstone this gives about 6e15 per tag step and 3.7e20 in
+total.
 
 The alphabet enters cubed, and it is inflated upstream: binarization
 turns 12 clockwise states into 130 (of which the run enters 45), and
@@ -315,11 +327,13 @@ would be several orders of magnitude larger again.
 ## 5. What comes next
 
 DIRECTIONS.md ranks the options for making this faster and more direct.
-In short: first close the dynamic-verification gap (section 3.3) and the
-short-leader defect (3.4). Then the largest expected gain comes from
-timing ossifiers to demand instead of Cook's worst-case spacing, which
-changes the bottom layer from cubic to quadratic in |Phi|, an estimated
-7,000-27,000x for the capstone. Shrinking |Phi| and a one-dimensional
+In short: the dynamic-verification gap is closed (section 3.3); the
+short-leader defect (3.4) is next. Then the largest expected gain comes
+from timing ossifiers to demand instead of Cook's worst-case spacing,
+which would change the bottom layer from cubic to quadratic in |Phi|,
+an estimated 27,000x for the capstone. The uniform-spacing sweep in 3.3
+shows this cannot be had by simply shrinking v; it needs a non-uniform
+schedule, and whether one exists is open. Shrinking |Phi| and a one-dimensional
 HashLife engine come after that.
 
 ## Reproduction
@@ -328,8 +342,8 @@ All results are deterministic.
 
 - `pytest tests/` (about 8 s) covers every symbolic layer, the
   encoder's local exactness, and the glider census.
-- `python experiments.py fronts` reproduces the table in 3.3 (several
-  minutes).
+- `python experiments.py reads 12` reproduces the 12/12 check in 3.3
+  (about 3 minutes).
 - `python experiments.py lblock 0..4` reproduces the table in 3.4.
 - `python experiments.py demol` runs De Mol's program on gliders (it
   loses its moving data, per 3.4).
