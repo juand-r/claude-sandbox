@@ -124,7 +124,10 @@ of 4.1 to 7.3, the factor growing with the number of S-reductions
 The cost is still steep. Each S-reduction copies the whole term with an
 O(n) round trip per character, so a reduction costs O(n^2) steps, and the
 Church encodings make terms of several hundred characters even for
-trivial programs.
+trivial programs. `(eq? (quote a) (quote b))`, whose compiled form
+compares Church numerals, exceeds 3e9 steps in a single decoding probe
+and was not completed on the machine; it is verified on the two SKI
+engines instead.
 
 ## 3. The glider level
 
