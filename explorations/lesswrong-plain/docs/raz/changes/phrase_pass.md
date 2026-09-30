@@ -803,3 +803,259 @@ Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wo
 - Before: easy to overlook because it arrived slowly.
 - After: easy to overlook because it was established slowly.
 
+
+## annotated/afterwords/if-many-worlds-had-come-first.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: Bohr did not take him seriously,
+- After: Bohr did not take Everett seriously,
+
+- Before: to keep his draft deferment,
+- After: to keep a draft deferment,
+
+- Before: His leaving came before
+- After: Everett's leaving came before
+
+
+## annotated/afterwords/where-philosophy-meets-science.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: the author rests many-worlds on simplicity,
+- After: the author bases the case for many-worlds on simplicity,
+
+
+## annotated/afterwords/the-failures-of-eld-science.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: whose small facts are correct, based on the contested many-worlds verdict as settled history,
+- After: whose small facts are correct; it treats the contested many-worlds verdict as settled history, and gives
+
+- Before: with an account of the founders as amateurs at confusion that does not fit their record.
+- After: an account of the founders as amateurs at confusion that does not fit their record.
+
+
+## annotated/afterwords/no-safe-defense-not-even-science.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: in which Traditional Rationality was a help in climbing out of the hole, though it was not enough to get things right.
+- After: in which Traditional Rationality ``helped me get out of the hole,'' though it was not enough to get things right.
+
+
+## annotated/afterwords/faster-than-science.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: Many-worlds is said to be gaining ground, with no data.
+- After: Many-worlds is said to be gaining acceptance, with no data.
+
+
+## annotated/afterwords/fake-morality.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: The argument has old relatives.
+- After: The argument has older parallels.
+
+- Before: a sound argument, with old relatives in Plato and the Talmud,
+- After: a sound argument, with older parallels in Plato and the Talmud,
+
+
+## annotated/afterwords/magical-categories.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: probably grown from a question asked in the 1960s.
+- After: probably based on a question asked in the 1960s.
+
+
+## annotated/afterwords/the-gift-we-give-to-tomorrow.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: Inference: that designed future, with love passed down on purpose, is the ``gift'' of the title.
+- After: My inference, which the post does not state, is that this designed future, with love passed down on purpose, is the ``gift'' of the title.
+
+
+## annotated/afterwords/zut-allais.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: The slip leaves the post's point intact.
+- After: The slip does not affect the post's point.
+
+
+## annotated/afterwords/when-not-to-use-probabilities.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: which cuts against the post.
+- After: which counts against the post.
+
+
+## annotated/afterwords/my-best-and-worst-mistake.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: and to writing the field off.
+- After: and to dismissing the field.
+
+- Before: and turns the selection effect against its own record:
+- After: and applies the selection effect to its own record:
+
+
+## annotated/afterwords/raised-in-technophilia.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: The post keeps both the old allergy and the new lesson,
+- After: The post keeps both the old aversion to talk of risk and the new lesson,
+
+- Before: the post's defence of the author's allergy to talk of risk
+- After: the post's defence of the author's aversion to talk of risk
+
+
+## annotated/afterwords/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: since each small admission lets the old plan repair its justifications.
+- After: since after each small admission one can keep the old plan and give it new justifications.
+
+
+## annotated/afterwords/my-naturalistic-awakening.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: What broke this was an unfinished
+- After: What changed this was an unfinished
+
+
+## annotated/afterwords/use-the-try-harder-luke.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: Lucas refuses each time: he will not halt the story,
+- After: Lucas refuses each time: Lucas will not halt the story,
+
+- Before: His last line gives the moral:
+- After: Lucas's last line gives the moral:
+
+
+## annotated/afterwords/on-doing-the-impossible.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: once written off as impossible,
+- After: once dismissed as impossible,
+
+
+## annotated/afterwords/final-words.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: when the doubt he was taught turns on his picture of himself.
+- After: when he applies the doubt he was taught to his picture of himself.
+
+
+## annotated/afterwords/raising-the-sanity-waterline.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: that general methods would dissolve religion,
+- After: that general methods would reduce religious belief,
+
+
+## annotated/afterwords/a-sense-that-more-is-possible.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: and the bar rises as it goes,
+- After: and the standard rises as it goes,
+
+- Before: sets aside its opening objection by raising the bar,
+- After: sets aside its opening objection by raising the standard for rationality each time,
+
+
+## annotated/afterwords/rationality-common-interest-of-many-causes.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: invites comparisons that sap motivation;
+- After: invites comparisons that reduce motivation;
+
+
+## annotated/afterwords/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: on a hedged premise that the best sources of warm feelings and of good outcomes lie far apart.
+- After: on a hedged premise that warm feelings and good outcomes are best bought from different sources.
+
+
+## annotated/afterwords/bystander-apathy.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: that the story has not survived scrutiny.
+- After: that the story was later shown to be largely false.
+
+
+## annotated/afterwords/collective-apathy-and-the-internet.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: from coordination instincts tuned to groups of people who knew each other,
+- After: from coordination instincts suited to groups of people who knew each other,
+
+
+## annotated/afterwords/bayesians-vs-barbarians.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: each person gains by letting others do the fighting, and the post's fallback is the remedy
+- After: each person gains by letting others do the fighting. The post's fallback is the remedy
+
+
+## annotated/afterwords/beware-of-other-optimizing.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: The author is often on the receiving end.
+- After: The author often receives such advice.
+
+
+## annotated/afterwords/toolbox-thinking-and-law-thinking.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: is a failure of Law thinking, is put in the opponent's mouth, and is not discussed.
+- After: is a failure of Law thinking, is given to the opponent to say, and is not discussed.
+
+
+## annotated/afterwords/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: Treating condemnation as a dose confirms
+- After: Treating condemnation as a tool, used only where it works, confirms
+
+
+## annotated/afterwords/on-caring.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: and plugs Giving What We Can,
+- After: and promotes Giving What We Can,
+
+
+## annotated/afterwords/pr-is-corrosive.tex
+
+Why: Phrase pass: our own metaphors and made-up phrases replaced with literal wording; no new claims.
+
+- Before: has no fixed standard, feeds on its own fears,
+- After: has no fixed standard, is prone to ``self-reinforcing fears,''
+

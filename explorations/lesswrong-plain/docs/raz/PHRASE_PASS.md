@@ -254,115 +254,115 @@ thing, and makes no new claim.
 - [x] excluding-the-supernatural
 - [x] psychic-powers
 - [x] quantum-explanations
-- [ ] configurations-and-amplitude
-- [ ] joint-configurations
-- [ ] distinct-configurations
-- [ ] collapse-postulates
-- [ ] decoherence-is-simple
-- [ ] decoherence-is-falsifiable-and-testable
-- [ ] privileging-the-hypothesis
-- [ ] living-in-many-worlds
-- [ ] quantum-non-realism
-- [ ] if-many-worlds-had-come-first
-- [ ] where-philosophy-meets-science
-- [ ] thou-art-physics
-- [ ] many-worlds-one-best-guess
-- [ ] the-failures-of-eld-science
-- [ ] the-dilemma-science-or-bayes
-- [ ] science-doesn-t-trust-your-rationality
-- [ ] when-science-can-t-help
-- [ ] science-isn-t-strict-enough
-- [ ] do-scientists-already-know-this-stuff
-- [ ] no-safe-defense-not-even-science
-- [ ] changing-the-definition-of-science
-- [ ] faster-than-science
-- [ ] einstein-s-speed
-- [ ] that-alien-message
-- [ ] my-childhood-role-model
-- [ ] einstein-s-superpowers
-- [ ] class-project
-- [ ] a-technical-explanation-of-technical-explanation
-- [ ] ends-an-introduction
-- [ ] not-for-the-sake-of-happiness-alone
-- [ ] fake-selfishness
-- [ ] fake-morality
-- [ ] fake-utility-functions
-- [ ] detached-lever-fallacy
-- [ ] dreams-of-ai-design
-- [ ] the-design-space-of-minds-in-general
-- [ ] where-recursive-justification-hits-bottom
-- [ ] my-kind-of-reflection
-- [ ] no-universally-compelling-arguments
-- [ ] created-already-in-motion
-- [ ] sorting-pebbles-into-correct-heaps
-- [ ] 2-place-and-1-place-words
-- [ ] what-would-you-do-without-morality
-- [ ] changing-your-metaethics
-- [ ] could-anything-be-right
-- [ ] morality-as-fixed-computation
-- [ ] magical-categories
-- [ ] the-true-prisoner-s-dilemma
-- [ ] sympathetic-minds
-- [ ] high-challenge
-- [ ] serious-stories
-- [ ] value-is-fragile
-- [ ] the-gift-we-give-to-tomorrow
-- [ ] one-life-against-the-world
-- [ ] the-allais-paradox
-- [ ] zut-allais
-- [ ] feeling-moral
-- [ ] the-intuitions-behind-utilitarianism
-- [ ] ends-don-t-justify-means-among-humans
-- [ ] ethical-injunctions
-- [ ] something-to-protect
-- [ ] when-not-to-use-probabilities
-- [ ] newcomb-s-problem-and-regret-of-rationality
-- [ ] twelve-virtues-of-rationality
-- [ ] beginnings-an-introduction
-- [ ] my-childhood-death-spiral
-- [ ] my-best-and-worst-mistake
-- [ ] raised-in-technophilia
-- [ ] a-prodigy-of-refutation
-- [ ] the-sheer-folly-of-callow-youth
-- [ ] that-tiny-note-of-discord
-- [ ] fighting-a-rearguard-action-against-the-truth
-- [ ] my-naturalistic-awakening
-- [ ] the-level-above-mine
-- [ ] the-magnitude-of-his-own-folly
-- [ ] beyond-the-reach-of-god
-- [ ] my-bayesian-enlightenment
-- [ ] trying-to-try
-- [ ] use-the-try-harder-luke
-- [ ] on-doing-the-impossible
-- [ ] make-an-extraordinary-effort
-- [ ] shut-up-and-do-the-impossible
-- [ ] final-words
-- [ ] raising-the-sanity-waterline
-- [ ] a-sense-that-more-is-possible
-- [ ] epistemic-viciousness
-- [ ] schools-proliferating-without-evidence
-- [ ] 3-levels-of-rationality-verification
-- [ ] why-our-kind-can-t-cooperate
-- [ ] tolerate-tolerance
-- [ ] your-price-for-joining
-- [ ] can-humanism-match-religion-s-output
-- [ ] church-vs-taskforce
-- [ ] rationality-common-interest-of-many-causes
-- [ ] helpless-individuals
-- [ ] money-the-unit-of-caring
-- [ ] purchase-fuzzies-and-utilons-separately
-- [ ] bystander-apathy
-- [ ] collective-apathy-and-the-internet
-- [ ] incremental-progress-and-the-valley
-- [ ] bayesians-vs-barbarians
-- [ ] beware-of-other-optimizing
-- [ ] practical-advice-backed-by-deep-theories
-- [ ] the-sin-of-underconfidence
-- [ ] go-forth-and-create-the-art
-- [ ] humans-are-not-automatically-strategic
-- [ ] toolbox-thinking-and-law-thinking
-- [ ] local-validity-as-a-key-to-sanity-and-civilization
-- [ ] diseased-thinking-dissolving-questions-about-disease
-- [ ] on-caring
-- [ ] strong-evidence-is-common
-- [ ] pr-is-corrosive
+- [x] configurations-and-amplitude
+- [x] joint-configurations
+- [x] distinct-configurations
+- [x] collapse-postulates
+- [x] decoherence-is-simple
+- [x] decoherence-is-falsifiable-and-testable
+- [x] privileging-the-hypothesis
+- [x] living-in-many-worlds
+- [x] quantum-non-realism
+- [x] if-many-worlds-had-come-first
+- [x] where-philosophy-meets-science
+- [x] thou-art-physics
+- [x] many-worlds-one-best-guess
+- [x] the-failures-of-eld-science
+- [x] the-dilemma-science-or-bayes
+- [x] science-doesn-t-trust-your-rationality
+- [x] when-science-can-t-help
+- [x] science-isn-t-strict-enough
+- [x] do-scientists-already-know-this-stuff
+- [x] no-safe-defense-not-even-science
+- [x] changing-the-definition-of-science
+- [x] faster-than-science
+- [x] einstein-s-speed
+- [x] that-alien-message
+- [x] my-childhood-role-model
+- [x] einstein-s-superpowers
+- [x] class-project
+- [x] a-technical-explanation-of-technical-explanation
+- [x] ends-an-introduction
+- [x] not-for-the-sake-of-happiness-alone
+- [x] fake-selfishness
+- [x] fake-morality
+- [x] fake-utility-functions
+- [x] detached-lever-fallacy
+- [x] dreams-of-ai-design
+- [x] the-design-space-of-minds-in-general
+- [x] where-recursive-justification-hits-bottom
+- [x] my-kind-of-reflection
+- [x] no-universally-compelling-arguments
+- [x] created-already-in-motion
+- [x] sorting-pebbles-into-correct-heaps
+- [x] 2-place-and-1-place-words
+- [x] what-would-you-do-without-morality
+- [x] changing-your-metaethics
+- [x] could-anything-be-right
+- [x] morality-as-fixed-computation
+- [x] magical-categories
+- [x] the-true-prisoner-s-dilemma
+- [x] sympathetic-minds
+- [x] high-challenge
+- [x] serious-stories
+- [x] value-is-fragile
+- [x] the-gift-we-give-to-tomorrow
+- [x] one-life-against-the-world
+- [x] the-allais-paradox
+- [x] zut-allais
+- [x] feeling-moral
+- [x] the-intuitions-behind-utilitarianism
+- [x] ends-don-t-justify-means-among-humans
+- [x] ethical-injunctions
+- [x] something-to-protect
+- [x] when-not-to-use-probabilities
+- [x] newcomb-s-problem-and-regret-of-rationality
+- [x] twelve-virtues-of-rationality
+- [x] beginnings-an-introduction
+- [x] my-childhood-death-spiral
+- [x] my-best-and-worst-mistake
+- [x] raised-in-technophilia
+- [x] a-prodigy-of-refutation
+- [x] the-sheer-folly-of-callow-youth
+- [x] that-tiny-note-of-discord
+- [x] fighting-a-rearguard-action-against-the-truth
+- [x] my-naturalistic-awakening
+- [x] the-level-above-mine
+- [x] the-magnitude-of-his-own-folly
+- [x] beyond-the-reach-of-god
+- [x] my-bayesian-enlightenment
+- [x] trying-to-try
+- [x] use-the-try-harder-luke
+- [x] on-doing-the-impossible
+- [x] make-an-extraordinary-effort
+- [x] shut-up-and-do-the-impossible
+- [x] final-words
+- [x] raising-the-sanity-waterline
+- [x] a-sense-that-more-is-possible
+- [x] epistemic-viciousness
+- [x] schools-proliferating-without-evidence
+- [x] 3-levels-of-rationality-verification
+- [x] why-our-kind-can-t-cooperate
+- [x] tolerate-tolerance
+- [x] your-price-for-joining
+- [x] can-humanism-match-religion-s-output
+- [x] church-vs-taskforce
+- [x] rationality-common-interest-of-many-causes
+- [x] helpless-individuals
+- [x] money-the-unit-of-caring
+- [x] purchase-fuzzies-and-utilons-separately
+- [x] bystander-apathy
+- [x] collective-apathy-and-the-internet
+- [x] incremental-progress-and-the-valley
+- [x] bayesians-vs-barbarians
+- [x] beware-of-other-optimizing
+- [x] practical-advice-backed-by-deep-theories
+- [x] the-sin-of-underconfidence
+- [x] go-forth-and-create-the-art
+- [x] humans-are-not-automatically-strategic
+- [x] toolbox-thinking-and-law-thinking
+- [x] local-validity-as-a-key-to-sanity-and-civilization
+- [x] diseased-thinking-dissolving-questions-about-disease
+- [x] on-caring
+- [x] strong-evidence-is-common
+- [x] pr-is-corrosive

@@ -77,3 +77,10 @@ posts are merged in.
       fairness (`docs/raz/TONE_PASS.md`, 345/345); edits logged in
       `docs/raz/changes/tone_pass.md`.
 - [x] Checks and both books rebuilt.
+
+## Phrase pass (user request, 30 September)
+
+- [x] Every afterword, Summary and Response, read one at a time for our own metaphors and
+      made-up phrases (`docs/raz/PHRASE_PASS.md`, 345/345); edits logged in
+      `docs/raz/changes/phrase_pass.md`.
+- [x] Checks and both books rebuilt.

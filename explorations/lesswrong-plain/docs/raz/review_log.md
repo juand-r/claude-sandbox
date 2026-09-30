@@ -629,3 +629,32 @@ paragraph and ask whether it is clear and whether it uses jargon only we would u
 - Checks: raz_check exit 0 on the edited files (flags are pre-existing quotations);
   345/345 notes backups exact; both books build with no LaTeX errors (annotated 1603 pages,
   honest 400).
+
+## Phrase pass (30 September)
+
+User request, after the tone pass: jargon meant our own made-up phrases and metaphors, not
+established technical terms (the glosses added in the tone pass stay). "Do another pass with
+the target of all your silly metaphors and phrases. Do not grep. Read it all one article at a
+time and find them yourself."
+
+- All 345 afterwords read in full, Summary and Response, one at a time, in book order
+  (checklist in `docs/raz/PHRASE_PASS.md`; each edit with before and after text in
+  `docs/raz/changes/phrase_pass.md`, 112 afterwords edited).
+- Replaced: figurative verbs of ours ("rests on", "arrives", "survives scrutiny", "crowd out",
+  "gained ground", "cuts against", "pry", "steer", "colors judgments"), idioms ("on the
+  receiving end", "put in their mouths", "found wanting", "paid a price", "writing off"),
+  our own images ("a gap that did not exist", "the teacher's fist", "a tour of studies",
+  "old relatives", "older roots", "a dose"), and a few compressed phrases that only made
+  sense with the notes ("Inference:", "the second excuse" had already gone).
+- Where a figure of speech was the post's own (checked against the original each time,
+  for example "patch", "gold standard", "pinned down", "dance around gaps", "carve reality
+  at its joints"), it was kept and, where needed, quoted and attributed.
+- Pronouns: where our text used he/his for a real person the post itself does not so
+  describe (Fisher, Frege, McCarthy, Wynne-Edwards, Landsteiner, Kant, Hume, Gandhi,
+  Everett, Carrier, Einfeld, George Lucas), the name was used instead. Pronouns the post
+  itself uses (Einstein, Keats, Rothblatt, fictional characters) were kept.
+- Two grammar faults left by earlier edits were fixed ("Newcomb's Problem", "Bayesians vs.
+  Barbarians").
+- Checks: raz_check exit 0 on the edited files; 345/345 notes backups exact; both books
+  build with no LaTeX errors (annotated 1603 pages, honest 400). The one em dash in the
+  edited files is inside a quotation from Hodgell.
