@@ -37,7 +37,8 @@ def classify(prods):
 
 
 if __name__ == "__main__":
-    MV = [m for m in movers() if not m[0].startswith('E@') and m[0] != 'E']
+    import re
+    MV = [m for m in movers() if not re.search(r'E(?!bar)', m[0])]
     print('Ebar-only movers:', len(MV), flush=True)
     lo, hi = (int(sys.argv[1]), int(sys.argv[2])) if len(sys.argv) > 2 else (0, len(MV))
     T = 36 * (3 * SLOT_LEN + 20) + 8000

@@ -61,3 +61,13 @@
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 2, "s": 12, "pump": true, "fixedP": null, "sat": false, "secs": 17.4}
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 2, "s": 13, "pump": true, "fixedP": null, "sat": false, "secs": 17.5}
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 0, "pump": true, "fixedP": null, "sat": false, "secs": 14.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 1, "pump": true, "fixedP": null, "sat": false, "secs": 15.2}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 2, "pump": true, "fixedP": null, "sat": false, "secs": 16.7}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 3, "pump": true, "fixedP": null, "sat": false, "secs": 13.5}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 4, "pump": true, "fixedP": null, "sat": false, "secs": 20.9}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 5, "pump": true, "fixedP": null, "sat": false, "secs": 12.8}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 6, "pump": true, "fixedP": null, "sat": false, "secs": 13.1}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 7, "pump": true, "fixedP": null, "sat": false, "secs": 17.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 8, "pump": true, "fixedP": null, "sat": false, "secs": 15.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 9, "pump": true, "fixedP": null, "sat": false, "secs": 14.4}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 10, "pump": true, "fixedP": null, "sat": false, "secs": 14.7}
