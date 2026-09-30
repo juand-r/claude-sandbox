@@ -54,11 +54,12 @@ def read_moving_data(decoder, run, lo_off, hi_off):
 
 def lblock(variant, n_reads=8, fill=False):
     """fill: replace empty appendants by junk N's (cts.fill_empty_appendants),
-    which removes every L block from the construction."""
+    which removes every L block from the construction. With no empty
+    appendants the paper's default v is valid, so filled runs use it."""
     tape, apps = LBLOCK_VARIANTS[variant]
     if fill:
         apps = fill_empty_appendants(apps)
-    check(tape, apps, 3 * _left_v(apps), n_reads)
+    check(tape, apps, (1 if fill else 3) * _left_v(apps), n_reads)
 
 
 def demol(T):
@@ -83,6 +84,12 @@ def demol(T):
 READS_TAPE, READS_APPS = "YYYYNN", ["YYYYNN"]
 READS_EVERY = 600                 # a multiple of 30: same Ebar phase
 READS_MARGIN = 3_000
+# A settled accepted region keeps about 4 Ebar clusters per appendant
+# symbol (measured 23-25 for 6 symbols in every run that matched the
+# reference); a rejected region keeps none. Any other count means the
+# region was disturbed rather than read, and is reported as '!'.
+ACCEPT_CLUSTERS_PER_SYMBOL = 4
+ACCEPT_TOLERANCE = 2
 
 
 def component_regions(tape, apps, right_periods):
@@ -98,8 +105,9 @@ def component_regions(tape, apps, right_periods):
 
 
 def read_outcomes(tape, apps, v, n_reads, T, row_origin=None):
-    """Observed outcome ('Y'/'N') of each of the first n_reads reads, or
-    '.' if not completed by generation T. row_origin: optionally a prebuilt
+    """Observed outcome ('Y'/'N') of each of the first n_reads reads, '!'
+    if the region settled in a state that is neither, or '.' if not
+    completed by generation T. row_origin: optionally a prebuilt
     (row, origin) for a modified assembly with the same right side."""
     rp = n_reads // len(apps) + 3
     if row_origin is None:
@@ -135,11 +143,17 @@ def read_outcomes(tape, apps, v, n_reads, T, row_origin=None):
                 # settled: nothing sweeping or crossing, and unchanged since
                 # the previous sample (a sweep in progress changes it)
                 n_e = sum(1 for _, k in inside if k == "E")
-                state[j] = "Y" if n_e else "N"
+                expect = ACCEPT_CLUSTERS_PER_SYMBOL * len(apps[j % len(apps)])
+                if n_e == 0:
+                    state[j] = "N"
+                elif abs(n_e - expect) <= ACCEPT_TOLERANCE:
+                    state[j] = "Y"
+                else:
+                    state[j] = "!"
                 print(f"read {j}: at t~{read_at[j]}, {n_e} Ebar clusters "
                       f"remain: {state[j]}", flush=True)
             last[j] = inside
-    return "".join(s if s in "YN" else "." for s in state)
+    return "".join(s if s in "YN!" else "." for s in state)
 
 
 def check(tape, apps, v, n_reads):

@@ -1,5 +1,15 @@
 # Notes
 
+## Standing rules (read before running anything)
+
+1. Never `pkill -f PATTERN`: the pattern is in the calling shell's own
+   command line, so it kills that shell (happened three times). Record
+   PIDs at launch (`echo $!`) and `kill PID`.
+2. An instrument is a hypothesis until validated. Before trusting a
+   decoder or classifier, check it on a known-good run AND make sure it
+   rejects a known-bad one (the moving-data decoder and the first read
+   classifier both passed broken runs).
+
 ## Sources
 
 - M. Cook, "Universality in Elementary Cellular Automata", Complex Systems

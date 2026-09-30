@@ -16,6 +16,13 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 - [x] 2b. Correct v0.1.0 docs to 1 char per ossifier / 30v (REPORT, REVIEW, DIRECTIONS, CHANGELOG)
 - [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
 - [ ] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
+  - measured: SKI clockwise machine 10,897 states / 43 symbols / 395,550
+    transitions; binarize() carries (new state, written symbol) = 345,523
+    pairs x 2^6 input prefixes ~ 22M states. That is why it never finishes.
+  - design: binary cells [mark bit][w data bits]; the one-cell delay needed
+    for left moves becomes a (w+1)-bit shift register in the state:
+    (q, last w+1 bits, phase) <= 256 x 2^6 x 6 ~ 98k states, no symbolic
+    buffer. Build directly from the two-way TM; verify against tm.TM.
 - [ ] 5. 1-D HashLife engine, measured on the above
 - [ ] 6. Team results: review, verify, integrate, report
 

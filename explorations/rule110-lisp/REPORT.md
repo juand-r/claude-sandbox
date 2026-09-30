@@ -204,8 +204,13 @@ components, tracked in the Ebar frame where the table is static:
   period of 30, so that samples of a static region compare equal.
 - The first change in a region marks the read.
 - The region is classified once it is settled: no C, A or untyped
-  material inside, and unchanged since the previous sample. Settled
-  with Ebar clusters left is Y; empty is N.
+  material inside, and unchanged since the previous sample. Empty is N.
+  Four Ebar clusters per appendant symbol, within 2, is Y (every run
+  that matched the reference left 23-25 clusters for a six-symbol
+  appendant). Any other count is reported as malformed (`!`): the
+  region was disturbed, not read. An earlier version called every
+  nonempty region Y, which let a broken run with 2 and 53 clusters pass
+  as a match.
 
 The settling rule matters. A reject sweep takes about 5,000 generations,
 and the sweeping rejector is not always typed A. A first version without

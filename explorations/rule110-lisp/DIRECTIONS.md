@@ -104,6 +104,17 @@ HashLife (memoized quadtree-in-time, as in Gosper's algorithm) skips
   packed engine on short runs.
 - Combines with 2.1 and 2.2.
 
+Simpler alternative, added in v0.1.1: a streaming window. Far from the
+action, the left side is a free A-train (the initial pattern shifted by
+(3, 2) per 3 generations) and the right side is free table data (shifted
+by (30, -8)), both known exactly in closed form. Only the region between
+the ossification front and the current leader needs simulating, with
+its edge cells supplied from the closed form; the window's correctness
+condition (no debris reaches either edge) is checkable with the census.
+Rough gain for De Mol's program: the full cyclic array is ~3e8 cells,
+the active region perhaps ~1e6, so ~300x. Easy to check bit-for-bit
+against the packed engine.
+
 ### 2.4 Genuinely more direct constructions (research)
 
 - Native CTS programs: design interpreters as cyclic tag systems
@@ -117,9 +128,11 @@ HashLife (memoized quadtree-in-time, as in Gosper's algorithm) skips
 ## 3. Also pending from v0.1.0
 
 - The short-leader (L block) defect. It blocks every program with empty
-  appendants, i.e. everything compiled from a tag system. Fixing it is a
-  prerequisite for running compiled programs on gliders at all, and the
-  glider census is the right tool to diagnose it.
+  appendants, i.e. everything compiled from a tag system. v0.1.1
+  sidesteps it with an exact CTS rewrite (cts.fill_empty_appendants:
+  empty appendants become junk N-words of a whole cycle's length), at a
+  cost of about 2x in reads and 2-4x in v. The L block itself remains
+  unexplained (NOTES.md, phase 3 item 2).
 
 ## 4. Suggested order
 
