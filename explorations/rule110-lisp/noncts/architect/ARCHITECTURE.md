@@ -1,6 +1,6 @@
 # Architecture: a two-counter machine in Rule 110 without a cyclic tag system
 
-Author: architect. Status: design document, version 2. Section 8 lists
+Author: architect. Status: design document, version 3 (end of session). Section 8 lists
 exactly what is verified and what is not; everything else is design or
 argument and is labelled so.
 
@@ -47,8 +47,10 @@ A crossing displaces both partners, and when three families cross
 pairwise, the order of meetings depends on timing. The lane is the unique
 choice (among clean crossings) in which every meeting has the same class
 whatever the order: C1 x F class 1, F x Ebar class 3, C1 x Ebar class 1.
-Within the lane, any number of F's, C1 messengers and Ebars pass through
-each other with exactly predictable phases (verified, section 8).
+Within the lane, F's, a C1 messenger and Ebars pass through each other
+with exactly predictable phases (verified, section 8). Verified with one
+messenger in flight; a test with three messengers failed (`m1_multi.py`),
+so several messengers need a finer incoming-class analysis.
 
 ### 2.4 Counting needs more than single crossings
 
@@ -77,15 +79,32 @@ only; after INC or DEC the register is back in the same phase residue, so
 the same packets work for every value. Nothing is created or destroyed.
 
 Verified: INC^k for k = 1..6 and then DEC^k back down, every intermediate
-state exact (section 8). DEC at n = 0 destroys the pair (the F's come too
-close); a clean zero test is being searched (`ztest.py`).
+state exact (section 8), and a fixed periodic stream (below).
 
-Caveat that matters for the full machine: the packets were placed
-relative to T's current position. T itself drifts, differently for INC
-and DEC (modulo the class lattice they differ by exactly one lane Ebar's
-displacement), so a fixed periodic stream needs balanced instructions:
-every instruction must drift every marker by the same vector modulo the
-lattice. INC followed by one lane Ebar has the same T-drift as DEC.
+**Zero state.** Below gap 43 the register keeps working once more (DEC
+to gap 33.67). A second DEC turns the two F's into a close compound
+(F_19_F, gap 19) with only Ebar-speed debris. The compound behaves as a
+legitimate value 0: INC restores gap 33.67 exactly, a second INC gives
+gap 43, NOP and every identity packet pass it unchanged. So the values
+are 0 = compound, 1 = gap 33.67, 2 = gap 43, and so on. A 2-packet
+sequence that is the identity on separated pairs splits the compound into
+a separated pair at gap 24.33 (a second representation of 0), from which
+INC also works. DEC applied at 0 is destructive: from the separated
+zero it leaves one A moving right and only left-moving debris (the
+register is gone), from the compounds it scatters. **A clean zero test
+(identity at value >= 1, a readable signal at 0, register kept) was not
+found**: 660 single packets and 1285 two-packet identities were tried
+(section 8); synth is running the SAT version (spec Z2,
+`zero_state.json`).
+
+Fixed stream. The packets were first placed relative to T's current
+position. T itself drifts, differently for INC and DEC, so a fixed
+periodic stream needs balanced instructions: every instruction must drift
+T by the same vector modulo the class lattice (a lattice difference only
+translates later collisions by periods). INC' = INC + one lane Ebar,
+DEC, and NOP = one identity pair + 7 lane Ebars are balanced; with them
+slot j of the stream sits at a position that depends only on j, and 6
+random 8-instruction programs ran exactly (`xstream.py`).
 
 ## 4. Layout: where the registers sit
 
@@ -124,9 +143,9 @@ dimension this leaves one layout, in F's rest frame:
 |---|---|---|
 | lane | transport through memory in both directions | verified |
 | A-register INC/DEC | crossing counter | verified (relative placement) |
-| balanced instruction set | equal marker drift for all packets | first relation found |
-| zero test A | at n = 0 a clean, distinct outcome near T_A; identity for n >= 1 | searching (`ztest.py`) |
-| B-register ops | C-messenger packets that INC/DEC a register from the left | not started (winding test for C packets) |
+| balanced instruction set | equal marker drift for all packets | verified for INC/DEC/NOP (xstream.py) |
+| zero test A | at value 0 a clean, readable signal; identity for value >= 1 | zero STATE verified; TEST not found (single and two-packet searches); SAT spec Z2 with synth |
+| B-register ops | C-messenger packets that INC/DEC a register from the left | stationary C pairs do wind an F pair (cpump.py, 19 winding transitions); not assembled |
 | zero test B | same, triggered by a messenger | not started |
 | control: reader | stream packet + answer messenger -> skip state | not started |
 | control: skip | neutralise the next k instruction packets | not started (synth lock-and-key) |
@@ -170,3 +189,42 @@ by multi-body crossings, not by appending and consuming symbols.
 | no winding for single crossings | `winding.py`, `winding2.py` | 0 winding transitions |
 | multi-body packets act differently and wind | `multibody.py`, `winding3.py` | 8 multi-body cases; 181 winding transitions |
 | crossing counter INC/DEC | `xcounter.py long` | n = 0..6..0, F positions exact, only -4/15 debris |
+| counter from a fixed periodic stream | `xstream.py` | 6/6 random 8-instruction programs exact |
+| census view of a counter run | `xcensus.py` | 42 E-type + 2 F (checked (36,-4)-invariant), gap = value |
+| zero state (compound) and INC out of it | NOTES.md ~15:00 | exact |
+| C pairs pump an F pair from the left | `cpump.py` | 19 winding transitions (stage-wise simulation) |
+| no clean zero TEST among 660 packets / 1285 two-packet identities | `zc_fast.py`, `ztest3.py`, `ztest4.py` | negative, scope as stated |
+
+## 9. Integration with the team's other counter
+
+Collider found a second counter technology: E^n (n E gliders, moving at
+-4/15) driven by a rigid G-speed stream (GB5 = INC, GB3 = DEC, GB4 = NOP)
+whose DEC at zero leaves the counter intact and answers with one A
+(verified by collider and scholar). It has a clean zero test, which the
+F-pair counter lacks, but it is a front-only register: every G-speed
+packet reacts with the first E^n it meets, and nothing crosses an E.
+
+Can the two technologies be combined into two registers? Speed
+arithmetic says not directly. An E^n (-4/15) to the right of an F pair
+(-1/9) catches up with it; to its left, G packets for the E^n must pass
+the F pair, and no G-speed object crosses an F (0 of 24 classes).
+Ebar-speed packets never meet an E^n at all (same speed), which is why
+the F-pair counter's stream would be invisible to it, but that does not
+help the G packets. So two-register addressing remains the central open
+problem for both technologies; the layout of section 4 is the only one I
+know that is topologically consistent, and it needs the B-side gadgets
+(C-pair pumps generated at the control) and a zero test.
+
+## 10. Honest status
+
+Shown: bidirectional transport through stored data (F lane,
+order-independent); a crossing-only unbounded counter (INC/DEC/NOP)
+driven by a fixed periodic stream, with a distinguished zero state; the
+obstruction analysis that explains why Cook's machine is a queue; two
+negative results (no winding for single crossings; no clean zero test in
+the searched space).
+
+Not shown: a zero test, a controlled branch, two registers, universality.
+None of the pieces above is an emulation of a cyclic tag system, but
+they are not yet a computer.
+

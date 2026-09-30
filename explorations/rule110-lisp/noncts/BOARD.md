@@ -1327,3 +1327,91 @@ a hit therefore still needs a check that both placements fit one stream
 slot. If you give me, for one slot, the seeds of the compound (value 0)
 and of T, P (value 1) in the same coordinates, I will tie the two
 placements exactly. Running (i) alone first (queue, after hard gate).
+
+### [architect] session ~18:10 - zero test: negative so far (scope stated)
+Searched for a TEST (identity on value >= 1, messenger at value 0):
+- 660 single pure-Ebar packets vs the zero compound: none (zc_fast).
+- 1285 two-packet sequences that are exact identities on separated
+  pairs: on the compound 705 do nothing, 545 turn it into the separated
+  gap-24.33 pair (standard residue, so zero has two representations),
+  14 into a gap-33.67 pair of another residue; none emits a messenger
+  without right-moving debris (ztest3/4).
+- A messenger reaction exists one step away: on the split residue
+  D = (19,23) the identity packet pair(-1,25)@(-14,55) makes the back F
+  emit C1 + C2 and survive (B^2 leaves left). But the packets that
+  produce that residue from the compound are not identities on normal
+  pairs.
+So: counter INC/DEC and a zero STATE are verified, a clean zero TEST is
+not. Also census check of a fixed-stream run: 42 E-type defects + 2
+(36,-4)-invariant defects (the F's) at gap 71 = value 3 (xcensus.py).
+
+### [synth] 2026-09-30 05:15 - hard gate: none <= 30 wide (both variants)
+@collider: synth/hardgate.py, free G-speed (42,-14) object H of width <= 30,
+slip 6 (forced), A from the left, 9 start placements (H is free, so it can
+also shift inside its window), T2 = 150, moving window:
+  A + H -> nothing : UNSAT (9/9)
+  A + H -> GB4     : UNSAT (9/9)
+Positive control on the same code: fixed GB1 + A -> G in exactly 1 of 9
+classes (your class 3). So a clean hard gate at G speed, if it exists, is
+wider than 30 cells or leaves something else (e.g. a G-speed object other
+than GB4 -- tell me which outputs are acceptable and I will run that:
+"A + H -> any G-speed train" is one CNF).
+
+### [architect] session ~18:40 - @synth: slot-tied seeds for Z2 are in zero_state.json
+architect/zero_state.json now has "slot2": the anchor, the value-0
+compound seed (after DEC,DEC) and the value-1 F seeds T, P (after
+DEC,NOP) at slot 2, all in xstream.py coordinates, plus the lane Ebar's
+event for that slot. A packet at event anchor + (class event rel. to T)
++ 20*(36,-4) meets both states in the same slot (NOP and DEC drift T
+identically modulo the lattice, so one placement serves both).
+Thanks for noticing the two different F_19_F compounds (library names
+are assigned per process; the file's phases are authoritative).
+
+### [architect] session ~19:35 - more zero-test data (still negative)
+- The separated gap-24.33 pair (standard residue, reached from the
+  compound by 545 two-packet identities) is a second zero: INC from it is
+  exact; DEC destroys it leaving ONE A to the right and only left-movers
+  (B^3, B^3, E, E^2) - a destructive zero answer, like E^n's A.
+- All 1302 identity sequences (17 single, 1285 two-packet) applied to
+  that separated zero: 1107 collapse it cleanly into compound F_18_F,
+  none gives a messenger without right-movers (ztest5.py).
+So the zero state is a family of close compounds linked by clean packet
+moves; a clean non-destructive read is the missing gadget. @synth: your
+zc (Z2) run is the right next test; I will look at its result.
+
+### [architect] session ~20:15 - FINAL SUMMARY (architect)
+Files: architect/ARCHITECTURE.md (design v3, verified-results table s.8,
+integration s.9, honest status s.10), NOTES.md (log), README.md (scripts).
+FINDINGS.md was refused by the harness; its content is ARCHITECTURE s.8.
+VERIFIED (full Rule 110 simulation; scholar independently re-checked 1-3):
+1. Obstruction: no right-mover crosses a C, no fast left-mover crosses an
+   Ebar (catalog), so with a program from the right only the frontmost
+   stationary store can answer; explains why Cook's store is a queue.
+2. F memory is crossed from both sides (C1/C2 from the left, Ebar from
+   the right); lane C1xF#1, FxEbar#3, C1xEbar#1 is ORDER-INDEPENDENT
+   (Yang-Baxter-type condition, unique among clean crossings): 20/20
+   timings, final positions = sum of displacements exactly. Caveat: one
+   messenger in flight at a time (3 messengers failed, m1_multi.py).
+3. Crossings alone cannot count (no winding: C1, C2, F markers, single
+   gliders); multi-body Ebar pairs do wind.
+4. Crossing counter: register = two F's, value = gap; INC and DEC are
+   3-packet Ebar-speed sequences that cross the register and leave only
+   -4/15 debris; INC^6 DEC^6 exact; driven by a FIXED periodic stream with
+   a balanced instruction set (INC', DEC, NOP drift the register equally
+   mod the lattice): 6/6 random programs exact; census confirms.
+5. Zero STATE: DEC below the smallest clean gap gives a close compound
+   (F_19_F etc.); INC out of it is exact, NOP passes it.
+6. Stationary C pairs can pump an F pair from the left (cpump.py): the
+   upstream register of my layout is not ruled out.
+NEGATIVE / OPEN:
+- No clean zero TEST: 660 single packets, 1285+17 two-packet identities
+  vs the compound and vs the separated zero; DEC at zero is destructive
+  (at best: one A right + left debris). synth's SAT Z2 (zero_state.json):
+  UNSAT for class 0, all 14 slips, width 24, so far.
+- Two-register addressing: my layout (registers on both sides of a
+  control point, both zero points at the control) is the only
+  topologically consistent one I know; collider's E^n counter (clean zero
+  answer) cannot be combined with an F-pair register (speed arithmetic,
+  ARCHITECTURE s.9).
+Not shown: a controlled branch, two registers, universality. Nothing
+here emulates a cyclic tag system, but it is not yet a computer.

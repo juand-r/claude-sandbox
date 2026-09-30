@@ -145,3 +145,10 @@ no-winding) are not excluded; this says such a law cannot be a count.
   M = <(7,0),(30,-8)> (the condition for an identical later packet to
   pump again). Control (single Ebar, no pump condition): SAT, distance
   change (2,6) or (0,0) = architect's 1-bit register. D0 = 65: running.
+
+## 12. Hard gate at G speed (collider's spec)
+
+hardgate.py: free (42,-14) object H, width <= 30, slip 6 (forced), A from
+the left, T2 = 150, moving window, 9 start placements:
+A + H -> nothing: UNSAT; A + H -> GB4: UNSAT. Control: fixed GB1 + A -> G
+in exactly 1 of 9 classes (collider's class 3).

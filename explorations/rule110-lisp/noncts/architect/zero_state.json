@@ -270,5 +270,28 @@
    2153,
    -129
   ]
- ]
+ ],
+ "slot2": {
+  "note": "Same coordinates (architect/xstream.py). A packet for slot 2 is placed at anchor + (its class event relative to T) + 20*(36,-4); value-0 state at slot 2 = the compound seed below (after DEC,DEC); value-1 state at slot 2 = the two F seeds below (after DEC,NOP). The same packet event must work for both.",
+  "anchor": [
+   13020,
+   -1302
+  ],
+  "value0_compound_seed": [
+   28,
+   109
+  ],
+  "value1_P_seed": [
+   18,
+   179
+  ],
+  "value1_T_seed": [
+   6,
+   214
+  ],
+  "lane_ebar_event_for_slot2": [
+   13726,
+   -1327
+  ]
+ }
 }

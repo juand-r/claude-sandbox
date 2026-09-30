@@ -5,11 +5,11 @@
 - [x] Physical intuition: pairwise collisions via collider's enumerator
       (`cat_pairs.py`), placement helper `rx.py`.
 - [x] ARCHITECTURE.md: candidates, primitives, choice; board post.
-- [ ] Register gadget (front register) or F-memory register.
-- [ ] Relay / bidirectional transport.
-- [ ] Stream control (skip).
-- [ ] A controlled branch on gliders.
-- [ ] FINDINGS.md + final board post.
+- [x] F-memory register: crossing counter INC/DEC/NOP, fixed stream (zero TEST open).
+- [x] Bidirectional transport: F lane (order-independent, one messenger in flight).
+- [ ] Stream control (skip): not started (scholar/collider: soft/hard gates).
+- [ ] A controlled branch on gliders: blocked by the zero test.
+- [x] Final board post (FINDINGS.md refused by harness; results in NOTES/ARCHITECTURE).
 
 ## Log
 
@@ -124,3 +124,43 @@ wind (19 winding transitions over 95 pair movers, residues mod L_FE), so
 the upstream register can in principle be pumped from the control side.
 Caveat: stage() simulates T and P crossings separately (valid only for
 large gaps); used C's end up as stationary debris in the stream's path.
+
+~18:00 Zero test, stages 5-6 (ztest3.py, ztest4.py): 1285 two-packet
+sequences are exactly the identity on separated pairs (catalog
+prediction). On the compound, 705 leave it unchanged, 559 split it into
+two separate F's: 545 at gap 24.33 in the STANDARD residue (i.e. the
+separated n = -2 state: a second representation of zero), 14 at gap
+33.67 in a different residue ("marked"); no sequence emits a messenger
+without right-movers. Single-packet splits to residue (19,23) exist, and
+on that residue the identity packet pair(-1,25)@(-14,55) makes P emit
+C1 + C2 (P survives, B^2 leaves to the left): the messenger reaction we
+want, but the split packets are not identities on normal pairs.
+Status: clean zero test NOT found; handed to synth as spec Z2.
+xcensus.py: census of a fixed-stream run (INC,INC,DEC,INC,NOP,INC):
+42 E-type defects (packet debris), 2 '?' defects that are exactly
+(36,-4)-invariant (the F's), gap 71 = n 3. PASS.
+
+~19:30 More zero-test data:
+- Separated pair at gap 24.33 (standard residue, "n = -2"): INC works
+  exactly from it (two INCs -> gap 43). DEC destroys it: one A to the
+  right, B^3, B^3, E, E^2 to the left (a destructive zero answer).
+- xstream2.py (DEC' = DEC + S1 split packets, balanced padding): in the
+  fixed stream the zero state comes out as another compound, F_12_F, and
+  INC from it is exact; DEC at F_12_F scatters (A, D1, C1, F, F, ...).
+- ztest5.py: all 17 single and 1285 two-packet identities applied to the
+  separated zero: 1107 collapse it cleanly into compound F_18_F, 14 move
+  it cleanly, the rest scatter with right-movers. No messenger without
+  right-movers.
+Conclusion: the zero STATE is a family of close compounds (F_12_F,
+F_17_F, F_18_F, F_19_F, ...) connected by clean single-packet moves, INC
+leaves it cleanly, but no packet or 2-packet sequence found reads it
+cleanly. Synth's SAT (spec Z2, zc.py) had 7 UNSAT instances (slips 0-6,
+class 0, width 24) at 19:20.
+
+~20:00 m1_multi.py: lane with THREE C1 messengers (spacing chosen so
+each F and each Ebar meets the next messenger in the lane class after
+crossing the previous one): 0/5 clean (F's destroyed, E/E^2 debris). So
+the lane is verified for ONE messenger in flight at a time; several
+messengers need a correct incoming-class analysis (probably the same
+sub-lattice subtlety as the b=1 offset). Open; the architecture only
+needs one messenger in flight per register.
