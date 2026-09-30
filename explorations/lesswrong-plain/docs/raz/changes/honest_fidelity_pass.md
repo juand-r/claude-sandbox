@@ -2865,3 +2865,481 @@ Why: Fidelity/substance pass: added the philosophers' reference theory, the narr
 - Before: Clever ideas look promising only because you cannot see the obstacles.
 - After: Without the key you will not even know the problem is unsolvable: if you do not know the rules, you do not know the rule that you need rules. Clever ideas look promising only because you cannot see the obstacles. It is like firing blindfolded at a distant target and crying that no one can prove you will miss; when no one can prove your idea wrong, you lack the information to hit a small target in a vast space.
 
+
+## honest/sections/terminal-values-and-instrumental-values.tex
+
+Why: Fidelity/substance pass: added experts at vs on planning, the melting-sister contrast, the shoot-your-foot pruning and the case for starting simple, wind speed vs temperature, what a mind-state-only utility would steer toward, the quotation-of-quotation, the regularity that makes instrumental value, the starving-consequentialist error, belief-driven change, opponents as sociopaths, how we trace our values, and the reward-system complications
+
+- Before: But I have ``noticed'' that when they talk about goals in the abstract,
+- After: Humans are experts at planning, not experts on planning. I have ``noticed'' that when they talk about goals in the abstract,
+
+- Before: Instrumental values are wanted only for their consequences; terminal values regardless of consequences.
+- After: Instrumental values are wanted only for their consequences: I want penicillin for my sister because I expect it to cure her, and if I expected it to melt her like the Wicked Witch I would fight to keep it from her. Terminal values are wanted regardless of consequences.
+
+- Before: at the cost of an exponentially large space.
+- After: at the cost of an exponentially large space, which also loses structure a human planner uses: if one first act is shooting your own foot off, a person discards every sequence that starts that way. So there are ``a few minor complications,'' but it is surprisingly useful to consider the absurdly simple version first.
+
+- Before: Expected utility belongs to actions and utility to outcomes.
+- After: Expected utility belongs to actions and utility to outcomes; both map to real numbers, as wind speed and temperature do, but that does not make them the same. If all your utilities were over your own states of mind, you would steer the future toward your happiness and be indifferent between any two futures with the same state of mind, and you would rarely die for another. When the philosopher's answer shifts from utilities of outcomes to the value of the decision, it makes a jump that sounds the same in English but would be an error in a typed language.
+
+- Before: To save your son you must imagine him saved, but what you imagine is your son, not your own imagining.
+- After: To save your son you must imagine him saved, but what you imagine is your son, not your own imagining. The imagination is a quotation, like ``snow'' against snow; to steer toward your own representation, your utility function would have to value the quotation of the quotation.
+
+- Before: They come back when the model represents causes: B has instrumental value because it leads to C,
+- After: They come back when the model represents causes. If some state B tends to lead to C however B is reached, you can plan by finding a B that leads to C and an A that leads to B: B has instrumental value because it leads to C,
+
+- Before: With the utility function fixed, instrumental values change only when beliefs of fact change.
+- After: Complicate the model too early and you may think instrumental values have a life of their own, so that valuing B commits you to B even without C; or that a consequentialist maximizing fitness would starve unless it had a terminal value for eating, though no one opens car doors all day for fear of being locked out. With the utility function fixed, instrumental values change only when beliefs of fact change: come to believe penicillin causes pneumonia, and its value drops.
+
+- Before: People who disagree about whether banning guns lowers crime agree that crime is bad.
+- After: People who disagree about whether banning guns lowers crime agree that crime is bad. In angry arguments this gets lost, and each side decides the other must be sociopaths who really want people killed.
+
+- Before: We can reconstruct our values only by ``error-prone projects of cognitive archaeology''.
+- After: We cannot print out our network of values, and probably do not store how they got there. Moral dilemmas of the form ``Would you do X if Y?'' help, with their own pitfalls; we can reconstruct our values only by ``error-prone projects of cognitive archaeology''. The simple model shows how easy this ought to be in principle, and says nothing of the reward system's further complications, such as the different pleasures of eating chocolate and of anticipating it.
+
+
+## honest/sections/leaky-generalizations.tex
+
+Why: Fidelity/substance pass: added the cookie-market example, the point that the world's leaks make plans leaky even with simple wants, the two partial specifications (compact nonlocal, local noncompact), how tempting rules fail, the wonder that ethical advice helps, the one-sided-debate alternative, the one-way flow from utility to expected utility, and the leveled-gun example
+
+- Before: You just have to deal with it.
+- After: You just have to deal with it: if the cookie shop closes at 10 p.m. except at 6 p.m. on Thanksgiving, and today is Thanksgiving, come before six.
+
+- Before: Rules for action inherit the leaks of the world.
+- After: Life would be complicated even if what we wanted were simple, because rules for action inherit the leaks of the world.
+
+- Before: A short rule for which keys to press must describe the machine; a rule about keys alone must list every sequence.
+- After: There is more than one opening sequence, and too wrong a sequence burns the money. A short rule for which keys to press must describe the machine: press whatever opens the box. A rule about keys alone must be a giant table of every sequence. No rule is both short and about the keys alone.
+
+- Before: Worse, a rule may work almost always and miss the one key that burns the money.
+- After: Worse, a rule may work almost always, such as pressing most keys three times, and miss the one key that burns the money if pressed once; you think you have a perfect rule when you have failed to picture all the machine's paths or to value all the side effects.
+
+- Before: But complicated actions do not show complicated goals.
+- After: Given how many ways we value outcomes and how tangled the paths to them are, it is a wonder there is any helpful ethical advice at all, the strangest and still helpful being ``The end does not justify the means.'' But complicated actions do not show complicated goals.
+
+- Before: This is the type error of my earlier post, and a kind of double counting.
+- After: This is the type error of my earlier post, and a kind of double counting: it sets up a loop between expected utility and utility, where the flow should run one way, from utility to expected utility. Or it is the wish for a one-sided policy debate, where the best policy has no drawbacks.
+
+- Before: Punishing the evil might be argued good in itself, but not from the lives it saves.
+- After: Punishing the evil might be argued good in itself, but not from the lives it saves: that shooting a man with a leveled gun saves others appeals to the value of life, not of death.
+
+
+## honest/sections/terminal-values-and-instrumental-values.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim (no question mark in the original)
+
+- Before: of the form ``Would you do X if Y?'' help,
+- After: of the form ``Would you do X if Y'' help,
+
+
+## honest/sections/the-hidden-complexity-of-wishes.tex
+
+Why: Fidelity/substance pass: corrected the first kind of genie (one you can safely tell to do what you should wish, not one to which any wish is safe); added the wish-project epigraph, how the Outcome Pump works and is aimed, the Regret Button, why the wish sounds safe, the patched wish and the lookup-table point, the full list of further values, the stronger failures, the chess comparison, and why wishing is superfluous with a safe genie
+
+- Before: There are three kinds of genies: those to whom any wish is safe, those to whom no wish is safe, and those too weak to matter.
+- After: I open with a fragment of the ``Open-Source Wish Project,'' a wish for immortality that runs on for clause after clause. There are three kinds of genies: those to whom you can safely say ``I wish for you to do what I should wish for,'' those for which no wish is safe, and those that are not very powerful or intelligent.
+
+- Before: You have an Outcome Pump, which resets time until a chosen outcome happens, and pushes a chosen quantity as high as it can.
+- After: You are in a wheelchair, but you have an Outcome Pump. It is not sentient; it contains a small time machine that resets time unless a specified outcome occurs, so hooked to a coin set to heads, you see heads. Too unlikely an outcome makes the machine break down first. By setting reset probabilities that fall as a quantity rises, it can push that quantity as high as it can. It takes no English, only its scanners and pattern matching, so you match a photo of your mother, select her whole body, and
+
+- Before: You tell it to increase your mother's distance from the building's center. The gas main explodes, and her body flies away from the building.
+- After: make the reset probability fall as her distance from the building's center grows. The gas main explodes, and her body flies away from the building. You reach for the Emergency Regret Button, which every future function penalizes heavily, and a burning beam crushes you first; that scores well too.
+
+- Before: Patch the wish to forbid explosions, and she falls from a window and breaks her neck.
+- After: This genie is of the second kind. Patch the wish to forbid explosions, and she falls from a window and breaks her neck. A wish from the Wish Project would add clause after clause: not by exploding the building, not by collapsing its walls, not by waiting for the body to be carried out. The endless patches recall Artificial Addition.
+
+- Before: A human helper would not even think of blowing up the building, so ``Get my mother out of the building'' sounds safer than it is.
+- After: A human helper would not even think of blowing up the building, so ``Get my mother out of the building'' sounds safer than it is; we never consider the plans we rank very low. You exclude the explosion by foreseeing that she would die, and your brain holds no prerecorded rule against blowing up burning buildings with mothers in them, yet that is what the wish tries to record, and so it swells into a table of judgments on every path through time.
+
+- Before: You also want her healthy, untraumatized and in touch with her family. What of the dog, a murderer, a piece by Bach, a frozen head?
+- After: You also want her healthy, not badly burned; untraumatized, not seized by a purple monster, though that beats roasting; and not whisked to a desert island by a wormhole, but in touch with her family. Is it worth the dog's life? A convicted murderer's, or two? Every copy of Bach's Little Fugue in G minor? What if she would die of illness in eighteen months anyway? Is it worth rescuing her with a crushed foot, only her head for cryonics, only her body? What is a chimpanzee worth?
+
+- Before: The judgments you would make are finite in complexity, but not small.
+- After: The judgments you would make are finite in complexity, but not small, and not reducible to valuing happiness or fitness.
+
+- Before: So: ``There is no safe wish smaller than an entire human morality.''
+- After: So: ``There is no safe wish smaller than an entire human morality.'' A nuclear weapon moves her farther, and a stronger genie might fling her out of the Solar System, or do something neither of us would think of, as a chimpanzee would not think of a nuclear weapon. You cannot foresee every path, any more than you can program chess by listing a move for every position, and you cannot know in advance which of your values the genie's path will need.
+
+- Before: The only safe genie shares all your judgment criteria.
+- After: The Wish Project is futile except as an example of how not to think. The only safe genie shares all your judgment criteria, and then you can just say ``I wish for you to do what I should wish for,'' or nothing at all. Wishes are leaky generalizations from your whole morality, and only the whole can plug the leaks.
+
+
+## honest/sections/anthropomorphic-optimism.tex
+
+Why: Fidelity/substance pass: added the group selectionists' mechanism and why it failed, the 'uncharitable' objection, the brain as a generator of high-ranking solutions (with examples of what it never generates), ranking as a property of the optimizer, evolution's ranking, the outright fallacy and the reply you never hear, Uglak and why we honestly believe, the mock plea, why evolution cannot be moved, and the failure to synchronize
+
+- Before: the group selectionists, biologists before 1966 who believed predators would restrain their breeding so as not to exhaust their prey.
+- After: the group selectionists, biologists before 1966 who believed predators would restrain their breeding so as not to exhaust their prey, because groups that restrained themselves would send out colonists to replace crashed ones. There was no evidence for it, none was found, predator populations crash all the time, and the mathematics turned out nearly impossible. Why be so uncharitable, you ask, when they could not know in advance?
+
+- Before: A tribe facing scarcity would agree to have fewer children; nobody would propose eating each other's daughters. The brain searches only among solutions it ranks high, so it never generates such ideas. Evolution ranks them differently.
+- After: A tribe facing scarcity would agree to one child per couple; nobody would propose having as many children as possible and eating each other's daughters. Think of the brain as a generator of high-ranking solutions: the space of solutions is large, so an efficient brain never even formulates most low-ranking ones, such as hopping on one leg or chewing off your toes. But ``low'' and ``high'' are properties of the process doing the ranking. To evolution, breeding fully and eating others' daughters is a no-brainer and voluntary restraint is ludicrous; the first alleles would replace the second, and as mutations they seem about equally simple.
+
+- Before: In my line of work, when you tell people an AI will ``not necessarily'' work like them, they give a reason why it must. I quote no one.
+- After: A biologist who said ``that's how I'd do it'' would be committing anthropomorphism outright, and I meet that in my line of work. But tell people an AI will not necessarily work like them, and you will never hear ``Oh my! I didn't realize that!'' and a fresh start. You hear a reason why any AI, or natural selection with its entirely different criteria and methods, must do what seems good to a human. I quote no one.
+
+- Before: Humans ``seem to have evolved'' an instinct for arguing that their preferred policy serves everyone.
+- After: Humans ``seem to have evolved'' an instinct for arguing that their preferred policy serves everyone; we descend from those who argued best that the tribe's interest required executing their rival Uglak, not from Uglak.
+
+- Before: A paragraph later, ``we have evolved an instinct to honestly believe'' it.
+- After: A paragraph later, since we argue more persuasively for what we believe, ``we have evolved an instinct to honestly believe'' it. So the group selectionists pleaded, in effect: the foxes will be fitter if they restrain themselves, honestly!
+
+- Before: Evolution cannot be argued with, so the group selectionists were embarrassed.
+- After: Evolution contains nothing that arguments could move; human arguments play no part in promoting alleles, as they do in human politics. So the group selectionists were embarrassed.
+
+- Before: ``Look at the cognitive history and it's optimism in, optimism out.''
+- After: ``Look at the cognitive history and it's optimism in, optimism out.'' Nature is not choosing outcomes by your preferences, so the prediction fails to match reality.
+
+
+## honest/sections/lost-purposes.tex
+
+Why: Fidelity/substance pass: added the chain of requirements behind the knitting class, the 40% recollection, the second shoe factory and the looking-away superiors, the logic of p<0.05 and 'the whole point of science', the paid door-opener, subgoals as epiphenomena, each link of the NCLB chain with its motive, the children who cannot vote, the politicians-to-school remedy, why organizations measure intermediate events, the Musashi and Cherryh lines, why fighters lose purpose, the unseen source of judgment, the lost-information-per-link point, and the hope for sane institutions
+
+- Before: Students study ``12th-century knitting patterns'' because the degree requires them.
+- After: Students study ``12th-century knitting patterns'' because a high-paying job needs a credential, which needs a master's, which needs a bachelor's, which needs the class; they study hard meaning to forget it all after the exam. Maybe you saw it was madness and did it anyway.
+
+- Before: ``Virtually all classroom time is now spent on preparing for tests.''
+- After: ``Virtually all classroom time is now spent on preparing for tests,'' and I seem to recall, without a source, that taking them filled 40\% of classroom time in one school.
+
+- Before: Soviet factories met their quotas with tiny shoes.
+- After: Soviet factories met their quotas with tiny shoes, or by counting cut but unassembled leather as shoes, and their superiors, who also wanted to report success, did not look closely.
+
+- Before: It is ``now being suggested'' that most significant findings in medicine are untrue,
+- After: It is ``now being suggested'' that most significant findings in medicine are untrue; but while $p<0.05$ is the bar for publication, why spend more on larger studies? Everyone knows the whole point of science is to publish papers, as the point of a university is to print parchment and of a school to pass the tests that fund it,
+
+- Before: and physics journals ``require a threshold of p<0.0001.''
+- After: while physics journals ``require a threshold of p<0.0001,'' as if they had some other purpose.
+
+- Before: Organizations, though, reward only what they can measure today.
+- After: In large organizations, though, you see what would be insanity in one mind: someone paid for every car door opened, who does not care whether anyone reaches the supermarket. To a Bayesian, subgoals are by-products of the probability function; there is no expected utility without utility.
+
+- Before: I trace No Child Left Behind from politicians to bureaucrats, textbook committees and teachers; teachers ``won't get through a fourth of the textbook.''
+- After: I trace No Child Left Behind through its links. Politicians must look busy to voters this year, not in fifteen years. Bureaucrats must show progress measurable this year. Textbook committees compare books by how many subjects they cover, and grades do not coordinate, so publishers cram in subjects, and teachers ``won't get through a fourth of the textbook.'' Teachers might complain, but do not decide. The consumers are the children, who cannot pay, vote or sit on committees; their parents can judge only surface images. Want it solved? Make the politicians go to school.
+
+- Before: Bureaucrats are untrustworthy genies.
+- After: One mind can track expected utility through a dozen events, including a door whose value depends on the chocolate; organizations can reward only what is measurable and contractible today, which means intermediate events, and those are leaky generalizations. Bureaucrats are untrustworthy genies, for they do not share the wisher's values.
+
+- Before: Musashi says every movement of the sword must cut the enemy.
+- After: Musashi says that whenever you parry, strike or touch the enemy's sword, you must cut the enemy in the same movement, and ``You must thoroughly research this.'' A fighter taught by others, who did not generate the art, may not know why to parry now and spring then, or when the rule fails.
+
+- Before: People who draft wishes for an imagined AI do not ask, as I ``reflexively'' ask, why they think a wish is good.
+- After: C. J. Cherryh: ``Your sword has no blade. It has only your intention.'' People who draft wishes for an imagined AI do not ask, as I ``reflexively'' ask, why they think a wish is good and whether the genie would judge likewise; they do not see the criterion behind their judgment. Nor do people notice selfish people giving altruistic arguments for selfishness, or the reverse.
+
+- Before: This bothers most people less than it bothers me,
+- After: People track goals well inside their own heads, but dozens of organizations and years lie between a bored child and an incompetent graduate, and every link loses information and incentive. This bothers most people less than it bothers me,
+
+- Before: The worst threat to a complex civilization is its own complexity.
+- After: Can people learn to keep their eye on the ball? People do often want to do their jobs; can there be a sane corporation, or a sane civilization? That is what these posts on expected utility and utility have been aiming at. The worst threat to a complex civilization is its own complexity.
+
+
+## honest/sections/the-parable-of-the-dagger.tex
+
+No change: No change: the rewrite gives both puzzles, the reasoning, the king's answer and the source
+
+## honest/sections/the-parable-of-hemlock.tex
+
+Why: Fidelity/substance pass: added why observations short of death do not settle it, the ways even death is uncertain, the hemlock-as-treat worlds, the Bayesian definition that makes validity no evidence, what logic does do (settle what we already know, show what our guesses predict), and its limit for empirical questions
+
+- Before: Then you cannot know that Socrates is human until you see him die, and even then you cannot be certain.
+- After: Then you cannot know that Socrates is human until you see him die: fluent Greek, red blood, even human DNA are not logically equivalent to mortality. Even then you cannot be certain. He might rise from the grave, or be signed up for cryonics; if mortality means a finite life, you must watch to the end of eternity. Or you might have been deceived by a projected illusion, or hallucinated it.
+
+- Before: A valid syllogism is valid in every possible world, including worlds without Socrates, so its validity is no evidence about which world we live in.
+- After: A valid syllogism is valid in every possible world, including neighboring worlds where hemlock is a delicious treat and worlds without Socrates. Evidence for a hypothesis is what we are more likely to see if it is true than if it is false, so a syllogism's validity is no evidence about which world we live in.
+
+- Before: Logic is not useless. Whether 29384209 is prime is settled by my own axioms, but I must still work it out.
+- After: Logic is not useless. It tells us what, in a sense, we already know, and we do not always believe what we know. Whether 29384209 is prime is settled by my own axioms, but I must still work it out. Likewise, from the uncertain guesses that humans are vulnerable to hemlock and that Socrates is human, logic tells me that my guesses predict Socrates is vulnerable.
+
+- Before: But logic never settles an empirical question by itself.
+- After: In that sense logic works like observation. But whether Socrates will keel over, or do fifty jumping jacks and compete in the Olympics, is a question about possible worlds, not impossible ones. Logic can bring old observations and guesses to bear and say what they predict, but it never settles by itself a real-world question that could go either way.
+
+
+## honest/sections/words-as-hidden-inferences.tex
+
+Why: Fidelity/substance pass: added why 'blue' is the best guess, the mocking slow version of the tiger inference, the starving Aristotelians, certainty 'before the sixteenth century', the mirror of self-awareness, words that trigger or block inferences, and the you/your-brain aside
+
+- Before: I guess ``blue,'' knowing that 19 is a small sample and that I am guessing.
+- After: I guess ``blue,'' or else red; any other guess spreads over every color, or a painted horse. I say it with ``a dutiful patina of humility,'' knowing that 19 is a small sample and that I am guessing.
+
+- Before: I think ``Yikes! A tiger!''
+- After: I think ``Yikes! A tiger!'', not that such objects have often been hungry and dangerous, so that it may be a good guess that aaauuughhhh CRUNCH.
+
+- Before: The Aristotelians went on recognizing people and bananas as everyone does,
+- After: Misunderstanding your mind does not stop it working, or Aristotelians would have starved, unable to conclude that a banana was edible. They went on recognizing people and bananas as everyone does,
+
+- Before: asked how they knew Carol the grocer was mortal, they would cite the definition.
+- After: asked how they knew Carol the grocer was mortal, they would cite the syllogism, call it a certainty (before the sixteenth century, at least), and say that humans are mortal by definition. They looked into the mirror of self-awareness and reflected incorrectly.
+
+- Before: Mistaken theories of the mind do not interfere with quick perception,
+- After: Your brain does not treat words as definitions without consequences, so neither should you. Creating a word can make your mind form a category and so trigger unconscious inferences of similarity, or, with two labels, block them. (Notice how I spoke of ``you'' and ``your brain'' as if they were different.) Mistaken theories of the mind do not interfere with quick perception,
+
+
+## honest/sections/extensions-and-intensions.tex
+
+Why: Fidelity/substance pass: added the rest of the pointing examples, the Hollywood contrast, more of Peirce's recipe and why it is neither lithium nor 'atomic weight 7', the definition/concept distinction, both failure examples, why neither method captures the concept, the crossfire, the mathematical exception, the Mars details, and how 'define as you like' turns into believing anything or moving anything, with definitions as magic wands in argument
+
+- Before: Instead I could point to a stop sign, a red shirt, blood.
+- After: Instead I could point to a stop sign, a red shirt, a red traffic light, blood from a cut, and the red part of a color wheel; the truly strict would also point to the sky and say ``No.''
+
+- Before: Rationalists in films are lost in words, but Charles Sanders Peirce, a real one, defined lithium by a recipe: search among certain minerals, treat and fuse and dissolve them, and you get
+- After: Rationalists in films float in words, cut off from reality, but real Traditional Rationalists insisted on a tight link to experience. Charles Sanders Peirce said that a textbook may define lithium as the element of atomic weight about 7, but a more logical author gives a recipe: find a hard, brittle, glassy mineral that turns a flame crimson, grind it with lime, fuse it, dissolve it in acid, evaporate, purify, make the chloride and electrolyze it, and you get
+
+- Before: This is a ``treasure map'' that leads to an example.
+- After: This is a ``treasure map'' that leads to an example: not a lump of lithium, but not ``atomic weight 7'' either (though with sharp enough eyes, ``3 protons'' might do).
+
+- Before: Now the concepts themselves.
+- After: Definitions, so far, are ways of telling someone else what you mean. Now the concepts themselves.
+
+- Before: If I point at one tiger, you may think I mean ``yellow thing.''
+- After: If I point at one tiger, you may think I mean ``dangerous animal,'' ``male tiger'' or ``yellow thing''; if I only say ``dangerous yellow-black striped animal,'' you may picture giant hornets.
+
+- Before: So definitions are ``treasure maps, not treasure,'' and you cannot program your concepts into someone else's brain.
+- After: You cannot put into words everything that lets you recognize tigers, and you cannot point to every tiger you would call one. The strongest definitions combine words and pointing, and still convey only maps to concepts. A few concepts can be shown whole, such as the sentences I have published containing ``huragaloni'' as of today, but ``except in mathematics, definitions are usually treasure maps, not treasure,'' and you cannot program your concepts into someone else's brain.
+
+- Before: Whether ``a huge red rocky sphere'' matches the red light I call Mars is a separate matter,
+- After: Define Mars as ``a huge red rocky sphere'' with a tenth of Earth's mass, half again as far from the Sun, and whether that matches the red light I point to is a separate matter; point to the light, and whether it matches ``Mars is the God of War'' is separate again. Most of this matching happens below awareness,
+
+- Before: Because this matching happens below awareness, arguing that something is true ``by definition'' is so popular.
+- After: So ``I can define a word any way I like'' turns in practice into ``I can believe anything I want about a fixed set of objects,'' or ``I can move any object in or out of a fixed test,'' because you cannot control a concept that is applied without deliberation. That is why arguing that something is true ``by definition'' is so popular: if changing a definition changed nothing, no one would bother. Abuse definitions a little, and they become magic wands, in arguments, not in reality.
+
+
+## honest/sections/similarity-clusters.tex
+
+Why: Fidelity/substance pass: added the gene-sequence point, what to do if the first featherless biped is a chicken, what the category is for once found, and the second function of a dictionary
+
+- Before: fission reactors single out only humans, but not all humans.
+- After: fission reactors single out only humans, but not all humans. The right gene sequences might pick out all humans and only humans, but would still be far from all they share.
+
+- Before: Then it has done its job.
+- After: Then it has done its job, and I can go on to say new things, such as that humans are currently mortal. If the first featherless biped you meet is a plucked chicken, I can amend the map to ``broad nails'' and add: see Diogenes there? He is human, I am, you are; that chimpanzee is not, though close.
+
+- Before: ``a book of hints for matching verbal labels to similarity clusters.''
+- After: ``a book of hints for matching verbal labels to similarity clusters,'' or to properties useful for telling clusters apart.
+
+
+## honest/sections/extensions-and-intensions.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim
+
+- Before: or ``I can move any object in or out of a fixed test,''
+- After: or ``I can move any object I want in or out of a fixed membership test,''
+
+
+## honest/sections/typicality-and-asymmetrical-similarity.tex
+
+Why: Fidelity/substance pass: added the chair example, the agreement between measures, the example rationalization and the reminders against it, the Kansas/Alaska reasoning, the 2350-years aside, the difference between degrees of truth and probability, and the closing moral
+
+- Before: Is a robin or an ostrich the more typical bird? Most people say the robin,
+- After: Is a robin or an ostrich the more typical bird? A desk chair, a rocking chair or a beanbag the more typical chair? Most people say the robin and the desk chair,
+
+- Before: People confirm faster that a robin is a bird than that a penguin is.
+- After: People confirm faster that a robin is a bird than that a penguin is, and such reaction times agree with people's direct ratings, from 1 to 10, of how well an example fits a category.
+
+- Before: Do not rationalize answers from subjects ``who didn't even realize there was a comparison going on.''
+- After: One could rationalize, say, that robins have more neighboring species to spread a disease to, but do not try too hard to rationalize answers from subjects ``who didn't even realize there was a comparison going on,'' and remember Mexico and 98.
+
+- Before: People also seem to treat Kansas as close to everything and Alaska as far from everything.
+- After: Kansas lies near the center of the United States, so it is probably closer than Alaska to most places. But that does not make Kansas closer to Alaska than Alaska is to Kansas; people reason as if closeness were a property of Kansas and distance a property of Alaska.
+
+- Before: So Aristotle's categories are a poor model of how people think, and ``Statements of set membership can be more or less true.''
+- After: So Aristotle's categories, with necessary and jointly sufficient properties, are a poor model of how people think (has science's view changed in 2,350 years? who would have thought), and ``Statements of set membership can be more or less true,'' which is not the same as more or less probable.
+
+- Before: \nb{Typicality does not show this. People rate 3 as a more typical odd number than 4,284,647, though both are plainly odd.}
+- After: \nb{Typicality does not show this. People rate 3 as a more typical odd number than 4,284,647, though both are plainly odd.} One more reason not to pretend that anyone treats words as Aristotelian classes.
+
+
+## honest/sections/the-cluster-structure-of-thingspace.tex
+
+Why: Fidelity/substance pass: added the RGB coordinates, what the volume and mass dimensions span, DNA as coordinates, the kilogram example, redundant dimensions, the quantum comparison spelled out, the density-constrained cloud, the nine-fingered Fred, the glow with dimmer egg donors, how the bird map is built and what it looks like, why a definition need not match the territory, and exceptions to every simple rule
+
+- Before: Colours can be written as coordinates, and then you can see that blue is closer to blue-green than to red.
+- After: Colours can be written as coordinates, blue, blue-green and red as 0:0:5, 0:3:2 and 5:0:0, and then you can see how much closer blue is to blue-green than to red.
+
+- Before: a space with a dimension for everything that could be known about it: volume, mass, DNA, shape, colour.
+- After: a space with a dimension for everything that could be known about it: volume (more than a virus, less than an aircraft carrier), mass, DNA as millions of four-valued coordinates, shape, colour, and redundantly density too.
+
+- Before: Nothing is lost in the translation. If you think such a space is extravagant, quantum physicists use a bigger one.
+- After: Nothing is lost in the translation: a robin balanced against 0.07 kilograms and a robin-point at mass +70 say the same thing. If you think such a space is extravagant, quantum physicists use an infinite-dimensional one in which a single point describes every particle in the universe.
+
+- Before: If I am unsure of a robin's mass, the robin becomes a cloud of probability.
+- After: If I am unsure of a robin's mass and volume, the robin becomes a cloud of probability; if I am surer of its density, the cloud concentrates along a slanting line, since volume times density is mass.
+
+- Before: genetic, surrogate and adoptive mothers are variants.
+- After: genetic, surrogate and adoptive mothers are variants. Logic says that humans have ten fingers and Fred has nine, so Fred is not human; we actually conclude that Fred is a ``nine-fingered human.''
+
+- Before: The meaning of ``mother'' might be pictured as a glow in thingspace, brightest at that centre.
+- After: The meaning of ``mother'' might be pictured as a glow in thingspace, brightest at that centre, dimmer where the egg donors are.
+
+- Before: The birds of the world form clusters: robins and sparrows at the centre, penguins and ostriches at the edge, Abraham Lincoln far away.
+- After: Map the world's birds with distances matching perceived similarity, robins closer to robins than to pigeons, and all of them closer to each other than to penguins, and they form something like an astronomical cluster: robins, sparrows, canaries and pigeons packed at the centre, eagles and falcons nearby, penguins, chickens and ostriches farther out. Picture both at once, the central clusters glowing brightly, the outliers dimly, and Abraham Lincoln megaparsecs away, not glowing at all.
+
+- Before: A simple definition may meet exceptions, and that is fine.
+- After: A simple definition may meet exceptions, and that is fine; you may find one for every simple rule. The map is smaller than the territory, and a definition's job is to lead the listener to the cluster, not to describe every bird to the molecule.
+
+
+## honest/sections/disguised-queries.tex
+
+Why: Fidelity/substance pass: added Susan's reasons for calling the purple object a blegg, the rest of the dialogue (naming is arbitrary, the mixed-up object, the Bayes scanner, the reveal), why surface features matter, the purple and hard percentages, why the palladium blegg should still glow, the difference-vs-superiority point, and that the dictionary move is silly on either side
+
+- Before: When a purple egg with fur comes along, you call it a strange blegg, though by definition a blegg is blue.
+- After: When a purple egg comes along, furred, flexible and opaque, you call it a strange blegg, though by definition a blegg is blue. Susan, the senior sorter, agrees: it has every other blegg feature, and you must expect a few color defects; she is not philosophically certain, but it is a good guess.
+
+- Before: You ask Susan, the senior sorter, why the bins exist. She has no better answer than ``otherwise they'd be all mixed up,'' until she mentions that bleggs contain vanadium and rubes palladium.
+- After: You ask why the bins exist. She has no better answer than ``otherwise they'd be all mixed up.'' The names could have been swapped. A completely mixed-up object, an orange furred translucent sphere with green tentacles, would go to the sorting scanner, which works ``by Bayes's Rule'' and tells you which bin. Only then does she mention that bleggs contain vanadium and rubes palladium, both useful. ``Susan, you are pure evil.'' ``Thank you.'' So surface features, it seems, matter only because they help you infer the vanadium.
+
+- Before: No. About 2 per cent of ordinary bleggs contain palladium.
+- After: No. About 2 per cent of ordinary bleggs contain palladium; for unusual ones the share of vanadium differs, 95 per cent of purple bleggs, 92 per cent of hard ones.
+
+- Before: Such an object goes in the rube bin, but you should guess that it glows in the dark like any blegg.
+- After: Such an object goes in the rube bin, but almost all bleggs glow in the dark, and palladium bleggs glow as often as vanadium ones, so you should guess that it glows.
+
+- Before: or that atheism is no less likely to lead to violence. I quote none of them.
+- After: or that atheism is no less likely to lead to violence. What is at stake is the atheist's claim to be different and better, which the believer rejects by denying the difference rather than the superiority. I quote none of them.
+
+- Before: The irrational part is looking up ``atheism'' or ``religion'' in a dictionary.
+- After: The irrational part is looking up ``atheism'' or ``religion'' in a dictionary, whichever side does it; how could a dictionary decide whether a cluster of atheists really differs from a cluster of theologians?
+
+
+## honest/sections/neural-categories.tex
+
+Why: Fidelity/substance pass: added the naive designer's ignorance of gradient descent, the humans/Space Monsters network, how Hebb's rule builds the connections, the mocked parallelism, the tiger delay and the double-counting example, why the red-glow pattern is no exception, why it rarely matters, the pattern neither network can store and what that shows, the sea-blue subcategory, the Socrates example spelled out, and the pointer to Cultish Countercultishness
+
+- Before: Suppose I am a naive designer, who has read excited popular books
+- After: Suppose I want a network that predicts a blegg's unseen features from its seen ones, and I am a naive designer, unable to derive gradient descent for a simple multilayer network (easier than it sounds), who has read excited popular books
+
+- Before: My first design, Network 1, connects every feature to every other. It learns by Hebb's rule: features seen together get a stronger connection.
+- After: My first design, Network 1, connects every feature to every other; a twin, Network 1b, sorts humans from Space Monsters with inputs from Aristotle and Plato's Academy. It learns by Hebb's rule, one of the first proposed: features active together get a stronger connection, so seeing blue furred things links blue to fur.
+
+- Before: it settles on ``glows'' and ``vanadium,'' though no unit stands for the category.
+- After: its activations bounce around, ``in parallel!! and asynchronously!!,'' until it settles on ``glows'' and ``vanadium,'' though no unit stands for the category.
+
+- Before: recurrent networks can oscillate, go chaotic or settle slowly;
+- After: recurrent networks can oscillate, go chaotic or settle slowly, which is bad when you must wait five minutes to settle on ``tiger'';
+
+- Before: evidence is counted twice as activation bounces back and forth;
+- After: evidence is counted twice as activation bounces back and forth, suspecting a glow raising belief in vanadium, which raises belief in the glow;
+
+- Before: But I judge that the extra connections buy little.
+- After: That is no special exception, since Network 1 has no blegg unit. But I judge that the extra connections buy little, since real animals are rarely halfway between cat and dog. Some facts neither network can store without extra nodes: sea-blue and spheroid together meaning palladium, but each alone strongly meaning vanadium. Each design assumes something about the world's structure, and reading off those assumptions is what separates adults from babes in machine learning.
+
+- Before: A brain like that would probably not notice that sea-blue objects never glow, unless they were shown together.
+- After: A brain like that would probably not notice that sea-blue objects never glow, unless twenty of them were shown together and the lights switched off, perhaps forming a subcategory; scattered among a hundred others, they would pass unnoticed.
+
+- Before: It would decide once that Socrates is human, and infer the rest.
+- After: It would decide once that Socrates is human, from his lack of feathers, broad nails, upright walk and Greek, and infer the rest; it would not think to ask how much wearing clothes, as against using language, goes with mortality.
+
+- Before: Are there biases in classifying things once and for all? ``Of course there are.''
+- After: Are there biases in classifying things once and for all? ``Of course there are''; see ``Cultish Countercultishness.'' To be continued.
+
+
+## honest/sections/how-an-algorithm-feels-from-inside.tex
+
+Why: Fidelity/substance pass: added why mistakes reveal the mind, what makes Network 1 leave no question, the unbundling of the usual association, the Pluto facts, the outside/inside distinction and the lack of introspective access, and the step of recognizing an intuition as an intuition
+
+- Before: I accept this standard view, and ask a better question: why do people argue about it at all?
+- After: I accept this standard view, and ask a better question: why do people argue about it at all? Mistakes often reveal more about the mind than correct answers.
+
+- Before: In the first, every unit stands for an observable property.
+- After: In the first, every unit stands for an observable property, so once everything is observed, no unit is left over.
+
+- Before: That central unit is what the leftover question feels like from the inside. Did the tree make a sound? Is Pluto a planet?
+- After: That central unit is what the leftover question feels like from the inside. Vibrations and hearing usually go together, and the unheard tree splits them; even knowing it made vibrations and no experience, it feels as if a question remains: did it make a sound? We know Pluto's position, orbit, shape and mass; is it a planet? Looking at the network, you see the algorithm from outside. Nobody thinks ``Should the central unit fire?'' any more than they think about a particular neuron in their visual cortex; introspection gives no access to neural structure, which is why the ancient Greeks did not invent computational neuroscience.
+
+- Before: A mind built like the first would feel that no question was left.
+- After: A mind built like the first would not say ``It depends on how you define `planet'''; it would feel that no question was left. Before you can question your intuitions, you must see that what your mind's eye shows you is an intuition, an algorithm seen from inside, not the way things really are.
+
+
+## honest/sections/disputing-definitions.tex
+
+Why: Fidelity/substance pass: added Albert's and Barry's actual arguments (every fall I heard made a sound; conservation of energy; nervous systems), the insults, the sound-file argument and its shift of question, the things one could study instead of a dictionary, the common-usage exchange, the garden path, and the time traveler's question with their answers
+
+- Before: Albert says yes: the fall makes vibrations in the air. Barry says no: no one hears anything.
+- After: Albert says yes: every tree he has heard fall made a sound, and the world does not change when he is not looking. Barry says no: if no one hears it, how can it be a sound?
+
+- Before: Either way, they do not disagree about anything that happens in the forest. Then come insults, and neither can back down without losing face.
+- After: Albert adds that the energy of the fall goes into heat and vibrations, or the tree would violate conservation of energy; Barry, that without anything with a nervous system able to hear, no one hears a sound. They describe what made their ``sound'' detectors fire or not, but they do not disagree about anything that happens in the forest. Then come insults (``niddlewicking fallumphing pickleplumber''), and neither can back down without losing face.
+
+- Before: Then Barry reaches for the dictionary. I ask why:
+- After: Albert argues that a microphone records a ``sound file'' of vibrations, not of brain activity; that feels like support, but for the word's meaning, a different question from what happens in the forest, and the shift passes unnoticed. Then Barry reaches for the dictionary. I could go into the forest, derive the wave equation, or study the ear and the auditory cortex. Why a dictionary?
+
+- Before: Dictionary editors ``are historians of usage, not legislators of language.''
+- After: Dictionary editors ``are historians of usage, not legislators of language''; they record what people seem to mean, and more than one usage gets more than one definition. Albert appeals to common usage; Barry replies that he can define a word as he likes if he is consistent, that his meaning is in the dictionary, and who made Albert the judge of common usage?
+
+- Before: Each thinks he is defending the standard definition against the other's private one.
+- After: Arguing about definitions is a garden path, which no one would take if they saw where it led. Each thinks he is defending the standard definition against the other's attempt to sneak in his own.
+
+- Before: So I travel fifteen minutes into the past and give them a remedy.
+- After: So I travel fifteen minutes into the past and ask them, before the argument starts, whether ``sound'' should mean vibrations, experience, or both. Albert says it does not matter so long as you are consistent; Barry says to flip a coin. Then I give them a remedy.
+
+
+## honest/sections/how-an-algorithm-feels-from-inside.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim
+
+- Before: Nobody thinks ``Should the central unit fire?'' any more
+- After: Nobody thinks ``Should the central unit fire, or not?'' any more
+
+
+## honest/sections/feel-the-meaning.tex
+
+Why: Fidelity/substance pass: added why the brain hides the complexity, the tiger-shout parody, the talking direction of the link, the apple and mystery analogies for the Mind Projection Fallacy, what a learner actually wonders, Albert's felt 'makes a sound', the two pseudo-code versions, and why humans do not know this
+
+- Before: The brain hides this complexity.
+- After: It would be inconvenient to think ``Now I shall transduce some features of my thoughts into phonemes,'' so the brain hides this complexity, or never represents it.
+
+- Before: When someone shouts ``tiger,'' natural selection would not favor a listener who stopped to consider what the speaker associates with the syllables.
+- After: When someone shouts ``tiger,'' natural selection would not favor a listener who stopped to consider that the syllables ``Tie'' and ``Grr'' are what tribe members say when they see something they classify as, aiiieeee, CRUNCH.
+
+- Before: In my blegg network I draw this as a direct link from the word ``Blegg!'' to the central unit.
+- After: In my blegg network I draw this as a direct link from the word ``Blegg!'' to the central unit, and for speaking, from the unit to shouting ``Blegg!''
+
+- Before: The cognoscenti will recognize E.~T. Jaynes's Mind Projection Fallacy.
+- After: The cognoscenti will recognize E.~T. Jaynes's Mind Projection Fallacy: the meaning seems to belong to the word, as redness seems to belong to an apple or mysteriousness to a mysterious phenomenon.
+
+- Before: ``only bothering to separate the two while learning a new language, perhaps.''
+- After: ``only bothering to separate the two while learning a new language, perhaps,'' and even then, seeing Susan point and say ``Blegg!'', you wonder what ``blegg'' means, not what category Susan attaches to the sound.
+
+- Before: Albert feels that ``sound'' has a meaning and that the meaning is vibrations.
+- After: Albert feels that ``sound'' has a meaning and that the meaning is vibrations, just as he feels the tree makes a sound, rather than causing an event that matches his category.
+
+- Before: What is closer to the truth is that Barry's brain finds the concept it attaches to ``sound,'' and the forest does not match it.
+- After: In programmer's terms, Barry feels that sound.meaning is auditory experience and forest.sound is false. What is closer to the truth is that Barry's brain finds the concept it attaches to ``sound,'' and the forest does not match it. Humans did not evolve to know this, any more than they instinctively know the brain is made of neurons.
+
+
+## honest/sections/the-argument-from-common-usage.tex
+
+Why: Fidelity/substance pass: added the 'legislators of language' idea, the social-imperative objection in full, what makes the IEEE dictionary authoritative, how everyday language spreads, the coordination point in detail, the translation examples, the drift from botany to politics, hugging the query, the deserted-island test, the stakes in the atheism and 'people' cases, why definitions can be wrong, and the Mars example
+
+- Before: Some even believe the dictionary sets them, maybe because a teacher once said so.
+- After: Some even believe the editors are the Legislators of Language, maybe because a teacher once said the dictionary must be obeyed.
+
+- Before: An example of the phrase ``authoritative dictionary'' used correctly is the IEEE's, whose members negotiate their terms.
+- After: But surely language depends on coordination, so perhaps we should treat editors as arbiters anyway? The phrase ``authoritative dictionary'' is almost never used correctly; the IEEE's is an example, since its voting members, who professionally need exact agreement, negotiate their terms, so the dictionary is actual legislation.
+
+- Before: I grant the objection: shared words are a public good. It does not matter whether we say ``oto'' or ``sound,'' only that we say the same thing.
+- After: Everyday language does not come from such agreements; words spread by infection, like a ``meme'' (look it up, and you too are infected). Still, I grant that shared words are a public good. It does not matter whether we say ``oto'' or ``sound,'' only that we say the same word for concepts as alike as possible (and, preferably, short words for frequent ones).
+
+- Before: Still, I can translate your usage if I know it,
+- After: Yet it is only convenient, not necessary: if I know that you use ``oto'' for sound, I can say that paper crumpling makes a crackling oto; if you ask about the ``walking-stick'' of a dropped bowling ball and I know what you mean by it, I can answer. People who want to communicate are hard to stop,
+
+- Before: Albert appeals to common usage only to accuse Barry of breaking it.
+- After: Albert appeals to common usage only to accuse Barry of breaking it, so the argument has gone from botany to semantics to politics, and Barry challenges Albert's authority to define the word. Someone hugging the query would notice how far astray it had gone.
+
+- Before: that describe the forest without ambiguity.
+- After: that describe the forest without ambiguity; stuck on a deserted island, their work would be done.
+
+- Before: as when someone wants atheism counted as a religion,
+- After: as when someone who wants atheism counted as a religion is arguing that its reasoning is no better than Judaism's, or that it breeds violence as much as Islam, and so wants everything blurred into ``faith'';
+
+- Before: or moral stakes, as in the fight to class blacks and whites together as ``people.''
+- After: or moral stakes, as in the fight to class blacks and whites together as ``people,'' where two new words would defeat the point, which is that no moral line should be drawn.
+
+- Before: If everyone believed that fire is the release of phlogiston, the dictionary would say so.
+- After: When the question is how to group things for inference, predictions depend on the answer, so definitions can be wrong, and an opinion poll cannot settle it. The dictionary cannot say whether atheism should be grouped with religions for a given inference, or whether blacks are people. If everyone believed the red light in the sky were Mars the God of War, or that fire is the release of phlogiston, the dictionary would say so.
+
+
+## honest/sections/feel-the-meaning.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim
+
+- Before: to think ``Now I shall transduce some features of my thoughts into phonemes,'' so
+- After: to think ``Now I shall partially transduce some features of my thoughts into a linear sequence of phonemes,'' so
+
