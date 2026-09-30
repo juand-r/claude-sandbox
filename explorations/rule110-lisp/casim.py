@@ -168,6 +168,8 @@ class StreamRun:
 
     def __init__(self, tape, appendants, left_periods, right_periods,
                  v_override=None, left_gaps=None):
+        self._args = (tape, appendants, left_periods, right_periods,
+                      v_override, left_gaps)
         bits, placed = assemble(tape, appendants, left_periods, right_periods,
                                 v_override=v_override, left_gaps=left_gaps)
         ic = next(i for i, p in enumerate(placed) if p.block.name == "C")
@@ -181,6 +183,19 @@ class StreamRun:
         lo = c_lo - self.MARGIN
         hi = c_hi + self.MARGIN
         self._set_window(lo, np.asarray(bits[lo - x0:hi - x0], dtype=np.uint8))
+
+    # Pickling keeps only the constructor arguments and the live window;
+    # the (possibly huge) assembly is rebuilt on load.
+    _STATE = ("t", "since", "lo", "width", "words")
+
+    def __getstate__(self):
+        return {"args": self._args, **{k: getattr(self, k) for k in self._STATE}}
+
+    def __setstate__(self, d):
+        self.__init__(*d["args"][:4], v_override=d["args"][4],
+                      left_gaps=d["args"][5])
+        for k in self._STATE:
+            setattr(self, k, d[k])
 
     def _set_window(self, lo, cells):
         w = -(-len(cells) // 64) * 64
