@@ -10,7 +10,12 @@ Design facts:
   first `I / ``K / ```S finds the leftmost-outermost redex.
 - `I x -> x and ``K x y -> x rewrite in place; deleted characters become
   the transparent skip '_'; K's y is erased via a pebble-counter subterm
-  walk (unary counter in a scratch area at the far left).
+  walk.
+- The pebble counter is unary and lives immediately LEFT of '$', growing
+  leftward: pebbles '*' fill the cells $-1, $-2, ... Any other cell there
+  ('.', blank, skip) counts as empty. After an S-copy the abandoned old
+  term region lies just left of the new '$' and becomes counter space, so
+  no operation ever walks the full length of the used tape.
 - ```S x y z -> ``x z `y z copies the current term region into a fresh
   region on the right, emitting the rearrangement on the fly. Source
   chars are blanked as consumed, so "first non-blank after $" acts as the
@@ -18,9 +23,11 @@ Design facts:
   (kept), z(kept), one backtick, y(blank), z(blank). The old region
   evaporates; '%' becomes the new '$'.
 
-Tape layout:  # <scratch '.' cells> $ <term A> [% <term B> ^]
-The harness sizes the scratch to the maximum possible subterm depth
-(term length suffices).
+Tape layout:  # <counter space> $ <term A> [% <term B> ^]
+The harness gives the first term len(term) + 4 cells of counter space
+(the counter never exceeds the number of backticks in a subterm); later
+terms inherit the abandoned regions. Overflow is not silent: an
+increment that reaches '#' has no transition and the run raises.
 """
 
 HASH, DOT, STAR = "#", ".", "*"
@@ -31,6 +38,7 @@ PRIME = {"`": "@", "S": "s", "K": "k", "I": "i", "f": "F", "x": "X"}
 UNPRIME = {v: k for k, v in PRIME.items()}
 ALPHABET = set("#.*$%^_`SKI[@skifxFX") | {BLANK}
 PRIMES = tuple(PRIME.values())
+COUNTER_EMPTY = (DOT, BLANK, SKIP)
 
 
 class TMBuilder:
@@ -75,19 +83,24 @@ def run_tm(delta, tape, state, halt_states, max_steps=500_000_000):
 # ------------------------------------------------------------- counters
 
 def _inc(b, prefix, ret):
-    b.default(f"{prefix}_inc", None, -1, f"{prefix}_inc", except_syms=("#",))
-    b.add(f"{prefix}_inc", "#", None, +1, f"{prefix}_inc2")
-    b.add(f"{prefix}_inc2", STAR, None, +1, f"{prefix}_inc2")
-    b.add(f"{prefix}_inc2", DOT, STAR, +1, ret)
+    """Walk left to '$', past the pebbles, drop one more; then `ret`."""
+    b.default(f"{prefix}_inc", None, -1, f"{prefix}_inc",
+              except_syms=(DOLLAR,))
+    b.add(f"{prefix}_inc", DOLLAR, None, -1, f"{prefix}_inc2")
+    b.add(f"{prefix}_inc2", STAR, None, -1, f"{prefix}_inc2")
+    b.add(f"{prefix}_inc2", COUNTER_EMPTY, STAR, +1, ret)
 
 
 def _dec_or_done(b, prefix, ret, done_ret):
-    b.default(f"{prefix}_dec", None, -1, f"{prefix}_dec", except_syms=("#",))
-    b.add(f"{prefix}_dec", "#", None, +1, f"{prefix}_dec2")
-    b.add(f"{prefix}_dec2", DOT, None, +1, done_ret)
-    b.add(f"{prefix}_dec2", STAR, None, +1, f"{prefix}_dec3")
-    b.add(f"{prefix}_dec3", STAR, None, +1, f"{prefix}_dec3")
-    b.default(f"{prefix}_dec3", None, -1, f"{prefix}_dec4",
+    """Walk left to '$'. No pebbles: goto done_ret. Otherwise remove the
+    leftmost pebble and goto ret. Both continue rightward."""
+    b.default(f"{prefix}_dec", None, -1, f"{prefix}_dec",
+              except_syms=(DOLLAR,))
+    b.add(f"{prefix}_dec", DOLLAR, None, -1, f"{prefix}_dec2")
+    b.default(f"{prefix}_dec2", None, +1, done_ret, except_syms=(STAR,))
+    b.add(f"{prefix}_dec2", STAR, None, -1, f"{prefix}_dec3")
+    b.add(f"{prefix}_dec3", STAR, None, -1, f"{prefix}_dec3")
+    b.default(f"{prefix}_dec3", None, +1, f"{prefix}_dec4",
               except_syms=(STAR,))
     b.add(f"{prefix}_dec4", STAR, DOT, +1, ret)
 
@@ -191,8 +204,9 @@ def build_machine():
     _counter_walk(b, "kx", erase=False, then="ky_init")
     _counter_walk(b, "ky", erase=True, then="rescan")
 
-    b.default("rescan", None, -1, "rescan", except_syms=("#",))
-    b.add("rescan", "#", None, +1, "seek$")
+    # rescan from the live term: '$' is the only '$' to its left
+    b.default("rescan", None, -1, "rescan", except_syms=(DOLLAR,))
+    b.add("rescan", DOLLAR, None, +1, "scan0")
 
     # S redex: blank the S (done by scan3), blank inner two `s, mark the
     # outermost ` as '[' , then set up % and ^ at the term end
@@ -241,9 +255,12 @@ def build_machine():
     b.default("sy2_seek", None, 0, "sy2_init", except_syms=(BLANK, SKIP))
     _counter_copy(b, "sy2", blank_src=True, then="sz2_init")
     _counter_copy(b, "sz2", blank_src=True, then="copy")
-    # finish: % became the new $; blank the old $ to the left, rescan
+    # finish: % became the new $; blank the old $ to the left, then return
+    # right to the new $ and scan from there
     b.default("fin", None, -1, "fin", except_syms=(DOLLAR,))
-    b.add("fin", DOLLAR, BLANK, -1, "rescan")
+    b.add("fin", DOLLAR, BLANK, +1, "fin2")
+    b.default("fin2", None, +1, "fin2", except_syms=(DOLLAR,))
+    b.add("fin2", DOLLAR, None, +1, "scan0")
     return b
 
 

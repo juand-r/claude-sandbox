@@ -223,3 +223,7 @@ invariant: C (7,0), A (3,2), Ebar (30,-8)) shows the actual mechanism:
 
 Lesson: I wrote a firm finding from a back-of-envelope argument before
 measuring. Mark such items "hypothesis" until measured.
+
+Tooling lesson (hit twice now): `pkill -f PATTERN` inside a compound
+shell command matches that shell's own command line and kills it. Kill
+by PID instead.

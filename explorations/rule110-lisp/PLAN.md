@@ -13,7 +13,7 @@ Order of work (each step committed separately):
       and docstrings (E5, E6), magic numbers (E7), shared test machine (E8)
 - [x] 4. Experiments: shared CA-run helper, scripts to experiments/,
       superseded diagnostics to trash/ (E2)
-- [ ] 5. SKI-TM gap walking (D1): measure, fix, re-measure
+- [x] 5. SKI-TM gap walking (D1): 4-7x fewer steps, same results
 - [x] 6. NW reachability pruning (D2): refuted by measurement (0 symbols removed); real lever is binarization, deferred
 - [ ] 7. Glider census (C1): lattice-invariance classifier, tests on
       known gliders; use it to measure real read/ossification cadence
