@@ -107,272 +107,272 @@
 \contentsline {subsection}{Cached Thoughts}{375}{section*.108}%
 \contentsline {subsection}{Original Seeing}{379}{section*.109}%
 \contentsline {subsection}{The Virtue of Narrowness}{382}{section*.110}%
-\contentsline {subsection}{Stranger Than History}{385}{section*.111}%
-\contentsline {subsection}{The Logical Fallacy of Generalization from Fictional Evidence}{387}{section*.112}%
-\contentsline {subsection}{We Change Our Minds Less Often Than We Think}{393}{section*.113}%
-\contentsline {subsection}{Hold Off On Proposing Solutions}{396}{section*.114}%
-\contentsline {subsection}{The Genetic Fallacy}{399}{section*.115}%
-\contentsline {section}{Death Spirals}{403}{section*.116}%
-\contentsline {subsection}{The Affect Heuristic}{404}{section*.117}%
-\contentsline {subsection}{Evaluability (And Cheap Holiday Shopping)}{407}{section*.118}%
-\contentsline {subsection}{Unbounded Scales, Huge Jury Awards, \& Futurism}{411}{section*.119}%
-\contentsline {subsection}{The Halo Effect}{414}{section*.120}%
-\contentsline {subsection}{Superhero Bias}{417}{section*.121}%
-\contentsline {subsection}{Affective Death Spirals}{420}{section*.122}%
-\contentsline {subsection}{Resist the Happy Death Spiral}{423}{section*.123}%
-\contentsline {subsection}{Uncritical Supercriticality}{428}{section*.124}%
-\contentsline {subsection}{Evaporative Cooling of Group Beliefs}{432}{section*.125}%
-\contentsline {subsection}{When None Dare Urge Restraint}{436}{section*.126}%
-\contentsline {subsection}{Every Cause Wants To Be A Cult}{439}{section*.127}%
-\contentsline {subsection}{Two Cult Koans}{442}{section*.128}%
-\contentsline {subsection}{Asch's Conformity Experiment}{445}{section*.129}%
-\contentsline {subsection}{On Expressing Your Concerns}{449}{section*.130}%
-\contentsline {subsection}{Lonely Dissent}{452}{section*.131}%
-\contentsline {subsection}{Cultish Countercultishness}{456}{section*.132}%
-\contentsline {section}{Letting Go}{463}{section*.133}%
-\contentsline {subsection}{Singlethink}{464}{section*.134}%
-\contentsline {subsection}{The Importance of Saying "Oops"}{467}{section*.135}%
-\contentsline {subsection}{The Crackpot Offer}{470}{section*.136}%
-\contentsline {subsection}{Just Lose Hope Already}{473}{section*.137}%
-\contentsline {subsection}{The Proper Use of Doubt}{475}{section*.138}%
-\contentsline {subsection}{You Can Face Reality}{478}{section*.139}%
-\contentsline {subsection}{The Meditation on Curiosity}{480}{section*.140}%
-\contentsline {subsection}{No One Can Exempt You From Rationality's Laws}{484}{section*.141}%
-\contentsline {subsection}{Leave a Line of Retreat}{487}{section*.142}%
-\contentsline {subsection}{Crisis of Faith}{491}{section*.143}%
-\contentsline {subsection}{The Ritual}{499}{section*.144}%
-\contentsline {part}{The Machine in the Ghost}{503}{section*.145}%
-\contentsline {section}{The Simple Math of Evolution}{504}{section*.146}%
-\contentsline {subsection}{Minds: An Introduction}{505}{section*.147}%
-\contentsline {subsection}{The Power of Intelligence}{511}{section*.148}%
-\contentsline {subsection}{An Alien God}{515}{section*.149}%
-\contentsline {subsection}{The Wonder of Evolution}{521}{section*.150}%
-\contentsline {subsection}{Evolutions Are Stupid (But Work Anyway)}{525}{section*.151}%
-\contentsline {subsection}{No Evolutions for Corporations or Nanodevices}{529}{section*.152}%
-\contentsline {subsection}{Evolving to Extinction}{534}{section*.153}%
-\contentsline {subsection}{The Tragedy of Group Selectionism}{539}{section*.154}%
-\contentsline {subsection}{Fake Optimization Criteria}{544}{section*.155}%
-\contentsline {subsection}{Adaptation-Executers, not Fitness-Maximizers}{547}{section*.156}%
-\contentsline {subsection}{Evolutionary Psychology}{550}{section*.157}%
-\contentsline {subsection}{An Especially Elegant Evpsych Experiment}{554}{section*.158}%
-\contentsline {subsection}{Superstimuli and the Collapse of Western Civilization}{558}{section*.159}%
-\contentsline {subsection}{Thou Art Godshatter}{562}{section*.160}%
-\contentsline {section}{Fragile Purposes}{567}{section*.161}%
-\contentsline {subsection}{Belief in Intelligence}{568}{section*.162}%
-\contentsline {subsection}{Humans in Funny Suits}{572}{section*.163}%
-\contentsline {subsection}{Optimization and the Intelligence Explosion}{577}{section*.164}%
-\contentsline {subsection}{Ghosts in the Machine}{583}{section*.165}%
-\contentsline {subsection}{Artificial Addition}{587}{section*.166}%
-\contentsline {subsection}{Terminal Values and Instrumental Values}{592}{section*.167}%
-\contentsline {subsection}{Leaky Generalizations}{600}{section*.168}%
-\contentsline {subsection}{The Hidden Complexity of Wishes}{604}{section*.169}%
-\contentsline {subsection}{Anthropomorphic Optimism}{610}{section*.170}%
-\contentsline {subsection}{Lost Purposes}{614}{section*.171}%
-\contentsline {section}{A Human's Guide to Words}{620}{section*.172}%
-\contentsline {subsection}{The Parable of the Dagger}{621}{section*.173}%
-\contentsline {subsection}{The Parable of Hemlock}{624}{section*.174}%
-\contentsline {subsection}{Words as Hidden Inferences}{628}{section*.175}%
-\contentsline {subsection}{Extensions and Intensions}{631}{section*.176}%
-\contentsline {subsection}{Similarity Clusters}{635}{section*.177}%
-\contentsline {subsection}{Typicality and Asymmetrical Similarity}{637}{section*.178}%
-\contentsline {subsection}{The Cluster Structure of Thingspace}{640}{section*.179}%
-\contentsline {subsection}{Disguised Queries}{644}{section*.180}%
-\contentsline {subsection}{Neural Categories}{648}{section*.181}%
-\contentsline {subsection}{How An Algorithm Feels From Inside}{653}{section*.182}%
-\contentsline {subsection}{Disputing Definitions}{657}{section*.183}%
-\contentsline {subsection}{Feel the Meaning}{662}{section*.184}%
-\contentsline {subsection}{The Argument from Common Usage}{666}{section*.185}%
-\contentsline {subsection}{Empty Labels}{670}{section*.186}%
-\contentsline {subsection}{Taboo Your Words}{673}{section*.187}%
-\contentsline {subsection}{Replace the Symbol with the Substance}{677}{section*.188}%
-\contentsline {subsection}{Fallacies of Compression}{681}{section*.189}%
-\contentsline {subsection}{Categorizing Has Consequences}{685}{section*.190}%
-\contentsline {subsection}{Sneaking in Connotations}{688}{section*.191}%
-\contentsline {subsection}{Arguing "By Definition"}{691}{section*.192}%
-\contentsline {subsection}{Where to Draw the Boundary?}{695}{section*.193}%
-\contentsline {subsection}{Entropy, and Short Codes}{699}{section*.194}%
-\contentsline {subsection}{Mutual Information, and Density in Thingspace}{703}{section*.195}%
-\contentsline {subsection}{Superexponential Conceptspace, and Simple Words}{709}{section*.196}%
-\contentsline {subsection}{Conditional Independence, and Naive Bayes}{715}{section*.197}%
-\contentsline {subsection}{Words as Mental Paintbrush Handles}{721}{section*.198}%
-\contentsline {subsection}{Variable Question Fallacies}{724}{section*.199}%
-\contentsline {subsection}{37 Ways That Words Can Be Wrong}{727}{section*.200}%
-\contentsline {subsection}{An Intuitive Explanation of Bayes's Theorem}{734}{section*.201}%
-\contentsline {part}{Mere Reality}{751}{section*.202}%
-\contentsline {section}{Lawful Truth}{752}{section*.203}%
-\contentsline {subsection}{The World: An Introduction}{753}{section*.204}%
-\contentsline {subsection}{Universal Fire}{758}{section*.205}%
-\contentsline {subsection}{Universal Law}{761}{section*.206}%
-\contentsline {subsection}{Is Reality Ugly?}{764}{section*.207}%
-\contentsline {subsection}{Beautiful Probability}{769}{section*.208}%
-\contentsline {subsection}{Outside the Laboratory}{775}{section*.209}%
-\contentsline {subsection}{The Second Law of Thermodynamics, and Engines of Cognition}{780}{section*.210}%
-\contentsline {subsection}{Perpetual Motion Beliefs}{787}{section*.211}%
-\contentsline {subsection}{Searching for Bayes-Structure}{791}{section*.212}%
-\contentsline {section}{Reductionism 101}{795}{section*.213}%
-\contentsline {subsection}{Dissolving the Question}{796}{section*.214}%
-\contentsline {subsection}{Wrong Questions}{801}{section*.215}%
-\contentsline {subsection}{Righting a Wrong Question}{804}{section*.216}%
-\contentsline {subsection}{Mind Projection Fallacy}{808}{section*.217}%
-\contentsline {subsection}{Probability is in the Mind}{811}{section*.218}%
-\contentsline {subsection}{The Quotation is not the Referent}{816}{section*.219}%
-\contentsline {subsection}{Qualitatively Confused}{819}{section*.220}%
-\contentsline {subsection}{Think Like Reality}{823}{section*.221}%
-\contentsline {subsection}{Chaotic Inversion}{826}{section*.222}%
-\contentsline {subsection}{Reductionism}{828}{section*.223}%
-\contentsline {subsection}{Explaining vs. Explaining Away}{833}{section*.224}%
-\contentsline {subsection}{Fake Reductionism}{837}{section*.225}%
-\contentsline {subsection}{Savanna Poets}{840}{section*.226}%
-\contentsline {section}{Joy in the Merely Real}{845}{section*.227}%
-\contentsline {subsection}{Joy in the Merely Real}{846}{section*.228}%
-\contentsline {subsection}{Joy in Discovery}{848}{section*.229}%
-\contentsline {subsection}{Bind Yourself to Reality}{852}{section*.230}%
-\contentsline {subsection}{If You Demand Magic, Magic Won't Help}{855}{section*.231}%
-\contentsline {subsection}{Mundane Magic}{859}{section*.232}%
-\contentsline {subsection}{The Beauty of Settled Science}{862}{section*.233}%
-\contentsline {subsection}{Amazing Breakthrough Day: April 1st}{865}{section*.234}%
-\contentsline {subsection}{Is Humanism A Religion-Substitute?}{868}{section*.235}%
-\contentsline {subsection}{Scarcity}{871}{section*.236}%
-\contentsline {subsection}{The Sacred Mundane}{875}{section*.237}%
-\contentsline {subsection}{To Spread Science, Keep It Secret}{879}{section*.238}%
-\contentsline {subsection}{Initiation Ceremony}{883}{section*.239}%
-\contentsline {section}{Physicalism 201}{887}{section*.240}%
-\contentsline {subsection}{Hand vs. Fingers}{888}{section*.241}%
-\contentsline {subsection}{Angry Atoms}{892}{section*.242}%
-\contentsline {subsection}{Heat vs. Motion}{896}{section*.243}%
-\contentsline {subsection}{Brain Breakthrough! It's Made of Neurons!}{901}{section*.244}%
-\contentsline {subsection}{When Anthropomorphism Became Stupid}{904}{section*.245}%
-\contentsline {subsection}{A Priori}{908}{section*.246}%
-\contentsline {subsection}{Reductive Reference}{912}{section*.247}%
-\contentsline {subsection}{Zombies! Zombies?}{917}{section*.248}%
-\contentsline {subsection}{Zombie Responses}{934}{section*.249}%
-\contentsline {subsection}{The Generalized Anti-Zombie Principle}{941}{section*.250}%
-\contentsline {subsection}{GAZP vs. GLUT}{949}{section*.251}%
-\contentsline {subsection}{Belief in the Implied Invisible}{956}{section*.252}%
-\contentsline {subsection}{Zombies: The Movie}{961}{section*.253}%
-\contentsline {subsection}{Excluding the Supernatural}{966}{section*.254}%
-\contentsline {subsection}{Psychic Powers}{973}{section*.255}%
-\contentsline {section}{Quantum Physics and Many Worlds}{977}{section*.256}%
-\contentsline {subsection}{Quantum Explanations}{978}{section*.257}%
-\contentsline {subsection}{Configurations and Amplitude}{983}{section*.258}%
-\contentsline {subsection}{Joint Configurations}{992}{section*.259}%
-\contentsline {subsection}{Distinct Configurations}{997}{section*.260}%
-\contentsline {subsection}{Collapse Postulates}{1003}{section*.261}%
-\contentsline {subsection}{Decoherence is Simple}{1008}{section*.262}%
-\contentsline {subsection}{Decoherence is Falsifiable and Testable}{1017}{section*.263}%
-\contentsline {subsection}{Privileging the Hypothesis}{1025}{section*.264}%
-\contentsline {subsection}{Living in Many Worlds}{1029}{section*.265}%
-\contentsline {subsection}{Quantum Non-Realism}{1034}{section*.266}%
-\contentsline {subsection}{If Many-Worlds Had Come First}{1043}{section*.267}%
-\contentsline {subsection}{Where Philosophy Meets Science}{1050}{section*.268}%
-\contentsline {subsection}{Thou Art Physics}{1055}{section*.269}%
-\contentsline {subsection}{Many Worlds, One Best Guess}{1059}{section*.270}%
-\contentsline {section}{Science and Rationality}{1069}{section*.271}%
-\contentsline {subsection}{The Failures of Eld Science}{1070}{section*.272}%
-\contentsline {subsection}{The Dilemma: Science or Bayes?}{1078}{section*.273}%
-\contentsline {subsection}{Science Doesn't Trust Your Rationality}{1083}{section*.274}%
-\contentsline {subsection}{When Science Can't Help}{1088}{section*.275}%
-\contentsline {subsection}{Science Isn't Strict Enough}{1093}{section*.276}%
-\contentsline {subsection}{Do Scientists Already Know This Stuff?}{1097}{section*.277}%
-\contentsline {subsection}{No Safe Defense, Not Even Science}{1102}{section*.278}%
-\contentsline {subsection}{Changing the Definition of Science}{1108}{section*.279}%
-\contentsline {subsection}{Faster Than Science}{1111}{section*.280}%
-\contentsline {subsection}{Einstein's Speed}{1116}{section*.281}%
-\contentsline {subsection}{That Alien Message}{1123}{section*.282}%
-\contentsline {subsection}{My Childhood Role Model}{1131}{section*.283}%
-\contentsline {subsection}{Einstein's Superpowers}{1136}{section*.284}%
-\contentsline {subsection}{Class Project}{1141}{section*.285}%
-\contentsline {subsection}{A Technical Explanation of Technical Explanation}{1146}{section*.286}%
-\contentsline {part}{Mere Goodness}{1180}{section*.287}%
-\contentsline {section}{Fake Preferences}{1181}{section*.288}%
-\contentsline {subsection}{Ends: An Introduction}{1182}{section*.289}%
-\contentsline {subsection}{Not for the Sake of Happiness (Alone)}{1187}{section*.290}%
-\contentsline {subsection}{Fake Selfishness}{1192}{section*.291}%
-\contentsline {subsection}{Fake Morality}{1194}{section*.292}%
-\contentsline {subsection}{Fake Utility Functions}{1197}{section*.293}%
-\contentsline {subsection}{Detached Lever Fallacy}{1201}{section*.294}%
-\contentsline {subsection}{Dreams of AI Design}{1207}{section*.295}%
-\contentsline {subsection}{The Design Space of Minds-In-General}{1211}{section*.296}%
-\contentsline {section}{Value Theory}{1214}{section*.297}%
-\contentsline {subsection}{Where Recursive Justification Hits Bottom}{1215}{section*.298}%
-\contentsline {subsection}{My Kind of Reflection}{1223}{section*.299}%
-\contentsline {subsection}{No Universally Compelling Arguments}{1227}{section*.300}%
-\contentsline {subsection}{Created Already In Motion}{1232}{section*.301}%
-\contentsline {subsection}{Sorting Pebbles Into Correct Heaps}{1236}{section*.302}%
-\contentsline {subsection}{2-Place and 1-Place Words}{1240}{section*.303}%
-\contentsline {subsection}{What Would You Do Without Morality?}{1245}{section*.304}%
-\contentsline {subsection}{Changing Your Metaethics}{1247}{section*.305}%
-\contentsline {subsection}{Could Anything Be Right?}{1251}{section*.306}%
-\contentsline {subsection}{Morality as Fixed Computation}{1256}{section*.307}%
-\contentsline {subsection}{Magical Categories}{1261}{section*.308}%
-\contentsline {subsection}{The True Prisoner's Dilemma}{1268}{section*.309}%
-\contentsline {subsection}{Sympathetic Minds}{1273}{section*.310}%
-\contentsline {subsection}{High Challenge}{1278}{section*.311}%
-\contentsline {subsection}{Serious Stories}{1282}{section*.312}%
-\contentsline {subsection}{Value is Fragile}{1290}{section*.313}%
-\contentsline {subsection}{The Gift We Give To Tomorrow}{1296}{section*.314}%
-\contentsline {section}{Quantified Humanism}{1303}{section*.315}%
-\contentsline {subsection}{One Life Against the World}{1304}{section*.316}%
-\contentsline {subsection}{The Allais Paradox}{1307}{section*.317}%
-\contentsline {subsection}{Zut Allais!}{1311}{section*.318}%
-\contentsline {subsection}{Feeling Moral}{1317}{section*.319}%
-\contentsline {subsection}{The "Intuitions" Behind "Utilitarianism"}{1321}{section*.320}%
-\contentsline {subsection}{Ends Don't Justify Means (Among Humans)}{1328}{section*.321}%
-\contentsline {subsection}{Ethical Injunctions}{1332}{section*.322}%
-\contentsline {subsection}{Something to Protect}{1339}{section*.323}%
-\contentsline {subsection}{When (Not) To Use Probabilities}{1345}{section*.324}%
-\contentsline {subsection}{Newcomb's Problem and Regret of Rationality}{1351}{section*.325}%
-\contentsline {subsection}{Twelve Virtues of Rationality}{1359}{section*.326}%
-\contentsline {part}{Becoming Stronger}{1365}{section*.327}%
-\contentsline {section}{Yudkowsky's Coming of Age}{1366}{section*.328}%
-\contentsline {subsection}{Beginnings: An Introduction}{1367}{section*.329}%
-\contentsline {subsection}{My Childhood Death Spiral}{1371}{section*.330}%
-\contentsline {subsection}{My Best and Worst Mistake}{1375}{section*.331}%
-\contentsline {subsection}{Raised in Technophilia}{1379}{section*.332}%
-\contentsline {subsection}{A Prodigy of Refutation}{1384}{section*.333}%
-\contentsline {subsection}{The Sheer Folly of Callow Youth}{1387}{section*.334}%
-\contentsline {subsection}{That Tiny Note of Discord}{1393}{section*.335}%
-\contentsline {subsection}{Fighting a Rearguard Action Against the Truth}{1399}{section*.336}%
-\contentsline {subsection}{My Naturalistic Awakening}{1403}{section*.337}%
-\contentsline {subsection}{The Level Above Mine}{1408}{section*.338}%
-\contentsline {subsection}{The Magnitude of His Own Folly}{1412}{section*.339}%
-\contentsline {subsection}{Beyond the Reach of God}{1417}{section*.340}%
-\contentsline {subsection}{My Bayesian Enlightenment}{1425}{section*.341}%
-\contentsline {section}{Challenging the Difficult}{1431}{section*.342}%
-\contentsline {subsection}{Trying to Try}{1432}{section*.343}%
-\contentsline {subsection}{Use the Try Harder, Luke}{1436}{section*.344}%
-\contentsline {subsection}{On Doing the Impossible}{1439}{section*.345}%
-\contentsline {subsection}{Make an Extraordinary Effort}{1445}{section*.346}%
-\contentsline {subsection}{Shut up and do the impossible!}{1449}{section*.347}%
-\contentsline {subsection}{Final Words}{1457}{section*.348}%
-\contentsline {section}{The Craft and the Community}{1465}{section*.349}%
-\contentsline {subsection}{Raising the Sanity Waterline}{1466}{section*.350}%
-\contentsline {subsection}{A Sense That More Is Possible}{1470}{section*.351}%
-\contentsline {subsection}{Epistemic Viciousness}{1474}{section*.352}%
-\contentsline {subsection}{Schools Proliferating Without Evidence}{1477}{section*.353}%
-\contentsline {subsection}{3 Levels of Rationality Verification}{1481}{section*.354}%
-\contentsline {subsection}{Why Our Kind Can't Cooperate}{1485}{section*.355}%
-\contentsline {subsection}{Tolerate Tolerance}{1492}{section*.356}%
-\contentsline {subsection}{Your Price for Joining}{1495}{section*.357}%
-\contentsline {subsection}{Can Humanism Match Religion's Output?}{1499}{section*.358}%
-\contentsline {subsection}{Church vs. Taskforce}{1504}{section*.359}%
-\contentsline {subsection}{Rationality: Common Interest of Many Causes}{1509}{section*.360}%
-\contentsline {subsection}{Helpless Individuals}{1513}{section*.361}%
-\contentsline {subsection}{Money: The Unit of Caring}{1516}{section*.362}%
-\contentsline {subsection}{Purchase Fuzzies and Utilons Separately}{1520}{section*.363}%
-\contentsline {subsection}{Bystander Apathy}{1524}{section*.364}%
-\contentsline {subsection}{Collective Apathy and the Internet}{1528}{section*.365}%
-\contentsline {subsection}{Incremental Progress and the Valley}{1531}{section*.366}%
-\contentsline {subsection}{Bayesians vs. Barbarians}{1536}{section*.367}%
-\contentsline {subsection}{Beware of Other-Optimizing}{1543}{section*.368}%
-\contentsline {subsection}{Practical Advice Backed By Deep Theories}{1547}{section*.369}%
-\contentsline {subsection}{The Sin of Underconfidence}{1551}{section*.370}%
-\contentsline {subsection}{Go Forth and Create the Art!}{1556}{section*.371}%
-\contentsline {part}{Beyond the Sequences}{1560}{section*.372}%
-\contentsline {subsection}{Humans are not automatically strategic}{1561}{section*.373}%
-\contentsline {subsection}{Toolbox-thinking and Law-thinking}{1565}{section*.374}%
-\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{1574}{section*.375}%
-\contentsline {subsection}{Diseased thinking: dissolving questions about disease}{1583}{section*.376}%
-\contentsline {subsection}{On Caring}{1591}{section*.377}%
-\contentsline {subsection}{Strong Evidence is Common}{1599}{section*.378}%
-\contentsline {subsection}{“PR” is corrosive; “reputation” is not.}{1601}{section*.379}%
+\contentsline {subsection}{Stranger Than History}{386}{section*.111}%
+\contentsline {subsection}{The Logical Fallacy of Generalization from Fictional Evidence}{388}{section*.112}%
+\contentsline {subsection}{We Change Our Minds Less Often Than We Think}{394}{section*.113}%
+\contentsline {subsection}{Hold Off On Proposing Solutions}{397}{section*.114}%
+\contentsline {subsection}{The Genetic Fallacy}{400}{section*.115}%
+\contentsline {section}{Death Spirals}{404}{section*.116}%
+\contentsline {subsection}{The Affect Heuristic}{405}{section*.117}%
+\contentsline {subsection}{Evaluability (And Cheap Holiday Shopping)}{408}{section*.118}%
+\contentsline {subsection}{Unbounded Scales, Huge Jury Awards, \& Futurism}{412}{section*.119}%
+\contentsline {subsection}{The Halo Effect}{415}{section*.120}%
+\contentsline {subsection}{Superhero Bias}{418}{section*.121}%
+\contentsline {subsection}{Affective Death Spirals}{421}{section*.122}%
+\contentsline {subsection}{Resist the Happy Death Spiral}{424}{section*.123}%
+\contentsline {subsection}{Uncritical Supercriticality}{429}{section*.124}%
+\contentsline {subsection}{Evaporative Cooling of Group Beliefs}{433}{section*.125}%
+\contentsline {subsection}{When None Dare Urge Restraint}{437}{section*.126}%
+\contentsline {subsection}{Every Cause Wants To Be A Cult}{440}{section*.127}%
+\contentsline {subsection}{Two Cult Koans}{443}{section*.128}%
+\contentsline {subsection}{Asch's Conformity Experiment}{446}{section*.129}%
+\contentsline {subsection}{On Expressing Your Concerns}{450}{section*.130}%
+\contentsline {subsection}{Lonely Dissent}{453}{section*.131}%
+\contentsline {subsection}{Cultish Countercultishness}{457}{section*.132}%
+\contentsline {section}{Letting Go}{464}{section*.133}%
+\contentsline {subsection}{Singlethink}{465}{section*.134}%
+\contentsline {subsection}{The Importance of Saying "Oops"}{468}{section*.135}%
+\contentsline {subsection}{The Crackpot Offer}{471}{section*.136}%
+\contentsline {subsection}{Just Lose Hope Already}{474}{section*.137}%
+\contentsline {subsection}{The Proper Use of Doubt}{476}{section*.138}%
+\contentsline {subsection}{You Can Face Reality}{479}{section*.139}%
+\contentsline {subsection}{The Meditation on Curiosity}{481}{section*.140}%
+\contentsline {subsection}{No One Can Exempt You From Rationality's Laws}{485}{section*.141}%
+\contentsline {subsection}{Leave a Line of Retreat}{488}{section*.142}%
+\contentsline {subsection}{Crisis of Faith}{492}{section*.143}%
+\contentsline {subsection}{The Ritual}{500}{section*.144}%
+\contentsline {part}{The Machine in the Ghost}{504}{section*.145}%
+\contentsline {section}{The Simple Math of Evolution}{505}{section*.146}%
+\contentsline {subsection}{Minds: An Introduction}{506}{section*.147}%
+\contentsline {subsection}{The Power of Intelligence}{512}{section*.148}%
+\contentsline {subsection}{An Alien God}{516}{section*.149}%
+\contentsline {subsection}{The Wonder of Evolution}{522}{section*.150}%
+\contentsline {subsection}{Evolutions Are Stupid (But Work Anyway)}{526}{section*.151}%
+\contentsline {subsection}{No Evolutions for Corporations or Nanodevices}{530}{section*.152}%
+\contentsline {subsection}{Evolving to Extinction}{535}{section*.153}%
+\contentsline {subsection}{The Tragedy of Group Selectionism}{540}{section*.154}%
+\contentsline {subsection}{Fake Optimization Criteria}{545}{section*.155}%
+\contentsline {subsection}{Adaptation-Executers, not Fitness-Maximizers}{548}{section*.156}%
+\contentsline {subsection}{Evolutionary Psychology}{551}{section*.157}%
+\contentsline {subsection}{An Especially Elegant Evpsych Experiment}{555}{section*.158}%
+\contentsline {subsection}{Superstimuli and the Collapse of Western Civilization}{559}{section*.159}%
+\contentsline {subsection}{Thou Art Godshatter}{563}{section*.160}%
+\contentsline {section}{Fragile Purposes}{568}{section*.161}%
+\contentsline {subsection}{Belief in Intelligence}{569}{section*.162}%
+\contentsline {subsection}{Humans in Funny Suits}{573}{section*.163}%
+\contentsline {subsection}{Optimization and the Intelligence Explosion}{578}{section*.164}%
+\contentsline {subsection}{Ghosts in the Machine}{584}{section*.165}%
+\contentsline {subsection}{Artificial Addition}{588}{section*.166}%
+\contentsline {subsection}{Terminal Values and Instrumental Values}{593}{section*.167}%
+\contentsline {subsection}{Leaky Generalizations}{601}{section*.168}%
+\contentsline {subsection}{The Hidden Complexity of Wishes}{605}{section*.169}%
+\contentsline {subsection}{Anthropomorphic Optimism}{611}{section*.170}%
+\contentsline {subsection}{Lost Purposes}{615}{section*.171}%
+\contentsline {section}{A Human's Guide to Words}{621}{section*.172}%
+\contentsline {subsection}{The Parable of the Dagger}{622}{section*.173}%
+\contentsline {subsection}{The Parable of Hemlock}{625}{section*.174}%
+\contentsline {subsection}{Words as Hidden Inferences}{629}{section*.175}%
+\contentsline {subsection}{Extensions and Intensions}{632}{section*.176}%
+\contentsline {subsection}{Similarity Clusters}{636}{section*.177}%
+\contentsline {subsection}{Typicality and Asymmetrical Similarity}{638}{section*.178}%
+\contentsline {subsection}{The Cluster Structure of Thingspace}{641}{section*.179}%
+\contentsline {subsection}{Disguised Queries}{645}{section*.180}%
+\contentsline {subsection}{Neural Categories}{649}{section*.181}%
+\contentsline {subsection}{How An Algorithm Feels From Inside}{654}{section*.182}%
+\contentsline {subsection}{Disputing Definitions}{658}{section*.183}%
+\contentsline {subsection}{Feel the Meaning}{663}{section*.184}%
+\contentsline {subsection}{The Argument from Common Usage}{667}{section*.185}%
+\contentsline {subsection}{Empty Labels}{671}{section*.186}%
+\contentsline {subsection}{Taboo Your Words}{674}{section*.187}%
+\contentsline {subsection}{Replace the Symbol with the Substance}{678}{section*.188}%
+\contentsline {subsection}{Fallacies of Compression}{682}{section*.189}%
+\contentsline {subsection}{Categorizing Has Consequences}{686}{section*.190}%
+\contentsline {subsection}{Sneaking in Connotations}{689}{section*.191}%
+\contentsline {subsection}{Arguing "By Definition"}{692}{section*.192}%
+\contentsline {subsection}{Where to Draw the Boundary?}{696}{section*.193}%
+\contentsline {subsection}{Entropy, and Short Codes}{700}{section*.194}%
+\contentsline {subsection}{Mutual Information, and Density in Thingspace}{704}{section*.195}%
+\contentsline {subsection}{Superexponential Conceptspace, and Simple Words}{710}{section*.196}%
+\contentsline {subsection}{Conditional Independence, and Naive Bayes}{716}{section*.197}%
+\contentsline {subsection}{Words as Mental Paintbrush Handles}{722}{section*.198}%
+\contentsline {subsection}{Variable Question Fallacies}{725}{section*.199}%
+\contentsline {subsection}{37 Ways That Words Can Be Wrong}{728}{section*.200}%
+\contentsline {subsection}{An Intuitive Explanation of Bayes's Theorem}{735}{section*.201}%
+\contentsline {part}{Mere Reality}{752}{section*.202}%
+\contentsline {section}{Lawful Truth}{753}{section*.203}%
+\contentsline {subsection}{The World: An Introduction}{754}{section*.204}%
+\contentsline {subsection}{Universal Fire}{759}{section*.205}%
+\contentsline {subsection}{Universal Law}{762}{section*.206}%
+\contentsline {subsection}{Is Reality Ugly?}{765}{section*.207}%
+\contentsline {subsection}{Beautiful Probability}{770}{section*.208}%
+\contentsline {subsection}{Outside the Laboratory}{776}{section*.209}%
+\contentsline {subsection}{The Second Law of Thermodynamics, and Engines of Cognition}{781}{section*.210}%
+\contentsline {subsection}{Perpetual Motion Beliefs}{788}{section*.211}%
+\contentsline {subsection}{Searching for Bayes-Structure}{792}{section*.212}%
+\contentsline {section}{Reductionism 101}{796}{section*.213}%
+\contentsline {subsection}{Dissolving the Question}{797}{section*.214}%
+\contentsline {subsection}{Wrong Questions}{802}{section*.215}%
+\contentsline {subsection}{Righting a Wrong Question}{805}{section*.216}%
+\contentsline {subsection}{Mind Projection Fallacy}{809}{section*.217}%
+\contentsline {subsection}{Probability is in the Mind}{812}{section*.218}%
+\contentsline {subsection}{The Quotation is not the Referent}{817}{section*.219}%
+\contentsline {subsection}{Qualitatively Confused}{820}{section*.220}%
+\contentsline {subsection}{Think Like Reality}{824}{section*.221}%
+\contentsline {subsection}{Chaotic Inversion}{827}{section*.222}%
+\contentsline {subsection}{Reductionism}{829}{section*.223}%
+\contentsline {subsection}{Explaining vs. Explaining Away}{834}{section*.224}%
+\contentsline {subsection}{Fake Reductionism}{838}{section*.225}%
+\contentsline {subsection}{Savanna Poets}{841}{section*.226}%
+\contentsline {section}{Joy in the Merely Real}{846}{section*.227}%
+\contentsline {subsection}{Joy in the Merely Real}{847}{section*.228}%
+\contentsline {subsection}{Joy in Discovery}{849}{section*.229}%
+\contentsline {subsection}{Bind Yourself to Reality}{853}{section*.230}%
+\contentsline {subsection}{If You Demand Magic, Magic Won't Help}{856}{section*.231}%
+\contentsline {subsection}{Mundane Magic}{860}{section*.232}%
+\contentsline {subsection}{The Beauty of Settled Science}{863}{section*.233}%
+\contentsline {subsection}{Amazing Breakthrough Day: April 1st}{866}{section*.234}%
+\contentsline {subsection}{Is Humanism A Religion-Substitute?}{869}{section*.235}%
+\contentsline {subsection}{Scarcity}{872}{section*.236}%
+\contentsline {subsection}{The Sacred Mundane}{876}{section*.237}%
+\contentsline {subsection}{To Spread Science, Keep It Secret}{880}{section*.238}%
+\contentsline {subsection}{Initiation Ceremony}{884}{section*.239}%
+\contentsline {section}{Physicalism 201}{888}{section*.240}%
+\contentsline {subsection}{Hand vs. Fingers}{889}{section*.241}%
+\contentsline {subsection}{Angry Atoms}{893}{section*.242}%
+\contentsline {subsection}{Heat vs. Motion}{897}{section*.243}%
+\contentsline {subsection}{Brain Breakthrough! It's Made of Neurons!}{902}{section*.244}%
+\contentsline {subsection}{When Anthropomorphism Became Stupid}{905}{section*.245}%
+\contentsline {subsection}{A Priori}{909}{section*.246}%
+\contentsline {subsection}{Reductive Reference}{913}{section*.247}%
+\contentsline {subsection}{Zombies! Zombies?}{918}{section*.248}%
+\contentsline {subsection}{Zombie Responses}{935}{section*.249}%
+\contentsline {subsection}{The Generalized Anti-Zombie Principle}{942}{section*.250}%
+\contentsline {subsection}{GAZP vs. GLUT}{950}{section*.251}%
+\contentsline {subsection}{Belief in the Implied Invisible}{957}{section*.252}%
+\contentsline {subsection}{Zombies: The Movie}{962}{section*.253}%
+\contentsline {subsection}{Excluding the Supernatural}{967}{section*.254}%
+\contentsline {subsection}{Psychic Powers}{974}{section*.255}%
+\contentsline {section}{Quantum Physics and Many Worlds}{978}{section*.256}%
+\contentsline {subsection}{Quantum Explanations}{979}{section*.257}%
+\contentsline {subsection}{Configurations and Amplitude}{984}{section*.258}%
+\contentsline {subsection}{Joint Configurations}{993}{section*.259}%
+\contentsline {subsection}{Distinct Configurations}{998}{section*.260}%
+\contentsline {subsection}{Collapse Postulates}{1004}{section*.261}%
+\contentsline {subsection}{Decoherence is Simple}{1009}{section*.262}%
+\contentsline {subsection}{Decoherence is Falsifiable and Testable}{1018}{section*.263}%
+\contentsline {subsection}{Privileging the Hypothesis}{1026}{section*.264}%
+\contentsline {subsection}{Living in Many Worlds}{1030}{section*.265}%
+\contentsline {subsection}{Quantum Non-Realism}{1035}{section*.266}%
+\contentsline {subsection}{If Many-Worlds Had Come First}{1044}{section*.267}%
+\contentsline {subsection}{Where Philosophy Meets Science}{1051}{section*.268}%
+\contentsline {subsection}{Thou Art Physics}{1056}{section*.269}%
+\contentsline {subsection}{Many Worlds, One Best Guess}{1060}{section*.270}%
+\contentsline {section}{Science and Rationality}{1070}{section*.271}%
+\contentsline {subsection}{The Failures of Eld Science}{1071}{section*.272}%
+\contentsline {subsection}{The Dilemma: Science or Bayes?}{1079}{section*.273}%
+\contentsline {subsection}{Science Doesn't Trust Your Rationality}{1084}{section*.274}%
+\contentsline {subsection}{When Science Can't Help}{1089}{section*.275}%
+\contentsline {subsection}{Science Isn't Strict Enough}{1094}{section*.276}%
+\contentsline {subsection}{Do Scientists Already Know This Stuff?}{1098}{section*.277}%
+\contentsline {subsection}{No Safe Defense, Not Even Science}{1103}{section*.278}%
+\contentsline {subsection}{Changing the Definition of Science}{1109}{section*.279}%
+\contentsline {subsection}{Faster Than Science}{1112}{section*.280}%
+\contentsline {subsection}{Einstein's Speed}{1117}{section*.281}%
+\contentsline {subsection}{That Alien Message}{1124}{section*.282}%
+\contentsline {subsection}{My Childhood Role Model}{1132}{section*.283}%
+\contentsline {subsection}{Einstein's Superpowers}{1137}{section*.284}%
+\contentsline {subsection}{Class Project}{1142}{section*.285}%
+\contentsline {subsection}{A Technical Explanation of Technical Explanation}{1147}{section*.286}%
+\contentsline {part}{Mere Goodness}{1181}{section*.287}%
+\contentsline {section}{Fake Preferences}{1182}{section*.288}%
+\contentsline {subsection}{Ends: An Introduction}{1183}{section*.289}%
+\contentsline {subsection}{Not for the Sake of Happiness (Alone)}{1188}{section*.290}%
+\contentsline {subsection}{Fake Selfishness}{1193}{section*.291}%
+\contentsline {subsection}{Fake Morality}{1195}{section*.292}%
+\contentsline {subsection}{Fake Utility Functions}{1198}{section*.293}%
+\contentsline {subsection}{Detached Lever Fallacy}{1202}{section*.294}%
+\contentsline {subsection}{Dreams of AI Design}{1208}{section*.295}%
+\contentsline {subsection}{The Design Space of Minds-In-General}{1212}{section*.296}%
+\contentsline {section}{Value Theory}{1215}{section*.297}%
+\contentsline {subsection}{Where Recursive Justification Hits Bottom}{1216}{section*.298}%
+\contentsline {subsection}{My Kind of Reflection}{1224}{section*.299}%
+\contentsline {subsection}{No Universally Compelling Arguments}{1228}{section*.300}%
+\contentsline {subsection}{Created Already In Motion}{1233}{section*.301}%
+\contentsline {subsection}{Sorting Pebbles Into Correct Heaps}{1237}{section*.302}%
+\contentsline {subsection}{2-Place and 1-Place Words}{1241}{section*.303}%
+\contentsline {subsection}{What Would You Do Without Morality?}{1246}{section*.304}%
+\contentsline {subsection}{Changing Your Metaethics}{1248}{section*.305}%
+\contentsline {subsection}{Could Anything Be Right?}{1252}{section*.306}%
+\contentsline {subsection}{Morality as Fixed Computation}{1257}{section*.307}%
+\contentsline {subsection}{Magical Categories}{1262}{section*.308}%
+\contentsline {subsection}{The True Prisoner's Dilemma}{1269}{section*.309}%
+\contentsline {subsection}{Sympathetic Minds}{1274}{section*.310}%
+\contentsline {subsection}{High Challenge}{1279}{section*.311}%
+\contentsline {subsection}{Serious Stories}{1283}{section*.312}%
+\contentsline {subsection}{Value is Fragile}{1291}{section*.313}%
+\contentsline {subsection}{The Gift We Give To Tomorrow}{1297}{section*.314}%
+\contentsline {section}{Quantified Humanism}{1304}{section*.315}%
+\contentsline {subsection}{One Life Against the World}{1305}{section*.316}%
+\contentsline {subsection}{The Allais Paradox}{1308}{section*.317}%
+\contentsline {subsection}{Zut Allais!}{1312}{section*.318}%
+\contentsline {subsection}{Feeling Moral}{1318}{section*.319}%
+\contentsline {subsection}{The "Intuitions" Behind "Utilitarianism"}{1322}{section*.320}%
+\contentsline {subsection}{Ends Don't Justify Means (Among Humans)}{1329}{section*.321}%
+\contentsline {subsection}{Ethical Injunctions}{1333}{section*.322}%
+\contentsline {subsection}{Something to Protect}{1340}{section*.323}%
+\contentsline {subsection}{When (Not) To Use Probabilities}{1346}{section*.324}%
+\contentsline {subsection}{Newcomb's Problem and Regret of Rationality}{1352}{section*.325}%
+\contentsline {subsection}{Twelve Virtues of Rationality}{1360}{section*.326}%
+\contentsline {part}{Becoming Stronger}{1366}{section*.327}%
+\contentsline {section}{Yudkowsky's Coming of Age}{1367}{section*.328}%
+\contentsline {subsection}{Beginnings: An Introduction}{1368}{section*.329}%
+\contentsline {subsection}{My Childhood Death Spiral}{1372}{section*.330}%
+\contentsline {subsection}{My Best and Worst Mistake}{1376}{section*.331}%
+\contentsline {subsection}{Raised in Technophilia}{1380}{section*.332}%
+\contentsline {subsection}{A Prodigy of Refutation}{1385}{section*.333}%
+\contentsline {subsection}{The Sheer Folly of Callow Youth}{1388}{section*.334}%
+\contentsline {subsection}{That Tiny Note of Discord}{1394}{section*.335}%
+\contentsline {subsection}{Fighting a Rearguard Action Against the Truth}{1400}{section*.336}%
+\contentsline {subsection}{My Naturalistic Awakening}{1404}{section*.337}%
+\contentsline {subsection}{The Level Above Mine}{1409}{section*.338}%
+\contentsline {subsection}{The Magnitude of His Own Folly}{1413}{section*.339}%
+\contentsline {subsection}{Beyond the Reach of God}{1418}{section*.340}%
+\contentsline {subsection}{My Bayesian Enlightenment}{1426}{section*.341}%
+\contentsline {section}{Challenging the Difficult}{1432}{section*.342}%
+\contentsline {subsection}{Trying to Try}{1433}{section*.343}%
+\contentsline {subsection}{Use the Try Harder, Luke}{1437}{section*.344}%
+\contentsline {subsection}{On Doing the Impossible}{1440}{section*.345}%
+\contentsline {subsection}{Make an Extraordinary Effort}{1446}{section*.346}%
+\contentsline {subsection}{Shut up and do the impossible!}{1450}{section*.347}%
+\contentsline {subsection}{Final Words}{1458}{section*.348}%
+\contentsline {section}{The Craft and the Community}{1466}{section*.349}%
+\contentsline {subsection}{Raising the Sanity Waterline}{1467}{section*.350}%
+\contentsline {subsection}{A Sense That More Is Possible}{1471}{section*.351}%
+\contentsline {subsection}{Epistemic Viciousness}{1475}{section*.352}%
+\contentsline {subsection}{Schools Proliferating Without Evidence}{1478}{section*.353}%
+\contentsline {subsection}{3 Levels of Rationality Verification}{1482}{section*.354}%
+\contentsline {subsection}{Why Our Kind Can't Cooperate}{1486}{section*.355}%
+\contentsline {subsection}{Tolerate Tolerance}{1493}{section*.356}%
+\contentsline {subsection}{Your Price for Joining}{1496}{section*.357}%
+\contentsline {subsection}{Can Humanism Match Religion's Output?}{1500}{section*.358}%
+\contentsline {subsection}{Church vs. Taskforce}{1505}{section*.359}%
+\contentsline {subsection}{Rationality: Common Interest of Many Causes}{1510}{section*.360}%
+\contentsline {subsection}{Helpless Individuals}{1514}{section*.361}%
+\contentsline {subsection}{Money: The Unit of Caring}{1517}{section*.362}%
+\contentsline {subsection}{Purchase Fuzzies and Utilons Separately}{1521}{section*.363}%
+\contentsline {subsection}{Bystander Apathy}{1525}{section*.364}%
+\contentsline {subsection}{Collective Apathy and the Internet}{1529}{section*.365}%
+\contentsline {subsection}{Incremental Progress and the Valley}{1532}{section*.366}%
+\contentsline {subsection}{Bayesians vs. Barbarians}{1537}{section*.367}%
+\contentsline {subsection}{Beware of Other-Optimizing}{1544}{section*.368}%
+\contentsline {subsection}{Practical Advice Backed By Deep Theories}{1548}{section*.369}%
+\contentsline {subsection}{The Sin of Underconfidence}{1552}{section*.370}%
+\contentsline {subsection}{Go Forth and Create the Art!}{1557}{section*.371}%
+\contentsline {part}{Beyond the Sequences}{1561}{section*.372}%
+\contentsline {subsection}{Humans are not automatically strategic}{1562}{section*.373}%
+\contentsline {subsection}{Toolbox-thinking and Law-thinking}{1566}{section*.374}%
+\contentsline {subsection}{Local Validity as a Key to Sanity and Civilization}{1575}{section*.375}%
+\contentsline {subsection}{Diseased thinking: dissolving questions about disease}{1584}{section*.376}%
+\contentsline {subsection}{On Caring}{1592}{section*.377}%
+\contentsline {subsection}{Strong Evidence is Common}{1600}{section*.378}%
+\contentsline {subsection}{“PR” is corrosive; “reputation” is not.}{1602}{section*.379}%
