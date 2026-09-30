@@ -1760,3 +1760,447 @@ Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
 - Before: that many contractualists also want to capture
 - After: that many contractualists, who ground morality in what could be justified to each person, also want to capture
 
+
+## annotated/afterwords/the-allais-paradox.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: the pattern breaks the independence axiom, whatever
+- After: the pattern breaks the independence axiom, which says that a preference between two gambles should not change when both are mixed with the same chance of some other outcome, whatever
+
+- Before: The post's own numbers change the problem from Allais's best-known form to a related one, but both break the same axiom.
+- After: The post's numbers differ from Allais's best-known version, but both versions break the same axiom.
+
+- Before: Its published defenders also give theories that keep
+- After: That is unfair: its published defenders give theories that keep
+
+
+## annotated/afterwords/zut-allais.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The phenomenon itself is well established;
+- After: Preference reversal itself, in which people choose one bet but put a higher price on the other, is well established;
+
+
+## annotated/afterwords/the-intuitions-behind-utilitarianism.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: That is close to reflective equilibrium, the dominant method in moral philosophy,
+- After: That is close to reflective equilibrium, the dominant method in moral philosophy, in which principles and judgments about cases are adjusted against each other until they fit,
+
+- Before: a lexically lower tier would decide nothing,
+- After: a lower tier that counts only when the upper tier is exactly balanced would decide nothing,
+
+- Before: against lexical priority in general
+- After: against all such strict rankings of values
+
+
+## annotated/afterwords/ends-don-t-justify-means-among-humans.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: In ethics it is the standard indirect consequentialist position.
+- After: In ethics it is the standard indirect consequentialist position: judge acts by their results, but do it through rules rather than case by case.
+
+- Before: The main published objection to two-level views is
+- After: Views of this kind are called two-level views, because they combine everyday rules with calculation in rare cases. The main published objection to them is
+
+
+## annotated/afterwords/ethical-injunctions.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The last third changes method.
+- After: The last third drops argument.
+
+- Before: The reasons were given earlier; this section adds the author's experience of those who argue otherwise.
+- After: These lines describe and mock opponents. They add no reason to the ones given earlier.
+
+- Before: followed by a closing third drawn from the author's experience of those who argue otherwise.
+- After: followed by a closing third that mocks those who argue otherwise and adds no argument.
+
+
+## annotated/afterwords/when-not-to-use-probabilities.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Exact probabilistic inference is intractable in general,
+- After: In general, exact probabilistic inference cannot be computed in reasonable time,
+
+- Before: a number from numbers in the post's own sense,
+- After: a number derived from other numbers, in the post's own sense,
+
+- Before: had meant odds from 20 to 80 to 80 to 20.
+- After: had meant odds from 20 to 80 to 80 to 20. Words hid a disagreement that numbers would have exposed, which cuts against the post.
+
+
+## annotated/afterwords/newcomb-s-problem-and-regret-of-rationality.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: an established theory, evidential decision theory, before
+- After: an established theory before the post: evidential decision theory, which picks the act that is the best evidence of a good outcome. It was established
+
+- Before: Causal decision theorists also want the money,
+- After: Causal decision theorists, who pick the act that causes the best outcome, also want the money,
+
+
+## annotated/afterwords/newcomb-s-problem-and-regret-of-rationality.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: good outcome. It was established the post.
+- After: good outcome.
+
+
+## annotated/afterwords/twelve-virtues-of-rationality.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Its final virtue fails its own sixth:
+- After: Its final virtue fails its sixth, empiricism:
+
+
+## annotated/afterwords/beginnings-an-introduction.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: is the stopping-rule argument,
+- After: is the stopping-rule argument: frequentist conclusions can depend on the experimenter's private plan for when to stop collecting data,
+
+
+## annotated/afterwords/my-childhood-death-spiral.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The label ``happy death spiral'' comes from Book II,
+- After: The label ``happy death spiral'' comes from Book II. It names a loop in which admiring an idea makes further good claims about it seem more plausible,
+
+
+## annotated/afterwords/raised-in-technophilia.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The post dismisses the middle position with a label
+- After: The post dismisses the middle position, that technology brings both benefits and risks, with a label
+
+
+## annotated/afterwords/that-tiny-note-of-discord.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: No one is named, and those who give the second excuse are described
+- After: No one is named. Those who say that the urgency of building AI leaves no time for the problem are described
+
+
+## annotated/afterwords/the-sheer-folly-of-callow-youth.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Utilities are fixed only up to an affine transformation, so
+- After: A utility scale can have a constant added to it, or be multiplied by a positive number, without changing any decision, so
+
+- Before: treats such a uniform theory the same way,
+- After: treats a theory that values every outcome equally the same way,
+
+
+## annotated/afterwords/my-naturalistic-awakening.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: which is close to the post's squeezing of the future; so the post's contrast is between a mentalistic and a physical reading of the word ``goal''.
+- After: which is close to the post's idea of steering the future into a small set of outcomes. So the post's contrast is between reading ``goal'' as something in a mind and reading it as a physical pattern.
+
+
+## annotated/afterwords/the-magnitude-of-his-own-folly.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: costs great status among AGI researchers
+- After: costs great status among researchers on artificial general intelligence (AGI)
+
+
+## annotated/afterwords/my-bayesian-enlightenment.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The anecdote's labels are the other person's, and they do not fit.
+- After: In the anecdote, another person calls 1/2 the Bayesian answer and 1/3 the answer of orthodox statistics. Those labels are wrong.
+
+
+## annotated/afterwords/beyond-the-reach-of-god.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: why the positive-sum trend cannot reverse,
+- After: why the trend toward cooperation that benefits all sides cannot reverse,
+
+- Before: may lie beyond our ken.
+- After: may lie beyond our understanding.
+
+
+## annotated/afterwords/trying-to-try.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The post does not discuss this case; it is a limit the research adds, not an error in the post.
+- After: The post does not discuss this case. The research adds a limit here; it does not show an error in the post.
+
+
+## annotated/afterwords/use-the-try-harder-luke.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Yoda's lesson is about belief, not stamina. The post
+- After: Yoda's lesson is about belief. The post
+
+- Before: The only support offered is a paced film scene, and the objection is built into the parody: the Lucas character says he will not halt the story.
+- After: The only support offered is a film scene, and the parody itself states why the scene is short: its George Lucas says he will not halt the story for five minutes.
+
+
+## annotated/afterwords/on-doing-the-impossible.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: ``is that you have a reasonable attack''; the notes
+- After: ``is that you have a reasonable attack.'' That is a different rule from the post's advice to attack problems that look impossible. The notes
+
+
+## annotated/afterwords/make-an-extraordinary-effort.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: a Japanese word, two proverbs,
+- After: isshokenmei, a Japanese word for all-out effort; two proverbs;
+
+- Before: the seriousness of Japanese exams, and the fact
+- After: the seriousness of Japanese exams; and the fact
+
+
+## annotated/afterwords/shut-up-and-do-the-impossible.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: the Box never seemed impossible to the author.
+- After: the AI-Box game never seemed impossible to the author.
+
+
+## annotated/afterwords/epistemic-viciousness.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The same history supports ``A Sense
+- After: The same unsourced history is used in ``A Sense
+
+- Before: For data poverty the claim is one the author argues elsewhere at length.
+- After: For one factor, the lack of data on what works, the author argues the point at length elsewhere.
+
+
+## annotated/afterwords/schools-proliferating-without-evidence.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: and paraprofessionals did about as well as professionals.
+- After: and helpers with limited training did about as well as professionals.
+
+
+## annotated/afterwords/3-levels-of-rationality-verification.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: which sold put options every month
+- After: which every month sold put options, contracts that pay their holders when the market falls,
+
+- Before: For information, some tools
+- After: Some tools
+
+- Before: that its author judged underpowered for those measures.
+- After: that its author judged too small to detect effects on those measures.
+
+- Before: that match earlier work such as Campbell's law.
+- After: that match earlier work such as Campbell's law; its thesis, that verification matters more than any other obstacle, is asserted without argument.
+
+
+## annotated/afterwords/why-our-kind-can-t-cooperate.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: pluralistic ignorance, evaporative cooling,
+- After: pluralistic ignorance (members wrongly believe that the others disagree with them), evaporative cooling (moderate members leave, and the group grows more extreme),
+
+
+## annotated/afterwords/your-price-for-joining.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: found that play departs from the textbook in every society studied,
+- After: found that play departs from the prediction of standard economic theory, that any offer above zero is accepted, in every society studied,
+
+
+## annotated/afterwords/can-humanism-match-religion-s-output.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: is to ego depletion, which later failed large replications;
+- After: is to ego depletion, the theory that self-control draws on a limited store that runs down with use. That theory later failed large replications;
+
+
+## annotated/afterwords/church-vs-taskforce.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The post's definition of ``optimal'' is useful. The list of church practices is judged only as a design for community, and the post grants
+- After: The post judges church practices only as a design for community, and it grants
+
+- Before: For information, one proposal is already common practice:
+- After: This keeps the comparison fair. One of its proposals, sharing a building among many groups, is already common practice:
+
+
+## annotated/afterwords/rationality-common-interest-of-many-causes.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: that giving is not a fixed pie,
+- After: that gifts to one cause do not simply come out of gifts to another,
+
+- Before: matching grants on a charity website did not crowd out gifts to similar requests;
+- After: matching grants on a charity website did not reduce gifts to similar requests;
+
+
+## annotated/afterwords/helpless-individuals.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Olson's people are self-interested free riders;
+- After: Olson's people are self-interested and let others pay;
+
+
+## annotated/afterwords/money-the-unit-of-caring.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The post narrows its title claim itself, to caring measured ``up to a positive scalar factor'' in a society it calls not sane; the notes add
+- After: The post narrows its title claim itself. Money measures only relative caring, ``up to a positive scalar factor'': a frugal person spends less on everything, so only the comparison between one person's spending on different things counts. And the claim is limited to a society the post calls not sane. The notes add
+
+- Before: For information, with hindsight: an argument
+- After: With hindsight, an argument
+
+
+## annotated/afterwords/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: as a small overhead on giving for utilons.
+- After: as a small overhead on giving for utilons, the post's word for units of good done.
+
+- Before: The first is that fuzzy acts are worth buying at all:
+- After: The first is that acts done for the warm feeling are worth buying at all:
+
+
+## annotated/afterwords/bystander-apathy.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The author raises an evolutionary arms race of delay,
+- After: The author raises the guess that people evolved to wait for someone else to act first,
+
+
+## annotated/afterwords/collective-apathy-and-the-internet.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: Olson's account is closely related. The bystander
+- After: A closer model than the bystander research is Mancur Olson's. The bystander
+
+- Before: the case Mancur Olson analyzed in 1965
+- After: the case Olson analyzed in 1965
+
+- Before: are the selective incentives of Olson's account.
+- After: are what Olson called selective incentives: rewards given only to those who contribute.
+
+
+## annotated/afterwords/bayesians-vs-barbarians.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: ``will end up at Pareto optima instead of Nash equilibria.''
+- After: ``will end up at Pareto optima instead of Nash equilibria'': at outcomes that cannot be improved for anyone without making someone worse off, instead of outcomes where each does best given what the others do.
+
+- Before: The objection the post answers is the free-rider problem,
+- After: The objection the post answers is the free-rider problem: each person gains by letting others do the fighting,
+
+- Before: The post separates its scheme from real drafts by one difference. Real armies
+- After: Punishment and lotteries do not separate the post's scheme from real drafts. Real armies
+
+
+## annotated/afterwords/practical-advice-backed-by-deep-theories.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The advice on akrasia the author asks for could already be written: Piers Steel's 2007 meta-analysis tied procrastination to hyperbolic discounting,
+- After: The advice on akrasia, acting against one's own judgment, that the author asks for could already be written: Piers Steel's 2007 meta-analysis tied procrastination to hyperbolic discounting, the habit of valuing near rewards far above later ones,
+
+
+## annotated/afterwords/go-forth-and-create-the-art.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: For information, not as a criticism: the task
+- After: The task
+
+
+## annotated/afterwords/toolbox-thinking-and-law-thinking.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: When the normative--prescriptive distinction is put to him, he calls it
+- After: When the distinction between an ideal (normative) and a working recipe (prescriptive) is put to Chapman, Chapman calls it
+
+- Before: The post's own rule applies to the post. It concedes
+- After: The post breaks its own rule. It concedes
+
+- Before: so that the ideal he doubted exists,
+- After: so that the ideal Chapman doubted exists,
+
+
+## annotated/afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The Chinese general executed a soldier from his home region, not his son.
+- After: The Chinese general executed a soldier from the general's home region, not the general's son.
+
+
+## annotated/afterwords/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: pointed against the husband.
+- After: pointed against the husband in the post's example, who expects shaming to make his wife lose weight.
+
+- Before: The reversal test is misapplied.
+- After: The reversal test, which asks whether a person resisting a change would also resist the opposite change, is misapplied.
+
+- Before: The signaling pattern it borrows is about
+- After: The pattern of moral signaling it quotes from another blogger is about
+
+- diseased-thinking: follow-up, "his wife" -> "Sandy" (no pronoun inference).
+
+## annotated/afterwords/on-caring.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: and gives neither to the birds nor to the two other charities named; the post hopes he will find effective altruism. What changes
+- After: and gives neither to the birds nor to the two other charities named. What changes
+
+
+## annotated/afterwords/strong-evidence-is-common.tex
+
+Why: Tone pass: direct, harsh but fair, plain wording; no new claims.
+
+- Before: The efficient market hypothesis implies
+- After: The efficient market hypothesis, that prices already reflect the information available, implies
+
+- ends-don-t-justify-means-among-humans: "his archangel" -> "the archangel" in the In short line.

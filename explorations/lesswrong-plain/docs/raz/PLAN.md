@@ -68,5 +68,12 @@ posts are merged in.
 - [x] Final sweep for leftover figurative verbs across all afterwords.
 - [x] Checks and both books rebuilt; logged in `docs/raz/review_log.md` and
       `docs/raz/changes/style_pass.md`.
-- [ ] Open questions for the user (asked before the pass): roll out the harsher tone to the
-      remaining posts; restore points earlier cut to pointers.
+- [x] Harsher tone rolled out (see "Tone pass" below).
+- [ ] Open question for the user: restore points earlier cut to pointers.
+
+## Tone pass on all Responses (user request, 30 September)
+
+- [x] Every Response read paragraph by paragraph for clarity, private jargon, directness and
+      fairness (`docs/raz/TONE_PASS.md`, 345/345); edits logged in
+      `docs/raz/changes/tone_pass.md`.
+- [x] Checks and both books rebuilt.

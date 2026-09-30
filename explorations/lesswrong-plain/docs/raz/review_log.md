@@ -608,3 +608,24 @@ crossed off). Every change is logged with before and after text in
   sentences (one new reserved-word flag, "Several details are wrong" in "Diseased Thinking",
   supported by the three errors listed after it); 345/345 notes backups exact; both books
   build with no LaTeX errors (annotated 1602 pages).
+
+## Tone pass (30 September)
+
+User request: an uncompromising, harsh but fair tone; direct, clear, no metaphors; read each
+paragraph and ask whether it is clear and whether it uses jargon only we would understand.
+
+- All 345 Responses read in book order, paragraph by paragraph (checklist in
+  `docs/raz/TONE_PASS.md`; every edit, with before and after text, in
+  `docs/raz/changes/tone_pass.md`).
+- Kinds of edit: technical terms glossed in a clause where first used (independence axiom,
+  money pump, reflective equilibrium, stopping rule, Pareto optimum and Nash equilibrium,
+  free rider, selective incentives, ego depletion, hyperbolic discounting, put options, and
+  others); private labels and vague openers removed ("For information,"); sentences that
+  softened a fault restated plainly (for example, the last third of "Ethical Injunctions"
+  now reads as mocking opponents and adding no argument); unclear references named.
+- Fairness rules held: no new charges beyond what the notes support; hedges kept; due
+  credit kept. Pronouns introduced by edits were checked against the sources; two were
+  replaced with names ("Sandy", "Chapman", "the archangel").
+- Checks: raz_check exit 0 on the edited files (flags are pre-existing quotations);
+  345/345 notes backups exact; both books build with no LaTeX errors (annotated 1603 pages,
+  honest 400).
