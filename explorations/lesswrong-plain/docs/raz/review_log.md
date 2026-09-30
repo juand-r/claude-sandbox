@@ -578,3 +578,33 @@ Tooling, done:
 - raz_check follows the one file alias (making-beliefs-pay-rent).
 - Overfull boxes: 183 to 165; over 10pt: 18 to 5 (the rest are code identifiers and
   formulas in the post text).
+
+## Style pass on every Summary and Response (done by hand, 30 September)
+
+Request: go through every summary and response and replace hard-to-decode figures with plain,
+literal statements (the "million-dollar laptop" complaint). Done by the main session, not by
+agents, post by post in book order, with the checklist in `docs/raz/STYLE_PASS.md` (345/345
+crossed off). Every change is logged with before and after text in
+`docs/raz/changes/style_pass.md`.
+
+- Kinds of change: figurative verbs replaced with literal ones ("rests on", "holds up",
+  "checks out", "bears out", "sits uneasily", "reaches", "carries", "turns on", "delivers",
+  "borrowed", "survives"); private labels and compressed phrases unpacked ("the foil",
+  "the move", "a ladder of virtues", "gives the truth enemies"); references to other posts
+  now say what that post argued; "In short" lines rewritten where they used a figure.
+- A final sweep over all 345 afterwords removed the remaining instances of these verbs where
+  they were ours (not inside quotations or literal uses such as LTCM "borrowed" money).
+- Research-limit phrases ("could not be traced", "could not be found") removed from four
+  "In short" lines, per the rule that our limits stay in the notes.
+- Facts touched were rechecked against the originals: the trillion-statements arithmetic in
+  "Infinite Certainty" (about 950,000 years at one statement every 20 seconds, 16 hours a
+  day), the log-utility threshold in "Zut Allais!" (about \$546), the 7.5\% in "Science
+  Isn't Strict Enough", the 10-sided die in "Living in Many Worlds", the Gendlin and Twain
+  attributions.
+- One sentence broken by an earlier edit ("In that post and where...", "Your Rationality is
+  My Business") was repaired, and a contradiction introduced in "Stranger Than History" by
+  an earlier cut was fixed.
+- Checks after the pass: raz_check output identical to before apart from the edited
+  sentences (one new reserved-word flag, "Several details are wrong" in "Diseased Thinking",
+  supported by the three errors listed after it); 345/345 notes backups exact; both books
+  build with no LaTeX errors (annotated 1602 pages).

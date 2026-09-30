@@ -61,3 +61,12 @@ posts are merged in.
 | 6a | Yudkowsky's Coming of Age (Book VI) | 13 | yes | yes | e33141a |
 | 6b | Challenging the Difficult, The Craft and the Community 317 to 323 (Book VI) | 11 | yes | yes | 8b68e8c |
 | 6c | The Craft and the Community 324 to 338 (rest of Book VI) | 15 | yes | yes | 9162adc |
+
+## Style pass on all Summaries and Responses (user request, 30 September)
+
+- [x] Checklist of all 345 afterwords in book order (`docs/raz/STYLE_PASS.md`), done by hand.
+- [x] Final sweep for leftover figurative verbs across all afterwords.
+- [x] Checks and both books rebuilt; logged in `docs/raz/review_log.md` and
+      `docs/raz/changes/style_pass.md`.
+- [ ] Open questions for the user (asked before the pass): roll out the harsher tone to the
+      remaining posts; restore points earlier cut to pointers.

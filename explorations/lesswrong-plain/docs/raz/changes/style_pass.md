@@ -2110,3 +2110,2104 @@ Why: Style pass: plain, literal wording.
 - Before: that rests on one example and on an argument for a much weaker claim.
 - After: supported only by one example and by an argument for a much weaker claim.
 
+
+## annotated/afterwords/variable-question-fallacies.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: rests on the account of categorization in ``How An Algorithm Feels From Inside,'' and inherits its lack of evidence about brains.
+- After: depends on the account of categorization in ``How An Algorithm Feels From Inside,'' which gives no evidence about brains either.
+
+
+## annotated/afterwords/37-ways-that-words-can-be-wrong.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The ending runs together two claims that the sequence had separated.
+- After: The ending combines two claims that the sequence had separated.
+
+- Before: Joined to the first, it overstates
+- After: Applied to the first, it overstates
+
+
+## annotated/afterwords/an-intuitive-explanation-of-bayes-s-theorem.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and then changes its business.
+- After: and then changes subject.
+
+- Before: wrapped in loosely sourced studies,
+- After: surrounded by loosely sourced studies,
+
+- Before: attached to claims about a revolution
+- After: followed by claims about a revolution
+
+
+## annotated/afterwords/the-world-an-introduction.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Most of what it says checks out:
+- After: Most of what it says is accurate:
+
+- Before: need adding to.
+- After: need qualifying.
+
+- Before: The small polls available bear out ``popular'':
+- After: The small polls available support ``popular'':
+
+
+## annotated/afterwords/universal-fire.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The step from matches to ATP runs through a different property of phosphorus than the one named.
+- After: The link from matches to ATP depends on a different property of phosphorus than the one the post names.
+
+- Before: The post's conclusion survives,
+- After: The post's conclusion still holds,
+
+
+## annotated/afterwords/universal-law.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The history is compressed.
+- After: The history is simplified.
+
+- Before: Some Greek work sits uneasily with it.
+- After: Some Greek work does not fit it.
+
+
+## annotated/afterwords/is-reality-ugly.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its protein example has dated,
+- After: Its protein example is now dated,
+
+- Before: but its reasons do not reach it.
+- After: but its reasons do not support it.
+
+- Before: attached to two claims its argument does not reach,
+- After: together with two claims its argument does not support,
+
+- Before: and to many-worlds stated as
+- After: and with many-worlds stated as
+
+
+## annotated/afterwords/outside-the-laboratory.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is with the claims about scientists that the argument is attached to.
+- After: The problem is the claims about scientists that the post draws from it.
+
+- Before: The diagnosis of such scientists rests on one imagined case.
+- After: The diagnosis of such scientists is based on one imagined case.
+
+- Before: attached to a diagnosis of religious scientists that rests on an imagined case
+- After: together with a diagnosis of religious scientists based on an imagined case
+
+
+## annotated/afterwords/the-second-law-of-thermodynamics-and-engines-of-cognition.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The physics is weakest at the two points the conclusion needs.
+- After: The physics is weakest at the two points on which the conclusion depends.
+
+- Before: The post meets that account in one parenthesis
+- After: The post mentions that account in one parenthesis
+
+- Before: The general rules are also stated beyond their range.
+- After: The general rules are also stated more broadly than they hold.
+
+- Before: that gets its physics wrong at the two points the conclusion needs, used to dress a truism as a law of nature and a debating rule as a theorem.
+- After: that gets its physics wrong at the two points on which the conclusion depends, used to present a truism as a law of nature and a debating rule as a theorem.
+
+
+## annotated/afterwords/perpetual-motion-beliefs.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is in the step from these cases
+- After: The problem is the step from these cases
+
+- Before: The post also leans on the previous one.
+- After: The post also depends on the previous one.
+
+- Before: carried over to beliefs without evidence by an analogy
+- After: extended to beliefs without evidence by an analogy
+
+
+## annotated/afterwords/searching-for-bayes-structure.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The gap between the two claims is closed only by the reported experience.
+- After: Only the reported experience connects the two claims.
+
+- Before: used to introduce a strong one that rests on the author's reported experience
+- After: used to introduce a strong one that depends on the author's reported experience
+
+
+## annotated/afterwords/dissolving-the-question.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post puts that answer out of bounds for its readers,
+- After: The post forbids that answer to its readers,
+
+- Before: which scores success by a feeling
+- After: which judges success by a feeling
+
+
+## annotated/afterwords/wrong-questions.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The central claim rests on experience the reader does not see.
+- After: The central claim is supported only by experience the reader does not see.
+
+- Before: a useful test with an old pedigree, a free-will example that an old answer meets, and a claim that such questions are always solvable resting on experience the post does not show.
+- After: a useful test that is old, a free-will example that Hume's old answer already meets, and a claim that such questions are always solvable, supported only by experience the post does not show.
+
+
+## annotated/afterwords/mind-projection-fallacy.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: In short: a borrowed name,
+- After: In short: a name taken from Jaynes,
+
+- Before: and enrolls Hume, the source of the idea, as an offender.
+- After: and lists Hume, the source of the idea, as an offender.
+
+
+## annotated/afterwords/probability-is-in-the-mind.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Every figure checks by enumeration,
+- After: Enumerating the cases confirms every figure,
+
+- Before: As staged, the dispute is over the word.
+- After: As the post presents it, the dispute is only about a word.
+
+- Before: attached to an argument against frequentism that stages a dispute over a word
+- After: together with an argument against frequentism that presents the dispute as one about a word
+
+
+## annotated/afterwords/the-quotation-is-not-the-referent.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The problems are in how the post places it among the work that came before.
+- After: The problems are in how the post relates it to earlier work.
+
+
+## annotated/afterwords/qualitatively-confused.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the three numbers check,
+- After: the three numbers are correct,
+
+
+## annotated/afterwords/think-like-reality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: attached to a verdict on those who call quantum physics weird that Feynman's case does not bear out, and to one contested
+- After: together with a verdict on those who call quantum physics weird that Feynman's case contradicts, and with one contested
+
+
+## annotated/afterwords/chaotic-inversion.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The turn of the post rests on an inference
+- After: The turning point of the post depends on an inference
+
+- Before: so the post does not lean on it hard,
+- After: so the post does not rely on it heavily,
+
+- Before: rests only on the author's case,
+- After: is supported only by the author's case,
+
+
+## annotated/afterwords/reductionism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: is thinner than the claim.
+- After: is weaker than the claim.
+
+- Before: The argument survives with the Standard Model in its place.
+- After: The argument still holds with the Standard Model in its place.
+
+
+## annotated/afterwords/fake-reductionism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case against Keats is thin,
+- After: The case against Keats is weak,
+
+- Before: It rests on two guesses,
+- After: It depends on two guesses,
+
+- Before: pinned on Keats by two guesses and a dinner-party toast
+- After: attributed to Keats on the basis of two guesses and a dinner-party toast
+
+
+## annotated/afterwords/savanna-poets.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The argument about poets would stand on universality alone;
+- After: The argument about poets would hold with universality alone;
+
+
+## annotated/afterwords/joy-in-discovery.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The reductio has a limited reach.
+- After: The reductio covers only one version of the view.
+
+- Before: and other Earths do not touch that.
+- After: and other Earths make no difference to that.
+
+- Before: reached partly through a reductio that touches only the view
+- After: reached partly through a reductio that applies only to the view
+
+
+## annotated/afterwords/if-you-demand-magic-magic-won-t-help.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is in the application.
+- After: The problem is how the post applies it.
+
+
+## annotated/afterwords/the-beauty-of-settled-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the advice rests on two claims
+- After: and the advice depends on two claims
+
+- Before: resting on hedged claims about science news that later studies of newspapers and press releases broadly bear out,
+- After: based on hedged claims about science news that later studies of newspapers and press releases broadly support,
+
+
+## annotated/afterwords/amazing-breakthrough-day-april-1st.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The diagnosis holds up.
+- After: The diagnosis is sound.
+
+- Before: so the example still serves,
+- After: so the example still works,
+
+
+## annotated/afterwords/is-humanism-a-religion-substitute.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the claim rests on the unnamed writers' motives.
+- After: and the claim depends on the unnamed writers' motives.
+
+- Before: surrounded by a universal verdict
+- After: together with a universal verdict
+
+
+## annotated/afterwords/scarcity.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The same shift affects the remedy.
+- After: The post also changes the remedy.
+
+- Before: The post turns the test into a symptom.
+- After: The post turns Cialdini's test into a sign of error.
+
+
+## annotated/afterwords/the-sacred-mundane.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The first rests on less than it seems to. The second argues well against five habits and then reaches further than that argument goes.
+- After: The first has less support than it seems to. The second argues well against five habits and then draws a conclusion that this argument does not support.
+
+- Before: The verdict on spirituality is where the argument runs short.
+- After: The argument is weakest in its verdict on spirituality.
+
+- Before: is carried by the image of a poisoned cup.
+- After: is made only through the image of a poisoned cup.
+
+
+## annotated/afterwords/to-spread-science-keep-it-secret.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Other parts hold up better than the post shows.
+- After: Other parts have more support than the post shows.
+
+- Before: rests partly on later tradition;
+- After: depends partly on later tradition;
+
+- Before: rests on studies that measured
+- After: is based on studies that measured
+
+
+## annotated/afterwords/hand-vs-fingers.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Moved to hands, both lose the grounds their real holders give,
+- After: Applied to hands, both positions lose the reasons their real holders give,
+
+- Before: and turned against parodies of views
+- After: and used against parodies of views
+
+
+## annotated/afterwords/angry-atoms.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Within its scope, the step to anger is the thinnest part.
+- After: Within its scope, the step to anger is the weakest part.
+
+- Before: It does not reach the gap Joseph Levine named,
+- After: It does not apply to the gap Joseph Levine named,
+
+
+## annotated/afterwords/heat-vs-motion.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the facts given about Carnot check.
+- After: and the facts given about Carnot are correct.
+
+- Before: does not hold up against the source.
+- After: is not supported by the source.
+
+- Before: The argument survives the correction.
+- After: The argument still holds after the correction.
+
+
+## annotated/afterwords/brain-breakthrough-it-s-made-of-neurons.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The history checks nearly everywhere I could test it:
+- After: The history is correct nearly everywhere I could check it:
+
+- Before: One clause reaches further than the rest:
+- After: One clause claims more than the rest:
+
+- Before: with history that checks, a claim to vindicate Spinoza
+- After: with accurate history, and a claim to vindicate Spinoza
+
+
+## annotated/afterwords/when-anthropomorphism-became-stupid.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The tests themselves rest on assumptions
+- After: The tests themselves depend on assumptions
+
+
+## annotated/afterwords/a-priori.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: joined to an argument against the a priori that turns on a step
+- After: together with an argument against the a priori that depends on a step
+
+
+## annotated/afterwords/reductive-reference.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The framing around truth takes more for granted than it says.
+- After: The discussion of truth assumes more than it states.
+
+
+## annotated/afterwords/zombies-zombies.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The closing comparison of theories rests on a premise Chalmers denies:
+- After: The closing comparison of theories depends on a premise Chalmers denies:
+
+
+## annotated/afterwords/zombie-responses.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its weaknesses are in how it meets the view it answers.
+- After: Its weaknesses are in how it answers the view it opposes.
+
+- Before: and then rests its answer on an empirical fact
+- After: and then bases its answer on an empirical fact
+
+- Before: points at the same gap:
+- After: identifies the same gap:
+
+- Before: but meets Chappell's objections mostly by restating
+- After: but answers Chappell's objections mostly by restating
+
+
+## annotated/afterwords/the-generalized-anti-zombie-principle.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its physics checks:
+- After: Its physics is correct:
+
+- Before: What the post establishes is the switch and the spoken word.
+- After: What the post establishes covers the switch and the spoken word.
+
+
+## annotated/afterwords/gazp-vs-glut.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The last case is answered on its own terms.
+- After: For the last case the post gives its own opinion.
+
+- Before: The coda carries the same reasoning over to AI design,
+- After: The coda applies the same reasoning to AI design,
+
+
+## annotated/afterwords/belief-in-the-implied-invisible.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The principle carries weight later in the book:
+- After: The principle matters later in the book:
+
+
+## annotated/afterwords/zombies-the-movie.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the question is whether its jokes land on the view as it is held. For the most part they do.
+- After: and the question is whether its jokes are accurate about the view as its holders state it. For the most part they are.
+
+- Before: The zombies' reply is the humans' own charge turned round,
+- After: The zombies' reply is the humans' own charge reversed,
+
+
+## annotated/afterwords/excluding-the-supernatural.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post's account of the other side is thin.
+- After: The post's account of the other side is incomplete.
+
+
+## annotated/afterwords/psychic-powers.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Psychic powers rest on many claimed experiments,
+- After: The case for psychic powers is based on many claimed experiments,
+
+
+## annotated/afterwords/configurations-and-amplitude.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Every worked number checks:
+- After: Every worked number is correct:
+
+- Before: The post's reported results survive,
+- After: The post's reported results still hold,
+
+- Before: Other rivals are untouched.
+- After: Other rivals are not affected.
+
+- Before: does not reach QBism,
+- After: does not apply to QBism,
+
+- Before: does not reach pilot-wave theory,
+- After: does not apply to pilot-wave theory,
+
+- Before: whose worked examples all check,
+- After: whose worked examples are all correct,
+
+
+## annotated/afterwords/distinct-configurations.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The amplitudes check,
+- After: The amplitudes are correct,
+
+- Before: does less than it seems to.
+- After: shows less than it seems to.
+
+- Before: The history in the second half runs two views together.
+- After: The history in the second half confuses two views.
+
+
+## annotated/afterwords/collapse-postulates.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The history is loosely told in three places.
+- After: The history is inaccurate in three places.
+
+- Before: The experimental record also cuts less than the post says.
+- After: The experimental record also counts less against collapse than the post says.
+
+- Before: set in a loosely told history,
+- After: set in an inaccurate history,
+
+
+## annotated/afterwords/decoherence-is-simple.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is how much the post claims to have settled.
+- After: The problem is how much the post claims to have settled.
+
+- Before: not a sum.
+- After: not a calculation.
+
+
+## annotated/afterwords/decoherence-is-falsifiable-and-testable.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rival view on new predictions gets less than its due.
+- After: The post treats the rival view on new predictions unfairly.
+
+
+## annotated/afterwords/privileging-the-hypothesis.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its arithmetic checks.
+- After: Its arithmetic is correct.
+
+- Before: The supporting claims are thin.
+- After: The supporting claims are weak.
+
+- Before: with arithmetic that checks,
+- After: with correct arithmetic,
+
+
+## annotated/afterwords/living-in-many-worlds.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and its arithmetic checks.
+- After: and its arithmetic is correct.
+
+- Before: the practical point survives.
+- After: the practical point still holds.
+
+- Before: The first ethical exception rests on a premise
+- After: The first ethical exception depends on a premise
+
+- Before: that rests on an unstated premise.
+- After: that depends on an unstated premise.
+
+
+## annotated/afterwords/quantum-non-realism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post's certainty sits uneasily with its own rule.
+- After: The post's certainty conflicts with its own rule.
+
+- Before: is borne out by a later poll.
+- After: is supported by a later poll.
+
+
+## annotated/afterwords/if-many-worlds-had-come-first.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The hard questions also go to one side.
+- After: The story also puts the hard questions to one side only.
+
+
+## annotated/afterwords/where-philosophy-meets-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: sits uneasily with what the author wrote a month later,
+- After: conflicts with what the author wrote a month later,
+
+- Before: sits uneasily with the post's own case.
+- After: does not fit the post's own case.
+
+- Before: rests on simplicity rather than
+- After: depends on simplicity rather than
+
+
+## annotated/afterwords/thou-art-physics.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case against the rivals is thinner than the case for the position.
+- After: The case against the rivals is weaker than the case for the position.
+
+
+## annotated/afterwords/many-worlds-one-best-guess.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Much of the post holds up, and it should be said first.
+- After: Much of the post is sound, and that should be said first.
+
+- Before: Its figures on the Bell experiments check.
+- After: Its figures on the Bell experiments are correct.
+
+- Before: The case for ``wins outright'' rests on two premises,
+- After: The case for ``wins outright'' depends on two premises,
+
+- Before: So it narrows the field of single-world theories; it does not close it.
+- After: So it rules out some single-world theories, not all of them.
+
+
+## annotated/afterwords/the-failures-of-eld-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The small facts also hold.
+- After: The small facts are also correct.
+
+- Before: sits uneasily with Einstein,
+- After: does not fit Einstein,
+
+- Before: whose small facts check, built on the contested many-worlds verdict
+- After: whose small facts are correct, based on the contested many-worlds verdict
+
+- Before: that sits uneasily with their record.
+- After: that does not fit their record.
+
+
+## annotated/afterwords/the-dilemma-science-or-bayes.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Probability theory does not choose the prior on which the comparison rests.
+- After: Probability theory does not choose the prior on which the comparison depends.
+
+- Before: The post's handling of doubt fits this.
+- After: The post handles doubt in the same way.
+
+
+## annotated/afterwords/science-doesn-t-trust-your-rationality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The route to the dare is built from borrowed and unsourced material.
+- After: The essay reaches its dare through uncredited and unsourced material.
+
+- Before: The definitions do quiet work.
+- After: The essay's definitions shape its conclusions without saying so.
+
+
+## annotated/afterwords/when-science-can-t-help.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: What fills the gap is pressure:
+- After: In its place the essay offers pressure:
+
+- Before: The examples are selected, not found.
+- After: The examples are chosen to fit.
+
+- Before: It arrives with the announcement
+- After: The essay presents it with the announcement
+
+- Before: uses that gap to license belief
+- After: uses that gap to justify belief
+
+
+## annotated/afterwords/do-scientists-already-know-this-stuff.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: mostly supports the post's drift.
+- After: mostly supports the post's general claim.
+
+- Before: That sits uneasily with its suggestion
+- After: That does not fit its suggestion
+
+- Before: Several cases rest on disputed or unshown premises.
+- After: Several cases depend on disputed or unshown premises.
+
+
+## annotated/afterwords/no-safe-defense-not-even-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The essay has the shape of a conversion narrative.
+- After: The essay follows the pattern of a conversion story.
+
+- Before: The postscript protects the essay against criticism.
+- After: The postscript makes the essay harder to criticize.
+
+- Before: and exempts its author's own certainties.
+- After: and does not apply its warning to its author's own certainties.
+
+
+## annotated/afterwords/faster-than-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The argument for the title turns on one word.
+- After: The argument for the title depends on one word.
+
+- Before: renamed knowledge, and used to certify the author's positions as ahead of science.
+- After: relabelled as knowledge, and used to present the author's positions as ahead of science.
+
+
+## annotated/afterwords/einstein-s-speed.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: which sits uneasily with the post's account
+- After: which does not fit the post's account
+
+
+## annotated/afterwords/that-alien-message.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and its details hold up:
+- After: and its details are correct:
+
+- Before: It rests on outcomes the author wrote:
+- After: It depends on outcomes the author wrote:
+
+- Before: The second half of the story carries a lesson
+- After: The second half of the story contains a lesson
+
+- Before: does not reach its most concrete claim,
+- After: does not support its most concrete claim,
+
+
+## annotated/afterwords/my-childhood-role-model.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The second rests mostly on an image.
+- After: The second is supported mostly by an image.
+
+- Before: sits uneasily with the author's earlier claim
+- After: conflicts with the author's earlier claim
+
+- Before: and Einstein's own record sits uneasily with it:
+- After: and Einstein's own record contradicts it:
+
+- Before: but the point it serves survives.
+- After: but the point it serves still holds.
+
+- Before: that rests on an image of stars
+- After: supported only by an image of stars
+
+
+## annotated/afterwords/einstein-s-superpowers.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The evidence the post does offer is thin.
+- After: The evidence the post does offer is weak.
+
+- Before: borne out by Einstein's early career,
+- After: supported by Einstein's early career,
+
+
+## annotated/afterwords/class-project.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Their angles touch real difficulties:
+- After: Their angles address real difficulties:
+
+- Before: The frame leaves one thing open.
+- After: The framing leaves one question open.
+
+- Before: angles that touch real problems of quantum gravity;
+- After: angles that address real problems of quantum gravity;
+
+
+## annotated/afterwords/a-technical-explanation-of-technical-explanation.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the sunrise figures all check,
+- After: and the sunrise figures are all correct,
+
+- Before: though the arguments survive the corrections.
+- After: though the arguments still hold after correction.
+
+- Before: meets the problem of old evidence,
+- After: faces the problem of old evidence,
+
+
+## annotated/afterwords/ends-an-introduction.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: most of what it says about positions and people checks out.
+- After: most of what it says about positions and people is accurate.
+
+- Before: is borne out by the 2009 PhilPapers survey
+- After: is supported by the 2009 PhilPapers survey
+
+- Before: whose descriptions of positions mostly check out,
+- After: whose descriptions of positions are mostly accurate,
+
+
+## annotated/afterwords/not-for-the-sake-of-happiness-alone.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: here the cases carry the argument.
+- After: here the argument depends on the cases.
+
+- Before: rests on a linked earlier post,
+- After: depends on a linked earlier post,
+
+- Before: resting on the author's intuitions about cases,
+- After: based on the author's intuitions about cases,
+
+
+## annotated/afterwords/fake-selfishness.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the comparison with religion rests on the believers the author has met.
+- After: and the comparison with religion is based on the believers the author has met.
+
+- Before: The man's answer meets the author's first question.
+- After: The man's answer does answer the author's first question.
+
+- Before: Each comes with a clause that closes the usual way out.
+- After: Each includes a clause that rules out the usual reply.
+
+- Before: The stipulation that the egoist will not know about the torture meets the reply
+- After: The stipulation that the egoist will not know about the torture rules out the reply
+
+
+## annotated/afterwords/fake-morality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post does not rest the verdict on that test.
+- After: The post does not base its verdict on that test.
+
+
+## annotated/afterwords/detached-lever-fallacy.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: carried to AI by a principle from biology that holds up,
+- After: applied to AI through a principle from biology that is sound,
+
+
+## annotated/afterwords/where-recursive-justification-hits-bottom.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The weakest point is the one the post rests on:
+- After: The weakest point is the one on which the post depends:
+
+- Before: with a long pedigree (Hume, Neurath, Quine, Goodman),
+- After: with a long history (Hume, Neurath, Quine, Goodman),
+
+
+## annotated/afterwords/no-universally-compelling-arguments.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its conclusion leaves untouched the classic view
+- After: Its conclusion does not affect the classic view
+
+
+## annotated/afterwords/sorting-pebbles-into-correct-heaps.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The satire falls on both camps:
+- After: The satire is aimed at both camps:
+
+- Before: and both hold within it.
+- After: and both hold within the story.
+
+
+## annotated/afterwords/2-place-and-1-place-words.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the later posts are where they bear.
+- After: the later posts are where they apply.
+
+- Before: rested on an instinct to curry or uncurry. No argument
+- After: came from an instinct to curry or uncurry. No argument
+
+- Before: that the Twin Earth debate rested on an instinct
+- After: that the Twin Earth debate came from an instinct
+
+
+## annotated/afterwords/what-would-you-do-without-morality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the question about gloomy poetry heads off the stock picture of the nihilist.
+- After: and the question about gloomy poetry sets aside the stock picture of the nihilist.
+
+- Before: The supposition joins two claims that philosophers keep apart.
+- After: The supposition combines two claims that philosophers keep apart.
+
+
+## annotated/afterwords/changing-your-metaethics.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post respects the argument's reach.
+- After: The post uses the argument only as far as it goes.
+
+
+## annotated/afterwords/could-anything-be-right.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its supporting parallels hold up:
+- After: Its supporting parallels are sound:
+
+- Before: the post meets for an alien mind
+- After: the post answers for an alien mind
+
+
+## annotated/afterwords/morality-as-fixed-computation.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the example does real work.
+- After: and the example makes a real point.
+
+
+## annotated/afterwords/magical-categories.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and nothing in the argument rests on it.
+- After: and nothing in the argument depends on it.
+
+- Before: so the objection does not touch it.
+- After: so the objection does not affect it.
+
+
+## annotated/afterwords/the-true-prisoner-s-dilemma.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the claim has thin support.
+- After: and the claim has little support.
+
+- Before: rests on an analogy with jury instructions.
+- After: is supported only by an analogy with jury instructions.
+
+
+## annotated/afterwords/high-challenge.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: rests on the author's preference, so it speaks for readers who share it;
+- After: depends on the author's preference, so it applies to readers who share it;
+
+
+## annotated/afterwords/serious-stories.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: On stories, the post does its own work.
+- After: On stories, the post argues well on its own.
+
+- Before: with sources that hold up
+- After: with accurate sources
+
+
+## annotated/afterwords/value-is-fragile.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Those judgments rest on intuitions with a history and critics:
+- After: Those judgments depend on intuitions that have a history and critics:
+
+- Before: The account of boredom holds up.
+- After: The account of boredom is sound.
+
+
+## annotated/afterwords/the-gift-we-give-to-tomorrow.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and it carries two claims the post never argues:
+- After: and it contains two claims the post never argues:
+
+- Before: a dialogue that seats the reader in the winning voice,
+- After: a dialogue that gives the reader the winning voice,
+
+
+## annotated/afterwords/one-life-against-the-world.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The argument, though, does not reach the point where the dispute lies.
+- After: The argument, though, does not address the point in dispute.
+
+
+## annotated/afterwords/zut-allais.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: On persistence, the evidence cuts both ways.
+- After: On persistence, the evidence points both ways.
+
+- Before: whose recalled experiments are marked as recalled and could be traced only in part, and whose answer to ``the utility of certainty'' meets a commenter's formula
+- After: whose recalled experiments are marked as recalled, and whose answer to ``the utility of certainty'' answers a commenter's formula
+
+
+## annotated/afterwords/feeling-moral.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its own numbers carry a claim it does not source.
+- After: Its own numbers contain a claim it does not source.
+
+- Before: The second case asks more than the post supplies.
+- After: The second case needs more than the post gives.
+
+
+## annotated/afterwords/the-intuitions-behind-utilitarianism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: do not reach the case Gowder raised.
+- After: do not address the case Gowder raised.
+
+- Before: The post's argument that does reach it
+- After: The post's argument that does address it
+
+- Before: the post rests on its argument against two tiers of value,
+- After: the post depends on its argument against two tiers of value,
+
+
+## annotated/afterwords/something-to-protect.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: None of these carries the claim.
+- After: None of these supports the claim.
+
+- Before: The dilemma is the essay's one argument, and it cannot come out otherwise.
+- After: The dilemma is the essay's one argument, and its outcome is fixed by arithmetic.
+
+
+## annotated/afterwords/twelve-virtues-of-rationality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: It borrows the authority of a samurai manual.
+- After: It invokes the authority of a samurai manual.
+
+
+## annotated/afterwords/beginnings-an-introduction.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the descriptions check out wherever I could check them.
+- After: the descriptions are accurate wherever I could check them.
+
+- Before: is borne out by both PhilPapers surveys.
+- After: is supported by both PhilPapers surveys.
+
+- Before: whose descriptions of positions and sources check out where I could check them.
+- After: whose descriptions of positions and sources are accurate as far as they could be checked.
+
+
+## annotated/afterwords/my-childhood-death-spiral.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The central report holds up.
+- After: The central report is accurate.
+
+- Before: is borne out by the archived writings,
+- After: is supported by the archived writings,
+
+
+## annotated/afterwords/my-best-and-worst-mistake.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and most of it checks.
+- After: and most of it is accurate.
+
+- Before: so the refusal of a mathematical definition stands,
+- After: so the report that the young author refused a mathematical definition is accurate,
+
+- Before: is borne out by the archived writings,
+- After: is supported by the archived writings,
+
+
+## annotated/afterwords/a-prodigy-of-refutation.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: As memoir, the post holds up against the record.
+- After: As memoir, the post matches the record.
+
+- Before: a memoir that the 1996 mailing-list archive bears out,
+- After: a memoir that the 1996 mailing-list archive supports,
+
+
+## annotated/afterwords/the-sheer-folly-of-callow-youth.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The reply to the young author's reason for haste rests on a premise the post asserts:
+- After: The reply to the young author's reason for haste depends on a premise the post asserts:
+
+- Before: its answer to the case for haste rests on a premise
+- After: its answer to the case for haste depends on a premise
+
+
+## annotated/afterwords/that-tiny-note-of-discord.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the memoir holds up where I could check it
+- After: and the memoir matches the record where I could check it
+
+
+## annotated/afterwords/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Where its account of the period can be checked against texts of the time, it holds up.
+- After: Where its account of the period can be checked against texts of the time, it is accurate.
+
+
+## annotated/afterwords/my-naturalistic-awakening.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the account of the author's own writings holds up where it could be checked.
+- After: and the account of the author's own writings is accurate where it could be checked.
+
+- Before: whose account of its author's own papers checks out,
+- After: whose account of its author's own papers is accurate,
+
+
+## annotated/afterwords/the-level-above-mine.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The claims about other people check out,
+- After: The claims about other people are accurate,
+
+- Before: whose facts about others hold up,
+- After: whose facts about others are accurate,
+
+
+## annotated/afterwords/the-magnitude-of-his-own-folly.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the first question is whether its account of the author's earlier views and writings holds up. Where it can be checked, it does.
+- After: and the first question is whether its account of the author's earlier views and writings is accurate. Where it can be checked, it is.
+
+- Before: rests on the author's own past:
+- After: is based on the author's own past:
+
+- Before: that the archived writings bear out,
+- After: that the archived writings support,
+
+
+## annotated/afterwords/beyond-the-reach-of-god.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The history it uses holds up:
+- After: The history it uses is accurate:
+
+
+## annotated/afterwords/my-bayesian-enlightenment.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the parts that can be checked mostly hold.
+- After: and the parts that can be checked are mostly accurate.
+
+
+## annotated/afterwords/trying-to-try.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The force of the argument lies in the claim about people:
+- After: The argument's strength depends on the claim about people:
+
+
+## annotated/afterwords/use-the-try-harder-luke.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and neither holds up.
+- After: and neither is sound.
+
+- Before: Then there is the move in the last clause.
+- After: The last clause also changes the subject.
+
+- Before: it arrives as a punch line.
+- After: it appears only as a punch line.
+
+- Before: Its argument lives in ``Trying to Try,''
+- After: Its argument is in ``Trying to Try,''
+
+
+## annotated/afterwords/on-doing-the-impossible.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and both mostly hold up.
+- After: and both are mostly sound.
+
+- Before: The claims about other researchers rest on the author's impressions.
+- After: The claims about other researchers are based on the author's impressions.
+
+- Before: a memoir that the record bears out and advice that states its own limits; its claims about other researchers rest on
+- After: a memoir that the record supports and advice that states its own limits; its claims about other researchers are based on
+
+
+## annotated/afterwords/make-an-extraordinary-effort.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case that the distinction matters rests on a comparison
+- After: The case that the distinction matters depends on a comparison
+
+- Before: rests on the same comparison.
+- After: depends on the same comparison.
+
+
+## annotated/afterwords/shut-up-and-do-the-impossible.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post adds a fourth rung to a ladder of virtues set out in the posts before it. Above
+- After: The post adds a fourth item to a series of virtues set out in the posts before it. After
+
+- Before: stands ``shut up and do the impossible.''
+- After: comes ``shut up and do the impossible.''
+
+- Before: What sets the fourth rung apart is its goal:
+- After: What sets the fourth apart is its goal:
+
+- Before: It carries its own warnings:
+- After: It includes its own warnings:
+
+- Before: The advice rests on claims about minds
+- After: The advice depends on claims about minds
+
+- Before: carrying its own warnings, resting on the author's experience
+- After: with its own warnings, based on the author's experience
+
+
+## annotated/afterwords/raising-the-sanity-waterline.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: joined to a diagnosis of religious scientists
+- After: together with a diagnosis of religious scientists
+
+
+## annotated/afterwords/a-sense-that-more-is-possible.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Each part of that diagnosis has a weaker spot than the essay admits.
+- After: Each part of that diagnosis is weaker than the essay admits.
+
+- Before: Its account of the research is thin at the point where it matters.
+- After: Its account of the research is incomplete at the point where it matters.
+
+
+## annotated/afterwords/epistemic-viciousness.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post's own additions rest on memory.
+- After: The post's own additions are based on memory.
+
+- Before: The recollection itself is borne out.
+- After: The recollection itself is confirmed.
+
+
+## annotated/afterwords/schools-proliferating-without-evidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Around that picture, several claims are stated
+- After: Beyond that picture, several claims are stated
+
+
+## annotated/afterwords/your-price-for-joining.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The point the post needs survives:
+- After: The point the post needs still holds:
+
+- Before: but they inherit its lack of evidence.
+- After: but they have no more evidence than it does.
+
+- Before: and would stand as advice without it.
+- After: and would hold as advice without it.
+
+
+## annotated/afterwords/church-vs-taskforce.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The definition of ``optimal'' does useful work.
+- After: The post's definition of ``optimal'' is useful.
+
+
+## annotated/afterwords/rationality-common-interest-of-many-causes.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: for its main rule is thinner.
+- After: for its main rule is weaker.
+
+- Before: rests on one secondhand comparison and the reasons that follow it.
+- After: is supported only by one secondhand comparison and the reasons that follow it.
+
+
+## annotated/afterwords/helpless-individuals.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: rests on the one case.
+- After: is based on the one case.
+
+
+## annotated/afterwords/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rule rests on two supports.
+- After: The rule depends on two premises.
+
+- Before: The second support is that
+- After: The second premise is that
+
+- Before: The paragraph that argues this rests on two estimates
+- After: The paragraph that argues this depends on two estimates
+
+- Before: and its arithmetic holds.
+- After: and its arithmetic is correct.
+
+- Before: resting on the author's own experience of willpower,
+- After: based on the author's own experience of willpower,
+
+
+## annotated/afterwords/bystander-apathy.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: a claim of collective failure that rests on small laboratory studies.
+- After: a claim of collective failure based on small laboratory studies.
+
+
+## annotated/afterwords/collective-apathy-and-the-internet.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Olson's account is a close relative.
+- After: Olson's account is closely related.
+
+
+## annotated/afterwords/incremental-progress-and-the-valley.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its general answer rests on the author's experience,
+- After: Its general answer is based on the author's experience,
+
+- Before: sits beside the author's own statement,
+- After: should be read beside the author's own statement,
+
+
+## annotated/afterwords/bayesians-vs-barbarians.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its argument in principle rests on a disputed theory
+- After: Its argument in principle depends on a disputed theory
+
+- Before: The line between the post's scheme and real drafts rests on one difference.
+- After: The post separates its scheme from real drafts by one difference.
+
+- Before: and rests on the author's decision theory,
+- After: and depends on the author's decision theory,
+
+
+## annotated/afterwords/beware-of-other-optimizing.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The opening anecdote already joins the two halves of the post,
+- After: The opening anecdote already connects the two halves of the post,
+
+
+## annotated/afterwords/practical-advice-backed-by-deep-theories.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the benefits in its lead example rest, by the author's own earlier account, on self-reports,
+- After: the evidence for the benefits in its lead example is, by the author's own earlier account, self-reports,
+
+
+## annotated/afterwords/the-sin-of-underconfidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The author's own cases hold up as reports.
+- After: The author's own cases are accurately reported.
+
+- Before: Two points rest on the author's own view.
+- After: Two points depend on the author's own view.
+
+
+## annotated/afterwords/go-forth-and-create-the-art.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The attribution holds.
+- After: The attribution is accurate.
+
+- Before: These points gather what earlier posts in the sequence argued,
+- After: These points collect what earlier posts in the sequence argued,
+
+
+## annotated/afterwords/humans-are-not-automatically-strategic.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rest rests on an assumption the post never examines.
+- After: The rest depends on an assumption the post never examines.
+
+- Before: its other cases are generic and sit in a footnote.
+- After: its other cases are generic and appear in a footnote.
+
+- Before: The explanation it does offer is thin.
+- After: The explanation it does offer is weak.
+
+- Before: and it does no work in the argument.
+- After: and the argument does not use it.
+
+- Before: But the post does establish a direction:
+- After: But the post does take a position:
+
+- Before: one true point about failure, a thin example,
+- After: one true point about failure, a weak example,
+
+
+## annotated/afterwords/toolbox-thinking-and-law-thinking.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Throughout, the reader is graded:
+- After: Throughout, the post ranks its readers:
+
+- Before: argues from a maze built to contain the ideal he doubted,
+- After: argues from a maze constructed so that the ideal he doubted exists,
+
+
+## annotated/afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and never shows that the feeling does any work.
+- After: and never shows that this shared feeling explains anything.
+
+- Before: The evidence is thin throughout,
+- After: The evidence is weak throughout,
+
+- Before: joined to a theory of civilization
+- After: connected to a theory of civilization
+
+
+## annotated/afterwords/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The disease node has been removed, and one of the criteria that fed it is now doing its work.
+- After: The disease label has been removed, and one of the six criteria that made it up now decides the question in its place.
+
+- Before: Treating condemnation as a dose fits the worry about ``personhood'' rather than meeting it (this is an inference).
+- After: Treating condemnation as a dose confirms the epigraph's worry about ``personhood'' rather than answering it (this is an inference).
+
+- Before: The details are loose throughout, in a post
+- After: Several details are wrong, in a post
+
+- Before: rests on a question of fact it never investigates.
+- After: depends on a question of fact it never investigates.
+
+
+## annotated/afterwords/on-caring.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rule rests on an assumption the essay never states:
+- After: The rule depends on an assumption the essay never states:
+
+- Before: The one worked example does not reach action.
+- After: The one worked example does not end in any action.
+
+- Before: The essay also enlists an example against itself.
+- After: The essay also uses an example that works against it.
+
+
+## annotated/afterwords/strong-evidence-is-common.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the turn rests on a slide.
+- After: and the reversal depends on a change in the meaning of ``extraordinary.''
+
+- Before: stretched without argument to the reader's own excellence,
+- After: extended without argument to the reader's own excellence,
+
+
+## annotated/afterwords/pr-is-corrosive.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rest of the post rests on a distinction made by definition.
+- After: The rest of the post depends on a distinction made by definition.
+
+- Before: Its own example of honor cuts against the verdict
+- After: Its own example of honor contradicts the verdict
+
+- Before: but it leaves the claim where it started.
+- After: but it leaves the claim unsupported.
+
+- Before: a real point about outside experts, inside a distinction made by definition,
+- After: a real point about outside experts, within a distinction made by definition,
+
+
+## annotated/afterwords/a-priori.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: concerns what the belief's justification rests on.
+- After: concerns what the belief's justification depends on.
+
+
+## annotated/afterwords/absolute-authority.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: ``doesn't even behave monotonically'' rests on sentences
+- After: ``doesn't even behave monotonically'' is supported only by sentences
+
+
+## annotated/afterwords/amazing-breakthrough-day-april-1st.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: are often controversial, rest on one experiment,
+- After: are often controversial, are based on one experiment,
+
+
+## annotated/afterwords/an-intuitive-explanation-of-bayes-s-theorem.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: In short: a borrowed counting method,
+- After: In short: a counting method taken from Gigerenzer and Hoffrage,
+
+
+## annotated/afterwords/are-your-enemies-innately-evil.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: when we are offended rests on the author's observation alone.
+- After: when we are offended is supported only by the author's observation.
+
+
+## annotated/afterwords/argument-screens-off-authority.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Their judgment of a step may rest on ``intuitions
+- After: Their judgment of a step may depend on ``intuitions
+
+
+## annotated/afterwords/beginnings-an-introduction.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: so the parts about psychology and about logic classes rest on sources I could not verify.
+- After: so I could not verify the parts about psychology and about logic classes.
+
+
+## annotated/afterwords/belief-as-attire.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its claim about passion, finally, rests on an ``impression''
+- After: Its claim about passion, finally, is based on an ``impression''
+
+
+## annotated/afterwords/belief-in-intelligence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The prediction rests on knowing Kasparov's goal
+- After: The prediction depends on knowing Kasparov's goal
+
+
+## annotated/afterwords/conservation-of-expected-evidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: a name borrowed from physics,
+- After: a name taken from physics,
+
+
+## annotated/afterwords/do-we-believe-everything-we-re-told.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the first study bears out Spinoza's prediction,
+- After: the first study confirms Spinoza's prediction,
+
+
+## annotated/afterwords/doublethink-choosing-to-be-biased.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the kind of knowledge every decision rests on,
+- After: the kind of knowledge every decision uses,
+
+
+## annotated/afterwords/ethical-injunctions.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Injunctions rest on two grounds,
+- After: Injunctions have two grounds,
+
+
+## annotated/afterwords/expecting-short-inferential-distances.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the theory rests on a premise
+- After: and the theory depends on a premise
+
+
+## annotated/afterwords/failing-to-learn-from-history.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: greet each new puzzle rests on the author's own case alone.
+- After: greet each new puzzle is based only on the author's own case.
+
+
+## annotated/afterwords/fake-causality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: is borne out by Pearl's 1982 paper,
+- After: is supported by Pearl's 1982 paper,
+
+
+## annotated/afterwords/guessing-the-teacher-s-password.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: That rests on a view of meaning
+- After: That depends on a view of meaning
+
+- Before: Finally, the generalization rests on one case.
+- After: Finally, the generalization is based on one case.
+
+
+## annotated/afterwords/joy-in-discovery.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: which does not rest on these studies.
+- After: which does not depend on these studies.
+
+
+## annotated/afterwords/lonely-dissent.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: beats fear of death rests on comparing skydiving
+- After: beats fear of death is based on comparing skydiving
+
+
+## annotated/afterwords/lotteries-a-waste-of-hope.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: a case against buying them that rests on an uncomputed calculation
+- After: a case against buying them that depends on an uncomputed calculation
+
+
+## annotated/afterwords/mysterious-answers-to-mysterious-questions.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: ``pride in their ignorance'' rests on Kelvin alone,
+- After: ``pride in their ignorance'' is based on Kelvin alone,
+
+
+## annotated/afterwords/professing-and-cheering.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Each rests on the impression.
+- After: Each is based on the impression.
+
+
+## annotated/afterwords/raised-in-technophilia.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: allergy to talk of risk rests on a single estimate
+- After: allergy to talk of risk depends on a single estimate
+
+
+## annotated/afterwords/say-not-complexity.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The diagnosis rests on unnamed crowds.
+- After: The diagnosis is based on unnamed crowds.
+
+- Before: The general mechanism rests on a term,
+- After: The general mechanism depends on a term,
+
+
+## annotated/afterwords/the-futility-of-emergence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: in their ignorance rests on nothing shown.
+- After: in their ignorance is supported by nothing shown.
+
+
+## annotated/afterwords/the-third-alternative.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The generalizations rest on one example.
+- After: The generalizations are based on one example.
+
+
+## annotated/afterwords/why-our-kind-can-t-cooperate.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the author's community rests on one fundraiser
+- After: the author's community is based on one fundraiser
+
+
+## annotated/afterwords/your-strength-as-a-rationalist.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Finally, the support is thinner than it looks. The resolution of the story rests on the word
+- After: Finally, the support is weaker than it looks. The resolution of the story depends on the word
+
+
+## annotated/afterwords/taboo-your-words.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The first rests on ``I would guess.''
+- After: The first is based on ``I would guess.''
+
+
+## annotated/afterwords/feeling-rational.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: an emotion is not rational if it rests on mistaken beliefs,
+- After: an emotion is not rational if it is based on mistaken beliefs,
+
+
+## annotated/afterwords/is-reality-ugly.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and probably rest on deeper mathematics.
+- After: and are probably based on deeper mathematics.
+
+
+## annotated/afterwords/is-that-your-true-rejection.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: but it pointed at a real question:
+- After: but it raised a real question:
+
+
+## annotated/afterwords/just-lose-hope-already.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post's facts hold up.
+- After: The post's facts are accurate.
+
+
+## annotated/afterwords/local-validity-as-a-key-to-sanity-and-civilization.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: argues that human law rests on rules that feel simple,
+- After: argues that human law is based on rules that feel simple,
+
+
+## annotated/afterwords/no-universally-compelling-arguments.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: objectivity cannot rest on universal compulsion.
+- After: objectivity cannot depend on universal compulsion.
+
+
+## annotated/afterwords/probability-is-in-the-mind.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the complaint about mixing was borne out by the results.
+- After: the complaint about mixing was confirmed by the results.
+
+
+## annotated/afterwords/quantum-non-realism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Bohm's theory survives it as a nonlocal theory.
+- After: Bohm's theory is consistent with it as a nonlocal theory.
+
+
+## annotated/afterwords/reversed-stupidity-is-not-intelligence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: whenever a claim rests on the speaker's word.
+- After: whenever a claim depends on the speaker's word.
+
+
+## annotated/afterwords/science-as-attire.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: A theory stretched to cover her would forbid nothing.
+- After: A theory extended to cover her would forbid nothing.
+
+
+## annotated/afterwords/the-crackpot-offer.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and the mathematics holds up.
+- After: and the mathematics is correct.
+
+
+## annotated/afterwords/the-gift-we-give-to-tomorrow.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and delivers its vision of the future as a bedtime story.
+- After: and presents its vision of the future as a bedtime story.
+
+
+## annotated/afterwords/the-intuitions-behind-utilitarianism.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: dust specks rests on utilitarian intuitions
+- After: dust specks depends on utilitarian intuitions
+
+
+## annotated/afterwords/the-power-of-intelligence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The details check out,
+- After: The details are correct,
+
+
+## annotated/afterwords/the-scales-of-justice-the-notebook-of-rationality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The appeal to Jaynes also checks out.
+- After: The appeal to Jaynes is also correct.
+
+
+## annotated/afterwords/think-like-reality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Once a fact checks out, the problem is the model.
+- After: Once a fact has been checked, the problem is the model.
+
+
+## annotated/afterwords/uncritical-supercriticality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The description holds up in substance.
+- After: The description is accurate in substance.
+
+
+## annotated/afterwords/value-is-fragile.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post says what it is. It delivers a conclusion
+- After: The post says what it is. It states a conclusion
+
+- Before: a summary that delivers its conclusion
+- After: a summary that states its conclusion
+
+
+## annotated/afterwords/what-s-a-bias.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the project does not rest on it,
+- After: the project does not depend on it,
+
+
+## annotated/afterwords/what-would-you-do-without-morality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: does not rest on their theory
+- After: does not depend on their theory
+
+
+## annotated/afterwords/zut-allais.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The second rests on a recalled experiment.
+- After: The second is based on a recalled experiment.
+
+
+## annotated/afterwords/faster-than-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The essay delivers an account
+- After: The essay gives an account
+
+
+## annotated/afterwords/making-history-available.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: What it does with the contrast is thinner.
+- After: What it does with the contrast is weaker.
+
+
+## annotated/afterwords/preface.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case for reading it anyway is thin.
+- After: The case for reading it anyway is weak.
+
+
+## annotated/afterwords/pretending-to-be-wise.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The examples are thinner than they look.
+- After: The examples are weaker than they look.
+
+
+## annotated/afterwords/the-lens-that-sees-its-flaws.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The one worked example is thin.
+- After: The one worked example is weak.
+
+
+## annotated/afterwords/the-martial-art-of-rationality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: is thin as well:
+- After: is also weak:
+
+
+## annotated/afterwords/what-do-we-mean-by-rationality-1.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The practical content is thin.
+- After: There is little practical content.
+
+
+## annotated/afterwords/why-truth.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case against the moral motive is thinner.
+- After: The case against the moral motive is weaker.
+
+
+## annotated/afterwords/how-much-evidence-does-it-take.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: that thin evidence cannot give
+- After: that weak evidence cannot give
+
+
+## annotated/afterwords/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: when evidence is thin.
+- After: when evidence is weak.
+
+
+## annotated/afterwords/my-wild-and-reckless-youth.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: the physical idea the author borrowed
+- After: the physical idea the author adopted
+
