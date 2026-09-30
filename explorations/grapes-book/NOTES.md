@@ -100,3 +100,33 @@ Findings while setting it up:
   itself a test release. Not used.
 - In nomargin mode, an `\aside` right next to a `\note` gives two marks side
   by side (for example 2 and 3 run together). Tolerable for now.
+
+## Marks, cross-references and links (2026-09-30)
+
+- A page with notes but no subnotes shows one rule, not two. Checked by
+  rendering a test page.
+- Asides are marked with symbols, restarting each page (`perpage` on the
+  counter `footnoteS`). Nine symbols exist (six, then three doubled). More
+  on one page writes a warning, and the build fails on it at the final
+  pass. It cannot be an error: on early passes `perpage` has not yet reset
+  the counter, so early passes can see large values that are wrong.
+- A `\note` inside an `\aside`: the mark is set in the aside, and the note's
+  text is released as a footnote in the main text just after the aside.
+  Needed in the margin (a footnote inside a margin box is lost) and at the
+  foot too: when bigfoot nests a note inside an aside footnote, it prints
+  the nested note after later notes (seen as 3, 4, 6, 5). Now covered by the
+  `note-order` test.
+- bigfoot allows a note of one series to contain notes of later-declared
+  series only. So the aside series is declared first, and in the nomargin
+  version the aside block sits above the notes at the foot.
+- hyperref loads with bigfoot but its own footnote links do not appear (0
+  links in a test PDF). `grapes.sty` makes its own: `\@makefnmark` is
+  redefined to put a target and a link on each mark, with a running id per
+  note, and `\@makefntext` flags which mark is the one in the note.
+- `tests/check_links.py` (pypdf) verifies that the link on each mark sits
+  exactly at its partner mark (same page, within 12 pt vertically). To check
+  that the checker can fail, I broke the links in a scratch copy on purpose:
+  it reported 15 problems.
+- Optional keys use xparse `O{}` (empty default). My first version used
+  `o` and tested for an empty key the wrong way, so every unkeyed note got
+  the same label. The final-pass check caught it ("multiply defined").

@@ -1,22 +1,34 @@
 % grapes.sty -- layout for the book "Grapes". All layout decisions live here.
 % Engine: LuaLaTeX. Class: book.
 %
-% The author uses three commands, and nothing else, for notes:
-%   \note{...}     footnote, numbered, at the foot of the page.
-%   \subnote{...}  note on a note. Allowed only inside \note. Lettered
-%                  (letters restart each page), set in its own block below
-%                  the \note block, under its own rule.
-%   \aside{...}    margin note, unmarked, beside the line where it is called.
+% ---- What the author uses ---------------------------------------------------
+%   \note[key]{...}     footnote at the foot of the page. Marks 1, 2, 3,
+%                       restarting each chapter.
+%   \subnote[key]{...}  note on a note; only inside \note. Own block below the
+%                       notes, under its own rule. Marks a, b, c, restarting
+%                       each page.
+%   \aside[key]{...}    margin note. Marks *, †, ‡, §, ¶, ‖ (then doubled),
+%                       restarting each page. May contain \note's, whose text
+%                       goes to the foot of the page as usual.
+%   \anchor{key}        a mark (❧) in the text that a note can point back to.
+%   \xref{key}          prints the mark of the note or anchor named key,
+%                       adding ", p. N" when it is on another page. It is a
+%                       link in the PDF.
+% [key] is optional; give one only to notes you want to refer to.
+% Every mark is a link in the PDF: from the text to its note, and back.
 %
-% Margin notes can be switched off without touching the text:
-%   \usepackage{grapes}             asides go in the margin (default)
-%   \usepackage[nomargin]{grapes}   asides become ordinary numbered \note's,
-%                                   and the page drops the wide margin.
+% ---- Margin notes can be switched off without touching the text -------------
+%   \usepackage{grapes}             asides in the margin (default)
+%   \usepackage[nomargin]{grapes}   asides go to the foot, in their own block
+%                                   above the notes, with the same symbols;
+%                                   the page drops the wide margin.
 %
-% Misuse fails loudly (a LaTeX error, not a silent drop):
-%   \subnote outside a \note, a \subnote inside a \subnote,
-%   a \note or \subnote inside an \aside, an \aside inside a note,
-%   an \aside taller than the page. A long \aside only warns.
+% ---- Misuse stops the build with an error naming the line -------------------
+%   \note inside a note (use \subnote); \subnote outside a \note, or inside a
+%   \subnote; \aside inside a note or inside an \aside; an \aside taller than
+%   the page. Warnings, which build.sh turns into failures on the final pass:
+%   more than nine asides on one page, undefined or duplicate keys.
+%   An \aside longer than a third of the page only warns.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{grapes}[2026/09/30 Layout for Grapes]
 
@@ -74,50 +86,152 @@
 \fancyfoot[C]{\small\thepage}
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}}
 
-% ---- notes: two levels at the foot (bigfoot) -------------------------------
-% [ruled] puts a rule above each footnote series, so the \subnote block is
-% visibly separate from the \note block. \note numbers restart each chapter
-% (book class default); \subnote letters restart each page.
+% ---- notes: bigfoot series ---------------------------------------------------
+% Three series, stacked at the foot in declaration order: asides (only with
+% [nomargin]), notes, subnotes: the order of the chain aside -> note ->
+% subnote. (bigfoot lets a note contain notes of LATER series only.) [ruled]
+% puts a rule above each series present on the page; a page with notes only
+% shows one rule.
 \RequirePackage[ruled]{bigfoot}
+\DeclareNewFootnote{S}          % asides; used as a series only in nomargin
 \DeclareNewFootnote{default}
 \DeclareNewFootnote{B}[alph]
 \RequirePackage{perpage}
 \MakePerPage{footnoteB}
+\MakePerPage{footnoteS}         % the aside counter, in both modes
 
-% Where we are, so misuse can be caught.
+% Aside marks. After nine on one page there are no more; the mark becomes
+% "?" and a warning is written (build.sh fails on it).
+\newcommand\grapes@symbol[1]{%
+  \ifcase#1\or *\or †\or ‡\or §\or ¶\or ‖\or **\or ††\or ‡‡\else ?\fi}
+\renewcommand\thefootnoteS{\grapes@symbol{\value{footnoteS}}}
+\newcommand\grapes@checksymbols{%
+  \ifnum\value{footnoteS}>9
+    \PackageWarning{grapes}{More than nine asides on one page}%
+  \fi}
+
+% ---- links between marks and notes -----------------------------------------------
+% Each note gets a running id. Its mark in the text is target grapes-t<id>
+% and links to grapes-b<id>; its mark in the note is target grapes-b<id> and
+% links back. bigfoot typesets both marks through \@makefnmark, and the one
+% in the note through \@makefntext, which sets \ifgrapes@bodymark.
+\newcount\grapes@idcount
+\newcommand\grapes@linkid{0}
+\newcommand\grapes@newid{%
+  \global\advance\grapes@idcount 1
+  \xdef\grapes@linkid{\the\grapes@idcount}}
+\newif\ifgrapes@bodymark
+\newcommand\grapes@linkedmark[1]{%
+  \ifgrapes@bodymark
+    \hypertarget{grapes-b\grapes@linkid}{}\hyperlink{grapes-t\grapes@linkid}{#1}%
+  \else
+    \hypertarget{grapes-t\grapes@linkid}{}\hyperlink{grapes-b\grapes@linkid}{#1}%
+  \fi}
+\renewcommand\@makefnmark{%
+  \hbox{\@textsuperscript{\normalfont\grapes@linkedmark{\@thefnmark}}}}
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+  \hb@xt@1.8em{\hss{\grapes@bodymarktrue\@makefnmark}}#1}
+
+% ---- keys and cross-references -------------------------------------------------
+% A keyed note puts target grapes:<key> and \label{grapes:<key>} at the start
+% of its text; the label's value is the note's mark.
+\newcommand\grapes@keytarget[2]{% #1 key (may be empty), #2 mark
+  \if\relax\detokenize{#1}\relax\else
+    \hypertarget{grapes:#1}{}%
+    \protected@edef\@currentlabel{#2}%
+    \label{grapes:#1}%
+  \fi}
+\RequirePackage{refcount}
+\newcount\grapes@xrefcount
+\newcommand\xref[1]{%
+  \global\advance\grapes@xrefcount 1
+  \edef\grapes@here{grapes@xref\the\grapes@xrefcount}%
+  \label{\grapes@here}%
+  \hyperlink{grapes:#1}{\ref*{grapes:#1}}%
+  \edef\grapes@pagehere{\getpagerefnumber{\grapes@here}}%
+  \edef\grapes@pagethere{\getpagerefnumber{grapes:#1}}%
+  \ifx\grapes@pagehere\grapes@pagethere\else, p.~\pageref*{grapes:#1}\fi}
+\newcommand\anchormark{❧}
+\newcommand\anchor[1]{%
+  \textsuperscript{\anchormark}\grapes@keytarget{#1}{\anchormark}}
+
+% ---- where we are, so misuse can be caught ----------------------------------------
 \newif\ifgrapes@innote
 \newif\ifgrapes@insubnote
 \newif\ifgrapes@inaside
+% Body wrappers: each sets the flags for text inside it.
+\newcommand\grapes@notebody[2]{% #1 key, #2 text
+  \grapes@innotetrue\grapes@insubnotefalse\grapes@inasidefalse
+  \grapes@keytarget{#1}{\@thefnmark}#2}
+\newcommand\grapes@subnotebody[2]{%
+  \grapes@innotetrue\grapes@insubnotetrue\grapes@inasidefalse
+  \grapes@keytarget{#1}{\@thefnmark}#2}
+\newcommand\grapes@asideflags{%
+  \grapes@inasidetrue\grapes@innotefalse\grapes@insubnotefalse}
 
-\newcommand\grapes@noaside[1]{%
+% ---- \note and \subnote ---------------------------------------------------------------
+\NewDocumentCommand\note{O{} +m}{%
+  \ifgrapes@innote
+    \PackageError{grapes}{\string\note\space inside a note}{%
+      For a note on a note, use \string\subnote.}%
+  \fi
+  \grapes@newid
   \ifgrapes@inaside
-    \PackageError{grapes}{#1 inside an \string\aside}{%
-      A margin note cannot carry footnotes. Move the note out of the
-      \string\aside, or turn the \string\aside\space into a \string\note.}%
+    \grapes@deferrednote{#1}{#2}% a note inside an aside
+  \else
+    \footnote{\grapes@notebody{#1}{#2}}%
   \fi}
 
-\newcommand\note[1]{%
-  \grapes@noaside{\string\note}%
-  \footnote{\grapes@innotetrue#1}}
-
-\newcommand\subnote[1]{%
-  \grapes@noaside{\string\subnote}%
+\NewDocumentCommand\subnote{O{} +m}{%
   \ifgrapes@insubnote
     \PackageError{grapes}{\string\subnote\space inside a \string\subnote}{%
       Only two levels of notes are set up.}%
   \fi
   \ifgrapes@innote\else
-    \PackageError{grapes}{\string\subnote\space outside a \string\note}{%
-      A \string\subnote\space is a note on a note. Put it inside a
-      \string\note, or use \string\note.}%
+    \ifgrapes@inaside
+      \PackageError{grapes}{\string\subnote\space directly inside an
+        \string\aside}{An aside can carry a \string\note, and that
+        \string\note\space can carry a \string\subnote.}%
+    \else
+      \PackageError{grapes}{\string\subnote\space outside a \string\note}{%
+        A \string\subnote\space is a note on a note. Put it inside a
+        \string\note, or use \string\note.}%
+    \fi
   \fi
-  \footnoteB{\grapes@insubnotetrue#1}}
+  \grapes@newid
+  \footnoteB{\grapes@subnotebody{#1}{#2}}}
 
-% ---- margin notes ------------------------------------------------------------
+% ---- \aside -------------------------------------------------------------------------
 \newcommand\asidefont{\footnotesize\raggedright\linespread{1.0}\selectfont}
 % An aside taller than this draws a warning: long margin notes push later
 % ones down, away from their lines.
 \newcommand\asidewarnheight{0.33\textheight}
+\newcommand\grapes@asidechecks{%
+  \ifgrapes@innote
+    \PackageError{grapes}{\string\aside\space inside a note}{%
+      LaTeX cannot put a margin note inside a footnote. Refer to an aside
+      from a note with \string\xref\space instead.}%
+  \fi
+  \ifgrapes@inaside
+    \PackageError{grapes}{\string\aside\space inside an \string\aside}{}%
+  \fi}
+
+% A \note inside an aside, in both modes: the mark goes in the aside now;
+% the text is saved and released as an ordinary footnote in the main text,
+% right after the aside. So it lands at the foot of the same page, in text
+% order. (In the margin, a footnote inside the margin box would be lost. At
+% the foot, bigfoot would nest it, and print it after later notes.)
+\newcommand\grapes@pendingnotes{}
+\newcommand\grapes@deferrednote[2]{%
+  \footnotemark
+  \edef\grapes@tmp{%
+    \noexpand\gdef\noexpand\grapes@linkid{\grapes@linkid}%
+    \noexpand\footnotetext[\the\value{footnote}]}%
+  \expandafter\g@addto@macro\expandafter\grapes@pendingnotes\expandafter
+    {\grapes@tmp{\grapes@notebody{#1}{#2}}}}
+\newcommand\grapes@releasenotes{%
+  \grapes@pendingnotes\gdef\grapes@pendingnotes{}}
 
 \ifgrapes@margin
   % marginfix stops margin notes from overlapping. It cannot place a note
@@ -126,13 +240,17 @@
   % the line number.
   \RequirePackage{marginfix}
   \newsavebox\grapes@asidebox
-  \newcommand\aside[1]{%
-    \ifgrapes@innote
-      \PackageError{grapes}{\string\aside\space inside a note}{%
-        LaTeX cannot put a margin note inside a footnote.}%
-    \fi
+  \NewDocumentCommand\aside{O{} +m}{%
+    \grapes@asidechecks
+    \stepcounter{footnoteS}\grapes@checksymbols
+    \grapes@newid
+    \edef\grapes@asidemark{\thefootnoteS}%
+    \textsuperscript{\grapes@linkedmark{\grapes@asidemark}}%
     \sbox\grapes@asidebox{\parbox[t]{\marginparwidth}{%
-      \asidefont\grapes@inasidetrue#1}}%
+      \asidefont\grapes@asideflags
+      \grapes@keytarget{#1}{\grapes@asidemark}%
+      {\grapes@bodymarktrue
+       \textsuperscript{\grapes@linkedmark{\grapes@asidemark}}}\,#2}}%
     \ifdim\dimexpr\ht\grapes@asidebox+\dp\grapes@asidebox\relax>\textheight
       \PackageError{grapes}{\string\aside\space taller than the page}{%
         It would be dropped from the output. Shorten it or make it a
@@ -141,16 +259,23 @@
       \PackageWarning{grapes}{Long \string\aside\space (over a third of the
         page). It may push later margin notes away from their lines}%
     \fi\fi
-    \marginpar{\usebox\grapes@asidebox}}
+    \marginpar{\usebox\grapes@asidebox}%
+    \grapes@releasenotes}
 \else
-  % No margin: an aside is an ordinary numbered note. The same misuse
-  % checks apply, so a text that builds one way builds the other way too.
-  \newcommand\aside[1]{%
-    \ifgrapes@innote
-      \PackageError{grapes}{\string\aside\space inside a note}{%
-        Not allowed, so that the text also builds with margin notes on.}%
-    \fi
-    \footnote{\grapes@inasidetrue#1}}
+  % No margin: an aside is a footnote in series S, above the notes, with
+  % the same symbol marks.
+  \NewDocumentCommand\aside{O{} +m}{%
+    \grapes@asidechecks
+    \grapes@newid
+    \footnoteS{\grapes@asideflags\grapes@keytarget{#1}{\@thefnmark}#2}%
+    \grapes@checksymbols
+    \grapes@releasenotes}
 \fi
+
+% ---- PDF links -----------------------------------------------------------------
+% Loaded last, as hyperref requires. Links are invisible in print
+% (hidelinks). hyperref's own footnote links do not work with bigfoot, so
+% they are off; the links above replace them.
+\RequirePackage[hidelinks,hyperfootnotes=false]{hyperref}
 
 \endinput

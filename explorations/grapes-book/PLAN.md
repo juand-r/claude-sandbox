@@ -13,8 +13,12 @@
       margin notes that can be switched off in one line.
 - [x] Set up `book/` with `grapes.sty` (\note, \subnote, \aside), a build
       script for both modes, and tests.
+- [x] Marked asides (symbols, per page), notes inside asides, keys and
+      cross-references in every direction (\anchor, \xref), PDF links
+      from every mark to its note and back. Tests for all of it.
 - [ ] Later, tinker: trim size, typeface, chapter opening, margin notes on
-      verso pages (currently ragged-right on both sides).
+      verso pages (currently ragged-right on both sides), the look of the
+      * mark and of the ❧ anchor.
 
 ## Phase 2: structure (next, with the author)
 
