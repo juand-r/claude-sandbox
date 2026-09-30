@@ -466,3 +466,9 @@ so the active region really grows ~linearly with t and run time
 ~quadratically. Keeping it exact means simulating them; HashLife would
 compress that regular region but is too slow with census sampling.
 Run 3 (killed for the fix): 94 reads correct before the restart.
+
+DONE: De Mol x=3 at Cook's v = 12,216, 556/556 reads correct, Collatz
+3 -> 5 -> 8 -> 4 -> 2 -> 1 (1 at read 552, generation ~2.07e8), 13,919 s
+of compute across one checkpoint resume. Reads 0-204 agree with the
+earlier run 1 in time and cluster count. Moved the driver into
+experiments.py (collatz subcommand, checkpointed).

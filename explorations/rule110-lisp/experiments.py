@@ -4,6 +4,7 @@
     python experiments.py demol [T]           # De Mol 3x+1, x=3
     python experiments.py reads [N]           # outcomes of the first N reads
     python experiments.py cost                # REPORT.md section 4 table
+    python experiments.py collatz [V] [N]     # De Mol 3x+1 on gliders (3.6)
 
 reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
 observe each read's outcome directly (see read_outcomes) and compare the
@@ -210,6 +211,19 @@ def reads(n_reads):
     check(READS_TAPE, READS_APPS, 3 * _left_v(READS_APPS), n_reads)
 
 
+def collatz(v, n_reads, per_read):
+    """De Mol's 3x+1 tag system from x = 3, filled (no L blocks), on
+    gliders: the first n_reads CTS reads against the reference. Collatz
+    5, 8, 4, 2, 1 are reached at reads 72, 204, 372, 492, 552. Checkpoints
+    to collatz_v{v}_n{n_reads}.ckpt, so an interrupted run resumes."""
+    apps = fill_empty_appendants(DEMOL_APPS)
+    got = read_outcomes(DEMOL_TAPE, apps, v, n_reads, n_reads * per_read + 30_000,
+                        checkpoint=f"collatz_v{v}_n{n_reads}.ckpt")
+    ref = "".join(t[0] for _, t, _ in cts_run(DEMOL_TAPE, apps, n_reads) if t)[:n_reads]
+    same = sum(g == r for g, r in zip(got, ref))
+    print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads})")
+
+
 def tower_cost(direct):
     """Sizes and step counts of the capstone machine (tests/machines.py
     three_state_tm on CAPSTONE_CFG) at every level of the tower, and the
@@ -256,7 +270,11 @@ CAPSTONE_CFG = (1, [1], 1, [1, 1, 2])     # as in tests/test_tower.py
 
 
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["cost"]:
+    if sys.argv[1:2] == ["collatz"]:
+        # Cook's v = 12,216 and 556 reads reproduce REPORT.md 3.6 (~4 h)
+        collatz(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
+                int(sys.argv[3]) if len(sys.argv) > 3 else 556, 430_000)
+    elif sys.argv[1:2] == ["cost"]:
         tower_cost(direct=False)
         tower_cost(direct=True)
     elif sys.argv[1:2] == ["reads"]:

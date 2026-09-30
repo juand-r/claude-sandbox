@@ -39,11 +39,12 @@ The main claims, in decreasing order of the strength of their evidence:
    characters appended during the run. Each ossifier converts one
    moving-data character into one tape character (four C gliders), so a
    read costs about 30v generations.
-5. **The first Collatz step runs on gliders.** De Mol's 3x+1 tag
-   system from x = 3, compiled and assembled with Cook's blocks, reads
-   every CTS character correctly through the step 3 -> 5 (86 of 86
-   reads at Cook's ossifier spacing, section 3.6). Below half of Cook's
-   spacing it fails at read 83. The full trajectory to 1 is running.
+5. **Rule 110 gliders compute a whole Collatz trajectory.** De Mol's
+   3x+1 tag system from x = 3, compiled and assembled with Cook's
+   blocks, runs 3 -> 5 -> 8 -> 4 -> 2 -> 1 on the glider field: all 556
+   CTS reads observed and equal to the reference, 2.07e8 generations, at
+   Cook's ossifier spacing (section 3.6). Below half of that spacing it
+   fails.
 6. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
@@ -402,43 +403,56 @@ about 55 per symbol" is an upper bound from the 18-symbol case. The cost
 figures in section 4 therefore still use Cook's v, with the reduced-v
 estimate marked as such.
 
-### 3.6 The first Collatz step on gliders
+### 3.6 A Collatz trajectory computed by gliders
 
 *Setup.* De Mol's 3x+1 tag system {A -> CY, C -> A, Y -> AAA} from tape
 AAA (x = 3), compiled to a CTS by the unary encoding, empty appendants
 filled as in 3.4 (12 appendants of 6 to 18 symbols), assembled with
 Cook's blocks at uniform spacing v, run on the streaming engine
 (`casim.StreamRun`), and checked read by read with the decoder-free
-check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
-72, AAAAAAAA (8) at read 204, and A (1) at read 552.
+check of 3.3. In the reference CTS the tag tape is AAAAA (Collatz 5) at
+read 72, eight A's at read 204, four at 372, two at 492, and one at 552.
 
-*Observation.*
+*Result.* At Cook's own spacing, v = 12,216, all 556 reads that were run
+are observed and equal the reference, 556 of 556. The glider field
+passes Collatz 5 at generation ~2.7e7, 8 at ~7.7e7, 4 at ~1.4e8, 2 at
+~1.8e8 and 1 at ~2.07e8. The run took 3.9 hours (`python experiments.py
+collatz`). An earlier run of the same configuration, cut short by a
+container restart after 205 reads, agrees with it read for read,
+including every read time and cluster count.
 
-| v | reads correct | first failure | generations reached |
-|---|---|---|---|
-| 1,600 | 0-28 (29) | read 29-30, during 16 consecutive N reads | 2.1e6 |
-| 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads | 9.3e6 |
-| 6,400 | 0-82 (83) | read 83 again, same signature (114 clusters) | 1.7e7 |
-| 12,216 (Cook) | 0-85 (86 of 86) | none within 86 reads | 3.2e7 |
-| 12,216 (Cook), run 1 | 0-204 (205 of 205), through Collatz 8 | none; the container restarted | 7.7e7 |
-| 12,216 (Cook), to Collatz 1 | running again (552 reads) | | |
+*Interpretation.* The whole trajectory 3 -> 5 -> 8 -> 4 -> 2 -> 1 was
+computed by Rule 110 gliders from an initial condition built with
+Cook's blocks. (I have not searched the literature for earlier runs of
+this kind, so I make no claim of priority.)
 
-(Cook's formula gives v = 12,216.)
+*Spacing below Cook's value.*
 
-*Interpretation.* At v = 3,200 the glider field carried out the whole
-first Collatz step, 3 -> 5: every one of the 83 reads up to and past
-read 72 was observed and matched the reference, including accepts of
-all three appendant lengths and of the junk words, and runs of up to 16
-rejections. Both failures are spacing failures. The one at read 29 is cured by
-going from 1,600 to 3,200. The one at read 83 survives at 3,200 and
-6,400 with the same signature, which briefly misled me into calling it
-spacing-independent, but at Cook's own v = 12,216 all 86 reads are
-correct. So at that point of this program the spacing must exceed half
-of Cook's value: his formula is not grossly conservative here, whatever
-the small programs of section 3.5 suggested.
+| v | reads correct | first failure |
+|---|---|---|
+| 1,600 | 0-28 (29) | reads 29-30, during 16 consecutive N reads |
+| 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads |
+| 6,400 | 0-82 (83) | read 83 again, same signature (114 clusters) |
+| 12,216 (Cook) | 0-555 (556 of 556) | none |
 
-*Scope.* One program, one input. The claim is the 83 correct reads, not
-a working Collatz computer.
+The failure at 1,600 is cured by 3,200; the one at read 83 survives at
+3,200 and 6,400 with the same signature (which briefly misled me into
+calling it spacing-independent) and is gone at Cook's value. So for this
+program the spacing must exceed half of Cook's: his formula is not
+grossly conservative here, whatever the small programs of 3.5 suggest.
+
+*Scope and caveats.* One program and one input. The check observes the
+outcome of every read (the regions the acceptor and rejector leave
+behind); it does not decode the tape itself, so a fault that preserved
+every read outcome would not be seen. The empty appendants were
+rewritten as in 3.4, so Cook's short-leader block is not exercised.
+
+*Cost of simulating it.* Cook's machine leaves a permanent stream of
+left-moving Ebars that later ossifiers must cross (the census finds 100
+Ebar clusters in the leftmost 200k cells of the active region at
+t = 2.8e7), so the region that must be simulated exactly grows linearly
+with time (to about 1e6 cells here) and the run time quadratically. A
+compiled stepping kernel (4x) and checkpointing made the run practical.
 
 ## 4. The cost of the tower
 
@@ -522,6 +536,8 @@ All results are deterministic.
 - `python experiments.py lblock 0..4` reproduces the first table in 3.4;
   `python experiments.py lblock 3 12 fill` (and `1 12 fill`) the second.
 - `python experiments.py cost` reproduces the tables in section 4.
+- `python experiments.py collatz` reproduces section 3.6 (about 4 hours;
+  it checkpoints, so rerunning the same command resumes).
 - `pytest tests/` includes the direct binary construction on the SKI
   machine (section 1).
 - `python tools/extract_blocks.py DIR` regenerates the block data from

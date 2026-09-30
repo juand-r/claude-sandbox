@@ -34,10 +34,12 @@ Verified
   run cell for cell. With faster seam fitting and stepping, De Mol's
   first 10 reads take ~80 s instead of ~1 h.
 
-- De Mol's 3x+1 system, x = 3, on gliders: 83/83 reads correct through
-  the first Collatz step 3 -> 5; 86/86 at Cook's v = 12,216. Below half
-  of Cook's v it fails at read 83 (v = 3,200 and 6,400), and at v = 1,600
-  at read 29: both spacing failures.
+- De Mol's 3x+1 system, x = 3, on gliders: the whole trajectory
+  3 -> 5 -> 8 -> 4 -> 2 -> 1, all 556 reads correct at Cook's v = 12,216
+  (2.07e8 generations, 3.9 h; experiments.py collatz). Below half of
+  Cook's v it fails (read 83 at v = 3,200 and 6,400; read 29 at 1,600).
+- casim: reference split (no unbounded window growth from overlapping
+  free rows), numba step kernel (4x, bit-identical), checkpoint/resume.
 - hashlife.py: exact 1-D HashLife; ~2x StreamRun on growing-tape runs.
 
 Changes
