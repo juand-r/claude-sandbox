@@ -3343,3 +3343,455 @@ Why: Fidelity/substance pass: made a new quotation verbatim
 - Before: to think ``Now I shall transduce some features of my thoughts into phonemes,'' so
 - After: to think ``Now I shall partially transduce some features of my thoughts into a linear sequence of phonemes,'' so
 
+
+## honest/sections/empty-labels.tex
+
+Why: Fidelity/substance pass: added the definitions of the further labels and the point that expanding them exposes the tautology
+
+- Before: Then come ``bolo,'' ``mun'' and ``merlacdonian.''
+- After: Then come ``bolo'' (A, C and yokie), ``mun'' (A, C and xippo) and ``merlacdonian'' (bolo and mun).
+
+- Before: The label hid the premise and made the conclusion look new.
+- After: The label hid the premise and made the conclusion look new; replacing it with the definition exposes a tautology that tells you nothing about the world.
+
+
+## honest/sections/taboo-your-words.tex
+
+Why: Fidelity/substance pass: added the rest of the baseball answer and the more efficient alternative, the 'dereference their pointers' framing, the tabooed 'auditory experience', the label's-eye vs test's-eye view, why believers could not answer, and the cost of the method
+
+- Before: ``An artificial group conflict in which you use a long wooden cylinder to whack a thrown spheroid.''
+- After: ``An artificial group conflict in which you use a long wooden cylinder to whack a thrown spheroid, and then run between four safe positions.'' ``It's what the Yankees play'' might work better in the game,
+
+- Before: I have practiced blanking words out of my mind for years.
+- After: but I had practiced blanking words out of my mind for years, for another purpose.
+
+- Before: Replace ``sound'' with what each of them means, vibrations in the air or a heard experience, and the conflict disappears.
+- After: Let them ``dereference their pointers,'' replacing ``sound'' with the test each uses, vibrations in the air or a heard experience, and the conflict disappears.
+
+- Before: If ``vibrations'' comes into dispute, taboo that too, and then ``wave,'' and so on.
+- After: If ``vibrations'' comes into dispute, taboo that too, then ``wave,'' down to the wave equation; tabooing ``auditory experience'' gives something like the brain's processing of a time series of frequency mixes.
+
+- Before: Banning the word would show the difference.
+- After: Banning the word would show the difference. Agreement looks very different from the label's-eye view, where one says ``sound'' and the other ``not sound,'' and from the test's-eye view.
+
+- Before: and ``mostly they won't be able to answer at all.''
+- After: and ``mostly they won't be able to answer at all,'' since their belief is mostly profession, and you cannot zoom in on an audio recording.
+
+- Before: ``This is one of the nonstandard tools in my toolbox, and in my humble opinion, it works way way better than the standard one.''
+- After: ``This is one of the nonstandard tools in my toolbox, and in my humble opinion, it works way way better than the standard one.'' It also takes more effort; you get what you pay for.
+
+
+## honest/sections/replace-the-symbol-with-the-substance.tex
+
+Why: Fidelity/substance pass: added original seeing, the rest of the ball description, the word as cliche and cached thought, the list of related arts, the categorization route to leaky generalizations, what categories throw away, the map/pointer images, looking at your habits afresh, substance vs symbol with its examples, several of the eleven phrasings, and the words 'The Simple Truth' and Bayes's rule avoid
+
+- Before: To do that, you visualize.
+- After: To do that, you visualize; you look at the details as if for the first time, an original seeing.
+
+- Before: a ball is a ``leather-covered spheroid'';
+- After: a ball is a ``leather-covered spheroid'' with symmetrical stitching, hard but not metal-hard;
+
+- Before: The obstacle is the word itself, which ``rushes in and obliterates the details you're trying to see.''
+- After: The obstacle is the word itself, which ``rushes in and obliterates the details you're trying to see''; a word can carry the force of a cliche and the poison of a cached thought.
+
+- Before: on the same level as asking ``Why?'' I give no reason for the ranking.
+- After: on the same level as asking ``Why?'' I give no reason for the ranking. It is related to pragmatism (closer to anticipated experience), reductionism (dropping to the parts), hugging the query, avoiding cached thoughts, the writer's rule ``Show, don't tell!'', and keeping your purpose.
+
+- Before: My new step is this. Schools that must produce test scores teach to the test,
+- After: Leaky generalizations often work through categories: people who learn in classrooms are ``getting an education,'' so that must be good, but everyone who shows up at college matches the category too. My new step is this. Schools that must produce test scores teach to the test,
+
+- Before: To categorize is to throw away information.
+- After: To categorize is to throw away information: told that a tree made a ``sound,'' you have not heard it; told that a coin landed ``heads,'' you do not know which way it points. Categories should sift gold from dust, but often throw out gold too, and then the first remedy is Taboo.
+
+- Before: You also refuse unlisted synonyms and any new handle for the old idea.
+- After: You also refuse unlisted synonyms and any new handle for the old idea: zoom in on the map instead of renaming the cities, dereference the pointer instead of making a new one. Ask exactly what you do when you play Taboo and what each part is for; seen afresh, you will find yourself doing things you would never do if they were not habits. Purpose is lost when the substance (learning, knowledge, health) is displaced by the symbol (a degree, a test score, medical care).
+
+- Before: My instruction, in eleven phrasings, is to replace the symbol with the substance.
+- After: My instruction, in eleven phrasings, is to replace the symbol with the substance: the word with the meaning, the label with the concept, the summary with the details, the proxy question with the real one; drop to a lower level; simulate the process instead of naming it.
+
+- Before: to describe truth ``without invoking terms like'' ``believe'' or ``real.''
+- After: to describe truth ``without invoking terms like'' ``accurate,'' ``correct,'' ``represent,'' ``map,'' ``believe'' or ``real.''
+
+- Before: Bayes's rule describes evidence in pure math;
+- After: The point is whether the text did its job, not whether it would pass Hasbro's buzzer. Bayes's rule describes evidence in pure math, without ``implies,'' ``supports'' or ``proves'';
+
+
+## honest/sections/fallacies-of-compression.tex
+
+Why: Fidelity/substance pass: added why the brain keeps one bucket, the detective's facts about Carol, the new name as a new bucket, that discovering the second thing is itself the insight, the second press-release example, the split-then-reunify point, and that the remedy is not definition
+
+- Before: one folder, not two folders with one label.
+- After: one folder, not two folders with one label; by default the map is compressed, for why would the brain make two buckets where one would do?
+
+- Before: A detective may doubt that Carol really has black hair; it takes a subtler detective to ask whether there are two Carols.
+- After: A detective records that Carol wears red and has black hair, and may doubt a fact (perhaps she dyes her hair); it takes a subtler detective to ask whether the Carol who wore red is the Carol with black hair, whether there are two Carols.
+
+- Before: Making the split feels like splitting an atom, and it often comes with a new word, such as ``Carol-2.''
+- After: Making the split feels like splitting an atom, and it often comes with a new word, such as ``Carol-2''; naming seems to create the bucket. But it is not always a matter of new names: realizing that acoustic vibrations or auditory experiences exist at all is a scientific insight.
+
+- Before: Press releases announce that consciousness has been explained because someone studied a 40Hz rhythm.
+- After: Press releases announce that consciousness has been explained because someone studied a 40Hz rhythm or the system that keeps us awake; you can explain being awake without explaining reflectivity or subjectivity.
+
+- Before: argue about one sense of the word, then apply the conclusion to another.
+- After: argue about one sense of the word, then apply the conclusion to another. The senses may turn out to be one thing, but understanding that would need first a split and then a reunification.
+
+- Before: Avoiding the word, or coining new ones, often helps to pry them apart.
+- After: Dictionaries cannot solve a scientific problem, nor can ``I can define a word any way I like.'' The remedy is not to define the thing but to find how to talk about it without one handle; words are the labels on our map's points, and avoiding a word, or coining new ones, often helps to pry them apart.
+
+
+## honest/sections/categorizing-has-consequences.tex
+
+Why: Fidelity/substance pass: added the other types' stereotypes, why blood types are not even mysterious (no ancient lore; we rely wholly on doctors), the difficulty of designing the experiment, that a named thing need not exist or be coherent, and that categories push on the mind once thought of
+
+- Before: type B people ``wild and cheerful,'' and there are blood type horoscopes in the daily paper.
+- After: type B people ``wild and cheerful,'' type O agreeable and sociable, type AB cool and controlled (though you would think O is just the absence of A and B, and AB their sum), and there are blood type horoscopes in the daily paper, as astrology has in the West.
+
+- Before: This is odd, because blood types were never mysterious,
+- After: This is odd, because blood types were never mysterious: no sorcerer or ancient scroll ever mentioned them, and if doctors announced tomorrow that they were a hoax, we would have no evidence of our own against it. And
+
+- Before: but I predict that ``mere labeling had power over all things, at least in the human imagination.''
+- After: though the hard part would be a protocol that did not make subjects think the given label must matter; still, I predict that ``mere labeling had power over all things, at least in the human imagination.''
+
+- Before: And once you name a category, you can make things up about it.
+- After: And once you name a category, you can make things up about it, and believe them because no one can prove them wrong; the named thing need not be perceptible, need not exist, need not even be coherent.
+
+- Before: Perhaps a purer Bayesian AI could consider a class without being swayed by it; you cannot.
+- After: Perhaps a purer Bayesian AI could consider a class without being swayed by it; you cannot. In a human brain, categories push on the mind as soon as you think of them.
+
+
+## honest/sections/sneaking-in-connotations.tex
+
+Why: Fidelity/substance pass: added Erda's objections and Danny's appeal to the OED, the observed/inferred distinction with its examples, what dictionaries list, the other possible origins of connotations, the Hemlock point behind the key claim, and what arguing the real question would involve
+
+- Before: His sister Erda asks whether he has seen the man commit any. Danny has no need to: the dictionary says a wiggin is a person with green eyes and black hair, and the man has both.
+- After: His sister Erda asks whether he has seen the man commit any. Danny has no need to: the Oxford English Dictionary says a wiggin is a person with green eyes and black hair, the man has both, and ``You're not going to argue with the Oxford English Dictionary, are you?'' Erda says he has no evidence that the man overdoes the ketchup, or launched baby squirrels with a slingshot as a child.
+
+- Before: Words carry the mind from what it sees to what it infers.
+- After: Words carry the mind from what it sees to what it infers: from Socrates's clothes, speech and shape, through ``human,'' to his vulnerability to hemlock. The line is not sharp (hear someone speak and they are probably human-shaped), but some properties are more often inferred: we decide someone is human and so would burn, not the reverse.
+
+- Before: A dictionary lists the features by which you recognize a thing, not ``the ten thousand connotations'' you infer from it.
+- After: A dictionary lists the features by which you recognize a thing, such as intelligence or being a featherless biped, not ``the ten thousand connotations'' you infer from it, from hemlock to overconfidence.
+
+- Before: I offer two guesses why, each with ``perhaps''.
+- After: I offer two guesses why, each with ``perhaps'': dictionaries are for matching labels to clusters, or the distinguishing features come first to an editor's mind.
+
+- Before: Maybe someone made things up and wrote bestselling books about it.
+- After: Maybe there was a famous wiggin like that. Maybe someone made things up and wrote bestselling books about it (\textsc{Talking to Wiggins}, \textsc{Raising Your Little Wiggin}), and maybe the wiggins now believe it themselves. Name some people and the word starts gathering connotations.
+
+- Before: A definition that included the inferred property could not be applied until you had seen the property.
+- After: Recall the Parable of Hemlock: a definition that included the inferred property could not be applied until you had seen the property.
+
+- Before: Arguing the real question takes work, ``And people are lazy.''
+- After: Arguing the real question takes work: watching the man at the ketchup, or finding statistics on green-eyed black-haired people, not sitting in your living room with your eyes closed. ``And people are lazy''; they would rather argue by definition, especially since they think they can define a word any way they like.
+
+
+## honest/sections/arguing-by-definition.tex
+
+Why: Fidelity/substance pass: added the 'whaddaya mean' point, the Socrates-exception dictionary, what a correct cluster argument sounds like, the Frodo example and the Bayesian rule it breaks, why nine fingers do not matter (causal biology), how a legitimate argument is phrased, the gloss on 'by definition', the atheism chain, the company the phrase keeps, and the italics warning
+
+- Before: If the listener doubted that Socrates has two legs, you could not use the legs as a premise.
+- After: If the listener doubted that Socrates has two legs, the reply would be ``Whaddaya mean Socrates is bipedal? That's what we're arguing about''; so the legs are probably not what is at stake.
+
+- Before: and it rests on the world containing clusters of similar things, which no definition changes.
+- After: and it rests on the world containing clusters of similar things, which no definition changes; a dictionary defining humans as ``all featherless bipeds except Socrates'' would not make him less like us. Argued correctly, it goes: Socrates has two arms and feet, speaks Greek, uses tools and has every property of Homo sapiens I can see, so I guess he has human biochemistry and, like every human tested, dies of hemlock.
+
+- Before: To insist that humans are mortal ``by definition'' is to throw away what you know, like calling a coin 50\% heads after you have seen it land heads.
+- After: To insist that humans are mortal ``by definition'' is to throw away everything you know about Socrates except that he is human, like calling a coin 50\% heads after you have seen it land heads, or insisting that Frodo has ten fingers after seeing nine. Bayesian probability forbids refusing to condition on new evidence.
+
+- Before: if Socrates has nine fingers, that does not noticeably change my estimate about hemlock.
+- After: if Socrates has nine fingers, that does not noticeably change my estimate about hemlock, because losing a finger would not change the rest of his biochemistry, whatever the dictionary says about ten fingers. The legitimate inference rests on the clusters and on causal biology. Done right, it is said plainly: coniine in hemlock paralyzes the muscles and kills by asphyxiation; humans are vulnerable to hemlock.
+
+- Before: ``By definition'' comes out ``on exactly those occasions'' when the default inference has been called into doubt.
+- After: ``By definition'' comes out ``on exactly those occasions'' when the default inference has been called into doubt, meaning, in effect, forget what you heard about the herbologists.
+
+- Before: So too with ``X, by definition, is a Y!''
+- After: So too with ``X, by definition, is a Y!'', as in: atheists believe God does not exist, a negative belief is still a belief, so atheism answers theological questions, so atheism is by definition a religion.
+
+- Before: By eyeballing, ``by definition'' outside mathematics is among the most alarming signals of flawed argument I have found.
+- After: By eyeballing, ``by definition'' outside mathematics is among the most alarming signals of flawed argument I have found, up there with ``Hitler,'' ``God,'' ``absolutely certain'' and ``can't prove that.''
+
+- Before: You are probably better off deleting it from your vocabulary.
+- After: You are probably better off deleting it from your vocabulary, always when you are tempted to say it in italics or with an exclamation mark.
+
+
+## honest/sections/where-to-draw-the-boundary.tex
+
+Why: Fidelity/substance pass: added that the search for a definition treats a signal as an essence, that clustering is a single-player problem, Mesmer's date, the breathing-and-fire example, the fuller art list, what 'aesthetic' means in the rule and why emotions are not ethereal, the alternative rule and the list dispute in the post's own terms, and that a guessed rule or even the list may turn out wrong
+
+- Before: My answer: a word does not have a meaning floating in the void, which you can discover by finding the right definition.
+- After: My answer: a word does not have a meaning floating in the void, which you can discover by finding the right definition; asking how to define a word is searching for the essence of what is really a communication signal.
+
+- Before: The real challenge is to find which things cluster together, and sometimes which have a common cause.
+- After: The real challenge, which you could pursue alone without speaking, is to find which things cluster together, and sometimes which have a common cause.
+
+- Before: and you will have trouble asking how it works.
+- After: and you will have trouble asking how it works; you have lumped together what does not belong and left out what would complete the set. (Mesmer came before Faraday, so this is historically plausible.)
+
+- Before: Finding where to cut is the problem worthy of a rationalist, and it is not a job for dictionary editors.
+- After: Finding where to cut is the problem worthy of a rationalist. Realizing that breathing and fire need one word is a scientific achievement, and not a job for dictionary editors.
+
+- Before: and things you do not (a flower, a cross floating in urine, Modern Art),
+- After: and things you do not (a punch in the nose, a flower, a cross floating in urine, Modern Art),
+
+- Before: My rule: the included items inspire similar aesthetic emotions, and people made them with the intent of producing such emotions.
+- After: My rule has to do with admiration of craftsmanship, work going in and wonder coming out: the included items inspire similar aesthetic emotions, and people made them with the intent of producing such emotions.
+
+- Before: I would argue that the list of aesthetic emotions is far more compact than the list of artworks.
+- After: I would argue that the list of aesthetic emotions is far more compact than the list of artworks, and emotions are not ethereal; you might see them on an fMRI scan.
+
+- Before: You could dispute my rule, saying it roughly fits the points but ``is not the true generating distribution.''
+- After: You could dispute my rule, saying that what the items share is an intent to inspire any complex emotion, so that my curve roughly fits the points but ``is not the true generating distribution.''
+
+- Before: Or you could dispute my list and say that Modern Art belongs on it.
+- After: Or you could dispute my list: the Python language does not belong, and Modern Art does.
+
+- Before: Either way the presumption is that some pattern generates the list.
+- After: Either way the presumption is that some pattern generates the list, even before anyone can say what it is, and that I have included points from a different generator.
+
+- Before: You could insist that a list cannot be wrong,
+- After: You could insist that a list cannot be wrong, since set theory proves it exists,
+
+- Before: So both kinds of definition, the rule and the list, can be wrong.
+- After: You list what feels similar and guess why; when you learn what the things really share, your guess, or even your list, may prove wrong. So both kinds of definition, the rule and the list, can be wrong.
+
+
+## honest/sections/entropy-and-short-codes.tex
+
+Why: Fidelity/substance pass: added the three-bit code and how the questions find state 4, the worked contribution of one state, arithmetic coding, the rule for a good code, the free-country example, why 'chair' is basic-level (shared motor use and purpose, unlike furniture), and the content of Hofstadter's joke
+
+- Before: you need three yes-or-no questions to find its state.
+- After: you need three yes-or-no questions to find its state. With the code X1 = 001 through X8 = 000, the answers yes, no, no to ``Is this symbol 1?'' give 100, state 4.
+
+- Before: The general formula is the sum of $-p \log_2 p$ over the states.
+- After: The general formula is the sum of $-p \log_2 p$ over the states; for a state of probability 1/8, $\log_2(1/8) = -3$, so it contributes 0.375: one time in eight, three questions.
+
+- Before: A perfect code is not always possible, but coding many copies at once comes arbitrarily close.
+- After: A perfect code is not always possible, but coding many copies at once comes arbitrarily close (arithmetic coding is a simple method).
+
+- Before: ``The moral is that short words are a conserved resource.''
+- After: ``The moral is that short words are a conserved resource.'' A good code reserves short words for what you say often and longer ones for what you say rarely.
+
+- Before: The idea that ``You can X any way you like'' is ``a huge obstacle to learning how to X wisely.''
+- After: The idea that ``You can X any way you like'' is ``a huge obstacle to learning how to X wisely.'' ``It's a free country; I have a right to my own opinion'' obstructs the finding of truth.
+
+- Before: people talk about chairs, rather than recliners or furniture.
+- After: people talk about chairs, rather than recliners or furniture. Nearly all chairs, recliners included, are used with the same motions for the same purpose, taking your weight off your feet; ``furniture'' includes beds and tables, which are used differently. People say ``You can sit in that chair,'' not ``in that recliner'' or ``in that furniture.''
+
+- Before: Last, a joke attributed to Douglas Hofstadter about the words ``the'' and ``antidisestablishmentarianism.''
+- After: Basic-level categories tend to have short names, and short nouns tend to name basic-level categories; not a perfect rule, but a definite tendency. As Douglas Hofstadter put it, there is a reason English uses ``the'' to mean ``the'' and ``antidisestablishmentarianism'' to mean ``antidisestablishmentarianism,'' and not the other way around.
+
+
+## honest/sections/mutual-information-and-density-in-thingspace.tex
+
+Why: Fidelity/substance pass: added why no clever code helps for even distributions, the worked X5 and Y4 cases, what one bit means here, the product example and how marginals are recovered, the Bayes derivation, the numbers showing Z1Y2 is more common than chance and what that implies, the symmetry digression and the ravens exercise, what 'human' really compresses, the primitive-word exception, the two conditions for 'wiggin', the Gricean promise, and why a useless word is an error
+
+- Before: X has eight equally likely states and Y four, so finding X takes three questions and finding Y two.
+- After: X has eight equally likely states and Y four, so finding X takes three questions and finding Y two; with probability spread evenly, no clever code can do better.
+
+- Before: If X and Y are either both odd or both even, then once you know X, one more question settles Y: four questions in all, not five.
+- After: If X and Y are either both odd or both even, then once you know X, one more question settles Y: learning X is 5 leaves Y at 1 or 3, and ``Is Y 3?'' settles it. Learning Y is 4 in two questions leaves X at 2, 4, 6 or 8, two more. Four questions in all, not five.
+
+- Before: here one bit.
+- After: here one bit: learning X halves the possibilities for Y, from four to two, and learning Y halves those for X, from eight to four.
+
+- Before: Two variables have zero mutual information exactly when every entry of their joint table is the product of the marginals,
+- After: Two variables have zero mutual information exactly when every entry of their joint table is the product of the marginals, as with $P(Z1,Y2) = 3/8 \times 1/4 = 3/32$; and the marginals can be recovered from the table, as $P(Y1) = 3/16 + 5/16 = 1/2$. By Bayes's rule, $P(Y,Z) = P(Y)P(Z)$ is the same as $P(Y|Z) = P(Y)$, so a product table is
+
+- Before: and that is exactly when learning one tells you nothing about the other.
+- After: exactly the case where learning one tells you nothing about the other.
+
+- Before: In a second table, Z1 and Y2 occur together more often than their marginals predict, so Y2 is evidence for Z1, and there must be mutual information.
+- After: In a second table with the same marginals, Z1 and Y2 occur together with probability 8/64, more than the 6/64 their marginals predict, so $P(Z1|Y2) > P(Z1)$: Y2 is evidence for Z1, and by the same argument Z1 for Y2, so there must be mutual information.
+
+- Before: that the joint entropy is smaller than the sum.
+- After: that the joint entropy is smaller than the sum. A digression: the formula is symmetric, so Y tells us as much about Z, on average, as Z about Y; I leave you to reconcile this with the logic-class rule that ``all ravens are black'' does not let you infer from black to raven.
+
+- Before: ``Human'' earns its place because a featherless talking biped is likely to be
+- After: ``Human'' really compresses far more: from a talking, clothed, human-shaped thing you can infer whole hosts of biochemical, anatomical and mental facts, which would take forever to list. It earns its place because a featherless talking biped is likely to be
+
+- Before: So ``wiggin'' is worth having only if green eyes go with black hair, or if wiggins share other properties.
+- After: A word beats a list of properties exactly when some properties can be inferred from others, except perhaps primitive words like ``red'' for raw sensation; a bug or a rock is already far above that level. So ``wiggin'' is worth having only if green eyes go with black hair, so that one can be inferred from the other, or if, once both are seen, wiggins share other properties, like a taste for ketchup.
+
+- Before: Defining a word implies a promise that it will help inference.
+- After: Defining a word implies, by Gricean implication, a promise that it will help inference or shorten messages.
+
+- Before: ``Even if you do not call the word a lie, it is surely an error.''
+- After: Such a word does not shorten any description, plays no part in the simplest explanation, and helps no Bayesian inference; ``Even if you do not call the word a lie, it is surely an error.''
+
+
+## honest/sections/entropy-and-short-codes.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim
+
+- Before: the answers yes, no, no to ``Is this symbol 1?'' give 100
+- After: answering yes, no, no to ``Is the first symbol 1?'' and the same for the second and third gives 100
+
+
+## honest/sections/mutual-information-and-density-in-thingspace.tex
+
+Why: Fidelity/substance pass: made a new quotation verbatim
+
+- Before: and ``Is Y 3?'' settles it.
+- After: and ``Is Y in state 3?'' settles it.
+
+
+## honest/sections/entropy-and-short-codes.tex
+
+Why: Fidelity/substance pass: smoothed my own awkward sentence
+
+- Before: answering yes, no, no to ``Is the first symbol 1?'' and the same for the second and third gives 100, state 4.
+- After: you ask ``Is the first symbol 1?'', then the same of the second and third; yes, no, no gives 100, state 4.
+
+
+## honest/sections/superexponential-conceptspace-and-simple-words.tex
+
+Why: Fidelity/substance pass: added the sparrow remark, the even-numbers illustration, the three tennis examples and how the format matches, the algorithm's update steps and stopping condition, the in-between concepts, how 109 arises, concepts as sets of days with non-compact ones, the scale at forty attributes, real-world constraints, what gerrymandering looks like, the art example, and the orphan-murder detective
+
+- Before: Still, the space of concepts is far larger.
+- After: It still helps to picture it: no one really understands a flock of sparrows who sees only flapping things and not a cluster of points. Still, the space of concepts is far larger.
+
+- Before: In machine learning, a concept is a rule that includes or excludes examples.
+- After: In machine learning, a concept is a rule that includes or excludes examples; from 2:+, 3:-, 14:+, 23:-, 8:+, 9:- you might guess ``even numbers.''
+
+- Before: Given two good days and one bad one, a learner might guess \{?, Warm, High, ?\}: warm and humid, with any sky and any wind.
+- After: Given two good days (sunny, warm, humid, with strong or weak wind) and one bad one (rainy, cold, humid, strong wind), a learner might guess \{?, Warm, High, ?\}: warm and humid, with any sky and any wind, where ``?'' accepts anything.
+
+- Before: and moves them toward each other as examples come in.
+- After: and moves them toward each other: each negative example makes the general ones as little more specific as it must, each positive example makes the specific ones as little more general as it must, until one concept is left, which is the answer if the true concept was representable at all.
+
+- Before: and the most specific is \{Sunny, Warm, High, ?\}.
+- After: and the most specific is \{Sunny, Warm, High, ?\}; every other fitting concept lies between them.
+
+- Before: There are 24 possible days and 109 concepts in the format, but every set of days is a concept,
+- After: There are 24 possible days and 108 concepts in the format, 109 with the concept that accepts nothing, which the algorithm needs as a starting point. But a concept is just the set of days it accepts, so every set of days is a concept, including ones with no compact description, only a flat list,
+
+- Before: The space of all concepts over forty attributes, though, has $2^{2^{40}}$ members,
+- After: That assumes the true rule is representable. The space of all concepts over forty attributes, though (five bytes of description, a trillion possible examples), has $2^{2^{40}}$ members,
+
+- Before: So real minds think only about highly regular concepts, and learning ``is nearly all inductive bias.''
+- After: In the real world objects take more than five bytes, a trillion examples are not available and data are noisy, so real minds think only about highly regular concepts; neither a human mind nor the observable universe could consider the rest. Compared with what evidence rules out, learning ``is nearly all inductive bias.''
+
+- Before: Without it you would gerrymander Thingspace, drawing a boundary that only lists what you have seen.
+- After: Without it you would gerrymander Thingspace, drawing odd, disconnected boundaries around exactly what you have seen, no shorter than the observations themselves.
+
+- Before: not a list of five-megabyte shape specifications.
+- After: not a list of five-megabyte shape specifications. Without simple boundaries you cannot infer; that is why you describe ``art'' by a rule, such as an intent to inspire complex emotion, not by a long list.
+
+- Before: Given how many concepts there are, singling out one for attention ``is an act of no small audacity.''
+- After: Given how many concepts there are, singling out one for attention ``is an act of no small audacity,'' for any mind of bounded computing power.
+
+- Before: is like a detective who, with no evidence at all, asks whether we have considered John Q. Wiffleheim of 1234 Norkle Rd.
+- After: is like a detective who, with no evidence or even intuition about who murdered the orphans, asks whether we have considered John Q. Wiffleheim of 1234 Norkle Rd.
+
+
+## honest/sections/conditional-independence-and-naive-bayes.tex
+
+Why: Fidelity/substance pass: added the concrete double-count (X even to Z even to Y even), the formulas for conditional mutual information and entropy, the two theorems, the equivalence of mutual information and evidence with its conditional form, the screening-off examples, the apple-or-rock inferences, the all-odd-or-even contrast, what 'human' screening off would mean for the exceptions, how naive Bayes is used, and what Bayesians would explain
+
+- Before: The formula counts twice what X tells about Y, because that is the same information that passes through Z.
+- After: The formula counts twice what X tells about Y: X even tells us Z is even, which tells us Y is even, the same information X gives about Y directly.
+
+- Before: I then show how to compute conditional entropies, and mention two more theorems, ``but I'm not going to go into those.''
+- After: I then show how to compute it: $I(X;Y|Z) = H(X|Z) + H(Y|Z) - H(X,Y|Z)$, where a conditional entropy is the entropy left after learning Z, averaged over Z's values. I mention two more theorems, $H(X|Y) = H(X,Y) - H(Y)$ and that zero $I(X;Z)$ and zero $I(Y;X|Z)$ give zero $I(X;Y)$, ``but I'm not going to go into those.''
+
+- Before: A variable Z screens off X from Y if, once Z is known, learning Y tells nothing more about X.
+- After: Mutual information is positive exactly when some $P(x,y) \neq P(x)P(y)$, that is, when $P(x|y) \neq P(x)$: evidence. Conditioned on Z, positive $I(X;Y|Z)$ means that even knowing Z, learning Y still changes our beliefs about X. Z screens off X from Y if, once Z is known, learning Y tells nothing more about X: knowing Z is even, learning Y is 4 says nothing about whether X is 2, 4, 6 or 8.
+
+- Before: Each is evidence about the others.
+- After: Each is evidence about the others: learn that a thing, apple or rock or otherwise, speaks Chinese, and it more likely wears clothes; learn that hemlock does not poison it, and it less likely has red blood.
+
+- Before: So no one of the five screens off the rest.
+- After: So no one of the five screens off the rest; knowing a thing is unclothed does not screen off what its speech says about its blood, since it may be Nude Nellie. Five numbers that are all odd or all even would be simpler: knowing any one screens off the rest.
+
+- Before: Observations update the class, and the class predicts the rest.
+- After: Given ``human,'' Fred is no likelier to be a nudist, Nellie no less likely to speak, Barney no likelier to lack a limb. We do not track how clothing bears on speech given finger count; observations update the probability that the thing is human, or a chimpanzee or robot, and the class predicts the rest, such as hemlock.
+
+- Before: The Bayesians will then explain exactly how the network works.
+- After: The Bayesians will then explain exactly how the network works: its assumptions, the regularities it exploits, where it works and fails, and what its weights mean.
+
+
+## honest/sections/words-as-mental-paintbrush-handles.tex
+
+Why: Fidelity/substance pass: added the sharp-or-smooth question and the wordless flinch that solved it, the behaviorist account of speech, why the rotation result favors images, the green-dog and cheese-apple prompts, the five-byte point, why imagery is not just memory recall, and the pointer example
+
+- Before: Suppose I tell you that the lamps in this hotel have triangular lightbulbs. Picture one.
+- After: Suppose I tell you that the lamps in this hotel have triangular lightbulbs. Picture one: was the glass sharp-edged or smooth?
+
+- Before: As far as I can tell, no words were involved.
+- After: As far as I can tell, no words were involved: a wordless flinch from sharp glass solved the design problem before I could think in words.
+
+- Before: ``mostly a deranged legacy of behaviorism, which denied the existence of thoughts in humans.''
+- After: ``mostly a deranged legacy of behaviorism, which denied the existence of thoughts in humans,'' and explained everything, speech included, as reflex; behaviorism was a perversion of rationalism, a subject for another post.
+
+- Before: In the mental-rotation experiments, the time needed to match two objects grows with the angle between them.
+- After: In the mental-rotation experiments, the time needed to match two objects grows with the angle between them, easy to explain if people rotate an image at constant speed, hard if they check a list of features.
+
+- Before: People get into trouble with words partly because they do not see how much lies behind them.
+- After: People get into trouble with words partly because they do not see how much lies behind them. Can you picture a green dog? A cheese apple?
+
+- Before: ``Apple'' is five letters, but the concept behind it
+- After: ``Apple'' is five letters, the tip of the tiger's tail; drawing an apple from scratch takes far more data than five bytes, so the letters themselves cannot draw it. The concept behind it
+
+- Before: Words are paintbrushes: ``you can use them to draw images in your own mind,'' and in other people's.
+- After: Words are paintbrushes: ``you can use them to draw images in your own mind,'' and, through shared labels, in other people's, sketching a green dog in their visual cortex. Nor is it just recalling a picture, or you could not picture a triangular lightbulb you have never seen.
+
+- Before: A word is a pointer, and sooner or later you must look where it points.
+- After: A word is a pointer (``look in memory area 1387540''), and sooner or later you must look where it points.
+
+
+## honest/sections/variable-question-fallacies.tex
+
+Why: Fidelity/substance pass: added the 2 + 2 = X illustration, the subtle case of checking the event but not the concept, the term 'speaker deixis', that the variables are not labeled, the full Hunga/Amara example, and why '2 + 2 = X' is not yet a proposition
+
+- Before: The rule works only if P stands for exactly the same thing in both halves.
+- After: Surely 2 + 2 = X or it does not? Only if it is really the same X; if X is 5 on some occasions and 4 on others, indignation is misplaced. The rule works only if P stands for exactly the same thing in both halves.
+
+- Before: I borrow the ``::'' from C++, where it says which package's Sound you mean.
+- After: I borrow the ``::'' from C++, where it says which package's Sound you mean. The shift can be subtle: Albert and Barry may check carefully that they mean the same tree and the same fall, and forget to check that they match it against the same concept.
+
+- Before: Programs that parse language find this hard.
+- After: Programs that parse language find this ``speaker deixis'' very hard.
+
+- Before: Whose left, Bob's or Martin's?
+- After: Whose left, Bob's or Martin's? And the variables are seldom neatly labeled, as in ``Say, do you think Z + 2 equals 6?''
+
+- Before: I supply one of their speeches myself: ``There is no fixed truth!''
+- After: I supply one of their speeches myself: ``The Sun goes around the Earth'' is true for Hunga Huntergatherer and false for Amara Astronomer, so ``There is no fixed truth!''
+
+- Before: In fact it has no truth value at all until X is fixed.
+- After: In fact it has no truth value at all until X is fixed; it is not yet a proposition, any more than ``2 + 2 ='' is, or ``Fred jumped over the'' is a sentence.
+
+
+## honest/sections/variable-question-fallacies.tex
+
+Why: Fidelity/substance pass: removed quotation marks from a paraphrase of a formula the post writes as (P or ~P)
+
+- Before: But ``P or not-P'' is not always safe with English sentences.
+- After: But the rule that P or not-P always holds is not safe with arbitrary English sentences.
+
+
+## honest/sections/37-ways-that-words-can-be-wrong.tex
+
+Why: Fidelity/substance pass: added the second joke title and the 'you can always be wrong' point, the red-furred example of statistics the brain misses, the example of gratuitous defiance of usage, the truth example of a hiding word, the suspicious boundary example, and what the Naive Bayes item says
+
+- Before: Some reader, I expect, will say this post should be called ``37 Ways That You Can Use Words Unwisely.''
+- After: Some reader, I expect, will say this post should be called ``37 Ways That You Can Use Words Unwisely,'' or something longer about suboptimal categories.
+
+- Before: is ``nearly always an error in practice, whatever the theory.''
+- After: is ``nearly always an error in practice, whatever the theory.'' You can always be wrong; there is never a get-out-of-jail-free card.
+
+- Before: Human brains sort things into blegg and rube, and
+- After: Human brains notice blegg against rube far more easily than that red objects never glow though red furred ones are otherwise bleggs, and
+
+- Before: Do not defy common usage without a reason.
+- After: Do not defy common usage without a reason (``Fast stand up plutonium, with bagels without handle'').
+
+- Before: A neat word hides details, and one word can hide two things,
+- After: A neat word hides details (what is ``truth'' if you cannot say ``accurate,'' ``correct,'' ``map'' or ``real''?), and one word can hide two things,
+
+- Before: Drawing an odd boundary without a reason is like a detective naming a suspect with no evidence.
+- After: Drawing an odd boundary without a reason, such as a word for all humans except black people, is like a detective naming a suspect with no evidence.
+
+- Before: Naive Bayes I do not try to summarize: ``Just read the blog post.''
+- After: One item warns against inferring properties by category when they are not independent given the class, as Naive Bayes assumes; that one I do not try to summarize: ``Just read the blog post.''
+

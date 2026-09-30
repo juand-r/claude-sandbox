@@ -197,21 +197,21 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] disputing-definitions
 - [x] feel-the-meaning
 - [x] the-argument-from-common-usage
-- [ ] empty-labels
-- [ ] taboo-your-words
-- [ ] replace-the-symbol-with-the-substance
-- [ ] fallacies-of-compression
-- [ ] categorizing-has-consequences
-- [ ] sneaking-in-connotations
-- [ ] arguing-by-definition
-- [ ] where-to-draw-the-boundary
-- [ ] entropy-and-short-codes
-- [ ] mutual-information-and-density-in-thingspace
-- [ ] superexponential-conceptspace-and-simple-words
-- [ ] conditional-independence-and-naive-bayes
-- [ ] words-as-mental-paintbrush-handles
-- [ ] variable-question-fallacies
-- [ ] 37-ways-that-words-can-be-wrong
+- [x] empty-labels
+- [x] taboo-your-words
+- [x] replace-the-symbol-with-the-substance
+- [x] fallacies-of-compression
+- [x] categorizing-has-consequences
+- [x] sneaking-in-connotations
+- [x] arguing-by-definition
+- [x] where-to-draw-the-boundary
+- [x] entropy-and-short-codes
+- [x] mutual-information-and-density-in-thingspace
+- [x] superexponential-conceptspace-and-simple-words
+- [x] conditional-independence-and-naive-bayes
+- [x] words-as-mental-paintbrush-handles
+- [x] variable-question-fallacies
+- [x] 37-ways-that-words-can-be-wrong
 - [ ] an-intuitive-explanation-of-bayes-s-theorem
 - [ ] the-world-an-introduction
 - [ ] universal-fire
