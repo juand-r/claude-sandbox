@@ -33,7 +33,7 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 - [ ] 5. 1-D HashLife engine, measured on the above
   - [x] first: streaming window (casim.StreamRun), exact, verified vs full run; ~40x on De Mol
   - [ ] HashLife: decide after measuring where StreamRun's time goes
-- [ ] 6. Team results: review, verify, integrate, report
+- [x] 6. Team results: all four agents finished; no non-CTS computer; building blocks and missing gadgets in noncts/SUMMARY.md
 
 ## Phase 2: takeover, cleanup, release v0.1.0 (started 2026-09-30)
 

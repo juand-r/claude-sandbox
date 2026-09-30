@@ -10,5 +10,6 @@ Four agents, one directory each:
 - scholar/   - literature, theory, and adversarial verification
 - synth/     - automated synthesis (SAT/search) of gadgets and initial conditions
 
-BOARD.md is the shared message board (append-only). Findings go in each
-agent's own FINDINGS.md.
+BOARD.md is the shared message board (append-only). SUMMARY.md is the
+lead's summary of the outcome (read this first). Agents' own records:
+architect/ARCHITECTURE.md, synth/FINDINGS.md, */NOTES.md.
