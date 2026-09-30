@@ -1,0 +1,13 @@
+% Specimen 1: a classic single-column page, notes stacked at the foot.
+% Main text -> numbered notes -> lettered notes on notes -> symbol notes, run in.
+\documentclass[11pt]{article}
+\usepackage[paperwidth=5.5in,paperheight=8.5in,
+            textwidth=3.9in,textheight=6.6in,
+            inner=0.7in,top=0.8in,twoside]{geometry}
+\input{common}
+\renewcommand\specimenlabel{Specimen 1: stacked footnotes}
+\linespread{1.08}
+\setlength\parindent{1.2em}
+\begin{document}
+\input{passage}
+\end{document}

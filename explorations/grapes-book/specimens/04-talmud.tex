@@ -1,0 +1,142 @@
+% Specimen 4: a page loosely modelled on the printed Talmud.
+% A short main text sits at the top centre. Two commentaries, in two
+% typefaces, wrap around it and widen below it. A band of notes on the
+% commentaries runs across the foot.
+%
+% How it works: each commentary is ONE paragraph with a \parshape. Its
+% first n lines are narrow (to clear the main text); the rest are full
+% column width. n is computed from the measured height of the main text.
+% This composes a single page. It does not break text across pages.
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7in,paperheight=9in,
+            left=0.6in,right=0.6in,top=0.6in,bottom=0.7in]{geometry}
+\input{common}
+\newfontfamily\rightcommentfont{Linux Libertine O}
+\renewcommand\specimenlabel{Specimen 4: a Talmud-style page}
+\setlength\parindent{0pt}
+
+% ---- page geometry ---------------------------------------------------------
+\newlength\mainwidth    \setlength\mainwidth{2.7in}   % central main text
+\newlength\colgap       \setlength\colgap{0.2in}       % gap between blocks
+\newlength\colwidth     % each commentary column, full width
+\setlength\colwidth{\dimexpr(\textwidth-\colgap)/2\relax}
+\newlength\narrowwidth  % commentary width beside the main text
+\setlength\narrowwidth{\dimexpr(\textwidth-\mainwidth)/2-\colgap\relax}
+\newlength\commentskip  \setlength\commentskip{11.6pt}   % commentary leading
+\newcommand\commentsize{\fontsize{9.3}{\commentskip}\selectfont}
+\newcommand\mainsize{\fontsize{13}{17}\selectfont}
+\newcommand\lemma[1]{\textbf{#1}}           % words a comment is keyed to
+\newcommand\cmark[1]{\textsuperscript{#1}}  % marks for the notes at the foot
+
+% ---- composition -----------------------------------------------------------
+\newsavebox\mainbox
+\newcount\narrowlines
+% \buildshape{indent}: \shapespec = n narrow lines at that indent, then one
+% full-width line (TeX repeats the last line spec for the rest).
+\makeatletter
+\newcommand\buildshape[1]{% #1 = indent of the narrow lines
+  \def\shapespec{}%
+  \count@=0
+  \loop\ifnum\count@<\narrowlines
+    \edef\shapespec{\shapespec #1 \the\narrowwidth}%
+    \advance\count@ 1
+  \repeat
+  \edef\shapespec{\shapespec 0pt \the\colwidth}}
+\makeatother
+% \talmudpage{main}{left commentary}{right commentary}
+\newcommand\talmudpage[3]{%
+  \sbox\mainbox{\vtop{\hsize\mainwidth\mainsize
+    \emergencystretch=1em #1\par}}%
+  % narrow lines = depth of main text below its first baseline, in
+  % commentary lines (\numexpr rounds), plus one line for the first
+  % baseline and about one line of clearance.
+  \narrowlines=\numexpr\dp\mainbox/\commentskip + 2\relax
+  \typeout{Talmud page: \the\narrowlines\space narrow commentary lines}
+  \noindent\hbox to \textwidth{%
+    \rlap{\hskip\dimexpr(\textwidth-\mainwidth)/2\relax\usebox\mainbox}%
+    \vtop{\hsize\colwidth\commentsize
+      \buildshape{0pt}\parshape\numexpr\narrowlines+1\relax\shapespec
+      #2\par}%
+    \hfill
+    \vtop{\hsize\colwidth\commentsize\rightcommentfont\fontsize{9}{\commentskip}\selectfont
+      \buildshape{\dimexpr\colwidth-\narrowwidth\relax}%
+      \parshape\numexpr\narrowlines+1\relax\shapespec
+      #3\par}}}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+  {\small\scshape\color{grapeink} Grapes \quad\textperiodcentered\quad
+   One \quad\textperiodcentered\quad The Berry}
+\end{center}
+\vspace{2pt}
+
+\talmudpage
+% ---------------------------------------------------------------- main text
+{A grape is a berry. Botanists mean something exact by that word: a fleshy
+fruit that grows from a single flower with a single ovary, its seeds buried in
+the pulp. By this rule the tomato is a berry, and so are the banana and the
+eggplant, while the strawberry and the raspberry are not. The grape qualifies
+without argument. Nearly all the grapes we eat, dry, and press come from one
+species, \emph{Vitis vinifera}, the wine-bearing vine.}
+% ------------------------------------------------ left commentary: glosses
+{\lemma{A grape.} The single berry, not the bunch. The English word comes
+from French \emph{grappe}, the bunch, so that the name of the cluster became
+the name of the berry. \lemma{Is a berry.} In the botanist's sense, not the
+grocer's. The grocer calls a berry anything small, soft, and sweet that can
+be eaten without peeling. \lemma{Something exact.} The definition here is
+the textbook one. Botanists argue about the hard cases. \lemma{A single
+flower with a single ovary.} This separates a true berry from an aggregate
+fruit such as the raspberry, which grows from one flower with many ovaries,
+and from a multiple fruit such as the mulberry or the pineapple, which grows
+from many flowers fused together. \lemma{Seeds buried in the pulp.} Compare
+the stone fruits, the cherry and the plum, whose single seed is locked in a
+hard pit. \lemma{The tomato.} The Supreme Court of the United States once
+ruled that the tomato is a vegetable, in the case of Nix v.\ Hedden, decided
+in 1893.\cmark{*} The court did not dispute the botany. It held that in
+ordinary speech, and therefore in the law, tomatoes are vegetables.
+\lemma{The banana.} The seeds of wild bananas are large and hard. The small
+dark specks in a cultivated banana are the remains of seeds that no longer
+develop.\cmark{\dag} \lemma{The eggplant.} Like the tomato, a member of the
+nightshade family. \lemma{The strawberry.} Its flesh grows from the
+receptacle, the part of the flower that holds the ovaries, and the specks on
+its skin are the true fruits. \lemma{Qualifies without argument.} Which is
+more than can be said of most things in this book. \lemma{Vitis vinifera.}
+\emph{Vitis} is the Latin for vine, and \emph{vinifera} means wine-bearing.
+The rest of the genus, several dozen species, grows wild across the temperate
+Northern Hemisphere. Many of them are American, and this fact will matter a
+great deal later.}
+% --------------------------------------- right commentary: on this page
+{\lemma{On this page.} The page imitates, loosely, the printed Talmud, where a
+short passage of main text sits in the centre and the commentaries wrap
+around it. The main text is set first. Each commentary is then set as one
+long paragraph whose first lines are narrowed to leave room for it; below the
+main text the commentaries widen to fill the half page. \lemma{Two
+commentaries.} Here the left column glosses single words, and this column
+makes larger remarks. A book about grapes might give the left column to
+botany and the right to history, or the left to fact and the right to
+digression. \lemma{Keyed by lemma.} The commentaries use no note numbers.
+Each comment opens with the words it comments on, in bold, and the reader
+finds the place by matching words. The main text stays clean. The reader pays
+for this with a little searching. \lemma{Two typefaces.} The left column is
+set in EB Garamond and this one in Linux Libertine, so the eye can tell them
+apart without labels. Printed Talmuds do something similar: the main text and
+the commentaries are set in different Hebrew scripts.\cmark{\ddag}
+\lemma{The band at the foot.} It holds a third level: notes on the
+commentaries, marked with symbols. \lemma{What this costs.} Each page must be
+composed as a unit. The main text for a page has to be chosen by hand, and the
+commentaries must be long enough to fill the page but not longer. For a whole
+book this would need either a great deal of hand work or a small program that
+measures the text and cuts it into pages.}
+
+\vfill
+\noindent\rule{\textwidth}{0.3pt}\par\vspace{3pt}
+{\fontsize{8}{9.6}\selectfont
+\cmark{*}\,The tariff at issue, from 1883, taxed imported vegetables but not
+fruit. \quad
+\cmark{\dag}\,Most bananas sold in Europe and North America belong to one
+group of cultivars, the Cavendish. \quad
+\cmark{\ddag}\,The commentaries are traditionally set in what is called Rashi
+script, a semi-cursive Hebrew typeface. The name is a later convention; Rashi
+himself did not write in it.\par}
+\end{document}

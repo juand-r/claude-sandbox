@@ -1,0 +1,54 @@
+% Specimen 5: the critical-edition layout. Lines are numbered in the margin,
+% and three series of notes at the foot are keyed to line numbers and a
+% repeated lemma, not to marks in the text. The main text carries no marks.
+% Provided by reledmac. Note: bigfoot (in common.tex) and reledmac both
+% manage footnotes, so this specimen does not load common.tex.
+\documentclass[11pt]{article}
+\usepackage[paperwidth=5.5in,paperheight=8.5in,
+            textwidth=3.9in,textheight=6.6in,inner=0.8in,top=0.8in]{geometry}
+\usepackage{fontspec}
+\setmainfont{EB Garamond}[Numbers={OldStyle,Proportional}]
+\usepackage{microtype}
+\usepackage{xcolor}
+\definecolor{grapeink}{HTML}{5B2A4E}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\renewcommand\headrulewidth{0pt}
+\fancyfoot[C]{\footnotesize\scshape\color{grapeink}Specimen 5: notes keyed to line numbers}
+\usepackage[series={A,B,C},noend,noeledsec]{reledmac}
+\lineation{page}\linenummargin{outer}\firstlinenum{5}\linenumincrement{5}
+% Series A: glosses.  B: etymology.  C: digressions.
+\Xnotefontsize{\scriptsize}
+\Xlemmafont{\bfseries}
+\Xbhookgroup[A]{\textsc{gloss}\enskip}
+\Xbhookgroup[B]{\textsc{words}\enskip}
+\Xbhookgroup[C]{\textsc{aside}\enskip}
+\begin{document}
+\thispagestyle{fancy}
+\begin{center}{\large\scshape\color{grapeink} One}\par\smallskip{\LARGE The Berry}\end{center}
+\bigskip
+\beginnumbering
+\pstart
+\noindent A grape is a \edtext{berry}{\Afootnote{In the botanist's sense, not
+the grocer's.}}. Botanists mean something exact by that word: a fleshy fruit
+that grows from a \edtext{single flower with a single ovary}{\Afootnote{This
+separates a true berry from an aggregate fruit such as the raspberry.}}, its
+seeds buried in the pulp. By this rule the \edtext{tomato}{\Cfootnote{A
+United States court once ruled it a vegetable, for the purposes of a
+tariff.}} is a berry, and so are the banana and the eggplant, while the
+\edtext{strawberry}{\Afootnote{An accessory fruit: its flesh grows from the
+receptacle.}\Cfootnote{The strawberry will return throughout this book.}} and
+the raspberry are not. The grape qualifies without argument.
+\pend
+\pstart
+Nearly all the grapes we eat, dry, and press come from one species,
+\edtext{\emph{Vitis vinifera}}{\Bfootnote{Latin \emph{vinum}, wine, and
+\emph{ferre}, to bear.}}, the wine-bearing vine. The rest of the genus, several
+dozen species, grows wild across the temperate Northern Hemisphere, and a good
+number of them are \edtext{American}{\Cfootnote{This will matter when
+phylloxera arrives in France in the 1860s.}}. For most of history this
+mattered to no one in Europe. The English word \edtext{\emph{grape}}{\Bfootnote{From
+Old French \emph{grape}, a bunch of grapes; probably from a Germanic word for
+a hook.}} first meant the cluster, and only later the single berry.
+\pend
+\endnumbering
+\end{document}

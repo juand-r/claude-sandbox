@@ -1,0 +1,75 @@
+% Specimen 2: sidenotes in the outer margin; each sidenote may carry its own
+% footnotes, which drop to the foot of the page.
+% Main text -> numbered sidenotes -> lettered footnotes -> symbol notes.
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7.5in,paperheight=9.5in,
+            textwidth=3.9in,textheight=7.3in,
+            inner=0.8in,top=0.9in,
+            marginparwidth=2.0in,marginparsep=0.3in,twoside]{geometry}
+
+% --- sidenotes -----------------------------------------------------------
+% \note becomes a numbered sidenote. Where do the notes on a sidenote go?
+%   default:            to the foot of the page, as lettered footnotes.
+%   \SubnotesInMargin:  stay in the margin, in smaller type, under their
+%                       sidenote, lettered afresh for each sidenote.
+% (03-sidenotes-margin.tex defines \SubnotesInMargin and inputs this file.)
+\makeatletter
+\newcounter{sidenote}
+\newcommand\pending@subnotes{}
+\newcommand\pending@subsubnotes{}
+\ifdefined\SubnotesInMargin
+  \newcounter{marginsub}[sidenote]
+  \newcounter{marginsubsub}[sidenote]
+  \newcommand\margin@subnote[1]{%
+    \stepcounter{marginsub}%
+    \textsuperscript{\alph{marginsub}}%
+    \edef\@tempa{\noexpand\margin@item{\noexpand\@alph{\the\value{marginsub}}}}%
+    \expandafter\g@addto@macro\expandafter\pending@subnotes\expandafter{\@tempa{#1}}}
+  \newcommand\margin@subsubnote[1]{%
+    \stepcounter{marginsubsub}%
+    \textsuperscript{\fnsymbol{marginsubsub}}%
+    \edef\@tempa{\noexpand\margin@item{\noexpand\@fnsymbol{\the\value{marginsubsub}}}}%
+    \expandafter\g@addto@macro\expandafter\pending@subsubnotes\expandafter{\@tempa{#1}}}
+  \newcommand\margin@item[2]{\par\hangindent0.8em\noindent\textsuperscript{#1}\,#2}
+  % Print the saved notes under the sidenote: first the lettered ones, then
+  % the symbol notes that the lettered ones themselves produced.
+  \newcommand\margin@flush{%
+    \ifx\pending@subnotes\@empty\else
+      \par\vspace{2pt}\noindent\rule{0.5in}{0.3pt}\par\scriptsize
+      \let\subnote\margin@subnote\let\subsubnote\margin@subsubnote
+      \pending@subnotes\gdef\pending@subnotes{}%
+      \ifx\pending@subsubnotes\@empty\else
+        \par\vspace{1pt}\noindent\rule{0.25in}{0.3pt}\par
+        \pending@subsubnotes\gdef\pending@subsubnotes{}%
+      \fi
+    \fi}
+  \newcommand\after@margin{}
+\else
+  \newcommand\margin@subnote[1]{%
+    \footnotemarkB
+    \edef\@tempa{\noexpand\footnotetextB[\the\value{footnoteB}]}%
+    \expandafter\g@addto@macro\expandafter\pending@subnotes\expandafter{\@tempa{#1}}}
+  \newcommand\margin@flush{}
+  % Release the saved footnote texts in the main text, right after the anchor.
+  \newcommand\after@margin{\pending@subnotes\gdef\pending@subnotes{}}
+\fi
+\newcommand\note[1]{%
+  \refstepcounter{sidenote}%
+  \textsuperscript{\thesidenote}%
+  \marginpar{\footnotesize\raggedright\linespread{1.0}\selectfont
+    \let\subnote\margin@subnote
+    \textsuperscript{\thesidenote}\,#1\margin@flush}%
+  \after@margin}
+\makeatother
+\input{common}
+\usepackage{marginfix}   % keeps sidenotes from overlapping
+\ifdefined\SubnotesInMargin
+  \renewcommand\specimenlabel{Specimen 3: sidenotes, their notes kept in the margin}
+\else
+  \renewcommand\specimenlabel{Specimen 2: sidenotes, their notes at the foot}
+\fi
+\linespread{1.08}
+\setlength\parindent{1.2em}
+\begin{document}
+\input{passage}
+\end{document}

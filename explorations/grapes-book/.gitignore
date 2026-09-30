@@ -1,0 +1,11 @@
+specimens/*.aux
+specimens/*.log
+specimens/*.out
+specimens/*.pdf
+specimens/*.1
+specimens/*.2
+specimens/*.3
+specimens/*.4
+specimens/*.5
+specimens/*.1R
+specimens/*.end
