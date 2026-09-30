@@ -9,3 +9,8 @@
 {"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 1, "exact": false, "sat": false, "secs": 9.3}
 {"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 2, "exact": false, "sat": false, "secs": 25.1}
 {"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 3, "exact": false, "sat": false, "secs": 9.5}
+{"spec": "endec", "p": 4, "d": -2, "WY": 10, "T2": 300, "ns": [1, 2], "k": 0, "s": 6, "exact": false, "delta": 1, "sat": true, "secs": 2.0, "Y": "1111101011", "sim_ok": true, "rows0": ["11111000111000110101111100010011011100110111", "11111000111000110101110011011111000100110001001"], "frames": [[0, 0, 1], [0, 0, 7]]}
+{"spec": "endec", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [2, 3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 3.6}
+{"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [2, 3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 109.9}
+{"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [2], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 26.6}
+{"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 49.3}

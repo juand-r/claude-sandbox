@@ -12,8 +12,6 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+Bhat#0 | C1@(0, 0) | (-1, 43) | transmutation | [] | B + B + B + B + B + B + B + A |
 | C1+Bhat#1 | C1@(0, 0) | (-3, 51) | transmutation | [] | Ebar + Ebar + A |
 | C1+Bhat#2 | C1@(0, 0) | (0, 53) | transmutation | [] | B + B + Bbar + F + D1 + A^2 |
-| C1+E#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | Ebar + F + A |
-| C1+E#1 | C1@(0, 0) | (0, 51) | transmutation | [('C2', 3, -12)] | C2 + D2 + A |
 | C1+Ebar#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + A |
 | C1+Ebar#1 | C1@(0, 0) | (-2, 45) | crossing | [('C1', 2, 13)] | Ebar + C1 |
 | C1+Ebar#2 | C1@(0, 0) | (-6, 47) | crossing | [('C1', 0, 7)] | Ebar + C1 |
@@ -32,7 +30,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+H#2 | C1@(0, 0) | (-2, 47) | transmutation | [] | Bbar + F + D1 |
 | C1+H#3 | C1@(0, 0) | (-6, 49) | transmutation | [] | B + F + D1 |
 | C1+H#4 | C1@(0, 0) | (-3, 51) | transmutation | [('C3', 0, 21)] | B^2 + Ebar + C3 |
-| C1+H#5 | C1@(0, 0) | (0, 53) | transmutation | [] | B + Ebar + v-4/15s1w6 + A |
+| C1+H#5 | C1@(0, 0) | (0, 53) | transmutation | [] | B + Ebar + E^2 + A |
 | C1+H#6 | C1@(0, 0) | (-4, 55) | fusion | [] | A |
 | C1+H#7 | C1@(0, 0) | (-8, 57) | transmutation | [] | B^2 + v-4/15s10w20 |
 | C1+H#8 | C1@(0, 0) | (-12, 59) | transmutation | [] | B + B^2 + A + A + A + A |
@@ -40,11 +38,9 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+Bbar#0 | C2@(0, 0) | (0, 47) | transmutation | [] | E + A |
 | C2+Bbar#1 | C2@(0, 0) | (-1, 51) | transmutation | [] | Ebar + A + A + A |
 | C2+Bbar#2 | C2@(0, 0) | (-2, 55) | emission | [] | B^2 + Bbar + F |
-| C2+Bhat#0 | C2@(0, 0) | (0, 47) | emission | [('C2', 4, 11)] | v-4/15s1w6 + C2 + A^2 |
+| C2+Bhat#0 | C2@(0, 0) | (0, 47) | emission | [('C2', 4, 11)] | E^2 + C2 + A^2 |
 | C2+Bhat#1 | C2@(0, 0) | (-1, 51) | transmutation | [('C2', 1, -22), ('C2', 3, -13)] | B^3 + C2 + C2 + A + A |
 | C2+Bhat#2 | C2@(0, 0) | (-2, 55) | transmutation | [('C3', 4, -16), ('C1', 6, 3)] | B^2 + C3 + C1 + A |
-| C2+E#0 | C2@(0, 0) | (-3, 43) | transmutation | [('C1', 5, 1)] | Ebar + C1 + A |
-| C2+E#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + A |
 | C2+Ebar#0 | C2@(0, 0) | (-3, 43) | fusion | [] | B + B + B |
 | C2+Ebar#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + A |
 | C2+Ebar#2 | C2@(0, 0) | (-4, 47) | crossing | [('C2', 0, 7)] | Ebar + C2 |
@@ -74,8 +70,6 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Bhat#0 | C3@(0, 0) | (0, 43) | transmutation | [] | G + A^2 |
 | C3+Bhat#1 | C3@(0, 0) | (-1, 47) | transmutation | [] | B^3 + A + A |
 | C3+Bhat#2 | C3@(0, 0) | (-2, 51) | transmutation | [] | E + E + A + A |
-| C3+E#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + A |
-| C3+E#1 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + A |
 | C3+Ebar#0 | C3@(0, 0) | (-1, 45) | fusion | [] | B + B + B + B |
 | C3+Ebar#1 | C3@(0, 0) | (-2, 49) | fusion | [] | B + B + B + B |
 | C3+Ebar#2 | C3@(0, 0) | (-6, 51) | fusion | [('C1', 1, -2), ('C1', 4, 9)] | C1 + C1 |
@@ -104,11 +98,11 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | D2+C1#0 | C1@(0, 49) | (0, 0) | transmutation | [] | B^2 + A + A |
 | D2+C2#0 | C2@(0, 49) | (0, 0) | transmutation | [] | B^2 + A |
 | D2+C3#0 | C3@(0, 47) | (0, 0) | transmutation | [] | B^3 + A |
-| Aw3+C1#0 | C1@(0, 62) | (0, 0) | fusion | [] | v-4/15s1w6 |
+| Aw3+C1#0 | C1@(0, 62) | (0, 0) | fusion | [] | E^2 |
 | Aw3+C2#0 | C2@(0, 62) | (0, 0) | fusion | [] | Ebar |
 | Aw3+C3#0 | C3@(0, 60) | (0, 0) | fusion | [] | F |
 | Aw4+C1#0 | C1@(0, 68) | (0, 0) | fusion | [] | E |
-| Aw4+C2#0 | C2@(0, 68) | (0, 0) | fusion | [] | v-4/15s1w6 |
+| Aw4+C2#0 | C2@(0, 68) | (0, 0) | fusion | [] | E^2 |
 | Aw4+C3#0 | C3@(0, 66) | (0, 0) | fusion | [] | Ebar |
 | Aw2+C1#0 | C1@(0, 56) | (0, 0) | fusion | [] | Ebar |
 | Aw2+C2#0 | C2@(0, 56) | (0, 0) | fusion | [] | F |
@@ -130,31 +124,31 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | A@(0,0)+A@(-2,28)+C3#0 | C3@(0, 85) | (0, 0) | fusion | [('C1', 4, 87)] | C1 |
 | Aw5+C1#0 | C1@(0, 74) | (0, 0) | fusion | [] | D1 |
 | Aw5+C2#0 | C2@(0, 74) | (0, 0) | fusion | [] | E |
-| Aw5+C3#0 | C3@(0, 72) | (0, 0) | fusion | [] | v-4/15s1w6 |
+| Aw5+C3#0 | C3@(0, 72) | (0, 0) | fusion | [] | E^2 |
 | Aw6+C1#0 | C1@(0, 80) | (0, 0) | fusion | [('C2', 5, 66)] | C2 |
 | Aw6+C2#0 | C2@(0, 80) | (0, 0) | fusion | [] | D1 |
 | Aw6+C3#0 | C3@(0, 78) | (0, 0) | fusion | [] | E |
 | C1+B_5_B#0 | C1@(0, 0) | (0, 43) | fusion | [] | D1 |
 | C2+B_5_B#0 | C2@(0, 0) | (0, 51) | fusion | [] | E |
-| C3+B_5_B#0 | C3@(0, 0) | (0, 47) | fusion | [] | v-4/15s1w6 |
+| C3+B_5_B#0 | C3@(0, 0) | (0, 47) | fusion | [] | E^2 |
 | C1+B@(0,0)+B@(0,22)#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B@(0,0)+B@(0,22)#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B@(0,0)+B@(0,22)#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B@(0,0)+B@(0,22)#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+B_9_B#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B_9_B#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B_9_B#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B_9_B#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+B@(0,0)+B@(-1,26)#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B@(0,0)+B@(-1,26)#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B@(0,0)+B@(-1,26)#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B@(0,0)+B@(-1,26)#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+B@(0,0)+B@(-2,16)#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B@(0,0)+B@(-2,16)#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B@(0,0)+B@(-2,16)#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B@(0,0)+B@(-2,16)#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+B@(0,0)+B@(-2,30)#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B@(0,0)+B@(-2,30)#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B@(0,0)+B@(-2,30)#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B@(0,0)+B@(-2,30)#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+B@(0,0)+B@(-3,20)#0 | C1@(0, 0) | (0, 49) | fusion | [] | D1 |
 | C2+B@(0,0)+B@(-3,20)#0 | C2@(0, 0) | (0, 43) | fusion | [] | E |
-| C3+B@(0,0)+B@(-3,20)#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s1w6 |
+| C3+B@(0,0)+B@(-3,20)#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^2 |
 | C1+Ebar_16_Ebar#2#0 | C1@(0, 0) | (-1, 41) | absorption | [('C1', 2, 20)] | C1 |
 | C1+Ebar_16_Ebar#2#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Bbar + F |
 | C1+Ebar_16_Ebar#2#2 | C1@(0, 0) | (-6, 47) | crossing | [('C1', 5, 22)] | Ebar + Ebar + C1 |
@@ -167,12 +161,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar_16_Ebar#2#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B^3 + Ebar + A + A + A^2 + A^2 |
 | C3+Ebar_16_Ebar#2#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar_16_Ebar#2#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B + B + B + B + Ebar |
-| C1+Ebar@(0,0)+Ebar@(0,35)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(0,35)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(0,35)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(0,35)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(0,35)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Bbar + F |
 | C2+Ebar@(0,0)+Ebar@(0,35)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(0,35)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(0,35)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(0,35)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + B + B + B + B + Ebar + A + A |
 | C2+Ebar@(0,0)+Ebar@(0,35)#3 | C2@(0, 0) | (-1, 49) | transmutation | [('C1', 4, 20)] | Ebar + F + C1 |
 | C3+Ebar@(0,0)+Ebar@(0,35)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -203,7 +197,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-1,39)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-1,39)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A + A + A |
 | C3+Ebar@(0,0)+Ebar@(-1,39)#3 | C3@(0, 0) | (0, 55) | transmutation | [('C2', 4, 22)] | Ebar + F + C2 |
-| C1+Ebar@(0,0)+Ebar@(-2,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-2,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-2,29)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 4, 26)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-2,29)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-2,29)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
@@ -239,7 +233,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar_14_Ebar#1 | C3@(0, 0) | (-4, 48) | transmutation | [('C1', 2, 1), ('C1', 6, 22)] | Ebar + C1 + C1 |
 | C3+Ebar_14_Ebar#2 | C3@(0, 0) | (-1, 50) | transmutation | [] | B + B + B + F |
 | C3+Ebar_14_Ebar#3 | C3@(0, 0) | (-5, 52) | fusion | [] | D1 |
-| C1+Ebar@(0,0)+Ebar@(-3,33)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-3,33)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-3,33)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C2', 1, -32)] | B^3 + B + B + B + B + C2 + A |
 | C1+Ebar@(0,0)+Ebar@(-3,33)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 6, -24)] | B^3 + B + B + B + B + C2 + A |
 | C1+Ebar@(0,0)+Ebar@(-3,33)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Bbar + F |
@@ -275,7 +269,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-4,37)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-4,37)#2 | C3@(0, 0) | (-6, 51) | fusion | [] | D1 |
 | C3+Ebar@(0,0)+Ebar@(-4,37)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | Bbar + E + A + A |
-| C1+Ebar@(0,0)+Ebar@(-5,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-5,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-5,27)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(-5,27)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(-5,27)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
@@ -299,7 +293,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-5,41)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-5,41)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A^3 |
 | C3+Ebar@(0,0)+Ebar@(-5,41)#3 | C3@(0, 0) | (0, 55) | fusion | [] | D1 |
-| C1+Ebar@(0,0)+Ebar@(-6,31)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-6,31)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-6,31)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-6,31)#2 | C1@(0, 0) | (-6, 47) | crossing | [('C1', 0, 14)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-6,31)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Bbar + F |
@@ -335,7 +329,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-7,35)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-7,35)#2 | C3@(0, 0) | (-6, 51) | transmutation | [('C1', 2, 1), ('C1', 6, 22)] | Ebar + C1 + C1 |
 | C3+Ebar@(0,0)+Ebar@(-7,35)#3 | C3@(0, 0) | (0, 55) | fusion | [] | D1 |
-| C1+Ebar@(0,0)+Ebar@(-8,25)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-8,25)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-8,25)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C3', 2, -18)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-8,25)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C3', 0, -10)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-8,25)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
@@ -359,7 +353,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-8,39)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-8,39)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A + A + A |
 | C3+Ebar@(0,0)+Ebar@(-8,39)#3 | C3@(0, 0) | (0, 55) | transmutation | [('C2', 4, 22)] | Ebar + F + C2 |
-| C1+Ebar@(0,0)+Ebar@(-9,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-9,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-9,29)#1 | C1@(0, 0) | (-2, 45) | crossing | [('C1', 4, 26)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-9,29)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-9,29)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Bbar + F |
@@ -479,12 +473,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-14,35)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-14,35)#2 | C3@(0, 0) | (-6, 51) | transmutation | [('C1', 2, 1), ('C1', 6, 22)] | Ebar + C1 + C1 |
 | C3+Ebar@(0,0)+Ebar@(-14,35)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | F + A^2 + A + A |
-| C1+Ebar@(0,0)+Ebar@(-14,49)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-14,49)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-14,49)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C3', 0, -66)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-14,49)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C3', 5, -58)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-14,49)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-14,49)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-14,49)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-14,49)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-14,49)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 2, 14)] | Ebar + F + C1 |
 | C2+Ebar@(0,0)+Ebar@(-14,49)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | F + A^5 |
 | C3+Ebar@(0,0)+Ebar@(-14,49)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -514,7 +508,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-15,39)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-15,39)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-15,39)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A + A + A |
-| C3+Ebar@(0,0)+Ebar@(-15,39)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | v-4/15s1w6 + A + A |
+| C3+Ebar@(0,0)+Ebar@(-15,39)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | E^2 + A + A |
 | C1+Ebar@(0,0)+Ebar@(-16,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + Ebar + A |
 | C1+Ebar@(0,0)+Ebar@(-16,29)#1 | C1@(0, 0) | (-2, 45) | crossing | [('C1', 4, 26)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-16,29)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
@@ -544,19 +538,19 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+Ebar@(0,0)+Ebar@(-17,33)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 4, -16)] | B^3 + B + B + B + B + C2 + A |
 | C1+Ebar@(0,0)+Ebar@(-17,33)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-17,33)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-17,33)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B + B + B + B + B + B + B + Ebar + v-4/15s1w6 + Ebar + A + A + A + A + A |
+| C2+Ebar@(0,0)+Ebar@(-17,33)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B + B + B + B + B + B + B + Ebar + E^2 + Ebar + A + A + A + A + A |
 | C2+Ebar@(0,0)+Ebar@(-17,33)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 2, 14)] | Ebar + F + C1 |
 | C2+Ebar@(0,0)+Ebar@(-17,33)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | F + A^5 |
 | C3+Ebar@(0,0)+Ebar@(-17,33)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-17,33)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-17,33)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A^3 |
 | C3+Ebar@(0,0)+Ebar@(-17,33)#3 | C3@(0, 0) | (0, 55) | transmutation | [('C1', 2, 1), ('C1', 6, 22)] | Ebar + C1 + C1 |
-| C1+Ebar@(0,0)+Ebar@(-17,47)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-17,47)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-17,47)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-17,47)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 0, 14)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-17,47)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-17,47)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-17,47)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-17,47)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-17,47)#2 | C2@(0, 0) | (-4, 47) | emission | [('C2', 0, 14)] | Ebar + Ebar + C2 |
 | C2+Ebar@(0,0)+Ebar@(-17,47)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B + Ebar + A + A + A + A + A |
 | C3+Ebar@(0,0)+Ebar@(-17,47)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -611,12 +605,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-20,31)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-20,31)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | Ebar + A + A + A |
 | C3+Ebar@(0,0)+Ebar@(-20,31)#3 | C3@(0, 0) | (0, 55) | transmutation | [('C3', 2, -22), ('C3', 6, -13), ('C2', 4, 22)] | C3 + C3 + C2 |
-| C1+Ebar@(0,0)+Ebar@(-20,45)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-20,45)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-20,45)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 4, 26)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-20,45)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-20,45)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-20,45)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-20,45)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-20,45)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-20,45)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | D1 + A |
 | C2+Ebar@(0,0)+Ebar@(-20,45)#3 | C2@(0, 0) | (-1, 49) | transmutation | [('C1', 2, 14)] | Ebar + F + C1 |
 | C3+Ebar@(0,0)+Ebar@(-20,45)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -671,12 +665,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar_19_Ebar#1 | C3@(0, 0) | (-1, 48) | emission | [('C3', 1, 10)] | Ebar + Ebar + C3 |
 | C3+Ebar_19_Ebar#2 | C3@(0, 0) | (-5, 50) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar_19_Ebar#3 | C3@(0, 0) | (-6, 54) | transmutation | [] | B + B + B + B + Ebar |
-| C1+Ebar@(0,0)+Ebar@(-23,43)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-23,43)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-23,43)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(-23,43)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | Ebar + A^5 |
 | C1+Ebar@(0,0)+Ebar@(-23,43)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-23,43)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-23,43)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-23,43)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-23,43)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + B + B + B + B + B + Ebar + A + A + A |
 | C2+Ebar@(0,0)+Ebar@(-23,43)#3 | C2@(0, 0) | (-1, 49) | transmutation | [('C1', 4, 20)] | Ebar + F + C1 |
 | C3+Ebar@(0,0)+Ebar@(-23,43)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -719,7 +713,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-25,37)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar@(0,0)+Ebar@(-25,37)#2 | C3@(0, 0) | (-6, 51) | fusion | [] | D1 |
 | C3+Ebar@(0,0)+Ebar@(-25,37)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | Ebar + A + A + A |
-| C1+Ebar@(0,0)+Ebar@(-26,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B + B + B + B + B + B + B + Ebar + v-4/15s1w6 + Ebar + A + A + A + A + A |
+| C1+Ebar@(0,0)+Ebar@(-26,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B + B + B + B + B + B + B + Ebar + E^2 + Ebar + A + A + A + A + A |
 | C1+Ebar@(0,0)+Ebar@(-26,27)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | B + G + F + A + A + A |
 | C1+Ebar@(0,0)+Ebar@(-26,27)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | E + A^3 |
 | C1+Ebar@(0,0)+Ebar@(-26,27)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
@@ -731,12 +725,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+Ebar@(-26,27)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B^3 + F |
 | C3+Ebar@(0,0)+Ebar@(-26,27)#2 | C3@(0, 0) | (-6, 51) | transmutation | [('C1', 2, 1), ('C1', 6, 22)] | Ebar + C1 + C1 |
 | C3+Ebar@(0,0)+Ebar@(-26,27)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | v-2/4s8w35 + E |
-| C1+Ebar@(0,0)+Ebar@(-26,41)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-26,41)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-26,41)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C3', 1, -42)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-26,41)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C3', 6, -34)] | B^3 + G + C3 + A |
 | C1+Ebar@(0,0)+Ebar@(-26,41)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-26,41)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-26,41)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-26,41)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-26,41)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 2, 14)] | Ebar + F + C1 |
 | C2+Ebar@(0,0)+Ebar@(-26,41)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | F + A^5 |
 | C3+Ebar@(0,0)+Ebar@(-26,41)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -755,12 +749,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar_16_Ebar#1 | C3@(0, 0) | (-3, 51) | transmutation | [] | B + B + B + B + Ebar |
 | C3+Ebar_16_Ebar#2 | C3@(0, 0) | (0, 53) | transmutation | [('C1', 6, 22)] | B + B + C1 |
 | C3+Ebar_16_Ebar#3 | C3@(0, 0) | (-1, 57) | transmutation | [] | Ebar + A + A + A |
-| C1+Ebar@(0,0)+Ebar@(-27,45)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-27,45)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-27,45)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 4, 26)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-27,45)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-27,45)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Bbar + F |
 | C2+Ebar@(0,0)+Ebar@(-27,45)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-27,45)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-27,45)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-27,45)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + G + F + A + A |
 | C2+Ebar@(0,0)+Ebar@(-27,45)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + F |
 | C3+Ebar@(0,0)+Ebar@(-27,45)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -791,12 +785,12 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar_6_Ebar#1 | C3@(0, 0) | (0, 50) | transmutation | [] | B + B + B + F |
 | C3+Ebar_6_Ebar#2 | C3@(0, 0) | (-4, 52) | transmutation | [('C1', 5, 3), ('C1', 6, 22)] | Ebar + C1 + C1 |
 | C3+Ebar_6_Ebar#3 | C3@(0, 0) | (-1, 54) | transmutation | [('C2', 6, 14)] | B + C2 |
-| C1+Ebar@(0,0)+Ebar@(-29,39)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + v-4/15s1w6 |
+| C1+Ebar@(0,0)+Ebar@(-29,39)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B^2 + E^2 |
 | C1+Ebar@(0,0)+Ebar@(-29,39)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 2, 20)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-29,39)#2 | C1@(0, 0) | (-6, 47) | emission | [('C1', 0, 14)] | Ebar + Ebar + C1 |
 | C1+Ebar@(0,0)+Ebar@(-29,39)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | B + F |
 | C2+Ebar@(0,0)+Ebar@(-29,39)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + Ebar |
-| C2+Ebar@(0,0)+Ebar@(-29,39)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + v-4/15s1w6 |
+| C2+Ebar@(0,0)+Ebar@(-29,39)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + B^2 + E^2 |
 | C2+Ebar@(0,0)+Ebar@(-29,39)#2 | C2@(0, 0) | (-4, 47) | emission | [('C2', 0, 14)] | Ebar + Ebar + C2 |
 | C2+Ebar@(0,0)+Ebar@(-29,39)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | D1 + A |
 | C3+Ebar@(0,0)+Ebar@(-29,39)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + Ebar |
@@ -953,18 +947,18 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+E@(-14,33)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + D1 |
 | C3+E@(0,0)+E@(-14,33)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + D1 |
 | C3+E@(0,0)+E@(-14,33)#1 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + D1 |
-| C1+E@(0,0)+Ebar@(0,19)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B^2 + v-4/15s1w6 + A |
+| C1+E@(0,0)+Ebar@(0,19)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B^2 + E^2 + A |
 | C1+E@(0,0)+Ebar@(0,19)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + Ebar + F + A |
 | C1+E@(0,0)+Ebar@(0,19)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | B^3 + Ebar + A + A + A |
 | C1+E@(0,0)+Ebar@(0,19)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | F + A + A^5 + A + A |
 | C2+E@(0,0)+Ebar@(0,19)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | Ebar + A^5 + A |
-| C2+E@(0,0)+Ebar@(0,19)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(0,19)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(0,19)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + B + G + F + A + A + A + A + A |
 | C2+E@(0,0)+Ebar@(0,19)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(0,19)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(0,19)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(0,19)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(0,19)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(0,19)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(0,19)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-1,23)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | F + A |
 | C1+E@(0,0)+Ebar@(-1,23)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | B^2 + Ebar + A + A |
 | C1+E@(0,0)+Ebar@(-1,23)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 3, -12)] | C2 + A^2 + A |
@@ -982,13 +976,13 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+E@(0,0)+Ebar@(-2,13)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | F + A |
 | C1+E@(0,0)+Ebar@(-2,13)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | F + A |
 | C2+E@(0,0)+Ebar@(-2,13)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + D1 + A^3 + A |
-| C2+E@(0,0)+Ebar@(-2,13)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-2,13)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-2,13)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | Bbar + Ebar |
 | C2+E@(0,0)+Ebar@(-2,13)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-2,13)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | Ebar + A + A + A + A + A |
 | C3+E@(0,0)+Ebar@(-2,13)#1 | C3@(0, 0) | (-2, 49) | transmutation | [('C1', 5, -10)] | B + C1 + A |
 | C3+E@(0,0)+Ebar@(-2,13)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(-2,13)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-2,13)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-2,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [('C2', 1, -14)] | B + G + Ebar + Ebar + C2 |
 | C1+E@(0,0)+Ebar@(-2,27)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | B + G + F + A^3 + A + A |
 | C1+E@(0,0)+Ebar@(-2,27)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | B + Ebar + A |
@@ -996,23 +990,23 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-2,27)#0 | C2@(0, 0) | (-3, 43) | emission | [('C2', 1, -11)] | Ebar + C2 + D2 |
 | C2+E@(0,0)+Ebar@(-2,27)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-2,27)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 5, 8)] | Ebar + Ebar + C1 + A |
-| C2+E@(0,0)+Ebar@(-2,27)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-2,27)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-2,27)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-2,27)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-2,27)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-2,27)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-2,27)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-2,27)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-3,17)#0 | C1@(0, 0) | (-1, 41) | transmutation | [('C2', 4, -18)] | B^2 + B^3 + C2 + A |
 | C1+E@(0,0)+Ebar@(-3,17)#1 | C1@(0, 0) | (-2, 45) | fusion | [] | Ebar |
 | C1+E@(0,0)+Ebar@(-3,17)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 3, -12)] | C2 + v2/3s10w3 |
 | C1+E@(0,0)+Ebar@(-3,17)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | F + A |
 | C2+E@(0,0)+Ebar@(-3,17)#0 | C2@(0, 0) | (-3, 43) | transmutation | [('C3', 5, -16)] | B^3 + G + C3 + A + A |
-| C2+E@(0,0)+Ebar@(-3,17)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-3,17)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-3,17)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | D1 + v2/3s10w3 |
 | C2+E@(0,0)+Ebar@(-3,17)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-3,17)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-3,17)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-3,17)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-3,17)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(-3,17)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-3,17)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-3,31)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B + B + B + B + Ebar + A + A + A^3 |
 | C1+E@(0,0)+Ebar@(-3,31)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + Ebar + F + A |
 | C1+E@(0,0)+Ebar@(-3,31)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 5, 20)] | B + v-4/15s10w21 + C2 + A |
@@ -1020,10 +1014,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-3,31)#0 | C2@(0, 0) | (-3, 43) | emission | [('C2', 1, -11)] | Ebar + C2 + D2 |
 | C2+E@(0,0)+Ebar@(-3,31)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-3,31)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | Ebar + A^5 + A |
-| C2+E@(0,0)+Ebar@(-3,31)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-3,31)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-3,31)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-3,31)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-3,31)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-3,31)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-3,31)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-3,31)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-4,21)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | D1 + A + A + A + A |
 | C1+E@(0,0)+Ebar@(-4,21)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | F + A |
@@ -1056,10 +1050,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-5,25)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | Ebar + Ebar + F |
 | C2+E@(0,0)+Ebar@(-5,25)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-5,25)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 0, 14)] | Ebar + Ebar + C1 + A |
-| C2+E@(0,0)+Ebar@(-5,25)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-5,25)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-5,25)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-5,25)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-5,25)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-5,25)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-5,25)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-5,25)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-6,29)#0 | C1@(0, 0) | (-1, 41) | emission | [('C1', 1, -32)] | Ebar + Ebar + C1 + A^2 |
 | C1+E@(0,0)+Ebar@(-6,29)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + v2/3s4w11 + A^2 + A |
@@ -1068,10 +1062,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-6,29)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | Ebar + D1 + D1 |
 | C2+E@(0,0)+Ebar@(-6,29)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-6,29)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C3', 4, -40)] | B^3 + G + C3 + A + A |
-| C2+E@(0,0)+Ebar@(-6,29)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-6,29)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-6,29)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-6,29)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-6,29)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-6,29)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-6,29)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-6,29)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E_8_Ebar#0 | C1@(0, 0) | (-4, 40) | transmutation | [] | F + A |
 | C1+E_8_Ebar#1 | C1@(0, 0) | (-1, 42) | transmutation | [] | B^3 + Ebar + A + A + A |
@@ -1104,10 +1098,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-8,23)#0 | C2@(0, 0) | (-3, 43) | emission | [('C2', 1, 8)] | B^2 + G + C2 |
 | C2+E@(0,0)+Ebar@(-8,23)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-8,23)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | Ebar + A^5 + A |
-| C2+E@(0,0)+Ebar@(-8,23)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-8,23)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-8,23)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-8,23)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-8,23)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-8,23)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-8,23)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-8,23)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-9,27)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + B + B + B + B + Ebar + A + A + A^3 |
 | C1+E@(0,0)+Ebar@(-9,27)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + Ebar + F + A |
@@ -1116,13 +1110,13 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-9,27)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | Ebar + D1 + D1 |
 | C2+E@(0,0)+Ebar@(-9,27)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-9,27)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 5, 8)] | Ebar + Ebar + C1 + A |
-| C2+E@(0,0)+Ebar@(-9,27)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-9,27)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-9,27)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-9,27)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-9,27)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-9,27)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-9,27)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-9,27)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E_13_Ebar#0 | C1@(0, 0) | (-3, 44) | transmutation | [] | B + G + F + A + A + A + A^2 |
-| C1+E_13_Ebar#1 | C1@(0, 0) | (0, 46) | transmutation | [] | v-4/15s13w13 + A |
+| C1+E_13_Ebar#1 | C1@(0, 0) | (0, 46) | transmutation | [] | E^4 + A |
 | C1+E_13_Ebar#2 | C1@(0, 0) | (-4, 48) | transmutation | [] | F + A |
 | C1+E_13_Ebar#3 | C1@(0, 0) | (-1, 50) | transmutation | [] | F + A |
 | C2+E_13_Ebar#0 | C2@(0, 0) | (0, 40) | emission | [('C2', 6, 4)] | C2 + A + A |
@@ -1133,7 +1127,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+E_13_Ebar#1 | C3@(0, 0) | (0, 50) | transmutation | [] | D1 + A + A |
 | C3+E_13_Ebar#2 | C3@(0, 0) | (-4, 52) | transmutation | [] | B^3 + Ebar + A |
 | C3+E_13_Ebar#3 | C3@(0, 0) | (-1, 54) | transmutation | [] | B + G + F + A + A + A |
-| C1+E@(0,0)+Ebar@(-10,31)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B^2 + v-4/15s1w6 + A |
+| C1+E@(0,0)+Ebar@(-10,31)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B^2 + E^2 + A |
 | C1+E@(0,0)+Ebar@(-10,31)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C2', 4, -18)] | B^2 + B^3 + C2 + A |
 | C1+E@(0,0)+Ebar@(-10,31)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | B^3 + Ebar + A + A + A |
 | C1+E@(0,0)+Ebar@(-10,31)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | F + A + A^5 + A + A |
@@ -1149,26 +1143,26 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+E_12_Ebar#1 | C1@(0, 0) | (-1, 42) | fusion | [] | Ebar |
 | C1+E_12_Ebar#2 | C1@(0, 0) | (-2, 46) | transmutation | [('C2', 3, -12)] | C2 + A^2 + A |
 | C1+E_12_Ebar#3 | C1@(0, 0) | (0, 52) | transmutation | [('C2', 0, -16)] | B^2 + B^3 + C2 + A |
-| C2+E_12_Ebar#0 | C2@(0, 0) | (-2, 40) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E_12_Ebar#0 | C2@(0, 0) | (-2, 40) | transmutation | [] | B^2 + E^2 |
 | C2+E_12_Ebar#1 | C2@(0, 0) | (-3, 44) | transmutation | [] | B^2 + Ebar + A |
 | C2+E_12_Ebar#2 | C2@(0, 0) | (0, 46) | emission | [('C2', 0, -14)] | B^3 + B + B + B + B + C2 + A + A |
 | C2+E_12_Ebar#3 | C2@(0, 0) | (-1, 50) | transmutation | [] | B^3 + Ebar + A + A |
-| C3+E_12_Ebar#0 | C3@(0, 0) | (-4, 44) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E_12_Ebar#0 | C3@(0, 0) | (-4, 44) | transmutation | [] | G + E^2 |
 | C3+E_12_Ebar#1 | C3@(0, 0) | (-1, 46) | transmutation | [] | B^3 + Ebar + A |
-| C3+E_12_Ebar#2 | C3@(0, 0) | (-2, 50) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E_12_Ebar#2 | C3@(0, 0) | (-2, 50) | transmutation | [] | B^3 + E^2 |
 | C3+E_12_Ebar#3 | C3@(0, 0) | (0, 56) | transmutation | [] | G + Ebar + A |
 | C1+E@(0,0)+Ebar@(-11,35)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + G + F + A^3 + A + A |
 | C1+E@(0,0)+Ebar@(-11,35)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C2', 2, -18)] | B + G + Ebar + Ebar + C2 |
 | C1+E@(0,0)+Ebar@(-11,35)#2 | C1@(0, 0) | (-6, 47) | fusion | [] | Ebar |
 | C1+E@(0,0)+Ebar@(-11,35)#3 | C1@(0, 0) | (0, 51) | transmutation | [] | Ebar + A^4 + A^2 + A |
 | C2+E@(0,0)+Ebar@(-11,35)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | Ebar + A^5 + A |
-| C2+E@(0,0)+Ebar@(-11,35)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-11,35)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-11,35)#2 | C2@(0, 0) | (-4, 47) | emission | [('C2', 1, -11)] | Ebar + C2 + D2 |
 | C2+E@(0,0)+Ebar@(-11,35)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-11,35)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-11,35)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-11,35)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-11,35)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(-11,35)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-11,35)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-12,25)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | Bbar + F + A + A |
 | C1+E@(0,0)+Ebar@(-12,25)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + v2/3s4w11 + A^2 + A |
 | C1+E@(0,0)+Ebar@(-12,25)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | B + Ebar + A |
@@ -1176,10 +1170,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+E@(0,0)+Ebar@(-12,25)#0 | C2@(0, 0) | (-3, 43) | fusion | [] | F |
 | C2+E@(0,0)+Ebar@(-12,25)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-12,25)#2 | C2@(0, 0) | (-4, 47) | transmutation | [('C1', 0, 14)] | Ebar + Ebar + C1 + A |
-| C2+E@(0,0)+Ebar@(-12,25)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-12,25)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-12,25)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-12,25)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-12,25)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-12,25)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-12,25)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-12,25)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-13,29)#0 | C1@(0, 0) | (-1, 41) | transmutation | [('C2', 4, -18)] | B^2 + B^3 + C2 + A |
 | C1+E@(0,0)+Ebar@(-13,29)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | B^3 + Ebar + A + A + A |
@@ -1193,42 +1187,42 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+E@(0,0)+Ebar@(-13,29)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
 | C3+E@(0,0)+Ebar@(-13,29)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-13,29)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
-| C1+E@(0,0)+Ebar@(-14,19)#0 | C1@(0, 0) | (-1, 41) | fusion | [] | v-4/15s7w9 |
+| C1+E@(0,0)+Ebar@(-14,19)#0 | C1@(0, 0) | (-1, 41) | fusion | [] | E^3 |
 | C1+E@(0,0)+Ebar@(-14,19)#1 | C1@(0, 0) | (-2, 45) | transmutation | [('C2', 5, 6)] | E + Ebar + C2 + A |
 | C1+E@(0,0)+Ebar@(-14,19)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | B + B + B + B + D1 + A |
 | C1+E@(0,0)+Ebar@(-14,19)#3 | C1@(0, 0) | (0, 51) | transmutation | [('C2', 2, -7), ('C2', 6, 8)] | F + C2 + C2 |
-| C2+E@(0,0)+Ebar@(-14,19)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-14,19)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-14,19)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + Ebar + A |
 | C2+E@(0,0)+Ebar@(-14,19)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + F + A |
-| C2+E@(0,0)+Ebar@(-14,19)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + v-4/15s1w6 |
-| C3+E@(0,0)+Ebar@(-14,19)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-14,19)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + E^2 |
+| C3+E@(0,0)+Ebar@(-14,19)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-14,19)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-14,19)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-14,19)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + E^2 |
 | C3+E@(0,0)+Ebar@(-14,19)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + Ebar + A |
 | C1+E@(0,0)+Ebar@(-14,33)#0 | C1@(0, 0) | (-1, 41) | transmutation | [('C2', 0, -36)] | B + B + B + B + B + Ebar + F + C2 + A + A |
 | C1+E@(0,0)+Ebar@(-14,33)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | B^3 + Ebar + A + A + A |
 | C1+E@(0,0)+Ebar@(-14,33)#2 | C1@(0, 0) | (-6, 47) | transmutation | [('C2', 1, 14)] | B + B + B + B + C2 |
 | C1+E@(0,0)+Ebar@(-14,33)#3 | C1@(0, 0) | (0, 51) | transmutation | [('C2', 1, 12)] | B^2 + C2 + v2/3s4w4 + A |
 | C2+E@(0,0)+Ebar@(-14,33)#0 | C2@(0, 0) | (-3, 43) | emission | [('C2', 6, -38)] | B^3 + B + B + B + B + C2 + A + A |
-| C2+E@(0,0)+Ebar@(-14,33)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-14,33)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-14,33)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | Ebar + Ebar + F |
 | C2+E@(0,0)+Ebar@(-14,33)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-14,33)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-14,33)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-14,33)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-14,33)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(-14,33)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-14,33)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-15,37)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | Ebar + v2/3s4w11 + A^2 + A |
 | C1+E@(0,0)+Ebar@(-15,37)#1 | C1@(0, 0) | (-2, 45) | emission | [('C1', 2, -36)] | Ebar + Ebar + C1 + A^2 |
-| C1+E@(0,0)+Ebar@(-15,37)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | v-4/15s5w16 + A^2 |
+| C1+E@(0,0)+Ebar@(-15,37)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | E^5 + A^2 |
 | C1+E@(0,0)+Ebar@(-15,37)#3 | C1@(0, 0) | (0, 51) | transmutation | [('C2', 3, -12)] | C2 + A^2 + A |
 | C2+E@(0,0)+Ebar@(-15,37)#0 | C2@(0, 0) | (-3, 43) | transmutation | [('C1', 0, 14)] | Ebar + Ebar + C1 + A |
-| C2+E@(0,0)+Ebar@(-15,37)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + v-4/15s1w6 |
+| C2+E@(0,0)+Ebar@(-15,37)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + E^2 |
 | C2+E@(0,0)+Ebar@(-15,37)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | Ebar + Ebar + F |
 | C2+E@(0,0)+Ebar@(-15,37)#3 | C2@(0, 0) | (-1, 49) | transmutation | [] | B^2 + Ebar + A |
 | C3+E@(0,0)+Ebar@(-15,37)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + Ebar + A |
-| C3+E@(0,0)+Ebar@(-15,37)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-15,37)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | G + E^2 |
 | C3+E@(0,0)+Ebar@(-15,37)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | B^3 + Ebar + A |
-| C3+E@(0,0)+Ebar@(-15,37)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + v-4/15s1w6 |
+| C3+E@(0,0)+Ebar@(-15,37)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + E^2 |
 | C1+E@(0,0)+Ebar@(-16,41)#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | B + G + F + A + A + A + A + A |
 | C1+E@(0,0)+Ebar@(-16,41)#1 | C1@(0, 0) | (-2, 45) | transmutation | [] | Ebar + v2/3s4w11 + A^2 + A |
 | C1+E@(0,0)+Ebar@(-16,41)#2 | C1@(0, 0) | (-6, 47) | transmutation | [] | E + A^2 + A + A + A |
@@ -1316,7 +1310,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+Ebar_10_E#0 | C1@(0, 0) | (-4, 40) | fusion | [] | Ebar |
 | C1+Ebar_10_E#1 | C1@(0, 0) | (-1, 42) | transmutation | [] | Ebar + v2/3s6w13#2 + A |
 | C1+Ebar_10_E#2 | C1@(0, 0) | (-2, 46) | transmutation | [] | B + F + A + A |
-| C1+Ebar_10_E#3 | C1@(0, 0) | (0, 52) | transmutation | [] | B^2 + v-4/15s1w6 + A |
+| C1+Ebar_10_E#3 | C1@(0, 0) | (0, 52) | transmutation | [] | B^2 + E^2 + A |
 | C2+Ebar_10_E#0 | C2@(0, 0) | (-4, 34) | transmutation | [] | Bbar + Bbar + F + A + A |
 | C2+Ebar_10_E#1 | C2@(0, 0) | (-1, 36) | transmutation | [('C1', 5, 8)] | Ebar + Ebar + C1 + A |
 | C2+Ebar_10_E#2 | C2@(0, 0) | (-2, 40) | transmutation | [] | B + B + B + E |
@@ -1400,7 +1394,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C1+Ebar_6_E#0 | C1@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + B + B + B + D1 + A^2 + A |
 | C1+Ebar_6_E#1 | C1@(0, 0) | (0, 45) | transmutation | [] | F + A |
 | C1+Ebar_6_E#2 | C1@(0, 0) | (-4, 47) | transmutation | [] | F + A |
-| C1+Ebar_6_E#3 | C1@(0, 0) | (-1, 49) | transmutation | [] | B + v-4/15s7w9 + A |
+| C1+Ebar_6_E#3 | C1@(0, 0) | (-1, 49) | transmutation | [] | B + E^3 + A |
 | C2+Ebar_6_E#0 | C2@(0, 0) | (-1, 43) | transmutation | [] | Ebar + D1 + D2 + A |
 | C2+Ebar_6_E#1 | C2@(0, 0) | (-2, 47) | emission | [('C2', 3, 4)] | Bbar + B + C2 + A + A + A + A |
 | C2+Ebar_6_E#2 | C2@(0, 0) | (-6, 49) | transmutation | [] | B + G + F + A + A + A + A |
@@ -1452,7 +1446,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C2+Ebar@(0,0)+E@(-9,29)#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + B + B + E |
 | C2+Ebar@(0,0)+E@(-9,29)#1 | C2@(0, 0) | (0, 45) | transmutation | [] | Bbar + B + F + A + A |
 | C2+Ebar@(0,0)+E@(-9,29)#2 | C2@(0, 0) | (-4, 47) | transmutation | [] | B + G + F + A + A + A + A |
-| C2+Ebar@(0,0)+E@(-9,29)#3 | C2@(0, 0) | (-1, 49) | emission | [('C2', 2, 40)] | Ebar + v-4/15s1w6 + C2 + A |
+| C2+Ebar@(0,0)+E@(-9,29)#3 | C2@(0, 0) | (-1, 49) | emission | [('C2', 2, 40)] | Ebar + E^2 + C2 + A |
 | C3+Ebar@(0,0)+E@(-9,29)#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | B + B + B + B + E |
 | C3+Ebar@(0,0)+E@(-9,29)#1 | C3@(0, 0) | (-2, 49) | transmutation | [] | B + B + B + B + E |
 | C3+Ebar@(0,0)+E@(-9,29)#2 | C3@(0, 0) | (-6, 51) | transmutation | [] | E + Aw2 + A |
@@ -1579,16 +1573,10 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+Ebar@(0,0)+E@(-14,35)#3 | C3@(0, 0) | (0, 55) | transmutation | [] | B^2 + F + A |
 | C1+B^2#0 | C1@(0, 0) | (0, 43) | fusion | [] | D1 |
 | C1+B^3#0 | C1@(0, 0) | (0, 49) | fusion | [] | E |
-| C1+v-4/15s1w6#0 | C1@(0, 0) | (-1, 42) | transmutation | [('C2', 3, -12)] | C2 + D2 |
-| C1+v-4/15s1w6#1 | C1@(0, 0) | (0, 52) | transmutation | [] | Ebar + F |
 | C2+B^2#0 | C2@(0, 0) | (0, 51) | fusion | [] | E |
 | C2+B^3#0 | C2@(0, 0) | (0, 43) | transmutation | [] | Ebar + A |
-| C2+v-4/15s1w6#0 | C2@(0, 0) | (-2, 40) | fusion | [] | B^2 |
-| C2+v-4/15s1w6#1 | C2@(0, 0) | (0, 46) | transmutation | [('C1', 5, 1)] | Ebar + C1 |
-| C3+B^2#0 | C3@(0, 0) | (0, 47) | fusion | [] | v-4/15s1w6 |
-| C3+B^3#0 | C3@(0, 0) | (0, 53) | fusion | [] | v-4/15s7w9 |
-| C3+v-4/15s1w6#0 | C3@(0, 0) | (-1, 46) | fusion | [] | B^3 |
-| C3+v-4/15s1w6#1 | C3@(0, 0) | (0, 56) | fusion | [] | G |
+| C3+B^2#0 | C3@(0, 0) | (0, 47) | fusion | [] | E^2 |
+| C3+B^3#0 | C3@(0, 0) | (0, 53) | fusion | [] | E^3 |
 | A^2+C1#0 | C1@(0, 48) | (0, 0) | fusion | [] | Ebar |
 | A^2+C2#0 | C2@(0, 48) | (0, 0) | fusion | [] | F |
 | A^2+C3#0 | C3@(0, 46) | (0, 0) | fusion | [('C1', 4, 48)] | C1 |
@@ -1601,3 +1589,57 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | A^4+C1#0 | C1@(0, 54) | (0, 0) | fusion | [] | E |
 | A^4+C2#0 | C2@(0, 54) | (0, 0) | transmutation | [] | Ebar + A |
 | A^4+C3#0 | C3@(0, 52) | (0, 0) | fusion | [] | Ebar |
+| C1+E#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | Ebar + F + A |
+| C1+E#1 | C1@(0, 0) | (0, 51) | transmutation | [('C2', 3, -12)] | C2 + D2 + A |
+| C2+E#0 | C2@(0, 0) | (-3, 43) | transmutation | [('C1', 5, 1)] | Ebar + C1 + A |
+| C2+E#1 | C2@(0, 0) | (0, 45) | transmutation | [] | B^2 + A |
+| C3+E#0 | C3@(0, 0) | (-1, 45) | transmutation | [] | G + A |
+| C3+E#1 | C3@(0, 0) | (0, 55) | transmutation | [] | B^3 + A |
+| C1+E^2#0 | C1@(0, 0) | (-1, 42) | transmutation | [('C2', 3, -12)] | C2 + D2 |
+| C1+E^2#1 | C1@(0, 0) | (0, 52) | transmutation | [] | Ebar + F |
+| C2+E^2#0 | C2@(0, 0) | (-2, 40) | fusion | [] | B^2 |
+| C2+E^2#1 | C2@(0, 0) | (0, 46) | transmutation | [('C1', 5, 1)] | Ebar + C1 |
+| C3+E^2#0 | C3@(0, 0) | (-1, 46) | fusion | [] | B^3 |
+| C3+E^2#1 | C3@(0, 0) | (0, 56) | fusion | [] | G |
+| C1+E^3#0 | C1@(0, 0) | (0, 40) | emission | [('C1', 5, 1)] | Ebar + C1 |
+| C1+E^3#1 | C1@(0, 0) | (-5, 46) | fusion | [] | A + A + A + A + A |
+| C2+E^3#0 | C2@(0, 0) | (-2, 42) | emission | [('C2', 3, -15)] | B + B + Bbar + F + C2 + A^4 |
+| C2+E^3#1 | C2@(0, 0) | (0, 48) | fusion | [] | B + B + B |
+| C3+E^3#0 | C3@(0, 0) | (0, 44) | transmutation | [] | Ebar + D1 |
+| C3+E^3#1 | C3@(0, 0) | (-5, 50) | fusion | [] | B + B + B + B |
+| C1+E^4#0 | C1@(0, 0) | (0, 43) | transmutation | [] | E + D2 |
+| C1+E^4#1 | C1@(0, 0) | (-4, 45) | transmutation | [('C2', 3, -5)] | B^2 + E + C2 |
+| C2+E^4#0 | C2@(0, 0) | (-1, 41) | transmutation | [('C3', 3, 7)] | Ebar + C3 |
+| C2+E^4#1 | C2@(0, 0) | (0, 51) | fusion | [] | B + B + B + B |
+| C3+E^4#0 | C3@(0, 0) | (0, 47) | transmutation | [] | F + D2 + A |
+| C3+E^4#1 | C3@(0, 0) | (-4, 49) | fusion | [] | B + B + B + B + B |
+| C1+E^5#0 | C1@(0, 0) | (0, 40) | transmutation | [] | E + Ebar + A |
+| C1+E^5#1 | C1@(0, 0) | (-5, 46) | fusion | [('C1', 2, -8), ('C1', 1, 5)] | C1 + C1 |
+| C2+E^5#0 | C2@(0, 0) | (-2, 42) | transmutation | [] | v-2/4s8w41 + A |
+| C2+E^5#1 | C2@(0, 0) | (0, 48) | fusion | [] | B + B + B + B + B |
+| C3+E^5#0 | C3@(0, 0) | (0, 44) | fusion | [] | A |
+| C3+E^5#1 | C3@(0, 0) | (-5, 50) | fusion | [] | v-2/4s8w27 |
+| C1+E^6#0 | C1@(0, 0) | (-3, 42) | fusion | [] | E + Ebar |
+| C1+E^6#1 | C1@(0, 0) | (0, 44) | transmutation | [] | F + D1 |
+| C2+E^6#0 | C2@(0, 0) | (-1, 42) | fusion | [] | B + B + B + B + B + B |
+| C2+E^6#1 | C2@(0, 0) | (0, 52) | transmutation | [('C3', 4, -52), ('C3', 1, -43)] | B + C3 + C3 + A + A + A |
+| C3+E^6#0 | C3@(0, 0) | (-3, 46) | transmutation | [('C1', 3, -10)] | C1 + D2 |
+| C3+E^6#1 | C3@(0, 0) | (0, 48) | fusion | [] | v-2/4s0w31 |
+| C1+E^7#0 | C1@(0, 0) | (-2, 43) | emission | [('C1', 2, -8)] | C1 + D1 |
+| C1+E^7#1 | C1@(0, 0) | (0, 49) | transmutation | [] | E + F |
+| C2+E^7#0 | C2@(0, 0) | (-3, 41) | fusion | [] | v-2/4s0w35#2 |
+| C2+E^7#1 | C2@(0, 0) | (0, 43) | transmutation | [] | B + E + Ebar + A + A + A + A + A + A |
+| C3+E^7#0 | C3@(0, 0) | (-2, 47) | fusion | [] | v-2/4s6w35 |
+| C3+E^7#1 | C3@(0, 0) | (0, 53) | transmutation | [('C1', 2, 15)] | Ebar + C1 + A |
+| C1+E^8#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | E^2 + F |
+| C1+E^8#1 | C1@(0, 0) | (0, 51) | transmutation | [] | B^2 + A + A |
+| C2+E^8#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + Bbar + B + v-14/42s10w13 + G + Ebar + F + A + A + A |
+| C2+E^8#1 | C2@(0, 0) | (0, 45) | fusion | [] | v-2/4s6w39 |
+| C3+E^8#0 | C3@(0, 0) | (-1, 45) | transmutation | [('C1', 5, 3)] | Ebar + C1 |
+| C3+E^8#1 | C3@(0, 0) | (0, 55) | fusion | [] | v-2/4s12w40 |
+| C1+E^9#0 | C1@(0, 0) | (-1, 42) | transmutation | [] | B + B + B + A^2 |
+| C1+E^9#1 | C1@(0, 0) | (0, 52) | transmutation | [('C2', 4, 3)] | E + C2 |
+| C2+E^9#0 | C2@(0, 0) | (-2, 40) | fusion | [] | v-2/4s12w43 |
+| C2+E^9#1 | C2@(0, 0) | (0, 46) | transmutation | [('C1', 1, 11)] | B + Ebar + C1 + A |
+| C3+E^9#0 | C3@(0, 0) | (-1, 46) | fusion | [] | v-2/4s4w45 |
+| C3+E^9#1 | C3@(0, 0) | (0, 56) | transmutation | [('C1', 3, 5)] | F + C1 |

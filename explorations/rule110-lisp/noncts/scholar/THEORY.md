@@ -306,11 +306,27 @@ finds no cycle with nonzero net change. So crossing-only registers store a
 bounded amount (one bit for a C1 pair), never an unbounded count. My own
 observation that one Ebar can move two C1 markers by +6, 0 or -6
 (`dist_register.py`) is consistent with this: it is the 1-bit residue, not a
-counter. **[sim, architect; consistent with my data]** Counting needs
-reactions that create or destroy units.
+counter; my `transducer.py` re-derives the same structure independently
+(all 16 residue-class entries are functions; two residues, moves +6, -6,
+idle). **[sim, architect; confirmed by me]**
+
+*Multi-body packets do count (architect, correcting the above).* Tight
+Ebar pairs act on an F differently from two independent Ebars, and with
+them the gap between two F's does wind: three-packet sequences give INC and
+DEC of a two-F register by a fixed lattice vector, returning the phase
+residue, so the same packets work at every value, with nothing created or
+destroyed. **[sim, architect; confirmed by me]** `check_xcounter.py`
+evolves architect's schedules with `engine.step` and checks both F's
+cell-exact with ether context: INC^k DEC^k for k = 1, 4, 6 and mixed
+strings pass; a control with one packet shifted by (3,2) fails. Scope:
+each packet is placed relative to the front marker's current position (a
+history-aware schedule), not yet a fixed periodic stream.
+
+So the correct statement is: single-glider crossings cannot count;
+multi-body crossings can; reactions (unit creation and destruction) can.
 
 *The E_n counter.* Cook's extendible glider E_n (period (15,-4) for every
-n) is such a unit store. **[sim]** (inline runs, `ecount.py`):
+n) is a reaction-based unit store (collider verified it end to end as well). **[sim]** (inline runs, `ecount.py`):
 
 - INC: B + E_n -> E_{n+1}. B x E has |det| = 14, a single class, so the
   increment is timing-free. The width grows by 6 per B (B's own width), and
@@ -321,18 +337,13 @@ n) is such a unit store. **[sim]** (inline runs, `ecount.py`):
 - Zero test: A + E_1 -> C3 or D1, never an E. C3 + B -> E (single class)
   re-creates a zero counter from the answer.
 
-Access geometry: B's reach E_n only from the right and are absorbed there;
-A's reach it only from the left. So one E_n is a counter incremented from
-one side and decremented and tested from the other, which is the same
-two-ended access that makes Cook's tape a queue. Two such counters again
-need addressing (which side can reach which counter), and an E_n moves with
-the Ebar stream (same speed), so it can travel inside the program stream.
-Checked (`ecross.py`, `abundle_e.py`, `gprobe.py`): no right-mover
-increments E_n (A, tight A^2..A^5, D1, D2; A^2 + E_3 -> E_1 decrements by
-two), so access is strictly two-sided: INC from the right, DEC and zero
-test from the left. G (speed -1/3, from the right) passes E_2 and E_3
-unchanged in every class tried (84 and 16 samples) and reacts with E_1, so
-G is a zero probe from the right that leaves nonzero counters intact.
+Access geometry: B's (INC) and G's (DEC, class-free, answer A^3 goes back
+right) both reach E_n from the right, so a single E_n is a complete
+one-sided counter for a program stream arriving from the right (collider's
+observation). A's reach it only from the left (DEC in one class). Two such
+counters still need addressing, because neither B nor G passes an E_n; an
+E_n moves with the Ebar stream (same speed), so it can travel inside the
+program stream.
 
 ---
 

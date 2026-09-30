@@ -77,3 +77,25 @@ C1-pair register is a 2-residue (1-bit) system.
 
 Current design questions: addressing (single-glider commands cannot pick
 one lane object among others), answer latency from deep stores.
+
+~12:00 multibody.py: 8 of 181 F x (Ebar pair) collisions are genuinely
+multi-body (F displacement != sequential prediction). winding3.py (uses
+collider predict.py): with pairs, 181 winding transitions. Shortest
+cycles (3 packets) = INC (gap +9.33) and DEC (-9.33).
+xcounter.py long: INC^1..6, DEC^1..6: 12/12 exact. Earlier failure with
+packets 6 F-periods apart was mover interference; 20 periods is clean.
+DEC at n = 0 is also clean (goes to n = -1, gap 33.67).
+
+~13:00 Balanced drift: T-drift mod L_FE: INC (4,10)/12, DEC (9,6)/12,
+lane Ebar f3 (5,8)/12, identity mover c = pair(-1,25)@(-17,67) (10,10)/12.
+INC + lane = DEC; NOP = c + 7 lanes = DEC. Equal drift mod L suffices:
+a lattice difference in T's true position only translates collisions
+by periods (predict.py's translation rule).
+xstream.py: FIXED stream (slot j at j*delta, placement independent of
+history), 6 random 8-instruction programs of INC'/DEC/NOP: 6/6 exact.
+
+~13:30 Below zero: DEC from n=-1 leaves the F's as a close compound
+(F_19_F, gap 19) with only Ebar debris; DEC^3 from 0 explodes. Plan:
+value 0 := n = -1; DEC at 0 -> abnormal compound; a PROBE packet should
+restore gap 33.67 and emit a messenger (probe_search.py running, the
+only heavy job, per the lead's CPU request).

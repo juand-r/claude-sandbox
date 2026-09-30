@@ -77,8 +77,8 @@ def check(program, n0=0):
     (tp, xp), (tt, xt) = fs
     D = (tt - tp, xt - xp)
     want = (n * -24, 43 + n * 12)
-    same = class_key((D[0] - want[0], D[1] - want[1]), PF, (36, -4)) == (0, 0) or \
-        ((D[0] - want[0]) % 36 == 0 and (D[1] - want[1]) == -4 * ((D[0] - want[0]) // 36))
+    d = (D[0] - want[0], D[1] - want[1])
+    same = d[0] % 36 == 0 and d[1] == -4 * (d[0] // 36)   # equal up to F's period
     return same, f"n={n} D={D} want {want}"
 
 

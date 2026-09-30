@@ -132,7 +132,11 @@ F15 differential crossing displacement: Ebar across two C1 markers changes their
 | spec F: E-E packet + F -> C3 alone (synth, collider) | CONFIRMED (2 packets) | check_specf.py |
 | G-mirror, Ebar untouched (collider) | CONFIRMED (56 exact, 22 displaced) | check_gmirror.py |
 | C1 eats Ebar pairs (collider) | CONFIRMED (12 combos) | check_eater.py |
-| order-independent lane C1/F/Ebar (architect) | running | check_yb2.py |
+| order-independent lane C1/F/Ebar (architect) | CONFIRMED 10/10, control 0/10 | check_yb2.py |
+| no winding for single-glider crossings (architect) | CONFIRMED for C1 markers (2 residues, +-6) | transducer.py |
+| multi-body crossing counter on an F pair (architect) | CONFIRMED (7 op strings; control fails) | check_xcounter.py |
+| E^n counter end to end (collider) | AGREES with my ecount.py | ecount.py |
+| E^n + G -> E^(n-1) + A^3, class-free (collider, synth) | CONFIRMED n=2..4 (30/30); my earlier "G passes" RETRACTED (run too short) | inline re-run |
 - 04:03 check_yb2.py: architect's YB lane (C1 x F#1, F x Ebar#3, C1 x Ebar#1;
   4 F, 1 C1, 16 Ebar; messenger shifted a*(30,-8), a=0..36 step 4) evaluated with MY
   evolution + typer: 10/10 CLEAN. Negative control (C2 x F#1, F x Ebar#8, C2 x Ebar#2,
@@ -194,3 +198,21 @@ Main points:
   outcomes depending on G phase): the G displaces the counter and shifts its class for
   the A stream by a G-class-dependent amount. Stopped part 2 at n=3 (lead: CPU budget).
 - Lead asked: one heavy process per agent.
+- 04:22 check_xcounter.py: architect's crossing-only F-pair counter VERIFIED with
+  engine.step + my census + cell-exact F check WITH 28 cells of ether context (a first
+  version compared only the 2-bit F core and passed a broken control; fixed). Passing:
+  INC^1 DEC^1, INC^4 DEC^4, INC^6 DEC^6, IIIII, IIDIDD, IDIDIIIDDD, IIIIIIIII (both F's
+  exactly at predicted cells; only Ebar-speed debris). Control (last mover shifted by
+  (3,2)): F's gone, D1 + A^2 appear -> FAIL as it should.
+F20 architect's multi-body crossing counter verified (scope: packets placed relative to
+    the current front marker, as architect states).
+- 04:26 RETRACTION (mine): "G passes E_n" and "G probe displaces the DEC class"
+  were artefacts: the G never reached E_n within T (relative speed 1/15, 150+ cells).
+  Correct (re-run, 30/30 each): E_n + G -> E_{n-1} + A^3 for n = 2, 3, 4 (collider, synth).
+  LESSON: "same objects at T-150 and T" does not prove a collision happened. For any
+  crossing claim, compute the meeting time or check displacement.
+F19 corrected: E_n: INC = B (right), DEC = A (left, one class) or G (right, class-free,
+    emits A^3); zero: A + E_1 -> C3, G + E_1 -> A^3 + C3 | F | A^4 + E.
+- Audit after the G artefact: every other "clean"/"crossing" claim I made was checked for
+  contact before T (meeting time vs T, or products/displacements that prove contact).
+  Only the G + E_n runs were affected.

@@ -59,7 +59,10 @@ only slip 4, only two packets, both E pairs (collider's names):
 Each gives F + P -> C3 alone (slip 13 + 4 = 3). For E@(0,0)+E@(-13,15)
 (cells 00000111110000000010 on [0,20), my-phase 0 left / 4 right,
 (15,-4)-periodic) this happens in exactly 1 of its 6 classes vs F.
-No packet of width <= 20 leaves C1 or C2 (or any other messenger).
+No packet of width <= 20 leaves C1 or C2 (or any other messenger);
+complete sweep, 168 instances. Neither E pair crosses F cleanly in any of
+its 6 classes, so no packet <= 20 wide can decrement one F store while
+crossing another (phase addressing).
 
 ## 5. Right-moving A-packets can cross stationary C cells (fuel cost)
 
@@ -98,4 +101,31 @@ these bounds the fuel-paying crossing is one cell deep.
 copyspec.py: P + F -> F (untouched, same cells) + a second F exactly 29
 cells to the right in the same phase (architect's clean train gap):
 UNSAT for all free (30,-8)-trains P <= 20 wide (slip forced 13), all 12
-classes, T2 = 300.
+classes, T2 = 300. Also UNSAT with the new F anywhere to the right.
+
+## 9. E_n counters (scholar's one-glider unary counter)
+
+en.py builds E_n = E + (n-1) B's by simulation (verified (15,-4)-periodic;
+slips 9, 1, 7, 13, 5 for n = 1..5). B-trains are single-class against
+E_n (|det((4,-2),(15,-4))| = 14).
+- Control: a free B-train (<= 10 wide, slip 6) mapping E_1 -> E_2 and
+  E_2 -> E_3 is found (= a single B), verified.
+- DEC from the right: no free B-train <= 32 wide maps E_2 -> E_1 (alone),
+  none maps E_3 -> E_2 (alone), none does both (slip forced 8; T2 = 400;
+  moving window, margin 24). So with B-speed packets a counter can only be
+  decremented from the left (scholar's A + E_n -> E_{n-1}).
+
+## 10. Slip mod 14 is the ONLY linear conservation law of glider collisions
+
+invariants.py: from collider's verified catalog (reactions.json, 874
+reactions whose inputs and outputs are all named gliders A, B, Bbar, Bhat,
+C1-3, D1, D2, E, Ebar, F, G, H or tight bundles A^2..A^5, B^2, B^3, E^2,
+E^3; 597 distinct count vectors), the Smith normal form of the reaction
+matrix over Z is diag(1, ..., 1, 14) with full rank 22. So:
+- there is no exact integer conservation law (no conserved "number of"
+  anything, even with weights);
+- the only law mod m for any m is a multiple of one Z_14 law, and slip
+  (ether offset) satisfies all 855 reaction rows, so slip mod 14 is it.
+Scope: laws that are linear in the counts of glider types. Laws involving
+positions/phases (e.g. architect's conjectured "phase potential" behind
+no-winding) are not excluded; this says such a law cannot be a count.

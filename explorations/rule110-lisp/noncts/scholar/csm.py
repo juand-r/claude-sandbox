@@ -217,3 +217,98 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# ---------------------------------------------------------------- gated CSM
+# Physically motivated variant (collider's E^n answer: A^3 when the counter
+# was nonzero, A^4 when zero, turned into skips by absorbers): the program is
+# a cyclic list of BLOCKS separated by gates; a DEC can only end a block, and
+# its answer deletes b following blocks if the register was nonzero and
+# b + 1 blocks if it was zero. The two skip lengths are NOT independent.
+#   blocks: list of lists of packets; packets ("INC", r) | ("DEC", r, b) |
+#   ("HALT",)
+
+def run_gated(blocks, regs, max_executed):
+    regs = list(regs)
+    nb = len(blocks)
+    bi, executed = 0, 0
+    while executed < max_executed:
+        skip = 0
+        for p in blocks[bi]:
+            executed += 1
+            if p[0] == "HALT":
+                return regs, executed, True
+            if p[0] == "INC":
+                regs[p[1]] += 1
+            elif p[0] == "DEC":
+                _, r, b = p
+                if regs[r] == 0:
+                    skip = b + 1
+                else:
+                    regs[r] -= 1
+                    skip = b
+            else:
+                raise ValueError(p)
+        bi = (bi + 1 + skip) % nb
+    return regs, executed, False
+
+
+def compile_gated(prog, scratch=0):
+    """Minsky -> gated CSM. Each Minsky instruction i becomes:
+      HALT:            [HALT]
+      INC r, j:        [INC r, INC s, DEC s -> j]    (fall through if j = i+1)
+      DEC r, jp, jz:   [DEC r, b=0]  [INC s, DEC s -> jp]  [INC s, DEC s -> jz]
+    The nonzero answer skips 0 blocks (runs the jp trampoline), the zero
+    answer skips 1 block (runs the jz trampoline). A trampoline's DEC s
+    follows INC s, so its nonzero branch is certain and s is restored."""
+    layout = []            # (kind, data) per block, symbolic targets
+    first = []             # first block index of each Minsky instruction
+    for i, ins in enumerate(prog):
+        first.append(len(layout))
+        if ins[0] == "HALT":
+            layout.append(("HALT",))
+        elif ins[0] == "INC":
+            layout.append(("INCJ", ins[1], ins[2], i))
+        else:
+            _, r, jp, jz = ins
+            layout.append(("DEC", r))
+            layout.append(("TRAMP", jp))
+            layout.append(("TRAMP", jz))
+    nb = len(layout)
+    blocks = []
+    for k, item in enumerate(layout):
+        if item[0] == "HALT":
+            blocks.append([("HALT",)])
+        elif item[0] == "DEC":
+            blocks.append([("DEC", item[1], 0)])
+        elif item[0] == "TRAMP":
+            b = (first[item[1]] - k - 1) % nb
+            blocks.append([("INC", scratch), ("DEC", scratch, b)])
+        else:
+            _, r, j, i = item
+            if j == i + 1 and first[j] == k + 1:
+                blocks.append([("INC", r)])
+            else:
+                b = (first[j] - k - 1) % nb
+                blocks.append([("INC", r), ("INC", scratch), ("DEC", scratch, b)])
+    return blocks
+
+
+def test_gated(n_random=400, seed=2):
+    rng = random.Random(seed)
+    fails, total = 0, 0
+    budget = 2000
+    for _ in range(n_random):
+        prog = random_minsky(rng.randrange(2, 9), rng=rng)
+        regs = [rng.randrange(4), rng.randrange(4)]
+        mreg, ms, mh = run_minsky(prog, regs, 10 * budget)
+        blocks = compile_gated(prog, scratch=0)
+        if mh:
+            creg, cex, ch = run_gated(blocks, regs, 10 ** 7)
+            ok = ch and creg == mreg
+        else:
+            creg, cex, ch = run_gated(blocks, regs, budget)
+            ok = not ch
+        total += 1
+        fails += not ok
+    return total, fails

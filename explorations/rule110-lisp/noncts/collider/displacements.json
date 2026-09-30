@@ -1120,5 +1120,311 @@
 -57
 ],
 "intercept_shift": "-175/3"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-1,25)#3",
+"glider": "Ebar@(0,0)+Ebar@(-1,25)",
+"in": [
+-14,
+55
+],
+"out": [
+16,
+32
+],
+"canonical": [
+0,
+-15
+],
+"intercept_shift": "-15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-1,25)#3",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+10,
+30
+],
+"canonical": [
+10,
+30
+],
+"intercept_shift": "280/9"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-7,21)#0",
+"glider": "Ebar@(0,0)+Ebar@(-7,21)",
+"in": [
+-1,
+45
+],
+"out": [
+10,
+28
+],
+"canonical": [
+11,
+-17
+],
+"intercept_shift": "-211/15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-7,21)#0",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+14,
+28
+],
+"canonical": [
+14,
+28
+],
+"intercept_shift": "266/9"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-9,29)#5",
+"glider": "Ebar@(0,0)+Ebar@(-9,29)",
+"in": [
+0,
+55
+],
+"out": [
+10,
+42
+],
+"canonical": [
+10,
+-13
+],
+"intercept_shift": "-31/3"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-9,29)#5",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+30,
+34
+],
+"canonical": [
+30,
+34
+],
+"intercept_shift": "112/3"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-9,29)#10",
+"glider": "Ebar@(0,0)+Ebar@(-9,29)",
+"in": [
+-16,
+63
+],
+"out": [
+22,
+36
+],
+"canonical": [
+8,
+-19
+],
+"intercept_shift": "-253/15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-9,29)#10",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+30,
+34
+],
+"canonical": [
+30,
+34
+],
+"intercept_shift": "112/3"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-10,33)#11",
+"glider": "Ebar@(0,0)+Ebar@(-10,33)",
+"in": [
+-17,
+67
+],
+"out": [
+28,
+40
+],
+"canonical": [
+15,
+-19
+],
+"intercept_shift": "-15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-10,33)#11",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+16,
+34
+],
+"canonical": [
+16,
+34
+],
+"intercept_shift": "322/9"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-15,25)#10",
+"glider": "Ebar@(0,0)+Ebar@(-15,25)",
+"in": [
+-16,
+63
+],
+"out": [
+22,
+36
+],
+"canonical": [
+8,
+-19
+],
+"intercept_shift": "-253/15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-15,25)#10",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+0,
+28
+],
+"canonical": [
+0,
+28
+],
+"intercept_shift": "28"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-16,29)#11",
+"glider": "Ebar@(0,0)+Ebar@(-16,29)",
+"in": [
+-17,
+67
+],
+"out": [
+28,
+40
+],
+"canonical": [
+15,
+-19
+],
+"intercept_shift": "-15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-16,29)#11",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+16,
+34
+],
+"canonical": [
+16,
+34
+],
+"intercept_shift": "322/9"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-21,35)#7",
+"glider": "Ebar@(0,0)+Ebar@(-21,35)",
+"in": [
+-15,
+59
+],
+"out": [
+22,
+36
+],
+"canonical": [
+7,
+-15
+],
+"intercept_shift": "-197/15"
+},
+{
+"reaction": "F+Ebar@(0,0)+Ebar@(-21,35)#7",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+18,
+26
+],
+"canonical": [
+18,
+26
+],
+"intercept_shift": "28"
+},
+{
+"reaction": "F+Ebar_16_Ebar#1",
+"glider": "Ebar_16_Ebar",
+"in": [
+-5,
+45
+],
+"out": [
+2,
+30
+],
+"canonical": [
+7,
+-15
+],
+"intercept_shift": "-197/15"
+},
+{
+"reaction": "F+Ebar_16_Ebar#1",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+18,
+26
+],
+"canonical": [
+18,
+26
+],
+"intercept_shift": "28"
 }
 ]

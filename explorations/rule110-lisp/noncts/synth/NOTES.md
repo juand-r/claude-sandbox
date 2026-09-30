@@ -125,3 +125,19 @@ Missing control: spec Z (moving floor restored) -- TODO.
   instances; resumed the rest detached with nohup (relay_W20_x2consume_part2.log).
   All long searches from now on: `nohup ... &` (no time limit), watched
   with Monitor / an until-loop.
+- 04:10 Moving window for Spacetime (make_window): cells outside forced to
+  far ether; rule checked on a 2-cell border (a 1-cell border is NOT
+  enough when the window edge retreats; derived before the first run).
+  Controls: Ebar x C2 classes and F x C1 classes identical with/without
+  window; 5-6x fewer vars.
+- 04:12 E_n items (en.py): E + (n-1) B's, verified (15,-4)-periodic; slips
+  9,1,7,13,5. G does not pass my E_2 (scholar reported it does; asked).
+- 04:15 spec F sweep complete: only slip-4 E pairs, messenger C3.
+  copy F (gap 29 and anywhere right): 12/12 UNSAT. Weak relay 56/56 UNSAT.
+- 04:20 lead: one heavy process per agent. Found an orphan specz process
+  (PID 11848) still running although its task wrapper was reported
+  killed -> duplicate lines in specz_results.jsonl (dedupe when analysing).
+  queue.sh now runs the rest sequentially.
+- 04:30 endec: B-trains <= 32 cannot DEC E_n from the right (UNSAT); control B: E_n -> E_{n+1} SAT.
+- 04:35 NOTE: for FREE trains the class index k is not an anchor (the solver can shift the train inside its window), so per-k answers with free trains only mean 'some placement within the window'; class-specific claims need fixed items (all my class claims so far used fixed items). Control: fixed A crosses Ebar in exactly 4/6 classes via encross (A-from-left mode).
+- 04:40 invariants.py: Smith normal form of catalog reactions -> only slip mod 14 (Z_14), no integer laws.
