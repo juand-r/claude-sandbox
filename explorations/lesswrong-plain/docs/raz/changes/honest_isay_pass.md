@@ -3730,3 +3730,609 @@ Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') r
 - Before: Early in the post I say that the Art of rationality ``must have a purpose other than itself.'' I end by saying that to subordinate its aesthetics to a higher cause ``is part of the aesthetic of rationality,'' and by telling you to appreciate its beauty ``for its own sake.''
 - After: Early in the post, the Art of rationality ``must have a purpose other than itself.'' At the end, to subordinate its aesthetics to a higher cause ``is part of the aesthetic of rationality,'' and you should appreciate its beauty ``for its own sake.''
 
+
+## honest/sections/when-not-to-use-probabilities.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: same numbers anyway, I say, and I give this
+- After: same numbers anyway; I give this
+
+
+## honest/sections/newcomb-s-problem-and-regret-of-rationality.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I reply: ``I can just
+- After: My reply: ``I can just
+
+- Before: I reply that she envies Irene ``only her choice,'' and advise:
+- After: But she envies Irene ``only her choice,'' and my advice is:
+
+- Before: I end with Musashi:
+- After: Last, Musashi:
+
+
+## honest/sections/twelve-virtues-of-rationality.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Then I say that once a conclusion is written
+- After: Once a conclusion is written
+
+- Before: Beginners win arguments, I say, because
+- After: Beginners win arguments because
+
+- Before: Then I say that each piece of evidence moves your belief by exactly the right amount, which probability theory calculates, and that even if
+- After: Each piece of evidence moves your belief by exactly the right amount, which probability theory calculates, and even if
+
+- Before: Before these eleven, I say, comes
+- After: Before these eleven comes
+
+- Before: I add: ``If you fail
+- After: ``If you fail
+
+- Before: I end with a promise:
+- After: Last, a promise:
+
+
+## honest/sections/beginnings-an-introduction.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: This last book, I say, is
+- After: This last book is
+
+- Before: I add that the philosophical dispute
+- After: The philosophical dispute
+
+- Before: outside the classroom, I say;
+- After: outside the classroom;
+
+- Before: The art of applied rationality, I end, is
+- After: The art of applied rationality is
+
+
+## honest/sections/my-childhood-death-spiral.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Intelligence, I say, is ``the unfairest''
+- After: Intelligence is ``the unfairest''
+
+- Before: This, I say, was a ``happy
+- After: This was a ``happy
+
+- Before: In a postscript I add that I no longer
+- After: A postscript adds that I no longer
+
+
+## honest/sections/my-best-and-worst-mistake.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Many of my mistakes, I say, came
+- After: Many of my mistakes came
+
+
+## honest/sections/raised-in-technophilia.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: The allergy, I say, has a reason.
+- After: The allergy has a reason.
+
+- Before: There is, I conclude, ``a historical
+- After: So there is ``a historical
+
+- Before: Seeking a middle way, I add, ``is
+- After: Seeking a middle way ``is
+
+
+## honest/sections/that-tiny-note-of-discord.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: The reasons, I say, ``don't
+- After: The reasons ``don't
+
+- Before: I say this because of the ``AI wannabes''
+- After: This matters because of the ``AI wannabes''
+
+
+## honest/sections/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: The reasons for doing so, I say, do not
+- After: The reasons for doing so do not
+
+- Before: That, I say, is ``an art
+- After: That is ``an art
+
+- Before: now seem to me equally wrongheaded.''
+- After: now seem to me equally wrongheaded.
+
+
+## honest/sections/my-naturalistic-awakening.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: definitions shows, I say, that
+- After: definitions shows that
+
+
+## honest/sections/the-level-above-mine.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Of course, I add, a book shows
+- After: Of course, a book shows
+
+- Before: I say I have accepted it, because
+- After: I have accepted it, because
+
+
+## honest/sections/the-magnitude-of-his-own-folly.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: That, I say, is a trap.
+- After: That is a trap.
+
+- Before: In AGI, I say, those words
+- After: In AGI those words
+
+
+## honest/sections/beyond-the-reach-of-god.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Many atheists, I say, would
+- After: Many atheists would
+
+- Before: The main reason to doubt it, I say, ``would
+- After: The main reason to doubt it ``would
+
+- Before: Their ``clever arguments'', I say, come
+- After: Their ``clever arguments'' come
+
+- Before: I end by asking what rules
+- After: Last, I ask what rules
+
+
+## honest/sections/my-bayesian-enlightenment.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: say so, I explain, ``because
+- After: say so ``because
+
+- Before: I end by saying that ``Oops'' is
+- After: ``Oops'' is
+
+
+## honest/sections/trying-to-try.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Much of life's challenge, I say, is
+- After: Much of life's challenge is
+
+- Before: planning its own planning, I say, this
+- After: planning its own planning, this
+
+
+## honest/sections/on-doing-the-impossible.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: thrown at a problem, I say, lets
+- After: thrown at a problem lets
+
+- Before: Other AI researchers, I say, call
+- After: Other AI researchers call
+
+- Before: ``By and large,'' I say, AGI
+- After: ``By and large,'' AGI
+
+- Before: The most important problems, I say, are
+- After: The most important problems are
+
+
+## honest/sections/make-an-extraordinary-effort.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: The word began, I say, as
+- After: The word began as
+
+- Before: not enough to save him, I say; it takes
+- After: not enough to save him; it takes
+
+- Before: leaving the herd, I say, ``would
+- After: leaving the herd ``would
+
+- Before: of the human species,'' I say, depends
+- After: of the human species'' depends
+
+
+## honest/sections/shut-up-and-do-the-impossible.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: who find it baffling, and say that such people are tempted
+- After: who find it baffling; such people are tempted
+
+- Before: In this sense, I say, building
+- After: In this sense building
+
+
+## honest/sections/raising-the-sanity-waterline.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Behind every dramatic failure, I say, paraphrasing the Black Belt Bayesian,
+- After: Behind every dramatic failure, to paraphrase the Black Belt Bayesian,
+
+- Before: but they could, I say; Dark
+- After: but they could; Dark
+
+- Before: The harm done by religion, I say, is
+- After: The harm done by religion is
+
+- Before: I end by backing
+- After: Last, I back
+
+
+## honest/sections/a-sense-that-more-is-possible.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I answer: ``That's really
+- After: My answer: ``That's really
+
+- Before: I say only that enough rationality would compare
+- After: All I offer is that enough rationality would compare
+
+- Before: One answer, I say, is that
+- After: One answer is that
+
+- Before: The chief obstacle, I say, is
+- After: The chief obstacle is
+
+- Before: Martial arts schools, I say, got
+- After: Martial arts schools got
+
+
+## honest/sections/schools-proliferating-without-evidence.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: the answer, I say, is simply
+- After: the answer is simply
+
+- Before: In an addition I say that ``Dawes
+- After: An addition says that ``Dawes
+
+
+## honest/sections/3-levels-of-rationality-verification.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: What a group can do about it, I say, depends
+- After: What a group can do about it depends
+
+- Before: and so, I say, do the schools
+- After: and so do the schools
+
+- Before: A test that can be gamed, I say, makes
+- After: A test that can be gamed makes
+
+- Before: In an added paragraph I note that noisy
+- After: An added paragraph notes that noisy
+
+
+## honest/sections/why-our-kind-can-t-cooperate.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: ``I suppose,'' I say, they are
+- After: ``I suppose'' they are
+
+- Before: Our culture, I say, rewards
+- After: Our culture rewards
+
+- Before: Decision theory, I say, contains
+- After: Decision theory contains
+
+- Before: A wall of objections, I conclude, is
+- After: A wall of objections is
+
+
+## honest/sections/tolerate-tolerance.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: are likely, I say, to be more
+- After: are likely to be more
+
+
+## honest/sections/your-price-for-joining.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I say that ``most Ultimatum
+- After: In practice, ``most Ultimatum
+
+- Before: This, I say, ``is just
+- After: This ``is just
+
+- Before: ``It seems to me,'' I say, that
+- After: ``It seems to me'' that
+
+- Before: But usually, I observe, people
+- After: But usually people
+
+
+## honest/sections/can-humanism-match-religion-s-output.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I add that ``theologians don't
+- After: True, ``theologians don't
+
+
+## honest/sections/church-vs-taskforce.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Delete religion, I say, and
+- After: Delete religion, and
+
+- Before: I add that this is ``probably something
+- After: This is ``probably something
+
+- Before: So you could suspect, I say, though
+- After: So you could suspect, though
+
+- Before: Churches, I add, provide
+- After: Churches provide
+
+
+## honest/sections/rationality-common-interest-of-many-causes.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Many causes, I say, gain
+- After: Many causes gain
+
+- Before: expected-utility maximizers, I explain, but
+- After: expected-utility maximizers but
+
+
+## honest/sections/helpless-individuals.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Our grouping instincts, I say, are
+- After: Our grouping instincts are
+
+- Before: whose money, I say, is ``block
+- After: whose money is ``block
+
+
+## honest/sections/money-the-unit-of-caring.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: This point, I say, is ``brutal
+- After: This point is ``brutal
+
+
+## honest/sections/bystander-apathy.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I end by wondering what happens
+- After: Last, I wonder what happens
+
+
+## honest/sections/collective-apathy-and-the-internet.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: know each other, I say, the bystander
+- After: know each other, the bystander
+
+- Before: Perhaps, I suggest, our instincts
+- After: Perhaps our instincts
+
+- Before: Online activism tools, I say, ``tend
+- After: Online activism tools ``tend
+
+
+## honest/sections/beware-of-other-optimizing.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Personal advice, I conclude, is
+- After: Personal advice is
+
+
+## honest/sections/the-sin-of-underconfidence.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: not self-handicapping, I say, since
+- After: not self-handicapping, since
+
+
+## honest/sections/go-forth-and-create-the-art.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: I say that ``Maybe I'm being too idealistic,''
+- After: I hedge: ``Maybe I'm being too idealistic,''
+
+
+## honest/sections/humans-are-not-automatically-strategic.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Instead, I say, ``we mostly
+- After: Instead ``we mostly
+
+- Before: I say we have goals only in ``limited senses,'' but I also say we do not optimize
+- After: On my account we have goals only in ``limited senses''; yet we do not optimize
+
+- Before: Because, I say, ``humans
+- After: Because ``humans
+
+- Before: Perhaps 5\% of people, I add, can
+- After: Perhaps 5\% of people can
+
+- Before: Then I say that knowing that exercise
+- After: Knowing that exercise
+
+- Before: I say I am keen to train.
+- After: I am keen to train.
+
+- Before: for becoming more strategic, I say, and I do not name
+- After: for becoming more strategic, and I do not name
+
+- Before: I also say, in half a sentence, that having goals
+- After: Half a sentence adds that having goals
+
+- Before: I end by asking readers
+- After: Last, I ask readers
+
+
+## honest/sections/toolbox-thinking-and-law-thinking.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: There are two styles of thought, I say.
+- After: There are two styles of thought.
+
+- Before: ``I'm now going to badly stereotype this conversation,'' I say, ``in the form
+- After: ``I'm now going to badly stereotype this conversation in the form
+
+- Before: The best examples of laws, I say, are
+- After: The best examples of laws are
+
+- Before: Seeing Bayes this way, I say, is
+- After: Seeing Bayes this way is
+
+
+## honest/sections/local-validity-as-a-key-to-sanity-and-civilization.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Good arguments for false conclusions, I say, are
+- After: Good arguments for false conclusions are
+
+- Before: less of that worry, I say, since
+- After: less of that worry since
+
+- Before: Law, I say, is partly
+- After: Law is partly
+
+- Before: I add that enforcement is ``simply not effective enough to count for the vast majority of human cooperation,'' and that civilization
+- After: Enforcement is ``simply not effective enough to count for the vast majority of human cooperation,'' and civilization
+
+- Before: I add: ``Robert Heinlein
+- After: ``Robert Heinlein
+
+- Before: Then, I say, people wrote
+- After: Then people wrote
+
+- Before: So human law, I say, is
+- After: So human law is
+
+- Before: I end by guessing that you are better off
+- After: Last, a guess: you are better off
+
+- Before: such stories, I say, because
+- After: such stories because
+
+
+## honest/sections/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Similar quarrels, I say, surround
+- After: Similar quarrels surround
+
+- Before: ``Disease,'' I say, is like
+- After: ``Disease'' is like
+
+- Before: So, I say, do heart attacks
+- After: So do heart attacks
+
+- Before: But the word matters, I say, because
+- After: But the word matters because
+
+- Before: I reply: ``Determinist
+- After: My reply: ``Determinist
+
+- Before: For laziness I say that condemnation ``very well might'' work; for obesity, the case I began with, I say the answer may
+- After: For laziness, condemnation ``very well might'' work; for obesity, the case I began with, the answer may
+
+- Before: I answer: ``Of course
+- After: My answer: ``Of course
+
+- Before: Objectors, I say, show
+- After: Objectors show
+
+- Before: pill that makes it easy, I say, show
+- After: pill that makes it easy show
+
+- Before: I conclude: ``We should
+- After: ``We should
+
+
+## honest/sections/on-caring.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: Their motives, I say, have
+- After: Their motives have
+
+- Before: The way to act, I say, is
+- After: The way to act is
+
+- Before: When you do the multiplication, I conclude, fighting
+- After: When you do the multiplication, fighting
+
+
+## honest/sections/strong-evidence-is-common.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: An ordinary sentence, I say, can
+- After: An ordinary sentence can
+
+- Before: I add three more cases of the same kind:
+- After: Three more cases of the same kind:
+
+- Before: To be 50\% sure of that, I say, you
+- After: To be 50\% sure of that, you
+
+- Before: I close by saying that running through
+- After: Last: running through
+
+
+## honest/sections/pr-is-corrosive.tex
+
+Why: Honest edition: cumbersome first-person reporting tags ('I say', 'I add') rewritten; no new claims.
+
+- Before: ``a small detail,'' I say, but
+- After: ``a small detail,'' but
+
+- Before: I also observe that people who worry
+- After: People who worry
+
+- Before: So honor, I say, ``leaves
+- After: So honor ``leaves
+

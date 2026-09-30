@@ -310,54 +310,54 @@ Edits are logged in `docs/raz/changes/honest_isay_pass.md`.
 - [x] ends-don-t-justify-means-among-humans
 - [x] ethical-injunctions
 - [x] something-to-protect
-- [ ] when-not-to-use-probabilities
-- [ ] newcomb-s-problem-and-regret-of-rationality
-- [ ] twelve-virtues-of-rationality
-- [ ] beginnings-an-introduction
-- [ ] my-childhood-death-spiral
-- [ ] my-best-and-worst-mistake
-- [ ] raised-in-technophilia
-- [ ] a-prodigy-of-refutation
-- [ ] the-sheer-folly-of-callow-youth
-- [ ] that-tiny-note-of-discord
-- [ ] fighting-a-rearguard-action-against-the-truth
-- [ ] my-naturalistic-awakening
-- [ ] the-level-above-mine
-- [ ] the-magnitude-of-his-own-folly
-- [ ] beyond-the-reach-of-god
-- [ ] my-bayesian-enlightenment
-- [ ] trying-to-try
-- [ ] use-the-try-harder-luke
-- [ ] on-doing-the-impossible
-- [ ] make-an-extraordinary-effort
-- [ ] shut-up-and-do-the-impossible
-- [ ] final-words
-- [ ] raising-the-sanity-waterline
-- [ ] a-sense-that-more-is-possible
-- [ ] epistemic-viciousness
-- [ ] schools-proliferating-without-evidence
-- [ ] 3-levels-of-rationality-verification
-- [ ] why-our-kind-can-t-cooperate
-- [ ] tolerate-tolerance
-- [ ] your-price-for-joining
-- [ ] can-humanism-match-religion-s-output
-- [ ] church-vs-taskforce
-- [ ] rationality-common-interest-of-many-causes
-- [ ] helpless-individuals
-- [ ] money-the-unit-of-caring
-- [ ] purchase-fuzzies-and-utilons-separately
-- [ ] bystander-apathy
-- [ ] collective-apathy-and-the-internet
-- [ ] incremental-progress-and-the-valley
-- [ ] bayesians-vs-barbarians
-- [ ] beware-of-other-optimizing
-- [ ] practical-advice-backed-by-deep-theories
-- [ ] the-sin-of-underconfidence
-- [ ] go-forth-and-create-the-art
-- [ ] humans-are-not-automatically-strategic
-- [ ] toolbox-thinking-and-law-thinking
-- [ ] local-validity-as-a-key-to-sanity-and-civilization
-- [ ] diseased-thinking-dissolving-questions-about-disease
-- [ ] on-caring
-- [ ] strong-evidence-is-common
-- [ ] pr-is-corrosive
+- [x] when-not-to-use-probabilities
+- [x] newcomb-s-problem-and-regret-of-rationality
+- [x] twelve-virtues-of-rationality
+- [x] beginnings-an-introduction
+- [x] my-childhood-death-spiral
+- [x] my-best-and-worst-mistake
+- [x] raised-in-technophilia
+- [x] a-prodigy-of-refutation
+- [x] the-sheer-folly-of-callow-youth
+- [x] that-tiny-note-of-discord
+- [x] fighting-a-rearguard-action-against-the-truth
+- [x] my-naturalistic-awakening
+- [x] the-level-above-mine
+- [x] the-magnitude-of-his-own-folly
+- [x] beyond-the-reach-of-god
+- [x] my-bayesian-enlightenment
+- [x] trying-to-try
+- [x] use-the-try-harder-luke
+- [x] on-doing-the-impossible
+- [x] make-an-extraordinary-effort
+- [x] shut-up-and-do-the-impossible
+- [x] final-words
+- [x] raising-the-sanity-waterline
+- [x] a-sense-that-more-is-possible
+- [x] epistemic-viciousness
+- [x] schools-proliferating-without-evidence
+- [x] 3-levels-of-rationality-verification
+- [x] why-our-kind-can-t-cooperate
+- [x] tolerate-tolerance
+- [x] your-price-for-joining
+- [x] can-humanism-match-religion-s-output
+- [x] church-vs-taskforce
+- [x] rationality-common-interest-of-many-causes
+- [x] helpless-individuals
+- [x] money-the-unit-of-caring
+- [x] purchase-fuzzies-and-utilons-separately
+- [x] bystander-apathy
+- [x] collective-apathy-and-the-internet
+- [x] incremental-progress-and-the-valley
+- [x] bayesians-vs-barbarians
+- [x] beware-of-other-optimizing
+- [x] practical-advice-backed-by-deep-theories
+- [x] the-sin-of-underconfidence
+- [x] go-forth-and-create-the-art
+- [x] humans-are-not-automatically-strategic
+- [x] toolbox-thinking-and-law-thinking
+- [x] local-validity-as-a-key-to-sanity-and-civilization
+- [x] diseased-thinking-dissolving-questions-about-disease
+- [x] on-caring
+- [x] strong-evidence-is-common
+- [x] pr-is-corrosive

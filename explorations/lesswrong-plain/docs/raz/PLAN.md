@@ -91,3 +91,12 @@ posts are merged in.
       "is said to") read in context (`docs/raz/SAYS_PASS.md`); 236 afterwords edited, logged in
       `docs/raz/changes/says_pass.md`.
 - [x] Checks and both books rebuilt.
+
+## Honest-edition reporting-tag pass (user request, 30 September)
+
+- [x] All 345 honest sections read in full for "I say"-style tags
+      (`docs/raz/HONEST_ISAY_PASS.md`); 946 edits in 299 sections, logged in
+      `docs/raz/changes/honest_isay_pass.md`.
+- [x] Checks and honest book rebuilt.
+- [ ] Ask the user whether to keep or revert the afterword reporting-tag pass (dea5b7a),
+      which was done on the annotated edition by mistake.

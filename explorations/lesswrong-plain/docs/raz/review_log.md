@@ -679,3 +679,23 @@ cumbersome. Find this and similar cases to fix it."
   "the defendant says"), the idiom "says nothing about", or short trailing "as the post says".
 - Checks: raz_check exit 0 on the edited files; 345/345 notes backups exact; both books build
   with no LaTeX errors.
+
+## 30 September 2026: honest edition, first-person reporting tags
+
+- User request: "I was referring to the honest latex doc. Where it's in first person. Please
+  don't grep for it. Just read each one looking for 'I say' or similar."
+- All 345 sections of `honest/sections/` read in full, one at a time, in book order
+  (checklist and rules in `docs/raz/HONEST_ISAY_PASS.md`). No search was used to find tags.
+- Removed or rewrote bare reporting tags ("I say", "I add", "I explain", "I conclude",
+  "I end", "I note", "I reply"), leading or interrupting. Where a tag carried an honesty
+  marker (a hedge, a repetition, a late addition, a claim without source) the marker was kept
+  in its own words ("I give no source", "A postscript adds", "Three paragraphs later").
+  Real acts were kept: I admit, I grant, I concede, I quote, I ask, and speech inside
+  narrated dialogues.
+- 946 edits in 299 sections; 46 sections needed none. Every edit is logged with before and
+  after in `docs/raz/changes/honest_isay_pass.md`. Where two quotations were joined, the
+  joined text was checked against `data/originals/`.
+- Two stray closing quotation marks found along the way were removed
+  (entropy-and-short-codes, fighting-a-rearguard-action-against-the-truth); quote balance
+  in every other section is unchanged.
+- Checks: 345/345 notes backups exact; make_books 345/345; honest.tex builds with no errors.
