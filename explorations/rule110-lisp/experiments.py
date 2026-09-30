@@ -99,18 +99,22 @@ def component_regions(tape, apps, right_periods):
             for a, b in zip(leaders, leaders[1:])]
 
 
-def read_outcomes(tape, apps, v, n_reads, T):
+def read_outcomes(tape, apps, v, n_reads, T, row_origin=None):
     """Observed outcome ('Y'/'N') of each of the first n_reads reads, or
-    '.' if not completed by generation T."""
+    '.' if not completed by generation T. row_origin: optionally a prebuilt
+    (row, origin) for a modified assembly with the same right side."""
     rp = n_reads // len(apps) + 3
-    row, origin = padded_row(tape, apps, left_periods=T // (30 * v) + 3,
-                             right_periods=rp, left_pad=T + 50_000,
-                             right_pad=T + 100_000, v_override=v)
+    if row_origin is None:
+        row_origin = padded_row(tape, apps, left_periods=T // (30 * v) + 3,
+                                right_periods=rp, left_pad=T + 50_000,
+                                right_pad=T + 100_000, v_override=v)
+    row, origin = row_origin
     regs = component_regions(tape, apps, rp)[:n_reads]
     run = Run(row, origin)
     before = [None] * len(regs)
     state = ["." if a is not None else "-" for a, _ in regs]
     read_at = [None] * len(regs)
+    last = [None] * len(regs)
     lo_g = min(a for a, _ in regs if a is not None) - READS_MARGIN
     hi_g = max(b for _, b in regs if b is not None) + READS_MARGIN
     while run.t + READS_EVERY <= T and any(s in ".r" for s in state):
@@ -128,11 +132,15 @@ def read_outcomes(tape, apps, v, n_reads, T):
                 before[j] = inside
             elif state[j] == "." and inside != before[j]:
                 state[j], read_at[j] = "r", run.t
-            elif state[j] == "r" and not any(k in "CA?" for _, k in inside):
+            elif (state[j] == "r" and inside == last[j]
+                  and not any(k in "CA?" for _, k in inside)):
+                # settled: nothing sweeping or crossing, and unchanged since
+                # the previous sample (a sweep in progress changes it)
                 n_e = sum(1 for _, k in inside if k == "E")
                 state[j] = "Y" if n_e else "N"
                 print(f"read {j}: at t~{read_at[j]}, {n_e} Ebar clusters "
                       f"remain: {state[j]}", flush=True)
+            last[j] = inside
     return "".join(s if s in "YN" else "." for s in state)
 
 

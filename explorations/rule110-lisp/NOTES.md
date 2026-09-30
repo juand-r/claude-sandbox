@@ -278,3 +278,15 @@ Lesson (third time on this topic): a decoder that has not itself been
 validated is a hypothesis, not an instrument. The census-based,
 decoder-free observable settled in one run what three decoder-based
 analyses had muddled.
+
+Result (experiments.py reads 12, v = 3x default): observed
+YYYYNNYYYYNN = reference, 12/12, reads every ~58k generations. Reads
+6-11 consume characters appended during the run, so reading, accepting,
+rejecting, appending and ossifying are all exercised. A first version of
+the check misclassified two reads: a reject sweep takes ~5k generations
+and the sweeping rejector is not always typed A or ?, so "nothing moving
+inside" fired mid-sweep. The check now also requires the region to be
+unchanged between two consecutive samples.
+
+At Cook's default spacing (v = 524) the same program matches 10/10 with
+a read every ~26.4k generations (30v + one appendant traversal).

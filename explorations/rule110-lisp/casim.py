@@ -54,10 +54,10 @@ def ether_pad(rotation, width):
 
 
 def padded_row(tape, appendants, left_periods, right_periods, left_pad,
-               right_pad, v_override=None):
+               right_pad, v_override=None, left_gaps=None):
     """-> (row, origin): the assembled row embedded in phase-matched ether."""
     bits, placed = assemble(tape, appendants, left_periods, right_periods,
-                            v_override=v_override)
+                            v_override=v_override, left_gaps=left_gaps)
     origin = -placed[0].gspan(0)[0]
     bits = trim_right_to_ether(bits)
     rl, rr = ether_rotation(bits[:TILE]), ether_rotation(bits[-TILE:])

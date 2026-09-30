@@ -178,20 +178,28 @@ def _left_v(appendants):
     return 76 * ys + 80 * ns + 60 * nonempty + 43 * empty
 
 
+# One ossifier: four A^4 (one per B block) at fixed internal spacings,
+# listed right-to-left from block C.
+OSSIFIER = "B" + "A" * 12 + "B" + "A" * 11 + "B" + "A" * 13 + "B"
+
+
 def _left_block_seq(appendants, v_override=None):
     """One period of the left side, listed right-to-left starting from C."""
     v = v_override if v_override is not None else _left_v(appendants)
-    return "B" + "A" * 12 + "B" + "A" * 11 + "B" + "A" * 13 + "B" + "A" * v
+    return OSSIFIER + "A" * v
 
 
 def assemble(tape, appendants, left_periods=1, right_periods=1,
-             v_override=None):
+             v_override=None, left_gaps=None):
     """Build the Rule 110 initial row for a cyclic tag system.
 
     tape: string of 'Y'/'N' (the CTS initial tape, must be nonempty).
     appendants: list of 'Y'/'N' strings (empty string = empty appendant).
     left_periods / right_periods: how many copies of the periodic side
     sequences to lay down (bounds the simulatable time).
+    left_gaps: instead of a periodic left side, an explicit schedule: one
+    ossifier per entry, ossifier k followed (leftward) by left_gaps[k]
+    A-blocks. Overrides left_periods and v_override.
 
     Returns (bits, placed): bits is a numpy uint8 row (the t=0 line through
     all placed blocks), placed is the list of Placed instances left-to-right
@@ -219,10 +227,12 @@ def assemble(tape, appendants, left_periods=1, right_periods=1,
             placed.append(_attach(placed[-1], blocks[name], "R"))
 
     left = [c]
-    left_seq = _left_block_seq(appendants, v_override)
-    for _ in range(left_periods):
-        for name in left_seq:
-            left.append(_attach(left[-1], blocks[name], "L"))
+    if left_gaps is not None:
+        left_names = "".join(OSSIFIER + "A" * g for g in left_gaps)
+    else:
+        left_names = _left_block_seq(appendants, v_override) * left_periods
+    for name in left_names:
+        left.append(_attach(left[-1], blocks[name], "L"))
     placed = left[:0:-1] + placed
 
     bits = "".join(p.gbits(0) for p in placed)

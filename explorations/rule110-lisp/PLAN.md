@@ -5,8 +5,8 @@
 User chose: pursue DIRECTIONS.md in order, and run a 4-agent team on a
 non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 
-- [ ] 1. Close the dynamic-verification gap: count characters per
-      ossifier exactly; explain the arrival-3 mismatch; automated check
+- [x] 1. Close the dynamic-verification gap: decoder was phase-dependent; decoder-free read check matches 12/12 (NOTES)
+
 - [ ] 2. L-block (short leader) defect
 - [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
 - [ ] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
