@@ -159,26 +159,26 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] no-one-can-exempt-you-from-rationality-s-laws
 - [x] leave-a-line-of-retreat
 - [x] crisis-of-faith
-- [ ] the-ritual
-- [ ] minds-an-introduction
-- [ ] the-power-of-intelligence
-- [ ] an-alien-god
-- [ ] the-wonder-of-evolution
-- [ ] evolutions-are-stupid-but-work-anyway
-- [ ] no-evolutions-for-corporations-or-nanodevices
-- [ ] evolving-to-extinction
-- [ ] the-tragedy-of-group-selectionism
-- [ ] fake-optimization-criteria
-- [ ] adaptation-executers-not-fitness-maximizers
-- [ ] evolutionary-psychology
-- [ ] an-especially-elegant-evpsych-experiment
-- [ ] superstimuli-and-the-collapse-of-western-civilization
-- [ ] thou-art-godshatter
-- [ ] belief-in-intelligence
-- [ ] humans-in-funny-suits
-- [ ] optimization-and-the-intelligence-explosion
-- [ ] ghosts-in-the-machine
-- [ ] artificial-addition
+- [x] the-ritual
+- [x] minds-an-introduction
+- [x] the-power-of-intelligence
+- [x] an-alien-god
+- [x] the-wonder-of-evolution
+- [x] evolutions-are-stupid-but-work-anyway
+- [x] no-evolutions-for-corporations-or-nanodevices
+- [x] evolving-to-extinction
+- [x] the-tragedy-of-group-selectionism
+- [x] fake-optimization-criteria
+- [x] adaptation-executers-not-fitness-maximizers
+- [x] evolutionary-psychology
+- [x] an-especially-elegant-evpsych-experiment
+- [x] superstimuli-and-the-collapse-of-western-civilization
+- [x] thou-art-godshatter
+- [x] belief-in-intelligence
+- [x] humans-in-funny-suits
+- [x] optimization-and-the-intelligence-explosion
+- [x] ghosts-in-the-machine
+- [x] artificial-addition
 - [ ] terminal-values-and-instrumental-values
 - [ ] leaky-generalizations
 - [ ] the-hidden-complexity-of-wishes

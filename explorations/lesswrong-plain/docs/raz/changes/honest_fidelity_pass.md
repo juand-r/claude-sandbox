@@ -2334,3 +2334,534 @@ Why: Fidelity/substance pass: added the fragility of self-honesty under uncertai
 - Before: Another says it ``really is less painful
 - After: And it ``really is less painful
 
+
+## honest/sections/the-ritual.tex
+
+Why: Fidelity/substance pass: added the guest's distinction between being a rationalist and winning an argument with one, Jeffreyssai's reflection on the unchanging sunlight, the practiced idle mind, and the point that no ratio is prescribed
+
+- Before: She has never had formal training, but she has heard the beisutsukai explain themselves often enough.
+- After: She has never had formal training, but she has heard the beisutsukai explain themselves often enough; she is not trying to be a rationalist, only to win an argument with one. Looking at the sunlight, he reflects that the Sun will burn out, but that it shines now can never change; only from the other view is there progress, or loss.
+
+- Before: For the rest of the day he does nothing in particular, blocking every thought he has had before and every conclusion.
+- After: For the rest of the day he does nothing in particular, blocking every thought he has had before and every conclusion, his mind set in idle by long practice.
+
+- Before: Seven times he has entered this room; five times he kept his belief, twice he came out a different person.
+- After: Seven times he has entered this room; five times he kept his belief, twice he came out a different person. No ratio is prescribed; that would be a mockery.
+
+
+## honest/sections/minds-an-introduction.tex
+
+Why: Fidelity/substance pass: replaced the bare 'I then preview the book's three sequences' with what each covers; gave the content of the quoted first post, the intelligence-explosion and Friendly AI explanations, the Russell and Norvig passage, the risk anthology and existential risk, and the closing design/designer line
+
+- Before: I then preview the book's three sequences and its closing essay on Bayes's theorem.
+- After: I then preview the book. ``The Simple Math of Evolution'' shows the gap between our hereditary history, our biology and our aspirations, going deeper than the usual introduction for non-biologists. ``Fragile Purposes'' treats minds and goal-directed systems in general, and explains Yudkowsky's approach to philosophy, which comes from work on AI. ``A Human's Guide to Words'' is about how cognition forms concepts, and a long essay introducing Bayesian inference follows.
+
+- Before: I quote Yudkowsky's first post on \textsc{Overcoming Bias} to show that the work on AI drove the interest in human rationality.
+- After: I quote Yudkowsky's first post on \textsc{Overcoming Bias} to show that the work on AI drove the interest in human rationality. There Yudkowsky says that building an AI would need enough mastery of rationality to build a rationalist from toothpicks and rubber bands. The human art is in some ways easier and in some ways harder: we must pull the right levers in real time on a large existing machine we cannot modify, parts of which evolution built to work against our goals, such as hardwired support for rationalizing falsehoods. Our inner eye is not blind but sees blurrily, so we must use the science to correct our intuitions.
+
+- Before: I explain the ``intelligence explosion'' and ``Friendly AI,'' and say plainly
+- After: I explain the ``intelligence explosion,'' in which an AI that improves its own ability to redesign itself sets off rapid further improvements; Yudkowsky prefers I. J. Good's term to ``singularity'' to set his view apart from Ray Kurzweil's exponential progress. ``Friendly AI theory'' is research into aligning an AI's preferences with ours, still more a set of basic mathematical and philosophical questions than a programming task, since even present systems are hard to verify. I say plainly
+
+- Before: I quote Russell and Norvig's textbook on the difficulty of making an AI friendly.
+- After: I recommend Nick Bostrom's \textsc{Superintelligence}, and quote Russell and Norvig's textbook: friendliness should be designed in from the start, the designers should expect their designs to be flawed and the AI to learn and change, and so the problem is one of mechanism design, since a static utility function will not do.
+
+- Before: Why AI in a book on human rationality?
+- After: Bostrom and \'Cirkovi\'c compiled \textsc{Global Catastrophic Risks}, the first academic anthology on risks to civilization; the worst are existential risks, which could permanently stunt or end humanity, such as self-replicating molecular robots consuming the Earth. Yudkowsky's two chapters there join his work on cognitive bias and on AI. Why AI in a book on human rationality?
+
+- Before: We begin, then, with what ``our own designer'' can teach us.
+- After: Knowing the design tells you about the designer, and knowing the designer tells you about the design. We begin, then, with what ``our own designer'' can teach us.
+
+
+## honest/sections/the-power-of-intelligence.tex
+
+Why: Fidelity/substance pass: added the book-smarts image, bees and money, what the archetype of intelligence is (the creative search that left footprints on the Moon), the mind's mystery to itself, the unknown real problems, and that understanding the power would let us build it
+
+- Before: often think of book smarts.
+- After: often think of book smarts: the chess grandmaster who cannot get a date, the professor who could not survive outside a university.
+
+- Before: The human species imagined money into existence.
+- After: Bees will not sell you honey for an electronic transfer; the human species imagined money into existence, and it exists for us because we go on believing in it.
+
+- Before: The archetype of intelligence is not the savant of \textsc{Rain Man} but a human being.
+- After: The archetype of intelligence is not the savant of \textsc{Rain Man} but a human being: the squishy things that left footprints on the Moon. In that grey lump is the power to search the web of causes for a road to the seemingly impossible, sometimes called creativity.
+
+- Before: People can imagine each feat of intelligence, but not one power that could do them all.
+- After: People can imagine each feat of intelligence, but not one power that could do them all, though it sits a few centimeters behind their eyes; the grey wet thing still seems mysterious to itself.
+
+- Before: ``Who could have imagined, ever so long ago, what minds would someday do?''
+- After: ``Who could have imagined, ever so long ago, what minds would someday do?'' We may not even know what our real problems are.
+
+- Before: Intelligence is as real as electricity,
+- After: The footprints on the Moon are real, whether or not we understand the power that put them there, and understanding it deeply enough would let us create and shape it. Intelligence is as real as electricity,
+
+
+## honest/sections/an-alien-god.tex
+
+Why: Fidelity/substance pass: added the toaster and cactus examples, the Storm and radiation misreadings, Williams's rattlesnake point and what does explain the rattle, where people get stuck, the elephant negotiation with no advocate, 'embodied history', why the retina cannot be turned, what makes selection powerful, Broderick's line, and the waiting-for-science claim
+
+- Before: Foxes are well designed to catch rabbits, and rabbits to escape foxes.
+- After: Foxes are well designed to catch rabbits, and rabbits to escape foxes; was the Creator unable to make up Its mind? I would not design a toaster with one part sending electricity to the coils and another blocking it. Even the cactus, which might seem made to give desert animals water, is covered in spines.
+
+- Before: But evolution is not a purpose factory.
+- After: But I worry that people absorb evolution as a magical purpose factory, as in \textsc{X-Men}, where Storm gets the power to throw lightning in one mutation, and stronger radiation means stronger mutations.
+
+- Before: There is no ``Evolution Fairy'' deciding which genes would be helpful.
+- After: George Williams observed that many non-biologists think rattles grow on rattlesnakes for their own benefit. That kind of purpose is not allowed. Evolution runs on a correlation between how genes build organisms and how many copies of those genes reach the next generation; there is no ``Evolution Fairy'' deciding which genes would be helpful. People who accept this still ask which genes are ``helpful,'' as if a rattlesnake's gene could help non-rattlesnakes. The rattle spread because of the rattle, probably because snakes with better rattles survived more often: perhaps predators avoid stepping on them, or the rattle draws a dog's bite to the tail instead of the head.
+
+- Before: but ``There's no one to argue with.''
+- After: but ``There's no one to argue with.'' Humans make up justifications for what they want; there is no Fairy of elephant evolution that wants what is best for elephants and argues for it before an overseer who cares about fitness. There is no advocate for the elephants anywhere in the system. Genes that replicate more become more common, like water flowing downhill, and equally benevolent.
+
+- Before: An engineer would make taste track our needs; evolution made us love calories.
+- After: An engineer would make taste track our needs, so that lettuce tasted delicious to the obese; but calories were reliably scarce for our ancestors, so evolution made us love them. We are the embodied history of which organisms did in fact survive and reproduce, not of which ought to have.
+
+- Before: The retina is wired backward, and no single mutation can turn it around.
+- After: The retina is wired backward, with the nerves in front of the light-sensitive cells and a blind spot where they exit, while other animals evolved it the right way round. No single mutation can turn the whole retina around; turning the cells without rewiring the nerves leaves the animal blind. An engineer can change many parts at once and plan ahead; evolution cannot, and is as blind as a half-redesigned retina.
+
+- Before: evolution is ``closer to God than it is to pure random entropy.''
+- After: evolution is ``closer to God than it is to pure random entropy.'' Mutation is random, but selection is not: a small statistical correlation between a gene and its bearer's reproduction adds up, over millions of years, to something very powerful. Damien Broderick said that gods must be ontologically distinct from creatures, and evolution is not a creature.
+
+- Before: It is not Jehovah but Lovecraft's Azathoth.
+- After: In a way Darwin discovered God, but not the one theology expected; had he found a bodiless mind that loves us, people would have said ``That's God!'' Evolution is not a god, but if it were, it would not be Jehovah but Lovecraft's Azathoth, the blind idiot god at the center of everything.
+
+- Before: I am glad it was Azathoth and not Odin: I like having a Creator I can outwit.
+- After: So much, too, for those who say they are waiting, curious, for science to discover God: it has already found the godlike maker of humans, but they wanted their own specific God. I am glad it was Azathoth and not Odin: I like having a Creator I can outwit; it beats being a pet.
+
+
+## honest/sections/the-wonder-of-evolution.tex
+
+Why: Fidelity/substance pass: added the whirlwind strawman, the squirrel and half-wing example, the A/B/A*/C chain and the path back to a sundial, what RNA does poorly, the drunken first replicator and the many tide pools, the imagined over-praiser's words, the real wonder, and Huxley's understanding
+
+- Before: My reply is that evolution does not shake parts in a box.
+- After: My reply is that evolution does not shake parts in a box. Anyone who thinks it assembles 747s in whirlwinds has bought the creationists' strawman.
+
+- Before: if birds died out, the descendants of gliding squirrels might learn to fly.
+- After: squirrels jump between trees, how far depends partly on their shape, and flying squirrels now glide; if birds died out, their descendants might turn gliding membranes into wings, while creationists asked what good half a wing is.
+
+- Before: Parts that are useful on their own can come to depend on one another, until the machine breaks if any one is removed.
+- After: Complexity can also build up from a single mutation. Gene A, a little useful alone, spreads to everyone; gene B, useful only with A, then has reliable pressure in its favor; a modified A* comes to depend on B; then C depends on A* and B, and so on, until the machine breaks if any one part is removed. You can still trace the path back, loosening one dependency at a time, until the ticking watch becomes a crude sundial.
+
+- Before: RNA can store information and can also do chemistry, so it came first.
+- After: RNA can store information and copy itself, like DNA, though less durably and accurately, and can fold into active shapes, like proteins, though less versatile; so it came first.
+
+- Before: RNA does both jobs badly, and that is the point.
+- After: RNA does both jobs badly, and that is the point: that one molecule does both at all is amazing enough, and doing them well would be an unnecessary miracle.
+
+- Before: It was a crude accident that only had to happen once.
+- After: It was an accident that probably copied itself ``like a drunken monkey on LSD,'' with none of the fine-tuning of modern replicators. It was improbable, but it only had to happen once, and there were many tide pools; a few billion years later the replicators walked on the Moon. It was the most important molecule in history, but praising its skill would miss the point.
+
+- Before: I show the error through an imagined speaker.
+- After: I show the error through an imagined speaker who insists that a whirlwind can assemble a 747, and that the more nice things said about evolution, the more loyal the speaker is to science. That falls into the creationists' trap and destroys the real wonder, which is not how well evolution designs but that a natural process designs anything at all.
+
+- Before: Last, T. H. Huxley: the ethical progress of society depends on combating the cosmic process.
+- After: Last, T. H. Huxley, ``Darwin's Bulldog'': the ethical progress of society depends on combating the cosmic process. Huxley said this not because he doubted evolution but because he understood it.
+
+
+## honest/sections/evolutions-are-stupid-but-work-anyway.tex
+
+Why: Fidelity/substance pass: added the further worked numbers (500,000; 1,000,000 at 1%; the B-while-A-is-rare case), the Henry Ford comparison, repeated mutations, 'in the long run', the fur-coat analogy, the limits of explaining human design, what biology still does better, and the random-mutation planner
+
+- Before: None of this is creationism; it is ``standard Evolutionary Biology 201.''
+- After: None of this is creationism; it is ``standard Evolutionary Biology 201,'' and the limits are needed to make sense of observed biology. Human intelligence is too complicated to measure its efficiency, but natural selection, the first optimization process, is simpler, slower and less efficient.
+
+- Before: A gene with a 3 per cent advantage takes about 768 generations to spread through a population of 100,000; the formula is $2\ln(N)/s$.
+- After: A gene with a 3 per cent advantage takes about 768 generations to spread through a population of 100,000, and 875 through 500,000; the formula is $2\ln(N)/s$, where $N$ is the population and $1+s$ the relative fitness. In a hunter-gatherer population of a million, a 1 per cent advantage takes 2,763 generations.
+
+- Before: The chance that it spreads at all is about twice its advantage, 6 per cent.
+- After: The chance that it spreads at all is about twice its advantage, 6 per cent, whatever the population size. The same mutation may recur, but in a population of a million you may wait a hundred generations for another try, again at 6 per cent. Still, in the long run an evolution has a good chance of getting there.
+
+- Before: Genes have no investors or imitators; they spread only by their bearers having more children.
+- After: Genes have no investors or imitators; they spread only by their bearers having more children. It is as if Henry Ford had to make one car, sell it, buy parts for 1.01 more cars, and repeat until he had a million.
+
+- Before: A gene B that helps only in the presence of gene A gains little while A is rare, so
+- After: A fur coat helps only if the environment reliably brings cold, and genes are part of each other's environment. If B gives a 5 per cent advantage in the presence of A and none otherwise, then while A is at 1 per cent B's average advantage is 0.05 per cent and its chance of fixation 0.1 per cent. So
+
+- Before: Then ``other evolutions don't imitate it'':
+- After: A complex adaptation takes a thousand generations for A, another thousand for B, another for A*, and millions of years in all. Then ``other evolutions don't imitate it'':
+
+- Before: Humans plan ahead, change several parts together, learn from single cases and choose which changes to try.
+- After: How is that possible? I do not fully know, and I suspect science does not; human brains are much more complicated than evolutions. But humans plan ahead, change several parts together, learn from single cases, think abstractly about problem spots and choose which changes to try instead of waiting for a cosmic ray. By natural selection's standards this is magic.
+
+- Before: Technology already beats biology in many ways.
+- After: Some of biology is impressive even beside our best technology: we cannot build a self-replicating machine the size of a butterfly. But we only began accumulating knowledge about four hundred years ago, and we already have wheels, steel, rockets, transistors and nuclear power; the balance tips further every decade.
+
+- Before: would be like a modern bacterium imitating the first replicator.
+- After: would be like a modern bacterium imitating the first replicator, which would be eaten at once in today's ecology. So would a human planner who made random changes to a strategy and waited 768 rounds of testing to adopt a 3 per cent improvement.
+
+
+## honest/sections/no-evolutions-for-corporations-or-nanodevices.tex
+
+Why: Fidelity/substance pass: added the psychic-powers example of quantitative thinking, the height reading of Price's equation and its correction terms, the four-generation blur and DNA's fidelity, the bits argument from Einstein's Arrogance, the numeric covariance example, how the encryption works, why limited resources are not enough (turnover), and why the goo would not evolve
+
+- Before: That is qualitative reasoning. How much selection pressure?
+- After: That is qualitative reasoning. How much selection pressure? Psychic powers would be beneficial, so one might expect them to spread; but a mutation spreads with probability about twice its advantage, so one that is only rarely useful almost never spreads, and complex adaptations need constant use. If psychic powers existed, everyone would use them all the time, or they could not have evolved.
+
+- Before: My tool is Price's equation: a characteristic changes according to its covariance with relative fitness. The simple form holds only when the characteristic is inherited.
+- After: My tool is Price's equation: the average of a characteristic changes by its covariance with relative fitness. Take height: next generation's change in average height equals the covariance of height with relative fitness. The simple form holds only when the characteristic is straightforwardly inherited; better nutrition, or complex interactions among genes, need correction terms.
+
+- Before: but a spinoff resembles its parent only weakly, and CEOs ``cannot divide themselves by fission.''
+- After: but a spinoff resembles its parent only weakly, and CEOs ``cannot divide themselves by fission.'' If great-great-grandchildren barely resemble their ancestors, selection cannot accumulate over more than about four generations. DNA is digital, copies with about $10^{-8}$ errors per base per generation, and keeps its heredity for millions of generations; that is what lets a 3\% gene spread over 768 generations and another gene build on it. Even with digital fidelity, corporations would be at most ten generations into their RNA World.
+
+- Before: Those come from human design, with bankruptcy adding ``a handful of additional bits.'' I do not calculate the bits.
+- After: A star that burns longer is more likely to be seen, but its luck is not copied onto other stars, so we do not expect stars with complex features for burning longer. As in ``Einstein's Arrogance,'' most of the evidence goes into locating the answer: a corporate feature that takes hundreds of bits to specify comes from human design, while in biology mutations are random and selection supplies thousands of bits. Bankruptcy adds ``a handful of additional bits.'' I do not calculate the bits.
+
+- Before: what drives evolution is covariance, which shrinks when a characteristic barely varies.
+- After: what drives evolution is covariance, which shrinks when a characteristic barely varies. A trait ranging from 0 to 9 can be highly correlated with one ranging from 50.0001 to 50.0009, with tiny covariance.
+
+- Before: The Foresight Institute proposes encrypting a nanodevice's instructions so that any copying error scrambles them.
+- After: The Foresight Institute proposes encrypting a nanodevice's instructions so that flipping any single bit scrambles them, and giving each offspring a copy of the original encrypted instructions, so assembly errors are not inherited.
+
+- Before: Such devices would run out of atoms within a few generations, so grey goo that ate the Earth would then barely change.
+- After: Such devices would run out of atoms within a few generations. Limited resources are not enough for evolution: a large fraction of the population must keep dying to free resources, and ``generations'' really measures how much of the population is newly made. Grey goo that ate the Earth, being diamond and more stable than proteins, would need only to repair itself after an asteroid; less than one generation might pass before the Sun died, and nothing interesting would happen afterwards.
+
+
+## honest/sections/evolving-to-extinction.tex
+
+Why: Fidelity/substance pass: added why balanced sex ratios are surprising, the killing to be made by births of sons, the parental-investment qualification, 'replication of the fitter', gene frequency as the real struggle, the degraded species optimum, the Buffy environment and Gandhi, the virus tension, the details of the distorter and transposons, why perfect copying spreads, the multicellular point and the zero-sum closing
+
+- Before: My first example is the sex ratio. A group whose mothers had three daughters for every son would have 50\% more grandchildren than a group with equal numbers.
+- After: My first example is the sex ratio. One male can father children with a hundred females, and in most species males do little parenting, yet boys and girls are born in about equal numbers, even where the male mates and vanishes. A group whose mothers had three daughters for every son would have 50\% more grandchildren and 125\% more great-grandchildren than a group with equal numbers.
+
+- Before: so the rarer males are, the more each son is worth to the parent.
+- After: so all males together contribute as many genes as all females, and the rarer males are, the more each son is worth to the parent. If everyone else bears one son for ten daughters, a mother who bears only sons gets ten times as many grandchildren per child.
+
+- Before: and a maternity ward shows that it beats group selection in humans.
+- After: and a maternity ward shows that it beats group selection in humans. Strictly, what is equalized is parental investment: if sons cost half as much, twice as many are born, but raising a girl does not seem much costlier to hunter-gatherers.
+
+- Before: A gene that sacrifices its carrier to save the whole species,
+- After: Natural selection is not about groups, species or even individuals, who keep the genes they are born with; nearly all your ancestors are dead, so ``survival of the fittest'' is a misnomer for replication of the fitter. It is about gene frequencies. A complex adaptation needs its parts reliably present, so its signature is a gene rising from a millionth of the gene pool to 99 per cent. The real struggle is among alleles for frequency; two rams locking horns are passing shadows. A sex ratio designed for the species' survival would decay back to the individual optimum. A gene that sacrifices its carrier to save the whole species,
+
+- Before: and if extinction threats recur, the species dies out.
+- After: and if extinction threats recur (a ``Buffy environment''), the species dies out. If humanity were to stay biological for another century, it would be a good idea to start cloning Gandhi.
+
+- Before: My cases: viruses that kill their hosts too fast, which I guess ``probably happened any number of times'';
+- After: My cases: viruses, torn between replicating fast and keeping the host alive long enough to spread, which may lose the balance and vanish, as I guess ``probably happened any number of times'';
+
+- Before: which makes only sons;
+- After: which makes only sons, all carrying it, so that it is twice as fit as the normal allele even as females vanish; perhaps group selection keeps it rare, and if mice could fly and formed one population, they would evolve to extinction;
+
+- Before: transposons, which make up around half the maize genome and ``may not extinguish a species'';
+- After: transposons, genes that copy themselves elsewhere in the genome, which make up around half the maize genome, spread through every population of fruit flies within fifty years (P elements), repeat hundreds of thousands of times in ours (the Alu sequence), add harmful mutations and ``may not extinguish a species'';
+
+- Before: and a perfect DNA-copying mechanism, which would spread and then leave the species unable to adapt.
+- After: and a perfect DNA-copying mechanism. In a sexual species its carriers avoid harmful mutations but still receive beneficial ones by mating, so it spreads to fixation; ten thousand years later an ice age comes, and the species cannot adapt.
+
+- Before: Cancer cells outcompete their neighbours until the body dies, and bodies exist only by suppressing evolution among their cells.
+- After: Cancer cells outcompete their neighbours until the body dies, and multicellular bodies exist only because they evolved ways to outlaw evolution among their cells.
+
+- Before: So do not praise evolution for its concern for individuals, species or even genes.
+- After: So do not praise evolution for its concern for individuals, species or even genes. No complex adaptation has been found that can only be explained as preserving a species, and the mathematics says it is nearly impossible; between two alleles, the contest for frequency is zero-sum. Fitness is not always your friend.
+
+
+## honest/sections/the-tragedy-of-group-selectionism.tex
+
+Why: Fidelity/substance pass: added the toy-ecology motive, the egg-size addendum, why restraint's benefits leak to the unrestrained, the formula's terms, the simulation's numbers, the empirical crashes, the later revival, why cannibalism was the expected result, the full diagnosis, the in-principle vs in-practice point, Molloy, and why evolutionary biology is good training
+
+- Before: A gene for restraint cannot spread by helping others, and individual selection does not favour it.
+- After: A gene for restraint cannot spread by helping others; its effect must cause more copies of itself. Our sense of aesthetics cries that something should have been done when foxes eat all the rabbits and starve, as a human building a toy ecology would add a breeding restrainer; the temptation is then to find an argument that Nature wants the same thing for its own reasons. Individual selection does not favour restraint. (An addendum: it can favour four big eggs over eight small ones, if that is the individual's best trade-off, but not to spare shared resources.)
+
+- Before: The benefits of restraint go to restrained and unrestrained alike, so restraint spreads only if its cost, divided by its benefit, is less than the relatedness of neighbours. A simulation I link shows that this needs very small groups.
+- After: The benefits of restraint go to restrained and unrestrained alike, since unrestrained foxes and their many cubs eat the rabbits left over. Restraint spreads only if its cost to the donor, divided by its benefit to others, is less than the average relatedness between a fox and the neighbours who benefit. A simulation I link shows how demanding this is: with a 3\% cost, pure altruist groups twice as fit as selfish ones, groups of 25 and 20\% of deaths replaced by migrants, altruism merely survives alongside selfishness; double the group size, or double the cost, and selfishness wins. For a cost above 10\%, groups must have about five members, which is implausible for foxes.
+
+- Before: The group selectionists lost; the deciding blow was observation, although ``I forget the exact species of dispute.''
+- After: The group selectionists lost; the deciding blow was observation, although ``I forget the exact species of dispute'': predators did not restrain their breeding, and predator-prey systems crash all the time. Group selection later revived in a very different form: population structure does create some group selection pressure, which your mathematics must include, though it need not beat individual selection, and evolved enforcement mechanisms change the game.
+
+- Before: This is ``massively obvious in retrospect.''
+- After: Selecting for small populations would, of course, favour eating other individuals' children, not restraining one's own breeding. This is ``massively obvious in retrospect.''
+
+- Before: My diagnosis: the group selectionists started from ``the beautiful idea'' of nature in harmony, searched for a mechanism, and never asked neutrally what it would produce.
+- After: My diagnosis: a missed third alternative, from a conclusion decided in advance, a fake justification and motivated stopping. The group selectionists started from ``the beautiful idea'' of nature in harmony, searched for a mechanism, and, knowing what they wanted it to produce, never asked neutrally what it would produce.
+
+- Before: The lesson, as in ``Einstein's Arrogance,'' is that an answer chosen for its beauty may be doomed from the start. Nature does not yield to persuasive arguments. That is why I recommend evolutionary biology as training against rationalization.
+- After: The lesson, as in ``Einstein's Arrogance,'' is that in a large space of answers nearly all the work goes into singling one out, so an answer singled out for its beauty may be doomed from the start. In principle you could still weigh the evidence neutrally and un-believe; in practice their conclusion came from aesthetics and Nature's from selection, two processes with no reason to agree. Nature does not yield to persuasive arguments; as J. R. Molloy said, it ``absolutely refuses to yield to the most persuasive rationalizations of humans.'' That is why I recommend evolutionary biology as training against rationalization. Engineers need no training against thinking electrons have minds, but natural selection produces purposes alien to ours, and students are warned about it; that is good practice for thinking about other mind-like processes that do not work as we do.
+
+
+## honest/sections/fake-optimization-criteria.tex
+
+Why: Fidelity/substance pass: added the laptop example, the Inquisitor comparison, the XML-file optimizer, why selection's output is pure, the objection that human morality is different, and the 'always be selfish' examples
+
+- Before: The same problem arises for decisions: seeing what a criterion really endorses.
+- After: The same problem arises for decisions: seeing what a criterion really endorses. If your principles call for giving laptops to everyone, do they endorse a \$1 million gem-studded laptop for yourself, or 5,000 cheap ones shipped abroad? A phlogiston theorist explaining why burnt magnesium gains weight has nothing on an Inquisitor explaining why God's love requires burning people.
+
+- Before: What I really want is an optimizer with a known goal and no other desires, to compare with human reasoning about the same goal.
+- After: What I really want is a standard, open, consequentialist optimizer into which we could feed a morality as a file and see what it recommends: an optimizer with a known goal and no other desires, to compare with human reasoning about the same goal.
+
+- Before: It has no mercy and no politics, and its output is optimized ``only for inclusive genetic fitness.''
+- After: It has no mercy, no aesthetics and no politics, no Blue or Green. It is not smart enough to maximize its criterion, but its output is optimized ``only for inclusive genetic fitness,'' and not, say, for the interests of the US agricultural industry.
+
+- Before: Does human morality care about fitness? No. But if we cannot hear one note clearly, how will we hear an orchestra?
+- After: Does human morality care about fitness? No; it cares about love, fairness and freedom, and no society had the concept of inclusive fitness before the twentieth century. But if we cannot hear one note clearly, how will we hear an orchestra? How will we see that ``Always be selfish'' or ``Always obey the government'' are poor principles, if we think optimizing genes for fitness yields organisms that give up breeding to conserve resources?
+
+
+## honest/sections/adaptation-executers-not-fitness-maximizers.tex
+
+Why: Fidelity/substance pass: added the micronutrients and superstimulus, why the designer's intent is not in the tool (no XML tags; the future cannot cause the past), the full chain of meanings, the taste bud's indirection, why its consequence has not been corrected, the author's acceptable solutions, and the closing restatement
+
+- Before: and the same taste buds lead people to ice cream.
+- After: and the same taste buds lead people to ice cream, a superstimulus with more sugar, fat and salt than anything ancestral, while they do not complain that bread lacks the micronutrients leaves and nuts once supplied.
+
+- Before: To explain, I take a screwdriver. Its cause is the designer's mind.
+- After: To explain, I take a screwdriver. Its atoms carry no tags stating its purpose; forget that the designer is separate from the thing designed, and you may be surprised that it does not reshape itself for a flat-head screw. Its cause is the designer's mind, which imagined a screw and a turning handle; the screwdriver's future use cannot be its cause, since the future cannot cause the past.
+
+- Before: which may be a weapon or a chisel.
+- After: which may be a weapon for a murderer who drops it, and then a chisel for the child who finds it.
+
+- Before: Its shape is a sensor linked to reinforcement.
+- After: For convenience we say ``Evolution did it,'' but that compresses a long history, not a quick act like a designer's. Its shape is a molecular sensor linked to reinforcement, one step removed from getting food: it makes the organism want foods like the one just eaten.
+
+- Before: Its consequence, today, can run from chocolate to getting fat to having fewer children.
+- After: Its consequence, today, can run from wanting chocolate to eating it, getting fat, getting fewer dates and having fewer children, the opposite of the ancestral regularity that shaped it; overeating is too recent a problem for evolution to have caught up.
+
+- Before: I like chocolate and wish it were less harmful.
+- After: I like chocolate and wish it were less harmful, and would accept redesigning either the chocolate or my biochemistry.
+
+- Before: Then, ``Therefore it is said,'' and the epigraph again.
+- After: Better to see taste buds as an adaptation fitted to near-starvation, apples and roast rabbit, executed now amid cheap chocolate and advertising. Then, ``Therefore it is said,'' and the epigraph again.
+
+
+## honest/sections/evolutionary-psychology.tex
+
+Why: Fidelity/substance pass: added the 'wind'/'blue' contrast of bee and human, what cognitive causes physically are, Lord Acton and the Stalin argument, evolution as not a creature, the slide from evolutionary to cognitive purpose, the hand and the penny, anger events vs circuitry, and the details and point of the bar story
+
+- Before: the way the meaning of the word ``blue'' gets in the way of naming the color it is printed in.
+- After: the way the meaning of the word ``blue'' gets in the way of naming the color it is printed in, while ``wind'' causes no trouble. A bee and a human are both designs, but only the human is a designer: the bee is ``wind,'' the human ``blue.''
+
+- Before: Emotions and even unconscious motives exist in the brain; something in Stalin's brain, it ``seems likely,'' lit up for power.
+- After: An intention to go to the supermarket, an emotion, an instinct, a suppressed thought all exist physically in the brain, and with a good enough scanner and the code you could see them. Even unconscious motives do. Lord Acton said power tends to corrupt; whether or not Stalin thought himself an altruist, something in his brain, it ``seems likely,'' lit up for power, or how could power have corrupted it?
+
+- Before: Evolution, by contrast, is a statistical fact about ancestors. Wings do not understand flight, and until the twentieth century no brain represented inclusive genetic fitness.
+- After: Evolution, by contrast, is a statistical fact about ancestors, not ``a little furry thing lurking in an undiscovered forest.'' Wings do not understand flight, bones have no concept of strength, and brains that evolution made able to design had no more concept of evolution than a bird has of aerodynamics; until the twentieth century no brain represented inclusive genetic fitness. So ``the evolutionary purpose of anger'' must not slide into ``the purpose of anger,'' and then into its cognitive purpose.
+
+- Before: Thinking that anger contains a wish to reproduce is like thinking your hand contains a wish to pick things up.
+- After: Thinking that anger contains a wish to reproduce is like thinking your hand contains a wish to pick things up. You can will your hand to pick up a penny, but no act of will made the hand grow; likewise a particular fit of anger can have mental causes, but you did not will the circuitry of anger into your brain.
+
+- Before: Then a story. A man and a woman meet in a bar. He likes her clear skin, she likes his confident smile: cues to fertility and to status. They use a condom. Their detectors do not know what they were for.
+- After: Then a story. A man and a woman meet in a bar. He likes her clear skin and firm breasts, ancestral cues to fertility, here produced by makeup and a bra; she likes his confident smile and firm manner, ancestral cues to status and resources. She plans to use birth control, and her brain, so to speak, is a creationist; he just wants sex. They use a condom. Their detectors do not know what they were for. The main result is to keep the bar, the hotel and the condom maker in business, which was nobody's purpose and has nothing to do with the ancestral regularities that built their brains.
+
+
+## honest/sections/an-especially-elegant-evpsych-experiment.tex
+
+Why: Fidelity/substance pass: added the 'no one would think of this experiment' point, the supermarket illustration of the evolutionary-cognitive line, the 0.98 comparison, the two sources of doubt spelled out, why evolution would want imagined grief, the opportunity-cost question, the two sunk-cost explanations, and the !Kung-vs-Canada contrast
+
+- Before: The study answers people who say evolutionary psychology makes no advance predictions.
+- After: The study answers people who say evolutionary psychology makes no advance predictions: no one would think of running it without evolutionary psychology.
+
+- Before: ``Parents care about children for their own sake.''
+- After: ``Parents care about children for their own sake''; that children carry their genes is the evolutionary, not the mental, reason such minds exist. I draw my cynicism about hidden motives sharply at that line, or I might as well tell the supermarket cashier that bagging my groceries correctly is only a way to maximize inclusive fitness.
+
+- Before: .92 is, I think, among the highest correlations in psychology,
+- After: .92 is, I think, among the highest correlations in psychology; the only higher one I recall, .98, came from two groups answering what amounts to the same question, similarity and probability,
+
+- Before: I ask myself whether the !Kung are typical of ancestral hunter-gatherers.
+- After: The fine-tuning I take for granted, given the huge selection pressure. The remaining doubts are whether adults can picture relative grief correctly, and whether the !Kung are typical of ancestral hunter-gatherers or tribes varied too much for .92.
+
+- Before: Imagined grief is the right thing to measure, because it is what steers a parent before a loss.
+- After: Imagined grief is the right thing to measure, because it is what steers a parent before a loss; to evolution a dead child is a sunk cost, and it ``wants'' the parent to learn, recover and raise other children.
+
+- Before: The curve that fits is the child's future reproductive value, not what has already been spent on the child.
+- After: The curve that fits is the child's future reproductive value, not what has already been spent on the child; perhaps the fit would be even better with the future cost of raising the child to independence.
+
+- Before: Humans notice sunk costs, presumably for one of two reasons; natural selection does not.
+- After: Humans notice sunk costs, presumably to keep us from switching strategies too often, or as an unfortunate spandrel of the pain of waste. Natural selection does not; it does not ``think'' at all, being only a fact about past reproduction. Yet the grief adaptation goes on working as if the parent lived among the !Kung, not in Canada, a difference most humans would notice.
+
+
+## honest/sections/superstimuli-and-the-collapse-of-western-civilization.tex
+
+Why: Fidelity/substance pass: added the 57-hour question, how the candy bar hijacks taste and why health is not supplied, the guessed game tricks, the hoped-for sweet spot, the beauty-standards and harm points, the free-market assumption, the abstract-thought compromise and its costs, the regulator's incentives, and the teenager/Tahiti line
+
+- Before: If people have the right to play games, the market will supply the most engaging games that can be sold.
+- After: If people have the right to play games, the market will supply the most engaging games that can be sold, even to the point of removing the most engaged consumers from the gene pool. How does a product become so involving that after 57 hours a person would rather use it for one more hour than eat or sleep?
+
+- Before: it matches taste buds that evolved among hunter-gatherers more strongly than anything they ever met.
+- After: it matches taste buds that evolved among hunter-gatherers more strongly than anything they ever met. Tastiness, which once tracked healthy food, has been reverse-engineered and matched artificially; there is no equal market incentive to make the food healthy, since we cannot taste health.
+
+- Before: A video game can be more engaging than reality; I guess at the tricks.
+- After: A video game can be more engaging than reality; I guess at the tricks: challenges poised between easy and impossible, intermittent reinforcement, an ever-rising score, and social play in multiplayer games.
+
+- Before: Competition will not stop at games that leave players able to pay:
+- After: One might hope for a sweet spot where most players have fun and only a few become so addicted they lose their jobs and cannot pay; in 2007, playing 58 hours until you die is still the exception. But competition will not stop there:
+
+- Before: The market will supply as much temptation as can be sold, past the point of harm.
+- After: The market will supply as much temptation as can be sold, beyond the point where stimuli become superstimuli (consider how advertised beauty has changed since the 1950s) and, as candy bars show, past the point of harm.
+
+- Before: Why not just say no? Evolution struck a compromise:
+- After: Why not just say no? Free-market economics assumes that, absent force and fraud, people can always refuse a harmful transaction; to the extent that is true, the free market has few downsides. An organism that regularly passes up food dies, but sometimes a usually beneficial act is harmful, and humans can see such cases by abstract thought, though we also imagine ones that do not exist, like ancestor spirits forbidding us good rabbits. Evolution struck a compromise, a limited ability to resist, since
+
+- Before: It may run out faster, ``it seems plausible,'' against superstimuli.
+- After: The players who died must, in a sense, have used willpower to keep playing. Even people lucky in willpower pay a price to resist; it is just easier for them to pay. Willpower evolved against ancestral temptations, and may run out faster, ``it seems plausible,'' against superstimuli.
+
+- Before: Should we ban cookie ads? A problem does not prove that government can fix it,
+- After: Is the public display of superstimuli a harm even to those who resist? Should we ban cookie ads? A problem does not prove that government can fix it, since regulators focus on failures spectacular enough to reach the newspapers, not on low-grade harm from addictive products;
+
+- Before: ``Where are the advertising billboards that say `BREED'?''
+- After: ``Where are the advertising billboards that say `BREED'?'' Who will pay image consultants to make arguing with sullen teenagers seem more alluring than a vacation in Tahiti?
+
+
+## honest/sections/thou-art-godshatter.tex
+
+Why: Fidelity/substance pass: added why inclusive fitness is hard to represent (shared variance, recent science), the preprogrammed-knowledge alternative, curiosity as implicit knowledge, how reward signals correlate at long vs short range, the list of evolved rewards, the monomaniacal focus within a species, the short-term first brains, the ribosome comparison, and the closing reactions
+
+- Before: A human designer might think it easy to make agents that want nothing but fitness.
+- After: The Evolution Fairy cares about nothing but gene copies, so why not make agents that want nothing but fitness? A human designer might think it easy.
+
+- Before: I answer two objections to show that such an agent needs no separate drives.
+- After: It would need a lot of knowledge. Inclusive fitness is subtle: chimpanzees share 95\% of your genes, but what counts is shared variation within a population, so a sister is related by one half. Biologists have understood causes of reproductive success like reciprocal altruism and costly signaling only in the last fifty years or so, and an agent without that knowledge would fall flat. But evolution could have built the knowledge in, with a library of strategies, instead of rewards: born knowing that fatty food probably helps fitness, the agent would stop eating it when it learned otherwise, and would invent neither condoms nor cookies. I answer two objections to show that such an agent needs no separate drives.
+
+- Before: If it knows that a kind of curiosity paid off for its ancestors, it will be curious.
+- After: If it knows that a kind of curiosity paid off for its ancestors, it will be curious; human curiosity, which responds to particular features of problems, is exactly such knowledge stored implicitly in DNA.
+
+- Before: For millions of years brains learned from rewards, such as the taste of fat and the pleasure of sex, that went with reproduction only at long range.
+- After: For millions of years brains learned from rewards, such as the taste of fat and the pleasure of sex, whose link to reproduction was long-range but whose link to behavior was short: you need not work out that autumn sugar becomes winter fat and spring mating; an apple simply tastes good. So organisms evolved rewards for eating, nest-building, scaring off rivals, helping siblings, discovering truths, forming alliances, arguing persuasively and sex.
+
+- Before: So evolution's single goal did not pass into us.
+- After: Within each species evolution is purely obsessed with fitness; steel skin is worthless if it costs 1\% of reproduction. Yet that goal did not pass into us, above all because evolution is stupid, and also because the first brains were far less general than evolution and could use only short-term desires.
+
+- Before: Maybe, given a billion more years,
+- After: Asking why evolution did not build fitness maximizers is like asking why it did not hand us a ribosome and tell us to design our own biochemistry: it cannot refactor that fast. Maybe, given a billion more years,
+
+- Before: We love sugar, our children, status, sex, play and learning, whether or not they help us reproduce.
+- After: We love sugar, our children, status, sex, play and learning, whether or not they help us reproduce: sex with birth control, chocolate, Bach on a CD. Learning about evolution, we think: obsess all day about fitness? Where is the fun in that?
+
+- Before: Our tastes for novelty and challenge find evolution's single aim unsatisfying.
+- After: Being a thousand shards of desire is not always fun, but it is not boring. Our tastes for novelty, complexity, elegance and challenge find evolution's single aim unsatisfying.
+
+
+## honest/sections/belief-in-intelligence.tex
+
+Why: Fidelity/substance pass: added why the prediction is falsifiable and more specific than maximum entropy, the stakes in the airport case, the coin example's point, the abstract relation between friend and city, and why 'intelligence' is too narrow
+
+- Before: and how strongly I believe he is better is how much probability I put on that class.
+- After: and how strongly I believe he is better is how much probability I put on that class. The class is vague, but more specific than total ignorance, since a vast set of final positions would falsify it.
+
+- Before: before I get into the car.
+- After: before I get into the car; with a flight to catch, I would not get in otherwise.
+
+- Before: or by a closed-form solution, as for a coin that turns over every minute.
+- After: or by a closed-form solution, as for a coin that turns over every minute, where the same formula gives the face after a hundred minutes and at every minute between.
+
+- Before: It needs only my friend's goal, planning skill and knowledge of the city.
+- After: It needs only my friend's goal, planning skill and knowledge of the city, the last a very abstract relation between friend and city that needs no specific knowledge of either.
+
+- Before: The general subject is what I would call an ``optimization process'';
+- After: ``Intelligence'' is too narrow a word for these situations; I would say ``optimization process''.
+
+
+## honest/sections/belief-in-intelligence.tex
+
+Why: Fidelity/substance pass: fixed punctuation and capitalization broken by my previous edit
+
+- Before: I would say ``optimization process''. natural selection is one,
+- After: I would say ``optimization process.'' Natural selection is one,
+
+
+## honest/sections/humans-in-funny-suits.tex
+
+Why: Fidelity/substance pass: added the comparison with kangaroos, frogs and insects, the mock-derivation of the human form, the crystal example, culture as a special case and the harder case of humanity, the angry-AI bet, the alien reproduction questions, the objection and reply about modeling other minds, the four-dimension example, universalizability, the torn-dress point spelled out, the slime monster, the moratorium on anthropomorphizing evolution, and the closing question
+
+- Before: I pretend to explain this by convergent evolution: any intelligence needs two legs, two eyes, a nose, attractive females and English.
+- After: I pretend to explain this by convergent evolution, never mind that a kangaroo resembles us less than a chimp, a frog less than a kangaroo, and insects, with six legs, outside skeletons and different eyes, less still; a real alien might not even use DNA or proteins. Any intelligence needs hands, so two legs and an upright walk; binocular vision, so two eyes in a head; speech, so ears and lips; a nose, because a face without one would look wrong to mates; attractive females, since ugly aliens would breed less; and English, or they could not build a civilization.
+
+- Before: An alien is a human in a funny suit if it thinks like a human, especially an English speaker of our time.
+- After: An alien is a human in a funny suit if it thinks like a human, especially an English speaker of our time, even if it is an angular creature of pure crystal.
+
+- Before: Living abroad would help, I suspect; ``this I have never done, being busy.''
+- After: To write a culture unlike your own you must see yours as a special case, not the norm. History helps, but it is only black letters on white pages; living a year in China or Dubai or among the !Kung would help more, I suspect; ``this I have never done, being busy.'' Seeing your humanity as a special case is much harder.
+
+- Before: Humans are alike because, in a sexual species, complex adaptations must be shared or they would not assemble.
+- After: The next time an alien, or an AI, on screen gets angry, and it will, I bet it shows the human facial expression for anger. Humans are alike because, in a sexual species, complex adaptations must be shared or they would not assemble. (Do the aliens reproduce sexually? Swap genes like bacteria? Form colonies like fungi?)
+
+- Before: A brain is too complex to model ``neuron-by-neuron,'' so the only way to grasp another is to run a shadow of its anger and beliefs on your own.
+- After: You may protest that you do not assume others are like you; they are angry when you are sad, and believe other things. But a brain is too complex to model ``neuron-by-neuron''; a system that complex and unlike you would take scientific lifetimes to unravel, and you cannot build a model that predicts others as well as you do. The only way to grasp another is to run a shadow of its anger and beliefs on your own: if you were angry at you, and believed you godless scum, you would try to hurt you.
+
+- Before: Empathic inference fails for minds unlike ours.
+- After: Empathic inference fails for minds unlike ours. I can tell you to imagine an alien raised in four spatial dimensions, but you cannot rewire your visual cortex to see as it would, and neither of us can feel an alien's emotions.
+
+- Before: Laughter may be valuable even if not all possible minds share it.
+- After: Laughter may be valuable even if not all possible minds share it, our own special part of the gift we give to tomorrow; universalizability among all possible minds is one idea about ethics I cannot rescue.
+
+- Before: it ``just seemed to them'' that the girl was sexy.
+- After: it ``just seemed to them'' that the girl was sexy, as a property of the girl and the dress. Your words have meaning and your jokes are funny; what has that to do with aliens? We do not think of ourselves as human while being human, and no act of will removes it; even imagining a slime monster that mates with slime monsters, it is hard to imagine it not preferring the girl.
+
+- Before: natural selection builds complex machines without them.
+- After: natural selection builds complex machines without them: a real alien, an optimizer that does not work as we do. Much of biology's progress since the 1960s has been enforcing a ban on anthropomorphizing evolution, won, I suspect, only by crushing experiments and clear mathematics; I have fought the same battle about AI for years.
+
+- Before: Good writers of real aliens include Jack Vance.
+- After: Writing real aliens, not merely conveniently incomprehensible ones, is the proverbial test of a science fiction author. Jack Vance's humans from other cultures are more alien than most aliens; start with \textsc{City of the Chasch}, and \textsc{The Mote in God's Eye} also counts.
+
+- Before: ``The inability to imagine the alien is the inability to see yourself.''
+- After: This Great Failure of Imagination is not only about science fiction or AI. ``The inability to imagine the alien is the inability to see yourself.'' Who can see a human camouflaged against a human background?
+
+
+## honest/sections/optimization-and-the-intelligence-explosion.tex
+
+Why: Fidelity/substance pass: added what 'improbable' means here, why animal learning did not accumulate (cats, bees, beavers), the generality and cumulativeness that human brains added, humans as optimized optimizers, the first process of selection as the accident, how simple selection's meta-level changes are, the protected interpreter, Bayes's inventor, the chimpanzee point, what stays protected in a self-improving AI, the hammer and island images, the epoch graph and folding it, and the AI-is-a-different-beast caveat
+
+- Before: I grant at once that this is an approximation.
+- After: I grant at once that this is an approximation, since neither evolution nor humans have consistent goals. ``Improbable'' means improbable against a random choice of design; with an optimizer around, such designs become probable.
+
+- Before: Animal brains learned, but their learning did not accumulate, so they were pieces in the game, not players, until human brains very recently became players.
+- After: Animal brains learned, but a cat's learning is thrown away when it dies, and a beaver cannot work out how to build a hive, nor a bee a dam. Brains lacked both the generality and the accumulation of evolution, so they were pieces in the game, not players, until human brains very recently became both general and cumulative, through language and writing. Humans design in an afternoon what selection takes millions of years for, which is unsurprising: selection began by accident, while humans are optimizers that selection spent millions of years optimizing. The accident was not the first replicator but the first process of selection.
+
+- Before: are rare enough that ``evolutionary biologists structure entire histories of life on Earth around them.''
+- After: are rare enough that ``evolutionary biologists structure entire histories of life on Earth around them.'' Yet to a programmer they are ideas any smart hacker has in the first ten minutes: bundle genes, separate storage from machinery, recombine. Even after them, selection is a blind idiot, and gene pools can evolve to extinction. The gene pool feeds on its own complexity only through a protected interpreter, selection itself, that it does not rewrite.
+
+- Before: Science builds on science, but the brain doing it is the one the first farmers had.
+- After: Science builds on science, but the brain doing it is the one the first farmers had. The inventor of Bayes's theorem did not thereby become a Bayesian. Writing and science shape history, but are far simpler than the brain and change it little.
+
+- Before: \nb{It shows that training does not close the gap. That the gap consists of genetic quirks is assumed.}
+- After: \nb{It shows that training does not close the gap. That the gap consists of genetic quirks is assumed.} Because the brain works unseen, people talk as if ``Test ideas by experiment'' or the $p < 0.05$ rule contributed as much as a whole brain; try telling chimpanzees to test their ideas by experiment.
+
+- Before: It would have no protected level that optimizes, and that would break with the whole past.
+- After: Machine code, and later physics, would remain protected, but those levels would not do the optimizing. It would have no protected level that optimizes, and that would break with the whole past since the first replicator.
+
+- Before: Until now optimizers have worked ``at a constant rate,'' and history sped up because each innovation opened the way to others,
+- After: Until now optimizers have worked ``at a constant rate,'' and history sped up because each innovation opened the way to others, like a searcher leaping between islands where good islands lie near better ones, but whose legs never change;
+
+- Before: something like sex or science reached the meta level.
+- After: something like sex or science reached the meta level, and a new epoch began. Imagine an economy without investment, or technology without tools for making tools, where once in a long while someone invents a hammer. So I see history as optimization power in and optimized products out, split into epochs within which the meta level stays fixed. A fully self-improving AI folds that graph back on itself. A weak one does nothing, like a chimpanzee told to rewrite its brain; a strong one, reaching down to its own source code, would make the graph over time look completely different.
+
+- Before: I admit that all this is ``mere analogic reasoning,'' good ``at best'' for qualitative predictions.
+- After: I admit that all this is ``mere analogic reasoning,'' good ``at best'' for qualitative predictions; a real AI rewriting its own code is a different beast, and other beliefs I have not explained tell me which analogies to use.
+
+
+## honest/sections/ghosts-in-the-machine.tex
+
+Why: Fidelity/substance pass: added what 'no ghost' does and does not mean (not a genie, not a slave), why you cannot leave decisions to the ghost, the chess-advice misconception, and the 'do whatever you want' chip
+
+- Before: There is no ghost; the program is the AI.
+- After: There is no ghost; the program is the AI. That does not make it a genie that grants wishes, or a docile slave; it means your instruction is the only ghost there is, at least at the start.
+
+- Before: So everything that seems obvious to you must be built, and that is why AI is much harder than people imagine.
+- After: So everything that seems obvious to you must be built, and that is why AI is much harder than people imagine: you must create the thing that sees from scratch. If you do not know how to build something like decision-making, you cannot leave it to the ghost's free will.
+
+- Before: Typing ``Make whatever chess moves you think are best'' at a fast processor does nothing,
+- After: Typing ``Make whatever chess moves you think are best'' at a fast processor does nothing; programmers who play poorly might fear their advice would slow the ghost down, but there is no ghost,
+
+- Before: An AI left unconstrained is not a freed slave; it is a heap of sand.
+- After: An AI left unconstrained is not a freed slave; it is a heap of sand. Tell a chip ``Do whatever you want!'' and nothing happens, because you have not built it to understand freedom.
+
+
+## honest/sections/artificial-addition.tex
+
+Why: Fidelity/substance pass: added the philosophers' reference theory, the narrow arithmeticians, the despairing and 'too simple to count' voices, the levels-of-organization moral, the diagnosis that the commenters' difficulty was their own ignorance, the burglar-alarm example, the rules-about-rules point, the blindfold image, and the funding point
+
+- Before: Philosophers say calculators only simulate addition,
+- After: Philosophers say calculators only simulate addition, and that ``thirty-seven'' means something only by referring to sheep and by its relations to other numbers, which is why the token for it in a program needs no internal structure. There are narrow calculators for numbers between twenty and thirty, but no general one,
+
+- Before: Searle's ``Chinese Calculator Experiment'' shows there is no real addition in the system.
+- After: Searle's ``Chinese Calculator Experiment'' shows there is no real addition in the system. One voice says none of them knows what arithmetic is and it is probably too hard for humans; another that if arithmetic were simple enough to reproduce, we could not count high enough to build computers.
+
+- Before: My morals: beware assertions you cannot regenerate from your own knowledge,
+- After: The parable has several morals; one is about levels of organization, since a CPU can add large numbers because they are not black boxes but ordered strings of 32 bits. Here I draw two: beware assertions you cannot regenerate from your own knowledge,
+
+- Before: Whether you call the gap ``emergent'' or ``unknowable,'' you are avoiding the admission that an insight is missing.
+- After: Whether you call the gap ``emergent'' or ``unknowable,'' you are avoiding the admission that an insight is missing, one that can be had but that you do not have. None of the voices set out to make numbers stop being mysterious; none saw that the difficulty was in their own minds, not in arithmetic.
+
+- Before: and ``It's not a pursuit that academia is set up to permit.''
+- After: and ``It's not a pursuit that academia is set up to permit,'' when you must publish a paper a month, nor one that venture capitalists fund.
+
+- Before: Pearl's graphical models explained what dozens of non-monotonic logics had patched case by case.
+- After: Pearl's graphical models explained what dozens of non-monotonic logics had patched case by case, such as the intuition that a burglar alarm means a burglar until you learn of a small earthquake nearby. The insight shows why first-order logic has the wrong properties and captures the right answer compactly; without it you keep adding hacks.
+
+- Before: Clever ideas look promising only because you cannot see the obstacles.
+- After: Without the key you will not even know the problem is unsolvable: if you do not know the rules, you do not know the rule that you need rules. Clever ideas look promising only because you cannot see the obstacles. It is like firing blindfolded at a distant target and crying that no one can prove you will miss; when no one can prove your idea wrong, you lack the information to hit a small target in a vast space.
+
