@@ -420,7 +420,8 @@ check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
 | 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads | 9.3e6 |
 | 6,400 | 0-82 (83) | read 83 again, same signature (114 clusters) | 1.7e7 |
 | 12,216 (Cook) | 0-85 (86 of 86) | none within 86 reads | 3.2e7 |
-| 12,216 (Cook), to Collatz 1 | running (552 reads) | | |
+| 12,216 (Cook), run 1 | 0-204 (205 of 205), through Collatz 8 | none; the container restarted | 7.7e7 |
+| 12,216 (Cook), to Collatz 1 | running again (552 reads) | | |
 
 (Cook's formula gives v = 12,216.)
 

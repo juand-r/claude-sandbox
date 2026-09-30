@@ -443,3 +443,10 @@ read-83 failure IS a spacing failure, with a threshold between 6,400 and
 12,216. Lesson: two spacings giving the same failure do not show that
 spacing is irrelevant; I retracted too fast. Running Cook's v to read
 556 (Collatz 1 at 552).
+
+De Mol at Cook's v = 12,216, run 1: reads 0-204 all correct (205/205,
+through Collatz 8 at read 204, 7.7e7 generations, ~2 h), then the
+container was reclaimed while the session was idle and the process died
+without error. Log kept as scratchpad demol_cook_full_run1.out. Run 2
+restarted 09:45 UTC with 30-minute check-ins so the session stays active.
+Lesson: long runs need either an active session or checkpoints.
