@@ -130,3 +130,8 @@ Findings while setting it up:
 - Optional keys use xparse `O{}` (empty default). My first version used
   `o` and tested for an empty key the wrong way, so every unkeyed note got
   the same label. The final-pass check caught it ("multiply defined").
+- Mistake in the tests, found after the first commit: the `note-order` case
+  had doubled backslashes (`\\aside`), so LaTeX read line breaks and plain
+  text, and the test passed without testing anything. Fixed. Verified that
+  the corrected test passes, that a reversed version fails, and that the
+  old nested behaviour (note 2 printed before note 1) would have failed it.

@@ -98,7 +98,7 @@ echo "--- notes build, their text appears, their links pair up"
 expect_ok two-levels        'T.\note{Note.\subnote{Subnote text.}}'          4 'Subnote text'
 expect_ok aside             'T.\aside{Aside text.}'                          2 'Aside text'
 expect_ok note-in-aside     'T.\aside{A.\note{Note from aside.}}'            4 'Note from aside'
-expect_order note-order      'T.\\aside{A.\\note{First note.}} U.\\note{Second note.}' 'First note' 'Second note'
+expect_order note-order      'T.\aside{A.\note{First note.}} U.\note{Second note.}' 'First note' 'Second note'
 expect_ok subnote-in-aside  'T.\aside{A.\note{N.\subnote{Deep subnote.}}}'   6 'Deep subnote'
 
 echo "--- cross-references"
