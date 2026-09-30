@@ -1,6 +1,6 @@
 """Long automaton runs whose results are cited in NOTES.md / REPORT.md.
 
-    python experiments.py lblock VARIANT [N] # one row of the L-block table
+    python experiments.py lblock VARIANT [N] [fill]  # L-block table row
     python experiments.py demol [T]           # De Mol 3x+1, x=3
     python experiments.py reads [N]           # outcomes of the first N reads
 
@@ -16,7 +16,7 @@ import time
 
 from casim import Run, padded_row
 from census import MAX_DT, census
-from cts import run as cts_run
+from cts import fill_empty_appendants, run as cts_run
 from decoder import Decoder
 from encoder import _left_v
 
@@ -52,8 +52,12 @@ def read_moving_data(decoder, run, lo_off, hi_off):
         return "?"
 
 
-def lblock(variant, n_reads=8):
+def lblock(variant, n_reads=8, fill=False):
+    """fill: replace empty appendants by junk N's (cts.fill_empty_appendants),
+    which removes every L block from the construction."""
     tape, apps = LBLOCK_VARIANTS[variant]
+    if fill:
+        apps = fill_empty_appendants(apps)
     check(tape, apps, 3 * _left_v(apps), n_reads)
 
 
@@ -159,7 +163,9 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["reads"]:
         reads(int(sys.argv[2]) if len(sys.argv) > 2 else 12)
     elif sys.argv[1:2] == ["lblock"]:
-        lblock(int(sys.argv[2]), int(sys.argv[3]) if len(sys.argv) > 3 else 8)
+        args = [a for a in sys.argv[2:] if a != "fill"]
+        lblock(int(args[0]), int(args[1]) if len(args) > 1 else 8,
+               fill="fill" in sys.argv)
     elif sys.argv[1:2] == ["demol"]:
         demol(int(sys.argv[2]) if len(sys.argv) > 2 else 1_350_000)
     else:

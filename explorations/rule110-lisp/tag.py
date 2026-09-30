@@ -22,7 +22,7 @@ from collections import deque
 # Cook's glider construction needs every appendant length to be a
 # multiple of 6 (see encoder.py); unary encoding gives appendant lengths
 # that are multiples of |Phi|, hence the padding.
-CTS_LENGTH_UNIT = 6
+from cts import LENGTH_UNIT as CTS_LENGTH_UNIT
 
 
 def run(rules, tape, s, max_steps):
@@ -74,16 +74,19 @@ def ts_to_cts(rules, tape, s, order=None):
     return cts_tape, apps, order
 
 
-def decode_cts_tape(cts_tape, order):
+def decode_cts_tape(cts_tape, order, skip_blank=False):
     """Inverse of the unary encoding: CTS tape -> list of TS symbols, or
     None if the tape is not currently a whole number of code words (i.e.
-    the CTS is mid-cycle)."""
+    the CTS is mid-cycle). skip_blank: ignore all-N words (the junk left
+    by cts.fill_empty_appendants)."""
     n = len(order)
     if len(cts_tape) % n:
         return None
     out = []
     for i in range(0, len(cts_tape), n):
         word = cts_tape[i:i + n]
+        if skip_blank and "Y" not in word:
+            continue
         if word.count("Y") != 1:
             return None
         out.append(order[word.index("Y")])

@@ -290,3 +290,44 @@ unchanged between two consecutive samples.
 
 At Cook's default spacing (v = 524) the same program matches 10/10 with
 a read every ~26.4k generations (30v + one appendant traversal).
+
+## Phase 3, item 2: the short leader (2026-09-30)
+
+Decoder-free L table (experiments.py lblock, read_outcomes, v = 3x):
+- variant 4 (control, {YNNNNN, YNNNNN}, tape YN): YNYNNN = reference
+  for all 6 reads that settled by 541k. Note the cadence: ~107k per
+  read, i.e. two ossifier periods, not one as for {YYYYNN}. Unexplained.
+- variant 3 ({YNNNNN, e}, tape YN): read 0 correct; "read 2" fires at
+  121k, only ~10k after the short leader's read, and leaves 3-4 Ebar
+  clusters (a real Y read leaves ~24); "read 4" leaves 55 (= untouched
+  components, so the region was disturbed, not read). Broken from the
+  short-leader read on.
+- variant 1 ({YYYYNN, e}): the same signature (read 2 at 124.8k with 3
+  clusters, read 4 with 55).
+
+Hypothesis tested: the L block is misplaced (paper: raw short leaders sit
+"+3 up" relative to raw regular leaders, which jigsaw gluing cannot see).
+- Family A: shift only L's first cluster by ether-lattice vectors
+  (7a+3b, 2b), b in -2..1, a in -6..6 (51 shifts, both Z2 classes of
+  the Ebar-lattice quotient over the range): none gives the reference
+  even reads YYNN; 30 give YYYY, the rest assorted.
+- Family B: shift L and everything to its right, cumulatively per L:
+  11 of 52 shifts run, none clean. Stopped (below).
+Conclusion: a rigid placement error of L is unlikely to be the cause, at
+least within small lattice shifts. Other candidates (not tested): the L
+figure's content itself (it shares its first ~115-148 cells with K, as
+the paper says it should, so a defect would sit in the rest), or the
+prepared-leader alignment k after a short leader.
+
+Workaround adopted instead: remove L from the construction. Replace each
+empty appendant by N^m, m = lcm(#appendants, 6) (cts.fill_empty_
+appendants). Exact at the CTS level: junk N's are read only as N (never
+append), and they delay later symbols by a multiple of the appendant
+cycle, so every later symbol meets the same appendant. Tested by
+comparing (appendant index, symbol) read traces with junk reads removed
+(test_tag.py; a wrong m = 6 for De Mol's p = 12 fails the test). Note
+that TS-step boundaries no longer coincide with CTS cycle boundaries
+(junk can start mid-cycle), so decoding the tag tape at cycle
+boundaries is the wrong check; my first test did that and failed.
+Cost: each Y read on a formerly empty appendant adds m N reads; v grows
+by ~80m per filled appendant (De Mol: v 3,427 -> ~12,200).

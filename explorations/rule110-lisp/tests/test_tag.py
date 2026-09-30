@@ -68,3 +68,38 @@ def test_tm_to_ts_to_cts_composed():
         assert dec is not None
         got.append("".join(dec))
     assert len(got) >= 250 and got[:len(ref)] == ref[:len(got)]
+
+
+
+def _read_trace(tape, apps, steps, junk_len=0):
+    """(appendant index, symbol) of every read, skipping reads of symbols
+    that were appended as junk (appendants of length junk_len made only of
+    N). A CTS runner written out here so reads can be told apart by origin."""
+    from collections import deque
+    q = deque((c, False) for c in tape)
+    out = []
+    for n in range(steps):
+        if not q:
+            break
+        c, junk = q.popleft()
+        if not junk:
+            out.append((n % len(apps), c))
+        if c == "Y":
+            a = apps[n % len(apps)]
+            is_junk = junk_len > 0 and len(a) == junk_len and "Y" not in a
+            q.extend((x, is_junk) for x in a)
+    return out
+
+
+def test_fill_empty_appendants_exact():
+    from cts import fill_empty_appendants
+    for rules, tape in ((DEMOL, "AAA"), (CHAPMAN, "CDDDD")):
+        cts_tape, apps, _ = ts_to_cts(rules, tape, 2)
+        filled = fill_empty_appendants(apps)
+        assert "" in apps and "" not in filled
+        assert all(len(a) % 6 == 0 for a in filled)
+        m = len(filled[apps.index("")])
+        ref = _read_trace(cts_tape, apps, 5_000)
+        got = _read_trace(cts_tape, filled, 20_000, junk_len=m)
+        assert len(got) >= len(ref) >= 250
+        assert got[:len(ref)] == ref
