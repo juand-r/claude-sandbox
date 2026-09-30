@@ -270,8 +270,10 @@ class StreamRun:
         e0 = max(lo, self.lo + self.since)
         e1 = min(hi, self.lo + self.width - self.since)
         if e0 < e1:
-            cells = unpack(self.words, self.width)
-            out[e0 - lo:e1 - lo] = cells[e0 - self.lo:e1 - self.lo]
+            # unpack only the words covering [e0, e1)
+            w0, w1 = (e0 - self.lo) // 64, -(-(e1 - self.lo) // 64)
+            cells = unpack(self.words[w0:w1], (w1 - w0) * 64)
+            out[e0 - lo:e1 - lo] = cells[e0 - self.lo - 64 * w0:e1 - self.lo - 64 * w0]
         if (out == UNDEFINED).any():
             raise ValueError(f"window [{lo}, {hi}) at t={self.t} not covered")
         return out
