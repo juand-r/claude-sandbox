@@ -19,175 +19,175 @@
 \contentsline {subsection}{Religion's Claim to be Non-Disprovable}{71}{section*.20}%
 \contentsline {subsection}{Professing and Cheering}{75}{section*.21}%
 \contentsline {subsection}{Belief as Attire}{78}{section*.22}%
-\contentsline {subsection}{Pretending to be Wise}{80}{section*.23}%
-\contentsline {subsection}{Applause Lights}{84}{section*.24}%
-\contentsline {section}{Noticing Confusion}{88}{section*.25}%
-\contentsline {subsection}{Focus Your Uncertainty}{89}{section*.26}%
-\contentsline {subsection}{What is Evidence?}{92}{section*.27}%
-\contentsline {subsection}{Scientific Evidence, Legal Evidence, Rational Evidence}{95}{section*.28}%
-\contentsline {subsection}{How Much Evidence Does It Take?}{99}{section*.29}%
-\contentsline {subsection}{Einstein's Arrogance}{103}{section*.30}%
-\contentsline {subsection}{Occam's Razor}{107}{section*.31}%
-\contentsline {subsection}{Your Strength as a Rationalist}{111}{section*.32}%
-\contentsline {subsection}{Absence of Evidence Is Evidence of Absence}{114}{section*.33}%
-\contentsline {subsection}{Conservation of Expected Evidence}{117}{section*.34}%
-\contentsline {subsection}{Hindsight Devalues Science}{120}{section*.35}%
-\contentsline {subsection}{Illusion of Transparency: Why No One Understands You}{123}{section*.36}%
-\contentsline {subsection}{Expecting Short Inferential Distances}{127}{section*.37}%
-\contentsline {section}{Mysterious Answers}{130}{section*.38}%
-\contentsline {subsection}{Fake Explanations}{131}{section*.39}%
-\contentsline {subsection}{Guessing the Teacher's Password}{134}{section*.40}%
-\contentsline {subsection}{Science as Attire}{138}{section*.41}%
-\contentsline {subsection}{Fake Causality}{141}{section*.42}%
-\contentsline {subsection}{Semantic Stopsigns}{145}{section*.43}%
-\contentsline {subsection}{Mysterious Answers to Mysterious Questions}{149}{section*.44}%
-\contentsline {subsection}{The Futility of Emergence}{153}{section*.45}%
-\contentsline {subsection}{Say Not "Complexity"}{156}{section*.46}%
-\contentsline {subsection}{Positive Bias: Look Into the Dark}{160}{section*.47}%
-\contentsline {subsection}{Lawful Uncertainty}{164}{section*.48}%
-\contentsline {subsection}{My Wild and Reckless Youth}{168}{section*.49}%
-\contentsline {subsection}{Failing to Learn from History}{171}{section*.50}%
-\contentsline {subsection}{Making History Available}{173}{section*.51}%
-\contentsline {subsection}{Explain/Worship/Ignore?}{176}{section*.52}%
-\contentsline {subsection}{"Science" as Curiosity-Stopper}{179}{section*.53}%
-\contentsline {subsection}{Truly Part Of You}{183}{section*.54}%
-\contentsline {subsection}{The Simple Truth}{187}{section*.55}%
-\contentsline {part}{How to Actually Change Your Mind}{203}{section*.56}%
-\contentsline {section}{Overly Convenient Excuses}{204}{section*.57}%
-\contentsline {subsection}{Rationality: An Introduction}{205}{section*.58}%
-\contentsline {subsection}{Tsuyoku Naritai! (I Want To Become Stronger)}{212}{section*.59}%
-\contentsline {subsection}{The Proper Use of Humility}{215}{section*.60}%
-\contentsline {subsection}{Tsuyoku vs. the Egalitarian Instinct}{219}{section*.61}%
-\contentsline {subsection}{The Third Alternative}{222}{section*.62}%
-\contentsline {subsection}{Lotteries: A Waste of Hope}{225}{section*.63}%
-\contentsline {subsection}{New Improved Lottery}{228}{section*.64}%
-\contentsline {subsection}{But There's Still A Chance, Right?}{231}{section*.65}%
-\contentsline {subsection}{The Fallacy of Gray}{234}{section*.66}%
-\contentsline {subsection}{Absolute Authority}{239}{section*.67}%
-\contentsline {subsection}{How to Convince Me That 2 + 2 = 3}{245}{section*.68}%
-\contentsline {subsection}{Infinite Certainty}{249}{section*.69}%
-\contentsline {subsection}{0 And 1 Are Not Probabilities}{253}{section*.70}%
-\contentsline {subsection}{Your Rationality is My Business}{257}{section*.71}%
-\contentsline {section}{Politics and Rationality}{260}{section*.72}%
-\contentsline {subsection}{Politics is the Mind-Killer}{261}{section*.73}%
-\contentsline {subsection}{Policy Debates Should Not Appear One-Sided}{264}{section*.74}%
-\contentsline {subsection}{The Scales of Justice, the Notebook of Rationality}{268}{section*.75}%
-\contentsline {subsection}{Correspondence Bias}{271}{section*.76}%
-\contentsline {subsection}{Are Your Enemies Innately Evil?}{274}{section*.77}%
-\contentsline {subsection}{Reversed Stupidity Is Not Intelligence}{277}{section*.78}%
-\contentsline {subsection}{Argument Screens Off Authority}{280}{section*.79}%
-\contentsline {subsection}{Hug the Query}{285}{section*.80}%
-\contentsline {subsection}{Rationality and the English Language}{288}{section*.81}%
-\contentsline {subsection}{Human Evil and Muddled Thinking}{292}{section*.82}%
-\contentsline {section}{Against Rationalization}{296}{section*.83}%
-\contentsline {subsection}{Knowing About Biases Can Hurt People}{297}{section*.84}%
-\contentsline {subsection}{Update Yourself Incrementally}{300}{section*.85}%
-\contentsline {subsection}{One Argument Against An Army}{303}{section*.86}%
-\contentsline {subsection}{The Bottom Line}{306}{section*.87}%
-\contentsline {subsection}{What Evidence Filtered Evidence?}{309}{section*.88}%
-\contentsline {subsection}{Rationalization}{313}{section*.89}%
-\contentsline {subsection}{A Rational Argument}{316}{section*.90}%
-\contentsline {subsection}{Avoiding Your Belief's Real Weak Points}{319}{section*.91}%
-\contentsline {subsection}{Motivated Stopping and Motivated Continuation}{324}{section*.92}%
-\contentsline {subsection}{Fake Justification}{328}{section*.93}%
-\contentsline {subsection}{Is That Your True Rejection?}{331}{section*.94}%
-\contentsline {subsection}{Entangled Truths, Contagious Lies}{335}{section*.95}%
-\contentsline {subsection}{Of Lies and Black Swan Blowups}{339}{section*.96}%
-\contentsline {subsection}{Dark Side Epistemology}{341}{section*.97}%
-\contentsline {section}{Against Doublethink}{346}{section*.98}%
-\contentsline {subsection}{Doublethink (Choosing to be Biased)}{347}{section*.99}%
-\contentsline {subsection}{No, Really, I've Deceived Myself}{351}{section*.100}%
-\contentsline {subsection}{Belief in Self-Deception}{354}{section*.101}%
-\contentsline {subsection}{Moore's Paradox}{358}{section*.102}%
-\contentsline {subsection}{Don't Believe You'll Self-Deceive}{361}{section*.103}%
-\contentsline {section}{Seeing with Fresh Eyes}{364}{section*.104}%
-\contentsline {subsection}{Anchoring and Adjustment}{365}{section*.105}%
-\contentsline {subsection}{Priming and Contamination}{368}{section*.106}%
-\contentsline {subsection}{Do We Believe Everything We're Told?}{371}{section*.107}%
-\contentsline {subsection}{Cached Thoughts}{374}{section*.108}%
-\contentsline {subsection}{Original Seeing}{378}{section*.109}%
-\contentsline {subsection}{The Virtue of Narrowness}{381}{section*.110}%
-\contentsline {subsection}{Stranger Than History}{384}{section*.111}%
-\contentsline {subsection}{The Logical Fallacy of Generalization from Fictional Evidence}{386}{section*.112}%
-\contentsline {subsection}{We Change Our Minds Less Often Than We Think}{392}{section*.113}%
-\contentsline {subsection}{Hold Off On Proposing Solutions}{395}{section*.114}%
-\contentsline {subsection}{The Genetic Fallacy}{398}{section*.115}%
-\contentsline {section}{Death Spirals}{402}{section*.116}%
-\contentsline {subsection}{The Affect Heuristic}{403}{section*.117}%
-\contentsline {subsection}{Evaluability (And Cheap Holiday Shopping)}{406}{section*.118}%
-\contentsline {subsection}{Unbounded Scales, Huge Jury Awards, \& Futurism}{410}{section*.119}%
-\contentsline {subsection}{The Halo Effect}{413}{section*.120}%
-\contentsline {subsection}{Superhero Bias}{416}{section*.121}%
-\contentsline {subsection}{Affective Death Spirals}{419}{section*.122}%
-\contentsline {subsection}{Resist the Happy Death Spiral}{422}{section*.123}%
-\contentsline {subsection}{Uncritical Supercriticality}{427}{section*.124}%
-\contentsline {subsection}{Evaporative Cooling of Group Beliefs}{431}{section*.125}%
-\contentsline {subsection}{When None Dare Urge Restraint}{435}{section*.126}%
-\contentsline {subsection}{Every Cause Wants To Be A Cult}{438}{section*.127}%
-\contentsline {subsection}{Two Cult Koans}{441}{section*.128}%
-\contentsline {subsection}{Asch's Conformity Experiment}{444}{section*.129}%
-\contentsline {subsection}{On Expressing Your Concerns}{448}{section*.130}%
-\contentsline {subsection}{Lonely Dissent}{451}{section*.131}%
-\contentsline {subsection}{Cultish Countercultishness}{455}{section*.132}%
-\contentsline {section}{Letting Go}{462}{section*.133}%
-\contentsline {subsection}{Singlethink}{463}{section*.134}%
-\contentsline {subsection}{The Importance of Saying "Oops"}{466}{section*.135}%
-\contentsline {subsection}{The Crackpot Offer}{469}{section*.136}%
-\contentsline {subsection}{Just Lose Hope Already}{472}{section*.137}%
-\contentsline {subsection}{The Proper Use of Doubt}{474}{section*.138}%
-\contentsline {subsection}{You Can Face Reality}{477}{section*.139}%
-\contentsline {subsection}{The Meditation on Curiosity}{479}{section*.140}%
-\contentsline {subsection}{No One Can Exempt You From Rationality's Laws}{483}{section*.141}%
-\contentsline {subsection}{Leave a Line of Retreat}{486}{section*.142}%
-\contentsline {subsection}{Crisis of Faith}{490}{section*.143}%
-\contentsline {subsection}{The Ritual}{498}{section*.144}%
-\contentsline {part}{The Machine in the Ghost}{502}{section*.145}%
-\contentsline {section}{The Simple Math of Evolution}{503}{section*.146}%
-\contentsline {subsection}{Minds: An Introduction}{504}{section*.147}%
-\contentsline {subsection}{The Power of Intelligence}{510}{section*.148}%
-\contentsline {subsection}{An Alien God}{514}{section*.149}%
-\contentsline {subsection}{The Wonder of Evolution}{520}{section*.150}%
-\contentsline {subsection}{Evolutions Are Stupid (But Work Anyway)}{524}{section*.151}%
-\contentsline {subsection}{No Evolutions for Corporations or Nanodevices}{528}{section*.152}%
-\contentsline {subsection}{Evolving to Extinction}{533}{section*.153}%
-\contentsline {subsection}{The Tragedy of Group Selectionism}{538}{section*.154}%
-\contentsline {subsection}{Fake Optimization Criteria}{543}{section*.155}%
-\contentsline {subsection}{Adaptation-Executers, not Fitness-Maximizers}{546}{section*.156}%
-\contentsline {subsection}{Evolutionary Psychology}{549}{section*.157}%
-\contentsline {subsection}{An Especially Elegant Evpsych Experiment}{553}{section*.158}%
-\contentsline {subsection}{Superstimuli and the Collapse of Western Civilization}{557}{section*.159}%
-\contentsline {subsection}{Thou Art Godshatter}{561}{section*.160}%
-\contentsline {section}{Fragile Purposes}{566}{section*.161}%
-\contentsline {subsection}{Belief in Intelligence}{567}{section*.162}%
-\contentsline {subsection}{Humans in Funny Suits}{571}{section*.163}%
-\contentsline {subsection}{Optimization and the Intelligence Explosion}{576}{section*.164}%
-\contentsline {subsection}{Ghosts in the Machine}{582}{section*.165}%
-\contentsline {subsection}{Artificial Addition}{586}{section*.166}%
-\contentsline {subsection}{Terminal Values and Instrumental Values}{591}{section*.167}%
-\contentsline {subsection}{Leaky Generalizations}{599}{section*.168}%
-\contentsline {subsection}{The Hidden Complexity of Wishes}{603}{section*.169}%
-\contentsline {subsection}{Anthropomorphic Optimism}{609}{section*.170}%
-\contentsline {subsection}{Lost Purposes}{613}{section*.171}%
-\contentsline {section}{A Human's Guide to Words}{619}{section*.172}%
-\contentsline {subsection}{The Parable of the Dagger}{620}{section*.173}%
-\contentsline {subsection}{The Parable of Hemlock}{623}{section*.174}%
-\contentsline {subsection}{Words as Hidden Inferences}{627}{section*.175}%
-\contentsline {subsection}{Extensions and Intensions}{630}{section*.176}%
-\contentsline {subsection}{Similarity Clusters}{634}{section*.177}%
-\contentsline {subsection}{Typicality and Asymmetrical Similarity}{636}{section*.178}%
-\contentsline {subsection}{The Cluster Structure of Thingspace}{639}{section*.179}%
-\contentsline {subsection}{Disguised Queries}{643}{section*.180}%
-\contentsline {subsection}{Neural Categories}{647}{section*.181}%
-\contentsline {subsection}{How An Algorithm Feels From Inside}{652}{section*.182}%
-\contentsline {subsection}{Disputing Definitions}{656}{section*.183}%
-\contentsline {subsection}{Feel the Meaning}{661}{section*.184}%
-\contentsline {subsection}{The Argument from Common Usage}{665}{section*.185}%
-\contentsline {subsection}{Empty Labels}{669}{section*.186}%
-\contentsline {subsection}{Taboo Your Words}{672}{section*.187}%
-\contentsline {subsection}{Replace the Symbol with the Substance}{676}{section*.188}%
-\contentsline {subsection}{Fallacies of Compression}{680}{section*.189}%
-\contentsline {subsection}{Categorizing Has Consequences}{684}{section*.190}%
-\contentsline {subsection}{Sneaking in Connotations}{687}{section*.191}%
+\contentsline {subsection}{Pretending to be Wise}{81}{section*.23}%
+\contentsline {subsection}{Applause Lights}{85}{section*.24}%
+\contentsline {section}{Noticing Confusion}{89}{section*.25}%
+\contentsline {subsection}{Focus Your Uncertainty}{90}{section*.26}%
+\contentsline {subsection}{What is Evidence?}{93}{section*.27}%
+\contentsline {subsection}{Scientific Evidence, Legal Evidence, Rational Evidence}{96}{section*.28}%
+\contentsline {subsection}{How Much Evidence Does It Take?}{100}{section*.29}%
+\contentsline {subsection}{Einstein's Arrogance}{104}{section*.30}%
+\contentsline {subsection}{Occam's Razor}{108}{section*.31}%
+\contentsline {subsection}{Your Strength as a Rationalist}{112}{section*.32}%
+\contentsline {subsection}{Absence of Evidence Is Evidence of Absence}{115}{section*.33}%
+\contentsline {subsection}{Conservation of Expected Evidence}{118}{section*.34}%
+\contentsline {subsection}{Hindsight Devalues Science}{121}{section*.35}%
+\contentsline {subsection}{Illusion of Transparency: Why No One Understands You}{124}{section*.36}%
+\contentsline {subsection}{Expecting Short Inferential Distances}{128}{section*.37}%
+\contentsline {section}{Mysterious Answers}{131}{section*.38}%
+\contentsline {subsection}{Fake Explanations}{132}{section*.39}%
+\contentsline {subsection}{Guessing the Teacher's Password}{135}{section*.40}%
+\contentsline {subsection}{Science as Attire}{139}{section*.41}%
+\contentsline {subsection}{Fake Causality}{142}{section*.42}%
+\contentsline {subsection}{Semantic Stopsigns}{146}{section*.43}%
+\contentsline {subsection}{Mysterious Answers to Mysterious Questions}{150}{section*.44}%
+\contentsline {subsection}{The Futility of Emergence}{154}{section*.45}%
+\contentsline {subsection}{Say Not "Complexity"}{157}{section*.46}%
+\contentsline {subsection}{Positive Bias: Look Into the Dark}{161}{section*.47}%
+\contentsline {subsection}{Lawful Uncertainty}{165}{section*.48}%
+\contentsline {subsection}{My Wild and Reckless Youth}{169}{section*.49}%
+\contentsline {subsection}{Failing to Learn from History}{172}{section*.50}%
+\contentsline {subsection}{Making History Available}{174}{section*.51}%
+\contentsline {subsection}{Explain/Worship/Ignore?}{177}{section*.52}%
+\contentsline {subsection}{"Science" as Curiosity-Stopper}{180}{section*.53}%
+\contentsline {subsection}{Truly Part Of You}{184}{section*.54}%
+\contentsline {subsection}{The Simple Truth}{188}{section*.55}%
+\contentsline {part}{How to Actually Change Your Mind}{204}{section*.56}%
+\contentsline {section}{Overly Convenient Excuses}{205}{section*.57}%
+\contentsline {subsection}{Rationality: An Introduction}{206}{section*.58}%
+\contentsline {subsection}{Tsuyoku Naritai! (I Want To Become Stronger)}{213}{section*.59}%
+\contentsline {subsection}{The Proper Use of Humility}{216}{section*.60}%
+\contentsline {subsection}{Tsuyoku vs. the Egalitarian Instinct}{220}{section*.61}%
+\contentsline {subsection}{The Third Alternative}{223}{section*.62}%
+\contentsline {subsection}{Lotteries: A Waste of Hope}{226}{section*.63}%
+\contentsline {subsection}{New Improved Lottery}{229}{section*.64}%
+\contentsline {subsection}{But There's Still A Chance, Right?}{232}{section*.65}%
+\contentsline {subsection}{The Fallacy of Gray}{235}{section*.66}%
+\contentsline {subsection}{Absolute Authority}{240}{section*.67}%
+\contentsline {subsection}{How to Convince Me That 2 + 2 = 3}{246}{section*.68}%
+\contentsline {subsection}{Infinite Certainty}{250}{section*.69}%
+\contentsline {subsection}{0 And 1 Are Not Probabilities}{254}{section*.70}%
+\contentsline {subsection}{Your Rationality is My Business}{258}{section*.71}%
+\contentsline {section}{Politics and Rationality}{261}{section*.72}%
+\contentsline {subsection}{Politics is the Mind-Killer}{262}{section*.73}%
+\contentsline {subsection}{Policy Debates Should Not Appear One-Sided}{265}{section*.74}%
+\contentsline {subsection}{The Scales of Justice, the Notebook of Rationality}{269}{section*.75}%
+\contentsline {subsection}{Correspondence Bias}{272}{section*.76}%
+\contentsline {subsection}{Are Your Enemies Innately Evil?}{275}{section*.77}%
+\contentsline {subsection}{Reversed Stupidity Is Not Intelligence}{278}{section*.78}%
+\contentsline {subsection}{Argument Screens Off Authority}{281}{section*.79}%
+\contentsline {subsection}{Hug the Query}{286}{section*.80}%
+\contentsline {subsection}{Rationality and the English Language}{289}{section*.81}%
+\contentsline {subsection}{Human Evil and Muddled Thinking}{293}{section*.82}%
+\contentsline {section}{Against Rationalization}{297}{section*.83}%
+\contentsline {subsection}{Knowing About Biases Can Hurt People}{298}{section*.84}%
+\contentsline {subsection}{Update Yourself Incrementally}{301}{section*.85}%
+\contentsline {subsection}{One Argument Against An Army}{304}{section*.86}%
+\contentsline {subsection}{The Bottom Line}{307}{section*.87}%
+\contentsline {subsection}{What Evidence Filtered Evidence?}{310}{section*.88}%
+\contentsline {subsection}{Rationalization}{314}{section*.89}%
+\contentsline {subsection}{A Rational Argument}{317}{section*.90}%
+\contentsline {subsection}{Avoiding Your Belief's Real Weak Points}{320}{section*.91}%
+\contentsline {subsection}{Motivated Stopping and Motivated Continuation}{325}{section*.92}%
+\contentsline {subsection}{Fake Justification}{329}{section*.93}%
+\contentsline {subsection}{Is That Your True Rejection?}{332}{section*.94}%
+\contentsline {subsection}{Entangled Truths, Contagious Lies}{336}{section*.95}%
+\contentsline {subsection}{Of Lies and Black Swan Blowups}{340}{section*.96}%
+\contentsline {subsection}{Dark Side Epistemology}{342}{section*.97}%
+\contentsline {section}{Against Doublethink}{347}{section*.98}%
+\contentsline {subsection}{Doublethink (Choosing to be Biased)}{348}{section*.99}%
+\contentsline {subsection}{No, Really, I've Deceived Myself}{352}{section*.100}%
+\contentsline {subsection}{Belief in Self-Deception}{355}{section*.101}%
+\contentsline {subsection}{Moore's Paradox}{359}{section*.102}%
+\contentsline {subsection}{Don't Believe You'll Self-Deceive}{362}{section*.103}%
+\contentsline {section}{Seeing with Fresh Eyes}{365}{section*.104}%
+\contentsline {subsection}{Anchoring and Adjustment}{366}{section*.105}%
+\contentsline {subsection}{Priming and Contamination}{369}{section*.106}%
+\contentsline {subsection}{Do We Believe Everything We're Told?}{372}{section*.107}%
+\contentsline {subsection}{Cached Thoughts}{375}{section*.108}%
+\contentsline {subsection}{Original Seeing}{379}{section*.109}%
+\contentsline {subsection}{The Virtue of Narrowness}{382}{section*.110}%
+\contentsline {subsection}{Stranger Than History}{385}{section*.111}%
+\contentsline {subsection}{The Logical Fallacy of Generalization from Fictional Evidence}{387}{section*.112}%
+\contentsline {subsection}{We Change Our Minds Less Often Than We Think}{393}{section*.113}%
+\contentsline {subsection}{Hold Off On Proposing Solutions}{396}{section*.114}%
+\contentsline {subsection}{The Genetic Fallacy}{399}{section*.115}%
+\contentsline {section}{Death Spirals}{403}{section*.116}%
+\contentsline {subsection}{The Affect Heuristic}{404}{section*.117}%
+\contentsline {subsection}{Evaluability (And Cheap Holiday Shopping)}{407}{section*.118}%
+\contentsline {subsection}{Unbounded Scales, Huge Jury Awards, \& Futurism}{411}{section*.119}%
+\contentsline {subsection}{The Halo Effect}{414}{section*.120}%
+\contentsline {subsection}{Superhero Bias}{417}{section*.121}%
+\contentsline {subsection}{Affective Death Spirals}{420}{section*.122}%
+\contentsline {subsection}{Resist the Happy Death Spiral}{423}{section*.123}%
+\contentsline {subsection}{Uncritical Supercriticality}{428}{section*.124}%
+\contentsline {subsection}{Evaporative Cooling of Group Beliefs}{432}{section*.125}%
+\contentsline {subsection}{When None Dare Urge Restraint}{436}{section*.126}%
+\contentsline {subsection}{Every Cause Wants To Be A Cult}{439}{section*.127}%
+\contentsline {subsection}{Two Cult Koans}{442}{section*.128}%
+\contentsline {subsection}{Asch's Conformity Experiment}{445}{section*.129}%
+\contentsline {subsection}{On Expressing Your Concerns}{449}{section*.130}%
+\contentsline {subsection}{Lonely Dissent}{452}{section*.131}%
+\contentsline {subsection}{Cultish Countercultishness}{456}{section*.132}%
+\contentsline {section}{Letting Go}{463}{section*.133}%
+\contentsline {subsection}{Singlethink}{464}{section*.134}%
+\contentsline {subsection}{The Importance of Saying "Oops"}{467}{section*.135}%
+\contentsline {subsection}{The Crackpot Offer}{470}{section*.136}%
+\contentsline {subsection}{Just Lose Hope Already}{473}{section*.137}%
+\contentsline {subsection}{The Proper Use of Doubt}{475}{section*.138}%
+\contentsline {subsection}{You Can Face Reality}{478}{section*.139}%
+\contentsline {subsection}{The Meditation on Curiosity}{480}{section*.140}%
+\contentsline {subsection}{No One Can Exempt You From Rationality's Laws}{484}{section*.141}%
+\contentsline {subsection}{Leave a Line of Retreat}{487}{section*.142}%
+\contentsline {subsection}{Crisis of Faith}{491}{section*.143}%
+\contentsline {subsection}{The Ritual}{499}{section*.144}%
+\contentsline {part}{The Machine in the Ghost}{503}{section*.145}%
+\contentsline {section}{The Simple Math of Evolution}{504}{section*.146}%
+\contentsline {subsection}{Minds: An Introduction}{505}{section*.147}%
+\contentsline {subsection}{The Power of Intelligence}{511}{section*.148}%
+\contentsline {subsection}{An Alien God}{515}{section*.149}%
+\contentsline {subsection}{The Wonder of Evolution}{521}{section*.150}%
+\contentsline {subsection}{Evolutions Are Stupid (But Work Anyway)}{525}{section*.151}%
+\contentsline {subsection}{No Evolutions for Corporations or Nanodevices}{529}{section*.152}%
+\contentsline {subsection}{Evolving to Extinction}{534}{section*.153}%
+\contentsline {subsection}{The Tragedy of Group Selectionism}{539}{section*.154}%
+\contentsline {subsection}{Fake Optimization Criteria}{544}{section*.155}%
+\contentsline {subsection}{Adaptation-Executers, not Fitness-Maximizers}{547}{section*.156}%
+\contentsline {subsection}{Evolutionary Psychology}{550}{section*.157}%
+\contentsline {subsection}{An Especially Elegant Evpsych Experiment}{554}{section*.158}%
+\contentsline {subsection}{Superstimuli and the Collapse of Western Civilization}{558}{section*.159}%
+\contentsline {subsection}{Thou Art Godshatter}{562}{section*.160}%
+\contentsline {section}{Fragile Purposes}{567}{section*.161}%
+\contentsline {subsection}{Belief in Intelligence}{568}{section*.162}%
+\contentsline {subsection}{Humans in Funny Suits}{572}{section*.163}%
+\contentsline {subsection}{Optimization and the Intelligence Explosion}{577}{section*.164}%
+\contentsline {subsection}{Ghosts in the Machine}{583}{section*.165}%
+\contentsline {subsection}{Artificial Addition}{587}{section*.166}%
+\contentsline {subsection}{Terminal Values and Instrumental Values}{592}{section*.167}%
+\contentsline {subsection}{Leaky Generalizations}{600}{section*.168}%
+\contentsline {subsection}{The Hidden Complexity of Wishes}{604}{section*.169}%
+\contentsline {subsection}{Anthropomorphic Optimism}{610}{section*.170}%
+\contentsline {subsection}{Lost Purposes}{614}{section*.171}%
+\contentsline {section}{A Human's Guide to Words}{620}{section*.172}%
+\contentsline {subsection}{The Parable of the Dagger}{621}{section*.173}%
+\contentsline {subsection}{The Parable of Hemlock}{624}{section*.174}%
+\contentsline {subsection}{Words as Hidden Inferences}{628}{section*.175}%
+\contentsline {subsection}{Extensions and Intensions}{631}{section*.176}%
+\contentsline {subsection}{Similarity Clusters}{635}{section*.177}%
+\contentsline {subsection}{Typicality and Asymmetrical Similarity}{637}{section*.178}%
+\contentsline {subsection}{The Cluster Structure of Thingspace}{640}{section*.179}%
+\contentsline {subsection}{Disguised Queries}{644}{section*.180}%
+\contentsline {subsection}{Neural Categories}{648}{section*.181}%
+\contentsline {subsection}{How An Algorithm Feels From Inside}{653}{section*.182}%
+\contentsline {subsection}{Disputing Definitions}{657}{section*.183}%
+\contentsline {subsection}{Feel the Meaning}{662}{section*.184}%
+\contentsline {subsection}{The Argument from Common Usage}{666}{section*.185}%
+\contentsline {subsection}{Empty Labels}{670}{section*.186}%
+\contentsline {subsection}{Taboo Your Words}{673}{section*.187}%
+\contentsline {subsection}{Replace the Symbol with the Substance}{677}{section*.188}%
+\contentsline {subsection}{Fallacies of Compression}{681}{section*.189}%
+\contentsline {subsection}{Categorizing Has Consequences}{685}{section*.190}%
+\contentsline {subsection}{Sneaking in Connotations}{688}{section*.191}%
 \contentsline {subsection}{Arguing "By Definition"}{691}{section*.192}%
 \contentsline {subsection}{Where to Draw the Boundary?}{695}{section*.193}%
 \contentsline {subsection}{Entropy, and Short Codes}{699}{section*.194}%
