@@ -71,3 +71,4 @@
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 8, "pump": true, "fixedP": null, "sat": false, "secs": 15.0}
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 9, "pump": true, "fixedP": null, "sat": false, "secs": 14.4}
 {"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 10, "pump": true, "fixedP": null, "sat": false, "secs": 14.7}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 3, "s": 11, "pump": true, "fixedP": null, "sat": false, "secs": 17.6}
