@@ -9,6 +9,8 @@
    decoder or classifier, check it on a known-good run AND make sure it
    rejects a known-bad one (the moving-data decoder and the first read
    classifier both passed broken runs).
+3. Before committing, run pytest without piping it (a pipe to tail hides
+   the exit status; a failing test was committed once that way).
 
 ## Sources
 
@@ -398,3 +400,20 @@ step_packed (23 us/step on small arrays, was ~93). The read check now
 watches only the next 4 pending regions (reads are sequential).
 De Mol filled, v = 1600: reads 0-9 in ~80 s on StreamRun vs ~1 h on the
 full array, with identical read times on both (independent cross-check).
+
+De Mol x=3, filled, v = 1,600 (Cook 12,216), StreamRun: reads 0-28 all
+correct (29/29), including the first 18-symbol accept (read 26, 72
+clusters) and junk accepts (48). Then read 29 comes 169k generations
+after read 28 (normal ~70k), read 30 settles with 112 clusters ('!'),
+and everything after is broken. The reference has 16 consecutive N reads
+at 27-42. Hypothesis "moving data runs dry" is refuted: the reference
+queue holds ~55 characters there. Discriminating runs: same program at
+v = 12,216 (Cook) and v = 3,200, 48 reads each (scratchpad
+demol_v12216.out, demol_v3200.out).
+HashLife (item 5): exact vs full run and vs StreamRun (1M generations,
+94k cells); ~2x faster than StreamRun on {YYYYNN}, memo grows ~0.85
+results per generation (little repetition when the tape grows). My
+first HashLife test compared inside the cyclic Run's seam light cone at
+t=6000 and failed; the reference was wrong there. I also committed that
+failing test because `pytest | tail` hid the exit code: run pytest
+without a pipe before committing (standing rule 3).
