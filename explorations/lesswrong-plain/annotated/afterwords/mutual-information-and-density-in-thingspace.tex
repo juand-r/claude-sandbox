@@ -9,15 +9,15 @@ The post applies this to words. If single properties already have efficient code
 
 \responsehead
 
-The post is a correct introduction to mutual information and a correct application of it. Every figure checks. The parity example gives one bit. The first table's entropy equals $H(Y) + H(Z)$, 2.704 bits. The second table keeps the marginals, and $P(Z_1 \mid Y_2) = 1/2$ against $P(Z_1) = 3/8$. The claim the author says was not checked is also true: the joint entropy is 2.664 bits, so the mutual information is 0.040 bits.
+The post is a correct introduction to mutual information and a correct application of it. Every figure is correct. The parity example gives one bit. The first table's entropy equals $H(Y) + H(Z)$, 2.704 bits. The second table keeps the marginals, and $P(Z_1 \mid Y_2) = 1/2$ against $P(Z_1) = 3/8$. The claim the author says was not checked is also true: the joint entropy is 2.664 bits, so the mutual information is 0.040 bits.
 
 One formula has a slip. The displayed sum for the joint entropy lacks its minus sign, so a reader who accepts the invitation to do the calculation gets $-2.704$. The previous post's formula has the sign, so the slip is easy to catch.
 
-The central idea is sound and ties the last two posts together. In an efficient code, a word for a conjunction is shorter than the words for its parts exactly when the conjunction is more probable than independence predicts, and that is exactly when one property is evidence for another. The psychological version of the idea is older: Rosch and colleagues wrote in 1976 that ``The world is structured because real-world attributes do not occur independently of each other.''
+The central idea is sound and connects the last two posts. In an efficient code, a word for a conjunction is shorter than the words for its parts exactly when the conjunction is more probable than independence predicts, and that is exactly when one property is evidence for another. The psychological version of the idea is older: Rosch and colleagues wrote in 1976 that ``The world is structured because real-world attributes do not occur independently of each other.''
 
 The worked example shows something the post does not say. The saving is made on the pairs that occur more often than independence predicts; the pairs that occur less often get longer codes. In the second table, Z1Y2 saves 0.415 bits while Z1Y3 costs 1.585 bits more, and the average saving is the mutual information, 0.040 bits.
 
 The last paragraph states the rule for carving reality in one line. The book's next post adds the qualification the author says was ``deliberately left out,'' that the boundaries be simple, and grants that the rule is ``a bit chicken-and-eggish.'' Read together, the two posts state the rule with its qualification.
 
-In short: an accurate account of mutual information and of when a word for a combination of properties pays for itself, whose one-line closing rule the next post qualifies.
+In short: an accurate account of mutual information and of when a word for a combination of properties is worth having, whose one-line closing rule the next post qualifies.
 \end{afterword}

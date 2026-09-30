@@ -77,144 +77,144 @@ of style and grace." Done by the editor (me), not by agents. Every edit is logge
 - [x] making-history-available
 - [x] explain-worship-ignore
 - [x] science-as-curiosity-stopper
-- [ ] truly-part-of-you
-- [ ] the-simple-truth
+- [x] truly-part-of-you
+- [x] the-simple-truth
 
 ### How to Actually Change Your Mind
 
-- [ ] rationality-an-introduction
-- [ ] tsuyoku-naritai-i-want-to-become-stronger
-- [ ] the-proper-use-of-humility
-- [ ] tsuyoku-vs-the-egalitarian-instinct
-- [ ] the-third-alternative
-- [ ] lotteries-a-waste-of-hope
-- [ ] new-improved-lottery
-- [ ] but-there-s-still-a-chance-right
-- [ ] the-fallacy-of-gray
-- [ ] absolute-authority
-- [ ] how-to-convince-me-that-2-2-3
-- [ ] infinite-certainty
-- [ ] 0-and-1-are-not-probabilities
-- [ ] your-rationality-is-my-business
-- [ ] politics-is-the-mind-killer
-- [ ] policy-debates-should-not-appear-one-sided
-- [ ] the-scales-of-justice-the-notebook-of-rationality
-- [ ] correspondence-bias
-- [ ] are-your-enemies-innately-evil
-- [ ] reversed-stupidity-is-not-intelligence
-- [ ] argument-screens-off-authority
-- [ ] hug-the-query
-- [ ] rationality-and-the-english-language
-- [ ] human-evil-and-muddled-thinking
-- [ ] knowing-about-biases-can-hurt-people
-- [ ] update-yourself-incrementally
-- [ ] one-argument-against-an-army
-- [ ] the-bottom-line
-- [ ] what-evidence-filtered-evidence
-- [ ] rationalization
-- [ ] a-rational-argument
-- [ ] avoiding-your-belief-s-real-weak-points
-- [ ] motivated-stopping-and-motivated-continuation
-- [ ] fake-justification
-- [ ] is-that-your-true-rejection
-- [ ] entangled-truths-contagious-lies
-- [ ] of-lies-and-black-swan-blowups
-- [ ] dark-side-epistemology
-- [ ] doublethink-choosing-to-be-biased
-- [ ] no-really-i-ve-deceived-myself
-- [ ] belief-in-self-deception
-- [ ] moore-s-paradox
-- [ ] don-t-believe-you-ll-self-deceive
-- [ ] anchoring-and-adjustment
-- [ ] priming-and-contamination
-- [ ] do-we-believe-everything-we-re-told
-- [ ] cached-thoughts
-- [ ] original-seeing
-- [ ] the-virtue-of-narrowness
-- [ ] stranger-than-history
-- [ ] the-logical-fallacy-of-generalization-from-fictional
-- [ ] we-change-our-minds-less-often-than-we-think
-- [ ] hold-off-on-proposing-solutions
-- [ ] the-genetic-fallacy
-- [ ] the-affect-heuristic
-- [ ] evaluability-and-cheap-holiday-shopping
-- [ ] unbounded-scales-huge-jury-awards-and-futurism
-- [ ] the-halo-effect
-- [ ] superhero-bias
-- [ ] affective-death-spirals
-- [ ] resist-the-happy-death-spiral
-- [ ] uncritical-supercriticality
-- [ ] evaporative-cooling-of-group-beliefs
-- [ ] when-none-dare-urge-restraint
-- [ ] every-cause-wants-to-be-a-cult
-- [ ] two-cult-koans
-- [ ] asch-s-conformity-experiment
-- [ ] on-expressing-your-concerns
-- [ ] lonely-dissent
-- [ ] cultish-countercultishness
-- [ ] singlethink
-- [ ] the-importance-of-saying-oops
-- [ ] the-crackpot-offer
-- [ ] just-lose-hope-already
-- [ ] the-proper-use-of-doubt
-- [ ] you-can-face-reality
-- [ ] the-meditation-on-curiosity
-- [ ] no-one-can-exempt-you-from-rationality-s-laws
-- [ ] leave-a-line-of-retreat
-- [ ] crisis-of-faith
-- [ ] the-ritual
+- [x] rationality-an-introduction
+- [x] tsuyoku-naritai-i-want-to-become-stronger
+- [x] the-proper-use-of-humility
+- [x] tsuyoku-vs-the-egalitarian-instinct
+- [x] the-third-alternative
+- [x] lotteries-a-waste-of-hope
+- [x] new-improved-lottery
+- [x] but-there-s-still-a-chance-right
+- [x] the-fallacy-of-gray
+- [x] absolute-authority
+- [x] how-to-convince-me-that-2-2-3
+- [x] infinite-certainty
+- [x] 0-and-1-are-not-probabilities
+- [x] your-rationality-is-my-business
+- [x] politics-is-the-mind-killer
+- [x] policy-debates-should-not-appear-one-sided
+- [x] the-scales-of-justice-the-notebook-of-rationality
+- [x] correspondence-bias
+- [x] are-your-enemies-innately-evil
+- [x] reversed-stupidity-is-not-intelligence
+- [x] argument-screens-off-authority
+- [x] hug-the-query
+- [x] rationality-and-the-english-language
+- [x] human-evil-and-muddled-thinking
+- [x] knowing-about-biases-can-hurt-people
+- [x] update-yourself-incrementally
+- [x] one-argument-against-an-army
+- [x] the-bottom-line
+- [x] what-evidence-filtered-evidence
+- [x] rationalization
+- [x] a-rational-argument
+- [x] avoiding-your-belief-s-real-weak-points
+- [x] motivated-stopping-and-motivated-continuation
+- [x] fake-justification
+- [x] is-that-your-true-rejection
+- [x] entangled-truths-contagious-lies
+- [x] of-lies-and-black-swan-blowups
+- [x] dark-side-epistemology
+- [x] doublethink-choosing-to-be-biased
+- [x] no-really-i-ve-deceived-myself
+- [x] belief-in-self-deception
+- [x] moore-s-paradox
+- [x] don-t-believe-you-ll-self-deceive
+- [x] anchoring-and-adjustment
+- [x] priming-and-contamination
+- [x] do-we-believe-everything-we-re-told
+- [x] cached-thoughts
+- [x] original-seeing
+- [x] the-virtue-of-narrowness
+- [x] stranger-than-history
+- [x] the-logical-fallacy-of-generalization-from-fictional
+- [x] we-change-our-minds-less-often-than-we-think
+- [x] hold-off-on-proposing-solutions
+- [x] the-genetic-fallacy
+- [x] the-affect-heuristic
+- [x] evaluability-and-cheap-holiday-shopping
+- [x] unbounded-scales-huge-jury-awards-and-futurism
+- [x] the-halo-effect
+- [x] superhero-bias
+- [x] affective-death-spirals
+- [x] resist-the-happy-death-spiral
+- [x] uncritical-supercriticality
+- [x] evaporative-cooling-of-group-beliefs
+- [x] when-none-dare-urge-restraint
+- [x] every-cause-wants-to-be-a-cult
+- [x] two-cult-koans
+- [x] asch-s-conformity-experiment
+- [x] on-expressing-your-concerns
+- [x] lonely-dissent
+- [x] cultish-countercultishness
+- [x] singlethink
+- [x] the-importance-of-saying-oops
+- [x] the-crackpot-offer
+- [x] just-lose-hope-already
+- [x] the-proper-use-of-doubt
+- [x] you-can-face-reality
+- [x] the-meditation-on-curiosity
+- [x] no-one-can-exempt-you-from-rationality-s-laws
+- [x] leave-a-line-of-retreat
+- [x] crisis-of-faith
+- [x] the-ritual
 
 ### The Machine in the Ghost
 
-- [ ] minds-an-introduction
-- [ ] the-power-of-intelligence
-- [ ] an-alien-god
-- [ ] the-wonder-of-evolution
-- [ ] evolutions-are-stupid-but-work-anyway
-- [ ] no-evolutions-for-corporations-or-nanodevices
-- [ ] evolving-to-extinction
-- [ ] the-tragedy-of-group-selectionism
-- [ ] fake-optimization-criteria
-- [ ] adaptation-executers-not-fitness-maximizers
-- [ ] evolutionary-psychology
-- [ ] an-especially-elegant-evpsych-experiment
-- [ ] superstimuli-and-the-collapse-of-western-civilization
-- [ ] thou-art-godshatter
-- [ ] belief-in-intelligence
-- [ ] humans-in-funny-suits
-- [ ] optimization-and-the-intelligence-explosion
-- [ ] ghosts-in-the-machine
-- [ ] artificial-addition
-- [ ] terminal-values-and-instrumental-values
-- [ ] leaky-generalizations
-- [ ] the-hidden-complexity-of-wishes
-- [ ] anthropomorphic-optimism
-- [ ] lost-purposes
-- [ ] the-parable-of-the-dagger
-- [ ] the-parable-of-hemlock
-- [ ] words-as-hidden-inferences
-- [ ] extensions-and-intensions
-- [ ] similarity-clusters
-- [ ] typicality-and-asymmetrical-similarity
-- [ ] the-cluster-structure-of-thingspace
-- [ ] disguised-queries
-- [ ] neural-categories
-- [ ] how-an-algorithm-feels-from-inside
-- [ ] disputing-definitions
-- [ ] feel-the-meaning
-- [ ] the-argument-from-common-usage
-- [ ] empty-labels
-- [ ] taboo-your-words
-- [ ] replace-the-symbol-with-the-substance
-- [ ] fallacies-of-compression
-- [ ] categorizing-has-consequences
-- [ ] sneaking-in-connotations
-- [ ] arguing-by-definition
-- [ ] where-to-draw-the-boundary
-- [ ] entropy-and-short-codes
-- [ ] mutual-information-and-density-in-thingspace
-- [ ] superexponential-conceptspace-and-simple-words
-- [ ] conditional-independence-and-naive-bayes
+- [x] minds-an-introduction
+- [x] the-power-of-intelligence
+- [x] an-alien-god
+- [x] the-wonder-of-evolution
+- [x] evolutions-are-stupid-but-work-anyway
+- [x] no-evolutions-for-corporations-or-nanodevices
+- [x] evolving-to-extinction
+- [x] the-tragedy-of-group-selectionism
+- [x] fake-optimization-criteria
+- [x] adaptation-executers-not-fitness-maximizers
+- [x] evolutionary-psychology
+- [x] an-especially-elegant-evpsych-experiment
+- [x] superstimuli-and-the-collapse-of-western-civilization
+- [x] thou-art-godshatter
+- [x] belief-in-intelligence
+- [x] humans-in-funny-suits
+- [x] optimization-and-the-intelligence-explosion
+- [x] ghosts-in-the-machine
+- [x] artificial-addition
+- [x] terminal-values-and-instrumental-values
+- [x] leaky-generalizations
+- [x] the-hidden-complexity-of-wishes
+- [x] anthropomorphic-optimism
+- [x] lost-purposes
+- [x] the-parable-of-the-dagger
+- [x] the-parable-of-hemlock
+- [x] words-as-hidden-inferences
+- [x] extensions-and-intensions
+- [x] similarity-clusters
+- [x] typicality-and-asymmetrical-similarity
+- [x] the-cluster-structure-of-thingspace
+- [x] disguised-queries
+- [x] neural-categories
+- [x] how-an-algorithm-feels-from-inside
+- [x] disputing-definitions
+- [x] feel-the-meaning
+- [x] the-argument-from-common-usage
+- [x] empty-labels
+- [x] taboo-your-words
+- [x] replace-the-symbol-with-the-substance
+- [x] fallacies-of-compression
+- [x] categorizing-has-consequences
+- [x] sneaking-in-connotations
+- [x] arguing-by-definition
+- [x] where-to-draw-the-boundary
+- [x] entropy-and-short-codes
+- [x] mutual-information-and-density-in-thingspace
+- [x] superexponential-conceptspace-and-simple-words
+- [x] conditional-independence-and-naive-bayes
 - [ ] words-as-mental-paintbrush-handles
 - [ ] variable-question-fallacies
 - [ ] 37-ways-that-words-can-be-wrong
