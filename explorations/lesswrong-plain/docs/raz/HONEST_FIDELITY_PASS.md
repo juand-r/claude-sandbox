@@ -79,58 +79,58 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] science-as-curiosity-stopper
 - [x] truly-part-of-you
 - [x] the-simple-truth
-- [ ] rationality-an-introduction
-- [ ] tsuyoku-naritai-i-want-to-become-stronger
-- [ ] the-proper-use-of-humility
-- [ ] tsuyoku-vs-the-egalitarian-instinct
-- [ ] the-third-alternative
-- [ ] lotteries-a-waste-of-hope
-- [ ] new-improved-lottery
-- [ ] but-there-s-still-a-chance-right
-- [ ] the-fallacy-of-gray
-- [ ] absolute-authority
-- [ ] how-to-convince-me-that-2-2-3
-- [ ] infinite-certainty
-- [ ] 0-and-1-are-not-probabilities
-- [ ] your-rationality-is-my-business
-- [ ] politics-is-the-mind-killer
-- [ ] policy-debates-should-not-appear-one-sided
-- [ ] the-scales-of-justice-the-notebook-of-rationality
-- [ ] correspondence-bias
-- [ ] are-your-enemies-innately-evil
-- [ ] reversed-stupidity-is-not-intelligence
-- [ ] argument-screens-off-authority
-- [ ] hug-the-query
-- [ ] rationality-and-the-english-language
-- [ ] human-evil-and-muddled-thinking
-- [ ] knowing-about-biases-can-hurt-people
-- [ ] update-yourself-incrementally
-- [ ] one-argument-against-an-army
-- [ ] the-bottom-line
-- [ ] what-evidence-filtered-evidence
-- [ ] rationalization
-- [ ] a-rational-argument
-- [ ] avoiding-your-belief-s-real-weak-points
-- [ ] motivated-stopping-and-motivated-continuation
-- [ ] fake-justification
-- [ ] is-that-your-true-rejection
-- [ ] entangled-truths-contagious-lies
-- [ ] of-lies-and-black-swan-blowups
-- [ ] dark-side-epistemology
-- [ ] doublethink-choosing-to-be-biased
-- [ ] no-really-i-ve-deceived-myself
-- [ ] belief-in-self-deception
-- [ ] moore-s-paradox
-- [ ] don-t-believe-you-ll-self-deceive
-- [ ] anchoring-and-adjustment
-- [ ] priming-and-contamination
-- [ ] do-we-believe-everything-we-re-told
-- [ ] cached-thoughts
-- [ ] original-seeing
-- [ ] the-virtue-of-narrowness
-- [ ] stranger-than-history
-- [ ] the-logical-fallacy-of-generalization-from-fictional
-- [ ] we-change-our-minds-less-often-than-we-think
+- [x] rationality-an-introduction
+- [x] tsuyoku-naritai-i-want-to-become-stronger
+- [x] the-proper-use-of-humility
+- [x] tsuyoku-vs-the-egalitarian-instinct
+- [x] the-third-alternative
+- [x] lotteries-a-waste-of-hope
+- [x] new-improved-lottery
+- [x] but-there-s-still-a-chance-right
+- [x] the-fallacy-of-gray
+- [x] absolute-authority
+- [x] how-to-convince-me-that-2-2-3
+- [x] infinite-certainty
+- [x] 0-and-1-are-not-probabilities
+- [x] your-rationality-is-my-business
+- [x] politics-is-the-mind-killer
+- [x] policy-debates-should-not-appear-one-sided
+- [x] the-scales-of-justice-the-notebook-of-rationality
+- [x] correspondence-bias
+- [x] are-your-enemies-innately-evil
+- [x] reversed-stupidity-is-not-intelligence
+- [x] argument-screens-off-authority
+- [x] hug-the-query
+- [x] rationality-and-the-english-language
+- [x] human-evil-and-muddled-thinking
+- [x] knowing-about-biases-can-hurt-people
+- [x] update-yourself-incrementally
+- [x] one-argument-against-an-army
+- [x] the-bottom-line
+- [x] what-evidence-filtered-evidence
+- [x] rationalization
+- [x] a-rational-argument
+- [x] avoiding-your-belief-s-real-weak-points
+- [x] motivated-stopping-and-motivated-continuation
+- [x] fake-justification
+- [x] is-that-your-true-rejection
+- [x] entangled-truths-contagious-lies
+- [x] of-lies-and-black-swan-blowups
+- [x] dark-side-epistemology
+- [x] doublethink-choosing-to-be-biased
+- [x] no-really-i-ve-deceived-myself
+- [x] belief-in-self-deception
+- [x] moore-s-paradox
+- [x] don-t-believe-you-ll-self-deceive
+- [x] anchoring-and-adjustment
+- [x] priming-and-contamination
+- [x] do-we-believe-everything-we-re-told
+- [x] cached-thoughts
+- [x] original-seeing
+- [x] the-virtue-of-narrowness
+- [x] stranger-than-history
+- [x] the-logical-fallacy-of-generalization-from-fictional
+- [x] we-change-our-minds-less-often-than-we-think
 - [ ] hold-off-on-proposing-solutions
 - [ ] the-genetic-fallacy
 - [ ] the-affect-heuristic

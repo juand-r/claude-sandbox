@@ -902,3 +902,875 @@ Why: Fidelity/substance pass: corrected who mocks the new words (Autrey's own li
 - Before: Mark goes over the cliff, and Darwin lowers the frequency of Mark's alleles. Autrey and I go back to bringing in the sheep.
 - After: Mark goes over the cliff, and Darwin lowers the frequency of Mark's alleles. Asked whether that was necessary, Darwin is puzzled: ``It just happened.'' Autrey and I go back to bringing in the sheep.
 
+
+## honest/sections/rationality-an-introduction.tex
+
+Why: Fidelity/substance pass: added the infraction counts, the argumentative theory of reasoning, the point about stories versus predictive power, decision theory, both mistakes in the Bob example, the substance of Hanson's and Alexander's quotations, the rote-learning analogy, what each sequence is about, and the three ways we improve at arithmetic; fixed a grammar leftover
+
+- Before: Shown a film of the game, Princeton students counted more than twice as many Dartmouth infractions as Dartmouth students did. When something we value is threatened, our perceptions and our reasoning rally to its defense, and the stories we tell about our own reasons are often confabulated.
+- After: Shown a film of the game, Princeton students counted a mean of 9.8 Dartmouth infractions and Dartmouth students 4.3. When something we value is threatened, our perceptions and our reasoning rally to its defense; some psychologists think our ability to give reasons evolved specifically to win arguments. The stories we tell about our own reasons are often confabulated, and we trust stories for their appeal rather than for how well they predict.
+
+- Before: Where can we find firmer ground? In mathematics. Probability theory fixes the best beliefs given priors and evidence.
+- After: Where can we find firmer ground? In mathematics. Axioms for arithmetic let us say why 2 + 2 = 4, not just that it seems right; in the same way probability theory fixes the best beliefs given priors and evidence, and decision theory the best action given beliefs and preferences.
+
+- Before: Suppose one of six classmates is your secret admirer; the odds that it is Bob are 1:5.
+- After: Suppose one of six classmates is your secret admirer; with no reason to favour anyone, the odds that it is Bob are 1:5, not fifty-fifty.
+
+- Before: If people with a crush wink at you ten times as often, and Bob winks, I multiply 1:5 by 10:1 and get 2:1, a probability of two thirds.
+- After: If people with a crush wink at you ten times as often, and Bob winks, it would be a mistake to stay skeptical and a mistake to call it certain. I multiply 1:5 by 10:1 and get 2:1, a probability of two thirds; any other confidence would be inconsistent.
+
+- Before: So ``the question `What should I believe?' has an objectively right answer,'' and that ``There is always a correct amount of confidence to have in a statement.''
+- After: So ``the question `What should I believe?' has an objectively right answer,'' and ``There is always a correct amount of confidence to have in a statement.''
+
+- Before: I quote Robin Hanson: ``You are never entitled to your opinion.''
+- After: We talk as if uncertainty made belief a matter of taste. I quote Robin Hanson: ``You are never entitled to your opinion'': beliefs are about the world, not about you, there is always a best estimate, and you are entitled only to your best effort to find it.
+
+- Before: We will never be perfect Bayesians, but the ideal shows us why an answer is right and where we went wrong. This book is meant to help you build that framework.
+- After: We will never be perfect Bayesians, but the ideal shows us why an answer is right and where we went wrong. Learning arithmetic by rote, ``10 + 3 = 13'' and so on, does little good without the pattern behind it; likewise it is hard to improve your reasoning without a framework for judging whether a method works. This book is meant to help you build that framework.
+
+- Before: Its sequences deal with convenient excuses, politics, rationalization, fresh evidence, the hazards of groups, and letting go.
+- After: Scott Alexander wrote that it is useful to have as much evidence as possible, as with money, but also to use a limited amount wisely; rationality techniques get more out of the evidence we have. The sequences begin with questions where the odds are extreme and errors should be easy to spot (``Overly Convenient Excuses''); then politics, and why we reason worse, not better, about issues we call important; then rationalization, story-telling that makes beliefs feel justified without making them more accurate; then seeing evidence that does not fit our expectations; then the hazards of groups gathered around exciting ideas (``Death Spirals''); and last, ``Letting Go.''
+
+- Before: we are not perfect calculators either, and we can still train our arithmetic.
+- After: we are not perfect calculators either, yet we can train our arithmetic, learn when to trust our mathematical intuitions, and arrange our surroundings to make things easier. ``And if we're wrong today, we can be less so tomorrow.''
+
+
+## honest/sections/tsuyoku-naritai-i-want-to-become-stronger.tex
+
+Why: Fidelity/substance pass: added the worm-in-the-apple example, the childhood inference, the uses of the Japanese phrase, why pride in confession is harmful, and the closing call to keep moving
+
+- Before: Since all its law came from Sinai, knowledge can only be lost in transmission. I set this religion against a science that only gains knowledge.
+- After: Since all its law came from Sinai, knowledge can only be lost in transmission, and modern rabbis cannot overrule ancient ones. A worm found in an apple may be eaten, because the ancient rabbis thought it grew from the apple, and no modern rabbi may say they knew nothing of biology. As a schoolboy I thought: Torah loses knowledge every generation, science gains it, so sooner or later science must surpass Torah. What matters most is that there be progress.
+
+- Before: It expresses a feeling ``embodied more intensely in Japanese works than in any Western literature I've read.''
+- After: It expresses a feeling ``embodied more intensely in Japanese works than in any Western literature I've read.'' You say it when you resolve to become a professional Go player, after losing an important match, after winning one while still short of the top rank, or after becoming the greatest player ever while still thinking you can do better.
+
+- Before: Do not take pride in confessing your flaws.
+- After: Do not take pride in confessing your flaws. Just as pride in your ignorance makes you slow to give it up when evidence comes, pride in your self-awareness makes you slow to give up your flaws; the time to rejoice is when you have a little less to confess.
+
+- Before: ``Never confess to me that you are just as flawed as I am unless you can tell me what you plan to do about it.''
+- After: ``Never confess to me that you are just as flawed as I am unless you can tell me what you plan to do about it.'' You will still have plenty of flaws afterwards; the point is to do better, to take one more step forward.
+
+
+## honest/sections/the-proper-use-of-humility.tex
+
+Why: Fidelity/substance pass: spelled out the satire about scientists' status, why vague principles are dangerous, the three example excuses and what motivated skepticism is, the 'of course I could be wrong' move, Galbraith, and the point that new information should change plans
+
+- Before: Then I mock the critic who wants scientists to ``compromise a little'' on evolution.
+- After: Then a satire: think of the social audacity of trying to be right all the time. If science said evolution was true most of the time, or that the Earth might be flat on some days, scientists would seem less confrontational; they have won a little status with medicine and cellphones and now think themselves chiefs of the tribe, so they should ``compromise a little.''
+
+- Before: Vague ideas of humility can justify anything, and ``The vast majority of appeals that I witness'' to humility are excuses to shrug. The cause is motivated skepticism.
+- After: A principle you understand only vaguely can be bent to justify almost anything, and people with vague models end up believing what they wanted to; ``the purpose of our ethics is to move us, not be moved by us.'' ``The vast majority of appeals that I witness'' to humility are excuses to shrug: the lottery player who says you cannot know he will lose, the doubter of evolution who says you cannot prove it, the person who calls a hard problem probably too hard. The cause is motivated skepticism, scrutinizing more heavily what we do not want to believe; humility misunderstood becomes a fully general excuse, since you can never be sure.
+
+- Before: Humility is also easy to profess, like the religious ``belief in belief'' that I credit to Daniel Dennett.
+- After: Humility is also easy to profess, like the religious ``belief in belief'' that I credit to Daniel Dennett. It is easy to answer every argument with ``Well, of course I could be wrong'' and then change nothing. As Galbraith said, faced with changing one's mind or proving there is no need to, ``almost everyone gets busy on the proof.'' I have often seen people accept new information and then explain why they will do exactly what they planned before, for a new reason. The point of thinking is to shape plans, and humility misunderstood is a wonderful black hole for news.
+
+
+## honest/sections/tsuyoku-vs-the-egalitarian-instinct.tex
+
+Why: Fidelity/substance pass: added the post's qualifications (egalitarian for men; chiefs are agricultural), the jab at modesty toward those below average, the 'no finish line' point, and the remark on displaying modesty
+
+- Before: Hunter-gatherer tribes are usually egalitarian, and among
+- After: Hunter-gatherer tribes are usually egalitarian, at least for men; the all-powerful chief belongs mostly to farming societies. Among
+
+- Before: ``the median will forever be your concrete wall.''
+- After: ``the median will forever be your concrete wall.'' And do you dare say you mean to do better than those below average? How prideful of you!
+
+- Before: run as fast as you can, ``without worrying that you might pull ahead of other runners.''
+- After: the will to do better has no point where it turns into the will to do worse, and a race with no finish line has no medals. Run as fast as you can, ``without worrying that you might pull ahead of other runners''; if you ignore that possibility, it may happen.
+
+- Before: It may be wise to play down your success in public: ``People may forgive a touchdown, but not dancing in the end zone.''
+- After: Sooner or later you will set out to fix a flaw most people have not fixed. It may be wise to play down your success in public: ``People may forgive a touchdown, but not dancing in the end zone.'' It is easier to disclaim your worth in public, as long as everyone knows it is not true, and it can be fun to display your modesty when everyone knows how much you have to be modest about.
+
+
+## honest/sections/the-third-alternative.tex
+
+Why: Fidelity/substance pass: added what the Santa-ist does not want to hear, the contrast between helping and justifying, the resistance to resuming a search, why convenience drives Noble Lies, why the five minutes must be timed, and the closing point about searches we wish to fail
+
+- Before: Others come from defending a policy by its benefit over doing nothing, and then the defender ``does not want'' a better option.
+- After: Others come from defending a policy by its benefit over doing nothing, and then the defender ``does not want'' a better option: the last thing a Santa-ist wants to hear is that praise works better than bribes. If the goal is really to help, a better option is cause for celebration; if the goal is to justify a policy by saying it helps, a better option is a rival argument.
+
+- Before: But we stop at once when we find something defensible and convenient, and keep looking when the options are costly to us.
+- After: But we stop at once when we find something defensible and convenient, and keep looking when the options are costly to us. Asked to start looking again, we plead lack of time, though we always find time to justify what we already do.
+
+- Before: Noble Liars keep whatever lie they started with. I name none.
+- After: Lying is often more convenient than the truth, and keeping your old belief more convenient than updating, which is why Noble Lies are popular: Noble Liars keep whatever lie they started with, and never calculate an optimal new one. I name none.
+
+- Before: My second: have you spent five minutes, ``by the clock,'' with your eyes closed, looking for alternatives? And were you careful not to think of a good one?
+- After: My second: have you spent five minutes, ``by the clock,'' with your eyes closed, looking for alternatives? It has to be timed, or you blink and say you looked and found nothing. And were you secretly careful to think only of bad ones?
+
+- Before: ``It's amazing how many Noble Liars and their ilk are eager to embrace ethical violations'' without five minutes of looking.
+- After: ``It's amazing how many Noble Liars and their ilk are eager to embrace ethical violations'' without five minutes of looking. Some searches we secretly want to fail, and then we take the first excuse to give up.
+
+
+## honest/sections/lotteries-a-waste-of-hope.tex
+
+Why: Fidelity/substance pass: fixed a broken sentence left by an earlier tag removal; added what the fantasy lacks, why real dreams cannot compete, and the post's 'humans are stupid sometimes'
+
+- Before: But the fantasy has a real probability of ``nearly zero,'' that you can do nothing to bring it about, and that it is a fantasy of wealth without effort.
+- After: But the fantasy has a real probability of ``nearly zero''; you can do nothing to bring it about, since the lottery balls decide; and it is a fantasy of wealth without effort, without conscientiousness, learning, charisma or even patience.
+
+- Before: and on the twentieth daydream ``might'' see a way to do it. I give no evidence.
+- After: and on the twentieth daydream ``might'' see a way to do it; is that not what dreams are for? But such dreams cannot compete with the sweetened prospect of instant wealth, not after years building a company, but on Tuesday. I give no evidence.
+
+- Before: I ask: ``Seriously, why can't we just say that buying lottery tickets is stupid?''
+- After: I ask: ``Seriously, why can't we just say that buying lottery tickets is stupid?'' Human beings are stupid from time to time; it should not be a surprising hypothesis.
+
+
+## honest/sections/new-improved-lottery.tex
+
+Why: Fidelity/substance pass: completed the sarcastic point and the overcharging argument
+
+- Before: Then, in sarcasm: ``People are willing to pay; it must be valuable.''
+- After: Then, in sarcasm: offering people daydreams that will not happen is surely a valuable service; ``People are willing to pay; it must be valuable.'' The alternative would be that consumers make mistakes, and we all know that cannot happen.
+
+- Before: do not sell this because they want you to pay every week.
+- After: do not sell this because they want you to pay every week, a hundred dollars for the thrill of a chance a hundred times as large.
+
+
+## honest/sections/but-there-s-still-a-chance-right.tex
+
+Why: Fidelity/substance pass: added the post's explanation of why a tiny chance feels worth tracking (the calculated number is confused with the chance itself)
+
+- Before: We can write down numbers that small but cannot feel them;
+- After: Probability theory can compute a chance too small to be worth tracking, but once you have computed it, the written-down number feels like a chance worth keeping; we confuse the map with the territory. We can write down numbers that small but cannot feel them;
+
+
+## honest/sections/the-fallacy-of-gray.tex
+
+Why: Fidelity/substance pass: added how the man used 'uncertain', Hanson's 75% figure, the hopeful form of 'everyone is imperfect' and the perfectionism joke, the worldview point, why the Moon and the dragon differ, the oddity of 'science is faith too', what the 'devil's bargain' is, and Asimov's point
+
+- Before: He was told that the odds against him were two to the power of 750 million to one, and said there was still a chance.
+- After: He was told that the odds against him were two to the power of 750 million to one, and said there was still a chance. To him all probabilities were simply ``uncertain,'' so he could ignore them.
+
+- Before: Robin Hanson, who writes this blog with me, said he tries to apply economic theory straightforwardly.
+- After: Robin Hanson, who writes this blog with me, said he gives at least 75\% weight to economic theory over his intuitions and tries to apply it straightforwardly.
+
+- Before: ``Everyone is imperfect,'' but Gandhi and Stalin were not the same shade of imperfect. A joke about perfectionism follows.
+- After: ``Everyone is imperfect,'' but Gandhi and Stalin were not the same shade of imperfect. Saying ``some people are less imperfect than others'' wins no applause, but it gives hope to those who try. When told perfectionism is bad for me, I answer that it is fine to be imperfect, ``but not so imperfect that other people notice.''
+
+- Before: act as if science were no better than witchdoctoring. I name none of them.
+- After: act as if science were no better than witchdoctoring. Every worldview imposes some of its structure on what it sees, but some try to minimize that and some glory in it. I name none of them.
+
+- Before: are different degrees of uncertainty.
+- After: are different degrees of uncertainty: one expects what has happened, to twelve decimal places, to happen again; the other expects something that breaks the observed order. Calling both ``faith'' is too broad.
+
+- Before: Then I address the ``faithist'' directly: if science is a religion, it is the one that walks on the Moon.
+- After: People who call faith good say ``Science is based on faith too!'' in an angry, triumphant tone, not as a compliment. Then I address the ``faithist'' directly: if science is a religion, it is the one that heals the sick and walks on the Moon.
+
+- Before: People who say ``It's gray!'' without naming any may have ``made a devil's bargain with their own mistakes.''
+- After: People who say ``It's gray!'' without naming any may have ``made a devil's bargain with their own mistakes'': having found an excuse not to improve, they deny that anyone can, and say proudly ``I'm glad to be gray'' and angrily ``And you're gray too!''
+
+- Before: In my last line I credit a commenter for pointing to Isaac Asimov's ``The Relativity of Wrong.''
+- After: In my last line I credit a commenter for pointing to Isaac Asimov's ``The Relativity of Wrong'': the flat Earth and the spherical Earth were both wrong, but whoever thinks them equally wrong is ``wronger than both of them put together.''
+
+
+## honest/sections/absolute-authority.tex
+
+Why: Fidelity/substance pass: added how 'probabilistic' is heard as a confession, the school-as-command mapping, the Moon versus the old scroll, the doctor and Virgin Birth lines, the named 'Argument from the Argument from Gray' and why reversing it fails, the other lessons (doubt is not shameful; look at things), why fanatical certainty tracks opposition, what 99.9999% means, and why 'not certain' misleads
+
+- Before: and a proponent who admits a flaw has confessed.
+- After: and a proponent who admits a flaw has confessed. Tell them ``Science is probabilistic, just like all other knowledge,'' and they hear the first half as a confession of guilt and the second as an attempt to accuse everyone else.
+
+- Before: ``I suspect'' school is another, since there the teacher's statements must be believed.
+- After: ``I suspect'' school is another: the teacher's statements must be believed and recited, while a classmate's suggestion may be taken or left. This maps belief onto command and law, with strict knowledge that must be obeyed and unstrict knowledge that is a matter of taste; and science, which admits it may err, lands in the second class.
+
+- Before: Such people toss the word ``certainty'' around, while scientists predict the Moon's next rising and still call it a probabilistic guess.
+- After: Such people toss the word ``certainty'' around, while scientists predict the Moon's next rising, from theories confirmed to fourteen decimal places, and still call it a probabilistic guess. What is set above science is ``probably some musty old scroll'' contradicted many times, trusted because it never admits error.
+
+- Before: ``Not absolutely certain'' in science means a tiny chance, not a specific doubt.
+- After: ``Not absolutely certain'' in science means a tiny chance, not a specific doubt: a doctor who said it was ``not absolutely certain'' you were not made of cheese would need a doctor, but a scientist saying it means only a willingness to see evidence if it ever comes.
+
+- Before: And if you would change your mind about something for enough evidence, ``it can't have a probability exactly equal to one.''
+- After: And if you would change your mind about something for enough evidence, say if God came down and told you your religion was true except for the Virgin Birth, then ``it can't have a probability exactly equal to one.''
+
+- Before: Some say that without certainty ``the moral relativists win.'' But the error in the relativists' chain is the step from gray to all one shade of gray, and certainty is sufficient for choosing, not necessary. That is my main point.
+- After: I call one defense of Absolute Authority ``The Argument from the Argument from Gray'': relativists say the world is not black and white, so all is gray, so no one is better than anyone, so they may do as they like; we must be able to stop murder; so there must be absolute certainty, or ``the moral relativists win.'' But reversing every line of a bad argument gives the fool control over you; the relativists' premise may be true, as Stalin's belief that 2 + 2 = 4 was. Their error is the one step from gray to all one shade of gray. And certainty is sufficient for choosing, not necessary; you can choose among options known only to be relatively better or worse. That is my main point. The argument is also an appeal to the consequences of a belief.
+
+- Before: The learner also needs to know that probability means calibration.
+- After: The learner also needs a culture in which doubt and admitting error are not shameful, and the habit of learning by looking at things: finding that something differs from first appearances does not mean Nature lied. And probability means calibration, how often people in a given state of belief turn out right, not the bar in your head that measures emotional commitment.
+
+- Before: ``If anything,'' fanatical beliefs are less often right than obvious ones, so emotional commitment ``doesn't even behave monotonically.''
+- After: ``If anything,'' fanatical beliefs are less often right than obvious ones such as ``the Sun is larger than the Moon,'' since fanatical professions arise only where there is opposition, and for every such belief someone is fanatically sure of its opposite. So emotional commitment ``doesn't even behave monotonically.''
+
+- Before: Probability 1.0 would be infinite certainty. So, ``maybe,'' scientists should say ``We are not infinitely certain.''
+- After: To say 99.9999\% is to claim you could make a million equally strong independent statements over a year and be wrong about once; we can reach that for ``Thou shalt not win the lottery.'' Probability 1.0 would be infinite certainty. So, ``maybe,'' scientists should say ``We are not infinitely certain,'' since in ordinary speech ``not certain'' suggests a specific reason for doubt.
+
+
+## honest/sections/how-to-convince-me-that-2-2-3.tex
+
+Why: Fidelity/substance pass: added the remark about redefinitions, the subtraction check, the two explanations in full with the 'still very confused' point, the 10-bit argument against coincidence, and the footnote's follow-up questions
+
+- Before: I cannot conceive of such a situation either. But what could make a fact false and what could change my belief in it are different questions.
+- After: I cannot conceive of such a situation either. (Redefining the symbols is not a situation; then you are no longer talking about 2, 4 or +.) But what could make a fact false and what could change my belief in it are different questions.
+
+- Before: When I picture xx and xx, I get xxx.
+- After: When I picture xx and xx, I get xxx, and it checks with subtraction: xx from xxx leaves xx, while xx from xxxx would leave xxx. My memory would seem absurd against that.
+
+- Before: I would explain my old belief as a memory fault or as someone tampering with me.
+- After: I would explain my old belief as a memory fault, perhaps from a sneeze, or as someone tampering with me, by hypnosis or because I am a simulation; even then, I would think it likelier they had tampered with my memory of arithmetic than that 2 + 2 really equals 4. Either way I would notice that I was very confused.
+
+- Before: A belief either got there by a process entangled with reality, or it is right only by coincidence.
+- After: My brain came to store an answer that matches what earplugs do, and that match needs explaining. A belief either got there by a process entangled with reality, or it is right only by coincidence, and for any belief complex enough to need more than about 10 bits to describe, coincidence is out of the question.
+
+- Before: ``Presumably'' the answer is being born to a Muslim mother and raised by Muslim parents.
+- After: ``Presumably'' the answer is being born to a Muslim mother and raised by Muslim parents. If there is more to it, what would convince them, and would their kind of reasoning have freed them from their religion had they been raised Muslim?
+
+
+## honest/sections/infinite-certainty.tex
+
+Why: Fidelity/substance pass: added why the guess outranks any theory of truth, the calibration exercise, the reasons 2 + 2 = 4 might reach 99.99% and why '53 is prime' would not, what the confidence is about, the Matrix joke, and Smigrodski's full point; removed 'I close'
+
+- Before: I am not sure what ``true'' means for ``2 + 2 = 4,'' but I guess that in whatever sense it is true, it is exactly true.
+- After: I am not sure what ``true'' means for ``2 + 2 = 4,'' but I guess that in whatever sense it is true, it is exactly true, not true a trillion times minus one; that guess is more credible than any philosophical theory of what ``true'' means.
+
+- Before: What you should aim for is calibration: statements you hold at 99\% should come true 99 times in 100.
+- After: What you should aim for is calibration: statements you hold at 99\% should come true 99 times in 100. That is harder than it sounds: ask a hundred people for ten statements each at 99\%, and do you think about ten of the thousand will be wrong?
+
+- Before: Maybe you could, for something so simple. I do not think you could for ``53 is a prime number.''
+- After: Maybe you could, for something so simple, both mathematical and empirical, and quietly taken for granted by everyone. I do not think you could for ``53 is a prime number'': to make 10,000 independent statements like it, each checked a new way, you would fail more than once. And a confidence of 99\% in 2 + 2 = 4 is a confidence that it is always and exactly true, not that it is true 99\% of the time.
+
+- Before: Am I absolutely sure of all this? ``Why, of course not.''
+- After: If all else fails, the Dark Lords of the Matrix, tampering with your judgment of this very sentence, will stand in the way of infinite certainty. Am I absolutely sure of all this? ``Why, of course not.''
+
+- Before: I close with Rafal Smigrodski: once you assign a probability of 1, ``I can never undo it.''
+- After: Last, Rafal Smigrodski: you can give less than certainty to the mathematics needed to derive Bayes's rule and still use it; and once you assign a probability of 1, ``I can never undo it,'' and must reject everything that disagrees.
+
+
+## honest/sections/0-and-1-are-not-probabilities.tex
+
+Why: Fidelity/substance pass: added why infinity is not needed in practice, when probabilities are more convenient than odds, the decibel worked example, and the 0.502/0.99999 comparison that shows the spacing
+
+- Before: does not give you ``infinity - infinity = 5.''
+- After: does not give you ``infinity - infinity = 5.'' And no one has ever counted or measured an infinity of anything, so in the real world we do not need it.
+
+- Before: hearing it moves the odds of a 1 from 1:5 to 2:5, a probability of 2/7.
+- After: hearing it moves the odds of a 1 from 1:5 to 2:5, a probability of 2/7. Probabilities are better for other questions: the chance of rolling 1 to 4 is four sixths added up, but you cannot add odds.
+
+- Before: On log odds, measured in decibels as Jaynes recommended, 0 and 1 are both infinite.
+- After: On log odds, measured in decibels as Jaynes recommended, 0 and 1 are both infinite. A prior of 0.0001 is about $-40$ dB; evidence 100 times likelier if the claim is true adds 20 dB, giving $-20$ dB, a probability of about 0.01. As probabilities, 0.9999 and 0.99999 look closer together than 0.502 and 0.503; in log odds the first pair is 40 and 50 dB and the second 0.03 and 0.05 dB.
+
+
+## honest/sections/your-rationality-is-my-business.tex
+
+Why: Fidelity/substance pass: stated the snappy comeback, the gameboard framing, how science's rule is extended, what the post says relativists and egoists are really doing, and why the author cares
+
+- Before: I set aside a snappy comeback and give my answer.
+- After: A snappy comeback would be: ``Why do you care whether I care whether someone else cares about the truth?'' But that is no answer. Mine is this.
+
+- Before: and the human pursuit of truth is part of that future.
+- After: and the human pursuit of truth, which has grown stronger over the generations, is part of that future; we are all players on that board whether we accept it or not.
+
+- Before: As in science, disagreements should be won by convincing people, not by force.
+- After: Science's strange idea is that disagreements about fact are settled by experiment and mathematics, not by violence and decrees; I would extend that to a fair fight over the whole future, won by convincing people, not by burning them.
+
+- Before: If there are any true relativists or selfish people, ``we do not hear them.'' That follows from how I have just defined them.
+- After: Rather, they have joined a side, Relativism, which aims to stop all players from making certain judgments, or Selfishness, which aims to make all players selfish. If there are any true relativists or selfish people, ``we do not hear them.'' That follows from how I have just defined them.
+
+- Before: Last, I cannot help caring how you think.
+- After: Last, I cannot help caring how you think, because each time someone turns away from the truth, the human story grows a little darker.
+
+
+## honest/sections/politics-is-the-mind-killer.tex
+
+Why: Fidelity/substance pass: added the minimum-wage illustration, that politics still matters for one's own reasoning, what 'arguments are soldiers' means, the cookie comparison, and the evolution-in-schools example of the rule
+
+- Before: in the ancestral environment, being on the wrong side of an argument could get you killed. I give no evidence for this.
+- After: in the ancestral environment, being on the wrong side of an argument could get you killed, and the right side could let you kill a rival. Arguing about the minimum wage today, you run on those adaptations. I give no evidence for this.
+
+- Before: Politics is a terrible place to learn rationality, ``unless all the discussants are already rational.''
+- After: Politics is an important place to apply your own reasoning, but a terrible place to learn rationality, ``unless all the discussants are already rational.''
+
+- Before: Next: arguments are soldiers, and sensible scientists turn into slogan-chanting zombies when a political issue comes up.
+- After: Politics is war by other means, and arguments are soldiers: once you know your side, you must support all its arguments and attack all the other side's, or you are stabbing your own soldiers in the back. Scientists who weigh all sides at work turn into slogan-chanting zombies when a political issue comes up.
+
+- Before: My answer is that it was ``probably'' to get in a dig at the other side.
+- After: My answer is that it was ``probably'' to get in a dig at the other side; a solid punch feels good, like a chocolate cookie, and like cookies not everything pleasant is good for you.
+
+- Before: I am not asking you to be apolitical, only to skip gratuitous jabs at a party, because some readers may belong to it.
+- After: I am not asking you to be apolitical, or even to follow Wikipedia's Neutral Point of View, only to skip gratuitous jabs at a party. If your topic is attempts to ban evolution in schools, discuss it, but do not blame the whole Republican Party; some readers may be Republicans who see the problem as a few rogues.
+
+
+## honest/sections/policy-debates-should-not-appear-one-sided.tex
+
+Why: Fidelity/substance pass: corrected a false statement (the post does quote its own 'But even so'); added the arguments for the stores, the other anti-regulation views, the warning-label version of 'she deserved it', the author's upbringing and the 500 CE question, and the remark about economists
+
+- Before: There are good arguments for this.
+- After: There are good arguments for this: a right to individual liberty, bureaucrats' incentive to ban everything, and legislators as biased as anyone.
+
+- Before: So why did some people take it as an argument for regulation? I do not mention that I began it with ``But even so.''
+- After: So why did some people take it as an argument for regulation? My own reply, as I report it, had begun ``But even so,'' which reads as an objection.
+
+- Before: The mother is still going to die, whatever you think of the policy.
+- After: The mother is still going to die, whatever you think of the policy. You may also believe that bans only raise prices, that regulators abuse their power, or that her freedom outweighs your wish to meddle; as a matter of fact, she still dies.
+
+- Before: Some libertarians might say she deserved it, and then there would be ``no downside'' to the shops.
+- After: Some libertarians might say that if she walked past signs reading THINGS IN THIS STORE MAY KILL YOU, she deserved it, and then there would be ``no downside'' to the shops.
+
+- Before: Upbringing is a lottery too: someone told by a witch doctor that faith is right follows the advice in good faith and dies.
+- After: Upbringing is a lottery too. I was raised to think that denying reality is wrong; someone told by a witch doctor that faith is right and doubt is wrong follows the advice in good faith and dies. Would you have been a proper skeptic had you been born in 500 CE?
+
+- Before: I cannot imagine a politician saying that.
+- After: I cannot imagine a politician saying that, but economists who influence policy might at least think it.
+
+
+## honest/sections/the-scales-of-justice-the-notebook-of-rationality.tex
+
+Why: Fidelity/substance pass: added the passive-safety example of distinct goods and the consequence of mixing them (wrong answers to physical questions)
+
+- Before: How much waste a design makes and how likely it is to melt down are two physical questions with two answers.
+- After: A reactor that is passively safe need not also make less waste or cheaper power; these are all good, but not the same good. How much waste a design makes and how likely it is to melt down are two physical questions with two answers.
+
+- Before: they rate its probability of meltdown as lower.''
+- After: they rate its probability of meltdown as lower.'' That gets physical questions wrong by treating facts as soldiers, any one of which can be sent against any soldier on the other side.
+
+
+## honest/sections/correspondence-bias.tex
+
+Why: Fidelity/substance pass: removed the tag 'I say'; spelled out the mechanisms, the false consensus effect with its drinking example, the dispositions caveat, and the closing line
+
+- Before: It is intuitive, I say, to explain rain by water spirits and sleep by a ``dormitive potency,'' because essences are easier to think of than mechanisms.
+- After: It is intuitive to explain rain by water spirits, fire by a fire-stuff escaping from what burns, and sleep by a ``dormitive potency.'' The real mechanisms are evaporation and condensation, oxidation, and chemistry acting on the nervous system; they are harder to think of than essences.
+
+- Before: I add the false consensus effect and the fundamental attribution error, which I define as overrating others' dispositions ``while reversing this tendency for ourselves.''
+- After: When we kick the machine ourselves, we also overestimate how many others would do the same: the false consensus effect. Students who drink overestimate how many fellow students drink, and nondrinkers underestimate it. The fundamental attribution error, as I define it, is overrating others' dispositions ``while reversing this tendency for ourselves.''
+
+- Before: Ask what situation people think they are in.
+- After: Ask what situation people think they are in. People do have dispositions, but there are not enough heritable quirks to account directly for all the behavior we see.
+
+- Before: Even people who do terrible things are not ``exceptional mutants.''
+- After: Even people who do terrible things are not ``exceptional mutants.'' Once you understand that, you will stop being surprised by human events.
+
+
+## honest/sections/are-your-enemies-innately-evil.tex
+
+Why: Fidelity/substance pass: spelled out the arguments-as-soldiers mechanism, the fear of guilt, the initiator-of-force reasoning, and the hijacker conclusions (not true, not justified, Flight 93)
+
+- Before: But politics is the mind-killer, and denying any evil trait of the Enemy on factual grounds makes you a traitor.
+- After: If you imagine motives that make the Enemy look bad, you will be wrong about what goes on in the Enemy's mind. But politics is the mind-killer. An evil Enemy is an argument for your side, and every argument for your side must be supported, however silly. People compete in denunciation until the Enemy has horns and fangs, and anyone who denies a detail on factual grounds is a traitor. Few will see that such a person defends the truth, not the Enemy.
+
+- Before: Or maybe we fear that understanding will lead to forgiveness.
+- After: Or maybe we fear that understanding will lead to forgiveness. ``Die, vicious scum!'' is a better battle cry than ``Die, people who could have been just like me but grew up in a different environment!'', and killing people who are not pure darkness might make us feel guilty.
+
+- Before: If someone has to die, better the one who started it. Understanding the Enemy's beliefs does not make them true or the acts justified.
+- After: If someone has to die, better the one who started the violence, since that discourages future violence and minimizes total deaths. Understanding the Enemy's beliefs does not make them true or the acts justified. It means you may have to shoot someone who is the hero of their own story; a police officer makes that choice every day.
+
+- Before: In another world they might have been police officers.
+- After: That does not make their beliefs true or their acts justified, and it does not mean the passengers of United Flight 93 should have stood aside. It means that, raised in a different environment, they might have been police officers, which is a tragedy.
+
+
+## honest/sections/reversed-stupidity-is-not-intelligence.tex
+
+Why: Fidelity/substance pass: added the conditional-probability argument, the broken-engine example, the horns effect, and the content of each corollary (weak advocates, New Agers, Hitler counterfactual, Dawkins, power cord, flying machines)
+
+- Before: Cults grow around almost any idea, so we would see saucer cults whether or not there were saucers. By the Bayesian definition of evidence,
+- After: Cults grow around almost any idea, so we would see saucer cults whether or not there were saucers. The probability of cults given aliens is no lower than without aliens, unless hidden aliens would suppress the cults. So by the Bayesian definition of evidence,
+
+- Before: ``They would have to be superintelligent to be that stupid.''
+- After: ``They would have to be superintelligent to be that stupid.'' A car with a broken engine cannot drive backward at 200 mph.
+
+- Before: Stalin believed that 2 + 2 = 4,
+- After: The converse of the halo effect is the horns effect: all perceived bad qualities go together, so if Stalin is evil, everything he says must be false. But Stalin believed that 2 + 2 = 4,
+
+- Before: Argue against an idea's strongest advocates; for the intelligence explosion, that means Nick Bostrom, or me after 2003.
+- After: Argue against an idea's strongest advocates, since even the strongest idea attracts weak ones; for the intelligence explosion, that means Nick Bostrom, or me after 2003.
+
+- Before: Lunatics driven mad by an idea are no evidence against it.
+- After: Lunatics driven mad by an idea are no evidence against it; many New Agers have been made crazier by quantum mechanics.
+
+- Before: You should be able to argue against genocide without mentioning Hitler. Willingness to believe follows willingness to affiliate, as Robin Hanson would put it. A dead computer does not mean every part is bad. And a thousand failed attempts to build AI with electricity do not make electricity the problem:
+- After: You should be able to argue against genocide without mentioning Hitler; if Hitler had not advocated it, would it be fine? Willingness to believe follows willingness to affiliate, as Robin Hanson would put it: some people are reluctant to believe that God does not exist because they do not want to affiliate with Richard Dawkins. If your computer stops working, you should not buy one without every part the old one had; maybe you need a new power cord. A hundred failed flying machines of metal and wood do not show that you need one of bone and flesh, and a thousand failed attempts to build AI with electricity do not make electricity the problem. Until you understand the problem,
+
+
+## honest/sections/argument-screens-off-authority.tex
+
+Why: Fidelity/substance pass: added the technical core the rewrite only named: two conditionals do not fix the joint conditional, the sprinkler numbers, the dice example of dependence, D-separation, and the one-kind-of-probability conclusion
+
+- Before: A novice would conclude that authority and argument are different kinds of evidence. I show that they are not, with a sprinkler. The sprinkler runs for part of the night, and while it runs the sidewalk is slippery. Once you know whether the sprinkler is on, knowing whether it is night tells you nothing more about the sidewalk. This is called screening off.
+- After: A novice would conclude that authority and argument are different kinds of evidence, since both give 90\% against 10\% yet combine differently. I show that probability theory handles this. If one fact makes a hypothesis 90\% likely and another makes it 9\% likely, the probability given both cannot be computed from those two numbers, because the facts may depend on each other. Take a sidewalk that is slippery while a sprinkler runs, and a sprinkler that runs 10\% of the night. Given that the sprinkler is on, the sidewalk is slippery with probability 90\%; given that it is night, 9\%; given both, 90\% again. Once you know whether the sprinkler is on, knowing whether it is night tells you nothing more about the sidewalk. This is called screening off. In a causal graph the arrows run from night to sprinkler to sidewalk, and their direction matters. Two dice that add to a sum are the opposite case: the first die tells you nothing about the second until you learn the sum, and then it tells you everything. The rule for reading such independences off a graph is called D-separation, and the books to read are Judea Pearl's.
+
+- Before: The diagram has no other path from the truth to the expert.
+- After: The diagram has no other path from the truth to the expert. None of this needs a second kind of probability; it is ordinary probability, drawn so the independences are easy to see.
+
+
+## honest/sections/hug-the-query.tex
+
+Why: Fidelity/substance pass: added the rationality comparison the post makes (who was more rational need not matter; virtue does not make a plane fly) and the Sun line
+
+- Before: It is better to argue physics than credentials, and better to argue physics than rationality. Accusing someone of ``Bias \#182'' cannot settle a question of fact.
+- After: It is better to argue physics than credentials, and better to argue physics than rationality. If we can check the calculations, we need not care whether the Wrights or Kelvin was more rational; the virtue of a rationalist cannot directly make a plane fly. Accusing someone of ``Bias \#182'' cannot settle a question of fact, and biased reasons for saying the Sun is shining do not make it dark out.
+
+
+## honest/sections/rationality-and-the-english-language.tex
+
+Why: Fidelity/substance pass: gave the content of the two closing Orwell passages, the static-noun-phrase point, the vacuum example, the stream-of-first-impressions claim and what a novelist would see
+
+- Before: ``Passive voice removes the actor, leaving only the acted-upon.''
+- After: ``Passive voice removes the actor, leaving only the acted-upon.'' With enough static noun phrases, nothing unpleasant ever happens.
+
+- Before: Nonfiction conveys knowledge; fiction conveys experience.
+- After: Nonfiction conveys knowledge; fiction conveys experience. Medicine can predict what happens to a person in a vacuum; fiction can make you live through it.
+
+- Before: Then I apply this rule for writers to other people's statements:
+- After: A writer knows readers will not stop to think; they get a stream of first impressions. Then I apply this rule for writers to other people's statements:
+
+- Before: gives ``the feeling of being told something reliable'' and nothing more.
+- After: gives ``the feeling of being told something reliable'' and nothing more, where a concrete version would show the postdoc holding out the bottle and the student's nervous grin. I do not want journal articles written like novels; I want rationalists aware of what words make a reader experience.
+
+- Before: I close with two passages from Orwell: one on the tired speaker who repeats stock phrases like a dummy, one on letting the meaning choose the word.
+- After: I close with two passages from Orwell. In the first, a tired speaker repeating stock phrases such as ``BESTIAL, ATROCITIES, IRON HEEL'' seems less a person than a dummy; the noises come out, but the brain is not involved. In the second, Orwell asks us to ``let the meaning choose the word.'' When we think of a concrete object we think without words and then hunt for words that fit. When we think of something abstract, the existing phrases rush in and blur or change the meaning, so it is better to get the meaning clear through pictures and sensations first.
+
+
+## honest/sections/human-evil-and-muddled-thinking.tex
+
+Why: Fidelity/substance pass: gave the content of the Orwell passages (defended atrocities, 'pacification'; no dialects to hide in), the Inquisition question, and the Stuart Chase quietism point
+
+- Before: I quote him on political language as ``the defence of the indefensible,'' and on plain English, which makes a stupid remark obvious ``even to yourself.''
+- After: I quote him. Political speech is largely ``the defence of the indefensible'': British rule in India, the Russian purges, the atom bombs on Japan can be defended only by arguments too brutal to face, so politics speaks in euphemism. Bombing villages, machine-gunning cattle and burning huts is called ``PACIFICATION.'' If you simplify your English, you cannot speak the dialects of orthodoxy, and a stupid remark will be obvious ``even to yourself.''
+
+- Before: who do not think overcoming bias is important.
+- After: who do not think overcoming bias is important. Your mind separates you from an orangutan and built this world; its systematic failures matter. Would the Inquisition have tortured witches if everyone were an ideal Bayesian?
+
+- Before: Orwell fought a similar attitude in Stuart Chase, who came near to claiming that abstract words are meaningless.
+- After: Orwell fought a similar attitude in Stuart Chase, who came near to claiming that abstract words are meaningless and used this to excuse doing nothing: since you do not know what Fascism is, how can you fight it?
+
+
+## honest/sections/knowing-about-biases-can-hurt-people.tex
+
+Why: Fidelity/substance pass: listed all six Taber and Lodge predictions, added the Bayesian point about negative-value information, dysrationalia, the salience remark, and why the talk hammered on the warnings
+
+- Before: People rate arguments for what they already believe more highly, seek out sources that agree with them, grow more polarized when shown both sides, and the more they know about politics, the stronger all this gets. I call all six predictions confirmed.
+- After: It lists six predictions and calls all of them confirmed. People rate arguments for what they already believe more highly, even when told to be objective. They spend more effort attacking contrary arguments than supporting ones. They seek out sources that agree with them. A balanced set of arguments for and against makes them more polarized. People with stronger attitudes show all this more. And people who know more about politics show it more, because they have more ammunition for counterarguing.
+
+- Before: ``If you're irrational to start with, having more knowledge can hurt you.''
+- After: ``If you're irrational to start with, having more knowledge can hurt you.'' For an ideal Bayesian, information never has negative expected value; humans can cut themselves.
+
+- Before: I have seen people ``severely messed up'' by their knowledge of biases.
+- After: I have seen people ``severely messed up'' by their knowledge of biases: it gives them more ammunition against anything they dislike. Too much ready ammunition is one of the main ways mentally agile people end up stupid, in Keith Stanovich's sense of ``dysrationalia.''
+
+- Before: and went off into his own ``highly questionable extrapolation.''
+- After: and went off into his own ``highly questionable extrapolation.'' The biases he had learned seemed much less salient when they applied to his own conclusions.
+
+- Before: So in my last talk I spent thirty minutes hammering on confirmation bias, motivated skepticism and sophisticated arguers. ``The literature on bias is mostly cognitive psychology for cognitive psychology's sake.''
+- After: So in my last talk I introduced biases with the conjunction fallacy and then spent thirty minutes hammering on confirmation bias, motivated skepticism and sophisticated arguers. A simple example is enough to interest an audience. But ``The literature on bias is mostly cognitive psychology for cognitive psychology's sake,'' so if I did not give the warnings in that one lecture, they would probably never hear them.
+
+
+## honest/sections/update-yourself-incrementally.tex
+
+Why: Fidelity/substance pass: added the binary-reasoning diagnosis, exact vs non-exact theories, the side-choosing argument, the near-certainty consequence, and the closing reason to celebrate
+
+- Before: as long as there are nineteen heads for each tail.
+- After: as long as there are nineteen heads for each tail. A probabilistic model can take a hit or two and survive, so long as the hits do not keep coming.
+
+- Before: I do not dispute the objection's claim about debates.
+- After: I do not dispute the objection's claim about debates. Once you have chosen your side, the work of rationality is already done, well or badly. If choosing the wrong side frightens you at all, you had better integrate all the evidence.
+
+- Before: ``Think quantitatively.''
+- After: A correct but inexact theory will sometimes meet contrary evidence; only an exact theory is in trouble when it fails once. The trouble with yes-or-no reasoning is that every observation either destroys the theory or does not, so a contrary observation creates dissonance and must be argued away, and incremental progress becomes impossible. On average a correct theory gets more support than countersupport, so you can say without fear that a piece of evidence is gently contrary. ``Think quantitatively.''
+
+- Before: the shift it brings must be large enough to balance the expected gain.
+- After: the shift it brings must be large enough to balance the expected gain. If you think you already know what the evidence will show, you must already be near certainty, with little room to go up. So it is silly to fear revising downward when you investigate anything at all.
+
+- Before: ``Yay! Time to celebrate!''
+- After: ``Yay! Time to celebrate!'' You cannot become stronger by keeping the beliefs you started with.
+
+
+## honest/sections/one-argument-against-an-army.tex
+
+No change: No change: the rewrite already gives the Freedonia case, the double-counting, the 50-subject and loot examples, and the rule to shift down
+
+## honest/sections/the-bottom-line.tex
+
+Why: Fidelity/substance pass: removed 'This image is the whole essay' (the post's point comes later, as the rewrite itself says); gave the content of the hiring question, the entanglement principle, why the inquirer's page differs, and the opponent caution
+
+- Before: and leaves out the clues that favor A. This image is the whole essay.
+- After: and leaves out the clues that favor A.
+
+- Before: Then the key step. Whatever is written
+- After: Then the key step. To us, what a thing tells us is its entanglement with other things. Whatever is written
+
+- Before: Along the way I raise a question: what the arguer's conclusion tells you depends on which owners tend to hire arguers. I give it two sentences and leave the rest ``to you.''
+- After: Along the way I raise a question: what the arguer's conclusion tells you depends on which owners tend to hire arguers. Perhaps owners who think they have the better case hire advertisers more often; perhaps owners who fear their box is worse bid higher. If the owners do not understand the clues, the page tells you about their finances and bidding habits, and nothing about the diamond. I leave the rest ``to you.''
+
+- Before: That page does depend on the clues.
+- After: That page does depend on the clues: in worlds where the clues differ, a different number is written at the bottom. The two pages may sound alike when read aloud, but they are evidence of different things.
+
+- Before: Last, a caution: do not use this essay to dismiss your opponents as clever arguers.
+- After: Last, a caution: do not use this essay to dismiss your opponents as clever arguers. Saying ``My opponent is a clever arguer'' is itself a clever argument, if what you want is to keep the beliefs you started with.
+
+
+## honest/sections/what-evidence-filtered-evidence.tex
+
+Why: Fidelity/substance pass: added Jaynes's rule to condition on all evidence, the third reporting rule, and the three host rules with their answers
+
+- Before: ``Each statement that the clever arguer makes is valid evidence,'' so it seems you must update.
+- After: ``Each statement that the clever arguer makes is valid evidence,'' and Jaynes says a Bayesian must condition on all known evidence, so it seems you must update.
+
+- Before: the other seven were tails, and the odds are 1 to 16.
+- After: the other seven were tails, and the odds are 1 to 16. I might also have decided to report those three flips only if the coin was very likely heads-biased; and so on.
+
+- Before: The Monty Hall problem is the same. Whether you should switch doors depends on how the host chooses which door to open.
+- After: The Monty Hall problem is the same. You pick door 1 of three, one of which hides \$100,000, and the host opens door 2, which is empty. If the host always opens an empty door, you should switch to door 3. If the host always opens door 2 whatever is behind it, doors 1 and 3 are equally likely. If the host opens a door only when you picked the money, you should stay. Many people get the standard problem wrong because they update only on door 2 being empty.
+
+
+## honest/sections/rationalization.tex
+
+Why: Fidelity/substance pass: added the 'every improvement is a change' argument, the content of the backward direction, and curiosity as the first virtue
+
+- Before: Rationality changes beliefs to make them more accurate, while rationalization fixes them in place, so it should be called ``anti-rationality.''
+- After: Not every change is an improvement, but every improvement is a change. Arguing for a proposition can make more people believe it but cannot make it more true, so to improve our beliefs we must change them. Rationality changes beliefs to make them more accurate, while rationalization fixes them in place, so it should be called ``anti-rationality.''
+
+- Before: Then I restate the backward direction.
+- After: The inquirer is curious because the destination is unknown. In the backward direction the conclusion is known and fixed, and the unknown is which arguments to write above it.
+
+- Before: If you do not know where you are going, you will probably feel curious about it.
+- After: If you do not know where you are going, you will probably feel curious about it. Curiosity is the first virtue; without it, questioning has no purpose.
+
+
+## honest/sections/a-rational-argument.tex
+
+Why: Fidelity/substance pass: added the post's reasons for refusing illogical deductions with true conclusions, and the point that squares are not rectangles because both are quadrilaterals
+
+- Before: is illogical, though everything in it is true.
+- After: is illogical, though everything in it is true. It is worth refusing to excuse such a deduction even when its conclusion is true: the difference may matter when new evidence comes in, and sloppiness is habit-forming. Above all, it gives the wrong explanation. Squares may be rectangles, but not because both are quadrilaterals.
+
+
+## honest/sections/avoiding-your-belief-s-real-weak-points.tex
+
+Why: Fidelity/substance pass: added the post's theology premise, the rabbi's kind of explanation, the content of the imagined doubt, the firstborn details, the comforting-rehearsal and first-reply points, the full advice, and the substance of the Gendlin lines
+
+- Before: and last her smile.
+- After: and last her smile; when God took her smile, he knew she was almost gone.
+
+- Before: This puzzled me, because Jews usually avoid saying that God caused a tragedy. They say ``God did it'' for a baby girl and not for a stillbirth.
+- After: This puzzled me. In Jewish theology God sustains the universe and chooses every event, but as I understood the rules of religious self-deception, people draw that conclusion only on happy occasions. They say ``God did it'' for a baby girl and not for a stillbirth, and so build a lopsided picture of God's kindness.
+
+- Before: My example is a rabbi who reconciles the seven days of creation with the Big Bang.
+- After: My example is a rabbi who raises the conflict between the seven days of creation and the 13.7 billion years since the Big Bang, because he has a clever answer involving three Biblical references, a Midrash and a half-understood \textsc{Scientific American} article. The most complicated explanation wins. You attack only targets you know you can defend.
+
+- Before: I then write out the inner thoughts of a typical doubting Orthodox Jew, who worries about the seven days and settles for a metaphor. I quote no actual Orthodox Jew.
+- After: I then write out the inner thoughts of a typical doubting Orthodox Jew: could the tribes at Sinai have understood the science, did they even have a word for ``billion,'' so the seven days must be a metaphor, with light standing for the Big Bang. I quote no actual Orthodox Jew.
+
+- Before: A weaker point is the killing of the firstborn of Egypt.
+- After: A weaker point is the killing of the firstborn of Egypt, which God does to persuade an unelected Pharaoh to free slaves that God could have simply moved out of the country. Every Orthodox Jew knows the story: the whole Torah is read in synagogue each year, and Passover is named for God passing over Jewish houses during the killing.
+
+- Before: The old rabbis could afford that sympathy because science was weaker then.
+- After: The rabbis were kinder than the compilers of the Bible and saw the harshness of the plagues, but they stopped short of saying it was wrong. They could afford that much sympathy because science was weaker then.
+
+- Before: My thesis, which I introduce with ``I suspect,'' is that educated believers stay religious because they question their beliefs only where they can defend them.
+- After: My thesis, which I introduce with ``I suspect,'' is that educated believers stay religious because they question their beliefs only where they can defend them, and where rehearsing the standard defense feels strengthening. Answering ``Doesn't Science say that the universe is just meaningless atoms bopping around?'' feels good; it is more comfortable than thinking of an Egyptian mother at her son's crib.
+
+- Before: This is not only about Judaism. Everyone avoids the painful weak points of their beliefs, by instinct.
+- After: This is not only about Judaism. When people question themselves, they tend to attack strong points that have comforting replies, and they stop at the first reply instead of criticizing it. A better title would be ``Not Spontaneously Thinking About Your Belief's Most Painful Weaknesses.'' I think this is instinct, not training: it hurts, so we avoid it.
+
+- Before: My advice: when you doubt a cherished belief, think about what hurts most, and ask what smart people who disagree would say to your first reply, and then to your second.
+- After: My advice: when you doubt a cherished belief, think deliberately about what hurts most. Do not rehearse objections whose standard answers make you feel better. Ask what smart people who disagree would say to your first reply, and then to your second. When you catch yourself flinching from an objection, bring it to the front of your mind.
+
+- Before: And recite the paragraph by Gendlin.
+- After: And recite the lines by Eugene Gendlin: what is true is already so; owning up to it does not make it worse; ``People can stand what is true, for they are already enduring it.''
+
+
+## honest/sections/motivated-stopping-and-motivated-continuation.tex
+
+Why: Fidelity/substance pass: added the disguise-as-virtue point, the footnote reconciling 'change your mind later' with more evidence, the belief-anticipation case, and the concrete examples of cheap and expensive evidence
+
+- Before: Who can argue against gathering more evidence? ``I can.'' Evidence is costly and slow, and refusing to use what you already have is no virtue.
+- After: Motivated continuation can pass itself off as virtue: who can argue against gathering more evidence? ``I can.'' Evidence is costly and slow, and refusing to use what you already have is no virtue. You can always change your mind later. In a footnote I square this with the call for more search: an hour spent discussing a problem with an open mind is different from waiting ten years for another \$20 million study.
+
+- Before: and wherever you would rather not test a warm glow you paid for.
+- After: wherever you would rather not test a warm glow you paid for, and wherever your beliefs and anticipations have come apart, so that any new evidence is a threat.
+
+- Before: while fast, cheap evidence remains; suspect motivated continuation when you demand expensive evidence you cannot soon get before doing anything uncomfortable.
+- After: while fast, cheap evidence remains: websites you could visit, counter-counterarguments you could consider, or five minutes by the clock spent trying to think of a better option. Suspect motivated continuation when the evidence leans a way you dislike and you demand expensive evidence you cannot soon get, as opposed to something you could look up in thirty minutes, before doing anything uncomfortable.
+
+
+## honest/sections/fake-justification.tex
+
+Why: Fidelity/substance pass: added the rings-instead-of-crosses question, the candidate-generation point (renown, Shakespeare and GEB, the Bible otherwise a coincidence), the misrepresentation of history, and the one-party-election comparison
+
+- Before: I do not argue for these rankings.
+- After: I do not argue for these rankings. So why don't people wear little rings around their necks instead of crosses?
+
+- Before: is a token inspection. I give no evidence.
+- After: is a token inspection, like free elections in a one-party country. I give no evidence.
+
+- Before: To justify revering the Bible for its literary quality, you would have to read through candidate books neutrally. That is ``Easy enough if you're not a Christian.''
+- After: To justify revering the Bible for its literary quality, you would have to read through candidate books neutrally until you found the best. Renown is a fair way to pick candidates, so you might legitimately end up reading Shakespeare, the Bible and \textsc{G\"odel, Escher, Bach}; otherwise it would be a coincidence for the Bible to be among a million books. The hard part is the neutral reading, which is ``Easy enough if you're not a Christian.''
+
+- Before: Of these believers: ``No search ever occurred.''
+- After: Of these believers: ``No search ever occurred.'' Writing ``literary quality'' above the conclusion misrepresents the history of how the conclusion got there.
+
+
+## honest/sections/is-that-your-true-rejection.tex
+
+Why: Fidelity/substance pass: added the conditions for the Nobel estimate, Drexler's six years and Nanosystems, the business examples, the full list of hidden sources, why lasting disagreements must have them, and the proposed wording of the question
+
+- Before: The idea reminds them of science fiction or an end-of-the-world cult,
+- After: The idea reminds them of a category like ``strange weird idea,'' science fiction, an end-of-the-world cult or overenthusiastic youth,
+
+- Before: I suspect that credentials start to outweigh a first impression only at about the level of a Nobel prize.
+- After: For a claim that sounds wrong to a novice, told by a stranger to someone outside the field, I suspect that credentials start to outweigh a first impression only at about the level of a Nobel prize.
+
+- Before: People told him to come back when he had a PhD; he got one, and wrote a technical book.
+- After: People asked him for technical details, or told him to come back when he had a PhD. He spent six years writing the details, got his PhD under Marvin Minsky for them, and published them as \textsc{Nanosystems}, ``a great book.''
+
+- Before: The idea is useful in business: the reason a customer gives for saying no may not be the real one.
+- After: The idea is useful in business. When a venture capitalist says ``If only your sales were growing a little faster!'' or a customer says you lack feature X, that may not be the true rejection, and fixing it may change nothing. Think about that before spending great effort.
+
+- Before: In disagreements, Robin Hanson and I believe that two rationalists should not agree to disagree. I list the hidden sources of lasting disagreement, from rare but sound knowledge and hard-to-state intuitions to habit, fear that a past mistake could be exposed, and self-deception for the sake of pride.
+- After: In disagreements, Robin Hanson and I believe that two rationalists should not agree to disagree: they should not have common knowledge of a disagreement unless something is very wrong. If a disagreement survives the first exchange, its true sources are probably hard to communicate or hard to expose. If they could all be laid on the table easily, it would have been settled at the first meeting. I list them: rare but well-supported knowledge or math, long inferential distances, hard-to-state intuitions, the outlook of a profession, patterns recognized from experience, habits of thought, emotional commitment to an outcome, fear that a past mistake could be exposed, and self-deception for the sake of pride.
+
+- Before: as long as the most embarrassing possibilities are left unspoken.
+- After: as long as the most embarrassing possibilities are left unspoken. The question I propose is: ``Is that simple straightforward-sounding reason your true rejection, or does it come from intuition-X or professional-zeitgeist-Y?''
+
+
+## honest/sections/entangled-truths-contagious-lies.tex
+
+Why: Fidelity/substance pass: added the proverb and why vague interconnectedness is not wisdom, the concrete cases of exposed lies (Y chromosomes, DNA, creationists), neuroimaging, the reason the Web is underestimated, and the allowance for silence
+
+- Before: I do not know how I would be caught, ``which is the point.''
+- After: I do not know how I would be caught, ``which is the point.'' ``Only God can tell a truly plausible lie.'' I guess that no religion has this proverb, since it is a rationalist idea. Saying that everything is connected because God made it feels warm but does not help you assign pebbles to beaches.
+
+- Before: but no astronomer could read the penny's fall from the Moon.
+- After: but no astronomer could read the penny's fall from the Moon; the effect is far below quantum uncertainty and thermal noise. Saying that everything is connected, and some connections are much stronger than others, is wiser than saying only that everything is connected.
+
+- Before: People often fail to imagine the facts that could expose them: genetics, evidence found years later, the marks of natural selection.
+- After: People often fail to imagine all the facts they would need to distort. ``God made me pregnant'' sounded more likely before we knew about Y chromosomes, and many lies may blow up as genetic testing spreads. Rapists have been convicted, and false accusers exposed, years later on evidence they did not know they had left. A student of evolution sees the signature of natural selection on every wolf and rabbit, but creationists' claims sound plausible to creationists.
+
+- Before: But a superintelligence scanning the Earth would find many,
+- After: But a superintelligence scanning the Earth would find at least every lie of which evidence remains in some brain, and a good neuroimaging lie detector might find some sooner,
+
+- Before: The Great Web is ``very commonly underestimated.'' I give no evidence about what liars expect.
+- After: The Great Web is ``very commonly underestimated.'' The knowledge humans have already gathered would take many lifetimes to learn, so anyone who thinks a person can tell a perfect lie without risk underestimates it. I give no evidence about what liars expect.
+
+- Before: Is honesty the best policy? ``I don't know if I'd go that far.''
+- After: Is honesty the best policy? ``I don't know if I'd go that far''; even on my ethics it is sometimes fine to stay silent.
+
+
+## honest/sections/of-lies-and-black-swan-blowups.tex
+
+No change: No change: the post is three sentences, all rendered with the caveats
+
+## honest/sections/dark-side-epistemology.tex
+
+Why: Fidelity/substance pass: added the arbitrary-to-one-mind point, the map-of-the-city explanation in the dragon exchange, belief in belief, the tightness of rational belief (evolution, heliocentrism), and the worry about systematically bad epistemology
+
+- Before: and the geologist may know better.
+- After: and the geologist may know better: a water-worn pebble does not look like frozen lava. A truth that seems arbitrary to one mind may be pinned down by a dozen links for a mind that knows more. To a creationist, design versus natural selection may sound like a choice of sports team.
+
+- Before: Told why beliefs require evidence, the believer says a small chance remains.
+- After: Told why beliefs require evidence (a map of a city drawn at random in your living room will almost certainly be wrong, and a map of a dragon is no different), the believer says that ``almost certainly'' leaves a chance.
+
+- Before: A false belief can be corrected; a belief you think must be protected is dangerous.
+- After: A false belief can be corrected if you get over it when you find the mistake. What is dangerous is a belief you think must be protected as a belief, whether or not you actually believe it.
+
+- Before: Steven Kaas said
+- After: Rational beliefs, like the world, are tied together by general laws more tightly than the untrained suspect. Think of all the connected truths you would have to refuse to know in order to deny evolution or heliocentrism. One self-deception can then block the whole higher level of truth-seeking, and put in its place rules of anti-thought and general justifications for believing what is false. Steven Kaas said
+
+- Before: Some popular advice on how to think was made by rationalists,
+- After: I worry that people are not wary enough of meeting systematically bad epistemology. Some popular advice on how to think was made by rationalists,
+
+
+## honest/sections/doublethink-choosing-to-be-biased.tex
+
+Why: Fidelity/substance pass: added believing-you-believe, what a rational driving tradeoff would need, the single-mistake point, the advice and the blank-map explanation, and the closing points (more than happiness, others at stake, no choice once you see it)
+
+- Before: \nb{Pascal's advice to the unbeliever
+- After: You might believe you believed it. You might even believe you were happy and self-deceived, but you would not in fact be. \nb{Pascal's advice to the unbeliever
+
+- Before: An optimistic driver skips the seatbelt and is happy for years, until the crash.
+- After: An optimistic driver skips the seatbelt and is happy for years, until the crash leaves them maimed, paralyzed or dead. To trade that risk against the happiness rationally, you would need to know your real driving skill and biases such as neglect of probability. However many days pass in blissful ignorance, one mistake can outweigh them all.
+
+- Before: People leap blindly because dangers they do not know of do not come to mind. ``Been there. Tried that. Got burned.''
+- After: My advice is ``Don't try to be clever'' and listen to quiet, nagging doubts. If you do not know, you do not know what you do not know, or how much, or how much you needed to know. People leap blindly because dangers they do not know of do not come to mind: they treat a blank area on the map as if the territory there were empty. ``Been there. Tried that. Got burned.''
+
+- Before: and the happiness a rationalist can achieve ``may prove greater, in the end.''
+- After: and the happiness a rationalist can achieve ``may prove greater, in the end.'' There is also more to life than happiness, and other people's happiness may be at stake in your choices. But by the time you realize you have a choice, there is none: you cannot unsee what you see.
+
+
+## honest/sections/no-really-i-ve-deceived-myself.tex
+
+Why: Fidelity/substance pass: added the contrast the post draws between 'God will help me' and 'my belief in God helps me'
+
+- Before: She talked only about the benefits of believing.
+- After: Asked why she was religious, she talked only about the benefits of believing: never ``God will help me,'' always ``my belief in God helps me.''
+
+
+## honest/sections/belief-in-self-deception.tex
+
+Why: Fidelity/substance pass: added the litany's content, the two questions she could and could not answer, the 'someone who cares' exchange, the rabbi remark, what the surprise question was meant to show, the Escher/Dark Side claim, and the Zombie World aside
+
+- Before: I put the Litany of Tarski to her: if it were known
+- After: I put the Litany of Tarski to her: if the sky is blue, I desire to believe the sky is blue; if it is not, I desire to believe it is not. ``This is not my philosophy,'' she said. I asked: if it were known
+
+- Before: Now ``I suspect'' God was not in her model of the world at all, only her belief in God.
+- After: Now ``I suspect'' God was not in her model of the world at all, only her belief in God. She could say how the world would differ if she did not believe in God, but not how it would differ if there were no God.
+
+- Before: ``This is why intelligent people only have a certain amount of time'' to become atheists. My evidence is this one conversation.
+- After: ``This is why intelligent people only have a certain amount of time'' to become atheists: a smart person who has spent long enough defending a religion without escaping Dark Side Epistemology ends up with a mind like an Escher painting. My evidence is this one conversation.
+
+- Before: She told me that nothing should be done differently if there were definitely no God.
+- After: One moment gave her pause. She said it is good to believe that someone cares whether you do right or wrong. I said that I care, so she must mean this is not enough, and she needs something above humanity to care. She had not thought of it that way. Later she told me that nothing should be done differently if there were definitely no God; I said even a rabbi would look askance at that.
+
+- Before: Asked whether she is always surprised when people fall short, she paused for a long time.
+- After: Asked whether she is always surprised when people fall short, she paused for a long time. I had meant to suggest that constant disappointment is a cost of believing falsely, but she seemed taken aback at the thought of not being surprised.
+
+- Before: ``The attempt failed, but she is honestly unaware of this.''
+- After: If her estimates of people were in fact accurate, the structure she had built around the benefits of believing falsely would be threatened. She has put the Dark Side Epistemology that once defended the idol on the idol's throne. ``The attempt failed, but she is honestly unaware of this.''
+
+- Before: Last, I ask whether theists will now defend belief in belief, and belief in belief in belief.
+- After: Last, I ask whether theists will now defend belief in belief, and belief in belief in belief. I wish I could believe no one would, but the Zombie World argument in philosophy has become even more tangled, and its proponents have not given it up.
+
+
+## honest/sections/moore-s-paradox.tex
+
+Why: Fidelity/substance pass: added the confused-word point, the 'honest mistake' framing and the dragon-in-the-garage illustration of unrecognized belief
+
+- Before: so the word ``belief'' has more than one meaning.
+- After: so the word ``belief'' has more than one meaning, and a confused word may cause confused thinking.
+
+- Before: No one is taught what belief feels like: a believed statement ``just seems like the way the world is.''
+- After: This is almost an honest mistake, since no one is taught how to tell when they believe something. The person who says the dragon in the garage is invisible does not notice that expecting to see no dragon means having a model with no dragon in it. What actual belief feels like is that a statement ``just seems like the way the world is''; that differs from feeling good about a belief you hold in quotation marks.
+
+
+## honest/sections/don-t-believe-you-ll-self-deceive.tex
+
+Why: Fidelity/substance pass: gave the content of the Moore's Paradox explanation, the work needed to get map-territory on a gut level, and what the repeated warning is meant to prevent
+
+- Before: Part of the answer ``may be'' my account in ``Moore's Paradox.''
+- After: Part of the answer ``may be'' my account in ``Moore's Paradox'': people mistake the good feeling attached to a quoted belief for actually believing it.
+
+- Before: not to go from what an accurate map would say to believing it.
+- After: not to go from what an accurate map would say to believing it. It takes work to explain minds as builders of maps that match territories, and more work to feel the consequences at gut level.
+
+- Before: Then, with no hedge, ``you will indeed be less likely to fool yourself successfully.''
+- After: If you are ever tempted, ``I can't fool myself!'' will come readily to mind. Then, with no hedge, ``you will indeed be less likely to fool yourself successfully,'' whether by really believing, or by falling into Moore's paradox, belief in belief, or belief in self-deception.
+
+
+## honest/sections/anchoring-and-adjustment.tex
+
+Why: Fidelity/substance pass: added why adjustment falls short (the first plausible answer stops it), why the ascending order did worse, and why a second remedy is needed
+
+- Before: and adjust until an answer ``sounds plausible,'' and then stop.
+- After: and adjust until an answer ``sounds plausible,'' and then stop. Numbers further away could also be plausible, so the adjustment usually falls short. In the multiplication task, students presumably multiplied the first few numbers and adjusted upward; both groups fell short, and the ascending group more so because it started lower.
+
+- Before: and think briefly of an anchor on the other side.
+- After: and, since subjects told to avoid anchoring still anchor, also think briefly of an anchor that is clearly wrong in the other direction.
+
+
+## honest/sections/priming-and-contamination.tex
+
+Why: Fidelity/substance pass: added the word/non-word task, why low-level priming is striking, the 'someone must be influenced' point about shop signs, and the hardware claim about confirmation bias
+
+- Before: Show people the word ``water,'' and they will recognize ``drink'' as a word a little faster.
+- After: Ask people to press one button if a string of letters is a word (``banner'') and another if it is not (``banack''). Show them ``water,'' and they will later recognize ``drink'' as a word a little faster.
+
+- Before: It works at the level of recognizing letters, and it probably spreads
+- After: It works at the level of recognizing that letters form a word, which one would expect to happen before thinking about meaning, and it probably spreads
+
+- Before: Signs saying ``Limit 12 per customer'' have ``been shown to work,'' which is why shops keep putting them up.
+- After: Signs saying ``Limit 12 per customer'' or ``5 for \$10'' have ``been shown to work,'' which is why shops keep putting them up. You probably think you are not influenced, but someone must be.
+
+- Before: An idea in your head primes compatible thoughts ``and thereby ensures its continued existence.''
+- After: An idea in your head primes compatible thoughts ``and thereby ensures its continued existence.'' Quite apart from the pressure to win political arguments, confirmation bias is built into our hardware, in networks of association that bring up compatible thoughts and memories.
+
+
+## honest/sections/do-we-believe-everything-we-re-told.tex
+
+Why: Fidelity/substance pass: added Descartes's prediction, which the test depends on, and the sentencing range
+
+- Before: If Spinoza is right, distraction should make people
+- After: Gilbert saw how to test the two. If Descartes is right, distraction should hurt both accepting true statements and rejecting false ones. If Spinoza is right, distraction should make people
+
+- Before: Busy readers recommended
+- After: Readers recommended prison terms from 0 to 20 years, and some were kept busy watching for the digit 5. Busy readers recommended
+
+
+## honest/sections/cached-thoughts.tex
+
+Why: Fidelity/substance pass: added the automatic-completion mechanism, the pattern-completion in atheists and in the extinction example, and the advice to stop the automatic answer before judging it
+
+- Before: Years later the man tried it, and it did not go well.
+- After: Years later the man tried it, and it did not go well. The neighbor was not a trusted source, and questioning the idea would probably have shown it was poor. Some cached answers should be worked out again, but the brain completes the pattern automatically, and unless you notice that it needs correcting, the completed pattern is what you are left with.
+
+- Before: in which she recites the skeptic's philosophy to God.
+- After: in which she recites the skeptic's philosophy to God. People read the slogan, and the next time they meet evidence against a religion, the brain completes the pattern; even some atheists repeat it.
+
+- Before: ``Maybe the human species doesn't deserve to survive,'' which decent people say when I raise the risk of human extinction.
+- After: ``Maybe the human species doesn't deserve to survive,'' which decent people say when I raise the risk of human extinction, though they would never shoot their own child, who is part of that species.
+
+- Before: ``I know what I would say.'' A link gives my answer.
+- After: ``I know what I would say.'' A link gives my answer. The standard answer may be the best one, but you cannot think about it until you stop your brain from filling it in automatically.
+
+
+## honest/sections/original-seeing.tex
+
+Why: Fidelity/substance pass: added the teacher's explanation to the student ('You're not looking', infinity of hypotheses)
+
+- Before: Furious, he tells her:
+- After: Furious, he says, ``You're not looking!'' For every fact there is an infinity of hypotheses, and the more you look the more you see. He tells her:
+
+
+## honest/sections/the-virtue-of-narrowness.tex
+
+Why: Fidelity/substance pass: added the other trade examples, the Rubik's Cube contrast, the love-and-flower detail, the New Age line, how verbal comparisons fill the graph, and the full closing complaint
+
+- Before: A mechanic does not lump a carburetor and a radiator together as ``car parts.''
+- After: A mechanic does not lump a carburetor and a radiator together as ``car parts''; a hunter-gatherer knows a lion from a panther; a janitor does not wash the floor with window cleaner.
+
+- Before: since a general theory sounds loftier than an answer to a small question.
+- After: since a general theory sounds loftier than an answer to a small question: better to explain human thought in general than how people solve a Rubik's Cube.
+
+- Before: Even poets must be precise: a flower for jealous love should have thorns.
+- After: Even poets must be precise. Jealous, unconsummated love is not the love of a couple married for decades, and a flower for jealous love should have a heady scent, a bright color and thorns. Even when you shade meanings, you must keep track of which ones.
+
+- Before: ``Everything is connected to everything else'' says nothing.
+- After: New Age gurus say ``Everything is connected to everything else,'' as if it were deep wisdom. It says nothing.
+
+- Before: Detailed study lets you start ``subtracting edges.''
+- After: People trying to sound profound compare this topic to that one until their graph is fully connected and useless. Detailed study shows how things are not alike, and lets you start ``subtracting edges.''
+
+- Before: And don't get me started on people who call Wikipedia an ``Artificial Intelligence.''
+- After: And don't get me started on people who call Wikipedia an ``Artificial Intelligence,'' the invention of LSD a ``Singularity,'' or corporations ``superintelligent.''
+
+
+## honest/sections/stranger-than-history.tex
+
+Why: Fidelity/substance pass: the rewrite had the author state a conclusion and a method the post leaves implicit; marked these as unstated, and added the speed figure and the bullet example
+
+- Before: there is an absolute speed limit, at which lengths and time ``change around'';
+- After: there is an absolute speed limit of exactly 670,616,629.2 miles per hour, and if you fire a gun from a train going nearly that fast, you see the bullet speed ahead while others see something different, because lengths and time ``change around'';
+
+- Before: a global network of adding machines will carry
+- After: a global network of billions of adding machines, each more powerful than all earlier ones together, will carry
+
+- Before: The second list is true. I chose its items for their strangeness, and I worded them oddly. I made the first list up to be absurd. So the comparison shows that the truth can sound crazy, which is my point.
+- After: I do not state the conclusion. The second list is true, and the first is made up; the comparison is meant to show that the truth can sound as crazy as fiction. \nb{The true items were chosen for their strangeness and worded oddly, and the false ones were written to be absurd, so the comparison is built to come out this way.}
+
+
+## honest/sections/the-logical-fallacy-of-generalization-from-fictional.tex
+
+Why: Fidelity/substance pass: the rewrite named most of the post's arguments without giving them; added the no-probabilities point with the burdensome-details label, the 100-bit location argument and the skipped preliminary steps, what the frame leaves out and the framing examples, the fallout-shelter and Alpha Centauri contrast, the Tunç details, the 'not an example' draft mistake, arguing from imaginary evidence, and the Borg stereotype
+
+- Before: Second, a story must follow one line of events; I show what a story told in probabilities would sound like.
+- After: Second, a story is never a rational forecast, because stories do not use probability distributions. I show what a story told in probabilities would sound like: the hero's weapon is a titanium sword with 30\% probability and a crowbar with 20\%. Characters can be ignorant, but the author cannot say ``I don't know.'' The story must follow one line through the future, full of details down to the color of a character's earrings. Then all these details are wrapped up under a short label, which makes them look like a single package.
+
+- Before: Third, starting from a film skips the hard part, finding which possibilities deserve attention at all. It also frames the debate.
+- After: Third, starting from a film skips the hard part. When the space of possible answers is large, the difficulty is less in checking the right answer than in finding it at all. Asking whether AIs will put us in capsules as in \textsc{The Matrix} jumps to a 100-bit proposition without the 98 bits of evidence needed to make it worth considering; a few more bits after those would make it nearly certain, so nearly all the work is in locating it. That work includes weighing what you do and do not know, widening your confidence intervals, and asking which questions matter. It also frames the debate, and to control the terms of a debate is nearly to control its outcome.
+
+- Before: \nb{That is also a specific and vivid picture, and the post gives no evidence for it.}
+- After: \nb{That is also a specific and vivid picture, and the post gives no evidence for it.} It sets up a contest of Us against Them, with questions like ``Who will win?'', in an atmosphere of entertainment. Lost are the many possible designs of mind, the dependence of the future on initial conditions, the power and unpredictability of smarter-than-human intelligence, and people taking the matter seriously. In a gun debate, neither side wants to be introduced as a ``shooting freak'' or a ``victim disarmament advocate''; why accept a frame from Hollywood? Journalists ask whether the future will be like \textsc{2001} or like \textsc{A.I.}, which is as loaded as asking whether to cut veterans' benefits or raise taxes on the rich.
+
+- Before: People do not believe the films, ``So far as I can tell,'' but recall them as cases that happened somewhere else.
+- After: People do not believe the films, ``So far as I can tell'': no one who watched \textsc{The Terminator} hid in a fallout shelter on August 29, 1997. But they recall them as cases that happened somewhere else. ``But didn't that lead to nuclear war in The Terminator?'' is said in the tone of ``didn't that lead to nuclear war on Alpha Centauri?'' The film is not a prophecy but an available historical case.
+
+- Before: I caught myself at it once. Someone cited a character in a Vinge novel, and I replied that the character ``was crippled.'' But ``There is no was of Tunç Blumenthal.''
+- After: I caught myself at it once. Someone argued that Vernor Vinge did not expect brain-computer interfaces to raise intelligence much, citing Tunç Blumenthal, the most advanced traveler in \textsc{Marooned in Realtime}, who did not seem very powerful. I replied that Tunç had lost most of his hardware and was crippled. But the question has to be argued in its own right. I could say Vinge chose to depict Tunç as crippled, which gives the choice its proper weight as evidence, but ``There is no was of Tunç Blumenthal.'' My first draft of this post even called \textsc{The Matrix} an ``example.'' A neighboring error is arguing from imaginary evidence: if you did go to the end of the rainbow, you would find a pot of gold, ``which just proves my point!''
+
+- Before: Seeing three Borg on screen makes a category, as seeing three zebras does.
+- After: Seeing three Borg on screen makes a category, as seeing three zebras does, and the category carries automatic inferences. So people who hear about brain-computer interfaces expect users to be cold and uncompassionate and to walk with heavy mechanical steps. They ask ``Will the future contain Borg?'', not how they know such interfaces make people less nice, or whether they are forming a stereotype on zero evidence.
+
+
+## honest/sections/we-change-our-minds-less-often-than-we-think.tex
+
+No change: No change: the rewrite gives the study, the claim, the window before one can guess, the bottom-line principle and the list of biases
