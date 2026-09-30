@@ -99,3 +99,28 @@ history), 6 random 8-instruction programs of INC'/DEC/NOP: 6/6 exact.
 value 0 := n = -1; DEC at 0 -> abnormal compound; a PROBE packet should
 restore gap 33.67 and emit a messenger (probe_search.py running, the
 only heavy job, per the lead's CPU request).
+
+~15:00 Zero state found by accident: DEC from gap 33.67 gives the close
+compound F_19_F, and it behaves like a legitimate value:
+  DEC,DEC,INC -> gap 33.67 again (exact D (-12,35)); DEC,DEC,INC,INC ->
+  gap 43 (D (0,43)); DEC,DEC,NOP -> compound unchanged; all 17 identity
+  movers pass the compound unchanged. Only DEC on the compound explodes.
+So: value 0 := compound F_19_F, value k >= 1 := gap 33.67 + 9.33(k-1).
+The register now has a distinguishable zero state; what is missing is a
+TEST packet: identity on separated pairs, messenger on the compound.
+probe_search.py (2 F's + messenger from the compound) found only E-based
+movers (which also react with normal F's); aborted the pure-Ebar run
+(many 'unsettled' because a stationary messenger with Ebar debris to
+its right never 'settles' - classifier bug, fixed in zc_search.py by
+recording products regardless). zc_search.py running (only heavy job).
+
+~16:00 zc_fast.py (fast: bare compound + one mover, same process builds
+the compound so auto-registered names agree; lesson: auto names like
+F_19_F#3 are process-dependent). 660 pure-Ebar movers vs compound: no
+clean TEST; outcomes listed on the board. Spec Z2 posted for synth with
+zero_state.json.
+~16:45 cpump.py: stationary C PAIRS crossing an F pair from the left DO
+wind (19 winding transitions over 95 pair movers, residues mod L_FE), so
+the upstream register can in principle be pumped from the control side.
+Caveat: stage() simulates T and P crossings separately (valid only for
+large gaps); used C's end up as stationary debris in the stream's path.

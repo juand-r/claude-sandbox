@@ -141,3 +141,13 @@ Missing control: spec Z (moving floor restored) -- TODO.
 - 04:30 endec: B-trains <= 32 cannot DEC E_n from the right (UNSAT); control B: E_n -> E_{n+1} SAT.
 - 04:35 NOTE: for FREE trains the class index k is not an anchor (the solver can shift the train inside its window), so per-k answers with free trains only mean 'some placement within the window'; class-specific claims need fixed items (all my class claims so far used fixed items). Control: fixed A crosses Ebar in exactly 4/6 classes via encross (A-from-left mode).
 - 04:40 invariants.py: Smith normal form of catalog reactions -> only slip mod 14 (Z_14), no integer laws.
+- 04:55 pgrep -f 'queue.sh|queue2.sh' matched my own shell and killed it (third time this pattern bites). Rule: never pgrep/pkill -f with a pattern that appears in the same command line; look up PIDs with ps in one command, kill by number in the next.
+- 05:20 zc.py (architect's Z-test): first control failed because the
+  messenger window used the item's WINDOW width instead of its glider
+  extent -> fixed; control (F + E@(0,0)+Ebar@(-1,23) -> F + C1_12_C2)
+  then SAT in exactly the right class. Also: my compound was collider's
+  library F_19_F, but architect's value-0 state is F_19_F#3 (different
+  compound) -> zc now loads architect/zero_state.json. specz.packet_item
+  used the first member's period for mixed packets (E + Ebar) -> fixed
+  (longest period, checked); earlier uses were pure E or pure Ebar pairs,
+  unaffected.

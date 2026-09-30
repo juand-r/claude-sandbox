@@ -89,6 +89,7 @@ READS_MARGIN = 3_000
 # symbol (measured 23-25 for 6 symbols in every run that matched the
 # reference); a rejected region keeps none. Any other count means the
 # region was disturbed rather than read, and is reported as '!'.
+TILE_PAD = 1_400                  # HashRun adds its own ether padding
 READS_LOOKAHEAD = 4        # a region must be watched before its read starts
 ACCEPT_CLUSTERS_PER_SYMBOL = 4
 ACCEPT_TOLERANCE = 2
@@ -106,14 +107,21 @@ def component_regions(tape, apps, right_periods):
             for a, b in zip(leaders, leaders[1:])]
 
 
-def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True):
+def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
+                  engine=None):
     """Observed outcome ('Y'/'N') of each of the first n_reads reads, '!'
     if the region settled in a state that is neither, or '.' if not
     completed by generation T. row_origin: optionally a prebuilt
     (row, origin) for a modified assembly with the same right side.
-    stream: use casim.StreamRun (exact, steps only the active window)."""
+    stream: use casim.StreamRun (exact, steps only the active window).
+    engine="hash": use hashlife.HashRun instead (an independent check)."""
     rp = n_reads // len(apps) + 3
-    if row_origin is not None:
+    if engine == "hash":
+        from hashlife import HashRun
+        run = HashRun(*padded_row(tape, apps, left_periods=T // (30 * v) + 3,
+                                  right_periods=rp, left_pad=TILE_PAD,
+                                  right_pad=TILE_PAD, v_override=v))
+    elif row_origin is not None:
         run = Run(*row_origin)
     elif stream:
         run = StreamRun(tape, apps, T // (30 * v) + 3, rp, v_override=v)

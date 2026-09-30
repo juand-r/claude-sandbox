@@ -207,6 +207,19 @@ class HashRun:
             if n >> j & 1:
                 self.advance(j)
 
+    def history(self, lo, hi, depth):
+        """Same contract as casim.Run.history."""
+        rows = [self.window(lo, hi)]
+        for _ in range(depth):
+            self.advance(0)
+            rows.append(self.window(lo, hi))
+        return np.array(rows)
+
+    def ebar_frame(self, t=None):
+        from casim import EBAR_VELOCITY
+        t = self.t if t is None else t
+        return self.origin + int(round(EBAR_VELOCITY * t))
+
     def window(self, lo, hi):
         sh = ETHER_SHIFT_PER_STEP * self.t
         out = np.array([int(ETHER[((self.cL if x < self.x0 else self.cR) + x + sh)

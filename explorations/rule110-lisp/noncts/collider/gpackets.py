@@ -1,5 +1,5 @@
 """Hard-gate search: A vs 2-object G-speed packets (G, GB1..GB5 pairs,
-gaps <= 40). Reports outcomes consisting only of G-speed objects."""
+gaps <= 30). Reports outcomes consisting only of G-speed objects."""
 import json
 from fractions import Fraction
 from library import Library
@@ -13,7 +13,7 @@ for a in parts:
     for b in parts:
         if (a, b) == ("G", "G"):
             continue
-        pk += enumerate_pairs(lib, a, b, 40)[0]
+        pk += enumerate_pairs(lib, a, b, 30)[0]
 pk = list(dict.fromkeys(pk))
 print(len(pk), "packets", flush=True)
 done = {(r["X"], r["Y"]) for r in json.load(open("collisions.json"))}

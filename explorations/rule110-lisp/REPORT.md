@@ -42,8 +42,9 @@ The main claims, in decreasing order of the strength of their evidence:
 5. **The first Collatz step runs on gliders.** De Mol's 3x+1 tag
    system from x = 3, compiled and assembled with Cook's blocks, reads
    83 of 83 CTS characters correctly through the step 3 -> 5 (section
-   3.6), at a third of Cook's ossifier spacing. Later reads fail at that
-   spacing; the full trajectory to 1 has not been run yet.
+   3.6), at a quarter and at half of Cook's ossifier spacing. Read 83
+   then fails at both spacings in the same way, so the cause is not the
+   spacing; it is not yet identified.
 6. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
@@ -55,7 +56,8 @@ The main claims, in decreasing order of the strength of their evidence:
    a one-appendant program, so the spacing is not set by the whole
    table, which is what Cook's formula scales with. But long runs of
    rejections need more: De Mol's program fails at 1/8 of Cook's value
-   and gets further at 1/4. What the needed spacing depends on is open.
+   during a 16-rejection run that it passes at 1/4. What the needed
+   spacing depends on is open.
 8. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
@@ -388,9 +390,8 @@ where appendant lengths differ a lot.
 *A second constraint: long rejection runs.* De Mol's 3x+1 program (12
 appendants, lengths 6 to 18, Cook's v = 12,216) at v = 1,600 read its
 first 29 reads correctly, including an 18-symbol accept, then broke
-during a run of 16 consecutive rejections. At v = 3,200 it reads 47 of 48
-correctly through that run; the 48th had not happened within the
-generation budget. So the spacing must also cover long runs of
+during a run of 16 consecutive rejections. At v = 3,200 it reads that
+run correctly (and 83 reads in all, section 3.6). So the spacing must also cover long runs of
 rejections, as the encoder's own caveat on Cook's formula warns. The
 mechanism is not identified (the moving-data queue does not run dry:
 it holds about 55 characters there). The small programs above have
@@ -418,7 +419,8 @@ check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
 |---|---|---|---|
 | 1,600 | 0-28 (29) | read 29-30, during 16 consecutive N reads | 2.1e6 |
 | 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads | 9.3e6 |
-| 6,400 | running | | |
+| 6,400 | 0-82 (83) | read 83 again, same signature (114 clusters) | 1.7e7 |
+| 12,216 (Cook) | running | | |
 
 (Cook's formula gives v = 12,216.)
 
@@ -426,15 +428,15 @@ check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
 first Collatz step, 3 -> 5: every one of the 83 reads up to and past
 read 72 was observed and matched the reference, including accepts of
 all three appendant lengths and of the junk words, and runs of up to 16
-rejections. Section 3.5's small programs understated the spacing
-needed; what exactly it depends on is not known (rejection-run length
-alone does not explain why the 16-N run passed at 3,200 but a later
-17-N run failed).
+rejections. The failure at v = 1,600 is a spacing failure (doubling v cures
+it). The failure at read 83 is not: doubling v from 3,200 to 6,400
+changes nothing, not even the malformed region's cluster count. So
+something else breaks at read 83, in the construction, in my assembly
+of it, or in my instruments. A run at Cook's own v decides whether the
+reduced spacing plays any part.
 
-*Scope.* One program, one input, spacing below Cook's value. The
-failures are consistent with the spacing being too small; whether
-Cook's own v runs to Collatz 1 is being checked with the largest v the
-machine can afford in hours.
+*Scope.* One program, one input. The claim is the 83 correct reads, not
+a working Collatz computer.
 
 ## 4. The cost of the tower
 

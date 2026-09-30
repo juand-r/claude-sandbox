@@ -428,3 +428,12 @@ running v = 6,400 to 560 reads.
 scholar finished (report on BOARD.md and noncts/scholar/NOTES.md; the
 harness would not let it create FINDINGS.md, and its findings F1-F20 are
 in its NOTES.md).
+
+v = 6,400: reads 0-82 correct again, read 83 malformed again with 114
+clusters (113 at 3,200). The read-83 failure is independent of spacing;
+my "accumulating drift" and "spacing too small" guesses for it are
+refuted. A HashLife-driven check (engine="hash", an independent engine)
+was too slow and memory-hungry (7 reads in 10 min, 3.2 GB: one-step
+census sampling defeats memoization) and was stopped. Running Cook's
+v = 12,216 to read 85 on StreamRun to see if the construction itself
+fails there.

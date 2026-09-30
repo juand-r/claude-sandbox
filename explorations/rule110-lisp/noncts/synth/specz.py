@@ -33,7 +33,13 @@ def packet_item(cnf, seeds, width, name):
         start += 1
     cells, pl2, pr2 = compose(sts, 0, start, start + width)
     assert pl2 == pl
-    per = G[seeds[0][0]].p, G[seeds[0][0]].d
+    # packet period: members share one velocity; take the longest member
+    # period (E (15,-4) divides Ebar (30,-8)); checked below by simulation
+    big = max((G[n] for n, _, _ in seeds), key=lambda g: g.p)
+    per = big.p, big.d
+    for n, _, _ in seeds:
+        if per[0] % G[n].p or per[1] * G[n].p != G[n].d * per[0]:
+            raise ValueError("packet members with incompatible periods")
     return Fixed(cnf, "".join(map(str, cells)), (pr2 + start) % TILE, per, name=name)
 
 

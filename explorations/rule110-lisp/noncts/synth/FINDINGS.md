@@ -129,3 +129,19 @@ matrix over Z is diag(1, ..., 1, 14) with full rank 22. So:
 Scope: laws that are linear in the counts of glider types. Laws involving
 positions/phases (e.g. architect's conjectured "phase potential" behind
 no-winding) are not excluded; this says such a law cannot be a count.
+
+## 11. More bounds (all UNSAT; exact scopes)
+
+- Spec Z with the spec-F packet EE (E@(0,0)+E@(-13,15)): no F-speed floor
+  O (free (36,-4)-train <= 20 wide, 14 slips x 6 classes, T2 = 450,
+  moving window) with EE + O -> O + stationary messenger(s) only.
+  Positive control: for collider's packet Ebar@(0,0)+Ebar@(-4,23) the same
+  code finds floors (slip 13) in 8 of 12 placements.
+- Transport through E_n: no free B-train <= 24 wide (14 slips) crosses
+  E_1, E_2 and E_3 with both surviving (any displacement), T2 = 400.
+- Pump: no free (30,-8)-packet <= 20 wide (14 slips x 4 classes) crosses
+  two C1 markers 51 cells apart, both markers and the packet surviving,
+  with the marker distance changed by a nonzero vector of
+  M = <(7,0),(30,-8)> (the condition for an identical later packet to
+  pump again). Control (single Ebar, no pump condition): SAT, distance
+  change (2,6) or (0,0) = architect's 1-bit register. D0 = 65: running.

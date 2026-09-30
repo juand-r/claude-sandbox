@@ -1,0 +1,660 @@
+{"i": 0, "mover": ["Ebar", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["F_17_F", 32, 129]]}
+{"i": 1, "mover": ["Ebar", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["A^4", 1, -338], ["A", 1, -219]]}
+{"i": 2, "mover": ["Ebar", -3, 53], "settled": true, "products": [["B", 3, 319], ["F", 29, 129]]}
+{"i": 3, "mover": ["Ebar", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["F_19_F#3", 15, 126]]}
+{"i": 4, "mover": ["Ebar", -7, 55], "settled": true, "products": [["Ebar", 21, 249], ["A", 1, -523], ["A_0_A_2_A_14_A", 0, -347]]}
+{"i": 5, "mover": ["Ebar", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 19, 259]]}
+{"i": 6, "mover": ["Ebar", -4, 57], "settled": true, "products": [["D1", 3, -99], ["A", 1, -323], ["A", 1, -247]]}
+{"i": 7, "mover": ["Ebar", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["F_14_F", 24, 127]]}
+{"i": 8, "mover": ["Ebar", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["F_15_F#2", 30, 131]]}
+{"i": 9, "mover": ["Ebar", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["A^5", 1, -689], ["A^2", 0, -252]]}
+{"i": 10, "mover": ["Ebar", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["F_14_F#2", 24, 127]]}
+{"i": 11, "mover": ["Ebar", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["F_12_F", 16, 125]]}
+{"i": 12, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["D1", 3, -36], ["A", 1, -288], ["A", 1, -226]]}
+{"i": 13, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -2, 49], "settled": true, "products": [["B^3", 3, 389], ["Ebar", 13, 207], ["Ebar", 19, 288], ["A", 2, -622]]}
+{"i": 14, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 20, 144]]}
+{"i": 15, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F_19_F#3", 2, 143]]}
+{"i": 16, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -7, 55], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 17, 205], ["F", 16, 176], ["C1", 4, 97], ["C2", 4, 120]]}
+{"i": 17, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 4, 235], ["Ebar", 1, 282]]}
+{"i": 18, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -4, 57], "settled": true, "products": [["F", 3, 113], ["C1", 0, 54], ["A_8_A", 1, -340], ["A_2_A_2_A_4_A_5_A_3_A", 0, -294]]}
+{"i": 19, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -15, 59], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["B^3", 2, 657], ["Ebar", 20, 233], ["F", 34, 270]]}
+{"i": 20, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_19_F#3", 34, 141]]}
+{"i": 21, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -5, 61], "settled": true, "products": [["Ebar", 24, 195], ["Ebar", 25, 268], ["C2_19_C2", 6, 32], ["A^4", 1, -311]]}
+{"i": 22, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_19_F#3", 30, 143]]}
+{"i": 23, "mover": ["Ebar@(0,0)+Ebar@(-1,25)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F_19_F#3", 23, 143]]}
+{"i": 24, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -1, 45], "settled": false, "products": [["B", 1, 383], ["GB5", 17, 232], ["B^2", 1, 1303], ["C2_18_C1", 3, 79]]}
+{"i": 25, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 5, 250], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 26, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B", 2, 429]]}
+{"i": 27, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 17, 230], ["A^4", 0, -453], ["A", 0, -334]]}
+{"i": 28, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -7, 55], "settled": true, "products": [["Ebar", 0, 235], ["C1", 6, 120]]}
+{"i": 29, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 17, 281], ["F", 34, 180], ["A", 1, -324]]}
+{"i": 30, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -4, 57], "settled": true, "products": [["Ebar", 28, 249], ["C1", 6, 36], ["A^2", 2, -549], ["A", 0, -470], ["A^4", 1, -395]]}
+{"i": 31, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["C1", 2, 108]]}
+{"i": 32, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 23, 234], ["A^4", 0, -481], ["A", 2, -356]]}
+{"i": 33, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B^3", 3, 439], ["C2", 3, -25], ["C2", 3, 20], ["A", 0, -502]]}
+{"i": 34, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 23, 234], ["A^4", 0, -481], ["A", 1, -352]]}
+{"i": 35, "mover": ["Ebar@(0,0)+Ebar@(-1,39)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 29, 238], ["A^4", 0, -509], ["A", 0, -376]]}
+{"i": 36, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["E_12_Ebar", 15, 225], ["C1", 1, 82], ["A", 0, -358], ["A^2", 2, -321], ["A^2", 0, -231]]}
+{"i": 37, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 26, 236], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 38, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 235], ["F", 8, 150]]}
+{"i": 39, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F", 22, 149], ["F", 19, 176]]}
+{"i": 40, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -7, 55], "settled": true, "products": [["B^3", 3, 361], ["Ebar", 17, 205], ["Ebar", 11, 278], ["A", 2, -244]]}
+{"i": 41, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 391], ["B^3", 0, 481], ["A^3", 1, -395], ["A", 0, -376]]}
+{"i": 42, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["C2_5_C2", 3, 94]]}
+{"i": 43, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -15, 59], "settled": true, "products": [["B^3", 1, 397], ["Bbar", 3, 445], ["Bbar", 5, 543], ["B^2", 3, 1053], ["A", 1, -1272], ["A", 1, -1210], ["A", 0, -752], ["A", 2, -726], ["A", 1, -310]]}
+{"i": 44, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F", 18, 151], ["F", 15, 178]]}
+{"i": 45, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -5, 61], "settled": true, "products": [["Bbar_3_B_9_B", 7, 392], ["B", 2, 459], ["A", 0, -578], ["A", 0, -446]]}
+{"i": 46, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F", 14, 153], ["F", 11, 180]]}
+{"i": 47, "mover": ["Ebar@(0,0)+Ebar@(-10,33)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F", 7, 153], ["F", 4, 180]]}
+{"i": 48, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["D1", 1, -14], ["A_8_A", 1, -192]]}
+{"i": 49, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 50, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 23, 146]]}
+{"i": 51, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 29, 210], ["A^4", 0, -369], ["A", 2, -216]]}
+{"i": 52, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["D1", 5, -72], ["A", 2, -334], ["A", 2, -272]]}
+{"i": 53, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 9, 244], ["C1", 1, 106], ["A", 0, -236]]}
+{"i": 54, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -4, 57], "settled": true, "products": [["B_2_B_4_B_2_B", 2, 354], ["A_8_A", 0, -342]]}
+{"i": 55, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["D1", 3, -36], ["A_8_A", 2, -252]]}
+{"i": 56, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 1, -240]]}
+{"i": 57, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -5, 61], "settled": true, "products": [["B_3_B_7_B", 1, 464], ["A", 0, -404]]}
+{"i": 58, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 0, -236]]}
+{"i": 59, "mover": ["Ebar@(0,0)+Ebar@(-11,23)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 2, -258]]}
+{"i": 60, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -1, 45], "settled": true, "products": [["B", 1, 369], ["G", 1, 237], ["F", 23, 65], ["C3", 0, 42]]}
+{"i": 61, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -2, 49], "settled": true, "products": [["B^3", 1, 369], ["E^2", 4, 216], ["F", 31, 150], ["A", 1, -240]]}
+{"i": 62, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 437], ["B^3", 2, 529], ["A^3", 0, -587], ["A", 2, -566]]}
+{"i": 63, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -14, 55], "settled": true, "products": [["B", 1, 397], ["GB3", 36, 234], ["C2_5_C2", 1, -132], ["A", 0, -1164], ["A", 2, -704], ["A_8_A", 1, -682]]}
+{"i": 64, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -7, 55], "settled": true, "products": [["F", 2, 145], ["C2", 2, 46], ["C2", 3, 101], ["C1", 1, 126]]}
+{"i": 65, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 26, 176]]}
+{"i": 66, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -4, 57], "settled": true, "products": [["F", 18, 137], ["C2", 5, 62], ["A", 0, -326], ["A", 1, -254]]}
+{"i": 67, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -15, 59], "settled": true, "products": [["B_2_B_18_B", 0, 430], ["B", 1, 575], ["G", 9, 313], ["Ebar", 29, 497], ["F", 18, -10], ["A^2", 0, -507], ["A^2", 2, -461], ["A^2", 0, -315]]}
+{"i": 68, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 234], ["F_15_F#2", 9, 152]]}
+{"i": 69, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 17, 679], ["F", 31, 100]]}
+{"i": 70, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -16, 63], "settled": true, "products": [["B", 3, 403], ["B_2_B_4_B_2_B", 0, 426], ["B", 2, 517], ["B_2_B_4_B_2_B", 3, 538], ["Ebar", 10, 247], ["E^2", 12, 387]]}
+{"i": 71, "mover": ["Ebar@(0,0)+Ebar@(-11,37)", -17, 67], "settled": true, "products": [["Ebar", 4, 219], ["C2", 3, -64], ["A", 0, -488]]}
+{"i": 72, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 5, 278], ["C1_9_C2", 5, 95], ["A^2", 0, -363], ["A", 0, -334]]}
+{"i": 73, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 3, 76], ["A", 2, -230]]}
+{"i": 74, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 409], ["A", 0, -432]]}
+{"i": 75, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F_17_F", 19, 146]]}
+{"i": 76, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -7, 55], "settled": true, "products": [["Ebar", 23, 227], ["C2", 5, 40], ["A", 0, -278]]}
+{"i": 77, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", 0, 55], "settled": true, "products": [["Ebar", 15, 217], ["C1", 2, 52]]}
+{"i": 78, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 478], ["A", 1, -352]]}
+{"i": 79, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -15, 59], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_14_F", 3, 148]]}
+{"i": 80, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_17_F", 15, 148]]}
+{"i": 81, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B^2", 0, 431], ["Ebar", 5, 253], ["Ebar", 17, 296], ["A", 2, -454]]}
+{"i": 82, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_17_F", 11, 150]]}
+{"i": 83, "mover": ["Ebar@(0,0)+Ebar@(-12,27)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F_17_F", 4, 150]]}
+{"i": 84, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -1, 45], "settled": false, "products": [["B", 1, 383], ["GB5", 17, 232], ["B^2", 3, 1323], ["C2_18_C1", 3, 79]]}
+{"i": 85, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -2, 49], "settled": true, "products": [["Ebar", 16, 283], ["C1", 6, 50]]}
+{"i": 86, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 16, 146]]}
+{"i": 87, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 2, 290], ["A", 0, -610], ["A^3", 0, -433], ["A", 2, -412]]}
+{"i": 88, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -7, 55], "settled": true, "products": [["B_1_B_13_Bbar", 3, 467], ["F", 33, 115], ["C2", 1, 18], ["A^4", 0, -579], ["A", 0, -264]]}
+{"i": 89, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 30, 174]]}
+{"i": 90, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -4, 57], "settled": true, "products": [["B^3", 0, 415], ["C2", 2, 55], ["C3", 6, 96], ["A", 1, -254]]}
+{"i": 91, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["Ebar", 7, 219], ["E", 9, 302], ["A", 0, -586]]}
+{"i": 92, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 252], ["A", 1, -572], ["A_0_A_2_A_14_A", 1, -456]]}
+{"i": 93, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 21, 119], ["C2", 0, 20], ["A", 2, -508], ["A_8_A", 0, -272]]}
+{"i": 94, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 23, 234], ["A", 0, -484], ["A_0_A_2_A_14_A", 0, -452]]}
+{"i": 95, "mover": ["Ebar@(0,0)+Ebar@(-12,41)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 29, 238], ["A", 0, -512], ["A^3", 0, -475], ["A", 2, -454]]}
+{"i": 96, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -1, 45], "settled": false, "products": [["B", 1, 355], ["GB5", 23, 222], ["B^2", 1, 1107], ["C2_18_C1", 1, 87]]}
+{"i": 97, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 23, 234], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 98, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B", 2, 401]]}
+{"i": 99, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 0, -278]]}
+{"i": 100, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -7, 55], "settled": true, "products": [["F", 2, 145], ["C2", 2, 46], ["C2_15_C1", 3, 101]]}
+{"i": 101, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", 0, 55], "settled": true, "products": [["B_2_B_18_B_2_B", 0, 348], ["C2_5_C2", 0, 86], ["A", 1, -268]]}
+{"i": 102, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -4, 57], "settled": true, "products": [["Bbar_3_B_9_B", 4, 390], ["Ebar", 22, 269], ["C2", 4, 96], ["A^2", 0, -383], ["A", 2, -278], ["A", 0, -250]]}
+{"i": 103, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["C1", 0, 116]]}
+{"i": 104, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 2, -300]]}
+{"i": 105, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -5, 61], "settled": true, "products": [["B_3_B_7_B", 1, 464], ["A", 0, -404]]}
+{"i": 106, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 1, -296]]}
+{"i": 107, "mover": ["Ebar@(0,0)+Ebar@(-13,31)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 17, 230], ["A^4", 0, -453], ["A", 0, -320]]}
+{"i": 108, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["D1", 1, -70], ["A", 1, -372], ["A", 1, -310]]}
+{"i": 109, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -2, 49], "settled": true, "products": [["B^3", 1, 411], ["Ebar", 13, 207], ["Ebar", 25, 320], ["A", 2, -706]]}
+{"i": 110, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 3, 245], ["F", 20, 144]]}
+{"i": 111, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 15, 224], ["F_19_F#3", 2, 143]]}
+{"i": 112, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -7, 55], "settled": true, "products": [["E^3", 5, 218], ["C1", 1, 126]]}
+{"i": 113, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 18, 180]]}
+{"i": 114, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -4, 57], "settled": true, "products": [["F", 2, 145], ["C2", 4, 66], ["A", 2, -334], ["A", 2, -258]]}
+{"i": 115, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -15, 59], "settled": true, "products": [["B", 3, 403], ["B_2_B_4_B_2_B", 0, 426], ["B", 0, 511], ["B_2_B_4_B_2_B", 1, 532], ["Ebar", 10, 247], ["Ebar", 16, 384], ["A", 2, -972]]}
+{"i": 116, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_19_F#3", 34, 141]]}
+{"i": 117, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -5, 61], "settled": true, "products": [["Ebar", 11, 247], ["Ebar", 8, 280], ["A", 0, -596], ["A^4", 1, -311]]}
+{"i": 118, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_19_F#3", 30, 143]]}
+{"i": 119, "mover": ["Ebar@(0,0)+Ebar@(-13,45)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 27, 232], ["F_19_F#3", 23, 143]]}
+{"i": 120, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -1, 45], "settled": true, "products": [["B", 1, 369], ["GB1", 4, 240], ["F", 4, 79], ["C2", 1, 104]]}
+{"i": 121, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -2, 49], "settled": true, "products": [["B^3", 1, 369], ["Ebar", 25, 215], ["Ebar", 13, 284], ["A", 1, -240]]}
+{"i": 122, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^3", 2, 415], ["C2_5_C2", 3, 32], ["A", 0, -460]]}
+{"i": 123, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -14, 55], "settled": true, "products": [["B^3", 1, 369], ["Ebar", 11, 201], ["Ebar", 20, 284], ["A", 0, -572]]}
+{"i": 124, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 2, -226]]}
+{"i": 125, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B^2", 1, 407], ["A^2", 0, -273]]}
+{"i": 126, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -4, 57], "settled": true, "products": [["F", 23, 117], ["C2", 1, 50], ["A", 0, -354], ["A", 2, -328]]}
+{"i": 127, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["Ebar", 7, 219], ["Ebar", 16, 260], ["F", 22, 147], ["C2", 6, 56]]}
+{"i": 128, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -12, 61], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 17, 205], ["Ebar", 26, 288], ["A", 0, -600]]}
+{"i": 129, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 11, 675], ["F", 16, 104]]}
+{"i": 130, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -16, 63], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 17, 205], ["Ebar", 26, 288], ["A", 0, -600]]}
+{"i": 131, "mover": ["Ebar@(0,0)+Ebar@(-14,35)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["D1", 1, -70], ["A^2", 0, -371]]}
+{"i": 132, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -1, 45], "settled": true, "products": [["B^2", 2, 401], ["Ebar_16_Ebar#2", 12, 91], ["Ebar", 1, 639], ["Ebar", 21, 930]]}
+{"i": 133, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 2, 248], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 134, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 3, 245], ["F", 8, 150]]}
+{"i": 135, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 21, 228], ["F_14_F", 11, 144]]}
+{"i": 136, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -7, 55], "settled": true, "products": [["B_1_B_13_Bbar", 2, 485], ["F", 32, 119], ["C2", 1, 18], ["A^4", 2, -601], ["A", 1, -282]]}
+{"i": 137, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 8, 248], ["F", 11, 180]]}
+{"i": 138, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -4, 57], "settled": true, "products": [["A^3", 2, -475], ["A", 1, -330], ["A", 1, -254]]}
+{"i": 139, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 29, 238], ["A^4", 0, -509], ["A", 1, -394]]}
+{"i": 140, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 27, 232], ["F_14_F", 7, 146]]}
+{"i": 141, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B^3", 2, 541], ["B_2_B_1_B_2_B_4_B", 3, 754], ["C1", 1, -33], ["C1", 1, 18], ["A^2", 1, -653], ["A", 2, -572], ["A", 0, -530]]}
+{"i": 142, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 27, 232], ["F_14_F", 3, 148]]}
+{"i": 143, "mover": ["Ebar@(0,0)+Ebar@(-14,49)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 3, 244], ["F_14_F", 32, 144]]}
+{"i": 144, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -1, 45], "settled": true, "products": [["B^3", 1, 327], ["Ebar", 5, 197], ["Ebar", 20, 256], ["A", 0, -432]]}
+{"i": 145, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 0, 74], ["A", 2, -230]]}
+{"i": 146, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 1, 150]]}
+{"i": 147, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -14, 55], "settled": true, "products": [["B^3", 3, 347], ["C2", 0, -245], ["C2", 0, 80]]}
+{"i": 148, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["C2", 6, 78], ["C2_5_C2", 0, 106]]}
+{"i": 149, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", 0, 55], "settled": true, "products": [["B", 1, 383], ["A^2", 2, -431], ["A_8_A", 1, -386], ["A_8_A", 1, -234]]}
+{"i": 150, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -4, 57], "settled": true, "products": [["B^3", 1, 397], ["E^2", 2, 238], ["F", 23, 168], ["A", 2, -272]]}
+{"i": 151, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -15, 59], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 17, 205], ["Ebar", 2, 272], ["A", 0, -488]]}
+{"i": 152, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -12, 61], "settled": true, "products": [["B", 1, 369], ["G", 37, 233], ["G", 7, 335], ["A^2", 2, -803], ["A_8_A", 0, -558], ["A", 0, -530]]}
+{"i": 153, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -5, 61], "settled": true, "products": [["Ebar", 28, 235], ["C2", 6, 8], ["A", 2, -398]]}
+{"i": 154, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-7,21)", 4, 191], ["F", 20, 143], ["F", 24, 170]]}
+{"i": 155, "mover": ["Ebar@(0,0)+Ebar@(-15,25)", -17, 67], "settled": true, "products": [["B", 1, 355], ["B_2_B_4_B_2_B", 2, 376], ["Ebar", 13, 223], ["E", 3, 284], ["A", 0, -362]]}
+{"i": 156, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -1, 45], "settled": true, "products": [["B", 1, 369], ["G", 1, 237], ["F", 23, 65], ["C3", 0, 42]]}
+{"i": 157, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -2, 49], "settled": true, "products": [["Ebar", 21, 277], ["C1", 2, 52]]}
+{"i": 158, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -3, 53], "settled": true, "products": [["B", 3, 319], ["G", 7, 297], ["A^2", 2, -463]]}
+{"i": 159, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["D1", 8, -112], ["A", 0, -382], ["A", 0, -306]]}
+{"i": 160, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -7, 55], "settled": true, "products": [["E^3", 5, 218], ["C1", 6, 120]]}
+{"i": 161, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 22, 178]]}
+{"i": 162, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 1, -254]]}
+{"i": 163, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["B", 0, 455], ["GB5", 26, 278], ["A^3", 0, -1601], ["A", 2, -1580], ["A", 2, -762]]}
+{"i": 164, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -12, 61], "settled": true, "products": [["B", 1, 397], ["G", 31, 243], ["Ebar", 3, 213], ["F", 14, 122], ["A", 2, -466], ["A", 2, -404], ["A", 2, -328]]}
+{"i": 165, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -5, 61], "settled": true, "products": [["F", 18, 137], ["C2", 3, 14], ["A_8_A", 0, -272]]}
+{"i": 166, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["D1", 1, -112], ["A", 1, -400], ["A", 1, -324]]}
+{"i": 167, "mover": ["Ebar@(0,0)+Ebar@(-15,39)", -17, 67], "settled": true, "products": [["B^3", 1, 397], ["Bbar_7_B", 3, 530], ["B^2", 1, 571], ["A", 1, -796], ["A", 1, -608], ["A_8_A", 0, -432], ["A", 0, -348]]}
+{"i": 168, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["E_12_Ebar", 9, 221], ["C1", 0, 86], ["A", 0, -330], ["A^2", 2, -293], ["A^2", 0, -203]]}
+{"i": 169, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 20, 232], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 170, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 3, 231], ["F", 8, 150]]}
+{"i": 171, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F", 22, 149], ["F", 19, 176]]}
+{"i": 172, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -7, 55], "settled": true, "products": [["B", 1, 327], ["G", 25, 225], ["G", 1, 317], ["F", 7, 181], ["C1", 3, 98], ["A", 2, -328]]}
+{"i": 173, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 377], ["B^3", 0, 467], ["A^3", 1, -367], ["A", 0, -348]]}
+{"i": 174, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -4, 57], "settled": true, "products": [["B", 3, 403], ["Ebar", 29, 225], ["F", 22, 136], ["A", 2, -448], ["A", 1, -382], ["A", 1, -348], ["A^3", 1, -297], ["A", 0, -264]]}
+{"i": 175, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -15, 59], "settled": true, "products": [["B^3", 1, 383], ["Ebar_16_Ebar", 16, 235], ["C2", 4, 5], ["D2", 9, -210], ["A", 2, -698], ["A", 1, -282]]}
+{"i": 176, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F", 18, 151], ["F", 15, 178]]}
+{"i": 177, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -5, 61], "settled": true, "products": [["B^2", 0, 423], ["A", 1, -556], ["v2/3s4w11", 0, -492], ["A", 0, -424], ["A", 0, -390]]}
+{"i": 178, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F", 14, 153], ["F", 11, 180]]}
+{"i": 179, "mover": ["Ebar@(0,0)+Ebar@(-16,29)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F_12_F", 24, 142]]}
+{"i": 180, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -1, 45], "settled": true, "products": [["B", 1, 383], ["GB1", 22, 238], ["Ebar", 8, 299], ["F", 19, 82], ["A^4", 2, -553]]}
+{"i": 181, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -2, 49], "settled": true, "products": [["B^3", 1, 411], ["Ebar", 13, 207], ["Ebar", 22, 318], ["A", 2, -706]]}
+{"i": 182, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 12, 148]]}
+{"i": 183, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -14, 55], "settled": true, "products": [["B^2", 2, 457], ["G", 12, 271], ["F", 26, 89], ["C2", 6, -70], ["A^5", 0, -748], ["A^2", 2, -309]]}
+{"i": 184, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 0, -246]]}
+{"i": 185, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 33, 176]]}
+{"i": 186, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -4, 57], "settled": true, "products": [["B_2_B_4_B_2_B", 2, 452], ["A", 2, -334], ["A", 2, -258]]}
+{"i": 187, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["Ebar", 7, 219], ["E", 3, 340], ["A", 0, -586]]}
+{"i": 188, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["D1", 0, -108], ["A^2", 1, -333]]}
+{"i": 189, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -5, 61], "settled": true, "products": [["B_1_B_4_B_15_Bbar", 11, 371], ["B^2", 2, 461], ["A^4", 1, -311]]}
+{"i": 190, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 27, 232], ["A_0_A_7_A", 0, -428], ["A^2", 0, -329]]}
+{"i": 191, "mover": ["Ebar@(0,0)+Ebar@(-16,43)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 5, 250], ["A_0_A_7_A", 2, -450], ["A^2", 2, -351]]}
+{"i": 192, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -1, 45], "settled": true, "products": [["B", 1, 355], ["G", 25, 225], ["F", 35, 73], ["C3", 4, 54]]}
+{"i": 193, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -2, 49], "settled": true, "products": [["B^3", 3, 361], ["E^2", 4, 216], ["F", 25, 146], ["A", 1, -240]]}
+{"i": 194, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 423], ["B^3", 2, 515], ["A^3", 0, -559], ["A", 2, -538]]}
+{"i": 195, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -14, 55], "settled": true, "products": [["B", 1, 383], ["GB3", 18, 236], ["C2_5_C2", 3, -112], ["A", 0, -1080], ["A", 2, -648], ["A_8_A", 1, -626]]}
+{"i": 196, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -7, 55], "settled": true, "products": [["Ebar_16_Ebar", 20, 181], ["A^4", 2, -405], ["A", 1, -240]]}
+{"i": 197, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 26, 176]]}
+{"i": 198, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 1, -296]]}
+{"i": 199, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -15, 59], "settled": true, "products": [["B_2_B_18_B", 0, 416], ["B", 1, 561], ["G", 33, 301], ["Ebar", 11, 485], ["F", 30, -2], ["A^2", 0, -479], ["A^2", 2, -433], ["A^2", 0, -287]]}
+{"i": 200, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 3, 230], ["F_15_F#2", 9, 152]]}
+{"i": 201, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 11, 675], ["F", 31, 100]]}
+{"i": 202, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -16, 63], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["B", 2, 503], ["B_2_B_4_B_2_B", 3, 524], ["Ebar", 10, 247], ["E^2", 0, 379]]}
+{"i": 203, "mover": ["Ebar@(0,0)+Ebar@(-17,33)", -17, 67], "settled": true, "products": [["Ebar", 4, 219], ["C2", 3, -36], ["A", 0, -460]]}
+{"i": 204, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 15, 224], ["F", 29, 149], ["F", 33, 176]]}
+{"i": 205, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 29, 238], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 206, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 3, 245], ["F", 23, 146]]}
+{"i": 207, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 15, 224], ["F_15_F#2", 17, 148]]}
+{"i": 208, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -7, 55], "settled": true, "products": [["Ebar", 12, 243], ["C1", 6, 120]]}
+{"i": 209, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B^2", 2, 445], ["A", 1, -414], ["A", 1, -352]]}
+{"i": 210, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -4, 57], "settled": true, "products": [["F", 30, 145], ["C2", 3, 70], ["A", 1, -330], ["A", 1, -254]]}
+{"i": 211, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -15, 59], "settled": true, "products": [["B", 3, 403], ["B_2_B_4_B_2_B", 0, 426], ["B", 2, 489], ["B_2_B_4_B_2_B", 3, 510], ["Ebar", 10, 247], ["E^2", 6, 369]]}
+{"i": 212, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_15_F#2", 13, 150]]}
+{"i": 213, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["C1", 5, 0], ["A", 2, -572], ["A", 0, -530]]}
+{"i": 214, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_15_F#2", 9, 152]]}
+{"i": 215, "mover": ["Ebar@(0,0)+Ebar@(-17,47)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 27, 232], ["F", 7, 153], ["F", 15, 178]]}
+{"i": 216, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -1, 45], "settled": false, "products": [["B", 1, 369], ["GB5", 41, 220], ["B^2", 3, 1225], ["C2_18_C1", 2, 83]]}
+{"i": 217, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -2, 49], "settled": true, "products": [["Ebar", 18, 275], ["C1", 6, 50]]}
+{"i": 218, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 16, 146]]}
+{"i": 219, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 26, 278], ["A", 0, -582], ["A^3", 0, -405], ["A", 2, -384]]}
+{"i": 220, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -7, 55], "settled": true, "products": [["Ebar_14_Ebar", 13, 188], ["Ebar", 29, 273], ["C2", 1, 70], ["A", 0, -320]]}
+{"i": 221, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 30, 174]]}
+{"i": 222, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 1, -254]]}
+{"i": 223, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["Ebar", 7, 219], ["E", 1, 278], ["A", 1, -562]]}
+{"i": 224, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 248], ["A", 1, -544], ["A^3", 2, -427], ["A", 1, -408]]}
+{"i": 225, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -5, 61], "settled": true, "products": [["A_2_A_14_A", 1, -752], ["A_8_A", 0, -272]]}
+{"i": 226, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 17, 230], ["A", 0, -456], ["A_0_A_2_A_14_A", 0, -424]]}
+{"i": 227, "mover": ["Ebar@(0,0)+Ebar@(-18,37)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 23, 234], ["A", 0, -484], ["A^3", 0, -447], ["A", 2, -426]]}
+{"i": 228, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -1, 45], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 22, 175], ["F", 7, 153], ["F", 26, 176]]}
+{"i": 229, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 17, 230], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 230, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B", 2, 387]]}
+{"i": 231, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 29, 210], ["A^4", 0, -369], ["A", 0, -250]]}
+{"i": 232, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["C2", 6, 92], ["A", 2, -244]]}
+{"i": 233, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["C2_4_C3", 6, 101]]}
+{"i": 234, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -4, 57], "settled": true, "products": [["Bbar", 8, 443], ["F", 20, 137], ["C1", 0, 62], ["A_8_A", 2, -266]]}
+{"i": 235, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["C1", 6, 120]]}
+{"i": 236, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 2, -272]]}
+{"i": 237, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -5, 61], "settled": true, "products": [["B_2_B_4_B_2_B_1_B_10_Bbar", 8, 372], ["A^3", 2, -469], ["A", 0, -390]]}
+{"i": 238, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 1, -268]]}
+{"i": 239, "mover": ["Ebar@(0,0)+Ebar@(-19,27)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 0, -292]]}
+{"i": 240, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["D1", 5, -58], ["A", 1, -344], ["A", 1, -282]]}
+{"i": 241, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -2, 49], "settled": true, "products": [["B^3", 3, 403], ["Ebar", 13, 207], ["Ebar", 13, 312], ["A", 2, -678]]}
+{"i": 242, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 20, 144]]}
+{"i": 243, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F_19_F#3", 2, 143]]}
+{"i": 244, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -7, 55], "settled": true, "products": [["B_1_B_13_Bbar", 8, 461], ["F", 26, 115], ["C2", 1, 18], ["A^4", 2, -573], ["A", 2, -258]]}
+{"i": 245, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 18, 180]]}
+{"i": 246, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -4, 57], "settled": true, "products": [["B^2", 2, 415], ["E^2", 9, 258], ["C1", 1, 106], ["A", 2, -258]]}
+{"i": 247, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["B", 0, 497], ["B_2_B_4_B_2_B", 1, 518], ["Ebar", 10, 247], ["Ebar", 4, 376], ["A", 2, -916]]}
+{"i": 248, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_19_F#3", 34, 141]]}
+{"i": 249, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -5, 61], "settled": true, "products": [["E", 7, 249], ["F", 35, 158], ["A^4", 1, -311]]}
+{"i": 250, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_19_F#3", 30, 143]]}
+{"i": 251, "mover": ["Ebar@(0,0)+Ebar@(-19,41)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F_19_F#3", 23, 143]]}
+{"i": 252, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -1, 45], "settled": true, "products": [["B^2", 2, 359], ["Ebar_16_Ebar#2", 6, 143], ["Ebar", 13, 451], ["Ebar", 27, 626]]}
+{"i": 253, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 14, 228], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 254, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 8, 150]]}
+{"i": 255, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F_14_F", 11, 144]]}
+{"i": 256, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["Ebar@(0,0)+Ebar@(-1,25)", 19, 236], ["C1", 2, 122]]}
+{"i": 257, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 11, 180]]}
+{"i": 258, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 0, -250]]}
+{"i": 259, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 1, -310]]}
+{"i": 260, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_14_F", 7, 146]]}
+{"i": 261, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["C1", 5, 0], ["A", 2, -572], ["A", 0, -474]]}
+{"i": 262, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_14_F", 3, 148]]}
+{"i": 263, "mover": ["Ebar@(0,0)+Ebar@(-2,29)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F_14_F", 32, 144]]}
+{"i": 264, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -1, 45], "settled": true, "products": [["B", 1, 397], ["GB1", 40, 236], ["F", 16, 59], ["C2", 3, 96]]}
+{"i": 265, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -2, 49], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 25, 215], ["Ebar", 7, 308], ["A", 1, -240]]}
+{"i": 266, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^3", 2, 443], ["C2_5_C2", 5, 24], ["A", 0, -516]]}
+{"i": 267, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -14, 55], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 11, 201], ["Ebar", 14, 308], ["A", 0, -684]]}
+{"i": 268, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 2, -254]]}
+{"i": 269, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["G", 30, 297], ["A", 2, -354], ["A^2", 0, -329]]}
+{"i": 270, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -4, 57], "settled": true, "products": [["B_2_B_4_B_2_B", 0, 446], ["A^2", 1, -459]]}
+{"i": 271, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -15, 59], "settled": true, "products": [["B", 3, 403], ["B_2_B_4_B_2_B", 0, 426], ["B", 2, 517], ["B_2_B_4_B_2_B", 3, 538], ["Ebar", 10, 247], ["E^2", 12, 387]]}
+{"i": 272, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -12, 61], "settled": true, "products": [["B^3", 1, 411], ["Ebar", 17, 205], ["Ebar", 20, 312], ["A", 0, -712]]}
+{"i": 273, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 23, 683], ["F", 16, 104]]}
+{"i": 274, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -16, 63], "settled": true, "products": [["B^3", 1, 411], ["Ebar", 17, 205], ["Ebar", 20, 312], ["A", 0, -712]]}
+{"i": 275, "mover": ["Ebar@(0,0)+Ebar@(-2,43)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["D1", 3, -92], ["A^2", 0, -427]]}
+{"i": 276, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -1, 45], "settled": true, "products": [["B", 1, 355], ["GB1", 28, 228], ["F", 16, 87], ["C2", 0, 108]]}
+{"i": 277, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -2, 49], "settled": true, "products": [["B^3", 3, 361], ["Ebar", 25, 215], ["Ebar", 1, 276], ["A", 1, -240]]}
+{"i": 278, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^3", 2, 401], ["C2_5_C2", 2, 36], ["A", 0, -432]]}
+{"i": 279, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -14, 55], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 11, 201], ["Ebar", 8, 276], ["A", 0, -516]]}
+{"i": 280, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -7, 55], "settled": false, "products": [["B", 1, 355], ["GB5", 17, 232], ["B^2", 0, 999], ["C2_18_C1", 2, 97]]}
+{"i": 281, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["G", 6, 281], ["A", 2, -354], ["A^2", 0, -245]]}
+{"i": 282, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["C2_5_C2", 1, 102]]}
+{"i": 283, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -15, 59], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["Bbar", 6, 1023], ["F", 30, 151], ["C1", 1, -84]]}
+{"i": 284, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -12, 61], "settled": true, "products": [["B^3", 1, 369], ["Ebar", 17, 205], ["Ebar", 14, 280], ["A", 0, -544]]}
+{"i": 285, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 5, 671], ["F", 16, 104]]}
+{"i": 286, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -16, 63], "settled": true, "products": [["B^3", 1, 369], ["Ebar", 17, 205], ["Ebar", 14, 280], ["A", 0, -544]]}
+{"i": 287, "mover": ["Ebar@(0,0)+Ebar@(-20,31)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["D1", 5, -58], ["A^2", 0, -343]]}
+{"i": 288, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -1, 45], "settled": true, "products": [["B^2", 2, 387], ["Ebar_16_Ebar#2", 0, 111], ["Ebar", 25, 571], ["Ebar", 3, 834]]}
+{"i": 289, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 26, 236], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 290, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 8, 150]]}
+{"i": 291, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 15, 224], ["F_14_F", 11, 144]]}
+{"i": 292, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -7, 55], "settled": true, "products": [["F", 15, 149], ["C2", 2, 46], ["C2_16_C1", 2, 108]]}
+{"i": 293, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 11, 180]]}
+{"i": 294, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -4, 57], "settled": true, "products": [["B_2_B_9_B_5_B", 3, 448], ["A", 1, -330], ["A", 1, -254]]}
+{"i": 295, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 23, 234], ["A^4", 0, -481], ["A", 1, -366]]}
+{"i": 296, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_14_F", 7, 146]]}
+{"i": 297, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Bbar", 3, 541], ["F", 27, 89], ["F", 11, 140], ["A", 1, -596], ["A", 0, -516]]}
+{"i": 298, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["F_14_F", 3, 148]]}
+{"i": 299, "mover": ["Ebar@(0,0)+Ebar@(-20,45)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 27, 232], ["F_14_F", 32, 144]]}
+{"i": 300, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -1, 45], "settled": true, "products": [["B", 1, 355], ["G", 25, 225], ["F", 35, 73], ["C3", 4, 54]]}
+{"i": 301, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -2, 49], "settled": true, "products": [["Ebar", 23, 269], ["C1", 2, 52]]}
+{"i": 302, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -3, 53], "settled": true, "products": [["B", 3, 319], ["G", 13, 287], ["A^2", 2, -435]]}
+{"i": 303, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["D1", 2, -102], ["A", 0, -354], ["A", 0, -278]]}
+{"i": 304, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 1, -222]]}
+{"i": 305, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 22, 178]]}
+{"i": 306, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["B", 2, 445], ["A", 2, -306], ["A", 0, -278]]}
+{"i": 307, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["B", 0, 441], ["GB5", 8, 280], ["A^3", 0, -1461], ["A", 2, -1440], ["A", 2, -706]]}
+{"i": 308, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -12, 61], "settled": true, "products": [["B", 1, 383], ["G", 13, 245], ["Ebar", 24, 255], ["F", 11, 120], ["A", 2, -438], ["A", 2, -376], ["A", 2, -300]]}
+{"i": 309, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -5, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-4,23)", 28, 221], ["A", 1, -558], ["A", 0, -492], ["A", 0, -402], ["A_8_A", 0, -272]]}
+{"i": 310, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["D1", 5, -100], ["A", 1, -372], ["A", 1, -296]]}
+{"i": 311, "mover": ["Ebar@(0,0)+Ebar@(-21,35)", -17, 67], "settled": true, "products": [["B^3", 1, 383], ["Bbar", 3, 431], ["B^3", 0, 531], ["C2_5_C2", 0, -44], ["A", 1, -790], ["A_8_A", 0, -404], ["A", 0, -320]]}
+{"i": 312, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -1, 45], "settled": true, "products": [["B", 1, 369], ["GB1", 4, 240], ["Ebar", 2, 295], ["F", 31, 90], ["A^4", 2, -525]]}
+{"i": 313, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -2, 49], "settled": true, "products": [["B^3", 3, 403], ["Ebar", 13, 207], ["Ebar", 10, 310], ["A", 2, -678]]}
+{"i": 314, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 12, 148]]}
+{"i": 315, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -14, 55], "settled": true, "products": [["B^2", 2, 443], ["G", 36, 259], ["F", 26, 89], ["C2", 2, -54], ["A^5", 0, -720], ["A^2", 2, -281]]}
+{"i": 316, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -7, 55], "settled": true, "products": [["F", 15, 149], ["C2", 2, 46], ["C2_6_C1", 4, 106]]}
+{"i": 317, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 33, 176]]}
+{"i": 318, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -4, 57], "settled": true, "products": [["Ebar", 24, 237], ["F", 11, 144], ["A_2_A_19_A", 2, -430], ["A", 2, -298], ["A_14_A", 2, -273]]}
+{"i": 319, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["Ebar", 7, 219], ["E^6", 10, 263], ["A^3", 1, -939], ["A", 0, -920], ["A_19_A", 1, -577]]}
+{"i": 320, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["D1", 4, -96], ["A^2", 1, -305]]}
+{"i": 321, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -5, 61], "settled": true, "products": [["C3", 2, 43], ["C1", 2, 70], ["A^4", 1, -311]]}
+{"i": 322, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 21, 228], ["A_0_A_7_A", 0, -400], ["A^2", 0, -301]]}
+{"i": 323, "mover": ["Ebar@(0,0)+Ebar@(-22,39)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 29, 238], ["A_0_A_7_A", 2, -422], ["A^2", 2, -323]]}
+{"i": 324, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 9, 220], ["F_14_F#2", 18, 144]]}
+{"i": 325, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 23, 234], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 326, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 23, 146]]}
+{"i": 327, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F_15_F#2", 17, 148]]}
+{"i": 328, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 2, -240]]}
+{"i": 329, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 405], ["A", 1, -324]]}
+{"i": 330, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -4, 57], "settled": true, "products": [["F", 18, 137], ["C2", 5, 62], ["A", 0, -326], ["A", 1, -254]]}
+{"i": 331, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["B", 2, 475], ["B_2_B_4_B_2_B", 3, 496], ["Ebar", 10, 247], ["E^2", 9, 357]]}
+{"i": 332, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_15_F#2", 13, 150]]}
+{"i": 333, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["E", 13, 233], ["D1", 0, -186], ["A", 0, -516]]}
+{"i": 334, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_15_F#2", 9, 152]]}
+{"i": 335, "mover": ["Ebar@(0,0)+Ebar@(-23,43)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F", 7, 153], ["F", 15, 178]]}
+{"i": 336, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -1, 45], "settled": false, "products": [["B", 1, 355], ["GB5", 23, 222], ["B^2", 3, 1127], ["C2_18_C1", 1, 87]]}
+{"i": 337, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -2, 49], "settled": true, "products": [["Ebar", 20, 267], ["C1", 6, 50]]}
+{"i": 338, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 16, 146]]}
+{"i": 339, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 20, 274], ["A", 0, -554], ["A^3", 0, -377], ["A", 2, -356]]}
+{"i": 340, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -7, 55], "settled": true, "products": [["Ebar_16_Ebar", 20, 181], ["A^4", 2, -405], ["A", 0, -236]]}
+{"i": 341, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 30, 174]]}
+{"i": 342, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -4, 57], "settled": true, "products": [["C2", 5, 47], ["C3", 5, 76], ["A", 2, -310], ["A^4", 2, -273]]}
+{"i": 343, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -15, 59], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["Ebar", 7, 219], ["D1", 3, -136]]}
+{"i": 344, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 3, 244], ["A", 1, -516], ["A^3", 2, -399], ["A", 1, -380]]}
+{"i": 345, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -5, 61], "settled": true, "products": [["B_1_B_4_B_15_Bbar", 11, 371], ["F", 0, 115], ["C1", 1, 54], ["A^3", 1, -387], ["A_8_A", 0, -272]]}
+{"i": 346, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 11, 226], ["A", 0, -428], ["A^3", 1, -395], ["A", 0, -376]]}
+{"i": 347, "mover": ["Ebar@(0,0)+Ebar@(-24,33)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 17, 230], ["A", 0, -456], ["A^3", 0, -419], ["A", 2, -398]]}
+{"i": 348, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["D1", 9, -46], ["A", 1, -316], ["A", 1, -254]]}
+{"i": 349, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -2, 49], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 13, 207], ["Ebar", 1, 304], ["A", 2, -650]]}
+{"i": 350, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 20, 144]]}
+{"i": 351, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F_19_F#3", 2, 143]]}
+{"i": 352, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -7, 55], "settled": true, "products": [["Ebar", 16, 227], ["C1", 1, 126]]}
+{"i": 353, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 18, 180]]}
+{"i": 354, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -4, 57], "settled": true, "products": [["Ebar", 12, 243], ["D1", 1, -140], ["A", 1, -358], ["A", 2, -328]]}
+{"i": 355, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["B", 0, 483], ["B_2_B_4_B_2_B", 1, 504], ["Ebar", 10, 247], ["Ebar", 22, 360], ["A", 2, -860]]}
+{"i": 356, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_19_F#3", 34, 141]]}
+{"i": 357, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -5, 61], "settled": true, "products": [["B_1_B_2_B_4_B_12_B", 0, 367], ["G", 30, 279], ["A_14_A", 0, -373], ["A^4", 1, -311]]}
+{"i": 358, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_19_F#3", 30, 143]]}
+{"i": 359, "mover": ["Ebar@(0,0)+Ebar@(-25,37)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F_19_F#3", 23, 143]]}
+{"i": 360, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -1, 45], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-13,31)", 22, 175], ["F_16_F", 24, 146]]}
+{"i": 361, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -2, 49], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 25, 215], ["Ebar", 19, 260], ["A", 1, -240]]}
+{"i": 362, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^3", 2, 387], ["C2_5_C2", 1, 40], ["A", 0, -404]]}
+{"i": 363, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -14, 55], "settled": true, "products": [["B^3", 1, 341], ["Ebar", 11, 201], ["Ebar", 26, 260], ["A", 0, -460]]}
+{"i": 364, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -7, 55], "settled": true, "products": [["C1_10_C1", 5, 42], ["A", 1, -358], ["A", 0, -292]]}
+{"i": 365, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", 0, 55], "settled": true, "products": [["B^2", 1, 349]]}
+{"i": 366, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 450], ["A", 2, -244]]}
+{"i": 367, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 2, 276], ["Ebar", 16, 339], ["C1", 5, 54]]}
+{"i": 368, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -12, 61], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 17, 205], ["Ebar", 2, 272], ["A", 0, -488]]}
+{"i": 369, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 29, 659], ["F", 16, 104]]}
+{"i": 370, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -16, 63], "settled": true, "products": [["B^3", 1, 355], ["Ebar", 17, 205], ["Ebar", 2, 272], ["A", 0, -488]]}
+{"i": 371, "mover": ["Ebar@(0,0)+Ebar@(-26,27)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["D1", 9, -46], ["A^2", 0, -315]]}
+{"i": 372, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -1, 45], "settled": true, "products": [["B^2", 2, 373], ["Ebar_16_Ebar#2", 18, 123], ["Ebar", 19, 511], ["Ebar", 15, 730]]}
+{"i": 373, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 20, 232], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 374, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 8, 150]]}
+{"i": 375, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F_14_F", 11, 144]]}
+{"i": 376, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -7, 55], "settled": true, "products": [["B_2_B_14_B", 0, 412], ["A", 1, -254]]}
+{"i": 377, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 11, 236], ["F", 11, 180]]}
+{"i": 378, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -4, 57], "settled": true, "products": [["F", 11, 137], ["C1", 0, 54], ["A", 1, -254]]}
+{"i": 379, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 17, 230], ["A^4", 0, -453], ["A", 1, -338]]}
+{"i": 380, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_14_F", 7, 146]]}
+{"i": 381, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["C1", 5, 0], ["C1", 1, 25], ["D1", 1, -134], ["A", 0, -502]]}
+{"i": 382, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_14_F", 3, 148]]}
+{"i": 383, "mover": ["Ebar@(0,0)+Ebar@(-26,41)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F_14_F", 32, 144]]}
+{"i": 384, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -1, 45], "settled": true, "products": [["B^2", 0, 381], ["G", 0, 249], ["C2", 4, -7], ["D1", 7, -86], ["A_8_A", 1, -366], ["A", 1, -282]]}
+{"i": 385, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 4, 86], ["A", 2, -230]]}
+{"i": 386, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 233], ["F", 1, 150]]}
+{"i": 387, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F", 22, 149], ["F", 26, 176]]}
+{"i": 388, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -7, 55], "settled": true, "products": [["F", 24, 127], ["C1", 0, 40], ["A", 2, -286]]}
+{"i": 389, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 22, 247], ["Ebar", 3, 288]]}
+{"i": 390, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -4, 57], "settled": true, "products": [["F", 12, 147], ["C2", 2, 60], ["A_8_A", 1, -318]]}
+{"i": 391, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -15, 59], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 17, 205], ["Ebar", 8, 304], ["A", 0, -656]]}
+{"i": 392, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F", 18, 151], ["F", 22, 178]]}
+{"i": 393, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["v-8/30s0w24", 20, 228], ["A", 0, -658], ["A^4", 2, -573], ["A", 2, -510]]}
+{"i": 394, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F", 14, 153], ["F", 18, 180]]}
+{"i": 395, "mover": ["Ebar@(0,0)+Ebar@(-27,45)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F", 7, 153], ["F", 11, 180]]}
+{"i": 396, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -1, 45], "settled": true, "products": [["B", 1, 355], ["GB1", 28, 228], ["Ebar", 26, 283], ["F", 7, 102], ["A^4", 2, -497]]}
+{"i": 397, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -2, 49], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 13, 207], ["Ebar", 28, 294], ["A", 2, -650]]}
+{"i": 398, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 12, 148]]}
+{"i": 399, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -14, 55], "settled": true, "products": [["B^2", 2, 429], ["G", 18, 261], ["F", 26, 89], ["C2", 5, -38], ["A^5", 0, -692], ["A^2", 2, -253]]}
+{"i": 400, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -7, 55], "settled": true, "products": [["Bbar_7_B", 7, 406], ["B^2", 1, 449], ["A", 2, -516], ["A", 2, -272]]}
+{"i": 401, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 33, 176]]}
+{"i": 402, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 1, -282]]}
+{"i": 403, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -15, 59], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["v-2/4s8w35", 1, 489], ["E", 4, 251], ["Ebar", 11, 326]]}
+{"i": 404, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["D1", 8, -84], ["A^2", 1, -277]]}
+{"i": 405, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -5, 61], "settled": true, "products": [["B_2_B_4_B_2_B", 3, 364], ["v2/3s4w4", 2, -384], ["A", 0, -358], ["A^4", 1, -311]]}
+{"i": 406, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["A_0_A_7_A", 0, -372], ["A^2", 0, -273]]}
+{"i": 407, "mover": ["Ebar@(0,0)+Ebar@(-28,35)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 23, 234], ["A_0_A_7_A", 2, -394], ["A^2", 2, -295]]}
+{"i": 408, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 3, 216], ["F_14_F#2", 18, 144]]}
+{"i": 409, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 17, 230], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 410, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 23, 146]]}
+{"i": 411, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F_15_F#2", 17, 148]]}
+{"i": 412, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -7, 55], "settled": true, "products": [["B_3_B_7_B", 2, 488], ["A", 2, -286]]}
+{"i": 413, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 391], ["A", 1, -296]]}
+{"i": 414, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -4, 57], "settled": true, "products": [["Bbar", 8, 443], ["F", 20, 137], ["C1", 0, 62], ["A_14_A", 0, -265]]}
+{"i": 415, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -15, 59], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["B", 2, 461], ["B_2_B_4_B_2_B", 3, 482], ["Ebar", 10, 247], ["E^2", 12, 345]]}
+{"i": 416, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_15_F#2", 13, 150]]}
+{"i": 417, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B^3", 3, 439], ["C2", 3, -25], ["C2", 3, 20], ["A", 0, -502]]}
+{"i": 418, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_15_F#2", 9, 152]]}
+{"i": 419, "mover": ["Ebar@(0,0)+Ebar@(-29,39)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F", 7, 153], ["F", 15, 178]]}
+{"i": 420, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -1, 45], "settled": true, "products": [["B^2", 0, 367], ["G", 24, 237], ["C2", 0, 9], ["D1", 1, -76], ["A_8_A", 1, -338], ["A", 1, -254]]}
+{"i": 421, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 5, 82], ["A", 2, -230]]}
+{"i": 422, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 21, 229], ["F", 1, 150]]}
+{"i": 423, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F", 22, 149], ["F", 26, 176]]}
+{"i": 424, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -7, 55], "settled": true, "products": [["B_2_B_14_B", 1, 408], ["A", 0, -250]]}
+{"i": 425, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 16, 243], ["Ebar", 3, 288]]}
+{"i": 426, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["C3_11_C1", 6, 93]]}
+{"i": 427, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -15, 59], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 17, 205], ["Ebar", 26, 288], ["A", 0, -600]]}
+{"i": 428, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F", 18, 151], ["F", 22, 178]]}
+{"i": 429, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B", 0, 479], ["Ebar", 4, 277], ["F", 21, 120], ["A", 2, -496]]}
+{"i": 430, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F", 14, 153], ["F", 18, 180]]}
+{"i": 431, "mover": ["Ebar@(0,0)+Ebar@(-3,33)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F", 7, 153], ["F", 11, 180]]}
+{"i": 432, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -1, 45], "settled": true, "products": [["B", 1, 327], ["B_2_B_4_B_2_B", 2, 460], ["A", 0, -542], ["A_8_A", 2, -196]]}
+{"i": 433, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -2, 49], "settled": true, "products": [["B^3", 3, 389], ["Ebar", 13, 207], ["Ebar", 16, 286], ["A", 2, -622]]}
+{"i": 434, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 12, 148]]}
+{"i": 435, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -14, 55], "settled": true, "products": [["B^2", 2, 415], ["G", 0, 263], ["F", 26, 89], ["C2", 1, -22], ["A^5", 0, -664], ["A^2", 2, -225]]}
+{"i": 436, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["C1_18_C3_16_C2", 5, 82]]}
+{"i": 437, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", 0, 55], "settled": true, "products": [["B^2", 1, 349]]}
+{"i": 438, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -4, 57], "settled": true, "products": [["C2", 5, 47], ["C2_5_C2_7_C3", 0, 73], ["A^4", 0, -279]]}
+{"i": 439, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["C3_4_C1_10_C2", 6, 62]]}
+{"i": 440, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["D1", 2, -74], ["A^2", 1, -249]]}
+{"i": 441, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -5, 61], "settled": true, "products": [["B_1_B_4_B_15_Bbar", 11, 371], ["Bbar", 2, 457], ["Ebar_14_Ebar#2", 12, 255], ["A", 2, -606], ["A_14_A", 0, -349]]}
+{"i": 442, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["A_0_A_7_A", 0, -344], ["A^2", 0, -245]]}
+{"i": 443, "mover": ["Ebar@(0,0)+Ebar@(-4,23)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 17, 230], ["A_0_A_7_A", 2, -366], ["A^2", 2, -267]]}
+{"i": 444, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["E_12_Ebar", 21, 229], ["C1", 2, 78], ["A", 0, -386], ["A^2", 2, -349], ["A^2", 0, -259]]}
+{"i": 445, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 2, 248], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 446, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 239], ["F", 8, 150]]}
+{"i": 447, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F", 22, 149], ["F", 19, 176]]}
+{"i": 448, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -7, 55], "settled": true, "products": [["F", 2, 131], ["C1", 0, 40], ["A", 1, -296]]}
+{"i": 449, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 405], ["B^3", 0, 495], ["A_0_A_2_A_14_A", 0, -424]]}
+{"i": 450, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -4, 57], "settled": true, "products": [["F", 9, 131], ["C2", 2, 60], ["A^2", 0, -357]]}
+{"i": 451, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -15, 59], "settled": true, "products": [["B^3", 1, 411], ["Ebar", 16, 265], ["C1", 4, -44], ["A", 2, -858], ["A", 2, -768], ["A", 1, -338]]}
+{"i": 452, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F", 18, 151], ["F", 15, 178]]}
+{"i": 453, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["C1", 5, 0], ["A", 2, -572], ["A", 0, -474]]}
+{"i": 454, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F", 14, 153], ["F", 11, 180]]}
+{"i": 455, "mover": ["Ebar@(0,0)+Ebar@(-4,37)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F", 7, 153], ["F", 4, 180]]}
+{"i": 456, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -1, 45], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-25,37)", 22, 175], ["F_14_F#2", 18, 144]]}
+{"i": 457, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 11, 226], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 458, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 23, 146]]}
+{"i": 459, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F_15_F#2", 17, 148]]}
+{"i": 460, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -7, 55], "settled": true, "products": [["Bbar_0_B_5_B_21_B", 0, 415], ["A", 1, -526], ["A", 1, -282]]}
+{"i": 461, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 377], ["A", 1, -268]]}
+{"i": 462, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -4, 57], "settled": true, "products": [["Ebar", 26, 201], ["Ebar", 21, 256], ["Ebar", 13, 295], ["C2", 5, 68], ["A", 2, -426]]}
+{"i": 463, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -15, 59], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["B", 2, 447], ["B_2_B_4_B_2_B", 3, 468], ["Ebar", 10, 247], ["E^2", 0, 337]]}
+{"i": 464, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_15_F#2", 13, 150]]}
+{"i": 465, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 26, 99], ["C3", 0, 32], ["A_0_A_2_A_14_A", 0, -494]]}
+{"i": 466, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_15_F#2", 9, 152]]}
+{"i": 467, "mover": ["Ebar@(0,0)+Ebar@(-5,27)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F", 7, 153], ["F", 15, 178]]}
+{"i": 468, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -1, 45], "settled": true, "products": [["B", 1, 383], ["G", 19, 235], ["F", 11, 57], ["C3", 3, 30]]}
+{"i": 469, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -2, 49], "settled": true, "products": [["B^3", 3, 375], ["E^2", 4, 216], ["F", 1, 158], ["A", 1, -240]]}
+{"i": 470, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 451], ["B^3", 2, 543], ["A_0_A_2_A_14_A", 2, -614]]}
+{"i": 471, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -14, 55], "settled": true, "products": [["B", 1, 411], ["GB3", 12, 246], ["C2_5_C2", 6, -152], ["A", 0, -1248], ["A", 2, -760], ["A_8_A", 1, -738]]}
+{"i": 472, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -7, 55], "settled": true, "products": [["B_2_B_14_B", 0, 426], ["A", 1, -268]]}
+{"i": 473, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 26, 176]]}
+{"i": 474, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -4, 57], "settled": true, "products": [["F", 7, 125], ["C1", 0, 54], ["A", 0, -334]]}
+{"i": 475, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -15, 59], "settled": true, "products": [["B_2_B_18_B", 0, 444], ["B", 1, 589], ["G", 27, 311], ["Ebar", 17, 517], ["F", 6, -18], ["A^2", 0, -535], ["A^2", 2, -489], ["A^2", 0, -343]]}
+{"i": 476, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 238], ["F_15_F#2", 9, 152]]}
+{"i": 477, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 23, 683], ["F", 31, 100]]}
+{"i": 478, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -16, 63], "settled": true, "products": [["B", 3, 417], ["B_2_B_4_B_2_B", 0, 440], ["B", 2, 531], ["B_2_B_4_B_2_B", 3, 552], ["Ebar", 10, 247], ["E^2", 9, 399]]}
+{"i": 479, "mover": ["Ebar@(0,0)+Ebar@(-5,41)", -17, 67], "settled": true, "products": [["Ebar", 4, 219], ["C2", 3, -92], ["A", 0, -516]]}
+{"i": 480, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 11, 282], ["C1_9_C2", 6, 91], ["A^2", 0, -391], ["A", 0, -362]]}
+{"i": 481, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 2, 80], ["A", 2, -230]]}
+{"i": 482, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 423], ["A", 0, -460]]}
+{"i": 483, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 3, 216], ["F", 22, 149], ["F", 5, 176]]}
+{"i": 484, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -7, 55], "settled": true, "products": [["B_3_B_7_B", 0, 496], ["A", 1, -296]]}
+{"i": 485, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", 0, 55], "settled": true, "products": [["B^2", 1, 349]]}
+{"i": 486, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -4, 57], "settled": true, "products": [["Bbar_0_B_5_B_21_B", 4, 357], ["Ebar@(0,0)+Ebar@(-15,25)", 27, 243], ["A", 1, -442], ["A", 1, -282]]}
+{"i": 487, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_14_F", 3, 148]]}
+{"i": 488, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_17_F", 15, 148]]}
+{"i": 489, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 1, 87], ["C1", 5, 0], ["C2", 1, 25], ["C2", 6, 50], ["A", 2, -482]]}
+{"i": 490, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 9, 220], ["F_17_F", 11, 150]]}
+{"i": 491, "mover": ["Ebar@(0,0)+Ebar@(-6,31)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 15, 224], ["F_17_F", 4, 150]]}
+{"i": 492, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -1, 45], "settled": true, "products": [["B^3", 3, 333], ["C2", 5, -265], ["C2", 5, 88]]}
+{"i": 493, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -2, 49], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 13, 207], ["Ebar", 7, 280], ["A", 2, -594]]}
+{"i": 494, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 20, 144]]}
+{"i": 495, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -14, 55], "settled": true, "products": [["B^2", 2, 373], ["Ebar_16_Ebar#2", 12, 147], ["Ebar", 19, 455], ["Ebar", 3, 638]]}
+{"i": 496, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -7, 55], "settled": true, "products": [["B", 3, 361], ["G", 7, 241], ["Ebar", 3, 325], ["F", 4, 106], ["A", 1, -266], ["A_14_A", 1, -241]]}
+{"i": 497, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", 0, 55], "settled": true, "products": [["B", 3, 375], ["B", 1, 419], ["A^2", 2, -493], ["A^2", 1, -449], ["A^2", 0, -377], ["A", 1, -212]]}
+{"i": 498, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -4, 57], "settled": true, "products": [["C2", 5, 47], ["C2", 1, 80], ["A^4", 2, -231]]}
+{"i": 499, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -15, 59], "settled": true, "products": [["B^2", 2, 387], ["Ebar_16_Ebar#2", 18, 151], ["Ebar", 25, 459], ["Ebar", 9, 642]]}
+{"i": 500, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -12, 61], "settled": true, "products": [["B^2", 2, 387], ["Ebar_16_Ebar#2", 18, 151], ["Ebar", 25, 459], ["Ebar", 9, 642]]}
+{"i": 501, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -5, 61], "settled": true, "products": [["Ebar", 13, 225], ["C2", 5, 54], ["A", 2, -328]]}
+{"i": 502, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -16, 63], "settled": true, "products": [["B^2", 2, 387], ["Ebar_16_Ebar#2", 18, 151], ["Ebar", 25, 459], ["Ebar", 9, 642]]}
+{"i": 503, "mover": ["Ebar@(0,0)+Ebar@(-7,21)", -17, 67], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 23, 209], ["Ebar", 20, 284], ["A", 0, -572]]}
+{"i": 504, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -1, 45], "settled": false, "products": [["B", 1, 369], ["GB5", 41, 220], ["B^2", 1, 1205], ["C2_18_C1", 2, 83]]}
+{"i": 505, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 29, 238], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 506, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B", 2, 415]]}
+{"i": 507, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 11, 226], ["A^4", 0, -425], ["A", 0, -306]]}
+{"i": 508, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 0, -232]]}
+{"i": 509, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B^2", 0, 383], ["C2_5_C2", 1, 82], ["A", 1, -296]]}
+{"i": 510, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -4, 57], "settled": true, "products": [["Ebar", 11, 233], ["C2", 5, 54], ["A", 2, -286]]}
+{"i": 511, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["C1", 1, 112]]}
+{"i": 512, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 17, 230], ["A^4", 0, -453], ["A", 2, -328]]}
+{"i": 513, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["F", 26, 99], ["C3", 0, 32], ["A_0_A_2_A_14_A", 0, -494]]}
+{"i": 514, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 17, 230], ["A^4", 0, -453], ["A", 1, -324]]}
+{"i": 515, "mover": ["Ebar@(0,0)+Ebar@(-7,35)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 23, 234], ["A^4", 0, -481], ["A", 0, -348]]}
+{"i": 516, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -1, 45], "settled": true, "products": [["B^2", 2, 345], ["Ebar_16_Ebar#2", 24, 155], ["Ebar", 7, 391], ["Ebar", 9, 530]]}
+{"i": 517, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 8, 224], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 518, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 8, 150]]}
+{"i": 519, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F_14_F", 11, 144]]}
+{"i": 520, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 27, 218], ["Ebar", 15, 259], ["C1", 6, 120]]}
+{"i": 521, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", 0, 55], "settled": true, "products": [["B", 1, 383], ["A^2", 2, -431], ["A_8_A", 1, -386], ["A_8_A", 2, -238]]}
+{"i": 522, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -4, 57], "settled": true, "products": [["GB1", 26, 242], ["A", 0, -368], ["A", 1, -338]]}
+{"i": 523, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 1, -282]]}
+{"i": 524, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_14_F", 7, 146]]}
+{"i": 525, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -5, 61], "settled": true, "products": [["Bbar_3_B_9_B", 7, 392], ["B", 2, 459], ["A", 0, -578], ["A", 0, -446]]}
+{"i": 526, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F_14_F", 3, 148]]}
+{"i": 527, "mover": ["Ebar@(0,0)+Ebar@(-8,25)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F_14_F", 32, 144]]}
+{"i": 528, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -1, 45], "settled": true, "products": [["B", 1, 383], ["GB1", 22, 238], ["F", 28, 67], ["C2", 2, 100]]}
+{"i": 529, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -2, 49], "settled": true, "products": [["B^3", 3, 375], ["Ebar", 25, 215], ["Ebar", 25, 292], ["A", 1, -240]]}
+{"i": 530, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^3", 2, 429], ["C2_5_C2", 4, 28], ["A", 0, -488]]}
+{"i": 531, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -14, 55], "settled": true, "products": [["B^3", 1, 383], ["Ebar", 11, 201], ["Ebar", 2, 300], ["A", 0, -628]]}
+{"i": 532, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -7, 55], "settled": true, "products": [["Bbar", 6, 549], ["F", 6, 151], ["C1", 0, 48], ["C2_11_C1", 1, 104]]}
+{"i": 533, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["B^2", 3, 399], ["A^2", 0, -301]]}
+{"i": 534, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -4, 57], "settled": true, "products": [["F", 18, 137], ["C2", 5, 62], ["A", 0, -326], ["A", 1, -282]]}
+{"i": 535, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -15, 59], "settled": true, "products": [["B", 3, 389], ["B_2_B_4_B_2_B", 0, 412], ["B", 2, 503], ["B_2_B_4_B_2_B", 3, 524], ["Ebar", 10, 247], ["E^2", 0, 379]]}
+{"i": 536, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -12, 61], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 17, 205], ["Ebar", 8, 304], ["A", 0, -656]]}
+{"i": 537, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 17, 679], ["F", 16, 104]]}
+{"i": 538, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -16, 63], "settled": true, "products": [["B^3", 1, 397], ["Ebar", 17, 205], ["Ebar", 8, 304], ["A", 0, -656]]}
+{"i": 539, "mover": ["Ebar@(0,0)+Ebar@(-8,39)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["D1", 7, -80], ["A^2", 0, -399]]}
+{"i": 540, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -1, 45], "settled": true, "products": [["B^2", 0, 353], ["G", 6, 239], ["C2", 3, 25], ["D1", 5, -64], ["A_8_A", 1, -310], ["A", 1, -226]]}
+{"i": 541, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 6, 78], ["A", 2, -230]]}
+{"i": 542, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -3, 53], "settled": true, "products": [["B", 3, 319], ["Ebar", 15, 225], ["F", 1, 150]]}
+{"i": 543, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -14, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 28, 179], ["F", 22, 149], ["F", 26, 176]]}
+{"i": 544, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["E", 5, 222], ["F", 35, 165], ["C2", 0, 122]]}
+{"i": 545, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 10, 239], ["Ebar", 3, 288]]}
+{"i": 546, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -4, 57], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 0, -250]]}
+{"i": 547, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -15, 59], "settled": true, "products": [["B^3", 1, 369], ["Ebar", 17, 205], ["Ebar", 14, 280], ["A", 0, -544]]}
+{"i": 548, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -12, 61], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F", 18, 151], ["F", 22, 178]]}
+{"i": 549, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -5, 61], "settled": true, "products": [["Bbar_7_B", 7, 392], ["B^2", 1, 435], ["A", 1, -498], ["A", 2, -468]]}
+{"i": 550, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -16, 63], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 4, 191], ["F", 14, 153], ["F", 18, 180]]}
+{"i": 551, "mover": ["Ebar@(0,0)+Ebar@(-9,29)", -17, 67], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-1,25)", 10, 195], ["F", 7, 153], ["F", 11, 180]]}
+{"i": 552, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -1, 45], "settled": true, "products": [["B", 1, 383], ["G", 19, 235], ["F", 11, 57], ["C3", 3, 30]]}
+{"i": 553, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -2, 49], "settled": true, "products": [["Ebar", 19, 285], ["C1", 2, 52]]}
+{"i": 554, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -3, 53], "settled": true, "products": [["B", 3, 319], ["G", 1, 307], ["A^2", 2, -491]]}
+{"i": 555, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["D1", 4, -124], ["A", 0, -410], ["A", 0, -334]]}
+{"i": 556, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 1, -250]]}
+{"i": 557, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", 0, 55], "settled": true, "products": [["B^2", 1, 349], ["E^2", 2, 244], ["F", 22, 178]]}
+{"i": 558, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -4, 57], "settled": true, "products": [["B^2", 0, 395], ["Bbar", 0, 421], ["F_13_F", 0, 135], ["A^2", 1, -311], ["A", 1, -254]]}
+{"i": 559, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -15, 59], "settled": false, "products": [["B", 3, 403], ["B_2_B_4_B_2_B", 0, 426], ["B", 0, 469], ["GB2", 39, 276], ["B^3", 3, 1009], ["A^3", 0, -1741], ["A", 2, -1720], ["A", 2, -818]]}
+{"i": 560, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -12, 61], "settled": true, "products": [["B", 1, 411], ["G", 7, 255], ["Ebar", 9, 273], ["F", 5, 74], ["A", 2, -494], ["A", 2, -432], ["A", 2, -356]]}
+{"i": 561, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -5, 61], "settled": true, "products": [["Bbar_3_B_9_B", 7, 392], ["Ebar", 6, 263], ["F", 20, 160], ["A_8_A", 0, -272]]}
+{"i": 562, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["D1", 7, -122], ["A", 1, -428], ["A", 1, -352]]}
+{"i": 563, "mover": ["Ebar@(0,0)+Ebar@(-9,43)", -17, 67], "settled": true, "products": [["B^3", 1, 411], ["F", 13, 69], ["F", 4, 134], ["A_8_A", 0, -460], ["A", 0, -376]]}
+{"i": 564, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -1, 45], "settled": true, "products": [["Ebar", 22, 175], ["Ebar", 17, 286], ["C1_9_C2", 0, 87], ["A^2", 0, -419], ["A", 0, -390]]}
+{"i": 565, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -2, 49], "settled": true, "products": [["Ebar", 0, 193], ["C2", 1, 84], ["A", 2, -230]]}
+{"i": 566, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -3, 53], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 437], ["A", 0, -488]]}
+{"i": 567, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -14, 55], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 9, 220], ["F", 22, 149], ["F", 5, 176]]}
+{"i": 568, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -7, 55], "settled": true, "products": [["C2", 5, 33], ["D1", 0, -14], ["A^5", 1, -236]]}
+{"i": 569, "mover": ["Ebar@(0,0)+Ebar@(0,35)", 0, 55], "settled": true, "products": [["B^2", 1, 349]]}
+{"i": 570, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -4, 57], "settled": false, "products": [["B", 1, 453], ["GB2", 6, 284], ["B^3", 0, 1051], ["A^3", 0, -1781], ["A", 2, -1760], ["A", 2, -746], ["A", 1, -344], ["A", 2, -272]]}
+{"i": 571, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -15, 59], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_14_F", 3, 148]]}
+{"i": 572, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -12, 61], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_17_F", 15, 148]]}
+{"i": 573, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -5, 61], "settled": true, "products": [["Bbar", 2, 397], ["B", 0, 493], ["E@(0,0)+E@(-14,19)", 8, 275], ["A", 2, -634], ["A", 1, -596], ["A", 2, -510]]}
+{"i": 574, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -16, 63], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 15, 224], ["F_17_F", 11, 150]]}
+{"i": 575, "mover": ["Ebar@(0,0)+Ebar@(0,35)", -17, 67], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 21, 228], ["F_17_F", 4, 150]]}
+{"i": 576, "mover": ["Ebar_14_Ebar", 0, 46], "settled": true, "products": [["B", 3, 305], ["Ebar", 3, 217], ["F", 1, 150]]}
+{"i": 577, "mover": ["Ebar_14_Ebar", -4, 48], "settled": true, "products": [["B^3", 3, 375], ["Ebar@(0,0)+Ebar@(-21,35)", 11, 201], ["D1_9_D1#2", 0, -149], ["A", 0, -270], ["A", 0, -222]]}
+{"i": 578, "mover": ["Ebar_14_Ebar", -1, 50], "settled": true, "products": [["Ebar", 22, 203], ["C2", 1, 84], ["A", 0, -250]]}
+{"i": 579, "mover": ["Ebar_14_Ebar", -5, 52], "settled": true, "products": [["Ebar", 28, 179], ["F", 35, 132], ["C3_4_C3", 6, 99]]}
+{"i": 580, "mover": ["Ebar_14_Ebar", -2, 54], "settled": true, "products": [["B", 3, 403], ["G", 37, 247], ["Ebar", 8, 235], ["Ebar", 16, 308], ["A", 2, -362], ["A", 0, -236]]}
+{"i": 581, "mover": ["Ebar_14_Ebar", -6, 56], "settled": true, "products": [["B", 3, 361], ["B_2_B_4_B_2_B", 0, 384], ["B^3", 2, 657], ["Ebar", 20, 233], ["F", 34, 270]]}
+{"i": 582, "mover": ["Ebar_14_Ebar", -10, 58], "settled": true, "products": [["Ebar", 28, 207], ["C2", 3, -8], ["A", 0, -404]]}
+{"i": 583, "mover": ["Ebar_14_Ebar", -3, 58], "settled": true, "products": [["Ebar", 4, 191], ["F", 35, 132], ["C3_4_C3", 3, 97]]}
+{"i": 584, "mover": ["Ebar_14_Ebar", -21, 60], "settled": true, "products": [["B^2", 1, 349]]}
+{"i": 585, "mover": ["Ebar_14_Ebar", -7, 60], "settled": true, "products": [["Ebar", 4, 191], ["F", 35, 132], ["C3_4_C3", 6, 99]]}
+{"i": 586, "mover": ["Ebar_14_Ebar", -11, 62], "settled": true, "products": [["Ebar", 12, 201], ["C2", 2, 66], ["A", 2, -286]]}
+{"i": 587, "mover": ["Ebar_14_Ebar", -8, 64], "settled": true, "products": [["Ebar", 10, 195], ["F", 35, 132], ["C3_4_C3", 0, 95]]}
+{"i": 588, "mover": ["Ebar_14_Ebar#2", -1, 45], "settled": true, "products": [["Ebar", 28, 179], ["C2", 6, 78], ["C2_5_C2", 6, 110]]}
+{"i": 589, "mover": ["Ebar_14_Ebar#2", -2, 49], "settled": true, "products": [["Ebar", 28, 179], ["D1", 7, -24], ["A_8_A", 1, -220]]}
+{"i": 590, "mover": ["Ebar_14_Ebar#2", -3, 53], "settled": true, "products": [["Ebar", 4, 191], ["F", 35, 132], ["C3_4_C3", 4, 93]]}
+{"i": 591, "mover": ["Ebar_14_Ebar#2", -21, 55], "settled": true, "products": [["B", 3, 319], ["Ebar", 27, 219], ["F", 8, 150]]}
+{"i": 592, "mover": ["Ebar_14_Ebar#2", -7, 55], "settled": true, "products": [["B^3", 1, 341], ["B^3", 3, 483], ["F", 7, 33], ["F", 6, 66], ["A_2_A_28_A", 2, -848], ["A", 1, -588], ["A_4_A_33_A", 2, -562], ["A", 0, -504], ["A_8_A", 0, -388], ["A^3", 0, -217]]}
+{"i": 593, "mover": ["Ebar_14_Ebar#2", 0, 55], "settled": true, "products": [["Ebar", 4, 191], ["D1", 3, -36], ["A_8_A", 0, -244]]}
+{"i": 594, "mover": ["Ebar_14_Ebar#2", -18, 57], "settled": true, "products": [["B^2", 1, 349], ["C3", 2, 73], ["C2", 4, 120]]}
+{"i": 595, "mover": ["Ebar_14_Ebar#2", -4, 57], "settled": true, "products": [["Ebar", 4, 191], ["D1", 3, -36], ["A_8_A", 2, -238]]}
+{"i": 596, "mover": ["Ebar_14_Ebar#2", -22, 59], "settled": true, "products": [["F", 9, 117], ["C1", 0, 54], ["A", 2, -258]]}
+{"i": 597, "mover": ["Ebar_14_Ebar#2", -8, 59], "settled": true, "products": [["Ebar", 12, 201], ["Ebar", 26, 236], ["A^4", 0, -453], ["A", 1, -282]]}
+{"i": 598, "mover": ["Ebar_14_Ebar#2", -5, 61], "settled": true, "products": [["Ebar", 10, 195], ["F", 7, 118], ["A^2", 0, -479], ["A", 0, -450], ["A", 2, -424], ["A_8_A", 1, -262]]}
+{"i": 599, "mover": ["Ebar_14_Ebar#2", -23, 63], "settled": true, "products": [["B_2_B_4_B_2_B", 0, 376], ["Ebar", 14, 225], ["E^2", 7, 261], ["A", 0, -362]]}
+{"i": 600, "mover": ["Ebar_16_Ebar", -10, 37], "settled": true, "products": [["Ebar", 16, 171], ["D1", 4, -68], ["A", 0, -270], ["A", 0, -194]]}
+{"i": 601, "mover": ["Ebar_16_Ebar", -5, 45], "settled": true, "products": [["B", 3, 347], ["B_2_B_4_B_2_B", 0, 370], ["B", 0, 413], ["GB5", 38, 258], ["A_0_A_2_A_14_A", 2, -1292], ["A", 2, -622]]}
+{"i": 602, "mover": ["Ebar_16_Ebar", -2, 47], "settled": true, "products": [["B", 1, 355], ["B", 0, 395], ["GB3", 17, 234], ["A", 1, -942], ["A", 2, -786], ["A", 2, -514], ["A", 2, -382], ["A", 2, -320], ["A", 2, -244]]}
+{"i": 603, "mover": ["Ebar_16_Ebar", -17, 51], "settled": true, "products": [["B", 3, 319], ["G", 19, 277], ["A^2", 2, -407]]}
+{"i": 604, "mover": ["Ebar_16_Ebar", -3, 51], "settled": true, "products": [["B", 1, 369], ["G", 37, 233], ["Ebar", 15, 277], ["F", 34, 98], ["A_8_A", 0, -558], ["A", 0, -530]]}
+{"i": 605, "mover": ["Ebar_16_Ebar", -21, 53], "settled": true, "products": [["Ebar", 4, 191], ["E", 9, 234], ["F", 10, 167], ["C2", 4, 120]]}
+{"i": 606, "mover": ["Ebar_16_Ebar", -14, 53], "settled": true, "products": [["B^2", 1, 349], ["B", 3, 377], ["A", 0, -236]]}
+{"i": 607, "mover": ["Ebar_16_Ebar", 0, 53], "settled": true, "products": [["Ebar", 4, 191], ["D1", 9, -88], ["A", 1, -344], ["A", 1, -268]]}
+{"i": 608, "mover": ["Ebar_16_Ebar", -18, 55], "settled": true, "products": [["B_3_B_7_B", 1, 408], ["A", 0, -236]]}
+{"i": 609, "mover": ["Ebar_16_Ebar", -4, 55], "settled": true, "products": [["Ebar", 7, 277], ["C1", 4, 44]]}
+{"i": 610, "mover": ["Ebar_16_Ebar", -1, 57], "settled": true, "products": [["B^3", 1, 369], ["F_17_F#2", 0, 105], ["A_8_A", 0, -376], ["A", 0, -292]]}
+{"i": 611, "mover": ["Ebar_16_Ebar", -19, 59], "settled": true, "products": [["B^2", 2, 429], ["G", 38, 293], ["A", 0, -444], ["A_8_A", 0, -272]]}
+{"i": 612, "mover": ["Ebar_16_Ebar#2", -1, 45], "settled": true, "products": [["Ebar@(0,0)+E@(0,21)", 28, 179], ["F", 14, 165], ["C2", 4, 106]]}
+{"i": 613, "mover": ["Ebar_16_Ebar#2", -2, 49], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 14, 270], ["A", 0, -526], ["A^3", 0, -349], ["A", 2, -328]]}
+{"i": 614, "mover": ["Ebar_16_Ebar#2", -3, 53], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A^4", 0, -397], ["A", 0, -250]]}
+{"i": 615, "mover": ["Ebar_16_Ebar#2", -21, 55], "settled": true, "products": [["B", 3, 319], ["Ebar", 9, 221], ["F", 16, 146]]}
+{"i": 616, "mover": ["Ebar_16_Ebar#2", -7, 55], "settled": true, "products": [["Ebar", 4, 191], ["D1", 5, -58], ["A^2", 0, -343]]}
+{"i": 617, "mover": ["Ebar_16_Ebar#2", 0, 55], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 27, 232], ["A", 1, -488], ["A^3", 2, -371], ["A", 1, -352]]}
+{"i": 618, "mover": ["Ebar_16_Ebar#2", -18, 57], "settled": true, "products": [["B^2", 1, 349], ["E^2", 5, 232], ["F", 33, 176]]}
+{"i": 619, "mover": ["Ebar_16_Ebar#2", -4, 57], "settled": true, "products": [["Ebar", 4, 191], ["Ebar", 5, 222], ["A", 0, -400], ["A^3", 1, -367], ["A", 0, -348]]}
+{"i": 620, "mover": ["Ebar_16_Ebar#2", -22, 59], "settled": true, "products": [["B_3_B_7_B", 0, 412], ["C1_12_C3", 6, 98]]}
+{"i": 621, "mover": ["Ebar_16_Ebar#2", -8, 59], "settled": true, "products": [["Ebar", 4, 275], ["C1", 1, 42]]}
+{"i": 622, "mover": ["Ebar_16_Ebar#2", -5, 61], "settled": true, "products": [["Ebar", 10, 195], ["Ebar", 11, 226], ["A", 0, -428], ["A_0_A_2_A_14_A", 2, -390]]}
+{"i": 623, "mover": ["Ebar_16_Ebar#2", -23, 63], "settled": true, "products": [["C3_17_C1_15_C1", 2, 23], ["C2", 6, 86], ["A_8_A", 0, -272]]}
+{"i": 624, "mover": ["Ebar_19_Ebar", 0, 44], "settled": true, "products": [["Ebar", 28, 179], ["C1", 6, 106]]}
+{"i": 625, "mover": ["Ebar_19_Ebar", -1, 48], "settled": true, "products": [["B", 1, 369], ["GB3", 0, 238], ["C2_5_C2", 5, -92], ["A", 0, -996], ["A", 2, -592], ["A_8_A", 1, -570]]}
+{"i": 626, "mover": ["Ebar_19_Ebar", -5, 50], "settled": true, "products": [["Ebar", 28, 179], ["Ebar", 21, 214], ["F", 14, 153], ["F", 22, 178]]}
+{"i": 627, "mover": ["Ebar_19_Ebar", -2, 52], "settled": true, "products": [["B_2_B_18_B", 0, 402], ["B", 1, 547], ["G", 15, 303], ["Ebar", 23, 465], ["F", 6, 10], ["A^2", 0, -451], ["A^2", 2, -405], ["A^2", 0, -259]]}
+{"i": 628, "mover": ["Ebar_19_Ebar", -20, 54], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 409], ["B^3", 2, 501], ["A^3", 0, -531], ["A", 2, -510]]}
+{"i": 629, "mover": ["Ebar_19_Ebar", -6, 54], "settled": true, "products": [["Ebar", 4, 191], ["D1", 5, -58], ["A", 1, -344], ["A", 0, -250]]}
+{"i": 630, "mover": ["Ebar_19_Ebar", -17, 56], "settled": true, "products": [["B^2", 1, 349], ["Ebar", 4, 235], ["Ebar", 25, 270]]}
+{"i": 631, "mover": ["Ebar_19_Ebar", -3, 56], "settled": true, "products": [["B", 3, 375], ["B_2_B_4_B_2_B", 0, 398], ["Ebar", 7, 219], ["Ebar", 16, 260], ["F", 22, 147], ["C2", 6, 56]]}
+{"i": 632, "mover": ["Ebar_19_Ebar", -21, 58], "settled": true, "products": [["B^2", 2, 345], ["B", 3, 447], ["F", 5, 143], ["F", 35, 192], ["A^3", 2, -253]]}
+{"i": 633, "mover": ["Ebar_19_Ebar", -7, 58], "settled": true, "products": [["B^3", 1, 383], ["E^2", 1, 228], ["F", 19, 142], ["A", 1, -296]]}
+{"i": 634, "mover": ["Ebar_19_Ebar", -4, 60], "settled": true, "products": [["Ebar", 4, 219], ["C2", 3, -8], ["A", 0, -432]]}
+{"i": 635, "mover": ["Ebar_19_Ebar", -22, 62], "settled": true, "products": [["Bbar", 2, 397], ["Ebar", 5, 671], ["F", 31, 100]]}
+{"i": 636, "mover": ["Ebar_6_Ebar", -5, 42], "settled": true, "products": [["B^3", 3, 319], ["Ebar", 7, 203], ["Ebar", 22, 234], ["A", 1, -212]]}
+{"i": 637, "mover": ["Ebar_6_Ebar", -3, 48], "settled": true, "products": [["B^2", 1, 335], ["B^2", 2, 571], ["A", 1, -512], ["A", 1, -450]]}
+{"i": 638, "mover": ["Ebar_6_Ebar", 0, 50], "settled": true, "products": [["B", 3, 319], ["B^2", 2, 395], ["B^3", 2, 487], ["A^3", 0, -503], ["A", 2, -482]]}
+{"i": 639, "mover": ["Ebar_6_Ebar", -11, 52], "settled": true, "products": [["Ebar", 28, 179], ["F", 7, 118], ["A^2", 0, -423], ["A", 0, -394], ["A", 2, -368], ["A_8_A", 0, -216]]}
+{"i": 640, "mover": ["Ebar_6_Ebar", -4, 52], "settled": true, "products": [["Ebar", 4, 191], ["D1", 8, -112], ["A", 2, -418], ["A", 0, -390]]}
+{"i": 641, "mover": ["Ebar_6_Ebar", -1, 54], "settled": true, "products": [["Ebar_14_Ebar", 19, 206], ["A^4", 2, -447], ["A", 0, -348]]}
+{"i": 642, "mover": ["Ebar_6_Ebar", -12, 56], "settled": true, "products": [["Ebar", 4, 191], ["D1", 9, -46], ["A^2", 0, -315]]}
+{"i": 643, "mover": ["Ebar_6_Ebar", -16, 58], "settled": true, "products": [["Ebar", 4, 191], ["F", 35, 132], ["C3_4_C3", 0, 95]]}
+{"i": 644, "mover": ["Ebar_6_Ebar", -9, 58], "settled": true, "products": [["Ebar", 4, 191], ["F", 7, 118], ["A^2", 0, -451], ["A", 0, -422], ["A", 2, -396], ["A_8_A", 2, -238]]}
+{"i": 645, "mover": ["Ebar_6_Ebar", -2, 58], "settled": true, "products": [["B_3_B_7_B", 1, 464], ["A", 0, -404]]}
+{"i": 646, "mover": ["Ebar_6_Ebar", -13, 60], "settled": true, "products": [["Ebar", 4, 191], ["F", 7, 118], ["A^2", 0, -451], ["A", 0, -422], ["A", 2, -396], ["A_8_A", 1, -234]]}
+{"i": 647, "mover": ["Ebar_6_Ebar", -14, 64], "settled": true, "products": [["B", 1, 355], ["B_2_B_4_B_2_B", 3, 470], ["A", 0, -556], ["A_8_A", 0, -258]]}
+{"i": 648, "mover": ["Ebar_8_Ebar", 0, 43], "settled": true, "products": [["Ebar", 16, 171], ["D1", 1, -14], ["A", 1, -232], ["A", 1, -142]]}
+{"i": 649, "mover": ["Ebar_8_Ebar", -1, 47], "settled": true, "products": [["B", 1, 341], ["B_2_B_4_B_2_B", 2, 362], ["Ebar", 25, 203], ["Ebar", 10, 298], ["A_19_A", 0, -495], ["A", 2, -314]]}
+{"i": 650, "mover": ["Ebar_8_Ebar", -5, 49], "settled": true, "products": [["B^3", 1, 313], ["Ebar", 17, 191], ["Ebar", 10, 240], ["A^5", 1, -492], ["A", 1, -266], ["A", 2, -236], ["A", 2, -174]]}
+{"i": 651, "mover": ["Ebar_8_Ebar", -2, 51], "settled": true, "products": [["Ebar", 22, 175], ["D1", 7, -24], ["A", 1, -260], ["A", 2, -160]]}
+{"i": 652, "mover": ["Ebar_8_Ebar", -6, 53], "settled": true, "products": [["Ebar", 0, 193], ["Ebar", 11, 226], ["A^4", 0, -397], ["A", 1, -226]]}
+{"i": 653, "mover": ["Ebar_8_Ebar", -3, 55], "settled": true, "products": [["Ebar@(0,0)+Ebar@(-5,27)", 28, 179], ["A^4", 0, -341], ["A", 1, -184]]}
+{"i": 654, "mover": ["Ebar_8_Ebar", -7, 57], "settled": true, "products": [["B", 3, 319], ["B", 2, 373]]}
+{"i": 655, "mover": ["Ebar_8_Ebar", -11, 59], "settled": true, "products": [["B", 1, 327], ["B_2_B_4_B_2_B", 2, 348], ["Ebar", 7, 219], ["C1", 0, 86], ["A", 0, -246], ["A_0_A_2_A_10_A", 1, -216]]}
+{"i": 656, "mover": ["Ebar_8_Ebar", -4, 59], "settled": true, "products": [["Ebar", 10, 195], ["E", 1, 238], ["A", 2, -270], ["A_8_A", 0, -216]]}
+{"i": 657, "mover": ["Ebar_8_Ebar", -8, 61], "settled": true, "products": [["Ebar_14_Ebar", 19, 206], ["Ebar", 26, 243], ["C2", 2, 80], ["A", 0, -348]]}
+{"i": 658, "mover": ["Ebar_8_Ebar", -16, 65], "settled": true, "products": [["Ebar", 4, 191], ["D1", 9, -46], ["A", 1, -316], ["A", 0, -222]]}
+{"i": 659, "mover": ["Ebar_8_Ebar", -9, 65], "settled": true, "products": [["F", 30, 131], ["C2", 6, 72], ["A_8_A", 0, -300]]}
