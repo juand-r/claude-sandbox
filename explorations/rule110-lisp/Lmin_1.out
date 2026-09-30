@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/user/claude-sandbox/run_L_min.py", line 5, in <module>
-    from encoder import assemble, _left_v
-ModuleNotFoundError: No module named 'encoder'
