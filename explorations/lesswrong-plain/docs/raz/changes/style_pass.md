@@ -238,3 +238,362 @@ Why: Style pass: plain, literal wording.
 - Before: The factions' packages also hold questions of value: which tax to levy, how easy divorce should be. The sky settles none of these. The fable shows how people react when one question in their side's package is settled beyond doubt. It does not show how to reason about the questions a sky cannot settle, such as the tax and the marriage laws, which are the political part of each package.
 - After: Each faction's set of positions also includes questions of value: which tax to levy, how easy divorce should be. The sky settles none of these. The fable shows how people react when one of their side's positions is proved wrong beyond doubt. It does not show how to reason about questions that no observation can settle, such as the tax and the marriage laws, which are the political part of each side's positions.
 
+
+## annotated/afterwords/religion-s-claim-to-be-non-disprovable.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is what the post aims that point at, and how far it stretches it.
+- After: The problems are the position the post uses that point against, and how far it extends the point.
+
+- Before: The courtroom joke at the end assumes the bloody axe is in hand. For the Exodus it is; for Gould's own example, the soul, there is none. Calling the idea a ``Big Lie'' puts ridicule where an answer to Gould's argument was needed.
+- After: The post ends with a joke about a defendant who, shown the bloody axe, says that evidence cannot touch a separate magisterium. The joke works only where there is an axe: clear evidence against the religious claim. For the Exodus there is; for Gould's own example, the soul, there is none. Calling the idea a ``Big Lie'' is ridicule in place of an answer to Gould's argument.
+
+- Before: The scope outruns the examples.
+- After: The claims cover far more than the examples.
+
+
+## annotated/afterwords/professing-and-cheering.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The case behind the distinction is weaker than the distinction.
+- After: The case the post uses to introduce the distinction is weaker than the distinction.
+
+- Before: The two things she is reported to have said point elsewhere.
+- After: The two things she is reported to have said suggest a different reading.
+
+
+## annotated/afterwords/belief-as-attire.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: It offers no test for telling attire from conviction, and without one the label can be applied to any belief a reader dislikes, and the post's examples show where it will be applied.
+- After: It offers no test for telling attire from conviction. Without one, the label can be applied to any belief a reader dislikes, and in the post it is applied only to other people's beliefs.
+
+- Before: It replaces the record with an imagined bar in Alabama.
+- After: In place of the record, it offers an imagined bar in Alabama.
+
+- Before: Its claim about passion, finally, rests on an ``impression'' of religious people that no observation could overturn. It fails the rent test the author had published five days before.
+- After: Its claim about passion, finally, rests on an ``impression'' of religious people that no observation could overturn. So it fails the test the author had proposed five days before, in ``Making Beliefs Pay Rent'': that a belief should say what we would expect to observe.
+
+- Before: In short: a label with no test, demonstrated on an overstated claim about American speech, and applied to every group except the author's.
+- After: In short: a label with no test for applying it, illustrated by an overstated claim about American speech, and applied to every group except the author's.
+
+
+## annotated/afterwords/pretending-to-be-wise.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post also sits uneasily with the author's own earlier advice.
+- After: The post also goes against the author's own earlier advice.
+
+
+## annotated/afterwords/applause-lights.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: With those parts restored, the diagnosis rests on little.
+- After: Once those parts are put back, little supports the diagnosis.
+
+- Before: In short: a useful test for empty speech, owed to Orwell without credit, demonstrated on a remembered exchange that its author later found had gone differently and whose speaker met the post's own condition by naming a specific model.
+- After: In short: a useful test for empty speech, which goes back to Orwell, who is not credited; the test is illustrated with a remembered exchange that the author later found had gone differently, and whose speaker met the post's own condition by naming a specific model.
+
+
+## annotated/afterwords/focus-your-uncertainty.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The link between anticipation and time rests on an aside.
+- After: The post connects anticipation to time only in an aside.
+
+- Before: The rival the post jabs at is dismissed with a pun.
+- After: The post dismisses a rival theory with a pun.
+
+- Before: Finally, the post withholds its answer. The art it asks for exists:
+- After: Finally, the post does not answer its closing question. The art it asks for exists:
+
+- Before: In short: a vivid case for treating belief as a fixed quantity to be divided, whose one precise step sits in a parenthesis, and whose rival is dismissed with a pun.
+- After: In short: a vivid case for treating belief as a fixed quantity to be divided; its one exact claim depends on an assumption stated only in a parenthesis, and it dismisses the rival theory with a pun.
+
+
+## annotated/afterwords/what-is-evidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and borrows Tarski's equivalence to finish the job.
+- After: and then cites Tarski's equivalence as support.
+
+- Before: The essay's aim is plainer than its argument.
+- After: The essay's purpose is clearer than its argument.
+
+
+## annotated/afterwords/scientific-evidence-legal-evidence-rational-evidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The essay's structure is a set of three nested boxes: legal and scientific inside rational. The boxes are the argument, and the essay does not build either inner one on anything firmer than the author's assertion.
+- After: The essay sorts evidence into three classes, with legal and scientific evidence as subclasses of rational evidence. The classes are the argument, and the essay supports neither subclass with more than the author's assertion.
+
+- Before: The legal box is explained by a thought experiment
+- After: The legal class is explained by a thought experiment
+
+- Before: The scientific box is drawn by definition, and the definition fails on contact with actual science.
+- After: The scientific class is fixed by a definition, and the definition does not fit how science works.
+
+- Before: The same definition expels history, and with it every science whose object happened once.
+- After: The same definition excludes history, and with it every science that studies events that happened once.
+
+- Before: The essay then strains against itself.
+- After: The essay then argues against itself.
+
+- Before: The essay keeps the authority of a definition and the immunity of a stipulation.
+- After: So the essay uses its definition as if it were a finding, and when challenged, calls it a choice that cannot be questioned.
+
+- Before: The largest box is the one left unexamined.
+- After: The largest class, rational evidence, is not examined at all.
+
+- Before: one of those definitions expels history and the historical sciences,
+- After: one of those definitions excludes history and the historical sciences,
+
+
+## annotated/afterwords/occam-s-razor.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Its argument for the exchange rate between program length and fit is correct and well worked on the coin example.
+- After: Its argument that each extra bit of program must be paid for by at least doubling the fit is correct, and the coin example shows why.
+
+- Before: In short: an accurate sketch of Solomonoff induction and Minimum Message Length, in which the choice of language is passed over as ``only a constant,'' although it raises the same problem as the post's own ``Fnord'' example.
+- After: In short: an accurate sketch of Solomonoff induction and Minimum Message Length, which dismisses the choice of programming language as ``only a constant,'' although that choice raises the same problem as the post's own point about English labels such as ``witch.''
+
+
+## annotated/afterwords/your-strength-as-a-rationalist.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The whole weight of the lesson falls on the author's failure to detect a lie, none on the risk the answer would have carried.
+- After: The lesson is entirely about the author's failure to detect a lie, and says nothing about the risk the answer carried.
+
+- Before: The author's confusion was produced by a false model, and it would have fired just the same on a true story.
+- After: The author's confusion came from a false model, and a true story would have caused the same confusion.
+
+- Before: In short: an essay that teaches readers to trust their confusion, built on a case where the author's confusion came from a false belief and the advice given could have hurt someone.
+- After: In short: an essay that teaches readers to trust their confusion, using a case where the author's confusion came from a false belief and the advice given could have hurt someone.
+
+
+## annotated/afterwords/absence-of-evidence-is-evidence-of-absence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: and then claims victory by reading ``evidence'' in its own technical sense.
+- After: and then declares the slogan wrong by reading ``evidence'' in its own technical sense.
+
+- Before: Readers meet the unqualified title.
+- After: In this post, readers see the unqualified title first.
+
+- Before: In short: a slogan refuted by changing what its words mean,
+- After: In short: a slogan ``refuted'' by changing what its words mean,
+
+
+## annotated/afterwords/conservation-of-expected-evidence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: Both errors come from the same slide, between ``expect'' as an average and ``expect'' in its everyday sense.
+- After: Both errors come from the same confusion, between ``expect'' as an average and ``expect'' in its everyday sense.
+
+- Before: The essay's use of its examples shows what it is for.
+- After: The examples show where the essay is aimed.
+
+- Before: In short: a textbook identity given a physicist's name,
+- After: In short: a textbook identity given a name borrowed from physics,
+
+
+## annotated/afterwords/hindsight-devalues-science.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: repeats the thesis of ``Your Strength as a Rationalist,'' with the problem noted there.
+- After: repeats the thesis of ``Your Strength as a Rationalist,'' and has the problem noted there: confusion can come from a false model as easily as from a false story.
+
+- Before: In short: a fair demonstration of a real bias, stretched to cover ``all'' expectation, turned into a test that only data could pass, and closed with a remedy of will where the research favors explaining how things could have turned out otherwise.
+- After: In short: a fair demonstration of a real bias, extended to the claim that ``all'' expectation is hindsight, turned into a lesson about trusting one's confusion when only data could have helped, and closed with a call for ``a conscious effort to be shocked'' where the research recommends explaining how the other outcome could have happened.
+
+
+## annotated/afterwords/illusion-of-transparency-why-no-one-understands-you.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: In short: a sound finding, reported with a mechanism its own study narrows, advice that goes beyond its evidence, and a historical example that shows the opposite of what it is used for.
+- After: In short: a sound finding, explained by a mechanism that the post's own source describes more narrowly, followed by advice that goes beyond the evidence, and a historical example that shows the opposite of what it is used for.
+
+
+## annotated/afterwords/expecting-short-inferential-distances.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: That account is the post's own contribution, and it is the part that does not hold up.
+- After: That account is the post's own contribution, and it is the part the evidence does not support.
+
+- Before: The post does not engage that work, which is where a reader could have found evidence for its size and conditions.
+- After: The post does not mention that work, which is where a reader could have found evidence for how large the effect is and when it occurs.
+
+- Before: and the theory rests on a premise that its own subject, the teaching of children, puts under strain.
+- After: and the theory rests on a premise that the teaching of children, an explanation across many steps, counts against.
+
+- Before: In short: sound advice about explaining, attached to an evolutionary story that forgets the oldest long explanation of all, teaching children, and that adds nothing the named biases do not already explain.
+- After: In short: sound advice about explaining, attached to an evolutionary story that leaves out the teaching of children, the oldest case of explaining across many steps, and that explains nothing the biases the post names do not already explain.
+
+
+## annotated/afterwords/science-as-attire.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rest of the post applies the same test to people, and there it runs into trouble.
+- After: The rest of the post applies the same test to people, and there it does not work.
+
+- Before: The motive is supplied by the post.
+- After: The post supplies the motive itself.
+
+
+## annotated/afterwords/fake-causality.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: In short: an accurate account of message-passing, attached to an overstated history of phlogiston and to a promise that bookkeeping would catch a cause fitted to its effect, which the bookkeeping described does not do.
+- After: In short: an accurate account of how Bayesian networks avoid counting evidence twice, attached to an overstated history of phlogiston, and to a promise that correct bookkeeping would catch an explanation fitted to the facts after the event, which the bookkeeping the post describes does not do.
+
+
+## annotated/afterwords/semantic-stopsigns.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post's own test then clears the people its opening puzzles over.
+- After: By the post's own test, the theists of its opening example are not using a stopsign.
+
+- Before: In short: a credited idea with a fair test at the end; applied to the post's own lead example, the test clears the theists who give the standard reply, and the modern example is one unnamed acquaintance and an imagined counterfactual.
+- After: In short: a credited idea with a fair test at the end; by that test, the theists who give the standard reply in the post's lead example are not using a stopsign, and the modern example is one unnamed acquaintance and an imagined reply.
+
+
+## annotated/afterwords/mysterious-answers-to-mysterious-questions.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The theory the post describes forbade something, which sits uneasily with the post's argument.
+- After: The theory the post describes forbade something, which conflicts with the post's claim that it fitted every outcome.
+
+- Before: In short: a sound principle about where mystery lives,
+- After: In short: a sound principle, that mystery is a fact about what someone knows,
+
+
+## annotated/afterwords/the-futility-of-emergence.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The two exercises remove what the narrower senses say.
+- After: The two exercises, deleting the word or replacing it with ``magical,'' lose what the narrower senses of the word say.
+
+- Before: argued against the loosest definition on the page it cites, with exercises that erase what the narrower senses say, and with no user of the word quoted.
+- After: argued against the loosest definition on the page it cites, with two exercises that lose what the narrower senses of the word say, and with no user of the word quoted.
+
+
+## annotated/afterwords/say-not-complexity.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The parenthesis then shows whom the reply was really for: unnamed people who said the Internet would ``wake up.''
+- After: A parenthesis then names the reply's real target: unnamed people who said the Internet would ``wake up.''
+
+- Before: The honest cost of the method,
+- After: The real cost of the method,
+
+- Before: In short: an old point, illustrated with an anecdote, supported only by unnamed crowds, and given a remedy that leans on the faculty that failed.
+- After: In short: an old point, illustrated with an anecdote, supported only by claims about unnamed people, and given a remedy that relies on the same feeling that produced the error.
+
+
+## annotated/afterwords/positive-bias-look-into-the-dark.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The essay teaches one lesson: look for evidence that would prove you wrong. It teaches it the way it tells the reader not to.
+- After: The essay teaches one lesson: look for evidence that would prove you wrong. It argues for that lesson in the way it tells the reader not to argue.
+
+- Before: The essay's examples drift.
+- After: The essay's examples are about different problems.
+
+- Before: The essay offers its reader a humility that costs nothing. The author confesses to having fallen for the task, and invites the reader to confess the same. The essay asks its reader to look into the dark and does not look there itself.
+- After: The essay's confession costs it nothing. The author admits to having fallen for the task, and invites the reader to admit the same. But the essay asks its reader to look for the cases that would prove them wrong, and does not look for the cases that would prove the essay wrong.
+
+
+## annotated/afterwords/lawful-uncertainty.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is in what the post builds on the task.
+- After: The problems are in the general claims the post draws from the task.
+
+- Before: The behaviour it generalizes from gives way to practice and pay.
+- After: But the behaviour it generalizes from changes with practice and pay.
+
+- Before: In short: a sound point about one betting task, stretched into claims about most people and about all uncertainty,
+- After: In short: a sound point about one betting task, extended to claims about most people and about all uncertainty,
+
+
+## annotated/afterwords/my-wild-and-reckless-youth.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The trouble is with the case it argues from and with the contrast it draws.
+- After: The problems are the case it argues from and the contrast it draws.
+
+- Before: The two traditions are drawn to fit the story.
+- After: The post describes the two traditions in ways that suit its story.
+
+
+## annotated/afterwords/failing-to-learn-from-history.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The rule works in one direction.
+- After: The rule catches only one kind of error.
+
+- Before: In short: a sound warning sign for one kind of empty answer, joined to a remedy, living through history, that the book's own vitalist does not bear out.
+- After: In short: a sound warning sign for one kind of empty answer, joined to a remedy, living through the history of science, that the case of Kelvin, the vitalist the book quotes, counts against.
+
+
+## annotated/afterwords/making-history-available.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The paragraph does not take it up, and the footnote's caveat is the only one the method receives.
+- After: The paragraph does not take it up, and that footnote is the only caveat the post gives about its method.
+
+- Before: The remedy sits uneasily with the diagnosis.
+- After: The remedy repeats what the diagnosis blamed.
+
+
+## annotated/afterwords/explain-worship-ignore.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The post is a fable, a three-way classification and one turn: the reader follows
+- After: The post is a fable, a three-way classification and one twist: the reader follows
+
+- Before: What this post adds is the three commands and the turn.
+- After: What this post adds is the three commands and the twist.
+
+- Before: The turn does not say what it condemns.
+- After: The twist does not say what it condemns.
+
+- Before: with a turn that does not say which part of the reasoning was Worship and a closing choice it gives no way to make.
+- After: with a twist that does not say which part of the reasoning was Worship, and a closing choice it gives no way to make.
+
+
+## annotated/afterwords/science-as-curiosity-stopper.tex
+
+Why: Style pass: plain, literal wording.
+
+- Before: The green elephant grips because it cannot be fitted
+- After: The green elephant holds attention because it cannot be fitted
+

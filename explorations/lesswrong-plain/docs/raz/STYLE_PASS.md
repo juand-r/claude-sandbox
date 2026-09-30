@@ -44,39 +44,39 @@ of style and grace." Done by the editor (me), not by agents. Every edit is logge
 - [x] the-lens-that-sees-its-flaws
 - [x] making-beliefs-pay-rent
 - [x] a-fable-of-science-and-politics
-- [ ] belief-in-belief
-- [ ] religion-s-claim-to-be-non-disprovable
-- [ ] professing-and-cheering
-- [ ] belief-as-attire
-- [ ] pretending-to-be-wise
-- [ ] applause-lights
-- [ ] focus-your-uncertainty
-- [ ] what-is-evidence
-- [ ] scientific-evidence-legal-evidence-rational-evidence
-- [ ] how-much-evidence-does-it-take
-- [ ] einstein-s-arrogance
-- [ ] occam-s-razor
-- [ ] your-strength-as-a-rationalist
-- [ ] absence-of-evidence-is-evidence-of-absence
-- [ ] conservation-of-expected-evidence
-- [ ] hindsight-devalues-science
-- [ ] illusion-of-transparency-why-no-one-understands-you
-- [ ] expecting-short-inferential-distances
-- [ ] fake-explanations
-- [ ] guessing-the-teacher-s-password
-- [ ] science-as-attire
-- [ ] fake-causality
-- [ ] semantic-stopsigns
-- [ ] mysterious-answers-to-mysterious-questions
-- [ ] the-futility-of-emergence
-- [ ] say-not-complexity
-- [ ] positive-bias-look-into-the-dark
-- [ ] lawful-uncertainty
-- [ ] my-wild-and-reckless-youth
-- [ ] failing-to-learn-from-history
-- [ ] making-history-available
-- [ ] explain-worship-ignore
-- [ ] science-as-curiosity-stopper
+- [x] belief-in-belief
+- [x] religion-s-claim-to-be-non-disprovable
+- [x] professing-and-cheering
+- [x] belief-as-attire
+- [x] pretending-to-be-wise
+- [x] applause-lights
+- [x] focus-your-uncertainty
+- [x] what-is-evidence
+- [x] scientific-evidence-legal-evidence-rational-evidence
+- [x] how-much-evidence-does-it-take
+- [x] einstein-s-arrogance
+- [x] occam-s-razor
+- [x] your-strength-as-a-rationalist
+- [x] absence-of-evidence-is-evidence-of-absence
+- [x] conservation-of-expected-evidence
+- [x] hindsight-devalues-science
+- [x] illusion-of-transparency-why-no-one-understands-you
+- [x] expecting-short-inferential-distances
+- [x] fake-explanations
+- [x] guessing-the-teacher-s-password
+- [x] science-as-attire
+- [x] fake-causality
+- [x] semantic-stopsigns
+- [x] mysterious-answers-to-mysterious-questions
+- [x] the-futility-of-emergence
+- [x] say-not-complexity
+- [x] positive-bias-look-into-the-dark
+- [x] lawful-uncertainty
+- [x] my-wild-and-reckless-youth
+- [x] failing-to-learn-from-history
+- [x] making-history-available
+- [x] explain-worship-ignore
+- [x] science-as-curiosity-stopper
 - [ ] truly-part-of-you
 - [ ] the-simple-truth
 
