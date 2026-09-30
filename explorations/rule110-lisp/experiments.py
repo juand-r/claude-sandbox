@@ -15,7 +15,7 @@ decoder misreads depending on glider phase; NOTES.md).
 import sys
 import time
 
-from casim import Run, padded_row
+from casim import Run, StreamRun, padded_row
 from census import MAX_DT, census
 from cts import fill_empty_appendants, run as cts_run
 from decoder import Decoder
@@ -105,19 +105,23 @@ def component_regions(tape, apps, right_periods):
             for a, b in zip(leaders, leaders[1:])]
 
 
-def read_outcomes(tape, apps, v, n_reads, T, row_origin=None):
+def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True):
     """Observed outcome ('Y'/'N') of each of the first n_reads reads, '!'
     if the region settled in a state that is neither, or '.' if not
     completed by generation T. row_origin: optionally a prebuilt
-    (row, origin) for a modified assembly with the same right side."""
+    (row, origin) for a modified assembly with the same right side.
+    stream: use casim.StreamRun (exact, steps only the active window)."""
     rp = n_reads // len(apps) + 3
-    if row_origin is None:
-        row_origin = padded_row(tape, apps, left_periods=T // (30 * v) + 3,
-                                right_periods=rp, left_pad=T + 50_000,
-                                right_pad=T + 100_000, v_override=v)
-    row, origin = row_origin
+    if row_origin is not None:
+        run = Run(*row_origin)
+    elif stream:
+        run = StreamRun(tape, apps, T // (30 * v) + 3, rp, v_override=v)
+    else:
+        run = Run(*padded_row(tape, apps, left_periods=T // (30 * v) + 3,
+                              right_periods=rp, left_pad=T + 50_000,
+                              right_pad=T + 100_000, v_override=v))
+    origin = run.origin
     regs = component_regions(tape, apps, rp)[:n_reads]
-    run = Run(row, origin)
     before = [None] * len(regs)
     state = ["." if a is not None else "-" for a, _ in regs]
     read_at = [None] * len(regs)

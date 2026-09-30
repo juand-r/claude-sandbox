@@ -107,3 +107,150 @@ class Run:
 def defect_map(cells):
     """Cells that break the ether's spatial period (pure ether -> 0)."""
     return cells ^ np.roll(cells, TILE)
+
+
+# ---------------------------------------------------------------------------
+# Streaming window (v0.1.1)
+#
+# Far from the collisions the assembled row evolves freely: the left side
+# (A and B blocks) translates by (3, 2), the central and right sides (D-L
+# blocks) by (30, -8), and the jigsaw assembly already defines every row g
+# of that free evolution (Placed.gbits). So only the region where the true
+# state differs from the free one needs stepping. StreamRun steps a window
+# around that region and re-seats it every RESEAT steps:
+#
+# - The packed engine is cyclic, so garbage from the window's wrap seam
+#   enters from both edges at most one cell per step: after s steps the
+#   cells [lo + s, hi - s) are exact.
+# - Real activity also spreads at most one cell per step, so cells outside
+#   [a - s, b + s], where [a, b] was the active extent (true != free) at
+#   the last re-seat, still equal the free evolution.
+# - A re-seat checks that a CHECK-cell zone just inside the exact region at
+#   each edge equals the free evolution (raises otherwise), finds the new
+#   active extent, and rebuilds the window as that extent plus MARGIN on
+#   each side, taking cells outside the old exact region from the free
+#   evolution. MARGIN >= 2 * RESEAT + CHECK keeps both effects apart.
+
+class _FreeRows:
+    """Free evolution of a contiguous run of Placed blocks that share one
+    (period, drift): row g is row g mod p shifted by drift * (g div p)."""
+
+    def __init__(self, placed, period, drift):
+        self.placed, self.p, self.d = placed, period, drift
+        self._rows = {}
+
+    def row(self, g):
+        """-> (global column of the first cell, uint8 array) for row g."""
+        r = g % self.p
+        if r not in self._rows:
+            for a, b in zip(self.placed, self.placed[1:]):
+                if a.gspan(r)[1] != b.gspan(r)[0]:
+                    raise AssertionError(f"non-contiguous free row {r}")
+            bits = "".join(pl.gbits(r) for pl in self.placed)
+            self._rows[r] = (self.placed[0].gspan(r)[0],
+                             np.frombuffer(bits.encode(), np.uint8) - ord("0"))
+        start, arr = self._rows[r]
+        return start + self.d * ((g - r) // self.p), arr
+
+
+UNDEFINED = 2   # marks cells with no free-evolution value (the C block's
+                # columns once C's patch rows run out, or beyond the row)
+
+
+class StreamRun:
+    """Exact Rule 110 run of an assembled row, stepping only the active
+    window (see the comment above). Same read-out API as Run, with
+    origin = 0: positions are the encoder's global columns."""
+
+    RESEAT = 256
+    CHECK = 64
+    MARGIN = 2 * RESEAT + CHECK + 64
+
+    def __init__(self, tape, appendants, left_periods, right_periods,
+                 v_override=None, left_gaps=None):
+        bits, placed = assemble(tape, appendants, left_periods, right_periods,
+                                v_override=v_override, left_gaps=left_gaps)
+        ic = next(i for i, p in enumerate(placed) if p.block.name == "C")
+        self.free = [_FreeRows(placed[:ic], 3, 2),
+                     _FreeRows(placed[ic + 1:], 30, -8)]
+        self.origin = 0
+        self.t = 0
+        self.since = 0            # steps since the last re-seat
+        c_lo, c_hi = placed[ic].gspan(0)
+        x0 = placed[0].gspan(0)[0]
+        lo = c_lo - self.MARGIN
+        hi = c_hi + self.MARGIN
+        self._set_window(lo, np.asarray(bits[lo - x0:hi - x0], dtype=np.uint8))
+
+    def _set_window(self, lo, cells):
+        w = -(-len(cells) // 64) * 64
+        if w > len(cells):
+            cells = np.concatenate([cells, self.free_cells(self.t, lo + len(cells), lo + w)])
+        self.lo, self.width = lo, w
+        self.words = pack(cells)
+
+    def free_cells(self, g, lo, hi, strict=True):
+        """Free-evolution cells [lo, hi) at row g. strict: raise where
+        undefined; else mark those cells UNDEFINED."""
+        out = np.full(hi - lo, UNDEFINED, dtype=np.uint8)
+        for fr in self.free:
+            start, arr = fr.row(g)
+            a, b = max(lo, start), min(hi, start + len(arr))
+            if a < b:
+                out[a - lo:b - lo] = arr[a - start:b - start]
+        if strict and (out == UNDEFINED).any():
+            raise ValueError(f"no free evolution for part of [{lo}, {hi}) "
+                             f"at t={g}: the run left the assembled row")
+        return out
+
+    def step(self, n=1):
+        for _ in range(n):
+            self.words = step_packed(self.words)
+            self.t += 1
+            self.since += 1
+            if self.since == self.RESEAT:
+                self._reseat()
+
+    def _reseat(self):
+        k, c = self.since, self.CHECK
+        cells = unpack(self.words, self.width)
+        ref = self.free_cells(self.t, self.lo, self.lo + self.width, strict=False)
+        for z0, z1 in ((k, k + c), (self.width - k - c, self.width - k)):
+            if not np.array_equal(cells[z0:z1], ref[z0:z1]):
+                raise RuntimeError(f"t={self.t}: activity reached the edge of "
+                                   f"the streaming window (MARGIN too small)")
+        diff = np.nonzero(cells[k:self.width - k] != ref[k:self.width - k])[0]
+        if len(diff) == 0:
+            raise RuntimeError(f"t={self.t}: no active region left")
+        a = self.lo + k + diff[0]
+        b = self.lo + k + diff[-1] + 1
+        lo, hi = a - self.MARGIN, b + self.MARGIN
+        new = self.free_cells(self.t, lo, hi)
+        e0, e1 = max(lo, self.lo + k), min(hi, self.lo + self.width - k)
+        new[e0 - lo:e1 - lo] = cells[e0 - self.lo:e1 - self.lo]
+        self.since = 0
+        self._set_window(lo, new)
+
+    def window(self, lo, hi):
+        """Cells [lo, hi) of the current row: simulated where exact, free
+        evolution elsewhere (exact there too, see above)."""
+        out = self.free_cells(self.t, lo, hi, strict=False)
+        e0 = max(lo, self.lo + self.since)
+        e1 = min(hi, self.lo + self.width - self.since)
+        if e0 < e1:
+            cells = unpack(self.words, self.width)
+            out[e0 - lo:e1 - lo] = cells[e0 - self.lo:e1 - self.lo]
+        if (out == UNDEFINED).any():
+            raise ValueError(f"window [{lo}, {hi}) at t={self.t} not covered")
+        return out
+
+    def history(self, lo, hi, depth):
+        rows = [self.window(lo, hi)]
+        for _ in range(depth):
+            self.step()
+            rows.append(self.window(lo, hi))
+        return np.array(rows)
+
+    def ebar_frame(self, t=None):
+        t = self.t if t is None else t
+        return self.origin + int(round(EBAR_VELOCITY * t))
