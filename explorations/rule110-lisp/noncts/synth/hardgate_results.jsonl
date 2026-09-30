@@ -8,3 +8,6 @@
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "none", "k": 7, "sat": false, "secs": 20.6}
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "none", "k": 8, "sat": false, "secs": 62.7}
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 0, "sat": false, "secs": 72.8}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 1, "sat": false, "secs": 90.3}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 2, "sat": false, "secs": 63.7}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 3, "sat": false, "secs": 60.4}
