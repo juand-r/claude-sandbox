@@ -10,16 +10,19 @@ interpreter for the layer above:
 
 Compiled Lisp runs on a 256-state Turing machine; the machine-to-CTS
 tower is verified exactly; Cook's construction is reproduced exactly at
-the initial-condition level and its glider dynamics are measured with a
-glider census. What is and is not verified, and what it all costs, is in
-REPORT.md.
+the initial-condition level; and the glider machinery, checked read by
+read, computes De Mol's 3x+1 tag system through the whole Collatz
+trajectory 3 -> 5 -> 8 -> 4 -> 2 -> 1 (2.07e8 generations). What is and
+is not verified, and what it all costs, is in REPORT.md. `noncts/` holds
+a team exploration of Rule 110 computers that are not cyclic tag
+systems (none found; see noncts/SUMMARY.md).
 
-Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
+Version 0.1.1 (v0.1.0 was tagged `rule110-lisp-v0.1.0`; see CHANGELOG.md).
 
 ## Documents
 
 - `REPORT.md` - results, evidence, open problems, cost of the tower
-- `DIRECTIONS.md` - proposal for faster / more direct constructions
+- `DIRECTIONS.md` - options for faster / more direct constructions, with status
 - `REVIEW.md` - takeover review: every finding and its disposition
 - `CHANGELOG.md` - release notes
 - `PLAN.md` - work plan; `NOTES.md` - lab notes and debugging log
@@ -38,17 +41,22 @@ Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
 | `tag.py`, `cts.py` | tag systems, TS -> CTS; CTS interpreter; empty-appendant rewrite |
 | `encoder.py`, `data/blocks.json` | CTS -> Rule 110 initial row |
 | `engine.py` | Rule 110 simulators (scalar, bit-packed) |
-| `casim.py` | running an encoded CTS on the automaton |
+| `casim.py` | running an encoded CTS on the automaton: `Run` (cyclic array), `StreamRun` (exact streaming window, checkpointable) |
+| `hashlife.py` | 1-D HashLife engine (exact; prototype) |
 | `census.py` | glider census: find and type gliders in a row |
 | `decoder.py` | moving-data reader (diagnostic) |
 | `experiments.py` | the long automaton runs cited in REPORT.md |
 | `tools/extract_blocks.py` | regenerates the block data from arXiv:0906.3248 |
+| `data/collatz_v12216.log` | the read-by-read log of the Collatz run (REPORT.md 3.6) |
+| `noncts/` | non-CTS team: SUMMARY.md, BOARD.md, one directory per agent |
 
 `trash/` holds retired files, kept for reference.
 
 ## Running
 
     pip install numpy numba pytest pillow
-    pytest tests -q                      # ~8 s, all layers
-    python experiments.py reads 12       # REPORT.md 3.3, ~3-5 minutes
-    python experiments.py lblock 3       # REPORT.md 3.4 (0..4), minutes each
+    pytest tests -q                      # ~15 s, all layers and engines
+    python experiments.py reads 12       # REPORT.md 3.3, ~1 minute
+    python experiments.py lblock 3       # REPORT.md 3.4 (0..4; add 'fill')
+    python experiments.py cost           # REPORT.md section 4 tables
+    python experiments.py collatz        # REPORT.md 3.6, ~4 hours, resumable

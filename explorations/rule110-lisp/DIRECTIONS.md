@@ -1,7 +1,8 @@
-# Directions for v0.2: faster and more direct
+# Directions: faster and more direct
 
-Status: proposal, written at the v0.1.0 release; numbers corrected in
-v0.1.1. Nothing here is implemented yet. The request was "more clever/faster/more efficient ways
+Status: written at the v0.1.0 release as a proposal; section 4 records
+what v0.1.1 did with each option (numbers in sections 1-3 are the
+v0.1.0 analysis, corrected where noted). The request was "more clever/faster/more efficient ways
 of implementing this ... it should be possible to build an interpreter on
 Rule 110 more directly". This document says where the cost actually is,
 then ranks the ways to cut it by expected gain and risk.
@@ -135,11 +136,30 @@ against the packed engine.
   cost of about 2x in reads and 2-4x in v. The L block itself remains
   unexplained (NOTES.md, phase 3 item 2).
 
-## 4. Suggested order
+## 4. Status after v0.1.1
 
-0. Close the dynamic-verification gap: account for every character per
-   ossifier (REPORT.md section 3.3), turn it into an automated check.
-1. L-block defect (prerequisite for any compiled program on gliders).
-2. Demand-timed ossifiers (largest expected gain, directly testable).
-3. Leaner binarization / direct clockwise SKI machine.
-4. HashLife, measured on the results of 1-3.
+The options were pursued in this order. Outcomes (details in REPORT.md):
+
+0. Dynamic-verification gap: closed. A decoder-free read check
+   matches the reference (REPORT 3.3); the moving-data decoder was
+   phase-dependent.
+1. L-block defect: sidestepped, not explained. An exact CTS rewrite
+   removes empty appendants (REPORT 3.4). Placement shifts of L did not
+   fix it.
+2. Demand-timed ossifiers: partly measured, gain smaller than hoped.
+   Small programs read correctly at 1/4 of Cook's v, but De Mol's
+   program needs more than half of it (REPORT 3.5-3.6). No non-uniform
+   scheduler was built; the needed spacing is not yet modeled.
+3. Leaner binarization: done. A direct binary clockwise construction:
+   capstone 66 states instead of 130 (~7x fewer generations); the SKI
+   machine binarizes to 119,347 states instead of ~22M (REPORT 1, 4).
+4. Engines: a streaming window (exact, ~40x on De Mol, used for the
+   whole Collatz trajectory) and a HashLife prototype (exact, ~2x the
+   streaming window here) (REPORT 5).
+5. More direct constructions (2.4): a first team round found no
+   non-CTS computer but verified building blocks (REPORT 6,
+   noncts/SUMMARY.md).
+
+Next, by expected value: a glider-level simulator (REPORT 5), a model of
+the spacing a program needs, the cause of the L failure, and a second
+non-CTS team round.

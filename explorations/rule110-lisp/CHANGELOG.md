@@ -1,53 +1,56 @@
 # Changelog
 
-## v0.1.1 (unreleased)
+## v0.1.1 (2026-09-30, untagged)
+
+Headline
+- Rule 110 gliders compute a whole Collatz trajectory: De Mol's 3x+1
+  tag system from x = 3, compiled and assembled with Cook's blocks,
+  runs 3 -> 5 -> 8 -> 4 -> 2 -> 1 with all 556 CTS reads observed and
+  equal to the reference (2.07e8 generations, Cook's spacing;
+  `experiments.py collatz`, REPORT 3.6).
 
 Corrections to v0.1.0
 - Withdrawn: "each ossifier converts four characters" and the `fronts`
-  table with its 4-of-6 mismatches. Both came from the moving-data
-  decoder, which is phase-dependent (its output changes with t mod 30
-  on static data). Measured instead: one ossifier = one burst of four C
-  gliders = one tape character; one read per ossifier period.
-- Cost estimate back to ~30v generations per read (capstone ~3.6e20);
-  the 7.5v-30v range is withdrawn.
+  table. Both came from the moving-data decoder, which is phase-
+  dependent. Measured instead: one ossifier = four C gliders = one tape
+  character; one read per ossifier period, ~30v generations.
+- The 7.5v-30v cost range is withdrawn; capstone back to ~3.6e20.
 
 Verified
-- Dynamic correctness on gliders for `{YYYYNN}`: a decoder-free check
-  (experiments.py reads) matches the reference CTS 12/12 at 3x Cook's
-  ossifier spacing and 10/10 at the default spacing, including reads of
-  characters appended during the run.
-- Uniform ossifier spacing: for `{YYYYNN}` v = 523-528 correct, v <= 262
-  fails; for 2- and 4-appendant programs 1/2 and 1/4 of Cook's v read
-  correctly (10/10, 12/12), at the one-appendant cadence.
-- Empty appendants: cts.fill_empty_appendants rewrites them exactly as
-  junk N-words one appendant-cycle long, so the failing short-leader
-  block L is never used. The minimal program that L broke reads 12/12.
-- cw.two_way_to_binary_cw: direct binary clockwise construction. SKI
-  machine 119,347 states in 1.5 s (old path: ~22M states, never
-  finished) and still normalizes SKI terms; capstone 66 states instead
-  of 130, ~7x fewer generations (experiments.py cost).
+- Decoder-free read check: `{YYYYNN}` 12/12 (3x Cook's v) and 10/10
+  (Cook's v), including reads of appended characters.
+- Empty appendants: an exact CTS rewrite (cts.fill_empty_appendants)
+  removes the failing short-leader block; the minimal program L broke
+  reads 12/12.
+- Spacing: small programs read correctly at 1/2-1/4 of Cook's v (the
+  need grows with appendant length, not table size), but De Mol needs
+  more than half of Cook's v (fails at 1,600, 3,200 and 6,400).
+- Direct binary clockwise construction (cw.two_way_to_binary_cw): SKI
+  machine 119,347 states (old path ~22M, never finished), still
+  normalizes SKI terms; capstone 66 states instead of 130, ~7x fewer
+  generations.
 
-- Needed spacing grows with appendant length (6 symbols: 262-523; 18
-  symbols: 532-1,000), not with table size.
-- casim.StreamRun: exact streaming-window simulator (steps only where the
-  state differs from the assembly's free evolution); matches the full
-  run cell for cell. With faster seam fitting and stepping, De Mol's
-  first 10 reads take ~80 s instead of ~1 h.
+New tools
+- casim.StreamRun: exact streaming-window simulator, checkpointable;
+  reference split between the two free rows.
+- engine.step_packed_n: numba kernel, 4x, bit-identical.
+- hashlife.py: exact 1-D HashLife prototype (~2x StreamRun here).
+- experiments.py: `reads`, `lblock [fill]`, `cost`, `collatz`; read
+  check flags malformed regions ('!') and resumes from checkpoints.
+- encoder: cached seam fits (bit-identical rows, ~5x faster assembly);
+  `left_gaps` ossifier schedules.
+- noncts/: first team round on non-CTS computers (none found;
+  noncts/SUMMARY.md).
+- Tests: 52 (fill exactness, edge growth, direct binary tower and SKI,
+  engine equivalence).
 
-- De Mol's 3x+1 system, x = 3, on gliders: the whole trajectory
-  3 -> 5 -> 8 -> 4 -> 2 -> 1, all 556 reads correct at Cook's v = 12,216
-  (2.07e8 generations, 3.9 h; experiments.py collatz). Below half of
-  Cook's v it fails (read 83 at v = 3,200 and 6,400; read 29 at 1,600).
-- casim: reference split (no unbounded window growth from overlapping
-  free rows), numba step kernel (4x, bit-identical), checkpoint/resume.
-- hashlife.py: exact 1-D HashLife; ~2x StreamRun on growing-tape runs.
-
-Changes
-- encoder.assemble(left_gaps=...): explicit ossifier schedule.
-- experiments.py: `reads`, `cost`; `lblock` decoder-free, with `fill`.
-- read check flags regions that settle with an unexpected Ebar count
-  ('!') instead of calling them Y.
-- Tests: fill exactness, edge growth, direct binary tower and SKI (49).
+Known open problems
+- Why the short-leader block L fails.
+- What spacing a program really needs.
+- A compiled Turing machine on gliders (~9e12 generations for the
+  smallest case; needs a glider-level simulator).
+- A non-destructive zero test and two-counter addressing for a non-CTS
+  machine.
 
 ## v0.1.0 (2026-09-30)
 

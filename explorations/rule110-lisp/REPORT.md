@@ -63,6 +63,11 @@ The main claims, in decreasing order of the strength of their evidence:
    the direct binary construction, 3.6e20 with the old one; before any
    spacing reduction). The dominant cost grows with the cube of the tag
    alphabet.
+9. **No Rule 110 computer outside the cyclic-tag family was found.** A
+   four-agent team produced verified building blocks for a two-counter
+   machine and a reasoned explanation of why known constructions are
+   queues; a non-destructive zero test and two-counter addressing are
+   missing (section 6).
 
 ## 1. The tower and how it is verified
 
@@ -349,7 +354,7 @@ and v 1.1e10 -> 2.4e10, about 4x in total (section 4).
 *Consequence.* Tag-compiled programs can now run on gliders. The first
 is De Mol's 3x+1 system (section 3.6).
 
-### 3.5 Ossifier spacing: Cook's v is far larger than needed
+### 3.5 Ossifier spacing: small programs need much less than Cook's v
 
 Cook's spacing v grows with the total length of the appendant table
 (section 4). The measurements below suggest the spacing a read needs is
@@ -510,27 +515,91 @@ of section 3.5, which the capstone's long rejection runs (each skipped
 code word is |Phi| - 1 consecutive N reads) would bring into play. The
 realistic gain is smaller and unknown.
 
-## 5. What comes next
+## 5. Simulating long runs
 
-DIRECTIONS.md ranks the options. Status after v0.1.1:
+Three engines are available, all exact and cross-checked cell for cell.
 
-- Done: the dynamic-verification gap (3.3); empty appendants, by an
-  exact rewrite (3.4); a direct binary clockwise construction that gets
-  the Lisp-running machine to the binary level (section 1, section 4).
-- Next measurement: how the spacing a read needs scales with appendant
-  length (3.5). If it scales with one appendant, the bottom layer becomes
-  quadratic in |Phi| instead of cubic.
-- Engine: a streaming window or 1-D HashLife, so that runs such as De
-  Mol's full Collatz trajectory fit in hours rather than months.
-- Unexplained: why the short-leader block fails (3.4), and why the
-  control program of 3.4 reads only every second ossifier period.
+| engine | module | idea | measured |
+|---|---|---|---|
+| packed cyclic array | `engine.py`, `casim.Run` | 64 cells per word; with a numba kernel, 17 us per step at 870k cells | reference; wrap-seam debris spreads from the array ends |
+| streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 30x-40x on De Mol; the whole Collatz run (3.6) |
+| 1-D HashLife | `hashlife.py` | hash-consed quadtree in time | ~2x StreamRun on growing-tape runs; slow when sampled every few hundred steps |
+
+*Why the streaming window works.* Far from the collisions, the left side
+(the ossifier train) and the right side (the unread table) evolve freely,
+and the jigsaw assembly defines their state at every time. StreamRun
+steps a window around the rest. Every 256 steps it rebuilds the window.
+Garbage from the window's wrap and real activity each spread at most one
+cell per step, so a margin of twice that plus a check zone keeps the
+interior exact. A check zone that disagrees with the free evolution
+raises an error. Left of the window's centre only the left side's free
+row is valid, right of it only the right side's. An earlier version let
+the right row overwrite the left one. That made the window grow without
+bound and, past the table's end, used a row that was not the truth;
+both were caught by a 200k-generation comparison with the full run.
+
+*What limits it.* Cook's machine leaves a permanent stream of
+left-moving Ebars that later ossifiers must cross, so the region that
+must be simulated exactly grows linearly with time and the run time
+quadratically. The next order-of-magnitude step would be a glider-level
+simulator that steps collisions instead of cells, using the verified
+collision catalog of `noncts/collider/`. It is not built.
+
+*Operational note.* Runs of hours need `read_outcomes(checkpoint=...)`:
+the cloud container running this project is reclaimed within minutes of
+the session going idle, and a checkpoint (a few KB: the constructor
+arguments and the live window) lets the same command resume.
+
+## 6. Beyond cyclic tag systems
+
+A four-agent team (collider, architect, scholar, synth) tried to build a
+Rule 110 computer that does not emulate a cyclic tag system.
+`noncts/SUMMARY.md` gives the full account. In short:
+
+- **No such computer was built.** Every complete Rule 110 universality
+  proof in the literature the team found emulates a cyclic tag system.
+- **The team's explanation for that** is that stored data is transparent
+  to signals from one side only, so with the program arriving from one
+  side only the nearest store can answer: a queue, hence a tag system.
+  This is an argument checked against the full collision catalog, not a
+  proof.
+- **Verified building blocks for a two-counter machine exist:**
+  timing-free register reactions, a read gadget, a memory crossable from
+  both sides, order-independent wiring, two kinds of unbounded counter,
+  and a rigid instruction stream.
+- **Two pieces are missing:** a zero test that does not destroy the
+  counter, and a way to address one of two counters. Both were searched
+  for exhaustively at small sizes and not found.
+
+## 7. What comes next
+
+Done in v0.1.1:
+- the dynamic-verification gap (3.3);
+- empty appendants, by an exact rewrite (3.4);
+- a direct binary clockwise construction (sections 1 and 4);
+- the streaming engine (section 5);
+- a whole Collatz trajectory on gliders (3.6).
+
+Open, roughly in order of value:
+
+- A glider-level simulator (section 5). A compiled Turing machine on
+  gliders is the next milestone: for the 3-state test machine through
+  the Cocke-Minsky route it needs about 9.6e4 reads at v ≈ 3.3e6, some
+  9e12 generations, about 45,000 times the Collatz run.
+- A model of the ossifier spacing a program really needs. Small programs
+  tolerate a quarter of Cook's value; De Mol needs more than half
+  (3.5-3.6).
+- Why Cook's short-leader block fails (3.4), and why one control program
+  reads only every second ossifier period.
+- A second team round on the missing non-CTS pieces (section 6).
 
 ## Reproduction
 
 All results are deterministic.
 
-- `pytest tests/` (about 25 s) covers every symbolic layer, the
-  encoder's local exactness, and the glider census.
+- `pytest tests/` (about 15 s, 52 tests) covers every symbolic layer, the
+  encoder's local exactness, the glider census, and the equivalence of
+  the three engines.
 - `python experiments.py reads 12` reproduces the 12/12 check in 3.3
   (about 3 minutes).
 - `python experiments.py lblock 0..4` reproduces the first table in 3.4;

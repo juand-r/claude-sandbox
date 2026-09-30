@@ -1,5 +1,16 @@
 # Plan
 
+## Phase 4: documentation pass, non-CTS team round 2 (started 2026-09-30)
+
+User: make sure documentation is complete, push, then supervise another
+round of agents on a non-CTS machine.
+- [x] Documentation pass: README (modules, commands, status), REPORT
+      (engines section 5, non-CTS section 6, next steps 7, summary),
+      DIRECTIONS (status per option), CHANGELOG, PLAN
+- [x] Push
+- [ ] Round 2: brief from round-1 results (noncts/SUMMARY.md), agents
+      launched, board supervised, results verified and summarized
+
 ## Phase 3: extension (started 2026-09-30)
 
 User chose: pursue DIRECTIONS.md in order, and run a 4-agent team on a
