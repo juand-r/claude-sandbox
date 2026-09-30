@@ -21,7 +21,7 @@ from fractions import Fraction
 import numpy as np
 
 from encoder import assemble
-from engine import ETHER, pack, step_packed, unpack
+from engine import ETHER, pack, step_packed, step_packed_n, unpack
 
 EBAR_VELOCITY = Fraction(-8, 30)
 TILE = len(ETHER)
@@ -236,10 +236,12 @@ class StreamRun:
         return out
 
     def step(self, n=1):
-        for _ in range(n):
-            self.words = step_packed(self.words)
-            self.t += 1
-            self.since += 1
+        while n:
+            k = min(n, self.RESEAT - self.since)
+            self.words = step_packed_n(self.words, k)
+            self.t += k
+            self.since += k
+            n -= k
             if self.since == self.RESEAT:
                 self._reseat()
 

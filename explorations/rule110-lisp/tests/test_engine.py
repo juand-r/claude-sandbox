@@ -77,3 +77,15 @@ def test_packed_engine_matches_scalar():
         a = step_packed(a)
         ref = step(ref)
     assert np.array_equal(unpack(a, len(cells)), ref)
+
+
+def test_step_packed_n_matches_step_packed():
+    import numpy as np
+    from engine import pack, step_packed, step_packed_n
+    rng = np.random.default_rng(0)
+    for width, n in ((64, 1), (640, 7), (6400, 300)):
+        a = pack(rng.integers(0, 2, width).astype(np.uint8))
+        b = a
+        for _ in range(n):
+            b = step_packed(b)
+        assert np.array_equal(step_packed_n(a, n), b)

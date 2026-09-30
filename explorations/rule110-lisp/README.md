@@ -48,7 +48,7 @@ Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
 
 ## Running
 
-    pip install numpy pytest pillow
+    pip install numpy numba pytest pillow
     pytest tests -q                      # ~8 s, all layers
     python experiments.py reads 12       # REPORT.md 3.3, ~3-5 minutes
     python experiments.py lblock 3       # REPORT.md 3.4 (0..4), minutes each

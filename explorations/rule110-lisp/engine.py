@@ -11,6 +11,7 @@ i.e. new = (center OR right) AND NOT (left AND center AND right).
 """
 
 import numpy as np
+from numba import njit
 
 RULE = 110
 # TABLE[n] = output bit for neighborhood value n = 4*left + 2*center + right
@@ -109,3 +110,29 @@ def step_packed(a):
 
 
 _ONE, _S63 = np.uint64(1), np.uint64(63)
+
+
+@njit(cache=True)
+def _run_packed(a, b, n):
+    """n steps of step_packed, fused into one compiled loop (a, b: two
+    buffers of equal length; returns whichever holds the result)."""
+    m = a.size
+    one, s63 = np.uint64(1), np.uint64(63)
+    for _ in range(n):
+        for i in range(m):
+            x = a[i]
+            p = a[i - 1] if i > 0 else a[m - 1]
+            q = a[i + 1] if i < m - 1 else a[0]
+            left = (x << one) | (p >> s63)
+            right = (x >> one) | ((q & one) << s63)
+            b[i] = (x | right) & ~(left & x & right)
+        a, b = b, a
+    return a
+
+
+def step_packed_n(a, n):
+    """n steps of step_packed (cyclic), compiled; bit-identical to
+    calling step_packed n times (tests/test_engine.py)."""
+    if n == 0:
+        return a
+    return _run_packed(a.copy(), np.empty_like(a), n)
