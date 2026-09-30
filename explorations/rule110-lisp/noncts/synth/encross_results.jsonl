@@ -14,3 +14,13 @@
 {"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [2, 3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 109.9}
 {"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [2], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 26.6}
 {"spec": "endec", "p": 4, "d": -2, "WY": 32, "T2": 400, "ns": [3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 49.3}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 4, "exact": false, "delta": -1, "sat": false, "secs": 100.9}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 5, "exact": false, "delta": -1, "sat": false, "secs": 3.6}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 6, "exact": false, "delta": -1, "sat": false, "secs": 3.7}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 7, "exact": false, "delta": -1, "sat": false, "secs": 3.0}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 8, "exact": false, "delta": -1, "sat": false, "secs": 14.9}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 9, "exact": false, "delta": -1, "sat": false, "secs": 3.4}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 10, "exact": false, "delta": -1, "sat": false, "secs": 10.7}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 11, "exact": false, "delta": -1, "sat": false, "secs": 3.2}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 12, "exact": false, "delta": -1, "sat": false, "secs": 20.6}
+{"spec": "encross", "p": 4, "d": -2, "WY": 24, "T2": 400, "ns": [1, 2, 3], "k": 0, "s": 13, "exact": false, "delta": -1, "sat": false, "secs": 3.0}

@@ -19,7 +19,8 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
   - [x] uniform-v sweeps: 1-app min in (262, 523]; 2-app at v/2 10/10; 4-app at v/4 12/12
   - [x] De Mol filled at v=1600 (7.6x below default): reads 0-11 correct (full-width run)
   - [x] scaling: 18-symbol appendant needs 532 < v <= 1000; 6-symbol 262 < v <= 523
-  - [ ] De Mol x=3 to Collatz 1 (552 reads) on StreamRun: running
+  - [x] De Mol x=3: 83/83 through Collatz 3 -> 5 at v=3200; fails at read 83
+  - [ ] De Mol to Collatz 1 at v=6400: running
 - [x] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
   - measured: SKI clockwise machine 10,897 states / 43 symbols / 395,550
     transitions; binarize() carries (new state, written symbol) = 345,523

@@ -1,4 +1,10 @@
-"""Which gliders pass or modify E_n (n = 1..3) from either side?
+"""WARNING (retracted in part): the G rows for n >= 2 are WRONG. The G
+started 150+ cells behind E_n and catches it at relative speed 1/15, so it
+had not arrived by the end of the run; "E_n + G -> E_n + G" meant "nothing
+happened yet". Correct: E_n + G -> E_(n-1) + A^3 (see NOTES.md). The D1, D2,
+Bbar and Bhat rows collided and stand.
+
+Which gliders pass or modify E_n (n = 1..3) from either side?
 Left side (right-movers): D1, D2. Right side (fast left-movers): G, Bbar,
 Bhat (they catch E_n from behind). Outcome types over several phases and
 separations; E_n built as E(A,f1_1) + (n-1) B's."""

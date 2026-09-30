@@ -215,8 +215,7 @@ def main():
     return 1 if fails else 0
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+
 
 
 # ---------------------------------------------------------------- gated CSM
@@ -312,3 +311,10 @@ def test_gated(n_random=400, seed=2):
         total += 1
         fails += not ok
     return total, fails
+
+
+if __name__ == "__main__":
+    rc = main()
+    t, f = test_gated()
+    print(f"gated variant: {t} differential tests, {f} failures")
+    sys.exit(1 if (rc or f) else 0)

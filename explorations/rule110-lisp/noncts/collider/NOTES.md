@@ -75,3 +75,21 @@
   times.
 - FINDINGS.md: the harness refuses to let me (a subagent) write report
   files; the verified findings go into my final report and the board.
+- glidersim.py validated: 188/188 cell-exact agreements on random scenes,
+  0 disagreements, 112 refused as possible 3-body (of those, naive
+  pairwise application would be wrong/inconsistent in 39) -> guard needed.
+- E^n counter: INC = B (single class). DEC from the left = A in one class
+  (A-train with fixed spacing class, history-independent: checked all
+  histories <= 10); DEC from the right = G, class-free, answer A^3; zero:
+  G#0 -> E + A^4. scholar's "G passes E_n" was a too-short run (retracted).
+- G + B^k -> GBk (single object, class-independent). E^n + GBk ->
+  E^(n+k-4) (+A^(3-k)), class-free for n >= 2; GB3 DEC / GB4 NOP / GB5 INC;
+  zero classes GB3#0 -> E + A, GB4#1 -> E, GB5#0 -> E^2. Rigid G-speed
+  program streams verified end-to-end in the CA (ecounter.run_gb).
+  Observation: without answers the counter value is a static function of
+  the stream prefix (slip bookkeeping), so all data dependence enters via
+  the zero answer.
+- Soft gate: A + GB4 #4 -> A. Absorbers: A + GB1 #3 -> G; A + G-G packet
+  -> GB2 (31 combos). No clean hard gate yet (would need A + H -> GB4).
+- Mistake avoided/lesson: the one-sided B/G stream needs geometric spacing
+  (B faster than G overtakes it); all-G-speed packets avoid that.

@@ -81,7 +81,10 @@ class Catalog:
         assert a.denominator == 1
         a = int(a)
         row = self.rows[(X, Y, k)]
-        return row, self.reg[regmod.key(row)], (a * PX[0], a * PX[1])
+        rk = regmod.key(row)
+        if rk not in self.reg:            # catalog entry without region yet
+            self.reg[rk] = regmod.region(self.lib, row)
+        return row, self.reg[rk], (a * PX[0], a * PX[1])
 
 
 class GliderSim:

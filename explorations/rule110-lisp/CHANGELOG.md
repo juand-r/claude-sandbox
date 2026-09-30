@@ -34,6 +34,12 @@ Verified
   run cell for cell. With faster seam fitting and stepping, De Mol's
   first 10 reads take ~80 s instead of ~1 h.
 
+- De Mol's 3x+1 system, x = 3, on gliders: 83/83 reads correct through
+  the first Collatz step 3 -> 5 at v = 3,200 (Cook: 12,216); fails later.
+  At v = 1,600 it fails at read 29. Spacing depends on long rejection
+  runs, not only on the longest appendant.
+- hashlife.py: exact 1-D HashLife; ~2x StreamRun on growing-tape runs.
+
 Changes
 - encoder.assemble(left_gaps=...): explicit ossifier schedule.
 - experiments.py: `reads`, `cost`; `lblock` decoder-free, with `fill`.

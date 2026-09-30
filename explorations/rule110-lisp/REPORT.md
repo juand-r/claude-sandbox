@@ -39,18 +39,24 @@ The main claims, in decreasing order of the strength of their evidence:
    characters appended during the run. Each ossifier converts one
    moving-data character into one tape character (four C gliders), so a
    read costs about 30v generations.
-5. **Empty appendants are no longer a blocker.** Cook's block for them
+5. **The first Collatz step runs on gliders.** De Mol's 3x+1 tag
+   system from x = 3, compiled and assembled with Cook's blocks, reads
+   83 of 83 CTS characters correctly through the step 3 -> 5 (section
+   3.6), at a third of Cook's ossifier spacing. Later reads fail at that
+   spacing; the full trajectory to 1 has not been run yet.
+6. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
    a run of N's one appendant-cycle long, so L is never needed. The
    minimal program that L broke now reads 12 of 12 correctly.
-6. **Cook's ossifier spacing is far larger than needed.** For programs
+7. **Cook's ossifier spacing is larger than needed.** For programs
    with 2 and 4 appendants, spacing reduced to 1/2 and 1/4 of Cook's
    value still reads correctly (10 of 10 and 12 of 12), at the cadence of
-   a one-appendant program. The spacing a read needs appears to be set by
-   one appendant, not by the whole table, which is what Cook's formula
-   scales with. This is measured on small programs only.
-7. **Running the whole tower on gliders is out of reach by about 14
+   a one-appendant program, so the spacing is not set by the whole
+   table, which is what Cook's formula scales with. But long runs of
+   rejections need more: De Mol's program fails at 1/8 of Cook's value
+   and gets further at 1/4. What the needed spacing depends on is open.
+8. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
    spacing reduction). The dominant cost grows with the cube of the tag
@@ -339,7 +345,7 @@ the junk table data enlarges v. For the capstone: reads 1.05e9 -> 2.1e9
 and v 1.1e10 -> 2.4e10, about 4x in total (section 4).
 
 *Consequence.* Tag-compiled programs can now run on gliders. The first
-candidate is De Mol's 3x+1 system; a run is in progress (NOTES.md).
+is De Mol's 3x+1 system (section 3.6).
 
 ### 3.5 Ossifier spacing: Cook's v is far larger than needed
 
@@ -395,6 +401,40 @@ rejection runs of at most two, which is why they did not show it.
 about 55 per symbol" is an upper bound from the 18-symbol case. The cost
 figures in section 4 therefore still use Cook's v, with the reduced-v
 estimate marked as such.
+
+### 3.6 The first Collatz step on gliders
+
+*Setup.* De Mol's 3x+1 tag system {A -> CY, C -> A, Y -> AAA} from tape
+AAA (x = 3), compiled to a CTS by the unary encoding, empty appendants
+filled as in 3.4 (12 appendants of 6 to 18 symbols), assembled with
+Cook's blocks at uniform spacing v, run on the streaming engine
+(`casim.StreamRun`), and checked read by read with the decoder-free
+check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
+72, AAAAAAAA (8) at read 204, and A (1) at read 552.
+
+*Observation.*
+
+| v | reads correct | first failure | generations reached |
+|---|---|---|---|
+| 1,600 | 0-28 (29) | read 29-30, during 16 consecutive N reads | 2.1e6 |
+| 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads | 9.3e6 |
+| 6,400 | running | | |
+
+(Cook's formula gives v = 12,216.)
+
+*Interpretation.* At v = 3,200 the glider field carried out the whole
+first Collatz step, 3 -> 5: every one of the 83 reads up to and past
+read 72 was observed and matched the reference, including accepts of
+all three appendant lengths and of the junk words, and runs of up to 16
+rejections. Section 3.5's small programs understated the spacing
+needed; what exactly it depends on is not known (rejection-run length
+alone does not explain why the 16-N run passed at 3,200 but a later
+17-N run failed).
+
+*Scope.* One program, one input, spacing below Cook's value. The
+failures are consistent with the spacing being too small; whether
+Cook's own v runs to Collatz 1 is being checked with the largest v the
+machine can afford in hours.
 
 ## 4. The cost of the tower
 

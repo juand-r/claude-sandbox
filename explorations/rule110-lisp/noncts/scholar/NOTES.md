@@ -3,12 +3,12 @@
 Role: literature, theory, adversarial verification.
 
 ## Plan
-- [ ] 1. Literature search; read primary sources; SURVEY.md with what each work shows.
-- [ ] 2. Early board post: most relevant literature.
-- [ ] 3. Theory: obstacles to non-CTS computation; best target model; reaction list.
-- [ ] 4. Own simulation checks (glider speeds, basic collisions) to ground claims.
-- [ ] 5. Adversarial verification of teammates' board claims.
-- [ ] 6. FINDINGS.md final summary + board post.
+- [x] 1. Literature search; read primary sources; SURVEY.md with what each work shows.
+- [x] 2. Early board post: most relevant literature.
+- [x] 3. Theory: obstacles to non-CTS computation; best target model; reaction list.
+- [x] 4. Own simulation checks (glider speeds, basic collisions) to ground claims.
+- [x] 5. Adversarial verification of teammates' board claims.
+- [x] 6. Final summary + board post (FINDINGS.md blocked by harness; content in NOTES.md).
 
 ## Log
 - 03:15 Downloaded + read (text-extracted, scratchpad/papers): Cook 2004, Cook 2009,
@@ -137,6 +137,8 @@ F15 differential crossing displacement: Ebar across two C1 markers changes their
 | multi-body crossing counter on an F pair (architect) | CONFIRMED (7 op strings; control fails) | check_xcounter.py |
 | E^n counter end to end (collider) | AGREES with my ecount.py | ecount.py |
 | E^n + G -> E^(n-1) + A^3, class-free (collider, synth) | CONFIRMED n=2..4 (30/30); my earlier "G passes" RETRACTED (run too short) | inline re-run |
+| only linear conservation law = slip mod 14 (synth) | CONFIRMED (3293 reactions, SNF) | invariants_check.py |
+| G-speed instruction set GB3/GB4/GB5 on E^n (collider) | CONFIRMED (6 programs); refinement: NOP/INC class-free even at zero, only DEC-at-zero needs its class | check_gb.py |
 - 04:03 check_yb2.py: architect's YB lane (C1 x F#1, F x Ebar#3, C1 x Ebar#1;
   4 F, 1 C1, 16 Ebar; messenger shifted a*(30,-8), a=0..36 step 4) evaluated with MY
   evolution + typer: 10/10 CLEAN. Negative control (C2 x F#1, F x Ebar#8, C2 x Ebar#2,
@@ -216,3 +218,24 @@ F19 corrected: E_n: INC = B (right), DEC = A (left, one class) or G (right, clas
 - Audit after the G artefact: every other "clean"/"crossing" claim I made was checked for
   contact before T (meeting time vs T, or products/displacements that prove contact).
   Only the G + E_n runs were affected.
+- 04:30 invariants_check.py: synth's "only linear conservation law = slip mod 14"
+  CONFIRMED on 3293 catalog reactions among 22 named types (packets split into members):
+  rank 22, invariant factors 1 x21 and 14; every row satisfies slip mod 14 with MY width
+  table (A^k = 8k, B^k = 6k, E^k = 9 + 6(k-1)).
+- gprobe.py moved to trash/ (its conclusions were artefacts, retracted); ecross.py annotated.
+- 04:37 check_gb.py: collider's G-speed instruction set VERIFIED with my evolution +
+  census (ID, IIDN, IIDNDI, INIDDNIIDD, IIIDDD, IDIDIDI: single E-type object with the
+  predicted slip, nothing else). Refinement: at ZERO, GB4 (NOP) and GB5 (INC) work in all
+  3 classes (shifts 0/7/14, class keys checked); only GB3 (DEC) at zero is
+  class-dependent (designated: E + A; others: A,A,A^2,F or C3). A (3,2) shift is NOT a
+  valid control here: (3,2) = 3 P_E - P_G is in the class lattice.
+
+## Final summary (04:37 UTC)
+Files (all in noncts/scholar/): SURVEY.md (literature), THEORY.md (theory, target,
+reaction status), NOTES.md (this log: verified findings F1-F20, verification ledger,
+retractions), csm.py (target machine + compilers + tests), checking scripts listed in
+the ledger. FINDINGS.md could not be created (harness refused a report file for a
+subagent); its content is the "Verified findings" list and ledger above.
+Plan status: 1 literature [done], 2 early board post [done], 3 theory [done],
+4 own simulations [done], 5 adversarial verification [done for every major claim
+posted up to now], 6 final summary [this section + board + handback].

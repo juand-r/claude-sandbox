@@ -28,6 +28,16 @@ The argument has four steps: the model (section 2), the crossing table
 (section 3), the access geometry (section 4), and what it leaves open
 (sections 5-7).
 
+**Update at the end of my session.** The team has since found ways around
+each premise, all re-checked by me: stores that drift with F gliders plus an
+order-independent crossing "lane" (architect, section 4.1-4.2); a counter
+held by two F's and changed by multi-body Ebar packets (architect, 4.3); and
+a counter held in the length of one E_n glider, incremented by B and
+decremented by G from the same side (collider and me, 4.3). The exact
+machine to aim for, with a compiler and tests, is in section 6.6; what is
+still missing is in section 7 (a whole-block skip on zero, a JUMP, and
+addressing two registers).
+
 ---
 
 ## 2. The model: Rule 110 gliders as a lattice signal machine
@@ -67,7 +77,13 @@ Each glider has a width w (ether offset right vs left, mod 14); the sum of
 widths is conserved by every collision **[thm]** (Cook 2004 s.3.1). Widths
 (my sign convention, **[sim]** `r110check.family`): A 8, B 6, Bbar 6, Bhat 3,
 C1 5, C2 11, C3 3, D1 3, D2 9, E 9, Ebar 7, F 13, G 4, H 3. Any proposed
-reaction can be screened with this in one line.
+reaction can be screened with this in one line. It is the *only* linear
+conservation law of the observed chemistry: the reaction matrix of the
+verified catalog (3293 reactions among 22 named types) has Smith normal
+form diag(1, ..., 1, 14) (synth; confirmed by `invariants_check.py`), so no
+weighted glider count is conserved. Any further invariant (for example the
+"phase potential" behind architect's no-winding result) must involve
+positions or phases.
 
 ### 2.4 The phase-free sub-chemistry
 
@@ -296,7 +312,7 @@ relative to any non-lane object (a lock or register head) the packet's
 class drifts with the history, unless messengers are consumed after use or
 the non-lane objects cross the same messengers.
 
-### 4.3 Counting needs reactions; a counter can live in one glider
+### 4.3 Counting: single crossings cannot; multi-body crossings and reactions can
 
 *No winding (architect, board).* For a register made of two markers and
 changed only by clean crossings, the change of the gap is a function of a
@@ -511,26 +527,42 @@ inside loops, so it does not suffice by itself). Option (a) is the cheaper
 one: the answer mechanism must delete a program-given number of packets in
 either case.
 
-## 7. Reactions the recommended target needs
+*Gated variant (matches the E^n answer).* Collider's one-sided E^n counter
+answers A^3 (was nonzero) or A^4 (was zero), and absorbers turn a surviving
+charge into deletions, so the two skip lengths differ by exactly one unit.
+`csm.py` (`compile_gated`, `run_gated`) shows this is enough: make the
+program a cycle of blocks separated by gates; a DEC ends its block and its
+answer deletes b following blocks if the register was nonzero, b + 1 if it
+was zero. Compile DEC(r, jp, jz) as three blocks [DEC r, b = 0]
+[trampoline to jp] [trampoline to jz], where a trampoline is INC s; DEC s
+(certain nonzero, so it skips to its target and restores s). 400 random
+Minsky programs agree with the direct interpreter; a control in which the
+zero branch skips the same as the nonzero branch fails 62 of 400.
 
-Two-counter machine, program periodic from the right, stores as piles or
-as marker pairs. Notation: P = a stream packet (left-mover, Ebar-based so
-it can cross C's); S = a stationary cell (C1 or C2).
+In this compile every data DEC has b = 0 (zero deletes exactly one block,
+nonzero deletes nothing); long skips occur only in trampolines, whose
+behaviour is a program constant. Physically a trampoline is better realised
+by a register-free JUMP packet that deletes the following blocks up to the
+next "hard" gate (as Cook's rejector deletes table data up to the next
+leader). The physical requirement list is therefore: INC; DEC whose zero
+answer deletes exactly one block; JUMP; and addressing for two registers.
 
-| # | primitive | status |
-|---|---|---|
-| 1 | idle crossing: P + S -> S + P for both cell values | available for one value at a time (Ebar x C1 2 classes, x C2 1 class); a packet that crosses both C1 and C2 must use compatible classes **[sim]** |
-| 2 | INC: P_inc + (store) -> (store with one more cell or marker moved +u) | needs a creation or displacement reaction; creation of C2 from Ebar needs an A4 from the left (Cook's ossification) **[hyp]** |
-| 3 | DEC: P_dec deletes one cell or moves a marker -u | C1 + B -> C2 and A + C2 -> C1 exist; deletion reactions exist (C2 + B -> D1) **[sim]** |
-| 4 | zero test with two distinguishable outcomes | pile: packet hits the floor marker instead of a cell; distance: markers adjacent **[hyp]** |
-| 5 | answer: a signal that deletes the next k packets (skip) | Cook's rejector deletes table data until the next leader; a k-bounded version is needed **[hyp]** |
-| 6 | relay: answer from the deep store crosses the front store | stationary stores: no strict relay found (synth UNSAT bounds, collider catalog); fuel-paying A-packet crosses ONE cell (verified); F-memory avoids the need (section 4.1) |
-| 7 | halt / output | Cook's halting signature (F glider) is one model **[thm]** |
+## 7. Reactions the recommended target needs (status at the end of my session)
 
-Open: 2 (INC without a left stream), 5 (bounded two-length skip) and 6
-(answer transport, in one of the forms above).
+Target: the gated cyclic skip machine of section 6.6 (two counters,
+program periodic from the right). Status labels as above; "team" means
+found by a teammate and independently re-checked by me unless noted.
 
----
+| # | primitive | best candidate | status |
+|---|---|---|---|
+| 1 | INC r | E^n: B + E^n -> E^(n+1), single class; rigid G-speed packet GB5 (collider); F pair: 3 multi-body Ebar packets (architect) | [sim] all; GB stream confirmed by `check_gb.py`, F pair by `check_xcounter.py` |
+| 2 | DEC r | E^n: GB3 in a rigid G-speed stream (no answer unless zero), G (answer A^3), or A from the left in one class; F pair: 3 packets (architect) | [sim]; GB3 at zero needs its designated class, GB4/GB5 do not (`check_gb.py`) |
+| 3 | zero test, answer distinguishable | E^n: G + E_1 -> A^4 + E (class 0) / C3 + A^3 / F; A + E_1 -> C3 | [sim]; F pair: open (architect's ztest) |
+| 4 | zero answer deletes exactly one block | collider's charge rule: A^4 + B^3 -> A (zero), A^3 + B^3 -> nothing (nonzero) | [hyp], not yet simulated as a whole |
+| 5 | JUMP: delete blocks up to a hard gate | Cook's rejector is the model | open |
+| 6 | two-register addressing | lock-and-key (synth), register heads outside the lane | open |
+| 7 | wiring: commands, memory and messengers cross in any order | architect's YB lane (C1 x F#1, F x Ebar#3, C1 x Ebar#1) | [sim] confirmed by `check_yb2.py` |
+| 8 | garbage | every messenger/answer must be consumed (else data-dependent displacement of later packets relative to non-lane objects) | [arg]; architect agrees |
 
 ## 8. What would change my mind
 

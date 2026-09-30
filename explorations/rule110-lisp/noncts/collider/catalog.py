@@ -128,12 +128,19 @@ def ecount_pairs(lib):
     return pairs
 
 
+def gb_pairs(lib):
+    """E^n (n = 1..9) vs GBk (k = 0..8): the G-speed command family."""
+    GB = ["G"] + [f"GB{k}" for k in range(1, 9)]
+    return [(En, g) for En in ECHAIN for g in GB if (En, g) != ("E", "G")
+            or True]
+
+
 if __name__ == "__main__":
     lib = Library.load()
     mode = sys.argv[1]
     pairs = {"base": base_pairs, "packets": packet_pairs,
              "extra": extra_pairs, "fpackets": fpacket_pairs,
-             "ecount": ecount_pairs}[mode](lib)
+             "ecount": ecount_pairs, "gb": gb_pairs}[mode](lib)
     rows = run_pairs(lib, pairs)
     lib.save()
     merge_save(rows)

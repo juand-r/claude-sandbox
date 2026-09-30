@@ -243,3 +243,87 @@ def g_history_check(max_len=10):
                 assert ev[0][0] == CHAIN[n - 2]
                 st = (n - 1, ev[0][1:])
     return zero_keys
+
+
+# ---------------------------------------------------------------------------
+# G-speed command packets GBk (G carrying k B's): E^n + GBk -> E^(n+k-4)
+# (+ A^(3-k) for k < 3), class-independent for n >= 2.
+
+def gb_history_check(max_len=9, zero_class={"GB3": 0, "GB4": 1, "GB5": 0}):
+    """Every sequence of GB3 (DEC) / GB5 (INC) / GB4 (NOP): at n >= 2 the
+    product must be class-independent; at n = 1 use the given class. Collect
+    the E-trajectory class (mod <P_E, P_G>) at every visit of n = 1."""
+    import itertools
+    PE, PG = (15, -4), (42, -14)
+    keys = set()
+    ops = {"D": "GB3", "N": "GB4", "I": "GB5"}
+    for L in range(1, max_len + 1):
+        for seq in itertools.product("DNI", repeat=L):
+            n, e = 1, (0, 0)
+            keys.add(class_key(e, PE, PG))
+            for op in seq:
+                g = ops[op]
+                nm = CHAIN[n - 1]
+                reps = canonical_reps(LIB, nm, g)
+                outs = [predict(nm, g, rep, eX=e)[1] for rep in reps]
+                if n >= 2:
+                    evs = {tuple(o) for o in outs}
+                    assert len(evs) == 1, (seq, op, outs)
+                    out = outs[0]
+                else:
+                    out = outs[zero_class[g]]
+                es = [p for p in out if p[0].startswith("E")]
+                assert len(es) == 1, (seq, op, out)
+                n = CHAIN.index(es[0][0]) + 1
+                e = es[0][1:]
+                if n > 8:
+                    break
+                if n == 1:
+                    keys.add(class_key(e, PE, PG))
+    return keys
+
+
+def gb_stream(program, spacing=60, zero_class={"GB3": 0, "GB4": 1, "GB5": 0}):
+    """A FIXED stream: E at (0,0), then one G-speed packet per op
+    (I = GB5, N = GB4, D = GB3), all placed at t = 0 left to right with
+    about `spacing` ether cells between packets, each packet at an event
+    whose class relative to the reference E is its designated zero-class
+    (ether-compatible with its left neighbour). No history is used."""
+    from onesided import place
+    ops = {"D": "GB3", "N": "GB4", "I": "GB5"}
+    E = LIB.gliders["E"]
+    scene = [("E", 0, 0)]
+    prev = E.state_at(0, 0, 0)
+    n = 1                   # static counter value on arrival (no answers)
+    for op in program:
+        g = ops[op]
+        G = LIB.gliders[g]
+        key = None
+        if n == 1:          # only a packet meeting the zero state needs a class
+            reps = canonical_reps(LIB, "E", g)
+            key = class_key(reps[zero_class[g]], (E.p, E.d), (G.p, G.d))
+        n += {"D": -1 if n > 1 else 0, "N": 0, "I": 1}[op]
+        ev = place(prev, g, prev[3] + len(prev[0]) + spacing, want_key=key)
+        scene.append((g,) + ev)
+        prev = G.state_at(ev[0], ev[1], 0)
+    return scene
+
+
+def run_gb(program, spacing=60):
+    import numpy as np
+    from glidersim import GliderSim
+    from regions import free_row
+    from r110lib import TILE
+    scene = gb_stream(program, spacing)
+    last = LIB.gliders[scene[-1][0]].state_at(scene[-1][1], scene[-1][2], 0)
+    T = int(15 * (last[3] + 60)) + 600     # G closes on E at 1/15 cell/gen
+    sim = GliderSim(LIB, scene)
+    sim.run(T)
+    sts = [LIB.gliders[a].state_at(t, x, 0) for a, t, x in scene]
+    row, x0 = build_row(sts, pad=T + 200)
+    for _ in range(T):
+        row = engine.step(row)
+    left = min(sts, key=lambda s: s[3])
+    pred = free_row(LIB, sim.gl, T, x0, len(row), (left[1] - left[3]) % TILE)
+    ok = pred is not None and np.array_equal(pred, row)
+    return ok, sim.state(), [(l[2], l[3], l[4], l[5]) for l in sim.log]

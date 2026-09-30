@@ -149,3 +149,8 @@
 {"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 12, "k": 4, "sat": false, "secs": 12.0}
 {"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 12, "k": 5, "sat": false, "secs": 9.8}
 {"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 0, "sat": false, "secs": 13.6}
+{"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 1, "sat": false, "secs": 13.3}
+{"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 2, "sat": false, "secs": 10.3}
+{"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 3, "sat": false, "secs": 12.4}
+{"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 4, "sat": false, "secs": 11.7}
+{"spec": "Z", "WO": 20, "T2": 450, "P": "EE", "pRO": 13, "k": 5, "sat": false, "secs": 12.1}

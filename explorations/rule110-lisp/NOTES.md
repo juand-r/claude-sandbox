@@ -417,3 +417,14 @@ first HashLife test compared inside the cyclic Run's seam light cone at
 t=6000 and failed; the reference was wrong there. I also committed that
 failing test because `pytest | tail` hid the exit code: run pytest
 without a pipe before committing (standing rule 3).
+
+De Mol at v = 3,200 (StreamRun, ~11 min for 9.3M generations): reads
+0-82 all match the reference (checked from the log against cts.run), so
+the tag tape passed AAAAA (Collatz 5, read 72). Read 83 (5th of a 17-N
+run) settles with 114 clusters ('!') after a 1.5M-generation delay. The
+earlier 16-N run (27-42) passed at this v, so rejection-run length alone
+does not explain it; accumulating drift is a candidate, untested. Now
+running v = 6,400 to 560 reads.
+scholar finished (report on BOARD.md and noncts/scholar/NOTES.md; the
+harness would not let it create FINDINGS.md, and its findings F1-F20 are
+in its NOTES.md).
