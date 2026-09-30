@@ -1,0 +1,9 @@
+label of A(f3_1): (20, 10)
+E_4 + G: {('E^3', 'G'): 84}
+E_5 + G: {('?(15,-4,w5)', 'G'): 84}
+E_6 + G: {('?(15,-4,w11)', 'G'): 84}
+A(DEC class) after G probe, E_1: {('A^3', 'C2'): 2, ('E-',): 1, ('A^4', 'C3'): 2, ('B^4', 'C2'): 1}
+A(DEC class) after G probe, E_2: {('A^4', 'E'): 2, ('A^3', 'C3'): 2, ('F',): 2}
+A(DEC class) after G probe, E_3: {('A^3', 'E'): 6}
+A(DEC class) after G probe, E_4: {('?(15,-4,w1)', 'A^3', 'UNSETTLED'): 5, ('?', 'UNSETTLED'): 1}
+A(DEC class) after G probe, E_5: {('E^3', 'G'): 6}

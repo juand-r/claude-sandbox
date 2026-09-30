@@ -1,0 +1,7 @@
+HIT F(A,f1_1)-8e-E(A,f1_1)-0e-E(C,f2_1)
+HIT F(A,f1_1)-10e-E(A,f1_1)-0e-E(C,f2_1)
+HIT F(A,f1_1)-12e-E(A,f1_1)-0e-E(C,f2_1)
+HIT F(A,f1_1)-8e-E(A,f1_1)-0e-E(D,f3_1)
+HIT F(A,f1_1)-10e-E(A,f1_1)-0e-E(D,f3_1)
+HIT F(A,f1_1)-12e-E(A,f1_1)-0e-E(D,f3_1)
+hits: 6

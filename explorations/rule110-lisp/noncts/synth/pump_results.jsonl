@@ -1,0 +1,35 @@
+{"spec": "pump", "WP": 0, "T2": 420, "D0": 37, "k": 0, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 4.9}
+{"spec": "pump", "WP": 0, "T2": 420, "D0": 37, "k": 1, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.2}
+{"spec": "pump", "WP": 0, "T2": 420, "D0": 37, "k": 2, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.3}
+{"spec": "pump", "WP": 0, "T2": 420, "D0": 37, "k": 3, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 4.7}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 51, "k": 0, "s": null, "pump": false, "fixedP": "Ebar", "sat": true, "secs": 6.5, "m1": [5, 7], "m2": [5, 58], "sim_ok": true, "row0": "11111000011111000100110111110001001101111100010011011111000011111000100110111110000100011111010111", "lo": 0, "pl": 0, "pr": 3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 51, "k": 1, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 6.6}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 51, "k": 2, "s": null, "pump": false, "fixedP": "Ebar", "sat": true, "secs": 6.1, "m1": [5, 7], "m2": [3, 64], "sim_ok": true, "row0": "1111100001111100010011011111000100110111110001001101111100001111100010011011111000111000011100011111000100110", "lo": 0, "pl": 0, "pr": 3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 51, "k": 3, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 7.8}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 65, "k": 0, "s": null, "pump": false, "fixedP": "Ebar", "sat": true, "secs": 6.4, "m1": [3, 13], "m2": [5, 72], "sim_ok": true, "row0": "1111100001111100010011011111000100110111110001001101111100010011011111000011111000100110111110000100011111010111", "lo": 0, "pl": 0, "pr": 3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 65, "k": 1, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 6.0}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 65, "k": 2, "s": null, "pump": false, "fixedP": "Ebar", "sat": true, "secs": 7.9, "m1": [3, 13], "m2": [3, 78], "sim_ok": true, "row0": "111110000111110001001101111100010011011111000100110111110001001101111100001111100010011011111000111000011100011111000100110", "lo": 0, "pl": 0, "pr": 3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 65, "k": 3, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 7.4}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 79, "k": 0, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 6.7}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 79, "k": 1, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.9}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 79, "k": 2, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 6.3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 79, "k": 3, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 93, "k": 0, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 4.3}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 93, "k": 1, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.9}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 93, "k": 2, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 4.5}
+{"spec": "pump", "WP": 0, "T2": 460, "D0": 93, "k": 3, "s": null, "pump": false, "fixedP": "Ebar", "sat": false, "secs": 5.9}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 0, "pump": true, "fixedP": null, "sat": false, "secs": 34.5}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 1, "pump": true, "fixedP": null, "sat": false, "secs": 30.5}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 2, "pump": true, "fixedP": null, "sat": false, "secs": 50.2}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 3, "pump": true, "fixedP": null, "sat": false, "secs": 32.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 4, "pump": true, "fixedP": null, "sat": false, "secs": 39.9}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 5, "pump": true, "fixedP": null, "sat": false, "secs": 31.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 6, "pump": true, "fixedP": null, "sat": false, "secs": 36.7}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 7, "pump": true, "fixedP": null, "sat": false, "secs": 48.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 8, "pump": true, "fixedP": null, "sat": false, "secs": 54.2}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 9, "pump": true, "fixedP": null, "sat": false, "secs": 60.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 10, "pump": true, "fixedP": null, "sat": false, "secs": 42.3}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 11, "pump": true, "fixedP": null, "sat": false, "secs": 45.0}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 12, "pump": true, "fixedP": null, "sat": false, "secs": 42.4}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 0, "s": 13, "pump": true, "fixedP": null, "sat": false, "secs": 44.3}
+{"spec": "pump", "WP": 20, "T2": 460, "D0": 51, "k": 1, "s": 0, "pump": true, "fixedP": null, "sat": false, "secs": 33.5}

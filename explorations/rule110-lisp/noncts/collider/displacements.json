@@ -1,0 +1,1124 @@
+[
+{
+"reaction": "A+Ebar#0",
+"glider": "Ebar",
+"in": [
+-2,
+47
+],
+"out": [
+29,
+29
+],
+"canonical": [
+1,
+-10
+],
+"intercept_shift": "-146/15"
+},
+{
+"reaction": "A+Ebar#0",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+0,
+-21
+],
+"canonical": [
+0,
+-21
+],
+"intercept_shift": "-21"
+},
+{
+"reaction": "A+Ebar#3",
+"glider": "Ebar",
+"in": [
+-12,
+59
+],
+"out": [
+15,
+57
+],
+"canonical": [
+27,
+-2
+],
+"intercept_shift": "26/5"
+},
+{
+"reaction": "A+Ebar#3",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+1,
+-11
+],
+"canonical": [
+1,
+-11
+],
+"intercept_shift": "-35/3"
+},
+{
+"reaction": "A+Ebar#4",
+"glider": "Ebar",
+"in": [
+-5,
+59
+],
+"out": [
+2,
+53
+],
+"canonical": [
+7,
+-6
+],
+"intercept_shift": "-62/15"
+},
+{
+"reaction": "A+Ebar#4",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+0,
+-7
+],
+"canonical": [
+0,
+-7
+],
+"intercept_shift": "-7"
+},
+{
+"reaction": "A+Ebar#5",
+"glider": "Ebar",
+"in": [
+-13,
+63
+],
+"out": [
+14,
+61
+],
+"canonical": [
+27,
+-2
+],
+"intercept_shift": "26/5"
+},
+{
+"reaction": "A+Ebar#5",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+0,
+-7
+],
+"canonical": [
+0,
+-7
+],
+"intercept_shift": "-7"
+},
+{
+"reaction": "A+G#2",
+"glider": "G",
+"in": [
+-8,
+55
+],
+"out": [
+23,
+51
+],
+"canonical": [
+31,
+-4
+],
+"intercept_shift": "19/3"
+},
+{
+"reaction": "A+G#2",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+1,
+-8
+],
+"canonical": [
+1,
+-8
+],
+"intercept_shift": "-26/3"
+},
+{
+"reaction": "C1+Ebar#1",
+"glider": "Ebar",
+"in": [
+-2,
+45
+],
+"out": [
+5,
+36
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar#1",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+2,
+13
+],
+"canonical": [
+2,
+13
+],
+"intercept_shift": "13"
+},
+{
+"reaction": "C1+Ebar#2",
+"glider": "Ebar",
+"in": [
+-6,
+47
+],
+"out": [
+3,
+44
+],
+"canonical": [
+9,
+-3
+],
+"intercept_shift": "-3/5"
+},
+{
+"reaction": "C1+Ebar#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+7
+],
+"canonical": [
+0,
+7
+],
+"intercept_shift": "7"
+},
+{
+"reaction": "C1+F#1",
+"glider": "F",
+"in": [
+0,
+53
+],
+"out": [
+1,
+40
+],
+"canonical": [
+1,
+-13
+],
+"intercept_shift": "-116/9"
+},
+{
+"reaction": "C1+F#1",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+15
+],
+"canonical": [
+0,
+15
+],
+"intercept_shift": "15"
+},
+{
+"reaction": "C2+Ebar#2",
+"glider": "Ebar",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+7
+],
+"canonical": [
+0,
+7
+],
+"intercept_shift": "7"
+},
+{
+"reaction": "C2+F#1",
+"glider": "F",
+"in": [
+0,
+47
+],
+"out": [
+2,
+36
+],
+"canonical": [
+2,
+-11
+],
+"intercept_shift": "-97/9"
+},
+{
+"reaction": "C2+F#1",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+4,
+13
+],
+"canonical": [
+4,
+13
+],
+"intercept_shift": "13"
+},
+{
+"reaction": "F+B#1",
+"glider": "B",
+"in": [
+-3,
+51
+],
+"out": [
+3,
+54
+],
+"canonical": [
+2,
+5
+],
+"intercept_shift": "6"
+},
+{
+"reaction": "F+B#1",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+17,
+10
+],
+"canonical": [
+17,
+10
+],
+"intercept_shift": "107/9"
+},
+{
+"reaction": "F+Ebar#0",
+"glider": "Ebar",
+"in": [
+-1,
+45
+],
+"out": [
+10,
+28
+],
+"canonical": [
+11,
+-17
+],
+"intercept_shift": "-211/15"
+},
+{
+"reaction": "F+Ebar#0",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+30,
+13
+],
+"canonical": [
+30,
+13
+],
+"intercept_shift": "49/3"
+},
+{
+"reaction": "F+Ebar#3",
+"glider": "Ebar",
+"in": [
+-14,
+55
+],
+"out": [
+16,
+32
+],
+"canonical": [
+0,
+-15
+],
+"intercept_shift": "-15"
+},
+{
+"reaction": "F+Ebar#3",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+23,
+13
+],
+"canonical": [
+23,
+13
+],
+"intercept_shift": "140/9"
+},
+{
+"reaction": "F+Ebar#5",
+"glider": "Ebar",
+"in": [
+0,
+55
+],
+"out": [
+10,
+42
+],
+"canonical": [
+10,
+-13
+],
+"intercept_shift": "-31/3"
+},
+{
+"reaction": "F+Ebar#5",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+15,
+17
+],
+"canonical": [
+15,
+17
+],
+"intercept_shift": "56/3"
+},
+{
+"reaction": "F+Ebar#7",
+"glider": "Ebar",
+"in": [
+-15,
+59
+],
+"out": [
+22,
+36
+],
+"canonical": [
+7,
+-15
+],
+"intercept_shift": "-197/15"
+},
+{
+"reaction": "F+Ebar#7",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+27,
+11
+],
+"canonical": [
+27,
+11
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "F+Ebar#8",
+"glider": "Ebar",
+"in": [
+-12,
+61
+],
+"out": [
+22,
+36
+],
+"canonical": [
+4,
+-17
+],
+"intercept_shift": "-239/15"
+},
+{
+"reaction": "F+Ebar#8",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+19,
+15
+],
+"canonical": [
+19,
+15
+],
+"intercept_shift": "154/9"
+},
+{
+"reaction": "F+Ebar#10",
+"glider": "Ebar",
+"in": [
+-16,
+63
+],
+"out": [
+22,
+36
+],
+"canonical": [
+8,
+-19
+],
+"intercept_shift": "-253/15"
+},
+{
+"reaction": "F+Ebar#10",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+15,
+17
+],
+"canonical": [
+15,
+17
+],
+"intercept_shift": "56/3"
+},
+{
+"reaction": "F+Ebar#11",
+"glider": "Ebar",
+"in": [
+-17,
+67
+],
+"out": [
+28,
+40
+],
+"canonical": [
+15,
+-19
+],
+"intercept_shift": "-15"
+},
+{
+"reaction": "F+Ebar#11",
+"glider": "F",
+"in": [
+0,
+0
+],
+"out": [
+8,
+17
+],
+"canonical": [
+8,
+17
+],
+"intercept_shift": "161/9"
+},
+{
+"reaction": "C1+Ebar_16_Ebar#2#2",
+"glider": "Ebar_16_Ebar#2",
+"in": [
+-6,
+47
+],
+"out": [
+1,
+38
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar_16_Ebar#2#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+5,
+22
+],
+"canonical": [
+5,
+22
+],
+"intercept_shift": "22"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-4,23)#2",
+"glider": "Ebar@(0,0)+Ebar@(-4,23)",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-4,23)#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-6,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-6,31)",
+"in": [
+-6,
+47
+],
+"out": [
+3,
+44
+],
+"canonical": [
+9,
+-3
+],
+"intercept_shift": "-3/5"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-6,31)#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-6,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-6,31)",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-6,31)#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-9,29)#1",
+"glider": "Ebar@(0,0)+Ebar@(-9,29)",
+"in": [
+-2,
+45
+],
+"out": [
+5,
+36
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-9,29)#1",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+4,
+26
+],
+"canonical": [
+4,
+26
+],
+"intercept_shift": "26"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-11,23)#2",
+"glider": "Ebar@(0,0)+Ebar@(-11,23)",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-11,23)#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-13,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-13,31)",
+"in": [
+-6,
+47
+],
+"out": [
+3,
+44
+],
+"canonical": [
+9,
+-3
+],
+"intercept_shift": "-3/5"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-13,31)#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-13,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-13,31)",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-13,31)#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-16,29)#1",
+"glider": "Ebar@(0,0)+Ebar@(-16,29)",
+"in": [
+-2,
+45
+],
+"out": [
+5,
+36
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-16,29)#1",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+4,
+26
+],
+"canonical": [
+4,
+26
+],
+"intercept_shift": "26"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-20,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-20,31)",
+"in": [
+-6,
+47
+],
+"out": [
+3,
+44
+],
+"canonical": [
+9,
+-3
+],
+"intercept_shift": "-3/5"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-20,31)#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-20,31)#2",
+"glider": "Ebar@(0,0)+Ebar@(-20,31)",
+"in": [
+-4,
+47
+],
+"out": [
+2,
+34
+],
+"canonical": [
+6,
+-13
+],
+"intercept_shift": "-57/5"
+},
+{
+"reaction": "C2+Ebar@(0,0)+Ebar@(-20,31)#2",
+"glider": "C2",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "C1+Ebar_19_Ebar#2",
+"glider": "Ebar_19_Ebar",
+"in": [
+-5,
+46
+],
+"out": [
+2,
+37
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar_19_Ebar#2",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+4,
+26
+],
+"canonical": [
+4,
+26
+],
+"intercept_shift": "26"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-25,37)#1",
+"glider": "Ebar@(0,0)+Ebar@(-25,37)",
+"in": [
+-2,
+45
+],
+"out": [
+5,
+36
+],
+"canonical": [
+7,
+-9
+],
+"intercept_shift": "-107/15"
+},
+{
+"reaction": "C1+Ebar@(0,0)+Ebar@(-25,37)#1",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+4,
+26
+],
+"canonical": [
+4,
+26
+],
+"intercept_shift": "26"
+},
+{
+"reaction": "C1+Ebar_16_Ebar#3",
+"glider": "Ebar_16_Ebar",
+"in": [
+-1,
+53
+],
+"out": [
+8,
+50
+],
+"canonical": [
+9,
+-3
+],
+"intercept_shift": "-3/5"
+},
+{
+"reaction": "C1+Ebar_16_Ebar#3",
+"glider": "C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+14
+],
+"canonical": [
+0,
+14
+],
+"intercept_shift": "14"
+},
+{
+"reaction": "A^4+Ebar#4",
+"glider": "Ebar",
+"in": [
+-4,
+56
+],
+"out": [
+25,
+42
+],
+"canonical": [
+29,
+-14
+],
+"intercept_shift": "-94/15"
+},
+{
+"reaction": "A^4+Ebar#4",
+"glider": "A^4",
+"in": [
+0,
+0
+],
+"out": [
+2,
+-57
+],
+"canonical": [
+2,
+-57
+],
+"intercept_shift": "-175/3"
+}
+]

@@ -1,0 +1,8 @@
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 0, "period": [7, 0], "displaced": true, "sat": false, "secs": 3.0}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 1, "period": [7, 0], "displaced": true, "sat": false, "secs": 4.6}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 2, "period": [7, 0], "displaced": true, "sat": false, "secs": 3.1}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 3, "period": [7, 0], "displaced": true, "sat": false, "secs": 14.2}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 0, "period": [7, 0], "displaced": true, "sat": true, "secs": 2.0, "O": "1111101001110011", "sim_ok": true, "row0": "111110100111001101111100010011001110111001100010011", "lo": 0, "pl": 0, "pr": 4}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 1, "period": [7, 0], "displaced": true, "sat": true, "secs": 2.4, "O": "1111100011101101", "sim_ok": true, "row0": "11111000111011010111110001001101110110111010111001101111", "lo": 0, "pl": 0, "pr": 4}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 2, "period": [7, 0], "displaced": true, "sat": true, "secs": 2.0, "O": "1111100010011000", "sim_ok": true, "row0": "1111100010011000011111000100110111110000100011111010111", "lo": 0, "pl": 0, "pr": 4}
+{"spec": "ghost", "X": "Ebar", "W": 16, "T2": 330, "pR": 11, "k": 3, "period": [7, 0], "displaced": true, "sat": true, "secs": 2.5, "O": "1111111100010011", "sim_ok": true, "row0": "111111110001001101111100010011011111000100011001100011111000", "lo": 0, "pl": 0, "pr": 4}

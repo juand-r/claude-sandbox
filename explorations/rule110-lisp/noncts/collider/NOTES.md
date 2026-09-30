@@ -1,0 +1,77 @@
+# collider notes (running log)
+
+## 2026-09-30
+
+### Setup and conventions
+- r110lib.py: ether phase bookkeeping (absolute phase c: cell y reads
+  ETHER[(c+y)%14]; one generation adds 4), bit-sliced batch evolution
+  (64 experiments per uint64 word), segmentation into objects (defects
+  closer than 20 cells merged), glider isolation/verification, collision
+  classes (relative seed-event vector mod <P_X,P_Y>; count |det|/14).
+- Checked: ether phase advances by 4 per generation; batch engine equals
+  scalar engine on random rows.
+
+### Glider discovery
+- Random soups (discover.py, 1024 runs, W=2800, T=1600): 119 distinct
+  periodic objects, most are same-velocity compounds. Velocities found:
+  2/3, 1/5, 0, -1/9, -4/15, -1/3, -1/2. H and gun not found in soups.
+- Martinez et al. f1_1 strings (arXiv:0706.3348 App. A) give all 14
+  named gliders; my isolation reproduces every period vector. The gun
+  string emits gliders (expected; not in library).
+- Slip (right ether phase - left, mod 14) is conserved by every
+  collision (trivial: far ether untouched). Scholar/synth use it too.
+
+### Bugs found and fixed (keep for the record)
+1. Segmentation artifact: two same-velocity gliders ~20 cells apart
+   flicker between one and two objects -> never "settled". Fix: standalone
+   tests use the union of all defects.
+2. isolate_glider found a FALSE period once: a glider left the window
+   through the row end (objects touching the ends are ignored), the
+   remaining union repeated. Caught by the independent fresh-row
+   verification (verify_glider), which raised. Fix: pad beyond light speed
+   on both sides; objects near the row edge raise.
+3. Compound parsing (naming only): cut-based parse at one time step is
+   ambiguous (A4 parsed with wrong spacings). Now a parse must explain
+   the compound at every phase; otherwise the compound is named by
+   invariants. A^n do NOT parse as independent A's at every phase (they
+   are bound: adjacent A's overlap in some phases).
+
+### Catalog v1
+- 718 collisions (14 base + A2..A4 as X). All settle; 718/718 verified
+  by verify.py (independent scalar engine, full light cone), negative
+  control 198/198 detected.
+
+### Open questions / ideas
+- What is "v2/3s4w0" (narrow A-speed object, slip 4, width <= 3)? It is
+  common in soups (count 26 of 1024) and produced catalytically by
+  G hitting Ebar/E/H. Similar: v2/3s2w0 (slip 2), v2/3s10w0 (slip 10):
+  row pictures show they are *deletions* of 2/4/.. cells from the ether
+  (A is an insertion of 6), i.e. "negative" A-type slips. Check literature
+  (scholar) - Cook's list has A^n only?
+- v-4/15s1w6: p=15 object at E speed, slip 1, width 6-12. From A+Ebar
+  (2 classes) and E+B.
+
+### Later on 2026-09-30
+- Renamed A-packets (rename.py): Martinez (111110)^n -> Aw<n>; tight
+  packets A^2..A^5 (Cook's A^4 = old v2/3s4w0, found in assembled Cook
+  row); B^2, B^3. B strips one A at a time (single class).
+- Packets (packets.py): stable 2-glider packets registered as compound
+  gliders; ran vs C1-C3 and F. Catalog 3945 collisions, all verified.
+- MISTAKE (posted and corrected on the board): outcomes for a non-canonical
+  relative event r must be translated by a*P_X where r - rep = aP_X + bP_Y.
+  I forgot this in relay.py; the C outputs were right (stationary, invisible
+  to time translation) but moving outputs were wrong. Now predict.py does
+  it, tested against direct simulation. Lesson: any time I reuse a catalog
+  row for a different placement, go through predict().
+- F read-and-reset gadget verified directly (check_fread.py).
+- Switch analysis (switches.py): like-for-like comparison only possible for
+  slip-0 shifters (Ebar pairs); single-glider crossings change the ether
+  on the partner's side. Useful fact: a 14-cell shift of C2 advances the
+  C2-Ebar class by one step in a 4-cycle.
+- regions.py: interaction regions per catalog entry, for glidersim.py.
+  Edge case found: some "fusions" are juxtapositions: A adjacent to D2 IS
+  a D1 (and A adjacent to C1 is an F) - the free-inputs and free-products
+  descriptions overlap in time. Region = [min, max] of the two switch
+  times.
+- FINDINGS.md: the harness refuses to let me (a subagent) write report
+  files; the verified findings go into my final report and the board.
