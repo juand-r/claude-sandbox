@@ -31,5 +31,6 @@ def test_hashlife_matches_full_run():
     for target in (1, 7, 100, 1_000, 4_096, T):
         full.step(target - full.t)
         h.step(target - h.t)
-        lo, hi = origin - 20_000, origin + 20_000
+        # the cyclic run is exact only beyond its wrap seam's light cone
+        lo, hi = full.t, len(row) - full.t
         assert np.array_equal(full.window(lo, hi), h.window(lo, hi)), target
