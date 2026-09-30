@@ -14,7 +14,7 @@ Order of work (each step committed separately):
 - [x] 4. Experiments: shared CA-run helper, scripts to experiments/,
       superseded diagnostics to trash/ (E2)
 - [ ] 5. SKI-TM gap walking (D1): measure, fix, re-measure
-- [ ] 6. NW reachability pruning (D2): re-measure blowup table
+- [x] 6. NW reachability pruning (D2): refuted by measurement (0 symbols removed); real lever is binarization, deferred
 - [ ] 7. Glider census (C1): lattice-invariance classifier, tests on
       known gliders; use it to measure real read/ossification cadence
 - [ ] 8. Rewrite REPORT.md claims per B1-B4 with the new measurements

@@ -88,6 +88,16 @@ class Run:
         cells = unpack(self.words[wlo:whi], (whi - wlo) * 64)
         return cells[lo - wlo * 64:hi - wlo * 64]
 
+    def history(self, lo, hi, depth):
+        """Advance `depth` steps, recording the window [lo, hi) each step.
+        Returns a (depth + 1, hi - lo) array ending at the new current time
+        (the input format of census.census)."""
+        rows = [self.window(lo, hi)]
+        for _ in range(depth):
+            self.step()
+            rows.append(self.window(lo, hi))
+        return np.array(rows)
+
     def ebar_frame(self, t=None):
         """Array position of global column 0 carried along at Ebar speed."""
         t = self.t if t is None else t
