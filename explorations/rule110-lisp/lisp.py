@@ -7,10 +7,22 @@ Scope (Malbolge-Lisp-like, pure):
   - truth: the atom t is true, the empty list () is false
   - recursion via define; lexical closures via lambda
 
+Primitive semantics follow McCarthy's LISP 1.5:
+  - atom? is true for symbols and for nil (), false for conses.
+  - eq? is true only when both arguments are the same atom (nil counts as
+    an atom); two conses are never eq?, even if structurally equal.
+  - atom? and eq? applied to functions are undefined (the compiled
+    encoding gives no meaningful answer), as is car/cdr of an atom.
+
 No numbers, strings, or side effects: numbers can be built as lists.
 This reference interpreter defines the semantics that the lower layers
 must reproduce.
 """
+
+
+def is_atom(x):
+    """Symbols and nil are atoms; conses (non-empty lists) are not."""
+    return isinstance(x, str) or x == []
 
 
 class Closure:
@@ -81,9 +93,10 @@ def evaluate(expr, env):
         if f == "cons":
             return [args[0]] + args[1]
         if f == "atom?":
-            return "t" if isinstance(args[0], str) or args[0] == [] else []
+            return "t" if is_atom(args[0]) else []
         if f == "eq?":
-            return "t" if args[0] == args[1] else []
+            a, b = args
+            return "t" if is_atom(a) and is_atom(b) and a == b else []
         if isinstance(f, Closure):
             frame = dict(zip(f.params, args))
             if len(f.params) != len(args):

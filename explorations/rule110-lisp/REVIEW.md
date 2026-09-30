@@ -9,9 +9,9 @@ has a disposition; the "Status" column is updated as work proceeds.
 
 | id | finding | evidence | disposition | status |
 |---|---|---|---|---|
-| A1 | Compiled `atom?` returns `()` for nil; the reference returns `t`. The compiler tests `tag == atom`; nil has its own tag. | `(atom? (quote ()))`: ref `t`, compiled `()` | fix compiler: `atom?` = "not a cons" (McCarthy: NIL is an atom) | |
-| A2 | `eq?` on conses disagrees: the reference uses Python structural `==`, the compiler treats all conses as unequal. | `(eq? (quote (a)) (quote (a)))`: ref `t`, compiled `()` | define `eq?` as McCarthy's `eq` (meaningful on atoms; conses compare unequal); change the reference, document, test | |
-| A3 | Neither A1 nor A2 was caught because no test exercises nil in `atom?` or lists in `eq?`. | test inspection | add edge-case tests to the differential suite | |
+| A1 | Compiled `atom?` returns `()` for nil; the reference returns `t`. The compiler tests `tag == atom`; nil has its own tag. | `(atom? (quote ()))`: ref `t`, compiled `()` | fix compiler: `atom?` = "not a cons" (McCarthy: NIL is an atom) | done |
+| A2 | `eq?` on conses disagrees: the reference uses Python structural `==`, the compiler treats all conses as unequal. | `(eq? (quote (a)) (quote (a)))`: ref `t`, compiled `()` | define `eq?` as McCarthy's `eq` (meaningful on atoms; conses compare unequal); change the reference, document, test | done |
+| A3 | Neither A1 nor A2 was caught because no test exercises nil in `atom?` or lists in `eq?`. | test inspection | add edge-case tests to the differential suite | done |
 
 ## B. Overclaims and model errors in REPORT.md / NOTES.md
 
@@ -32,7 +32,7 @@ has a disposition; the "Status" column is updated as work proceeds.
 
 | id | finding | disposition | status |
 |---|---|---|---|
-| D1 | SKI Turing machine: every S-redex copies the term to a fresh region on the right, but rescans and every counter increment/decrement walk back to `#` at the far left, crossing all abandoned blank regions. Cost grows with the number of S-reductions so far, not with the term size. | measure; keep the counter adjacent to the live term | |
+| D1 | SKI Turing machine: every S-redex copies the term to a fresh region on the right, but rescans and every counter increment/decrement walk back to `#` at the far left, crossing all abandoned blank regions. Cost grows with the number of S-reductions so far, not with the term size. Measured: 79% of the 457,640,797 steps for the `(atom? (quote a))` tag probe read a blank cell; tape extent 37,880 for a 473-char term. | measure; keep the counter adjacent to the live term | measured |
 | D2 | Neary-Woods rules are generated for every (letter, stage, state) combination whether reachable or not; the unary TS->CTS encoding then costs |Phi| per symbol and ~|Phi|^2 in appendant content. | prune to symbols reachable from the initial tape; re-measure the blowup table | |
 | D3 | TM interpreters are pure-Python loops (~3M steps/s). | defer to extension phase | |
 

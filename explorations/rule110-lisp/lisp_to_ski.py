@@ -11,8 +11,9 @@ Value encoding (all Church-style, normal order):
 Booleans inside the machinery are Church booleans; Lisp-level truth is
 LIFTed to the atom t / nil. cond compiles to nested Church-boolean
 application, which under normal order is lazy, matching Lisp's cond.
-eq? is Church-numeral equality on atom ids (atoms and nil only; conses
-compare unequal). Recursion (define) uses the Y combinator; a define may
+atom? tests "tag is not cons"; eq? is true iff both tags agree and are
+nil, or both are atoms with equal Church-numeral ids (McCarthy's eq:
+conses always compare unequal; see lisp.py). Recursion (define) uses the Y combinator; a define may
 reference itself and earlier defines only. NOTE: argument evaluation is
 lazy here vs strict in lisp.py -- results agree for terminating programs.
 
@@ -224,8 +225,9 @@ class Compiler:
             return A(A(env["VCONS"], self.compile_expr(e[1], bound, defs)),
                      self.compile_expr(e[2], bound, defs))
         if head == "atom?":
+            # nil is an atom too: atom? = "not a cons"
             v = self.compile_expr(e[1], bound, defs)
-            b = A(A(env["EQN"], A(env["TAG"], v)), env["N0"])
+            b = A(env["NOT"], A(A(env["EQN"], A(env["TAG"], v)), env["N1"]))
             return self.lift(b)
         if head == "eq?":
             a = self.compile_expr(e[1], bound, defs)

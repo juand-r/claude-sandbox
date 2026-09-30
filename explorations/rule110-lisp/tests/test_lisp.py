@@ -49,3 +49,13 @@ def test_closures():
     ((make-adder (quote (i))) (quote (i i)))
     """
     assert run(src) == ["i", "i", "i"]
+
+
+def test_mccarthy_primitives():
+    # nil is an atom; conses are not
+    assert run("(atom? (quote ()))") == "t"
+    assert run("(atom? (quote (a)))") == []
+    # eq? is identity on atoms only; structurally equal conses are not eq?
+    assert run("(eq? (quote ()) (quote ()))") == "t"
+    assert run("(eq? (quote (a)) (quote (a)))") == []
+    assert run("(eq? (quote a) (quote ()))") == []

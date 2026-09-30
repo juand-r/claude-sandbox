@@ -56,6 +56,10 @@ PROGRAMS = [
     "(atom? (quote (a)))",
     "(eq? (quote a) (quote a))",
     "(eq? (quote a) (quote b))",
+    "(atom? (quote ()))",
+    "(eq? (quote ()) (quote ()))",
+    "(eq? (quote (a)) (quote (a)))",
+    "(eq? (quote a) (quote ()))",
     "(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))",
     "((lambda (x) (cons x (quote ()))) (quote a))",
     """(define (append a b)
@@ -81,6 +85,6 @@ def test_compiled_programs_graph_engine():
 
 def test_compiled_small_programs_string_engine():
     # the string engine is the TM spec; run it on the cheap programs only
-    for p in PROGRAMS[:9]:
+    for p in PROGRAMS[:13]:
         term, symtab = compile_term(p)
         assert decode_value(term, symtab, 2_000_000) == lisp_run(p), p
