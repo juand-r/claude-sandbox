@@ -4,3 +4,13 @@
 {"spec": "zsplit", "WK": 24, "T2": 900, "s": 2, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 19.9}
 {"spec": "zsplit", "WK": 24, "T2": 900, "s": 3, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 30.6}
 {"spec": "zsplit", "WK": 24, "T2": 900, "s": 4, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 36.9}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 5, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 29.8}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 6, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 29.8}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 7, "pk": 0, "only_a": true, "debris": true, "sat": true, "secs": 15.3, "K": "111111000011011100110111", "sim_ok": true, "rows0": ["1111100001011001001100010011011111000010000011111000100110111111000011011100110111"], "frames": [[0, 0, 5]]}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 8, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 18.8}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 9, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 27.4}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 10, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 20.3}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 11, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 19.1}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 12, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 18.6}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 13, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 151.2}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 7, "pk": 0, "only_a": true, "not_ebar": true, "debris": true, "sat": false, "secs": 38.0}

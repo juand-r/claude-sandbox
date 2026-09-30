@@ -1426,5 +1426,277 @@
 26
 ],
 "intercept_shift": "28"
+},
+{
+"reaction": "A+G@(0,0)+G@(-2,32)#2",
+"glider": "G@(0,0)+G@(-2,32)",
+"in": [
+-8,
+55
+],
+"out": [
+23,
+51
+],
+"canonical": [
+31,
+-4
+],
+"intercept_shift": "19/3"
+},
+{
+"reaction": "A+G@(0,0)+G@(-2,32)#2",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+2,
+-16
+],
+"canonical": [
+2,
+-16
+],
+"intercept_shift": "-52/3"
+},
+{
+"reaction": "A+G@(0,0)+G@(-5,30)#2",
+"glider": "G@(0,0)+G@(-5,30)",
+"in": [
+-8,
+55
+],
+"out": [
+23,
+51
+],
+"canonical": [
+31,
+-4
+],
+"intercept_shift": "19/3"
+},
+{
+"reaction": "A+G@(0,0)+G@(-5,30)#2",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+2,
+-16
+],
+"canonical": [
+2,
+-16
+],
+"intercept_shift": "-52/3"
+},
+{
+"reaction": "A+G@(0,0)+G@(-8,28)#2",
+"glider": "G@(0,0)+G@(-8,28)",
+"in": [
+-8,
+55
+],
+"out": [
+23,
+51
+],
+"canonical": [
+31,
+-4
+],
+"intercept_shift": "19/3"
+},
+{
+"reaction": "A+G@(0,0)+G@(-8,28)#2",
+"glider": "A",
+"in": [
+0,
+0
+],
+"out": [
+2,
+-16
+],
+"canonical": [
+2,
+-16
+],
+"intercept_shift": "-52/3"
+},
+{
+"reaction": "C1_15_C1+F#0",
+"glider": "F",
+"in": [
+0,
+62
+],
+"out": [
+2,
+36
+],
+"canonical": [
+2,
+-26
+],
+"intercept_shift": "-232/9"
+},
+{
+"reaction": "C1_15_C1+F#0",
+"glider": "C1_15_C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+15
+],
+"canonical": [
+0,
+15
+],
+"intercept_shift": "15"
+},
+{
+"reaction": "C1_19_C1+F#0",
+"glider": "F",
+"in": [
+0,
+69
+],
+"out": [
+2,
+43
+],
+"canonical": [
+2,
+-26
+],
+"intercept_shift": "-232/9"
+},
+{
+"reaction": "C1_19_C1+F#0",
+"glider": "C1_19_C1",
+"in": [
+0,
+0
+],
+"out": [
+0,
+15
+],
+"canonical": [
+0,
+15
+],
+"intercept_shift": "15"
+},
+{
+"reaction": "C2_11_C2+F#1",
+"glider": "F",
+"in": [
+-4,
+63
+],
+"out": [
+0,
+41
+],
+"canonical": [
+4,
+-22
+],
+"intercept_shift": "-194/9"
+},
+{
+"reaction": "C2_11_C2+F#1",
+"glider": "C2_11_C2",
+"in": [
+0,
+0
+],
+"out": [
+4,
+13
+],
+"canonical": [
+4,
+13
+],
+"intercept_shift": "13"
+},
+{
+"reaction": "C2_15_C2+F#1",
+"glider": "F",
+"in": [
+-4,
+66
+],
+"out": [
+0,
+44
+],
+"canonical": [
+4,
+-22
+],
+"intercept_shift": "-194/9"
+},
+{
+"reaction": "C2_15_C2+F#1",
+"glider": "C2_15_C2",
+"in": [
+0,
+0
+],
+"out": [
+4,
+13
+],
+"canonical": [
+4,
+13
+],
+"intercept_shift": "13"
+},
+{
+"reaction": "C2_18_C2+F#1",
+"glider": "F",
+"in": [
+-4,
+71
+],
+"out": [
+0,
+49
+],
+"canonical": [
+4,
+-22
+],
+"intercept_shift": "-194/9"
+},
+{
+"reaction": "C2_18_C2+F#1",
+"glider": "C2_18_C2",
+"in": [
+0,
+0
+],
+"out": [
+4,
+13
+],
+"canonical": [
+4,
+13
+],
+"intercept_shift": "13"
 }
 ]

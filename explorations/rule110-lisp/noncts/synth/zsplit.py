@@ -23,9 +23,32 @@ def pair_scene(cnf, K, pk, T2, seeds, name):
     return Pr, S
 
 
-def build(WK, T2, s, pk, debris, only_a=False):
+def forbid_single(cnf, K, gname="Ebar"):
+    """Exclude every placement of one library glider as K's t=0 content
+    (all time phases, all shifts with the right ether phases)."""
+    from lib import compose, place_after
+    g = G[gname]
+    n = 0
+    for k in range(g.p):
+        t0, x0 = place_after(g, 0, 0, 0, k)
+        while True:
+            st = g.state(t0, x0, 0)
+            if st[3] + len(st[0]) > K.W:
+                break
+            cells, pl, pr = compose([st], 0, 0, K.W, left_p=0)
+            if pr == K.pR:
+                cnf.add([(-K.st.lit(0, x) if c else K.st.lit(0, x))
+                         for x, c in enumerate(cells)])
+                n += 1
+            x0 += TILE
+    return n
+
+
+def build(WK, T2, s, pk, debris, only_a=False, not_ebar=False):
     cnf = CNF()
     K = TrainVar(cnf, WK, 30, -8, s, name="K")
+    if not_ebar:
+        forbid_single(cnf, K, "Ebar")
     # (a) compound -> (19,23) pair
     Cmp = fixed_from_glider(cnf, G["F_19_F#3"], 52)
     tau, x = placements_by_class(Cmp, (0, 0), K, Cmp.W + 4)[0]
@@ -62,14 +85,15 @@ if __name__ == "__main__":
     ap.add_argument("--pk", default=",".join(map(str, range(12))))
     ap.add_argument("--debris", action="store_true")
     ap.add_argument("--only-a", action="store_true")
+    ap.add_argument("--not-ebar", action="store_true")
     A = ap.parse_args()
     for pk in map(int, A.pk.split(",")):
         for s in map(int, A.s.split(",")):
             t = time.time()
-            cnf, K, Ss = build(A.WK, A.T2, s, pk, A.debris, A.only_a)
+            cnf, K, Ss = build(A.WK, A.T2, s, pk, A.debris, A.only_a, A.not_ebar)
             sol = cnf.solve()
             rec = {"spec": "zsplit", "WK": A.WK, "T2": A.T2, "s": s, "pk": pk,
-                   "only_a": A.only_a,
+                   "only_a": A.only_a, "not_ebar": A.not_ebar,
                    "debris": A.debris, "sat": sol is not None,
                    "secs": round(time.time() - t, 1)}
             if sol is not None:

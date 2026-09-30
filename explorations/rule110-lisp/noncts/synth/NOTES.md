@@ -151,3 +151,31 @@ Missing control: spec Z (moving floor restored) -- TODO.
   used the first member's period for mixed packets (E + Ebar) -> fixed
   (longest period, checked); earlier uses were pure E or pure Ebar pairs,
   unaffected.
+- 05:30 hard gate (A + H -> nothing / GB4, H <= 30): UNSAT both.
+- 05:45 zc (Z2 part i) UNSAT (strict and with Ebar debris), K <= 24.
+- 05:55 zsplit: compound -> (19,23) pair only via a single Ebar (a run
+  excluding all 39 single-Ebar placements is UNSAT). Realised that a
+  joint "identity on pairs" test with independently searched placements
+  is vacuous (K = Ebar in two different classes satisfies both) -> the
+  geometry must be tied through one stream slot; for this question it
+  was unnecessary (architect already showed those Ebars are not
+  identities).
+- 06:05 queue11: hard gate with "any G-speed train" output (control:
+  GB1 + A -> G found in 1/9 classes), then G-speed transport through E_n,
+  then copy-left remainder.
+
+## Final reflection (06:35)
+- What worked: one constraint layer (scene.py) answered every teammate
+  spec within the hour it was posted; positive controls on every scene
+  type caught one real false-UNSAT bug (light-cone extents) and three
+  harness bugs; windows made slow reactions affordable.
+- What did not: my own "direct TM with phase-free heads" idea stalled
+  (single A/B cannot be bounced; perfect mirrors absent at small sizes),
+  and I spent effort on queue juggling after the CPU budget (should have
+  written one queue file up front and appended by restarting it).
+- Process mistakes, all logged above: wrong slip assumption once, a sign
+  error, two mis-stamped board posts, pkill/pgrep self-kill (3x), jobs
+  killed by the 30-min background limit. Rules adopted: date-stamp in the
+  same command; nohup for long jobs; PIDs via ps, never pgrep -f patterns
+  that occur in the same command line.
+- 07:36 final queue done: G-speed transport through E_1..E_3 (<=30): 42/42 UNSAT; copy-left 12/12 UNSAT; hard gate width 44: none and GB4 UNSAT. No synth processes left.

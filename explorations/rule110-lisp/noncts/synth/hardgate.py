@@ -16,15 +16,19 @@ from classes import placements_by_class
 G = load_gliders()
 
 
-def build(WH, T2, mode, k):
+def build(WH, T2, mode, k, slip=6):
     cnf = CNF()
     A = fixed_from_glider(cnf, G["A"], 8)
-    H = TrainVar(cnf, WH, 42, -14, 6, name="H")
+    H = TrainVar(cnf, WH, 42, -14, slip, name="H")
     tau, x = placements_by_class(A, (0, 0), H, A.W + 4)[k]
     lo, hi = 0, x + H.W + tau
-    win = make_window(T2, lo, hi, -14 / 42, 2 / 3, margin=20)
-    S = Scene(cnf, T2, [(A, 0, 0), (H, tau, x)], window=win)
-    if mode == "none":
+    T = T2 + (42 if mode == "gtrain" else 0)
+    win = make_window(T, lo, hi, -14 / 42, 2 / 3, margin=20)
+    S = Scene(cnf, T, [(A, 0, 0), (H, tau, x)], window=win)
+    if mode == "gtrain":
+        # everything left at T2 is one G-speed train (A absorbed, H changed)
+        S.invariant(T2, S.lo - T2 - 42, S.hi + T2 + 14, 42, -14)
+    elif mode == "none":
         S.ether(T2, S.lo - T2, S.hi + T2, S.p_left)
     else:
         S.is_item(T2, S.lo - T2, S.hi + T2, fixed_from_glider(cnf, G["GB4"], 48),
@@ -36,12 +40,14 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("WH", type=int); ap.add_argument("T2", type=int)
     ap.add_argument("mode"); ap.add_argument("--k", default="0,1,2")
+    ap.add_argument("--slips", default="6")
     a = ap.parse_args()
     for k in map(int, a.k.split(",")):
+      for slip in map(int, a.slips.split(",")):
         t = time.time()
-        cnf, H, S = build(a.WH, a.T2, a.mode, k)
+        cnf, H, S = build(a.WH, a.T2, a.mode, k, slip)
         sol = cnf.solve()
-        rec = {"spec": "hardgate", "WH": a.WH, "T2": a.T2, "mode": a.mode, "k": k,
+        rec = {"spec": "hardgate", "WH": a.WH, "T2": a.T2, "mode": a.mode, "k": k, "slip": slip,
                "sat": sol is not None, "secs": round(time.time() - t, 1)}
         if sol is not None:
             rec["H"] = "".join(map(str, H.decode(sol)))

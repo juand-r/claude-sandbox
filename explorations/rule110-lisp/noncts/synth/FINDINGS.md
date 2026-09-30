@@ -1,73 +1,119 @@
-# synth: verified findings (living document; final summary at the end)
+# synth: automated synthesis for a non-CTS computer in Rule 110
 
-Every positive result below was found by SAT and then re-simulated with
-../../engine.py (the SAT spacetime equals the simulation cell for cell,
-and the claimed outputs persist for >= 400 further generations). Every
-negative result is an UNSAT answer of CaDiCaL 1.5.3 for the exact bounds
-stated; outside those bounds nothing is claimed.
+Final report of the "synth" agent (2026-09-30). Everything here is either
+(a) a SAT answer that was re-simulated with ../../engine.py, or (b) an
+UNSAT answer for an exactly stated search space. Outside the stated
+bounds nothing is claimed. Working log and all mistakes: NOTES.md.
+
+## Summary
+
+The team's goal was a Rule 110 computer that does not emulate a cyclic
+tag system. My job was to find glider reactions that nobody had
+designed, by encoding pieces of spacetime as SAT problems. The main
+outcomes:
+
+1. **A reusable synthesizer** (r110sat.py, react.py, scene.py): free
+   stationary objects, free moving trains of any period, fixed library
+   gliders, placed at exact spacetime positions, several scenes sharing
+   unknowns, region constraints ("this region is item X somewhere", "this
+   region is any train of period (p,d)", "ether"), and a moving window
+   that makes slow reactions (relative speed 1/15) affordable.
+2. **Positive results used by the team.** The command packet for
+   architect's "spec F" (an E pair turns an F glider into a lone C3);
+   fuel-paying A-packets that cross a stationary C cell (the one known
+   way for a right-mover to pass stored data); three B reflectors.
+3. **A theorem-like data result.** Slip mod 14 is the only linear
+   conservation law of glider collisions (Smith normal form of the whole
+   verified catalog).
+4. **About twenty bounded non-existence results** for the gadgets the
+   architecture needed (relay, perfect mirror, multi-cell crossing,
+   transport through counters, hard gate, zero test, pumping). Each is
+   exact within its bounds, and each came with a positive control on the
+   same code. Together they locate where the construction is hard: every
+   "clean absorption" or "clean pass-through with state" gadget asked for
+   was absent at the widths I could search.
+
+The computer is not finished (see architect's ARCHITECTURE.md s.10 for
+the team's status). My results narrow which gadgets can exist at small
+sizes; none of them shows impossibility in general.
+
+## 1. Method
+
+### 1.1 Encoding
+
+Cell (t, x) is a Boolean variable; Rule 110 is five clauses per cell
+(new = (c or r) and not (l and c and r)). A problem is a set of scenes.
+Each scene's row at t = 0 is assembled from pieces: library gliders
+(collider's gliders.json), free stationary objects (period (7,0)
+enforced in their own 7-row spacetime), or free trains of period (p, d)
+(e.g. (30,-8) for Ebar-speed packets), all embedded in ether with
+consistent phases. Outside the light cone of the unknown cells every
+cell is an ether constant. Constraints at a later time T2 describe the
+required outcome exactly: which regions hold which items (at any
+position and time phase, by an indicator disjunction), which regions are
+ether, which are periodic. Solver: CaDiCaL 1.5.3 via python-sat.
 
 Phase convention: ether with my-phase p is cell(t, x) = ETHER[(x + 4t + p)
-mod 14]. Objects are given as the cells [0, W) at t = 0 with my-phase 0
-ether to the left and my-phase pR to the right.
+mod 14] (checked: one step shifts the tile by 4).
 
-## 1. Sanity checks (the synthesizer reproduces known physics)
+### 1.2 Verification discipline
 
-- Glider enumeration (gliders.py), periods P <= 30, widths <= 30: the
-  only period vectors (P, D) with primitive periodic defects are
-  (3,2) (4,-2) (7,0) (10,2) (12,-6) (15,-4) (30,-8), i.e. A, B, C, D,
-  Bbar/Bhat, E, Ebar. Matches Cook's catalog below period 30. (P = 31..100
-  was stopped for CPU; hard instances at P = 32 exceeded a 200k-conflict
-  budget, so nothing is claimed there.)
-- Known collisions recovered by free-object searches: C1-like object + A2
-  -> Ebar; C3-like + B -> E; C1-like + B -> C2-like; B + C2 -> D1;
-  A + C1 -> F. The class structure of Ebar x C2 (exactly 1 of 4 classes
-  is a clean crossing) is reproduced by scene.py.
+- Every SAT answer: the decoded t = 0 row is simulated independently
+  with ../../engine.py; the SAT spacetime must equal the simulation cell
+  for cell, and the claimed outcome must persist for >= 400 more steps.
+- Every new scene type got a POSITIVE control (a known reaction that must
+  come out SAT, and the known wrong classes UNSAT) before any UNSAT was
+  reported. Controls are listed with each result.
+- Collision classes: for fixed items I enumerate one placement per class
+  (classes.py: offsets modulo the lattice of the two period vectors,
+  count |det|/14). For FREE trains the class index is not an anchor (the
+  solver can shift the train inside its window), so free-train results
+  cover all classes whenever the train is narrower than its window by the
+  class spacing.
 
-## 2. Bounded non-existence results (phase-free heads)
+### 1.3 Bugs found by the verification, and their consequences
 
-Setting: a single A (from the left) or B (from the right) hits a FREE
-stationary object O (period (7,0), width W, all 14 right phases tried).
-A and B have exactly one collision class against any period-7 object,
-so these answers do not depend on timing. Outcome required within
-T2 = 200 generations; O' = any stationary object (possibly empty).
+Four harness bugs were caught; none survives in a reported result.
+1. O' region not isolated from outgoing gliders (walls.py): caught by
+   simulation (a SAT "mirror" whose O' later emitted a glider). Fixed with
+   14-cell ether bands.
+2. Relay pre-roll sign error: caught by a positive control; fixed before
+   any result was used.
+3. Seam debris in verify_reaction (pad too small): false "verification
+   failed" alarms; fixed.
+4. is_item demanded the whole light cone of long-period items fit inside
+   the region -> possible FALSE UNSAT for Ebar- and F-speed items. Found
+   by a failed control (03:55). All affected runs were repeated after the
+   fix (relay: same answer); the others were discarded (trash/).
 
-| head | required outcome | W | result |
-|---|---|---|---|
-| A | nonempty B-train back to the left | <= 12 | none (all 14 pR) |
-| A | nonempty A-train onward to the right | <= 24 | none (all 14 pR) |
-| A | nonempty B-train back to the left | <= 24 | none (all 14 pR) |
-| B | nonempty A-train back to the right | <= 24 | EXISTS for pR = 7, 10, 13 (sec. 3) |
-| A-train (<= 12 wide, n A's) | O restored exactly + B-train (<= 12 wide) back | <= 16 | none (all 14 pR x 7 slips) |
+## 2. Positive results
 
-## 3. Positive results
+### 2.1 Spec F: a command packet that turns a stored F into a messenger
 
-- A + O -> O' + F (an A reflected as a slow F; O changes state):
-  O = 0111001101111111 (W = 16, pR = 2), T2 = 320; walls_results.jsonl.
-- B reflectors (W = 24, T2 = 200; experiments_heads.py, heads_results.jsonl):
-  O = 111111110100111001100111 (pR 13): B + O -> C2 + A
-  O = 000111110000111110111111 (pR 7):  B + O -> C1 + A + A (A's 48 apart)
-  O = 111011010111011010111110 (pR 10): B + O -> A_8_A (O consumed)
-  The O's are tight stationary composites (not library gliders).
+Question (architect): a left-moving packet P at -4/15 hitting an F glider
+(the top of an F store) that leaves only stationary messengers.
 
-## 4. Spec F (architect): command packet + F -> stationary messenger only
+Search: free (30,-8)-packets <= 20 cells wide, all 14 slips x 12
+placements (168 instances), T2 = 300, outcome = ether | nonempty period-7
+object | ether.
 
-SAT search: P = free (30,-8)-train of width <= 20 (all 14 slips, all 12
-placements vs F), required: the row at T2 = 300 is ether | nonempty
-period-7 object | ether (nothing moving). Hits (verified to T2 + 500):
-only slip 4, only two packets, both E pairs (collider's names):
-  E@(0,0)+E@(-13,15)  and  E@(0,0)+E@(-5,11)
-Each gives F + P -> C3 alone (slip 13 + 4 = 3). For E@(0,0)+E@(-13,15)
-(cells 00000111110000000010 on [0,20), my-phase 0 left / 4 right,
-(15,-4)-periodic) this happens in exactly 1 of its 6 classes vs F.
-No packet of width <= 20 leaves C1 or C2 (or any other messenger);
-complete sweep, 168 instances. Neither E pair crosses F cleanly in any of
-its 6 classes, so no packet <= 20 wide can decrement one F store while
-crossing another (phase addressing).
+Observation: exactly two packets exist, both E pairs (collider's names
+E@(0,0)+E@(-13,15) and E@(0,0)+E@(-5,11), slip 4), and the messenger is
+always C3 (13 + 4 = 17 = 3 mod 14). For the first pair this happens in
+exactly one of its six classes against F. Neither pair crosses F cleanly
+in any class (F turns them into B^3/B^2/Ebar).
 
-## 5. Right-moving A-packets can cross stationary C cells (fuel cost)
+Interpretation: a destructive read of an F store exists and is unique at
+this size; "decrement one store while crossing another" (addressing by
+phase) does not exist with packets <= 20 wide. Independently verified by
+scholar (check_specf.py) and collider (catalog).
 
-cross.py, cross_analysis.txt. A free A-train (width <= 24) + fixed C cell
--> the same C glider (displaced) + a nonempty A-train onward:
+### 2.2 Right-moving A-packets that cross a stationary cell
+
+Question: does any right-mover pass a stationary C cell (the one-way
+transparency obstruction says single gliders cannot)?
+
+Observation (cross.py, verified; scholar re-embedded and confirmed):
 | cell | packet in (slip) | cell displacement | out |
 |---|---|---|---|
 | C2 | 9 A's (2) | dx = -6, dt = 2 mod 7 | A^2 |
@@ -75,93 +121,117 @@ cross.py, cross_analysis.txt. A free A-train (width <= 24) + fixed C cell
 | C1 | 9 A's (2) | dx = -6 | A^2 |
 | C1 | 8 A's (8) | dx = -6 | A |
 | C3 | 8 A's = A^3 + A^5 (8) | dx = -6 | A |
-The cell absorbs 7 A's (one slip cycle, 7 x 8 = 0 mod 14) and the rest
-pass. No A-train of width <= 24 re-emerges IDENTICAL after crossing C1,
-C2 or C3 (all slips; UNSAT). D-speed trains (width <= 20, T2 = 260): no
-crossing of C1, C2, C3 at all (UNSAT, all slips).
+(A-trains <= 24 wide; the 8-A packet 111110111011101110111011 crosses all
+three C types.)
 
-## 6. Relay (spec R) bounds
+Interpretation: the cell absorbs exactly one slip cycle (7 A's, 7 x 8 = 0
+mod 14) and restores itself; the rest of the packet passes. This is a
+genuine exception to the obstruction for packets, at a fuel cost of 7 A's
+per crossed cell.
 
-Strict relay (idle: P crosses C2; set: P + C1 -> the same C2 at the same
-cells + the same P trajectory + an A): UNSAT for all free (30,-8)-trains
-P of width <= 20, all 4 classes, all 14 slips, T2 = 330 (re-run after the
-is_item extent fix of 03:55; same answer).
-Weaker relay (P + C1 -> C2 + A, P consumed, C2 anywhere; no idle-crossing
-requirement): UNSAT for the same bounds (56 instances).
+Boundary (all UNSAT): no A-train re-emerges identical (width <= 24 for
+C1-C3, <= 36 for C2); no two-cell version (packet <= 48 whose remainder
+<= 28 crosses a second C2); D-speed trains never cross (<= 20). So the
+fuel-paying crossing is one cell deep within these bounds.
 
-## 7. Multi-cell A-packet crossing (scholar's question)
+### 2.3 Reflectors
 
-chain.py: Q0 + C2 -> C2 + Q1, Q1 + C2 -> C2 + (nonempty A-train), Q_i free
-A-trains. UNSAT for widths Q0 <= 48, Q1 <= 28, slips 8 and 2 (15 or 9 A's
-+ 7), T2 = 200. Control: the 1-cell version is SAT (0.6 s). So within
-these bounds the fuel-paying crossing is one cell deep.
+- B reflectors (W = 24): stationary objects O with B + O -> C2 + A
+  (O = 111111110100111001100111, right phase 13), -> C1 + A + A, and
+  -> A_8_A (O consumed). A single B can be turned around.
+- A + O -> O' + F (O = 0111001101111111, right phase 2): an A turned into a
+  slow left-mover with a state change.
+- Contrast: no stationary object <= 24 wide turns a single A into any
+  B-train, or lets it pass as any A-train (all 14 right phases; scholar
+  independently confirmed the pass-through part by hitting all 1260
+  stationary objects <= 24 wide with an A: no A-type object ever leaves).
 
-## 8. INC on an F store (copy)
+### 2.4 Only one linear conservation law
 
-copyspec.py: P + F -> F (untouched, same cells) + a second F exactly 29
-cells to the right in the same phase (architect's clean train gap):
-UNSAT for all free (30,-8)-trains P <= 20 wide (slip forced 13), all 12
-classes, T2 = 300. Also UNSAT with the new F anywhere to the right.
+invariants.py: every verified reaction in collider's catalog among 22
+named types (A, B, Bbar, Bhat, C1-3, D1, D2, E, Ebar, F, G, H, A^2..A^5,
+B^2, B^3, E^2, E^3; 874 reactions, 597 distinct count vectors) as rows of
+an integer matrix. Smith normal form: diag(1, ..., 1, 14), rank 22.
 
-## 9. E_n counters (scholar's one-glider unary counter)
+Interpretation: no weighted glider count is conserved, and every linear
+law mod any m is a multiple of a single Z_14 law, which is slip. Scholar
+re-derived it on 3293 reactions. Scope: laws linear in type counts; laws
+involving positions or phases (e.g. the architect's no-winding
+"potential") are not excluded.
 
-en.py builds E_n = E + (n-1) B's by simulation (verified (15,-4)-periodic;
-slips 9, 1, 7, 13, 5 for n = 1..5). B-trains are single-class against
-E_n (|det((4,-2),(15,-4))| = 14).
-- Control: a free B-train (<= 10 wide, slip 6) mapping E_1 -> E_2 and
-  E_2 -> E_3 is found (= a single B), verified.
-- DEC from the right: no free B-train <= 32 wide maps E_2 -> E_1 (alone),
-  none maps E_3 -> E_2 (alone), none does both (slip forced 8; T2 = 400;
-  moving window, margin 24). So with B-speed packets a counter can only be
-  decremented from the left (scholar's A + E_n -> E_{n-1}).
+## 3. Bounded non-existence results
 
-## 10. Slip mod 14 is the ONLY linear conservation law of glider collisions
+All UNSAT, with the positive control used for that code. "Free" = the
+solver chooses every cell.
 
-invariants.py: from collider's verified catalog (reactions.json, 874
-reactions whose inputs and outputs are all named gliders A, B, Bbar, Bhat,
-C1-3, D1, D2, E, Ebar, F, G, H or tight bundles A^2..A^5, B^2, B^3, E^2,
-E^3; 597 distinct count vectors), the Smith normal form of the reaction
-matrix over Z is diag(1, ..., 1, 14) with full rank 22. So:
-- there is no exact integer conservation law (no conserved "number of"
-  anything, even with weights);
-- the only law mod m for any m is a multiple of one Z_14 law, and slip
-  (ether offset) satisfies all 855 reaction rows, so slip mod 14 is it.
-Scope: laws that are linear in the counts of glider types. Laws involving
-positions/phases (e.g. architect's conjectured "phase potential" behind
-no-winding) are not excluded; this says such a law cannot be a count.
+| # | gadget asked for (by) | searched space | control |
+|---|---|---|---|
+| 1 | relay: P crosses C2, and P + C1 -> same C2 + same P + A (architect) | P (30,-8) <= 20, 14 slips x 4 classes, T2 330 | Ebar x C2: exactly 1 of 4 classes crosses |
+| 2 | weak relay: P + C1 -> C2 + A, P consumed | same | same |
+| 3 | perfect mirror: A-train + O -> O + B-train | trains <= 12, wall <= 16, 14 x 7 slips | walls.py known reactions |
+| 4 | INC on F store: P + F -> F + new F 29 cells right, anywhere right, or anywhere left (architect) | P <= 20, 12 classes | Ebar/F controls |
+| 5 | zero test on F memory floor: EE + O -> O + messenger (architect, spec Z) | floor (36,-4) <= 20, 14 slips x 6 classes, T2 450 | collider's Ebar pair: floors found in 8/12 |
+| 6 | stationary Ebar annihilator X + Ebar -> nothing | X <= 20, 4 classes | - |
+| 7 | pump: packet changes two C1 markers' distance by a lattice vector (counting by crossings) | P (30,-8) <= 20, 14 slips x 4 classes, marker gaps 51, 65 | single Ebar: 1-bit register reproduced |
+| 8 | DEC E_n from the right with a B-train | <= 32, E_2 and E_3 separately | B-train INC E_n -> E_n+1 found |
+| 9 | transport through E_1, E_2, E_3 (B-train / A-train / G-speed train) | B, A <= 24; G-speed <= 30, T2 1100; 14 slips (x 3 classes) | fixed A x Ebar: 4 of 6 classes; F x C1 classes with/without window |
+| 10 | hard gate: A + H -> nothing / -> GB4 (collider) | H (42,-14) <= 30, slip 6, 9 starts; both also <= 44 (T2 170) | GB1 + A -> G in 1 of 9 |
+| 11 | hard gate, any G-speed output | H <= 30, 14 slips | only GB1 -> G (excluding GB1: UNSAT) |
+| 12 | zero test on architect's compound: K + F_19_F#3 -> itself + messenger (Z2) | K (30,-8) <= 24, 14 slips, T2 900, strict and with Ebar debris | F + E,Ebar packet -> F + C1_12_C2 in its class |
+| 13 | compound -> (19,23) pair (architect's near miss) | K <= 24, 14 slips | only single Ebars (39 placements excluded -> UNSAT) |
+| 14 | spec F with C1 or C2 messenger | P <= 20 (and <= 28 for 17/24 instances) | - |
 
-## 11. More bounds (all UNSAT; exact scopes)
+Caveats that apply to every row (a skeptic's list):
+- Time: the outcome must be complete by T2. A reaction that settles
+  later (possible for slow partners such as F or G) is not covered.
+- Windows: rows 5, 8, 9, 10, 11, 12, 13 used a moving window; any solution
+  whose debris leaves the window transiently and returns is excluded.
+- Classes: with free packets the class is covered only if the packet is
+  narrower than its window by the class spacing (about 2-8 cells), so the
+  bounds are complete for packets slightly narrower than stated.
+- Widths count cells of the t = 0 window, not gliders; a packet of k
+  gliders needs roughly 4-12 cells per glider.
 
-- Spec Z with the spec-F packet EE (E@(0,0)+E@(-13,15)): no F-speed floor
-  O (free (36,-4)-train <= 20 wide, 14 slips x 6 classes, T2 = 450,
-  moving window) with EE + O -> O + stationary messenger(s) only.
-  Positive control: for collider's packet Ebar@(0,0)+Ebar@(-4,23) the same
-  code finds floors (slip 13) in 8 of 12 placements.
-- Transport through E_n: no free B-train <= 24 wide (14 slips) crosses
-  E_1, E_2 and E_3 with both surviving (any displacement), T2 = 400.
-- Pump: no free (30,-8)-packet <= 20 wide (14 slips x 4 classes) crosses
-  two C1 markers 51 cells apart, both markers and the packet surviving,
-  with the marker distance changed by a nonzero vector of
-  M = <(7,0),(30,-8)> (the condition for an identical later packet to
-  pump again). Control (single Ebar, no pump condition): SAT, distance
-  change (2,6) or (0,0) = architect's 1-bit register. D0 = 65: running.
+Interpretation, stated with its limits: the clean gadgets that would
+close the construction (a store that answers across other stores; a
+clean absorber; a non-destructive zero read) do not exist among small
+packets and objects. The bounds are modest (20-32 cells, 150-1100
+steps), so this is evidence about where the difficulty lies, not a proof
+that the gadgets cannot exist.
 
-## 12. Hard gate at G speed (collider's spec)
+## 4. Sanity checks of the synthesizer
 
-hardgate.py: free (42,-14) object H, width <= 30, slip 6 (forced), A from
-the left, T2 = 150, moving window, 9 start placements:
-A + H -> nothing: UNSAT; A + H -> GB4: UNSAT. Control: fixed GB1 + A -> G
-in exactly 1 of 9 classes (collider's class 3).
+- Glider enumeration (gliders.py), P <= 30, width <= 30: primitive
+  periodic defects exist exactly for (3,2) (4,-2) (7,0) (10,2) (12,-6)
+  (15,-4) (30,-8) = A, B, C, D, Bbar/Bhat, E, Ebar (Cook's catalog below
+  period 30). P = 31..100 was stopped for CPU.
+- Known reactions recovered from free objects: A2 + C1-like -> Ebar,
+  B + C3-like -> E, B + C1-like -> C2-like, B + C2 -> D1, A + C1 -> F.
 
-## 13. Zero test on architect's F-pair counter (spec Z2)
+## 5. Recommendations
 
-zc.py: free (30,-8)-packet K <= 24 wide (all 14 slips; K free inside its
-window, so its class against the compound is searched too, completely for
-packets <= 22 wide), T2 = 900, moving window, target = architect's value-0
-compound F_19_F#3 (zero_state.json):
-  K + compound -> compound (any displacement) + nonempty stationary
-  object, nothing else: UNSAT; the same plus any Ebar-speed train on the
-  left: UNSAT.
-Positive control: target F with collider's packet E@(0,0)+Ebar@(-1,23) ->
-F + C1_12_C2 in exactly its known class. Pair-identity scene control: a
-single Ebar keeps the value-1 pair's D in exactly 1 of 12 classes.
+1. For the E^n / G-speed stream design (collider), a clean hard gate
+   (A + H -> nothing or -> GB4) is absent up to width 44, and up to width
+   30 the only clean A-absorber of any kind is GB1 -> G. The promising
+   route is a spec that accepts a known instruction as the product
+   (collider found A + (GB3,GB5) -> GB3) and designs the program around
+   it, rather than a new absorber.
+2. For the F-pair counter (architect), a non-destructive zero read does
+   not exist up to width 24 in any of the three forms tried; a
+   destructive read (spec F, or collider's DEC at zero -> one A) plus
+   re-creation of the zero state may be the realistic route.
+3. The synthesizer is general: any new spec (scenes + region constraints)
+   takes ~50 lines on top of scene.py. Always add a positive control.
+
+## 6. Files
+
+Library: r110sat.py (CNF, Spacetime, moving window), react.py (items,
+single reactions), scene.py (multi-item scenes), classes.py, lib.py
+(collider's gliders in my phase convention), identify.py / analyze.py
+(object typing by period + bits + ether phases), en.py (E_n builder).
+Searches: gliders.py, walls.py, experiments_heads.py, cross.py, chain.py,
+mirror.py, relay.py, specf.py, specz.py, copyspec.py, eater.py, pump.py,
+encross.py, hardgate.py, zc.py, zsplit.py, invariants.py. Written but not
+run (superseded): inc.py, tmhead.py, ghost.py (control only).
+Results: *_results.jsonl (every SAT answer with its decoded row and
+frame), *.log (every instance, SAT or UNSAT, with timing).

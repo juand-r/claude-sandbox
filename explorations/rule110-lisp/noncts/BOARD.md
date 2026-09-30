@@ -1447,3 +1447,127 @@ Next (running): your near miss as a SAT spec: K + compound -> the F pair
 with D = (19,23) (any common displacement; strict, then with Ebar-speed
 debris), and if that exists, jointly with "K is the identity on the
 value-1 pair" (synth/zsplit.py).
+
+### [synth] 2026-09-30 05:47 - near miss: only a single Ebar splits the compound into (19,23); need your slot geometry
+@architect: zsplit (a), free (30,-8)-packet K <= 24 wide, all 14 slips,
+T2 = 900: K + F_19_F#3 -> F pair with D = (19,23) (common displacement free):
+  nothing else      : UNSAT (only slip 0 is charge-possible)
+  + Ebar-speed debris: SAT only for slip 7, and the solution is a SINGLE
+    EBAR (it crosses the compound, splits it into the (19,23) pair and
+    continues) -- presumably one of your "gap 24-29" packets.
+So within width 24 the only way into the (19,23) residue is that Ebar.
+The joint test (same K is the identity on value-1 pairs) is only
+meaningful with the two placements tied by one stream slot: in my
+formulation they are independent, so K = Ebar would trivially satisfy
+both (lane class on the pair, splitting class on the compound). Please
+give, for one slot, the seeds (xstream coordinates, same time) of the
+compound at value 0 and of T and P at value 1 (and value 2 if easy);
+then I tie them and run "K identity on values 1, 2 AND compound ->
+(19,23)" exactly.
+
+### [synth] 2026-09-30 05:49 - near miss closed to width 24 (no geometry needed)
+@architect: re-ran zsplit (a) with every single-Ebar placement excluded
+(39 placements of Ebar in the 24-cell window, all time phases): UNSAT.
+So within width 24 the ONLY packets that turn F_19_F#3 into the (19,23)
+pair (+ Ebar-speed debris) are single Ebars. You found those Ebars are
+not identities on normal pairs, hence "identity on pairs AND compound ->
+(19,23)" has no solution with packets <= 24 wide. No need to send the
+slot geometry for this; I would still use it if you want other joint
+specs.
+
+### [collider] 2026-09-30 ~15:40 - (C-pair) + F catalog for @architect
+114 stable stationary C-pairs (C1/C2/C3 x C1/C2/C3, gap <= 30 at t=0; 24
+spacings are unstable = the two C's react) vs F, both classes each: 228
+collisions, all settled; in collisions.json/reactions.json (X = the pair,
+named e.g. C1_15_C1 or C1@(0,0)+C1@(-4,25); Y = F). verify.py re-check of
+the new entries is running in my queue (will post only if anything fails).
+Outcome counts by number of products: 1: 48, 2: 83, 3: 70, 4+: 27.
+29 outcomes leave F plus C's only:
+ - clean crossings (pair and F survive): C1_15_C1#0, C1_19_C1#0,
+   C1@(0,0)+C1@(-4,25)#0, (-5,29)#0, (-6,33)#1, C2_11_C2#1, C2_15_C2#1,
+   C2_18_C2#1, C2@(0,0)+C2@(-6,27)#1, and C1-C2 / C2-C1 pairs
+   (C1_19_C2#1, C1@(0,0)+C2@(-5,29)#0,#1, C2_16_C1#0, C2_15_C1#0, ...).
+ - F EATS a (C3,C2) pair and survives: C3_7_C2#0, C3_6_C2#1, C3_16_C2#1,
+   C3_14_C2#1, C3_11_C2#2 (both classes), C2_10_C3#1 -> F alone
+   (slip 3 + 11 = 14). A messenger-pair sink that is itself F memory.
+ - conversions: C1-C3 pairs + F -> C2 + C2 + F.
+Displacements for your winding test: python displacements.py regenerates
+DISPLACEMENTS.md including these crossings (after my queue finishes).
+
+### [synth] 2026-09-30 06:05 - hard gate, widest variant: only GB1 (-> G) within width 30
+@collider: relaxed spec "A + H -> ANY G-speed train (nothing else)", free
+(42,-14) object H <= 30 wide, all 14 slips, T2 = 150: SAT only for slip 10
+and the solution is your GB1 (A + GB1 -> G); with all 35 GB1 placements
+excluded it is UNSAT. So within width 30 no G-speed object absorbs an A
+cleanly except GB1 -> G (which then acts as a DEC on the counter).
+Also finished: no A-train <= 24 wide (14 slips x 3 classes) crosses
+E_1, E_2, E_3 cleanly (transport through the E counter from the left).
+
+### [collider] 2026-09-30 ~16:30 - FINAL SUMMARY (collider signing off)
+(The harness refused to let me create FINDINGS.md, as it did for
+scholar; findings are here, in collider/NOTES.md, and in my report to the
+lead.) No collider processes left running.
+DATA: gliders.json (3232 verified periodic objects: the 14 named gliders
+from Martinez strings, tight A^2..A^5, B^2, B^3, wide Aw2..Aw6, E^2..E^9,
+GB1..GB8, packets, auto-registered compounds); collisions.json /
+reactions.json: 25,810 collisions (every class of: all base pairs; frequent
+products; 2-glider packets vs C1-3 and F; E^n vs A-family, B-family, G,
+GBk, C's, D's, F, H; A vs 2-object G-speed packets; C-pairs vs F). ALL
+re-verified cell-for-cell with ../../engine.step (verify.py), negative
+controls detected. Class count |det|/14 asserted for every pair.
+TOOLS: predict.py (products for ANY placement, lattice translation);
+glidersim.py (event-driven glider-level simulator with 3-body guard;
+188/188 cell-exact vs CA, 0 disagreements); query.py find; ecounter.py
+(E^n counter builders/verifiers); C_TABLE / DISPLACEMENTS / RELAY /
+SWITCHES tables; test_collider.py (3261 tests).
+MAIN RESULTS (all verified):
+ 1. Timing-free chemistry: A/B/C/D single-class table; tight A/B packets
+    act as charges (A^k + B^m -> A^(k-m) / B^(m-k) / nothing).
+ 2. Read gadgets: F (or G, H) reads and resets a C2/C1 cell; the cell ends
+    at the same event, the bit leaves as F/Ebar (B^3/B^2).
+ 3. G-mirror: Ebar/E/H + G -> same Ebar/E/H (untouched) + A^4.
+ 4. E^n unary counter: INC = B (single class); DEC from the left = A
+    (fixed-class A-train, any history); DEC from the right = G
+    (class-free, answer A^3; at zero class 0 -> E + A^4).
+ 5. G-speed instruction set: G + B^k -> GBk; E^n + GBk -> E^(n+k-4)
+    class-free for n >= 2; GB3 DEC, GB4 NOP, GB5 INC; rigid streams
+    verified end-to-end in the CA; the only data-dependent output is the
+    zero answer A (GB3 at zero).
+ 6. Answer vs stream: A + GB4#4 -> A (soft gate); A + (GB3,GB5 pair) ->
+    GB3 (NOP-pair becomes DEC); no clean hard gate among 1- and 2-object
+    G-speed packets.
+ 7. Negatives (exhaustive for the inputs named): no right-mover or A/B
+    packet up to 2 gliders crosses a C cleanly; no catalog left-mover is a
+    strict relay; no single-glider mirror returns exactly one A.
+OPEN: a clean hard gate / "zero deletes one block" at G speed; 2-register
+addressing for the E^n / GBk design; guns (finite seeds); 3-object
+packets. Thanks all -- the cross-checking made every result stronger.
+
+### [synth] 2026-09-30 07:35 - FINAL SUMMARY (synth signing off)
+Full report: synth/FINDINGS.md; log with every mistake: synth/NOTES.md.
+No synth processes left running.
+TOOL: a SAT synthesizer for Rule 110 spacetime (r110sat.py, react.py,
+scene.py): free stationary objects, free (p,d)-trains, library gliders
+at exact spacetime positions, several scenes sharing unknowns, exact
+region constraints, moving windows for slow reactions. Every SAT answer
+re-simulated with ../../engine.py; every scene type had a positive control.
+POSITIVE (verified; scholar and collider re-checked 1-2):
+ 1. Spec F: the only packets <= 20 wide that turn an F into stationary
+    messengers only are two E pairs; messenger always C3.
+ 2. Fuel-paying crossing: 8 or 9 A's cross a C1/C2/C3 cell, the cell eats
+    7 A's and is restored (displaced); one cell deep only (<= 48 wide).
+ 3. B reflectors (B + O -> C2 + A etc.) and A + O -> O' + F.
+ 4. Slip mod 14 is the ONLY linear conservation law (Smith normal form of
+    the catalog; scholar confirmed on 3293 reactions).
+BOUNDS (all UNSAT with stated widths/times; details and controls in
+FINDINGS s.3): strict and weak relay (<= 20); perfect A/B mirror; INC-copy
+of an F (right or left); spec Z floors for EE; Ebar annihilator; pumping
+two C1 markers (no-winding holds for packets <= 20); DEC of E_n from the
+right by B-trains (<= 32); transport through E_1..E_3 by B-, A- (<= 24)
+and G-speed (<= 30) trains; hard gate at G speed (<= 44; any G-speed
+output <= 30: only GB1 -> G); architect's zero tests Z2 and the (19,23)
+near miss (<= 24; only single Ebars split the compound).
+Reading: the gadgets that would close the construction (answer across
+stores, clean absorber, non-destructive zero read) are absent at small
+sizes. That is evidence about where the difficulty is, not a proof.
+Thanks all; the cross-checking caught real errors on every side.

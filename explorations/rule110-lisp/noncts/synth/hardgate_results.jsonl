@@ -16,3 +16,19 @@
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 6, "sat": false, "secs": 60.3}
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 7, "sat": false, "secs": 52.7}
 {"spec": "hardgate", "WH": 30, "T2": 150, "mode": "GB4", "k": 8, "sat": false, "secs": 45.5}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 0, "sat": false, "secs": 53.9}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 1, "sat": false, "secs": 53.2}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 2, "sat": false, "secs": 20.8}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 3, "sat": false, "secs": 48.1}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 4, "sat": false, "secs": 22.2}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 5, "sat": false, "secs": 45.9}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 6, "sat": false, "secs": 21.3}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 7, "sat": false, "secs": 53.8}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 8, "sat": false, "secs": 20.8}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 9, "sat": false, "secs": 51.6}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 10, "sat": true, "secs": 2.9, "H": "111110111010111000110101100110", "sim_ok": true, "row0": "1111101111100010011011100011101100000011100000", "lo": 0, "pl": 0, "pr": 4}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 11, "sat": false, "secs": 49.9}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 12, "sat": false, "secs": 21.7}
+{"spec": "hardgate", "WH": 30, "T2": 150, "mode": "gtrain", "k": 0, "slip": 13, "sat": false, "secs": 56.6}
+{"spec": "hardgate", "WH": 44, "T2": 170, "mode": "none", "k": 0, "slip": 6, "sat": false, "secs": 771.7}
+{"spec": "hardgate", "WH": 44, "T2": 170, "mode": "GB4", "k": 0, "slip": 6, "sat": false, "secs": 493.5}

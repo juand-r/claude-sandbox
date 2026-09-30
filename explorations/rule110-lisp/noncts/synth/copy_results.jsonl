@@ -29,3 +29,8 @@
 {"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 4, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 21.8}
 {"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 5, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 18.1}
 {"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 6, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 16.5}
+{"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 7, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 7.8}
+{"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 8, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 8.6}
+{"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 9, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 8.9}
+{"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 10, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 7.0}
+{"spec": "INC-copy", "target": "F", "WP": 20, "p": 30, "d": -8, "k": 11, "T2": 300, "left": true, "gap": null, "sat": false, "secs": 8.5}

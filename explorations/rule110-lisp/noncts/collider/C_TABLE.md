@@ -1633,7 +1633,7 @@ Columns: reaction id | C input seed event | other input seed event | kind | C-fa
 | C3+E^7#1 | C3@(0, 0) | (0, 53) | transmutation | [('C1', 2, 15)] | Ebar + C1 + A |
 | C1+E^8#0 | C1@(0, 0) | (-1, 41) | transmutation | [] | E^2 + F |
 | C1+E^8#1 | C1@(0, 0) | (0, 51) | transmutation | [] | B^2 + A + A |
-| C2+E^8#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + Bbar + B + v-14/42s10w13 + G + Ebar + F + A + A + A |
+| C2+E^8#0 | C2@(0, 0) | (-3, 43) | transmutation | [] | B + Bbar + B + GB1 + G + Ebar + F + A + A + A |
 | C2+E^8#1 | C2@(0, 0) | (0, 45) | fusion | [] | v-2/4s6w39 |
 | C3+E^8#0 | C3@(0, 0) | (-1, 45) | transmutation | [('C1', 5, 3)] | Ebar + C1 |
 | C3+E^8#1 | C3@(0, 0) | (0, 55) | fusion | [] | v-2/4s12w40 |
