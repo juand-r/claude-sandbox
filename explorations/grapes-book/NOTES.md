@@ -135,3 +135,10 @@ Findings while setting it up:
   text, and the test passed without testing anything. Fixed. Verified that
   the corrected test passes, that a reversed version fails, and that the
   old nested behaviour (note 2 printed before note 1) would have failed it.
+- Chapter 1 now contains a closed reading loop, for demonstration: mark 1
+  in the text -> note 1 -> (xref) subnote e on the next page -> (xref) the
+  anchor beside mark 1. Test `loop` checks such a loop builds and its links
+  resolve. I made the doubled-backslash mistake again when adding that test
+  (Python string escaping when editing run.sh); caught it by reading the
+  line before running. Rule for myself: edit test lines in run.sh with the
+  Edit tool, not through Python string replacement.

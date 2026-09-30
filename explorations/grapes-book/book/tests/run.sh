@@ -106,6 +106,8 @@ expect_ok xref-same-page    'T.\note[k]{N.} See \xref{k}.'                   2 '
 expect_ok xref-other-page   'T.\note[k]{N.}\newpage See \xref{k}.'           2 'See 1, p. 1.'
 expect_ok xref-to-aside     'T.\aside[a]{A.} U.\note{See \xref{a} there.}'   4 'See * there'
 expect_ok anchor-cycle      'Start.\anchor{s} T.\note{N.\subnote{Back to \xref{s}.}}' 4 'Back to ❧'
+# A loop: text -> note -> its subnote -> back to an anchor beside the note.
+expect_ok loop              'T.\anchor{start}\note[n]{N. See \xref{s}.\subnote[s]{S. Back to \xref{start}.}}' 4 'See a.' 'Back to ❧.'
 expect_ok subnote-to-aside  'T.\aside[a]{A.}\note{N.\subnote{Cf. \xref{a}.}}' 6 'Cf. *.'
 
 echo "--- misuse stops the build"
