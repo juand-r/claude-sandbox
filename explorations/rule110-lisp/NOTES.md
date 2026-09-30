@@ -2,9 +2,10 @@
 
 ## Standing rules (read before running anything)
 
-1. Never `pkill -f PATTERN`: the pattern is in the calling shell's own
-   command line, so it kills that shell (happened three times). Record
-   PIDs at launch (`echo $!`) and `kill PID`.
+1. Never `pkill -f PATTERN`, and never `kill $(pgrep -f PATTERN)`: the
+   pattern is in the calling shell's own command line, so it kills that
+   shell (four times now, the last via pgrep). Record PIDs at launch
+   (`echo $! > file`) and `kill $(cat file)`.
 2. An instrument is a hypothesis until validated. Before trusting a
    decoder or classifier, check it on a known-good run AND make sure it
    rejects a known-bad one (the moving-data decoder and the first read
