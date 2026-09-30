@@ -355,6 +355,9 @@ set by one appendant.
 | `{YYYYNN}` | 524 | 262, 196, 160, 131, 30 | fail at read 3-4 | - |
 | `{YYYYNN, NNNNNN}` | 1,064 | 532 | 10 of 10 | ~27,000 |
 | `{YYYYNN, NNNNNN, NNNNNN, NNNNNN}` | 2,144 | 532 | 12 of 12 | ~27,000 |
+| `{(YYYYNN)^3}` (18 symbols) | 1,452 | 532 | 1 of 8 | - |
+| `{(YYYYNN)^3}` (18 symbols) | 1,452 | 1,000 | 8 of 8 | ~59,000 |
+| `{(YYYYNN)^3}` (18 symbols) | 1,452 | 1,452 | 8 of 8 | ~72,000 |
 
 *How the failures look.* Below v ≈ 500 even read 0 comes out wrong: the
 region it leaves holds 13, 6, 3 and 2 Ebar clusters at v = 262, 196,
@@ -365,17 +368,22 @@ empty gap a rejection leaves in the stream. The precise mechanism is not
 yet identified.
 
 *Interpretation.* With two or four appendants, spacing well below Cook's
-value works, at the same cadence as with one. The minimum for this
-six-symbol appendant lies between 262 and 523, independent of how many
-appendants the table holds, within these tests. That is the premise of
-"demand-timed ossifiers" (DIRECTIONS.md), and it seems a uniform
-spacing already captures most of it. A non-uniform schedule would only
-help where appendants differ a lot in length.
+value works, at the same cadence as with one. The minimum does not
+depend on how many appendants the table holds, but it does grow with the
+length of an appendant: it lies between 262 and 523 for six symbols and
+between 532 and 1,000 for eighteen, so at most about 55 per symbol.
+Cook's formula charges about 80 per symbol summed over the whole table.
+The consistent reading is that v must cover the longest single
+appendant, not the table. That is the premise of "demand-timed
+ossifiers" (DIRECTIONS.md), and a uniform spacing sized for the longest
+appendant already captures it; a non-uniform schedule would only help
+where appendant lengths differ a lot.
 
-*Scope.* Three small programs, appendants of six symbols. Whether the
-needed spacing scales with appendant length, and so what it would be for
-the capstone, is not measured. The cost figures in section 4 therefore
-still use Cook's v.
+*Scope.* Five small programs with appendants of 6 and 18 symbols, 8 to
+12 reads each. Two lengths do not establish a scaling law; "at most
+about 55 per symbol" is an upper bound from the 18-symbol case. The cost
+figures in section 4 therefore still use Cook's v, with the reduced-v
+estimate marked as such.
 
 ## 4. The cost of the tower
 
@@ -418,10 +426,17 @@ D2). For the SKI machine the direct construction gives 119,347 binary
 states, hence about 7.9 million tag symbols; the old path would have
 needed about 22 million binary states.
 
-If section 3.5's finding holds at scale, v need only cover one appendant
-(about 80·|Phi|·r for rule length r) instead of the whole table. The
-cost per tag step would then be about 4,800·r·|Phi|^2, quadratic instead
-of cubic. This is the most important open measurement.
+If section 3.5's finding holds at scale, v need only cover the longest
+appendant: at most about 55 per symbol of it, i.e. 55·|Phi|·r for
+longest tag rule length r, instead of about 80·|Phi|·R for the whole
+table. The cost per tag step would then be about 3,300·r·|Phi|^2,
+quadratic instead of cubic. For the capstone with the direct
+construction (|Phi| = 4,362 after padding, r = 7, longest CTS appendant
+30,534 symbols): v ≤ 1.7e6 instead of 2.9e9, about 4.4e11 generations
+per tag step instead of 7.7e14, and 2.9e16 in total instead of 5e19
+(twice that with the L-free fill, whose junk appendants are shorter than
+the longest real one). This is an extrapolation from five small
+programs, not a measurement.
 
 ## 5. What comes next
 

@@ -17,8 +17,9 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 - [x] 2b. Correct v0.1.0 docs to 1 char per ossifier / 30v (REPORT, REVIEW, DIRECTIONS, CHANGELOG)
 - [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
   - [x] uniform-v sweeps: 1-app min in (262, 523]; 2-app at v/2 10/10; 4-app at v/4 12/12
-  - [ ] De Mol filled at v=1600 (7.6x below default), 14 reads: running
-  - [ ] scaling of the needed v with appendant length
+  - [x] De Mol filled at v=1600 (7.6x below default): reads 0-11 correct (full-width run)
+  - [x] scaling: 18-symbol appendant needs 532 < v <= 1000; 6-symbol 262 < v <= 523
+  - [ ] De Mol x=3 to Collatz 1 (552 reads) on StreamRun: running
 - [x] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
   - measured: SKI clockwise machine 10,897 states / 43 symbols / 395,550
     transitions; binarize() carries (new state, written symbol) = 345,523
@@ -29,6 +30,8 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
     buffer. Build directly from the two-way TM; verify against tm.TM.
   - [x] done: cw.two_way_to_binary_cw; SKI 119,347 states (1.5 s); capstone 66 vs 130
 - [ ] 5. 1-D HashLife engine, measured on the above
+  - [x] first: streaming window (casim.StreamRun), exact, verified vs full run; ~40x on De Mol
+  - [ ] HashLife: decide after measuring where StreamRun's time goes
 - [ ] 6. Team results: review, verify, integrate, report
 
 ## Phase 2: takeover, cleanup, release v0.1.0 (started 2026-09-30)

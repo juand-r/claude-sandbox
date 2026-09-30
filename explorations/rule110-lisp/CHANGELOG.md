@@ -27,6 +27,13 @@ Verified
   finished) and still normalizes SKI terms; capstone 66 states instead
   of 130, ~7x fewer generations (experiments.py cost).
 
+- Needed spacing grows with appendant length (6 symbols: 262-523; 18
+  symbols: 532-1,000), not with table size.
+- casim.StreamRun: exact streaming-window simulator (steps only where the
+  state differs from the assembly's free evolution); matches the full
+  run cell for cell. With faster seam fitting and stepping, De Mol's
+  first 10 reads take ~80 s instead of ~1 h.
+
 Changes
 - encoder.assemble(left_gaps=...): explicit ossifier schedule.
 - experiments.py: `reads`, `cost`; `lblock` decoder-free, with `fill`.

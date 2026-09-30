@@ -374,3 +374,27 @@ NW + CTS chain. First harness "mismatch" was my de-duplication on
 (state, symbol) merging repeated identical visits; the run was right.
 Cost table (experiments.py cost) reproduces the v0.1.0 numbers exactly
 for the old path; direct path ~5e19 vs 3.6e20 generations.
+
+## Phase 3, item 5 (engine), and more on item 3 (2026-09-30)
+
+Item 3 scaling: {(YYYYNN)^3} (18 symbols, Cook v 1,452): v = 532 gives
+1/8, v = 1,000 gives 8/8 (72 clusters per accepted region = 4/symbol,
+so the check generalizes to long appendants). Needed v grows with
+appendant length: 6 symbols (262, 523], 18 symbols (532, 1000].
+Extrapolated to the capstone (direct construction): v <= 1.7e6 instead
+of 2.9e9, total ~2.9e16 instead of 5e19. Computed, not guessed: my first
+draft used rule length 3; the real longest tag rule is 7.
+
+Item 5: casim.StreamRun instead of HashLife first (DIRECTIONS 2.3 lists
+it as the simpler alternative). Exactness argument: wrap garbage and
+real activity each spread <= 1 cell/step; re-seat every 256 steps with
+margin 2*256+64+64; check zones must equal the free evolution or it
+raises. Verified: 30 checkpoints to t = 60k plus +-3,000 cells of the
+free fill, cell for cell (scratchpad stream_check.py), and tests/
+test_casim.py. Speed work found two hotspots by profiling: assemble()
+re-solved identical seam fits (now cached per (blocks, side, phase),
+rows bit-identical on three assemblies) and np.roll overhead in
+step_packed (23 us/step on small arrays, was ~93). The read check now
+watches only the next 4 pending regions (reads are sequential).
+De Mol filled, v = 1600: reads 0-9 in ~80 s on StreamRun vs ~1 h on the
+full array, with identical read times on both (independent cross-check).
