@@ -644,8 +644,8 @@ time and find them yourself."
   "gained ground", "cuts against", "pry", "steer", "colors judgments"), idioms ("on the
   receiving end", "put in their mouths", "found wanting", "paid a price", "writing off"),
   our own images ("a gap that did not exist", "the teacher's fist", "a tour of studies",
-  "old relatives", "older roots", "a dose"), and a few compressed phrases that only made
-  sense with the notes ("Inference:", "the second excuse" had already gone).
+  "old relatives", "older roots", "a dose"), and one compressed label that only made
+  sense with the notes ("Inference:" in "The Gift We Give to Tomorrow").
 - Where a figure of speech was the post's own (checked against the original each time,
   for example "patch", "gold standard", "pinned down", "dance around gaps", "carve reality
   at its joints"), it was kept and, where needed, quoted and attributed.
@@ -653,8 +653,8 @@ time and find them yourself."
   describe (Fisher, Frege, McCarthy, Wynne-Edwards, Landsteiner, Kant, Hume, Gandhi,
   Everett, Carrier, Einfeld, George Lucas), the name was used instead. Pronouns the post
   itself uses (Einstein, Keats, Rothblatt, fictional characters) were kept.
-- Two grammar faults left by earlier edits were fixed ("Newcomb's Problem", "Bayesians vs.
-  Barbarians").
+- Grammar faults left by earlier edits were fixed in "The Failures of Eld Science" and
+  "Bayesians vs. Barbarians"; one in "Newcomb's Problem" was fixed during the tone pass.
 - Checks: raz_check exit 0 on the edited files; 345/345 notes backups exact; both books
   build with no LaTeX errors (annotated 1603 pages, honest 400). The one em dash in the
   edited files is inside a quotation from Hodgell.
