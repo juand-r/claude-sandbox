@@ -341,3 +341,36 @@ that TS-step boundaries no longer coincide with CTS cycle boundaries
 boundaries is the wrong check; my first test did that and failed.
 Cost: each Y read on a formerly empty appendant adds m N reads; v grows
 by ~80m per filled appendant (De Mol: v 3,427 -> ~12,200).
+
+## Phase 3, items 3-4 (2026-09-30)
+
+Item 3, spacing. Uniform-v sweeps with the decoder-free check:
+- {YYYYNN} (Cook v 524): 523-528 all 10/10; 262, 196, 160, 131, 30 fail.
+  At low v even read 0's region is damaged: 13, 6, 3, 2 clusters at
+  v = 262, 196, 160, 131 (24 when correct), i.e. damage grows with
+  ossifier density. Render (scratchpad vrender262.png): tape characters
+  arrive faster than the table is consumed; some sit stranded in the
+  ether gap a rejection leaves. Mechanism not pinned down.
+- {YYYYNN, NNNNNN} (Cook v 1,064) at v = 532: 10/10, ~27k per read.
+- {YYYYNN, N^6 x3} (Cook v 2,144) at v = 532: 12/12, ~27k per read.
+So the needed spacing follows one appendant, not the table. A uniform v
+sized for the largest appendant may capture most of the demand-timing
+gain; non-uniform schedules matter only for very unequal appendants.
+Open: scaling with appendant length (read 0 of De Mol's 12-symbol
+appendant left 48 clusters = 4/symbol, so the check generalizes).
+
+Item 4, direct binary clockwise construction (cw.two_way_to_binary_cw).
+Measured why binarize() never finished on SKI: its state is (symbolic
+state incl. buffered cell, input prefix, pending code of the previous
+buffered cell): 345,523 (state, output) pairs x 64 prefixes ~ 22M.
+New design: cell = w data bits + mark bit LAST; state = (q, mark_next,
+prev_is_E, pending output bits, bits of current cell), with pending +
+current = w+1 bits in steady state; insertions at either tape end drain
+via 2-bit writes. Mark-last is the key: when the head cell completes,
+the previous cell's mark bit is the one pending bit, so a left move can
+still set it. Results: capstone 66 states (130 before), SKI 119,347
+states in 1.5 s, SKI terms normalize correctly, capstone passes the full
+NW + CTS chain. First harness "mismatch" was my de-duplication on
+(state, symbol) merging repeated identical visits; the run was right.
+Cost table (experiments.py cost) reproduces the v0.1.0 numbers exactly
+for the old path; direct path ~5e19 vs 3.6e20 generations.

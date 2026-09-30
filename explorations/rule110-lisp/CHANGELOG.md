@@ -16,11 +16,23 @@ Verified
   (experiments.py reads) matches the reference CTS 12/12 at 3x Cook's
   ossifier spacing and 10/10 at the default spacing, including reads of
   characters appended during the run.
-- Uniform ossifier spacing: v = 523-528 correct, v <= 262 fails.
+- Uniform ossifier spacing: for `{YYYYNN}` v = 523-528 correct, v <= 262
+  fails; for 2- and 4-appendant programs 1/2 and 1/4 of Cook's v read
+  correctly (10/10, 12/12), at the one-appendant cadence.
+- Empty appendants: cts.fill_empty_appendants rewrites them exactly as
+  junk N-words one appendant-cycle long, so the failing short-leader
+  block L is never used. The minimal program that L broke reads 12/12.
+- cw.two_way_to_binary_cw: direct binary clockwise construction. SKI
+  machine 119,347 states in 1.5 s (old path: ~22M states, never
+  finished) and still normalizes SKI terms; capstone 66 states instead
+  of 130, ~7x fewer generations (experiments.py cost).
 
 Changes
 - encoder.assemble(left_gaps=...): explicit ossifier schedule.
-- experiments.py: `reads`, and `lblock` now decoder-free.
+- experiments.py: `reads`, `cost`; `lblock` decoder-free, with `fill`.
+- read check flags regions that settle with an unexpected Ebar count
+  ('!') instead of calling them Y.
+- Tests: fill exactness, edge growth, direct binary tower and SKI (49).
 
 ## v0.1.0 (2026-09-30)
 

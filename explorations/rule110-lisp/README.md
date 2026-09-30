@@ -33,9 +33,9 @@ Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
 | `ski.py`, `ski_graph.py` | SKI engines: string (specification), graph (fast) |
 | `ski_tm.py` | Turing machine that normalizes SKI terms |
 | `tm.py` | two-way TMs; Cocke-Minsky TM -> tag system |
-| `cw.py` | two-way -> clockwise -> binary clockwise TM |
+| `cw.py` | two-way -> clockwise -> binary clockwise TM; direct binary construction |
 | `nw.py` | Neary-Woods 2-tag system from a binary clockwise TM |
-| `tag.py`, `cts.py` | tag systems, TS -> CTS; CTS interpreter |
+| `tag.py`, `cts.py` | tag systems, TS -> CTS; CTS interpreter; empty-appendant rewrite |
 | `encoder.py`, `data/blocks.json` | CTS -> Rule 110 initial row |
 | `engine.py` | Rule 110 simulators (scalar, bit-packed) |
 | `casim.py` | running an encoded CTS on the automaton |

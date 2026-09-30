@@ -3,6 +3,7 @@
     python experiments.py lblock VARIANT [N] [fill]  # L-block table row
     python experiments.py demol [T]           # De Mol 3x+1, x=3
     python experiments.py reads [N]           # outcomes of the first N reads
+    python experiments.py cost                # REPORT.md section 4 table
 
 reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
 observe each read's outcome directly (see read_outcomes) and compare the
@@ -173,8 +174,56 @@ def reads(n_reads):
     check(READS_TAPE, READS_APPS, 3 * _left_v(READS_APPS), n_reads)
 
 
+def tower_cost(direct):
+    """Sizes and step counts of the capstone machine (tests/machines.py
+    three_state_tm on CAPSTONE_CFG) at every level of the tower, and the
+    Rule 110 estimate at ~30v generations per read (REPORT.md 3.3).
+    direct: build the binary clockwise machine with two_way_to_binary_cw
+    instead of two_way_to_cw + binarize."""
+    sys.path.insert(0, "tests")
+    from machines import three_state_tm
+    from cw import binarize, two_way_to_binary_cw, two_way_to_cw, CWTM
+    from nw import build_rules, initial_tape
+    from tag import run as tag_run, ts_to_cts
+    tm2 = three_state_tm()
+    if direct:
+        bdelta, bword, bst0, _ = two_way_to_binary_cw(tm2, *CAPSTONE_CFG)
+    else:
+        bdelta, bword, bst0, _ = binarize(*two_way_to_cw(tm2, *CAPSTONE_CFG))
+    bstates = {q for q, _ in bdelta} | {n for _, n in bdelta.values()}
+    bsteps = sum(1 for _ in CWTM(bdelta).run(bst0, bword, 10**6)) - 1
+    rules = build_rules(CWTM(bdelta), sorted(bstates, key=repr))
+    tape0 = initial_tape(bst0, list(bword), 16)
+    tag_steps, empty_hits = 0, 0
+    for n, t in tag_run(rules, tape0, 2, 10**7):
+        tag_steps = n
+        if len(t) >= 2 and not rules[t[0]]:
+            empty_hits += 1
+    _, apps, order = ts_to_cts(rules, tape0, 2, order=sorted(rules, key=repr))
+    reads = tag_steps * len(apps)
+    v = _left_v(apps)
+    # fill_empty_appendants: each Y read on an empty appendant (one skipped
+    # word per tag step, plus reads of halting symbols) adds m junk reads
+    filled = fill_empty_appendants(apps)
+    m = len(apps)
+    reads_f = reads + (tag_steps + empty_hits) * m
+    v_f = _left_v(filled)
+    print(f"{'direct' if direct else 'binarize'}: binary cw {len(bstates)} states,"
+          f" {bsteps} steps; NW {len(rules)} rules, {tag_steps} tag steps;"
+          f" CTS {len(apps)} appendants, {sum(map(len, apps)):.3g} symbols,"
+          f" {reads:.3g} reads; v = {v:.3g} -> {30 * v * reads:.2g} generations;"
+          f" filled: {reads_f:.3g} reads, v = {v_f:.3g} ->"
+          f" {30 * v_f * reads_f:.2g} generations")
+
+
+CAPSTONE_CFG = (1, [1], 1, [1, 1, 2])     # as in tests/test_tower.py
+
+
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["reads"]:
+    if sys.argv[1:2] == ["cost"]:
+        tower_cost(direct=False)
+        tower_cost(direct=True)
+    elif sys.argv[1:2] == ["reads"]:
         reads(int(sys.argv[2]) if len(sys.argv) > 2 else 12)
     elif sys.argv[1:2] == ["lblock"]:
         args = [a for a in sys.argv[2:] if a != "fill"]

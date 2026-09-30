@@ -7,15 +7,19 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
 
 - [x] 1. Close the dynamic-verification gap: decoder was phase-dependent; decoder-free read check matches 12/12 (NOTES)
 
-- [ ] 2. L-block (short leader) defect
+- [x] 2. L-block (short leader) defect: sidestepped by exact rewrite (fill); L itself unexplained
   - [x] decoder-free L table (experiments.py lblock uses read_outcomes)
   - [x] family A: shift only the first L cluster by ether-lattice vectors
         (51 shifts): none reads correctly
-  - [ ] family B: shift L and everything right of it, cumulatively
-  - [ ] if B fails: census render of the short-leader read (debris source)
+  - [x] family B: shift L and everything right of it (11/52 run, none clean; stopped)
+  - [x] workaround: cts.fill_empty_appendants; filled variants 3 and 1 read 12/12 at default v
+  - [ ] (open) cause of the L failure
 - [x] 2b. Correct v0.1.0 docs to 1 char per ossifier / 30v (REPORT, REVIEW, DIRECTIONS, CHANGELOG)
 - [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
-- [ ] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
+  - [x] uniform-v sweeps: 1-app min in (262, 523]; 2-app at v/2 10/10; 4-app at v/4 12/12
+  - [ ] De Mol filled at v=1600 (7.6x below default), 14 reads: running
+  - [ ] scaling of the needed v with appendant length
+- [x] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
   - measured: SKI clockwise machine 10,897 states / 43 symbols / 395,550
     transitions; binarize() carries (new state, written symbol) = 345,523
     pairs x 2^6 input prefixes ~ 22M states. That is why it never finishes.
@@ -23,6 +27,7 @@ non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
     for left moves becomes a (w+1)-bit shift register in the state:
     (q, last w+1 bits, phase) <= 256 x 2^6 x 6 ~ 98k states, no symbolic
     buffer. Build directly from the two-way TM; verify against tm.TM.
+  - [x] done: cw.two_way_to_binary_cw; SKI 119,347 states (1.5 s); capstone 66 vs 130
 - [ ] 5. 1-D HashLife engine, measured on the above
 - [ ] 6. Team results: review, verify, integrate, report
 

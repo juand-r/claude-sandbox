@@ -54,12 +54,13 @@ of a whole table's.
   cycle, ~3,000 |Phi|^2 instead of ~9,600 |Phi|^3: a factor of about
   3.2 |Phi|. For the capstone about 27,000x (to ~1.4e16). For De Mol's
   small CTS about 17x (~104k -> ~6k generations per read).
-- Measured caveat (v0.1.1): uniformly shrinking v does not work. For
-  `{YYYYNN}` v = 523-528 read correctly, v <= 262 fails at read 3 or 4.
-  The likely constraint (hypothesis, not yet measured): the next
-  character must not arrive while the previous read's sweep is still
-  running. If so, a demand schedule has a floor near one appendant
-  traversal plus one sweep, and it must be non-uniform.
+- Measured (v0.1.1, REPORT.md 3.5): for a one-appendant program v
+  cannot go much below Cook's value (523 works, 262 fails). But for 2-
+  and 4-appendant programs, 1/2 and 1/4 of Cook's v read correctly at the
+  one-appendant cadence. So a uniform v sized for one appendant captures
+  most of the gain; a non-uniform schedule matters only when appendant
+  lengths differ a lot. Open: how the needed v scales with appendant
+  length.
 - Risk: moderate. Needs the alignment rules between consecutive A^4s
   (the paper's "up 5" condition) to hold for arbitrary gaps; the
   existing runs with v = 790, 1572, 3423 suggest any v works, but that

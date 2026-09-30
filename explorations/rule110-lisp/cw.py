@@ -215,3 +215,129 @@ def binarize(delta, word, state0):
                 seen.add(nst)
                 frontier.append(nst)
     return bdelta, bword, bstate0, w
+
+
+# ---------------------------------------------------------------------------
+# Direct binary construction (v0.1.1)
+#
+# binarize() above carries the symbolic machine's state (which holds the
+# buffered cell) AND the code of the previously buffered cell being
+# emitted: a product of two cells, ~22M states for the SKI machine. The
+# construction below keeps the one-cell delay as raw bits instead: the
+# state holds a pending-output queue whose length plus the bits read of
+# the current cell is w+1 in steady state, so at most one cell's worth of
+# bits is ever buffered.
+#
+# Binary cell format: w data bits (symbol v in 1..t -> v-1, the boundary
+# E -> t; bit 0 first, 'A' = 0, 'B' = 1) followed by a mark bit ('B' on
+# the head cell). The mark comes last so that, when the head cell has been
+# read completely, the previous cell's mark bit has not yet been emitted
+# and a left move can still set it.
+
+def _bits(value, w):
+    return tuple("AB"[(value >> k) & 1] for k in range(w))
+
+
+def two_way_to_binary_cw(tm2, q0, left, cur, right):
+    """Two-way TM (blank 1 on both sides) -> binary clockwise TM directly.
+
+    Returns (bdelta, bword, bstate0, w) in the same form as binarize():
+    bdelta: (state, bit) -> (emitted bits, newstate), missing = halt.
+    decode_binary_cw() recovers two-way configurations from a run.
+    """
+    t = tm2.t
+    w = max(1, t.bit_length())          # t + 1 codes: symbols and E
+    code = {v: _bits(v - 1, w) for v in range(1, t + 1)}
+    code[E] = _bits(t, w)
+    dec = {c: v for v, c in code.items()}
+
+    def cellbits(v, marked):
+        return code[v] + ("B" if marked else "A",)
+
+    word = [(cur, True)] + [(v, False) for v in right] + [(E, False)] + \
+           [(v, False) for v in left[::-1]]
+    b0, m0 = word.pop()                 # the head's predecessor
+    bword = [b for v, m in word for b in cellbits(v, m)]
+    # state: (q, mark_next, prev_is_E, pending bits, bits of current cell)
+    st0 = (q0, False, b0 == E, cellbits(b0, m0), ())
+
+    def step(st, x):
+        q, mark_next, prev_is_E, pend, cb = st
+        cb = cb + (x,)
+        if len(cb) == w + 1:            # current cell complete
+            v = dec.get(cb[:w])
+            if v is None:
+                return None             # not a code: never on the tape
+            head = cb[w] == "B"
+            if head:
+                key = (q, v)
+                if v == E or key not in tm2.write or tm2.move[key] == "H":
+                    return None         # halt
+                u, mv, q2 = tm2.write[key], tm2.move[key], tm2.nxt[key]
+                if mv == "R":
+                    pend = pend + cellbits(u, False)
+                    mark_next = True
+                elif prev_is_E:
+                    # left move off the left end: fresh blank head cell
+                    # between E and the old head
+                    pend = pend + cellbits(1, True) + cellbits(u, False)
+                    mark_next = False
+                else:
+                    pend = pend[:-1] + ("B",) + cellbits(u, False)
+                    mark_next = False
+                q, prev_is_E = q2, False
+            elif mark_next:
+                if v == E:
+                    # right move onto the boundary: fresh blank head cell
+                    # before E
+                    pend = pend + cellbits(1, True) + cellbits(E, False)
+                    prev_is_E = True
+                else:
+                    pend = pend + cellbits(v, True)
+                    prev_is_E = False
+                mark_next = False
+            else:
+                pend = pend + cb
+                prev_is_E = v == E
+            cb = ()
+        # emit 2 bits while an insertion's surplus drains, else 1
+        nout = 2 if len(pend) + len(cb) > w + 2 else 1
+        return pend[:nout], (q, mark_next, prev_is_E, pend[nout:], cb)
+
+    bdelta = {}
+    frontier, seen = [st0], {st0}
+    while frontier:
+        st = frontier.pop()
+        for x in "AB":
+            out = step(st, x)
+            if out is None:
+                continue
+            bdelta[(st, x)] = out
+            if out[1] not in seen:
+                seen.add(out[1])
+                frontier.append(out[1])
+    return bdelta, bword, st0, w
+
+
+def decode_binary_cw(bword, state, w, t):
+    """-> (q, cur, right, left) at a cell boundary with the head marked
+    and no move in flight, else None."""
+    q, mark_next, _, pend, cb = state
+    if cb or mark_next:
+        return None
+    bits = list(bword) + list(pend)
+    if len(bits) % (w + 1):
+        return None
+    cells = []
+    for i in range(0, len(bits), w + 1):
+        c = bits[i:i + w + 1]
+        v = sum(1 << k for k in range(w) if c[k] == "B")
+        cells.append((E if v == t else v + 1, c[w] == "B"))
+    heads = [i for i, (_, m) in enumerate(cells) if m]
+    if len(heads) != 1:
+        return None
+    h = heads[0]
+    cells = cells[h:] + cells[:h]
+    vals = [v for v, _ in cells]
+    ei = vals.index(E)
+    return q, vals[0], vals[1:ei], vals[ei + 1:][::-1]
