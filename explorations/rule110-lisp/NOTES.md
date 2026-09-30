@@ -241,3 +241,40 @@ quantity itself (characters per ossifier), not a proxy (a picture).
 Tooling lesson (hit twice now): `pkill -f PATTERN` inside a compound
 shell command matches that shell's own command line and kills it. Kill
 by PID instead.
+
+## Phase 3, item 1: the verification gap, closed (2026-09-30)
+
+The v0.1.0 report said "four characters per ossifier" and showed a
+`fronts` table with mismatches from arrival 3 on. Both were artifacts:
+
+1. The moving-data decoder is phase-dependent. After the reads of the
+   first cycle, the moving data sits static in the Ebar frame, yet its
+   decoded string repeats with the sampling time mod 30: t = 0 mod 30
+   gives YYYNN YYYYNN, t = 10 gives NNYNN YYYYN, t = 20 is rejected.
+   The cores themselves are unambiguous (60 distinct, none contained in
+   the other symbol's rows); the aliasing comes from context (cores span
+   parts of neighbouring characters, and acceptor-made moving data sits
+   in different surroundings than the initial tape). The "front advanced
+   by four characters" observation was one of these misreads.
+2. Counting C-glider births per ossifier over 490k generations: every
+   ossifier produces one burst of 4 C gliders. With (1), the correct
+   reading is: 4 C gliders = ONE tape character (one per A^4 of the
+   ossifier), not four characters.
+3. Decoder-free check (experiments.py reads): observe each read's
+   outcome as what the acceptor/rejector sweep leaves in that appendant's
+   component region (Y: Ebars remain, ~55 -> ~24 clusters; N: region
+   becomes ether). Reads happen at t ~ 9.0k, 67.2k, 124.8k, 183.0k,
+   240.6k, 299.4k, 356.4k: one per ossifier period (48.8k) plus one
+   appendant traversal (~9.2k), because each character is delivered at
+   about the same place in the Ebar frame and must travel one appendant
+   further than the previous one. Outcomes: Y Y Y Y N N Y ... = the
+   reference.
+
+So the predecessor's "one read per left period" was right up to the
+travel term, and the ~30v generations per read (3.6e20 for the capstone)
+stands. My release notes' "four per ossifier" was wrong.
+
+Lesson (third time on this topic): a decoder that has not itself been
+validated is a hypothesis, not an instrument. The census-based,
+decoder-free observable settled in one run what three decoder-based
+analyses had muddled.

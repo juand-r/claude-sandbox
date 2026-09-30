@@ -2,13 +2,13 @@
 
     python experiments.py lblock VARIANT     # one row of the L-block table
     python experiments.py demol [T]           # De Mol 3x+1, x=3
-    python experiments.py fronts [N]          # moving data met by ossifiers
+    python experiments.py reads [N]           # outcomes of the first N reads
 
 lblock and demol print decoder reads of the moving data in flight at
-intervals: liveness, not verified correctness (REVIEW.md B3). fronts is
-the dynamic check of REPORT.md section 3.3: at each ossifier's arrival it
-prints the first moving-data symbols it will meet, next to the symbols
-the reference CTS predicts if each A^4 converts one character.
+intervals: liveness only (the moving-data decoder misreads depending on
+glider phase; NOTES.md). reads is the dynamic check of REPORT.md 3.3: it
+observes each read's outcome directly (see read_outcomes) and compares
+the sequence with the reference CTS.
 """
 
 import sys
@@ -76,54 +76,79 @@ def demol(T):
         run.step(DEMOL_EVERY)
 
 
-# fronts: {YYYYNN} from YYYYNN, whose read sequence is YYYYNN repeated
-FRONTS_TAPE, FRONTS_APPS = "YYYYNN", ["YYYYNN"]
-FRONTS_EVERY = 250
-A4_PER_OSSIFIER = 4
+# reads: the dynamic check. Each read's outcome is observed without any
+# decoder: when a leader reads a tape character, an acceptor or rejector
+# sweeps that appendant's components. A Y turns them into moving data (the
+# region keeps Ebars); an N deletes them (the region becomes ether). In the
+# Ebar frame every region is static until its read, so its census at a
+# fixed phase (t = 0 mod 30) is constant; the first change marks the read.
+READS_TAPE, READS_APPS = "YYYYNN", ["YYYYNN"]
+READS_EVERY = 600                 # a multiple of 30: same Ebar phase
+READS_MARGIN = 3_000
 
 
-def ossifier_fronts(n_arrivals):
-    """At each ossifier arrival, the first three moving-data symbols it
-    will meet. An ossifier is A material entering the Ebar-frame window
-    from outside the Ebar stream (acceptors and rejectors are A material
-    too, but are born inside the stream)."""
-    v = 3 * _left_v(FRONTS_APPS)
-    T = (n_arrivals + 2) * 32 * v
-    row, origin = padded_row(FRONTS_TAPE, FRONTS_APPS, left_periods=n_arrivals + 3,
-                             right_periods=T // 30_000 + 4, left_pad=T + 50_000,
+def component_regions(tape, apps, right_periods):
+    """Global column ranges (t = 0) of each appendant copy's components, in
+    read order; (None, None) for empty appendants."""
+    from encoder import assemble
+    _, placed = assemble(tape, apps, 1, right_periods)
+    names = [p.block.name for p in placed]
+    leaders = [i for i, n in enumerate(names) if n in "GKL"]
+    return [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
+            if b - a > 1 else (None, None)
+            for a, b in zip(leaders, leaders[1:])]
+
+
+def read_outcomes(tape, apps, v, n_reads, T):
+    """Observed outcome ('Y'/'N') of each of the first n_reads reads, or
+    '.' if not completed by generation T."""
+    rp = n_reads // len(apps) + 3
+    row, origin = padded_row(tape, apps, left_periods=T // (30 * v) + 3,
+                             right_periods=rp, left_pad=T + 50_000,
                              right_pad=T + 100_000, v_override=v)
-    run, dec = Run(row, origin), Decoder()
-    out, approaching = [], False
-    while len(out) < n_arrivals and run.t < T:
-        run.step(FRONTS_EVERY - MAX_DT)
-        f = run.ebar_frame()
-        H = run.history(f - 3_000, f + 12_000, MAX_DT)
-        cs = census(H)
-        stream_left = min((a for a, b, k in cs if k == "E"), default=H.shape[1])
-        n_a = sum(1 for a, b, k in cs if k == "A" and b < stream_left)
-        if n_a and not approaching:
-            try:
-                front = "".join(s for _, s in dec.read(H[-1])[:3])
-            except ValueError:
-                front = "?"
-            out.append((run.t, front))
-        approaching = bool(n_a)
-    return out
+    regs = component_regions(tape, apps, rp)[:n_reads]
+    run = Run(row, origin)
+    before = [None] * len(regs)
+    state = ["." if a is not None else "-" for a, _ in regs]
+    read_at = [None] * len(regs)
+    lo_g = min(a for a, _ in regs if a is not None) - READS_MARGIN
+    hi_g = max(b for _, b in regs if b is not None) + READS_MARGIN
+    while run.t + READS_EVERY <= T and any(s in ".r" for s in state):
+        run.step(READS_EVERY - MAX_DT)
+        shift = run.ebar_frame() - origin
+        lo = origin + lo_g + shift
+        cs = census(run.history(lo, origin + hi_g + shift, MAX_DT))
+        shift = run.ebar_frame() - origin
+        rel = [(x0 + lo - origin - shift, k) for x0, _, k in cs]
+        for j, (a, b) in enumerate(regs):
+            if state[j] not in ".r":
+                continue
+            inside = tuple(c for c in rel if a <= c[0] < b)
+            if before[j] is None:
+                before[j] = inside
+            elif state[j] == "." and inside != before[j]:
+                state[j], read_at[j] = "r", run.t
+            elif state[j] == "r" and not any(k in "CA?" for _, k in inside):
+                n_e = sum(1 for _, k in inside if k == "E")
+                state[j] = "Y" if n_e else "N"
+                print(f"read {j}: at t~{read_at[j]}, {n_e} Ebar clusters "
+                      f"remain: {state[j]}", flush=True)
+    return "".join(s if s in "YN" else "." for s in state)
 
 
-def fronts(n_arrivals):
-    reads = [t[0] for _, t, _ in cts_run(FRONTS_TAPE, FRONTS_APPS,
-                                         A4_PER_OSSIFIER * n_arrivals + 3) if t]
-    for k, (t, front) in enumerate(ossifier_fronts(n_arrivals)):
-        i = A4_PER_OSSIFIER * k
-        want = "".join(reads[i:i + 3])
-        print(f"arrival {k} t={t:7d}: meets {front}  predicted {want}  "
-              f"{'ok' if front == want else 'MISMATCH'}", flush=True)
+def reads(n_reads):
+    v = 3 * _left_v(READS_APPS)
+    T = (n_reads + 2) * 60_000
+    got = read_outcomes(READS_TAPE, READS_APPS, v, n_reads, T)
+    ref = "".join(t[0] for _, t, _ in cts_run(READS_TAPE, READS_APPS, n_reads)
+                  if t)[:n_reads]
+    print(f"observed : {got}\nreference: {ref}\n"
+          f"{'MATCH' if got == ref else 'DIFFER'} ({sum(g == r for g, r in zip(got, ref))}/{n_reads})")
 
 
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["fronts"]:
-        fronts(int(sys.argv[2]) if len(sys.argv) > 2 else 9)
+    if sys.argv[1:2] == ["reads"]:
+        reads(int(sys.argv[2]) if len(sys.argv) > 2 else 12)
     elif sys.argv[1:2] == ["lblock"]:
         lblock(int(sys.argv[2]))
     elif sys.argv[1:2] == ["demol"]:

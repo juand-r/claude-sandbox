@@ -1,5 +1,18 @@
 # Plan
 
+## Phase 3: extension (started 2026-09-30)
+
+User chose: pursue DIRECTIONS.md in order, and run a 4-agent team on a
+non-CTS Rule 110 computer (noncts/, board in noncts/BOARD.md).
+
+- [ ] 1. Close the dynamic-verification gap: count characters per
+      ossifier exactly; explain the arrival-3 mismatch; automated check
+- [ ] 2. L-block (short leader) defect
+- [ ] 3. Demand-timed ossifiers (encoder option + scheduler + verification)
+- [ ] 4. Direct binary clockwise SKI machine (skip conversion/binarization)
+- [ ] 5. 1-D HashLife engine, measured on the above
+- [ ] 6. Team results: review, verify, integrate, report
+
 ## Phase 2: takeover, cleanup, release v0.1.0 (started 2026-09-30)
 
 Request: review, refactor and document; build on it; tag a release when in
