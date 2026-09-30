@@ -373,14 +373,25 @@ depend on how many appendants the table holds, but it does grow with the
 length of an appendant: it lies between 262 and 523 for six symbols and
 between 532 and 1,000 for eighteen, so at most about 55 per symbol.
 Cook's formula charges about 80 per symbol summed over the whole table.
-The consistent reading is that v must cover the longest single
-appendant, not the table. That is the premise of "demand-timed
+The consistent reading for these programs is that v must cover the
+longest single appendant, not the table; but see the next paragraph. That is the premise of "demand-timed
 ossifiers" (DIRECTIONS.md), and a uniform spacing sized for the longest
 appendant already captures it; a non-uniform schedule would only help
 where appendant lengths differ a lot.
 
+*A second constraint: long rejection runs.* De Mol's 3x+1 program (12
+appendants, lengths 6 to 18, Cook's v = 12,216) at v = 1,600 read its
+first 29 reads correctly, including an 18-symbol accept, then broke
+during a run of 16 consecutive rejections. At v = 3,200 it reads 47 of 48
+correctly through that run; the 48th had not happened within the
+generation budget. So the spacing must also cover long runs of
+rejections, as the encoder's own caveat on Cook's formula warns. The
+mechanism is not identified (the moving-data queue does not run dry:
+it holds about 55 characters there). The small programs above have
+rejection runs of at most two, which is why they did not show it.
+
 *Scope.* Five small programs with appendants of 6 and 18 symbols, 8 to
-12 reads each. Two lengths do not establish a scaling law; "at most
+12 reads each, plus De Mol's program. Two lengths do not establish a scaling law; "at most
 about 55 per symbol" is an upper bound from the 18-symbol case. The cost
 figures in section 4 therefore still use Cook's v, with the reduced-v
 estimate marked as such.
@@ -436,7 +447,10 @@ construction (|Phi| = 4,362 after padding, r = 7, longest CTS appendant
 per tag step instead of 7.7e14, and 2.9e16 in total instead of 5e19
 (twice that with the L-free fill, whose junk appendants are shorter than
 the longest real one). This is an extrapolation from five small
-programs, not a measurement.
+programs, not a measurement, and it ignores the rejection-run constraint
+of section 3.5, which the capstone's long rejection runs (each skipped
+code word is |Phi| - 1 consecutive N reads) would bring into play. The
+realistic gain is smaller and unknown.
 
 ## 5. What comes next
 
