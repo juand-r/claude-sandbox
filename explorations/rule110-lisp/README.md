@@ -21,6 +21,7 @@ Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
 - `REPORT.md` - results, evidence, open problems, cost of the tower
 - `DIRECTIONS.md` - proposal for faster / more direct constructions
 - `REVIEW.md` - takeover review: every finding and its disposition
+- `CHANGELOG.md` - release notes
 - `PLAN.md` - work plan; `NOTES.md` - lab notes and debugging log
 
 ## Code
