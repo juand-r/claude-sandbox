@@ -450,3 +450,18 @@ container was reclaimed while the session was idle and the process died
 without error. Log kept as scratchpad demol_cook_full_run1.out. Run 2
 restarted 09:45 UTC with 30-minute check-ins so the session stays active.
 Lesson: long runs need either an active session or checkpoints.
+
+StreamRun window growth (De Mol, Cook's v): 519k cells at t=34M. Two
+causes. (1) An artifact: the right side's free row overwrote the left
+side's where they overlap, and beyond the table's end the left row was
+used where neither is true. Fixed with a split at the window centre
+(left row to the left, right row to the right, no fallback); validated
+cell for cell against the full run to 200k generations, and the rerun
+reproduces run 1's read times and cluster counts exactly. (2) Real: the
+census of the window's leftmost 200k cells at t=28M finds 100 Ebar
+clusters among the ossifier train's A's. Cook's machine leaves a
+permanent stream of left-moving Ebars that later ossifiers must cross,
+so the active region really grows ~linearly with t and run time
+~quadratically. Keeping it exact means simulating them; HashLife would
+compress that regular region but is too slow with census sampling.
+Run 3 (killed for the fix): 94 reads correct before the restart.
