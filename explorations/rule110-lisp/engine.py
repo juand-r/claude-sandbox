@@ -97,6 +97,15 @@ def step_packed(a):
     padding a non-multiple width must keep the wrap seam out of their
     measurements, as with any wrap seam.
     """
-    left = (a << np.uint64(1)) | (np.roll(a, 1) >> np.uint64(63))
-    right = (a >> np.uint64(1)) | ((np.roll(a, -1) & np.uint64(1)) << np.uint64(63))
+    prev = np.empty_like(a)            # prev[i] = a[i-1], cyclic
+    prev[1:] = a[:-1]
+    prev[0] = a[-1]
+    nxt = np.empty_like(a)             # nxt[i] = a[i+1], cyclic
+    nxt[:-1] = a[1:]
+    nxt[-1] = a[0]
+    left = (a << _ONE) | (prev >> _S63)
+    right = (a >> _ONE) | ((nxt & _ONE) << _S63)
     return (a | right) & ~(left & a & right)
+
+
+_ONE, _S63 = np.uint64(1), np.uint64(63)

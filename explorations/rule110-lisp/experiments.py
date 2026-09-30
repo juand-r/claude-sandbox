@@ -89,6 +89,7 @@ READS_MARGIN = 3_000
 # symbol (measured 23-25 for 6 symbols in every run that matched the
 # reference); a rejected region keeps none. Any other count means the
 # region was disturbed rather than read, and is reported as '!'.
+READS_LOOKAHEAD = 4        # a region must be watched before its read starts
 ACCEPT_CLUSTERS_PER_SYMBOL = 4
 ACCEPT_TOLERANCE = 2
 
@@ -126,18 +127,19 @@ def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True):
     state = ["." if a is not None else "-" for a, _ in regs]
     read_at = [None] * len(regs)
     last = [None] * len(regs)
-    lo_g = min(a for a, _ in regs if a is not None) - READS_MARGIN
-    hi_g = max(b for _, b in regs if b is not None) + READS_MARGIN
     while run.t + READS_EVERY <= T and any(s in ".r" for s in state):
+        # reads happen in order: watch only the next few pending regions
+        pending = [j for j, s in enumerate(state) if s in ".r"][:READS_LOOKAHEAD]
+        lo_g = min(regs[j][0] for j in pending) - READS_MARGIN
+        hi_g = max(regs[j][1] for j in pending) + READS_MARGIN
         run.step(READS_EVERY - MAX_DT)
         shift = run.ebar_frame() - origin
         lo = origin + lo_g + shift
         cs = census(run.history(lo, origin + hi_g + shift, MAX_DT))
         shift = run.ebar_frame() - origin
         rel = [(x0 + lo - origin - shift, k) for x0, _, k in cs]
-        for j, (a, b) in enumerate(regs):
-            if state[j] not in ".r":
-                continue
+        for j in pending:
+            a, b = regs[j]
             inside = tuple(c for c in rel if a <= c[0] < b)
             if before[j] is None:
                 before[j] = inside

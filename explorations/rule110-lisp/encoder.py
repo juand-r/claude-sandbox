@@ -116,6 +116,14 @@ class Placed:
         return range(lo, hi)
 
 
+# Seam fits are translation-covariant: shifting prev by one of its periods
+# (period, drift) shifts the fitted block by the same vector. So the fit's
+# offset relative to prev depends only on the two blocks, the side, and
+# prev's row phase; cache it (assemble attaches thousands of identical A
+# blocks).
+_FIT_CACHE = {}
+
+
 def _attach(prev, block, side):
     """Place periodic `block` against `prev` on the given side ('R'/'L').
 
@@ -124,6 +132,24 @@ def _attach(prev, block, side):
     are tried over one period (others are lattice-equivalent). Returns the
     unique Placed instance; raises if the fit is not unique.
     """
+    p = prev.block.period
+    if p is None:
+        key = (prev.block.name, block.name, side, prev.dy, None)
+        k = 0
+    else:
+        k = prev.dy // p
+        key = (prev.block.name, block.name, side, prev.dy % p)
+    if key not in _FIT_CACHE:
+        # solve for prev moved back k periods to its canonical phase
+        canon = (prev if p is None else
+                 Placed(prev.block, prev.dy - k * p, prev.dx - k * prev.block.drift))
+        fit = _solve_attach(canon, block, side)
+        _FIT_CACHE[key] = (fit.dy - canon.dy, fit.dx - canon.dx)
+    ddy, ddx = _FIT_CACHE[key]
+    return Placed(block, prev.dy + ddy, prev.dx + ddx)
+
+
+def _solve_attach(prev, block, side):
     if block.period is None:
         raise ValueError(f"block {block.name} is aperiodic; only C is, and "
                          "C is the anchor, never attached")
