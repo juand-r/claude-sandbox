@@ -35,10 +35,9 @@ Verified
   first 10 reads take ~80 s instead of ~1 h.
 
 - De Mol's 3x+1 system, x = 3, on gliders: 83/83 reads correct through
-  the first Collatz step 3 -> 5 at v = 3,200 and 6,400 (Cook: 12,216).
-  Read 83 fails identically at both, so that failure is not spacing;
-  cause open. At v = 1,600 it fails at read 29, a spacing failure during
-  a 16-rejection run.
+  the first Collatz step 3 -> 5; 86/86 at Cook's v = 12,216. Below half
+  of Cook's v it fails at read 83 (v = 3,200 and 6,400), and at v = 1,600
+  at read 29: both spacing failures.
 - hashlife.py: exact 1-D HashLife; ~2x StreamRun on growing-tape runs.
 
 Changes

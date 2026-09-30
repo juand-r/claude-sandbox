@@ -1,0 +1,5 @@
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 0, "pk": 0, "only_a": true, "debris": false, "sat": false, "secs": 28.8}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 0, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 28.9}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 1, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 31.9}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 2, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 19.9}
+{"spec": "zsplit", "WK": 24, "T2": 900, "s": 3, "pk": 0, "only_a": true, "debris": true, "sat": false, "secs": 30.6}

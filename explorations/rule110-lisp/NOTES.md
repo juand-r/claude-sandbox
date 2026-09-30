@@ -437,3 +437,9 @@ was too slow and memory-hungry (7 reads in 10 min, 3.2 GB: one-step
 census sampling defeats memoization) and was stopped. Running Cook's
 v = 12,216 to read 85 on StreamRun to see if the construction itself
 fails there.
+
+Cook's v = 12,216: 86/86 correct, read 83 included (1,916 s). So the
+read-83 failure IS a spacing failure, with a threshold between 6,400 and
+12,216. Lesson: two spacings giving the same failure do not show that
+spacing is irrelevant; I retracted too fast. Running Cook's v to read
+556 (Collatz 1 at 552).

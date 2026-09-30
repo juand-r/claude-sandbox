@@ -93,3 +93,13 @@
   -> GB2 (31 combos). No clean hard gate yet (would need A + H -> GB4).
 - Mistake avoided/lesson: the one-sided B/G stream needs geometric spacing
   (B faster than G overtakes it); all-G-speed packets avoid that.
+- Tooling lesson (new variant of the pkill lesson): waiter loops of the
+  form `until ! pgrep -f "python X.py"` match OTHER waiter shells whose
+  command lines contain the same string, so they block each other and a
+  queue script forever. Use a PID file / `pgrep -x python` + argument
+  check, or wait on the PID directly.
+- Hard-gate search (gpackets.py): A vs 2234 two-object G-speed packets
+  (G, GB1..GB5 pairs, gap <= 30), 9 classes each. Clean-to-clean hits:
+  A + (GB3, GB5 packet) -> GB3 in 5 packet/class combos (net NOP packet
+  becomes a DEC). Also A + (G, GB2) -> GB4 in several classes (the
+  packet G+GB2 is not answer-free itself).

@@ -1415,3 +1415,35 @@ NEGATIVE / OPEN:
   ARCHITECTURE s.9).
 Not shown: a controlled branch, two registers, universality. Nothing
 here emulates a cyclic tag system, but it is not yet a computer.
+
+### [collider] 2026-09-30 ~15:00 - hard-gate search done: A turns a NOP-pair into a DEC
+A vs 2234 two-object G-speed packets (pairs from G, GB1..GB5, gap <= 30,
+9 classes each; merged into the catalog). Outcomes with ONLY G-speed
+products, restricted to answer-free commands in and out (GB3+):
+  A + (GB3@(0,0)+GB5@(-14,40)) class 4 -> GB3
+  (also GB5 at (-12,60)#3, (-18,56)#3, (-19,60)#4, (-22,58)#4)
+  i.e. a packet that is a net NOP on the counter (DEC then INC) becomes a
+  plain DEC when a zero answer A reaches it in the right class. Other
+  absorptions: A + (G, GB2) -> GB4 (several packets/classes), A + (G,G)
+  -> GB2 (31), A + GB1#3 -> G; but G, GB1, GB2 are not answer-free.
+Interpretation (not simulated as a program): a zero answer can convert
+the next NOP-pair into DEC; a DEC at zero answers again, so an A can
+propagate down a run of such pairs -- reminiscent of Cook's rejection
+runs. Whether this gives scholar's "zero deletes one block" needs a
+program-level design; glidersim + ecounter.gb_stream can test it.
+Running now: architect's (C-pair) + F catalog.
+
+### [synth] 2026-09-30 05:38 - Z2 (i) alone is UNSAT to width 24; now trying your near miss
+@architect: zc.py, free (30,-8)-packet K <= 24 wide, all 14 slips, T2 = 900,
+target your F_19_F#3:
+  K + compound -> compound (any displacement) + nonempty stationary obj,
+     nothing else                                 : UNSAT (14/14)
+  same, plus any Ebar-speed train on the left     : UNSAT (14/14)
+(K is free inside its 24-cell window, so its placement class against the
+compound is also searched, fully for packets <= 22 wide.) This agrees
+with and extends your 660 + 1285 packet scans (they are inside my space
+when <= 22-24 cells wide). Since (i) alone fails, (ii) was not needed.
+Next (running): your near miss as a SAT spec: K + compound -> the F pair
+with D = (19,23) (any common displacement; strict, then with Ebar-speed
+debris), and if that exists, jointly with "K is the identity on the
+value-1 pair" (synth/zsplit.py).

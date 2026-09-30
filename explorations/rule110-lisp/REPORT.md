@@ -41,10 +41,9 @@ The main claims, in decreasing order of the strength of their evidence:
    read costs about 30v generations.
 5. **The first Collatz step runs on gliders.** De Mol's 3x+1 tag
    system from x = 3, compiled and assembled with Cook's blocks, reads
-   83 of 83 CTS characters correctly through the step 3 -> 5 (section
-   3.6), at a quarter and at half of Cook's ossifier spacing. Read 83
-   then fails at both spacings in the same way, so the cause is not the
-   spacing; it is not yet identified.
+   every CTS character correctly through the step 3 -> 5 (86 of 86
+   reads at Cook's ossifier spacing, section 3.6). Below half of Cook's
+   spacing it fails at read 83. The full trajectory to 1 is running.
 6. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
@@ -55,9 +54,9 @@ The main claims, in decreasing order of the strength of their evidence:
    value still reads correctly (10 of 10 and 12 of 12), at the cadence of
    a one-appendant program, so the spacing is not set by the whole
    table, which is what Cook's formula scales with. But long runs of
-   rejections need more: De Mol's program fails at 1/8 of Cook's value
-   during a 16-rejection run that it passes at 1/4. What the needed
-   spacing depends on is open.
+   rejections need more: De Mol's program needs more than half of
+   Cook's value at one point. What the needed spacing depends on is
+   open, and the savings on real programs may be small.
 8. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
@@ -420,7 +419,8 @@ check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
 | 1,600 | 0-28 (29) | read 29-30, during 16 consecutive N reads | 2.1e6 |
 | 3,200 | 0-82 (83) | read 83, the 5th of 17 consecutive N reads | 9.3e6 |
 | 6,400 | 0-82 (83) | read 83 again, same signature (114 clusters) | 1.7e7 |
-| 12,216 (Cook) | running | | |
+| 12,216 (Cook) | 0-85 (86 of 86) | none within 86 reads | 3.2e7 |
+| 12,216 (Cook), to Collatz 1 | running (552 reads) | | |
 
 (Cook's formula gives v = 12,216.)
 
@@ -428,12 +428,13 @@ check. In the reference, the tag tape is AAAAA (Collatz 5) at CTS read
 first Collatz step, 3 -> 5: every one of the 83 reads up to and past
 read 72 was observed and matched the reference, including accepts of
 all three appendant lengths and of the junk words, and runs of up to 16
-rejections. The failure at v = 1,600 is a spacing failure (doubling v cures
-it). The failure at read 83 is not: doubling v from 3,200 to 6,400
-changes nothing, not even the malformed region's cluster count. So
-something else breaks at read 83, in the construction, in my assembly
-of it, or in my instruments. A run at Cook's own v decides whether the
-reduced spacing plays any part.
+rejections. Both failures are spacing failures. The one at read 29 is cured by
+going from 1,600 to 3,200. The one at read 83 survives at 3,200 and
+6,400 with the same signature, which briefly misled me into calling it
+spacing-independent, but at Cook's own v = 12,216 all 86 reads are
+correct. So at that point of this program the spacing must exceed half
+of Cook's value: his formula is not grossly conservative here, whatever
+the small programs of section 3.5 suggested.
 
 *Scope.* One program, one input. The claim is the 83 correct reads, not
 a working Collatz computer.

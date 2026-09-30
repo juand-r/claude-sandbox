@@ -152,3 +152,16 @@ hardgate.py: free (42,-14) object H, width <= 30, slip 6 (forced), A from
 the left, T2 = 150, moving window, 9 start placements:
 A + H -> nothing: UNSAT; A + H -> GB4: UNSAT. Control: fixed GB1 + A -> G
 in exactly 1 of 9 classes (collider's class 3).
+
+## 13. Zero test on architect's F-pair counter (spec Z2)
+
+zc.py: free (30,-8)-packet K <= 24 wide (all 14 slips; K free inside its
+window, so its class against the compound is searched too, completely for
+packets <= 22 wide), T2 = 900, moving window, target = architect's value-0
+compound F_19_F#3 (zero_state.json):
+  K + compound -> compound (any displacement) + nonempty stationary
+  object, nothing else: UNSAT; the same plus any Ebar-speed train on the
+  left: UNSAT.
+Positive control: target F with collider's packet E@(0,0)+Ebar@(-1,23) ->
+F + C1_12_C2 in exactly its known class. Pair-identity scene control: a
+single Ebar keeps the value-1 pair's D in exactly 1 of 12 classes.
