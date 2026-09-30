@@ -193,3 +193,53 @@ def verify_ops(ops, gap=250):
     pred = free_row(LIB, sim.gl, T, x0, len(row), (left[1] - left[3]) % TILE)
     assert pred is not None and np.array_equal(pred, row), "CA != glidersim"
     return sim.state(), expect
+
+
+# ---------------------------------------------------------------------------
+# One-sided access: INC = B, DEC = G, both from the right.
+
+def gstep(state, op):
+    """state = (n, event). 'I' = B, 'G' = G (DEC for n >= 2; for n = 1 the
+    zero test, which needs class 0 of E+G: E survives, A^4 answers).
+    Returns (new state, answer products)."""
+    n, e = state
+    nm = CHAIN[n - 1]
+    if op == "I":
+        rep = canonical_reps(LIB, nm, "B")[0]
+        _, prods = predict(nm, "B", rep, eX=e)
+        return (n + 1, prods[0][1:]), []
+    reps = canonical_reps(LIB, nm, "G")
+    outs = []
+    for rep in reps:
+        _, prods = predict(nm, "G", rep, eX=e)
+        outs.append(prods)
+    return outs
+
+
+def g_history_check(max_len=10):
+    """For every I/G history (n stays in 1..9): (1) DEC by G gives the same
+    E^(n-1) event for every G class; (2) collect the E-trajectory classes
+    (mod <P_E, P_G>) at which zero tests happen."""
+    import itertools
+    PE, PG = (15, -4), (42, -14)
+    zero_keys = set()
+    for L in range(1, max_len + 1):
+        for ops in itertools.product("IG", repeat=L):
+            st = (1, (0, 0))
+            for op in ops:
+                n, e = st
+                if op == "I":
+                    if n >= 9:
+                        break
+                    st, _ = gstep(st, "I")
+                    continue
+                if n == 1:
+                    zero_keys.add(class_key(e, PE, PG))
+                    break
+                outs = gstep(st, "G")
+                evs = {tuple(p for p in o if p[0].startswith("E")) for o in outs}
+                assert len(evs) == 1, (ops, outs)
+                (ev,) = evs
+                assert ev[0][0] == CHAIN[n - 2]
+                st = (n - 1, ev[0][1:])
+    return zero_keys
