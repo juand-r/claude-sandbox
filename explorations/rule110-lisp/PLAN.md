@@ -17,7 +17,7 @@ Order of work (each step committed separately):
 - [x] 6. NW reachability pruning (D2): refuted by measurement (0 symbols removed); real lever is binarization, deferred
 - [x] 7. Glider census (C1): census.py + tests; measured the mechanism; dynamic check partial (REPORT 3.3)
 - [x] 8. Rewrite REPORT.md claims per B1-B4 with the new measurements
-- [ ] 9. Tag `rule110-lisp-v0.1.0` with release notes
+- [x] 9. Tag `rule110-lisp-v0.1.0` with release notes
 - [ ] 10. Extension proposal (faster / more direct): write it up, ask
       before starting
 
