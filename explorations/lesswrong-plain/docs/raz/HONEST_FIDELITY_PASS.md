@@ -131,34 +131,34 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] stranger-than-history
 - [x] the-logical-fallacy-of-generalization-from-fictional
 - [x] we-change-our-minds-less-often-than-we-think
-- [ ] hold-off-on-proposing-solutions
-- [ ] the-genetic-fallacy
-- [ ] the-affect-heuristic
-- [ ] evaluability-and-cheap-holiday-shopping
-- [ ] unbounded-scales-huge-jury-awards-and-futurism
-- [ ] the-halo-effect
-- [ ] superhero-bias
-- [ ] affective-death-spirals
-- [ ] resist-the-happy-death-spiral
-- [ ] uncritical-supercriticality
-- [ ] evaporative-cooling-of-group-beliefs
-- [ ] when-none-dare-urge-restraint
-- [ ] every-cause-wants-to-be-a-cult
-- [ ] two-cult-koans
-- [ ] asch-s-conformity-experiment
-- [ ] on-expressing-your-concerns
-- [ ] lonely-dissent
-- [ ] cultish-countercultishness
-- [ ] singlethink
-- [ ] the-importance-of-saying-oops
-- [ ] the-crackpot-offer
-- [ ] just-lose-hope-already
-- [ ] the-proper-use-of-doubt
-- [ ] you-can-face-reality
-- [ ] the-meditation-on-curiosity
-- [ ] no-one-can-exempt-you-from-rationality-s-laws
-- [ ] leave-a-line-of-retreat
-- [ ] crisis-of-faith
+- [x] hold-off-on-proposing-solutions
+- [x] the-genetic-fallacy
+- [x] the-affect-heuristic
+- [x] evaluability-and-cheap-holiday-shopping
+- [x] unbounded-scales-huge-jury-awards-and-futurism
+- [x] the-halo-effect
+- [x] superhero-bias
+- [x] affective-death-spirals
+- [x] resist-the-happy-death-spiral
+- [x] uncritical-supercriticality
+- [x] evaporative-cooling-of-group-beliefs
+- [x] when-none-dare-urge-restraint
+- [x] every-cause-wants-to-be-a-cult
+- [x] two-cult-koans
+- [x] asch-s-conformity-experiment
+- [x] on-expressing-your-concerns
+- [x] lonely-dissent
+- [x] cultish-countercultishness
+- [x] singlethink
+- [x] the-importance-of-saying-oops
+- [x] the-crackpot-offer
+- [x] just-lose-hope-already
+- [x] the-proper-use-of-doubt
+- [x] you-can-face-reality
+- [x] the-meditation-on-curiosity
+- [x] no-one-can-exempt-you-from-rationality-s-laws
+- [x] leave-a-line-of-retreat
+- [x] crisis-of-faith
 - [ ] the-ritual
 - [ ] minds-an-introduction
 - [ ] the-power-of-intelligence

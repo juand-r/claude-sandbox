@@ -1774,3 +1774,563 @@ Why: Fidelity/substance pass: the rewrite named most of the post's arguments wit
 ## honest/sections/we-change-our-minds-less-often-than-we-think.tex
 
 No change: No change: the rewrite gives the study, the claim, the window before one can guess, the bottom-line principle and the list of biases
+
+## honest/sections/hold-off-on-proposing-solutions.tex
+
+Why: Fidelity/substance pass: added the role-play's setup and numbers, what groups without the rule argued about, and the AI and biology examples
+
+- Before: In his role-play, three workers and a foreman discuss an expert's advice to stop rotating jobs. Groups given the rule more often find the better answer: the two abler workers rotate and the least able keeps the easiest job.
+- After: In his role-play, three assembly-line workers of different ability rotate among three jobs, because the ablest, who is also the most dominant, wants to avoid boredom. An efficiency expert says that giving the hardest job to the ablest and the easiest to the least able would raise productivity by 20\%. The three workers and a foreman discuss this advice. Groups without the rule at once argue about productivity against autonomy and boredom. Groups given the rule much more often find the better answer: the two abler workers rotate and the least able keeps the easiest job, for a 19\% gain.
+
+- Before: Many people I meet seem to know how to build an artificial general intelligence,
+- After: Many people I meet seem to know how to build an artificial general intelligence without knowing how to build a character recognizer, a much easier problem,
+
+- Before: Physicists, economists and evolutionary biologists meet the same thing.
+- After: Physicists and economists meet the same thing, and anyone an evolutionary biologist meets can solve any open problem in the field, usually by invoking group selection.
+
+
+## honest/sections/the-genetic-fallacy.tex
+
+Why: Fidelity/substance pass: added the Shenkel line on a true crisis of faith, the irrelevance of benzene's source spelled out, the conditions on trusting experts and distrusting motives, and the Wright brothers example
+
+- Before: That is hard: ``It takes a convulsive effort to actually reconsider.''
+- After: That is hard: ``It takes a convulsive effort to actually reconsider,'' instead of rehearsing cached arguments. As Thor Shenkel said, ``It ain't a true crisis of faith unless things could just as easily go either way.''
+
+- Before: With enough clear-cut evidence, as for the benzene ring, the source no longer matters. Without it, give experts more credence and distrust suspect motives.
+- After: With enough clear-cut evidence the source no longer matters; that is what science accumulates. The benzene ring would be as well established if the idea had come from random computer images, a fraudulent spiritualist or the Bible. Without such evidence, give experts more credence if their field has earned it, suspect ideas from suspect sources, and distrust people with suspect motives if they cannot argue independently of their own authority.
+
+- Before: Distrust genetic accusations against beliefs you dislike.
+- After: Distrust genetic accusations against beliefs you dislike, especially if their proponents offer more than authority; the classic example is ``Flight is a religious idea, so the Wright Brothers must be liars.''
+
+
+## honest/sections/the-affect-heuristic.tex
+
+Why: Fidelity/substance pass: added why the clock result is odd (insurance protects nothing, outside insurer), the 98% hypothesis, the ironic reasoning spelled out, the Finucane hazards and the general conflation claim, and the economic prediction Ganzach tested
+
+- Before: The payout is the same for either clock.
+- After: That may sound rational, until you notice that insurance does not protect the clock; it pays the same \$100 for either one, and it came from an outside company, so it gave the movers no motive.
+
+- Before: and one that would save 98\% of 150 lives drew 13.6.
+- After: and one that would save 98\% of 150 lives drew 13.6. The researchers' hypothesis was that 150 lives is vaguely good, while 98\% is plainly very good because it is near the top of the scale.
+
+- Before: With irony: this ``makes perfect sense.''
+- After: With irony: this ``makes perfect sense,'' since the worse probability is more than made up for by the extra red beans; meditate on this to learn how the rest of the planet thinks about probability.
+
+- Before: found that information about benefits lowered perceived risks,
+- After: found for nuclear power, natural gas and food preservatives that information about benefits lowered perceived risks,
+
+- Before: ``and so on across the quadrants.'' Time pressure ``greatly'' increased the effect.
+- After: ``and so on across the quadrants.'' People merge their judgments of particular good and bad aspects into one feeling about the thing. Time pressure ``greatly'' increased the effect, in line with the general finding that time pressure, poor information and distraction all favor quick heuristics over deliberation.
+
+- Before: Ganzach found that analysts judged unfamiliar stocks
+- After: Economic theory says risk and return should go together, since people pay a premium for safety. Ganzach found that analysts judged unfamiliar stocks
+
+
+## honest/sections/evaluability-and-cheap-holiday-shopping.tex
+
+Why: Fidelity/substance pass: added why side-by-side changes the dictionary result, the original preference reversal and its hypothesis, the numbers for the added-loss gamble, the ice cream prices, and the iPod/Wii and melon examples; corrected a note that said the post gives the ice cream amounts only in a picture (it gives the prices in text; only the ounces are in the picture)
+
+- Before: A number of entries means little alone, while a torn cover is plainly bad.
+- After: Alone, 20,000 entries means little: is it a lot? The torn cover is plainly bad. Side by side, the number of entries becomes evaluable, because there are two to compare, and it swamps the cover.
+
+- Before: Slovic and colleagues found that a 7/36 chance to win \$9 was rated more attractive once a 29/36 chance of losing 5 cents was added, and that far more students then preferred it to a sure \$2.
+- After: Slovic and colleagues compared a 29/36 chance to win \$2 with a 7/36 chance to win \$9. People priced the second higher (\$2.11 against \$1.25) but rated it less attractive (7.5 against 13.2), a classic preference reversal. The researchers thought the dollar amount fitted the pricing task and the probability fitted the attractiveness rating, so they tried to make the payoff more evaluable by adding a small loss. A 7/36 chance to win \$9 was rated 9.4; with a 29/36 chance of losing 5 cents added, it was rated 14.9. Only 33\% of students preferred the plain gamble to a sure \$2, but 60.8\% preferred the one with the added loss. \$9 is not very exciting, but \$9 against 5 cents is an impressive ratio.
+
+- Before: seeing both, they reversed. \nb{The post gives the amounts only in a picture.}
+- After: seeing both, they reversed. Alone, they offered \$2.26 for the overfilled cup and \$1.66 for the other; together, \$1.56 and \$1.85. \nb{The post gives the ounces only in a picture.}
+
+- Before: So, for your shopping: ``Decide how much
+- After: So, for your shopping. Spend \$400 on an iPod Touch and the recipient sees the most expensive music player; spend it on a Wii and the recipient sees the cheapest game machine. You compare them side by side while shopping, but the recipient sees only one. If your goal is to display friendship rather than help: ``Decide how much
+
+- Before: The cheaper the class, the more expensive the item looks.
+- After: The cheaper the class, the more expensive the item looks: a \$25 candle is more memorable than a \$25 shirt. The Japanese custom of \$50 melons makes the giver look lavish for only \$50.
+
+
+## honest/sections/unbounded-scales-huge-jury-awards-and-futurism.tex
+
+Why: Fidelity/substance pass: added bounded vs unbounded scales and the modulus example, the three jury tasks and the variance figures, and why the author reads AI dates as felt difficulty
+
+- Before: Psychologists measure loudness by having people rate sounds against a standard sound with a fixed number, the modulus. Without a modulus, people keep the ratios between sounds but choose their own scale,
+- After: Psychologists ask people how loud a sound seems, on a bounded scale from ``very quiet'' to ``very loud,'' or on an unbounded scale from ``not audible'' upward. On an unbounded scale they usually give a standard sound with a fixed number, the modulus: if it is 10, a sound twice as loud is 20. Without a modulus, people keep the ratios between sounds but choose their own scale. If A rates two sounds 10 and 15 and B rates the first 100, B will probably rate the second about 150; but C's first rating could be 1 or 1,000,
+
+- Before: Kahneman, Schkade and Sunstein asked 867 jury-eligible people about short legal cases. They agreed on how outrageous each defendant was and how much to punish, on bounded scales, and on the ranking of dollar awards. But the case explained only 6 per cent of the variance in the dollar amounts,
+- After: Kahneman, Schkade and Sunstein asked 867 jury-eligible people about short legal cases, such as a child whose clothes caught fire. Each person rated the defendant's outrageousness or the deserved punishment on a bounded scale, or named a dollar award. They agreed on outrage and punishment, and on the ranking of dollar awards. The case explained 49 per cent of the variance in punishment ratings and 51 per cent in the rank of the awards, but only 6 per cent in the dollar amounts,
+
+- Before: As far as I can guess, people rate how hard AI feels, or how good it feels, and add ``years.''
+- After: He was not looking into the future, nor using the usual bogus method with Moore's Law. As far as I can guess, people answer ``how difficult does AI feel?'' On a bounded scale every sane person would mark ``extremely hard,'' since everything feels hard when you do not know how to do it. On an unbounded scale they pick a number for ``extremely difficult,'' 50 or 100 or 500, and add ``years.'' Others answer how positive they feel about AI, with smaller numbers meaning better feelings.
+
+
+## honest/sections/the-halo-effect.tex
+
+Why: Fidelity/substance pass: added the survey figures on voters' denial, the staged negligence trial, and the example of a person who may have some virtues and not others
+
+- Before: and voters denied being influenced.
+- After: and 73 per cent of voters surveyed flatly denied that looks had influenced them; only 14 per cent allowed it was possible.
+
+- Before: Attractive people also get more help and persuade more.
+- After: In a staged negligence trial, a defendant better looking than the victim was assessed \$5,623 on average, and one less attractive than the victim \$10,051. Attractive people also get more help and persuade more.
+
+- Before: Be suspicious of someone who seems intelligent, honest, altruistic, kindly and serene all at once, and of a world that sorts into devils and angels.
+- After: Be suspicious of someone who seems intelligent, honest, altruistic, kindly and serene all at once; perhaps the person is really intelligent, honest and altruistic but not so kindly or serene. Be suspicious, too, if the people you know sort too cleanly into devils and angels.
+
+
+## honest/sections/superhero-bias.tex
+
+Why: Fidelity/substance pass: added the rarity of real door-kicking, the hero's powers, the comic's line, the forgotten marcher, the point of nonviolence, and the wu wei argument that aiming at virtue reveals less of it
+
+- Before: An armed kidnapper holds hostages.
+- After: An armed kidnapper holds hostages and has announced that he will start killing. Real police rarely kick down the door, but sometimes they must.
+
+- Before: In one world, an invulnerable superhero storms the room
+- After: In one world, a superhero who can throw cars and whose skin annihilates bullets storms the room
+
+- Before: \nb{No study is cited for this. The support is a line from a comic.}
+- After: \nb{No study is cited for this. The support is a line from a comic.} As Adam Warren's \textsc{Empowered} asks, how tough can it be to act brave when you are nearly invulnerable?
+
+- Before: The bias is that his fame gets added to his real virtue.
+- After: The point of nonviolent resistance is not to show courage; going over Niagara Falls in a barrel would do that more easily. The bias is that his fame gets added to his real virtue. When you think of nonviolence you think of Gandhi, not of a marcher who was beaten, walked with a limp for the rest of her life, and whose name no one remembers.
+
+- Before: But choosing the smaller rescue to show virtue would be ``the moral equivalent of manslaughter.'' You cannot reveal virtue by trying to.
+- After: But choosing the smaller rescue to show virtue would be ``the moral equivalent of manslaughter.'' Someone who risks their life in order to be virtuous reveals far less than someone who does it to save others. You cannot reveal virtue by trying to; choosing a dangerous way to save the world over a safe one does not make you a hero, since wanting to look like a hero is a lost purpose.
+
+- Before: Virtuous people seek safer ways to save more, and reveal less.
+- After: Virtuous people seek safer ways to save more, and so reveal less; that is confusing but not contradictory.
+
+
+## honest/sections/affective-death-spirals.tex
+
+Why: Fidelity/substance pass: added the parking-spirit example, the combined great cause/leader/tonic, the author's mousetrap image for the high-affect case, the other joke names, and the footnote hint about the remedy
+
+- Before: That is ``probably'' how people come to believe that Belgium secretly controls the US banking system.
+- After: That is ``probably'' how people come to believe that Belgium secretly controls the US banking system, or that an invisible blue spirit force helps them find parking spaces.
+
+- Before: a political system to save the world, a great leader, a tonic that cures cancer.
+- After: a political system to save the world, a great leader, a tonic that cures cancer. Or all three: a great cause needs a great leader, and a great leader should be able to brew a tonic or two.
+
+- Before: a perceived positive trait raises the perception of other positive traits.
+- After: a perceived positive trait raises the perception of other positive traits, even when that makes no sense.
+
+- Before: Each interpretation confirms the Great Idea, and it feels good, so the believer seeks out more.
+- After: Each interpretation confirms the Great Idea, and it feels good, so the believer seeks out more. I compare this to a chamber full of mousetraps loaded with ping-pong balls.
+
+- Before: I offer some joke names, and settle on mine: ``affective death spiral.'' The remedy comes next.
+- After: I offer some joke names, such as ``happy attractor'' and ``praise locked loop,'' and settle on mine: ``affective death spiral.'' The remedy comes next; a footnote hints that it is not to stop admiring anything, nor to keep admired things in safe little separate compartments.
+
+
+## honest/sections/resist-the-happy-death-spiral.tex
+
+Why: Fidelity/substance pass: replaced the bare 'a list: five things that work and three that do not' with the list; added the windshield-wiper objection to counter-biasing, the guru sign, why science cannot be boxed off from love, the reason given for the ethics claim, the unsettled-claims advice, the conjunction-fallacy point, Armstrong's Marx example and the specificity questions
+
+- Before: Not with a selective search for negatives, which is rationalization.
+- After: Not with a selective search for negatives, which is rationalization; I distrust using one bias to counter another, like a mechanic who breaks your left windshield wiper to balance a broken right one. Whatever the solution, it should involve believing true things.
+
+- Before: Nor by confining science to a narrow box, since science bears on nearly everything.
+- After: Nor by confining science to a narrow box. Seeing the Great Idea everywhere is part of the spiral, and the most reliable sign of a cult guru is claiming expertise in everything. But science does bear on nearly everything. ``Science has nothing to say about a parent's love for their child'' is false: it denies cognitive science and evolutionary psychology, and it denies cases like this one.
+
+- Before: is that scientists need not take ethical responsibility because science will turn out well anyway.
+- After: is that scientists need not take ethical responsibility because science will turn out well anyway. Part of why science does more good than harm is that scientists, like most people, care about others.
+
+- Before: The method: know specifically how science works, and ask whether the proposed chain of cause and effect would work.
+- After: The way to reject these is not to cap your admiration, nor to look for reasons that papers cause cancer, nor to say science has nothing to do with cancer. It is to know specifically how science works: science may cure cancer, but a patient writing papers will not go into remission.
+
+- Before: Do not take happiness from claims that ``can't be disproven.''
+- After: Do not take happiness from claims that ``can't be disproven,'' or that have arguments ``both for and against''; those words often accompany rehearsed evidence and avoided weak points. Without the conjunction fallacy there might still be a halo effect, but no spiral: a perfect reasoner who demanded the right evidence for each added claim would feel no resonance even about the best things. In a footnote I add that the dangerous cases are those where any criticism of any positive claim feels bad or is socially unacceptable.
+
+- Before: Stuart Armstrong, a reader, advises splitting the Great Thingy into parts and judging each independently.
+- After: Stuart Armstrong, a reader, advises splitting the Great Thingy into parts and judging each independently. A Marxist would separate the labour theory of value, the theory of class relations, the theory of wages and the theory of the final state of mankind, and not let one halo the others.
+
+- Before: \nb{No evidence is given.}
+- After: \nb{No evidence is given.} Splitting also forces specifics. Told that publishing papers can cure cancer, you ask at which stage of the experimental method the cancer is cured, or whether the social process of science needs scientists who want to cure it.
+
+- Before: Last, a list: five things that work and three that do not.
+- After: Last, a list. You do avoid the spiral by splitting the Great Idea into parts, treating each added detail as burdensome, thinking about the causal chain instead of the feeling, not rehearsing evidence, and not taking happiness from claims you cannot prove wrong. You do not avoid it by refusing to admire anything much, by searching for negatives until you feel unhappy again, or by forcing the idea into a safe box.
+
+
+## honest/sections/uncritical-supercriticality.tex
+
+Why: Fidelity/substance pass: added the two retorts, the two definitions that decide Stalin's case, the other supercritical examples, why religion is not special (exceptionalism, Super Happy Agent, punishment for disbelief), the New Age mechanism, and why no idea is above criticism of its arguments
+
+- Before: the believer answers that atheism is a religion too, or that Stalin was an atheist.
+- After: the believer answers that atheism is a religion too (``If atheism is a religion, then not collecting stamps is a hobby''), or that Stalin was an atheist (``Stalin's religion was Communism''; ``If Communism is a religion, then Star Wars fandom is a government'').
+
+- Before: Whether Stalin counts as religious, I show with two made-up definitions, depends only on the definition.
+- After: Whether Stalin counts as religious, I show with two made-up definitions, depends only on the definition: he is religious if that means a definite opinion about some god, below 10\% or above 90\%, and not if it means a probability above 90\% that a god exists. Redefining a word does not change history.
+
+- Before: or that the room will turn on you for ``not supporting our troops,''
+- After: or that you earn spiritual credit for each nice thing you say about God, or that the room will turn on you for ``not supporting our troops,''
+
+- Before: Supernatural claims ``always turn out to be wrong,'' but spirals also form
+- After: Supernatural claims ``always turn out to be wrong'' for fairly fundamental reasons, but blaming them alone buys into religious exceptionalism. Spirals form easily around monotheisms whose God is defined by agreeing with every nice statement, especially once they threaten punishment for disbelief, but they also form
+
+- Before: New Agers, lacking Christianity's defences,
+- After: New Agers inherit from Christianity the idea that faith is good, but not the exclusive scripture that keeps out rival ideas, so they
+
+- Before: There is ``never an Idea so true that it's wrong to criticize any argument that supports it.''
+- After: Some things deserve great praise, so you cannot flatly forbid praise beyond some point. But there is ``never an Idea so true that it's wrong to criticize any argument that supports it.'' Most possible beliefs are false, and so are most possible arguments for a true belief.
+
+
+## honest/sections/evaporative-cooling-of-group-beliefs.tex
+
+Why: Fidelity/substance pass: spelled out the evaporative-cooling physics, who stayed with Rand and why, the mailing-list outcome, the concrete ejection advice, Kuhn's claim, and the moderation theory in the footnote
+
+- Before: In evaporative cooling the fastest atoms escape the trap, and the rest grow colder.
+- After: It came to me from evaporative cooling, used to make a Bose-Einstein condensate. Atoms in a trap move at different speeds. If the trap's barrier is a little above the average energy, chance occasionally gives an atom enough energy to escape, and when it does it carries off more than the average, so the rest grow colder.
+
+- Before: many Objectivists left with Branden for an ``open system'' of Objectivism.
+- After: many Objectivists left with Branden for an ``open system'' of Objectivism. Those who stayed were the ones who really believed in Rand, and perhaps some undecided members who, once the moderates had gone, heard only one side. This may be why the Ayn Rand Institute is reportedly more fanatical than the original group.
+
+- Before: On a transhumanist mailing list, a leftist faction insulted the libertarians until they left.
+- After: On a transhumanist mailing list, a ``social democratic transhumanist'' faction insulted the libertarians until most left and most others stopped posting, and the list shifted to the left. I doubt it was deliberate; at most the faction wanted to be bigger fish in a smaller pond.
+
+- Before: So be slow to eject dissenters.
+- After: So be prejudiced in favor of tolerating dissent: wait until well after ejecting someone seems justified. Once the old outliers are gone, the group shifts and someone else becomes the oddball; eject them too, and you are on your way to exploding.
+
+- Before: On the other hand, Kuhn thought a science must shut out outsiders before it can do real work,
+- After: On the other hand, Kuhn thought a young science tries hard to be understood by outsiders, but makes real progress only once it becomes a paradigm whose members assume a large shared body of technical knowledge,
+
+- Before: A footnote grants that my own theory of moderating online discussions ``may not have served me too well in practice.''
+- After: In a footnote I give my own theory of moderating online discussions. You must exclude trolls and spam, and even kindly but uninformed people from technical lists, to get work done. But be wary of ejecting articulate trolls: one famous person who disagrees with everything makes a more moderate dissenter stand out less, as long as such people do not dominate. I grant that this theory ``may not have served me too well in practice.''
+
+
+## honest/sections/when-none-dare-urge-restraint.tex
+
+Why: Fidelity/substance pass: added the first two thoughts, the pessimism remark, the traffic comparison with its figures, why most negative claims are false, the reductio about Kennedy, the size of the response, and the congressperson's words
+
+- Before: My third thought was:
+- After: My first thoughts were that I really was living in the Future, and ``Thank goodness it wasn't nuclear.'' My third was:
+
+- Before: That was ``a vast understatement.''
+- After: That was ``a vast understatement''; it is hard to aim pessimism low enough to be pleasantly surprised as often as unpleasantly.
+
+- Before: A politician who compared the deaths with those on the roads would have been asked to resign ``the same hour.''
+- After: At first six thousand were thought dead. A politician who said that was an eighth of a year's American traffic deaths would have been asked to resign ``the same hour.''
+
+- Before: and whoever questions a negative claim about the Enemy is a traitor.
+- After: and whoever questions a negative claim about the Enemy is a traitor. But most complex statements are false, and so are most bad things you could say about anyone, even the worst person in the world.
+
+- Before: It takes some courage to fly a plane into a building.
+- After: It takes some courage to fly a plane into a building; of all their sins, cowardice was not one. Would I earn more credit by accusing al-Qaeda of killing Kennedy?
+
+- Before: The US spent ``billions of dollars
+- After: A defense with thousands of aircraft and hundreds of thousands of soldiers can do more damage than nineteen men with four airliners. The US spent ``billions of dollars
+
+- Before: At first, as I recall, an unnamed member of Congress said that the first purpose of government is defense.
+- After: At first there were smarter responses than I expected. A member of Congress, whose name I forget, said on camera that the first purpose of government is not the economy or health care but defending the country; that was not an applause light.
+
+
+## honest/sections/every-cause-wants-to-be-a-cult.tex
+
+Why: Fidelity/substance pass: added the reason for the spy ban and the closing of ranks, the point that a true idea does not switch off the halo effect, the gravity line, why the journal question is a better example than vague complaints, and the engine comparison
+
+- Before: and that one of them banned a productive editor as a spy.
+- After: that one of them banned a productive editor as a spy for a critics' site, solely because the editor was so productive, and that the top people closed ranks.
+
+- Before: ``It is sufficient that the adherents be human.''
+- After: ``It is sufficient that the adherents be human.'' One true idea does not switch off the halo effect, or status games, or in-group bias.
+
+- Before: You can use probability theory, but you cannot join it.
+- After: Worshipping rationality will not make you sane any more than worshipping gravity lets you fly. You can use probability theory, but you cannot join it.
+
+- Before: How well does blind review work?
+- After: How well does blind review work? I choose this example over the vague complaint that scientists are not open to new ideas because it shows a place where the effort is actually being made.
+
+- Before: and that naming its battle lines does not betray it.
+- After: and that naming its battle lines does not betray it. Asking ``Cultish, yes or no?'' is like sorting engines into perfectly efficient and inefficient instead of measuring the waste.
+
+
+## honest/sections/two-cult-koans.tex
+
+Why: Fidelity/substance pass: added the start of Ougi's plain answer (repeating words without meaning, attachment to conclusions, anxiety about self-image, curiosity would have sought ways to resolve the doubt); replaced a closing sentence the post does not contain
+
+- Before: Then the plain version. The novice came for reassurance, not out of curiosity.
+- After: Then the plain version. How long will you repeat my words and ignore their meaning? Disordered thoughts begin as attachment to preferred conclusions, and the novice is too anxious about his image as a rationalist. He came for reassurance; if he had been truly curious, he would have thought of ways to settle his doubts.
+
+- Before: That novice took the name Bouzo and would discuss rationality only in a clown suit. I leave you to decide whether he learned the lesson or learned it too well.
+- After: That novice took the name Bouzo and would discuss rationality only in a clown suit. The story ends there, without comment.
+
+
+## honest/sections/asch-s-conformity-experiment.tex
+
+Why: Fidelity/substance pass: added the interviews and Asch's concern, the weaker form of disagreement, the reasoning behind each detail (2 vs 6, nervousness, lack of self-awareness, the cost of dissent, the gender argument, the in-group example)
+
+- Before: A third of the subjects conformed more than half the time.''
+- After: A third of the subjects conformed more than half the time.'' Afterwards most said they had not really believed their conforming answers, but some said they had. Asch found the strength of conformity ``a matter of concern.''
+
+- Before: and say only that it looks to me like B.
+- After: and say only that it looks to me like B, but I have no reason to think my judgment better than theirs. That is a much weaker claim than saying I see through the illusion that fools them.
+
+- Before: One dissenter, even one giving a different wrong answer, cuts conformity to ``5–10\% of subjects.''
+- After: One dissenter, even one giving a different wrong answer, cuts conformity to ``5–10\% of subjects.'' If one against three means the three are probably right, one should equally trust six against two; but a nervous person made less alone by one ally fits the result easily.
+
+- Before: Subjects deny that the dissenter helped them.
+- After: Subjects deny that the dissenter helped them; like the 90\% of drivers who think themselves above average, some may be right, but not all. People do not know the causes of their own conformity, which counts against calling the pattern rational.
+
+- Before: When the dissenter switches to the group, conformity returns: ``you've got to keep it up.''
+- After: When the dissenter switches to the group, conformity returns. Being the first dissenter is a valuable and costly service, but ``you've got to keep it up.''
+
+- Before: Women conform more than men, and ingroup members more than others.
+- After: In all-female groups about half the subjects conform more than half the time, against a third in all-male groups; if the average subject is rational, then women are too agreeable and men too disagreeable, and neither is rational. Members of an in-group, such as handicapped subjects among other handicapped people, conform more.
+
+
+## honest/sections/on-expressing-your-concerns.tex
+
+Why: Fidelity/substance pass: added the two sides of the Hanson debate, why disagreement cannot be waved off, the point that raising a concern is not a promise to disagree, how ideal convergence differs from bargaining, the grudge, and the historical price of dissent
+
+- Before: Robin Hanson and I disagree about when to disagree,
+- After: Robin Hanson and I disagree about when to disagree. I hold the common view that you have no real choice but to form your own opinions; Hanson holds that you, not only other people, should consider that others may be wiser. But
+
+- Before: So for rationalists, disagreeing is serious business.
+- After: So we both urge modesty: pay attention to what others think. For rationalists, disagreeing is serious business, not waved off with ``Everyone is entitled to their own opinion.''
+
+- Before: The most important lesson of Asch's experiments, I think, is to distinguish expressing a concern from disagreeing. Ideal Bayesians converge by sharing evidence the listener could not predict.
+- After: The most important lesson of Asch's experiments, I think, is to distinguish expressing a concern from disagreeing: raising a point others have not voiced is not a promise to disagree at the end. Ideal Bayesians converge by sharing evidence the listener could not predict, and, as Hanson's ``We Can't Foresee to Disagree'' shows, this looks nothing like bargainers converging on a price.
+
+- Before: Speaking out cannot be undone, and a group of rationalists could only ``agree to pretend'' there is a difference.
+- After: Speaking out cannot be undone, and a group of rationalists could only ``agree to pretend'' there is a difference. Someone insulted by your doubt about their competence will keep the grudge even if you go along with the group at the end. The power of dissent is real and so is the power of conformity; if no one voices private doubts, groups go mad, but history shows the price of being first, or even second, to say the Emperor has no clothes.
+
+
+## honest/sections/lonely-dissent.tex
+
+Why: Fidelity/substance pass: added why standard rebellions are easy (people know how to relate; no new thought required), the hunter-gatherer courage contrast, the cliff caveat, the real iconoclast groups and their rarity, and the reasons given for correcting toward agreement
+
+- Before: Vegetarians show some courage, I expect, but people understand them. Wearing black to school is a standard rebellion that everyone recognizes. Real courage means facing people who simply find you weird.
+- After: There are rebellions worth joining, and braving your peers' disapproval, or their shrugs, takes courage; a rock concert is not rebellion, but vegetarianism is, I expect. Still, people think they understand a vegetarian's motives and know how to relate to one. Wearing black to school is a standard rebellion that everyone recognizes: people can say ``I can't understand why you'' without thinking any new thought. Real courage means facing people who simply find you weird and turn away.
+
+- Before: A small group could leave the tribe together, but a person driven out alone probably died.
+- After: A small group could leave the tribe together, but a person driven out alone probably died. Hunter-gatherers needed the courage to face death routinely, but the courage to think truly weird thoughts probably did not serve them as well.
+
+- Before: Not every dissenting idea is good,
+- After: Not everything that takes courage is a good idea; walking off a cliff takes courage. Not every dissenting idea is good,
+
+- Before: So differ only when you have an overwhelmingly good reason.
+- After: So differ only when you have an overwhelmingly good reason, and you will still have trouble enough for life. There are a few real packs of iconoclasts, such as the Church of the SubGenius, which aims to confuse outsiders rather than offend them, and islands of tolerance such as science fiction conventions. People without fear of leaving the pack are far fewer than those who imagine themselves rebels, and scientific revolutionaries are rarer still.
+
+- Before: Then, seriously: dissenting too easily is my own nature, and I have to correct for it. ``You wouldn't want to end up as a free thinker.''
+- After: My serious conversations were with books, not other children. Then, seriously: if you would wear the clown suit, you need to correct in the opposite direction, as I do. Other people have reasons for what they think, and ignoring them is as bad as fearing to contradict them. ``You wouldn't want to end up as a free thinker''; it is not a virtue, just a bias the other way.
+
+
+## honest/sections/cultish-countercultishness.tex
+
+Why: Fidelity/substance pass: the rewrite named most of the post's six problems without their content; added the checklist items that fit parties, the essence-vs-attractor contrast (dogs and cats, Socrates), the checklist argument pattern, the reassurance mechanism, the ubiquity of the halo risk, the old-religion and libertarian questions, the burden-of-proof concession, the Cult Fairy, the sleep-deprivation footnote, conformity keeping you in, need for closure and living with doubt, cautious vs nervous, the extra risk of teaching rationality, the first-dissenter feeling, the swordsman, and the postscript's advice
+
+- Before: Point one: cults are not a natural kind, like cats and dogs. When group failures feed each other and combine,
+- After: Point one: cults are not a natural kind. Lists of cult traits include items that fit political parties and corporations, such as distrust of outside critics and a hierarchical structure. Dogs and cats are born with different DNA, and a cat cannot wander halfway into dogness; but a group can have some cult traits and not others. The mind prefers essences: once you decide Socrates is human, you conclude he is vulnerable to hemlock without a blood test. When group failures such as polarization, happy death spirals and evaporative cooling feed each other and combine,
+
+- Before: So do not settle whether a group is a cult by finding one item on a checklist; look at each characteristic separately.
+- After: From in-group feeling and a halo around a favorite idea you cannot deduce whether the group has become uncritical, whether its idea is true, or whether it will starve you. Online, one side finds one checklist item that fits and says ``Therefore it is a cult!'', and the other finds one that does not. Look at each characteristic separately.
+
+- Before: And a cult can hold a true idea:
+- After: And reversed stupidity is not intelligence: smart ideas can have stupid followers, and New Agers talking about quantum physics are no strike against quantum physics.
+
+- Before: The second error is that the nervous asker wants reassurance, not an answer, and once reassured stops pushing against the slide into cultishness that every cause must resist.
+- After: The second error is that the nervous asker wants reassurance, not an answer. Nervous people are not curious; they find a website saying cults use sleep deprivation, notice their group does not, and conclude ``It's not a cult. Whew!'' If it has no fur, it is not a cat. Once reassured, they stop pushing against the slide into cultishness that every cause must resist. Any group with a goal seen as good is at risk of the halo effect: political parties, startups, Mac users and Linux users. The error should be fought even if everyone makes it, but the nervous will refuse to see any sign of it, and so miss where it is advancing.
+
+- Before: People ask it of cryonics but not of political rallies, where the same group errors occur.
+- After: Why are groups that praise their Happy Thing, take members' money and keep them in compounds called religions, not cults, once they are a few hundred years old? People ask it of cryonics but not of political rallies, where the same group errors occur. There is a fair reason to fear a flying-saucer cult more than libertarians, since libertarians are not known for sleep deprivation; but neither are cryonicists.
+
+- Before: I add no evidence between the suspicion and the conclusion.
+- After: I add no evidence between the suspicion and the conclusion. The word ``cult'' labels what seems weird, not rationality errors. I grant that common wisdom is often wise and that weirdness fairly carries an extra burden of proof, but the nervousness is not that deliberate judgment. It is as if believing anything your ancestors did not believe brings down the Cult Fairy with the Essence of Cultness, so that cults' harms, such as the Heaven's Gate suicides, show only that anyone with odd beliefs is crazy.
+
+- Before: It is ``a risk factor, not a disease.''
+- After: It is ``a risk factor, not a disease,'' and so is having a lofty goal; some goals are worth pursuing. A footnote adds that sleep deprivation or threats to beat dissenters answer the practical question of whether to join, whatever you call the group.
+
+- Before: Problem four: cults exploit the fear of lonely dissent, and the wish to be sure. Conformity ``glues you to wherever you are.'' Problem five: the right attitude is caution about what a group may become. I share that caution about AI ideas, and try to place my Go stones in advance.
+- After: Problem four: cults themselves exploit the fear of lonely dissent, surrounding converts with wall-to-wall agreement. The fear of strange ideas keeps you out of a cult while you are out, and keeps you in once you are in; conformity ``glues you to wherever you are.'' Cults also exploit the wish to be sure, the need for closure. Living with doubt is no virtue, since a doubt's purpose is to be resolved, but some take time, and a rationalist always carries a stack of unresolved ones. If you cannot tell whether a group is a cult, decide under uncertainty. Problem five is a lack of strategic thinking. Some people are cautious, not nervous, about superintelligent AI ideas, as they are about parties and religions: they see it is not a cult now but worry it may become one, for example by turning a powerful AI into a Super Happy Agent. That caution does not annoy me; I share it, and try to place my Go stones in advance. Giving advice about how to think is also a risk factor.
+
+- Before: Problem six: answering the question at all risks giving the reassurance an ``Evil Guru'' would give, and I feel this essay may do so.
+- After: Problem six: answering the question at all risks giving the reassurance an ``Evil Guru'' would give, with an elaborate argument for why this is not a cult, and I feel this essay may do so. It feels like being the first dissenter in Asch's experiment, telling people it is fine to say B; they should not need to ask.
+
+- Before: Look at the group's reasoning yourself.
+- After: Look at the group's reasoning yourself, once rid of the fear of weirdness; stopping yourself from thinking cultishly is your own responsibility, in any group. A need for reassurance is always a weak spot. A skilled swordsman watches the target, not the onlookers who might be laughing.
+
+- Before: A postscript adds a seventh annoyance: all of this takes a long time to explain.
+- After: A postscript advises against explaining all this in one breath to someone who asks, since they will answer ``Aha, so you're admitting you're a cult!'' or ``So... the fear of cults is cultish?'' The seventh annoyance is that it takes so long to explain.
+
+
+## honest/sections/singlethink.tex
+
+Why: Fidelity/substance pass: added that singlethink means holding one non-contradictory thought, and the finite-but-deep remark on confirmation bias
+
+- Before: in singlethink you notice that you are forgetting, and remember.
+- After: in singlethink you notice that you are forgetting, and remember, holding a single non-contradictory thought.
+
+- Before: Confirmation bias goes deep, and you keep finding new ways
+- After: Confirmation bias goes deep; not forever, since the brain is finite, but it feels like forever, and you keep finding new ways
+
+
+## honest/sections/the-importance-of-saying-oops.tex
+
+Why: Fidelity/substance pass: added the missing watershed moment and the Fifth Amendment detail, why Traditional Rationality's 'eventually' is still worth something, the point that a large admission can change a life, and the full pattern of the minimal concessions (patches one must be argued into, excuses, the same mistake again)
+
+- Before: I put that line in their mouths. After the bankruptcy, Jeff Skilling told Congress
+- After: I put that line in their mouths. They never said ``I've been stupid''; there was no watershed moment. After the bankruptcy, Jeff Skilling declined his lawyers' advice to take the Fifth Amendment and told Congress
+
+- Before: Traditional Rationality teaches you to give in to the evidence eventually, but not quickly.
+- After: Traditional Rationality teaches you to give in to the evidence eventually, which is no small thing, since it separates science from religion. But it does not teach speed: using evidence efficiently, so that the least contrary evidence needed is enough to overturn a cherished belief.
+
+- Before: So admit a large mistake all at once.
+- After: So admit a large mistake all at once. It is painful, and it can change your whole life.
+
+- Before: Since then I have watched others concede each millimeter of ground. I list their excuses, such as ``I was right in principle'' and ``It could have worked.''
+- After: Since then I have watched others concede each millimeter of ground, confessing a local mistake where a global one is due. What they could fix at once, voluntarily, they turn into small patches they must be argued into. After one mistake they never say ``I've been a fool,'' but ``I was right in principle,'' ``It could have worked,'' or that they still want the true essence of whatever they are attached to. Defending their pride now, they ensure they will make the same mistake again.
+
+
+## honest/sections/the-crackpot-offer.tex
+
+Why: Fidelity/substance pass: added the resentment, the source of the crank image, the what-if about learning the skill, the list of flattering readings rejected, and why admitting matters (self-image bound to the mistake)
+
+- Before: I was disappointed, and my first thought was that I would disprove the theorem someday.
+- After: I was disappointed, and my first thought was that I would disprove the theorem someday; I resented it for being obstinately true.
+
+- Before: I was being offered the chance to become a math crank writing ``angry letters in green ink.''
+- After: I was being offered the chance to become a math crank, spending my life writing ``angry letters in green ink'' to professors, as in a book about cranks I had read.
+
+- Before: I was lucky that I found the mistake myself and that it was simple.
+- After: I was lucky that I found the mistake myself, with no one else to blame, and that it was simple. I have recovered from worse as an adult, but if I had gone wrong that early, would I ever have learned the skill?
+
+- Before: It was a mistake, and that was all: not ``half right or even the tiniest fraction right.''
+- After: It was a mistake, and that was all. I was not really right deep down, I won no moral victory, I was not showing ambition or skepticism, it was not a reasonable error, and I was not ``half right or even the tiniest fraction right.''
+
+- Before: Had I read it as partly right, I would have kept looking for a flaw, and might have found one.
+- After: Had I read it as partly right, I would have kept looking for a flaw, and might have found one. Until you admit you were wrong, your self-image stays bound to the old mistake.
+
+- Before: Not every cloud has a silver lining.
+- After: Not every cloud has a silver lining, and not all mistakes are disguised successes.
+
+
+## honest/sections/just-lose-hope-already.tex
+
+Why: Fidelity/substance pass: added Serin's own framing (a learning experience) and LTCM's 40% returns
+
+- Before: and he tried to take out a mortgage on a ninth house.
+- After: and he tried to take out a mortgage on a ninth house. He has not failed, you see; he has had a learning experience.
+
+- Before: The fund refused to lose hope. It borrowed
+- After: The fund refused to lose hope. Addicted to 40\% annual returns, it borrowed
+
+
+## honest/sections/the-proper-use-of-doubt.tex
+
+Why: Fidelity/substance pass: added the post's worked example of an abstract doubt (searching for a simpler hypothesis until the cost exceeds the benefit), the point that resolution, not doubting, drives progress, and the believe/believe-in distinction
+
+- Before: A rational doubt arises for a specific reason, and that reason points to an investigation, which ends either the belief or the doubt.
+- After: It is the resolution of doubts, not doubting itself, that moves rationality forward, and wearing doubts no more makes you a rationalist than a lab coat makes you a doctor. A rational doubt arises for a specific reason, and that reason points to an investigation, which ends either the belief or the doubt. Even an abstract doubt, such as whether a simpler hypothesis would explain the data, works this way: you look for simpler hypotheses, and as the search goes on without success, you expect less from each further effort, until the cost exceeds the expected benefit and you stop. After that you are no longer usefully doubting.
+
+- Before: So why would a real believer give novices doubts that must fail?
+- After: So why would someone who really believes a religion, and does not merely believe in it, give novices doubts that must fail?
+
+
+## honest/sections/you-can-face-reality.tex
+
+Why: Fidelity/substance pass: gave all of Gendlin's lines, not just the first and last
+
+- Before: The paragraph says that what is true is already so, that owning up to it does not make it worse, and that
+- After: The paragraph says that what is true is already so; owning up to it does not make it worse, and not being open about it does not make it go away; because it is true, it is what there is to deal with, and anything untrue is not there to be lived; and
+
+
+## honest/sections/the-meditation-on-curiosity.tex
+
+Why: Fidelity/substance pass: gave the content of the Zelazny and Twain sayings, the Le Guin and Twelve Virtues quotations, and Ferris; spelled out what the curious do and the familiar-ground motive; gave the 70% example, the rehearsal questions, the full litany and what to do with it, and the painful-possibilities remedy
+
+- Before: I support this with two sayings, one from Roger Zelazny and one from Mark Twain.
+- After: Roger Zelazny distinguished wanting to be an author from wanting to write, and Mark Twain said a classic is something everyone wants to have read and no one wants to read.
+
+- Before: A curious person looks where belief is most likely to change, and does not mind which way it changes. I give no example of anyone being curious. For that I refer you to ``A Fable of Science and Politics,'' in another book. I quote Ursula Le Guin on innocence, and I quote myself, from ``The Twelve Virtues of Rationality.''
+- After: A curious person looks where belief is most likely to change, or at inquiries least like those already tried, and does not mind which way it changes; afterwards the beliefs should not look as they did at the start. The dutiful person stays on familiar ground, to get the inquiry over with and restore the old balance. I give no example of anyone being curious. For that I refer you to ``A Fable of Science and Politics,'' in another book, whose last character, Ferris, shows innocent curiosity: lightness and an eager reaching for evidence. Ursula Le Guin wrote that innocence has no strength against evil, but has strength for good; a rationalist's training is a risk worth taking, but we can try to keep that lightness. I quote myself, from ``The Twelve Virtues of Rationality'': if you believe you already know, or do not wish to know, your questioning will be purposeless.
+
+- Before: My remedies are these. Watch for sparks of real interest.
+- After: My remedies are these. Watch for sparks of real interest in a dutiful investigation, and for painful possibilities you flinch from.
+
+- Before: and each new point should have ``equal potential to shift belief upward or downward.''
+- After: and each new point should have ``equal potential to shift belief upward or downward'': at 70\%, you should be as ready to drop to 69\% as to rise to 71\%.
+
+- Before: I also ask whether you are ``criticizing your belief at its strong points, rather than its weak points.''
+- After: If the argument you are looking at is not new, why look there? Is it where a curious person would look? Are you ``criticizing your belief at its strong points, rather than its weak points,'' or rehearsing evidence?
+
+- Before: I also recommend lowering a belief ``one tiny bite at a time.''
+- After: If you avoid rehearsing known support and lower your belief ``one tiny bite at a time'' from new evidence, you may manage to give it up entirely.
+
+- Before: The litany goes: if the box contains a diamond, I want to believe that it does; if it does not, I want to believe that it does not.
+- After: The Litany of Tarski replaces thoughts about the wonderful consequences of a diamond in a locked box: if the box contains a diamond, I want to believe that it does; if it does not, I want to believe that it does not; let me not become attached to beliefs I may not want. Then think about the possibility that there is no diamond, and the advantage of believing so if it is true. See also Gendlin's litany.
+
+- Before: you should guard it ``like a forester nursing a campfire.''
+- After: you should guard it ``like a forester nursing a campfire,'' since curiosity makes you light and eager and gives your questioning purpose.
+
+
+## honest/sections/no-one-can-exempt-you-from-rationality-s-laws.tex
+
+Why: Fidelity/substance pass: added the brain as an engine of accuracy, the voting examples, the wiser-countries remark, the gravity illustration and the 'too anthropomorphic' qualification
+
+- Before: To Bayesians, the rules of rationality are laws like the second law of thermodynamics.
+- After: To Bayesians, the brain is an engine that concentrates evidence into a map of the territory, and the rules of rationality are laws like the second law of thermodynamics.
+
+- Before: ``One design error cannot excuse another.''
+- After: ``One design error cannot excuse another.'' Even if we all vote that it is unfair for your refrigerator to need electricity, it will not run; even if we vote that you need not visit New York, the map will be wrong.
+
+- Before: The law lets everyone hold their own beliefs; nature entitles no one to accuracy.
+- After: The law lets everyone hold their own beliefs, and the wiser countries arrest no one for weird ones; nature entitles no one to accuracy.
+
+- Before: ``There is only cause and effect.''
+- After: If you persuaded every physicist that you were exempt from gravity and walked off a cliff, you would fall. Even ``we don't decide'' is too human a phrase: there is no authority that could exempt you. ``There is only cause and effect.''
+
+
+## honest/sections/leave-a-line-of-retreat.tex
+
+Why: Fidelity/substance pass: added the Bujold epigraph, the moral example and the self-respect vs human-nature reasoning, the timing advice, the precision point, why admitting fear is the easier test, the author's reason for planning retreats, the harder test of really accepting the premise, the theists-see-atheists point, and wanting to believe a true scary thing
+
+- Before: I open with Sun Tzu: when you surround the enemy, leave them an escape route.
+- After: I open with Sun Tzu: when you surround the enemy, leave them an escape route. And with Lois McMaster Bujold: ``Don't raise the pressure, lower the wall.''
+
+- Before: Then she could think, ``Well, if there are no souls, I can just sign up for cryonics.''
+- After: Then she could think, ``Well, if there are no souls, I can just sign up for cryonics,'' or ``If there is no God, I can just go on being moral anyway,'' instead of finding it too horrifying to face. Self-respect says to believe the truth however uncomfortable; human nature says it helps to make a belief less uncomfortable before weighing the evidence.
+
+- Before: and only then can you judge the risk ``fairly.''
+- After: and only then can you judge the risk ``fairly.'' Plan your retreat in detail, preferably before you reach the battlefield.
+
+- Before: Imagining a belief is not conceding it.
+- After: Imagining a belief is not conceding it, and you must still count the evidence for and against exactly, even for a scary proposition that is unlikely.
+
+- Before: You must at least admit which ideas scare you. ``Does it help if I say that I have occasion to use this technique myself?'' I describe no occasion.
+- After: You must at least admit which ideas scare you and which you are attached to, a much easier test than counting the evidence fairly. ``Does it help if I say that I have occasion to use this technique myself?'' Some ideas scare me that I still think false; some I am attached to and still think true. I plan my retreats not in order to retreat, but to think without attachment. I describe no occasion. The harder test is to really accept the uncomfortable premise and work out how you would really deal with it, against the impulse to list reasons it cannot be so.
+
+- Before: If they pictured their real reaction, they would see that ``they wouldn't go around slaughtering babies.''
+- After: If they pictured their real reaction, they would see that ``they wouldn't go around slaughtering babies,'' and that atheists react to the absence of God much as they would. That shows how hard it is to picture your real reaction to believing the opposite of a cherished belief.
+
+- Before: and picturing a world you fear does no harm either way.
+- After: and picturing a world you fear does no harm either way. As you picture it, remember that if it is true, you would want to believe it.
+
+- Before: Leaving a line of retreat ``is a powerful technique, but it's not easy.''
+- After: Leaving a line of retreat ``is a powerful technique, but it's not easy''; honest picturing takes less effort than admitting outright that God does not exist, but it takes effort.
+
+
+## honest/sections/crisis-of-faith.tex
+
+Why: Fidelity/substance pass: added the fragility of self-honesty under uncertainty, the evil-mutants warning, the meta-level point and the deeper questions about Occam's razor, the ten-year-old stakes, equal attachment vs equal support, the blind retina, when to stage one, the rushing warning, and the content of each listed technique
+
+- Before: The real question is how to tell whether a long-held belief is false.
+- After: The real question is how to tell whether a long-held belief is false, and self-honesty is most fragile when we are not sure which path is right.
+
+- Before: Religion is the trial case. What would a religious person have to do to escape their religion?
+- After: Religion is the trial case, but if you think of theists as evil mutants you cannot imagine their real trials. What general strategy would a religious person have to follow to escape their religion?
+
+- Before: If Occam's razor is your standard justification for X, you should ask whether it really endorses X and whether you understand it.
+- After: The general strategy is not ``Use Occam's Razor'' but ``stop your mind from completing the pattern the usual way.'' If Occam's razor is your standard justification for X, you should ask whether it really endorses X, whether you understand it, and even whether simplicity has worked well in this kind of case, with the same effort you would ask of a theist questioning faith.
+
+- Before: after that they have answers to every objection.
+- After: after that they have answers to every objection. That is the existence you must surpass, or be weaker than a ten-year-old. The effort is to find out whether to throw off the chains or keep them, not to throw them off once you have decided.
+
+- Before: They are not disproofs; they mark a belief that will take more than an ordinary effort to doubt.
+- After: They are not disproofs, and two beliefs can inspire equal attachment without equal support; the point is a map that reflects the territory. The signs mark a belief that will take more than an ordinary effort to doubt so that, if it is false, you will in fact reject it. Where you cannot doubt that way you are blind, like a retina that sends the same signal whatever light enters it. Stage a crisis when you feel a little unstable inwardly but keep finding reasons the belief is solid.
+
+- Before: If the belief is as solid as gravity, you need not bother.
+- After: If the belief is as solid as gravity, you need not bother, but think how many theists would like to conclude that God is as solid as gravity, and imagine what skeptics would say to your argument.
+
+- Before: How to do it: rest the day before,
+- After: How to do it: not haphazardly, and not in a rush so that you can say ``I have doubted, as I was obliged to do.'' Rest the day before,
+
+- Before: Then I list the earlier essays the technique draws on. One says that for each new point you ``should not expect your beliefs to shift more (on average) in one direction than another.''
+- After: Then I list the earlier essays the technique draws on. Seek the most painful spots, not the reassuring ones. Want to investigate, not to have investigated; only uncertainty creates curiosity, and for each new point you ``should not expect your beliefs to shift more (on average) in one direction than another.'' Keep cached thoughts from completing the pattern. Picture fully the world without your belief, the way the best skeptic would want, and accept that if it is true you are better off believing it. Distrust ideas that all survive from a source you now distrust. Notice the thoughts you flinch from. Refuse false praise even of genuinely good things. Hold off on answers, and try for five minutes before giving up, especially on the devil's side. Watch for one-sided argument, selective search and stopping, fake humility, semantic stopsigns, applause lights and burdensome details.
+
+- Before: Another says it ``really is less painful
+- After: And it ``really is less painful
+
