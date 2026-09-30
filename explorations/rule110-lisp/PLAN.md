@@ -11,7 +11,7 @@ Order of work (each step committed separately):
 - [x] 2. Semantic bugs A1-A3 with new edge-case tests
 - [x] 3. Refactor: single tag runner (E3), CWTM into cw.py (E9), dead code
       and docstrings (E5, E6), magic numbers (E7), shared test machine (E8)
-- [ ] 4. Experiments: shared CA-run helper, scripts to experiments/,
+- [x] 4. Experiments: shared CA-run helper, scripts to experiments/,
       superseded diagnostics to trash/ (E2)
 - [ ] 5. SKI-TM gap walking (D1): measure, fix, re-measure
 - [ ] 6. NW reachability pruning (D2): re-measure blowup table

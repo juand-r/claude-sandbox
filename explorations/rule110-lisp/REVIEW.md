@@ -41,7 +41,7 @@ has a disposition; the "Status" column is updated as work proceeds.
 | id | finding | disposition | status |
 |---|---|---|---|
 | E1 | 15 `__pycache__/*.pyc` files and 5 `*.out` files are tracked despite `.gitignore` (the earlier `git rm --cached` ran from the wrong directory). | untrack | done |
-| E2 | Eleven `run_*.py` scripts each re-implement the same ~20 lines: ether-rotation lookup, right-edge trim to an ether cut, phase-matched padding, co-moving windows. | one helper module; scripts to `experiments/`; superseded diagnostics to `trash/` | |
+| E2 | Eleven `run_*.py` scripts each re-implement the same ~20 lines: ether-rotation lookup, right-edge trim to an ether cut, phase-matched padding, co-moving windows. | one helper module; scripts to `experiments/`; superseded diagnostics to `trash/` | done |
 | E3 | Three tag-system runners (`tag.ts_run` on char strings, `tm.ts_run_list` on lists, `nw.tag_run` deque/2-deletion). | one runner in `tag.py` | done |
 | E4 | `consumed.py` is unused (its method found one event and was abandoned). | trash | done |
 | E5 | Dead code: unused locals in `lisp_to_ski.decode_value`, unused `PRIMS`, `Compiler.lam`; `import sys` in `ski_graph`; unused `_ETHER` in `decoder`; unused `TM` import and unused `t` parameter in `cw`; unreachable aperiodic branch in `encoder._attach`; a garbage `print` in `run_canonical.py`. | remove | done |
