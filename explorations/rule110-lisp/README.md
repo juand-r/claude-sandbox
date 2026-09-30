@@ -1,32 +1,52 @@
 # rule110-lisp
 
-A Lisp that runs on the Rule 110 cellular automaton -- as far down the
-tower as physics and arithmetic allow. The construction is a chain of
-verified translations:
+A Lisp whose execution bottoms out in the Rule 110 cellular automaton,
+built as a chain of translations, each tested against a reference
+interpreter for the layer above:
 
     mini-Lisp -> SKI -> Turing machine -> clockwise binary TM
       -> 2-tag system (Neary-Woods) -> cyclic tag system
-      -> Rule 110 gliders (Cook's blocks)
+      -> Rule 110 initial condition (Cook's glider blocks)
 
-Every arrow is differentially tested against the layer above. Compiled
-Lisp runs on a 255-state Turing machine; a full machine-to-CTS tower is
-verified exactly; Cook's glider construction is reproduced and runs real
-cyclic tag programs on the actual automaton. Physical execution of the
-whole tower is out of reach by ~17 measured orders of magnitude --
-REPORT.md tells that story with the numbers.
+Compiled Lisp runs on a 256-state Turing machine; the machine-to-CTS
+tower is verified exactly; Cook's construction is reproduced exactly at
+the initial-condition level and its glider dynamics are measured with a
+glider census. What is and is not verified, and what it all costs, is in
+REPORT.md.
 
-## Files
+Version 0.1.0 (tag `rule110-lisp-v0.1.0`).
 
-- `REPORT.md` - the full writeup: results, defect analysis, blowup table
-- `PLAN.md`, `NOTES.md` - live plan and lab notes (incl. debugging log)
-- `engine.py` - Rule 110 simulators (scalar + bit-packed)
-- `encoder.py`, `decoder.py`, `data/blocks.json` - CTS <-> Rule 110
-- `cts.py`, `tag.py`, `tm.py`, `cw.py`, `nw.py` - the machine layers
-- `lisp.py`, `lisp_to_ski.py`, `ski.py`, `ski_graph.py`, `ski_tm.py` - Lisp
-- `run_*.py` - CA experiment scripts (see REPORT.md, Reproduction)
-- `tools/extract_blocks.py` - regenerates block data from arXiv:0906.3248
+## Documents
+
+- `REPORT.md` - results, evidence, open problems, cost of the tower
+- `DIRECTIONS.md` - proposal for faster / more direct constructions
+- `REVIEW.md` - takeover review: every finding and its disposition
+- `PLAN.md` - work plan; `NOTES.md` - lab notes and debugging log
+
+## Code
+
+| module | layer |
+|---|---|
+| `lisp.py` | reference mini-Lisp interpreter |
+| `lisp_to_ski.py` | Lisp -> SKI compiler, value decoder |
+| `ski.py`, `ski_graph.py` | SKI engines: string (specification), graph (fast) |
+| `ski_tm.py` | Turing machine that normalizes SKI terms |
+| `tm.py` | two-way TMs; Cocke-Minsky TM -> tag system |
+| `cw.py` | two-way -> clockwise -> binary clockwise TM |
+| `nw.py` | Neary-Woods 2-tag system from a binary clockwise TM |
+| `tag.py`, `cts.py` | tag systems, TS -> CTS; CTS interpreter |
+| `encoder.py`, `data/blocks.json` | CTS -> Rule 110 initial row |
+| `engine.py` | Rule 110 simulators (scalar, bit-packed) |
+| `casim.py` | running an encoded CTS on the automaton |
+| `census.py` | glider census: find and type gliders in a row |
+| `decoder.py` | moving-data reader (diagnostic) |
+| `experiments.py` | the long automaton runs cited in REPORT.md |
+| `tools/extract_blocks.py` | regenerates the block data from arXiv:0906.3248 |
+
+`trash/` holds retired files, kept for reference.
 
 ## Running
 
     pip install numpy pytest pillow
-    pytest explorations/rule110-lisp/tests -q     # 38 tests, ~8 s
+    pytest tests -q                      # ~8 s, all layers
+    python experiments.py fronts         # REPORT.md 3.3, several minutes

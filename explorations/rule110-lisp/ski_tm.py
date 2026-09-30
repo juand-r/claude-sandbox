@@ -274,3 +274,40 @@ def normalize_tm(term, max_steps=500_000_000):
     start = s.rindex("$") + 1
     out = "".join(c for c in s[start:] if c in "`SKIfx")
     return out, steps
+
+
+def as_two_way_tm(term):
+    """The SKI machine, loaded with `term`, in the numbered two-way TM
+    format of tm.TM, so the lower layers (cw.py) can take it as input.
+
+    Conversions: symbols are numbered with the blank as 1 (cw.py's
+    background convention); stay-moves become a right move into a helper
+    state that moves back left; the halt state DONE gets explicit 'H'
+    entries. Returns (tm, start_state, tape, symbols) where tape is the
+    list of numbered cells starting at the head and symbols[i - 1] is the
+    character numbered i."""
+    from tm import TM
+    b = build_machine()
+    syms = [BLANK] + sorted({s for _, s in b.delta} - {BLANK})
+    sid = {s: i + 1 for i, s in enumerate(syms)}
+    names = sorted({q for q, _ in b.delta} | {q2 for _, _, q2 in b.delta.values()})
+    names += [("back", q) for q in names]
+    qid = {q: i + 1 for i, q in enumerate(names)}
+    write, move, nxt = {}, {}, {}
+    for (q, s), (w, mv, q2) in b.delta.items():
+        k = (qid[q], sid[s])
+        write[k] = sid[w]
+        if mv == 0:
+            move[k], nxt[k] = "R", qid[("back", q2)]
+        else:
+            move[k], nxt[k] = ("R" if mv > 0 else "L"), qid[q2]
+    for q in names:
+        if isinstance(q, tuple) and q[0] == "back":
+            for s in syms:
+                k = (qid[q], sid[s])
+                write[k], move[k], nxt[k] = sid[s], "L", qid[q[1]]
+    for s in syms:
+        move[(qid["DONE"], sid[s])] = "H"
+    tm = TM(len(names), len(syms), write, move, nxt)
+    tape = [sid[c] for c in "#" + "." * (len(term) + 4) + "$" + term]
+    return tm, qid["start"], tape, syms

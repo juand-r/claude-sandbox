@@ -199,30 +199,44 @@ windowing artifacts of the A4 detector (the tight group registers as
 one crossing). With one read per period, x=3 Collatz needs ~5M
 generations -- attainable once the L bug is fixed (De Mol needs L).
 
-## Takeover review, 2026-09-30: a retracted finding and a new tool
+## Takeover review, 2026-09-30: how the machinery actually runs
 
-I (the reviewing session) first claimed the "one read per left period"
-cadence was geometrically impossible, arguing that the table data
-streams past stationary tape data at a fixed rate. That argument assumed
-the tape sits at one place. A glider census (census.py: ether-phase
-filtering, then typing each defect by the lattice shift that leaves it
-invariant: C (7,0), A (3,2), Ebar (30,-8)) shows the actual mechanism:
+Two wrong models, then a measured one.
 
-- Each ossifier converts the leftmost moving data into ONE tape
-  character (a group of C gliders) at the current front of the Ebar
-  stream. Each character sits at a new position, further left.
-- In the Ebar rest frame the stream (moving data, table data, leaders)
-  is static; tape characters travel into it at 4/15 until they meet the
-  next unread leader. So the CTS is clocked by the ossifier supply: one
-  read per ossifier, ~30v generations, as the predecessor measured.
-- Tape data is therefore absent most of the time; that is normal, not
-  starvation (the CTS tape lives mostly as unossified moving data).
-- Reads are visible in typed renders: a short A-glider stroke heading
-  right (acceptor or rejector) and, for rejections, a wedge of deleted
-  components in the table stream.
+1. The predecessor: "one CTS read per left period (~30v generations)".
+2. My first review finding: reads happen at a fixed table rate, because
+   table data streams past stationary tape data. Wrong: it assumed the
+   tape sits in one place.
+3. Measured with the glider census (census.py: ether-phase filtering,
+   then typing each defect by the lattice shift that leaves it
+   invariant: C (7,0), A (3,2), Ebar (30,-8)):
+   - Each A^4 of an ossifier converts one moving-data character into one
+     C glider of tape data. The first ossifier makes four C gliders, and
+     the moving-data front advances from tape character 0 to character 4
+     across it.
+   - Tape characters are created at the current front of the Ebar
+     stream, a new position each time. In the Ebar rest frame the stream
+     (moving data, table data, leaders) is static and tape characters
+     travel into it at 4/15 until they meet the next unread leader.
+   - Reads are therefore gated by ossification: up to four per left
+     period, then idle until the next ossifier. Tape data is absent most
+     of the time; that is normal.
+   - Reads are visible in typed renders: a short A-glider stroke heading
+     right (acceptor or rejector) and, for rejections, a wedge of deleted
+     components in the table stream.
+   - Dynamic check ({YYYYNN} from YYYYNN, v = 3x default, `python
+     experiments.py fronts`): the moving data an ossifier meets on
+     arrival matches the "four characters per ossifier" accounting for
+     arrivals 0-2 (9 of 9 symbols) and 4, 6; arrivals 3, 5, 7, 8 do not
+     (arrival 3 meets what look like characters 15-17 instead of 12-14).
+     Unresolved: a machinery fault, or an accounting that is too simple
+     (decoder on young appended data, fewer characters per ossifier
+     later)? The read cadence is therefore somewhere in 7.5v-30v.
 
 Lesson: I wrote a firm finding from a back-of-envelope argument before
-measuring. Mark such items "hypothesis" until measured.
+measuring, then retracted it too eagerly on the first confirming
+picture. Mark such items "hypothesis" until measured, and measure the
+quantity itself (characters per ossifier), not a proxy (a picture).
 
 Tooling lesson (hit twice now): `pkill -f PATTERN` inside a compound
 shell command matches that shell's own command line and kills it. Kill

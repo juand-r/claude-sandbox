@@ -59,3 +59,22 @@ def test_full_tower():
         assert decode_cts_tape(t, order) == ref_tag[i]
         i += 1
     assert i >= 40
+
+
+def test_ski_machine_through_clockwise():
+    """The Lisp-running SKI machine itself (not just the 3-state test
+    machine) survives the two-way -> clockwise conversion: the clockwise
+    machine normalizes SKI terms to the same results."""
+    from ski_tm import as_two_way_tm, normalize_tm
+    for term in ["``KSI", "```Sfx`IK"]:
+        tm2, q0, tape, syms = as_two_way_tm(term)
+        delta, word, st0 = two_way_to_cw(tm2, q0, [], tape[0], tape[1:])
+        last = None
+        for _, w, s in run_cw(delta, word, st0, 10**6):
+            d = decode_cw(list(w), s)
+            if d is not None:
+                last = d
+        q, cur, right, left = last
+        cells = "".join(syms[c - 1] for c in left[::-1] + [cur] + right)
+        got = "".join(c for c in cells[cells.rindex("$") + 1:] if c in "`SKIfx")
+        assert got == normalize_tm(term)[0]

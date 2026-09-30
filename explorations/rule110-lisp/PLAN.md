@@ -12,12 +12,11 @@ Order of work (each step committed separately):
 - [x] 3. Refactor: single tag runner (E3), CWTM into cw.py (E9), dead code
       and docstrings (E5, E6), magic numbers (E7), shared test machine (E8)
 - [x] 4. Experiments: shared CA-run helper, scripts to experiments/,
-      superseded diagnostics to trash/ (E2)
+      experiments.py + casim.py; superseded scripts to trash/ (E2)
 - [x] 5. SKI-TM gap walking (D1): 4-7x fewer steps, same results
 - [x] 6. NW reachability pruning (D2): refuted by measurement (0 symbols removed); real lever is binarization, deferred
-- [ ] 7. Glider census (C1): lattice-invariance classifier, tests on
-      known gliders; use it to measure real read/ossification cadence
-- [ ] 8. Rewrite REPORT.md claims per B1-B4 with the new measurements
+- [x] 7. Glider census (C1): census.py + tests; measured the mechanism; dynamic check partial (REPORT 3.3)
+- [x] 8. Rewrite REPORT.md claims per B1-B4 with the new measurements
 - [ ] 9. Tag `rule110-lisp-v0.1.0` with release notes
 - [ ] 10. Extension proposal (faster / more direct): write it up, ask
       before starting
