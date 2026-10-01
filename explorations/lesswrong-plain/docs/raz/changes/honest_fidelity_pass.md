@@ -8635,3 +8635,69 @@ Why: Fidelity/substance pass: Added the post's substance: what rationality gives
 - Before: Rationality may not be ``the most important thing in the world,''
 - After: Rationality may not be ``the most important thing in the world,'' which is whatever we protect,
 
+
+## honest/sections/helpless-individuals.tex
+
+Why: Fidelity/substance pass: Added the post's substance: when each kind of large institution arose, the example science project, the salary-versus-puppy contrast, the Congress example's point, how each funder chooses, why science rarely bids directly, and the closing list of what can organize.
+
+- Before: Some do: governments that can tax, corporations whose money is controlled from the center, and religions, memes grown more virulent in large populations.
+- After: Some do: governments with militaries and police that can tax, a form dating from agriculture and extractable surpluses; corporations whose money is controlled from the center, dating from large-scale trade and specialization; and religions, memes grown more virulent in large populations, with threats of damnation, promises of heaven and professional priests.
+
+- Before: People are prosocial; they give to puppy pounds. But a science project is a poor emotional fit for personal giving.
+- After: People are prosocial; they give to puppy pounds, and they know science is a great social interest. But a particular project, say on the genetics of trypanotolerance in cattle, is a poor emotional fit for personal giving.
+
+- Before: and donors get no sense of immediate accomplishment.
+- After: and a picture of the scientist whose salary you pay lacks the impact of the wide-eyed puppy you helped rehome; donors get no sense of immediate accomplishment.
+
+- Before: and that this is why 200 million adult Americans have such trouble supervising the 535 members of Congress.
+- After: and that this is key to why so many individual interests are poorly protected, and why 200 million adult Americans have such trouble supervising the 535 members of Congress.
+
+- Before: by large corporations, by grassroots organizations, and by foundations,
+- After: by large corporations funding blue-sky research, by grassroots organizations built around affective death spirals that fund science suiting their ideals, and by foundations, which fund science that sounds charitable, like orchestras or modern art, with money
+
+- Before: Scientists then fight over the money before grant committees.
+- After: Scientists then fight over the pre-allocated money before grant committees. A project rarely bids directly for society's resources, and the exceptions, like the moon shot or the Manhattan Project, were driven by politicians or the military.
+
+- Before: and coordination on common interests fails because
+- After: Many other projects simply never exist. There are only big taxers, big traders, supermemes, occasional individuals of great power, and a few parasites like science, and coordination on common interests fails because
+
+
+## honest/sections/money-the-unit-of-caring.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the reminder that society is not sane, the charities' unspoken wish, the problem of a single net-worth number, the economic concepts named, the scattered hour of legal work, the double standard between moral goals and food, the old saying, the remark about akrasia, the check as buying the right to volunteer, and the diamond-ring example.
+
+- Before: many are ``motivated to deny'' it.
+- After: many are ``motivated to deny'' it; but you did not think society was intelligent, benevolent and sane, did you? Every charity you have had a kind word for wishes you understood it.
+
+- Before: I understand: every time I spend money I feel like I am ``losing hit points.''
+- After: I understand: every time I spend money I feel like I am ``losing hit points.'' Having one number for your net worth means watching it fall, and there ought to be a fun-theoretic principle against that.
+
+- Before: Comparative advantage and specialization are why we have money.
+- After: Ricardo's law of comparative advantage, specialization, economies of scale and gains from trade are why we have money: each of us does what we do best, and money employs full-time specialists.
+
+- Before: or when the soup kitchen needs a large block of the lawyer's own legal work.
+- After: or when the soup kitchen needs a large, high-priority block of the lawyer's own legal work. One hour of legal work, spread over three weeks of spare minutes, is not how anything gets done when anyone actually cares, or, nearly equivalently, when money is involved. People treat money as optional for goals that seem merely moral, though not for feeding themselves.
+
+- Before: ``are the only way that anything ever gets done in this world.''
+- After: ``are the only way that anything ever gets done in this world.'' Money is the common currency of caring: ``Money makes the world go 'round, love barely keeps it from blowing up.''
+
+- Before: No one raises cattle to avoid the pain of paying for beef.
+- After: Akrasia is real, and an art against it is one I hope someone else develops. Spending money hurts more than volunteering, because the bank balance is visible and our remaining hours are not. But no one raises cattle to avoid the pain of paying for beef, and the people on the other side of the trade feel the same pain at having less money. We could look for ways to ease the pain and strengthen the felt link between giving and doing good.
+
+- Before: The lawyer may volunteer to stay motivated, as long as he also gives money.
+- After: The lawyer may volunteer to stay motivated, as long as he also gives money; the check, you might say, buys the right to volunteer.
+
+- Before: Money is the unit of relative caring.
+- After: Money is the unit of relative caring, up to a positive factor, since some people are frugal about everything.
+
+- Before: has shown their relative values.
+- After: has shown their relative values. Not buying a diamond ring worth two months' salary does not mean you do not love your partner (``De Beers: It's Just A Rock'').
+
+
+## honest/sections/helpless-individuals.tex
+
+Why: Fidelity/substance pass: helpless-individuals: repaired a broken join.
+
+- Before: with money whose money is
+- After: with money
+
