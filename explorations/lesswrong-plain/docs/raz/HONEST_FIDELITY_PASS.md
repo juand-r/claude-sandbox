@@ -297,10 +297,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] fake-morality
 - [x] fake-utility-functions
 - [x] detached-lever-fallacy
-- [ ] dreams-of-ai-design
-- [ ] the-design-space-of-minds-in-general
-- [ ] where-recursive-justification-hits-bottom
-- [ ] my-kind-of-reflection
+- [x] dreams-of-ai-design
+- [x] the-design-space-of-minds-in-general
+- [x] where-recursive-justification-hits-bottom
+- [x] my-kind-of-reflection
 - [ ] no-universally-compelling-arguments
 - [ ] created-already-in-motion
 - [ ] sorting-pebbles-into-correct-heaps

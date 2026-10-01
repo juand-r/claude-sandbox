@@ -6548,3 +6548,144 @@ Why: Fidelity/substance pass: added what the brain's apple machinery involves (s
 - Before: the author replied that ``a very substantial fraction'' made the mistake.}
 - After: the author replied that ``a very substantial fraction'' made the mistake.} So when someone proposes to raise an AI in a loving family, or among liberal democratic values, think of a lever pried off the bridge.
 
+
+## honest/sections/dreams-of-ai-design.tex
+
+Why: Fidelity/substance pass: added why cooling blood is fake reductionism (no material model; transistor voltages as the canonical material element), how empathic inference works, the evidence example in full (circular words, atoms are not evidential, the odds form, what E and H are), the chess example's circle of words, the venture-capital speech and the bird line, and why the art is hard to teach
+
+- Before: So cool the computer! That explains nothing.
+- After: So cool the computer, so it is calmer and does fewer stupid things! That is fake reductionism: it does not open the black box of ``contemplative,'' since it gives no model with merely material parts, like voltages on transistors, that predicts what a contemplative thing does.
+
+- Before: The only way to predict what a contemplative thing does is to imagine being one: empathic inference.
+- After: The only way to predict what a contemplative thing does is to imagine being one: empathic inference, running your own brain with the contemplativeness lever pulled, which may be efficient but does not let you build such a mind from scratch. ``Cold blood causes contemplativeness'' is fake causality, an arrow between boxes whose insides you never looked at.
+
+- Before: Jaynes takes you from the feeling of evidence to Bayes's theorem.
+- After: Jaynes takes you from the feeling of evidence to Bayes's theorem. You can go in circles all day saying that evidence justifies a proposition by making it more likely true, but atoms are not evidential, justifying or likely; only something like the odds form of Bayes's theorem counts as progress, and even then you must ask what E and H are, and where hypotheses come from.
+
+- Before: The minimax search tree tells a chess program what a good move is.
+- After: For chess, you can talk in circles about good moves being those expected to win, or prudent strategies, but it is all for naught until the minimax search tree.
+
+- Before: give them no venture capital until they explain what it does and why without pointing at humans.
+- After: give them no venture capital. Say: ``I'm sorry, I've never seen a human brain, or any other intelligence,'' and have no reason to believe one can exist; now explain what your AI does and why, without pointing at humans.
+
+- Before: Planes are ``not kept aloft by analogies.''
+- After: Planes would fly just as well if birds had never existed; they are ``not kept aloft by analogies.''
+
+- Before: This art is ``demonstrably'' difficult; I give no demonstration.
+- After: This art is ``demonstrably'' difficult, and most students taught existing reductions such as search trees do not learn it; I give no demonstration.
+
+- Before: That is why I have written at such length about reductionism, Taboo and anthropomorphism.
+- After: That is why I have written at such length about reductionism, Taboo, anthropomorphism and stopping early on mysterious answers.
+
+
+## honest/sections/the-design-space-of-minds-in-general.tex
+
+Why: Fidelity/substance pass: added ATP synthase's details (rotating wheel, two billion years), 'everything that isn't a duck', what the transhuman and posthuman regions are, natural selection in a tidal pool, AIXI and the mirror, the existential-generalization counterpart, and both ways people wrongly generalize (anthropomorphism; the ghost in the machine handing back code)
+
+- Before: have essentially the same molecular machine, ATP synthase, because genes that many others depend on are hard to change.
+- After: have essentially the same molecular machine, ATP synthase, one of three known cases where evolution invented a freely rotating wheel, unchanged for two billion years, because genes that many others depend on are hard to change.
+
+- Before: ``we are really talking about minds-in-general.''
+- After: ``we are really talking about minds-in-general,'' or optimization processes; a word for ``AI'' is like a word for everything that is not a duck.
+
+- Before: The dot sits in a transhuman region, inside a posthuman region, inside a sphere of minds-in-general,
+- After: The dot sits in a transhuman region, minds perhaps much smarter than us but still people as we understand people, inside a posthuman region, everything a transhuman might grow into, inside a sphere of minds-in-general, including AIs too odd even to be posthuman,
+
+- Before: with natural selection at the bottom.
+- After: with natural selection at the bottom, as it began in some tidal pool: mutate, replicate, sometimes die.
+
+- Before: Hutter's AIXI may be a powerful optimizer that we would not call a mind, but that is for another day.
+- After: Hutter's AIXI may be a powerful optimizer that we would not call a mind; for a mind of infinite power it is awfully stupid, unable even to recognize itself in a mirror. But that is for another day.
+
+- Before: so a claim that all minds do something has that many chances to be false.
+- After: so a claim that all minds do something has that many chances to be false, and a claim that some mind does it has that many chances to be true.
+
+- Before: People make such claims by imagining themselves in the mind's place.
+- After: People make such claims by imagining themselves in the mind's place, which gives an anthropomorphic answer, true of at least one mind; or by imagining a mind doing something and the reasons they would not, as if a ghost in the machine would read the source code and hand it back.
+
+
+## honest/sections/dreams-of-ai-design.tex
+
+Why: Fidelity/substance pass: grammar
+
+- Before: or any other intelligence,'' and have no reason to believe one can exist;
+- After: or any other intelligence,'' and that you have no reason yet to believe one can exist;
+
+
+## honest/sections/where-recursive-justification-hits-bottom.tex
+
+Why: Fidelity/substance pass: added the prior critique of Bayesianism, what the two urn priors are, the barrel of sunrise slips, 'don't be born with a stupid prior', the details of trusting one's brain, why the chain is not halted, the two contrasting statements, Jaynes and 'best effort', the empty philosophy student and the rock, the helium-paper argument in full, how doubt seeps into religious minds, the Bible counterfactual details, what would happen if the future stopped resembling the past, 'the point is to win', and the 'Trust me' abuse
+
+- Before: Bayesian updating does not solve it either, I admit.
+- After: Some think the need for a prior is a problem peculiar to Bayesianism, avoidable by classical statistics. But Bayesian updating does not solve the problem of induction either, I admit.
+
+- Before: After 3 red and 6 white balls, the chance that the next ball is red is 4/11 on one prior and 7/11 on another.
+- After: After 3 red and 6 white balls from an urn, the chance that the next ball is red is 4/11 if you think the urn's proportion was drawn uniformly at random (Laplace's law of succession), and 7/11 if you think it held 10 red and 10 white. With the wrong prior, such as certainty that each day's sunrise is drawn without replacement from a barrel with limited ``yes'' slips, the chance of sunrise would fall each day.
+
+- Before: ``Because it's never worked for us before!''
+- After: ``Because it's never worked for us before!'' One lesson is ``Don't be born with a stupid prior,'' very useful in practice, though unlikely to satisfy philosophers.
+
+- Before: My approach is to treat ``Should I trust my brain?'' and ``Should I trust Occam's Razor?'' as ordinary questions.
+- After: My approach is to treat ``Should I trust my brain?'' and ``Should I trust Occam's Razor?'' as ordinary questions: how well does the razor work, what justifications does probability theory give, does the universe look like one where it would work? Should I trust my brain? Not always, but it is far more powerful than any program I could otherwise trust.
+
+- Before: I go on examining my rules, with my current brain, because there is nothing else to use.
+- After: This is not a halt to questioning: I go on examining my rules, with my current brain, because there is nothing else to use; even trusting a computer program would be my decision. I do not want to allow a single exception to the rule that everything needs justification. So I distinguish ``Here is this assumption I cannot justify, which must be simply taken'' from an inquiry that examines the assumption with the full force of my present intelligence, rather than a magic 8-ball, though that intelligence rests on the assumption. Would it be nicer to examine how to think without using our current grasp of rationality? Put that way, perhaps not. Jaynes said to use all the information you have, and ``Always put forth your true best effort'' appeals at least as much as ``Never do anything that might look circular.'' A justification that could be explained from scratch to an ideal philosophy student of perfect emptiness I do not expect to see; there is no argument you can explain to a rock, and a listener without modus ponens is out of luck.
+
+- Before: A sheet of paper that says ``Everything on this sheet of paper is true'' gives no causal story of how it could match the world.
+- After: Reflection is the very reason we reject circular logic: we want a causal story of how our way of forming beliefs is trustworthy. A sheet of paper that says ``Everything on this sheet of paper is true'' and that a helium atom weighs 20 grams, if believing it worked, would let you map the universe with the blinds drawn, creating information from nowhere against the second law; its match to the world would be a miraculous coincidence. Evolving to favour simpler beliefs and past successes, reflected on as a causal story, could plausibly work.
+
+- Before: Perhaps, but we were not generated at random; we evolved.
+- After: Perhaps, but we were not generated at random; we evolved. If that worries you, forget justification and ask whether it is really true (using your own mind, of course).
+
+- Before: They notice unanswered prayers and a God who cannot tell them the hundredth digit of pi, and they question their beliefs with the minds they have.
+- After: Doubt seeps in: they notice unanswered prayers, even of worthier people, a God who consoles but cannot tell them the hundredth digit of pi, and stories of creation and damnation that do not make sense even on their own premises. Being religious does not make you less than human; the danger is that it stops you from applying your abilities to your religion. People heal by questioning their beliefs with more of the minds they have.
+
+- Before: If the Bible had been right about everything else, its claim to come from God would be worth taking seriously.
+- After: If the Bible had not said that grasshoppers have four legs or that the world was made in six days, but had held the periodic table centuries early, its claim to come from God would be worth taking seriously, though it might be aliens or the Dark Lords of the Matrix. Anything that questions its trustworthiness also questions its assurance of it.
+
+- Before: What is the alternative to induction: to believe that the future will not be like the past, because that has always failed before?
+- After: If the future stopped resembling the past at the most stable level, I would mostly be dead, since my brain needs working chemistry; if I survived, I would have to question induction. Meanwhile, what is the alternative: to believe that the future will not be like the past, because that has always failed before?
+
+- Before: we are ``out to win.''
+- After: we are ``out to win,'' so question your brain, your intuitions and your principles with the full force of your current mind, change any principle that comes up wanting, and look again. The point is not reflective consistency but winning, though playing to win while looking at yourself makes you more consistent.
+
+- Before: Loops grant no ``immunity from questioning.''
+- After: Anyone seriously considering circular logic will call it a reflective loop even if it is a scrap of paper saying ``Trust me,'' but you cannot design techniques solely to stop the self-destructive from abusing them. Loops grant no ``immunity from questioning.''
+
+
+## honest/sections/my-kind-of-reflection.tex
+
+Why: Fidelity/substance pass: added what 'induction licensing induction' means for an AI (rewriting its induction code), the naturalistic principle, the AI optimizing its source code's expected utility, the defensive vs aggressive posture and dutiful doubts, '2 + 2 is not fish', why denying regularity is 2 + 2 = 3 territory, the two bad answers to 'why does induction work', and the object-level scope of circular logic
+
+- Before: First, all of this comes from trying to design a self-modifying AI.
+- After: First, all of this comes from trying to design a self-modifying AI that applies its reasoning principles to itself while rewriting its code; using induction to license induction really means an inductive AI considering a rewrite of its own induction.
+
+- Before: Second, the AI should treat its own transistors like transistors in the environment.
+- After: Second, the true Way generally turns out to be naturalistic: the AI should treat its own transistors like transistors in the environment, not as a special case, which is why I called such questions ordinary.
+
+- Before: The goal is to win; consistency comes along.
+- After: The goal is to win; consistency comes along, as the parts of a map someone keeps improving become consistent. The AI is not trying to be reflectively consistent but to optimize the expected utility of its source code, using its current mind's anticipations.
+
+- Before: Fifth, inspect your foundations to improve them, not to look fair.
+- After: Fifth, take an aggressive posture toward the truth, not a defensive one toward a questioning philosopher: inspect your foundations to improve them or because you fear they are wrong, not to look fair; I deprecate mere dutiful doubts.
+
+- Before: Sixth, the improvements should add up to normality: 2 + 2 is still 4.
+- After: Sixth, the improvements should add up to normality: 2 + 2 is still 4, not something exciting like ``fish.''
+
+- Before: ``Why does induction work?'' is still a mystery.
+- After: ``Why does induction work?'' is still a mystery, where strange speculation may be needed for now. But claiming that the universe is not regular, that induction does not work, is 2 + 2 = 3 territory, trying to be interesting instead of correct. And answering ``why'' with ``Because induction works'' is circular, while ``Because I believe induction works'' is magical thinking.
+
+- Before: Last, a loop of justification through the meta-level is not circular logic,
+- After: Last, a loop of justification through the meta-level is not circular logic, which is a forbidden thing on the object level, while forbidding reflective coherence does not sound wise;
+
+
+## honest/sections/where-recursive-justification-hits-bottom.tex
+
+Why: Fidelity/substance pass: put the Quine note back beside the evolutionary argument
+
+- Before:  \nb{Quine made the same evolutionary argument in 1969: creatures ``inveterately wrong in their inductions'' tend to die out before they reproduce.}
+- After: 
+
+- Before: would also have removed brains with priors that bad.
+- After: would also have removed brains with priors that bad. \nb{Quine made the same evolutionary argument in 1969: creatures ``inveterately wrong in their inductions'' tend to die out before they reproduce.}
+
