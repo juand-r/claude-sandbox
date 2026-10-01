@@ -7637,3 +7637,186 @@ Why: Fidelity/substance pass: gave each virtue its actual content rather than a 
 - Before: I say only that you ``will move correctly without feeling constrained,'' and give no way to check it.
 - After: I say only that you will see that all techniques are one, and ``will move correctly without feeling constrained,'' and give no way to check it. Musashi calls it the Way of the Void. So the twelve virtues are curiosity, relinquishment, lightness, evenness, argument, empiricism, simplicity, humility, perfectionism, precision, scholarship and the void.
 
+
+## honest/sections/beginnings-an-introduction.tex
+
+Why: Fidelity/substance pass: Added the post's substance: Drescher's scope, Talbott and Feldman, the state of Bayesian vs frequentist methods, the three sequences and the questions they raise, and what the posts inspired.
+
+- Before: Gary Drescher's \textsc{Good and Real} reaches many of the same conclusions independently.
+- After: Gary Drescher's \textsc{Good and Real} reaches many of the same conclusions on philosophy of science and decision theory independently, and so serves as a book-length treatment of this book's core philosophy. Talbott surveys the views within Bayesian epistemology, among them Jaynes's position that not all priors are equally reasonable.
+
+- Before: such as Marcus Hutter.
+- After: such as Marcus Hutter, who hope to understand general AI through a better theory of ideal reasoning. For efforts to naturalize theories of knowledge, see Feldman.
+
+- Before: The philosophical dispute is not the same as the choice of statistical methods; both kinds have uses.
+- After: The philosophical dispute is not the same as the choice of statistical methods; both kinds are useful when used correctly. Bayesian tools have become cheaper since the 1980s, and their informativeness and generality are more widely appreciated, which has produced ``Bayesian revolutions'' in many sciences. Frequentist methods remain more popular, and in some contexts are still better. Kruschke's \textsc{Doing Bayesian Data Analysis} is an accessible introduction.
+
+- Before: The book has three sequences: Yudkowsky's intellectual history, what it takes to solve a hard problem, and rationality groups. I ask what the next primers should do, including ``test its prescriptions.'' I credit the original posts with inspiring \textsc{Less Wrong}, helping to seed effective altruism, and sparking the Center for Applied Rationality. The art of applied rationality is ``a new and half-formed thing,'' and ``may you serve your purpose well.''
+- After: The book has three sequences. ``Yudkowsky's Coming of Age'' gives a last example of how irrational belief works, taken from the author's own intellectual history. ``Challenging the Difficult'' asks what it takes to solve a truly hard problem, including demands beyond getting beliefs right. ``The Craft and the Community'' is about rationality groups and group rationality. It raises these questions. Can rationality be learned and taught, and if so, how much improvement is possible? How can we be sure a rationality intervention has a real effect, and find its cause? What community norms would help? Can we work together on large problems without giving up freedom of thought and conduct? Above all, what is missing? The next primers should replace this text, improve its style, ``test its prescriptions,'' add to its content and go in new directions.
+
+Yudkowsky wrote these essays because of his own philosophical mistakes and his difficulties in AI theory, but they proved useful to a much wider audience. The posts inspired the growth of \textsc{Less Wrong}, a community interested in cognitive science, computer science and philosophy. Its writers helped seed effective altruism, an effort to find the charities and causes that do the most good. The posts also sparked the Center for Applied Rationality, a nonprofit that tries to turn the science of rationality into usable techniques for self-improvement. I do not know what comes next. The art of applied rationality is ``a new and half-formed thing''; there are few rationalists and much left undone. ``May you serve your purpose well.''
+
+
+## honest/sections/my-childhood-death-spiral.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the parents' 'maturity and wisdom' line, why intelligence is the unfairest card, the 'strong serve the weak' creed, the Singularity conversion, the chimpanzee argument, the closing proverb and the postscript; softened the lightspeed belief to the post's hedged wording.
+
+- Before: My parents always played down intelligence and played up experience. When I argued against Judaism, I was told that ``Logic has limits'' and that I would understand when I was older. I did not try again. As reverse psychology, this worked: I came to value intelligence above everything.
+- After: My parents always played down intelligence and played up experience: ``maturity and wisdom is more important than intelligence.'' When I argued against Judaism, I was told that ``Logic has limits'' and that when I was older experience would show me the truth of Judaism. I did not try again. If this was meant to make me value intelligence above all, it was the most successful reverse psychology I know of. But my parents are not that cunning, and the results were not good.
+
+- Before: could not have out-thought adult parents in a fair contest.
+- After: could not have out-thought adult parents in a fair contest. My SAT scores were high for my age but would not have beaten theirs.
+
+- Before: The moral I drew as a child was that anyone who plays down intelligence does not understand it. Intelligence is ``the unfairest'' of the cards we are dealt, and saying that something else matters more is a way of turning from that unfairness.
+- After: The moral I drew as a child was that anyone who plays down intelligence does not understand it. My intelligence had shaped every part of my life and personality. Does self-awareness have nothing to do with wisdom or goodness? Modeling yourself takes intelligence, if only enough to learn evolutionary psychology. Intelligence is ``the unfairest'' of the cards we are dealt, more unfair than wealth, health, home country or one's happiness set-point. Saying ``Intelligence isn't as important as X'' is a way of turning from that unfairness. It tempts those dealt poor cards and those dealt good ones, as playing down money tempts both the poor and the rich.
+
+- Before: But I was a transhumanist, so the answer was to make everyone smarter.
+- After: But I was a transhumanist, so low intelligence was a problem to be fixed, even if it took my whole life. ``The strong exist to serve the weak,'' I wrote, ``and can only discharge that duty by making others equally strong.'' I was reacting against the Randian and Nietzschean trends in science fiction and went too far the other way; no one exists only to serve. But I tried, and I do not regret it. Everyone needed to be smarter.
+
+- Before: In 1996 I met the idea of the Singularity and knew at once that I would spend my life on it. This was a ``happy death spiral'': it led me to false beliefs, such as that the speed of light would not limit a superintelligence.
+- After: Having read my science fiction, I avoided the obvious traps, and did not fail in any obvious way. In 1996 I met the idea of the Singularity. It was no thunderbolt. It simply seemed obvious that smarter-than-human intelligence would change the future more deeply than any material science, including the nanotechnology I had aimed at when I was eleven, which would only be a tool of intelligence. I knew at once that I would spend my life creating the Singularity. Intelligence was even more powerful than I had thought. This was a ``happy death spiral'': it led me to false happy beliefs about intelligence. Perhaps the line is where I came to believe that the speed of light would surely be no barrier to a superintelligence (not unthinkable, but I would not bet on it).
+
+- Before: My own ethics were built with intelligence, so I concluded
+- After: My own ethics were built with intelligence; just try explaining the Prisoner's Dilemma to a chimpanzee. So I concluded
+
+- Before: To be continued. A postscript adds that I no longer work so hard at downplaying my intelligence, and that intelligence is still ``the lever that lifts worlds.''
+- After: ``Parents do all the things they tell their children not to do, which is how they know not to do them.'' To be continued.
+
+In a postscript: what matters about intelligence, from the point of view of fun, is that it should increase over time instead of declining as it does now. I no longer work so hard at downplaying my intelligence, because that only calls attention to it. Intelligence is still ``the lever that lifts worlds,'' but it is less mysterious to me now; I see it as something inside physics. Superintelligences may travel faster than light if the true laws of physics permit it, ``and if not, then not.''
+
+
+## honest/sections/my-best-and-worst-mistake.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the bait-and-switch in AI definitions, physics envy and the Bayes exception, what the neuroanatomy reading gave, the three beliefs and what each led to, the screening-off moral, and the 'do not put your weight down' rule; replaced an inferred forward reference with the post's 'To be continued'.
+
+- Before: at all.'' AI researchers, I had seen, would define intelligence as some surface feature, build a cheap program with that feature, and announce that they had built intelligence.
+- After: at all.'' The reason was a standard bait-and-switch in AI. You define ``intelligence'' as, say, ``logical reasoning,'' build a cheap theorem-prover, and say, ``Lo, I have implemented intelligence!'' Such definitions picked out correlates of intelligence instead of its core, and researchers then chased what they had written down. I was not building a career in AI. I wanted a mind that could actually build nanotechnology, so I had no reason to redefine intelligence to puff up a paper. I knew intuitively what I was after, something powerful enough to take stars apart for raw material, and I did not want definitions to distract me from it.
+
+- Before: Many of my mistakes came from reacting too far against other people's mistakes. Having seen neat math keep AI on toy problems, I doubted there could be any neat math of intelligence, ``Except for Bayes's Theorem.'' I had read too few AI books, too popular, and the wrong ones, and I had written AI off as a ``sick, dead field.''
+- After: Many of my mistakes came from reacting too far against other people's mistakes, and refusing to define intelligence was one. Another: I had seen AI projects brought down by ``physics envy,'' sticking to elegant math and so to toy systems. I concluded that any math neat enough to fit an equation would not work for real intelligence, ``Except for Bayes's Theorem.'' That exception either softens the offense or shows I should have suspected the whole generalization. I had read too few AI books, too popular, and the wrong ones. I believed the cliché that AI overpromised and had written it off as a ``sick, dead field,'' so I never looked hard enough to find the math that was not fake.
+
+- Before: Expecting no simple answer, I read cognitive psychology, neuroanatomy, evolutionary biology and more, did not stop at my first bright idea, and studied the problem for years before proposing anything. My moral: ``What you actually end up doing, screens off the clever reason why you're doing it.'' Many of my successes were right actions for wrong reasons, and if I had hit a dead end you probably would not be hearing from me. I write partly to leave a trail to where I ended up by accident.
+- After: Expecting no simple answer, I read cognitive psychology, functional and computational neuroanatomy, evolutionary psychology and biology, and several branches of AI. When I had a bright idea I did not rush to implement it: intelligence was a puzzle with many pieces, and a mind missing even one might do nothing interesting. I was wrong that academic AI was a wasteland, and more wrong that there could be no math of intelligence. But I do not regret the neuroanatomy, even though I now think an AI should look nothing like a human brain. It taught me that a mind's parts are things like ``visual cortex'' and ``cerebellum,'' not a ``commonsense reasoning module,'' which is a standard wrong road in AI.
+
+Set aside the wrong reasons and look at what the beliefs made me do. Writing AI off sent me to the cognitive sciences. Expecting no simple answer kept me gathering information instead of stopping at one brilliant idea. Refusing to define intelligence meant I studied the problem for years before proposing any systematization. My moral: ``What you actually end up doing, screens off the clever reason why you're doing it.'' Clever reasoning that sends you to study many sciences leaves you far better off, once it proves stupid, than clever reasoning that says you need not read the books.
+
+Many of my successes were right actions for wrong reasons. You should put that down to the anthropic principle: if I had hit a dead end you probably would not be hearing from me. To me it remains an embarrassment. My Traditional Rationalist upbringing pushed the accidents in a good direction, toward reasons to study, and helped me recover from mistakes; but none of it was the right action for the right reason. I write partly to leave a trail to where I ended up by accident, so that others need less luck.
+
+- Before: ``held to low standards.'' Defining intelligence at once would have been wrong too; you cannot define fire before you know about atoms. But reasoning at the level of ``that orangey-bright thing'' must not be trusted, and the young Eliezer trusted it. Which conclusion that was, I leave for later.
+- After: ``held to low standards.'' My clever reason for not defining ``intelligence'' and some other terms, that others had gone astray by defining it, let sloppy reasoning in. Defining intelligence at once would have been wrong too; you cannot define fire before you know about atoms. Until then you are better off saying ``that orangey-bright thing,'' and you have to talk about it to investigate it. But reasoning at that level is something you do on the way to knowing better. You do not put your weight down on it or draw firm conclusions from it, however inescapable it seems. The young Eliezer put his weight down on it and stepped onto a loaded trap. To be continued.
+
+
+## honest/sections/raised-in-technophilia.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the father's saddle-industry line, Rifkin and nuclear power, who stood on each side, the fire-committee question, the thalidomide figures and the uncounted drugs, why the Bad Guys are not mutants, the nanotech defense argument, what a sharp Traditional Rationalist knew, Pournelle's pressure-suit warning, and the explicit realization that changed nothing.
+
+- Before: At nine I read Jerry Pournelle's \textsc{A Step Farther Out}, a reply to Paul Ehrlich, the Club of Rome and the people afraid of nuclear power.
+- After: My father used to say that if the present system had been in place a hundred years ago, automobiles would have been outlawed to protect the saddle industry. At nine I read Jerry Pournelle's \textsc{A Step Farther Out}. It was a reply to Paul Ehrlich and the Club of Rome, who said in the 1960s and 1970s that the Earth was running out of resources and that mass famine was years away; to Jeremy Rifkin's so-called fourth law of thermodynamics; and to the people trying to regulate nuclear power into oblivion.
+
+- Before: I grew up with a clear picture. On one side were the scientists and engineers who made all progress since the Dark Ages. On the other were those who once opposed vaccination, anaesthesia in childbirth, steam engines and heliocentrism.
+- After: I grew up with a clear picture of a battle fought over and over since the Industrial Revolution, with historical evidence about how it came out. On one side were the scientists and engineers who had driven every rise in living standards since the Dark Ages, and whose work supported democracy, an educated populace, a middle class and the outlawing of slavery. On the other were those who once opposed vaccination, anaesthesia in childbirth, steam engines and heliocentrism: theologians calling for a return to a perfect age that never existed, old politicians set in their ways, special interests that stood to lose, and people afraid of what they did not understand.
+
+- Before: and who set up committees.
+- After: and who set up solemn committees to display their caution, as if the truth were always a compromise and anyone could see that far ahead. Would humanity have done better with a public debate on the adoption of fire, and committees to oversee its use?
+
+- Before: So I was allergic to anyone who said that technology has risks as well as benefits.
+- After: So I was allergic to anyone who said that technology has risks as well as benefits. I presumed such a person wanted cheap applause or meant to regulate the technology into oblivion.
+
+- Before: The allergy has a reason. According to
+- After: The allergy has a reason. Today Robin Hanson wrote about the slow American approval of drugs already approved abroad. A commenter noted that thalidomide was sold in 50 countries, but little was given out in the United States, so of 10,000 malformed children worldwide only 17 were American. But how many people died waiting for the drugs that did not go wrong? And that count leaves out the drugs never developed because approval is long and costly. According to
+
+- Before: ``a historical record showing over-conservativeness.''
+- After: ``a historical record showing over-conservativeness'': many silent deaths from regulation outweigh a few visible deaths from its absence. If you are really in the middle, why not say that technology has benefits as well as risks?
+
+- Before: about who the Bad Guys were. My mistake was to think that avoiding everything they did made me a Good Guy. Seeking a middle way ``is usually wrong.''
+- After: about who the Bad Guys were, though they are not evil mutants but ordinary people whose worldview puts them in the right. But it is much easier to say what not to do than to get it right. My mistake was to think that avoiding everything the Bad Guys did made me a Good Guy. The pretenders, smiling down on technophiles and technophobes alike as immature, set a damaging example. Seeking a middle way ``is usually wrong''; the Right Way is not a compromise with anything.
+
+- Before: People said defense would be easy; I said diamond does not stop a nuclear weapon.
+- After: The question was whether offense would be easier than defense. People said defense would be easy and talked of unassailable diamondoid walls, for programmable matter, when we cannot even secure computer networks where we see every one and zero. I said diamond does not stop a nuclear weapon; offense has beaten defense since 1945, and nanotechnology did not look likely to change that.
+
+- Before: stand up against nuclear weapons.''}
+- After: stand up against nuclear weapons.''} Until then I had thought only individual lives were at stake. I had not rejected the larger possibility; I had never seen it, and once the topic came up I did. I do not remember how that trick worked.
+
+- Before: I was then a sharp Traditional Rationalist, far above average. ``So what?''
+- After: It may sound as if I was an idiot, but the truth is scarier. I was a sharp Traditional Rationalist, far above average. I knew that hypotheses must be testable and that rationalization is not allowed, I could play Rationalist's Taboo, and I was obsessed with self-awareness; I knew no Bayes or Kahneman. ``So what?'' Nature does not grade on a curve, and one step away from the Way can repeal all other protections.
+
+- Before: for things to work.
+- After: for things to work. That is why many people think intelligence is not everything, or that rationalists do no better in real life.
+
+- Before: Do not blame Pournelle for my mistake; I filtered Pournelle's warnings through hope.
+- After: Do not blame Pournelle, my father or science fiction for my mistake. Pournelle said often that once you leave Earth, if you are careless sealing your pressure suit just once, you die. But that happened to minor characters; the hero rarely died halfway through. I filtered the teachings through hope: rationality and hope on one side, ignorance and despair on the other. I was reluctant to learn to drive, since cars looked unsafe, but
+
+- Before: When I saw the danger, I changed as little as I could.
+- After: When I saw that nanotechnology could cause extinction, I thought, explicitly, that I must have been too attached to its benefits and had flinched from the thought of human extinction. Then I did not stop and rethink the conclusions built on my old attitude. My mind found reasons to keep the old plans, and I changed as little as I could.
+
+- Before: I guess most people are like that. To be continued.
+- After: I guess most people are like that, and Traditional Rationality did not change it. It took a stronger boot to the head before I fully saw my mistake. To be continued.
+
+
+## honest/sections/raised-in-technophilia.tex
+
+Why: Fidelity/substance pass: raised-in-technophilia: removed a repetition about the pretenders and split a long paragraph.
+
+- Before: though they are not evil mutants but ordinary people whose worldview puts them in the right.
+- After: though they are ordinary people whose worldview puts them in the right, not evil mutants.
+
+- Before:  The pretenders, smiling down on technophiles and technophobes alike as immature, set a damaging example. Seeking a middle way ``is usually wrong''; the Right Way is not a compromise with anything. My evidence is the pretenders, and because of them any caution felt like joining them.
+- After:  Seeking a middle way ``is usually wrong''; the Right Way is not a compromise with anything. My evidence is the pretenders. They smiled down on technophiles and technophobes alike as immature, and because of their example any departure from charging straight ahead felt like joining them.
+
+- Before: My Wild and Reckless Youth.''} Do not blame
+- After: My Wild and Reckless Youth.''}
+
+Do not blame
+
+
+## honest/sections/a-prodigy-of-refutation.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the paperclip intuition, the four objections stated in full, why winning felt like being right, the quoted passage on the curve, the duty to find one's own flaws, Nature as opponent, and why philosophers could not help.
+
+- Before: Eliezer1996 set out to build superintelligence, and assumed that it would know what is right ``far better than a human being could.''
+- After: Eliezer1996 set out to build superintelligence for the good of humanity and all sentient life. At first, whether it would be good did not occur to me as a separate question. Surely no supermind would be stupid enough to turn the galaxy into paperclips, and surely it would know what is right ``far better than a human being could.''
+
+- Before: morality is arbitrary; a superintelligence would seize all the resources; humans should come first and be uploaded; an AI needs a control system.
+- After: morality is arbitrary, so a superintelligence would form its own; everyone looks after their own interest, so a superintelligence would seize all the resources; I am human, so I favor humans, and we should upload humans instead of building AI; no one should build an AI without a control system that stops it doing anything bad.
+
+- Before: who saw science as a fair fight won by the best arguments. Finding flaws is easier than finding the truth, and Eliezer1996 was very good at finding flaws. So am I.
+- After: who saw science as a fair fight won by the best arguments. He did not reason that if the world's stupidest man says the sun is shining, it must be dark. But finding flaws is easier than finding the truth, and Eliezer1996 was very good at finding flaws. So am I, and refusing to care about flaws would not remove the danger. His side seemed to be winning, so why switch?
+
+- Before: ``win arguments and acquire an exaggerated view of their own abilities.''
+- After: ``win arguments and acquire an exaggerated view of their own abilities. But it is useless to be superior: Life is not graded on a curve. The best physicist in ancient Greece could not calculate the path of a falling apple.'' Adequacy may be out of reach even with your hardest effort, so spare no thought for whether others are doing worse.
+
+- Before: So you cannot rely on anyone else to argue you out of your mistakes. I wonder if that advice helps anyone before they have failed on their own. Today I take Nature, not any human being, as my opponent.
+- After: So you cannot rely on anyone else to argue you out of your mistakes or to save you. You alone must find the flaws in your positions, and if you put that burden down, nobody else will pick it up. I wonder if that advice helps anyone before they have blown off their own foot, thinking all the while, correctly, that they were winning the argument. Today I take Nature, not any human being, as my opponent, because human opponents lead to overconfidence. Nature does not match Her problems to your skill, and does not offer a fair chance in return for diligent effort.
+
+- Before: No opponent gave Eliezer1996 ``the full reduction of morality.''
+- After: No opponent gave Eliezer1996 ``the full reduction of morality,'' a step-by-step account of the algorithms that make morality feel like a fact.
+
+- Before: The few philosophers present offered classic arguments on all sides,
+- After: The few philosophers present could not say that morality was settled, since it is still an open question in philosophy. So they offered classic arguments on all sides,
+
+
+## honest/sections/the-sheer-folly-of-callow-youth.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the rest of the 1997 argument, utility as affine, 'should' as compellingness, motivated skepticism, what the ultimate flaw was, the Rumsfeld line and verse, the full hard-problems argument, and the lesson about confusion and black boxes.
+
+- Before: Humans cannot find the meaning, so a superintelligence must.
+- After: Humans are still arguing about the meaning, so it is probably too hard for them, and a superintelligence must find it. If there is no justification for preferring anything, building a superintelligence is no worse than anything else, so that case drops out too. Anyone who says a superintelligence would wipe out humanity is either saying that this would be right, for which we see no reason, or that nothing is right, in which case the argument against building it defeats itself. That paragraph was painful to write, since my past self is exactly what my present self has built allergies against.
+
+- Before: Worse, I took ``should'' to be whatever compels any mind, and assumed that this is what people mean by ``right.''
+- After: I did not see that a utility function is fixed only up to adding a constant and rescaling, so that only comparisons between outcomes matter; I thought of utility as an absolute level of inherent value. I took ``should'' to be an abstract essence of compellingness, so that any mind that derived a ``should'' would be bound by it, and I assumed without noticing that this is what people mean by ``right.''
+
+- Before: I was skilled at refuting others and never turned that skill on myself.
+- After: I was skilled at refuting others and never turned that skill on myself. Had I rejected my own position for any flaw, as I rejected the arguments against me, I would have found the gap, if I had wanted to. But I had not heard of Kahneman or of ``motivated skepticism,'' and did not know how deadly it is to ask ``Am I allowed to believe?'' of positions you like and ``Am I forced to believe?'' of those you dislike. My ultimate flaw was not my liking for intelligence, my technophilia, or my skill at finding flaws. None of these could have led me astray if I had held myself to a higher standard of rigor, or even scrutinized my favored vague position as hard as I scrutinized counterarguments. I did not try to refute my belief that life had meaning, since the cases where it did would always dominate my reasoning.
+
+- Before: ``Either you match it, or you fail.'' Then I narrow the rule: you may think with vague concepts, but you do not build a superintelligence on them.
+- After: ``Either you match it, or you fail.'' Donald Rumsfeld went to war with the army he had, instead of the army he needed. A verse follows: the apocalypse need not be fair to you, its difficulty is not matched to your skills or its price to your resources, and if you bargain it down it will not negotiate back up. Then I narrow the rule. Stopping thought until rigor appeared would not have been prudent either. You may think with vague concepts while searching for a better answer, unsatisfied with them and unwilling to put your weight down on them. But you do not build a superintelligence on an interim understanding, not even the best one; saying ``best guess'' excuses nothing.
+
+- Before: I replied that three ``hard problems,'' consciousness, existence and morality, were linked, too hard for humans, and probably needed new physics.
+- After: I replied that it has the same structure as the argument that a real thing can only come from another real thing, by which you could prove that nothing exists. So there were three ``hard problems'': consciousness, since qualia cannot arise from computable processes; existence, how anything comes from nothing; and morality, how to get to an ``ought.'' They were probably linked; the qualia of pleasure, for example, are a good candidate for something intrinsically desirable. They were too hard for humans, or someone would have solved them in the 2,500 years since philosophy began, and too simple to have complicated solutions, so they must lie outside human concept-space. Consciousness must involve new physics that the brain uses but cannot understand, perhaps quantum mechanics with a dose of tiny closed timelike curves. Hence the need for superintelligence. My posts here are the letter I wish I could have written to my younger self.
+
+- Before: So: ``You cannot manipulate confusion.''
+- After: So: ``You cannot manipulate confusion.'' You cannot make clever plans around the holes in your understanding, or make best guesses about what confuses you and relate them to other confusing things. Confusion exists in the mind, not in reality. Nor can you put neat handles on a mystery and use it without understanding it, as I did when I made meaninglessness cancel out of an expected utility formula. A blank spot on the map may hide a land mine, and the only way to know is to open the black box and look. ``Only knowledge can foretell the cost of ignorance.''
+
+- Before: not from attempts to make gold.}
+- After: not from attempts to make gold.} Nature does not care. To be continued.
+

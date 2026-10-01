@@ -327,12 +327,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] when-not-to-use-probabilities
 - [x] newcomb-s-problem-and-regret-of-rationality
 - [x] twelve-virtues-of-rationality
-- [ ] beginnings-an-introduction
-- [ ] my-childhood-death-spiral
-- [ ] my-best-and-worst-mistake
-- [ ] raised-in-technophilia
-- [ ] a-prodigy-of-refutation
-- [ ] the-sheer-folly-of-callow-youth
+- [x] beginnings-an-introduction
+- [x] my-childhood-death-spiral
+- [x] my-best-and-worst-mistake
+- [x] raised-in-technophilia
+- [x] a-prodigy-of-refutation
+- [x] the-sheer-folly-of-callow-youth
 - [ ] that-tiny-note-of-discord
 - [ ] fighting-a-rearguard-action-against-the-truth
 - [ ] my-naturalistic-awakening
