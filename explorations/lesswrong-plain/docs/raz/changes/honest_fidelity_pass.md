@@ -7957,3 +7957,102 @@ Why: Fidelity/substance pass: naturalistic-awakening: repaired a broken join.
 - Before: anywhere. I saw and that my 1997 design
 - After: anywhere. I saw at last that my 1997 design
 
+
+## honest/sections/the-magnitude-of-his-own-folly.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the convert's lament, why both the proud and the minimizing reactions avert the punch, why 'I'm not ready' costs status in AGI, the teenage-immortality analogy, what AGI researchers do fear, the 'blank wall', the lottery retort, and the closing line about doing everything right.
+
+- Before: I half-persuaded one of them that Friendly AI mattered, and he lamented:
+- After: I half-persuaded one of them, who had been much taken with evolutionary algorithms, that Friendly AI mattered and that finding the right fitness metric would not do. He lamented:
+
+- Before: That is a trap.
+- After: That is a trap: ``What a villain I once was!''
+
+- Before: seen what they would have done, ``insofar as they were coherent enough'' to say. To cry ``I almost destroyed the world!'' would have been too proud. To say that the gun was not really loaded would have been too easy, since I had ``proposed and intended to build the gun''.
+- After: seen what they would have done, ``insofar as they were coherent enough'' to say. Everything fell into place at once; the doubts that had piled up behind a dam broke through together. I did not wonder how I could have been so stupid; I already knew how. To cry ``I almost destroyed the world!'' would have been too proud, confirming my own importance just when my ego ought to take a punch in the stomach. I had been so much less than I needed to be. To say that the gun was not really loaded, since I had no code ready to run, would also have softened the punch, since I had ``proposed and intended to build the gun'', load it, put it to my head and pull the trigger. Nor did I make an emotional drama of it, which would have spent the punch on tears.
+
+- Before: Say ``I'm not ready.'' In AGI those words cost a great deal of status, because researchers and the public want code.
+- After: Say ``I'm not ready.'' Say ``I don't know how to do this yet.'' In AGI those words cost a great deal of status, because researchers and the public want code, or at least someone ready to write code once funded. Without that, what distinguishes you from six billion other people who do not know how to build AGI? The field has no concept of ``I am trying to get from an incomplete map of FAI to a complete map.'' Name anyone else who says at once that they intend to build AGI, cannot yet because they do not know X, and are trying to figure out X. So there is a huge reluctance to say stop, and I felt it too, having absorbed the same attitude.
+
+- Before: I thought the Future was indestructible:
+- After: The proverb says teenagers think they are immortal. They do not believe it literally, but their own death is not quite real to them, so seat belts do not compel them. I always wore my seat belt; I knew I could die. But raised in technophilia, I thought the Future was indestructible:
+
+- Before: Other AGI researchers, I guess, fear being scooped more than destroying the world by their own mistake,
+- After: ``The thought you cannot think controls you more than thoughts you speak aloud.'' But we flinch only from fears that are real to us. AGI researchers can picture headlines saying their work has been upstaged, and those who have started companies know they can run out of venture capital. I guess that ``Oops'' followed by the thud of six billion bodies, by their own hands, is not real to them in the same way. They fear being scooped more than destroying the world by their own mistake,
+
+- Before: the best project can still be killed.
+- After: even if you follow the rules of science, are a nice person and run the best project of all, Nature can still kill you. My gaze shook free of rivals and I saw the sheer blank wall.
+
+- Before: would not have stopped that risk from killing me.
+- After: would not have stopped that risk from killing me. Nature is allowed to say ``So what?'' to the best argument. Only my ignorance of the rules let me argue for going ahead without knowing them, because if you do not know the rules you cannot model the penalty for ignorance. Others still say they do not know that their plan cannot work; when I explain how small the target is in the search space, they ask, ``How can you be so sure I won't win the lottery?''
+
+- Before: That was when my training as a rationalist began.
+- After: The clever arguments for stepping on ground that may hide a landmine sound much less clever once you look where you meant to step and see the bang. You can do everything you are supposed to do, and Nature can still kill you. ``That was when my last trust broke. And that was when my training as a rationalist began.''
+
+
+## honest/sections/beyond-the-reach-of-god.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the remembered childhood prayer, why non-intervention below a threshold is not evasion, death as the clear threshold, the Life rules and the Khan's victims, the Hitler-conception example in full, the sacred trusts listed, the cryonics disproportion, the exercise of imagining God while living outside God's reach, the advice to readers who want happiness, and the closing hopes and question.
+
+- Before: This post is a thought experiment I made up to smash my own optimism.
+- After: This post is a gloomy thought experiment I made up to smash my own optimism.
+
+- Before: ``should consider not reading.''
+- After: ``should consider not reading,'' unless they have something to protect. Some count that inner optimism a virtue; others call it necessary for mental health. But we live in the world beyond the reach of God.
+
+- Before: But I remember what it was like. A God taken seriously need not fetch you a lemonade, any more than a parent grants every wish, and I have ``fun-theoretic arguments'' of my own against getting everything at once.
+- After: I remember my last prayer, on behalf of the boy next door, and what it was like to have a higher authority to take care of what I could not. Take God as seriously as a child does. Even then God need not fetch you a lemonade from the refrigerator. If you said you had built a benevolent superintelligence and I asked for a banana and none appeared, that would not yet disprove you; parents do not grant every wish. I accept fun-theoretic arguments against always giving people what they want at once. I do not want to become a simple wanting-thing that never has to plan or act. So saying that God does not grant all prayers is not necessarily an evasion; even a Friendly AI might not answer every request.
+
+- Before: A God who never intervenes, however bad things get, is ``an obvious attempt to avoid falsification.'' Few loving parents would let their toddler be run over by a car.
+- After: A God who never intervenes, however bad things get, is ``an obvious attempt to avoid falsification.'' Young children really expect to see the dragon in their garage. Even a child can imagine arguing over where the threshold lies, but God will draw the line somewhere. Few loving parents would let their toddler be run over by a car.
+
+- Before: In the world where God exists, no soul need fear annihilation.
+- After: The plainest horror God could not tolerate is true death, annihilation of the mind. In the world where God exists, no soul need fear it. Now play Conway's Game of Life, which helps in understanding what a physical law is; it is Turing-complete, so it could hold a sentient being.
+
+- Before: But the mathematical answer to what the rules would produce is out of God's reach.
+- After: But ask instead: given these initial conditions and these rules, what would the mathematical result be? Not even God can change that answer, unless God can do the logically impossible. In that world each step follows only from the one before. It is not fair. Life may or may not evolve, with no God to guide it.
+
+- Before: ``the equivalent of Genghis Khan can murder a million people, and laugh.''
+- After: ``the equivalent of Genghis Khan can murder a million people, and laugh,'' grow rich, never be punished and live more happily than most. If he tortures people to death for days, they may call out to an imagined God. Since the laws contain no prohibition against torture, they are saved only if the right cells happen to be 0 or 1; anyone who defies the Khan is struck with a sword and dies.
+
+- Before: Life's rules are very simple and say nothing about innocence.
+- After: The victims could be wholly innocent. Life's rules are very simple: a cell with three living neighbors is alive at the next step, a cell with two stays as it is, and all other cells die. They say nothing about innocence.
+
+- Before: A believer in a fair universe feels that the twentieth century cannot have turned on the hour of Hitler's conception.
+- After: Belief in a fair universe shows in subtler ways. Would the twentieth century have gone differently if Hitler's parents had made love an hour earlier and a different sperm had fertilized the egg? So many lives turning on one small event seems disproportionate; the Divine Plan ought to make more sense. So, the believer concludes, if Hitler had become an architect, someone else would have taken his role. But nothing in the laws of physics says that big effects need big causes.
+
+- Before: Many atheists would argue that World War II would have happened without Hitler.
+- After: The point of the thought experiment is to lay the God-universe and the Nature-universe side by side, to recognize which thoughts belong to the first. Many atheists still think certain things are not allowed, and would argue that World War II would have happened without Hitler.
+
+- Before: We live in the what-if world. Reading
+- After: In the God-universe, God prohibits such things; in ours, whatever physics says will happen, will happen, even in the most extreme cases. Reading
+
+- Before: I was ``horrified, but not at all disbelieving.''
+- After: with its account of how Shirer and others disbelieved the full scope of Nazi atrocities, I was ``horrified, but not at all disbelieving,'' because I already knew there was no protection against it.
+
+- Before: positive-sum games, democracy, technology.
+- After: positive-sum games, democracy, technology. These are held sacred: they cannot lead to anything really bad, or not permanently without a silver lining. History cannot turn from a positive-sum trend to a negative-sum one; modern liberal democracies will never legalize torture; no Black Swan technology will do more harm than all the good so far.
+
+- Before: Could freezing people in liquid nitrogen save them, while Einstein rots in a grave? God would not allow anything so disproportionate.
+- After: Could sentient beings have died absolutely for millions of years, as part of no grand plan and teaching no lesson, so that a trick as simple as vitrifying people in liquid nitrogen could save them, and a ten-second rejection of the idea could destroy someone? Could a programmer who signs some papers and buys life insurance continue into the far future while Einstein rots in a grave? God would not allow anything so disproportionate. Secular rationalizations can do the same work, so it helps to imagine a benevolent God who enforces a minimum of fairness, and then to imagine that you yourself live outside that God's reach, in a world of pure mathematics where anything can happen.
+
+- Before: Readers who want happiness above all may stop here, once they have signed up for cryonics; they might also ``write a check to an existential-risk-mitigation agency now and then.''
+- After: Readers who want happiness above all should not dwell on this, beyond signing up for cryonics, wearing a seat belt, getting health insurance and the other dreary necessities. They might also ``write a check to an existential-risk-mitigation agency now and then.''
+
+- Before: Knowing this will not always save you.
+- After: Challenges are not always fair; a lethal penalty means death, for people and for planets. Knowing this will not always save you. If you think a rationalist who understands the mess must surely find a way out, then you trust rationality. Some commenter will list the reasons it is lovely to live in a neutral universe: life may be a little dark, but not past a certain point without a silver lining.
+
+- Before: My hope is that we might one day build guardrails within our future light cone, and that a superintelligence would find the raw universe only another problem.
+- After: Still, a few hopeful words. We cannot change fundamental physics, but at a higher level we might build guardrails and padding within our future light cone, the only world it does any good to care about; everything outside it we can treat as a ``generalized past.'' Someday children might reliably be sheltered: they might burn a finger but never be run over by cars. A superintelligence, which could think a trillion thoughts without a misstep, would find the raw universe only another problem.
+
+- Before: Last, I ask what rules a child should follow ``to solve an adult problem.''
+- After: A fairer universe must be reached from this one, where challenges are not calibrated to your skills. Not everyone needs these unpleasant thoughts; buckling a seat belt is not so hard. But anyone who plans to confront an uncalibrated challenge of instant death must not avoid them. Last, I ask what rules a child should follow ``to solve an adult problem.''
+
+
+## honest/sections/the-magnitude-of-his-own-folly.tex
+
+Why: Fidelity/substance pass: magnitude: completed a truncated quotation.
+
+- Before: to a complete map.''
+- After: to a complete map of FAI.''
+
