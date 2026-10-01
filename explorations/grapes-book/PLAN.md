@@ -30,7 +30,7 @@
 - [x] Author confirmed (2026-10-01): one narrator; real-world claims verified
       or attributed, fiction interleaved freely. Vane is from a small town in
       Iowa (invented: Ardath; first Nebraska, moved to Iowa to be nearer
-      Gilbert Grape's Endora), moved to Napa in 1971 for a job.
+      Gilbert Grape's Endora); Napa from 1977 (see below).
 - [ ] Odile: provisionally, he killed her without meaning to (BIO.md).
       Revisit with the author, and settle the open details, before
       movement II.
