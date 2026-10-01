@@ -112,3 +112,22 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   scan_reflect_M4.jsonl. Killed 11819 and 14271 (found with ps aux),
   kept 14654. Analysis dedupes by Y. Rule for myself: after any launch,
   confirm the PID with `ps aux | grep` before recording it.
+- 06:45 Library shuttle scan complete [sim, exact]:
+  step 1: all 2523 library left-movers faster than E (186 at -1/2, 2337
+  G-speed) vs R2 = E^4, every class (scan_reflect_M4.jsonl, deduped).
+  analyze_reflect.py: G-speed packets give many CLASS-FREE back-face
+  reflections (e.g. G+GB1@(0,39): +1 & A; GB1+GB1@(-4,48): +2 & A;
+  GB2+GB1@(-3,56): +3 & A; G+GB5@(-26,47): +5 & A; GB2+GB1@(-2,52):
+  -2 & A^3), but NO crossing (no E^j + left-movers-only outcome) for any
+  of the 2523 objects at E^4.
+  step 2 (scan_reflect2_N*.log): 368 distinct multi-glider X trains (plus
+  single A^k covered by the catalog up to E^9) vs R1 = E^3..E^8, 15 seed
+  times: every left-moving return is B-family (B, B^2, B^3, a B compound)
+  and is n-specific (R1 dumped to E/E^2/E^8). B-family objects are
+  absorbed at R2's back (one class), so no loop closes. Also: some "X"
+  were stationary C-pairs left in the gap (my reflect flag counted
+  velocity 0 as right-moving); irrelevant for shuttles.
+  => No shuttle made of library objects (scope: R2 = E^4, R1 = E^3..8,
+  X as emitted, every class/phase).
+- Catalog: A^3 + E^n -> E^(n-3) (1 class, n = 7, 8), A^4 + E^n ->
+  E^(n-4) (n = 5,6: 2 classes; 8, 9: 2 classes): multi-unit front DECs.

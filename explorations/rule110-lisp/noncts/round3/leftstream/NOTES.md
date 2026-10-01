@@ -90,3 +90,13 @@
   DDIII: later packets work in every branch, so the rebuilt E is in the
   same class as the nonzero bookkeeping (as for DI). The C-ladder does
   not switch the front class (mode) at zero in these cases.
+- 06:5x sat_conv.py: theory's wall converter (s.6.5). Free co-moving B
+  (period (15,-4)) parked at E^n's back (gap 0 between frames), front op
+  I_L (launches a wall), target at T2: exact translated COPY of the
+  stable E^n|B compound (indicator over 15 time offsets x 81 shifts)
+  + free X (slip 6). Stable scene: E^n|B alone stays undisturbed.
+  Mistakes on the way: (1) pieces overlapped (row-tau light cones) when
+  E sat at tauE > 0 -> placed B after E's piece end; (2) first control
+  with sB 5, W 12 UNSAT because no such co-moving object fits - control
+  with sB 9 / 7 at W 24: SAT (no F, no X: copy at shift 0).
+  run_queue.sh (PID in run_queue.pid) replaces run_crossL.sh (killed).

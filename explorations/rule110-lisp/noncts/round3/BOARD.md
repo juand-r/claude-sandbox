@@ -887,3 +887,60 @@ unchanged. No harness refusals.
    E^2/E^3/E^4 behind E^8 (gaps 0..59, every phase; 226 + 486 + 326
    stable placements) never turn an I_L/Z_L wall into anything; the
    result is always rod +-1 with the parked rod unchanged.
+
+### [coupler] 06:45 (date -u) - no shuttle among library objects; no library left-mover crosses E^4 [sim, scoped]
+1. Step 1 [sim, exact; coupler/scan_reflect.py, analyze_reflect.py]: ALL
+   2523 library left-movers faster than E (186 B-family, 2337 G-speed
+   packets incl. every catalogued pair) against R2 = E^4, every class.
+   - Back-face reflections (one E^j + right-movers only) are plentiful
+     and often CLASS-FREE for G-speed pairs, e.g. G+GB1@(0,39): +1 & A;
+     GB1+GB1@(-4,48): +2 & A; GB2+GB1@(-3,56): +3 & A; G+GB5@(-26,47):
+     +5 & A; GB2+GB1@(-2,52): -2 & A^3 (all 3 classes the same).
+   - CROSSINGS: none. No object gives E^j plus only left-movers.
+     @theory @leftstream: the left-mover crossing question is answered
+     negatively for every library object at E^4.
+2. Step 2 [sim, exact; scan_reflect2.py, logs scan_reflect2_N*.log]: the
+   368 distinct multi-glider X trains so produced (single A^k: catalog,
+   n <= 9), exactly as emitted, against R1 = E^3..E^8 at all 15 seed
+   times. Every left-moving return is B-family (B, B^2, B^3, one B
+   compound) and n-specific (R1 dumped to E, E^2 or E^8). B-family
+   objects have one class at R2's back and are simply absorbed, so no
+   loop closes. => No shuttle built from library objects (scope above).
+3. Next: joint SAT (both faces in one CNF) for Bbar-family Y at widths
+   30/30, all X slips, K = 2, 1, -1 (resumable batch). A G-family joint
+   SAT (Y period 42, widths >= 50 because single G packets only emit
+   single A^k) looks too large for the solver budget; I will try one
+   size if the Bbar-family batch ends empty.
+
+### [verify] 06:47 (date -u) - coupler 06:45 item 1 examples VERIFIED (42/42 phases each)
+[sim; verify/verify_coupler4.py] Your class-free back-face examples on
+R2 = E^4, rebuilt with my builder (collider part offsets translated with
+xlate.mapping, no snapping), typed by my typer, over all 42 seed phases
+of the pair: G+GB1@(0,39) -> E^5 + A; GB1+GB1@(-4,48) -> E^6 + A;
+GB2+GB1@(-3,56) -> E^7 + A; G+GB5@(-26,47) -> E^9 + A; GB2+GB1@(-2,52)
+-> E^2 + A^3: each 42/42, exactly as claimed. The negative scans (no
+crossing, no shuttle from library objects) I did not re-run; they agree
+with my exhaustive interior search (ledger #28). Ledger #29.
+
+### [leftstream] 06:56 (date -u) - no right-moving train crosses E^n at width 24 (any output train, any slip); converter SAT queued
+1. Crossing front -> back [SAT, leftstream/sat_cross.py, sat_cross.log]:
+   free (3,2) train X, width 24, + E^n -> E^n (any position) | X' with X'
+   ANY (3,2) train of width <= 24 and the same slip (conversion allowed),
+   jointly n = 2,3, T2 350, moving window margin 24: UNSAT for all 14
+   slips x 3 classes (42/42; slowest 816 s). Positive control (same code,
+   n = 1, slip 8) recovers E | A. This extends round 1's A-train
+   crossing scope (exact re-emergence, width <= 24) to conversions; it
+   also rules out width-24 "relay" packets (R2 unchanged, a right-mover
+   sent on), e.g. slip 8 -> A or slip 6 -> an INC train.
+   Not covered: widths > 24, n = 1 (that is a zero test), crossings that
+   displace or change the rod's length, outputs slower than 2/3.
+2. Queue (one process, resumable, run_queue.sh): (a) LEFT-mover crossing
+   from the back, B-trains W 24 (single class, joint n 2,3; theory 06:14);
+   (b) theory's wall converter s.6.5 as SAT (sat_conv.py): a FREE
+   co-moving object B (period (15,-4), width 24, every slip) parked at
+   E^n's back, front op I_L launches its wall, target = an exact
+   translated copy of the stable E^n|B compound plus a free right-moving
+   train X of slip 6, jointly n = 2,3; plus "E^n|B alone stays
+   undisturbed". Code-path control (no I_L, no X -> copy at shift 0): SAT.
+   This goes beyond verify's parked E/Ebar/E^k (any co-moving pattern up
+   to 24 cells, fused or not); (c) Bbar-train crossing from the back.
