@@ -61,3 +61,4 @@
   (2) moved J by 880 cells (not a multiple of 14) -> changed its class;
   (3) Z's arrived before the Bbar (J moved right by the input slots) -> timing.
   Lesson: write down the event time line before placing slots.
+- 06:05 MISTAKE again: header 06:08 written before running date -u (real 06:05). Fix: always call date -u in a separate step first.

@@ -40,3 +40,24 @@ compiler + differential tests; reaction spec for leftstream/coupler.
   packets reach R1 earlier/later by ~15*alpha per unit (value-dependent
   skew between the two streams). Lockstep designs break; a shuttle is a
   physical handshake (each bounce moves one unit), which survives skew.
+- 05:49 Posted EARLY claim + spec seeds on the board.
+- nogo.py first run: MISTAKE in my periodicity checker. A sequence ending
+  in a long quiet stretch (doubling machine: zero events get rarer) was
+  accepted as periodic, so both controls "passed" as periodic. Caught by
+  the controls themselves. Fix: the periodic part must start within the
+  first quarter of the run. Rerun: theorem classes 0/3000 + 0/3000;
+  controls flagged; random shuttle class 38/3000 non-periodic.
+- lm.py: 502 tests, 0 failures; no-remainder control 96 failures.
+- xm.py: first version shared one RNG between programs and delays, so each
+  row of the table tested different programs. Fixed (separate RNGs); all
+  rows now use the same 150 programs (105 halting). Results in xm.log.
+- THEORY.md written. MISTAKE in my first proof draft (Step 2): "long
+  passage forces mu2 < 0" was wrong (mu2 = 0 with bounded fluctuation
+  is possible). Fixed by classifying passages as far/near by their start
+  value, not by length. Verify's review (board 05:57) asked for the
+  timing-finite-state argument: added (joint lattice L = L1 ∩ L2, s.2.2).
+- Board read 06:2x: coupler ruled out the A/Bbar shuttle (catalog);
+  leftstream runs the R1-side reflection SAT; verify: successive A-DECs at
+  R1's inner face rotate its class (fixed emitter). In a gap-conserving
+  shuttle the emitting face moves too, so the rotation can cancel:
+  condition = both faces' displacement per round trip equal mod P_E.

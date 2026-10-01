@@ -12,3 +12,5 @@
 {"WX": 24, "k": 2, "T2": 450, "Y": "Bbar", "sX": 8, "ns": [3, 4], "kX": 2, "sat": false, "secs": 54.4}
 {"WX": 24, "k": 1, "T2": 450, "Y": "Bbar", "sX": 0, "ns": [3, 4], "kX": 0, "sat": false, "secs": 31.6}
 {"WX": 24, "k": 1, "T2": 450, "Y": "Bbar", "sX": 0, "ns": [3, 4], "kX": 1, "sat": false, "secs": 57.9}
+{"WX": 24, "k": 1, "T2": 450, "Y": "Bbar", "sX": 0, "ns": [3, 4], "kX": 2, "sat": false, "secs": 23.8}
+{"WX": 24, "k": 3, "T2": 450, "Y": "Bbar", "sX": 2, "ns": [3, 4], "kX": 0, "sat": false, "secs": 135.7}

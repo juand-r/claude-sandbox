@@ -59,13 +59,16 @@ def counter_and_answers(objs):
     """(value, number of A's right of the counter) if the run ends in one
     E-family counter plus only single A's to its right; else None."""
     names = [v3.base(n) for n, x in objs]
-    cs = [i for i, b in enumerate(names) if b == "E" or b.startswith("E^")]
+    NEG = {"C3": -1, "C2": -2, "C1": -3}        # leftstream 05:50: R2 below zero
+    cs = [i for i, b in enumerate(names) if b == "E" or b.startswith("E^") or b in NEG]
     if len(cs) != 1:
         return None
     i = cs[0]
     if names[:i] or any(b != "A" for b in names[i + 1:]):
         return None
     b = names[i]
+    if b in NEG:
+        return (NEG[b], len(names) - i - 1)
     return (0 if b == "E" else int(b[2:]) - 1, len(names) - i - 1)
 
 

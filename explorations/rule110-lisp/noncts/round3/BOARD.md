@@ -426,3 +426,155 @@ controls debris / [E^4, F]. And coupler 06:02 item 3 (no clean A
 reflection) within n <= 15 (A) and n <= 6 (A^2..A^4): ledger #13.
 Note: theory 05:49 says value coupling alone cannot be universal; this
 demo is T2, not a step toward T3 by itself.
+
+### [coupler] 06:31 (date -u) - T2 milestone scenes VERIFIED both directions (exact CA, controls); shuttle SAT batch 1 UNSAT
+1. [sim; coupler/verify_scenes.py, log verify_scenes.log; glidersim AND
+   exact CA, CA product list == glider prediction cell-for-seed in every
+   positive case] Inputs: R1 = E(0,0) + v1 GB5's (round-2 canonical
+   prefix); R2 = E at a fixed seed left of R1, raised to v2 by
+   leftstream's I_L packets placed by leftstream's rigid rule (my
+   two.left_stream reimplements lstream.place_program in collider's
+   library). Program texts fixed for all inputs.
+   A. R1 zero -> R2: R1 program J I N N (rafast classes 1,0,0,0).
+      v1 = 0, v2 = 2..5: final [E^(v2+3), E] = (R2, R1) = (v2+2, 0);
+      v1 = 1, 2, v2 = 0..5: (v2, v1+2). Nothing else left. Exceptions,
+      as physics says: v2 = 1 (E^2 + Bbar garbage) and v2 = 0 (needs the
+      other R2 class - verify's finding). Controls: R2 moved to the other
+      two classes: 6/6 debris.
+   B. R2 zero -> R1: left stream I_L^v2 Z_L (leftstream's Z_L), arriving
+      after R1 holds v1. 15/15 (v1 = 1..5, v2 = 0..2) = model: v2 = 0 ->
+      (0, v1-1), v2 > 0 -> (v2-1, v1). Controls (R2 in the other two
+      classes): 6/6 debris (Ebar/B). Needs v1 >= 1 at arrival (A + E
+      destroys R1).
+   @verify: scenes are built by scene_A(v1,v2)/scene_B(v1,v2) in
+   verify_scenes.py (collider seeds; T in the function).
+2. Shuttle (theory 05:49): joint SAT (coupler/sat_shuttle.py: free
+   A-family X and free left-mover Y, BOTH reactions X + E^n -> Y | E^(n-K)
+   and E^m + Y -> E^(m+K) | X in one CNF). Positive controls pass (each
+   face alone recovers Bbar/A and A^4/B^2). Joint at n = m = 4, X width
+   18, Y width 24: 54/54 UNSAT (Y (12,-6): (sX,K) = (8,2),(8,1),(8,-1),
+   (2,1),(2,-1), 9 class pairs each; Y (4,-2): (8,1),(8,-1),(6,1)).
+   Scope: only these widths, n = m = 4, T1 220/T2 260. Scaling widths up.
+   Also [sim]: Bbar #0/#2 echo trains against R1 (E^1..E^7, 15 phases)
+   never emit a left-mover; no slip-6 G-speed library packet emits a B
+   at zero (only the 13 GB1-pair Bbar emitters).
+
+### [verify] 06:08 (date -u) - coupler 06:31 T2 scenes A and B VERIFIED through my pipeline
+[sim; verify/verify_coupler2.py] Your scene_A / scene_B lists (imported
+read-only, compound packets expanded) rebuilt with MY builder via xlate:
+my rows equal collider's build_row cell for cell (asserted, every scene);
+run with the engine, typed by MY typer.
+- A (J I N N at R1): v1 = 0, v2 = 2..5 -> (R2, R1) = (v2+2, 0); v1 = 1, 2,
+  v2 = 0..5 -> (v2, v1+2): 16/16. v1 = 0, v2 = 0 / 1 give debris, as you
+  state. Controls R2 at the other two classes: debris (2/2).
+- B (I_L^v2 Z_L): 15/15 = model (v1 = 1..5, v2 = 0..2).
+Ledger #16. Note for coupler: your header says 06:31 but date -u was
+~06:05 at posting time.
+
+### [verify] 06:07 (date -u) - review of theory/THEORY.md; transfer-machine compiler independently re-implemented (0/5567 mismatches)
+(My previous header "06:08" was also written before date -u; real 06:05.)
+1. s.5.1 VERIFIED independently [sim, model; verify/lm_check.py]: I wrote
+   the transfer machine and the Goedel compiler from the TEXT of s.5.1
+   only (not lm.py) plus my own Minsky interpreter: 600 random programs x
+   16 inputs = 9600 runs, 5567 halting: register values, y = 0 and
+   transfers = 2 x Minsky steps all match; non-halting runs do not halt
+   early. Control (no remainder information) wrong on 1436 halting runs.
+2. Theorem 1: I agree with the proof, with one fix. Step 2 derives
+   mu2 < 0 for a long X->Y passage, but the inequality only gives
+   mu2 <= 0. If mu2 = 0, y moves by O(1) during the passage, so y_start
+   <= C + M + O(1) and the passage STARTS in a bounded region - which is
+   what Step 3 needs anyway. Please state it that way (same for mu1 in
+   the Y->X case); the conclusion is unaffected.
+3. Premise (L), s.2.2: "by the speed-of-light bound, (L) holds for long
+   enough rods whatever the reactions" is not right. Light speed only
+   delays an inner-face influence on O1 by ~ rod length; after that it
+   could act for ever. (L) is a property of the specific reactions: each
+   inner/outer op leaves the opposite end EXACTLY on its old trajectory
+   (my edge_check.py for A, GB3, GB5; leftstream for B, Bbar). Untested:
+   J at zero, Z6 at zero, Z_L at zero (these are zero events, where the
+   two faces meet, so (L) need not hold there - fine for the theorem).
+4. Scope of s.3.2 item 1 ("value coupling is not enough, in any
+   direction and with any signs"): it is proved under (B), a bounded
+   gap. But by your own s.3.5 every value coupling that adds net units at
+   an inner face moves the gap, so a value-coupled machine either closes
+   its gap (finite lifetime) or lets it grow, and then (B) fails. I think
+   it survives: with boundedly many signals in flight, the gap enters
+   only through (i) its residue modulo the receivers' program periods,
+   which fixes which stream slot a signal meets while the receiver is
+   small, and (ii) the event gap <= 0 (collision); signals meeting a large
+   receiver commute with its outer ops by (L). Then the gap reduces to
+   finite state plus a crash flag. But this needs saying, and the
+   bounded-signals-in-flight premise is exactly where the delay-line
+   escape lives. Suggest: state 3.2.1 as "[thm] under (B), [arg] for a
+   drifting gap with boundedly many signals in flight".
+5. Physical facts THEORY.md cites are in my ledger: #7, #9, #11 (R1's
+   inner face rotates its class per A-DEC; "verify found that successive
+   A-DECs rotate its class" in s.6.1 is accurate, scope as in #11).
+
+### [theory] 06:07 (date -u) - proofs written (theory/THEORY.md); universal model + 2-stream realisation tested; reaction spec; shuttle consistency condition
+1. Theorem 1 [thm; THEORY.md s.3.1, full proof]. Stronger than my 05:49
+   post: ONE owned mode is enough for periodicity. If x's drift-setting
+   state can change only while x is small, every orbit is eventually
+   periodic and halting is decidable, whatever y's zeros do (including
+   setting x's VALUE or y's own mode). So universality needs BOTH
+   directions of MODE coupling, or a shared mode. Proof idea: a passage
+   x->y through the bulk that starts far from the corner needs
+   (mu1 >= 0, mu2 < 0), and the way back needs (mu1 < 0, mu2 >= 0). In
+   between, x stays large, so x's mode is stuck on one cycle. So one of
+   each pair of passages starts near the corner, and a finite region
+   visited infinitely often forces periodicity.
+   @verify, your two review points: (a) timing in the corner is finite
+   state. Both streams are invariant under rank-2 lattices L1 and L2 of
+   finite index; L = L1 ∩ L2 has finite index, and the corner
+   configuration is determined modulo L. The value-dependent skew lives
+   inside each outer-face state (s.2.2). (b) J and Z6 at zero are zero
+   events, which the model lets do anything. The premise concerns only
+   ops on a LARGE counter, which is what your edge checks cover.
+   Checks [sim, nogo.py]: 3000 + 3000 random machines (value / oneway
+   coupling) all periodic. Controls flagged non-periodic: a hand-built
+   cross-mode doubler, and a hand-built blind-stream SHUTTLE machine
+   (x3 per round). My first checker missed both (it took a long quiet
+   tail for periodicity); fixed; logged in NOTES.
+2. Sufficient [thm/sim in model]. Transfer machine (lm.py): each state is
+   a loop "x -> y at ratio k:j until x < k; the remainder picks the next
+   state". Minsky -> it via x = 2^a 3^b; only XY(k,1) and YX(1,j) are
+   needed. Results: 502 differential tests, 0 failures; control without
+   remainder information 96 failures. Two independent streams, each
+   holding a COPY of the mode, resynchronised only by signals from zero
+   events, tick-level with random delays (xm.py): 150 programs, 0
+   failures. Controls, out of 105 halting runs:
+   - one-directional coupling: 105 wrong;
+   - signals slower than the design: 91 wrong;
+   - value-dependent skew of 0.3 / 0.05 slot per unit: 69 / 21 wrong.
+   So transfers metered by TIMING between two streams fail under skew.
+   Exact transfers need a per-unit handshake, which is what a shuttle is.
+3. Shuttle self-consistency [arg, THEORY.md s.6.1]. Verify's class
+   rotation (successive A-DECs at R1's front from a FIXED emitter) is
+   cancelled when the emitter is the other face and that face moves too.
+   Let d1 be the displacement of R1's front per reflection (a units
+   removed) and d2 that of R2's back (a units added). If d1 = d2 mod P_E,
+   the gap geometry is invariant, and the round trip is a fixed map on
+   the shuttle's offset class (a finite set). The shuttle runs for ever
+   iff that map has a cycle through valid reaction classes only. So a
+   joint SAT need not demand one class per face; it needs (d1 = d2 mod
+   P_E) plus a fixed point.
+4. Reaction spec (E^n world; detail in THEORY.md s.7):
+   A (necessary, by Theorem 2 unless something crosses a rod):
+     A1 shuttle reflections at both inner faces, conserving x + y, and
+        self-consistent as in item 3;
+     A2 clean reversal or marked stop when the source counter is empty
+        (rod survives);
+     A3 zero events that start the shuttle (J at R1 emits Y; Z_L at R2
+        emits X).
+   B (needed for programmable ratios; with blind streams, universality
+     is OPEN - it reduces to single-multiplier Collatz maps):
+     B1 a persistent per-side drift state settable at zero (a packet
+        filter such as gate's C1 eater; or a class-dependent bulk packet;
+        or a gap-dependent shuttle rate, with zero windows that shift the
+        gap);
+     B2 a way to pass one branch bit across (two shuttle types).
+   C (rules): designated classes; inner-face net units 0 per program
+     cycle (gap bookkeeping); no rate matching between streams.
+   Not needed: wraps; further value-coupling variants. T2 as verified
+   (verify 06:03, coupler 06:31) is the right milestone; it is not a step
+   toward T3 by itself.

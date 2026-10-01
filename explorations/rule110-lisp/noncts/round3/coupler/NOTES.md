@@ -68,3 +68,38 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   library packets vs E (zero), every class: only 13 GB1 pairs give a
   clean E + left-mover, always Bbar. No single-B emitter (B would have
   been class-free at R2). Scope: library packets only.
+- 06:2x verify_scenes.py [sim, glidersim AND exact CA, CA product list ==
+  glider prediction in every positive case] (log verify_scenes.log):
+  Scene A (R1 zero -> R2 += 2): R1 = E(0,0)+v1 GB5, program J I N N
+  (classes 1,0,0,0), R2 = E at seed time 2 (gap 1500) raised by v2 I_L's
+  (leftstream's rigid rule, two.left_stream). v1=0: (R2,R1) = (v2+2, 0)
+  for v2 = 2..5; v1 = 1,2: (v2, v1+2) for v2 = 0..5. Exceptions (physics):
+  v1=0 with v2=0 (needs seed time 1 instead: class differs, as verify
+  found) and v2=1 (E^2+Bbar garbage). Controls: R2 seed time 0 or 1 ->
+  debris for v2 = 2,3,4 (6/6).
+  Scene B (R2 zero -> R1 -= 1): R1 = E(0,0)+v1 GB5's, R2 = E (seed time 0,
+  gap 1200), left stream I_L^v2 Z_L arriving after R1 is built.
+  15/15 inputs (v1 = 1..5, v2 = 0..2) = model; controls (R2 seed time 1,2)
+  6/6 fail (Ebar/B debris).
+  Mistake on the way: first Scene A used seed time 1 (taken from the E^5
+  scene of t1.py, where R2 was a library E^5); with R2 built from E by
+  I_L's the working time is 2 (class labels of E^5 vs E differ). Fixed by
+  checking all three before choosing.
+- Shuttle SAT batch 1 (sat_shuttle.py, run_shuttle.sh -> run_shuttle.log,
+  sat_shuttle_results.jsonl): positive controls first: R2 face alone finds
+  Bbar/A (m = 4); R1 face alone finds A^4-like X -> B^2 + E (n = 7).
+  Joint shuttle, n = m = 4, X (3,2) width 18, Y width 24: UNSAT for
+  Y (12,-6) with (sx,K) = (8,2),(8,1),(8,-1),(2,1),(2,-1), all 9 class
+  pairs; Y (4,-2) with (8,1),(8,-1),(6,1), all 3 classes. 54/54 UNSAT.
+- 06:4x Batch 2 (joint, widths 30/30) took ~36 s+ per run; stopped after
+  1 result (sx 8, K 2, c 0/0: UNSAT) to first map R1-face feasibility
+  alone (cheaper; a face that is UNSAT alone prunes the joint search).
+  run_r1feas.sh -> run_r1feas.log.
+- Board 06:0x: verify finds R2 -> R1 does not repeat (each inner-face DEC
+  rotates R1's front class; the emitter does not follow). leftstream took
+  the R1-side reflection with Y = Bbar (sat_reflect.py), and warns that
+  joint-n SATs at a BACK face are invalid with B-built E^n (I only used
+  single n = m = 4, so batch 1 is not affected).
+- Catalog note: Ebar + G #3,4,5 -> Ebar + A^4: an Ebar (co-moving with the
+  counters, speed -4/15) reflects a G into an A^4. Possible "mirror" in
+  the gap; not pursued yet.
