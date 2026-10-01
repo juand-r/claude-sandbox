@@ -97,11 +97,11 @@ class Machine:
     """A Cook assembly as a t = 0 row plus block spans (global columns)."""
 
     def __init__(self, tape, apps, T, v=None, right_periods=2, right_names=None,
-                 left_names=None, left_periods=1):
+                 left_names=None, left_periods=1, central=None):
         self.T = T
         if right_names is not None:
             self.row, self.origin, self.blocks = custom_row(
-                tape, right_names, T + 2000, left_names)
+                tape, right_names, T + 2000, left_names, central)
             return
         self.row, self.origin = padded_row(tape, apps, left_periods=left_periods,
                                            right_periods=right_periods,
@@ -205,15 +205,16 @@ def shift_remainder(row, c, s, m):
     return new, d
 
 
-def custom_row(tape, right_names, pad, left_names=None):
+def custom_row(tape, right_names, pad, left_names=None, central=None):
     """Assemble Cook blocks with an arbitrary right-side block sequence
     (after the central region). Returns (row, origin, blocks) with ether
     pads of `pad` cells, like casim.padded_row."""
     import encoder as enc
     from casim import ether_pad, ether_rotation, trim_right_to_ether
     blocks, t0 = enc.load_blocks()
-    central = "".join("FD" if c == "Y" else "ED" for c in tape)
-    central = "C" + central[:-1] + "G"
+    if central is None:
+        central = "".join("FD" if c == "Y" else "ED" for c in tape)
+        central = "C" + central[:-1] + "G"
     c = enc.Placed(blocks["C"], -t0, 0)
     placed = [c]
     for name in central[1:] + right_names:
@@ -280,3 +281,62 @@ def _attach_remainder(head, rem, s, m):
     k = c - start
     body = np.concatenate([fill_ether(-k, c0, c), ext]) if k < 0 else ext[k:]
     return np.concatenate([head, body]), d
+
+
+# Spacetime displacements (-s, D) of "leader K and everything after it"
+# that keep reads 0 and 1 correct for all four tapes (scan_shift2.log:
+# (0,0), (6,24), (18,16) valid; 57 other shifts fail). They are the
+# lattice V = <(12, 8), (30, -8)>; listed as (s, D) with s = evolve steps.
+def valid_shifts(max_d=400):
+    out = []
+    for k in range(-20, 21):
+        for j in range(-20, 21):
+            t, x = 12 * k + 30 * j, 8 * k - 8 * j
+            if -29 <= t <= 0 and -60 <= x <= max_d:
+                out.append((-t, x))
+    return sorted(set(out), key=lambda p: p[1])
+
+
+def insert_exact(row, c, placements, s, D):
+    """Insert Ebars (k, o) after array index c (exact offsets o from c, must
+    match the ether; see insert_items) and re-attach row[c:] displaced by
+    (-s, D) in spacetime (evolved s steps, shifted D cells). Returns None if
+    the ether does not match at the seam or material would overlap."""
+    c0 = phase_at(row, c)
+    seg, pos, cph = [], c, c0
+    for pl in sorted(placements, key=lambda p: p[1]):
+        k, o = pl[:2]
+        tiles = ebar_tiles() if len(pl) == 2 else ebar_tiles(pl[2], 16, pl[3])
+        arr, cl, cr = tiles[k]
+        x = c + o
+        if x < pos or (cl - x) % TILE != cph:
+            return None
+        seg.append(fill_ether(x - pos, cph, pos))
+        seg.append(arr)
+        pos, cph = x + len(arr), (cr - x) % TILE
+    pad = 64
+    ext = evolve_free(row[c:].copy(), s, pad)
+    ext[:32] = fill_ether(32, phase_at(ext, 32), 0)
+    start = c - pad + D                   # array index of ext[0]
+    f = next(x for x in range(len(ext)) if ether_phase(ext[x:x + TILE])[0] < 0)
+    if start + f < pos:                   # remainder's first glider window
+        return None
+    if (phase_at(ext, 0) - start) % TILE != cph:
+        return None                       # slip of the inserted material != 0
+    k = pos - start
+    head = np.concatenate([row[:c]] + seg)
+    new = np.concatenate([head, ext[k:]])
+    if len(new) < len(row):
+        return None
+    return new[:len(row)]
+
+
+def lab_trace(machine, row, times, lo, hi):
+    """Census in the LAB frame over global columns [lo, hi) at each time."""
+    r = Run(row, machine.origin)
+    out = []
+    for t in times:
+        r.step(t - MAX_DT - r.t)
+        h = r.history(lo + machine.origin, hi + machine.origin, MAX_DT)
+        out.append((t, [(a + lo, b + lo, k) for a, b, k in census(h)]))
+    return out

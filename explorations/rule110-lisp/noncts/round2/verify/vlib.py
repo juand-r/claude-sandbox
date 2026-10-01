@@ -473,3 +473,12 @@ def harvest(name, row, T, which=0):
     if per is None:
         raise ValueError(f"{name}: no period <= 200")
     return register(name, base, per)
+
+
+def build_right(items, c_right=0, **kw):
+    """Like build, but the ether phase to the RIGHT of the last item is
+    fixed (c_right), so the snapped positions of the right-hand items do not
+    depend on the widths of the items to their left. Use this for a rigid
+    program stream whose left part (e.g. the counter) varies."""
+    c0 = (c_right - sum(LIB[n].w for n, _, _ in items)) % T14
+    return build(items, c0=c0, **kw)

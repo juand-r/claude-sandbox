@@ -20,6 +20,9 @@ def lateral(p):
     return p[2] - g.velocity * p[1]
 
 
+ABSORB = False   # allow a marker to swallow a mover completely
+
+
 def cross(mtype, seed, mover):
     name, t, x = mover
     try:
@@ -28,7 +31,7 @@ def cross(mtype, seed, mover):
         return None
     ms = [p for p in prods if p[0] == mtype]
     rest = [p for p in prods if p[0] != mtype]
-    if len(ms) != 1 or not rest or not all(p[0] in EBAR_SPEED for p in rest):
+    if len(ms) != 1 or (not rest and not ABSORB) or not all(p[0] in EBAR_SPEED for p in rest):
         return None
     return (ms[0][1], ms[0][2]), rest
 

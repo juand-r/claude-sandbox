@@ -35,3 +35,26 @@ models with differential tests), integration (M1 -> M2 -> M3).
   right for k >= 3).
   Anomalies: E^3+GB4 1/42 and E^6 + G/GB1/GB2 1-2/42 gave debris - probably
   a too-close initial placement; not chased (irrelevant to claims so far).
+- 23:40-23:55 theory: chain machines (models.py). Found the monotonicity +
+  Dickson proof that chain machines are eventually periodic/decidable
+  (THEORY.md s.2). Feed-forward theorem (s.3). Random/exhaustive searches
+  support, but the TZ control shows random search is a weak test (I say so).
+- Mistake caught: my first M1 scans used left-anchored build(); the snapped
+  x0 of later packets depends on the counter's width, so the G-GB3 offset
+  varied with v (by (0,14) steps, which changes the A x G class). Added
+  build_right(); m1_program.py re-does M1 with a fixed stream geometry.
+  The m1_scan/m1_search results (v-dependent geometry) should be read as
+  "per-v placements", not as one rigid stream; the 202-linear finding is
+  per placement and still stands in that sense, but should be redone
+  right-anchored before being relied on. TODO.
+- 00:00 posted board (tools, theorem, M1 gadget).
+- 00:01 xlate.py: collider-convention scenes -> my convention; my rebuilt row
+  asserted equal to collider/build_row cell for cell. gate_scene.py imports
+  gate/stream.build read-only.
+- 00:04 gate's Z wrap: I^v Z^3 VERIFIED; random words REFUTE it as a general
+  instruction (INZZ...). Cause: Z on value 1 -> trailing GB4 hits zero E ->
+  displacement (my earlier caveat #2 paid off). Posted 00:06.
+- Mistake: killed a background job by its subshell PID; the python child
+  survived (two copies wrote the same log for ~10 s). Now I record the
+  python PID itself (ps -eo pid,ppid,cmd) and kill that.
+- Typer gap: E^10+ were '?' -> extended library to E^15.

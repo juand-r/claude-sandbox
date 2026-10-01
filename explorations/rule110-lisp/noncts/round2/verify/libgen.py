@@ -8,7 +8,7 @@ CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib_v1.pkl")
 def generate():
     vlib.init_martinez()
     prev = "E"
-    for n in range(2, 10):
+    for n in range(2, 16):
         row, org, _ = vlib.build([(prev, 0, 0), ("B", 0, 80)], T=400)
         vlib.harvest(f"E^{n}", vlib.evolve(row, 400), 400, which="all")
         prev = f"E^{n}"

@@ -29,13 +29,14 @@ ZCLASS = {
     "GB3@(0,0)+GB4@(-25,46)": 0,           # Z6: DEC, zero -> E^7 (wrap)
     "GB3@(0,0)+GB5@(-14,40)": 0,           # W7: NOP, zero -> E^8
     "GB5@(0,0)+GB4@(-4,56)": 2,            # X8: INC, zero -> E^9
+    "GB1@(0,0)+GB1@(-1,36)": 1,            # J: INC, zero -> Bbar (left) + E
 }
 ALIAS = {"I": "GB5", "N": "GB4", "D": "GB3",
          "Z": "GB3@(0,0)+GB4@(-25,46)", "W": "GB3@(0,0)+GB5@(-14,40)",
-         "X": "GB5@(0,0)+GB4@(-4,56)"}
+         "X": "GB5@(0,0)+GB4@(-4,56)", "J": "GB1@(0,0)+GB1@(-1,36)"}
 
 
-def build(program, spacing=250, zclass=None):
+def build(program, spacing=450, zclass=None):
     """program: list of packet names (or one-letter aliases)."""
     zc = dict(ZCLASS)
     zc.update(zclass or {})
@@ -65,12 +66,34 @@ def horizon(scene):
     return int(15 * (last[3] + 80)) + 1500   # G closes on E at 1/15 cell/gen
 
 
+def ca_check(scene, sim, T):
+    """Exact automaton (fastca moving window, cross-checked against
+    ../../engine.py in test_fastca.py) vs the glidersim prediction at time T,
+    cell for cell over the whole non-ether region."""
+    from fastca import Window
+    sts = [LIB.gliders[a].state_at(t, x, 0) for a, t, x in scene]
+    row, x0 = build_row(sts, pad=200)
+    first = min(sts, key=lambda s: s[3])
+    last = max(sts, key=lambda s: s[3])
+    cL0 = (first[1] - first[3]) % TILE
+    cR0 = (last[2] - last[3]) % TILE
+    # build_row's row is cyclic with a clean wrap; cut it to [x0, x0+W)
+    w = Window(row, x0, cL0, cR0).run(T)
+    pred_sts = [LIB.gliders[n].state_at(t0, xx, T) for n, t0, xx in sim.gl]
+    lo = min([w.x0] + [s[3] for s in pred_sts]) - 100
+    hi = max([w.x0 + len(w.row)] + [s[3] + len(s[0]) for s in pred_sts]) + 100
+    pred = free_row(LIB, sim.gl, T, lo, hi - lo, cL0)
+    return pred is not None and bool(np.array_equal(pred, w.cells(lo, hi)))
+
+
 def run(scene, T=None, ca=True):
     """-> (final glider list (glidersim), log, CA agrees?)."""
     T = T or horizon(scene)
     sim = GliderSim(LIB, scene)
     sim.run(T)
     ok = None
+    if ca == "fast":
+        return sim.state(), sim.log, ca_check(scene, sim, T)
     if ca:
         sts = [LIB.gliders[a].state_at(t, x, 0) for a, t, x in scene]
         row, x0 = build_row(sts, pad=T + 200)

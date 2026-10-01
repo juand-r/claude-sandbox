@@ -25,3 +25,22 @@
   (escaping A's) or the nonzero branch >= 2 more positive (left B's).
   Brute force over words in {I, S, J} (S = saturating DEC): no parity (as
   expected, all monotone).
+- 00:00 FOUND (scan + glidersim, then CA): wrap packets. Z6 = GB3@(0,0)+GB4@(-25,46)
+  is a class-free DEC for n = 2..9; at zero (class 0) E -> E^7. Mechanism: the
+  GB3's zero answer A meets the trailing GB4 in class 3 and shatters it into
+  6 B's (A + GB4 #3 -> B^2 + B_2_B_4_B_2_B, catalog), which fly to E: +6.
+  B-charge jumps by 7, slip conserved: exactly what the lemma allows.
+  Also W7 = GB3@(0,0)+GB5@(-14,40) (NOP, zero class 0 -> +7, class 1 -> NOP),
+  X8 = GB5@(0,0)+GB4@(-4,56) (INC, zero class 2 -> +8).
+- test_wrap.py 3 --ca: prefix I^v then Z^3, v = 0..6: final E^((v-3) mod 7 + 1),
+  glidersim == automaton cell for cell [sim]. (log test_wrap_m3_ca.log)
+- Mistake: first stream builder applied the zero class to every packet; after a
+  slip-6 packet the class key is meaningless (relative vector not
+  ether-compatible). Fixed: apply the designated class only where the
+  predecessors' slip is 0 mod 14 (the only slots where zero is possible).
+- J (INC unless zero, Bbar left) at zero moves E to a different class relative
+  to the stream, so J^5 Z^6 (= "DEC, wrap to 1" semantically) fails with the
+  naive builder (next J meets zero in class 2 -> debris). Need per-slot classes.
+- Semantic search: words over {I,Z,W,X,J} up to length 6-9: no parity; but
+  Zk := J^(6-k) Z^(7-k) is "DEC with wrap to k" (k=0: saturating DEC), so
+  J^5 Z^6 = mod-2 down-counter (length 11, beyond the search).
