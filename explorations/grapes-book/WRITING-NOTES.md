@@ -7,13 +7,22 @@ written.
 
 ## Chapter plans
 
-### Chapter 1 (plan, revised 2026-10-01)
+### Chapter 1 (draft 2, 2026-10-01)
 
-Time of writing, inside the fiction: January 2020. Movement I (Order), and
-only its beginning. Working title: "Concord".
+Rewritten from scratch. Draft 1 (in git history) was rejected: too much
+narrator, too many planted tells, the writing tried too hard.
 
-The author's notes on the first draft of this plan (2026-10-01): it moved
-the plot too fast, and its tone was McPhee's only. The first plan put four
+Draft 2 constraints (from the author):
+- No margin notes (no `\aside`).
+- No backstory, no mystery seeds.
+- About grapes only. This is "volume 1."
+- Style: McPhee's *Oranges* crossed with Camus' *The Fall*.
+- Detailed process notes in `PROCESS-NOTES.md`.
+
+Working title: "Concord".
+
+~~The author's notes on the first draft of this plan (2026-10-01): it moved
+the plot too fast, and its tone was McPhee's only.~~ The first plan put four
 tells in one chapter (the missing serpette, the pond, a sentence breaking
 off at the creek, giving up wine). That is most of movement I spent in its
 first pages. Now: almost no plot. The reader should finish chapter 1 having
@@ -72,25 +81,22 @@ What the reader knows, suspects, and expects at the end of each chapter. Use
 it to check that the tells (`STYLE.md`, 4.2) are paced, and that nothing is
 revealed too early.
 
-### After chapter 1 (first draft, 2026-10-01)
+### After chapter 1 (draft 2, 2026-10-01)
 
-- Knows: the author is Hollis Vane (title page), 71, in Napa, half a century
-  in the wine trade, now writing about grapes at night, on index cards, in
-  January 2020. He grew up in a small Iowa town he will not name; his father
-  kept the hardware store; Welch's grape jelly was his first "grape". He came
-  to California at some point in his working life (Winkler's textbook was
-  "handed to me when I came to California").
+- Knows: the author is Hollis Vane (title page), in Napa ("St. Helena"),
+  in January. He grew up in a small Iowa town; Welch's grape jelly was his
+  first "grape." He is careful, precise, and slightly obsessive about
+  counting. He has worked with wine ("I have been paid, for most of my
+  life, to be careful").
 - Has enjoyed: the encyclopedia of the grape (genus, species, varieties,
-  tonnes, the berry, the bunch), the Concord, Bull's epitaph, Welch the
-  temperance dentist, the PB&J myth.
+  tonnes, the berry, the bloom, the bunch), the Concord, Bull's epitaph,
+  Welch the temperance dentist, the PB&J correction, methyl anthranilate,
+  the wheat/bread analogy.
 - Might notice, without being able to say why it matters: he cannot count
-  the same bunch twice the same way; he will not name his town, partly so
-  that "someone from there" will not write to him; he envies a plant that
-  "does not require anybody"; he checks the lock; he writes from 11:52 p.m.
-  to 2:31 a.m.
-- Expects: more of the same, a strange, charming, over-exact book about
-  grapes. Nothing in chapter 1 points to a crime, a woman, the Army, or a
-  false name.
+  the same bunch twice; he will not name his town; something about the
+  bloom passage ("less itself") is oddly tender for a grape.
+- Expects: more of the same, a precise, witty book about grapes. Nothing
+  in draft 2 points to a crime, a woman, the Army, or a false name.
 
 ## Threads planted (owed a return)
 
@@ -99,15 +105,19 @@ whether it has been paid off.
 
 | Thread | Planted in | Status |
 |---|---|---|
-| The count: 117, 118, 117; he expects 106 in the morning (117 minus the 11 he cut) | Ch. 1, end | Owed: the morning count, early in ch. 2. Running thread; can sour later |
+| The count: 117, 118, 117; expects 106 in the morning | Ch. 1, end | Owed: the morning count, early in ch. 2 |
 | The town he will not name ("someone from there will write to correct me") | Ch. 1, Iowa | Owed, much later |
-| Names: "A grape that travels collects names, as people do who travel" | Ch. 1, subnote on varieties | Quiet seed for the false name. Do not return to it soon |
-| "It does not require anybody. I have sometimes envied it." (the hermaphrodite vine) | Ch. 1 | Seed for his solitude. Return lightly |
-| Bull's grave: "I have not seen the stone. I mean to." | Ch. 1, note | Owed. Idea: he plans the trip to Concord, and the pandemic (March 2020) makes it impossible |
-| The foxy sniff: "the first thing I learned to despise ... in order to be admitted somewhere" | Ch. 1 | Seed for how he learned to belong in France (never says why he needed to) |
-| The cards: Card 1 at 11:52 p.m. on 7 Jan 2020; Card 23 at 2:31 a.m.; shoebox 2020 | Ch. 1, asides | Running device; card numbers must stay consistent |
-| The lock checked | Ch. 1, last aside | Habit; BIO says he checks three times and says twice |
-| "the man who notices it usually does so at the moment it begins to apply to himself" | Ch. 1, Welch/Bull | Clamence turn; no payoff needed |
+| Names: "A grape that travels collects names, as any traveller does" | Ch. 1, subnote on varieties | Quiet seed. Do not return soon |
+| Bull's grave: "I have not seen the stone. I mean to." | Ch. 1, note | Owed. Idea: pandemic prevents the trip |
+| "We are loyal to the first few things we are given, and we call the loyalty taste" | Ch. 1 | Observation; can return |
+| "Few things are entirely what they seem" (Concord parentage) | Ch. 1, subnote | Observation; can return |
+
+Threads from draft 1 that were cut in draft 2 (no longer in the text):
+- "I have sometimes envied it" (hermaphrodite vine) -- cut, too personal
+- "the first thing I learned to despise" (foxy sniff) -- cut, backstory
+- The cards / Card 1 / shoebox 2020 -- cut, no asides
+- The lock checked -- cut, no asides
+- "the man who notices it usually does so..." -- cut, too confessional
 
 ## Ideas for later
 
