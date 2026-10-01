@@ -262,13 +262,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] belief-in-the-implied-invisible
 - [x] zombies-the-movie
 - [x] excluding-the-supernatural
-- [ ] psychic-powers
-- [ ] quantum-explanations
-- [ ] configurations-and-amplitude
-- [ ] joint-configurations
-- [ ] distinct-configurations
-- [ ] collapse-postulates
-- [ ] decoherence-is-simple
+- [x] psychic-powers
+- [x] quantum-explanations
+- [x] configurations-and-amplitude
+- [x] joint-configurations
+- [x] distinct-configurations
+- [x] collapse-postulates
+- [x] decoherence-is-simple
 - [ ] decoherence-is-falsifiable-and-testable
 - [ ] privileging-the-hypothesis
 - [ ] living-in-many-worlds
