@@ -1,89 +1,122 @@
 """Screen: Z = two Ebars placed in front of the rejector-prepared reader
-P_1 (Ebar@K0+39, E@K0+68): does [Z][P_1] read s_1 differently?
+P_1 (Ebar cells K0+39..48, E cells K0+68..72 at t_in): does [Z][P_1] read
+the next symbol s_1 differently (forced N, inverted, forced Y)?
 
-Scenes (lscene, exact): tape NYYN (s_1 = Y) and NNYY (s_1 = N), t_in =
-31500; s_1's four C's are at K0-486..K0-357 then, the region
-[K0-340, K0+25) is ether. Z replaces that region by ether + Ebar_2 + Ebar_1
-(slip 0 total, phases matched; splice.replace_region). Placements (k, o):
-Ebar evolved k steps (0..29), tile start at offset o (one residue mod 14
-per k). Ebar_1 tile start in [X1LO, X1HI) rel K0; Ebar_2 tile start in
-[x1 - GAP, x1 - 20).
-Record: for each tape, diffs of the window at t_in + T in [K0+100, K0+800)
-vs the standard Y-read and N-read windows, and diffs in [K0-400, K0+100)
-vs the same tape's standard window. The N tape is run only when the Y tape
-is "interesting" (right part equal to either standard).
+Scenes (lscene, exact): tape NYYN (s_1 = Y: C's at K0-488,-443,-398,-359)
+and NNYY (s_1 = N: C's at K0-469,-424,-398,-359), t_in = 31500; the region
+[K0+RA, K0+RB) is ether in both. Z = Ebar_2 (left) + Ebar_1 (right), tiles
+(Ebar evolved k steps, 16-cell ether margins) written into that region with
+consistent ether phases (Ebar slip is 7, so two Ebars restore the phase).
+Record per placement: for each tape [dY, dN, dL]: diffs in [K0+100, K0+800)
+at t_in + T vs the standard Y-read / N-read windows, and diffs in
+[K0-400, K0+100) vs the same tape's standard window. The N tape is run
+only if the Y tape's right part equals a standard window.
     python zscreen.py X1LO X1HI GAP out.jsonl"""
 import sys, json
 import numpy as np
 from lscene import *
+from engine import ETHER
 T, TIN = 3000, 31500
 WLO, WHI, SPLIT = -400, 800, 100
-RA, RB = -340, 25
+RA, RB = -345, 37
+ETH = np.array([int(c) for c in ETHER], dtype=np.uint8)
+
+JS = range(-4, 5)              # answer delays of 30j steps tolerated
 
 def setup():
     S = {}
     for tape in ("NYYN", "NNYY"):
         m = Machine(tape, ["YNNNNN"], TIN + T + 500, left_periods=3, right_periods=2)
         K0 = [a for n, a, b in m.blocks if n == "K"][0]
-        sc = Scene(m, m.row, TIN, K0 + WLO, K0 + WHI, T + 100)
-        S[tape] = (K0, sc, sc.run(sc.seg, T))
+        sc = Scene(m, m.row, TIN, K0 + WLO, K0 + WHI, T + 200)
+        S[tape] = (K0, sc, sc.run(sc.seg, T), {j: sc.run(sc.seg, T - 30 * j) for j in JS})
     return S
 
-def valid_offsets(seg, a, k):
-    arr, cl, cr = ebar_tiles()[k]
-    c = phase_at(seg, a)
-    # tile at a+o needs (cl - (a+o)) % 14 == c_running; the running phase
-    # changes after Ebar_2, so only the FIRST tile's residue is fixed here
-    return (cl - c - a) % TILE
+def ether(p, i0, n):
+    return ETH[(p + np.arange(i0, i0 + n)) % TILE]
+
+def build(sc, K0, items):
+    """items: list of (tiles, k, xrel) left to right (xrel = tile start rel
+    K0). Returns new seg or None (overlap / phase mismatch / out of region)."""
+    a, b = sc.ebar_to_seg(K0 + RA), sc.ebar_to_seg(K0 + RB)
+    seg = sc.seg
+    p = phase_at(seg, a)
+    pb = phase_at(seg, b - TILE)
+    new = seg.copy()
+    pos = a
+    for tiles, k, xr in items:
+        arr, cl, cr = tiles[k]
+        x = sc.ebar_to_seg(K0 + xr)
+        if x < pos or x + len(arr) > b or (cl - x) % TILE != p:
+            return None
+        new[pos:x] = ether(p, pos, x - pos)
+        new[x:x + len(arr)] = arr
+        pos = x + len(arr)
+        p = (cr - x) % TILE
+    if p != pb:
+        return None
+    new[pos:b] = ether(p, pos, b - pos)
+    return new
 
 def score(S, tape, w):
-    K0, sc, ref = S[tape]
+    """[dY, jY, dN, jN, dLY, dLN]: right-part diffs vs the standard Y / N
+    read windows delayed by 30j (min over j, and the j), left-part diffs vs
+    the standard Y / N windows (j = 0)."""
     s = SPLIT - WLO
-    rY, rN = S["NYYN"][2], S["NNYY"][2]
-    return [int((w[s:] != rY[s:]).sum()), int((w[s:] != rN[s:]).sum()),
-            int((w[:s] != ref[:s]).sum())]
+    out = []
+    for ref_tape in ("NYYN", "NNYY"):
+        R = S[ref_tape][3]
+        d = {j: int((w[s:] != R[j][s:]).sum()) for j in JS}
+        j = min(d, key=lambda q: (d[q], abs(q)))
+        out += [d[j], j]
+    out += [int((w[:s] != S["NYYN"][2][:s]).sum()), int((w[:s] != S["NNYY"][2][:s]).sum())]
+    return out
+
+def placements(sc, K0, tiles, xlo, xhi, p_in):
+    """(k, xrel) with tile start in [xlo, xhi) matching incoming phase p_in;
+    returns list of (k, xrel, outgoing phase)."""
+    out = []
+    for k in range(len(tiles)):
+        arr, cl, cr = tiles[k]
+        for xr in range(xlo, xhi):
+            x = sc.ebar_to_seg(K0 + xr)
+            if (cl - x) % TILE == p_in:
+                out.append((k, xr, (cr - x) % TILE))
+    return out
 
 if __name__ == "__main__":
     x1lo, x1hi, gap, outp = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
     S = setup()
-    # positive control: identity (empty Z) reproduces the standard windows
     for tape in S:
-        K0, sc, ref = S[tape]
-        a, b = sc.ebar_to_seg(K0 + RA), sc.ebar_to_seg(K0 + RB)
-        seg = replace_region(sc.seg, a, b, [])
-        print("control", tape, score(S, tape, sc.run(seg, T)), flush=True)
+        K0, sc = S[tape][:2]
+        print("control (empty Z)", tape, score(S, tape, sc.run(build(sc, K0, []), T)), flush=True)
     done = set()
     try:
         for line in open(outp):
-            r = json.loads(line); done.add((r["k1"], r["x1"], r["k2"], r["x2"]))
+            r = json.loads(line); done.add((r["k2"], r["x2"], r["k1"], r["x1"]))
     except FileNotFoundError:
         pass
+    E = ebar_tiles()
+    K0, sc = S["NYYN"][:2]
+    p0 = phase_at(sc.seg, sc.ebar_to_seg(K0 + RA))
     fh = open(outp, "a")
-    K0, sc, _ = S["NYYN"]
-    a, b = sc.ebar_to_seg(K0 + RA), sc.ebar_to_seg(K0 + RB)
     n = 0
-    for k1 in range(30):
-        for x1 in range(x1lo, x1hi):
-            for k2 in range(30):
-                for x2 in range(x1 - gap, x1 - 20):
-                    if x2 < RA or (k1, x1, k2, x2) in done:
-                        continue
-                    pl = [(k2, x2 - RA), (k1, x1 - RA)]
-                    rec = {"k1": k1, "x1": x1, "k2": k2, "x2": x2}
-                    ok = True
-                    for tape in ("NYYN", "NNYY"):
-                        K0, sc, ref = S[tape]
-                        aa, bb = sc.ebar_to_seg(K0 + RA), sc.ebar_to_seg(K0 + RB)
-                        seg = replace_region(sc.seg, aa, bb, pl)
-                        if seg is None:
-                            ok = False; break
-                        rec[tape] = score(S, tape, sc.run(seg, T))
-                        if tape == "NYYN" and min(rec[tape][:2]) > 0:
-                            break
-                    if not ok:
-                        continue
-                    fh.write(json.dumps(rec) + "\n"); n += 1
-                    if n % 200 == 0:
-                        fh.flush()
+    for k2, x2, p1 in placements(sc, K0, E, RA, x1hi - 20, p0):
+        for k1, x1, _ in placements(sc, K0, E, max(x1lo, x2 + 20), min(x1hi, x2 + gap), p1):
+            if (k2, x2, k1, x1) in done:
+                continue
+            rec = {"k2": k2, "x2": x2, "k1": k1, "x1": x1}
+            items = [(E, k2, x2), (E, k1, x1)]
+            for tape in ("NYYN", "NNYY"):
+                K0t, sct = S[tape][:2]
+                seg = build(sct, K0t, items)
+                if seg is None:
+                    rec[tape] = None; break
+                rec[tape] = score(S, tape, sct.run(seg, T))
+                if tape == "NYYN" and min(rec[tape][0], rec[tape][2]) > 0:
+                    break
+            fh.write(json.dumps(rec) + "\n"); n += 1
+            if n % 100 == 0:
+                fh.flush()
     fh.flush()
-    print("done", n)
+    print("done", n, flush=True)

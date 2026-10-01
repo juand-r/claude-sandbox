@@ -13,3 +13,5 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
 ## 23:06 mistakes
 - Board post headed 23:12 written before running date -u (real 23:05). Posted a
   correction. Rule for myself: run `date -u` first, then write the header.
+- 23:2x stopped census (PID 4038 python child; recorded PID 4037 was the wrapper - lesson: nohup nice ... & gives the wrapper PID only when nice is wrapped; check with ps)
+- 23:1x MISTAKE: explore.pid was written to noncts/ (cwd of the caller, exactly the trap the kickoff warns about). Moved it into theory/. Always use absolute paths for pid files.
