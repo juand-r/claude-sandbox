@@ -106,3 +106,30 @@ def check(tape, apps, nread, surgery=None, v=None, T=None):
         r2 = Run(new, m.origin); r2.t = r.t; r = r2
     got, times = outcomes(r, regs, T, [len(apps[j % len(apps)]) for j in range(nread)])
     return got, times, m
+
+
+def rewrite2(row, origin, t, lo, hi, items, mingap=3):
+    """rewrite() allowing tiles to overlap in their 16-cell ether margins
+    (cores >= mingap apart), as zscreen.build2."""
+    sh = ebar_shift(origin, t)
+    a, b = lo + sh, hi + sh
+    p, pb = phase_at(row, a), phase_at(row, b - TILE)
+    new = row.copy()
+    new[a:b] = ETH[(p + np.arange(a, b)) % TILE]
+    core_end = a - mingap
+    for tiles, k, xg in items:
+        arr, cl, cr = tiles[k]
+        x = xg + sh
+        if x + 16 < core_end + mingap or x < a or x + len(arr) > b or (cl - x) % TILE != p:
+            return None
+        s0 = max(0, core_end - x)
+        new[x + s0:x + len(arr)] = arr[s0:]
+        core_end = x + len(arr) - 16
+        p = (cr - x) % TILE
+        new[x + len(arr):b] = ETH[(p + np.arange(x + len(arr), b)) % TILE]
+    if p != pb:
+        return None
+    return new
+
+def tiles_of(name):
+    return ebar_tiles() if name == "Ebar" else glider_tiles(name)

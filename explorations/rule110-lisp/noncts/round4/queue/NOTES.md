@@ -55,3 +55,31 @@ level, charge law, option (c) SAT).
   marker whose net effect leaves e extra crossers needs e = 0 mod 8;
   with slip(Z) = 0 the cheapest is a fully consumed Z (debris identical to
   the plain N read).
+
+### 23:30-23:55 consumed markers; V-equivalence
+- zlib.py [sim]: Z = one slip-0 library object (74 objects, 56,490
+  placements in [K0-345, K0+37)): 175 normal, 28 forced-N, 0 inverted/
+  forced-Y. Best forced-N: compound Ebar@(0,0)+Ebar@(-1,39) at k=19,
+  x = -299/-243/-187/-131/-75 (period 56): the compound is CONSUMED, debris
+  = the standard remnant Ebar but displaced (left diff 5-22 cells).
+- t_forcedZ.py [sim] (full machine) with that Z at x=-243: reads 1 (forced
+  N), 2, 3 correct; read 4 (first read of data appended AFTER the forced
+  read) broken, both tapes. Reads of old tape symbols are fine, so the
+  displaced remnant is crossed by C's; [hyp] it is hit by the ossifiers
+  (A4 x Ebar has 6 classes, one invisible).
+- [arg] A static debris object is harmless iff its placement is in the
+  standard class both against tape C's (mod <(7,0),(30,-8)>, index 4) and
+  against ossifier A4's (mod <(3,2),(30,-8)>, index 6): i.e. modulo
+  V = <(12,8),(30,-8)> (index 12), which is exactly round 2's empirically
+  found machine-symmetry lattice. vequiv.py tests debris V-equivalence
+  (lab frame, a*(12,8)+k*(0,56)).
+- zmix.py [sim] pairs of E-family objects (E^3+Ebar, E^3+E^3, E+E^5,
+  E^2+E^4, ...; ~200k placements): 9 more forced-N (E^4 + E^2), none with
+  V-equivalent debris. vfilter1.txt: of 45 forced-N, 0 V-equivalent; of
+  235 normal, 3 V-equivalent: Ebar_8_Ebar at (k=5, x=-28) is consumed with
+  EXACTLY the standard outcome (left diff 0), at x=-84, -140 V-shifted.
+- MISTAKE: zscreen/zmix (non-tight) required non-overlapping 43-cell
+  tiles, so Ebar pairs closer than ~43 cells were never tried by the pair
+  screens. build2 (tiles overlap in ether margins; positive control: the
+  library compound at x=-243 is rebuilt exactly as two tiles) fixes it;
+  tight screens running (zmix_tight.jsonl).

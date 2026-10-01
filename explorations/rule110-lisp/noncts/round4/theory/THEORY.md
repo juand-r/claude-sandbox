@@ -232,11 +232,97 @@ The concrete targets are therefore:
   L + 1 -> 1 + L, L + W -> W + R, up to renaming heads within cycles; the
   first stream-free non-periodic computation in Rule 110 if found.
 
-### 3.7 Pass-cycle search [sim, in progress]
+### 3.7 Pass data [sim]
 
-(filled in below as runs finish)
+All runs: exact Rule 110 (collider's packed stepper), products typed by
+collider's typer, one collision per pair (Lemma L1). Fixpoint test: the
+outgoing moving objects' signatures (object keys and relative starts over
+p consecutive steps) intersect those of the incoming train evolved alone;
+controls: a train against itself 3p+1 steps later is identical (True), two
+different trains are not (False).
 
-### 3.8 Finite seeds and the signal-machine speed theorems [arg]
+| heads | cells | clean passes | head after the pass | fixpoints |
+|---|---|---|---|---|
+| all 391 B-lattice trains w <= 30 (btrains.py) | C1, C2, C3 | 10 L-passes | always a single B | 0 |
+| packets of <= 5 separate A's within 70 cells (1185) | C1, C2, C3 | 0 R-passes (96 clean steps, all reflections) | - | 0 |
+| packets of <= 5 separate B's within 60 cells | C1, C2, C3 | 3092/3093 dirty | - | 0 |
+| all 6398 A-lattice trains w <= 30 (shuttle's SAT list) | C1, C2, C3 | see below | | |
+| all 1071 D-lattice trains w <= 30 | C1, C2, C3 | see below | | |
+| library heads (census, 226) | 100+ library stationary objects | 59 passes | single A or B, except 4-B packets + C3_11_C1#2 -> C1_11_C2 + 5 B's | 0 |
+
+Observation: every pass seen so far leaves ONE glider (or, once, a head
+that is dirty on the next identical cell). With synth's round-1 result
+that a single A is never passed or reflected by any stationary object of
+width <= 24, and a single B only by special objects, no pass chain
+survives two cells at these sizes.
+
+### 3.8 Route 14, the bouncer machine: reflections only [thm/model]
+
+The no-pass difficulty applies to heads that must CROSS cells (Lemma L4).
+A two-counter machine needs no crossing at all if the counters are
+distances and the head only bounces:
+
+    W0 (fixed)  ~x~  W1  <-- one head bounces -->  W2  ~y~  W3 (fixed)
+
+- x = (p1 - p0 - g)/u and y = (p3 - p2 - g)/u. A left-moving head (B
+  lattice) reflects off W1 into a right-mover (A or D lattice) and may move
+  W1 by -u, 0 or +u: DEC x, nothing, INC x. Likewise at W2 for y.
+- Zero test: at x = 0, W1 sits at the small fixed distance g from W0. If g
+  is smaller than the reaction's reach, the head meets the compound Z01
+  and has a different reaction. Same for y.
+- Finite control: the head's shape (and, optionally, wall types).
+- Timing: none (Lemma L1); one head, so no three-body events.
+- Signal-machine theorem: this is a 3-speed system (A or D, 0, B) and can
+  start from a FINITE seed. Durand-Lose's rational 3-speed theorem would
+  forbid it in a signal machine, where a stationary signal can never move
+  (outputs are emitted at the collision point). Rule 110 reactions emit
+  their products at offsets, so a wall CAN move by a fixed u per reflection.
+  This offset loophole is exactly what the bouncer uses [arg].
+
+**Model and compiler [model]** (`bouncer.py`). Minsky program -> round
+3's transfer machine (`lm.py`: Goedel numbering, loops XY(k,1) and
+YX(1,j) with remainder branching) -> bouncer reaction table:
+- XY(k,1) = a cycle of k head types; each DECs x at W1; the k-th also
+  INCs y at W2. If x reaches 0 after r < k DECs of a period, head r meets
+  Z01: the zero reaction knows r, and r one-shot INC-x round trips restore
+  x = r before the next state.
+- YX(1,j) = a cycle of j head types; the DEC of y (the zero test) comes
+  first in each period, so a zero of y is seen before any INC x.
+- Non-test reactions are defined identically on W1 and Z01 (the compound
+  must look like a plain wall to them).
+Differential test against scholar's Minsky interpreter: 197 halting runs
+(registers <= 5, <= 60 Minsky steps), 0 failures. Controls: zero
+reactions that ignore the remainder: 59/197 fail; XY loops that INC y at
+the start of a period: 59/197 fail. Table size: 25.9 reactions per Minsky
+instruction (counting the W and Z versions separately).
+
+**What the physics must supply** (spec, all single-class):
+- B1. L-reflections: h + W1 (from the right) -> W1 moved by d in
+  {-u, 0, +u} + h' (A/D lattice), for the program's head types.
+- B2. R-reflections at W2, likewise.
+- B3. Zero: h + Z01 -> Z01 + h'' with h'' != the plain-wall output, where
+  Z01 = W0 and W1 at distance g; and the plain reaction is unaffected by a
+  W0 at distance g + u.
+- B4. "DEC into zero": h + W1 with W0 at distance g + u gives exactly Z01.
+- B5. Closure: the head shapes produced are the program's head types.
+
+**The catch [arg].** B5 is the same matching problem as route 12: the
+outgoing head is fixed by physics, so a program must be FOUND inside the
+natural map, not imposed on it. A universal machine needs a fixed
+universal program: a universal 2-counter machine has hundreds of
+instructions (Korec's small universal register machines have about 20
+instructions on 8 registers; Goedel-coding them into two counters
+multiplies that), so about 26 x that many reflections. Route 12 needs about
+50 reactions but also pass cycles, which look scarce (s.3.7).
+
+**First physical milestone for both routes: a perpetual bouncer.** A head
+that reflects back and forth between two walls for ever (a closed cycle of
+reflections). If each round trip moves a wall by a net u, the interval grows
+for ever: the first stream-free, non-periodic Rule 110 process built from
+stationary walls and one head. `explore2.py` searches for it on uniform
+tapes (a bouncer appears there as a run confined to two cells).
+
+### 3.9 Finite seeds and the signal-machine speed theorems [arg]
 
 Durand-Lose (CiE 2013; I read s.1-3 and 5 of the HAL version): a *rational*
 signal machine with three speeds started from a *finite* configuration is
@@ -296,6 +382,18 @@ kicks into no-ops. That is an abort.
   to packets that did not. Since the flag exists only between a zero event
   and the next gate, this is a bounded, program-determined correction
   (as in round 2's planner).
+- F6. Crossing-count balance (the real constraint). A clean crossing
+  displaces the MARKER too. An aborted kick now crosses markers it would
+  otherwise have been absorbed by (or never reached), so the number of
+  crossings each marker sees in a block depends on whether the block was
+  aborted, and the marker's class for all LATER packets shifts by
+  (extra crossings) x (crossing displacement) modulo the class lattice.
+  Every block must therefore have the same crossing count at every marker
+  in both branches, modulo the order of that displacement in the class
+  group (Cook's "appendant length a multiple of 6" in another form).
+  The eater-based abort has the same problem with the opposite sign, so
+  this is not a new cost of the class-shift idea, but nobody has checked
+  it for either.
 
 Why this is worth searching: it replaces "eater + kick in one packet"
 (UNSAT W <= 30) by conditions on CROSSINGS, which the lane has in
@@ -342,6 +440,42 @@ runs left to right (R3's (L)).
 - **Intrinsic universality (row 16)**: Ollinger's open problem; requires
   blocks to exchange information both ways every simulated step, so it
   inherits every transport problem at once. Lowest priority.
+
+## 6b. Route 20, two windows and two gaps: the overshoot law [arg]
+
+Layout (delayline's drift switch, made symmetric): W_L ~g1~ M ~g2~ W_R.
+W_L and W_R are short rods kept at value 0/1 ("windows"), each driven by
+its own stream; a window walks under NOPs when open and stays when closed
+(delayline 23:33: E walks, E^2 does not). Both counters are gaps, both
+modes are window states, contacts at M are the zero tests. No long rod
+separates M from either window, so R3-T2's premise (L) is irrelevant and
+no mode is owned. R3-T1 does not apply either: its (B) and (Q) fail
+because signals cross unbounded gaps.
+
+**Overshoot law.** Suppose a contact at M (say g1 = 0) must stop W_R,
+which is walking away from M at average speed w. The stop signal leaves M
+when the distance is D0 and travels at v > w. It catches W_R after
+d = D0/(v - w), at distance D1 = D0 v/(v - w). So stopping multiplies the
+receiving gap by lambda = v/(v - w) (v/(v + w) if W_R walks toward M), plus
+a bounded offset from the discreteness of walking (a function of the
+stream phase at arrival, i.e. of residues of the values). A rate-matched
+transfer g1 -> g2 at walking-rate ratio rho therefore does
+    g2' = lambda (g2 + rho g1) + c(residues),   g1' = 0 (+ remainder),
+an AFFINE map with mode-dependent coefficients and residue-dependent
+offsets.
+
+**Consequence.** The machine is a residue-switched affine map on
+(g1, g2): exact and deterministic. If the stream programs can tune rho
+(by NOP density) so that lambda*rho is exactly 2, 3 or 1/2, 1/3, and the
+contact reaction distinguishes the stream phase (the remainder), the
+Goedel-numbered transfer machine compiles into it, with the known bounded
+offsets c corrected by a fixed number of extra INC/DEC steps. So a per-unit
+handshake is SUFFICIENT but not obviously NECESSARY; round 3's s.5.2
+generalisation ("transfers should be metered by a handshake per unit")
+was stronger than its evidence: xm.py's skew control used a skew the
+compiler did not model. Untested in code; I flag it as [arg] and as the
+first thing to model if route 20 produces windows that walk and contacts
+that branch.
 
 ## 7. Literature read for this round
 

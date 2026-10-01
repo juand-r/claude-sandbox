@@ -9,3 +9,4 @@
   Also: my typer knows E^n only to n = 15; for longer rods use rod_info() (span + (15,-4) periodicity).
 - 23:19 reviewed theory R4-L4 (pass cycles not forced; zig-zag counterexample).
 - 23:33 rodval.py (value of any-length rod) + verify_merge.py: MERGE verified 120/120. MISTAKE on the way: first rodval window did not cover the light cone to the right, so escaping A's were missed and a few non-merge classes looked like clean 'rod m' outcomes; widened to the full cone, now 80/80 non-merge classes are debris, matching shuttle's dump2 output.
+- 23:41 pairscan.py (class-resolved pair scans, asserted per class), verify_window.py (delayline E/E^2 + GB4 exact), verify_cross.py (C x Ebar). ds_scenes.json truncated; wait.

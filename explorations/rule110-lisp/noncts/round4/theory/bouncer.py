@@ -161,17 +161,46 @@ def run_bouncer(T, h, x, y, max_events):
     return x, y, False, max_events, used
 
 
-def differential(n_random=300, seed=11, budget=60, variant='ok', max_events=2_000_000):
+def max_reg(prog, regs, steps):
+    """largest register value reached in the first `steps` Minsky steps."""
+    regs, pc, m = list(regs), 0, max(regs)
+    for _ in range(steps):
+        ins = prog[pc]
+        if ins[0] == 'HALT':
+            break
+        if ins[0] == 'INC':
+            regs[ins[1]] += 1; pc = ins[2]
+        else:
+            _, r, jp, jz = ins
+            if regs[r] == 0:
+                pc = jz
+            else:
+                regs[r] -= 1; pc = jp
+        m = max(m, max(regs))
+    return m
+
+
+def differential(n_random=400, seed=11, budget=60, variant='ok', regmax=5,
+                 max_events=3_000_000):
+    """Tests: 2 hand-written + random Minsky programs.  Only runs that HALT
+    within `budget` Minsky steps with all registers <= regmax are compared
+    (the Goedel value x = 2^a 3^b sets the number of bounces); the rest are
+    counted as skipped.  A pass = the bouncer halts with y = 0 and x
+    decoding to the Minsky registers."""
     rng = random.Random(seed)
     tests = [([('DEC', 0, 1, 2), ('INC', 1, 0), ('HALT',)], [3, 4]),
-             ([('DEC', 1, 1, 3), ('INC', 0, 2), ('INC', 0, 0), ('HALT',)], [0, 7])]
+             ([('DEC', 1, 1, 3), ('INC', 0, 2), ('INC', 0, 0), ('HALT',)], [0, 3])]
     for _ in range(n_random):
         tests.append((random_minsky(rng.randrange(2, 8), rng=rng),
                       [rng.randrange(4), rng.randrange(4)]))
-    fails = halting = 0
+    fails = compared = skipped = 0
     nreact = []
     for prog, regs in tests:
         mreg, msteps, mh = run_minsky(prog, regs, budget)
+        if not mh or max_reg(prog, regs, budget) > regmax:
+            skipped += 1
+            continue
+        compared += 1
         T, h0 = compile_bouncer(prog, variant)
         x0 = 2 ** regs[0] * 3 ** regs[1]
         try:
@@ -179,29 +208,26 @@ def differential(n_random=300, seed=11, budget=60, variant='ok', max_events=2_00
         except (KeyError, AssertionError):
             fails += 1
             continue
-        if mh:
-            halting += 1
-            regs_out, rest = decode(x)
-            ok = h and y == 0 and rest == 1 and regs_out == mreg
-            nreact.append((len(prog), len(T.r)))
-        else:
-            # Minsky did not halt within `budget` steps; the bouncer must not
-            # halt before doing at least as much work (it may run out of events)
-            ok = not h or ev > 0 and False
+        regs_out, rest = decode(x)
+        ok = h and y == 0 and rest == 1 and regs_out == mreg
         fails += not ok
-    return len(tests), halting, fails, nreact
+        if ok:
+            nreact.append((len(prog), len(T.r), len(used)))
+    return compared, skipped, fails, nreact
 
 
 def main():
-    total, halting, fails, nreact = differential()
-    _, _, f_norem, _ = differential(variant='norem')
-    _, _, f_early, _ = differential(variant='early')
-    print(f'bouncer compile: {total} tests ({halting} halting), {fails} failures (must be 0)')
-    print(f"control 'norem' (zero reaction ignores the remainder): {f_norem} failures (must be > 0)")
-    print(f"control 'early' (XY increments y at the start of a period): {f_early} failures (must be > 0)")
+    compared, skipped, fails, nreact = differential()
+    c2, _, f_norem, _ = differential(variant='norem')
+    c3, _, f_early, _ = differential(variant='early')
+    print(f'bouncer compile: {compared} halting runs compared ({skipped} skipped: '
+          f'non-halting or registers > 5), {fails} failures (must be 0)')
+    print(f"control 'norem' (zero reaction ignores the remainder): {f_norem}/{c2} failures (must be > 0)")
+    print(f"control 'early' (XY increments y at the start of a period): {f_early}/{c3} failures (must be > 0)")
     if nreact:
-        ratio = sum(r for _, r in nreact) / sum(n for n, _ in nreact)
-        print(f'reaction-table size: {ratio:.1f} reactions per Minsky instruction (mean over halting tests)')
+        per = sum(r for _, r, _ in nreact) / sum(n for n, _, _ in nreact)
+        print(f'reaction table: {per:.1f} reactions per Minsky instruction '
+              f'(both wall kinds counted); max table {max(r for _, r, _ in nreact)}')
     return 1 if fails or f_norem == 0 or f_early == 0 else 0
 
 

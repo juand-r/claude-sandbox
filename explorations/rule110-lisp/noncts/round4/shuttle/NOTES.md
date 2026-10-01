@@ -75,3 +75,18 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   DECs R1. Needs no front emission. Catalog has many right-mover pair
   collisions that emit left-movers (e.g. A^4 + H #14 -> G + D1,
   D1 + H #12 -> G + A + A, D2 + C3 #0 -> B^3 + A). Needs the back table.
+- 23:33 verify re-ran MERGE independently (120/120). theory: MERGE + blind
+  streams = one multiplier; needs a switchable second rate.
+- 23:35 [sim] the D1 dump is a traveling wave: it reaches the rod's back
+  5 steps later per extra unit (n = 8..20), i.e. a dissolution boundary
+  with period V = u = (5,2) (lab velocity +2/5, the phonon speed objects
+  found), eating one unit and emitting one B per 5 steps. So the dump is
+  a "front gun" with j = 0 in V = u + j(15,-4).
+- backscan_all.jsonl done (2523 library left-movers x classes, n 8..11):
+  'spawn' reactions exist (G pairs -> rod - 1 + Ebar_8_Ebar class-free;
+  GB1+GB2@(-41,38) -> rod + E-pair compound), none spawns a clean single E.
+  2721 entries unsettled at T = 900 (G-speed packets placed 40 cells
+  away need ~600 steps to arrive): rerun those with a closer start later.
+- NEXT: gun SAT (gun.py): periodic structure at a rod face with period
+  V = K u + j P_E emitting a B-train (front gun) or A-train (back gun).
+  Positive control: the dump wave (front, K = 1, j = 0).

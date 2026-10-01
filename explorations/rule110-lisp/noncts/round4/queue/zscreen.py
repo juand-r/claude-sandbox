@@ -120,3 +120,30 @@ if __name__ == "__main__":
                 fh.flush()
     fh.flush()
     print("done", n, flush=True)
+
+
+MINGAP = 3   # min ether cells between object cores (tiles carry 16-cell margins)
+
+def build2(sc, K0, items):
+    """Like build, but tiles may overlap in their ether margins: only the
+    cores (tile[16:-16]) must be >= MINGAP cells apart. Ether phases must
+    match across every object (same condition as build)."""
+    a, b = sc.ebar_to_seg(K0 + RA), sc.ebar_to_seg(K0 + RB)
+    seg = sc.seg
+    p = phase_at(seg, a); pb = phase_at(seg, b - TILE)
+    new = seg.copy()
+    new[a:b] = ether(p, a, b - a)
+    core_end = a - MINGAP
+    for tiles, k, xr in items:
+        arr, cl, cr = tiles[k]
+        x = sc.ebar_to_seg(K0 + xr)
+        if x + 16 < core_end + MINGAP or x < a or x + len(arr) > b or (cl - x) % TILE != p:
+            return None
+        s0 = max(0, core_end - x)                 # do not overwrite the previous core
+        new[x + s0:x + len(arr)] = arr[s0:]
+        core_end = x + len(arr) - 16
+        p = (cr - x) % TILE
+        new[x + len(arr):b] = ether(p, x + len(arr), b - x - len(arr))
+    if p != pb:
+        return None
+    return new

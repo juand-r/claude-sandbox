@@ -1,0 +1,6 @@
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -399], "Tc": 5, "dxV": 2, "row0": "00110101111111000001000011000111", "L0": -16}
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -397], "Tc": 5, "dxV": 2, "row0": "11111100000111110101110011000111", "L0": -16}
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -395], "Tc": 5, "dxV": 2, "row0": "01110011000111110101110011000111", "L0": -16}
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -389], "Tc": 5, "dxV": 2, "row0": "00001100011100110101110011000111", "L0": -16}
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -387], "Tc": 5, "dxV": 2, "row0": "01000011000111110101110011000111", "L0": -16}
+{"face": "front", "K": 1, "j": 0, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_ctrl.jsonl", "first": false, "seed": [0, -385], "Tc": 5, "dxV": 2, "row0": "00011111010111001100011111010111", "L0": -16}

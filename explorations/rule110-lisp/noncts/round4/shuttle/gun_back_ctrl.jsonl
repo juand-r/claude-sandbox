@@ -1,0 +1,2 @@
+{"face": "back", "K": 1, "j": 1, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_back_ctrl.jsonl", "first": true, "seed": [0, -399], "Tc": 20, "dxV": -2, "row0": "10101111101011111010111110101111", "L0": 39}
+{"face": "back", "K": 1, "j": 2, "glider": "B", "wL": 16, "wR": 16, "N": 16, "nk": 40, "out": "gun_back_ctrl.jsonl", "first": true, "seed": [0, -399], "Tc": 35, "dxV": -6, "row0": "10101110011010111001101011111000", "L0": 39}
