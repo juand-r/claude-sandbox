@@ -64,30 +64,30 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] illusion-of-transparency-why-no-one-understands-you
 - [x] expecting-short-inferential-distances
 - [x] fake-explanations
-- [ ] guessing-the-teacher-s-password
-- [ ] science-as-attire
-- [ ] fake-causality
-- [ ] semantic-stopsigns
-- [ ] mysterious-answers-to-mysterious-questions
-- [ ] the-futility-of-emergence
-- [ ] say-not-complexity
-- [ ] positive-bias-look-into-the-dark
-- [ ] lawful-uncertainty
-- [ ] my-wild-and-reckless-youth
-- [ ] failing-to-learn-from-history
-- [ ] making-history-available
-- [ ] explain-worship-ignore
-- [ ] science-as-curiosity-stopper
-- [ ] truly-part-of-you
-- [ ] the-simple-truth
-- [ ] rationality-an-introduction
-- [ ] tsuyoku-naritai-i-want-to-become-stronger
-- [ ] the-proper-use-of-humility
-- [ ] tsuyoku-vs-the-egalitarian-instinct
-- [ ] the-third-alternative
-- [ ] lotteries-a-waste-of-hope
-- [ ] new-improved-lottery
-- [ ] but-there-s-still-a-chance-right
+- [x] guessing-the-teacher-s-password
+- [x] science-as-attire
+- [x] fake-causality
+- [x] semantic-stopsigns
+- [x] mysterious-answers-to-mysterious-questions
+- [x] the-futility-of-emergence
+- [x] say-not-complexity
+- [x] positive-bias-look-into-the-dark
+- [x] lawful-uncertainty
+- [x] my-wild-and-reckless-youth
+- [x] failing-to-learn-from-history
+- [x] making-history-available
+- [x] explain-worship-ignore
+- [x] science-as-curiosity-stopper
+- [x] truly-part-of-you
+- [x] the-simple-truth
+- [x] rationality-an-introduction
+- [x] tsuyoku-naritai-i-want-to-become-stronger
+- [x] the-proper-use-of-humility
+- [x] tsuyoku-vs-the-egalitarian-instinct
+- [x] the-third-alternative
+- [x] lotteries-a-waste-of-hope
+- [x] new-improved-lottery
+- [x] but-there-s-still-a-chance-right
 - [ ] the-fallacy-of-gray
 - [ ] absolute-authority
 - [ ] how-to-convince-me-that-2-2-3
