@@ -4,17 +4,17 @@ Agent: verify (round 2). Role: independent verification, theory (abstract
 models with differential tests), integration (M1 -> M2 -> M3).
 
 ## Plan
-- [ ] P1 own tooling: vlib.py (independent row builder from Martinez strings,
+- [x] P1 own tooling: vlib.py (independent row builder from Martinez strings,
       own glider typer by exact phase-snapshot matching, own compound
       gliders E^n, GBk, A^k derived by my own collisions)
-- [ ] P2 re-derive round-1 frontier facts needed for integration:
+- [x] P2 (partly) re-derive round-1 frontier facts needed for integration (GB set and zero behaviour re-derived; the A + packet reactions only surveyed in a3gb.py at T=500, not individually re-verified):
       GB3/GB4/GB5 on E^n, GB3 at zero -> E + A, A + GB4#4 -> A,
       A + (GB3,GB5) -> GB3, A + (G,GB2) -> GB4
-- [ ] P3 theory: weakest primitive sets; executable models (models.py) with
+- [x] P3 theory: weakest primitive sets; executable models (models.py) with
       differential tests
-- [ ] P4 verify teammates' claims as posted (ledger.md)
-- [ ] P5 M1 integration: a stored value changes later program behaviour
-- [ ] P6 M2, M3 if reachable
+- [x] P4 verify teammates' claims as posted (ledger.md) - ongoing to the end
+- [x] P5 M1 integration: a stored value changes later program behaviour
+- [x] P6 M2 (compiler, 4 programs in CA); M3 not reached: target sharpened (gbm.py)
 
 ## Log
 - 23:25 read round-1 SUMMARY, THEORY, csm.py, round-1 board (GB stream, hard gate).
@@ -98,3 +98,11 @@ models with differential tests), integration (M1 -> M2 -> M3).
 - Planner reproduces the empirical limits ((J3Z4)^4, (J5Z6)^2 fine for all
   v; longer ones limited) and with N correctors finds plans for (J5Z6)^4,
   (J3Z4)^8, (J6Z7)^3, Z^12 for v <= 12. CA validation running (plan_batch).
+- 01:05 plan_batch: 4/4 planned streams PASS exact CA incl. out-of-sample.
+  Coverage in the calculus: 300/300 random words, 294/294 loop families.
+- 01:08 gbm.py: guarded-block machine, 402/402 Minsky differential tests.
+- 01:10 verified address's fixed-stream F lane 4/4 + dynamic controls.
+  Catalog lead for an F-lane abort (C1 eats Ebar pairs; (Ebar,E) gate);
+  re-simulated 6 catalog entries with my pipeline: all SAME; noted that C1
+  is displaced by 13-22 cells per eat.
+- 01:13 verifying gate's parity-8 fixed program (88 packets) - long run.

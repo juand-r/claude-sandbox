@@ -16,9 +16,9 @@ Steps
        periodic predicates (verify's theorem) -- parity, v mod k.
 - [x] 4. M1: Z6 = DEC whose zero answer shatters the trailing NOP into 6 B's;
        CA-verified, composable (assembler v2, random words).
-- [~] 5. M2: mod-7 loop verified (CA); parity with 2 blocks verified (CA,
+- [x] 5. M2: fixed streams (Z6 N)^10 -> (v-10) mod 7 (v = 0..14) and (J^4 L Z6^6)^8 -> v mod 2 (v = 0..8), exact CA (rafast.py, verify_ra.py). Earlier per-input versions superseded; was: mod-7 loop (CA); parity with 2 blocks (CA,
        v = 0..3); 3+ blocks: per-slot class search (DFS) running.
-- [ ] 6. Final writeup on the board.
+- [x] 6. Final writeup on the board (FINAL SUMMARY post).
 
 Did not work / notes
 - Naive builder (class rel. E(0,0) everywhere): wrong after slip-6 packets.

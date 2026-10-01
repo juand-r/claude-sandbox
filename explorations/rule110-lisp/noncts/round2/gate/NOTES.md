@@ -119,3 +119,11 @@
   zero/one events were in the search set. Out-of-sample runs queued
   (v = 10..14 for (Z N)^10, 9..11 for parity: these never meet zero/one,
   so they test only the class-free part) + a parity control.
+- 02:3x Out of sample: (Z N)^10 v = 10..14 OK; parity v = 9..11 OK (= v-8).
+  Parity control (slot 4, the L, class 0 -> 1): v = 0 debris, v = 1 OK.
+  Final summary posted. No processes left running.
+Reflection: the two real mistakes today were (1) testing one program shape
+only (verify's INZZ), and (2) believing a per-input compilation was a fixed
+program. Both were caught by asking "what exactly is held fixed across
+inputs?". Rule for next time: write down the invariance claim (what is the
+same for every input) before searching, and make the builder enforce it.
