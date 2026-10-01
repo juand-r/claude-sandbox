@@ -88,26 +88,26 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] lotteries-a-waste-of-hope
 - [x] new-improved-lottery
 - [x] but-there-s-still-a-chance-right
-- [ ] the-fallacy-of-gray
-- [ ] absolute-authority
-- [ ] how-to-convince-me-that-2-2-3
-- [ ] infinite-certainty
-- [ ] 0-and-1-are-not-probabilities
-- [ ] your-rationality-is-my-business
-- [ ] politics-is-the-mind-killer
-- [ ] policy-debates-should-not-appear-one-sided
-- [ ] the-scales-of-justice-the-notebook-of-rationality
-- [ ] correspondence-bias
-- [ ] are-your-enemies-innately-evil
-- [ ] reversed-stupidity-is-not-intelligence
-- [ ] argument-screens-off-authority
-- [ ] hug-the-query
-- [ ] rationality-and-the-english-language
-- [ ] human-evil-and-muddled-thinking
-- [ ] knowing-about-biases-can-hurt-people
-- [ ] update-yourself-incrementally
-- [ ] one-argument-against-an-army
-- [ ] the-bottom-line
+- [x] the-fallacy-of-gray
+- [x] absolute-authority
+- [x] how-to-convince-me-that-2-2-3
+- [x] infinite-certainty
+- [x] 0-and-1-are-not-probabilities
+- [x] your-rationality-is-my-business
+- [x] politics-is-the-mind-killer
+- [x] policy-debates-should-not-appear-one-sided
+- [x] the-scales-of-justice-the-notebook-of-rationality
+- [x] correspondence-bias
+- [x] are-your-enemies-innately-evil
+- [x] reversed-stupidity-is-not-intelligence
+- [x] argument-screens-off-authority
+- [x] hug-the-query
+- [x] rationality-and-the-english-language
+- [x] human-evil-and-muddled-thinking
+- [x] knowing-about-biases-can-hurt-people
+- [x] update-yourself-incrementally
+- [x] one-argument-against-an-army
+- [x] the-bottom-line
 - [ ] what-evidence-filtered-evidence
 - [ ] rationalization
 - [ ] a-rational-argument
