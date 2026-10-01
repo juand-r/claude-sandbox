@@ -36,3 +36,21 @@
   lstream main fix t0 from vmax, so the stream text is the same for all v.
 - Controls (lstream.py PROG VS i:j shifts packet i by j*(1,-4)): 5/5
   perturbations give mismatches (5..9 of 9 inputs).
+- 06:1x Packets vs stationary C's (single class each, A-speed vs (7,0)):
+  I: C1->C2, C2->E+A, C3->E;  D: C1->F, C2->C1, C3->C2;  Z: C1->F,
+  C2->C1, C3->B+Bbar+F.  So D at zero (E->C3) is undone by I (C3->E).
+  lstream runs: DI, DIZ, DII, DIIZ at v = 0 all match "value floor 0";
+  the rebuilt E differs from the nonzero branch by (15,38), key 0 (same
+  class; vector in M). [arg] For any gap between D and I the rebuilt E is
+  in the same class: shifting I_L by m P_E is equivalent (mod C3's (7,0)
+  and P_A) to translating the C3+I_L scene by (21m,0); nonzero front moves
+  m P_E; difference 2m P_A has key 0.
+- Wrap (0 -> 6) from the left: [arg] needs +6 front units at zero; the
+  only front-INC known costs a 24-cell slip-6 train each, so a wrap packet
+  likely needs > 100 cells; SAT UNSAT at W 24 (3 classes) and W 36
+  (classes 0,1; class 2 running). I do not expect it within SAT reach.
+- Coupling idea for theory: R2's Z answer A (right-going) and R1's J
+  answer Bbar (left-going) annihilate if they meet in A+Bbar class #0
+  (catalog: nothing). Both counters zero -> answers cancel; one zero ->
+  answer reaches the other counter. An AND-like event, to be checked.
+- 05:5x launched run_zl.sh (PID 6149): SAT Z2, zero answer = exact Z_L train, W 32,40,48, T2 360 -> sat_zl.log

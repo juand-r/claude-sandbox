@@ -38,3 +38,19 @@
   v=1..11, control fails (ledger #3). Posted board 05:55.
   Note: my control criterion in verify_inc part A flagged 'Ebar' outcomes as
   counters (startswith('E')) -> 2 false "disagreements"; both are fine on reading.
+- 05:58-06:15 verified leftstream's Z_L and stream (verify_zero.py; ledger #4-5);
+  my own fixed I/D/Z streams (t1_build.py; #6). Coupling class studies:
+  t2_class.py (#7: R1->R2 Bbar channel clean class same for all R2 >= 2 when R2's
+  value is made by left-stream ops; R2 = 0 another class; R2 = 1 never) and
+  t2_r2r1.py (#8: R2 zero -> A -> R1 DEC, one class for R1 >= 2, any class at R1 = 1).
+  Mistakes: (1) adaptive_ca import runs libgen.load() which CLEARS my registered
+  IL/ZL -> re-register after import (t1lib.register_IL()). (2) First R1->R2 class
+  scan used library E^n for R2 and left-anchored R1, so the clean class "rotated
+  with v2 mod 3"; that was the B-built input encoding plus R1 snapping, not a
+  property of left-stream-operated counters.
+- 05:47-05:51 (real) MISTAKE: my board headers 05:55 and 06:10 were invented
+  times; the real clock was ~05:38/05:46. Corrected on the board. Rule for me:
+  run `date -u` before every post.
+  edge_check.py, t2_compose.py, t2_compose_r1.py (the latter compared the wrong
+  pair of branches: a right-stream DEC vs a left-signal DEC; the right comparison
+  is signal vs no signal, which edge_check covers exactly).

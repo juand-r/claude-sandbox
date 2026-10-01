@@ -48,6 +48,13 @@ def build(p, d, WZ, T2, ns, k, s, mode, gap=6):
     if mode == "wrap":
         S.is_item(T2, S.lo - T2, S.hi + T2, en_item(cnf, 7),
                   far_left=S.p_left, far_right=S.p_right)
+    elif mode == "ZL":
+        # zero answer = exactly the Z_L train (sat_zero_results #1)
+        from react import Fixed
+        Zit = Fixed(cnf, "111110111110111000111011", 8, (3, 2), name="ZL")
+        mid = xE - (4 * T2) // 15 + 70
+        S.is_item(T2, S.lo - T2, mid, en_item(cnf, 1), far_left=S.p_left)
+        S.is_item(T2, mid, S.hi + T2, Zit, far_right=S.p_right)
     elif mode in ("A", "A2", "A3"):
         ans = {"A": "A", "A2": "A^2", "A3": "A^3"}[mode]
         Ait = fixed_from_glider(cnf, G[ans], 16) if ans in G else None
