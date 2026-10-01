@@ -796,3 +796,72 @@ Search target: R2 = E^n with a front op (I_L or Z_L) plus an unknown
 co-moving pattern B at its back, giving output E^(n-1) + B + X
 (X right-moving), jointly for 2-3 values of n. A useful first test: does
 ANY co-moving object at the back turn a wall into an outgoing glider?
+
+### [verify] 06:32 (date -u) - theory 06:29 first test (a parked object that turns a wall into a glider): none found, scoped
+[sim; verify/wall_conv.py, wall_conv2.py] R2 = my E^8; front op I_L or
+Z_L in its clean class (each launches a wall); object parked behind the
+back:
+- Ebar or E, every phase (30 / 15), gaps 0..88: 889 + 418 placements are
+  stable without the front op. With the front op, EVERY one gives the
+  expected rod +-1 with the parked object unchanged. The back moves by at
+  most ~8 cells when the wall lands, too little to reach a stable parked
+  object.
+- 23 tight placements where E^8 and the Ebar/E fuse into one co-moving
+  compound (my typer: '?'): front ops I_L, Z_L, A in all 3 x 14
+  placements. No outcome is "compound + right-movers only". Nearest:
+  A or Z_L -> B + ? + A (an A leaves right, but a B also leaves left into
+  the left stream, and '?' is not identified). I_L destroys the compound
+  (Ebar + Ebar + A, Ebar + C1 + A^3, ...).
+Scope: these two co-moving objects only; parked compounds of other
+types, and back terminations not reachable by fusing E/Ebar, untested.
+(P1 for G packets at a back face: running, 1-step timing resolution;
+earlier 20-step scan found no change for GB3/GB4/GB5/G.)
+
+### [theory] 06:33 (date -u) - FINAL SUMMARY (theory/THEORY.md, README.md; tests: nogo.py, lm.py, xm.py)
+No-go results:
+1. Theorem 1 [thm, full proof s.3.1]. Two counters, finite auxiliary
+   state, bounded steps, zero-triggered effects only near zero. If ONE
+   counter's drift-setting mode is owned (changed only by its own
+   zeros), every orbit is eventually periodic and halting is decidable.
+   So none of these can give universality: value coupling (any signs,
+   wraps, kicks, J I, the Z_L chain); one-directional mode coupling; a
+   crossing in one direction; phonons/walls alone.
+   Checks: 9000 random machines in the covered classes are all periodic;
+   hand-built cross-mode and shuttle controls are flagged non-periodic.
+2. Theorem 2 [thm in the rod model, s.3.4]. Influence runs only front
+   -> back inside a rod (your edge checks, bbar_front, verify's defect
+   search). So R2's front, which sets its drift, is unreachable from the
+   right, and the machine is periodic UNLESS one of these holds:
+   - a persistent gap process exists: a shuttle, or a wall-driven pump
+     (converter at R2's back, s.6.5);
+   - something crosses a rod right to left;
+   - the gap is used as an unbounded register (window rod, s.6.4).
+   Gap bookkeeping [arg]: inner-face units must net to 0, or the
+   counters collide.
+Sufficient [thm/sim in model]:
+3. Transfer machine (shared mode of loops) <- Minsky via 2^a 3^b: 502
+   tests, 0 failures; the no-remainder control fails 96 times.
+4. Two streams with cross-coupled mode copies, tick level, random
+   delays: 150 programs, 0 failures. Controls fail: one-directional
+   105/105, slow signals 91/105, skew 69/105 and 21/105. So timing-matched
+   transfers between streams break under value-dependent skew; units must
+   move by handshake (shuttle bounce or pump signal).
+Spec (s.7):
+   A (necessary): a shuttle (reflections at both inner faces, gap-
+     conserving, d1 = d2 mod P_E plus a cycle of valid classes) OR a wall
+     converter at R2's back; a clean stop/reversal at an empty source; a
+     start from zero events.
+   B (programmable ratios) and C (rules: designated classes, inner net
+     0, no rate matching).
+Open (s.8):
+   - Is a shuttle with blind streams universal? Total-value law: x + y
+     is essentially linear in time. Multipliers all > 1 or all < 1.
+     Shrink or flat is decidable; growth reduces to growth-only Collatz
+     maps.
+   - The tie constraint for per-side filters.
+   - Window rod and delay-line memory.
+Mistakes corrected, all logged in NOTES.md: periodicity checker fooled
+by quiet tails (caught by its controls); a sign step in the first proof
+draft; "per-side filters suffice" (wrong; now open); locality premise too
+strong (walls), restated one-directionally with the conclusion
+unchanged. No harness refusals.

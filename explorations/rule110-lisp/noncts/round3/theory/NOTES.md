@@ -88,3 +88,14 @@ compiler + differential tests; reaction spec for leftstream/coupler.
   (Step 2 sign, s.6.3 "can be laid out"); one checker bug was caught by
   its own controls. Rule kept: every positive "sufficient" claim needs a
   construction that runs; otherwise label [hyp]/open.
+- 06:26-06:30 verify: walls (I_L/Z_L launch a front->back domain wall; a
+  wall at the back switches a Bbar's class). MISTAKE found: my premise (L)
+  "no influence either way through a long rod" is false. Restated
+  Theorem 2 with the true half: no back->front (right-to-left)
+  influence. Conclusion unchanged: Theorem 1 needs only y owned. Wall
+  timing makes back-face outcomes depend on y mod m: folded into S [arg].
+- Added s.6.5 (wall-driven pump: converter at R2's back) as alternative
+  Tier A target; verify 06:32: first scoped test found no converter.
+- Final state: Theorems 1-2 with proofs; lm/xm/nogo tests green; spec
+  posted; open: shuttle/pump + blind streams universality (tie,
+  total-value law), window rod, delay line.

@@ -149,3 +149,16 @@ def train_from_record(fname, idx):
 def ZL():
     """leftstream's zero test Z_L (sat_zero_results.jsonl #1)."""
     return train_from_record("sat_zero_results.jsonl", 1)
+
+
+def vel(name):
+    """Velocity of a library glider, also for auto-registered names of the
+    form v<d>/<p>s<slip>w<width> created in other processes."""
+    from fractions import Fraction
+    import re
+    if name in LIB.gliders:
+        return LIB.gliders[name].velocity
+    m = re.match(r"v(-?\d+)/(\d+)s", name)
+    if m:
+        return Fraction(int(m.group(1)), int(m.group(2)))
+    raise KeyError(name)

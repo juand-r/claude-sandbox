@@ -21,6 +21,16 @@ OUT = os.path.join(HERE, f"scan_reflect2_M{M}_N{N}.jsonl")
 done = set()
 if os.path.exists(OUT):
     done = {(json.loads(l)["Y"], json.loads(l)["cls"]) for l in open(OUT)}
+SEEN = set()
+
+
+def xkey(X):
+    """Train identity up to translation: names + seed offsets relative to
+    the first glider, normalised to time 0 (A-family period (3,2))."""
+    b = [LIB.gliders[n].state_at(t, x, 0) for n, t, x in X]
+    return tuple((n, s[3] - b[0][3], s[0]) for (n, _, _), s in zip(X, b))
+
+
 with open(OUT, "a") as f:
     for l in open(IN):
         rec = json.loads(l)
@@ -28,6 +38,12 @@ with open(OUT, "a") as f:
             if not row["reflect"] or (rec["Y"], row["cls"]) in done:
                 continue
             X = [tuple(p) for p in row["products"] if p[0] not in CHAIN]
+            if len(X) == 1 and X[0][0] in ("A", "A^2", "A^3", "A^4", "A^5"):
+                continue      # single A^k: catalog (A + E^n, n <= 16; A^k, n <= 6) has no return
+            k = xkey(X)
+            if k in SEEN:
+                continue
+            SEEN.add(k)
             j = [CHAIN.index(p[0]) + 1 for p in row["products"] if p[0] in CHAIN][0]
             outs = []
             for t0 in range(15):

@@ -25,3 +25,4 @@
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 7, "k": 0, "sat": false, "secs": 2.1}
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 7, "k": 1, "sat": false, "secs": 2.3}
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 7, "k": 2, "sat": false, "secs": 2.0}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 8, "k": 0, "sat": false, "secs": 51.3}

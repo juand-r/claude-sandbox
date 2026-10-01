@@ -103,3 +103,4 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
 - Catalog note: Ebar + G #3,4,5 -> Ebar + A^4: an Ebar (co-moving with the
   counters, speed -4/15) reflects a G into an A^4. Possible "mirror" in
   the gap; not pursued yet.
+- 06:32 G scan died again silently after ~1 min (nohup); the candidate it stopped at runs fine alone. Relaunched via the harness background mechanism.

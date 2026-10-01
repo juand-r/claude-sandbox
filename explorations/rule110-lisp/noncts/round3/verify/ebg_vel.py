@@ -11,7 +11,7 @@ import ebg_search as S
 import engine
 import ebg_search as S
 
-SPAN, DT = 40, 200
+SPAN, DT = int(sys.argv[4]) if len(sys.argv) > 4 else 40, 200
 KMAX = int(sys.argv[3]) if len(sys.argv) > 3 else 12
 
 

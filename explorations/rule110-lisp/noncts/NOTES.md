@@ -15,3 +15,4 @@
   return exists ONLY at R1 = E^7 (X = A^2 A^2 -> B^2 + E) and R1 = E^8
   (X = A^2 A^2 A -> B^2 + E): n-specific "reset to zero" reactions, not
   shuttle legs. No B-family library shuttle exists in this scope.
+- 06:30 G scan process vanished at 1576 lines without error (cause unknown; possibly the harness); relaunched (resumable).
