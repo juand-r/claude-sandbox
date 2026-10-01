@@ -6,3 +6,15 @@
 {"W": 30, "mode": "F", "kC": 0, "kF": 0, "sat": true, "secs": 74.4, "Y": "010001110011000111011111010011", "sim_ok": true}
 {"W": 30, "mode": "F", "kC": 0, "kF": 1, "sat": true, "secs": 122.6, "Y": "000001111100000100110110001011", "sim_ok": true}
 {"W": 30, "mode": "F", "kC": 0, "kF": 2, "sat": true, "secs": 318.5, "Y": "011101110011000100110111111001", "sim_ok": true}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 0, "sat": false, "secs": 339.0}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 1, "sat": false, "secs": 116.7}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 2, "sat": false, "secs": 93.0}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 3, "sat": false, "secs": 93.5}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 4, "sat": false, "secs": 105.2}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 5, "sat": false, "secs": 472.6}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 6, "sat": false, "secs": 318.0}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 7, "sat": false, "secs": 124.4}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 8, "sat": false, "secs": 412.9}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 9, "sat": false, "secs": 269.5}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 10, "sat": false, "secs": 233.7}
+{"W": 30, "mode": "CF", "kC": 0, "kF": 11, "sat": false, "secs": 357.4}

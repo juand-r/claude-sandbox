@@ -247,3 +247,28 @@ Ebar@(0,0)+Ebar@(-18,37) k = 9, o = 22), but traces (t_tight.py ... NYYN
 130000 5000) show the appendant region being destroyed by garbage, not
 swept; later reads are chaos. Scoped negative for option (c) in this
 family.
+
+## Continuation (lead's request, 01:35-): option (c) synthesis
+
+### Step 1: is there a clean alternative reader?
+- verify_lead.py: decoder-free multi-read check vs a reference with
+  forced-N leaders. t_forced_diag.py [sim]: E9 leader at the FIRST K only:
+  tape YNYN (forced read of an N) 6/6 = reference; tape YYNN (forced read
+  of a Y) Y,N, then '!' at read 2. Control (plain): 6/6 both tapes.
+  t_e9read.py: reading a Y, the E9 reader emits the standard rejector PLUS
+  one B running left (B@64 at t=32700), which damages the next tape
+  symbol. Reading an N it emits only the rejector. So the forced-N reader
+  is clean on N and dirty on Y.
+- E2 -> E16 (scan_en_E2c.log, 63 placements): no clean variant (the 4
+  "forced-N" rows also break read 0).
+- Prepared core after a REJECTOR (N-first tapes, Ebar frame, t = 32000):
+  [Ebar@39][E@68] (slip 2); after an acceptor there is an extra moving
+  Ebar@0 in front. The read of K's leader happens at ~33000.
+- reader_screen.py: replace the rejector-prepared core [K-30, K+110) at
+  t_in = 32000 by every placement of every slip-2 Ebar-speed library
+  object (74 objects); scenes NYYN (reads Y) and NNYY (reads N); compare
+  the window [K-700, K+700) at 34000 cell for cell with the plain Y and N
+  outcomes. Positive control inside the search space: the original core is
+  'Ebar@(0,0)+E@(-5,27)' (k=9, o=55) (identity reproduces the row).
+  A first run on acc-first tapes was the wrong setting (it kept the
+  acceptor's extra Ebar); moved to trash/.
