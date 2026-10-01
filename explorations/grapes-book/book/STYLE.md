@@ -129,14 +129,45 @@ fire. The chapter boundaries are not decided yet.
 | | I. Order | II. Leakage | III. Collapse |
 |---|---|---|---|
 | When (2020) | Early 2020: reminiscence, the encyclopedia | From March: the pandemic, alone with the book | 27 Sept – 20 Oct: the Glass Fire; the pond goes down; after |
-| Main text | Clean, encyclopedic, impersonal "I" | Personal remarks slip in; obsessive passages grow | Thins out; notes take over the page |
-| Notes | Digressions, sources, wit | Contradict the main text; address someone ("you") | Notes on notes on notes; notes that cite notes that do not exist |
-| Asides | Rare, short, about method | Longer; about him; Odile named by initial | Flood the margin; dated entries; the night itself circled |
+| Main text | Encyclopedic, impersonal "I"; looks like a book about grapes. But tells from the first pages (4.2) | Personal remarks slip in; obsessive passages grow and will not end | Thins out; notes take over the page |
+| Notes | Digressions, sources, wit; now and then one goes too far, or too precise | Contradict the main text; address someone ("you") | Notes on notes on notes; notes that cite notes that do not exist |
+| Asides | Short, mostly about method, already a little wrong (4.2) | Drift toward a diary and start to spiral: dates creep in, entries lengthen, he returns to the same few things and cannot leave them | The spiral tightens: entries at all hours, repetitions, the night itself circled |
 | Cross-references | Few, helpful | Loops begin; invitations to jump ahead | Mazes; an alternative reading order, as in *Rayuela* |
 | Typography | Plain | First struck-out words; a second typeface in the asides | Fonts mixed, struck passages, page layouts broken |
 
-Escalate slowly. Each movement should feel like the previous one gone a
-little further, not like a different book.
+### 4.1 No clean switches (2026-10-01; author's note)
+
+The table describes tendencies, not stages with borders. Nothing changes all
+at once: not the voice, not the asides, not the typography. The asides do
+not "become a diary" in March; they lean toward one, fall back, lean further.
+The decline is a spiral, not a staircase: he circles the same objects
+(the pond, the page, the strawberries, the year 1968) and each pass comes a
+little closer and goes a little further out of control. A reader should
+never be able to point to the page where it changed.
+
+### 4.2 From the first page: this is not only a book about grapes (2026-10-01; author's note)
+
+The reader must sense early that the narrator is not fully stable and that
+something else is going on. Movement I is orderly on the surface only. The
+tells are small, in the voice and the structure, never in the facts (3.1):
+
+- Precision that serves no purpose and does not stop: the count, the
+  recount, the third decimal, the correction of a correction.
+- A sentence that breaks off and is not finished. Or is finished, a page
+  later, as if nothing had happened.
+- Something avoided: a word he will not use, a year he skips, a subject he
+  approaches and turns away from ("but that is not what this book is
+  about").
+- An aside that does not fit its line: a time of night, a sound outside, the
+  water level, with no explanation.
+- A "you" that appears once and is not explained.
+- Anger or tenderness out of proportion to its object (a grape variety, a
+  pruning knife).
+- Order kept too carefully: numbered cards, the lock checked, the steps
+  counted. The compulsion shows before the reason for it does.
+
+Few tells at first: one or two per chapter, each with an innocent reading.
+They multiply as the book goes on, as part of the spiral (4.1).
 
 ## 5. Typography as voice (2026-10-01; PLANNED, not built)
 

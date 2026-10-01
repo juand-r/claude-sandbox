@@ -210,8 +210,8 @@ He writes through one year, and the year breaks in. The three movements of
 
 | Movement | When | What happens around him |
 |---|---|---|
-| I. Order | Early 2020 | Nothing, yet. The encyclopedia of grapes; the past in the asides (Burgundy, Odile; Iowa unnamed) |
-| II. Leakage | From March 2020 | The pandemic. Alone in the house with the book. The asides turn into a diary |
+| I. Order | Early 2020 | Nothing, yet. The encyclopedia of grapes; the past in the asides (Burgundy, Odile; Iowa unnamed). Already the tells (STYLE.md, 4.2) |
+| II. Leakage | From March 2020 | The pandemic. Alone in the house with the book. The asides drift toward a diary and start to spiral (STYLE.md, 4.1) |
 | III. Collapse | 27 September – 20 October 2020, and after | The Glass Fire. Helicopters dip into his pond, every few minutes, for days. In a year of drought the water falls. Something comes up |
 
 Open:
