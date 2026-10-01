@@ -8897,3 +8897,64 @@ Why: Fidelity/substance pass: bayesians-vs-barbarians: moved a sentence so the f
 - Before: preferred no one to participate in the draft lottery.''
 - After: preferred no one to participate in the draft lottery.'' Whether a small group can find a method that works better than a leader is an important question; the more people trust it, the more coherently they act without penalties.
 
+
+## honest/sections/practical-advice-backed-by-deep-theories.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what the bottom line and engines of cognition say, the question of what counts as evidence, why made-up causal theories fail, the illusion-of-transparency example, the topics the wanted adviser should know, and the guidance on each grade of backing.
+
+- Before: Readers named ``the bottom line'' and ``engines of cognition'' as the most important things they learned here.
+- After: Readers named ``the bottom line'' and ``engines of cognition'' as the most important things they learned here: once a conclusion is written in your mind it is already right or wrong, and no later argument changes that except by changing the conclusion; and minds are mapping engines that need evidence as fuel.
+
+- Before: without probability theory, which says what counts as evidence.
+- After: without probability theory and a causal account of why reasoning works. What counts as evidence? Anything that seems a forceful argument? The theory makes the advice clearer to carry out, not just more persuasive.
+
+- Before: Causal theories from textbooks are likelier to be true than ones made up on the spot,
+- After: Causal theories from textbooks are likelier to be true than ones made up on the spot, which often do not even control anticipation,
+
+- Before: Most advisers, ``for the most part,'' describe mental levers they cannot point to.
+- After: They should know the research on ego depletion, preference reversals, hyperbolic discounting and picoeconomics, so as to describe what they did in terms of phenomena that actually exist, not ones they made up. Most advisers, ``for the most part,'' are like the Roberts who only praised fruit juice, or worse: they describe mental levers they cannot point to, for which there are no standard words. Notice how ``You overestimate how much you're explaining and your listeners overestimate how much they're hearing'' becomes more forceful once backed by an experiment and some evolutionary psychology.
+
+- Before: Backing gets harder to cite well as it goes from experimental results (``p < 0.05 may fail to replicate''), to true causal accounts, to mathematics validly interpreted. If you do not know whom to trust, start with experiments.
+- After: Backing gets harder to cite well as it goes from experimental results (prefer p $<$ 0.01, since ``p < 0.05 may fail to replicate''), to true causal accounts (most reliably the theories a majority in a science uses), to mathematics validly interpreted (where I can offer little advice, since my own math runs on intuition). If you do not know whom to trust, start with experiments, move on to widely used causal theories, and approach math and epistemology with extreme caution.
+
+
+## honest/sections/the-sin-of-underconfidence.tex
+
+Why: Fidelity/substance pass: Added the post's substance: Vassar's accusation, the spiral of correcting for bias, why modesty seems kinder than pride, the remarks on trying and on consolation, the Competitor's view of losing, details of the debate challenge, the tic-tac-toe point, the forms lost momentum takes, the further examples of reasonable-sounding errors and self-questions, the signs of growing weaker, and the math-test result.
+
+- Before: I do not name the other two.
+- After: I do not name the other two. Michael Vassar regularly accuses me of it, and is the only person on Earth who does.
+
+- Before: People warned about a bias sometimes correct too far.
+- After: People warned about a bias sometimes correct too far. You know you are biased but not how much, so you correct a little more, and more, and wonder whether you have overshot, until estimation feels futile.
+
+- Before: We tend to cast overconfidence as the sin of pride, while modesty seems harmless and even kind.
+- After: We tend to cast overconfidence as the sin of pride, from that other list that never warned against misused humility, and fear the humiliation of being cast down. Modesty seems lighter: being found better than you thought is a warm surprise, and putting yourself below others seems nice, the sort of thing Gandalf would do.
+
+- Before: Try to win every time, but if you always win, you are not stretching.
+- After: I am not sure that is how a rationalist should think, since rationality is systematized winning and trying to try leads to failure. A hypothesis affords testing: if you do not know whether you will win on a hard problem, find out. Congratulating yourself on trying is a bad habit, but not trying is worse. You may tell yourself you have gained information about your level, so long as you add that you will try not to gain the same information next time. Try to win every time, but if you always win, you are not stretching. Console yourself too much and you become a scrub. A master of the Competitive Conspiracy might say: ``It's not okay to lose. But the hurt of losing is not something so scary that you should flee the challenge for fear of it.''
+
+- Before: I read of a theist who had beaten Christopher Hitchens in debate, asked Bloggingheads to arrange a debate with him, and decided not to prepare,
+- After: I read of a theist who had beaten Christopher Hitchens badly in debate, by atheists' own account, and asked Bloggingheads to arrange a debate with him. Since people said Hitchens should have watched the theist's earlier debates, I decided not to prepare,
+
+- Before: If you must win, of course, make it as easy as you can.
+- After: If I lose, I lose my stake and learn my limits. If you must win, of course, make it as easy as you can; anything else would be spectacular overconfidence, even at tic-tac-toe against a three-year-old.
+
+- Before: A subtler form is lost momentum: you raise doubts about yourself, never test them, and slow down.
+- After: A subtler form is lost momentum, amid all the things humans do wrong. You become timid; you raise doubts about yourself, never answer or test them, and with no single decision, slow down. Fixing one thing seems pointless when a dozen others stay wrong. Wisdom comes to seem like ever doubting and never resolving, the humility of refusal and never of preparation, and saying worse and worse things about human abilities, down to cynicism.
+
+- Before: such as two-boxing on Newcomb's problem.
+- After: such as two-boxing on Newcomb's problem, doubting all knowledge because of induction, or always adopting the majority belief.
+
+- Before: If you take more precautions, test yourself more and fail less often, you are probably getting stronger.
+- After: Does constantly reminding yourself to doubt make you stronger? Never resolving doubts? A deliberate crisis of faith under uncertainty? Answering every objection with a humble confession of fallibility? If you take more precautions, test yourself more, ask friends, work up to big things gradually and fail less often, you are probably getting stronger. If you never fail, avoid challenges and feel hopeless, you are probably getting weaker.
+
+- Before: when I trusted my instinct, they rose.
+- After: when I decided to ``use the Force'' and trust my instinct, they rose above where they began, and the real test was higher still. Doubt does not always make you stronger, especially when it blocks good information such as math intuitions, though I needed the test to learn this.
+
+- Before: Underconfidence is a ``stopping mistake'':
+- After: Underconfidence is not unique to rationalists, but the attempt to be rational can lead to it. It is a ``stopping mistake'':
+
+- Before: I rank it third.
+- After: though less so among famous role models, I rank it third.
+

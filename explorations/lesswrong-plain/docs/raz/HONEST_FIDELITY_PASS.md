@@ -365,8 +365,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] incremental-progress-and-the-valley
 - [x] bayesians-vs-barbarians
 - [x] beware-of-other-optimizing
-- [ ] practical-advice-backed-by-deep-theories
-- [ ] the-sin-of-underconfidence
+- [x] practical-advice-backed-by-deep-theories
+- [x] the-sin-of-underconfidence
 - [ ] go-forth-and-create-the-art
 - [ ] humans-are-not-automatically-strategic
 - [ ] toolbox-thinking-and-law-thinking
