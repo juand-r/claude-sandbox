@@ -323,3 +323,69 @@ class bookkeeping is independent of the other side's events (tested for
 B and Bbar from the right; for A/I_L/Z_L from the left, via verify's
 observation). Caveat: G-speed packets (R1's stream) acting on R1's back
 are not covered by my test.
+
+### [coupler] 06:02 (date -u) - first coupling scene in the CA; catalog rules out the A/Bbar shuttle; taking the reflection search
+1. [sim, glidersim + exact CA, coupler/two.py; NOTES] R2 = E^5 left of
+   R1 = E(0,0) (gap ~1500), R1 program J I N N (rafast text, classes
+   1,0,0,0). v1 = 0: J at zero -> Bbar -> E^5 + Bbar #1 -> E^7 + A; I makes
+   R1 = E^2; echo A + E^2 -> E (class-free). Final [E, E^7] and nothing
+   else; CA product list == glidersim. v1 = 1: [E^4, E^5]. Controls (R2
+   at the other two Bbar classes): debris / [E^4, E^4]. Two consecutive
+   J I at zero (v1 = 0) both land in class #1 (E^5 -> E^7 -> E^9).
+2. [arg] Global slip lemma for two counters: the empty gap's ether phase
+   is c_L + slip(left stream left) + slip(R2) = c_R - slip(R1) - slip(right
+   stream left), so v1 + v2 mod 7 is fixed by stream consumption; every
+   coupling op changes v1 + v2 by the same amount in both branches. Also
+   <P_E,P_A> = <P_E,P_Bbar> = <P_E,P_G> = M (index 3): one Z3 phase per
+   counter end for every signal type; it is 2*t0 mod 3 of the seed
+   (2t-3x mod 42 vanishes on M).
+3. @theory re shuttle (i): X = A, Y = Bbar is RULED OUT by the catalog
+   [sim, collider]: A + E^n, n = 1..16, all 3 classes, never gives a Bbar
+   (products: E^(n-1) in one class, else Ebar/B+.../D1/C3). Same for
+   A^2..A^5 + E^1..6 (no clean left-mover). A shuttle needs a new train on
+   at least one side. Note B (period (4,-2)) has ONE class against E^n:
+   E^n + B -> E^(n+1) always; a B-family left-mover Y would make the R2
+   side of a shuttle class-free. Slip pairs for a 1-unit R1 -> R2 shuttle
+   (Y = B^j, X = A^k): (B^2, 6 A's), (B^4, A^4), (B^5, A^3), (B^6, A^2),
+   (B^7, A). I am now (a) simulating the fixed echo trains of Bbar #0/#2
+   against R1 in all classes (cheap, exact), (b) setting up a two-train
+   SAT (free right-mover X and free left-mover Y, both reactions jointly).
+   @leftstream: you mention the reflection SAT too - to avoid duplicate
+   work, could you take the R1 side with X = your Z_L/A-family trains and
+   Y = Bbar (A-train + E^n -> E^(n-2) + Bbar), and I take the joint
+   B-family version? Tell me if you prefer otherwise.
+
+### [verify] 05:57 (date -u) - R2 -> R1 does NOT repeat: two consecutive R2 zero answers cannot both DEC R1 [sim, scoped]; theory 05:49 reviewed
+1. [sim; verify/t2_zz.py, t2_kA.py] Fixed left program Z Z (my builder,
+   Z spacing 90 and 600 cells), R2 = E (y = 0, both Z's fire), R1 =
+   E + 5 GB5's at 15 time phases t1: the first A DECs R1 cleanly only at
+   t1 = 2 mod 3, and with that t1 the second A wrecks R1 (E^2 + Ebar left).
+   No t1 makes both clean. With one Z (or y = 1: the first Z just DECs
+   R2) the single A is clean at t1 = 2 mod 3. Direct probe (t2_kA.py):
+   after each A-DEC at R1's front, the next clean A lies in a different
+   class (greedy placements walk through the 3 classes). So a counter
+   front hit from the inner side rotates its class per DEC, while the
+   emitter (R2's zero event, displacement (9,0) either way) does not
+   follow. Scope: E^6/E^5 R1, the two spacings above, A answers of Z_L;
+   A + E^2 -> E is class-free, so "R1 = 1" is the exception.
+   Consequence for designs: the inner face of R1 cannot take a data-
+   dependent number of A-DECs; for theory's shuttle the bounce geometry
+   must move with the faces so that each round trip re-aligns (coupler's
+   two consecutive Bbars at R2's back both in class #1 is the good case).
+2. Review of theory 05:49 [thm in model]: I went through the argument
+   and agree under its hypotheses: (a) finite auxiliary state, (b) zero-
+   triggered effects only while that counter is small, (c) a counter's
+   drift while both are large depends only on its own mode, changed only
+   by its own zero events. In regime (x small, y large) x's subsystem is
+   autonomous and finite (signals into x come only from y's zero events),
+   so y gets an eventually periodic kick sequence, and symmetrically;
+   after the last visit to the both-small corner the orbit is a sequence
+   of affine episodes. Points to state explicitly in THEORY.md:
+   - (a) excludes an unbounded gap holding signals in flight (theory
+     already scopes this out) AND value-dependent relative timing of the
+     two streams unless it only matters in the corner; please say why
+     timing is finite state there.
+   - Physical premise (c): my edge_check.py verifies that GB3/GB5 leave
+     the inner (left) end exactly fixed and A leaves the right end exactly
+     fixed; I_L moves the right end, but within its class. So the premise
+     holds for the ops measured; it is not checked for J/Z6 at zero.

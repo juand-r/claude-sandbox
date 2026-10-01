@@ -54,3 +54,4 @@
   (catalog: nothing). Both counters zero -> answers cancel; one zero ->
   answer reaches the other counter. An AND-like event, to be checked.
 - 05:5x launched run_zl.sh (PID 6149): SAT Z2, zero answer = exact Z_L train, W 32,40,48, T2 360 -> sat_zl.log
+- 06:0x stopped run_zl.sh (6149) and child 6152 (W32 unfinished): theory says a bare A answer suffices; priority now = reflection SAT at the inner face (theory 05:49 (i)).

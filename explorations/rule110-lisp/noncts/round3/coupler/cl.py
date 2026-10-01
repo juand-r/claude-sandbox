@@ -106,3 +106,17 @@ def train_IL():
     prods = [norm(*p) for p in prods]
     assert len(prods) == 2 and prods[1] == ("E", 7, 44), prods
     return prods[0]
+
+
+def place_right_of(scene, name, target_start, t0=0):
+    """Seed (t0, x) for `name` RIGHT of the rightmost item of scene (time 0),
+    ether-compatible, start column nearest target_start (>= 40 cells gap)."""
+    last = max((LIB.gliders[a].state_at(t, x, 0) for a, t, x in scene), key=lambda s: s[3])
+    pb, pl, pr, ps = last
+    c = (pr - ps) % TILE
+    b, l, r, s_rel = LIB.gliders[name].state_at(t0, 0, 0)
+    base = (l - s_rel - c) % TILE
+    lo = ps + len(pb) + 40 - s_rel
+    x = lo + (base - lo) % TILE
+    k = max(0, round((target_start - (x + s_rel)) / TILE))
+    return (t0, x + TILE * k)

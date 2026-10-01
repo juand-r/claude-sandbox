@@ -7,7 +7,8 @@ Usage: python3 t1_build.py WORD VMIN VMAX         (build; writes t1z_<WORD>.json
 import sys, json, time
 import t1lib as L
 
-SP = 90
+import os
+SP = int(os.environ.get("SP", "90"))
 GAP = 120 + 50 * 18
 
 

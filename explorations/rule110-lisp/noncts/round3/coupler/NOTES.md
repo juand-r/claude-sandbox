@@ -52,3 +52,19 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   #1 (E^5 -> E^7 -> E^9), R1 ends E. Open: does a history with NO first
   Bbar meet the second J's Bbar in the same class? (running v=0 vs v=5
   on J I Z^7 J I N N, both zero at J2).
+- Board read 06:00: theory (05:49) proves value coupling alone stays
+  eventually periodic; asks for a SHUTTLE (glider bouncing between inner
+  faces). verify confirmed edge invariance and both couplings compose.
+- [sim, collider catalog] reflections at E^n faces in collisions.json:
+  right-mover in / only left-movers out: only A^4 + E^7 #1 -> B^2 + E.
+  left-mover in / only right-movers out: Bbar (3 classes, n>=1),
+  G/GB1/GB2 (+E^n -> E^(n-1) + A^3/A^2/A, class-free), Bhat + E #1,
+  GB3/GB6 at E. A + E^n (n<=16) never emits a Bbar: X=A/Y=Bbar shuttle
+  impossible.
+- [sim, exact CA, echo3.py] Bbar #0/#2 echo trains (A^2 A^2 A; A_8_A A)
+  vs R1 = E^1..E^7, 15 R1 phases: no left-mover emitted; notable clean
+  results: #0 echo + E^2 -> E^4 (all phases), #2 echo + E^4 -> E.
+- [sim, scan_bemit.py, scan_bemit_s6.jsonl] all 319 slip-6 G-speed
+  library packets vs E (zero), every class: only 13 GB1 pairs give a
+  clean E + left-mover, always Bbar. No single-B emitter (B would have
+  been class-free at R2). Scope: library packets only.
