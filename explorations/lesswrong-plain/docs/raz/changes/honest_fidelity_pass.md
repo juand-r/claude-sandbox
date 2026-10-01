@@ -3795,3 +3795,417 @@ Why: Fidelity/substance pass: added the second joke title and the 'you can alway
 - Before: Naive Bayes I do not try to summarize: ``Just read the blog post.''
 - After: One item warns against inferring properties by category when they are not independent given the class, as Naive Bayes assumes; that one I do not try to summarize: ``Just read the blog post.''
 
+
+## honest/sections/an-intuitive-explanation-of-bayes-s-theorem.tex
+
+Why: Fidelity/substance pass: rewrote to teach what the tutorial teaches (the reframed problems and their success rates, the four groups, why all three numbers are needed with the one-in-a-million case, the pearl-egg example with its extremes and wrong answers, natural frequencies, priors as checkable, degrees of freedom and calibration, likelihood ratios and their limit, combining tests by odds and decibels, the general theorem, the Bayesian account of evidence with the wet-grass example, the Bayesian reading of Popper with the -40 dB example, the notation and derivation); all existing notes kept verbatim
+
+- Before: \honest{An Intuitive Explanation of Bayes's Theorem}{Eliezer Yudkowsky}{2003}
+
+A note at the top says that I now consider this explanation obsolete. \nb{It is still the version served under this title.}
+
+Your friends are excited about Bayes's Theorem, and you look it up and find a single equation. ``What is the so-called Bayesian Revolution now sweeping through the sciences''? ``What is the light that they have seen?'' And then: ``Soon you will know. Soon you will be one of us.''
+
+Experts say that Bayesian reasoning is hard for humans to grasp. ``Or so they claim.'' I promise ``an excruciatingly gentle introduction.''
+
+The problem: 1\% of women screened have breast cancer; 80\% of those get a positive mammogram; 9.6\% of healthy women get one too. A woman tests positive. What is the chance she has cancer? ``Only around 15\% of doctors'' get it right, and I cite three studies. \nb{None of the three reports that figure for doctors on this problem; the study whose numbers come closest tested students in Salzburg.} Is the figure an urban legend? No: ``It's a surprising result which is easy to replicate, so it's been extensively replicated.'' I name no study beyond the three.
+
+Then the method that works. Imagine 10,000 women. A hundred have cancer, and 80 of them test positive. Of the 9,900 without cancer, 950 test positive. So 80 of the 1,030 women who test positive have cancer: 7.8\%. \nb{It is Gigerenzer and Hoffrage's method of counting people instead of multiplying probabilities, and it is the best thing in the essay.}
+
+Most doctors answer between 70\% and 80\%, which is ``wildly incorrect.'' I explain why all three numbers are needed, with a second example about eggs that contain pearls. I tell of second-graders who answer ``how old is the bus driver?'' by adding up the passengers. I give no source for that story.
+
+Gigerenzer and Hoffrage found that stating the problem in frequencies works slightly better than stating it in probabilities, and that counts work best of all. \nb{Their study found no gain for the middle step.}
+
+Where do priors come from? ``Never ask that question.'' Scientists' priors are set ``by annual vote of the AAAS,'' and everyone else downloads theirs ``from Kazaa.'' Then a serious answer: priors can be checked against reality, for instance by counting how many women in a sample have cancer. \nb{That works for the rate of a disease. It does not work for the prior probability of a scientific theory, which has no population to count.}
+
+Then the formal part: notation, degrees of freedom, likelihood ratios, odds. The order of the tests does not matter: ``The proof is left as an exercise for the reader.''
+
+Late in the essay: if Bayes's Theorem now seems obvious, ``this introduction has entirely succeeded in its purpose.'' The lesson: ``Evidence is always the result of the differential between the two conditional probabilities.'' And: ``Strong evidence is not the product of a very high probability that A leads to X, but the product of a very low probability that not-A could have led to X.''
+
+Then I return to the question I opened with. The Bayesian revolution is fueled by ``more and more cognitive scientists'' and by ``scientists in every field,'' none of whom I name. Science itself is a special case of Bayes's Theorem. Karl Popper held that theories can be ``definitely falsified.'' \nb{Popper also wrote that in practice no conclusive disproof of a theory can ever be produced.} Newton's theory of gravity was toppled by ``the hidden gotcha,'' evidence that a rival theory predicted and Newton's did not. \nb{That evidence had been in plain view for decades: the anomaly in Mercury's orbit was known from 1859. Newton's theory fell only in 1915, when Einstein's theory explained it.} Then I go back to the notation and explain it again; a better notation exists, ``which it is now too late to adopt.''
+
+Finally: ``Rational inference on the left end, physical causality on the right end; an equation with mind on one side and reality on the other.'' \nb{The theorem holds whatever causes what. Two sentences earlier Yudkowsky had said only that causal relations ``generally'' run this way.} ``You are now an initiate of the Bayesian Conspiracy.''
+
+- After: \honest{An Intuitive Explanation of Bayes's Theorem}{Eliezer Yudkowsky}{2003}
+
+A note at the top says that I now consider this explanation obsolete. \nb{It is still the version served under this title.}
+
+Your friends are excited about Bayes's Theorem, and you look it up and find a single equation. ``What is the so-called Bayesian Revolution now sweeping through the sciences''? ``What is the light that they have seen?'' And then: ``Soon you will know. Soon you will be one of us.''
+
+Experts say that Bayesian reasoning is hard for humans to grasp: people do not use it by instinct, learn it with difficulty and forget it after tutoring. ``Or so they claim.'' I promise ``an excruciatingly gentle introduction,'' using natural frequencies and pictures, to show what the numbers mean and why the rules must be what they are.
+
+The problem: 1\% of women screened at forty have breast cancer; 80\% of those get a positive mammogram; 9.6\% of healthy women get one too. A woman tests positive. What is the chance she has cancer? ``Only around 15\% of doctors'' get it right, and I cite three studies. \nb{None of the three reports that figure for doctors on this problem; the study whose numbers come closest tested students in Salzburg.} Is the figure an urban legend? No: ``It's a surprising result which is easy to replicate, so it's been extensively replicated.'' I name no study beyond the three. Doctors do better when the same problem is stated as counts, 10 in 1,000 and so on, and best, 46\% correct, when it is stated as 100 of 10,000 women, 80 of the 100, and 950 of the 9,900.
+
+Then the method that works. Imagine 10,000 women. A hundred have cancer, and 80 of them test positive. Of the 9,900 without cancer, 950 test positive. So 80 of the 1,030 women who test positive have cancer: 7.8\%, roughly one in thirteen. \nb{It is Gigerenzer and Hoffrage's method of counting people instead of multiplying probabilities, and it is the best thing in the essay.} After the test the women fall into four groups: 80 with cancer and a positive result, 20 with cancer and a negative one, 950 healthy and positive, 8,950 healthy and negative.
+
+Most doctors answer between 70\% and 80\%, which is ``wildly incorrect.'' They replace the 1\% with the 80\%, ignoring both how rare the cancer is and how often healthy women test positive. The answer needs all three numbers. The first, 1\%, is the prior probability; the two rates of positive results, for sick and for healthy women, are the conditional probabilities; the answer, 7.8\%, is the posterior probability. Where only one woman in a million has cancer, a test that catches 8 cancers in 10 and gives false positives 1 time in 10 still yields a hundred thousand false alarms per real case: the result raises the odds from 1 in a million only to 1 in 100,000. A result does not replace what you knew; it slides the probability up or down. The chance that a woman who tests positive has cancer and the chance that a woman with cancer tests positive are ``as unlike as apples and cheese.''
+
+A second example. A barrel holds plastic eggs; 40\% contain pearls. Of the pearl eggs, 30\% are painted blue; of the empty ones, 10\%. What share of blue eggs hold pearls? 12\% of all eggs are blue with pearls and 6\% blue and empty, so 12 of 18, about 67\%. With pearls in one egg in a thousand, blue would raise the chance only from 0.1\% to 0.3\%; with pearls in 999 of 1,000, from 99.9\% to 99.966\%. People new to this answer 30\%, or 20\% by subtracting the false positive rate from the true one. I tell of second-graders who answer ``how old is the bus driver?'' by adding up the passengers: they know which procedure is being prompted but have not connected it to reality. I give no source for that story.
+
+Gigerenzer and Hoffrage found that stating the problem in frequencies works slightly better than stating it in probabilities, and that counts work best of all. \nb{Their study found no gain for the middle step.} The best format, natural frequencies, builds the prior into the conditional numbers: of 100 eggs, 40 hold pearls and 12 of those are blue; 60 are empty and 6 of those are blue. It is what you would see cracking eggs yourself. Even so, only about half of people then reason correctly, not enough for real doctors and patients.
+
+Where do priors come from? ``Never ask that question.'' Scientists' priors are set ``by annual vote of the AAAS,'' and everyone else downloads theirs ``from Kazaa.'' Then a serious answer: priors are true or false like any answer, and can be checked against reality, for instance by counting how many women in a sample have cancer; here three studies would supply the three numbers. \nb{That works for the rate of a disease. It does not work for the prior probability of a scientific theory, which has no population to count.}
+
+Then the formal part. The joint probability $P(A,B)$ equals $P(B,A)$, but $P(A|B)$ is not $P(B|A)$, and neither is $P(A,B)$. I count degrees of freedom. $P(\mathrm{cancer})$ and $P(\neg\mathrm{cancer})$ have one between them, since they sum to 1. The two positive rates, for sick and for healthy women, have two, since either can be anything. $P(\mathrm{positive},\mathrm{cancer}) = P(\mathrm{positive}|\mathrm{cancer}) \times P(\mathrm{cancer})$ ties three quantities together; that is how tests are calibrated, dividing, say, 6,816 positives by 8,520 women with cancer to get 80\% (dividing the other way gives nonsense like 125\%, a common slip). The four groups have three degrees of freedom, since their fractions sum to 1, so any three independent numbers, such as the prior and the two conditional probabilities, fix the whole problem.
+
+The ratio of the true positive rate to the false positive rate is the likelihood ratio, which says how far a positive result slides the probability. It does not say what a negative result means, or how often the test helps: a test with 80\% hits and 9.6\% false positives has the same ratio as one with 8\% and 0.96\%, but the first is better in every way.
+
+Tests can be combined if they are independent. Add an invented second test, with 90\% hits and 5\% false positives, and a woman positive on both has about a 60\% chance of cancer. Odds make the bookkeeping easy: a 1\% prior is odds of 1 to 99, and three independent tests with likelihood ratios 25:3, 18:1 and 7:2 multiply to 3,150 to 594, or 84\%. The order of the tests does not matter: ``The proof is left as an exercise for the reader.'' E. T. Jaynes suggested measuring evidence in decibels, ten times the base-10 logarithm, so that evidence adds: the prior is about $-20$ decibels, the tests add 9, 13 and 5, and the result, 7 decibels, is odds of about 5 to 1, around 83\%.
+
+A gizmo problem, blocked hoses and sparks, shows the arithmetic in general: multiply the prior by the chance of the evidence if the hypothesis is true, and divide by that plus the same product for the alternative. In general form, $P(A|X) = P(X|A)P(A) / [P(X|A)P(A) + P(X|\neg A)P(\neg A)]$, for a phenomenon A and evidence X. Late in the essay: if Bayes's Theorem now seems obvious, ``this introduction has entirely succeeded in its purpose.''
+
+Bayes's Theorem says what counts as evidence and how much. The Bayesian method, I say, sets the limit on what a piece of evidence can yield, as thermodynamics limits the work from a temperature difference, and in cognitive science ``Bayesian reasoner'' is the precise word for a rational mind. People neglect prior frequencies. They also attend to how likely the evidence is if A is true, and not to how likely it is if A is false: rain nearly guarantees wet grass, but wet grass does not prove rain, since sprinklers and dew wet it too; if grass were never wet without rain, wet grass would prove rain even if rain wet it only half the time. ``Evidence is always the result of the differential between the two conditional probabilities.'' And: ``Strong evidence is not the product of a very high probability that A leads to X, but the product of a very low probability that not-A could have led to X.''
+
+Then I return to the question I opened with. The Bayesian revolution is fueled by ``more and more cognitive scientists'' and by ``scientists in every field,'' none of whom I name. Science itself is a special case of Bayes's Theorem: whether an experiment confirms a theory depends also on whether other explanations predict the same result. Karl Popper held that theories can be ``definitely falsified.'' \nb{Popper also wrote that in practice no conclusive disproof of a theory can ever be produced.} On the Bayesian account, a theory can make the evidence as likely as it likes, but it cannot control how likely rival theories make it, so confirmation has a ceiling. Newton's theory of gravity was toppled by ``the hidden gotcha,'' evidence that a rival theory predicted and Newton's did not. \nb{That evidence had been in plain view for decades: the anomaly in Mercury's orbit was known from 1859. Newton's theory fell only in 1915, when Einstein's theory explained it.} Evidence a theory says is nearly impossible counts hugely against it: a result with probability 0.0001\% under the theory and 1\% otherwise is a ratio of 1 to 10,000, $-40$ decibels. Falsifiability follows from conservation of probability: if X would confirm a theory, not-X must count against it. But Popper was wrong that there is no confirmation at all; falsification is only much stronger, and still probabilistic.
+
+Then I go back to the notation and explain it again; a better notation exists, ``which it is now too late to adopt.'' In $P(A|X)$, A is what you want to know and X the evidence. $P(Q,P)$ is the share of all things that have both properties, say 641 of 89,031 women, 0.72\%; $P(Q|P)$ is the share among those that have P, 641 of the 7,915 who tested positive. Conditioning on P shrinks your world to the things with P. The right side of the theorem follows from the left in a few steps: $P(A|X) = P(X,A)/P(X)$, and $P(X)$ is $P(X,A) + P(X,\neg A)$.
+
+Finally: ``Rational inference on the left end, physical causality on the right end; an equation with mind on one side and reality on the other.'' \nb{The theorem holds whatever causes what. Two sentences earlier Yudkowsky had said only that causal relations ``generally'' run this way.} ``You are now an initiate of the Bayesian Conspiracy.''
+
+
+
+## honest/sections/the-world-an-introduction.tex
+
+Why: Fidelity/substance pass: named the sequences previewed and what each covers, added the folklore aside, the weaker thesis Chalmers holds against traditional dualism, the survey figures from the footnote, and the outside sources recommended (Tegmark, Albert, the Stanford entries, Epstein)
+
+- Before: I preview the book's sequences, and then say a little about two debates it enters: consciousness and quantum physics.
+- After: I preview the book's sequences: ``Lawful Truth,'' on how physics links to cognition; ``Reductionism 101,'' on scientific explanation; ``Joy in the Merely Real,'' on what the scientific view means personally; ``Physicalism 201,'' on the hard problem of consciousness; ``Quantum Physics and Many Worlds,'' on the measurement problem; and ``Science and Rationality'' with ``A Technical Explanation of Technical Explanation,'' which tie these to scientific practice. Then I say a little about the two debates.
+
+- Before: Philosophers call such automata ``zombies.''
+- After: Philosophers call such automata ``zombies,'' though they have little in common with the zombies of folklore.
+
+- Before: Chalmers holds that consciousness is a ``further fact'' beyond the physical facts.
+- After: Traditional dualism, with immaterial souls breaking physical laws, may be false; Chalmers holds a weaker thesis, that consciousness is a ``further fact'' beyond the physical facts. A footnote reports a survey: 56.5\% of professional philosophers endorsed physicalism and 27.1\% rejected it, and most reject the possibility of zombies without agreeing on why the argument fails.
+
+- Before: so I list outside sources for checking the arguments.
+- After: so I list outside sources for checking the arguments: Max Tegmark's \textsc{Our Mathematical Universe}, which argues that every consistent mathematical structure exists and distinguishes this from more mainstream multiverses such as Everett's many worlds; David Albert's \textsc{Quantum Mechanics and Experience}; the \textsc{Stanford Encyclopedia}'s entries on measurement and on Everett; and, for physical intuition, Epstein's \textsc{Thinking Physics}.
+
+
+## honest/sections/universal-fire.tex
+
+Why: Fidelity/substance pass: added the four elements, the antimony details, the candle going out and the guessed transformation, the eighteenth-century picture of the body, Lavoisier's measurements on animals and his assistant, the match chemistry and Brand's 'Elemental Fire', what ATP does, why the link feels distant, the map folded into pieces, and the closing line
+
+- Before: People had used fire for ages, but nobody knew how it worked.
+- After: People had used fire for ages, but nobody knew how it worked; Greek and medieval thinkers called it one of the four elements.
+
+- Before: burnt antimony got heavier even as it lost a white smoke.
+- After: antimony burned under a burning glass for an hour became ashes a tenth heavier, even as it lost a thick white smoke. Lavoisier found that the air lost what the ashes gained.
+
+- Before: He found that a candle uses up ``vital air'' and makes ``fixed air,'' oxygen and carbon dioxide.
+- After: He found that a candle uses up ``vital air'' and makes ``fixed air,'' oxygen and carbon dioxide, and goes out when the vital air is gone: burning turns vital air into fixed air and fuel into ash.
+
+- Before: Then imagine discovering that people breathe in vital air and breathe out fixed air: people run on combustion.
+- After: Forget the cell theory of 1839 too; imagine looking at your hand with no idea why muscle moves while clay in the same shape sits still. Then imagine discovering that people breathe in vital air and breathe out fixed air: people run on combustion. Lavoisier measured the heat that animals, and his assistant Seguin, produced when exercising: more heat, more vital air consumed, more fixed air breathed out. Deprive people of oxygen or fuel, and the light goes out.
+
+- Before: Matches light because of phosphorus.
+- After: Matches light because of phosphorus, on the strip of safety matches or in the heads of strike-anywhere ones; pure phosphorus glows in the dark and may catch fire by itself, and Henning Brand, who purified it in 1669, announced that he had found Elemental Fire.
+
+- Before: in ATP, the body's store of chemical energy.
+- After: in ATP, the body's store of chemical energy, which powers muscles and neurons and on which almost every metabolic reaction depends.
+
+- Before: and can imagine one without the other.
+- After: and can imagine one without the other; even once connected, the link seems a distant school fact. But if your map is folded into four pieces for storage, the territory is not.
+
+- Before: ``you would cease to exist as organized matter.''
+- After: ``you would cease to exist as organized matter.'' Reality is laced together far more tightly than we like to believe.
+
+
+## honest/sections/universal-law.tex
+
+Why: Fidelity/substance pass: added the matter/life and earth/heaven divisions each unification crossed, the tiger/buffalo and meat-sharing details, the map/territory point about changing models, the collapse of stars, the Greek preference for 'normal' phenomena, and the framing of the closing lines
+
+- Before: which I call one of the most startling unifications in the history of science.
+- After: which I call one of the most startling unifications in the history of science, joining the mundane realm of matter with the sacred realm of life.
+
+- Before: Newton's was greater: it unified the planets with a falling apple,
+- After: Newton's was greater: it unified the planets, in the heavens once thought the home of the gods, with a falling apple,
+
+- Before: Everyday categories have exceptions: most buffalo have four legs, but perhaps this one has three.
+- After: Everyday categories have exceptions: a tiger does not act like a buffalo, and most buffalo have four legs, but perhaps this one has three.
+
+- Before: Even moral rules, where we want everyone bound, give way if a stronger tribe threatens to spear us all.
+- After: Only in moral rules do we want a law binding everyone, as when someone takes more than a fair share of meat; yet even there, if a stronger tribe threatened to spear us all unless Bob got double meat this once, we would give it.
+
+- Before: When a model fails, the new one is again exceptionless,
+- After: Our models rarely fail, and last a generation or two, not centuries; but that does not make the universe whimsical, which would confuse the map with the territory. When a model fails, the new one is again exceptionless,
+
+- Before: as general relativity governed Mercury's orbit before anyone knew.
+- After: as general relativity governed Mercury's orbit for decades, and the collapse of stars for billions of years, before anyone knew.
+
+- Before: a contrived setup would give a ``monstrous'' result.
+- After: they cared about ``normal'' phenomena, and thought a contrived setup would give a ``monstrous'' result with no bearing on how things really work.
+
+- Before: Last comes ``the Tao'':
+- After: So humans dream before they learn better. To think like reality, the universe that dreamed before there were humans, here is ``the Tao'':
+
+
+## honest/sections/is-reality-ugly.tex
+
+Why: Fidelity/substance pass: added the second differences, the tiger joke about pure math, the Great Surprise as a found and now forgotten surprise, the details of each source of uncertainty (laws unknown to those they govern; why accelerators show it is not our stock-price problem; the 5-nm protein, instruments, logical non-omniscience; the cube-dweller's constrained but incomplete expectations and the night-sky example), why ignorance of laws does not prove messiness, the planetary divergence of evolution, the Greek-with-biology-data contrast, the 'real life' summary, and uncertainty as bewilderment
+
+- Before: have first differences with no obvious pattern, but third differences that are all 6.
+- After: have first differences with no obvious pattern (7, 19, 37, 61), second differences that are simply related (12, 18, 24), and third differences that are all 6.
+
+- Before: Mathematics starts from a few axioms and is closed; perhaps the real world is uglier.
+- After: Mathematics starts from a few axioms and is closed; in pure mathematics no tiger leaps out of the bushes and eats Pascal's triangle. Perhaps the real world is uglier.
+
+- Before: Beneath the surface there is a simple, exact level, which we call physics.
+- After: Beneath the surface there is a simple, exact level, which we call physics. This Great Surprise has already happened, and should not be taken for granted: people once searched for underlying beauty with no guarantee of finding it.
+
+- Before: First, we may not know the fundamental laws, but physicists need particle accelerators even to see that gap.
+- After: First, we may not know the fundamental laws; people walked the Earth long before anyone knew the law of gravity that holds them down, and no law requires that laws be represented in the brains they govern. But physicists need huge particle accelerators even to show that gap, so it is not why we cannot predict stock prices.
+
+- Before: we cannot predict a protein's shape from its amino acids.
+- After: we know every law relevant to a protein folding, yet cannot predict its shape from its amino acids; a 5-nanometer molecule that folds in a microsecond is too much for current computers, which use approximations, and we resort to X-ray crystallography and NMR. We are not logically omniscient; we do not know what we believe.
+
+- Before: A little person standing on one of the cubes, who knows all about the sequence, still has to look down to learn which cube is theirs.
+- After: Suppose a little person stands on each cube. From outside, that says everything; but a little person who knows all about the sequence still has to look down to learn which cube is theirs. Their expectations are constrained, since they expect a cube and not 7, and a quick calculator who sees 17-- can guess 1728, but they must still look. To predict the night sky, knowing the laws, even with logical omniscience, is not enough; you must know where you are, in the whole universe, other inflationary universes and Everett branches included. Uncertainty about initial conditions is probably of this kind; if not, it is uncertainty about how the universe is, like uncertainty about laws.
+
+- Before: So real messiness comes from logical and indexical uncertainty.
+- After: So real messiness comes from logical and indexical uncertainty. Ignorance of the laws alone does not show that a messy pattern is really messy; you may just not have found its order.
+
+- Before: In biology we have already found the order, and it is too deep to help.
+- After: In biology we have already found the order, and it is too deep to help: we cannot compute protein chemistry from physics, and evolution may have gone differently on different planets. An ancient Greek looking at biological data would have done well to look for proteins lined up in a perfect icosahedron; we know where the elegance is, and it is too far down.
+
+- Before: The world is a ``perfectly regular, deterministic, and very large'' mathematical object.
+- After: The world is a ``perfectly regular, deterministic, and very large'' mathematical object, expensive to simulate. Real life is like knowing that many little people stand on cubes, without knowing which one you are, and being bad at mental arithmetic.
+
+- Before: Uncertainty is in the map, not the territory.
+- After: Uncertainty is in the map, not the territory; empirical, logical and indexical uncertainty are names for our own bewilderment, and the messiness is in the eye of the beholder.
+
+
+## honest/sections/beautiful-probability.tex
+
+Why: Fidelity/substance pass: added the equal control groups, the Bayesian retort about subjectivity, why the likelihood ignores intentions, the arithmetic analogy for consistency and what a real contradiction would mean, Cox's theorem in words, the case for messy tools put fairly, the Carnot engine argument in full, approximations as approximations to the law, the Dutch-book definition, the regression examples, why exact Bayes is final unless prior information is withheld, the map/territory point, and the MacKay addendum
+
+- Before: Both stop with 70 cures in 100 patients.
+- After: Both stop with 70 cures in 100 patients (and, presumably, equal control groups). Should we draw different conclusions?
+
+- Before: The Bayesian reply: the evidence cannot depend on ``the researcher's private thoughts.''
+- After: The Bayesian reply: ``Excuse you?'' The evidence cannot depend on ``the researcher's private thoughts,'' and the frequentists accuse Bayesians of being too subjective? How likely each state of Nature makes the data has nothing to do with intentions.
+
+- Before: Bayesians expect probability theory to be math: consistent, as Jaynes requires, and unique, as Cox's theorem shows.
+- After: Bayesians expect probability theory to be math: consistent, as Jaynes requires, with every theorem compatible with every other however derived. Compute 10 + 10 any legal way and you get 20; if you get 19 once, you made an illegal step, usually a division by zero, or in probability an infinity not taken as a limit. A real contradiction would bring down the whole edifice, set theory with it. And unique: Cox's theorem shows that any representation of uncertainty meeting certain constraints must map onto probability.
+
+- Before: Whatever is not Bayesian must fail a coherence test and can be Dutch-booked.
+- After: Whatever is not Bayesian must fail a coherence test and can be Dutch-booked, accepting combinations of bets that are sure losses or refusing sure gains.
+
+- Before: Frequentists think in tools, and Bayesians in laws.
+- After: But should rationality be math? The world is messy, exact Bayesian calculation is often intractable, so why not many tools? Frequentists think in tools, and Bayesians in laws.
+
+- Before: No real engine is a Carnot engine, but the second law still governs engines.
+- After: Looking for laws is not looking for pretty tools; the second law of thermodynamics is not a pretty refrigerator. No engine running between two heat reservoirs beats a Carnot engine, and no real car engine is one, as no tire is a perfect cylinder; it would be absurd to conclude that thermodynamics does not apply to cars. Likewise, approximations work to the extent that they approximate the Bayesian calculation and fail to the extent they depart, as a 747 is atoms even if we cannot compute its aerodynamics atom by atom. Their successes and failures are explainable in Bayesian terms, even if no one knows the explanation. Least-squares regression is the best point estimate under a Gaussian likelihood and a flat prior; regularized regression adds a Gaussian prior on the weights.
+
+- Before: ``You will never find a statistical method that yields a better answer.''
+- After: ``You will never find a statistical method that yields a better answer,'' only cheaper ones, unless the other method uses knowledge, perhaps a disguised prior, that you left out; put that in, and Bayes is again as good or better. With an ad-hoc tool someone may invent a cleverer one tomorrow; with the Bayes-optimal calculation you are done, like fitting a Carnot engine into your car.
+
+- Before: The beauty of Bayesian theorems is a side effect of their being laws.
+- After: Stability lies below the surface. Needing approximations does not change the law; the approximation is in the map, not the territory, and knowing the second law helps an engineer get close to ideal efficiency. The beauty of Bayesian theorems is a side effect of their being laws. An addendum points to chapter 37 of David MacKay's book for a fuller treatment of the opening problem.
+
+
+## honest/sections/outside-the-laboratory.tex
+
+Why: Fidelity/substance pass: added the two uses of the proverb, the shepherd's blank stare, Feynman's 'look at the water', the scientist's experimental routine and why it is not etiquette, the full shoelace chain and the city-map point, the spirit scientist's actual words and the prior against a complex belief, the clothing point about 'causal interaction', the shepherd's dinner and the apples, why universal law is counterintuitive, the Feynman wine passage, the religions' 'everything is connected' and their many rules, the campus and mind/matter examples, the parroted Popper and the lab coat, and the closing ambition
+
+- Before: Is the proverb true?
+- After: Scientists say it humbly, and others say it to dismiss unwanted advice. Is the proverb true?
+
+- Before: A shepherd trained to count sheep who cannot count apples has not understood counting.
+- After: A shepherd trained to count sheep who stares blankly when asked to count apples has not understood counting.
+
+- Before: Feynman's students in Brazil had memorized optics and did not recognize it in water.
+- After: Feynman's students in Brazil had memorized optics: ask about Brewster's angle and they answered, but say ``Look at the water'' and nothing happened.
+
+- Before: Why do experiments? Not because journals demand them, but because to map a territory you must go and look: light from your shoelaces has to reach your eye.
+- After: A competent scientist knows the routine: randomize treatment among N subjects, blind the judges, test for significance at 0.05. This is not etiquette like using the right fork; it is a way of testing hypotheses. Why do experiments? Not because journals demand them, or teachers taught it, or colleagues would look at you funny, but because to map a territory you must go and look; you cannot map a city from your living room with your eyes closed. Even checking your shoelaces needs photons from the Sun to bounce off them, strike your retina and be reconstructed by your visual cortex. Some physical process must correlate your brain with the world; reasoning is not magic.
+
+- Before: Now take a scientist who believes in a spirit world and says that observation cannot settle the question.
+- After: Now take a scientist who believes in a spirit world and says, ``no one really knows, and I admit that I don't have any evidence''; it is a religious belief that observation cannot settle.
+
+- Before: to be weighed by its likelihood ratio against other causes and against the prior.
+- After: to be weighed by its likelihood ratio against other causes of ``spirit voices'' and against the low prior of a complex belief with many parts; missing this is like a student not seeing that ``a medium with an index'' means water.
+
+- Before: Gould's ``separate magisteria'' is an ``immortal blunder of a phrase.''
+- After: People in lab coats say ``causal interaction'' and people in gaudy jewelry say ``spirits speaking,'' as if different clothing marked different realms; Gould's ``separate magisteria'' is an ``immortal blunder of a phrase.'' ``Causal interaction'' just means something that makes something else happen, and probability theory does not care what you wear.
+
+- Before: understands experiment only as a social convention.
+- After: understands experiment only as a social convention: they know when experiments are expected, and where it is customary to make up beliefs without looking, they happily do that. A shepherd taught that seven sheep and eight make fifteen, or no dinner, might think seven apples and eight make three.
+
+- Before: The rules of addition are the same for sheep and apples, and Newton showed that the planets obey the same laws as falling apples.
+- After: If you know why the rules work, addition is the same for sheep and apples, and Newton is revered for showing that the planets obey the same laws as falling apples. In the everyday world different trees bear different fruit and different customs hold for different people, so a unified universe under fixed laws is deeply counterintuitive; only scientists really believe it. Feynman put it in a glass of wine: look closely and you see physics, the Earth's rocks, the age of the universe, the chemistry Pasteur traced to disease; our small minds divide it into sciences, but ``Nature does not know it!'' Some religions say everything is connected, which tells you no more than saying nothing is, and in practice make up one rule for girls under twelve, another for men over thirteen, one for the Sabbath, one for weekdays.
+
+- Before: Reality is one process under simple laws, and ``Nor is Bayes's Theorem different from one place to another.''
+- After: Reality is one process under simple laws; different campus buildings are not different universes, and mind and matter, life and nonlife, are not divided; ``Nor is Bayes's Theorem different from one place to another.''
+
+- Before: ``probably never did understand why the scientific rules work.''
+- After: ``probably never did understand why the scientific rules work,'' however well they parrot Popper.
+
+- Before: They ``don't like to be constrained by evidence,''
+- After: They ``don't like to be constrained by evidence''; they take off the lab coat at home and relax with comfortable nonsense,
+
+- Before: Maybe we can do better, if we learn enough probability theory to know why the rules work.
+- After: Maybe we can do better, if we learn enough probability theory to know why the rules work and enough psychology to see how they apply, if we learn to look at the water. That ambition gives up the comfortable modesty of being no better than anyone outside your specialty, but if theories of rationality do not apply to everyday life, something is wrong: it is not a different universe inside and outside the laboratory.
+
+
+## honest/sections/the-second-law-of-thermodynamics-and-engines-of-cognition.tex
+
+Why: Fidelity/substance pass: added the patent-office and induction argument, the momentum sum, why the first law cannot forbid heat-to-work, what phase space is, the toy example's actual numbers and mapping (the refrigerator), the squeeze/expand rule, the entropy bookkeeping, the forbidden compressing map, the quantum caveat, the probabilistic reading, the temperature objection and its answer, Laplace's revelation, Maxwell's demon in detail, the demon's table and mutual-information arithmetic, the Szilard engine and Jaynes's adage, the note on logical truths, and the blind-faith demon
+
+- Before: No machine of wheels and gears can create energy from nothing, because each part conserves energy, so the whole must too.
+- After: No machine of wheels and gears can create energy from nothing, because energy is conserved in every interaction of particles, so by induction the whole must conserve it too; that is why the Patent Office rejects such machines without study.
+
+- Before: I make this point three times: with particles, with wheels and gears, and with a drive that pushes without pushing anything back.
+- After: I make this point three times: with particles, with wheels and gears, and with a ``reactionless drive'' that pushes without pushing anything back (momentum is conserved particle by particle, and a trillion quadrillion zeros still sum to zero).
+
+- Before: A machine that turns warm water into electricity and ice is forbidden by the Second Law,
+- After: Conservation of energy cannot forbid turning heat into work: a sealed box can turn ice and electricity into warm water, and the reverse would conserve energy too. A machine that turns warm water into electricity and ice is forbidden by the Second Law,
+
+- Before: Next I explain phase space. The state of a whole system is one point in a very large space, and the laws of physics move the point.
+- After: Next I explain phase space. The state of a whole system is one point in a very large space, with dimensions for every particle's position and momentum (twelve for two particles), and the laws of physics move the point, as dropping a ball moves the point describing you and the ball.
+
+- Before: A toy example follows. System X starts in one known state, and system Y in one of four. A minute later, Y is in one known state and X is in one of four. Uncertainty has moved from Y to X.
+- After: A toy example follows. X has eight states and Y four. Start with X in state 1 and Y in any of 1 to 4, and let physics map X1Y1 to X2Y1, X1Y2 to X4Y1, X1Y3 to X6Y1, X1Y4 to X8Y1: ``That, in a nutshell, is how a refrigerator works.'' Y is squeezed into one state, X spreads over four, and the volume, four states, is kept; you cannot squeeze one subsystem harder than another expands. Uncertainty has moved from Y to X: Y's entropy falls from 2 bits to 0.
+
+- Before: we say it could be in any of seven, and the total uncertainty appears to rise.
+- After: we say it could be in any of seven, states 2 to 8, $\log_2 7 = 2.8$ bits, and the total uncertainty appears to rise. A law mapping X2Y1 through X2Y4 all to X2Y1 would really lower entropy, ending in one place from anywhere; Liouville's theorem says our physics never does this.
+
+- Before: The next paragraph calls the increase of entropy an ``appearance,'' produced by drawing a simple boundary around a complicated region.
+- After: The next paragraph calls the increase of entropy an ``appearance,'' produced by drawing a simple boundary around a region that has developed squiggles and convolutions. (In quantum systems, where universes go different ways, entropy really increases in each local universe, a complication I set aside.) The law is probabilistic: hot water could turn into ice and electricity, with tiny probability, not because Liouville's theorem fails, but because you do not know where in a large region you start.
+
+- Before: Then the thesis: the Second Law is a statement about your beliefs about a system.
+- After: Then the thesis: the Second Law is a strict statement about your beliefs about a system, and only a probabilistic one about the system. ``That's not what I learned in physics class,'' you say: temperature is an objective property. One direction is easy: hotter water means faster and more varied molecular speeds, so knowing only the temperature you are more uncertain about each molecule's velocity, exponentially more about the whole glass; the logarithm of that is the entropy. For the other direction,
+
+- Before: Suppose you learned the exact position and speed of every molecule in a glass of water. Is the water colder?
+- After: suppose Saint Laplace revealed the exact position and speed of every molecule in a glass of water at 72 degrees. Its information-theoretic entropy is now zero. Is the water colder?
+
+- Before: Maxwell's demon, a creature that lets fast molecules through a door and keeps slow ones back, cannot make a free refrigerator,
+- After: Maxwell asked why we could not divide a uniformly hot gas into two parts and let only fast molecules pass one way and slow ones the other, making one side hot and one cold. The demon who works the door cannot make a free refrigerator,
+
+- Before: Knowledge ``has to be represented in a brain, and that makes it as physical as anything else.''
+- After: But if you already knew where every molecule was, you could run the demon and extract work, leaving an ice cube. This does not break Liouville's theorem: if the demon M knows Y's state, the process maps M1Y1 to M1Y1, M2Y2 to M2Y1 and so on. M and Y have 2 bits each and 2 bits of mutual information, so the pair has $2 + 2 - 2 = 2$ bits; afterwards Y has 0, M has 2, and the mutual information is spent. Knowledge ``has to be represented in a brain, and that makes it as physical as anything else'': the demon's state must correlate with the water, and the advantage can be used, in what is called a Szilard engine. As Jaynes put it, ``knowledge is power'' is true ``both in human relations and in thermodynamics.''
+
+- Before: So ``one subsystem cannot increase in mutual information with another subsystem, without (a) interacting with it and (b) doing thermodynamic work.''
+- After: So ``one subsystem cannot increase in mutual information with another subsystem, without (a) interacting with it and (b) doing thermodynamic work,'' or you could build a demon and break the Second Law. Logical truths I set aside: knowing them is not negentropy, since a reversible computer can compute them almost free.
+
+- Before: This is ``work'' in the thermodynamic sense.
+- After: This is ``work'' in the thermodynamic sense. If blind faith worked as a method of investigation, you could turn warm water into electricity and ice: just build a Maxwell's demon with blind faith in molecular velocities.
+
+
+## honest/sections/perpetual-motion-beliefs.tex
+
+Why: Fidelity/substance pass: added the mapping of belief onto authority and the lottery buyer's meaning, the 'thou shalt not murder' contrast and the decillion-egg test, the unseen spreadsheet and why it must have erred, the morphing arguments, the 'maybe this time' hope, heat vs flywheel, the full dialogue about boiling water, and why each added detail lowers the joint probability
+
+- Before: People learn at school that certain beliefs are orders and probable ones mere suggestions. I state this without evidence.
+- After: People learn at school that the teacher's beliefs must be recited back while a student's suggestion need not be obeyed, so they map belief onto authority: a certain belief is an order, a probable one a mere suggestion. I state this without evidence.
+
+- Before: So the lottery buyer says: ``But you can't prove I won't win, right?''
+- After: So the lottery buyer says: ``But you can't prove I won't win, right?'', meaning that a low probability is only a suggestion, and they may believe what they like.
+
+- Before: Smash an egg. That it will not reassemble is only probable.
+- After: Smash an egg. That it will not reassemble is only probable, so the laws of thermodynamics are not laws the way ``Thou shalt not murder'' is, and you may ignore them, and the egg will reassemble... right?
+
+- Before: But you must expect it to stay smashed:
+- After: There may be a tiny chance it reforms, but you cannot expect it to; your mandatory belief is that the chance is about zero. Drop an egg a few decillion times expecting it to reassemble, and see:
+
+- Before: Classical mechanics rules that out, so his spreadsheet had to contain a mistake.
+- After: He could not show it to us, because the system was still being developed. Classical mechanics rules that out, so any spreadsheet calculated by its rules must show no thrust, unless the machine is complicated enough for a mistake to creep in.
+
+- Before: People who ``try to believe without evidence just this once'' build arguments like his machine, and
+- After: Half-trained rationalists who ``try to believe without evidence just this once'' build arguments like his machine, complicated enough to hide the magical step, which squirms away when questioned; but
+
+- Before: Because ``there is far more thin air than ground in the realms of Possibility.''
+- After: Because ``there is far more thin air than ground in the realms of Possibility''; there is an exponentially tiny amount of ground, so maybe this time the foot lands on it, and since that is merely a probability, it must be merely a suggestion.
+
+- Before: Your ignorance of the water's exact state is what makes its energy heat.
+- After: Your ignorance of the water's exact state is what makes its energy heat, rather than work to be extracted like a flywheel's momentum, so the water might cool your hand, with probability about zero.
+
+- Before: Guessing the exact state is even less likely than being spared by chance. Each gear you add to the argument makes the machine less efficient, and each detail lowers the probability of the whole.
+- After: ``But you don't know that!'' Not with certainty, but I must expect it. ``What if I guess the water's state correctly?'' That is even less likely than being spared by chance. ``You can't prove I won't.'' I must assign it a very low probability. ``That's not certainty.'' Add enough gears to your argument, and you will no longer see why warm water could not become electricity and ice. ``Right! So maybe it is!'' Each gear you add makes the machine less efficient, and each detail lowers the probability of the whole: violating the Second Law without knowing how, to guess the water's state, to put your finger in unburned, is less likely than putting it in unburned.
+
+
+## honest/sections/perpetual-motion-beliefs.tex
+
+Why: Fidelity/substance pass: made new quotations verbatim
+
+- Before: ``What if I guess the water's state correctly?''
+- After: ``But what if I guess the state of the boiling water, and I happen to guess correctly?''
+
+- Before: ``That's not certainty.''
+- After: ``That's not the same as certainty, though.''
+
+- Before: ``Right! So maybe it is!''
+- After: ``Right! I can't see why couldn't be the case! So maybe it is!''
+
+
+## honest/sections/searching-for-bayes-structure.tex
+
+Why: Fidelity/substance pass: added the gnomish-helm moral, thermodynamic work and waste heat, the T=0/T=1 argument with evidence as mutual information, the hoped-for audience reaction and why it did not come, the conditions on the Grail, why the destination was hard to announce, how the quest typically goes, the 'dance about architecture' line, the expected reactions to 'Bayes is the secret of the universe', what the post hoped to convey, the Bayes Council joke, and the closing Zelazny quotation
+
+- Before: I open with a quotation about gnomish helms: those that work have a small working helm hidden inside.
+- After: I open with a quotation about gnomish helms, which should not work and are all bells and whistles; those that do work have a small working helm hidden inside, disguised as inessential.
+
+- Before: Forming true beliefs without evidence is ``the same sort of improbability'' as warm water turning into ice and electricity.
+- After: Forming true beliefs without evidence is ``the same sort of improbability'' as warm water turning into ice and electricity. Rationality takes thermodynamic work, imperfect minds give off heat, and that work is governed by probability theory, of which thermodynamics is a special case.
+
+- Before: Likewise a mind that arrives at true beliefs must be doing something ``at least vaguely Bayesian'' somewhere,
+- After: Likewise a mind that arrives at true beliefs must be doing something ``at least vaguely Bayesian'' somewhere: if at first it shares no information with some part of the world and later shares 10 bits, it must in between have met evidence, which is the same thing as mutual information, and processed some of it in the right direction, or else created information from nothing,
+
+- Before: I name no philosopher.
+- After: I name no philosopher. I was a little disappointed that no one jumped up and cried that it was Bayes all along; perhaps it is less exciting when someone else unravels the mystery (Newton had more fun than calculus students), or when you do not see how great the quest is.
+
+- Before: ``but the Grail always turns out to be the same,'' the ``entire'' Grail.
+- After: ``but the Grail always turns out to be the same,'' the ``entire'' Grail, found by seeking a full answer in whatever form, not by hand-waving Grailish arguments. Readers told me my long essays did not make clear where I was going, but it is hard to announce a destination like that.
+
+- Before: I describe the experience. A process does not look Bayesian; underneath it is.
+- After: I describe the experience. You learn about some useful mental process that philosophers have argued over for centuries and AI researchers cannot agree how to build. It does not look Bayesian; underneath it is; then a completely different process turns out Bayesian too.
+
+- Before: If no, ``what a stupid design.''
+- After: If no, ``what a stupid design''; I could eat a bucket of amino acids and vomit a better brain. Talking about this rhythm is like dancing about architecture.
+
+- Before: Critics may point to useful ad hoc methods such as regularized linear regression; my link shows its Bayesian reading.
+- After: If I say ``Bayes is the secret of the universe,'' some will cheer and others will snort at my narrowness and point to useful ad hoc methods such as regularized linear regression; my link shows its Bayesian reading. I hoped that one worked example, plus the distinctions between passwords and knowledge and between tools and laws, would convey some of the rhythm. The full secret is known only to the Bayes Council, ``and if I told you, I'd have to hire you.''
+
+- Before: The aim is ``Bayes-Sight'': to see how each process is Bayesian, ``as it always is - as it always must be.''
+- After: The aim is ``Bayes-Sight'': to see through the surface to the probability flows, to know how each process is Bayesian, ``as it always is - as it always must be.'' I close with Zelazny: a queen who might see ``The clear, cold lines of eternity, I daresay. Beneath all Shadow.''
+
+
+## honest/sections/dissolving-the-question.tex
+
+Why: Fidelity/substance pass: added the stages of the philosopher's instinct in full, why proving confusion is not enough, the 'not rhetorical' question, the Traditional Rationalist verdict and why it is incomplete, algorithms as how the world feels and things that cut skew to it, Naive Bayes as the alternative understanding, the home-team satisfaction that hides ignorance, the social-status example of 'explaining why' against Feel the Meaning's 'explaining how', the permission to say 'not done yet', noticing confusion against a smirking opponent, the dreamer line, the full list of forbidden homework answers, the stack trace, and the closing remark
+
+- Before: Some weigh the arguments about free will and publish a verdict. Wiser ones define the term first.
+- After: Some weigh the arguments about free will and publish a verdict in a prestigious journal. Wiser ones recall that most philosophical disputes are about the meaning of a word, define the term precisely, and ask again.
+
+- Before: Wiser still, they argue that the idea is self-contradictory or meaningless, and publish that.
+- After: Wiser still, they argue that the idea is self-contradictory or meaningless for lack of testable consequences, and publish that. But proving that you are confused may not make you less confused, and proving a question meaningless may help no more than answering it.
+
+- Before: But people's feeling of free will is a fact about human minds, and rejecting the idea does not explain the feeling.
+- After: But people's feeling of free will is a fact about human minds, and rejecting the idea does not explain the feeling: if free will does not exist, what goes on in the head of someone who thinks it does? ``This is not a rhetorical question!'' Likewise, noting that the tree's arguers anticipate nothing different and calling the argument pointless is correct, but does not say why they made the mistake.
+
+- Before: And mistakes reveal how a mind works.
+- After: And mistakes reveal how a mind works. Our algorithms are how the world feels to us, and some things in the mind cut skew to the world.
+
+- Before: My explanation is a network with a central unit that stays undecided even after every observable feature is known.
+- After: My explanation is a network with a central unit, a useful shortcut that corresponds to nothing real, which stays undecided even after every observable feature is known.
+
+- Before: Once you understand ``in detail'' how your brain produces the feeling of the question, ``then you're done,'' with no lingering confusion.
+- After: Once you understand ``in detail'' how your brain produces the feeling of the question, or better, the workings of Naive Bayes, ``then you're done,'' with no lingering confusion.
+
+- Before: Any vague dissatisfaction is a warning that you are not done.
+- After: Any vague dissatisfaction, or feeling of having been fast-talked, is a warning that you are not done. A thundering refutation of free will feels like a cheer for the home team, so you may not notice, or want to admit, that you cannot explain how each intuition arises.
+
+- Before: only explains why people have the belief, not how.
+- After: only argues that the brain produces an illusion, or explains why, not how; the illusion stays a brute fact. Likewise, guessing that people who called arguments meaningless lost status, so we evolved to argue about words, explains why; the network in ``Feel the Meaning'' explains how, breaking the confusion into pieces that are not confusing.
+
+- Before: Do not stop too early: it ``sometimes seems to me that at least 20\%'' of a skilled rationalist's effectiveness comes from that.
+- After: Good hypotheses about mental algorithms are much harder than refuting a confusion, a different art altogether, so feel free to say: I can prove you wrong, but I cannot yet flowchart how your brain errs, so I am not done. Do not stop too early: it ``sometimes seems to me that at least 20\%'' of a skilled rationalist's effectiveness comes from that.
+
+- Before: I give no basis for the figure.
+- After: I give no basis for the figure. The challenge is to notice even a little confusion, even with someone across from you insisting on free will and smirking.
+
+- Before: So the feeling can mislead you.
+- After: So the feeling can mislead you: ``Those who dream do not know they dream, but when you wake you know you are awake.''
+
+- Before: and do not argue ``that free will is compatible with determinism, or not.''
+- After: and do not argue ``that free will is compatible with determinism, or not,'' or that the question is ill-posed or the concept contradictory or untestable, or tell an evolutionary story, or tie the concept to some bias; all of those explain why, not how. Write ``a stack trace'' of the mind's algorithms as they produce the intuitions behind the whole argument. It was one of the first real challenges I tried, and one of the easier ones.
+

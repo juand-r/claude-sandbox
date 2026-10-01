@@ -212,17 +212,17 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] words-as-mental-paintbrush-handles
 - [x] variable-question-fallacies
 - [x] 37-ways-that-words-can-be-wrong
-- [ ] an-intuitive-explanation-of-bayes-s-theorem
-- [ ] the-world-an-introduction
-- [ ] universal-fire
-- [ ] universal-law
-- [ ] is-reality-ugly
-- [ ] beautiful-probability
-- [ ] outside-the-laboratory
-- [ ] the-second-law-of-thermodynamics-and-engines-of-cognition
-- [ ] perpetual-motion-beliefs
-- [ ] searching-for-bayes-structure
-- [ ] dissolving-the-question
+- [x] an-intuitive-explanation-of-bayes-s-theorem
+- [x] the-world-an-introduction
+- [x] universal-fire
+- [x] universal-law
+- [x] is-reality-ugly
+- [x] beautiful-probability
+- [x] outside-the-laboratory
+- [x] the-second-law-of-thermodynamics-and-engines-of-cognition
+- [x] perpetual-motion-beliefs
+- [x] searching-for-bayes-structure
+- [x] dissolving-the-question
 - [ ] wrong-questions
 - [ ] righting-a-wrong-question
 - [ ] mind-projection-fallacy
