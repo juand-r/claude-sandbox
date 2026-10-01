@@ -343,8 +343,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] trying-to-try
 - [x] use-the-try-harder-luke
 - [x] on-doing-the-impossible
-- [ ] make-an-extraordinary-effort
-- [ ] shut-up-and-do-the-impossible
+- [x] make-an-extraordinary-effort
+- [x] shut-up-and-do-the-impossible
 - [ ] final-words
 - [ ] raising-the-sanity-waterline
 - [ ] a-sense-that-more-is-possible

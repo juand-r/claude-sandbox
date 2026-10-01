@@ -8181,3 +8181,95 @@ Why: Fidelity/substance pass: on-doing-the-impossible: corrected Atkins's role t
 - Before: Most people should ``stick to the possible,'' and ``Never give up?'' is ridiculous; knowing when to lose hope is a skill.
 - After: Most people should ``stick to the possible.'' Never give up? ``Don't be ridiculous.'' Knowing when to lose hope is a skill.
 
+
+## honest/sections/make-an-extraordinary-effort.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the two spellings, why Japan's phrase is not hypocrisy, what more Aumann's case calls for, the 1980s and the proverbs, what an extraordinary effort involves and why it is dangerous, the full game-rules advice, the replies to the futility and credentials arguments, the private-project reasoning and its 'awful justice', and the cost of ordinariness.
+
+- Before: The word began as the loyalty a samurai offered in return for his position.
+- After: The word began as the loyalty a samurai offered in return for his position, and its characters include ``life'' and ``land''; it belonged to bushido, which was not only about fighting. One source says the variant issho kenmei means an all-out effort on a single point and isshou kenmei a lifelong one.
+
+- Before: Why don't self-styled rationalists
+- After: I try not to praise the East too much, since the West hears only selected parts of it. But having a compact phrase for this is one point where Japan scores higher than America. A Japanese parent might say it to a student before exams, and it is not cheap hypocrisy there, because exams are taken very seriously.
+
+Why don't self-styled rationalists
+
+- Before: Knowing the math is not enough to save him; it takes isshoukenmei, a desperate effort to be rational.
+- After: Knowing the math is not enough to save him. It takes heuristics and biases, social and evolutionary psychology, and also isshoukenmei, a desperate effort to be rational, to rise above Aumann's level.
+
+- Before: But Japan does not lead the United States in science. In Japan, ``The nail that sticks up gets hammered down.''
+- After: Should I peddle rationality in Japan instead? But Japan does not lead the United States in science, despite more studious students, and does not rule the world, though many expected it to in the 1980s. In the West, ``The squeaky wheel gets the grease''; in Japan, ``The nail that sticks up gets hammered down.''
+
+- Before: but lifting a truck takes something out of the ordinary.
+- After: but lifting a truck takes something out of the ordinary: something you were not taught in school, that others do not expect and may not understand, outside your routine, for which you have no mental program, bypassing the System.
+
+- Before: The second virtue is higher, and more dangerous. An embezzler also goes to extraordinary lengths. Break rules, I once told a boy who wanted to change a game's rules for fun, only for ``an overwhelmingly good reason.''
+- After: The second virtue is higher, and more dangerous. A desperate effort to lift a weight may tear a muscle; a creative idea gone wrong can blow up the truck and any number of bystanders. A businessman who makes a desperate effort to avoid bankruptcy differs from one who goes to extraordinary lengths to hide an embezzlement. A friend of my little brother's once wanted to change a game's rules just because playing by ordinary rules was boring. I told him: ``Don't violate rules for the sake of violating them. If you break the rules only when you have an overwhelmingly good reason to do so, you will have more than enough trouble to last you the rest of your life.''
+
+- Before: People tell me that Friendly AI is futile because corporations or the military will build the first AIs, or that I should get degrees first, ``at least a ten-year detour.''
+- After: Still, we could value this virtue more. People tell me that Friendly AI is futile because corporations that care only for profit, or the military, will build the first AIs. Does it occur to them to try for something other than the default outcome? If I believed what they believe, I would not shrug and go on my way. Others tell me to get degrees and publish ordinary papers first, ``at least a ten-year detour'' to do everything the default way. Do they think humanity can survive if every single person does everything the ordinary way?
+
+- Before: I plan instead for a small, privately funded project. ``The life or death of the human species'' depends on a few people doing something a little extraordinary.
+- After: I do not make plans that need a majority, or even 10\%, of people to leave their comfort zone. So I plan for a small, privately funded project, a ``brain in a box in a basement.'' Funding it needs only a tiny fraction of six billion people to think for more than five seconds about a question that is not prepackaged. There is an awful justice in that: ``the life or death of the human species'' depends on a few people doing something a little extraordinary. The penalty is disproportionate, but most of Nature's challenges have no justice at all.
+
+- Before: Then I leave ``the details of that debate'' aside.
+- After: Then I leave ``the details of that debate'' aside, still stunned at how often a single extraordinary element is taken as an absolute obstacle.
+
+- Before: Keeping things ordinary can be a useful heuristic, I grant, but ordinariness has a cost too. People accept sad futures because they seem ordinary.
+- After: Keeping things ordinary can be a useful heuristic, I grant, and the risks of the extraordinary accumulate. But ordinariness has a cost too, and it is not always one you can afford. People imagine futures that will not be much fun, or that have a tinge of sadness and loss, and do not ask whether we could do better, because the sadness seems ordinary.
+
+
+## honest/sections/shut-up-and-do-the-impossible.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the forum reactions, why the Box is a good example, why each lower virtue fails, the objection that success is not a primitive action, why faith in success is another escape, the rule about stating exactly why something is impossible, the refusal to give probabilities, the suspicion of ordinary-effort proposals, the climb up the wall, and the three later games and what they cost; replaced the word 'ladder', which the user's style rules exclude.
+
+- Before: There is a ladder of virtues. First,
+- After: The virtues come in levels. First,
+
+- Before: I quote some forum comments from people who find it baffling; such people are tempted to deny the data.
+- After: I quote forum comments from people who find it baffling: one could type ``No'' every few minutes while reading other web pages, and there is \$10 on the line; either the tests are faked, or ``this Yudkowsky fellow is some kind of evil genius with creepy mind-control powers.'' Told that it happened, they are tempted to deny the data. Put yourself in their frame of mind; I need an example that is not really impossible. And compared with, say, a reductionist account of consciousness, the Box is about as easy as a problem can be while still being impossible.
+
+- Before: Suppose the Box seems impossible to you. Becoming stronger over many tries may be too slow. A desperate effort along lines you already know will not help. A few minutes of creative brainstorming counts as leaving your comfort zone, and still fails.
+- After: Suppose the Box seems impossible to you, and you do not give up like Luke. Perhaps you have learned to override running away, or they will shoot your daughter if you fail, or only your pride is at stake (``Pride is an underrated sin''). Becoming stronger over many tries may be too slow, and sometimes one failure is not acceptable, though even picturing how you would do better next time, by skill, begins to bind you to the problem. A desperate effort along lines you already know will not help, because a problem looks impossible precisely when your brain returns no lines of solution. A few minutes of creative brainstorming counts as leaving your comfort zone, and someone can do it and report that the other player can still keep saying ``No.''
+
+- Before: Your goal is not to make an effort. Your goal is to get out of the box.
+- After: As ``Trying to Try'' showed, you can succeed at making an extraordinary effort without getting out of the Box. ``But SUCCEED is not a primitive action! Sometimes you just can't win!'' True. Now shut up and do the impossible. Your goal is not to make an effort. Your goal is to get out of the box.
+
+- Before: Some seize a poor solution, like the people who guessed that my AI threatened to destroy the world or offered the gatekeeper a trillion dollars.
+- After: Some seize a poor solution, like the people who guessed that my AI threatened to destroy the world or offered the gatekeeper a trillion dollars; the gatekeeper would just keep saying ``No.'' They try too hard to convince themselves the problem is not impossible. You must set out to have a good solution at the end of the search, and to implement it.
+
+- Before: Some have faith that they will win. You must not expect surely to win, nor surely to lose.
+- After: Some have faith that they will win. Hacking yourself to believe you will succeed accomplishes nothing; you will put in little effort, or a merely desperate one, trusting the universe to be fair. Yet you cannot set out to try or to do your best. You must say: now I am going to figure out how to get out of the Box. You must not expect surely to win, nor surely to lose.
+
+- Before: ``I'm pretty sure they haven't even tried for the sake of trying.''
+- After: ``I'm pretty sure they haven't even tried for the sake of trying.'' Even if they tried for five minutes by the clock, they would find nothing, because they would be setting out to have tried, to be defensible. Otherwise you brainstorm a little, see that nothing works, and say ``Oh well.'' ``No! Not well! You haven't won yet!''
+
+- Before: Keep in view every reason you cannot win, and hold the intent to win at the same time.
+- After: This does not mean doublethinking your way to certainty, or adding one iota to your true estimate. Keep in view every reason you cannot win, or you will seize a false solution: the gatekeeper can always say no, consciousness seems unlike any combination of atoms. If you can state exactly why something is impossible, you are often close to a solution. Hold that view and the intent to win at the same time. The tension comes from not knowing which will prevail. Even the certainty of uncertainty is a relief to be rejected, since it ends desperation. Fiction finds this hard to show: Bambi taking on Godzilla in such a way that readers truly do not know who will win.
+
+- Before: I cannot put a probability on success, even for my own work.
+- After: You may even be justified in refusing to use probabilities here. Asked how likely it is that humankind survives, or that I can build a Friendly AI, I do not know how to answer. It is not zero, but the ``chance'' depends heavily on my choices and on unknown unknowns, a wildly unstable estimate.
+
+- Before: ``you can't do it because Friendly AI is impossible.''
+- After: ``you can't do it because Friendly AI is impossible.'' The proposals include communities of AIs that are Friendly as a whole though no member is trustworthy, keeping an AI in a box, and ``Just make an AI that does X.'' Be very suspicious of a solution that needs only an ordinary effort.
+
+- Before: My one hint: ``There's no super-clever special trick to it. I just did it the hard way.''
+- After: My one hint, given on Hacker News: ``There's no super-clever special trick to it. I just did it the hard way.'' I did not bribe the other player or otherwise violate the spirit of the experiment.
+
+- Before: I admit the Box never seemed impossible to me.
+- After: I admit the Box never seemed impossible to me: someone who cannot think of an argument that would convince them is only running a search that has not yet found a path. But it illustrates the point that this is not expecting a cheap way out, which is only another escape. Each level costs more than the last; making an extraordinary effort demands that you think, and this demands more. Before you the blank wall stretches up out of reach, and you hold both awarenesses, all the reasons you cannot win and all the reasons you have to, reject every cheap way out, and start forward as if walking through concrete. There is nothing heroic in an effort more heroic than it needs to be, and if a cheap shortcut exists you could take it. I have yet to find one.
+
+- Before: Finally, I played three more games, for stakes of thousands of dollars. ``I won the first, and then lost the next two.'' Losing hurt.
+- After: Finally, I played three more games. People offered thousands of dollars, out of curiosity more than conviction, and I was tempted by the money, so I checked that they could afford to lose it. ``I won the first, and then lost the next two.'' Then I stopped; I did not like the person I turned into when I started to lose. I made a desperate effort and lost anyway, and it wrecked me for two days. I am a sore loser, and that drives me to keep at impossible problems.
+
+- Before: Reserve this for ``very special occasions.''
+- After: Reserve this for ``very special occasions.'' But only at this level do adult problems begin to come into sight.
+
+
+## honest/sections/shut-up-and-do-the-impossible.tex
+
+Why: Fidelity/substance pass: shut-up: replaced a non-verbatim quotation with a paraphrase.
+
+- Before: ``But SUCCEED is not a primitive action! Sometimes you just can't win!'' True.
+- After: You object that success is not a primitive action, and that sometimes you just can't win. True.
+
