@@ -199,14 +199,14 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] feel-the-meaning
 - [x] the-argument-from-common-usage
 - [x] empty-labels
-- [ ] taboo-your-words
-- [ ] replace-the-symbol-with-the-substance
-- [ ] fallacies-of-compression
-- [ ] categorizing-has-consequences
-- [ ] sneaking-in-connotations
-- [ ] arguing-by-definition
-- [ ] where-to-draw-the-boundary
-- [ ] entropy-and-short-codes
+- [x] taboo-your-words
+- [x] replace-the-symbol-with-the-substance
+- [x] fallacies-of-compression
+- [x] categorizing-has-consequences
+- [x] sneaking-in-connotations
+- [x] arguing-by-definition
+- [x] where-to-draw-the-boundary
+- [x] entropy-and-short-codes
 - [ ] mutual-information-and-density-in-thingspace
 - [ ] superexponential-conceptspace-and-simple-words
 - [ ] conditional-independence-and-naive-bayes
