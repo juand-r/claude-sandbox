@@ -7290,3 +7290,95 @@ Why: Fidelity/substance pass: added the two bets of the remembered example and w
 - Before: When something important is at stake, follow the mathematics.
 - After: There are mathematical laws for steering the future efficiently, and when something more important than your feelings is at stake, you should care about them.
 
+
+## honest/sections/feeling-moral.tex
+
+Why: Fidelity/substance pass: added why multiplying lives is appropriate (no diminishing marginal value), the angry objection and the grandstanding on the other framing, the definition of a googolplex, the console game, the urge to punish, the anecdote's irony stated, the 'small cold flame', and not being sad at the chance to help
+
+- Before: and I call that foolish, since the gamble saves 450 lives on average.
+- After: and I call that foolish, since the gamble saves 450 lives on average, and lives saved do not diminish in marginal value. ``How can you gamble with human lives?'' you cry; what if the 10 per cent strikes? ``You're following your rationality off a cliff!''
+
+- Before: A sure gain feels better than an unsure one, and a sure loss feels worse.
+- After: A sure gain feels better than an unsure one, and a sure loss feels worse. And one can grandstand on that framing too: how can you condemn 100 people to certain death? Everyone makes it, or no one does!
+
+- Before: A life is worth more than your comfort with a plan:
+- After: A life, with its joys and pains over decades, is worth far more than your comfort with a plan; if computing expected utility feels cold-blooded, that feeling is not even a feather in the scales:
+
+- Before: Now take a googolplex people with hiccups and one person torn apart by sharks.
+- After: Now take a googolplex, 10 to the power of a googol, which is itself $10^{100}$: a googolplex people with hiccups, against one person slowly torn apart by sadistic mutant sharks.
+
+- Before: Such dilemmas are everyday life:
+- After: Such dilemmas are not blood sports for philosophers at dinner parties but everyday life:
+
+- Before: a console game or charity,
+- After: \$50 on a console game or to charity,
+
+- Before: and are indignant at any trade against money.
+- After: and are indignant at any trade against money, sometimes wanting to punish whoever proposed it; many take pride in looking away from such trade-offs.
+
+- Before: and then decided not to carry out the project.
+- After: and then decided not to carry out the project, so lives were lost anyway. Such trades feel awful.
+
+- Before: The other way might feel better inside you, ``But it wouldn't work.''
+- After: The primary thing is to help others, whatever the means. If there seems a fierceness in this maximizing, a small cold flame at the centre of rationality, the other way might feel better inside you, ``But it wouldn't work.''
+
+- Before: You should not regard your gift as a burden.
+- After: But that works only if you do not tell yourself you would feel better being less rational. Should you be sad to have the chance to actually help people? You cannot reach your potential if you regard your gift as a burden.
+
+
+## honest/sections/the-intuitions-behind-utilitarianism.tex
+
+Why: Fidelity/substance pass: added the postmortem behind staying object-level, 'what do you do anyway?', 'intuition' as a building block not opposed to reason (even modus ponens), the seven claims and which are accepted, why violating them gives incoherence, how moral progress is experienced, the where-to-go/how-to-get-there distinction, distrust after many framing studies, the Ontario and 50,000-vs-5,000 findings, the billions-of-children reductio, the $100 split, the long-run remark, aggregation independent of distant lives, Allais as the same failure, symbols of small quantities, unconditional rules and loopholes, the sneeze example, lexical tiers (Planck distance, hyperreals, Norvig on Asimov), thought as a limited resource, music and the journey, and the ending
+
+- Before: I keep moral discussion at the level of cases, because metaethics depends on the Mind Projection Fallacy, which I have not yet discussed.
+- After: I keep moral discussion at the level of cases, because metaethics depends on the Mind Projection Fallacy, which I have not yet discussed. Looking back on my own confusion, my object-level moral reasoning had been valuable and my meta-level reasoning worse than useless, and people generally do better discussing whether torture is bad than what ``bad'' means. To those who say morality does not exist, I say: ``But what do you do anyway?''
+
+- Before: I agree that intuitions are all there is: delete them and you are left with a rock.
+- After: I use ``intuition'' as a term of art for the building blocks of both long verbal arguments and fast perceptions, not as the opposite of reason; even modus ponens is one, which still seems good after formalization and reflection. We have intuitions about what is desirable, what is right, how to resolve conflicts and how to systematize. I agree that intuitions are all there is: delete them and you are left with a rock.
+
+- Before: Gowder does not say what he means by ``utilitarianism'', so I list seven claims and say which I accept. I accept that two separate occurrences of a harm are exactly twice as bad as one.
+- After: Gowder does not say what he means by ``utilitarianism'', so I list seven claims: right actions are determined by good consequences; praiseworthy actions depend on justified expectations of good consequences; a 50 per cent chance of harm should weigh half as much; virtue always maximizes some expected utility; two harms are worse than one; two independent occurrences of a harm are exactly twice as bad as one; and for any much worse harm A and lesser harm B, some tiny chance of A is preferable to certain B. I accept the third, fifth, sixth and seventh, not the fourth; I am unsure how the first is phrased, and the second is true but selfish, since you should not worry about being praiseworthy. I did not pick these because they sounded intuitive: violating them leads to paradoxes and circular preferences, which are symptoms of moral incoherence more than of wrongness. Thinking about moral problems and learning new facts, including about how we ourselves work, changes our opinions; that is how we experience moral progress. I separate where we should go from how we should get there: a false belief about where a road leads is destroyed directly by travelling it, and even wanting a destination can be corrected by regret, but the two questions differ.
+
+- Before: Our intuitions about how to reach our goals are ``frankly messed up''.
+- After: Our intuitions about where to go are arguable; about how to get there they are ``frankly messed up''; after the 287th study showing that people will chop their feet off under the right framing, you distrust first impressions. People pay only 28 per cent more to protect all 57 wilderness areas in Ontario than one, and the same to save 50,000 lives as 5,000.
+
+- Before: The intuition is wrong: ``the brain doesn't goddamn multiply.''
+- After: One could take this as a deep truth that one child's fortune is devalued by others'; but then why help this child, lowering the value of the world's billions, and how could 1,329,342,410 happy children be much better than 1,329,342,409 but worse than seven more? Rather, the intuition is wrong: ``the brain doesn't goddamn multiply.''
+
+- Before: Five efforts that each save 5,000 lives do worse than one that saves 50,000.
+- After: Spending \$20 each on five efforts that each save 5,000 lives does worse than \$100 on one that saves 50,000, and likewise if ten different people choose; preferring 50,000 to 25,000 as a destination has implications for paths. (For a Bayesian the long and short run give the same answer; the long run is just a helpful intuition pump.)
+
+- Before: ``Three lives are one and one and one,'' however many others exist.
+- After: Aggregation also follows from the local choice to save a life not depending on how many lives exist far away: ``Three lives are one and one and one,'' however many others exist.
+
+- Before: That is aggregation.
+- After: That is aggregation. Likewise the Allais preference reversals reveal no deep truth about certainty; perceptual intuitions handle probabilities badly, especially stated as symbols rather than experienced as frequencies, so we reflect and devise better logics.
+
+- Before: People say no money is worth a life and then drive an extra mile to save \$10.
+- After: People say no money is worth a life and then drive an extra mile to save \$10, or say no money is worth their health and buy the cheapest insurance. Partly intuition cannot shrink the impact of symbols for small quantities. Partly people prefer unconditional social rules, since any loophole, say for government torture, gets a truck driven through it; hence no ``but'' after ``no money is worth a life,'' though we reveal the trade every time we sneeze without calling a doctor.
+
+- Before: They do not show two tiers of value. A lower tier would decide nothing, since some upper-tier consideration is always present.
+- After: They do not show two tiers of value with lexical order, an infinitely sharp gradient where an atom moving a Planck distance sends a utility from zero to infinity, or utilities in hyperreal numbers. A lower tier would decide nothing, since some upper-tier consideration is always present; as Peter Norvig noted, robots with strict priority for Asimov's First Law would never show a trace of the other two. Any value worth thinking about must trade off against others, since thought itself is a limited resource; to reveal a value is to reveal a utility.
+
+- Before: The value of one event, such as music, may be complex.
+- After: Morality need not be simple. The value of one event, such as music, may be complex: I would rather music be composed by people than by nonsentient algorithms, so that someone has the joy of it, and there I care about the journey. But when multiplying by quantities and probabilities, complication is to be avoided.
+
+- Before: That is why I am a utilitarian, at least ``most of the time''.
+- After: It matters more that lives be saved than that we follow any ritual in saving them, and the optimal path is governed by simple laws, because they are math. That is why I am a utilitarian, at least ``most of the time,'' since there are few utilitarians and much left undone.
+
+
+## honest/sections/the-intuitions-behind-utilitarianism.tex
+
+Why: Fidelity/substance pass: removed an unquoted paraphrase's quotation marks
+
+- Before: hence no ``but'' after ``no money is worth a life,'' though
+- After: hence no ``but'' after the rule that no money is worth a life, though
+
+
+## honest/sections/feeling-moral.tex
+
+Why: Fidelity/substance pass: removed my own inference ('so lives were lost anyway'), which the post does not state
+
+- Before: and then decided not to carry out the project, so lives were lost anyway. Such trades feel awful.
+- After: and then decided not to carry out the project. Such trades feel awful.
+

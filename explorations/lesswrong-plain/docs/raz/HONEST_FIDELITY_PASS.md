@@ -319,8 +319,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] one-life-against-the-world
 - [x] the-allais-paradox
 - [x] zut-allais
-- [ ] feeling-moral
-- [ ] the-intuitions-behind-utilitarianism
+- [x] feeling-moral
+- [x] the-intuitions-behind-utilitarianism
 - [ ] ends-don-t-justify-means-among-humans
 - [ ] ethical-injunctions
 - [ ] something-to-protect
