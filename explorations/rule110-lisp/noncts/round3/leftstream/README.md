@@ -35,8 +35,11 @@ stated; widths are the free train/object widths in cells.
   slips), I_L front op, free X (slip 6): UNSAT for n = 2,3 jointly
   (sat_conv.py/.log); controls --control and --control3 (real I_L physics,
   shifted copies) SAT. Fused caps not covered.
-- Wall converter, exact scan of library co-moving objects behind E^4
-  (conv_scan.py, conv_scan.jsonl): partial, see NOTES.md.
+- Wall converter, exact scan (conv_scan.py, conv_scan.jsonl,
+  conv_summary.py): 92 co-moving library objects (all of width <= 25),
+  every phase, gaps 0..14 behind E^4, 1775 stable placements, I_L and
+  Z_L: no right-mover is ever emitted. Larger library objects not done.
+- Packet spacing: >= 75 steps between arrivals (60 fails), 10 programs.
 
 ## How to run
 - python3 claim_inc.py 12            INC n = 1..12 + controls, writes inc_scenes.json

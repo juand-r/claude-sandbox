@@ -14,6 +14,8 @@ exact CA. Usage: python repeat.py [v2] [PROG V1,V1,..]"""
 import sys
 from two import *  # noqa
 
+ALIAS["T"] = "GB1@(0,0)+GB3@(-18,30)"   # K3 (zero crossing -> B^3)
+
 PROG = "JIZZZZZZZJINN"
 V1S = (0, 5)
 
@@ -36,6 +38,11 @@ def model(v1, v2, upto):
             r1 = r1 - 1 if r1 else 6
         elif op == "N":
             pass
+        elif op == "T":            # K3: R1 = 0 -> R2 += 3 (B^3), else R1 += 3
+            if r1 == 0:
+                r2 += 3
+            else:
+                r1 += 3
     return r2, r1
 
 

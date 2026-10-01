@@ -161,6 +161,11 @@ def vel(name):
     m = re.match(r"v(-?\d+)/(\d+)s", name)
     if m:
         return Fraction(int(m.group(1)), int(m.group(2)))
+    parts = [q for q in name.split("_") if not q.isdigit()]
+    if len(parts) > 1 and all(q in LIB.gliders for q in parts):
+        vs = {LIB.gliders[q].velocity for q in parts}
+        if len(vs) == 1:          # bound compound of same-speed gliders
+            return vs.pop()
     raise KeyError(name)
 
 

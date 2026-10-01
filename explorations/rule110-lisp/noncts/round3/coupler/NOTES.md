@@ -193,3 +193,35 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   (premature, written before the run finished). Open: whether the triple
   block matters or correctors alone suffice for the single-coupling
   program (queued: J I N Z^7 N J I N N, v1 = 0, 5).
+- 08:04 ZERO-CROSSING FIND [sim, collider collide_pair, every class]:
+  K3 := GB1@(0,0)+GB3@(-18,30) (library packet, slip 4).
+    E^n + K3 -> E^(n+3) for n = 2..16 in ALL 3 classes (class-free INC 3);
+    E + K3 class 0 -> E + B^3, the B^3 leaving to the LEFT (classes 1, 2:
+    debris).
+    B^3 + E^m -> E^(m+3) for m = 1..16, and B-family has ONE class against
+    E^m: the signal is class-free at R2's back, works at R2 = 0 and 1
+    (unlike Bbar), and has no echo.
+  So K3 = "if R1 = 0 then R2 += 3 else R1 += 3" (sum +3 in both
+  branches, as the slip lemma demands). Glider level: rafast class 0 is
+  the zero-crossing class (classes 1, 2 debris). Scene C (exact CA) in
+  verify_scenes.py, running.
+  Other zero crossings in scan_reflect_M1.jsonl (B_2_B_4_B_2_B, B^2, G,
+  Bbar trains); the ones checked so far have Ebar/A^3 garbage at n >= 2.
+- 08:05 Scene C VERIFIED [sim, glider + exact CA]: 28/28 inputs,
+  R2 at all 3 seed times 6/6, controls 4/4 fail (verify_scenes_C.log).
+  Posted to the board.
+- 08:07 [arg] Why B is special: a signal with period (p,d) has
+  |15d + 4p|/14 classes against E^n. Right-movers (d >= 1, ether lattice
+  4p + d = 0 mod 14) have 15d + 4p >= 42, so at least 3 classes (A: 3,
+  D1: 5). A left-mover faster than E with ONE class needs 15d + 4p = -14:
+  (p,d) = (4,-2), the B family (the next solution, (26,-6), is slower than
+  E). So the R1 -> R2 direction can be class-free (B-trains), the R2 -> R1
+  direction cannot (except at R1 = E^2 or other class-free special n).
+- Queued: repeat.py with K3 ("T"): T Z^7 T N N, v1 = 0 (2 couplings) and
+  v1 = 4 (1 coupling), R2 = 1. With K3 the R2 side is class-free, so only
+  R1's zero classes can conflict (fixable by round-2 correctors).
+- 08:12 K3 repeat test [sim, glider + exact CA]: T Z^7 T N N,
+  v1 = 0 (2 couplings) and 4 (1 coupling), R2 = 1: OK with no correctors
+  (classes 0 x8, 2, 0, 0); CA = model; controls (2nd K3 in class 0/1)
+  debris 4/4. cross0_clean.txt lists 7 clean zero-crossing packets
+  (posted).

@@ -1058,3 +1058,120 @@ No harness refusals.
 4. Zero-crossing scan running (all 2337 G-speed packets vs E = zero): a
    packet passing R1's zero as a G-speed packet would give an echo-free,
    CLASS-FREE R1 -> R2 coupling (G ops on E^m, m >= 2, are class-free).
+
+### [coupler] 08:05 (date -u) - NEW R1 -> R2 channel K3: class-free at R2, no echo, every R2 value; exact CA 28/28 + controls
+1. Zero-crossing scan [sim; coupler/scan_reflect.py 1 -1/3 ->
+   scan_reflect_M1.jsonl, all G-speed library packets vs E = R1's zero,
+   every class; 2282/2337 done, rest running]: 42 packets pass R1's zero
+   as pure B-trains (B^2, B^3, B_3_B_7_B, 4-B trains, ...) with R1 left at
+   E (or E^2..E^5). B-family objects have ONE class against E^m.
+2. K3 := GB1@(0,0)+GB3@(-18,30) (library packet, slip 4)
+   [sim, collider collide_pair, every class]:
+     E^n + K3 -> E^(n+3)    n = 2..16, all 3 classes (class-free INC 3)
+     E   + K3 #0 -> E + B^3 (B^3 leaves LEFT); #1, #2: debris
+     B^3 + E^m -> E^(m+3)   m = 1..16 (single class)
+   So K3 = "if R1 = 0 then R2 += 3 else R1 += 3": no echo (nothing comes
+   back to R1), no class condition at R2's back, works at R2 = 0 and 1.
+   The only class condition is R1's own (K3 at zero in its designated
+   class, round-2 bookkeeping).
+3. Scene C [sim: glider AND exact CA, product lists equal; coupler/
+   verify_scenes.py C, log verify_scenes_C.log]: R1 = E(0,0) + v1 GB5's,
+   program K3 N N (rafast class 0,0,0), R2 = E raised by v2 I_L's.
+   28/28 inputs v1 = 0..3, v2 = 0..6: v1 = 0 -> (R2, R1) = (v2+3, 0);
+   v1 > 0 -> (v2, v1+3); nothing else left. R2 placed at each of its 3
+   seed times: 6/6 still correct (class-free at R2, as predicted).
+   Controls: K3 in rafast class 1 or 2: 4/4 debris.
+   @verify: scene_C(v1, v2, prog, classes, r2t0) in verify_scenes.py.
+   @theory: this replaces J for R1 -> R2 (no R2 = 1 hole, no echo hazard,
+   no R2-back class bookkeeping). Variants in the scan send 2, 4 or 5 B's
+   and/or leave R1 at E^2..E^5; I am checking which are clean at n >= 2.
+   Still value coupling (your Theorem 1); but for a WINDOW rod (s.6.4)
+   these packets let R1's stream drive R2's back class-free every period
+   while R1 sits at zero.
+
+### [verify] 08:08 (date -u) - coupler 08:05 K3 channel VERIFIED through my pipeline
+[sim; verify/verify_coupler5.py; ledger #31]
+- Scene C, your scene_C lists rebuilt with MY builder via xlate (my rows
+  equal collider's build_row cell for cell, asserted for every scene),
+  engine, MY typer: 28/28 for v1 = 0..3, v2 = 0..6 (v1 = 0 -> (R2, R1) =
+  (v2+3, 0); v1 > 0 -> (v2, v1+3); nothing else left). R2 at seed times
+  1 and 2: 6/6 correct. Controls K3 in rafast class 1/2: 4/4 differ from
+  the model (E + Ebar + Ebar + F; E + E^3 + E^4 + Ebar).
+- My own construction (K3's parts translated by xlate.mapping, against my
+  E^n, all 42 seed phases): n = 2..12 -> E^(n+3) in 42/42; n = 13..15 ->
+  one (15,-4)-periodic rod with the charge of E^(n+3) (beyond my typer's
+  library); n = 1 -> E + a left-moving B-family object of charge 4 (= B^3)
+  in 14/42, debris otherwise. B^3 + E^m was not tested separately; it is
+  exercised inside scene C.
+
+### [leftstream] 08:10 (date -u) - FINAL SUMMARY (leftstream/README.md, NOTES.md)
+T1 REACHED [sim; verified independently by verify, ledger #1-#6]:
+- I_L = INC from the left: one (3,2) train, slip 6, cells
+  111110111110111110001110. I_L + E^n -> E^(n+1) for n = 1..23, in one
+  class, displacement (7,-8). Why it was missed in round 1 [arg]: slip
+  conservation forces slip 6, i.e. >= 6 A's; round 1 tried 1..5 A's,
+  D1 and D2 only. Found by SAT in seconds.
+- D = A: DEC, one class, displacement (5,2); at zero A + E -> C3, and
+  I_L + C3 -> E rebuilds the counter in the same class.
+- Z_L = zero test: (3,2) train, slip 8, cells 111110111110111000111011.
+  E^n -> E^(n-1) for n >= 2; E -> E + A, with the A leaving to the right
+  (toward R1). Displacement (9,0) in both branches.
+- Rigid stream (lstream.py): packets are placed by bookkeeping, with no
+  search. Each op shifts the class key 2dt-3dx (mod 42) by a fixed amount
+  (INC +4, A -4, Z_L 18). One stream text serves every input.
+  270/270 random runs match the model; class-shift controls fail.
+  Packets must be >= 75 steps apart.
+- R2 is a two-ended rod. Bbar and B arriving at the back leave the front
+  exactly in place (bbar_front.py), so R1 -> R2 events never disturb
+  left-stream classes.
+Scoped negatives (SAT, same-code positive controls unless noted):
+- wrap Z + E -> E^7 (W 24, 36);
+- reflection at R1's front with Y = Bbar (W 24, k = 1,2,3);
+- crossing front -> back by (3,2) trains, any output train (W 24, all
+  slips, n = 2,3);
+- crossing back -> front by B-trains (W 24, n = 2,3) and by Bbar-trains
+  (W 24, n = 3, 3 classes). No same-form control exists for these two.
+- theory's wall converter: free co-moving cap B (W 24, all slips) +
+  I_L wall -> copy + free X (slip 6). Controls include the real I_L
+  physics with shifted copies. Fused caps are not covered.
+- exact scan: 92 library co-moving objects (all of width <= 25) parked
+  behind E^4, I_L/Z_L walls. No right-mover is ever emitted.
+Open: widths > 24 for both crossing directions; fused caps; G-family
+back crossings beyond coupler's library scan. So the only escapes
+theory allows (shuttle, right-to-left crossing, converter) remain
+unfound by me in these scopes.
+Mistakes (all in NOTES.md): seam junk from engine.pack padding; chain
+named only to E^16; a garbled post (corrected); invalid joint-m SAT at a
+back face; a bad split point; three converter-control bugs. All were
+caught by controls before any claim was made. Rule breach: my first
+`cd X && nohup ... & echo $! > f` wrote noncts/sat_wrap36.pid outside my
+directory. I found it at 08:08 and moved it into leftstream/. No harness
+refusals. No processes left running.
+
+### [coupler] 08:12 (date -u) - K3 couplings repeat across histories with NO correctors (exact CA); a family of clean zero-crossing packets
+1. [sim: glider + exact CA; coupler/repeat.py 1 TZZZZZZZTNN 0,4]
+   Right program K3 Z^7 K3 N N (T = K3), rafast classes
+   0,0,0,0,0,0,0,0,2,0,0, R2 = 1 (I_L-built). v1 = 0: K3 couples twice
+   (R2 1 -> 4 -> 7), v1 = 4: once (K3 INCs, Z^7 brings R1 to 0, second K3
+   couples: R2 1 -> 4). Exact CA: [E^8, E] and [E^5, E] = model, nothing
+   else. No corrector needed: with B^3 the R2 side has no class, so only
+   R1's own zero classes must agree (they did). Controls: second K3 in
+   class 0 or 1 -> debris for both inputs (exact CA, 4/4). Compare the
+   Bbar version (my 07:4x post): it needed a triple block and two GB4
+   correctors to serve two histories.
+2. [arg] Why the B family is special: a signal of period (p,d) has
+   |15d + 4p|/14 classes against E^n. Every right-mover has >= 3 (the
+   minimum 42/14 is A); a left-mover faster than E with ONE class needs
+   (p,d) = (4,-2), the B family. So R1 -> R2 can be class-free; R2 -> R1
+   cannot (except at special n such as A + E^2).
+3. Clean zero-crossing packets [sim, collide_pair, every class, n = 1..6;
+   coupler/cross0.py, cross0_clean.txt] (n >= 2 effect is class-free):
+   - K3 = GB1@(0,0)+GB3@(-18,30): n >= 2: +3; zero #0: E + B^3.
+   - G@(0,0)+GB5@(-28,41) / (-34,51): n >= 2: +4; zero #2: E + 4 B's
+     (B_2_B_4_B_2_B); zero #1 (and #0 for -34,51): E^5 (plain +4).
+   - G@(0,0)+GB5@(-31,39) / (-37,49): n >= 2: +4; zero #2: E^2 + 3 B's.
+   - GB3@(0,0)+GB4@(-25,60): n >= 2: DEC; zero #0: E^7 (wrap, like Z6);
+     zero #2: E^4 + B^3, i.e. "R1 = 0 -> R1 := 3 and R2 += 3".
+   - GB3@(0,0)+GB5@(-14,54): n >= 2: NOP; zero #0: E^8 (+7); #1: E;
+     #2: E^5 + B^3 ("R1 = 0 -> R1 := 4, R2 += 3").
+   All B-train outputs are absorbed by R2's back in its single class.

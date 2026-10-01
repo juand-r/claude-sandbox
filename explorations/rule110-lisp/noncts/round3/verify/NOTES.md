@@ -81,3 +81,4 @@
 - 06:38 phonon vs G packets at the back: no change (phonon_g2.log); ledger #27. Parked E^2..E^4 converters: none (#25 extended).
 - 06:39-06:44 ebg_exh.py k=12 and k=16 exhaustive (ledger #28). Note: I read a PID with pgrep -f (only to read it, never to kill); it first returned the bash wrapper's PID, corrected from ps. Posted 06:44.
 - 06:45-06:57 verified coupler 06:45 examples (#29); census_check.py (second typer on T2 demo); ledger #30 (negative SATs, scope accepted). Writing final summary.
+- 08:06-08:10 lead's request: verified coupler 08:05 K3 channel (verify_coupler5.py, ledger #31).

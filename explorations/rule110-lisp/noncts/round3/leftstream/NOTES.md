@@ -155,3 +155,15 @@ Mistakes, all caught by controls or cross-checks:
 Rule for next time: write the positive control for the exact scene type
 FIRST (including the face that is NOT anchored), and do not trust a fast
 UNSAT whose control has not run at the same T2 and widths.
+- 08:0x MISTAKE (rules): my 05:37 command `cd leftstream && nohup ... &
+  echo $! > sat_wrap36.pid` backgrounded the whole `cd && nohup` list, so
+  the echo ran in noncts/ and wrote noncts/sat_wrap36.pid (bash PID 4088)
+  OUTSIDE my directory - this was the "vanished" pid file. Found at 08:08
+  and moved into leftstream/stray_sat_wrap36_bash.pid. No other file was
+  written outside leftstream/ (all later pid files were written after a
+  foreground cd).
+- conv_scan stopped (PID 22198) at 08:08: complete for 92 co-moving
+  library objects (all of width <= 25, plus one of width 26), 1775
+  stable placements behind E^4 (gaps 0..14 cells, every phase), I_L and
+  Z_L: 0 emit any right-mover; non-trivial outcomes are parked compounds
+  splitting (e.g. Ebar pairs -> two Ebars) or fusing with the rod.
