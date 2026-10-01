@@ -2,13 +2,13 @@
 
 How much evidence does it take to believe something? I start with a lottery: seventy balls, six to match, so 131,115,985 possible tickets, one winner, all equally likely.
 
-A black box always beeps for the winning ticket, and beeps a quarter of the time for a losing one: a ``likelihood ratio'' of 4 to 1. Tried on every ticket, it beeps for about 33 million losers. That does not win the lottery, but it improves your odds from 1 in 131 million to 1 in 33 million. Two such boxes, independent of each other, cut that to about 8 million. Evidence 131 million times more likely for the winner than for a loser leaves you with the winner and, on average, one loser, so only an even chance. The clean way to see it is in odds: start at 1 to 131,115,984, and each box multiplies the odds by 4.
+A black box always beeps for the winning ticket, and beeps a quarter of the time for a losing one: a ``likelihood ratio'' of 4 to 1. Tried on every ticket, it beeps for about 33 million losers. That does not win the lottery, but it improves your odds from 1 in 131 million to 1 in 33 million. Two such boxes, independent of each other, cut that to about 8 million. Evidence 131 million times more likely for the winner than for a loser leaves you with the winner and, on average, one loser, so only an even chance. It is cleanest in odds. You start at 1 to 131,115,984, and each box multiplies the odds by 4.
 
 Then I measure evidence in bits. I define a bit by the information in an outcome: learning that something with probability 1/8 happened gives you three bits. Then I count two bits per box, because each box makes a beep four times more likely for the winner. \nb{That is a different quantity: the logarithm of a likelihood ratio, not of a probability. The post does not say it has switched.}
 
 Since 131,115,984 is a little under 2 to the 27th power, twenty-eight bits, or 14 boxes, bring you to odds of 2 to 1. Each further box quadruples the odds, and thirty-four bits make you 99\% sure.
 
-Then the general rule: the more possibilities there are, the less likely the hypothesis ``seems a priori,'' and the surer you want to be, the more evidence you need. \nb{In the lottery the starting probability was given exactly. In any real question, setting it is the hard part, and the post's only word on it is ``seems.''}
+The general rule follows. The more possibilities there are, the less likely the hypothesis ``seems a priori.'' And the surer you want to be, the more evidence you need. \nb{In the lottery the starting probability was given exactly. In any real question, setting it is the hard part, and the post's only word on it is ``seems.''}
 
 I declare: ``You cannot form accurate beliefs based on inadequate evidence.'' \nb{A lucky guess is accurate. What thin evidence cannot give you is a right to be confident.} My example is ten boxes that all beep for the same combination, which a losing combination would do only once in a million tries. Still, ``131 losing tickets will pass such a test for every winner.'' ``That's not a pointless bureaucratic regulation; it's math.''
 

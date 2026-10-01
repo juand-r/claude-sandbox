@@ -1,0 +1,378 @@
+# Honest edition: prose pass (user request, 1 October 2026)
+
+The user: "Do a separate pass on prose. Remember to keep it clear and direct. No Claudisms."
+
+Scope: the body text of every honest section. The \nb notes stay verbatim (standing rule;
+src/notes_backup.py checks them). Quotations of the post stay verbatim and may only be kept,
+shortened or dropped, never reworded. Content does not change: this pass rewrites how things
+are said, not what is said. The fidelity pass settled what each section says.
+
+What to fix, reading each section in full:
+
+1. Packed sentences. One sentence, one point. Split long sentences, especially those that
+   chain clauses with semicolons or colons, or that stack a list of five things into one line.
+   Keep a list only when the list itself is the point.
+2. Semicolon chains and colon pile-ups. Prefer full stops.
+3. Claudisms: "not X but Y" and "X, not Y" set-ups used for rhythm; tricolons for rhythm;
+   intensifiers and filler ("genuinely", "crucially", "notably", "importantly", "simply",
+   "indeed", "ultimately", "fundamentally", "in short", "at its core"); signposts that
+   announce a point instead of making it ("The lesson:", "My answer:", "Then comes");
+   abstract nouns where a verb would do; compressed noun phrases; made-up labels; our own
+   metaphors; italics; em dashes outside quotations.
+4. Flow. Each sentence should follow from the one before. Add a connecting word where a
+   reader would stumble; cut repetition.
+5. Plain words. Prefer the short common word.
+
+Keep the first person, the honest edition's admissions ("I give no evidence"), and the
+author's own examples and figures.
+
+Mechanics: the new section is written whole to the scratchpad, and a checker refuses it
+unless the header and every note are unchanged and every quotation is found in the old text.
+Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
+
+## Sections
+- [x] preface
+- [x] biases-an-introduction
+- [x] scope-insensitivity
+- [x] the-martial-art-of-rationality
+- [x] availability
+- [x] what-s-a-bias
+- [x] burdensome-details
+- [x] what-do-we-mean-by-rationality-1
+- [x] planning-fallacy
+- [x] why-truth
+- [x] feeling-rational
+- [x] the-lens-that-sees-its-flaws
+- [x] making-beliefs-pay-rent
+- [x] a-fable-of-science-and-politics
+- [x] belief-in-belief
+- [x] religion-s-claim-to-be-non-disprovable
+- [x] professing-and-cheering
+- [x] belief-as-attire
+- [x] pretending-to-be-wise
+- [x] applause-lights
+- [x] focus-your-uncertainty
+- [x] what-is-evidence
+- [x] scientific-evidence-legal-evidence-rational-evidence
+- [x] how-much-evidence-does-it-take
+- [x] einstein-s-arrogance
+- [x] occam-s-razor
+- [x] your-strength-as-a-rationalist
+- [x] absence-of-evidence-is-evidence-of-absence
+- [x] conservation-of-expected-evidence
+- [x] hindsight-devalues-science
+- [x] illusion-of-transparency-why-no-one-understands-you
+- [x] expecting-short-inferential-distances
+- [x] fake-explanations
+- [ ] guessing-the-teacher-s-password
+- [ ] science-as-attire
+- [ ] fake-causality
+- [ ] semantic-stopsigns
+- [ ] mysterious-answers-to-mysterious-questions
+- [ ] the-futility-of-emergence
+- [ ] say-not-complexity
+- [ ] positive-bias-look-into-the-dark
+- [ ] lawful-uncertainty
+- [ ] my-wild-and-reckless-youth
+- [ ] failing-to-learn-from-history
+- [ ] making-history-available
+- [ ] explain-worship-ignore
+- [ ] science-as-curiosity-stopper
+- [ ] truly-part-of-you
+- [ ] the-simple-truth
+- [ ] rationality-an-introduction
+- [ ] tsuyoku-naritai-i-want-to-become-stronger
+- [ ] the-proper-use-of-humility
+- [ ] tsuyoku-vs-the-egalitarian-instinct
+- [ ] the-third-alternative
+- [ ] lotteries-a-waste-of-hope
+- [ ] new-improved-lottery
+- [ ] but-there-s-still-a-chance-right
+- [ ] the-fallacy-of-gray
+- [ ] absolute-authority
+- [ ] how-to-convince-me-that-2-2-3
+- [ ] infinite-certainty
+- [ ] 0-and-1-are-not-probabilities
+- [ ] your-rationality-is-my-business
+- [ ] politics-is-the-mind-killer
+- [ ] policy-debates-should-not-appear-one-sided
+- [ ] the-scales-of-justice-the-notebook-of-rationality
+- [ ] correspondence-bias
+- [ ] are-your-enemies-innately-evil
+- [ ] reversed-stupidity-is-not-intelligence
+- [ ] argument-screens-off-authority
+- [ ] hug-the-query
+- [ ] rationality-and-the-english-language
+- [ ] human-evil-and-muddled-thinking
+- [ ] knowing-about-biases-can-hurt-people
+- [ ] update-yourself-incrementally
+- [ ] one-argument-against-an-army
+- [ ] the-bottom-line
+- [ ] what-evidence-filtered-evidence
+- [ ] rationalization
+- [ ] a-rational-argument
+- [ ] avoiding-your-belief-s-real-weak-points
+- [ ] motivated-stopping-and-motivated-continuation
+- [ ] fake-justification
+- [ ] is-that-your-true-rejection
+- [ ] entangled-truths-contagious-lies
+- [ ] of-lies-and-black-swan-blowups
+- [ ] dark-side-epistemology
+- [ ] doublethink-choosing-to-be-biased
+- [ ] no-really-i-ve-deceived-myself
+- [ ] belief-in-self-deception
+- [ ] moore-s-paradox
+- [ ] don-t-believe-you-ll-self-deceive
+- [ ] anchoring-and-adjustment
+- [ ] priming-and-contamination
+- [ ] do-we-believe-everything-we-re-told
+- [ ] cached-thoughts
+- [ ] original-seeing
+- [ ] the-virtue-of-narrowness
+- [ ] stranger-than-history
+- [ ] the-logical-fallacy-of-generalization-from-fictional
+- [ ] we-change-our-minds-less-often-than-we-think
+- [ ] hold-off-on-proposing-solutions
+- [ ] the-genetic-fallacy
+- [ ] the-affect-heuristic
+- [ ] evaluability-and-cheap-holiday-shopping
+- [ ] unbounded-scales-huge-jury-awards-and-futurism
+- [ ] the-halo-effect
+- [ ] superhero-bias
+- [ ] affective-death-spirals
+- [ ] resist-the-happy-death-spiral
+- [ ] uncritical-supercriticality
+- [ ] evaporative-cooling-of-group-beliefs
+- [ ] when-none-dare-urge-restraint
+- [ ] every-cause-wants-to-be-a-cult
+- [ ] two-cult-koans
+- [ ] asch-s-conformity-experiment
+- [ ] on-expressing-your-concerns
+- [ ] lonely-dissent
+- [ ] cultish-countercultishness
+- [ ] singlethink
+- [ ] the-importance-of-saying-oops
+- [ ] the-crackpot-offer
+- [ ] just-lose-hope-already
+- [ ] the-proper-use-of-doubt
+- [ ] you-can-face-reality
+- [ ] the-meditation-on-curiosity
+- [ ] no-one-can-exempt-you-from-rationality-s-laws
+- [ ] leave-a-line-of-retreat
+- [ ] crisis-of-faith
+- [ ] the-ritual
+- [ ] minds-an-introduction
+- [ ] the-power-of-intelligence
+- [ ] an-alien-god
+- [ ] the-wonder-of-evolution
+- [ ] evolutions-are-stupid-but-work-anyway
+- [ ] no-evolutions-for-corporations-or-nanodevices
+- [ ] evolving-to-extinction
+- [ ] the-tragedy-of-group-selectionism
+- [ ] fake-optimization-criteria
+- [ ] adaptation-executers-not-fitness-maximizers
+- [ ] evolutionary-psychology
+- [ ] an-especially-elegant-evpsych-experiment
+- [ ] superstimuli-and-the-collapse-of-western-civilization
+- [ ] thou-art-godshatter
+- [ ] belief-in-intelligence
+- [ ] humans-in-funny-suits
+- [ ] optimization-and-the-intelligence-explosion
+- [ ] ghosts-in-the-machine
+- [ ] artificial-addition
+- [ ] terminal-values-and-instrumental-values
+- [ ] leaky-generalizations
+- [ ] the-hidden-complexity-of-wishes
+- [ ] anthropomorphic-optimism
+- [ ] lost-purposes
+- [ ] the-parable-of-the-dagger
+- [ ] the-parable-of-hemlock
+- [ ] words-as-hidden-inferences
+- [ ] extensions-and-intensions
+- [ ] similarity-clusters
+- [ ] typicality-and-asymmetrical-similarity
+- [ ] the-cluster-structure-of-thingspace
+- [ ] disguised-queries
+- [ ] neural-categories
+- [ ] how-an-algorithm-feels-from-inside
+- [ ] disputing-definitions
+- [ ] feel-the-meaning
+- [ ] the-argument-from-common-usage
+- [ ] empty-labels
+- [ ] taboo-your-words
+- [ ] replace-the-symbol-with-the-substance
+- [ ] fallacies-of-compression
+- [ ] categorizing-has-consequences
+- [ ] sneaking-in-connotations
+- [ ] arguing-by-definition
+- [ ] where-to-draw-the-boundary
+- [ ] entropy-and-short-codes
+- [ ] mutual-information-and-density-in-thingspace
+- [ ] superexponential-conceptspace-and-simple-words
+- [ ] conditional-independence-and-naive-bayes
+- [ ] words-as-mental-paintbrush-handles
+- [ ] variable-question-fallacies
+- [ ] 37-ways-that-words-can-be-wrong
+- [ ] an-intuitive-explanation-of-bayes-s-theorem
+- [ ] the-world-an-introduction
+- [ ] universal-fire
+- [ ] universal-law
+- [ ] is-reality-ugly
+- [ ] beautiful-probability
+- [ ] outside-the-laboratory
+- [ ] the-second-law-of-thermodynamics-and-engines-of-cognition
+- [ ] perpetual-motion-beliefs
+- [ ] searching-for-bayes-structure
+- [ ] dissolving-the-question
+- [ ] wrong-questions
+- [ ] righting-a-wrong-question
+- [ ] mind-projection-fallacy
+- [ ] probability-is-in-the-mind
+- [ ] the-quotation-is-not-the-referent
+- [ ] qualitatively-confused
+- [ ] think-like-reality
+- [ ] chaotic-inversion
+- [ ] reductionism
+- [ ] explaining-vs-explaining-away
+- [ ] fake-reductionism
+- [ ] savanna-poets
+- [ ] joy-in-the-merely-real
+- [ ] joy-in-discovery
+- [ ] bind-yourself-to-reality
+- [ ] if-you-demand-magic-magic-won-t-help
+- [ ] mundane-magic
+- [ ] the-beauty-of-settled-science
+- [ ] amazing-breakthrough-day-april-1st
+- [ ] is-humanism-a-religion-substitute
+- [ ] scarcity
+- [ ] the-sacred-mundane
+- [ ] to-spread-science-keep-it-secret
+- [ ] initiation-ceremony
+- [ ] hand-vs-fingers
+- [ ] angry-atoms
+- [ ] heat-vs-motion
+- [ ] brain-breakthrough-it-s-made-of-neurons
+- [ ] when-anthropomorphism-became-stupid
+- [ ] a-priori
+- [ ] reductive-reference
+- [ ] zombies-zombies
+- [ ] zombie-responses
+- [ ] the-generalized-anti-zombie-principle
+- [ ] gazp-vs-glut
+- [ ] belief-in-the-implied-invisible
+- [ ] zombies-the-movie
+- [ ] excluding-the-supernatural
+- [ ] psychic-powers
+- [ ] quantum-explanations
+- [ ] configurations-and-amplitude
+- [ ] joint-configurations
+- [ ] distinct-configurations
+- [ ] collapse-postulates
+- [ ] decoherence-is-simple
+- [ ] decoherence-is-falsifiable-and-testable
+- [ ] privileging-the-hypothesis
+- [ ] living-in-many-worlds
+- [ ] quantum-non-realism
+- [ ] if-many-worlds-had-come-first
+- [ ] where-philosophy-meets-science
+- [ ] thou-art-physics
+- [ ] many-worlds-one-best-guess
+- [ ] the-failures-of-eld-science
+- [ ] the-dilemma-science-or-bayes
+- [ ] science-doesn-t-trust-your-rationality
+- [ ] when-science-can-t-help
+- [ ] science-isn-t-strict-enough
+- [ ] do-scientists-already-know-this-stuff
+- [ ] no-safe-defense-not-even-science
+- [ ] changing-the-definition-of-science
+- [ ] faster-than-science
+- [ ] einstein-s-speed
+- [ ] that-alien-message
+- [ ] my-childhood-role-model
+- [ ] einstein-s-superpowers
+- [ ] class-project
+- [ ] a-technical-explanation-of-technical-explanation
+- [ ] ends-an-introduction
+- [ ] not-for-the-sake-of-happiness-alone
+- [ ] fake-selfishness
+- [ ] fake-morality
+- [ ] fake-utility-functions
+- [ ] detached-lever-fallacy
+- [ ] dreams-of-ai-design
+- [ ] the-design-space-of-minds-in-general
+- [ ] where-recursive-justification-hits-bottom
+- [ ] my-kind-of-reflection
+- [ ] no-universally-compelling-arguments
+- [ ] created-already-in-motion
+- [ ] sorting-pebbles-into-correct-heaps
+- [ ] 2-place-and-1-place-words
+- [ ] what-would-you-do-without-morality
+- [ ] changing-your-metaethics
+- [ ] could-anything-be-right
+- [ ] morality-as-fixed-computation
+- [ ] magical-categories
+- [ ] the-true-prisoner-s-dilemma
+- [ ] sympathetic-minds
+- [ ] high-challenge
+- [ ] serious-stories
+- [ ] value-is-fragile
+- [ ] the-gift-we-give-to-tomorrow
+- [ ] one-life-against-the-world
+- [ ] the-allais-paradox
+- [ ] zut-allais
+- [ ] feeling-moral
+- [ ] the-intuitions-behind-utilitarianism
+- [ ] ends-don-t-justify-means-among-humans
+- [ ] ethical-injunctions
+- [ ] something-to-protect
+- [ ] when-not-to-use-probabilities
+- [ ] newcomb-s-problem-and-regret-of-rationality
+- [ ] twelve-virtues-of-rationality
+- [ ] beginnings-an-introduction
+- [ ] my-childhood-death-spiral
+- [ ] my-best-and-worst-mistake
+- [ ] raised-in-technophilia
+- [ ] a-prodigy-of-refutation
+- [ ] the-sheer-folly-of-callow-youth
+- [ ] that-tiny-note-of-discord
+- [ ] fighting-a-rearguard-action-against-the-truth
+- [ ] my-naturalistic-awakening
+- [ ] the-level-above-mine
+- [ ] the-magnitude-of-his-own-folly
+- [ ] beyond-the-reach-of-god
+- [ ] my-bayesian-enlightenment
+- [ ] trying-to-try
+- [ ] use-the-try-harder-luke
+- [ ] on-doing-the-impossible
+- [ ] make-an-extraordinary-effort
+- [ ] shut-up-and-do-the-impossible
+- [ ] final-words
+- [ ] raising-the-sanity-waterline
+- [ ] a-sense-that-more-is-possible
+- [ ] epistemic-viciousness
+- [ ] schools-proliferating-without-evidence
+- [ ] 3-levels-of-rationality-verification
+- [ ] why-our-kind-can-t-cooperate
+- [ ] tolerate-tolerance
+- [ ] your-price-for-joining
+- [ ] can-humanism-match-religion-s-output
+- [ ] church-vs-taskforce
+- [ ] rationality-common-interest-of-many-causes
+- [ ] helpless-individuals
+- [ ] money-the-unit-of-caring
+- [ ] purchase-fuzzies-and-utilons-separately
+- [ ] bystander-apathy
+- [ ] collective-apathy-and-the-internet
+- [ ] incremental-progress-and-the-valley
+- [ ] bayesians-vs-barbarians
+- [ ] beware-of-other-optimizing
+- [ ] practical-advice-backed-by-deep-theories
+- [ ] the-sin-of-underconfidence
+- [ ] go-forth-and-create-the-art
+- [ ] humans-are-not-automatically-strategic
+- [ ] toolbox-thinking-and-law-thinking
+- [ ] local-validity-as-a-key-to-sanity-and-civilization
+- [ ] diseased-thinking-dissolving-questions-about-disease
+- [ ] on-caring
+- [ ] strong-evidence-is-common
+- [ ] pr-is-corrosive
