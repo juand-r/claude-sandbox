@@ -9120,3 +9120,95 @@ Good arguments for false conclusions are much rarer, since strong evidence is by
 - Before: and say I would like to see a study.
 - After: and say I would like to see a study, though not one using self-reports of crime, which may measure honesty times criminality. I have no grand agenda; I only wish more of the most basic rules of thinking were written down.
 
+
+## honest/sections/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the three-way accusations, the skeptics' quips, the blegg example explained, the six criteria and the partial cases, the hidden inferences with examples, the brain-tumor case, the distinction between conditions that respond to social influence and those that do not, the consequentialist view of punishment, the cancer and laziness examples, the factors in the obesity case, and the deontological objection to medical fixes.
+
+- Before: They all quarrel.
+- After: They all quarrel: the husband says the others excuse her and sap her willpower, the doctor says the husband ignores the real causes and the sister legitimizes a danger, and the sister calls the husband a jerk and the doctor a servant of Big Pharma.
+
+- Before: Similar quarrels surround alcoholism, depression, attention deficit disorder, homosexuality and more.
+- After: Similar quarrels surround alcoholism, depression, attention deficit disorder, social anxiety disorder (``didn't we used to call this `shyness'?''), oppositional defiant disorder, homosexuality and more. I focus on the husband and the doctor; whether a condition is a disease decides, for most people, which of them is right.
+
+- Before: ``Disease'' is like the made-up word ``blegg'': a label for a set of traits that usually come together.
+- After: ``Disease'' is like the made-up word ``blegg'': a label for a set of traits that usually come together. In a factory that sorts red, smooth, vanadium-filled cubes from blue, furry, palladium-filled eggs, ``blegg'' for the eggs is useful because the traits are correlated; if blue things were as likely to be vanadium cubes, the word would tell you nothing.
+
+- Before: I list six: a biological cause, being involuntary, being rare, being unpleasant, a clear line between those who have it and those who do not, and medical treatment.
+- After: I list six: a cause of the kind biology studies, such as genes or viruses; being involuntary, ``completely immune to the operations of free will''; being rare; being unpleasant; a clear line between two populations, not a normal distribution; and treatment with chemicals or radiation.
+
+- Before: Obesity has some of the six.
+- After: Dwarfism fails the fifth, aging the third, and homosexuality the fourth, since it is not necessarily unpleasant. Obesity arguably meets the first, fourth and sixth, but hardly the second, third and fifth.
+
+- Before: But the word matters because it decides two things: whether the person gets sympathy, and whether they may seek medical treatment.
+- After: Once we say which criteria it meets, there is no further fact. But the word matters because of hidden inferences: it decides whether the person gets sympathy, and whether they may seek medical treatment. Cancer patients are always ``brave''; the shy are told to man up, while people with social anxiety disorder get sympathy. Treatment for a non-disease is a ``quick fix,'' and some doctors I have talked to hesitate to suggest gastric bypass even when indicated, thinking it wrong to use medicine for a character issue.
+
+- Before: so blame depends on whether a condition is biological or spiritual.
+- After: so blame depends on whether a condition is biological or spiritual. A peaceful man whose brain tumor drove him to a killing spree, and who is peaceful again once it is removed, is not blamed. But no one knows how to tell whether a condition like depression is spiritual or biological.
+
+- Before: ``Determinist consequentialists can do better. We believe it's biology all the way down.''
+- After: ``Determinist consequentialists can do better. We believe it's biology all the way down.'' Brain tumors and poor taste in music are both biological, but taste is open to social influences such as praise, condemnation and introspection, and tumors are not. On this view no one deserves bad treatment for its own sake (``Saddam Hussein doesn't deserve so much as a stubbed toe''), but punishment can have good consequences: hurting bank robbers prevents robberies, and condemning alcoholism may make it less attractive.
+
+- Before: I admit that the rule rests ``on philosophy that the majority of the human race would disavow.''
+- After: I admit that the rule rests ``on philosophy that the majority of the human race would disavow,'' but say it gives intuitively right results. Yelling at a cancer patient for letting cells divide will not cure the cancer; telling a lazy person to get up and work might cure the laziness.
+
+- Before: for obesity, the case I began with, the answer may depend on the person.
+- After: for obesity, the case I began with, the answer may depend on the person, on who does the condemning, and on what other treatments exist.
+
+- Before: Objectors show a bias toward the way things are.
+- After: Under the free-will view, a biological fix for a spiritual problem may seem dehumanizing, or a band-aid; to someone for whom it is biology all the way down, it is not. Others say easy fixes stop people learning responsibility, which shows a bias toward the way things are, as a reversal test reveals.
+
+- Before: and say that these apply to cancer drugs too.
+- After: dependence, overhyped efficacy and patients who cannot consent, and say that these apply to cancer drugs too and have the same good-enough solutions. People who want effective treatment should not be denied it or stigmatized for seeking it.
+
+
+## honest/sections/on-caring.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the googol example, the claim that distance does not reduce a tragedy, the future stakes, why saving a life and saving the world feel alike, how Alice, Bob and Christine would react to being asked to give everything, Daniel's imagined beach and his widening concern, the mountains, why the old mindset never considered dropping everything, the claim about prominent altruists, the caveats about guilt, and the closing lines.
+
+- Before: A star that holds a million Earths and a star that holds a billion both just feel big.
+- After: A star that holds a million Earths and a star that holds a billion both just feel big; one followed by a hundred zeroes feels bigger than a billion, but not by the factor it is, the way four apples feel like twice two. This is scope insensitivity, and it matters because the things I care about are numerous. Billions live in squalor; each death is tragic however far away, and I care about every person, but I cannot scale the caring I feel for one person by a billion.
+
+- Before: So I propose that caring should work like courage: you do the right thing ``anyway,'' without the feeling.
+- After: So I propose that caring should work like courage: you do the right thing ``anyway,'' without the feeling. The stakes are billions suffering now and perhaps quadrillions of future people. Saving one life would feel about as good as saving the world, but behind the similar feelings there is a whole world of difference.
+
+- Before: Their motives have to do with the social setting and only ``tangentially'' with the cause.
+- After: Their motives have to do with the social setting and only ``tangentially'' with the cause. Ask them why they do not give all their time and money to causes they think worthwhile, and they will look at you funny and think you rude; we praise those who give everything away, but privately think them crazy. Another mindset can hit you like a freight train.
+
+- Before: He decides that saving one oiled bird is worth three minutes of his time, or \$3.
+- After: After the Deepwater Horizon spill, a student with a clipboard asks him to help save oiled birds. Instead of dismissing it, he pictures a beach where a slick young bird flops to his feet and someone says three minutes of washing would save it. He decides that saving one oiled bird is worth three minutes of his time, or \$3, in some general sense and not only because it is in front of him. Expecting his feelings to misreport large numbers,
+
+- Before: at least as much as two months of hard work or fifty thousand dollars.
+- After: at least as much as two months of hard work or fifty thousand dollars. Then how much does he care about factory farming, hunger, poverty, war, neglected children, the future of humanity? Far more than all his money and time.
+
+- Before: Then Daniel sees how much else needs doing and decides that he cannot spend his time or money on birds after all.
+- After: Then Daniel sees how much else needs doing and decides that he cannot spend his time or money on birds after all, not because they are not worth it, but because the opportunity cost is too high: people are dying, and civilization's future is at stake.
+
+- Before: ``he won't look at you funny.''
+- After: ``he won't look at you funny.'' He sees that his mind was lying to him about the gravity of the problems. Even the ``less important'' causes now seem worth a life, but there are too many mountains. Before, dropping everything for ALS never crossed his mind; it was not his problem. Now everything is his problem, and only the number of more urgent things stops him. Alice, Bob and Christine fail to act because they forget to see the problems; Daniel, because there are too many.
+
+- Before: The lesson: stop trusting your feelings and ``switch over to manual control.''
+- After: I am not preaching about how to be a good person. Many of us know we should care about distant suffering and fail to, partly because we trust our care-o-meters and think prominent altruists were gifted with extra caring. But they are people who have learned not to trust their care-o-meters, which are broken for large numbers. The lesson: you cannot feel the caring, but you can do it; stop trusting your feelings and ``switch over to manual control.''
+
+- Before: ``but you can't, because there are 99 bigger problems you have to address first.''
+- After: ``but you can't, because there are 99 bigger problems you have to address first.'' I am not trying to guilt anyone: philanthropy is really hard, needing money and the will to throw it at distant invisible problems, and guilt is a poor long-term motivator. I would rather you join proudly.
+
+- Before: I do not show the multiplication for either.
+- After: I do not show the multiplication for either. ``There is only you, and me, and everyone else who is trying anyway.'' You cannot feel the weight of the world, but sometimes you can catch a glimpse.
+
+
+## honest/sections/on-caring.tex
+
+Why: Fidelity/substance pass: on-caring: repaired a broken join.
+
+- Before: misreport large numbers, Thousands of birds were oiled, so he
+- After: misreport large numbers, he notes that thousands of birds were oiled, so he
+
+
+## honest/sections/diseased-thinking-dissolving-questions-about-disease.tex
+
+Why: Fidelity/substance pass: diseased-thinking: smoothed a list.
+
+- Before: such as side effects and cost, dependence,
+- After: such as side effects, cost, dependence,
+

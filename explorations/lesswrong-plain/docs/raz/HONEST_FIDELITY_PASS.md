@@ -371,7 +371,7 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] humans-are-not-automatically-strategic
 - [x] toolbox-thinking-and-law-thinking
 - [x] local-validity-as-a-key-to-sanity-and-civilization
-- [ ] diseased-thinking-dissolving-questions-about-disease
-- [ ] on-caring
+- [x] diseased-thinking-dissolving-questions-about-disease
+- [x] on-caring
 - [ ] strong-evidence-is-common
 - [ ] pr-is-corrosive
