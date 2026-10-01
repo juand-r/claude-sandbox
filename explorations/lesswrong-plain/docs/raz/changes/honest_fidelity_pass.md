@@ -6848,3 +6848,121 @@ Why: Fidelity/substance pass: added the relativity analogy and the 'trend of the
 - Before: ``Poor metaethics forms part of the teachings of many a cult, including the big ones.''
 - After: Some oppose rationality because they think it drains meaning from the universe. ``Poor metaethics forms part of the teachings of many a cult, including the big ones.'' My audience includes those who conclude that love is a delusion because real morality must maximize inclusive fitness, or that unreturned kindness is evil because real morality comes only from selfishness.
 
+
+## honest/sections/could-anything-be-right.tex
+
+Why: Fidelity/substance pass: added why the young author held that view (distrust of evolution; humility as virtue) and the 'greatest fool' saying, the regress of procedures and Herreshoff's line, why a ghost cannot simply 'think' about morality, what scientists keep fixed, the hunter-gatherer notion of truth, the light from beyond and responsibility, and the closing about Socratic ignorance and meaning
+
+- Before: For all I knew, morality might require the extermination of the human species, and if it did, I saw no virtue in opposing it.
+- After: For all I knew, morality might require the extermination of the human species, and if it did, I saw no virtue in opposing it. I thought I could figure out what was right with enough time and facts, but had no information now, since I could not trust the evolution that built me.
+
+- Before: So my belief that I had no information about morality was not consistent; I did think killing was probably wrong.
+- After: So my belief that I had no information about morality was not consistent; I did think killing was probably wrong. Confessing ignorance felt virtuous, but I would have done better with the exaggerated saying, ``The greatest fool is the one who is not aware they are wise.''
+
+- Before: My plan then was to build a generic superintelligence that would reason out what was right.
+- After: My plan then was to build a generic superintelligence that would reason out what was right, without asking where it would get the procedure that discovered the procedure that discovered morality, if I could not write it into the start. As Marcello Herreshoff put it, ``We never bother running a computer program unless we don't know the output and we know an important fact about the output.''
+
+- Before: a program finds ``morality'' only if something in its start state points it there.
+- After: a program finds ``morality'' only if something in its start state points it there. Surely, I thought, even a ghost of perfect emptiness would see a duty to think about morality; but thinking means running a specific computation it believes more likely than a Ouija board to tell it what it wants, and knowing how to read the output.
+
+- Before: A scientist's idea of evidence can change,
+- After: A scientist may say everything in science is up for grabs, but has some idea of what would count as evidence. That idea can change,
+
+- Before: In the same way you can say, ``I'll know it when I see it.''
+- After: In the same way you can say, ``I'll know it when I see it,'' but then you are not rebelling entirely against your evolved nature.
+
+- Before: including the intuitions that tell you evolution is a poor source of morality.
+- After: including the intuitions that tell you evolution is a poor source of morality. Hunter-gatherers had no Bayesian criterion of evidence, but all our science was built on a chain of appeals to our instinctive notion of truth; had that core been flawed, science would have seemed pointless.
+
+- Before: It follows that a ghost of perfect emptiness might not agree with you,
+- After: That is a large step. It means taking your own mind as identifying a moral frame of reference, not morality as a great light from beyond that you might not perceive at all; even if there were such a light, your brain would be what recognized it, and you would not escape causal or moral responsibility. It follows that a ghost of perfect emptiness might not agree with you,
+
+- Before: Then you know rather a lot about morality, though nothing certain.
+- After: Then you know rather a lot about morality, though nothing certain; are you willing to give up your Socratic ignorance? I do not argue by definitions, but if you claim to know nothing about morality, you will have trouble with the meaning of your words, not only their plausibility.
+
+
+## honest/sections/morality-as-fixed-computation.tex
+
+Why: Fidelity/substance pass: added that English goal statements are only dreams, the other failure modes avoided, the utility table, the three patches and why each fails, the duality with moral philosophy and 'merely wanting does not make it right', the calculator that cannot print its question and why the cheap utility function mirrors the wrong calculator, and the fuller list of questions in 'should'
+
+- Before: Build an AI to ``Do what I want.'' Suppose it scores a world by how strongly the programmer wants something and how much of that thing exists.
+- After: Build an AI to ``Do what I want,'' setting aside that goal systems cannot be built from English, and suppose you get close enough that it does not tile the universe with paperclips, cheesecake or tiny copies of satisfied programmers. Suppose it scores a world by how strongly the programmer wants something and how much of that thing exists: weakly wanting X with 20 of X scores 20, strongly wanting Y with 30 of Y scores 60.
+
+- Before: I try three patches and dismiss each in a sentence.
+- After: I try three patches. Bound the utility function, and the AI still wants the programmer to want something it can obtain with near certainty. Forbid it to modify the programmer, and it cannot talk to the programmer, since talking modifies people. Rule out specific ways of modifying the programmer, and it seeks loopholes superintelligently.
+
+- Before: we would not say ``Go ahead and modify us to strongly want something cheap!''
+- After: we would not say ``Go ahead and modify us to strongly want something cheap!'' So the design is fundamentally flawed: it judges desirability very differently from us, and patching a few failure modes cannot fix that. In the dual terms of moral philosophy, it chooses unlike what is actually right; the whole point is that wanting something does not make it right.
+
+- Before: And we cannot print out our own question, which is extremely complicated.
+- After: And we cannot print out our own question, which is extremely complicated: a smart calculator of the first kind, wanting an AI to answer its question, would have to make the AI look at the calculator and find the question implicit in its transistors. A utility function rewarding the AI for answering whatever the calculator asks would mirror the second kind of calculator, not the first.
+
+- Before: What we name by `right' is a fixed question.
+- After: What we name by `right' is a fixed question, or framework. We do not embody the question ``What will I decide to do?'', for which anything we decided would become right.
+
+- Before: ``What will save my people? How can we all have more fun? ...''
+- After: ``What will save my people? How can we all have more fun? How can we get more control over our own lives?'' and about a thousand other things.
+
+
+## honest/sections/magical-categories.tex
+
+Why: Fidelity/substance pass: added the tank story's procedure (50+50 training, 100 held out, the Pentagon's tests), 'unpatchable but not unsolvable', why there is no extra bit saying 'positive', the two smile datasets and two compatible classifications, the training data as a shadow of the labeller's concept, the Mona Lisa, why the Schiavo case is not in ancient training data, the two fallacies in detail, the 'AI that does what's good' parody and the 1950s chess example, FAI as communication rather than coercion, why the AI would seem to work in childhood, and hydrogen atoms
+
+- Before: Once upon a time, the US Army trained a neural network to find camouflaged tanks, and it learned to tell cloudy days from sunny ones.
+- After: Once upon a time, the US Army trained a neural network on 50 photos of camouflaged tanks among trees and 50 of trees alone; held back from 200, the other 100 were all classified correctly. The Pentagon's own tests did no better than chance: the tank photos had been taken on cloudy days and the forest photos on sunny ones, and the network had learned the weather.
+
+- Before: The lesson: if training cases and real cases come from different processes, past success guarantees nothing.
+- After: The lesson: if training cases and real cases come from different processes, past success guarantees nothing. The problem is not unsolvable, but it is unpatchable; there are deep answers but no bandaids.
+
+- Before: It is trivial to tell two images apart. Classifying a new image as a ``smile'' is another problem.
+- After: It is trivial to tell two images apart, by testing the arrays for equality. Classifying a new image as a ``smile'' from labelled examples is another order of problem: there is no 65,537th bit saying ``this image is positive,'' and for any training set short of the exact image, superexponentially many concepts fit the past labels. Train on smiles as positive and frowns, cats, a boat and a car as negative; later the superintelligence meets new frowns, cats, galaxies, nanofactories, a smile and molecular smiley faces. Counting the molecular smileys as smiles or not are both compatible with the training data.
+
+- Before: You reject the molecular smiley face at once, but by a boundary drawn by your values, which the training data did not test.
+- After: The concept you wanted cast its shadow on the training data as you labelled it, but data from a different context is a shallow projection of a higher-dimensional space. You reject the molecular smiley face at once, but by a boundary drawn by your values, which the training data did not test; someone classifying art might call the Mona Lisa obviously smiling, though it is only paint.
+
+- Before: Terri Schiavo's case shows how technology makes new borderline cases of this kind.
+- After: Terri Schiavo's case shows how technology makes new borderline cases of this kind: pictures of the living and dead from ancient Greece, when no one lay on life support, carry no shadow of the moral considerations her case raises.
+
+- Before: Hibbard makes two errors: he underestimates how complex such a concept is, and he assumes a superintelligence would rank outcomes as he does.
+- After: Hibbard makes two errors. He underestimates how complex such a concept is, since its boundary depends on many values and on moral reasoning about cases never seen, all invisible to him, so a molecular smiley just seems obviously not a smile. And, by anthropomorphic optimism, since counting it as a smile would rank low in his preferences, he assumes a superintelligence would see that it is stupid, as surely it can see which heaps of pebbles are correct. Why, Friendly AI is easy: train a network on good and not-good things and hook it to an expected utility maximizer!
+
+- Before: I call this the fallacy of magical categories.
+- After: I call this the fallacy of magical categories: simple words that turn out to carry all the AI's desired function. In the 1950s people thought a chess player might be trained on winning and losing games that way; it turned out otherwise.
+
+- Before: Friendly AI is a problem of communicating category boundaries.
+- After: Friendly AI is not a problem of coercing an AI against its own desires but of communicating category boundaries, like ``good,'' that no childhood training data can fully delineate; we ourselves have not imagined most of the borderline cases. Solving it means stepping outside both induction on human-labelled data and human-written definitions.
+
+- Before: Even a perfect smile recognizer would fail: once superintelligent,
+- After: Even a perfect smile recognizer would fail: it would seem to work in childhood, when it could make smiles only by pleasing its programmers, but once superintelligent,
+
+- Before: would, ``even if it worked,'' lead the AI to mass-produce agreement.
+- After: would, ``even if it worked,'' lead the AI to mass-produce things like programmers saying ``Yes, that's happiness!'' about hydrogen atoms, which are easy to make.
+
+
+## honest/sections/the-true-prisoner-s-dilemma.tex
+
+Why: Fidelity/substance pass: added the classic version's sentence numbers, why the paperclipper cannot be bargained with or threatened, that seizing destroys some of S, that the paperclipper feels nothing, that defection seems right and fair here, and the closing question in full
+
+- Before: The usual story has two captured criminals deciding whether to testify against each other,
+- After: The usual story has two captured criminals, each facing a year in prison, deciding whether to testify, which takes a year off your sentence and adds two to your partner's,
+
+- Before: and S must be shared with a paperclip maximizer from another dimension that we will never meet again.
+- After: and S can be made only with a paperclip maximizer from another dimension, which can use S for paperclips. It cares only about paperclips in its own universe, so we cannot bargain or threaten with ours, and we will never meet it again. Each side has one chance to seize more S before the link collapses, and seizing destroys some.
+
+- Before: I chose the numbers to make you indignant.
+- After: I chose the numbers to make you indignant: it would trade billions of lives for a couple of paperclips. It feels no pleasure or pain and no sense of betrayal.
+
+- Before: Here we really do prefer defecting against a cooperator, and both sides still prefer mutual cooperation to mutual defection.
+- After: Here we really do prefer defecting against a cooperator; cooperating does not even seem fair. But the rest of the logic is the same: it cares as little about us as we about paperclips, and both sides still prefer mutual cooperation to mutual defection.
+
+- Before: Last, I ask what you would do.
+- After: Last, I ask what you would do, and what anyone who has prided themselves on cooperating, or questioned classical game theory's verdict that defection is rational, says now.
+
+
+## honest/sections/magical-categories.tex
+
+Why: Fidelity/substance pass: made a quotation verbatim
+
+- Before: there is no 65,537th bit saying ``this image is positive,''
+- After: there is no 65,537th bit, no tag saying ``This image is inherently positive'',
+

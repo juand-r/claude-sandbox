@@ -307,10 +307,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] 2-place-and-1-place-words
 - [x] what-would-you-do-without-morality
 - [x] changing-your-metaethics
-- [ ] could-anything-be-right
-- [ ] morality-as-fixed-computation
-- [ ] magical-categories
-- [ ] the-true-prisoner-s-dilemma
+- [x] could-anything-be-right
+- [x] morality-as-fixed-computation
+- [x] magical-categories
+- [x] the-true-prisoner-s-dilemma
 - [ ] sympathetic-minds
 - [ ] high-challenge
 - [ ] serious-stories
