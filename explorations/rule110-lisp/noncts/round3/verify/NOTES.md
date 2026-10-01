@@ -54,3 +54,10 @@
   edge_check.py, t2_compose.py, t2_compose_r1.py (the latter compared the wrong
   pair of branches: a right-stream DEC vs a left-signal DEC; the right comparison
   is signal vs no signal, which edge_check covers exactly).
+- 05:55-06:03 coupler #1 verified (verify_coupler1.py; 2nd block phase must be
+  scanned). survey_A16 (coupler #3 in scope). T2 demo (t2_demo*.py): both
+  directions in one run, v1 = 0..9. Mistakes on the way: (1) partial-program
+  greedy evaluated the J I block with y = 1 (garbage) -> stage the block;
+  (2) moved J by 880 cells (not a multiple of 14) -> changed its class;
+  (3) Z's arrived before the Bbar (J moved right by the input slots) -> timing.
+  Lesson: write down the event time line before placing slots.

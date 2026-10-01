@@ -44,3 +44,35 @@ def run(scene, T):
 
 def counters(state):
     return [(CHAIN.index(g[0]), g) if g[0] in CHAIN else (None, g) for g in state]
+
+
+PE = (15, -4)
+IL_DELTA = (7, -8)     # leftstream: I_L front displacement (lpk.py)
+ZL_DELTA = (9, 0)      # leftstream: Z_L front displacement, both branches
+A_DELTA = (5, 2)       # leftstream: A (DEC) front displacement
+
+
+def left_packets():
+    """leftstream's packets in THIS library: name -> (seeds, E seed, delta)."""
+    il, ile = train_from_record("sat_inc_results.jsonl", 6)
+    zl, zle = train_from_record("sat_zero_results.jsonl", 1)
+    return {"i": (il, ile, IL_DELTA), "z": (zl, zle, ZL_DELTA),
+            "d": ([("A", 1, -64)], (0, 7), A_DELTA)}
+
+
+def left_stream(prog, e0, t0, gap=150, pk=None):
+    """leftstream's rigid placement rule (lstream.place_program), in this
+    library: packet i = its reference scene translated so that its E sits
+    at the virtual front e (e0 + earlier deltas), then moved m*P_E so it
+    arrives about t0 + i*gap. Seeds do not depend on the counter value."""
+    pk = pk or left_packets()
+    e = tuple(e0)
+    out = []
+    for i, X in enumerate(prog):
+        seeds, pe, dl = pk[X]
+        tr = (e[0] - pe[0], e[1] - pe[1])
+        m = (t0 + i * gap - tr[0]) // PE[0]
+        for nm, t, x in seeds:
+            out.append(norm(nm, t + tr[0] + m * PE[0], x + tr[1] + m * PE[1]))
+        e = (e[0] + dl[0], e[1] + dl[1])
+    return out

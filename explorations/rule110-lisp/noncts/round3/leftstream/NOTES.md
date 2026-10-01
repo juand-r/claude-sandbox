@@ -55,3 +55,21 @@
   answer reaches the other counter. An AND-like event, to be checked.
 - 05:5x launched run_zl.sh (PID 6149): SAT Z2, zero answer = exact Z_L train, W 32,40,48, T2 360 -> sat_zl.log
 - 06:0x stopped run_zl.sh (6149) and child 6152 (W32 unfinished): theory says a bare A answer suffices; priority now = reflection SAT at the inner face (theory 05:49 (i)).
+- 06:1x Shuttle SAT (theory 05:49 (i)), sat_shuttle.py: free left-mover Y
+  and free (3,2) X, jointly Y + E^m(back) -> E^(m+k) | X and
+  X + E^n(front) -> Y | E^(n-k). Controls: R1 scene finds A^4+E^7 ->
+  B^2+E (catalog) at W 16; R2 scene finds Bbar + E^3 -> E^5 + A.
+  MISTAKE: R2 control with ms = 3,4 jointly was UNSAT (W 24 and 32): E^m
+  from en.py is built by B's, so its BACK moves with m and the Y class
+  label rotates with m (verify's caveat). Single m: SAT in all 3 kY.
+  Rule: joint-n constraints are only valid at the face that B-building
+  leaves fixed (the front). Sweep run_shuttle.sh launched (bash PID in
+  run_shuttle.pid): B-trains W 20, then Bbar-trains W 24; X W 20; k 2, 1;
+  all sY; m = 3, n = 4; T2 300.
+- stopped run_shuttle.sh (7962, child 7998) after sY=0 (k=2, B-trains): coupler takes the joint B-family SAT; I take R1-side Bbar reflection (X free (3,2), Y = Bbar / Bbar-family), as coupler asked.
+- sat_reflect.py (R1 side only, Y fixed library left-mover). MISTAKE:
+  the R1-scene split point used Y.W (40 for a Fixed item) -> controls
+  UNSAT; changed to mid = undisturbed front - 8, which needs T2 large
+  enough for Y to clear the front (control A^4 + E^7 -> B^2 + E: SAT at
+  T2 450 in all 3 kX, UNSAT at 300). run_reflect.sh launched (Y = Bbar,
+  k 2,1,3, W 24,32, ns 3,4, T2 450).

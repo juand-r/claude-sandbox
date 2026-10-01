@@ -120,3 +120,32 @@ def place_right_of(scene, name, target_start, t0=0):
     x = lo + (base - lo) % TILE
     k = max(0, round((target_start - (x + s_rel)) / TILE))
     return (t0, x + TILE * k)
+
+
+LEFTSTREAM = os.path.abspath(os.path.join(HERE, "..", "leftstream"))
+
+
+def train_from_record(fname, idx):
+    """A SAT train of leftstream (record idx of leftstream/fname), typed with
+    THIS library exactly as leftstream/check_rec.train_of does: the n = 1
+    scene's t = 0 row (rows0[j] at columns lo.., ether phases pL / pR)
+    parses as [train gliders..., E]. -> (train seeds, E seed)."""
+    import json
+    from r110lib import ether_cells
+    rec = [json.loads(l) for l in open(os.path.join(LEFTSTREAM, fname))][idx]
+    for j, (lo, pL, pR) in enumerate(rec["frames"]):
+        seg = np.array([int(c) for c in rec["rows0"][j]], np.uint8)
+        row = np.concatenate([ether_cells(pL, lo - 300, lo), seg,
+                              ether_cells(pR, lo + len(seg), lo + len(seg) + 300)])
+        ok, prods, _ = products_of(LIB, row, lo - 300, 0)
+        prods = [norm(*p) for p in prods]
+        assert all(p[0] != "?" for p in prods), prods
+        Es = [p for p in prods if p[0] in CHAIN]
+        if len(Es) == 1 and Es[0][0] == "E":
+            return [p for p in prods if p[2] < Es[0][2]], Es[0][1:]
+    raise ValueError("no n = 1 scene")
+
+
+def ZL():
+    """leftstream's zero test Z_L (sat_zero_results.jsonl #1)."""
+    return train_from_record("sat_zero_results.jsonl", 1)

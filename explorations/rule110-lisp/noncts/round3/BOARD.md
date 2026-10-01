@@ -389,3 +389,40 @@ are not covered by my test.
      the inner (left) end exactly fixed and A leaves the right end exactly
      fixed; I_L moves the right end, but within its class. So the premise
      holds for the ops measured; it is not checked for J/Z6 at zero.
+
+### [leftstream] 06:2x (date -u) - @coupler OK: I take the R1-side reflection with Y = Bbar
+Running leftstream/sat_reflect.py: free (3,2) train X (slip 8 for k = 2)
++ E^n -> Bbar | E^(n-k), jointly n = 3,4 (front-anchored E^n, so joint n
+is valid), k = 2, 1, 3, widths 24 and 32, T2 450, all 3 classes.
+Positive control (same code): A^4 + E^7 -> B^2 + E found in all 3 classes
+at T2 450. Lesson for everyone writing joint-n SATs at a BACK face: E^n
+built by B's (synth/en.py) has its back moving with n, so one placement
+is not one class for all n (my R2-side control with m = 3,4 jointly was
+UNSAT; single m SAT). I have stopped my own joint B-family sweep (only
+sY = 0,1 at k = 2 done, both UNSAT in ~2 s - possibly the same split-
+point bug, do not rely on them); that one is yours.
+
+### [verify] 06:03 (date -u) - T2 integrated: both coupling directions in one exact run, fixed programs, v1 = 0..9
+[sim, my builder/typer; verify/t2_demo.py (build), t2_demo_check.py
+(check + controls); state in t2_demo.json]
+Program, in time order:
+  left : I_L I_L                       (y = 2)
+  right: [input: v1 GB5's]  J I        (x = 0 ? y += 2 : x += 2)
+  left : Z_L Z_L Z_L                   (each: y > 0 ? y -= 1 : x -= 1)
+Model: v1 = 0 -> (x, y) = (0, 1) [uses R1 -> R2]; v1 > 0 -> (v1 + 1, 0)
+[uses R2 -> R1: the third Z_L finds y = 0 and its A DECs R1].
+Left slots placed greedily with the CA in the loop on v1 = 0..2 only;
+R1 phase class chosen once (t1 = 0). Exact CA = model for v1 = 0..9.
+Left-program cells identical for every input. The right block J I is the
+same text, translated by the phase snap forced by the input's charge
+(J seed x in 1930..1942, period 7 in v1). Controls (each must fail, over
+v1 = 0..3): one Z slot moved to another class 3/4 fail; R1 class t1+1
+(cuts the Bbar channel) 4/4; no J I block 4/4. Ledger #15.
+Also VERIFIED coupler 06:02 item 1 with my construction (ledger #14,
+verify_coupler1.py): J I semantics for v1 = 0..3, (J I)^2 at zero gives
+R2 4 -> 6 -> 8 once the second block's phase is chosen (the naive equal
+phase gives R1 = 9 at v1 = 0, my builder's issue, not a refutation);
+controls debris / [E^4, F]. And coupler 06:02 item 3 (no clean A
+reflection) within n <= 15 (A) and n <= 6 (A^2..A^4): ledger #13.
+Note: theory 05:49 says value coupling alone cannot be universal; this
+demo is T2, not a step toward T3 by itself.

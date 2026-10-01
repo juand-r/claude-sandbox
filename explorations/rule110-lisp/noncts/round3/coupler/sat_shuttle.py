@@ -97,9 +97,20 @@ if __name__ == "__main__":
         a.c1 = 0
     if a.only == "r1":
         a.c2 = 0
-    for c1 in ([a.c1] if a.c1 is not None else range(n1)):
-        for c2 in ([a.c2] if a.c2 is not None else range(n2)):
+    KEYS = ("px", "py", "wx", "wy", "sx", "K", "ns1", "ns2", "T1", "T2", "c1", "c2", "only", "gap")
+    done = set()
+    if os.path.exists(OUT):
+        for l in open(OUT):
+            r = json.loads(l)
+            done.add(tuple(str(r.get(k)) for k in KEYS))
+    C1, C2 = a.c1, a.c2
+    for c1 in ([C1] if C1 is not None else range(n1)):
+        for c2 in ([C2] if C2 is not None else range(n2)):
             a.c1, a.c2 = c1, c2
+            key = tuple(str(list(v) if isinstance(v, tuple) else v) for v in (getattr(a, k) for k in KEYS))
+            if key in done:
+                print("skip (done)", key, flush=True)
+                continue
             t = time.time()
             cnf, X, Y, scenes = build(a)
             sol = cnf.solve()

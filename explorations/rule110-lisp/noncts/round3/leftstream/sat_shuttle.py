@@ -52,9 +52,10 @@ def scene_R1(cnf, X, Y, n, k, kX, T2, gap=6):
     win = make_window(T2, lo, hi, vY, 0.0, margin=MARGIN)
     S = Scene(cnf, T2, [(X, 0, 0), (E, tauE, xE)], window=win)
     tc = TC
-    xY = xE + vY * (T2 - tc)
     xE_front = xE - 4 * T2 / 15
-    mid = int((xY + Y.W + xE_front) / 2)
+    # split just left of the counter's undisturbed front: Y (faster than
+    # E) must be entirely left of it by T2 (T2 must be large enough)
+    mid = int(xE_front - 8)
     Eo = en_item(cnf, n - k)
     S.is_item(T2, S.lo - T2, mid, Y, far_left=S.p_left)
     S.is_item(T2, mid, S.hi + T2, Eo, far_right=S.p_right)
@@ -76,8 +77,18 @@ if __name__ == "__main__":
     nY = n_classes((15, -4), (A.pY, A.dY))
     kYs = range(nY) if A.kY is None else [int(v) for v in A.kY.split(",")]
     kXs = [int(v) for v in A.kX.split(",")]
+    done = set()
+    if os.path.exists(OUT):
+        for l in open(OUT):
+            r = json.loads(l)
+            done.add((r["pY"], r["dY"], r["WY"], r["sY"], r["WX"], r["k"],
+                      r["T2"], tuple(r["ms"]), tuple(r["ns"]), r["kY"], r["kX"]))
     for kY in kYs:
         for kX in kXs:
+            key = (A.pY, A.dY, A.WY, A.sY, A.WX, A.k, A.T2, tuple(ms),
+                   tuple(ns), kY, kX)
+            if key in done:          # resumable: skip finished instances
+                continue
             t = time.time()
             cnf = CNF()
             X = TrainVar(cnf, A.WX, 3, 2, sX, name="X")
