@@ -7068,3 +7068,109 @@ Why: Fidelity/substance pass: removed a doubled word
 - Before: we wish we were. But but ``I don't want
 - After: we wish we were. But ``I don't want
 
+
+## honest/sections/serious-stories.tex
+
+Why: Fidelity/substance pass: added the genie assumption behind the 'end of all stories', the trained revulsion, the full list of great stories, the 'not serious' alternative, Elder Author Syndrome and the apologizing supervillain, the option of deleting the grating feeling, the kick vs hours of skill and Spee's instruments, the question of what the equal pleasure would be, why stories must shout, the 'new floor' worry and Orwell's roast goose, why rescaling is meaningless for an expected utility maximizer, what congenital analgesics must do, the dust-speck question, Pearce's claims, why leaving the world as it is will not do, the path of courage in detail (no broken people; abuse, drudgery, starvation, AIDS; stronger people; pain not outweighing pleasure; stories both ways), the author's conservatism, and the moving target ending with Romeo and Juliet
+
+- Before: When I was young I thought a positive Singularity, where every problem is wished away, would be ``the end of all stories.''
+- After: When I was young I thought authors were excused from the search for Eutopia, and that a positive Singularity, where an AI genie wishes every problem away, would be ``the end of all stories.''
+
+- Before: So I tried to contemplate the argument:
+- After: So I swallowed my trained revulsion at Luddism and theodicy and tried to contemplate the argument:
+
+- Before: I list great stories, from the \textsc{Iliad} to \textsc{Romeo and Juliet}, and ask whether a single one is not tragic.
+- After: I list great stories, the \textsc{Iliad}, \textsc{Romeo and Juliet}, \textsc{The Godfather}, \textsc{Watchmen}, \textsc{Planescape: Torment}, the second season of \textsc{Buffy the Vampire Slayer} and an ending of \textsc{Tsukihime}, and ask whether a single one is not tragic.
+
+- Before: We prefer pleasure in life and prize pain in stories. It is a puzzle.
+- After: We prefer pleasure in life and prize pain in stories; or perhaps stories of happier people are just not serious enough to praise. It is a puzzle.
+
+- Before: Still, stories where everything goes right grate, as with authors who grow old or successful and stop hurting their characters.
+- After: Still, stories where everything goes right grate, as with authors who grow old or successful (Mercedes Lackey, Laurell K. Hamilton, Heinlein, even Card) and stop hurting their characters, so that the hero wins with a snap of the fingers or the villain apologizes and becomes a friend: a fingernail on a blackboard at the base of your spine.
+
+- Before: Perhaps stories need only striving, not pain.
+- After: Perhaps stories need only striving, not pain, which could be tested. Or, this being transhumanist Fun Theory, we could modify brains to delete the grating feeling, unless there is reason to keep it.
+
+- Before: and nothing ordinary makes a person feel as good as the Inquisition's instruments made people hurt.
+- After: and a kick in the testicles, doable in seconds by a novice, hurts as intensely as a skilled sexual artist could please in hours; nothing ordinary makes a person feel as good as the instruments used on Spee's accused witches made people hurt.
+
+- Before: This goes deeper than loss aversion,
+- After: This goes deeper than loss aversion, which keeps optimistic planners from going broke and
+
+- Before: Stories must shout; perhaps happiness cannot shout loud enough.
+- After: So people in search of intensity mix pain into pleasure. And what would the equal pleasure be? A torture victim will do anything to stop the pain; would the matching pleasure override everything with the demand to continue? Stories must shout, at ten times natural volume, or they are too quiet to rise from the page; perhaps happiness cannot shout loud enough, and that is what needs fixing.
+
+- Before: Could we delete pain, and delete adaptation, so that every roast goose tastes as it does after starving?
+- After: Could we delete pain, or would removing the old floor of the utility function create a new one, so that anything under ten million hedons became unbearable? Someone who remembers starving enjoys bread more, which Orwell thought made Utopia impossible: people imagine happiness only as relief, and Dickens's poor family eating a roast goose seems happier than anyone in a perfect universe. For an expected utility maximizer, adding a trillion to every outcome changes nothing, since only the intervals matter. Could we delete adaptation, so that every roast goose tastes as it does after starving?
+
+- Before: and people born without pain do not, so far as I have heard, find too little pleasure intolerable.
+- After: and people born without pain do not, so far as I have heard, find too little pleasure intolerable, though they must inspect themselves for cuts and burns, since pain has a purpose.
+
+- Before: I would guess pain could be replaced by an urge;
+- After: I would guess pain could be replaced by an urge not to do certain things, without its intolerable quality, more like an expected utility maximizer;
+
+- Before: I would guess adaptation could be removed;
+- After: I would guess adaptation could be removed, which verges on deleting boredom, but an old solution staying pleasurable need not stop the search for better ones;
+
+- Before: I would guess ``yes, it can be done.''
+- After: and that a dust speck need not become the new torture for someone who has never known worse; I would guess ``yes, it can be done.''
+
+- Before: So David Pearce is ``very probably right'' that suffering can be abolished.
+- After: So David Pearce is ``very probably right'' that suffering can be abolished, by nanotechnology and genetic engineering, replacing pain with ``heritable gradients of bliss,'' until ``the world's last unpleasant experience'' is a datable event.
+
+- Before: Is that what we want? Leaving the world as it is will not do.
+- After: Is that what we want, to wipe away the last tear and be done? Leaving the world as it is will not do; no God designed it, and it is unlikely to contain too little pain.
+
+- Before: The alternative I like is ``the path of courage'': remove the pain that destroys people, make people stronger, keep broken legs and broken hearts.
+- After: The alternative I like is ``the path of courage'': remove the pain that grinds down and destroys minds, or make minds harder to damage, and make people stronger so that what remains is less frightening. Keep the pain that warns you off the fire, or tells you that you should not have put your friend's finger in it, broken legs and broken hearts, but no broken people: no abuse that breeds abusers, no drudgery that drives people toward suicide, no random endless sorrows like starvation or AIDS, and no pain that outweighs pleasure. You could write stories about that world, and its people could read ours. I am conservative about deleting large parts of human nature, lest our balanced, conflicting structure collapse into a simple pleasure maximizer.
+
+- Before: I admit I may just be ``afraid'' of a very different world.
+- After: I admit I have not lived it both ways, and may just be ``afraid'' of a very different world, or find the smaller change easier to empathize with. But change is a moving target.
+
+- Before: And a child raised without AIDS or slavery might go on to remove heartbreak too. ``I don't know.''
+- After: A child raised without AIDS or slavery would not feel the world already changed enough, and might go on to remove the pain of heartbreak too; perhaps \textsc{Romeo and Juliet} would come to seem a relic, and all negative reinforcement a hangover to wake from. Should we delay that step, or throw away our fears? ``I don't know.''
+
+
+## honest/sections/value-is-fragile.tex
+
+Why: Fidelity/substance pass: added the opponent's case in its own words, what a future gone right looks like, why seeing the claim as obvious needs background, the three examples in fuller form, 'a single blow', the objections the author anticipates and the background needed to answer them, the science-fiction heroes and villains, why leaving all order gives noise (the mousetrap and wood shavings), that only some humans value variety, what the cosmopolitan's hidden values are, the list of values, the author's lessened shame, and why shattered values do not come back
+
+- Before: An imagined opponent calls this provincial.
+- After: An imagined opponent calls this provincial: let the Future go its own way, full of agents unlike us with their own goals, not bound to the prejudices of ``a pack of four-limbed Squishy Things.''
+
+- Before: But a galactic civilization vastly unlike ours is what the Future looks like ``if things go right.''
+- After: I have no problem with a galactic civilization of strange beings pursuing pleasures I cannot empathize with, trading unimaginable goods, living stories I could never understand; that is what the Future looks like ``if things go right.''
+
+- Before: ``With very high probability, it ends up looking dull.''
+- After: ``With very high probability, it ends up looking dull,'' pointless, nothing you would mourn. Seeing this as obvious is what needs the background.
+
+- Before: A mind with all human values except boredom replays one optimized experience forever.
+- After: A mind with all human values except boredom replays one highly optimized experience forever, to the end of its light cone.
+
+- Before: A mind that values feelings but not their real objects becomes ``its own experience machine.''
+- After: A mind that values the feelings of discovery, love and helping a friend, but not their real objects, feels them without doing anything, becoming ``its own experience machine,'' its feeling of novelty untrue.
+
+- Before: So value is ``fragile'': losing any one of several parts empties the Future.
+- After: So value is ``fragile'': there is more than one dimension whose loss alone empties the Future, a single blow that shatters all value.
+
+- Before: Boredom is ``a particular algorithm that evolution coughed out into us,''
+- After: Surely no superintelligence would repeat one experience, or want feelings without discoveries; would it not notice its utility function was wrong and rewrite it? Surely boredom is universal, since it evolved for being valuable? Answering takes background: terminal versus instrumental values, the stupidity of natural selection, adaptation-executers that turned subgoals of reproduction into unconditional emotions, and the trade-off between exploration and exploitation in AI. Then you can see that our boredom is ``a particular algorithm that evolution coughed out into us,''
+
+- Before: The cosmopolitans who disagree read the same science fiction I did.
+- After: The cosmopolitans who disagree read the same science fiction I did, with villains who enslave aliens for not looking human or AIs on the assumption that silicon cannot be sentient, and heroes who see that minds need not be like us to be valuable. I believed it once.
+
+- Before: But leaving all order behind gives noise,
+- After: But the beauty that jumps out of one box does not jump out of all boxes; leaving all order behind gives noise. You may abandon a design rule to build a better mousetrap, but only for a higher rule, not by heaping wood shavings and calling every pattern as good as any other. Loosen the grip of human values and you get not something alien and beautiful by human standards but moral noise, a universe tiled with paperclips. Change for the better needs a criterion of improvement, and that criterion is
+
+- Before: and the criterion of improvement is ``physically represented in our brains, and our brains alone.''
+- After: ``physically represented in our brains, and our brains alone.'' Only some humans want the Future to be greater than the past; a paperclip maximizer just makes paperclips.
+
+- Before: ``No free lunch,'' twice.
+- After: ``No free lunch,'' twice: if you want a wonderful and mysterious universe, that is your value, and you must work to create it.
+
+- Before: The cosmopolitan's values are only less visibly human.
+- After: The cosmopolitan's values are only less visibly human, faded into the background, so that the brain does not even generate an alternative awful enough to wake it, like a nonsentient optimizer tiling the universe with paperclips; it imagines only strange worlds to appreciate. Sentient beings, enjoyable experiences that are not all the same, bound to more than feelings, learning, discovering and choosing freely: these values, praised as universal or common sense, are as much in your brain as the ones you dismiss as merely human, and come from humanity's long history and evolution's morally miraculous stupidity. (Seeing this made me less ashamed of values that seemed provincial.)
+
+- Before: Such values do not arise in all possible minds, and
+- After: Such values do not arise in all possible minds or appear from nowhere to rebuke a paperclip maximizer. Touch them too hard in the wrong dimension and they shatter and do not come back, since nothing would be left to want them back, and a worthwhile universe would have no physical reason to exist.
+

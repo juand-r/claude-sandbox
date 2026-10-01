@@ -313,8 +313,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-true-prisoner-s-dilemma
 - [x] sympathetic-minds
 - [x] high-challenge
-- [ ] serious-stories
-- [ ] value-is-fragile
+- [x] serious-stories
+- [x] value-is-fragile
 - [ ] the-gift-we-give-to-tomorrow
 - [ ] one-life-against-the-world
 - [ ] the-allais-paradox
