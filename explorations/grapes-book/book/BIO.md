@@ -210,7 +210,7 @@ He writes through one year, and the year breaks in. The three movements of
 
 | Movement | When | What happens around him |
 |---|---|---|
-| I. Order | Early 2020 | Nothing, yet. The encyclopedia of grapes; the past in the asides (Burgundy, Odile; Iowa unnamed). Already the tells (STYLE.md, 4.2) |
+| I. Order | Early 2020 | Nothing, yet. The encyclopedia of grapes; the past in the asides and the main text (Burgundy, Odile; an Iowa childhood, the town never named). Already the tells (STYLE.md, 4.2) |
 | II. Leakage | From March 2020 | The pandemic. Alone in the house with the book. The asides drift toward a diary and start to spiral (STYLE.md, 4.1) |
 | III. Collapse | 27 September – 20 October 2020, and after | The Glass Fire. Helicopters dip into his pond, every few minutes, for days. In a year of drought the water falls. Something comes up |
 
@@ -247,8 +247,13 @@ year: by October, before the rains, the pond was already low.
 - Calls her "O." at first. Her full name appears only late in the book.
 - Addresses "you" in the asides. It is never clear whether "you" is the
   reader, Odile, or Thibault.
-- Never writes about anything before 1968. When the book gets near it, he
-  changes the subject.
+- Childhood (changed 2026-10-01, at the author's request for chapter 1): he
+  does reminisce about his Iowa childhood, freely, about small things: the
+  hardware store, the jar of Welch's grape jelly, the heat, the elevator.
+  What he never touches: the name of the town, his own name, his family by
+  name, why he left, and the Army. When the book gets near those, he
+  changes the subject. The reader sees the fence before seeing what it
+  fences.
 
 ## Motifs (plant early, return often)
 
