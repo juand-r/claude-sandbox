@@ -129,20 +129,20 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] cached-thoughts
 - [x] original-seeing
 - [x] the-virtue-of-narrowness
-- [ ] stranger-than-history
-- [ ] the-logical-fallacy-of-generalization-from-fictional
-- [ ] we-change-our-minds-less-often-than-we-think
-- [ ] hold-off-on-proposing-solutions
-- [ ] the-genetic-fallacy
-- [ ] the-affect-heuristic
-- [ ] evaluability-and-cheap-holiday-shopping
-- [ ] unbounded-scales-huge-jury-awards-and-futurism
-- [ ] the-halo-effect
-- [ ] superhero-bias
-- [ ] affective-death-spirals
-- [ ] resist-the-happy-death-spiral
-- [ ] uncritical-supercriticality
-- [ ] evaporative-cooling-of-group-beliefs
+- [x] stranger-than-history
+- [x] the-logical-fallacy-of-generalization-from-fictional
+- [x] we-change-our-minds-less-often-than-we-think
+- [x] hold-off-on-proposing-solutions
+- [x] the-genetic-fallacy
+- [x] the-affect-heuristic
+- [x] evaluability-and-cheap-holiday-shopping
+- [x] unbounded-scales-huge-jury-awards-and-futurism
+- [x] the-halo-effect
+- [x] superhero-bias
+- [x] affective-death-spirals
+- [x] resist-the-happy-death-spiral
+- [x] uncritical-supercriticality
+- [x] evaporative-cooling-of-group-beliefs
 - [ ] when-none-dare-urge-restraint
 - [ ] every-cause-wants-to-be-a-cult
 - [ ] two-cult-koans
