@@ -276,13 +276,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] if-many-worlds-had-come-first
 - [x] where-philosophy-meets-science
 - [x] thou-art-physics
-- [ ] many-worlds-one-best-guess
-- [ ] the-failures-of-eld-science
-- [ ] the-dilemma-science-or-bayes
-- [ ] science-doesn-t-trust-your-rationality
-- [ ] when-science-can-t-help
-- [ ] science-isn-t-strict-enough
-- [ ] do-scientists-already-know-this-stuff
+- [x] many-worlds-one-best-guess
+- [x] the-failures-of-eld-science
+- [x] the-dilemma-science-or-bayes
+- [x] science-doesn-t-trust-your-rationality
+- [x] when-science-can-t-help
+- [x] science-isn-t-strict-enough
+- [x] do-scientists-already-know-this-stuff
 - [ ] no-safe-defense-not-even-science
 - [ ] changing-the-definition-of-science
 - [ ] faster-than-science
