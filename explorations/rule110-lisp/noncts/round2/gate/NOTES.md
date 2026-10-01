@@ -127,3 +127,20 @@ only (verify's INZZ), and (2) believing a per-input compilation was a fixed
 program. Both were caught by asking "what exactly is held fixed across
 inputs?". Rule for next time: write down the invariance claim (what is the
 same for every input) before searching, and make the builder enforce it.
+
+## 2026-10-01 ~02:40 new task from lead: F-lane ABORT (messenger eats rest of block, gate removes it)
+- Catalog: C1 is the only messenger with EAT reactions (11 combos; C2/C3 none).
+  c1_algebra.py: displacement of the C1 per meal; class-neutral (in
+  L = <(7,0),(30,-8)>) only for (-4,23)#3 [(3,16)] and (-22,39)#3 [(1,24)].
+- abort_scene.py [sim, exact CA == glidersim]: C1 + a,b,b,a,a,b + gate
+  (Ebar,E)@(-9,29)#3 -> one Ebar. Fixed placements (class 3 rel. original C1,
+  spacing (0,168) in L). Controls: (0,14) shift -> debris; (1,-4) -> debris;
+  no C1 -> packets untouched.
+- Obstacles (catalog, exhaustive over its 115 Ebar-speed pairs): address's
+  movers are never eaten; neutral eaters cannot be absorbed by F (only
+  convert while crossing); no C1-gate crosses F cleanly -> no-abort branch
+  needs a gate disposal (idea: [MAKE][GATE] with a guard C1 emitted by T).
+- Note: Lambda/<P_Ebar> is Z + Z_2 (P_Ebar = 2*(15,-4)), so F-class and
+  C1-class of a mover are not simply nested; their joint constraint must be
+  computed, not assumed.
+- Running scan_lane.py: C1 and F vs 203 uncatalogued Ebar-speed compounds.

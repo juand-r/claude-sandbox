@@ -32,3 +32,13 @@
 {"name": "Ebar@(0,0)+Ebar@(-13,31)", "k": 26, "o": 19, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "N?/4", "NNYY": "NR/5"}}
 {"name": "Ebar@(0,0)+Ebar@(-13,31)", "k": 29, "o": 14, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "N?/7", "NNYY": "NR/3"}}
 {"name": "Ebar@(0,0)+Ebar@(-14,35)", "k": 4, "o": 1, "res": {"YYNN": "??/17", "YNYN": "?N/18", "NYYN": "N?/1", "NNYY": "N?/1"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 3, "o": 26, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "N?/1", "NNYY": "N?/1"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 6, "o": 24, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "NR/1", "NNYY": "NR/1"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 9, "o": 22, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "NR/0", "NNYY": "NR/0"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 12, "o": 17, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "NR/1", "NNYY": "NR/2"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 15, "o": 12, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "N?/8", "NNYY": "NR/1"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 18, "o": 12, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "N?/5", "NNYY": "N?/6"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 21, "o": 12, "res": {"YYNN": "YY/8", "YNYN": "YN/8", "NYYN": "NN/6", "NNYY": "NN/6"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 24, "o": 13, "res": {"YYNN": "YY/6", "YNYN": "YN/8", "NYYN": "NR/1", "NNYY": "NR/1"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,25)", "k": 27, "o": 8, "res": {"YYNN": "YY/6", "YNYN": "YN/8", "NYYN": "??/11", "NNYY": "N?/5"}}
+{"name": "Ebar@(0,0)+Ebar@(-15,39)", "k": 16, "o": 1, "res": {"YYNN": "Y?/4", "YNYN": "?N/17", "NYYN": "NR/4", "NNYY": "NR/4"}}
