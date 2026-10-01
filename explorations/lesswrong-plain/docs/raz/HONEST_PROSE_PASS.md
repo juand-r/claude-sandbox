@@ -360,14 +360,14 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] rationality-common-interest-of-many-causes
 - [x] helpless-individuals
 - [x] money-the-unit-of-caring
-- [ ] purchase-fuzzies-and-utilons-separately
-- [ ] bystander-apathy
-- [ ] collective-apathy-and-the-internet
-- [ ] incremental-progress-and-the-valley
-- [ ] bayesians-vs-barbarians
-- [ ] beware-of-other-optimizing
-- [ ] practical-advice-backed-by-deep-theories
-- [ ] the-sin-of-underconfidence
+- [x] purchase-fuzzies-and-utilons-separately
+- [x] bystander-apathy
+- [x] collective-apathy-and-the-internet
+- [x] incremental-progress-and-the-valley
+- [x] bayesians-vs-barbarians
+- [x] beware-of-other-optimizing
+- [x] practical-advice-backed-by-deep-theories
+- [x] the-sin-of-underconfidence
 - [ ] go-forth-and-create-the-art
 - [ ] humans-are-not-automatically-strategic
 - [ ] toolbox-thinking-and-law-thinking
