@@ -228,13 +228,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] righting-a-wrong-question
 - [x] mind-projection-fallacy
 - [x] probability-is-in-the-mind
-- [ ] the-quotation-is-not-the-referent
-- [ ] qualitatively-confused
-- [ ] think-like-reality
-- [ ] chaotic-inversion
-- [ ] reductionism
-- [ ] explaining-vs-explaining-away
-- [ ] fake-reductionism
+- [x] the-quotation-is-not-the-referent
+- [x] qualitatively-confused
+- [x] think-like-reality
+- [x] chaotic-inversion
+- [x] reductionism
+- [x] explaining-vs-explaining-away
+- [x] fake-reductionism
 - [ ] savanna-poets
 - [ ] joy-in-the-merely-real
 - [ ] joy-in-discovery
