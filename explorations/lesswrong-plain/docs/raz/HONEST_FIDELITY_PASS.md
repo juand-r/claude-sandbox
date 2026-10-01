@@ -325,8 +325,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] ethical-injunctions
 - [x] something-to-protect
 - [x] when-not-to-use-probabilities
-- [ ] newcomb-s-problem-and-regret-of-rationality
-- [ ] twelve-virtues-of-rationality
+- [x] newcomb-s-problem-and-regret-of-rationality
+- [x] twelve-virtues-of-rationality
 - [ ] beginnings-an-introduction
 - [ ] my-childhood-death-spiral
 - [ ] my-best-and-worst-mistake

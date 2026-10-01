@@ -7534,3 +7534,106 @@ Why: Fidelity/substance pass: added the P vs NP limit, what not to do with a fly
 - Before: I think I would do worse with numbers.
 - After: I think I would do worse with numbers. I am not the straw Bayesian who says to make up probabilities to avoid Dutch books; humans are exposed to Dutch books because they are not powerful enough to avoid them, and catching the ball matters more. The math governs like underlying physics, too expensive to calculate, and a ritual that mimics its surface without better decisions would be a lost purpose.
 
+
+## honest/sections/newcomb-s-problem-and-regret-of-rationality.tex
+
+Why: Fidelity/substance pass: added Omega's record of 100, the two-boxer's case split and reply, the Prisoner's Dilemma link, why a self-modifying AI would self-modify to one-box and the need for a general disposition, 'win' including others and the eon, the Kirk-and-Spock stereotype, the gene and alphabetical-algorithm contrasts, Omega caring where we go, the McGee example spelled out, judging 'reasonable' by who leaves with money, envying only choices, defining the winner by the heap of utility and the cliff-jumpers, the hour spent persuading oneself, the serum and asteroid versions, reasonable vs true belief, Bayes out the window if it loses, and Musashi's words
+
+- Before: Omega, a superintelligence with a perfect record, leaves two boxes.
+- After: Omega, a superintelligence from another galaxy, correct on all 100 observed occasions, leaves two boxes and flies away.
+
+- Before: The two-boxer says the boxes are already filled, so taking both gains \$1,000 either way.
+- After: The two-boxer says the boxes are already filled or empty, so taking both gains \$1,000 either way: \$1,000 instead of nothing, or \$1,001,000 instead of \$1,000,000.
+
+- Before: The one-boxer asks, ``If you're so rational, why ain'cha rich?''
+- After: The one-boxer asks, ``If you're so rational, why ain'cha rich?'' The two-boxer answers that Omega chooses to reward irrational dispositions, too late to change. The literature is large, especially counting the Prisoner's Dilemma as a special case.
+
+- Before: Even causal decision theorists agree that you should precommit to one box if you can.
+- After: Even causal decision theorists agree that you should precommit to one box if you can, since that causes box B to be filled. In my field, self-modifying AI, an AI that two-boxes will modify itself to one-box if it foresees the problem; and one expecting Newcomblike problems of unknown form would make itself the kind of agent that generally does well on them.
+
+- Before: ``Rational agents should WIN.''
+- After: ``Rational agents should WIN.'' Not selfishly or shortsightedly: if your utility function cares about others, win their happiness; about a million years hence, win the eon. Don't lose reasonably. Some think rationality predictably loses on some problems, the stereotype that Kirk beats Spock.
+
+- Before: Omega rewards the choice to take one box whatever reasoning produced it, so I deny that it rewards the irrational.
+- After: A superbeing might reward a gene regardless of choice, or a particular algorithm, such as choosing the alphabetically last option, and not the same choice made another way. Omega rewards the choice to take one box whatever reasoning produced it, caring where we go, not how, so I deny that it rewards the irrational.
+
+- Before: For the same reason I will not bound my utility function to escape McGee's Dutch book.
+- After: For the same reason I will not bound my utility function to escape McGee's Dutch book over infinite times: for no finite N would I prefer an 80.0001\% chance of living N years to a 0.0001\% chance of a googolplex years and 80\% of living forever, so my utility is unbounded. Toss out the losing ritual; don't change the definition of winning, as if preferring \$1,000 to \$1,000,000 to make your ritual look good.
+
+- Before: My reply: ``I can just\ldots\ take only box B.''
+- After: My reply: I am a rationalist, so why care about being unreasonable? ``I can just\ldots\ take only box B.'' The point is to win, not to have an elegant theory of winning. Instead of asking whether ``reasonable'' agents get rich, look at the agents who leave with the money and work out from them what is reasonable; ``reasonable'' may just mean conforming to our current ritual.
+
+- Before: and my advice is: ``Just do the act you envy.''
+- After: though you might rightly envy someone's genes; never envying another's mere choices is part of how I define rationality. My advice is: ``Just do the act you envy.'' Beware of defining the winner as anyone other than ``the agent who is currently smiling from on top of a giant heap of utility,'' or of calling cliff-refrainers unfairly advantaged over cliff-jumpers: ``Pay attention to the money!'' And if you would spend an extra hour trying to convince yourself that one box is rational, knowing you would then take it and find it full, that is an odd position, since rationality is meant to find the best choice, not a reason to believe in one.
+
+- Before: If your daughter's life were in box B, would you not wish that one-boxing were reasonable?
+- After: Perhaps two-boxing seems reasonable only while the money is not in front of you. If your daughter had a 90 per cent fatal disease, and box A held a serum with a 20 per cent chance of cure and box B might hold one with 95 per cent, or the boxes held asteroid deflectors working 10 and 100 per cent of the time, would you not wish that one-boxing were reasonable?
+
+- Before: ``Then maybe it's time to update your definition of reasonableness.''
+- After: ``Then maybe it's time to update your definition of reasonableness.'' Likewise, keeping separate track of the ``reasonable'' belief and the one likely true means one of them is wrong.
+
+- Before: I use ``rational'' for my beliefs about accuracy and winning, which currently means Bayescraft.
+- After: I use ``rational'' for my beliefs about accuracy and winning, not for verbal reasoning, certain success, proof, public demonstration or reasonableness; it currently means Bayescraft, and if Bayes ever lost systematically to an alternative by its mere decisions, it would go out the window.
+
+- Before: Last, Musashi: the aim is to cut the enemy, whatever the means.
+- After: Last, Musashi: ``The primary thing when you take a sword in your hands is your intention to cut the enemy, whatever the means''; if you think only of hitting, springing or parrying, you will not cut him.
+
+
+## honest/sections/twelve-virtues-of-rationality.tex
+
+Why: Fidelity/substance pass: gave each virtue its actual content rather than a one-line label: curiosity's conditions and self-annihilation, Hodgell and the unthinkable thought, the iron litany, the rearguard retreat and betraying your cause, the 'permit' and 'force' questions and the judge, the reasons to argue and what fairness is not, the tree in the forest and Cleaver, Saint-Exupery and the chain of links, humility vs boasting of modesty and the curve, perfectionism's ladder of noticing, the apple and the dance, the unified whole and the Art's purpose, and the nameless virtue's warnings about naming the Way and the Way of the Void
+
+- Before: The first virtue is curiosity: a burning itch to know.
+- After: The first virtue is curiosity: a burning itch to know, higher than a solemn vow to pursue truth. It needs both ignorance and the wish to end it; curiosity seeks to annihilate itself, and the glory of a mystery is to be solved. There is a time to confess ignorance and a time to relinquish it.
+
+- Before: The second is relinquishment: give up any belief that the truth would destroy, and let your feelings follow the facts.
+- After: The second is relinquishment: ``That which can be destroyed by the truth should be,'' as P. C. Hodgell said. Do not flinch from experiences that might destroy your beliefs; the thought you cannot think controls you more than those you speak; test yourself in fire. Let your feelings follow the facts.
+
+- Before: If a hot iron comes toward your face, fear is right; if it is cool, calm is right.
+- After: If a hot iron comes toward your face, fear is right; if it is cool, calm is right. Say: ``If the iron is hot, I desire to believe it is hot, and if it is cool, I desire to believe it is cool.''
+
+- Before: The third is lightness: let the evidence blow you about like a leaf.
+- After: The third is lightness: let the evidence blow you about like a leaf. Do not fight a rearguard retreat, conceding each foot of ground only when forced; surrender to the truth the instant you see which way the evidence blows. ``Be faithless to your cause and betray it to a stronger enemy.'' If you treat evidence as a constraint to escape, you sell yourself into the chains of your whims.
+
+- Before: you must walk through the city.
+- After: you must walk through the city, and shifting a line a little left or right by caprice, where you see unclearly, is the same mistake.
+
+- Before: The fourth is evenness: do not demand more proof for what you dislike.
+- After: The fourth is evenness. One who wishes to believe asks whether the evidence permits it; one who wishes to disbelieve asks whether it forces it. Do not demand more proof for what you dislike and then say it is good to be skeptical.
+
+- Before: If you attend only to evidence you like, then the more data you gather, the less you know.
+- After: If you attend only to evidence you like, then the more data you gather, the less you know, and if you inspect only some arguments for flaws, every flaw you learn to spot makes you stupider.
+
+- Before: whatever arguments are written above it.
+- After: whatever arguments are written above it. Cleverness in argument is rationalization; you are not a hypothesis but the judge, so do not argue for a side, ``for if you knew your destination, you would already be there.''
+
+- Before: The fifth is argument: do not refuse to argue, be exactly honest, and settle factual disputes by a test of reality.
+- After: The fifth is argument. Those who wish to fail first stop their friends from helping, and those who smile wisely and say ``I will not argue'' withdraw from the communal effort. Be exactly honest, since the part of you that distorts what you tell others distorts your own thoughts; accepting another's argument is a favour to you; fairness is not balancing evenly between positions, since truth is not handed out in equal portions; and fists and insults do not settle facts, so seek a test that lets reality judge.
+
+- Before: The sixth is empiricism: ask what experience a belief leads you to expect.
+- After: The sixth is empiricism: the roots of knowledge are in observation and its fruit is prediction. Two who argue whether a tree falling unheard makes a sound, one meaning vibrations and the other auditory processing, anticipate no different experience. Ask what experience a belief leads you to expect, know which difference you argue about, and do not let the argument drift to someone's virtue as a rationalist. As Jerry Cleaver said, what does you in is ``overlooking the basics.'' When words are subtracted, anticipation remains.
+
+- Before: The seventh is simplicity: every added detail, and every added step of an argument, is another chance to be wrong.
+- After: The seventh is simplicity: ``Perfection is achieved not when there is nothing left to add, but when there is nothing left to take away,'' said Saint-Exupéry. Every added detail is another chance to be wrong, and there is no straw that cannot break your back. The most reliable gear is the one designed out of the machine; a tangled web breaks; a chain of a thousand links reaches a correct conclusion only if every step is correct, and in mathematics a mountain of good deeds cannot atone for a single sin.
+
+- Before: The eighth is humility, which I define as ``to take specific actions in anticipation of your own errors.''
+- After: The eighth is humility, which I define as ``to take specific actions in anticipation of your own errors.'' To confess fallibility and do nothing is to boast of your modesty; the most humble prepare most skilfully for their deepest and most catastrophic errors.
+
+- Before: I then tell you not to compare yourself with them.
+- After: I then tell you not to compare yourself with them: being superior is useless, since life is not graded on a curve; the best physicist of ancient Greece could not calculate a falling apple's path; and comparing yourself with others hides the biases all humans share. To be human is to make ten thousand errors.
+
+- Before: The ninth is perfectionism: seek the answer that is exactly right.
+- After: The ninth is perfectionism. The more errors you correct, the more you notice, as a quieter mind hears more noise; noticing an error signals readiness for the next level, and tolerating it stops you there. That perfection is impossible is no excuse; hold yourself to the highest standard you can imagine and look for a higher one, and seek the answer that is exactly right.
+
+- Before: Saying a quantity is between 40 and 50 is more useful than saying it is between 1 and 100, and it risks more.
+- After: If the quantity is 42, saying it is between 40 and 50 is more useful than saying it is between 1 and 100, and it risks more. More can be said about one apple than about all the apples in the world; the narrowest statements slice deepest. Do not walk to the truth but dance, each foot coming down in exactly the right spot.
+
+- Before: and ``you will become vaster than mountains.''
+- After: and ``you will become vaster than mountains''; swallow enough and the gaps between them close into one whole. But they cannot be all you study: the Art must have a purpose other than itself, or it collapses into infinite recursion.
+
+- Before: I warn you against a Great Teacher who says the sky is green, and I do so in the voice of a teacher issuing commands.
+- After: You cannot improve your conception of rationality by calling it your duty, which only enshrines your mistake. I warn you against a Great Teacher who says the sky is green, and I do so in the voice of a teacher issuing commands. Do not ask whether something is the Way; ask whether the sky is blue or green. You may name the highest principle ``the map that reflects the territory'' or ``Bayesian decision theory,'' but you find your mistake by comparing the name to what you did not name, not to itself.
+
+- Before: I say only that you ``will move correctly without feeling constrained,'' and give no way to check it.
+- After: I say only that you will see that all techniques are one, and ``will move correctly without feeling constrained,'' and give no way to check it. Musashi calls it the Way of the Void. So the twelve virtues are curiosity, relinquishment, lightness, evenness, argument, empiricism, simplicity, humility, perfectionism, precision, scholarship and the void.
+
