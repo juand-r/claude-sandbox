@@ -8958,3 +8958,64 @@ Why: Fidelity/substance pass: Added the post's substance: Vassar's accusation, t
 - Before: I rank it third.
 - After: though less so among famous role models, I rank it third.
 
+
+## honest/sections/go-forth-and-create-the-art.tex
+
+Why: Fidelity/substance pass: Added the post's substance: why motivated skepticism and death spirals matter, the further gaps in the art, the parallel with fake AI explanations, what the author's methods are good for, the central website and many heroes, the possibility that direct study could work, the slide into passwords and hymns, and the wish that readers go forth and return.
+
+- Before: Still, knowing the conjunction fallacy hardly seems esoteric.
+- After: Still, knowing the conjunction fallacy hardly seems esoteric. Understanding why motivated skepticism is bad for you may be the whole difference between a smart person who stays smart and one who ends up stupid, and affective death spirals consume many of the unwary.
+
+- Before: and there is still no training, teaching or verification.
+- After: and there is still no training, teaching or verification. Building the art could also mean better introductory writing, better slogans, common cause with other Enlightenment projects, and addressing the gender imbalance.
+
+- Before: People who start thinking about thinking go off and invent Freudian psychoanalysis, or a new religion.
+- After: Developing the art of thinking is not unlike what I was doing in AI: you are tempted by fake explanations of the mind, fake accounts of causality, mysterious holy words and the amazing idea that solves everything. People who start thinking about thinking go off and invent Freudian psychoanalysis, or a new religion.
+
+- Before: I hope that what I have set down gets you past that barrier:
+- After: My fake-detecting methods are not best for every problem, but they may help to tell good systems of thinking from bad. I hope that what I have set down gets you past that barrier:
+
+- Before: that you may consult experimental psychology,
+- After: that you may consult experimental psychology, will not spiral around your Brilliant Idea, will know a fake explanation from a real one,
+
+- Before: That is my dream.
+- After: That is my dream: that this specialized art of answering confused questions may be some of what is needed to complete the rest.
+
+- Before: First, draw on many sources, not on one author.
+- After: First, draw on many sources, not on one author, though perhaps on a central website to post the links and papers that matter.
+
+- Before: ``To the best of my knowledge'' only cults draw their strength from one person.
+- After: ``To the best of my knowledge'' only cults draw their strength from one person; a true science may have lonely defiant heroes, but more than one.
+
+- Before: Second, develop the art while trying to do something that matters.
+- After: Second, develop the art while trying to do something that matters, perhaps a task hard enough to break your old understanding, not by sitting and asking how to fight akrasia. Perhaps the next work will instead come from studying rationality directly.
+
+- Before: I can say the words but not the rule that generates them.
+- After: I can say the words but not the rule that generates them; perhaps using the ideas will grow similar machinery in you. All human efforts to learn arcana slide by default into passwords, hymns and floating assertions.
+
+- Before: So go forth,
+- After: I want people to go forth, but also to return, or even to go and stay at once, since seeing that others are trying helps motivation over years. So go forth, confront challenges,
+
+
+## honest/sections/humans-are-not-automatically-strategic.tex
+
+Why: Fidelity/substance pass: Added the 'fear of success' point, the remaining footnote examples, the details of items (g) and (h), the contrast between verbal and motivational systems, and the remarks about more strategic people and what LW has not taught.
+
+- Before: Failure is the default, and needs no special explanation.
+- After: Failure is the default, and needs no special explanation such as a ``fear of success''; people, and rocks, fail calculus tests by default.
+
+- Before: and never check which of their hobbies they enjoy.
+- After: never check which of their hobbies they enjoy, fear illness and accidents without looking up the relative risks, and keep one way of studying or writing without trying others.
+
+- Before: make sure the goal ``is really our goal,'' or arrange our surroundings to keep us motivated.
+- After: make sure the goal ``is really our goal,'' free of fears and of doubt whether it is worth the effort, with decisions thought through in advance so they do not sap our energy, or use our surroundings and social settings to keep us motivated through frustration and temptations from hyperbolic discounting.
+
+- Before: Knowing that exercise is good for you does not make you want to exercise.
+- After: Our verbal systems reason abstractly far better than the motivational systems that pull our behavior. Knowing that exercise is good for you does not make you want to exercise.
+
+- Before: I am keen to train.
+- After: Training those systems, say by picturing ice cream as yucky, is not automatic either, so it is no surprise that most of our goal-seeking is ineffective. I am keen to train; I know people far more strategic than I am.
+
+- Before: Half a sentence adds that having goals in this fuller sense is part of what ``rational'' should mean.
+- After: Half a sentence adds that having goals in this fuller sense is part of what ``rational'' should mean, and has not been taught in much detail on LW.
+

@@ -367,8 +367,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] beware-of-other-optimizing
 - [x] practical-advice-backed-by-deep-theories
 - [x] the-sin-of-underconfidence
-- [ ] go-forth-and-create-the-art
-- [ ] humans-are-not-automatically-strategic
+- [x] go-forth-and-create-the-art
+- [x] humans-are-not-automatically-strategic
 - [ ] toolbox-thinking-and-law-thinking
 - [ ] local-validity-as-a-key-to-sanity-and-civilization
 - [ ] diseased-thinking-dissolving-questions-about-disease
