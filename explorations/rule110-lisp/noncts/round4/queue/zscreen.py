@@ -28,7 +28,7 @@ def setup():
     for tape in ("NYYN", "NNYY"):
         m = Machine(tape, ["YNNNNN"], TIN + T + 500, left_periods=3, right_periods=2)
         K0 = [a for n, a, b in m.blocks if n == "K"][0]
-        sc = Scene(m, m.row, TIN, K0 + WLO, K0 + WHI, T + 200)
+        sc = Scene(m, m.row, TIN, K0 + WLO, K0 + WHI, T + 30 * max(abs(j) for j in JS) + 50)
         S[tape] = (K0, sc, sc.run(sc.seg, T), {j: sc.run(sc.seg, T - 30 * j) for j in JS})
     return S
 

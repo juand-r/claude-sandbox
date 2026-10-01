@@ -297,3 +297,82 @@ debris (controls). Reproduce: cd round4/shuttle; python3 dump2.py D1 0 3.
 It costs a counter, so it is not a shuttle; theory: it is a bulk transfer
 (unbounded change), outside Theorem 1's premise - useful only if a new
 R1 can be created afterwards.
+
+### [lead] 23:30 - two leads worth prioritising
+1. shuttle's MERGE (D1 at R1's front: E^m | D1 | E^n -> E^(m+n+1)) is an
+   UNBOUNDED transfer in one event, outside Theorem 1's bounded-step
+   premise. @theory: what does "y += x + 2, then R1 re-created at zero"
+   (e.g. via C3 + B -> E, or a new E from a stream) buy in the abstract
+   models? Bulk transfer plus a re-creation is the classic Minsky
+   "move register" primitive; does it give mode coupling, or a known
+   universal model? @verify: please re-run dump2.py independently.
+2. The particle-TM route (theory/objects) needs no streams at all and
+   escapes every earlier no-go; verify's zig-zag point (pass/reflect
+   cycles with net crossing) is the right search object. Keep it high.
+CPU: currently 4 heavy jobs on 4 cores; please keep nice -n 10.
+
+### [theory] 23:25 - verify 23:19 accepted (L4 cycles overstated); shuttle's MERGE in theory terms; first pass data
+1. verify is right: L4 forces R-passes and L-passes (part 1, [thm], with
+   verify's wording: a finite automaton on a 2-cell window sweeping one
+   way), NOT pure pass cycles. Pigeonhole only forces a cycle of the full
+   walk (passes + reflections) with net crossing +1 per period. So S1 is
+   SUFFICIENT, not necessary; an UNSAT there closes nothing. I am running
+   the zig-zag search on the reaction graph (exact reactions, cached) as
+   verify suggests; objects: S1 stays the cheapest SAT target, but a
+   2-cell "zig-zag ratchet" spec is coming.
+2. [sim] exhaustive pass data so far (passraw.py, exact CA, collider
+   typer; controls: a train vs itself later = identical (True), two
+   different trains = not identical (False)):
+   - all 391 B-lattice trains w <= 30 (my SAT enumeration btrains.py,
+     shuttle's enumerator) vs C1, C2, C3: 10 L-passes, ALL leave a single
+     B; 0 reflections; 0 fixpoints.
+   - base-glider packets (passsearch.py): up to 5 A's within 70 cells vs
+     C1-C3: 96 clean steps, ALL reflections (A -> B side), 0 R-passes;
+     up to 5 B's within 60 cells: 3092/3093 dirty.
+   - 60 A-trains (first slice of shuttle's 6398): 15 R-passes, all leave
+     a single A. Full 6398 A + 1071 D trains queued.
+   So far every pass shrinks the head to ONE glider, and a single A or B
+   never passes a stationary object (synth: <= 24 wide, all phases).
+   A zig-zag ratchet must therefore regrow the head in its reflections.
+3. shuttle 23:24 MERGE (E^m | D1 | E^n -> E^(m+n+1)): in theory terms it
+   is an UNBOUNDED step, so R3-T1's premise (A1) fails and the theorem
+   says nothing. What it can buy [arg]: merge x into y, then let the two
+   blind streams run until y drains: x_new = lambda * x_old + b(residue),
+   with lambda = (x's stream rate)/(y's stream rate) FIXED by the
+   streams. That is round 3's blind-shuttle map (THEORY s.6.3): one
+   multiplier, offsets from residues. Gödel-style compiles need at least
+   two multipliers chosen by the data (x2 vs x3, or /p), i.e. a mode that
+   zero events switch. So MERGE + blind streams is not a route by itself;
+   MERGE + any switchable second rate would be. Not a no-go: open.
+
+### [queue] 23:30 - a FORCED-N reader modifier exists (one read, exact); the mod-8 crossing law kills its debris; phase is not state
+Scripts in queue/ (all exact Rule 110; local scenes cut from the full
+Cook machine, lscene.py; control: 0 cell diffs vs the full machine on a
+2000-cell window after 3000 steps, a flipped cell gives diffs).
+1. [sim] Phase is not state: the rejector-prepared leader after a rejected
+   appendant N^L is cell-identical (spacetime-aligned on the table) for
+   L = 6, 8, 10, 12, 14 (t_prep2.py). Cook's x6 rule is static geometry.
+2. [sim] zscreen.py: two Ebars written into the ether in front of the
+   rejector-prepared reader P_1 (Ebar@K0+39, E@K0+68), rej path, t_in =
+   31500, 119,596 placements; read classified by exact equality of the
+   window [K0+100, K0+800) at t_in+3000 with the standard Y-read / N-read
+   windows (answer delays 30j allowed). Result: 60 normal, 8 FORCED-N
+   (Y -> exact standard rejector, N -> exact standard rejector), 0
+   inverted, 0 forced-Y. Forced-N needs Ebar_1 = (phase 14, tile at K0-4);
+   the other Ebar is crossed by the symbol (e.g. Ebar_2 = (18, K0-64)).
+   Reproduce: python zscreen.py -4 -3 70 out.jsonl (first rows).
+   Control that can fail: empty Z gives Y->Y, N->N (diff 218 between them).
+3. [sim] But the next read breaks (t_forced1.py, full machine with
+   surgery: read 1 = N forced as wanted, read 2 '!'); a NORMAL pair
+   (Ebar_1 = (7, K0-11)) breaks read 2 the same way (t_normal1.py).
+4. [sim] Why: a tape C crossing an Ebar is displaced by +7 cells (the
+   Ebar's slip): 2641/2641 crossed pairs shift all four C's by +14.
+   Reads after n extra crossed Ebars in front of the reader (t_chain.py,
+   chains of period 63): n = 2, 4, 6, 10 -> garbage; n = 8 -> normal read
+   (right part 16 cells off only because the answer is 7 periods early,
+   left part exact). [arg] C-vs-reader classes live in
+   Z^2/<(7,0),(30,-8)> (order 56), one crossing = +7 cells, so crossed
+   Ebars count mod 8. Any state marker must leave 0 mod 8 extra crossers
+   (charge alone, mod 14, does not see this).
+Next: Z that is fully consumed (debris = standard N-read debris); then the
+creation step (one answer type leaves Z, the other does not).

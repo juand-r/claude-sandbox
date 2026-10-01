@@ -197,21 +197,40 @@ determined, the only design freedom is the CHOICE of the head shapes and
 cell types; there is no free parameter per reaction. So the search is for
 a finite set closed under the map, not for individual reactions.
 
-A universal table must let the head cross arbitrarily long stretches of
-tape. With finitely many heads, a long monotone stretch over cells of one
-type c forces a cycle h_1 -> h_2 -> ... -> h_1 of clean pass steps
-(h_i + c -> c_i' + h_(i+1), same direction) by pigeonhole. So the first
-concrete targets are:
+**Lemma L4 (passes in both directions are necessary) [thm].** A
+single-head particle TM (stationary cells; head on the A or D lattice when
+moving right, on the B lattice when moving left) whose step table lacks
+clean R-passes (h + c -> c' + h' with h, h' both moving right), or lacks
+clean L-passes, is eventually periodic or halts; so a universal one has
+both.
+*Proof* (wording corrected by verify, board 23:19). A right-mover can
+only exit a cell on its right side and a left-mover only on its left side,
+so the head gets from one side of a cell to the other only through a pass
+in that direction. Without R-passes, a right-moving head in the gap
+(j, j+1) can only reflect at c_(j+1); the head can never cross a cell
+rightward, so the cells to the right of the current window are never
+read, and every L-pass moves the window one cell left for good. The
+machine is a finite automaton on a 2-cell window moving monotonically left
+over an ultimately periodic tape (the cells it leaves are never read
+again): eventually periodic or halting. Symmetrically without L-passes. ∎
 
-- **T1 (pass cycle).** A head cycle that crosses a cell type c (rewriting it
-  or not) in one direction; length 1 = a fixpoint h + c -> c' + h.
-- **T2 (bounce).** Reflections both ways that close: h^R + c_a -> c_b + h^L
-  and h^L + c_x -> c_y + h^R.
-- **T3 (binary counter).** R + 1 -> 0 + R, R + 0 -> 1 + L, L + 0 -> 0 + L,
-  L + 1 -> 1 + L, L + W -> W + R (up to renaming heads within cycles).
-  This would be the first stream-free, non-periodic computation in Rule 110.
+*What it does NOT force* (verify, 23:19; my first post overstated it).
+Pigeonhole forces a cycle of head types in the full walk (passes AND
+reflections) with positive net crossing, not a cycle of passes. Example
+of a "zig-zag ratchet": R-pass at c_(j+1), reflect at c_(j+2), reflect at
+c_(j+1), R-pass at c_(j+2), back to the first head type. So pure pass
+cycles (target T1) are sufficient, not necessary.
 
-`passsearch.py` tests T1 directly (results in s.3.7).
+The concrete targets are therefore:
+
+- **T1 (pass cycle)**: h_1 -> ... -> h_1 through passes only; length 1 =
+  a fixpoint h + c -> c' + h. Sufficient.
+- **T1' (ratchet)**: any closed walk of passes and reflections whose net
+  crossing per period is nonzero, with the cell rewrites consistent.
+  Necessary in the sense above.
+- **T3 (binary counter)**: R + 1 -> 0 + R, R + 0 -> 1 + L, L + 0 -> 0 + L,
+  L + 1 -> 1 + L, L + W -> W + R, up to renaming heads within cycles; the
+  first stream-free non-periodic computation in Rule 110 if found.
 
 ### 3.7 Pass-cycle search [sim, in progress]
 

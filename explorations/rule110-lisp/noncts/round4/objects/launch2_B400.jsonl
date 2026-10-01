@@ -1,0 +1,9 @@
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 0], "sat": false, "secs": 3.4, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 2], "sat": false, "secs": 12.5, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 4], "sat": false, "secs": 23.3, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 6], "sat": false, "secs": 6.6, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 8], "sat": false, "secs": 3.1, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 10], "sat": false, "secs": 15.0, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 12], "sat": false, "secs": 28.8, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 24, 4, 0, 13], "sat": false, "secs": 4.4, "nphases": 49}
+{"n": 36, "T2": 400, "depth": 5, "win": null, "target": "wall", "train": [4, -2, 40, 4, 0, 0], "sat": false, "secs": 250.2, "nphases": 49}

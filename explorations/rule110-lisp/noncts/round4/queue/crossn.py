@@ -25,21 +25,24 @@ PL = [a for a, k in cens(sc.seg, DT, -160, 30) if k == "C"]
 print("plain C", PL, "plain read", zscreen.score(S, tape, sc.run(sc.seg, T)), flush=True)
 p0 = phase_at(sc.seg, sc.ebar_to_seg(K0 + RA))
 chain, p = [], p0
+DBG = {}
 for m in range(1, MMAX + 1):
     last = chain[-1][1] if chain else RA - SP
     ok = False
-    for ka, xa, pa in placements(sc, K0, E, last + SP, last + SP + 60, p):
-        for kb, xb, pb in placements(sc, K0, E, xa + SP, xa + SP + 60, pa):
+    for ka, xa, pa in placements(sc, K0, E, last + SP, last + SP + 120, p):
+        for kb, xb, pb in placements(sc, K0, E, xa + SP, xa + SP + 120, pa):
             c2 = chain + [(ka, xa), (kb, xb)]
             if xb > -110: continue
             seg = zscreen.build(sc, K0, [(E, k, x) for k, x in c2])
             if seg is None: continue
             cs = cens(seg, DT, -160, 30)
             Cs = [a for a, k in cs if k == "C"]
+            if m == 2 and len(Cs) == 4 and all(k in "CE" for a, k in cs):
+                DBG[tuple(c - q for c, q in zip(Cs, PL))] = DBG.get(tuple(c - q for c, q in zip(Cs, PL)), 0) + 1
             if len(Cs) == 4 and all(k in "CE" for a, k in cs) and {c - q for c, q in zip(Cs, PL)} == {14 * m}:
                 chain, p, ok = c2, pb, True
                 print(2 * m, "Ebars", chain, "C", Cs, "read", zscreen.score(S, tape, sc.run(seg, T)), flush=True)
                 break
         if ok: break
     if not ok:
-        print("no extension at m =", m); break
+        print("no extension at m =", m, DBG); break

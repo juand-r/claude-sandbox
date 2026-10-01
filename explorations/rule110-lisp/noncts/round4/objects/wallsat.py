@@ -170,3 +170,46 @@ if __name__ == "__main__":
     else:
         gl = [(t, s) for t in range(bg.tper) for s in range(bg.p)]
     scan(tile, gl, Pmax, Wmax, out)
+
+
+class InterfaceModel(WallModel):
+    """Interface between two DIFFERENT backgrounds: left = bgL at phase 0,
+    right = bgR at phase g = (tg, sg). (P, D) must be in both lattices."""
+
+    def __init__(self, bgL, bgR, g, P, D, W, M=0):
+        tg, sg = g
+        self.bg = bgL
+        self.g, self.P, self.D, self.W = g, P, D, W
+        self.L = lambda t, x: bgL.bit(t, x)
+        self.R = lambda t, x: bgR.bit(t + tg, x - sg)
+        self.a = [(D * t) // P - M for t in range(P + 1)]
+        self.nv = 0
+        self.var = {}
+        self.cl = []
+        for t in range(P + 1):
+            for x in range(self.a[t], self.a[t] + W):
+                self.nv += 1
+                self.var[(t, x)] = self.nv
+        for t in range(1, P + 1):
+            for x in range(self.a[t] - 2, self.a[t] + W + 2):
+                self._rule(self.lit(t - 1, x - 1), self.lit(t - 1, x),
+                           self.lit(t - 1, x + 1), self.lit(t, x))
+        for x in range(self.a[0], self.a[0] + W):
+            self._eq(self.lit(P, x + D), self.lit(0, x))
+
+
+def interfaces(tileL, tileR, P, D, Wmax):
+    """All phases g of the right background: smallest W with an interface of
+    period (P, D). Returns {g: (W, row0)}."""
+    bL, bR = cone.Background(tileL), cone.Background(tileR)
+    assert lattice_ok(bL, P, D) and lattice_ok(bR, P, D)
+    out = {}
+    for tg in range(bR.tper):
+        for sg in range(bR.p):
+            for W in range(2, Wmax + 1, 2):
+                m = InterfaceModel(bL, bR, (tg, sg), P, D, W)
+                r = m.solve()
+                if r is not None:
+                    out[(tg, sg)] = (W, "".join(map(str, r)))
+                    break
+    return out

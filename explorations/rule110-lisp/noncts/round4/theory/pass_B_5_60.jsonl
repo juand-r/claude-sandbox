@@ -6148,3 +6148,903 @@
 {"h": [["B", 1, 56], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
 {"h": [["B", 1, 56], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
 {"h": [["B", 1, 56], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_10_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_10_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_10_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#12", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#12", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#12", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#13", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#13", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#13", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_23_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_23_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_23_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#12", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#12", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#12", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_33_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#11", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#11", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#11", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#14", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#14", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#14", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_23_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_23_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_23_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B#2", 1, 40]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B#2", 1, 40]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B#2", 1, 40]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 1, 40]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 1, 40]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 1, 40]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 1, 40]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 1, 40]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 1, 40]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 40]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 40]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 40]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 2, 39]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 2, 39]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 2, 39]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_18_B", 2, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_18_B", 2, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_18_B", 2, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_15_B#2", 3, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_15_B#2", 3, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_15_B#2", 3, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 54]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 54]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 1, 54]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_8_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_8_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_8_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_10_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 2, 52]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 2, 52]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 2, 52]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#11", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#11", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#11", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_18_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 1, 48]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 1, 48]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 1, 48]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 3, 48]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 3, 48]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 3, 48]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 48], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 48], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 48], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_9_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_22_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#12", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#12", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_18_B#12", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_13_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_10_B_13_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_23_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 46], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 46], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 46], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 2, 44], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 2, 44], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 2, 44], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 2, 44]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 2, 44]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_9_B", 2, 44]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 0, 46]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 0, 46]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 0, 46]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 42], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 42], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 42], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_36_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_36_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_36_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_32_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_13_B_27_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 1, 42]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 1, 42]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 0], ["B_5_B", 1, 42]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_18_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_18_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_18_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 36]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 36]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 36]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B@(0,0)+B@(-2,16)", 0, 0], ["B^2", 0, 38]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B@(0,0)+B@(-2,16)", 0, 0], ["B^2", 0, 38]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B@(0,0)+B@(-2,16)", 0, 0], ["B^2", 0, 38]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 1, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 1, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_14_B", 1, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 3, 35]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 3, 35]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_9_B", 3, 35]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 1, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 1, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 1, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_18_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_13_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_13_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_13_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_18_B", 2, 36]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_18_B", 2, 36]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_18_B", 2, 36]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 2, 36]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 2, 36]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_14_B", 2, 36]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 2, 36]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 2, 36]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_1_B_13_B", 2, 36]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_32_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_32_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_32_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_27_B_22_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 50]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 50]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 2, 50]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 51]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 51]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 1, 51]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_22_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_9_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_9_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_9_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_27_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_28_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_28_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 60], ["B_1_B_28_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_13_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_23_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_23_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_10_B_23_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_23_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_18_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_23_B_14_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_28_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_28_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 56], ["B_1_B_28_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 2, 47]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 2, 47]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_2_B_5_B", 2, 47]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 3, 46]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 3, 46]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B^3", 3, 46]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 2, 47]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 2, 47]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_12_B", 2, 47]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 2, 47]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 2, 47]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 0], ["B_3_B_7_B", 2, 47]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 29]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 29]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 29]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B^3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B^3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B^3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 27]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 27]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 27]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_16_B", 3, 27]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_16_B", 3, 27]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_16_B", 3, 27]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_12_B", 3, 27]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_12_B", 3, 27]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_12_B", 3, 27]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_4_B_10_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_4_B_10_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_4_B_10_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B_5_B", 2, 52]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B_5_B", 2, 52]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B_5_B", 2, 52]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 2, 52]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 2, 52]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 2, 52]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_10_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_10_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_10_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_6_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_6_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_14_B_6_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_13_B", 0, 30]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_13_B", 0, 30]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_13_B", 0, 30]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 27]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 27]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 27]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_13_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_13_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_13_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_9_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_9_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_9_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_8_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_8_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_13_B_8_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 0, 60]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 0, 60]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 0, 60]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 30]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 30]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 30]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_2_B_5_B", 1, 29]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_2_B_5_B", 1, 29]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_2_B_5_B", 1, 29]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_12_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_12_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_12_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_11_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_11_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_11_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_7_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_7_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_9_B_7_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 1, 56]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 1, 56]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 30], ["B^2", 1, 56]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_9_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_7_B_9_B", 1, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_7_B_9_B", 1, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_7_B_9_B", 1, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_18_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_18_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_18_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_10_B_13_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#4", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#4", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#4", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B#3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 27]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 27]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 27]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_14_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_13_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_6_B_21_B#2", 1, 29]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_6_B_21_B#2", 1, 29]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_6_B_21_B#2", 1, 29]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_6_B_18_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 1, 54]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 1, 54]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 1, 54]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 29]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 29]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 29]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_3_B_7_B", 1, 29]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_3_B_7_B", 1, 29]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 0, 60], ["B_3_B_7_B", 1, 29]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#4", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#4", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#4", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#5", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#5", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B#5", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#4", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#4", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B#4", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#3", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#3", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B#3", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_21_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_17_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_16_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 60], ["B_5_B", 0, 30]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 60], ["B_5_B", 0, 30]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 0, 60], ["B_5_B", 0, 30]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 1, 56], ["B_5_B", 0, 30]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 1, 56], ["B_5_B", 0, 30]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B^2", 1, 56], ["B_5_B", 0, 30]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 2, 50]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 2, 50]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B^3", 2, 50]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B_3_B_7_B", 1, 51]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B_3_B_7_B", 1, 51]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B", 2, 28], ["B_3_B_7_B", 1, 51]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B#2", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B#2", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B#2", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_6_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_6_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_6_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_15_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_15_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_15_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B", 2, 28]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B", 2, 28]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_15_B_10_B", 2, 28]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 43]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 43]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_1_B_6_B", 1, 43]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_4_B_2_B", 3, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_9_B_5_B", 3, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 44]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 44]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_2_B_8_B", 0, 44]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_7_B_6_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 43]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 43]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_2_B_2_B_6_B", 1, 43]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 42]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 42]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 0], ["B_1_B_5_B_12_B#2", 2, 42]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_13_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_13_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_13_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_13_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_13_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_13_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_13_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_13_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_13_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_13_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_13_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_13_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_13_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_13_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_13_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 37], ["B", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 37], ["B", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 37], ["B", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 37], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 37], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 37], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 1, 37], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 1, 37]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 1, 37]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 1, 37]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 51]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 51]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 3, 51]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 51], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 51], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 3, 51], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#5", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#5", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#5", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 47], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 47], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 47], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 61], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 61], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 61], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_12_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 3, 43], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 3, 43], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 3, 43], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 3, 57], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 3, 57], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 3, 57], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_7_B#2", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_7_B#2", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_7_B#2", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 55], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 55], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 55], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 51], ["B_1_B_7_B_6_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 51], ["B_1_B_7_B_6_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 51], ["B_1_B_7_B_6_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 59], ["B_2_B_6_B_21_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 59], ["B_2_B_6_B_21_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 59], ["B_2_B_6_B_21_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 55], ["B_2_B_6_B_21_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 55], ["B_2_B_6_B_21_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 55], ["B_2_B_6_B_21_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#3", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#3", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#3", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 2, 47]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 2, 47]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 2, 47]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 0, 49]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 0, 49]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 0, 49]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 49], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 49], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 0, 49], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_6_B_4_B_19_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_6_B_4_B_19_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_6_B_4_B_19_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_30_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_18_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_18_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_18_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_18_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_18_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_18_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#9", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#9", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#9", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_35_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_31_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 45], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 45], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 45], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 3, 43], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 3, 43], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 3, 43], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 3, 43]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 3, 43]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 3, 43]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 1, 45]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 1, 45]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 1, 45]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 1, 59], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#6", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#6", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_16_B#6", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_14_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_14_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 46], ["B_1_B_6_B_14_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_14_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_14_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_14_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#8", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#8", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_26_B#8", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_14_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_14_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B_1_B_6_B_14_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_21_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_14_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_14_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 2, 52], ["B_1_B_6_B_14_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#7", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#7", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_8_B_17_B#7", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_14_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_14_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 3, 48], ["B_1_B_6_B_14_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 41], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 41], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 41], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-3,20)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B@(0,0)+B@(-2,16)", 0, 41], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 0, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 0, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_9_B", 0, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 2, 41]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 2, 41]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 0, 0], ["B_5_B", 2, 41]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 55], ["B_3_B_12_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 55], ["B_3_B_12_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 55], ["B_3_B_12_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_5_B", 2, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_5_B", 2, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_5_B", 2, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B_5_B", 2, 52], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B_5_B", 2, 52], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B_5_B", 2, 52], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 2, 52], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 2, 52], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 2, 52], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 1, 56], ["B^2", 2, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B", 3, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B", 3, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B", 3, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_14_B", 3, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_14_B", 3, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_14_B", 3, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_18_B", 1, 27], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_18_B", 1, 27], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_18_B", 1, 27], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 27], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 27], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 27], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_27_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 0, 60], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 0, 60], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 0, 60], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 29], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 29], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 29], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_9_B", 0, 0], ["B_9_B", 0, 30]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_9_B", 0, 0], ["B_9_B", 0, 30]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_9_B", 0, 0], ["B_9_B", 0, 30]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_18_B#3", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_14_B#2", 0, 30], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 1, 56], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 1, 56], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 30], ["B^2", 1, 56], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 44], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 44], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_13_B", 0, 44], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 43], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 43], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_7_B", 3, 43], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 43], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 43], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_9_B", 1, 43], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 43], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 43], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_5_B", 3, 43], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 44], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 44], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^3", 0, 44], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 41], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 41], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_2_B_15_B#2", 2, 41], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 43], ["B_9_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 43], ["B_9_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_3_B_12_B", 3, 43], ["B_9_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#13", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#13", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#13", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_27_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_27_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_27_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#10", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#10", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_29_B#10", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#12", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#12", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_24_B#12", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#15", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#15", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_20_B#15", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 0], ["B_5_B", 2, 52]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 0], ["B_5_B", 2, 52]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_23_B#4", 0, 0], ["B_5_B", 2, 52]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_23_B#4", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_23_B#4", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B^2", 2, 52], ["B_1_B_23_B#4", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#14", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#14", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_19_B#14", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_23_B", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_23_B", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B", 0, 60], ["B_1_B_6_B_23_B", 0, 0]], "c": "C3", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#11", 0, 0]], "c": "C1", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#11", 0, 0]], "c": "C2", "kind": "dirty", "why": null}
+{"h": [["B_1_B_2_B_18_B_15_B#11", 0, 0]], "c": "C3", "kind": "dirty", "why": null}

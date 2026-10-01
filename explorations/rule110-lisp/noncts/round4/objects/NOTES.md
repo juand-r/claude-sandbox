@@ -39,3 +39,20 @@ speed -0.89 (ether) and -0.93 (E-bg). Need the exact cone (SAT).
 23:11 Posted first board note; I headed it 23:28 by guessing (wrong) - corrected on board. Rule: run date -u immediately before writing a header.
 
 23:20 MISTAKE: scan_back.py PADL=T+40 let the front leave the shrinking sim window after t~742 (needs PADL > 19T/15). First run (0/99170 hits) moved to trash/; rerun with PADL=2T+100, T=1200. Spot check (pad 2000) confirms collisions do happen (E^24 -> E^25 with B etc.).
+
+23:12-23:25
+- wallsat scan of E-bg finished (1050 records): velocities only -3/5 (15 phase
+  kinds), -4/15 (45), +2/5 (18, all even h). Phase group Z/50, h = 2t - 5s.
+- plant.py: all 15 left-wall kinds destroy (or mostly destroy) E^45 at the
+  front (T=1000). Fixed an R' coverage bug (extended source row by 30 cells).
+- scan_back.py rerun (fixed padding): 2523 library left-movers (v=-1/2: 1016
+  scenes, v=-1/3: 98154 scenes), every phase, vs back of E^24, T=1200:
+  0 front hits. Positive control E^2: hits (Bbar, Bhat, G, GB3...), B none.
+- launch_sat.py (synth Scene) free control was UNSAT -> could not serve as a
+  control (free cells far from the rod + window). Rewrote as launch2.py
+  (own model on r110sat.Spacetime). Controls: --overlap 10 30 (free cells
+  overlapping the rod back): SAT, sim ok (88 s). Train mode, target
+  'extend': SAT for even slips, solutions type as E^12 + B-train -> E^13/15/17.
+- launch2 wall target, B-lattice trains WY 24/32/40, n=12, T2=160, depth 5:
+  42/42 UNSAT (odd slips trivially). Scope caveat: T2=160 only lets the
+  first part of a wide train act. Rerunning n=36, T2=400, WY 24/40/56.
