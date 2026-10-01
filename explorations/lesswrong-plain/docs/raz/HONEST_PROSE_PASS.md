@@ -108,27 +108,27 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] update-yourself-incrementally
 - [x] one-argument-against-an-army
 - [x] the-bottom-line
-- [ ] what-evidence-filtered-evidence
-- [ ] rationalization
-- [ ] a-rational-argument
-- [ ] avoiding-your-belief-s-real-weak-points
-- [ ] motivated-stopping-and-motivated-continuation
-- [ ] fake-justification
-- [ ] is-that-your-true-rejection
-- [ ] entangled-truths-contagious-lies
-- [ ] of-lies-and-black-swan-blowups
-- [ ] dark-side-epistemology
-- [ ] doublethink-choosing-to-be-biased
-- [ ] no-really-i-ve-deceived-myself
-- [ ] belief-in-self-deception
-- [ ] moore-s-paradox
-- [ ] don-t-believe-you-ll-self-deceive
-- [ ] anchoring-and-adjustment
-- [ ] priming-and-contamination
-- [ ] do-we-believe-everything-we-re-told
-- [ ] cached-thoughts
-- [ ] original-seeing
-- [ ] the-virtue-of-narrowness
+- [x] what-evidence-filtered-evidence
+- [x] rationalization
+- [x] a-rational-argument
+- [x] avoiding-your-belief-s-real-weak-points
+- [x] motivated-stopping-and-motivated-continuation
+- [x] fake-justification
+- [x] is-that-your-true-rejection
+- [x] entangled-truths-contagious-lies
+- [x] of-lies-and-black-swan-blowups
+- [x] dark-side-epistemology
+- [x] doublethink-choosing-to-be-biased
+- [x] no-really-i-ve-deceived-myself
+- [x] belief-in-self-deception
+- [x] moore-s-paradox
+- [x] don-t-believe-you-ll-self-deceive
+- [x] anchoring-and-adjustment
+- [x] priming-and-contamination
+- [x] do-we-believe-everything-we-re-told
+- [x] cached-thoughts
+- [x] original-seeing
+- [x] the-virtue-of-narrowness
 - [ ] stranger-than-history
 - [ ] the-logical-fallacy-of-generalization-from-fictional
 - [ ] we-change-our-minds-less-often-than-we-think

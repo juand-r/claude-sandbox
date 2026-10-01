@@ -1251,3 +1251,210 @@ The key step is this. To us, what a thing tells us is its entanglement with othe
 - Before: Near the end comes the point of the essay: you may be the clever arguer yourself. If your brakes squeal and you do not want to pay for a repair, you may look for reasons why the car is fine. What decides your fate is the rule that chose which conclusion to argue for, here ``Never repair anything expensive.'' I define your effectiveness as the share of you that survives across Everett branches. I do not tell you how to find out which rule is writing your own conclusions. \nb{From the inside, motivated reasoning feels like honest reasoning.}
 - After: Near the end I make the point of the essay: you may be the clever arguer yourself. If your brakes squeal and you do not want to pay for a repair, you may look for reasons why the car is fine. What decides your fate is the rule that chose which conclusion to argue for, here ``Never repair anything expensive.'' I define your effectiveness as the share of you that survives across Everett branches. I do not tell you how to find out which rule is writing your own conclusions. \nb{From the inside, motivated reasoning feels like honest reasoning.}
 
+
+## honest/sections/what-evidence-filtered-evidence.tex
+
+Why: Prose pass: split a packed sentence
+
+- Before: Take a simpler case. A coin is biased either two-thirds heads or two-thirds tails, and each head is ``1 bit of evidence'' for the first. \nb{The footnote defines a bit as the logarithm of a probability. The ``1 bit'' here is the logarithm of a likelihood ratio, 2 to 1, a different quantity. ``How Much Evidence Does It Take?'' makes the same switch.} I flip it ten times and tell you that flips 4, 6 and 9 came up heads. What should you believe? It depends on my rule for choosing what to tell you. If I always report those three flips, the odds are 8 to 1 for heads. If I report every head and only heads, the other seven were tails, and the odds are 1 to 16. I might also have decided to report those three flips only if the coin was very likely heads-biased; and so on.
+- After: Take a simpler case. A coin is biased either two-thirds heads or two-thirds tails, and each head is ``1 bit of evidence'' for the first. \nb{The footnote defines a bit as the logarithm of a probability. The ``1 bit'' here is the logarithm of a likelihood ratio, 2 to 1, a different quantity. ``How Much Evidence Does It Take?'' makes the same switch.} I flip it ten times and tell you that flips 4, 6 and 9 came up heads. What should you believe? It depends on my rule for choosing what to tell you. If I always report those three flips, the odds are 8 to 1 for heads. If I report every head and only heads, the other seven were tails, and the odds are 1 to 16. I might also have decided to report those three flips only if the coin was very likely heads-biased. And so on.
+
+
+## honest/sections/rationalization.tex
+
+Why: Prose pass: split packed sentences
+
+- Before: I recap ``The Bottom Line,'' from two days ago. The curious inquirer lists the clues and then concludes; the clever arguer concludes and then picks the clues. \nb{In between, in ``What Evidence Filtered Evidence?'', Yudkowsky had said that each of the clever arguer's statements is valid evidence. This post does not mention that.}
+- After: I recap ``The Bottom Line,'' from two days ago. The curious inquirer lists the clues and then concludes. The clever arguer concludes and then picks the clues. \nb{In between, in ``What Evidence Filtered Evidence?'', Yudkowsky had said that each of the clever arguer's statements is valid evidence. This post does not mention that.}
+
+- Before: If you do not know where you are going, you will probably feel curious about it. Curiosity is the first virtue; without it, questioning has no purpose.
+- After: If you do not know where you are going, you will probably feel curious about it. Curiosity is the first virtue. Without it, questioning has no purpose.
+
+
+## honest/sections/a-rational-argument.tex
+
+Why: Prose pass: split a packed sentence
+
+- Before: A ``logical'' argument is one that follows from its premises. ``All rectangles are quadrilaterals. All squares are quadrilaterals. Therefore, all squares are rectangles'' is illogical, though everything in it is true. It is worth refusing to excuse such a deduction even when its conclusion is true: the difference may matter when new evidence comes in, and sloppiness is habit-forming. Above all, it gives the wrong explanation. Squares may be rectangles, but not because both are quadrilaterals. Such a syllogism is ``hypocritical'': its stated reasons are not its real reasons. \nb{Its premises do not support its conclusion at all. The campaign's facts do support its conclusion; their fault is what was left out. The syllogism shows a different error from the questionnaire.}
+- After: A ``logical'' argument is one that follows from its premises. ``All rectangles are quadrilaterals. All squares are quadrilaterals. Therefore, all squares are rectangles'' is illogical, though everything in it is true. It is worth refusing to excuse such a deduction even when its conclusion is true. The difference may matter when new evidence comes in, and sloppiness is habit-forming. Above all, it gives the wrong explanation. Squares may be rectangles, but not because both are quadrilaterals. Such a syllogism is ``hypocritical'': its stated reasons are not its real reasons. \nb{Its premises do not support its conclusion at all. The campaign's facts do support its conclusion; their fault is what was left out. The syllogism shows a different error from the questionnaire.}
+
+
+## honest/sections/avoiding-your-belief-s-real-weak-points.tex
+
+Why: Prose pass: split packed sentences
+
+- Before: At my great-grandmother's funeral, my grand-uncle, who had cared for her for years, said through tears that God had called his mother back piece by piece: her memory, then her speech, and last her smile; when God took her smile, he knew she was almost gone.
+- After: At my great-grandmother's funeral, my grand-uncle, who had cared for her for years, said through tears that God had called his mother back piece by piece: her memory, then her speech, and last her smile. When God took her smile, he knew she was almost gone.
+
+- Before: My thesis, which I introduce with ``I suspect,'' is that educated believers stay religious because they question their beliefs only where they can defend them, and where rehearsing the standard defense feels strengthening. Answering ``Doesn't Science say that the universe is just meaningless atoms bopping around?'' feels good; it is more comfortable than thinking of an Egyptian mother at her son's crib. Anyone who thinks about an Egyptian mother wailing over her dead son ``is really questioning it, and is probably not going to stay Jewish much longer.'' So a believer who stays was probably never really questioning.
+- After: My thesis, which I introduce with ``I suspect,'' is that educated believers stay religious because they question their beliefs only where they can defend them, and where rehearsing the standard defense feels strengthening. Answering ``Doesn't Science say that the universe is just meaningless atoms bopping around?'' feels good. It is more comfortable than thinking of an Egyptian mother at her son's crib. Anyone who thinks about an Egyptian mother wailing over her dead son ``is really questioning it, and is probably not going to stay Jewish much longer.'' So a believer who stays was probably never really questioning.
+
+
+## honest/sections/motivated-stopping-and-motivated-continuation.tex
+
+Why: Prose pass: split packed sentences; the list of cases and the closing moral in shorter sentences
+
+- Before: Gilovich distinguished motivated skepticism from motivated credulity: for a conclusion we dislike we ask whether the evidence compels it, for one we like whether the evidence allows it. ``I suggest'' an analogous bias in search. With a hidden motive to accept the current best option, we stop and choose too soon; that is motivated stopping. With a hidden motive to reject it, we keep looking and ask for more evidence; that is motivated continuation. \nb{The idea was not new. Yudkowsky had described the stopping half in ``The Third Alternative,'' five months earlier, with the same house example. Kruglanski had argued that motives hasten or delay the end of a search, and Ditto and Lopez, in a 1992 paper titled ``Motivated Skepticism,'' found that people needed less information to reach a conclusion they wanted, and retested an unwelcome medical result more often. The post cites none of this.}
+- After: Gilovich distinguished motivated skepticism from motivated credulity. For a conclusion we dislike, we ask whether the evidence compels it. For one we like, we ask whether the evidence allows it. ``I suggest'' an analogous bias in search. With a hidden motive to accept the current best option, we stop and choose too soon. That is motivated stopping. With a hidden motive to reject it, we keep looking and ask for more evidence. That is motivated continuation. \nb{The idea was not new. Yudkowsky had described the stopping half in ``The Third Alternative,'' five months earlier, with the same house example. Kruglanski had argued that motives hasten or delay the end of a search, and Ditto and Lopez, in a 1992 paper titled ``Motivated Skepticism,'' found that people needed less information to reach a conclusion they wanted, and retested an unwelcome medical result more often. The post cites none of this.}
+
+- Before: Motivated stopping appears wherever a third alternative is feared, wherever you would rather not see the obvious counterargument, wherever you would rather not test a warm glow you paid for, and wherever your beliefs and anticipations have come apart, so that any new evidence is a threat. \nb{The post gives no case of stopping. Its one case, Fisher, is of continuation.}
+
+The moral: suspect motivated stopping when you close a search on a comfortable conclusion while fast, cheap evidence remains: websites you could visit, counter-counterarguments you could consider, or five minutes by the clock spent trying to think of a better option. Suspect motivated continuation when the evidence leans a way you dislike and you demand expensive evidence you cannot soon get, as opposed to something you could look up in thirty minutes, before doing anything uncomfortable. \nb{Unlike ``The Bottom Line,'' this gives a sign one can check from outside one's own head: the cost of the evidence skipped or demanded.}
+
+- After: Motivated stopping appears wherever a third alternative is feared, and wherever you would rather not see the obvious counterargument. It appears wherever you would rather not test a warm glow you paid for. And it appears wherever your beliefs and anticipations have come apart, so that any new evidence is a threat. \nb{The post gives no case of stopping. Its one case, Fisher, is of continuation.}
+
+So suspect motivated stopping when you close a search on a comfortable conclusion while fast, cheap evidence remains. There may be websites you could visit, counter-counterarguments you could consider, or five minutes by the clock to spend trying to think of a better option. Suspect motivated continuation when the evidence leans a way you dislike, and you demand expensive evidence you cannot soon get before doing anything uncomfortable. Something you could look up in thirty minutes is a different matter. \nb{Unlike ``The Bottom Line,'' this gives a sign one can check from outside one's own head: the cost of the evidence skipped or demanded.}
+
+
+
+## honest/sections/fake-justification.tex
+
+Why: Prose pass: split a packed sentence
+
+- Before: To justify revering the Bible for its literary quality, you would have to read through candidate books neutrally until you found the best. Renown is a fair way to pick candidates, so you might legitimately end up reading Shakespeare, the Bible and \textsc{G\"odel, Escher, Bach}; otherwise it would be a coincidence for the Bible to be among a million books. The hard part is the neutral reading, which is ``Easy enough if you're not a Christian.'' \nb{The post asks this neutral reading only of Christians. Its own rankings of Tolkien and \textsc{Harry Potter} come with no reading shown.} Of these believers: ``No search ever occurred.'' Writing ``literary quality'' above the conclusion misrepresents the history of how the conclusion got there. \nb{The post gives no case. Its setup shows only that the reverence came first, and the next paragraph grants that a later check would count if it could change the conclusion.}
+- After: To justify revering the Bible for its literary quality, you would have to read through candidate books neutrally until you found the best. Renown is a fair way to pick candidates, so you might legitimately end up reading Shakespeare, the Bible and \textsc{G\"odel, Escher, Bach}. Otherwise it would be a coincidence for the Bible to be among a million books. The hard part is the neutral reading, which is ``Easy enough if you're not a Christian.'' \nb{The post asks this neutral reading only of Christians. Its own rankings of Tolkien and \textsc{Harry Potter} come with no reading shown.} Of these believers: ``No search ever occurred.'' Writing ``literary quality'' above the conclusion misrepresents the history of how the conclusion got there. \nb{The post gives no case. Its setup shows only that the reverence came first, and the next paragraph grants that a later check would count if it could change the conclusion.}
+
+
+## honest/sections/is-that-your-true-rejection.tex
+
+Why: Prose pass: replaced a signpost
+
+- Before: Then the advice: ask yourself whether this is your true rejection. Openly psychoanalyzing the other person makes a conversation go bad ``very fast.'' I have spent most of this post doing that to my critics. In the last paragraph I decide that asking the other person is ``fair game'' after all, if done humbly, as long as the most embarrassing possibilities are left unspoken. The question I propose is: ``Is that simple straightforward-sounding reason your true rejection, or does it come from intuition-X or professional-zeitgeist-Y?'' I have just listed them.
+- After: My advice: ask yourself whether this is your true rejection. Openly psychoanalyzing the other person makes a conversation go bad ``very fast.'' I have spent most of this post doing that to my critics. In the last paragraph I decide that asking the other person is ``fair game'' after all, if done humbly, as long as the most embarrassing possibilities are left unspoken. The question I propose is: ``Is that simple straightforward-sounding reason your true rejection, or does it come from intuition-X or professional-zeitgeist-Y?'' I have just listed them.
+
+
+## honest/sections/entangled-truths-contagious-lies.tex
+
+Why: Prose pass: split packed sentences
+
+- Before: I am ``reasonably sure'' that a pebble does not fix the continents and people of the Earth, since other planets and other Everett branches would produce the same pebble. But it would seem to include our laws of physics, and so, if there are no truly free variables, the whole universe. \nb{The Everett branches assume the many-worlds interpretation, which the post takes as given.} Its crystals formed under gravity and tell you something about the planet's mass; its elements tell you something about how the planet formed. \nb{Both are true in outline: minerals record the pressure they formed under, and composition is how some meteorites were traced to Mars.} I imagine telling a geologist that a pebble came from a beach at Half Moon Bay and hearing ``You liar.'' I do not know how I would be caught, ``which is the point.'' ``Only God can tell a truly plausible lie.'' I guess that no religion has this proverb, since it is a rationalist idea. Saying that everything is connected because God made it feels warm but does not help you assign pebbles to beaches.
+
+A penny pulls on the Moon with an acceleration of about $4.5 \times 10^{-31}$ m/s$^2$, so every event is connected to its past, but no astronomer could read the penny's fall from the Moon; the effect is far below quantum uncertainty and thermal noise. Saying that everything is connected, and some connections are much stronger than others, is wiser than saying only that everything is connected. \nb{That figure fits a coin of one gram. A United States cent weighs 2.5 grams, which gives about $1.1 \times 10^{-30}$.} The connections we can notice are fewer, and form a network I call the Great Web of Causality, capital letters half in jest.
+- After: I am ``reasonably sure'' that a pebble does not fix the continents and people of the Earth, since other planets and other Everett branches would produce the same pebble. But it would seem to include our laws of physics, and so, if there are no truly free variables, the whole universe. \nb{The Everett branches assume the many-worlds interpretation, which the post takes as given.} Its crystals formed under gravity and tell you something about the planet's mass. Its elements tell you something about how the planet formed. \nb{Both are true in outline: minerals record the pressure they formed under, and composition is how some meteorites were traced to Mars.} I imagine telling a geologist that a pebble came from a beach at Half Moon Bay and hearing ``You liar.'' I do not know how I would be caught, ``which is the point.'' ``Only God can tell a truly plausible lie.'' I guess that no religion has this proverb, since it is a rationalist idea. Saying that everything is connected because God made it feels warm but does not help you assign pebbles to beaches.
+
+A penny pulls on the Moon with an acceleration of about $4.5 \times 10^{-31}$ m/s$^2$, so every event is connected to its past. But no astronomer could read the penny's fall from the Moon. The effect is far below quantum uncertainty and thermal noise. Saying that everything is connected, and some connections are much stronger than others, is wiser than saying only that everything is connected. \nb{That figure fits a coin of one gram. A United States cent weighs 2.5 grams, which gives about $1.1 \times 10^{-30}$.} The connections we can notice are fewer, and form a network I call the Great Web of Causality, capital letters half in jest.
+
+- Before: Again, not all lies are uncovered. But a superintelligence scanning the Earth would find at least every lie of which evidence remains in some brain, and a good neuroimaging lie detector might find some sooner, and Paul Ekman ``could probably read off a sizeable fraction of the world's lies right now, given a chance.'' \nb{The research up to 2008 found that people detect lies about 54\% of the time, and was divided on whether some experts do much better. The post gives no evidence for its claim.} The Great Web is ``very commonly underestimated.'' The knowledge humans have already gathered would take many lifetimes to learn, so anyone who thinks a person can tell a perfect lie without risk underestimates it. I give no evidence about what liars expect.
+
+Is honesty the best policy? ``I don't know if I'd go that far''; even on my ethics it is sometimes fine to stay silent. But honesty or silence exposes you to fewer risks you do not know you are taking.
+
+- After: Again, not all lies are uncovered. But a superintelligence scanning the Earth would find at least every lie of which evidence remains in some brain. A good neuroimaging lie detector might find some sooner. And Paul Ekman ``could probably read off a sizeable fraction of the world's lies right now, given a chance.'' \nb{The research up to 2008 found that people detect lies about 54\% of the time, and was divided on whether some experts do much better. The post gives no evidence for its claim.} The Great Web is ``very commonly underestimated.'' The knowledge humans have already gathered would take many lifetimes to learn, so anyone who thinks a person can tell a perfect lie without risk underestimates it. I give no evidence about what liars expect.
+
+Is honesty the best policy? ``I don't know if I'd go that far.'' Even on my ethics, it is sometimes fine to stay silent. But honesty or silence exposes you to fewer risks you do not know you are taking.
+
+
+
+## honest/sections/of-lies-and-black-swan-blowups.tex
+
+Why: Prose pass: broke the opening list of honours into separate sentences
+
+- Before: Judge Marcus Einfeld, 70 years old, Queen's Counsel since 1977, Australian Living Treasure, winner of a United Nations Peace Award, founding president of Australia's human rights commission, retired but ``routinely brought back to judge important cases,'' went to jail for two years. His perjuries and lies started with a \$77 speeding ticket for 6 mph over the limit. \nb{The honours and the ticket match the Wikipedia article the post links. To contest the ticket he named as the driver a woman who had died years before, then invented a second woman of the same name. The claim that he was routinely brought back to judge could not be confirmed.}
+- After: Judge Marcus Einfeld went to jail for two years. He was 70 years old, a Queen's Counsel since 1977, an Australian Living Treasure, winner of a United Nations Peace Award and founding president of Australia's human rights commission. Though retired, he was ``routinely brought back to judge important cases.'' His perjuries and lies started with a \$77 speeding ticket for 6 mph over the limit. \nb{The honours and the ticket match the Wikipedia article the post links. To contest the ticket he named as the driver a woman who had died years before, then invented a second woman of the same name. The claim that he was routinely brought back to judge could not be confirmed.}
+
+
+## honest/sections/dark-side-epistemology.tex
+
+Why: Prose pass: made a fragment a sentence; split a semicolon chain
+
+- Before: To a biologist, arguing that humans were designed would mean lying about the retina, the brain, and ``the proteins bound together by weak van der Waals forces instead of strong covalent bonds.'' \nb{The retina is a standard example in arguments from poor design. The post gives no reason why weak bonds would count against design; proteins usually change shape to do their work.} So most creationists lie about evolutionary theory instead, and then about the rules of science, such as what ``theory'' means. From specific facts to general laws to the rules of reasoning. \nb{The post gives no evidence that most creationists know their claims to be false, and near the end it says that most who repeat bad epistemology are ``more duped than duplicitous.'' The logical point, that any belief can be kept if enough other beliefs are revised, even the laws of logic, was made by W. V. Quine in 1951.}
+- After: To a biologist, arguing that humans were designed would mean lying about the retina, the brain, and ``the proteins bound together by weak van der Waals forces instead of strong covalent bonds.'' \nb{The retina is a standard example in arguments from poor design. The post gives no reason why weak bonds would count against design; proteins usually change shape to do their work.} So most creationists lie about evolutionary theory instead, and then about the rules of science, such as what ``theory'' means. The lies spread from specific facts to general laws to the rules of reasoning. \nb{The post gives no evidence that most creationists know their claims to be false, and near the end it says that most who repeat bad epistemology are ``more duped than duplicitous.'' The logical point, that any belief can be kept if enough other beliefs are revised, even the laws of logic, was made by W. V. Quine in 1951.}
+
+- Before: The Dark Side is out there; fear is the path to it; there are Sith Lords as well as Jedi. Last, I ask readers to list more ideas ``spawned by the Dark Side.''
+
+- After: The Dark Side is out there, fear is the path to it, and there are Sith Lords as well as Jedi. Last, I ask readers to list more ideas ``spawned by the Dark Side.''
+
+
+
+## honest/sections/doublethink-choosing-to-be-biased.tex
+
+No change: reads plainly already
+
+## honest/sections/no-really-i-ve-deceived-myself.tex
+
+No change: reads plainly already
+
+## honest/sections/belief-in-self-deception.tex
+
+Why: Prose pass: split packed sentences; broke a long paragraph in two
+
+- Before: One moment gave her pause. She said it is good to believe that someone cares whether you do right or wrong. I said that I care, so she must mean this is not enough, and she needs something above humanity to care. She had not thought of it that way. Later she told me that nothing should be done differently if there were definitely no God; I said even a rabbi would look askance at that. Her religion ``seems'' to be the worship of worship; in the next sentence, she ``now believes that belief in God will save her.'' Asked whether she is always surprised when people fall short, she paused for a long time. I had meant to suggest that constant disappointment is a cost of believing falsely, but she seemed taken aback at the thought of not being surprised. From the pause, ``I now realize that the whole essence of her philosophy was her belief that she had deceived herself.'' If her estimates of people were in fact accurate, the structure she had built around the benefits of believing falsely would be threatened. She has put the Dark Side Epistemology that once defended the idol on the idol's throne. ``The attempt failed, but she is honestly unaware of this.''
+
+This explains why I argue that self-deception is hard. You ``can't just choose to believe the sky is green,'' but you can believe you have, and then you get a placebo benefit. Yesterday that benefit came with ``I suppose''; today it does not. So by explaining how hard self-deception is, I am ``taking direct aim at the placebo benefits.''
+- After: One moment gave her pause. She said it is good to believe that someone cares whether you do right or wrong. I said that I care, so she must mean this is not enough, and she needs something above humanity to care. She had not thought of it that way. Later she told me that nothing should be done differently if there were definitely no God. I said even a rabbi would look askance at that. Her religion ``seems'' to be the worship of worship. In the next sentence, she ``now believes that belief in God will save her.''
+
+Asked whether she is always surprised when people fall short, she paused for a long time. I had meant to suggest that constant disappointment is a cost of believing falsely, but she seemed taken aback at the thought of not being surprised. From the pause, ``I now realize that the whole essence of her philosophy was her belief that she had deceived herself.'' If her estimates of people were in fact accurate, the structure she had built around the benefits of believing falsely would be threatened. She has put the Dark Side Epistemology that once defended the idol on the idol's throne. ``The attempt failed, but she is honestly unaware of this.''
+
+This explains why I argue that self-deception is hard. You ``can't just choose to believe the sky is green,'' but you can believe you have, and then you get a placebo benefit. Yesterday that benefit came with ``I suppose.'' Today it does not. So by explaining how hard self-deception is, I am ``taking direct aim at the placebo benefits.''
+
+
+## honest/sections/moore-s-paradox.tex
+
+Why: Prose pass: split a packed sentence
+
+- Before: So the woman from my earlier posts found reasons why it would be good to believe that people are nice, felt warmly toward that belief, and took the warmth for belief. Seeing that people are not so nice, she said ``I believe people are nicer than they are.'' I state this as what happened. \nb{Three days earlier the same sentence was explained by her belief that she had deceived herself. The post calls this one ``another mechanism.''} This is almost an honest mistake, since no one is taught how to tell when they believe something. The person who says the dragon in the garage is invisible does not notice that expecting to see no dragon means having a model with no dragon in it. What actual belief feels like is that a statement ``just seems like the way the world is''; that differs from feeling good about a belief you hold in quotation marks.
+- After: So the woman from my earlier posts found reasons why it would be good to believe that people are nice, felt warmly toward that belief, and took the warmth for belief. Seeing that people are not so nice, she said ``I believe people are nicer than they are.'' I state this as what happened. \nb{Three days earlier the same sentence was explained by her belief that she had deceived herself. The post calls this one ``another mechanism.''} This is almost an honest mistake, since no one is taught how to tell when they believe something. The person who says the dragon in the garage is invisible does not notice that expecting to see no dragon means having a model with no dragon in it. What actual belief feels like is that a statement ``just seems like the way the world is.'' That differs from feeling good about a belief you hold in quotation marks.
+
+
+## honest/sections/don-t-believe-you-ll-self-deceive.tex
+
+No change: reads plainly already
+
+## honest/sections/anchoring-and-adjustment.tex
+
+Why: Prose pass: split packed sentences; the two remedies one per sentence
+
+- Before: ``The current theory'' is that people start from the anchor and adjust until an answer ``sounds plausible,'' and then stop. Numbers further away could also be plausible, so the adjustment usually falls short. In the multiplication task, students presumably multiplied the first few numbers and adjusted upward; both groups fell short, and the ascending group more so because it started lower. \nb{For the wheel, the research the post cites had moved away from this. Strack and Mussweiler, cited in the post for the Einstein study, argued that anchoring is a kind of semantic priming, and Epley and Gilovich (2001) reported that anchors given by an experimenter appear to work by making anchor-consistent information easier to recall. Epley and Gilovich defended adjustment for anchors people produce themselves, as in the multiplication task. A month later, in ``Priming and Contamination,'' Yudkowsky wrote that ``most anchoring is actually due to contamination, not sliding adjustment.''}
+- After: ``The current theory'' is that people start from the anchor and adjust until an answer ``sounds plausible,'' and then stop. Numbers further away could also be plausible, so the adjustment usually falls short. In the multiplication task, students presumably multiplied the first few numbers and adjusted upward. Both groups fell short, and the ascending group more so because it started lower. \nb{For the wheel, the research the post cites had moved away from this. Strack and Mussweiler, cited in the post for the Einstein study, argued that anchoring is a kind of semantic priming, and Epley and Gilovich (2001) reported that anchors given by an experimenter appear to work by making anchor-consistent information easier to recall. Epley and Gilovich defended adjustment for anchors people produce themselves, as in the multiplication task. A month later, in ``Priming and Contamination,'' Yudkowsky wrote that ``most anchoring is actually due to contamination, not sliding adjustment.''}
+
+- Before: Debiasing has ``generally proved not very effective.'' I suggest two remedies of my own: throw away an implausible anchor rather than ``sliding from'' it, and, since subjects told to avoid anchoring still anchor, also think briefly of an anchor that is clearly wrong in the other direction. \nb{The post reports no test of either. A method tested by Mussweiler, Strack and Pfeiffer (2000) did reduce anchoring: listing reasons why the given anchor is inappropriate.}
+
+- After: Debiasing has ``generally proved not very effective.'' I suggest two remedies of my own. Throw away an implausible anchor rather than ``sliding from'' it. And since subjects told to avoid anchoring still anchor, think briefly of an anchor that is clearly wrong in the other direction. \nb{The post reports no test of either. A method tested by Mussweiler, Strack and Pfeiffer (2000) did reduce anchoring: listing reasons why the given anchor is inappropriate.}
+
+
+
+## honest/sections/priming-and-contamination.tex
+
+Why: Prose pass: split a packed sentence; removed a signpost
+
+- Before: Ask people to press one button if a string of letters is a word (``banner'') and another if it is not (``banack''). Show them ``water,'' and they will later recognize ``drink'' as a word a little faster. This is semantic priming. \nb{This kind of priming is well established.} It works at the level of recognizing that letters form a word, which one would expect to happen before thinking about meaning, and it probably spreads to ``river,'' ``cup'' and ``splash'' too.
+- After: Ask people to press one button if a string of letters is a word (``banner'') and another if it is not (``banack''). Show them ``water,'' and they will later recognize ``drink'' as a word a little faster. This is semantic priming. \nb{This kind of priming is well established.} It works at the level of recognizing that letters form a word, which one would expect to happen before thinking about meaning. It probably spreads to ``river,'' ``cup'' and ``splash'' too.
+
+- Before: Then my conclusion. Contamination is ``yet another of the thousand faces of confirmation bias.'' An idea in your head primes compatible thoughts ``and thereby ensures its continued existence.'' Quite apart from the pressure to win political arguments, confirmation bias is built into our hardware, in networks of association that bring up compatible thoughts and memories. ``All it takes is that one quick flash, and the bottom line is already decided.'' \nb{Every study in the post measures how fast words are recognized or what estimates people give in the same session. None measures whether a primed idea lasts. Several later findings that brief primes change judgments and behavior failed to replicate; the word priming at the start of the post has held up.}
+
+- After: Contamination, I conclude, is ``yet another of the thousand faces of confirmation bias.'' An idea in your head primes compatible thoughts ``and thereby ensures its continued existence.'' Quite apart from the pressure to win political arguments, confirmation bias is built into our hardware, in networks of association that bring up compatible thoughts and memories. ``All it takes is that one quick flash, and the bottom line is already decided.'' \nb{Every study in the post measures how fast words are recognized or what estimates people give in the same session. None measures whether a primed idea lasts. Several later findings that brief primes change judgments and behavior failed to replicate; the word priming at the start of the post has held up.}
+
+
+
+## honest/sections/do-we-believe-everything-we-re-told.tex
+
+No change: reads plainly already
+
+## honest/sections/cached-thoughts.tex
+
+Why: Prose pass: split packed sentences; replaced signposts
+
+- Before: My example is a story I once read and cannot find again. A know-it-all neighbor told a man that the way to remove a chimney is to knock out the fireplace and let the bricks drop, one level at a time. Years later the man tried it, and it did not go well. The neighbor was not a trusted source, and questioning the idea would probably have shown it was poor. Some cached answers should be worked out again, but the brain completes the pattern automatically, and unless you notice that it needs correcting, the completed pattern is what you are left with. \nb{This is a man who acted on a bad source without checking it. From here on, a ``cached thought'' in the post means believing what someone told you.}
+- After: My example is a story I once read and cannot find again. A know-it-all neighbor told a man that the way to remove a chimney is to knock out the fireplace and let the bricks drop, one level at a time. Years later the man tried it, and it did not go well. The neighbor was not a trusted source, and questioning the idea would probably have shown it was poor. Some cached answers should be worked out again. But the brain completes the pattern automatically, and unless you notice that it needs correcting, the completed pattern is what you are left with. \nb{This is a man who acted on a bad source without checking it. From here on, a ``cached thought'' in the post means believing what someone told you.}
+
+- Before: Then I concede that nobody can think fast enough to work out everything alone; raised by wolves, I would hardly be human. The flip side is that people who aspire to critical thinking repeat thoughts ``not invented by critical thinkers.'' \nb{So relying on other people's conclusions is how knowledge works. The real question is which conclusions to trust, and the post does not take it up.}
+
+Next come my examples of cached thoughts. The first is a skeptic's concession: ``You can't prove or disprove a religion by factual evidence.'' ``Death gives meaning to life.'' ``Maybe the human species doesn't deserve to survive,'' which decent people say when I raise the risk of human extinction, though they would never shoot their own child, who is part of that species. ``Love isn't rational.'' Each one is an opinion I argue against elsewhere. \nb{The first had a well-known, argued defense by the scientist Stephen Jay Gould. The post does not mention him.} The first, by an earlier post of mine, is ``simply false as probability theory''; a few centuries ago it would have got you burned at the stake. I write a prayer for a mother whose daughter has cancer, in which she recites the skeptic's philosophy to God. People read the slogan, and the next time they meet evidence against a religion, the brain completes the pattern; even some atheists repeat it.
+- After: I concede that nobody can think fast enough to work out everything alone. Raised by wolves, I would hardly be human. The flip side is that people who aspire to critical thinking repeat thoughts ``not invented by critical thinkers.'' \nb{So relying on other people's conclusions is how knowledge works. The real question is which conclusions to trust, and the post does not take it up.}
+
+Here are my examples of cached thoughts. The first is a skeptic's concession: ``You can't prove or disprove a religion by factual evidence.'' ``Death gives meaning to life.'' ``Maybe the human species doesn't deserve to survive,'' which decent people say when I raise the risk of human extinction, though they would never shoot their own child, who is part of that species. ``Love isn't rational.'' Each one is an opinion I argue against elsewhere. \nb{The first had a well-known, argued defense by the scientist Stephen Jay Gould. The post does not mention him.} The first, by an earlier post of mine, is ``simply false as probability theory.'' A few centuries ago it would have got you burned at the stake. I write a prayer for a mother whose daughter has cancer, in which she recites the skeptic's philosophy to God. People read the slogan, and the next time they meet evidence against a religion, the brain completes the pattern; even some atheists repeat it.
+
+
+## honest/sections/original-seeing.tex
+
+No change: reads plainly already
+
+## honest/sections/the-virtue-of-narrowness.tex
+
+Why: Prose pass: one trade per sentence; split packed sentences
+
+- Before: In their own trades, people know the value of narrow words. A mechanic does not lump a carburetor and a radiator together as ``car parts''; a hunter-gatherer knows a lion from a panther; a janitor does not wash the floor with window cleaner. Outside their trades, people ``often'' stretch a word as wide as it will go, since a general theory sounds loftier than an answer to a small question: better to explain human thought in general than how people solve a Rubik's Cube.
+- After: In their own trades, people know the value of narrow words. A mechanic does not lump a carburetor and a radiator together as ``car parts.'' A hunter-gatherer knows a lion from a panther. A janitor does not wash the floor with window cleaner. Outside their trades, people ``often'' stretch a word as wide as it will go, since a general theory sounds loftier than an answer to a small question. It seems better to explain human thought in general than how people solve a Rubik's Cube.
+
+- Before: New Age gurus say ``Everything is connected to everything else,'' as if it were deep wisdom. It says nothing. A graph with every edge carries no more information than a graph with none; the useful graphs leave some things unconnected. People trying to sound profound compare this topic to that one until their graph is fully connected and useless. Detailed study shows how things are not alike, and lets you start ``subtracting edges.'' Good categories and good hypotheses exclude something. \nb{For hypotheses this is Karl Popper's criterion, not credited here.}
+- After: New Age gurus say ``Everything is connected to everything else,'' as if it were deep wisdom. It says nothing. A graph with every edge carries no more information than a graph with none. The useful graphs leave some things unconnected. People trying to sound profound compare this topic to that one until their graph is fully connected and useless. Detailed study shows how things are not alike, and lets you start ``subtracting edges.'' Good categories and good hypotheses exclude something. \nb{For hypotheses this is Karl Popper's criterion, not credited here.}
+
