@@ -11,6 +11,8 @@
 %                       restarting each page. May contain \note's, whose text
 %                       goes to the foot of the page as usual.
 %   \anchor{key}        a mark (❧) in the text that a note can point back to.
+%                       Put it at the START of the sentence it marks: it is
+%                       a destination (see STYLE.md).
 %   \xref{key}          prints the mark of the note or anchor named key,
 %                       adding ", p. N" when it is on another page. It is a
 %                       link in the PDF.
@@ -153,8 +155,9 @@
   \edef\grapes@pagethere{\getpagerefnumber{grapes:#1}}%
   \ifx\grapes@pagehere\grapes@pagethere\else, p.~\pageref*{grapes:#1}\fi}
 \newcommand\anchormark{❧}
+% The link target goes before the mark, so a jump lands at the start.
 \newcommand\anchor[1]{%
-  \textsuperscript{\anchormark}\grapes@keytarget{#1}{\anchormark}}
+  \grapes@keytarget{#1}{\anchormark}\textsuperscript{\anchormark}}
 
 % ---- where we are, so misuse can be caught ----------------------------------------
 \newif\ifgrapes@innote

@@ -2,6 +2,8 @@
 
 ## Writing
 
+Read `STYLE.md` first: it holds the conventions for using these commands.
+
 Chapters go in `chapters/`, one file each, pulled in by `\include` in
 `grapes.tex`. Chapters contain text and these commands only; everything about
 how notes look is in `grapes.sty`.
@@ -21,7 +23,7 @@ Pointing works in every direction, so loops are possible: a subnote can point
 to an aside, an aside's note can point back to an anchor in the text, and so
 on. Example:
 
-    A grape is a berry.\anchor{berry} ...
+    \anchor{berry}A grape is a berry. ...
     ...\note{...\subnote{Which brings us back to \xref{berry}.}}
 
 In the PDF every mark is a link: from the text to its note, and from the
@@ -34,9 +36,6 @@ In `grapes.tex`, change `\usepackage{grapes}` to
 their own block above the notes, with the same symbols; the page narrows to
 5.5 x 8.5 in. No text is lost, and every `\xref` still works. To see both
 versions without editing anything: `./build.sh` and `./build.sh nomargin`.
-
-Write cross-references so they read well in both versions: "see \xref{k}",
-not "in the margin, \xref{k}".
 
 ## What stops the build
 

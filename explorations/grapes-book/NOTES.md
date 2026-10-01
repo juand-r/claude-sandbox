@@ -142,3 +142,8 @@ Findings while setting it up:
   (Python string escaping when editing run.sh); caught it by reading the
   line before running. Rule for myself: edit test lines in run.sh with the
   Edit tool, not through Python string replacement.
+- 2026-10-01, author's rule: an anchor goes at the START of the sentence it
+  marks, because it is a link TO that sentence (a destination). Recorded in
+  `book/STYLE.md`, the new style guide. Chapter 1 and the tests now follow
+  it. While drawing the loop I also found the anchor's link target sat just
+  after the ❧; moved it in front, so a jump lands at the start.
