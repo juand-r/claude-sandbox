@@ -332,13 +332,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] my-childhood-death-spiral
 - [x] my-best-and-worst-mistake
 - [x] raised-in-technophilia
-- [ ] a-prodigy-of-refutation
+- [x] a-prodigy-of-refutation
 - [ ] the-sheer-folly-of-callow-youth
-- [ ] that-tiny-note-of-discord
-- [ ] fighting-a-rearguard-action-against-the-truth
-- [ ] my-naturalistic-awakening
-- [ ] the-level-above-mine
-- [ ] the-magnitude-of-his-own-folly
+- [x] that-tiny-note-of-discord
+- [x] fighting-a-rearguard-action-against-the-truth
+- [x] my-naturalistic-awakening
+- [x] the-level-above-mine
+- [x] the-magnitude-of-his-own-folly
 - [ ] beyond-the-reach-of-god
 - [ ] my-bayesian-enlightenment
 - [ ] trying-to-try
