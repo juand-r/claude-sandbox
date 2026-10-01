@@ -18,8 +18,8 @@
 - [x] Commit and push.
 
 ## Slide outline
-1. Title: ROC curves and AUC.
-2. Today: four goals.
+1. Title: ROC curves and AUC (text only; the ROC figure was removed because students have not seen ROC curves yet).
+2. Today: scores to decisions. k-NN, naive Bayes and decision trees all produce scores; so far we thresholded at 0.5.
 3. A score and a threshold (running example, draggable threshold, live confusion matrix).
 4. Two rates: TPR and FPR, each computed inside one true class.
 5. Sweep the threshold: every threshold is one point; the points make the ROC curve.

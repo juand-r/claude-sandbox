@@ -31,7 +31,7 @@ unless Bricolage Grotesque, Source Sans 3 and JetBrains Mono are installed.
 
 ## Slides
 
-1. Title. 2. Goals. 3. A score and a threshold. 4. TPR and FPR. 5. Sweeping the threshold
+1. Title. 2. From scores to decisions. 3. A score and a threshold. 4. TPR and FPR. 5. Sweeping the threshold
 traces the ROC curve. 6. What the shape tells you (two bell curves, adjustable overlap).
 7. AUC as the area and as the fraction of correctly ordered (positive, negative) pairs.
 8. What AUC does not see (ranking only, calibration, single threshold). 9. Rare positives

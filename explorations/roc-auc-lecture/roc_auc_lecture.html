@@ -186,6 +186,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .topic .obj{margin-top:clamp(20px,3.4vh,36px);border-left:3px solid var(--model);padding:.15em 0 .15em 1.15em;max-width:46rem}
 .topic .obj ol{margin:.45em 0 0;padding-left:1.2em}
 .topic .obj li{margin:.38em 0}
+.topic .obj ul{margin:.45em 0 0;padding-left:1.2em}
+#s-today .hook{max-width:48rem}
+#s-today .math{white-space:nowrap}
 
 /* ---------- roadmap ---------- */
 .roadslide{width:100%}
@@ -320,17 +323,14 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 <main id="deck">
 
 <!-- 1 TITLE -->
-<section class="slide" id="s-title" data-steps="0">
+<section class="slide one" id="s-title" data-steps="0">
   <div class="prose">
     <div class="eyebrow">Machine learning · Evaluating classifiers</div>
     <h1>ROC curves<br>and AUC</h1>
     <p class="hook">A classifier gives a score. Where we cut that score decides which mistakes we make. The ROC curve shows every choice at once.</p>
   </div>
-  <div class="fig"><div id="fig-title"></div>
-    <p style="text-align:center;color:var(--muted);margin:.4em 0 0;font-size:.9em">The ROC curve of today's running example. The shaded area is its AUC.</p>
-  </div>
   <div class="notes">
-    <p>Today is about judging a classifier that outputs scores, before we commit to a threshold. The picture on the right is where we will end up: the ROC curve of the example we will use all lecture, with the area under it shaded.</p>
+    <p>Today is about judging a classifier that outputs scores, before we commit to a threshold.</p>
   </div>
 </section>
 
@@ -338,20 +338,20 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 <section class="slide one" id="s-today" data-steps="0">
   <div class="topic">
     <div class="eyebrow">Today</div>
-    <h2>From scores to one number</h2>
-    <p class="hook">Logistic regression gives a probability, an SVM a signed distance, a network a logit. To get a yes or no, someone has to choose a cut-off.</p>
+    <h2>From scores to decisions</h2>
+    <p class="hook">We can trade off precision and recall (or TPR and FPR) by choosing how lenient or strict we are when we turn a model's score into a class label.</p>
     <div class="obj">
-      <div class="eyebrow">By the end you can</div>
-      <ol>
-        <li>turn scores into decisions with a threshold, and count the four outcomes;</li>
-        <li>compute the true positive rate and the false positive rate;</li>
-        <li>trace an ROC curve by sweeping the threshold, and read its shape;</li>
-        <li>compute AUC, read it as a probability, and say what it hides.</li>
-      </ol>
+      <div class="eyebrow">Each model we have seen gives a score</div>
+      <ul>
+        <li><b>Nearest neighbours</b>: the fraction of the <span class="math">k</span> nearest neighbours of <span class="math">x</span> that are positive.</li>
+        <li><b>Naive Bayes</b>: the posterior probability that <span class="math">x</span> is positive, <span class="math">P(+ | x)</span>, from Bayes' rule.</li>
+        <li><b>Decision trees</b>: the fraction of training records in <span class="math">x</span>'s leaf that are positive.</li>
+      </ul>
     </div>
+    <p class="hook">In each case every point gets a score, and a threshold turns scores into decisions. So far we used 0.5, the majority class. But we can pick any threshold we want.</p>
   </div>
   <div class="notes">
-    <p>Four goals. The last one matters most in practice: AUC is reported everywhere, and it is easy to over-read. By the end everyone should be able to compute an AUC by hand for six examples.</p>
+    <p>Every classifier we have met outputs a number before it outputs a label. With k-NN the label is a majority vote, which is the same as thresholding the positive fraction at 0.5. Naive Bayes picks the class with the larger posterior, which for two classes is thresholding P(+ | x) at 0.5. A tree leaf predicts its majority class, again a threshold of 0.5 on the leaf's positive fraction. Moving that threshold is the subject of today: a lower one catches more positives and raises more false alarms; a higher one does the reverse.</p>
   </div>
 </section>
 
@@ -1360,13 +1360,6 @@ function confusion(host,{rates=false}={}){
     for(const k of ['tp','fn','fp','tn'])q(k).textContent=c[k];
     if(rates){q('tpr').innerHTML=`<span class="k-model">TPR</span> = ${c.tp}/${POS.length} = <b>${c.tpr.toFixed(2)}</b>`;
       q('fpr').innerHTML=`<span class="k-mean">FPR</span> = ${c.fp}/${NEG.length} = <b>${c.fpr.toFixed(2)}</b>`;}};
-}
-
-/* ---------- slide 1: title figure ---------- */
-{
-  const api=rocChart($('fig-title'),{cells:10,ticks:[0,.2,.4,.6,.8,1],label:'ROC curve of the running example'});
-  drawStair(api,staircase(POS,NEG));
-  api.label(.45,.3,`AUC = ${(pairWins(POS,NEG)/(POS.length*NEG.length)).toFixed(2)}`,{color:'var(--model)',size:20});
 }
 
 /* ---------- slides 3-5: one shared threshold drives every strip, matrix and the ROC point ---------- */
