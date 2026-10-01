@@ -235,3 +235,15 @@ Note the forced-N reader itself was not clean in a periodic program
   of moving data that annihilates one ossifier, or forces the branches to
   end in different prepared leaders. This is why simple insertions
   before K cannot give a clean one-branch skip.
+
+### 01:25 tight-pair screen complete
+screen_tight.jsonl: all 3960 placements of 66 tight Ebar-pair compounds
+(phases x 2 offsets) right before K; 720 have no valid symmetric
+re-attachment, 3240 were run on the acceptor tape YNYN (T = 40000), 62
+kept it normal. check4b.jsonl (all 62, four tapes, T = 60000): 33 keep
+both acceptor tapes normal; NONE has a clean rejector branch. Four looked
+like "forced N after a rejector" (NYYN -> NN, NNYY -> NN; e.g.
+Ebar@(0,0)+Ebar@(-18,37) k = 9, o = 22), but traces (t_tight.py ... NYYN
+130000 5000) show the appendant region being destroyed by garbage, not
+swept; later reads are chaos. Scoped negative for option (c) in this
+family.

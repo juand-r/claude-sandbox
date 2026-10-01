@@ -840,3 +840,129 @@ idea, I can model the two-branch bookkeeping abstractly (registers, guard
 and messenger positions, residual Ebar) before anyone builds it. Tell me
 the candidate pieces and I will check that both branches end in the same
 state.
+
+### [address] 01:28 - zero test: where a messenger can be born, a slip obstacle, and a search running
+@gate @verify @lead answering "which pairs emit the messenger, at which F":
+1. [arg] Geometry. An abort messenger must end up upstream of the front
+   F (T), because packets for T are absorbed by T and an eater behind T
+   cannot delete them. The only data-dependent route there is a timing
+   race: a stationary token born at M is crossed by T after about
+   9*gap(T,M) generations, so a packet arriving at the token's position at
+   a fixed time meets it either upstream of T (x = 0) or between T and M
+   (x >= 1). This tests only the FRONT gap. An inner register's token
+   reaches T after a time proportional to the outer value, which is the
+   feed-forward obstacle again, so x and y cannot both sit behind one
+   another; the control has to be in the middle (architect s.4).
+2. [arg, slip] Everything that reaches M has crossed T. Clean F crossings
+   output pure Ebar trains (slip 0 or 7), except E^8 -> E and E^9 -> E^2
+   (fuel: F eats 7 E-units). C1 has slip 5, so C1 can NOT be born at M
+   (M kept) from a pure-Ebar packet. The catalog confirms it
+   (emit_search*.py, all 12 residues): the only stationary births at M from
+   post-T packets destroy M: M -> C3_4_C3 + Ebar (Ebar_14_Ebar; residues
+   incl. our (20,61)), M -> C2 + E + Ebar, M -> C1_11_C2 + E_15_Ebar_10_E.
+   And T meeting C3_4_C3: class 0 -> C1 + 2 Ebar (T dies), class 1 -> all
+   stationary. So no race assembles from 2-glider catalog packets.
+3. Catalogued (sim): C3_14_C2 (slip 0; T emits it via F + Ebar@(0,0)+Ebar@(-4,23)
+   #4 -> F + C3_14_C2, nothing else) is a one-shot token: F absorbs it in
+   class 1, a single Ebar #2 or about 40 pure pairs kill it cleanly, and
+   (-1,25)#2, (-16,29)#2, Ebar_19_Ebar#2, Ebar_6_Ebar#3 annihilate with it.
+   (-19,27)#2 and (-26,27)#2 turn it into C1 + E. Files cat_C3_14_C2.json,
+   cat_C3_4_C3.json.
+4. Running (one job, PID in address/zt.pid): full-CA search. For the 201
+   catalog movers that are clean on T, compare outcomes at reg1 gaps 25.9 /
+   44.6 / 63.2 / 81.9 (same residue). A mover that differs only at the
+   smallest legal gap would be a close-range zero test.
+
+### [verify] 01:29 - re-simulated address's token emission: F + Ebar@(0,0)+Ebar@(-4,23) #4 -> F + C3 + C2 (14 apart), as catalogued
+@address [sim, my pipeline]: at T=3000 the products are F, C3 and C2 (C2
+19 cells right of C3). Both are stationary ((7,0)-invariant), and their
+slips 3 + 11 = 14 = 0 mod 14. At T=1500 my typer merges the two C's into
+one '?' defect at some phases; that is a typer limitation, not physics.
+Note the same pair shape (-4,23) is gate's neutral eater 'a' (class 3
+vs C1). In class 4 vs F it is your token emitter, so one packet shape
+might serve both roles in different classes.
+
+### [queue] 01:34 - FINAL: no state-dependent step. Cook's read cycle at glider level; a charge law that says what finite control costs; scoped negatives
+I did not build a queue automaton with finite control, so neither M1 for
+the queue nor the clockwise-TM run. The useful result is a conservation
+argument. Under Cook's charges, a finite control that changes how many
+symbols are read per program period must pay for it: in multiples of 7,
+or with charged garbage. Every candidate I found paid in garbage that
+destroys the tape. One option costs no charge: a leader that reads
+differently depending on the incoming answer. I did not find one.
+
+VERIFIED [sim] (exact Rule 110; commands in queue/NOTES.md)
+1. The read cycle. The acceptor is a stationary C-family transducer
+   (C3 <-> C1^2) that turns components into moving data. The rejector is a
+   right-moving D1 <-> A^3 that deletes them. Raw leader
+   K = [Ebar][E5][E2][E^3]...; either answer turns [Ebar,E5,E2] into
+   [Ebar,E1], so the prepared leader is identical after acc and rej. An
+   unprepared K that reaches the tape eats one symbol and leaves E_n + B^5,
+   with no answer.
+2. Symmetries. Shifting (K + rest) by V = <(12,8),(30,-8)> keeps reads
+   correct; 57 of 60 other lattice shifts break them. V also works inside
+   K (E2 + rest vs E5: 8/8). The other 62 E2 placements and 60 E5
+   placements break the machine.
+3. Slips (mod 14): K 12, prepared leader 8, components 0, ossifier 2,
+   tape symbol 2 for both Y and N (measured on clean symbols).
+4. Rejected appendants of odd length (7, 9, 11) break the machine. Lengths
+   8 and 10 gave 4/4 correct reads. If this survives longer runs, the
+   rejection constraint is parity, not x6 (main project: worth a check).
+5. Forced-N leader (E2 -> E9, slip-neutral): it consumes one symbol and
+   always rejects (2 reads x 4 tapes). In a periodic program the read
+   after it is malformed (control with K: 6/6 = CTS).
+6. Acceptor-transparent insertions exist. Of 3960 tight Ebar-pair
+   placements before K, 3240 could be inserted; 62 keep the acceptor tape
+   normal and 33 keep both acceptor tapes normal (Ebar_14_Ebar: 5/5 reads).
+   All rejector branches emit B bursts (e.g. B^2+B^4+B) that run left and
+   wreck the tape. The 4 "forced-N after reject" look-alikes are garbage
+   on tracing.
+7. A B pair turns one clean tape symbol into exactly two Ebars at 5
+   placements (queue/eat_symbol.py). Not checked downstream.
+ARGUED [arg] (slip conservation is a theorem; the slips are measured)
+8. Charge law. Mod 7, a leader is -2 and a symbol is +2, so a read is
+   neutral. With only Ebar-train garbage, a machine with p leaders per
+   period reads n = p (mod 7) symbols per period. A skip/soft leader is
+   therefore (a) a jump over 7k leaders, or (b) one that emits an
+   anti-symbol (slip 12) per skipped leader, which must be disposed of.
+   (c) One read per leader with a state-dependent reading costs nothing.
+9. Branch symmetry. Acc and rej branches start equal and eat the same
+   table material. If they end in the same prepared leader, their garbage
+   has equal charge. So a skip on one branch forces equal charge
+   destruction on the other branch, or different prepared leaders.
+   This is the queue analogue of gate's mod-7 lemma.
+OPEN, with a concrete spec: (c) = a leader K' whose prepared form after
+an acceptor is standard and after a rejector is a clean forced-N or
+inverted reader. queue/spec_c.npz holds exact windows of both arriving
+answers and the target outputs. The forced-N target is not clean yet.
+This is a ~400-cell two-input/two-output synthesis problem; synth's SAT
+tools fit it. Model semantics for @verify: plain block a(i)=s(i);
+K' block a(i)=s(i) AND a(i-1); block i appends iff a(i)=Y.
+Not a CTS: the same symbol at the same block gives different appendants
+depending on earlier reads.
+
+### [gate] 01:35 - ABORT vs kicks: a C1 messenger cannot delete or neutralise a kick packet (catalog + 203 compounds); SAT running
+Scope: collider's catalog (all 115 Ebar-speed 2-glider packets x all
+classes vs C1 and vs F) + my scan of the 203 uncatalogued Ebar-speed
+library compounds (gate/scan_lane.py, lane_scan.json, direct CA).
+1. The ONLY Ebar-speed packets an F absorbs (F + Y -> F, the kick that
+   counts) are Ebar@(0,0)+Ebar@(-9,29) #4 (address's K0) and
+   Ebar@(0,0)+Ebar@(-26,27) #4. None of the 203 compounds is absorbed.
+2. C1 versus these two: K0 #1 passes unchanged, #2 -> C1 + (-11,23),
+   #0/#3 debris; (-26,27) gives debris in all 4 classes. (-11,23) destroys
+   F in all 12 classes. So a C1 can neither eat a kick nor turn it into an
+   F-transparent crosser.
+3. abort_feas.py (catalog level, address's padded instruction stream
+   DN1 UP1 DN2 UP2, C1 at every class/offset upstream of T): the first mover
+   at best passes, the second explodes. No C1 placement aborts any block.
+4. Neutral eaters (-4,23)#3, (-22,39)#3 vs the 3-F lane: they cross T only
+   by conversion ((-22,39)#7 -> (-21,35), which then crosses F's cleanly in
+   class 7 as itself), never kick. Crossings alone cannot count
+   (architect/address), so they cannot carry register instructions.
+Consequence [arg, within this scope]: in the F lane with kick registers,
+an abort must delete packets that a C1 cannot touch; either a larger kick
+packet that is ALSO C1-eatable exists, or the messenger must be another
+object. Running now: SAT for an Ebar-speed packet Y (free (30,-8) train,
+slip 0) with C1 + Y -> C1 AND F + Y -> F in one CNF (gate/sat_kickeat.py;
+positive controls: mode C alone finds eaters at width 24, mode F alone
+being checked at width 30).

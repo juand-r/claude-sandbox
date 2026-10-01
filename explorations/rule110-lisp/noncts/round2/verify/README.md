@@ -18,7 +18,11 @@ cannot give, and assembles end-to-end demonstrations.
 | `verify_gate_wrap*.py`, `gate_scene.py` | Checks of gate's wrap packets and assemblers. |
 | `verify_address.py` | Check of address's two F-lane registers. |
 | `prim_table.py/.log` | Gate's packets on values 0..3 in every class, with trajectory offsets. |
-| `adaptive_ca.py`, `m2_validate.py` | My own assembler (exact CA in the loop) and the M2 validation. |
+| `adaptive_ca.py`, `m2_validate.py` | My own greedy assembler (exact CA in the loop) and the M2 validation. |
+| `calib.py`, `calib.json`, `calculus.py`, `plan_check.py` | Measured class-level transition table, the abstract (value, class) machine with a planner that inserts correctors, and CA validation of planned streams. This is the M2 compiler. |
+| `gbm.py` | Guarded-block machine (M3 target) and its Minsky compiler with a differential test. |
+| `sync_search.py`, `phase_charge.py` | Class algebra measurements. |
+| `verify_gate_ra*.py`, `verify_gate_parity.py`, `verify_abort.py`, `verify_address_fixed.py`, `verify_catalog.py` | Later verifications (see ledger). |
 | `NOTES.md` | Running log, including mistakes. |
 
 ## How to reproduce the main checks
@@ -31,6 +35,9 @@ cannot give, and assembles end-to-end demonstrations.
     python3 verify_address.py 1 4                # address's two registers
     python3 adaptive_ca.py JJJZZZZJJJZZZZ 6      # build an M2 stream
     python3 m2_validate.py adaptive_<word>.json 12
+    python3 calculus.py 2 30                     # calculus vs CA differential test
+    python3 plan_check.py JJJJJZZZZZZJJJJJZZZZZZJJJJJZZZZZZJJJJJZZZZZZ 12 15   # parity stream
+    python3 gbm.py                               # guarded-block machine compiler
 
 All runs use the exact engine `../../../engine.py` (bit-packed, cyclic, with
 margins wider than the light cone). My own stepper is cross-checked against

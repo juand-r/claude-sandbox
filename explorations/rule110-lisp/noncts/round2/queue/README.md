@@ -25,3 +25,4 @@ Files:
 
 Run any script from this directory with the main project's Python
 environment (numba, numpy, PIL); they import ../../.. modules read-only.
+- trash/: flawed first S2 screen (misaligned K), empty E3 scan log, unfinished eat_two.py, stale pid/out files.
