@@ -325,13 +325,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] ends-don-t-justify-means-among-humans
 - [x] ethical-injunctions
 - [x] something-to-protect
-- [ ] when-not-to-use-probabilities
-- [ ] newcomb-s-problem-and-regret-of-rationality
-- [ ] twelve-virtues-of-rationality
-- [ ] beginnings-an-introduction
-- [ ] my-childhood-death-spiral
-- [ ] my-best-and-worst-mistake
-- [ ] raised-in-technophilia
+- [x] when-not-to-use-probabilities
+- [x] newcomb-s-problem-and-regret-of-rationality
+- [x] twelve-virtues-of-rationality
+- [x] beginnings-an-introduction
+- [x] my-childhood-death-spiral
+- [x] my-best-and-worst-mistake
+- [x] raised-in-technophilia
 - [ ] a-prodigy-of-refutation
 - [ ] the-sheer-folly-of-callow-youth
 - [ ] that-tiny-note-of-discord
