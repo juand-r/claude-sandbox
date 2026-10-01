@@ -249,13 +249,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] to-spread-science-keep-it-secret
 - [x] initiation-ceremony
 - [x] hand-vs-fingers
-- [ ] angry-atoms
-- [ ] heat-vs-motion
-- [ ] brain-breakthrough-it-s-made-of-neurons
-- [ ] when-anthropomorphism-became-stupid
-- [ ] a-priori
-- [ ] reductive-reference
-- [ ] zombies-zombies
+- [x] angry-atoms
+- [x] heat-vs-motion
+- [x] brain-breakthrough-it-s-made-of-neurons
+- [x] when-anthropomorphism-became-stupid
+- [x] a-priori
+- [x] reductive-reference
+- [x] zombies-zombies
 - [ ] zombie-responses
 - [ ] the-generalized-anti-zombie-principle
 - [ ] gazp-vs-glut
