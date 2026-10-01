@@ -55,3 +55,4 @@ without addressing), without emulating a cyclic tag system.
   Mechanism: pairs pass some F's and are swallowed by one F (kick).
   Mistake: first gap formula had the wrong sign (x0 - t0/9); fixed to x0 + t0/9
   (position at t=0 for v=-1/9); caught by the arithmetic mismatch.
+- 01:00 killed balance.py 5 (PID 7535): superseded by fixed_stream.find_pads (NOP = DN2+UP2 / DN1+UP1 combos).

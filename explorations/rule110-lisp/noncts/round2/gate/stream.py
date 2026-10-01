@@ -63,6 +63,44 @@ def build(program, spacing=450, zclass=None):
     return scene
 
 
+def build2(program, table=None, spacing=450):
+    """Assembler rule v2. Each slot's counter value mod 7 is forced by the
+    slip of the packets before it (garbage-free streams): val = 5*(slip/2)
+    mod 7. A packet is placed in class table[(op, val)] (default: its
+    ZCLASS for val = 0, nothing otherwise) relative to the reference E^(val+1)
+    (INC-only chain from E at (0,0), collider ecounter.chain_events)."""
+    from ecounter import chain_events
+    ref = chain_events()
+    tab = {(op, 0): c for op, c in ZCLASS.items()}
+    for (op, val), c in (table or {}).items():
+        tab[(ALIAS.get(op, op), val)] = c
+    E = LIB.gliders["E"]
+    scene = [("E", 0, 0)]
+    prev = E.state_at(0, 0, 0)
+    slip = 0
+    for p in program:
+        g = ALIAS.get(p, p)
+        G = LIB.gliders[g]
+        assert slip % 2 == 0
+        val = (5 * (slip // 2)) % 7
+        c = tab.get((g, val))
+        key = None
+        if c is not None:
+            nm, t, x = ref[val + 1]
+            R = LIB.gliders[nm]
+            reps = canonical_reps(LIB, nm, g)
+            key = class_key(reps[c], (R.p, R.d), (G.p, G.d))
+            # place() measures classes relative to (0,0) with E's lattice;
+            # shift the key by the reference event (same lattice: P_E, P_G)
+            k0 = class_key((t, x), (R.p, R.d), (G.p, G.d))
+            key = tuple((a + b) % 1 for a, b in zip(key, k0))
+        ev = place(prev, g, prev[3] + len(prev[0]) + spacing, want_key=key)
+        scene.append((g,) + ev)
+        prev = G.state_at(ev[0], ev[1], 0)
+        slip = (slip + G.slip) % 14
+    return scene
+
+
 def horizon(scene):
     last = LIB.gliders[scene[-1][0]].state_at(scene[-1][1], scene[-1][2], 0)
     return int(15 * (last[3] + 80)) + 1500   # G closes on E at 1/15 cell/gen

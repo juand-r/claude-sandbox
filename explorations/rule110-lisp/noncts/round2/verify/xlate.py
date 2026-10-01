@@ -56,7 +56,10 @@ def translate(scene):
         T, X, c = mapping(g)
         items.append((g, T + t, X + x))
         if c0 is None:
-            c0 = c        # phase left of the first object (first item is leftmost)
+            # phase left of the first (leftmost) object: my constraint is
+            # x0 + 4 t0 + c = 0 (mod 14); (T, X) satisfies it with c, so the
+            # seed shifted by (t, x) needs c - x - 4t
+            c0 = (c - x - 4 * t) % 14
     return items, c0
 
 

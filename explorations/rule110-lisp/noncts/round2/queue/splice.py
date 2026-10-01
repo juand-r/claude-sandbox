@@ -340,3 +340,55 @@ def lab_trace(machine, row, times, lo, hi):
         h = r.history(lo + machine.origin, hi + machine.origin, MAX_DT)
         out.append((t, [(a + lo, b + lo, k) for a, b, k in census(h)]))
     return out
+
+
+@lru_cache(None)
+def glider_tiles(name, margin=16):
+    """Tiles (arr, left phase, right phase) for each phase of a glider from
+    collider/gliders.json, isolated in ether with `margin` cells each side."""
+    import json
+    sys.path.insert(0, str(ROOT / "noncts" / "collider"))
+    from r110lib import Glider, build_row
+    g = {j["name"]: j for j in json.load(open(ROOT / "noncts" / "collider" / "gliders.json"))["gliders"]}
+    G = Glider.from_json(g[name])
+    out = []
+    for k in range(G.p):
+        bits, lph, rph, off = G.phases[k]
+        row, x0 = build_row([(bits, lph, rph, 0)], pad=margin)
+        arr = np.array(row[:margin + len(bits) + margin], dtype=np.uint8)
+        out.append((arr, phase_at(arr, 0), phase_at(arr, len(arr) - TILE)))
+    return out
+
+
+def replace_exact(row, c, c2, placements, s, D):
+    """Like insert_exact, but the material in [c, c2) is dropped: the head is
+    row[:c] + placements, and row[c2:] is re-attached displaced by (-s, D)
+    relative to its original position. placements: (tiles, k, o) with
+    tiles a list as returned by ebar_tiles / glider_tiles."""
+    c0 = phase_at(row, c)
+    seg, pos, cph = [], c, c0
+    for tiles, k, o in sorted(placements, key=lambda p: p[2]):
+        arr, cl, cr = tiles[k]
+        x = c + o
+        if x < pos or (cl - x) % TILE != cph:
+            return None
+        seg.append(fill_ether(x - pos, cph, pos))
+        seg.append(arr)
+        pos, cph = x + len(arr), (cr - x) % TILE
+    pad = 64
+    ext = evolve_free(row[c2:].copy(), s, pad)
+    ext[:32] = fill_ether(32, phase_at(ext, 32), 0)
+    start = c2 - pad + D
+    f = next(x for x in range(len(ext)) if ether_phase(ext[x:x + TILE])[0] < 0)
+    if start + f < pos:
+        return None
+    if (phase_at(ext, 0) - start) % TILE != cph:
+        return None
+    k = pos - start
+    if k < 0:
+        seg.append(fill_ether(-k, cph, pos))
+        k = 0
+    new = np.concatenate([row[:c]] + seg + [ext[k:]])
+    if len(new) < len(row):
+        return None
+    return new[:len(row)]

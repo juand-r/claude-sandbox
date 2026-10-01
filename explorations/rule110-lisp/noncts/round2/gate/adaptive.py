@@ -99,6 +99,18 @@ def e_key(state):
     return CHAIN.index(g[0]), ck((g[1], g[2]), (15, -4), (42, -14))
 
 
+_REF = {}
+
+
+def ref_key(n):
+    """Class key of E^n's reference trajectory: E^n after I^(n-1) (GB5
+    INCs, designated class) from E at (0,0), glider level."""
+    if n not in _REF:
+        st, _ = outcome(build(["I"] * (n - 1), [0] * (n - 1)))
+        _REF[n] = e_key(st)[1]
+    return _REF[n]
+
+
 def search(prog, vmax, strict=False):
     classes = []
     for s, op in enumerate(prog):
@@ -116,12 +128,12 @@ def search(prog, vmax, strict=False):
                 if not good(st, exp):
                     ok = False
                     break
-                if strict:
+                if strict and op not in "JKLMP":
                     # the counter's trajectory class must depend on its value
                     # only (not on the history), else a fixed stream cannot
                     # serve later zero meetings of every history
                     n, k = e_key(st)
-                    if seen.setdefault(n, k) != k:
+                    if k != ref_key(n + 1):
                         ok = False
                         break
             if ok:

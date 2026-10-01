@@ -10,6 +10,8 @@ OPS = {
     "W": lambda v: v if v else 7,
     "X": lambda v: v + 1 if v else 8,
     "J": lambda v: v + 1 if v else 0,
+    "K": lambda v: v + 1 if v else 0, "L": lambda v: v + 1 if v else 0,
+    "M": lambda v: v + 1 if v else 0, "P": lambda v: v + 1 if v else 0,
 }
 
 

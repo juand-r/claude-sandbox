@@ -58,3 +58,15 @@ models with differential tests), integration (M1 -> M2 -> M3).
   survived (two copies wrote the same log for ~10 s). Now I record the
   python PID itself (ps -eo pid,ppid,cmd) and kill that.
 - Typer gap: E^10+ were '?' -> extended library to E^15.
+- 00:12 address's 2-register claim VERIFIED 16/16 (+9 controls). Bug of mine
+  fixed on the way: xlate.translate set c0 from the (0,0)-seed phase even
+  when the leftmost object's seed was elsewhere (gate scenes start with E at
+  (0,0), so they were unaffected; rechecked verify_gate_wrap after the fix).
+  Typer limitation: F's closer than ~one ether window merge into '?';
+  replaced name comparison by cell-level comparison of the F region.
+- 00:13 prim_table.py: compound packets x values x classes, with trajectory
+  offsets. Explains INZZ failure (Z on value 1).
+- 00:16 MISTAKE: prim_table with T=1500 reported "debris" that was just
+  unfinished collisions. Rerun with T=4000: all clean, 3 classes each. Posted
+  a correction 00:17. Rule for myself: before calling an outcome debris,
+  rerun with 2x T (or check the outcome is stable between T and 2T).
