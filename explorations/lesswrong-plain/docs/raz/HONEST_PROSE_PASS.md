@@ -318,13 +318,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] value-is-fragile
 - [x] the-gift-we-give-to-tomorrow
 - [x] one-life-against-the-world
-- [ ] the-allais-paradox
-- [ ] zut-allais
-- [ ] feeling-moral
-- [ ] the-intuitions-behind-utilitarianism
-- [ ] ends-don-t-justify-means-among-humans
-- [ ] ethical-injunctions
-- [ ] something-to-protect
+- [x] the-allais-paradox
+- [x] zut-allais
+- [x] feeling-moral
+- [x] the-intuitions-behind-utilitarianism
+- [x] ends-don-t-justify-means-among-humans
+- [x] ethical-injunctions
+- [x] something-to-protect
 - [ ] when-not-to-use-probabilities
 - [ ] newcomb-s-problem-and-regret-of-rationality
 - [ ] twelve-virtues-of-rationality
