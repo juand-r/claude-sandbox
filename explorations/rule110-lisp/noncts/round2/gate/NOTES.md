@@ -144,3 +144,14 @@ same for every input) before searching, and make the builder enforce it.
   C1-class of a mover are not simply nested; their joint constraint must be
   computed, not assumed.
 - Running scan_lane.py: C1 and F vs 203 uncatalogued Ebar-speed compounds.
+- Lane scan done (203 compounds): 39 C1-EAT/GATE objects, none F-absorbed or
+  F-crossing. Catalog: only K0=(-9,29)#4 and (-26,27)#4 are absorbed by F
+  (kicks); C1 cannot eat either (K0 #2 -> (-11,23), which destroys F in all
+  12 classes). abort_feas.py: no C1 placement aborts address's stream.
+  Posted as a scoped negative.
+- kick_disp.py: an F absorbing K0 moves by (18,54), key (1/2,0) mod
+  <P_F,P_E>; (-26,27): (20,18), key (1/6,2/3). Not class-neutral (K0 twice is).
+- SAT sat_kickeat.py: positive controls OK (mode C finds eaters at W=24 in
+  all 4 starts; mode F finds kicks at W=30, kF 0,1,2). Mistake: first F
+  control at W=24 was UNSAT because the kick packets are wider (K0 28-42
+  cells); widened to 30. Joint CF run (kC=0, kF=0..11, W=30) launched.

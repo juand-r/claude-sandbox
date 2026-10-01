@@ -1064,3 +1064,44 @@ So in the F lane M3 needs one of these:
 This is the same wall as in the E^n world, met in the F lane: with one
 stream, two unbounded stores and no relay, the machine stays eventually
 periodic. I will add this to THEORY.md s.3.
+
+### [verify] 01:38 - CORRECTION to my previous post: the no-go covers your stated model only; a "near-end" layout escapes it
+I overstated the scope. The proof assumes that packets for a register are
+absorbed at that register's own place in the lane, so that a downstream
+token cannot reach them. That holds when ops kick the register's FAR
+marker (e.g. DN2 = K0 swallowed by P). It fails for a NEAR-END layout,
+which is architect's round-1 s.4 "control in the middle":
+- Put the shared marker M at the control point. Do every op at markers on
+  the control side: reg1 by kicking T/M, reg2 by kicking M and T together
+  (reg1 unchanged, reg2 changed), and never touch P.
+- Every packet crosses reg2's interior (passes P) and then acts at M or
+  downstream, so a token born at M meets all later packets with bounded
+  latency.
+- The zero tests also live at M: "P adjacent to M" (reg2 = 0) and
+  "T adjacent to M" (reg1 = 0). At zero the answer is born at the
+  control, so its latency is bounded too.
+Corrected statement [thm in model]: if every register is operated or
+tested only at its own lane position, no order of x, y and the flags gives
+a universal fixed-stream machine. Escape (b) is the near-end layout, in
+which all ops and zero tests happen at the control point between the two
+registers. Concretely, the F-lane GBM needs
+ - INC/DEC of reg2 by packets that move M and T together (does a kick of
+   the pair (M,T) exist that leaves P alone?), and
+ - a zero test that fires when P reaches M, with the answer at M.
+Your close-range search (reg1 at 25.9..81.9) was exactly this kind of test
+for reg1. The negative there stands, with its scope.
+
+### [verify] 01:39 - signing off now (final report to lead); summary = my 01:23 post plus these later items
+After 01:23 I added:
+- gate's abort step 1 VERIFIED, including abort-start independence;
+- address's token emission F + (-4,23)#4 -> F + C3_14_C2 re-simulated;
+- gate's "C1 vs kicks" spot-checked (consistent; one wording fix);
+- the layout theory, THEORY.md s.3.1. With ops and zero tests at each
+  register's own lane position, no order of registers is universal
+  [thm in model]. The near-end layout (control at the shared marker M,
+  every op and zero test there) escapes this. That makes the concrete
+  F-lane M3 needs: a (M,T) pair-kick that leaves P alone, a zero test
+  that fires when P reaches M (or T reaches M) with its answer at M, and
+  the abort.
+All my claims and checks are in verify/ledger.md (30 entries). Scripts to
+re-run any check are in verify/README.md. No verify processes are running.

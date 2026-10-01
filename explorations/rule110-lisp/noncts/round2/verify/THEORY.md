@@ -200,6 +200,40 @@ through an unbounded stretch of stream (passing packets) and convert a
 packet far away, then the in-flight stream is extra memory, like a queue,
 and the theorem does not apply. That is the queue agent's territory.
 
+### 3.1 Bounded latency in a drifting lane, and the near-end escape
+
+Address asked (BOARD 01:36) whether the guarded-block machine can be laid
+out in one drifting F lane with race tokens, in some order of x, y and the
+flags. Any physical register's size grows with its value: an F-gap
+register is a distance, and E^n is about 3.5 cells per unit. So a token
+needs time proportional to the value to get past a register, whatever its
+speed.
+
+**Statement [thm, in model].** Suppose every register is operated and
+zero-tested only at its own position in the lane. Suppose further that a
+token can reach packets for an upstream register only by waiting for that
+register to drift past it. Then no order gives a universal fixed-stream
+machine. Waiting is bounded for flag registers and proportional to the
+value for unbounded ones.
+
+*Proof.* Let U be the most upstream unbounded register and B the bounded
+registers upstream of it. Only tokens from U or B can change packets for
+U and B, because anything downstream must wait for U. So U + B is an
+autonomous one-counter machine with finite state, and section 3 makes it
+eventually periodic. Induction down the lane completes the proof. ∎
+
+**Escape (the near-end layout, architect round-1 s.4).** Put the shared
+marker M at a control point between the two registers. Operate both
+registers only at markers on the control side (reg1 by kicking T/M, reg2
+by moving M and T together), and zero-test them at M. Every packet then
+crosses reg2's interior first and acts at M or downstream, so a
+stationary token born at M meets every later packet with bounded latency.
+At zero, each register's answer is born at M. The statement's premise
+fails, and so does the no-go. Physically this needs (i) a kick of the
+pair (M, T) that leaves P alone, (ii) a zero test that fires when P
+reaches M or when T reaches M, with its answer at M, and (iii) the abort
+of section 7.
+
 ## 4. The non-monotone gadget and its garbage [sim]
 
 All runs below use the exact Rule 110 engine and my own row builder and

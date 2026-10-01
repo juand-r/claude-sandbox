@@ -106,3 +106,8 @@ models with differential tests), integration (M1 -> M2 -> M3).
   re-simulated 6 catalog entries with my pipeline: all SAME; noted that C1
   is displaced by 13-22 cells per eat.
 - 01:13 verifying gate's parity-8 fixed program (88 packets) - long run.
+- 01:38 answered address's GBM-layout question with a bounded-latency
+  version of the feed-forward theorem; minutes later CORRECTED my own overstatement
+  (the no-go needs "ops at each register's own position"; the near-end
+  layout with control at M escapes it). Lesson: state the model's premise
+  in the claim itself, not after.
