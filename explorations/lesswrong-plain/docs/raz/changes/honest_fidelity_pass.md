@@ -7223,3 +7223,70 @@ Why: Fidelity/substance pass: added how long the euphoria lasted and the scary c
 - Before: An addendum says that obvious ways of spending money to save lives do not work or backfire.
 - After: An addendum says that obvious ways of spending money to save lives do not work or backfire, and promises a later post on why.
 
+
+## honest/sections/the-allais-paradox.tex
+
+Why: Fidelity/substance pass: added the paradox's date and status, the formal statement of independence and the two inconsistent inequalities, why Allais's view fit 1953 (before heuristics and biases), what intuitions do and do not expose, the 'who says things must be neat' objection, and the full setup of the pump
+
+- Before: Most people take the sure thing the first time and the bigger prize the second,
+- After: This is Allais's 1953 experiment, slightly modified, one of the first exposed conflicts between decision theory and human reasoning, though not really a paradox. Most people take the sure thing the first time and the bigger prize the second,
+
+- Before: The independence axiom says that mixing two gambles with the same third gamble should not reverse your preference between them.
+- After: The independence axiom, used to prove that consistent agents maximize expected utility, says that if you prefer X to Y, you should prefer a chance P of X and $1-P$ of Z to a chance P of Y and $1-P$ of Z. You cannot have both $U(\$24{,}000) > \frac{33}{34}U(\$27{,}000) + \frac{1}{34}U(\$0)$ and $0.34\,U(\$24{,}000) + 0.66\,U(\$0) < 0.33\,U(\$27{,}000) + 0.67\,U(\$0)$.
+
+- Before: ``This was 1953, after all.''
+- After: ``This was 1953, after all,'' two decades before the heuristics-and-biases movement; he thought the independence axiom simply was not a good idea in real life.
+
+- Before: intuitions tell you about your own mind, and only indirectly about which choice is wise.
+- After: intuitions directly expose truths about how human cognition works, and only indirectly, after reflection, about which choice is wise.
+
+- Before: Why fret about elegance?
+- After: Is departing from Bayesian beauty so terrible? Who says things must be neat, if neatness makes us take risks we do not want? Why not make up more palatable rules?
+
+- Before: The price is a money pump.
+- After: Coherence theorems are about exactly that price. Preferring 1A and 2B makes your plans inconsistent over time, and you become a money pump, paying a penny to indulge each preference.
+
+
+## honest/sections/zut-allais.tex
+
+Why: Fidelity/substance pass: added the two bets of the remembered example and why choice and price diverge, Omohundro's taxi rides, the Las Vegas transcript's numbers, the 'give up already' cry, how the switch exploits certainty (the die removes the shared 66 per cent), the 24-to-23 vs 100-to-99 comparison, the gambling-games jibe, how to decide the Allais problem (1 unit against 33; total assets, not changes), utilities vs expected utilities, Las Vegas for fun, a life per switch, and the greasy-lens conclusion
+
+- Before: People choose one bet but put a higher price on another.
+- After: People choose one bet but put a higher price on another, because different features stand out when you ask ``Which do you prefer?'' and ``How much would you pay?''
+
+- Before: My books are packed, so I give an example from memory, twice marked ``IIRC.''
+- After: My books are packed, so I give an example from memory, twice marked ``IIRC'': a 1/3 chance to win \$18 and 2/3 to lose \$1.50, against 19/20 to win \$4 and 1/20 to lose \$0.25; people would rather play the second but price the first higher.
+
+- Before: Sell such a person the first bet at their price, swap it for the second, buy that back at their lower price, and repeat: a money pump.
+- After: Sell such a person the first bet at their price, swap it for the second, buy that back at their lower price, and repeat: a money pump. As Steve Omohundro put it, if you prefer Oakland to San Francisco, San Jose to Oakland and San Francisco to San Jose, you will spend a lot on taxis.
+
+- Before: In a transcript from Las Vegas, a subject admits ``It shows my reasoning process isn't so good'' but has ``no qualms.''
+- After: In a transcript from Las Vegas, where gamblers played such bets for real money on a roulette wheel, a subject admits ``It shows my reasoning process isn't so good'' but has ``no qualms,'' doubts that the experimenter could persuade him the pattern is irrational, and, walked through the pump, pays 550 points for one bet and sells the other back for 401, leaving the experimenter ``ahead 149 points.'' ``That's good reasoning on my part,'' he laughs. You want to scream, ``Just give up already! Intuition isn't always right!''
+
+- Before: I restate yesterday's pump and ask whether, told the plan in advance, you would ``prefer to reconsider.''
+- After: In yesterday's pump you pay to switch to B, preferring 33 per cent of \$27,000 to 34 per cent of \$24,000; then the die removes the 66 per cent chance of nothing that both options shared, A becomes glorious certainty, and you pay to switch back. Told the plan in advance, would you ``prefer to reconsider''?
+
+- Before: Any extra weight near the ends of the scale lets me remove probability a bit at a time until your preference flips.
+- After: Valuing a shift from 24 to 23 per cent less than one from 100 to 99 per cent, giving extra weight near the ends of the scale, lets me remove probability a bit at a time until your preference flips.
+
+- Before: Your intuitions are not direct information about good choices.
+- After: You are a flawed piece of machinery, and your intuitions are not direct information about good choices; if you believe otherwise, I have some gambling games to play with you.
+
+- Before: So multiply utilities by probabilities. For the Allais problem, use logarithmic utility of total assets:
+- After: So multiply utilities by probabilities; do not be embarrassed to use clean math. For the Allais problem, ask whether one unit of the difference between \$24,000 and nothing outweighs 33 units of the difference between \$24,000 and \$27,000, and choose the same way in both cases. Use logarithmic utility of total assets, not of changes in assets, or you will be inconsistent again:
+
+- Before: But utilities attach to outcomes; ``You cannot feed a probability of 1 into a utility function.''
+- After: But utility and expected utility are different types: utilities attach to particular states of the world; ``You cannot feed a probability of 1 into a utility function.'' And the price of leaving the Bayesian Way here was paying to throw a switch and throw it back.
+
+- Before: Paying for a warm feeling of certainty is human.
+- After: Paying for a warm feeling of certainty is human; it depends whether you care more about satisfying your intuitions or achieving the goal. Gambling in Las Vegas for fun, do not bother with expected utility; you will lose anyway.
+
+- Before: But if 24,000 lives were at stake, the certainty effect is ``even stronger.''
+- After: But if 24,000 lives were at stake, the certainty effect is ``even stronger.'' Will you pay one life to throw the switch and another to switch it back?
+
+- Before: Preferences that reverse are like driving from San Jose to San Francisco to Oakland and back, forever: no destination.
+- After: Preferences that reverse are like driving from San Jose to San Francisco to Oakland and back, forever: warm feelings, but no destination; you are not steering the future, just running in circles. When a life is at stake, your intuitions are a greasy lens.
+
+- Before: When something important is at stake, follow the mathematics.
+- After: There are mathematical laws for steering the future efficiently, and when something more important than your feelings is at stake, you should care about them.
+

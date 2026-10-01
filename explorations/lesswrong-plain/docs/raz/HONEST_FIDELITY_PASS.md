@@ -317,8 +317,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] value-is-fragile
 - [x] the-gift-we-give-to-tomorrow
 - [x] one-life-against-the-world
-- [ ] the-allais-paradox
-- [ ] zut-allais
+- [x] the-allais-paradox
+- [x] zut-allais
 - [ ] feeling-moral
 - [ ] the-intuitions-behind-utilitarianism
 - [ ] ends-don-t-justify-means-among-humans
