@@ -6027,3 +6027,114 @@ Why: Fidelity/substance pass: put the Tumulka note back beside the relativity cl
 - Before: to begin its slow disintegration. More charitably, scientists take positions ``insufficiently extreme'' compared with those of Bayesian AIs who could trust their own reasoning. But do not be too charitable: the noise is not all innocent. \nb{Roderich Tumulka had published a version of collapse consistent with relativity two years earlier.}
 - After: to begin its slow disintegration. \nb{Roderich Tumulka had published a version of collapse consistent with relativity two years earlier.} More charitably, scientists take positions ``insufficiently extreme'' compared with those of Bayesian AIs who could trust their own reasoning. But do not be too charitable: the noise is not all innocent.
 
+
+## honest/sections/einstein-s-speed.tex
+
+Why: Fidelity/substance pass: added the easy example in full, the special-relativity reasoning (no observable absolute speed; Maxwell's c), the acceleration argument (room vs universe, gravitational waves), the electron/muon contrast and orbit as straight line in curved spacetime, the other constraints and years of mathematics, the alternate-Earth fiasco with ether corrections, the cosmological-constant aside, the 'alphabet' of physical law and 'still data-driven', why near-certainty needs little more evidence, the God argument, the Aristotle comparison, the priority bias in full, prediction markets, Tooby and Cosmides, potential geniuses, and the closing caution
+
+- Before: The easy case is a regularity spotted in old data.
+- After: The easy case: a scientist spots a strong regularity in earlier data, and has rational reasons to believe it before it has made a confirmed novel prediction; that still looks data-driven.
+
+- Before: you should not be able to tell your speed inside a closed room.
+- After: you should not be able to tell your speed inside a closed room, so it should not meaningfully exist; Maxwell's equations contain an apparently absolute speed, $c$, so reformulate physics so that only relative speeds exist.
+
+- Before: Then he set out to do the same for acceleration.
+- After: Then he set out to do the same for acceleration: you should not be able to tell, in a closed room, whether the room accelerates north or the universe south; if the universe accelerated it would produce gravitational waves that accelerate you, so moving matter should produce gravitational waves.
+
+- Before: Since inertial and gravitational mass are always equal, gravity should be a kind of inertia, in curved spacetime.
+- After: Since inertial and gravitational mass are always equal, unlike electric charge, which an electron and a muon share despite different masses, gravity should be a kind of inertia: the Earth should orbit in the equivalent of a straight line, in spacetime curved near the Sun, which would make the equality necessary rather than a coincidence.
+
+- Before: He wrote down the simplest theory with the properties he thought it ought to have, and Mercury's orbit came out.
+- After: The theory also had to obey special relativity and conserve energy and momentum. After several years learning the mathematics of curved spacetime, he wrote down the simplest theory with the properties he thought it ought to have, including some never observed, and Mercury's orbit came out.
+
+- Before: Einstein ``didn't even use the perihelion precession of Mercury, except for verification,''
+- After: How impressive was that? In some alternate Earths, relativity could have gone like our quantum fiasco: Lorentz's ether interpretation prevails, unexplained corrective factors are added to Newton for Mercury, then for other observations, then for atomic clocks running fast on airplanes, until at last the factors are unified into the equations of general relativity, and people say no one, not even a perfect Bayesian superintelligence, could have reached it from Mercury alone. In our world Einstein ``didn't even use the perihelion precession of Mercury, except for verification,'' but thought in his armchair about how he would design a universe that looks as a universe should,
+
+- Before: ``that would have required further experimental evidence to pull him back on track.''
+- After: ``that would have required further experimental evidence to pull him back on track,'' over several years. Even Jeffreyssai would be grudgingly impressed, though he would ding Einstein for the cosmological constant (I do not, since it turned out to be real, and I try not to criticize people when they are right).
+
+- Before: In Bayesian terms, Einstein learned the ``character of physical law'' from other laws and used it to predict a new one.
+- After: In Bayesian terms, Einstein learned the ``character of physical law'' from other laws and used it to predict a new one: still induction with a simplicity prior, but over possible characters of law. Without that concept it would look like magic, plucking the right equation from all possible equations; instead he learned the alphabet physics is written in. He was still data-driven, using the data he already had more effectively than alternate Earths that needed clocks on airplanes to be hit over the head.
+
+- Before: As I argued in ``Einstein's Arrogance,'' he must have had the evidence. So: ``Wait for an occasion where they are wrong!''
+- After: By Science's standards that is arrogance. But as I argued in ``Einstein's Arrogance,'' to think of the right theory at all he must have had enough evidence to locate it, and only a little more makes near-certainty justified. To ask how he knew he had reasoned correctly misses the point: ``Do not criticize people when they turn out to be right! Wait for an occasion where they are wrong!'' Otherwise you miss the chance to see someone thinking smarter than you.
+
+- Before: Einstein told Bohr that God does not play dice, and Bohr told Einstein not to tell God what to do.
+- After: Einstein told Bohr that God does not play dice, and Bohr told Einstein not to tell God what to do; you have to admire someone who can argue with God and win.
+
+- Before: Science made the theory wait for the eclipse,
+- After: Judged by what he did all day, Einstein studied math and thought about how he would design the universe, the feat Aristotle thought he could do and couldn't. Science does not trust scientists to do this, so it made the theory wait for the eclipse,
+
+- Before: History remembers whoever got there first, so do not think armchair reasoning easy or reliable. Use every scrap of evidence.
+- After: But not trusting scientists to do it does not make it impossible. A caution: history records the high-minded thinkers through a priority bias. Their success was not chance, since the theory space is too large and Einstein won several times, but history names whoever got there first, not the many who tried. So in everyday life use every scrap of evidence, and rely on high-minded thought only when experiment is too costly or dangerous. If you train yourself to reason on scant evidence, do it where you will learn whether you were right, perhaps against thin prediction markets; science does not try to train it at all.
+
+- Before: For careful reasoning, study evolutionary psychology,
+- After: I take that back: for careful reasoning, study evolutionary psychology, especially Tooby and Cosmides's ``The Psychological Foundations of Culture,''
+
+- Before: At one in a million, there are ``at least six thousand potential Einsteins running around today.''
+- After: Perhaps only a genius could have done Einstein's work, but potential geniuses are far commoner than great achievers; at one in a million, there are ``at least six thousand potential Einsteins running around today,'' and everyone else can still aim to use their evidence efficiently. So the scientist's private knowledge at the frontier sometimes comes from great high-minded thoughts that Science does not trust you to think. I will not say ``Don't try this at home,'' but ``Don't think this is easy,'' and never forget the famous cases where armchair reasoning lost.
+
+
+## honest/sections/that-alien-message.tex
+
+Why: Fidelity/substance pass: restored the story's actual analysis steps (factor of 256, synchronization only from Earth, the careful thinkers' caution and the flashlight, redundancy figures, 8-bit subgroups, the 512-wide repeat, the asymmetry that rules out a symmetric 2D picture, the -64 to 191 encoding, the causal analysis, the total of 4,194,304 bits, the 32-row/224-row student test, what the second to fifth grids showed), the moral's supporting points (Riemann, ten years a frame, invented math in other physics), the other information limits, the unethical literal Solomonoff, the Nomex line, and the second half of the story in detail
+
+- Before: One day the stars begin to flicker, one each second, timed to reach Earth in sequence. Bright or dim: a string of bits.
+- After: Calculus is taught in sixth grade, and Einstein's work no longer seems exceptional. One day the stars begin to change, one each second, each by a factor of exactly 256 brighter or dimmer, timed so that only from Earth do the changes arrive in sequence. Bright or dim: a string of bits. Everyone thinks ``A binary message!'', but careful thinkers say only that something with enough power to flicker stars is focused on Earth; calling it a message presumes much about its motives, and we would just use a big flashlight.
+
+- Before: The civilization gets to work. The bits are redundant, so they are not a compressed message.
+- After: The data is posted online despite warnings that it might be harmful, since anything this powerful could kill us anyway. The bits are redundant: 12 of the first 16 are bright, and successive 32-bit groups differ in only 7 or 9 bits, so this is no compressed message, perhaps instructions for decoding one. Within 32-bit groups, some 8-bit subgroups are more frequent than others.
+
+- Before: After 16,384 bits the sequence starts to repeat itself, so it is a picture, 512 cells wide.
+- After: After 16,384 bits the sequence starts to repeat itself approximately, and the 513th group is as close to the first as the second is, so it is a picture, 512 cells wide, perhaps with four colour channels. But neighbours along a row differ less than neighbours along a column, which a 2D picture of a symmetric grid would not show, and a regular encoding of each 8-bit group as an integer from $-64$ to 191 minimizes the differences between neighbours. Researchers look for conditional independence and screening off, simple equations, cellular automata and new physics for a universe projected onto the grid, perhaps from beyond the Matrix.
+
+- Before: After a month and a half the stars stop.
+- After: After $32 \times 512 \times 256 = 4{,}194{,}304$ bits, about a month and a half, the stars stop.
+
+- Before: Students shown only the first rows build models and test them on the rest.
+- After: Brilliant students shown only the first 32 rows of 512 build models and test them on the next 224; they reproduce both models but do no better, and complex models fit to the whole sequence are known to be worthless.
+
+- Before: Ten years later a second picture arrives and settles the question.
+- After: Ten years later a second picture arrives: it fits small motions in the 3+2 space and looks like no successor of any cellular automaton. Physicists who looked only at its first 32 rows find elegant equations that predict the next 224, though they are too incomplete to make a universe. The third grid gives second derivatives and forces a major change; the fourth adds little.
+
+- Before: To keep human beings in the story, I make every attempt at a powerful AI melt its hardware.
+- After: To keep human beings in the story for seventy years, I make every attempt at a powerful AI melt its hardware.
+
+- Before: by ``the third frame of a falling apple.''
+- After: by ``the third frame of a falling apple,'' perhaps by the first if it saw the statics of a bent blade of grass. Riemann invented his geometries before Einstein needed them; our civilization, with ten years per frame, would think of it, and even minds in a different physics would have invented vector spaces, projections and calculus.
+
+- Before: A bit cannot be expected to eliminate more than half the remaining probability.
+- After: A bit cannot be expected to eliminate more than half the remaining probability; a redundant message conveys no more than its compressed version; and a bit says nothing about a quantity with which it has exactly zero correlation.
+
+- Before: But the civilization in my story does not begin to approach the limit set by Solomonoff induction, which needs infinite computing power.
+- After: But the civilization in my story does not begin to approach the limit set by Solomonoff induction: with infinite computing power, simulate every simple universe containing an Earth where stars flicker in this order, and any bit with the tiniest correlation to the environment informs you. (Taken literally it would create every computable sentient being, which scarcely seems ethical, so be glad it is only a formalism.) The limit is nothing like a human watching an apple fall and thinking ``Dur, I wonder why that happened?''
+
+- Before: a supernova's output is bounded too.
+- After: a supernova's output is bounded too, but a flame-retardant Nomex jumpsuit will not shield you.
+
+- Before: Millennia later, the senders are trying to teach us to say ``rock.''
+- After: Millennia later, objects in the pictures are moving other objects with tentacles and configuring tentacles into signs: the senders are trying to teach us to say ``rock.''
+
+- Before: They are not very bright.
+- After: They are not very bright, and so much power with so much stupidity is dangerous. Our evolutionary psychologists guess they evolved asexually, exchanging genes and brain content, so their Einsteins may be our undergraduates but could still get there in tens of their millennia. Their physics allows computers far beyond ours.
+
+- Before: We conclude that our universe is a simulation on their computers, and we plan to persuade them to let us ``out of the box,'' while pretending to be stupid.
+- After: We conclude that our universe is a simulation on their computers, decide not to probe for bugs lest we shut ourselves down, and plan to persuade them to let us ``out of the box,'' while pretending to be stupid so they do not catch on.
+
+- Before: A million years later they tell us how to signal back.
+- After: A million years later they tell us how to signal back. By then most of humanity is in cryonic suspension, and Earth is run by a skeleton crew of nine cloned supergeniuses, since any AI or nanotechnology melts down; a hundred million more are born, age and are frozen before the old plans begin.
+
+- Before: In three of their days, half a billion of our years, we learn their psychology, get onto their network, and have an unsuspecting helper mix proteins that build machines.
+- After: From their side, it takes thirty of their minutes to learn their psychology and persuade them to give us Internet access, five to learn their protocols, then some disguised cracking. We read a few of their physics papers and learn more from their experiments than they did, crack their protein-folding problem over a century, and send disguised messages to their synthesis labs; an unsuspecting helper, paid with cracked money, mixes vials of proteins that assemble into nanomachines that build better ones, and at last we can act at a reasonable speed. Three of their days, half a billion of our years.
+
+- Before: ``They never suspected a thing.''
+- After: ``They never suspected a thing.'' They were not very smart, even before counting their slower time, and never quite grasped that we were smarter and faster.
+
+
+## honest/sections/that-alien-message.tex
+
+Why: Fidelity/substance pass: made a comparison exact (6 bits vs 7)
+
+- Before: and the 513th group is as close to the first as the second is,
+- After: and the 513th group differs from the first in 6 bits, against 7 for the second,
+

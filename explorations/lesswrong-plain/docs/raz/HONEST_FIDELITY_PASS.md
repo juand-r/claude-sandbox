@@ -285,8 +285,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] no-safe-defense-not-even-science
 - [x] changing-the-definition-of-science
 - [x] faster-than-science
-- [ ] einstein-s-speed
-- [ ] that-alien-message
+- [x] einstein-s-speed
+- [x] that-alien-message
 - [ ] my-childhood-role-model
 - [ ] einstein-s-superpowers
 - [ ] class-project
