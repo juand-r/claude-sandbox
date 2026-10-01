@@ -291,12 +291,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] einstein-s-superpowers
 - [x] class-project
 - [x] a-technical-explanation-of-technical-explanation
-- [ ] ends-an-introduction
-- [ ] not-for-the-sake-of-happiness-alone
-- [ ] fake-selfishness
-- [ ] fake-morality
-- [ ] fake-utility-functions
-- [ ] detached-lever-fallacy
+- [x] ends-an-introduction
+- [x] not-for-the-sake-of-happiness-alone
+- [x] fake-selfishness
+- [x] fake-morality
+- [x] fake-utility-functions
+- [x] detached-lever-fallacy
 - [ ] dreams-of-ai-design
 - [ ] the-design-space-of-minds-in-general
 - [ ] where-recursive-justification-hits-bottom

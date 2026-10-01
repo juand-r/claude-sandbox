@@ -6360,3 +6360,191 @@ Why: Fidelity/substance pass: moved the classical-statistics remark next to the 
 - Before: Last, imagine waking
 - After: Then imagine waking
 
+
+## honest/sections/ends-an-introduction.tex
+
+Why: Fidelity/substance pass: added the movies-with-Sam example, the ways we fail to act as we wish, the practical stakes of a usable theory of value, why theory must not obstruct practice, the two warning signs, what fun theory covers, the other futurist ideas, utopia as 'non-place' and value as work, the game example and outcomes involving beings who can love and hurt, and the footnote's anti-aging example
+
+- Before: and everyday values like food and friendship.
+- After: and everyday values like art, food, sex and friendship; going to the movies with your friend Sam can be a value without being a moral one.
+
+- Before: We study our values because we do not act as we wish.
+- After: We study our values because we do not act as we wish: our preferences conflict, we want different desires, and we lack the will, attention or insight to act as we would like.
+
+- Before: We also misjudge what we actually wish.
+- After: We also misjudge what we actually wish: there is a gulf between how we think we wish to act and how we actually wish to.
+
+- Before: ``piled high with the corpses of failed Guiding Principles.''
+- After: ``piled high with the corpses of failed Guiding Principles.'' That track record bodes ill for anyone who needs a reliable, usable account of their goals, whether to design safe AI, build institutions, choose a charity or decide which virtues to cultivate.
+
+- Before: When to trust snap judgments over theory has no catch-all answer; we will have to look at examples.
+- After: A deeper understanding of your values should make you better at fulfilling them, and at the least should not get in the way: ``What good would it be, then, to know what's good?'' When to trust snap judgments over theory has no catch-all answer; we will have to look at examples and learn the warning signs of where sophisticated theories fail and where naive feelings fail.
+
+- Before: Yudkowsky coined ``fun theory'' for it.
+- After: Yudkowsky coined ``fun theory'' for it: what our ideal future would look like, not just its government or moral code but the adventures we would go on and the music we would compose.
+
+- Before: and debates such as hedonism against eudaimonia.
+- After: and debates such as hedonism, the pursuit of pleasure, against eudaimonia, general well-being; the book also discusses cryonics, mind uploading and space colonization.
+
+- Before: Utopia-planning has become ``rather passe,'' because it seems naive and because we are bad at building utopias.
+- After: Utopia-planning has become ``rather passe,'' because it seems naive and because we are bad at building utopias; the word itself means ``non-place.''
+
+- Before: ``it's not obvious'' that our short-term pursuits will add up to a good future.
+- After: ``it's not obvious'' that our short-term pursuits will add up to a good future. Value is not inevitable; creating and preserving it takes work.
+
+- Before: In a game the journey matters; in saving a family member's life the outcome does.
+- After: In a game the journey matters, and we do not want to skip ahead to being declared the winner; in saving a family member's life the outcome does, and you would take a less enjoyable strategy that worked better. Often our values lie in how the world turns out, especially the parts that can love and hurt and want.
+
+- Before: In a footnote I describe Sandel's objection
+- After: A footnote gives a transhumanist argument: we could abolish ageing and disease within decades or centuries, as some organisms such as lobsters and Aldabra giant tortoises show negligible senescence, so we should invest in it. It also describes Sandel's objection
+
+- Before: as the worry that it would make life feel like less of a ``gift.''
+- After: to enhancement as the worry that it would make life feel like less of a ``gift.''
+
+
+## honest/sections/not-for-the-sake-of-happiness-alone.tex
+
+Why: Fidelity/substance pass: added Stock's reply and the mutual surprise, what the question is not (common scale; valuing only one's own states), the ibuprofen example, the ice cream comparison and that everything valued involves people, the holodeck point about zombie loved ones and powerful agents, and the actual-complications and wasted-potential points
+
+- Before: and be more fun than the real work.
+- After: and be more fun than the real work: the real thing ``won't be able to compete.''
+
+- Before: I told Stock: ``I agree that's possible, so I'll make sure never to take them.''
+- After: I told Stock: ``I agree that's possible, so I'll make sure never to take them.'' Stock seemed surprised, which surprised me.
+
+- Before: My question is whether we should care about the things that make us happy apart from the happiness they bring.
+- After: The question is not whether all happinesses share one scale, nor whether we can value only our own mental states, since we may care about others' happiness. It is whether we should care about the things that make us happy apart from the happiness they bring.
+
+- Before: Second, a result of an action need not be its only reason.
+- After: Second, a result of an action need not be its only reason: if I take ibuprofen for a headache while writing, less pain is one consequence, not necessarily the main reason, and I can value something both for itself and as a means.
+
+- Before: ``I'd have to say no.''
+- After: ``I'd have to say no.'' Valuing a lifeless object for itself would be like valuing ice cream apart from anyone eating it; everything I value involves people and their experiences somewhere.
+
+- Before: I would not enter a holodeck even if a pill made me forget it.
+- After: I would be disturbed if people fell in love with mindless wallpaper in holodecks, even unknowingly, which matters if some agents could substitute zombies for people's loved ones without their knowledge. I would not enter a holodeck even if a pill made me forget it.
+
+- Before: I also value freedom: an outcome counts for less if an unseen puppet master arranged it.
+- After: I also value freedom: an outcome counts for less if an unseen puppet master arranged it, even if no one knew, which matters if agents become powerful enough to tweak people's futures helpfully without their knowledge.
+
+- Before: I prefer a life that is really complicated to being ``a pleasure center in a vat.''
+- After: I value a life complicated enough to be challenging, with actual complications rather than the feeling of them, so being ``a pleasure center in a vat'' does not appeal to me; it would waste humanity's potential, which I want actually fulfilled.
+
+
+## honest/sections/ends-an-introduction.tex
+
+Why: Fidelity/substance pass: corrected my paraphrase of the footnote's analogy
+
+- Before: we could abolish ageing and disease within decades or centuries, as some organisms such as lobsters and Aldabra giant tortoises show negligible senescence, so we should invest in it.
+- After: we could abolish ageing and disease within decades or centuries, which would put us in the position of organisms with negligible senescence, such as lobsters and Aldabra giant tortoises, so we should invest in it.
+
+
+## honest/sections/fake-selfishness.tex
+
+Why: Fidelity/substance pass: added the religious example (stoning unbelievers vs wanting to be nice), the exploitation question, the 'other things with more direct benefits' question, and the footnote's scope-insensitivity motive and 'selfish libertarians only' tag
+
+- Before: find a religious reason for whatever they want to do.
+- After: find a religious reason for whatever they want to do: their religion says to stone unbelievers, but they want to be nice, so they find a religious reason for that.
+
+- Before: So I asked why, if he was genuinely selfish, he wanted me to be selfish.
+- After: So I asked why, if he was genuinely selfish, he wanted me to be selfish. Did that not show concern for my welfare? Should he not persuade me to be more altruistic, so he could exploit me?
+
+- Before: I asked whether persuading me was ``the most selfish thing'' he could be doing.
+- After: Would he really gain more from me if I became selfish? I asked whether persuading me was ``the most selfish thing'' he could be doing, when other uses of his time would benefit him more directly.
+
+- Before: Would you die now to save the Earth, rather than live one more year and die with it?
+- After: Would you die now to save the Earth, rather than live one more year in comfort and die with it? Since scope insensitivity makes many people care more about one life than the Earth:
+
+- Before: Would you steal a thousand dollars from Bill Gates if no one could ever find out?
+- After: Would you steal a thousand dollars from Bill Gates if no one could ever find out? (For selfish libertarians only.)
+
+
+## honest/sections/fake-morality.tex
+
+Why: Fidelity/substance pass: added how to steer by the fear as a compass, the Piers Anthony line, hellfire rather than cookies, the content of both philosophers' arguments (efficient market; iterated Prisoner's Dilemma, Tit for Tat, studies of meaning), and the 'blank out the recommendations' test
+
+- Before: The fear of losing a moral compass is itself a moral compass.
+- After: If you fear God not punishing some deed, that is a moral compass; you can plug it into your decisions and simply not do whatever you fear God might not punish. The fear of losing a moral compass is itself a moral compass.
+
+- Before: ``I suspect you are steering by that compass, and that you always have been.''
+- After: ``I suspect you are steering by that compass, and that you always have been.'' As Piers Anthony said, ``Only those with souls worry over whether or not they have them''; replace ``soul'' with ``morality'' and the point carries.
+
+- Before: Even a threat of hellfire works only because people already dislike hellfire.
+- After: Even that God threatens hellfire, rather than cookies, relies on a value people already hold against hellfire.
+
+- Before: and the market pays most for the work that benefits society most.
+- After: so take the best-paid job, since the efficient market pays more for work it judges more valuable, and taking less second-guesses the market.
+
+- Before: The second says: be altruistic, because cooperation pays and people who contribute are happier.
+- After: The second says: be altruistic, because the world is an iterated Prisoner's Dilemma in which Tit for Tat with initial cooperation does best, people do not like jerks, nice guys finish first, and studies show that people who contribute and find meaning are happier.
+
+- Before: The first justifies selfishness by its benefit to everyone; the second justifies altruism by its benefit to himself.
+- After: Blank out the recommendations: the first justifies selfishness by its benefit to everyone; the second justifies altruism by its benefit to himself, in status or pleasure.
+
+
+## honest/sections/fake-utility-functions.tex
+
+Why: Fidelity/substance pass: added Maier's and Dawes's words, the acyclic-graph sense of 'supergoal' and the happy death spirals, the 'maximize fitness' misreading, the examples of underived loves, the With Folded Hands dystopia described, the dutiful-search point, the bananas joke, why substitutes need infinite patches, and the addendum
+
+- Before: Norman Maier advised groups not to propose solutions too soon.
+- After: Norman Maier advised groups: ``Do not propose solutions until the problem has been discussed as thoroughly as possible without suggesting any,'' and Robyn Dawes used the edict especially on very tough problems.
+
+- Before: meaning ``super'' in the sense of ``parent.''
+- After: meaning ``super'' in the sense of ``parent,'' the source of a link in an acyclic graph.
+
+- Before: Some people seem to have heard ``the Superest Goal Ever.''
+- After: Some people seem to have heard ``the Superest Goal Ever,'' the single rule from which all ethics derives, and gone into happy death spirals.
+
+- Before: as anyone who has studied evolutionary psychology should know.
+- After: as anyone who has studied evolutionary psychology should know; a short explanation gets heard as ``humans are trying to maximize fitness,'' the opposite of what the field says.
+
+- Before: A parent's love for a child is not derived from a child's love for a parent, or from anything else.
+- After: A parent's love for a child, a child's for a parent, a man's for a woman and a woman's for a man are not derived from one another or from anything else; a mother need not do moral philosophy to love her daughter.
+
+- Before: My example is a science-fiction story, Jack Williamson's ``With Folded Hands,''
+- After: A superintelligence that wants everything for us that we want for ourselves, except control over our own lives and goals, is one of the oldest dystopias. My example is a science-fiction story, Jack Williamson's ``With Folded Hands,''
+
+- Before: The proposers do not look for objections;
+- After: The proposers do not look for objections, as opposed to a dutiful search that finds only questions with snappy answers;
+
+- Before: Proposers argue from good consequences instead, because that sells; one who really does reduce everything to the idea will convince no one.
+- After: Proposers argue from good consequences instead, because that sells: if your One Great Idea is bananas, you sell more bananas by arguing that they lead to better sex than by claiming you should want sex only when it leads to bananas. One who really does say that will convince no one.
+
+- Before: In the end, only your morality reliably reproduces the decisions your morality would make.
+- After: In the end, only your morality reliably reproduces the decisions your morality would make; substituting instrumental means for terminal ends loses purpose and needs endless patches, because the system lacks the source of the instructions.
+
+- Before: than to compress a large file into 10 bits.
+- After: than to compress a large file into 10 bits. (This post is only about why simple utility functions fail; Friendly AI itself needs much more groundwork.)
+
+
+## honest/sections/detached-lever-fallacy.tex
+
+Why: Fidelity/substance pass: added what the brain's apple machinery involves (seeing, touching, eating; temporal cortex; motor programs), 'five ASCII characters', why the lever seems to be everything (perception of differences), the fish/Mormon and lizard/college line, Tit for Tat and spoiled children, the Tooby-Cosmides and Pinker references, why human culture absorption works only for humans, the naughty-AI and sullen-teenager points, what 'learning' hides, the deeper-than-it-appears principle, and the closing image
+
+- Before: Your brain stores what you know of apples, and writing ``apple'' pulls a lever on another person's similar machinery.
+- After: You have seen, touched, bought, sliced and tasted apples; your temporal cortex somehow stores a generalized image that recognizes new apples from new angles, and your motor cortex and cerebellum store programs for using them. Writing ``apple,'' five ASCII characters, pulls a lever on another person's similar machinery.
+
+- Before: The fallacy tempts us because the lever is visible and varies, while the machinery is hidden and always there.
+- After: The fallacy tempts us because the lever is visible and varies, while the machinery is hidden and always there; most people do not know their temporal cortex exists, and since perception is largely the perception of differences, machinery that never switches off is not noticed as a requirement.
+
+- Before: Culture, too, is absorbed through inherited responses.
+- After: Culture, too, is absorbed through inherited responses; try raising a fish as a Mormon or sending a lizard to college.
+
+- Before: Soviet posters could not raise selfless workers.
+- After: Soviet posters could not raise selfless workers; no known childhood environment makes humans selfless. Game theory explains an innate response of returning kindness for kindness and hatred for hatred, provided the kindness does not look too unconditional, hence spoiled children and the testing of limits.
+
+- Before: ``have a much higher probability'' of abusing their own.
+- After: ``have a much higher probability'' of abusing their own, though many break the loop. For more, I point to Tooby and Cosmides and to Pinker's \textsc{The Blank Slate}.
+
+- Before: Raise a baby AI with kind but strict parents and you pull levers on machinery it does not have.
+- After: Raise a baby AI with kind but strict parents and you pull levers on machinery it does not have, built in humans by millions of years of selection; we absorb culture faithfully only because we are humans absorbing a human culture, and humans raised in an alien culture would probably make it more human. The human version is sloppy and works only under particular conditions; it would be stupid and dangerous to build a naughty AI that tests its boundaries and has to be spanked, rather than just asking. Will programmers write, line by line, the code by which an AI that feels slighted conceives a hatred of its makers, a sullen-teenager AI?
+
+- Before: ``The blank slate is a chimera.''
+- After: Kindness is not sneezed into an AI by contagion. Getting information from the environment is possible, but structuring the response so the AI ends up where you want is the major problem; ``learning'' sounds as if the magic is in the environment, when the magic is in the structured response. ``The blank slate is a chimera.''
+
+- Before: People near AI ``usually'' build imitation levers.
+- After: The world is deeper than it appears: every word in print and everything we teach children are surface levers on hidden machinery, and because they are all that varies, they seem to be all that exists. People near AI ``usually'' build imitation levers and are surprised when nothing happens.
+
+- Before: the author replied that ``a very substantial fraction'' made the mistake.}
+- After: the author replied that ``a very substantial fraction'' made the mistake.} So when someone proposes to raise an AI in a loving family, or among liberal democratic values, think of a lever pried off the bridge.
+
