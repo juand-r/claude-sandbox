@@ -1,5 +1,15 @@
 # Plan
 
+## Phase 6: non-CTS team round 4, every remaining avenue (started 2026-10-01)
+
+User: launch new agents exploring every avenue, orchestrated by the lead.
+noncts/round4/ (README with the avenues, BOARD kickoff and rules).
+- [x] six agents: delayline (gap/distance memory), shuttle (wide and
+      multi-step shuttles), objects (other storage objects, crossings),
+      queue (queue machines with finite control), theory (route map,
+      no-go loopholes, models), verify (independent checks, integration)
+- [ ] supervise: board watch, redirect on results, spot-checks, summary
+
 ## Phase 5: non-CTS team round 3, two program streams (started 2026-10-01)
 
 User approved the two-stream idea. noncts/round3/ (README with tiers
