@@ -5329,3 +5329,191 @@ Why: Fidelity/substance pass: repaired a sentence join
 - Before: ``subjectively much more probable,'' Suppose, for example,
 - After: ``subjectively much more probable.'' Suppose, for example,
 
+
+## honest/sections/configurations-and-amplitude.tex
+
+Why: Fidelity/substance pass: added the worked numbers of the first experiment, what a configuration is (a memory location in the territory, not a proposition), why amplitudes cannot be mistaken for probabilities, what the measuring tool gives (arrow lengths, ratios) and how it is realized, the intermediate amplitudes of the second experiment, the numbers with a path blocked, the 1/2 x 1/3 probability bound, the near-miss car example, and what real configurations include
+
+- Before: The mirror passes the amplitude on multiplied by 1 when the photon goes straight and by $i$ when it turns.
+- After: Give ``a photon heading toward A'' the amplitude $-1$. This is a fact in the territory, not anyone's knowledge: a configuration is like a memory location in the program, not a proposition or a possible world, and amplitudes like $-1$ are plainly not probabilities. The mirror passes the amplitude on multiplied by 1 when the photon goes straight and by $i$ when it turns, so ``A to Detector 1'' gets $-i$ and ``A to Detector 2'' gets $-1$, the same every time the program runs.
+
+- Before: We cannot see amplitudes. A ``magical measuring tool,'' counting clicks, gives the ratios of their squared moduli.
+- After: We cannot see amplitudes. A ``magical measuring tool'' gives the ratios of their squared moduli: picture each amplitude as an arrow in the plane, and the tool tells the relative squared lengths but not the directions. Here both have squared length 1, so the ratio is 1; more complicated experiments show the amplitudes themselves were in ratio $i$ to 1. At the level of everyday life, the tool is sending photons one at a time and counting clicks at each detector over thousands of trials.
+
+- Before: I work out the amplitudes: at E, $i$ and $-i$ cancel; at F, $1+1=2$.
+- After: I work out the amplitudes. ``A to B'' gets $-i$ and ``A to C'' gets $-1$; full mirrors turn the photon and multiply by $i$, so ``B to D'' gets $1$ and ``C to D'' gets $-i$, separate configurations because the photons arrive at D from different angles. At E, $i$ and $-i$ cancel; at F, $1+1=2$, a ratio of squared moduli of 0 to 4.
+
+- Before: block one path, and both detectors click equally again.
+- After: block the path from B to D, and E gets $-i$ and F gets $1$, both of squared modulus 1, so both detectors click equally again; blocking C to D gives different amplitudes but the same ratio.
+
+- Before: Probabilities are never negative, so they cannot cancel.
+- After: Amplitudes can cancel because complex numbers can point in opposite directions. Probabilities cannot: $P(Z)=P(Z|X)P(X)+P(Z|\neg X)P(\neg X)$, so if $P(Z|X)$ is 1/2 and $P(X)$ is 1/3, $P(Z)$ is at least 1/6, whatever happens otherwise.
+
+- Before: What could have happened but did not affects nothing.
+- After: Do not think that the photon goes to B or C and the possibility that it went the other way interferes with it. What could have happened but did not affects nothing. When a car almost hits you, what affects your behaviour is your real imagining of the hit, a physical event in your brain, not the hit that did not happen.
+
+- Before: Real configurations cover ``all the particles in the universe,'' in a continuous space.
+- After: Real configurations involve many particles: each should have described the joint positions of all the particles in the mirrors and detectors, and the really real ones cover ``all the particles in the universe,'' experimenters included, with amplitude spread over a continuous space, not the blocky jumps used here.
+
+
+## honest/sections/joint-configurations.tex
+
+Why: Fidelity/substance pass: added the four cases with their amplitudes, that the question of what configurations track has experimental consequences, the classical 25-per-cent bookkeeping that can be merged freely, the sum 7 for the separate parts, and the remark that a linear rule would give a different classical physics
+
+- Before: Of the four routes, two end in the same configuration, one photon going to each detector, and their amplitudes are $1$ and $-1$.
+- After: Start with amplitude $-1$. Both deflected gives $-1 \times i \times i = 1$, flowing to one photon toward E and one toward F; B's deflected and C's straight gives $-i$, to two photons toward E; the reverse gives $-i$, to two photons toward F; both straight gives $-1$, to one photon toward each. The first and last flow to the same configuration, and their amplitudes are $1$ and $-1$.
+
+- Before: The same holds for ``an electron here, an electron there.''
+- After: The same holds for ``an electron here, an electron there'': however you get there, the same species in the same places is the same configuration. So what a configuration tracks has experimental consequences; you can deduce from experiment how reality treats configurations.
+
+- Before: With probabilities you can merge or split possibilities as you like, because the probability that one of two exclusive events happens is the sum of their probabilities.
+- After: In a classical world it would make no difference. I could give 25 per cent each to both photons at E, both at F, B's at E and C's at F, and the reverse, or, not caring which, merge the last two into ``50 per cent that each detector gets one.'' With probabilities you can merge or split possibilities as you like, because the probability that one of two exclusive events happens is the sum of their probabilities.
+
+- Before: while the parts give 5 and 2.
+- After: while the parts give 5 and 2, which sum to 7; in this experiment, flows of 1 and $-1$ sum to 0, though each alone has squared modulus 1.
+
+- Before: quantum physics would be replaced by ``a classical physics.''
+- After: quantum physics would be replaced by ``a classical physics,'' a different one from the illusion of classicality we see from inside the higher levels of our quantum world.
+
+
+## honest/sections/joint-configurations.tex
+
+Why: Fidelity/substance pass: made a quotation verbatim
+
+- Before: merge the last two into ``50 per cent that each detector gets one.''
+- After: merge the last two into ``a 50\% probability that each detector gets one photon.''
+
+
+## honest/sections/distinct-configurations.tex
+
+Why: Fidelity/substance pass: added what makes configurations distinct, the four final amplitudes with S, the imagined early scientist's reasoning step by step (one place at a time, the photon that 'wants' both paths and can tell when blocked, possibilities with causal effects, the sensor, epistemic possibility), the modern explanation (septillions of particles), the rock challenge, the purpose of the retrospective, and avoiding thinking too hard
+
+- Before: and a configuration is about all the particles, in the end ``all the particles… everywhere.''
+- After: and a configuration is about all the particles, in the end ``all the particles… everywhere.'' So what makes configurations distinct is not distinct particles but at least one particle in a different state.
+
+- Before: Each of the four final configurations gets a quarter,
+- After: The four final configurations are photon to E with S at No ($i$), photon to F with S at No ($1$), photon to E with S at Yes ($-i$), and photon to F with S at Yes ($1$). Each gets a quarter of the squared modulus,
+
+- Before: Then history. An early scientist, I imagine, sees the interference vanish when a sensor is added and decides that the photon ``doesn't want me looking at it too closely.''
+- After: Then history. Imagine an early scientist with no idea what is going on. No photons reach Detector 1; block a path and photons reach both detectors, but one at a time, so the photon seems to be in one place at a time. Yet some mysterious phenomenon keeps it from Detector 1, and the phenomenon needs the photon to be able to go both ways; the photon can somehow tell a path is blocked without going there, or it would have hit the block. It looks as if mere possibilities had causal effects. So the scientist puts a sensor on one path to see which way the photon really goes, and the phenomenon vanishes. Not physical possibility, then, but epistemic: if I know which way it went, it is no longer plausible it went the other way, and the mysterious phenomenon ``doesn't want me looking at it too closely.''
+
+- Before: \nb{No textbook is named.
+- After: Today we know that to know the photon's path, the particles of your brain must be correlated with it; if one small S suffices to separate the configurations, a sensor with a display, let alone a brain, moves septillions of particles. \nb{No textbook is named.
+
+- Before: The clues were there: an unread sensor does the same, and so does a single stray particle.
+- After: The clues were there: an unread sensor does the same, and so does a single nudged particle, or a photon radiating off where no one will see it, with little conscious awareness involved. Before pulling the dualist fire alarm, show that a rock cannot dispel the phenomenon as well as a researcher. But that is hindsight; the point of looking back is to find general clues, and ask whether we ignore similar ones about today's mysteries.
+
+- Before: and ``conscious observation made quantumness go away.''
+- After: and ``conscious observation made quantumness go away,'' and it was best not to think too hard about it while the predictions came out right.
+
+
+## honest/sections/collapse-postulates.tex
+
+Why: Fidelity/substance pass: added the worked example of the early reasoning (amplitude -i/3, 107 in 1,000, 1/9), the many-survivors alternative, what collapse theories were built to explain, the 50-micrometre experiment, the planetary-collapse scenario's consequences, and the cynic's intuitions in full
+
+- Before: The first idea of collapse, I suggest, went like this: the squared modulus of the amplitude is the probability,
+- After: The first idea of collapse, I suggest, went like this: my calculation gave an amplitude of $-\frac{1}{3}i$ for absorption, and the photon was absorbed about 107 times in 1,000, a good fit to 1/9, the squared modulus; so the squared modulus of the amplitude is the probability,
+
+- Before: Why only one surviving world?
+- After: But once parts of the wavefunction can vanish, why only one survivor? Perhaps many worlds survive, with frequency set by their squared modulus, so that a typical survivor sees Born statistics.
+
+- Before: \nb{That fits the textbook postulate of 1932.
+- After: They were built to explain why measurements have single outcomes, not why statistics follow the Born rule. \nb{That fits the textbook postulate of 1932.
+
+- Before: Experiments keep finding superposition in larger systems. So why does no one propose that collapse happens only at planetary scale, once a minute?
+- After: For the same reason they put collapse before any human is superposed. But experiments keep finding superposition in larger systems; one under way aims at 50 micrometres, bigger than most neurons. So why does no one propose that collapse happens only at planetary scale, once a minute? The surviving Earths would remember a history of Born statistics, while most Earths would start seeing non-Born results and then cease to exist.
+
+- Before: A cynic might say collapse survives because people do not remember splitting.
+- After: A cynic might say collapse survives to keep an intuition: I don't remember the measurement having more than one result, or splitting, so only one thing happened; you don't remember dying, so superposed humans must never collapse.
+
+
+## honest/sections/distinct-configurations.tex
+
+Why: Fidelity/substance pass: put the textbook note back beside its claim
+
+- Before: Today we know that to know the photon's path, the particles of your brain must be correlated with it; if one small S suffices to separate the configurations, a sensor with a display, let alone a brain, moves septillions of particles. \nb{No textbook is named. In one small survey of foundations researchers, 6 per cent gave the observer a special physical role.}
+- After: \nb{No textbook is named. In one small survey of foundations researchers, 6 per cent gave the observer a special physical role.}
+
+Today we know that to know the photon's path, the particles of your brain must be correlated with it; if one small S suffices to separate the configurations, a sensor with a display, let alone a brain, moves septillions of particles.
+
+
+## honest/sections/decoherence-is-simple.tex
+
+Why: Fidelity/substance pass: added why qualitative advice is not enough (eyeballing vs measuring speed), Heinlein's witch and how each road disposes of it (aliens and programs; the witch prefix compresses nothing, Galileo does), the conjunction rule and the 2^10 stories, the lottery friend's argument, the billiard shot, the thermometer example, ten wins in a row (Fred Smith) under both formalisms, necessity, the 2^-L prior, the coin examples, the 0.9c spaceship and the extra law, the hydrogen comparison, and the 2 + 2 = 3 ending
+
+- Before: To calculate simplicity there are two roads.
+- After: The razor is qualitative advice; to compare theories you need a number that is not made up, as measuring velocity differs from eyeballing fast and slow. Count words? Robert Heinlein said, I hope in jest, that the simplest explanation is always ``The woman down the street is a witch; she did it,'' eleven words. There are two roads.
+
+- Before: One asks how big a program must be to compute a hypothesis's predictions: Kolmogorov complexity and Solomonoff induction. The other asks how far the hypothesis shortens a message describing the data: Minimum Message Length. ``The woman down the street is a witch'' is eleven words, but on either road it buys nothing.
+- After: One asks: a what? English has one word for witch, but explaining witches, women and streets to aliens would take long, and a program predicting where a rock rolls down a hill gains nothing from a witch subroutine, though it may need one that squares numbers. That road leads to Kolmogorov complexity and Solomonoff induction. The other asks: she did what? If you must describe the rock's positions over time, prefacing them with the witch does not shorten the rest of the message, while a few words about Galileo can compress the next five thousand rolling rocks. That road leads to Minimum Message Length.
+
+- Before: Both count the length of the code, not the memory it uses.
+- After: Both count the length of the code, not the memory it uses or the mental work of following the recipe: ``Entities'' are lines of code, not simulated objects.
+
+- Before: I claim experimental evidence, and begin with the conjunction rule. Each detail a story states splits its probability, so the razor's ``entities'' are the details a theory must state.
+- After: I claim experimental evidence, and begin with the conjunction rule, $P(X,Y) \le P(X)$, which people often violate. Probability is conserved: a story with ten added details, each of which could be true or false, competes with $2^{10}-1$ equally detailed stories, while plain X sums over all of them. So the razor's ``entities'' are the details a theory must state, each costly in probability.
+
+- Before: ``I will win the lottery'' mentions one person and is far less likely than ``someone will win.''
+- After: A friend buys one ticket in a lottery of a million and argues that ``I will win'' mentions one person and one ticket, so it is simpler than ``someone will win,'' which mentions a million. Yet it is far less likely.
+
+- Before: Objects count only when they must be specified one by one, as with particular billiard balls; the exact state of the air in a warm room need not be specified.
+- After: What counts is what a theory must mention explicitly, because that cannot be summed over: in explaining a billiards shot, a theory with ten specific collisions of ten specific balls costs more than one with five. But if your thermometer reads 22 degrees, it would be absurd to say the room is more likely 20 because there are vastly more 22-degree states, each of which is then less likely; nearly all of them predict the same reading, so the exact positions of the molecules are not charged against you. And if your friend wins ten lotteries in a row, suspect a fix: ``my friend wins every time'' is more complex than ``someone wins every time,'' but predicts the data far more precisely. In Minimum Message Length, ``one person wins every time, and it is Fred Smith'' compresses the list of winners; in Solomonoff induction, the extra code singling out your friend lowers the prior but buys a tighter prediction that overcomes it. So any formal razor must define necessity too: in Minimum Message Length, it is what compresses the message. Solomonoff induction gives each program in a prefix-free code the prior $2^{-L}$, for a program of $L$ bits, and predicts by a mixture dominated by the shortest programs that predict most precisely. More complex hypotheses need more evidence, but the burden is not infinite: four heads in a row prove little, twenty should make you consider a two-headed coin, and after a hundred flips of HTTHTT repeating you would be a fool to deny the pattern.
+
+- Before: If the expansion of the universe continues, a spaceship will one day pass beyond our cosmological horizon. It does not then vanish. If the razor counted objects, the vanishing model would win; but making the ship vanish needs a new law.
+- After: If the expansion of the universe continues, a spaceship travelling away at 0.9$c$ will one day pass beyond our cosmological horizon. Does it then vanish? If the razor counted objects, the vanishing model would win, since it predicts the same and need not mention the ship's quarks. But the ship is made of particles that obey laws seen in every examinable case, including conservation; making it vanish needs a new law, ``Things vanish as soon as they cross my cosmological horizon.''
+
+- Before: Many-worlds generates its worlds from compact laws,
+- After: Many-worlds does not need a complicated initial state or specify its worlds by hand; it generates them from compact laws,
+
+- Before: Perhaps critics mistake their shock at a large universe for a probability penalty.
+- After: Stars, galaxies, atoms and quantum mechanics itself all vastly increased the apparent computing load of the universe. Many-worlds is no more ``a zillion worlds worth of complicated'' than the atomic hypothesis is a zillion atoms worth. Perhaps critics mistake their shock at a large universe for a probability penalty.
+
+- Before: It is bad math.''
+- After: It is bad math.'' 2 + 2 = 3.
+
+
+## honest/sections/decoherence-is-simple.tex
+
+Why: Fidelity/substance pass: turned paraphrases that were in quotation marks into plain text
+
+- Before: suspect a fix: ``my friend wins every time'' is more complex than ``someone wins every time,'' but
+- After: suspect a fix: the hypothesis that your friend wins every time is more complex than that someone wins every time, but
+
+- Before: In Minimum Message Length, ``one person wins every time, and it is Fred Smith'' compresses
+- After: In Minimum Message Length, saying that one person wins every time, and that it is Fred Smith, compresses
+
+
+## honest/sections/decoherence-is-falsifiable-and-testable.tex
+
+Why: Fidelity/substance pass: added the Bayes's theorem reading of falsifiability (a tiny likelihood makes a tiny numerator; a theory without holes gives no advice), more falsifying observations, why the single-hypothesis test cannot separate decoherence from collapse, 'new relative to what' (the ancient Greeks), the alien species and interstellar war, the order-of-updates theorems, the 'scent' objection, the general-law argument (white socks vs. electron mass), the P(Y) inequality, the contrapositive point about unseen worlds, and the critiques that remain legitimate
+
+- Before: A hypothesis is ``falsifiable,'' in my sense, if it concentrates its probability on some outcomes, so that others would drive its probability nearly to zero.
+- After: A hypothesis is ``falsifiable,'' in my sense, if it concentrates its probability on some outcomes, so that others would drive its probability nearly to zero: if $P(B|A_i)$ is tiny, the numerator of Bayes's theorem is tiny, and so is the posterior. A theory that explains everything prohibits nothing and gives no advice about what to expect.
+
+- Before: or apples could fall upward.
+- After: or apples could fall upward, planets zig at random, or an atom keep emitting photons with no energy source.
+
+- Before: An imagined objector says that this only tests quantum mechanics, not decoherence as against collapse, and I agree.
+- After: An imagined objector says that this only tests quantum mechanics, not decoherence as against collapse, and I agree: falsifiability, as I defined it, looks at one hypothesis at a time, and comparing two needs another test.
+
+- Before: Then ``testable.'' A prediction is ``new'' only relative to another hypothesis.
+- After: Then ``testable.'' Where does decoherence make a new prediction? New relative to what? Shown to the ancient Greeks, it would let them predict much. A prediction is ``new'' only relative to another hypothesis.
+
+- Before: Had Everett and Wheeler come before Bohr and Heisenberg, would we demand new predictions from collapse?
+- After: Had Everett and Wheeler come before Bohr and Heisenberg, would we demand new predictions from collapse? If we meet aliens who invented decoherence first, must each side keep its own theory and settle the matter by interstellar war? Simple theorems say it should not matter whether you update on X then Y or Y then X.
+
+- Before: What about crackpots who add untestable parts to working theories, such as angels who push charged particles?
+- After: But without the demand for new predictions, says the objector, how do we defend our theories against every crackpot who adds untestable parts, such as a new property of electrons called scent, or angels who push charged particles as the field tells them?
+
+- Before: No: what decoherence asks you to believe is the wave equation, and ``just look at a hydrogen atom'' to test it.
+- After: No: what decoherence asks you to believe is the general law for wavefunctions. Science's imprimatur belongs to general laws, which anyone can test on a case of their own. You are probably justified in believing that I am wearing white socks as I type, but you must take my word for it; the mass of the electron you can check with your own electron. Likewise the wave equation: ``just look at a hydrogen atom.''
+
+- Before: as the spaceship beyond the cosmological horizon follows from conservation laws.
+- After: as the spaceship beyond the cosmological horizon follows from conservation laws. If you believe the general law $X \to Y$ and the case $X$, then $P(Y) \ge P(X \wedge (X \to Y))$: logical implications of what you already believe cost no extra probability. The worlds explain nothing and are not what is tested.
+
+- Before: To deny the worlds is ``necessarily'' to deny that the quantum laws hold everywhere.
+- After: To deny the worlds is ``necessarily'' to deny that the quantum laws hold everywhere, and that denial is what decoherentists see as the extra, untestable detail: you cannot see the other parts of the wavefunction, so why add that they do not exist?
+
+- Before: The two theories should be compared on their fit with experience,
+- After: The two theories should be compared on their fit with experience and on critiques such as whether decoherence predicts that all quantum probabilities are 50/50, or whether collapse violates special relativity by acting at a distance,
+

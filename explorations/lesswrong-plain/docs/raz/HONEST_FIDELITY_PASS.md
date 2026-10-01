@@ -263,12 +263,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] excluding-the-supernatural
 - [x] psychic-powers
 - [x] quantum-explanations
-- [ ] configurations-and-amplitude
-- [ ] joint-configurations
-- [ ] distinct-configurations
-- [ ] collapse-postulates
-- [ ] decoherence-is-simple
-- [ ] decoherence-is-falsifiable-and-testable
+- [x] configurations-and-amplitude
+- [x] joint-configurations
+- [x] distinct-configurations
+- [x] collapse-postulates
+- [x] decoherence-is-simple
+- [x] decoherence-is-falsifiable-and-testable
 - [ ] privileging-the-hypothesis
 - [ ] living-in-many-worlds
 - [ ] quantum-non-realism
