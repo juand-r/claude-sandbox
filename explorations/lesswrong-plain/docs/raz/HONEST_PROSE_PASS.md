@@ -207,20 +207,20 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] arguing-by-definition
 - [x] where-to-draw-the-boundary
 - [x] entropy-and-short-codes
-- [ ] mutual-information-and-density-in-thingspace
-- [ ] superexponential-conceptspace-and-simple-words
-- [ ] conditional-independence-and-naive-bayes
-- [ ] words-as-mental-paintbrush-handles
-- [ ] variable-question-fallacies
-- [ ] 37-ways-that-words-can-be-wrong
-- [ ] an-intuitive-explanation-of-bayes-s-theorem
-- [ ] the-world-an-introduction
-- [ ] universal-fire
-- [ ] universal-law
-- [ ] is-reality-ugly
-- [ ] beautiful-probability
-- [ ] outside-the-laboratory
-- [ ] the-second-law-of-thermodynamics-and-engines-of-cognition
+- [x] mutual-information-and-density-in-thingspace
+- [x] superexponential-conceptspace-and-simple-words
+- [x] conditional-independence-and-naive-bayes
+- [x] words-as-mental-paintbrush-handles
+- [x] variable-question-fallacies
+- [x] 37-ways-that-words-can-be-wrong
+- [x] an-intuitive-explanation-of-bayes-s-theorem
+- [x] the-world-an-introduction
+- [x] universal-fire
+- [x] universal-law
+- [x] is-reality-ugly
+- [x] beautiful-probability
+- [x] outside-the-laboratory
+- [x] the-second-law-of-thermodynamics-and-engines-of-cognition
 - [ ] perpetual-motion-beliefs
 - [ ] searching-for-bayes-structure
 - [ ] dissolving-the-question
