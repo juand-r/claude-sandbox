@@ -6,27 +6,28 @@ and must be verified, or attributed to a source, before they appear in the
 book.
 
 Fixed by the author: elderly, male, the only narrator of the book; a wine
-connoisseur in Napa who grew up in a small Nebraska town like the Endora of
-*What's Eating Gilbert Grape*; moved to France young to learn the trade and
-work at a vineyard; moved to Napa later for a business opportunity; has lost
-the love of his life; full of regrets; retreats into writing; killed her, not
-on purpose (provisional, see below). The rest I filled in, and can change.
+connoisseur in Napa who grew up in a small Iowa town like the Endora of
+*What's Eating Gilbert Grape* (Endora is also in Iowa); moved to France young
+to learn the trade and work at a vineyard; moved to Napa later for a business
+opportunity; has lost the love of his life; full of regrets; retreats into
+writing; killed her, not on purpose (provisional, see below). The rest I
+filled in, and can change.
 
 ## Facts of his life
 
 | | |
 |---|---|
 | Name | Hollis Ambrose Vane |
-| Born | 3 March 1943, Ardath, Nebraska (invented town; see below) |
+| Born | 3 March 1943, Ardath, Iowa (invented town; see below) |
 | Age in the book | 82–83 (the book is written 2025–2026) |
 | Lives | Napa Valley since 1971. Since 1979 in a house on a slope east of the Silverado Trail, above a small vineyard and its frost-protection pond |
-| Family | Father Ambrose, who ran the town's hardware store and served in the U.S. Army in France, 1944–45. Mother Ruth (née Lindqvist), who kept bees and kept ledgers of everything. One sister, June (b. 1947), still in Nebraska, in Kearney; they have not spoken since 2006 |
+| Family | Father Ambrose, who ran the town's hardware store and served in the U.S. Army in France, 1944–45. Mother Ruth (née Lindqvist), who kept bees and kept ledgers of everything. One sister, June (b. 1947), still in Iowa, in Fort Dodge; they have not spoken since 2006 |
 | Wife | Margaret "Peg" Ahlquist, married 1973, died 2006 of cancer. A dutiful, cold marriage. No children |
 | The love of his life | Odile Ferrand (b. 1944), of Meursault |
 
-### Ardath, Nebraska
+### Ardath, Iowa
 
-Invented. A town like Endora: a few hundred people, one main street, a grain
+Invented. A town like Endora, in the same flat state: a few hundred people, one main street, a grain
 elevator taller than anything else for forty miles, a café, a hardware store
 (his father's), a Lutheran church, a water tower with the town's name on it.
 Nothing happens there, and everybody knows when it does. Corn, not vines: the
@@ -161,7 +162,7 @@ clue must keep an innocent reading.
 - Gilbert Grape: the pun he cannot resist and then regrets; Endora as Ardath;
   "what's eating" him.
 - Doubles: Odile and Peg; Odile and Odette (in *Swan Lake* the two are danced
-  by one ballerina); Nebraska and Burgundy; France and Napa; the grape and
+  by one ballerina); Iowa and Burgundy; France and Napa; the grape and
   the wine.
 
 ## Real-world anchors (REAL; verify or attribute before use)
@@ -190,7 +191,8 @@ book until checked against a source, or attributed to one.
 - *Swan Lake*: Odette and Odile are traditionally danced by one ballerina.
 - In California, a coroner can record the manner of death as "undetermined".
 
-Invented: the town of Ardath, Nebraska (no such town found in a web search,
-2026-10-01; there are Ardaths in Missouri and Saskatchewan); the Domaine
+Invented: the town of Ardath, Iowa (no such town found in web searches,
+2026-10-01, in Iowa or Nebraska; there are Ardaths in Missouri and
+Saskatchewan, and a former townsite called Ardon in Muscatine County, Iowa); the Domaine
 Ferrand; the Ferrand and Vane families; Peg, June, Thibault; every event of
 the plot.

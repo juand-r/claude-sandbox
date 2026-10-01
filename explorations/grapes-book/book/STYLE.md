@@ -25,7 +25,7 @@ the end.
 ### 2.1 Who is speaking (2026-10-01; confirmed by the author)
 
 One narrator: Hollis Vane (see `BIO.md`), an elderly Napa wine man from a
-small town in Nebraska, who trained in Burgundy. He writes everything: the
+small town in Iowa, who trained in Burgundy. He writes everything: the
 investigation, the notes, the asides. The two parallel writings are two
 registers of the same man: the investigator in the main text and notes, and
 the private man in the asides.
@@ -68,7 +68,7 @@ Example of the register (no factual claims):
   what he read today and why he could not finish it) and, more and more, on
   himself.
 - Voice: an old man, courtly, a little formal, with French and the trade's
-  vocabulary in his mouth. Under it, a Nebraska plainness that comes back
+  vocabulary in his mouth. Under it, an Iowa plainness that comes back
   when he is tired or angry. Sudden exactness about times and quantities.
   Self-pity he catches and dislikes. Flashes of anger.
 - Asides are short at first: a line or two, mostly about method.
