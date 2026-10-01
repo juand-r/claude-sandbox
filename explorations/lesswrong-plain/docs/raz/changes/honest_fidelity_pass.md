@@ -6966,3 +6966,105 @@ Why: Fidelity/substance pass: made a quotation verbatim
 - Before: there is no 65,537th bit saying ``this image is positive,''
 - After: there is no 65,537th bit, no tag saying ``This image is inherently positive'',
 
+
+## honest/sections/sympathetic-minds.tex
+
+Why: Fidelity/substance pass: added why empathy is the only way to hit on hypotheses about brains, what sympathy adds (reinforcement), why evolution took the mirror path, Tit for Tat with reputation, wincing to avoid angering friends, enemies, the cultures that help or eat strangers, the bystander's pain in a war, the AI's separate mind-instance, 'you don't need to become your shoes', happiness as a reinforcement-learning idiom, the lever machine in detail, natural selection's lack of anaesthetic, sympathy before boredom, what unsympathetic aliens would never do, and what varelse means
+
+- Before: As I wrote before, brains are so complex that the only way to predict one is to make a similar brain, your own, behave similarly.
+- After: As I wrote before, brains are so complex that if we tried to understand them from scratch, as we do gravity or a car, we could not invent good hypotheses in a lifetime; the only way to hit on an ``Aha!'' about another mind is to force something very similar, your own brain, to behave similarly.
+
+- Before: ``Sympathy'' goes further: to smile when someone else smiles and to hurt when they hurt.
+- After: ``Sympathy'' goes further: to smile when someone else smiles and to hurt when they hurt, moving from prediction into reinforcement.
+
+- Before: It might have started, maybe, with a mother's love for her children.
+- After: It might have started, maybe, with a mother's love for her children or a sibling's: smiling when they smile and wincing when they wince leads you to help in many ways, and in the ancestral environment what relatives want probably bore on their reproductive success.
+
+- Before: Then came reciprocity with allies.
+- After: An abstract desire would have needed a whole definition of ``wanting''; evolution falls up the fitness landscape like water flowing downhill. Then came reciprocity with allies, Tit for Tat elaborated for reputations.
+
+- Before: than a specific urge like the vampire bat's to share blood.
+- After: than a specific urge like the vampire bat's to share blood, and an organism that winces when friends wince will avoid angering them. Of course you also want to kill designated enemies without a qualm; these are humans.
+
+- Before: sympathy looks ``on'' by default in humans.
+- After: sympathy looks ``on'' by default in humans: some cultures help strangers and some eat them, and the question is which needs the explicit rule. It is painful to be a bystander in a war whose two sides have switched off sympathy for each other while yours is on for both, so that you wince at a dead child whatever the caption.
+
+- Before: So sympathy works ``by the simpler and yet far more consequential path of mirror neurons.''
+- After: So sympathy, a strange and deep implementation of reciprocity and help, tangles minds together not by a term in the utility function for another's desire but ``by the simpler and yet far more consequential path of mirror neurons.''
+
+- Before: The human brain cannot quickly rewire visual cortex for hearing, but an AI can shift resources at once, and it can model another mind directly, as a separate hypothesis.
+- After: Empathy is one way of predicting minds, not the only one. The human brain cannot quickly rewire visual cortex for hearing in a dark room, but an AI can shift resources at once and swap programs to disk. So it need not force its own mind into a similar state, with all the risk and mess of mixing data with its own state; it can create a separate mind-instance, or model the other mind directly, as a hypothesis like any other. You don't need to become your shoes to understand your shoes.
+
+- Before: but would feel nothing.
+- After: but would feel nothing; ``happiness'' is an idiom of reinforcement learning, not of expected utility maximization, and the paperclipper simply chooses the action with the most expected paperclips.
+
+- Before: To imagine how it sees you, picture yourself as a machine with levers, such as a woodsaw.
+- After: Hating an enemy is not the right mode either. To imagine how it sees you, picture yourself as a machine with levers, not human-shaped, say a woodsaw: some levers produce coins, some fire a bullet, and the levers must be pulled in the right order. To understand unsympathetic optimization, study natural selection, which does not anaesthetize dying creatures, since the anaesthetic would serve no reproductive purpose either.
+
+- Before: That is why I put sympathy first on my list of what would make aliens sympathetic.
+- After: That is why I put sympathy ahead of even boredom on my list of what would make aliens sympathetic.
+
+- Before: but they would never be friends.
+- After: but they would never be friends. They would see us only as means, never shed a tear for us or smile at our joys, give their own kind no different consideration, and feel nothing missing.
+
+- Before: They would be ``varelse,'' not ``ramen''.
+- After: They would be ``varelse,'' not ``ramen'': aliens we cannot relate to on any personal level, with no point in trying.
+
+
+## honest/sections/high-challenge.tex
+
+Why: Fidelity/substance pass: added the game-making absurdity (one programmer making it harder, another easier; gold per hour), the robot that watches YOU WIN, the 'not supernatural' caveat, games' costs (artificiality, isolation), goals one can finish, Ferriss's 'What would excite me?', the twenty-year cancer example and why such 3D goals cannot be galactic goals, why the brain is not built for passivity, Nirvana as 'sounds like good news', human vs humane nature, the chatbot lover, what makes a race real (no external optimizer choosing; robot cars as purer contests; a sentient experiencer rather than a skeleton imitation), and 'the journey, the destination and the traveler'
+
+- Before: so we will write programs to help with them, and then we might as well make the games easier,
+- After: so we will write programs to help with them; but why have one programmer make a game harder and another make it easier? Make it easy from the start, so you get more gold per hour,
+
+- Before: until all that is left is a screen that says ``YOU WIN,'' forever.
+- After: until all that is left is a screen that says ``YOU WIN,'' forever, and perhaps a robot to watch that too.
+
+- Before: That is like the Christian Heaven in one respect:
+- After: That is like the Christian Heaven in one respect, though not supernatural, since it could be built:
+
+- Before: I ask whether that is a wasted step.
+- After: I ask whether that is a wasted step; games reduce stress and increase engagement but cost artificiality and isolation.
+
+- Before: A long-run meaning of life should be made of goals
+- After: Some goals cannot be a long-run meaning of life because you can achieve them and be done. It should be made of goals
+
+- Before: games that are fun to play and not only to win.
+- After: games that are fun to play and not only to win; as Timothy Ferriss put it, the question is not ``What do I want?'' but ``What would excite me?''
+
+- Before: Some goals, like curing cancer, are worth only their result, and if an alien offers a cure for thirty bucks, you take it. But they are not ``long-run fun.''
+- After: Some goals, like curing cancer, are worth only their result, since one patient's suffering outweighs the fun of solving it: if after twenty years of your own work an alien offers a cure for thirty bucks, you take it. Such goals are 3D predicates, false now and wanted true later; you want to be there, not go there. They are worth pursuing now, but are not ``long-run fun'' or plausible goals of galactic civilizations.
+
+- Before: I am not sure how to build a passive mind.
+- After: I am not sure how to build a passive mind; even lying in bed, your thoughts come from brain areas built to solve problems, and how much brain could you remove and keep the experience of pleasure? I will not touch that.
+
+- Before: My simpler answer is that ``I wouldn't actually prefer to be a passive experiencer.''
+- After: My simpler answer is that ``I wouldn't actually prefer to be a passive experiencer.'' Without Buddha saying Nirvana is the end of existence, it seems to sound like good news only on first hearing. Natural selection built my mind to do things.
+
+- Before: ``Because it's human nature'' justifies nothing,
+- After: ``Because it's human nature'' justifies nothing; there is human nature, what we are, and humane nature, what, being human, we wish we were. But
+
+- Before: As I argued earlier about love, what we value can be the real thing and not only the experience of it.
+- After: As I argued earlier about love, what we value can be the real thing and not only the experience of it: it can matter whether your lover is a real person or a realistic nonsentient chatbot, even if you never know. Likewise real challenge and real effort.
+
+- Before: In a race, the other racers must be real and I must be able to lose;
+- After: In a race, the other racers must be real and I must be able to lose, not in the sense of physical determinism but in that no outside optimizer chose my victory;
+
+- Before: I must win by my own skill and will, not by pressing a button;
+- After: I must win by my own skill and will, not by pressing a button (though I did not design my legs, so a race of robot cars is a purer contest of their designers, and there is room to improve the human condition);
+
+- Before: and a sentient being must experience it.
+- After: and a sentient being must experience it, not a nonsentient skeleton imitation of the race run trillions of times a second.
+
+- Before: ``There must be the true effort, the true victory, and the true experience.''
+- After: ``There must be the true effort, the true victory, and the true experience'': the journey, the destination and the traveler.
+
+
+## honest/sections/high-challenge.tex
+
+Why: Fidelity/substance pass: removed a doubled word
+
+- Before: we wish we were. But but ``I don't want
+- After: we wish we were. But ``I don't want
+

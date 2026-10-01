@@ -311,8 +311,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] morality-as-fixed-computation
 - [x] magical-categories
 - [x] the-true-prisoner-s-dilemma
-- [ ] sympathetic-minds
-- [ ] high-challenge
+- [x] sympathetic-minds
+- [x] high-challenge
 - [ ] serious-stories
 - [ ] value-is-fragile
 - [ ] the-gift-we-give-to-tomorrow
