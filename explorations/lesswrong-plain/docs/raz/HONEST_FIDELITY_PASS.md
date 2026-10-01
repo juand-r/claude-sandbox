@@ -289,8 +289,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] that-alien-message
 - [x] my-childhood-role-model
 - [x] einstein-s-superpowers
-- [ ] class-project
-- [ ] a-technical-explanation-of-technical-explanation
+- [x] class-project
+- [x] a-technical-explanation-of-technical-explanation
 - [ ] ends-an-introduction
 - [ ] not-for-the-sake-of-happiness-alone
 - [ ] fake-selfishness

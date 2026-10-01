@@ -6208,3 +6208,155 @@ Why: Fidelity/substance pass: added worship without candles, what Barbour's book
 - Before: Einstein was no ordinary bloke.
 - After: It shocked me briefly, but I knew the Law: ``No gods, no magic, and ancient heroes are milestones to tick off in your rearview mirror.'' Seeing through has to be achieved; declaring Einstein mundane while his work still seems magic is like declaring that consciousness reduces to neurons without knowing how. Einstein was no ordinary bloke oversold by the media.
 
+
+## honest/sections/class-project.tex
+
+Why: Fidelity/substance pass: added the rest of Jeffreyssai's charge (no Bayes, no biases, cosmological constant), his reputation for impossible projects and the reward, the Taji/Hiriwa exchange about Eld science, Styrlyn's selection and method, the reasons behind each angle (elegance and decoherence; representations allowing infinity are false; time laid out like a crystal and Lojban as the language of belief; local representation to match local curvature), Taji's jab, and Brennan's arrows and Hiriwa's 'beauty of the whole' rephrasing
+
+- Before: Jeffreyssai tells his students not to try to do as well as Einstein.
+- After: Jeffreyssai tells his students not to try to do as well as Einstein. Einstein did not comprehend Bayesian methods, lived before the cognitive biases were found and had no scientific grasp of his own thinking;
+
+- Before: took ten years. ``Too slow!''
+- After: took ten years, the cosmological constant aside. ``Too slow!''
+
+- Before: His students, he says, achieve great things because he expects much of them.
+- After: Other teachers say his projects are insanely hard, ``that Laplace himself would catch on fire''; his students, he says, achieve great things because he expects much of them.
+
+- Before: Their assignment: the correct theory of quantum gravity, working on their own, in one month.
+- After: Their assignment: quantum mechanics and General Relativity are the limit of Eld science; the five of them, working on their own, are to produce the correct theory of quantum gravity in one month, for promotion to the second dan.
+
+- Before: Styrlyn takes charge.
+- After: Taji protests that Eld scientists worked on it far longer; Hiriwa replies that they were still arguing about many-worlds too. The others look to Styrlyn, ranked high in the Cooperative Conspiracy, and he takes charge.
+
+- Before: Each student writes down angles alone, and no one may criticize yet.
+- After: Each student writes down angles alone, five minutes, ``No wasted thoughts!'', and no one may criticize yet.
+
+- Before: Taji says to assume Eld science's avenues were blind alleys, and to stop if anything starts to look like string theory.
+- After: Taji says to assume Eld science's avenues were blind alleys, or they would have succeeded; a solution possible in a month must be elegant, so no extra dimensions, and stop if anything starts to look like string theory; perhaps misunderstanding decoherence led Eld science astray in quantizing gravity.
+
+- Before: Hiriwa's own angle is to get rid of the infinities.
+- After: Hiriwa's own angle is to get rid of the infinities, not by cleverness with integrals: a representation that allows infinity must be false to fact.
+
+- Before: Yin found a Lojban inscription in an abandoned city: ``Eureka! Eliminate t from the equations.''
+- After: Yin notes that from outside the universe time would be laid out like a crystal, but physics may be timeless more literally: Yin found an inscription in an abandoned city, in Lojban, the sacred language of science, so the writer believed it: ``Eureka! Eliminate t from the equations.''
+
+- Before: Styrlyn wants quantum physics in a spatially local form.
+- After: Styrlyn wants quantum physics, now over joint configurations, taken apart into a spatially local form in terms of invariant distant entanglements, to match the local curvature of General Relativity; Taji calls that strangely individualist for a Cooperative, and Styrlyn starts to explain that groups are made of people, then stops: no time for politics.
+
+- Before: as Einstein made inertial and gravitational mass one.
+- After: as Einstein made inertial and gravitational mass one: why should spacetime curve at the same rate that the little arrows rotate?
+
+- Before: Hiriwa wants instead a view in which the two ``are one and cannot be divided even conceptually.''
+- After: Hiriwa says that is not Brennan's point: he wants a view in which the two ``are one and cannot be divided even conceptually,'' since the beauty of the whole must arise from the fundamental laws, not the reverse.
+
+
+## honest/sections/a-technical-explanation-of-technical-explanation.tex
+
+Why: Fidelity/substance pass: added the essay's worked examples and arguments: the bet-the-bet example (44 vs 60 cents), log-score units and negative payoffs, calibration examples (98 per cent, canola oil, 99.5), the ten-question discrimination example, Yates on transforms, the coin and sealed envelope, the walnut counter with priors over classes, the fixed-coin parable, the max-entropy and stupid theories with numbers, the AI-randomness aside, the three-result example, conservation of expected evidence and Spee, the radiator, why everyone needs a technical subject, the clown suit, useful models (747), the quantitative side of evolution, Kelvin's numbers, Darwin's successors, controversies and textbooks, double standards, the dragon claimant's anticipations, Homo heidelbergensis, error terms, the Mercury figures, Popper on Freud, fundamental vs mysterious elements, the sunrise arithmetic and the AI scenario, the numerology lottery, and the tentacle arguments (aliens, two million entities, probability not plausibility)
+
+- Before: As a child I knew that ``sound is waves''; only after working through the wave equation did I understand it.
+- After: As a child, from popular physics, I thought I knew that sound was waves of air, light waves of electromagnetism and matter waves of probability amplitude; only after working through the wave equation in the \textsc{Feynman Lectures} did I understand ``sound is waves'' as a physicist does.
+
+- Before: Think of probability as clay, a fixed amount to spread over the outcomes, say the colours a light might flash.
+- After: Think of probability as clay, a fixed amount to spread over the outcomes, say the colours a light might flash; you cannot give red 75 per cent and blue 80.
+
+- Before: Paying you the bet itself is a bad rule: you would put everything on the likeliest colour.
+- After: Paying you the bet itself is a bad rule: if red comes up six times in ten and blue and green twice each, honest bets of 60, 20 and 20 cents earn 44 cents a round on average, but a whole dollar on red earns 60.
+
+- Before: ``The only possible scoring rule is'' the logarithm of the probability you gave to what happened.
+- After: ``The only possible scoring rule is'' the logarithm of the probability you gave to what happened. The base is arbitrary: in decibels, a probability of 0.01 scores $-20$; in bits, 0.25 scores $-2$. Scores are negative, which is fine; imagine the experimenter pays you a hundred dollars plus your score. With probabilities of 25, 50 and 25 per cent, your expected score is $-1.5$ bits.
+
+- Before: It rewards calibration, being right 90 per cent of the time when you say 90 per cent,
+- After: It rewards calibration. Someone who says ``98\% certain'' about canola oil usually means a feeling; a calibrated 98 per cent means being wrong about twice in a hundred similar questions, and someone who says 98 per cent a thousand times and is wrong only five times should have said 99.5. The rule rewards accurate calibration,
+
+- Before: Saying 50 per cent to everything is perfectly calibrated and ``the cheater's way out.''
+- After: Saying 50 per cent to everything is perfectly calibrated and ``the cheater's way out.'' On ten yes-or-no questions it gives the whole outcome a probability of 1 in 1,024; saying 90 per cent and being wrong twice gives 0.4 per cent, worse calibrated but better; saying 80 per cent with the same answers gives 0.6 per cent; and 99 per cent on ten right answers gives about 90 per cent. Poor calibration can be fixed by a simple transform, turning ``million-to-one'' into ``nine-to-one,'' but no transform improves discrimination; as Yates and colleagues wrote, good discrimination ``demands access to solid, predictive evidence.'' So rationality is not humble confession of helplessness: confess ignorance when ignorant and confidence when confident. A fair coin assigns every sequence of twenty flips about a millionth, $-60$ decibels, and that does not falsify it, since no other theory does better; but if someone had sealed that exact sequence in an envelope beforehand at 99 per cent, I would suspect the coin, provided she sealed only one envelope.
+
+- Before: Next, a counter that shows a number from 0 to 99. A precise theory bets 90 per cent on 51; a vague one bets 90 per cent on the fifties. When 51 comes up, the precise theory gains odds of ten to one.
+- After: Next, a counter that shows a number from 0 to 99, perhaps the last two digits of the price of walnuts. A precise theory bets 90 per cent on 51; a vague one bets 90 per cent on the fifties, 9 per cent on each. When 51 comes up, the precise theory gains odds of ten to one, from 50 to about 91 per cent. The vague theory loses because it is timid; theories should be bold. No vague theory can claim every result from 50 to 59 as strongly, which would need 900 per cent, provided predictions are recorded in advance. If my priors are calibrated, Bayes keeps my posteriors calibrated. But if precise and vague hypotheses are equally likely as classes, there are a hundred precise ones and ten vague, so the prior odds are 1 to 10 for ``51'' against ``fifties,'' and one 51 brings them only to even, as common sense expects. A coin that shows HHTTH:TTTTH may be fixed, but a 1 per cent prior of fixedness covers every sequence, so a random-looking result tells you only which sequence it would be fixed to; a second run of the same sequence would make fixedness ten to one. That is why Bayesians need priors.
+
+- Before: A theory that fits every outcome is the same as ignorance, and a theory that bets on the wrong range does worse still: ``Ignorance is better than anti-knowledge.''
+- After: A theory of complete ignorance, spreading probability evenly, loses to the vague theory on 51; with prior odds of 1 to 10 to 200 for the precise, vague and ignorant theories, two 51s leave them at 89, 9 and 2 per cent. A stupid theory that bets 90 per cent on 0 to 9 is falsified at once. A theory that fits every outcome is the same as ignorance, and a theory that bets on the wrong range does worse still: ``Ignorance is better than anti-knowledge.'' (So an AI algorithm that improves when noise is added must be doing something worse than random.) On the results 52, 51 and 58, the vague theory scores about $-30$ decibels, the precise and ignorant $-60$ and the stupid $-90$; with priors the vague still wins. Even the best theory scores low; theories are approximations.
+
+- Before: which ``has no analogue in the laws of probability theory or decision theory.''
+- After: which ``has no analogue in the laws of probability theory or decision theory'': you may test ideas you are unsure of, but not prefer an outcome. If A is evidence for B, not-A must be evidence against it; yet people want every result to prove their theory, like Spee's witch-hunters, who would ``feel disgraced if it acquitted a woman.''
+
+- Before: Humans judge by ``fit'', which is not conserved, and they judge after the fact.
+- After: Humans judge by ``fit'', which is not conserved, and they judge after the fact; a psychoanalyst can make any behaviour fit. The students who explained why the side of a plate near a radiator was cooler lost their chance at bewilderment; equations of diffusion would have given a sharp prediction. You can now calculate exactly how technical an explanation is, though for vague ones only a superhuman mind could do it. So everyone needs at least one technical subject, or they may think, like Heraclitus, that ``All is Fire'' explains something; I would teach Bayesian probability in high school.
+
+- Before: and add that ``if you know the math, you can be as silly as you like, and still technical.''
+- After: and add that ``if you know the math, you can be as silly as you like, and still technical'': a scientist should be able to make discoveries in a clown suit or lecture on helium. A useful model is knowledge you can compute in reasonable time: a model of a 747 that slightly violates conservation of momentum may predict more cheaply, without the plane violating it, and atomic theory, far from competing with aerodynamics, mandates it as an approximation.
+
+- Before: Now I lower my own standard.
+- After: Now I lower my own standard. Many models in evolutionary theory are quantitative, such as the drift of non-functional changes allowed by the redundant genetic code, where 64 codons code for 20 amino acids and a stop. But in the nineteenth century, before anyone knew of DNA or that humans and chimpanzees share most of their genes, scientists still flocked to natural selection. Physics confirms General Relativity to one part in $10^{14}$; can evolution match that? Dennett called Darwin's the single greatest idea. Yet
+
+- Before: Precise physics said the Sun could not be old enough for evolution,
+- After: precise physics said the Sun could have burned only three thousand years on chemical energy or 40 million on gravitational, too short for evolution, and Kelvin wrote that this seemed ``sufficient to disprove'' descent by natural selection,
+
+- Before: ``History records who won.''
+- After: ``History records who won.'' Predictions right 80 per cent of the time can build a huge lead over ignorance. Reality is consistent, so both mountains of evidence were right in their domains; nineteenth-century physics did not know about nuclear reactions.
+
+- Before: So vague, ``semitechnical'' theories can be well confirmed, and when two well-confirmed theories clash, one is being misapplied.
+- After: So vague, ``semitechnical'' theories can be well confirmed, and when two well-confirmed theories clash, one is being misapplied. But telling good semitechnical theories from confused ones takes skill, which is why we have Science.
+
+- Before: kept to stop people tinkering after the fact.
+- After: kept to stop people tinkering after the fact: ``The social process of science is a set of legal conventions to keep people from cheating on the math.'' Semitechnical theories have a cost: Darwin made remarkably few errors, but his successors, bright enough only to accept the theory, spoke as late as the 1960s of evolution working for the good of the species. Technical theories are far better, but Nature does not always allow them at once, and scientific controversy is mostly about semitechnical theories or nonsense posing as them. So prefer textbooks to news: ``gravity results from the curvature of spacetime'' is fascinating words without the math. Follow a controversy only if it is your field or affects your life, and do not apply stricter standards to theories you dislike, or every new flaw you learn to spot makes you stupider.
+
+- Before: I then tell of an argument with a friend
+- After: A classic sign of a poor hypothesis is its effort to avoid falsification, like Sagan's dragon in the garage; but the claimant knows in advance which excuses will be needed, so anticipates exactly what the skeptic does. I ask which experiences I would anticipate, not which facts I would believe. The flip side: I then tell of an argument with a friend
+
+- Before: Critics must state exactly what the standard theory predicts badly.
+- After: I found \textsc{Homo heidelbergensis} as an intermediate, but my friend said the changes were still too sharp, and when I suggested that selection pressures vary, said I was making excuses in advance. Yet if the record had been smooth, might he not have said a noisy process could not produce that? Critics must state exactly what the standard theory predicts badly, and how they know. Ask a theory's advocates for its predictions, in advance, and let detractors cross-examine. Models include noise: a precise theory that puts 90 per cent on 51 is not refuted by one 82 among nine 51s; that is an advance prediction, not an excuse.
+
+- Before: Mercury's orbit defied Newton by 43 seconds of arc a century,
+- After: Mercury's orbit defied Newton, who predicted 5,557 seconds of arc a century against 5,600 observed,
+
+- Before: Popper erred ``in thinking that falsification was qualitatively different from confirmation.''
+- After: Popper erred ``in thinking that falsification was qualitatively different from confirmation,'' though he saw a real quantitative difference. He was impressed that Einstein's theory was risky while the theories of Freud and Adler could explain any behaviour and so predicted nothing.
+
+- Before: Phlogiston and vitalism explained everything, so they were ignorance in disguise.
+- After: Phlogiston and vitalism explained everything, so they were ignorance in disguise. But beware checklists: a fundamental element is not a mysterious one. Physics takes the electromagnetic field as fundamental, yet governs it by simple computable rules, while crackpots demand an ``underlying mechanism'' and offer only words. Fundamentals should be simple: oxygen is a good one, life a bad one, since psychologically simple things like flame and moving flesh hide vast complexity.
+
+- Before: Then a parable. In the religion of ``Bayesianity'', Laplace multiplies every probability you ever assigned, and that product is your eternal score.
+- After: Then a parable. Believers in St. Peter's judgement get no computable scoring rule. In the religion of ``Bayesianity'', Laplace multiplies every probability you ever assigned, and that product is your eternal score. Say 99.9 per cent each morning that the Sun will rise, and your score falls by a factor of 0.7 a year; at 99.999 per cent, seventy years cost you only to 77.4 per cent of the best.
+
+- Before: since one miss makes the product zero.
+- After: since one miss makes the product zero, and you spend eternity beside a believer in flying saucers. If an AI might take the Sun apart some night in the next ten years, with even odds, the right nightly figure is about 99.98 per cent; then say exactly that.
+
+- Before: You cannot game the score by modesty or boldness, only by guessing better.
+- After: You cannot game the score by modesty or boldness, only by guessing better: ask not which excuses you have but which you expect to need.
+
+- Before: Last, imagine waking with a blue tentacle for an arm.
+- After: Advance prediction matters because people find it hard to obey probability after seeing the data. Darwin saw the similarity of species before thinking of natural selection, and Newton's laws explained orbits and tides already observed; Neptune came long after the theory was accepted. A numerologist cannot predict next week's Mega Ball, but explains why last week's seven was inevitable; asked to bet, he cannot give more than 1 in 52 to seven without taking it from others, and a listener grows suspicious as he explains why each of balls one to twelve fits.
+
+Last, imagine waking with a blue tentacle for an arm.
+
+- Before: A good explanation is one that would make me nervous now, before it happens,
+- After: Divine intervention, aliens or hallucination ``fit'' anything and equal ignorance; why that tentacle, that morning? And if aliens did it, what will they do tomorrow? A good explanation is one that would make me nervous now, before it happens,
+
+- Before: In short, ``to explain is to anticipate.''
+- After: In short, ``to explain is to anticipate.'' A witch who transports me into a webcomic would predict the tentacle, but its prior is effectively zero, so it explains nothing. With calibrated priors, among two million beings who meet such strangeness, ten owe it to improbable hypotheses (prior a thousandth, likelihood a hundredth) and a thousand to probable ones (a hundredth and a tenth), so a real tentacle would come from something more normal than webcomic witchery that I did not see coming. ``Reality dishes out experiences using probability, not plausibility.''
+
+
+## honest/sections/a-technical-explanation-of-technical-explanation.tex
+
+Why: Fidelity/substance pass: moved the classical-statistics remark next to the fixed-coin parable it comes from, and smoothed three sentences
+
+- Before:  Along the way: classical statistics ``insists on paying attention only to likelihoods'' and so always overfits. \nb{The usual complaint against classical statistics is the reverse, that it violates the likelihood principle; and classical methods such as Akaike's criterion charge a hypothesis for each parameter fitted to the data.}
+- After: 
+
+- Before: That is why Bayesians need priors.
+- After: That is why Bayesians need priors. Along the way: classical statistics ``insists on paying attention only to likelihoods'' and so always overfits. \nb{The usual complaint against classical statistics is the reverse, that it violates the likelihood principle; and classical methods such as Akaike's criterion charge a hypothesis for each parameter fitted to the data.}
+
+- Before: Yet precise physics said
+- After: Yet when precise physics said
+
+- Before: descent by natural selection, and nineteenth-century evolution,
+- After: descent by natural selection, nineteenth-century evolution,
+
+- Before: seventy years cost you only to 77.4 per cent of the best.
+- After: after seventy years your score is still 77.4 per cent of the best possible.
+
+- Before: Last, imagine waking
+- After: Then imagine waking
+
