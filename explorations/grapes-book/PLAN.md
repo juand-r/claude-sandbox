@@ -34,7 +34,10 @@
 - [ ] Odile: provisionally, he killed her without meaning to (BIO.md).
       Revisit with the author, and settle the open details, before
       movement II.
-- [ ] Decide whether Vane may get real facts wrong on purpose (STYLE.md, 3).
+- [x] Deliberate errors (2026-10-01): none subtle; only obviously wrong,
+      for plot reasons, and listed (STYLE.md, 3.1).
+- [ ] Backstory: how he leaves Iowa for France at 17 (BIO.md, TO DECIDE).
+- [ ] The year he is writing, and so his birth year (2021 or 2025–26?).
 - [ ] Build the typography the style needs (STYLE.md, section 5): aside
       typeface, struck-out text. Ask the author first.
 - [ ] Decide the source format for facts, and the file of intended errors.

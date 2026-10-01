@@ -103,8 +103,21 @@ The world is real; the story is fiction; the two may be interleaved freely.
   that a reader of the repository can always tell which is which.
 - Real people appear only in their public, historical roles, and never in
   the fictional plot.
-- Open: whether Vane may get a real fact wrong on purpose, as a character.
-  If ever used, each such error must be listed, with the truth beside it.
+
+### 3.1 No subtle inaccuracies (2026-10-01; author's decision)
+
+Real-world claims are either correct or obviously wrong. Nothing in
+between.
+
+- No planted small errors (a shifted date, a misremembered detail) for the
+  attentive reader to catch. They read as the authors' mistakes, and they are
+  annoying.
+- If the plot needs Vane to be wrong, he must be so plainly wrong that no
+  reader could take it for a fact: wrong in a way that is itself the point,
+  and visible as such on the page.
+- Each such deliberate error is still listed, with the truth and its source
+  beside it, so that we never confuse it with a real mistake. (File to be
+  created when the first one is written.)
 
 ## 4. The arc: from order to chaos (2026-10-01)
 
