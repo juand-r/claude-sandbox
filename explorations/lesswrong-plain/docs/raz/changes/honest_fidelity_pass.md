@@ -9019,3 +9019,104 @@ Why: Fidelity/substance pass: Added the 'fear of success' point, the remaining f
 - Before: Half a sentence adds that having goals in this fuller sense is part of what ``rational'' should mean.
 - After: Half a sentence adds that having goals in this fuller sense is part of what ``rational'' should mean, and has not been taught in much detail on LW.
 
+
+## honest/sections/toolbox-thinking-and-law-thinking.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the definitions of the two styles and of descriptive, normative and prescriptive, the triangle-inequality example, the rest of the Twitter exchange, the two stereotyped speeches, why each side misreads the other, the maze argument in full (left-hand rule, phone app, shortness as a property of paths), the full list of objections, the point that laws do not have exceptions, the Carnot and coherence examples, and the advice to see normative ideals as facts.
+
+- Before: Toolbox thinkers keep many methods and choose among them by context. Law thinkers hold that some truths govern every case.
+- After: Toolbox thinkers keep a big bag of methods and choose among them by context, and suspect that anyone who talks of a single optimal way does not know the other tools. Law thinkers, done right, separate descriptive truths, normative ideals and prescriptive advice; they may call a path optimal even if no practical algorithm finds it, and they recognize truths that are not tools. In a nearly flat maze, the triangle inequality, that path AC is never longer than path ABC, is always true but only sometimes useful. It tells you to take AC only if you know which path is which and care only about distance, not, say, about avoiding stairs. But it governs the maze either way. To a toolbox thinker, badly explained, this sounds like ``Throw away all the other tools in your toolbox!''
+
+- Before: David Chapman defined rationalism as the belief in ``one weird trick'' to correct thinking,
+- After: David Chapman defined rationalism as any claim of an ultimate criterion for correct thinking and acting, going beyond ``systematic methods are often useful, hooray!'': a belief in ``one weird trick'' to correct thinking,
+
+- Before: Julia Galef replied that rationalists hold an ideal which no single rule can match in practice,
+- After: Julia Galef replied that rationalists hold one correct normative model, which no single rule can approximate in practice, and look for collections of tricks that bring them closer, such as taking more small risks to raise expected value. Chapman said that understanding rationality as a bag of tricks is what is ``meta-rational.'' Galef
+
+- Before: And I do. My stereotyped toolbox thinker hears an ideal as if it were a recipe.
+- After: And I do. Msr.\ Toolbox says that the many ways of computing p-values are a family of tools, each good in some contexts; likelihood ratios surely have uses, but it would be surprising if one trick were best in every paper, and claiming so shows ``the sheer folly of callow youth'' with only a hammer. Msr.\ Lawful says that even when we cannot compute exact Bayesian updates, the math describes the optimal update, as a Carnot cycle describes an ideal engine no one can build, and that many coherence theorems say that behavior incoherent with probability theory is a dominated strategy. My stereotyped toolbox thinker hears this as a recipe to execute everywhere, and cannot see what else an ``ideal'' algorithm could be for.
+
+- Before: a law thinker may suspect a toolbox thinker of ``some absurd motte-and-bailey.''
+- After: a law thinker, told that a recipe is just a useful tool, may not see what a recommended recipe could be except a claim to be right, and may suspect ``some absurd motte-and-bailey.'' And the callow youths with a One True Recipe, but no ideal to prove it optimal, do exist. The confusion resolves by grasping a distinction, as a lawful person would put it, or by using both kinds of thinking by context, as a toolbox person would.
+
+- Before: A walker with a poor memory may do better keeping one hand on the wall than taking a shortcut. Knowing that a shortest path exists shows that there is room to improve.
+- After: Its existence does not let you pick the shorter branch at each turn, and that does not make distance useless. A walker with a poor memory may do better keeping the left hand on the wall, even when told a right turn stays on the shortest path, since jumping walls just once can strand you on a disconnected island of walls. That rule gives the shortest expected walk given your resources, yet you may not be on the shortest path. Knowing that a shortest path exists shows that there is room to improve, perhaps with a maze-mapping phone app. The room exists not because no recipe is perfect: given a map with the shortest path drawn, you could walk it. Shortness is a property of paths; a tendency to produce short paths is a property of recipes. The app is better because its path is shorter in a way defined apart from any algorithm. Once you admit ``shorter,'' it is hard not to admit ``shortest,'' and refusing to think about ideal solutions would remove a useful tool from your toolbox. Why would you?
+
+- Before: and it ``will also never occur'' to Msr.\ Law to ride a bicycle round the maze.
+- After: and it ``will also never occur'' to Msr.\ Law to ride a bicycle round the maze. The objections also say that people will confuse their current recipe with the unseen ideal and use the ideal to praise it, that Msr.\ Law will send a wheelchair user down the ``best'' path with its stairs, and that a helicopter over the maze will break Msr.\ Law's ontology.
+
+- Before: My reply is, ``Well, yes, that happens some of the time.''
+- After: My reply is, ``Well, yes, that happens some of the time,'' and sometimes Msr.\ Law needs a lecture on diverse toolboxes; but not everyone needs it, and extreme toolbox thinkers could use a lecture on unreachable ideals and the obstacles between us and them.
+
+- Before: ``as a more Toolbox-inclined person might put it.''
+- After: ``as a more Toolbox-inclined person might put it.'' Thinking in laws is often useful if you understand the context and caveats. That is not the same as saying every law has exceptions: thermodynamics still holds while you play tennis, when it is no time to think about it. A healthy law thinker will suspect there are laws for how to contextualize, even unknown ones, and meanwhile use chaotic-seeming prescriptions without mistaking them for laws or taking their chaos as proof that no ideal exists.
+
+- Before: I close with a remedy for toolbox thinkers. The best examples of laws are plain facts:
+- After: I close with a remedy for toolbox thinkers: see laws as descriptive statements, not ideals. Once distance is defined, a shortest path simply exists. The rule ``try walking AC'' holds only if you want shorter walks, know which turn is which, are avoiding no stairs and own no bicycle; the triangle inequality holds regardless. That no heat engine beats a Carnot cycle is not a hymn to the Carnot cycle but a fact, which may suggest looking at heat loss to improve an engine, and which no engine escapes when you are not thinking about it. The best examples of laws are plain facts:
+
+- Before: Seeing Bayes this way is ``a deeper level of understanding.''
+- After: You cannot get more evidence from an observation than its likelihood ratio gives, and seeing this as a law over all recipes, Bayesian or not, is ``a deeper level of understanding.'' Likewise the deeper reading of the coherence theorems is that incoherence of kind X corresponds to a dominated strategy of kind Y, true of every statistical tool, whether or not you care or can compute better, ``even if you own a bicycle.''
+
+
+## honest/sections/toolbox-thinking-and-law-thinking.tex
+
+Why: Fidelity/substance pass: toolbox: made a quotation verbatim and repaired a broken join.
+
+- Before: ``try walking AC''
+- After: ``try walking along AC''
+
+- Before: Galef and quoted a paper
+- After: Galef then quoted a paper
+
+
+## honest/sections/local-validity-as-a-key-to-sanity-and-civilization.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the three concepts stated fully, the worked algebra, why grasping local validity lets proofs persuade, the AI and global-warming examples, the two kinds of reasoner and the used car, game theory versus goodness, the payoff example, why human law must feel simple, the post-legalist account, why law feels like losing, the Pendarvis passage, the small-scale application, the epistemology metaphor, and the wish that basic rules be written down.
+
+- Before: And law holds civilization together only while people believe it is applied fairly.
+- After: And civilization needs coordinated steps away from bad equilibria, which need general rules that may punish people we like and reward people we dislike; when people stop believing the rules are applied fairly, they go back to the bad equilibrium and civilization falls.
+
+- Before: I then show why cancelling a common factor from both sides of an equation fails when that factor is zero. That is the last proof in the essay.
+- After: If $x = y$, then $2x = 2y$; the step is valid even in a model where $x \neq y$, since it adds no new problem. But $xy = xz$ does not give $y = z$: with $x = 0$, $y = 4$, $z = 17$, a true ``0 = 0'' yields a false ``4 = 17.'' That is the last proof in the essay. You cannot have the idea of a proof without approving of single steps apart from liking the conclusion, and once your grasp of valid steps is stronger than your faith in your intuitive verdicts, you can be convinced of counterintuitive truths.
+
+- Before: An ``intellectually strong mind'' judges an argument apart from its conclusion.
+- After: An ``intellectually strong mind'' judges an argument apart from its conclusion. Someone who doubts the intelligence explosion can still frown at the argument that it is impossible because hypercomputation is impossible; someone who accepts global warming still winces at a scorching day offered as evidence.
+
+- Before: One of my examples of a terrible argument is that there is ``no such thing as intelligence'' because of a mathematical theorem, and it links to my reply to François Chollet.
+- After: One of my examples of a terrible argument is that there is ``no such thing as intelligence'' because of the no-free-lunch theorem, and it links to my reply to François Chollet.
+
+- Before: Good arguments for false conclusions are much rarer.
+- After: Some people reason that the hot day was part of a pattern of record highs, so it counts; others reason that if they would roll their eyes at a cold day offered against warming, a hot day cannot count for it. I would pay a 5\% premium to buy a used car from the second. The first will court-martial an allied argument if they must but favor allies when they can; the second, like a mathematician, praises valid steps on either side without feeling disloyal.
+
+Good arguments for false conclusions are much rarer, since strong evidence is by definition rarely found for a false conclusion.
+
+- Before: I call this ``possibly a harbinger of the collapse of civilization.''
+- After: I call this ``possibly a harbinger of the collapse of civilization,'' and note that much of the code of fairness is not written down anywhere.
+
+- Before: I have heard less of that worry since
+- After: I set aside whether Franken deserved it. Some replied that this was horrifyingly cynical, as if misconduct were punishable only in Republicans; others that the alternative was handing the Senate to the Republicans. I think the knot comes from not separating game theory from goodness. I have heard less of that worry since
+
+- Before: Law is partly a shared idea of the good and partly a game among people with different interests, which lets everyone escape a bad outcome together.
+- After: Ideally law is the part of morality wise to enforce with guns, like ``Don't kill people''; laws against marijuana show it falling short. From that view, sparing one's own senators looks like giving up. But law, like money with its two functions, is also game theory among people who may not share your morals: it lets them move from mutual defection at (2, 2) to enforced cooperation at (2.9, 2.9), each paying 0.1 for enforcement. On that view everything rests on impartiality, on not caring whose ox is gored; if the law systematically punishes your defection and not the other side's, it pays you to blow up the equilibrium. So it is coherent to call the conduct bad whoever does it and still refuse to punish only one's own side, though Alabama shows the danger of assuming the other side will not cooperate. Some people say they would gladly take my stuff if the law did not stop them; I am not sure how seriously to take that.
+
+- Before: Writing the law down let everyone know what it was.
+- After: Human law depends on rules that feel simple and general, because of our cognitive limits; two superintelligences could agree on a compromise with complicated boundaries right up to the Pareto frontier. The laws I mean are not the modern morass of regulations but those a small town enforced in 1820, or that cops enforce against other cops. Hunter-gatherers lack 100,000 pages of law not from wisdom about loopholes and unintended consequences, but for lack of time and paper. Spoken law comes out as short universal sentences, like ``If you kill somebody who wasn't attacking you first, we'll exile you.'' Writing the law down let everyone know what it was and be safe if they kept it.
+
+- Before: I give no source for this. Then people wrote down too much, and today almost nothing that serves the true function of law can be written down.
+- After: I give no source for this. I doubt the Code of Hammurabi was universally enforced, and suspect that most real law was never written and much that was written was never real law. Then people wrote down too much, and today almost nothing that serves the true function of law can be written down. The criminal system is too slow and unreliable for any sane victim of sexual assault to prefer it to the media or the whispernet; civil law is a bludgeoning contest between those who can afford lawyers; and in poor American neighborhoods the police will not let residents form their own order. What remains of law must be known without being written and applied by the community without professional judges; at least the elders must seem to appeal to the law and not to self-interest, and it breaks down if people believe deciders look at whose ox was gored. It feels simple the way walking feels easy, though it is not computationally simple.
+
+- Before: My model of impartial law is
+- After: Following such rules can feel like losing: you give up the (5, 0) payoff for (3, 3), and the law may punish an ally. You can coherently think one enforcement makes the world worse while valuing the law, if you see its game-theoretic function. So long as the rules move everyone to a better equilibrium and fall on everyone equally, people can step back and weigh the law's interest against their own. That is called justice, fairness, impartiality. My model of impartial law is
+
+- Before: who is ``just pro-law.''
+- After: who is ``just pro-law'': if the planet has native sapient inhabitants, the company's charter is illegal, and ``Frederic Pendarvis' religion is the law, and he is its priest.'' In 1962 no one in the story thinks him naive or strange. Without people like Pendarvis, and without appreciating them even when they rule against you, your tribe ends sooner or later. I doubt the United States will fall into anarchy this way, but the point applies down to bargains between two or three people.
+
+- Before: People are losing the ability to appreciate such stories because of what goes viral on social media,
+- After: Saying you can be fair to one side but not the other treats fairness as a favor to friends, and shows that even the instinctive sense of law as game theory is being lost. People are losing the ability to appreciate such stories because social media shows them only the other side defecting and only their own side's views,
+
+- Before: Then I concede, in two sentences,
+- After: People appreciate impartial rules more natively than valid proof steps, so many start epistemology by seeing the rules of argument as law and fallacies as crimes; the unusually healthy reject bad allied arguments with the feeling of an impartial judge. Then I concede, in two sentences,
+
+- Before: and say I would like to see a study.
+- After: and say I would like to see a study, though not one using self-reports of crime, which may measure honesty times criminality. I have no grand agenda; I only wish more of the most basic rules of thinking were written down.
+
