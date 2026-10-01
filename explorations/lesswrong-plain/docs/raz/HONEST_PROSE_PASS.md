@@ -311,13 +311,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] could-anything-be-right
 - [x] morality-as-fixed-computation
 - [x] magical-categories
-- [ ] the-true-prisoner-s-dilemma
-- [ ] sympathetic-minds
-- [ ] high-challenge
-- [ ] serious-stories
-- [ ] value-is-fragile
-- [ ] the-gift-we-give-to-tomorrow
-- [ ] one-life-against-the-world
+- [x] the-true-prisoner-s-dilemma
+- [x] sympathetic-minds
+- [x] high-challenge
+- [x] serious-stories
+- [x] value-is-fragile
+- [x] the-gift-we-give-to-tomorrow
+- [x] one-life-against-the-world
 - [ ] the-allais-paradox
 - [ ] zut-allais
 - [ ] feeling-moral
