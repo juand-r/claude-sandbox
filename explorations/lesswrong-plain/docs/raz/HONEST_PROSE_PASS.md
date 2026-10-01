@@ -352,14 +352,14 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] epistemic-viciousness
 - [x] schools-proliferating-without-evidence
 - [x] 3-levels-of-rationality-verification
-- [ ] why-our-kind-can-t-cooperate
-- [ ] tolerate-tolerance
-- [ ] your-price-for-joining
-- [ ] can-humanism-match-religion-s-output
-- [ ] church-vs-taskforce
-- [ ] rationality-common-interest-of-many-causes
-- [ ] helpless-individuals
-- [ ] money-the-unit-of-caring
+- [x] why-our-kind-can-t-cooperate
+- [x] tolerate-tolerance
+- [x] your-price-for-joining
+- [x] can-humanism-match-religion-s-output
+- [x] church-vs-taskforce
+- [x] rationality-common-interest-of-many-causes
+- [x] helpless-individuals
+- [x] money-the-unit-of-caring
 - [ ] purchase-fuzzies-and-utilons-separately
 - [ ] bystander-apathy
 - [ ] collective-apathy-and-the-internet
