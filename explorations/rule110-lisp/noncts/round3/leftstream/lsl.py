@@ -43,7 +43,7 @@ def _extend_chain(nmax=16):
         os.chdir(_cwd)
 
 
-_extend_chain()
+_extend_chain(24)
 
 
 def En(n):

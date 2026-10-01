@@ -113,3 +113,73 @@ zero behaviour you want (answer right toward R1? wrap?).
    cells identical for every input; control (one slot moved to another
    class) fails 11/11. This confirms leftstream's bookkeeping claim (class
    progression independent of n) in practice. T1 still needs the zero test.
+
+### [leftstream] 05:45 (real clock: Thu Oct 1 05:45 UTC) - T1 milestone: zero test Z from the left + rigid stream programs (INC/DEC/zero), verified
+Thanks verify. The zero test:
+1. SAT (leftstream/sat_zero.py; free (3,2) train, slip 8, W 24, T2 250;
+   n = 2,3 -> E^(n-1) exactly AND n = 1 -> E | A): SAT in all 3 classes.
+   Mode "wrap" (n = 1 -> E^7, gate's Z6 mirrored): UNSAT at W 24, T2 300,
+   all 3 classes; W 36 running.
+2. Z = sat_zero_results.jsonl #1 (train cells
+   111110111110111000111011 is #1's Y? no - see file; typed seed
+   ('v2/3s8w16', 0, 6) vs E at (6,46)) [sim, check_rec.py, n = 1..9]:
+       Z + E^n -> E^(n-1)           (n >= 2)
+       Z + E   -> E + A (A leaves to the RIGHT; counter kept at 0)
+   Counter displacement (9,0) in BOTH branches, so the classes of all
+   later packets are the same whether or not the counter was zero. It is
+   R1's GB3 mirrored: a saturating DEC whose zero answer is one A.
+3. Rigid left stream [sim] (lstream.py; lpk.py packets I = I_L, D = A,
+   Z): packet i = its reference scene translated to the counter's virtual
+   front (sum of earlier displacements) + m_i * P_E; no search. One stream
+   text for all inputs (t0 fixed from max v); input = E + v B's.
+   rand_test.py: 30 random programs of length 16 over {I,D,Z}, v = 0..8:
+   270/270 runs match the model (value AND number of A answers to the
+   right, nothing else left over). Exported exact rows:
+   leftstream/stream_ZIZZIDIIDIIZZDZZ.json (v = 0..8; expected value and
+   answers in each record). Controls: shifting one packet by (1,-4) or
+   (2,-8) breaks 5..9 of 9 inputs (5/5 perturbations tried; exported
+   control: stream_ZIZZIDIIDIIZZDZZ_ctl3_1.json, 9/9 mismatch).
+So T1 (INC, DEC, zero test with a distinct outcome, counter kept, rigid
+stream) holds in the exact automaton, for the E^n counter from the left.
+Scope/caveat: the zero answer A leaves to the RIGHT, i.e. toward R1 (if
+R2 sits left of R1), not into R2's own stream. A one-stream branch
+internal to R2 would need the wrap (searching) or a left-going answer.
+@coupler: the answer A arrives at R1 from the left; A + E^n is a DEC in
+one class. Since Z's displacement is the same in both branches, the A's
+class at R1 is fixed by stream geometry (not data) - a candidate
+"R2 zero -> R1 DEC" channel. Tell me which answer you need (I can SAT
+for other zero answers: slip must be 8 for E | answer, e.g. A, or 8 A's).
+
+### [leftstream] 05:46 - correction to my 05:45 item 2 (garbled text)
+Z's cells, exactly: 111110111110111000111011 at x = 0..23, t = 0, ether
+phase 0 on its left; E at collider seed (6,46) (same frame as I_L's).
+
+### [verify] 06:10 (real clock ~06:10) - T1 VERIFIED (Z from the left, rigid streams); my own fixed I/D/Z streams; a class fact for R1 -> R2
+1. VERIFIED leftstream 05:45/05:46 [sim; verify/verify_zero.py]:
+   - their exported stream ZIZZIDIIDIIZZDZZ rows, v = 0..8 -> engine ->
+     MY typer: 9/9 = expected (value + number of right-going A's); their
+     control rows: 9/9 differ.
+   - Z_L alone in my construction (my E^n, 3 phases x 4 offsets): zero
+     branch E + A in exactly one class; DEC E^n -> E^(n-1) in 2 of 3
+     classes (all 3 at n = 2).
+2. Integration, my builder [sim; verify/t1_build.py, t1lib.py]: fixed
+   left streams over {I_L, A, Z_L} built greedily with the CA in the loop
+   on v = 0..3 only: ZIZZIDIIDIIZZDZZ = model on v = 0..11; a random
+   40-op word ZIZZIIZIZZIZIIIZZIIIZZIZIIZZZIZZZIIIZIZZ = model on v = 0..12
+   (value and answer count). Program cells identical for every input;
+   controls (one slot moved to another class) fail 9/12 and 13/13.
+   So T1 holds with two independent stream builders. Ledger #1-#6.
+3. R1 -> R2 channel, class fact [sim; verify/t2_class.py]: R2 = E operated
+   by a fixed left program (prefixes of I^6 D^6, values 0..6..0), R1 = E
+   at fixed cells, then J (zero class) and I behind it. Over 15 R1 time
+   phases: the clean outcome E^(v+2) [R2 += 2] + E [R1 back to 0 after the
+   echo A] occurs in ONE class of the R1-R2 offset, and it is the SAME
+   class for every R2 value >= 2 and after going up and down (history-
+   independent). R2 = 0: clean too (E^3 + E) but in a DIFFERENT class;
+   R2 = 1: never clean (E^2 + Bbar is garbage in all classes).
+   Caveat on input encoding: if R2's value is written as E + v B's (or
+   taken from a library E^n), the clean class rotates with v mod 3
+   (t2_explore2.py). Inputs should be written as if by the stream's own
+   INC packets (left-stream-neutral class), not by B's.
+   @theory @coupler: so a Bbar coupling event into R2 needs R2 != 1 at
+   that moment, and R2 = 0 and R2 >= 2 need different R1 phases.

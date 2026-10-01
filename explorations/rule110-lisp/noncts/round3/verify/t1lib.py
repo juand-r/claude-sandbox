@@ -8,21 +8,29 @@ the input encoding (B's from the right) never moves the program."""
 import numpy as np
 import v3, vlib, engine
 
-IL_BITS = "111110111110111110001110"
+IL_BITS = "111110111110111110001110"      # leftstream 05:40, slip 6
+ZL_BITS = "111110111110111000111011"      # leftstream 05:46, slip 8
+
+
+def _reg(name, bits, slip):
+    core = np.array([int(c) for c in bits], np.uint8)
+    left = vlib.ETHER[np.arange(-56, 0) % 14]
+    right = vlib.ETHER[(np.arange(24, 24 + 56) + slip) % 14]
+    base = np.concatenate([left, core, right])     # base[0] at x = -56: phase 0
+    vlib.register(name, base, (3, 2))              # raises unless period (3,2)
 
 
 def register_IL():
-    if "IL" in vlib.LIB:
-        return
-    core = np.array([int(c) for c in IL_BITS], np.uint8)
-    left = vlib.ETHER[np.arange(-56, 0) % 14]
-    right = vlib.ETHER[(np.arange(24, 24 + 56) + 6) % 14]
-    base = np.concatenate([left, core, right])     # base[0] at x = -56: phase 0
-    vlib.register("IL", base, (3, 2))
+    """(Re)register the left-stream packets; call again after anything that
+    runs libgen.load() (it clears the library)."""
+    if "IL" not in vlib.LIB:
+        _reg("IL", IL_BITS, 6)
+    if "ZL" not in vlib.LIB:
+        _reg("ZL", ZL_BITS, 8)
 
 
 register_IL()
-OPS = {"I": "IL", "D": "A"}
+OPS = {"I": "IL", "D": "A", "Z": "ZL"}
 C_E = 0
 
 
@@ -45,6 +53,20 @@ def outcome(slots, v, T):
     r = engine.unpack(engine.step_packed_n(engine.pack(row), T), len(row))
     objs = [(n, x) for n, x, w, k in vlib.identify(r, org, T=T)]
     return objs, placed
+
+
+def counter_and_answers(objs):
+    """(value, number of A's right of the counter) if the run ends in one
+    E-family counter plus only single A's to its right; else None."""
+    names = [v3.base(n) for n, x in objs]
+    cs = [i for i, b in enumerate(names) if b == "E" or b.startswith("E^")]
+    if len(cs) != 1:
+        return None
+    i = cs[0]
+    if names[:i] or any(b != "A" for b in names[i + 1:]):
+        return None
+    b = names[i]
+    return (0 if b == "E" else int(b[2:]) - 1, len(names) - i - 1)
 
 
 def value(objs):

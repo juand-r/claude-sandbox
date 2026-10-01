@@ -19,3 +19,20 @@
 - ops.py: A DEC class 1, disp (5,2) const for n = 2..8; A + E -> C3.
   Key changes: DEC -4, INC +4 (mod 42).
 - Posted to board 05:40.
+- 05:4x SAT zero test (slip 8, W 24, T2 250, mode A: n = 2,3 DEC and
+  n = 1 -> E | A): SAT in all 3 classes. Mode wrap (n = 1 -> E^7): UNSAT
+  W 24 T2 300 (all 3 classes). Wrap W 36 T2 320 running (python PID 4089;
+  pid file written by `echo $!` vanished - recorded by hand; $! was the
+  bash wrapper 4088).
+- check_rec.py: Z (sat_zero #1): DEC n = 2..9, at n = 1: E + A (A right);
+  displacement (9,0) in BOTH cases -> no class divergence at zero.
+- lpk.py (packets I, D, Z), lstream.py (rigid stream by bookkeeping:
+  packet i = reference scene translated to the virtual front, + m P_E),
+  rand_test.py: 30 random programs x v = 0..8 -> 270/270 match model.
+  Mistake: first run had 2 "mismatches" = E^17 beyond my CHAIN (named
+  only up to E^16); extended to E^24 (E^31+ fails to settle in
+  collide_pair, so the chain stops there).
+  Mistake avoided: run_program's default t0 depends on v; rand_test and
+  lstream main fix t0 from vmax, so the stream text is the same for all v.
+- Controls (lstream.py PROG VS i:j shifts packet i by j*(1,-4)): 5/5
+  perturbations give mismatches (5..9 of 9 inputs).

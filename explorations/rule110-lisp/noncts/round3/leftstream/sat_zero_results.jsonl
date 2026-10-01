@@ -4,3 +4,5 @@
 {"p": 3, "d": 2, "WZ": 24, "T2": 300, "mode": "wrap", "ns": [2, 3], "k": 0, "s": 8, "gap": 6, "sat": false, "secs": 7.8}
 {"p": 3, "d": 2, "WZ": 24, "T2": 300, "mode": "wrap", "ns": [2, 3], "k": 1, "s": 8, "gap": 6, "sat": false, "secs": 44.3}
 {"p": 3, "d": 2, "WZ": 24, "T2": 300, "mode": "wrap", "ns": [2, 3], "k": 2, "s": 8, "gap": 6, "sat": false, "secs": 6.0}
+{"p": 3, "d": 2, "WZ": 36, "T2": 320, "mode": "wrap", "ns": [2, 3], "k": 0, "s": 8, "gap": 6, "sat": false, "secs": 219.1}
+{"p": 3, "d": 2, "WZ": 36, "T2": 320, "mode": "wrap", "ns": [2, 3], "k": 1, "s": 8, "gap": 6, "sat": false, "secs": 176.3}
