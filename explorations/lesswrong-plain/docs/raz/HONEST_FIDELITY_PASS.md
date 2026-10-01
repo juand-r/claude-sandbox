@@ -243,18 +243,18 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-beauty-of-settled-science
 - [x] amazing-breakthrough-day-april-1st
 - [x] is-humanism-a-religion-substitute
-- [ ] scarcity
-- [ ] the-sacred-mundane
-- [ ] to-spread-science-keep-it-secret
-- [ ] initiation-ceremony
-- [ ] hand-vs-fingers
-- [ ] angry-atoms
-- [ ] heat-vs-motion
-- [ ] brain-breakthrough-it-s-made-of-neurons
-- [ ] when-anthropomorphism-became-stupid
-- [ ] a-priori
-- [ ] reductive-reference
-- [ ] zombies-zombies
+- [x] scarcity
+- [x] the-sacred-mundane
+- [x] to-spread-science-keep-it-secret
+- [x] initiation-ceremony
+- [x] hand-vs-fingers
+- [x] angry-atoms
+- [x] heat-vs-motion
+- [x] brain-breakthrough-it-s-made-of-neurons
+- [x] when-anthropomorphism-became-stupid
+- [x] a-priori
+- [x] reductive-reference
+- [x] zombies-zombies
 - [ ] zombie-responses
 - [ ] the-generalized-anti-zombie-principle
 - [ ] gazp-vs-glut

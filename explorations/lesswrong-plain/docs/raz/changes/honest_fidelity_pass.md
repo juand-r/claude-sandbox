@@ -4707,3 +4707,359 @@ Why: Fidelity/substance pass: added that space travel is a lawful dream, the sam
 - Before: Awe at a real shuttle has no such weakness.
 - After: Awe at a real shuttle has no such weakness: I can see it rise without losing the awe, and everyone else believing in shuttles does not make them less special.
 
+
+## honest/sections/scarcity.tex
+
+Why: Fidelity/substance pass: added the detergent ratings, the two instincts behind reactance, the rest of the salesman's routine, and the Ferriss advice
+
+- Before: and rated the detergents better than people in Tampa did.
+- After: and rated them gentler, more effective and better on stains than people in Tampa did; they even believed phosphate detergents poured more easily.
+
+- Before: We resist anyone who restricts our freedom, and we seize options before they vanish.
+- After: The instincts behind it seem to be preserving status and preserving options: we resist anyone who restricts our freedom, and we seize options before they vanish, even from natural causes.
+
+- Before: then offers to check the back room if they will commit to buy.
+- After: The customer, wanting it more, asks whether one might be found in the back; the salesman is willing to check, but first asks whether, if one turns up at this price, the customer will take it.
+
+- Before: is dreaming of possessing a thing rather than using it.
+- After: is dreaming of possessing a thing rather than using it. Timothy Ferriss gives similar advice for planning a life: ask which ongoing experiences would make you happy, not which possessions or changes of status.
+
+
+## honest/sections/the-sacred-mundane.tex
+
+Why: Fidelity/substance pass: replaced 'For each I name a cost' with the content and cost of each of the five habits; added the SpaceShipOne example, the 'unique' and same-brain-design objection, the 'Oops' prescription, why no religion can absorb that capacity, and the full closing list
+
+- Before: This baffled me. Must I feel nothing sacred because many others watch the same launch?
+- After: This baffled me. Must I feel nothing sacred because many others watch the same video of SpaceShipOne winning the X-Prize? Must my experience differ from theirs, when we all have the same brain design? Why would I need to be unique, a word Frank also uses?
+
+- Before: Religion twists the sacred through five habits that grew up to shield its lie. Mysteriousness: ``It is a sacred mystery!'' answers hard questions. Faith: when the evidence did not come, religion made ``the retreat to commitment.''
+- After: Religion twists the sacred through five habits that grew up to shield its lie, and each shield has a price.
+
+Mysteriousness. A shuttle launch does not need to be mysterious, and I would appreciate the stars less if I did not know what they are. But when someone asks ``Why doesn't God heal amputees?'' the believer answers, ``It is a sacred mystery!'' So unanswerability comes to feel sacred. The price is real curiosity: you end up worshipping your own generation's ignorance, including questions already answered.
+
+Faith. Early religions staked their reputation on miracles, and Christian archaeologists set out expecting to find Noah's Ark. When no evidence came, religion made what William Bartley called ``the retreat to commitment,'' ``I believe because I believe!'' So belief without evidence comes to feel sacred. The price is the ability to think clearly about the sacred, to make progress in understanding it, and to give up mistakes.
+
+- Before: The retreat to pure experience, which strips the feeling of its object. Separation, which makes human works like the shuttle seem unfit to be sacred, as Keats demoted the rainbow to the ``dull catalogue of mundane things.''
+- After: Experientialism. If you once thought the rainbow was God's contract with humanity and then stop believing in God, you can retreat to pure experience and praise yourself for the feelings, whether or not God exists. The price is solipsism: the experience loses its referent. Imagine watching a shuttle rise and telling yourself it does not matter whether it exists, so long as you feel.
+
+Separation. If the sacred is beyond ordinary evidence, it must differ in kind from mundane matter, so a shuttle, made by human hands, seems no candidate. Keats demoted the rainbow to the ``dull catalogue of mundane things'' for the crime of being understood.
+
+- Before: And privacy. For each I name a cost.
+- After: The price is the sacredness of everything merely real.
+
+Privacy, discussed above.
+
+- Before: Without the churches and scriptures, what is left is the five habits.
+- After: Take away the institutions, the factual mistakes, the churches and scriptures, and what is left is mysteriousness, faith, solipsistic experience, private solitude and discontinuity.
+
+- Before: The wise, I think, start over from scratch.
+- After: When a lie has been defended for ages and the origin of the habits is lost, the wise, I think, start over from scratch: admit you were wrong, stop trying to be even a little right or to save face, say ``Oops!'' and throw out the whole thing.
+
+- Before: The capacity to admit you were entirely wrong is why religious experience will never be like scientific experience. Last, the stars: believable, real, knowable, shared, made of the same fabric as everything else, ``the sacred mundane.''
+- After: The capacity to admit you were entirely wrong is why religious experience will never be like scientific experience; no religion can absorb it without becoming simple humanity, looking up at the stars. They are believable without a constant struggle against counterevidence, really there, knowable without threat and food for curiosity, shared with other onlookers, made of the same fabric as everything else: ``the sacred mundane.''
+
+
+## honest/sections/the-sacred-mundane.tex
+
+Why: Fidelity/substance pass: paragraph break and a full sentence for privacy
+
+- Before: (2007).} Experientialism.
+- After: (2007).}
+
+Experientialism.
+
+- Before: Privacy, discussed above.
+- After: Privacy I have already discussed.
+
+
+## honest/sections/to-spread-science-keep-it-secret.tex
+
+Why: Fidelity/substance pass: added what the author had written about public science, the Purloined Letter, the hot-coals joke, the questions rival cults would face and the Pythagorean 'blunder', the light bulb and crucifix image problem, the Darwin ceremony's details, chanting at PhD ceremonies, the efficiency reason and the $100,000 joke, the examples of real deep secrets, and the three fates of emotional energy
+
+- Before: I have written that science is public by nature.
+- After: I have written that science is public by nature: it differs from merely rational knowledge in that you can reproduce the experiments yourself instead of relying on authority, and future generations may count papers behind paywalls as non-science.
+
+- Before: so they join cults that keep their Great Truths secret. I give no evidence for this.
+- After: so they join cults that keep their Great Truths secret; the Great Truth may be gibberish, but secrecy makes it more satisfying than coherent science. I give no evidence for this. Science is the Purloined Letter of our times, left in the open and ignored. Openness helps the scientific elite, who have been through the initiations; for everyone else, making science free hides it a hundred times better than vaults and walking over hot coals would (a fearsome trial, since the secrets of insulation are reserved for Physicist-Initiates of the Third Level).
+
+- Before: and rival cults would have to explain why their masters cannot match the Eighth Level Physicists.
+- After: especially after seeing what Eighth Level Physicists can do. A rival cult such as Scientology would face questions: why its founder is not Eighth Level in anything outside it, why no Master Mathematicians join, why study it first when the Dentists of Doom are more impressive. Seen that way, the escape of mathematics from the Pythagorean cult looks like a strategic blunder.
+
+- Before: My answer: ``Because the public thinks that science is freely available, that's why.''
+- After: My answer: ``Because the public thinks that science is freely available, that's why.'' If you are allowed to learn it, it must not be worth learning. Anyone can buy a light bulb, the newspaper gives a one-paragraph explanation, and no one treats it with awe, so neither do you, though you do not know how it works. Even inert objects like crucifixes become magical if everyone looks at them that way.
+
+- Before: If the secret of natural selection were given only after a ceremony with torches, robes and an ox, you would be satisfied with it, and laugh at creationists.
+- After: If the Great Secret of Natural Selection, passed down from Darwin Who Is Not Forgotten, were given only after you paid \$2,000 and went through a ceremony with torches, robes, masks and a sacrificed ox, and you were then shown the fossils and the optic cable running through the retina, you would call it the most brilliant thing ever and be satisfied, and laugh at anyone offering a bearded man in the sky.
+
+- Before: especially if initiates had to put the evidence together themselves.
+- After: especially if initiates had to put the evidence together themselves before advancing to the next level. Inefficient, but fun. If humanity had never feared anything that smacks of religion, PhD ceremonies might have litanies and chanting.
+
+- Before: I am not seriously proposing this, ``At least, not at the moment.''
+- After: I am not seriously proposing to reverse five hundred years of openness, ``At least, not at the moment'': efficiency matters now, as in medical research. (I am only explaining why I will not tell anyone how blueness and redness arise from atoms for less than \$100,000.)
+
+- Before: People seem to have holes in their minds for secret knowledge, and if true beliefs do not fill them, false ones will.
+- After: People seem to have holes in their minds for secret knowledge, and I do not criticize that: there are deep hidden truths, like quantum mechanics or Bayes-structure, which we present wrapped in false mundanity. If true beliefs do not fill the holes, false ones will. There is nothing but science to learn, so the emotional energy will be invested in reality, wasted on nonsense, or destroyed, and I prefer to invest it.
+
+
+## honest/sections/initiation-ceremony.tex
+
+Why: Fidelity/substance pass: added how the glass gate works, Brennan's attention under the hoods, the guide's line after the roll of the dead, Brennan's full calculation, and the ring
+
+- Before: A robed guide leads him to a gate of warped glass.
+- After: A robed guide leads him to a gate of glass that bends light so that nothing can be seen through it, unless you have the key, a counter-door thick where it is thin, so that the two cancel.
+
+- Before: Inside, hooded figures line a room whose mirrored walls repeat them to infinity.
+- After: Inside, hooded figures line a room whose mirrored walls repeat them to infinity, as if all humankind watched, and every hood turns toward Brennan.
+
+- Before: Each, the room answers, ``Is dead but not forgotten.''
+- After: Each, the room answers, ``Is dead but not forgotten.'' The guide says they are lost, ``but we still have each other, and the project continues.''
+
+- Before: Brennan works it through aloud and keeps two-elevenths, on the information given.
+- After: Brennan works it through aloud: nine-sixteenths of the room are female Virtuists, and two-sixteenths male, so the odds are two to nine, a probability of two-elevenths, on the information given.
+
+- Before: He gets the ring and is told:
+- After: The hand opens. The ring is nearly invisible, made of something with a refractive index close to air. Amid the applause he is told:
+
+
+## honest/sections/hand-vs-fingers.tex
+
+Why: Fidelity/substance pass: added why the emotional objection to reductionism fails, what 'see' means (concrete visualization), the radar-dot scanners in detail, the GOFAI propositions, impossible possible worlds, and what the eliminative fingerists are accused of
+
+- Before: Back to reductionism: we use models with many levels because they are cheaper to compute, but reality has only one level.
+- After: Back to reductionism. If things had to be fundamental to be fun, we could take joy in nothing bigger than a quark, so I reject that view. The thesis, again: we use models with many levels because they are cheaper to compute, but reality has only one level.
+
+- Before: and it becomes silly to argue about whether the hand or the fingers pick up the cup.
+- After: and it becomes silly to argue about whether the hand or the fingers pick up the cup. ``See'' means concrete visualization: imagining a hand makes you imagine fingers, thumb and palm, and imagining those makes you find a hand in the picture, so the two levels of your map are bound tightly together in your mind.
+
+- Before: If you only know the fact of reduction without seeing it, from separate scanners for hands and fingers, or because someone told you, you can still imagine the hand moving off on its own. That is a fact about your map.
+- After: Suppose instead you had a hand scanner that showed the hand as a dot, like an old radar screen, and other scanners for the fingers, thumb and palm. You would see a cluster of dots, but you could imagine the hand-dot moving off on its own, though with the sensors as they are that is physically impossible. Even if told, or if you guessed from the dots, you would only know the reduction, not see it. If people merely told you ``There's a hand over there, and some fingers over there,'' you would be like an old-fashioned AI with LISP tokens: it could assert Inside(Room, Hand) and not-Inside(Room, Fingers) with no contradiction, lacking the rule that whatever contains the hand contains the fingers. None of this lets a hand crawl ghostlike across the room. It is a fact about the map.
+
+- Before: It may seem possible to you that 235757 is prime, but it is not.
+- After: It may seem possible to you that 235757 is prime, but it is not; a logically omniscient mind would see the factors. That is why we have impossible possible worlds, so that we can put probabilities on propositions that may in fact be logically impossible.
+
+- Before: Then I imagine philosophers who attack ``eliminative fingerists'' for saying that hands do not exist,
+- After: Then I imagine philosophers who attack ``eliminative fingerists'' for denying the direct fact that we feel our hand hold the cup, since if hands did not exist the cup would fall,
+
+
+## honest/sections/angry-atoms.tex
+
+Why: Fidelity/substance pass: added Democritus and the dates science believed him, the objector's full argument (the obvious materialist conjecture, first-person 'scientism' objection, wine), the novice/master line, Deep Blue's transistors, the limits of visualizing chess from transistors, the two bad interpretations in detail, why materialism is not cheap, the harder problems set aside, and the hindsight point
+
+- Before: so a hand made of atoms is easy to imagine.
+- After: so a hand made of atoms is easy to imagine. The picture is not quite right, but Democritus had it 2,400 years ago, and from roughly 1803 to 1922 science thought him right.
+
+- Before: Then I play the objector: how would the billiard balls know how to plot, unless they were angry themselves? ``Maybe wine just contains a potency of angerness. Clearly, reductionism is just a flawed notion.''
+- After: Then I play the objector. The obvious materialist conjecture is that the balls push your arm to hit, or your tongue to insult. But how would they know how to steer you through long-term plots, unless they were angry themselves? And anyone not seduced by scientism can see, from the first person, that atoms can push your arm but cannot make you want anything. Wine can make you angry, but who says wine is only billiard balls? ``Maybe wine just contains a potency of angerness. Clearly, reductionism is just a flawed notion.'' (``The novice goes astray and says `The art failed me'; the master goes astray and says `I failed my art.'\,'')
+
+- Before: Saying that neurons ``process information'' does not cross the gap.
+- After: Saying only that neurons ``process information'' does not cross the gap; it inserts a magic rule for going from billiard balls to thoughts.
+
+- Before: can run a utility function over what it imagines and choose an action.
+- After: can run a utility function over what it imagines and choose an action. The inner chains need not be made of balls with auras of intentionality: Deep Blue's transistors do not need little chess pieces carved on them.
+
+- Before: No one can visualize the step from neurons to anger, as one can a hand made of fingers. Someone who only repeats ``Anger is hormones'' ends up saying that anger is unjustified, or that it does not exist.
+- After: Even someone who writes small AIs cannot visualize the step from transistors to chess, with so many transistors and moves; and no one, knowing all of neurology, could visualize the step from neurons to anger as one can a hand made of fingers. Someone who is only told ``Anger is hormones'' and repeats it has not crossed the gap, and so reaches for interpretations: anger is mere molecules and so not morally justified, which is why you should control it; or anger is an illusion, a mirage, a dragon not found in the garage. These are hard to swallow, so they are easier to profess than to believe.
+
+- Before: ``I think this is what non-reductionists/non-materialists think they are criticizing.''
+- After: ``I think this is what non-reductionists/non-materialists think they are criticizing'' when they criticize materialism.
+
+- Before: This was an easy example, I grant, because it concerns behaviour and not experience: ``just a practice problem''. Still, ``Explanatory gaps can be crossed, if you accept help from science''.
+- After: But materialism is not as cheap as ``Anger is made out of atoms, there, now I'm done''; that does not get you from billiard balls to hitting. You need the specific insights of computation, consequentialism and search trees. This was an easy example, I grant, because it concerns behaviour: it does not require crossing from how an algorithm feels from inside, or dissolving a wrong question. It is ``just a practice problem'' by modern standards, but an important one, which would have been very hard before writing; the gap looks small only because it was bridged generations ago. ``Explanatory gaps can be crossed, if you accept help from science'', and do not trust the view from inside your own mind.
+
+
+## honest/sections/angry-atoms.tex
+
+Why: Fidelity/substance pass: made a quotation verbatim
+
+- Before: as cheap as ``Anger is made out of atoms, there, now I'm done''; that
+- After: as cheap as saying ``Anger is made out of atoms'' and calling it done; that
+
+
+## honest/sections/heat-vs-motion.tex
+
+Why: Fidelity/substance pass: added what the Carnot cycle implies, the separate filing baskets, the rubbing example, both bridging laws, each thinker's actual argument, the Python example and the Idealized Omniscient Science Interpreter, why the referent cannot be evaluated from inside (belief about belief), the inferential-rule reading, Putnam's two claims, two fields in two buildings, and the closing lines in full
+
+- Before: Sadi Carnot, working within the caloric theory, found the most efficient possible heat engine in 1824. Someone who knows heat and mechanics as separate subjects, as Carnot did, feels that heat and motion are independent properties of matter.
+- After: Sadi Carnot, working within the caloric theory, found the most efficient possible heat engine in 1824, whose existence implies the second law of thermodynamics, at a time when kinetics was a highly developed science. Someone who, like Carnot, knows a great deal about collisions, momentum and trajectories, and separately about temperatures, combustion and engines, keeps them in separate filing baskets in the brain. From inside, that feels like a world where motion and heat are independent properties of matter.
+
+- Before: ``Where there is heat, there is motion, and vice versa.''
+- After: ``Where there is heat, there is motion, and vice versa,'' which is why rubbing things together makes them hotter.
+
+- Before: You might read this as a bridging law, by which motion creates caloric and caloric pushes on things.
+- After: You might read this as two bridging laws: fast motion creates caloric, and caloric pushes on things, which is why a hotter gas presses harder on its container and steam can drive a piston.
+
+- Before: Thinker 1 says the two words have different meanings. Thinker 1 confuses the quotation with the referent: ``2 + 2'' and ``4'' are different strings with the same value,
+- After: Thinker 1 says the two words have different meanings: we call something heat when it melts things or makes them burst into flame, and motion when it changes position, so heat concerns change of substance and motion change of position. Thinker 2 says he can imagine a world where rubbing does not warm things and hot gases do not press harder; since heat and motion come apart in a possible world, they are different properties, a priori.
+
+Thinker 1 confuses the quotation with the referent. ``2 + 2'' has five characters and ``4'' has one, but a Python interpreter gives the same output for both, so different strings need not have different meanings. ``Heat'' and ``kinetic energy'' can refer to the same thing even before we know how, as an Idealized Omniscient Science Interpreter would give the same output for both. To dereference the pointer you must step outside cognition: you cannot think with real heat, or thinking ``1 million Kelvin'' would vaporize your brain. But by forming a belief about your belief, you can say that your belief about heat might not resemble real heat. So my beliefs about heat and motion can differ while real heat and motion are the same thing, just as
+
+- Before: Thinker 2 says he can imagine a world where heat and motion come apart, so they are different properties. He mistakes a rule of inference for a law of physics,
+- After: Thinker 2 took the physicist's sentence for a physical law, that caloric causes motion, when it was more like a rule of inference: where you are told there is heat, deduce motion. From projecting a many-level model onto reality he goes on to the next error,
+
+- Before: I quote Hilary Putnam: ``Conceivability is no proof of logical possibility.''
+- After: I quote Hilary Putnam on Twin Earth: once we have discovered that water is H2O, nothing counts as a possible world in which it is not, yet we can imagine experiences that would convince us otherwise, so it is conceivable but not logically possible. ``Conceivability is no proof of logical possibility.''
+
+- Before: But ``water'' seems to me to be used in two senses in Putnam's two paragraphs,
+- After: But ``water'' seems to me to be used in two senses in Putnam's two paragraphs, once for what we type into the Science Interpreter and once for what comes out,
+
+- Before: One thing can feel like two when you do not know the reduction. Could you prove heat is motion if the physicists took it back tomorrow?
+- After: One thing can take forms different enough, and you can be ignorant enough of the reduction, that it feels like two, taught in two classes by two fields in two buildings. It takes effort to remember how different heat and motion once seemed: if the physicists announced tomorrow that heat has nothing to do with motion and their popularizations had always lied, could you prove them wrong?
+
+- Before: explaining how is hard. ``Reductionism is easy, reduction is hard.''
+- After: explaining how is hard. It takes much detailed knowledge before you can no longer conceive of the two coming apart. ``Reduction isn't cheap, and that's why it buys so much.'' Or: ``Reductionism is easy, reduction is hard.'' But it helps to be a reductionist when you go looking for a reduction.
+
+
+## honest/sections/heat-vs-motion.tex
+
+Why: Fidelity/substance pass: repaired sentence joins from the previous edit; split Thinker 2 into its own paragraph
+
+- Before: just as and the morning star
+- After: just as the morning star
+
+- Before: not by examining your beliefs. Thinker 2 took
+- After: not by examining your beliefs.
+
+Thinker 2 took
+
+- Before: he goes on to the next error, and then takes what is conceivable
+- After: he goes on to a second error, taking what is conceivable
+
+
+## honest/sections/brain-breakthrough-it-s-made-of-neurons.tex
+
+Why: Fidelity/substance pass: added 'more complicated than it looks', the electrochemical-not-mechanical caveat to the Babbage analogy, 'extended origin in time', and the closing 'solvable' line
+
+- Before: Their statement: thanks to Cajal's use of Golgi's new stain,
+- After: Their statement: years of research show that the squishy thing in our skulls is even more complicated than it looks; thanks to Cajal's use of Golgi's new stain,
+
+- Before: Galvani and Helmholtz show that neurons work electrochemically, and Babbage's engine suggests that many small devices can do what we call thinking.
+- After: Babbage suggested that many small mechanical devices could form an Analytical Engine able to do arithmetic, which is widely thought to require thought. Galvani and Helmholtz show that neurons work electrochemically, not by mechanical pressure, but the analogy still suggests that a vast network of neurons could think.
+
+- Before: ``seems to indicate that intelligence is ontologically non-fundamental,''
+- After: ``seems to indicate that intelligence is ontologically non-fundamental and has an extended origin in time,''
+
+- Before: ``the promise, though not yet the realization, of a full scientific account of thought.''
+- After: ``the promise, though not yet the realization, of a full scientific account of thought.'' The problem may now be declared, if not solved, then solvable.
+
+
+## honest/sections/when-anthropomorphism-became-stupid.tex
+
+Why: Fidelity/substance pass: added the moving-Earth comparison, trees as cousins, the Golgi remark, and what one can actually say about the tree, river, atom and puppy once the change came; gave the fish dialogue
+
+- Before: The belief only looks stupid because it is not our tribe's.
+- After: The belief only looks stupid if you confuse weirdness with stupidity; it is weird to us because it is not our tribe's. If it were obviously stupid, no one would have believed it, just as for a long time no one believed the obviously stupid idea that the Earth moves. And trees are in fact our distant cousins; go back far enough and you share an ancestor with your fern.
+
+- Before: To make it obvious that wood does not think ``you have to belong to a culture with microscopes.''
+- After: To make it obvious that wood does not think ``you have to belong to a culture with microscopes,'' and really good ones.
+
+- Before: and ``I haven't had much luck.''
+- After: and ``I haven't had much luck.'' It was not Golgi, since the tangle was known before him. Maybe there was no single moment.
+
+- Before: After them you can say why a tree, a river or an atom has no mind, and why a puppy is not doing moral reasoning, according to ``Our current theories of evolutionary psychology,'' which I do not cite.
+- After: After them you can look at a tree and see nothing in its biology or behaviour doing complex information processing, and ask how selection would produce such processing if it had no effect on behaviour. You can say that water holds no replicating patterns with heredity and variation under selection, so a river could not come to have anything as complex as a brain. You can say that anger only looks simple, and has no room to fit in an atom unless there are whole universes inside quarks; and we have seen no sign of atomic anger. You can say that a puppy pushed down by its parents is not doing moral reasoning: according to ``Our current theories of evolutionary psychology,'' which I do not cite, human morality was shaped by selection on linguistic arguments about tribal politics.
+
+- Before: Last, Zhuangzi and Huizi argue about whether a man can know what fish enjoy. ``Now we know.''
+- After: Last, Zhuangzi and Huizi on the dam: Zhuangzi says the minnows darting about are enjoying themselves; Huizi asks how he can know what fish enjoy, not being a fish; Zhuangzi asks how Huizi knows he does not know, not being Zhuangzi. ``Now we know.''
+
+
+## honest/sections/a-priori.tex
+
+Why: Fidelity/substance pass: added the cheating framing, the italicized argument-words, the evolved-eyes question, Newman and the encyclopedia definition, the thought experiment of observing another's brain, the engine framing, the apples-and-calculator point, why regularized algorithms show the bias is not arbitrary, the 'no truce' point, the low-entropy universe and next mystery, and why the evolved brain's judgments are not meaningless
+
+- Before: Traditional Rationality treats its rules as social rules; to a ``Bayesian,'' the brain is an engine that stops working when they are broken.
+- After: Traditional Rationality treats its rules as social rules, so breaking them is cheating, worst when you are the first to defect. To a ``Bayesian,'' the brain is an engine of accuracy that stops working when they are broken, whatever anyone else does.
+
+- Before: It seems the razor can be justified only by the razor.
+- After: It seems the razor can be justified only by the razor, so the argument will not convince a judge who does not already accept it. (Note that justify, argument, convince and judge are all words about debate.)
+
+- Before: A philosopher may shrug, call a truce with colleagues, and fly the white flag of ``a priori truth.''
+- After: A philosopher whose daily work is writing and criticizing papers may shrug and call a truce: if you do not demand justification for my unarguable beliefs, I will not demand it for yours. The white flag of the treaty is the phrase ``a priori truth.''
+
+- Before: why could a thirsty hunter-gatherer not use it to find water?
+- After: why could a thirsty hunter-gatherer not use it to find water? And why did eyes evolve, if accurate beliefs can be had without looking?
+
+- Before: Hume defined these truths as
+- After: James R. Newman said that one apple and one apple giving two apples helps in teaching arithmetic but ``has no bearing on the truth of the proposition that 1 + 1 = 2.'' The Internet Encyclopedia of Philosophy calls a priori propositions those knowable independently of experience. Hume defined these truths as
+
+- Before: But thoughts exist; they are brain events. So when pure thought tells you that 1 + 1 = 2,
+- After: But thoughts exist; they are brain events, made of quarks under one physics that draws no border at the skull. In principle we could observe, with better neuroscience and brain-computer interfaces, the material events in someone else's brain as it computes 1 + 1 = 2 by pure thought. How is that different, as a way of knowing, from your own brain doing it? Think of the brain as an engine that collides the pattern for 1 with the pattern for 1 and gets the pattern for 2; if it works at all, it should reach the same output by watching another engine do the collision and copying the result. So when pure thought tells you that 1 + 1 = 2,
+
+- Before: by observation.
+- After: by observation. ``What do you think you are, dear reader?'' This is why you can predict apples by imagining them, or punch 3 \texttimes{} 4 into a calculator to predict what you would get imagining four rows of three apples: you and the apples are parts of one physical process, and one part may echo another.
+
+- Before: The brain's bias toward simplicity is not arbitrary; regularized algorithms work better.
+- After: Are a priori beliefs arbitrary? Many AI algorithms work better with regularization, a bias toward simpler solutions, and the regularized algorithms are more complex, with extra lines of code. The brain is biased toward simplicity and thinks more efficiently for it. Ignore that, and you have a complex brain that exists and works for no reason; its a priori beliefs are not generated by rolling random numbers. Nor can you excuse calling something a priori because other philosophers cannot justify their beliefs either: their failure cannot power a refrigerator or make accurate beliefs. There is no truce until you understand why the engine works.
+
+Set justification and argument aside, and it seems clear why Occam's razor works: we live in a simple, low-entropy universe in which short explanations are to be found.
+
+- Before: why it is simple, ``This I do not know.''
+- After: why the universe is orderly, ``This I do not know,'' but it is the next mystery to explain, and a different question from how to argue the razor to someone who rejects it.
+
+- Before: A mind without modus ponens cannot be argued into it, any more than a rock.
+- After: Perhaps you can argue nothing to such a debater, as you can argue nothing to a rock. A mind needs some structure to accept arguments: one without modus ponens can accept ``A'' and ``A->B'' all day without producing ``B.''
+
+- Before: Brains were built by selection, not argued into existence.
+- After: Brains were built by selection, not argued into existence by an ideal philosophy student of perfect emptiness. That does not make our judgments meaningless: an engine can produce accurate beliefs even if it was merely built.
+
+
+## honest/sections/a-priori.tex
+
+Why: Fidelity/substance pass: removed a repeated clause and typeset the implication as math
+
+- Before: are to be found. Occam's razor works because the world is simple; why the universe is orderly,
+- After: are to be found. Why the universe is orderly,
+
+- Before: ``A'' and ``A->B'' all day without producing ``B.''
+- After: $A$ and $A \to B$ all day without producing $B$.
+
+
+## honest/sections/reductive-reference.tex
+
+Why: Fidelity/substance pass: added why the multilevel map is efficient (steam engines, goal-relevant quantities), the General Relativity artillery story and physics never caught simplifying, why experiments go outside your head and the definition of reality, the Smullyan line, the Ideal Quark Comparer, the plastic-snow boundary, the quarks-made-of-something-else point, the three claims the author does not make about hands, the airplane wings, and the meta-truth line
+
+- Before: Carnot studied heat as a fluid long before anyone reduced it to motion, and that was efficient. Reality, by contrast, seems to compute everything at the bottom level.
+- After: Carnot studied heat as a fluid long before anyone reduced it to motion. To design a steam engine you can summarize all those tiny collisions far more simply than quantum mechanics would; humans compute efficiently, attending only to quantities that matter for their goals. Reality, by contrast, seems to compute everything at the bottom level. I once met someone who thought General Relativity would give an experimentally wrong answer for an artillery shell, because slow shells obey Newton. That is exactly how physics does not work: reality goes on computing General Relativity even where it matters only in the fourteenth decimal place. No one has ever caught physics simplifying its calculations, or if someone did, the Matrix Lords erased the memory.
+
+- Before: ``This is the point missed by the postmodernist folks.'' I name none of them.
+- After: ``This is the point missed by the postmodernist folks'' who ask how you know your beliefs are true: an experiment does go outside your head, since its outcome is caused by the thing you reason about, not by your beliefs. I once defined reality this way: even with a well-supported hypothesis I am sometimes surprised, so I need one name for what determines my predictions, ``belief,'' and another for what determines my results, ``reality.'' I name none of the postmodernists.
+
+- Before: is not circular logic but ``reflective coherence.''
+- After: is not circular logic but ``reflective coherence'': every systematic way of reaching truth ought to have a rational explanation of how it works. I quote Raymond Smullyan: if the reader objects that a statement is a mere tautology, ``please at least give the statement credit for not being inconsistent.''
+
+- Before: No one can compare a pattern of neurons with a snowflake quark by quark.
+- After: My belief about snow is a pattern of neurons, made of quarks, and snow is water molecules tiled in a repeating pattern that looks nothing like neurons. No one can offer an Ideal Quark Comparer that takes both quark-level descriptions and outputs true or false, and who says the bottom level is particle fields anyway? But throwing out every belief not written in quarks would be imprudent.
+
+- Before: a pointer to whatever simple boundary an ideal interpreter would draw around the stable cause of the white stuff I keep seeing.
+- After: a pointer to whatever simple boundary an ideal interpreter would draw around the stable cause of the white stuff I keep seeing. Even if I misclassify a few things, like plastic snow, the interpreter would see a tight cluster and redraw the boundary more simply. ``Snow'' is like an empirically determined pointer to a definition. Even if snow is tiled water molecules, the molecules are quarks, and quarks might be made of something else; then what is a snowflake? You don't know, but ``it's still a snowflake, not a fire hydrant.''
+
+- Before: My beliefs about my beliefs are promissory notes too.
+- After: These paragraphs, about sensing white stuff and thinking ``snow,'' are also far above the quarks, so my beliefs about my beliefs are promissory notes too, and so is our whole grasp of reality.
+
+- Before: So reality has no fundamental hands, but I still have hands;
+- After: So reality has no fundamental hands, but I still have hands. I do not say there are no hands, or that ``hands'' is a note that will never be paid because no cluster matches it or because its features are inconsistent, or that reality is not in the state of humans having hands. I say only that there are patterns in reality where we see hands, with something in common, and they are not fundamental. If I really had no hands,
+
+- Before: Higher levels are not false or empty: they exist implicitly in physics.
+- After: That is true though it names no quark positions, and that sentence is ``meta-true.'' Higher levels are not false or empty, like a dragon not found in the garage or a mirage of water. An airplane's wings exist explicitly in the engineer's model and implicitly in the physics of the real plane; if they did not exist, the plane would fall. Implicit existence is not nonexistence. We do not know the exact description of the implicitness, but the map still works and can still be true, though it is unnerving that every concept we have is perched orders of magnitude above reality.
+
+
+## honest/sections/reductive-reference.tex
+
+Why: Fidelity/substance pass: removed a doubled clause
+
+- Before: If I really had no hands, if I lost them, reality
+- After: If I really had no hands, reality
+
+
+## zombies-zombies
+Fidelity/substance pass: rewrote the section to carry the post's content (inner narrative and digit-span evidence, what the zombie argument infers, why it is not Cartesian dualism, logical vs. apparent possibility with a 3-SAT example, the black-box parable, the Zombie Master and holodeck, the keystroke causal chain, Chalmers's twin passage, the redness intuition, substance vs. property dualism, the phlogiston analogy, the dragon and Penrose/Hameroff, Chalmers's two lost justifications and the outer-Chalmers reply, epicycles, the reflective-coherence AI argument, the three competing theories, weird-but-evidenced theories, System 1/2). All 12 existing notes kept verbatim. Old text: 884 words.
+
+## honest/sections/zombies-zombies.tex
+
+Why: Fidelity/substance pass: made two quotations verbatim
+
+- Before: I once read, ``You are not the one who speaks your thoughts, you are the one who hears your thoughts.''
+- After: I once read that ``You are not the one who speaks your thoughts'': ``you are the one who hears your thoughts.''
+
+- Before: ``consciousness has no third-party-detectable effect on the world''?
+- After: ``Consciousness has no third-party-detectable causal impact on the world''?
+
