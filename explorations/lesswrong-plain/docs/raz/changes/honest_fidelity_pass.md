@@ -8273,3 +8273,110 @@ Why: Fidelity/substance pass: shut-up: replaced a non-verbatim quotation with a 
 - Before: ``But SUCCEED is not a primitive action! Sometimes you just can't win!'' True.
 - After: You object that success is not a primitive action, and that sometimes you just can't win. True.
 
+
+## honest/sections/final-words.tex
+
+Why: Fidelity/substance pass: Added the story's substance: the students and Brennan's suspicion, what Jeffreyssai says is missing, why the crisis cannot be staged, the saying about cleverness and its analogies, the forms of underconfidence, the farewell and packing scene, Brennan's search for power and his Mistress, and the proverb about returning from Mount Mirror.
+
+- Before: hoping for the ``real'' secrets.
+- After: hoping for the ``real'' secrets. Brennan, who has seen something of what goes on behind the curtains of the world, does not smile; secrets have a price, and he thinks he knows what it is.
+
+- Before: What he taught is incomplete, and they will harm themselves in trying to use it.
+- After: He knows they are not ready, that what he said is not what they heard, that he left out the one most important thing, and that they will harm themselves in trying to use what he taught, with a knife he shaped. What lies between them and mastery is not another classroom; even the beisutsukai have never found how to teach certain things.
+
+- Before: ``Go forth, then, and fail.''
+- After: They will be left ``in the midst of wreckage absolute.'' He cannot create masters. ``Go forth, then, and fail.''
+
+- Before: ``The higher road begins after the Art seems to fail you;
+- After: The crisis cannot be provoked artificially; to teach anything, the catastrophe must come as a surprise, and they must go as far as they can and fail honestly. ``The higher road begins after the Art seems to fail you;
+
+- Before: Is this the only road to mastery? ``I do not know,'' he says.
+- After: Is this the only road to mastery? ``I do not know,'' he says, but he doubts there is a road only through the monastery. The beisutsukai are heirs of mystics as well as scientists, and must guard against the old failure modes.
+
+- Before: The first is to look ``just the slightest bit harder for flaws in arguments whose conclusions you would rather not accept.''
+- After: The first is to look ``just the slightest bit harder for flaws in arguments whose conclusions you would rather not accept.'' If you cannot contain it, every flaw you learn to detect makes you stupider; ``Intelligence, to be useful, must be used for something other than defeating itself.''
+
+- Before: The second is cleverness, which stays a weakness even when well known, because the clever value it for itself.
+- After: The second is cleverness: complicated plans, theories and arguments, or ones commended too much by elegance and too little by realism. A saying runs: ``The vulnerability of the beisutsukai is well-known; they are prone to be too clever.'' Their enemies know it, yet it stays a weakness, because a life without anything clever or elegant hardly seems worth living, just as a Competitor cannot refuse a challenge that seems fair, or a Bard resist drama.
+
+- Before: The third is underconfidence that feels like humility, ending in lost momentum.
+- After: The third is underconfidence that feels like humility. Knowing so many of your own flaws, you may confess inability as wisdom, question yourself without testing the answers, refuse to decide when a quick decision is needed, take advice you should not, drift into cynicism or sage despair, or simply lose momentum.
+
+- Before: He leaves, saying: ``One of you at least seems likely to come back.''
+- After: If they meet again, he will no longer be their teacher. He walks away, and when Hiriwa protests that she never said her final words to him, he answers that they can thank him if they return: ``One of you at least seems likely to come back.'' Taji remarks that even the Bardic Conspiracy would not try for that much drama. Brennan is already packed, and bets that the older student, Styrlyn, is too; he is. Styrlyn proposes a talk about mutual interests, and Brennan politely puts him off, unwilling to sell out his Mistress so early.
+
+- Before: Alone, Brennan finds that he wants nothing, and wonders whether his pursuit of power was only the role of ``an ambitious young man.''
+- After: Alone, Brennan finds that he wants nothing. He had sought power, to prevent a repetition of his past, following the proverb ``If you don't know what you need, take power,'' first in the Competitive Conspiracy, then with the beisutsukai. His Mistress waits in a city near the center of the world, but to return and drift into someone else's intrigue is not enough. He wonders whether his pursuit of power was only the role of ``an ambitious young man.''
+
+- Before: I do not say what it is.
+- After: I do not say what it is. He sets off toward Shir L'or, the city at the center of the world, with a plot to hatch.
+
+- Before: and that what Taji said he wanted was weak evidence.
+- After: and that what Taji said he wanted was weak evidence. A proverb says: ``Whoever sets out from Mount Mirror seeking the impossible, will surely return.'' It says nothing of succeeding, so it is less optimistic than it sounds.
+
+
+## honest/sections/raising-the-sanity-waterline.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the topics listed for the course and how each avoids religion, the further items a religious scientist fails to apply, the Santa Claus question, why the canary's removal would not raise the waterline, and the priority given to fighting religion's harms.
+
+- Before: I list topics I have already written about, from evidence and Occam's Razor to Joy in the Merely Real. They did not avoid religion, but they could; Dark Side Epistemology ``would be hard''.
+- After: I list topics I have already written about that did not avoid religion but could: affective death spirals, which have plenty of examples outside the supernatural; cached thoughts, fake wisdom and the pressure to conform; evidence and Occam's Razor; why reason works causally; mysterious answers, with vitalism and phlogiston as historical examples; the absence of fundamental mental things, through the Mind Projection Fallacy applied to probability, then reductionism and cognitive science; the arts of actually updating on evidence, under some name other than ``Crisis of Faith''; Fun Theory, taught as a theory of utopian fiction; Joy in the Merely Real and naturalistic metaethics. Dark Side Epistemology ``would be hard'', but you might videotape the interrogation of a snake-oil salesman.
+
+- Before: ``epistemology 101'' and ``self-honesty 201''.
+- After: ``epistemology 101'' and ``self-honesty 201''. The list also includes how evidence and Occam's Razor follow from minds working as mapping engines, and so do not switch off when you talk about tooth fairies; thinking for yourself instead of repeating what you heard; and the general trends of science over three thousand years.
+
+- Before: Their colleagues cannot have taken it either, or they would have corrected them, or pitied them too much to give them a Nobel.
+- After: They cannot be isolated exceptions. Had their colleagues taken it, they would have corrected them, or pitied them too much to give them a Nobel. Could you, realistically, win a Nobel while advocating the existence of Santa Claus?
+
+- Before: ``Even in the highest halls of science.''
+- After: ``Even in the highest halls of science.'' Throw out the canary and the mine may stink less, but the waterline may not rise much.
+
+- Before: Last, I back the neo-atheists. The harm done by religion is ``current and ongoing disaster''; I do not argue it. Even if they won everywhere,
+- After: Last, I back the neo-atheists. The harm done by religion is ``current and ongoing disaster''; I do not argue it. Fighting that harm comes before using religion as a canary. Even if Dawkins, Dennett, Harris and Hitchens won everywhere,
+
+
+## honest/sections/a-sense-that-more-is-possible.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the researchers who show a hint of the art, the comparisons with engineers and athletes, the lack of systematization, the kind of trial the author wants, Burfoot's explanation of why intelligence dominates, the account of how martial-arts schools arose, and the closing point about rationality as a hobbyhorse; corrected a sentence that put the Conway comparison as an offer.
+
+- Before: Nor is being able to derive Bayes's Theorem, nor the work of the most senior researchers I admire. All I offer is that enough rationality would compare with ``John Conway's mastery of math,'' and that no one has it yet, me included.
+- After: Nor is being able to derive Bayes's Theorem, which would eliminate perhaps 98\% of them; it is a basic theorem. I have always had a sense that there ought to be an art of thinking whose students become visibly more competent and formidable. I do not see it. I see a hint of it in a few very senior psychologists, such as Robyn Dawes, Daniel Gilbert, and Tooby and Cosmides, who care so much about rationality that it probably makes their colleagues uncomfortable. Even that is not a lot. I doubt that the mastery of those who impress me compares with ``John Conway's mastery of math.'' The knowledge we actually use is probably less than a nuclear engineer's, perhaps less than a construction engineer's knowledge of bridges, and our self-taught practice is less than an Olympic runner's, or maybe a professional tennis player's. The root, I suspect, is that we have never got together and systematized our skills; each of us built them alone.
+
+- Before: One answer is that rationalists get less systematic training
+- After: Why are rationalists not surrounded by a visible aura of formidability, or found at the top of every elite selected for anything to do with thought? Why do most seem like ordinary people of somewhat above-average intelligence with one more hobbyhorse? One answer is that they get less systematic training
+
+- Before: I include myself. I know a single use of rationality, ``reduction of confusing cognitions.''
+- After: I include myself; I am no beisutsukai, because one person can create only so much of an art without statistics on results. I know a single use of rationality, ``reduction of confusing cognitions.'' A mature training program would teach other arts that would make me stronger and happier, but my life has room for only one sub-art built from scratch.
+
+- Before: I cite none of these experiments.
+- After: I want something more like running half the applicants to a three-month summer program through version A and half through version B, and surveying them five years later. I cite none of the existing experiments.
+
+- Before: Martial arts schools got somewhere
+- After: Why are there schools of martial arts and no rationality dojos? Not because hitting matters more than thinking. It is easier to verify that you have hit someone. And people want to hit, and believe that a systematic art can make them visibly more formidable. Long ago some people had the sense that more was possible; they shared, practiced and formalized their techniques because they thought they should be awesome and were willing to work for it. Martial arts schools got somewhere
+
+- Before: That sense is the title of the post.
+- After: That sense is the title of the post: that rationality should have as much knowledge behind it as nuclear engineering, superstars who practice as hard as chess grandmasters, and successful practitioners with an evident aura of awesome. Nor do people look at the lack of such formidability and say, ``We must be doing something wrong.'' Rationality seems one more hobby to talk about at parties, with few real consequences.
+
+- Before: I note, quoting a reader, that intelligence seems to matter most, and I blame the lack of training.
+- After: I quote a reader, Daniel Burfoot, who suggests why intelligence seems to matter so much for rationality: when everything is improvised with little training, intelligence is the main factor left. I blame the lack of training.
+
+
+## honest/sections/epistemic-viciousness.tex
+
+Why: Fidelity/substance pass: Added details from the essay as the post quotes it: the age by which the bull would die, the special move from a teacher, the physics comparison, the nukite example, and the closing remark about not losing.
+
+- Before: would make it possible to ``kill a bull with one blow''.
+- After: would make it possible to ``kill a bull with one blow''; she expected to manage it by fourteen.
+
+- Before: Someone who has practised a special move for twenty years will want to discard evidence against it.
+- After: Someone whose teacher took them aside to teach a special move, and who has practised it for twenty years, will want to discard evidence against it.
+
+- Before: as runners do not defer to the ancient Greeks.
+- After: whereas runners do not defer to the ancient Greeks, and a physicist may say that Newton's theories are false.
+
+- Before: and so cannot test their training either.
+- After: and so cannot test their training either: should you practise a strike in the air, or will that teach you to overextend?
+
+- Before: ``Every single one of these risk factors
+- After: ``How to not lose'' is more widely useful than ``how to win.'' ``Every single one of these risk factors
+

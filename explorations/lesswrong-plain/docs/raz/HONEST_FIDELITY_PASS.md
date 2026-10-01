@@ -345,10 +345,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] on-doing-the-impossible
 - [x] make-an-extraordinary-effort
 - [x] shut-up-and-do-the-impossible
-- [ ] final-words
-- [ ] raising-the-sanity-waterline
-- [ ] a-sense-that-more-is-possible
-- [ ] epistemic-viciousness
+- [x] final-words
+- [x] raising-the-sanity-waterline
+- [x] a-sense-that-more-is-possible
+- [x] epistemic-viciousness
 - [ ] schools-proliferating-without-evidence
 - [ ] 3-levels-of-rationality-verification
 - [ ] why-our-kind-can-t-cooperate
