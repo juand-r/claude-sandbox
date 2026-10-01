@@ -54,3 +54,25 @@ def rebuild(scene, T):
     r = vlib.evolve(row, T)
     objs = [(n, x, w) for n, x, w, k in vlib.identify(r, org, T=T)]
     return objs, r, org
+
+
+# Left-stream trains of round 3 (leftstream 05:40/05:46), as cells with left
+# ether phase 0. Collider's Library auto-registers them under names
+# v<v>s<slip>w<width> when it types a row containing them; teammates' seeds
+# use those names. register_auto() reproduces that registration in CLIB
+# (the definition is the cell string below, which I also hold in my own
+# library as round-3 t1lib IL / ZL).
+TRAINS = {"ZL": ("111110111110111000111011", 8),
+          "IL": ("111110111110111110001110", 6)}
+
+
+def register_auto(key):
+    import collide
+    from r110lib import ether_cells
+    bits, slip = TRAINS[key]
+    seg = np.array([int(c) for c in bits], np.uint8)
+    row = np.concatenate([ether_cells(0, -300, 0), seg,
+                          ether_cells(slip, len(seg), len(seg) + 300)])
+    ok, prods, _ = collide.products_of(CLIB, row, -300, 0)
+    assert ok and len(prods) == 1, prods
+    return prods[0][0]

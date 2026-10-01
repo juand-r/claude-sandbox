@@ -90,3 +90,18 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
 - NEXT: gun SAT (gun.py): periodic structure at a rod face with period
   V = K u + j P_E emitting a B-train (front gun) or A-train (back gun).
   Positive control: the dump wave (front, K = 1, j = 0).
+- 23:38-23:46 gun.py: SAT for face structures periodic under
+  V = K u + j P_E emitting one glider per cycle. Controls: front j = 0
+  (B out) 6 SAT, all verified 8 cycles by exact sim (the dump wave);
+  back face with an INCOMING B-train j = 1, 2: SAT, verified. A first
+  version built the glider train from seeds far from the window (the
+  "train" next to the window was plain ether): verify_gun caught it
+  (periodicity failed 7/7); fixed (train_seeds picks seeds near the
+  window). Results: front guns (B out, K = 1) j = 1, 2, 3 (window 16+16):
+  UNSAT for every train placement; back guns (A out, K = 1) j = 0
+  (impossible, A's overlap), 1, 2: UNSAT (window 20+20). Batch stopped by
+  me during back j = 3 to free the CPU for the bouncer tables. MISTAKE:
+  killing the python child before the shell let the shell start j = 4;
+  killed that orphan (15690) too. Rule: kill the parent shell FIRST.
+- 23:45 bouncer tables started (run_bounce.sh: L-table 391 B-trains x 193
+  walls, then R-table 1863 A/D-trains x 193 walls; T = 500).

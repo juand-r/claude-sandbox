@@ -23,3 +23,22 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   by PID 11579/11577/11571 and 12207/12206). Fixed: integer geometry, only
   halting runs with registers <= 5 compared. Result: 197/197 exact,
   controls 59/197 and 59/197 fail.
+
+## 23:00-23:45 log
+- 23:02 lnscan2 census (library heads x stationary objects), stopped at 4904 pairs.
+- 23:05 board: route map + route 12 (particle TM). 23:18 credit to round-1 synth
+  (they had the single-class "direct TM" idea and stalled); Lemma L4 posted;
+  verify 23:19 corrected L4's second half (pass cycles NOT forced: zig-zag
+  ratchets possible). Accepted and fixed in THEORY.
+- ptm.py bugs found: (1) expanding library compounds into collider "parts"
+  gives rows build_row rejects -> false 'dirty'; expand() is now identity;
+  (2) added rephase(). test_ptm.py: 120/120 vs census, control 9/120.
+- passsearch: A packets (<=5 A's, 70 cells): 0 R-passes; B packets: dirty.
+- passraw: all 391 B trains <=30 vs C1-3: 10 passes, all -> single B.
+  A trains (6398): running; passes mostly -> single A, some A^2, A^3, A_8_A.
+- bouncer.py (route 14 model) 197/197, controls 59/197 each.
+- Reviews posted: delayline drift switch (one direction; symmetric
+  two-window layout proposed; overshoot law), queue mod-8 law = F6.
+- New routes written: 20 (two-window gap machine, overshoot law), 21 (MERGE),
+  22 (unary transducers: dump + single-B processors + fuse).
+- 23:47 per lead 23:46: shuttle owns single-wall tables; I cancelled my queued explore2/bscan A/passraw D (killed queue sh 14962 and passraw sh 10414; passraw A python 10416 finishing). Theory owns the graph search on shuttle's tables.

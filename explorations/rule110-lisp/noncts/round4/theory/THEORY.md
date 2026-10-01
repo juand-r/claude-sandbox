@@ -477,6 +477,35 @@ compiler did not model. Untested in code; I flag it as [arg] and as the
 first thing to model if route 20 produces windows that walk and contacts
 that branch.
 
+## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec]
+
+Shuttle's MERGE (verified by verify 23:33) shows a counter can be turned
+into a moving unary train: a D1 at R1's front turns E^n into n+1 left-moving
+B's, which fuse into any rod they meet (B + E^m -> E^(m+1), single class).
+Between the dump and the fusion the count travels as B's, and B against any
+stationary object is single-class (Lemma L1). So stationary objects can act
+on the count as timing-free *unary transducers*:
+- a fan-out O with B + O -> O + B + B doubles the count;
+- a toggle O0/O1 with B + O0 -> O1 (absorbed), B + O1 -> O0 + B halves it
+  and keeps the parity (the remainder) in its own state;
+- a finite-state transducer in general maps n B's to a*n + b(q, n mod m) B's,
+  where the multiplier a is set by the cycle its state q reaches.
+A finite chain of such processors whose states persist from round to round
+computes n -> a_q n + b(q, n mod m), q' = f(q, n mod m): a generalized
+Collatz map with a finite control and state-dependent multipliers, which
+is the form Conway (1972) showed undecidable (universal) [thm, literature;
+I have not re-read Conway here]. Physical needs:
+- U1 dump (exists: MERGE's first half);
+- U2 single-B processors: fan-out and toggle, each a single-class reaction
+  of ONE B with a free stationary object (synth's round-1 "pass B" mode of
+  experiments_heads.py was never run: this is the cheapest SAT in the map);
+- U3 re-fusion (exists: B + E^m -> E^(m+1));
+- U4 geometry: the processors must be met by the same register every round
+  (the register moves left at each dump/fuse cycle), and the dump trigger
+  D1 must reach the new rod. Not solved here.
+- The B spacing in a dumped train must exceed each processor's settling
+  time (tight trains make it a many-body reaction).
+
 ## 7. Literature read for this round
 
 - J. Durand-Lose, "Irrationality is needed to compute with signal machines

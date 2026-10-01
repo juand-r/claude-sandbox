@@ -27,7 +27,7 @@ vA, vB = Fr(14, 15), Fr(7, 30)
 
 
 def simulate(g0, prog="z", P=Fr(150), k=2, lat=Fr(0), aA=Fr(0), aB=Fr(0),
-             y0=0, t_end=Fr(10**6), max_events=200000):
+             y0=0, t_end=Fr(10**6), max_events=200000, annihilate=True):
     """Event simulation. Returns list of (time, y) at every zero of y
     (start of an episode) and the final gap."""
     b, f = Fr(0), Fr(g0)
@@ -49,13 +49,17 @@ def simulate(g0, prog="z", P=Fr(150), k=2, lat=Fr(0), aA=Fr(0), aB=Fr(0),
         tA = min(((ta + (f - xa) / vA), i) for i, (ta, xa) in enumerate(A)) if A else (None, None)
         # next B arrival at b
         tB = min(((tb + (xb - b) / vB), i) for i, (tb, xb, u) in enumerate(Bs)) if Bs else (None, None)
-        # next A-B meeting: A at xa + vA (t - ta), B at xb - vB (t - tb)
+        # next A-B meeting (annihilating channel only). All A's lie left of
+        # all B's (they can only pass by meeting), so the first meeting is
+        # between the rightmost A and the leftmost B.
         tM = (None, None)
-        for i, (ta, xa) in enumerate(A):
-            for j, (tb, xb, u) in enumerate(Bs):
-                tm = (xb - xa + vA * ta + vB * tb) / (vA + vB)
-                if tm >= max(ta, tb) and (tM[0] is None or tm < tM[0]):
-                    tM = (tm, (i, j))
+        if annihilate and A and Bs:
+            ia = max(range(len(A)), key=lambda i: A[i][1] + vA * (t - A[i][0]))
+            jb = min(range(len(Bs)), key=lambda j: Bs[j][1] - vB * (t - Bs[j][0]))
+            ta, xa = A[ia]
+            tb, xb, u = Bs[jb]
+            tm = (xb - xa + vA * ta + vB * tb) / (vA + vB)
+            tM = (max(tm, t), (ia, jb))
         tP = min(pending)[0] if pending else None
         cands = [(t_slot, 0, None)]
         if tA[0] is not None:
@@ -123,7 +127,7 @@ if __name__ == "__main__":
             # k = 2: each A comes back as 2 units, so y rises after the burst
             # and the second zero episode starts later; the A count of the
             # first episode is read off at the start of the second.
-            zeros, gend = simulate(g, P=P, k=2, t_end=Fr(40 * g + 20000))
+            zeros, gend = simulate(g, P=P, k=2, t_end=Fr(40 * g + 20000), annihilate=False)
             rt = Fr(g) / vA + Fr(g) / vB
             n_pred = burst_law(g, P, Fr(0))
             n_sim = zeros[1][2] if len(zeros) > 1 else None
@@ -133,15 +137,20 @@ if __name__ == "__main__":
     # 2. walking reflection: each absorbed A moves the face right by aA
     #    (a reflector that walks per reflection). Zero times are then not
     #    eventually periodic: the gap grows by a fixed factor per episode.
-    zeros, gend = simulate(200, prog="z", P=Fr(150), k=2, aA=Fr(22), aB=Fr(0), t_end=Fr(3 * 10**6))
+    zeros, gend = simulate(200, prog="z", P=Fr(150), k=2, aA=Fr(22), aB=Fr(0), t_end=Fr(3 * 10**6), annihilate=False)
     gaps = [float(z[1]) for z in zeros[:12]]
     print("walking reflector, gap at successive zero episodes:", [round(x) for x in gaps])
     ratios = [gaps[i + 1] / gaps[i] for i in range(len(gaps) - 1) if gaps[i] > 0]
     print("ratios:", [round(r, 3) for r in ratios])
     # control: a non-walking reflector gives a constant gap
-    zeros0, _ = simulate(200, prog="z", P=Fr(150), k=2, aA=Fr(0), t_end=Fr(10**6))
+    zeros0, _ = simulate(200, prog="z", P=Fr(150), k=2, aA=Fr(0), t_end=Fr(10**6), annihilate=False)
     g0s = {z[1] for z in zeros0}
     print("control (aA = 0): distinct gaps at zero episodes:", sorted(float(x) for x in g0s))
     if len(set(round(x) for x in gaps)) < 5 or len(g0s) != 1:
         fails += 1
+    # 3. annihilating channel (Rule 110 A + B^k -> B^(k-1)): refills are
+    #    eaten by the rest of the burst; for large g y never refills.
+    for g in (100, 600, 1200):
+        zs, _ = simulate(g, prog="z", P=Fr(150), k=2, t_end=Fr(60 * g + 20000), annihilate=True)
+        print(f"annihilating channel, g={g}: zero episodes started: {len(zs)} (1 = y never refilled)")
     print("FAILURES:", fails)
