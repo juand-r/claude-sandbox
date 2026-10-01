@@ -8701,3 +8701,58 @@ Why: Fidelity/substance pass: helpless-individuals: repaired a broken join.
 - Before: with money whose money is
 - After: with money
 
+
+## honest/sections/purchase-fuzzies-and-utilons-separately.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the bonus point for concern, the argument for calling it a selfish good deed, why willpower restoration is hard to systematize, the billionaire's three purchases in full, the 5% overhead, status versus a speedboat, and the advice for people of ordinary means.
+
+- Before: All of these motives are fine by me, ``Just so long as people get helped.''
+- After: All of these motives are fine by me; I might give bonus points for the first, but deduct none for the others, ``Just so long as people get helped.''
+
+- Before: So it is a ``selfish good deed.''
+- After: But then the benefits I list are to myself. Who said I was defending it as a selfless deed? It is a ``selfish good deed,'' with indirect benefits to others if it keeps me altruistic; if you distrust it as an ulterior motive, you could as well look straight at the good deed behind it.
+
+- Before: Your mileage may vary.
+- After: Your mileage may vary; different things restore willpower for different people, and we do not understand the deeper rules that would predict the variation.
+
+- Before: ``purchase warm fuzzies and utilons separately.''
+- After: ``purchase warm fuzzies and utilons separately,'' not at once, since doing both means neither is done well; and if status matters to you, buy it separately too.
+
+- Before: A new billionaire should buy fuzzies with an anonymous \$10,000 check to a struggling student, status with \$100,000 to the sexiest X-Prize, and utilons by cold calculation of ``the greatest expected utilons per dollar.''
+- After: A new billionaire should buy fuzzies by personally but anonymously giving a \$10,000 cashier's check to a hard-working woman about to drop out of college after her husband's hours were cut. Buy status by giving \$100,000 to the sexiest X-Prize and bragging about it for five years. Then, with cold calculation, free of scope insensitivity, ambiguity aversion, status and fuzzies, find the charity with ``the greatest expected utilons per dollar,'' and give until its marginal efficiency falls below the next one's.
+
+- Before: Utilons should get at least 20 times what fuzzies get.
+- After: Utilons should get at least 20 times what fuzzies get; 5\% overhead for keeping yourself altruistic seems reasonable, provided the fuzzy act really helps. Buying status is unrelated to altruism: if an X-Prize gift impresses your friends more than a speedboat of the same price, skip the speedboat, but enter it under impressing friends.
+
+- Before: A \$10 million check to a breast-cancer charity will ``probably'' give far less euphoria than turning one life around in person,
+- After: A \$10 million check to a breast-cancer charity, though far better than spending it on parties, will ``probably'' give far less euphoria than turning one life around in person, less to talk about than an X-Prize,
+
+- Before: If you are not a billionaire, get your fuzzies cheaply: volunteer at a soup kitchen, or hold doors.
+- After: If you are not a billionaire, you cannot buy in bulk, but get your fuzzies cheaply from a charity with vivid, ideally in-person beneficiaries: volunteer at a soup kitchen, or hold doors. Let your other giving validate it, but do not confuse it with buying utilons. Status is probably cheaper bought as nice clothes.
+
+
+## honest/sections/bystander-apathy.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what each standard explanation means, the content of the Cialdini passage and why one person should be asked, the arms-race idea and why it fails, the status reading of choking, the cynical explanation and the two facts against it, and why teaching may work for this bias.
+
+- Before: The standard explanations are diffusion of responsibility and pluralistic ignorance:
+- After: The standard explanations are diffusion of responsibility, in which everyone hopes someone else will bear the cost of acting first and the crowd offers an excuse, and pluralistic ignorance:
+
+- Before: I quote Cialdini on this, and pass on his advice: if you need help, point at one person and ask that person.
+- After: I quote Cialdini on this: an emergency is often not obviously one (is the man in the alley having a heart attack, or sleeping off a drink?), so we look to others for clues, but placidly, with camouflaged glances, and see everyone unruffled. Cialdini's advice: if you need help, point at one person and ask that person, since the whole group may be less likely to help than one individual.
+
+- Before: Could evolution have produced an arms race to be the last to help? I think not, because the experiments show people failing to help, not waiting.
+- After: Could evolution have produced an arms race to be the last to help? In a band of relatives, the first to act pays the cost while the others share the genetic benefit. I think not: once the whole group fails to act, a gene for helping at once should invade, and the experiments show people failing to help, not waiting.
+
+- Before: Nervousness may play a part too, if Robin Hanson is right about ``choking.''
+- After: Nervousness may play a part too: if Robin Hanson is right about ``choking,'' being first to act might be a dangerous bid for status.
+
+- Before: The effect is not only a cold wish to avoid blame.
+- After: Cynically, people may care mostly about not being blamed. That may contribute, but it is not the whole story.
+
+- Before: This is one of the few biases, as I recall, that teaching seems to cure.
+- After: This is one of the few biases, as I recall, that teaching seems to cure, perhaps because the correction is obvious and hard to overdo, unlike adjusting your calibration.
+
+- Before: People sometimes hold themselves responsible.
+- After: People sometimes hold themselves responsible, once they see they are the only ones who know enough to act.
+
