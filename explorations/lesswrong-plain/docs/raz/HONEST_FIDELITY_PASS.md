@@ -275,10 +275,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] if-many-worlds-had-come-first
 - [x] where-philosophy-meets-science
 - [x] thou-art-physics
-- [ ] many-worlds-one-best-guess
-- [ ] the-failures-of-eld-science
-- [ ] the-dilemma-science-or-bayes
-- [ ] science-doesn-t-trust-your-rationality
+- [x] many-worlds-one-best-guess
+- [x] the-failures-of-eld-science
+- [x] the-dilemma-science-or-bayes
+- [x] science-doesn-t-trust-your-rationality
 - [ ] when-science-can-t-help
 - [ ] science-isn-t-strict-enough
 - [ ] do-scientists-already-know-this-stuff

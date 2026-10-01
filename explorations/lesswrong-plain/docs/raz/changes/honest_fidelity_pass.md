@@ -5692,3 +5692,148 @@ Why: Fidelity/substance pass: removed my guess about the content of a diagram I 
 - Before: The right diagram puts ``Me'' inside ``Physics,'' or has physics act through me on the future.
 - After: The right diagram puts ``Me'' inside ``Physics.''
 
+
+## honest/sections/many-worlds-one-best-guess.tex
+
+Why: Fidelity/substance pass: added the definition of grue and the spin examples, the evidence that quantum effects aggregate, how far apart the observer versions are, the 50-micron test, what Hanson's idea says, the author's split-and-merge lottery thought and the Born rule's lack of that problem, the 'mostly wake up' intuition, why there is room for an answer without new laws, Riedel's remark and the reply, the only-Earth implication, the privileged-centre and pepperoni example, the entangled-photon numbers (50/50, 20 degrees, 11.6 per cent), why relativity leaves no global now, the angular-momentum comparison in full, top quarks, and the closing claims (over fifty years ago, children will think us nuts, the honour of my Earth)
+
+- Before: Just as ``Emeralds are green'' beats ``Emeralds are grue,'' the simplest one wins: the laws hold everywhere, with no cutoff date and no mass limit.
+- After: Call something grue if it looks green before 2020 and blue after. Just as ``Emeralds are green'' beats ``Emeralds are grue,'' the simplest one wins: ``All electrons have spin 1/2,'' not that they do before 2020, or unless they are part of an entangled system heavier than a gram. The laws hold everywhere.
+
+- Before: We cannot check the equations in detail for a human, but lasers and chemistry work as they should.
+- After: We cannot check the equations in detail for a human, but quantum effects do not vanish in bulk: lasers emit floods of coherent photons, atoms have the chemistry the theory says, molecules hold together, and every prediction tested has come true.
+
+- Before: The two versions of the observer differ in so many particles that they barely interact, so no mind sees a blurred cat.
+- After: The brain that sees the exploded cat and the one that sees the living cat differ in many firing neurons, so they are far apart in configuration space and interact only in about the $10^{30}$th decimal place; no mind sees a blurred cat.
+
+- Before: Seeing one outcome is exactly what the simplest laws predict.
+- After: Seeing one outcome is exactly what the simplest laws predict, and superposition is being verified at ever larger scales, with a 50-micron test under way.
+
+- Before: Robin Hanson's ``mangled worlds'' might explain it.
+- After: Robin Hanson suggests that worlds of exponentially small amplitude are disrupted by leakage from larger ones, which would give back the Born probabilities; I like it because it is so normal. My own thought: counting observers the obvious way gives strange results even outside quantum physics. If I split my brain into a trillion copies whenever I win a lottery while anaesthetized, then merge them, naive counting says I can make myself win. The Born rule has no such split-and-merge problem; given unitary physics it is the unique rule that stops observers having psychic powers, which is interesting though it explains nothing.
+
+- Before: because there seems to be a part of ``What happens to me?'' that my utility function cannot change.
+- After: because there seems to be a part of ``What happens to me?'' that my utility function cannot change: even if I cared nothing for the worlds where I lose a quantum lottery, I would still ``mostly'' wake up in one.
+
+- Before: There is hope of an answer without new fundamental laws, though I cannot rule one out.
+- After: There is hope of an answer without new fundamental laws, since we split continuously, not in two at each reading of a detector, and the anthropic weight of observers or the brain's superpositions may hold surprises. But I cannot rule a new law out. Jess Riedel says every new experimental regime has brought new physics; ``Every time'' is too strong, but a law hidden in the 20th decimal place is possible.
+
+- Before: Might a new law leave only one world? You should not even ask.
+- After: Might a new law leave only one world? Then all our other selves are gone, and if the universe is also small, this could be the only Earth anywhere. But you should not even ask.
+
+- Before: and it ``betrays a sentimental attachment to human intuitions already proven wrong.''
+- After: and it ``betrays a sentimental attachment to human intuitions already proven wrong.'' Asking whether a new law might give the universe a centre at Earth, rather than at Proxima Centauri, or a favourite pizza topping of pepperoni, betrays the agenda; and a centre that follows Earth through space would be hard to give any simple law. ``The wheel of science turns, but it doesn't turn backward.''
+
+- Before: If there is one outcome, then by Bell's theorem one measurement must change the other faster than light.
+- After: With many worlds, when you measure one of an entangled pair of photons, each of you sees 50/50, and so does a friend a light-year away measuring at 20 degrees to your basis; only when you meet years later is the chance that you got the same result 11.6 per cent. With one world, the friend's probability actually changes from 50/50 to 11.6 per cent when you measure. By Bell's theorem the results cannot have been there all along, so something changes faster than light, in any single-world theory.
+
+- Before: My logic may contain ``some hidden assumption,'' I grant.
+- After: Relativity is not an arbitrary speed limit that a crime could evade by going back in time; it says there is no global now, no before or after across spacelike gaps, and the information for a single global world is simply not present locally. My logic may contain ``some hidden assumption,'' I grant.
+
+- Before: But one Earth is about as likely as a spinning black hole breaking conservation of angular momentum.
+- After: But one Earth is about as likely as a spinning black hole breaking conservation of angular momentum. We have deep reasons, from the rotational symmetry of space, to expect conservation everywhere, though as far as I know no one has checked black holes (or my flushing toilet); and if you dwell on that one possibility, especially without knowing why angular momentum is conserved, it starts to seem plausible. Its rational probability is small, and so is that of one Earth.
+
+- Before: many-worlds ``wins outright,'' and ``There is no rational controversy to teach.''
+- After: many-worlds ``wins outright''; a single Earth is no more likely than colliding top quarks breaking conservation of energy, and needs not just an unknown law but magic. The debate should have been over fifty years ago; ``There is no rational controversy to teach''; our children will look back and correctly deduce that we were nuts.
+
+- Before: Last: I write as if many-worlds ``were an established fact,'' because it is one.
+- After: Last: for the honour of my Earth, I write as if many-worlds ``were an established fact,'' because it is one; the only question is how long this world will take to update.
+
+
+## honest/sections/many-worlds-one-best-guess.tex
+
+Why: Fidelity/substance pass: removed quotation marks from a paraphrase whose source text is garbled in the fetched copy
+
+- Before: the simplest one wins: ``All electrons have spin 1/2,'' not that they do
+- After: the simplest one wins: that all electrons have spin 1/2, not that they do
+
+
+## honest/sections/the-failures-of-eld-science.tex
+
+Why: Fidelity/substance pass: added each student's actual argument (Hiriwa's 250 years after Newton and Taji's reply, 'mistakes hunt in packs', Styrlyn's numbers and the comparative-advantage rebuke, Brennan's pragmatism), the full knife drill and Brennan's realistic answer, the month-of-minutes exchange, Jeffreyssai's grading of the answers, Brennan's method (treat past selves as fools) and the rest of the students' additions
+
+- Before: No robes this time: Jeffreyssai teaches a class of five in the Conspiracy, Brennan among them.
+- After: No robes this time: Jeffreyssai teaches a class of five in the Conspiracy, Brennan among them, admitted for political advantage rather than promise, and knowing it.
+
+- Before: The students try answers. Hiriwa suspects religion.
+- After: The students try answers. Hiriwa notes this was 250 years after Newton, so the idea of a universal law was known; Taji answers that knowing the universal law of gravity is not understanding the concept of a universal law. Hiriwa wonders whether a religious injunction stopped them, and is told to think of cognitive errors instead. ``Mistakes don't travel alone; they hunt in packs,'' says Taji.
+
+- Before: Styrlyn says too few people could work on the problem, and is told off for propaganda.
+- After: Styrlyn says only one in a hundred thousand could have written Schrödinger's equation, a failure to concentrate forces, and is told off for propaganda: would calling in the whole species have helped? ``Comparative advantage.''
+
+- Before: Brennan says the Manhattan Project had a weapon to build and quantum theory had no such use.
+- After: Taji calls administrative burdens a generic obstacle; Jeffreyssai asks what kind of system would burden its own people. Brennan says ``Lack of pragmatic motivation'': the Manhattan Project had a weapon to build and its scientists were spared grant proposals, while quantum theory had no such use, and a use would have shaped their curiosity and defined success.
+
+- Before: The teacher's answer is mine: Eld science thought it ``acceptable'' to take thirty years.
+- After: The teacher's answer is mine: Eld science thought it ``acceptable'' to take thirty years. Its social process reached the truth eventually, discarding a wrong theory once a new generation grew up with the replacement, and work expands to fill the time allotted.
+
+- Before: How long to change your mind? ``Less than a second.'' ``WRONG!'' Brennan must stop answering by pattern and think.
+- After: How long to judge which of two attackers is more dangerous, or which of two girlfriends you love? ``Less than a second.'' How long to change your mind when an argument shows your theory flawed? ``Less than a second.'' ``WRONG!'' Brennan must stop answering by pattern and think; pressed, he refuses to answer before he has finished thinking, and is praised. His realistic answer: notice at once, suspend judgment, re-gather the evidence, and if attached to the theory use the crisis-of-belief technique, so five minutes to an hour.
+
+- Before: A month holds 28,800 waking minutes, so at five minutes an insight a major problem could be solved in a month.
+- After: Brennan has just learned something in under a minute; how long should a major problem take? He guesses a year, and thinks a month unrealistically short. A month holds 43,200 minutes, Hiriwa computes, or 28,800 waking ones; at five minutes an original insight, that is 5,760 insights.
+
+- Before: Given five minutes before the class, Brennan says
+- After: Jeffreyssai judges all the answers as reasonable as his own except Styrlyn's; even Hiriwa's had something, since proposing new theories was once a duty reserved for the high-status. Then he seats Brennan in front of the class with five minutes to say something brilliant while everyone gazes expectantly. Brennan decides how to think, then thinks, and speaks at four and a half minutes. A wise woman told him to regard his past selves as fools beyond redemption, since respecting the past prevents a clean break; looking at Eld scientists that way, though they were not fools, he says
+
+- Before: So the founders were ``amateurs.''
+- After: Open problems were rare and published as soon as solved, so no one could be trained on them; scientists used to a neat, agreed body of knowledge may have seized unsatisfactory answers out of the fear of not knowing. So the founders, though not unintelligent, were ``amateurs,'' ad-libbing a paradigm shift.
+
+- Before: Hiriwa adds: ``And no probability theory.''
+- After: Hiriwa adds: ``And no probability theory,'' so anyone who succeeded could not explain what they had done. Styrlyn adds that a handful of people making a handful of discoveries each could not sustain a community, so each had to rediscover the rules.
+
+
+## honest/sections/the-dilemma-science-or-bayes.tex
+
+Why: Fidelity/substance pass: added the supervillain motive line, why physics rather than healthcare or economics, that the evidence is not in dispute, the ideal Science ritual (celebration, Nobel, recantation), the Necker cube and both sets of goggles, the armchair history in more detail (experiment decides, not where a theory came from; angels), Aumann's theorem, and the hint about motives
+
+- Before: One of my several motives needed physics.
+- After: I like having many hidden motives; it is the closest I can ethically get to being a supervillain. One of them needed physics. In healthcare or economics you may not be able to lay out formally which hypothesis is simplest or what the evidence supports; in physics the issue is clear-cut, and the evidence itself is not in dispute:
+
+- Before: There the issue is clear-cut: ``you could write
+- After: ``you could write
+
+- Before: The rules say a new theory must make new predictions and win a test.
+- After: The rules say a new theory must make new predictions and win a test; then come the celebration, the newspapers and the Nobel Prizes, with doddering emeritus professors quietly humoured, or else the proponent publicly recants and gains a reputation for honesty.
+
+- Before: Many-worlds does not seem to make new predictions, so by those rules it must wait.
+- After: Many-worlds does not seem to make new predictions, and its other worlds cannot be seen, which seems really suspicious, so by those rules it must wait. A reader who started as a Traditional Rationalist and now finds many-worlds obvious should be able to flip between the two views like a Necker cube. With Science goggles on: the current theory has passed every test, many-worlds predicts nothing new we can see, it smacks of science fiction; call me when it makes a testable prediction. With Bayes goggles: the simplest equations covering all the evidence have no exception for human-sized masses; there is no reason even to ask; next!
+
+- Before: Because Science began as a rebellion against armchair wisdom: ``experiment alone would decide.''
+- After: Because Science began as a rebellion against the Deep Wisdom that the wise could unravel the universe by thought alone, while looking was naive. Its core is the pragmatic belief that people in armchairs drift off into never-never land, so ``experiment alone would decide,'' not your nationality, your religion or where your hypothesis came from. Adopting many-worlds because it sounds more reasonable and elegant, without crushing the old theory in an experiment, undoes the rule that keeps people from putting angels into theories because angels seem more reasonable.
+
+- Before: Even Robert Aumann, a believing Orthodox Jew, let an experiment on the Bible codes decide,
+- After: Robert Aumann, who proved that Bayesian agents with similar priors cannot agree to disagree, is a believing Orthodox Jew, yet he let an experiment on the Bible codes decide,
+
+- Before: I do not say why.
+- After: Why? ``It's not just because I'm evil''; think beyond the first obvious answer. I do not say what it is.
+
+
+## honest/sections/science-doesn-t-trust-your-rationality.tex
+
+Why: Fidelity/substance pass: added the reasoning behind the libertarian argument (regulation and growth, power corrupts, voluntary positive-sum contracts, graceful degradation, 'perfect solution for perfect people'), the French and American revolutions, talking to Nature, why scientists are not trained out of stubbornness, replication and honesty, how Science degrades (politics, gamed statistics, no replication), and the Bayes-as-hidden-structure argument; replaced 'his' with 'their' for a generic scientist
+
+- Before: Then a paragraph of politics. When a person or group gets enough power to do everything they think is a good idea, ``history says'' you get Revolutionary France or Soviet Russia.
+- After: Then a paragraph of politics. The core argument for libertarianism is distrust of lovely theories of how much better society would be with a rule saying XYZ. If such rules worked, more regulation would correlate with more growth. But when a person or group gets enough power to do everything they think is a good idea, ``history says'' you get Revolutionary France or Soviet Russia; and power corrupts, and attracts the corrupt.
+
+- Before: Markets turn selfishness into production ``With violence restrained and contracts enforced.''
+- After: Do not scold people for selfishness: require transactions to be voluntary, so that people must play positive-sum games to get the other party to sign, and selfishness powers production ``With violence restrained and contracts enforced.''
+
+- Before: it ``degrades gracefully into real life.''
+- After: it ``degrades gracefully into real life,'' or less awkwardly than any other known principle; people who see it as the perfect solution for perfect people miss the point of the distrust.
+
+- Before: Science began as a rebellion against trusting Aristotle, and it lasted because its founders said, ``Let us trust no one! Not even ourselves!'' We do not try to choose impartial judges.
+- After: Science began as a rebellion against trusting Aristotle. Had its founders said only ``Let us trust ourselves,'' it would have flashed and faded like the French Revolution; it lasted, like the American Revolution, because they said, ``Let us trust no one! Not even ourselves!'' Instead of replacing Aristotle's armchair reasoning with different armchair reasoning, talk to Nature and listen to the reply. People are stubborn and may reject the verdict of experiment; we do not wag a finger at them, or assume they can be trained out of it, or try to choose impartial judges.
+
+- Before: Instead, Science harnesses each scientist's stubborn wish to prove his own theory: make a new prediction, do the experiment, and if the result is replicated, you win.
+- After: Instead, Science harnesses each scientist's stubborn wish to prove their own theory: make a new prediction, do the experiment, and if the result is replicated, you win. So scientists have a motive to run experiments that could falsify their theories, and the need for replication gives them a motive to be honest.
+
+- Before: Both systems secretly rely on most people being decent, like tipping at a restaurant you will never visit again.
+- After: Both systems secretly rely on most people being decent: libertarianism on people who tip at a restaurant they will never visit again, since an economy of truly selfish agents would implode, and Science on scientists not committing sins too gross to rationalize. To the extent scientists can win by academic politics, or game statistics so they cannot lose, or no one replicates, science degrades, though gracefully.
+
+- Before: Letting Bayes override Science ``is not a trivial step!''
+- After: Science does not trust your rationality; it wants a definitive experiment. Calling Science an approximation to Bayes, the hidden structure that explains why it works, seems very reasonable, but letting Bayes override Science ``is not a trivial step!''
+
+- Before: Science assumes that you are ``too stupid and self-deceiving'' to reason perfectly on your own.
+- After: Science assumes that you are ``too stupid and self-deceiving'' to just use Solomonoff induction; if it were that simple, we would not need a social process of science.
+
