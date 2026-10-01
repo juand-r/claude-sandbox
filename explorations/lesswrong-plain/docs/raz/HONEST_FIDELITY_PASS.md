@@ -315,8 +315,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] high-challenge
 - [x] serious-stories
 - [x] value-is-fragile
-- [ ] the-gift-we-give-to-tomorrow
-- [ ] one-life-against-the-world
+- [x] the-gift-we-give-to-tomorrow
+- [x] one-life-against-the-world
 - [ ] the-allais-paradox
 - [ ] zut-allais
 - [ ] feeling-moral

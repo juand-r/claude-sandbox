@@ -7174,3 +7174,52 @@ Why: Fidelity/substance pass: added the opponent's case in its own words, what a
 - Before: Such values do not arise in all possible minds, and
 - After: Such values do not arise in all possible minds or appear from nowhere to rebuke a paperclip maximizer. Touch them too hard in the wrong dimension and they shatter and do not come back, since nothing would be left to want them back, and a worthwhile universe would have no physical reason to exist.
 
+
+## honest/sections/the-gift-we-give-to-tomorrow.tex
+
+Why: Fidelity/substance pass: replaced the summary of the dialogue's moves with its content: why natural selection seems unlikely to produce love (relative frequency; extinction by negative-sum games), each answer in turn (shared genes; adaptation-executers; iterated Prisoner's Dilemma and allies; true friends more formidable; political argument), the causal chain behind Gandhi, the list of loves, 'not one unusual thing', the shadowy figure, 'have you looked at this planet', elephants and gazelles, Bach's fugue, evolution unable to quine its goals, 'first principles' as different principles, the 'beyond thing', the origin of life in a tidal pool, and the fairy tale's exchange
+
+- Before: ``I'' ask how natural selection, a cruel and mindless process, produced beings capable of love. ``You'' answer. I will call you the answerer.
+- After: ``I'' ask how natural selection, a cruel and mindless process, produced beings capable of love. ``You'' answer. I will call you the answerer. Selection is bloody and stupid: what counts is having more children than others, and a species can evolve to extinction if the winning genes play negative-sum games.
+
+- Before: My questions get harder: mothers love adopted children, people make friends who are not relatives, and some die for their friends. Then I ask about Gandhi.
+- After: My questions get harder. A mother's children share her genes; but mothers love adopted children, and love their children for themselves. We are adaptation-executers, not fitness-maximizers, says the answerer; through most of history no one knew genes existed. People befriend non-relatives; hunter-gatherers play iterated Prisoner's Dilemmas, and the most formidable person is often the one with most allies. Some die for their friends; we can tell true friends from fair-weather ones, and someone with many true friends is more formidable. Then I ask about Gandhi, who turned the other cheek. We are political animals who argue about policy, says the answerer, and can argue ``What should be done?'' as a proposition.
+
+- Before: The answerer lists possible causes, hedged with ``something like,'' ``probably'' and ``plus perhaps,''
+- After: The answerer lists possible causes, a moral architecture able to argue abstract propositions, hardwired intuitions of fairness, duty, pain aversion and empathy, ``something like'' a preference for simple propositions, ``probably'' reused from our Occam prior, ``plus perhaps'' memetic selection, ending in ``You should not hurt people'' in full generality,
+
+- Before: Then I marvel that evolution produced beings so much nicer than itself.
+- After: Then I marvel that hundreds of millions of years of evolution's death tournament produced mothers and fathers, steadfast friends and honourable enemies, true altruists, police officers and artists who sacrifice for their art. The answerer: if that surprises you, question your model, for ``Since the beginning, not one unusual thing has ever happened.'' A shadowy figure directing evolution would itself need to have evolved its love of love, and our loves bear the design signature of selection on the savanna. Have I looked at this planet lately? Humans are not always nice. But we are far nicer than the process that let elephants starve when their teeth wore out and left dying gazelles unanaesthetized; a single twinge of empathy is more than evolution has. Beauty? Bach's \textsc{Little Fugue in G Minor} carries no tags of beauty in its sound waves; the only explicit measure of its beauty is in a human brain.
+
+- Before: The answerer says I value beauty and altruism because I evolved to,
+- After: The answerer says my question is circular. Evolution cannot quine its goal system; making the first minds, its simple criterion shattered into a thousand values, including care for life and happiness, which evolution does not care about. I value beauty and altruism because I evolved to,
+
+- Before: A standard of value outside human minds that happened to agree with ours would be ``far too much coincidence.''
+- After: Arguments for beauty and altruism ``from first principles'' are only different principles, which would not move a ghost of perfect emptiness either. Supposing we tap into something beyond passes the recursive buck: why heed it more than our humanity, and how would following its orders change our responsibility? A standard of value outside human minds that happened to agree with ours would be ``far too much coincidence.''
+
+- Before: The answerer also states a law, supported only by an analogy with the origin of life:
+- After: Love has to enter the universe somehow, as life did: trace your ancestry back far enough and you reach a replicator that arose by accident 3.85 billion years ago in some tidal pool. The answerer also states a law, supported only by that analogy:
+
+- Before: Our descendants will ask where love began, and will be told that once
+- After: Our descendants will ask how they can love; because we, who love, made them to; and how can we love? Because our parents, who loved, made us so; and where did it begin? They will be told that once
+
+
+## honest/sections/one-life-against-the-world.tex
+
+Why: Fidelity/substance pass: added how long the euphoria lasted and the scary comparison, the obviousness examples (dollars, gold, posterity), the 'saves the world' extension to an intergalactic civilization, why the bystander cannot reach the children, and the promise in the addendum
+
+- Before: and the high felt as good as a major scientific insight.
+- After: and the high lasted into the night and felt, scarily, as good as a major scientific insight, my previous best guess at what drugs feel like.
+
+- Before: Beyond the warm glow is a gigantic difference. Why might that not be obvious?
+- After: Beyond the warm glow is a gigantic difference. To some it is obvious, like six billion dollars being worth more than one, or six cubic kilometres of gold outweighing one cubic metre, never mind the expected value of posterity. Why might it not be obvious?
+
+- Before: Whoever saves ten lives saves ten worlds.
+- After: Whoever saves ten lives saves ten worlds, and whoever actually saves the whole world, not rhetorically, saves as it were an intergalactic civilization.
+
+- Before: Two deaf children sleep on a railroad track. I drag one off,
+- After: Two deaf children sleep on a railroad track as a train comes, and you are too far away. I drag one off,
+
+- Before: An addendum says that obvious ways of spending money to save lives do not work or backfire.
+- After: An addendum says that obvious ways of spending money to save lives do not work or backfire, and promises a later post on why.
+
