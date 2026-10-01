@@ -162,3 +162,13 @@ def vel(name):
     if m:
         return Fraction(int(m.group(1)), int(m.group(2)))
     raise KeyError(name)
+
+
+def extend_chain(nmax=24):
+    """E^17..E^nmax as single products of E^(n-1) + B (in memory only,
+    as gate/common.py does up to 16; leftstream does the same to 24)."""
+    from collide import collide_pair
+    while len(CHAIN) < nmax:
+        res = collide_pair(LIB, CHAIN[-1], "B")
+        assert len(res) == 1 and res[0]["settled"] and len(res[0]["products"]) == 1, res
+        CHAIN.append(res[0]["products"][0][0])

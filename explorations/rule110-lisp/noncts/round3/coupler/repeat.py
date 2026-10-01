@@ -86,6 +86,7 @@ def greedy(v2, forced=None):
 
 
 if __name__ == "__main__":
+    extend_chain(24)
     v2 = int(sys.argv[1]) if len(sys.argv) > 1 else 3
     forced = {}
     if len(sys.argv) > 2:

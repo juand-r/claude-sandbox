@@ -111,3 +111,47 @@
   even slips UNSAT in < 2 s). No same-target positive control exists
   (catalog has no left-mover + E^n -> left-mover + E^k); the exit/entry
   geometry is shared with sat_shuttle scenes whose controls passed.
+- 07:1x Converter SAT (sat_conv.py, F = I_L, B free W 24 every slip, X
+  free slip 6, n 2,3, T2 250): UNSAT for all 14 slips. BUT my physics
+  positive control (--control2: B parked far at gap 30, target = copy of
+  a stable E^(n+1)|B, gaps 22..36) was UNSAT too. Likely cause: the
+  control's E^(n+1) piece is not aligned with I_L's actual output
+  (en_item frames are cut at n-dependent times, so "same piece" is not
+  "same front"), not the converter encoding; but I could not show that,
+  so the converter UNSAT is NOT a validated negative.
+- conv_scan.py (exact simulation instead): all 352 co-moving library
+  objects behind library E^4, all phases, gaps 0..29, stable-alone
+  filter, then I_L / Z_L in their working classes; queued after the
+  Bbar crossing sweep (run_queue3.sh).
+- 07:2x Converter control fixed: --control3 locates I_L's real output
+  E^(n+1) by exact simulation of the convert scene's own cells and builds
+  S0 there (B parked at gap 30, no X); with copy shifts (0,0), (7,-8),
+  (3,10), (14,-30): SAT (n = 2,3). MISTAKE found on the way: my first
+  re-simulation filled the ether between I_L and E with the far-left
+  phase instead of I_L's right phase (gave B + E^2 instead of E^3).
+  So the converter UNSAT (14/14 slips) is validated for its encoding.
+  Scope: F = I_L in its class, B a (15,-4) object of width <= 24 parked
+  at frame gap 0 that leaves E^n's exact cells undisturbed (i.e. not a
+  fused cap), X a (3,2) train of width <= 24 and slip 6, n = 2,3 jointly,
+  T2 250, copy shift q in 0..14, dx in -40..40.
+- 07:3x conv_scan restarted (PID in conv_scan.pid): objects by width, gaps 0..14 (full 352 x 0..29 would take ~6 h); resumable.
+
+## Reflection (07:4x)
+What went well: the charge (slip) argument pointed straight at the
+unsearched space (6-A trains), and SAT found I_L and Z_L in seconds.
+Bookkeeping (displacement key per op) made stream layout search-free.
+Mistakes, all caught by controls or cross-checks:
+1. engine.pack zero-pads to 64 cells -> seam junk; fixed by cropping.
+2. E^n chain named only to E^16 -> two false "mismatches"; extended.
+3. Board post 05:45 had garbled Z_L bits; corrected 05:46.
+4. Joint-m SAT at a BACK face with B-built E^m is invalid (back moves
+   with m); found by a failing positive control.
+5. Split point of the R1 scene used Y.W (40 for Fixed items); found by a
+   failing positive control; fixed.
+6. Converter: (a) is_item(only=...) crash on all slips (phase luck in
+   the first control); (b) control2 misaligned (en_item frames are cut at
+   n-dependent times); (c) control3's first re-simulation used the wrong
+   ether phase between I_L and E. Each caught before any claim.
+Rule for next time: write the positive control for the exact scene type
+FIRST (including the face that is NOT anchored), and do not trust a fast
+UNSAT whose control has not run at the same T2 and widths.

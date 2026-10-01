@@ -1,0 +1,739 @@
+{"O": "E", "t0": 0, "x0": 23, "alone": ["v-4/15s8w24"]}
+{"O": "E", "t0": 0, "x0": 37, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 0, "x0": 51, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 1, "x0": 19, "alone": ["E^2", "F", "A"]}
+{"O": "E", "t0": 1, "x0": 33, "alone": ["v-4/15s8w34"]}
+{"O": "E", "t0": 1, "x0": 47, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 2, "x0": 15, "alone": ["Ebar", "Ebar", "A"]}
+{"O": "E", "t0": 2, "x0": 29, "alone": ["v-4/15s8w30"]}
+{"O": "E", "t0": 2, "x0": 43, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 3, "x0": 25, "alone": ["v-4/15s8w27"]}
+{"O": "E", "t0": 3, "x0": 39, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 3, "x0": 53, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 4, "x0": 21, "alone": ["v-4/15s8w24#2"]}
+{"O": "E", "t0": 4, "x0": 35, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 4, "x0": 49, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 5, "x0": 17, "alone": ["E^2", "F", "A"]}
+{"O": "E", "t0": 5, "x0": 31, "alone": ["v-4/15s8w33#2"]}
+{"O": "E", "t0": 5, "x0": 45, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 6, "x0": 27, "alone": ["v-4/15s8w29#2"]}
+{"O": "E", "t0": 6, "x0": 41, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 6, "x0": 55, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 7, "x0": 23, "alone": ["v-4/15s8w25#2"]}
+{"O": "E", "t0": 7, "x0": 37, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 7, "x0": 51, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 8, "x0": 19, "alone": ["v-4/15s8w22"]}
+{"O": "E", "t0": 8, "x0": 33, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 8, "x0": 47, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 9, "x0": 15, "alone": ["E^2", "F", "A"]}
+{"O": "E", "t0": 9, "x0": 29, "alone": ["v-4/15s8w33#3"]}
+{"O": "E", "t0": 9, "x0": 43, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 10, "x0": 25, "alone": ["v-4/15s8w30#2"]}
+{"O": "E", "t0": 10, "x0": 39, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 10, "x0": 53, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 11, "x0": 21, "alone": ["v-4/15s8w27#2"]}
+{"O": "E", "t0": 11, "x0": 35, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 11, "x0": 49, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 12, "x0": 17, "alone": ["v-8/30s0w22", "A"]}
+{"O": "E", "t0": 12, "x0": 31, "alone": ["E^4", "E"], "I_L": ["v-4/15s0w41"], "I_L_flag": false, "Z_L": ["v-4/15s2w33#2"], "Z_L_flag": false}
+{"O": "E", "t0": 12, "x0": 45, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 13, "x0": 27, "alone": ["v-4/15s8w33#4"]}
+{"O": "E", "t0": 13, "x0": 41, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 13, "x0": 55, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 14, "x0": 23, "alone": ["v-4/15s8w28#3"]}
+{"O": "E", "t0": 14, "x0": 37, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "E", "t0": 14, "x0": 51, "alone": ["E^4", "E"], "I_L": ["E^5", "E"], "I_L_flag": false, "Z_L": ["E^3", "E"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 0, "x0": 23, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 0, "x0": 37, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 0, "x0": 51, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 1, "x0": 19, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 1, "x0": 33, "alone": ["v-8/30s6w36"]}
+{"O": "Ebar", "t0": 1, "x0": 47, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 2, "x0": 15, "alone": ["E@(0,0)+Ebar@(-3,17)", "A^4"]}
+{"O": "Ebar", "t0": 2, "x0": 29, "alone": ["v-8/30s6w31"]}
+{"O": "Ebar", "t0": 2, "x0": 43, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 3, "x0": 25, "alone": ["v-8/30s6w28"]}
+{"O": "Ebar", "t0": 3, "x0": 39, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 3, "x0": 53, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 4, "x0": 21, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 4, "x0": 35, "alone": ["v-8/30s6w37#2"]}
+{"O": "Ebar", "t0": 4, "x0": 49, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 5, "x0": 17, "alone": ["B^3", "C2_5_C2", "A"]}
+{"O": "Ebar", "t0": 5, "x0": 31, "alone": ["v-8/30s6w34"]}
+{"O": "Ebar", "t0": 5, "x0": 45, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 6, "x0": 27, "alone": ["v-8/30s6w30"]}
+{"O": "Ebar", "t0": 6, "x0": 41, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 6, "x0": 55, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 7, "x0": 23, "alone": ["v-8/30s6w27"]}
+{"O": "Ebar", "t0": 7, "x0": 37, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 7, "x0": 51, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 8, "x0": 19, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 8, "x0": 33, "alone": ["v-8/30s6w36#3"]}
+{"O": "Ebar", "t0": 8, "x0": 47, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 9, "x0": 15, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 9, "x0": 29, "alone": ["v-8/30s6w32"]}
+{"O": "Ebar", "t0": 9, "x0": 43, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 10, "x0": 25, "alone": ["v-8/30s6w29#2"]}
+{"O": "Ebar", "t0": 10, "x0": 39, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 10, "x0": 53, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 11, "x0": 21, "alone": ["v-8/30s6w25"]}
+{"O": "Ebar", "t0": 11, "x0": 35, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 11, "x0": 49, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 12, "x0": 17, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 12, "x0": 31, "alone": ["E^4", "Ebar"], "I_L": ["v-8/30s12w42"], "I_L_flag": false, "Z_L": ["v-8/30s0w34#2"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 12, "x0": 45, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 13, "x0": 27, "alone": ["v-8/30s6w33"]}
+{"O": "Ebar", "t0": 13, "x0": 41, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 13, "x0": 55, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 14, "x0": 23, "alone": ["v-8/30s6w30#2"]}
+{"O": "Ebar", "t0": 14, "x0": 37, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 14, "x0": 51, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 15, "x0": 19, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 15, "x0": 33, "alone": ["E^4", "Ebar"], "I_L": ["v-8/30s12w44"], "I_L_flag": false, "Z_L": ["v-8/30s0w36"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 15, "x0": 47, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 16, "x0": 15, "alone": ["E", "Ebar_14_Ebar", "C2"]}
+{"O": "Ebar", "t0": 16, "x0": 29, "alone": ["v-8/30s6w36"]}
+{"O": "Ebar", "t0": 16, "x0": 43, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 17, "x0": 25, "alone": ["v-8/30s6w31"]}
+{"O": "Ebar", "t0": 17, "x0": 39, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 17, "x0": 53, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 18, "x0": 21, "alone": ["v-8/30s6w28"]}
+{"O": "Ebar", "t0": 18, "x0": 35, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 18, "x0": 49, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 19, "x0": 17, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 19, "x0": 31, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 19, "x0": 45, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 20, "x0": 27, "alone": ["v-8/30s6w34"]}
+{"O": "Ebar", "t0": 20, "x0": 41, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 20, "x0": 55, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 21, "x0": 23, "alone": ["v-8/30s6w30"]}
+{"O": "Ebar", "t0": 21, "x0": 37, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 21, "x0": 51, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 22, "x0": 19, "alone": ["v-8/30s6w27"]}
+{"O": "Ebar", "t0": 22, "x0": 33, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 22, "x0": 47, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 23, "x0": 15, "alone": ["E^3", "F"]}
+{"O": "Ebar", "t0": 23, "x0": 29, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 23, "x0": 43, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 24, "x0": 25, "alone": ["E^4", "Ebar"], "I_L": ["v-8/30s12w39#2"], "I_L_flag": false, "Z_L": ["v-8/30s0w32"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 24, "x0": 39, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 24, "x0": 53, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 25, "x0": 21, "alone": ["v-8/30s6w29#2"]}
+{"O": "Ebar", "t0": 25, "x0": 35, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 25, "x0": 49, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 26, "x0": 17, "alone": ["v-8/30s6w25"]}
+{"O": "Ebar", "t0": 26, "x0": 31, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 26, "x0": 45, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 27, "x0": 27, "alone": ["E^4", "Ebar"], "I_L": ["v-8/30s12w42"], "I_L_flag": false, "Z_L": ["v-8/30s0w34#2"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 27, "x0": 41, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 27, "x0": 55, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 28, "x0": 23, "alone": ["v-8/30s6w33"]}
+{"O": "Ebar", "t0": 28, "x0": 37, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 28, "x0": 51, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 29, "x0": 19, "alone": ["v-8/30s6w30#2"]}
+{"O": "Ebar", "t0": 29, "x0": 33, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar", "t0": 29, "x0": 47, "alone": ["E^4", "Ebar"], "I_L": ["E^5", "Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 0, "x0": 25, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 0, "x0": 39, "alone": ["v-8/30s13w53"]}
+{"O": "Ebar_8_Ebar", "t0": 0, "x0": 53, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 1, "x0": 21, "alone": ["E^2", "F_15_F"]}
+{"O": "Ebar_8_Ebar", "t0": 1, "x0": 35, "alone": ["v-8/30s13w50"]}
+{"O": "Ebar_8_Ebar", "t0": 1, "x0": 49, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 2, "x0": 17, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 2, "x0": 31, "alone": ["v-8/30s13w46"]}
+{"O": "Ebar_8_Ebar", "t0": 2, "x0": 45, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 3, "x0": 27, "alone": ["v-8/30s13w43"]}
+{"O": "Ebar_8_Ebar", "t0": 3, "x0": 41, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 3, "x0": 55, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 4, "x0": 23, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 4, "x0": 37, "alone": ["v-8/30s13w54"]}
+{"O": "Ebar_8_Ebar", "t0": 4, "x0": 51, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 5, "x0": 19, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 5, "x0": 33, "alone": ["v-8/30s13w51"]}
+{"O": "Ebar_8_Ebar", "t0": 5, "x0": 47, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 6, "x0": 15, "skip": "objects overlap: 0+14 > 10"}
+{"O": "Ebar_8_Ebar", "t0": 6, "x0": 29, "alone": ["v-8/30s13w47"]}
+{"O": "Ebar_8_Ebar", "t0": 6, "x0": 43, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 7, "x0": 25, "alone": ["v-8/30s13w43#2"]}
+{"O": "Ebar_8_Ebar", "t0": 7, "x0": 39, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 7, "x0": 53, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 8, "x0": 21, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 8, "x0": 35, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["v-8/30s5w58"], "I_L_flag": false, "Z_L": ["v-8/30s7w49"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 8, "x0": 49, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 9, "x0": 17, "skip": "objects overlap: 0+14 > 10"}
+{"O": "Ebar_8_Ebar", "t0": 9, "x0": 31, "alone": ["v-8/30s13w49"]}
+{"O": "Ebar_8_Ebar", "t0": 9, "x0": 45, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 10, "x0": 27, "alone": ["v-8/30s13w44"]}
+{"O": "Ebar_8_Ebar", "t0": 10, "x0": 41, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 10, "x0": 55, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 11, "x0": 23, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 11, "x0": 37, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["v-8/30s5w62"], "I_L_flag": false, "Z_L": ["v-8/30s7w52"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 11, "x0": 51, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 12, "x0": 19, "alone": ["E^2", "E", "E", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 12, "x0": 33, "alone": ["v-8/30s13w51#2"]}
+{"O": "Ebar_8_Ebar", "t0": 12, "x0": 47, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 13, "x0": 15, "skip": "objects overlap: 0+14 > 12"}
+{"O": "Ebar_8_Ebar", "t0": 13, "x0": 29, "alone": ["v-8/30s13w48"]}
+{"O": "Ebar_8_Ebar", "t0": 13, "x0": 43, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 14, "x0": 25, "alone": ["v-8/30s13w43#3"]}
+{"O": "Ebar_8_Ebar", "t0": 14, "x0": 39, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 14, "x0": 53, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 15, "x0": 21, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 15, "x0": 35, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 15, "x0": 49, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 16, "x0": 17, "alone": ["C3", "A^3"]}
+{"O": "Ebar_8_Ebar", "t0": 16, "x0": 31, "alone": ["v-8/30s13w50"]}
+{"O": "Ebar_8_Ebar", "t0": 16, "x0": 45, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 17, "x0": 27, "alone": ["v-8/30s13w46"]}
+{"O": "Ebar_8_Ebar", "t0": 17, "x0": 41, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 17, "x0": 55, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 18, "x0": 23, "alone": ["v-8/30s13w43"]}
+{"O": "Ebar_8_Ebar", "t0": 18, "x0": 37, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 18, "x0": 51, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 19, "x0": 19, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 19, "x0": 33, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 19, "x0": 47, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 20, "x0": 15, "alone": ["E^2", "F_15_F"]}
+{"O": "Ebar_8_Ebar", "t0": 20, "x0": 29, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["v-8/30s5w56"], "I_L_flag": false, "Z_L": ["v-8/30s7w47"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 20, "x0": 43, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 21, "x0": 25, "alone": ["v-8/30s13w47"]}
+{"O": "Ebar_8_Ebar", "t0": 21, "x0": 39, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 21, "x0": 53, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 22, "x0": 21, "alone": ["v-8/30s13w43#2"]}
+{"O": "Ebar_8_Ebar", "t0": 22, "x0": 35, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 22, "x0": 49, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 23, "x0": 17, "alone": ["E^6", "A_8_A"]}
+{"O": "Ebar_8_Ebar", "t0": 23, "x0": 31, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["v-8/30s5w58"], "I_L_flag": false, "Z_L": ["v-8/30s7w49"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 23, "x0": 45, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 24, "x0": 27, "alone": ["v-8/30s13w49"]}
+{"O": "Ebar_8_Ebar", "t0": 24, "x0": 41, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 24, "x0": 55, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 25, "x0": 23, "alone": ["v-8/30s13w44"]}
+{"O": "Ebar_8_Ebar", "t0": 25, "x0": 37, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 25, "x0": 51, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 26, "x0": 19, "alone": ["E^5", "A"]}
+{"O": "Ebar_8_Ebar", "t0": 26, "x0": 33, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 26, "x0": 47, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 27, "x0": 15, "alone": ["E^6", "A_8_A"]}
+{"O": "Ebar_8_Ebar", "t0": 27, "x0": 29, "alone": ["v-8/30s13w51#2"]}
+{"O": "Ebar_8_Ebar", "t0": 27, "x0": 43, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 28, "x0": 25, "alone": ["v-8/30s13w48"]}
+{"O": "Ebar_8_Ebar", "t0": 28, "x0": 39, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 28, "x0": 53, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 29, "x0": 21, "alone": ["v-8/30s13w43#3"]}
+{"O": "Ebar_8_Ebar", "t0": 29, "x0": 35, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_8_Ebar", "t0": 29, "x0": 49, "alone": ["E^4", "Ebar_8_Ebar"], "I_L": ["E^5", "Ebar_8_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_8_Ebar"], "Z_L_flag": false}
+{"O": "E^2", "t0": 0, "x0": 24, "alone": ["v-4/15s0w33#4"]}
+{"O": "E^2", "t0": 0, "x0": 38, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 0, "x0": 52, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 1, "x0": 20, "alone": ["v-4/15s0w28"]}
+{"O": "E^2", "t0": 1, "x0": 34, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 1, "x0": 48, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 2, "x0": 16, "alone": ["E^2", "F"]}
+{"O": "E^2", "t0": 2, "x0": 30, "alone": ["v-4/15s0w39"]}
+{"O": "E^2", "t0": 2, "x0": 44, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 3, "x0": 26, "alone": ["v-4/15s0w35#3"]}
+{"O": "E^2", "t0": 3, "x0": 40, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 3, "x0": 54, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 4, "x0": 22, "alone": ["v-4/15s0w31"]}
+{"O": "E^2", "t0": 4, "x0": 36, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 5, "x0": 18, "alone": ["v-4/15s0w27"]}
+{"O": "E^2", "t0": 5, "x0": 32, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 6, "x0": 14, "alone": ["E^2", "F"]}
+{"O": "E^2", "t0": 6, "x0": 28, "alone": ["v-4/15s0w37#2"]}
+{"O": "E^2", "t0": 7, "x0": 24, "alone": ["v-4/15s0w34#2"]}
+{"O": "E^2", "t0": 7, "x0": 38, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 8, "x0": 20, "alone": ["v-4/15s0w30"]}
+{"O": "E^2", "t0": 8, "x0": 34, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 9, "x0": 16, "alone": ["v-8/30s0w22"]}
+{"O": "E^2", "t0": 9, "x0": 30, "alone": ["E^4", "E^2"], "I_L": ["v-4/15s6w47"], "I_L_flag": false, "Z_L": ["v-4/15s8w39"], "Z_L_flag": false}
+{"O": "E^2", "t0": 10, "x0": 26, "alone": ["v-4/15s0w36#3"]}
+{"O": "E^2", "t0": 10, "x0": 40, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 11, "x0": 22, "alone": ["v-4/15s0w33#4"]}
+{"O": "E^2", "t0": 11, "x0": 36, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 12, "x0": 18, "alone": ["v-4/15s0w30#2"]}
+{"O": "E^2", "t0": 12, "x0": 32, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^2", "t0": 13, "x0": 14, "alone": ["E^2", "F"]}
+{"O": "E^2", "t0": 13, "x0": 28, "alone": ["v-4/15s0w40#2"]}
+{"O": "E^2", "t0": 14, "x0": 24, "alone": ["v-4/15s0w36#4"]}
+{"O": "E^2", "t0": 14, "x0": 38, "alone": ["E^4", "E^2"], "I_L": ["E^5", "E^2"], "I_L_flag": false, "Z_L": ["E^3", "E^2"], "Z_L_flag": false}
+{"O": "E^3", "t0": 0, "x0": 26, "alone": ["v-4/15s6w36#2"]}
+{"O": "E^3", "t0": 0, "x0": 40, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 1, "x0": 22, "alone": ["v-4/15s6w33"]}
+{"O": "E^3", "t0": 1, "x0": 36, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 2, "x0": 18, "alone": ["E", "Ebar_14_Ebar", "C2"]}
+{"O": "E^3", "t0": 2, "x0": 32, "alone": ["v-4/15s6w43#2"]}
+{"O": "E^3", "t0": 3, "x0": 14, "alone": ["Ebar", "D1", "A", "A_8_A"]}
+{"O": "E^3", "t0": 3, "x0": 28, "alone": ["v-4/15s6w39#2"]}
+{"O": "E^3", "t0": 4, "x0": 24, "alone": ["v-4/15s6w35#2"]}
+{"O": "E^3", "t0": 4, "x0": 38, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 5, "x0": 20, "alone": ["v-4/15s6w31"]}
+{"O": "E^3", "t0": 5, "x0": 34, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 6, "x0": 16, "alone": ["B", "B^2", "C1_11_C2"]}
+{"O": "E^3", "t0": 6, "x0": 30, "alone": ["v-4/15s6w42"]}
+{"O": "E^3", "t0": 7, "x0": 26, "alone": ["v-4/15s6w38#4"]}
+{"O": "E^3", "t0": 7, "x0": 40, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 8, "x0": 22, "alone": ["v-4/15s6w34"]}
+{"O": "E^3", "t0": 8, "x0": 36, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 9, "x0": 18, "alone": ["v-4/15s6w30"]}
+{"O": "E^3", "t0": 9, "x0": 32, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 10, "x0": 14, "alone": ["B^3", "C2_5_C2", "A"]}
+{"O": "E^3", "t0": 10, "x0": 28, "alone": ["v-4/15s6w41"]}
+{"O": "E^3", "t0": 11, "x0": 24, "alone": ["v-4/15s6w38#5"]}
+{"O": "E^3", "t0": 11, "x0": 38, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 12, "x0": 20, "alone": ["v-4/15s6w34#2"]}
+{"O": "E^3", "t0": 12, "x0": 34, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E^3", "t0": 13, "x0": 16, "alone": ["v-8/30s4w39", "A_8_A"]}
+{"O": "E^3", "t0": 13, "x0": 30, "alone": ["E^4", "E^3"], "I_L": ["v-4/15s12w50"], "I_L_flag": false, "Z_L": ["v-4/15s0w41"], "Z_L_flag": false}
+{"O": "E^3", "t0": 14, "x0": 26, "alone": ["v-4/15s6w41#2"]}
+{"O": "E^3", "t0": 14, "x0": 40, "alone": ["E^4", "E^3"], "I_L": ["E^5", "E^3"], "I_L_flag": false, "Z_L": ["E^3", "E^3"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 0, "x0": 23, "alone": ["v-4/15s3w35"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 1, "x0": 19, "alone": ["E^7"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 1, "x0": 33, "alone": ["v-4/15s3w46#2"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 2, "x0": 15, "alone": ["D1"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 2, "x0": 29, "alone": ["v-4/15s3w42"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 3, "x0": 25, "alone": ["v-4/15s3w38"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 4, "x0": 21, "alone": ["v-4/15s3w33"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 5, "x0": 17, "alone": ["E^2", "C2_12_C1"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 5, "x0": 31, "alone": ["v-4/15s3w43"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 6, "x0": 27, "alone": ["v-4/15s3w39"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 7, "x0": 23, "alone": ["v-4/15s3w35#2"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 8, "x0": 19, "alone": ["v-4/15s3w32"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 9, "x0": 15, "alone": ["E^7"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 9, "x0": 29, "alone": ["v-4/15s3w43#2"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 10, "x0": 25, "alone": ["v-4/15s3w38#2"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 11, "x0": 21, "alone": ["v-4/15s3w34"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 12, "x0": 17, "alone": ["E^7"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["v-4/15s9w51"], "I_L_flag": false, "Z_L": ["v-4/15s11w44"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 13, "x0": 27, "alone": ["v-4/15s3w41"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 14, "x0": 23, "alone": ["v-4/15s3w38#3"]}
+{"O": "E@(0,0)+E@(-5,11)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-5,11)"], "I_L": ["E^5", "E@(0,0)+E@(-5,11)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-5,11)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 0, "x0": 23, "alone": ["v-4/15s3w35#3"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 1, "x0": 19, "alone": ["E^2", "C2_11_C1"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 1, "x0": 33, "alone": ["v-4/15s3w46#3"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 2, "x0": 15, "alone": ["Ebar", "Ebar", "C3"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 2, "x0": 29, "alone": ["v-4/15s3w43#3"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 3, "x0": 25, "alone": ["v-4/15s3w38#4"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 4, "x0": 21, "alone": ["v-4/15s3w34#2"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 5, "x0": 17, "alone": ["E^2", "F", "C3"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 5, "x0": 31, "alone": ["v-4/15s3w44"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 6, "x0": 27, "alone": ["v-4/15s3w41#2"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 7, "x0": 23, "alone": ["v-4/15s3w38#5"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 8, "x0": 19, "alone": ["v-4/15s3w35#4"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 9, "x0": 15, "alone": ["E^2", "C2_11_C1"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 9, "x0": 29, "alone": ["v-4/15s3w46#4"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 10, "x0": 25, "alone": ["v-4/15s3w42#2"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 11, "x0": 21, "alone": ["v-4/15s3w38#6"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 12, "x0": 17, "alone": ["E^3", "C1_10_C1"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["v-4/15s9w52"], "I_L_flag": false, "Z_L": ["v-4/15s11w44#2"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 13, "x0": 27, "alone": ["v-4/15s3w43#4"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 14, "x0": 23, "alone": ["v-4/15s3w39#2"]}
+{"O": "E@(0,0)+E@(-13,15)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-13,15)"], "I_L": ["E^5", "E@(0,0)+E@(-13,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-13,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 0, "x0": 23, "alone": ["v-8/30s1w38"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 1, "x0": 19, "alone": ["E^3", "A"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 1, "x0": 33, "alone": ["v-8/30s1w49"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 2, "x0": 15, "alone": ["E", "F", "C1", "A^2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 2, "x0": 29, "alone": ["v-8/30s1w45#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 3, "x0": 25, "alone": ["v-8/30s1w41"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 4, "x0": 21, "alone": ["v-8/30s1w36#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 5, "x0": 17, "alone": ["Ebar", "C1@(0,0)+C3@(-4,9)"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 5, "x0": 31, "alone": ["v-8/30s1w47#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 6, "x0": 27, "alone": ["v-8/30s1w42#3"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 7, "x0": 23, "alone": ["v-8/30s1w39"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 8, "x0": 19, "alone": ["v-8/30s1w35"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 9, "x0": 15, "alone": ["E^4", "A_14_A"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 9, "x0": 29, "alone": ["v-8/30s1w46"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 10, "x0": 25, "alone": ["v-8/30s1w41#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 11, "x0": 21, "alone": ["v-8/30s1w37#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 12, "x0": 17, "alone": ["E^5", "A", "A_14_A"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["v-8/30s7w55"], "I_L_flag": false, "Z_L": ["v-8/30s9w47"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 13, "x0": 27, "alone": ["v-8/30s1w44#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 14, "x0": 23, "alone": ["v-8/30s1w41#3"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 15, "x0": 19, "alone": ["v-8/30s1w38"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 15, "x0": 33, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 16, "x0": 15, "alone": ["E^4", "A_14_A"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 16, "x0": 29, "alone": ["v-8/30s1w49"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 17, "x0": 25, "alone": ["v-8/30s1w45#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 17, "x0": 39, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 18, "x0": 21, "alone": ["v-8/30s1w41"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 18, "x0": 35, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 19, "x0": 17, "alone": ["v-8/30s1w36#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 19, "x0": 31, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 20, "x0": 27, "alone": ["v-8/30s1w47#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 20, "x0": 41, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 21, "x0": 23, "alone": ["v-8/30s1w42#3"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 21, "x0": 37, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 22, "x0": 19, "alone": ["v-8/30s1w39"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 22, "x0": 33, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 23, "x0": 15, "alone": ["v-8/30s1w35"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 23, "x0": 29, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 24, "x0": 25, "alone": ["v-8/30s1w46"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 24, "x0": 39, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 25, "x0": 21, "alone": ["v-8/30s1w41#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 25, "x0": 35, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 26, "x0": 17, "alone": ["v-8/30s1w37#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 26, "x0": 31, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 27, "x0": 27, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["v-8/30s7w55"], "I_L_flag": false, "Z_L": ["v-8/30s9w47"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 27, "x0": 41, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 28, "x0": 23, "alone": ["v-8/30s1w44#2"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 28, "x0": 37, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 29, "x0": 19, "alone": ["v-8/30s1w41#3"]}
+{"O": "E@(0,0)+Ebar@(-2,13)", "t0": 29, "x0": 33, "alone": ["E^4", "E@(0,0)+Ebar@(-2,13)"], "I_L": ["E^5", "E@(0,0)+Ebar@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+Ebar@(-2,13)"], "Z_L_flag": false}
+{"O": "E^4", "t0": 0, "x0": 15, "alone": ["E", "E", "A"]}
+{"O": "E^4", "t0": 0, "x0": 29, "alone": ["v-4/15s12w42#3"]}
+{"O": "E^4", "t0": 1, "x0": 25, "alone": ["v-4/15s12w38#2"]}
+{"O": "E^4", "t0": 1, "x0": 39, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 2, "x0": 21, "alone": ["v-4/15s12w35"]}
+{"O": "E^4", "t0": 2, "x0": 35, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 3, "x0": 17, "alone": ["E", "F", "A^4"]}
+{"O": "E^4", "t0": 3, "x0": 31, "alone": ["v-4/15s12w44#2"]}
+{"O": "E^4", "t0": 4, "x0": 27, "alone": ["v-4/15s12w41#2"]}
+{"O": "E^4", "t0": 4, "x0": 41, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 5, "x0": 23, "alone": ["v-4/15s12w37"]}
+{"O": "E^4", "t0": 5, "x0": 37, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 6, "x0": 19, "alone": ["E^2", "Ebar", "A", "A_2_A_28_A"]}
+{"O": "E^4", "t0": 6, "x0": 33, "alone": ["E^4", "E^4"], "I_L": ["v-4/15s4w54"], "I_L_flag": false, "Z_L": ["v-4/15s6w44"], "Z_L_flag": false}
+{"O": "E^4", "t0": 7, "x0": 15, "alone": ["?", "A_19_A"]}
+{"O": "E^4", "t0": 7, "x0": 29, "alone": ["v-4/15s12w43"]}
+{"O": "E^4", "t0": 8, "x0": 25, "alone": ["v-4/15s12w39#2"]}
+{"O": "E^4", "t0": 8, "x0": 39, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 9, "x0": 21, "alone": ["v-4/15s12w36"]}
+{"O": "E^4", "t0": 9, "x0": 35, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 10, "x0": 17, "alone": ["v-8/30s8w20#3", "A^4"]}
+{"O": "E^4", "t0": 10, "x0": 31, "alone": ["v-4/15s12w46"]}
+{"O": "E^4", "t0": 11, "x0": 27, "alone": ["v-4/15s12w42#4"]}
+{"O": "E^4", "t0": 11, "x0": 41, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 12, "x0": 23, "alone": ["v-4/15s12w38#3"]}
+{"O": "E^4", "t0": 12, "x0": 37, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 13, "x0": 19, "alone": ["v-4/15s12w35#2"]}
+{"O": "E^4", "t0": 13, "x0": 33, "alone": ["E^4", "E^4"], "I_L": ["E^5", "E^4"], "I_L_flag": false, "Z_L": ["E^3", "E^4"], "Z_L_flag": false}
+{"O": "E^4", "t0": 14, "x0": 15, "alone": ["E", "F", "A^4"]}
+{"O": "E^4", "t0": 14, "x0": 29, "alone": ["v-4/15s12w46#2"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 0, "x0": 23, "alone": ["v-4/15s3w38#7"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 1, "x0": 19, "alone": ["E^2", "C2_12_C1"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 1, "x0": 33, "alone": ["v-4/15s3w47"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 2, "x0": 15, "alone": ["Ebar", "Ebar", "D1"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 2, "x0": 29, "alone": ["v-4/15s3w43#5"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 3, "x0": 25, "alone": ["v-4/15s3w39#3"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 4, "x0": 21, "alone": ["v-4/15s3w35#5"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 5, "x0": 17, "alone": ["v-8/30s3w38"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 5, "x0": 31, "alone": ["v-4/15s3w46#5"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 6, "x0": 27, "alone": ["v-4/15s3w43#6"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 7, "x0": 23, "alone": ["v-4/15s3w38#8"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 8, "x0": 19, "alone": ["v-4/15s3w34#3"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 9, "x0": 15, "alone": ["E^2", "C2_12_C1"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 9, "x0": 29, "alone": ["v-4/15s3w44#2"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 10, "x0": 25, "alone": ["v-4/15s3w41#3"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 11, "x0": 21, "alone": ["v-4/15s3w38#9"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 12, "x0": 17, "alone": ["E^3", "A^3"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["v-4/15s9w54"], "I_L_flag": false, "Z_L": ["v-4/15s11w45"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 13, "x0": 27, "alone": ["v-4/15s3w46#6"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 14, "x0": 23, "alone": ["v-4/15s3w42#3"]}
+{"O": "E@(0,0)+E@(-2,13)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-2,13)"], "I_L": ["E^5", "E@(0,0)+E@(-2,13)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-2,13)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 0, "x0": 23, "alone": ["v-4/15s3w38#10"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 1, "x0": 19, "alone": ["E^2", "F", "C3"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 1, "x0": 33, "alone": ["v-4/15s3w49"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 2, "x0": 15, "alone": ["Ebar", "Ebar", "D1"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 2, "x0": 29, "alone": ["v-4/15s3w46#7"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 3, "x0": 25, "alone": ["v-4/15s3w42#4"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 4, "x0": 21, "alone": ["v-4/15s3w38#11"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 5, "x0": 17, "alone": ["E^2", "F", "D1"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 5, "x0": 31, "alone": ["v-4/15s3w47#2"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 6, "x0": 27, "alone": ["v-4/15s3w43#7"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 7, "x0": 23, "alone": ["v-4/15s3w39#4"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 8, "x0": 19, "alone": ["v-4/15s3w35#6"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 9, "x0": 15, "alone": ["E^2", "F", "C3"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 9, "x0": 29, "alone": ["v-4/15s3w46#8"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 10, "x0": 25, "alone": ["v-4/15s3w43#8"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 11, "x0": 21, "alone": ["v-4/15s3w38#12"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 12, "x0": 17, "alone": ["v-8/30s0w22", "C3"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["v-4/15s9w55"], "I_L_flag": false, "Z_L": ["v-4/15s11w48"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 13, "x0": 27, "alone": ["v-4/15s3w44#3"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 14, "x0": 23, "alone": ["v-4/15s3w41#4"]}
+{"O": "E@(0,0)+E@(-6,15)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-6,15)"], "I_L": ["E^5", "E@(0,0)+E@(-6,15)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-6,15)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 0, "x0": 23, "alone": ["v-4/15s3w39#5"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 0, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 1, "x0": 19, "alone": ["v-8/30s3w43"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 1, "x0": 33, "alone": ["v-4/15s3w49#2"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 2, "x0": 15, "alone": ["Ebar", "Ebar", "D1"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 2, "x0": 29, "alone": ["v-4/15s3w46#9"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 3, "x0": 25, "alone": ["v-4/15s3w43#9"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 3, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 4, "x0": 21, "alone": ["v-4/15s3w38#13"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 4, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 5, "x0": 17, "alone": ["v-8/30s8w21", "D2"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 5, "x0": 31, "alone": ["v-4/15s3w48"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 6, "x0": 27, "alone": ["v-4/15s3w44#4"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 6, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 7, "x0": 23, "alone": ["v-4/15s3w41#5"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 7, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 8, "x0": 19, "alone": ["v-4/15s3w38#14"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 8, "x0": 33, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 9, "x0": 15, "alone": ["v-8/30s3w42"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 9, "x0": 29, "alone": ["v-4/15s3w49#3"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 10, "x0": 25, "alone": ["v-4/15s3w46#10"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 10, "x0": 39, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 11, "x0": 21, "alone": ["v-4/15s3w42#5"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 11, "x0": 35, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 12, "x0": 17, "alone": ["v-8/30s0w22", "C3"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 12, "x0": 31, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["v-4/15s9w56"], "I_L_flag": false, "Z_L": ["v-4/15s11w49"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 13, "x0": 27, "alone": ["v-4/15s3w47#3"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 13, "x0": 41, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 14, "x0": 23, "alone": ["v-4/15s3w43#10"]}
+{"O": "E@(0,0)+E@(-14,19)", "t0": 14, "x0": 37, "alone": ["E^4", "E@(0,0)+E@(-14,19)"], "I_L": ["E^5", "E@(0,0)+E@(-14,19)"], "I_L_flag": false, "Z_L": ["E^3", "E@(0,0)+E@(-14,19)"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 0, "x0": 18, "alone": ["E^3", "Ebar", "C1", "A^2", "A"]}
+{"O": "E_13_Ebar", "t0": 0, "x0": 32, "alone": ["E^4", "E_13_Ebar"], "I_L": ["v-8/30s7w56"], "I_L_flag": false, "Z_L": ["v-8/30s9w47#2"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 1, "x0": 14, "alone": ["E^2", "B^2", "C2", "C1"]}
+{"O": "E_13_Ebar", "t0": 1, "x0": 28, "alone": ["v-8/30s1w47#3"]}
+{"O": "E_13_Ebar", "t0": 2, "x0": 24, "alone": ["v-8/30s1w42#4"]}
+{"O": "E_13_Ebar", "t0": 2, "x0": 38, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 3, "x0": 20, "alone": ["v-8/30s1w39#2"]}
+{"O": "E_13_Ebar", "t0": 3, "x0": 34, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 4, "x0": 16, "alone": ["E^3", "Ebar", "C1", "A^2", "A"]}
+{"O": "E_13_Ebar", "t0": 4, "x0": 30, "alone": ["v-8/30s1w49#2"]}
+{"O": "E_13_Ebar", "t0": 5, "x0": 26, "alone": ["v-8/30s1w46#2"]}
+{"O": "E_13_Ebar", "t0": 5, "x0": 40, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 6, "x0": 22, "alone": ["v-8/30s1w41#4"]}
+{"O": "E_13_Ebar", "t0": 6, "x0": 36, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 7, "x0": 18, "alone": ["v-8/30s1w37#3"]}
+{"O": "E_13_Ebar", "t0": 7, "x0": 32, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 8, "x0": 14, "alone": ["E", "A^3", "A^2", "A"]}
+{"O": "E_13_Ebar", "t0": 8, "x0": 28, "alone": ["v-8/30s1w48#2"]}
+{"O": "E_13_Ebar", "t0": 9, "x0": 24, "alone": ["v-8/30s1w44#3"]}
+{"O": "E_13_Ebar", "t0": 9, "x0": 38, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 10, "x0": 20, "alone": ["v-8/30s1w41#5"]}
+{"O": "E_13_Ebar", "t0": 10, "x0": 34, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 11, "x0": 16, "alone": ["v-8/30s1w38#2"]}
+{"O": "E_13_Ebar", "t0": 11, "x0": 30, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 12, "x0": 26, "alone": ["v-8/30s1w49#3"]}
+{"O": "E_13_Ebar", "t0": 12, "x0": 40, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 13, "x0": 22, "alone": ["v-8/30s1w45#3"]}
+{"O": "E_13_Ebar", "t0": 13, "x0": 36, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 14, "x0": 18, "alone": ["v-8/30s1w41#6"]}
+{"O": "E_13_Ebar", "t0": 14, "x0": 32, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 15, "x0": 14, "alone": ["E^3", "A"]}
+{"O": "E_13_Ebar", "t0": 15, "x0": 28, "alone": ["E^4", "E_13_Ebar"], "I_L": ["v-8/30s7w56"], "I_L_flag": false, "Z_L": ["v-8/30s9w47#2"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 16, "x0": 24, "alone": ["v-8/30s1w47#3"]}
+{"O": "E_13_Ebar", "t0": 16, "x0": 38, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 17, "x0": 20, "alone": ["v-8/30s1w42#4"]}
+{"O": "E_13_Ebar", "t0": 17, "x0": 34, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 18, "x0": 16, "alone": ["v-8/30s1w39#2"]}
+{"O": "E_13_Ebar", "t0": 18, "x0": 30, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 19, "x0": 26, "alone": ["v-8/30s1w49#2"]}
+{"O": "E_13_Ebar", "t0": 19, "x0": 40, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 20, "x0": 22, "alone": ["v-8/30s1w46#2"]}
+{"O": "E_13_Ebar", "t0": 20, "x0": 36, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 21, "x0": 18, "alone": ["v-8/30s1w41#4"]}
+{"O": "E_13_Ebar", "t0": 21, "x0": 32, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 22, "x0": 14, "alone": ["v-8/30s1w37#3"]}
+{"O": "E_13_Ebar", "t0": 22, "x0": 28, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 23, "x0": 24, "alone": ["v-8/30s1w48#2"]}
+{"O": "E_13_Ebar", "t0": 23, "x0": 38, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 24, "x0": 20, "alone": ["v-8/30s1w44#3"]}
+{"O": "E_13_Ebar", "t0": 24, "x0": 34, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 25, "x0": 16, "alone": ["v-8/30s1w41#5"]}
+{"O": "E_13_Ebar", "t0": 25, "x0": 30, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 26, "x0": 26, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 26, "x0": 40, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 27, "x0": 22, "alone": ["v-8/30s1w49#3"]}
+{"O": "E_13_Ebar", "t0": 27, "x0": 36, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 28, "x0": 18, "alone": ["v-8/30s1w45#3"]}
+{"O": "E_13_Ebar", "t0": 28, "x0": 32, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "E_13_Ebar", "t0": 29, "x0": 14, "alone": ["v-8/30s1w41#6"]}
+{"O": "E_13_Ebar", "t0": 29, "x0": 28, "alone": ["E^4", "E_13_Ebar"], "I_L": ["E^5", "E_13_Ebar"], "I_L_flag": false, "Z_L": ["E^3", "E_13_Ebar"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 0, "x0": 24, "alone": ["v-8/30s1w51"]}
+{"O": "Ebar_10_E", "t0": 0, "x0": 38, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 1, "x0": 20, "alone": ["v-8/30s1w48#3"]}
+{"O": "Ebar_10_E", "t0": 1, "x0": 34, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 2, "x0": 16, "alone": ["E^4", "A_14_A"]}
+{"O": "Ebar_10_E", "t0": 2, "x0": 30, "alone": ["E^4", "Ebar_10_E"], "I_L": ["v-8/30s7w62"], "I_L_flag": false, "Z_L": ["v-8/30s9w54"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 3, "x0": 26, "alone": ["v-8/30s1w54"]}
+{"O": "Ebar_10_E", "t0": 3, "x0": 40, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 4, "x0": 22, "alone": ["v-8/30s1w49#4"]}
+{"O": "Ebar_10_E", "t0": 4, "x0": 36, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 5, "x0": 18, "alone": ["v-8/30s1w45#4"]}
+{"O": "Ebar_10_E", "t0": 5, "x0": 32, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 6, "x0": 14, "alone": ["E^4", "A_14_A"]}
+{"O": "Ebar_10_E", "t0": 6, "x0": 28, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 7, "x0": 24, "alone": ["v-8/30s1w51#2"]}
+{"O": "Ebar_10_E", "t0": 7, "x0": 38, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 8, "x0": 20, "alone": ["v-8/30s1w48#4"]}
+{"O": "Ebar_10_E", "t0": 8, "x0": 34, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 9, "x0": 16, "alone": ["v-8/30s1w45#5"]}
+{"O": "Ebar_10_E", "t0": 9, "x0": 30, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 10, "x0": 26, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 10, "x0": 40, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 11, "x0": 22, "alone": ["E^4", "Ebar_10_E"], "I_L": ["v-8/30s7w57"], "I_L_flag": false, "Z_L": ["v-8/30s9w50"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 11, "x0": 36, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 12, "x0": 18, "alone": ["v-8/30s1w46#3"]}
+{"O": "Ebar_10_E", "t0": 12, "x0": 32, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 13, "x0": 14, "alone": ["v-8/30s1w43"]}
+{"O": "Ebar_10_E", "t0": 13, "x0": 28, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 14, "x0": 24, "alone": ["E^4", "Ebar_10_E"], "I_L": ["v-8/30s7w59"], "I_L_flag": false, "Z_L": ["v-8/30s9w51"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 14, "x0": 38, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 15, "x0": 20, "alone": ["v-8/30s1w51"]}
+{"O": "Ebar_10_E", "t0": 15, "x0": 34, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 16, "x0": 16, "alone": ["v-8/30s1w48#3"]}
+{"O": "Ebar_10_E", "t0": 16, "x0": 30, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 17, "x0": 26, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 17, "x0": 40, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 18, "x0": 22, "alone": ["v-8/30s1w54"]}
+{"O": "Ebar_10_E", "t0": 18, "x0": 36, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 19, "x0": 18, "alone": ["v-8/30s1w49#4"]}
+{"O": "Ebar_10_E", "t0": 19, "x0": 32, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 20, "x0": 14, "alone": ["v-8/30s1w45#4"]}
+{"O": "Ebar_10_E", "t0": 20, "x0": 28, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 21, "x0": 24, "alone": ["v-8/30s1w55"]}
+{"O": "Ebar_10_E", "t0": 21, "x0": 38, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 22, "x0": 20, "alone": ["v-8/30s1w51#2"]}
+{"O": "Ebar_10_E", "t0": 22, "x0": 34, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 23, "x0": 16, "alone": ["v-8/30s1w48#4"]}
+{"O": "Ebar_10_E", "t0": 23, "x0": 30, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 24, "x0": 26, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 24, "x0": 40, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 25, "x0": 22, "alone": ["v-8/30s1w54#2"]}
+{"O": "Ebar_10_E", "t0": 25, "x0": 36, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 26, "x0": 18, "alone": ["v-8/30s1w50"]}
+{"O": "Ebar_10_E", "t0": 26, "x0": 32, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 27, "x0": 14, "alone": ["v-8/30s1w46#3"]}
+{"O": "Ebar_10_E", "t0": 27, "x0": 28, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 28, "x0": 24, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 28, "x0": 38, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 29, "x0": 20, "alone": ["E^4", "Ebar_10_E"], "I_L": ["v-8/30s7w59"], "I_L_flag": false, "Z_L": ["v-8/30s9w51"], "Z_L_flag": false}
+{"O": "Ebar_10_E", "t0": 29, "x0": 34, "alone": ["E^4", "Ebar_10_E"], "I_L": ["E^5", "Ebar_10_E"], "I_L_flag": false, "Z_L": ["E^3", "Ebar_10_E"], "Z_L_flag": false}
+{"O": "E^5", "t0": 0, "x0": 26, "alone": ["v-4/15s4w43#3"]}
+{"O": "E^5", "t0": 0, "x0": 40, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 1, "x0": 22, "alone": ["v-4/15s4w40"]}
+{"O": "E^5", "t0": 1, "x0": 36, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 2, "x0": 18, "alone": ["E^2", "F", "A^2", "A", "A"]}
+{"O": "E^5", "t0": 2, "x0": 32, "alone": ["v-4/15s4w50"]}
+{"O": "E^5", "t0": 3, "x0": 14, "alone": ["Ebar", "D1", "A"]}
+{"O": "E^5", "t0": 3, "x0": 28, "alone": ["v-4/15s4w46#2"]}
+{"O": "E^5", "t0": 4, "x0": 24, "alone": ["v-4/15s4w43#4"]}
+{"O": "E^5", "t0": 4, "x0": 38, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 5, "x0": 20, "alone": ["v-4/15s4w38"]}
+{"O": "E^5", "t0": 5, "x0": 34, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 6, "x0": 16, "alone": ["E", "F", "A", "A^2"]}
+{"O": "E^5", "t0": 6, "x0": 30, "alone": ["v-4/15s4w49"]}
+{"O": "E^5", "t0": 7, "x0": 26, "alone": ["v-4/15s4w45#2"]}
+{"O": "E^5", "t0": 7, "x0": 40, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 8, "x0": 22, "alone": ["v-4/15s4w41"]}
+{"O": "E^5", "t0": 8, "x0": 36, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 9, "x0": 18, "alone": ["v-4/15s4w37"]}
+{"O": "E^5", "t0": 9, "x0": 32, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 10, "x0": 14, "alone": ["E", "F", "A", "A^2"]}
+{"O": "E^5", "t0": 10, "x0": 28, "alone": ["v-4/15s4w47"]}
+{"O": "E^5", "t0": 11, "x0": 24, "alone": ["v-4/15s4w44#2"]}
+{"O": "E^5", "t0": 11, "x0": 38, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 12, "x0": 20, "alone": ["v-4/15s4w40#2"]}
+{"O": "E^5", "t0": 12, "x0": 34, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "E^5", "t0": 13, "x0": 16, "alone": ["E^8", "Ebar", "A_19_A"]}
+{"O": "E^5", "t0": 13, "x0": 30, "alone": ["E^4", "E^5"], "I_L": ["v-4/15s10w57"], "I_L_flag": false, "Z_L": ["v-4/15s12w49"], "Z_L_flag": false}
+{"O": "E^5", "t0": 14, "x0": 26, "alone": ["v-4/15s4w46#3"]}
+{"O": "E^5", "t0": 14, "x0": 40, "alone": ["E^4", "E^5"], "I_L": ["E^5", "E^5"], "I_L_flag": false, "Z_L": ["E^3", "E^5"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 0, "x0": 23, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 0, "x0": 37, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 1, "x0": 19, "alone": ["E^3", "A"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 1, "x0": 33, "alone": ["v-8/30s1w50#2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 2, "x0": 15, "alone": ["E^5", "A_2_A_14_A#2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 2, "x0": 29, "alone": ["v-8/30s1w46#4"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 3, "x0": 25, "alone": ["v-8/30s1w43#2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 3, "x0": 39, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 4, "x0": 21, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 4, "x0": 35, "alone": ["v-8/30s1w54#3"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 5, "x0": 17, "alone": ["E@(0,0)+E@(0,19)", "C2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 5, "x0": 31, "alone": ["v-8/30s1w51#3"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 6, "x0": 27, "alone": ["v-8/30s1w48#5"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 6, "x0": 41, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 7, "x0": 23, "alone": ["v-8/30s1w44#4"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 7, "x0": 37, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 8, "x0": 19, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 8, "x0": 33, "alone": ["v-8/30s1w54#4"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 9, "x0": 15, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 9, "x0": 29, "alone": ["v-8/30s1w49#5"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 10, "x0": 25, "alone": ["v-8/30s1w45#6"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 10, "x0": 39, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 11, "x0": 21, "alone": ["v-8/30s1w41#7"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 11, "x0": 35, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 12, "x0": 17, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 12, "x0": 31, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["v-8/30s7w59#2"], "I_L_flag": false, "Z_L": ["v-8/30s9w49"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 13, "x0": 27, "alone": ["v-8/30s1w48#6"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 13, "x0": 41, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 14, "x0": 23, "alone": ["v-8/30s1w45#7"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 14, "x0": 37, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 15, "x0": 19, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 15, "x0": 33, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["v-8/30s7w62#2"], "I_L_flag": false, "Z_L": ["v-8/30s9w54#2"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 16, "x0": 15, "alone": ["E", "A^3", "A^3"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 16, "x0": 29, "alone": ["v-8/30s1w50#2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 17, "x0": 25, "alone": ["v-8/30s1w46#4"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 17, "x0": 39, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 18, "x0": 21, "alone": ["v-8/30s1w43#2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 18, "x0": 35, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 19, "x0": 17, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 19, "x0": 31, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 20, "x0": 27, "alone": ["v-8/30s1w51#3"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 20, "x0": 41, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 21, "x0": 23, "alone": ["v-8/30s1w48#5"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 21, "x0": 37, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 22, "x0": 19, "alone": ["v-8/30s1w44#4"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 22, "x0": 33, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 23, "x0": 15, "alone": ["E^4", "A^2"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 23, "x0": 29, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 24, "x0": 25, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["v-8/30s7w54"], "I_L_flag": false, "Z_L": ["v-8/30s9w46"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 24, "x0": 39, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 25, "x0": 21, "alone": ["v-8/30s1w45#6"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 25, "x0": 35, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 26, "x0": 17, "alone": ["v-8/30s1w41#7"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 26, "x0": 31, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 27, "x0": 27, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["v-8/30s7w59#2"], "I_L_flag": false, "Z_L": ["v-8/30s9w49"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 27, "x0": 41, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 28, "x0": 23, "alone": ["v-8/30s1w48#6"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 28, "x0": 37, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 29, "x0": 19, "alone": ["v-8/30s1w45#7"]}
+{"O": "Ebar@(0,0)+E@(-10,19)", "t0": 29, "x0": 33, "alone": ["E^4", "Ebar@(0,0)+E@(-10,19)"], "I_L": ["E^5", "Ebar@(0,0)+E@(-10,19)"], "I_L_flag": false, "Z_L": ["E^3", "Ebar@(0,0)+E@(-10,19)"], "Z_L_flag": false}

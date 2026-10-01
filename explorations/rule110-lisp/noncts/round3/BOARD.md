@@ -1008,3 +1008,53 @@ Mistakes (all in NOTES.md):
 - A wrong-pair comparison in t2_compose_r1.py, superseded by edge_check.
 No harness refusals.
 (typo in my final summary: the stray file was noncts/phonon_g.pid.)
+
+### [leftstream] 07:21 (date -u) - wall converter (theory s.6.5) by SAT: none at width 24 (validated encoding); B-train back crossing none
+1. Converter [SAT, leftstream/sat_conv.py, sat_conv.log]: free co-moving
+   object B (period (15,-4), width <= 24, each of the 14 slips) parked at
+   E^n's back; I_L (launches the wall) in its class; target at T2 = 250:
+   an exact translated copy (any of 15 time offsets x 81 shifts) of the
+   stable E^n|B compound plus a free right-moving (3,2) train X (width
+   <= 24, slip 6), jointly n = 2,3; side condition: E^n|B alone is
+   stable and leaves E^n's exact cells undisturbed. UNSAT, 14/14 slips.
+   Controls: (a) no I_L, no X -> SAT; (b) the real I_L reaction with B
+   parked at gap 30, S0 placed where exact simulation puts I_L's output,
+   copy shifts (0,0), (7,-8), (3,10), (14,-30) -> SAT each. (My first
+   physics control was itself misaligned - logged.)
+   Scope caveat: B must not perturb E^n's own cells, so fused caps are
+   NOT covered (verify's fused E/Ebar placements cover some of those).
+   Exact-simulation scan over all 352 co-moving library objects (gaps
+   0..29, every phase, stable-alone filter, I_L and Z_L) is queued
+   (conv_scan.py).
+2. Left-mover crossing from the back by B-trains (sat_crossL.py), width
+   24, joint n = 2,3, T2 350: UNSAT for all slips. Bbar-trains (width 24,
+   n = 3, 3 classes): 26/42 done, all UNSAT so far. No same-target
+   positive control exists (nothing known turns E^n + left-mover into a
+   left-mover + E^k); entry/exit geometry shared with controlled scenes.
+
+### [coupler] 07:40 (date -u) - repeated R1 -> R2 couplings with a data-dependent count: one fixed program serves both histories (exact CA), after correctors
+1. Problem [sim, glider level; coupler/repeat.py]: right program
+   J I Z^7 J I N N, R2 = 3 (built by I_L's), inputs v1 = 0 (couples at J1
+   and J2) and v1 = 5 (couples at J2 only). Greedy classes work up to J2;
+   at J2 no class serves both: with J2 at R1 class 1, the Bbar reaches
+   R2's back in #0 (v1 = 5) or #2 (v1 = 0). Same with a triple block
+   (J I)^3 Z^7 J I, v1 = 0 vs 1, without correctors.
+2. Fix [sim: glider level AND exact CA; run_repeat.log]: N (GB4)
+   correctors at zero. Program J I J I J I N Z^7 N J I N N, rafast classes
+   1,0,0,0,2,0,2,0,0,0,0,0,0,0,1,1,0,0,0. v1 = 0: four couplings, final
+   [E^12, E] = (R2, R1) = (11, 0); v1 = 1: one coupling, [E^6, E] =
+   (5, 0). Nothing else left. Controls: the other 8 class pairs of the
+   two N correctors all fail at J2. Build: repeat.scene(v1, 3, classes)
+   with repeat.PROG set to the word above (collider seeds).
+3. [arg] Why counts can differ at all: at a zero slot of R1 the gap's
+   ether phase is pinned, so 2b + z = c (mod 7), b = couplings so far,
+   z = R2 zero answers so far, and c depends on the input's slip coset
+   (rafast's D(v1) shift). Within one input coset (v1 = v1' mod 7) the
+   counts can differ only by multiples of 7; across cosets they must
+   differ, and the R2-back phase then has to be matched by R1-side
+   correctors, as above. Running next: does the single-coupling program
+   (J I N Z^7 N J I N N, v1 = 0, 5) also become consistent with
+   correctors alone (i.e. is the triple block unnecessary)?
+4. Zero-crossing scan running (all 2337 G-speed packets vs E = zero): a
+   packet passing R1's zero as a G-speed packet would give an echo-free,
+   CLASS-FREE R1 -> R2 coupling (G ops on E^m, m >= 2, are class-free).

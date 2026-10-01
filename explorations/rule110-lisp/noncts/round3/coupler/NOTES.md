@@ -150,3 +150,46 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   J2 class differs. Both are R1-side phase issues, which N (GB4) at zero
   can correct (class-dependent displacement). Enumerating N correctors
   (run_repeat.sh -> run_repeat.log).
+- 07:10 Idea queued: zero-CROSSING scan. If some G-speed packet X
+  passes R1 = E (zero) and emerges on the left as a G-speed packet Y
+  (R1 kept at E; slip(X) = slip(Y)), then Y acts on R2's back CLASS-FREE
+  (G-speed ops on E^m, m >= 2, are class-free; GBk with k >= 3 emit no
+  echo). That would be an echo-free, class-free R1 -> R2 coupling and
+  would remove the R2-back history conflict found with J's Bbar. Scan:
+  scan_reflect.py 1 -1/3 (all 2337 G-speed packets vs E, every class),
+  then analyze crossings.
+- 07:31 Corrector enumeration (run_repeat.log): J I J I J I N Z^7 N
+  J I N N, v1 = 0, 1, R2 = 3, all 9 class pairs of the two N correctors
+  (first: after the triple block, acts only on v1 = 0 which is at zero;
+  second: after Z^7, both at zero), Z/J/I classes greedy: 7/9 done before
+  the 30-min cut, all fail at J2 (no J2 class gives class 1 at R1 AND #1
+  at R2 for both inputs); last 2 rerun queued.
+  Re-reading the diag numbers: with J2 in class 1, v1 = 0 used cJ = 2 and
+  v1 = 1 used cJ = 0, both giving #0 at R2. If R1 correctors aligned the
+  two histories on one J2 placement, their R2 classes would differ by 2
+  steps (cJ 2 vs 0). In the single-coupling test the difference was 1.
+  So the triple block did NOT remove the conflict; my "3 delta = 0"
+  reading was wrong. The mismatch is better explained by the INPUT
+  ENCODING: inputs v1 from different classes mod 7 get the right program
+  x-shifted by different D(v1) (rafast convention), so the right stream's
+  frame relative to R2 is input dependent, and R1-side correctors (which
+  only move R1) cannot repair R2-side phase.
+  [arg] Within ONE input coset (v1 = v1' mod 7, same frames), the slip
+  lemma at a pinned zero slot (2b + z = c mod 7; b = couplings so far,
+  z = R2 zero answers so far) forces equal b mod 7 when z is equal, so
+  "different number of earlier couplings" cannot even arise there unless
+  the counts differ by a multiple of 7.
+  Conclusion (scoped): one fixed right program serving R1 -> R2 couplings
+  for inputs from DIFFERENT mod-7 cosets was not found (2 programs, 7+
+  corrector combinations); within one coset the conflict is excluded by
+  conservation for count differences < 7. Not a proof of impossibility.
+- 07:40 CORRECTION of the entry above: the two rerun combos
+  finished and N1 class 2, N2 class 1 WORKS: program
+  J I J I J I N Z^7 N J I N N, classes [1,0,0,0,2,0,2,0,0,0,0,0,0,0,1,1,0,0,0],
+  inputs v1 = 0 (four couplings: R2 3 -> 11) and v1 = 1 (one coupling:
+  R2 3 -> 5), both end with R1 = 0 and nothing else; glider level AND
+  exact CA agree with the model [sim]. The other 8 corrector pairs fail
+  at J2 (controls). So my "R1 correctors cannot repair it" was wrong
+  (premature, written before the run finished). Open: whether the triple
+  block matters or correctors alone suffice for the single-coupling
+  program (queued: J I N Z^7 N J I N N, v1 = 0, 5).

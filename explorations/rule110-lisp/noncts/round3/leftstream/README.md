@@ -19,16 +19,24 @@ verified in exact Rule 110. Running log: NOTES.md. Plan: PLAN.md.
   all inputs; 270/270 random runs (30 programs x v = 0..8) match the model;
   class-shift controls fail. Verified independently by verify (ledger).
 
-## Searches for theory's escapes (scoped negatives, SAT)
-- Wrap (Z + E -> E^7, DEC for n = 2,3): UNSAT, slip-8 (3,2) trains of
-  width 24 and 36, all classes (sat_zero.py mode wrap; sat_wrap36.log).
-- Reflection at R1's front with Y = Bbar: UNSAT width 24, k = 1,2,3
-  (sat_reflect.py/.log).
-- Crossing front -> back, any (3,2) output train: UNSAT width 24, all
-  slips and classes, n = 2,3 jointly (sat_cross.py/.log).
-- Crossing back -> front by B-trains: UNSAT width 24, all slips
-  (sat_crossL.py/.log).
-- Wall converter at the back (sat_conv.py): running (sat_conv.log).
+## Searches for theory's escapes (scoped negatives)
+All SAT runs have a passing positive control in the same code unless
+stated; widths are the free train/object widths in cells.
+- Wrap (Z + E -> E^7, DEC for n = 2,3): UNSAT, slip-8 (3,2) trains,
+  W 24 and 36, all classes (sat_zero.py mode wrap; sat_wrap36.log).
+- Reflection at R1's front with Y = Bbar: UNSAT W 24, k = 1,2,3
+  (sat_reflect.py/.log). Moot: Bbar at R2's back emits only A.
+- Crossing front -> back, any (3,2) output of the same slip: UNSAT W 24,
+  all slips x classes, n = 2,3 jointly, T2 350 (sat_cross.py/.log).
+- Crossing back -> front: B-trains W 24 (n 2,3 joint), Bbar-trains W 24
+  (n 3, 3 classes): UNSAT, all slips (sat_crossL.py/.log). No positive
+  control of the same target form exists.
+- Wall converter (theory s.6.5), SAT with free co-moving B (W 24, all
+  slips), I_L front op, free X (slip 6): UNSAT for n = 2,3 jointly
+  (sat_conv.py/.log); controls --control and --control3 (real I_L physics,
+  shifted copies) SAT. Fused caps not covered.
+- Wall converter, exact scan of library co-moving objects behind E^4
+  (conv_scan.py, conv_scan.jsonl): partial, see NOTES.md.
 
 ## How to run
 - python3 claim_inc.py 12            INC n = 1..12 + controls, writes inc_scenes.json
