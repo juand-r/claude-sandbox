@@ -393,9 +393,10 @@ to arrange this.
 | CONTROL: value-dependent skew, 0.3 slot per unit | 69/105 |
 | CONTROL: value-dependent skew, 0.05 slot per unit | 21/105 |
 
-- **Interpretation.** Cross-coupled modes in both directions suffice,
-  with bounded signal delays and a slack rule (the receiver's actions
-  come after the latest possible signal). Rate-matched ("time-mediated")
+- **Interpretation.** Cross-coupled modes in both directions suffice
+  under three conditions: the two streams keep a fixed relative timing
+  (no skew), signal delays are bounded, and a slack rule holds (the
+  receiver's actions come after the latest possible signal). Rate-matched ("time-mediated")
   transfers between two streams fail under skew, even small skew,
   because the receiver no longer counts the sender's beats.
 - **Generalisation.** In any two-stream world with value-dependent skew,
@@ -455,10 +456,38 @@ progressions are data-independent.
     amounts, and the shuttle's rate depends on the gap. That makes the
     gap a shared bounded register.
 
-  With (ii) on both sides, plus a two-type shuttle to pass the branch
-  bit, the transfer machine of s.5.1 can be laid out [arg]. I have not
-  compiled it at tick level; the exact timing and residue bookkeeping is
-  heavy.
+- **The tie constraint [arg].** A per-side rate state (option ii) can
+  change only at that side's own zero events. Between two of them, that
+  side is first the destination of one transfer and then the source of
+  the next, with the same rate throughout. Write r_x, r_y for the stream
+  rates in units per shuttle trip (the shuttle moves 1 per trip), and
+  let t index the YX transfers. Then:
+  - transfer YX_t (y -> x) multiplies by (1 + r_x^(t)) / (1 - r_y^(t-1));
+  - transfer XY_(t+1) (x -> y) multiplies by (1 + r_y^(t)) / (1 - r_x^(t)).
+
+  So consecutive ratios share a parameter. With y passive (r_y = 0) a
+  round is n -> n (1+r)/(1-r). Every positive rational is reachable, but
+  only as a whole round, and remainder information appears only at x's
+  zero.
+
+- **Option (iii) escapes the tie [arg].** A gap length that zero events
+  can shift is a SHARED register: both sides' zero windows can reset it.
+  The transfer that starts at a zero can therefore have its rate chosen
+  at that same zero, from fresh residue information. With blind streams,
+  the ratio of a transfer is a function of the gap, so a program could
+  pick a multiplier per transfer from residues. That is the shape of
+  Conway's FRACTRAN / generalised Collatz maps, which are universal with
+  enough multipliers [hyp: whether the needed exact rates and residue
+  reads exist]. Its physical cost: a shuttle that stays self-consistent
+  at several gap lengths, plus zero-window reactions that shift the gap
+  by different amounts.
+
+  I have **no construction** that turns this into a Minsky compiler. My
+  first draft of this section said that one existed ("can be laid out");
+  that was wrong, and is corrected in NOTES.md. Whether a finite set of
+  rates plus a schedule realises a universal set of round maps is open.
+  The obstacles are the floors at both ends of a round, and where the
+  residue information comes from.
 
 ## 7. Reaction spec for leftstream and coupler (E^n world)
 
@@ -512,5 +541,6 @@ coupling (s.3.2), so it is not worth a dedicated SAT search.
    reopen route ¬(N).
 3. An unbounded gap as delay-line memory (¬(B)): what does it compute
    without becoming a cyclic tag system?
-4. A tick-level compile of the transfer machine onto a shuttle plus
-   two-state filters (s.6.3, item ii).
+4. Is there a compile of the transfer machine onto a shuttle plus
+   per-side rate filters that respects the tie constraint (s.6.3)? This
+   would decide whether Tier B1 alone (without B2) is enough.

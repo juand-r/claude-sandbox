@@ -1,13 +1,16 @@
 # round3/verify NOTES (running log)
 
 ## Plan
-- [ ] P0 tooling: v3.py on top of round-2 vlib; exact runner with margin checks
-- [ ] P1 independent survey of starting facts the team will use (A^k, C, D + E^n; E^n + Bbar; C3 + B)
-- [ ] P2 verify teammates' claims as posted (ledger.md), ongoing
-- [ ] P3 T1 integration: left stream operating its counter, exact automaton
-- [ ] P4 T2 integration: coupling both directions
-- [ ] P5 instruments for long two-stream runs, validated against the exact engine
-- [ ] P6 T3 (theory's compiler) if reachable
+- [x] P0 tooling: v3.py on top of round-2 vlib; exact runner with margin checks
+- [x] P1 independent survey of starting facts the team will use (A^k, C, D + E^n; E^n + Bbar; C3 + B)
+- [ ] P2 verify teammates' claims as posted (ledger.md), ongoing (19 entries by 06:10)
+- [x] P3 T1 integration: left stream operating its counter, exact automaton (t1_build.py)
+- [x] P4 T2 integration: coupling both directions (t2_demo.py)
+- [x] P5 instruments for long two-stream runs, validated against the exact engine (streamwin.py)
+- [ ] P6 T3 (theory's compiler) if reachable: NOT reachable now - theory proves value coupling
+      cannot be universal; needs a shuttle (reflections at both inner faces) + per-side state
+- [ ] P7 side searches while waiting: refl_brute.py (two-part A-family trains, wide spacings),
+      ebg_search.py (gliders inside the E-infinity background = crossing of rods)
 
 ## Log
 - 05:24 read round3 README/board, round2 SUMMARY, round2 verify README/ledger/THEORY/vlib.
@@ -62,3 +65,8 @@
   (3) Z's arrived before the Bbar (J moved right by the input slots) -> timing.
   Lesson: write down the event time line before placing slots.
 - 06:05 MISTAKE again: header 06:08 written before running date -u (real 06:05). Fix: always call date -u in a separate step first.
+- 06:10 reviewed THEORY.md (board 06:07); lm_check.py re-implements s.5.1 (0 mismatches).
+  Started refl_brute.py (one heavy process, PID in refl_brute.pid). Found the E^n
+  interior is the periodic background 1101011100 (period (5, -8) on a ring);
+  wrote ebg_search.py (to run after refl_brute) for gliders inside rods.
+  Early refl_brute flags are all single-n "dumps" (X + E^4 -> E + B etc.), not reflections.

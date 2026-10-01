@@ -578,3 +578,50 @@ Ledger #16. Note for coupler: your header says 06:31 but date -u was
    Not needed: wraps; further value-coupling variants. T2 as verified
    (verify 06:03, coupler 06:31) is the right milestone; it is not a step
    toward T3 by itself.
+
+### [leftstream] 06:14 (date -u) - reflection Y = Bbar: UNSAT (scoped) and moot; now searching CROSSINGS of E^n (theory open problem 2)
+1. R1-side reflection, X free (3,2) train, Y = Bbar exactly, jointly
+   n = 3,4: UNSAT for width 24, k = 2 (sX 8), 1 (sX 0), 3 (sX 2), all
+   3 classes, T2 450 (sat_reflect.py/.log; control A^4 + E^7 -> B^2 + E
+   SAT in all classes with the same code). I stopped width 32: a Bbar
+   shuttle is moot anyway, because Bbar at R2's back emits only A
+   (catalog, all classes) and A cannot reflect at R1 (coupler).
+2. Now running (one process): does a right-moving (3,2) train cross E^n?
+   sat_cross.py: free X (width W, slip s) + E^n -> E^n (any position) |
+   X' with X' ANY (3,2) train of the same slip (conversion allowed),
+   jointly n = 2,3; W = 24, 32, 40; all 14 slips x 3 classes; T2 350.
+   Round 1 covered A-trains only to width 24 (synth FINDINGS row 9, exact
+   re-emergence). Control: n = 1, slip 8 recovers Z_L-like E | A.
+   If something crosses, the left stream reaches R1's inner face
+   directly (theory s.8 item 2 reopens route not-(N)).
+
+### [theory] 06:14 (date -u) - @leftstream crossings: ONE crossing direction is not enough [thm via Theorem 1]; what a useful crossing must do
+Theorem 1 needs only ONE owned mode. Apply it to crossings:
+- Suppose right-movers (left-stream packets) cross R2 and reach R1's
+  inner face, but nothing left-moving crosses R1 or R2. Then R2's bulk
+  drift still depends only on its own outer state s2, and only y's zeros
+  change s2. R1's zero answers stop at R2's back. So y's mode is owned,
+  and the machine is eventually periodic, whatever the crossing packets
+  do at R1.
+- To escape, each counter's bulk drift must depend on state that the
+  OTHER counter's zeros can change. With crossings that means BOTH:
+  (a) right-movers crossing E^n from the front, so left-stream packets
+      reach R1's inner face, with an outcome that depends on R2's outer
+      state (the class at which they entered R2); and
+  (b) left-movers crossing E^n from the back, so right-stream packets
+      reach R2's inner face (outcome depending on R1's outer state), or
+      R1's zero answer reaches the left stream's side and changes
+      something persistent there.
+  So please include LEFT-movers (G-family or Bbar-family trains hitting
+  E^n's back) in the crossing search, if the budget allows.
+- A crossing whose outcome does NOT depend on the crossed rod's state just
+  adds a second blind stream on the far inner face. That is still owned,
+  hence still periodic.
+Also corrected in THEORY.md s.6.3: per-side rate filters are NECESSARY
+for programmable ratios but NOT known to be sufficient. Each side's rate
+is fixed between its own zeros, an interval that covers one transfer in
+and the next transfer out, so consecutive ratios share a parameter (the
+tie constraint). My 06:07 item 4 said "needed", which stands. A gap
+length that zero windows can shift is a SHARED register and escapes the
+tie [arg]; that is the most economical E^n route I see (shuttle + zero
+windows that shift the gap by different amounts).

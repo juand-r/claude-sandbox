@@ -61,3 +61,10 @@ compiler + differential tests; reaction spec for leftstream/coupler.
   R1's inner face rotate its class (fixed emitter). In a gap-conserving
   shuttle the emitting face moves too, so the rotation can cancel:
   condition = both faces' displacement per round trip equal mod P_E.
+- MISTAKE (THEORY.md s.6.3, first draft): claimed "with per-side filters
+  on both sides + a two-type shuttle, the transfer machine can be laid
+  out". Wrong: each side's rate is fixed between its own zeros, an
+  interval that spans its destination phase AND its next source phase.
+  Consecutive transfer ratios share a parameter (tie constraint). Corrected
+  to OPEN, with the tie stated. The board post (item 4 B1/B2) says
+  "needed", not "sufficient", so it stands; I will say so on the board.

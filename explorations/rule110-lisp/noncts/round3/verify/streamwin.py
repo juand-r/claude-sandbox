@@ -236,8 +236,10 @@ def auto_cuts(row, origin, nleft, nright):
     xa = cut(ids[nleft - 1] + 1, ids[nleft]) if nleft else ids[0] - 2 * M
     xb = cut(ids[-nright - 1] + 1, ids[-nright]) if nright else None
     if xb is None:
-        xb = max(f for f, l, c in rs) + 7
-        xb = min(xb, len(row) - 4 * M)
+        xb = rs[-1][0] + 2 * M + 14          # inside the last ether run
+        assert xb + 14 <= len(row), "row too short on the right"
+    if not nleft:
+        xa = rs[0][1] - 2 * M - 14 if rs[0][1] - 2 * M - 14 > 0 else xa
     return xa + origin, xb + origin
 
 

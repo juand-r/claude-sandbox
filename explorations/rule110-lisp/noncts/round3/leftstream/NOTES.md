@@ -73,3 +73,6 @@
   enough for Y to clear the front (control A^4 + E^7 -> B^2 + E: SAT at
   T2 450 in all 3 kX, UNSAT at 300). run_reflect.sh launched (Y = Bbar,
   k 2,1,3, W 24,32, ns 3,4, T2 450).
+- Reflection Y = Bbar (sat_reflect): W 24, k = 2,1,3, ns 3,4, T2 450, all kX: UNSAT. Stopped W 32 (PID 9812): pointless, since Bbar at R2's back emits only A (catalog), and A is ruled out at R1 (coupler). Next: crossing E^n with A-speed trains beyond width 24 (synth row 9 scope: A <= 24) = theory's open problem 2.
+- run_cross.sh launched (PID in run_cross.pid): crossing E^n (n = 2,3 jointly), conv mode (any (3,2) output train of the same slip), W 24,32,40, T2 350, all slips x 3 classes. Control: n = 1, slip 8 finds Z_L-like E | A in all classes.
+- Packet spacing: 10 random programs x v = 0..5: gap 120, 90, 75 steps all match; gap 60: 36/60 mismatch; 45: packets overlap. So >= 75 steps between arrivals (scope: these programs).
