@@ -185,20 +185,20 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] the-hidden-complexity-of-wishes
 - [x] anthropomorphic-optimism
 - [x] lost-purposes
-- [ ] the-parable-of-the-dagger
-- [ ] the-parable-of-hemlock
-- [ ] words-as-hidden-inferences
-- [ ] extensions-and-intensions
-- [ ] similarity-clusters
-- [ ] typicality-and-asymmetrical-similarity
-- [ ] the-cluster-structure-of-thingspace
-- [ ] disguised-queries
-- [ ] neural-categories
-- [ ] how-an-algorithm-feels-from-inside
-- [ ] disputing-definitions
-- [ ] feel-the-meaning
-- [ ] the-argument-from-common-usage
-- [ ] empty-labels
+- [x] the-parable-of-the-dagger
+- [x] the-parable-of-hemlock
+- [x] words-as-hidden-inferences
+- [x] extensions-and-intensions
+- [x] similarity-clusters
+- [x] typicality-and-asymmetrical-similarity
+- [x] the-cluster-structure-of-thingspace
+- [x] disguised-queries
+- [x] neural-categories
+- [x] how-an-algorithm-feels-from-inside
+- [x] disputing-definitions
+- [x] feel-the-meaning
+- [x] the-argument-from-common-usage
+- [x] empty-labels
 - [ ] taboo-your-words
 - [ ] replace-the-symbol-with-the-substance
 - [ ] fallacies-of-compression
