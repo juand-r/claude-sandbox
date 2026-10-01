@@ -5063,3 +5063,269 @@ Why: Fidelity/substance pass: made two quotations verbatim
 - Before: ``consciousness has no third-party-detectable effect on the world''?
 - After: ``Consciousness has no third-party-detectable causal impact on the world''?
 
+
+## honest/sections/zombie-responses.tex
+
+Why: Fidelity/substance pass: added what separates the two senses of conceivable (a model or proof), why the author refuses the type-A bundle and the three features of the consciousness problem, the seven steps in order, what saving the zombie world requires, the three postulates behind the 'miracle' and the cracker comparison, the Texas maps in detail and the idle Inner Chalmers, the full local-reliability fix with the 2 + 2 = 5 example and its general lesson, and the N'Shama joke
+
+- Before: I agree, and I want two different words, because the gap between ``I don't see a contradiction yet'' and ``this is logically possible'' is huge.
+- After: I agree, and I want two different words, because the gap between ``I don't see a contradiction yet'' and ``this is logically possible'' is huge, NP-complete even in simple-seeming cases. Maybe ``apparently conceivable'' for what you get by closing your eyes and imagining zombies, and ``logically possible'' for what is established by exhibiting a complete model or proof; the argument for epiphenomenalism needs the second.
+
+- Before: I decline the bundle: ``What is consciousness?'' is a legitimate question, though its answer may show that we asked it the wrong way.
+- After: I decline the bundle until I agree with each part. ``What is consciousness?'' is a legitimate demand for insight, though the answer may partly be insights that show we asked it the wrong way. That is not eliminativism. It is realism about a problem that seems to need some solution, seems unable to have any, and is discussed in a way that depends heavily on the ad hoc architecture of human cognition.
+
+- Before: I spell it out in seven steps. The word ``consciousness,'' ``if it has any meaning at all,'' refers to what makes me say I have inward awareness; it seems that my awareness causes that talk; the zombie world contains every cause of my talk; so it contains consciousness.
+- After: I spell it out in seven steps. The zombie world, by definition, contains every cause of anything observable, including the cause of my saying ``I think therefore I am.'' When I focus my awareness on my awareness, my inner narrative shortly says so, and I can say it aloud. It seems that my awareness causes the narrative and the narrative moves my lips. The word ``consciousness,'' ``if it has any meaning at all,'' refers to what makes me say I have inward awareness. So the zombie world contains consciousness. But by definition it does not. And the third step seems very likely to be empirically true.
+
+- Before: A world where the word refers to something else is like Twin Earth, where ``water'' means XYZ: it is not a world without water.
+- After: You can save the zombie world only by letting something other than consciousness cause my talk of it, and that, combined with saying consciousness exists, is what struck me as deranged. A world where the word refers to something else is like Twin Earth, where ``water'' means XYZ: it is a world without ``water,'' not a world without H2O. I hold it an empirical fact, given what ``consciousness'' refers to, that removing consciousness without moving atoms is logically impossible.
+
+- Before: But the law itself is the extra, improbable postulate, though ``miraculous'' was the wrong word.
+- After: But the law itself is the extra, improbable postulate: one posits a conscious inner world, an outer world that talks about consciousness for no reason, and that the two align perfectly, and the third does not follow from the first two. ``Miraculous'' was the wrong word in a philosophical context, where it means violating a law; I meant improbability from no source, as in belief in perpetual motion. Still, intuitively it is a miracle, on the order of a cracker taking on the substance of Christ's flesh while looking and behaving exactly like a cracker, guaranteed by a natural law.
+
+- Before: My answer: one AI can draw a map of Texas and another can check it, all in physics, and such AIs would chirp ``False'' at Chalmers's ``belief in an epiphenomenal inner core.''
+- After: My answer: you can build an AI that refines an inner part of itself to correlate with its environment, with numbers that obey Cox's theorems and so deserve to be called probabilities; ``The Simple Truth'' gives my view of whether such an AI has beliefs. One AI outputs a map of Texas, another flies to Texas and chirps ``True'' or ``False'' as the highways match or not, all in physics. You may refuse to call it a map, but the AIs still chirp, and they would chirp ``False'' at Chalmers's ``belief in an epiphenomenal inner core.'' Outer Chalmers does all the mapping of reality; Inner Chalmers can only bless it with epiphenomenal meaning, unrelated to map-territory correspondence. So accuracy should be judged by looking at Outer Chalmers.
+
+- Before: Then I fix yesterday's argument. A good AI checks each of its parts for local reliability. A mind that believes in an epiphenomenal self would believe it in a zombie world too, so some step must be unreliable.
+- After: Then I fix yesterday's argument, which left out an assumption: a good AI enforces global rationality by enforcing local rationality, treating as a bug any part that, in its context, systematically adds beliefs that are not true when its condition holds. A causally closed system that believes in an epiphenomenal self would believe it in a zombie world too, so it is globally unreliable; a mind whose parts are all locally reliable is globally reliable; so some step in forming that belief must be locally unreliable, and self-inspection must find it. Without the local requirement, reflective coherence is too cheap: an AI that finds a part computing 2 + 2 = 5 while counting sheep would reason that 2 + 2 does seem to equal 5, so it had better keep the part. The general lesson: show that an argument is globally reliable because each step is locally reliable, not by comparing its conclusions with your intuitions. (In 2013 I added that this has since been formalized in ``Tiling Agents for Self-Modifying AI.'')
+
+- Before: not ``hear.'' ``Oops.''
+- After: not ``hear.'' Now that is a miraculously misleading coincidence: the word arose for different reasons but sounds exactly right to make me think of an inner listener. ``Oops.''
+
+
+## honest/sections/zombie-responses.tex
+
+Why: Fidelity/substance pass: corrected my own reversal of the water analogy
+
+- Before: A world where the word refers to something else is like Twin Earth, where ``water'' means XYZ: it is a world without ``water,'' not a world without H2O.
+- After: Imagining that the word ``consciousness'' could have referred to some epiphenomenon, as ``water'' on Twin Earth refers to XYZ, does not make the zombie world possible. The zombie world must lack consciousness itself, not merely ``consciousness'': it must be a world without H2O, not a world without ``water.''
+
+
+## honest/sections/the-generalized-anti-zombie-principle.tex
+
+Why: Fidelity/substance pass: added the reason to move on, why a definition is a treasure map and why discourse would be futile otherwise, the two candidate wordings in terms of in-principle detectability and why both fail, the light-years variant, the 'large step', what a flipped switch changes (neutron diameters, many states to one description), the calcium-ion chain, both camps' fuller statements, the Abracadabra case, the robots' method and the full exchange among Albert, Bernice and Charles; removed a reporting tag
+
+- Before: So I ask you to accept it and move on.
+- After: Some conclusions can be reached only after accepting that you cannot subtract consciousness and leave the universe the same. So I ask you to accept it and move on.
+
+- Before: You would go on talking about consciousness ``for exactly the same reasons,'' so you would still be conscious.
+- After: You would go on talking about consciousness ``for exactly the same reasons,'' so if you are conscious now you would still be conscious.
+
+- Before: I could define the word as
+- After: A definition need not give necessary and sufficient conditions; sometimes it is a treasure map to the referent. If what in fact makes me talk about an unspeakable awareness is not consciousness, discourse becomes futile; that is no knockdown argument, since difficulties of discourse settle no empirical question, but whoever defies the principle has trouble with the meaning of their words, not only their plausibility. I could define the word as
+
+- Before: and that would guarantee the word names something real. But a definition settles no empirical question.
+- After: and that would guarantee the word names something real; even if consciousness is a confusion, the word would name the cognitive architecture that produces the confusion. But a definition is only a promise to use a word consistently, and settles no empirical question.
+
+- Before: In fact the switch does affect you. Its gravity pulls on your atoms,
+- After: So the principle cannot say only that no change undetectable in principle can remove consciousness: the switch's flip is detectable, and still highly unlikely to remove it. Nor can it say that no change that leaves you undetectably affected can, because the switch does affect you. Its gravity pulls on your atoms,
+
+- Before: Tiny effects can add up, and chaos could in principle amplify one into a seizure.
+- After: Flipping it light-years away would avoid that, but we should not have to change the thought experiment: whatever you are, you do not expect a disconnected switch across the room to touch it. That is a large step, though if you deny it you had better never go near a switch again. Physics is single-level, and the flip moves your particles by whole neutron diameters. What stays the same is only the higher-level description, of cells, proteins and spikes, since the map assigns many states one description; by the molecular level that force is no longer tracked. But a small effect is not no effect. Enough tiny pulls would tear you apart, and by an amazing coincidence the pull could move one calcium ion slightly closer to a channel, making a neuron fire a bit sooner, a difference that amplifies chaotically into a different train of thought, an epileptic fit, and death.
+
+- Before: My argument is now about expectations, not certainty. It is weaker, I admit, but more general,
+- After: If you do not expect consciousness to flicker with thermal jiggling, you should not expect it to go out when someone sneezes a kilometre away. My argument is now about expectations, not certainty, though the laws of probability are theorems, not suggestions. It lacks the clean form of ``You can't possibly eliminate consciousness while leaving all the atoms in exactly the same place.'' But it still carries: I don't know what consciousness is, but whatever causes my talk about it happens in my skull, in neurons or perhaps microtubules or neurotransmitters, and the switch affects those much less than thermal noise at 310 Kelvin, so I expect to talk about consciousness in almost exactly the same way afterward. It is weaker, I admit, but more general,
+
+- Before: The reductionist thinks consciousness lives at a level far above atomic nuclei. The substance dualist thinks that if the stuff of awareness flickered with every sneeze, we would notice.
+- After: The reductionist thinks the important parts happen at a functional level far above atomic nuclei, so that someone who understood consciousness could describe it in terms of cognitive architecture. The substance dualist thinks it may involve quantum effects, but that if it flickered with every sneeze we would notice, like skipping a few seconds or waking from anaesthesia, and sometimes say ``I don't think therefore I'm not''; thermal noise does not disturb it, so the switch will not.
+
+- Before: Even a word you hear, which does change your brain noticeably, leaves you talking about consciousness for almost the same reasons.
+- After: Hearing someone say ``Abracadabra'' does change your brain noticeably, and you may wonder why they said it, but you still go on talking about consciousness for almost the same reasons. Consciousness is not equated with that talk, but it is among the causes of it, so anything that turned consciousness off should stop the talk.
+
+- Before: Albert proposes replacing your neurons, one at a time, with robots that do exactly what neurons do.
+- After: Albert proposes replacing your neurons with tiny robots with the same connections, input-output behaviour, internal state and learning rules.
+
+- Before: and wanders away.
+- After: and wanders away. Albert adds that the swap happens one neuron at a time: a robot surrounds a neuron, scans it, learns to copy it and takes over between one spike and the next, so that your behaviour changes by much less than thermal noise. Your inner narrative is unchanged, so does the principle not apply?
+
+- Before: Albert argues that you would not notice the replacement, and that the principle says a change in your consciousness is something you ought to notice.
+- After: Albert also argues that he need not even tell you: if your introspective evidence that you are the person of five minutes ago is unchanged, your conclusion is equally justified, and the principle says a change in your consciousness, let alone your identity, is something you ought to notice.
+
+- Before: Bernice answers that the robots are a detectable Zombie Master. Charles answers that the robots replaced the true cause of Charles's talk with a different cause, and that introspection is imperfect.
+- After: Bernice answers that the robots are a detectable Zombie Master, and that once she is replaced there is no one to notice. Charles says the robots are not faking anything, only doing what neurons do in silicon instead of carbon, so the new person is conscious; but the operation replaced the true cause of Charles's talk with a different cause, which happens to be conscious too, and introspection is imperfect anyway. When Albert accuses them of positing epiphenomenal facts, both say they can detect the difference experimentally; Albert answers that he can detect the switch flipping too, and that what they detect makes no noticeable difference to the true cause of their talk. Charles replies that two people who talk about personal identity for similar reasons are not thereby the same person.
+
+- Before: The makeup of future galactic civilizations, I end, may depend on the answer.
+- After: How far the argument generalizes matters: the makeup of future galactic civilizations may depend on the answer.
+
+
+## honest/sections/gazp-vs-glut.tex
+
+Why: Fidelity/substance pass: added what a lookup table is (multiplication example, size of a conversation table), why it is not a classic zombie, the PETZ/functionalist exchange, the Feynman Follow-The-Energy game and its grown-up versions, the chocolate-cake example and air time for hypotheses, the googols of minds in the precomputation, the second-remove argument, where the consciousness is (whatever pointed), the chatbot and the program written to sound human, 'more to it than inputs and outputs', and a plain statement of the AI coda
+
+- Before: A giant lookup table stores an answer for every possible input. One for a human brain would not fit in our universe, but philosophers may suppose it anyway.
+- After: A giant lookup table stores an answer for every possible input: instead of multiplying two numbers from 1 to 100 each time, you precompute a table of 10,000 entries. Such tables grow fast; one for all twenty-remark conversations of ten words each in 850-word Basic English would need $7.6 \times 10^{585}$ entries. One for a human brain would not fit in our universe, but philosophers may suppose it anyway. It is not a classic zombie, since it is physically unlike a brain, but its body talks about consciousness and writes philosophy papers.
+
+- Before: it is the reductio ad absurdum for anyone who says consciousness is simply an input-output pattern.
+- After: it is the reductio ad absurdum for anyone who says consciousness is simply an input-output pattern. Even functionalists do not claim it.
+
+- Before: So where do its papers about consciousness come from?
+- After: It looks like the archetypal Zombie Master: a separate, detectable, unconscious system that makes a body talk about consciousness for different reasons. Inside it there is barely a program, more like ROM than a CPU, balls rolling from a stored stack into a trough. A spokesperson for People for the Ethical Treatment of Zombies objects that anti-mechanists say the same about ion channels. A functionalist replies that the trouble is the wrong pattern of levers: consciousness needs things like beliefs about beliefs and self-modelling, and at least memory, so that time can pass for the computation. The spokesperson asks where the papers come from, if not from consciousness.
+
+Good question. Feynman's father played Follow-The-Energy with him: the toy goes because the spring is wound, the spring because Richard wound it, Richard because he ate, and food grows because the sun shines. Physicists grow up to play Follow-The-Negentropy, and rationalists play
+
+- Before: I answer with a game I call ``Follow-The-Improbability'': an improbable belief, or an improbable table, needs a source.
+- After: ``Follow-The-Improbability'': every improbable belief needs an equal amount of evidence, and where an argument breaks the rule, improbability appears from nowhere, as suspicious as a perpetual motion machine. Someone who believes in a foot-wide chocolate cake in the asteroid belt cannot have formed a correct belief spontaneously, any more than an egg unscrambles; without evidence, why give that hypothesis more air time than a wooden dresser in the asteroid belt, or a trillion others? So when a philosopher puts a human brain's lookup table in a zombie's skull, ask where it came from. Thought experiments usually need not be likely, but here the origin matters.
+
+- Before: If the table was computed from a specification of a human brain, it writes ``because of a conscious algorithm,'' and it is no more a zombie than a cellphone.
+- After: If the table was computed from a specification of a human brain (creating googols of people along the way, many in pain and most of them mad, ``But damn the ethics, this is for philosophy''), it writes ``because of a conscious algorithm,'' and it is no more a zombie than a cellphone, which only transmits the speech of whoever is at the other end.
+
+- Before: Someone must still have picked the right table out of the bin, and that someone is ``probably conscious.''
+- After: That is like writing every possible table into a huge bin and somehow pulling out the human one. If the picking was by design, the picker is ``probably conscious,'' and the table is a cellphone at two removes. The consciousness is not in the table, nor in the factory of tables, but in whatever pointed at one and said, use that one. The real source of a conversation is whatever is responsible for its improbability, however far away, as the Sun moves a wind-up toy.
+
+- Before: If the philosopher stipulates pure chance, the improbability lies in the philosopher's specification, and in the readers who imagine what the table would say.
+- After: If the philosopher stipulates pure chance, the improbability lies in the philosopher's specification: following it takes us outside the thought experiment to the philosopher, and to our own brains, which fill in what the table would say.
+
+- Before: My moral: trace talk about consciousness back and you ``generally'' find consciousness.
+- After: My moral: trace talk about consciousness back and you ``generally'' find consciousness, sometimes cleverly hidden; hence the Generalized Anti-Zombie Principle. Behind a chatbot remixing human talk are the conscious humans who wrote it. If you one day write a program that talks like confused human philosophers without being conscious, it sounds human because you wrote it to sound like conscious humans; the program need not be conscious, but tracing the causes finds consciousness somewhere, so we are not wholly in the zombie world.
+
+- Before: ``Well, then it wouldn't be conscious. IMHO.''
+- After: ``Well, then it wouldn't be conscious. IMHO.'' There has to be more to it than inputs and outputs, or even a lookup table would be conscious.
+
+- Before: In a coda I apply the same reasoning to people who think an arbitrary AI would be moral, and, as a joke about coincidence, call this the reason the method matters to my work.
+- After: In a coda I apply the same reasoning to my work. Many people think an arbitrarily built powerful AI would be moral, without agreeing on why, and offer arguments that would persuade an AI of what they consider moral. But would the AI follow the line of thought they invented, without knowing in advance what it was meant to conclude? Call the principle Follow-The-Decision-Information: an AI that does improbably nice things needs an account of how its design was chosen from a huge space; otherwise the improbability comes from nowhere. It is amazing how many of my posts turn out relevant to Friendly AI, ``if you believe in coincidence.''
+
+
+## honest/sections/belief-in-the-implied-invisible.tex
+
+Why: Fidelity/substance pass: added why aliens could not return the photon and why vanishing would be silly, the Milky Way alternative, why the razor must not penalize size (history of a growing universe), the MML bit-counting with its exception for initial conditions, the Flying Spaghetti Monster and dust-speck examples, the 'unaltered prior' wording, the exotic counterexample, and what the colony question asks
+
+- Before: a time will come after which nothing from it can ever reach me.
+- After: a time will come after which nothing from it can ever reach me; even aliens who caught it could not come back fast enough.
+
+- Before: No; that would break the conservation laws, and it is ``a silly idea.''
+- After: No; that would break conservation of energy, the second law and just about every other law, and would imply the photon knows exactly when I stop being able to see it. It is ``a silly idea.''
+
+- Before: that Occam's razor was once invoked against the idea that the nebulae are galaxies full of stars.
+- After: that Occam's razor was once invoked against the idea that the Milky Way is made of millions of stars, or perhaps that the nebulae are galaxies full of stars, because it multiplied entities.
+
+- Before: Extra stars do not count against a theory.
+- After: Extra stars do not count against a theory. Neither Bayesian formalization of the razor, Solomonoff induction or Minimum Message Length, penalizes galaxies for being big, and they had better not: reality keeps turning out bigger, from the Earth at the centre to Avogadro's number, and a razor that always counted against size would have been consistently wrong.
+
+- Before: In Minimum Message Length, the message states the equations, not the position of every quark.
+- After: In Minimum Message Length, the message states the equations, not the position of every quark. If the equations take 100 bits, there are about $2^{100}$ models of that size, so you take a $2^{-100}$ prior penalty and need about 100 bits of evidence, and more galaxies add nothing, unless your predictions depend on exact initial conditions, in which case the extra quarks do count.
+
+- Before: A specific unseen event or law with no evidence of its own is belief in the ``additional invisible,'' and gets no more than its prior.
+- After: Believing that the Flying Spaghetti Monster ate the photon, even just this once, or without reason that it hit a dust speck, is belief in a specific extra event; believing such things happen in general is belief in an extra law. That is belief in the ``additional invisible,'' and gets no more than its unaltered prior; if a belief is something you track and count evidence for, perhaps you should hold no such beliefs at all. Ruling out everything we cannot interact with would be simpler, but very silly.
+
+- Before: I cannot think of a case where it fails ``in human practice.''
+- After: there are exotic cases that break it in theory, such as epiphenomenal demons who will torture $3\uparrow\uparrow\uparrow 3$ victims somewhere you can never verify if you say ``Niblick,'' but I cannot think of a case where it fails ``in human practice.''
+
+- Before: from which, by the time they arrive, no message could come back.
+- After: from which, by the time they arrive, no message could come back. Is the purely altruistic effort worth it, for the people who will live there happily, or does the ship blip out of existence on the way? This could become a very real question.
+
+
+## honest/sections/zombies-the-movie.tex
+
+Why: Fidelity/substance pass: added the 'brutally ordinary' punchline, the general's list of non-events, the doctor's reaction, the guards' dilemma and Dennett's lines, the later losses (Detroit, Australia reduced to atoms, total normality), and the actual knife joke
+
+- Before: ``It's worse than I imagined,'' says a colonel.
+- After: ``It's worse than I imagined,'' says a colonel; asked how he can tell, he says he has never seen anything ``so brutally ordinary.''
+
+- Before: A scientist explains that the disease is an ``epiphenomenal virus.''
+- After: A scientist explains that the disease removes consciousness without changing the brain, so it must act outside our universe: an ``epiphenomenal virus.'' The general orders a report on every epiphenomenon ever observed, ``a list of everything that hasn't happened in the last fifty years.''
+
+- Before: He protests: ``This sort of thing can't actually happen!''
+- After: The doctor turns away in horror: ``His words, they... they don't mean anything.'' Chalmers protests: ``This sort of thing can't actually happen!''
+
+- Before: Daniel Dennett rides up to the prison on a motorcycle. Asked to show his qualia,
+- After: Guards from the ``Bridging Law Enforcement Agency'' warn that zombies are identical to humans down to the atom. A bearded man in black leather rides up on a white motorcycle, says that ``even zombies have rights,'' and, asked to show his qualia,
+
+- Before: He disarms the guards, remarks ``I am one with my body,'' and says, ``There is a spoon.''
+- After: ``I'm Daniel Dennett, bitches.'' He cuts a gun in half with a sword, fells the guards, explains ``I am one with my body,'' and says quietly, ``There is a spoon.''
+
+Meanwhile Detroit is lost, Australia has been ``reduced to atoms,'' and civilization threatens to dissolve into total normality.
+
+- Before: and tell a story about a knife and a question about the prior.
+- After: and recall a knife-throwing session where I cried ``In the name of Bayes, die!'' and a man with a wooden shield asked how I determined the prior for where the knife hits.
+
+
+## honest/sections/excluding-the-supernatural.tex
+
+Why: Fidelity/substance pass: added the Cohen joke, Carrier's examples and the dryad under the microscope, the reductionist thesis (Newton, Einstein, no bridging law), why a non-reductionist universe cannot be envisioned (flattening models), supernaturalism as a special case, the naturalistic Matrix and the glowing figure, natural selection's description, anthropomorphism as using your brain as a black box (wanting water, beauty-loving God), the Turing analogy, the 'to the extent' point, the Red Sea and biology evidence in detail, and converting supernatural to natural hypotheses
+
+- Before: What exactly do they mean by ``supernatural''? I do not report their answer.
+- After: What exactly do they mean by ``supernatural''? Is any explanation invented by someone named Cohen supernatural? I do not report their answer.
+
+- Before: a supernatural explanation appeals to ``ontologically basic mental things.''
+- After: a supernatural explanation appeals to ``ontologically basic mental things,'' mental entities that cannot be reduced to nonmental ones: water flowing downhill because it wants to be lower, rather than differential equations about motion; a tree spirit, rather than plant biochemistry. If a dryad who talks about protecting her tree turned out under the microscope to be made of quarks and electrons, she would at once be demoted to the dull catalogue of common things.
+
+- Before: But then, it seems, we have ``very good'' grounds for excluding the supernatural a priori. ``My thesis is that non-reductionism is a confusion.'' If a 747 existed apart from its quarks, what would you observe?
+- After: But then, it seems, we have ``very good'' grounds for excluding the supernatural a priori. What would the universe look like if reductionism were false? On the reductionist thesis, a physicist holds Newton's equation, Einstein's and the derivation of one from the other as separate representations, but reality has only Einsteinian gravity, not two laws and a bridging law. Suppose the Mind Projection Fallacy were true, and a 747 existed apart from its quarks: what would you observe? If you cannot say, it is not observation but incoherence that rules non-reductionism out. ``My thesis is that non-reductionism is a confusion.'' If I imagine a many-level model whose levels each correspond to real causes, once all its rules are given, why would it not flatten into another list of fundamental things? Supernaturalism is the special case where some mental things are irreducible, and religion the case where they are gods and souls. A powerful being that surveys and alters our universe but is made of lawful nonmental parts would be a naturalistic Matrix, not a religion; if a glowing figure thundered that description from the clouds, I would show the film in science class and look for testable predictions. Conversely, religions ignored the discovery of a bodiless, billions-of-years-old designer of all life, unmade and arising from physics: natural selection.
+
+- Before: A brain made of quarks can only predict what quarks can, so
+- After: Anthropomorphism makes supernatural explanations sound simple because your brain uses itself as a black box: the word ``want'' sets your own wanting machinery going, so water that wants to flow downhill seems easy to describe, and a God who likes beauty uses your own beauty circuits, which you cannot write down. That is your ignorance, not proof the brain has no explanation. A brain made of quarks can only predict what quarks can, so
+
+- Before: \nb{The same day, in ``Psychic Powers,''
+- After: Just so, if our universe is Turing computable, we can talk about halting oracles but never predict what one would say in a way that tells it apart experimentally. All this assumes the boring view: to the extent you believe reductionism, you should expect non-reductionist hypotheses to be incoherent as well as wrong, and if a supernatural hypothesis turned out true you would presumably find it conceivable after all. \nb{The same day, in ``Psychic Powers,''
+
+- Before: For every irreducible God there is a reducible alien with the same predictions, and the predictions can be tested, at the Red Sea and in biology.
+- After: The designer's irreducibility is not essential to the hypothesis: for every irreducible God there is a reducible alien with the same predictions. Whether Jehovah parted the Red Sea as an ontologically basic being, an alien with nanotech or a Dark Lord of the Matrix, you dig at the site, find no skeletons or armour, find that Egypt ruled much of Canaan at the time, and stamp the story disproven. Likewise foxes are designed to chase rabbits and rabbits to evade foxes, not to preserve the harmony of Nature, and the retina is built backwards, with a thousand other signs of splintered, immoral, incompetent design. Convert the supernatural hypothesis into a natural one, consulting your own brain's black box for predictions if you must (about an angry god, say), or use the predictions ancient theologians made in advance.
+
+- Before: Still, ``the ultimate rule of science is to look and see.''
+- After: Still, ``the ultimate rule of science is to look and see''; if a God thundered upon the mountains, people would look and see it.
+
+
+## honest/sections/excluding-the-supernatural.tex
+
+Why: Fidelity/substance pass: moved the emergence note back next to the 747 question it answers
+
+- Before: natural selection. \nb{Philosophers of emergence give an answer: new forces acting only in certain configurations. Brian McLaughlin judged in 1992 that there is ``not a scintilla of evidence'' for them, a verdict from observation.}
+- After: natural selection.
+
+- Before: what would you observe?
+- After: what would you observe? \nb{Philosophers of emergence give an answer: new forces acting only in certain configurations. Brian McLaughlin judged in 1992 that there is ``not a scintilla of evidence'' for them, a verdict from observation.}
+
+
+## honest/sections/psychic-powers.tex
+
+Why: Fidelity/substance pass: added Fallenstein's hypercomputer scenario, why naturalism makes beliefs only seem fundamental, why reductionists expect no psychic powers (inputs and outputs through known organs), what a discovery would imply about the naive Occam rule and the dualists, and the science-fiction-author point
+
+- Before: as a working hypercomputer might.
+- After: Suppose, for example, that the universe allowed hypercomputers working on arbitrary real numbers, though our brains, simulable by an ordinary Turing machine, do not use them.
+
+- Before: After publishing ``yesterday's post'' I found a similar flaw myself.
+- After: I get no modesty credit, since after publishing ``yesterday's post'' I found a similar flaw myself, concerning Occam's razor and psychic powers.
+
+- Before: A reductionist model can match any concrete prediction a parapsychologist makes, but less simply. A naive Occam rule that counts ``belief'' as one basic entity favours psychic powers; the naturalistic rule does not.
+- After: If naturalism is right, a reductionist model can match any concrete prediction a parapsychologist makes, and we can conceive of beliefs as fundamental only because our minds' reflective architecture shows us the ``belief'' class and hides the neurons behind it. The hope of psychic powers comes from treating beliefs and desires as fundamental enough to connect directly to reality. If beliefs are patterns of neurons, with inputs through eyes and outputs through muscles, and that accounts for all known mental powers, there is no reason to expect more; that is why reductionists expect no psychic powers. A naive Occam rule that counts ``belief'' as one basic entity favours psychic powers, since they then need only simple laws; the naturalistic rule does not. Discovering them would show that the naive rule was better calibrated, that what our minds show as a simple lever really is one, and that the naive dualists were right all along.
+
+- Before: Non-reductionists ``own'' this prediction, since they put it forward.
+- After: A science-fiction story with psychic powers can be written by a reducible author's brain, but finding the powers in fact would make it much more probable that something irreducible was happening. Non-reductionists ``own'' this prediction, since they put it forward against reductionist expectations, so if psychic powers are discovered, non-reductionism wins.
+
+
+## honest/sections/quantum-explanations.tex
+
+Why: Fidelity/substance pass: added why the Bayes essay was written and its intended audience, why one should not be content to leave students confused, the points that quantum mechanics predates us and that models, not facts, are surprised, 'not one unusual thing', the Four Elements comparison and the wobbling intuitions, the animals-to-atoms and multithreading analogies, why everyday-level description is bigger, the quantum-server image, and why non-realism confuses students
+
+- Before: I am not a physicist, but my essay on Bayes's theorem brings me ``frequent grateful emails.''
+- After: Legendarily confusing subjects are often not that complicated as mathematics, at least for a basic grasp. I am not a physicist, and physicists hate it when non-physicists talk about quantum mechanics, but I have explained mathy things before. I wrote my essay on Bayes's theorem because it was famously counterintuitive and did not seem complicated enough to deserve that; it did not reach my target of elementary school students, but brings me ``frequent grateful emails'' from reporters to professors.
+
+- Before: Confusion is in our models, not in the world.
+- After: Confusion is in our models, not in the world. If a subject is known as confusing, not just difficult, you should not be happy to leave students that way.
+
+- Before: Quantum mechanics is counterintuitive, and the fault is in your intuitions. I will speak of it as perfectly normal and make fun of the intuitions instead.
+- After: Explanations should make you less confused, and feeling that you do not understand indicates a problem to fix. Quantum mechanics is counterintuitive, and the fault is in your intuitions: it was here billions of years before the Sun, and if you have a problem with it, you are the one who must change. There are no surprising facts, only models surprised by facts. ``Since the beginning, not one unusual thing has ever happened.'' I will speak of quantum mechanics as perfectly normal and make fun of the intuitions instead, to make you a native.
+
+- Before: An electron is neither a billiard ball nor a wave; it has to be accepted on its own terms.
+- After: Dragging a student through that history ensures the historical outcome, total bewilderment; teaching ``wave/particle duality'' is like starting chemistry with the Four Elements. An electron is neither a billiard ball nor a wave, at any time; it has to be accepted on its own terms. The universe is not wavering between particles and waves; our intuitions are, and neither applies. ``Yet it's your eyes that are wobbling and unstable, not the world.''
+
+- Before: The order of discovery is not the order of teaching. Physics does not start with biology, so why start with the results of experiments?
+- After: The order of discovery is not the order of teaching. We found animals, then organs, tissues, cells, molecules, atoms, and finally particles far simpler than animals but discovered tens of thousands of years later. Physics does not start with biology, so why start with the results of experiments, which are high-level and complicated?
+
+- Before: But ``The result of the standard approach is standard confusion.''
+- After: But it drags in big mathematical tools for real-world cases before the student understands the simplest ones, like teaching multithreaded programming before adding two variables because it is closer to everyday life. The focus on experiment may have made sense in the dark decades when no one understood what was going on. ``The result of the standard approach is standard confusion.''
+
+- Before: ``The classical world is strictly implicit in the quantum world.''
+- After: ``The classical world is strictly implicit in the quantum world,'' and seen classically everything looks bigger and more complicated, as a huge catalogue of molecules comes from six quarks. So I will teach the quantum world first. It is the scene, and defines normality; I will not talk as if the classical world were real life that sometimes sends a request to a quantum-physics server.
+
+- Before: I ask non-realists to wait for a later essay.
+- After: I ask non-realists to wait for a later essay. I think non-realism is one of the main things that confuse students and keep them from visualizing quantum phenomena.
+
+
+## honest/sections/psychic-powers.tex
+
+Why: Fidelity/substance pass: repaired a sentence join
+
+- Before: ``subjectively much more probable,'' Suppose, for example,
+- After: ``subjectively much more probable.'' Suppose, for example,
+

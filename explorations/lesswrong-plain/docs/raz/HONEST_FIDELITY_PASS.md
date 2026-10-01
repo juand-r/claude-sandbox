@@ -255,14 +255,14 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] a-priori
 - [x] reductive-reference
 - [x] zombies-zombies
-- [ ] zombie-responses
-- [ ] the-generalized-anti-zombie-principle
-- [ ] gazp-vs-glut
-- [ ] belief-in-the-implied-invisible
-- [ ] zombies-the-movie
-- [ ] excluding-the-supernatural
-- [ ] psychic-powers
-- [ ] quantum-explanations
+- [x] zombie-responses
+- [x] the-generalized-anti-zombie-principle
+- [x] gazp-vs-glut
+- [x] belief-in-the-implied-invisible
+- [x] zombies-the-movie
+- [x] excluding-the-supernatural
+- [x] psychic-powers
+- [x] quantum-explanations
 - [ ] configurations-and-amplitude
 - [ ] joint-configurations
 - [ ] distinct-configurations
