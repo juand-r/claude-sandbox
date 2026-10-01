@@ -242,13 +242,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] if-you-demand-magic-magic-won-t-help
 - [x] mundane-magic
 - [x] the-beauty-of-settled-science
-- [ ] amazing-breakthrough-day-april-1st
-- [ ] is-humanism-a-religion-substitute
-- [ ] scarcity
-- [ ] the-sacred-mundane
-- [ ] to-spread-science-keep-it-secret
-- [ ] initiation-ceremony
-- [ ] hand-vs-fingers
+- [x] amazing-breakthrough-day-april-1st
+- [x] is-humanism-a-religion-substitute
+- [x] scarcity
+- [x] the-sacred-mundane
+- [x] to-spread-science-keep-it-secret
+- [x] initiation-ceremony
+- [x] hand-vs-fingers
 - [ ] angry-atoms
 - [ ] heat-vs-motion
 - [ ] brain-breakthrough-it-s-made-of-neurons
