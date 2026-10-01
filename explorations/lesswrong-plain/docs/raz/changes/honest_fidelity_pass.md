@@ -8822,3 +8822,78 @@ Why: Fidelity/substance pass: incremental-progress: made the reader's objections
 - Before: Again, that is just me.
 - After: Again you may object that not everyone is pushing the art into new territory.
 
+
+## honest/sections/bayesians-vs-barbarians.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the Barbarians' advantages in full, the deterrence maxim, the remarks on modern war and its abuse as an excuse, the second election case, the reflectively consistent version, the beliefs a rationalist society should hold, the draft dodgers, marching and the search for something better than a captain, why 'clever' is the word, the self-image list, and the army of beisutsukai.
+
+- Before: the Barbarians expect a reward for dying bravely, while each rationalist
+- After: the Barbarians expect a reward in the afterlife for courage, obey orders through affective death spirals around their Cause and Great Leader Bob, burn anyone caught holding back, and hate the enemy more than any sane person would, while each rationalist
+
+- Before: War is not fun, and losing is worse.
+- After: War is not fun, and losing is worse. ``If thou would have peace, prepare for war'': enemies must believe you will fight hard enough to make it not worth their while.
+
+- Before: Wars have been won without torture, but real wars ``cannot be won by refined politeness.''
+- After: This is the dirtiest topic I plan to discuss. Today's US military can bring such overwhelming force that it can show unusual concern for enemy and civilian casualties. Wars have been won without torture, and war does not make questioning the President unpatriotic; recent US history has used war mostly as an excuse for bad behavior. But reversed evil is not intelligence either, and real wars ``cannot be won by refined politeness.'' Rationalists who cannot face that will have failed a test of their society's existence.
+
+- Before: were all irrational to vote.
+- After: were all irrational to vote, nor, if it came out 100,000 to 99,999, that each winner was solely responsible.
+
+- Before: having changed their code beforehand so that the chosen will fight.
+- After: having changed their code beforehand so that the chosen will fight in the most efficient way, even marching calmly to their deaths; a reflectively consistent decision theory does the same without changing code.
+
+- Before: If children are not taught that rationalists defect, I think people would volunteer.
+- After: If children are not taught that rationalists defect, and it is widely believed, as I believe for the same reason I one-box, that deciding not to fight is deciding for the Barbarians to win, that utility functions need not be solipsistic, and that rationalists need not expect to lose reasonably, I think ordinary people would volunteer; that is built into humans, and culture need only not get in the way.
+
+- Before: ``Drafts are a tool of kings playing games in need of toy soldiers.''
+- After: ``Drafts are a tool of kings playing games in need of toy soldiers,'' and the Vietnam draftees who fled to Canada were, I hold, in the right. But a society too smart for kings need not be too smart to survive.
+
+- Before: Soldiers must also obey orders, and if they will not, we may agree in advance to shoot those who disobey.
+- After: Soldiers must also obey orders. Marching makes people into lasers. If some method of group decision beats a captain's orders, rational soldiers might use it; if none is proven, they commit to obey the captain against their own inclinations, and if humans are not that rational, we may agree in advance to shoot those who disobey. Whether a small group can find a method that works better than a leader is an important question; the more people trust it, the more coherently they act without penalties.
+
+- Before: I write all this for the sake of self-image: a society of people like you should be able to fight the Barbarians and win.
+- After: Unified orders must come from somewhere. A society whose soldiers are too clever to obey, or whose people are too clever to be soldiers, is too clever to survive, which is why I say ``clever'' and not ``rational.'' I write all this, though I do not expect rationalists to run a country soon, for the sake of self-image. If a society of people like you would be too reasonable to survive, that is one self-image. Another is that it could fight the Barbarians and win: because its people care about each other, face war without losing themselves, calculate what the group should do and see it done, know that nothing in probability or decision theory forbids sacrifice, exploit the enemy's blind spots, and, undivided, perhaps fight as hard as someone expecting seventy-two virgins. Then you can see yourself as more than a cultural dead end. Jeffreyssai alone would probably not give up against the Barbarians, and an army of beisutsukai masters ought to be a force no one would mess with.
+
+
+## honest/sections/beware-of-other-optimizing.tex
+
+Why: Fidelity/substance pass: Added the post's substance: why people pick the author to advise, the delayed realization about personal advice, the comparison with 'different things are true for different people', the need to act to prevent abuse of power, the rationalist who did not know he was feared, the rare boss, the three false reassurances, leverage, the full list of distances, and the willingness to be surprised.
+
+- Before: Then the twentieth works, and now you know ``the real way.''
+- After: Then the twentieth works, ``STARS ABOVE,'' and now you know ``the real way.'' You know most people do not listen, but this one is a friend you trust to listen.
+
+- Before: People do this to me a lot.
+- After: People do this to me a lot; they know not to tell their families, but Eliezer Yudkowsky needs it and might understand.
+
+- Before: Had I read the same tip on a blog, I would have moved on.
+- After: Had I read the same tip on a blog, even one by Scott Aaronson, I would have moved on; delivered in person, it felt like being told the secret. It took me a while to see that.
+
+- Before: since the phrase is used to shield claims from criticism.
+- After: since Dark Side Epistemology uses the phrase to shield claims from criticism, much like ``Different things are true for different people,'' which is simply false.
+
+- Before: the best we can do is accept ``No'' for an answer.
+- After: we mess with surface tricks that work for one person and not another, and the best we can do is accept ``No'' for an answer.
+
+- Before: Power is easy to abuse without noticing.
+- After: Power is easy to abuse without noticing, and the safeguards work only if you actually use them.
+
+- Before: But the ability to tell is ``extremely rare,'' and I do not have it.
+- After: But the ability to tell when more is within someone's capacity, without burning them out, is ``extremely rare''; bosses who have it are worth their weight in silver, and I do not have it. Do not assume you have it because your intentions are good, because you would not do to others what you would not want done to you, or because no one has complained; maybe they are scared. I have seen a rationalist, obviously powerful to me, amazed to learn he might be feared. Be careful whenever you hold leverage, such as a decision or something the other person needs.
+
+- Before: in temperament, ability, situation and luck.
+- After: not only in inferential distance but in temperament, ability, situation and resources, unspoken knowledge, unnoticed skills, luck and interior landscape. Even I am surprised when what worked for me fails for someone else, but having been optimized so often, I recognize the distance when it hits me.
+
+- Before: I do not know what makes you tick.
+- After: Maybe being pushed works for you, and you do not feel sick when someone with power over you reorganizes your life. I do not know what makes you tick.
+
+
+## honest/sections/bayesians-vs-barbarians.tex
+
+Why: Fidelity/substance pass: bayesians-vs-barbarians: moved a sentence so the fragging quote follows the shooting rule it qualifies.
+
+- Before:  Whether a small group can find a method that works better than a leader is an important question; the more people trust it, the more coherently they act without penalties.
+- After: 
+
+- Before: preferred no one to participate in the draft lottery.''
+- After: preferred no one to participate in the draft lottery.'' Whether a small group can find a method that works better than a leader is an important question; the more people trust it, the more coherently they act without penalties.
+

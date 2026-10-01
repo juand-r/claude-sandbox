@@ -363,8 +363,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] bystander-apathy
 - [x] collective-apathy-and-the-internet
 - [x] incremental-progress-and-the-valley
-- [ ] bayesians-vs-barbarians
-- [ ] beware-of-other-optimizing
+- [x] bayesians-vs-barbarians
+- [x] beware-of-other-optimizing
 - [ ] practical-advice-backed-by-deep-theories
 - [ ] the-sin-of-underconfidence
 - [ ] go-forth-and-create-the-art
