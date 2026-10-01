@@ -70,3 +70,7 @@
   interior is the periodic background 1101011100 (period (5, -8) on a ring);
   wrote ebg_search.py (to run after refl_brute) for gliders inside rods.
   Early refl_brute flags are all single-n "dumps" (X + E^4 -> E + B etc.), not reflections.
+- 06:10-06:24 refl_brute (done, 36 pairs, 178 single-n flags; no reflection);
+  E-infinity interior search (phonon (5,2) + cuts; phonon absorbed silently at the
+  back of E^15/E^30). Mistake: in my first train extraction I mixed row-index and
+  global phase conventions (vlib.window_phase is row-indexed) -> fixed in mktrain.py.

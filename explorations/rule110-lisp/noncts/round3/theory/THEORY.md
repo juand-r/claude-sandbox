@@ -58,10 +58,39 @@ coupling can make such a machine universal. The answer has three parts.
 What this means for the round (s.7). The coupling milestone T2 is
 worth reaching, but value coupling is not a route to T3. For E^n
 counters the next physical target is a shuttle (a reflection at each
-inner face). Even with a shuttle, programmable transfer ratios need
-some persistent per-side state, such as a filter, or a gap that zero
-events can adjust. Whether a shuttle with blind streams is universal is
-open (s.6.3).
+inner face). Even with a shuttle, programmable transfer ratios seem to
+need some further persistent state [arg]: a per-side filter, or a gap
+that zero events can adjust. Whether a shuttle with blind streams is
+universal is open (s.6.3).
+
+### 1.1 Answers to the questions in the task
+
+- **Is a single one-directional signal enough?** No [thm]. Theorem 1
+  needs only one counter whose drift-setting state is owned (changed
+  only by its own zeros). One-directional coupling leaves one side
+  owned, and the same goes for a crossing in only one direction
+  (s.3.5).
+- **Does the signal need to be non-monotone?** Not monotonicity as
+  such. Non-monotone VALUE effects (wraps, kicks of either sign) are
+  covered by Theorem 1, so they cannot help with two counters. What is
+  needed is a zero event that changes the FUTURE DRIFT of the other
+  counter (a mode switch). That is non-monotone by nature, and round 2's
+  chain-machine theorem says some non-monotone effect is necessary
+  anyway.
+- **Must each counter have a clean zero test?** Each counter needs zero
+  events that do three things: (i) change the shared or other side's
+  mode, (ii) carry the remainder (the slot in which the counter ran
+  out), and (iii) leave the counter alive. Garbage is tolerable only if
+  it leaves without crossing the gap. Without remainder information the
+  compiled machines fail (`lm.py` control).
+- **Weakest sufficient coupling found.**
+  - In the abstract: a mode shared by, or cross-coupled between, the two
+    sides, switched by both counters' zero events, plus bounded signal
+    delays and fixed relative timing (s.5).
+  - Under value-dependent skew (the E^n situation): transfers must also
+    be metered by a per-unit handshake (a shuttle).
+  - For E^n rods specifically: a shuttle is necessary (Theorem 2).
+    Whether a shuttle with blind streams suffices is open (s.6.3).
 
 ## 2. Models
 
@@ -75,17 +104,24 @@ constants C and M with:
 - (A2) *Threshold dependence*: the triple (s', x' - x, y' - y) depends
   only on (s, min(x, C), min(y, C)). Zero tests, wraps, kicks and their
   consequences are all functions of these thresholded values.
-- (A3) *Modes*: S = S1 x S2 x S0. In the **bulk** (x >= C and y >= C),
-  the x-increment is f1(s1) + h1(s0) and the y-increment is
-  f2(s2) + h2(s0). The components s1, s2, s0 evolve autonomously there
-  (s1' = g1(s1), and so on).
-- (Q) *Quiescence*: in the bulk, h1(s0) = h2(s0) = 0 after at most D
-  steps. Signals in flight die out, and nothing keeps acting on the
-  counters forever except the modes.
+- (A3) *Bulk*: in the **bulk** (x >= C and y >= C), (A2) makes the
+  update a function of s alone, so s evolves autonomously there. Write
+  S = S1 x S2 x S0, where s0 collects transient state (signals in
+  flight).
+- (Q) *Quiescence*: in the bulk, s0 stops affecting the increments after
+  at most D steps. Signals in flight die out, and nothing keeps acting
+  on the counters forever except s1 and s2.
 
 s1 is **x's mode** and s2 is **y's mode**. Call x's mode **owned** if
-s1 changes non-autonomously only while x < C. Only x's own small-value
-events (its zero events) may change it.
+two things hold:
+- x's bulk increment is f1(s1) once s0 is quiet;
+- s1 evolves autonomously (s1' = g1(s1)) whenever x >= C, whatever y
+  and the other components do. So only x's own small-value events (its
+  zero events) can change it.
+
+The OTHER counter is unrestricted. Its drift may depend on s1, on s2,
+and on residues of x. Residues can be included by enlarging S with
+x mod m and y mod m, which (A2) allows.
 
 The coupling classes used in `nogo.py` are instances of this model:
 
@@ -93,6 +129,7 @@ The coupling classes used in `nogo.py` are instances of this model:
 |---|---|---|
 | value | change the other counter's value (any sign, delayed), wrap its own value, reset its own mode | both |
 | oneway | additionally set y's mode at x's zero (not vice versa) | x's only |
+| residue | x's ops also depend on y mod 3; y's zero may set x's mode; nothing sets y's mode (a crossing in one direction, s.3.5) | y's only |
 | cross | set the other's mode in both directions | none |
 | shuttle | modes trivial (blind streams); zero events of either counter switch a shared gap process that adds drift to both | none (shared state violates (Q)) |
 
@@ -186,12 +223,13 @@ It goes from one side to the other only through **passages**: maximal
 stretches in the bulk with x, y >= C.
 
 **Step 2 (what a passage needs).** During any stretch of l bulk steps,
-s1 and s2 evolve autonomously. Within |S| steps each sits on a cycle of
-g1 (resp. g2) with mean increment mu1 (resp. mu2), and s0 contributes at
+the auxiliary state evolves autonomously. Within |S| steps it sits on a
+cycle, with mean increments mu1 for x and mu2 for y; s0 contributes at
 most D*M in total. So the change of x over the stretch is l*mu1 + e,
-with |e| <= K := 2(|S| + D)*M. The same holds for y with mu2. Cycle
+with |e| <= K := 2(|S| + D)*M, and the same holds for y with mu2. Cycle
 means are rationals with denominator at most |S|, so a negative mean is
-at most -1/|S|.
+at most -1/|S|. If x's mode is owned, mu1 depends only on the cycle of
+s1 (and likewise mu2 for y).
 
 - Take an X->Y passage of length l. It starts with x in [C, C+M) and,
   since R(C+M) is no longer visited, y_start >= C + M. It ends with y in
@@ -211,7 +249,8 @@ at most -1/|S|.
 - Look at an X->Y passage P and the next Y->X passage P'. From the start
   of P until x next drops below C (the end of P'), x >= C. On the Y-side
   in between, x < C would put the orbit in R(C), which is excluded. So
-  s1 evolves autonomously throughout and stays on the same g1-cycle.
+  s1 evolves autonomously throughout and stays on the same cycle, and
+  mu1 (which depends only on that cycle) is the same in P and P'.
 - If P and P' were both far, that cycle would have mu1 >= 0 and
   mu1 < 0, a contradiction. So every such pair (P, P') contains a near
   passage.
@@ -259,10 +298,12 @@ and no 2SM with an owned mode can be universal.
 
 ### 3.3 Checks of Theorem 1 [sim] (`nogo.py`, log `nogo.log`)
 
-- Random machines: 3000 in class `value` and 3000 in class `oneway`
+- Random machines: 3000 each in classes `value`, `oneway` and `residue`
   (program length 2-6, up to 3 modes per side, delayed kicks of sign
-  -2..+6, wraps 0 or 6). All 6000 are eventually periodic within 3000
-  periods.
+  -2..+6, wraps 0 or 6). In class `residue`, x's ops depend on y mod 3
+  and y's zeros may set x's mode, but y's mode is owned: the
+  one-direction crossing of s.3.5. All 9000 are eventually periodic
+  within 3000 periods.
 - Controls:
   - A hand-built cross-mode doubling machine and a hand-built shuttle
     machine with blind streams (x3 per round) are both detected as not
@@ -305,10 +346,44 @@ periodic (up to translation) and its halting is decidable.
   both rods are long. This is a shared mode (s.6).
 - ¬(N): a crossing. A signal could then reach the other counter's
   outer-side state.
-- ¬(B): an unbounded gap holding many signals in flight. That is a
-  delay-line memory, close to Cook's queue; not analysed here.
+- ¬(B): an unbounded gap. It can serve as a distance register read by
+  echo timing (s.6.4), or, with many signals in flight, as a delay line
+  close to Cook's queue. Neither is analysed here.
 
-### 3.5 Gap bookkeeping [arg]
+### 3.5 Crossings: one direction is not enough [thm, via Theorem 1]
+
+Suppose some right-moving train crosses an E^n rod. Then left-stream
+packets can pass R2 and act on R1's inner face. The outcome may depend
+on R2's outer state (the class at which the packet entered R2) or on
+y mod m.
+
+If nothing left-moving crosses a rod, R2's bulk drift still depends only
+on s2, the left stream's view of O2. Only y's zero events change s2,
+because R1's answers stop at R2's back. So y's mode is owned, and
+Theorem 1 makes the machine eventually periodic. That holds whatever the
+crossing packets do to R1, even though x's drift now depends on y's
+state.
+
+Escaping needs BOTH directions:
+- (a) a right-mover crossing (left stream reaches R1, with a
+  state-dependent outcome); and
+- (b) a left-mover crossing: right-stream packets reach R2 with an
+  outcome that depends on s1, or R1's zero answer reaches a persistent
+  object on the left-stream side.
+
+A crossing whose outcome is independent of the crossed rod's state only
+adds a blind second stream. The receiving side's mode then stays owned.
+
+*Why crossings would also solve the timing problem [arg].* Suppose a
+left-stream packet DECs R2 at its front, then crosses R2 and INCs R1 at
+its inner face. Then one packet performs both halves of a unit transfer.
+Packet order is preserved, so the counts match exactly, whatever the
+skew and whatever the time spent crossing R2. With crossings in both
+directions, each stream can operate both counters. That is round 2's
+one-stream, many-register world, where a shared control (guarded-block
+aborts, the near-end layout) is the known route to universality.
+
+### 3.6 Gap bookkeeping [arg]
 
 - Let alpha be the length of one counter unit, and let span be the
   distance from O2 to O1. Then span = alpha*(x + y) + gap.
@@ -326,6 +401,23 @@ periodic (up to translation) and its halting is decidable.
     +2 at I2 per round trip).
   - Growth of x + y must therefore come from the outer faces (the
     streams).
+
+### 3.7 Relation to round 2's theorems
+
+- *Chain machines* (round 2 s.2): monotone answer effects are decidable
+  for any number of registers. Theorem 1 covers two counters, but with
+  ANY answer logic, monotone or not, as long as one side's mode is
+  owned.
+- *Feed-forward layouts* (round 2 s.3): an upstream register that no
+  answer can reach is a one-counter automaton with eventually periodic
+  input. In Theorem 1's terms, the upstream register's mode is owned.
+  Theorem 1 extends that conclusion from one stream to two streams, and
+  from "nothing reaches the upstream register" to "nothing reaches its
+  drift-setting state". Values may be kicked freely.
+- *The near-end escape* (round 2 s.3.1) and the guarded-block machine
+  (round 2 s.7) are shared-mode machines: one stream reads one shared
+  control. Section 5 below is the two-stream counterpart, with mode
+  COPIES kept consistent by signals.
 
 ## 4. What the theorems say a universal two-stream machine needs
 
@@ -363,8 +455,8 @@ to arrange this.
 - **Test.** 502 programs: 2 hand-written and 500 random with 2-8
   instructions, inputs 0..4, budget 1500 steps. All match scholar's
   interpreter. In the 235 halting runs the result is exact (register
-  values, y = 0, transfer count = 2 x Minsky steps). The other runs are
-  still running after the same budget.
+  values, y = 0, transfer count = 2 x Minsky steps). The other 267
+  programs halt in neither machine within the budget.
 - **Control.** Zero events that carry no remainder information fail 96
   times.
 
@@ -404,7 +496,7 @@ to arrange this.
 
 ## 6. The shuttle route for E^n counters
 
-### 6.1 Requirements [arg, from Theorems 1-2 and s.3.5]
+### 6.1 Requirements [arg, from Theorems 1-2 and s.3.6]
 
 A shuttle is a right-mover X and a left-mover Y with:
 - X + (R1 inner face, value n) -> R1 changed by -a, plus Y;
@@ -413,11 +505,19 @@ A shuttle is a right-mover X and a left-mover Y with:
 for all n, m above a small threshold. a = 1 or 2 keeps the gap fixed.
 
 - **Class consistency.** Verify found that successive A-DECs at R1's
-  inner face rotate its class. So the round-trip translation of the
-  whole configuration (both faces and the shuttle) must lie in the
-  class-preserving lattice M = <P_E, P_A>. Otherwise the reflections
-  must work in every class the shuttle visits; the classes then cycle
-  with period at most 3.
+  inner face rotate its class, when the A's come from a FIXED emitter.
+  In a shuttle the emitter is the other face, and it moves too.
+  - Let d1 be the displacement of R1's front per reflection (a units
+    removed), and d2 that of R2's back (a units added).
+  - If d1 = d2 modulo P_E, the gap geometry is the same after every
+    round trip. The round trip then acts as a fixed map on the
+    shuttle's offset class, which ranges over a finite set.
+  - The shuttle runs for ever iff that map has a cycle that passes only
+  through classes in which both reflections are valid.
+
+  A joint SAT therefore need not require one class per face. It needs
+  d1 = d2 (mod P_E) plus such a cycle. Coupler plans to check
+  candidates by simulating several round trips directly.
 - **Stop or reversal.** When the source counter is empty, the shuttle's
   arrival must give a clean and distinct outcome: reverse direction, or
   stop and leave a marker. The rod must stay alive.
@@ -442,12 +542,27 @@ progressions are data-independent.
   (sigma' + s1)/(sigma' - s2). One round is therefore n -> lambda*n + c,
   with lambda fixed by physics and the streams. The offset c and the
   next zero-window choice depend on the program phase and on n mod m.
-- **lambda = 1** (for example when the streams have no net drift): the
-  machine is a one-counter system with mod tests, hence decidable.
-- **lambda != 1**: the round map is a generalised Collatz map with a
-  single multiplier. Conway's undecidability construction uses several
-  multipliers. I do not know whether one multiplier plus finite control
-  is enough.
+- **Total-value law [arg].** A conserving shuttle does not change
+  x + y. So with blind streams, x + y = n0 + (s1 + s2)*t + (bounded
+  corrections at each zero event): the total is essentially a fixed
+  linear function of time. Consequences:
+  - every round multiplier lies on the same side of 1, namely the sign
+    of s1 + s2. (Check: the product of the two passage ratios exceeds 1
+    iff 2*sigma*(s1 + s2) > 0; the same holds with an idle passage.)
+  - s1 + s2 < 0: values shrink, and the machine ends in the bounded
+    corner, so it is decidable.
+  - s1 + s2 = 0: the total changes only through zero-event corrections.
+    That is one counter with finite control and mod tests, hence
+    decidable [arg].
+  - s1 + s2 > 0: growth only. Growth-only Collatz-type maps can be
+    universal; Conway's FRACTRAN survives multiplying every fraction by
+    p^k with p^k = 1 mod the denominators. But the available multipliers
+    are fixed by physics, and the computation's information lives
+    entirely in event timing.
+- **One shuttle type, fixed gap**: then lambda is a single fixed number
+  (per kind of round). Conway's undecidability construction uses
+  several multipliers. I do not know whether one or two multipliers
+  plus finite control are enough.
 - **Several multipliers** would come from:
   - (i) several shuttle types with different speeds;
   - (ii) a per-side persistent state that changes the stream's drift
@@ -489,12 +604,49 @@ progressions are data-independent.
   The obstacles are the floors at both ends of a round, and where the
   residue information comes from.
 
+### 6.4 Another escape: a window rod and a distance register [hyp]
+
+Theorem 2's locality premise is about LARGE rods. A rod kept permanently
+at value 0 or 1 is a **window**: its outer and inner faces touch, so its
+stream can send signals into the gap in every period, not just at data
+zeros.
+
+Example layout (R1 replaced by a window W):
+
+    [left stream ->] O2 ==R2== I2   gap l   W  [<- right stream]
+
+- R2 is operated at its front by the left stream and at its back by
+  signals the right stream sends through W (Bbar: +2 at the back).
+- The second unbounded register is the DISTANCE l between W and R2's
+  back. The right stream changes it by moving W (ops on a zero rod
+  displace it by fixed vectors). Bbar arrivals at R2's back also change
+  it.
+- l is read by echo timing. An echo returning within a fixed window
+  means "l is small", which is a zero test.
+- R2's zero answers reach W directly, so neither drift is owned, and
+  Theorem 1 does not apply.
+
+This violates premise (B): l is unbounded. If only one signal is in
+flight at a time, it is a distance register (like round 2's F-lane gaps),
+not a queue.
+
+Physical needs:
+- W must survive at zero under its stream's ops and under incoming
+  echoes. A + E destroys E, so a different echo or a different W would
+  be needed.
+- One signal at a time in the gap. A blind stream emits periodically, so
+  W must block emission while an echo is pending, or the signals must
+  cross each other cleanly.
+
+Not analysed further.
+
 ## 7. Reaction spec for leftstream and coupler (E^n world)
 
 Ranked by how directly the theorems demand each item.
 
 **Tier A: necessary for any universal two-stream E^n machine** (by
-Theorem 2, unless something crosses a rod)
+Theorem 2, unless something crosses a rod in both directions (s.3.5), or
+the gap is used as an unbounded register (s.6.4))
 - A1. **Shuttle reflections** at both inner faces, gap-conserving and
   class-consistent over round trips (s.6.1). Coupler (06:02) ruled out
   X = A, Y = Bbar from the catalog, and slip lists the pairs to try.
@@ -520,7 +672,7 @@ Theorem 2, unless something crosses a rod)
   bookkeeping on each side should stay data-independent, as verified
   for the left ops and for Bbar at R2's back.
 - C2. Over every cycle of the program, the net units added at inner
-  faces must be 0, or the counters eventually collide (s.3.5).
+  faces must be 0, or the counters eventually collide (s.3.6).
 - C3. Never rely on rate matching between the two streams (skew, s.5.2).
 
 **Not needed**: a wrap at zero (the non-monotone ingredient is the mode
@@ -534,13 +686,15 @@ coupling (s.3.2), so it is not worth a dedicated SAT search.
 
 ## 8. Open problems
 
-1. Is a shuttle with blind streams universal? This is equivalent to
-   asking whether single-multiplier Collatz maps with finite control and
-   residue tests are universal (s.6.3).
+1. Is a shuttle with blind streams universal? As far as I can see it
+   reduces to growth-only Collatz-type maps with few multipliers, finite
+   control and residue tests (s.6.3).
 2. Does any glider train cross an E^n rod beyond width 30? That would
    reopen route ¬(N).
-3. An unbounded gap as delay-line memory (¬(B)): what does it compute
-   without becoming a cyclic tag system?
+3. An unbounded gap as memory (¬(B)): as a distance register with one
+   signal in flight (window rod, s.6.4), or as a delay line with many
+   (queue-like). What does each compute without becoming a cyclic tag
+   system?
 4. Is there a compile of the transfer machine onto a shuttle plus
    per-side rate filters that respects the tie constraint (s.6.3)? This
    would decide whether Tier B1 alone (without B2) is enough.

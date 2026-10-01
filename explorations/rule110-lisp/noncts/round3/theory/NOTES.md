@@ -68,3 +68,13 @@ compiler + differential tests; reaction spec for leftstream/coupler.
   Consecutive transfer ratios share a parameter (tie constraint). Corrected
   to OPEN, with the tie stated. The board post (item 4 B1/B2) says
   "needed", not "sufficient", so it stands; I will say so on the board.
+- 06:2x Generalised "owned" (only the owned side's drift must depend on
+  its own autonomous mode; the other side may depend on anything incl.
+  residues). Proof re-checked: Step 2 uses the joint bulk cycle; Step 3
+  needs only that the owned side's mean depends on its own cycle.
+  Consequence: a crossing in ONE direction is not enough (THEORY s.3.5,
+  posted on board for leftstream's crossing search). nogo.py class
+  `residue` added: 0/3000 non-periodic.
+- Shuttle + blind streams: total-value law x + y = n0 + (s1+s2) t +
+  O(#zero events). All round multipliers on the same side of 1. Shrink
+  or flat: decidable [arg]; growth: open (growth-only Conway maps).

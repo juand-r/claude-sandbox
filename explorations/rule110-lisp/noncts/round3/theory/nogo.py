@@ -15,13 +15,17 @@ Abstract two-stream machine ("2SM"), synchronous version:
   * coupling classes:
       "value"  : zero events change only the other counter's VALUE (T1);
       "oneway" : x's zero may also set y's mode, not vice versa (T2);
+      "residue": x's op also depends on y mod 3 and y's zero may set x's
+                 mode, but nothing sets y's mode (y owned): the situation
+                 of a crossing in ONE direction (THEORY.md s.3.5). Covered
+                 by Theorem 1 (one owned mode), so it must be periodic;
       "cross"  : both directions may set the other's mode (control: the
                  theorems do not cover it and it can be non-periodic);
       "shuttle": modes are blind (never change), but a SHARED gap state q
                  adds a drift to both counters while it runs, and zero events
                  of either counter switch q (control; THEORY.md s.4).
 
-Theorem T1/T2 (THEORY.md): in classes "value" and "oneway" every orbit is
+Theorem 1 (THEORY.md): in classes "value", "oneway", "residue" every orbit is
 eventually periodic (the per-period record of modes, in-flight signals and
 zero events). The check below runs random machines of each class and
 reports how many are NOT periodic within the horizon. For "value" and
@@ -63,8 +67,9 @@ class Machine:
     printed and rerun."""
 
     def __init__(self, L, M1, M2, prog1, prog2, auto1, auto2, zero1, zero2,
-                 kind, shuttle=None):
+                 kind, shuttle=None, prog1r=None):
         self.L, self.M1, self.M2 = L, M1, M2
+        self.prog1r = prog1r                       # [t][m1][y % 3] -> op, or None
         self.prog1, self.prog2 = prog1, prog2      # [t][m] -> op
         self.auto1, self.auto2 = auto1, auto2      # [t][m] -> m'
         # zero tables: (t, m_own, q) -> dict(own=m', kick=k, delay=d,
@@ -102,7 +107,10 @@ class Machine:
                     y += dys
                 for side in (1, 2):
                     m = m1 if side == 1 else m2
-                    op = (self.prog1 if side == 1 else self.prog2)[t][m]
+                    if side == 1 and self.prog1r is not None:
+                        op = self.prog1r[t][m][y % 3]
+                    else:
+                        op = (self.prog1 if side == 1 else self.prog2)[t][m]
                     val = x if side == 1 else y
                     if op == -1 and val == 0:
                         tab = self.zero1 if side == 1 else self.zero2
@@ -176,8 +184,13 @@ def random_machine(rng, kind, L=None, M=None, D=3):
         return tab
 
     zero1 = ztab(M1, M2, kind in ("oneway", "cross"))
-    zero2 = ztab(M2, M1, kind == "cross")
-    return Machine(L, M1, M2, prog1, prog2, auto1, auto2, zero1, zero2, kind, shuttle)
+    zero2 = ztab(M2, M1, kind in ("cross", "residue"))
+    prog1r = None
+    if kind == "residue":
+        prog1r = [[[rng.choice(OPS) for _ in range(3)] for _ in range(M1)]
+                  for _ in range(L)]
+    return Machine(L, M1, M2, prog1, prog2, auto1, auto2, zero1, zero2, kind,
+                   shuttle, prog1r)
 
 
 def doubling_cross():
@@ -243,7 +256,7 @@ def check_class(kind, n, seed, periods=3000):
 def main():
     rc = 0
     # 1. the theorem classes: must be eventually periodic
-    for kind, n in (("value", 3000), ("oneway", 3000)):
+    for kind, n in (("value", 3000), ("oneway", 3000), ("residue", 3000)):
         bad, ex = check_class(kind, n, seed=11)
         print(f"class {kind:7s}: {n} random machines, {bad} not eventually "
               f"periodic within 3000 periods (must be 0)")
