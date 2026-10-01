@@ -1,5 +1,15 @@
 # Plan
 
+## Phase 5: non-CTS team round 3, two program streams (started 2026-10-01)
+
+User approved the two-stream idea. noncts/round3/ (README with tiers
+T1-T3, BOARD kickoff with starting facts).
+- [x] agents launched: theory (two-stream abstract machines, minimal
+      universal coupling, reaction spec), leftstream (left stream on its
+      own counter), coupler (signals between the counters), verify
+      (independent verification, integration, instruments)
+- [ ] supervise, spot-check key claims, write round-3 summary
+
 ## Phase 4: documentation pass, non-CTS team round 2 (started 2026-09-30)
 
 User: make sure documentation is complete, push, then supervise another
