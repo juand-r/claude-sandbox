@@ -1,36 +1,43 @@
 # Grapes
 
 A book about grapes, in the spirit of John McPhee's *Oranges* (1967), with
-many footnotes and notes on footnotes. This directory holds the book's
-layout experiments and, later, the book itself.
+many footnotes and notes on footnotes. This directory holds the book and the
+layout experiments that led to it.
 
-## Current state
+## Current state (2026-10-01)
 
-- `book/`: the book's working setup. Two levels of footnotes stacked at the
-  foot, plus optional margin notes. See `book/README.md` for how to write in
-  it. Chapter 1 holds placeholder prose with unchecked facts.
-- `specimens/` and `grapes-specimens.pdf`: the five layouts we compared
-  before choosing (see `NOTES.md`).
+The layout machinery is done and tested. The book has one chapter of
+placeholder prose whose facts are unchecked. Next: style and content (see
+`PLAN.md`).
+
+## Where things are documented
+
+| File | What it says |
+|------|--------------|
+| `book/README.md` | How to write in the book: the five commands, turning margin notes off, what stops the build, how to build and test. Start here. |
+| `book/STYLE.md`  | Writing conventions, each with its reason and date (e.g. anchors go at the start of a sentence). |
+| `book/LINKS.md`  | Which links between main text, notes, subnotes and asides are possible, and which are not, and why. |
+| `book/grapes.sty` | The layout itself. Its header comment summarizes the commands and rules. |
+| `PLAN.md`  | What is done and what comes next. |
+| `NOTES.md` | Findings and decisions, in order, including mistakes and how they were caught. |
+| `specimens/` | The five layouts compared before choosing (`grapes-specimens.pdf`). |
 
 ## How to build
 
-Needs LuaLaTeX, TeX Live with `bigfoot`, `perpage`, `marginfix`, `reledmac`,
-the EB Garamond and Linux Libertine fonts, and `pdfunite` (poppler-utils).
-On Debian/Ubuntu:
+Needs LuaLaTeX, TeX Live with `bigfoot`, `perpage`, `marginfix`, `refcount`,
+`hyperref`, `titlesec`, `reledmac` (specimens only), the EB Garamond and
+Linux Libertine fonts, and poppler-utils (`pdftotext`, `pdfunite`). On
+Debian/Ubuntu:
 
     apt-get install texlive-latex-extra texlive-fonts-extra texlive-luatex \
                     texlive-humanities poppler-utils
 
-Then:
+The book (details in `book/README.md`):
 
-    cd specimens && ./build.sh      # writes ../grapes-specimens.pdf
+    book/build.sh              # book/grapes.pdf, with margin notes
+    book/build.sh nomargin     # book/grapes-nomargin.pdf
+    book/tests/run.sh          # needs book/.venv, see book/README.md
 
-## Files
+The specimens:
 
-- `specimens/common.tex`: shared preamble (fonts, three note levels).
-- `specimens/passage.tex`: the sample text, written once with semantic note
-  commands (`\note`, `\subnote`, `\subsubnote`) that each layout maps to its
-  own mechanism.
-- `specimens/0N-*.tex`: one file per specimen.
-- `PLAN.md`: what we are doing and in what order.
-- `NOTES.md`: findings about each layout.
+    specimens/build.sh         # grapes-specimens.pdf

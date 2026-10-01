@@ -15,8 +15,8 @@ how notes look is in `grapes.sty`.
 | `\note[key]{...}`    | footnote at the foot of the page | 1, 2, 3; restart each chapter |
 | `\subnote[key]{...}` | note on a note; only inside a `\note`; own block below the notes, under its own rule | a, b, c; restart each page |
 | `\aside[key]{...}`   | margin note; may contain `\note`s, whose text goes to the foot of the page | \*, †, ‡, §, ¶, ‖, then doubled; restart each page |
-| `\anchor{key}`       | a mark ❧ in the text, for a note to point back to | ❧ |
-| `\xref{key}`         | the mark of the note or anchor named `key`, plus ", p. N" when it is on another page | |
+| `\anchor{key}`       | a mark ❧ for a note to point back to; goes at the start of a sentence (`STYLE.md`); in the text or inside any note | ❧ |
+| `\xref{key}`         | the mark of the note, subnote, aside or anchor named `key`, plus ", p. N" when it is on another page; allowed anywhere | |
 
 `[key]` is optional. Give a key only to notes you want to point to. Keys
 must be unique in the book.
@@ -41,12 +41,12 @@ versions without editing anything: `./build.sh` and `./build.sh nomargin`.
 
 ## What stops the build
 
-Errors, naming the line:
+Errors, naming the line (the full table, with reasons, is in `LINKS.md`):
 
-- `\note` inside a note (use `\subnote`);
+- `\note` inside a note or a subnote (use `\subnote`);
 - `\subnote` outside a `\note`, inside a `\subnote`, or directly inside an
-  `\aside`;
-- `\aside` inside a note or inside an `\aside`;
+  `\aside` (put a `\note` in the aside, and the `\subnote` in that note);
+- `\aside` inside a note, a subnote or an `\aside`;
 - an `\aside` taller than the page.
 
 Checked on the final pass (LaTeX only warns about these; the build fails):

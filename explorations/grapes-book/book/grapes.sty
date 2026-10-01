@@ -10,14 +10,16 @@
 %   \aside[key]{...}    margin note. Marks *, †, ‡, §, ¶, ‖ (then doubled),
 %                       restarting each page. May contain \note's, whose text
 %                       goes to the foot of the page as usual.
-%   \anchor{key}        a mark (❧) in the text that a note can point back to.
-%                       Put it at the START of the sentence it marks: it is
-%                       a destination (see STYLE.md).
-%   \xref{key}          prints the mark of the note or anchor named key,
-%                       adding ", p. N" when it is on another page. It is a
-%                       link in the PDF.
+%   \anchor{key}        a mark (❧) that a note can point back to. Put it at
+%                       the START of the sentence it marks: it is a
+%                       destination (see STYLE.md). Allowed in the main text
+%                       and inside notes, subnotes and asides.
+%   \xref{key}          prints the mark of the note, subnote, aside or anchor
+%                       named key, adding ", p. N" when it is on another
+%                       page. Allowed anywhere. It is a link in the PDF.
 % [key] is optional; give one only to notes you want to refer to.
 % Every mark is a link in the PDF: from the text to its note, and back.
+% Which links are possible, and which not: see LINKS.md.
 %
 % ---- Margin notes can be switched off without touching the text -------------
 %   \usepackage{grapes}             asides in the margin (default)
@@ -26,11 +28,15 @@
 %                                   the page drops the wide margin.
 %
 % ---- Misuse stops the build with an error naming the line -------------------
-%   \note inside a note (use \subnote); \subnote outside a \note, or inside a
-%   \subnote; \aside inside a note or inside an \aside; an \aside taller than
-%   the page. Warnings, which build.sh turns into failures on the final pass:
-%   more than nine asides on one page, undefined or duplicate keys.
-%   An \aside longer than a third of the page only warns.
+%   Nesting allowed: \note and \aside in the main text, \subnote in a \note,
+%   \note in an \aside. Everything else is an error: \note inside a note or
+%   subnote (use \subnote); \subnote outside a \note, inside a \subnote, or
+%   directly inside an \aside; \aside inside a note, a subnote or an \aside.
+%   Also an error: an \aside taller than the page.
+%   Warnings, which build.sh turns into failures on the final pass: more than
+%   nine asides on one page, undefined or duplicate keys, references not
+%   settled after three passes. An \aside longer than a third of the page
+%   only warns.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{grapes}[2026/09/30 Layout for Grapes]
 
