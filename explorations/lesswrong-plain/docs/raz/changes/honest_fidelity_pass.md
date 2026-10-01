@@ -4209,3 +4209,501 @@ Why: Fidelity/substance pass: added the stages of the philosopher's instinct in 
 - Before: and do not argue ``that free will is compatible with determinism, or not.''
 - After: and do not argue ``that free will is compatible with determinism, or not,'' or that the question is ill-posed or the concept contradictory or untestable, or tell an evolutionary story, or tie the concept to some bias; all of those explain why, not how. Write ``a stack trace'' of the mind's algorithms as they produce the intuitions behind the whole argument. It was one of the first real challenges I tried, and one of the easier ones.
 
+
+## honest/sections/wrong-questions.tex
+
+Why: Fidelity/substance pass: added why unanswerable questions do not mark magic, what the worst mysterious answer looks like, the inference that the truth is probably not complicated, and the promised trick
+
+- Before: Mystery exists in the mind, not in reality, and ``Confusion exists in the map, not in the territory.''
+- After: Mystery exists in the mind, not in reality, and ``Confusion exists in the map, not in the territory.'' Unanswerable questions do not mark places where magic enters the universe, but places where the mind runs skew to reality.
+
+- Before: ``inevitably'' produces a mysterious answer that predicts nothing.
+- After: ``inevitably'' produces the worst kind of mysterious answer: seemingly strong arguments, but no new predictions even in hindsight, and the phenomenon as sacredly inexplicable as before.
+
+- Before: Why anything exists seems so impossible that I infer I am confused.
+- After: Why anything exists seems so impossible that I infer I am confused, and that the truth is probably not very complicated, and will be visible once the confusion goes.
+
+- Before: ``This may seem counterintuitive if you've never solved an unanswerable question, but I assure you that it is how these things work.''
+- After: ``This may seem counterintuitive if you've never solved an unanswerable question, but I assure you that it is how these things work.'' Tomorrow: a simple trick for wrong questions.
+
+
+## honest/sections/righting-a-wrong-question.tex
+
+Why: Fidelity/substance pass: added why the first question misleads (distant physics, possibly incoherent X), the reformulated questions themselves, that the trick works whether or not the question is confused, why the sock chain must end at socks, the lake/perception contrast, the 'mystical sock detector' point, the concrete starting place, and the closing hope
+
+- Before: The second question is ``guaranteed to have a real answer,'' whether or not there is any such thing as free will.
+- After: The first sends you to tiny details of physics far below anything you can see, and asks why X is so when X may not even be coherent. The second is ``guaranteed to have a real answer,'' whether or not there is any such thing as free will.
+
+- Before: You do believe it, and some chain of causes led to the belief.
+- After: You do believe it, the belief is more solid than free will itself, and some chain of causes led to it.
+
+- Before: The same works for time, for being born as yourself, for consciousness and for the existence of reality: ask why you think so.
+- After: The same works for other questions: not why time moves forward, but why you think it does; not why you were born as yourself, why you are conscious, or why reality exists, but why you think so. The method works whether or not the question is confused.
+
+- Before: My belief is fully explained by the fact that I am wearing socks.
+- After: My belief is fully explained by the fact that I am wearing socks, as it should be, since you cannot learn about something without interacting with it.
+
+- Before: Either way the belief is a real event with a causal history.
+- After: Either way the belief is a real event with a causal history. ``Why is there a lake in the desert?'' may fail if there is no lake; ``Why do I perceive a lake?'' always has an answer.
+
+- Before: Every step in the sock chain can be explained by biology, optics, electromagnetism or thermodynamics.
+- After: Every step in the sock chain can be explained by biology, optics, electromagnetism or thermodynamics; my retina is not a mystical sock detector that lights up for no reason.
+
+- Before: ``Either way, the question is guaranteed to have an answer.''
+- After: ``Either way, the question is guaranteed to have an answer,'' and you have a concrete place to start tracing: the belief in your mind.
+
+- Before: Cognitive science may seem less lofty than metaphysics, but at least its questions are ``solvable.''
+- After: Cognitive science may seem less lofty than metaphysics, but at least its questions are ``solvable''; the answer may not be easy, but it exists.
+
+- Before: And the idea that it is less lofty ``is simply wrong.''
+- After: And the idea that it is less lofty ``is simply wrong,'' as some readers, I hope, are beginning to notice.
+
+
+## honest/sections/righting-a-wrong-question.tex
+
+Why: Fidelity/substance pass: made new quotations verbatim
+
+- Before: ``Why is there a lake in the desert?'' may fail if there is no lake; ``Why do I perceive a lake?'' always has an answer.
+- After: ``Why is there a lake in the middle of the desert?'' may fail if there is no lake; ``Why do I perceive a lake in the middle of the desert?'' always has an answer.
+
+
+## honest/sections/mind-projection-fallacy.tex
+
+Why: Fidelity/substance pass: added the reasoning the artist did not do, the torn-dress point, the data-structure inference ('since she is attractive, the alien will be attracted'), and what the two closing stories actually are
+
+- Before: The artists did not reason that all minds are alike. ``Probably the artist did not even think to ask.''
+- After: The artists did not reason that all minds are alike, so a bug-eyed monster will find women attractive. ``Probably the artist did not even think to ask.'' They thought about the torn dress, not the alien's evolution: tear the dress and she is sexier, and the monster does not enter into it.
+
+- Before: then sexiness feels like part of the woman.
+- After: then sexiness feels like part of the woman, not of the one looking at her, and since she is attractive, the monster will be attracted; isn't that logical?
+
+- Before: Last, two stories about romance between humans and aliens, one involving a plant and one an insect in a chiffon dress.
+- After: Last, two stories: a man in a romance with a sentient alien plant who learns it is male, frets, and decides it no longer matters; and, in Foglio and Pollotta's \textsc{Illegal Aliens}, a planet of sentient insects showing a movie poster of a human carrying off a bug in a chiffon dress.
+
+
+## honest/sections/probability-is-in-the-mind.tex
+
+Why: Fidelity/substance pass: added the frequentist's infinite-flips argument and conclusion, the Bayesian's appeal to bad bets and planning, the coin-holding point and 'so what', the mindless coin, the worked numbers of both brainteasers and the apparent paradox in each, the explanation through dividing by P(E) with the 5/6 vs 1/2 and 3/4 vs 1/2 figures, and the blank-map line
+
+- Before: The frequentist says no: ``probability 0.5'' means the coin would come up heads half the time in the long run, and this coin is biased.
+- After: The frequentist says no: ``probability 0.5'' means the coin would come up heads half the time over infinitely many flips, and this coin is biased, so its probability of heads can be anything except 0.5.
+
+- Before: The Bayesian says the coin has already landed, so a probability describes what I know, and theorems show that my weights must obey the laws of probability.
+- After: The Bayesian says the coin has already landed, so a probability describes what I know, and theorems show that if I weigh my partial knowledge any other way I will make stupid bets; to plan, I weigh outcomes after heads no more than outcomes after tails.
+
+- Before: since a flip depends on how you throw it.
+- After: since a flip depends on how you hold and throw it and on the air; if you do not know which way it is biased this time, so what?
+
+- Before: There is none.
+- After: There is none. The robot has one state of partial information and you another; the coin has no mind and assigns no probability, it just spins, bounces off air molecules and lands.
+
+- Before: A mathematician with two children, asked whether at least one is a boy, says yes: the chance of two boys is 1/3. Asked whether the eldest is a boy, 1/2.
+- After: A mathematician with two children, asked whether at least one is a boy, says yes: the prior chances of two boys, one of each and two girls are 1/4, 1/2 and 1/4; ``yes'' rules out two girls, leaving two boys at 1/3. Asked whether the eldest is a boy, ``yes'' gives 1/2, since the younger can be anything; the same for the youngest. But if at least one is a boy, it is the eldest or the youngest, so how can the first answer differ?
+
+- Before: With four cards, two aces and two twos, ``at least one ace'' gives 1/5 for a pair of aces, while ``the ace of spades'' gives 1/3.
+- After: With four cards, the aces and twos of hearts and spades, I draw two. ``At least one ace?'' ``Yes'' rules out the pair of twos among six equally likely pairs, so a pair of aces has 1/5. ``The ace of spades?'' ``Yes'' leaves three possible other cards, so 1/3; likewise for the ace of hearts. But the ace I hold must be one of the two, so how can the first answer be 1/5?
+
+- Before: Different questions give different evidence, so you end in different states of knowledge.
+- After: Different questions give different evidence, so you end in different states of knowledge. In Bayes's theorem, $P(H|E) = P(E|H)P(H)/P(E)$, dividing by $P(E)$ throws out what was eliminated and renormalizes. Before I answer, you expect ``yes'' to ``at least one ace'' with probability 5/6, but ``yes'' to ``the ace of spades'' with 1/2; for the children, 3/4 against 1/2. You are learning different things.
+
+- Before: Ignorance is in the mind.
+- After: A blank map does not correspond to a blank territory. Ignorance is in the mind.
+
+
+## honest/sections/the-quotation-is-not-the-referent.tex
+
+Why: Fidelity/substance pass: added the substitution example, John's belief about Mary's belief stated fully, where the original AI design went wrong, the earlier expected-utility type error, the units example, how beliefs differ physically from planets, the letter-number encoding shown, the precise logic distinction (corrected: provable that an encoded proof exists, not 'provable that P is provable'), the speed-of-light example, the second Tarski sentence, and why reality needs no comparison
+
+- Before: In logic, if A equals B, you may put one in place of the other. Apply this to beliefs and it goes wrong.
+- After: In logic, if A equals B, you may put one in place of the other: from (2 + 2) = 4 and ((2 + 2) + 3) = 7 follows (4 + 3) = 7. Apply this to beliefs and it goes wrong.
+
+- Before: Must John, who knows the two stars are one, conclude that Mary believes the evening star is Lucifer?
+- After: She thinks the evening star is the god Venus. John knows the two stars are one, and believes that Mary believes the morning star is Lucifer. Must he, by substitution, believe that Mary believes the evening star is Lucifer?
+
+- Before: ``P'rsnally,'' I think John is committing a type error, like subtracting grams from meters.
+- After: ``P'rsnally,'' I think John is committing a type error, like subtracting 5 grams from 20 meters; ``the morning star'' is not even the same type of thing as the morning star.
+
+- Before: ``The whole paradox stems from the failure to use quote marks in appropriate places.''
+- After: The original mistake was an AI that stored its beliefs about Mary's beliefs about ``the morning star'' in the same form as its beliefs about the morning star. ``The whole paradox stems from the failure to use quote marks in appropriate places.''
+
+- Before: It is like keeping track of units in physics. Since quote marks look too much like the words inside them, I suggest writing each letter as its number in the alphabet.
+- After: I have urged type discipline before, in keeping expected utilities apart from utilities. It is like keeping track of units in physics, which seems a bother until your answer is off by orders of magnitude and comes out in seconds per square gram. Beliefs live in brains and weigh micrograms; planets live in space and weigh rather more. Since quote marks look too much like the words inside them, I suggest writing each letter as its number in the alphabet, so that ``morning star'' becomes 13.15.18.14.9.14.7.0.19.20.1.18.
+
+- Before: In mathematical logic the statement that P is a theorem and the statement that it is provable that P is provable are ``very distinct propositions.''
+- After: In mathematical logic the statement that P is a theorem and the statement that it is provable that an encoded proof of the encoded sentence P exists are ``very distinct propositions.'' Dropping a level of quotation is like dropping a unit: you get results like ``The speed of light is 299,792,458 meters long.''
+
+- Before: with an infinite family of sentences such as ``Snow is white'' is true if and only if snow is white.
+- After: with an infinite family of sentences such as ``Snow is white'' is true if and only if snow is white, and ``Weasels are green'' is true if and only if weasels are green.
+
+- Before: ``Saying `true' compares a belief to reality.''
+- After: ``Saying `true' compares a belief to reality,'' and reality need not be compared with any belief in order to be real.
+
+
+## honest/sections/qualitatively-confused.tex
+
+Why: Fidelity/substance pass: added the reply that the two sentences differ because I can conceive my beliefs false, the postmodernist's rejoinder, degrees of truth for 70%, the archery image, the never-exactly-as-expected point, the near-certain meta-belief scoring about 0, the gap between uncertainty about snow and about one's own beliefs, why qualitative reasoning invites mix-ups, the inherent-probability mistake, how beliefs and beliefs about beliefs feel from inside, extreme probabilities about one's beliefs, and the qualitative belief about a coin
+
+- Before: express the same opinion, and quotes Wittgenstein:
+- After: express the same opinion. No, I answer, they mean different things, which is how I can conceive that my beliefs are false. ``Oh, you claim to conceive it, but you never believe it,'' says my postmodernist, and quotes Wittgenstein:
+
+- Before: If I give 70\% to ``snow is white'', a better word than ``truth'' for how well that matches reality is ``accuracy''.
+- After: If I give 70\% to ``snow is white'' and snow is white, is my 70\% true? More so than 60\% would be, less than 80\%. A better word than ``truth'' for how well that matches reality is ``accuracy'', like an archer's: how near the center did you strike?
+
+- Before: and $-0.88$ on average by my own reckoning.
+- After: and $-0.88$ on average by my own reckoning; either way the result is not exactly what I expected.
+
+- Before: My belief that I hold this 70\% belief can be near-certain.
+- After: My belief that I hold this 70\% belief can be near-certain, and so score about 0 bits, as good as it gets. I can be much less uncertain about my uncertainty than about snow, though beliefs about beliefs are not always accurate. In all-or-nothing reasoning, believing snow is white, believing I believe it, and believing that ``snow is white'' is true all come out as 1, and are easy to confuse.
+
+- Before: So to call the 70\% assignment itself ``true'' is ``a type error''.
+- After: So to call the 70\% assignment itself ``true'' is ``a type error''; it is a fact that I hold it, but the assignment scores $-0.51$ or $-1.73$ bits depending on reality. The cognoscenti will see in this the mistake of treating probabilities as properties of things.
+
+- Before: If my representations of belief and of belief about belief are different enough,
+- After: From the inside, beliefs about the world look like the world, and beliefs about beliefs look like beliefs. If my representations of belief and of belief about belief are different enough,
+
+- Before: Probabilities live in the range from 0 to 1, accuracy from minus infinity to 0,
+- After: Probabilities about the world live in the range from 0 to 1, accuracy from minus infinity to 0, probabilities about my own beliefs are usually extreme,
+
+- Before: A coin is not ``inherently'' 50\% uncertain; it is not even true or false.
+- After: A coin is not ``inherently'' 50\% uncertain; it is not a belief processor and has no partial information about itself. In all-or-nothing reasoning you may believe ``The coin will land heads'', and that belief is true or false depending on the coin, but the coin itself is not even true or false.
+
+
+## honest/sections/think-like-reality.tex
+
+Why: Fidelity/substance pass: added which features people call weird, the backward retina, why tigers are only surface generalizations, how a model is judged by surprise, and good vs poor intuitions
+
+- Before: When I hear someone call quantum physics ``weird'',
+- After: When I hear someone call quantum physics ``weird'', bewailing the effects of observation, nonlocal correlations or the impossibility of knowing position and momentum together,
+
+- Before: Evolution, ``a hack'', gave you intuitions for solid objects bouncing around in three dimensions, which is what it took to chase tigers.
+- After: Evolution, ``a hack'' that built the retina backward, gave you intuitions for solid objects bouncing around in three dimensions, which is what it took to chase tigers. But tigers are leaky surface generalizations: they arose gradually and are not all alike.
+
+- Before: At the fundamental level there are no tigers, and no such objects either.
+- After: At the fundamental level, where laws are stable, global and without exception, there are no tigers, and no such objects either.
+
+- Before: Surprise is the measure of a poor model, and intuition is a model.
+- After: Surprise is the measure of a poor model: a model that keeps hitting events it called very unlikely should be discarded, and a good model makes reality look normal. Intuition is a model too; poor intuitions are shocked by reality, good ones make it feel natural.
+
+
+## honest/sections/chaotic-inversion.tex
+
+Why: Fidelity/substance pass: added how reasonable the unhelpful advice sounded and what 'chaos' amounts to in the post (hard to handle, grasp or guess; not only an idiom for AI)
+
+- Before: Reading reams of advice has mostly taught me that many other creative professionals have the same trouble.
+- After: Reading reams of advice, however reasonable it sounded, has mostly taught me that many other creative professionals have the same trouble and cannot beat it either.
+
+- Before: Chaos is ``what inverted stupidity looks like''.
+- After: Chaos is ``what inverted stupidity looks like'': something hard to handle, grasp or guess, that you can do nothing with, not only in abstract matters like AI but in ordinary life.
+
+
+## honest/sections/reductionism.tex
+
+Why: Fidelity/substance pass: added why the topic waited, the General Relativity caveat and the ratchet, the full gunner exchange, the 747 model with no quark in it and the 'made of something else?' question, the glove-compartment line, that a fundamental model would predict better and need no wing token, the subtle point that levels belong to maps and not to the airplane, how the wings appear in the mind looking at the model, how a belief feels from inside, why the brain compresses, reality's own computation, and no extra causal entities for lift
+
+- Before: I deemed the request legitimate.
+- After: I deemed the request legitimate, but could not take it up before the Mind Projection Fallacy posts.
+
+- Before: Science does not go back to a theory as refuted as Newtonian mechanics,
+- After: That sounds strong; even General Relativity may be overturned. But science does not go back to a theory as refuted as Newtonian mechanics; the ratchet does not turn in reverse,
+
+- Before: I once told a Navy gunner that relativity, not Newton, gives the more accurate trajectory for a shell. He insisted that shells obey Newtonian mechanics.
+- After: A man who said he had been a Navy gunner told me that computing a shell's trajectory with relativity gives the wrong answer. I said no: relativity might be too slow to compute in time, but its answer is always more accurate. He insisted that things at a shell's speed are governed by Newtonian mechanics, not relativity. If that were true, I said, he could collect a Nobel Prize.
+
+- Before: because a fundamental model would take ``a gazillion years'' to run and would not fit on all the world's computers.
+- After: because a fundamental model would take ``a gazillion years'' to run and would not fit on all the world's computers. A program modeling the 747's aerodynamics may not have a single bit that stands for a quark. Is the 747 made of something other than quarks? No; the model's elements simply do not correspond one to one with the quarks. You cannot fold the territory into your glove compartment, and a map's scale is a fact about the map. A fundamental model, if it could run, would predict better than the aerodynamic one, and need contain nothing explicit about wings or lift.
+
+- Before: My answer: having different descriptions at different levels belongs to talk about maps, not talk about territory.
+- After: My answer is subtler than saying an object has different descriptions at different levels: having different descriptions at different levels belongs to talk about maps, not talk about territory. It is not the airplane or the laws of physics that use levels, as the gunner thought; we do, for convenience.
+
+- Before: A fundamental model would contain all the facts about the wings, implicitly.
+- After: A fundamental model would contain all the facts about the wings, implicitly; you, studying it, could work out where the wings are, and then the wings would be explicit, in your mind.
+
+- Before: The levels feel real because that is how an efficient multi-level model feels from inside.
+- After: The levels feel real because that is how an efficient multi-level model feels from inside, just as a belief feels like looking straight at reality. The brain compresses an object it cannot begin to model fundamentally; the airplane, even a hydrogen atom, is too large. You can't handle the truth, but reality handles it with no simplification (I wish I knew where it gets the computing power).
+
+- Before: ``The way physics really works, as far as we can tell, is that there is only the most basic level.''
+- After: ``The way physics really works, as far as we can tell, is that there is only the most basic level.'' The laws contain no extra causal entities for lift or wings, as an engineer's mind contains extra mental entities for them.
+
+
+## honest/sections/explaining-vs-explaining-away.tex
+
+Why: Fidelity/substance pass: added the usual reply promised for tomorrow, the Sesame Street verse, the question of what anti-reductionists' minds are doing, the tiger/dragon comparison, the quotation/referent point about gnomes, the T=0/T=1/T=2 story and 'gnomekiller', and the other sayings a rationalist should use
+
+- Before: ``Unweave a rainbow.''
+- After: ``Unweave a rainbow.'' My usual reply ends: ``If we cannot learn to take joy in the merely real, our lives will be empty indeed,'' which I expand tomorrow.
+
+- Before: One of these things is not like the others.
+- After: As the children's song goes, one of these things is not like the others.
+
+- Before: The cause of the confusion is the Mind Projection Fallacy.
+- After: What puts rainbows and belief in reductionism in the same category as haunts and gnomes? Among other things, the Mind Projection Fallacy.
+
+- Before: I think anti-reductionists hear ``There are no rainbows.''
+- After: I think anti-reductionists hear ``There are no rainbows.'' Without the map/territory distinction, learning that the rainbow is not fundamental feels like erasing it from the map, which feels like erasing it from the world; ``tigers are made of quarks'' sounds like ``we looked in your garage for a dragon, and found empty air.''
+
+- Before: Science emptied the map of gnomes, not the mine. There never were any gnomes.
+- After: Science emptied the map of gnomes, not the mine. There never were any gnomes; scientists did nothing to gnomes, only to ``gnomes.'' But since beliefs feel like the world, it seems that at first the mine held gnomes, then a scientist came, then the mine was empty: the scientist killed them. ``Bad scientist! No poems for you, gnomekiller!''
+
+- Before: To give up gnomes takes a strong mind and the right sayings, such as ``That which can be destroyed by the truth should be.''
+- After: To give up gnomes takes a strong mind and the right sayings, such as ``That which can be destroyed by the truth should be,'' that the scientist took away only my delusion, that I never had just title to my belief in gnomes, and that if there are no gnomes I want to believe there are none.
+
+
+## honest/sections/explaining-vs-explaining-away.tex
+
+Why: Fidelity/substance pass: made new quotations verbatim
+
+- Before: ``tigers are made of quarks'' sounds like ``we looked in your garage for a dragon, and found empty air.''
+- After: ``tigers are not elementary particles, they are made of quarks'' sounds like ``we looked in your garage for a dragon, but there was just empty air.''
+
+
+## honest/sections/fake-reductionism.tex
+
+Why: Fidelity/substance pass: added why Newton's work made news, the fake-explanation framing, the dour philosopher's full words, reduction as a password, the BORING sign, gnomes removed by authority with nothing in their place, and the mocking label
+
+- Before: Newton only showed that the light was split into colours rather than changed in colour.
+- After: Newton only showed that the light was split into colours rather than changed in colour, but that put rainbows back in the news.
+
+- Before: If so, he had a ``fake reduction.'' He had been told that the rainbow was reduced, but had not seen it.
+- After: If so, he had a fake explanation, a ``fake reduction'': he had been told that the rainbow was reduced, but it had not been reduced in his own model of the world.
+
+- Before: Seeing where the rainbow comes from, with prisms and a spray of water, is very different from a ``dour-faced philosopher'' telling you it is ``Just something to do with raindrops or whatever.''
+- After: Seeing where the rainbow comes from, playing with prisms and making one yourself with a spray of water, is very different from a ``dour-faced philosopher'' telling you that scientists have explained it away, ``Just something to do with raindrops or whatever. Nothing to be excited about.''
+
+- Before: Hearing that science has explained the rainbow only moves it to a genre labelled BORING.
+- After: Anti-reductionists experience reduction not as an ``Aha!'' but as being told that the password is ``Science.'' Hearing that science has explained the rainbow only moves it to a genre labelled BORING, by order of the Council of Sophisticated Literary Critics. Their gnomes are pulled out by authority, not dissolved by insight, and nothing beautiful is given in their place, only a sneer that they were fools to find rainbows pretty.
+
+
+## honest/sections/savanna-poets.tex
+
+Why: Fidelity/substance pass: added what Feynman's passage actually says, the poets' Sophocles/Shakespeare claim, more of Brown's list, the flood story's ending, both versions of Keats's loss (no insight; even with the math), why the equations cannot replace the drama, what happens every day, the 'Goodbye' story, the no-brains point, how the author would feel about losing all the stories, respecting strangeness, impoverishing the map, why the true rainbow could not be poeticized earlier, and the science-fiction test in full
+
+- Before: I open with Feynman's footnote on the stars, which ends:
+- After: I open with Feynman's footnote on the stars. Poets say science reduces them to mere gas; nothing is ``mere''; he too sees and feels the stars, and sees more: million-year-old light, a vast pattern of which he is part, his stuff perhaps belched from some forgotten star. ``It does not do harm to the mystery to know a little about it.'' It ends:
+
+- Before: The strongest emotions are universal:
+- After: Storytellers say the Great Stories are timeless, that Sophocles and Shakespeare could have swapped centuries without a jolt. The strongest emotions are universal:
+
+- Before: Donald Brown found marriage, music, envy, dance and storytelling in all, or nearly all, the cultures studied.
+- After: Donald Brown found marriage, incest avoidance, motherly love, sibling rivalry, music, envy, dance, storytelling, healing magic and poetry in all, or nearly all, the cultures studied.
+
+- Before: The Bible's rainbow comes from a flood that drowned the guilty and their ``horribly guilty babies,'' and raindrops cannot match that.
+- After: The Bible's rainbow is God's sign, after a flood that drowned the guilty and their ``horribly guilty babies,'' that he will not do it again, at least not with water. Keats would be shocked to see that story contradicted, especially with no insight to replace it. And even if he knew the mathematics, a tale of bloodthirsty murder and smiling insanity cannot be matched by refraction: raindrops don't scream when they die. What science gives back never matches the drama of the original delusion, because the equations are not about strong emotions.
+
+- Before: The Great Stories happen every day among six billion people, and you can write fiction about them.
+- After: The Great Stories happen every day among six billion people: every day someone kills for revenge, someone kills a friend by mistake, and a hundred thousand people fall in love. And you can write fiction about humans, not Jupiter.
+
+- Before: Go far enough back and no one understands \textsc{Hamlet}.
+- After: Go far enough back and no one understands \textsc{Hamlet}; further, and there are no brains.
+
+- Before: and I would like some of the stories to change.
+- After: not in sadness, since I think we can do better. Losing the Great Stories entirely would be little better than the Sun falling into a black hole, but they have been told over and over, and I would like some of them to change; for me the story called ``Goodbye'' has lost its charm.
+
+- Before: A poet who writes an ode to the real Jupiter writes something original.
+- After: The stories should diversify as humankind grows up, and when we find strangeness we should respect it enough to tell its story truly. A poet who writes an ode to the real Jupiter writes something original; writing Jupiter as a human impoverishes our map, forcing it into the stories already told of Earth.
+
+- Before: James Thomson praised the rainbow for what it really is, in his poem on Newton.
+- After: James Thomson praised the rainbow for what it really is, in his poem on Newton; whether or not it grips like \textsc{Lamia}, tales of love and loss were already old in Greece, and until the rainbow was understood as something other than human-shaped magic, its true story could not be put into poetry.
+
+- Before: Science fiction was once defined as a story that could not be moved to the Old West without loss.
+- After: Real science fiction was once distinguished from space opera as a story that could not be moved to the Old West or the Middle Ages without loss, because the science is part of the plot.
+
+
+## honest/sections/savanna-poets.tex
+
+Why: Fidelity/substance pass: matched the post (very little difference from the Sun falling into a black hole)
+
+- Before: would be little better than the Sun falling
+- After: would differ very little from the Sun falling
+
+
+## honest/sections/joy-in-the-merely-real.tex
+
+Why: Fidelity/substance pass: replaced 'I suspect, three times over' with the three suspicions stated directly; added 'play by any rules, which makes them boring' and the blank map as a place not yet visited
+
+- Before: that play by any rules: ``in a word, real.''
+- After: that play by rules at all, which makes them boring: ``in a word, real.''
+
+- Before: Keats writes ``We know her woof,'' and I suspect, three times over, that Keats did not know it himself, that being told someone else knew was too much for him, and that even the idea of an explanation in principle would have been.
+- After: Keats writes ``We know her woof,'' an interesting use of ``we.'' I suspect that Keats did not know the explanation himself, that being told someone else knew was too much for him, and that even the idea of an explanation in principle would have been.
+
+- Before: a blank map does not mean a blank territory.
+- After: to worship a phenomenon for its mystery is to worship your own ignorance; a blank map does not mean a blank territory, only somewhere we have not visited yet.
+
+
+## honest/sections/joy-in-discovery.tex
+
+Why: Fidelity/substance pass: added the attributed names, the content of each of the three readings (locked-room mysteries, understanding that cannot be told, Maxwell; $100 answer and initiation into evolution; the Joneses), Go, orbits and tides, why the author found the infinite universe uplifting, future knowers, and why civilization-level reward still helps focus
+
+- Before: There is a story of a physicist who told his girlfriend that he was ``the only man in the world who knows why they shine.''
+- After: There is a story that one of the first to see that stars burn by fusion, perhaps Fritz Houtermans or Hans Bethe, told his girlfriend, when she remarked on the stars, that he was ``the only man in the world who knows why they shine.''
+
+- Before: Numerous sources attest that being first to solve a great mystery is a tremendous high.
+- After: Numerous sources attest that being first to solve a great mystery is a tremendous high, probably the closest thing to drugs without drugs. That can't be healthy.
+
+- Before: The charitable one: months of struggle give an understanding that falls into place all at once.
+- After: The charitable one: you do not struggle for months with a problem you can look up in the library. When you finally crack it, after attacking it from every angle, all the loose pieces fall into place at once, like solving a dozen locked-room murders with one clue. And the understanding is real: no one can get it by being told the answer, only by studying the problem in its history for months. That may be why Maxwell enjoyed discovering his equations more than you enjoyed reading them.
+
+- Before: as in the studies of fraternity pledges and of wine in pricier bottles.
+- After: as in the studies of fraternity pledges and of wine in pricier bottles. Enjoying the work of a puzzle for its own sake is fine; thinking an answer more important because you paid \$100 for it is not.
+
+- Before: The uncharitable one: status. I strongly suspect, too, that people think free knowledge cannot be important.
+- After: I strongly suspect, too, that much of science's trouble with the public comes from people who think free knowledge cannot be important; a fearsome initiation might make them happier with evolution. The uncharitable reading: status, scarcity, having a bigger house than the Joneses, whatever its size. I do not object to competition, and Go is zero-sum without being barbaric, but if the joy of discovery must be scarce it is available to one person per civilization per truth.
+
+- Before: If the joy must be scarce, only one person per civilization can have it for each truth, and Newton used up much of Earth's physics fun.
+- After: Then Newton, ``That selfish bastard,'' used up much of Earth's physics fun by explaining both the orbits of the planets and the tides.
+
+- Before: Someone somewhere knows every answer, so the requirement to be first leads to angst that cannot be resolved,
+- After: I found this uplifting. Someone somewhere knows the answer to every answerable question, even of biology and history, since there are other decoherent Earths; so the requirement to be first leads to angst that cannot be resolved,
+
+- Before: you are as ignorant as a hunter-gatherer, whoever else knows.
+- After: you are as ignorant as a hunter-gatherer, whoever else knows; in hunter-gatherer days, too, someone on another Earth, or in the future, knew. Mystery and the joy of finding out are either personal or nonexistent, and I prefer to say personal.
+
+- Before: one-shot per discovery, like a Nobel Prize.
+- After: one-shot per discovery, like a Nobel Prize. The prospect of it may be what keeps you on one problem for the years deep understanding takes, and a problem your civilization has not solved has no spoilers.
+
+- Before: Think how much you do not know.
+- After: Think how much you do not know (if you can think of nothing, ``you have other problems''): the world becomes as mysterious and interesting as an alternate dimension whose rules you must learn from scratch.
+
+
+## honest/sections/bind-yourself-to-reality.tex
+
+Why: Fidelity/substance pass: added how the Truthsayer's method works and the moral drawn from it, the rest of the lottery argument (start looking; impossible dreams; work is not the issue), what 'realistic' means and why the author will not advise it, the absurd-but-real future, what Think Like Reality said, the homework line, and the closing sentence
+
+- Before: a Truthsayer learns to detect lies by never lying. It would not work, but I find it beautiful.
+- After: a Truthsayer learns to detect lies by never lying, so as to form a relationship with the truth whose violation can be felt. It would not work, but I find it beautiful. At least, to get close to the truth you must press yourself against reality as tightly as you can, ``without flinching away, or sneering down.''
+
+- Before: ``your startup, your eBay sideline.'' The lottery is not hard, only ``un-actionable.''
+- After: ``your startup, your eBay sideline''; and if you have nothing worth hoping for, maybe it is time to start looking. I object only to impossible dreams. The lottery is not impossible, but it is an ``un-actionable'' near-impossibility: the problem is not that winning takes desperate effort, but that work has nothing to do with it.
+
+- Before: I do not mean safe, ``realistic'' goals.
+- After: I do not mean goals low enough to be ``realistic,'' easy and safe and approved by your parents; that may be good advice for you, but I am not the one to give it. I mean that you can invest emotional energy in rainbows even if they turn out not to be magic. ``The future is always absurd but it is never unreal.''
+
+- Before: This is ``Think Like Reality'' applied to feelings: bind them to the lawful universe,
+- After: In ``Think Like Reality'' I said that when physics seems counterintuitive, it is you that is weird, not physics. This is the same thing applied to feelings: bind them to the real world. Not the ``realistic'' everyday one; I would be a howling hypocrite if I told you to shut up and do your homework. I mean the lawful universe,
+
+- Before: ``Science puts the fun back into life.''
+- After: ``Science puts the fun back into life.'' Rationality directs your emotional energies into the universe, rather than somewhere else.
+
+
+## honest/sections/if-you-demand-magic-magic-won-t-help.tex
+
+Why: Fidelity/substance pass: added the zoo, how the excitement would fade (when spells had to be studied), the electricity example, possible future dragons, the Future argument in full (this is the Future relative to the Dark Ages; the pill caveat), the Special Relativity question, gravity, coming to terms with living here, the forbidden sorcery, and the full litany
+
+- Before: if dragons were real and no one had seen a zebra,
+- After: if you could meet a fire-breathing dragon at the zoo while no one had ever seen a zebra,
+
+- Before: like ``the lottery winners who, six months later, aren't nearly as happy as they expected to be.''
+- After: like ``the lottery winners who, six months later, aren't nearly as happy as they expected to be.'' The excitement would wear off, probably as soon as they had to study spells.
+
+- Before: So learn to enjoy hang-gliding as much as riding a dragon.
+- After: Unless they can be as excited by hang-gliding as by riding a dragon, and by making light with electricity as by making it with magic, real dragons would excite them no more than hang-gliding does. I am not dissing dragons; we might even create some one day.
+
+- Before: The same goes for the Future. When you get there, it will be another Now.
+- After: The same goes for the Future. Things do seem to get better, but this is the Future relative to the Dark Ages, with opportunities undreamt of by kings. If you reach the Future, you will find another Now. If your emotional energy can go only into a better tomorrow, no amount of time can help you. A future pill might fix even that, but my point is about which pills we should want to take.
+
+- Before: phenomena I call ``non-explanation-demanding.''
+- After: phenomena I call ``non-explanation-demanding.'' Why is the commenter not just as excited by Special Relativity, which is known to be a law, so that the excitement is not wasted?
+
+- Before: In the same way, New Agers would lose the point of believing in UFOs if UFOs simply appeared.
+- After: In the same way, the worst catastrophe for the New Age community would be for its rituals to start working and UFOs to appear: in a world where psychic powers were merely real, no one would believe in them, any more than anyone cares enough about gravity to believe in it.
+
+- Before: I have found plenty of dragons to fight in this world.
+- After: Binding yourself to reality means coming to terms with the fact that you live here; only then can you see your world's opportunities without wishing your sight away. I have found plenty of dragons to fight and magics to master in this world, and if I were transported into a fantasy novel I would expect to find myself studying the forbidden ultimate sorcery, because a new world would not change anything.
+
+- Before: whatever I would do anywhere, ``I may as well do it in reality.''
+- After: if I am going to be happy, achieve greatness, learn true secrets, save the world, feel strongly or help people anywhere, ``I may as well do it in reality.''
+
+
+## honest/sections/mundane-magic.tex
+
+Why: Fidelity/substance pass: gave what the gratitude trick is for (dukkha), the uses of the second eye, the described features of each power (deeper bonds; copying and misusing Traceries; tentacles, torques and tool feedback; distant mountains, unverifiable fusion fires, royalty), and the Ultimate Power's described properties (absorbing lesser powers, galactic reach, the world beneath the world, deaths by catastrophe, surprise or its own flaws, danger in a cell)
+
+- Before: There is an old trick against suffering:
+- After: There is an old trick against dukkha, or suffering:
+
+- Before: ``where an ordinary eye would see only a two-dimensional shadow of the true world.''
+- After: ``where an ordinary eye would see only a two-dimensional shadow of the true world.'' Only its possessors could aim the legendary weapons that kill far beyond a sword's reach, or fully use the ultrafast machines called cars.
+
+- Before: Then my list. Speech is Vibratory Telepathy. Writing is Psychometric Tracery, which lets the dead share their thoughts with us. The hands are Multidimensional Kinesis, which make tools that make finer tools. Sight is the Eye, which senses tiny vibrations in the Force that binds matter.
+- After: Then my list, each power an ordinary one described as magic. Vibratory Telepathy sends thoughts through invisible vibrations in the air, and lets its users form bonds deeper than other primates can. Psychometric Tracery leaves knowledge and emotion in fine lines on a surface, so that Tracers share the thoughts of Tracers dead for thousands of years; reading one Tracery while inscribing another copies it, and Tracers get into trouble using Traceries too complicated for them to have written. Multidimensional Kinesis sends complex forces, pushes, torques and twists, through small tentacles into anything within reach; Kinetics use it to sculpt objects into tools that extend their Kinesis and let them sculpt still finer tools. The Eye perceives tiny traveling twists in the Force that binds matter, akin to the sunlight that falls on leaves; its bearers know mountains many days away, and say that at night they sense huge fusion fires at unthinkable distances, which no one else can verify. A single Eye is said to make its bearer equivalent to royalty.
+
+- Before: Nothing can oppose it except itself.
+- After: It is extremely rare, ``the hidden technique of the world.'' Nothing can oppose it except itself: a lesser power is ``comprehended'' and disrupted, or absorbed. The strongest Ultimates stretch their comprehension across galaxies and aeons, and perceive the laws of the hidden ``world beneath the world.'' Ultimates have been killed by natural catastrophes and by surprise attacks too swift to answer, but those are luck; a survivor begins to bend time to avoid the next. Many are destroyed by their own power, falling into flaws in their imperfect inner echo of the world. Locked unarmed in a cell, an Ultimate is still among the most dangerous creatures on the planet, because a sword can be broken but this power
+
+
+## honest/sections/mundane-magic.tex
+
+Why: Fidelity/substance pass: repaired a sentence join and made a quotation verbatim
+
+- Before: but this power It cannot be taken away ``without removing you.''
+- After: but this power cannot be removed ``without removing you.''
+
+- Before: extremely rare, ``the hidden technique of the world.''
+- After: extremely rare, the ``hidden technique of the world.''
+
+
+## honest/sections/the-beauty-of-settled-science.tex
+
+Why: Fidelity/substance pass: added the relativity headline, why solid science is never news, why controversies get attention, the delusion of understanding, why Archimedes is a good start, simplicity as the core of beauty, and the full Everest image
+
+- Before: You never see the headline ``Phlogiston theory remains false.''
+- After: You never see the headlines ``General Relativity still governing planetary orbits'' or ``Phlogiston theory remains false''; by the time science is solid, it is no longer news.
+
+- Before: Controversies are problems hard enough that experts can still fool themselves.
+- After: Controversies are problems hard enough that people who have spent years mastering the field can still fool themselves, which is what makes the heated arguments the media like.
+
+- Before: A press release gives you a fake explanation of a result
+- After: A press release gives you a fake explanation, conveying only the delusion of understanding, of a result
+
+- Before: Science is built on discoveries all the way back to Archimedes, who found out why boats float, and a good place to start is the beginning.
+- After: Science is built on discoveries built on discoveries, all the way back to Archimedes, who found out why boats float, a fact that makes sense without any other discovery. So a good place to start is the beginning.
+
+- Before: ``If you want to pretend to be sophisticated, go find a play to sneer at.'' Jumping straight to the frontier is like trying to climb only the top half of Everest by jumping over the bottom half.
+- After: ``If you want to pretend to be sophisticated, go find a play to sneer at.'' If you want fun, remember that simplicity is at the core of scientific beauty. Jumping straight to the frontier without the settled science is like trying to climb only the interesting top half of Everest by standing at its base, bending your knees and jumping really hard.
+
+
+## honest/sections/amazing-breakthrough-day-april-1st.tex
+
+Why: Fidelity/substance pass: added why frontier results are hard (prerequisites; not solved centuries ago), the other two headlines as written, why Archimedes is understandable (no 50 prior discoveries, a couple of graphs, obvious use), the film headline, and what the holiday asks of journalists
+
+- Before: is too hard to follow, and is later shown to be wrong.
+- After: is too complicated for an ordinary mortal without much prerequisite science (which is why it was not solved three centuries ago), and is later shown to be wrong.
+
+- Before: Königsberg tourists learn they cannot cross each bridge once; breathing turns out to be a kind of burning.
+- After: ``YOU SHALL NOT CROSS! Königsberg Tourists' Hopes Dashed''; and ``ARE YOUR LUNGS ON FIRE? Link Between Respiration And Combustion Gains Acceptance Among Scientists.''
+
+- Before: you can repeat the experiment in your bathtub.
+- After: it is far enough back that you need not know fifty other discoveries, it can be explained in a couple of graphs, anyone can see its use, and you can repeat the experiment in your bathtub.
+
+- Before: like walking into a film three-quarters of the way through.
+- After: like walking into a film three-quarters of the way through, writing up ``Bloody-handed man kisses girl holding gun!'' and walking out again.
+
+- Before: so I settle for the holiday.
+- After: so I settle for the holiday: report an understandable breakthrough as though it had just occurred.
+
+
+## honest/sections/is-humanism-a-religion-substitute.tex
+
+Why: Fidelity/substance pass: added that space travel is a lawful dream, the sample atheist hymn, what gives real hymns their integrity, what a godless wedding would talk about, the idiot-and-Sun illustration, 'believe accurately, then feel accordingly', the postman, and why the author's awe is not vulnerable
+
+- Before: Suppose a brain scan showed that my brain, watching a space shuttle launch,
+- After: Suppose a brain scan showed that my brain, watching a space shuttle launch (wanting to visit space is not ``realistic,'' but it is a lawful dream),
+
+- Before: I call them ``hymns to the nonexistence of God''; they will ``without exception, suck.''
+- After: I call them ``hymns to the nonexistence of God'': ``Hail, oh unintelligent universe,'' and so on. They will ``without exception, suck.''
+
+- Before: Genuine religious art, by contrast, ``is not an imitation of anything.''
+- After: Genuine religious art, by contrast, ``is not an imitation of anything'': its writers often felt strongly, wrote honestly and worked hard at prosody and imagery, which gave it artistic integrity.
+
+- Before: Weddings pass, as long as no one lectures on God.
+- After: Weddings pass, as long as no one lectures on God: in a world without religion, a wedding would be about love, children, commitment and devotion, and no one would mention God.
+
+- Before: Nor should you avoid things just because they resemble religion; ``reversed stupidity is not intelligence.''
+- After: Nor should you avoid things just because they resemble religion; ``reversed stupidity is not intelligence.'' The world's greatest idiot may say the Sun is shining, but that does not make it dark. Believe accurately, then feel accordingly: if watching a rocket rise makes you want to sing, ``write the song, dammit.'' Tears at a launch mean that my caring is bound into the real world.
+
+- Before: If God spoke plainly, God would become ``one more boringly real thing.''
+- After: If God spoke plainly and answered prayers reliably, God would become ``one more boringly real thing,'' no more worth believing in than the postman.
+
+- Before: Awe at a real shuttle has no such weakness.
+- After: Awe at a real shuttle has no such weakness: I can see it rise without losing the awe, and everyone else believing in shuttles does not make them less special.
+

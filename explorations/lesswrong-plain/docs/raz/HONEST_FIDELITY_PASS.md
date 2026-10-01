@@ -223,26 +223,26 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] perpetual-motion-beliefs
 - [x] searching-for-bayes-structure
 - [x] dissolving-the-question
-- [ ] wrong-questions
-- [ ] righting-a-wrong-question
-- [ ] mind-projection-fallacy
-- [ ] probability-is-in-the-mind
-- [ ] the-quotation-is-not-the-referent
-- [ ] qualitatively-confused
-- [ ] think-like-reality
-- [ ] chaotic-inversion
-- [ ] reductionism
-- [ ] explaining-vs-explaining-away
-- [ ] fake-reductionism
-- [ ] savanna-poets
-- [ ] joy-in-the-merely-real
-- [ ] joy-in-discovery
-- [ ] bind-yourself-to-reality
-- [ ] if-you-demand-magic-magic-won-t-help
-- [ ] mundane-magic
-- [ ] the-beauty-of-settled-science
-- [ ] amazing-breakthrough-day-april-1st
-- [ ] is-humanism-a-religion-substitute
+- [x] wrong-questions
+- [x] righting-a-wrong-question
+- [x] mind-projection-fallacy
+- [x] probability-is-in-the-mind
+- [x] the-quotation-is-not-the-referent
+- [x] qualitatively-confused
+- [x] think-like-reality
+- [x] chaotic-inversion
+- [x] reductionism
+- [x] explaining-vs-explaining-away
+- [x] fake-reductionism
+- [x] savanna-poets
+- [x] joy-in-the-merely-real
+- [x] joy-in-discovery
+- [x] bind-yourself-to-reality
+- [x] if-you-demand-magic-magic-won-t-help
+- [x] mundane-magic
+- [x] the-beauty-of-settled-science
+- [x] amazing-breakthrough-day-april-1st
+- [x] is-humanism-a-religion-substitute
 - [ ] scarcity
 - [ ] the-sacred-mundane
 - [ ] to-spread-science-keep-it-secret
