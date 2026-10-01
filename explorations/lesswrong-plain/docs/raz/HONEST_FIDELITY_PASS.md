@@ -355,8 +355,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] tolerate-tolerance
 - [x] your-price-for-joining
 - [x] can-humanism-match-religion-s-output
-- [ ] church-vs-taskforce
-- [ ] rationality-common-interest-of-many-causes
+- [x] church-vs-taskforce
+- [x] rationality-common-interest-of-many-causes
 - [ ] helpless-individuals
 - [ ] money-the-unit-of-caring
 - [ ] purchase-fuzzies-and-utilons-separately

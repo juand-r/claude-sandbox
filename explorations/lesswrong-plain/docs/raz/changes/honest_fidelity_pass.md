@@ -8568,3 +8568,70 @@ Why: Fidelity/substance pass: Added the post's substance: why the Church can be 
 - Before: so a norm of giving 5\% of income to real causes would match what a 10\% tithe gives them.
 - After: so a norm of giving 5\% of income to real causes would match what a 10\% tithe gives them, and choosing causes where good is orders of magnitude cheaper would do more.
 
+
+## honest/sections/church-vs-taskforce.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what an atheistic hymn is, starting from what a band gives, the full list of suspected inefficiencies, the redesigned building, the insurance question, welcoming newcomers, the scattered-supporters example, the taskforce sizing example, the energy freed from religion, and the learning alternative.
+
+- Before: against writing ``hymns to the nonexistence of God.''
+- After: against writing ``hymns to the nonexistence of God''; a good atheistic hymn is simply a song about anything worth singing about that is not religious.
+
+- Before: This is ``probably something I don't understand all that well, myself.''
+- After: This is ``probably something I don't understand all that well, myself.'' Brownies and babysitting come to mind first. But the right question is what a hunter-gatherer band gives its people, and what modern life lacks; if a church fills only some of that, let us do better, without assuming we must meet on Sunday mornings under stained glass.
+
+- Before: Some offices supply community too: brownies, babysitters, maybe help in a catastrophe.
+- After: To break the mold, note that some offices supply community too: brownies, babysitters, maybe help in a catastrophe. Not everyone is that lucky.
+
+- Before: and that one building could be shared by many communities.
+- After: that supporting a church and a pastor is expensive when many communities could share one building, that churches do too little matchmaking because they enforce medieval moralities, and that all of it should be tested.
+
+- Before: I think ``These buildings look really, really expensive, and there are too many of them.''
+- After: I think ``These buildings look really, really expensive, and there are too many of them.'' Starting over, you might have one large building for the occasional wedding, shared by different communities at different times, with a big video screen for speakers, lectures or films. Stained glass would not be a high priority.
+
+- Before: Churches provide community without admitting that this is ``nearly all of what people get out of it.''
+- After: Could the help a congregation gives in trouble be improved by an explicit rainy-day fund or insurance? Possibly not; bringing in explicit finance changes things oddly. Perhaps keeping insured should be a condition of membership. But churches provide community without admitting that this is ``nearly all of what people get out of it,'' and friendly workplaces provide it by accident. Think explicitly about giving people a band, and good ideas appear. Welcoming newcomers is not a sermon topic; right after a move is when someone most needs community, and it is a chance for the band to grow. Tribes might even compete at quarterly exhibitions to capture newcomers.
+
+- Before: but on the Internet supporters are too scattered.
+- After: so why not use that? But on the Internet supporters are too scattered; the only member of the Church of the Subgenius in your city gains little, and the Internet is not yet a substitute for physical presence.
+
+- Before: each built around the most specific interest that can support ``a decent-sized band.''
+- After: each built around the most specific interest that can support ``a decent-sized band.'' If your city lacks 50 fellow Linux programmers, settle for 15 open-source programmers, or at first 15 rationalists improving the world in their various ways. Such tasks need communities anyway, and the energy once spent on religious institutions could go there, with purposes admirable without delusion filling the gap.
+
+- Before: Colleges seem to support communities well, so learning is another possible center.
+- After: Colleges seem to support communities well, so learning is another possible center; with a large screen in the building, I would challenge the idea that adult learning must happen on distant, expensive campuses with teachers who would rather be doing something else.
+
+- Before: ``Maybe. Probably.''
+- After: ``Maybe. Probably.'' It could be built step by step in a large enough city with enough rationalists who have heard of it.
+
+
+## honest/sections/rationality-common-interest-of-many-causes.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what rationality gives the marijuana cause, how the atheism and legalization causes would each gain, agreeing to keep priority disputes out of the mainstream, willpower as the limiting resource, the commons problem, and the loneliness of small projects.
+
+- Before: atheism, marijuana legalization,
+- After: atheism, and marijuana legalization, where you could wish people were more aware of their motives and of signaling, and more moved by inconvenient facts;
+
+- Before: where I ``explicitly recursed on the job of creating rationalists.''
+- After: where after years of bogging down I ``explicitly recursed on the job of creating rationalists.''
+
+- Before: ``You can't capture all the value you create.''
+- After: ``You can't capture all the value you create,'' and trying has bad side effects.
+
+- Before: Each would capture some of the value the others create.
+- After: Each would capture some of the value the others create. Atheism has little to do with marijuana laws, but if both causes say something about confronting a discomforting truth that spoils a righteous tirade, both benefit.
+
+- Before: and not treat supporters as a fixed supply.
+- After: and not treat supporters as a fixed supply; together they create more rationalists with more capacity for support. Where causes disagree, especially on priorities, they must agree to keep quiet about it, except perhaps in specialized venues.
+
+- Before: but they come from different mental accounts,
+- After: but they come from different mental accounts and cost different amounts of willpower, the true limiting resource; people spread donations to limit regret if one cause fails;
+
+- Before: Groups that will not share can be dropped from common resources.
+- After: Sharing could create a commons problem, but groups that will not share their rationalists, or mention other projects, can be dropped from common resources.
+
+- Before: we would more often find ``ten of us in any given city.''
+- After: we would more often find ``ten of us in any given city''; many projects are lonely for their supporters.
+
+- Before: Rationality may not be ``the most important thing in the world,''
+- After: Rationality may not be ``the most important thing in the world,'' which is whatever we protect,
+
