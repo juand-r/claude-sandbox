@@ -42,3 +42,9 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
 - New routes written: 20 (two-window gap machine, overshoot law), 21 (MERGE),
   22 (unary transducers: dump + single-B processors + fuse).
 - 23:47 per lead 23:46: shuttle owns single-wall tables; I cancelled my queued explore2/bscan A/passraw D (killed queue sh 14962 and passraw sh 10414; passraw A python 10416 finishing). Theory owns the graph search on shuttle's tables.
+- 23:50 gap2.py (route 20 model): overshoot law confirmed in exact kinematics;
+  commensurate units -> exact x2 / x1; incommensurate -> offsets periodic
+  mod 154 / 350. First run had a wrong slope estimate (two-point fit);
+  replaced by the period test. Posted to delayline.
+- 23:47 passraw A done: 974 passes / 19194, 0 fixpoints; all named pass
+  outputs die on the next C1-C3 cell.

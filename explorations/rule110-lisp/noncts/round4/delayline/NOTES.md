@@ -73,3 +73,27 @@ B-lattice vs E^n is also single-class. => target: a (4,-2) train Q with
 A + Q -> A + Q' (crossing) and E^m + Q -> E^(m+k). bscan.py tests all
 391 (4,-2) trains of width <= 30 (theory's enumeration). Controls pass:
 A + B -> nothing, E^m + B -> E^(m+1), A + B^3 -> B^2, E^m + B^3 -> E^(m+3).
+
+## 23:49 window table complete; burst-safe refill search negative
+- scan_e2.jsonl: all 2,337 library G-speed packets vs E^2, every class
+  (collider collide_pair). wclass.py joins it with coupler's E scan:
+  * on E (zero window), (packet, class) outcomes: DEB 3400, RPASS 1557,
+    VAL 1504, WALK 422, LPASS 128.  Every WALK shift is >= 0 (rightward):
+    0 (108), 20.53 (57), 24.27 (114), ... up to 78.4 cells.
+  * neutral on E^2 (value kept): 657 (packet,class) outcomes; 219 packets
+    neutral in all 3 classes.
+  * neutral-on-E^2 AND shooting left on E: ONLY S43 = GB3@(0,0)+GB5@(-14,54)
+    (class 2: E -> E^5 + B^3; it closes the window at value 4). No reusable
+    reflector, no 7-unit shooter, no left walker, no value-1 pass-through.
+  Scope: single library packets of velocity -1/3 (2,337), windows E, E^2.
+- bscan.py [sim, exact, single-class pairs]: all 391 (4,-2) trains of
+  width <= 30 (theory's SAT enumeration). EVERY one acts as a pure charge
+  carrier: E^m + Q -> E^(m+k) for m = 1,2,3,5 (k = 1..8), and A + Q ->
+  (Q minus one unit) or nothing (4 cases). No train crosses an A.
+  Controls: B, B^3 (library) reproduce the catalog. => no burst-safe
+  refill on the B lattice within width 30.
+- burstmodel.py [model], FAILURES 0: burst length = floor(rt/P)+1 with a
+  crossing channel (15/15 cases g = 100..3000, P = 150..300); with
+  annihilation (A + B^k -> B^(k-1)) the refill never reaches R2 (g = 100,
+  600, 1200: y never refilled); a reflector that walks per reflection gives
+  non-periodic gaps 200, 354, 376, ..., 2312 (control: constant gap).

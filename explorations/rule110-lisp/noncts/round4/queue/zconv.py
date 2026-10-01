@@ -14,10 +14,10 @@ from create import placements
 from create2 import build_tight
 from reads import tiles_of
 ETH = np.array([int(c) for c in ETHER], dtype=np.uint8)
-TIN, T = 31500, 3600
+TIN, T = 31500, 4800
 JS = range(-8, 9)
-CUT = 100
-WLO, WHI = -400, 900
+CUT = 310
+WLO, WHI = -400, 1300
 
 def open_gap_at(sc, K0, D, cut_rel):
     c = sc.ebar_to_seg(K0 + cut_rel)

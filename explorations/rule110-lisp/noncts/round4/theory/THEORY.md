@@ -81,6 +81,12 @@ different: it has all edges but every effect is monotone.
   crossing. Verify (round 4, board 23:02) showed a perturbation's
   influence cone does reach the front, at speed 3/5, but by destroying the
   rod. So (L) holds for "the rod survives" and is not a light-cone fact.
+  objects (board 23:46) then found the medium carries right-to-left
+  domain walls at -3/5 (all 15 kinds destroy the rod at its front), and
+  that nothing launched at a rod's back by a glider reaches its front:
+  0 of 99,170 library scenes, SAT for B-lattice trains up to width 40.
+  The right premise is therefore: "no right-to-left influence through a
+  long rod from glider collisions at its back", with those scopes.
 - ALL of them assume the program is a periodic *stream* acting on
   *counters*. A particle TM (s.3) has neither, so none applies.
 
@@ -246,11 +252,19 @@ different trains are not (False).
 | all 391 B-lattice trains w <= 30 (btrains.py) | C1, C2, C3 | 10 L-passes | always a single B | 0 |
 | packets of <= 5 separate A's within 70 cells (1185) | C1, C2, C3 | 0 R-passes (96 clean steps, all reflections) | - | 0 |
 | packets of <= 5 separate B's within 60 cells | C1, C2, C3 | 3092/3093 dirty | - | 0 |
-| all 6398 A-lattice trains w <= 30 (shuttle's SAT list) | C1, C2, C3 | see below | | |
-| all 1071 D-lattice trains w <= 30 | C1, C2, C3 | see below | | |
+| all 6398 A-lattice trains w <= 30 (shuttle's SAT list) | C1, C2, C3 | 974 R-passes (of 19,194 pairs; 474 reflections, 2,299 absorbed, 15,447 dirty) | A (740), A^2 (128), A^3 (33), A_8_A (18), A A (12), A_2_A_6_A (12), A A^2 (11), A_14_A (8), A_2_A_14_A (4), D1/D2 (5) | 0 |
+| (second step) every named pass output above | C1, C2, C3 | 0 | all dirty or absorbed | - |
+| all 1071 D-lattice trains w <= 30 | C1, C2, C3 | not run (shuttle's tables cover it, lead 23:46) | | |
 | library heads (census, 226) | 100+ library stationary objects | 59 passes | single A or B, except 4-B packets + C3_11_C1#2 -> C1_11_C2 + 5 B's | 0 |
 
-Observation: every pass seen so far leaves ONE glider (or, once, a head
+Scoped negative [sim]: on tapes of C1, C2, C3 cells, no A-lattice train of
+width <= 30 crosses two consecutive cells by passes alone: every pass
+output (all of them small named A packets or D1/D2) is dirty or absorbed
+on the next C1, C2 or C3 cell (checked for every output type in the
+table; the unnamed two-object outputs contain a single A, which is never
+passed). Ratchets that mix in reflections are not excluded by this.
+
+Observation: almost every pass leaves ONE glider (or, once, a head
 that is dirty on the next identical cell). With synth's round-1 result
 that a single A is never passed or reflected by any stationary object of
 width <= 24, and a single B only by special objects, no pass chain
@@ -441,7 +455,7 @@ runs left to right (R3's (L)).
   blocks to exchange information both ways every simulated step, so it
   inherits every transport problem at once. Lowest priority.
 
-## 6b. Route 20, two windows and two gaps: the overshoot law [arg]
+## 6b. Route 20, two windows and two gaps: the overshoot law [arg + model]
 
 Layout (delayline's drift switch, made symmetric): W_L ~g1~ M ~g2~ W_R.
 W_L and W_R are short rods kept at value 0/1 ("windows"), each driven by
@@ -473,9 +487,31 @@ offsets c corrected by a fixed number of extra INC/DEC steps. So a per-unit
 handshake is SUFFICIENT but not obviously NECESSARY; round 3's s.5.2
 generalisation ("transfers should be metered by a handshake per unit")
 was stronger than its evidence: xm.py's skew control used a skew the
-compiler did not model. Untested in code; I flag it as [arg] and as the
-first thing to model if route 20 produces windows that walk and contacts
-that branch.
+compiler did not model.
+
+**Model check [model]** (`gap2.py`, exact rational event kinematics of one
+transfer: start signal from M opens W_L, W_R opens at once, W_L walks in on
+every packet, W_R walks out on every kR-th packet, Doppler included, a
+stop signal at speed vs closes W_R). Test: the smallest m such that
+g2_out(g1 + m) - g2_out(g1) is constant (affine map, offsets periodic mod m).
+| parameters | kR = 1 | kR = 2 | kR = 3 |
+|---|---|---|---|
+| commensurate: u/vp = 2P, u/vs = P (u = 4, P = 6, vp = 1/3, vs = 2/3) | stop signal never catches W_R | g2' = 2 g1 EXACTLY (m = 1, offset 0) | g2' = g1 exactly |
+| incommensurate: u = 5, P = 7 | never catches | affine, slope 17/11, offsets periodic mod 154 (24 values) | affine, slope 17/25, offsets periodic mod 350 (38 values) |
+Reading: (i) the overshoot law holds (affine, residue-periodic offsets)
+in every case where the stop signal can catch the window (it must be
+faster than the window's walk, v > w); (ii) when the signal delay and the
+Doppler delay per counter unit are whole stream periods, the transfer is
+an EXACT integer multiplier with zero offset, so no per-unit handshake is
+needed; (iii) without commensurability the offsets depend on g1 mod 154
+or 350, which the machine cannot observe, so a compiler would fail.
+Design rule for route 20: choose the unit u (a number of window steps) so
+that u/vs and u/vp are multiples of the stream period, as Cook chose
+appendant lengths that are multiples of 6. Scope: one transfer type, an
+idealised kinematics (point objects, instantaneous reactions); Rule 110's
+real reactions add offsets per event; if those are the same in every
+event (single-class or class-fixed reactions) they are constants and (ii)
+survives; class-dependent offsets would re-introduce residues [hyp].
 
 ## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec]
 
