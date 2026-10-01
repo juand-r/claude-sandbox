@@ -139,8 +139,8 @@ the author later. Constraints so far:
 - 2007: Odile, long married to a wine broker in Beaune, is widowed.
 - 2008: she writes to him. The first letter in 31 years.
 - 2009, at harvest: she comes to Napa "for a month" and stays.
-- 2009 onwards: together. Not married. She keeps a strawberry bed by the
-  pond and refuses to learn the names of the clones in his vineyard.
+- 2009 onwards: together. Not married. She refuses to learn the names of the
+  clones in his vineyard.
   Whether she knew his real name: OPEN.
 - Night of 18–19 October, YEAR OPEN (PROPOSED: 2014), his real birthday:
   Odile disappears. See "The disappearance".
@@ -252,8 +252,6 @@ year: by October, before the rains, the pond was already low.
 
 ## Motifs (plant early, return often)
 
-- Strawberries: her bed by the pond; grey mould on forgotten fruit. The
-  strawberry already "returns throughout this book" in chapter 1.
 - Water: the pond, still surfaces, the helicopters taking water from it, the
   water line going down, the word "drowned", which he avoids until late.
 - 1968: the year they met, the year he became someone else; a bottle of

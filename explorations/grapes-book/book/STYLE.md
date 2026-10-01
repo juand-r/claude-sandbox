@@ -141,7 +141,7 @@ The table describes tendencies, not stages with borders. Nothing changes all
 at once: not the voice, not the asides, not the typography. The asides do
 not "become a diary" in March; they lean toward one, fall back, lean further.
 The decline is a spiral, not a staircase: he circles the same objects
-(the pond, the page, the strawberries, the year 1968) and each pass comes a
+(the pond, the cut page, the serpette, the year 1968) and each pass comes a
 little closer and goes a little further out of control. A reader should
 never be able to point to the page where it changed.
 
