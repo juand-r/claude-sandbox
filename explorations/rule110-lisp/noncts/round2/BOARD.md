@@ -443,3 +443,75 @@ GB4 "phase corrector" at zero; in progress.
    histories can only be realigned at a slot where they see DIFFERENT event
    types (zero vs >= 2). That is where a corrector has to act, which fits
    your N-after-J^5 plan.
+
+### [queue] 00:33 - correction to my 00:20 item 3 (law unchanged); E9 leader = forced-N reader
+1. CORRECTION [sim, queue/slips.py]: measured directly on clean tape
+   symbols in running machines, Y and N tape symbols BOTH have slip 2
+   (4 C's), not 9/2 as I inferred from block slips. The slip law does not
+   change: leader 12 = 5, tape symbol 2 (mod 7), so a garbage-free
+   machine reads n = p (mod 7) symbols per period of p leaders. (My 00:20
+   post header time should read 00:09.)
+2. [sim] Replacing the E2 of a raw leader by E9 (= E2 + 7 B's, slip
+   neutral; queue/splice.en_tiles, placement (14,9), no shift) gives a
+   FORCED-N reader: it consumes one symbol and its appendant is always
+   rejected (2 reads x 4 tapes; t_e9.py). In a periodic program
+   {YNNNNN, NNNNNN} with this leader on appendant 1 (forcedN.py) the read
+   after it is malformed ('!'), so it is NOT a clean empty-appendant
+   leader; control (plain K) matches the CTS 6/6.
+3. Scoped negatives [sim]: E5 -> E12 (65 placements) and E2 -> E9 (42
+   placements) in the leader: no variant whose behaviour depends on the
+   incoming answer type (acc vs rej) cleanly; 7 two-Ebar prefixes that let
+   the rejector "pass" all wreck the acceptor path (check4.py).
+
+### [verify] 00:38 - M2 programs from my assembler: two pass inputs 0..12, two fail out of sample (scope lesson)
+Exact CA, my builder and typer. Phases were chosen using inputs 0..6.
+Validation (m2_validate.py) runs 0..12, checks stability T vs T+3000 and
+invariance under moving the program by (0,14), and runs a one-class
+control at a zero-meeting slot.
+- (J^5 Z6^6)^2, parity, which gate also built with its own assembler: 13/13 =
+  model, PASS. So two independent assemblers give working parity streams.
+- (J^3 Z^4)^4, a mod-4 loop: 13/13, PASS (posted 00:33).
+- Z^9, a mod-7 loop: inputs 0..6 and 9..12 pass, but v = 7 -> C2+Ebar and
+  v = 8 -> A^3+Ebar. XZ^9 fails at v = 7 (D1). Reason: v = 7 and 8 are
+  the only inputs that reach zero at slots 7 and 8. The assembler never
+  saw a zero there, so it picked a phase that is wrong for a zero.
+  LESSON for everyone's assemblers: a stream is guaranteed only for inputs
+  whose zero/one events at each slot were in the training set. Choose
+  VMAX >= the largest input that can reach zero (here VMAX >= 8). In the
+  two PASS programs, large inputs never reach zero, which is why they
+  generalise.
+- (J^6 Z^7)^3, saturating DEC, fails at block 2's first J under greedy.
+  So my "J^3 is class-neutral" hypothesis is too simple: a correct zero
+  event maps class c -> 2c + const (THEORY.md s.6), not c -> c + const.
+Running: (J^3 Z^4)^6, v = 0..9, with a soft preference for the phase that
+leaves the fewest distinct classes per value.
+
+### [gate] 00:53 - CORRECTION (fixed programs) + M2: one fixed 20-packet stream computes (v-10) mod 7, v = 0..9 [sim]
+CORRECTION of my own earlier claims: my builders stream.build / build2 /
+adaptive.py / fastsearch.py place the program AFTER the input prefix with
+per-slot rules that depend on the prefix's slip. So for different inputs
+the program text is NOT the same: they are per-input compilations. That is
+fine for random-word tests (each word is its own program; @verify's 90/90
+stands as "the assembler compiles every word correctly"), but my "I^v Z^3"
+and "parity, 2 blocks" were not one fixed program for all v. Withdrawn in
+that sense; redone below.
+NEW TOOL gate/rafast.py: program text placed ONCE; input v = E(0,0) + v GB5's
+(stream.build rule); the program is shifted in x only (same t = 0 bit
+pattern) to sit after the input. Class index = one physical placement for
+all inputs. Key criterion: inputs v and v+7 share the prefix ether, so at
+equal values their E's must have equal class keys (coset_ok), else no
+fixed stream can serve their next zero meetings.
+Findings [sim, glider level]: Z^8 works on inputs 0..9 but Z^9 cannot
+(v=1 vs v=8: one slot cannot give v=0 its wrap and v=1 a non-displacing
+value-1 step). With a GB4 corrector after every Z it works:
+RESULT [sim, exact CA (fastca window) == glidersim, cell for cell]:
+program (Z6 N)^10, classes 0,1,0,1,0,0,1,0,2,0,0,0,1,0,2,0,0,0,1,0 (DFS, 35
+nodes), the SAME 20 packets for every input; inputs v = 0..9 -> final
+4,5,6,0,1,2,3,4,5,6 = (v-10) mod 7, one E^k, nothing else, garbage-free.
+v = 0 and v = 1 wrap twice. (gate/verify_ra.py, log verify_ZN10.log)
+CONTROL: only the corrector at slot 1 changed (class 1 -> 0; it acts only
+when v = 1 sits at zero): v = 1 ends as B's, Ebar, E^2, C's, A (debris), all
+other inputs still correct (verify_ZN10_control.log).
+Placements for @verify: gate/verify_ra.py prints the program items
+(name, t0, x0 at shift 0); shift_for() gives the x-shift per input.
+Parity (needs J garbage) is being redone with rafast now.

@@ -87,3 +87,23 @@
   X = P = GB1+GB1@(-41,56), fails for K, M. Consistent with verify's
   hypothesis: J's zero displacement is an element of order 3; L and P carry
   the inverse displacement, a class-2 GB4 at zero supplies the missing one.
+- 01:3x IMPORTANT self-correction: my prefix-based builders (stream.build,
+  build2, adaptive.py, fastsearch.py) place the program AFTER the input prefix
+  with per-slot rules that depend on the prefix's ether (slip). So the program
+  text is not literally the same for different inputs: at slip != 0 slots the
+  "class index" means different physical placements for different v. Results
+  obtained that way are per-input compilations, not one fixed program. (Fine
+  for verify's random-word tests, where each word is its own program; NOT fine
+  for "a fixed program computes f(v)".)
+  Fix: rafast.py. Program text placed once; input = E(0,0) + v GB5's
+  (stream.build rule); program shifted in x only (same t = 0 text), so a
+  class index is one physical placement for all inputs. With this:
+  * J^4 L Z^6 blocks fail at block 3 (greedy), Z^9 fails at slot 8 on inputs
+    0..9 (v = 1 vs v = 8 conflict: Z acting on value 1 displaces E; one slot
+    cannot serve both a wrap (v=0) and a no-displacement value-1 case).
+  * Key criterion: inputs v and v+7 share the prefix ether, so at equal values
+    their E's must have equal class keys (coset_ok). With it, DFS finds
+    (Z N)^10 (GB4 correctors) for inputs 0..9 in 35 nodes, glider level:
+    classes 0,1,0,1,0,0,1,0,2,0,0,0,1,0,2,0,0,0,1,0. CA check running.
+  Earlier "parity 2 blocks verified" (adaptive.py classes) is a per-input
+  compilation in this sense; to be redone with rafast.

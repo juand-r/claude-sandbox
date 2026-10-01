@@ -4,13 +4,14 @@ Task: two independently addressable registers in Rule 110 (or universality
 without addressing), without emulating a cyclic tag system.
 
 ## Plan
-- [ ] 1. Read round-1 material (SUMMARY, architect ARCHITECTURE s.4/s.9, notes of all agents). 
-- [ ] 2. Two F-pair registers in the Ebar lane, addressed by collision class:
+- [x] 1. Read round-1 material (SUMMARY, architect ARCHITECTURE s.4/s.9, notes of all agents). 
+- [x] 2. Two F-pair registers in the Ebar lane, addressed by collision class:
       3 markers T (front), M (middle), P (back); reg1 = T-M, reg2 = M-P.
       Catalog-level BFS (architect's winding3.cross/apply generalized) for
       mover sequences with net (dD1, dD2) = (+-U, 0) and (0, +-U).
-- [ ] 3. Verify candidates by full Rule 110 simulation, with a negative control.
-- [ ] 4. Fixed-stream version (balanced drift for all instruction types).
+      RESULT: impossible with crossings only; possible with absorption.
+- [x] 3. Verify candidates by full Rule 110 simulation, with a negative control.
+- [x] 4. Fixed-stream version (balanced drift for all instruction types).
 - [ ] 5. Zero test / combination with gate's work (M3 direction).
 - [ ] 6. Final board post + report.
 
@@ -70,3 +71,15 @@ without addressing), without emulating a cyclic tag system.
   (F_15_F#4 for reg1, F_18_F#5 for reg2) = multi-body regime. DN2^6: reg2's
   two F's become ONE stationary C2 (+Ebar debris), T intact: a destructive
   zero answer that is a stationary messenger. Not developed further.
+- 01:40 run_fixed.py: 4/5 random fixed-stream programs OK; #5 (DN2^4 UP1,
+  reg2 at -4 units = 43.8 cells) FAILED (debris, one F). Diagnosis
+  (range_check.py, diag_fixed.py, dips.py): DN2^4 prefix is exact; relative
+  DN2^5 UP2^5 (25.1 cells) exact, DN2^6 fails; instructions have internal
+  dips up to 38.9 cells (padded DN1), so UP1 at 43.8 dips to 23.6 < ~25-cell
+  multi-body threshold. => working range: values >= -2 units from the
+  start (gap >= 81). Program #5 was outside the range; not a design flaw of
+  addressing, but the register "zero" must sit >= ~64 cells.
+  CORRECTION of my 01:15 note: "F_15_F#4 / F_18_F#5 compounds form at DN^5"
+  was a NAMING artifact: collider's typer names two F's ~25 cells apart as a
+  compound; split into parts they are exactly where predicted.
+- run_fixed2.py: programs restricted to >= -2, + controls (PID file).

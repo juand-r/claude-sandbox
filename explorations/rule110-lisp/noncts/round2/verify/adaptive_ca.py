@@ -75,6 +75,7 @@ def outcome(items, T):
         return (0 if nm == "E" else int(nm[2:]) - 1), ids, cls
     return None, ids, None
 
+SOFT = False         # set by the 4th command-line argument "soft"
 CONSISTENT = False   # strict class consistency per value (too strict: see NOTES)
 
 def run(word, vmax, spacing=110, prefix_sp=80):
@@ -83,8 +84,9 @@ def run(word, vmax, spacing=110, prefix_sp=80):
     slots = []
     log = []
     for i, p in enumerate(word):
-        cands = list(range(42))
+        cands = list(range(6)) if SOFT else list(range(42))
         chosen = None
+        best = None
         for t0 in cands:
             trial = slots + [(p, t0, x)]
             T = 15 * (x + 250) + 3000
@@ -100,8 +102,22 @@ def run(word, vmax, spacing=110, prefix_sp=80):
                 # same value must mean same trajectory class for every input
                 if CONSISTENT and cls_of_value.setdefault(got, cls) != cls:
                     ok = False; break
-            if ok:
+            if ok and SOFT:
+                # prefer the phase that leaves the fewest distinct trajectory
+                # classes per counter value across inputs (class algebra:
+                # differences can only be repaired where inputs see different
+                # event types, so keep them small whenever there is a choice)
+                classes = {}
+                for v in range(vmax + 1):
+                    got, ids, cls = outcome(scene(v, trial, prefix_x), T)
+                    classes.setdefault(got, set()).add(cls)
+                score = sum(len(c) - 1 for c in classes.values())
+                if best is None or score < best[0]:
+                    best = (score, t0)
+            elif ok:
                 chosen = t0; break
+        if SOFT and best is not None:
+            chosen = best[1]
         if chosen is None:
             print(f"slot {i} ({p}): NO phase works for all v <= {vmax}", flush=True)
             return slots, False
@@ -113,8 +129,9 @@ def run(word, vmax, spacing=110, prefix_sp=80):
 if __name__ == "__main__":
     word = sys.argv[1]; vmax = int(sys.argv[2])
     sp = int(sys.argv[3]) if len(sys.argv) > 3 else 110
+    SOFT = len(sys.argv) > 4 and sys.argv[4] == "soft"
     t = time.time()
     slots, ok = run(word, vmax, sp)
     json.dump({"word": word, "vmax": vmax, "spacing": sp, "slots": slots, "ok": ok},
-              open(f"adaptive_{word}.json", "w"))
+              open(f"adaptive_{word}{'_soft' if SOFT else ''}.json", "w"))
     print("OK" if ok else "FAILED", f"{time.time() - t:.0f}s")

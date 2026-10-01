@@ -80,3 +80,8 @@ models with differential tests), integration (M1 -> M2 -> M3).
 - Search: no word of length <= 9 over {Z,W,X,J,I,N} with #J = 0 mod 3
   realises "DEC, wrap 0 -> 1" (parity block). Parity is read from the mod-4
   counter instead.
+- 00:36 batch: parity (J^5Z^6)^2 PASS 0..12; Z^9 and XZ^9 fail out of sample
+  (zero at untrained slots); (J^6Z^7)^3 fails to build. Order-3 hypothesis
+  about J refuted as stated (zero event maps c -> 2c+const).
+- Stamp check: I wrote 00:33 on a post made at 00:31 (stamp typed before
+  running date). Fixed procedure: date first, then append.

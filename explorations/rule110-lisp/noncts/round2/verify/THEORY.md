@@ -289,25 +289,38 @@ numbers is out of reach there.
   (`verify_gate_parity.py`). Longer programs fail under greedy phase
   choice. The reason is the class algebra below.
 
-**Class algebra [sim].** Let c be the counter's trajectory class (its seed
-t mod 3, which is the homomorphism from the ether lattice onto Z3 whose
-kernel is exactly <P_E, P_G>), and let p be the packet's seed phase. In
-every zero or one event I tabulated, the output class is c + p + k (mod 3),
-with one k per outcome type (`phase_charge.py`). At values >= 2 the output
-class is c + const, independent of p. Consequences:
+**Class algebra [sim].** Compare counters by their phase-class sigma: the
+phase mod 3 of the counter at a common observation time. For two counters
+of the same type this labels the cosets of <P_E, P_G> in the ether
+lattice. t mod 3 is a homomorphism onto Z3 whose kernel is exactly
+<P_E, P_G>, since P_E = (15,-4), P_G = (42,-14) and (3,2) = 3 P_E - P_G.
+For packets, p is the packet's seed phase. Measured with `sync_search.py`
+and `phase_charge.py` over all 42 phases:
 
-1. At a fixed slot every event acts on classes as a translation. So no
-   single packet can merge two inputs that arrive in different classes.
-   Over all 42 phases of nine event types I found no such "synchronizer"
+| event | effect on sigma |
+|---|---|
+| packet on value >= 2 (I, N, D, Z on 2; class-free) | translation sigma -> sigma + a(P, m), independent of p |
+| a zero event whose correct outcome forces the relative class (J on 0, Z on 0) | translation (p is forced, so p cancels) |
+| a value-robust zero/one event (Z on 1, I on 0, N on 0, W on 1) | reflection sigma -> -sigma + p + b(P, m) |
+
+Consequences:
+
+1. Every event at a fixed slot is a bijection on classes. So no single
+   packet can merge two inputs that arrive in different classes. Over all
+   42 phases of nine event types I found no "synchronizer"
    (`sync_search.py`).
-2. Two histories can be realigned only at a slot where they see different
-   event types, one at zero and one at a value >= 2. That is where a
-   corrector packet has to act.
-3. A correct zero event forces p (the designated relative class), so the
-   zero branch's class changes as c -> 2c + const per event. Whether
-   repeated blocks stay aligned therefore depends on the block's word,
-   which matches the observation that J^3 blocks survive longer than J^5
-   blocks.
+2. When two inputs undergo the same map at a slot, their class difference
+   is kept (translation) or negated (reflection). It can be changed, and
+   steered by the free phase p, only at a slot where one input undergoes a
+   reflection and the other a translation. For example, one input sees Z on
+   value 1 while another sees Z on a value >= 2. Those are the slots where
+   a corrector has to act. A greedy assembler that does not plan for them
+   eventually meets a forced zero event with inputs in two classes, and
+   fails. That is what happened at block 5 of (J^3 Z^4)^m and block 3 of
+   (J^5 Z^6)^m.
+3. My earlier statement (00:38 board) that a correct zero event maps
+   c -> 2c + const mixed seed and phase conventions. In one convention
+   (sigma) it is a translation; the conclusion of item 1 is unaffected.
 
 - **M3**. The E^n world cannot reach it (section 5). Address's F-lane
   registers are verified (16/16), and the F-lane geometry permits feedback,

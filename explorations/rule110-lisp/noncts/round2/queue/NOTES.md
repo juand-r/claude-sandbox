@@ -108,3 +108,64 @@ tape and the ossifiers.
   reads normally after acc and is forced to N after rej (or vice versa),
   that is a 2-state control (live/dead) with one symbol per leader, which
   the slip law allows.
+
+### 00:20-00:40 corrections and more negatives
+
+- MISTAKE corrected: I had inferred tape-symbol slips Y 9 / N 2 from the
+  F/E moving-data blocks. Measured directly (slips.py) both are 2 (4 C's).
+  The slip law is unchanged (it only needs the values mod 7).
+- MISTAKE: scan_en.py E3 produced no rows: the object typed "E^3" inside K
+  is not collider's E^3 glider (identity replacement fails), so the E3
+  scan was vacuous. Not reported as a negative.
+- MISTAKE (process): a first pair screen used insert_items (minimal
+  alignment, generally NOT a machine symmetry), so its "hits" were
+  confounded by a misaligned K. Replaced by insert_exact + valid_shifts.
+- MISTAKE (process): killing a "sh -c" wrapper by PID left its timeout
+  child running; killed the children by PID afterwards. Use one process
+  per background job.
+- forcedN.py (periodic program {YNNNNN, NNNNNN}, appendant-1 leader = E9
+  variant "X" built as a custom block with make_block): control with K
+  matches the CTS 6/6 (YYNYYN); with X: Y, N(forced), then '!' at read 2.
+  So the E9 leader is not clean in a periodic program.
+- make_block() check: a block rebuilt from an unedited row equals K row
+  for row (35..64); a machine with X at the first leader reproduces the
+  replace_exact run ([26,2] both).
+
+## Analysis (for the final report)
+
+### The read cycle at glider level [sim]
+read: prepared leader P + tape symbol (4 C's) -> answer
+  Y -> acceptor: stationary C-family object (C3 <-> C1^2 ...), the table
+       flows into it; each component comes out as moving-data Ebars;
+  N -> rejector: right-mover D1 <-> A^3, each component is deleted.
+sweep end: answer + raw leader K -> P (identical for acc and rej; acc
+  also leaves one extra moving Ebar). K = [Ebar][E5][E2][E^3][Ebars];
+  [Ebar, E5, E2] -> [Ebar, E1].
+unprepared K at the tape: eats the symbol, leaves an E_n (typed E^7) and
+  a B^5, no answer (t_rawk.py).
+
+### Charge (slip mod 7) law [arg; slip conservation is a theorem]
+Measured slips mod 14: K 12, P 8, components 0, tape symbol 2, ossifier
+2, moving data 0 or 7. Mod 7 a read (K + symbol) is neutral: leaders carry
+charge -2, symbols +2. Over one program period with p leaders, a machine
+whose only garbage is Ebar trains reads n = p (mod 7) symbols. Hence a
+finite control that changes the number of reads per period (soft leaders,
+skips, jumps) must either
+  (a) change it by multiples of 7 (e.g. a jump over 7 blocks), or
+  (b) dump the unpaired charge as non-Ebar garbage: per skipped leader an
+      "anti-symbol" of slip 12 (e.g. something that later eats one tape
+      symbol, or that an ossifier annihilates), or
+  (c) keep one read per leader and put the state into HOW the leader
+      reads (P_acc != P_rej, same charge), e.g. normal vs forced-N.
+Observed: every rejector "pass" in my screens left B-type garbage that ran
+left and ate tape symbols - option (b) realised badly.
+
+### Why (c) is the cheapest target
+(c) needs no charge bookkeeping at all: a leader variant whose prepared
+form after an acceptor reads normally and after a rejector is forced to N
+(or inverted). Forced-N readers exist (E9 variant) but were not clean in a
+periodic program, and none of the screened variants depended on the
+incoming answer type. Machine semantics if found: a(i) = s(i) AND a(i-1)
+on such blocks, a(i) = s(i) on plain blocks; block i appends iff a(i) = Y.
+That is a genuine 1-bit control (same symbol, same block, different
+appendant depending on earlier reads), with one read per leader.
