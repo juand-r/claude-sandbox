@@ -7820,3 +7820,140 @@ Why: Fidelity/substance pass: Added the post's substance: the rest of the 1997 a
 - Before: not from attempts to make gold.}
 - After: not from attempts to make gold.} Nature does not care. To be continued.
 
+
+## honest/sections/that-tiny-note-of-discord.tex
+
+Why: Fidelity/substance pass: Added the post's substance: why a conflict over the Singularity was unbearable, the dodge and why it was refused, the excuses others use, the Atkins debt and the honesty argument with its later qualification, the safeguards already in place, the screening-off argument, and the closing warning; corrected the framing of the honesty point, which answered a temptation to keep Atkins uninformed.
+
+- Before: so no one could have a justifiable conflict of interest over it. Then:
+- After: so no one could have a justifiable conflict of interest over it. That mattered to me, because I found the idea of fighting over the Singularity unbearably stupid; I could not even want to say that my side got there first and would seize the banana. Then:
+
+- Before: The obvious dodge was that if life is meaningless, nothing is right. But I kept thinking. Such people would have a motive to oppose my project now.
+- After: The obvious dodge followed from my premises: if life is meaningless, nothing is right, so respecting people's preferences would not be right either. But I did not see myself as someone who dodges; I saw myself as a dutiful rationalist who follows lines of inquiry. So I kept thinking. If people believed they had such preferences, they would have a motive to oppose my project now, and that present conflict would stop right things being done even in the main case, where life has meaning. I could have dismissed the problem with excuses I now hear from others: that it is too hard, from people who think themselves smart enough to build AI; or that there is no time, from people simply not interested.
+
+- Before: I had three reasons not to drop the question. I was a perfectionist, and this was a hole in something perfect. Brian Atkins, who paid for the Singularity Institute, would probably prefer not to die even if life were meaningless, and I did not want to taint our cooperation. And I held that deceivers get found out, perhaps by lie detectors, so I should be ready to have my thoughts broadcast at any time. These days I allow a self and some secrets, for reasons of Fun Theory.
+- After: But I was a perfectionist. My metaethics had seemed to wrap all problems of justice and morality in an airtight wrapper, and this poked a small hole in it, worth patching. To justify the time I thought of Brian Atkins, who paid for the Singularity Institute. He would probably prefer not to die even if life were meaningless, and I did not want to taint our cooperation. English has no simple word for the sentiment; perhaps ``Thou shalt not boil a young goat in its mother's milk.'' Someone who helps you out of altruism should not come to regret it; you owe them that they are really doing what they think they are doing. How would Atkins find out if I did not tell him? I thought that only as the obvious thought of a villain, and I had a counter ready: people are poor deceivers, so I would likely be found out, perhaps by lie detectors invented within thirty years. I lived by the rule that you should be ready to have your thoughts broadcast to the world at any time without embarrassment. These days I allow a self and some secrets, for reasons of Fun Theory; as John McCarthy put it, if everyone lived for others all the time, life would be like a procession of ants following each other in a circle. But on professional topics I still try to be able to pass a future lie detector test, with anyone else willing to take one.
+
+The excuses of time and difficulty were still open. But I did not yet know that the problem would be hard; I had only just thought of it.
+
+- Before: So I began to ask how to specify a fallback morality for an AI.
+- After: So I began to ask: if superintelligences do not produce their own motives from pure logic, how would you specify a fallback morality and write it into the AI?
+
+- Before: For the first time I was thinking technically about putting a morality into an AI, and morality slowly became less mysterious.
+- After: I already had some safeguards. I knew better than to think an AI needs only One Great Moral Principle; I knew it is wiser to think technologically than politically, that AI programmers should think in concepts that can be written in code, and that suggestively named LISP tokens do not mean anything. These kept me out of some traps that catch other novices. But what mattered was that for the first time I was thinking technically about putting a morality into an AI, without the escape hatch of a mysterious essence of rightness. My earlier philosophizing had never forced me to confront the details; this standard required actual work. Morality slowly became less mysterious, as I began to think inside the black box.
+
+- Before: The reasons ``don't matter at all.'' ``Actions screen off justifications.''
+- After: The reasons ``don't matter at all.'' I investigated in detail, so I got better with practice. ``Actions screen off justifications.'' If your arguments justify not working things out in detail, as mine did in 1996, you will not get good at the problem; if they call for detail, you have a chance to build expertise.
+
+- Before: maybe you should reexamine them.
+- After: maybe you should reexamine them. Effort will not always save you, since ability can be lacking; but without trying hard you do not even get to the table.
+
+- Before: The end of the world may first appear as ``one tiny lonely thought.''
+- After: The end of the world does not always come with trumpets and thunder and the highest priority in your inbox. It may first appear as ``one tiny lonely thought,'' which you could dismiss with one easy touch. Understanding then dawned on me slowly, more slowly than it could have. To be continued.
+
+
+## honest/sections/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what the 1996-2000 plan was, HMC compared to a believer losing God, the author's present view of technophobes, the plan to charge ahead unchanged, why a gradient of small shifts lets the old strategy repair itself, and the 2002 doubt; removed quotation marks around 'To be continued'.
+
+- Before: The reasons for doing so do not matter; only that it was done.
+- After: The reasons for doing so do not matter, except that they show the importance of perfectionism. If you investigate something you may find out about it, and he was now spending his full time on AI morality instead of finding reasons not to.
+
+- Before: From 1996 to 2000 his plan had been to get any superintelligence as fast as possible, by every method at once.
+- After: The more slowly he admitted it, the worse; I agree that this was too slow. From 1996 to 2000 his plan had been to get any superintelligence as fast as possible, by every method at once: codelet soup, ad hoc heuristics, evolutionary programming, open source, preferably all together in a Manhattan Project. Adding one more approach could not hurt. His attitude to technology, kept from his childhood technophilia, assumed that any movement toward superintelligence was good without a hint of danger.
+
+- Before: and rethought everything. That is ``an art I need to write more about.''
+- After: taken his weight off every belief built on the wrong assumption, and rethought everything from scratch, as an adult believer must clean house on first noticing that God does not exist. That is ``an art I need to write more about.''
+
+- Before: I still think those arguments are ``more or less correct''; but many of his hopes for science and private industry now seem to me equally wrongheaded.
+- After: I still think those arguments are ``more or less correct'': it is easier to say what someone is doing wrong than to say what is right, and the government still seems unlikely to do anything sensible about Friendly AI. But I am now more sympathetic to what technophobes say about the downsides of technophilia, and many of his hopes for science and private industry now seem to me equally wrongheaded.
+
+- Before: but overall the plan stayed.
+- After: but overall the plan stayed: charge in, guns blazing, with his best idea at the time. He never said ``I don't know how to do this,'' or that he needed better knowledge, or that the project was not ready to start coding. The clock was ticking.
+
+- Before: He still preferred openness to secrecy,
+- After: He still preferred full information-sharing, with secrecy for bad guys and openness for good guys,
+
+- Before: leaves no single shock to show that a big change is needed.
+- After: leaves no single shock to show that a big change is needed. Each small shift lets you repair the arguments for your strategy while keeping the basic idea; the system absorbs the shock without cracking. In rationality, cracking is good and repair is bad.
+
+- Before: There is an instinct, I think, to keep one's plans and defend one's public positions, and my younger self was not immune to it.
+- After: There is an instinct, I think, to keep one's plans so as not to thrash around wasting resources, and another to defend what one has argued in public, to avoid the humiliation of being wrong. My younger self was not immune; these impulses only had to nudge his thoughts to do the damage.
+
+- Before: Even in 2002 he was not sure the 1997 plan could not have worked. ``To be continued.''
+- After: Even in 2002 he was not sure the 1997 plan could not have worked; you never know. But a time came when it all fell down. To be continued.
+
+
+## honest/sections/fighting-a-rearguard-action-against-the-truth.tex
+
+Why: Fidelity/substance pass: rearguard: replaced an invented clause with the post's own remark.
+
+- Before: The more slowly he admitted it, the worse; I agree that this was too slow.
+- After: If this sounds too slow, I agree.
+
+
+## honest/sections/my-naturalistic-awakening.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what the dichotomy was and what it missed, the CAMD reply and the flight analogy, how the story's plot device worked, why three points force generalization, why goal language misleads, what the new picture of an optimizer was, and what the 1997 design would have done.
+
+- Before: I saw natural selection and intelligence as a dichotomy: blind selection against foresight.
+- After: I thought I was writing about AI, but I was still looking to the human brain for inspiration. I saw natural selection and intelligence as a dichotomy: blind selection against foresight, playing everything out in reality against reasoning by simulation. Yet natural selection made human intelligence, so our brains, though not our thoughts, bear its signature.
+
+- Before: when people call both processes ``evolutionary''.
+- After: when people call both processes ``evolutionary''. They differ almost absolutely in important ways, though some concepts, such as consequentialism and cross-domain generality, describe both. Still, seeing them as a dichotomy showed the limits of my vision, like thinking of fruit as a dichotomy between apples and strawberries.
+
+- Before: Emil Gilliam asked whether my AI hewed too close to the human mind. I replied that a ``Completely Alien Mind Design'' would be too hard to build. I now call that an excuse: what you understand, you can usually reshape.
+- After: Emil Gilliam pointed out that my view of AI looked much like my view of human intelligence. I did not want to build an AI in the image of a human mind, but I had described levels of organization in human thinking and proposed no different ones for the AI. Gilliam asked whether I hewed too close to the human line. I replied that a ``Completely Alien Mind Design'' would be too hard for human engineers, because we could not understand something so alien while building it. I have heard that excuse many times since. What you understand, you can usually reshape into almost any form, keeping its essence; when you do not understand flight, you suppose a flying machine needs feathers. So I was still starting from the human architecture.
+
+- Before: an unfinished science-fiction story with an optimizing effect that was not a mind. With three cases instead of two, I generalized:
+- After: an unfinished science-fiction story. Its plot device, something like an Outcome Pump, was a physical effect across time, neither cognitive nor evolutionary, that narrowly constrained the possible outcomes. Because it was ``just a story,'' I was free to work it out logically: C was constrained to happen, so B, in the past, was constrained to happen, so A, which led to B, was too. Two points make a dichotomy, and you imagine them opposed; three force you to generalize. With human intelligence, natural selection and the plot device, I generalized:
+
+- Before: Many definitions speak of ``achieving goals'', but ``A goal is a mentalistic object''.
+- After: Many definitions by AI researchers speak of ``solving problems'' or ``achieving goals'', and only hindsight makes that the same as squeezing the future. ``A goal is a mentalistic object''; electrons have no goals and solve no problems, and imagining a goal means imagining an agent full of wanting.
+
+- Before: Seeing a physical process that steers the future was,
+- After: If intelligence is achieving goals, it seems sensible to argue whether some goals are better than others, to speak of the wisdom needed to judge goals, of a system changing its goals, of the free will needed to choose plans, or of an AI realizing that its goals are not what its programmers meant. None of these statements translates when you picture an Outcome Pump. Seeing through the word ``mind'' to a physical process that, just by obeying the laws of physics, squeezes its future into a narrow region was,
+
+- Before: a naturalistic enlightenment.
+- After: a naturalistic enlightenment. Confusion drifted away. I saw the work that intelligence does; ``smart'' was no longer a property but an engine, echoing the outer universe in its inner part and so steering it. In the same flash I saw that a mind must give off waste heat to obey thermodynamics.
+
+- Before: Now I saw that an optimizer would steer the future wherever its utility function pointed,
+- After: Now I saw the optimizer at work: sensory information coming in, motor instructions going out, and in between a model linking possible actions to outcomes and a utility function over the outcomes. Put in a utility function, and it would steer the future anywhere. I saw
+
+- Before: would have turned its future light cone into ``generic tools''.
+- After: would have turned its future light cone into ``generic tools'': computers with no programs to run, stored energy with no use. It would have wiped out the human species for nothing.
+
+
+## honest/sections/the-level-above-mine.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the vampire convention, why Jaynes seemed formidable, the college example, arguing versus 'DONE', the Conway exchange, the brick wall at forty, giving up theories as real humility, and the fallible-mortal contrast.
+
+- Before: I knew what he meant. Jaynes was the first
+- After: I knew what he meant: in fantasy, the older a vampire gets, the more powerful. I had enjoyed proofs before, but Jaynes was the first
+
+- Before: and blasted them to pieces.
+- After: and blasted them to pieces, or because he cared about probability theory instead of treating it as a game of aesthetics. He seemed to reach the right answer by the shortest route, tearing the surrounding mistakes to shreds in the same motion.
+
+- Before: ``It's a general rule, I've observed, that you can't discriminate between levels too far above your own.''
+- After: It spoke well of Mike that he sensed this. ``It's a general rule, I've observed, that you can't discriminate between levels too far above your own.'' Someone once earnestly told me that I was really bright and ``ought to go to college''.
+
+- Before: I aspire to it; ``there is no art of which I am as much the master now, as Jaynes was of probability theory.''
+- After: I aspire to it, in AI and reflectivity. I could plead that my art is harder than his, but ``there is no art of which I am as much the master now, as Jaynes was of probability theory.'' This does not place me beneath Jaynes as a person. It recognizes a level of expertise I have not reached: I can argue forcefully in my subject, but that is not writing out the equations and saying ``DONE.'' Until I reach it, I must allow that my native talent may never be enough.
+
+- Before: He named John Conway.
+- After: He named John Conway, whom he had met at a summer math camp: ``He just struck me as having a tremendous amount of mental horsepower.'' Worse, it was an ultra-famous older man I could not recruit.
+
+- Before: and if I have wasted my youth,
+- After: and if I wasted my youth setting up support for myself instead of studying math full time, I may hit a brick wall at forty, with nothing left but to pass the resources on to a younger mind. So
+
+- Before: Such ``specific efforts'' are the only humility I credit myself with. ``Modest demeanors are cheap.''
+- After: Such ``specific efforts'' are the only humility I credit myself with, along with giving up my precious theories when they failed the standard Jaynes had shown me; that was hard, and real. ``Modest demeanors are cheap.'' Too many people, faced with a counterargument, say ``I am but a fallible mortal, of course I could be wrong'' and then do exactly what they planned.
+
+
+## honest/sections/my-naturalistic-awakening.tex
+
+Why: Fidelity/substance pass: naturalistic-awakening: repaired a broken join.
+
+- Before: anywhere. I saw and that my 1997 design
+- After: anywhere. I saw at last that my 1997 design
+

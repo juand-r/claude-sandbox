@@ -333,10 +333,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] raised-in-technophilia
 - [x] a-prodigy-of-refutation
 - [x] the-sheer-folly-of-callow-youth
-- [ ] that-tiny-note-of-discord
-- [ ] fighting-a-rearguard-action-against-the-truth
-- [ ] my-naturalistic-awakening
-- [ ] the-level-above-mine
+- [x] that-tiny-note-of-discord
+- [x] fighting-a-rearguard-action-against-the-truth
+- [x] my-naturalistic-awakening
+- [x] the-level-above-mine
 - [ ] the-magnitude-of-his-own-folly
 - [ ] beyond-the-reach-of-god
 - [ ] my-bayesian-enlightenment
