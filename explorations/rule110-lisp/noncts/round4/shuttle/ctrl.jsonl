@@ -1,0 +1,1 @@
+{"face": "front", "px": [3, 2], "py": [42, -14], "wx": 6, "wy": 10, "K": 1, "N": 16, "T": 120, "gap": 8, "phiL": 0, "band": 14, "depth": 24, "margin": 4, "out": "ctrl.jsonl", "allow_empty": true, "sat": true, "secs": 0.1, "nvars": 4710, "nclauses": 23160, "phig": 8, "phiYr": 0, "X": "100110", "Y": "00100110111", "x0": -14, "L_T": -54}
