@@ -235,13 +235,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] reductionism
 - [x] explaining-vs-explaining-away
 - [x] fake-reductionism
-- [ ] savanna-poets
-- [ ] joy-in-the-merely-real
-- [ ] joy-in-discovery
-- [ ] bind-yourself-to-reality
-- [ ] if-you-demand-magic-magic-won-t-help
-- [ ] mundane-magic
-- [ ] the-beauty-of-settled-science
+- [x] savanna-poets
+- [x] joy-in-the-merely-real
+- [x] joy-in-discovery
+- [x] bind-yourself-to-reality
+- [x] if-you-demand-magic-magic-won-t-help
+- [x] mundane-magic
+- [x] the-beauty-of-settled-science
 - [ ] amazing-breakthrough-day-april-1st
 - [ ] is-humanism-a-religion-substitute
 - [ ] scarcity
