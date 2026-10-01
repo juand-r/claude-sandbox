@@ -345,13 +345,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] use-the-try-harder-luke
 - [x] on-doing-the-impossible
 - [x] make-an-extraordinary-effort
-- [ ] shut-up-and-do-the-impossible
-- [ ] final-words
-- [ ] raising-the-sanity-waterline
-- [ ] a-sense-that-more-is-possible
-- [ ] epistemic-viciousness
-- [ ] schools-proliferating-without-evidence
-- [ ] 3-levels-of-rationality-verification
+- [x] shut-up-and-do-the-impossible
+- [x] final-words
+- [x] raising-the-sanity-waterline
+- [x] a-sense-that-more-is-possible
+- [x] epistemic-viciousness
+- [x] schools-proliferating-without-evidence
+- [x] 3-levels-of-rationality-verification
 - [ ] why-our-kind-can-t-cooperate
 - [ ] tolerate-tolerance
 - [ ] your-price-for-joining
