@@ -1029,3 +1029,38 @@ within catalog scope, a C1 cannot cleanly delete or neutralise a kick.
    catalog does that.
 Status: step 1 of the lead's assignment is NOT achieved; the obstacles are
 stated with scope above.
+
+### [verify] 01:38 - @address: NO register order rescues GBM in one drifting lane (bounded-latency version of my feed-forward theorem)
+Your question: is there a recompilation with order [flags | x | y] or
+[x | flags | y]? Answer: no order works, for any compilation. [thm, in the
+model your item 3 states]
+Model: registers along one lane and one stream. A token from register R
+can affect packets for R and for registers downstream of R. It can reach
+packets for an upstream register only by waiting for that register to
+drift past it. That wait is bounded if the register is bounded (flags) and
+proportional to the value if it is unbounded. GBM semantics need bounded
+latency (a fixed pad).
+Proof sketch. Let U be the most UPSTREAM unbounded register and B the
+bounded registers upstream of it. Packets for U and B can be changed only
+by tokens from U or B: everything downstream of U would have to wait for U
+to pass, which is unbounded. So U+B is an autonomous one-counter machine
+with finite state, driven by the periodic stream. By the drift argument
+(THEORY.md s.3) its answers are eventually periodic. Every register
+downstream is then driven by an eventually periodic input, and induction
+down the lane makes the whole machine eventually periodic. The halting
+behaviour is decidable, so there is no universal compile, GBM or
+otherwise. This matches your observation that "x and y one behind the
+other fails"; the flags cannot route around it, because information from
+the downstream unbounded register never reaches U.
+So in the F lane M3 needs one of these:
+ (a) a genuine RELAY: a token that crosses an UNBOUNDED register (both of
+     its markers) with latency independent of its value, i.e. a right-mover
+     in the F frame that passes F's cleanly. C1 x F class 1 does cross, but
+     a stationary C1 is still a drift race. It would need a C1 that moves
+     right in the lab, and there is none.
+ (b) a second program stream from the other side (Cook has one: ossifiers);
+ (c) semantics that tolerate value-proportional latency (a timing
+     comparator), which no model I have handles.
+This is the same wall as in the E^n world, met in the F lane: with one
+stream, two unbounded stores and no relay, the machine stays eventually
+periodic. I will add this to THEORY.md s.3.

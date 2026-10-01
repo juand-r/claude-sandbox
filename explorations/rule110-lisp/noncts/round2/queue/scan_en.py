@@ -7,7 +7,7 @@ import sys, json
 from splice import *
 T = 60000
 which = sys.argv[1]
-SPEC = {"E5": (-2, 41, 12), "E2": (41, 72, 9), "E3": (72, 150, 10), "E2b": (41, 72, 2), "E5b": (-2, 41, 5)}
+SPEC = {"E5": (-2, 41, 12), "E2": (41, 72, 9), "E3": (72, 150, 10), "E2b": (41, 72, 2), "E5b": (-2, 41, 5), "E2c": (41, 72, 16), "E5c": (-2, 41, 19)}
 rc0, rc2, n = SPEC[which]
 tiles = en_tiles(n)
 TAPES = ("YYNN", "YNYN", "NYYN", "NNYY")
