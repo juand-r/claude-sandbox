@@ -287,8 +287,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] faster-than-science
 - [x] einstein-s-speed
 - [x] that-alien-message
-- [ ] my-childhood-role-model
-- [ ] einstein-s-superpowers
+- [x] my-childhood-role-model
+- [x] einstein-s-superpowers
 - [ ] class-project
 - [ ] a-technical-explanation-of-technical-explanation
 - [ ] ends-an-introduction

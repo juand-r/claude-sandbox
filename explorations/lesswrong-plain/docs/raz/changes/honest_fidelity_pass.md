@@ -6138,3 +6138,73 @@ Why: Fidelity/substance pass: made a comparison exact (6 bits vs 7)
 - Before: and the 513th group is as close to the first as the second is,
 - After: and the 513th group differs from the first in 6 bits, against 7 for the second,
 
+
+## honest/sections/my-childhood-role-model.tex
+
+Why: Fidelity/substance pass: added why the everyday scale is parochial, that a chimp or our descendants would see little difference, Shulman's academic scale, Hofstadter as a childhood hero, what sits at the right of the scale (Deep Thought's rice pudding and income tax, the Elders of Arisia, Matrioshka brains, the Old One and the Blight, a General Systems Vehicle), the Jupiter Brain at twelve, the era-bound mindset, the DoD comparison, why the story used a civilization (the ghost in a box), the Jello car, the inefficiency of human brains, ideals as dreams from within, lese majeste, the support of one's era, and asking too little of oneself
+
+- Before: When I lecture on the Singularity, I often draw a scale of intelligence with the ``village idiot'' at one end and Einstein at the other.
+- After: When I lecture on the Singularity, I often draw a scale of intelligence with the ``village idiot'' at one end and Einstein at the other. That is the parochial view of everyday life, where we only meet human minds; for AI we need the scale of all possible minds.
+
+- Before: A chimpanzee is much farther away.
+- After: A chimpanzee is much farther away; a chimp could not tell Einstein from the village idiot, and our descendants may not either. Carl Shulman has noticed that some academics who talk about transhumanism put Einstein far above the village idiot.
+
+- Before: I was speechless, and took it as a ``cultural gap.''
+- After: I was speechless, all the more since Hofstadter was one of my childhood heroes, and took it as a ``cultural gap,'' since I met the idea of a Jupiter Brain at twelve.
+
+- Before: The right of my scale holds Jupiter Brains, Deep Thought and other minds of fiction.
+- After: The right of my scale holds Jupiter Brains; Douglas Adams's Deep Thought, which, switched on for the first time, started from ``I think therefore I am'' and deduced rice pudding and income tax before anyone could shut it off; the Elders of Arisia, galactic overminds, Matrioshka brains and the better class of God; at the far end, the Old One and the Blight. A General Systems Vehicle would find Einstein very cute.
+
+- Before: Still, I suspect science fiction helps people imagine outside their own era.
+- After: Still, I suspect science fiction helps people imagine outside their own era, instead of a world where humans always have existed and always will.
+
+- Before: Could one superintelligence do what the civilization in yesterday's ``That Alien Message'' did?
+- After: Yesterday I wanted to say that Einstein, cute for a human, was about as efficient with evidence as the US Department of Defense. I depicted a civilization of Einsteins because a superintelligence with a webcam would be imagined as a ghost in a box that has not been told how to interpret pictures, so does not know; readers would not apply their own creativity to the problem. Could one superintelligence do it all?
+
+- Before: human brains were adapted to hunt and to argue over meat;
+- After: human brains were adapted to chase deer, spear and cook them, and argue cleverly for a larger share of the meat, so repurposing one for physics deserves a record, like the fastest car ever built of Jello; the full horror of how the blind idiot god designed the brain dawns only with much cognitive science, and the biases are a hint;
+
+- Before: I grant that an imagined ideal ``is only your own mind talking.''
+- After: Some ideals are like dreams, from within us, as Mentor of Arisia came from E. E. Smith's imagination; I grant that an imagined ideal ``is only your own mind talking,'' and if you guess wrong you go astray.
+
+- Before: following stars ``at best, it gets you to the star.''
+- After: each generation can do better, and asking ``Do I dare to do this thing, which Einstein could not do?'' is like Einstein asking whether he may do better than Newton; following stars ``at best, it gets you to the star.'' Your era supports you more than you know, in assumptions and technology of mind.
+
+- Before: The most important role models are dreams of perfection.
+- After: It seems less like sacrilege with a galactic supermind on your scale beside Einstein. If you try only what seems humanly possible, you ask too little of yourself, and reasons why the higher goal is ``not possible'' leap to mind. The most important role models are dreams of perfection; dreaming of less draws on less than the full power of the part of you that dreams.
+
+
+## honest/sections/einstein-s-superpowers.tex
+
+Why: Fidelity/substance pass: added worship without candles, what Barbour's book laid out (Mach and the history behind Einstein), the two Crackpot Index items and that Barbour never compares himself, the 'sacred magisterium' account, the transhumanist aside, the cached-thought trap in choosing problems (global warming, string theory), why real problems look impossible, affective death spirals, turning down life, the absent birthright, the Law (no gods, no magic, heroes as milestones), why seeing through must be achieved (like reducing consciousness), and the 'not an ordinary bloke' caveat
+
+- Before: There is a widespread tendency to talk as if Einstein and Newton had superpowers.
+- After: There is a widespread tendency to talk as if Einstein and Newton had superpowers, something sacred (there are many ways to worship besides lighting candles).
+
+- Before: until Julian Barbour's \textsc{The End of Time} cured me.
+- After: until Julian Barbour's \textsc{The End of Time} cured me. Barbour laid out the history of anti-epiphenomenal physics and Mach's principle that stood behind Einstein and was known to him.
+
+- Before: John Baez's Crackpot Index gives points for comparing yourself to Einstein.
+- After: John Baez's Crackpot Index gives 10 points for each favourable comparison of yourself to Einstein, and 30 for suggesting that Einstein in his later years was groping toward your ideas. Barbour never compares himself to Einstein.
+
+- Before: Both confuse social status with research potential, and imagine that Einstein's potential was as rare as his fame.
+- After: Both confuse social status with research potential, and, attributing behaviour to disposition, imagine that Einstein's potential was as rare as his fame and as magical as his deeds. Einstein sits in a sacred magisterium you cannot set out to enter as you can become a professor; only those born with destiny enter it, so claiming you might outdo him claims a royal birthright.
+
+- Before: Not everyone can be Einstein, I grant, ``in the modern world.''
+- After: Not everyone can do better than Einstein, I grant, ``in the modern world''; as a transhumanist I think that sucks and is fixable.
+
+- Before: many end up ``just another Jewish genius.''
+- After: many end up ``just another Jewish genius,'' as Einstein would have with a wrong angle of attack, a minor problem, less persistence or a rival who got there first; that level of claim is not sacred and can be evaluated normally.
+
+- Before: is not brilliance but failing to choose an important problem, to find a worthwhile angle of attack, and to persist for years without support.
+- After: is not brilliance but failing to choose an important problem. Told to choose one, people take the first cached answer, global warming or string theory; the truly important problems often look impossible, or unclear how to solve, and naive realism says impossible-looking problems are impossible. Then you need a worthwhile new angle without falling into an affective death spiral, years of banging your head without the distractions of easier living (``Life is what happens while we are making other plans''), and no support from society.
+
+- Before: Had you met Albert before his papers, you would have seen no aura of destiny.
+- After: Had you met Albert before his papers, you would have seen no aura of destiny, not because it was concealed but because it was not there; there is no separate magisterium for people who do important things.
+
+- Before: Barbour saw through Einstein, and said
+- After: What impressed me in Barbour was a quality hard to fake: he talked of Einstein as perfectly understandable and mundane, and said
+
+- Before: Einstein was no ordinary bloke.
+- After: It shocked me briefly, but I knew the Law: ``No gods, no magic, and ancient heroes are milestones to tick off in your rearview mirror.'' Seeing through has to be achieved; declaring Einstein mundane while his work still seems magic is like declaring that consciousness reduces to neurons without knowing how. Einstein was no ordinary bloke oversold by the media.
+
