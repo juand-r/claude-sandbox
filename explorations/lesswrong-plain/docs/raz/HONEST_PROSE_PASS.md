@@ -333,18 +333,18 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] my-best-and-worst-mistake
 - [x] raised-in-technophilia
 - [x] a-prodigy-of-refutation
-- [ ] the-sheer-folly-of-callow-youth
+- [x] the-sheer-folly-of-callow-youth
 - [x] that-tiny-note-of-discord
 - [x] fighting-a-rearguard-action-against-the-truth
 - [x] my-naturalistic-awakening
 - [x] the-level-above-mine
 - [x] the-magnitude-of-his-own-folly
-- [ ] beyond-the-reach-of-god
-- [ ] my-bayesian-enlightenment
-- [ ] trying-to-try
-- [ ] use-the-try-harder-luke
-- [ ] on-doing-the-impossible
-- [ ] make-an-extraordinary-effort
+- [x] beyond-the-reach-of-god
+- [x] my-bayesian-enlightenment
+- [x] trying-to-try
+- [x] use-the-try-harder-luke
+- [x] on-doing-the-impossible
+- [x] make-an-extraordinary-effort
 - [ ] shut-up-and-do-the-impossible
 - [ ] final-words
 - [ ] raising-the-sanity-waterline
