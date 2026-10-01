@@ -361,8 +361,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] money-the-unit-of-caring
 - [x] purchase-fuzzies-and-utilons-separately
 - [x] bystander-apathy
-- [ ] collective-apathy-and-the-internet
-- [ ] incremental-progress-and-the-valley
+- [x] collective-apathy-and-the-internet
+- [x] incremental-progress-and-the-valley
 - [ ] bayesians-vs-barbarians
 - [ ] beware-of-other-optimizing
 - [ ] practical-advice-backed-by-deep-theories

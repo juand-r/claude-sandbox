@@ -8756,3 +8756,69 @@ Why: Fidelity/substance pass: Added the post's substance: what each standard exp
 - Before: People sometimes hold themselves responsible.
 - After: People sometimes hold themselves responsible, once they see they are the only ones who know enough to act.
 
+
+## honest/sections/collective-apathy-and-the-internet.tex
+
+Why: Fidelity/substance pass: Added what the two explanations mean, the dig at social-app founders, and the details of the proposed tools.
+
+- Before: The standard explanations are pluralistic ignorance and diffusion of responsibility.
+- After: The standard explanations are pluralistic ignorance, in which each person tries to look calm while glancing at the others and sees them looking calm, and diffusion of responsibility, in which everyone hopes someone else will act first.
+
+- Before: I have no brilliant solution.
+- After: I have no brilliant solution, but I wish would-be dot-com founders would think about this instead of how to throw sheep on Facebook.
+
+- Before: Some ideas: a video of someone asking for help; names and photos of the first helpers; video thank-yous; referral codes that show how many people you brought in; bounties for subtasks that can be checked online.
+- After: Some ideas: a video of someone asking for help; names and photos of the first helpers, or a ranking that mixes amount and recency; a video thank-you from the founder that helpers can embed on their own pages; a non-annoying way to tell friends, with referral codes that show how many people you brought in; bounties for subtasks that can be checked online.
+
+- Before: though ``money is usually the most effective.''
+- After: though ``money is usually the most effective''; what matters is that the help can be verified online.
+
+
+## honest/sections/incremental-progress-and-the-valley.tex
+
+Why: Fidelity/substance pass: Added the post's substance: lottery winners as a product of reporting, the reply that a step backward has no guarantee either, the objection after each reason, why self-deception is impossible once seen, the 'sadistic' objection, the misconceptions the author has tried to dispel, the strongest entrepreneur, the conditions in the closing advice, and its 'RUN AWAY!'.
+
+- Before: Lottery winners are selective reporting.
+- After: Lottery winners are selective reporting; statistically you would never meet one.
+
+- Before: It ``is not, in fact, true.''
+- After: It ``is not, in fact, true.'' Then why strive, if we will never reach the ideal? A step backward has no guarantee either; judgment under uncertainty is what rationality is about.
+
+- Before: My work punishes the smallest error.
+- After: My work deals with deeply confused problems where one small mistake can lead you astray for years, so I must do better or go home. You may say that is just me.
+
+- Before: as Robin Hanson says of slipping on stairs.
+- After: as Robin Hanson says that falling one step on the stairs leads to falling the next. Again, that is just me.
+
+- Before: And once I have seen through a deception I cannot unsee it.
+- After: And once I have seen through a deception I cannot unsee it; I could no more believe in God than believe the sky green while looking at it. If you know enough to know you are better off deceiving yourself, it is too late. You may ask whether, knowing it may make my readers unhappier, I sponsor the collapse of their doublethink out of sadism.
+
+- Before: For motivation and happiness I promise nothing.
+- After: My essays reflect only that one area, not fighting akrasia, coordinating groups or being happy. For motivation and happiness I promise nothing.
+
+- Before: I find it hard to believe that the happiest life depends on illusions.
+- After: Even there I have tried to dispel half-mistaken ideas that get in a beginner's way: that rationality opposes feeling or value, or that sophisticated thinkers should be angsty and cynical. If someone develops those arts as far as I have developed the answering of impossible questions, I expect those wrapped in illusions will not begin to compete. I find it hard to believe that the strongest entrepreneur is wrapped in comforting overconfidence, or that the happiest life involves a tiny awareness that it is all a lie; I would sooner stake my hopes on neurofeedback or Zen meditation, though I have tried neither.
+
+- Before: Two readers' comments show that the valley is real: one lost a girlfriend after deconverting; another recovered from the same loss with help from a sister trained in CBT.
+- After: Two readers' comments show that the valley is real. One lost a girlfriend after deconverting and has been miserable and ineffective since, yet still prefers this to happiness with false beliefs. Another recovered from the same loss when a sister trained in CBT pointed out that it was not rational to expect to be alone forever.
+
+- Before: and ``the surveys'' compare the average religious person with the average atheist.
+- After: and ``the surveys'' compare the average religious person with the average atheist, not the most advanced theologians with the most advanced rationalists.
+
+- Before: If you do not care about the truth, have nothing to protect,
+- After: If you do not prefer truth to happiness with false beliefs, and do nothing precarious or confusing, buy no lottery tickets, and have already signed up for cryonics, then the steps are not guaranteed to leave you better off. If you do not care about the truth, have nothing to protect,
+
+- Before: and stop reading before your illusions collapse.
+- After: and stop reading before your illusions collapse: ``RUN AWAY!''
+
+
+## honest/sections/incremental-progress-and-the-valley.tex
+
+Why: Fidelity/substance pass: incremental-progress: made the reader's objections read as objections.
+
+- Before: You may say that is just me.
+- After: You may object that not everyone leads that kind of life.
+
+- Before: Again, that is just me.
+- After: Again you may object that not everyone is pushing the art into new territory.
+
