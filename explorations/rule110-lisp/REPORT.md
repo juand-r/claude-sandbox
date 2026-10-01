@@ -553,10 +553,11 @@ arguments and the live window) lets the same command resume.
 
 ## 6. Beyond cyclic tag systems
 
-Two rounds of a four-agent team tried to build a Rule 110 computer that
-does not emulate a cyclic tag system. Full accounts:
-`noncts/SUMMARY.md` (round 1) and `noncts/round2/SUMMARY.md` (round 2);
-every round-2 claim's status is in `noncts/round2/verify/ledger.md`.
+Three rounds of a four-agent team tried to build a Rule 110 computer
+that does not emulate a cyclic tag system. Full accounts:
+`noncts/SUMMARY.md` (round 1), `noncts/round2/SUMMARY.md` (round 2) and
+`noncts/round3/SUMMARY.md` (round 3, two program streams); each round's
+`verify/ledger.md` records every claim's status.
 
 *Result.* A **nontrivially programmable non-CTS computer exists in Rule
 110**; a **universal** one was not found.
@@ -579,11 +580,21 @@ every round-2 claim's status is in `noncts/round2/verify/ledger.md`.
 - **What exists toward universality.** Two independently addressable
   registers, held as the gaps between three F gliders and driven from a
   fixed stream, are verified. So is the deleting half of an abort.
-- **What is missing.** A zero test that can abort the rest of a program
-  block, which is all a precise universal target (a guarded-block
-  machine, compiled from Minsky machines) needs. Searches for it are
-  unsatisfiable within stated widths of 17 to 36 cells. A second program
-  stream from the other side is the most promising unexplored route.
+- **What is missing (round 2).** A zero test that can abort the rest of
+  a program block, which is all a precise universal target (a
+  guarded-block machine, compiled from Minsky machines) needs. Searches
+  for it are unsatisfiable within stated widths of 17 to 36 cells.
+- **Round 3: two program streams.** A second counter driven from the
+  left now increments, decrements and zero-tests from its own stream
+  (verified). The two counters signal each other in both directions in
+  one exact run, and a class-free channel K3 makes repeated coupling
+  robust. Theory proved, in abstract models, that coupling counters
+  through zero answers is never universal: each counter's drift must be
+  changeable by the other. For these glider counters, influence inside a
+  counter runs only front to back, which leaves three escapes. One is a
+  shuttle between the counters, another a right-to-left crossing, the
+  third the gap used as a register. None was found within the searched
+  scopes. So universality remains open on this route.
 
 ## 7. What comes next
 
@@ -605,7 +616,8 @@ Open, roughly in order of value:
   (3.5-3.6).
 - Why Cook's short-leader block fails (3.4), and why one control program
   reads only every second ossifier period.
-- A third team round on a two-stream non-CTS design (section 6).
+- Non-CTS route: a shuttle, a right-to-left crossing, or the gap as a
+  register (section 6; noncts/round3/SUMMARY.md, section 6).
 
 ## Reproduction
 

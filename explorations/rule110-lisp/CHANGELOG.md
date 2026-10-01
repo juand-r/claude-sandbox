@@ -11,6 +11,12 @@
   capped at eventually periodic predicates; clean answers give decidable
   machines; universal target = guarded-block machine. Universality not
   reached.
+- Non-CTS team, round 3 (noncts/round3/SUMMARY.md): two program streams.
+  A left stream increments (I_L, found via slip conservation + SAT),
+  decrements and zero-tests its own counter; the two counters couple in
+  both directions in one exact run; class-free channel K3. Theory: zero-
+  answer coupling is never universal; a shuttle, a right-to-left
+  crossing or the gap as a register is required; none found in scope.
 
 ## v0.1.1 (2026-09-30, untagged)
 

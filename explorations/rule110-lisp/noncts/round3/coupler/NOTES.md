@@ -225,3 +225,26 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   (classes 0 x8, 2, 0, 0); CA = model; controls (2nd K3 in class 0/1)
   debris 4/4. cross0_clean.txt lists 7 clean zero-crossing packets
   (posted).
+- 08:34 B-family back-face SAT (run_r2b.sh -> run_r2b.log): can any
+  (4,-2)-periodic train Y of width <= 30 reflect at R2 = E^4's back
+  (E^4 + Y -> E^(4+K) | X, X any A-family train of width <= 24)? UNSAT for
+  K = 1, 2, 3 at all 7 X slips (21 runs) and K = -1 so far. No
+  family-specific positive control exists (no known B-train reflects);
+  the same code's (12,-6) control passes. Consistent with the library
+  scan (every library B-train is simply absorbed).
+
+## Reflection (08:3x)
+- What went well: building on round-2 tools (rafast text, glidersim,
+  fastca) and leftstream's packets made the T2 scenes quick; asking
+  "which signal has ONE class at the receiver" led to K3, which removes
+  the R2-side class problem entirely.
+- Mistakes: (1) guessed clock times in early board posts (corrected; now
+  date -u only); (2) recorded a wrong PID (harness wraps commands), so
+  three copies of a scan ran at once (caught, killed, deduplicated;
+  rule: confirm PIDs with ps aux); (3) wrote "R1 correctors cannot repair
+  it" before the corrector enumeration had finished (corrected the same
+  hour); (4) first Scene A used an R2 seed time taken from a different
+  construction (library E^5 vs I_L-built E): always re-scan classes per
+  construction; (5) the joint SAT split point was first wrong (positive
+  control caught it).
+- 08:41 run_r2b ended (timeout 1700 s): 30/30 UNSAT (K = 1, 2, 3, -1 x 7 slips; K = 0 slips 8, 2).

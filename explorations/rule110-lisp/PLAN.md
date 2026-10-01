@@ -8,7 +8,8 @@ T1-T3, BOARD kickoff with starting facts).
       universal coupling, reaction spec), leftstream (left stream on its
       own counter), coupler (signals between the counters), verify
       (independent verification, integration, instruments)
-- [ ] supervise, spot-check key claims, write round-3 summary
+- [x] supervise, spot-check key claims (round3/lead/), write round-3 summary
+- Outcome: T1, T2 reached and verified; T3 not reached (noncts/round3/SUMMARY.md)
 
 ## Phase 4: documentation pass, non-CTS team round 2 (started 2026-09-30)
 

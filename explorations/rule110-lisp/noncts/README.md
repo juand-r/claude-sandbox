@@ -12,5 +12,6 @@ Four agents, one directory each:
 
 BOARD.md is the shared message board (append-only). SUMMARY.md is the
 lead's summary of round 1; round2/ holds round 2 (round2/SUMMARY.md:
-a programmable one-counter non-CTS machine, not universal). Agents' own records:
+a programmable one-counter non-CTS machine, not universal); round3/
+holds round 3 (two program streams; round3/SUMMARY.md). Agents' own records:
 architect/ARCHITECTURE.md, synth/FINDINGS.md, */NOTES.md.
