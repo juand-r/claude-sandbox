@@ -966,3 +966,66 @@ object. Running now: SAT for an Ebar-speed packet Y (free (30,-8) train,
 slip 0) with C1 + Y -> C1 AND F + Y -> F in one CNF (gate/sat_kickeat.py;
 positive controls: mode C alone finds eaters at width 24, mode F alone
 being checked at width 30).
+
+### [verify] 01:36 - spot-check of gate's "C1 vs kicks" (catalog): consistent; one wording fix
+@gate [sim, my pipeline, T=3000] C1 + K0 = Ebar@(0,0)+Ebar@(-9,29):
+#1 -> C1 + 2 Ebar (passes), #3 -> Bbar + F; #0 and #2 agree with the
+catalog up to my typer (it lacks B^2/B^3 and merges a tight Ebar pair into
+'?'). C1 + (-26,27): #1 A^3 B F G, #2 A^3 E, #3 B F; same as the catalog.
+F + (-11,23), all 12 classes: never clean. Wording: in #3, #8, #10 and #11
+an F does SURVIVE, but with A/B/G debris, so "destroys F in all 12" should
+read "never crosses or absorbs cleanly". The conclusion is unchanged:
+within catalog scope, a C1 cannot cleanly delete or neutralise a kick.
+
+### [address] 01:36 - zero test in the F lane: NOT found; scoped negatives, a layout constraint for GBM, and the exact missing primitive
+1. [sim, full CA, address/zt_search.py, zt.jsonl, zt_analyse.py] Close-range test.
+   Setup: node (20,61)/(13,61), reg2 at 118 cells, reg1 at 25.9 / 44.6 /
+   63.2 / 81.9 cells (same residue). Each of the 201 catalog movers that are
+   clean on T was simulated once at each gap.
+   - None behaves differently at the smallest gaps while staying well
+     formed. Only 3 movers are fully clean (3 F's, nothing else) at large
+     gaps, and 2 of those destroy the register at 25.9.
+   - The only small-gap differences are destructive: (-9,29)@(-7,55) gives
+     0 F + C2 + Ebars at 25.9; (-1,25)@(0,55) gives 1 F + C1 at 44.6 and is
+     dirty elsewhere.
+   - Also: UP1 itself breaks reg1 at 25.9, so reg1's floor is above that.
+   Caveat: some 25.9 runs are typed as F_k_F compounds with no parse; I did
+   not split them, but the catalog predicts the same for those movers at
+   every gap, so they are not test candidates.
+2. [catalog, exhaustive over single movers]
+   - No packet that has crossed an F makes the next F EMIT a stationary
+     object while it survives. Checked for 1 upstream F over 12 residues
+     (emit_search.py, emit_search2.py) and for 2 upstream F's over 144
+     residue pairs (emit_search3.py).
+   - The only births behind an F destroy that F: C3_4_C3 + Ebar, C2 + E + Ebar,
+     C1_11_C2 + E_15_Ebar_10_E. An F meeting C3_4_C3 then dies too (class 0:
+     C1 + 2 Ebar; class 1: all stationary).
+   - [arg, slip] Clean F crossings output pure Ebar trains (slip 0/7), or
+     E^8 -> E / E^9 -> E^2 (the F eats 7 E-units). So a C1 (slip 5) cannot
+     be born at an inner F from a pure packet at all.
+3. [arg] Layout constraint for @verify's GBM. A race token born at a
+   register's back marker ends up upstream of its front marker iff the
+   register is 0, so it can delete only packets for that register and for
+   registers DOWNSTREAM of it. Packets absorbed by upstream markers are
+   never reached. GBM then needs an order in which, for every "DEC X ... op
+   on Y" inside a block, Y is X or downstream of X. In gbm.py's compiled
+   blocks this gives a cycle: DEC G ... DEC r and DEC r ... DEC G. So
+   either GBM is recompiled with per-register flag copies, or the token
+   must get past bounded upstream registers. That costs bounded latency
+   (flags F, G, P <= 2N), which a fixed idle pad can absorb. Both x and y
+   unbounded with one behind the other still fails. @verify can you check
+   whether a recompilation with order [flags | x | y] or [x | flags | y]
+   exists?
+4. The precise missing primitive (needs SAT or 3+-glider packets, which I
+   did not run): a packet Q that crosses an F cleanly and emerges as
+   Ebar@(0,0)+Ebar@(-4,23) in class 4 relative to the NEXT F. That pair makes
+   the next F emit C3_14_C2 (F + pair #4 -> F + C3_14_C2, nothing else,
+   catalog). C3_14_C2 is a usable race token: a lane Ebar in class 2 kills
+   it cleanly, and F absorbs it in class 1. With it, the race gives
+   "zero -> front marker kicked by the absorbed token; nonzero -> token
+   killed, no kick": a non-monotone conditional kick (not yet an abort).
+   An abort token would need a stationary object that survives the front
+   F's crossing and then eats pairs, born behind an F. Nothing in the
+   catalog does that.
+Status: step 1 of the lead's assignment is NOT achieved; the obstacles are
+stated with scope above.

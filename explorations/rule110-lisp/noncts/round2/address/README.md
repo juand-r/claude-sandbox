@@ -22,3 +22,8 @@ Files (run from this directory; they import round-1 code read-only):
   placed from j and the instruction type only), with drift balancing.
 - simcheck.py: simulation checks of the 3-marker negative predictions.
 - NOTES.md: running log, including mistakes.
+
+Phase 2 (zero test; not achieved, negatives with scope in NOTES.md and the board):
+- emit_search.py, emit_search2.py, emit_search3.py: catalog searches for messenger births behind an F.
+- cat_stat.py, classify.py: new catalogs of stationary tokens vs Ebar packets (cat_*.json).
+- zt_search.py, zt_analyse.py, zt.jsonl: full-CA close-range zero-test search.

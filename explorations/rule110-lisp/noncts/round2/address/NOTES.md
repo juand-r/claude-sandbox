@@ -98,3 +98,17 @@ without addressing), without emulating a cyclic tag system.
 - Mistakes: gap sign (x0 - t0/9), compound-naming misread (F_18_F#5), slot
   overlap from large kick drifts, a weak construction-time control. All
   caught by arithmetic or simulation cross-checks.
+## Phase 2 (lead 01:16): zero test + abort
+- 01:20 Catalog C1/C2/C3 vs Ebar packets: C1 has EAT/PASS/KILL (kills need E);
+  C2 no eat, no clean kill. cat_stat.py + classify.py: C3_14_C2 (born at T via
+  (-4,23)#4, slip 0) is killed by single Ebar #2 and ~40 pure pairs; F absorbs
+  it in class 1. C3_4_C3: almost all reactions dirty; F + C3_4_C3 kills F.
+- emit_search*.py: no post-crossing packet makes an F emit while surviving
+  (1 upstream F x 12 residues; 2 upstream F's x 144 residue pairs). Births
+  behind an F destroy it. Slip argument: no C1 birth from pure Ebar packets.
+- zt_search.py (PID in zt.pid, finished; 804 CA runs): no clean close-range
+  zero test among 201 T-clean movers at reg1 gaps 25.9-81.9.
+- Layout constraint (abort reach is downstream-only) posted for verify's GBM.
+- Not done: SAT for a transmuter Q (crosses F, emerges as (-4,23)#4 at the
+  next F); instance size ~600 x 1300 cells without a moving window, too slow
+  for the remaining time.
