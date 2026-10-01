@@ -297,13 +297,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] fake-selfishness
 - [x] fake-morality
 - [x] fake-utility-functions
-- [ ] detached-lever-fallacy
-- [ ] dreams-of-ai-design
-- [ ] the-design-space-of-minds-in-general
-- [ ] where-recursive-justification-hits-bottom
-- [ ] my-kind-of-reflection
-- [ ] no-universally-compelling-arguments
-- [ ] created-already-in-motion
+- [x] detached-lever-fallacy
+- [x] dreams-of-ai-design
+- [x] the-design-space-of-minds-in-general
+- [x] where-recursive-justification-hits-bottom
+- [x] my-kind-of-reflection
+- [x] no-universally-compelling-arguments
+- [x] created-already-in-motion
 - [ ] sorting-pebbles-into-correct-heaps
 - [ ] 2-place-and-1-place-words
 - [ ] what-would-you-do-without-morality
