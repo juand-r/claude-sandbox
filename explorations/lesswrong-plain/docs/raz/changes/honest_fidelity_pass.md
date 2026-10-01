@@ -7458,3 +7458,79 @@ Why: Fidelity/substance pass: added the horrible interview question, why an AI m
 - Before: I cannot endorse absolute injunctions, though the one against self-deception has ``tremendous force.''
 - After: I cannot endorse absolute injunctions binding over every possible state of a human brain, though the one against self-deception has ``tremendous force''; and I would build an injunction into a self-modifying AI only after working out the math, not as an ad hoc patch.
 
+
+## honest/sections/something-to-protect.tex
+
+Why: Fidelity/substance pass: added the X saga's rule and loss of power, Western heroes' whining, purpose before power, the infinite-recursion reason, the Great Teacher passage, why curiosity alone did not escape authority, why science still meets resistance, propositional morality's degrees of freedom, composers who love music, the pleasures of discipline, never believing useful falsehoods, the 'everyone is someone's daughter' step, the point (more than your own life), the certainty misconception, how to learn from failure and the bootstrap problem, the Great Teacher as fraud, Musashi, and why a cause cannot be picked like a hobby
+
+- Before: In Japanese fiction, power comes from having someone to protect.
+- After: In Japanese fiction, power comes from having someone to protect. In the \textsc{X} saga each hero draws power from one most precious person, and if that person is killed or hurt the wrong way, the hero loses it, from despair, as good as being taken off the board.
+
+- Before: ``so he decides to fight crime.''
+- After: ``so he decides to fight crime,'' and then whines about how much time it takes. In Western comics power comes first and purpose after; in Japanese fiction, often, the reverse.
+
+- Before: ``like picking out nice living-room drapes.''
+- After: ``like picking out nice living-room drapes,'' though not too expensive.
+
+- Before: My idea is that a rationalist must value something more than rationality.
+- After: My idea is that a rationalist must value something more than rationality, or the Art collapses into infinite recursion; and I ask where rationalists come from and how they gain their powers. As the \textsc{Twelve Virtues} says, if your conception of rationality is to believe the Great Teacher, who says the sky is green, saying it is your duty to be rational only enshrines the mistake. Curiosity is as old as humanity, but campfire tales satisfy it just as well.
+
+- Before: ``because it displayed greater raw strength in the form of technology, not because science sounded more reasonable.''
+- After: ``because it displayed greater raw strength in the form of technology, not because science sounded more reasonable''; magic and scripture still sound more reasonable to untrained ears, which is why the tension continues.
+
+- Before: \nb{The post asks the reader to forget the comparison, and does not take it back.}
+- After: \nb{The post asks the reader to forget the comparison, and does not take it back.} Propositional morality has too many degrees of freedom.
+
+- Before: Then I explain that my love of truth is ``more complicated,''
+- After: Then I explain that my love of truth is ``more complicated'': no one masters the art without caring about truth, as few master composers hate music, but I like the discipline of making beliefs yield predictions, and loving true-seeming ideas while ready to drop them;
+
+- Before: which is ``almost a contradiction, but not quite.''
+- After: which is ``almost a contradiction, but not quite.'' But never deliberately believe a useful falsehood. Morality and aesthetics alone, the belief that one ought to be rational, would not have got humanity out of the authority-hole.
+
+- Before: and love may push you to ``shut up and multiply.''
+- After: and love may push you to ``shut up and multiply.'' Even one of the 500 might grandstand and cling to certainty, since our own lives often matter less to us than a good intuition. And everyone in the crowd is someone's child, so altruists too should pick the second. The point is not that one life outweighs 499, but that more than your own life must be at stake before people turn to math.
+
+- Before: Pride in being a rationalist can stop you from learning:
+- After: Many think rationality means choosing only methods certain to work; but hopefully you care more about your daughter than about ``rationality.'' Pride in being a rationalist can stop you from learning:
+
+- Before: \nb{The only evidence given is this one case.}
+- After: \nb{The only evidence given is this one case.} You may learn from such a moment if you can say ``I must have had the wrong conception of rationality,'' not ``Look at how rationality gave me the wrong answer!''; mastering rationality takes rationality to bootstrap. A self-image as someone who faces harsh truths helps, but may make it too hard to admit you have done rationality all wrong, as with one who must admit the Great Teacher was a fraud. Only when you care more about success than any technique do you understand Musashi: ``the Way of the Ichi school is the spirit of winning, whatever the weapon and whatever its size.''
+
+- Before: You cannot just pick a cause; but
+- After: You cannot just pick a cause because you need a hobby; look for a good cause and your mind supplies a cliché. But
+
+
+## honest/sections/when-not-to-use-probabilities.tex
+
+Why: Fidelity/substance pass: added the P vs NP limit, what not to do with a flying ball, the Dutch-book gamble example and the baseball player, that verbal probabilities may be worse than gut ones, accuracy over consistency, the uses of verbalizing (conjunction fallacy, inconsistencies), the LHC argument's structure, the three objections to the made-up numbers, why frequencies help, the God comparison, why not to scribble maps consistent, that numerical foundations beat vague feelings, and the straw-Bayesian contrast
+
+- Before: The laws of probability are laws, but often they are too hard to compute.
+- After: The laws of probability are laws, but often they are too hard to compute; if P is not NP, some updates are beyond even a superintelligence.
+
+- Before: To catch a ball, trust your brain's built-in mechanisms rather than a distribution over landing spots.
+- After: To catch a ball, trust your brain's built-in mechanisms rather than a distribution over landing spots, Bayesian updates on your glances and expected utilities of motor commands. That is not going beyond probability theory.
+
+- Before: The Dutch book arguments still apply, but catching the ball matters more than being consistent.
+- After: The Dutch book arguments still apply: if your choices between \$10,000 if the ball lands in this square and \$10,000 on a die showing 6 admit no consistent probabilities, you will accept sure losses. But for a professional baseball player catching the ball matters more, and made-up verbal probabilities may be worse than a wordless gut feeling. Accurate maps agree with each other, but consistent maps need not be accurate.
+
+- Before: So I advise against making up probabilities without some decent basis.
+- After: So I advise against making up probabilities without some decent basis; it fools you into thinking you are more Bayesian than you are.
+
+- Before: ``Numbers should come from numbers.''
+- After: ``Numbers should come from numbers.'' Translating feelings into numbers can help you spot the conjunction fallacy or inconsistencies, though not fix them.
+
+- Before: The speaker put at least 1 in 1000 on the LHC safety papers being wrong,
+- After: The argument was that we cannot be sure the papers showing from many angles that the LHC is safe contain no error, or that their theory is right, so the LHC might destroy the world and should not be turned on; put that way, I would not object. But the speaker put at least 1 in 1000 on the LHC safety papers being wrong,
+
+- Before: I object to ``these numbers pulled out of thin air.''
+- After: I object to ``these numbers pulled out of thin air''; if you cannot shape your uncertainty with probabilistic tools, do not dignify it as probability.
+
+- Before: I propose instead to debate the general rule of banning physics experiments that cannot be proved safe.
+- After: I propose instead to debate the general rule of banning physics experiments that cannot be proved safe, since thinking in frequencies brings in more consequences and historical cases. Debating one case with specific numbers gives shaky reasoning undue authority, hides the consequences of the general rule, and suggests a new paper might change the decision.
+
+- Before: I keep the inconsistency, because the goal is to win.
+- After: Likewise I would worry more about a device with a one-in-a-billion chance of destroying the world than one that did so if the Judeo-Christian God existed, yet could not make a billion statements as sure as ``There is no God'' and be wrong about once. I keep the inconsistency rather than scribbling on two maps to make them agree, until I can move toward greater accuracy, not just consistency, because the goal is to win. This is no licence to ignore well-founded probabilities; any numerical basis beats a vague feeling, since humans are terrible statisticians, but a number pulled from a non-numerical procedure is nearly no basis.
+
+- Before: I think I would do worse with numbers.
+- After: I think I would do worse with numbers. I am not the straw Bayesian who says to make up probabilities to avoid Dutch books; humans are exposed to Dutch books because they are not powerful enough to avoid them, and catching the ball matters more. The math governs like underlying physics, too expensive to calculate, and a ritual that mimics its surface without better decisions would be a lost purpose.
+

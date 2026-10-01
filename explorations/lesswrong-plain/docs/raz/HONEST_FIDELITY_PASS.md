@@ -323,8 +323,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-intuitions-behind-utilitarianism
 - [x] ends-don-t-justify-means-among-humans
 - [x] ethical-injunctions
-- [ ] something-to-protect
-- [ ] when-not-to-use-probabilities
+- [x] something-to-protect
+- [x] when-not-to-use-probabilities
 - [ ] newcomb-s-problem-and-regret-of-rationality
 - [ ] twelve-virtues-of-rationality
 - [ ] beginnings-an-introduction
