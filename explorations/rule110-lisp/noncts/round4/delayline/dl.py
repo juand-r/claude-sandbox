@@ -6,6 +6,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 COUP = os.path.abspath(os.path.join(HERE, "..", "..", "round3", "coupler"))
 sys.path.insert(0, COUP)
 from two import *  # noqa  (cl.*, rafast Program, left_stream, ...)
+HERE = os.path.dirname(os.path.abspath(__file__))  # re-set: two/cl export their own HERE
+assert HERE.endswith("round4/delayline"), HERE
 
 
 def lat(g):

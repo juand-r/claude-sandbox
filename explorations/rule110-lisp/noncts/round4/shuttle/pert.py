@@ -42,15 +42,27 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 class BG:
     """Exact spacetime of a rod E^N alone (front cell at column 0 at t=0)."""
 
-    def __init__(self, N, T, xlo, xhi):
+    def __init__(self, N, T, xlo, xhi, decor=None):
+        """decor = (phi, bits, c0): replace the rod's cells x < c0 by
+        ether(phi) | bits (bits on [c0 - len(bits), c0)): a decorated front
+        (must be (15,-4)-periodic: from fronts.py; checked here)."""
         self.r = build_rod(N)
         pad = T + 60
         self.lo = xlo - pad
         row = embed([rod_piece(self.r, 0)], self.lo, xhi + pad)
-        self.h = simulate(row, T + 5 * 8 + 15)     # allow t - 5K lookups
-        self.T = T
         self.phi_left = (self.r["pl"]) % TILE      # global phase left of rod
-        self.phi_right = (self.r["pr"] - self.r["W"]) % TILE
+        if decor is not None:
+            phi, bits, c0 = decor
+            a = c0 - len(bits)
+            for x in range(self.lo, c0):
+                row[x - self.lo] = ether_bit(phi, 0, x) if x < a else int(bits[x - a])
+            self.phi_left = phi
+        self.h = simulate(row, T + 5 * 8 + 15)     # allow t - 5K lookups
+        if decor is not None:
+            a0, b0 = 30 + 30, row.size - 60 - 30
+            assert np.array_equal(self.h[15, a0 - 4:b0 - 4], self.h[0, a0:b0]), "decorated rod not periodic"
+        self.T = T
+        self.phi_right = self.r["pr"] % TILE        # global phase right of rod (rod starts at 0)
         self.W = self.r["W"]
 
     def __call__(self, t, x):

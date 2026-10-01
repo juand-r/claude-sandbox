@@ -137,8 +137,12 @@ def names_left(res, T):
 if __name__ == "__main__":
     fn, ncls, T, out = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
     NS = [int(v) for v in sys.argv[5].split(",")] if len(sys.argv) > 5 else [10, 11]
+    decor = None
+    if len(sys.argv) > 6:          # decorated front: fronts file, index
+        fr = [json.loads(l) for l in open(sys.argv[6])][int(sys.argv[7])]
+        decor = (fr["phi"], fr["row"], fr["c0"])
     trains = [json.loads(l) for l in open(fn)]
-    bgs = {n: BG(n, T + 60, -2 * T - 600, 4 * n + 2 * T + 300) for n in NS}
+    bgs = {n: BG(n, T + 60, -2 * T - 600, 4 * n + 2 * T + 300, decor=decor) for n in NS}
     done = 0
     if os.path.exists(out):
         done = sum(1 for _ in open(out))

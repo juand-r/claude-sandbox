@@ -39,7 +39,7 @@ def rod_row(n):
     return b, l % 14, r % 14
 
 
-def build(n, T2, depth, overlap=None, train=None, window_margin=None):
+def build(n, T2, depth, overlap=None, train=None, window_margin=None, target='wall'):
     b, cl, cr = rod_row(n)
     W = len(b)
     cnf = CNF()
@@ -54,12 +54,12 @@ def build(n, T2, depth, overlap=None, train=None, window_margin=None):
         lo = 0
         # free cells [xa, hi): fresh vars (Spacetime creates them)
     else:
-        p, d, WY, gap, tau = train
-        Y = __import__("react").TrainVar(cnf, WY, p, d, 0, name="Y") if False else None
+        p, d, WY, gap, tau, pR = train
+
         from react import TrainVar
         # Y canonical: left ether my-phase 0, right my-phase pR (solver-free:
         # we loop pR outside); here pR given via train tuple length 6
-        pR = train[5]
+
         Y = TrainVar(cnf, WY, p, d, pR, name="Y")
         # piece (Y, tau, xg): left ether my-phase (4 tau - xg) must equal the
         # rod's right absolute phase cr (as my-phase at t=0: ETHER[(c + x)])
@@ -100,8 +100,20 @@ def build(n, T2, depth, overlap=None, train=None, window_margin=None):
             pat = [int(rr[(x - sh) % EBG.p]) for x in range(seg_lo, seg_hi)]
             if pat not in cands:
                 cands.append(pat)
-    assert und in cands, "undisturbed segment not E-bg"
-    others = [c for c in cands if c != und]
+    if target == "extend":
+        # control target: the 10 cells right of the undisturbed back are E-bg
+        # (any phase): the rod has grown by >= 10 cells at the back
+        seg_lo, seg_hi = back, back + 10
+        others = []
+        for tt in range(EBG.tper):
+            rr = EBG.row_at(tt)
+            for sh in range(EBG.p):
+                pat = [int(rr[(x - sh) % EBG.p]) for x in range(seg_lo, seg_hi)]
+                if pat not in others:
+                    others.append(pat)
+    else:
+        assert und in cands, "undisturbed segment not E-bg"
+        others = [c for c in cands if c != und]
     inds = []
     for pat in others:
         m = cnf.new_var()
@@ -140,6 +152,7 @@ if __name__ == "__main__":
     ap.add_argument("--taus", default=None)
     ap.add_argument("--pRs", default=None)
     ap.add_argument("--win", type=int, default=None)
+    ap.add_argument("--target", default="wall")
     A = ap.parse_args()
     jobs = []
     if A.overlap:
@@ -151,9 +164,9 @@ if __name__ == "__main__":
         jobs = [dict(train=(p, d, WY, gap, tau, pR)) for tau in taus for pR in pRs]
     for job in jobs:
         t0 = time.time()
-        cnf, st, info, Yinfo = build(A.n, A.T2, A.depth, window_margin=A.win, **job)
+        cnf, st, info, Yinfo = build(A.n, A.T2, A.depth, window_margin=A.win, target=A.target, **job)
         sol = cnf.solve()
-        rec = {"n": A.n, "T2": A.T2, "depth": A.depth, "win": A.win, **{k: list(v) for k, v in job.items()},
+        rec = {"n": A.n, "T2": A.T2, "depth": A.depth, "win": A.win, "target": A.target, **{k: list(v) for k, v in job.items()},
                "sat": sol is not None, "secs": round(time.time() - t0, 1), "nphases": info[3]}
         if sol is not None:
             ok, full, x_lo = check(st, sol, A.T2)

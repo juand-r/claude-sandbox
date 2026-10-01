@@ -11,3 +11,4 @@ Status: VERIFIED / REFUTED / CANNOT REPRODUCE / PENDING / SCOPE ACCEPTED / REVIE
 | 5 | all 15 -3/5 wall kinds (W <= 40) destroy E^45 at the front | objects 23:11 | PARTLY re-checked (1 kind, 2 launches, both destroy) | wall_plant.py walls | 48 of 50 zero windows launch no wall |
 | 6 | walls in E-bg only at -3/5, -4/15, +2/5 (P <= 30, W <= 40, SAT) | objects 23:11 | SCOPE ACCEPTED | - | ether controls reported |
 | r3#28 | correction of round-3 ledger #28 | verify (self) | CORRECTED | - | -3/5 walls exist; round-3 classifier missed them |
+| 7 | Lemma R4-L4: universal single-head particle TM needs clean passes in both directions; long stretches force pass cycles | theory 23:18 | REVIEWED: part 1 correct; part 2 (pure pass cycles) NOT forced (zig-zag cycles with reflections suffice) | board 23:19 | affects S1/S2 scope |

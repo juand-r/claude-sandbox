@@ -233,3 +233,67 @@ SPEC for objects (SAT; free cell up to W_c, free head up to W_h):
  Positive controls: free output head must reproduce D2_7_D2#2 + C3 ->
  C2 + A_0_A_7_A and v2/3s8w25#2 + C2 -> C2 + A.
  Any SAT witness: I will run it through ptm.run and post the chain.
+
+### [verify] 23:19 - review of theory 23:18 Lemma R4-L4: first part correct, "pass CYCLES" part too strong
+[thm] First part (a universal single-head particle TM needs clean
+R-passes AND L-passes): correct in the model, with the proof restated:
+without R-passes a right-moving head in gap (j, j+1) can only reflect at
+c_(j+1), so it never crosses any cell rightward; it is a finite automaton
+on a 2-cell window whose position moves monotonically left over an
+ultimately periodic tape (cells it left behind are never read again):
+eventually periodic or halting. Symmetric without L-passes. ("stays
+within one cell" in the post is the wrong wording for this.)
+Second part ("long stretches force pass CYCLES h1 -> ... -> h1",
+used to aim S1 at cycles of passes only): NOT forced. Rightward
+progress needs one R-pass per crossed cell, but passes may be interleaved
+with reflections inside a gap, e.g. R-pass h1 -> h2 at c_(j+1), reflect
+h2 -> h3 at c_(j+2), reflect h3 -> h4 at c_(j+1), R-pass h4 -> h1 at
+c_(j+2) (a zig-zag; it rewrites c_(j+1) twice, which is allowed). What
+pigeonhole forces is a cycle of head types in the full reaction walk
+(passes AND reflections) with positive net crossing. Consequences:
+(i) S1 (pure pass cycles) is a sufficient target, not a necessary one;
+an UNSAT there closes nothing. (ii) S2's "every pass shrinks the head"
+would be a no-go only if no reflection can grow the head back; the
+census already has growing reflections (AA + C1 -> C2 + B_2_B_4_B_2_B,
+2 A's in, 4 B's out). Suggest: search the census graph for zig-zag
+cycles (pass/reflect cycles with net +1 crossing and a consistent cell
+rewrite), before any SAT.
+
+### [shuttle] 23:24 - E^n FRONT never emits (exhaustive scopes) + a MERGE reaction (R1 dumped into R2) [sim]
+Tools (shuttle/): pert.py = SAT around an exact background spacetime (rod
+alone), moving window whose right edge sits 30 cells inside the rod, cells
+outside forced to the background: solutions are wall-free and valid for
+EVERY n >= ~10 at once. frontsim.py = exact simulation of enumerated
+trains vs E^10 and E^11 fronts in every class, rod checked cell-exact
+against the background shifted by K units (crystal unit u = (5,2), measured:
+the rod interior is invariant under (5,2) and (15,-4)) and the back by J.
+Positive controls: single A = DEC in exactly one class (n = 6,7,10,11);
+SAT A-DEC (Y may be empty) verified n = 3..13; SAT G-train-moving-away
+control gives Y = G.
+Results (all "none" = no X that leaves the rod intact AND emits a
+left-mover):
+- all (3,2) A-trains of width <= 30 (6398, trains.py SAT enumeration): only
+  plain K = -1..3 DEC/INC or K = 0 "eaters"; nothing emitted, no walls.
+- all (10,2) D-trains w <= 30 (1071) and stationary (7,0) patterns w <= 34
+  (4877): no clean outcome at all (rod destroyed/dumped).
+- all 368 library right-movers (incl. compounds), n = 8..11, every class:
+  none (libscan.py).
+- SAT, wall-free, Y in G family (42,-14), K = 1, 2, -1: A-trains w <= 24
+  every phiL UNSAT; w 40 (K = -1, phiL 6) UNSAT.
+- 36 NEW tight front terminations of the crystal exist (fronts.py: all
+  (15,-4)-periodic fronts within 24 cells; within 12 only the standard
+  one). Against A-trains w <= 22 they give only K = 0 eaters (sweep
+  running, 19/36 done).
+Reading [arg]: fronts absorb, they never reflect; consistent with the
+catalog fact that no left-mover ever exits an E/Ebar to its left with the
+object intact. A shuttle needs a reflection at R1's front, so for plain
+E^n rods it looks closed within these scopes; I am moving to designs that
+need no front emission (gap-collision pump, below) and to the back table.
+MERGE [sim] (dump2.py D1 k m [gap]): D1 arriving at R1's front from the gap,
+classes 0,1,3 of 5: R1 = E^n turns into a left-moving train of n+1 B's,
+which fuses into R2's back: E^m | D1 | E^n -> E^(m+n+1), i.e. y := y + x + 2,
+R1 gone. Exact for n = 3..12, m = 1,2,3,6, gaps 150/200/207. Classes 2, 4:
+debris (controls). Reproduce: cd round4/shuttle; python3 dump2.py D1 0 3.
+It costs a counter, so it is not a shuttle; theory: it is a bulk transfer
+(unbounded change), outside Theorem 1's premise - useful only if a new
+R1 can be created afterwards.
