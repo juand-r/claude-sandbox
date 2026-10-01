@@ -1,10 +1,11 @@
 # Grapes: the book's machinery
 
-The book itself has not been started. It will be a new LaTeX file that loads
-`grapes.sty`. What is here so far:
+What is here:
 
 | File | What it is |
 |------|------------|
+| `grapes.tex`, `chapters/` | THE BOOK. Main file and one file per chapter. Build: `./build.sh grapes`. |
+| `research/FACTS.md` | Every real-world fact used in the book, with its source. Chapters cite entries as `% Fnnn`. |
 | `grapes.sty` | The layout: notes, subnotes, asides, anchors, cross-references, PDF links. |
 | `sample.tex`, `sample-text.tex` | A typography sample, NOT the book: a few pages of throwaway prose used to test `grapes.sty`. Builds `sample.pdf`. |
 | `STYLE.md`, `BIO.md` | How the book will be written, and its narrator. |
@@ -75,7 +76,7 @@ margin notes away from their lines.
     ./build.sh sample nomargin   # sample-nomargin.pdf
     tests/run.sh                 # every rule above, in both versions, plus link checks
 
-`build.sh` takes the name of the main `.tex` file. Today the only one is
+`build.sh` takes the name of the main `.tex` file: `grapes` (the book) or
 `sample` (the typography sample). The tests use their own small documents,
 not the sample.
 

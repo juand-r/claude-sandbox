@@ -56,4 +56,10 @@
 
 ## Phase 3: writing
 
-Not started.
+- [x] 2026-10-01: research for chapter 1 (two research agents plus my own
+      checks); 28 facts logged with sources in book/research/FACTS.md.
+- [x] 2026-10-01: chapter 1, "Concord", first draft (book/chapters/01.tex,
+      about 3,000 words with notes). Builds in both versions; all links
+      checked.
+- [ ] Author's review of chapter 1.
+- [ ] Chapter 2.

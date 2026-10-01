@@ -6,10 +6,11 @@ layout experiments that led to it.
 
 ## Current state (2026-10-01)
 
-The layout machinery is done and tested. The book itself has not been
-started; it will be a new LaTeX file. The only text so far is a typography
-sample (`book/sample.tex`, `book/sample-text.tex`): throwaway prose for
-testing the layout, not part of the book. The style and the narrator are set
+The layout machinery is done and tested. The book itself is in
+`book/grapes.tex`, with chapters in `book/chapters/`; chapter 1 exists in a
+first draft. Separately, `book/sample.tex` and `book/sample-text.tex` are a
+typography sample: throwaway prose for testing the layout, not part of the
+book. The style and the narrator are set
 down in `book/STYLE.md` and `book/BIO.md`, with a few points still open
 (marked PROVISIONAL or OPEN). Next: structure and content (see `PLAN.md`).
 
@@ -19,6 +20,9 @@ down in `book/STYLE.md` and `book/BIO.md`, with a few points still open
 |------|--------------|
 | `book/README.md` | How to write with the layout commands: the five commands, turning margin notes off, what stops the build, how to build and test. Start here. |
 | `book/STYLE.md`  | How the book is written: voices, tone, the arc from order to chaos, facts, typography, marks. Each rule has its reason and date. |
+| `book/grapes.tex`, `book/chapters/` | The book. Build: `book/build.sh grapes`. |
+| `book/research/FACTS.md` | Every real-world fact used in the book, with sources. |
+| `WRITING-NOTES.md` | Chapter plans, reader expectations, planted threads, ideas, questions for the author. |
 | `book/BIO.md`    | The narrator, Hollis Vane: his life, the death of Odile, his habits, the motifs. For the authors only. |
 | `book/LINKS.md`  | Which links between main text, notes, subnotes and asides are possible, and which are not, and why. |
 | `book/grapes.sty` | The layout itself. Its header comment summarizes the commands and rules. |
