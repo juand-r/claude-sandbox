@@ -56,3 +56,17 @@ speed -0.89 (ether) and -0.93 (E-bg). Need the exact cone (SAT).
 - launch2 wall target, B-lattice trains WY 24/32/40, n=12, T2=160, depth 5:
   42/42 UNSAT (odd slips trivially). Scope caveat: T2=160 only lets the
   first part of a wide train act. Rerunning n=36, T2=400, WY 24/40/56.
+
+23:50 launch2 wall target, B-lattice trains, n=36, T2=400, depth 5:
+  W=24: 8/8 UNSAT (even slips + 13), W=40: 8/8 UNSAT (51-250 s each).
+  W=56 started by the script, killed by PID (15960) to free the CPU.
+  Controls: --overlap (SAT), --target extend (SAT, B-trains extend rod).
+- interfaces at E speed (wallsat.InterfaceModel, W<=24): ether|E-bg 36 front
+  types (matches shuttle's 36 tight fronts), E-bg|ether 13 backs; p12 bg
+  000001110011 has fronts but no back and no successor; p20 bg has backs
+  but no predecessor. So E^n is the only uniform-interior rod at E speed in
+  this scope.
+- p12 and p20 backgrounds: cones also two-way (left >= -0.79/-0.73, right
+  <= 0.375/0.42 at T=48/45).
+Started rods_scan.py (all backgrounds p<=20 x library speeds: ether
+interfaces on both sides, W<=24).

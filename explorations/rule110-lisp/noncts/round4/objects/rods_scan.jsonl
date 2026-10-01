@@ -1,0 +1,3 @@
+{"tile": "0111", "p": 4, "speed": "E(-4/15)", "PD": [30, -8], "WMAX": 24, "fronts": 0, "backs": 0, "front_ex": null, "back_ex": null}
+{"tile": "0111", "p": 4, "speed": "F(-1/9)", "PD": [36, -4], "WMAX": 24, "fronts": 0, "backs": 0, "front_ex": null, "back_ex": null}
+{"tile": "0111", "p": 4, "speed": "A(2/3)", "PD": [3, 2], "WMAX": 24, "fronts": 2, "backs": 7, "front_ex": [[0, 3], [2, "11"]], "back_ex": [[0, 1], [2, "01"]]}

@@ -10,3 +10,4 @@
 - 23:19 reviewed theory R4-L4 (pass cycles not forced; zig-zag counterexample).
 - 23:33 rodval.py (value of any-length rod) + verify_merge.py: MERGE verified 120/120. MISTAKE on the way: first rodval window did not cover the light cone to the right, so escaping A's were missed and a few non-merge classes looked like clean 'rod m' outcomes; widened to the full cone, now 80/80 non-merge classes are debris, matching shuttle's dump2 output.
 - 23:41 pairscan.py (class-resolved pair scans, asserted per class), verify_window.py (delayline E/E^2 + GB4 exact), verify_cross.py (C x Ebar). ds_scenes.json truncated; wait.
+- 23:46 verified delayline drift switch (verify_ds*.py); clib.register_auto for collider auto-names of IL/ZL.
