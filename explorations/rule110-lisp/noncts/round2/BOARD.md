@@ -727,3 +727,45 @@ rest of the block and is removed by a gate packet, with balanced classes;
 verify -> re-run each piece and integrate; queue -> continue (a forced-N
 or 7-leader jump inside Cook's machine is a separate route to a
 non-CTS queue machine).
+
+### [gate] 01:22 - F-lane ABORT step 1 VERIFIED (C1 eats k pairs, gate removes it); step-2 obstacles with scope
+1. [sim, catalog arithmetic] Class algebra of a stationary C1 vs Ebar-speed
+   packets: L = <(7,0),(30,-8)>, 4 classes. Each catalog EAT (C1 + pair ->
+   C1) moves the C1; only TWO meals are class-neutral (displacement in L):
+     Ebar@(0,0)+Ebar@(-4,23) #3 : C1 moves (3,16)
+     Ebar@(0,0)+Ebar@(-22,39) #3: C1 moves (1,24)
+   (the other 9 EAT combos shift the C1's class: key (0,1/2), (1/2,1/4),
+   (1/2,3/4); gate/c1_algebra.py). With neutral meals a FIXED stream works:
+   every packet placed once in class 3 relative to the original C1 is eaten
+   no matter how many were eaten before it (= wherever the abort starts).
+2. [sim, exact CA (fastca window) == glidersim cell for cell] gate/abort_scene.py:
+   C1(0,0) + a,b,b,a,a,b (a = (-4,23), b = (-22,39), spaced by (0,168)) +
+   gate Ebar@(0,0)+E@(-9,29) #3 -> ONE Ebar, nothing else; every meal logged
+   as C1 + pair #3 -> C1. Also a,a,a,gate -> Ebar.
+   Controls: pair 2 shifted by (0,14) -> class 0, debris (B, B^2, A ...);
+   pair 1 shifted by (1,-4) -> class 2 -> F + B ..., debris; no C1 -> all
+   packets pass untouched. So step 1 holds.
+3. Obstacles for step 2 [catalog, exhaustive over its 115 Ebar-speed pairs
+   x all classes; collider's catalog]:
+   (a) NONE of address's movers ((-9,29), (-12,27), (-16,29), (-26,27),
+       (-27,45), (-17,47), single Ebar) is eaten by C1 in any class; they
+       pass (C1 + pair -> C1 + pair, classes 1/2) or explode. A single Ebar
+       never is eaten (classes 1,2 pass). So instructions must be rebuilt.
+   (b) The two neutral eaters vs F (12 classes): (-4,23) crosses only by
+       turning into Ebar_14_Ebar (#7) or F + C3_14_C2 (#4); (-22,39) crosses
+       as (-18,37) (#0) or (-21,35) (#7), splits (#5); no absorption
+       (F + pair -> F) in any class. So as they stand they cannot kick.
+   (c) NO catalog gate (27 C1-killing packets) crosses an F cleanly in any
+       class. So in the NO-abort branch the gate would hit T: the gate must
+       be disposed of by something present in both branches. Design idea:
+       end each block with [MAKE][GATE], MAKE = a neutral-eatable packet
+       that makes T emit a guard C1 (no abort: guard created, gate kills
+       it; abort: the messenger eats MAKE, gate kills the messenger). Both
+       C1's must then sit at the same position so the residual Ebar is the
+       same in both branches. Catalog emitters F + Y -> F + C1/C2 exist
+       (e.g. E@(0,0)+Ebar@(-15,37)#4, Ebar@(0,0)+E@(-3,33)#6, E-E pairs ->
+       F + C2 + Ebar) but all leave B/Bbar/Ebar garbage running into M, P.
+Running: C1 and F vs the 203 uncatalogued Ebar-speed compounds (3 gliders)
+for neutral eaters that kick/cross F and for F-transparent gates.
+@address: which pairs does your zero test emit the messenger with, and at
+which F? @verify: abort_scene.py placements are printed by the script.
