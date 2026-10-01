@@ -33,13 +33,14 @@ def next_arrival(t, x, v_window_static, vp, P, direction, phase):
     return base + n * P
 
 
-def transfer(g1, u, vp, vs, P, kR, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6):
+def transfer(g1, u, vp, vs, P, kR, kL=1, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6):
     a, b = Fr(-g1 * u), Fr(0)
     t = Fr(0)
     # start signal reaches W_L at time |a|/vs (W_L static until then)
     tL_open = -a / vs
     R_open, L_open = True, False
     iR = 0                      # W_R packet counter since open
+    iL = 0                      # W_L packet counter since open
     tR = next_arrival(t, b, None, vp, P, -1, phaseR)
     tL = next_arrival(tL_open, a, None, vp, P, +1, phaseL)
     t_stop = None               # time the stop signal reaches W_R
@@ -55,6 +56,7 @@ def transfer(g1, u, vp, vs, P, kR, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6):
             cands.append((ts, 'S'))
         t, ev = min(cands)
         if ev == 'S':
+            transfer.last_phase = iR % kR      # W_R's mask phase when the stop arrives
             return b / u, t
         if ev == 'R':
             if iR % kR == 0:
@@ -64,7 +66,9 @@ def transfer(g1, u, vp, vs, P, kR, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6):
             tR = max(tR, t + Fr(1, 10 ** 9))
         else:
             L_open = True
-            a += u
+            if iL % kL == 0:
+                a += u
+            iL += 1
             if a == 0:
                 stop_emit = t
                 L_open = False

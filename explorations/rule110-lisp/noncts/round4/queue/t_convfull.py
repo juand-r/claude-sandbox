@@ -9,7 +9,8 @@ tape, nread, cut, D, spec = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int
 kinds = sys.argv[6] if len(sys.argv) > 6 else "KF"
 items = [(tiles_of(n), int(k), int(x)) for n, k, x in (s.split(":") for s in spec.split(";"))] if spec != "-" else []
 apps = ["YNNNNN"]; t_in = 31500
-v = enc._left_v(apps); T = (nread + 3) * 2 * 30 * v
+import os
+v = enc._left_v(apps) * int(os.environ.get('VMULT', '1')); T = (nread + 3) * 2 * 30 * v
 m = Machine(tape, apps, T, v=v, left_periods=T // (30 * v) + 3, right_periods=nread + 3)
 K0 = [a for n, a, b in m.blocks if n == "K"][0]
 regs = [(a + (D if a >= K0 + cut else 0), b + (D if b > K0 + cut else 0)) for a, b in regions_of(m, nread)]

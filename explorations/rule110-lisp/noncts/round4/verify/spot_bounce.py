@@ -17,6 +17,7 @@ form (min over P time phases of the list form) vs head_out_canon.
 
 python3 spot_bounce.py TABLE SAMPLE_PER_KIND [seed]"""
 import json
+from fractions import Fraction
 import random
 import sys
 from collections import Counter
@@ -29,6 +30,7 @@ import rawscene
 vlib = hrun.vlib
 ETH = "11111000100110"
 T = 840
+MERGE = 20       # stationary defects closer than this are one compound object
 VEL = {"0": (0, 1), "A": (2, 3), "D": (1, 5), "B": (-1, 2), "E": (-4, 15),
        "G": (-1, 3), "Ebar": (-4, 15), "F": (-1, 9), "C": (0, 1)}
 SPEEDS = [(0, 1), (2, 3), (1, 5), (-1, 2), (-4, 15), (-1, 3), (-1, 9), (-18, 92)]
@@ -42,29 +44,46 @@ def ether_phase(row, i, x, t):
 
 
 def list_form(cells, x0, t, a, b):
-    """List form of the object occupying cells[a:b] (indices) of a row whose
-    cell 0 is global x0, at time t: (bits, pR, origin)."""
+    """List form (shuttle/theory definition, my implementation) of the object
+    near cells[a:b] (indices) of a row whose cell 0 is global x0, at time t:
+    left/right ether phases read 20 cells outside; the object spans from the
+    first cell differing from the left ether to the last cell differing from
+    the right ether. Returns (bits, pR, origin)."""
     pl = ether_phase(cells, a - 20, x0 + a - 20, t)
     pr = ether_phase(cells, b + 6, x0 + b + 6, t)
     assert pl is not None and pr is not None
-    phi = (x0 + a + 4 * t + pl) % 14
-    return ETH[:phi] + "".join(map(str, cells[a:b])), (pr - pl) % 14, x0 + a - phi
+    xs = np.arange(a - 20, b + 20)
+    le = np.array([int(ETH[(x0 + i + 4 * t + pl) % 14]) for i in xs])
+    re = np.array([int(ETH[(x0 + i + 4 * t + pr) % 14]) for i in xs])
+    seg = cells[a - 20:b + 20]
+    a2 = a - 20 + int(np.nonzero(seg != le)[0][0])
+    b2 = a - 20 + int(np.nonzero(seg != re)[0][-1]) + 1
+    phi = (x0 + a2 + 4 * t + pl) % 14
+    return ETH[:phi] + "".join(map(str, cells[a2:b2])), (pr - pl) % 14, x0 + a2 - phi
+
+
+FAMS = [(0, (7, 0)), ("A", (3, 2)), ("D", (10, 2)), ("B", (4, -2)), ("E", (15, -4)),
+        ("Ebar", (30, -8)), ("F", (36, -4)), ("G", (42, -14)), ("Bbar", (12, -6)),
+        ("H", (92, -18))]
 
 
 def defects_with_velocity(h, lo, hi):
+    """Each defect at the current time with the family period (P, D) under
+    which its neighbourhood is invariant (None if none)."""
     r0 = h.cells(lo, hi)
     t0 = h.t
-    h.goto(t0 + 420)
-    r1 = h.cells(lo - 420, hi + 420)
+    later = {}
+    for P in sorted({p for _, (p, _) in FAMS}):
+        h.goto(t0 + P)
+        later[P] = h.cells(lo - 100, hi + 100)
     out = []
     for d in vlib.defects(r0):
         a, b = d["lo"], d["hi"]
         v = None
-        for num, den in SPEEDS:
-            s = num * 420 // den
-            seg1 = r1[a + 420 + s - 3:b + 420 + s + 3]
+        for fam, (P, D) in FAMS:
+            seg1 = later[P][a + 100 + D - 3:b + 100 + D + 3]
             if np.array_equal(seg1, r0[a - 3:b + 3]):
-                v = (num, den)
+                v = (D, P) if fam != 0 else (0, 1)
                 break
         out.append((a, b, v))
     return r0, out
@@ -82,7 +101,13 @@ def check(row_rec, gap=40):
     h.goto(T)
     lo, hi = org - T - 200, org + len(row) + T + 200
     r0, ds = defects_with_velocity(h, lo, hi)
-    stat = [(a, b) for a, b, v in ds if v == (0, 1)]
+    stat = []
+    for a, b, v in ds:                     # merge stationary defects < MERGE cells apart
+        if v == (0, 1):                    # into one compound (e.g. C1 + C2 at distance 6)
+            if stat and a - stat[-1][1] < MERGE:
+                stat[-1] = (stat[-1][0], b)
+            else:
+                stat.append((a, b))
     mov = [(a, b, v) for a, b, v in ds if v not in (None, (0, 1))]
     unk = [d for d in ds if d[2] is None]
     back = 1 if side == "L" else -1          # sign of a reflected head's velocity
@@ -90,7 +115,7 @@ def check(row_rec, gap=40):
         kind = "dirty"
     elif not mov:
         kind = "absorbed"
-    elif len({v for _, _, v in mov}) != 1:
+    elif len({Fraction(*v) for _, _, v in mov}) != 1:      # same SPEED (B and Bbar share -1/2)
         kind = "dirty"
     elif all(np.sign(v[0]) == back for _, _, v in mov):
         kind = "reflect"
@@ -106,8 +131,8 @@ def check(row_rec, gap=40):
     if kind in ("reflect", "pass"):
         # movers as one row region at T + k, k < P; my canon = min list form
         P = 1
-        for _, _, (num, den) in mov:
-            P = np.lcm(P, den)            # period multiple of the speed denominator
+        for _, _, (D_, P_) in mov:
+            P = np.lcm(P, P_)
         P = int(np.lcm(P, row_rec["head_out"]["p"]))
         forms = []
         h2 = hrun.HRun(row, org)

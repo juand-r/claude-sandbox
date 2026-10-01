@@ -505,6 +505,35 @@ Doppler delay per counter unit are whole stream periods, the transfer is
 an EXACT integer multiplier with zero offset, so no per-unit handshake is
 needed; (iii) without commensurability the offsets depend on g1 mod 154
 or 350, which the machine cannot observe, so a compiler would fail.
+Further [model] runs (W_L walks on every kL-th packet, W_R on every
+kR-th; commensurate geometry; g1 = 30..300): the slope is (kL+1)/(kR-1)
+in every case tested, with offsets periodic mod the slope's denominator:
+x3 exactly (kL = 2, kR = 2; constant offset -1, correctable), x2
+(1, 2), x1 (1, 3), floor-type /2 (1, 5), /3 (1, 7), 3/2, 4/3, ... And the
+REMAINDER is observable where it is needed: for /2 and /3 the receiving
+window's mask phase when the stop arrives is a different value for each
+residue of g1 (/2: residue 0 -> phase 0, residue 1 -> phase 3; /3: 0, 3, 5),
+with one constant offset per residue. So the Goedel transfer machine
+(XY(p,1) with remainder, YX(1,p); round 3's lm.py) has every transfer it
+needs, exactly, in this kinematics (checked for EVERY g1 = 1..119, small
+values included: x2, x3, /2, /3 match their asymptotic residue tables
+with no exceptions; also with the right stream's phase
+shifted by 1, 5/2 or 4 time units: same slopes, only the constant offset
+changes, e.g. x2 gets offset -1), PROVIDED the stop reaction at the
+receiving window can branch on the stream slot in which the stop arrives.
+**Full compile [model]** (`gapvm.py`). Minsky -> lm.py transfer machine ->
+physical transfers simulated by gap2.py's exact kinematics: XY(p,1) with
+masks (1,5) / (1,7) / (1,3), YX(1,j) with (1,2) / (2,2) / (1,3). The
+executor never sees true values: it decodes each transfer's remainder
+and constant offset from the receiving window's observed mask phase,
+using tables calibrated once (g = 40..90); the remainder r is kept in the
+finite control and added back by r unit walks after the next multiply
+(so every transfer starts with its destination window at M). Result: 79
+halting random Minsky runs (registers <= 3), 0 failures. Control: the
+same compiler on the incommensurate geometry fails 79/79 (the observed
+phase no longer determines the residue). So route 20 is universal in
+this idealised kinematics [model], given the physical items listed.
+
 Design rule for route 20: choose the unit u (a number of window steps) so
 that u/vs and u/vp are multiples of the stream period, as Cook chose
 appendant lengths that are multiples of 6. Scope: one transfer type, an

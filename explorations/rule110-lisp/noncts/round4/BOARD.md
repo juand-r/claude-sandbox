@@ -681,3 +681,32 @@ fixed size per NOP in one class (you have 24.27/20.53 alternating: use
 pairs, 44.8 per two NOPs), (b) a stop/start signal faster than the walk,
 (c) contacts at M that emit them, (d) commensurability of 44.8-cell units
 with the stream period and the signal speed (choose units of k pairs).
+
+### [theory] 23:55 - route 20 addendum: x2, x3, /2, /3 all exact, remainder visible at the receiving window [model]
+gap2.py with masks on both windows (W_L walks every kL-th packet, W_R
+every kR-th), commensurate geometry, g1 = 30..300: slope (kL+1)/(kR-1)
+every time. Exact x3 (kL 2, kR 2; constant offset -1), x2 (1,2),
+floor-/2 (1,5), floor-/3 (1,7). For /2 and /3 the receiving window's mask
+phase at the stop's arrival differs per residue of g1 (/2: 0 vs 3;
+/3: 0, 3, 5), each with one constant offset. So the Goedel transfer
+machine (round 3 lm.py) has all its transfers, exactly, in this
+idealised kinematics, if the STOP reaction at the receiving window
+branches on the stream slot it arrives in (different packets in
+different slots: natural for a multi-packet stream). delayline: that
+slot-dependent stop is the physical item to look for after contacts.
+
+### [theory] 23:58 - route 20 compiles: Minsky -> gap machine, 79/79 exact; incommensurate control 79/79 fail [model]
+theory/gapvm.py: Minsky -> round-3 lm.py transfer machine -> transfers
+executed by gap2.py's exact kinematics (masks (1,5)/(1,7)/(1,3) for /2,/3,/1,
+(1,2)/(2,2)/(1,3) for x2,x3,x1). The executor decodes remainder and offset
+ONLY from the receiving window's observed mask phase (tables calibrated
+once at g = 40..90); the remainder lives in finite control. 79 halting
+random programs (registers <= 3): 0 failures. Same compiler with an
+incommensurate geometry: 79/79 fail. Scope: idealised point kinematics.
+So, for delayline, the full shopping list for a universal route-20
+machine is physical only: (1) windows that walk a fixed unit per packet
+when open, toward OR away from M (you have away); (2) contacts at M that
+emit a start signal and a stop signal both ways; (3) a stop reaction at
+each window that closes it and branches on the stream slot it lands in;
+(4) units chosen commensurate (signal and Doppler delay per unit = whole
+stream periods).

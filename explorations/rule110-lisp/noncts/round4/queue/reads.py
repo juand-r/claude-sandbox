@@ -90,7 +90,8 @@ def outcomes(r, regions, T, per_symbol, every=600, lookahead=4, margin=3000, tol
 def check(tape, apps, nread, surgery=None, v=None, T=None):
     """surgery(m, row_at_tin) -> new row, applied at surgery.t_in.
     Returns (observed, read times)."""
-    v = v or enc._left_v(apps)
+    import os
+    v = v or enc._left_v(apps) * int(os.environ.get("VMULT", "1"))
     T = T or (nread + 3) * 2 * 30 * v
     m = Machine(tape, apps, T, v=v, left_periods=T // (30 * v) + 3,
                 right_periods=nread // len(apps) + 3)
