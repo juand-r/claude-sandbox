@@ -171,20 +171,20 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] the-tragedy-of-group-selectionism
 - [x] fake-optimization-criteria
 - [x] adaptation-executers-not-fitness-maximizers
-- [ ] evolutionary-psychology
-- [ ] an-especially-elegant-evpsych-experiment
-- [ ] superstimuli-and-the-collapse-of-western-civilization
-- [ ] thou-art-godshatter
-- [ ] belief-in-intelligence
-- [ ] humans-in-funny-suits
-- [ ] optimization-and-the-intelligence-explosion
-- [ ] ghosts-in-the-machine
-- [ ] artificial-addition
-- [ ] terminal-values-and-instrumental-values
-- [ ] leaky-generalizations
-- [ ] the-hidden-complexity-of-wishes
-- [ ] anthropomorphic-optimism
-- [ ] lost-purposes
+- [x] evolutionary-psychology
+- [x] an-especially-elegant-evpsych-experiment
+- [x] superstimuli-and-the-collapse-of-western-civilization
+- [x] thou-art-godshatter
+- [x] belief-in-intelligence
+- [x] humans-in-funny-suits
+- [x] optimization-and-the-intelligence-explosion
+- [x] ghosts-in-the-machine
+- [x] artificial-addition
+- [x] terminal-values-and-instrumental-values
+- [x] leaky-generalizations
+- [x] the-hidden-complexity-of-wishes
+- [x] anthropomorphic-optimism
+- [x] lost-purposes
 - [ ] the-parable-of-the-dagger
 - [ ] the-parable-of-hemlock
 - [ ] words-as-hidden-inferences
