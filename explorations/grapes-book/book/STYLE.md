@@ -1,12 +1,137 @@
 # Style guide for Grapes
 
-Conventions for writing the book with the commands in `README.md`. Each rule
-says why, so it can be applied to cases it does not name. Add rules here as
-they are decided, with the date.
+Conventions for writing the book. Each rule says why, so it can be applied to
+cases it does not name. Add rules here as they are decided, with the date.
+Rules marked PROPOSED are my reading of the author's brief and wait for the
+author's confirmation.
 
-## Marks
+The narrator is described in `BIO.md`. The commands are described in
+`README.md` and `LINKS.md`.
 
-### Anchors go at the beginning of what they mark (2026-10-01)
+## 1. The book in one paragraph (2026-10-01)
+
+A first-person investigation of the grape, in the manner of McPhee's
+*Oranges*: the narrator goes places, reads things, counts things, and reports.
+Alongside it runs a second writing, about the writing itself and the man
+doing it, in the manner of the commentary in Nabokov's *Pale Fire*: the
+reader assembles a story the narrator never tells outright. The notes cite
+each other and invite jumps, as the chapters of Cortázar's *Rayuela* do. The
+mood and the typography come from Danielewski's *House of Leaves*: something
+is wrong, and the page itself starts to show it. Order at the start; chaos at
+the end.
+
+## 2. Voices
+
+### 2.1 Who is speaking (2026-10-01; PROPOSED)
+
+One narrator: Hollis Vane (see `BIO.md`), an elderly Napa wine man who
+trained in Burgundy. He writes everything: the investigation, the notes, the
+asides. The two parallel writings are two registers of the same man, not two
+people: the investigator in the main text and notes, and the private man in
+the asides.
+
+Alternative, not chosen: two people, as in *Pale Fire* (a poet and his
+commentator). Ask the author before changing.
+
+### 2.2 Main text: the investigation (2026-10-01)
+
+- First person, as a researcher in the field and the library. "I drove to",
+  "I counted", "I asked". He is present, as McPhee is present in *Oranges*.
+- Encyclopedic tone. Definitions, taxonomies, dates, measurements, names of
+  varieties and people, in complete, orderly sentences.
+- Obsessive about detail, past the point of use. He measures what nobody
+  needs measured, gives the third decimal, corrects himself, and counts again.
+  The excess is the joke and, later, the symptom. It is never explained.
+- He does not talk about himself in the main text, at first. When he starts
+  to, that is part of the collapse (section 4).
+
+Example of the register (no factual claims):
+
+    I counted the berries on the cluster in front of me. There were 117. I
+    counted them again and there were 118. One of them, I believe, had been
+    hiding.
+
+### 2.3 Notes and subnotes: digressions and crucial points (2026-10-01)
+
+- Notes carry digressions, but also things the book cannot do without. A
+  reader who skips the notes misses part of the story. So never put only
+  ornament in notes, and never keep the main text self-sufficient on purpose.
+- Same voice as the main text, looser: more opinion, more tangents, more
+  precision about less important things.
+- Subnotes go one level further out: the digression of a digression, the
+  correction of a note, the source of the source.
+
+### 2.4 Asides (margin): the second writing (2026-10-01)
+
+- The parallel text, as in *Pale Fire*: the narrator on the process of
+  researching and writing (the cards, the lamp, the hour, the typewriter,
+  what he read today and why he could not finish it) and, more and more, on
+  himself.
+- Voice: an old man, courtly, a little formal, with French and the trade's
+  vocabulary in his mouth. Sudden exactness about times and quantities.
+  Self-pity he catches and dislikes. Flashes of anger.
+- Asides are short at first: a line or two, mostly about method.
+- The asides read as one continuous story when read alone, in order. Check
+  this whenever a chapter is finished: read only the asides.
+
+### 2.5 The mystery: show, never tell (2026-10-01)
+
+The reader must never be told whether the death of Odile (see `BIO.md`) was
+an accident. Everything reaches the reader as slips: what he avoids saying,
+what he corrects, what he records and what he does not, objects that come
+back. Rules:
+
+- Never state the mystery. Never resolve it.
+- Every clue must also have an innocent reading.
+- Plant motifs early and quietly (the list is in `BIO.md`). Return to them.
+- He is unreliable, not lying on every page. Most of what he says is true.
+
+## 3. Facts (2026-10-01; PROPOSED)
+
+The grapes are real; the narrator is fiction.
+
+- Every factual claim about grapes, vines, wine, places and history must be
+  true and verified, with its source kept in the repository (format to be
+  decided). The encyclopedic tone only works if the encyclopedia is right.
+- The narrator may be wrong, as a character. Each deliberate error goes in a
+  private list of intended errors (file to be created), with the truth next
+  to it, so that we never confuse his mistakes with ours.
+- Invented things (people, estates, documents, his card index) must be
+  invented on purpose and listed in `BIO.md`. Real people appear only in
+  their public, historical roles, and never in the fictional plot.
+
+## 4. The arc: from order to chaos (2026-10-01)
+
+The book becomes progressively more unhinged. Three movements; the chapter
+boundaries are not decided yet.
+
+| | I. Order | II. Leakage | III. Collapse |
+|---|---|---|---|
+| Main text | Clean, encyclopedic, impersonal "I" | Personal remarks slip in; obsessive passages grow | Thins out; notes take over the page |
+| Notes | Digressions, sources, wit | Contradict the main text; address someone ("you") | Notes on notes on notes; notes that cite notes that do not exist |
+| Asides | Rare, short, about method | Longer; about him; Odile named by initial | Flood the margin; dated entries; the night itself circled |
+| Cross-references | Few, helpful | Loops begin; invitations to jump ahead | Mazes; an alternative reading order, as in *Rayuela* |
+| Typography | Plain | First struck-out words; a second typeface in the asides | Fonts mixed, struck passages, page layouts broken |
+
+Escalate slowly. Each movement should feel like the previous one gone a
+little further, not like a different book.
+
+## 5. Typography as voice (2026-10-01; PLANNED, not built)
+
+As in *House of Leaves*, the look of the page is part of the writing. Needs
+layout work before it can be used:
+
+- a separate typeface for the asides (the private voice); possibly a
+  typewriter face, since he types his drafts (see `BIO.md`);
+- struck-out text that stays legible (he crosses out but does not erase);
+- later: marks with no note, notes with no mark, text set at angles or in
+  odd shapes, an alternative reading order printed at the front.
+
+Until built, do not fake these with ad hoc LaTeX in the chapters.
+
+## 6. Marks
+
+### 6.1 Anchors go at the beginning of what they mark (2026-10-01)
 
 An anchor (`\anchor{key}`, printed ❧) is a destination. The reader arrives
 at it from a note and reads forward from there. So it goes at the start of
@@ -22,9 +147,9 @@ at the end of what it comments on, after the punctuation.
 Following this rule also keeps two marks from piling up at the end of a
 sentence ("not.❧¹").
 
-## Cross-references
+## 7. Cross-references
 
-### Write them so they read in both versions (2026-09-30)
+### 7.1 Write them so they read in both versions (2026-09-30)
 
 The book builds with margin notes (`./build.sh`) and without them
 (`./build.sh nomargin`). In the second version, asides move to the foot of the

@@ -25,11 +25,16 @@
 
 ## Phase 2: style and content (next, with the author)
 
-- [ ] Talk about style: voice, tone, what goes in the text and what goes in
-      notes. Record decisions in book/STYLE.md.
+- [x] 2026-10-01: style brief from the author, written into book/STYLE.md
+      (voices, arc, facts, typography); narrator invented in book/BIO.md.
+- [ ] Author to confirm the PROPOSED points in STYLE.md: one narrator for
+      both writings; real facts verified, deliberate errors listed.
+- [ ] Decide what happened to Odile (BIO.md, UNDECIDED) before movement II.
+- [ ] Build the typography the style needs (STYLE.md, section 5): aside
+      typeface, struck-out text. Ask the author first.
+- [ ] Decide the source format for facts, and the file of intended errors.
 - [ ] Decide the book's chapters and their order.
-- [ ] Decide what each note level is for (see NOTES.md, "Open questions").
-- [ ] Decide how to keep facts verified: a source for every claim, kept where?
+- [x] Decide what each note level is for: see STYLE.md, section 2.
 
 ## Phase 3: writing
 
