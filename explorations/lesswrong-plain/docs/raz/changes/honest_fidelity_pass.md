@@ -8056,3 +8056,128 @@ Why: Fidelity/substance pass: magnitude: completed a truncated quotation.
 - Before: to a complete map.''
 - After: to a complete map of FAI.''
 
+
+## honest/sections/my-bayesian-enlightenment.tex
+
+Why: Fidelity/substance pass: Added the post's substance: why Bayes first seemed obvious yet only a tool, how heuristics and biases arrived, what Jaynes's book showed, why 'I don't see why this would fail' is ignorance, the full passage and the new standard, the other parts of the enlightenment, what Pearl and precision gave, and the Jedi-powers ending.
+
+- Before: That is how I learned that I was a Bayesian, and as far as I can tell I was born that way.
+- After: That is how I learned that I was a Bayesian, and as far as I can tell I was born that way: what Bayesians said seemed the obvious way to do it, and what frequentists said sounded like ``the elaborate, warped, mad blasphemy of dreaming Cthulhu.''
+
+- Before: That was not my enlightenment. Nor was heuristics and biases, which I found through a web page, and through a copy of \textsc{Judgment Under Uncertainty} that Emil Gilliam bought me.
+- After: That was not my enlightenment. I marked Bayes off as obvious and went no further than the rule itself. I still thought of probability theory as a tool, not a law; like nearly all AGI hopefuls, I collected techniques and algorithms, looking for tools instead of understanding, and Bayes's Rule was a neat one. Nor was my enlightenment heuristics and biases. I met those results on a web page made from a PowerPoint introduction to behavioral economics, which gave no references. I emailed the author to ask whether the experiments were real, and he sent me a scan of Tversky and Kahneman's 1973 paper. Even then I put it on a list; I thought I could get along without anything not online. Emil Gilliam, annoyed by that theory, bought me \textsc{Judgment Under Uncertainty}. It showed me that my Traditional Rationality was inadequate, that there was much more than doing what Feynman told you, and it held up Bayes as the gold standard. But that was not all the way.
+
+My memory for the order of events in everyday life is poor, though I remember causal structure well.
+
+- Before: with the same answer by every legitimate route.
+- After: with the same answer by every legitimate route. If you approximated the Rules because they cost too much to compute, you would still do less than optimal, however necessary the compromise. Jaynes would take the different answers others had reached and trace each to the illegitimate step. Not an answer, but the answer. Having looked back on all the vague answers that had led me into paradox, I saw the level above mine, and could no longer picture building an AI on such answers and surviving.
+
+- Before: did not agree with one another.
+- After: did not agree with one another; many were invented on the spot when I asked. I had studied the problem for years and knew what their plans would run into. ``I don't see why this would fail'' only reflects your own ignorance, and I would be doomed too if I settled for what seemed like a good idea. What it would take was something like the Jaynes level: not ``here's my bright idea'' but the only correct way to do it, and why.
+
+- Before: A passage flashed through my mind: ``do only that which you must do, and which you cannot do in any other way.''
+- After: A passage flashed through my mind: ``Do nothing because it is righteous, or praiseworthy, or noble, to do so; do nothing because it seems good to do so; do only that which you must do, and which you cannot do in any other way.''
+
+- Before: I held my designs to that standard, threw out all my old theories, and took up probability theory and decision theory.
+- After: I held my Friendly AI designs to that standard. None of my old theories met it, came close, or was on a track toward it, so I threw them all out and took up probability theory and decision theory, hoping to extend them to reflectivity and self-modification. Seeing cognition as Bayes-structure, my naturalistic awakening, and seeing that Traditional Rationality was not strict enough were other parts of the same enlightenment.
+
+- Before: Later, reading Judea Pearl, I found that precision saves time.
+- After: Later, reading Judea Pearl's \textsc{Probabilistic Reasoning in Intelligent Systems}, I found that precision saves time. I had once worked on nonmonotonic logics, and I saw how much time I would have wasted on ad hoc systems without Pearl's key; the savings are measured in careers, not months. Only by holding to a higher standard of precision had I begun to think at all about many important issues. Precision is not formality, or inventing a new logic to throw at a problem.
+
+- Before: ``because human beings are lazy.''
+- After: ``because human beings are lazy,'' without trying for five minutes.
+
+- Before: ``Oops'' is something to look forward to.
+- After: Without an inconveniently high standard, like a proof in which one wrong step can carry you anywhere, you will not chase down the tiny notes of discord that lead to new concerns. Finding a standard high enough to make you start thinking is itself hard.
+
+``Oops'' is something to look forward to. It means your present self is a drooling imbecile, but also that your future self will gain powers your present self does not dream of, and that you have not yet passed your peak.
+
+- Before: ``the sound that rationalists make when they level up.''
+- After: ``the sound that rationalists make when they level up.'' Sometimes I worry that I am not leveling up as fast as I used to, and do not know whether I am getting the hang of things or my neurons are slowly dying.
+
+
+## honest/sections/trying-to-try.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the snow example, what the default meaning of 'I will' excludes, the startup example, why the reflected goal is weaker for humans, the lottery as 'intelligence', and the trick of an inferior alternative.
+
+- Before: The first elementary technique is to keep talk about a thing apart from talk about the word for it.
+- After: The first elementary technique of epistemology is to keep talk about a thing apart from talk about the word for it: talking about snow is not talking about ``snow''. By default we talk about reality; you need a special mode to talk about your beliefs.
+
+- Before: The plan need not be certain.
+- After: The plan need not be certain, but I am trying to flip the switch, not trying to reach a 97.2\% chance of flipping it.
+
+- Before: and trying to do a thing is often much easier than doing it.
+- After: so beware of goals that are too easy. Trying to do a thing is often much easier than doing it. Which is easier: to build a successful startup, or to try to?
+
+- Before: Humans are different.
+- After: Humans are different: being satisfied with having a plan is not like being satisfied with success, and the requirement that the plan maximize the chance of success gets lost.
+
+- Before: Buy a lottery ticket with your last dollar. You tried your best.
+- After: Buy a lottery ticket with your last dollar after lunch. You tried your best, and maximizing your odds with available resources: is this not intelligence?
+
+- Before: the first plan you think of will do,
+- After: the first plan you think of will do, and if need be you can invent a worse alternative to prove it optimal;
+
+- Before: will be all that was ``available.''
+- After: will be all that was ``available.'' Remember to congratulate yourself on putting in 100\% of it.
+
+
+## honest/sections/use-the-try-harder-luke.tex
+
+Why: Fidelity/substance pass: Added two more of Hamill's arguments from the outtake: that 'impossible' needs a proof, and that the Force would be easy if this sufficed.
+
+- Before: Hamill asks for a scene of Luke still trying a month later, then for one night of trying, then for five minutes. Lucas refuses each time.
+- After: When the script has Luke say ``You want the impossible,'' Hamill asks whether Luke ran ``a formal calculation to arrive at a mathematical proof''. He asks for a scene of Luke still trying a month later, then for one night of trying, then for five minutes. Lucas refuses each time. If a loser like this could master the Force, Hamill says, everyone would; ``People would become Jedi because it was easier than going to high school.''
+
+
+## honest/sections/on-doing-the-impossible.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the young author's excuses for not working longer, the quadrillion-dollar example, the reasoning behind not running away, the open-source plan, why Friendly AI first seemed impossible, the star and gear examples, the luck of opposing biases, what Hamming's important problems lack, the warning that perseverance keeps things difficult, and the salience point behind the three timescales.
+
+- Before: I cannot do that, and for years I thought I lacked the virtue.
+- After: I cannot do that; when work gets too hard I stop and read or watch something, and for years I thought I lacked the virtue. My younger self had the usual excuses: output counts, not input; laziness makes you back off failing methods; for creative work, peak output matters more than hours.
+
+- Before: Imagining something huge thrown at a problem lets people think they can solve AI without understanding intelligence.
+- After: This is a common failure in AI futurism: the leap from ``I don't know how to solve this'' to imagining something big enough to feel as impressive as the problem. One man on the AI list says AI will cost a quadrillion dollars. Imagining something huge lets people think they can solve AI without understanding intelligence, and I made the same mistake.
+
+- Before: But with 150,000 people dying every day, I did not run away.
+- After: But having calculated that 55 million people die each year, 150,000 a day, I did not run away like a frightened rabbit. I asked what project could get there fastest; making the Singularity happen one hour earlier would repay a career.
+
+- Before: and told Brian Atkins it would take ``a Manhattan Project and thirty years.''
+- After: Brian Atkins, who had just sold Hypermart to Go2Net and later founded and funded the Singularity Institute, asked whether a reasonable-sized team could actually do it. I told him it would take ``a Manhattan Project and thirty years,'' and for a while we considered a dot-com startup to raise the money.
+
+- Before: A year or two later, open-source development looked like a way in,
+- After: A year or two later, it seemed that a small organization could do preliminary work, such as new computer languages, and that open-source releases might be useful enough to grow,
+
+- Before: Friendly AI and a precise understanding of intelligence I first wrote off as impossible, then took on. Single problems came to seem smaller while the whole mountain grew.
+- After: I first ignored Friendly AI, since it seemed ``obviously impossible and useless'' to deceive a superintelligence about what is right; later I took it on as merely extremely difficult. I had also written off a precise understanding of intelligence as impossible, which removed it from my workload. That logic is deranged, since Nature does not care what you cannot do when It writes your requirements, but AI people still use it. Single problems came to seem smaller while the whole mountain grew, as problems moved from the impossible list to the to-do list.
+
+- Before: ``Confusion exists in the map, not in the territory.''
+- After: When you do not understand a domain, a query to your brain for a solution returns nothing. But there are mysterious questions, never mysterious answers. We know enough about stars to know one is hard to build, and enough about gears to prove that no gear train is a perpetual motion machine; those are bad problems for practicing the impossible. The confusing problems that feel most intimidating are where apparent difficulty is most likely to fall, since you do not know how much work will be left when the confusion clears. ``Confusion exists in the map, not in the territory.''
+
+- Before: But a problem that seems impossible is not tried.
+- After: But a problem that seems impossible is not tried, a vicious cycle. Only because I was driven enough that ``forty years and a Manhattan Project'' meant starting sooner did I stay long enough to become less intimidated. Opposing biases rarely cancel, but here they did by luck: had I seen at the start that the task was a provably correct Friendly AI, not merely a seed AI, I would probably have burst into flames.
+
+- Before: The most important problems are often impossible.
+- After: Important problems look big and scary; they promise no publications and no progress, perhaps for ten years. The most important problems are often impossible, which is why few philosophers work on reductionist accounts of consciousness.
+
+- Before: This is not for everyone. The chips are the years of your life,
+- After: This is not for everyone. Exceptional talent is only the ante; the chips are the years of your life,
+
+- Before: and knowing when to lose hope is a skill.
+- After: and ``Never give up?'' is ridiculous; knowing when to lose hope is a skill. Perseverance keeps things difficult, and there are easier ways to get glamour and respect.
+
+- Before: Perseverance works at three timescales:
+- After: Because staying at work was a constant struggle, it was what I noticed about myself; I did not see that perseverance applies at other timescales until I saw people declare ``impossible'' at once anything they did not want to try, or shy from work that might take decades instead of five years. On the scale of seconds, perseverance is not giving up at the first sign of difficulty; on the scale of years, it is staying with an insanely hard problem when you could get better rewards elsewhere. So it works at three timescales:
+
+
+## honest/sections/on-doing-the-impossible.tex
+
+Why: Fidelity/substance pass: on-doing-the-impossible: corrected Atkins's role to 'founding funder' and smoothed an awkward join.
+
+- Before: and later founded and funded the Singularity Institute,
+- After: and later became the Singularity Institute's founding funder,
+
+- Before: Most people should ``stick to the possible,'' and ``Never give up?'' is ridiculous; knowing when to lose hope is a skill.
+- After: Most people should ``stick to the possible.'' Never give up? ``Don't be ridiculous.'' Knowing when to lose hope is a skill.
+

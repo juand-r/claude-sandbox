@@ -339,10 +339,10 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-level-above-mine
 - [x] the-magnitude-of-his-own-folly
 - [x] beyond-the-reach-of-god
-- [ ] my-bayesian-enlightenment
-- [ ] trying-to-try
-- [ ] use-the-try-harder-luke
-- [ ] on-doing-the-impossible
+- [x] my-bayesian-enlightenment
+- [x] trying-to-try
+- [x] use-the-try-harder-luke
+- [x] on-doing-the-impossible
 - [ ] make-an-extraordinary-effort
 - [ ] shut-up-and-do-the-impossible
 - [ ] final-words
