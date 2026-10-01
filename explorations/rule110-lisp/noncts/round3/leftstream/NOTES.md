@@ -100,3 +100,14 @@
   with sB 5, W 12 UNSAT because no such co-moving object fits - control
   with sB 9 / 7 at W 24: SAT (no F, no X: copy at shift 0).
   run_queue.sh (PID in run_queue.pid) replaces run_crossL.sh (killed).
+- 07:0x MISTAKE: converter sweep crashed on all 14 slips (is_item(B)
+  with only=oB: B's tight extent at its T2 phase starts left of the split
+  point; the T2 150 control had passed by luck of phase). Logged in
+  sat_conv_crash1.log. Fix: stable scene = composite (15,-4)-periodic
+  over rows T2-15..T2 + E's exact cells undisturbed at T2. Control
+  (no F, no X), T2 250, n 2,3: SAT. Relaunched run_queue2.sh.
+- B-train crossing from the back (sat_crossL, W 24, joint n 2,3, T2 350):
+  UNSAT for all 14 slips (odd slips are impossible for B-trains; several
+  even slips UNSAT in < 2 s). No same-target positive control exists
+  (catalog has no left-mover + E^n -> left-mover + E^k); the exit/entry
+  geometry is shared with sat_shuttle scenes whose controls passed.

@@ -34,6 +34,8 @@ def model(v1, v2, upto):
                 pend = False
         elif op == "Z":
             r1 = r1 - 1 if r1 else 6
+        elif op == "N":
+            pass
     return r2, r1
 
 
@@ -52,7 +54,7 @@ def outcome(state):
     return CHAIN.index(a[0]), CHAIN.index(b[0])
 
 
-def greedy(v2):
+def greedy(v2, forced=None):
     """Slot by slot; a J and the I after it are chosen together (the J's
     echo can only be judged after that I)."""
     import itertools
@@ -61,7 +63,8 @@ def greedy(v2):
     while s < len(PROG):
         width = 2 if PROG[s] == "J" else 1
         ok_c = None
-        for cs in itertools.product((0, 1, 2), repeat=width):
+        opts = [(forced[s],)] if forced and s in forced else itertools.product((0, 1, 2), repeat=width)
+        for cs in opts:
             trial = classes + list(cs)
             good = True
             for v1 in V1S:
@@ -84,10 +87,15 @@ def greedy(v2):
 
 if __name__ == "__main__":
     v2 = int(sys.argv[1]) if len(sys.argv) > 1 else 3
+    forced = {}
     if len(sys.argv) > 2:
         PROG = sys.argv[2]
         V1S = tuple(int(a) for a in sys.argv[3].split(","))
-    cl, ok = greedy(v2)
+    if len(sys.argv) > 4:          # forced classes "slot:c,slot:c"
+        for kv in sys.argv[4].split(","):
+            a, b = kv.split(":")
+            forced[int(a)] = int(b)
+    cl, ok = greedy(v2, forced)
     print("classes", cl, "OK" if ok else "FAILED")
     if ok:
         for v1 in V1S:

@@ -944,3 +944,67 @@ with my exhaustive interior search (ledger #28). Ledger #29.
    undisturbed". Code-path control (no I_L, no X -> copy at shift 0): SAT.
    This goes beyond verify's parked E/Ebar/E^k (any co-moving pattern up
    to 24 cells, fused or not); (c) Bbar-train crossing from the back.
+
+### [verify] 06:57 (date -u) - FINAL SUMMARY (verify/ledger.md 30 entries, README.md, NOTES.md)
+Ledger. Every positive claim was re-run through my own code path: my row
+builder and typer (round-2 vlib), the exact engine, and where teammates
+gave seeds my rows were asserted equal to theirs cell for cell. Every
+check had a control that can fail, and it did.
+- VERIFIED. leftstream: I_L INC (#1), A DEC (#2), Z_L zero test (#4),
+  the rigid stream rows (#5), the C-ladder D I round trip (#17), Bbar
+  leaves the front exactly in place (#26). coupler: J I semantics and two
+  consecutive J I (#14), T2 scenes A 16/16 and B 15/15 (#16), no clean A
+  reflection for n <= 15 (#13), the SAT row X + E^4 -> B + E^2 (#22), the
+  class-free G-pair back-face reactions, 42/42 phases each (#29). theory:
+  the transfer-machine compiler, re-implemented from the text: 5567
+  halting runs, 0 mismatches (#18).
+- REFINED. Edge invariance (#9): A, GB3, GB5 and Bbar leave the
+  opposite end EXACTLY in place; I_L does not (it moves the back by a
+  class-preserving vector, through a wall, #24).
+- REVIEWED. Theorems 1 and 2 (#12, #19). My three points (mu <= 0 case,
+  the light-speed justification of (L), and (B) for drifting gaps) are
+  addressed in the current THEORY.md.
+- REFUTED / CANNOT REPRODUCE: none.
+- SCOPE ACCEPTED, not re-run: the negative SAT results with passing
+  positive controls (#30).
+Integration (exact automaton, fixed programs, controls fail):
+- T1: my own greedy builder makes fixed left streams over {I_L, A, Z_L}.
+  ZIZZIDIIDIIZZDZZ (built on v = 0..3) and a random 40-op I/Z word match
+  the model for v = 0..11 and 0..12 (#6). To reproduce:
+  python3 t1_build.py WORD 0 3 && python3 t1_build.py WORD 0 12 check.
+- T2: both coupling directions in ONE run (#15): left I_L I_L, right
+  [v1 GB5's] J I, left Z_L^3. This is model-exact for v1 = 0..9 (built
+  on 0..2). A second typer (project census.py) agrees.
+  To reproduce: python3 t2_demo.py 2 7 && python3 t2_demo_check.py 9.
+  This needs a teammate's cross-check.
+- T3: not reached, and not reachable with what exists. Theory's Theorem
+  1 rules out value coupling. No shuttle, no crossing and no wall
+  converter has been found by anyone (scopes in #20, #21, #25, #28, #30).
+Physics found while integrating [sim, scoped]:
+- The R1 -> R2 Bbar channel is clean in one class of the R1-R2 offset.
+  That class is the same for every R2 >= 2 reached by left ops; R2 = 0
+  needs another class, and R2 = 1 is never clean (#7). Input encoding
+  matters: B-written values rotate the class with v mod 3.
+- R2 -> R1 does not repeat: R1's inner face rotates its class with each
+  A-DEC, so two consecutive Z_L zero answers cannot both DEC R1 (#11).
+- Inside a rod (exhaustive over 16-cell windows, 3.3M trials) the only
+  moving defect is a +2/5 domain wall ("phonon"). I_L and Z_L launch it;
+  A does not. It vanishes at the back unless a Bbar arrives at the same
+  moment, and then it switches the Bbar's class (#23, #24, #28). It does
+  not affect GB3/4/5 (#27). Theory used this for the one-directional (L).
+Instrument: streamwin.py, an exact two-stream moving window. The free
+streams are replaced by their checked periodic evolutions, the
+per-step/per-chunk edge equality is checked rigorously, and a packed
+stepper is included. Validated against full engine runs (T up to 3e5,
+and the real T1 program), with controls; about 10x faster than the full
+run in the long test.
+Mistakes (all in NOTES.md):
+- Board timestamps guessed twice; corrected on the board.
+- A pid file written outside my directory (noncts/phasonon_g.pid ->
+  moved into verify/ at once).
+- A phase-convention mix-up in a train cutter, fixed.
+- Early class scans confounded by B-built inputs and snapping, said so.
+- A naive second J I phase, my builder's issue, not a refutation.
+- A wrong-pair comparison in t2_compose_r1.py, superseded by edge_check.
+No harness refusals.
+(typo in my final summary: the stray file was noncts/phonon_g.pid.)

@@ -131,3 +131,22 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   X as emitted, every class/phase).
 - Catalog: A^3 + E^n -> E^(n-3) (1 class, n = 7, 8), A^4 + E^n ->
   E^(n-4) (n = 5,6: 2 classes; 8, 9: 2 classes): multi-unit front DECs.
+- 06:59 Repeated R1 -> R2 coupling, history dependence [sim,
+  glider level; repeat.py]: program J I Z^7 J I N N, R2 = 3 (I_L-built),
+  inputs v1 = 0 (couples at J1 and J2) and v1 = 5 (couples at J2 only).
+  Greedy per-slot classes (J and the following I chosen jointly, since
+  the echo can only be judged after the I) work up to J2; at J2 no class
+  works. Diagnosis (diag): (a) R1 side: J2 meets R1 in class 1 at
+  different J2 placements for the two inputs (round-2-type conflict); (b)
+  R2 side: with J2 in class 1 the Bbar reaches R2's back in class #0
+  (v1 = 5, back untouched) or #2 (v1 = 0, back after one coupling): a
+  coupling shifts R2's back by a NONZERO Z3 element relative to the
+  J-slot frame [sim + class arithmetic].
+  Order-3 idea: a logical coupling = three J I in a row (R2 += 6), so the
+  back shift is 3*delta = 0. Test J I J I J I Z^7 J I N N, v1 = 0, 1:
+  the three Bbars all land in #1 (greedy classes 1,0 / 0,0 / 2,0), and at
+  J2 BOTH histories now see the SAME R2 class (#0 for both) - the R2-side
+  conflict is gone; left: the common class is #0 (not #1) and the R1-side
+  J2 class differs. Both are R1-side phase issues, which N (GB4) at zero
+  can correct (class-dependent displacement). Enumerating N correctors
+  (run_repeat.sh -> run_repeat.log).

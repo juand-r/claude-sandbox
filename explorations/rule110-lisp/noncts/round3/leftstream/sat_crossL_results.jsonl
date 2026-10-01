@@ -2,3 +2,19 @@
 {"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 1, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.6}
 {"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 2, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.8}
 {"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 3, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.5}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 4, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 389.8}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 5, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.7}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 6, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.7}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 7, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.5}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 8, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.7}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 9, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.7}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 10, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 51.9}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 11, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.8}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 12, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 23.5}
+{"p": 4, "d": -2, "WY": 24, "WO": 24, "T2": 350, "ns": [2, 3], "s": 13, "kY": [0, 0], "nclasses": 1, "sat": false, "secs": 1.6}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 0, "kY": [0], "nclasses": 3, "sat": false, "secs": 1.7}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 0, "kY": [1], "nclasses": 3, "sat": false, "secs": 1.5}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 0, "kY": [2], "nclasses": 3, "sat": false, "secs": 1.1}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 1, "kY": [0], "nclasses": 3, "sat": false, "secs": 1.4}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 1, "kY": [1], "nclasses": 3, "sat": false, "secs": 1.1}
+{"p": 12, "d": -6, "WY": 24, "WO": 24, "T2": 350, "ns": [3], "s": 1, "kY": [2], "nclasses": 3, "sat": false, "secs": 1.2}

@@ -3,13 +3,13 @@
 ## Plan
 - [x] P0 tooling: v3.py on top of round-2 vlib; exact runner with margin checks
 - [x] P1 independent survey of starting facts the team will use (A^k, C, D + E^n; E^n + Bbar; C3 + B)
-- [ ] P2 verify teammates' claims as posted (ledger.md), ongoing (19 entries by 06:10)
+- [x] P2 verify teammates' claims as posted (ledger.md): 30 entries by 06:57
 - [x] P3 T1 integration: left stream operating its counter, exact automaton (t1_build.py)
 - [x] P4 T2 integration: coupling both directions (t2_demo.py)
 - [x] P5 instruments for long two-stream runs, validated against the exact engine (streamwin.py)
 - [ ] P6 T3 (theory's compiler) if reachable: NOT reachable now - theory proves value coupling
       cannot be universal; needs a shuttle (reflections at both inner faces) + per-side state
-- [ ] P7 side searches while waiting: refl_brute.py (two-part A-family trains, wide spacings),
+- [x] P7 side searches while waiting: refl_brute.py (two-part A-family trains, wide spacings),
       ebg_search.py (gliders inside the E-infinity background = crossing of rods)
 
 ## Log
@@ -80,3 +80,4 @@
 - 06:33 verified leftstream 05:58 (Bbar keeps the front exactly) with edge_check.ends inline; ledger #26.
 - 06:38 phonon vs G packets at the back: no change (phonon_g2.log); ledger #27. Parked E^2..E^4 converters: none (#25 extended).
 - 06:39-06:44 ebg_exh.py k=12 and k=16 exhaustive (ledger #28). Note: I read a PID with pgrep -f (only to read it, never to kill); it first returned the bash wrapper's PID, corrected from ps. Posted 06:44.
+- 06:45-06:57 verified coupler 06:45 examples (#29); census_check.py (second typer on T2 demo); ledger #30 (negative SATs, scope accepted). Writing final summary.

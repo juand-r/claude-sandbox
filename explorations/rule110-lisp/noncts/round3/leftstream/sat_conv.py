@@ -65,9 +65,31 @@ if __name__ == "__main__":
         S0 = Scene(cnf, T2, [(E, tauE, xE), (B, tb, xb)])
         oE = Scene.undisturbed(E, tauE, xE, T2)
         oB = Scene.undisturbed(B, tb, xb, T2)
-        midS = oE[1] + E.W
-        S0.is_item(T2, S0.lo - T2, midS, E, far_left=S0.p_left, only=oE)
-        S0.is_item(T2, midS, S0.hi + T2, B, far_right=S0.p_right, only=oB)
+        # stable: the composite is (15,-4)-periodic at the end, and the
+        # E part is exactly undisturbed at T2 (E's exact extent)
+        for x in range(S0.lo - (T2 - 15) + 2, S0.hi + (T2 - 15) - 2):
+            a, b = S0.lit(T2, x - 4), S0.lit(T2 - 15, x)
+            if isinstance(a, bool) and isinstance(b, bool):
+                if a != b:
+                    cnf.add([])
+            elif isinstance(a, bool):
+                cnf.add([b if a else -b])
+            elif isinstance(b, bool):
+                cnf.add([a if b else -a])
+            else:
+                cnf.equal(a, b)
+        elo, ehi = E.extent(oE[0])
+        for x in range(oE[1] + elo, oE[1] + ehi):
+            a, b = S0.lit(T2, x), E.st.lit(oE[0], x - oE[1])
+            if isinstance(a, bool) and isinstance(b, bool):
+                if a != b:
+                    cnf.add([])
+            elif isinstance(b, bool):
+                cnf.add([a if b else -a])
+            elif isinstance(a, bool):
+                cnf.add([b if a else -b])
+            else:
+                cnf.equal(a, b)
         # (convert) F left of E^n | B, F in its class k w.r.t. E
         pcs = [(E, tauE, xE), (B, tb, xb)]
         if not A.control:

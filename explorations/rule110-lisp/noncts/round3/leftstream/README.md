@@ -19,6 +19,17 @@ verified in exact Rule 110. Running log: NOTES.md. Plan: PLAN.md.
   all inputs; 270/270 random runs (30 programs x v = 0..8) match the model;
   class-shift controls fail. Verified independently by verify (ledger).
 
+## Searches for theory's escapes (scoped negatives, SAT)
+- Wrap (Z + E -> E^7, DEC for n = 2,3): UNSAT, slip-8 (3,2) trains of
+  width 24 and 36, all classes (sat_zero.py mode wrap; sat_wrap36.log).
+- Reflection at R1's front with Y = Bbar: UNSAT width 24, k = 1,2,3
+  (sat_reflect.py/.log).
+- Crossing front -> back, any (3,2) output train: UNSAT width 24, all
+  slips and classes, n = 2,3 jointly (sat_cross.py/.log).
+- Crossing back -> front by B-trains: UNSAT width 24, all slips
+  (sat_crossL.py/.log).
+- Wall converter at the back (sat_conv.py): running (sat_conv.log).
+
 ## How to run
 - python3 claim_inc.py 12            INC n = 1..12 + controls, writes inc_scenes.json
 - python3 check_rec.py sat_zero_results.jsonl 1 9    zero test Z_L, n = 1..9
