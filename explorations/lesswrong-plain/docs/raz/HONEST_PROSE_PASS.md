@@ -256,12 +256,12 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] a-priori
 - [x] reductive-reference
 - [x] zombies-zombies
-- [ ] zombie-responses
-- [ ] the-generalized-anti-zombie-principle
-- [ ] gazp-vs-glut
-- [ ] belief-in-the-implied-invisible
-- [ ] zombies-the-movie
-- [ ] excluding-the-supernatural
+- [x] zombie-responses
+- [x] the-generalized-anti-zombie-principle
+- [x] gazp-vs-glut
+- [x] belief-in-the-implied-invisible
+- [x] zombies-the-movie
+- [x] excluding-the-supernatural
 - [ ] psychic-powers
 - [ ] quantum-explanations
 - [ ] configurations-and-amplitude
