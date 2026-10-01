@@ -126,6 +126,24 @@ def ca_check(scene, sim, T):
     return pred is not None and bool(np.array_equal(pred, w.cells(lo, hi)))
 
 
+def ca_only(scene, T=None):
+    """Exact CA (moving window) only, then identify every object in the
+    final window with collider's library (products_of). For controls where
+    glidersim gives up (3-body = the machine broke). -> list of names."""
+    from fastca import Window
+    from collide import products_of
+    T = T or horizon(scene)
+    sts = [LIB.gliders[a].state_at(t, x, 0) for a, t, x in scene]
+    row, x0 = build_row(sts, pad=200)
+    first = min(sts, key=lambda s: s[3])
+    last = max(sts, key=lambda s: s[3])
+    w = Window(row, x0, (first[1] - first[3]) % TILE, (last[2] - last[3]) % TILE).run(T)
+    pad = 400
+    cells = w.cells(w.x0 - pad, w.x0 + len(w.row) + pad)
+    ok, prods, _ = products_of(LIB, cells, w.x0 - pad, T)
+    return [p[0] for p in prods], ok
+
+
 def run(scene, T=None, ca=True):
     """-> (final glider list (glidersim), log, CA agrees?)."""
     T = T or horizon(scene)

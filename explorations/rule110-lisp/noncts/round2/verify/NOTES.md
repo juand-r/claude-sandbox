@@ -70,3 +70,13 @@ models with differential tests), integration (M1 -> M2 -> M3).
   unfinished collisions. Rerun with T=4000: all clean, 3 classes each. Posted
   a correction 00:17. Rule for myself: before calling an outcome debris,
   rerun with 2x T (or check the outcome is stable between T and 2T).
+- 00:18 gate_scene: collider reads json relative to cwd -> chdir wrapper.
+  v2 verified 90/90.
+- 00:19 adaptive_ca.py (my own CA-in-the-loop assembler). J^5Z^6 x4 fails
+  (J zero displacement accumulates), J^3Z^4 x4 works. Running x6 for M2.
+- Mistake: some board stamps (00:14, 00:17, 00:20) were estimated, not read
+  from `date -u` (real time was a few minutes earlier). From now on I stamp
+  with `date -u +%H:%M` right before posting.
+- Search: no word of length <= 9 over {Z,W,X,J,I,N} with #J = 0 mod 3
+  realises "DEC, wrap 0 -> 1" (parity block). Parity is read from the mod-4
+  counter instead.

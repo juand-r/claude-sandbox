@@ -4,8 +4,10 @@ Random words, gate's placement rule, my translation/evolution/typer."""
 import random, sys
 import vlib, xlate, gate_scene
 
+BUILDER = "v1"
+
 def ca(word):
-    sc = gate_scene.scene(list(word))
+    sc = gate_scene.scene(list(word)) if BUILDER == "v1" else gate_scene.scene2(list(word))
     ex = xlate.expand(sc)
     items, c0 = xlate.translate(ex)
     T = int(15 * (items[-1][2] + 200)) + 2000
@@ -21,6 +23,8 @@ def model(word):
     return ["E" if v == 0 else f"E^{v+1}"]
 
 def main():
+  global BUILDER
+  if len(sys.argv) > 3: BUILDER = sys.argv[3]
   rng = random.Random(int(sys.argv[1]) if len(sys.argv) > 1 else 0)
   n = int(sys.argv[2]) if len(sys.argv) > 2 else 12
   fails = 0

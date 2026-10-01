@@ -212,6 +212,7 @@ def custom_row(tape, right_names, pad, left_names=None, central=None):
     import encoder as enc
     from casim import ether_pad, ether_rotation, trim_right_to_ether
     blocks, t0 = enc.load_blocks()
+    blocks.update(EXTRA_BLOCKS)
     if central is None:
         central = "".join("FD" if c == "Y" else "ED" for c in tape)
         central = "C" + central[:-1] + "G"
@@ -360,6 +361,21 @@ def glider_tiles(name, margin=16):
     return out
 
 
+_EXT_CACHE = {}
+
+
+def _ext(row, c2, s, pad=64):
+    key = (id(row), len(row), c2, s)
+    if key not in _EXT_CACHE:
+        if len(_EXT_CACHE) > 64:
+            _EXT_CACHE.clear()
+        ext = evolve_free(row[c2:].copy(), s, pad)
+        ext[:32] = fill_ether(32, phase_at(ext, 32), 0)
+        f = next(x for x in range(len(ext)) if ether_phase(ext[x:x + TILE])[0] < 0)
+        _EXT_CACHE[key] = (ext, f, phase_at(ext, 0))
+    return _EXT_CACHE[key]
+
+
 def replace_exact(row, c, c2, placements, s, D):
     """Like insert_exact, but the material in [c, c2) is dropped: the head is
     row[:c] + placements, and row[c2:] is re-attached displaced by (-s, D)
@@ -376,13 +392,11 @@ def replace_exact(row, c, c2, placements, s, D):
         seg.append(arr)
         pos, cph = x + len(arr), (cr - x) % TILE
     pad = 64
-    ext = evolve_free(row[c2:].copy(), s, pad)
-    ext[:32] = fill_ether(32, phase_at(ext, 32), 0)
+    ext, f, lp = _ext(row, c2, s, pad)
     start = c2 - pad + D
-    f = next(x for x in range(len(ext)) if ether_phase(ext[x:x + TILE])[0] < 0)
     if start + f < pos:
         return None
-    if (phase_at(ext, 0) - start) % TILE != cph:
+    if (lp - start) % TILE != cph:
         return None
     k = pos - start
     if k < 0:
@@ -392,3 +406,115 @@ def replace_exact(row, c, c2, placements, s, D):
     if len(new) < len(row):
         return None
     return new[:len(row)]
+
+
+@lru_cache(None)
+def en_tiles(n, margin=16):
+    """Tiles for E^n (n >= 9 built from E^9 plus n-9 B's that catch up and
+    merge; B + E^k -> E^(k+1) is single-class). Checked: after merging the
+    object is (15,-4)-periodic."""
+    if n <= 9:
+        return glider_tiles("E^9" if n == 9 else f"E^{n}" if n > 1 else "E", margin)
+    e = glider_tiles("E^9", 40)[0][0]
+    b = ebar_tiles("B(f1_1)", 16, 4)
+    row = np.concatenate([fill_ether(2800, phase_at(e, 0), -2800), e])
+    for i in range(n - 9):
+        arr, cl, cr = b[0]
+        x = len(row)
+        x += (cl - x - phase_at(row, len(row) - TILE)) % TILE
+        row = np.concatenate([row, fill_ether(x - len(row), phase_at(row, len(row) - TILE), len(row)), arr])
+    row = np.concatenate([row, fill_ether(1400, phase_at(row, len(row) - TILE), len(row))])
+    for _ in range(200 * (n - 9) + 600):
+        row = step(row)
+    out = []
+    hist = []
+    for k in range(15):
+        cl_ = clusters(row)
+        a, bb = cl_[0][0] - margin, cl_[-1][1] + margin
+        if len(cl_) != 1 and cl_[-1][1] - cl_[0][0] > 12 * n:
+            raise RuntimeError("E^n did not merge")
+        arr = row[a:bb].copy()
+        out.append((arr, phase_at(arr, 0), phase_at(arr, len(arr) - TILE)))
+        hist.append(row.copy())
+        row = step(row)
+    # periodicity check: after 15 steps the pattern repeats shifted by -4
+    cl_ = clusters(row)
+    a = cl_[0][0] - margin
+    if not np.array_equal(row[a:a + len(out[0][0])], out[0][0]):
+        raise RuntimeError("E^n tile not (15,-4) periodic")
+    return out
+
+
+# Custom blocks (e.g. a modified raw leader) usable in custom_row by name.
+EXTRA_BLOCKS = {}
+
+
+def make_block(name, base, placed_inst, mod_row, origin):
+    """A new (30,-8)-periodic block equal to `base` (same seams/spans) but
+    with interior cells taken from mod_row, a full t = 0 row (array coords,
+    global column 0 at `origin`) in which the instance `placed_inst` of
+    `base` was edited. The edit must stay inside the instance's span and
+    away from its seams; the band rows are read off 30 steps of free
+    evolution of mod_row (the instance is far from every collision then).
+    Registers the block in EXTRA_BLOCKS."""
+    import encoder as enc
+    r = Run(mod_row, origin)
+    rows = list(base._rows)
+    lo_band = enc.BAND_START[30]
+    for g in range(30):
+        cells = None
+        rpatch = g - placed_inst.dy
+        rb = lo_band + (rpatch - lo_band) % 30
+        s, e = placed_inst.gspan(g)
+        cells = r.window(origin + s, origin + e)
+        bs, be = base._span[rb]
+        if be - bs != e - s:
+            raise AssertionError("span mismatch")
+        old = base._rows[rb]
+        rows[rb] = old[:bs] + "".join(map(str, cells)) + old[be:]
+        r.step(1)
+    blk = enc.Block(name, rows, 30, -8)
+    # sanity: unedited instance reproduces the base block exactly
+    EXTRA_BLOCKS[name] = blk
+    return blk
+
+
+def read_outcomes_row(row, origin, regions, T, every=600, lookahead=4, margin=3000,
+                      per_symbol=None, tol=2):
+    """Decoder-free read check (after experiments.read_outcomes) for an
+    arbitrary t = 0 row. regions: list of (lo, hi) global Ebar-frame column
+    ranges of appendant copies, in read order (None for none). per_symbol:
+    list of appendant lengths per region (to tell Y from malformed).
+    Returns (string of Y/N/!/. per region, read times)."""
+    r = Run(row, origin)
+    before = [None] * len(regions)
+    last = [None] * len(regions)
+    state = ["." for _ in regions]
+    read_at = [None] * len(regions)
+    while r.t + every <= T and any(s in ".r" for s in state):
+        pending = [j for j, s in enumerate(state) if s in ".r"][:lookahead]
+        lo_g = min(regions[j][0] for j in pending) - margin
+        hi_g = max(regions[j][1] for j in pending) + margin
+        r.step(every - MAX_DT)
+        sh = r.ebar_frame(r.t + MAX_DT)
+        cs = census(r.history(lo_g + sh, hi_g + sh, MAX_DT))
+        rel = [(a + lo_g, k) for a, b, k in cs]
+        for j in pending:
+            a, b = regions[j]
+            inside = tuple(c for c in rel if a <= c[0] < b)
+            if before[j] is None:
+                before[j] = inside
+            elif state[j] == "." and inside != before[j]:
+                state[j], read_at[j] = "r", r.t
+            elif (state[j] == "r" and inside == last[j]
+                  and not any(k in "CA?" for _, k in inside)):
+                n_e = sum(1 for _, k in inside if k == "E")
+                expect = 4 * per_symbol[j] if per_symbol else None
+                if n_e == 0:
+                    state[j] = "N"
+                elif expect is None or abs(n_e - expect) <= tol:
+                    state[j] = "Y"
+                else:
+                    state[j] = "!"
+            last[j] = inside
+    return "".join(s if s in "YN!" else "." for s in state), read_at

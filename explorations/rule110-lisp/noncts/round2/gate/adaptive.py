@@ -111,10 +111,12 @@ def ref_key(n):
     return _REF[n]
 
 
-def search(prog, vmax, strict=False):
+def search(prog, vmax, strict=False, forced=None):
+    """Greedy; forced = {slot: class} fixes some slots."""
+    forced = forced or {}
     classes = []
     for s, op in enumerate(prog):
-        for c in (0, 1, 2):
+        for c in ((forced[s],) if s in forced else (0, 1, 2)):
             trial = classes + [c]
             ok = True
             seen = {}
@@ -132,8 +134,11 @@ def search(prog, vmax, strict=False):
                     # the counter's trajectory class must depend on its value
                     # only (not on the history), else a fixed stream cannot
                     # serve later zero meetings of every history
+                    # histories at the same value and slot must sit on the
+                    # same trajectory class (differences persist through
+                    # class-free ops and would split later zero meetings)
                     n, k = e_key(st)
-                    if k != ref_key(n + 1):
+                    if seen.setdefault(n, k) != k:
                         ok = False
                         break
             if ok:
@@ -145,6 +150,61 @@ def search(prog, vmax, strict=False):
             return classes, False
     return classes, True
 
+
+def slot_ok(prog, s, trial, vmax, strict):
+    op = prog[s]
+    seen = {}
+    for v in range(vmax + 1):
+        ops = ["I"] * v + list(prog[:s + 1])
+        cls = [0] * v + trial
+        exp = v
+        for o in prog[:s + 1]:
+            exp = OPS[o](exp)
+        st, log = outcome(build(ops, cls))
+        if not good(st, exp):
+            return False
+        if strict and op not in "JKLMP":
+            n, k = e_key(st)
+            if seen.setdefault(n, k) != k:
+                return False
+    return True
+
+
+def dfs(prog, vmax, strict, classes=None, stats=None):
+    """Backtracking version of search(): returns a full class list or None."""
+    classes = classes or []
+    stats = stats if stats is not None else {"nodes": 0}
+    s = len(classes)
+    if s == len(prog):
+        return classes
+    # class choice matters only if some input meets this packet in a
+    # class-sensitive state (value 0; value 1 for packets whose trailing
+    # part then meets zero). Otherwise the three classes are equivalent
+    # (x-shifts by 14 lie in <P_E, P_G>; n >= 2 reactions are class-free),
+    # so do not branch.
+    sens = False
+    for v in range(vmax + 1):
+        val = v
+        for o in prog[:s]:
+            val = OPS[o](val)
+        if val == 0 or (val == 1 and prog[s] in "ZWX"):
+            sens = True
+    for c in ((0, 1, 2) if sens else (0,)):
+        stats["nodes"] += 1
+        if slot_ok(prog, s, classes + [c], vmax, strict):
+            print(f"  slot {s} op {prog[s]}: try class {c}", flush=True)
+            r = dfs(prog, vmax, strict, classes + [c], stats)
+            if r is not None:
+                return r
+    return None
+
+
+if __name__ == "__main__" and "--dfs" in sys.argv:
+    prog = sys.argv[1]
+    vmax = int(sys.argv[2])
+    r = dfs(prog, vmax, "--strict" in sys.argv)
+    print("classes", r, "OK" if r is not None else "FAILED")
+    sys.exit(0)
 
 if __name__ == "__main__":
     prog = sys.argv[1]

@@ -109,3 +109,17 @@ if __name__ == "__main__":
         ok += good
         print(" ".join(prog), "->", "OK" if good else "FAIL", "gaps [reg2, reg1]", got, "want", want, "junk", junk, flush=True)
     print(f"{ok}/{n}")
+
+
+def control_unbalanced(program):
+    """Negative control: same fixed-stream construction but WITHOUT the NOP
+    padding (drift classes differ between instructions). Must fail for
+    programs whose earlier instructions have a different drift class."""
+    global STD, DELTA
+    saved = (STD, DELTA)
+    STD = {op: drift_and_rel(BASE[op]) for op in BASE}
+    DELTA = STD["DN1"][1]
+    try:
+        return check(program)
+    finally:
+        STD, DELTA = saved

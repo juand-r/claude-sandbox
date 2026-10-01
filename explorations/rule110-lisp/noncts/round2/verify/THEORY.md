@@ -251,17 +251,74 @@ works; its garbage simply leaves.
 
 | primitives | best machine | status |
 |---|---|---|
-| INC, DEC, zero answer that lands one unit later (clean) | chain machine: decidable, never universal | [thm] |
-| + garbage that leaves (saturation) | still a chain machine | [thm] |
-| one counter + any answer logic in a bounded window | eventually periodic (M2 at most: parity, countdown) | [thm] |
-| several counters, feed-forward layout, any answer logic | eventually periodic | [thm] |
-| non-monotone answer (e.g. [GB3, G]) + feedback between two registers | could be universal (CSM with skips is) | [hyp] |
-| non-monotone answer + unbounded answer travel on one counter | queue-like; could be universal | [hyp] |
+| INC, DEC, and a zero answer that lands one unit later (clean) | chain machine: decidable, never universal | [thm] |
+| the same, plus garbage that leaves (saturation) | still a chain machine | [thm] |
+| one counter, a periodic stream, any answer logic in a bounded window | eventually periodic; as a function of the input v it decides only ultimately periodic sets (v mod k, v < c) | [thm] |
+| several counters in a feed-forward layout, any answer logic | eventually periodic | [thm] |
+| a non-monotone answer plus feedback between two registers | could be universal (CSM with skips is) | [hyp] |
+| a non-monotone answer plus unbounded answer travel on one counter | queue-like; could be universal | [hyp] |
 
-## 6. Open questions
+**The one-counter ceiling.** For a single counter, the drift argument of
+section 3 also fixes the dependence on the input. Write the input v with
+INC packets, then run a periodic program whose net change per period is d
+for large values. If d >= 0, every large input behaves the same. If d < 0,
+the counter falls into the bounded region at a point that depends only on
+v mod |d|, and from there the dynamics is common to all inputs. So the
+decided set is ultimately periodic in v. Parity and v mod 4 are therefore
+the right kind of M2 for the E^n world. Doubling a number or comparing two
+numbers is out of reach there.
 
-1. Is there a composable non-monotone gadget, one whose garbage crosses the
-   rest of the stream? The catalog has A + G#2 -> G + A. Does A^3 cross
-   anything?
+## 6. Status of the tiers (verify's view, 00:25)
+
+- **M1** (one verified data-dependent branch). Gate's wrap packet Z is a
+  garbage-free, non-monotone branch: value 0 goes to 6, every other value
+  is decremented. I verified it (`verify_gate_wrap.py`), and gate's
+  assembler v2 matches the model on 90/90 random words
+  (`verify_gate_wrap2.py`). My own [GB3, G] gadget is also a verified
+  branch, but its garbage has to leave the system.
+- **M2** (a programmable one-counter machine). With my own assembler
+  (`adaptive_ca.py`, exact CA in the loop), the fixed stream (J^3 Z^4)^4
+  (28 packets) applies "DEC, wrap 0 -> 3" four times. Its phases were
+  chosen using inputs 0..6. Validated for inputs 0..12 (`m2_validate.py`):
+  all 13 match the model, including 7 inputs the assembler never saw. Each
+  run ends with one counter (plus Bbars leaving left), and the result is
+  stable from T to T+3000. Moving the program by (0,14) changes nothing. A
+  one-class shift of a zero-meeting slot breaks an input. The function
+  computed, f(v) = v for v < 4 and v - 4 otherwise, is non-monotone.
+  Gate's parity program (J^5 Z^6)^2 (v = 0..3 -> v mod 2) is verified too
+  (`verify_gate_parity.py`). Longer programs fail under greedy phase
+  choice. The reason is the class algebra below.
+
+**Class algebra [sim].** Let c be the counter's trajectory class (its seed
+t mod 3, which is the homomorphism from the ether lattice onto Z3 whose
+kernel is exactly <P_E, P_G>), and let p be the packet's seed phase. In
+every zero or one event I tabulated, the output class is c + p + k (mod 3),
+with one k per outcome type (`phase_charge.py`). At values >= 2 the output
+class is c + const, independent of p. Consequences:
+
+1. At a fixed slot every event acts on classes as a translation. So no
+   single packet can merge two inputs that arrive in different classes.
+   Over all 42 phases of nine event types I found no such "synchronizer"
+   (`sync_search.py`).
+2. Two histories can be realigned only at a slot where they see different
+   event types, one at zero and one at a value >= 2. That is where a
+   corrector packet has to act.
+3. A correct zero event forces p (the designated relative class), so the
+   zero branch's class changes as c -> 2c + const per event. Whether
+   repeated blocks stay aligned therefore depends on the block's word,
+   which matches the observation that J^3 blocks survive longer than J^5
+   blocks.
+
+- **M3**. The E^n world cannot reach it (section 5). Address's F-lane
+  registers are verified (16/16), and the F-lane geometry permits feedback,
+  because stationary C1 messengers cross F. Still missing: a non-monotone
+  zero test for an F-gap register, a way for its answer to edit the
+  program stream, and fixed-stream (data-independent) placement.
+
+## 7. Open questions
+
+1. Is there a composable non-monotone gadget whose garbage crosses the rest
+   of the stream? Gate's Z avoids the question by being garbage-free.
 2. A formal version of the "first free slot" extension of (P3).
-3. Feedback in the F-lane, with non-monotone answers there.
+3. In the F lane: a zero test and answer transport (C1 x F class 1,
+   C1 x Ebar reactions).

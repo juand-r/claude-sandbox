@@ -56,3 +56,17 @@ without addressing), without emulating a cyclic tag system.
   Mistake: first gap formula had the wrong sign (x0 - t0/9); fixed to x0 + t0/9
   (position at t=0 for v=-1/9); caught by the arithmetic mismatch.
 - 01:00 killed balance.py 5 (PID 7535): superseded by fixed_stream.find_pads (NOP = DN2+UP2 / DN1+UP1 combos).
+- 01:05 fixed_stream.py: NOP padding = DN2+UP2 / DN1+UP1 combos; pads
+  UP2 0, DN2 +NOP_A, DN1 +NOP_B, UP1 +2 NOP_B (all drift keys equal mod L_FE).
+  MISTAKE: first build overlapped movers at t=0: kicks move T by up to ~1000
+  cells per slot, so the drift DIFFERENCE between instructions (a lattice
+  vector with a large P_Ebar part) reorders slots unless the stream has idle
+  space; added EXTRA = 150 idle F periods per slot. UP1 UP1 DN2 -> OK [sim].
+  Batch run_fixed.py (5 random length-5 programs + 2 unbalanced controls)
+  running, PID in run_fixed.pid.
+- 01:10 verify re-ran tworeg_abs independently: 16/16, controls 9/9 fail.
+- 01:15 zero_probe.py [sim]: driving a register down: at gap ~26 (DN^5 from
+  119) the catalog still predicts clean but the CA forms a compound
+  (F_15_F#4 for reg1, F_18_F#5 for reg2) = multi-body regime. DN2^6: reg2's
+  two F's become ONE stationary C2 (+Ebar debris), T intact: a destructive
+  zero answer that is a stationary messenger. Not developed further.

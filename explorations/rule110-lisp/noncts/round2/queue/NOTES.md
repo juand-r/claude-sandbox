@@ -78,3 +78,33 @@ tape and the ossifiers.
   G/GK with a rejector give garbage; the rest behave like K.
 - A symbol emptied to ether: the acceptor crosses the gap and then dies
   on the next component (class mismatch) (t_trace.py).
+
+### 00:00-00:20 slip law, symmetry lattice, E_n leader variants
+
+- Board post at 00:09 (I wrote "00:20" in its header by mistake; the
+  real time was 00:09).
+- scan_shift2.py/.log [sim]: of 60 spacetime shifts of (K + everything
+  after), only (0,0), (s=6,D=24), (s=18,D=16) keep reads 0/1 correct for
+  YYNN/YNYN/NYYN/NNYY. These generate V = <(12,8),(30,-8)>; splice.
+  valid_shifts() lists V; insert_exact()/replace_exact() re-attach the
+  remainder with a V shift so that an edit is the ONLY change.
+- Slip law [arg]: per program period 12p + 9n_Y + 2n_N = 7m_Y + g
+  (mod 14) => n = p + 4g (mod 7). Measured slips: K 12, G 8, II/IJ 0,
+  moving Y 7 / N 0, ossifier 2 (B block = one A^4 = 4), tape Y 9 / N 2.
+- Pair screen (scan_pair.py, 545 of 3600 pairs before I stopped it):
+  every "rejector passes" hit (14) left B-type garbage that ran left and
+  ate tape data; the acceptor path of the two clean-looking ones is broken.
+  Not soft leaders. Consistent with the slip law.
+- E9 instead of E2 in the leader (scan_e9.log): placements (2,23),
+  (5,34), (14,9) give a leader that ALWAYS REJECTS: it consumes one
+  symbol, appends nothing, and the machine continues correctly
+  (t_e9.py 2 23 YYNN 110000 5000 first: reads Y,[N],N,N vs reference
+  Y,Y,N,N - the forced read consumed the Y). [sim, 4 tapes x 2 reads +
+  one longer run]. A slip-neutral "empty appendant" leader; possibly a
+  replacement for Cook's broken L block (not yet checked in a periodic
+  program).
+- Idea being screened (scan_en.py E5/E3): a leader variant whose
+  behaviour depends on the INCOMING answer type (acc vs rej). If one
+  reads normally after acc and is forced to N after rej (or vice versa),
+  that is a 2-state control (live/dead) with one symbol per leader, which
+  the slip law allows.

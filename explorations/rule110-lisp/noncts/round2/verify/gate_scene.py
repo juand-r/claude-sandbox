@@ -9,8 +9,24 @@ import stream          # noqa: E402
 os.chdir(cwd)
 
 def scene(program, **kw):
-    sc = stream.build(program, **kw)
+    here = os.getcwd()
+    os.chdir(os.path.join(GATE, "..", "..", "collider"))
+    try:
+        sc = stream.build(program, **kw)
+    finally:
+        os.chdir(here)
     return [(g, int(t), int(x)) for g, t, x in sc]
 
 if __name__ == "__main__":
     print(json.dumps(scene(list(sys.argv[1]))))
+
+
+def scene2(program, table=None, **kw):
+    """gate's assembler v2 (stream.build2)."""
+    here = os.getcwd()
+    os.chdir(os.path.join(GATE, "..", "..", "collider"))   # collider reads json by relative path
+    try:
+        sc = stream.build2(program, table if table is not None else {("Z", 1): 2}, **kw)
+    finally:
+        os.chdir(here)
+    return [(g, int(t), int(x)) for g, t, x in sc]

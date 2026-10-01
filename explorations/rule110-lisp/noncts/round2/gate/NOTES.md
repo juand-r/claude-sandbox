@@ -54,3 +54,36 @@
   full-row check on Z6 runs (v = 0, 2), and a wrong prediction is rejected.
 - adaptive.py: two J^5 Z6^6 blocks, v = 0..3, all correct at glider level with
   classes [1,0,2,1,0,1,0,0,0,0,0, 0,2,1,0,2,0,0,0,0,0,0].
+- 00:06 verify found INZZ fails with my builder: Z acting on value 1 sends its
+  trailing GB4 into the zero E (GB4 at zero displaces E in 2/3 classes). My
+  test I^v Z^m never exercised that path. Mistake: I tested only one program
+  shape. Fix: assembler v2 (stream.build2): designate classes relative to the
+  reference E^(val+1), val = 5*(slip/2) mod 7 forced by slip; Z at val 1 in
+  class 2 (refclass.py). verify's 4 failing words now = model in exact CA;
+  diff_test.py 1 25 6: 25/25 at glider level.
+- J programs: zero-J's displace E; the remaining-stream slip changes the
+  coset, so keys must be compared among histories at the same slot (not with
+  a global reference). Greedy fails at block 3 (history conflict); now DFS
+  with "histories at the same (slot, value) share the trajectory class",
+  checked at non-J slots, with a GB4 after J^5 as a phase corrector.
+- Mistake: "histories at the same slot and value share a trajectory class" is
+  mis-specified across inputs: the prefix I^v changes the far-right ether by
+  6v mod 14, so E's of different inputs live in different ether cosets and
+  their keys are not comparable (dbg4.py: second key coordinates differ by
+  1/21). Dropped the strict check; plain DFS with backtracking on outcomes.
+- 00:4x PARITY (2 blocks) VERIFIED in exact CA: program (J^5 Z6^6)^2 with
+  per-slot classes 1,0,2,1,0,1,0,0,0,0,0, 0,2,1,0,2,0,0,0,0,0,0 (adaptive.py
+  greedy), inputs v = 0..3 -> 0,1,0,1, one E^k + only Bbars (left) as garbage;
+  CA (fastca window) == glidersim cell for cell (verify_classes.py).
+  Control: first J in class 0 instead of 1 -> v = 0 ends as Ebar, E^3, Ebar,
+  A^2, A, A (exact CA + library census), v = 1 unaffected (J class-free there).
+- stream.ca_only: exact CA + collider census for controls where glidersim
+  raises ThreeBody.
+- 01:0x fastsearch.py: incremental greedy (cached glidersim per input, one
+  packet appended at a time); reproduces adaptive.py's 2-block classes in 36 s.
+- Phase experiments (3 blocks, v = 0..4, greedy): (J^5 N Z^6)^3 works iff the
+  N (GB4 meeting zero only in zero-started blocks) is in class 2 (classes 0, 1
+  fail at block 2-3). J^4 X Z^6 works for X = L = GB1+GB1@(-4,34) and
+  X = P = GB1+GB1@(-41,56), fails for K, M. Consistent with verify's
+  hypothesis: J's zero displacement is an element of order 3; L and P carry
+  the inverse displacement, a class-2 GB4 at zero supplies the missing one.
