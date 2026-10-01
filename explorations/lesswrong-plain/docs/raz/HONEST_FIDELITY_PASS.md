@@ -279,12 +279,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-failures-of-eld-science
 - [x] the-dilemma-science-or-bayes
 - [x] science-doesn-t-trust-your-rationality
-- [ ] when-science-can-t-help
-- [ ] science-isn-t-strict-enough
-- [ ] do-scientists-already-know-this-stuff
-- [ ] no-safe-defense-not-even-science
-- [ ] changing-the-definition-of-science
-- [ ] faster-than-science
+- [x] when-science-can-t-help
+- [x] science-isn-t-strict-enough
+- [x] do-scientists-already-know-this-stuff
+- [x] no-safe-defense-not-even-science
+- [x] changing-the-definition-of-science
+- [x] faster-than-science
 - [ ] einstein-s-speed
 - [ ] that-alien-message
 - [ ] my-childhood-role-model

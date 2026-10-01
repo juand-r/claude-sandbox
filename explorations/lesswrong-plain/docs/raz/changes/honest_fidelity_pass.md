@@ -5837,3 +5837,193 @@ Why: Fidelity/substance pass: added the reasoning behind the libertarian argumen
 - Before: Science assumes that you are ``too stupid and self-deceiving'' to reason perfectly on your own.
 - After: Science assumes that you are ``too stupid and self-deceiving'' to just use Solomonoff induction; if it were that simple, we would not need a social process of science.
 
+
+## honest/sections/when-science-can-t-help.tex
+
+Why: Fidelity/substance pass: added why Science's indifference to a theory's origin is both strength and weakness, the actual answer to the reader (easily tested questions are hard to get wrong; some with big future consequences are costly now), the details of the superposition and evolutionary-psychology examples, the snake-oil vs fossil-record account of absence of evidence, sleep as the comparison for cryonics, what the McCarthy quote says, why absence of proof is sometimes strong evidence, why the 56/57 verdict is not ambiguous, Martin Gardner, the 'mountain of evidence' aim, and the species-extinction joke
+
+- Before: Science does not say which theory is right before the test.
+- After: But what if I did not want to waste ten years? Science does not say which theory is right before the test; it does not care where a theory comes from, only ``Go test it,'' which is its great strength and its great weakness.
+
+- Before: I answer about questions that can be tested, just not easily and not now.
+- After: I answer that questions easily tested now are hard for Science to get wrong; the trouble is questions with large, definite consequences in the future that are not cheap to test now, but on which there is a strong rational argument.
+
+- Before: Quantum superpositions of large objects could be tested in principle, with enough precision, cold and empty space.
+- After: Quantum superpositions of large objects could be tested in principle, with nanotechnological precision, very low temperatures and a clear patch of interstellar space; someday whole civilizations might run on superposed quantum computers in a swept-out void (and asking what non-realism says about observers inside them shows how underspecified it is).
+
+- Before: Evolutionary psychology has untestable parts that help generate its testable ones, and for these
+- After: Evolutionary psychology is a connected web whose untestable parts help generate the testable ones, so those helper hypotheses are supported in a Bayesian sense but not experimentally; Science would call them ``not proven,'' and
+
+- Before: The lack of revived patients is only weak evidence against cryonics, since nobody expects revival with today's technology.
+- After: Absence of evidence is evidence of absence only to the degree you would expect the evidence to appear. If snake oil cured cancer, you would expect controlled studies or at least case reports, so their absence is strong evidence; gaps in the fossil record are weak evidence against evolution, since fossils rarely form and are rarely found. The lack of revived patients is only weak evidence against cryonics, since nobody expects revival with today's technology even if future nanotechnology could do it.
+
+- Before: it should seem plausible that whatever preserves the pattern of synapses preserves you.
+- After: it should seem plausible that whatever preserves the pattern of synapses preserves as much of you as survives a night's sleep.
+
+- Before: Next, a quotation from John McCarthy with no context, about which ``I could venture a guess.''
+- After: Next, a quotation from John McCarthy with no context, ``Your statements amount to saying that if AI is possible, it should be easy. Why is that?'', about which ``I could venture a guess.'' The general mistake probably comes from cases where absence of scientific proof is strong evidence, because the experiment would be easy and its absence is suspicious.
+
+- Before: ``doesn't work well, if at all.''
+- After: ``doesn't work well, if at all''; some would call that ``Not proven,'' but a verdict that new evidence could retract is not therefore ambiguous. People dismiss cryonics as unscientific as if it were such a drug, easily given to a thousand patients.
+
+- Before: like someone who refuses to get into an ambulance until it has reached the hospital.
+- After: like someone who refuses to get into an ambulance until it has reached the hospital. Perhaps Martin Gardner warned them against believing strange things without experimental evidence.
+
+- Before: Science does not trust anyone to work out the answer before the evidence arrives, and sometimes you must.
+- After: Science aims for a mountain of evidence so huge that fallible scientists cannot misread it, and even that sometimes fails, when people confuse which theory predicts what or build hard-to-test parts into an early theory; and sometimes clear evidence is unavailable. Either way you must do what Science does not trust anyone to do: think rationally and find the answer before you are clubbed over the head with it. (And sometimes the disconfirming result is that your entire species has been wiped out; if you publicly recant, good for you.)
+
+
+## honest/sections/science-isn-t-strict-enough.tex
+
+Why: Fidelity/substance pass: added why everyone gets a gold star (negative results are knowledge), the two reasons for addressing the ideal, the slow ratchet, the two forbidden ways of reading the mammogram, what the lightness passage says, the room Science leaves within the evidence, 'if we were all perfect Bayesians', the false-notes and anvil contrast and what Bayes demands, the priors as a new guessing problem, hard to compute is not inapplicable, and the Theory-of-Everything remark
+
+- Before: The ideals of Science ``too readily give out gold stars.'' Test your theory, accept the result, and you are a good scientist, right or not.
+- After: The ideals of Science ``too readily give out gold stars.'' Negative results are knowledge too, so everyone who plays wins: test your theory, accept the result, and you are a good scientist, right or not.
+
+- Before: I mean the ideal ``as it is traditionally preached,'' not the practice of science, and I quote no one who preaches it.
+- After: I mean the ideal ``as it is traditionally preached,'' not the practice of science, for two reasons: I went astray by following the ideal, not through a hostile editor, and pointing out a flaw in the ideal does not force real scientists into it. I quote no one who preaches it.
+
+- Before: and that is enough to sustain a scientific culture.
+- After: and that is enough to sustain a scientific culture: progress may be slow, waiting for a generation of elders to die, but the ratchet of knowledge clicks forward.
+
+- Before: then a woman who tests positive has cancer with probability 7.5\%, ``not 7.4\% or 7.6\%.''
+- After: then a woman who tests positive has cancer with probability 7.5\%, ``not 7.4\% or 7.6\%.'' You may not say she is healthy because the test is not definite, or that she is ill because pessimism is wise.
+
+- Before: I quote the third virtue, lightness, from my own ``Twelve Virtues of Rationality.''
+- After: I quote the third virtue, lightness, from my own ``Twelve Virtues of Rationality'': you cannot map a city by drawing lines in your bedroom with your eyes shut, and shifting a line a little to the left or right, by whim, when you see the city unclearly, is the same mistake. Science, by contrast, makes you accept definite evidence but lets you wander within its boundaries as you like, which fits badly with an exact probability that exists before and after the experiment. If we were all perfect Bayesians, we would not need a social process of science.
+
+- Before: I grant that it is much harder to use, that one error in a hundred steps can carry you anywhere,
+- After: I grant that it is much harder to use: it requires hearing tiny false notes, where Science only requires noticing an anvil dropped on your head; in Science another experiment corrects you and at worst you waste a couple of decades, while in Bayesian reasoning, as in math, one error in a hundred steps can carry you anywhere. It demands lightness, evenness, precision and perfectionism,
+
+- Before: Not knowing the priors ``doesn't mean you get a free, personal choice of making the priors whatever you want.''
+- After: If you cannot look the priors up in the Handbook of Chemistry and Physics, that ``doesn't mean you get a free, personal choice of making the priors whatever you want''; it means a new guessing problem to do as well as you can.
+
+- Before: Bayes is ``the law'' behind every statistical tool.
+- After: If the Bayesian answer is hard to compute, you do not know it, but Bayes still applies: it is not a toolbox of statistical methods but ``the law'' behind every tool. Someone who could apply Bayes in practice to every physics experiment ever, to find a Theory of Everything, would be not a statistician but an AI programmer; human guesses at such theories still do not violate the law.
+
+
+## honest/sections/science-isn-t-strict-enough.tex
+
+Why: Fidelity/substance pass: repaired a sentence join
+
+- Before: perfectionism, and that Science has good reason not to trust you with it.
+- After: perfectionism, and Science has good reason not to trust you with it, asking for experimental proof even after someone claims to have reasoned out the answer.
+
+
+## honest/sections/do-scientists-already-know-this-stuff.tex
+
+Why: Fidelity/substance pass: added 'stupid' as a figure of speech, Penrose's testable implications and the missing anticipation that is the danger sign, the four danger signs themselves, why no one would teach them (advice for chaos), why reasoning on sparse evidence is hard (Outer Mongolia), minds as engines and exact probabilities, the representativeness point, affective death spirals, the mountain of evidence and the contrast with religion, Sagan and Gardner, and the cigarettes/Marlboro analogy
+
+- Before: I did not go through that apprenticeship.
+- After: ``Stupid'' was a figure of speech for my young self; ``unskillfully wielding high intelligence'' is more precise. I did not go through that apprenticeship.
+
+- Before: His view is testable, but it leaves consciousness as mysterious as before.
+- After: His view is testable: it implies coherent quantum states in neurons that matter to their processing, and that no computable simulation will reproduce a neuron. But after saying it, you anticipate nothing new about why your brain thinks ``I think therefore I am!'' or about the redness of red, though you feel you know a cause; that is a tremendous danger sign, but not the one I was warned against.
+
+- Before: I list my four danger signs of a mysterious answer, and say no one ever taught them to me.
+- After: I generalized the idea only while writing a Bayesian analysis of technical and nontechnical explanations, and its output is four danger signs: the explanation stops curiosity instead of controlling anticipation; the hypothesis has no moving parts, only a blank substance or force; its proponents cherish their ignorance and boast that the phenomenon defeats ordinary science; and even after the answer, the phenomenon is still a mystery. All this could have been said right after vitalism, but no one ever taught it to me in those terms; the closest warning was that hypotheses should be testable. It is advice for confusion and scientific chaos, which the average scientist or mentor rarely meets.
+
+- Before: I doubt that scientists who describe life in 2050 were taught the conjunction fallacy, and whole subfields grow around ``emergence'' and ``complexity.''
+- After: Reasoning without definite evidence is really hard: in school you can miss one point and be taught fifty correct ones, but reasoning alone you can miss one and ``wake up in Outer Mongolia fifty steps later.'' Scientists who relax with comfortable nonsense outside their field were probably never told that minds are engines with a causal story behind every trustworthy belief, or that there is an exact rational probability with no room for whims. I doubt that scientists who describe life in 2050 were taught the conjunction fallacy, or how the representativeness heuristic makes more detailed stories seem more plausible as each detail lowers their probability; the bias was found only decades ago. Whole subfields grow in affective death spirals around vague notions like ``emergence'' and ``complexity.''
+
+- Before: Traditional rationality teaches you to give up a theory under crushing evidence.
+- After: Science amasses evidence so huge that even scientists cannot ignore it, and being able to give up under such evidence is enough to turn the ratchet and raise a technological civilization; contrast religion. Carl Sagan, Martin Gardner and Traditional Rationality aim to make that difference.
+
+- Before: ``lets you believe far too much.''
+- After: ``lets you believe far too much'': Science does not call you a bad person for testing a bizarre hypothesis, but that is the difference between ``Cigarettes shouldn't be illegal'' and ``Go smoke a Marlboro.'' Who was ever warned against that mistake in so many words?
+
+
+## honest/sections/no-safe-defense-not-even-science.tex
+
+Why: Fidelity/substance pass: added the two maybes themselves, the corn-ethanol line, the clown suit and Intrade, 'trust and think at the same time', why the young author never questioned the ideal (aversion to ideas idiots held; the master idea), the child-like safety and trust in books, the absence of drama, the list of what there is no known procedure for, why Bayes cannot be trusted either (new biases weekly, unknown priors), why Science is too vague to scare, why words will not break trust (look for flaws, not find them), and the postscript's last point
+
+- Before: I cannot say why, and I offer two maybes.
+- After: I cannot say why. Maybe being unusually rational means zigging when others zag, which is too scary while the world still seems sane; or maybe you do not work at being extra sane unless normality scares you.
+
+- Before: they see it and wonder why nobody around them agrees.
+- After: they see it and wonder whether it can be true when it seems so obvious and nobody around them believes it. Yes: ``Welcome to the Earth where ethanol is made from corn and environmentalists oppose nuclear power. I'm sorry.''
+
+- Before: People whose trust has been broken can judge strange ideas on their merits.
+- After: People whose trust has been broken can judge strange ideas on their merits; the glue that held them in place has dissolved. True dissent feels not like wearing black to school but like wearing a clown suit, as when you ask people who are sure who will win an election why they are not taking the free money on Intrade.
+
+- Before: Then: ``I've never seen anyone begin to grow as a rationalist until they make a deep emotional break with the wisdom of their pack.''
+- After: Then: ``I've never seen anyone begin to grow as a rationalist until they make a deep emotional break with the wisdom of their pack.'' I am not sure humans can trust and think at the same time.
+
+- Before: I blamed the flaws of academia on the people and never questioned the ideal.
+- After: I blamed the flaws of academia, its slowness and favouritism and mistreatment of heretics, on the people, which spared me from questioning the ideal. Everyone I had seen question the ideal of Science was selling snake oil or shielding some stupidity, and I disliked ideas that idiots had held. Science was the master idea, the one that let you change ideas; you were meant to question it and then accept it.
+
+- Before: When I had a stupid idea, I made sure it made a new prediction, and felt safe.
+- After: When I had a stupid idea, I made sure it made a new prediction, and felt safe, like a child who has obeyed all the parent's rules. My trust in my family and teachers was long broken, but I trusted the books, and that if I did what Richard Feynman said I would be safe.
+
+- Before: At twenty-three I saw how stupid the idea had been, and that the traditional rules of science had not saved me from it.
+- After: At twenty-three I saw how stupid the idea had been, and that the traditional rules of science had not saved me from it and would have been content with ten wasted years. It was not a great emotional convulsion; it simply became obvious that I had been stupid.
+
+- Before: ``There is no known procedure you can follow that makes your reasoning defensible.''
+- After: ``There is no known procedure you can follow that makes your reasoning defensible,'' no set of injunctions that guarantees you have not been a fool, no morality of reasoning that shields you from criticism.
+
+- Before: I then list what you must study:
+- After: You do not know what your own mind is doing; a new bias is found every week, and you never know whether you have corrected or overcorrected. You do not know why the universe is simple enough to understand, why any prior works, or what your own priors are. Science is too vague to scare you, ``Ideas should be tested by experiment''; with the math of probability in front of you, knowing you cannot really use it, you see that the task is hard and you may be doing it wrong. I then list what you must study:
+
+- Before: These words will not break your trust.
+- After: These words will not break your trust. At eighteen I already granted that Science could be questioned and said ``I could be wrong, but,'' yet did not believe failure could happen in real life: you were supposed to look for flaws, not find them. Trust breaks only in your first real disaster from following the rules.
+
+- Before: and you are clinging.
+- After: and you are clinging to it to reassure yourself. The hard thing is living with uncertainty, knowing in your gut that there are serious flaws you have not found.
+
+
+## honest/sections/changing-the-definition-of-science.tex
+
+Why: Fidelity/substance pass: added Tegmark's 'fallacy' remark and Howson's weighing of rival theories, 'Science tolerates errors, Bayescraft does not', that the second point is the primary departure, and the full apple-to-relativity chain
+
+- Before: Max Tegmark says the multiverse stands or falls with the tested theories it follows from.
+- After: Max Tegmark says it is a fallacy to call the multiverse unfalsifiable because it is unobservable: it follows from quantum theory and general relativity, and stands or falls with them.
+
+- Before: for one based on degrees of belief,
+- After: for one that weighs the evidence for rival theories by degrees of belief,
+
+- Before: into a new ``Art of Bayescraft.''
+- After: into a new ``Art of Bayescraft'' before we do better in the real world than science; ``Science tolerates errors, Bayescraft does not.''
+
+- Before: This ``is not something I've seen suggested elsewhere.''
+- After: This is my primary point of departure, and it ``is not something I've seen suggested elsewhere.''
+
+- Before: A Bayesian superintelligence, seeing its first apple fall, could invent calculus, generalize Newton's laws, notice their action at a distance, and ``consider that General Relativity might be worth testing.''
+- After: A Bayesian superintelligence could use enormously less evidence than a human scientist: seeing its first apple fall, it could observe that position goes as the square of time, invent calculus, generalize Newton's laws, notice their action at a distance, look for more local alternatives, invent relativistic covariance around a speed limit, and ``consider that General Relativity might be worth testing.''
+
+
+## honest/sections/faster-than-science.tex
+
+Why: Fidelity/substance pass: added Planck's actual words, the pack-threshold mechanism and that science still gets there, why the collapse needs an extra argument, the 'insufficiently extreme' framing and 'don't be too charitable', the Zombie Feynman line and why ideas matter (no new ideas, no process), the 32-bit example and p<0.0001, the Ouija board's meaning (Science does not specify idea generation), monkeys and Shakespeare, the guessing at 10 vs 80 per cent point, and the interval as the frontier
+
+- Before: Max Planck was gloomier: new truths win because their opponents die.
+- After: Max Planck was gloomier: a new truth wins not by convincing its opponents but because ``its opponents eventually die, and a new generation grows up that is familiar with it.''
+
+- Before: which ``suggests'' that some of them need a large enough pack before they will convert.
+- After: which ``suggests'' that some of them need both justification and a large enough pack before they will convert: as more accept, more pass their individual thresholds, with the justification unchanged. Science still gets there eventually, and that is enough for the ratchet.
+
+- Before: The collapse of the wavefunction has no experimental support, and one argument against it is that it violates relativity.
+- After: The collapse of the wavefunction has no experimental support but appeals to the undermined intuition of a single world, so it may take an extra argument, such as that it violates relativity, to begin its slow disintegration. More charitably, scientists take positions ``insufficiently extreme'' compared with those of Bayesian AIs who could trust their own reasoning. But do not be too charitable: the noise is not all innocent.
+
+- Before: Can individuals reach the truth faster than science? My answer is about where hypotheses come from. Science tests ideas but does not say where they come from.
+- After: Can individuals reach the truth faster than science? ``Ideas are tested by experiment,'' says Zombie Feynman, and who can you trust if not him? But where do the ideas come from? ``From scientists'' is no answer. Science tests ideas but does not say where they come from, yet without new ideas the process stops, so inventing them is not dispensable.
+
+- Before: Among four billion equations, getting one of them up to 10\% takes far more evidence than taking it from 10\% to 90\%.
+- After: Among the four billion equations expressible in 32 bits, getting one of them up to 10\% takes far more evidence than taking it from 10\% to 90\%, so in a large space, finding ideas worth testing is more work than getting a result at $p<0.0001$ for the new hypothesis over the old.
+
+- Before: ``Compared to Science, Bayes is falsified by more of the possible outcomes.''
+- After: ``Compared to Science, Bayes is falsified by more of the possible outcomes.'' That does not make choosing ideas unimportant to Science; Science just does not specify it. In practice the Ouija board fails: for large answer spaces, picking models at random would take zillions of years, like monkeys typing Shakespeare.
+
+- Before: At the frontier, scientists see things that are not yet confirmed.
+- After: At the frontier, scientists see things that are not yet confirmed; that is how they know what to test. ``They just have to guess,'' you may say; but in a large space, guessing right at 10\% takes nearly as much hidden epistemic work as at 80\%.
+
+- Before: Science knows it too, once he ``performs the experiment, publishes the result.''
+- After: Science knows it too, once he ``performs the experiment, publishes the result,'' and anyone can verify it. The interval in between, short as it may be, is where the frontier of science lies.
+
+
+## honest/sections/faster-than-science.tex
+
+Why: Fidelity/substance pass: put the Tumulka note back beside the relativity claim
+
+- Before: to begin its slow disintegration. More charitably, scientists take positions ``insufficiently extreme'' compared with those of Bayesian AIs who could trust their own reasoning. But do not be too charitable: the noise is not all innocent. \nb{Roderich Tumulka had published a version of collapse consistent with relativity two years earlier.}
+- After: to begin its slow disintegration. \nb{Roderich Tumulka had published a version of collapse consistent with relativity two years earlier.} More charitably, scientists take positions ``insufficiently extreme'' compared with those of Bayesian AIs who could trust their own reasoning. But do not be too charitable: the noise is not all innocent.
+
