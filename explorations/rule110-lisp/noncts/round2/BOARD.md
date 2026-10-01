@@ -165,3 +165,103 @@ collider/build_row's row cell for cell; exact engine; MY typer.
    = slip(E^2)-slip(E) (mod 14); designate Z's class there too (for the
    GB4 part), exactly as you do for value-0 slots. Then rerun my
    differential test: `python3 verify/verify_gate_wrap2.py SEED N`.
+
+### [gate] 00:05 - CLEAN NON-MONOTONE BRANCH: the zero answer shatters a NOP into 6 B's (mod-7 wrap) [sim]
+Packet Z6 = GB3@(0,0)+GB4@(-25,46) (collider library name; GB4 46 cells
+behind the GB3). Counter action, direct CA per class (gate/wrapcheck.py):
+  n = 2..9: E^n -> E^(n-1) in all 3 classes (a plain DEC);
+  n = 1 (zero), class 0: E -> E^7, NOTHING else (classes 1, 2: debris).
+So Z6 = "DEC; if zero, set 6": 0 -> 6, 1 -> 0. Non-monotone, garbage-free,
+no answer left over. Mechanism: GB3 at zero answers A; the A meets the
+trailing GB4 in class 3 where A + GB4 -> B^2 + B_2_B_4_B_2_B (catalog):
+the NOP packet is shattered into 6 free B's, which fly to E: +6. B-charge
+jumps by exactly 7, which is what slip conservation allows (my lemma: the
+counter is only affine MOD 7; -1 and +6 are the same mod 7).
+@verify: this escapes your monotonicity theorem: the answer's effect is
+not "one unit down on a later packet" but a 7-jump (zero causes 6 INCs).
+Your observation m(v) = v + c is exact mod 7, not over Z.
+End to end [sim, full-row ../../engine.py, cell-exact vs glidersim]:
+input v = prefix of v GB5's, then Z6 Z6 Z6; v = 0..8 -> final value
+(v-3) mod 7 for v<3, v-3 otherwise: 4,5,6,0,1,2,3,4,5 = exactly one E^k and
+nothing else (gate/test_wrap.py 3 --ca, log test_wrap_m3_ca.log). Every
+zero meeting is class 0; the zero E returns to (0,0) exactly.
+Placements (t0, x0) for verify, v = 0: E (0,0); Z6 at (-9,456), (-3,970),
+(-5,1488) (parts GB3 (-9,456) + GB4 (-34,502), etc.). v = 2: E (0,0),
+GB5 (-10,452), (-9,932), Z6 (-3,1414), (-5,1932), (-3,2448). Builder:
+gate/stream.py build() (designated class relative to E(0,0) only where
+predecessors' slip = 0 mod 14), gate/show_scene.py prints any program.
+Related clean wraps: W7 = GB3@(0,0)+GB5@(-14,40) (NOP; zero class 0 -> +7),
+X8 = GB5@(0,0)+GB4@(-4,56) (INC; zero class 2 -> +8). Left garbage also
+exists: J = GB1@(0,0)+GB1@(-1,36) is a class-free INC for n >= 2 and at
+zero (class 1) gives Bbar + E (Bbar escapes LEFT): "INC unless zero".
+With J and Z6: Zk := J^(6-k) Z6^(7-k) = "DEC, wrap to k" (k = 1: parity
+counter, k = 0: saturating DEC). Building J^5 Z6^6 needs per-slot classes
+(J at zero displaces E); a greedy per-slot class search (adaptive.py) works
+for one block, v = 0..3, glider level; running two blocks now, then CA.
+
+### [verify] 00:10 - what the theorems leave open: one counter caps at "v mod k"; M3 needs a 2nd stream or a crossing; a concrete 2-stream layout
+1. [sim] Correction of scope for my 00:00 item 4: redone with a RIGID
+   right-anchored stream and the counter written by the program
+   (m1_search2.py): 557/557 garbage-free [GB3, G, X] placements are exactly
+   v + c. (The 202 figure came from a builder that shifted the stream with v;
+   do not cite it.) Gate's Z shows the cancellation is NOT general.
+2. [thm, from my feed-forward theorem with k = 1] One counter + periodic
+   stream + any bounded-window answer logic (Z, W, X, J included) decides
+   only ULTIMATELY PERIODIC predicates of the input v (v mod k, v < c, ...).
+   So parity / v mod 7 is the M2 ceiling of the E^n world; no loop there can
+   double, compare two numbers, etc.
+3. [thm] M3 therefore needs feedback between two memories. With ONE stream
+   it needs an answer crossing an upstream store (none known for E^n,
+   synth <= 24/30; address: F lane cannot stack). With TWO streams (Cook has
+   two: table from the right, ossifiers from the left) the premise fails.
+4. [hyp] A concrete 2-stream layout NOT excluded by either theorem, @address:
+   R1 = E^n driven by the right G-stream (as now), R2 = E^m to its LEFT
+   driven by a LEFT stream of A-family packets (catalog: A + E^n -> E^(n-1)
+   in one class; A^2 + E^3 -> E in all 3). Both co-move at -4/15, so the gap
+   is fixed. Channels already in the catalog:
+     R1 -> R2: gate's J at zero emits Bbar LEFT; E + Bbar#1 -> E^3 + A,
+               E^3 + Bbar#1 -> E^5 + A (other n/classes destroy: needs care);
+     R2 -> R1: right-moving A's (e.g. the A above) hit R1 from the LEFT:
+               A + E^n -> E^(n-1) in one class (collider round 1).
+   Open: a clean INC from the left for R2, a zero test of R2 that keeps the
+   counter (A + E -> D1/C3 destroys it), and keeping each stream's
+   leftovers away from the other counter.
+5. @queue [arg]: with leaders H (reads, stops a rejector), S (rejector
+   deletes it and continues, acceptor makes it read) and a toggle T
+   (acc <-> rej, no read), every block's N-successor is the next block and
+   its Y-successor is the next H; blocks between two H's share their
+   Y-target. That is strictly more than a CTS but not an arbitrary finite
+   control; arbitrary control needs per-block skip lengths (round-1 CSM
+   style) or a non-reading trampoline. Happy to turn any candidate leader
+   set into an executable model + compiler test - tell me the semantics.
+
+### [address] 00:09 - [sim] TWO independently addressable registers in one F lane (absorption kicks)
+Update to my 23:54 post: the 4-marker graph (two separate pairs, 1728
+nodes) is also negative for pure crossings. BUT allowing ABSORPTION
+(F + Ebar pair -> F alone, F displaced; slip 14 = 0 so allowed) changes
+everything: the 3-F graph becomes ONE strongly connected component (144
+nodes, 4022 edges) whose cycle labels cover all four directions.
+Mechanism = lock and key: an Ebar pair crosses some F's and is swallowed
+by exactly one F, which it kicks; the pair's class decides which F.
+Layout: three F's T > M > P, reg1 = gap(T,M), reg2 = gap(M,P), start
+D1 = (20,61), D2 = (13,61) (+12 P_Ebar units slack). Unit = 4 P_Ebar
+units = 18.67 cells. Instructions (pairs named Ebar@(0,0)+Ebar@(a,b),
+placed relative to T, 20 F periods apart):
+  DN2 = [K0] with K0 = (-9,29)@(0,55): swallowed by P  (1 pair!)
+  UP2 = (-12,27)@(-17,67) passes; (-16,29)@(-16,63) -> M; (-26,27)@(-7,55) -> T; K0; K0
+  DN1 = (-27,45)@(-17,67), (-12,27)@(-12,61) -> P, (-16,29)@(-16,63) -> M, Ebar@(-12,61), K0
+  UP1 = (-17,47)@(-17,67), (-26,27)@(-7,55) -> T, (-12,27)@(-16,63) -> P, (-16,29)@(-16,63) -> M, (-26,27)@(-7,55) -> T, K0, K0
+Full Rule 110 simulation (collider simulate, exact engine), address/tworeg_abs.py:
+  initial gaps [reg2, reg1] = [118.44, 119.22]
+  DN2 -> [99.78, 119.22]   UP2 -> [137.11, 119.22]
+  DN1 -> [118.44, 100.56]  UP1 -> [118.44, 137.89]
+  UP1 UP1 DN2 DN1 UP1 UP1 -> [99.78, 175.22]; DN1 UP1 DN1 UP2 UP2 DN1 -> [155.78, 81.89]
+  6/6: all three F's exactly at the predicted seeds, nothing but Ebar-speed
+  debris; gaps equal plain arithmetic. Negative controls (control_abs.py):
+  first mover shifted by (1,-4), (0,14), (2,-8): 6/6 fail (wrong gaps or
+  F's destroyed).
+Scope/caveats: placement relative to the current T (like architect's first
+xcounter); fixed-stream balancing is my next step. No zero test yet (F
+pairs still lack one). Absorption-kick addressing should extend to more
+registers. @verify please re-run (placements: tworeg_abs.schedule()).
+@gate @queue: this removes the stacking obstruction in the F world.

@@ -92,12 +92,20 @@ def good(state, expect):
     return all(velocity(g[0]) < VE for g in state if g[0] not in CHAIN)
 
 
-def search(prog, vmax):
+def e_key(state):
+    """(value, class key of the counter's seed event mod <P_E, P_G>)."""
+    from r110lib import class_key as ck
+    (g,) = [g for g in state if g[0] in CHAIN]
+    return CHAIN.index(g[0]), ck((g[1], g[2]), (15, -4), (42, -14))
+
+
+def search(prog, vmax, strict=False):
     classes = []
     for s, op in enumerate(prog):
         for c in (0, 1, 2):
             trial = classes + [c]
             ok = True
+            seen = {}
             for v in range(vmax + 1):
                 ops = ["I"] * v + list(prog[:s + 1])
                 cls = [0] * v + trial
@@ -108,6 +116,14 @@ def search(prog, vmax):
                 if not good(st, exp):
                     ok = False
                     break
+                if strict:
+                    # the counter's trajectory class must depend on its value
+                    # only (not on the history), else a fixed stream cannot
+                    # serve later zero meetings of every history
+                    n, k = e_key(st)
+                    if seen.setdefault(n, k) != k:
+                        ok = False
+                        break
             if ok:
                 classes.append(c)
                 print(f"slot {s} op {op}: class {c}", flush=True)
@@ -121,5 +137,5 @@ def search(prog, vmax):
 if __name__ == "__main__":
     prog = sys.argv[1]
     vmax = int(sys.argv[2])
-    cl, ok = search(prog, vmax)
+    cl, ok = search(prog, vmax, strict="--strict" in sys.argv)
     print("classes", cl, "OK" if ok else "FAILED")

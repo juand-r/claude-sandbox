@@ -49,3 +49,9 @@ without addressing), without emulating a cyclic tag system.
 - Idea: F-world needs ABSORBERS (debris sinks). Catalog: F + Ebar-pair -> F
   alone exists (Ebar@(0,0)+Ebar@(-26,27)#4, Ebar@(0,0)+Ebar@(-9,29)#4).
   Test: allow absorption (empty output) at markers in the graph.
+- 00:40 KEY: allowing absorption (F + Ebar pair -> F) makes the 3-F graph one
+  SCC (144 nodes) with all directions. tworeg_abs.py: DN2/UP2/DN1/UP1 verified
+  by full simulation 6/6 exact, no junk; controls control_abs.py 6/6 fail.
+  Mechanism: pairs pass some F's and are swallowed by one F (kick).
+  Mistake: first gap formula had the wrong sign (x0 - t0/9); fixed to x0 + t0/9
+  (position at t=0 for v=-1/9); caught by the arithmetic mismatch.

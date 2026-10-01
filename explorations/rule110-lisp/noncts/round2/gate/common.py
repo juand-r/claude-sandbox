@@ -19,6 +19,19 @@ from predict import LIB, norm, predict  # noqa: E402,F401
 from r110lib import class_key, build_row  # noqa: E402,F401
 
 CHAIN = ["E"] + [f"E^{n}" for n in range(2, 10)]
+NCHAIN = 16
+
+
+def _extend_chain():
+    """E^10.. are not in collider's library; they are auto-registered (in
+    memory only) as products of E^(n-1) + B (single class, verified INC)."""
+    while len(CHAIN) < NCHAIN:
+        res = collide_pair(LIB, CHAIN[-1], "B")
+        assert len(res) == 1 and res[0]["settled"] and len(res[0]["products"]) == 1, res
+        CHAIN.append(res[0]["products"][0][0])
+
+
+_extend_chain()
 
 
 def isG(name):

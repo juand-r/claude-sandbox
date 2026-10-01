@@ -35,8 +35,12 @@ positive finding.
    and value v >= 2 to v - 2, which is not monotone. The zero branch is
    garbage-free (the answer and the G become two B's that the counter absorbs).
    The nonzero branch leaves an A^3 moving right. In every placement I tried
-   where a third packet absorbs that A^3 without leaving garbage (202 of
-   them), the net map is exactly v -> v + c: the branch disappears.
+   where a third packet absorbs that A^3 without leaving garbage (557 of
+   them, rigid stream), the net map is exactly v -> v + c: the branch
+   disappears. Gate's wrap packet Z = GB3@(0,0)+GB4@(-25,46) (value 0 -> 6,
+   otherwise DEC) is a garbage-free non-monotone primitive, so this
+   cancellation is specific to my gadget, not general. I verified Z for
+   I^v Z^3 and found that it misfires after a NOP (section 4).
 
 So universality needs **both** a non-monotone answer effect **and** either
 feedback (an answer crossing an upstream store), unbounded answer travel
@@ -209,9 +213,28 @@ relative to the GB3, the results are:
 This gadget lies outside the chain-machine theorem.
 
 **Observation 2.** I added a third packet X in {G, GB1, ..., GB5}, over 42
-phases and 11 offsets, and asked for every v in 0..4 to end with a single
-counter and nothing else. There are 202 such placements. Every one of them
-gives m(v) = v + c: c = 1 for X = GB3, 2 for GB4 and 3 for GB5.
+phases and 11 offsets, and asked for every v in {0, 2, 3, 4} to end with a
+single counter and nothing else (`m1_search2.py`: rigid right-anchored
+stream, counter written by the program, exact CA). There are 557 such
+placements. Every one of them gives m(v) = v + c: c = 1 for X = GB3, 2 for
+GB4 and 3 for GB5; G, GB1 and GB2 gave none. (A first version,
+`m1_search.py`, used left-anchored placement that shifted the stream with
+v. It gave the same picture, 202/202, but should not be cited.)
+
+**Observation 3 (gate's wrap packet, verified by me).** Z = GB3@(0,0) +
+GB4@(-25,46) is a DEC for values >= 1, and at value 0 the answer shatters
+the trailing GB4 into B's, giving value 6. That makes Z garbage-free and
+non-monotone. I reproduced I^v Z^3 -> (v - 3) mod 7 for v = 0..6. A control
+that shifts the last Z's GB4 by (7,0) changes only the case where that Z
+meets zero.
+
+A differential test against the model "Z = DEC, wrap 0 -> 6" fails on words
+with a NOP before a wrap (INZZ -> A^3 + Ebar). The cause is a Z acting on
+value 1. Its GB3 brings the counter to zero, and its GB4 then hits the zero
+E, which moves E in 2 of 3 classes. The zero state's trajectory class
+therefore depends on history: E@13 instead of E@0 after INZ. Any stream
+builder has to designate classes for value-1 slots as well as value-0
+slots.
 
 *Interpretation.* When a later packet absorbs the A^3, it does so by a
 reaction that also shifts the charge by 7. That restores linearity exactly,

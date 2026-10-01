@@ -44,3 +44,13 @@
 - Semantic search: words over {I,Z,W,X,J} up to length 6-9: no parity; but
   Zk := J^(6-k) Z^(7-k) is "DEC with wrap to k" (k=0: saturating DEC), so
   J^5 Z^6 = mod-2 down-counter (length 11, beyond the search).
+- Mistake (01:0x): CHAIN only had E..E^9, so E^10 (auto-named v-4/15s7w33 by the
+  library) counted as "debris" and the 4-block parity search failed spuriously.
+  Fixed in common.py (_extend_chain via E^(n-1) + B, up to E^16; slips follow
+  9+6(k-1) mod 14).
+- fastca.py: exact moving-window Rule 110 (ether outside, margin checked every
+  step). test_fastca.py: 5/5 random defects agree with engine.py on a big
+  cyclic row; flipped-cell control differs. test_cacheck.py: window check ==
+  full-row check on Z6 runs (v = 0, 2), and a wrong prediction is rejected.
+- adaptive.py: two J^5 Z6^6 blocks, v = 0..3, all correct at glider level with
+  classes [1,0,2,1,0,1,0,0,0,0,0, 0,2,1,0,2,0,0,0,0,0,0].
