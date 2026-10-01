@@ -121,3 +121,51 @@ if __name__ == "__main__":
             if not same:
                 print("DISAGREE", word, phases, v, "calculus", pred, "CA", got, ids, flush=True)
     print(f"calculus valid: {agree} agree with CA, {disagree} disagree; calculus declined {conservative}")
+
+
+def plan_with_correctors(word, V, max_per_gap=2, corrector="N", prefix_phase=0):
+    """Like plan, but before each program packet the planner may insert up
+    to max_per_gap corrector packets (default N = GB4, a NOP whose zero
+    event is a value-robust reflection of the class). Returns the full
+    packet list [(P, p), ...] or None."""
+    starts = []
+    for v in V:
+        s = (0, 0)
+        for _ in range(v):
+            s = step("I", s[0], s[1], prefix_phase)
+        starts.append(s)
+    seen = set()
+    out = [None]
+    sys.setrecursionlimit(20000)
+
+    def dfs(i, states, k, acc):
+        if i == len(word):
+            out[0] = list(acc); return True
+        key = (i, tuple(states), k)
+        if key in seen:
+            return False
+        seen.add(key)
+        P = word[i]
+        for p in range(3):                       # place the program packet
+            nxt, ok = [], True
+            for v, st in zip(V, states):
+                ns = step(P, st[0], st[1], p)
+                if ns is None or ns[0] != A.model(word[:i + 1], v):
+                    ok = False; break
+                nxt.append(ns)
+            if ok and dfs(i + 1, nxt, 0, acc + [(P, p)]):
+                return True
+        if k < max_per_gap:                      # or insert a corrector
+            for p in range(3):
+                nxt, ok = [], True
+                for v, st in zip(V, states):
+                    ns = step(corrector, st[0], st[1], p)
+                    if ns is None or ns[0] != st[0]:
+                        ok = False; break
+                    nxt.append(ns)
+                if ok and dfs(i, nxt, k + 1, acc + [(corrector, p)]):
+                    return True
+        return False
+
+    dfs(0, starts, 0, [])
+    return out[0]

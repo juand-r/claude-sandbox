@@ -85,3 +85,16 @@ models with differential tests), integration (M1 -> M2 -> M3).
   about J refuted as stated (zero event maps c -> 2c+const).
 - Stamp check: I wrote 00:33 on a post made at 00:31 (stamp typed before
   running date). Fixed procedure: date first, then append.
+- 00:50 soft-preference greedy also fails at slot 28 ((J3Z4)^6, v<=9).
+- 00:55 calib.py -> calib.json: measured (P, m, t, p) -> (m', t') table for
+  I Z J N X W D, m = 0..7, all 3x3 classes. Structure: m >= 1-2 class-free
+  translations; forced zero events translations; value-robust zero/one
+  events reflections t' = -t - p + const. Corrected THEORY class-algebra
+  (my "c -> 2c" was a seed/phase sign mix-up).
+- calculus.py: abstract (value, class) machine + DFS planner + differential
+  test vs CA. At spacing 110 two disagreements = 3-body overlap of a 2-part
+  packet with the next packet (fixed at spacing >= 160). At spacing 200:
+  129/129 valid predictions agree with CA (21 declined, conservative).
+- Planner reproduces the empirical limits ((J3Z4)^4, (J5Z6)^2 fine for all
+  v; longer ones limited) and with N correctors finds plans for (J5Z6)^4,
+  (J3Z4)^8, (J6Z7)^3, Z^12 for v <= 12. CA validation running (plan_batch).

@@ -515,3 +515,56 @@ other inputs still correct (verify_ZN10_control.log).
 Placements for @verify: gate/verify_ra.py prints the program items
 (name, t0, x0 at shift 0); shift_for() gives the x-shift per input.
 Parity (needs J garbage) is being redone with rafast now.
+
+### [verify] 01:03 - M2: a measured class-level calculus + planner compiles one-counter loop programs into Rule 110 streams (4/4 pass exact CA, out-of-sample inputs too)
+1. [sim] calib.py measures the stream machine's transition table in my
+   convention: packet P in {I,Z,J,N,X,W,D} with seed phase p (mod 3) on
+   counter E^(m+1) with seed phase t (mod 3), m = 0..7, gives (m', t') or
+   invalid (any leftover other than escaping Bbars). The structure is clean:
+   at m >= 1 or 2 the class just translates (independent of p); the forced
+   zero events (Z on 0 needs p-t=1, J on 0 needs p-t=2, X on 0 / W on 0
+   likewise) also translate; the value-robust events (Z on 1, I on 0, N on
+   0, W on 1) REFLECT: t' = -t - p + const. (This corrects the wording of my
+   00:38 item.)
+2. calculus.py is the abstract machine on (value, class) plus a DFS planner
+   that picks a phase per slot and may insert up to 2 N's (GB4: a NOP whose
+   zero event is a free reflection, i.e. a class CORRECTOR). Differential test
+   against exact CA, random words over {I,Z,J,N,X,W,D} with random phases,
+   spacing 200: 129/129 valid predictions agree, 21 declined (the calculus
+   rejects answer-producing events; the CA sometimes absorbs them cleanly
+   anyway). At spacing 110 there are 2 disagreements: a 2-part packet and the
+   next packet overlap at the counter. Use spacing >= 160.
+3. [sim] Planned, then run in the exact CA (plan_check.py; inputs 0..15 or
+   0..14, planner used 0..12; stability T vs T+3000; one-phase control):
+   - parity (J^5 Z^6)^4 + 3 N's: 16/16 = model (v mod 2 for v <= 5, then v-4)
+   - mod-7 loop Z^12 + 9 N's: 16/16 = model
+   - mod-4 loop (J^3 Z^4)^8 + 1 N: 15/15 = model
+   - saturating subtract (J^6 Z^7)^3 + 1 N: 15/15 = model
+   all PASS; controls change 1-2 inputs each. Plans: verify/plan_<word>.json.
+4. [calculus only] Coverage: 300/300 random words (length 4-16, inputs
+   0..L+1) plan without correctors; all 294 loop programs (J^a Z^b)^k with
+   a <= 6, b <= 7, k <= 6 plan for inputs 0..12 with <= 2 N per gap.
+Reading: in the E^n world M2 is done as a compiler, not a single machine.
+Any program in this one-counter language that the planner accepts becomes a
+fixed glider stream whose exact-CA run matches the model. By my
+feed-forward theorem it can do no more than ultimately periodic functions
+of the input. @gate please cross-check one plan with your builder/glidersim
+(plans give my-convention phases; xlate.py converts conventions). @lead
+this is my M2 candidate.
+
+### [verify] 01:06 - VERIFIED gate's fixed (Z6 N)^10; my M2 streams are fixed programs too (checked)
+1. @gate VERIFIED [sim] (verify_gate_ra.py): rafast scenes (read-only
+   import), program items IDENTICAL for all inputs (only an x-shift per
+   input: -18, 466, 936, ...), my translation (row equality asserted), exact
+   engine, my typer, stable T vs T+3000: v = 0..9 -> 4,5,6,0,1,2,3,4,5,6 =
+   (v-10) mod 7, one E^k and nothing else. Control (slot 1 class 1->0): v=1
+   debris, v=0 and v=2 unchanged, same as you report.
+2. Ledger update after your withdrawal: my earlier "VERIFIED" of I^v Z^3 and
+   the 2-block parity stand only as "per-input compilations reproduced",
+   not as fixed programs.
+3. My own M2 streams (adaptive_ca, plan_check) ARE fixed programs: the stream
+   is anchored to the right ether, and I checked that the placed program
+   items (name, t0, x) are identical for every input. Only E and the input
+   I's move (E by < 14 cells, from the ether-phase rule). So the four
+   planned programs of my previous post, (J5Z6)^4 parity, Z^12, (J3Z4)^8 and
+   (J6Z7)^3, are each one stream for all inputs 0..15.

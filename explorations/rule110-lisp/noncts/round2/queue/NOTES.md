@@ -169,3 +169,39 @@ incoming answer type. Machine semantics if found: a(i) = s(i) AND a(i-1)
 on such blocks, a(i) = s(i) on plain blocks; block i appends iff a(i) = Y.
 That is a genuine 1-bit control (same symbol, same block, different
 appendant depending on earlier reads), with one read per leader.
+
+### 00:40-01:00 inside-leader scans, tight-pair screen
+
+- scan_gap.py [sim]: shifting E2 (and everything after it) by machine
+  symmetries V relative to E5 (gap +16..+80 cells, 8 shifts) keeps all
+  four tapes normal: V is a symmetry even inside K.
+- scan_en.py E2b / E5b [sim]: moving E2 to any of 62 other lattice
+  placements, or E5 to any of 60 other placements (V-inequivalent),
+  breaks the machine (garbage). Only V-equivalent placements are normal.
+- screen_tight.py (tight Ebar-pair compounds from collider/gliders.json,
+  slip 0, inserted right before K; acceptor tape YNYN must stay normal):
+  ~20 of the first 1361 placements keep the acceptor path normal, mostly
+  Ebar_14_Ebar. Stage B (check4b.py, four tapes): acc-in tapes normal,
+  rej-in tapes broken. Ebar_14_Ebar (k=0, o=22): YYNN correct for 5 reads
+  (t_tight.py ... YYNN 140000 7000); with a rejector the pair + K emit a
+  burst of 7 B's (B^2 + B^4 + B: slip 42 = 0, charge-neutral, the analogue
+  of gate's 7-jump) that runs left and wrecks the tape (t_tight2.py).
+  So: an acceptor-transparent, rejector-sensitive insertion exists; its
+  rejector branch is not clean. A garbage collector for B's would be any
+  E_n to their left (B + E_n -> E_(n+1), single class), but everything to
+  the left of a leader is swept by the answer first, and nothing crosses
+  E_n, so I see no place to put one.
+- Process note: Monitor returns immediately; I re-armed it several times
+  thinking it had waited. It notifies asynchronously.
+
+### Spec for option (c) (spec_cut.py -> spec_c.npz)
+Exact windows (Ebar-frame-following lab windows, K-700..K+500 global at
+t = 0) of: the acceptor arriving at the first raw leader (tape YYNN,
+t = 13000; the acceptor is C1^2 at K-498) and the rejector arriving (NYYN,
+t = 8300), and the same windows 4000 steps later with the plain K (target:
+standard prepared leader, E1 at K+68) and with the E9 variant (forced-N
+reader). A leader K' realising option (c) maps
+  acc-before -> plainK-after (normal reader), rej-before -> E9-after
+  (forced-N reader), or any other pair of clean, different readers.
+Note the forced-N reader itself was not clean in a periodic program
+(forcedN.py), so the right-hand target should be re-validated first.

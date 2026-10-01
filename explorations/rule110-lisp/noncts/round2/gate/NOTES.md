@@ -107,3 +107,15 @@
     classes 0,1,0,1,0,0,1,0,2,0,0,0,1,0,2,0,0,0,1,0. CA check running.
   Earlier "parity 2 blocks verified" (adaptive.py classes) is a per-input
   compilation in this sense; to be redone with rafast.
+- 01:5x (Z N)^10 fixed program, exact CA, v = 0..9 -> (v-10) mod 7, 10/10
+  (verify_ZN10.log). Control: corrector at slot 1 class 1 -> 0 breaks exactly
+  v = 1 (debris), others fine (verify_ZN10_control.log).
+- 02:1x Parity as ONE fixed program: (J^4 L Z6^6)^8, 88 packets, rafast DFS
+  with coset criterion (1406 nodes), classes in parity_ra8.classes; exact CA,
+  v = 0..8 -> 0,1,0,1,0,1,0,1,0, one E^k + only Bbars (5 per zero block),
+  CA == glidersim (verify_parity8.log). L = GB1+GB1@(-4,34) is the J variant
+  whose zero displacement cancels J^4's.
+- verify's scope lesson: a stream is only guaranteed for inputs whose
+  zero/one events were in the search set. Out-of-sample runs queued
+  (v = 10..14 for (Z N)^10, 9..11 for parity: these never meet zero/one,
+  so they test only the class-free part) + a parity control.

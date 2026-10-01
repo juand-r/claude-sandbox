@@ -276,18 +276,25 @@ numbers is out of reach there.
   assembler v2 matches the model on 90/90 random words
   (`verify_gate_wrap2.py`). My own [GB3, G] gadget is also a verified
   branch, but its garbage has to leave the system.
-- **M2** (a programmable one-counter machine). With my own assembler
-  (`adaptive_ca.py`, exact CA in the loop), the fixed stream (J^3 Z^4)^4
-  (28 packets) applies "DEC, wrap 0 -> 3" four times. Its phases were
-  chosen using inputs 0..6. Validated for inputs 0..12 (`m2_validate.py`):
-  all 13 match the model, including 7 inputs the assembler never saw. Each
-  run ends with one counter (plus Bbars leaving left), and the result is
-  stable from T to T+3000. Moving the program by (0,14) changes nothing. A
-  one-class shift of a zero-meeting slot breaks an input. The function
-  computed, f(v) = v for v < 4 and v - 4 otherwise, is non-monotone.
-  Gate's parity program (J^5 Z^6)^2 (v = 0..3 -> v mod 2) is verified too
-  (`verify_gate_parity.py`). Longer programs fail under greedy phase
-  choice. The reason is the class algebra below.
+- **M2** (a programmable one-counter machine). This is done as a compiler.
+  `calib.py` measures the exact transition table of the stream machine on
+  (value, class) for the packets I, Z, J, N, X, W, D. `calculus.py` turns
+  it into an abstract machine and a planner. The planner picks a phase per
+  slot and may insert N packets as class correctors. A differential test of
+  the calculus against the exact CA agrees on 129/129 valid predictions at
+  spacing 200. Four planned programs pass the exact CA for inputs 0..14 or
+  0..15, while the planner used only 0..12 (`plan_check.py`,
+  `plan_batch.log`):
+  - parity (J^5 Z^6)^4,
+  - the mod-7 loop Z^12,
+  - the mod-4 loop (J^3 Z^4)^8,
+  - saturating subtraction (J^6 Z^7)^3.
+
+  In the calculus, all 294 loop programs (J^a Z^b)^k with a <= 6, b <= 7,
+  k <= 6 are plannable for inputs 0..12. Before the planner existed, greedy
+  CA-in-the-loop assembly (`adaptive_ca.py`) validated (J^3 Z^4)^4 and
+  (J^5 Z^6)^2 for inputs 0..12, but it failed on longer loops. The class
+  algebra below explains why.
 
 **Class algebra [sim].** Compare counters by their phase-class sigma: the
 phase mod 3 of the counter at a common observation time. For two counters
