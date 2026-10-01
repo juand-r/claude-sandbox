@@ -269,12 +269,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] collapse-postulates
 - [x] decoherence-is-simple
 - [x] decoherence-is-falsifiable-and-testable
-- [ ] privileging-the-hypothesis
-- [ ] living-in-many-worlds
-- [ ] quantum-non-realism
-- [ ] if-many-worlds-had-come-first
-- [ ] where-philosophy-meets-science
-- [ ] thou-art-physics
+- [x] privileging-the-hypothesis
+- [x] living-in-many-worlds
+- [x] quantum-non-realism
+- [x] if-many-worlds-had-come-first
+- [x] where-philosophy-meets-science
+- [x] thou-art-physics
 - [ ] many-worlds-one-best-guess
 - [ ] the-failures-of-eld-science
 - [ ] the-dilemma-science-or-bayes

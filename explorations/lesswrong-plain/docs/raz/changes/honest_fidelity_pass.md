@@ -5517,3 +5517,178 @@ Why: Fidelity/substance pass: added the Bayes's theorem reading of falsifiabilit
 - Before: The two theories should be compared on their fit with experience,
 - After: The two theories should be compared on their fit with experience and on critiques such as whether decoherence predicts that all quantum probabilities are 50/50, or whether collapse violates special relativity by acting at a distance,
 
+
+## honest/sections/privileging-the-hypothesis.tex
+
+Why: Fidelity/substance pass: added why the brown hair 'confirms' only through confirmation bias, the full list of collapse's violations as the post gives them, the alternative gods, the anti-epistemology the post describes, burdensome details, the perpetual-motion comparison, the Trinity example, and the 'slop' of doubt in both examples
+
+- Before: Mortimer is the brown-haired one, so the police decide Mortimer did it.
+- After: Mortimer is the brown-haired one, so the police, who had nothing to tell the three apart, now decide Mortimer did it. People look for confirmation, not disconfirmation.
+
+- Before: than a collapse that breaks every property of physical law.
+- After: than a collapse that would be the only non-linear, non-unitary, discontinuous, non-local, faster-than-light, acausal and informally specified law in physics, among other things; something so unphysical is not worth saying aloud without a great weight of evidence, far more than the current total of zero. Only a historical accident put it in everyone's mind, so the open Born question is taken to mean single-world theories are still in the running.
+
+- Before: makes the same mistake, and so does the advocate of intelligent design.
+- After: rather than Allah, the Flying Spaghetti Monster or a trillion other gods, never mind naturalistic explanations, makes the same mistake, and so does the advocate of intelligent design who answers every open problem in evolution with design. The matching anti-epistemology talks endlessly of what is possible and cannot be disproved, hopes future evidence will confirm an idea without presenting evidence already in hand, paints pictures of confirming observations that have not yet happened, and argues that each piece of negative evidence is not conclusive.
+
+- Before: Complicated ideas should need more work to be raised to attention, as they need more evidence to be believed.
+- After: Complicated ideas should need more work to be raised to attention, as they need more evidence to be believed, and each part of a belief should be separately raised to attention, as the principle of burdensome details requires it to be separately justified. Faith, like a perpetual motion machine that turns water into ice cubes and electricity, manufactures improbability from nowhere, and much of the work is getting us to dwell on an unwarranted belief.
+
+- Before: ``attention without evidence is more than halfway to belief without evidence.''
+- After: ``attention without evidence is more than halfway to belief without evidence.'' Someone who spends all day wondering whether the Trinity exists, rather than Allah or Thor, is more than halfway to Christianity.
+
+- Before: A creationist moves doubt within evolutionary theory onto design.
+- After: A creationist argues that scientists are uncertain about evolution, so maybe intelligent design is right. But that uncertainty lies within naturalistic theories of evolution; nothing suggests we must leave that space, still less that we would land on Jehovah in particular.
+
+- Before: But ``single-world theories violate all these characteristics''.
+- After: Some doubt might reasonably slop onto theories that break one of these properties. But ``single-world theories violate all these characteristics''.
+
+
+## honest/sections/living-in-many-worlds.tex
+
+Why: Fidelity/substance pass: added Sulloway's contrast between psychoanalysis and Darwinism, 'what adds up to normality' (quantum mechanics), the Anubis and spirits examples, the schizophrenia line, that decisions feel the same in one world, that each world's people choose what seems best and no one chooses which world to end in, the lottery-ticket example, the two quotations on small probabilities, and joy in discovery
+
+- Before: My answer is Egan's Law: ``It all adds up to normality.''
+- After: My answer is Egan's Law: ``It all adds up to normality.'' Frank Sulloway said that psychoanalysis beats Darwinism because its claims are outlandish enough to intrigue, while we feel we know Darwinism already, because we do.
+
+- Before: so many-worlds is not there to make strange predictions. You have always lived in this universe.
+- After: so many-worlds is not there to make strange predictions. Then why care? Because of the question: what adds up to normality? Quantum mechanics. If something else were there instead, the world would look strange. You have always lived in this universe.
+
+- Before: Religions, anthropologists tell us, are surprising just enough to be memorable. Physics is not.
+- After: Religions, anthropologists tell us, are minimally counterintuitive, surprising just enough to be memorable: Anubis has a dog's head on a man's body, and spirits see through walls but get hungry. Physics is not like that. Its underlying phenomena take long study, but its surface is ordinary.
+
+- Before: that ``is unambiguously prohibited outright by the laws.''
+- After: that ``is unambiguously prohibited outright by the laws.'' ``Sorry, you're just schizophrenic.''
+
+- Before: Decisions have nothing to do with branching. People imagined alternatives long before quantum mechanics, and a rock, which makes no decisions, splits too.
+- After: Decisions have nothing to do with branching. A decision feels like a branch point in your imagination, but you would feel the same uncertainty in one world, and people imagined alternatives long before quantum mechanics; a rock, which makes no decisions, splits too. You split all the time, not especially when you decide. In each world people choose what seems best to them, perhaps after different lines of thought; it is not that one version of you picks the best option and another the worst. You cannot choose which world to end up in.
+
+- Before: A world with odds of a quadrillion to one deserves a quadrillionth of your feeling, or no thought at all.
+- After: Visualizing worlds may help people who struggle with probabilities, but it is ordinary decision theory, and a time to learn to shut up and multiply. The brain ``doesn't do 64-bit floating-point arithmetic,'' and between zero chance and epsilon chance ``there is an order-of-epsilon difference.'' A world with odds of a quadrillion to one probably exists if it is lawful, but deserves a quadrillionth of your feeling, or no thought at all; otherwise you might as well buy a lottery ticket with a quantum random number, a strategy guaranteed to produce a very tiny mega-win.
+
+- Before: And being the ``first'' to know something means nothing
+- After: And you can take joy in discovering anything you personally do not know, since being the ``first'' to know something means nothing
+
+
+## honest/sections/privileging-the-hypothesis.tex
+
+Why: Fidelity/substance pass: put the 'no example' remark and its note next to the claim they concern
+
+- Before: far more than the current total of zero. Only a historical accident put it in everyone's mind, so the open Born question is taken to mean single-world theories are still in the running. I give no example. \nb{The one answer Yudkowsky had discussed in 2008, Robin Hanson's, was put ``under fifty percent''.} 
+- After: far more than the current total of zero. I give none of the better ways. \nb{The one answer Yudkowsky had discussed in 2008, Robin Hanson's, was put ``under fifty percent''.} Only a historical accident put it in everyone's mind, so the open Born question is taken to mean single-world theories are still in the running. 
+
+
+## honest/sections/quantum-non-realism.tex
+
+Why: Fidelity/substance pass: added the 1920s situation (particles Monday, waves Tuesday), the amplitude-to-probability Goofus step, why the literal view at least gives a picture, the entangled-photon numbers, the polarization example, the Miller/Hanson exchange and the nonexistent apples, the button, the Simple Truth pebbles, semantic stopsigns, the fifty rationality points, and the 'yarn theory' parody
+
+- Before: with a theory that gives only frequencies.
+- After: finding experiments whose results depend on how closely you look, and a precise description that gives only frequencies, in complex numbers, with things behaving like particles on Monday and waves on Tuesday.
+
+- Before: In the same way, a rule for calculating after a measurement becomes the claim that once you know the result, every other probability is zero.
+- After: In the same way, Gallant's observation that a squared modulus of 1/9 fits 107 absorptions in 1,000, by some connection he does not understand, becomes Goofus's claim that the amplitude says where the electron might be and that reality is inherently nondeterministic; and Gallant's rule of calculating after a measurement with only the amplitude that matched the result becomes the claim that once you know the result, every other probability is zero.
+
+- Before: Still, I prefer that view to the one that follows, because it at least says the amplitudes, the collapse and the consciousness are real.
+- After: It is informal, makes the mental basic, and lets you just know when probabilities are zero, which happens to fit whatever results you get. Still, I prefer that view to the one that follows, because it at least says how the universe works: the amplitudes, the collapse and the consciousness are real.
+
+- Before: When a student asks about entangled photons and Bell's theorem, he answers,
+- After: When a student asks whether the amplitude literally disappears, Goofus says ``Never ask that question.'' When the student asks how measuring a photon here can change its partner's chance of vertical polarization from 50\% to 25\% a light-year away without violating special relativity, Goofus says we are only finding out, since amplitudes are not real; and when the student cites Bell's theorem, he answers,
+
+- Before: Was there an experiment that showed the Schrödinger equation to be meaningless?
+- After: Was there an experiment that showed the Schrödinger equation to be meaningless, one where you worked out what to expect if it were meaningful and if it were not, and got the second? Gallant reports that measuring a photon's polarization at 90, then 45, then 90 degrees gave 47 absorptions and 53 transmissions in 100 trials; Goofus adds that the two polarizations cannot both exist and talking of one after measuring the other is meaningless. How does he know?
+
+- Before: As in ``The Simple Truth,'' ``reality'' is my name for whatever determines my experimental results.
+- After: When James Miller chided Robin Hanson that the universe might have size zero, I replied that even if it does not exist, ``it would still be nice to know whether it's an infinite or a finite universe that doesn't exist.'' Even if nothing exists, I want to understand the nothing; nonexistent apples will still fall toward nonexistent ground at a meaningless 9.8 m/s$^2$. You say the universe does not exist? Fine; now what happens if I press this button? As in ``The Simple Truth,'' ``reality'' is my name for whatever determines my experimental results.
+
+- Before: So if the equations are ``not real,'' what does determine my results?
+- After: So if the equations are ``not real,'' what does determine my results? If ``nothing,'' what sort of nothing, and why does it determine the mass of the electron so regularly? Are the equations like the shepherd's bucket of pebbles in that story, which counts sheep but has no magic?
+
+- Before: ``Meaningless'' is a word that stops questions.
+- After: To call something meaningless and declare the argument over, you need a theory of exactly how it is meaningless, after which the question no longer seems mysterious. Otherwise ``meaningless'' is a semantic stopsign, like ``God!'' for why anything exists, or ``Élan vital!''
+
+- Before: I keep my scorn for those who took
+- After: I have the highest respect for historical physicists who really did shut up and calculate, conservative about what they knew; that was the best anyone could do short of being Everett, and I award them fifty rationality points. I keep my scorn for those who took
+
+- Before: I name no one.
+- After: I name no one. If that trick worked, why not use it everywhere? Doesn't your yarn theory violate special relativity? Nah, the equations are meaningless; and doesn't your chaotic evil inflation violate CPT symmetry? My equations are even more meaningless than yours, so your criticism double doesn't count.
+
+
+## honest/sections/if-many-worlds-had-come-first.tex
+
+Why: Fidelity/substance pass: added why no one listens to Huve (everyone has a Born theory), Nohr's questions about measurement, the acausal 'wonderful' exchange, 'not physics but magic', the unitarity point, one survivor and the 'One Christ' crowd, which part and which basis, the 'one point' to 'one part' fix and why one world is post hoc and arbitrary, what experimenters are actually looking for, why anomalies would not force collapse, Einstein's heart attack, evidence that has not arrived, the Flying Spaghetti Monster, 'If? Might?', the other-world argument and 'live in your own world', and Jupiter and the spring-loaded pies
+
+- Before: In my alternate world, Huve Erett brings Biels Nohr a one-sentence paper:
+- After: In my alternate world, physicists saw ``a zillion other Earths'' as soon as they found entanglement, and many explanations of the Born probabilities have been proposed, but never a collapse. Huve Erett asks Biels Nohr why no one is interested in his paper. Nohr explains that physicists meet dozens of people a year who think they have explained the Born statistics, so a new one must be very good. Huve's paper, ``The Solution to the Born Problem,'' is one sentence:
+
+- Before: Nohr asks what a measurement is, and Huve changes it to
+- After: Nohr asks how the wavefunction knows we are measuring it, what a measurement is, and what happened before humans, and Huve changes it to
+
+- Before: the only thing that violates CPT symmetry, Liouville's Theorem and special relativity.
+- After: the only thing that violates CPT symmetry, Liouville's Theorem and special relativity, and in its first version the only thing in physics that was inherently mental. Huve adds that it is also the only acausal phenomenon: doesn't that make it more wonderful? Nohr answers that physicists may see the exceptionalism as a point against it: ``your theory isn't physics. It's magic.''
+
+- Before: It explains the Born statistics no better than little angels would explain Maxwell's equations. It is ``post hoc.''
+- After: It explains the Born statistics no better than little angels would explain Maxwell's equations; it gives no reason why collapse should follow the Born statistics, and makes no use of unitarity, which ``everyone pretty much knows'' must be the key. Why only one surviving world, and why before any human is superposed? That is the kind of untestable hypothesis the ``One Christ'' crowd uses to demand that schools ``teach the controversy'' about other Earths. Which part vanishes, in which basis? Not everything down to a point, or quantum computers and even chemistry would fail; Huve changes ``one point'' to ``one part,'' a whole world, because that fits the experiments. That is ``post hoc,'' and since decoherence is continuous and many processes overlap, picking out one world needs arbitrary choices, including the basis.
+
+- Before: Huve asks for a test; Nohr says that without a specified collapse he cannot design one.
+- After: Huve asks for a test; Nohr says that without a specified collapse he cannot design one. Experimenters already look for any change in the quantum laws at larger scales, and check decoherence times, but with a broad outlook; even an anomaly would not force a collapse, since a billion explanations are more plausible than violating special relativity. With collapse, measuring one photon of an entangled pair would influence the other a light-year away, and ``Einstein would have a heart attack.''
+
+- Before: Nohr tells him to ``Just say `oops'.''
+- After: Correct theories do not generate this much confusion, Nohr says, and there is no evidence for this one. ``Just say `oops'.'' But they could find evidence someday, says Huve; ``You can't update on evidence that could theoretically arrive someday but hasn't arrived!'' Today there is no more reason to believe in collapse than that we will send messages faster than light by praying to the Flying Spaghetti Monster. Huve admits his theory ``might'' be wrong. ``If?'' says Nohr. ``Might?'' Then, says Huve, somewhere there is a world where he is the famous physicist and Nohr the outcast; Nohr, of all people, should know to live in his own world.
+
+- Before: Physicists who test equations in every case they can, and never ask whether the equations are universal?
+- After: Physicists who test equations in every case they can, and never ask whether the equations are universal? That is like working out gravity for every planet but Jupiter and never thinking to apply it to Jupiter, or a comedian who opens box after box with a spring-loaded pie and never suspects the next one.
+
+
+## honest/sections/where-philosophy-meets-science.tex
+
+Why: Fidelity/substance pass: added what the basic error was not (reversing a trend is allowed), the Thor/Maxwell program-size point, the photon thought in both forms, why a formal observer theory would recurse and how 'just knowing' worked as tweaking, the Turing caveat, why philosophy seems to matter and Leibniz, the Galileo example, the ethicists comparison, and the room left for professional philosophers
+
+- Before: The most basic error is that the early scientists
+- After: The most basic error was not reversing three thousand years of evidence that mind is complex within physics, not fundamental; science has revolutions, and ``The future is always absurd and never unlawful.'' The most basic error is that the early scientists
+
+- Before: as Thor once felt simpler than Maxwell's equations.
+- After: as Thor once felt simpler than Maxwell's equations, though the equations fit in a far smaller program than an intelligent agent like Thor. So physicists thought, ``I know where the photon was'' and asked what difference that could make, not what difference it made that their brain's particles were correlated with the photon's history; and amplitude surviving only ``if you didn't know better'' seemed a simple theory.
+
+- Before: Nobody said in physical terms when an observation occurs; the scientists ``just knew,'' so the theory could not be run as a computer program.
+- After: Nobody said in physical terms when an observation occurs. A formal version would have to examine the particles of a brain to decide when they ``know'' something, in order to compute the motion of particles, including those in the brain, a potential infinite recursion. The scientists ``just knew'': an observation occurred whenever it had to for the predictions to come out right, a subtle form of constant tweaking, and the theory could not be run as a computer program. (Quantum theory was formulated before Turing, when the line between a formal theory and one needing human interpretation was less clear; problems are not usually this obvious in foresight.)
+
+- Before: The insight they needed looks philosophical.
+- After: The early quantum scientists did the right experiments and got the statistics right; their error was in interpretation, the kind of thinking we call philosophical, so the insight they needed looks philosophical.
+
+- Before: Even when one philosopher gets it right in advance, it is ``usually science'' that tells us which one.
+- After: Leibniz was arguably as foresighted about quantum physics as Democritus about atoms, but that is hindsight. Even when one philosopher gets it right in advance, it is ``usually science'' that tells us which one.
+
+- Before: The scientific method itself was once a philosophical notion, proved by the power of science and not by the agreement of philosophers.
+- After: The scientific method itself was once a philosophical notion, championed not by philosophers but proved by the power of science; in Galileo's time only vague verbal arguments said to seek numerical predictions rather than consult the Bible or Aristotle, and only now is belief-updating being reduced to calculation. At the confused frontier of a science, the problems look philosophical, but the winner is usually not a professional philosopher, because it takes intimate involvement with the science to do that thinking, and experiment to show who won.
+
+- Before: So philosophy matters, but it is done well only ``from within'' a science.
+- After: So philosophy matters, but it is done well only ``from within'' a science. A separate profession of philosophers of a frontier science is as much a mistake as separate ethicists, who end up speaking mainly to other ethicists. Some problems are so chaotic that no science has a place for them, so there is room for professional philosophers.
+
+
+## honest/sections/thou-art-physics.tex
+
+Why: Fidelity/substance pass: added that the task was not to argue for or against free will, the 'surface layer' of the mind and its visible part-whole relations, the point that naive free will is incoherent even without physics (the mind would be embodied in something), the reversed question about control, and 'If we were not in reality, where could we be?'
+
+- Before: Three months ago I set homework: trace the thinking that produces debates about free will.
+- After: Three months ago I set homework: trace the thinking that produces debates about free will, which is not the same as arguing whether free will exists. The wise reader guesses that it all adds up to normality, but how?
+
+- Before: The right diagram puts ``Me'' inside ``Physics.''
+- After: The right diagram puts ``Me'' inside ``Physics,'' or has physics act through me on the future.
+
+- Before: Seeing yourself within physics takes ``constant vigilance,''
+- After: There are many levels between our thoughts and quarks. Beliefs, desires, plans, emotions and temptations form the ``surface layer'' of the mind, visible without science: if I say that it is not you but your desires, plans and actions that determine the future, you see the part-whole relation at once, as with fingers and a hand. The relations below are not visible, so seeing yourself within physics takes ``constant vigilance,''
+
+- Before: Or perhaps the future must be ``determined by something.'' If not by physics, then by ``some law, some order.''
+- After: Or perhaps the future must be ``determined by something.'' You do not need physics to push naive free will into incoherence: if the mind were not embodied in the brain, it would be embodied in something else, and if the future were not determined by physics, then by ``some law, some order'' that includes you. If physics controls us, how can we control ourselves? Turn it around: if physics did not control us, how could we?
+
+- Before: How could thoughts judge other thoughts ``in the midst of utter chaos?''
+- After: How could thoughts judge other thoughts, emotions conflict, or uncertainty about plans become certainty ``in the midst of utter chaos?'' If we were not in reality, where could we be?
+
+
+## honest/sections/thou-art-physics.tex
+
+Why: Fidelity/substance pass: removed my guess about the content of a diagram I cannot see
+
+- Before: The right diagram puts ``Me'' inside ``Physics,'' or has physics act through me on the future.
+- After: The right diagram puts ``Me'' inside ``Physics.''
+
