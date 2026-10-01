@@ -195,8 +195,24 @@ tells are small, in the voice and the structure, never in the facts (3.1):
 - Order kept too carefully: numbered cards, the lock checked, the steps
   counted. The compulsion shows before the reason for it does.
 
-Few tells at first: one or two per chapter, each with an innocent reading.
-They multiply as the book goes on, as part of the spiral (4.1).
+Few tells at first: at most one or two per chapter, each with an innocent
+reading. They multiply as the book goes on, as part of the spiral (4.1).
+
+### 4.3 Pacing: stay in the first stage (2026-10-01; author's note)
+
+Do not hurry the plot. Movement I is long, and most of its pages are simply
+a good book about grapes told by charming, over-exact company. The reader
+should be several chapters in before they could say what is wrong, and even
+then not be sure.
+
+- Each chapter reveals less than feels natural. When in doubt, hold it back
+  for a later chapter, and note it in `WRITING-NOTES.md` under the chapter
+  plans.
+- The big elements (the pond, the serpette, Odile, his giving up wine, the
+  Army, his name) stay out of the early chapters entirely, not merely
+  hinted at.
+- Unease comes first from the voice (precision, irony, the "you"), only
+  later from objects and events.
 
 ## 5. Typography as voice (2026-10-01; PLANNED, not built)
 
