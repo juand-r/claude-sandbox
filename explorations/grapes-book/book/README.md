@@ -3,6 +3,8 @@
 ## Writing
 
 Read `STYLE.md` first: it holds the conventions for using these commands.
+`LINKS.md` lists which links between text, notes, subnotes and asides are
+possible.
 
 Chapters go in `chapters/`, one file each, pulled in by `\include` in
 `grapes.tex`. Chapters contain text and these commands only; everything about

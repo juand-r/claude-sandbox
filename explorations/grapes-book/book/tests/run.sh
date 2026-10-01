@@ -110,9 +110,21 @@ expect_ok anchor-cycle      '\anchor{s}Start. T.\note{N.\subnote{Back to \xref{s
 # the sentence that carries the note (anchors go at the START, see STYLE.md).
 expect_ok loop              '\anchor{start}T.\note[n]{N. See \xref{s}.\subnote[s]{S. Back to \xref{start}.}}' 4 'See a.' 'Back to ❧.'
 expect_ok subnote-to-aside  'T.\aside[a]{A.}\note{N.\subnote{Cf. \xref{a}.}}' 6 'Cf. *.'
+# Every \xref edge (LINKS.md): from main text, note, subnote, aside, to a
+# note, subnote, aside, anchor; plus anchors inside a note, subnote, aside.
+XREF_MATRIX='\anchor{m}Main text with targets.\note[n]{Note.\subnote[s]{Subnote.}}\aside[a]{Aside.}
+From main: \xref{n} \xref{s} \xref{a} \xref{m}.
+X.\note{From note: \xref{n} \xref{s} \xref{a} \xref{m}.\subnote{From subnote: \xref{n} \xref{s} \xref{a} \xref{m}.}}
+Y.\aside{From aside: \xref{n} \xref{s} \xref{a} \xref{m}.}
+\newpage
+Second page.\note{In a note: \anchor{an}here.\subnote{In a subnote: \anchor{as}here.}}\aside{In an aside: \anchor{aa}here.}
+To anchors in notes: \xref{an} \xref{as} \xref{aa}.'
+expect_ok xref-matrix       "$XREF_MATRIX" 18 'From main: 1 a * ❧.' 'From note: 1 a * ❧.' 'From subnote: 1 a * ❧.' 'From aside: 1 a * ❧.' 'To anchors in notes: ❧ ❧ ❧.'
 
 echo "--- misuse stops the build"
 expect_fail note-in-note     'T.\note{N.\note{x}}'              'grapes Error: \\note inside a note'
+expect_fail note-in-sub      'T.\note{N.\subnote{S.\note{x}}}'  'grapes Error: \\note inside a note'
+expect_fail aside-in-sub     'T.\note{N.\subnote{S.\aside{x}}}' 'grapes Error: \\aside inside a note'
 expect_fail sub-outside      'T.\subnote{x}'                    'grapes Error: \\subnote outside a \\note'
 expect_fail sub-in-sub       'T.\note{N.\subnote{S.\subnote{x}}}' 'grapes Error: \\subnote inside a \\subnote'
 expect_fail sub-in-aside     'T.\aside{A.\subnote{x}}'          'grapes Error: \\subnote directly inside'
