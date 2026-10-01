@@ -6,17 +6,18 @@ layout experiments that led to it.
 
 ## Current state (2026-10-01)
 
-The layout machinery is done and tested. The book has one chapter of
-placeholder prose whose facts are unchecked. The style and the narrator are
-set down in `book/STYLE.md` and `book/BIO.md`, with a few points still open
-(marked PROVISIONAL or Open). Next: structure and
-content (see `PLAN.md`).
+The layout machinery is done and tested. The book itself has not been
+started; it will be a new LaTeX file. The only text so far is a typography
+sample (`book/sample.tex`, `book/sample-text.tex`): throwaway prose for
+testing the layout, not part of the book. The style and the narrator are set
+down in `book/STYLE.md` and `book/BIO.md`, with a few points still open
+(marked PROVISIONAL or OPEN). Next: structure and content (see `PLAN.md`).
 
 ## Where things are documented
 
 | File | What it says |
 |------|--------------|
-| `book/README.md` | How to write in the book: the five commands, turning margin notes off, what stops the build, how to build and test. Start here. |
+| `book/README.md` | How to write with the layout commands: the five commands, turning margin notes off, what stops the build, how to build and test. Start here. |
 | `book/STYLE.md`  | How the book is written: voices, tone, the arc from order to chaos, facts, typography, marks. Each rule has its reason and date. |
 | `book/BIO.md`    | The narrator, Hollis Vane: his life, the death of Odile, his habits, the motifs. For the authors only. |
 | `book/LINKS.md`  | Which links between main text, notes, subnotes and asides are possible, and which are not, and why. |
@@ -37,8 +38,8 @@ Debian/Ubuntu:
 
 The book (details in `book/README.md`):
 
-    book/build.sh              # book/grapes.pdf, with margin notes
-    book/build.sh nomargin     # book/grapes-nomargin.pdf
+    book/build.sh sample            # book/sample.pdf, the typography sample
+    book/build.sh sample nomargin   # book/sample-nomargin.pdf
     book/tests/run.sh          # needs book/.venv, see book/README.md
 
 The specimens:

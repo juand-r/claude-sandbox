@@ -58,7 +58,8 @@ Notes, subnotes and asides become targets by taking a key:
 also sit inside a note, subnote or aside, to mark one sentence in a long note.
 
 The only way back into the main text, other than a note's own back-link to
-its mark, is an anchor. That is how loops are made (see chapter 1).
+its mark, is an anchor. That is how loops are made (`sample.pdf`, the
+typography sample, has one).
 
 ## How this is checked
 

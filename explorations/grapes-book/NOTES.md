@@ -135,8 +135,8 @@ Findings while setting it up:
   text, and the test passed without testing anything. Fixed. Verified that
   the corrected test passes, that a reversed version fails, and that the
   old nested behaviour (note 2 printed before note 1) would have failed it.
-- Chapter 1 now contains a closed reading loop, for demonstration: mark 1
-  in the text -> note 1 -> (xref) subnote e on the next page -> (xref) the
+- The typography sample (then called "chapter 1") now contains a closed
+  reading loop, for demonstration: mark 1 in the text -> note 1 -> (xref) subnote e on the next page -> (xref) the
   anchor beside mark 1. Test `loop` checks such a loop builds and its links
   resolve. I made the doubled-backslash mistake again when adding that test
   (Python string escaping when editing run.sh); caught it by reading the
@@ -144,6 +144,22 @@ Findings while setting it up:
   Edit tool, not through Python string replacement.
 - 2026-10-01, author's rule: an anchor goes at the START of the sentence it
   marks, because it is a link TO that sentence (a destination). Recorded in
-  `book/STYLE.md`, the new style guide. Chapter 1 and the tests now follow
+  `book/STYLE.md`, the new style guide. The sample and the tests now follow
   it. While drawing the loop I also found the anchor's link target sat just
   after the ❧; moved it in front, so a jump lands at the start.
+
+## The typography sample is not the book (2026-10-01)
+
+The prose the earlier entries call "chapter 1" was never part of the book. It
+was a sample, reused from the layout specimens, to test the typography. The
+author pointed this out after I edited it as if it were the book. To prevent
+the confusion it was renamed:
+
+- `book/chapters/01-berry.tex` -> `book/sample-text.tex`
+- `book/grapes.tex` -> `book/sample.tex` (main file of the sample)
+- `book/grapes.pdf`, `book/grapes-nomargin.pdf` -> `book/sample.pdf`,
+  `book/sample-nomargin.pdf`
+- `build.sh` now takes the main file's name: `./build.sh sample`.
+
+Earlier entries in this file that say "chapter 1" mean this sample. The book
+itself will start in a new LaTeX file.

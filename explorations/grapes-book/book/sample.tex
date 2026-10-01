@@ -1,0 +1,24 @@
+% sample.tex -- TYPOGRAPHY SAMPLE. NOT THE BOOK.
+% A test document for grapes.sty: shows notes, subnotes, asides, anchors,
+% cross-references and PDF links on a few pages of throwaway prose
+% (sample-text.tex). The book itself will be a new LaTeX file.
+% Build: ./build.sh sample          (margin notes on)
+%        ./build.sh sample nomargin (asides at the foot)
+\documentclass[11pt,twoside,openright]{book}
+\usepackage{grapes}
+
+\begin{document}
+
+\frontmatter
+\begin{titlepage}
+  \centering
+  \vspace*{0.3\textheight}
+  {\Huge Grapes}\par\bigskip
+  {\large Typography sample, not the book}\par
+  \vfill
+\end{titlepage}
+
+\mainmatter
+\input{sample-text}
+
+\end{document}

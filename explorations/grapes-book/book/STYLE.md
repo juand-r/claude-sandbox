@@ -191,7 +191,8 @@ at it from a note and reads forward from there. So it goes at the start of
 the sentence or passage it marks, never at the end.
 
 A note mark is the opposite: it points from the text to a note, so it goes
-at the end of what it comments on, after the punctuation.
+at the end of what it comments on, after the punctuation. (The example
+sentence below comes from the typography sample, not the book.)
 
     Right:  \anchor{not-berries}By this rule the tomato is a berry, ...
             ... the raspberry are not.\note{...}

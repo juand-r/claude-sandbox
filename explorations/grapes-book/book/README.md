@@ -1,4 +1,15 @@
-# Grapes: the book
+# Grapes: the book's machinery
+
+The book itself has not been started. It will be a new LaTeX file that loads
+`grapes.sty`. What is here so far:
+
+| File | What it is |
+|------|------------|
+| `grapes.sty` | The layout: notes, subnotes, asides, anchors, cross-references, PDF links. |
+| `sample.tex`, `sample-text.tex` | A typography sample, NOT the book: a few pages of throwaway prose used to test `grapes.sty`. Builds `sample.pdf`. |
+| `STYLE.md`, `BIO.md` | How the book will be written, and its narrator. |
+| `LINKS.md` | Which links between text and notes are possible. |
+| `build.sh`, `lib.sh`, `tests/` | Build and test scripts. |
 
 ## Writing
 
@@ -6,9 +17,8 @@ Read `STYLE.md` first: it holds the conventions for using these commands.
 `LINKS.md` lists which links between text, notes, subnotes and asides are
 possible.
 
-Chapters go in `chapters/`, one file each, pulled in by `\include` in
-`grapes.tex`. Chapters contain text and these commands only; everything about
-how notes look is in `grapes.sty`.
+The text uses these commands only; everything about how notes look is in
+`grapes.sty`.
 
 | Command              | What it makes | Marks |
 |----------------------|---------------|-------|
@@ -23,7 +33,7 @@ must be unique in the book.
 
 Pointing works in every direction, so loops are possible: a subnote can point
 to an aside, an aside's note can point back to an anchor in the text, and so
-on. Example:
+on. Example (syntax only):
 
     \anchor{berry}A grape is a berry. ...
     ...\note{...\subnote{Which brings us back to \xref{berry}.}}
@@ -33,11 +43,12 @@ note back to the text. `\xref` is a link too. Links are invisible in print.
 
 ## Turning margin notes off
 
-In `grapes.tex`, change `\usepackage{grapes}` to
+In the main `.tex` file, change `\usepackage{grapes}` to
 `\usepackage[nomargin]{grapes}`. Asides then go to the foot of the page, in
 their own block above the notes, with the same symbols; the page narrows to
 5.5 x 8.5 in. No text is lost, and every `\xref` still works. To see both
-versions without editing anything: `./build.sh` and `./build.sh nomargin`.
+versions without editing anything: `./build.sh MAIN` and
+`./build.sh MAIN nomargin`.
 
 ## What stops the build
 
@@ -60,9 +71,13 @@ margin notes away from their lines.
 
 ## Build and test
 
-    ./build.sh             # grapes.pdf, margin notes on
-    ./build.sh nomargin    # grapes-nomargin.pdf
-    tests/run.sh           # every rule above, in both versions, plus link checks
+    ./build.sh sample            # sample.pdf, margin notes on
+    ./build.sh sample nomargin   # sample-nomargin.pdf
+    tests/run.sh                 # every rule above, in both versions, plus link checks
+
+`build.sh` takes the name of the main `.tex` file. Today the only one is
+`sample` (the typography sample). The tests use their own small documents,
+not the sample.
 
 The tests need a Python virtualenv, once:
 
@@ -70,6 +85,6 @@ The tests need a Python virtualenv, once:
 
 `tests/check_links.py` checks the PDF links: every link has a target, and
 each mark's link sits exactly where its partner mark is. It can also be run
-on the book: `.venv/bin/python tests/check_links.py grapes.pdf`.
+on any build: `.venv/bin/python tests/check_links.py sample.pdf`.
 
 Other requirements (TeX Live, fonts) are in `../README.md`.

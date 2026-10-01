@@ -16,7 +16,7 @@
 - [x] Marked asides (symbols, per page), notes inside asides, keys and
       cross-references in every direction (\anchor, \xref), PDF links
       from every mark to its note and back. Tests for all of it.
-- [x] 2026-10-01: a closed reading loop in chapter 1; the author's rule that
+- [x] 2026-10-01: a closed reading loop in the typography sample; the author's rule that
       anchors go at the start of a sentence (book/STYLE.md); book/LINKS.md
       listing every possible link, with a test for each.
 - [ ] Later, tinker: trim size, typeface, chapter opening, margin notes on
