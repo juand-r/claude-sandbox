@@ -351,8 +351,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] epistemic-viciousness
 - [x] schools-proliferating-without-evidence
 - [x] 3-levels-of-rationality-verification
-- [ ] why-our-kind-can-t-cooperate
-- [ ] tolerate-tolerance
+- [x] why-our-kind-can-t-cooperate
+- [x] tolerate-tolerance
 - [ ] your-price-for-joining
 - [ ] can-humanism-match-religion-s-output
 - [ ] church-vs-taskforce

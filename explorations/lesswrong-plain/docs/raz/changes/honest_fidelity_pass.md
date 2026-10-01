@@ -8432,3 +8432,78 @@ Why: Fidelity/substance pass: Added the post's substance: schools that compete u
 - Before: I propose no measure myself.
 - After: I propose no measure myself. Even a difficult and expensive measurement could become a gold standard for checking others, and measures better kept secret can be emailed to me, though secrecy is itself a drawback.
 
+
+## honest/sections/why-our-kind-can-t-cooperate.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the reversed-synagogue image, the $111.11 note, why copying the cult would fail, what each binding force is, the radical-Islam framing, the conference example in full, the knowledge-and-bias experiment, the training that would cover both agreeing and disagreeing, the Spock and cynicism mistakes, the aging example, and the details of the synagogue's practice.
+
+- Before: Donations did come in, some with warm notes, but not one donor said so on the lists.
+- After: Some questioned the nonprofit's mission. Donations did come in at once, some with warm notes; one gift of \$111.11 came with the words ``One more hundred, one more ten, one more single, one more dime, and one more penny.'' But not one donor said so on the lists.
+
+- Before: Each donor saw only the objections.
+- After: Each donor, so far as they knew, was alone, and saw only arguments that they should not have given. It was as though, after the treasurer spoke, everyone not pledging stood to proclaim their reasons, while those pledging whispered.
+
+- Before: Copying the cult would be wrong, and might fail anyway, since there ``may be a hundred failed flying-saucer cults for every one that becomes famous.''
+- After: Copying the cult by adding nonsense would be wrong, and might fail anyway, since there ``may be a hundred failed flying-saucer cults for every one that becomes famous,'' and the Dark Side needs skills you may lack; if you discuss your planned lies on the public Internet, you fail. Resenting a group you think inferior for having more followers also leads to the Dark Side.
+
+- Before: Cults are held together by pluralistic ignorance, evaporative cooling and affective death spirals, all described in my earlier posts.
+- After: Cults are held together by forces described in my earlier posts. The leader speaks, doubters keep quiet, and each member, seeing apparent unanimity, grows more confident: pluralistic ignorance. The unpersuaded leave, and those who remain agree more: evaporative cooling. Praise of the ideas feeds on itself, especially when criticism counts as treason, through the halo effect: an affective death spiral.
+
+- Before: It would follow that the ``Light Side'' is always divided and weak, and that ``the future inevitably belongs to the Dark.''
+- After: Since we would not dirty our hands with these, it would seem to follow that the ``Light Side'' is always divided and weak, that atheists, libertarians, scientists and the rest will never act with the fanatic unity of radical Islam, and that ``the future inevitably belongs to the Dark.''
+
+- Before: I have always thought that a true rationalist ought to be effective in the real world.
+- After: I have always thought that a true rationalist ought to be effective in the real world, so surely unreason has its disadvantages. If current rationalist groups cannot support a project as well as one synagogue supports itself, finish that syllogism yourself.
+
+- Before: Teach a group only individual rationality, and it cannot act together.
+- After: Teach a group only individual rationality, and it cannot act together. I will write later about how rationalists might coordinate better.
+
+- Before: Picture a conference where the people at the microphone say only ``You're awesome.'' You would flee in terror.
+- After: At a conference, the questioners after a talk object to a logarithmic scale on slide 14, dispute a claim on slide 3, and offer an alternative hypothesis. Normal. Now picture questioners who say only that they agree with everything and ``You're awesome.'' You would flee in terror, as if Cthulhu had erupted from the podium.
+
+- Before: A group that tolerates disagreement but not agreement is also irrational.
+- After: A group that tolerates disagreement but not agreement is also irrational; it hears only some honest thoughts. We are as uncomfortable together as cultists are apart, and reversed stupidity is not intelligence.
+
+- Before: ``You definitely should not do worse'' with more knowledge.
+- After: ``You definitely should not do worse'' with more knowledge; an uncoordinated mob gets slaughtered. A half-rationalist can easily do worse: in one experiment, politically opinionated students who knew more about the issues reacted less to contrary evidence, having more ammunition to argue against it. We are stuck in a valley of partial rationality, less coordinated than fundamentalists. A training program would teach both disagreeing and agreeing, comfort with dissent and with conformity: one day everyone dresses differently, another day in uniform. Practicing agreement and applause sounds like an evil cult, but why is only practicing disagreement acceptable? Are you never going to have to agree with the majority?
+
+- Before: Our culture rewards only heroic dissent,
+- After: Our culture rewards only heroic dissent; we signal intelligence and nonconformist membership by inventing clever objections,
+
+- Before: The second force is shame of strong feeling. Decision theory contains no rule against caring.
+- After: The second force is shame of strong feeling. We still picture rationality as Spock's dispassion, or as cynicism, signalling sophistication by caring less than others. Would it not make you uncomfortable if a speaker said he cared so much about fighting aging that he would die for it? Yet decision theory contains no rule against caring. We should aim to feel the emotions that fit the facts, not to feel none.
+
+- Before: Some things are worth dying for, and poetic appeals for things that need doing deserve applause.
+- After: Some things are worth dying for. The taboo on emotional language in science papers may help the facts fight it out, but it need not apply everywhere; poetic appeals for things that need doing deserve applause. We need the strength to resist ungrounded appeals and the strength to be moved by grounded ones.
+
+- Before: The synagogue had it right. People announced their pledges simply,
+- After: The synagogue had it right. No one went row by row asking Mr.~Schwartz how much he would give. People announced their pledges simply, without drama,
+
+
+## honest/sections/tolerate-tolerance.tex
+
+Why: Fidelity/substance pass: Added the post's points about people being annoyed by different things, the danger of the adaptation, Hanson being right, and forgiving friends who soften on Group X.
+
+- Before: before I will work with him.
+- After: before I will work with him, which is unrealistic when different people are annoyed by different things in different amounts.
+
+- Before: when Robin Hanson confesses he could be wrong,
+- After: when Robin Hanson points out a flaw in some academic trope and modestly confesses he could be wrong (he is not),
+
+- Before: with ``an obvious evolutionary rationale'' that I do not spell out.
+- After: with ``an obvious evolutionary rationale'' that I do not spell out, which would make it an unpleasant and dangerous adaptation.
+
+- Before: Just do not demand that all your friends be as intolerant of that group as you are.
+- After: Just do not demand that all your friends be as intolerant of that group as you are. Forgive them if some suggest that Group X was not so awful after all.
+
+
+## honest/sections/why-our-kind-can-t-cooperate.tex
+
+Why: Fidelity/substance pass: why-our-kind: reordered the objectors' sentences and removed a doubled 'at once'.
+
+- Before: Some questioned the nonprofit's mission. Donations did come in at once,
+- After: Some questioned the nonprofit's mission. Others had ideas for other sources of money; they did not offer to approach them. Yet donations came in right away,
+
+- Before:  The objectors had ideas for other sources of money; they did not offer to approach them. Each donor,
+- After:  Each donor,
+
