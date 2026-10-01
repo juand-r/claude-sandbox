@@ -14,3 +14,4 @@ book/*.log
 book/*.toc
 book/*.out
 book/.venv/
+book/chapters/*.aux
