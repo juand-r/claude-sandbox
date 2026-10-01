@@ -221,13 +221,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] beautiful-probability
 - [x] outside-the-laboratory
 - [x] the-second-law-of-thermodynamics-and-engines-of-cognition
-- [ ] perpetual-motion-beliefs
-- [ ] searching-for-bayes-structure
-- [ ] dissolving-the-question
-- [ ] wrong-questions
-- [ ] righting-a-wrong-question
-- [ ] mind-projection-fallacy
-- [ ] probability-is-in-the-mind
+- [x] perpetual-motion-beliefs
+- [x] searching-for-bayes-structure
+- [x] dissolving-the-question
+- [x] wrong-questions
+- [x] righting-a-wrong-question
+- [x] mind-projection-fallacy
+- [x] probability-is-in-the-mind
 - [ ] the-quotation-is-not-the-referent
 - [ ] qualitatively-confused
 - [ ] think-like-reality
