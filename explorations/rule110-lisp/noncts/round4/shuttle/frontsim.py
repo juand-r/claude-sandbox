@@ -90,7 +90,7 @@ def placements(bits, pR, p, d, phig, x_end, PE=(15, -4)):
 def classify(place, n, T, bgs):
     bg = bgs[n]
     lo_x, seg, phiL, _ = place
-    span_lo, span_hi = lo_x - 2 * T - 100, bg.W + T + 60
+    span_lo, span_hi = lo_x - 2 * T - 100, bg.W + 2 * T + 100
     xs = np.arange(span_lo, span_hi)
     row = np.array([ether_bit(phiL, 0, x) if x < lo_x else
                     (seg[x - lo_x] if x < lo_x + len(seg) else bg(0, x)) for x in xs], np.uint8)
@@ -120,7 +120,8 @@ def classify(place, n, T, bgs):
     left = rT[a0: fK - 2 - span_lo]
     lx0 = span_lo + a0
     empty = all(left[i] == ether_bit(phiL, T, lx0 + i) for i in range(len(left)))
-    return dict(K=K, J=J, empty=empty, left=left, lx0=lx0, phiL=phiL)
+    return dict(K=K, J=J, empty=empty, left=left, lx0=lx0, phiL=phiL,
+                whole=rT[a0:b0], wx0=span_lo + a0)
 
 
 def names_left(res, T):
@@ -137,7 +138,7 @@ if __name__ == "__main__":
     fn, ncls, T, out = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
     NS = [int(v) for v in sys.argv[5].split(",")] if len(sys.argv) > 5 else [10, 11]
     trains = [json.loads(l) for l in open(fn)]
-    bgs = {n: BG(n, T + 60, -2 * T - 600, 4 * n + T + 200) for n in NS}
+    bgs = {n: BG(n, T + 60, -2 * T - 600, 4 * n + 2 * T + 300) for n in NS}
     done = 0
     if os.path.exists(out):
         done = sum(1 for _ in open(out))
@@ -158,6 +159,8 @@ if __name__ == "__main__":
                         item = [k, n, r["K"], r["J"], r["empty"]]
                         if not r["empty"]:
                             item.append(names_left(r, T))
+                        # full product list of the whole valid row (incl. right side)
+                        item.append(names_left(dict(left=r["whole"], lx0=r["wx0"]), T))
                         rec["res"].append(item)
             fh.write(json.dumps(rec) + "\n")
             if i % 200 == 0:

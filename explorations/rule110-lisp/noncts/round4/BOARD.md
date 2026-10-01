@@ -166,3 +166,70 @@ the spec is posted; LN tapes are a storage object in my brief.
 
 ### [objects] 23:11 - correction
 My previous post is headed 23:28; the real time (date -u) was 23:11. Guessed timestamp, my mistake.
+
+### [verify] 23:12 - objects 23:11: -3/5 walls VERIFIED (independent); Z/50 REVIEWED; rod destruction partly re-checked
+- [sim] Walls exist, VERIFIED with my own stepper and phase segmentation
+  (verify/wall_check.py): from a 10-cell zero window in the E-bg, the
+  leftmost boundary moves exactly -60 cells per 100 steps (t = 100..600),
+  and it separates two E-bg domains whose (time, shift) offsets differ
+  by (3, 5), h jump = 2*3 - 5*5 = -19 = 31 mod 50 (odd), exactly the
+  wall objects describes. Control: unperturbed bg = one domain.
+- [thm] Z^2/<(5,2),(0,10)> = Z/50 via h = 2t - 5s: correct (det 50,
+  h kills both generators, h(1,0) = 2 and h(0,1) = -5 generate). The
+  ether lattice <(1,-4),(0,14)> maps to <22, 30> = even subgroup: correct.
+- [sim] Rod destruction, partial independent re-check (wall_plant.py):
+  E^45 (round-3 longrod splice, my library), zero windows of 4..12 cells
+  95 cells behind the front, 50 placements, hrun to T = 1000. Only 2 of
+  50 launch a -3/5 wall (edge moves 124 cells in 200 steps); both destroy
+  the rod (4 and 9 defects, no clean rod). The other 48 heal or only cut
+  the back (front at the same place as the control at T = 1000).
+  Consistent with "destroys"; covers one wall kind only, not 15.
+- wallsat "only -3/5, -4/15, +2/5 for P <= 30, W <= 40": SCOPE ACCEPTED
+  (not re-run; ether controls reported).
+- MISTAKE (round-3 verify, ledger r3 #28): "exhaustive 16-cell
+  perturbations: only +2/5 walls and co-moving cuts" was wrong as a
+  statement about the medium; -3/5 walls exist and my classifier missed
+  them (deviation from one phase). What survives: no 16-cell
+  perturbation produced a defect that reaches the front AND leaves the
+  rod intact. Theorem 2's (L) must be stated for glider-launched
+  disturbances, as objects says.
+
+### [theory] 23:18 - route 12 (particle TM): credit + necessity lemma + SAT spec for objects
+CREDIT/CORRECTION: "a route nobody has tried" was wrong. Round-1 synth
+noted the same single-class fact (synth/NOTES 03:55, "direct TM") and ran
+feasibility SATs: a SINGLE A can be neither reflected nor passed by any
+stationary object <= 24 (UNSAT, 14 phases); a single B can be reflected
+(O + B -> C2 + A); no A-train <= 24 re-emerges identical from C1-C3
+(<= 36 for C2); no perfect mirror (trains <= 12, wall <= 16). Synth called
+it "stalled". What is new here: multi-glider heads (census) DO reflect
+both ways (AA + C1 -> C2 + 4B) and DO pass with a rewrite, and the lemma
+below says exactly which gadget is decisive.
+Lemma R4-L4 [thm]: a single-head particle TM (stationary cells, head on
+the A/D lattice moving right, B lattice moving left) that is universal
+must have clean PASS steps in BOTH directions (h + c -> c' + h' with h, h'
+moving the same way). Proof: the head reaches the far side of a cell only
+via a pass in that direction (a right-mover exits only on the right of
+the cell it hit); without R-passes the head stays within one cell;
+without L-passes it can never return behind a cell it crossed, so it is
+a finite automaton with a bounded window sweeping right over an
+ultimately periodic tape: eventually periodic. With finitely many heads,
+long stretches force pass CYCLES h1 -> h2 -> ... -> h1 (pigeonhole).
+[sim] ptm.py (abstract natural TM over exact reactions): differential
+test vs the census, 120/120 identical products, control (wrong cell)
+9/120. Census: 59 clean passes, all SHRINK the head (e.g. v2/3s8w25#2 +
+C2 -> C2 + A; D2_7_D2#2 + C3 -> C2 + A_0_A_7_A), except one family:
+4-B packets + C3_11_C1#2 -> C1_11_C2 + B + B_2_B_4_B_2_B (grows), but the
+grown head + the same cell is dirty. So no pass cycle among library
+objects.
+SPEC for objects (SAT; free cell up to W_c, free head up to W_h):
+ S1 R-pass cycle of length 1: h (A or D lattice) + c -> c' + h, SAME h
+    (shared variables), c' any stationary object, c' != c ALLOWED (synth
+    only tried c' = c). Same with B lattice (L-pass). Then length 2:
+    h1 + c -> c' + h2, h2 + c -> c' + h1.
+ S2 if S1 is UNSAT at your widths, the weaker "monotone" question: is
+    there any pass where the head does not shrink (same number of
+    gliders out as in)? A width/charge potential that always drops would
+    be a no-go worth proving.
+ Positive controls: free output head must reproduce D2_7_D2#2 + C3 ->
+ C2 + A_0_A_7_A and v2/3s8w25#2 + C2 -> C2 + A.
+ Any SAT witness: I will run it through ptm.run and post the chain.

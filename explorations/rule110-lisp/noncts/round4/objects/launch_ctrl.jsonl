@@ -1,0 +1,5 @@
+{"n": 12, "p": 4, "d": -2, "WY": 16, "T2": 100, "depth": 15, "k": 0, "s": 0, "free": true, "sat": false, "secs": 0.6, "nphases": 49}
+{"n": 12, "p": 4, "d": -2, "WY": 16, "T2": 100, "depth": 15, "k": 0, "s": 6, "free": true, "sat": false, "secs": 0.4, "nphases": 49}
+{"n": 12, "p": 4, "d": -2, "WY": 16, "T2": 120, "depth": 5, "k": 0, "s": 0, "free": true, "sat": false, "secs": 1.1, "nphases": 49}
+{"n": 12, "p": 4, "d": -2, "WY": 16, "T2": 120, "depth": 5, "k": 0, "s": 6, "free": true, "sat": false, "secs": 2.2, "nphases": 49}
+{"n": 12, "p": 4, "d": -2, "WY": 16, "T2": 200, "depth": 5, "k": 0, "s": 0, "free": true, "sat": false, "secs": 123.8, "nphases": 49}

@@ -11,11 +11,12 @@ def run_prog(ops, classes, T=None):
     sim, err = run(sc, T)
     return sc, sim, err
 
-for cl0 in range(3):
-    for n in (1, 2, 3, 4):
-        for c in itertools.product(range(3), repeat=n):
-            if c[0] != cl0: continue
-            sc, sim, err = run_prog("N" * n, list(c))
-            st = sim.state()
-            print(n, c, err, [(g[0], float(lat(g))) for g in st])
-        if n >= 2: break
+if __name__ == "__main__":
+  for cl0 in range(3):
+      for n in (1, 2, 3, 4):
+          for c in itertools.product(range(3), repeat=n):
+              if c[0] != cl0: continue
+              sc, sim, err = run_prog("N" * n, list(c))
+              st = sim.state()
+              print(n, c, err, [(g[0], float(lat(g))) for g in st])
+          if n >= 2: break

@@ -33,7 +33,7 @@ if os.path.exists(OUT):
         done.add((r["name"], r["k"]))
 
 eb, el, er = O.en_bits(N)
-PADL = T + 40
+PADL = 2 * T + 100   # front stays inside the shrinking window: needs PADL > 19T/15
 WIDTH = len(eb) + 2 * T + 400
 
 

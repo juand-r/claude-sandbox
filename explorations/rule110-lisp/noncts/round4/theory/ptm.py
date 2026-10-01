@@ -34,7 +34,7 @@ sys.path.insert(0, COLL)
 _cwd = os.getcwd(); os.chdir(COLL)
 from library import Library
 from collide import simulate, canonical_reps
-from r110lib import n_classes
+from r110lib import n_classes, build_row
 LIB = Library.load()          # in-memory only; never saved
 os.chdir(_cwd)
 
@@ -50,7 +50,12 @@ def period(name):
 
 
 def expand(pl):
-    """Replace library compounds that have a verified parse by their parts."""
+    """Identity (kept for clarity).  Library compounds are NOT replaced by
+    their parsed parts: collider's part events do not reassemble into a
+    valid row with build_row (checked on B_2_B_4_B_2_B, 23:2x), so the
+    representation used everywhere is the library's own identification of
+    the products.  Within one process that identification is unique."""
+    return list(pl)
     out = []
     for name, t0, x0 in pl:
         g = LIB.gliders[name]
@@ -97,6 +102,22 @@ def _start(e):
 _cache = {}
 
 
+def rephase(pl):
+    """Translate the packet by an ether-lattice vector (dt, dx), dx = -4 dt
+    mod 14, so that its gliders' time-0 states assemble into a valid row
+    (tight packets can have touching per-glider representations at some
+    phases). Physics is unchanged; only the representation moves."""
+    for dt in range(0, 42):
+        dx = (-4 * dt) % 14
+        q = [(n, t + dt, x + dx) for n, t, x in pl]
+        try:
+            build_row([LIB.gliders[n].state_at(t, x, 0) for n, t, x in q])
+            return q
+        except ValueError:
+            continue
+    return None
+
+
 def react(hkey, cell):
     """Collide head packet hkey (canonical key) with stationary cell `cell`.
     -> dict(kind='clean'|'absorbed'|'dirty', cell=..., head=..., dx=..., raw=...)."""
@@ -104,7 +125,11 @@ def react(hkey, cell):
     if ck in _cache:
         return _cache[ck]
     d = direction(hkey)
-    pl = list(hkey)
+    pl = rephase(list(hkey))
+    if pl is None:
+        out = {'kind': 'dirty', 'why': 'no clean time-0 representation of the head'}
+        _cache[ck] = out
+        return out
     hp, cp = period(pl[0][0]), period(cell)
     assert cp == STAT and n_classes(hp, cp) == 1, (hp, cp)   # Lemma R4-L1
     if d == 'R':

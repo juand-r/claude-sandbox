@@ -35,31 +35,36 @@ def valid(pl):
         return False
 
 
-def rigid(pl):
-    """The packet alone keeps its shape (no internal interaction)."""
+def settle(pl):
+    """Simulate the packet alone; if it settles into gliders of ONE head
+    lattice, return its canonical key (names as the library identifies
+    them, so input packets and reaction products share one representation).
+    Otherwise None."""
     try:
-        res = ptm.simulate(ptm.LIB, pl, 300)
+        res = ptm.simulate(ptm.LIB, pl, 400)
     except (ValueError, RuntimeError):
-        return False
-    if not res['settled'] or any(p[0] == '?' for p in res['products']):
-        return False
-    return ptm.canon(res['products']) == ptm.canon(pl)
+        return None
+    pr = res['products']
+    if not res['settled'] or not pr or any(p[0] == '?' for p in pr):
+        return None
+    if {ptm.period(p[0]) for p in pr} != {P}:
+        return None
+    return ptm.canon(pr)
 
 
 def packets():
-    """All rigid packets of 1..KMAX gliders, span <= WMAX cells at time 0, canonical, unique."""
+    """All distinct settled packets built from 1..KMAX base gliders placed
+    left to right within WMAX cells (time 0), as canonical keys."""
     seen = set()
-    # candidate offsets of one more glider relative to the first: t in [0,p), x in (0, WMAX]
     offs = [(t, x) for t in range(G.p) for x in range(1, WMAX + 1)]
     frontier = [[(FAM, 0, 0)]]
     for k in range(1, KMAX + 1):
         nxt = []
         for pl in frontier:
-            key = ptm.canon(pl)
-            if key in seen:
-                continue
-            seen.add(key)
-            yield key
+            key = settle(pl)
+            if key is not None and key not in seen:
+                seen.add(key)
+                yield key
             if k == KMAX:
                 continue
             last = max(ptm._start(e) for e in pl)
@@ -69,7 +74,7 @@ def packets():
                 if s <= last + 1 or s - ptm._start(pl[0]) > WMAX:
                     continue
                 cand = pl + [e]
-                if valid(cand) and rigid(cand):
+                if valid(cand):
                     nxt.append(cand)
         frontier = nxt
 
@@ -88,7 +93,7 @@ with open(OUT, 'a') as f:
             if (json.dumps(key), c) in done:
                 continue
             r = ptm.react(key, c)
-            rec = {'h': key, 'c': c, 'kind': r['kind']}
+            rec = {'h': key, 'c': c, 'kind': r['kind'], 'why': r.get('why')}
             if r['kind'] in ('clean', 'absorbed'):
                 rec.update(c_out=r['cell'], dx=r['dx'])
             if r['kind'] == 'clean':

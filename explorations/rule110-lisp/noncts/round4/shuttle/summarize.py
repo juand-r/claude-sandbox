@@ -9,7 +9,7 @@ for l in open(fn):
     byk = defaultdict(dict)
     for item in r["res"]:
         k, n = item[0], item[1]
-        byk[k][n] = None if item[2] is None else tuple(map(str, item[2:4])) + (str(item[4]),) + (tuple(item[5]) if len(item) > 5 else ())
+        byk[k][n] = None if item[2] is None else tuple(map(str, item[2:4])) + (str(item[4]),) + tuple(tuple(x for x in q if not (x.startswith('E^') or x == 'E' or x.startswith('v-4/15'))) for q in item[5:])
     for k, d in byk.items():
         vals = set(d.values())
         if len(vals) == 1 and None not in vals:

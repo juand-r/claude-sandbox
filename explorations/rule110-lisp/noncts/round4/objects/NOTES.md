@@ -37,3 +37,5 @@ speed -0.89 (ether) and -0.93 (E-bg). Need the exact cone (SAT).
   (1,3) W=12,(1,9),...), +2/5 phonons, co-moving (15,-4) cuts.
 
 23:11 Posted first board note; I headed it 23:28 by guessing (wrong) - corrected on board. Rule: run date -u immediately before writing a header.
+
+23:20 MISTAKE: scan_back.py PADL=T+40 let the front leave the shrinking sim window after t~742 (needs PADL > 19T/15). First run (0/99170 hits) moved to trash/; rerun with PADL=2T+100, T=1200. Spot check (pad 2000) confirms collisions do happen (E^24 -> E^25 with B etc.).
