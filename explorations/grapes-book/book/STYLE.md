@@ -121,11 +121,14 @@ between.
 
 ## 4. The arc: from order to chaos (2026-10-01)
 
-The book becomes progressively more unhinged. Three movements; the chapter
-boundaries are not decided yet.
+The book becomes progressively more unhinged. Three movements, which follow
+the calendar of 2020, the year he writes the book (see `BIO.md`, "The book's
+year"). The present breaks into the writing: first the pandemic, then the
+fire. The chapter boundaries are not decided yet.
 
 | | I. Order | II. Leakage | III. Collapse |
 |---|---|---|---|
+| When (2020) | Early 2020: reminiscence, the encyclopedia | From March: the pandemic, alone with the book | 27 Sept – 20 Oct: the Glass Fire; the pond goes down; after |
 | Main text | Clean, encyclopedic, impersonal "I" | Personal remarks slip in; obsessive passages grow | Thins out; notes take over the page |
 | Notes | Digressions, sources, wit | Contradict the main text; address someone ("you") | Notes on notes on notes; notes that cite notes that do not exist |
 | Asides | Rare, short, about method | Longer; about him; Odile named by initial | Flood the margin; dated entries; the night itself circled |

@@ -38,11 +38,16 @@
       for plot reasons, and listed (STYLE.md, 3.1).
 - [x] Backstory rewritten (2026-10-01): born 1948 in Ardath, Iowa; enlists
       1967; West Germany 1968; deserts in May 1968; forged identity as
-      Hollis Vane; Burgundy 1968–77; Napa 1977. Writes in 2021, in the
-      pandemic. Odile dies October 2020, during the Glass Fire.
+      Hollis Vane; Burgundy 1968–77; Napa 1977.
+- [x] Odile disappears years before the book (2026-10-01): he says she left
+      for France; the case stays open; the pond is never searched. He writes
+      through 2020; the pandemic and then the Glass Fire break in; the
+      helicopters lower the pond and something surfaces. The three
+      movements follow the 2020 calendar (STYLE.md, section 4).
 - [ ] Open in BIO.md: his birth name; the dark secret; regular soldier or
-      Army Security Agency "listener"; the forger; whether Odile knew;
-      whether Odile died years earlier instead.
+      Army Security Agency "listener"; the forger; whether Odile knew; the
+      year she disappeared (proposed 2014); what the pond reveals (body or
+      object); how the book ends.
 - [ ] Build the typography the style needs (STYLE.md, section 5): aside
       typeface, struck-out text. Ask the author first.
 - [ ] Decide the source format for facts, and the file of intended errors.

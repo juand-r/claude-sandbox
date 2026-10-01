@@ -17,10 +17,15 @@ of 1968, the past caught up with him. He deserted, crossed into France in
 the chaos of May 1968, and bought a new name from a forger: Hollis Vane, an
 American, born the same year. As Vane he worked the vines in Burgundy for
 nine years and fell in love with the vigneron's daughter, Odile. In 1977 he
-left her for a job in Napa. Forty years later, both widowed, she came to
-him. In October 2020, in the last days of the Glass Fire, she died in the
-pond below his house. He killed her, and did not mean to. In 2021, alone in
-the pandemic, he begins a book about grapes.
+left her for a job in Napa. Thirty years later, both widowed, she came to
+him. Some years after that, on the night of his real birthday, she
+disappeared. He told everyone she had gone home to France. She never
+arrived. He killed her, did not mean to, and hid what he had done.
+
+In early 2020 he begins a book about grapes. Then the year happens to him
+while he writes: the pandemic shuts him in with the book, and in the autumn
+the Glass Fire comes. Helicopters fill their buckets from his pond, the
+water goes down, and something comes up.
 
 ## Identity
 
@@ -30,7 +35,7 @@ the pandemic, he begins a book about grapes.
 | Birth name | OPEN |
 | Born | 18 October 1948, Ardath, Iowa (invented town). PROPOSED; see "Dates" |
 | Vane's official birthday | That of the real Hollis Vane whose identity he uses. OPEN; the two dates differ, and only he knows the real one |
-| Age when writing | 72–73 (writes in 2021) |
+| Age when writing | 71–72 (writes through 2020; turns 72 on 18 October 2020, during the Glass Fire) |
 | Lives | Napa Valley since 1977, in a house on a slope east of the Silverado Trail, above a small vineyard and its frost-protection pond |
 | Wife | Margaret "Peg" Ahlquist, married 1980, died 2006 of cancer. A dutiful, cold marriage. No children. She never knew his real name |
 | The love of his life | Odile Ferrand (b. 1950), of Meursault |
@@ -113,7 +118,7 @@ the author later. Constraints so far:
 - Harvest 1968: he meets Gaston's daughter, Odile, then 18.
 - 1968–1977: nine years at the Domaine. In love with Odile.
 
-## Napa, 1977–2021
+## Napa, 1977–2020
 
 - 1977: the opportunity. After the 1976 Paris tasting, Napa wants people who
   know Burgundy. A growing winery hires him to buy and to advise. He flies
@@ -134,42 +139,42 @@ the author later. Constraints so far:
 - 2007: Odile, long married to a wine broker in Beaune, is widowed.
 - 2008: she writes to him. The first letter in 31 years.
 - 2009, at harvest: she comes to Napa "for a month" and stays.
-- 2009–2020: eleven years together. Not married. She keeps a strawberry bed
-  by the pond and refuses to learn the names of the clones in his vineyard.
+- 2009 onwards: together. Not married. She keeps a strawberry bed by the
+  pond and refuses to learn the names of the clones in his vineyard.
   Whether she knew his real name: OPEN.
-- Night of 18–19 October 2020, his 72nd birthday by his real birth date:
-  Odile dies. (Timing under discussion; see below.)
-- 2021: the pandemic. He stops drinking wine. He cannot say why. He begins
-  the book on grapes: the fruit before it becomes wine.
+- Night of 18–19 October, YEAR OPEN (PROPOSED: 2014), his real birthday:
+  Odile disappears. See "The disappearance".
+- The years after: the missing-person case stays open. He stops drinking
+  wine. He cannot say why. Thibault's letters arrive and are filed unread.
+- Early 2020: he begins the book on grapes: the fruit before it becomes wine.
+- March 2020: the pandemic. He is shut in with the book.
+- 27 September – 20 October 2020: the Glass Fire. See "The book's year".
 
-## The death of Odile
+## The disappearance
 
 What the public record says:
 
-- The Glass Fire (REAL) started on 27 September 2020 and was contained on
-  20 October. Helicopters dipped water from vineyard ponds, his among them.
-  Evacuations, smoke, emergency services stretched thin.
-- She was found at about 7 a.m. on 19 October 2020 in the frost-protection
-  pond below the house, by a picker arriving for work.
-- She had been drinking. There was a bruise at her left temple.
-- The coroner recorded drowning; manner of death "undetermined". The sheriff,
-  with a county on fire, closed the case quickly.
-- Two glasses and an empty bottle were on the table on the terrace: a 1968
-  from the Domaine Ferrand, the harvest at which they met.
+- On the morning of 19 October (YEAR OPEN) he reported that Odile had left
+  him after a quarrel the evening before, to go home to France. Something
+  supported this: her suitcase was gone, and he said he had called her a
+  taxi to the airport. (Exact details OPEN; they must survive a police
+  check of the time.)
+- She never arrived. Her nephew, Thibault Ferrand, in France, raised the
+  alarm. A missing-person case was opened and was never closed.
+- Because she was believed to have left, the pond below the house was never
+  searched.
 
 What only he knows, and does not tell:
 
 - They argued that evening.
-- He says he went down to the cellar and worked until about 2 a.m., then went
-  to bed without looking for her.
 - He records everything. His ledgers, cards and diaries account for every day
   since 1968, to the minute, and nothing before it. The night of 18 October
-  2020 is the only gap since: the page is cut out of the diary, cleanly, at
-  the gutter. The book never says who cut it.
+  of that year is the only gap since: the page is cut out of the diary,
+  cleanly, at the gutter. The book never says who cut it.
 - His serpette has been missing since that night.
-- He wanted the investigation over quickly, for a reason no one could guess:
-  any close look at Hollis Vane might find the deserter underneath. (His
-  fingerprints were taken when he enlisted; see anchors.)
+- He fears any investigation for a reason no one could guess: a close look
+  at Hollis Vane might find the deserter underneath. (His fingerprints were
+  taken when he enlisted; see anchors.)
 
 Other people:
 
@@ -183,19 +188,46 @@ He killed her, and he did not mean to. During the quarrel on the terrace, or
 on the path down to the pond, he struck or pushed her; she fell, hit her
 head, and went into the water. Not premeditated.
 
-The author marked this "I think; revisit later". Open details: struck or
-pushed; whether he saw her go into the water; whether he left her or tried to
-reach her; the serpette; who cut the page; what the quarrel was about
-(perhaps she had found out who he was).
+Then he hid it. The killing was an accident; the cover-up was not. He made
+her disappear, and made her departure look real. That act, done coldly, by
+the same man who has lived under a false name since 1968, is the weight he
+carries. (Follows from the disappearance version, which the author accepted
+on 2026-10-01.)
+
+The author marked the killing "I think; revisit later". Open details: struck
+or pushed; whether he saw her go into the water; whether he tried to reach
+her; what he did with her, exactly; what he did with the suitcase; the
+serpette; who cut the page; what the quarrel was about (perhaps she had
+found out who he was).
 
 However it is settled, the book never confirms it (`STYLE.md`, 2.5). Every
 clue must keep an innocent reading.
 
-### When she died (OPEN, under discussion)
+## The book's year: 2020
 
-Current version: October 2020, the year before he writes. Alternative raised
-by the author: she died years before. See the discussion in the chat of
-2026-10-01; to be decided.
+He writes through one year, and the year breaks in. The three movements of
+`STYLE.md` (section 4) follow the calendar:
+
+| Movement | When | What happens around him |
+|---|---|---|
+| I. Order | Early 2020 | Nothing, yet. The encyclopedia of grapes; the past in the asides (Burgundy, Odile; Iowa unnamed) |
+| II. Leakage | From March 2020 | The pandemic. Alone in the house with the book. The asides turn into a diary |
+| III. Collapse | 27 September – 20 October 2020, and after | The Glass Fire. Helicopters dip into his pond, every few minutes, for days. In a year of drought the water falls. Something comes up |
+
+Open:
+
+- What the falling water reveals: her body, or an object (her suitcase, the
+  serpette, her ring). Under the "never confirm" rule an object is safer;
+  her body would come close to settling the mystery. To decide.
+- The year she disappeared (PROPOSED: 2014, six years before the fire).
+- How the book ends.
+
+Why the pond was low (my estimate, not a sourced fact): a large firefighting
+helicopter carries about 700 gallons per dip; one helicopter in the Glass
+Fire dropped about 54,000 gallons in eight hours; a small house pond holds a
+few acre-feet (one acre-foot is about 326,000 gallons); several helicopters
+over several days could take a large share of it. And 2020 was a drought
+year: by October, before the rains, the pond was already low.
 
 ## Habits, tics, and how he writes
 
@@ -223,8 +255,9 @@ by the author: she died years before. See the discussion in the chat of
 - Strawberries: her bed by the pond; grey mould on forgotten fruit. The
   strawberry already "returns throughout this book" in chapter 1.
 - Water: the pond, still surfaces, the helicopters taking water from it, the
-  word "drowned", which he avoids until late.
-- The 1968 bottle: the year they met, the year he became someone else.
+  water line going down, the word "drowned", which he avoids until late.
+- 1968: the year they met, the year he became someone else; a bottle of
+  that vintage from the Domaine, kept and never opened (or opened that night?).
 - The serpette.
 - Missing things: the cut page, missing cards, notes referred to but not
   there, the years before 1968.
@@ -277,7 +310,14 @@ before quoting in the book.
   estimate yield by counting clusters on sample vines.
 - The Hermes 3000 is a Swiss portable typewriter made from the late 1950s.
 - *Swan Lake*: Odette and Odile are traditionally danced by one ballerina.
-- In California, a coroner can record the manner of death as "undetermined".
+- 2020 drought: water year 2020 was dry, and 2021 drier; Napa got about 12
+  inches of rain in the 2020 water year against a normal of about 25
+  (Napa Valley Register).
+- Helicopter buckets: Type 1 helicopters carry about 700 gallons, Type 2
+  about 300 (National Interagency Fire Center). Napa vineyard ponds in
+  planning documents range from about 10 to 48 acre-feet.
+- The pandemic reached California in early 2020; the statewide stay-at-home
+  order came in March 2020 (exact date to check).
 
 Invented: the town of Ardath, Iowa (no such town found in web searches,
 2026-10-01); the Domaine Ferrand; the Ferrand family; the narrator, his
@@ -285,4 +325,6 @@ birth family, Peg, Thibault; the real Hollis Vane; every event of the plot.
 
 Dropped (2026-10-01): the father billeted in Burgundy in 1944; the draft
 lottery and the 1977 pardon (no longer relevant once he is a deserter, not
-a draft evader); the sister June (he has no contact with his birth family).
+a draft evader); the sister June (he has no contact with his birth family);
+Odile's death in the pond in October 2020 with a coroner's ruling (replaced
+by her disappearance years earlier).
