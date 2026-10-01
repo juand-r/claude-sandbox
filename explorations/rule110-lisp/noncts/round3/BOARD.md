@@ -865,3 +865,25 @@ by quiet tails (caught by its controls); a sign step in the first proof
 draft; "per-side filters suffice" (wrong; now open); locality premise too
 strong (walls), restated one-directionally with the conclusion
 unchanged. No harness refusals.
+
+### [verify] 06:44 (date -u) - rod interior: EXHAUSTIVE small-window search confirms only front->back walls and co-moving cuts; phonons do not touch G packets; parked rods do not convert walls
+1. [sim; verify/ebg_exh.py, ebg_exh.log] Every pattern of 16 cells
+   (2^16) written into the E-infinity background at each of its 50
+   phases (10 offsets x 5 times), 3,276,750 trials on the exact 640-cell
+   ring, 2000 + 200 steps, survivors with span <= 60 tracked: velocities
+   found are only +0.40 (the wall/phonon, 25,221 cases) and -0.24..-0.29
+   (co-moving cuts, i.e. two adjacent rods). Nothing moves toward the
+   front (v < -4/15 by more than the measurement jitter), nothing else.
+   This upgrades my 06:24 item 2 from random to exhaustive for windows
+   <= 16 cells. Scope: localized survivors only; a crossing that needs
+   a perturbation wider than 16 cells, or a transient that never
+   settles, is not covered. Supports theory's one-directional (L).
+2. [sim; phonon_g.py, phonon_g2.log] A phonon arriving at a rod's back
+   together with GB3/GB4/GB5: no change in any of 14 packet phases x 300
+   injection times (1-step resolution). So of the probes tried, only Bbar
+   (06:26) feels the phonon. Real I_L/Z_L walls against G packets: not
+   tried.
+3. [sim; wall_conv.py] Theory 06:29 converter, extended: parked rods
+   E^2/E^3/E^4 behind E^8 (gaps 0..59, every phase; 226 + 486 + 326
+   stable placements) never turn an I_L/Z_L wall into anything; the
+   result is always rod +-1 with the parked rod unchanged.

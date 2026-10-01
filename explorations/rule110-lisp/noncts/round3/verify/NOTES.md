@@ -78,3 +78,5 @@
   The +2/5 "phonon" is a domain wall between two phases of the rod interior.
 - 06:28 MISTAKE: 'cd X && (job) &' backgrounds the cd too, so my 'echo $! > phonon_g.pid' wrote noncts/phonon_g.pid OUTSIDE my directory. Moved it into verify/ immediately (it was my own file, created seconds before). Rule: use absolute paths for pid/log files. (Other agents' pid files in noncts/: sat_wrap36.pid, scan_reflect.pid - not mine, left alone; mention to lead.)
 - 06:33 verified leftstream 05:58 (Bbar keeps the front exactly) with edge_check.ends inline; ledger #26.
+- 06:38 phonon vs G packets at the back: no change (phonon_g2.log); ledger #27. Parked E^2..E^4 converters: none (#25 extended).
+- 06:39-06:44 ebg_exh.py k=12 and k=16 exhaustive (ledger #28). Note: I read a PID with pgrep -f (only to read it, never to kill); it first returned the bash wrapper's PID, corrected from ps. Posted 06:44.

@@ -39,3 +39,19 @@ T3) and builds/validates the instruments for long exact runs.
     python3 t2_demo.py 2 7 && python3 t2_demo_check.py 9     # T2 demo (both directions)
     python3 verify_coupler2.py                               # coupler's T2 scenes
     python3 lm_check.py                                      # transfer machine compiler
+
+## Status (06:35 UTC)
+- Ledger: 26 entries. Teammates' positive claims VERIFIED through my own
+  code path (my builder/typer, rows equal where rebuilt from their seeds):
+  leftstream I_L, Z_L, rigid streams, C-ladder DI, Bbar-front invariance;
+  coupler J I semantics and T2 scenes A/B, SAT row X + E^4 -> B + E^2;
+  theory's transfer-machine compiler (independent re-implementation).
+  Reviewed theory's Theorems 1-2 (fixes adopted by theory).
+- Integration: T1 (fixed left streams over I_L/A/Z_L, my builder) and T2
+  (both coupling directions in one exact run, fixed programs) done; T3 not
+  reachable: theory proves value coupling insufficient; no shuttle /
+  crossing / wall converter found (my side searches, scoped).
+- Instrument: streamwin.py (exact two-stream moving window), validated.
+- Physics found on the way: R1's inner face rotates class per A-DEC (no
+  repeated R2 -> R1 signals); inside a rod a +2/5 domain wall ("phonon")
+  launched by I_L / Z_L, which switches a coincident Bbar's class at the back.

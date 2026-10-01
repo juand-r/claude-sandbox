@@ -104,3 +104,11 @@ Task (T2): couple counter R1 (E^n at -4/15, right G-speed stream) and R2
   counters, speed -4/15) reflects a G into an A^4. Possible "mirror" in
   the gap; not pursued yet.
 - 06:32 G scan died again silently after ~1 min (nohup); the candidate it stopped at runs fine alone. Relaunched via the harness background mechanism.
+- 06:43 MISTAKE: the two "silent deaths" of the G scan were not
+  deaths. The PID I saved with `echo $!` was not the python process (the
+  harness wraps commands in a bash -c), so `ps -p` showed nothing and I
+  relaunched twice: three scan processes ran concurrently for ~10 min
+  (against the one-heavy-process rule) and appended duplicate lines to
+  scan_reflect_M4.jsonl. Killed 11819 and 14271 (found with ps aux),
+  kept 14654. Analysis dedupes by Y. Rule for myself: after any launch,
+  confirm the PID with `ps aux | grep` before recording it.

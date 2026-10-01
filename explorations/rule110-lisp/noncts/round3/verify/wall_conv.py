@@ -14,6 +14,7 @@ L.register_IL()
 T = 2500
 GAPS = range(int(sys.argv[2]), int(sys.argv[3])) if len(sys.argv) > 3 else range(30, 90, 4)
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
+OBJS = sys.argv[4].split(",") if len(sys.argv) > 4 else ["Ebar", "E"]
 
 
 def clean_front(P, n, want):
@@ -30,7 +31,8 @@ if __name__ == "__main__":
     fronts = {"IL": clean_front("IL", N, [f"E^{N + 1}"]), "ZL": clean_front("ZL", N, [f"E^{N - 1}"])}
     print("front ops:", fronts)
     res = defaultdict(list)
-    for obj in ("Ebar", "E"):
+    STABLE = {}
+    for obj in OBJS:
         P = vlib.LIB[obj].P
         for t0 in range(P):
             for gap in GAPS:
@@ -41,11 +43,13 @@ if __name__ == "__main__":
                     continue
                 if v3.names(o0) != [f"E^{N}", obj]:
                     continue                      # not a stable parked pair
+                STABLE[obj] = STABLE.get(obj, 0) + 1
                 for fn, f in fronts.items():
                     o1, *_ = v3.run([f] + base_items, T)
                     nm = v3.names(o1)
                     exp = [f"E^{N + 1}" if fn == "IL" else f"E^{N - 1}", obj]
                     if nm != exp:
                         res[(fn, obj, " + ".join(nm))].append((t0, gap))
+    print("stable parked placements tested:", STABLE)
     for k, v in sorted(res.items(), key=lambda kv: -len(kv[1])):
         print(k, len(v), v[:6])
