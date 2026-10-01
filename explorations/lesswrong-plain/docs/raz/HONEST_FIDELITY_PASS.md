@@ -321,8 +321,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] zut-allais
 - [x] feeling-moral
 - [x] the-intuitions-behind-utilitarianism
-- [ ] ends-don-t-justify-means-among-humans
-- [ ] ethical-injunctions
+- [x] ends-don-t-justify-means-among-humans
+- [x] ethical-injunctions
 - [ ] something-to-protect
 - [ ] when-not-to-use-probabilities
 - [ ] newcomb-s-problem-and-regret-of-rationality

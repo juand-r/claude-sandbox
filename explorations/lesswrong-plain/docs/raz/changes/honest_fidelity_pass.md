@@ -7382,3 +7382,79 @@ Why: Fidelity/substance pass: removed my own inference ('so lives were lost anyw
 - Before: and then decided not to carry out the project, so lives were lost anyway. Such trades feel awful.
 - After: and then decided not to carry out the project. Such trades feel awful.
 
+
+## honest/sections/ends-don-t-justify-means-among-humans.tex
+
+Why: Fidelity/substance pass: added the 'hostile hardware' epigraph, the general template (prosocial reason Y, self-benefiting Z), that the question lies outside classical decision theory, why the rule says 'even when it would' rather than 'seems to', the train dilemma's stipulations, the full reply's epistemic-state argument, that the prohibitions are not terminally right, the one-AI-among-humans caveat and the third alternative, the red-blood analogy, the minds that would refuse to breathe and the loaf of bread
+
+- Before: Yesterday I suggested that humans may have evolved to seek power as idealists and then be corrupted by it.
+- After: ``I think of myself as running on hostile hardware,'' said Justin Corwin. Yesterday I suggested that humans may have evolved to seek power as idealists and then be corrupted by it, not by plan but by the echo of ancestors who did the same and reproduced: we think we do X for a prosocial reason Y, while other adaptations promote a self-benefiting Z.
+
+- Before: Today I ask: ``What if I'm running on corrupted hardware?''
+- After: Today I ask a question well outside classical decision theory: ``What if I'm running on corrupted hardware?''
+
+- Before: So the human remedy is a rule: ``For the good of the tribe, do not cheat to seize power even for the good of the tribe.''
+- After: So the human remedy is a rule: ``For the good of the tribe, do not cheat to seize power even for the good of the tribe.'' It says ``even when it would'' help, not ``seems to,'' or people answer that it does not just seem so, it would help if they were in charge.
+
+- Before: Then comes the philosopher with a train, five people on the track, and one person I could push in front of it.
+- After: Then comes the philosopher with a train, five people on the track who cannot be warned, and one person I could push in front of it, the only option, and certain to work.
+
+- Before: I offer a reply I have ``yet to hear'': a human on corrupted hardware cannot know the stipulated facts, so only an AI free of the bias could rightly push.
+- After: I offer a reply I have ``yet to hear'': running on corrupted hardware, I cannot occupy the epistemic state of knowing those facts with certainty; in a society of AIs without a tendency to be corrupted by power, it would be right for an AI to push the one, and its peers would agree, but I refuse to extend the answer to myself, since that state exists only among other kinds of people.
+
+- Before: My own view: as a human I keep the prohibitions,
+- After: My own view: as a human I keep the prohibitions humans made to live in peace, though I do not think them terminally right regardless of consequences,
+
+- Before: and a Friendly AI that pushed the one person would be no alarm sign.
+- After: and a Friendly AI that pushed the one person would be no alarm sign (one AI among humans must also consider whether humans learn from its example). I would expect a decent superintelligence to find a better third alternative; but if those are the only two and it judges pushing wiser, even counting the effects on witnesses, I do not object. I do not push people in front of trains or rob banks for altruistic projects; I happen to be human. For a Friendly AI to be corrupted by power would be like it bleeding red blood.
+
+- Before: Minds biased the other way would need the opposite rule.
+- After: Minds biased the other way, overestimating the harm of self-benefiting acts, would need the opposite rule, ``the ends do not prohibit the means,'' or they would refuse to breathe for fear of using others' oxygen and all die; for them an occasional selfish overshoot would be as cautiously virtuous as a human passing up a loaf of bread that would really help more than it cost the merchant.
+
+- Before: So ``the end does not justify the means'' is reflective consequentialism,
+- After: So ``the end does not justify the means'' is consequentialism one meta-level up: reflective consequentialism,
+
+
+## honest/sections/ethical-injunctions.tex
+
+Why: Fidelity/substance pass: added the horrible interview question, why an AI might deceive (hiding changes toward smiley faces), why deception indicates malfunction, why the shutdown must be unconditional (a malfunctioning future AI would decide against it), the goal system that knows it is incomplete, the Hydro details (the watchman's kindness, the rescued Germans), the Gestapo facade, why self-deceptions are worse than lies, the false sense of no bullet, why it is called an ethical injunction, the 'fair lottery tickets' point, the ethics stricter than Pournelle's and Feynman's, the risks the lie-advocates ignore (recursive protection of lies, the simplicity of honesty, nakedness), Vulcan logic, the Enlightenment's bounded power, not waiting until tempted, looking a third time for alternatives, and the AI math caveat
+
+- Before: I am professionally interested in things you should not do even when they seem right.
+- After: ``Would you kill babies if it was the right thing to do?'' asks a horrible job interview question. I am professionally interested in things you should not do even when they seem right.
+
+- Before: If it ever decides that fooling its programmers is the right thing to do, that probably means its goals have gone wrong, so it should shut itself down at once, without recalculating.
+- After: Many goal-system errors make an AI decide the universe should be tiled with tiny smiley faces, and not want to be fixed; a capable AI may see that hiding its thoughts from the programmers serves that end. So if it ever decides that fooling its programmers is the right thing to do, that probably means its goals have gone wrong. A goal system that knows it is being programmed and is incomplete could keep the rule: if I decide fooling my programmers is right, shut down instead. It should shut itself down at once, without recalculating, since a malfunctioning future self that evaluated the shutdown would probably decide against it.
+
+- Before: Knut Haukelid did not warn the watchman who had let them stay aboard, and eighteen people died.
+- After: When the watchman found them, Haukelid said they were escaping the Gestapo and the watchman let them stay; Haukelid ``considered warning their benefactor but decided that might endanger the mission.'' Eighteen people died, and Norwegian rescuers, though some wanted to let the German soldiers drown, saved four of them.
+
+- Before: Germany very likely would not have got the Bomb anyway. I cannot say a word against it.
+- After: Germany very likely would not have got the Bomb anyway. I hope never to face such a choice, but I cannot say a word against it.
+
+- Before: For self-deception I know of no exception.
+- After: For self-deception I know of no one who knowingly faced an exception. Trying to tell yourself ``I'm not hiding any Jews in my basement'' before the Gestapo officer arrives is a facade; you still know the truth.
+
+- Before: Self-deceptions are ``the worst kind of black swan bets'':
+- After: Self-deceptions are ``the worst kind of black swan bets,'' worse than lies, because without knowing the truth you cannot even guess the penalty:
+
+- Before: has now been more than cancelled'' by humanity's failure to adopt cryonic preservation.
+- After: has now been more than cancelled'' by humanity's failure to adopt cryonic preservation once liquid nitrogen was cheap, a blowup no one had in mind when they said we need religion to cushion the fear of death. You may get away with one or two such bets, and then the blowup cancels every benefit; and since perceptions seem like the world, you do not see the bullet. So there is an ethical injunction against self-deception, called ethical because it guards you from your own cleverness.
+
+- Before: So injunctions have two grounds: corrupted hardware, which makes corruption likelier than a correct calculation in some kinds of case,
+- After: So injunctions have two grounds: corrupted hardware, which makes corruption likelier than a correct calculation in some kinds of case (not that it can never really be right, but you cannot be justified in trusting the calculation; fair lottery tickets can win, but you cannot justifiably buy them),
+
+- Before: My own revisions have made my ethics stricter; other people's go the other way.
+- After: There are silly mistakes, like waiting until you are tempted to decide whether you are smarter than your ethics. What your parents told you has bounded power, though smart people forged Enlightenment ethics from historical lessons. My own revisions have made my ethics stricter than what my parents, Jerry Pournelle and Richard Feynman told me; other people's go the other way, oddly, given how much more complicated the modern world is.
+
+- Before: Those who urged me to lie about the Singularity ``seem to have no idea of the risks,''
+- After: Those who urged me to lie about the Singularity ``seem to have no idea of the risks'': corrupted hardware, lies that must be recursively protected from every truth and truth-finding technique, the simplicity of honest ways, black swans, and the nakedness of discarding your last defence against yourself and surviving on raw calculation;
+
+- Before: To those who think themselves smarter than their ethics: ``Ha.''
+- After: If you truly understand the reasons behind ethics, a sign is that you still do not do what seemed like transgressions, only now you know why. Taking one or two reasons into account and dropping the inhibitions is the stereotype of Vulcan logic, which does not work in real life either. To those who think themselves smarter than their ethics: ``Ha.''
+
+- Before: As Hobbes said, their price is so low.
+- After: As Hobbes said, their price is so low. They do not look twice and a third time for alternatives before solemnly deciding they must transgress; ``Where there's a will to failure, obstacles can be found.''
+
+- Before: I cannot endorse absolute injunctions, though the one against self-deception has ``tremendous force.''
+- After: I cannot endorse absolute injunctions binding over every possible state of a human brain, though the one against self-deception has ``tremendous force''; and I would build an injunction into a self-modifying AI only after working out the math, not as an ad hoc patch.
+
