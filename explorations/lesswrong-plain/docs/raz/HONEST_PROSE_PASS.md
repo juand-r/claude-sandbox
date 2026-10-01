@@ -143,20 +143,20 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] resist-the-happy-death-spiral
 - [x] uncritical-supercriticality
 - [x] evaporative-cooling-of-group-beliefs
-- [ ] when-none-dare-urge-restraint
-- [ ] every-cause-wants-to-be-a-cult
-- [ ] two-cult-koans
-- [ ] asch-s-conformity-experiment
-- [ ] on-expressing-your-concerns
-- [ ] lonely-dissent
-- [ ] cultish-countercultishness
-- [ ] singlethink
-- [ ] the-importance-of-saying-oops
-- [ ] the-crackpot-offer
-- [ ] just-lose-hope-already
-- [ ] the-proper-use-of-doubt
-- [ ] you-can-face-reality
-- [ ] the-meditation-on-curiosity
+- [x] when-none-dare-urge-restraint
+- [x] every-cause-wants-to-be-a-cult
+- [x] two-cult-koans
+- [x] asch-s-conformity-experiment
+- [x] on-expressing-your-concerns
+- [x] lonely-dissent
+- [x] cultish-countercultishness
+- [x] singlethink
+- [x] the-importance-of-saying-oops
+- [x] the-crackpot-offer
+- [x] just-lose-hope-already
+- [x] the-proper-use-of-doubt
+- [x] you-can-face-reality
+- [x] the-meditation-on-curiosity
 - [ ] no-one-can-exempt-you-from-rationality-s-laws
 - [ ] leave-a-line-of-retreat
 - [ ] crisis-of-faith
