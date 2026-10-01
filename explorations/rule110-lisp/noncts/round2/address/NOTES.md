@@ -83,3 +83,18 @@ without addressing), without emulating a cyclic tag system.
   was a NAMING artifact: collider's typer names two F's ~25 cells apart as a
   compound; split into parts they are exactly where predicted.
 - run_fixed2.py: programs restricted to >= -2, + controls (PID file).
+- 02:20 run_fixed2.py [sim]: 3/3 random length-5 fixed-stream programs in the
+  working range exact (with run_fixed.py: 7/7 in range, plus the 1-op test).
+  The unbalanced controls fail already at construction (ether phases of
+  neighbouring movers disagree) - a weak control, so added control_fixed.py:
+  slot 1 shifted by (1,-4) (ether-compatible, wrong class): all F's destroyed,
+  B/A debris -> fails as required.
+- C-direction with absorption (inline, catalog): a single F pair is wound both
+  ways by C-type messengers (labels -21..+6); with 3 F's the first-met pair
+  is still bidirectional, the second never changes alone.
+## Reflection
+- Worked: exhaustive catalog graphs gave a sharp negative quickly; relaxing
+  ONE assumption (outputs must be non-empty) turned it into a positive.
+- Mistakes: gap sign (x0 - t0/9), compound-naming misread (F_18_F#5), slot
+  overlap from large kick drifts, a weak construction-time control. All
+  caught by arithmetic or simulation cross-checks.

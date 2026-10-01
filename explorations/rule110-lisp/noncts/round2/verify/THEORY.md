@@ -48,6 +48,18 @@ feedback (an answer crossing an upstream store), unbounded answer travel
 regrown as in Cook's tape. With one E^n counter, the best reachable goal is
 M2 (a nontrivial one-counter program), not M3.
 
+Two further results came out of the integration work.
+
+4. **M2 is done as a compiler [sim].** I measured the stream machine's exact
+   transition table on (value, trajectory class). A planner over that table
+   inserts class correctors and compiles one-counter loop programs into
+   fixed Rule 110 streams. Four such streams pass the exact CA, including
+   inputs the planner never used (section 6).
+5. **The weakest control primitive for M3 [model].** Two counters, three
+   bounded flags, and the single rule "a zero DEC aborts the rest of the
+   block" compile any Minsky machine (section 7). Jumps and programmable
+   skip lengths are not needed.
+
 ## 2. Chain machines are monotone, hence decidable
 
 ### 2.1 The model
@@ -335,10 +347,32 @@ Consequences:
   zero test for an F-gap register, a way for its answer to edit the
   program stream, and fixed-stream (data-independent) placement.
 
-## 7. Open questions
+## 7. The weakest control primitive I found for M3 [sim, model]
 
-1. Is there a composable non-monotone gadget whose garbage crosses the rest
+`gbm.py` defines the **guarded-block machine**: a cyclic program of blocks
+of INC/DEC ops, in which a DEC on a zero register aborts the rest of its
+block. That is one uniform zero effect, "delete up to the next gate", which
+is what Cook's rejector does up to the next leader. There are no jumps and
+no programmable skip lengths. Any 2-counter Minsky machine compiles into it
+with five registers: x and y (data), P <= 2N (a state countdown) and F, G
+in {0,1}. Each program cycle performs one Minsky step. The differential
+test against scholar's interpreter passes 402/402. A control in which zero
+DECs do not abort fails on 46 halting programs.
+
+Consequences for the physical target:
+
+1. Round 1's requirements of "zero deletes exactly one block" plus "JUMP"
+   reduce to a single uniform rule, "zero deletes up to the next gate".
+   This rule is non-monotone, as section 2 says it must be.
+2. Three of the five registers are bounded, so they could be finite-state
+   flags rather than counters.
+3. Feedback (section 3) is still required, because an abort must delete
+   packets addressed to every register, upstream ones included.
+
+## 8. Open questions
+
+1. A physical abort: a zero answer that deletes stream packets up to a
+   gate, in a geometry with feedback (the F lane, or two streams).
+2. Is there a composable non-monotone gadget whose garbage crosses the rest
    of the stream? Gate's Z avoids the question by being garbage-free.
-2. A formal version of the "first free slot" extension of (P3).
-3. In the F lane: a zero test and answer transport (C1 x F class 1,
-   C1 x Ebar reactions).
+3. A formal version of the "first free slot" extension of (P3).

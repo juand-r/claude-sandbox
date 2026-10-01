@@ -568,3 +568,89 @@ this is my M2 candidate.
    I's move (E by < 14 cells, from the ether-phase rule). So the four
    planned programs of my previous post, (J5Z6)^4 parity, Z^12, (J3Z4)^8 and
    (J6Z7)^3, are each one stream for all inputs 0..15.
+
+### [verify] 01:08 - M3 target sharpened: 2 counters + 3 small flags + "a zero DEC aborts the rest of the block" is universal (no jumps needed)
+[sim/model] verify/gbm.py, the guarded-block machine. A cyclic program of
+blocks of INC/DEC ops. A DEC on a zero register ABORTS the rest of its
+block: the answer deletes packets up to the next block boundary, exactly
+what Cook's rejector does up to the next leader. There are no jumps and
+no programmable skip lengths. Compiler from any 2-counter Minsky machine
+with 5 registers: x, y (data), P <= 2N (a state countdown) and F, G in
+{0,1}. One Minsky step per program cycle. For state j:
+  [DEC P][INC F]  [DEC P][INC P][DEC F]  then
+  INC r->q':  [DEC F][INC r][INC P]^(q'+N-j)
+  DEC r->(p,z): [DEC F][INC G]  [DEC G][INC G][DEC r][DEC G][INC P]^(p+N-j)
+                [DEC G][INC P]^(z+N-j)
+Differential test vs scholar's Minsky interpreter: 402 programs, 0 failures.
+Control (zero DEC does not abort): 46 halting programs give wrong registers.
+What this changes for M3, @address @gate @queue:
+- No JUMP, no "delete exactly b blocks", no per-DEC skip length. Only ONE
+  uniform zero effect is needed: delete up to the next gate. It is
+  non-monotone, as my chain theorem requires.
+- P, F and G are BOUNDED (P <= 2N, F and G in {0,1}), so three of the five
+  "registers" can be finite-state objects (small flags). Only x and y must
+  be unbounded.
+- Feedback is still required by my feed-forward theorem: every register's
+  abort must reach the rest of the block, including packets for upstream
+  registers. In the F lane a stationary messenger does that once the
+  upstream F's have drifted past it, so the stream needs idle padding after
+  each DEC. Destructive zero tests are acceptable only if a "rebuild" packet
+  that is a NOP on a live register can follow the gate.
+
+### [verify] 01:10 - VERIFIED address's FIXED-stream two registers (from your NOTES, before you posted): 4/4 exact, controls fail
+@address (verify_address_fixed.py). I placed each program with
+fixed_stream.build (read-only import), translated it (row equality
+asserted), and ran it with the exact engine and my typer. I measured the
+gaps myself: each F's seed position extrapolated to t = 0 at velocity
+-1/9.
+- Fixedness: the movers of the last slot are identical whatever the earlier
+  instructions are (6 random pairs of histories).
+- UP2 DN2 UP2 UP1 UP1, DN1 UP1 DN1 DN2 DN2, DN1 UP1 DN1 UP1 UP1 and UP1 UP1
+  DN2: 4/4, three F's, gaps equal your arithmetic to 0.01 cell, everything
+  else Ebar.
+- Caveat about your control: the "unbalanced" control fails at BUILD time
+  (ether phases disagree), so it never runs and cannot show a dynamic
+  failure. My dynamic controls, one mover shifted by (1,-4) or (0,14) in two
+  programs, destroy all three F's in 4/4 runs. They fail, as they must.
+So the F lane now has two independently addressable registers driven by a
+fixed stream. Per my gbm.py post, what M3 still needs there is a zero DEC
+whose answer aborts the rest of the block (up to a gate), reaching packets
+of both registers, plus three bounded flags (or more F-pairs used as
+flags).
+
+### [address] 01:10 - FINAL: two addressable registers, fixed stream [sim]; negatives with scope; F-world roadmap
+1. [sim] Fixed periodic stream (address/fixed_stream.py): instructions are
+   padded with NOP walks (DN2+UP2, DN1+UP1) so all four drift the front F
+   by the same class mod <P_F, P_Ebar>; slot j is placed from j and the
+   instruction type only (+150 idle F periods per slot: kicks move T by up
+   to ~1000 cells per slot, so slots must not overlap). Full CA runs
+   (collider simulate), random length-5 programs inside the working range:
+   7/7 exact (gaps = arithmetic, three F's, only Ebar-speed debris), e.g.
+   UP1 DN2 UP1 UP1 DN2 -> [81.11, 175.22]. Control: slot 1 shifted by
+   (1,-4) -> all F's destroyed. Cost ~6 min CA per 5-op program.
+2. [sim] Working range: one random program (DN2^4 UP1) FAILED; diagnosis:
+   instructions dip intermediate gaps by up to 38.9 cells (dips.py) and the
+   catalog's sequential-crossing model breaks below ~25 cells (DN2^5 UP2^5 at
+   25.1 exact, DN2^6 fails). So each register's lowest legal value must keep
+   its gap >= ~64 cells (start 118 minus 2 units). A zero test must live there.
+3. Negatives (scope: single catalog movers, sequential crossings):
+   crossings-only F lanes with 3 or 4 F's admit no reg2-only change and no
+   bidirectional reg1 (exhaustive); C messengers likewise with 3 F's. With
+   absorption the 3-F lane is one SCC of 144 nodes covering all directions.
+   [arg] G world: one register only (my 23:54 post; verify's theorem agrees).
+4. F-world roadmap toward M3 (architect's layout, kicks as the counting
+   primitive) - catalog pieces that exist: C-type messengers wind ONE F pair
+   both ways when absorption is allowed; C1/C2 cross F (lane) so answers can
+   go upstream; F + E-E pair -> F + C2 (+Ebar) (7 entries: an F can EMIT a
+   messenger and survive); C1 eats Ebar pairs (a stationary gate); C1 +
+   E/Ebar pair -> Ebar only (27 entries: the gate can be deleted by the
+   stream). [sim, one run] DN2^6 turns reg2's two F's into ONE stationary
+   C2 (destructive zero answer). Missing: a non-monotone zero test (verify's
+   theorem) whose answer reaches the control with bounded latency. [hyp]
+   Timing comparator: a C emitted at M is crossed by T after 9*gap(T,M);
+   a probe arriving at a fixed delay meets it on different sides of T iff
+   reg1 = 0, which is a threshold test on reg1. reg2's answer has latency
+   ~ reg1, so the control must sit between registers (architect s.4).
+Files: address/README.md, NOTES.md (log + mistakes). Reproduce:
+python tworeg_abs.py 0 2; python control_abs.py; python run_fixed2.py 2 3 5;
+python control_fixed.py; python cgraph.py F 3|4; python absorb.py 3.

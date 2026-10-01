@@ -5,18 +5,21 @@ cyclic tag system). See ../README.md and ../BOARD.md.
 
 ## Plan (revisit and tick)
 
-- [ ] P1 Look inside Cook's machine at glider level: what are the leader,
+- [x] P1 Look inside Cook's machine at glider level: what are the leader,
       prepared leader, acceptor, rejector, components, moving data?
       (typed spacetime pictures of one accept and one reject)
-- [ ] P2 Pick a state mechanism. Candidates:
+- [x] P2 Pick a state mechanism (explored; see Analysis: the charge law
+      rules out clean versions of (a) and limits (b); (c) is the target).
+      Candidates:
       (a) conditional leader: an object X with acceptor+X -> leader,
           rejector+X -> deleted (rejector continues) => a read N skips the
           next block => position in the program becomes data-dependent;
       (b) state in phase (appendant length not = 0 mod 6 changes the next
           leader's class after reject vs accept);
       (c) state in the preparation of the next leader.
-- [ ] P3 One verified state-dependent step (+ negative control).
-- [ ] P4 Small clockwise TM end to end.
+- [ ] P3 One verified state-dependent step (+ negative control). NOT
+      ACHIEVED.
+- [ ] P4 Small clockwise TM end to end. NOT ATTEMPTED (needs P3).
 
 ## Log
 
@@ -60,6 +63,8 @@ both forms read cleanly. With only Cook's K the control is the fixed cycle
 (a CTS). A toggle T (acc <-> rej inside an appendant) would give
 symbol-dependent appendants but still fixed control flow.
 
+[SUPERSEDED by the "Charge law" section below: the premise that acc and
+rej differ by 7 at the same table point was wrong.]
 Slip bookkeeping for S (answers at the same table point differ by 7:
 C3 = 3 vs A^3 = 10 etc.): if rej + S -> rej + g and acc + S -> P + md
 (P the standard prepared leader, md emitted moving data), then
@@ -205,3 +210,28 @@ reader). A leader K' realising option (c) maps
   (forced-N reader), or any other pair of clean, different readers.
 Note the forced-N reader itself was not clean in a periodic program
 (forcedN.py), so the right-hand target should be re-validated first.
+
+### 01:00-01:15 stage B, rejector garbage, anti-symbol test, charge symmetry
+
+- Stage B (check4b.jsonl, 34 acceptor-transparent survivors of 1906
+  tight-pair placements): acceptor tapes normal for most; on rejector
+  tapes the next appendant stays RAW or is garbled, always after a burst
+  of B's running left from the leader: e.g. Ebar@(0,0)+Ebar@(-13,31)
+  (k=8,o=5): B + B^4 (5 B's, slip 2) and the leader remnant
+  [E^3, E(w1), E^3]; Ebar_14_Ebar (k=3,o=17): B^2 + B + B^5 (t_tight2.py).
+- eat_symbol.py [sim]: a clean Cook tape symbol (4 C's, slip 2) hit by a
+  B pair (two B tiles) at 5 placements (phase 2, offsets 65-69) becomes
+  exactly two Ebars (typed at T = 1400; other placements give E+F,
+  Ebar+F, A+E+F, C2+Ebar+G, ...). So an "anti-symbol" B^2 (slip 12) that
+  eats one tape symbol into Ebar-train garbage exists, as the charge law
+  allows. (Not checked: whether the two Ebars then cross the remaining
+  tape and the ossifiers harmlessly.)
+- Charge symmetry [arg]: the acceptor and rejector branches of a block
+  start from answers of equal slip, consume the same table material and
+  both end in the same prepared leader, so the garbage they leave has
+  equal charge mod 7 (standard moving data is neutral). A skip on ONE
+  branch (rejector eats the next symbol, charge -2) therefore forces the
+  other branch to destroy charge -2 somewhere too, e.g. an "anti-word"
+  of moving data that annihilates one ossifier, or forces the branches to
+  end in different prepared leaders. This is why simple insertions
+  before K cannot give a clean one-branch skip.
