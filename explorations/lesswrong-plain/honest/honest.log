@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  1 OCT 2026 01:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.27)  1 OCT 2026 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -463,25 +463,25 @@ st/fonts/enc/dvips/base/8r.enc}] (./honest.toc [2
 
 ]) (./sections/how-much-evidence-does-it-take.tex [44
 
-])
-(./sections/einstein-s-arrogance.tex [45
+] [45])
+(./sections/einstein-s-arrogance.tex [46
 
 ]) (./sections/occam-s-razor.tex
-[46
+[47
 
-]) (./sections/your-strength-as-a-rationalist.tex [47
-
-])
-(./sections/absence-of-evidence-is-evidence-of-absence.tex [48
+]) (./sections/your-strength-as-a-rationalist.tex [48
 
 ])
-(./sections/conservation-of-expected-evidence.tex [49
+(./sections/absence-of-evidence-is-evidence-of-absence.tex [49
 
 ])
-(./sections/hindsight-devalues-science.tex [50
+(./sections/conservation-of-expected-evidence.tex [50
 
 ])
-(./sections/illusion-of-transparency-why-no-one-understands-you.tex [51
+(./sections/hindsight-devalues-science.tex [51
+
+])
+(./sections/illusion-of-transparency-why-no-one-understands-you.tex [52
 
 ]
 Overfull \hbox (0.94756pt too wide) in paragraph at lines 7--8
@@ -489,38 +489,33 @@ Overfull \hbox (0.94756pt too wide) in paragraph at lines 7--8
 the old idiom ``the goose hangs high.''
  []
 
-) (./sections/expecting-short-inferential-distances.tex [52
+) (./sections/expecting-short-inferential-distances.tex [53
 
-]) [53
+]) [54
 
 ]
-(./sections/fake-explanations.tex
-Overfull \hbox (0.65169pt too wide) in paragraph at lines 5--6
-\T1/ppl/m/n/10.95 (-20) ``magic'' what Giles would say; the phrases belong to d
-ifferent ``literary genres.'' A Bayesian
- []
-
-) (./sections/guessing-the-teacher-s-password.tex [54
+(./sections/fake-explanations.tex)
+(./sections/guessing-the-teacher-s-password.tex [55
 
 ])
-(./sections/science-as-attire.tex [55
+(./sections/science-as-attire.tex [56
 
-]) (./sections/fake-causality.tex [56
-
-])
-(./sections/semantic-stopsigns.tex [57
-
-] [58])
-(./sections/mysterious-answers-to-mysterious-questions.tex [59
+]) (./sections/fake-causality.tex [57
 
 ])
-(./sections/the-futility-of-emergence.tex [60
+(./sections/semantic-stopsigns.tex [58
+
+] [59])
+(./sections/mysterious-answers-to-mysterious-questions.tex [60
 
 ])
-(./sections/say-not-complexity.tex [61
+(./sections/the-futility-of-emergence.tex [61
 
 ])
-(./sections/positive-bias-look-into-the-dark.tex [62
+(./sections/say-not-complexity.tex [62
+
+])
+(./sections/positive-bias-look-into-the-dark.tex [63
 
 ]
 Overfull \hbox (0.60138pt too wide) in paragraph at lines 15--16
@@ -528,7 +523,7 @@ Overfull \hbox (0.60138pt too wide) in paragraph at lines 15--16
 nt has shown to be ``human instinct.''
  []
 
-) (./sections/lawful-uncertainty.tex [63
+) (./sections/lawful-uncertainty.tex [64
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 3
@@ -537,62 +532,62 @@ LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 3
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ))
-(./sections/my-wild-and-reckless-youth.tex [64
+(./sections/my-wild-and-reckless-youth.tex [65
 
 ])
-(./sections/failing-to-learn-from-history.tex [65
+(./sections/failing-to-learn-from-history.tex [66
 
 ])
-(./sections/making-history-available.tex [66
+(./sections/making-history-available.tex [67
 
 ])
-(./sections/explain-worship-ignore.tex [67
+(./sections/explain-worship-ignore.tex [68
 
 ])
-(./sections/science-as-curiosity-stopper.tex [68
+(./sections/science-as-curiosity-stopper.tex [69
 
 ])
-(./sections/truly-part-of-you.tex [69
+(./sections/truly-part-of-you.tex [70
 
 ]) (./sections/the-simple-truth.tex
-[70
+[71
 
-] [71] [72
+] [72] [73
 
-]) [73] [74
+]) [74] [75
 
-] (./sections/rationality-an-introduction.tex [75
-
-])
-(./sections/tsuyoku-naritai-i-want-to-become-stronger.tex [76])
-(./sections/the-proper-use-of-humility.tex [77
+] (./sections/rationality-an-introduction.tex [76
 
 ])
-(./sections/tsuyoku-vs-the-egalitarian-instinct.tex [78
+(./sections/tsuyoku-naritai-i-want-to-become-stronger.tex [77])
+(./sections/the-proper-use-of-humility.tex [78
 
 ])
-(./sections/the-third-alternative.tex [79
+(./sections/tsuyoku-vs-the-egalitarian-instinct.tex [79
 
 ])
-(./sections/lotteries-a-waste-of-hope.tex [80
+(./sections/the-third-alternative.tex [80
 
 ])
-(./sections/new-improved-lottery.tex [81
+(./sections/lotteries-a-waste-of-hope.tex [81
 
 ])
-(./sections/but-there-s-still-a-chance-right.tex [82
+(./sections/new-improved-lottery.tex [82
 
 ])
-(./sections/the-fallacy-of-gray.tex [83
-
-] [84
+(./sections/but-there-s-still-a-chance-right.tex [83
 
 ])
-(./sections/absolute-authority.tex [85] [86
+(./sections/the-fallacy-of-gray.tex [84
+
+] [85
 
 ])
-(./sections/how-to-convince-me-that-2-2-3.tex [87])
-(./sections/infinite-certainty.tex [88
+(./sections/absolute-authority.tex [86] [87
+
+])
+(./sections/how-to-convince-me-that-2-2-3.tex [88])
+(./sections/infinite-certainty.tex [89
 
 ]
 LaTeX Info: Symbol \textuparrow not provided by
@@ -610,383 +605,370 @@ LaTeX Info: Symbol \textuparrow not provided by
             font family ppl in TS1 encoding.
             Default family used instead on input line 11.
 )
-(./sections/0-and-1-are-not-probabilities.tex [89
+(./sections/0-and-1-are-not-probabilities.tex [90
 
-] [90])
-(./sections/your-rationality-is-my-business.tex [91
+] [91])
+(./sections/your-rationality-is-my-business.tex [92
 
-]) [92
+]) [93
 
 ]
 (./sections/politics-is-the-mind-killer.tex)
-(./sections/policy-debates-should-not-appear-one-sided.tex [93
+(./sections/policy-debates-should-not-appear-one-sided.tex [94
 
 ])
-(./sections/the-scales-of-justice-the-notebook-of-rationality.tex [94
+(./sections/the-scales-of-justice-the-notebook-of-rationality.tex [95
 
 ])
-(./sections/correspondence-bias.tex [95
+(./sections/correspondence-bias.tex [96
 
 ])
-(./sections/are-your-enemies-innately-evil.tex [96
+(./sections/are-your-enemies-innately-evil.tex [97
 
 ])
-(./sections/reversed-stupidity-is-not-intelligence.tex [97
+(./sections/reversed-stupidity-is-not-intelligence.tex [98
 
 ])
-(./sections/argument-screens-off-authority.tex [98
+(./sections/argument-screens-off-authority.tex [99
 
 ])
-(./sections/hug-the-query.tex [99
+(./sections/hug-the-query.tex [100
 
 ])
-(./sections/rationality-and-the-english-language.tex [100
+(./sections/rationality-and-the-english-language.tex [101
 
 ])
-(./sections/human-evil-and-muddled-thinking.tex [101
+(./sections/human-evil-and-muddled-thinking.tex [102
 
-] [102]
+] [103]
 Overfull \hbox (1.2332pt too wide) in paragraph at lines 7--8
 \T1/ppl/m/n/10.95 (-20) sets out to muddle thinking. [][n.b. Orwell's claim was
  about political language ``In our time.''
  []
 
-) [103
+) [104
 
 ] (./sections/knowing-about-biases-can-hurt-people.tex)
-(./sections/update-yourself-incrementally.tex [104
+(./sections/update-yourself-incrementally.tex [105
 
 ])
-(./sections/one-argument-against-an-army.tex [105
+(./sections/one-argument-against-an-army.tex [106
 
 ])
-(./sections/the-bottom-line.tex [106
+(./sections/the-bottom-line.tex [107
 
 ])
-(./sections/what-evidence-filtered-evidence.tex [107
+(./sections/what-evidence-filtered-evidence.tex [108
 
-] [108])
-(./sections/rationalization.tex [109
+] [109])
+(./sections/rationalization.tex [110
 
 ]) (./sections/a-rational-argument.tex
-[110
+[111
 
-]) (./sections/avoiding-your-belief-s-real-weak-points.tex [111
+]) (./sections/avoiding-your-belief-s-real-weak-points.tex [112
 
-] [112
-
-])
-(./sections/motivated-stopping-and-motivated-continuation.tex [113])
-(./sections/fake-justification.tex
-Overfull \hbox (7.60469pt too wide) in paragraph at lines 13--1
-\T1/ppl/m/n/10.95 (-20) sion while fast, cheap ev-i-dence re-mains: web-sites y
-ou could visit, counter-counterarguments
- []
-
-[114
-
-] [115]) (./sections/is-that-your-true-rejection.tex [116
-
-] [117
+] [113
 
 ])
-(./sections/entangled-truths-contagious-lies.tex [118])
-(./sections/of-lies-and-black-swan-blowups.tex [119
+(./sections/motivated-stopping-and-motivated-continuation.tex [114])
+(./sections/fake-justification.tex [115
+
+] [116])
+(./sections/is-that-your-true-rejection.tex [117
+
+] [118
 
 ])
-(./sections/dark-side-epistemology.tex [120
+(./sections/entangled-truths-contagious-lies.tex [119])
+(./sections/of-lies-and-black-swan-blowups.tex [120
 
-] [121
+])
+(./sections/dark-side-epistemology.tex [121
 
-]) [122]
+] [122
+
+]) [123]
 (./sections/doublethink-choosing-to-be-biased.tex)
-(./sections/no-really-i-ve-deceived-myself.tex [123
+(./sections/no-really-i-ve-deceived-myself.tex [124
 
-] [124])
-(./sections/belief-in-self-deception.tex [125
+] [125])
+(./sections/belief-in-self-deception.tex [126
 
-]) (./sections/moore-s-paradox.tex [126
+]) (./sections/moore-s-paradox.tex [127
 
-]) (./sections/don-t-believe-you-ll-self-deceive.tex [127
+]) (./sections/don-t-believe-you-ll-self-deceive.tex [128
 
-]) [128
+]) [129
 
 ]
 (./sections/anchoring-and-adjustment.tex)
-(./sections/priming-and-contamination.tex [129
+(./sections/priming-and-contamination.tex [130
 
 ])
-(./sections/do-we-believe-everything-we-re-told.tex [130
+(./sections/do-we-believe-everything-we-re-told.tex [131
 
 ])
-(./sections/cached-thoughts.tex [131
+(./sections/cached-thoughts.tex [132
 
-]) (./sections/original-seeing.tex [132
-
-])
-(./sections/the-virtue-of-narrowness.tex [133
+]) (./sections/original-seeing.tex [133
 
 ])
-(./sections/stranger-than-history.tex [134
+(./sections/the-virtue-of-narrowness.tex [134
 
 ])
-(./sections/the-logical-fallacy-of-generalization-from-fictional.tex [135
+(./sections/stranger-than-history.tex [135
+
+])
+(./sections/the-logical-fallacy-of-generalization-from-fictional.tex [136
 
 ]
-[136
+[137
 
-]) (./sections/we-change-our-minds-less-often-than-we-think.tex [137])
-(./sections/hold-off-on-proposing-solutions.tex [138
+]) (./sections/we-change-our-minds-less-often-than-we-think.tex [138])
+(./sections/hold-off-on-proposing-solutions.tex [139
 
 ])
-(./sections/the-genetic-fallacy.tex [139
+(./sections/the-genetic-fallacy.tex [140
 
-]) [140
+]) [141
 
 ]
 (./sections/the-affect-heuristic.tex)
-(./sections/evaluability-and-cheap-holiday-shopping.tex [141
+(./sections/evaluability-and-cheap-holiday-shopping.tex [142
 
 ])
-(./sections/unbounded-scales-huge-jury-awards-and-futurism.tex [142
+(./sections/unbounded-scales-huge-jury-awards-and-futurism.tex [143
 
 ])
-(./sections/the-halo-effect.tex [143
+(./sections/the-halo-effect.tex [144
 
-]) (./sections/superhero-bias.tex [144
-
-])
-(./sections/affective-death-spirals.tex [145
+]) (./sections/superhero-bias.tex [145
 
 ])
-(./sections/resist-the-happy-death-spiral.tex [146
-
-] [147
+(./sections/affective-death-spirals.tex [146
 
 ])
-(./sections/uncritical-supercriticality.tex [148])
-(./sections/evaporative-cooling-of-group-beliefs.tex [149
+(./sections/resist-the-happy-death-spiral.tex [147
+
+] [148
 
 ])
-(./sections/when-none-dare-urge-restraint.tex [150
-
-] [151])
-(./sections/every-cause-wants-to-be-a-cult.tex [152
+(./sections/uncritical-supercriticality.tex [149])
+(./sections/evaporative-cooling-of-group-beliefs.tex [150
 
 ])
-(./sections/two-cult-koans.tex [153
+(./sections/when-none-dare-urge-restraint.tex [151
+
+] [152])
+(./sections/every-cause-wants-to-be-a-cult.tex [153
 
 ])
-(./sections/asch-s-conformity-experiment.tex [154
+(./sections/two-cult-koans.tex [154
 
 ])
-(./sections/on-expressing-your-concerns.tex [155
+(./sections/asch-s-conformity-experiment.tex [155
 
 ])
-(./sections/lonely-dissent.tex [156
+(./sections/on-expressing-your-concerns.tex [156
 
 ])
-(./sections/cultish-countercultishness.tex [157
+(./sections/lonely-dissent.tex [157
 
-] [158] [159
+])
+(./sections/cultish-countercultishness.tex [158
 
-]) [160]
+] [159] [160
+
+]) [161]
 (./sections/singlethink.tex) (./sections/the-importance-of-saying-oops.tex
-[161
+[162
 
-]) (./sections/the-crackpot-offer.tex [162
-
-])
-(./sections/just-lose-hope-already.tex [163
+]) (./sections/the-crackpot-offer.tex [163
 
 ])
-(./sections/the-proper-use-of-doubt.tex [164
+(./sections/just-lose-hope-already.tex [164
 
 ])
-(./sections/you-can-face-reality.tex [165
+(./sections/the-proper-use-of-doubt.tex [165
 
 ])
-(./sections/the-meditation-on-curiosity.tex [166
-
-] [167
+(./sections/you-can-face-reality.tex [166
 
 ])
-(./sections/no-one-can-exempt-you-from-rationality-s-laws.tex [168])
-(./sections/leave-a-line-of-retreat.tex [169
+(./sections/the-meditation-on-curiosity.tex [167
 
-] [170
+] [168
 
 ])
-(./sections/crisis-of-faith.tex [171] [172
+(./sections/no-one-can-exempt-you-from-rationality-s-laws.tex [169])
+(./sections/leave-a-line-of-retreat.tex [170
+
+] [171
+
+])
+(./sections/crisis-of-faith.tex [172] [173
 
 ]) (./sections/the-ritual.tex
-[173]) [174
+[174]) [175
 
-] [175
+] [176
 
-] (./sections/minds-an-introduction.tex [176
-
-])
-(./sections/the-power-of-intelligence.tex [177]) (./sections/an-alien-god.tex
-[178
-
-] [179
-
-]) (./sections/the-wonder-of-evolution.tex [180])
-(./sections/evolutions-are-stupid-but-work-anyway.tex [181
-
-] [182] [183
+] (./sections/minds-an-introduction.tex [177
 
 ])
-(./sections/no-evolutions-for-corporations-or-nanodevices.tex [184] [185
+(./sections/the-power-of-intelligence.tex [178]) (./sections/an-alien-god.tex
+[179
+
+] [180
+
+]) (./sections/the-wonder-of-evolution.tex [181])
+(./sections/evolutions-are-stupid-but-work-anyway.tex [182
+
+] [183] [184
 
 ])
-(./sections/evolving-to-extinction.tex [186] [187
+(./sections/no-evolutions-for-corporations-or-nanodevices.tex [185] [186
 
 ])
-(./sections/the-tragedy-of-group-selectionism.tex [188] [189
+(./sections/evolving-to-extinction.tex [187] [188
 
 ])
-(./sections/fake-optimization-criteria.tex [190])
-(./sections/adaptation-executers-not-fitness-maximizers.tex [191
+(./sections/the-tragedy-of-group-selectionism.tex [189] [190
 
 ])
-(./sections/evolutionary-psychology.tex [192
+(./sections/fake-optimization-criteria.tex [191])
+(./sections/adaptation-executers-not-fitness-maximizers.tex [192
 
 ])
-(./sections/an-especially-elegant-evpsych-experiment.tex [193
-
-] [194])
-(./sections/superstimuli-and-the-collapse-of-western-civilization.tex [195
+(./sections/evolutionary-psychology.tex [193
 
 ])
-(./sections/thou-art-godshatter.tex [196
+(./sections/an-especially-elegant-evpsych-experiment.tex [194
 
-] [197]) [198
+] [195])
+(./sections/superstimuli-and-the-collapse-of-western-civilization.tex [196
 
-] [199]
+])
+(./sections/thou-art-godshatter.tex [197
+
+] [198]) [199
+
+] [200]
 (./sections/belief-in-intelligence.tex) (./sections/humans-in-funny-suits.tex
-[200
+[201
 
-] [201
+] [202
 
 ]) (./sections/optimization-and-the-intelligence-explosion.tex
-[202] [203
+[203] [204
 
-]) (./sections/ghosts-in-the-machine.tex [204])
-(./sections/artificial-addition.tex [205
-
-])
-(./sections/terminal-values-and-instrumental-values.tex [206
-
-] [207] [208
+]) (./sections/ghosts-in-the-machine.tex [205])
+(./sections/artificial-addition.tex [206
 
 ])
-(./sections/leaky-generalizations.tex [209])
-(./sections/the-hidden-complexity-of-wishes.tex [210
+(./sections/terminal-values-and-instrumental-values.tex [207
 
-] [211])
-(./sections/anthropomorphic-optimism.tex [212
+] [208] [209
 
-] [213])
-(./sections/lost-purposes.tex [214
+])
+(./sections/leaky-generalizations.tex [210])
+(./sections/the-hidden-complexity-of-wishes.tex [211
 
-] [215] [216
+] [212])
+(./sections/anthropomorphic-optimism.tex [213
 
-]) [217]
+] [214])
+(./sections/lost-purposes.tex [215
+
+] [216] [217
+
+]) [218]
 (./sections/the-parable-of-the-dagger.tex)
-(./sections/the-parable-of-hemlock.tex [218
+(./sections/the-parable-of-hemlock.tex [219
 
 ])
-(./sections/words-as-hidden-inferences.tex [219
+(./sections/words-as-hidden-inferences.tex [220
 
 ])
-(./sections/extensions-and-intensions.tex [220
+(./sections/extensions-and-intensions.tex [221
 
 ])
-(./sections/similarity-clusters.tex [221
+(./sections/similarity-clusters.tex [222
 
-] [222])
-(./sections/typicality-and-asymmetrical-similarity.tex [223
-
-])
-(./sections/the-cluster-structure-of-thingspace.tex [224
+] [223])
+(./sections/typicality-and-asymmetrical-similarity.tex [224
 
 ])
-(./sections/disguised-queries.tex [225
+(./sections/the-cluster-structure-of-thingspace.tex [225
+
+])
+(./sections/disguised-queries.tex [226
 
 ]) (./sections/neural-categories.tex
-[226
+[227
 
-]) (./sections/how-an-algorithm-feels-from-inside.tex [227
+]) (./sections/how-an-algorithm-feels-from-inside.tex [228
 
-] [228])
-(./sections/disputing-definitions.tex [229
+] [229])
+(./sections/disputing-definitions.tex [230
 
 ]) (./sections/feel-the-meaning.tex
-[230
+[231
 
-] [231]) (./sections/the-argument-from-common-usage.tex [232
+] [232]) (./sections/the-argument-from-common-usage.tex [233
 
-] [233
-
-])
-(./sections/empty-labels.tex [234]) (./sections/taboo-your-words.tex [235
+] [234
 
 ])
-(./sections/replace-the-symbol-with-the-substance.tex [236
-
-] [237
+(./sections/empty-labels.tex [235]) (./sections/taboo-your-words.tex [236
 
 ])
-(./sections/fallacies-of-compression.tex [238])
-(./sections/categorizing-has-consequences.tex [239
+(./sections/replace-the-symbol-with-the-substance.tex [237
+
+] [238
 
 ])
-(./sections/sneaking-in-connotations.tex [240
+(./sections/fallacies-of-compression.tex [239])
+(./sections/categorizing-has-consequences.tex [240
 
 ])
-(./sections/arguing-by-definition.tex [241
+(./sections/sneaking-in-connotations.tex [241
 
 ])
-(./sections/where-to-draw-the-boundary.tex [242
+(./sections/arguing-by-definition.tex [242
 
 ])
-(./sections/entropy-and-short-codes.tex [243
+(./sections/where-to-draw-the-boundary.tex [243
 
 ] [244])
-(./sections/mutual-information-and-density-in-thingspace.tex [245
+(./sections/entropy-and-short-codes.tex [245
 
-] [246]
-[247
+] [246])
+(./sections/mutual-information-and-density-in-thingspace.tex [247
 
-]) (./sections/superexponential-conceptspace-and-simple-words.tex [248]
+] [248]
 [249
 
-]) (./sections/conditional-independence-and-naive-bayes.tex [250] [251
+]) (./sections/superexponential-conceptspace-and-simple-words.tex [250]
+[251
+
+]) (./sections/conditional-independence-and-naive-bayes.tex [252] [253
 
 ])
-(./sections/words-as-mental-paintbrush-handles.tex [252])
-(./sections/variable-question-fallacies.tex [253
+(./sections/words-as-mental-paintbrush-handles.tex [254])
+(./sections/variable-question-fallacies.tex [255
 
 ])
-(./sections/37-ways-that-words-can-be-wrong.tex [254
+(./sections/37-ways-that-words-can-be-wrong.tex [256
 
-] [255
+] [257
 
 ])
-(./sections/an-intuitive-explanation-of-bayes-s-theorem.tex [256] [257
+(./sections/an-intuitive-explanation-of-bayes-s-theorem.tex [258] [259
 
 ]
-Overfull \hbox (3.3289pt too wide) in paragraph at lines 21--22
-\T1/ppl/m/n/10.95 (-20) women, have two, since ei-ther can be any-thing. $\OML/
-zplm/m/it/10.95 P\OT1/zplm/m/n/10.95 ([]\OT1/ppl/m/n/10.95 (-20) , []\OT1/zplm/
-m/n/10.95 ) = \OML/zplm/m/it/10.95 P\OT1/zplm/m/n/10.95 ([]\OMS/zplm/m/n/10.95 
-j[]\OT1/zplm/m/n/10.95 ) \OMS/zplm/m/n/10.95 ^^B
- []
-
-
-Overfull \hbox (2.74231pt too wide) in paragraph at lines 27--28
+Overfull \hbox (2.74231pt too wide) in paragraph at lines 33--34
 \T1/ppl/m/n/10.95 (-20) same prod-uct for the al-ter-na-tive. In gen-eral form,
  $\OML/zplm/m/it/10.95 P\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95 A\OMS/zplm/m/
 n/10.95 j\OML/zplm/m/it/10.95 X\OT1/zplm/m/n/10.95 ) = \OML/zplm/m/it/10.95 P\O
@@ -998,430 +980,430 @@ OML/zplm/m/it/10.95 X\OMS/zplm/m/n/10.95 j\OML/zplm/m/it/10.95 A\OT1/zplm/m/n/1
 m/m/n/10.95 ) +
  []
 
-[258]) [259] [260
+[260]) [261] [262
 
-] (./sections/the-world-an-introduction.tex [261
-
-])
-(./sections/universal-fire.tex [262]) (./sections/universal-law.tex [263
+] (./sections/the-world-an-introduction.tex [263
 
 ])
-(./sections/is-reality-ugly.tex [264
+(./sections/universal-fire.tex [264]) (./sections/universal-law.tex [265
 
-] [265
+]
+[266]) (./sections/is-reality-ugly.tex [267
+
+] [268
 
 ])
-(./sections/beautiful-probability.tex [266] [267
+(./sections/beautiful-probability.tex [269] [270
 
 ])
-(./sections/outside-the-laboratory.tex [268] [269
+(./sections/outside-the-laboratory.tex [271] [272
 
 ])
 (./sections/the-second-law-of-thermodynamics-and-engines-of-cognition.tex
-[270] [271
+[273] [274
 
-]) (./sections/perpetual-motion-beliefs.tex [272] [273
+]) (./sections/perpetual-motion-beliefs.tex [275] [276
 
 ])
-(./sections/searching-for-bayes-structure.tex [274] [275
+(./sections/searching-for-bayes-structure.tex [277] [278
 
-]) [276]
-(./sections/dissolving-the-question.tex [277
+]) [279]
+(./sections/dissolving-the-question.tex [280
 
 ]) (./sections/wrong-questions.tex
-[278]) (./sections/righting-a-wrong-question.tex [279
+[281]) (./sections/righting-a-wrong-question.tex [282
 
 ])
-(./sections/mind-projection-fallacy.tex [280
+(./sections/mind-projection-fallacy.tex [283
 
 ])
-(./sections/probability-is-in-the-mind.tex [281
+(./sections/probability-is-in-the-mind.tex [284
 
-] [282
-
-])
-(./sections/the-quotation-is-not-the-referent.tex [283])
-(./sections/qualitatively-confused.tex [284
+] [285
 
 ])
-(./sections/think-like-reality.tex [285
+(./sections/the-quotation-is-not-the-referent.tex [286])
+(./sections/qualitatively-confused.tex [287
+
+])
+(./sections/think-like-reality.tex [288
 
 ]) (./sections/chaotic-inversion.tex
-[286
+[289
 
-]) (./sections/reductionism.tex [287
+]) (./sections/reductionism.tex [290
+
+] [291
 
 ])
-(./sections/explaining-vs-explaining-away.tex [288
+(./sections/explaining-vs-explaining-away.tex [292])
+(./sections/fake-reductionism.tex [293
 
-] [289])
-(./sections/fake-reductionism.tex [290
-
-]) (./sections/savanna-poets.tex [291
+]) (./sections/savanna-poets.tex [294
 
 ]
-[292
+[295
 
-]) [293] (./sections/joy-in-the-merely-real.tex)
-(./sections/joy-in-discovery.tex [294
-
-] [295
-
-])
-(./sections/bind-yourself-to-reality.tex [296])
-(./sections/if-you-demand-magic-magic-won-t-help.tex [297
+]) [296] (./sections/joy-in-the-merely-real.tex)
+(./sections/joy-in-discovery.tex [297
 
 ] [298
 
 ])
-(./sections/mundane-magic.tex [299])
-(./sections/the-beauty-of-settled-science.tex [300
+(./sections/bind-yourself-to-reality.tex [299])
+(./sections/if-you-demand-magic-magic-won-t-help.tex [300
 
-] [301])
-(./sections/amazing-breakthrough-day-april-1st.tex [302
-
-])
-(./sections/is-humanism-a-religion-substitute.tex [303
+] [301
 
 ])
-(./sections/scarcity.tex [304
-
-] [305]) (./sections/the-sacred-mundane.tex
-[306
-
-] [307
-
-]) (./sections/to-spread-science-keep-it-secret.tex [308] [309
+(./sections/mundane-magic.tex [302] [303
 
 ])
-(./sections/initiation-ceremony.tex [310]) [311
+(./sections/the-beauty-of-settled-science.tex [304])
+(./sections/amazing-breakthrough-day-april-1st.tex [305
+
+])
+(./sections/is-humanism-a-religion-substitute.tex [306
+
+])
+(./sections/scarcity.tex [307
+
+] [308]) (./sections/the-sacred-mundane.tex
+[309
+
+] [310
+
+]) (./sections/to-spread-science-keep-it-secret.tex [311] [312
+
+])
+(./sections/initiation-ceremony.tex [313]) [314
 
 ]
-(./sections/hand-vs-fingers.tex) (./sections/angry-atoms.tex [312
+(./sections/hand-vs-fingers.tex) (./sections/angry-atoms.tex [315
 
-] [313])
-(./sections/heat-vs-motion.tex [314
+] [316])
+(./sections/heat-vs-motion.tex [317
 
-] [315] [316
-
-])
-(./sections/brain-breakthrough-it-s-made-of-neurons.tex [317])
-(./sections/when-anthropomorphism-became-stupid.tex [318
+] [318] [319
 
 ])
-(./sections/a-priori.tex [319
+(./sections/brain-breakthrough-it-s-made-of-neurons.tex [320])
+(./sections/when-anthropomorphism-became-stupid.tex [321
 
-] [320
+])
+(./sections/a-priori.tex [322
+
+] [323
 
 ]) (./sections/reductive-reference.tex
-[321] [322
+[324] [325
 
-]) (./sections/zombies-zombies.tex [323] [324
+]) (./sections/zombies-zombies.tex [326] [327
 
-] [325] [326])
-(./sections/zombie-responses.tex [327] [328
-
-])
-(./sections/the-generalized-anti-zombie-principle.tex [329] [330
-
-] [331])
-(./sections/gazp-vs-glut.tex [332] [333
+] [328] [329])
+(./sections/zombie-responses.tex [330] [331
 
 ])
-(./sections/belief-in-the-implied-invisible.tex [334])
-(./sections/zombies-the-movie.tex [335
+(./sections/the-generalized-anti-zombie-principle.tex [332] [333
 
-] [336])
-(./sections/excluding-the-supernatural.tex [337
-
-] [338
+] [334])
+(./sections/gazp-vs-glut.tex [335] [336
 
 ])
-(./sections/psychic-powers.tex [339]) [340
+(./sections/belief-in-the-implied-invisible.tex [337] [338
+
+])
+(./sections/zombies-the-movie.tex [339])
+(./sections/excluding-the-supernatural.tex [340
+
+] [341
+
+])
+(./sections/psychic-powers.tex [342]) [343
 
 ]
-(./sections/quantum-explanations.tex [341
+(./sections/quantum-explanations.tex [344
 
 ])
-(./sections/configurations-and-amplitude.tex [342] [343
+(./sections/configurations-and-amplitude.tex [345] [346
 
 ])
-(./sections/joint-configurations.tex [344])
-(./sections/distinct-configurations.tex [345
+(./sections/joint-configurations.tex [347])
+(./sections/distinct-configurations.tex [348
 
-] [346
+] [349
 
 ])
-(./sections/collapse-postulates.tex [347])
+(./sections/collapse-postulates.tex [350])
 (./sections/decoherence-is-simple.tex
-Overfull \hbox (15.45338pt too wide) in paragraph at lines 13--1
-[]\T1/ppl/m/n/10.95 (-20) Then my list: col-lapse would be the only non-linear,
- non-unitary, dis-con-tin-u-ous, configuration-
+Overfull \hbox (3.25296pt too wide) in paragraph at lines 13--1
+[]\T1/ppl/m/n/10.95 (-20) By my list, col-lapse would be the only non-linear, n
+on-unitary, dis-con-tin-u-ous, configuration-
  []
 
-[348
+[351
 
-] [349] [350
+] [352] [353
 
 ]) (./sections/decoherence-is-falsifiable-and-testable.tex
-[351] [352
+[354] [355] [356
 
-]) (./sections/privileging-the-hypothesis.tex [353] [354
-
-])
-(./sections/living-in-many-worlds.tex [355] [356
+]) (./sections/privileging-the-hypothesis.tex [357] [358
 
 ])
-(./sections/quantum-non-realism.tex [357] [358
+(./sections/living-in-many-worlds.tex [359] [360
 
 ])
-(./sections/if-many-worlds-had-come-first.tex [359] [360
+(./sections/quantum-non-realism.tex [361] [362
+
+] [363])
+(./sections/if-many-worlds-had-come-first.tex [364] [365
 
 ])
-(./sections/where-philosophy-meets-science.tex [361] [362
+(./sections/where-philosophy-meets-science.tex [366] [367
 
 ])
-(./sections/thou-art-physics.tex [363])
-(./sections/many-worlds-one-best-guess.tex [364
+(./sections/thou-art-physics.tex [368])
+(./sections/many-worlds-one-best-guess.tex [369
 
-] [365] [366
+] [370] [371
 
-]) [367] [368]
-(./sections/the-failures-of-eld-science.tex [369
-
-])
-(./sections/the-dilemma-science-or-bayes.tex [370] [371
+] [372]) [373]
+(./sections/the-failures-of-eld-science.tex [374
 
 ])
-(./sections/science-doesn-t-trust-your-rationality.tex [372] [373
+(./sections/the-dilemma-science-or-bayes.tex [375] [376
 
 ])
-(./sections/when-science-can-t-help.tex [374] [375
+(./sections/science-doesn-t-trust-your-rationality.tex [377] [378
 
 ])
-(./sections/science-isn-t-strict-enough.tex [376] [377
+(./sections/when-science-can-t-help.tex [379] [380
 
 ])
-(./sections/do-scientists-already-know-this-stuff.tex [378] [379
+(./sections/science-isn-t-strict-enough.tex [381] [382
 
 ])
-(./sections/no-safe-defense-not-even-science.tex [380] [381
+(./sections/do-scientists-already-know-this-stuff.tex [383] [384
 
 ])
-(./sections/changing-the-definition-of-science.tex [382])
-(./sections/faster-than-science.tex [383
-
-] [384
+(./sections/no-safe-defense-not-even-science.tex [385] [386
 
 ])
-(./sections/einstein-s-speed.tex [385] [386
+(./sections/changing-the-definition-of-science.tex [387])
+(./sections/faster-than-science.tex [388
+
+] [389
 
 ])
-(./sections/that-alien-message.tex [387] [388
+(./sections/einstein-s-speed.tex [390] [391
 
 ])
-(./sections/my-childhood-role-model.tex [389] [390
+(./sections/that-alien-message.tex [392] [393
 
 ])
-(./sections/einstein-s-superpowers.tex [391]) (./sections/class-project.tex
-[392
-
-] [393] [394
+(./sections/my-childhood-role-model.tex [394] [395
 
 ])
-(./sections/a-technical-explanation-of-technical-explanation.tex [395] [396
+(./sections/einstein-s-superpowers.tex [396]) (./sections/class-project.tex
+[397
+
+] [398] [399
+
+])
+(./sections/a-technical-explanation-of-technical-explanation.tex [400] [401
 
 ]
-[397] [398] [399]) [400] [401
+[402] [403] [404]) [405] [406
 
-] (./sections/ends-an-introduction.tex [402
-
-])
-(./sections/not-for-the-sake-of-happiness-alone.tex [403])
-(./sections/fake-selfishness.tex [404
-
-] [405]) (./sections/fake-morality.tex
-[406
-
-]) (./sections/fake-utility-functions.tex [407
-
-] [408
+] (./sections/ends-an-introduction.tex [407
 
 ])
-(./sections/detached-lever-fallacy.tex [409] [410
+(./sections/not-for-the-sake-of-happiness-alone.tex [408])
+(./sections/fake-selfishness.tex [409
+
+] [410]) (./sections/fake-morality.tex
+[411
+
+]) (./sections/fake-utility-functions.tex [412
+
+] [413
 
 ])
-(./sections/dreams-of-ai-design.tex [411] [412
+(./sections/detached-lever-fallacy.tex [414] [415
 
 ])
-(./sections/the-design-space-of-minds-in-general.tex [413]) [414
+(./sections/dreams-of-ai-design.tex [416] [417
+
+])
+(./sections/the-design-space-of-minds-in-general.tex [418]) [419
 
 ]
-(./sections/where-recursive-justification-hits-bottom.tex [415
+(./sections/where-recursive-justification-hits-bottom.tex [420
 
 ])
-(./sections/my-kind-of-reflection.tex [416] [417])
-(./sections/no-universally-compelling-arguments.tex [418
+(./sections/my-kind-of-reflection.tex [421] [422])
+(./sections/no-universally-compelling-arguments.tex [423
 
-] [419] [420
-
-])
-(./sections/created-already-in-motion.tex [421])
-(./sections/sorting-pebbles-into-correct-heaps.tex [422
+] [424] [425
 
 ])
-(./sections/2-place-and-1-place-words.tex [423
+(./sections/created-already-in-motion.tex [426])
+(./sections/sorting-pebbles-into-correct-heaps.tex [427
 
 ])
-(./sections/what-would-you-do-without-morality.tex [424
+(./sections/2-place-and-1-place-words.tex [428
 
 ])
-(./sections/changing-your-metaethics.tex [425
-
-] [426
+(./sections/what-would-you-do-without-morality.tex [429
 
 ])
-(./sections/could-anything-be-right.tex [427] [428
+(./sections/changing-your-metaethics.tex [430
+
+] [431
 
 ])
-(./sections/morality-as-fixed-computation.tex [429] [430
+(./sections/could-anything-be-right.tex [432] [433
 
 ])
-(./sections/magical-categories.tex [431] [432
+(./sections/morality-as-fixed-computation.tex [434] [435
 
 ])
-(./sections/the-true-prisoner-s-dilemma.tex [433])
-(./sections/sympathetic-minds.tex [434
-
-] [435] [436
+(./sections/magical-categories.tex [436] [437
 
 ])
-(./sections/high-challenge.tex [437]) (./sections/serious-stories.tex [438
+(./sections/the-true-prisoner-s-dilemma.tex [438])
+(./sections/sympathetic-minds.tex [439
+
+] [440] [441
+
+])
+(./sections/high-challenge.tex [442]) (./sections/serious-stories.tex [443
 
 ]
-[439] [440
+[444] [445
 
-]) (./sections/value-is-fragile.tex [441] [442
+]) (./sections/value-is-fragile.tex [446] [447
 
 ])
-(./sections/the-gift-we-give-to-tomorrow.tex [443] [444
+(./sections/the-gift-we-give-to-tomorrow.tex [448] [449
 
-]) [445]
+]) [450]
 (./sections/one-life-against-the-world.tex) (./sections/the-allais-paradox.tex
-[446
+[451
 
-] [447]) (./sections/zut-allais.tex [448
+] [452]) (./sections/zut-allais.tex [453
 
-] [449
-
-])
-(./sections/feeling-moral.tex [450])
-(./sections/the-intuitions-behind-utilitarianism.tex [451
-
-] [452] [453
+] [454
 
 ])
-(./sections/ends-don-t-justify-means-among-humans.tex [454])
-(./sections/ethical-injunctions.tex [455
+(./sections/feeling-moral.tex [455])
+(./sections/the-intuitions-behind-utilitarianism.tex [456
 
-] [456] [457
-
-])
-(./sections/something-to-protect.tex [458] [459
+] [457] [458
 
 ])
-(./sections/when-not-to-use-probabilities.tex [460] [461
+(./sections/ends-don-t-justify-means-among-humans.tex [459])
+(./sections/ethical-injunctions.tex [460
+
+] [461] [462
 
 ])
-(./sections/newcomb-s-problem-and-regret-of-rationality.tex [462] [463
+(./sections/something-to-protect.tex [463] [464
 
 ])
-(./sections/twelve-virtues-of-rationality.tex [464] [465
+(./sections/when-not-to-use-probabilities.tex [465] [466
 
-]) [466] [467] [468
+])
+(./sections/newcomb-s-problem-and-regret-of-rationality.tex [467] [468
+
+])
+(./sections/twelve-virtues-of-rationality.tex [469] [470
+
+]) [471] [472] [473
 
 ]
 (./sections/beginnings-an-introduction.tex)
-(./sections/my-childhood-death-spiral.tex [469
+(./sections/my-childhood-death-spiral.tex [474
 
-] [470] [471
+] [475] [476
 
 ])
-(./sections/my-best-and-worst-mistake.tex [472])
+(./sections/my-best-and-worst-mistake.tex [477])
 (./sections/raised-in-technophilia.tex
 Overfull \hbox (0.99557pt too wide) in paragraph at lines 13--1
 []\T1/ppl/m/n/10.95 (-20) It was also one of my worst mistakes, because ``infor
 mal'' can mean ``held to low standards.''
  []
 
-[473
+[478
 
-] [474] [475
+] [479] [480
 
-]) (./sections/a-prodigy-of-refutation.tex [476])
-(./sections/the-sheer-folly-of-callow-youth.tex [477
+]) (./sections/a-prodigy-of-refutation.tex [481])
+(./sections/the-sheer-folly-of-callow-youth.tex [482
 
-] [478] [479
-
-])
-(./sections/that-tiny-note-of-discord.tex [480] [481
+] [483] [484
 
 ])
-(./sections/fighting-a-rearguard-action-against-the-truth.tex [482] [483
+(./sections/that-tiny-note-of-discord.tex [485] [486
 
 ])
-(./sections/my-naturalistic-awakening.tex [484] [485
+(./sections/fighting-a-rearguard-action-against-the-truth.tex [487] [488
 
 ])
-(./sections/the-level-above-mine.tex [486])
-(./sections/the-magnitude-of-his-own-folly.tex [487
-
-] [488] [489
+(./sections/my-naturalistic-awakening.tex [489] [490
 
 ])
-(./sections/beyond-the-reach-of-god.tex [490] [491
+(./sections/the-level-above-mine.tex [491])
+(./sections/the-magnitude-of-his-own-folly.tex [492
+
+] [493] [494
 
 ])
-(./sections/my-bayesian-enlightenment.tex [492] [493] [494
+(./sections/beyond-the-reach-of-god.tex [495] [496
 
-]) [495]
-(./sections/trying-to-try.tex) (./sections/use-the-try-harder-luke.tex [496
+] [497])
+(./sections/my-bayesian-enlightenment.tex [498] [499
 
-])
-(./sections/on-doing-the-impossible.tex [497
-
-] [498
+]) [500]
+(./sections/trying-to-try.tex) (./sections/use-the-try-harder-luke.tex [501
 
 ])
-(./sections/make-an-extraordinary-effort.tex [499] [500
+(./sections/on-doing-the-impossible.tex [502
+
+] [503
 
 ])
-(./sections/shut-up-and-do-the-impossible.tex [501] [502
+(./sections/make-an-extraordinary-effort.tex [504] [505
 
 ])
-(./sections/final-words.tex [503] [504
+(./sections/shut-up-and-do-the-impossible.tex [506] [507
 
-]) [505]
+])
+(./sections/final-words.tex [508] [509] [510
+
+]) [511]
 (./sections/raising-the-sanity-waterline.tex)
-(./sections/a-sense-that-more-is-possible.tex [506
+(./sections/a-sense-that-more-is-possible.tex [512
 
-] [507] [508
-
-])
-(./sections/epistemic-viciousness.tex [509])
-(./sections/schools-proliferating-without-evidence.tex [510
+] [513] [514
 
 ])
-(./sections/3-levels-of-rationality-verification.tex [511
+(./sections/epistemic-viciousness.tex [515])
+(./sections/schools-proliferating-without-evidence.tex [516
 
-] [512])
-(./sections/why-our-kind-can-t-cooperate.tex [513
-
-] [514] [515
+] [517
 
 ])
-(./sections/tolerate-tolerance.tex [516])
-(./sections/your-price-for-joining.tex [517
+(./sections/3-levels-of-rationality-verification.tex [518])
+(./sections/why-our-kind-can-t-cooperate.tex [519
+
+] [520] [521
+
+])
+(./sections/tolerate-tolerance.tex [522])
+(./sections/your-price-for-joining.tex [523
 
 ]
 Overfull \hbox (3.44319pt too wide) in paragraph at lines 9--10
@@ -1429,76 +1411,76 @@ Overfull \hbox (3.44319pt too wide) in paragraph at lines 9--10
 tarian/technophile/sf-fan/etcetera cluster''
  []
 
-) (./sections/can-humanism-match-religion-s-output.tex [518
+) (./sections/can-humanism-match-religion-s-output.tex [524
 
-] [519] [520
-
-])
-(./sections/church-vs-taskforce.tex [521] [522
+] [525] [526
 
 ])
-(./sections/rationality-common-interest-of-many-causes.tex [523])
-(./sections/helpless-individuals.tex [524
+(./sections/church-vs-taskforce.tex [527] [528
 
 ])
-(./sections/money-the-unit-of-caring.tex [525
+(./sections/rationality-common-interest-of-many-causes.tex [529])
+(./sections/helpless-individuals.tex [530
 
 ])
-(./sections/purchase-fuzzies-and-utilons-separately.tex [526
-
-] [527] [528
+(./sections/money-the-unit-of-caring.tex [531
 
 ])
-(./sections/bystander-apathy.tex [529])
-(./sections/collective-apathy-and-the-internet.tex [530
+(./sections/purchase-fuzzies-and-utilons-separately.tex [532
+
+] [533] [534
 
 ])
-(./sections/incremental-progress-and-the-valley.tex [531
+(./sections/bystander-apathy.tex [535])
+(./sections/collective-apathy-and-the-internet.tex [536
 
-] [532
+] [537])
+(./sections/incremental-progress-and-the-valley.tex [538
 
-])
-(./sections/bayesians-vs-barbarians.tex [533] [534
-
-])
-(./sections/beware-of-other-optimizing.tex [535] [536
+] [539
 
 ])
-(./sections/practical-advice-backed-by-deep-theories.tex [537])
-(./sections/the-sin-of-underconfidence.tex [538
-
-] [539] [540
+(./sections/bayesians-vs-barbarians.tex [540] [541
 
 ])
-(./sections/go-forth-and-create-the-art.tex [541] [542
+(./sections/beware-of-other-optimizing.tex [542] [543
 
-]) [543]
-(./sections/humans-are-not-automatically-strategic.tex [544
+])
+(./sections/practical-advice-backed-by-deep-theories.tex [544])
+(./sections/the-sin-of-underconfidence.tex [545
+
+] [546] [547
+
+])
+(./sections/go-forth-and-create-the-art.tex [548] [549
+
+]) [550]
+(./sections/humans-are-not-automatically-strategic.tex [551
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-[545
+[552
 
-]) (./sections/toolbox-thinking-and-law-thinking.tex [546] [547
+]) (./sections/toolbox-thinking-and-law-thinking.tex [553] [554
 
-] [548])
-(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [549]
-[550
+] [555])
+(./sections/local-validity-as-a-key-to-sanity-and-civilization.tex [556]
+[557
 
-] [551])
-(./sections/diseased-thinking-dissolving-questions-about-disease.tex [552]
-[553
+] [558])
+(./sections/diseased-thinking-dissolving-questions-about-disease.tex [559]
+[560
 
-]) (./sections/on-caring.tex [554] [555
+]) (./sections/on-caring.tex [561] [562
 
 ])
-(./sections/strong-evidence-is-common.tex [556])
-(./sections/pr-is-corrosive.tex [557
+(./sections/strong-evidence-is-common.tex [563])
+(./sections/pr-is-corrosive.tex [564
 
-]) [558
+]) [565
 
 ] (./honest.aux)
  ***********
@@ -1509,13 +1491,13 @@ Package rerunfilecheck Info: File `honest.out' has not changed.
 (rerunfilecheck)             Checksum: FB3C1B4B8F702C9641D99D581E71B570;73906.
  ) 
 Here is how much of TeX's memory you used:
- 15879 strings out of 476182
- 313644 string characters out of 5795595
+ 15889 strings out of 476182
+ 313733 string characters out of 5795595
  1934975 words of memory out of 5000000
  35307 multiletter control sequences out of 15000+600000
- 615681 words of font info for 407 fonts, out of 8000000 for 9000
+ 615830 words of font info for 409 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,3112b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,1723b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
@@ -1523,10 +1505,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on honest.pdf (558 pages, 1635718 bytes).
+Output written on honest.pdf (565 pages, 1640943 bytes).
 PDF statistics:
- 4509 PDF objects out of 5155 (max. 8388607)
- 3897 compressed objects within 39 object streams
- 939 named destinations out of 1000 (max. 500000)
+ 4541 PDF objects out of 5155 (max. 8388607)
+ 3921 compressed objects within 40 object streams
+ 946 named destinations out of 1000 (max. 500000)
  68561 words of extra memory for PDF output out of 74296 (max. 10000000)
 

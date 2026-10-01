@@ -368,11 +368,11 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] beware-of-other-optimizing
 - [x] practical-advice-backed-by-deep-theories
 - [x] the-sin-of-underconfidence
-- [ ] go-forth-and-create-the-art
-- [ ] humans-are-not-automatically-strategic
-- [ ] toolbox-thinking-and-law-thinking
-- [ ] local-validity-as-a-key-to-sanity-and-civilization
-- [ ] diseased-thinking-dissolving-questions-about-disease
-- [ ] on-caring
-- [ ] strong-evidence-is-common
-- [ ] pr-is-corrosive
+- [x] go-forth-and-create-the-art
+- [x] humans-are-not-automatically-strategic
+- [x] toolbox-thinking-and-law-thinking
+- [x] local-validity-as-a-key-to-sanity-and-civilization
+- [x] diseased-thinking-dissolving-questions-about-disease
+- [x] on-caring
+- [x] strong-evidence-is-common
+- [x] pr-is-corrosive

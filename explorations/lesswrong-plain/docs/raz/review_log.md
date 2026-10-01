@@ -718,3 +718,25 @@ cumbersome. Find this and similar cases to fix it."
 - Honest sections grew from 166,316 to 242,432 words.
 - Checks: 345/345 notes backups exact; make_books 345/345; honest.tex builds with no errors
   (558 pages; a few overfull lines under 16pt).
+
+## 1 October: honest-edition prose pass
+
+- The user asked for "a separate pass on prose. Remember to keep it clear and direct. No
+  Claudisms." Every honest section was read in book order, about seven at a time.
+- Rules (`docs/raz/HONEST_PROSE_PASS.md`): notes verbatim; quotations kept, shortened or
+  dropped, never altered; no change of content. A checker enforced the first two and refused
+  em dashes and italics.
+- Most edits split semicolon chains and packed sentences into one point each, replaced
+  colon lead-ins ("My conclusion: ...") and signposts ("Then comes", "Last,", "Next,") with
+  plain sentences, removed fillers ("genuinely", "In short"), and broke long paragraphs.
+- Fixes found on the way, checked against the originals: in "Final Words" it is Jeffreyssai,
+  not Brennan, who tells the students "You're finished", and Brennan who asks about the road
+  to mastery; in "If Many-Worlds Had Come First" it is Nohr who tells Huve to live in his own
+  world; in "Universal Law" the sentence on failing models now says what the post says ("very
+  rarely" an apparent violation; models last a generation or two). Doubled phrases removed in
+  "Ends: An Introduction" and "Privileging the Hypothesis"; a comma splice fixed in "Helpless
+  Individuals" and "On Doing the Impossible".
+- 315 sections edited, 30 unchanged; 1,440 lines inserted and 946 deleted, mostly paragraph
+  breaks. Word count 242,432 to 242,895.
+- Checks: 345/345 notes backups exact; make_books 345/345; honest.tex builds with no errors
+  (565 pages).

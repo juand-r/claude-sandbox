@@ -110,3 +110,13 @@ posts are merged in.
       logged in `docs/raz/changes/honest_fidelity_pass.md`. The honest sections grew from
       166,316 to 242,432 words.
 - [x] Checks: notes backups 345/345 exact; make_books 345/345; honest.tex builds (558 pages).
+
+## Honest-edition prose pass (user request, 1 October)
+
+- [x] All 345 honest sections read for prose (`docs/raz/HONEST_PROSE_PASS.md`, 345/345), keeping
+      them clear and direct: semicolon chains and packed sentences split, signposts ("Then
+      comes", "Last,", "My lesson:") and fillers removed, overlong paragraphs broken. Notes kept
+      verbatim; quotations only kept or shortened; content unchanged except for a few
+      attribution slips found on the way. 315 sections edited, 30 left as they were; edits logged
+      in `docs/raz/changes/honest_prose_pass.md`.
+- [x] Checks: notes backups 345/345 exact; make_books 345/345; honest.tex builds (565 pages).
