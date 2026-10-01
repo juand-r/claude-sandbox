@@ -12,6 +12,7 @@ import rod_defect as RD
 
 PROBE = sys.argv[1] if len(sys.argv) > 1 else "Bbar"
 T = 3000
+XS = range(60, 160, 7) if PROBE in ("Bbar", "B") else range(50, 130, 3)
 
 
 def scene(t0, x, site, with_phonon):
@@ -32,7 +33,7 @@ if __name__ == "__main__":
     P = vlib.LIB[PROBE].P
     for site in range(3):
         for t0 in range(P):
-            for x in range(60, 160, 7):
+            for x in XS:
                 a = scene(t0, x, site, False)
                 b = scene(t0, x, site, True)
                 if a != b:

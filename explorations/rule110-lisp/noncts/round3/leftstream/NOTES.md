@@ -76,3 +76,17 @@
 - Reflection Y = Bbar (sat_reflect): W 24, k = 2,1,3, ns 3,4, T2 450, all kX: UNSAT. Stopped W 32 (PID 9812): pointless, since Bbar at R2's back emits only A (catalog), and A is ruled out at R1 (coupler). Next: crossing E^n with A-speed trains beyond width 24 (synth row 9 scope: A <= 24) = theory's open problem 2.
 - run_cross.sh launched (PID in run_cross.pid): crossing E^n (n = 2,3 jointly), conv mode (any (3,2) output train of the same slip), W 24,32,40, T2 350, all slips x 3 classes. Control: n = 1, slip 8 finds Z_L-like E | A in all classes.
 - Packet spacing: 10 random programs x v = 0..5: gap 120, 90, 75 steps all match; gap 60: 36/60 mismatch; 45: packets overlap. So >= 75 steps between arrivals (scope: these programs).
+- 06:3x Theory (06:14): one crossing direction is not enough; asked for
+  LEFT-mover crossings from the back too. Killed run_cross.sh parent
+  (W 32/40 for A-trains dropped for now); its child 10621 finishes W 24.
+  run_crossL.sh (PID in run_crossL.pid) then runs sat_crossL.py:
+  B-trains W 24 joint n 2,3; Bbar-trains W 24 n 3, classes 0,1,2; B W 32.
+  Control status for sat_crossL: no known reaction of the exact target
+  form exists (catalog has no E^n + left-mover -> left-mover + E^k);
+  its exit geometry equals sat_shuttle's R1 scene (control passed) and
+  its entry geometry sat_shuttle's R2 scene (control passed).
+- C-ladder at zero [sim, lstream run_program, t0 800]: DDII: v=0 -> E^2 + A
+  (value 1 and one A answer), v=1 -> 1 (via C3), v>=2 -> v. DDIIZ, DDIIIZZ,
+  DDIII: later packets work in every branch, so the rebuilt E is in the
+  same class as the nonzero bookkeeping (as for DI). The C-ladder does
+  not switch the front class (mode) at zero in these cases.

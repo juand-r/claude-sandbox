@@ -29,14 +29,19 @@ coupling can make such a machine universal. The answer has three parts.
    both directions. One-directional mode coupling is not enough.
 2. **For E^n counters, the only escape is a process in the gap [thm in
    an interval model].** An E^n counter is a rod. Its stream acts on the
-   outer face, and its answers leave from the inner face. Teammates
-   verified by simulation that outer-face operations leave the inner end
-   fixed. So the outer-face state can change only at that counter's own
-   zero (Theorem 2, s.3.4). Assume the gap between the rods stays
-   bounded and nothing crosses a rod. Then a universal design needs a
-   **shuttle**: a persistent glider process that bounces between the two
-   inner faces and keeps moving units from one counter to the other
-   while both are large.
+   outer face, and its answers leave from the inner face.
+   - Teammates' simulations show that influence inside a rod runs only
+     front -> back (left to right: domain walls and phonons). Back-face
+     events leave the front exactly in place.
+   - So the LEFT counter's drift-setting front cannot be reached from
+     the right, and its mode is owned. Theorem 1 then applies (Theorem 2,
+     s.3.4).
+   - Assume the gap stays bounded and nothing crosses a rod from right
+     to left. Then a universal design needs a **persistent gap process**
+     that keeps changing both counters while both are large. Two forms:
+     a **shuttle** (a glider bouncing between the two inner faces), or a
+     **wall-driven pump** (a converter at R2's back that turns the left
+     stream's domain walls into signals toward R1, s.6.5).
 3. **What is sufficient [thm/sim in model].** A *transfer machine* is a
    shared mode whose states are loops ("move x into y at ratio k:j until
    x runs out; the remainder picks the next state"). It compiles every
@@ -52,13 +57,14 @@ coupling can make such a machine universal. The answer has three parts.
      105 at 0.3 slot per unit, 21 at 0.05).
 
    E^n counters do have that skew. That is why the physically robust
-   version needs the shuttle: each bounce moves exactly one unit, so it
-   is a handshake that no skew can break.
+   version needs a per-unit handshake (a shuttle bounce or a pump
+   signal, each carrying exactly one unit), which no skew can break.
 
 What this means for the round (s.7). The coupling milestone T2 is
 worth reaching, but value coupling is not a route to T3. For E^n
-counters the next physical target is a shuttle (a reflection at each
-inner face). Even with a shuttle, programmable transfer ratios seem to
+counters the next physical target is a persistent gap process: a shuttle
+(a reflection at each inner face), or a converter at R2's back for
+walls. Even with a shuttle, programmable transfer ratios seem to
 need some further persistent state [arg]: a per-side filter, or a gap
 that zero events can adjust. Whether a shuttle with blind streams is
 universal is open (s.6.3).
@@ -142,15 +148,25 @@ and an inner face I_i (facing the gap). Layout:
 
 The model has five premises. Each is listed with its physical status.
 
-- (L) *Locality*: if x >= C, events at O1 neither influence nor are
-  influenced by events at I1, apart from both changing x. Same for y.
-  - Status [sim, teammates]: GB3/GB5 leave R1's inner end exactly fixed
-    and A leaves R2's inner end exactly fixed (verify edge_check.py).
-    I_L moves R2's inner end within its class (verify). Bbar and B
-    arrivals at R2's inner face leave its front exactly in place
-    (leftstream bbar_front.py).
-  - By the speed-of-light bound, (L) holds for long enough rods whatever
-    the reactions.
+- (L) *No right-to-left influence through a long rod*: if a rod is
+  longer than C, nothing that happens at its back (right face) influences
+  its front (left face). Influence front -> back is allowed.
+  - Status [sim, teammates]:
+    - GB3/GB5 at R1's back leave R1's front exactly fixed (verify
+      edge_check.py).
+    - Bbar and B arrivals at R2's back leave R2's front exactly in place
+      (leftstream bbar_front.py).
+    - Verify's search for defects inside a rod found only front -> back
+      "phonons" (+2/3 relative to the rod) and co-moving cuts. Scope:
+      random perturbations up to 30 cells, 62k trials.
+  - Front -> back influence does exist. I_L and Z_L at R2's front launch
+    a domain wall that reaches the back after a delay proportional to
+    the rod length. A Bbar arriving at the back together with the wall
+    has its class, and hence its value effect, switched (verify, board
+    06:26). A launches no wall.
+  - My first version of (L) demanded no influence in EITHER direction.
+    That is false because of the walls. The theorem needs only the
+    right-to-left half.
 - (N) *No crossing*: stream packets act on the outer face only; nothing
   crosses a rod.
   - Status: synth (round 1) found no crossing of E^n up to width 30;
@@ -323,29 +339,53 @@ and no 2SM with an owned mode can be universal.
 ### 3.4 Theorem 2 (interval model) [thm in model]
 
 **Theorem 2.** Under (L), (N), (B), (Q) and (F), a two-stream machine
-of rods is a 2SM with both modes owned. Hence its orbits are eventually
-periodic (up to translation) and its halting is decidable.
+of rods is a 2SM in which y's mode (R2's front state) is owned. Hence
+its orbits are eventually periodic (up to translation), and its halting
+is decidable.
 
 *Proof.* Translate each premise into the 2SM conditions:
 
-- Take s1 = the outer-face neighbourhood of O1 modulo L_1, together
-  with the stream-1 program phase it sees. Define s2 the same way for
-  O2. Take s0 = the gap with both inner faces.
-- (F) and (B) make S finite. By (N), stream packets touch only outer
-  faces.
-- By (L), while x >= C the evolution of s1 depends only on s1 (the
-  packets it meets are fixed by its position relative to the stream).
-  So x's mode is owned. The same holds for y.
-- Zero events require a short rod, which gives (A2). (Q) is assumed.
-- The skew of s.2.3 is inside s1 and s2. Each face's arrival times are
-  part of its own local evolution. ∎
+- Take s2 = the neighbourhood of R2's front (O2) modulo L_2, together
+  with the stream-2 program phase it sees. Take s1 = the same for R1's
+  outer face O1. Let s0 hold the rest: the gap, the inner faces, and
+  the residues of x and y that the walls make relevant (next point).
+- By (L), nothing reaches O2 from the right while y >= C: R1's signals
+  stop at R2's back, and no influence crosses R2 from back to front.
+  By (N), left-stream packets touch only O2. So s2 evolves autonomously
+  while y >= C, and y's bulk drift depends only on s2 once (Q) has made
+  the gap quiet. Hence y's mode is owned.
+- x's mode may NOT be owned. Walls launched at R1's front (its inner
+  face) reach O1, so R1's outer face can feel R2's signals. Theorem 1
+  does not need it.
+- (A2) with residues [arg]. Walls make back-face outcomes depend on the
+  rod length through wall arrival times. In the bulk the front ops form
+  a periodic sequence, so the walls arriving at the back form the same
+  sequence delayed by a time proportional to the length. That makes the
+  dependence a residue of the length together with a stream phase,
+  which is finite state carried in S. Right after a mode change, the
+  walls still in flight from the old mode are a bounded transient.
+  This step is an argument, not yet a proof.
+- (F) and (B) make the remaining state finite. Zero events require a
+  short rod. (Q) is assumed.
+- The skew of s.2.3 is inside s1 and s2: each face's arrival times are
+  part of its own local evolution.
+
+Theorem 1 then applies. ∎
+
+So the decisive physical fact is an asymmetry. No influence runs right
+to left through a rod, so the LEFT counter's drift-setting front is
+unreachable from the right. Any escape must give R2's drift a component
+that the right side can change: a gap process acting on R2's back (a
+shuttle), a right-to-left crossing, or a design in which R2's back sets
+its drift.
 
 **What the premises exclude, i.e. the escapes:**
 
 - ¬(Q): a persistent gap process. It acts on both inner faces while
   both rods are long. This is a shared mode (s.6).
-- ¬(N): a crossing. A signal could then reach the other counter's
-  outer-side state.
+- ¬(N) or ¬(L) right-to-left: a crossing, or any influence that runs
+  back -> front through R2. A signal could then reach R2's front
+  state.
 - ¬(B): an unbounded gap. It can serve as a distance register read by
   echo timing (s.6.4), or, with many signals in flight, as a delay line
   close to Cook's queue. Neither is analysed here.
@@ -658,6 +698,46 @@ Physical needs:
 
 Not analysed further.
 
+### 6.5 A wall-driven pump: the left stream powers a gap process [hyp]
+
+Verify (board 06:26) found two things. I_L and Z_L at R2's front launch
+a domain wall that reaches the back after a delay proportional to the
+length. And a wall arriving at the back together with a Bbar switches
+the Bbar's class. That suggests a pump fed by the left stream, instead
+of an autonomous shuttle:
+
+- (W1) a converter B parked at R2's back (co-moving with the rod), with
+  two states:
+  - "on": wall + B -> B + X. B takes one unit from R2 at the back and
+    emits a right-mover X.
+  - "off": the wall vanishes silently, as observed now.
+
+  R1's zero signals and R2's zero answers can both switch B, so B is a
+  SHARED mode.
+- (W2) X + R1's front -> one unit added (an INC from the left).
+  Leftstream's I_L is such a train; B would have to emit it.
+- (W3) the shuttle's class condition, in one direction. B's unit leaves
+  R2's back and X's unit joins R1's front, so both faces move left by
+  one unit. The gap is conserved. Successive X's then meet R1 in the
+  same class if the per-unit displacements agree mod P_E.
+
+What it buys: while B is on, each left-stream op moves one unit from y
+to x through the gap. That is an exact, handshake-like transfer, immune
+to skew, and with B shared it breaks the ownership of BOTH drifts.
+
+What it does not buy: the reverse direction. Walls in R1 run from its
+front (gap side) to its back (stream side), so nothing analogous carries
+the right stream's ops into the gap. Transfers x -> y would still have
+to be rate-matched between the two streams. That is deterministic, but
+it is skew-sensitive and needs floor corrections (s.5.2). Whether one
+exact direction plus one rate-matched direction can be made universal
+is open.
+
+Related [hyp]: verify's co-moving "cuts" split a rod into two adjacent
+rods. A rod of two segments, with walls passing the junction, might act
+as two registers operated from one side. That is round 2's
+multi-register question in rod form.
+
 ## 7. Reaction spec for leftstream and coupler (E^n world)
 
 Ranked by how directly the theorems demand each item.
@@ -671,6 +751,11 @@ the gap is used as an unbounded register (s.6.4))
   For a 1-unit shuttle: (B^2, 6 A), (B^4, A^4), (B^5, A^3), (B^6, A^2),
   (B^7, A). B has a single class against E^n, which makes the R2 side
   class-free.
+- A1'. **Alternative to A1: a wall-driven pump** (s.6.5). A two-state
+  converter B parked at R2's back: wall + B -> B + X (one unit taken at
+  the back), where X INCs R1 from the left (an I_L-like train). Both
+  sides' zero signals must be able to switch B. This needs only one new
+  object, but it gives only y -> x transfers exactly.
 - A2. **Shuttle at an empty source**: a clean reversal, or a stop that
   leaves a marker. The rod must survive; A + E -> C3 does not qualify.
 - A3. **Shuttle start from a zero event**: R1's J at zero should emit Y,

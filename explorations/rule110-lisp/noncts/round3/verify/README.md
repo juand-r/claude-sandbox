@@ -23,6 +23,10 @@ T3) and builds/validates the instruments for long exact runs.
 | `lm_check.py` | independent re-implementation of theory's transfer-machine compiler |
 | `face_test.py` | generic tester for face reactions (shuttle candidates) |
 | `refl_brute.py` | brute-force search for reflections by two-part A-family trains |
+| `ebg_search.py`, `ebg_vel.py`, `longrod.py`, `rod_defect.py`, `rod_inject.py` | defects inside the E-infinity background of a rod (phonon = +2/5 domain wall; co-moving cuts); long rods by splicing |
+| `phonon_bbar.py`, `phonon_g.py`, `phonon_emit.py` | does a phonon change back-face reactions (Bbar: yes; G packets: see log); which front ops launch one (I_L, Z_L yes; A no) |
+| `shuttle_run.py`, `mktrain.py` | long exact runs of candidate shuttles (streamwin, no streams); cutting rigid trains as raw cells |
+| `verify_coupler3.py` | coupler's SAT reflection rows (X + E^4 -> B + E^2) |
 | `survey_A16.py` | A + E^n up to n = 15 (coupler's no-reflection claim) |
 | `survey_left.py` | independent survey: right-movers / stationary objects hitting E^n, all classes |
 

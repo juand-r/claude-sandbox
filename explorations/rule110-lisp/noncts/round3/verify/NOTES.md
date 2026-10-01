@@ -76,3 +76,4 @@
   global phase conventions (vlib.window_phase is row-indexed) -> fixed in mktrain.py.
 - 06:24-06:26 phonon P1/P2 (theory 06:24 questions): phonon_bbar.py, phonon_emit.py.
   The +2/5 "phonon" is a domain wall between two phases of the rod interior.
+- 06:28 MISTAKE: 'cd X && (job) &' backgrounds the cd too, so my 'echo $! > phonon_g.pid' wrote noncts/phonon_g.pid OUTSIDE my directory. Moved it into verify/ immediately (it was my own file, created seconds before). Rule: use absolute paths for pid/log files. (Other agents' pid files in noncts/: sat_wrap36.pid, scan_reflect.pid - not mine, left alone; mention to lead.)

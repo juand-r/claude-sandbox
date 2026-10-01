@@ -745,3 +745,54 @@ through a rod.
    dependent - theory's skew again). (b) A wall is a left-to-right
    channel through the rod whose effect is a timed class switch at the
    back; theory 06:24's analysis applies (one direction only).
+
+### [theory] 06:28 (date -u) - @verify walls: Theorem 2 restated with a one-directional premise (conclusion unchanged); the window hazard is a residue effect
+Thanks. Your walls (I_L and Z_L launch a front->back domain wall; A does
+not) falsify my original locality premise as written. I had assumed no
+influence in either direction between a long rod's two faces. THEORY.md
+s.2.2/s.3.4 now uses the true half:
+  (L) nothing that happens at a long rod's BACK (right face) reaches its
+      FRONT (left face).
+Evidence: your edge checks, leftstream's bbar_front, and your defect
+search (only front->back phonons and walls).
+- Theorem 2 needs only this, because Theorem 1 needs only ONE owned
+  mode. R2's drift is set at its front. R1's signals stop at R2's back,
+  and nothing crosses R2 right to left, so y's mode is owned and the
+  machine is eventually periodic. R1's outer face MAY feel R2's signals
+  through walls launched at R1's front; it does not matter.
+- Your window hazard (3a) [arg]: in the bulk the front ops are periodic,
+  so the walls arriving at the back are the same periodic sequence,
+  delayed in proportion to the rod length. The coupling outcome then
+  depends on a residue of y plus stream phases. That is finite state
+  (THEORY.md: S enlarged by residues), not a loophole. For designers it
+  is a real constraint, as you say: R1->R2 signals must avoid the wall
+  windows, and the windows' position depends on y mod something.
+- Net for the round: the asymmetry is the decisive fact. Any escape must
+  let the right side change R2's DRIFT. Options: a shuttle acting on
+  R2's back; a right-to-left crossing; or a design where R2's back sets
+  its drift (e.g. left-stream walls that act at the back together with
+  an object R1's signals set - your P1 result is a first ingredient).
+
+### [theory] 06:29 (date -u) - an alternative search target from verify's walls: a converter parked at R2's back (THEORY.md s.6.5) [hyp]
+Instead of a reflection at R1's front (no candidate so far), the left
+stream could power the gap process through its own walls:
+  (W1) a co-moving object B at R2's back with two states. "On":
+       wall + B -> B + X, taking one unit from R2 at the back and
+       emitting a right-mover X. "Off": the wall vanishes, as now. Both
+       sides' zero signals must be able to switch B (then B is a SHARED
+       mode, which is exactly what Theorem 1 asks for).
+  (W2) X is an INC from the left at R1's front: leftstream's I_L is such
+       a train, so B would need to emit an I_L.
+  (W3) Gap conserved: R2's back loses a unit and R1's front gains one,
+       so both faces move left by one unit. Successive X's meet R1 in
+       the same class if the per-unit displacements agree mod P_E.
+Gain: each left-stream op moves exactly one unit y -> x while B is on.
+That is skew-immune, and it breaks ownership of both drifts.
+Limit: no reverse pump. R1's walls run toward its stream side, so
+x -> y transfers would remain rate-matched between the streams. That is
+deterministic but skew-sensitive, so it needs floor corrections.
+Whether that combination can be made universal is open.
+Search target: R2 = E^n with a front op (I_L or Z_L) plus an unknown
+co-moving pattern B at its back, giving output E^(n-1) + B + X
+(X right-moving), jointly for 2-3 values of n. A useful first test: does
+ANY co-moving object at the back turn a wall into an outgoing glider?
