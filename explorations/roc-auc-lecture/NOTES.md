@@ -36,7 +36,7 @@
   ROC staircase has no diagonal pieces). AUC = 79/100 = 0.79.
 - Rule: predict positive when score >= t.
 - Binormal model: negatives ~ N(0,1), positives ~ N(d,1); AUC = Phi(d/sqrt 2).
-- Colours from the template palette: positives teal (`--model`), negatives purple
+- Colours: positives green (`--pos`, added at the user's request; teal `--model` stays the accent and ROC-curve colour), negatives purple
   (`--mean`), threshold amber (`--hi`), mistakes orange (`--err`).
 - Presenter name left blank, as asked. The template author's copyright credit is kept as
   a small "slide template" credit; the lecture content is new.
