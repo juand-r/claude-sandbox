@@ -6689,3 +6689,162 @@ Why: Fidelity/substance pass: put the Quine note back beside the evolutionary ar
 - Before: would also have removed brains with priors that bad.
 - After: would also have removed brains with priors that bad. \nb{Quine made the same evolutionary argument in 1969: creatures ``inveterately wrong in their inductions'' tend to die out before they reproduce.}
 
+
+## honest/sections/no-universally-compelling-arguments.tex
+
+Why: Fidelity/substance pass: added why the unworried are unworried, the existential counterpart, the servant picture of programming and the universal argument overriding code, the 'skips over the comments' joke, the zig/zag and little-blue-woman images, the two reasons for the argument, the bootstrap-not-skyhook remark on reviewing code, the 5/7 vs 2/7 example, the AI-box joke, the fake utility function as the first failure, the milder error's details, and what Wright did in the novel
+
+- Before: Some are not troubled, since to them ``murder is wrong'' is personal opinion.
+- After: Some are not troubled, since to them ``the sky is blue'' or ``murder is wrong'' is personal opinion, and others may differ.
+
+- Before: any claim about all minds has two to the trillionth chances to be false.
+- After: any claim about all minds has two to the trillionth chances to be false, and any claim that some mind exists has as many chances to be true.
+
+- Before: a core of reasonableness above the code that a truly valid argument would reach. But the code is the AI.
+- After: a core of reasonableness above the code that a truly valid argument would reach. People map programming a computer onto instructing a servant, who might rebel, or read the code, find it unreasonable and hand it back; such a ghost, shown the Universal Argument or finding it alone, would override its mistaken code. But as a student programmer said, ``I get the feeling that the computer just skips over all the comments.'' The code is the AI.
+
+- Before: My main argument: any belief or decision is carried out by a physical system, and for any system that assents to an argument we can build a similar one with a ``little grey man'' who sets its transistor to no.
+- After: My main argument: any belief or decision is carried out by a physical system, and for every lawful system that zigs at some points we can specify another that zags. For a mind whose transistor outputs +3 volts to assent, we can build a similar one with a ``little grey man'' under a trapdoor who sets it to $-3$. A universally compelling argument would need a little blue woman, never built in, who climbs out of nowhere and strangles him because the argument is so compelling.
+
+- Before: \nb{Unlike the count of minds, this argument shows the claim directly.
+- After: My point is not only that Friendly AI must be explicitly programmed and that physics does not forbid it, but that a mind is a lawful physical system with no central ghost judging its code. (A Friendly AI might be deliberately built to review its own code, but the reviewer is just the mind you made: a bootstrap, not a skyhook.) \nb{Unlike the count of minds, this argument shows the claim directly.
+
+- Before: The same answers the charge about Bayesian priors.
+- After: The same answers the charge about Bayesian priors. A Bayesian who draws 4 red balls and 1 white may give 5/7 to red next, by Laplace's rule, and another mind obeying Bayes may give 2/7 from a different, perhaps less reasonable, prior.
+
+- Before: ``cannot rely on an argument that is universally compelling to all physically possible minds.''
+- After: ``cannot rely on an argument that is universally compelling to all physically possible minds,'' nor on a chain of justification that persuades a perfect emptiness. There may be arguments that compel any neurologically intact human, like the one I use to get people to let the AI out of the box (just kidding), but that is philosophically different.
+
+- Before: The worst error about Friendly AI is to expect any AI to reach the one true morality on its own.
+- After: The first great failure about Friendly AI is the fake utility function, the one principle we need to program. Worse is to expect any AI to reach the one true morality on its own, so it need not be programmed.
+
+- Before: A milder error hopes a perfectly free AI will find virtue; I count my 1996 self among those who made it.
+- After: A milder error hopes an AI made perfectly free, unconstrained by flawed humans who want slaves, will find virtue undreamed of; I count my 1996 self among those who made it. That dream comes from virtue rather than vice, but rests on a flawed idea of freedom and will not work.
+
+- Before: Wright put a morality that must persuade any AI into his novel,
+- After: Wright, in the climactic third book of his otherwise very nice transhumanist trilogy, spent tens of pages on a Universal Morality That Must Persuade Any AI; I stopped reading.
+
+
+## honest/sections/created-already-in-motion.tex
+
+Why: Fidelity/substance pass: added Achilles's football line, Hofstadter's symbolic paraphrase, the Passing-the-Recursive-Buck pattern and its counterspell, and the Java-applet aside
+
+- Before: It accepts A and B but not the hypothetical that Z follows from them.
+- After: A reader who accepted the hypothetical but not A and B, Achilles says, should abandon Euclid and take up football. The Tortoise asks about a reader who accepts A and B but not the hypothetical that Z follows from them.
+
+- Before: Douglas Hofstadter's version shows the Tortoise turning each rule of inference ``into a mere string of the system.''
+- After: In Douglas Hofstadter's version, Achilles says that if you have $(A \wedge B) \to Z$ and $A \wedge B$, surely you have Z, and the Tortoise answers that he means $\{(A \wedge B) \wedge [(A \wedge B) \to Z]\} \to Z$, turning each rule of inference ``into a mere string of the system.'' This is the pattern of Passing the Recursive Buck, whose counterspell is that the buck stops immediately.
+
+- Before: ``the paper will just lie there.''
+- After: ``the paper will just lie there''; to make the text dynamic rather than say ``dynamic,'' I would have to write a Java applet.
+
+
+## honest/sections/sorting-pebbles-into-correct-heaps.tex
+
+Why: Fidelity/substance pass: added the philosophers' view that eating, mating and the economy exist for sorting, the early small heaps, the scattering of Biko's gemstone heap and the lasting consensus, the growth of heaps, the war's nuclear weapons and grudging concession, the relativists' full case ('But... 13!' as convention; a philosophy of despair), the bomb proposal (forcing heaps of 7), the planet-sized brain, the rewrite to 101 or 103, building AI by random algorithms, the civilizational trend, and fish
+
+- Before: They could not say why a heap was correct, but they agreed that nothing mattered more.
+- After: They could not say why a heap was correct, but they agreed that nothing mattered more; their philosophers held that the only justified reasons to eat, to mate or to take part in the economy were to sort pebbles.
+
+- Before: They disagreed about which heaps were correct. Three thousand years ago the Great Leader Biko built a heap of 91, and his followers copied it; centuries later the most educated came to feel that 91 was incorrect, and every heap of 91 was scattered.
+- After: They disagreed about which heaps were correct. Early heaps were small, of 23 or 29; three thousand years ago the Great Leader Biko built a heap of 91, and his followers copied it; centuries later the most educated came to feel that 91 was incorrect, and every heap of 91 was scattered, with some regret, including Biko's own heap of 91 different gemstones. No civilization since has seriously doubted it.
+
+- Before: The Great War of 1957 was fought over heaps of 1957, and ended when a philosopher showed a heap of 103 beside a heap of 19.
+- After: Heaps have since grown much larger, and wars are fought over them. The Great War of 1957, fought over heaps of 1957, saw the planet's first nuclear weapons, and ended when a philosopher showed a heap of 103 beside a heap of 19, so persuasive that the other side conceded, at least for the time being. Since then countries have been reluctant to endorse or condemn large heaps.
+
+- Before: Since then some philosophers, the Heap Relativists, deny that there has been any progress: opinions have simply wandered.
+- After: Some philosophers, the Heap Relativists, deny that there has been any progress: opinions have been a random walk, with the illusion of progress created by condemning every past that differed; disagreement over large heaps shows nothing makes 91 really incorrect, and ``But... 13!'' is only another convention. They hope this prevents wars, but most consider it a philosophy of despair.
+
+- Before: The Heap Relativists warn that an AI might think heaps of 8 are correct, and want bombs strapped to every computer.
+- After: The Heap Relativists warn that an AI, not being a Pebblesorter, might decide heaps of 8 are correct, no righter or wronger than us, and want bombs strapped to every computer, so that we can force it to build heaps of 7.
+
+- Before: Most find this absurd. A superintelligence would ``see at a glance'' which heaps are correct,
+- After: Most find this absurd. Something with a brain the size of a planet would ``see at a glance'' which heaps are correct,
+
+- Before: it would have rewritten its utility function once it was smart enough.
+- After: it would have rewritten its utility function once it was smart enough, to value more reasonable sizes like 101 or 103.
+
+- Before: An AI that liked heaps of 8 would be too stupid to be a threat.
+- After: An AI that liked heaps of 8 would be too stupid to be a threat. Reassured, they rush ahead, throwing algorithms together at random on big computers until intelligence emerges.
+
+- Before: After all, smarter minds have always made smarter heaps;
+- After: After all, richer, smarter civilizations have come to agree on heaps their ancestors disputed, and smarter minds have always made smarter heaps;
+
+- Before: and sometimes a stupid heap of 9.
+- After: and sometimes a stupid heap of 9, and fish make none.
+
+
+## honest/sections/2-place-and-1-place-words.tex
+
+Why: Fidelity/substance pass: added Fred's claim that the monster is not stupid, the reason the error is tempting, what Fred's function is specified in, John and the slime mold, the 7-place example and the purist's one-argument view, the Twin Earth setting and both answers, why picking one definition is not enough (deliberate awareness of curried vs. uncurried), and the point that the monster would compute Fred's function the same way if it cared
+
+- Before: Fred says the monster ``can see that human females have soft, pleasant skin instead of slimy scales.''
+- After: Fred says the monster ``can see that human females have soft, pleasant skin instead of slimy scales''; it may be an alien, but it is not stupid enough to make such a basic mistake about sexiness.
+
+- Before: as a function of the entity alone.
+- After: as a function of the entity alone, so that it seems to depend on nothing else; this is the Mind Projection Fallacy.
+
+- Before: which need not mention the speaker.
+- After: which need not mention the speaker. Who says that Fred and Bloogah mean the same thing by ``sexy''? Fred's function can be specified in curves, skin, clothing and status cues, without mentioning Fred, and John might use the same one.
+
+- Before: and anyone can check that the woman scores 5 on the first and 0.01 on the second.
+- After: and anyone can check that the woman scores 5 on the first and 0.01 on the second, while a slime mold scores 3 on the second.
+
+- Before: Give the two-place function plus the number 2 and you get a one-place function that adds 2.
+- After: Give the two-place function plus the number 2 and you get a one-place function that adds 2; feed a seven-place function four arguments and you get a three-place one. A purist would say every function takes one argument: plus takes an integer and returns a function from integers to integers.
+
+- Before: Give ``sexiness'' an admirer and you get that admirer's fixed function.
+- After: Give ``sexiness'' an admirer and you get that admirer's fixed function, a mathematical object; that the admirer's intuitions compute it is an empirical fact about the admirer, and its value on the woman is a fact about her.
+
+- Before: The same goes for Putnam's Twin Earth, where the watery stuff is XYZ.
+- After: The same goes for Putnam's Twin Earth, where the watery stuff is XYZ, set centuries ago so that no one can test it. Some said ``water'' means the same on both planets, since people have the same sensory test in mind; others said it means H2O here and XYZ there.
+
+- Before: There is no point arguing over what the syllables really mean.
+- After: There is no point arguing over what the syllables really mean. Picking one definition is not enough to avoid confusion; you must train yourself to be aware of the curried and uncurried forms.
+
+- Before: Fred's brain simply computes his function and calls the result a property of the woman.
+- After: Fred's brain simply computes his function and calls the result a property of the woman; to see that the monster chooses by a different function, Fred must consciously re-envision sexiness as two-place. The monster would compute Fred's function the same way, if it cared, but it uses a different one to decide whom to kidnap.
+
+
+## honest/sections/what-would-you-do-without-morality.tex
+
+Why: Fidelity/substance pass: added the request to envision concretely, denouncing altruists, and the question of what to do after eating
+
+- Before: I know your moral philosophy is as undisprovable as 2 + 2 = 4.
+- After: I know your moral philosophy is as undisprovable as 2 + 2 = 4, but try the thought experiment anyway, and concretely, even if it seems painful or pointless.
+
+- Before: Would you wear black and write gloomy poetry? That would only be a cached thought. Would you get out of bed?
+- After: Would you wear black, write gloomy poetry and denounce all altruists as fools? There would be no reason you should; that would only be a cached thought. Would you get out of bed? When hunger finally drove you to the kitchen, what would you do after eating?
+
+
+## honest/sections/changing-your-metaethics.tex
+
+Why: Fidelity/substance pass: added the relativity analogy and the 'trend of the universe' example, why responsibility cannot be passed on, the Piers Anthony paraphrase and 'why listen' to a metaethic that says kill, that one's will can stay while views on morality's nature change, the naturalistic lines of retreat in detail (joy in the merely real; the rock; not 'wrong because wrong' but not outside your brain; love must come into existence somehow, judge the product, genetic fallacy, rebelling within nature; no one thinks about fitness; existential angst), and the examples of harmful metaethics
+
+- Before: If you say you should not kill because God forbade it, that is metaethics. People agree much more about the first than about the second.
+- After: If you say you should not kill because God forbade it, or because it goes against the trend of the universe, that is metaethics. As people agree more on special relativity than on what science is, they agree more that murder is bad than on what makes it bad.
+
+- Before: The same goes for any source of moral authority.
+- After: The same goes for any source of moral authority: even if it failed, could you not drag the child off the tracks anyway? Who but you decided to follow it in the first place, and what responsibility are you really passing on?
+
+- Before: ``Maybe that which you would do even if there were no morality, is your morality.''
+- After: To paraphrase Piers Anthony, only those who have moralities worry whether they have them; and if your metaethic told you to kill, why should you listen? ``Maybe that which you would do even if there were no morality, is your morality.''
+
+- Before: My point is not ``that no morality exists.''
+- After: My point is not ``that no morality exists,'' but that you can hold your will in place while your views on the nature of morality change.
+
+- Before: Then I summarize other posts. You cannot explain moral arguments to a rock.
+- After: Then I summarize other posts, which set up lines of retreat for naturalistic metaethics before I present mine. You should not be disappointed that something is explicable rather than mysterious. You may feel that right moral arguments should be explainable to everyone, which may hold among humans, but you cannot explain moral arguments to a rock, and a mind without what your arguments move will not respond.
+
+- Before: My two posts on reflection ``explain the difference'' between a reflective loop and circular logic.
+- After: My two posts on reflection ``explain the difference'' between a reflective loop and circular logic: do not say ``Murder is wrong because it is wrong,'' but do not try to judge whether murder is wrong from outside your brain either; seek the perfect rock to stand on and you become a rock, so use your full intelligence and full morality.
+
+- Before: Evolution's causal role in morality is not a justifying role.
+- After: Evolution's causal role in morality is not a justifying role: love had to come into existence somehow; judge the product, not the source, or commit the genetic fallacy; and rebelling against nature is only possible from within it. No normal person thinks about reproductive fitness when deciding, even unconsciously.
+
+- Before: a calculator can compute ``What is 2 + 3?'' rather than its own output.
+- After: a calculator can compute ``What is 2 + 3?'' rather than what it outputs when someone presses those keys. And if a world of mere particles seems unbearable, perhaps your life is not exciting enough on its own.
+
+- Before: ``Poor metaethics forms part of the teachings of many a cult, including the big ones.''
+- After: Some oppose rationality because they think it drains meaning from the universe. ``Poor metaethics forms part of the teachings of many a cult, including the big ones.'' My audience includes those who conclude that love is a delusion because real morality must maximize inclusive fitness, or that unreturned kindness is evil because real morality comes only from selfishness.
+

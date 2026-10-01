@@ -301,12 +301,12 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] the-design-space-of-minds-in-general
 - [x] where-recursive-justification-hits-bottom
 - [x] my-kind-of-reflection
-- [ ] no-universally-compelling-arguments
-- [ ] created-already-in-motion
-- [ ] sorting-pebbles-into-correct-heaps
-- [ ] 2-place-and-1-place-words
-- [ ] what-would-you-do-without-morality
-- [ ] changing-your-metaethics
+- [x] no-universally-compelling-arguments
+- [x] created-already-in-motion
+- [x] sorting-pebbles-into-correct-heaps
+- [x] 2-place-and-1-place-words
+- [x] what-would-you-do-without-morality
+- [x] changing-your-metaethics
 - [ ] could-anything-be-right
 - [ ] morality-as-fixed-computation
 - [ ] magical-categories
