@@ -699,3 +699,22 @@ cumbersome. Find this and similar cases to fix it."
   (entropy-and-short-codes, fighting-a-rearguard-action-against-the-truth); quote balance
   in every other section is unchanged.
 - Checks: 345/345 notes backups exact; make_books 345/345; honest.tex builds with no errors.
+
+## 30 September to 1 October 2026: honest edition, fidelity and substance pass
+
+- Every post was read in full beside its honest section, in book order (345/345). The test was
+  the user's: would someone reading the rewrite learn what a reader of the post learns?
+- Where a section said "I list six criteria" or "I give three reasons" without saying what
+  they were, the content was added in plain first-person paraphrase. Examples, numbers and
+  arguments the post relies on were added; trivia was left out.
+- Fidelity fixes included: quotations that were not verbatim (made verbatim or turned into
+  paraphrase); claims stronger than the post's (for example the lightspeed belief in
+  "My Childhood Death Spiral", now hedged as the post hedges it); an inferred forward
+  reference in "My Best and Worst Mistake"; Brian Atkins's role in "On Doing the Impossible"
+  ("founding funder"); an attribution to Carl Sagan in "Strong Evidence Is Common" that the
+  post does not make; and the word "ladder" in "Shut up and do the impossible!".
+- Existing notes were kept verbatim; where an addition separated a note from its claim, the
+  note was moved back. Broken joins and doubled words left by edits were repaired.
+- Honest sections grew from 166,316 to 242,432 words.
+- Checks: 345/345 notes backups exact; make_books 345/345; honest.tex builds with no errors
+  (558 pages; a few overfull lines under 16pt).

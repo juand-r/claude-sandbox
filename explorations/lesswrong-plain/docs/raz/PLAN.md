@@ -98,5 +98,15 @@ posts are merged in.
       (`docs/raz/HONEST_ISAY_PASS.md`); 946 edits in 299 sections, logged in
       `docs/raz/changes/honest_isay_pass.md`.
 - [x] Checks and honest book rebuilt.
-- [ ] Ask the user whether to keep or revert the afterword reporting-tag pass (dea5b7a),
-      which was done on the annotated edition by mistake.
+- [x] Ask the user whether to keep or revert the afterword reporting-tag pass (dea5b7a),
+      which was done on the annotated edition by mistake. The user: "No it is fine as is."
+      Kept.
+
+## Honest-edition fidelity and substance pass (user request, 30 September to 1 October)
+
+- [x] All 345 posts read in full against their honest sections (`docs/raz/HONEST_FIDELITY_PASS.md`,
+      345/345): where a section named an idea without saying what it is, its content was added;
+      claims checked against the post and corrected; new quotations checked verbatim. Edits
+      logged in `docs/raz/changes/honest_fidelity_pass.md`. The honest sections grew from
+      166,316 to 242,432 words.
+- [x] Checks: notes backups 345/345 exact; make_books 345/345; honest.tex builds (558 pages).

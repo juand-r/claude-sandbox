@@ -9212,3 +9212,28 @@ Why: Fidelity/substance pass: diseased-thinking: smoothed a list.
 - Before: such as side effects and cost, dependence,
 - After: such as side effects, cost, dependence,
 
+
+## honest/sections/strong-evidence-is-common.tex
+
+Why: Fidelity/substance pass: Added the market-efficiency premise and the 12% figure, and removed the attribution to Carl Sagan from the author's voice, since the post does not name Sagan.
+
+- Before: Then I turn to you. Perhaps you are in the top 1\% of traders.
+- After: Then I turn to you. The efficient market hypothesis implies that making money on the stock market is hard; generously, perhaps only the top 1\% of traders profit. Perhaps you are among them.
+
+- Before: Perhaps you are also much less overconfident than most people. That takes only 50 to 1 evidence, and an hour of calibration practice might supply it.
+- After: People are overconfident on average, but 12\% are not. To conclude that you are much less overconfident than average takes only 50 to 1 evidence, and an hour of calibration practice and the resulting calibration plots might supply it.
+
+- Before: Then I accept Carl Sagan's saying that extraordinary claims need extraordinary evidence,
+- After: Then I accept the saying that extraordinary claims need extraordinary evidence,
+
+
+## honest/sections/pr-is-corrosive.tex
+
+Why: Fidelity/substance pass: Added the post's further description of the two notions: honor as brand-like conduct with sometimes unwritten standards, PR as a loopier process prone to fears of shadows, the Orwell and Strunk and White contrast, and the suggestion's promised effect.
+
+- Before: PR means having no fixed standards, and trying to predict what will upset ``people'' so as not to set them off.
+- After: The gentleman's standard was not a single simple principle, but it was still a fixed, if unwritten, social standard that he was seen to keep. PR means having no fixed standards, and trying to predict what will upset ``people,'' especially the media or a self-reinforcing miasma, so as not to set them off. It is a ``weirder or loopier process,'' prone to self-reinforcing fears of shadows, reminiscent of ``Politics and the English Language'' and not of Strunk and White.
+
+- Before: and suggest you try it and see.
+- After: and suggest you try it and see: whenever you find yourself navigating PR for yourself or a group, think instead of its honor, reputation or good name, and see whether everyone feels clearer, freer and more as though their feet are on the ground.
+

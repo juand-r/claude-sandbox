@@ -373,5 +373,5 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] local-validity-as-a-key-to-sanity-and-civilization
 - [x] diseased-thinking-dissolving-questions-about-disease
 - [x] on-caring
-- [ ] strong-evidence-is-common
-- [ ] pr-is-corrosive
+- [x] strong-evidence-is-common
+- [x] pr-is-corrosive
