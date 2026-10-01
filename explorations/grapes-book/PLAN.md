@@ -36,8 +36,13 @@
       movement II.
 - [x] Deliberate errors (2026-10-01): none subtle; only obviously wrong,
       for plot reasons, and listed (STYLE.md, 3.1).
-- [ ] Backstory: how he leaves Iowa for France at 17 (BIO.md, TO DECIDE).
-- [ ] The year he is writing, and so his birth year (2021 or 2025–26?).
+- [x] Backstory rewritten (2026-10-01): born 1948 in Ardath, Iowa; enlists
+      1967; West Germany 1968; deserts in May 1968; forged identity as
+      Hollis Vane; Burgundy 1968–77; Napa 1977. Writes in 2021, in the
+      pandemic. Odile dies October 2020, during the Glass Fire.
+- [ ] Open in BIO.md: his birth name; the dark secret; regular soldier or
+      Army Security Agency "listener"; the forger; whether Odile knew;
+      whether Odile died years earlier instead.
 - [ ] Build the typography the style needs (STYLE.md, section 5): aside
       typeface, struck-out text. Ask the author first.
 - [ ] Decide the source format for facts, and the file of intended errors.
