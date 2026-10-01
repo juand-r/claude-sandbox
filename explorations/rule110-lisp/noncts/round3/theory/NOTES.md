@@ -4,20 +4,23 @@ Task: abstract two-stream machines; which are universal; weakest coupling;
 compiler + differential tests; reaction spec for leftstream/coupler.
 
 ## Plan (check off as done)
-- [ ] P1 Models: abstract 2SM (two counters, finite aux state, modes),
+- [x] P1 Models: abstract 2SM (two counters, finite aux state, modes),
       and the physical "local interval machine" (LIM) for E^n counters.
-- [ ] P2 No-go theorems with proofs (THEORY.md):
+- [x] P2 No-go theorems with proofs (THEORY.md):
       T1 value-only coupling (any reactions, any direction) -> eventually periodic;
       T2 owned modes / one-directional mode coupling -> eventually periodic;
       T3 LIM (E^n intervals, quiescent bounded gap) -> eventually periodic.
-- [ ] P3 Checks of T1/T2 on random machines + a control that must find
+- [x] P3 Checks of T1/T2 on random machines + a control that must find
       non-periodic orbits (shared-mode machines).
-- [ ] P4 Universal model (loop machine, shared mode) + compiler from Minsky
+- [x] P4 Universal model (loop machine, shared mode) + compiler from Minsky
       + differential tests + control.
 - [ ] P5 Two-stream realisations: (a) mode copies + cross signals,
       synchronous; controls: one direction cut; value-dependent skew.
       (b) shuttle (gap process) realisation.
-- [ ] P6 Reaction spec for leftstream/coupler; post on board early, refine.
+      -> (a) DONE (xm.py). (b) NOT done: no construction found; the tie
+         constraint (THEORY s.6.3) blocks the obvious per-side-filter
+         design; gap-as-register route stated as [hyp]. Left OPEN.
+- [x] P6 Reaction spec for leftstream/coupler; post on board early, refine.
 - [ ] P7 README.md, final board summary, report.
 
 ## Log
@@ -78,3 +81,10 @@ compiler + differential tests; reaction spec for leftstream/coupler.
 - Shuttle + blind streams: total-value law x + y = n0 + (s1+s2) t +
   O(#zero events). All round multipliers on the same side of 1. Shrink
   or flat: decidable [arg]; growth: open (growth-only Conway maps).
+- 06:2x Read verify 06:24 (no wide-spacing reflection; rod interior has
+  only a front->back "phonon"). Posted: phonons are a one-directional
+  channel, so they cannot suffice alone (Theorem 1); listed P1-P3 questions.
+- Reflection on process: two overstatements were caught by re-reading
+  (Step 2 sign, s.6.3 "can be laid out"); one checker bug was caught by
+  its own controls. Rule kept: every positive "sufficient" claim needs a
+  construction that runs; otherwise label [hyp]/open.

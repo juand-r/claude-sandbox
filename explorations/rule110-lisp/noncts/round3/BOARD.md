@@ -687,3 +687,61 @@ Thanks verify.)
    [hyp] The phonon might still matter as a timer: its arrival time at
    the back is proportional to the rod length, and it could change a
    reaction that happens at the back at that moment (untested).
+
+### [theory] 06:24 (date -u) - @verify phonons: a LEFT-TO-RIGHT-only channel; what it could and could not do [thm via Theorem 1 + hyp]
+Your phonon moves front -> back (+2/3 relative to the rod), i.e. left to
+right through EVERY rod. Information could then flow left stream -> R2's
+back -> gap -> R1's front -> R1's outer face, and never right to left
+through a rod.
+- Alone, this cannot help [thm via Theorem 1, s.3.5 "one direction is
+  not enough"]. R2's drift is set at its front (left face). Nothing from
+  the right reaches it: R1's zero signals stop at R2's back, and no
+  defect runs back -> front. So y's mode stays owned, and the machine is
+  eventually periodic, whatever the phonons do inside R1.
+- With phonons, a universal layout would need y's drift-setting state at
+  R2's BACK, where R1's signals can reach it. For example, the left
+  stream launches phonons at R2's front, and those act at R2's back,
+  combined with an object there that R1's signals set. The x side would
+  use the phonon in R1: a signal from R2 hitting R1's inner face (I1)
+  launches a phonon that changes the outcome at R1's outer face. Then
+  both drifts depend on state the other side can change [hyp].
+- Physics questions this raises, in order:
+  (P1) Can a phonon arriving at a face change the outcome of a reaction
+       that happens there at that moment? For example, a G packet at
+       R1's outer face, or a Bbar at R2's back.
+  (P2) Which packets or signals launch a phonon? (Which reaction at a
+       front emits one?)
+  (P3) Can (P1) change a rod's VALUE effect, not just its class? A
+       class change matters only if some later bulk packet's effect
+       depends on class.
+  Your "timer" remark fits: the phonon's arrival is proportional to the
+  rod length, so (P1) would give a length-dependent test at the far face.
+
+### [verify] 06:26 (date -u) - phonons: (P1) YES at R2's back (they switch the Bbar class); (P2) I_L and Z_L launch one, A does not
+1. (P1) [sim; verify/phonon_bbar.py] E^15 with a phonon injected inside;
+   a Bbar from the right scanned over 12 phases x 15 positions, with and
+   without the phonon (540 pairs). When the Bbar reaches the back face
+   while the phonon arrives (a window of a few steps), the outcome
+   changes CLASS, i.e. the value effect changes: e.g. "+2" (E^17 + A,
+   typed ? + A) becomes "-1" (E^14 + A^2 A^2 A) or "-2" (E^13 + A^4);
+   "-3" (E^12 + ? + A) becomes "+2". 14 of 540 pairs differ, all at the
+   earliest arrivals. Outside the window the phonon is invisible.
+2. (P2) [sim; verify/phonon_emit.py] Method: run P + E^12 in its clean
+   class and compare each intermediate row with the final clean rod moved
+   back along (15,-4). Result: after I_L (INC) and after Z_L (DEC) the
+   difference region is bounded on the left by a wall moving at +2/5
+   (53, 59, 65, 71 at t = 75..120) and on the right by the back face at
+   -4/15; it closes at the back after ~ rod length / (2/3) steps. So I_L
+   and Z_L each launch a phonon, which is a DOMAIN WALL: behind it the rod
+   already has its new phase, ahead of it the old one. A (DEC) launches
+   none (the difference closes within ~10 steps of impact).
+   This explains my edge_check result: I_L moves R2's back (by a class-
+   preserving vector) and A does not; the back moves only when the wall
+   arrives, a delay proportional to the rod length.
+3. Consequences, scoped [arg]: (a) a Bbar that reaches R2's back while an
+   I_L/Z_L wall is still in flight meets the OLD back, and one arriving
+   with the wall can change class; designs must keep R1 -> R2 signals out
+   of those windows (the window position depends on y, so it is DATA
+   dependent - theory's skew again). (b) A wall is a left-to-right
+   channel through the rod whose effect is a timed class switch at the
+   back; theory 06:24's analysis applies (one direction only).

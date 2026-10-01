@@ -13,3 +13,9 @@
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 3, "k": 0, "sat": false, "secs": 1.9}
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 3, "k": 1, "sat": false, "secs": 2.0}
 {"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 3, "k": 2, "sat": false, "secs": 2.0}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 4, "k": 0, "sat": false, "secs": 178.1}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 4, "k": 1, "sat": false, "secs": 53.1}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 4, "k": 2, "sat": false, "secs": 57.5}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 5, "k": 0, "sat": false, "secs": 1.9}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 5, "k": 1, "sat": false, "secs": 2.2}
+{"WX": 24, "WO": 24, "T2": 350, "mode": "conv", "ns": [2, 3], "s": 5, "k": 2, "sat": false, "secs": 2.5}

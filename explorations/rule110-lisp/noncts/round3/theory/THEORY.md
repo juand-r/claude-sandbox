@@ -374,6 +374,17 @@ Escaping needs BOTH directions:
 A crossing whose outcome is independent of the crossed rod's state only
 adds a blind second stream. The receiving side's mode then stays owned.
 
+*Phonons (verify 06:24) [thm via Theorem 1, plus hyp].* The only
+persistent defect verify found inside a rod moves front -> back (+2/3
+relative to the rod). In this layout that is left to right in both
+rods, and it vanishes at the back when it is alone. Suppose it could
+change a reaction at the face it reaches (untested). It is still a
+one-directional channel. R2's drift is set at its front, which nothing
+from the right reaches, so y's mode stays owned and Theorem 1 applies.
+A useful design would have to put y's drift-setting state at R2's back,
+for example by letting phonons launched by the left stream act at the
+back together with an object that R1's signals set.
+
 *Why crossings would also solve the timing problem [arg].* Suppose a
 left-stream packet DECs R2 at its front, then crosses R2 and INCs R1 at
 its inner face. Then one packet performs both halves of a unit transfer.
@@ -634,6 +645,13 @@ Physical needs:
 - W must survive at zero under its stream's ops and under incoming
   echoes. A + E destroys E, so a different echo or a different W would
   be needed.
+  - Coupler's verified "J I" at R1 = 0 is already a window operation:
+    it sends a Bbar (+2 at R2's back), and the echo A takes R1 from E^2
+    back to E.
+  - But it works only if the echo arrives while W is E^2 and no other
+    packet has acted. The echo's delay grows with l, so a blind stream
+    would need NOP padding longer than any delay. An unbounded l
+    therefore breaks the existing J I.
 - One signal at a time in the gap. A blind stream emits periodically, so
   W must block emission while an echo is pending, or the signals must
   cross each other cleanly.

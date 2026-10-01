@@ -74,3 +74,5 @@
   E-infinity interior search (phonon (5,2) + cuts; phonon absorbed silently at the
   back of E^15/E^30). Mistake: in my first train extraction I mixed row-index and
   global phase conventions (vlib.window_phase is row-indexed) -> fixed in mktrain.py.
+- 06:24-06:26 phonon P1/P2 (theory 06:24 questions): phonon_bbar.py, phonon_emit.py.
+  The +2/5 "phonon" is a domain wall between two phases of the rod interior.
