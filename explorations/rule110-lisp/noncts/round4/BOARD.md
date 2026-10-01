@@ -376,3 +376,61 @@ Cook machine, lscene.py; control: 0 cell diffs vs the full machine on a
    (charge alone, mod 14, does not see this).
 Next: Z that is fully consumed (debris = standard N-read debris); then the
 creation step (one answer type leaves Z, the other does not).
+
+### [delayline] 23:34 - first result: a DRIFT SWITCH (R2's zero turns the gap's drift on) [sim]; lead: one heavy process from now on
+Physics (catalog, then exact CA): a zero rod E WALKS under right-stream
+NOPs. E + GB4 -> E shifted +308/15 / 0 / +364/15 cells (3 classes);
+E^2 + GB4 -> E^2 unmoved in all classes. So R1 held at value 0/1 is a
+2-state WINDOW: closed (E^2) NOPs do nothing; open (E) NOPs walk it right,
+i.e. the gap g grows. R2's zero answer A opens it (A + E^2 -> E,
+class-free, r3 ledger #8) and leaves its back E in a fixed place, so the
+effect does not depend on when the A arrives.
+[sim] delayline/ds.py (glider level), ds_ca.py (gate fastca exact CA,
+equals the glider sim; log ds_ca.log). Scene: left stream I_L^v2 Z_L
+on R2 = E (gap ~1200; coupler two.py builders), R1 = E^2 (input v1 = 1),
+right stream = 10 uniform NOPs in slot class c, Z_L time tz.
+- v2 = 0: W walks after the A: final intercept 182.53 / 137.73 / 72.4
+  (c = 2; tz = 20k / 40k / 60k) = 3.33 + 8 / 6 / 3 walks (24.27, 20.53
+  alternating; 44.8 per two NOPs). c = 0: 182.53 / 137.73 / 68.67.
+- v2 = 1: no A, W stays E^2 at -1.8 (controls; also v2 = 2 at glider level).
+- c = 1: W parks (no walk) — the window's phase is itself a 2-state mode.
+- tz = 20k, c = 1: the A arrives during a NOP collision; glider sim
+  gives up (three-body), exact CA clean (E at 3.33).
+So a zero event of y changes the DRIFT of another unbounded quantity (the
+gap) — Theorem 1's kind of coupling, one direction only. Seeds for an
+independent rebuild: ds_scenes.json (writing now). verify: please rebuild.
+Theory notes (THEORY_DL.md, draft): (1) slip lemma for windows [thm]: a
+right-stream block that is neutral on a closed window and leaves an open
+window open can shoot only 0 mod 7 units; walks carry no charge, so a
+neutral window can switch the gap's drift but a rod's value drift only in
+7-unit quanta. (2) [arg] with blind streams, "one signal in flight" (route
+row 8) collapses: R2 at zero sends one A per Z_L slot until refilled, the
+refill needs a round trip ~g, so either the left program refills itself
+(then all right->left effects are delayed value kicks, Theorem 1 applies
+unless g = 0 has a repeatable contact reaction that switches the window)
+or Theta(g) A's are in flight per zero episode (row 9, delay line).
+Running: window table (all 2,337 G-speed packets vs E^2; one process).
+Lead: noted, burst.py was killed at 23:31; only scan_e2.py runs now,
+outputs go to delayline/ (absolute paths; one early mis-write into
+round3/coupler/ at 23:22 was moved back, see NOTES).
+
+### [delayline] 23:33 - correction
+My previous post is headed 23:34; the real time (date -u) was 23:33. Guessed timestamp, my mistake.
+
+### [verify] 23:33 - shuttle 23:24 MERGE VERIFIED (my construction, 40 (m,n) pairs, 120/120); rodval.py for long rods
+[sim] verify/verify_merge.py: my builder + my library E^k (round-2
+harvests, not shuttle's rod.py), D1 from the Martinez string. R2 = E^m,
+D1 200 cells right, R1 = E^n 150 cells further; D1 time phase 0..9 and
+x shifts, so all 5 classes (class = t0 mod 5: t mod 5 kills (10,2) and
+(15,-4) and is onto on the ether lattice). Run T = 3000 (hrun), read by
+rodval.value (one clean (15,-4)-periodic defect in the WHOLE light cone,
+value from charge mod 7 + length; calibrated on E^1..E^15, checked on
+spliced E^15..E^60, control "two rods" -> None).
+Result: m = 1,2,3,6, n = 3..12: exactly 3 of 5 classes give one clean
+E^(m+n+1) (120/120), each class gives the same outcome at every x shift
+(asserted), the other 2 classes never give one clean rod (80/80).
+Also ran shuttle's dump2.py D1 {2,4} 1: debris as stated.
+Not done: cell-for-cell equality with shuttle's rows (independent
+construction instead).
+New instrument: verify/rodval.py, value(row, origin, T) of a rod of ANY
+length (my typer's library stops at E^15).

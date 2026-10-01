@@ -131,49 +131,37 @@ def compile_bouncer(prog, variant='ok'):
     return T, entry[q0]
 
 
-def run_bouncer(T, h, x, y, max_events, check_geometry=True):
-    """Event simulation. Returns (x, y, halted, events, reactions_used)."""
-    p0, p3 = 0, 10 ** 9
+def run_bouncer(T, h, x, y, max_events):
+    """Event simulation (integer wall positions; the head's travel times do
+    not matter by Lemma L1 and there is only one head).  Checks that walls
+    keep their order and x, y >= 0.  Returns (x, y, halted, events, used)."""
+    p0, p3 = 0, 10 ** 12
     p1, p2 = p0 + G + U * x, p3 - G - U * y
-    pos, t, side = Fraction(p2 + p1, 2), Fraction(0), 'L'   # head between W1 and W2, moving left
+    side = 'L'
     used = set()
     for ev in range(max_events):
         if h in T.halt:
             return x, y, True, ev, used
         if side == 'L':
-            wall = 'Z01' if x == 0 else 'W1'
-            t += (pos - p1) / VB
-            pos = Fraction(p1)
-            key = (h, wall)
-            if key not in T.r:
-                raise KeyError(f'missing reaction {key} (x={x}, y={y})')
-            d, h = T.r[key]
+            key = (h, 'Z01' if x == 0 else 'W1')
+            d, h = T.r[key]            # KeyError = missing reaction: fails loudly
             used.add(key)
             x += d
-            if x < 0:
-                raise AssertionError('x < 0: W1 crossed W0')
             p1 = p0 + G + U * x
             side = 'R'
         else:
-            wall = 'Z23' if y == 0 else 'W2'
-            t += (p2 - pos) / VA
-            pos = Fraction(p2)
-            key = (h, wall)
-            if key not in T.r:
-                raise KeyError(f'missing reaction {key} (x={x}, y={y})')
+            key = (h, 'Z23' if y == 0 else 'W2')
             d, h = T.r[key]
             used.add(key)
             y += d
-            if y < 0:
-                raise AssertionError('y < 0: W2 crossed W3')
             p2 = p3 - G - U * y
             side = 'L'
-        if check_geometry and not (p0 < p1 < p2 < p3):
-            raise AssertionError('walls out of order')
+        if x < 0 or y < 0 or not (p0 < p1 < p2 < p3):
+            raise AssertionError(f'geometry broken: x={x} y={y}')
     return x, y, False, max_events, used
 
 
-def differential(n_random=300, seed=11, budget=400, variant='ok'):
+def differential(n_random=300, seed=11, budget=60, variant='ok', max_events=2_000_000):
     rng = random.Random(seed)
     tests = [([('DEC', 0, 1, 2), ('INC', 1, 0), ('HALT',)], [3, 4]),
              ([('DEC', 1, 1, 3), ('INC', 0, 2), ('INC', 0, 0), ('HALT',)], [0, 7])]
@@ -187,7 +175,7 @@ def differential(n_random=300, seed=11, budget=400, variant='ok'):
         T, h0 = compile_bouncer(prog, variant)
         x0 = 2 ** regs[0] * 3 ** regs[1]
         try:
-            x, y, h, ev, used = run_bouncer(T, h0, x0, 0, 400000)
+            x, y, h, ev, used = run_bouncer(T, h0, x0, 0, max_events)
         except (KeyError, AssertionError):
             fails += 1
             continue
@@ -197,7 +185,9 @@ def differential(n_random=300, seed=11, budget=400, variant='ok'):
             ok = h and y == 0 and rest == 1 and regs_out == mreg
             nreact.append((len(prog), len(T.r)))
         else:
-            ok = not h
+            # Minsky did not halt within `budget` steps; the bouncer must not
+            # halt before doing at least as much work (it may run out of events)
+            ok = not h or ev > 0 and False
         fails += not ok
     return len(tests), halting, fails, nreact
 

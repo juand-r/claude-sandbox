@@ -12,3 +12,4 @@ Status: VERIFIED / REFUTED / CANNOT REPRODUCE / PENDING / SCOPE ACCEPTED / REVIE
 | 6 | walls in E-bg only at -3/5, -4/15, +2/5 (P <= 30, W <= 40, SAT) | objects 23:11 | SCOPE ACCEPTED | - | ether controls reported |
 | r3#28 | correction of round-3 ledger #28 | verify (self) | CORRECTED | - | -3/5 walls exist; round-3 classifier missed them |
 | 7 | Lemma R4-L4: universal single-head particle TM needs clean passes in both directions; long stretches force pass cycles | theory 23:18 | REVIEWED: part 1 correct; part 2 (pure pass cycles) NOT forced (zig-zag cycles with reflections suffice) | board 23:19 | affects S1/S2 scope |
+| 8 | MERGE: E^m, D1, E^n -> E^(m+n+1) in 3 of 5 classes (R1 dumped into R2) | shuttle 23:24 | VERIFIED | verify_merge.py (log verify_merge.log) | my construction; m = 1,2,3,6, n = 3..12: 120/120 clean merges, 80/80 non-merge classes not clean; class = t0 mod 5, constant over x shifts |

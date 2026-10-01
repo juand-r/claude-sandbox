@@ -8,3 +8,4 @@
 - 23:12 wall_check.py (walls at -3/5, jump (3,5) = h 31), wall_plant.py (E^45, 2/50 zero windows launch walls, both destroy). MISTAKE (round-3, mine as verify): r3 ledger #28 'only +2/5 walls' wrong about the medium; corrected on board. My 23:02 guess 'probably ether eating E-bg' was also wrong: it is an E-bg domain wall.
   Also: my typer knows E^n only to n = 15; for longer rods use rod_info() (span + (15,-4) periodicity).
 - 23:19 reviewed theory R4-L4 (pass cycles not forced; zig-zag counterexample).
+- 23:33 rodval.py (value of any-length rod) + verify_merge.py: MERGE verified 120/120. MISTAKE on the way: first rodval window did not cover the light cone to the right, so escaping A's were missed and a few non-merge classes looked like clean 'rod m' outcomes; widened to the full cone, now 80/80 non-merge classes are debris, matching shuttle's dump2 output.
