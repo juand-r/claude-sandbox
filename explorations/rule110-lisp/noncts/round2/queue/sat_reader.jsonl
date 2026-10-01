@@ -2,3 +2,6 @@
 {"mode": "forcedN", "FL": 63, "FR": 100, "T": 800, "sat": false, "secs": 94}
 {"mode": "inverted", "FL": 63, "FR": 100, "T": 800, "sat": false, "secs": 94}
 {"mode": "forcedY", "FL": 63, "FR": 100, "T": 800, "sat": false, "secs": 161}
+{"mode": "control", "FL": 20, "FR": 52, "T": 800, "sat": true, "secs": 38, "P": "11111010011011110", "X_rel": 33, "full_machine_window_diffs": [0, 0]}
+{"mode": "forcedN", "FL": 20, "FR": 52, "T": 800, "sat": false, "secs": 58}
+{"mode": "inverted", "FL": 20, "FR": 52, "T": 800, "sat": false, "secs": 57}

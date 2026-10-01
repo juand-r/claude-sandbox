@@ -15,7 +15,8 @@ read, computes De Mol's 3x+1 tag system through the whole Collatz
 trajectory 3 -> 5 -> 8 -> 4 -> 2 -> 1 (2.07e8 generations). What is and
 is not verified, and what it all costs, is in REPORT.md. `noncts/` holds
 a team exploration of Rule 110 computers that are not cyclic tag
-systems (none found; see noncts/SUMMARY.md).
+systems: a programmable (not universal) one-counter machine was built
+and cross-verified (noncts/round2/SUMMARY.md).
 
 Version 0.1.1 (v0.1.0 was tagged `rule110-lisp-v0.1.0`; see CHANGELOG.md).
 

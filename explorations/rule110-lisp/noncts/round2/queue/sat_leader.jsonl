@@ -1,0 +1,4 @@
+{"mode": "control", "FL": 54, "FR": 82, "sat": false, "secs": 45}
+{"mode": "diff", "FL": 54, "FR": 82, "sat": false, "secs": 44}
+{"mode": "control", "FL": 54, "FR": 82, "sat": true, "secs": 79, "Kp": "111110001001101001111111010111110001", "X_rel_ebar": 46, "check": {"A": {"diff_total": 0, "diff_outside_core": 0}, "R": {"diff_total": 0, "diff_outside_core": 0}}}
+{"mode": "diff", "FL": 54, "FR": 82, "sat": false, "secs": 684}

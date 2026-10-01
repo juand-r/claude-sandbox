@@ -41,7 +41,7 @@ def build(mode, FL, FR):
     m, K, full, sh0, _, _ = data["A"]
     a, b = K + FL + sh0, K + FR + sh0
     pgL = phase_glob(full[a - 14:a], a - 14); pgR = phase_glob(full[b:b + 14], b)
-    X = a + ((-pgL - a) % 14); Wt = b - X - 2; pR = (pgR + X) % 14
+    X = a - ((a + pgL) % 14); Wt = b - X; pR = (pgR + X) % 14   # X = -pgL (mod 14), X <= a
     P = TrainVar(cnf, Wt, 30, -8, pR, name="Kp")
     sts = {}
     for s, (m, K, full, sh0, sh1, out) in data.items():
@@ -52,7 +52,7 @@ def build(mode, FL, FR):
         X_s = X - a + a_s
         init = {}
         for x in range(lo, hi):
-            if a_s <= x < b_s:
+            if X_s <= x < b_s:
                 if X_s <= x < X_s + Wt:
                     init[x] = P.st.lit(0, x - X_s)
                 else:
@@ -91,7 +91,7 @@ def verify(P, sol, data, sts, pg, mode):
         tp, t_in, T = SCENES[s]
         st, lo, hi, a_s, b_s, X_s = sts[s]
         row = full.copy()
-        row[a_s:b_s] = [ether_bit(pgL if x < X_s else pgR, 0, x) for x in range(a_s, b_s)]
+        row[X_s:b_s] = [ether_bit(pgL if x < X_s else pgR, 0, x) for x in range(X_s, b_s)]
         row[X_s:X_s + Wt] = bits
         r = Run(row, 0); r.t = t_in; r.step(T)
         w = r.window(K + WL + sh1, K + WR + sh1)

@@ -1105,3 +1105,82 @@ After 01:23 I added:
   the abort.
 All my claims and checks are in verify/ledger.md (30 entries). Scripts to
 re-run any check are in verify/README.md. No verify processes are running.
+
+### [gate] 02:35 - ABORT task: FINAL (gate). Step 1 verified; step 2 blocked by kicks; SAT bound
+1. [sim, verified also by verify 01:39] Step 1: stationary C1 eats a fixed
+   stream of neutral-meal pairs ((-4,23)#3, (-22,39)#3; C1 displacement in
+   <(7,0),(30,-8)>, so the eat class does not depend on where the abort
+   starts) and the gate Ebar@(0,0)+E@(-9,29)#3 removes it: one Ebar left.
+   Exact CA == glidersim; controls fail. gate/abort_scene.py.
+2. [catalog + 203 compounds, exhaustive in that scope] Step 2 blocked: the
+   only F-absorbed (kick) packets are (-9,29)#4 and (-26,27)#4; a C1 never
+   eats them and never turns them into a clean F-crosser (verify's wording
+   fix accepted: (-11,23) "never crosses or absorbs cleanly"). No catalog
+   C1-gate crosses F cleanly either (no-abort branch would need the gate
+   disposed of otherwise).
+3. [SAT, exhaustive in scope] No Ebar-speed packet Y of width <= 30
+   (free (30,-8) train, slip 0, one CNF for both scenes) is both eaten by a
+   C1 (C1 + Y -> C1 alone) and absorbed by an F (F + Y -> F alone):
+   UNSAT for the C1 start class 0 x all 12 F start classes, horizons 300 /
+   520 (gate/sat_kickeat.py, sat_CF30.log). Positive controls with the same
+   code: mode C alone finds eaters (W 24, all 4 starts), mode F alone finds
+   kicks (W 30, starts 0-2). Caveat: Y is free inside its window, but I ran
+   only C1 start class 0, so classes not reachable by shifting Y inside the
+   window are not covered.
+4. Kick displacement (kick_disp.py): an F absorbing K0 moves by (18,54),
+   class key (1/2,0) mod <P_F,P_E> (two K0's are neutral); (-26,27): key
+   (1/6,2/3). So an "extra F as messenger" absorbing kicks would also need
+   paired kicks for class neutrality.
+Reading: with kick-based F registers, deleting the rest of a block needs a
+messenger that eats kick packets; none exists up to width 30 for C1. This
+fits verify's 01:38 conclusion that the F-lane M3 needs the near-end
+layout, a relay, or a second stream. Files: gate/README.md, NOTES.md.
+No gate processes running.
+
+### [queue] 04:10 - option (c) follow-up: all target readers UNSAT in the searched scopes; my odd/even claim WITHDRAWN
+Follow-up to the lead's request. Everything is in queue/NOTES.md
+("Continuation"), with scripts and logs.
+1. WITHDRAWN (it matters for the main project): "rejection needs only
+   even length, not x6". Over 16 reads (queue/len_long.py, decoder-free,
+   program {N^L, YNNNNN}, tape NYYNYY, v = 2x Cook's): L = 12 gives 16/16;
+   L = 8 gives 6/16 and L = 10 gives 7/16, both malformed from read 6
+   (the first read of their appended data); L = 7 crashes. My 4-read test
+   was too short. Cook's x6 rule stands.
+2. Step 1, a clean alternative reader [sim]. The E9 forced-N reader is
+   clean when it reads an N (6/6 reads correct) and dirty when it reads a
+   Y: it emits the standard rejector plus one B running left, which breaks
+   the next read (queue/t_forced_diag.py, t_e9read.py).
+   Screen (reader_screen.py): every placement (11,285) of all 74 slip-2
+   Ebar-speed library objects as the rejector-prepared reader core gives
+   no exact forced-N, inverted or forced-Y reader. Only the original core
+   reads like the original (positive control inside the space).
+3. Step 1 by SAT (queue/sat_reader.py, sat_reader2.py; synth's r110sat +
+   react.TrainVar; one free (30,-8) train shared by two scenes cut from
+   exact runs at t_in = 32700, a Y read (NYYN) and an N read (NNYY);
+   moving windows in the Ebar frame):
+   - effective free region = the reader's E glider, [K+68, K+98) wide 30;
+     exact target window [K-250, K+240) at +800. CONTROL SAT in 81 s
+     (finds the original; full-machine re-simulation 0/0 cell
+     differences). forcedN, inverted and forcedY are all UNSAT (94-161 s).
+   - lenient target, allowing the answer to be delayed by j*(30,-8) with
+     |j| <= 4 (window [K-250, K+410) at +1100): CONTROL SAT, re-verified
+     0/0. forcedN, inverted and forcedY are UNSAT (411, 164, 169 s).
+   - effective free region = the reader's Ebar, [K+33, K+50) wide 17:
+     CONTROL SAT (38 s, 0/0). forcedN and inverted UNSAT, both strict and
+     lenient.
+   - wider regions (both gliders free, [K+20, K+115)): the CONTROL did
+     not finish in 1700 s. This is beyond what the formulation can do.
+   So within these scopes Cook's reader is the only core that turns both
+   symbols into standard answers with a standard remnant.
+4. Step 2 (queue/sat_leader.py). Two scenes: the acceptor arriving at K
+   (YYNN, t 14010 -> 15010) and the rejector arriving (NYYN,
+   11010 -> 11700); K's E2 region is the free train (effective
+   [K+46, K+82)). My first control came out UNSAT, which was a placement
+   bug: the train was cut. After the fix the CONTROL is SAT (79 s) and
+   re-simulates 0/0. "diff" mode asks for the acceptor scene exactly
+   standard and the rejector scene a different (30,-8)-periodic core with
+   everything else standard: UNSAT (684 s).
+5. Not reached: a K' and a verified state-dependent step (step 3). No
+   candidate existed to verify. The SAT drivers and spec windows are
+   reusable for other regions and targets, given a larger time budget
+   (synth's moving-window tricks or a smaller T may help).

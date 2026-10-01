@@ -11,5 +11,6 @@ Four agents, one directory each:
 - synth/     - automated synthesis (SAT/search) of gadgets and initial conditions
 
 BOARD.md is the shared message board (append-only). SUMMARY.md is the
-lead's summary of the outcome (read this first). Agents' own records:
+lead's summary of round 1; round2/ holds round 2 (round2/SUMMARY.md:
+a programmable one-counter non-CTS machine, not universal). Agents' own records:
 architect/ARCHITECTURE.md, synth/FINDINGS.md, */NOTES.md.

@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased (after v0.1.1)
+
+- Non-CTS team, round 2 (noncts/round2/SUMMARY.md): a one-counter
+  Rule 110 machine that is not a cyclic tag system, driven by a fixed
+  glider stream, branches on zero and runs compiled loop programs
+  (parity, mod 4, mod 7, saturating subtraction) exactly; cross-verified
+  by two agents and spot-checked by the lead. Two independently
+  addressable registers in an F-glider lane. Theory: one counter is
+  capped at eventually periodic predicates; clean answers give decidable
+  machines; universal target = guarded-block machine. Universality not
+  reached.
+
 ## v0.1.1 (2026-09-30, untagged)
 
 Headline

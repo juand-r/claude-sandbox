@@ -17,7 +17,7 @@ from react import TrainVar
 from sat_reader import phase_glob
 
 T_IN = 32700
-WL, WR, XS = -250, 405, 150
+WL, WR, XS = -250, 410, 150
 
 def cut(tape, T, J):
     m = Machine(tape, ["YNNNNN"], T_IN + T + 2000, left_periods=4, right_periods=3)
@@ -90,7 +90,7 @@ def verify(bits, S, OUT, target, T, J, geom, js):
         row[a:b] = [ether_bit(pgL if x < X else pgR, 0, x) for x in range(a, b)]
         row[X:X + Wt] = bits
         r = Run(row, 0); r.t = T_IN; r.step(T)
-        sh1 = r.ebar_frame()
+        sh1 = OUT[want][0][1]              # base Ebar-frame shift at T2 (array coords)
         lo1 = K + WL + sh1
         w = r.window(lo1, K + WR + sh1)
         n = XS - WL

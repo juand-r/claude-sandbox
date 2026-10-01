@@ -1,0 +1,6 @@
+{"mode": "control", "FL": 63, "FR": 100, "T": 1100, "J": 4, "sat": true, "secs": 154, "P": "010001111100010011011111000100", "j": [[0], [0]], "verify": [{"tape": "NYYN", "j": 0, "remnant_diff": 175, "answer_diff": 0}, {"tape": "NNYY", "j": 0, "remnant_diff": 174, "answer_diff": 0}]}
+{"mode": "forcedN", "FL": 63, "FR": 100, "T": 1100, "J": 4, "sat": false, "secs": 411}
+{"mode": "inverted", "FL": 63, "FR": 100, "T": 1100, "J": 4, "sat": false, "secs": 164}
+{"mode": "forcedY", "FL": 63, "FR": 100, "T": 1100, "J": 4, "sat": false, "secs": 169}
+{"mode": "forcedN", "FL": 20, "FR": 52, "T": 1100, "J": 4, "sat": false, "secs": 54}
+{"mode": "inverted", "FL": 20, "FR": 52, "T": 1100, "J": 4, "sat": false, "secs": 97}

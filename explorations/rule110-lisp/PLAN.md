@@ -8,14 +8,15 @@ round of agents on a non-CTS machine.
       (engines section 5, non-CTS section 6, next steps 7, summary),
       DIRECTIONS (status per option), CHANGELOG, PLAN
 - [x] Push
-- [ ] Round 2: brief from round-1 results (noncts/SUMMARY.md), agents
+- [x] Round 2: brief from round-1 results (noncts/SUMMARY.md), agents
       launched, board supervised, results verified and summarized
   - [x] noncts/round2/ (README with milestones M1-M3, BOARD kickoff with
         the verified frontier and round-1 rules)
   - [x] agents launched: gate (zero answers act on the stream), address
         (two registers), queue (queue automaton with finite control),
         verify (independent verification, theory, integration)
-  - [ ] supervise, verify key claims myself, write round-2 summary
+  - [x] supervise, verify key claims myself (lead/), write round-2 summary
+  - Outcome: M1, M2 reached and cross-verified; M3 not reached (noncts/round2/SUMMARY.md)
 
 ## Phase 3: extension (started 2026-09-30)
 

@@ -155,3 +155,9 @@ same for every input) before searching, and make the builder enforce it.
   all 4 starts; mode F finds kicks at W=30, kF 0,1,2). Mistake: first F
   control at W=24 was UNSAT because the kick packets are wider (K0 28-42
   cells); widened to 30. Joint CF run (kC=0, kF=0..11, W=30) launched.
+- Joint SAT (C1 eats Y AND F absorbs Y), W = 30, C1 start 0 x F starts 0..11:
+  12/12 UNSAT (sat_CF30.log). Final abort post on the board. No processes left.
+Reflection (abort task): step 1 was quick once the class algebra was in hand
+(neutral meals). Step 2 hit a wall that the catalog already showed (only two
+kick packets exist, neither is touchable by C1); the SAT bound makes it a
+scoped statement rather than a catalog artefact.

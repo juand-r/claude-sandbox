@@ -26,3 +26,13 @@ Files:
 Run any script from this directory with the main project's Python
 environment (numba, numpy, PIL); they import ../../.. modules read-only.
 - trash/: flawed first S2 screen (misaligned K), empty E3 scan log, unfinished eat_two.py, stale pid/out files.
+
+Continuation (option (c) synthesis, lead's request):
+- verify_lead.py, t_forced_diag.py, t_e9read.py: the forced-N (E9) reader
+  is clean reading N and emits a stray B reading Y.
+- reader_screen.py (+ .jsonl): library objects as reader cores.
+- sat_reader.py / sat_reader2.py (strict / delay-tolerant): two-scene SAT
+  for a reader core (results sat_reader*.jsonl, sat_*.out).
+- sat_leader.py: two-scene SAT for a leader core K' (sat_leader*.jsonl/.out).
+- leader_screen.py: written, not run (superseded by sat_leader.py).
+- len_long.py / len_long.log: 16-read odd/even appendant test (x6 stands).

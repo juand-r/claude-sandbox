@@ -63,11 +63,12 @@ The main claims, in decreasing order of the strength of their evidence:
    the direct binary construction, 3.6e20 with the old one; before any
    spacing reduction). The dominant cost grows with the cube of the tag
    alphabet.
-9. **No Rule 110 computer outside the cyclic-tag family was found.** A
-   four-agent team produced verified building blocks for a two-counter
-   machine and a reasoned explanation of why known constructions are
-   queues; a non-destructive zero test and two-counter addressing are
-   missing (section 6).
+9. **A programmable Rule 110 computer that is not a cyclic tag system
+   exists; a universal one was not found.** A one-counter machine driven
+   by a fixed glider stream branches on zero and runs compiled loop
+   programs (parity, mod k) exactly, cross-verified. Theory shows one
+   counter cannot be universal, and the missing zero-test-with-abort for
+   two registers was not found (section 6).
 
 ## 1. The tower and how it is verified
 
@@ -552,24 +553,37 @@ arguments and the live window) lets the same command resume.
 
 ## 6. Beyond cyclic tag systems
 
-A four-agent team (collider, architect, scholar, synth) tried to build a
-Rule 110 computer that does not emulate a cyclic tag system.
-`noncts/SUMMARY.md` gives the full account. In short:
+Two rounds of a four-agent team tried to build a Rule 110 computer that
+does not emulate a cyclic tag system. Full accounts:
+`noncts/SUMMARY.md` (round 1) and `noncts/round2/SUMMARY.md` (round 2);
+every round-2 claim's status is in `noncts/round2/verify/ledger.md`.
 
-- **No such computer was built.** Every complete Rule 110 universality
-  proof in the literature the team found emulates a cyclic tag system.
-- **The team's explanation for that** is that stored data is transparent
-  to signals from one side only, so with the program arriving from one
-  side only the nearest store can answer: a queue, hence a tag system.
-  This is an argument checked against the full collision catalog, not a
-  proof.
-- **Verified building blocks for a two-counter machine exist:**
-  timing-free register reactions, a read gadget, a memory crossable from
-  both sides, order-independent wiring, two kinds of unbounded counter,
-  and a rigid instruction stream.
-- **Two pieces are missing:** a zero test that does not destroy the
-  counter, and a way to address one of two counters. Both were searched
-  for exhaustively at small sizes and not found.
+*Result.* A **nontrivially programmable non-CTS computer exists in Rule
+110**; a **universal** one was not found.
+
+- **What it is.** A single counter is stored as the length of one moving
+  E^n glider, and a fixed periodic stream of glider packets operates on
+  it. Stored data changes what the program does: one packet decrements,
+  but at zero its answer turns a following no-op into six increments. A
+  compiler turns one-counter loop programs (parity, mod 4, mod 7,
+  saturating subtraction) into such streams.
+- **How it was checked.** Exact Rule 110 runs match the model on every
+  tested input, including inputs never used in planning. Two agents
+  verified this with independent code, and the lead re-ran two programs
+  (`noncts/round2/lead/`).
+- **Why it stops there.** In abstract models of the glider machinery,
+  one counter driven by one stream can only decide eventually periodic
+  properties of its input (v mod k and the like). If the zero answer can
+  only act "cleanly", every such machine has decidable halting. So
+  universality needs two registers with non-monotone feedback.
+- **What exists toward universality.** Two independently addressable
+  registers, held as the gaps between three F gliders and driven from a
+  fixed stream, are verified. So is the deleting half of an abort.
+- **What is missing.** A zero test that can abort the rest of a program
+  block, which is all a precise universal target (a guarded-block
+  machine, compiled from Minsky machines) needs. Searches for it are
+  unsatisfiable within stated widths of 17 to 36 cells. A second program
+  stream from the other side is the most promising unexplored route.
 
 ## 7. What comes next
 
@@ -591,7 +605,7 @@ Open, roughly in order of value:
   (3.5-3.6).
 - Why Cook's short-leader block fails (3.4), and why one control program
   reads only every second ossifier period.
-- A second team round on the missing non-CTS pieces (section 6).
+- A third team round on a two-stream non-CTS design (section 6).
 
 ## Reproduction
 

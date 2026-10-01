@@ -33,3 +33,12 @@ Older tools (per-input compilation, see the NOTES correction at 01:3x):
 stream.build/build2, adaptive.py, fastsearch.py, test_wrap.py, diff_test.py.
 Scans: scan_counter.py (counter_scan.json), list_clean.py (clean_list.txt),
 units.py, analyze_scan.py, semantic_search.py.
+
+F-lane ABORT (second task, see NOTES.md from 02:40):
+- c1_algebra.py: C1 meal displacements; neutral meals (-4,23)#3, (-22,39)#3
+- abort_scene.py SEQ [--noc1] [--shift i:dt,dx]: C1 eats packets, gate removes
+  it (exact CA). e.g. python abort_scene.py abbaabg
+- scan_lane.py / analyze_lane.py: C1 and F vs 203 uncatalogued compounds
+- abort_feas.py: C1 vs address's fixed instruction stream (catalog level)
+- eater_kicks.py, fpairs.py, kick_disp.py: eaters and kicks on the F lane
+- sat_kickeat.py W MODE: SAT for a packet eaten by C1 AND absorbed by F

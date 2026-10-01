@@ -272,3 +272,68 @@ family.
   'Ebar@(0,0)+E@(-5,27)' (k=9, o=55) (identity reproduces the row).
   A first run on acc-first tapes was the wrong setting (it kept the
   acceptor's extra Ebar); moved to trash/.
+- reader_screen.jsonl COMPLETE [sim]: 11285 placements of all 74 slip-2
+  Ebar-speed library objects as the rejector-prepared reader core; only
+  the original core reads exactly like the original (positive control
+  'Ebar@(0,0)+E@(-5,27)' k=9 o=55 -> YN); no forced-N, inverted or
+  forced-Y reader (exact window equality, T2 = 34000).
+- sat_reader.py (synth r110sat + react.TrainVar; two scenes sharing one
+  free (30,-8) train; windows following the Ebar frame; exact target
+  window [K-250, K+240) at t_in + 800, t_in = 32700):
+  * control, free region [K+63, K+100) (the E glider; the Ebar fixed):
+    SAT in 81 s, finds the original E; full-machine re-simulation of the
+    decoded core: 0 cell differences in both scenes.
+  * forcedN / inverted / forcedY, same region: UNSAT (94 s, 94 s, 161 s).
+    Scope: train of width ~35 placed at one time phase replacing the E
+    glider, Ebar@39 kept, exact outcome required in the window at +800.
+  * free region [K+20, K+115) (Ebar and E both free): the CONTROL did not
+    finish in 1700 s (timeout); runs killed by PID. So the wide region is
+    beyond this formulation's budget.
+- sat_reader2.py: lenient target (answer may be delayed by j*(30,-8),
+  |j| <= 4, justified by the (30,-8) invariance of everything the answer
+  meets later; the leader remnant must still be exact), T = 1100, window
+  [K-250, K+405).
+- Lenient runs (sat_reader2.py, E region [63,100), T = 1100, |j| <= 4):
+  control SAT (154 s; original E; full-machine re-check 0/0 cell diffs
+  after I FIXED a verify bug: it used Run(origin=0)'s frame shift instead
+  of the machine's, so the logged control line shows a bogus
+  remnant_diff 175; re-verified offline: 0 and 0). forcedN UNSAT (411 s),
+  inverted UNSAT (164 s), forcedY UNSAT (169 s).
+- Ebar region [20,52) (the reader's Ebar free, E fixed): strict control
+  SAT (38 s, re-simulated 0/0), forcedN UNSAT (58 s), inverted UNSAT
+  (57 s); lenient forcedN UNSAT (54 s), inverted UNSAT (97 s).
+- MISTAKE: sat_reader2's first launch failed (window edge K+405 not in
+  ether); fixed to K+410. Also a waiter loop using `pgrep -f sat_reader2`
+  matched itself (its own command line); use ps|grep -v grep instead.
+- SCOPE NOTE (found while debugging step 2): sat_reader.py places the free
+  train at X = first position >= a with the right ether residue and width
+  b - X - 2, and forces [a, X) and the last 2 cells to ether. So the
+  EFFECTIVE free regions were: E region [K+68, K+98) (width 30; the E
+  starts at K+68, control found it there), Ebar region [K+33, K+50)
+  (width 17). The UNSAT scopes above are for these effective regions.
+- Wider free regions ([20,115) and [63,115) for the reader; [54,110) for
+  the leader): even the positive CONTROL did not finish in 1200-1700 s.
+  Killed by PID. Beyond budget in this formulation.
+### Step 2 (sat_leader.py)
+- First control at [54,82) came out UNSAT: a positive-control failure. The
+  scenes alone (original cells) reproduce the targets 0/0, so the bug was
+  the train placement (X pushed past the start of E2, cutting it). Fixed:
+  X = a - ((a + pgL) mod 14) <= a, width b - X. After the fix the control
+  is SAT in 79 s and re-simulates with 0 cell differences in both scenes
+  (acceptor scene YYNN t 14010 -> 15010, rejector scene NYYN 11010 ->
+  11700, window [K-250, K+240)). Effective free region [K+46, K+82).
+- Step 2 mode diff, E2 region (effective [K+46, K+82)): UNSAT (684 s).
+  No K' there keeps the acceptor scene exactly standard while making the
+  rejector scene end in a different (30,-8)-periodic core with the rest of
+  the window standard.
+
+### Odd/even rejected-appendant lengths over 16 reads (len_long.py, len_long.log)
+Program {N^L, YNNNNN}, tape NYYNYY, v = 2x Cook's, decoder-free reads:
+  L = 12 (multiple of 6): 16/16 = reference.
+  L = 8 : reads 0-5 correct, read 6 '!' and later malformed (6/16).
+  L = 10: reads 0-5 correct, then '!' (7/16).
+  L = 7 : the run leaves the assembled row (garbage) as before.
+MISTAKE CORRECTED: my earlier claim "the rejection constraint is parity,
+not x6" (from 4 reads) is WRONG. Lengths 8 and 10 fail as soon as
+appended data from these appendants are read (read 6). Cook's x6 rule
+stands for this program. Withdrawn on the board.
