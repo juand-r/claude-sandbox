@@ -283,13 +283,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] when-science-can-t-help
 - [x] science-isn-t-strict-enough
 - [x] do-scientists-already-know-this-stuff
-- [ ] no-safe-defense-not-even-science
-- [ ] changing-the-definition-of-science
-- [ ] faster-than-science
-- [ ] einstein-s-speed
-- [ ] that-alien-message
-- [ ] my-childhood-role-model
-- [ ] einstein-s-superpowers
+- [x] no-safe-defense-not-even-science
+- [x] changing-the-definition-of-science
+- [x] faster-than-science
+- [x] einstein-s-speed
+- [x] that-alien-message
+- [x] my-childhood-role-model
+- [x] einstein-s-superpowers
 - [ ] class-project
 - [ ] a-technical-explanation-of-technical-explanation
 - [ ] ends-an-introduction
