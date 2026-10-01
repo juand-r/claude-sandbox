@@ -8380,3 +8380,55 @@ Why: Fidelity/substance pass: Added details from the essay as the post quotes it
 - Before: ``Every single one of these risk factors
 - After: ``How to not lose'' is more widely useful than ``how to win.'' ``Every single one of these risk factors
 
+
+## honest/sections/schools-proliferating-without-evidence.tex
+
+Why: Fidelity/substance pass: Added the post's substance: what the Dawes chapter covers, why the Rorschach survives, the remark on authority in medicine, the guru incentive, the other risk factors, and the point that a new measurement creates new science.
+
+- Before: wrote \textsc{House of Cards}. I quote its first chapter:
+- After: wrote one of the original papers in \textsc{Judgment Under Uncertainty}, the book \textsc{Rational Choice in an Uncertain World}, and \textsc{House of Cards: Psychology and Psychotherapy Built on Myth}. I quote its first chapter, which says the book will cite more than three hundred studies of therapists' effectiveness, insight about people, and gains from experience:
+
+- Before: Remember the Rorschach? Hundreds of experiments
+- After: Remember the Rorschach? The patient says what he sees in an ink blot and the therapist interprets it. Hundreds of experiments
+
+- Before: That tells you what sort of field this is.
+- After: It is such a good story that therapists cannot bring themselves to believe the evidence, and that tells you what sort of field this is.
+
+- Before: Schools multiplied.
+- After: I should write some other time about what this says of our world: that society and the courts take the essence of medicine to be the right air of authority, not procedures with statistical evidence. Schools multiplied, despite or perhaps because of the lack of experiments showing one better than another.
+
+- Before: and this ``probably'' explains why psychotherapy exists at all. I give no evidence.
+- After: and this ``probably'' explains why psychotherapy exists at all: the prize was to be a guru with your own adherents, and the struggle for adherents keeps the clergy vital. I give no evidence. Other things also put therapists at risk: their patients' deference, society's wish to believe in mental healing, and the general dangers of telling people how to think.
+
+- Before: Happiness research, by contrast, began when people found measures of happiness that agree with each other.
+- After: Happiness research, by contrast, began when people found measures of happiness that agree with each other. Creating a new measurement creates new science, and a good measurement gives good science.
+
+- Before: So any organized practice needs
+- After: So any organized practice needs a way to tell how well it is doing, and serious testing of plausible-sounding techniques:
+
+
+## honest/sections/3-levels-of-rationality-verification.tex
+
+Why: Fidelity/substance pass: Added the post's substance: schools that compete unrealistically, why reputation is not yet science, why organizations need a test harder to game than self-report, the further examples of gaming, the note that imperfect tests still train engineers, and the details of the call for ideas.
+
+- Before: is at least not a complete poseur.
+- After: is at least not a complete poseur; his reputation is grounded in reality. Schools that compete, but not realistically enough, produce students who go down in seconds against real street fighters.
+
+- Before: and so do the schools of psychoanalysis.
+- After: and so do the splintered schools of psychoanalysis. Grounding reputations in some trial other than charisma and good stories already does a field great good.
+
+- Before: The second is experimental:
+- After: But it does not make a science. The second level is experimental: replicable experiments with standard measurements, not duels between masters using everything they know. For example,
+
+- Before: and that its answers are useful when averaged over a hundred people.
+- After: and that its answers are useful when averaged over a hundred people. But to put happy people in power, say by paying them to train others or hiring the happiest for a hedge fund, you would need a test harder to game than asking.
+
+- Before: The third is organizational: a test of individuals that is hard to game.
+- After: The third is organizational: a test of individuals that is hard to game, a huge problem throughout modern society.
+
+- Before: A test that can be gamed makes the whole field game it and lose its purpose.
+- After: A test that can be gamed makes the whole field game it and lose its purpose: colleges become tests of enduring classes, high schools teach to statewide tests, hedge funds sell puts. Yet we still train engineers with imperfect tests. What methods for rationality would resist gaming at least a little?
+
+- Before: I propose no measure myself.
+- After: I propose no measure myself. Even a difficult and expensive measurement could become a gold standard for checking others, and measures better kept secret can be emailed to me, though secrecy is itself a drawback.
+

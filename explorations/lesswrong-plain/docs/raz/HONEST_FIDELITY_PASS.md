@@ -349,8 +349,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] raising-the-sanity-waterline
 - [x] a-sense-that-more-is-possible
 - [x] epistemic-viciousness
-- [ ] schools-proliferating-without-evidence
-- [ ] 3-levels-of-rationality-verification
+- [x] schools-proliferating-without-evidence
+- [x] 3-levels-of-rationality-verification
 - [ ] why-our-kind-can-t-cooperate
 - [ ] tolerate-tolerance
 - [ ] your-price-for-joining
