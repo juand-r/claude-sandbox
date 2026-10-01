@@ -75,6 +75,35 @@ Example of the register (no factual claims):
 - The asides read as one continuous story when read alone, in order. Check
   this whenever a chapter is finished: read only the asides.
 
+### 2.6 Tone: *Oranges* crossed with *The Fall* (2026-10-01; author's note)
+
+Two models, held together:
+
+- John McPhee, *Oranges* (1967): the reporter's curiosity and exactness;
+  plain declarative sentences; facts laid out with pleasure; the writer
+  present but modest.
+- Albert Camus, *The Fall* (*La Chute*, 1956): a single first-person
+  monologue by Jean-Baptiste Clamence, a former Paris lawyer who calls
+  himself a "judge-penitent", talking over several nights to an unnamed
+  stranger in an Amsterdam bar. Charming, ironic, lucid about others and
+  about himself, confessing in order to accuse, and never quite confessing
+  the thing itself. At its centre: a woman falling into the Seine at night,
+  and a man who did nothing.
+
+How they combine in Vane:
+
+- The main text sounds mostly like McPhee: reportage, measurement, the
+  pleasure of a fact.
+- Clamence's voice comes through in the turns: the aside, the "you", the
+  ironic aphorism, the sudden judgment of himself dressed up as a judgment
+  of people in general ("We all ...").
+- The confession is always on the point of being made and always deferred.
+  He is good company, and he knows it, and he uses it.
+- Echo *The Fall*; never copy it. Water and a woman at night are already at
+  the centre of our story; that is kinship enough. No quotations from it, no
+  bar, no Amsterdam, and no "mon cher compatriote" equivalent. Whether Vane
+  has read the book and may mention it: an idea for later, not decided.
+
 ### 2.5 The mystery: show, never tell (2026-10-01)
 
 The reader must never be told whether the death of Odile (see `BIO.md`) was

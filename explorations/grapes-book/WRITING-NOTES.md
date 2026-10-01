@@ -60,4 +60,8 @@ whether it has been paid off.
 
 ## Ideas for later
 
+- 2026-10-01: Vane lived in France from 1968 to 1977; he could have read
+  *The Fall* there. Whether he mentions it, once and late, is open: it would
+  be a confession by proxy, and it risks being too knowing. Ask the author.
+
 ## Questions for the author
