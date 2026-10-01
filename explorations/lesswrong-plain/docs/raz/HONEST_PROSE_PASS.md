@@ -269,13 +269,13 @@ Changed paragraphs are logged in docs/raz/changes/honest_prose_pass.md.
 - [x] distinct-configurations
 - [x] collapse-postulates
 - [x] decoherence-is-simple
-- [ ] decoherence-is-falsifiable-and-testable
-- [ ] privileging-the-hypothesis
-- [ ] living-in-many-worlds
-- [ ] quantum-non-realism
-- [ ] if-many-worlds-had-come-first
-- [ ] where-philosophy-meets-science
-- [ ] thou-art-physics
+- [x] decoherence-is-falsifiable-and-testable
+- [x] privileging-the-hypothesis
+- [x] living-in-many-worlds
+- [x] quantum-non-realism
+- [x] if-many-worlds-had-come-first
+- [x] where-philosophy-meets-science
+- [x] thou-art-physics
 - [ ] many-worlds-one-best-guess
 - [ ] the-failures-of-eld-science
 - [ ] the-dilemma-science-or-bayes
