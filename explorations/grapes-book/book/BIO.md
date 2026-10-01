@@ -21,7 +21,7 @@ filled in, and can change.
 | Born | 3 March 1943, Ardath, Iowa (invented town; see below) |
 | Age in the book | 82–83 (the book is written 2025–2026) |
 | Lives | Napa Valley since 1971. Since 1979 in a house on a slope east of the Silverado Trail, above a small vineyard and its frost-protection pond |
-| Family | Father Ambrose, who ran the town's hardware store and served in the U.S. Army in France, 1944–45. Mother Ruth (née Lindqvist), who kept bees and kept ledgers of everything. One sister, June (b. 1947), still in Iowa, in Fort Dodge; they have not spoken since 2006 |
+| Family | Father Ambrose, who ran the town's hardware store. Mother Ruth (née Lindqvist), who kept bees and kept ledgers of everything. One sister, June (b. 1947), still in Iowa, in Fort Dodge; they have not spoken since 2006 |
 | Wife | Margaret "Peg" Ahlquist, married 1973, died 2006 of cancer. A dutiful, cold marriage. No children |
 | The love of his life | Odile Ferrand (b. 1944), of Meursault |
 
@@ -44,15 +44,15 @@ end.
 
 ### Timeline
 
-- 1943: born in Ardath. His father is already in uniform.
-- September 1944: his father's unit, coming north with the Allied forces
-  from the south of France, is quartered for some days at the Domaine
-  Ferrand, a small estate in Meursault. Ambrose and Gaston Ferrand, the
-  vigneron, share no language and become friends. They write to each other
-  for years, through a translator in each town.
-- 1960 (17): Hollis is sent to Gaston in the autumn, "to learn wine". The
-  family never says why he was sent so suddenly. He never says either. (The
-  first of the book's unexplained departures.)
+- 1943: born in Ardath. (Birth year to be confirmed together with the year
+  the book is written; see PLAN.md.)
+- 1960 (17): leaves Ardath for France. HOW: TO DECIDE. The author rejected
+  the earlier backstory (his father billeted at the Domaine Ferrand in 1944,
+  the boy sent to the Ferrands in 1960) on 2026-10-01. The new one: a
+  teenager who wants to escape rural America. Options under discussion: runs
+  away and works his passage; enlists and is posted to France; an exchange
+  year from which he does not come back. Whatever the route, he ends up at
+  the Domaine Ferrand in Meursault and never explains why he left.
 - 1960–1971: in Burgundy. Works harvests, then the cellar. Gaston, a silent
   man, teaches him to taste and to estimate a harvest by counting clusters,
   vine by vine. Hollis has counted things ever since.
@@ -174,12 +174,6 @@ book until checked against a source, or attributed to one.
   set in Endora, a fictional small town in Iowa. Checked 2026-10-01 against
   secondary sources (IMDb FAQ, SuperSummary); check a primary source before
   quoting.
-- September 1944: the Allied forces that landed in southern France (Operation
-  Dragoon) moved north up the Rhône valley and linked up with Patton's Third
-  Army around 11–14 September, near Saulieu and Dijon, in Burgundy. Checked
-  2026-10-01 against secondary sources (Imperial War Museum, Wikipedia, others;
-  dates vary by source). Whether a unit would plausibly pass through
-  Meursault: to check.
 - Napa Valley grew prunes and walnuts widely before vineyards dominated it.
 - Napa's wine business grew fast in the late 1960s and 1970s.
 - Phylloxera returned to Napa in the late 1980s and 1990s, when the AxR1
