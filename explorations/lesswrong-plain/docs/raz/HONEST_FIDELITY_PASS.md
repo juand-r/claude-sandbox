@@ -353,8 +353,8 @@ section. Sections that need nothing are crossed off with the finding "no change"
 - [x] 3-levels-of-rationality-verification
 - [x] why-our-kind-can-t-cooperate
 - [x] tolerate-tolerance
-- [ ] your-price-for-joining
-- [ ] can-humanism-match-religion-s-output
+- [x] your-price-for-joining
+- [x] can-humanism-match-religion-s-output
 - [ ] church-vs-taskforce
 - [ ] rationality-common-interest-of-many-causes
 - [ ] helpless-individuals

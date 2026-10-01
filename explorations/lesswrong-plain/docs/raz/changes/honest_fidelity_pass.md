@@ -8507,3 +8507,64 @@ Why: Fidelity/substance pass: why-our-kind: reordered the objectors' sentences a
 - Before:  The objectors had ideas for other sources of money; they did not offer to approach them. Each donor,
 - After:  Each donor,
 
+
+## honest/sections/your-price-for-joining.tex
+
+Why: Fidelity/substance pass: Added the post's substance: the reasons a responder might reject a penny, the Indonesian income figure, the investment example, the three ways hunter-gatherer instincts misjudge a large group, the qualification about marginal use, the conditions for blackmail, and the remark that it is often not about fonts.
+
+- Before: I am no fan of that theory, and those of us who care about fairness ``may also not accept an offer of one penny.''
+- After: But if the proposer expects that, they need offer no more than a penny. I am no fan of that theory, and those of us who cooperate in the Prisoner's Dilemma, because it is iterated, or because we care about fairness, or because we use another decision theory, ``may also not accept an offer of one penny.''
+
+- Before: although that is two weeks' wages.
+- After: although that is two weeks' wages, with average income there at \$670 a year; the players were surely not thinking about Newcomb's problem.
+
+- Before: Say a project to help mugging victims invests its money badly.
+- After: Say a project to help mugging victims keeps its funds in a money market fund, earning less than Treasuries. Clearly it is run by morons, and you should not join until they change.
+
+- Before: So we underestimate how hard it is to change a large group or a complex plan.
+- After: So we misjudge a group of a thousand, whose inertia our instincts underestimate; a complex strategy that took ten people a week of paperwork, not half an hour around a campfire; and a representative who seems one stranger and our equal, though a hundred other negotiations stand behind them.
+
+- Before: Weakness of will and a wish for status may play a part too.
+- After: Weakness of will and a wish for status and control may play a part too, so that a project offering neither gets less of our attention.
+
+- Before: My rule of thumb: if joining would still do net good,
+- After: My rule of thumb: if joining would still do net good (or more good than any other use of your resources, a way of thinking people rarely use),
+
+- Before: If the group will not let a competent person fix it and no one else is harmed,
+- After: If the existing contributors will not let you, a reasonable third party would judge you competent, and no one else's ox is gored,
+
+- Before: We ``probably'' want a group norm:
+- After: Often it is not really about fonts but laziness or hidden rejections. Still, in what public statements we respect, we ``probably'' want a group norm:
+
+
+## honest/sections/can-humanism-match-religion-s-output.tex
+
+Why: Fidelity/substance pass: Added the post's substance: why the Church can be so large, the hollow-victory point, the folk-theorem argument and altruistic akrasia, why the brain cannot feel infinite stakes, the case for an evidence-based art against akrasia, the videoconferencing idea, the getting-things-done norm, and the targeting argument; corrected the opening, which had made Hell the single binding force.
+
+- Before: Hell holds it together, with ``affective death spirals'' around its ideas and leaders, and conformity at weekly meetings.
+- After: It is too large to be held together by individual negotiation, as a hunter-gatherer band is; in a larger world with faster transmission, we can expect more virulent memes. It is held together by ``affective death spirals'' around its ideas, institutions and leaders, by promises of eternal happiness and damnation, and by conformity among people who meet in person.
+
+- Before: For a simple relief project, ask the Pope, not Richard Dawkins.
+- After: For a simple relief project, such as food and shelter after a tidal wave in Thailand, you would do far better to ask the Pope than Richard Dawkins. So long as that is true, atheism's gains at Catholicism's expense are somewhat hollow.
+
+- Before: But avoiding harm is an empty victory if it is your only one.
+- After: Unclear thinking is not harmless. But avoiding harm is an empty victory if it is your only one. Perhaps the wiser but less motivated can find efficient interventions and buy good cheaply, but few of us really do that, as opposed to planning to.
+
+- Before: ``This is a fair point.''
+- After: ``This is a fair point.'' The folk theorem that a rational agent does at least as well as an irrational one assumes it can adopt whatever policy wins. If you cannot choose unlimited mental energy, some false beliefs may motivate more than any true one, and with altruistic akrasia the God-fearing may win.
+
+- Before: And who says that caring about real people cannot move a brain as much as a heaven it cannot picture?
+- After: They sin and then torment themselves, as smokers reproach themselves for not quitting. And who says that caring about real people cannot move a brain as much as a heaven it cannot picture? The brain cannot visualize 3\^{}\^{}\^{}3, let alone infinity, and anything involving more than a hundred people already involves utilities too large to picture.
+
+- Before: That, I admit, is ``a further-future speculation.''
+- After: If we had an evidence-based art of fighting akrasia, why must we be less motivated than a disorganized mind that fears God's wrath? That, I admit, is ``a further-future speculation.'' I offer it to show that we should not give up on rationality so fast: understanding what goes wrong, trying intelligently to fix it, and testing whether it worked is a powerful idiom.
+
+- Before: Our readers are scattered; if we all lived within five miles of each other, ``I bet'' we would do more.
+- After: Our readers are rare and scattered; if we all lived within five miles of each other, ``I bet'' we would do more, from motivation, not coordination. Perhaps videoconferencing would give some of the effect; I suspect not, but it might be worth trying. I would like to say that fighting akrasia alone is difficult but possible, but I am not sure that is true.
+
+- Before: We could also try norms that applaud caring and expect useful work.
+- After: We could also try norms that applaud caring strongly about something and expect everyone to do something useful with their life; religion does not stress getting things done. If rationalists matched even half the average Catholic's altruistic effort, better targeting could let the typical rationalist do twice as much.
+
+- Before: so a norm of giving 5\% of income to real causes would match what a 10\% tithe gives them.
+- After: so a norm of giving 5\% of income to real causes would match what a 10\% tithe gives them, and choosing causes where good is orders of magnitude cheaper would do more.
+
