@@ -8,8 +8,8 @@ layout experiments that led to it.
 
 The layout machinery is done and tested. The book has one chapter of
 placeholder prose whose facts are unchecked. The style and the narrator are
-set down in `book/STYLE.md` and `book/BIO.md`, with some points waiting for
-the author's confirmation (marked PROPOSED or UNDECIDED). Next: structure and
+set down in `book/STYLE.md` and `book/BIO.md`, with a few points still open
+(marked PROVISIONAL or Open). Next: structure and
 content (see `PLAN.md`).
 
 ## Where things are documented

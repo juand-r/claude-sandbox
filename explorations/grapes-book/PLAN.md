@@ -27,9 +27,13 @@
 
 - [x] 2026-10-01: style brief from the author, written into book/STYLE.md
       (voices, arc, facts, typography); narrator invented in book/BIO.md.
-- [ ] Author to confirm the PROPOSED points in STYLE.md: one narrator for
-      both writings; real facts verified, deliberate errors listed.
-- [ ] Decide what happened to Odile (BIO.md, UNDECIDED) before movement II.
+- [x] Author confirmed (2026-10-01): one narrator; real-world claims verified
+      or attributed, fiction interleaved freely. Vane is from a small town in
+      Nebraska (invented: Ardath), moved to Napa in 1971 for a job.
+- [ ] Odile: provisionally, he killed her without meaning to (BIO.md).
+      Revisit with the author, and settle the open details, before
+      movement II.
+- [ ] Decide whether Vane may get real facts wrong on purpose (STYLE.md, 3).
 - [ ] Build the typography the style needs (STYLE.md, section 5): aside
       typeface, struck-out text. Ask the author first.
 - [ ] Decide the source format for facts, and the file of intended errors.

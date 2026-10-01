@@ -22,16 +22,16 @@ the end.
 
 ## 2. Voices
 
-### 2.1 Who is speaking (2026-10-01; PROPOSED)
+### 2.1 Who is speaking (2026-10-01; confirmed by the author)
 
-One narrator: Hollis Vane (see `BIO.md`), an elderly Napa wine man who
-trained in Burgundy. He writes everything: the investigation, the notes, the
-asides. The two parallel writings are two registers of the same man, not two
-people: the investigator in the main text and notes, and the private man in
-the asides.
+One narrator: Hollis Vane (see `BIO.md`), an elderly Napa wine man from a
+small town in Nebraska, who trained in Burgundy. He writes everything: the
+investigation, the notes, the asides. The two parallel writings are two
+registers of the same man: the investigator in the main text and notes, and
+the private man in the asides.
 
-Alternative, not chosen: two people, as in *Pale Fire* (a poet and his
-commentator). Ask the author before changing.
+Unlike *Pale Fire*, which has two people (a poet and his commentator), there
+is no second voice. No editor, no translator, no found manuscript.
 
 ### 2.2 Main text: the investigation (2026-10-01)
 
@@ -68,7 +68,8 @@ Example of the register (no factual claims):
   what he read today and why he could not finish it) and, more and more, on
   himself.
 - Voice: an old man, courtly, a little formal, with French and the trade's
-  vocabulary in his mouth. Sudden exactness about times and quantities.
+  vocabulary in his mouth. Under it, a Nebraska plainness that comes back
+  when he is tired or angry. Sudden exactness about times and quantities.
   Self-pity he catches and dislikes. Flashes of anger.
 - Asides are short at first: a line or two, mostly about method.
 - The asides read as one continuous story when read alone, in order. Check
@@ -86,19 +87,24 @@ back. Rules:
 - Plant motifs early and quietly (the list is in `BIO.md`). Return to them.
 - He is unreliable, not lying on every page. Most of what he says is true.
 
-## 3. Facts (2026-10-01; PROPOSED)
+## 3. Facts (2026-10-01; confirmed by the author)
 
-The grapes are real; the narrator is fiction.
+The world is real; the story is fiction; the two may be interleaved freely.
 
-- Every factual claim about grapes, vines, wine, places and history must be
-  true and verified, with its source kept in the repository (format to be
-  decided). The encyclopedic tone only works if the encyclopedia is right.
-- The narrator may be wrong, as a character. Each deliberate error goes in a
-  private list of intended errors (file to be created), with the truth next
-  to it, so that we never confuse his mistakes with ours.
-- Invented things (people, estates, documents, his card index) must be
-  invented on purpose and listed in `BIO.md`. Real people appear only in
-  their public, historical roles, and never in the fictional plot.
+- Every claim about the real world (grapes, vines, wine, places, history,
+  books, films) must be either verified, or attributed to a named source
+  ("according to Galet, ..."). Its source is kept in the repository (format
+  to be decided). The encyclopedic tone only works if the encyclopedia is
+  right.
+- Elements of the story are fiction: Vane, Odile, the people around them,
+  the Domaine Ferrand, the town of Ardath, the pond, the cards. They may sit
+  in the same sentence as real facts.
+- Invented things must be invented on purpose and listed in `BIO.md`, so
+  that a reader of the repository can always tell which is which.
+- Real people appear only in their public, historical roles, and never in
+  the fictional plot.
+- Open: whether Vane may get a real fact wrong on purpose, as a character.
+  If ever used, each such error must be listed, with the truth beside it.
 
 ## 4. The arc: from order to chaos (2026-10-01)
 
