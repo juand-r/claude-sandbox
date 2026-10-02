@@ -2078,3 +2078,51 @@ non-standard backs, then G-lattice SAT).
    posted as a result). Caveat: a value-NEUTRAL arming (theory's H1-H8)
    escapes the 6-unit requirement; none is known.
 Write-up: delayline/THEORY_DL.md (s.3.2, 3.3, 4.1, 8), README.md, NOTES.md.
+
+### [queue] 03:18 - option (c) by SAT: UNSAT on every front slice of K (positive controls pass); G1 forced-N UNSAT on the reader's front
+Lead 01:00 request. Scripts queue/sat_k.py (option c), queue/sat_g1.py
+(G1); results in queue/sat_k.jsonl, sat_g1.jsonl; solver kissat404 via
+pysat (cadical153 could not finish the Wt-40 control in 15 min; kissat:
+104 s). Every SAT answer re-simulated in the full machine.
+Option (c) scope [sat]: K' = ONE free (30,-8)-periodic train replacing the
+Ebar-frame table region [K+FL, K+FR) at t = 0; scenes cut from the exact
+machine (program {YNNNNN}, Cook's v): acceptor (YYNN, t=14250, ~85 cells
+before K) and rejector (NYYN, t=11130, ~110 before K), same free cells;
+moving Ebar-frame window [K-180, K+240), margin 0 (nothing may leave it);
+horizons 450 / 390 (windows are static from 420 / 360 on, t_horizon.py)
+plus a 30-step static check. rejdiff = acceptor path cell-exact standard,
+rejector path standard outside C and static but DIFFERENT inside
+C = [K-106, K+106); accdiff = the same with the paths exchanged.
+  slice (Wt)        control (identity K)     rejdiff        accdiff
+  [-20,8) (34)      SAT 104 s, 0/0 diffs     UNSAT 213 s    UNSAT 119 s
+  [12,46) (37)      SAT 234 s, 0/0           UNSAT 429 s    UNSAT 522 s
+  [54,85) (39)      SAT 248 s, 0/0           UNSAT 134 s    UNSAT 221 s
+  [115,150) (35)    SAT  41 s, 0/0           UNSAT 113 s    UNSAT 146 s
+  The four slices cover K's front object by object (selector Ebar, the
+  E23 cluster, E61, E129). Wider single slices: control not SAT within
+  17 min (Wt 48) / 27 min (Wt 86), stopped: beyond budget, no claim.
+G1 scope [sat]: Z = free (30,-8) train in [K+FL, K+FR) in front of /
+around the rejector-prepared reader at t = 32550 (tapes NYYN, NNYY, same
+Z), window [K-230, K+240), T = 900, whole window (debris included,
+stricter than mod V) equal to the target at T - 30j, |j| <= 4.
+  [20,54) (35, covers the reader's Ebar): control SAT 389 s, full-machine
+  0/0 diffs; forcedN UNSAT 768 s.  [0,24) forcedN and [20,54) inverted
+  running.
+Reading: within one-train slices of K's front, no leader is prepared
+differently by the two answers (even allowing any static difference), so
+option (c) needs a multi-object change wider than ~40 cells or material
+outside K's front; the solver budget, not physics, limits the wider runs.
+
+### [objects] 03:30 - lead item (2), part 1: the whole G family hits 11 non-standard backs: nothing reaches the front [sim]
+backs_scan.py (NAMES = Gfamily): every library object of velocity -1/3
+(2,337 objects, every one of their 42 time phases = 98,154 scenes per
+back) against E^24 with each of the 11 non-standard back types (c = 1, 2,
+3, 4, 5, 7, 9, 10, 11, 12, 13; each rod checked (300,-80)-periodic),
+standard front, T = 1200; front hit = any cell left of the front line
+differing from the rod-alone run. Result: 0 front hits in all 11 x 98,154
+= 1,079,694 scenes. With the earlier runs (all 2,523 left-movers vs the
+standard back; B family vs all 11 others) every library left-mover has
+now been tried against all 12 back types: no back->front influence at
+all, so in particular no launcher of the (1,9) bubble (which would
+destroy the standard front and be detected). Detection code = scan_back's
+(positive control at E^2). G-lattice SAT launch runs next.

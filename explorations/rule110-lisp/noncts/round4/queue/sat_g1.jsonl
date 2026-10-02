@@ -1,2 +1,3 @@
 {"mode": "control", "FL": 20, "FR": 54, "T": 900, "JM": 4, "Wt": 35, "sat": true, "secs": 389, "Z": "11111000100110111110100110111100110", "X_rel": 19, "full_machine_min_diff": {"NYYN": 0, "NNYY": 0}}
 {"mode": "forcedN", "FL": 20, "FR": 54, "T": 900, "JM": 4, "Wt": 35, "sat": false, "secs": 768}
+{"mode": "forcedN", "FL": 0, "FR": 24, "T": 900, "JM": 4, "Wt": 33, "sat": false, "secs": 561}

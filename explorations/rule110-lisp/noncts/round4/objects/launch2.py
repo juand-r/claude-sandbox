@@ -82,10 +82,10 @@ def build(n, T2, depth, overlap=None, train=None, window_margin=None, target='wa
     st = Spacetime(cnf, T2, lo, hi, cl, right_phase, init=init, window=win)
     # undisturbed rod at T2
     seg_len = W + 2 * T2 + 60
-    row = np.concatenate([O.ether(cl, -T2 - 30, 0), np.array([int(c) for c in b], np.uint8),
+    row = np.concatenate([O.ether(cl, -2 * T2 - 60, 0), np.array([int(c) for c in b], np.uint8),
                           O.ether(cr, W, W + T2 + 30)])
-    rT = O.evolve(row, T2)      # covers [-30, W + 30)
-    x0T = -30
+    rT = O.evolve(row, T2)      # covers [-T2 - 60, W + 30)
+    x0T = -T2 - 60
     nonE = [x for x in range(x0T, x0T + len(rT)) if rT[x - x0T] != O.ether(cr, x, x + 1)[0]
             and x > 0]
     # ether phase advances 4 per step: absolute phase at time T2 is cr + 4 T2
