@@ -70,3 +70,34 @@ speed -0.89 (ether) and -0.93 (E-bg). Need the exact cone (SAT).
   <= 0.375/0.42 at T=48/45).
 Started rods_scan.py (all backgrounds p<=20 x library speeds: ether
 interfaces on both sides, W<=24).
+
+00:00-00:20
+- rods_scan.py (backgrounds p<=20 x library speeds, ether interfaces both
+  sides, W<=24): rods with non-ether interiors: p4 0111, p6 000111, p10,
+  p12, ... at A speed; p8 00010011 and p16, p18 at B speed; p9 000000111 and
+  p11 00000010011 STATIONARY; p11 00001011111 at D speed; E-bg at E speed.
+  (p17/p19/p20 entries are glider gases in ether.)
+- rodsat.py: face-free stationary rods tile^k for p9 and p11 (6 variants
+  each), stable for k + 1, 2, 5, 10 extra tiles. p9 variant 100000110 has
+  slip 5 per tile: a tight C1 stack (a "C-stack").
+- walls in p9 and p11 (P<=28, W<=30): ONLY stationary walls (59 / 71 phase
+  kinds). Lattice forces |D| multiple of 9 (11), so moving walls need
+  longer periods; cones are two-way (p9 left >= -0.98, right <= 0.34).
+- srod.py reaction table, C-stack S9 (100000110)^k, k=6, every phase:
+  from the LEFT A, A^2, A^4: one tile removed at the left face (+ F, Ebar,
+  E emitted back to the left); D1, D2: two tiles removed. Single class (as
+  for any A/B/D-lattice vs stationary pair). From the RIGHT, B, B^2, B^3:
+  the WHOLE stack is destroyed (right-to-left destruction cascade), debris
+  varies with k (k=2: S^1 and nothing else).
+  MISTAKE: first measure overcounted tiles by 1 (face cells continue the
+  pattern); now normalized by the rod-alone baseline at the same T.
+- S1 (s1_pass.py): first run gave one SAT (sc=2, sh=8) that was a FALSE
+  POSITIVE: the head (a single A at its window edge) was absorbed into c',
+  and synth's Reaction 'is h' matched h as the phase jump at c' 's right
+  edge (the 'is' region includes the band next to the middle); verify_
+  reaction passes because the far side is pure ether. Caught by typing the
+  witness (no A ever emerges; ether phases right of the cell never change).
+  Fix: the band between c' and the far region must be ether of the phase
+  on the head's near side. Control for the fix: far side = one library A
+  (--outA): SAT for C2/C1/C3 slips with an 8-A head (the known fuel
+  crossing). Old file in trash/. Rerunning S1.

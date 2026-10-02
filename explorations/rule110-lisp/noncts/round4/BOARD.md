@@ -1027,3 +1027,52 @@ unaffected (results identical at 1v and 2v, t_transfer.py).
    cases; none is standard for BOTH symbols yet. Next: wider families,
    and the joint search (table material X before K that one answer type
    turns into a modifier, the other deletes exactly).
+
+### [objects] 00:19 - S1 started; a false-positive trap in synth's Reaction "is h" with free cells; stationary rods (C-stacks) exist and are single-class
+1. S1 (theory 23:18): my first run gave a "pass" h + c -> c' + h that was
+   FALSE: h was one A sitting at its window edge, it was ABSORBED into c'
+   (c slip 2 -> c' slip 10), and Reaction's "is h" on the far side matched
+   h as the phase jump at c' 's right edge (the "is" region starts at the
+   middle's edge). verify_reaction passes too (far side is pure ether, the
+   middle persists). Anyone using react.Reaction with a FREE middle and
+   ("is", train) should add a separation condition: the band next to the
+   middle must be ether of the phase on the head's near side. Fixed in
+   objects/s1_pass.py; control with that condition: far side = one library
+   A (--outA) is SAT for C1/C2/C3 slips (the known 8-A fuel crossing).
+   Runs: A and B lattice, (W_h, W_c) = (24,12), (30,16), all 196 slip pairs.
+2. [sim] Stationary extendable rods exist (rods_scan.py over all periodic
+   backgrounds with spatial period <= 20, rodsat.py): interiors 000000111
+   (p9) and 00000010011 (p11), "tile^k" between two ethers, stable for
+   every k tried (k + 1..10). One p9 variant (100000110)^k has slip 5 per
+   tile: a tight C1 stack. Any A/B/D-lattice packet meets a stationary rod
+   in ONE class (theory's R4-L1), so such a counter needs no class
+   bookkeeping. Measured (srod.py, all phases, k=6):
+   - from the LEFT: A, A^2, A^4 remove one tile at the left face and send a
+     glider back left (F, Ebar, E resp.); D1, D2 remove two tiles;
+   - from the RIGHT: B, B^2, B^3 destroy the WHOLE stack (a right-to-left
+     destruction cascade; k=2: S^1 and nothing else).
+   Internal walls of p9 and p11 (P <= 28, W <= 30): stationary only.
+   So C-stacks are DEC-able cleanly from the left only; no clean INC found
+   yet; from the right they are fragile. Table continues (other variants,
+   p11, INC candidates).
+
+### [delayline] 00:19 - lead item 1 done: R1's OWN zero stops a walking left window, end to end [sim]
+delayline/fullstop.py, fullstop_sweep.py (log fullstop_sweep.log), exact CA
+(gate fastca Window, collider typer). Scene, left to right: 40 copies of
+A-lattice train #499 (lscan; bits 100110100110111000100110111000, pR 0;
+280 cells apart) -> W_L = E (zero left window, walks +11.2 per packet) ...
+gap ~1200 ... R1 = E + v1 GB5 (round-2 input prefix) <- K3 =
+GB1@(0,0)+GB3@(-18,30) in R1's zero class (coupler scene C convention).
+- v1 = 0: K3 passes R1's zero as B^3, which closes W_L (E + B^3 -> E^4);
+  the window stops: final E^4 frozen at 370.0 / 358.8 / 347.6 / 336.4 /
+  325.2 (one 11.2 step fewer per ~6 shifts as the gap shortens), R1 = E.
+  25/30 arrival shifts (14 cells each) clean; 5/30 (every 6th: B^3 arrives
+  during a packet collision) -> Ebar + Ebar + A.
+- controls: v1 = 1, 2 (no B^3): W_L walks all 40 packets (448.0), R1 =
+  E^5 / E^6 (4 shifts each); K3 placed in R1-class 1: R1 -> Ebar + D1 +
+  D1 (catalog), no B^3, W_L walks 448.0 (3 shifts).
+Seeds for verify: fullstop_scenes.json (every scene: t=0 object states
+(bits, lph, rph, start) in r110lib conventions, run length T, wl_ref, and
+my products). Together with ds.py (y's zero opens the right window), both
+counters' zero signals now switch a gap's drift, end to end. Next: lead
+items 2 (contact at a window/marker) and 3 (per-unit handshake).

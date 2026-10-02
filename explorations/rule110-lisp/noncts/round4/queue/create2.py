@@ -88,9 +88,10 @@ class Path:
             src = fullA[a_src:b_src]
             new = g.copy()
             # ether phase check at both ends
-            if phase_at(new, a_dst - TILE) != phase_at(fullA, a_src - TILE) or \
-               phase_at(new, a_dst + len(src)) != phase_at(fullA, b_src):
-                out[t] = "phase"; continue
+            # the 14 cells outside each end must agree (same ether, same phase)
+            if not (np.array_equal(new[a_dst - TILE:a_dst], fullA[a_src - TILE:a_src]) and
+                    np.array_equal(new[a_dst + len(src):a_dst + len(src) + TILE], fullA[b_src:b_src + TILE])):
+                out[t] = "seam"; continue
             new[a_dst:a_dst + len(src)] = src
             w = sc.run(new, TB)
             s = (K0 + D + 100) - (K0 - 400)
