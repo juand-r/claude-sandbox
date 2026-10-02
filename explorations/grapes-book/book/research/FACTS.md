@@ -356,6 +356,19 @@ deleted: they are struck through with a note, so the history is visible.
   Wiktionnaire, https://fr.wiktionary.org/wiki/fox%C3%A9
 - **Checked**: 2026-10-01, search summaries. **Confidence**: high.
 
+### F029 Strawberry and raspberry are not berries
+- **Claim**: The strawberry is an accessory fruit: most of its flesh grows
+  from the receptacle (not the ovary), and the specks on its surface are
+  the true fruits, each an achene (a small dry single-seeded fruit that
+  does not split open). The raspberry is an aggregate fruit: a cluster of
+  many small drupelets, each from a separate ovary of one flower.
+- **Source**: Britannica, "fruit" article,
+  https://www.britannica.com/science/fruit-plant-reproductive-body ;
+  Colorado State University,
+  https://www.lsop.colostate.edu/2020/04/29/everything-you-need-to-know-is-that-a-berry/
+- **Checked**: 2026-10-02, standard botanical classification.
+  **Confidence**: high. Textbook botany.
+
 ### F028 Virginia creeper and Boston ivy
 - **Claim**: Virginia creeper (*Parthenocissus quinquefolia*) and Boston ivy
   (*P. tricuspidata*) belong to the grape family, Vitaceae.
