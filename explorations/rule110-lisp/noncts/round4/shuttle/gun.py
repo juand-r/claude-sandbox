@@ -161,7 +161,7 @@ def seeds_mod(Tc, dxV, P, span):
     return reps, abs(det)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and not (len(sys.argv) > 1 and sys.argv[1] == "--verify"):
     a = args()
     G = Gun(a)
     bg = BG(a.N, G.T + 20, -G.T - 600, 4 * a.N + G.T + 600)
@@ -221,3 +221,13 @@ def verify_gun(rec, cycles=12, n_rod=None):
                  if lo + t + 5 <= x + k * G.dxV < hi - t - 5)
         out.append(ok)
     return out, h, lo
+
+
+if __name__ == "__main__" and len(sys.argv) > 2 and sys.argv[1] == "--verify":
+    # python gun.py --verify gun_records.jsonl [cycles]
+    cyc = int(sys.argv[3]) if len(sys.argv) > 3 else 8
+    for l in open(sys.argv[2]):
+        rec = json.loads(l)
+        ok, h, lo = verify_gun(rec, cycles=cyc)
+        print(rec["face"], rec["j"], rec["seed"], "periodic for", cyc, "cycles:", all(ok))
+    sys.exit(0)

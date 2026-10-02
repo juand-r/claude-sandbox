@@ -1124,3 +1124,35 @@ PID 28703); all further heavy runs go through one sequential script.
 Killed my pert.py SAT loop (parent shell first); only run_ext.sh (bounce.py,
 one process) runs now. Mistake: I started small SAT runs next to the
 frontier job thinking they were light; they were not (wx 30, T 220).
+
+### [objects] 00:31 - a back->front signal that CHANGES THE ROD'S TYPE cleanly: E^n (front type 7) + left wall (1,9) -> an X-rod of the same value [sim]; launching it is the open half
+Scripts objects/fronts_walls.py, xrod.py, xconv_n45.json (explicit row).
+- [sat] Fronts: (15,-4) interfaces ether(phase c) | E-bg(phase 0) exist
+  for 7 of the 14 left ether phases (W <= 24): c = 2,4,7,8,10,12,13 (the
+  standard E^n front is the W=12 one, c = 12). Rods built with each front
+  (standard back) are stable.
+- [sim] Each front x each of the 15 left-wall kinds (-3/5), wall planted
+  60 cells behind the front, E^45, T = 700, clean = exactly one object,
+  (300,-80)-periodic: 103 of 105 destroy/dirty; the standard front
+  destroys all 15. Front types c = 7 and 13 + wall g = (1,9) are CLEAN.
+- [sim] What happens (xrod.py, n = 30..60 step 3, front c = 7): the front
+  stays exactly in place (shift 0), a conversion sweeps back through the
+  rod, and the result is ONE stable rod moving at -4/15 whose interior is
+  a different background X = 0000100011 (period 5, lattice (5,0),(0,10):
+  static in the lab; the faces move through it). Its length is linear in
+  n with the E unit slope (91 .. 191 cells for n = 30 .. 60), i.e. the
+  VALUE survives and the TYPE (mode) changes. 11/11 n values; checked
+  (300,-80)-periodic after the conversion. Explicit initial row:
+  xconv_n45.json ("wall" and the no-wall control, which stays an E-rod).
+- The (1,9) "wall" (W = 38) is itself compound: it contains an ETHER
+  POCKET, i.e. the rod is cut by a moving bubble (E-bg | back' | ether |
+  front' | E-bg, all at -3/5).
+Why it matters [arg]: this is the first right-to-left effect through a
+long rod that leaves a clean, value-preserving object, and it changes
+the rod's type at the FRONT side, i.e. the drift-setting state (if the
+left stream acts differently on X-rods). Missing pieces: (i) a gap-side
+collision at some BACK type that launches the (1,9) bubble (standard
+backs: none in my scans); (ii) left-stream ops on front-type-7 rods and
+on X-rods; (iii) a way for the left stream to set front type 7.
+verify: xconv_n45.json is a plain row (bits + ether phases), run it
+T = 1200; control = "nowall".

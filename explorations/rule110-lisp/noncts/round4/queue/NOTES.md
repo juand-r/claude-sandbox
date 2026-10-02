@@ -111,3 +111,24 @@ level, charge law, option (c) SAT).
 - 00:47 lead: three heavy processes at once (tail of zfull_batch + a new
   batch + a check). Rule from now: ONE heavy process; new jobs wait for
   the previous PID (until ! kill -0 PID) inside one script.
+
+### 00:30-01:10 acceptor path, creation attempts, class-as-state idea
+- [sim] Forced-N modifiers also exist in the ACCEPTOR path (zaccpair.py:
+  Q added between the last moving-data Ebar and E0; 46 forced-N of
+  ~11.7k); per-object debris classes (dclass.py) show none exact. One full
+  run (YYNN, 2v) breaks at read 2 as predicted; batch stopped by PID.
+- [sim] Joint creation search create2.py (X = Ebar pairs in a (0,112) gap
+  before K, both answers, then the next read; 2v): ~8k X; 154 X are
+  invisible (both paths exactly standard), none gives a state-dependent
+  read; most X break the rejector's preparation of K.
+- [sim] Answer converters need a gap right of the reader; a gap at K0+100
+  breaks reading (K's tail takes part), at K0+239/310 it is a symmetry
+  for NYYN (8/8) but NNYY was the bad 1v baseline -> undecided, dropped
+  (converters cannot be created by the previous answer anyway: it never
+  reaches K's tail).
+- [arg] Class as state: in the acceptor path the next symbol crosses E0
+  (+7 cells, displaced -52 = 4 x (6,-13)) on top of the moving data; the
+  rejector path has no E0. Cook's reader reads both normally. A modified
+  reader P* (prepared identically by both answers) that is not "bi-class"
+  would read differently by state, with no marker to create. Screen:
+  pstar.py (P's E replaced by same-slip objects, both paths).

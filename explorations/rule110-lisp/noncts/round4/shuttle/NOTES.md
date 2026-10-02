@@ -123,3 +123,8 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   25364 first, then 29928/29929). Partial results in front_B.jsonl.
   frontier_L.jsonl complete (heads produced by R-reflections, all classes).
   run_ext.sh running: physical heads x 291 produced walls (walls_frontier).
+- 00:2x front SAT with B (4,-2) and Bbar (12,-6) outputs (A-trains w <= 30,
+  T 220, wall-free, all even phiL): UNSAT for K = -2, -1, 1, 2, 3 (B) and
+  K = 1, 2 (Bbar) [partial: loop killed, 47 of 70 runs; K=-1 B 6/7,
+  Bbar K=2 6/7]. Control in the same code: a B-train moving away (K = 0)
+  is SAT for phiL 2, 4, 10, 12 and verify.py confirms Y = B (n = 5..7).
