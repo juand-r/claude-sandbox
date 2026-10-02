@@ -55,3 +55,11 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   residue-periodic offsets. Lesson: when a model's success depends on a
   commensurability condition, check that the condition is physically
   reachable (here: step < packet spacing) BEFORE posting.
+- 00:0x complete shuttle tables (435,022 rows): 16,096 bouncer runs, 0
+  bouncers; no ratchets; 0 pass fixpoints; longest pass chain 2 (tapesim
+  confirms, and reproduces shuttle's row). Single B vs walls <= 20: no
+  pass at all. bscan.py B on walls 21-34 running (PID in bscan.pid).
+- tapesim first version placed list-form patterns at arbitrary columns
+  (wrong absolute ether phase) -> results disagreed with shuttle's table;
+  fixed by placing each pattern at s = -c (mod 14); then it reproduces
+  the table row exactly.

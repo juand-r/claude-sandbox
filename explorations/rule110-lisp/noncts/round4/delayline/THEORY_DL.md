@@ -17,9 +17,14 @@ what an unbounded gap buys. The answer has four parts.
 1. **A drift switch exists [sim].** A rod held at value 0 or 1 (a *window*)
    on the right side WALKS under right-stream no-op packets when it is at 0,
    and stays put at 1. The left rod's zero answer (an A glider) switches it
-   from 1 to 0, at any arrival time. So a zero event of the left counter y
-   turns on a drift of another unbounded quantity, the gap g. This is the
-   kind of coupling Theorem 1 asks for, in one direction (s.3).
+   from 1 to 0, at almost any arrival time. So a zero event of the left
+   counter y turns on a drift of another unbounded quantity, the gap g.
+   Left windows also walk (both directions, under uniform left streams),
+   and a B^3 shot (what R1's zero sends) closes a walking left window and
+   freezes it. So both kinds of zero signal can switch a gap's drift
+   (s.3). Neither switches a ROD's drift, which is what Theorem 1 needs
+   for two rod counters; for two GAP counters (theory's route 20) these
+   are the needed switches, still missing a middle marker and contacts.
 2. **Windows can gate distances, hardly values [thm + sim].** Slip
    conservation forces any right-stream block that leaves a closed window
    unchanged to shoot only multiples of 7 units through an open window that
@@ -74,8 +79,10 @@ the "charge" of what it absorbs, counted mod 7.
 | 422 (packet, class) walks among 2,337 G-speed packets, all to the right (0 to 78.4 cells) | R1 window | scan_e2.jsonl, wclass.py |
 | merge: D1 at R1's front dumps R1 into R2 (y := y + x + 2) | gap | shuttle 23:24, verify 23:33 |
 
-Every walk found is to the RIGHT. The right stream can lengthen the gap by
-walking its window; the gap shrinks only when units are added at R2's back.
+Every RIGHT-window walk found is to the right: the right stream can
+lengthen the gap by walking its window, not shorten it. LEFT windows walk
+both ways (s.3.2), so the left stream can move its side of a gap in either
+direction.
 
 ## 3. The drift switch [sim]
 
@@ -129,6 +136,37 @@ the switch fails outright in about 1.2% of arrival phases. In a machine
 with an unbounded gap the arrival phase sweeps through all values, so a
 design must keep arrivals out of that window, e.g. by spacing NOPs so that
 the arrival phase is fixed mod the NOP period [hyp].
+
+### 3.2 Left windows walk both ways; a B^3 stops a walking left window [sim]
+
+lscan.py tested all 6,398 A-lattice trains of width <= 30 (shuttle's SAT
+enumeration) from the LEFT against a zero window E and against E^2, in
+each of the 3 classes (exact CA; control: the library A reproduces the
+catalog, A + E -> D1, D1, C3 and A + E^2 -> E). lclass.py:
+- a zero left window walks in BOTH directions: single-packet shifts from
+  -12.13 to +27.07 cells (rightward ones are far more common);
+- 583 (train, class) outcomes leave E^2 as E^2; 49 trains leave E^2
+  exactly unmoved in some class and walk E in some class.
+lwalk.py: uniform streams of one train (copies 84 cells apart) keep a zero
+window walking at a steady rate, e.g. train 499 at +11.2 cells per packet
+(toward the gap's far side) and trains 875 / 1055 / 1199 at -2.8 per
+packet (away from it), checked for 5, 10 and 20 packets.
+lgate4.py: 47 walking trains are also neutral and unmoved on E^4 in some
+class. E^4 is what a K3 shot (B^3, ledger r3 #31) makes of a zero window.
+lstop.py (train 499, class 1; B^3 injected at the window's back at 75
+arrival times spread over five packet periods, packets 280 cells apart):
+63/75 give a lone E^4 frozen where the window was when the B^3 arrived
+(11.6, 22.8, ..., 56.4: one step of 11.2 per packet before the stop);
+12/75, three consecutive arrival slots per packet period (the B^3 arriving
+during a packet collision), give debris (F, or B + Ebar). Control (no B^3):
+the window walks on (56.0 after 5 packets). With packets 84 cells apart
+the debris fraction is 3/7, so it scales with the collision's share of the
+packet period. Train 875 (leftward walker) is NOT stopped: the closed E^4
+is walked by the same amount.
+
+So the opposite direction exists too: a B^3 (what R1's zero sends through a
+zero R1) switches a left window's walk OFF. Scope: one injected B^3, not
+yet a full scene with R1 and K3; arrivals during a packet collision fail.
 
 ## 4. The slip lemma for windows [thm]
 
@@ -252,6 +290,11 @@ Any one of these would reopen the gap route; none is excluded by a theorem.
    7 units and leaves E (or shoots 6 and leaves E^2: a reusable reflector).
    Library: none (S43 shoots 3 and closes to value 4). Next: SAT with the
    neutral case as one scene and the shot as the other.
+
+4. **For two gap counters (theory's route 20, W_L ~g1~ M ~g2~ W_R)**: a
+   co-moving middle marker M that both windows' signals reach, with contact
+   reactions at M (zero tests) that emit start/stop signals; s.3 supplies
+   the window walks and the stop/start switches on the window side.
 
 Together with the drift switch of s.3, target 3 would give both directions
 of Theorem 1's coupling (y's zero sets the gap's drift; the gap's walking

@@ -630,6 +630,35 @@ I have not re-read Conway here]. Physical needs:
 - The B spacing in a dumped train must exceed each processor's settling
   time (tight trains make it a many-body reaction).
 
+## 6d. What I recommend next, and what remains uncertain
+
+*Recommendation 1 (most direct).* Route 20 (two windows, two gaps) has
+the most verified physics (delayline's drift switch) and no owned mode.
+Its arithmetic is the open question: in physical kinematics, rate-matched
+transfers are residue-switched affine maps whose offsets the machine
+cannot observe (s.6b correction). The next model to build is a
+*handshake* version (each walk step of the destination triggered by one
+signal from the source), which would make transfers exact by
+construction; its physical cost is a signal that crosses the gap per
+unit, i.e. round 3's shuttle problem in a new geometry.
+
+*Recommendation 2.* Rows 12/14/22 (stream-free particle machines) are
+blocked at small sizes by a simple fact: the natural reaction map has no
+closed sub-table, not even a two-reflection bouncer, among heads <= 30 and
+walls <= 20 (s.3.9). The only cheap remaining test is objects' two-scene
+SAT with shared head variables and wider walls. If it is UNSAT at widths
+around 30-40, I would stop these routes.
+
+*Recommendation 3.* Row 7 (near-end lane, abort by class shift) is
+unowned and unsearched. Its cost is the crossing-count balance F6; queue's
+mod-8 measurement in Cook's machine is the same law and shows how to
+compute it.
+
+*Remaining uncertainty.* Every negative in this round is scoped by
+widths (20-40 cells) and by the single-class lattices. The theorems
+(L1-L4, the influence-graph reading of R2/R3) are proofs in models; the
+models' premises were measured, not proved, for Rule 110.
+
 ## 7. Literature read for this round
 
 - J. Durand-Lose, "Irrationality is needed to compute with signal machines

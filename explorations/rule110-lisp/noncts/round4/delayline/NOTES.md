@@ -123,3 +123,17 @@ times, which preserve the A class (shown: (0,14) in <(3,2),(15,-4)>), so
 they could not see this.
 Started lscan.py (left window table: 6,398 A-lattice trains x {E, E^2} x 3
 classes), PID in lscan.pid.
+
+## 00:14 left windows [sim, exact CA]
+- lscan.py: 6,398 A-lattice trains (w <= 30) vs E and E^2 from the left, 3
+  classes, 0 errors; control A = catalog. Zero left window walks both ways
+  (-12.13 .. +27.07 per packet). 49 "gate" trains (E^2 unmoved, E walks).
+- lgate4.py: 47 walking trains are neutral+unmoved on E^4 in some class.
+- lwalk.py: uniform streams: train 499 +11.2/packet, 875/1055/1199
+  -2.8/packet (K = 5, 10, 20 all linear).
+- lstop.py 499 1: B^3 at the back closes and freezes the window: 63/75
+  arrivals clean (positions 11.6 + 11.2 k), 12/75 debris (3 slots per
+  packet period = collision); at spacing 84 cells 4/7 clean.
+  875 is not stopped (E^4 walked equally): only some walkers are gates.
+- MISTAKE corrected: first lstop run used T too long for the cyclic row
+  (objects wrapped; control showed [] ) -> pad now grows with T.

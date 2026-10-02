@@ -12,9 +12,14 @@ NOTES.md.
   except for arrivals during a NOP collision (~2.5% of phases; the switch
   fails in ~1.2%). Verified independently by verify (board 23:46).
 - [sim] Window table: all 2,337 library G-speed packets on E^2 (and, from
-  round-3 coupler, on E). All 422 walks of a zero window are to the right.
+  round-3 coupler, on E). All 422 walks of a zero RIGHT window are to the right.
   Only one packet (S43) is neutral when closed and shoots when open, and it
   closes the window at value 4.
+- [sim] Left windows (A-lattice trains from the left, all 6,398 of width
+  <= 30) walk BOTH ways; uniform streams walk a zero left window steadily
+  (+11.2 or -2.8 cells per packet); a B^3 (R1's K3 shot) closes a rightward
+  walking left window and freezes it (63/75 arrival times; the rest are
+  arrivals during a packet collision).
 - [thm] Slip lemma for windows: closed-neutral gates shoot 0 mod 7 units
   (or 7 - d if the shot closes the window to d).
 - [sim] All 391 (4,-2) trains of width <= 30 are pure charge carriers: they
@@ -40,6 +45,10 @@ NOTES.md.
 | bscan.py, bscan.jsonl, bscan.log | 391 (4,-2) trains vs A and E^m, controls B, B^3 | python bscan.py |
 | burstmodel.py | event model of the burst regime (FAILURES 0) | python burstmodel.py |
 | lscan.py, lscan.jsonl | left window table: 6,398 A-lattice trains vs E, E^2 from the left | python lscan.py |
+| lclass.py | left window table analysis | python lclass.py |
+| lgate4.py, lgate4.jsonl | walking left trains vs E^4 (window closed by B^3) | python lgate4.py |
+| lwalk.py, lwalk.log | uniform left streams on a zero window | python lwalk.py 10 6 |
+| lstop.py, lstop_*.log | B^3 stops a walking left window, arrival sweep | python lstop.py 499 1 5 20 100 400 4 |
 | burst.py | A-burst vs R1 (first attempt, killed; superseded) | - |
 
 PID files (*.pid) are stale once the job ends. Inputs read (never written):

@@ -57,15 +57,16 @@ def frame_form(row, lo, t):
     return bits, (pr - pl) % TILE, origin
 
 
-def main(sides=("L", "R"), outname="bounce_table.jsonl"):
-    heads = {"R": [json.loads(l) for l in open("heads_R.jsonl")],
-             "L": [json.loads(l) for l in open("heads_L.jsonl")]}
-    walls = [json.loads(l) for l in open("trains_7_0_20.jsonl")]
+def main(sides=("L", "R"), outname="bounce_table.jsonl", hR="heads_R.jsonl", hL="heads_L.jsonl",
+         wf="trains_7_0_20.jsonl", rawL="bounce_L.jsonl", rawR="bounce_R.jsonl"):
+    heads = {"R": [json.loads(l) for l in open(hR)],
+             "L": [json.loads(l) for l in open(hL)]}
+    walls = [json.loads(l) for l in open(wf)]
     wall_index = {(w["bits"], w["pR"]): j for j, w in enumerate(walls)}
     head_index = {s: {(h["bits"], h["pR"], h["p"], h["d"]): i for i, h in enumerate(heads[s])} for s in "RL"}
     wall_canon = {}
     out = open(outname, "w")
-    for side, fn in (("L", "bounce_L.jsonl"), ("R", "bounce_R.jsonl")):
+    for side, fn in (("L", rawL), ("R", rawR)):
         if side not in sides:
             continue
         for l in open(fn):
@@ -126,4 +127,7 @@ def main(sides=("L", "R"), outname="bounce_table.jsonl"):
 
 if __name__ == "__main__":
     sides = sys.argv[1] if len(sys.argv) > 1 else "LR"
-    main(tuple(sides), sys.argv[2] if len(sys.argv) > 2 else "bounce_table.jsonl")
+    if len(sys.argv) > 3:      # extension tables: hR hL walls rawL rawR
+        main(tuple(sides), sys.argv[2], *sys.argv[3:8])
+    else:
+        main(tuple(sides), sys.argv[2] if len(sys.argv) > 2 else "bounce_table.jsonl")

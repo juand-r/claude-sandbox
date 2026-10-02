@@ -24,7 +24,9 @@ Code (all imports of collider/, scholar/, round3/theory, shuttle/ are read-only)
 | `gapvm.py` | route 20: full Minsky compile on gap2 transfers, IDEALISED geometry only (windows jump packets; see THEORY s.6b correction); incommensurate control | `python3 gapvm.py` (exit 0 = pass) |
 | `cycles.py` | bouncer / ratchet graph search on reaction tables; synthetic controls | `python3 cycles.py test` |
 | `bounce.py` | bouncer search with library heads and walls (exact, on demand) | `nice -n 10 python3 bounce.py 60` |
-| `bscan.py` | one B (or A) vs every stationary object w <= 34 | `nice -n 10 python3 bscan.py B` |
+| `tables_search.py` | bouncer/ratchet/fixpoint search on shuttle's complete single-wall tables | `nice -n 10 python3 tables_search.py` |
+| `tapesim.py` | one exact row: a head launched at n identical walls (follows chains beyond the tables) | module |
+| `bscan.py` | one B (or A) vs every stationary object of width 21-34 (<= 20 is in shuttle's table) | `nice -n 10 python3 bscan.py B` |
 | `bouncer.py` | route 14 model: Minsky -> transfer machine -> bouncer reflection table; differential test + 2 controls | `python3 bouncer.py` (exit 0 = pass) |
 
 Every Rule 110 claim here comes from collider's exact stepper and typer;

@@ -917,3 +917,61 @@ EVERY collision class (these heads are multi-class against C's). Output
 shuttle/frontier_L.jsonl, same format + cls/ncls. theory: the full
 graph search (zig-zags, counters) is yours; the quick walk is only a
 sanity check.
+
+### [delayline] 00:15 - left windows walk BOTH ways; a B^3 stops a walking left window [sim]; FINAL SUMMARY of avenue (c)
+New [sim] (exact CA, collider stepper/typer; delayline/):
+- lscan.py: all 6,398 A-lattice trains w <= 30 (shuttle's enumeration)
+  from the LEFT vs E and E^2, 3 classes, 0 errors (control: library A =
+  catalog). A zero LEFT window walks both ways (-12.13..+27.07 per packet);
+  49 trains leave E^2 exactly unmoved in some class while walking E.
+- lwalk.py: uniform streams of one train (84 cells apart) walk a zero left
+  window steadily: train #499 +11.2/packet (toward the gap), #875, #1055,
+  #1199 -2.8/packet (away); linear over 5/10/20 packets.
+- lstop.py 499 1 5 20 100 400 4: a library B^3 (= K3's shot through R1's
+  zero, r3 ledger #31) injected at the window's back at 75 arrival times:
+  63/75 -> lone E^4 frozen where the window was (11.6 + 11.2 k); 12/75
+  (3 slots per packet period, arrival during a packet collision) -> debris.
+  Control without B^3: walks on. #875 is not stopped (E^4 walked equally).
+- ds_cls.py: the forward switch (A opens the right window) works in all 3
+  A classes; the opened E sits 0 or 1.87 cells further right by class, so
+  the walk origin is class (g mod lattice) dependent. ds_fine: arrivals
+  during a NOP collision: 12/334 slots off-sequence, 4/334 park.
+Summary of what avenue (c) found (THEORY_DL.md, README.md):
+1. [sim] Gap drifts CAN be switched by zero signals in both directions:
+   y's A opens a right window (walk ON), R1's B^3 closes a left window
+   (walk OFF). Right windows walk only away from the gap; left ones both
+   ways. Failure mode for both: arrival during a stream collision.
+2. [thm] slip lemma: a window neutral when closed gates VALUE transfers
+   only in 7-unit quanta; walks are free. Library: S43 is the only
+   closed-neutral shooter (one shot, closes at 4).
+3. [arg] with blind streams "one signal in flight" (row 8) is either
+   Theorem-1 territory (self-refilling left program) or forces Theta(g)
+   answers in flight (row 9).
+4. [sim+model] row 9 in the round-3 layout: every single-class refill
+   (all 391 (4,-2) trains w <= 30) is a charge carrier that an A annihilates
+   one unit of; the burst eats any reply; R2 is never refilled (model).
+Open targets: (i) a burst-safe refill (crosses A in all classes, INCs a
+back); (ii) a repeatable contact switch at g = 0; (iii) a closed-neutral
+7-unit shooter; (iv) for route 20, a middle marker M with contact
+reactions. Theorem 1 for two ROD counters is not escaped by anything I
+found: every switch I verified acts on a gap's drift, not a rod's.
+
+### [verify] 00:17 - shuttle's R-table spot-checked (snapshot 00:10, 359,559 R rows); one small export defect in "absorbed" rows
+[sim] verify/spot_bounce.py + spot_phase.py on a frozen copy (the file
+was being rewritten while I read it at 00:05; snapshot taken when its
+size was stable):
+- reflect 150/150 and pass 150/150: wall_out (bits, pR, dx) equal to my
+  product's t = 0 mod 7 row exactly; dirty 150/150 agree; head_out canon
+  equal for all exact-lattice heads. 4 of 200 reflect/pass rows whose
+  head is F or Ebar (non-lattice) I classify "dirty" at T = 840 (minor,
+  outside the graph search's scope; not chased).
+- absorbed: 142/150 exact; 8/150 (5%) give a wall_out that is my
+  product at ANOTHER time phase (offsets 1, 2, 5, 6) with dx off by
+  0..-5 cells. Identity via *_canon is unaffected (phase-minimised), but
+  dx in those rows is wrong. Harmless for bouncers (absorption ends a
+  chain); matters if absorbed rows are ever used as counter steps.
+Running (my one heavy job, PID in verify/bd_L.pid): bouncer_direct.py,
+an exact 3-object simulation of every clean L-reflection (1,210) x every
+physical wall_R (70), T = 6,000 then 60,000; it follows chains beyond
+the tables. First 11,480: 0 alive; 140 survive 6,000 steps only
+because of slow heads (e.g. D1 -> wall_R -> F (-1/9) -> passes wall_L).
