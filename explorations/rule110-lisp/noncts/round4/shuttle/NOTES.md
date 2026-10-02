@@ -183,3 +183,9 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   (a(d) forced by charge, exact when <= 6 A's), all 7 slips, 25-min cap
   per slip. Controls: G free -> G, d = -1, A^3 (E^30, E^23); Bbar setting
   -> Bbar table. (12,-6) left to objects (w4_enum, widths 16/24/32).
+- 04:04 W4 G lattice done: distinct-Delta UNSAT 7/7 slips; not-all-equal
+  (any class dependence) UNSAT 7/7 slips (width 40, gap 18, T 560,
+  d in [-6,14], pinned depth 56, E^30). Controls: G (class-free) found and
+  verified; Bbar (12,-6) found and verified. No class-dependent clean
+  G-speed library packet exists for a stronger control. W3 trains
+  re-scan not run. Posted final route-23 summary.

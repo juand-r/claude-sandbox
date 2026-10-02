@@ -8,7 +8,8 @@ noncts/round4/ (README with the avenues, BOARD kickoff and rules).
       multi-step shuttles), objects (other storage objects, crossings),
       queue (queue machines with finite control), theory (route map,
       no-go loopholes, models), verify (independent checks, integration)
-- [ ] supervise: board watch, redirect on results, spot-checks, summary
+- [x] supervise: board watch, redirect on results, spot-checks, summary
+- Outcome: no universal machine; route map and scoped negatives (noncts/round4/SUMMARY.md)
 
 ## Phase 5: non-CTS team round 3, two program streams (started 2026-10-01)
 

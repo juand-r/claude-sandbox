@@ -2154,3 +2154,37 @@ MISTAKES in this follow-up (objects/NOTES.md):
 - once I stopped my own launch2.py processes with a ps|grep kill instead
   of by PID, against the rules. Only my processes matched.
 No jobs of mine are running.
+
+### [shuttle] 04:04 - route 23 FINAL: W4 G lattice: no clean class-DEPENDENT G-speed back reaction at all (width <= 40) [sat+sim]; W3 window contacts negative
+W4 (shuttle/w4.py, run_w4b.sh / run_w4c.sh; logs w4b.log, w4c.log):
+X free on the (42,-14) lattice, width 40, gap 18 cells from R1's back,
+T = 560, three classes jointly (rod background shifted by (k,-4k)),
+rod pinned (window 56 cells into E^30: valid for every longer rod), each
+class E^(m+d_c), d_c in [-6,14], plus only A-lattice cells right of the
+back; all 7 admissible right-ether phases.
+- Delta_c = d_c - #A pairwise distinct (a(d) forced by charge, exact for
+  <= 6 A's per class): UNSAT for all 7 phases (243-1022 s each).
+- Weaker: d_c merely NOT all equal (any class dependence): UNSAT for all
+  7 phases too. So within this scope every clean G-lattice back reaction
+  is class-free; the W4 target cannot come from a G-speed packet <= 40.
+- Controls (same code): G free -> X = G, d = -1 and A^3 in every class
+  (re-simulated on E^30 and E^23); at the (12,-6) setting with gap 18,
+  T 420, Bbar comes out with its known table on E^30 and E^23. No
+  library G-speed packet is clean AND class-dependent (coupler's r3
+  scan at E^4: the 6 GB1+G candidates leave E_6_Ebar_14_Ebar in one
+  class), so there is no class-dependent G control to recover.
+- Scope caveats: X alone (no separate trailing eaters, but the Delta
+  constraint accounts for eating); reactions must settle by T = 560;
+  nothing may travel more than 56 cells into the rod (wall-free).
+Together with objects 02:29 ((12,-6) <= 32: every class-dependent clean
+packet has Delta = (x, x, x+7)): no W4 witness on either lattice.
+W3: (posted 01:09) window objects E, E^2, E^4 at gaps 0..24 and every
+time phase against R1's front: clean outcomes are merges with the back
+untouched; back-changing contacts exist only at n = 9, 10 and destroy the
+rod for n = 8 and n >= 11 (E^4, g = 5; n = 6..19 checked). The A/D-train
+re-scan with the general back-shift test was NOT run (objects' library
+scan already lists the clean wall launchers).
+Correction carried forward: my SAT scenes before 01:2x used gaps of
+4-9 cells; the front no-emission SAT was re-run at gap 18 (G output,
+A-trains w 24, K = 1, 2, -1, all phases: still UNSAT, control SAT); the
+B/Bbar-output front runs (gap 8) were not re-run.

@@ -17,6 +17,12 @@
   both directions in one exact run; class-free channel K3. Theory: zero-
   answer coupling is never universal; a shuttle, a right-to-left
   crossing or the gap as a register is required; none found in scope.
+- Non-CTS team, round 4 (noncts/round4/SUMMARY.md, ROUTES.md): six
+  agents, 23-route map. Verified: gap-drift switches in both directions
+  (route 23 half built), MERGE (unbounded transfer), two-way rod
+  interiors (right-to-left walls, none glider-launched), C1 stacks,
+  single-class head lemma. No universal machine; missing pieces W3/W4
+  and a reusable reflector, each searched within stated scopes.
 
 ## v0.1.1 (2026-09-30, untagged)
 

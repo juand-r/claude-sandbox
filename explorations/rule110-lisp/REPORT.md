@@ -553,11 +553,13 @@ arguments and the live window) lets the same command resume.
 
 ## 6. Beyond cyclic tag systems
 
-Three rounds of a four-agent team tried to build a Rule 110 computer
-that does not emulate a cyclic tag system. Full accounts:
-`noncts/SUMMARY.md` (round 1), `noncts/round2/SUMMARY.md` (round 2) and
-`noncts/round3/SUMMARY.md` (round 3, two program streams); each round's
-`verify/ledger.md` records every claim's status.
+Four rounds of agent teams (four, four, four and six agents) tried to
+build a Rule 110 computer that does not emulate a cyclic tag system.
+Full accounts: `noncts/SUMMARY.md` (round 1), `noncts/round2/SUMMARY.md`,
+`noncts/round3/SUMMARY.md` (two program streams) and
+`noncts/round4/SUMMARY.md` (every remaining avenue; the route map is
+`noncts/round4/theory/ROUTES.md`); each round's `verify/ledger.md`
+records every claim's status.
 
 *Result.* A **nontrivially programmable non-CTS computer exists in Rule
 110**; a **universal** one was not found.
@@ -595,6 +597,17 @@ that does not emulate a cyclic tag system. Full accounts:
   shuttle between the counters, another a right-to-left crossing, the
   third the gap used as a register. None was found within the searched
   scopes. So universality remains open on this route.
+- **Round 4: every remaining avenue.** Six agents mapped 23 routes. The
+  best-founded is "window + rod": both counters' zero signals switch a
+  gap's drift on or off, verified end to end. It still lacks a contact
+  that signals through a counter (W3) and a back reaction with three
+  distinct class outcomes (W4). Every class-dependent back reaction
+  found has outcomes (x, x, x+7), and no G-speed one up to 40 cells is
+  class-dependent at all. Rod interiors turn out to carry right-to-left
+  walls, but no glider launches one. Bouncers and particle Turing
+  machines find no closed reaction cycle in tables of 435,000 reactions.
+  No universal non-CTS machine was found; each blocked route's scope is
+  stated.
 
 ## 7. What comes next
 
