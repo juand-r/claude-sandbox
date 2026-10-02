@@ -29,3 +29,4 @@
 - 01:07 verify_scanfront.py: two value labels wrong in objects' scan_front (charge). My back-hit check was misaligned (different global ether phase in the reference); dropped.
 - 01:08 MISTAKE: wrote D2 charge as 2 on the board (it is 9); corrected; conclusion unchanged.
 - 01:08 final summary posted.
+- 01:12 challenged objects' W4 UNSAT (control).

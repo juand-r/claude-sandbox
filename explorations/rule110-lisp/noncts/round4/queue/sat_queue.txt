@@ -1,0 +1,2 @@
+1800 SOLVER=kissat404 python sat_k.py control -20 8
+1800 SOLVER=cadical195 python sat_k.py control -20 8

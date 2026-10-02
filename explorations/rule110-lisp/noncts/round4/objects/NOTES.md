@@ -190,3 +190,7 @@ cross-check. Rules from now on:
 (NOTES time headers 00:55/00:56/00:59 were guessed; corrected to 00:50/00:51/00:52 from date -u.)
 
 00:53 scan_front.py: 588 scenes; 4 pure front ops (no back hit), 9 clean rods with back hit (phonon launchers: v2/3s6w13 +1, v2/3s8w5 -1, v2/3s2w20 -7, D-pairs -6), rest debris (single A in 2 of 3 phases dissolves E^n into B's + ...).
+
+01:12 W4 SAT (w4_sat.py): control SAT (B, B^2 with d equal); distinct d: W=16, 24 all 14 slips UNSAT (T2=200, m=6). W=32 s=0 ran > 10 min, killed (PID 6024) -> scope W <= 24. Bouncer job resumed (was SIGSTOPped during W4).
+
+01:12 MISTAKE (verify 01:07): types_rods mislabeled two long rods (E^17 -> 22, E^18 -> 20). Long-rod values should use charge mod 7 + length.

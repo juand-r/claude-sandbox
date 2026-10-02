@@ -64,7 +64,7 @@ def build(a, bg, phiR, cnf=None):
             sel[d] = s
             bS = backk(T - 5 * d) + 2 * d
             ok = True
-            for x in range(L - 2, bS + a.band):
+            for x in range(L - 2, (R + 2) if a.noA else (bS + a.band)):
                 l = S.lit(T, x)
                 v = bgk(T - 5 * d, x - 2 * d)
                 if isinstance(l, bool):
@@ -76,7 +76,7 @@ def build(a, bg, phiR, cnf=None):
             if not ok:
                 cnf.add([-s])
                 continue
-            for x in range(bS + a.band, R + 2):
+            for x in range(bS + a.band, R + 2) if not a.noA else []:
                 l1, l2 = S.lit(T, x), S.lit(T - 3, x - 2)
                 if isinstance(l1, bool) and isinstance(l2, bool):
                     if l1 != l2:
@@ -162,6 +162,7 @@ if __name__ == "__main__":
     ap.add_argument("--dset", type=pair, default=None)
     ap.add_argument("--distinct_d", action="store_true")
     ap.add_argument("--not_all_equal", action="store_true")
+    ap.add_argument("--noA", action="store_true", help="pure outcome: nothing but the rod")
     ap.add_argument("--max", type=int, default=20)
     ap.add_argument("--out", default="w4_results.jsonl")
     a = ap.parse_args()

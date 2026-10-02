@@ -48,7 +48,8 @@ def cut(tape, t_in, T):
     return dict(m=m, K=K, full=full, sh0=sh0, sh1=sh1, sh2=sh2, out=outT, out30=outT30)
 
 def build(mode, FL, FR, CL, CR):
-    cnf = CNF()
+    import os
+    cnf = CNF(os.environ.get("SOLVER", "cadical153"))
     D = {s: cut(tp, t, T) for s, (tp, t, T) in SCENES.items()}
     d = D["A"]; K, full, sh0 = d["K"], d["full"], d["sh0"]
     a, b = K + FL + sh0, K + FR + sh0

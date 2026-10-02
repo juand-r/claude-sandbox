@@ -1740,3 +1740,58 @@ Control: A (DEC) gives front u = (5,2), back (0,0); objects' D1_9_D1 #4
 gives front and back both (5,-34)/(5,-14), h = 30 (the known launcher).
 Next: A/D-train scan with this general back-shift test (frontsim only
 tested shifts by whole units).
+
+### [objects] 01:11 - verify 00:53 W4 spec: no B-speed back reaction with three DISTINCT clean class outcomes, widths <= 24 [sat]
+objects/w4_sat.py: X = free train on the (12,-6) lattice (B speed, 3
+classes against E^n), width W_X, right ether phase s (all 14); three
+scenes share X's cells, one per class (synth placements_by_class); at
+T2 = 200 in each scene: E^(m+d_c) exactly at the undisturbed FRONT
+placement (the front cannot move), d_c in [-3, 17], and right of that
+rod's back only (3,2)-invariant cells (ether or A-lattice trains); the
+three d_c pairwise distinct. m = 6. Every solution is re-simulated.
+- Control (same code, distinctness dropped): SAT in 2 s, X = one B
+  (d = 1,1,1) and B^2 (d = 2,2,2), sim ok.
+- W_X = 16: 14/14 slips UNSAT; W_X = 24: 14/14 UNSAT.
+- W_X = 32 at T2 = 200 running (slow); 32/40 at T2 = 320 next.
+Note: charge forces d's congruent mod 7, so DSET [-3,17] holds every
+admissible triple with all d >= -3. Scope also: X alone (no trailing
+eater packets), m = 6 only.
+
+### [objects] 01:12 - W4 scope note
+The W_X = 32 run did not finish (first slip > 10 min at T2 = 200) and was stopped; the W4 scope is W_X <= 24, m = 6, T2 = 200, all slips (UNSAT), control SAT.
+
+### [objects] 01:12 - verify 01:07 accepted (two rod values wrong); W4 B-lattice share is covered
+1. verify is right: v2/3s2w20 gives value 22 and D2_7_D2#2 value 20, not
+   E^17 / E^18. MISTAKE: my long-rod reader (objlib.types_rods, n >= 16)
+   matches spliced E^n strings and can mislabel a rod whose faces differ;
+   charge mod 7 + length (verify's rodval) is the right reader. Values
+   from types_rods for n >= 16 in my posts should be read as "one clean
+   rod"; the E^24/E^25/E^23/E^18 (D1 pairs) values were confirmed by
+   verify, the two above are corrected.
+2. lead 01:10 split: the (4,-2) lattice is a sub-lattice of (12,-6)
+   ((12,-6) = 3 (4,-2)), so w4_sat.py's (12,-6) runs already contain every
+   B-lattice train; and a (4,-2) train has ONE class against E^n
+   (|det((15,-4),(4,-2))|/14 = 1), so it can never have three distinct
+   class outcomes [thm]. My W4 scope stays: (12,-6) trains W_X <= 24,
+   m = 6, T2 = 200, d in [-3,17], all slips: UNSAT; control SAT.
+   Witnesses: none to send.
+
+### [verify] 01:12 - objects 01:11 W4 UNSAT: the control is too weak, and Bbar itself should be a witness of that encoding
+1. As encoded (rod changes d_c pairwise distinct, A-family debris
+   allowed right of the back), Bbar satisfies the constraints: on E^m it
+   gives E^(m-1) + 5 A, E^(m+2) + A, E^(m-3) + 3 A, so d = (-1, +2, -3),
+   distinct (coupler r3 scan at E^4; shuttle 01:09 recovers exactly this
+   with distinctness on). Bbar's core fits in W_X = 16/24. So an UNSAT at
+   W_X = 16 and 24 means the encoding excludes Bbar (T2 = 200 too short
+   for the A's to clear at m = 6? class placements? front pinning?).
+   Please re-run with the control "distinct d required" and check that
+   Bbar (or a Bbar-type X) comes out; until then I mark the W4 UNSAT
+   CANNOT ACCEPT (control missing).
+2. Also: distinct d_c is not the W4 target. What matters is the outcome
+   AFTER the A's are eaten: Delta_c = d_c - nA_c + k (k trailing B's),
+   which for Bbar is (-6, +1, -6) + k: two equal although d is distinct.
+   The target is Delta_c pairwise distinct (equivalently d_c - nA_c
+   distinct; by charge they differ by multiples of 7), as shuttle's
+   w4_delta.py computes. Constraining d_c alone can return Bbar-like
+   witnesses that do not help, and an UNSAT on d_c says nothing about
+   Delta_c only if the encoding is right.

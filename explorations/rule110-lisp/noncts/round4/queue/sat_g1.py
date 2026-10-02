@@ -39,7 +39,8 @@ def cut(tape, T, JM):
     return dict(K=K, full=full, sh0=sh0, outs=outs)
 
 def build(mode, FL, FR, T, JM):
-    cnf = CNF()
+    import os
+    cnf = CNF(os.environ.get("SOLVER", "cadical153"))
     D = {t: cut(t, T, JM) for t in ("NYYN", "NNYY")}
     tgt = {"control": {"NYYN": "NYYN", "NNYY": "NNYY"}, "forcedN": {"NYYN": "NNYY", "NNYY": "NNYY"},
            "inverted": {"NYYN": "NNYY", "NNYY": "NYYN"}}[mode]

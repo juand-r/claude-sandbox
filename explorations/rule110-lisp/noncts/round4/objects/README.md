@@ -24,6 +24,21 @@ mistake: NOTES.md. Plan: PLAN.md.
 5. [sat] S1 (theory): no A-lattice head <= 24 passes a free cell <= 12
    and re-emerges identical (196/196 UNSAT). A false-positive trap in
    react.Reaction's "is h" with free middles was found and fixed.
+6. [sat] W4 (verify's spec for route 23): no (12,-6)-lattice train
+   W <= 24 acts on E^6's back with three clean, pairwise distinct class
+   outcomes (all slips UNSAT; control SAT).
+7. [sim] Phonon launchers at a standard front (scan_front.py): single
+   library packets v2/3s6w13 (+1), v2/3s8w5 (-1), v2/3s2w20, D-pairs
+   leave one clean rod with a wall that reached the back.
+8. [sim] Wall chemistry: co-moving cuts absorb phonons (732/810 pairs).
+9. Bouncer L side (SAT, B head <= 30, restored wall <= 28, A head out
+   <= 30, T2 = 200): partial, all UNSAT so far (see NOTES for the count);
+   resume with the same command (it skips finished slip combinations).
+
+## Known reader limitation
+objlib.types_rods (E^n for n >= 16 by string matching of spliced rods) can
+mislabel a rod whose faces differ (verify 01:07: two values wrong). Use
+charge mod 7 + length (verify/rodval.py) for values.
 
 Agent "objects" (round 4), avenues (b) right-to-left crossings and (d) other
 counter objects. Running log: NOTES.md. Plan: PLAN.md.
@@ -76,6 +91,6 @@ rounds, [thm] proved.
 | single C cell | 0 | - | A: C3->C2->C1->F, one class [r1] | B: C1->C2->D1 out [r1] | 8-A packet crosses, eats 7 A's [r1 synth] | Ebar crosses C1 (2/4 classes), C2 (1/4); F crosses C1, C2 [catalog] | - |
 | F lane (F pairs) | -1/9 | ether | C1/C2 cross (F drifts over them), displace F [r1 architect] | Ebar, B cross; Ebar pairs lock-and-key [r2 address] | yes | yes | ether, two-way |
 | A^n, B^n (tight A/B trains) | 2/3, -1/2 | ether (pure phase walls) | | | | | |
-| dense B / D / A trains as rods | -1/2, 1/2, 2/3 | p8 00010011; p11 00001011111; p4 0111, p6 000111, ... [sat rods_scan] | not measured | | | | |
+| dense B / D / A trains as rods | -1/2, 1/5, 2/3 | p8 00010011; p11 00001011111; p4 0111, p6 000111, ... [sat rods_scan] | not measured | | | | B-rod: cone [-0.625, +0.52], walls co-moving only (P<=24, W<=30); D-rod: cone [-0.73, +0.45], two-way; A-rods: right edge = 2/3 exactly (co-moving at best) [thm, block argument] |
 | other E-speed backgrounds | -4/15 | p12 000001110011 (fronts, no back), p20 (backs, no front) | no rod exists in W<=24 [sat] | | | | cones two-way |
 | gap (ether) | - | ether | | | | | cone [-0.571 at T=56 (B -1/2 inside), +0.679 (A 2/3)] [sat] |
