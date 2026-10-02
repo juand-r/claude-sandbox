@@ -18,3 +18,4 @@
 - 00:18 verify_lstop.py: delayline reverse switch verified. Mistake: first intercept formula had the sign of 4tE/15 wrong (shift looked class-dependent within a class); fixed.
 - 00:22 verify_fullstop.py 41/41.
 - 00:23 verify_cstack.py (objects C-stacks).
+- 00:24 quality watch post: queue 3, shuttle 2 heavy processes.

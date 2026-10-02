@@ -16,6 +16,7 @@ For g = 0, require the row to differ from the background somewhere at t = 0
 Every solution is re-checked by forward simulation (embedding the row in
 the two domains, evolving P steps, comparing).
 """
+import os
 import sys
 import json
 import numpy as np
@@ -131,11 +132,11 @@ class WallModel:
             assert r[x - (x_lo + P)] == exp, f"sim mismatch at x={x}"
 
 
-def scan(tile, g_list, Pmax, Wmax, out):
+def scan(tile, g_list, Pmax, Wmax, out, Pmin=1):
     bg = cone.Background(tile)
     res = []
     for g in g_list:
-        for P in range(1, Pmax + 1):
+        for P in range(Pmin, Pmax + 1):
             for D in range(-P, P + 1):
                 if not lattice_ok(bg, P, D):
                     continue
@@ -165,11 +166,12 @@ if __name__ == "__main__":
     Pmax, Wmax = int(sys.argv[2]), int(sys.argv[3])
     out = sys.argv[4]
     bg = cone.Background(tile)
+    Pmin = int(os.environ.get("PMIN", "1"))
     if len(sys.argv) > 5:
         gl = [tuple(map(int, s.split(":"))) for s in sys.argv[5].split(",")]
     else:
         gl = [(t, s) for t in range(bg.tper) for s in range(bg.p)]
-    scan(tile, gl, Pmax, Wmax, out)
+    scan(tile, gl, Pmax, Wmax, out, Pmin)
 
 
 class InterfaceModel(WallModel):

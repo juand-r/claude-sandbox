@@ -108,3 +108,6 @@ level, charge law, option (c) SAT).
   pattern the kickoff warns about. Removed that stray file at once (it
   held only the PID 27041); PID now recorded in queue/create2.pid. Rule:
   always `echo $! > /abs/path/queue/x.pid`.
+- 00:47 lead: three heavy processes at once (tail of zfull_batch + a new
+  batch + a check). Rule from now: ONE heavy process; new jobs wait for
+  the previous PID (until ! kill -0 PID) inside one script.

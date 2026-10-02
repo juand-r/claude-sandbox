@@ -13,7 +13,8 @@ class Surg:
     t_in = 31500 if os.environ.get("VMULT", "1") == "1" else int(os.environ.get("TIN2", "47460"))
     def __call__(self, m, row):
         K0 = [a for n, a, b in m.blocks if n == "K"][0]
-        return rewrite2(row, m.origin, self.t_in, K0 - 345, K0 + 37, [(t, k, K0 + x) for t, k, x in items])
+        lo, hi = int(os.environ.get("ZLO", "-345")), int(os.environ.get("ZHI", "37"))
+        return rewrite2(row, m.origin, self.t_in, K0 + lo, K0 + hi, [(t, k, K0 + x) for t, k, x in items])
 got, times, m = check(tape, apps, nread, Surg())
 ref = reference(tape, apps, kinds + "K" * nread, nread)
 print(tape, spec, "observed", got, "reference", ref, "MATCH(reads>=1)" if got[1:] == ref[1:] else "DIFFER", times, flush=True)

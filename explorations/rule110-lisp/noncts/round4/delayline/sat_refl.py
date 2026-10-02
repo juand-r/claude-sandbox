@@ -8,6 +8,9 @@ targets:
           + E^2 right    -- reusable reflector (lead 00:16 item 3; THEORY_DL s.8.3)
   shoot7: Z (B-lattice, slip 0 = 7 units) left + E right -- 7-unit shooter
   walk  : E only (any placement)   -- POSITIVE CONTROL (GB4, width 29, does it)
+  pass2 : Z (B-lattice, slip 12 = 2 units) left + E right, with --only_b:
+          POSITIVE CONTROL for the Z branch (library GB3@(0,0)+G@(-16,45),
+          width 47, class 2, does it)
 Every SAT answer is re-simulated cell for cell (check_sat_vs_sim).
 Results appended to sat_refl.jsonl (this directory).
 Usage: python sat_refl.py --target refl --W 30 --ca 0 --cb 0 [--T 360] [--WZ 30]"""
@@ -63,14 +66,16 @@ if __name__ == "__main__":
     ap.add_argument("--T", type=int, default=360)
     ap.add_argument("--gap", type=int, default=4)
     ap.add_argument("--moved", action="store_true")
+    ap.add_argument("--only_b", action="store_true", help="scene b alone (positive control for the Z branch)")
     a = ap.parse_args()
     t0 = time.time()
     cnf = CNF()
     Y = TrainVar(cnf, a.W, 42, -14, 0, name="Y")
     Z = None
-    if a.target in ("refl", "shoot7"):
-        Z = TrainVar(cnf, a.WZ, 4, -2, 8 if a.target == "refl" else 0, name="Z")
-    scenes = [scene_a(cnf, Y, a.ca, a.T, a.gap, a.moved), scene_b(cnf, Y, Z, a.cb, a.T, a.gap, a.target)]
+    if a.target in ("refl", "shoot7", "pass2"):
+        Z = TrainVar(cnf, a.WZ, 4, -2, {"refl": 8, "shoot7": 0, "pass2": 12}[a.target], name="Z")
+    sb = scene_b(cnf, Y, Z, a.cb, a.T, a.gap, a.target)
+    scenes = [sb] if a.only_b else [scene_a(cnf, Y, a.ca, a.T, a.gap, a.moved), sb]
     sol = cnf.solve()
     rec = dict(vars(a), sat=sol is not None, secs=round(time.time() - t0, 1))
     if sol is not None:

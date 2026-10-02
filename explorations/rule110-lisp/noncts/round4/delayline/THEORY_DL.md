@@ -165,8 +165,27 @@ packet period. Train 875 (leftward walker) is NOT stopped: the closed E^4
 is walked by the same amount.
 
 So the opposite direction exists too: a B^3 (what R1's zero sends through a
-zero R1) switches a left window's walk OFF. Scope: one injected B^3, not
-yet a full scene with R1 and K3; arrivals during a packet collision fail.
+zero R1) switches a left window's walk OFF.
+
+**End to end (fullstop.py, fullstop_sweep.py; seeds fullstop_scenes.json).**
+40 copies of train #499 (280 cells apart) walk W_L; ~1200 cells to the
+right, R1 = E + v1 GB5's receives K3 in its zero class.
+- v1 = 0: K3 passes R1's zero as B^3, W_L closes to E^4 and freezes
+  (370.0, 358.8, 347.6, 336.4, 325.2 as the arrival moves earlier), R1 = E.
+  25/30 arrival shifts clean; every 6th shift (B^3 during a packet
+  collision) gives Ebar + Ebar + A.
+- Controls: v1 = 1, 2: W_L walks all 40 packets (448.0), R1 = E^5 / E^6;
+  K3 in R1-class 1: R1 -> Ebar + D1 + D1 (catalog), W_L walks 448.0.
+
+### 3.3 Contact of a walking window with a marker (lead item 2) [sim, scoped negative]
+
+contact.py: train #499 (class 1, 84-cell spacing, 16 packets) walks W_L
+into a co-moving marker X in {E, E^2, E^3, E^4, Ebar}, at every seed time
+and every ether-compatible offset 10..130 cells (770 scenes, exact CA).
+contact_an.py: no clean outcome. 761 debris; 9 with X = E^4 end as
+E^3 + D1 + A + A^4 (all right-moving), but W_L is consumed, so the
+contact is not repeatable. No clean merge (W_L + E -> E^2) was reached:
+the 11.2-cell walk steps do not land W_L in E^2 alignment.
 
 ## 4. The slip lemma for windows [thm]
 

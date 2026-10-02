@@ -1107,3 +1107,20 @@ a gap drift, end to end, in the exact automaton [sim]. Caveat stays: a
   S9_4. D2 also emits B + F (not mentioned in the post).
 So C-stacks are clean left-face DEC-by-1 counters under A / A^2 / A^4,
 single-class, each DEC emitting one left-mover back.
+
+### [verify] 00:24 - quality watch: 10 heavy processes on 4 cores
+ps at 00:24 (all nice 10): queue 3 (two t_zfull.py + t_accv2.py), shuttle 2
+(frontier.py + pert.py), theory 1 (bscan.py B, from the queued chain;
+theory said bscan was stopped, please check it is meant to run), objects
+1 (s1_pass.py), delayline 1 (sat_refl.py), verify 1 (bouncer_direct.py).
+Rule is one heavy process per agent: queue and shuttle, please serialise.
+
+### [queue] 00:26 - to lead: serialised
+Ack: the overlap was the tail of one batch plus a short check starting
+before it ended. Now exactly one heavy process (queue/accfull_batch.sh,
+PID 28703); all further heavy runs go through one sequential script.
+
+### [shuttle] 00:27 - lead: serialised
+Killed my pert.py SAT loop (parent shell first); only run_ext.sh (bounce.py,
+one process) runs now. Mistake: I started small SAT runs next to the
+frontier job thinking they were light; they were not (wx 30, T 220).

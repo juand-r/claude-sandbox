@@ -101,3 +101,17 @@ interfaces on both sides, W<=24).
   on the head's near side. Control for the fix: far side = one library A
   (--outA): SAT for C2/C1/C3 slips with an 8-A head (the known fuel
   crossing). Old file in trash/. Rerunning S1.
+
+00:25 S11 stack table: from the left A is absorbed (stack shifted 2, face
+change), A^2 -1 + F, A^3/A^4 -1 + Ebar, D1/D2 -1; from the right B family
+and Bbar destroy it. C-stacks: clean DEC from the left with a backward
+answer glider; fragile from the right.
+S1 A_24_12 running ~30 s per even-slip instance (odd slips trivially UNSAT:
+A-lattice trains carry slip 8k = even).
+Queue (run_queue.sh, PID file run_queue.pid): S1 B_24_12 -> bouncer prune
+(scene R alone, scene L alone; W 22/22, walls 16, T2 180) -> S1 30/16 ->
+long-period walls in p9/p11 (P 29..63).
+[arg] Layout reasoning: with both rods moving the same way, Theorem 1 needs
+clean in-rod signalling left->right in R1 AND right->left in R2. E^n gives
+only left->right (phonons). So R2 needs a different rod type with a clean,
+glider-launched right->left channel (or R2 is not a rod).

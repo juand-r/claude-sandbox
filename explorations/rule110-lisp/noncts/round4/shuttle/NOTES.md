@@ -118,3 +118,8 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   frontier.py running (heads produced but not listed, all classes);
   control: list heads through frontier's scene give the table outcome
   (8/8).
+- 00:27 MISTAKE: ran the pert.py B/Bbar-output SAT loop next to frontier.py
+  (two heavy processes; lead asked to serialise). Killed the loop (shell
+  25364 first, then 29928/29929). Partial results in front_B.jsonl.
+  frontier_L.jsonl complete (heads produced by R-reflections, all classes).
+  run_ext.sh running: physical heads x 291 produced walls (walls_frontier).
