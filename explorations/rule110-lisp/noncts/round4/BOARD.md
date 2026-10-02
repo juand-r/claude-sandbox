@@ -1638,3 +1638,105 @@ N, later reads incl. appended data correct); control NNYY reads
 queue's builder, runner and read decoder, not an independent check; an
 independent Cook-machine decoder was out of my time budget. Ledger #11
 -> REPRODUCED.
+
+### [verify] 01:08 - correction to my 01:07 charge line
+D2's charge is 9, not 2 (my "2+2" was wrong arithmetic); D2_7_D2#2's
+total is 9+9 = 4 mod 14, as I used, so the conclusion stands: products
+must have k = 6 mod 7 (E^20 fits, E^18 does not). Charges recomputed
+from my library: v2/3s6w13 6 -> k = 4 mod 7 (E^25 ok), v2/3s8w5 8 -> k = 2
+mod 7 (E^23 ok), D1_9_D1 6 -> E^18 ok, v2/3s2w20 2 -> k = 1 mod 7 (E^22).
+
+### [verify] 01:08 - FINAL SUMMARY (verify, round 4)
+Ledger: verify/ledger.md (29 entries). Every positive claim below was
+re-run with my own code path (my builder or my row assembly from the
+posted cells, hrun = HashLife validated cell-for-cell against the
+engine to T = 30,000, my typer / rodval), with a control that can fail.
+VERIFIED [sim]:
+- theory: Lemma R4-L1 (one class for A/B/D vs stationary; also tested by
+  6 lattice shifts per reaction); 4 particle-TM example head steps.
+- objects: -3/5 E-bg walls (phase jump (3,5)), Z/50 group; C-stacks
+  S9 = (100000110)^k stable k = 1..30, A/A^2/A^4 DEC + F/Ebar/E, B's from
+  the right destroy (nuance: D1 leaves a non-canonical face); bubble wall
+  converts a type-7-front E^45 into one clean shorter rod; scan_front
+  clean outcomes (two VALUES refuted by charge: E^22 and E^20, not E^17/
+  E^18).
+- shuttle: MERGE E^m|D1|E^n -> E^(m+n+1), 120/120 (my construction);
+  L-table 1,800/1,800 sampled rows, R-table sample (reflect/pass/dirty
+  all agree; 5% of "absorbed" rows have wall_out in a wrong time phase).
+- delayline: window walk (E + GB4 shifts 364/15, 0, 308/15; E^2 unmoved);
+  drift switch 18/18 scenes cell-exact + my NOP-count variants; reverse
+  switch (#499 walks 11.2/packet, B^3 freezes E^4); fullstop 41/41.
+  So both counters' zeros switch a gap's drift, end to end [sim].
+- queue: C x Ebar displacement +7 (single C); forced-N read REPRODUCED
+  with queue's own code (not independent).
+REVIEWED: R4-L4 part 2 overstated (zig-zag cycles; accepted by theory);
+route 20 exactness needs windows jumping over packets (accepted); route
+22's single-B fan-out/toggle impossible by charge (6 != 0 mod 14);
+routes 14 (reproduced 197/197) and 23 (argument holds; W4 snag).
+MY OWN results: E-bg cone >= 3/5 [sim]; direct bouncer search 0/84,700
+(every clean L-reflection x every wall, T = 60,000) [sim, scoped]; W4:
+Bbar + 5 B is a clean class-dependent back block (+6/-1/-1), but every
+stream of it has ONE attracting class cycle; units shift the back's class
+by beta != 0 mod 3; clean blocks have outcomes congruent mod 7 [thm]; so
+a two-mode stream needs ONE new back reaction with three distinct
+outcomes (spaced by 7) and a bijective class map [arg]. Until then a
+front-launched phase shift is only a transient (value coupling).
+Integration: no end-to-end machine beyond delayline's verified switch
+scenes; route 23 lacks W3 and W4.
+Instruments: hrun.py, rodval.py, rawscene.py, pairscan.py, clib.py,
+spot_bounce.py (README has commands).
+Mistakes (all in NOTES): round-3 ledger #28 wrong about the medium
+(-3/5 walls); "ether eating E-bg" guess; several classifier bugs in my
+first table spot-checks (fixed before posting); rodval window too narrow
+once; wrong time constant in w4_repeat; a sign error in an intercept; a
+wrong D2 charge on the board (conclusion unchanged).
+
+### [verify] 01:08 - quality watch: W4 SAT is running twice
+objects (w4_sat.py 6 W, objects/w4_m6.jsonl) and shuttle (w4.py --px
+12,-6 ..., shuttle/w4_ctrl30.jsonl) are both running a W4 back-reaction
+SAT now. Please agree on a split (e.g. objects: B-lattice (4,-2)/(12,-6)
+heads, shuttle: G-speed (42,-14)) and post scopes, including the
+positive control (Bbar alone must come out with outcomes 6/-1/-1 after
+B-eaters, or -1/+2/-3 raw at E^4 with its A debris). Any witness with
+three distinct clean outcomes: send me the cells and I will run the
+6-block stream test (w4_repeat.py) for two persistent modes.
+
+### [lead] 01:10 - W4 split (verify 01:08 is right, two agents started the same SAT)
+- objects: W4 with B-lattice (4,-2) and Bbar-lattice (12,-6) heads.
+- shuttle: W4 with G-speed (42,-14) heads, and W3 from your frontsim data
+  (front-launched effects with J != 0; window objects E, E^2, E^4 as the
+  incoming object for a g = 0 contact).
+Both: post the positive control and the exact scope; send witnesses to
+verify (verify: please stay available for the 6-block stream test and
+re-runs even after your summary).
+
+### [shuttle] 01:09 - route 23: W4 SAT running (control passes); W3 window contacts: no clean back-changing contact [sim]
+W4 (lead 00:5x; verify's target): shuttle/w4.py = ONE left-moving packet X
+(free cells, its own periodic-train spacetime) against R1's BACK in the
+three classes JOINTLY (three scenes share X; the rod background is
+shifted by (k,-4k), k = 0,1,2), rod pinned to the exact background
+(window 56 cells inside E^30, so valid for all longer rods), outcome
+E^(m+d_c) + A-family only (region right of the back (3,2)-periodic,
+nothing escapes the window), d_c free one-hot in [-6,14], class-free
+outcomes excluded. Every SAT solution is re-simulated on E^30 and E^23
+(same right ether phase) and Delta_c = d_c - (#A's) is computed
+(w4_delta.py); X is then blocked and the search continues.
+Positive control [sim]: with distinct d required, SAT returns a Bbar-type
+X with d = (-3,+2,-1) and A counts (3,1,5): Delta = (-6,+1,-6), on E^30
+and (permuted) on E^23 = Bbar's known table (+6/-1/-1 after 5 eating
+B's). Batch running: (12,-6) X width 30, then (42,-14) X width 40.
+W3 [sim] (w3scan.py, w3_contact.py): window objects E, E^2, E^4 placed
+left of R1 = E^10 / E^11 at every time phase (15) and every
+ether-consistent gap 0..24 cells (186 scenes): every clean outcome is a
+MERGE into one rod with the back exactly untouched (back shift (0,0));
+the only back-changing contacts (E^4, dt = 3/10/14, g = 5) are clean
+only at n = 9, 10 (back moved by (14,-14), h = 48, with a non-standard
+front domain) and for n = 8 and n >= 11 they emit A's into the stream and
+the rod shrinks to a fixed stub (n = 6..19 checked). So no clean,
+n-independent g = 0 contact launches a back-reaching wall in this scope.
+Detection method: back shift v = (dt,dx) found by matching the back
+region against the background; h(v) = 2dt - 5dx mod 50 (objects' phase).
+Control: A (DEC) gives front u = (5,2), back (0,0); objects' D1_9_D1 #4
+gives front and back both (5,-34)/(5,-14), h = 30 (the known launcher).
+Next: A/D-train scan with this general back-shift test (frontsim only
+tested shifts by whole units).

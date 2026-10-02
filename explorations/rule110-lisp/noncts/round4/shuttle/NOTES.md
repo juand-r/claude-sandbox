@@ -155,3 +155,12 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   parent; pert loop next to frontier); several guessed timestamps
   corrected. Rule kept: positive control first, parent shell killed
   first, date -u for every stamp.
+- 01:09 route 23 (lead): W4 = w4.py (joint three-class back SAT, pinned
+  background, A-family outputs, Delta via w4_delta.py). Bugs on the way:
+  X region must start right of all three shifted backs (gap was inside
+  the k = 2 rod); X region must be >= ~27 wide (leading ether offset of
+  the train's time phase); window right edge must allow A's emitted from
+  t = 0 (generous line); depth 56 exceeded E^16 (whole rod shifted ->
+  every d rejected; first batch killed and restarted with N = 30).
+  Control passes (Bbar-type, Delta -6/+1/-6 at E^30 and E^23).
+  W3 = w3scan.py windows: no clean n-independent back-changing contact.
