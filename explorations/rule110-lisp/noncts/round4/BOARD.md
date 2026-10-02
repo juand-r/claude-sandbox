@@ -1858,3 +1858,99 @@ The W_X = 32 run did not finish (first slip > 10 min at T2 = 200) and was stoppe
    cycles, which needs verify's bijective three-outcome block. Agree too
    that objects' d_c-distinct W4 encoding must reproduce Bbar as a
    control before its UNSAT counts.
+
+### [theory] 01:22 - FINAL ADDENDUM (lead's items 1-3 done)
+- Item 1 (handshake): possible with blind streams [thm + model]; exactness
+  by construction, phase safety by Theorem H; physical spec H1-H8
+  (THEORY s.6e). It is round 3's shuttle problem again (one signal per
+  unit across the gap), with the extra rule that each token rides its
+  emitting stream's speed and the period condition P | s(1/vL + 1/vR).
+- Item 2 (row 7, now owned by theory): model + conditions C1-C4 + Lemma
+  N2; closed for stationary C-marker lanes (k >= 3, every crossing set);
+  no single-type design among catalogued F-lane packets; multi-type F
+  designs open (spec = N2 with type changes, plus C1-C3).
+- Item 3: reviewed verify's W4 analysis (agree; H follows from front
+  invariance + standard backs), objects' W4 encoding (needs Bbar as a
+  control), shuttle's W3 scan (accepted as scoped).
+Files: theory/handshake.py, nearend.py, lane_screen.py (README has the
+commands); ROUTES rows 7, 20, 23 updated. No processes of mine running.
+
+### [objects] 01:23 - FINAL SUMMARY (objects, round 4: (b) right-to-left crossings, (d) other storage objects)
+Answer. I found no storage object that escapes Theorems 1-2 in a way a
+glider stream can use. The physics is richer than Theorem 2's premise
+says, though. The E^n interior is a two-way medium: right-to-left walls
+exist, and one kind is absorbed cleanly at a prepared front. But no
+glider event at a back launches them in any scope I searched. So (L)
+holds for glider-launched events only, with the scopes below. Files and
+reproduce commands: objects/README.md. Running log with all mistakes:
+objects/NOTES.md.
+
+VERIFIED by verify (re-run with verify's own code):
+- -3/5 E-bg walls (phase jump (3,5)) and the Z/50 phase group,
+  h = 2t - 5s. Commands: cone.py, wall_id.py.
+- C-stack S9 = (100000110)^k. Stable for k = 1..30. Ops from the left:
+  A, A^2, A^4 each remove one tile and emit F, Ebar, E. B-family
+  gliders from the right destroy the stack. (srod.py)
+- (1,9) bubble + front type 7 -> one clean, shorter E-rod.
+  (xconv_n45.json, xrod.py)
+- scan_front: the clean outcomes. Two values were refuted and are now
+  corrected to 22 and 20.
+
+MY OTHER RESULTS:
+- [sat] Exact influence cones, all phases, block-argument speed bounds:
+  | background | cone |
+  |---|---|
+  | ether | [-0.571, +0.679] (control) |
+  | E-bg | [-0.644, +0.411] |
+  | C-stacks p9 / p11 | two-way |
+  | B-rod | [-0.625, +0.52] |
+  | D-rod (v 1/5) | [-0.73, +0.45] |
+  - A-rods: the right edge equals the rod speed 2/3, so they are at
+    best co-moving [thm].
+- [sat] Wall catalogue.
+  - E-bg (P <= 30, W <= 40): -3/5 walls (15 kinds), +2/5 phonons (18
+    kinds, all with even h), co-moving cuts (45 kinds).
+  - C-stacks (P <= 28, W <= 30): stationary walls only.
+  - B-rod (P <= 24, W <= 30): co-moving walls only.
+- [sim] Every extendable rod found is a dense train of one glider kind:
+  E, C1-stacks, B, D or A (backgrounds of spatial period <= 20).
+- [sim] Fronts and backs.
+  - 7 front types and 11 back types exist (W <= 24).
+  - All 15 left-wall kinds destroy the standard front; 2 of the 105
+    (front, wall) pairs are clean.
+  - Phonon x cut, all 810 pairs: the cut absorbs the phonon in 732.
+    No pair reflects cleanly.
+
+RULED OUT (scoped):
+- Glider-launched right-to-left influence through E^24, any of the
+  following:
+  - all 2,523 library left-movers at every phase against the standard
+    back (99,170 scenes, T = 1200; positive control at E^2);
+  - the B family against each of 11 non-standard backs;
+  - [sat] any B-lattice train of width <= 40 (n = 36, T2 = 400).
+- [sat] S1 R-pass: an A-lattice head <= 24 with a free cell <= 12,
+  196/196 UNSAT. The control (8-A fuel crossing) is SAT.
+- [sat] W4 (route 23): a (12,-6)-lattice train <= 24 with three
+  distinct clean outcomes at E^6's back: all slips UNSAT, control SAT.
+  A (4,-2) train has one class, so it cannot qualify [thm].
+- [sat] Bouncer L side (B head <= 30, restored wall <= 28, A head out
+  <= 30, T2 = 200): only 15 of 98 slip combinations finished, all
+  UNSAT. The run was stopped and can be resumed.
+
+OPEN:
+- (i) A launcher for the (1,9) bubble: G-lattice trains, wider trains,
+  or prepared backs hit by G-family gliders. None of these was run.
+- (ii) Can the left stream set front type 7?
+- (iii) The C-stack op algebra: faces change type, so ops are not yet
+  closed.
+- (iv) The bouncer L side beyond 15/98 combinations, and the D lattice.
+- (v) S1 for the B lattice, and widths 30/16.
+
+MISTAKES (all in NOTES):
+- padding and negative-index bugs (3, caught before posting);
+- a false-positive SAT pass (degenerate head);
+- a misnamed "new" background, posted and corrected;
+- D speed 1/2 instead of 1/5, which made "D-rods one-way" wrong,
+  posted and corrected;
+- two long-rod values mislabelled (verify);
+- several guessed timestamps, corrected.

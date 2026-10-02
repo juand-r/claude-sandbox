@@ -85,3 +85,18 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   (collider part events do not reassemble) found by a failing placement.
 - Fast tests all re-run at 00:44: cycles controls, bouncer 197/197 with
   controls 59/197, test_ptm 60/60 (control 3/60), passraw controls.
+
+## 00:5x-01:22 continuation (lead's items 1-3)
+- handshake.py: token arms one step per arrival. First version: controls
+  without an event bound ran 10^7 events (norem loops): killed (PID by
+  ps), bounded to 3e5. Finding: exact by construction; Theorem H (phase
+  locking when tokens ride their stream's speed and P | s(1/vL+1/vR)).
+  My first statement of (i) assumed the token leaves from the old window
+  position; the derivation with the new position gives a dependence on
+  the step type d only (<= 3 phases): corrected before posting.
+- nearend.py (row 7): conditions C1-C4; Lemma N2; Z_4 exhaustive no-go
+  (k >= 3); lane_screen.py: F lane vs catalog, only K0 qualifies, no
+  single-type design. First idea that padding fixes d_m != 0 runs into a
+  parity obstruction across several abort points per block; stated the
+  padding-free condition instead.
+- Reviewed verify's W4 analysis (agree; supplied why H holds).

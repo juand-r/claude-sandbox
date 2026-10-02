@@ -27,6 +27,9 @@ Code (all imports of collider/, scholar/, round3/theory, shuttle/ are read-only)
 | `tables_search.py` | bouncer/ratchet/fixpoint search on shuttle's complete single-wall tables | `nice -n 10 python3 tables_search.py` |
 | `tapesim.py` | one exact row: a head launched at n identical walls (follows chains beyond the tables) | module |
 | `bscan.py` | one B (or A) vs every stationary object of width 21-34 (<= 20 is in shuttle's table) | `nice -n 10 python3 bscan.py B` |
+| `handshake.py` | per-unit handshake transfers under realistic kinematics (Theorem H); Minsky compile; 3 controls | `python3 handshake.py` (exit 0 = as predicted; ~15 min) |
+| `nearend.py` | row 7: near-end lane with abort by class shift (GBM compile), 5 controls; `feasibility` = Lemma N2 checks | `python3 nearend.py`; `python3 nearend.py feasibility` |
+| `lane_screen.py` | row 7: F lane vs catalogued Ebar-speed packets, class group Z6 x Z2, Lemma N2 | `python3 lane_screen.py` |
 | `bouncer.py` | route 14 model: Minsky -> transfer machine -> bouncer reflection table; differential test + 2 controls | `python3 bouncer.py` (exit 0 = pass) |
 
 Every Rule 110 claim here comes from collider's exact stepper and typer;

@@ -194,3 +194,5 @@ cross-check. Rules from now on:
 01:12 W4 SAT (w4_sat.py): control SAT (B, B^2 with d equal); distinct d: W=16, 24 all 14 slips UNSAT (T2=200, m=6). W=32 s=0 ran > 10 min, killed (PID 6024) -> scope W <= 24. Bouncer job resumed (was SIGSTOPped during W4).
 
 01:12 MISTAKE (verify 01:07): types_rods mislabeled two long rods (E^17 -> 22, E^18 -> 20). Long-rod values should use charge mod 7 + length.
+
+01:23 Stopped the queue (run_queue3.sh) and the bouncer L job (PID 1690) to end the run. bL_A_30_28: 15 slip combos done (s=0: all 14 sV; s=2: sV=0), all UNSAT; one instance took 1,634 s. Not run: bL_D_30_28, S1 B_24_12 and 30/16, long-period p9/p11 walls. All resumable (bouncer_sat.py skips finished combos; s1/wallsat rerun from scratch).
