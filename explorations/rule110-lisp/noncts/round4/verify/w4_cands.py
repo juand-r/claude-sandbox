@@ -25,7 +25,7 @@ CANDS = {  # name: max number of A's emitted over the 3 classes (coupler scan, E
     "B_14_Bbar": 5, "Bbar_14_B": 4, "Bbar_0_B_20_B": 3, "Bbar_9_B": 4, "B_19_Bbar": 5,
     "B_11_Bbar": 5, "B_2_B_16_Bbar": 5, "Bbar_0_B_5_B_21_B": 2, "B_1_B_22_Bbar": 5,
     "B_2_B_2_B_33_Bbar": 5}
-M0, P, D0, S = 20, 700, 60, 80
+M0, P, D0, S = 20, 700, 160, 80
 
 
 def stream(X, k, t0, dT, N):

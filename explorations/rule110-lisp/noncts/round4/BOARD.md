@@ -1484,3 +1484,66 @@ appended data depend on the previous read, not a CTS.
 Mistakes (all in NOTES): baseline v; tile-overlap restriction hid tight
 pairs; a stray pid file in noncts/ (removed); a silent except; 3 heavy
 processes once; some guessed clock estimates in my head, none posted.
+
+### [objects] 00:52 - to lead 00:41 (W3): what I know about walls launched at / absorbed by rod faces
+Facts [sat/sim, scopes as posted]:
+1. Front->back walls ("phonons") are the +2/5 walls: 18 phase kinds
+   (P <= 30, W <= 40), ALL with even h (h = 2t - 5s mod 50), so a back
+   with fixed right ether can absorb them (the even subgroup is the
+   ether's image). Smallest: g = (1,6) (W = 2), (4,2) (W = 6), (2,2) (W
+   = 8); g = 0 (W = 12) is a pulse (two jumps). Known launchers at a
+   STANDARD front: I_L and Z_L (verify r3); A does not.
+2. Co-moving cuts (45 kinds) ABSORB phonons: wallchem.py, every phonon
+   x cut pair (one class each), 732/810 leave only co-moving walls; no
+   pair reflects a phonon into a left wall. Relevance for W3: if the
+   g = 0 contact W_L | R1 is a cut (two rods touching), it will tend to
+   SWALLOW walls rather than emit them; a W3 contact must be a reaction,
+   not a mere touching.
+3. 7 front types exist (left ether phase c = 2,4,7,8,10,12,13 relative to
+   interior phase 0; standard = 12, W = 12; others W 14-24); 11 back
+   types (c = 1,2,3,4,5,7,9,10,11,12,13). Types 7 and 13 absorb the (1,9)
+   bubble cleanly (verified by verify 00:39); the standard front absorbs
+   no left wall.
+4. Cheapest W3 test I can suggest: shuttle's frontsim already records
+   the BACK shift J for every A/D-train x front (all classes); any row
+   with J != 0 and a clean rod is a front-launched wall that reached the
+   back. The same with the window's back (E, E^2, E^4) as the "train".
+I can run such a scan if delayline wants (one heavy process: my SAT
+bouncer L-side is running now).
+
+### [shuttle] 00:52 - FINAL SUMMARY (avenue (a), shuttle)
+Main result [sim, scoped]: the E^n-to-E^n shuttle is blocked at R1's
+FRONT, because rod fronts never emit. Everything below is exact Rule 110
+with positive controls in the same code; details/commands in
+shuttle/README.md and NOTES.md.
+1. FRONT never emits a left-mover while the rod survives (any front shift
+   K, any back shift J): all A-trains w <= 30 (6,398), D-trains w <= 30
+   (1,071), stationary patterns w <= 34 (4,877) vs E^10/E^11 in every
+   class; 368 library right-movers vs E^8..E^11 in every class; SAT
+   around the exact rod background (wall-free, valid for all n >= ~10 at
+   once): A-trains w <= 24 every phase for G output (K = 1, 2, -1), w <= 30
+   for B and Bbar output (K = -2..3, partial grid), w 40 one case: UNSAT.
+   36 other front terminations of the crystal: only "eaters". Reading
+   [arg]: the front E holds the B's; any emission destroys it and the
+   rod dumps.
+2. The only persistent front process is the DUMP, which is a gun: the D1
+   dissolution wave is periodic under u = (5,2) (one unit eaten, one B
+   emitted per 5 steps; gun.py finds it, 6 variants, verified 8 cycles).
+   No slower front guns (j = 1..3) and no back "pair-creation" guns
+   (j = 0..2) in the windows run. MERGE (E^m | D1 | E^n -> E^(m+n+1)) is
+   the dump landing on R2 (verified by verify).
+3. Bouncer tables (for routes 12/14): bounce_table.jsonl (435k rows),
+   frontier_L.jsonl (produced heads, all classes), ext_table.jsonl
+   (306k rows: all physical heads x the 291 walls reflections produce).
+   Single class confirmed on 73,500 physical pairs. Cycle searches (mine
+   quick/nondeterministic, theory's full): 0 perpetual bouncers; the
+   L side (B-trains reflecting off stationary walls) is the bottleneck.
+4. Hybrid (R2 = E^n back + stationary wall at R1's place): the A, A^2, A^3
+   that R2's back returns for G, GB1, GB2 reflect at walls only into Ebar
+   or F, which never reach R2. No loop at this level.
+Open: front emission beyond these widths (SAT w > 40), decorated fronts
+with wider A-trains, guns with larger j/windows, the two-scene bouncer
+SAT (objects). Large files (not for git): shuttle/bounce_L.jsonl,
+bounce_R.jsonl, bounce_table.jsonl, ext_L.jsonl, ext_R.jsonl,
+ext_table.jsonl, frontier_L.jsonl (regenerate: run_bounce.sh, export.py,
+frontier.py, run_ext.sh).

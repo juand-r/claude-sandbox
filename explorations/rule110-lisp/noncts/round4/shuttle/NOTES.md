@@ -128,3 +128,30 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   K = 1, 2 (Bbar) [partial: loop killed, 47 of 70 runs; K=-1 B 6/7,
   Bbar K=2 6/7]. Control in the same code: a B-train moving away (K = 0)
   is SAT for phiL 2, 4, 10, 12 and verify.py confirms Y = B (n = 5..7).
+- 00:28-00:52 extension tables (run_ext.sh): 193 physical B-trains (L) and
+  857 physical A/D-trains (R) x the 291 wall types that reflections
+  produce but the 20-cell list lacks (walls_frontier.jsonl): ext_table.jsonl
+  305,550 rows (L reflect 2,503; R reflect 105,867). cycles_nd.py over
+  bounce_table + frontier_L + ext_table (361 physical walls, multi-class
+  heads treated nondeterministically): 0 cycles.
+- Hybrid check (R2 = E^n back, R1 side = stationary wall) [sim, tables]:
+  the trains R2's back returns for G, GB1, GB2 (A^3, A^2, A) reflect at
+  walls only into Ebar or F (559 + 301 + 171 + 171 + 114 rows), never into
+  a G-family packet; Ebar (E speed) and F (slower) never reach R2's back.
+  So no hybrid loop at this level.
+- bounce_table_L.jsonl (intermediate, old classification) moved to trash/.
+
+## Reflection (00:52)
+- Went well: the background-spacetime SAT (pert.py) and exhaustive
+  simulation (frontsim.py) gave a clean, two-method answer for the E^n
+  front; the gun SAT recovered the dump as a positive control; the
+  bouncer tables were reusable by theory/verify within minutes because
+  the format was agreed first.
+- Mistakes (all logged above): odd-phase SAT jobs (impossible parity);
+  BG.phi_right bug (caught by the backscan control); vacuous compare
+  ranges in frontsim (caught by an assertion); far-away glider train in
+  gun.py (caught by verify_gun); typer compound naming split
+  (consistency check); two heavy processes twice (gun child before
+  parent; pert loop next to frontier); several guessed timestamps
+  corrected. Rule kept: positive control first, parent shell killed
+  first, date -u for every stamp.

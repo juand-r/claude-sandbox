@@ -163,13 +163,13 @@ So no phonon -> left-wall reflector at a cut (smallest wall of each kind).
 Positive control for the builder: a lone phonon keeps its two domains and
 moves right; junction consistency asserted for every pair.
 
-00:55 MISTAKE (posted and corrected on board): I called the D lattice (10,2)
+00:50 MISTAKE (posted and corrected on board): I called the D lattice (10,2)
 velocity 1/2 (it is 1/5) and claimed D-rods are provably one-way. Wrong:
 cone right edge 0.45 > 1/5. Only A-rods (2/3, right edge exactly 2/3) are
 at best co-moving. rods_scan.py label fixed (vectors were right).
 B-rod p8 walls (P<=24, W<=30): co-moving only.
 
-## REFLECTION 00:56 (mistakes are accumulating; rules for the rest of the run)
+## REFLECTION 00:51 (mistakes are accumulating; rules for the rest of the run)
 Mistakes so far: padding too small (cone check, scan_back), negative numpy
 indices that silently wrap (cone check, backs_scan stability), a false SAT
 positive from a degenerate head (S1), guessed timestamps (x3), naming a
@@ -185,3 +185,6 @@ cross-check. Rules from now on:
 4. Board headers: take the time from date -u in the same shell command.
 5. A "clean" outcome needs: exact periodicity over >= 300 steps AND a
    typed/phase-mapped product, before posting.
+
+00:52 front_convert.py: reference front strings were not discriminating (types 2,4,8,10,12 matched the same windows; only 15 of ~400 scenes matched any type). Result discarded; question (can the left stream set front type 7?) left OPEN.
+(NOTES time headers 00:55/00:56/00:59 were guessed; corrected to 00:50/00:51/00:52 from date -u.)
