@@ -83,3 +83,23 @@ level, charge law, option (c) SAT).
   screens. build2 (tiles overlap in ether margins; positive control: the
   library compound at x=-243 is rebuilt exactly as two tiles) fixes it;
   tight screens running (zmix_tight.jsonl).
+
+### 00:00-00:20 MISTAKE found: baseline not checked per tape
+- The PLAIN machine (program {YNNNNN}, Cook's default v) FAILS tape NNYY
+  at read 3 (t_plainctl.py: NNYN!! vs reference NNYYYN), from t = 0 and
+  from a mid-run start alike. REPORT s.3.5 warned: runs of rejections need
+  a larger ossifier spacing. Every full-machine check whose run contains
+  two consecutive rejections at default v is therefore confounded:
+  t_forced1 / t_forcedZ (forced read 1 after read 0 = N), the gap
+  controls on NNYY, the converter full checks. Their "debris breaks later
+  reads" conclusions are WITHDRAWN pending re-runs with VMULT=2 (reads.py
+  now takes env VMULT). Rule: run the plain baseline on every tape with
+  the same v before reading anything into a failure.
+- Answer converters (zconv.py, gap of D cells at K0+310 right of the
+  reader, Ebar pairs): 12 placements turn the ACCEPTOR into the standard
+  rejector (right part exact, j = 0) while the rejector deletes Z with an
+  exactly standard outcome. Converted-Y debris {E1, E353} vs standard N
+  {E1, E128}: the read itself is standard; only K's tail leftover differs
+  (E353 - E128 = 225 ~ 4*56).
+- Gap at K0+100 (between core and K tail) is NOT a symmetry (read 1 Y
+  became N): K's tail takes part in the read/acceptor.

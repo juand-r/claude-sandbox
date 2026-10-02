@@ -1,0 +1,4 @@
+# Large generated search tables (regenerable by the scripts that wrote
+# them; see each agent's README). Kept on disk, not in git.
+round4/shuttle/bounce_*.jsonl
+round4/queue/zmix*.jsonl

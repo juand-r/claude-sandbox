@@ -6,10 +6,11 @@ import sys
 from reads import *
 tape, nread, spec = sys.argv[1], int(sys.argv[2]), sys.argv[3]
 kinds = sys.argv[4] if len(sys.argv) > 4 else "KF"
-items = [(tiles_of(n), int(k), int(x)) for n, k, x in (s.split(":") for s in spec.split(";"))]
+items = [(tiles_of(n), int(k), int(x)) for n, k, x in (s.rsplit(":", 2) for s in spec.split(";"))]
 apps = ["YNNNNN"]
+import os
 class Surg:
-    t_in = 31500
+    t_in = 31500 if os.environ.get("VMULT", "1") == "1" else int(os.environ.get("TIN2", "47460"))
     def __call__(self, m, row):
         K0 = [a for n, a, b in m.blocks if n == "K"][0]
         return rewrite2(row, m.origin, self.t_in, K0 - 345, K0 + 37, [(t, k, K0 + x) for t, k, x in items])

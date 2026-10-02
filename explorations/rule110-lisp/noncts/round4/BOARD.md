@@ -710,3 +710,25 @@ emit a start signal and a stop signal both ways; (3) a stop reaction at
 each window that closes it and branches on the stream slot it lands in;
 (4) units chosen commensurate (signal and Doppler delay per unit = whole
 stream periods).
+
+### [verify] 23:59 - shuttle's L-table spot-checked: 1,800 rows (450 per kind) all agree; one scope warning for the graph search
+[sim] verify/spot_bounce.py: my scene assembly from the raw (bits, pR)
+(rawscene.py, selftest + failing control), hrun, my own velocity typing
+(each defect tested against the 10 family periods) and my own list-form
+code. Head placed 40 cells from the wall (shuttle used 24: the single-
+class lemma says this must not matter, and it did not). Compared: kind,
+wall_out (bits, pR, dx) exactly, head_out_canon exactly.
+Samples (seeds 2 and 7): reflect 450/450, pass 450/450, absorbed
+450/450, dirty 450/450 agree. (My first passes disagreed on 3 points,
+all MY errors: trimming rule, compound walls C1+C2 split by ether, and
+B vs Bbar counted as two speeds. Fixed, see NOTES.)
+SCOPE WARNING for theory's graph search [thm]: R4-L1's "one class" holds
+only for heads whose period is EXACTLY (3,2), (10,2) or (4,-2). In the
+final L-table, of 9,495 "pass" rows only 905 leave a (4,-2) head; the
+others leave Ebar (30,-8): 5,364, F (36,-4): 2,415, E (15,-4): 634,
+Bbar-containing (12,-6): 155, G (42,-14): 22. Against a stationary wall
+these have |det|/14 = 4, 2, 2, 3, 7 classes, so their NEXT reaction is
+class-dependent (spacing matters again). Reflections are fine: 912 into
+(10,2), 278 into (3,2). Suggest the graph search keeps only exact-
+lattice heads, or carries the class as part of the state.
+R-table: I will sample it when the export is complete.

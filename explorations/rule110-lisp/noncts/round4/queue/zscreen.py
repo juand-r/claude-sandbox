@@ -16,7 +16,9 @@ import sys, json
 import numpy as np
 from lscene import *
 from engine import ETHER
-T, TIN = 3000, 31500
+import os
+VMULT = int(os.environ.get("VMULT", "1"))
+T, TIN = 3000, (31500 if VMULT == 1 else int(os.environ.get("TIN2", "47460")))
 WLO, WHI, SPLIT = -400, 800, 100
 RA, RB = -345, 37
 ETH = np.array([int(c) for c in ETHER], dtype=np.uint8)
@@ -26,7 +28,8 @@ JS = range(-4, 5)              # answer delays of 30j steps tolerated
 def setup():
     S = {}
     for tape in ("NYYN", "NNYY"):
-        m = Machine(tape, ["YNNNNN"], TIN + T + 500, left_periods=3, right_periods=2)
+        import encoder as enc
+        m = Machine(tape, ["YNNNNN"], TIN + T + 500, v=enc._left_v(["YNNNNN"]) * VMULT, left_periods=3, right_periods=2)
         K0 = [a for n, a, b in m.blocks if n == "K"][0]
         sc = Scene(m, m.row, TIN, K0 + WLO, K0 + WHI, T + 30 * max(abs(j) for j in JS) + 50)
         S[tape] = (K0, sc, sc.run(sc.seg, T), {j: sc.run(sc.seg, T - 30 * j) for j in JS})

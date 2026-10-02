@@ -26,26 +26,40 @@ The route table is in `ROUTES.md`; this file holds the reasoning behind it.
    An escape must either (a) make the influence graph strongly connected
    (shuttle, crossing, pump, shared control point), or (b) not put the
    program in a stream at all.
-3. **Route (b) has never been tried, and has an unusually clean physics
-   (s.3).** In a Lindgren-Nordahl / Durand-Lose *particle Turing machine*
-   the program is a fixed universal TM in the reaction table, the tape is a
-   row of stationary cells, and the head is one moving packet. In Rule 110,
-   if the head is a rigid packet on the A, D or B lattice, **every
-   head-cell collision has exactly one class (Lemma L1 [thm])**: no timing,
-   no class bookkeeping, no skew, no Cook mod-6 rules. No theorem of rounds
-   2-3 applies to it. What it needs is a finite closed table of exact local
-   reactions. The census (s.3.5) shows the KINDS of steps needed exist; the
-   open question is whether a closed table exists, and the first hard
-   sub-question is a head that crosses a cell and comes out as itself (or
-   a head cycle).
-4. **Route (a), near-end lane: the abort can be replaced by a class
-   shift (s.4).** Round 2's near-end layout was blocked because no eater
-   eats register kicks (SAT UNSAT W <= 30). The same machine (verify's
-   guarded-block machine, universal) only needs the kicks to become
-   *harmless* while a flag is present. A crossable flag upstream of the
-   control point that shifts the class of every later packet into a
-   crossing class does that. This turns an UNSAT target into a different,
-   unsearched target.
+3. **Route (b), no streams at all: particle machines (s.3).** In a
+   Lindgren-Nordahl / Durand-Lose particle machine the tape or the walls
+   are stationary objects and one head packet moves between them. If the
+   head is a rigid packet on the A, D or B lattice, **every head-wall
+   collision has exactly one class (Lemma L1 [thm])**: no timing, no class
+   bookkeeping. Round-1 synth had noticed the fact and stalled on single
+   gliders. New here:
+   - Lemma L4 [thm]: a particle TM needs clean passes in both directions.
+     [sim] Among all A-trains of width <= 30 and all B-trains of width
+     <= 30 against C1-C3, and all library heads, every pass leaves a small
+     head that dies on the next cell (0 fixpoints, 0 two-cell chains).
+   - Route 14, the *bouncer machine*, needs NO passes: two counters are
+     wall distances, one head bounces between two movable walls.
+     [model] bouncer.py compiles Minsky machines (197/197, controls fail).
+     It can run from a finite seed because Rule 110 reactions emit products
+     at offsets, which is exactly what Durand-Lose's rational 3-speed
+     theorem forbids in signal machines [arg].
+   - Both routes need a closed sub-table of a FIXED natural reaction map,
+     so a universal program must be found, not imposed. The first
+     milestone is a perpetual bouncer (graph search on shuttle's tables).
+4. **Route (a), two windows and two gaps (route 20, s.6b) is the most
+   advanced.** Delayline found (verified) that R2's zero switches the gap's
+   drift. With both counters as gaps and both modes as window states no
+   mode is owned. The worry was that transfers across unbounded gaps are
+   rate-matched and skewed. [model] gap2.py/gapvm.py: with a counter unit
+   commensurate with the stream period and signal delay, every transfer is
+   an exact x2, x3, /2 or /3 with the remainder visible at the receiving
+   window, and Minsky machines compile (79/79; incommensurate control
+   79/79 fail). What is missing is physical: inward walking, contact
+   reactions at M emitting start/stop signals, and a slot-dependent stop.
+5. **Route (a), near-end lane: the abort can be replaced by a class shift
+   (s.4)**, which turns an UNSAT target (an eater for register kicks) into
+   an unsearched one, subject to a crossing-count balance (F6) that queue
+   measured in Cook's machine (crossed Ebars count mod 8).
 
 ## 2. The influence-graph view of the old theorems [arg]
 
