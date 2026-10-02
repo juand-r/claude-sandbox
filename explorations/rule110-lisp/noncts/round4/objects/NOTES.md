@@ -131,3 +131,22 @@ glider-launched right->left channel (or R2 is not a rod).
   (3,9), 27 cells shorter (~8 units), front type 4; n = 30..60 (11 values).
 
 00:40 backs_scan.py: MISTAKE: stability check indexed b2 with negative indices (wrap) near the window edge -> false 'unstable'; margins fixed (420).
+
+00:33-00:45
+- launch2 K=0 (40 free cells entirely right of the back, T2 160): SAT, but the
+  witness destroys the back (A, A^2, C1, Ebar debris). The phase-domain target
+  is too weak for arbitrary content; K=2..8 skipped (records marked skipped).
+- backs_scan.py: 11 back types (c = 1,2,3,4,5,7,9,10,11,12,13), all stable
+  rods; B family x all phases: 0 front hits (E^24, T=1200). No positive
+  control specific to this script (E^9 too short for the construction, E^12
+  gives no hits); detection code = scan_back.py's.
+- srod_all.py: all 12 face-free stacks x 7 left + 9 right gliders. Several
+  "clean-looking" outcomes (p9 v3 + A: +1 tile; p11 + F: -1; p11 + Ebar: -3;
+  p11 v0 + G: -1 + A^3), BUT srod_check.py (product == canonical stack of k+dk
+  tiles, single object) fails for all phases: the faces change type. So my
+  run-length measure is only a coarse indicator; C-stack op algebra not
+  established.
+- S1 A_24_12: 0/196 SAT.
+- bouncer L (B head 30, wall 28 restored, A head out 30, T2 200): ~73 s per
+  slip combo (98 combos). L-scene control (bL_ctrl.py, wall may change, out =
+  free A-lattice slip 8 + separation): running.

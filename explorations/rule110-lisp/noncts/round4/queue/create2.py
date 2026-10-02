@@ -22,8 +22,8 @@ import os
 import encoder as enc
 VMULT = int(os.environ.get("VMULT", "2"))
 VV = enc._left_v(["YNNNNN"]) * VMULT
-TC, TA = 6000, 11400
-TIN, TB = (31500 if VMULT == 1 else 47460), 3000
+TC, TA = 6000, int(os.environ.get("TA", "11400"))
+TIN, TB = (31500 if VMULT == 1 else 47460), int(os.environ.get("TB", "3000"))
 JS = range(-8, 9)
 RA = -345
 WR = 800

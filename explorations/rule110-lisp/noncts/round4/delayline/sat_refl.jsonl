@@ -2,3 +2,8 @@
 {"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 420, "gap": 4, "moved": false, "sat": false, "secs": 612.1}
 {"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 88.7}
 {"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 129.4}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 1, "cb": 0, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 42.1}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 1, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 103.7}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 1, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 46.5}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 0, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 36.9}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 39.3}

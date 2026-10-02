@@ -628,7 +628,7 @@ survives; class-dependent offsets would re-introduce residues [hyp].
   the window. The transfer arithmetic has the same open question as
   route 20 (s.6b correction).
 
-## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec]
+## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec + sim]
 
 Shuttle's MERGE (verified by verify 23:33) shows a counter can be turned
 into a moving unary train: a D1 at R1's front turns E^n into n+1 left-moving
@@ -648,8 +648,15 @@ is the form Conway (1972) showed undecidable (universal) [thm, literature;
 I have not re-read Conway here]. Physical needs:
 - U1 dump (exists: MERGE's first half);
 - U2 single-B processors: fan-out and toggle, each a single-class reaction
-  of ONE B with a free stationary object (synth's round-1 "pass B" mode of
-  experiments_heads.py was never run: this is the cheapest SAT in the map);
+  of ONE B with a free stationary object. [sim] Searched: single B vs all
+  70 physical walls <= 20 (shuttle's table): no pass at all; single B vs
+  all 4,884 stationary objects of width 21-34 (bscan.py, shuttle's SAT
+  list): 7 passes, ALL fan-outs that consume the wall (B + C2_6_C3_6_C3_9_C2
+  -> C2_12_C2 + 2 B; B + C3_12_C3_7_C2 -> C2 + B^2; B + C1_4_C2_6_C1_11_C2
+  -> C3_6_C2 + B_2_B_4_B_2_B, a one-shot quadrupler). The longest
+  processor chain is C2_4_C2_5_C3_11_C2 -(B absorbed)-> C2_6_C3_6_C3_9_C2
+  -(B)-> C2_12_C2 + 2 B -(B)-> debris: no reusable fan-out or toggle in
+  this scope;
 - U3 re-fusion (exists: B + E^m -> E^(m+1));
 - U4 geometry: the processors must be met by the same register every round
   (the register moves left at each dump/fuse cycle), and the dump trigger

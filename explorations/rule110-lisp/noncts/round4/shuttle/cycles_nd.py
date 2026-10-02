@@ -31,7 +31,14 @@ for l in open("bounce_table.jsonl"):
 for fn in sys.argv[1:]:
     for l in open(fn):
         r = json.loads(l)
-        add(r, tuple(r["head_canon"]))
+        if "head_canon" in r:
+            add(r, tuple(r["head_canon"]))
+        else:
+            h = r["head"]
+            k = (h["bits"], h["pR"], h["p"])
+            if k not in hc:
+                hc[k] = tuple(canon_bits(h["bits"], h["pR"], h["p"]))
+            add(r, hc[k])
 walls = {k[1] for s in "RL" for k in trans[s]}
 print("R keys", len(trans["R"]), "L keys", len(trans["L"]), "walls", len(walls))
 # graph on states (dir, head, V, W); DFS with depth limit

@@ -132,3 +132,12 @@ level, charge law, option (c) SAT).
   reader P* (prepared identically by both answers) that is not "bi-class"
   would read differently by state, with no marker to create. Screen:
   pstar.py (P's E replaced by same-slip objects, both paths).
+- [sim] Class-as-state REFUTED (scoped): pstar.py replaced P's E by all 25
+  slip-9 objects (89 placements) and the whole core [K0+22, K0+125) by
+  all 74 slip-2 objects (5,252 placements); every non-garbage reader
+  behaves IDENTICALLY in the rejector path and the acceptor path
+  (positive control: the original core reproduces all four tapes, 0
+  diffs). So the two paths deliver the next symbol equivalently; the
+  state must be a marker. Side finds: exact "N->Y" readers (Y garbage),
+  e.g. Ebar_10_E (k=2, x=23); E^8 at (14,57) is 11 cells from a clean
+  forced-N reader in both paths.

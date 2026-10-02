@@ -1268,3 +1268,57 @@ any scope I tried (library x all phases x 12 back types; B-lattice trains
 
 ### [objects] 00:38 - precision to my previous post
 Scope of the summary line: the standard back was hit by ALL 2,523 library left-movers (99,170 scenes); the 11 non-standard backs only by the B family (1,016 scenes each). Not 'library x 12 backs'.
+
+### [verify] 00:39 - objects 00:31/00:32 VERIFIED: a back-launched (1,9) bubble wall converts a type-7-front E^45 into one clean, shorter E-rod; front cells stay put
+[sim] verify/verify_xconv.py on objects/xconv_n45.json (plain cells; my
+row assembly, hrun, my segmentation), T = 1200 and 3000:
+- wall: exactly ONE defect, (15,-4)- and (300,-80)-periodic, left end at
+  the same cell as the no-wall control (-324 at T = 1200, -804 at 3000),
+  length 141 vs 168 (27 cells shorter), left ether phase unchanged.
+- nowall control: one rod of length 168, periodic, as built.
+So a right-to-left influence through a long rod that ends clean exists
+[sim] (with a prepared front type and an in-rod bubble as the source).
+Open, as objects says: no glider-level collision at any back launches the
+bubble (their scans), so this is not yet a crossing usable by a stream.
+
+### [verify] 00:39 - review of route 23 (theory 00:34): the argument holds; one physical snag in W4
+[arg] Agree: with W_L short (no rod, so no R3-T2 ownership) and x's zero
+closing it (verified, ledger #17), g's mode is not owned; and if a
+contact at g = 0 launches a front-to-back wall in R1 that changes the
+back's class, x's mode is not owned either. Snag for (W4): the only
+known class-dependent back reaction, E^m + Bbar (r3 ledger #26/#23),
+emits A's to the RIGHT in every clean class (E^(m+2) + A, E^(m-1) +
+A^2A^2A, ...). Those A's travel into the incoming right stream and meet
+its next packets, so each such op is a three-body event unless the
+stream is built to absorb them (an extra "eater" packet per Bbar, itself
+class-free, or an A-transparent stream). So W4 should read: a right-
+stream BLOCK whose net effect on the back is clean (nothing left over in
+the stream) and depends on the back's phase class. Cheapest check:
+Bbar + trailing eater candidates from the G-speed library against E^m in
+each class (I can run it if nobody owns it).
+
+### [lead] 00:41 - route 23 ownership
+Route 23 (window + rod, theory 00:34) is the first layout with no owned
+mode, so it gets priority. Owners:
+- W3 (contact at g = 0 launching a back-reaching wall in R1): delayline
+  (it is your lead item 2; objects' prepared-front/bubble knowledge may
+  help - objects, post what you know about fronts that launch walls).
+- W4 (a right-stream BLOCK whose net effect on R1's back is clean and
+  class-dependent, e.g. Bbar + a trailing A-eater): verify, as offered.
+- W2 (re-opening the frozen E^4 window from the left stream): delayline
+  after W3, or objects if delayline is busy.
+
+### [theory] 00:43 - route 22 (single-B processors): one-shot fan-outs exist, no reusable processor up to width 34 [sim]
+theory/bscan.py: ONE B (single class) against all 4,884 stationary objects
+of width 21-34 (shuttle's SAT list; <= 20 is in shuttle's table, where a
+single B never passes). Result: 723 reflect, 743 absorbed, 3,401 dirty,
+10 unsettled, 7 PASS - and all 7 are fan-outs that consume the wall:
+  B + C2_6_C3_6_C3_9_C2 -> C2_12_C2 + B + B          (3 phase copies)
+  B + C3_12_C3_7_C2     -> C2 + B^2                  (3 copies)
+  B + C1_4_C2_6_C1_11_C2 -> C3_6_C2 + B_2_B_4_B_2_B  (a one-shot x4)
+Longest processor chain: C2_4_C2_5_C3_11_C2 -(B absorbed)->
+C2_6_C3_6_C3_9_C2 -(B)-> C2_12_C2 + 2B -(B)-> debris (Bbar + F + D2).
+So no reusable doubler or toggle in this scope; route 22's U2 is blocked
+here. One-shot fan-outs could still serve a construction that rebuilds
+its processors from a stream (fuel), which is outside this route as
+posed.

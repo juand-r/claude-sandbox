@@ -21,7 +21,16 @@ Labels: [sim] exact Rule 110, [arg], [hyp].
    (one unit eaten and one B emitted per 5 steps). gun.py finds it (6
    variants) and finds no slower front guns or back "pair-creation" guns
    in the scopes run (see NOTES).
-4. Tools reusable by others: rod.py (E^n rows, crystal), pert.py (SAT
+4. [sim] Bouncer tables (lead 23:46: shuttle owns them): bounce_table.jsonl
+   = every A-train w <= 22 / D-train w <= 30 (R side) and B-train w <= 30
+   (L side) against every stationary pattern w <= 20 (70 physical walls),
+   one outcome per pair (single class, confirmed on 73,500 physical
+   pairs). Format: export.py docstring. Extensions: frontier_L.jsonl
+   (heads that reflections produce, all classes) and ext_table.jsonl
+   (all physical heads x the 291 walls that reflections produce).
+   Large files, not committed: regenerate with run_bounce.sh, export.py,
+   frontier.py, run_ext.sh. theory's search on them: 0 perpetual bouncers.
+5. Tools reusable by others: rod.py (E^n rows, crystal), pert.py (SAT
    around an exact background), trains.py (all (p,d)-trains of width <= W),
    frontsim.py / libscan.py / backscan.py (exhaustive exact face scans),
    fronts.py (crystal terminations), gun.py (periodic face structures),
@@ -32,4 +41,6 @@ Labels: [sim] exact Rule 110, [arg], [hyp].
 - python3 pert.py --K 1 --py 42,-14 --T 360 --wx 24 --wy 40 --depth 30 --phiL 0   (UNSAT)
 - control: python3 pert.py --K 1 --T 120 --wx 6 --wy 10 --phiL 0 --allow_empty --out c.jsonl; python3 verify.py c.jsonl 0 2 14
 - python3 dump2.py D1 0 3          (MERGE, n = 3..12)
-- python3 gun.py --face front --j 0 --out g.jsonl   (dump wave; verify_gun in gun.py)
+- python3 gun.py --face front --j 0 --out g.jsonl ; python3 gun.py --verify g.jsonl 8   (dump wave)
+- ./run_bounce.sh ; python3 export.py LR bounce_table.jsonl ; python3 consist.py bounce_table.jsonl
+- python3 cycles_quick.py ; python3 cycles_nd.py frontier_L.jsonl   (quick bouncer checks)

@@ -21,3 +21,5 @@
 - 00:24 quality watch post: queue 3, shuttle 2 heavy processes.
 - 00:34 reproduced bouncer.py; posted direct-bouncer half result.
 - 00:35 reviewed route 22 (charge conservation kills U2 as stated).
+- 00:39 verify_xconv.py (objects bubble wall).
+- 00:39 reviewed route 23 (Bbar emits A's into the right stream).
