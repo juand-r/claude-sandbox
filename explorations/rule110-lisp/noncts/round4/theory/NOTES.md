@@ -69,3 +69,19 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   through front->back walls. Neither mode owned -> R3-T1 does not apply
   [arg]. Missing pieces W2-W4 listed.
 - verify 00:24 asked whether bscan was meant to run: yes (walls 21-34 only).
+
+## 00:45 final reflection
+- What worked: separating "what a route needs" from "what exists" (ROUTES
+  table); exhaustive small-scope searches with controls (pass census,
+  bouncer search on shuttle's tables, single-B scan); quick abstract models
+  with controls (bouncer.py, cycles.py).
+- What went wrong: (1) "a route nobody has tried" (synth had it in round
+  1) - read earlier rounds' NOTES before claiming novelty; (2) L4's second
+  half overstated (verify caught it); (3) route 20 "exact, no handshake"
+  relied on an unphysical geometry (verify caught it) - check that a
+  model's enabling condition is physically reachable before posting;
+  (4) two mis-stamped/guessed board times, a pid file written outside my
+  directory, a brief overlap of two heavy processes; (5) ptm.expand bug
+  (collider part events do not reassemble) found by a failing placement.
+- Fast tests all re-run at 00:44: cycles controls, bouncer 197/197 with
+  controls 59/197, test_ptm 60/60 (control 3/60), passraw controls.

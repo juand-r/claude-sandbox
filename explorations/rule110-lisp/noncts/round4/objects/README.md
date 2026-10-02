@@ -16,12 +16,26 @@ counter objects. Running log: NOTES.md. Plan: PLAN.md.
 | backgrounds.py | enumerate spatially periodic Rule 110 backgrounds |
 | s1_pass.py | theory's S1: a head that passes a stationary cell and re-emerges identical |
 
-## Reproduce
-    python3 cone.py 11111000100110 14,28,56      # ether control
-    python3 cone.py 1101011100 15,30,60,90       # E-bg cone
-    python3 wallsat.py 1101011100 30 40 walls_ebg.jsonl
-    python3 plant.py 45 100 1000 -0.6
-    python3 scan_back.py 24 1200 back_N24.jsonl all
+## Reproduce (each is exact Rule 110; every SAT witness re-simulated)
+    python3 cone.py 11111000100110 14,28,56      # ether control (B, A inside the cone)
+    python3 cone.py 1101011100 15,30,60,90       # E-bg cone: left edge -58 at T=90
+    python3 wall_id.py                           # the left edge is a (3,5) phase wall at -3/5
+    python3 wallsat.py 1101011100 30 40 walls_ebg.jsonl   # all E-bg walls (P<=30, W<=40)
+    python3 plant.py 45 100 1000 -0.6            # 15 left-wall kinds vs the standard front: destroy
+    python3 scan_back.py 24 1200 back_N24.jsonl all       # 99,170 scenes, 0 front hits
+    python3 scan_back.py 2 600 ctrl.jsonl names.txt       # positive control (E^2): hits
+    python3 launch2.py 12 120 5 out.jsonl --overlap 10 30 # control: SAT (wall from inside)
+    python3 launch2.py 12 120 5 out.jsonl --train 4 -2 24 4 --taus 0 --target extend  # control: SAT
+    python3 launch2.py 36 400 5 out.jsonl --train 4 -2 40 4 --taus 0  # B-lattice trains: UNSAT
+    python3 fronts_walls.py 45 60 700 24         # 7 fronts x 15 walls: 2 clean (c=7,13 with (1,9))
+    python3 xrod.py 7                            # the clean case for n=30..60
+    python3 backs_scan.py 24 1200 24 out.jsonl Bfamily     # 11 back types, 0 front hits
+    python3 s1_pass.py 3 2 24 12 160 out.jsonl   # S1 R-pass: 0/196 SAT
+    python3 s1_pass.py 3 2 24 12 160 out.jsonl --outA --sc 11,5,3 --sh 8   # control: SAT
+    python3 bouncer_sat.py 20 8 12 12 160 out.jsonl --onlyR --s 6 --sW 0 --sV 0   # control: SAT
+    python3 bL_ctrl.py                           # L-scene control: SAT
+    python3 rodsat.py 000000111 7 0 3 12 12      # stationary rods (C-stacks), extendable
+    python3 srod.py 000000111 L 6 400 5 A A^2 A^4 D1 D2    # C-stack ops from the left
 
 ## Object survey (working table; scopes in NOTES.md and on the board)
 

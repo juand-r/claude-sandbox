@@ -150,3 +150,15 @@ glider-launched right->left channel (or R2 is not a rod).
 - bouncer L (B head 30, wall 28 restored, A head out 30, T2 200): ~73 s per
   slip combo (98 combos). L-scene control (bL_ctrl.py, wall may change, out =
   free A-lattice slip 8 + separation): running.
+
+00:45-00:50 wallchem.py: phonon (18 kinds) x cut (45 kinds), one collision
+class each (det((5,2),(15,-4)) = -50 = index of the bg lattice), E-bg only
+(no rod faces), T = 400, walls from a 10-cell-window phase map (step 2),
+velocities from T vs T+60:
+- 732/810: only co-moving walls remain (the cut ABSORBS the phonon);
+- 72: still changing at T=400; 2 no walls; 4 with right- or left-movers.
+- The two with left-moving output: (0,2)x(1,6) followed to T=1000 is a
+  spreading multi-domain mess, not a clean reflection.
+So no phonon -> left-wall reflector at a cut (smallest wall of each kind).
+Positive control for the builder: a lone phonon keeps its two domains and
+moves right; junction consistency asserted for every pair.

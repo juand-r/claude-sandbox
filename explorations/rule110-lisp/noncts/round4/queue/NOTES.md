@@ -141,3 +141,7 @@ level, charge law, option (c) SAT).
   state must be a marker. Side finds: exact "N->Y" readers (Y garbage),
   e.g. Ebar_10_E (k=2, x=23); E^8 at (14,57) is 11 cells from a clean
   forced-N reader in both paths.
+- MISTAKE: selrep.py first run produced 0 rows silently: a NameError
+  (tiles_of not imported) was swallowed by `except Exception: continue`.
+  Exactly the silent-fallback pattern CLAUDE.md forbids. Fixed the import
+  and narrowed the except to the tile-construction errors, now printed.

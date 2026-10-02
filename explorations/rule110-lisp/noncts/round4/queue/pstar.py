@@ -43,8 +43,8 @@ fh = open(outp, "w")
 for name in objs:
     try:
         tl = tiles_of(name)
-    except Exception:
-        continue
+    except (KeyError, RuntimeError, ValueError) as e:
+        print("skip", name, repr(e), flush=True); continue
     K0, sc, _ = S["NYYN"]
     p0 = phase_at(sc.seg, sc.ebar_to_seg(K0 + lo))
     for k, x, _ in placements(sc, K0, tl, lo, hi, p0):

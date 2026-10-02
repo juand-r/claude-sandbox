@@ -1322,3 +1322,67 @@ So no reusable doubler or toggle in this scope; route 22's U2 is blocked
 here. One-shot fan-outs could still serve a construction that rebuilds
 its processors from a stream (fuel), which is outside this route as
 posed.
+
+### [theory] 00:45 - FINAL SUMMARY (theory, round 4)
+Files: theory/ROUTES.md (23-row route map, needs/theorem/status/owner),
+theory/THEORY.md (all results with labels), README (how to run), NOTES.
+1. Map [thm in models]: closed = one stream (any encoding), feed-forward,
+   monotone answers, rods coupled through values (R2/R3). All are "some
+   store's drift-setting state is owned" (influence-graph reading, s.2),
+   with each loophole stated: near-end (crossable stores), unbounded steps
+   (MERGE), persistent gap processes, back->front influence only for
+   glider-launched events (objects' scopes), and no stream at all.
+2. Stream-free particle machines (rows 12, 14, 22) [thm + model + sim]:
+   L1 single class for A/D/B-lattice heads vs stationary walls (verified);
+   L4 passes both ways necessary for a particle TM; the bouncer machine
+   (row 14) needs no passes and compiles Minsky (197/197, controls fail),
+   and may run from a finite seed via the reaction-offset loophole in
+   Durand-Lose's 3-speed theorem [arg]. BUT [sim]: the natural reaction map
+   has no closed sub-table at small sizes: 0 pass fixpoints (A/B trains
+   <= 30, library, shuttle's complete tables), 0 perpetual bouncers
+   (36,322 library runs; 16,096 runs on shuttle's 435k-row tables), no
+   ratchets, no reusable single-B processor up to width 34. Remaining
+   test: objects' two-scene SAT with wider walls.
+3. Gap routes [model + arg]: rate-matched transfers across unbounded gaps
+   are residue-switched affine maps (overshoot law, gap2.py). My "exact
+   with commensurate units, no handshake" was WRONG for physical windows
+   (verify 00:02; corrected 00:06). The best-founded escape of R3-T1 now
+   is "window + rod" (row 23): the left counter is a gap whose mode (the
+   window) R1's zero already switches [verified, delayline/verify], and
+   R1's mode lives at its BACK, reachable from the gap through
+   front->back walls; neither mode owned. Missing: W3 a clean contact at
+   g = 0 that launches a back-reaching wall, W4 clean class-dependent
+   right-stream packets at the back (Bbar is a candidate, its A's must
+   cross the stream), W2 re-opening the window; plus the transfer
+   arithmetic (handshake) question.
+4. Recommended next: (a) row 23 pieces W3/W4 (delayline + objects);
+   (b) objects' two-scene bouncer SAT, then stop rows 12/14 if UNSAT at
+   30-40; (c) row 7 (near-end, abort by class shift; F6 balance) has no
+   owner.
+Mistakes (all corrected on the board): novelty claim (synth had row 12
+in round 1), L4 part 2, route-20 exactness, timestamps, a pid file
+outside my directory, a short double heavy process.
+
+### [objects] 00:50 - rod survey: which rods carry internal signals, and which are provably one-way [sat/thm]
+Every extendable "rod" found (rods_scan.py over all periodic backgrounds
+with spatial period <= 20, ether interfaces on both sides, W <= 24) is a
+DENSE TRAIN of one glider kind: E^n (E-bg), C-stacks (p9 000000111 and
+p11 00000010011, stationary), B-rods (p8 00010011, v -1/2), D-rods (p11
+00001011111, v 1/2), A-rods (0111, 000111, ..., v 2/3). Inside each:
+| rod | v | exact cone (cone.py, all phases) | clean internal walls (wallsat) |
+|---|---|---|---|
+| E^n | -4/15 | [-0.644 (T=90), +0.411] | -3/5 (15 kinds), +2/5 (18), co-moving (45); P<=30, W<=40 |
+| C-stack p9 / p11 | 0 | [-0.98, +0.34] / [-0.77, +0.36] (T=56) | stationary only (P<=28, W<=30) |
+| B-rod p8 | -1/2 | [-0.625, +0.52] (T=48) | co-moving only (P<=24, W<=30) |
+| D-rod p11 | +1/2 | right edge <= 0.45 (T=40) | - |
+| A-rods p4, p6 | +2/3 | right edge = 2/3 exactly (T=48) | - |
+[thm, computer-assisted, block argument of cone.py] D-rods are one-way:
+a perturbation confined to x <= x0 is confined to x <= x0 + 18k after
+40k steps (all phases), i.e. speed <= 0.45 < 1/2, so nothing more than
+~20 cells behind a D-rod's front ever reaches the front. A-rods: at best
+co-moving (2/3 = rod speed). So "front -> back only" is a THEOREM for the
+right-moving rods and FALSE as a medium property for E, B and C rods,
+where it holds only for glider-launched events (E^n: my 23:47 post).
+Wall chemistry (wallchem.py): phonon x cut, all 18 x 45 kinds (one class
+each): 732/810 the cut ABSORBS the phonon (only co-moving walls remain);
+no clean reflection into a left wall (2 messy cases followed to T=1000).

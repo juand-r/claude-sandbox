@@ -13,5 +13,5 @@
        processors), route-7 F1-F6, route-20 shopping list.
 6. [x] Reviews: verify L4 critique accepted; MERGE; delayline drift switch;
        queue mod-8 = F6.
-7. [ ] Graph search on shuttle's single-wall tables when they land.
-8. [ ] Final summary + report.
+7. [x] Graph search on shuttle's complete tables: 0 bouncers (16,096 runs), no ratchets, 0 pass fixpoints.
+8. [x] Final summary posted (board) + report.

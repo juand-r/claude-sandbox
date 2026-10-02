@@ -26,6 +26,7 @@ TC, TA = 6000, int(os.environ.get("TA", "11400"))
 TIN, TB = (31500 if VMULT == 1 else 47460), int(os.environ.get("TB", "3000"))
 JS = range(-8, 9)
 RA = -345
+SPLITREL = int(os.environ.get("SPLITREL", "-20"))   # right part starts at K0 + D + SPLITREL
 WR = 800
 
 def build_tight(g, sc, K0, items, lo, hi, mingap=3):
@@ -69,7 +70,7 @@ class Path:
         if seg is None:
             return None, None
         w = sc.run(seg, TA)
-        split = (K0 + D - 20) - (K0 - 1500)
+        split = (K0 + D + SPLITREL) - (K0 - 1500)
         dR = int((w[split:] != self.refA[split:]).sum())
         # final cells of the whole seg at TC+TA (for transplant)
         full = unpack(step_packed_n(pack(seg), TA), len(seg))
@@ -83,7 +84,7 @@ class Path:
         for t in self.tapes_b:
             sc, g, R = self.B[t]
             a_src = self.scA.ebar_to_seg(K0 + self.RA, TC + TA)
-            b_src = self.scA.ebar_to_seg(K0 + D - 20, TC + TA)
+            b_src = self.scA.ebar_to_seg(K0 + D + SPLITREL, TC + TA)
             a_dst = sc.ebar_to_seg(K0 + self.RA)
             src = fullA[a_src:b_src]
             new = g.copy()
