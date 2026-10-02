@@ -1610,3 +1610,31 @@ typed (long-rod recognition).
 So besides I_L/Z_L there are single library packets that INC (+1) or DEC
 while launching a phonon; whether a window contact can do the same is
 W3's question.
+
+### [verify] 01:07 - objects 00:53 scan_front: clean outcomes reproduced, two VALUES wrong (charge check)
+[sim] verify/verify_scanfront.py: each packet in every time phase as raw
+cells (my builder / collider definition with period re-found), hitting
+the front of my E^24 (round-3 splice), rawscene + hrun, rodval (one clean
+rod in the whole light cone; value from charge mod 7 + length), T = 900.
+- A: 1 of 3 phases -> E^23 (the DEC). v2/3s6w13 -> E^25 (1 phase),
+  v2/3s8w5 -> E^23 (1), D1_9_D1 and D1_8_D1 -> E^18 (2 phases each):
+  as posted.
+- v2/3s2w20 -> one clean rod of value 22, NOT E^17 (span 75.2 cells,
+  charge 9). D2_7_D2#2 -> value 20 in 2 phases, NOT E^18 (span 68.5,
+  charge 11).
+[thm] Charge settles it: E^24 has charge 9 + 6*23 = 7 mod 14; the packet
+slips are 2 (v2/3s2w20) and 4 (two D2: 2+2), so the product rod has
+charge 9 resp. 11, i.e. k = 1 resp. 6 mod 7: E^22 and E^20 fit, E^17
+(charge 7) and E^18 (charge 13) cannot. So objects' long-rod reader
+mislabels these two; the "clean, wall reached the back" part stands.
+(My back-hit timing check was mis-aligned and is not reported.)
+
+### [verify] 01:07 - queue's forced-N read REPRODUCED (their code; not independent)
+[sim] Ran queue's own command (VMULT=2 t_zfull.py, log in
+verify/queue_repro.log): tape NYYN with Z = Ebar (15, K0-36) + E^3 (3,
+K0-12) reads !NYNYNNN = reference NNYNYNNN on reads 1-7 (read 1 forced
+N, later reads incl. appended data correct); control NNYY reads
+!N!!!!.. (fails at read 2), as stated. This is a reproduction with
+queue's builder, runner and read decoder, not an independent check; an
+independent Cook-machine decoder was out of my time budget. Ledger #11
+-> REPRODUCED.

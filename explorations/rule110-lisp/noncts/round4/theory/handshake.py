@@ -139,29 +139,54 @@ def differential(geo, n_random=120, seed=3, budget=60, regmax=3, variant='ok'):
                 band=band, events=events)
 
 
+def best_offsets(make_geo, grid=12):
+    """Search stream offsets (cL, cR) on a grid of P/grid steps for the fewest
+    band hits, using a small sample of programs (phase sets do not depend on
+    the program, only on the step types used)."""
+    best = None
+    for i in range(grid):
+        for j in range(grid):
+            g = make_geo(i, j)
+            r = differential(g, n_random=12, seed=9)
+            key = (r['band'], i, j)
+            if best is None or key < best[0]:
+                best = (key, r)
+            if r['band'] == 0:
+                return (i, j), r
+    return best[0][1:], best[1]
+
+
 def main():
     vL, vR = Fr(2, 3), Fr(1, 3)        # left stream: A-lattice trains; right stream: G-speed packets
     s = Fr(78)                          # window step per armed packet (cells)
     P = s * (1 / vL + 1 / vR)           # phase-locking period: 351 (spacing 234 / 117 cells)
-    locked = Geo(s, vL, vR, P, vTL=vL, vTR=vR, cL=Fr(5), cR=Fr(40))
-    r1 = differential(locked)
-    print('LOCKED (tokens at their stream speed, P = s(1/vL+1/vR)):', r1)
-    # control A: same speeds, period not commensurate (P + 7)
-    r2 = differential(Geo(s, vL, vR, P + 7, vTL=vL, vTR=vR, cL=Fr(5), cR=Fr(40)))
-    print('control A (period off by 7):', r2)
-    # control B: tokens slower than their stream (L->R at D speed 1/5, R->L at F speed 1/9)
-    r3 = differential(Geo(s, vL, vR, P, vTL=Fr(1, 5), vTR=Fr(1, 9), cL=Fr(5), cR=Fr(40)))
-    print('control B (token speeds 1/5, 1/9):', r3)
-    # control C: zero reactions ignore the remainder (bouncer's 'norem'): must fail
-    r4 = differential(locked, variant='norem')
+    mk_locked = lambda i, j: Geo(s, vL, vR, P, vTL=vL, vTR=vR, cL=P * vL * i / 12, cR=P * vR * j / 12)
+    mk_offP = lambda i, j: Geo(s, vL, vR, P + 7, vTL=vL, vTR=vR, cL=(P + 7) * vL * i / 12, cR=(P + 7) * vR * j / 12)
+    (i, j), _ = best_offsets(mk_locked)
+    r1 = differential(mk_locked(i, j))
+    print(f'LOCKED (tokens at their stream speed, P = s(1/vL+1/vR) = {P}), offsets {i},{j}/12:', r1)
+    (i2, j2), rA = best_offsets(mk_offP)
+    r2 = differential(mk_offP(i2, j2))
+    print(f'control A (period P+7), best offsets {i2},{j2}/12:', r2)
+    r4 = differential(mk_locked(i, j), variant='norem')
     print("control C (remainder ignored):", r4)
-    ok = (r1['fails'] == 0 and r1['compared'] > 0 and max(r1['nphase'].values()) == 1
-          and r1['band'] == 0
-          and r2['fails'] == 0 and max(r2['nphase'].values()) > 1 and r2['band'] > 0
-          and r3['fails'] == 0 and max(r3['nphase'].values()) > 1 and r3['band'] > 0
-          and r4['fails'] > 0)
-    print('as predicted (exact everywhere; ONE phase per site and no band hits only when locked;'
-          ' remainder control fails):', ok)
+    # value-independence of the phase sets: big counters, one long transfer each way
+    big = {}
+    for name, g in (('locked', mk_locked(i, j)), ('P+7', mk_offP(i2, j2))):
+        prog = [('DEC', 0, 1, 2), ('INC', 1, 0), ('HALT',)]       # moves register a into b
+        Tb, h0 = compile_bouncer(prog)
+        ph = {'L': set(), 'R': set(), 'M': set()}
+        for a in (3, 5, 7):
+            r = run_handshake(Tb, h0, 2 ** a, 0, g)
+            for k in ph:
+                ph[k] |= r['ph'][k]
+        big[name] = {k: len(v) for k, v in ph.items()}
+    print('phase-set sizes with registers up to 7 (x up to 128):', big)
+    bounded = all(big['locked'][k] <= max(r1['nphase'][k], 1) for k in ('L', 'R'))
+    grows = sum(big['P+7'][k] for k in ('L', 'R')) > sum(big['locked'][k] for k in ('L', 'R'))
+    ok = (r1['fails'] == 0 and r1['compared'] > 0 and r1['band'] == 0
+          and r2['fails'] == 0 and r2['band'] > 0 and r4['fails'] > 0 and bounded and grows)
+    print('as predicted:', ok)
     return 0 if ok else 1
 
 

@@ -50,7 +50,7 @@ def scene_b(cnf, Y, Z, c, T, gap, target):
     if target == "walk":
         S.is_item(T, S.lo - T, S.hi + T, en_item(cnf, 1), far_left=S.p_left, far_right=S.p_right)
         return S
-    mid = int(-4 * T / 15) - 6
+    mid = int(-4 * T / 15) - 2   # undisturbed E's left side: Z must be left of it, the rod (walks are rightward) right of it
     S.is_item(T, S.lo - T, mid, Z, far_left=S.p_left)
     S.is_item(T, mid, S.hi + T, en_item(cnf, 2 if target == "refl" else 1), far_right=S.p_right)
     return S

@@ -90,13 +90,16 @@ class Pert:
     `const0(x)`; for t >= 1, cells left of the window/cone are left(t,x),
     right of it right(t,x)."""
 
-    def __init__(self, cnf, T, ulo, uhi, init_const, left_const, right_const, window):
+    def __init__(self, cnf, T, ulo, uhi, init_const, left_const, right_const, window,
+                 init_lits=None):
+        """init_lits: optional {x: literal} for the unknown t = 0 cells, so
+        several spacetimes can share the same unknown pattern."""
         self.cnf, self.T = cnf, T
         self.left_const, self.right_const = left_const, right_const
         self.cells = {}
         self.bounds = {}
         for x in range(ulo, uhi):
-            self.cells[(0, x)] = cnf.new_var()
+            self.cells[(0, x)] = init_lits[x] if init_lits else cnf.new_var()
         self.init_const = init_const
         self.bounds[0] = (ulo, uhi)
         for t in range(1, T + 1):

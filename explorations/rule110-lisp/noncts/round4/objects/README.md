@@ -1,5 +1,30 @@
 # round4/objects: storage objects that might escape Theorems 1-2
 
+Round 4, agent "objects": avenues (b) right-to-left crossings and (d) other
+counter objects. Started 2026-10-01 22:48 UTC. Running log with every
+mistake: NOTES.md. Plan: PLAN.md.
+
+## Main results (details, scopes and controls on the board and in NOTES.md)
+1. [sat] The E^n interior (E-bg) is a TWO-WAY medium: exact influence cone
+   about [-0.644, +0.411] (rod: -4/15). Its moving walls: -3/5 (15 phase
+   kinds, incl. "bubbles" with an ether pocket), +2/5 phonons (18 kinds,
+   all even h), co-moving cuts (45). Phase group Z/50, h = 2t - 5s [thm].
+2. [sim] At glider level the rod is one-way: 0 front hits from all 2,523
+   library left-movers x all phases at the standard back (99,170 scenes),
+   0 from the B family at 11 other back types; [sat] no B-lattice train
+   <= 40 launches a phase domain into the rod (n = 36, T2 = 400).
+3. [sim, verified by verify] A prepared front (types 7, 13 of the 7
+   front types) absorbs the (1,9) bubble cleanly: one shorter E-rod
+   (-27 cells), front type 7 -> 4. A clean right-to-left effect through a
+   long rod exists; its launcher does not (in scope).
+4. [sat/sim] Rod survey: every extendable rod found is a dense train of
+   one glider kind (E, C1-stacks p9/p11, B, D, A). Only E-bg has moving
+   internal walls (C-stacks: stationary only; B-rod: co-moving only).
+   A-rods: influence at best co-moving [thm, block argument].
+5. [sat] S1 (theory): no A-lattice head <= 24 passes a free cell <= 12
+   and re-emerges identical (196/196 UNSAT). A false-positive trap in
+   react.Reaction's "is h" with free middles was found and fixed.
+
 Agent "objects" (round 4), avenues (b) right-to-left crossings and (d) other
 counter objects. Running log: NOTES.md. Plan: PLAN.md.
 

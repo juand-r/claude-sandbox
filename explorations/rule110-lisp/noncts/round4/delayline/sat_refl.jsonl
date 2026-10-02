@@ -8,3 +8,4 @@
 {"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 0, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 36.9}
 {"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 39.3}
 {"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 54.5}
+{"target": "pass2", "W": 48, "WZ": 30, "ca": 0, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": true, "sat": false, "secs": 757.8}

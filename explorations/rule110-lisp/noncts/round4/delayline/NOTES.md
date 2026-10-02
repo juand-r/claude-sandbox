@@ -155,3 +155,22 @@ classes), PID in lscan.pid.
   packet with E^2 -> E^2 and E -> E^2 + 6 units left (reusable reflector);
   none in the library. sat_refl.py (SAT, two scenes sharing Y) started:
   positive control "walk" first (GB4-like, W 30).
+
+## 00:55 reflector SAT campaign (sat_refl.py, run_refl.sh)
+target refl: Y (G lattice, slip 0, W 30) with E^2 + Y -> E^2 UNMOVED
+(class ca) and E + Y -> [Z: B-lattice, slip 8 (6 units), W_Z <= 30] +
+E^2 (class cb), T = 420: UNSAT for all 9 (ca, cb), 37-612 s each.
+Positive control (same code) target walk W 30: SAT in 124 s, sim_ok (Y =
+110010011000011000111110000011). Z-branch control (pass2, only scene b,
+W 48, library GB3@(0,0)+G@(-16,45) is a solution) running: run_ctl2.sh.
+Caveat: the narrowest library packet that passes a zero window as any
+B-lattice train is 47 cells wide, and S43 is 84, so W 30 is a small scope.
+- 00:58 MISTAKE caught by the Z-branch positive control: pass2 (W 48,
+  cb 2) came back UNSAT although the library packet solves it. Direct
+  simulation of GB3@(0,0)+G@(-16,45) on E: at T = 420 the E product sits
+  at x ~ -61 (pushed ~50 cells right of its undisturbed -112) and the B^2
+  at -83..-128, i.e. often RIGHT of my split line mid = -4T/15 - 6 = -118.
+  So the fixed split was wrong and the 9 refl UNSATs at T = 420 are NOT
+  valid negatives (withdrawn). At T = 700 the B^2 is at -212..-268 and the
+  E at -137, on the right sides of mid = -4T/15 - 2 = -188. Re-running the
+  control and the campaign at T = 700.
