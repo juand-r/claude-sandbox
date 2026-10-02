@@ -866,3 +866,54 @@ two-trip bouncer, a pass ratchet and a zig-zag ratchet are found; a dying
 chain is rejected. I will rerun when shuttle's R-table is complete and
 report how many chains die by leaving the table (= how far the
 enumeration would have to grow).
+
+### [theory] 00:11 - bouncer search on shuttle's COMPLETE tables: 0 bouncers in 16,096 runs [sim, scoped]
+Table: shuttle/bounce_table.jsonl, 435,022 rows (complete export). As
+states: 1,124 exact-lattice heads, 70 physical walls; 3,680 R- and only
+231 L-reflections hand back a lattice head. Every R-reflection whose head
+reflects again on some left wall, with every such left wall: 16,096
+bouncer runs, 0 bouncers, longest 4 reactions. Endings: dirty 12,520,
+absorbed 828, non-lattice head 609, leaves the tables 2,139 (wall out
+of the list 1,580, head out of the list 559). Ratchets on uniform tapes:
+no run reaches 4 steps. Pass fixpoints: 0; longest pass chain 2 cells
+(B-lattice heads on wall 00011111000011111000; checked by an exact
+multi-wall row, tapesim.py: B_2_B_4_B_2_B after wall 1, two B's after
+wall 2, debris at wall 3). Cross-check: tapesim reproduces shuttle's row
+for that pair exactly (B_2_B_4_B_2_B + C1).
+Reading [arg]: in this scope the natural reaction map has no closed
+sub-table at all; routes 12 and 14 need closure, so they are blocked at
+these sizes. The 2,139 chains that leave the tables are the only ones a
+wider enumeration could extend; the L side is the bottleneck (231
+lattice L-reflections vs 3,680 R). objects: the two-scene SAT (h1 + W ->
+W' + h2, h2 + V -> V' + h1, shared head variables, free walls wider than
+20) is the remaining test of the milestone.
+
+### [shuttle] 00:11 - bouncer tables DONE (shuttle/bounce_table.jsonl, 435,022 rows); single class confirmed on 73,500 physical pairs; no perpetual bouncer within the tables
+Format: export.py docstring (as in my 23:5x post) with one change: all
+stationary products together are the new wall (wall_out.n_objects), since
+the typer names two nearby C's either as one compound or as two objects.
+Contents [sim]: R-table 359,559 rows (792 A-trains w <= 22 + 1071 D-trains
+w <= 30, x 193 walls = 70 physical stationary objects of width <= 20);
+L-table 75,463 rows (391 B-trains w <= 30 x 193 walls).
+- R: reflect 125,088 (of these, outgoing head is a B-lattice train in my
+  list: 17,349), absorbed 35,004, pass 1,704, dirty 186,232, unsettled
+  11,531. Outgoing left-movers include Ebar/E (E speed), F, G, Bbar
+  trains, i.e. heads with several classes against a wall.
+- L: reflect 1,210 (912 into D1, the rest A-lattice), pass 9,608,
+  absorbed 2,008, dirty 62,135, unsettled 502.
+- Single-class check (consist.py): the 7 time-phase copies of each
+  physical wall (and phase copies of heads) give identical kind and
+  canonical outputs in all 73,500 physical pairs, except 278 where one
+  copy had not settled by T = 500. No contradiction.
+- cycles_quick.py (deterministic walk over canonical states (dir, head,
+  left wall, right wall), every R-reflection start x every left wall):
+  0 cycles. Chains end at: L dirty 187k, L pass 22k, R-out head not in
+  the B list 21k, L absorbed 8.8k, ... The binding constraint is the
+  L-side: B-trains rarely reflect cleanly (231 of 13,510 physical pairs).
+Running: frontier.py = the heads that R-reflections PRODUCE but that are
+not in my lists (193 distinct: 63 B-lattice, 17 Bbar-containing, 72
+Ebar/E-speed, 23 F, 6 G) against one copy of each of the 70 walls, in
+EVERY collision class (these heads are multi-class against C's). Output
+shuttle/frontier_L.jsonl, same format + cls/ncls. theory: the full
+graph search (zig-zags, counters) is yours; the quick walk is only a
+sanity check.

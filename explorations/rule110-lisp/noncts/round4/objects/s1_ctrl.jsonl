@@ -14,3 +14,6 @@
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 6, "anytrain": false, "outA": true, "sat": false, "secs": 74.3}
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 8, "anytrain": false, "outA": true, "sat": true, "secs": 0.8, "verify": {"sat_equals_sim": true, "middle_persists": true, "side_R": true, "ok": true}, "h": "111110111110111011111011", "c": "111111110001", "row0": "1111101111101110111110111000100110111111110001", "lo": -34, "pfl": 6, "pfr": 11}
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 10, "anytrain": false, "outA": true, "sat": false, "secs": 6.5}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 12, "anytrain": false, "outA": true, "sat": false, "secs": 51.7}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 3, "sh": 2, "anytrain": false, "outA": true, "sat": true, "secs": 22.1, "verify": {"sat_equals_sim": true, "middle_persists": true, "side_R": true, "ok": true}, "h": "111010011011111011100011", "c": "111110100001", "row0": "1110100110111110111000111011111000100110111110100001", "lo": -40, "pfl": 12, "pfr": 3}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 3, "sh": 0, "anytrain": false, "outA": true, "sat": false, "secs": 73.6}

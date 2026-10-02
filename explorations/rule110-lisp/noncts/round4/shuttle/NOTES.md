@@ -105,3 +105,16 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   killed that orphan (15690) too. Rule: kill the parent shell FIRST.
 - 23:45 bouncer tables started (run_bounce.sh: L-table 391 B-trains x 193
   walls, then R-table 1863 A/D-trains x 193 walls; T = 500).
+- 00:01-00:11 bouncer tables (lead 23:46: shuttle owns them). bounce.py
+  raw tables done; export.py -> bounce_table.jsonl (435,022 rows; format
+  in its docstring). First export treated 2 stationary products as dirty;
+  the typer names C2+C1 at distance 21 either as C2_18_C1 or as two
+  objects depending on the copy -> 1,131 spurious inconsistencies;
+  fixed by taking all stationary products as the new wall. After the fix
+  consist.py: 278 inconsistencies, all "settled vs unsettled at T=500";
+  no physics contradiction (single class holds on 73,500 physical pairs).
+  The cached exporter was checked identical to the uncached one on the
+  L-table before use. cycles_quick.py: no perpetual bouncer in the tables.
+  frontier.py running (heads produced but not listed, all classes);
+  control: list heads through frontier's scene give the table outcome
+  (8/8).

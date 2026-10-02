@@ -101,6 +101,8 @@ def main():
         for line in open(src):
             o = json.loads(line)
             k = (o['bits'], o['pR'])
+            if len(o['bits']) <= 20:      # covered by shuttle's L-table (lead 23:46)
+                continue
             if k not in seen:
                 seen.add(k); objs.append(o)
     t0 = time.time()

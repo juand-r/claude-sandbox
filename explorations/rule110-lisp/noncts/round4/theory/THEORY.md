@@ -34,9 +34,10 @@ The route table is in `ROUTES.md`; this file holds the reasoning behind it.
    bookkeeping. Round-1 synth had noticed the fact and stalled on single
    gliders. New here:
    - Lemma L4 [thm]: a particle TM needs clean passes in both directions.
-     [sim] Among all A-trains of width <= 30 and all B-trains of width
-     <= 30 against C1-C3, and all library heads, every pass leaves a small
-     head that dies on the next cell (0 fixpoints, 0 two-cell chains).
+     [sim] No pass fixpoint exists among all A-trains and B-trains of
+     width <= 30 against C1-C3, all library heads against library walls,
+     or shuttle's exhaustive tables (70 walls <= 20 cells); no pass chain
+     survives three cells (on C1-C3 tapes not even two).
    - Route 14, the *bouncer machine*, needs NO passes: two counters are
      wall distances, one head bounces between two movable walls.
      [model] bouncer.py compiles Minsky machines (197/197, controls fail).
@@ -45,7 +46,9 @@ The route table is in `ROUTES.md`; this file holds the reasoning behind it.
      theorem forbids in signal machines [arg].
    - Both routes need a closed sub-table of a FIXED natural reaction map,
      so a universal program must be found, not imposed. The first
-     milestone is a perpetual bouncer (graph search on shuttle's tables).
+     milestone is a perpetual bouncer. [sim] None exists in the scopes
+     searched (s.3.9): every R-then-L reflection chain dies at its third
+     reaction, or leaves the enumerated tables.
 4. **Route (a), two windows and two gaps (route 20, s.6b).** Delayline
    found (verified) that R2's zero switches the gap's drift. With both
    counters as gaps and both modes as window states no mode is owned.
@@ -88,7 +91,8 @@ different: it has all edges but every effect is monotone.
   stores the stream can cross.
 - R2-s5 and R3-T1 assume (A1) bounded steps: |x' - x| <= M. A multiply or
   divide in one step (row 15) violates it; so does an unbounded gap read
-  by timing (row 8).
+  by timing (row 8), and so does shuttle's verified MERGE
+  (E^m D1 E^n -> E^(m+n+1), row 21).
 - R3-T1 assumes (Q) quiescence: no persistent process acts on both
   counters while both are large. Shuttles, pumps and guns violate it.
 - R3-T2 assumes (L) no back-to-front influence in a LONG rod and (N) no
@@ -350,7 +354,31 @@ for ever: the first stream-free, non-periodic Rule 110 process built from
 stationary walls and one head. `explore2.py` searches for it on uniform
 tapes (a bouncer appears there as a run confined to two cells).
 
-### 3.9 Finite seeds and the signal-machine speed theorems [arg]
+### 3.9 Perpetual-bouncer and ratchet searches [sim]
+
+Tools: `cycles.py` (graph search; synthetic controls: a bouncer with net
+wall drift, a two-trip bouncer, a pass ratchet and a zig-zag ratchet are
+found, a dying chain is rejected), `bounce.py` (library heads and walls,
+exact reactions on demand), `tables_search.py` (shuttle's exhaustive
+tables, identities by shuttle's canonical forms, exact-lattice heads only),
+`tapesim.py` (one exact row with a head and n identical walls, to follow
+chains that leave the tables).
+
+| scope | runs | bouncers | longest chain |
+|---|---|---|---|
+| 126 right-moving library heads x 127 library walls (<= 2 C parts), 286 R-reflections, every left wall | 36,322 | 0 | 4 reflections |
+| shuttle's COMPLETE tables (435,022 rows: A trains <= 22, D trains <= 30, B trains <= 30, x 193 wall rows = 70 physical walls <= 20 cells; 1,124 lattice heads; 3,680 R- and 231 L-reflections into lattice heads) | 16,096 (every R-reflection whose output reflects on some left wall, x every such wall) | 0 | 3 or 4 reactions. Endings: dirty 12,520; absorbed 828; non-lattice head 609; leaves the tables 2,139 (wall 1,580, head 559) |
+| same tables, natural TM on uniform tapes of each wall | all heads x 70 walls | - | no run reaches 4 steps |
+| pass fixpoints in the tables | all pass rows | 0 | the longest pass chain is 2 cells (B-lattice heads on the C-pair wall 00011111000011111000; tapesim confirms: B_2_B_4_B_2_B after the first wall, two B's after the second, debris at the third) |
+
+Reading [arg]: at these sizes the natural map has no closed sub-table at
+all, not even the smallest one a bouncer needs (one R- and one L-reflection
+whose outputs feed each other). Every route-12 or route-14 machine needs
+such closure. What is not excluded: larger heads and walls (beyond 20-30
+cells), heads off the three single-class lattices (multi-class, so spacing
+matters again), and multi-head designs.
+
+### 3.10 Finite seeds and the signal-machine speed theorems [arg]
 
 Durand-Lose (CiE 2013; I read s.1-3 and 5 of the HAL version): a *rational*
 signal machine with three speeds started from a *finite* configuration is

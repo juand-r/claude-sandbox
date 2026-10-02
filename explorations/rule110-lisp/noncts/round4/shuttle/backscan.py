@@ -12,15 +12,6 @@ sys.path.insert(0, SYNTH)
 from classes import same_class, n_classes
 
 T = 900
-out = sys.argv[1]
-NS = [int(v) for v in sys.argv[2].split(",")] if len(sys.argv) > 2 else [8, 9, 10, 11]
-Gj = {g['name']: g for g in json.load(open('../../collider/gliders.json'))['gliders']}
-names = [n for n, g in Gj.items() if Fraction(g['velocity']) < Fraction(-4, 15)]
-if len(sys.argv) > 3:
-    if sys.argv[3].startswith("="):
-        names = sys.argv[3][1:].split(",")
-    else:
-        names = [n for n in names if sys.argv[3] in n]
 
 
 def placements_right(bits, pR, p, d, phir, x_start, PE=(15, -4)):
@@ -60,6 +51,15 @@ def placements_right(bits, pR, p, d, phir, x_start, PE=(15, -4)):
 
 
 if __name__ == "__main__":
+    out = sys.argv[1]
+    NS = [int(v) for v in sys.argv[2].split(",")] if len(sys.argv) > 2 else [8, 9, 10, 11]
+    Gj = {g['name']: g for g in json.load(open('../../collider/gliders.json'))['gliders']}
+    names = [n for n, g in Gj.items() if Fraction(g['velocity']) < Fraction(-4, 15)]
+    if len(sys.argv) > 3:
+        if sys.argv[3].startswith("="):
+            names = sys.argv[3][1:].split(",")
+        else:
+            names = [n for n in names if sys.argv[3] in n]
     bgs = {n: BG(n, T + 60, -2 * T - 600, 4 * n + 2 * T + 900) for n in NS}
     done = set()
     if os.path.exists(out):

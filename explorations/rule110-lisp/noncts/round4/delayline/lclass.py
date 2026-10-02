@@ -45,3 +45,12 @@ for c in cand[:15]:
 print("neutral on E^2 and passing right-movers through E:", len(shooters))
 for s in shooters[:15]:
     print("  ", s)
+# gates: closed window (E^2) exactly unmoved in some class, open window walks
+gates = [c for c in cand if any(abs(v) < 1e-9 for v in c[3].values()) and any(abs(v) > 1e-9 for v in c[4].values())]
+gl = [c for c in gates if any(v < -1e-9 for v in c[4].values())]
+gr = [c for c in gates if any(v > 1e-9 for v in c[4].values())]
+print("GATES (E^2 unmoved in some class, E walks in some class):", len(gates), "| walk left:", len(gl), "| walk right:", len(gr))
+for c in gl[:10]:
+    print("  L", c)
+for c in gr[:5]:
+    print("  R", c)

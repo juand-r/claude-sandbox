@@ -2,13 +2,13 @@
 D cells opened at Ebar-frame K0+CUT (surgery at t_in = 31500; regions right
 of the cut shifted by D).  python t_convfull.py TAPE NREAD CUT D ITEMS [KINDS]
 ITEMS = 'name:k:x;...' with x rel K0 (inside the gap)."""
-import sys
+import sys, os
 import numpy as np
 from reads import *
 tape, nread, cut, D, spec = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), sys.argv[5]
 kinds = sys.argv[6] if len(sys.argv) > 6 else "KF"
 items = [(tiles_of(n), int(k), int(x)) for n, k, x in (s.split(":") for s in spec.split(";"))] if spec != "-" else []
-apps = ["YNNNNN"]; t_in = 31500
+apps = ["YNNNNN"]; t_in = 31500 if os.environ.get('VMULT', '1') == '1' else int(os.environ.get('TIN2', '47460'))
 import os
 v = enc._left_v(apps) * int(os.environ.get('VMULT', '1')); T = (nread + 3) * 2 * 30 * v
 m = Machine(tape, apps, T, v=v, left_periods=T // (30 * v) + 3, right_periods=nread + 3)

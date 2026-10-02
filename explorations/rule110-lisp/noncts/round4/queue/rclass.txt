@@ -1,0 +1,97 @@
+control plain N: (0, 0)
+[(None, None), (None, None)] {"k1": 14, "k2": 0, "x1": -4, "x2": -73}
+[(None, None), (None, None)] {"k1": 14, "k2": 6, "x1": -4, "x2": -52}
+[(None, None), (None, None)] {"k1": 14, "k2": 7, "x1": -4, "x2": -74}
+[(None, None), (None, None)] {"k1": 14, "k2": 12, "x1": -4, "x2": -87}
+[(None, None), (None, None)] {"k1": 14, "k2": 13, "x1": -4, "x2": -56}
+[(None, None), (None, None)] {"k1": 14, "k2": 18, "x1": -4, "x2": -64}
+[(None, None), (None, None)] {"k1": 14, "k2": 19, "x1": -4, "x2": -89}
+[(None, None), (None, None)] {"k1": 14, "k2": 25, "x1": -4, "x2": -60}
+[((23, -8), (5, 8)), ((23, -8), (5, 8))] {"k": 19, "obj": "Ebar@(0,0)+Ebar@(-1,39)", "x": -243}
+[((5, 8), (5, 8)), ((5, 8), (5, 8))] {"k": 19, "obj": "Ebar@(0,0)+Ebar@(-1,39)", "x": -187}
+[((17, 16), (5, 8)), ((17, 16), (5, 8))] {"k": 19, "obj": "Ebar@(0,0)+Ebar@(-1,39)", "x": -131}
+[((29, 24), (5, 8)), ((29, 24), (5, 8))] {"k": 19, "obj": "Ebar@(0,0)+Ebar@(-1,39)", "x": -75}
+[(None, None), (None, None)] {"k": 12, "obj": "Ebar@(0,0)+Ebar@(-2,29)", "x": -31}
+[(None, None), (None, None)] {"k": 2, "obj": "Ebar@(0,0)+Ebar@(-7,21)", "x": -39}
+[(None, None), (None, None)] {"k": 7, "obj": "Ebar@(0,0)+Ebar@(-7,21)", "x": -18}
+[(None, None), (None, None)] {"k": 1, "obj": "Ebar@(0,0)+Ebar@(-13,45)", "x": -42}
+[(None, None), (None, None)] {"k": 24, "obj": "Ebar@(0,0)+Ebar@(-20,45)", "x": -35}
+[(None, None), (None, None)] {"k": 19, "obj": "Ebar@(0,0)+Ebar@(-25,37)", "x": -33}
+[(None, None), (None, None)] {"k": 3, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -92}
+[(None, None), (None, None)] {"k": 3, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -36}
+[(None, None), (None, None)] {"k": 5, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -30}
+[(None, None), (None, None)] {"k": 9, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -124}
+[(None, None), (None, None)] {"k": 9, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -68}
+[(None, None), (None, None)] {"k": 12, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -31}
+[(None, None), (None, None)] {"k": 15, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -106}
+[(None, None), (None, None)] {"k": 15, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -50}
+[(None, None), (None, None)] {"k": 21, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -78}
+[(None, None), (None, None)] {"k": 21, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -22}
+[(None, None), (None, None)] {"k": 27, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -110}
+[(None, None), (None, None)] {"k": 27, "obj": "Ebar@(0,0)+Ebar@(-26,27)", "x": -54}
+[(None, None), (None, None)] {"k": 1, "obj": "Ebar_10_Ebar_15_Ebar_12_Ebar", "x": -63}
+[(None, None), (None, None)] {"k": 8, "obj": "Ebar_8_Ebar_18_Ebar_17_Ebar", "x": -62}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 10, "kb": 8, "xa": -18, "xb": -109}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 13, "kb": 11, "xa": -7, "xb": -100}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 0, "xa": -4, "xb": -129}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 0, "xa": -4, "xb": -73}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 1, "xa": -4, "xb": -98}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 1, "xa": -4, "xb": -42}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 9, "kb": 2, "xa": -19, "xb": -39}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 25, "kb": 2, "xa": -25, "xb": -39}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 29, "kb": 3, "xa": -69, "xb": -92}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 29, "kb": 3, "xa": -13, "xb": -36}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 1, "kb": 5, "xa": -7, "xb": -30}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 6, "xa": -4, "xb": -108}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 6, "xa": -4, "xb": -52}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 7, "xa": -4, "xb": -130}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 7, "xa": -4, "xb": -74}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 7, "xa": -4, "xb": -18}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 5, "kb": 9, "xa": -107, "xb": -124}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 5, "kb": 9, "xa": -51, "xb": -68}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 12, "xa": -4, "xb": -87}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 8, "kb": 12, "xa": -8, "xb": -31}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 12, "xa": -4, "xb": -31}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 13, "xa": -4, "xb": -112}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 13, "xa": -4, "xb": -56}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 11, "kb": 15, "xa": -83, "xb": -106}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 11, "kb": 15, "xa": -27, "xb": -50}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 18, "xa": -4, "xb": -120}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 18, "xa": -4, "xb": -64}
+[((23, -8), (5, 8)), ((23, -8), (5, 8))] {"A": "Ebar", "B": "Ebar", "ka": 20, "kb": 19, "xa": -205, "xb": -243}
+[((5, 8), (5, 8)), ((5, 8), (5, 8))] {"A": "Ebar", "B": "Ebar", "ka": 20, "kb": 19, "xa": -149, "xb": -187}
+[((17, 16), (5, 8)), ((17, 16), (5, 8))] {"A": "Ebar", "B": "Ebar", "ka": 20, "kb": 19, "xa": -93, "xb": -131}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 19, "xa": -4, "xb": -89}
+[((29, 24), (5, 8)), ((29, 24), (5, 8))] {"A": "Ebar", "B": "Ebar", "ka": 20, "kb": 19, "xa": -37, "xb": -75}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 19, "xa": -4, "xb": -33}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 17, "kb": 21, "xa": -65, "xb": -78}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 17, "kb": 21, "xa": -9, "xb": -22}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 24, "xa": -4, "xb": -91}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 24, "xa": -4, "xb": -35}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 25, "xa": -4, "xb": -116}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 14, "kb": 25, "xa": -4, "xb": -60}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 23, "kb": 27, "xa": -93, "xb": -110}
+[(None, None), (None, None)] {"A": "Ebar", "B": "Ebar", "ka": 23, "kb": 27, "xa": -37, "xb": -54}
+[((9, 48), (3, 16)), ((9, 48), (3, 16))] {"A": "E^3", "B": "E^3", "ka": 1, "kb": 1, "xa": -46, "xb": -67}
+[((9, 48), (3, 16)), ((9, 48), (3, 16))] {"A": "E^3", "B": "E^3", "ka": 8, "kb": 1, "xa": -46, "xb": -67}
+[((9, 48), (3, 16)), ((9, 48), (3, 16))] {"A": "E^3", "B": "E^3", "ka": 5, "kb": 13, "xa": -59, "xb": -76}
+[((9, 48), (3, 16)), ((9, 48), (3, 16))] {"A": "E^3", "B": "E^3", "ka": 13, "kb": 13, "xa": -55, "xb": -76}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 8, "kb": 1, "xa": -146, "xb": -154}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 8, "kb": 1, "xa": -118, "xb": -126}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 7, "kb": 7, "xa": -137, "xb": -145}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 7, "kb": 7, "xa": -109, "xb": -117}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 7, "kb": 7, "xa": -81, "xb": -89}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 7, "kb": 7, "xa": -25, "xb": -33}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 10, "kb": 10, "xa": -140, "xb": -148}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 10, "kb": 10, "xa": -112, "xb": -120}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 5, "kb": 13, "xa": -145, "xb": -150}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 5, "kb": 13, "xa": -117, "xb": -122}
+[(None, None), (None, None)] {"A": "E^5", "B": "E", "ka": 5, "kb": 13, "xa": -61, "xb": -66}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 13, "kb": 2, "xa": -105, "xb": -131}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 13, "kb": 2, "xa": -49, "xb": -75}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 3, "kb": 7, "xa": -142, "xb": -168}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 3, "kb": 7, "xa": -86, "xb": -112}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 3, "kb": 7, "xa": -30, "xb": -56}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 8, "kb": 12, "xa": -127, "xb": -150}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 8, "kb": 12, "xa": -71, "xb": -94}
+[(None, None), (None, None)] {"A": "E^2", "B": "E^4", "ka": 8, "kb": 12, "xa": -15, "xb": -38}
