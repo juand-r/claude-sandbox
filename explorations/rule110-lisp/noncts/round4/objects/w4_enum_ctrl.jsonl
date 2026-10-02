@@ -1,0 +1,2 @@
+{"m": 6, "WX": 16, "T2": 400, "s": 6, "cond": "distinct", "i": 1, "X": "0111011011100000", "d_sat": [2, -3, -1], "sim": [[2, 1, false], [-3, 3, true], [-1, 5, false]], "types": [["E^8", "A"], ["E^3", "?", "A"], ["E^5", "A^2", "A^2", "A"]], "Delta": [1, -6, -6], "Delta_distinct": false, "nA_approx": true, "sat_eq_sim": [true, true, true]}
+{"m": 6, "WX": 16, "T2": 400, "s": 6, "cond": "distinct", "done": true, "witnesses": 1, "exhausted": true, "secs": 14.1}

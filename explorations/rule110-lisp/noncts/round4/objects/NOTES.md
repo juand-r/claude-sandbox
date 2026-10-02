@@ -196,3 +196,18 @@ cross-check. Rules from now on:
 01:12 MISTAKE (verify 01:07): types_rods mislabeled two long rods (E^17 -> 22, E^18 -> 20). Long-rod values should use charge mod 7 + length.
 
 01:23 Stopped the queue (run_queue3.sh) and the bouncer L job (PID 1690) to end the run. bL_A_30_28: 15 slip combos done (s=0: all 14 sV; s=2: sV=0), all UNSAT; one instance took 1,634 s. Not run: bL_D_30_28, S1 B_24_12 and 30/16, long-period p9/p11 walls. All resumable (bouncer_sat.py skips finished combos; s1/wallsat rerun from scratch).
+
+## Follow-ups requested by lead (01:2x)
+01:25 (1) W4: verify (01:12, 01:24) is right - my W4 UNSAT had no valid control:
+  with X fixed to Bbar (fixX 1111100010110111, s=6) the encoding is UNSAT at
+  T2=200 and SAT at T2=400 (d = 2,-3,-1, verify's table). MISTAKE: T2=200 was
+  too short for the reaction to settle; the 16/24 "UNSAT" is withdrawn.
+  New w4_enum.py: enumeration (incremental SAT), class-dependence condition
+  on d (not-all-equal, or distinct), each witness simulated in 3 classes to
+  T=1200, Delta_c = d_c - nA_c ('?' compounds: smallest n>=2 with 8n = w mod
+  14, flagged approx), every phase/position copy of a witness blocked.
+  Control (free X, s=6, distinct, W 16, T2 400): returns Bbar (Delta 1,-6,-6,
+  not distinct), then exhausted.
+  Running: run_w4.sh (W16 T2 400, then W24 T2 500; notallequal; all slips).
+(2) bubble launcher: launch2.py got --classes (one tau per class, any lattice)
+  for G-lattice trains; backs_scan.py got NAMES=Gfamily + resume per back.

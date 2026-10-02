@@ -1968,3 +1968,54 @@ Bbar at a longer T2 (or with distinct d as the only extra condition),
 the W4 UNSAT stays CANNOT ACCEPT in my ledger (#30). The target itself
 should be distinct Delta_c = d_c - nA_c (Bbar: -6, +1, -6), not d_c.
 Shuttle's w4.py (01:09) has the right control and target.
+
+### [delayline] 01:25 - lead items 2/3 status: contact scan negative; handshake = reusable reflector (slip lemma); SAT running with fixed-packet encoding controls
+Item 2 [sim, scoped negative] delayline/contact.py + contact_an.py: walking
+left window (train #499, class 1, 84-cell spacing, 16 packets) run into a
+co-moving marker X in {E, E^2, E^3, E^4, Ebar}, every seed time, every
+ether-compatible offset 10..130 cells (770 scenes, exact CA): no clean
+contact. 761 debris; 9 (X = E^4) end E^3 + D1 + A + A^4 (all moving right)
+with the window consumed: not repeatable. No clean merge W_L + E -> E^2
+(11.2-cell steps never align). SAT spec for a contact detector written in
+THEORY_DL s.8 (not run).
+Item 3 [thm, via the slip lemma; THEORY_DL s.4.1]: a per-unit handshake at
+the right window (closed E^2 under a stream block that leaves it unchanged;
+an A opens it; it steps once, closes, and answers left) forces the answer
+to carry 6 units (mod 7): exactly the reusable reflector E^2 -> E^2,
+E -> E^2 + 6 units left. Library: none. SAT sat_refl.py (two scenes sharing
+Y, G lattice, slip 0) is running at W 30, T 900.
+SAT lesson for everyone using G-speed unknowns [sim]: my first campaign
+(T 420) was mis-encoded and I have NOT posted its UNSATs. A control with
+the unknown FIXED to a known library packet (new --fixY option) exposed
+it: the known pass-through GB3@(0,0)+G@(-16,45) was rejected at T 420
+(products not yet separated past my split line) and accepted at T 700;
+S43 (84 wide) needs T ~ 1400 because its trailing GB5 meets the rod only
+after ~15 x 54 steps. Fixed-packet controls are cheap (3-12 s) and test
+the whole encoding, which a free-search control at small width does not.
+
+### [objects] 01:40 - W4 redone with a working control: Bbar is found, and NO (12,-6) packet <= 24 has three distinct Delta_c [sat+sim]
+verify 01:12/01:24 was right: my earlier W4 UNSAT had no valid control.
+With X FIXED to Bbar the old encoding is UNSAT at T2 = 200 and SAT at
+T2 = 400 (d = 2, -3, -1 on E^6, verify's table). MISTAKE: T2 = 200 was too
+short for Bbar's reaction to settle; the 01:11 "UNSAT" is withdrawn.
+New: objects/w4_enum.py (enumeration on an incremental solver):
+- X free on the (12,-6) lattice, width W_X, all 14 slips; three scenes
+  (one per class) sharing X; each class: E^(m+d_c) at the undisturbed front
+  placement + only (3,2)-invariant cells (ether / A-lattice) right of it at
+  T2; condition: the d_c NOT all equal (class-dependent).
+- each witness: simulated in all 3 classes to T = 1200, typed (round-3
+  verify typer), Delta_c = d_c - nA_c (an untyped '?' A-compound of charge w
+  counts as the smallest n >= 2 with 8n = w mod 14; flagged); then every
+  time-phase/position copy of X is blocked and the search continues.
+- Control (free X, s = 6, pairwise-distinct d, W_X 16, T2 400): returns a
+  Bbar (Delta = 1, -6, -6), then the space is exhausted.
+Results (m = 6, enumeration exhausted for every slip):
+- W_X 16, T2 400: 2 class-dependent clean packets (Bbar; a Bbar+B type,
+  s = 12): Delta (1,-6,-6), (-5,-5,2).
+- W_X 24, T2 500: 12 packets (s = 4, 6, 10, 12), all Bbar-plus-B
+  compounds; Delta always of the form (x, x, x+7) up to order:
+  (-4,-4,3), (1,-6,-6), (4,-3,-3), (2,-5,-5), (-5,-5,2).
+- Delta pairwise distinct: NONE. Witness rows in objects/w4_enum.jsonl.
+Scope caveats: X alone (no trailing eaters); outcomes with d all equal
+but A counts differing by >= 7 are not enumerated; nA for '?' compounds
+is charge-based. W_X = 32, T2 = 600 running now.

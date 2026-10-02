@@ -36,6 +36,8 @@ ap.add_argument("--s", default=",".join(map(str, range(TILE))))
 ap.add_argument("--dmin", type=int, default=-3)
 ap.add_argument("--dmax", type=int, default=17)
 ap.add_argument("--margin", type=int, default=30)
+ap.add_argument("--fixX", default=None, help="force X's row 0 (W_X cells), e.g. a Bbar, for the positive control")
+ap.add_argument("--vL", type=float, default=-0.5, help="window left-edge speed")
 ap.add_argument("--nodistinct", action="store_true", help="positive control: drop the pairwise-distinct condition")
 A = ap.parse_args()
 DSET = [d for d in range(A.dmin, A.dmax + 1) if A.m + d >= 1]
@@ -46,13 +48,18 @@ for s in map(int, A.s.split(",")):
     E = en_item(cnf, A.m)
     rods = {d: en_item(cnf, A.m + d) for d in DSET}
     X = TrainVar(cnf, A.WX, 12, -6, s, name="X")
+    if A.fixX:
+        assert len(A.fixX) == A.WX
+        for xx, ch in enumerate(A.fixX):
+            v = X.st.lit(0, xx)
+            cnf.add([v] if ch == "1" else [-v])
     reps = placements_by_class(E, (0, 0), X, E.W + 6)
     assert len(reps) == 3, reps
     tE, dE = Scene.undisturbed(E, 0, 0, A.T2)
     scenes, ys = [], []
     for c, (tau, x) in enumerate(reps):
         lo, hi = 0, x + X.W + tau
-        win = make_window(A.T2 + 3, lo, hi, -0.5, 2 / 3, margin=A.margin)
+        win = make_window(A.T2 + 3, lo, hi, A.vL, 2 / 3, margin=A.margin)
         S = Scene(cnf, A.T2 + 3, [(E, 0, 0), (X, tau, x)], window=win)
         L, R = S.st.bounds[A.T2]
         L3, R3 = S.st.bounds[A.T2 + 3]

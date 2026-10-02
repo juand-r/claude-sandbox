@@ -164,3 +164,17 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   every d rejected; first batch killed and restarted with N = 30).
   Control passes (Bbar-type, Delta -6/+1/-6 at E^30 and E^23).
   W3 = w3scan.py windows: no clean n-independent back-changing contact.
+- 01:2x IMPORTANT CORRECTION (SAT scene design): with a small gap (4-8
+  cells) between the unknown train X and the rod, the SAT's t = 0 row
+  (rod | free X) can be a configuration that a train arriving from far
+  away never produces (their boundaries already interact at that
+  distance). Found because a pure W4 solution X = Bbar_6_B_1_B_13_B_7_B
+  (d = -2/+5/-2 on E^40, gap 9) changed outcome when X was moved 14 cells
+  further (same collision class: (0,14) is in <P_E, P_Bbar>), and the
+  delay-equivalence test h(t+60, x-16) == h0(t, x) failed exactly at X's
+  left boundary at t = 0. Fix: gap >= 18 in all SAT scenes, and every
+  W4 witness is checked at extra distances (+14, +28 cells).
+  Re-check of the front no-emission SAT with gap 18 (G output, K = 1, 2,
+  -1, A-trains w 24, every phase): still UNSAT 21/21; control SAT.
+  The exhaustive simulations (frontsim, libscan, backscan, bounce) used
+  gaps of 24-40 and are unaffected.

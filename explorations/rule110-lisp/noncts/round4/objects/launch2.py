@@ -150,6 +150,7 @@ if __name__ == "__main__":
     ap.add_argument("--overlap", nargs=2, type=int, default=None)
     ap.add_argument("--train", nargs=4, type=int, default=None, help="p d WY gap")
     ap.add_argument("--taus", default=None)
+    ap.add_argument("--classes", action="store_true", help="one tau per collision class (vs the rod, lattice <(15,-4),(p,d)>)")
     ap.add_argument("--pRs", default=None)
     ap.add_argument("--win", type=int, default=None)
     ap.add_argument("--target", default="wall")
@@ -160,6 +161,19 @@ if __name__ == "__main__":
     else:
         p, d, WY, gap = A.train
         taus = range(p) if A.taus is None else [int(v) for v in A.taus.split(",")]
+        if A.classes:
+            from classes import same_class
+            b_, cl_, cr_ = rod_row(A.n)
+            reps = []
+            for tau in range(p):
+                xg = len(b_) + gap
+                while (4 * tau - xg - cr_) % TILE:
+                    xg += 1
+                o = (-tau, xg)
+                if not any(same_class(o, r, (15, -4), (p, d)) for r in reps):
+                    reps.append(o)
+            taus = [-o[0] for o in reps]
+            print("class representatives (tau):", taus, flush=True)
         pRs = range(TILE) if A.pRs is None else [int(v) for v in A.pRs.split(",")]
         jobs = [dict(train=(p, d, WY, gap, tau, pR)) for tau in taus for pR in pRs]
     for job in jobs:

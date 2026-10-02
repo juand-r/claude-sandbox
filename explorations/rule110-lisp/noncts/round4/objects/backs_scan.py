@@ -21,6 +21,8 @@ ETH = O.ETHER
 L = O.lib()
 if NAMES == "Bfamily":
     names = [n for n, g in L.items() if g["velocity"] == "-1/2"]
+elif NAMES == "Gfamily":
+    names = [n for n, g in L.items() if g["velocity"] == "-1/3"]
 elif NAMES == "Gbase":
     names = [n for n, g in L.items() if g["velocity"] == "-1/3" and "@" not in n]
 else:
@@ -86,7 +88,15 @@ def add_glider(scene, x0, back_end, c_abs, name, kg):
 if __name__ == "__main__":
     B = backs()
     print(f"back types (right ether phase c): {sorted(B)}", flush=True)
+    done_c = set()
+    import os
+    if os.path.exists(OUT):
+        for l in open(OUT):
+            done_c.add(json.loads(l)["back_c"])
+    only = os.environ.get("BACKS")
     for c, bk in sorted(B.items()):
+        if c in done_c or (only and str(c) not in only.split(",")):
+            continue
         scene, x0, s_front, be, c_abs = rod_with_back(c, bk)
         # stability of the rod alone: (300,-80) periodic after 300 steps
         a = O.evolve(scene, 300); b2 = O.evolve(a, 300)
@@ -108,7 +118,7 @@ if __name__ == "__main__":
                     if first[i] is None:
                         first[i] = t
             hits += [(n, k, f) for (n, k), f in zip(batch, first) if f is not None]
-        rec = {"N": N, "T": T, "back_c": c, "back_W": bk[0], "rod_stable": stable,
+        rec = {"N": N, "T": T, "names": NAMES, "back_c": c, "back_W": bk[0], "rod_stable": stable,
                "scenes": len(jobs), "front_hits": len(hits), "examples": hits[:10]}
         print(json.dumps(rec), flush=True)
         with open(OUT, "a") as fh:

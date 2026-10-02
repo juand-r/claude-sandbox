@@ -3,3 +3,8 @@
 3600 SOLVER=kissat404 python sat_k.py control -30 46
 5400 SOLVER=kissat404 python sat_k.py rejdiff -30 46
 5400 SOLVER=kissat404 python sat_k.py accdiff -30 46
+3600 SOLVER=kissat404 python sat_k.py rejdiff -30 8
+3600 SOLVER=kissat404 python sat_k.py accdiff -30 8
+3600 SOLVER=kissat404 python sat_k.py control 54 114
+3600 SOLVER=kissat404 python sat_k.py rejdiff 54 114
+3600 SOLVER=kissat404 python sat_k.py accdiff 54 114

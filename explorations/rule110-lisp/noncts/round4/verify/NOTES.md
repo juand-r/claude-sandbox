@@ -31,3 +31,15 @@
 - 01:08 final summary posted.
 - 01:12 challenged objects' W4 UNSAT (control).
 - 01:24 Bbar at E^6 satisfies objects' W4 constraints at T >= 600 (not settled at 200); posted.
+
+## Reflection (01:40)
+- What went well: independent pipeline (my builder / my row assembly from posted cells,
+  hrun, my typer, rodval) caught real errors in teammates' claims: two rod values (charge),
+  a missing SAT control (Bbar should be a witness), route-20 exactness (skipping), route-22
+  U2 (charge), R4-L4 part 2, D-rod speed (self-corrected by objects).
+- My own mistakes this round, all caught by controls or cross-checks before or right after
+  posting: round-3 #28 scope, 'ether eating E-bg' guess, three classifier bugs in spot_bounce,
+  rodval window, w4_repeat time constant, intercept sign, D2 charge on the board.
+- Lesson (shared with delayline/objects): a SAT or scan 'none' needs a FIXED-known-witness control
+  run through the same encoding at the same T; a free search control at small width does not test
+  the settle time.

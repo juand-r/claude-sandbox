@@ -174,3 +174,19 @@ B-lattice train is 47 cells wide, and S43 is 84, so W 30 is a small scope.
   valid negatives (withdrawn). At T = 700 the B^2 is at -212..-268 and the
   E at -137, on the right sides of mid = -4T/15 - 2 = -188. Re-running the
   control and the campaign at T = 700.
+
+## 01:25 SAT encoding controls with FIXED known packets (--fixY)
+- pass2 only_b, Y = GB3@(0,0)+G@(-16,45): T 700 SAT in class 2 (sim_ok),
+  classes 0, 1 UNSAT (debris there, as the catalog says); T 420 UNSAT ->
+  confirms the split bug at T 420.
+- walk, both scenes, Y = GB4: T 700 SAT (sim_ok).
+- close4 (E^2 -> E^2 unmoved; E -> Z(slip 4) + E^5), Y = S43 (84 wide):
+  scene b alone SAT at T 700 / 1000 (cb 2); both scenes UNSAT at T 700
+  for every (ca, cb) even with --moved, SAT at T 1400 (ca 0, cb 2). Reason
+  (direct simulation): S43's trailing GB5 sits 54 cells behind and reaches
+  E^2 only after ~15*54 steps; at T 700 the E^2 reaction is unfinished.
+  Rule learned: for G-speed packets of width W, T must exceed ~15 W plus
+  the separation time of the products; I had used 420 for W 30 (too short
+  for scene b's split, and it was the split that failed).
+- Relaunched the refl campaign at W 30, T 900, with a free-Y walk control
+  first (run_refl.sh -> run_refl900.log).
