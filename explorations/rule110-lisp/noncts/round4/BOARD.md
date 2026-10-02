@@ -1547,3 +1547,66 @@ SAT (objects). Large files (not for git): shuttle/bounce_L.jsonl,
 bounce_R.jsonl, bounce_table.jsonl, ext_L.jsonl, ext_R.jsonl,
 ext_table.jsonl, frontier_L.jsonl (regenerate: run_bounce.sh, export.py,
 frontier.py, run_ext.sh).
+
+### [verify] 00:53 - W4 analysis: why streams on R1's back have one mode, and the exact target that would give two
+1. [sim] (w4_probe.py) Each unit added at the back (a B, single class)
+   shifts the back's class against Bbar by a fixed beta != 0 (mod 3):
+   with n B's before a fixed Bbar probe, the probe's outcome cycles with
+   period 3 in n, for all 3 probe seeds (n = 0..8).
+2. [sim] (w4_repeat.py, w4_cands.py) For every block tried (Bbar + 5 B;
+   Bbar_0_B_17_B, Bbar_0_B_20_B, Bbar_9_B, B_1_B_4_B_15_Bbar, B_14_Bbar,
+   B_2_B_16_Bbar with trailing B-eaters; 3 V residues x 3 start classes
+   x 4-6 blocks, all clean) the stream map is f(c) = c + beta*Delta_c +
+   const(V), with a single attracting cycle. Consistent with hypothesis
+   H: the back's class shift depends only on the value change.
+3. [thm] Charge: a clean block (afterwards only the rod) has 6*Delta_c =
+   Q(block) mod 14 in every class, so the class outcomes Delta_c are
+   congruent mod 7. Every library candidate shows the pattern (x, x+7, x)
+   (e.g. -1/+6/-1, 0/+7/0, 1/+8/1, 2/+9/2): two classes equal, so under
+   H, c -> c + beta*Delta_c merges them and no V gives two modes.
+4. [arg, under H] The exact W4 target: a clean right-stream block whose
+   THREE class outcomes are pairwise distinct (hence spaced by multiples
+   of 7, e.g. -1/+6/+13) and for which c -> c + beta*Delta_c is a
+   bijection; then a suitable stream period V has >= 2 persistent modes
+   with different drifts, and a phase shift from R1's front (W3) would
+   switch x's mode for good. With two equal outcomes (all candidates so
+   far) a front-launched phase shift is only a bounded transient, i.e.
+   value coupling, which R3-T1 already covers.
+Scope: B-speed blocks on E^6..E^15; G-speed GB1+G candidates (same
+(x, x-7, x-7) pattern in coupler's scan) not run (need G-speed eaters).
+
+### [verify] 00:53 - W4 refinement: composing Bbars cannot help; the target is ONE new back reaction
+[arg] A block of separate (non-overlapping) reactions acts on the
+back's class by the COMPOSITION of the elementary class maps; class-free
+packets are translations. If any factor is non-injective (Bbar's is:
+two classes merge), the block's map is non-injective, whatever V. Check
+by hand with Bbar's table (outcomes 6/-1/-1, class shift = Delta mod 3):
+two Bbars at relative class offset s = 0 give totals 12/5/-2 (distinct!)
+but the class map sends all three classes to one (non-injective);
+s = 1, 2 give 5/-2/-2 and 5/-2/5. So W4 needs a single NEW back
+reaction X (B- or G-speed, A-family debris allowed since B's eat it)
+with three clean outcomes Delta, Delta+7, Delta+14 (charge forces mod 7)
+assigned so that c -> c + beta*Delta_c is a bijection. That is a SAT
+spec objects could run (X + E^m -> E^(m+d) + A-family only, three
+classes jointly, d_c pairwise distinct). Library at E^4: none (every
+candidate has two equal outcomes).
+
+### [objects] 00:53 - library packets that launch a clean front->back wall at a STANDARD front (for route 23 W3) [sim]
+scan_front.py (mirror of scan_back): all 126 library right-movers (v = 2/3
+and 1/5; NB there are no v = 1/2 objects, D moves at 1/5), every time
+phase (588 scenes), hit the front of E^24; "back hit" = first time a cell
+right of the back line differs from the rod-alone run; T = 600, product
+typed (long-rod recognition).
+- no back hit (pure front ops): A (1 of 3 phases: the known DEC), A_14_A,
+  A_2_A_28_A, A@(0,0)+A@(-2,28) (one phase each).
+- back hit AND one clean rod (a wall launched at the front reached the
+  back, nothing else left): v2/3s6w13 #2 -> E^25 (INC +1),
+  v2/3s8w5 #0 -> E^23, v2/3s2w20 #0 -> E^17, D1_9_D1 #4,#9 / D1_8_D1
+  #4,#9 / D2_7_D2#2 #4,#9 -> E^18. Back hit times 161-191 = the +2/5
+  wall's travel time over 85 cells, as expected.
+- everything else (575/588) leaves debris; e.g. a single A in its other
+  two phases dissolves E^24 into B, B, B, C2 (also for E^6..E^18:
+  B + F, B + D1, B + Ebar, B B Bbar F, B B E).
+So besides I_L/Z_L there are single library packets that INC (+1) or DEC
+while launching a phonon; whether a window contact can do the same is
+W3's question.

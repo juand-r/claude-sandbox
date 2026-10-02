@@ -2,3 +2,5 @@
 # them; see each agent's README). Kept on disk, not in git.
 round4/shuttle/bounce_*.jsonl
 round4/queue/zmix*.jsonl
+round4/shuttle/ext_*.jsonl
+round4/shuttle/frontier_L.jsonl

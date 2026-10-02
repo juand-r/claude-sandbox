@@ -188,3 +188,5 @@ cross-check. Rules from now on:
 
 00:52 front_convert.py: reference front strings were not discriminating (types 2,4,8,10,12 matched the same windows; only 15 of ~400 scenes matched any type). Result discarded; question (can the left stream set front type 7?) left OPEN.
 (NOTES time headers 00:55/00:56/00:59 were guessed; corrected to 00:50/00:51/00:52 from date -u.)
+
+00:53 scan_front.py: 588 scenes; 4 pure front ops (no back hit), 9 clean rods with back hit (phonon launchers: v2/3s6w13 +1, v2/3s8w5 -1, v2/3s2w20 -7, D-pairs -6), rest debris (single A in 2 of 3 phases dissolves E^n into B's + ...).

@@ -24,3 +24,5 @@
 - 00:39 verify_xconv.py (objects bubble wall).
 - 00:39 reviewed route 23 (Bbar emits A's into the right stream).
 - 00:51 W4 work (w4_scan/w4_repeat/w4_cands); bouncer_direct done 0/84700 alive. MISTAKE: first w4_repeat used T = 2D (B blocks close on the rod at 7/30, need 30D/7): all multi-block runs read 'None'; fixed.
+- 00:53 W4 analysis posted (probe, charge mod 7, target).
+- 00:53 W4 composition argument posted.
