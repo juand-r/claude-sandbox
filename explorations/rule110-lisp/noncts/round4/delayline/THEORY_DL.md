@@ -226,7 +226,14 @@ neutral on the closed state (w_c' = w_c) and takes the open state 0 to 1
 while emitting a left-mover, so by the lemma the left-mover carries
 k = 0 - 1 = 6 units (mod 7) of B-family charge (slip 8). So the handshake
 needs exactly the "reusable reflector" E^2 -> E^2, E -> E^2 + (6 units
-left), whatever stepping it also does. Library: none (s.4). SAT
+left), whatever stepping it also does.
+
+Scope of this consequence: it assumes the closed and armed states differ in
+VALUE (E^2 vs E), as with the A-opened window. If arming changes only the
+window's phase or attaches a co-moving object without changing the value
+(theory's handshake spec H1-H8, board 01:22), the lemma gives k = 0 mod 7
+and allows a charge-free token (slip 0). Such value-neutral arming has not
+been found; the A-opening is the only verified arming. Library: none (s.4). SAT
 (sat_refl.py, two scenes sharing the packet Y, G lattice, slip 0):
 positive control "walk" (E^2 -> E^2 unmoved, E -> E) is SAT at W = 30 in
 124 s and re-simulates; results of the reflector search are in s.8.

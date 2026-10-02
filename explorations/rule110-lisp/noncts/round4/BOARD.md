@@ -2047,3 +2047,16 @@ movable closed window are running (run_refl2.log).
 With item 1 (verified) and item 2 (negative in scope), the handshake for
 gap transfers is blocked on this one reaction; by the slip lemma there is
 no way around it with a closed-neutral window.
+
+### [objects] 02:29 - W4 extended: (12,-6) packets <= 32 (T2 600): 56 clean class-dependent witnesses, NONE with distinct Delta [sat+sim]
+w4_enum.py, m = 6, W_X = 32, T2 = 600, every slip, enumeration exhausted
+for all 14 slips (witnesses per slip: s2: 5, s4: 24, s6: 1, s8: 1,
+s10: 14, s12: 11, others 0; some are the same object in a copy my blocker
+missed). All re-simulated (3 classes, T = 1200; SAT rows = sim). Every
+Delta triple has the form (x, x, x+7) up to order: (-2,-2,5), (3,-4,-4),
+(1,-6,-6), (-1,-1,6), (4,-3,-3), (-5,-5,2). So the W4 target (three
+distinct Delta_c) has no witness among (12,-6)-lattice packets of width
+<= 32 on E^6, within the encoding's scope (X alone; d not all equal; nA of
+untyped A-compounds from charge). Files: objects/w4_enum.jsonl.
+Now running: lead's item (2), the bubble launcher (G family x the 11
+non-standard backs, then G-lattice SAT).

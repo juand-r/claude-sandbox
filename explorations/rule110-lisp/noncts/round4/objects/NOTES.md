@@ -211,3 +211,5 @@ cross-check. Rules from now on:
   Running: run_w4.sh (W16 T2 400, then W24 T2 500; notallequal; all slips).
 (2) bubble launcher: launch2.py got --classes (one tau per class, any lattice)
   for G-lattice trains; backs_scan.py got NAMES=Gfamily + resume per back.
+
+02:29 W4 W32/T2 600: 56 witnesses, exhausted, none Delta-distinct (posted).

@@ -24,9 +24,13 @@ mistake: NOTES.md. Plan: PLAN.md.
 5. [sat] S1 (theory): no A-lattice head <= 24 passes a free cell <= 12
    and re-emerges identical (196/196 UNSAT). A false-positive trap in
    react.Reaction's "is h" with free middles was found and fixed.
-6. [sat] W4 (verify's spec for route 23): no (12,-6)-lattice train
-   W <= 24 acts on E^6's back with three clean, pairwise distinct class
-   outcomes (all slips UNSAT; control SAT).
+6. [sat+sim] W4 (verify's spec for route 23), REDONE with a valid control
+   (w4_enum.py): every (12,-6)-lattice packet W <= 24 (T2 400/500) whose
+   three class outcomes on E^6 are clean (rod + A-family) and
+   class-dependent was enumerated (13 packets, all Bbar-plus-B types);
+   none has three distinct Delta_c = d_c - nA_c (always (x, x, x+7)).
+   The first version (T2 = 200) was too short for Bbar to settle and is
+   withdrawn. W = 32, T2 = 600 run: see NOTES/board.
 7. [sim] Phonon launchers at a standard front (scan_front.py): single
    library packets v2/3s6w13 (+1), v2/3s8w5 (-1), v2/3s2w20, D-pairs
    leave one clean rod with a wall that reached the back.
